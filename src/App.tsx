@@ -1692,8 +1692,6 @@ function AppContent() {
           {activeTab === 'baustoffkenngroessen' && <Baustoffkenngroessen />}
           {activeTab === 'formaenderungen' && <Formaenderungen />}
           {activeTab === 'analytik' && <Analytik />}
-          {activeTab === 'bauschaeden' && <Bauschaeden />}
-          {activeTab === 'schadensbilder' && <TypischeBauschaeden />}
           {activeTab === 'labor' && <Labor />}
           {activeTab === 'mechanische_pruefungen' && <MechanischePruefungen />}
           {activeTab === 'messen_pruefen' && <MessenPruefen />}
