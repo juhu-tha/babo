@@ -953,44 +953,44 @@ export default function Spannbeton() {
                 <tbody className="divide-y divide-slate-100 text-slate-700 text-[11px]">
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-2 font-semibold">Spannzeitpunkt t₀ (Transfer)</td>
-                    <td className="p-2 font-mono"><InlineMath math="\\sigma_c \\le 0{,}60 \\cdot f_{ck}(t_0)" /> ({materialResults.permCompStress_t0.toFixed(1)} MPa)</td>
+                    <td className="p-2 font-mono"><InlineMath math="\sigma_c \le 0{,}60 \cdot f_{ck}(t_0)" /> ({materialResults.permCompStress_t0.toFixed(1)} MPa)</td>
                     <td className="p-2"><InlineMath math="P_{m0} + M_{g1}" /> ({mG1} kNm)</td>
                     <td className="p-2 font-mono">{materialResults.maxCompStress_t0.toFixed(1)} MPa {materialResults.isTransferStressOk ? <span className="text-emerald-700 font-bold">✓ OK</span> : <span className="text-red-700 font-bold">✗ Überschritten</span>}</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-2 font-semibold">Betondruckspannung (Längsrisse)</td>
-                    <td className="p-2 font-mono"><InlineMath math="\\sigma_c \\le 0{,}60 \\cdot f_{ck}" /> ({materialResults.permCompStressRare.toFixed(1)} MPa)</td>
-                    <td className="p-2">Charakteristisch: <InlineMath math="P_{m\\infty} + M_{char}" /> ({mChar} kNm)</td>
+                    <td className="p-2 font-mono"><InlineMath math="\sigma_c \le 0{,}60 \cdot f_{ck}" /> ({materialResults.permCompStressRare.toFixed(1)} MPa)</td>
+                    <td className="p-2">Charakteristisch: <InlineMath math="P_{m\infty} + M_{char}" /> ({mChar} kNm)</td>
                     <td className="p-2 font-mono">{materialResults.maxCompStress_char.toFixed(1)} MPa {materialResults.isRareStressOk ? <span className="text-emerald-700 font-bold">✓ OK</span> : <span className="text-red-700 font-bold">✗ Überschritten</span>}</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-2 font-semibold">Betondruckspannung (Kriechen)</td>
-                    <td className="p-2 font-mono"><InlineMath math="\\sigma_c \\le 0{,}45 \\cdot f_{ck}" /> ({materialResults.permCompStressQuasi.toFixed(1)} MPa)</td>
-                    <td className="p-2">Quasi-ständig: <InlineMath math="P_{m\\infty} + M_{perm}" /> ({mPerm} kNm)</td>
+                    <td className="p-2 font-mono"><InlineMath math="\sigma_c \le 0{,}45 \cdot f_{ck}" /> ({materialResults.permCompStressQuasi.toFixed(1)} MPa)</td>
+                    <td className="p-2">Quasi-ständig: <InlineMath math="P_{m\infty} + M_{perm}" /> ({mPerm} kNm)</td>
                     <td className="p-2 font-mono">{materialResults.maxCompStress_perm.toFixed(1)} MPa {materialResults.isQuasiStressOk ? <span className="text-emerald-700 font-bold">✓ OK</span> : <span className="text-amber-700 font-bold">⚠ Nichtlinear</span>}</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-2 font-semibold">Dekompression (Spanngliedhöhe ± 25 mm)</td>
-                    <td className="p-2 font-mono"><InlineMath math="\\sigma_c \\le 0" /> (Druckzone um Kabel)</td>
-                    <td className="p-2">Quasi-ständig: <InlineMath math="P_{m\\infty} + M_{perm}" /></td>
+                    <td className="p-2 font-mono"><InlineMath math="\sigma_c \le 0" /> (Druckzone um Kabel)</td>
+                    <td className="p-2">Quasi-ständig: <InlineMath math="P_{m\infty} + M_{perm}" /></td>
                     <td className="p-2 font-mono">{materialResults.sigmaTendonZone_perm.toFixed(2)} MPa {materialResults.isDecompressed ? <span className="text-emerald-700 font-bold">✓ OK (überdrückt)</span> : <span className="text-red-700 font-bold">✗ Zugspannungen!</span>}</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-2 font-semibold">Betonstahlspannung (Zustand)</td>
-                    <td className="p-2 font-mono"><InlineMath math="\\sigma_s \\le 0{,}80 \\cdot f_{yk}" /> (400 MPa)</td>
+                    <td className="p-2 font-mono"><InlineMath math="\sigma_s \le 0{,}80 \cdot f_{yk}" /> (400 MPa)</td>
                     <td className="p-2">Charakteristisch</td>
                     <td className="p-2 font-mono">
                       {materialResults.isCrackedBot ? (
                         <span className="text-amber-700 font-bold">Zustand II – Nachweis im gerissenen Zustand erforderlich (hier nicht abgedeckt)</span>
                       ) : (
-                        <span className="text-emerald-700 font-bold">✓ Zustand I (elastisch, <InlineMath math="\\sigma_u \\le f_{ctm}" />)</span>
+                        <span className="text-emerald-700 font-bold">✓ Zustand I (elastisch, <InlineMath math="\sigma_u \le f_{ctm}" />)</span>
                       )}
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
-                    <td className="p-2 font-semibold">Spannstahlspannung (Endzustand <InlineMath math="t=\\infty" />)</td>
-                    <td className="p-2 font-mono"><InlineMath math="\\sigma_p \\le 0{,}65 \\cdot f_{pk}" /> ({materialResults.sigmaP_perm_quasi.toFixed(0)} MPa)</td>
-                    <td className="p-2">Quasi-ständig: <InlineMath math="P_{m\\infty} + M_{perm}" /></td>
+                    <td className="p-2 font-semibold">Spannstahlspannung (Endzustand <InlineMath math="t=\infty" />)</td>
+                    <td className="p-2 font-mono"><InlineMath math="\sigma_p \le 0{,}65 \cdot f_{pk}" /> ({materialResults.sigmaP_perm_quasi.toFixed(0)} MPa)</td>
+                    <td className="p-2">Quasi-ständig: <InlineMath math="P_{m\infty} + M_{perm}" /></td>
                     <td className="p-2 font-mono">{materialResults.sigmaP_inf.toFixed(0)} MPa {materialResults.isSteelStressOk ? <span className="text-emerald-700 font-bold">✓ OK</span> : <span className="text-red-700 font-bold">✗ Überschritten</span>}</td>
                   </tr>
                 </tbody>

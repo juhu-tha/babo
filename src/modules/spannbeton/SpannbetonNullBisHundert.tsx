@@ -232,7 +232,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     Mechanische Ausgangslage & Baustoffgrenzen:
                   </p>
                   <p>
-                    Beton besitzt eine hohe Druckfestigkeit (z. B. <InlineMath math="f_{ck} = 35\\,\\text{N/mm}^2" /> bei einem C35/45), 
+                    Beton besitzt eine hohe Druckfestigkeit (z. B. <InlineMath math="f_{ck} = 35\,\text{N/mm}^2" /> bei einem C35/45), 
                     seine mittlere zentrische Zugfestigkeit <InlineMath math="f_{ctm}" /> liegt jedoch lediglich bei 
                     2,2 bis 4,1 N/mm² – etwa <strong>7–10 %</strong> der Druckfestigkeit (z. B. C35/45: 3,2/35 = 9 %; C50/60: 4,1/50 = 8 %).
                   </p>
@@ -264,7 +264,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   und besitzt die volle Biegesteifigkeit des ungerissenen Zustands I.
                 </p>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-xs font-mono text-center text-slate-800">
-                  <InlineMath math="\\sigma_u = -\\frac{P}{A} - \\frac{P \\cdot e_p}{W_u} + \\frac{M}{W_u} \\le 0 \\quad (\\text{Vollständige Drucküberdeckung am Unterrand})" />
+                  <InlineMath math="\sigma_u = -\frac{P}{A} - \frac{P \cdot e_p}{W_u} + \frac{M}{W_u} \le 0 \quad (\text{Vollständige Drucküberdeckung am Unterrand})" />
                 </div>
               </div>
 
@@ -277,7 +277,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     <div className="p-2.5 bg-white rounded-lg border border-slate-200">
                       <div className="font-bold text-slate-900">1. Unbewehrter Beton (Zustand I):</div>
                       <div className="text-slate-600 mt-0.5">
-                        Versagt spröde und ohne Vorankündigung, sobald die Randzugspannung die Zugfestigkeit überschreitet (<InlineMath math="\\sigma > f_{ctm}" />).
+                        Versagt spröde und ohne Vorankündigung, sobald die Randzugspannung die Zugfestigkeit überschreitet (<InlineMath math="\sigma > f_{ctm}" />).
                       </div>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-slate-200">
@@ -351,9 +351,9 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </p>
                   <p>
                     Die Ursache liegt im rheologischen Verhalten des Betons: Beton schwindet infolge Wasserabgabe 
-                    an die Umgebung (<InlineMath math="\\varepsilon_{cs}" />) und kriecht zeitabhängig unter Dauerlast (<InlineMath math="\\varepsilon_{cc}" />). 
+                    an die Umgebung (<InlineMath math="\varepsilon_{cs}" />) und kriecht zeitabhängig unter Dauerlast (<InlineMath math="\varepsilon_{cc}" />). 
                     Die Gesamtverkürzung des Betons über die Nutzungsdauer erreicht typische Werte von 
-                    <InlineMath math="\\Delta \\varepsilon_c \\approx 1{,}0\\text{ bis }1{,}2\\,\\text{‰}" />.
+                    <InlineMath math="\Delta \varepsilon_c \approx 1{,}0\text{ bis }1{,}2\,\text{‰}" />.
                   </p>
                 </div>
               </div>
@@ -372,18 +372,18 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 </div>
                 <div className="text-xs text-red-950 space-y-2 leading-relaxed">
                   <p>
-                    Betonstahl B500 besitzt eine Bemessungsstreckgrenze von <InlineMath math="f_{yd} = 435\\,\\text{N/mm}^2" />. 
+                    Betonstahl B500 besitzt eine Bemessungsstreckgrenze von <InlineMath math="f_{yd} = 435\,\text{N/mm}^2" />. 
                     Seine elastische Grenzdehnung beträgt:
                   </p>
                   <div className="p-2 bg-white rounded border border-red-200 font-mono text-center">
-                    <InlineMath math="\\varepsilon_{s,el} = \\frac{f_{yd}}{E_s} = \\frac{435}{200\\,000} \\approx 2{,}175\\,\\text{‰}" />
+                    <InlineMath math="\varepsilon_{s,el} = \frac{f_{yd}}{E_s} = \frac{435}{200\,000} \approx 2{,}175\,\text{‰}" />
                   </div>
                   <p>
-                    Verkürzt sich der Beton durch Kriechen und Schwinden um <InlineMath math="\\Delta \\varepsilon \\approx 1{,}0\\,\\text{‰}" />, 
+                    Verkürzt sich der Beton durch Kriechen und Schwinden um <InlineMath math="\Delta \varepsilon \approx 1{,}0\,\text{‰}" />, 
                     sinkt die Stahlspannung um:
                   </p>
                   <div className="p-2 bg-white rounded border border-red-200 font-mono text-center text-red-700 font-bold">
-                    <InlineMath math="\\Delta \\sigma_s = E_s \\cdot \\Delta \\varepsilon = 200\\,000 \\cdot 0{,}0010 = 200\\,\\text{N/mm}^2" />
+                    <InlineMath math="\Delta \sigma_s = E_s \cdot \Delta \varepsilon = 200\,000 \cdot 0{,}0010 = 200\,\text{N/mm}^2" />
                   </div>
                   <p className="font-semibold text-red-900">
                     Dies entspricht einem Verlust von rund 46 % (bei 1,0 ‰) bis über 80 % (bei 1,8 ‰) der zulässigen Spannung. 
@@ -403,17 +403,17 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 </div>
                 <div className="text-xs text-emerald-950 space-y-2 leading-relaxed">
                   <p>
-                    Spannstahl Y1860 (z. B. 7-drähtige Spannstahllitzen) besitzt eine Zugfestigkeit von <InlineMath math="f_{pk} = 1860\\,\\text{N/mm}^2" />. 
-                    Die zulässige Anfangsspannung beträgt nach EC2 <InlineMath math="\\sigma_{pm0} = \\min(0{,}75 \\cdot f_{pk};\\, 0{,}85 \\cdot f_{p0,1k}) = 1360\\,\\text{N/mm}^2" />:
+                    Spannstahl Y1860 (z. B. 7-drähtige Spannstahllitzen) besitzt eine Zugfestigkeit von <InlineMath math="f_{pk} = 1860\,\text{N/mm}^2" />. 
+                    Die zulässige Anfangsspannung beträgt nach EC2 <InlineMath math="\sigma_{pm0} = \min(0{,}75 \cdot f_{pk};\, 0{,}85 \cdot f_{p0,1k}) = 1360\,\text{N/mm}^2" />:
                   </p>
                   <div className="p-2 bg-white rounded border border-emerald-200 font-mono text-center">
-                    <InlineMath math="\\varepsilon_{p0} = \\frac{\\sigma_{pm0}}{E_p} = \\frac{1360}{195\\,000} \\approx 6{,}97\\,\\text{‰}" />
+                    <InlineMath math="\varepsilon_{p0} = \frac{\sigma_{pm0}}{E_p} = \frac{1360}{195\,000} \approx 6{,}97\,\text{‰}" />
                   </div>
                   <p>
-                    Bei typischer Betonverkürzung von <InlineMath math="1{,}0\\,\\text{‰}" /> beträgt der Spannungsverlust:
+                    Bei typischer Betonverkürzung von <InlineMath math="1{,}0\,\text{‰}" /> beträgt der Spannungsverlust:
                   </p>
                   <div className="p-2 bg-white rounded border border-emerald-200 font-mono text-center text-emerald-800 font-bold">
-                    <InlineMath math="\\Delta \\sigma_p = 195\\,000 \\cdot 0{,}0010 = 195\\,\\text{N/mm}^2 \\quad (\\approx 14{,}3\\,\\%\\text{ Verlust})" />
+                    <InlineMath math="\Delta \sigma_p = 195\,000 \cdot 0{,}0010 = 195\,\text{N/mm}^2 \quad (\approx 14{,}3\,\%\text{ Verlust})" />
                   </div>
                   <p className="font-semibold text-emerald-900">
                     Über 80–85 % der eingeprägten Vorspannkraft bleiben dauerhaft wirksam. 
@@ -430,13 +430,13 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   <Activity size={15} /> Interaktive Simulation: Einfluss der Betonstauchung
                 </span>
                 <span className="text-xs font-mono font-bold text-text-main">
-                  Verkürzung <InlineMath math="\\Delta \\varepsilon_c" />: <strong className="text-shiraz">{concreteStauchung.toFixed(2)} ‰</strong>
+                  Verkürzung <InlineMath math="\Delta \varepsilon_c" />: <strong className="text-shiraz">{concreteStauchung.toFixed(2)} ‰</strong>
                 </span>
               </div>
 
               <div>
                 <label className="block text-xs text-text-main/70 mb-1 flex justify-between font-semibold">
-                  <span>Gesamte zeitabhängige Betonverkürzung (Kriechen <InlineMath math="\\varepsilon_{cc}" /> + Schwinden <InlineMath math="\\varepsilon_{cs}" />):</span>
+                  <span>Gesamte zeitabhängige Betonverkürzung (Kriechen <InlineMath math="\varepsilon_{cc}" /> + Schwinden <InlineMath math="\varepsilon_{cs}" />):</span>
                   <span className="font-mono text-shiraz font-bold">{concreteStauchung.toFixed(2)} ‰</span>
                 </label>
                 <input
@@ -496,7 +496,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-xs text-text-main/80">
                 <span className="font-bold text-text-main block">Detaillierte Beiwerte nach Eurocode 2:</span>
-                Die exakten Zeitfunktionen für Relaxation, Kriechzahl <InlineMath math="\\varphi(t,t_0)" /> und Endschwindmaß finden Sie im Reiter <strong>"Baustoffkennwerte"</strong>.
+                Die exakten Zeitfunktionen für Relaxation, Kriechzahl <InlineMath math="\varphi(t,t_0)" /> und Endschwindmaß finden Sie im Reiter <strong>"Baustoffkennwerte"</strong>.
               </div>
               <div className="flex gap-2">
                 {onNavigateTab && (
@@ -685,7 +685,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20">
                   <span className="font-bold text-slate-900 block">3. Ideeller Querschnitt <InlineMath math="A_i" /></span>
-                  <span className="text-slate-600 text-[11px]">Gilt nach dem Verpressen für spätere Einwirkungen (<InlineMath math="A_i = A_c + (\\alpha-1)A_p" />).</span>
+                  <span className="text-slate-600 text-[11px]">Gilt nach dem Verpressen für spätere Einwirkungen (<InlineMath math="A_i = A_c + (\alpha-1)A_p" />).</span>
                 </div>
               </div>
             </div>
@@ -740,7 +740,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   <p>
                     Ein im Bauteil parabelförmig gekrümmt geführtes Spannglied übt unter Längszug eine kontinuierliche 
                     Radialpressung gegen den umgebenden Beton aus. Diese Umlenkkraft wirkt der Schwerkraft entgegen 
-                    und erzeugt eine nach oben gerichtete Streckenlast <InlineMath math="u = \\frac{8 \\cdot P \\cdot f}{L^2}" />.
+                    und erzeugt eine nach oben gerichtete Streckenlast <InlineMath math="u = \frac{8 \cdot P \cdot f}{L^2}" />.
                   </p>
                   <p>
                     Nach der von T. Y. Lin formulierten Load-Balancing-Methode kann die Vorspannkraft <InlineMath math="P" /> so 
@@ -763,14 +763,14 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   ergibt sich die nach oben gerichtete Streckenlast <InlineMath math="u" /> aus der Seiltheorie zu:
                 </p>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/25 text-center font-mono">
-                  <BlockMath math="u = \\frac{8 \\cdot P \\cdot f}{L^2}" />
+                  <BlockMath math="u = \frac{8 \cdot P \cdot f}{L^2}" />
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed">
                   Für einen vollständigen Lastausgleich des Eigengewichts (<InlineMath math="u = g" />) 
                   berechnet sich die erforderliche Vorspannkraft zu:
                 </p>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/25 text-center font-mono text-shiraz font-bold">
-                  <BlockMath math="P_{bal} = \\frac{g \\cdot L^2}{8 \\cdot f}" />
+                  <BlockMath math="P_{bal} = \frac{g \cdot L^2}{8 \cdot f}" />
                 </div>
               </div>
 
@@ -944,7 +944,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </p>
                   <p>
                     Das aus der Vorspannung resultierende Gesamtmoment setzt sich aus zwei Komponenten zusammen:
-                    dem isostatischen <strong>Primärmoment</strong> (<InlineMath math="M_{P,1} = -P \\cdot e_p" />) und 
+                    dem isostatischen <strong>Primärmoment</strong> (<InlineMath math="M_{P,1} = -P \cdot e_p" />) und 
                     dem hyperstatischen <strong>Sekundärmoment</strong> (<InlineMath math="M_{P,2}" />), das 
                     zwischen den Stützenachsen streng linear verläuft.
                   </p>
@@ -966,7 +966,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     <strong>1. Isostatisches Primärmoment (<InlineMath math="M_{P,1}" />):</strong><br />
                     Entsteht unmittelbar aus der lokalen Exzentrizität des Spannglieds bezüglich des Querschnittsschwerpunkts:
                     <span className="font-mono block text-center py-1 text-slate-800">
-                      <InlineMath math="M_{P,1} = -P \\cdot e_p" />
+                      <InlineMath math="M_{P,1} = -P \cdot e_p" />
                     </span>
                   </p>
                   <p>
@@ -986,7 +986,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     die Vorspannung hervorgerufenen Verformungen an allen Zwischenauflagern identisch null sind.
                   </p>
                   <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-200 text-emerald-900 font-mono text-center font-bold">
-                    <InlineMath math="M_{P,2} = 0 \\iff M_P \\equiv M_{P,1}" />
+                    <InlineMath math="M_{P,2} = 0 \iff M_P \equiv M_{P,1}" />
                   </div>
                   <p>
                     Bei konkordanter Spanngliedführung entstehen keine Zwangskräfte an den Auflagern. 
@@ -1048,7 +1048,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   <p className="text-slate-600 text-[11px] leading-relaxed">
                     Im Massivbau ist Druckspannung <strong>negativ (-)</strong> und Zugspannung <strong>positiv (+)</strong>. 
                     Ein im unteren Querschnittsbereich liegendes Spannglied (<InlineMath math="e_p > 0" />) erzeugt an der Unterseite Druck: 
-                    <InlineMath math="\\sigma = -P/A - (P \\cdot e_p)/W" />.
+                    <InlineMath math="\sigma = -P/A - (P \cdot e_p)/W" />.
                   </p>
                 </div>
 
@@ -1059,7 +1059,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <p className="text-slate-600 text-[11px] leading-relaxed">
                     Es ist stets zwischen dem Zustand <InlineMath math="t=0" /> (unmittelbar nach Verankern, Reibung und Keilschlupf, <InlineMath math="P_0" />) 
-                    und dem Zustand <InlineMath math="t=\\infty" /> (nach Abzug aller Kriech-, Schwind- und Relaxationsverluste, <InlineMath math="P_\\infty \\approx 0{,}80\\dots 0{,}85 P_0" />) zu unterscheiden.
+                    und dem Zustand <InlineMath math="t=\infty" /> (nach Abzug aller Kriech-, Schwind- und Relaxationsverluste, <InlineMath math="P_\infty \approx 0{,}80\dots 0{,}85 P_0" />) zu unterscheiden.
                   </p>
                 </div>
 
@@ -1070,7 +1070,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <p className="text-slate-600 text-[11px] leading-relaxed">
                     Zur Vermeidung von Spannungsrisskorrosion fordert DIN EN 1992-1-1, dass das Spannglied 
-                    unter quasi-ständiger Einwirkungskombination mit einer Mindestüberdeckung von <InlineMath math="25\\,\\text{mm}" /> in der Betondruckzone liegt.
+                    unter quasi-ständiger Einwirkungskombination mit einer Mindestüberdeckung von <InlineMath math="25\,\text{mm}" /> in der Betondruckzone liegt.
                   </p>
                 </div>
 
@@ -1080,8 +1080,8 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     Günstige Querkraftwirkung der Vorspannung
                   </div>
                   <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Geneigte Spannglieder erzeugen eine vertikale Kraftkomponente <InlineMath math="V_p = P \\cdot \\sin \\alpha" />, 
-                    die direkt querkraftentlastend wirkt. Zusätzlich erhöht die Längsdruckspannung <InlineMath math="\\sigma_{cp}" /> die Betonschubtragfähigkeit <InlineMath math="V_{Rd,c}" />.
+                    Geneigte Spannglieder erzeugen eine vertikale Kraftkomponente <InlineMath math="V_p = P \cdot \sin \alpha" />, 
+                    die direkt querkraftentlastend wirkt. Zusätzlich erhöht die Längsdruckspannung <InlineMath math="\sigma_{cp}" /> die Betonschubtragfähigkeit <InlineMath math="V_{Rd,c}" />.
                   </p>
                 </div>
 
@@ -1207,7 +1207,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    A) <InlineMath math="\\sigma_{c,QP}" /> in Spanngliedhöhe (unter quasi-ständiger Einwirkung)
+                    A) <InlineMath math="\sigma_{c,QP}" /> in Spanngliedhöhe (unter quasi-ständiger Einwirkung)
                   </button>
                   <button
                     type="button"
@@ -1218,7 +1218,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    B) <InlineMath math="\\sigma_{c,p0}" /> am äußersten Querschnittsrand
+                    B) <InlineMath math="\sigma_{c,p0}" /> am äußersten Querschnittsrand
                   </button>
                   <button
                     type="button"
@@ -1240,12 +1240,12 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    D) <InlineMath math="\\sigma_{pm0}" /> (zulässige Vorspannung zum Spannzeitpunkt)
+                    D) <InlineMath math="\sigma_{pm0}" /> (zulässige Vorspannung zum Spannzeitpunkt)
                   </button>
                 </div>
                 {quizAnswers.q3 === 1 && (
                   <p className="text-[11px] text-emerald-700 font-medium">
-                    ✓ Richtig: In Gl. (5.46) geht exakt die Betondruckspannung <InlineMath math="\\sigma_{c,QP}" /> in Höhe des Spanngliedschwerpunkts unter der quasi-ständigen Einwirkungskombination ein.
+                    ✓ Richtig: In Gl. (5.46) geht exakt die Betondruckspannung <InlineMath math="\sigma_{c,QP}" /> in Höhe des Spanngliedschwerpunkts unter der quasi-ständigen Einwirkungskombination ein.
                   </p>
                 )}
                 {quizAnswers.q3 && quizAnswers.q3 !== 1 && (
@@ -1308,7 +1308,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 </div>
                 {quizAnswers.q4 === 1 && (
                   <p className="text-[11px] text-emerald-700 font-medium">
-                    ✓ Richtig: Der Nenner <InlineMath math="1 + \\frac{E_p}{E_{cm}}\\frac{A_p}{A_c}(1 + \\frac{A_c}{I_c}z_{cp}^2)[1 + 0{,}8\\varphi]" /> bildet die elastisch-viskose Rückkopplung zwischen Stahl und Beton exakt ab.
+                    ✓ Richtig: Der Nenner <InlineMath math="1 + \frac{E_p}{E_{cm}}\frac{A_p}{A_c}(1 + \frac{A_c}{I_c}z_{cp}^2)[1 + 0{,}8\varphi]" /> bildet die elastisch-viskose Rückkopplung zwischen Stahl und Beton exakt ab.
                   </p>
                 )}
                 {quizAnswers.q4 && quizAnswers.q4 !== 1 && (
@@ -1333,7 +1333,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    A) <InlineMath math="|\\sigma_c| > 0{,}45 \\cdot f_{ck}(t_0)" />
+                    A) <InlineMath math="|\sigma_c| > 0{,}45 \cdot f_{ck}(t_0)" />
                   </button>
                   <button
                     type="button"
@@ -1344,7 +1344,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    B) <InlineMath math="|\\sigma_c| > 0{,}60 \\cdot f_{ck}" />
+                    B) <InlineMath math="|\sigma_c| > 0{,}60 \cdot f_{ck}" />
                   </button>
                   <button
                     type="button"
@@ -1355,7 +1355,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    C) <InlineMath math="|\\sigma_c| > 0{,}85 \\cdot f_{cd}" />
+                    C) <InlineMath math="|\sigma_c| > 0{,}85 \cdot f_{cd}" />
                   </button>
                   <button
                     type="button"
@@ -1366,12 +1366,12 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    D) <InlineMath math="|\\sigma_c| > 1{,}00 \\cdot f_{ctm}" />
+                    D) <InlineMath math="|\sigma_c| > 1{,}00 \cdot f_{ctm}" />
                   </button>
                 </div>
                 {quizAnswers.q5 === 1 && (
                   <p className="text-[11px] text-emerald-700 font-medium">
-                    ✓ Richtig: Nach EC2 3.1.4(4) muss bei Druckspannungen über <InlineMath math="0{,}45 f_{ck}(t_0)" /> das nichtlineare Kriechen mit dem Vergrößerungsbeiwert <InlineMath math="\\exp(1{,}5(k_\\sigma - 0{,}45))" /> berücksichtigt werden.
+                    ✓ Richtig: Nach EC2 3.1.4(4) muss bei Druckspannungen über <InlineMath math="0{,}45 f_{ck}(t_0)" /> das nichtlineare Kriechen mit dem Vergrößerungsbeiwert <InlineMath math="\exp(1{,}5(k_\sigma - 0{,}45))" /> berücksichtigt werden.
                   </p>
                 )}
                 {quizAnswers.q5 && quizAnswers.q5 !== 1 && (
@@ -1459,7 +1459,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                         : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
                     }`}
                   >
-                    A) Die Reibung zwischen Spannglied und Hüllrohr (<InlineMath math="l_{set} = \\sqrt{w \\cdot E_p \\cdot A_p / p}" />)
+                    A) Die Reibung zwischen Spannglied und Hüllrohr (<InlineMath math="l_{set} = \sqrt{w \cdot E_p \cdot A_p / p}" />)
                   </button>
                   <button
                     type="button"

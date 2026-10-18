@@ -362,7 +362,7 @@ export default function BeiwerteKatalog() {
             Was zeichnet Schätzwerte (Vordimensionierung) aus?
           </div>
           <p className="text-amber-950/80 leading-relaxed">
-            In der Entwurfsphase liegen exakte Parameter (Betonfeuchte, Betonalter beim Spannen <InlineMath math="t_0" />, wirksame Bauteildicke <InlineMath math="h_0" />, Lieferant des Spannstahls) noch nicht vor. Ingenieure verwenden hier <strong>robuste Schätzgrößen</strong> (z.B. Endkriechzahl <InlineMath math="\\varphi \\approx 2.0" />, Gesamtschwindmaß <InlineMath math="\\varepsilon_{cs} \\approx -0.35\\,\\text{mm/m}" />, Langzeitverlust ca. 15–20 % von <InlineMath math="P_0" />), um die Querschnittsabmessungen und Spanngliedanzahl schnell festzulegen.
+            In der Entwurfsphase liegen exakte Parameter (Betonfeuchte, Betonalter beim Spannen <InlineMath math="t_0" />, wirksame Bauteildicke <InlineMath math="h_0" />, Lieferant des Spannstahls) noch nicht vor. Ingenieure verwenden hier <strong>robuste Schätzgrößen</strong> (z.B. Endkriechzahl <InlineMath math="\varphi \approx 2.0" />, Gesamtschwindmaß <InlineMath math="\varepsilon_{cs} \approx -0.35\,\text{mm/m}" />, Langzeitverlust ca. 15–20 % von <InlineMath math="P_0" />), um die Querschnittsabmessungen und Spanngliedanzahl schnell festzulegen.
           </p>
         </div>
         <div className="p-4 rounded-xl bg-blue-50/80 border border-blue-200/80 space-y-2">
@@ -371,7 +371,7 @@ export default function BeiwerteKatalog() {
             Was verlangt der normative Rechenwert (Ausführungsstatik)?
           </div>
           <p className="text-blue-950/80 leading-relaxed">
-            Für die prüffähige Statik nach <strong>Eurocode 2 (DIN EN 1992-1-1)</strong> müssen die Beiwerte funktional aus den exakten Randbedingungen ermittelt werden: Feuchtebeiwert <InlineMath math="\\varphi_{RH}" />, Festigkeitsbeiwert <InlineMath math="\\beta(f_{cm})" />, Reifeentwicklung <InlineMath math="\\beta(t_0)" />, Zeitbeiwert <InlineMath math="\\beta_c(t, t_0)" /> sowie die gekoppelte Verlustgleichung (5.46). Sie bilden die juristisch verbindliche Nachweisgrundlage.
+            Für die prüffähige Statik nach <strong>Eurocode 2 (DIN EN 1992-1-1)</strong> müssen die Beiwerte funktional aus den exakten Randbedingungen ermittelt werden: Feuchtebeiwert <InlineMath math="\varphi_{RH}" />, Festigkeitsbeiwert <InlineMath math="\beta(f_{cm})" />, Reifeentwicklung <InlineMath math="\beta(t_0)" />, Zeitbeiwert <InlineMath math="\beta_c(t, t_0)" /> sowie die gekoppelte Verlustgleichung (5.46). Sie bilden die juristisch verbindliche Nachweisgrundlage.
           </p>
         </div>
       </div>
@@ -617,7 +617,7 @@ export default function BeiwerteKatalog() {
           Ingenieur-Fazit zur Handhabung von Schätz- und Rechenwerten im Spannbetonbau
         </div>
         <p className="leading-relaxed">
-          Schätzwerte ermöglichen im frühen Entwurf eine zielsichere Bauteildimensionierung ohne aufwändige iterative Iterationsschritte. In der Ausführungsplanung verlangt <strong>DIN EN 1992-1-1 (Eurocode 2)</strong> jedoch zwingend die Auswertung der differenzierten physikalischen Formeln. Da bei Vorspannung bis zu <strong>25 % der Vorspannkraft durch zeitabhängige Vorgänge</strong> (<InlineMath math="\\varphi" />, <InlineMath math="\\varepsilon_{cs}" />, <InlineMath math="\\Delta\\sigma_{pr}" />) verloren gehen können, entscheidet die zutreffende Erfassung dieser Beiwerte direkt über die Rissfreiheit (Dekompression) und die Gebrauchstauglichkeit des Bauwerks über 100 Jahre.
+          Schätzwerte ermöglichen im frühen Entwurf eine zielsichere Bauteildimensionierung ohne aufwändige iterative Iterationsschritte. In der Ausführungsplanung verlangt <strong>DIN EN 1992-1-1 (Eurocode 2)</strong> jedoch zwingend die Auswertung der differenzierten physikalischen Formeln. Da bei Vorspannung bis zu <strong>25 % der Vorspannkraft durch zeitabhängige Vorgänge</strong> (<InlineMath math="\varphi" />, <InlineMath math="\varepsilon_{cs}" />, <InlineMath math="\Delta\sigma_{pr}" />) verloren gehen können, entscheidet die zutreffende Erfassung dieser Beiwerte direkt über die Rissfreiheit (Dekompression) und die Gebrauchstauglichkeit des Bauwerks über 100 Jahre.
         </p>
       </div>
     </div>

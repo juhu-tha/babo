@@ -1940,7 +1940,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Schritt 2: Stoffmengen im karbonatisierten Volumen</strong>
                         <p className="mt-1 text-xxs">
-                          Betrachtet wird 1 m² Wandfläche. Das betroffene Volumen beträgt <InlineMath math="V = 1.0 \\, \\text{m}^2 \\times d_k" />.
+                          Betrachtet wird 1 m² Wandfläche. Das betroffene Volumen beträgt <InlineMath math="V = 1.0 \, \text{m}^2 \times d_k" />.
                         </p>
                         <BlockMath math={`m_{\\text{Zement}} = V \\cdot c = \\color{#A3113E}{${(carbonationDepth/1000).toFixed(4)}} \\, \\text{m}^3 \\cdot \\color{#A3113E}{${cementGehalt}} \\, \\text{kg/m}^3 = \\color{#A3113E}{${cementMassPerM2.toFixed(2)}} \\, \\text{kg}`} />
                         <BlockMath math={`m_{\\text{CaO}} = m_{\\text{Zement}} \\cdot \\text{Anteil} = \\color{#A3113E}{${cementMassPerM2.toFixed(2)}} \\cdot \\color{#A3113E}{${(caoAnteil/100).toFixed(2)}} = \\color{#A3113E}{${caoMassPerM2.toFixed(2)}} \\, \\text{kg}`} />
@@ -1950,7 +1950,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Schritt 3: CO2-Absorption (Molares Verhältnis)</strong>
                         <p className="mt-1 text-xxs">
-                          Die chemische Umwandlung lautet <InlineMath math="CaO + CO_2 \\rightarrow CaCO_3" />. Das Verhältnis der Molmassen beträgt <InlineMath math="44,01 / 56,08 \\approx 0,784" />:
+                          Die chemische Umwandlung lautet <InlineMath math="CaO + CO_2 \rightarrow CaCO_3" />. Das Verhältnis der Molmassen beträgt <InlineMath math="44,01 / 56,08 \approx 0,784" />:
                         </p>
                         <BlockMath math={`m_{\\text{CO2}} = m_{\\text{CaO,react}} \\cdot 0,784 = \\color{#A3113E}{${reactedCaoMassPerM2.toFixed(2)}} \\cdot 0,784 = \\color{#A3113E}{${co2UptakePerM2.toFixed(2)}} \\, \\text{kg CO}_2 / \\text{m}^2`} />
                       </div>

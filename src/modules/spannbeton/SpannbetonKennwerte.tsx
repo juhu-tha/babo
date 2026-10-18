@@ -451,7 +451,7 @@ export default function SpannbetonKennwerte() {
             }`}
             onClick={() => setActiveSubTab('kriechen')}
           >
-            <Clock size={15} /> Kriechen (<InlineMath math="\\varphi" />)
+            <Clock size={15} /> Kriechen (<InlineMath math="\varphi" />)
           </button>
 
           <button
@@ -463,7 +463,7 @@ export default function SpannbetonKennwerte() {
             }`}
             onClick={() => setActiveSubTab('schwinden')}
           >
-            <Droplets size={15} /> Schwinden (<InlineMath math="\\varepsilon_{cs}" />)
+            <Droplets size={15} /> Schwinden (<InlineMath math="\varepsilon_{cs}" />)
           </button>
 
           <button
@@ -475,7 +475,7 @@ export default function SpannbetonKennwerte() {
             }`}
             onClick={() => setActiveSubTab('relaxation')}
           >
-            <Zap size={15} /> Stahlrelaxation (<InlineMath math="\\Delta\\sigma_{pr}" />)
+            <Zap size={15} /> Stahlrelaxation (<InlineMath math="\Delta\sigma_{pr}" />)
           </button>
 
           <button
@@ -574,14 +574,14 @@ export default function SpannbetonKennwerte() {
                 <p>
                   Im klassischen Stahlbetonbau werden Risse in der Zugzone einkalkuliert. Im <strong>Spannbetonbau</strong> muss der Beton 
                   enorme konzentrierte Einleitungsdrücke unter den Spannankern aufnehmen und über Jahrzehnte hinweg 
-                  kriech- und schwindarm bleiben. Die Dekompression verlangt Druckspannungen um das Spannglied (<InlineMath math="\\sigma_c \\le 0" />); die Zugfestigkeit ist dafür nicht maßgebend, wohl aber für die Rissschnittgröße und Rissvermeidung.
+                  kriech- und schwindarm bleiben. Die Dekompression verlangt Druckspannungen um das Spannglied (<InlineMath math="\sigma_c \le 0" />); die Zugfestigkeit ist dafür nicht maßgebend, wohl aber für die Rissschnittgröße und Rissvermeidung.
                 </p>
               </div>
               <div>
                 <strong className="text-text-main block mb-1">Vorspannzeitpunkt (<InlineMath math="t_0" />) &amp; Frühfestigkeit:</strong>
                 <p>
                   Die Spannkraft darf erst eingeleitet werden, wenn der Beton eine ausreichende Druckfestigkeit aufweist 
-                  (typischerweise <InlineMath math="f_{ck}(t) \\ge 0.70 \\cdot f_{ck}" />). Ein zu frühes Spannen führt zu 
+                  (typischerweise <InlineMath math="f_{ck}(t) \ge 0.70 \cdot f_{ck}" />). Ein zu frühes Spannen führt zu 
                   übermäßigen Kriechverlusten, Gefügezerrüttung und Verankerungsversagen.
                 </p>
               </div>
@@ -865,7 +865,7 @@ export default function SpannbetonKennwerte() {
                     <strong className="font-mono text-slate-900">{matMaturity.sigma_c_zul} N/mm²</strong>
                   </div>
                   <div className="text-[10px] text-slate-600">
-                    <InlineMath math="\\sigma_{c,zul} = 0.60 \\cdot f_{ck}(t)" /> (EC2 5.10.2.2)
+                    <InlineMath math="\sigma_{c,zul} = 0.60 \cdot f_{ck}(t)" /> (EC2 5.10.2.2)
                   </div>
                   <div className="flex justify-between pt-0.5">
                     <span>Äquivalentes Alter t_eff:</span>
@@ -881,7 +881,7 @@ export default function SpannbetonKennwerte() {
                 <div>
                   <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
                     <Activity className="text-shiraz h-4 w-4" />
-                    Spannungs-Dehnungs-Kennlinie (<InlineMath math="\\sigma_c - \\varepsilon_c" />) für {matGrade} bei t = {matAgeDays} d
+                    Spannungs-Dehnungs-Kennlinie (<InlineMath math="\sigma_c - \varepsilon_c" />) für {matGrade} bei t = {matAgeDays} d
                   </h5>
                   <p className="text-[11px] text-text-main/70">
                     Vergleich der realen Arbeitslinie nach DIN EN 1992-1-1 Gl. (3.14) mit dem Parabel-Rechteck-Diagramm (GZT)
@@ -1046,8 +1046,8 @@ export default function SpannbetonKennwerte() {
               <p className="text-xs text-text-main/70">
                 <strong>Didaktischer Hinweis:</strong> Achten Sie auf den Unterschied zwischen Normalbeton (C30/37 bis C50/60) 
                 und Hochleistungsbeton (C70/85 und C90/105): Bei hochfestem Beton steigt der Scheitelwert drastisch an, 
-                der abfallende Ast wird jedoch wesentlich steiler und die Bruchstauchung <InlineMath math="\\varepsilon_{cu1}" /> 
-                sinkt von 3,5 ‰ auf 2,8 ‰, <InlineMath math="\\varepsilon_{cu2}" /> (Parabel-Rechteck) von 3,5 ‰ auf 2,6 ‰ (spröderes Bruchverhalten!).
+                der abfallende Ast wird jedoch wesentlich steiler und die Bruchstauchung <InlineMath math="\varepsilon_{cu1}" /> 
+                sinkt von 3,5 ‰ auf 2,8 ‰, <InlineMath math="\varepsilon_{cu2}" /> (Parabel-Rechteck) von 3,5 ‰ auf 2,6 ‰ (spröderes Bruchverhalten!).
               </p>
             </div>
 
@@ -1144,7 +1144,7 @@ export default function SpannbetonKennwerte() {
                   wieder zu entspannen. Das äquivalente Alter wird nach der <strong>Arrhenius-Gleichung</strong> (EC2 Gl. B.10) berechnet:
                 </p>
                 <div className="bg-white p-2 rounded-lg border border-home-grau/20 text-center font-mono text-[11px]">
-                  <InlineMath math="t_T = \\sum_{i=1}^n \\Delta t_i \\cdot \\exp\\left[ 4000 \\cdot \\left(\\frac{1}{293} - \\frac{1}{273 + T(\\Delta t_i)}\\right) \\right]" />
+                  <InlineMath math="t_T = \sum_{i=1}^n \Delta t_i \cdot \exp\left[ 4000 \cdot \left(\frac{1}{293} - \frac{1}{273 + T(\Delta t_i)}\right) \right]" />
                 </div>
                 <p className="text-[11px] text-text-main/70">
                   Bei 60 °C läuft die Hydratation etwa 5-mal schneller ab als bei 20 °C Normtemperatur (nach Gl. B.10).
@@ -1161,10 +1161,10 @@ export default function SpannbetonKennwerte() {
                   Der Elastizitätsmodul hängt stark vom Gesteinstyp der Gesteinskörnung ab (EC2 Abs. 3.1.3):
                 </p>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                  <li><strong>Basalt / Diabas:</strong> <InlineMath math="\\alpha_E = 1.20" /> (+20 % E-Modul, extrem steif, minimale Durchbiegung).</li>
-                  <li><strong>Quarzit (Normreferenz):</strong> <InlineMath math="\\alpha_E = 1.00" />.</li>
-                  <li><strong>Kalkstein:</strong> <InlineMath math="\\alpha_E = 0.90" /> (-10 % E-Modul).</li>
-                  <li><strong>Sandstein:</strong> <InlineMath math="\\alpha_E = 0.70" /> (-30 % E-Modul, führt zu massiv erhöhter elastischer Stauchung und Kriechverlusten!).</li>
+                  <li><strong>Basalt / Diabas:</strong> <InlineMath math="\alpha_E = 1.20" /> (+20 % E-Modul, extrem steif, minimale Durchbiegung).</li>
+                  <li><strong>Quarzit (Normreferenz):</strong> <InlineMath math="\alpha_E = 1.00" />.</li>
+                  <li><strong>Kalkstein:</strong> <InlineMath math="\alpha_E = 0.90" /> (-10 % E-Modul).</li>
+                  <li><strong>Sandstein:</strong> <InlineMath math="\alpha_E = 0.70" /> (-30 % E-Modul, führt zu massiv erhöhter elastischer Stauchung und Kriechverlusten!).</li>
                 </ul>
               </div>
 
@@ -1179,7 +1179,7 @@ export default function SpannbetonKennwerte() {
                   der die lokale Druckfestigkeit des Betons gegenüber dem einachsigen Zylinderwert dramatisch steigert (EC2 Gl. 6.63):
                 </p>
                 <div className="bg-white p-2 rounded-lg border border-home-grau/20 text-center font-mono text-[11px]">
-                  <BlockMath math="F_{Rdu} = A_{c0} \\cdot f_{cd} \\cdot \\sqrt{\\frac{A_{c1}}{A_{c0}}} \\le 3.0 \\cdot f_{cd} \\cdot A_{c0}" />
+                  <BlockMath math="F_{Rdu} = A_{c0} \cdot f_{cd} \cdot \sqrt{\frac{A_{c1}}{A_{c0}}} \le 3.0 \cdot f_{cd} \cdot A_{c0}" />
                 </div>
                 <p className="text-[11px] text-text-main/70">
                   Trotzdem müssen Spaltzug- und Berstzugkräfte im dahinterliegenden ungestörten Bereich 
@@ -1217,7 +1217,7 @@ export default function SpannbetonKennwerte() {
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-2.5 font-bold">Mittlere Zylinderdruckfestigkeit</td>
                       <td className="p-2.5 font-mono text-shiraz font-bold"><InlineMath math="f_{cm}(t)" /></td>
-                      <td className="p-2.5">Steigt stark in den ersten 7 Tagen, danach asymptotisch (<InlineMath math="\\beta_{cc}(t)" />)</td>
+                      <td className="p-2.5">Steigt stark in den ersten 7 Tagen, danach asymptotisch (<InlineMath math="\beta_{cc}(t)" />)</td>
                       <td className="p-2.5 text-[11px]">Bestimmt Übertragungsdruckfestigkeit beim Spannen (<InlineMath math="t_0" />)</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
@@ -1267,7 +1267,7 @@ export default function SpannbetonKennwerte() {
                   Im nachträglichen Verbund und bei unverbundenen Spanngliedern ist der hochfeste Spannstahl extrem 
                   korrosionsgefährdet (Gefahr von <strong>Spannungsrisskorrosion / Wasserstoffversprödung</strong>). 
                   Die Systembaustoffe bilden eine mehrstufige Barriere: 
-                  <strong> 1. Einpressmörtel</strong> (chemische Passivierung mit <InlineMath math="\\text{pH} \\ge 12.5" />), 
+                  <strong> 1. Einpressmörtel</strong> (chemische Passivierung mit <InlineMath math="\text{pH} \ge 12.5" />), 
                   <strong> 2. Hüllrohr</strong> (mechanischer Schutz gegen Feuchte und Chloride), 
                   <strong> 3. Korrosionsschutzfett/Wachs</strong> (bei Monolitzen) und 
                   <strong> 4. Keilverankerungen</strong> aus einsatzgehärtetem Qualitätsstahl.
@@ -1278,8 +1278,8 @@ export default function SpannbetonKennwerte() {
                 <p>
                   Einpressmörtel muss über Entfernungen von bis zu 100 m durch enge Litzenzwischenräume gepresst werden. 
                   Er erfordert <strong>extrem hohe Fließfähigkeit</strong> bei gleichzeitig 
-                  <strong> minimalem Wassergehalt (<InlineMath math="w/z \\le 0.35 - 0.40" />)</strong>, 
-                  darf <strong>kein freies Wasser absondern (Bluten <InlineMath math="\\le 0.3\\,\\%" />)</strong> und muss durch 
+                  <strong> minimalem Wassergehalt (<InlineMath math="w/z \le 0.35 - 0.40" />)</strong>, 
+                  darf <strong>kein freies Wasser absondern (Bluten <InlineMath math="\le 0.3\,\%" />)</strong> und muss durch 
                   spezielle Quellmittel das plastische Schwinden vollständig kompensieren.
                 </p>
               </div>
@@ -1682,7 +1682,7 @@ export default function SpannbetonKennwerte() {
                   1. Spannkeile &amp; Ankerkörper
                 </h5>
                 <p className="text-xs text-text-main/80 leading-relaxed">
-                  Die Verankerung hochfester Litzen (<InlineMath math="f_{pk} = 1860\\text{ MPa}" />) stellt extreme Werkstoffanforderungen:
+                  Die Verankerung hochfester Litzen (<InlineMath math="f_{pk} = 1860\text{ MPa}" />) stellt extreme Werkstoffanforderungen:
                 </p>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
                   <li><strong>Einsatzgehärteter Sonderstahl:</strong> Z. B. 16MnCr5 mit <strong>Randschichthärte 58–62 HRC</strong> (krallt sich sicher in die Litzen) und <strong>zäh-elastischem Kern (ca. 35 HRC)</strong> gegen Sprödbruch.</li>
@@ -1701,10 +1701,10 @@ export default function SpannbetonKennwerte() {
                   Bei der <strong>Vorspannung ohne Verbund</strong> (z. B. Flachdecken im Hochbau) gleiten Monolitzen in einer PE-Hülle:
                 </p>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                  <li><strong>Spezialfett / Schutzwachs:</strong> Verseifungsfreie Kohlenwasserstofffette mit Korrosionsinhibitoren (<InlineMath math="\\ge 45\\,\\text{g/m}" />).</li>
-                  <li><strong>Temperaturbeständigkeit:</strong> Tropfpunkt <InlineMath math="\\ge 85 - 100^{\\circ}\\text{C}" />, kälteflexibel bis -20 °C, keine Verharzung.</li>
-                  <li><strong>PE-Schutzmantel:</strong> Nahtlos extrudiertes Polyethylen hoher Dichte (HDPE, Mindestwandstärke <InlineMath math="t \\ge 1{,}0\\,\\text{mm}" />).</li>
-                  <li><strong>Reibungsbeiwert:</strong> Extrem gering (<InlineMath math="\\mu \\approx 0{,}05 - 0{,}06" />).</li>
+                  <li><strong>Spezialfett / Schutzwachs:</strong> Verseifungsfreie Kohlenwasserstofffette mit Korrosionsinhibitoren (<InlineMath math="\ge 45\,\text{g/m}" />).</li>
+                  <li><strong>Temperaturbeständigkeit:</strong> Tropfpunkt <InlineMath math="\ge 85 - 100^{\circ}\text{C}" />, kälteflexibel bis -20 °C, keine Verharzung.</li>
+                  <li><strong>PE-Schutzmantel:</strong> Nahtlos extrudiertes Polyethylen hoher Dichte (HDPE, Mindestwandstärke <InlineMath math="t \ge 1{,}0\,\text{mm}" />).</li>
+                  <li><strong>Reibungsbeiwert:</strong> Extrem gering (<InlineMath math="\mu \approx 0{,}05 - 0{,}06" />).</li>
                 </ul>
               </div>
 
@@ -1733,7 +1733,7 @@ export default function SpannbetonKennwerte() {
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
                 <Clock className="text-shiraz h-5 w-5" />
-                1. Kriechen des Betons (<InlineMath math="\\varphi(t, t_0)" /> / Kriechzahl)
+                1. Kriechen des Betons (<InlineMath math="\varphi(t, t_0)" /> / Kriechzahl)
               </h4>
               <span className="text-xs font-mono font-bold bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-md">
                 Verlustanteil: ca. 8–15 % von P₀
@@ -1745,23 +1745,23 @@ export default function SpannbetonKennwerte() {
                 <p>
                   <strong>Was ist Kriechen?</strong> Unter einer anhaltenden mechanischen Dauer-Druckspannung 
                   staucht sich erhärteter Beton zeitabhängig weiter zusammen. Während die elastische Dehnung 
-                  <InlineMath math="\\varepsilon_{c,el}" /> im Moment der Lasteinleitung schlagartig auftritt, wächst die 
-                  <strong>Kriechdehnung <InlineMath math="\\varepsilon_{cc}(t)" /></strong> über Monate und Jahre kontinuierlich an, 
+                  <InlineMath math="\varepsilon_{c,el}" /> im Moment der Lasteinleitung schlagartig auftritt, wächst die 
+                  <strong>Kriechdehnung <InlineMath math="\varepsilon_{cc}(t)" /></strong> über Monate und Jahre kontinuierlich an, 
                   bis sie asymptotisch einem Endwert zustrebt.
                 </p>
                 <p>
                   Das Verhältnis der Kriechdehnung zur anfänglichen elastischen Dehnung wird als 
-                  <strong> Kriechzahl <InlineMath math="\\varphi(t, t_0)" /></strong> bezeichnet:
+                  <strong> Kriechzahl <InlineMath math="\varphi(t, t_0)" /></strong> bezeichnet:
                 </p>
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/30 text-center">
-                  <BlockMath math="\\varphi(t, t_0) = \\frac{\\varepsilon_{cc}(t, t_0)}{\\varepsilon_{c,el}(t_0)} \\quad \\Longrightarrow \\quad \\varepsilon_c(t) = \\varepsilon_{c,el} \\cdot \\left[1 + \\varphi(t, t_0)\\right]" />
+                  <BlockMath math="\varphi(t, t_0) = \frac{\varepsilon_{cc}(t, t_0)}{\varepsilon_{c,el}(t_0)} \quad \Longrightarrow \quad \varepsilon_c(t) = \varepsilon_{c,el} \cdot \left[1 + \varphi(t, t_0)\right]" />
                 </div>
                 <p>
                   <strong>Typische Kriechzahlen nach DIN EN 1992-1-1:</strong>
                 </p>
                 <ul className="list-disc pl-5 space-y-1 text-xs text-text-main/80">
-                  <li><strong>Trockener Innenraum (RH 50 %):</strong> <InlineMath math="\\varphi_\\infty \\approx 2.2 - 3.5" /></li>
-                  <li><strong>Feuchtes Außenklima (RH 80 %):</strong> <InlineMath math="\\varphi_\\infty \\approx 1.4 - 2.0" /></li>
+                  <li><strong>Trockener Innenraum (RH 50 %):</strong> <InlineMath math="\varphi_\infty \approx 2.2 - 3.5" /></li>
+                  <li><strong>Feuchtes Außenklima (RH 80 %):</strong> <InlineMath math="\varphi_\infty \approx 1.4 - 2.0" /></li>
                   <li><strong>Frühes Vorspannen (t₀ = 3 d):</strong> Kriechzahl um 30–50 % höher als bei t₀ = 28 d!</li>
                 </ul>
               </div>
@@ -1787,7 +1787,7 @@ export default function SpannbetonKennwerte() {
                   </div>
                   <div className="p-2.5 rounded-lg bg-white border border-home-grau/20">
                     <strong className="text-text-main block mb-0.5">3. Nichtlineares Kriechen bei Überlastung:</strong>
-                    Liegt die Betondruckspannung über <InlineMath math="0.45 \\cdot f_{ck}(t_0)" />, entstehen Mikrorisse im Gefüge. Es tritt unkontrolliertes, beschleunigtes Kriechen auf (Gefahr des Kriechbruchs!).
+                    Liegt die Betondruckspannung über <InlineMath math="0.45 \cdot f_{ck}(t_0)" />, entstehen Mikrorisse im Gefüge. Es tritt unkontrolliertes, beschleunigtes Kriechen auf (Gefahr des Kriechbruchs!).
                   </div>
                 </div>
               </div>
@@ -1860,19 +1860,19 @@ export default function SpannbetonKennwerte() {
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <span className="font-bold text-amber-900 flex items-center gap-1.5 text-xs">
                     <Activity className="h-3.5 w-3.5 text-amber-700" />
-                    Zusammenhang: Dimensionslose Kriechzahl <InlineMath math="\\varphi" /> &amp; Kriechdehnung <InlineMath math="\\varepsilon_{cc}" /> in Promille (‰ bzw. mm/m)
+                    Zusammenhang: Dimensionslose Kriechzahl <InlineMath math="\varphi" /> &amp; Kriechdehnung <InlineMath math="\varepsilon_{cc}" /> in Promille (‰ bzw. mm/m)
                   </span>
                   <span className="text-[10px] font-mono font-semibold bg-amber-100 text-amber-900 px-2 py-0.5 rounded">
                     1 ‰ = 1 mm/m = 10⁻³ = 1000 µm/m
                   </span>
                 </div>
                 <p className="text-[11px] text-amber-900/90 leading-relaxed">
-                  Die Kriechzahl <InlineMath math="\\varphi(\\infty, t_0)" /> ist dimensionslos und skaliert die elastische Anfangsdehnung <InlineMath math="\\varepsilon_{\\text{el}} = \\sigma_c / E_{cm}" />.
-                  Unter typischer Dauerlastspannung im Spannbeton (<InlineMath math="\\sigma_c \\approx 10 \\dots 15\\,\\text{MPa}" />, <InlineMath math="E_{cm} \\approx 33\\,000 \\dots 38\\,000\\,\\text{MPa}" />) beträgt die elastische Stauchung rund <InlineMath math="\\varepsilon_{\\text{el}} \\approx 0{,}28 \\dots 0{,}43\\,\\text{‰}" />.
+                  Die Kriechzahl <InlineMath math="\varphi(\infty, t_0)" /> ist dimensionslos und skaliert die elastische Anfangsdehnung <InlineMath math="\varepsilon_{\text{el}} = \sigma_c / E_{cm}" />.
+                  Unter typischer Dauerlastspannung im Spannbeton (<InlineMath math="\sigma_c \approx 10 \dots 15\,\text{MPa}" />, <InlineMath math="E_{cm} \approx 33\,000 \dots 38\,000\,\text{MPa}" />) beträgt die elastische Stauchung rund <InlineMath math="\varepsilon_{\text{el}} \approx 0{,}28 \dots 0{,}43\,\text{‰}" />.
                   Daraus errechnet sich die zeitabhängige Kriechdehnung in Promille:
                 </p>
                 <div className="text-center font-mono text-[11px] py-1 bg-amber-50/60 rounded border border-amber-200/60">
-                  <InlineMath math="\\varepsilon_{cc}(\\infty, t_0) = \\varepsilon_{\\text{el}} \\cdot \\varphi(\\infty, t_0) = \\frac{\\sigma_c(t_0)}{E_{cm}} \\cdot \\varphi(\\infty, t_0) \\quad [\\text{in ‰ bzw. mm/m}]" />
+                  <InlineMath math="\varepsilon_{cc}(\infty, t_0) = \varepsilon_{\text{el}} \cdot \varphi(\infty, t_0) = \frac{\sigma_c(t_0)}{E_{cm}} \cdot \varphi(\infty, t_0) \quad [\text{in ‰ bzw. mm/m}]" />
                 </div>
               </div>
 
@@ -1887,23 +1887,23 @@ export default function SpannbetonKennwerte() {
                     <li className="bg-white/60 p-2.5 rounded-lg border border-amber-200/70 space-y-0.5">
                       <div className="font-bold text-amber-950 flex items-center justify-between">
                         <span>Standard-Endkriechzahl (C30/37 bis C40/50):</span>
-                        <span className="font-mono text-amber-800"><InlineMath math="\\varphi_\\infty \\approx 2{,}0 \\dots 2{,}5" /></span>
+                        <span className="font-mono text-amber-800"><InlineMath math="\varphi_\infty \approx 2{,}0 \dots 2{,}5" /></span>
                       </div>
                       <div className="text-slate-700">
-                        • Kriechdehnung: <strong className="text-amber-900 font-mono"><InlineMath math="\\varepsilon_{cc} \\approx 0{,}60 \\dots 1{,}05\\,\\text{‰}" /></strong> (0,60 bis 1,05 mm/m)
+                        • Kriechdehnung: <strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}60 \dots 1{,}05\,\text{‰}" /></strong> (0,60 bis 1,05 mm/m)
                       </div>
                       <div className="text-[10px] text-slate-500">
-                        Gesamtstauchung (<InlineMath math="\\varepsilon_{\\text{el}} + \\varepsilon_{cc}" />): <InlineMath math="\\varepsilon_{c,\\text{tot}} \\approx 0{,}90 \\dots 1{,}45\\,\\text{‰}" />
+                        Gesamtstauchung (<InlineMath math="\varepsilon_{\text{el}} + \varepsilon_{cc}" />): <InlineMath math="\varepsilon_{c,\text{tot}} \approx 0{,}90 \dots 1{,}45\,\text{‰}" />
                       </div>
                     </li>
 
                     <li className="bg-white/60 p-2.5 rounded-lg border border-amber-200/70 space-y-0.5">
                       <div className="font-bold text-amber-950 flex items-center justify-between">
-                        <span>Massive Brücken (<InlineMath math="h_0 \\ge 500\\,\\text{mm}" />, Außenluft RH 80 %):</span>
-                        <span className="font-mono text-amber-800"><InlineMath math="\\varphi_\\infty \\approx 1{,}5 \\dots 2{,}0" /></span>
+                        <span>Massive Brücken (<InlineMath math="h_0 \ge 500\,\text{mm}" />, Außenluft RH 80 %):</span>
+                        <span className="font-mono text-amber-800"><InlineMath math="\varphi_\infty \approx 1{,}5 \dots 2{,}0" /></span>
                       </div>
                       <div className="text-slate-700">
-                        • Kriechdehnung: <strong className="text-amber-900 font-mono"><InlineMath math="\\varepsilon_{cc} \\approx 0{,}40 \\dots 0{,}80\\,\\text{‰}" /></strong> (0,40 bis 0,80 mm/m)
+                        • Kriechdehnung: <strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}40 \dots 0{,}80\,\text{‰}" /></strong> (0,40 bis 0,80 mm/m)
                       </div>
                       <div className="text-[10px] text-slate-500">
                         Durch hohe wirksame Dicke und hohe Feuchte kriecht der Querschnitt deutlich langsamer und geringer.
@@ -1912,11 +1912,11 @@ export default function SpannbetonKennwerte() {
 
                     <li className="bg-white/60 p-2.5 rounded-lg border border-amber-200/70 space-y-0.5">
                       <div className="font-bold text-amber-950 flex items-center justify-between">
-                        <span>Schlanke Hochbaudecken (<InlineMath math="h_0 \\le 150\\,\\text{mm}" />, Innenluft RH 50 %):</span>
-                        <span className="font-mono text-amber-800"><InlineMath math="\\varphi_\\infty \\approx 2{,}8 \\dots 3{,}5" /></span>
+                        <span>Schlanke Hochbaudecken (<InlineMath math="h_0 \le 150\,\text{mm}" />, Innenluft RH 50 %):</span>
+                        <span className="font-mono text-amber-800"><InlineMath math="\varphi_\infty \approx 2{,}8 \dots 3{,}5" /></span>
                       </div>
                       <div className="text-slate-700">
-                        • Kriechdehnung: <strong className="text-amber-900 font-mono"><InlineMath math="\\varepsilon_{cc} \\approx 0{,}80 \\dots 1{,}45\\,\\text{‰}" /></strong> (0,80 bis 1,45 mm/m)
+                        • Kriechdehnung: <strong className="text-amber-900 font-mono"><InlineMath math="\varepsilon_{cc} \approx 0{,}80 \dots 1{,}45\,\text{‰}" /></strong> (0,80 bis 1,45 mm/m)
                       </div>
                       <div className="text-[10px] text-slate-500">
                         Trockene Innenraumluft und dünne Querschnitte begünstigen starkes Austrocknungskriechen.
@@ -1937,7 +1937,7 @@ export default function SpannbetonKennwerte() {
                   </div>
                   <div className="bg-white/90 p-2.5 rounded border border-blue-200 font-mono text-[11px] text-blue-950 overflow-x-auto text-center space-y-1">
                     <div>
-                      <InlineMath math="\\varphi(\\infty, t_0) = \\varphi_{RH} \\cdot \\beta(f_{cm}) \\cdot \\beta(t_0)" />
+                      <InlineMath math="\varphi(\infty, t_0) = \varphi_{RH} \cdot \beta(f_{cm}) \cdot \beta(t_0)" />
                     </div>
                     <div className="text-[10px] text-slate-500 font-sans">
                       Berechnung nach EC2 Gl. (B.1) / Anhang B
@@ -1945,19 +1945,19 @@ export default function SpannbetonKennwerte() {
                   </div>
                   <ul className="list-disc pl-5 space-y-1.5 text-[11px] text-blue-950/90">
                     <li>
-                      <InlineMath math="\\varphi_{RH} = 1 + \\frac{1 - RH/100}{0{,}1 \\cdot \\sqrt[3]{h_0}}" /> (Feuchtebeiwert: 1,1 Außenluft bis 2,2 Innenraum).
+                      <InlineMath math="\varphi_{RH} = 1 + \frac{1 - RH/100}{0{,}1 \cdot \sqrt[3]{h_0}}" /> (Feuchtebeiwert: 1,1 Außenluft bis 2,2 Innenraum).
                     </li>
                     <li>
-                      <InlineMath math="\\beta(f_{cm}) = \\frac{16{,}8}{\\sqrt{f_{cm}}}" /> (Festigkeitsbeiwert: C25/30 ca. 3,0; C45/55 ca. 2,3; C60/75 ca. 2,0).
+                      <InlineMath math="\beta(f_{cm}) = \frac{16{,}8}{\sqrt{f_{cm}}}" /> (Festigkeitsbeiwert: C25/30 ca. 3,0; C45/55 ca. 2,3; C60/75 ca. 2,0).
                     </li>
                     <li>
-                      <InlineMath math="\\beta(t_0) = \\frac{1}{0{,}1 + t_0^{0{,}2}}" /> (Spannalter: <InlineMath math="t_0 = 3\\,\\text{d}" /> → 0,85; <InlineMath math="t_0 = 7\\,\\text{d}" /> → 0,68; <InlineMath math="t_0 = 28\\,\\text{d}" /> → 0,48).
+                      <InlineMath math="\beta(t_0) = \frac{1}{0{,}1 + t_0^{0{,}2}}" /> (Spannalter: <InlineMath math="t_0 = 3\,\text{d}" /> → 0,85; <InlineMath math="t_0 = 7\,\text{d}" /> → 0,68; <InlineMath math="t_0 = 28\,\text{d}" /> → 0,48).
                     </li>
                     <li>
-                      <strong>Kriechmaß (spezifische Dehnung):</strong> <InlineMath math="C(\\infty, t_0) = \\frac{\\varphi(\\infty, t_0)}{E_{cm}} \\approx 0{,}05 \\dots 0{,}10\\,\\frac{\\text{‰}}{\\text{MPa}}" /> (bzw. <InlineMath math="50 \\dots 100 \\cdot 10^{-6}\\text{ MPa}^{-1}" />).
+                      <strong>Kriechmaß (spezifische Dehnung):</strong> <InlineMath math="C(\infty, t_0) = \frac{\varphi(\infty, t_0)}{E_{cm}} \approx 0{,}05 \dots 0{,}10\,\frac{\text{‰}}{\text{MPa}}" /> (bzw. <InlineMath math="50 \dots 100 \cdot 10^{-6}\text{ MPa}^{-1}" />).
                     </li>
                     <li>
-                      <strong>Gültigkeitsgrenze:</strong> Nur linear bis <InlineMath math="\\sigma_c \\le 0{,}45 \\cdot f_{ck}(t_0)" />; bei <InlineMath math="\\sigma_c > 0{,}45 \\cdot f_{ck}(t_0)" /> muss nichtlineares Kriechen angesetzt werden (<InlineMath math="\\varphi_k = \\varphi \\cdot e^{1{,}5(k_\\sigma - 0{,}45)}" />).
+                      <strong>Gültigkeitsgrenze:</strong> Nur linear bis <InlineMath math="\sigma_c \le 0{,}45 \cdot f_{ck}(t_0)" />; bei <InlineMath math="\sigma_c > 0{,}45 \cdot f_{ck}(t_0)" /> muss nichtlineares Kriechen angesetzt werden (<InlineMath math="\varphi_k = \varphi \cdot e^{1{,}5(k_\sigma - 0{,}45)}" />).
                     </li>
                   </ul>
                 </div>
@@ -1968,15 +1968,15 @@ export default function SpannbetonKennwerte() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
               <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs">
                 <span className="font-bold text-amber-900 block mb-1">Auswirkung im Spannbeton:</span>
-                Der Träger verkürzt sich über Jahre. Der Abstand zwischen den Verankerungen schrumpft. Die Vorspannstähle entspannen sich elastisch <InlineMath math="\\rightarrow" /> <strong>massiver Spannkraftverlust</strong>!
+                Der Träger verkürzt sich über Jahre. Der Abstand zwischen den Verankerungen schrumpft. Die Vorspannstähle entspannen sich elastisch <InlineMath math="\rightarrow" /> <strong>massiver Spannkraftverlust</strong>!
               </div>
               <div className="p-3 bg-blue-50 rounded-xl border border-blue-200 text-xs">
                 <span className="font-bold text-blue-900 block mb-1">Verformungsverdopplung:</span>
-                Kriechen vergrößert Biegungen und Überhöhungen: <InlineMath math="\\kappa_\\infty = \\kappa_0 \\cdot (1 + \\varphi)" />. Brückenfahrbahnen senken sich im Laufe von Jahrzehnten um Zentimeter ab.
+                Kriechen vergrößert Biegungen und Überhöhungen: <InlineMath math="\kappa_\infty = \kappa_0 \cdot (1 + \varphi)" />. Brückenfahrbahnen senken sich im Laufe von Jahrzehnten um Zentimeter ab.
               </div>
               <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs">
                 <span className="font-bold text-emerald-900 block mb-1">Praxis-Vermeidung:</span>
-                Spätes Vorspannen abwarten (<InlineMath math="t_0 \\ge 7 - 14\\text{ d}" />), Begrenzung der Vorspannkraft auf <InlineMath math="\\sigma_c \\le 0.60 f_{ck}(t_0)" /> zur Verhinderung nichtlinearen Krieches.
+                Spätes Vorspannen abwarten (<InlineMath math="t_0 \ge 7 - 14\text{ d}" />), Begrenzung der Vorspannkraft auf <InlineMath math="\sigma_c \le 0.60 f_{ck}(t_0)" /> zur Verhinderung nichtlinearen Krieches.
               </div>
             </div>
           </div>
@@ -1990,7 +1990,7 @@ export default function SpannbetonKennwerte() {
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
                 <Droplets className="text-shiraz h-5 w-5" />
-                2. Schwinden des Betons (<InlineMath math="\\varepsilon_{cs}" /> / Autogen &amp; Trocknung)
+                2. Schwinden des Betons (<InlineMath math="\varepsilon_{cs}" /> / Autogen &amp; Trocknung)
               </h4>
               <span className="text-xs font-mono font-bold bg-blue-50 text-blue-900 border border-blue-200 px-2.5 py-1 rounded-md">
                 Verlustanteil: ca. 4–8 % von P₀
@@ -2002,10 +2002,10 @@ export default function SpannbetonKennwerte() {
                 <strong>Was ist Schwinden?</strong> Schwinden ist die <strong>vollkommen lastunabhängige Volumenverringerung</strong> des 
                 Betons infolge von inneren chemischen Reaktionen und Feuchtigkeitsabgabe an die ungesättigte Umwelt. Im Gegensatz 
                 zum Kriechen tritt Schwinden auch an völlig unbelasteten Bauteilen auf! Nach Eurocode 2 setzt sich das Gesamtschwindmaß 
-                <InlineMath math="\\varepsilon_{cs}" /> aus zwei physikalisch völlig unterschiedlichen Komponenten zusammen:
+                <InlineMath math="\varepsilon_{cs}" /> aus zwei physikalisch völlig unterschiedlichen Komponenten zusammen:
               </p>
               <div className="text-center my-3">
-                <BlockMath math="\\varepsilon_{cs}(t, t_s) = \\varepsilon_{ca}(t) + \\varepsilon_{cd}(t, t_s)" />
+                <BlockMath math="\varepsilon_{cs}(t, t_s) = \varepsilon_{ca}(t) + \varepsilon_{cd}(t, t_s)" />
               </div>
             </div>
 
@@ -2015,7 +2015,7 @@ export default function SpannbetonKennwerte() {
                 <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                   <h5 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                     <Activity className="h-4 w-4 text-amber-600" />
-                    A. Autogenes Schwinden (<InlineMath math="\\varepsilon_{ca}" />)
+                    A. Autogenes Schwinden (<InlineMath math="\varepsilon_{ca}" />)
                   </h5>
                   <span className="text-[10px] font-bold uppercase bg-amber-100 text-amber-800 px-2 py-0.5 rounded">Chemisch</span>
                 </div>
@@ -2027,15 +2027,15 @@ export default function SpannbetonKennwerte() {
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] space-y-1">
                   <div>Endwert nach EC2:</div>
                   <div className="text-shiraz font-bold">
-                    <InlineMath math="\\varepsilon_{ca}(\\infty) = 2.5 \\cdot (f_{ck} - 10) \\cdot 10^{-6}" />
+                    <InlineMath math="\varepsilon_{ca}(\infty) = 2.5 \cdot (f_{ck} - 10) \cdot 10^{-6}" />
                   </div>
                   <div className="text-[10px] text-slate-500 pt-1">
-                    C50/60: <InlineMath math="\\varepsilon_{ca} \\approx -0.10\\text{ mm/m}" /> | C90/105: <InlineMath math="\\varepsilon_{ca} \\approx -0.20\\text{ mm/m}" />
+                    C50/60: <InlineMath math="\varepsilon_{ca} \approx -0.10\text{ mm/m}" /> | C90/105: <InlineMath math="\varepsilon_{ca} \approx -0.20\text{ mm/m}" />
                   </div>
                 </div>
                 <p className="text-xs text-slate-600">
                   <strong>Besonderheit bei Spannbeton:</strong> Da im Spannbetonbau fast ausschließlich 
-                  hochfeste Betone mit sehr niedrigem Wasserzementwert (<InlineMath math="w/z \\le 0.35" />) verwendet werden, 
+                  hochfeste Betone mit sehr niedrigem Wasserzementwert (<InlineMath math="w/z \le 0.35" />) verwendet werden, 
                   ist das autogene Schwinden extrem ausgeprägt und läuft bereits in den ersten Tagen rasant ab!
                 </p>
               </div>
@@ -2045,19 +2045,19 @@ export default function SpannbetonKennwerte() {
                 <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                   <h5 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                     <Droplets className="h-4 w-4 text-blue-600" />
-                    B. Trocknungsschwinden (<InlineMath math="\\varepsilon_{cd}" />)
+                    B. Trocknungsschwinden (<InlineMath math="\varepsilon_{cd}" />)
                   </h5>
                   <span className="text-[10px] font-bold uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Physikalisch</span>
                 </div>
                 <p className="text-xs text-slate-700 leading-relaxed">
                   <strong>Mechanismus:</strong> Diffusionsgesteuerte Feuchtigkeitsabgabe aus dem Porennetz an die ungesättigte Umgebungsluft. 
-                  In den engen Kapillarporen (<InlineMath math="2 - 50\\text{ nm}" />) bilden sich gekrümmte Menisken. Nach der 
+                  In den engen Kapillarporen (<InlineMath math="2 - 50\text{ nm}" />) bilden sich gekrümmte Menisken. Nach der 
                   <strong> Laplace-Gleichung</strong> entsteht im Porenwasser ein extremer kapillarer Unterdruck:
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] space-y-1">
                   <div>Kapillardruck-Gleichung:</div>
                   <div className="text-blue-700 font-bold">
-                    <InlineMath math="\\Delta p = \\frac{2 \\cdot \\gamma \\cdot \\cos\\theta}{r_{kap}}" />
+                    <InlineMath math="\Delta p = \frac{2 \cdot \gamma \cdot \cos\theta}{r_{kap}}" />
                   </div>
                   <div className="text-[10px] text-slate-500 pt-1">
                     Dieser Unterdruck zieht das elastische C-S-H-Gefüge zusammen wie einen trocknenden Schwamm.
@@ -2078,15 +2078,15 @@ export default function SpannbetonKennwerte() {
                 Auswirkung auf den Spannstahl im Tragwerk (Zahlenbeispiel):
               </div>
               <p>
-                Beträgt das Gesamtschwindmaß <InlineMath math="\\varepsilon_{cs} = -0.35\\text{ mm/m} = -0.00035" /> und der 
-                Spannstahl-E-Modul <InlineMath math="E_p = 195.000\\text{ N/mm}^2" />, so verkürzt sich das Bauteil lastfrei. 
+                Beträgt das Gesamtschwindmaß <InlineMath math="\varepsilon_{cs} = -0.35\text{ mm/m} = -0.00035" /> und der 
+                Spannstahl-E-Modul <InlineMath math="E_p = 195.000\text{ N/mm}^2" />, so verkürzt sich das Bauteil lastfrei. 
                 Da das Spannglied starr im Bauteil verankert ist, wird der Stahl um genau dieses Maß zusammengestaucht:
               </p>
               <div className="font-mono bg-white p-2.5 rounded border border-amber-200 font-bold text-center">
-                <InlineMath math="\\Delta\\sigma_{p,s} = \\varepsilon_{cs} \\cdot E_p = 0.00035 \\cdot 195.000\\text{ N/mm}^2 = 68.25\\text{ N/mm}^2" />
+                <InlineMath math="\Delta\sigma_{p,s} = \varepsilon_{cs} \cdot E_p = 0.00035 \cdot 195.000\text{ N/mm}^2 = 68.25\text{ N/mm}^2" />
               </div>
               <p>
-                Bei einer typischen Anfangsspannung von <InlineMath math="\\sigma_{p0} = 1400\\text{ N/mm}^2" /> entspricht allein der 
+                Bei einer typischen Anfangsspannung von <InlineMath math="\sigma_{p0} = 1400\text{ N/mm}^2" /> entspricht allein der 
                 Schwindverlust einem dauerhaften Spannungsverlust von rund <strong>5 %</strong>.
               </p>
             </div>
@@ -2109,9 +2109,9 @@ export default function SpannbetonKennwerte() {
                     Praxis-Schätzwerte (Vordimensionierung):
                   </div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px]">
-                    <li><strong>Gesamtschwindmaß:</strong> <InlineMath math="\\varepsilon_{cs} \\approx -0{,}35 \\text{ bis } -0{,}40\\,\\text{mm/m}" /> (bzw. ‰).</li>
-                    <li><strong>Feuchter Außenbereich (RH 80 %):</strong> <InlineMath math="\\varepsilon_{cs} \\approx -0{,}25 \\text{ bis } -0{,}32\\,\\text{mm/m}" /> (‰).</li>
-                    <li><strong>Trockener Innenbereich (RH 50 %):</strong> <InlineMath math="\\varepsilon_{cs} \\approx -0{,}45 \\text{ bis } -0{,}55\\,\\text{mm/m}" /> (‰).</li>
+                    <li><strong>Gesamtschwindmaß:</strong> <InlineMath math="\varepsilon_{cs} \approx -0{,}35 \text{ bis } -0{,}40\,\text{mm/m}" /> (bzw. ‰).</li>
+                    <li><strong>Feuchter Außenbereich (RH 80 %):</strong> <InlineMath math="\varepsilon_{cs} \approx -0{,}25 \text{ bis } -0{,}32\,\text{mm/m}" /> (‰).</li>
+                    <li><strong>Trockener Innenbereich (RH 50 %):</strong> <InlineMath math="\varepsilon_{cs} \approx -0{,}45 \text{ bis } -0{,}55\,\text{mm/m}" /> (‰).</li>
                     <li><strong>Faustregel für Schwindverluste:</strong> Ca. 4 % bis 8 % der Anfangsspannkraft P₀ (entspricht ~60–100 MPa Spannungsabfall im Spannstahl).</li>
                   </ul>
                 </div>
@@ -2121,12 +2121,12 @@ export default function SpannbetonKennwerte() {
                     Normativer Rechenwert (Eurocode 2 Ausführungsstatik):
                   </div>
                   <div className="bg-white/80 p-2 rounded border border-blue-200 font-mono text-[11px] text-blue-950 overflow-x-auto text-center">
-                    <InlineMath math="\\varepsilon_{cs}(\\infty) = \\varepsilon_{cd}(\\infty) + \\varepsilon_{ca}(\\infty) = k_h \\cdot \\varepsilon_{cd,0} + 2{,}5(f_{ck}-10) \\cdot 10^{-6}" />
+                    <InlineMath math="\varepsilon_{cs}(\infty) = \varepsilon_{cd}(\infty) + \varepsilon_{ca}(\infty) = k_h \cdot \varepsilon_{cd,0} + 2{,}5(f_{ck}-10) \cdot 10^{-6}" />
                   </div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px] text-blue-950/90">
-                    <li><InlineMath math="k_h" /> (Geometriefaktor): 1,00 bei <InlineMath math="h_0 \\le 100\\,\\text{mm}" /> bis 0,70 bei massigen Querschnitten (<InlineMath math="h_0 \\ge 500\\,\\text{mm}" />).</li>
-                    <li><InlineMath math="\\varepsilon_{cd,0}" /> (Grundwert Trocknung): Zement N ~0,45 ‰, R ~0,55 ‰, S ~0,35 ‰.</li>
-                    <li><InlineMath math="\\varepsilon_{ca}" /> (Autogenes Schwinden): C30/37 ~ -0,05 ‰; C60/75 ~ -0,10 ‰ (setzt sofort ein!).</li>
+                    <li><InlineMath math="k_h" /> (Geometriefaktor): 1,00 bei <InlineMath math="h_0 \le 100\,\text{mm}" /> bis 0,70 bei massigen Querschnitten (<InlineMath math="h_0 \ge 500\,\text{mm}" />).</li>
+                    <li><InlineMath math="\varepsilon_{cd,0}" /> (Grundwert Trocknung): Zement N ~0,45 ‰, R ~0,55 ‰, S ~0,35 ‰.</li>
+                    <li><InlineMath math="\varepsilon_{ca}" /> (Autogenes Schwinden): C30/37 ~ -0,05 ‰; C60/75 ~ -0,10 ‰ (setzt sofort ein!).</li>
                   </ul>
                 </div>
               </div>
@@ -2142,7 +2142,7 @@ export default function SpannbetonKennwerte() {
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
                 <Zap className="text-shiraz h-5 w-5" />
-                3. Relaxation des Spannstahls (<InlineMath math="\\Delta\\sigma_{pr}" /> / Spannungsabfall bei starrer Dehnung)
+                3. Relaxation des Spannstahls (<InlineMath math="\Delta\sigma_{pr}" /> / Spannungsabfall bei starrer Dehnung)
               </h4>
               <span className="text-xs font-mono font-bold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-md">
                 Verlustanteil: ca. 2–5 % von P₀
@@ -2156,14 +2156,14 @@ export default function SpannbetonKennwerte() {
                   ist die Relaxation das exakte Gegenstück: der <strong>Spannungsabfall im hochfesten Stahl bei festgehaltener, konstanter Dehnung</strong>:
                 </p>
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/30 text-center">
-                  <BlockMath math="\\varepsilon_p = \\text{const.} \\quad \\Longrightarrow \\quad \\sigma_p(t) < \\sigma_{p0}" />
+                  <BlockMath math="\varepsilon_p = \text{const.} \quad \Longrightarrow \quad \sigma_p(t) < \sigma_{p0}" />
                 </div>
                 <p>
                   <strong>Mikrostruktureller Vorgang im Kristallgitter:</strong> Spannstähle werden auf bis zu 
-                  80 % ihrer Zugfestigkeit vorgespannt (<InlineMath math="\\sigma_{p0} \\approx 1400 - 1550\\text{ N/mm}^2" />). Unter 
+                  80 % ihrer Zugfestigkeit vorgespannt (<InlineMath math="\sigma_{p0} \approx 1400 - 1550\text{ N/mm}^2" />). Unter 
                   dieser immensen atomaren Spannung wandern Versetzungen (Gitterbaufehler) durch thermisch aktivierte Diffusionsprozesse 
                   (Dislokationsklettern). Ein winziger Teil der elastischen Gitterdehnung wandelt sich mikroskopisch in bleibende plastische 
-                  Verformung um <InlineMath math="\\rightarrow" /> die makroskopische Zugspannung sinkt ab!
+                  Verformung um <InlineMath math="\rightarrow" /> die makroskopische Zugspannung sinkt ab!
                 </p>
               </div>
 
@@ -2211,12 +2211,12 @@ export default function SpannbetonKennwerte() {
                 <span className="font-mono text-[11px] text-purple-700">t = Zeit in Stunden</span>
               </div>
               <div className="bg-white p-3 rounded-lg border border-purple-200 text-center font-mono text-xs overflow-x-auto">
-                <BlockMath math="\\frac{\\Delta\\sigma_{pr}}{\\sigma_{pi}} = 0.66 \\cdot \\rho_{1000} \\cdot e^{9.1 \\mu} \\cdot \\left(\\frac{t}{1000}\\right)^{0.75 \\cdot (1 - \\mu)} \\cdot 10^{-5}" />
+                <BlockMath math="\frac{\Delta\sigma_{pr}}{\sigma_{pi}} = 0.66 \cdot \rho_{1000} \cdot e^{9.1 \mu} \cdot \left(\frac{t}{1000}\right)^{0.75 \cdot (1 - \mu)} \cdot 10^{-5}" />
               </div>
               <div className="text-[11px] text-slate-600 space-y-1">
-                <p>wobei <InlineMath math="\\mu = \\sigma_{pi} / f_{pk}" /> das Ausnutzungsverhältnis der Vorspannung darstellt. Für <InlineMath math="t = \\infty" /> wird nach Eurocode normativ der 3-fache 1000h-Wert (<InlineMath math="t = 500.000\\text{ h} \\approx 57\\text{ Jahre}" />) angesetzt:</p>
+                <p>wobei <InlineMath math="\mu = \sigma_{pi} / f_{pk}" /> das Ausnutzungsverhältnis der Vorspannung darstellt. Für <InlineMath math="t = \infty" /> wird nach Eurocode normativ der 3-fache 1000h-Wert (<InlineMath math="t = 500.000\text{ h} \approx 57\text{ Jahre}" />) angesetzt:</p>
                 <div className="font-bold text-purple-950 font-mono text-center">
-                  <InlineMath math="\\Delta\\sigma_{pr,\\infty} \\approx 3.0 \\cdot \\Delta\\sigma_{pr,1000}" />
+                  <InlineMath math="\Delta\sigma_{pr,\infty} \approx 3.0 \cdot \Delta\sigma_{pr,1000}" />
                 </div>
               </div>
             </div>
@@ -2227,7 +2227,7 @@ export default function SpannbetonKennwerte() {
               <div>
                 <strong className="block text-sm">Achtung: Exponentielle Zunahme bei Wärmebehandlung (Fertigteilwerk / Brand)!</strong>
                 Die Diffusionsgeschwindigkeit im Stahl verdoppelt sich etwa alle 10–15 °C. Bei Wärmebehandlung (Dampfhärtung von Fertigteilen bei 60–80 °C zur Erhärtungsbeschleunigung) 
-                kann die Relaxation um das 3- bis 4-fache explodieren! Eurocode 2 verlangt hierfür einen gesonderten Temperatur-Zuschlag <InlineMath math="\\Delta\\sigma_{pr,\\Delta T}" />.
+                kann die Relaxation um das 3- bis 4-fache explodieren! Eurocode 2 verlangt hierfür einen gesonderten Temperatur-Zuschlag <InlineMath math="\Delta\sigma_{pr,\Delta T}" />.
               </div>
             </div>
 
@@ -2273,7 +2273,7 @@ export default function SpannbetonKennwerte() {
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-2.5 font-bold">Charakt. Dehnung bei Höchstlast</td>
-                      <td className="p-2.5 font-mono text-shiraz font-bold"><InlineMath math="\\varepsilon_{uk}" /></td>
+                      <td className="p-2.5 font-mono text-shiraz font-bold"><InlineMath math="\varepsilon_{uk}" /></td>
                       <td className="p-2.5 font-mono font-bold text-slate-900">≥ 3,5 % (≥ 35 ‰)</td>
                       <td className="p-2.5 text-[11px]">Mindestduktilität zur Vorankündigung und Rotationsfähigkeit im Bruchzustand</td>
                     </tr>
@@ -2300,9 +2300,9 @@ export default function SpannbetonKennwerte() {
                     Praxis-Schätzwerte (Vordimensionierung):
                   </div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px]">
-                    <li><strong>1000-Stunden-Referenzverlust:</strong> <InlineMath math="\\rho_{1000} = 2{,}5\\,\\%" /> für moderne Litzen der Klasse 2 (sehr niedrige Relaxation).</li>
-                    <li><strong>Alte Bauwerke / Draht:</strong> Klasse 1 mit <InlineMath math="\\rho_{1000} = 8{,}0\\,\\%" /> (dreifacher Verlust!).</li>
-                    <li><strong>Langzeit-Relaxationsverlust (500.000 h):</strong> Ca. das 2,5- bis 3,0-Fache des 1000-h-Werts (~4 % bis 7 % von <InlineMath math="\\sigma_{p0}" />).</li>
+                    <li><strong>1000-Stunden-Referenzverlust:</strong> <InlineMath math="\rho_{1000} = 2{,}5\,\%" /> für moderne Litzen der Klasse 2 (sehr niedrige Relaxation).</li>
+                    <li><strong>Alte Bauwerke / Draht:</strong> Klasse 1 mit <InlineMath math="\rho_{1000} = 8{,}0\,\%" /> (dreifacher Verlust!).</li>
+                    <li><strong>Langzeit-Relaxationsverlust (500.000 h):</strong> Ca. das 2,5- bis 3,0-Fache des 1000-h-Werts (~4 % bis 7 % von <InlineMath math="\sigma_{p0}" />).</li>
                     <li><strong>Spannkraftverlust:</strong> Entspricht typischerweise 30 bis 60 MPa Spannungsabfall (~2–5 % von P₀).</li>
                   </ul>
                 </div>
@@ -2312,10 +2312,10 @@ export default function SpannbetonKennwerte() {
                     Normativer Rechenwert (Eurocode 2 Ausführungsstatik):
                   </div>
                   <div className="bg-white/80 p-2 rounded border border-blue-200 font-mono text-[11px] text-blue-950 overflow-x-auto text-center">
-                    <InlineMath math="\\frac{\\Delta\\sigma_{pr}}{\\sigma_{pi}} = 0{,}66 \\cdot \\rho_{1000} \\cdot e^{9{,}1 \\mu} \\cdot \\left(\\frac{t}{1000}\\right)^{0{,}75 (1-\\mu)} \\cdot 10^{-5}" />
+                    <InlineMath math="\frac{\Delta\sigma_{pr}}{\sigma_{pi}} = 0{,}66 \cdot \rho_{1000} \cdot e^{9{,}1 \mu} \cdot \left(\frac{t}{1000}\right)^{0{,}75 (1-\mu)} \cdot 10^{-5}" />
                   </div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px] text-blue-950/90">
-                    <li><InlineMath math="\\mu = \\sigma_{pi} / f_{pk}" /> (Ausnutzungsgrad, typ. 0,70 bis 0,80). Die Formel reagiert <em>exponentiell</em> auf <InlineMath math="\\mu" />!</li>
+                    <li><InlineMath math="\mu = \sigma_{pi} / f_{pk}" /> (Ausnutzungsgrad, typ. 0,70 bis 0,80). Die Formel reagiert <em>exponentiell</em> auf <InlineMath math="\mu" />!</li>
                     <li><InlineMath math="t" /> = 500.000 Stunden (~57 Jahre) als normativer Dauerstandswert.</li>
                     <li><strong>Wärmebehandlung:</strong> Bei Dampfhärtung (&gt; 50 °C) muss die Relaxation um bis zu Faktor 2 bis 3 erhöht werden!</li>
                   </ul>
@@ -2343,7 +2343,7 @@ export default function SpannbetonKennwerte() {
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
               <p>
                 Wenn die Spannpresse die hohe Zugkraft an das Bauteil übergibt, wird der Beton schlagartig komprimiert. 
-                Er verkürzt sich elastisch um die Dehnung <InlineMath math="\\varepsilon_{c,el} = \\sigma_{cp} / E_{cm}(t_0)" />. 
+                Er verkürzt sich elastisch um die Dehnung <InlineMath math="\varepsilon_{c,el} = \sigma_{cp} / E_{cm}(t_0)" />. 
                 Da der Spannstahl mit dem Beton in Verbindung steht, staucht sich auch der Stahl um exakt dasselbe Maß ein 
                 und verliert unmittelbar einen Teil seiner Zugspannung.
               </p>
@@ -2361,7 +2361,7 @@ export default function SpannbetonKennwerte() {
                     Spannstähle werden im Widerlager gespannt, Beton gegossen. Nach dem Erhärten wird das Spannglied durchtrennt. 
                     Der gesamte Betonquerschnitt wird <strong>schlagartig auf einmal gestaucht</strong>:
                     <div className="mt-1 font-mono text-blue-700 font-bold">
-                      <InlineMath math="\\Delta\\sigma_{p,el} = \\frac{E_p}{E_{cm}(t_0)} \\cdot \\sigma_{c,p0}" /> (100 % Stauchungsverlust)
+                      <InlineMath math="\Delta\sigma_{p,el} = \frac{E_p}{E_{cm}(t_0)} \cdot \sigma_{c,p0}" /> (100 % Stauchungsverlust)
                     </div>
                   </div>
 
@@ -2371,7 +2371,7 @@ export default function SpannbetonKennwerte() {
                     durch alle folgenden Spannglieder; das letzte Spannglied erleidet fast keinen Stauchungsverlust mehr. 
                     Im Mittel setzt man nach Eurocode 2 an:
                     <div className="mt-1 font-mono text-blue-700 font-bold">
-                      <InlineMath math="\\Delta\\sigma_{p,el} \\approx \\frac{j - 1}{2j} \\cdot \\frac{E_p}{E_{cm}(t_0)} \\cdot \\sigma_{c,p0} \\approx 0.50 \\cdot \\Delta\\sigma_{p,el,voll}" />
+                      <InlineMath math="\Delta\sigma_{p,el} \approx \frac{j - 1}{2j} \cdot \frac{E_p}{E_{cm}(t_0)} \cdot \sigma_{c,p0} \approx 0.50 \cdot \Delta\sigma_{p,el,voll}" />
                     </div>
                   </div>
                 </div>
@@ -2383,17 +2383,17 @@ export default function SpannbetonKennwerte() {
                   Einfluss der Betonreife beim Spannen (<InlineMath math="t_0" />)
                 </h5>
                 <p className="text-xs text-slate-700 leading-relaxed">
-                  Weil der Beton zum Zeitpunkt des Vorspannens (<InlineMath math="t_0 = 3 - 7\\text{ d}" />) noch nicht seine volle 
+                  Weil der Beton zum Zeitpunkt des Vorspannens (<InlineMath math="t_0 = 3 - 7\text{ d}" />) noch nicht seine volle 
                   28-Tage-Festigkeit besitzt, ist auch sein Elastizitätsmodul <InlineMath math="E_{cm}(t_0)" /> signifikant niedriger:
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-xs space-y-1.5">
                   <div className="text-slate-500 text-[10px]">Festigkeitsverlauf nach EC2 Kap. 3.1.2:</div>
                   <div className="text-shiraz font-bold">
-                    <InlineMath math="f_{ck}(t) = f_{ck} \\cdot \\exp\\left[s \\cdot \\left(1 - \\sqrt{\\frac{28}{t}}\\right)\\right]" />
+                    <InlineMath math="f_{ck}(t) = f_{ck} \cdot \exp\left[s \cdot \left(1 - \sqrt{\frac{28}{t}}\right)\right]" />
                   </div>
                   <div className="text-slate-500 text-[10px] pt-1 border-t border-slate-100">Zugehöriger E-Modul:</div>
                   <div className="text-blue-700 font-bold">
-                    <InlineMath math="E_{cm}(t) = E_{cm} \\cdot \\left(\\frac{f_{cm}(t)}{f_{cm}}\\right)^{0.3}" />
+                    <InlineMath math="E_{cm}(t) = E_{cm} \cdot \left(\frac{f_{cm}(t)}{f_{cm}}\right)^{0.3}" />
                   </div>
                 </div>
                 <div className="p-2.5 bg-amber-50 rounded border border-amber-200 text-[11px] text-amber-900">
@@ -2439,7 +2439,7 @@ export default function SpannbetonKennwerte() {
                 <span className="text-shiraz font-bold bg-shiraz/5 border border-shiraz/20 px-2 py-0.5 rounded">DIN EN 1992-1-1 Gl. (5.46)</span>
               </div>
               <div className="py-4 px-4 bg-white rounded-xl border border-home-grau/20 text-center overflow-x-auto text-text-main">
-                <BlockMath math="\\Delta\\sigma_{p,c+s+r} = \\frac{\\varepsilon_{cs} \\cdot E_p + \\varphi(t, t_0) \\cdot \\frac{E_p}{E_{cm}} \\cdot \\sigma_{c,p0} + 0.8 \\cdot \\Delta\\sigma_{pr}}{1 + \\frac{E_p}{E_{cm}} \\cdot \\frac{A_p}{A_c} \\cdot \\left(1 + \\frac{A_c \\cdot e_p^2}{I_c}\\right) \\cdot \\left(1 + 0.8 \\cdot \\varphi(t, t_0)\\right)}" />
+                <BlockMath math="\Delta\sigma_{p,c+s+r} = \frac{\varepsilon_{cs} \cdot E_p + \varphi(t, t_0) \cdot \frac{E_p}{E_{cm}} \cdot \sigma_{c,p0} + 0.8 \cdot \Delta\sigma_{pr}}{1 + \frac{E_p}{E_{cm}} \cdot \frac{A_p}{A_c} \cdot \left(1 + \frac{A_c \cdot e_p^2}{I_c}\right) \cdot \left(1 + 0.8 \cdot \varphi(t, t_0)\right)}" />
               </div>
             </div>
 
@@ -2452,15 +2452,15 @@ export default function SpannbetonKennwerte() {
                 </h5>
                 <div className="space-y-2 text-xs">
                   <div className="p-2 bg-white rounded border border-slate-200">
-                    <strong className="text-blue-700 block">1. Schwind-Anteil: <InlineMath math="\\varepsilon_{cs} \\cdot E_p" /></strong>
+                    <strong className="text-blue-700 block">1. Schwind-Anteil: <InlineMath math="\varepsilon_{cs} \cdot E_p" /></strong>
                     Direkte Spannungsabnahme durch Betonverkürzung (typisch ca. 40–80 N/mm²).
                   </div>
                   <div className="p-2 bg-white rounded border border-slate-200">
-                    <strong className="text-amber-700 block">2. Kriech-Anteil: <InlineMath math="\\varphi \\cdot \\alpha_p \\cdot \\sigma_{c,p0}" /></strong>
+                    <strong className="text-amber-700 block">2. Kriech-Anteil: <InlineMath math="\varphi \cdot \alpha_p \cdot \sigma_{c,p0}" /></strong>
                     Spannungsabnahme durch das Dauerlast-Kriechen am Spanngliedschwerpunkt (oft der größte Einzelposten, ca. 80–180 N/mm²).
                   </div>
                   <div className="p-2 bg-white rounded border border-slate-200">
-                    <strong className="text-purple-700 block">3. Gedämpfte Relaxation: <InlineMath math="0.8 \\cdot \\Delta\\sigma_{pr}" /></strong>
+                    <strong className="text-purple-700 block">3. Gedämpfte Relaxation: <InlineMath math="0.8 \cdot \Delta\sigma_{pr}" /></strong>
                     Faktor 0.8 berücksichtigt, dass die tatsächliche Relaxation geringer ausfällt, weil der Stahl durch Betonverkürzung entlastet wird!
                   </div>
                 </div>
@@ -2478,7 +2478,7 @@ export default function SpannbetonKennwerte() {
                 <ul className="list-disc pl-5 text-xs text-slate-600 space-y-1.5">
                   <li>der Querschnitt durch die Bewehrung <InlineMath math="A_p / A_c" /> versteift wird,</li>
                   <li>die Exzentrizität <InlineMath math="e_p^2 / I_c" /> elastische Schnittkraftumlagerungen erzeugt,</li>
-                  <li>das Kriechen <InlineMath math="(1 + 0.8 \\cdot \\varphi)" /> die Spannungsabnahme dämpft.</li>
+                  <li>das Kriechen <InlineMath math="(1 + 0.8 \cdot \varphi)" /> die Spannungsabnahme dämpft.</li>
                 </ul>
                 <div className="p-2 bg-emerald-50 rounded border border-emerald-200 text-[11px] text-emerald-900 font-medium">
                   Ohne diesen Nenner würde man den zeitabhängigen Spannkraftverlust um 15–35 % überschätzen!
@@ -2515,7 +2515,7 @@ export default function SpannbetonKennwerte() {
                   fällt die Spannkraft mit zunehmender Entfernung <InlineMath math="x" /> von der Spannpresse exponentiell ab:
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-xs">
-                  <BlockMath math="\\Delta P_\\mu(x) = P_0 \\cdot \\left(1 - e^{-\\mu \\cdot (\\theta + k \\cdot x)}\\right)" />
+                  <BlockMath math="\Delta P_\mu(x) = P_0 \cdot \left(1 - e^{-\mu \cdot (\theta + k \cdot x)}\right)" />
                 </div>
                 <div className="text-xs space-y-1 text-slate-600">
                   <div><strong>µ (Reibungsbeiwert):</strong> 0.05 (Fett/PE-Monolitze) bis 0.20–0.24 (Stahlband-Hüllrohr).</div>
@@ -2535,12 +2535,12 @@ export default function SpannbetonKennwerte() {
                   konischen Verankerungskeile in den Ankerkörper hinein, bis die mechanische Klemmwirkung voll greift.
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-xs">
-                  <BlockMath math="\\Delta\\sigma_{p,slip} \\approx E_p \\cdot \\frac{w}{L_{set}}" />
+                  <BlockMath math="\Delta\sigma_{p,slip} \approx E_p \cdot \frac{w}{L_{set}}" />
                 </div>
                 <p className="text-xs text-slate-600">
                   Dieser <strong>Keilschlupf <InlineMath math="w" /></strong> führt im Nahbereich der Verankerung (über die 
                   Schlupfeintragungslänge <InlineMath math="L_{set}" />) zu einem signifikanten Kraftabfall. Bei kurzen Trägern 
-                  (<InlineMath math="L < 15\\text{ m}" />) kann der Keilschlupf über 10 % der Gesamtvorspannkraft vernichten, 
+                  (<InlineMath math="L < 15\text{ m}" />) kann der Keilschlupf über 10 % der Gesamtvorspannkraft vernichten, 
                   weshalb die Litzen beim Ziehen gezielt um das Maß <InlineMath math="w" /> überspannt werden müssen!
                 </p>
               </div>
@@ -2564,9 +2564,9 @@ export default function SpannbetonKennwerte() {
                     Praxis-Schätzwerte (Vordimensionierung):
                   </div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px]">
-                    <li><strong>Reibungsbeiwert μ:</strong> Standard-Stahlblechhüllrohr <InlineMath math="\\mu \\approx 0{,}19\\,\\text{rad}^{-1}" />; Kunststoffhüllrohr (PE/PP) <InlineMath math="\\mu \\approx 0{,}12 \\dots 0{,}14\\,\\text{rad}^{-1}" />.</li>
-                    <li><strong>Ungewollter Knickbeiwert k:</strong> <InlineMath math="k \\approx 0{,}007\\,\\text{rad/m} \\approx 0{,}4^\\circ/\\text{m}" /> (erfasst Rohrwellung/Durchhang beim Betonieren).</li>
-                    <li><strong>Keilschlupf (Setzmaß w bzw. Δl_s):</strong> <InlineMath math="w \\approx 5 \\dots 7\\,\\text{mm}" /> bei Litzenkeilverankerungen; <InlineMath math="w \\approx 1 \\dots 2\\,\\text{mm}" /> bei Gewindestangen.</li>
+                    <li><strong>Reibungsbeiwert μ:</strong> Standard-Stahlblechhüllrohr <InlineMath math="\mu \approx 0{,}19\,\text{rad}^{-1}" />; Kunststoffhüllrohr (PE/PP) <InlineMath math="\mu \approx 0{,}12 \dots 0{,}14\,\text{rad}^{-1}" />.</li>
+                    <li><strong>Ungewollter Knickbeiwert k:</strong> <InlineMath math="k \approx 0{,}007\,\text{rad/m} \approx 0{,}4^\circ/\text{m}" /> (erfasst Rohrwellung/Durchhang beim Betonieren).</li>
+                    <li><strong>Keilschlupf (Setzmaß w bzw. Δl_s):</strong> <InlineMath math="w \approx 5 \dots 7\,\text{mm}" /> bei Litzenkeilverankerungen; <InlineMath math="w \approx 1 \dots 2\,\text{mm}" /> bei Gewindestangen.</li>
                     <li><strong>Faustregel für mechanische Verluste:</strong> Ca. 5 % bis 15 % Spannkraftabfall in Feldmitte infolge Reibung; bei kurzen Bauteilen (&lt; 15 m) bis zu 20 % durch Keilschlupf!</li>
                   </ul>
                 </div>
@@ -2576,12 +2576,12 @@ export default function SpannbetonKennwerte() {
                     Normative Rechenwerte &amp; Verlegekriterien (EC2 Gl. 5.43 &amp; Zulassung):
                   </div>
                   <div className="bg-white/80 p-2 rounded border border-blue-200 font-mono text-[11px] text-blue-950 overflow-x-auto text-center">
-                    <InlineMath math="P(x) = P_0 \\cdot e^{-\\mu (\\theta + k \\cdot x)} \\quad \\text{mit } \\Delta\\sigma_{p,slip}(x) = 2 \\frac{P_{\\max}-P(x)}{A_p}" />
+                    <InlineMath math="P(x) = P_0 \cdot e^{-\mu (\theta + k \cdot x)} \quad \text{mit } \Delta\sigma_{p,slip}(x) = 2 \frac{P_{\max}-P(x)}{A_p}" />
                   </div>
                   <ul className="list-disc pl-5 space-y-1 text-[11px] text-blue-950/90">
-                    <li><InlineMath math="\\mu = 0{,}19\\,\\text{rad}^{-1}" /> (Norm-Rechenwert nach EC2 Tabelle 5.1 für gewellte Stahlrohre).</li>
-                    <li><InlineMath math="k = 0{,}005 \\dots 0{,}010\\,\\text{rad/m}" /> (Zulassungswert; bei starren dicken Hüllrohren kleiner als bei flexiblen).</li>
-                    <li><strong>Schlupfeinflusslänge:</strong> <InlineMath math="l_w = \\sqrt{\\frac{\\Delta l_s \\cdot E_p A_p}{p_R}}" /> kehrt die Reibungsrichtung im Ankerbereich um!</li>
+                    <li><InlineMath math="\mu = 0{,}19\,\text{rad}^{-1}" /> (Norm-Rechenwert nach EC2 Tabelle 5.1 für gewellte Stahlrohre).</li>
+                    <li><InlineMath math="k = 0{,}005 \dots 0{,}010\,\text{rad/m}" /> (Zulassungswert; bei starren dicken Hüllrohren kleiner als bei flexiblen).</li>
+                    <li><strong>Schlupfeinflusslänge:</strong> <InlineMath math="l_w = \sqrt{\frac{\Delta l_s \cdot E_p A_p}{p_R}}" /> kehrt die Reibungsrichtung im Ankerbereich um!</li>
                   </ul>
                 </div>
               </div>
@@ -2733,9 +2733,9 @@ export default function SpannbetonKennwerte() {
                 Schritt 1: Betonspannung in Spanngliedhöhe bei t₀ (σ_c,p0)
               </h5>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Zur Ermittlung des Kriechverlusts wird die Betonlängsspannung <InlineMath math="\\sigma_{c,p0}" /> am Spanngliedschwerpunkt 
+                Zur Ermittlung des Kriechverlusts wird die Betonlängsspannung <InlineMath math="\sigma_{c,p0}" /> am Spanngliedschwerpunkt 
                 unter der Kombination aus Initialvorspannkraft <InlineMath math="P_{m0}" /> und dem Eigengewichtsmoment 
-                <InlineMath math="M_g = \\frac{g \\cdot L^2}{8} = \\frac{12,5 \\cdot 24^2}{8} = 900\\text{ kNm}" /> in Feldmitte ermittelt:
+                <InlineMath math="M_g = \frac{g \cdot L^2}{8} = \frac{12,5 \cdot 24^2}{8} = 900\text{ kNm}" /> in Feldmitte ermittelt:
               </p>
               <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20 text-center font-mono text-xs overflow-x-auto">
                 <BlockMath math={`\\sigma_{c,p0} = \\frac{P_{m0}}{A_c} + \\frac{P_{m0} \\cdot e_p^2}{I_c} - \\frac{M_g \\cdot e_p}{I_c} = \\frac{${(exCalc.Pm0 * 1000).toLocaleString()}}{500.000} + \\frac{${(exCalc.Pm0 * 1000).toLocaleString()} \\cdot 450^2}{8,5 \\cdot 10^{10}} - \\frac{900 \\cdot 10^6 \\cdot 450}{8,5 \\cdot 10^{10}} = ${exCalc.sig_c_p0}\\text{ N/mm²}`} />
@@ -2762,7 +2762,7 @@ export default function SpannbetonKennwerte() {
                     <span className="font-mono font-bold text-amber-950 text-base">{exCalc.phi}</span>
                   </div>
                   <p className="text-amber-950/80 leading-relaxed text-[11px]">
-                    Berechnet nach DIN EN 1992-1-1 Anhang B mit wirksamer Bauteildicke <InlineMath math="h_0 = \\frac{2 A_c}{u} = 278\\text{ mm}" />, 
+                    Berechnet nach DIN EN 1992-1-1 Anhang B mit wirksamer Bauteildicke <InlineMath math="h_0 = \frac{2 A_c}{u} = 278\text{ mm}" />, 
                     Spannalter <InlineMath math="t_0 = " /> {exSpanT0} d (Zement R) und <InlineMath math="RH = " /> {exSpanRH} %.
                   </p>
                   <div className="p-2 bg-white rounded border border-amber-200 text-center font-mono font-bold text-amber-900">
@@ -2777,8 +2777,8 @@ export default function SpannbetonKennwerte() {
                     <span className="font-mono font-bold text-blue-950 text-base">{(exCalc.eps_cs * 1000).toFixed(2)} mm/m</span>
                   </div>
                   <p className="text-blue-950/80 leading-relaxed text-[11px]">
-                    Summe aus autogenem Schwinden (<InlineMath math="\\varepsilon_{ca} = " /> {exCalc.eps_ca} mm/m) und 
-                    Trocknungsschwinden (<InlineMath math="\\varepsilon_{cd} = " /> {exCalc.eps_cd} mm/m) nach Gl. (3.8).
+                    Summe aus autogenem Schwinden (<InlineMath math="\varepsilon_{ca} = " /> {exCalc.eps_ca} mm/m) und 
+                    Trocknungsschwinden (<InlineMath math="\varepsilon_{cd} = " /> {exCalc.eps_cd} mm/m) nach Gl. (3.8).
                   </p>
                   <div className="p-2 bg-white rounded border border-blue-200 text-center font-mono font-bold text-blue-900">
                     ε_cs(∞) = {(exCalc.eps_cs * 1000).toFixed(3)} · 10⁻³
@@ -2792,8 +2792,8 @@ export default function SpannbetonKennwerte() {
                     <span className="font-mono font-bold text-purple-950 text-base">{exCalc.delta_sig_pr} N/mm²</span>
                   </div>
                   <p className="text-purple-950/80 leading-relaxed text-[11px]">
-                    1000-Stunden-Referenzrelaxation nach DIN EN 1992-1-1 Gl. (3.29) für Klasse 2 (<InlineMath math="\\rho_{1000} \\le 2,5\\%" />) 
-                    bei Spannungsgrad <InlineMath math="\\mu = " /> {(exCalc.sigma_pm0 / 1860).toFixed(2)}.
+                    1000-Stunden-Referenzrelaxation nach DIN EN 1992-1-1 Gl. (3.29) für Klasse 2 (<InlineMath math="\rho_{1000} \le 2,5\%" />) 
+                    bei Spannungsgrad <InlineMath math="\mu = " /> {(exCalc.sigma_pm0 / 1860).toFixed(2)}.
                   </p>
                   <div className="p-2 bg-white rounded border border-purple-200 text-center font-mono font-bold text-purple-900">
                     Δσ_pr = {exCalc.delta_sig_pr} N/mm²
@@ -2814,7 +2814,7 @@ export default function SpannbetonKennwerte() {
 
               {/* Formelbox mit weißem Hintergrund */}
               <div className="p-4 bg-white rounded-xl border border-home-grau/30 text-center overflow-x-auto">
-                <BlockMath math="\\Delta\\sigma_{p,c+s+r} = \\frac{\\varepsilon_{cs} \\cdot E_p + \\varphi(t, t_0) \\cdot \\frac{E_p}{E_{cm}} \\cdot \\sigma_{c,p0} + 0.8 \\cdot \\Delta\\sigma_{pr}}{1 + \\frac{E_p}{E_{cm}} \\cdot \\frac{A_p}{A_c} \\cdot \\left(1 + \\frac{A_c \\cdot e_p^2}{I_c}\\right) \\cdot \\left(1 + 0.8 \\cdot \\varphi(t, t_0)\\right)}" />
+                <BlockMath math="\Delta\sigma_{p,c+s+r} = \frac{\varepsilon_{cs} \cdot E_p + \varphi(t, t_0) \cdot \frac{E_p}{E_{cm}} \cdot \sigma_{c,p0} + 0.8 \cdot \Delta\sigma_{pr}}{1 + \frac{E_p}{E_{cm}} \cdot \frac{A_p}{A_c} \cdot \left(1 + \frac{A_c \cdot e_p^2}{I_c}\right) \cdot \left(1 + 0.8 \cdot \varphi(t, t_0)\right)}" />
               </div>
 
               {/* Aufschlüsselung Zähler & Nenner */}

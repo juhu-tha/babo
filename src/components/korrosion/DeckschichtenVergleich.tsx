@@ -136,7 +136,7 @@ export const METAL_PROFILES: MetalCorrosionProfile[] = [
     standard: 'DIN EN 10088 / DIN EN 1993-1-4',
     schichtTyp: 'undurchlaessig',
     schichtName: 'Porenfreie Chromoxid-Passivschicht',
-    formel: '\\text{Cr}_2\\text{O}_3 \\; (\\text{mind. 10,5 % Cr})',
+    formel: '\\text{Cr}_2\\text{O}_3 \\; (\\text{mind. 10,5 \\% Cr})',
     pbr: 2.07,
     pbrLabel: 'ca. 2,07 (an der Grenze, atomar dünn)',
     dicke: '1–3 nm (extrem dünn, unsichtbar)',

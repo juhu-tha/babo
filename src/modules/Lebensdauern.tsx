@@ -434,12 +434,12 @@ export default function Lebensdauern() {
         ]}
         formeln={[
           {
-            formel: '\text{ESLC} = \text{RSLC} \cdot A \cdot B \cdot C \cdot D \cdot E \cdot F \cdot G',
+            formel: String.raw`\text{ESLC} = \text{RSLC} \cdot A \cdot B \cdot C \cdot D \cdot E \cdot F \cdot G`,
             erklaerung: 'Faktorenmethode nach ISO 15686-1 zur Schätzung der erwarteten Nutzungsdauer (Estimated Service Life of Component - ESLC) aus der Referenz-Nutzungsdauer (RSLC) multipliziert mit 7 Bewertungsfaktoren für Werkstoff-, Entwurfs-, Ausführungs-, Umwelt- und Instandhaltungsqualität.',
             quelle: 'DIN EN ISO 15686-1'
           },
           {
-            formel: 'N_{\text{Austausch}} = \max\left(0, \left\lceil \frac{t_{\text{Gebäude}}}{\text{ESLC}} \right\rceil - 1\right)',
+            formel: String.raw`N_{\text{Austausch}} = \max\left(0, \left\lceil \frac{t_{\text{Gebäude}}}{\text{ESLC}} \right\rceil - 1\right)`,
             erklaerung: 'Berechnung der Anzahl erforderlicher Austauschzyklen eines Bauteils innerhalb des Gebäude-Betrachtungszeitraums für Lebenszyklusanalysen (LCA / LCC).',
             quelle: 'BNB Leitfaden Nachhaltiges Bauen'
           }

@@ -299,7 +299,7 @@ export default function DauerhaftigkeitChecklisten() {
         ]} 
         formeln={[
           {
-            formel: 'c_{\\text{nom}} = \\max\\{c_{\\text{min,b}}; c_{\\text{min,dur}} + \\Delta c_{\\text{dur,\\gamma}} - \\Delta c_{\\text{dur,st}} - \\Delta c_{\\text{dur,add}}; 10\\,\\text{mm}\\} + \\Delta c_{\\text{dev}}',
+            formel: 'c_{\\text{nom}} = \\max\\{c_{\\text{min,b}}; c_{\\text{min,dur}} + \\Delta c_{\\text{dur},\\gamma} - \\Delta c_{\\text{dur,st}} - \\Delta c_{\\text{dur,add}}; 10\\,\\text{mm}\\} + \\Delta c_{\\text{dev}}',
             erklaerung: 'Vollständige Bemessungsformel für das Nennmaß der Betondeckung cnom unter Berücksichtigung von Zusatzmaßnahmen und Vorhaltemaß.',
             quelle: 'DIN EN 1992-1-1 Abs. 4.4.1.1'
           },

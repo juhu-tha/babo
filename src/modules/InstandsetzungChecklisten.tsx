@@ -711,7 +711,7 @@ export default function InstandsetzungChecklisten() {
             quelle: 'DIN EN 1504-10 / TR Instandhaltung'
           },
           {
-            formel: 'T_{\\text{Oberfl\\ddot{a}che}} \\ge T_{\\text{Taupunkt}} + 3\\,\\text{K}',
+            formel: 'T_{\\text{Oberfläche}} \\ge T_{\\text{Taupunkt}} + 3\\,\\text{K}',
             erklaerung: 'Sicherheitsabstand zur Taupunkttemperatur zur Vermeidung von Betauung und Haftungsversagen bei Beschichtungsarbeiten.',
             quelle: 'DIN EN ISO 12944-7'
           }

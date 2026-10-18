@@ -127,7 +127,7 @@ export default function SpannbetonDauerhaftigkeit() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
           <p>
             Im Spannbetonbau ist der Korrosionsschutz von existentieller Bedeutung: Weil der hochfeste Spannstahl unter 
-            extremer Zugspannung (<InlineMath math="\\sigma_{p0} \\approx 1200 \\dots 1500\\text{ N/mm²}" />) steht, kündigt sich ein 
+            extremer Zugspannung (<InlineMath math="\sigma_{p0} \approx 1200 \dots 1500\text{ N/mm²}" />) steht, kündigt sich ein 
             Korrosionsangriff <strong>nicht</strong> durch harmlose Rostfahnen und Betonabplatzungen an. Stattdessen droht 
             <strong>Spannungsrisskorrosion (SpRK) oder Wasserstoffversprödung</strong>, die zum 
             schlagartigen, spröden Abriss des Spannglieds ohne jegliche Vorwarnung führt.
@@ -228,12 +228,12 @@ export default function SpannbetonDauerhaftigkeit() {
               <div className="space-y-3 text-sm text-text-main/80 leading-relaxed">
                 <p>
                   <strong>Was unterscheidet Spannstahlkorrosion von normalem Rost?</strong><br />
-                  Bei schlaffem Betonstahl (B500B) führt Korrosion zu voluminösen Eisenoxiden (<InlineMath math="\\text{Fe}_2\\text{O}_3 \\cdot x\\text{H}_2\\text{O}" />), 
+                  Bei schlaffem Betonstahl (B500B) führt Korrosion zu voluminösen Eisenoxiden (<InlineMath math="\text{Fe}_2\text{O}_3 \cdot x\text{H}_2\text{O}" />), 
                   die den Beton absprengen und sichtbare Rostfahnen bilden. Der Träger kündigt sein Versagen durch große Risse und Durchbiegungen an.
                 </p>
                 <p>
                   Bei Spannstahl (z. B. Y1860) reichen mikroskopisch kleine Korrosionsnarben oder der Eintritt von 
-                  <strong> atomarem Wasserstoff (<InlineMath math="\\text{H}^0" />)</strong> in das Kristallgitter aus. An Fehlstellen und Korngrenzen 
+                  <strong> atomarem Wasserstoff (<InlineMath math="\text{H}^0" />)</strong> in das Kristallgitter aus. An Fehlstellen und Korngrenzen 
                   entstehen extrem hohe mikroskopische Spannungsspitzen, die bei Erreichen der Spaltfestigkeit zu einem 
                   <strong> schlagartigen Trennbruch</strong> des Stahls führen – ohne Querschnittsverengung und ohne sichtbare Vorwarnung!
                 </p>
@@ -241,10 +241,10 @@ export default function SpannbetonDauerhaftigkeit() {
                   <strong>Zwei Hauptmechanismen der Spannungsrisskorrosion:</strong>
                   <ul className="list-disc list-inside space-y-1 mt-1">
                     <li>
-                      <strong>Anodische Spannungsrisskorrosion:</strong> Lokaler anodischer Metallabtrag in winzigen Rissen unter Anwesenheit aggressiver Ionen (insb. Chloride <InlineMath math="\\text{Cl}^-" />).
+                      <strong>Anodische Spannungsrisskorrosion:</strong> Lokaler anodischer Metallabtrag in winzigen Rissen unter Anwesenheit aggressiver Ionen (insb. Chloride <InlineMath math="\text{Cl}^-" />).
                     </li>
                     <li>
-                      <strong>Kathodische Wasserstoffversprödung:</strong> Freigesetzte Wasserstoff-Protonen (<InlineMath math="\\text{H}^+" />) nehmen Elektronen auf und diffundieren atomar in das Gefüge. Atomarer Wasserstoff reichert sich in Zonen hoher Zugspannung (Rissspitzen, Gitterdefekte) an und setzt die Kohäsion bzw. Bruchzähigkeit herab (wasserstoffinduzierte SpRK).
+                      <strong>Kathodische Wasserstoffversprödung:</strong> Freigesetzte Wasserstoff-Protonen (<InlineMath math="\text{H}^+" />) nehmen Elektronen auf und diffundieren atomar in das Gefüge. Atomarer Wasserstoff reichert sich in Zonen hoher Zugspannung (Rissspitzen, Gitterdefekte) an und setzt die Kohäsion bzw. Bruchzähigkeit herab (wasserstoffinduzierte SpRK).
                     </li>
                   </ul>
                 </div>
@@ -267,7 +267,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     <div className="p-2.5 bg-white rounded-lg border border-rose-200">
                       <strong>2. Verbot von Feuerverzinkung bei hochfestem Spannstahl:</strong>
                       <p className="mt-0.5">
-                        Zink reagiert im alkalischen Nassbeton mit Zementleim unter starker Wasserstoffentwicklung (<InlineMath math="\\text{Zn} + 2\\text{OH}^- + 2\\text{H}_2\\text{O} \\to [\\text{Zn(OH)}_4]^{2-} + \\text{H}_2 \\uparrow" />). Dies führt zur sofortigen Wasserstoffversprödung!
+                        Zink reagiert im alkalischen Nassbeton mit Zementleim unter starker Wasserstoffentwicklung (<InlineMath math="\text{Zn} + 2\text{OH}^- + 2\text{H}_2\text{O} \to [\text{Zn(OH)}_4]^{2-} + \text{H}_2 \uparrow" />). Dies führt zur sofortigen Wasserstoffversprödung!
                       </p>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-rose-200">
@@ -295,7 +295,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     </div>
                     <div className="p-2 bg-white rounded border border-slate-200">
                       <strong className="text-shiraz block">3. Barriere</strong>
-                      Alkalische Verpressung (<InlineMath math="pH \\ge 12.5" />)
+                      Alkalische Verpressung (<InlineMath math="pH \ge 12.5" />)
                     </div>
                   </div>
                 </div>
@@ -324,17 +324,17 @@ export default function SpannbetonDauerhaftigkeit() {
                 Normative Bemessungsformel nach DIN EN 1992-1-1 Gl. (4.1):
               </div>
               <div className="py-2.5 px-4 bg-off-white/70 rounded-xl border border-home-grau/20 text-center overflow-x-auto">
-                <BlockMath math="c_{nom} = c_{min} + \\Delta c_{dev} \\quad \\text{mit} \\quad c_{min} = \\max\\left\\{c_{min,b}; \\; c_{min,dur} + \\Delta c_{dur,\\gamma} - \\Delta c_{dur,fck}; \\; 10\\text{ mm}\\right\\}" />
+                <BlockMath math="c_{nom} = c_{min} + \Delta c_{dev} \quad \text{mit} \quad c_{min} = \max\left\{c_{min,b}; \; c_{min,dur} + \Delta c_{dur,\gamma} - \Delta c_{dur,fck}; \; 10\text{ mm}\right\}" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs text-text-main/80 pt-1">
                 <div className="p-2 bg-slate-50 rounded border border-slate-200">
-                  <strong>Verbundmaß <InlineMath math="c_{min,b}" />:</strong> Bei runden Hüllrohren gleich dem Hüllrohrdurchmesser <InlineMath math="\\phi" />, jedoch maximal 80 mm (EC2 Tab. 4.2)! Bei sofortigem Verbund 2,0·Ø (Litzen/glatte Drähte) bzw. 3,0·Ø (gerippte Drähte).
+                  <strong>Verbundmaß <InlineMath math="c_{min,b}" />:</strong> Bei runden Hüllrohren gleich dem Hüllrohrdurchmesser <InlineMath math="\phi" />, jedoch maximal 80 mm (EC2 Tab. 4.2)! Bei sofortigem Verbund 2,0·Ø (Litzen/glatte Drähte) bzw. 3,0·Ø (gerippte Drähte).
                 </div>
                 <div className="p-2 bg-slate-50 rounded border border-slate-200">
-                  <strong>Dauerhaftigkeit <InlineMath math="c_{min,dur}" />:</strong> Erhöhungszuschlag <InlineMath math="\\Delta c_{dur,\\gamma} = +10\\text{ mm}" /> für Spannglieder im Verbund!
+                  <strong>Dauerhaftigkeit <InlineMath math="c_{min,dur}" />:</strong> Erhöhungszuschlag <InlineMath math="\Delta c_{dur,\gamma} = +10\text{ mm}" /> für Spannglieder im Verbund!
                 </div>
                 <div className="p-2 bg-slate-50 rounded border border-slate-200">
-                  <strong>Vorhaltemaß <InlineMath math="\\Delta c_{dev}" />:</strong> Nach NA(DE) 10 mm bei XC1, sonst 15 mm (im Brückenbau nach ZTV-ING 15 mm).
+                  <strong>Vorhaltemaß <InlineMath math="\Delta c_{dev}" />:</strong> Nach NA(DE) 10 mm bei XC1, sonst 15 mm (im Brückenbau nach ZTV-ING 15 mm).
                 </div>
               </div>
             </div>
@@ -509,9 +509,9 @@ export default function SpannbetonDauerhaftigkeit() {
                   <p>
                     {coverCalculation.c_min_b >= coverCalculation.c_min_dur ? (
                       <span>
-                        Das Verbundmaß <InlineMath math="c_{min,b} = \\phi_{Hüllrohr} = " /> <strong>{coverCalculation.c_min_b} mm</strong> ist 
+                        Das Verbundmaß <InlineMath math="c_{min,b} = \phi_{Hüllrohr} = " /> <strong>{coverCalculation.c_min_b} mm</strong> ist 
                         maßgebend gegenüber der Umweltanforderung (<InlineMath math="c_{min,dur} = " /> {coverCalculation.c_min_dur} mm). 
-                        Mit dem Vorhaltemaß <InlineMath math="\\Delta c_{dev} = " /> {coverCalculation.delta_c_dev} mm muss das Nennmaß 
+                        Mit dem Vorhaltemaß <InlineMath math="\Delta c_{dev} = " /> {coverCalculation.delta_c_dev} mm muss das Nennmaß 
                         mindestens <strong>{coverCalculation.c_nom} mm</strong> betragen.
                       </span>
                     ) : (
@@ -555,7 +555,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 </p>
                 <ol className="list-decimal list-inside space-y-1 text-xs pl-1">
                   <li><strong>Mechanischer Verbund:</strong> Kraftübertragung zwischen Spannglied und Betonquerschnitt.</li>
-                  <li><strong>Dauerhafter Korrosionsschutz:</strong> Das hochalkalische Porenwasser (<InlineMath math="\\text{pH} \\ge 12.5" />) bildet eine mikroskopische Passivschicht auf dem Spannstahl.</li>
+                  <li><strong>Dauerhafter Korrosionsschutz:</strong> Das hochalkalische Porenwasser (<InlineMath math="\text{pH} \ge 12.5" />) bildet eine mikroskopische Passivschicht auf dem Spannstahl.</li>
                 </ol>
                 <div className="p-3 bg-rose-50/70 border border-rose-200 rounded-xl text-rose-950 text-xs">
                   <strong>Die Gefahr unvollständiger Verpressung:</strong> Verbleiben im Hüllrohr Lufteinschlüsse oder bildet 
@@ -657,7 +657,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <strong> 25 mm</strong> um das Hüllrohr oder die Spanngliedlitze Zugspannungen im Beton auftreten dürfen!
                 </p>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/30 text-center font-mono">
-                  <BlockMath math="\\sigma_{c,\\text{Spannglied}} \\le 0 \\quad (\\text{nur Betondruckspannung zulässig!})" />
+                  <BlockMath math="\sigma_{c,\text{Spannglied}} \le 0 \quad (\text{nur Betondruckspannung zulässig!})" />
                 </div>
                 <p className="text-xs">
                   Dies stellt sicher, dass eventuelle Mikrorisse im Beton niemals bis an die Spannglieder heranreichen. 
@@ -697,7 +697,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 <div className="p-2.5 bg-amber-50/80 rounded-lg border border-amber-200 text-[11px] text-amber-950 space-y-1 mt-2">
                   <strong>Verschärfung an Koppelstellen (DIN EN 1992-1-1 Abs. 8.10.4):</strong>
                   <p>
-                    An Koppelankern und Arbeitsfugen muss die Dekompression (<InlineMath math="\\sigma_c \\le 0" />) bereits 
+                    An Koppelankern und Arbeitsfugen muss die Dekompression (<InlineMath math="\sigma_c \le 0" />) bereits 
                     unter der <strong>häufigen Einwirkungskombination</strong> eingehalten werden (nicht erst unter quasi-ständig).
                   </p>
                 </div>
@@ -1079,9 +1079,9 @@ export default function SpannbetonDauerhaftigkeit() {
                 <strong>Erklärung des akustischen Phänomens (Impedanzgrenze):</strong>
                 <p>
                   Trifft die Ultraschall-Transversalwelle auf ein <strong>voll verpresstes Hüllrohr</strong>, 
-                  besitzt der Einpressmörtel eine ähnliche akustische Impedanz wie der umgebende Beton (<InlineMath math="Z \\approx 8.5 \\times 10^6\\text{ kg/(m}^2\\text{s)}" />). 
+                  besitzt der Einpressmörtel eine ähnliche akustische Impedanz wie der umgebende Beton (<InlineMath math="Z \approx 8.5 \times 10^6\text{ kg/(m}^2\text{s)}" />). 
                   Die Welle dringt durch das Rohr hindurch; das Rückwandecho des Bauteils bleibt klar erkennbar. 
-                  Trifft sie dagegen auf einen <strong>Lufteinschluss (<InlineMath math="Z_{Luft} \\approx 400" />)</strong>, 
+                  Trifft sie dagegen auf einen <strong>Lufteinschluss (<InlineMath math="Z_{Luft} \approx 400" />)</strong>, 
                   wird die Schallenergie zu fast <strong>100 % reflektiert</strong>. Dahinterliegende Litzen und die 
                   Bauteilrückwand verschwinden vollständig im <strong>akustischen Schatten</strong>.
                 </p>

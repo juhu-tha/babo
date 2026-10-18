@@ -9,7 +9,8 @@
     "start": "node dist/server.cjs",
     "preview": "node dist/server.cjs",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "check:formeln": "node scripts/qa/check-katex.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.52.0",
