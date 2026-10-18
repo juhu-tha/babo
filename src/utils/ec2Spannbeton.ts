@@ -265,19 +265,24 @@ export function shrinkage(
 
   // 2. Trocknungsschwinden nach Gl. (B.11) & Tab. 3.2
   // k_h Beiwert aus wirksamer Dicke h0
+  // EC2 Tab. 3.3: k_h linear interpoliert (100→1,00; 200→0,85; 300→0,75; ≥500→0,70)
+  const KH: [number, number][] = [[100, 1.0], [200, 0.85], [300, 0.75], [500, 0.70]];
   let k_h = 1.0;
-  if (h0 <= 100) k_h = 1.0;
-  else if (h0 <= 200) k_h = 0.85;
-  else if (h0 <= 300) k_h = 0.75;
-  else if (h0 <= 500) k_h = 0.70;
-  else k_h = 0.65;
+  if (h0 >= 500) k_h = 0.70;
+  else if (h0 > 100) {
+    for (let i = 1; i < KH.length; i++) {
+      const [x0, y0] = KH[i - 1], [x1, y1] = KH[i];
+      if (h0 <= x1) { k_h = y0 + (y1 - y0) * (h0 - x0) / (x1 - x0); break; }
+    }
+  }
 
   // beta_RH nach Gl. (B.12)
   const beta_RH = 1.55 * (1 - Math.pow(RH / 100, 3));
 
   // eps_cd0 nach Gl. (B.11)
   const alpha_ds1Map = { S: 3, N: 4, R: 6 };
-  const alpha_ds2 = 0.11;
+  const alpha_ds2Map = { S: 0.13, N: 0.12, R: 0.11 }; // EC2 Anhang B, Gl. (B.11)
+  const alpha_ds2 = alpha_ds2Map[cement];
   const alpha_ds1 = alpha_ds1Map[cement];
 
   const eps_cd0 = 0.85 * ((220 + 110 * alpha_ds1) * Math.exp(-alpha_ds2 * (fcm / 10))) * 1e-3 * beta_RH;

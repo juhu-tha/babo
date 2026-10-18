@@ -500,7 +500,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <div className="p-3 bg-shiraz/10 rounded-xl border border-shiraz/30">
                     <span className="text-[10px] uppercase font-bold text-shiraz block">Nennmaß c_nom</span>
                     <span className="text-2xl font-black text-shiraz font-mono mt-0.5 block">{coverCalculation.c_nom} mm</span>
-                    <span className="text-[10px] text-shiraz/80 font-bold">In den Plänen anzugeben!</span>
+                    <span className="text-[10px] text-shiraz/80 font-bold">In den Plänen Verlegemaß c_v ≥ c_nom angeben</span>
                   </div>
                 </div>
 
@@ -572,13 +572,13 @@ export default function SpannbetonDauerhaftigkeit() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                     <strong className="text-shiraz block">Wasser-Zement-Wert:</strong>
-                    <span className="font-mono font-bold text-sm block">w/z ≤ 0.35 … 0.40</span>
+                    <span className="font-mono font-bold text-sm block">w/z ≈ 0,35–0,40 (Grenzwert nach DIN EN 447 bzw. Zulassung prüfen)</span>
                     <span className="text-[11px] text-slate-500">Geringer Wassergehalt mindert Porosität.</span>
                   </div>
 
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                    <strong className="text-shiraz block">Fließzeit (Marsh-Trichter):</strong>
-                    <span className="font-mono font-bold text-sm block">10 … 25 Sekunden</span>
+                    <strong className="text-shiraz block">Fließvermögen (Trichterverfahren DIN EN 445):</strong>
+                    <span className="font-mono font-bold text-sm block">t₀, t₃₀ ≤ 25 s (DIN EN 447)</span>
                     <span className="text-[11px] text-slate-500">Hohe Fließfähigkeit auch nach 30 min.</span>
                   </div>
 
@@ -590,7 +590,7 @@ export default function SpannbetonDauerhaftigkeit() {
 
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                     <strong className="text-shiraz block">Volumenänderung (Quellen):</strong>
-                    <span className="font-mono font-bold text-sm block">+1 % … +5 %</span>
+                    <span className="font-mono font-bold text-sm block">−1 % … +5 % (DIN EN 447)</span>
                     <span className="text-[11px] text-slate-500">Leichtes Quellen kompensiert Schwinden.</span>
                   </div>
                 </div>
@@ -653,8 +653,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 <p>
                   <strong>Was bedeutet „Dekompression“?</strong><br />
                   Der Dekompressionsnachweis verlangt, dass unter der maßgebenden Einwirkungskombination (meist der 
-                  <strong> quasi-ständigen Kombination</strong>) an keinem Punkt im Abstand von mindestens 
-                  <strong> 25 mm</strong> um das Hüllrohr oder die Spanngliedlitze Zugspannungen im Beton auftreten dürfen!
+                  <strong> quasi-ständigen Kombination</strong>) innerhalb eines Bereichs von <strong>25 mm</strong> um das Hüllrohr bzw. die Litze (EN-Empfehlung) keine Zugspannungen auftreten; der NA(DE) definiert den Bereich abweichend [NA prüfen].
                 </p>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/30 text-center font-mono">
                   <BlockMath math="\sigma_{c,\text{Spannglied}} \le 0 \quad (\text{nur Betondruckspannung zulässig!})" />
@@ -674,7 +673,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <div className="flex justify-between items-center border-b border-slate-200 pb-1.5">
                     <span className="font-bold text-slate-800">Schlaffer Stahlbeton (XC2–XC4):</span>
                     <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200">
-                      w_max ≤ 0.3 … 0.4 mm
+                      w_max ≤ 0,3 mm (0,4 mm nur XC0/XC1)
                     </span>
                   </div>
                   <div className="flex justify-between items-center border-b border-slate-200 pb-1.5">
@@ -691,8 +690,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   </div>
                 </div>
                 <p className="text-[11px] text-slate-500 leading-normal">
-                  * Bei Einwirkung von Tausalzen (XD3 / Brückenkappen und Fahrbahnplatten) fordert die DIN EN 1992-2 
-                  strikte Dekompression unter der quasi-ständigen Lastkombination.
+                  * Bei Tausalzeinwirkung (XD/XS) gilt die Dekompression unter der häufigen Kombination, bei XC2–XC4 unter der quasi-ständigen (EC2 Tab. 7.1N, NA Tab. 7.1DE).
                 </p>
                 <div className="p-2.5 bg-amber-50/80 rounded-lg border border-amber-200 text-[11px] text-amber-950 space-y-1 mt-2">
                   <strong>Verschärfung an Koppelstellen (DIN EN 1992-1-1 Abs. 8.10.4):</strong>
@@ -816,7 +814,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   },
                   geometrie: {
                     title: 'Spanngliedachslage & Kollisionsprüfung vor Bohrarbeiten',
-                    primary: 'BKS-Georadar (GPR - Ground Penetrating Radar, 1.5–2.6 GHz)',
+                    primary: 'Georadar (GPR, bodengekoppelt, 1,5–2,6 GHz)',
                     secondary: 'Niederfrequente elektromagnetische Wirbelstromsonden (Profometer)',
                     principle: 'Emission hochfrequenter elektromagnetischer Radarwellen. An metallischen Hüllrohren erfolgt Totalreflexion (Dielektrizitätskonstante ε_r Beton ≈ 6–9 vs. Metall ∞).',
                     limits: 'Lagegenauigkeit ±5 mm bis 40 cm Tiefe. Bei feuchtem oder stark salzbelastetem Beton hohe Signaldämpfung.',
@@ -1143,7 +1141,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     </tr>
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold flex items-center gap-1.5">
-                        <Layers size={13} className="text-shiraz" /> Georadar (BKS-Radar 2 GHz)
+                        <Layers size={13} className="text-shiraz" /> Georadar (bodengekoppelt, 1,5–2,6 GHz)
                       </td>
                       <td className="p-2.5">Spanngliedachse, Betondeckung</td>
                       <td className="p-2.5 font-mono">bis 50 cm</td>
@@ -1204,7 +1202,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 <div className="p-3 bg-white rounded-xl border border-home-grau/20 space-y-1">
                   <span className="font-bold text-slate-900 block">Stufe 4: Nachrechnung &amp; Monitoring</span>
                   <p className="text-[11px] text-slate-600">
-                    Tragfähigkeitsnachweis nach Nachrechnungsrichtlinie unter Ausfallannahme einzelner Spannglieder und Schallemissionsüberwachung.
+                    Nachweis des Ankündigungsverhaltens (Riss-vor-Bruch) nach Handlungsanweisung SpRK und Nachrechnungsrichtlinie, ggf. Schallemissionsüberwachung.
                   </p>
                 </div>
               </div>
@@ -1235,12 +1233,10 @@ export default function SpannbetonDauerhaftigkeit() {
                   <span className="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Dacheinsturz</span>
                 </div>
                 <p className="leading-relaxed">
-                  <strong>Ursache:</strong> Reißende Spannglieder im Vordachbereich. Verwendet wurde warmvergüteter 
-                  Stahl (Neptun St 145/160). An den Betonierfugen des Bogendaches drang Feuchtigkeit durch unzureichend verpresste 
-                  Hüllrohre ein. Es kam zur interkristallinen Spannungsrisskorrosion.
+                  <strong>Ursache (Gutachten Schlaich/Kordina/Engell 1980):</strong> Bau- und Planungsmängel. Die Spannglieder im Übergang zwischen Dachschale und Randbogen versagten durch Korrosion in Verbindung mit wechselnder Beanspruchung (Ermüdung); Feuchte gelangte über Risse und unzureichend verpresste Bereiche an den Spannstahl [Details im Gutachten prüfen].
                 </p>
                 <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-rose-950">
-                  Konsequenz: Vollständiges Verbot warmvergüteter Spannstähle in Deutschland! Einführung patentiert kaltgezogener Litzen.
+                  Konsequenz: Schärfere Anforderungen an Verpressung, Fugenausbildung und die Prüfung vorgespannter Bauwerke.
                 </div>
               </div>
 
@@ -1251,27 +1247,24 @@ export default function SpannbetonDauerhaftigkeit() {
                   <span className="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Trägerversagen</span>
                 </div>
                 <p className="leading-relaxed">
-                  <strong>Ursache:</strong> Einsturz des Brückenzugs C über der Elbe. Über Jahrzehnte hinweg 
-                  drang chloridhaltiges Tausalzwasser durch defekte Fahrbahnübergänge und Entwässerungsstellen in den Hohlkasten 
-                  und erreichte Spannglieder mit Fehlstellen in der Mörtelverpressung.
+                  <strong>Ursache (Gutachten MKP GmbH für die Stadt Dresden, Kurzfassung 27.05.2025):</strong> Einsturz des Brückenzugs C am 11.09.2024 über Strompfeiler D. Wasserstoffinduzierte Spannungsrisskorrosion des Spannstahls; die Anrisse entstanden höchstwahrscheinlich schon in der Bauzeit (Spannglieder lange unverpresst im Hüllrohr) und wuchsen über Jahrzehnte durch Ermüdung, bis die letzten Drähte ohne Vorankündigung brachen. Chloridkorrosion wird im Gutachten nicht als Ursache genannt.
                 </p>
                 <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-rose-950">
-                  Konsequenz: Massive Verschärfung der Prüfpflichten, ZfP-Sondierungen und Nachrechnungen älterer Spannbetonbrücken.
+                  Konsequenz: Überprüfung aller Brücken mit SpRK-gefährdetem Spannstahl nach Handlungsanweisung SpRK (Ankündigungsverhalten), verstärkte ZfP und Monitoring.
                 </div>
               </div>
 
               {/* Fall 3: Brücke von Ninove */}
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <strong className="text-slate-900 text-sm">Brücke von Ninove (Belgien)</strong>
+                  <strong className="text-slate-900 text-sm">Ynys-y-Gwas-Brücke, Wales (1985)</strong>
                   <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">Sprödbruch</span>
                 </div>
                 <p className="leading-relaxed">
-                  <strong>Ursache:</strong> Spanngliedversagen durch Wasserstoffversprödung. Wasser hatte sich in 
-                  den Hohlräumen an Rohrhochpunkten gesammelt, da der Einpressmörtel eine zu hohe Wasserabsonderung (Bleeding) aufwies.
+                  <strong>Ursache:</strong> Plötzlicher Einsturz einer segmentären Spannbetonbrücke durch Korrosion der Spannglieder an den Segmentfugen; Tausalzwasser drang über die Fugen in unvollständig verpresste Hüllrohre ein.
                 </p>
                 <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-amber-950">
-                  Konsequenz: Strikte Obergrenze von 0.3 % Wasserabsondern in der europäischen Mörtelnorm DIN EN 447.
+                  Konsequenz: UK-Moratorium für Spannglieder im nachträglichen Verbund (1992) und deutlich verschärfte Anforderungen an Einpressmörtel (z. B. Wasserabsondern ≤ 0,3 % nach DIN EN 447) und Verpresstechnik.
                 </div>
               </div>
 
@@ -1286,7 +1279,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   Anheften von Einbauteilen oder Schließen von Fugen. Die lokale thermische Selbstabschreckung erzeugt Martensit.
                 </p>
                 <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-slate-900">
-                  Konsequenz: Striktes bauaufsichtliches Verbot jeglicher Schweiß- und Trennarbeiten nahe Spanngliedern.
+                  Konsequenz: Schweiß- und Trennarbeiten in der Nähe von Spannstahl sind nach den Zulassungen/ETA der Spannverfahren und Spannstähle verboten.
                 </div>
               </div>
             </div>
