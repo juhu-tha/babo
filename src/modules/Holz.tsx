@@ -1000,7 +1000,7 @@ export default function Holz() {
               Die Druckfestigkeit von Holz ist stark richtungsabhängig. Bei Krafteinleitung unter einem Winkel α zur Faserrichtung wird die Festigkeit nach Hankinson abgemindert. 
               <br/><br/>
               <code className="bg-white px-2 py-1 rounded border border-home-grau/30">
-                <FormulaText text="f_{c,\\alpha,d} = f_{c,0,d} / \\left( \\left(\\frac{f_{c,0,d}}{k_{c,90} \\cdot f_{c,90,d}}\\right) \\cdot \\sin^2(\\alpha) + \\cos^2(\\alpha) \\right)" />
+                <FormulaText text="f_{c,\alpha,d} = f_{c,0,d} / \left( \left(\frac{f_{c,0,d}}{k_{c,90} \cdot f_{c,90,d}}\right) \cdot \sin^2(\alpha) + \cos^2(\alpha) \right)" />
               </code>
             </p>
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">

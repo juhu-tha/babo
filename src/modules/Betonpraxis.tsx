@@ -684,7 +684,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   {
                     titel: "4. Grenzwertprüfung & Baupraxis",
                     erklaerung: "Optimal ist k ≈ 0,27 bis 0,31. Bei k > 0,33 droht signifikante Wasserabsonderung; bei k ≤ 0,25 ist der Beton klebrig und schwer entlüftbar.",
-                    formel: "k_{\\text{ziel}} \\approx 0{,}30 \\quad (\\text{Zielbereich für Pump- & Sichtbeton})"
+                    formel: "k_{\\text{ziel}} \\approx 0{,}30 \\quad (\\text{Zielbereich für Pump- \\& Sichtbeton})"
                   }
                 ]}
               />

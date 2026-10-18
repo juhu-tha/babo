@@ -97,13 +97,13 @@ export function ZwangCalculator() {
                 <InfoTooltip text="Ursachen, die zu einer Längenänderung führen würden, wenn das Bauteil frei beweglich wäre." />
               </h3>
               
-              <Slider label={<FormulaText text="Temperaturabfluss \\Delta T" />} info="Temperaturabfall des Bauteils (bspw. durch Abkühlen nach dem Hydratationsmaximum)."
+              <Slider label={<FormulaText text="Temperaturabfluss \Delta T" />} info="Temperaturabfall des Bauteils (bspw. durch Abkühlen nach dem Hydratationsmaximum)."
                 min={0} max={50} step={1} 
                 value={deltaT} unit="K" 
                 onChange={(e) => setDeltaT(Number(e.target.value))} 
               />
               <div className="mt-4">
-                <Slider info="Freies Schwindmaß des Betons in Promille, das zu Verkürzungen führt." label={<FormulaText text="Schwindmaß \\varepsilon_{cs}" />}
+                <Slider info="Freies Schwindmaß des Betons in Promille, das zu Verkürzungen führt." label={<FormulaText text="Schwindmaß \varepsilon_{cs}" />}
                   min={0} max={1.0} step={0.05} 
                   value={shrinkage} unit="‰" 
                   onChange={(e) => setShrinkage(Number(e.target.value))} 
@@ -149,7 +149,7 @@ export function ZwangCalculator() {
               
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <div className="text-white/70 text-sm mb-1"><FormulaText text="Zwangspannung \\sigma_{z}" /></div>
+                  <div className="text-white/70 text-sm mb-1"><FormulaText text="Zwangspannung \sigma_{z}" /></div>
                   <div className="text-3xl font-bold">{calcData.sigmaZ.toFixed(2)} MPa</div>
                 </div>
                 <div>

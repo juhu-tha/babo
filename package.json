@@ -9,7 +9,9 @@
     "start": "node dist/server.cjs",
     "preview": "node dist/server.cjs",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "check:formeln": "node scripts/qa/check-katex.mjs",
+    "test": "for f in tests/*.test.ts; do tsx \"$f\" > /dev/null || { echo \"FEHLER in $f\"; tsx \"$f\" | grep FAIL; exit 1; }; echo \"ok  $f\"; done"
   },
   "dependencies": {
     "@google/genai": "^1.52.0",

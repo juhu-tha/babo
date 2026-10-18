@@ -3668,7 +3668,7 @@ export default function Nachhaltigkeit() {
             quelle: 'EPBD (EU 2024/1275) / DIN EN 15978'
           },
           {
-            formel: '\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{\\euro}]',
+            formel: '\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{\€}]',
             erklaerung: 'CO2-Grenzausgleichsabgabe für importierte emissionsintensive Baustoffe (Zement, Stahl, Aluminium) zur Vermeidung von Carbon Leakage.',
             quelle: 'VO (EU) 2023/956 (CBAM) Art. 21'
           },

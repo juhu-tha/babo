@@ -791,7 +791,7 @@ export default function Baustoffkenngroessen() {
                           </g>
                         </svg>
                       </div>
-                      <p className="text-[10px] text-slate-500 leading-tight">Phasenreinheit, konstante Werkstoffdichte <InlineMath math="\\rho(x,y,z) = C" /></p>
+                      <p className="text-[10px] text-slate-500 leading-tight">Phasenreinheit, konstante Werkstoffdichte <InlineMath math="\rho(x,y,z) = C" /></p>
                     </div>
 
                     <div className="border border-home-grau/30 p-2.5 rounded-lg bg-white shadow-sm space-y-2">

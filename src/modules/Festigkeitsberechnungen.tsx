@@ -138,9 +138,9 @@ export default function Festigkeitsberechnungen() {
         <p className="text-home-grau mb-6">
           Vergleichen Sie zwei Materialien hinsichtlich ihrer theoretischen Grenzen unter Eigengewicht.
           <br/><br/>
-          <strong>Turmbau (Druck):</strong> Wie hoch kann ein Turm gestapelt werden, bis das Material unten zerdrückt wird? <span className="font-mono text-xs bg-gray-100 px-1 rounded"><FormulaText text="H = f_c / (\\rho \\cdot g)" /></span>
+          <strong>Turmbau (Druck):</strong> Wie hoch kann ein Turm gestapelt werden, bis das Material unten zerdrückt wird? <span className="font-mono text-xs bg-gray-100 px-1 rounded"><FormulaText text="H = f_c / (\rho \cdot g)" /></span>
           <br/>
-          <strong>Reißlänge (Zug):</strong> Wie lang kann ein frei hängendes Seil/Stab sein, bis es unter seinem eigenen Gewicht reißt? <span className="font-mono text-xs bg-gray-100 px-1 rounded"><FormulaText text="L = f_t / (\\rho \\cdot g)" /></span>
+          <strong>Reißlänge (Zug):</strong> Wie lang kann ein frei hängendes Seil/Stab sein, bis es unter seinem eigenen Gewicht reißt? <span className="font-mono text-xs bg-gray-100 px-1 rounded"><FormulaText text="L = f_t / (\rho \cdot g)" /></span>
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">

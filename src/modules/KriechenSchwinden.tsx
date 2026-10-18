@@ -217,7 +217,7 @@ export default function KriechenSchwinden() {
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
-                <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Kriechzahl \\varphi(t, t_0)" /></h2>
+                <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Kriechzahl \varphi(t, t_0)" /></h2>
                 <div className="flex-1 relative w-full h-full">
                   <Line 
                     data={{
@@ -299,7 +299,7 @@ export default function KriechenSchwinden() {
                 />
               </div>
               <p className="text-xs text-text-main/70 mt-2">
-                Das Relaxationsmodul beschreibt den Spannungsabfall unter konstanter Dehnung, angenähert durch <FormulaText text="R(t, t_0) \\approx E_{cm} / (1 + \\varphi(t, t_0))" />.
+                Das Relaxationsmodul beschreibt den Spannungsabfall unter konstanter Dehnung, angenähert durch <FormulaText text="R(t, t_0) \approx E_{cm} / (1 + \varphi(t, t_0))" />.
               </p>
             </div>
 
@@ -517,7 +517,7 @@ export default function KriechenSchwinden() {
             </div>
 
             <Slider info="Verhältnis der eingetragenen Vorspannung im Spannstahl zur charakteristischen Zugfestigkeit f_pk des Spannstahls."
-              label={<FormulaText text="Spannungsniveau (\\sigma_{pi} / f_{pk})" />}
+              label={<FormulaText text="Spannungsniveau (\sigma_{pi} / f_{pk})" />}
               min={0.4} max={0.8} step={0.05}
               value={sigmaRatio} unit="-"
               
@@ -527,7 +527,7 @@ export default function KriechenSchwinden() {
 
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[400px]">
-              <h2 className="text-xl font-bold text-text-main mb-2"><FormulaText text="Relaxationsverlust \\Delta\\sigma_{pr} / \\sigma_{pi}" /></h2>
+              <h2 className="text-xl font-bold text-text-main mb-2"><FormulaText text="Relaxationsverlust \Delta\sigma_{pr} / \sigma_{pi}" /></h2>
               <div className="flex-1 relative w-full h-full">
                 <Line 
                   data={{

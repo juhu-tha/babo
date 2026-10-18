@@ -1627,7 +1627,7 @@ export default function MechanischeKenngroessen() {
                     bis zum thermodynamischen Feuchtegleichgewicht.
                   </p>
                   <div className="p-2 bg-white rounded-lg border border-home-grau/20 text-[10px] text-text-main/75 space-y-1">
-                    <div><strong>Größenordnung:</strong> Typisch <InlineMath math="\varepsilon_{\text{cd},\infty} \approx -0{,}30 \text{ bis } -0{,}60 \text{ \textperthousand}" /> (0,3–0,6 mm/m).</div>
+                    <div><strong>Größenordnung:</strong> Typisch <InlineMath math="\varepsilon_{\text{cd},\infty} \approx -0{,}30 \text{ bis } -0{,}60 \text{ ‰}" /> (0,3–0,6 mm/m).</div>
                     <div><strong>Einflussfaktoren:</strong> Relative Luftfeuchte <InlineMath math="RH" />, Bauteildicke <InlineMath math="h_0 = 2A_c / u" />, Zementleimvolumen.</div>
                   </div>
                 </div>
@@ -1665,7 +1665,7 @@ export default function MechanischeKenngroessen() {
                     Beim anschließenden Auskühlen zieht sich der Beton zusammen: <InlineMath math="\Delta \varepsilon_{\text{th}} = \alpha_T \cdot \Delta T" />.
                   </p>
                   <div className="p-2 bg-white rounded-lg border border-home-grau/20 text-[10px] text-text-main/75 space-y-1">
-                    <div><strong>Rissursache:</strong> Bei <InlineMath math="\Delta T = 30\text{ K}" /> beträgt <InlineMath math="\Delta \varepsilon_{\text{th}} \approx -0{,}30 \text{ \textperthousand}" /> – das Dreifache der Betonzugdehnung!</div>
+                    <div><strong>Rissursache:</strong> Bei <InlineMath math="\Delta T = 30\text{ K}" /> beträgt <InlineMath math="\Delta \varepsilon_{\text{th}} \approx -0{,}30 \text{ ‰}" /> – das Dreifache der Betonzugdehnung!</div>
                     <div><strong>Gegenmaßnahmen:</strong> LH-Zemente (CEM III), Frischbetonkühlung, Schalungsdämmung.</div>
                   </div>
                 </div>

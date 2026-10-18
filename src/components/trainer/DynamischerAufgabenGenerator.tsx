@@ -179,12 +179,12 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Elastische Anfangsdehnung ε_el',
-            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${sigma_c}\\text{ MPa}}{33000\\text{ MPa}} = ${(eps_el * 1000).toFixed(4)}\\text{ \\textperthousand}`,
+            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${sigma_c}\\text{ MPa}}{33000\\text{ MPa}} = ${(eps_el * 1000).toFixed(4)}\\text{ \‰}`,
             explanation: 'Hookesches Gesetz für den elastischen Anteil zum Belastungszeitpunkt t₀.'
           },
           {
             step: '2. Zeitabhängige Kriechdehnung ε_cr',
-            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${(eps_el * 1000).toFixed(4)}\\text{ \\textperthousand} \\cdot ${phi} = \\mathbf{${eps_cr_promille.toFixed(3)}}\\text{ \\textperthousand}`,
+            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${(eps_el * 1000).toFixed(4)}\\text{ \‰} \\cdot ${phi} = \\mathbf{${eps_cr_promille.toFixed(3)}}\\text{ \‰}`,
             explanation: 'Multiplikation der elastischen Verzerrung mit der Kriechzahl nach EC2.'
           }
         ]

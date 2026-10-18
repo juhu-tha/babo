@@ -306,7 +306,7 @@ export default function SpannbetonDehnungsAnimation() {
               Spanngliedlage, Dehnungsüberlagerung &amp; Spannungsverteilung
             </h3>
             <p className="text-xs text-text-main/70 mt-0.5">
-              Untersuchen Sie den Einfluss der Spanngliedlage (zentrisch vs. gerade unten vs. parabolisch) auf Dehnung <InlineMath math="\\varepsilon(z)" />, Biegemomente, Umlenkkräfte <InlineMath math="u" /> und Kopfzugspannungen am Auflager.
+              Untersuchen Sie den Einfluss der Spanngliedlage (zentrisch vs. gerade unten vs. parabolisch) auf Dehnung <InlineMath math="\varepsilon(z)" />, Biegemomente, Umlenkkräfte <InlineMath math="u" /> und Kopfzugspannungen am Auflager.
             </p>
           </div>
 
@@ -347,7 +347,7 @@ export default function SpannbetonDehnungsAnimation() {
               {tendonTrajectory === 'centric' && <Check size={14} className="text-white" />}
             </div>
             <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'centric' ? 'text-white/90' : 'text-slate-500'}`}>
-              <InlineMath math="e_p = 0" /> über gesamte Länge. Reine Längsdruckkraft <InlineMath math="\\sigma_N" />, kein Vormoment (<InlineMath math="M_P = 0" />), keine Umlenkkräfte (<InlineMath math="u = 0" />).
+              <InlineMath math="e_p = 0" /> über gesamte Länge. Reine Längsdruckkraft <InlineMath math="\sigma_N" />, kein Vormoment (<InlineMath math="M_P = 0" />), keine Umlenkkräfte (<InlineMath math="u = 0" />).
             </p>
           </button>
 
@@ -366,7 +366,7 @@ export default function SpannbetonDehnungsAnimation() {
               {tendonTrajectory === 'straight_bottom' && <Check size={14} className="text-white" />}
             </div>
             <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'straight_bottom' ? 'text-white/90' : 'text-slate-500'}`}>
-              <InlineMath math="e_p = \\text{konst.}" /> unten. Wirksames Vormoment im Feld, aber <strong>Gefahr von Kopfzugrissen am Auflager</strong> (<InlineMath math="M_q=0 \\rightarrow \\sigma_o > 0" />).
+              <InlineMath math="e_p = \text{konst.}" /> unten. Wirksames Vormoment im Feld, aber <strong>Gefahr von Kopfzugrissen am Auflager</strong> (<InlineMath math="M_q=0 \rightarrow \sigma_o > 0" />).
             </p>
           </button>
 
@@ -385,7 +385,7 @@ export default function SpannbetonDehnungsAnimation() {
               {tendonTrajectory === 'parabolic' && <Check size={14} className="text-white" />}
             </div>
             <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'parabolic' ? 'text-white/90' : 'text-slate-500'}`}>
-              Spannglied folgt der Biegelinie. An Auflagern zentrisch (<InlineMath math="e_p=0" />), in Feldmitte maximaler Stich <InlineMath math="f" />. <strong>Gleichmäßige Umlenkkräfte <InlineMath math="u \\uparrow" /> (Lastausgleich)!</strong>
+              Spannglied folgt der Biegelinie. An Auflagern zentrisch (<InlineMath math="e_p=0" />), in Feldmitte maximaler Stich <InlineMath math="f" />. <strong>Gleichmäßige Umlenkkräfte <InlineMath math="u \uparrow" /> (Lastausgleich)!</strong>
             </p>
           </button>
         </div>
@@ -454,7 +454,7 @@ export default function SpannbetonDehnungsAnimation() {
                   : 'text-text-main/70 hover:text-text-main'
               }`}
             >
-              <Activity size={13} /> Dehnung <InlineMath math="\\varepsilon(z)" />
+              <Activity size={13} /> Dehnung <InlineMath math="\varepsilon(z)" />
             </button>
             <button
               type="button"
@@ -465,7 +465,7 @@ export default function SpannbetonDehnungsAnimation() {
                   : 'text-text-main/70 hover:text-text-main'
               }`}
             >
-              <Gauge size={13} /> Spannung <InlineMath math="\\sigma(z)" />
+              <Gauge size={13} /> Spannung <InlineMath math="\sigma(z)" />
             </button>
             <button
               type="button"
@@ -497,7 +497,7 @@ export default function SpannbetonDehnungsAnimation() {
               </span>
             </div>
             <div className="text-xs font-mono text-slate-600 bg-slate-50 px-2.5 py-1 rounded border border-slate-200">
-              Ausnutzung <InlineMath math="\\sigma_p / \\sigma_{pm0,zul}" />: <strong>{formatDeZahl((prestressForce / 2720) * 100, 0)} %</strong> (bei 14 Litzen Y1860)
+              Ausnutzung <InlineMath math="\sigma_p / \sigma_{pm0,zul}" />: <strong>{formatDeZahl((prestressForce / 2720) * 100, 0)} %</strong> (bei 14 Litzen Y1860)
             </div>
           </div>
 
@@ -584,7 +584,7 @@ export default function SpannbetonDehnungsAnimation() {
                   : 'bg-purple-50 hover:bg-purple-100 text-purple-800 border-purple-300'
               }`}
             >
-              5. P = 2.400 kN (Volle Vorspannung)
+              5. P = 2.400 kN (hohe Vorspannung)
             </button>
           </div>
         </div>
@@ -607,7 +607,7 @@ export default function SpannbetonDehnungsAnimation() {
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
               <span>0 kN/m (Nur Eigengewicht)</span>
-              <span>Gesamtmoment M_Ed = {formatDeZahl(calc.Mq_mid, 0)} kNm</span>
+              <span>Gesamtmoment M_k (g + q) = {formatDeZahl(calc.Mq_mid, 0)} kNm</span>
               <span>50 kN/m</span>
             </div>
           </div>
@@ -864,9 +864,9 @@ export default function SpannbetonDehnungsAnimation() {
               )}
 
               {/* Rissfrei-Anzeige bei voller Überdrückung */}
-              {calc.sigma_bot <= 0 && !calc.hasSupportHeadCracks && (
+              {calc.sigma_bot <= 0 && calc.sigma_top <= 0 && !calc.hasSupportHeadCracks && (
                 <text x="310" y="125" textAnchor="middle" fontSize="9.5" fill="#059669" fontWeight="bold">
-                  ✓ Vollständig rissfrei (Zustand I)! Voller Querschnitt homogen überdrückt.
+                  ✓ Voll überdrückt (Zustand I): σ_o ≤ 0 und σ_u ≤ 0.
                 </text>
               )}
             </svg>
@@ -1267,7 +1267,7 @@ export default function SpannbetonDehnungsAnimation() {
                 a) Zentrisch in Schwerachse
               </span>
               <p>
-                <strong>Prinzip:</strong> <InlineMath math="e_p = 0 \\rightarrow M_P = 0" />. Reine Längsdruckspannung <InlineMath math="\\sigma_N = -P/A_c" /> ohne Vorkrümmung und ohne Umlenkkräfte (<InlineMath math="u = 0" />).
+                <strong>Prinzip:</strong> <InlineMath math="e_p = 0 \rightarrow M_P = 0" />. Reine Längsdruckspannung <InlineMath math="\sigma_N = -P/A_c" /> ohne Vorkrümmung und ohne Umlenkkräfte (<InlineMath math="u = 0" />).
               </p>
               <p className="text-[11px] text-slate-500">
                 <strong>Einsatzgebiet:</strong> Reine Zugglieder (z. B. Hängestangen, Behälterringvorspannung, Pfähle). Bei Biegung ineffizient, da kein innerer Hebelarm zur Zugentlastung genutzt wird.
@@ -1280,10 +1280,10 @@ export default function SpannbetonDehnungsAnimation() {
                 b) Gerade unten (Abstand Betondeckung)
               </span>
               <p>
-                <strong>Prinzip:</strong> <InlineMath math="e_p = \\text{konst.}" />. Hohes entlastendes Vormoment in Feldmitte (<InlineMath math="-P \\cdot e_p" />), jedoch <strong>konstant über die gesamte Trägerlänge</strong>.
+                <strong>Prinzip:</strong> <InlineMath math="e_p = \text{konst.}" />. Hohes entlastendes Vormoment in Feldmitte (<InlineMath math="-P \cdot e_p" />), jedoch <strong>konstant über die gesamte Trägerlänge</strong>.
               </p>
               <p className="text-[11px] text-red-800">
-                <strong>Auflagerproblem:</strong> Da am Auflager <InlineMath math="M_q = 0" /> ist, erzeugt das Vormoment hohe <strong>Kopfzugspannungen an der Trägeroberseite</strong> (<InlineMath math="\\sigma_o > 0" />). Abhilfe erfordert Hüllrohre („debonding“) oder Abbiegungen.
+                <strong>Auflagerproblem:</strong> Da am Auflager <InlineMath math="M_q = 0" /> ist, erzeugt das Vormoment hohe <strong>Kopfzugspannungen an der Trägeroberseite</strong> (<InlineMath math="\sigma_o > 0" />). Abhilfe erfordert Hüllrohre („debonding“) oder Abbiegungen.
               </p>
             </div>
 
@@ -1293,7 +1293,7 @@ export default function SpannbetonDehnungsAnimation() {
                 c) Parabolisch (Momenteneinwirkung)
               </span>
               <p>
-                <strong>Prinzip (Idealfall):</strong> Das Kabel folgt dem Parabelverlauf des Feldmoments. Am Auflager zentrisch (<InlineMath math="e_p = 0 \\rightarrow \\sigma_o = \\sigma_N < 0" /> keine Kopfzugrisse!), in Feldmitte maximaler Stich <InlineMath math="f" />.
+                <strong>Prinzip (Idealfall):</strong> Das Kabel folgt dem Parabelverlauf des Feldmoments. Am Auflager zentrisch (<InlineMath math="e_p = 0 \rightarrow \sigma_o = \sigma_N < 0" /> keine Kopfzugrisse!), in Feldmitte maximaler Stich <InlineMath math="f" />.
               </p>
               <p className="text-[11px] text-emerald-800">
                 <strong>Lastausgleich:</strong> Die kontinuierlichen Umlenkkräfte <InlineMath math="u = 8 P f / L^2" /> heben die äußere Last <InlineMath math="q" /> direkt auf. Bei <InlineMath math="u = q" /> bleibt der Träger vollkommen eben!

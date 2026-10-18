@@ -929,7 +929,7 @@ export default function BpInnovationen() {
         ]}
         formeln={[
           {
-            formel: 'c_{\\text{min}} = \\max\\{c_{\\text{min,dur}}; \\, c_{\\text{min,b}}; \\, 10\\,\\text{mm}\\} - \\Delta c_{\\text{dur,\\gamma}}',
+            formel: 'c_{\\text{min}} = \\max\\{c_{\\text{min,dur}}; \\, c_{\\text{min,b}}; \\, 10\\,\\text{mm}\\} - \\Delta c_{\\text{dur},\\gamma}',
             erklaerung: 'Mindestbetondeckung nach Eurocode 2: Bei nichtrostender Carbon- oder Textilbewehrung entfällt der Korrosionsanteil c_min,dur, sodass c_min auf bis zu 10–15 mm reduziert werden kann.',
             quelle: 'DIN EN 1992-1-1 / DIBt-Zulassungen Carbonbeton'
           },

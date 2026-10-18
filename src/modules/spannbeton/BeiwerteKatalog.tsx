@@ -180,10 +180,10 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     category: 'relaxation',
     kategorieLabel: 'Relaxation',
     einheit: 'Prozent [%]',
-    schaetzwertKurz: 'Klasse 2 (sehr niedrig): 2.5 % | Klasse 1 (Draht): 8.0 %',
-    schaetzwert: 'In modernen Tragwerken wird nahezu ausschließlich Klasse 2 (spannungsendlastete 7-drähtige Litzen nach DIN EN 10138-3) verbaut mit ρ₁₀₀₀ = 2.5 %. Ältere Konstruktionen oder Stäbe: Klasse 1 (ρ₁₀₀₀ ≈ 8.0 %) oder Klasse 3 (ρ₁₀₀₀ ≈ 4.0 %).',
+    schaetzwertKurz: 'Klasse 2 (niedrig): 2,5 % | Klasse 1 (Draht): 8.0 %',
+    schaetzwert: 'In modernen Tragwerken wird nahezu ausschließlich Klasse 2 (kaltgezogene 7-drähtige Litzen mit abZ des DIBt) verbaut mit ρ₁₀₀₀ = 2.5 %. Ältere Konstruktionen oder Stäbe: Klasse 1 (ρ₁₀₀₀ ≈ 8.0 %) oder Klasse 3 (ρ₁₀₀₀ ≈ 4.0 %).',
     rechenwertNorm: '\\rho_{1000} = 2.5\\,\\% \\quad (\\text{Klasse 2, Normwert nach EC2 Abs. 3.3.2 (4)})',
-    normBezug: 'DIN EN 1992-1-1 Abs. 3.3.2 & DIN EN 10138',
+    normBezug: 'DIN EN 1992-1-1 Abs. 3.3.2 & abZ des Spannstahls',
     bedeutungUndEinfluss: 'Gibt den Spannungsabfall im Spannstahl nach 1000 Stunden bei 20 °C und einer Anfangsspannung von 0.70 f_pk an.',
     praxisWarnung: 'Erwärmung im Bauzustand (z.B. Dampfhärtung bei 60–80 °C) beschleunigt die Relaxation massiv um das 2- bis 4-Fache!',
     einflussparameter: ['Spannstahlklasse (Klasse 1, 2 oder 3)', 'Prüftemperatur (Referenz: 20 °C)', 'Gefügebehandlung (Stabilisieren/Thermo-Mechanisch)']
@@ -245,11 +245,11 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     name: 'Reibungsbeiwert im Hüllrohr',
     category: 'mechanisch',
     kategorieLabel: 'Reibung & Mechanik',
-    einheit: '1/rad [dimensionslos]',
-    schaetzwertKurz: 'Stahl-Hüllrohr: 0.18 – 0.22 | PE-Kunststoff: 0.12 – 0.14',
-    schaetzwert: 'Normativer Standard-Rechenwert für gewellte Stahlblechhüllrohre mit Litzen: μ = 0.19 rad⁻¹. Für moderne Kunststoffhüllrohre (z.B. fib/ETA-Zulassungen): μ = 0.12 bis 0.14 rad⁻¹.',
+    einheit: '– [dimensionslos]',
+    schaetzwertKurz: 'Stahl-Hüllrohr: 0,19 (EC2 Tab. 5.1) | Kunststoff: nach ETA | Monolitze: 0,05–0,07',
+    schaetzwert: 'Normativer Standard-Rechenwert für gewellte Stahlblechhüllrohre mit Litzen: μ = 0,19 (dimensionslos, EC2 Tab. 5.1). Für Kunststoffhüllrohre gilt der Wert der ETA/Zulassung des Spannverfahrens.',
     rechenwertNorm: 'P(x) = P_0 \\cdot e^{-\\mu (\\theta + k \\cdot x)}',
-    normBezug: 'DIN EN 1992-1-1 Abs. 5.10.5.2, Gl. (5.43) & Tab. 5.1',
+    normBezug: 'DIN EN 1992-1-1 Abs. 5.10.5.2, Gl. (5.45) & Tab. 5.1',
     bedeutungUndEinfluss: 'Beschreibt den Reibungswiderstand des Spannglieds bei Umlenkungen (Winkelumlenkung θ). Zusammen mit dem ungewollten Knickbeiwert k bestimmt er die Spannkraftabnahme über die Trägerlänge.',
     praxisWarnung: 'Ungeschmierte oder korrodierte Hüllrohre können μ auf > 0.30 ansteigen lassen, was zu unzureichender Spannkraft in Feldmitte führt!',
     einflussparameter: ['Hüllrohrmaterial (verzinktes Stahlband vs. Kunststoffrohr)', 'Spannstahl-Oberfläche (glatt, profiliert, geölt)', 'Zustand der Rohre (trocken, befeuchtet)']
@@ -279,8 +279,8 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     einheit: 'Millimeter [mm]',
     schaetzwertKurz: '4 – 8 mm (typ. 6 mm bei Keilverankerung)',
     schaetzwert: 'Typisches Setzmaß bei 3-teiligen Spannkeilen: Δl_s = 5 bis 7 mm. Bei Gewindestäben (z.B. SAS/Dywidag) nur 1 bis 2 mm (Mutterdrehung).',
-    rechenwertNorm: '\\Delta\\sigma_{p,s}(x) = 2 \\cdot \\frac{P_{max} - P(x)}{A_p} \\quad \\text{mit Schlupflänge } l_w = \\sqrt{\\frac{\\Delta l_s \\cdot E_p \\cdot A_p}{p_{R}}}',
-    normBezug: 'DIN EN 1992-1-1 Abs. 5.10.5.1 & Zulassung (ETA)',
+    rechenwertNorm: 'l_{set} = \\sqrt{\\frac{w \\cdot E_p \\cdot A_p}{p}}, \\quad \\Delta P_{Anker} = 2 \\cdot p \\cdot l_{set}',
+    normBezug: 'DIN EN 1992-1-1 Abs. 5.10.5.3 & Zulassung (ETA)',
     bedeutungUndEinfluss: 'Beim Lösen der Spannpresse ziehen sich die Spannkeile um wenige Millimeter in den Ankerkörper hinein, bis die Klemmpressung voll greift. Dies entspannt das Spannglied im Verankerungsbereich.',
     praxisWarnung: 'Bei kurzen Spanngliedern (L < 15 m) ist der Keilschlupfverlust dramatisch (bis zu 20 % Verlust auf ganzer Länge), weshalb hier oft Gewindestangen oder Nachkeilpressen eingesetzt werden!',
     einflussparameter: ['Verankerungsbauart (Keil, Mutter, Flachanker)', 'Vorspannverfahren (ETA-Zulassungskennwert)']
@@ -350,7 +350,7 @@ export default function BeiwerteKatalog() {
           </p>
         </div>
         <span className="self-start md:self-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-          DIN EN 1992-1-1 / DIN EN 10138
+          DIN EN 1992-1-1 / abZ Spannstahl
         </span>
       </div>
 
@@ -362,7 +362,7 @@ export default function BeiwerteKatalog() {
             Was zeichnet Schätzwerte (Vordimensionierung) aus?
           </div>
           <p className="text-amber-950/80 leading-relaxed">
-            In der Entwurfsphase liegen exakte Parameter (Betonfeuchte, Betonalter beim Spannen <InlineMath math="t_0" />, wirksame Bauteildicke <InlineMath math="h_0" />, Lieferant des Spannstahls) noch nicht vor. Ingenieure verwenden hier <strong>robuste Schätzgrößen</strong> (z.B. Endkriechzahl <InlineMath math="\\varphi \\approx 2.0" />, Gesamtschwindmaß <InlineMath math="\\varepsilon_{cs} \\approx -0.35\\,\\text{mm/m}" />, Langzeitverlust ca. 15–20 % von <InlineMath math="P_0" />), um die Querschnittsabmessungen und Spanngliedanzahl schnell festzulegen.
+            In der Entwurfsphase liegen exakte Parameter (Betonfeuchte, Betonalter beim Spannen <InlineMath math="t_0" />, wirksame Bauteildicke <InlineMath math="h_0" />, Lieferant des Spannstahls) noch nicht vor. Ingenieure verwenden hier <strong>robuste Schätzgrößen</strong> (z.B. Endkriechzahl <InlineMath math="\varphi \approx 2.0" />, Gesamtschwindmaß <InlineMath math="\varepsilon_{cs} \approx -0.35\,\text{mm/m}" />, Langzeitverlust ca. 15–20 % von <InlineMath math="P_0" />), um die Querschnittsabmessungen und Spanngliedanzahl schnell festzulegen.
           </p>
         </div>
         <div className="p-4 rounded-xl bg-blue-50/80 border border-blue-200/80 space-y-2">
@@ -371,7 +371,7 @@ export default function BeiwerteKatalog() {
             Was verlangt der normative Rechenwert (Ausführungsstatik)?
           </div>
           <p className="text-blue-950/80 leading-relaxed">
-            Für die prüffähige Statik nach <strong>Eurocode 2 (DIN EN 1992-1-1)</strong> müssen die Beiwerte funktional aus den exakten Randbedingungen ermittelt werden: Feuchtebeiwert <InlineMath math="\\varphi_{RH}" />, Festigkeitsbeiwert <InlineMath math="\\beta(f_{cm})" />, Reifeentwicklung <InlineMath math="\\beta(t_0)" />, Zeitbeiwert <InlineMath math="\\beta_c(t, t_0)" /> sowie die gekoppelte Verlustgleichung (5.46). Sie bilden die juristisch verbindliche Nachweisgrundlage.
+            Für die prüffähige Statik nach <strong>Eurocode 2 (DIN EN 1992-1-1)</strong> müssen die Beiwerte funktional aus den exakten Randbedingungen ermittelt werden: Feuchtebeiwert <InlineMath math="\varphi_{RH}" />, Festigkeitsbeiwert <InlineMath math="\beta(f_{cm})" />, Reifeentwicklung <InlineMath math="\beta(t_0)" />, Zeitbeiwert <InlineMath math="\beta_c(t, t_0)" /> sowie die gekoppelte Verlustgleichung (5.46). Sie bilden die juristisch verbindliche Nachweisgrundlage.
           </p>
         </div>
       </div>
@@ -617,7 +617,7 @@ export default function BeiwerteKatalog() {
           Ingenieur-Fazit zur Handhabung von Schätz- und Rechenwerten im Spannbetonbau
         </div>
         <p className="leading-relaxed">
-          Schätzwerte ermöglichen im frühen Entwurf eine zielsichere Bauteildimensionierung ohne aufwändige iterative Iterationsschritte. In der Ausführungsplanung verlangt <strong>DIN EN 1992-1-1 (Eurocode 2)</strong> jedoch zwingend die Auswertung der differenzierten physikalischen Formeln. Da bei Vorspannung bis zu <strong>25 % der Vorspannkraft durch zeitabhängige Vorgänge</strong> (<InlineMath math="\\varphi" />, <InlineMath math="\\varepsilon_{cs}" />, <InlineMath math="\\Delta\\sigma_{pr}" />) verloren gehen können, entscheidet die zutreffende Erfassung dieser Beiwerte direkt über die Rissfreiheit (Dekompression) und die Gebrauchstauglichkeit des Bauwerks über 100 Jahre.
+          Schätzwerte ermöglichen im frühen Entwurf eine zielsichere Bauteildimensionierung ohne aufwändige iterative Iterationsschritte. In der Ausführungsplanung verlangt <strong>DIN EN 1992-1-1 (Eurocode 2)</strong> jedoch zwingend die Auswertung der differenzierten physikalischen Formeln. Da bei Vorspannung bis zu <strong>25 % der Vorspannkraft durch zeitabhängige Vorgänge</strong> (<InlineMath math="\varphi" />, <InlineMath math="\varepsilon_{cs}" />, <InlineMath math="\Delta\sigma_{pr}" />) verloren gehen können, entscheidet die zutreffende Erfassung dieser Beiwerte direkt über die Dekompression, die Rissbreiten und die Gebrauchstauglichkeit des Bauwerks über 100 Jahre.
         </p>
       </div>
     </div>

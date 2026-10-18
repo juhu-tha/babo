@@ -340,7 +340,7 @@ export default function BpKlebstoffe() {
         ]} 
         formeln={[
           { formel: '\\sigma_{ad} = \\frac{F}{A_G} \\quad \\text{[N/mm²]}', erklaerung: 'Scherfestigkeit der Verklebungsfuge' },
-          { formel: 'R_v = \\frac{L_{max} - L_{min}}{L_0} \\times 100 \\quad \\text{[%]}', erklaerung: 'Inhärente Rückstellfähigkeit von Elastomer-Fugendichtstoffen' }
+          { formel: 'R_v = \\frac{L_{max} - L_{min}}{L_0} \\times 100 \\quad \\text{[\\%]}', erklaerung: 'Inhärente Rückstellfähigkeit von Elastomer-Fugendichtstoffen' }
         ]} 
       />
     </div>
