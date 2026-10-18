@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { adminLogin, adminLogout, verifyAdminSession } from '@/src/utils/adminAuth';
 import { 
   ShieldCheck, 
   Lock, 
@@ -28,7 +29,6 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 
-const ADMIN_PASSWORD = 'admin_tha';
 
 interface ApRow {
   id: string;
@@ -235,37 +235,41 @@ Jedes einzelne Fachmodul wird zwingend anhand folgender 6 Qualitätsdimensionen 
       - Mathematisch präzises Formel-Rendering mit LaTeX/KaTeX (InlineMath & BlockMath).`;
 
 export default function Admin() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    try {
-      return sessionStorage.getItem('tha_admin_authenticated') === 'true';
-    } catch {
-      return false;
-    }
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isChecking, setIsChecking] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    let active = true;
+    verifyAdminSession().then(valid => {
+      if (active && valid) setIsAuthenticated(true);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
   const [activeTab, setActiveTab] = useState<'uebersicht' | 'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang'>('uebersicht');
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput === ADMIN_PASSWORD) {
+    if (!passwordInput || isChecking) return;
+    setIsChecking(true);
+    const result = await adminLogin(passwordInput);
+    setIsChecking(false);
+    setPasswordInput('');
+    if (result.ok) {
       setIsAuthenticated(true);
       setErrorMessage('');
-      try {
-        sessionStorage.setItem('tha_admin_authenticated', 'true');
-      } catch {}
     } else {
-      setErrorMessage('Ungültiges Kennwort. Zugriff verweigert.');
-      setPasswordInput('');
+      setErrorMessage(result.message || 'Anmeldung fehlgeschlagen.');
     }
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    try {
-      sessionStorage.removeItem('tha_admin_authenticated');
-    } catch {}
+    adminLogout();
   };
 
   const handleCopyPrompt = () => {
@@ -312,9 +316,10 @@ export default function Admin() {
 
             <button
               type="submit"
+              disabled={isChecking}
               className="w-full py-3 bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Lock size={16} /> Entsperren &amp; Fortfahren
+              <Lock size={16} /> {isChecking ? 'Prüfe Kennwort …' : <>Entsperren &amp; Fortfahren</>}
             </button>
           </form>
 

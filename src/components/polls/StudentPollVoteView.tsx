@@ -70,7 +70,10 @@ export default function StudentPollVoteView({
 
   useEffect(() => {
     fetchVotes();
-    const timer = setInterval(fetchVotes, 3000);
+    // Alle 5 s aktualisieren, aber nur solange der Tab sichtbar ist (entlastet den Server bei großen Gruppen)
+    const timer = setInterval(() => {
+      if (typeof document === 'undefined' || !document.hidden) fetchVotes();
+    }, 5000);
     return () => clearInterval(timer);
   }, [lectureId]);
 
