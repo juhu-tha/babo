@@ -124,7 +124,6 @@ export default function Startseite() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <h3 className="font-bold text-text-main dark:text-slate-100 group-hover:text-shiraz transition-colors">Admin & Audit</h3>
-              <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 bg-shiraz/10 text-shiraz rounded">admin_tha</span>
             </div>
             <p className="text-sm text-text-main/70 dark:text-slate-400">Auditprompt, Gestaltungs-Guidelines, Code-Umfang (244 Module, ~218k Zeilen) & Tech-Stack.</p>
           </div>
@@ -158,7 +157,7 @@ export default function Startseite() {
           <button
             onClick={() => setActiveTab('admin')}
             className="text-xs text-text-main/60 hover:text-shiraz hover:underline inline-flex items-center gap-1.5 font-semibold cursor-pointer transition-colors"
-            title="Admin-Bereich öffnen (Passwort: admin_tha)"
+            title="Admin-Bereich öffnen (Anmeldung für Dozierende)"
           >
             <ShieldAlert size={12} className="text-shiraz" />
             <span>Admin-Bereich</span>
