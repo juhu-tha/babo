@@ -318,7 +318,7 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
 
   // Vorlesungen
   vl_ueberblick: "Vorlesungsportal der Technischen Hochschule Augsburg (THA): Übersicht aller Lehrveranstaltungen, Semestertermine und geschützter Zugang.",
-  vl_bauen_im_bestand: "Vorlesung Bauen im Bestand: Vorlesungsunterlagen, Semesterwochenplan, Koldewey-Genauigkeitsstufen, ZfP und prEN 1990-2.",
+  vl_bauen_im_bestand: "Vorlesung Bauen im Bestand: Vorlesungsunterlagen, Semesterwochenplan, Koldewey-Genauigkeitsstufen, ZfP und EN 1990-2:2026.",
   vl_nachhaltiges_bauen: "Vorlesung Nachhaltiges Bauen: Ökobilanzierung (LCA), EU-Taxonomie, EPBD 2024/1275, Stoffströme und digitaler Produktpass.",
   vl_bauschaeden: "Vorlesung Bauschäden: Bausachverständigenwesen, Kausalketten der Schadensanalyse, Rissmechanik und VDI 6200 Zustandsbewertung.",
   vl_baustoffkunde: "Vorlesung Baustoffkunde: Chemisch-physikalische Grundlagen mineralischer, metallischer und organischer Baustoffe.",

@@ -3,6 +3,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Line } from 'react-chartjs-2';
 import { BlockMath, InlineMath } from 'react-katex';
+import { designLognormal, charValue, fckFromInSitu, classFor, fkMasonry, fdMasonry } from '@/src/utils/bestandKern';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -81,16 +82,19 @@ export default function HistorischeMaterialkennwerte() {
   const [steelForceYieldKn, setSteelForceYieldKn] = useState<number>(32);
   const [steelForceTensileKn, setSteelForceTensileKn] = useState<number>(48);
 
-  // Tab 3: Bestandsnachweis / DBV & prEN 1990-2 States
+  // Tab 3: Bestandsnachweis / DBV & EN 1990-2:2026 States
   const [nachweisMaterial, setNachweisMaterial] = useState<'stahl' | 'beton' | 'mauerwerk'>('stahl');
   const [failureDuctility, setFailureDuctility] = useState<'duktil' | 'sproed'>('duktil');
   const [sampleMean, setSampleMean] = useState<number>(260); // f_ym in N/mm²
   const [sampleCov, setSampleCov] = useState<number>(0.08); // V_f (z.B. 0.08 für homogenen Stahl)
   const [targetBeta, setTargetBeta] = useState<number>(3.8); // Beta (3.8 für 50 Jahre, 3.3 für 30 Jahre Restnutzung)
   const [alphaR, setAlphaR] = useState<number>(0.8); // Sensitivitätsfaktor alpha_R = 0.8
+  const [gammaRd, setGammaRd] = useState<number>(1.1); // Modellunsicherheit γ_Rd
+  // Bohrkern-Stichprobe: In-situ-Festigkeiten aller Kerne (N/mm²), kommagetrennt
+  const [coreSeriesText, setCoreSeriesText] = useState<string>('24,8; 27,1; 22,9; 26,4; 25,3; 23,7');
   const [measuredGeometry, setMeasuredGeometry] = useState<boolean>(true); // Querschnitt gemessen
 
-  // Math Memo for Tab 3 according to DBV-Merkblatt & prEN 1990-2
+  // Math Memo for Tab 3 according to DBV-Merkblatt & EN 1990-2:2026
   const nachweisCalc = useMemo(() => {
     const f_m = sampleMean;
     const V = sampleCov;
@@ -100,27 +104,21 @@ export default function HistorischeMaterialkennwerte() {
     // 1. Charakteristischer Wert (5%-Quantil der Grundgesamtheit):
     const f_k = Math.max(0.1, f_m * (1 - 1.645 * V));
 
-    // 2. Teilsicherheitsbeiwerte nach Eurocode (Neubau)
-    const gamma_M_ec = nachweisMaterial === 'stahl' ? 1.15 : (nachweisMaterial === 'beton' ? 1.50 : 2.20);
+    // 2. Teilsicherheitsbeiwerte nach Eurocode (Neubau):
+    //    Baustahl γ_M0 = 1,0 (EC3), Beton γ_c = 1,5 (EC2), Mauerwerk γ_M = 1,5 (EC6/NA, Regelwert)
+    const gamma_M_ec = nachweisMaterial === 'stahl' ? 1.0 : 1.5;
     const f_d_ec = f_k / gamma_M_ec;
 
-    // 3. Modifizierte Beiwerte nach DBV-Merkblatt
+    // 3. Modifizierte Beiwerte nach DBV-Merkblatt – gilt nur für Beton und Betonstahl
+    const dbvApplicable = nachweisMaterial === 'beton';
     let gamma_M_dbv = gamma_M_ec;
-    if (failureDuctility === 'duktil' && measuredGeometry) {
-      if (nachweisMaterial === 'stahl') gamma_M_dbv = 1.10;
-      else if (nachweisMaterial === 'beton') gamma_M_dbv = 1.30;
-      else if (nachweisMaterial === 'mauerwerk') gamma_M_dbv = 1.85;
-    } else {
-      if (nachweisMaterial === 'stahl') gamma_M_dbv = 1.12;
-      else if (nachweisMaterial === 'beton') gamma_M_dbv = 1.40;
-      else if (nachweisMaterial === 'mauerwerk') gamma_M_dbv = 2.05;
+    if (dbvApplicable) {
+      gamma_M_dbv = (failureDuctility === 'duktil' && measuredGeometry) ? 1.30 : 1.40;
     }
     const f_d_dbv = f_k / gamma_M_dbv;
 
-    // 4. prEN 1990-2 (Probabilistische Bemessung nach Eurocode 2. Generation)
-    // f_d = f_m * exp(-alpha_R * beta * V - 0.5 * V^2)
-    const exponent = -aR * beta * V - 0.5 * Math.pow(V, 2);
-    const f_d_pren = f_m * Math.exp(exponent);
+    // 4. EN 1990-2:2026 – lognormaler Bemessungswert inkl. Modellunsicherheit γ_Rd (bestandKern.designLognormal)
+    const f_d_pren = designLognormal(f_m, V, beta, aR, gammaRd);
 
     // Rechnerischer Zugewinn
     const gainDbvPercent = ((f_d_dbv / f_d_ec) - 1) * 100;
@@ -135,9 +133,10 @@ export default function HistorischeMaterialkennwerte() {
       gainDbvPercent,
       f_d_pren,
       gainPrenPercent,
-      equivalentGammaPren: f_k / f_d_pren
+      equivalentGammaPren: f_k / f_d_pren,
+      dbvApplicable
     };
-  }, [nachweisMaterial, failureDuctility, sampleMean, sampleCov, targetBeta, alphaR, measuredGeometry]);
+  }, [nachweisMaterial, failureDuctility, sampleMean, sampleCov, targetBeta, alphaR, measuredGeometry, gammaRd]);
 
   // Math Memo for Concrete Drill Core according to DIN EN 13791 & EC2
   const calculatedConcrete = useMemo(() => {
@@ -201,15 +200,8 @@ export default function HistorischeMaterialkennwerte() {
     const fCdStandard = (alphaCc * fIsCyl) / gammaC_standard;
     const fCdAssessment = (alphaCc * fIsCyl) / gammaC_assessment;
 
-    let classEstimate = 'C20/25';
-    if (fIsCyl < 10) classEstimate = 'Ziegelbeton / < C8/10';
-    else if (fIsCyl < 12) classEstimate = 'C8/10 (Bn 100)';
-    else if (fIsCyl < 16) classEstimate = 'C12/15 (Bn 150)';
-    else if (fIsCyl < 20) classEstimate = 'C16/20 (Bn 200)';
-    else if (fIsCyl < 25) classEstimate = 'C20/25 (Bn 250)';
-    else if (fIsCyl < 30) classEstimate = 'C25/30 (Bn 300)';
-    else if (fIsCyl < 37) classEstimate = 'C30/37 (Bn 350)';
-    else classEstimate = 'C35/45 (Bn 450)';
+    // Aus EINEM Kern keine Festigkeitsklasse: Einstufung erfolgt über die Stichprobe (siehe coreSeries)
+    const classEstimate = 'nur aus Stichprobe (n ≥ 3 Kerne) – siehe unten';
 
     return {
       areaSqMm,
@@ -227,6 +219,19 @@ export default function HistorischeMaterialkennwerte() {
       classEstimate
     };
   }, [coreDiameter, coreHeight, failureForceKn, coreMoisture, coreRebar]);
+
+  // Stichprobe: charakteristische In-situ-Festigkeit (DIN EN 1990 Anh. D, lognormal) → f_ck = f_ck,is / 0,85 (DIN EN 13791)
+  const coreSeries = useMemo(() => {
+    const values = coreSeriesText
+      .split(/[;\s]+/)
+      .map(v => parseFloat(v.replace(',', '.')))
+      .filter(v => Number.isFinite(v) && v > 0 && v < 200);
+    if (values.length < 3) return { n: values.length, valid: false as const };
+    const cv = charValue(values);
+    if (!cv.valid) return { n: values.length, valid: false as const };
+    const fck = fckFromInSitu(cv.Xk);
+    return { n: values.length, valid: true as const, mean: cv.mean, fckIs: cv.Xk, kn: cv.kn, fck, cls: classFor(fck) };
+  }, [coreSeriesText]);
 
   // Math Memo for Masonry Brick specimens according to DIN EN 772-1 & EC6
   const calculatedBrick = useMemo(() => {
@@ -248,12 +253,11 @@ export default function HistorischeMaterialkennwerte() {
     
     // Mauerwerk charakteristisches Mauerwerkdruckfestigkeit (f_k) nach EC6
     // Simplified formula: f_k = K * f_b^0.7 * f_m^0.3
-    const K = 0.55; // group 1 brick, general purpose mortar
-    const fK = K * Math.pow(fB, 0.7) * Math.pow(mortarStrength, 0.3);
-    
-    // Design wall strength
-    const gammaM = 2.0;
-    const fD = fK / gammaM;
+    // K = 0,55 (Gruppe 1, Normalmauermörtel) – für DE die K-Werte des NA verwenden; Anwendbarkeit bei Kalkmörtel prüfen
+    const fK = fkMasonry(fB, mortarStrength, 0.55);
+
+    // Bemessungswert f_d = ζ · f_k / γ_M mit ζ = 0,85 und γ_M = 1,5 (DIN EN 1996-1-1/NA, Regelwert)
+    const fD = fdMasonry(fK, 1.5, 0.85);
 
     return {
       areaSqMm,
@@ -383,7 +387,7 @@ export default function HistorischeMaterialkennwerte() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
             }`}
           >
-            <ShieldCheck size={16} /> Statische Nachweise im Bestand (DBV &amp; prEN 1990-2)
+            <ShieldCheck size={16} /> Statische Nachweise im Bestand (DBV &amp; EN 1990-2:2026)
           </button>
         </div>
         <div className="p-6">
@@ -572,7 +576,7 @@ export default function HistorischeMaterialkennwerte() {
             {/* Context manual */}
             <div className="text-sm bg-slate-50 text-slate-700 p-4 rounded-xl border border-home-grau/30 mb-8">
               <p>
-                <strong>Laborprüfungs- &amp; Beprobungsauswertung:</strong> Prüfe gewonnene Proben aus Bauteilen und überführen Sie diese nach geltenden Normen (z.B. DIN EN 13791 für Bohrkerne, DIN EN 772-1 für Mauersteine und Zugprüfungen nach ISO 6892-1) in charakteristische Kenngrößen.
+                <strong>Laborprüfungs- &amp; Beprobungsauswertung:</strong> Prüfen Sie gewonnene Proben aus Bauteilen und überführen Sie diese nach geltenden Normen (z.B. DIN EN 13791 für Bohrkerne, DIN EN 772-1 für Mauersteine und Zugprüfungen nach ISO 6892-1) in charakteristische Kenngrößen.
               </p>
             </div>
 
@@ -826,7 +830,7 @@ export default function HistorischeMaterialkennwerte() {
                         className="w-full accent-shiraz"
                       />
                       <div className="flex justify-between text-xs mt-1 text-home-grau">
-                        <span>M 1.0 (Sanitärmörtel)</span>
+                        <span>M 1 (historischer Kalkmörtel)</span>
                         <span>M 5.0 (Standard)</span>
                         <span>M 15 (Hochfest)</span>
                       </div>
@@ -953,7 +957,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div className="flex items-center justify-between border-b pb-4 mb-4">
                       <span className="text-xs font-bold text-shiraz uppercase tracking-widest block">Protokoll: DIN EN 13791</span>
                       <div className="px-3 py-1 text-xs font-semibold bg-shiraz/10 text-shiraz rounded-full border border-shiraz/20">
-                        In-situ Einstufung: <strong className="font-bold">{calculatedConcrete.classEstimate}</strong>
+                        Einzelkern – Klasse: <strong className="font-bold">{coreSeries.valid ? `${coreSeries.cls} (aus n = ${coreSeries.n})` : 'erst ab n ≥ 3'}</strong>
                       </div>
                     </div>
 
@@ -1002,25 +1006,45 @@ export default function HistorischeMaterialkennwerte() {
                       </div>
                     </div>
 
-                    {/* Safety limit comparisons (Eurocode Nachrechnungs-Designwert) */}
-                    <div className="mt-6 border-t pt-4">
-                      <h4 className="text-xs font-bold text-text-main uppercase mb-2">Eurocode-Vergleich der Bemessungswerte (<InlineMath math="f_{cd}" />)</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-3 bg-home-grau/5 rounded-lg border border-home-grau/30">
-                          <span className="text-xs font-bold text-home-grau block uppercase">Standard-Sicherungsverfahren</span>
-                          <div className="text-md font-bold text-text-main">{calculatedConcrete.fCdStandard.toFixed(2)} N/mm²</div>
-                          <span className="text-xs text-home-grau mt-1 block">
-                            Sicherheitsfaktor <InlineMath math="\gamma_c = 1.50" />
-                          </span>
+                    <p className="mt-3 text-[11px] text-home-grau leading-relaxed">
+                      Hinweis: Die Faktoren k_moist, k_rebar und k_dia stehen nicht in DIN EN 13791 (Literaturwerte, z. B. Concrete Society TR 11 / ACI 214.4R – Quelle prüfen). DIN EN 13791 verlangt bewehrungsfreie Kerne.
+                    </p>
+
+                    {/* Stichprobe: charakteristischer Wert und Klasse */}
+                    <div className="mt-6 border-t pt-4 space-y-3">
+                      <h4 className="text-xs font-bold text-text-main uppercase">Stichprobe: charakteristischer Wert und Druckfestigkeitsklasse</h4>
+                      <label className="text-xs text-home-grau block">
+                        In-situ-Festigkeiten aller Kerne f_is [N/mm²], getrennt durch Semikolon:
+                        <input
+                          type="text"
+                          value={coreSeriesText}
+                          onChange={(e) => setCoreSeriesText(e.target.value)}
+                          className="mt-1 w-full p-2 border border-home-grau/30 rounded-lg text-xs font-mono"
+                        />
+                      </label>
+                      {coreSeries.valid ? (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                          <div className="p-3 bg-home-grau/5 rounded-lg border border-home-grau/30">
+                            <span className="text-xs font-bold text-home-grau block uppercase">n = {coreSeries.n} · Mittelwert</span>
+                            <div className="text-md font-bold text-text-main">{coreSeries.mean.toFixed(1)} N/mm²</div>
+                          </div>
+                          <div className="p-3 bg-home-grau/5 rounded-lg border border-home-grau/30">
+                            <span className="text-xs font-bold text-home-grau block uppercase">f_ck,is (k_n = {coreSeries.kn.toFixed(2)})</span>
+                            <div className="text-md font-bold text-text-main">{coreSeries.fckIs.toFixed(1)} N/mm²</div>
+                          </div>
+                          <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-250">
+                            <span className="text-xs font-bold text-emerald-800 block uppercase">f_ck = f_ck,is / 0,85</span>
+                            <div className="text-md font-bold text-emerald-800">{coreSeries.fck.toFixed(1)} N/mm² → {coreSeries.cls}</div>
+                          </div>
                         </div>
-                        <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-250">
-                          <span className="text-xs font-bold text-emerald-800 block uppercase">Bauwerksdiagnose-Sicherheitsniveau</span>
-                          <div className="text-md font-bold text-emerald-800">{calculatedConcrete.fCdAssessment.toFixed(2)} N/mm²</div>
-                          <span className="text-xs text-emerald-700 mt-1 block">
-                            Begünstigung <InlineMath math="\gamma_c = 1.35" /> wegen realer Probeentnahme!
-                          </span>
+                      ) : (
+                        <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900">
+                          Mindestens 3 Kernwerte eingeben – aus einem einzelnen Kern darf weder eine Festigkeitsklasse noch ein Bemessungswert abgeleitet werden.
                         </div>
-                      </div>
+                      )}
+                      <p className="text-[11px] text-home-grau leading-relaxed">
+                        Charakteristischer Wert als 5-%-Fraktile (log-normal, V unbekannt) nach DIN EN 1990 Anhang D; Umrechnung auf die Druckfestigkeitsklasse nach DIN EN 13791. Für die verbindliche Bewertung Verfahren und Mindestanzahl der geltenden DIN EN 13791:2020-02 + A20 anwenden.
+                      </p>
                     </div>
                   </div>
                 )}
@@ -1077,7 +1101,7 @@ export default function HistorischeMaterialkennwerte() {
                       <div className="p-4 bg-white rounded-xl border border-amber-300 text-sm leading-relaxed text-amber-900">
                         Bemessungswert der Wandfestigkeit: <strong className="font-mono font-bold text-md text-amber-950">{calculatedBrick.fD.toFixed(2)} N/mm²</strong> 
                         <span className="text-xs text-amber-800 block mt-1">
-                          (Unter Berücksichtigung des Sicherheitsbeiwertes <InlineMath math="\gamma_M = 2.0" /> für historisches oder Bestandsmauerwerk).
+                          (Mit <InlineMath math="f_d = \zeta \cdot f_k / \gamma_M" />, <InlineMath math="\zeta = 0{,}85" /> und <InlineMath math="\gamma_M = 1{,}5" /> nach DIN EN 1996-1-1/NA.)
                         </span>
                       </div>
                     </div>
@@ -1113,11 +1137,11 @@ export default function HistorischeMaterialkennwerte() {
                       <h4 className="font-sans font-bold text-xs text-text-main uppercase tracking-wider mb-2">Zugprüfungsauswertung:</h4>
                       <div className="text-[12px] space-y-2 leading-relaxed font-mono text-text-main/90">
                         <div>
-                          <span className="font-sans text-home-grau">Bruchspannung elastisch: </span>
+                          <span className="font-sans text-home-grau">Streckgrenze: </span>
                           <InlineMath math={`R_{eH} = \\frac{F_{eH}}{A_0} = \\frac{${steelForceYieldKn} \\text{ kN}}{${calculatedSteel.areaSqMm.toFixed(1)} \\text{ mm}^2} = ${calculatedSteel.yieldStrengthMpa.toFixed(1)} \\text{ N/mm}^2`} />
                         </div>
                         <div>
-                          <span className="font-sans text-home-grau">Maximale Reißspanung plastisch: </span>
+                          <span className="font-sans text-home-grau">Maximale Reißspannung plastisch: </span>
                           <InlineMath math={`R_{m} = \\frac{F_m}{A_0} = \\frac{${steelForceTensileKn} \\text{ kN}}{${calculatedSteel.areaSqMm.toFixed(1)} \\text{ mm}^2} = ${calculatedSteel.tensileStrengthMpa.toFixed(1)} \\text{ N/mm}^2`} />
                         </div>
                         <hr className="my-1 border-home-grau/30" />
@@ -1204,6 +1228,9 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 2: Zuordnung im Eurocode 3 System</strong>
                       In DIN EN 10025-2 entspricht dies der heutigen Standardgüte <strong>S235JR</strong>.
+                      <span className="block mt-1 text-[12px] font-sans text-amber-800">
+                        Achtung: Ohne Materialprüfung ist bei Stählen vor ca. 1970 mit Thomasstahl zu rechnen (Alterung, Sprödbruch, eingeschränkte Schweißeignung). Vor Ansatz von S235 und vor Schweißarbeiten Werkstoffprüfung durchführen (Zugversuch, Kerbschlagarbeit, chemische Analyse).
+                      </span>
                     </div>
                     <div>
                       <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 3: Bemessungswert-Ermittlung</strong>
@@ -1226,7 +1253,7 @@ export default function HistorischeMaterialkennwerte() {
                   <div className="space-y-3 font-serif pl-2 border-l-2 border-shiraz/40 my-3">
                     <div>
                       <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 1: Stein-Druckfestigkeit &amp; Formbeiwert (DIN EN 772-1)</strong>
-                      Durch Probeentnahmen von drei unbeschädigten Reichsformat-Mauersteinen im Labor wird das arithmetische Mittel der Druckfestigkeit ermittelt: <InlineMath math="f_p = 15.0 \text{ N/mm}^2" />. Das Reichsformat hat ca. {`h = 65\text{ mm}, w = 120\text{ mm}`} (<InlineMath math="h/w = 0.54" />). Der zugehörige Formfaktor beträgt <InlineMath math="d = 0.82" />. Damit lautet die normierte Steinfestigkeit <InlineMath math="f_b" />:
+                      Durch Probeentnahmen von drei unbeschädigten Reichsformat-Mauersteinen im Labor wird das arithmetische Mittel der Druckfestigkeit ermittelt: <InlineMath math="f_p = 15.0 \text{ N/mm}^2" />. Das Reichsformat hat ca. h = 65 mm und w = 120 mm (<InlineMath math="h/w = 0{,}54" />). Für eine belastbare Aussage sind mindestens 6 Steine (DIN EN 772-1) und eine Mörtelprüfung erforderlich. Der zugehörige Formfaktor beträgt <InlineMath math="d = 0.82" />. Damit lautet die normierte Steinfestigkeit <InlineMath math="f_b" />:
                       <BlockMath math="f_b = f_p \cdot d = 15.0 \cdot 0.82 = 12.3 \text{ N/mm}^2" />
                     </div>
                     <div>
@@ -1235,9 +1262,10 @@ export default function HistorischeMaterialkennwerte() {
                       <BlockMath math="f_k = K \cdot f_b^{0.7} \cdot f_m^{0.3} = 0.55 \cdot (12.3)^{0.7} \cdot (2.5)^{0.3} = 4.19 \text{ N/mm}^2" />
                     </div>
                     <div>
-                      <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 3: Bemessungswert (f_d) mit modifiziertem Teilsicherheitsbeiwert</strong>
-                      Unter Berücksichtigung der vor Ort nachgewiesenen Mauerwerksqualität und Schadensfreiheit kann der Teilsicherheitsbeiwert auf <InlineMath math="\gamma_M = 1.5" /> (nach WTA/prEN 1990-2) angesetzt werden:
-                      <BlockMath math="f_d = \frac{f_k}{\gamma_M} = \frac{4.19}{1.5} = 2.79 \text{ N/mm}^2" />
+                      <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 3: Bemessungswert (f_d) nach DIN EN 1996-1-1/NA</strong>
+                      Mit dem Dauerstandsbeiwert <InlineMath math="\zeta = 0{,}85" /> und dem Regelwert <InlineMath math="\gamma_M = 1{,}5" /> (DIN EN 1996-1-1/NA, keine Modifikation) ergibt sich:
+                      <BlockMath math="f_d = \frac{\zeta \cdot f_k}{\gamma_M} = \frac{0{,}85 \cdot 4{,}19}{1{,}5} = 2{,}37 \text{ N/mm}^2" />
+                      <span className="block text-[12px] font-sans text-slate-500">Für Bestandsmauerwerk mit Kalkmörtel die Anwendbarkeit der EC6-Formel und die K-Werte des NA prüfen.</span>
                     </div>
                   </div>
                 </div>
@@ -1246,7 +1274,7 @@ export default function HistorischeMaterialkennwerte() {
           </div>
         )}
 
-        {/* -------------------- TAB 3: STATISCHE NACHWEISE IM BESTAND (DBV & prEN 1990-2) -------------------- */}
+        {/* -------------------- TAB 3: STATISCHE NACHWEISE IM BESTAND (DBV & EN 1990-2:2026) -------------------- */}
         {mainTab === 'nachweis_bestand' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             {/* Header info */}
@@ -1259,13 +1287,12 @@ export default function HistorischeMaterialkennwerte() {
                 Das semiprobabilistische Sicherheitskonzept der Eurocodes (DIN EN 1990 mit Ziel-Zuverlässigkeitsindex{' '}
                 <InlineMath math="\beta = 3{,}8" /> bzw. Versagenswahrscheinlichkeit{' '}
                 <InlineMath math="P_f \approx 10^{-4}" />) wurde ausschließlich für <em>Neubauten</em> konzipiert. Hohe Teilsicherheitsbeiwerte ({' '}
-                <InlineMath math="\gamma_G = 1{,}35" />, <InlineMath math="\gamma_c = 1{,}50" />, <InlineMath math="\gamma_s = 1{,}15" />) sichern dort Varianzen ab, die beim Bestandsbau durch millimetergenaue Bauaufnahme, Bohrkerne und Wiegung faktisch gar nicht mehr existieren.
+                <InlineMath math="\gamma_G = 1{,}35" />, <InlineMath math="\gamma_c = 1{,}50" />, <InlineMath math="\gamma_s = 1{,}15" />) sichern dort Streuungen ab, die beim Bestandsbau durch Messung (Bauaufnahme, Bohrkerne, Wiegung) teilweise reduziert werden können; Modell- und Einwirkungsunsicherheiten bleiben bestehen.
               </p>
               <p>
-                Wendet man starre Neubau-Beiwerte auf den Bestand an, bestraft man das Gebäude rechnerisch für nicht existente Risiken. 
-                Das <strong>DBV-Merkblatt „Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte“</strong> und der künftige Eurocode{' '}
-                <strong>prEN 1990-2 („Assessment of existing structures“)</strong> legitimieren die probabilistische Abminderung der Beiwerte und das <strong>Bayes&apos;sche Updating</strong>, wodurch signifikante Tragreserven ({' '}
-                <InlineMath math="+15\text{ bis }+35\,\%" />) freigesetzt und unnötige Abrisse verhindert werden.
+                Werden Neubau-Beiwerte unverändert auf den Bestand angewendet, bleiben Informationen aus der Bauwerksuntersuchung ungenutzt.
+                Das <strong>DBV-Merkblatt „Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte“</strong> (Beton und Betonstahl) und die{' '}
+                <strong>EN 1990-2:2026 („Assessment of existing structures“)</strong> erlauben auf Grundlage gemessener Kennwerte angepasste Teilsicherheitsbeiwerte und das <strong>Bayes&apos;sche Updating</strong>. Ob sich daraus eine Tragreserve ergibt, hängt vom Stichprobenumfang, der Streuung und der Modellunsicherheit ab – der Rechner unten zeigt, dass der Effekt auch negativ sein kann.
               </p>
             </div>
 
@@ -1278,11 +1305,11 @@ export default function HistorischeMaterialkennwerte() {
                     Interaktiver Tragfähigkeits- und Zuverlässigkeitsrechner
                   </h4>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Vergleich: Starre Eurocode-Neubau-Bemessung vs. DBV-Merkblatt vs. probabilistische prEN 1990-2-Bemessung
+                    Vergleich: Starre Eurocode-Neubau-Bemessung vs. DBV-Merkblatt vs. probabilistische EN 1990-2:2026-Bemessung
                   </p>
                 </div>
                 <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-shiraz/10 text-shiraz border border-shiraz/20">
-                  prEN 1990-2 &amp; DBV
+                  EN 1990-2:2026 &amp; DBV
                 </span>
               </div>
 
@@ -1431,19 +1458,35 @@ export default function HistorischeMaterialkennwerte() {
                       </button>
                       <button
                         type="button"
-                        onClick={() => setTargetBeta(3.3)}
+                        onClick={() => setTargetBeta(4.7)}
                         className={`py-1 px-2 rounded text-[11px] font-bold border transition-colors cursor-pointer ${
-                          targetBeta === 3.3
+                          targetBeta === 4.7
                             ? 'bg-shiraz text-white border-shiraz'
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
                       >
-                        β = 3.3 (30 a Rest)
+                        β = 4.7 (1 a)
                       </button>
                     </div>
                     <span className="text-[10px] text-slate-500 block">
-                      prEN 1990-2 gestattet die Anpassung von β an die verbleibende Restnutzungsdauer!
+                      β gilt für die jeweilige Bezugsdauer (RC2: β₅₀ = 3,8 ≙ β₁ = 4,7). Eine kürzere Restnutzungsdauer senkt β nicht automatisch – Anpassungen nach EN 1990-2:2026 mit Fundstelle begründen.
                     </span>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-xs text-slate-700 mb-1">
+                      <span>Modellunsicherheit (<InlineMath math="\gamma_{Rd}" />):</span>
+                      <strong className="font-mono text-slate-900">{gammaRd.toFixed(2)}</strong>
+                    </div>
+                    <input
+                      type="range"
+                      min="1.0"
+                      max="1.3"
+                      step="0.05"
+                      value={gammaRd}
+                      onChange={(e) => setGammaRd(Number(e.target.value))}
+                      className="w-full accent-shiraz"
+                    />
                   </div>
 
                   <div>
@@ -1508,26 +1551,27 @@ export default function HistorischeMaterialkennwerte() {
                     </div>
                     <div className="flex justify-between">
                       <span>Traglastvorteil:</span>
-                      <strong className="font-mono text-emerald-700">+{nachweisCalc.gainDbvPercent.toFixed(1)} %</strong>
+                      <strong className="font-mono text-emerald-700">{nachweisCalc.gainDbvPercent >= 0 ? '+' : ''}{nachweisCalc.gainDbvPercent.toFixed(1)} %</strong>
                     </div>
                     <span className="text-[10px] text-amber-900 font-semibold block pt-1">
-                      Rechtssicher nach DBV-Merkblatt (2013/2021)
+                      {nachweisCalc.dbvApplicable
+                        ? 'DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“'
+                        : 'Nicht anwendbar: Das DBV-Merkblatt gilt nur für Beton und Betonstahl.'}
                     </span>
                   </div>
                 </div>
 
-                {/* Method 3: prEN 1990-2 (Eurocode 2. Gen) */}
+                {/* Method 3: EN 1990-2:2026 (Eurocode 2. Gen) */}
                 <div className="p-4 rounded-xl border border-emerald-300 bg-emerald-50/60 flex flex-col justify-between">
                   <div>
                     <span className="text-[10px] uppercase font-bold text-emerald-700 tracking-wider">
-                      3. prEN 1990-2 (Probabilistisch)
+                      3. EN 1990-2:2026 (versuchsgestützt)
                     </span>
                     <strong className="text-xl font-extrabold text-emerald-900 block mt-1">
                       {nachweisCalc.f_d_pren.toFixed(2)} N/mm²
                     </strong>
                     <span className="text-xs text-emerald-800 block mt-0.5">
-                      Voll-probabilistisches Bayes-Modell
-                    </span>
+                      Lognormaler Bemessungswert mit <InlineMath math="\gamma_{Rd}" /></span>
                   </div>
                   <div className="mt-4 pt-3 border-t border-emerald-200 text-xs text-slate-700 space-y-1">
                     <div className="flex justify-between">
@@ -1535,13 +1579,13 @@ export default function HistorischeMaterialkennwerte() {
                       <strong className="font-mono text-emerald-900">{nachweisCalc.equivalentGammaPren.toFixed(2)}</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span>Maximaler Traglastgewinn:</span>
-                      <strong className="font-mono text-emerald-700 text-sm font-extrabold">
-                        +{nachweisCalc.gainPrenPercent.toFixed(1)} %
+                      <span>Differenz zum Neubauwert:</span>
+                      <strong className={`font-mono text-sm font-extrabold ${nachweisCalc.gainPrenPercent >= 0 ? 'text-emerald-700' : 'text-rose-700'}`}>
+                        {nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{nachweisCalc.gainPrenPercent.toFixed(1)} %
                       </strong>
                     </div>
                     <span className="text-[10px] text-emerald-900 font-semibold block pt-1">
-                      Maximale Ressourceneinsparung ohne Verstärkung!
+                      Nur mit ausreichender Stichprobe und belegtem V
                     </span>
                   </div>
                 </div>
@@ -1550,12 +1594,12 @@ export default function HistorischeMaterialkennwerte() {
               {/* Explanatory Formula Box */}
               <div className="mt-5 p-4 rounded-xl bg-slate-900 text-white font-mono text-xs">
                 <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-1">
-                  Berechnungsformel nach prEN 1990-2 (Assessment of Existing Structures, Gl. 7.12):
+                  Lognormaler Bemessungswert (Grundgleichung nach DIN EN 1990, Anhang C; Anwendung im Bestand nach EN 1990-2:2026):
                 </span>
-                <BlockMath math="f_d = f_m \cdot \exp\left(-\alpha_R \cdot \beta \cdot V_f - 0{,}5 \cdot V_f^2\right)" />
+                <BlockMath math="f_d = \frac{f_m}{\gamma_{Rd}} \cdot \exp\left(-\alpha_R \cdot \beta \cdot \sigma_{\ln} - 0{,}5 \cdot \sigma_{\ln}^2\right),\quad \sigma_{\ln} = \sqrt{\ln(1 + V_f^2)}" />
                 <div className="text-[11px] text-slate-300 font-sans mt-2 leading-relaxed">
-                  <strong>Ergebnis-Interpretation:</strong> Durch den Nachweis geringer In-situ-Streuung (<InlineMath math={`V_f = ${(sampleCov * 100).toFixed(1)}\\%`} />) und die probabilistische Verknüpfung steigt die rechnerische Tragfähigkeit um bis zu{' '}
-                  <strong className="text-emerald-400">+{nachweisCalc.gainPrenPercent.toFixed(1)} %</strong> gegenüber der starren Neubau-Norm. So können bestehende Decken und Stützen ohne teure und substanzzerstörende CFK-Lamellen oder Betonschalen ertüchtigt werden.
+                  <strong>Ergebnis-Interpretation:</strong> Durch den Nachweis geringer In-situ-Streuung (<InlineMath math={`V_f = ${(sampleCov * 100).toFixed(1)}\\%`} />) ergibt sich gegenüber dem Neubauwert eine Differenz von{' '}
+                  <strong className="text-emerald-400">{nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{nachweisCalc.gainPrenPercent.toFixed(1)} %</strong>. Ergibt sich eine Reserve, kann eine Verstärkung ggf. entfallen; Voraussetzung sind ausreichende Stichproben und die Berücksichtigung der Modellunsicherheit.
                 </div>
               </div>
             </div>
@@ -1573,7 +1617,7 @@ export default function HistorischeMaterialkennwerte() {
         ]}
         regelwerke={[
           { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/' },
-          { title: 'prEN 1990-2 (Eurocode: Bewertung bestehender Tragwerke - Existing Structures)', url: 'https://www.dinmedia.de/' },
+          { title: 'EN 1990-2:2026 (Eurocode: Bewertung bestehender Tragwerke - Existing Structures)', url: 'https://www.dinmedia.de/' },
           { title: 'DBV-Merkblatt: Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte', url: 'https://www.betonverein.de/' },
           { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Betontragwerken)', url: 'https://www.dinmedia.de/' },
           { title: 'DIN EN 13791 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)', url: 'https://www.dinmedia.de/' },
@@ -1585,14 +1629,14 @@ export default function HistorischeMaterialkennwerte() {
           'DBV (Deutscher Beton- und Bautechnik-Verein): Merkblatt Modifizierte Teilsicherheitsbeiwerte',
           'Wicke, M. et al.: Historische Baukonstruktion und Sanierung',
           'Ahnert, R., Krause, K. H.: Typische Baukonstruktionen von 1860 bis 1960',
-          'DIN Fachbericht 102: Bewertung bestehender Beton- und Stahlbetontragwerke',
+          'DBV-Merkblätter „Bauen im Bestand“ (Beton und Betonstahl; Modifizierte Teilsicherheitsbeiwerte)',
           'Fischer, A.: Bestimmung modifizierter Teilsicherheitsbeiwerte zur Beurteilung von Bestandsbauten (Dissertation)'
         ]}
         formeln={[
           {
             formel: 'f_d = f_m \\cdot \\exp\\left(-\\alpha_R \\cdot \\beta \\cdot V_f - 0{,}5 \\cdot V_f^2\\right)',
-            erklaerung: 'Probabilistischer Bemessungswert nach prEN 1990-2 zur Bewertung von Bestandsbauten unter Berücksichtigung von Mittelwert f_m, Sensitivitätsfaktor alpha_R (0.8), Zuverlässigkeitsindex beta und Variationskoeffizient V_f.',
-            quelle: 'prEN 1990-2'
+            erklaerung: 'Probabilistischer Bemessungswert nach EN 1990-2:2026 zur Bewertung von Bestandsbauten unter Berücksichtigung von Mittelwert f_m, Sensitivitätsfaktor alpha_R (0.8), Zuverlässigkeitsindex beta und Variationskoeffizient V_f.',
+            quelle: 'EN 1990-2:2026'
           },
           {
             formel: 'f_{is,cyl} = f_{c,core} \\cdot k_{ratio} \\cdot k_{moist} \\cdot k_{rebar} \\cdot k_{dia}',

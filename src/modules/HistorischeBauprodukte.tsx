@@ -63,8 +63,8 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     epochLabel: 'Vorkriegszeit / Historisch',
     years: 'bis 1945',
     composition: 'Eisen mit extrem niedrigem Kohlenstoffgehalt (< 0,1 %), mechanisch eingewalzten Schlackefasern durch wiederholtes Falten und Schmieden.',
-    application: 'Decken-I-Träger (preußische Kappen), Schienen, genietete Fachwerkträger, historische Brücken (z.B. Eiffelturm-Typ), Maueranker.',
-    characteristics: 'Hervorragend schmiedbar und feuerfest schweißbar, jedoch nicht thermisch härtbar. Zeigt ein ausgeprägt anisotropes Fasergefüge (ähnlich Holz) und guten natürlichen Korrosionswiderstand.',
+    application: 'Decken-I-Träger (preußische Kappen), Schienen, genietete Fachwerkträger, historische Brücken und Türme (z. B. Eiffelturm, 1889), Maueranker.',
+    characteristics: 'Hervorragend schmiedbar und feuerschweißbar, jedoch nicht thermisch härtbar. Zeigt ein ausgeprägt anisotropes Fasergefüge (ähnlich Holz) und guten natürlichen Korrosionswiderstand.',
     riskClass: 'low',
     riskDetail: 'Schichtung des Fasergefüges kann bei eindringender Feuchtigkeit zu Delamination (Blätterrost) führen. Schlecht schweißbar mit modernen Schmelzschweißverfahren.',
     actionDetail: 'Korrosionsschutz intakt halten. Konstruktive Verbindungen im Sanierungsfall bevorzugt nieten, schrauben oder mit Spezialverfahren schweißen.'
@@ -80,7 +80,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     characteristics: 'Zähes Materialverhalten im Vergleich zu Gusseisen. Gut schmiedbar und warm verformbar, mechanische Kennwerte (Streckgrenze ca. 220-240 N/mm²) ähnlich modernem S235 Baustahl.',
     riskClass: 'low',
     riskDetail: 'Je nach Herstellungsverfahren (insb. unberuhigt vergossener Stahl) können erhebliche Seigerungszonen mit Kernanreicherungen von Schwefel und Phosphor vorliegen. Erhöhte Korrosionsneigung in diesen Zonen.',
-    actionDetail: 'Vor Sanierungs- oder Schweißarbeiten Bohrkernproben zur Bestimmung des Kohlenstoffäquivalents entnehmen. Im Zweifelsfall mechanische Schraub- oder Klemmverbindungen vorziehen.'
+    actionDetail: 'Vor Sanierungs- oder Schweißarbeiten Span- oder Materialproben für die chemische Analyse (Kohlenstoffäquivalent, P, N, S) entnehmen. Im Zweifelsfall mechanische Schraub- oder Klemmverbindungen vorziehen.'
   },
   {
     id: 'reichsformat_ziegel',
@@ -132,7 +132,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     characteristics: 'Hervorragende mechanische Verformbarkeit (leicht biegbar), extrem korrosionsbeständig und langlebig durch die Bildung einer unlöslichen Bleicarbonat-Schutzschicht im Rohrinneren.',
     riskClass: 'high',
     riskDetail: 'Auswaschung von toxischem Blei in das Trinkwasser (insb. bei saurem/weichem Wasser, nach langen Standzeiten oder bei Beschädigung der Schutzschicht). Führt zu chronischer Bleivergiftung (Saturnismus) mit schwerwiegenden Schäden des Zentralnervensystems, der Nieren und der Blutbildung.',
-    actionDetail: 'Trinkwasseranalyse veranlassen. Nach Trinkwasserverordnung gilt ein strenger Grenzwert von 0,010 mg/l. Bei Überschreitung oder Vorhandensein im Bestand ist der vollständige Austausch gegen Kupfer, Edelstahl oder zertifizierte Verbundrohre gesetzlich vorgeschrieben.'
+    actionDetail: 'Trinkwasseranalyse veranlassen. Nach § 17 TrinkwV (2023) mussten Bleileitungen bis 12.01.2026 entfernt oder stillgelegt werden (Fristverlängerung auf Antrag nur in Ausnahmefällen; bei Eigentümerwechsel Frist von einem Jahr nach Übergang). Grenzwert Blei 0,010 mg/l, ab 12.01.2028 0,005 mg/l. Austausch gegen Kupfer, Edelstahl oder zugelassene Kunststoff-/Verbundrohre.'
   },
   {
     id: 'kupferschlackesteine_pflaster',
@@ -164,7 +164,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     epochId: 'vorkrieg',
     epochLabel: 'Vorkriegszeit / Historisch',
     years: 'bis 1945',
-    composition: 'Trägergewebe aus verzinktem Eisendraht, bespannt mit Schilfmatten, verputzt mit faserarmiertem Gips- oder Kalkmörtel.',
+    composition: 'Trägergewebe aus (verzinktem) Eisendraht (Rabitzgewebe), in das Gips-, Kalk- oder Kalkzementmörtel direkt eingedrückt wird. Schilfmatten als Putzträger gehören dagegen zum Schilfrohrputz (eigenes System).',
     application: 'Abgehängte Decken, feuerhemmende Trägerverkleidungen, geschwungene Gewölbe-Imitationen.',
     characteristics: 'Ermöglichte den Übergang zu leichten, fugenlosen Unterdeckenkonstruktionen.',
     riskClass: 'low',
@@ -222,7 +222,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     application: 'Stahlprofile (I-Träger, U-Träger, Winkelprofile) in Hallenkonstruktionen, Brücken, historischen Fachwerkbauten und Deckenabfangungen.',
     characteristics: 'Gute statische Tragfähigkeit im ungestörten Zustand (Streckgrenze ca. 220-245 N/mm²), jedoch sprödanfällig unter dynamischer Last.',
     riskClass: 'medium',
-    riskDetail: 'Extreme Anfälligkeit für Alterungsversprödung über die Jahrzehnte. Durch den hohen Stickstoffgehalt ist der Stahl extrem schlecht schweißbar (Gefahr von Heißrissen im Gefüge).',
+    riskDetail: 'Extreme Anfälligkeit für Alterungsversprödung über die Jahrzehnte. Hoher Stickstoff- und Phosphorgehalt sowie Seigerungen führen zu Alterungsversprödung und eingeschränkter Schweißeignung.',
     actionDetail: 'Das Schweißen von Thomas-Stahl ist für tragende Anschlüsse unzulässig. Nachträgliche Ertüchtigungen müssen zwingend über Schraub- oder Nietverbindungen erfolgen. Vermeidung von Stoß- und Schlagbelastung.'
   },
   {
@@ -319,7 +319,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     epochLabel: 'Nachkriegszeit & Wiederaufbau',
     years: '1945 - 1969',
     composition: 'Aluminium-Magnesium-Silizium-Legierungen (AlMgSi), durch Strangpressen geformt, teilweise eloxiert (Anodisation).',
-    application: 'Schaufensteranlagen, Fensterrahmen, Vorhangfassaden (Curtin Walls), Verkleidungsprofile.',
+    application: 'Schaufensteranlagen, Fensterrahmen, Vorhangfassaden (Curtain Walls), Verkleidungsprofile.',
     characteristics: 'Sehr leicht, witterungsbeständig durch die natürliche oder künstlich verstärkte Oxidschicht. Besitzt jedoch keinerlei thermische Trennung (Vollaluminium-Profile).',
     riskClass: 'low',
     riskDetail: 'Extreme Kältebrücke führt zu starkem Tauwasserausfall an der Innenseite, was Korrosion an Anschlüssen und Schimmelbildung begünstigt. Aluminium korrodiert rasant (Lochfraß) bei direktem Kontakt mit feuchtem, alkalischem Zement- oder Kalkmörtel.',
@@ -357,7 +357,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     epochId: 'nachkrieg',
     epochLabel: 'Nachkriegszeit & Wiederaufbau',
     years: '1960 - 1980',
-    composition: 'Gipskern umhüllt von einer festen Kartonage. Dem Gips wurden zur Steigerung der Gefügestabilität im Brandfall ca. 1-3 % Asbestfasern beigemischt.',
+    composition: 'Gipskern umhüllt von einer festen Kartonage. Gipskartonplatten selbst waren in der Regel asbestfrei; im Brandschutz wurden jedoch häufig schwach gebundene Asbest-Leichtbauplatten (z. B. Promabest, Neptunit; siehe Steckbrief Asbest-Leichtbauplatten) mit deutlich höheren Asbestgehalten eingesetzt, teils kombiniert mit Gipskarton. Materialprobe zwingend.',
     application: 'Ummantelung von Stahlstützen, Holzträgern, Deckenunterbeplankungen in Fluchtwegen, Brandschutzwände.',
     characteristics: 'Ermöglichte extrem leichte F30- und F90-Konstruktionen im Trockenbau, wies hohe Biegesteifigkeit auf.',
     riskClass: 'high',
@@ -382,12 +382,12 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     name: 'Künstliche Mineralfasern - Alt (Alte Mineralwolle)',
     epochId: 'nachkrieg',
     epochLabel: 'Nachkriegszeit & Wiederaufbau',
-    years: '1950 - 1995',
+    years: 'vor 1996 hergestellt (Einbau bis 06/2000 möglich)',
     composition: 'Synthetisch hergestellte glasige Silikatfasern (Glas- oder Steinwolle) mit hohem Gehalt an Natrium-, Kalium- und Erdalkalioxiden, Phenol-Formaldehydharz als Bindemittel.',
     application: 'Zwischensparrendämmung im Dach, Trittschallplatten unter Estrich, Isolierung von Rohrleitungen und Heizungsrohren, Akustikdecken.',
     characteristics: 'Gelbe, grüne oder bräunliche weiche Dämmmatten, hochelastisch, unbrennbar, exzellenter Wärmeschutz.',
     riskClass: 'high',
-    riskDetail: 'Die Fasern weisen eine kritische Geometrie auf (Länge > 5 µm, Durchmesser < 3 µm) und sind im Lungengewebe extrem biobeständig. Einstufung als eindeutig krebserregend für den Menschen.',
+    riskDetail: 'Die Fasern weisen eine kritische Geometrie auf (Länge > 5 µm, Durchmesser < 3 µm) und sind im Lungengewebe extrem biobeständig. In Deutschland nach TRGS 905/521 als krebserzeugend eingestuft (Kanzerogenitätsindex KI < 40); die IARC stuft Glas- und Steinwolle seit 2001 in Gruppe 3 ein.',
     actionDetail: 'Sanierung und Rückbau unterliegen der TRGS 521. Fasern müssen vor Bewegung mit Staubbindemitteln benetzt werden. Entsorgung staubdicht verpackt in speziellen Mineralfaser-Bigbags. FFP3-Atemschutz und Einwegschutzanzug tragen.'
   },
   {
@@ -424,12 +424,12 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     epochId: 'spaetmoderne',
     epochLabel: 'Spätmoderne & Plattenbau',
     years: '1970 - 1989',
-    composition: 'Vergüteter, patentierter Kohlenstoffstahl mit Silizium- und Manganlegierung, hergestellt im VEB Qualitäts- und Edelstahlkombinat Hennigsdorf (DDR).',
+    composition: 'Ölschlussvergüteter Spannstahl (St 140/160) mit Silizium- und Manganlegierung, hergestellt im VEB Qualitäts- und Edelstahlkombinat Hennigsdorf (DDR).',
     application: 'Spannbetonträger, HP-Schalenelemente, vorgefertigte Deckenplatten im DDR-Wohnungsbau (WBS 70, P2) und Industriebau.',
     characteristics: 'Extrem hohe Zugfestigkeit (Streckgrenze ca. 1400 N/mm²), jedoch hochgradig empfindlich gegenüber korrosiven Angriffen und Gitterfehlern durch Wasserstoffdiffusion.',
     riskClass: 'high',
-    riskDetail: 'Massive Gefahr von plötzlichem, ankündigungslosem Sprödbruch durch Spannungsrisskorrosion (SpRK). Feuchtigkeitseintritt durch undichte Dächer oder unvollständig verpresste Hüllrohre führt zur chemischen Zersetzung.',
-    actionDetail: 'Regelmäßige Bauwerksprüfung und Feuchtigkeitsüberwachung gemäß Bauaufsichtsrichtlinien. Bei Rissbildung oder Feuchtigkeitsschäden ist eine sofortige mechanische Abfangung oder Deckenunterstützung einzurichten.'
+    riskDetail: 'Massive Gefahr von plötzlichem, ankündigungslosem Sprödbruch durch Spannungsrisskorrosion (SpRK). Feuchtigkeitseintritt durch undichte Dächer oder unvollständig verpresste Hüllrohre kann wasserstoffinduzierte Spannungsrisskorrosion auslösen; die Schädigung kann bereits in der Bauzeit angelegt sein (vgl. Teileinsturz der Carolabrücke Dresden, September 2024).',
+    actionDetail: 'Bauwerksprüfung und Feuchteüberwachung; bei Brücken Nachweis des Ankündigungsverhaltens nach der Handlungsanweisung Spannungsrisskorrosion (BMVBS 2011), im Hochbau in Anlehnung daran. Bei Rissbildung oder Feuchtigkeitsschäden ist eine sofortige mechanische Abfangung oder Deckenunterstützung einzurichten.'
   },
   {
     id: 'porenbeton',
@@ -461,7 +461,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: '1970 - 1989',
     composition: 'Homogenes Gemisch aus Naturgips oder REA-Gips und rezyklierten Papierfasern (Cellulose), ohne Kartonumhüllung hochdruckgepresst.',
     application: 'Trockenbauwände, Dachgeschossausbau, Brandschutzbekleidungen, Fußboden-Estrich-Elemente.',
-    characteristics: 'Deutlich höhere Biegezugfestigkeit, Stoßfestigkeit und Oberflächenhärte als klassischer Gipskarton. Zudem feuchtraumgeeignet und schwer entflammbar.',
+    characteristics: 'Deutlich höhere Biegezugfestigkeit, Stoßfestigkeit und Oberflächenhärte als klassischer Gipskarton. Zudem feuchtraumgeeignet und nichtbrennbar (Baustoffklasse A2-s1,d0 nach DIN EN 13501-1).',
     riskClass: 'none'
   },
   {
@@ -487,7 +487,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     application: 'Fugenlose Fußböden in Industriehallen, Werkstätten, Kellern und Wohnräumen.',
     characteristics: 'Geringes Eigengewicht, elastisch, fußwarm, trittsicher und ölbeständig. Allerdings extrem empfindlich gegenüber anhaltender Feuchte.',
     riskClass: 'low',
-    riskDetail: 'Bei Feuchtigkeitseinfluss dissoziiert das Magnesiumchlorid. Es spaltet sich hochkorrosive Salzsäure ab, die eingebettete Stahlleitungen oder Bewehrungen im Beton extrem schädigt.',
+    riskDetail: 'Bei Feuchtigkeitseinfluss dissoziiert das Magnesiumchlorid. Die gelösten Chloride wirken stark korrosiv auf eingebettete Stahlleitungen und Bewehrung im angrenzenden Beton.',
     actionDetail: 'Trocken halten. Bei Sanierung Feuchtemessung durchführen; keinesfalls mit diffusionsdichten Beschichtungen absperren, wenn darunter Feuchtquellen liegen.'
   },
   {
@@ -521,7 +521,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     name: 'Porosierte Hochlochziegel (Poroton)',
     epochId: 'spaetmoderne',
     epochLabel: 'Spätmoderne & Plattenbau',
-    years: '1980 - heute',
+    years: 'seit den 1960er Jahren',
     composition: 'Feiner Ton vermischt mit organischen Porenbildnern (wie expandiertem Polystyrol-Granulat oder Sägemehl). Die Porenbildner verbrennen beim Ziegelbrand rückstandslos und hinterlassen mikroskopische wärmedämmende Poren im Scherben.',
     application: 'Monolithisches einschaliges Außenmauerwerk für hocheffiziente Wohn- und Bürogebäude.',
     characteristics: 'Niedrige Rohdichte (ca. 0,6 - 0,8 kg/dm³), exzellente thermische Dämmwirkung bei gleichzeitig hoher kapillarer Feuchtetransportfähigkeit. Mechanisch spröde, mäßige Schalldämmung.',
@@ -653,7 +653,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     characteristics: 'Sehr leicht, kostengünstig, exzellente Dämmleistung, verrottungsfest.',
     riskClass: 'medium',
     riskDetail: 'Bei Alt-EPS-Platten (vor 2015) hohe HBCD-Belastung (PBT-Stoff). Bei Brand entstehen toxische bromierte Dioxine/Furane.',
-    actionDetail: 'Alt-EPS muss als gefährlicher Abfall getrennt zurückgebaut und in thermischen Abfallbehandlungsanlagen mit Rauchgasreinigung entsorgt werden.'
+    actionDetail: 'HBCD-haltige Dämmstoffe sind POP-haltige Abfälle (POP-Abfall-Überwachungs-Verordnung 2017): getrennt sammeln, Nachweispflicht, thermische Behandlung in Anlagen mit Rauchgasreinigung. Sie gelten nicht pauschal als gefährlicher Abfall.'
   },
   {
     id: 'alu_verbundplatten',
@@ -699,7 +699,7 @@ export default function HistorischeBauprodukte() {
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed font-light">
           <p>
-            Im Altbestand konfrontieren uns Tragwerke und Bauteile mit Werkstoffen und Bauprodukten, die in heutigen Normen nicht mehr abgebildet sind. Zur systematischen Diagnostik ordnen wir diese Produkte nach ihrer **historischen Entstehungsepoche** ein. Der **Schwerpunkt liegt dabei auf der Nachkriegszeit bis heute**, mit Fokus auf die charakteristischen Werkstoffeigenschaften, mechanische und chemische Kenngrößen sowie deren ingenieurtechnische Besonderheiten im Bestand.
+            Im Altbestand konfrontieren uns Tragwerke und Bauteile mit Werkstoffen und Bauprodukten, die in heutigen Normen nicht mehr abgebildet sind. Zur systematischen Diagnostik ordnen wir diese Produkte nach ihrer historischen Entstehungsepoche ein. Der Schwerpunkt liegt dabei auf der Nachkriegszeit bis heute, mit Fokus auf die charakteristischen Werkstoffeigenschaften, mechanische und chemische Kenngrößen sowie deren ingenieurtechnische Besonderheiten im Bestand.
           </p>
         </div>
       </div>
@@ -891,16 +891,16 @@ export default function HistorischeBauprodukte() {
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Praxishandbuch Allg. Bauchemie & Baustofftechnologie (A. Huber, TH Augsburg, Lehrbeilage)',
-          'Historische Baustoffe im Bestand: Eigenschaften, Analytik und Sanierung (H. Rudolph, DIN Media)',
-          'Schadstoffe im Baubestand: Erkennen, Bewerten, Sanieren (G. Paczkowski, Rudolf Müller Verlag)',
-          'Bauwerkserhaltung im Denkmal- und Altbaubestand (WTA-Wissenschaftlich-Technische Arbeitsgemeinschaft)',
-          'DDR-Baustoffe: Fachbuchreihe zur Instandsetzung im Bestand (Koppe & Partner GbR)'
+          'Bauwerkserhaltung im Denkmal- und Altbaubestand (WTA-Wissenschaftlich-Technische Arbeitsgemeinschaft)'
         ]}
         regelwerke={[
           { title: 'DIN EN 771-4 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)', url: 'https://www.dinmedia.de/' },
           { title: 'DIN EN 771-2 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)', url: 'https://www.dinmedia.de/' },
           { title: 'DIN EN 12467 (Faserzement-Flachplatten - Produktspezifikation und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'TRGS 519 (Technische Regeln für Gefahrstoffe - Asbest)', url: 'https://www.baua.de/' },
+          { title: 'GefStoffV (Novelle 12/2024): Erkundungspflicht des Veranlassers bei Gebäuden mit Baubeginn vor 31.10.1993', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
+          { title: 'TRGS 519 (Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' },
+          { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.vdi.de/' },
+          { title: 'TrinkwV 2023 § 17 (Bleileitungen)', url: 'https://www.gesetze-im-internet.de/trinkwv_2023/' },
           { title: 'TRGS 521 (Abbruch, Sanierung und Instandhaltung mit alten Mineralfasern)', url: 'https://www.baua.de/' },
           { title: 'PCP-Richtlinie (Richtlinie für die Bewertung und Sanierung Pentachlorphenol-belasteter Baustoffe)', url: 'https://www.isb.bund.de/' },
           { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe)', url: 'https://www.isb.bund.de/' }
@@ -918,7 +918,7 @@ export default function HistorischeBauprodukte() {
           },
           {
             formel: '\\text{Pb} + \\text{CO}_2 + \\frac{1}{2}\\text{O}_2 \\rightarrow \\text{PbCO}_3 \\text{ (Blei(II)-carbonat-Schutzschicht)}',
-            erklaerung: 'Bildung einer dichten und schwer löslichen Passivierungsschicht aus Bleicarbonat im Inneren von Bleitrinwasserleitungen durch gelöste Kohlensäure im harten Trinkwasser. Schützt vor unkontrollierter Bleiionenfreisetzung.',
+            erklaerung: 'Bildung einer dichten und schwer löslichen Passivierungsschicht aus Bleicarbonat im Inneren von Bleitrinkwasserleitungen durch gelöste Kohlensäure im harten Trinkwasser. Schützt vor unkontrollierter Bleiionenfreisetzung.',
             quelle: 'Korrosionschemie Trinkwasser'
           },
           {

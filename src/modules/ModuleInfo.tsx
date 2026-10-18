@@ -651,7 +651,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Altbausanierung, Denkmalpflegepraxis, GEG-Anpassungen und historische Werkstoffkennwerte',
     icon: Building2Icon,
     basicsTitle: 'Erhalt grauer Energie durch nachhaltiges Sanieren',
-    basicsDesc1: 'Über 70% des deutschen Bauvolumens entfallen auf das Bauen im Bestand. Die historische Bausubstanz beherbergt unschätzbare graue Energie. Dein Erhalt erfordert tiefgreifendes Wissen über historische Herstellungsverfahren und Tragwerkseigenschaften.',
+    basicsDesc1: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Die historische Bausubstanz enthält viel graue Energie. Ihr Erhalt erfordert tiefgreifendes Wissen über historische Herstellungsverfahren und Tragwerkseigenschaften.',
     basicsDesc2: 'Wir stellen den Altbauatlas vor, erarbeiten Erfassungsmethoden vom Handaufmaß bis zum 3D-Laserscan, diskutieren Vorgaben des GEG für Sanierungen und greifen auf authentische Festigkeiten historischer Ziegel, Gusseisen und Trassmörtel zurück.',
     basicsCards: [
       { title: 'Historische Kennwerte', desc: 'Verlässliches Datenarchiv für Ziegelmauerwerk, Naturstein, frühe Betone und Profile aus der Zeit von 1850 bis 1960.' },
@@ -659,11 +659,11 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     submodules: [
       { title: 'Altbauatlas', icon: Building2Icon, purpose: 'Klassifizierung typischer Schadensmechanismen in Abhängigkeit von Gebäudeepoche und Bauweise.', standards: 'Forschungsberichte Denkmalschutz', useCase: 'Sanierung feuchter Kellerdecken aus der Gründerzeit (Kappendecken).' },
-      { title: 'Bauwerkserfassung', icon: Compass, purpose: 'Zusammenstellung von Handaufmaß, 3D-Verformungsaufmaß, Photogrammetrie und TLS (Laserscan).', standards: 'LTA Richtlinien', useCase: 'Erstellung einer zentimetergenauen Punktwolke einer Kirchdachstruktur.' },
+      { title: 'Bauwerkserfassung', icon: Compass, purpose: 'Zusammenstellung von Handaufmaß, 3D-Verformungsaufmaß, Photogrammetrie und TLS (Laserscan).', standards: 'Eckstein: Empfehlungen für Baudokumentationen (LDA Baden-Württemberg)', useCase: 'Erstellung einer zentimetergenauen Punktwolke einer Kirchdachstruktur.' },
       { title: 'Denkmalpflege', icon: Landmark, purpose: 'Denkmalschutzgesetzliche Vorgaben, reversible Sanierungsverfahren, historische Putze und Baustoffe.', standards: 'Charta von Venedig / WTA', useCase: 'Rekonstruktion eines barocken Luftkalk-Außenputzes.' },
-      { title: 'Modernisierung & GEG', icon: RefreshCw, purpose: 'Vorgaben des Gebäudeenergiegesetzes bei Änderungen an der Gebäudehülle, Erleichterungen für Baudenkmäler.', standards: 'GEG § 105 (Ausnahmen Denkmale)', useCase: 'Nachweis der Wirtschaftlichkeit von dämmenden Maßnahmen im denkmalgeschützten Einzelhof.' },
+      { title: 'Modernisierung & GEG', icon: RefreshCw, purpose: 'Vorgaben des Gebäudeenergiegesetzes bei Änderungen an der Gebäudehülle, Erleichterungen für Baudenkmäler.', standards: '§ 105 GModG, vormals GEG (Ausnahmen Denkmale)', useCase: 'Nachweis der Wirtschaftlichkeit von dämmenden Maßnahmen im denkmalgeschützten Einzelhof.' },
       { title: 'Bauwerksdiagnose & ZfP-Katalog', icon: Search, purpose: 'Systematische Vor-Ort-Zustandserfassung im Bestand: 4-Phasen-Diagnostik (Vorerkundung, ZfP, Labor, Tragfähigkeitsnachweis) und konsolidierter Katalog aller 14 Prüfverfahren (Rückprallhammer, Ultraschall, Potentialfeld, Georadar, Karsten, Karbonatisierung, Bohrkern etc.) mit interaktiven Rechnern.', standards: 'DGZfP Richtlinien B1–B4, DBV-Merkblätter, DIN EN 12504, DIN EN 13791', useCase: 'Zustandserfassung einer Tiefgarage und Brückenkappe: Betondeckungs-Konformität (DBV), Karbonatisierungsfortschritt und Rissweitenbestimmung.' },
-      { title: 'Historische Kennwerte', icon: History, purpose: 'Materialkennwerte alter Baustoffe wie Schweißeisen, Gussstahl und historisches Ziegelmauerwerk.', standards: 'BNB Richtlinien / WTA Tabellen', useCase: 'Tragfähigkeitsnachweis einer Industriehalle von 1910.' },
+      { title: 'Historische Kennwerte', icon: History, purpose: 'Materialkennwerte alter Baustoffe wie Schweißeisen, Gussstahl und historisches Ziegelmauerwerk.', standards: 'DBV-Merkblätter Bauen im Bestand, historische Normen (DIN 1045, DIN 1050, DIN 4074)', useCase: 'Tragfähigkeitsnachweis einer Industriehalle von 1910.' },
       { title: 'Historische Bauweisen', icon: BookOpen, purpose: 'Epochenspezifische Tragsysteme wie Holzbalkendecken, Kappendecken, Monier-Gewölbe, Rabitzwände und Fachwerk.', standards: 'WTA-Merkblätter / Denkmalbau-Archive', useCase: 'Ertüchtigung und statische Begutachtung einer preußischen Kappendecke.' },
       { title: 'Historische Bauprodukte', icon: Layers, purpose: 'Rezepturen, Brandgrade und Schadensanfälligkeiten historischer Bindemittel, Ziegel, Zemente und Schmiedemetalle.', standards: 'Historische DIN-Normenarchive', useCase: 'Identifikation von Romanzement und hydraulischen Kalken in Gründerzeitfassaden.' },
       { title: 'Bestand-Checklisten', icon: ClipboardCheck, purpose: 'Systematische Begehungsbögen zur Zustandserfassung, Holzschadensanalyse, Feuchtemessung und Denkmalschutzauflagen.', standards: 'WTA / VDI 6200', useCase: 'Strukturierte Vor-Ort-Begehung eines denkmalgeschützten Speichergebäudes.' }
@@ -673,22 +673,22 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Geringster Eingriff (Minimaler Eingriff)', desc: 'Förderung reversibler und zerstörungsarmer statischer Reparaturmaßnahmen.' },
       { title: 'Lebensdauerverlängerung', desc: 'Umdeutung alternder Bausubstanz zur wertvollen Zukunftsquelle (Urban Mining).' }
     ],
-    appStudents: 'Exzellentes Werkzeug zur wissenschaftlichen Begleitung von Projektarbeiten in der Denkmalpflege, Altbauforschung und Badsanierung.',
+    appStudents: 'Exzellentes Werkzeug zur wissenschaftlichen Begleitung von Projektarbeiten in der Denkmalpflege, Altbauforschung und Bauforschung.',
     appProfessionals: 'Praxisnaher Berater für Tragwerksplaner und Sanierungsarchitekten zur sicheren Erfassung und Ertüchtigung historischer Bauteile.',
     wikipedia: [
       { title: 'Bauen im Bestand', url: 'https://de.wikipedia.org/wiki/Bauen_im_Bestand' },
       { title: 'Denkmalschutz', url: 'https://de.wikipedia.org/wiki/Denkmalschutz' }
     ],
     literatur: [
-      'Petry, O. (2019): Bauen im Bestand - Handbuch für Planung und Ausführung (DIN Media)',
       'WTA-Merkblattreihe (Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.)'
     ],
     regelwerke: [
-      { title: 'Gebäudeenergiegesetz (GEG) - Anforderungen an den Altbau', url: 'https://www.gesetze-im-internet.de/geg/' },
-      { title: 'DIN 1045-100: Feststellung der Festigkeitsklasse von Beton im Bestand', url: 'https://www.dinmedia.de/' }
+      { title: 'Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 36 und Anlage 7: Anforderungen bei Änderung bestehender Gebäude', url: 'https://lxgesetze.de/gmodg/AL-7' },
+      { title: 'EN 1990-2:2026 (Bewertung bestehender Tragwerke; ersetzt CEN/TS 17440:2020) – nationale Fassung/NA prüfen', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' },
+      { title: 'DIN EN 13791:2020-02 + DIN EN 13791/A20 (Bewertung der Druckfestigkeit von Beton im Bauwerk)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' }
     ],
     formeln: [
-      { formel: 'f_{m,k} = C_r \\cdot f_{m,char}', erklaerung: 'Bestimmung historischer charakteristischer Festigkeiten durch Anwendung verringernder Korrekturkoeffizienten C_r im Falle mangelhafter Dokumentation.', quelle: 'DIN 1022 / WTA-Richtlinien' }
+      { formel: 'X_k = \\exp\\left(m_y - k_n \\cdot s_y\\right)', erklaerung: 'Charakteristischer Wert (5-%-Fraktile) aus n Prüfwerten bei log-normaler Verteilung; m_y, s_y = Mittelwert und Standardabweichung der logarithmierten Werte, k_n nach Tab. D.1.', quelle: 'DIN EN 1990, Anhang D.7.2' }
     ]
   },
   rueckbau: {
@@ -1112,17 +1112,12 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
       { name: "Fraunhofer IRB Raum und Bau", url: "https://www.irb.fraunhofer.de", desc: "Kataloge, Merkblätter und Sanierungsbeispiele historischer Baustoffschäden." }
     ],
     books: [
-      { title: "Bauen im Bestand: Denkmalschutz, Baukonstruktion und Schadensanalyse", desc: "Coppola, Springer Vieweg. Bauphysikalische und statische Nachrüstungen historischer Tragwerke." },
-      { title: "Fachwerk Instandsetzen nach WTA-Richtlinien", desc: "DIN Media. Praxisleitfaden zur Lehmgefachinstandsetzung und Holzschutzmaßnahme." }
+      { title: "Typische Baukonstruktionen von 1860 bis 1960 (Bd. 1–3)", desc: "Ahnert, R.; Krause, K. H. – Standardwerk zur Identifikation historischer Konstruktionen (Decken, Wände, Dächer)." },
+      { title: "Historische Bautabellen", desc: "Bargmann, H. – Werner Verlag. Normen und Konstruktionshinweise 1870 bis 1960 für die Nachrechnung." },
+      { title: "DBV-Merkblätter „Bauen im Bestand“", desc: "Deutscher Beton- und Bautechnik-Verein: Leitfaden, Beton und Betonstahl, Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile." }
     ],
-    publications: [
-      { journal: "Bautenschutz und Bausanierung", title: "Erhaltungsfähigkeit historischer Kalk- und Lehmmörtel in der Altbausanierung", desc: "Alterungsverhalten historischer Bindemittel bei Feuchtelasten." },
-      { journal: "Journal of Materials in Civil Engineering", title: "Strengthening of historic masonry walls with carbon fiber reinforced polymer grids", desc: "Bemessungsansätze geklebter Carbongelege auf historischem Bruchsteinmauerwerk." }
-    ],
-    dissertations: [
-      { title: "Methoden zur mechanischen Charakterisierung historischer Ziegelmauerwerkstrukturen in Thüringen", desc: "Dissertation, Bauhaus-Universität Weimar, 2019. Kalibrierung zerstörungsfreier Prüfversicherungen vor Ort." },
-      { title: "Dauerhaftigkeitsaspekte innenwärmegedämmter Sichtfachwerkfassaden unter Berücksichtigung von Schlagregenbeanspruchungen", desc: "Dissertation, Technische Universität Kaiserslautern. Hygrothermischer Schadenstracking verkleideter Holzbalken." }
-    ]
+    publications: [],
+    dissertations: []
   },
   rueckbau: {
     websites: [

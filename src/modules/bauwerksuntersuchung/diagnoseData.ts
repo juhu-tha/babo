@@ -56,7 +56,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     id: 'bohrwiderstand',
     samplingPoints: {
       titel: 'Bohrwiderstandsmessung (Holzresistographie)',
-      normVorgabe: 'WTA-Merkblatt 8-15-20/D, DIN EN 338, DIN 1052-1',
+      normVorgabe: 'Verfahren nicht genormt; Bewertung nach DIN 68800-2/-4 und Herstellerangaben',
       mindestAnzahl: 'Mind. 2–3 Bohrungen je verdächtigem Balkenkopf / Auflagerknoten; 100 % aller Träger im Spritz- und Nassbereich.',
       rasterMass: 'Bohrungsabstand mind. 30–50 mm axial versetzt; Einstichwinkel 90° zur Faserachse (radial/tangential).',
       auswahlKriterien: [
@@ -80,11 +80,11 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     },
     standards: [
       {
-        code: 'WTA-Merkblatt 8-15-20/D',
-        title: 'Verfahren zur Holzdiagnostik im Bestand – Bohrwiderstandsmessung',
-        date: '2020-08',
-        url: 'https://www.wta-international.org/',
-        scope: 'Prüfvorschrift, Auswertung und Kalibrierung von Nadelbohrgeräten.'
+        code: 'DIN 68800-4:2020-12',
+        title: 'Holzschutz – Bekämpfende Maßnahmen (Bohrwiderstandsmessung selbst ist nicht genormt)',
+        date: '2020-12',
+        url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-4',
+        scope: 'Bewertung und Bekämpfung von Pilz- und Insektenbefall; Gerätehinweise des Herstellers beachten.'
       },
       {
         code: 'DIN EN 338:2016-07',
@@ -158,7 +158,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         scope: 'Verbindliche Vorgaben zur statistischen Auswertung von Covermeter-Messungen im Bestand.'
       },
       {
-        code: 'DGZfP-Merkblatt B3',
+        code: 'DGZfP-Merkblatt B 02',
         title: 'Zerstörungsfreie Ortung von Bewehrung und Bestimmung der Betondeckung',
         date: '2014-06',
         url: 'https://www.dgzfp.de/',
@@ -240,7 +240,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     id: 'ultraschall',
     samplingPoints: {
       titel: 'Ultraschall-Impulslaufzeitmessung (DIN EN 12504-4)',
-      normVorgabe: 'DIN EN 12504-4, DGZfP-Merkblatt B4',
+      normVorgabe: 'DIN EN 12504-4, DGZfP-Merkblatt B 04',
       mindestAnzahl: 'Direkte Durchschallung: Mind. 3–5 Messpunkte je Bauteilquerschnitt; Indirekte Durchschallung (Oberfläche): Messlinie mit mind. 5–8 Messabständen.',
       rasterMass: 'Raster 20 × 20 cm bis 50 × 50 cm; Messlinienabstand bei Rissiefenbestimmung 50–100 mm.',
       auswahlKriterien: [
@@ -271,7 +271,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         scope: 'Verfahren zur direkten, halb-direkten und indirekten Schalleinspeisung.'
       },
       {
-        code: 'DGZfP-Merkblatt B4',
+        code: 'DGZfP-Merkblatt B 04',
         title: 'Ultraschallverfahren zur zerstörungsfreien Prüfung im Bauwesen',
         date: '2012-05',
         url: 'https://www.dgzfp.de/',
@@ -298,7 +298,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     id: 'potentialfeld',
     samplingPoints: {
       titel: 'Elektrochemische Potentialfeldmessung (Halbzellenpotential)',
-      normVorgabe: 'DGZfP-Merkblatt B1 (2018), ASTM C876-15, RILEM TC 154-EMC',
+      normVorgabe: 'DGZfP-Merkblatt B 03 (2025), ASTM C876-15, RILEM TC 154-EMC',
       mindestAnzahl: 'Flächendeckendes Raster: Mind. 50–200 Messpunkte je Bauteilabschnitt; mind. 1 Anschluss an das Bewehrungsnetz je 10–20 m².',
       rasterMass: 'Rastermaß 15 × 15 cm oder 20 × 20 cm (in stark gradientsbehafteten Zonen Verdichtung auf 10 × 10 cm).',
       auswahlKriterien: [
@@ -321,7 +321,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     },
     standards: [
       {
-        code: 'DGZfP-Merkblatt B1',
+        code: 'DGZfP-Merkblatt B 03',
         title: 'Merkblatt für elektrochemische Potenzialmessungen an Stahlbetonbauwerken',
         date: '2018-06',
         url: 'https://www.dgzfp.de/',
@@ -404,14 +404,14 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       titel: 'Interpretation: Diffusionsprofil & Korrosionsgrenzwerte',
       kerndiagnose: 'Liegt der Chloridgehalt an der Bewehrungslage über dem kritischen Schwellenwert C_krit, ist die Passivschicht zerstört und es droht rissfreie Lochfraßkorrosion.',
       grenzwerte: [
-        { parameter: 'Chlorid an Bewehrung (Stahlbeton)', wert: '< 0,50 M.-% bez. Zement', einheit: 'M.-%', status: 'ok', bewertung: 'Keine Depassivierung', massnahme: 'Präventiver Schutz (OS 8 / OS 11a).' },
+        { parameter: 'Chlorid an Bewehrung (Stahlbeton, Anhaltswert – objektspezifisch durch SKP)', wert: '< ≈ 0,5 M.-% bez. Zement', einheit: 'M.-%', status: 'ok', bewertung: 'Keine Depassivierung', massnahme: 'Präventiver Schutz (Oberflächenschutz nach TR Instandhaltung).' },
         { parameter: 'Chlorid an Bewehrung (Stahlbeton)', wert: '0,50–0,80 M.-%', einheit: 'M.-%', status: 'warn', bewertung: 'Kritischer Schwellenwert erreicht/überschritten', massnahme: 'Chloridabtrag oder KKS-Installation.' },
         { parameter: 'Chlorid an Bewehrung (Stahlbeton)', wert: '> 0,80 M.-%', einheit: 'M.-%', status: 'crit', bewertung: 'Hohes Lochfraß- & Querschnittsverlustrisiko', massnahme: 'HDW-Abtrag mind. 20 mm hinter die Bewehrung.' },
-        { parameter: 'Chlorid an Spannstahl (Spannbeton)', wert: '> 0,20 M.-%', einheit: 'M.-%', status: 'crit', bewertung: 'Gefahr von Spannungsrisskorrosion', massnahme: 'Sofortige statische Überprüfung, Spannglieder freilegen/ersetzen.' }
+        { parameter: 'Chlorid an Spannstahl (Spannbeton)', wert: 'deutlich niedriger als bei Stahlbeton – gesonderte Beurteilung', einheit: 'M.-%', status: 'crit', bewertung: 'Gefahr von Spannungsrisskorrosion', massnahme: 'Sofortige statische Überprüfung, Spannglieder freilegen/ersetzen.' }
       ],
       tragwerksAuswirkung: 'Im Gegensatz zu Karbonatisierungskorrosion führt Chloridkorrosion zu lokalem Lochfraß mit Querschnittsreduktionen von > 30 % innerhalb weniger Jahre. Bei Spannbeton droht spröder Spannstahlbruch ohne Vorwarnung!',
-      instandsetzungsKonsequenz: 'DIBt TR Instandhaltung Prinzip W (Trockenlegung) oder Prinzip C (Chloridabtrag via HDW) oder Prinzip KKS (Kathodischer Korrosionsschutz nach DIN EN ISO 12696 ohne Betonabtrag).',
-      praxisFallbeispiel: 'Rampenbauwerk Parkhaus: Bohrmehlanalyse zeigt an Bewehrungstiefe (25 mm) einen Chloridgehalt von 1,42 M.-% bezogen auf Zement (Grenzwert 0,50 M.-% um das Dreifache überschritten). Entscheidung: HDW-Abtrag um 50 mm, neue Bewehrung einbauen, SPCC Reprofilierung und rissüberbrückendes OS 11a System.'
+      instandsetzungsKonsequenz: 'TR Instandhaltung (DIBt): Prinzip W (Trockenhalten), Prinzip R (chloridbelasteten Beton entfernen und reprofilieren) oder Prinzip K (Kathodischer Korrosionsschutz nach DIN EN ISO 12696).',
+      praxisFallbeispiel: 'Rampenbauwerk Parkhaus: Bohrmehlanalyse zeigt an Bewehrungstiefe (25 mm) einen Chloridgehalt von 1,42 M.-% bezogen auf Zement (Anhaltswert ≈ 0,5 M.-% bez. Zement um ein Mehrfaches überschritten). Entscheidung: HDW-Abtrag um 50 mm, neue Bewehrung einbauen, SPCC Reprofilierung und rissüberbrückendes OS 11a System.'
     }
   },
 
@@ -477,14 +477,14 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     samplingPoints: {
       titel: 'Zylindrische Bohrkernentnahme & Druckprüfung (DIN EN 12504-1)',
       normVorgabe: 'DIN EN 12504-1, DIN EN 13791 (Bewertung der In-situ-Druckfestigkeit)',
-      mindestAnzahl: 'Verfahren A: Mind. 14 Bohrkerne je Prüfbereich; Verfahren B (kleine Prüfbereiche): 3 bis 13 Bohrkerne.',
+      mindestAnzahl: 'Statistische Auswertung ab 8 Bohrkernen je Prüfbereich (k_n = 2,00 bei n = 8); bei kleineren Stichproben gesondertes, konservativeres Verfahren.',
       rasterMass: 'Gleichmäßig über den Prüfbereich verteilt; Kerndurchmesser bevorzugt d = 100 mm (mind. 3-faches Größtkorn d_max).',
       auswahlKriterien: [
         'Statisch geringer beanspruchte Querschnittsbereiche zur Schonung der Tragfähigkeit.',
         'Vorab-Ortung der Bewehrung mit Covermeter (bewehrungsfreie Kernentnahme anstreben!).',
         'Ausschluss von Bereichen mit Rissen oder Schwindrissen.'
       ],
-      statistischeBegruendung: 'DIN EN 13791 fordert für Verfahren A f_ck,is = min(f_m,is - 1,48 · s, f_is,lowest + 4). Bei weniger als 14 Kernen (Verfahren B) müssen höhere Sicherheitsabschläge k_n abgezogen werden.'
+      statistischeBegruendung: 'DIN EN 13791:2020-02: f_ck,is = min(f_c,m(n),is − k_n · s; f_c,is,lowest + M), k_n = 2,00 (n = 8) bis 1,64 (n → ∞), s mindestens entsprechend V = 8 %, M = 1 bis 4 N/mm² je nach Tiefstwert; Einstufung mit f_ck = f_ck,is / 0,85. Die Fassung 2008 verwendete 1,48 · s ab 15 Kernen.'
     },
     conditioning: {
       titel: 'Konditionierung, Ablängen & Stirnflächenbearbeitung',
@@ -510,7 +510,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         title: 'Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen',
         date: '2020-02',
         url: 'https://www.dinmedia.de/',
-        scope: 'Verfahren A und B zur Bestimmung der charakteristischen In-situ-Druckfestigkeit f_ck,is.'
+        scope: 'Bestimmung der charakteristischen In-situ-Druckfestigkeit f_ck,is aus Bohrkernen und indirekten Verfahren (mit Kalibrierung).'
       },
       {
         code: 'DIN EN 12390-3:2019-10',
@@ -522,7 +522,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     ],
     interpretation: {
       titel: 'Interpretation: f_ck,is & Zuordnung zu Druckfestigkeitsklassen',
-      kerndiagnose: 'Die In-situ-Druckfestigkeit f_ck,is entspricht ca. 85 % der Norm-Zylinderfestigkeit f_ck (eta = 0,85 Dauerlast- und In-situ-Faktor nach Eurocode 2).',
+      kerndiagnose: 'Nach DIN EN 13791 gilt f_ck ≈ f_ck,is / 0,85 (Verhältnis In-situ- zu Normprobekörperfestigkeit). Davon zu trennen ist der Dauerstandsbeiwert α_cc = 0,85 im Bemessungswert f_cd = α_cc · f_ck / γ_c (EC2).',
       grenzwerte: [
         { parameter: 'f_ck,is / f_ck,plan', wert: '≥ 0,85', einheit: '-', status: 'ok', bewertung: 'Volle Tragfähigkeit nachgewiesen', massnahme: 'Keine Tragfähigkeitsminderung.' },
         { parameter: 'f_ck,is / f_ck,plan', wert: '0,75–0,85', einheit: '-', status: 'warn', bewertung: 'Geringe Abweichung von Planwerten', massnahme: 'Statische Nachrechnung mit tatsächlichem f_cd,is = f_ck,is / gamma_c.' },
@@ -530,7 +530,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       ],
       tragwerksAuswirkung: 'Direkte Eingangsgröße für die statische Nachrechnung der Grenzzustände der Tragfähigkeit (GZT) und Gebrauchstauglichkeit (GZG) nach Eurocode 2.',
       instandsetzungsKonsequenz: 'Rechtssichere Klärung von Gewährleistungs- und Bauschadensfragen bei Festigkeitsunterschreitungen auf Neubaustellen oder Bestandsgebäuden.',
-      praxisFallbeispiel: 'Umnutzung eines Industriegebäudes (BJ 1968) zu Archivräumen mit erhöhter Verkehrslast (5,0 kN/m²). 14 Bohrkerne nach Verfahren A ergeben f_ck,is = 24,8 N/mm² -> entspricht rechnerisch C25/30. Nachrechnung zeigt ausreichende Querkraft- und Biegereserven.'
+      praxisFallbeispiel: 'Umnutzung eines Industriegebäudes (BJ 1968) zu Archivräumen mit erhöhter Verkehrslast (5,0 kN/m²). 14 Bohrkerne (statistische Auswertung, k_n ≈ 1,80) ergeben f_ck,is = 24,8 N/mm² -> entspricht rechnerisch C25/30. Nachrechnung zeigt ausreichende Querkraft- und Biegereserven.'
     }
   },
 
@@ -581,7 +581,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       kerndiagnose: 'Die Bewertung erfolgt IMMER zweistufig: 1. Numerischer Festigkeitswert f_ct [N/mm²], 2. Bruchbild (A, A/B, B, Y). Nur ein Bruch im Altbeton (Typ A) beweist eine optimale Verbundzone!',
       grenzwerte: [
         { parameter: 'f_ct,mean Untergrund (Hochbau)', wert: '≥ 1,5 N/mm² (Einzelwert ≥ 1,0)', einheit: 'N/mm²', status: 'ok', bewertung: 'Tragfähiger Untergrund für PCC/SPCC', massnahme: 'Freigabe für Reprofilierung.' },
-        { parameter: 'f_ct,mean Untergrund (ZTV-ING)', wert: '≥ 2,0 N/mm² (Einzelwert ≥ 1,5)', einheit: 'N/mm²', status: 'ok', bewertung: 'Hohe Untergrundfestigkeit im Brückenbau', massnahme: 'Freigabe für ZTV-ING Beschichtungen.' },
+        { parameter: 'f_ct,mean Untergrund (ZTV-ING)', wert: 'systemabhängig', einheit: 'N/mm²', status: 'ok', bewertung: 'Anforderung je OS-System und Bauteil nach ZTV-ING Teil 3-4 (Tabellenwert der geltenden Ausgabe)', massnahme: 'Freigabe nur bei Einhaltung des Tabellenwerts.' },
         { parameter: 'f_ct,mean Untergrund', wert: '< 1,5 N/mm²', einheit: 'N/mm²', status: 'crit', bewertung: 'Ungenügende Abreißfestigkeit / Mürber Beton', massnahme: 'Weiterer Betonabtrag erforderlich (z.B. HDW-Strahlen).' },
         { parameter: 'Bruchbild A/B (Verbundfuge)', wert: '> 50 % Fugenbruch', einheit: '%', status: 'crit', bewertung: 'Mangelhafte Haftung des Instandsetzungsmörtels', massnahme: 'Mangel; Rückbau der Instandsetzungsschicht.' }
       ],
@@ -595,8 +595,8 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
   karsten: {
     id: 'karsten',
     samplingPoints: {
-      titel: 'Karstensches Prüfröhrchen (DIN EN 15148, WTA 4-5)',
-      normVorgabe: 'DIN EN 15148, WTA-Merkblatt 4-5-20, DIN EN 16302',
+      titel: 'Karstensches Prüfröhrchen (RILEM II.4)',
+      normVorgabe: 'RILEM II.4, DIN EN 16302 – nicht gleichzusetzen mit dem w-Wert nach DIN EN ISO 15148',
       mindestAnzahl: 'Mind. 3–5 Prüfstellen je Fassadenseite / Bauteiltyp (Schlagregenseite vs. wetterabgewandte Seite).',
       rasterMass: 'Messstellen in Sockelzone, Fassadenmitte und unter Fensterbänken anordnen.',
       auswahlKriterien: [
@@ -700,14 +700,14 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       titel: 'Interpretation: Massebezogene Feuchte u & Belegreife',
       kerndiagnose: 'Berechnung des Feuchtegehalts: u = (m_feucht - m_trocken) / m_trocken · 100 [M.-%]. Vergleich mit Ausgleichsfeuchte und Belegreifegrenzen.',
       grenzwerte: [
-        { parameter: 'Zementestrich unbeheizt (Darr)', wert: '≤ 2,0 M.-%', einheit: 'M.-%', status: 'ok', bewertung: 'Belegreif für alle Beläge', massnahme: 'Freigabe für Bodenbelagsarbeiten.' },
+        { parameter: 'Zementestrich unbeheizt (CM-Methode)', wert: '≤ 2,0 CM-%', einheit: 'CM-%', status: 'ok', bewertung: 'Belegreif für alle Beläge', massnahme: 'Freigabe für Bodenbelagsarbeiten.' },
         { parameter: 'Zementestrich beheizt (Darr)', wert: '≤ 1,8 M.-%', einheit: 'M.-%', status: 'ok', bewertung: 'Belegreif bei Fußbodenheizung', massnahme: 'Freigabe nach Aufheizprotokoll.' },
-        { parameter: 'Calciumsulfatestrich (Darr 40°C)', wert: '≤ 0,5 M.-% (beheizt ≤ 0,3)', einheit: 'M.-%', status: 'ok', bewertung: 'Belegreif', massnahme: 'Freigabe.' },
+        { parameter: 'Calciumsulfatestrich (CM-Methode)', wert: '≤ 0,5 CM-% (beheizt ≤ 0,3)', einheit: 'CM-%', status: 'ok', bewertung: 'Belegreif', massnahme: 'Freigabe.' },
         { parameter: 'Beton vor Beschichtung OS 8/OS 11', wert: '> 4,0 M.-%', einheit: 'M.-%', status: 'crit', bewertung: 'Überfeuchtet für dichte Epoxidharze', massnahme: 'Osmose- & Blasenbildungsgefahr! Bautrocknung fortsetzen oder dampfdiffusionsoffene Systeme nutzen.' }
       ],
       tragwerksAuswirkung: 'Hohe Bauteilfeuchte begünstigt Schimmelbildung, Korrosion der eingebetteten Bewehrung, Frostsprengung und chemische Treibreaktionen (z.B. Ettringit-/Thaumasitbildung).',
       instandsetzungsKonsequenz: 'Entscheidungskriterium für Vertikal- und Horizontalabdichtungen, Injektionsmittel (PUR vs. Acrylatgel) und Trocknungsmaßnahmen.',
-      praxisFallbeispiel: 'Neubau Gewerbehalle: Zementestrich nach 6 Wochen. Vor-Ort-CM-Messung liefert 2,4 CM-%. Darr-Gegenprüfung im Baustofflabor bestätigt u = 2,38 M.-%. Parkettleger verweigert zu Recht die Belegung. Nach 10 Tagen technischer Trocknung sinkt Darrfeuchte auf 1,75 M.-% -> schadenfreie Abnahme.'
+      praxisFallbeispiel: 'Neubau Gewerbehalle: Zementestrich nach 6 Wochen. Vor-Ort-CM-Messung liefert 2,4 CM-% (Grenzwert 2,0 CM-%). Die Darr-Gegenprüfung ergibt systematisch höhere Werte (hier ca. 3,5 M.-%) und ist nicht direkt mit CM-Grenzwerten vergleichbar. Parkettleger verweigert zu Recht die Belegung. Nach 10 Tagen technischer Trocknung CM 1,8 % -> Belegreife.'
     }
   },
 
@@ -716,7 +716,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     id: 'georadar',
     samplingPoints: {
       titel: 'Georadar-Messung (GPR - Ground Penetrating Radar)',
-      normVorgabe: 'ASTM D6432-19, DGZfP-Merkblatt B5, EN 302 066',
+      normVorgabe: 'ASTM D6432-19, DGZfP-Merkblatt B 10, ETSI EN 302 066',
       mindestAnzahl: 'Linienraster: Mind. 5–10 Scanlinien orthogonal zur vermuteten Schadens-/Bewehrungsrichtung; Flächenscan: Raster 10–25 cm.',
       rasterMass: 'Raster 10 × 10 cm bis 25 × 25 cm mit polarisierten Antennen (1,5 bis 2,6 GHz für Bauwerksdiagnostik).',
       auswahlKriterien: [
@@ -740,7 +740,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     },
     standards: [
       {
-        code: 'DGZfP-Merkblatt B5',
+        code: 'DGZfP-Merkblatt B 10',
         title: 'Georadar im Bauwesen – Grundlagen und Anwendungen',
         date: '2015-11',
         url: 'https://www.dgzfp.de/',
@@ -773,7 +773,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     id: 'impact_echo',
     samplingPoints: {
       titel: 'Impact-Echo-Verfahren (Resonanzfrequenzanalyse)',
-      normVorgabe: 'ASTM C1383-15, DGZfP-Merkblatt B11',
+      normVorgabe: 'ASTM C1383-15, DGZfP-Merkblatt B 11 (2022)',
       mindestAnzahl: 'Punktmessungen im Raster 20 × 20 cm bis 50 × 50 cm über den Untersuchungsbereich.',
       rasterMass: 'Messpunkte entlang vermuteter Delaminations- und Hüllrohrtrassen im Abstand von 10–25 cm.',
       auswahlKriterien: [
@@ -803,7 +803,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         scope: 'US- und weltweiter Standard für Impact-Echo.'
       },
       {
-        code: 'DGZfP-Merkblatt B11',
+        code: 'DGZfP-Merkblatt B 11',
         title: 'Das Impact-Echo-Verfahren zur zerstörungsfreien Prüfung von Betonbauteilen',
         date: '2011-09',
         url: 'https://www.dgzfp.de/',
@@ -926,16 +926,16 @@ export const SAMPLING_PRESETS: SamplingPreset[] = [
     name: 'Industriehalle / Hochbau (Nutzlaststeigerung)',
     bauteilTyp: 'Stahlbetonstützen & Unterzüge',
     flaeche: 500,
-    pruefaufgabe: 'In-situ-Druckfestigkeit nach DIN EN 13791 Verfahren A, Karbonatisierungstiefe & Homogenität',
+    pruefaufgabe: 'In-situ-Druckfestigkeit nach DIN EN 13791 (statistisch, n ≥ 8), Karbonatisierungstiefe & Homogenität',
     empfohleneVerfahren: ['bohrkern', 'schmidthammer', 'ultraschall', 'karbonatisierung', 'covermeter'],
     mindestUmfang: {
-      bohrkerne: 14, // DIN EN 13791 Verfahren A
+      bohrkerne: 14, // DIN EN 13791: statistische Auswertung (n ≥ 8)
       zfpMesspunkte: 120, // Schmidt-Hammer
       bohrmehlStellen: 0,
       haftzugStempel: 0,
       rasterMass: '300 × 300 mm Prüffelder'
     },
-    normativeBegruendung: 'DIN EN 13791 Verfahren A fordert zwingend mind. 14 Bohrkerne für eine rechtssichere statistische Ermittlung von f_ck,is ohne überhöhte Sicherheitsabzüge.',
+    normativeBegruendung: 'DIN EN 13791 erlaubt die statistische Ermittlung von f_ck,is ab 8 Kernen; 14 Kerne senken k_n von 2,00 auf ca. 1,80 und verringern damit den statistischen Abzug.',
     konditionierungsFokus: 'Bohrkerne auf Schlankheit h/d = 1,0 oder 2,0 planparallel schleifen (Toleranz < 0,05 mm); 3 Tage lufttrockene Lagerung bei 20 °C vor Druckprüfung.'
   },
   {
@@ -952,7 +952,7 @@ export const SAMPLING_PRESETS: SamplingPreset[] = [
       haftzugStempel: 6,
       rasterMass: '10 × 10 cm Raster (Georadar)'
     },
-    normativeBegruendung: 'ZTV-ING Teil 3 und DIN 1076 fordern zerstörungsfreie Spanngliedortung zur Vermeidung von Treffern; verschärfter Chloridgrenzwert C_krit = 0,20 M.-% bei Spannstahl.',
+    normativeBegruendung: 'ZTV-ING Teil 3 und DIN 1076 fordern zerstörungsfreie Spanngliedortung zur Vermeidung von Treffern; bei Spannstahl ist der kritische Chloridgehalt wegen Spannungsrisskorrosion gesondert und deutlich vorsichtiger zu beurteilen.',
     konditionierungsFokus: 'Metallfreie Kalibrierstrecken für Radar; Trockenbohrung für Chloride; zentrische Zugbelastung bei Haftzugstempeln.'
   },
   {
@@ -960,7 +960,7 @@ export const SAMPLING_PRESETS: SamplingPreset[] = [
     name: 'Historisches Fachwerk / Holzbalkendecke',
     bauteilTyp: 'Holztragwerk / Auflager',
     flaeche: 250,
-    pruefaufgabe: 'Resttragfähigkeit nach WTA 8-15, Feuchteprofil & Insekten-/Pilzbefall',
+    pruefaufgabe: 'Resttragfähigkeit (Bohrwiderstand), Feuchteprofil & Insekten-/Pilzbefall',
     empfohleneVerfahren: ['bohrwiderstand', 'endoskopie', 'darrmethode'],
     mindestAnzahlBohrwiderstand: 'Mind. 2 Bohrungen je Auflager',
     mindestUmfang: {
@@ -970,7 +970,7 @@ export const SAMPLING_PRESETS: SamplingPreset[] = [
       haftzugStempel: 0,
       rasterMass: 'Punktuell versetzt um 30–50 mm'
     },
-    normativeBegruendung: 'WTA-Merkblatt 8-15-20/D verlangt mehrfache Messungen quer zur Faser; DIN 68800 fordert 100%ige Sichtung und Beprobung aller feuchtegefährdeten Knoten.',
+    normativeBegruendung: 'Bohrwiderstandsmessungen mehrfach quer zur Faser ausführen (nicht genormt); DIN 68800 fordert 100%ige Sichtung und Beprobung aller feuchtegefährdeten Knoten.',
     konditionierungsFokus: 'Holzfeuchte u vorab elektrisch messen; Feuchtekorrektur des Bohrwiderstands bei u > 20 M.-%; Vermeidung von Astbereichen.'
   },
   {

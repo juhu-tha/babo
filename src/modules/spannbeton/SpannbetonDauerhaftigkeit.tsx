@@ -653,7 +653,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 <p>
                   <strong>Was bedeutet „Dekompression“?</strong><br />
                   Der Dekompressionsnachweis verlangt, dass unter der maßgebenden Einwirkungskombination (meist der 
-                  <strong> quasi-ständigen Kombination</strong>) innerhalb eines Bereichs von <strong>25 mm</strong> um das Hüllrohr bzw. die Litze (EN-Empfehlung) keine Zugspannungen auftreten; der NA(DE) definiert den Bereich abweichend [NA prüfen].
+                  <strong> quasi-ständigen Kombination</strong>) innerhalb eines Bereichs von <strong>25 mm</strong> um das Hüllrohr bzw. die Litze (EN-Empfehlung) keine Zugspannungen auftreten; der NA(DE) fordert stattdessen, dass an dem Rand, der dem Spannglied am nächsten liegt, keine Zugspannungen auftreten.
                 </p>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/30 text-center font-mono">
                   <BlockMath math="\sigma_{c,\text{Spannglied}} \le 0 \quad (\text{nur Betondruckspannung zulässig!})" />
@@ -720,7 +720,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 </p>
               </div>
               <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap">
-                DGZfP B 01–B 11 &amp; BASt-Leitfaden
+                DGZfP-Merkblätter (Reihe B) &amp; BASt-Berichte
               </span>
             </div>
 
@@ -794,7 +794,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     secondary: 'Impact-Echo (Schallresonanz) + Endoskopische Verifikation',
                     principle: 'Akustischer Impedanzsprung: Zementmörtel (Z ≈ 8.5·10⁶ kg/(m²s)) vs. Luftporen (Z ≈ 400). An Luft entsteht Totalreflexion (R ≈ -1.0) mit starkem Phasensprung.',
                     limits: 'Detektiert Hohlräume ab ca. 15–20 mm Ausdehnung bei Betondeckungen bis 50–100 cm. Schlaffe Querbewehrung kann Streuechos erzeugen.',
-                    standards: 'DGZfP Merkblatt B 04 & BASt-Leitfaden ZfP'
+                    standards: 'DGZfP-Merkblätter B 04 / B 11 & BASt-Leitfaden ZfP'
                   },
                   drahtbruch: {
                     title: 'Detektion gerissener Spannstahldrähte im Hüllrohr',
@@ -802,7 +802,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     secondary: 'Remanenzmagnetismus-Verfahren (Restfeldmessung)',
                     principle: 'Ein starker Elektromagnet magnetisiert das Spannglied bis zur magnetischen Sättigung. Ein Drahtbruch erzeugt magnetische Gegenpole und einen Streufluss an der Betonoberfläche.',
                     limits: 'Erkennt Einzel- und Mehrfachdrahtbrüche ab 1 gerissenem Draht bei Betondeckungen bis ca. 120–150 mm. Bei dicken Bauteilen oder sehr dichter Querbewehrung abnehmende Empfindlichkeit.',
-                    standards: 'DGZfP Merkblatt B 11 & BASt Leitfaden MFL'
+                    standards: 'Magnetische Streufeldmessung: kein DGZfP-Merkblatt; Verfahrensbeschreibung in BASt-/BAM-Forschungsberichten'
                   },
                   korrosion: {
                     title: 'Lokalisierung aktiver Korrosionsherde (Lochfraß / Chloridangriff)',
@@ -810,7 +810,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     secondary: 'Polarisationswiderstandsmessung (Rp / galvanostatische Puls-Methode)',
                     principle: 'Elektrochemische Potenzialdifferenz zwischen intaktem passiviertem Stahl (-100 bis -200 mV) und aktiv korrodierendem Stahl (< -350 mV) an der Betonoberfläche.',
                     limits: 'Zeigt aktive Korrosion zuverlässig an, erfordert jedoch leitfähigen Kontakt zum Beton. Bei Hüllrohren aus Kunststoff (fib PL2/PL3) nur außerhalb des Rohrs messbar.',
-                    standards: 'DIN EN ISO 12696 & DGZfP Merkblatt B 03'
+                    standards: 'DIN EN ISO 12696 & DGZfP-Merkblatt B 03 (2025)'
                   },
                   geometrie: {
                     title: 'Spanngliedachslage & Kollisionsprüfung vor Bohrarbeiten',
@@ -818,7 +818,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     secondary: 'Niederfrequente elektromagnetische Wirbelstromsonden (Profometer)',
                     principle: 'Emission hochfrequenter elektromagnetischer Radarwellen. An metallischen Hüllrohren erfolgt Totalreflexion (Dielektrizitätskonstante ε_r Beton ≈ 6–9 vs. Metall ∞).',
                     limits: 'Lagegenauigkeit ±5 mm bis 40 cm Tiefe. Bei feuchtem oder stark salzbelastetem Beton hohe Signaldämpfung.',
-                    standards: 'DGZfP Merkblatt B 10'
+                    standards: 'DGZfP-Merkblätter B 10 (Radar) / B 02 (Bewehrungsortung)'
                   },
                   monitoring: {
                     title: 'Permanentes Echtzeit-Monitoring gefährdeter Spannbetonbrücken',
@@ -826,7 +826,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     secondary: 'Elektrisch isolierte Spannglieder (EIT - Widerstandsüberwachung)',
                     principle: 'Piezosensoren erfassen die transiente Ultraschall-Schockwelle (50–200 kHz) im exakten Moment des Reißens eines Spannstahldrahts. 3D-Laufzeittriangulation ortet die Bruchstelle.',
                     limits: 'Reines Aktiv-Monitoring (erfasst nur neue Drahtbrüche ab Montage, keine Altschäden). Hoher Aufwand bei Signalfilterung gegen Verkehrsrauschen.',
-                    standards: 'DGZfP Merkblatt B 07 & fib Bulletin 33'
+                    standards: 'DIN EN 13554 (Schallemissionsprüfung) & fib Bulletin 33'
                   }
                 }[selectedZfpTask];
 
@@ -1233,7 +1233,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <span className="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Dacheinsturz</span>
                 </div>
                 <p className="leading-relaxed">
-                  <strong>Ursache (Gutachten Schlaich/Kordina/Engell 1980):</strong> Bau- und Planungsmängel. Die Spannglieder im Übergang zwischen Dachschale und Randbogen versagten durch Korrosion in Verbindung mit wechselnder Beanspruchung (Ermüdung); Feuchte gelangte über Risse und unzureichend verpresste Bereiche an den Spannstahl [Details im Gutachten prüfen].
+                  <strong>Ursache (Untersuchungen nach dem Einsturz 1980):</strong> Bau- und Planungsmängel. Die Spannglieder im Übergang zwischen Dachschale und Randbogen versagten durch Korrosion in Verbindung mit wechselnder Beanspruchung (Ermüdung); Feuchte gelangte über Risse und unzureichend verpresste Bereiche an den Spannstahl.
                 </p>
                 <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-rose-950">
                   Konsequenz: Schärfere Anforderungen an Verpressung, Fugenausbildung und die Prüfung vorgespannter Bauwerke.

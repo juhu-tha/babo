@@ -78,7 +78,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'diag-1',
         task: 'Potentialfeldmessung zur Korrosionsortung',
         description: 'Zerstörungsfreie Lokalisierung aktiver Bewehrungskorrosionsherde auf der Bauteiloberfläche mittels Kupfersulfat-Halbzelle (CSE).',
-        ref: 'DGZfP Merkblatt B3',
+        ref: 'DGZfP-Merkblatt B 03 (2025)',
         status: 'critical'
       },
       {

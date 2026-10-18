@@ -976,16 +976,16 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
 
   bestand: {
     title: 'Bauen im Bestand & Denkmalpflege',
-    tagline: 'Historische Baustoffe, zerstörungsfreie Erkundung, prEN 1990-2 und Umnutzung',
+    tagline: 'Historische Baustoffe, zerstörungsfreie Erkundung, EN 1990-2:2026 und Umnutzung',
     leitfrage: 'Wie beurteilt man die Tragfähigkeit und Dauerhaftigkeit eines 100 Jahre alten Bauwerks, für das keine statischen Berechnungen existieren?',
     corePrinciples: [
       {
         title: 'Historischer Kontext bestimmt Materialeigenschaften',
-        description: 'Ein Beton aus den 1920er Jahren (B 120, B 160) gehorcht völlig anderen Regeln als moderne Betone. Schüttbeton, Hochofenzement, Zementleimüberschuss und Kieskanten müssen historisch exakt datiert werden.',
+        description: 'Ein Beton aus den 1920er bis 1950er Jahren (z. B. B 120, B 160 nach DIN 1045 alter Fassung) gehorcht völlig anderen Regeln als moderne Betone. Schüttbeton, Hochofenzement, Zementleimüberschuss und Kieskanten müssen historisch exakt datiert werden.',
         takeaway: 'Erst das Baujahr und die Bauakte studieren, dann erst das Prüfgerät ansetzen.'
       },
       {
-        title: 'Das Nachrechnungskonzept (prEN 1990-2)',
+        title: 'Das Nachrechnungskonzept (EN 1990-2:2026)',
         description: 'Für bestehende Bauwerke dürfen nicht starr Neubaunormen angesetzt werden. Da das Bauwerk seine Tragfähigkeit über Jahrzehnte bewiesen hat (Tragwerksgeschichte), dürfen modifizierte Teilsicherheitsbeiwerte auf Basis tatsächlicher Streuungen verwendet werden.',
         takeaway: 'Ermittelte Bauteilabmessungen und Materialprüfungen reduzieren Modellunsicherheiten drastisch.'
       },
@@ -995,7 +995,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         takeaway: 'Ertüchtigung durch Kraftumlagerung und intelligente Lastabtragung schlägt Abbruch und Neubau.'
       }
     ],
-    systemicExplanation: 'Mit über 70 % des Bauvolumens ist das Bauen im Bestand die ökonomisch und ökologisch wichtigste Bauingenieursdisziplin. Das Modul vermittelt historische Mauerwerksverbände, Holzbalkendecken, frühe Betonbauweisen, ZfP-Bauwerksdiagnostik, Feuchtesanierung und statische Nachrechnungen nach prEN 1990-2.',
+    systemicExplanation: 'Mit rund zwei Dritteln des Wohnungsbauvolumens (Bestandsmaßnahmen, DIW-Bauvolumenrechnung) ist das Bauen im Bestand die ökonomisch und ökologisch wichtigste Bauingenieursdisziplin. Das Modul vermittelt historische Mauerwerksverbände, Holzbalkendecken, frühe Betonbauweisen, ZfP-Bauwerksdiagnostik, Feuchtesanierung und statische Nachrechnungen nach EN 1990-2:2026.',
     zusammenhaengeText: 'Bauen im Bestand verbindet Werkstoffkunde (historische Kalke, Schlackenzemente), Schadensanalyse (Salz- und Feuchtebelastungen), Bauphysik (Innendämmung ohne Tauwasserschaden) und Tragwerksplanung.',
     graphicalPipelineTitle: 'Der 4-Phasen-Ablauf der Bestandssanierung',
     graphicalPipelineDesc: 'Vom Archiv über die Diagnose zur statischen Nachrechnung und denkmalgerechten Ertüchtigung:',
@@ -1023,11 +1023,11 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       {
         step: '3',
         title: 'Nachrechnung',
-        subtitle: 'prEN 1990-2 Statik',
+        subtitle: 'EN 1990-2:2026 Statik',
         desc: 'Statische Nachrechnung mit modifizierten Teilsicherheitsbeiwerten und Ist-Materialfestigkeiten.',
         iconName: 'Calculator',
         keyFacts: ['Aktivierung von Tragreserven', 'Reduzierte γ-Werte durch Prüfung', 'Grenztragfähigkeit'],
-        normOrFormula: 'prEN 1990-2 / DBV-Heft 43',
+        normOrFormula: 'EN 1990-2:2026 / DBV-Heft 43',
         color: 'from-indigo-600 to-indigo-700'
       },
       {
@@ -1042,13 +1042,13 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       }
     ],
     interconnections: [
-      { from: 'Archivrecherche', to: 'Vor-Ort-Diagnose', relation: 'Hypothesenbildung', causeEffect: 'Erst das Wissen um den Baujahr-Stahl (z. B. Thomas-Stahl vs. BSt 220/340) steuert die Wahl der richtigen Schweißbarkeits- und Zugversuche.' },
+      { from: 'Archivrecherche', to: 'Vor-Ort-Diagnose', relation: 'Hypothesenbildung', causeEffect: 'Erst das Wissen um den Baujahr-Stahl (z. B. Thomas-Stahl vs. BSt 220/340 = Betonstahl I, glatt, nach DIN 488:1972) steuert die Wahl der richtigen Schweißbarkeits- und Zugversuche.' },
       { from: 'Vor-Ort-Diagnose', to: 'Nachrechnung', relation: 'Ist-Zustands-Transfer', causeEffect: 'Verifizierte Betonfestigkeiten aus Bohrkernen senken die statistische Unsicherheit und erlauben den Nachweis ohne teure Verstärkungen.' },
       { from: 'Nachrechnung', to: 'Ertüchtigung', relation: 'Maßnahmendefinition', causeEffect: 'Zeigt die Nachrechnung nur ein lokales Schubversagen, reicht eine gezielte Einbringung von Querkraftschrauben statt eines Deckenabbruchs.' }
     ],
     practicalInsight: {
       title: 'Die goldene Altbauregel',
-      desc: 'Niemals ohne Voruntersuchung eine Innendämmung anbringen! Wird eine historische Ziegelwand ohne kapillaraktive Dämmung oder Dampfbremse gedämmt, wandert der Frostpunkt ins Mauerwerk, die Balkenköpfe faulen ab und das Tragwerk kollabiert.'
+      desc: 'Niemals ohne Voruntersuchung eine Innendämmung anbringen! Innendämmung nur mit hygrothermischem Nachweis (DIN 4108-3, WTA 6-4/6-5): Die Wand wird kälter, die Tauwasser- und Frostgefahr steigt, Balkenköpfe in der Außenwand können geschädigt werden.'
     }
   },
 

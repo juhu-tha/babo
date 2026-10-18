@@ -40,9 +40,9 @@ export default function ProbenahmePlaner() {
     let bohrkerne = 0;
     if (primaryGoal === 'druckfestigkeit') {
       if (verfahrenType === 'verfahrenA') {
-        bohrkerne = Math.max(14, Math.round(14 + (flaecheM2 > 1000 ? (flaecheM2 - 1000) / 300 : 0)));
+        bohrkerne = Math.max(8, Math.round(8 + (flaecheM2 > 1000 ? (flaecheM2 - 1000) / 300 : 0)));
       } else {
-        bohrkerne = Math.min(13, Math.max(3, Math.round(3 + flaecheM2 / 150)));
+        bohrkerne = Math.min(7, Math.max(3, Math.round(3 + flaecheM2 / 150)));
       }
     } else if (primaryGoal === 'chlorid') {
       bohrkerne = Math.max(2, Math.round(flaecheM2 / 300));
@@ -130,7 +130,7 @@ export default function ProbenahmePlaner() {
               2. Exakte Konditionierung
             </span>
             <p className="text-slate-650 leading-relaxed text-[11px]">
-              Falsche Feuchte verfälscht Prüfwerte massiv: Nasser Beton verringert die Druckfestigkeit um bis zu <strong>15 %</strong>; nasses Bohren wäscht Chloride vollständig aus; unzureichende Vorbefeuchtung verhindert Potentialfeldmessungen.
+              Falsche Feuchte verfälscht Prüfwerte massiv: Nasser Beton verringert die Druckfestigkeit um bis zu <strong>15 %</strong>; nasses Bohren verfälscht die Chloridwerte erheblich; unzureichende Vorbefeuchtung verhindert Potentialfeldmessungen.
             </p>
           </div>
 
@@ -259,7 +259,7 @@ export default function ProbenahmePlaner() {
                         : 'bg-white text-slate-700 border-slate-200'
                     }`}
                   >
-                    Verfahren A (≥ 14 Kerne)
+                    Statistisch (n ≥ 8 Kerne)
                   </button>
                   <button
                     type="button"
@@ -270,7 +270,7 @@ export default function ProbenahmePlaner() {
                         : 'bg-white text-slate-700 border-slate-200'
                     }`}
                   >
-                    Verfahren B (3–13 Kerne)
+                    Kleine Stichprobe (3–7 Kerne)
                   </button>
                 </div>
               </div>
@@ -327,22 +327,22 @@ export default function ProbenahmePlaner() {
               <p className="text-slate-650 leading-relaxed text-[11.5px]">
                 {primaryGoal === 'druckfestigkeit' && verfahrenType === 'verfahrenA' && (
                   <>
-                    Nach <strong>DIN EN 13791:2020-02 Abschnitt 8.1</strong> sichern erst mind. <strong>14 Bohrkerne</strong> eine statistisch verlässliche Bestimmung der Standardabweichung <em>s</em> ab. Der charakteristische Wert berechnet sich aus <InlineMath math="f_{ck,is} = \min(f_{m,is} - 1{,}48 \cdot s, \, f_{is,lowest} + 4)" />. Kleinere Stichproben erfordern Verfahren B mit massiven Sicherheitsabschlägen.
+                    Nach <strong>DIN EN 13791:2020-02</strong> wird die charakteristische In-situ-Festigkeit ab <strong>8 Bohrkernen</strong> statistisch ermittelt: <InlineMath math="f_{ck,is} = \min(f_{c,m(n),is} - k_n \cdot s;\; f_{c,is,\text{lowest}} + M)" /> mit <InlineMath math="k_n = 2{,}00" /> (n = 8) bis 1,64 (n → ∞), <em>s</em> mindestens entsprechend V = 8 % und M = 1–4 N/mm² je nach Tiefstwert. Für die Einstufung gilt <InlineMath math="f_{ck} = f_{ck,is}/0{,}85" />. (Die Fassung 2008 verwendete noch 1,48·s ab 15 Kernen.)
                   </>
                 )}
                 {primaryGoal === 'druckfestigkeit' && verfahrenType === 'verfahrenB' && (
                   <>
-                    Nach <strong>DIN EN 13791:2020-02 Abschnitt 8.2</strong> (Verfahren B) sind für kleine Prüfbereiche 3 bis 13 Bohrkerne zulässig. Die Berechnung erfolgt mit Sicherheitsbeiwert <InlineMath math="f_{ck,is} = f_{m,is} - k_n \cdot s" />, wobei <InlineMath math="k_n" /> für 3 Kerne bei 3,37 liegt (hoher statistischer Abschlag zum Ausgleich der Unsicherheit!).
+                    Bei <strong>weniger als 8 Bohrkernen</strong> ist die statistische Auswertung mit <InlineMath math="k_n \cdot s" /> nicht vorgesehen. DIN EN 13791:2020-02 sieht für kleine Stichproben ein gesondertes, deutlich konservativeres Verfahren mit Zuschlägen vor; es eignet sich nur für eng begrenzte Prüfbereiche. Für eine Nachrechnung möglichst ≥ 8 Kerne je Prüfbereich planen.
                   </>
                 )}
                 {primaryGoal === 'chlorid' && (
                   <>
-                    Nach <strong>DIBt TR Instandhaltung (Teil 1, Anhang B)</strong> müssen in korrosionsgefährdeten Zonen mind. 3–5 tiefengestaffelte Bohrmehlprofile entnommen werden, um den Oberflächenchloridgehalt <InlineMath math="C_s" /> und die Eindringtiefe an der Bewehrung (<InlineMath math="C_{krit} = 0{,}50\,\text{M.-\%}" />) rechtssicher zu belegen.
+                    Nach <strong>DIBt TR Instandhaltung (Teil 1, Anhang B)</strong> müssen in korrosionsgefährdeten Zonen mind. 3–5 tiefengestaffelte Bohrmehlprofile entnommen werden, um den Oberflächenchloridgehalt <InlineMath math="C_s" /> und den Chloridgehalt in Bewehrungstiefe zu belegen (Anhaltswert korrosionsauslösend ≈ <InlineMath math="0{,}5\,\text{M.-\%}" /> bezogen auf den Zementgehalt; objektspezifisch festzulegen).
                   </>
                 )}
                 {primaryGoal === 'potentialfeld' && (
                   <>
-                    Nach <strong>DGZfP-Merkblatt B1 (2018)</strong> erfordert die Detektion aktiver Makroelement-Anoden ein engmaschiges Raster von max. 15 × 15 cm bis 20 × 20 cm. Größere Rasterweiten übersehen lokale Lochfraßherde zwischen zwei Messpunkten.
+                    Nach <strong>DGZfP-Merkblatt B 03 (2025)</strong> erfordert die Detektion aktiver Makroelement-Anoden ein engmaschiges Raster von max. 15 × 15 cm bis 20 × 20 cm. Größere Rasterweiten übersehen lokale Lochfraßherde zwischen zwei Messpunkten.
                   </>
                 )}
                 {primaryGoal === 'karbonatisierung' && (
@@ -422,7 +422,7 @@ export default function ProbenahmePlaner() {
               </ul>
             </div>
             <div className="p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-[11px] text-rose-800">
-              <strong>Kritischer Fehler:</strong> Nassbohren wäscht wasserlösliche Chloride vollständig aus; Messwert wäre fälschlich 0,00 M.-%!
+              <strong>Kritischer Fehler:</strong> Nassbohren löst wasserlösliche Chloride aus und verfälscht die Messwerte erheblich – Bohrmehl trocken entnehmen!
             </div>
           </div>
 
@@ -508,7 +508,7 @@ export default function ProbenahmePlaner() {
                 <td className="py-2 px-3 font-bold font-mono text-slate-900">DIN EN 13791</td>
                 <td className="py-2 px-3 font-mono text-slate-600">2020-02</td>
                 <td className="py-2 px-3 font-medium">In-situ-Druckfestigkeit von Beton in Bauwerken</td>
-                <td className="py-2 px-3 text-slate-650">Verfahren A (≥ 14 Kerne) &amp; B (3–13 Kerne); Basiskurven</td>
+                <td className="py-2 px-3 text-slate-650">n ≥ 8 Kerne: f_ck,is = min(f_m − k_n·s; f_lowest + M); f_ck = f_ck,is/0,85</td>
                 <td className="py-2 px-3 text-right">
                   <a href="https://www.dinmedia.de/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
                     DIN Media <ExternalLink size={11} />
@@ -560,7 +560,7 @@ export default function ProbenahmePlaner() {
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-3 font-bold font-mono text-slate-900">DGZfP-Merkblatt B1</td>
+                <td className="py-2 px-3 font-bold font-mono text-slate-900">DGZfP-Merkblatt B 03</td>
                 <td className="py-2 px-3 font-mono text-slate-600">2018-06</td>
                 <td className="py-2 px-3 font-medium">Elektrochemische Potenzialmessung Stahlbeton</td>
                 <td className="py-2 px-3 text-slate-650">Rastermaß 15–20 cm, Vorbefeuchtung Rc &lt; 10 kΩ, CSE-Referenzelektrode</td>
@@ -585,7 +585,7 @@ export default function ProbenahmePlaner() {
                 <td className="py-2 px-3 font-bold font-mono text-slate-900">DIBt TR Instandhaltung</td>
                 <td className="py-2 px-3 font-mono text-slate-600">2020-05</td>
                 <td className="py-2 px-3 font-medium">Technische Regel Instandhaltung von Betonbauwerken</td>
-                <td className="py-2 px-3 text-slate-650">Grenzwerte C_krit = 0,5 M.-% (0,2 % bei Spannstahl), Prinzipien W/C/R</td>
+                <td className="py-2 px-3 text-slate-650">Korrosionsauslösender Chloridgehalt objektspezifisch (Anhaltswert ≈ 0,5 M.-% bez. Zement; Spannbeton gesondert); Prinzipien nach TR</td>
                 <td className="py-2 px-3 text-right">
                   <a href="https://www.dibt.de/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
                     DIBt <ExternalLink size={11} />
@@ -593,9 +593,9 @@ export default function ProbenahmePlaner() {
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-3 font-bold font-mono text-slate-900">WTA-Merkblatt 8-15-20/D</td>
-                <td className="py-2 px-3 font-mono text-slate-600">2020-08</td>
-                <td className="py-2 px-3 font-medium">Bohrwiderstandsmessung an Holztragwerken</td>
+                <td className="py-2 px-3 font-bold font-mono text-slate-900">DIN 68800-4</td>
+                <td className="py-2 px-3 font-mono text-slate-600">2020-12</td>
+                <td className="py-2 px-3 font-medium">Holzschutz – Bekämpfende Maßnahmen (Bohrwiderstandsmessung selbst nicht genormt)</td>
                 <td className="py-2 px-3 text-slate-650">2–3 Bohrungen je Balkenkopf, Feuchte u &lt; 20 %, Restquerschnitt</td>
                 <td className="py-2 px-3 text-right">
                   <a href="https://www.wta-international.org/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">

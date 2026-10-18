@@ -52,8 +52,8 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'rec-3',
         task: 'Historische Erkundung des Standorts',
-        description: 'Recherche bezüglich früherer industrieller Nutzung, Bombentreffern im Zweiten Weltkrieg (Kampfmittelfreiheit) oder nachträglicher Umbauten, die nicht dokumentiert wurden.',
-        ref: 'TR Kampfmittelräumung / VDI 6202',
+        description: 'Recherche bezüglich früherer industrieller Nutzung, Bombentreffern im Zweiten Weltkrieg (Kampfmittelverdacht: Pflichten nach Landesrecht und Bauherrenverantwortung, Arbeitshilfen Kampfmittelräumung des Bundes) oder nachträglicher Umbauten, die nicht dokumentiert wurden.',
+        ref: 'Landesrecht / AH KMR',
         status: 'mandatory'
       },
       {
@@ -61,6 +61,13 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         task: 'Nutzungsgeschichte und Schadstoffverdacht ermitteln',
         description: 'Erfassung früherer Verwendungen (z. B. chemische Reinigung, Werkstatt) zur Eingrenzung des Risikos für Kontaminationen und verdeckte Schadstoffe.',
         ref: 'VDI 6202 Blatt 1',
+        status: 'mandatory'
+      },
+      {
+        id: 'rec-5',
+        task: 'Schadstofferkundung vor Eingriffen',
+        description: 'Bei Gebäuden mit Baubeginn vor dem 31.10.1993 muss der Veranlasser vor Tätigkeiten an der Bausubstanz vorhandene Informationen (Baujahr, Asbestverdacht) ermitteln und den ausführenden Betrieben übergeben; bei Verdacht Probenahme und Analyse.',
+        ref: 'GefStoffV § 5a / TRGS 519',
         status: 'mandatory'
       }
     ]
@@ -74,7 +81,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'erf-1',
         task: 'Bauaufnahme-Genauigkeitsstufe festlegen',
-        description: 'Festlegung der Genauigkeitsstufe der Bauaufnahme (Stufe I bis IV nach Eckstein) je nach Planungstiefe je nach Planungstiefe.',
+        description: 'Festlegung der Genauigkeitsstufe der Bauaufnahme (Stufe I bis IV nach Eckstein) je nach Planungstiefe.',
         ref: 'VDI/VDE 2634 / Verband Dt. Vermessungsing.',
         status: 'mandatory'
       },
@@ -88,8 +95,8 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'erf-3',
         task: 'Bauteilschichten & Konstruktionsprinzipien klären',
-        description: 'Lokalisierung und Zuordnung von Deckenkonstruktionen (z.B. Kappendecke, Holzbalkendecke, Rippendecke) mittels zerstörungsarmer Bauteilöffnungen.',
-        ref: 'DIN EN 1990/NA (Sicherheitskonzept) – Bestandserkundung nach ISO 13822 bzw. DIN CEN/TS 17440 (Bewertung bestehender Tragwerke)',
+        description: 'Lokalisierung und Zuordnung von Deckenkonstruktionen (z.B. Kappendecke, Holzbalkendecke, Rippendecke) mittels zerstörungsarmer Bauteilöffnungen. Grundlage: Sicherheitskonzept DIN EN 1990/NA; Bewertung bestehender Tragwerke nach ISO 13822 bzw. EN 1990-2:2026 (ersetzt CEN/TS 17440:2020).',
+        ref: 'ISO 13822 / EN 1990-2:2026',
         status: 'critical'
       },
       {
@@ -118,14 +125,14 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'dia-2',
         task: 'Carbonatisierungstiefe & Chloridprofil ermitteln',
         description: 'Indikatorprüfung mit Phenolphthalein an frischen Bruchflächen und Bohrmehlanalysen im Labor zur Feststellung des Korrosionsrisikos für den Bewehrungsstahl.',
-        ref: 'DIN EN 14630 / DIN EN 14630 / TR Instandhaltung (DIBt) bzw. DAfStb-Richtlinie Instandhaltung',
+        ref: 'DIN EN 14630 / DIN EN 14629 / TR Instandhaltung',
         status: 'critical'
       },
       {
         id: 'dia-3',
         task: 'Zerstörungsfreie Prüfung der Mauerwerks- und Holzfestigkeit',
-        description: 'Zerstörungsfreie bzw. zerstörungsarme Festigkeitsabschätzungen mittels Rückprallhammer (Schmidthammer), Widerstandsbohrung (Resistograph) oder Ultraschallmessungen.',
-        ref: 'DIN EN 12504-2 (Rückprallhammer, Beton), DIN EN 12504-4 (Ultraschall), Bewertung nach DIN EN 13791. Bohrwiderstandsmessung an Holz ist nicht genormt.',
+        description: 'Zerstörungsfreie bzw. zerstörungsarme Festigkeitsabschätzungen mittels Rückprallhammer (Schmidthammer), Widerstandsbohrung (Resistograph) oder Ultraschallmessungen. Rückprallhammer nur mit Kalibrierung an Bohrkernen; Bohrwiderstandsmessung an Holz ist nicht genormt.',
+        ref: 'DIN EN 12504-2/-4, DIN EN 13791',
         status: 'recommended'
       },
       {
@@ -146,8 +153,8 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'st-1',
         task: 'Nachrechnung nach der Nachrechnungsrichtlinie',
-        description: 'Rechnerische Überprüfung bestehender Brücken- und Hochbautragwerke im Hinblick auf geänderte Nutzungs- und Verkehrslasten.',
-        ref: 'Straßenbrücken: Nachrechnungsrichtlinie (BMV, vormals BMVI/BMDV, Ausgabe 05/2011 mit Ergänzungen); Hochbau: DIN EN 1990 ff. mit NA, ergänzend ISO 13822',
+        description: 'Rechnerische Überprüfung bestehender Brücken- und Hochbautragwerke im Hinblick auf geänderte Nutzungs- und Verkehrslasten. Straßenbrücken: Nachrechnungsrichtlinie (Ausgabe 05/2011 mit 1. und 2. Ergänzung); Hochbau: DIN EN 1990 ff. mit NA, ergänzend ISO 13822.',
+        ref: 'Nachrechnungsrichtlinie / DIN EN 1990 + NA',
         status: 'critical'
       },
       {
@@ -168,8 +175,15 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'st-4',
         task: 'Abstimmung ergänzender Instandsetzungsmaßnahmen',
         description: 'Konzipierung von Verstärkungsmaßnahmen (z.B. CFK-Lamellen, Spritzbetonverstärkung) bei rechnerischem Defizit.',
-        ref: 'DIBt-Richtlinien / DAfStb Instandhaltungs-RL',
+        ref: 'TR Instandhaltung / abZ',
         status: 'recommended'
+      },
+      {
+        id: 'st-5',
+        task: 'Ankündigungsverhalten bei SpRK-gefährdetem Spannstahl',
+        description: 'Bei Spannbeton mit spannungsrisskorrosionsgefährdetem Spannstahl (z. B. Hennigsdorfer, Sigma oval, ölschlussvergütete Stähle bis ca. 1978) Nachweis des Ankündigungsverhaltens (Riss-vor-Bruch) führen bzw. Monitoring vorsehen.',
+        ref: 'Handlungsanweisung SpRK (2011)',
+        status: 'critical'
       }
     ]
   }
@@ -189,7 +203,7 @@ export default function BestandChecklisten() {
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
           <p>
-            Stufenweise Qualitätssicherung und Diagnostik im Bestandsbau zur sicheren Tragfähigkeitsnachrechnung, In-Situ-Befundung und Denkmalsanierung nach VDI 6200 (Standsicherheit), WTA-Merkblättern, Denkmalschutzgesetz und – bei Brücken und Ingenieurbauwerken – DIN 1076..
+            Stufenweise Qualitätssicherung und Diagnostik im Bestandsbau zur sicheren Tragfähigkeitsnachrechnung, In-Situ-Befundung und Denkmalsanierung nach VDI 6200 (Standsicherheit), WTA-Merkblättern, Denkmalschutzgesetz und – bei Brücken und Ingenieurbauwerken – DIN 1076.
           </p>
         </div>
       </div>
@@ -256,7 +270,7 @@ export default function BestandChecklisten() {
               } else if (item.status === 'mandatory') {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-amber-500/80';
                 badgeStyle = 'bg-amber-50/50 text-amber-700 border-amber-100/40';
-                badgeLabel = 'Gesetzlich verpflichtend';
+                badgeLabel = 'Pflichtpunkt';
               } else {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-emerald-500/80';
                 badgeStyle = 'bg-emerald-50/50 text-emerald-700 border-emerald-100/40';
@@ -307,7 +321,7 @@ export default function BestandChecklisten() {
             <div className="flex items-center gap-1.5">
               <ShieldAlert className="w-3.5 h-3.5 text-home-grau/60 shrink-0" />
               <p className="font-normal text-home-grau/80">
-                <strong>Fehlende Statik-Unterlagen?</strong> Nimm rechtzeitig Kontakt mit dem historischen Archiv des örtlichen Bauamts auf, um langwierige Erkundungsoffensiven einzusparen.
+                <strong>Fehlende Statik-Unterlagen?</strong> Nehmen Sie rechtzeitig Kontakt mit dem historischen Archiv des örtlichen Bauamts auf, um langwierige Erkundungsoffensiven einzusparen.
               </p>
             </div>
             <div className="flex gap-1">
@@ -316,8 +330,7 @@ export default function BestandChecklisten() {
                 target="_blank" 
                 rel="no-referrer"
                 className="px-1.5 py-0.5 bg-white hover:bg-off-white border border-home-grau/20 text-text-main rounded font-bold flex items-center gap-0.5 transition-all cursor-pointer text-xs"
-              >
-                GEG Gesetz <ExternalLink size={10} />
+              > GModG <ExternalLink size={10} />
               </a>
             </div>
           </div>
@@ -338,9 +351,7 @@ export default function BestandChecklisten() {
           { title: 'DIN 1076: Ingenieurbauwerke - Überwachung und Prüfung', url: 'https://www.dinmedia.de/' }
         ]}
         literatur={[
-          'Bundis, H. (2018): Zustandserfassung, Analyse und Bauwerksdiagnostik im Bestand (Fraunhofer IRB Verlag)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Klopp, D.: Sanierungsplanung und Bausubstanzuntersuchung (Bauwerk Verlag)'
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         formeln={[
           {
@@ -349,9 +360,9 @@ export default function BestandChecklisten() {
             quelle: 'DIN EN 12504-4'
           },
           {
-            formel: 'f_{\\text{ck,is}} = \\min\\left(\\bar{x}_n - k \\cdot s; \\, x_{\\text{min}} + 4\\right) \\quad [\\text{N/mm}^2]',
-            erklaerung: 'In-situ-Druckfestigkeit von Altbeton nach DIN EN 13791 anhand von Bohrkernen zur statischen Nachrechnung bestehender Tragwerke.',
-            quelle: 'DIN EN 13791 Gl. 5.1'
+            formel: 'f_{\\text{ck,is}} = \\min\\left(f_{c,m(n),is} - k_n \\cdot s;\\; f_{c,is,\\text{lowest}} + M\\right), \\quad f_{ck} = f_{\\text{ck,is}}/0{,}85',
+            erklaerung: 'Charakteristische In-situ-Druckfestigkeit aus n ≥ 8 Bohrkernen (k_n = 2,00 bis 1,64; s mindestens entsprechend V = 8 %; M = 1–4 N/mm² je nach Tiefstwert) und Einstufung in eine Druckfestigkeitsklasse.',
+            quelle: 'DIN EN 13791:2020-02'
           }
         ]}
       />

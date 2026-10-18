@@ -509,16 +509,29 @@ export default function PruefverfahrenKatalog() {
                   <td className="py-2 px-3 text-[11px] text-slate-600">
                     {m.id === 'bohrwiderstand' ? 'Holztragwerke' :
                      m.id === 'karsten' ? 'Putz / Mauerwerk / Fassade' :
+                     m.id === 'darrmethode' ? 'Beton, Estrich, Mauerwerk, Putz, Holz' :
+                     m.id === 'endoskopie' ? 'Hohlräume in Mauerwerk, Decken, Holzbau' :
+                     m.id === 'georadar' ? 'Beton, Mauerwerk, Fahrbahnen' :
+                     m.id === 'ultraschall' || m.id === 'impact_echo' ? 'Beton, Mauerwerk, Naturstein' :
+                     m.id === 'haftabzug' ? 'Beton, Putz, Beschichtungen' :
                      'Stahlbeton / Spannbeton'}
                   </td>
                   <td className="py-2 px-3 text-[11px] font-mono">{m.badge}</td>
                   <td className="py-2 px-3 text-[11px] text-slate-600">
-                    {m.id === 'bohrkern' ? 'Rechtssichere Druckfestigkeit f_c' :
+                    {m.id === 'bohrkern' ? 'Referenzwert Druckfestigkeit f_c' :
                      m.id === 'potentialfeld' ? 'Wahrscheinlichkeit aktiver Korrosion' :
                      m.id === 'covermeter' ? 'Soll-Ist-Abgleich Betondeckung c' :
                      m.id === 'bohrmehl' ? 'Chloridkonzentration Cl⁻ Profil' :
                      m.id === 'bohrwiderstand' ? 'Dichteprofil & Restquerschnitt' :
                      m.id === 'haftabzug' ? 'Abreißfestigkeit f_ct & Verbund' :
+                     m.id === 'schmidthammer' ? 'Oberflächenhärte; Festigkeit nur nach Kalibrierung an Bohrkernen' :
+                     m.id === 'ultraschall' ? 'Gefügehomogenität, Fehlstellen, dyn. E-Modul' :
+                     m.id === 'georadar' ? 'Lage von Bewehrung, Spanngliedern, Hohlräumen' :
+                     m.id === 'impact_echo' ? 'Bauteildicke, Hohlstellen, Verpressfehler' :
+                     m.id === 'karbonatisierung' ? 'Karbonatisierungstiefe d_k' :
+                     m.id === 'karsten' ? 'Wasseraufnahme der Oberfläche (orientierend)' :
+                     m.id === 'endoskopie' ? 'Sichtbefund in Hohlräumen (Schichtaufbau, Befall)' :
+                     m.id === 'darrmethode' ? 'Referenzwert Feuchtegehalt (M.-%)' :
                      'Zerstörungsfreie Gefügeanalyse'}
                   </td>
                   <td className="py-2 px-3 text-[10px] font-mono text-slate-500 truncate max-w-[200px]">{m.standard}</td>

@@ -120,7 +120,7 @@ const PRESET_SCENARIOS: DiagnosticScenario[] = [
       bruchTyp: 'A',
       holzRest: 55
     },
-    schadensmechanismus: 'Bohrwiderstands-Resistographie zeigt Kernfäule durch Echten Hausschwamm. Tragfähiger Restquerschnitt um 45 % reduziert.'
+    schadensmechanismus: 'Bohrwiderstandsmessung zeigt Braunfäule durch Echten Hausschwamm. Tragfähiger Restquerschnitt um 45 % reduziert.'
   }
 ];
 
@@ -427,7 +427,7 @@ export default function InterpretationNavigator() {
                 className="w-full accent-shiraz"
               />
               <span className="text-[10px] text-slate-400 block">
-                WTA 8-15: Widerstandsmoment sinkt mit <InlineMath math="W \sim h_{eff}^2" />
+                Biegetragfähigkeit: Widerstandsmoment sinkt mit <InlineMath math="W \sim h_{eff}^2" />
               </span>
             </div>
           </div>
@@ -464,8 +464,8 @@ export default function InterpretationNavigator() {
               evaluation.overallRisk === 'mittel' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
               'bg-emerald-100 text-emerald-800 border border-emerald-300'
             }`}>
-              VDI 6200 Schadensstufe: {
-                evaluation.overallRisk === 'akut' ? 'Stufe 4 (Gefahr in Verzug)' :
+              Gutachterliche Dringlichkeit (Ampel, nicht VDI 6200): {
+                evaluation.overallRisk === 'akut' ? 'Stufe 4 (sofortiger Handlungsbedarf)' :
                 evaluation.overallRisk === 'hoch' ? 'Stufe 3 (Erheblich)' :
                 evaluation.overallRisk === 'mittel' ? 'Stufe 2 (Beobachtung)' :
                 'Stufe 1 (Gering)'
@@ -505,9 +505,9 @@ export default function InterpretationNavigator() {
                     {evaluation.isChlorideSevere ? (
                       <span className="text-rose-700 font-semibold">Akute Lochfraßgefahr! Chloridgehalt liegt beim {formatDeZahl(chloridVal / 0.5, 1)}-fachen des kritischen Schwellenwerts. Gefahr spröder Stababbrüche!</span>
                     ) : evaluation.isChlorideCritical ? (
-                      <span className="text-amber-700">Kritischer Chloridgehalt überschritten (&gt; 0,50 M.-%). Lochfraßaktivität wahrscheinlich.</span>
+                      <span className="text-amber-700">Anhaltswert ≈ 0,5 M.-% bez. Zement überschritten – Lochfraß wahrscheinlich (Grenze objektspezifisch durch SKP festlegen).</span>
                     ) : (
-                      <span className="text-emerald-700">Chloridgehalt unterkritisch (&lt; 0,50 M.-%). Kein Lochfraßrisiko.</span>
+                      <span className="text-emerald-700">Chloridgehalt unter dem Anhaltswert ≈ 0,5 M.-% bez. Zement. Geringes Lochfraßrisiko.</span>
                     )}
                   </p>
                 </div>
@@ -518,7 +518,7 @@ export default function InterpretationNavigator() {
                     {evaluation.potentialStatus === 'aktiv' ? (
                       <span className="text-rose-700 font-semibold">Stark negatives Potential ({potentialVal} mV). Aktive galvanische Elementbildung mit benachbarten Kathoden nachgewiesen.</span>
                     ) : (
-                      <span className="text-emerald-700">Stabiles Passivpotential. Keine aktiven Korrosionsströme.</span>
+                      <span className="text-emerald-700">Kein Hinweis auf aktive Korrosion (Potential im passiven bzw. Unsicherheitsbereich; ASTM C876: −200 bis −350 mV unsicher).</span>
                     )}
                   </p>
                 </div>
@@ -558,7 +558,7 @@ export default function InterpretationNavigator() {
                   <strong>Bewehrungsquerschnitt A_s:</strong>
                   <p className="text-[11px] text-slate-650">
                     {evaluation.isChlorideSevere ? (
-                      <span className="text-rose-700 font-medium">Rechnerischer Querschnittsabzug von mind. 25–40 % der Zugbewehrung bei statischer Nachrechnung zwingend anzusetzen!</span>
+                      <span className="text-rose-700 font-medium">Querschnittsverlust der Bewehrung nach Freilegung messen und in der Nachrechnung ansetzen.</span>
                     ) : evaluation.isCarbDepassivated ? (
                       <span className="text-amber-700">Oberflächlicher Querschnittsverlust (Muldenkorrosion) von ca. 5–10 % zu berücksichtigen.</span>
                     ) : (
@@ -599,7 +599,7 @@ export default function InterpretationNavigator() {
                   <strong>Empfohlenes Instandsetzungsprinzip:</strong>
                   <p className="text-[11px] font-semibold text-shiraz">
                     {evaluation.isChlorideSevere ? (
-                      'Prinzip C (Chloridabtrag via HDW) ODER Prinzip KKS (Kathodischer Korrosionsschutz DIN EN ISO 12696)'
+                      'Prinzip R (chloridbelasteten Beton entfernen, reprofilieren) ODER Prinzip K (Kathodischer Korrosionsschutz DIN EN ISO 12696)'
                     ) : evaluation.isCarbDepassivated ? (
                       'Prinzip R (Reprofilierung mit PCC/SPCC) + Prinzip W (Trockenhalten mit OS 4/OS 5a)'
                     ) : evaluation.isStrengthDeficient ? (
@@ -634,7 +634,7 @@ export default function InterpretationNavigator() {
                     )}
                     {evaluation.isHolzCrit && (
                       <>
-                        <li>Gesundschnitt mind. 30 cm über die sichtbare Fäulniszone hinaus (WTA 8-15).</li>
+                        <li>Bei Echtem Hausschwamm Rückschnitt deutlich über den sichtbaren Befall hinaus (Größenordnung 1 m) und Behandlung des Mauerwerks nach DIN 68800-4.</li>
                         <li>Einbau von verzinkten Balkenschuhen oder beidseitigen Stahl-U-Profilen.</li>
                       </>
                     )}
@@ -686,7 +686,7 @@ export default function InterpretationNavigator() {
             <div>
               <strong className="text-slate-800">Statistische Signifikanz (Prüfdimension 3):</strong>
               <p className="text-slate-650 text-[11px] mt-0.5 leading-snug">
-                Wurden die Mindeststichprobenumfänge nach DIN EN 13791 (mind. 14 Kerne für Verfahren A) oder DBV (mind. 20–30 Covermeter-Punkte für 5 %-Quantil) vollständig eingehalten?
+                Wurden die Mindeststichprobenumfänge nach DIN EN 13791:2020-02 (Anzahl gemäß geltender Fassung prüfen) oder DBV (mind. 20–30 Covermeter-Punkte für 5 %-Quantil) vollständig eingehalten?
               </p>
             </div>
           </div>
