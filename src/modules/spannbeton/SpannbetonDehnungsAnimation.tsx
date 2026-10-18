@@ -584,7 +584,7 @@ export default function SpannbetonDehnungsAnimation() {
                   : 'bg-purple-50 hover:bg-purple-100 text-purple-800 border-purple-300'
               }`}
             >
-              5. P = 2.400 kN (Volle Vorspannung)
+              5. P = 2.400 kN (hohe Vorspannung)
             </button>
           </div>
         </div>
@@ -607,7 +607,7 @@ export default function SpannbetonDehnungsAnimation() {
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
               <span>0 kN/m (Nur Eigengewicht)</span>
-              <span>Gesamtmoment M_Ed = {formatDeZahl(calc.Mq_mid, 0)} kNm</span>
+              <span>Gesamtmoment M_k (g + q) = {formatDeZahl(calc.Mq_mid, 0)} kNm</span>
               <span>50 kN/m</span>
             </div>
           </div>
@@ -864,9 +864,9 @@ export default function SpannbetonDehnungsAnimation() {
               )}
 
               {/* Rissfrei-Anzeige bei voller Überdrückung */}
-              {calc.sigma_bot <= 0 && !calc.hasSupportHeadCracks && (
+              {calc.sigma_bot <= 0 && calc.sigma_top <= 0 && !calc.hasSupportHeadCracks && (
                 <text x="310" y="125" textAnchor="middle" fontSize="9.5" fill="#059669" fontWeight="bold">
-                  ✓ Vollständig rissfrei (Zustand I)! Voller Querschnitt homogen überdrückt.
+                  ✓ Voll überdrückt (Zustand I): σ_o ≤ 0 und σ_u ≤ 0.
                 </text>
               )}
             </svg>

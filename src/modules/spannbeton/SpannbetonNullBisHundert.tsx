@@ -577,7 +577,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     </p>
                     <p>
                       <strong>Krafteinleitung:</strong> Rein über Verbundspannungen und den Hoyer-Effekt. 
-                      Keine Endverankerungen im Bauteil nötig; Eintragung über <InlineMath math="l_{bpt}" />.
+                      Keine Endverankerungen im Bauteil nötig; Krafteinleitung über die Übertragungslänge <InlineMath math="l_{pt}" /> (EC2 8.10.2.2).
                     </p>
                   </div>
                 </div>
@@ -685,7 +685,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20">
                   <span className="font-bold text-slate-900 block">3. Ideeller Querschnitt <InlineMath math="A_i" /></span>
-                  <span className="text-slate-600 text-[11px]">Gilt nach dem Verpressen für spätere Einwirkungen (<InlineMath math="A_i = A_c + (\alpha-1)A_p" />).</span>
+                  <span className="text-slate-600 text-[11px]">Gilt nach dem Verpressen für spätere Einwirkungen (<InlineMath math="A_i = A_c + (\alpha-1)A_p" />), bezogen auf den Bruttoquerschnitt (Hüllrohr verpresst); bei sofortigem Verbund gilt der ideelle Querschnitt bereits ab Spannkraftübertragung.</span>
                 </div>
               </div>
             </div>
@@ -971,7 +971,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </p>
                   <p>
                     <strong>2. Hyperstatisches Sekundärmoment (<InlineMath math="M_{P,2}" />):</strong><br />
-                    Entsteht durch die elastische Festhaltung an den Zwischenstützen. Es bewirkt zusätzliche Stützensenkungs- und Hebekräfte.
+                    Es entsteht aus den Zwangsauflagerkräften, die die Vorspannung an den Zwischenstützen hervorruft.
                   </p>
                 </div>
               </div>
@@ -990,8 +990,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <p>
                     Bei konkordanter Spanngliedführung entstehen keine Zwangskräfte an den Auflagern. 
-                    Nach dem Satz von Menabrea kann jede nicht-konkordante Spanngliedführung durch eine lineare 
-                    Transformation in eine konkordante Führung überführt werden, ohne die Summenwirkung im Grenzzustand der Tragfähigkeit zu verändern.
+                    Nach dem Satz der linearen Transformation (Guyon) ändert eine lineare Verschiebung der Spanngliedlage über den Innenstützen (bei unveränderten Endlagen und gleicher Krümmung im Feld) die Aufteilung in Primär- und Sekundärmoment, nicht aber das Gesamtmoment M_P aus Vorspannung. Im GZT sind die statisch unbestimmten Anteile der Vorspannung (M_P,2) als Einwirkung zu berücksichtigen (EC2 5.10.8).
                   </p>
                 </div>
               </div>
@@ -1059,7 +1058,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <p className="text-slate-600 text-[11px] leading-relaxed">
                     Es ist stets zwischen dem Zustand <InlineMath math="t=0" /> (unmittelbar nach Verankern, Reibung und Keilschlupf, <InlineMath math="P_0" />) 
-                    und dem Zustand <InlineMath math="t=\infty" /> (nach Abzug aller Kriech-, Schwind- und Relaxationsverluste, <InlineMath math="P_\infty \approx 0{,}80\dots 0{,}85 P_0" />) zu unterscheiden.
+                    und dem Zustand <InlineMath math="t=\infty" /> (nach Abzug aller Kriech-, Schwind- und Relaxationsverluste, <InlineMath math="P_\infty \approx 0{,}80\dots 0{,}85 P_{m0}" />; zeitabhängige Verluste typisch 10–20 % von <InlineMath math="P_{m0}" />, Gesamtverluste inkl. Reibung/Schlupf 20–30 % der Pressenkraft) zu unterscheiden.
                   </p>
                 </div>
 
@@ -1069,8 +1068,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     Dekompressionsnachweis (GZG)
                   </div>
                   <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Zur Vermeidung von Spannungsrisskorrosion fordert DIN EN 1992-1-1, dass das Spannglied 
-                    unter quasi-ständiger Einwirkungskombination mit einer Mindestüberdeckung von <InlineMath math="25\,\text{mm}" /> in der Betondruckzone liegt.
+                    Zum Schutz der Spannglieder vor Korrosion verlangt EC2 je nach Expositionsklasse den Dekompressionsnachweis (Tab. 7.1N bzw. NA Tab. 7.1DE): Der Beton um das Spannglied muss unter der maßgebenden Kombination überdrückt bleiben (XC2–XC4: quasi-ständig, XD/XS: häufig). EN: Spannglied mind. <InlineMath math="25\,\text{mm}" /> innerhalb der Druckzone; NA(DE): eigene Bereichsdefinition [NA prüfen].
                   </p>
                 </div>
 
@@ -1141,7 +1139,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 </div>
                 {quizAnswers.q1 === 2 && (
                   <p className="text-[11px] text-emerald-700 font-medium">
-                    ✓ Richtig: Die zeitabhängige Betonstauchung von typisch 1,0–1,5 ‰ baut rund 200–300 N/mm² des B500 ab (über 50–70 % der Streckgrenze).
+                    ✓ Richtig: Die zeitabhängige Betonstauchung von typisch 1,0–1,5 ‰ baut rund 200–300 N/mm² des B500 ab – das sind etwa 46–70 % der elastischen Dehnung bei f_yd = 435 N/mm² (2,175 ‰).
                   </p>
                 )}
                 {quizAnswers.q1 === 1 && (

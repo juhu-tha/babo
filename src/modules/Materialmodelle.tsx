@@ -19,6 +19,7 @@ import { Line } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl } from '@/src/utils/numberFormat';
+import { RheologySimulator } from '@/src/components/rheology/RheologySimulator';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -117,474 +118,9 @@ const BinghamShape = ({x, y}: {x:number, y:number}) => (
 // =========================================================================
 
 function RheologySection() {
-  const [model, setModel] = useState<'hooke'|'newton'|'st_venant'|'prandtl'|'elasto_plastic'|'maxwell'|'kelvin'|'zener'|'bingham'>('maxwell');
-  const [E, setE] = useState(10);
-  const [eta, setEta] = useState(20);
-  const [fy, setFy] = useState(5);
-  const [Et, setEt] = useState(2); // Verfestigungsmodul für Elasto-Plastisch mit Verfestigung
-  const [sigma0, setSigma0] = useState(8);
-  const [stressProfile, setStressProfile] = useState<'kriechen'|'relaxieren'|'dreieck'|'sinus'|'stufenweise'|'impuls'>('relaxieren');
-  const [hystScaleMode, setHystScaleMode] = useState<'autoMax'|'zoom'>('autoMax');
-
-  const { 
-    t_labels, 
-    sigDataPoints, 
-    epsDataPoints, 
-    sigEpsData, 
-    tau, 
-    eps0, 
-    sigAtEnd, 
-    sigDrop, 
-    relaxPercent, 
-    halfLife,
-    dissEnergy_kJ_m3,
-    yieldExceededWarning
-  } = useMemo(() => {
-    const dt = 0.05;
-    const t_vals: number[] = [];
-    const _tLabels: string[] = [];
-    
-    for (let t = 0; t <= 10.001; t += dt) {
-      t_vals.push(t);
-      if (Math.abs(t % 1) < 0.02 || Math.abs((t % 1) - 1) < 0.02) {
-        _tLabels.push(t.toFixed(0));
-      } else {
-        _tLabels.push('');
-      }
-    }
-
-    const sig_vals = new Array(t_vals.length).fill(0);
-    const eps_vals = new Array(t_vals.length).fill(0);
-
-    const effectiveE = Math.max(0.1, E || 1);
-    const effectiveEta = Math.max(0.1, eta || 1);
-    const effectiveEt = Math.max(0.01, Et || 1);
-    const effectiveFy = Math.max(0.1, fy || 1);
-
-    // Modell-spezifische Relaxationszeit tau
-    let tau = effectiveEta / effectiveE;
-    if (model === 'zener') {
-      const E2 = effectiveE * 0.6;
-      tau = effectiveEta / E2; // Spezifische SLS-Relaxationszeit
-    }
-
-    const eps0 = sigma0 / effectiveE; // Elastische Referenzdehnung
-    let yieldExceededWarning = false;
-
-    // -----------------------------------------------------------------
-    // FALL 1: RELAXATION (Aufgeprägte Dehnung ε(t), Ermittlung σ(t))
-    // -----------------------------------------------------------------
-    if (stressProfile === 'relaxieren') {
-      for (let i = 0; i < t_vals.length; i++) {
-        const t = t_vals[i];
-        
-        // Vorgegebene Stufen-Dehnung von t = 1 s bis t = 7 s
-        let currentEps = 0;
-        if (t >= 1 && t < 7) {
-          currentEps = eps0;
-        } else {
-          currentEps = 0;
-        }
-        eps_vals[i] = currentEps;
-
-        // Spannungsantwort je nach Modell:
-        if (model === 'hooke') {
-          // Reines Hooke-Element: sigma = E * eps (reversibel, starr, keine Relaxation)
-          sig_vals[i] = currentEps * effectiveE;
-        } else if (model === 'newton') {
-          // Reiner Dämpfer: sigma = eta * d_eps/dt (Spannungspeak beim Dehnungssprung, danach 0)
-          if (t >= 1 && t < 1 + 2 * dt) sig_vals[i] = sigma0;
-          else if (t >= 7 && t < 7 + 2 * dt) sig_vals[i] = -sigma0;
-          else sig_vals[i] = 0;
-        } else if (model === 'st_venant') {
-          // Reibelement: Gleitet bei Überschreiten von fy, überträgt maximal fy
-          sig_vals[i] = currentEps > 0 ? Math.min(sigma0, effectiveFy) : 0;
-        } else if (model === 'prandtl') {
-          // Prandtl-Modell (Elastisch-idealplastisch):
-          // Bei Belastung: Federspannung steigt bis fy, Reibelement fließt ab fy (Spannung capped bei fy)
-          // Bei Entlastung t >= 7: elastischer Rücksprung um E * eps0
-          if (t >= 1 && t < 7) {
-            sig_vals[i] = Math.min(sigma0, effectiveFy);
-          } else if (t >= 7) {
-            // Wenn plastisch geflossen (sigma0 > fy), bleibt nach Zwangsrückstellung auf eps=0 eine Eigenspannung
-            const plasticStrain = Math.max(0, (sigma0 - effectiveFy) / effectiveE);
-            const residualStress = plasticStrain > 0 ? -Math.min(effectiveFy, plasticStrain * effectiveE) : 0;
-            sig_vals[i] = residualStress;
-          } else {
-            sig_vals[i] = 0;
-          }
-        } else if (model === 'elasto_plastic') {
-          // Elasto-Plastisch mit Verfestigung (Bilineare Verfestigung Et):
-          // Bei Dehnung eps0:
-          const epsY = effectiveFy / effectiveE;
-          if (t >= 1 && t < 7) {
-            if (currentEps <= epsY) {
-              sig_vals[i] = currentEps * effectiveE;
-            } else {
-              // Verfestigung: sigma = fy + Et * (eps - epsY)
-              sig_vals[i] = effectiveFy + effectiveEt * (currentEps - epsY);
-            }
-          } else if (t >= 7) {
-            // Nach elastischer Entlastung von eps0 auf 0:
-            // Delta sigma = -E * eps0
-            if (eps0 > epsY) {
-              const peakStress = effectiveFy + effectiveEt * (eps0 - epsY);
-              const unconstrainedResidual = peakStress - effectiveE * eps0;
-              // Kinematische Rückfließgrenze bei -fy
-              sig_vals[i] = Math.max(-effectiveFy, unconstrainedResidual);
-            } else {
-              sig_vals[i] = 0;
-            }
-          } else {
-            sig_vals[i] = 0;
-          }
-        } else if (model === 'maxwell') {
-          // Maxwell-Modell (Reihenschaltung Feder + Dämpfer):
-          // d_sig/dt = - (E / eta) * sig -> sig(t) = sig0 * exp(-(t - 1) / tau)
-          if (t >= 1 && t < 7) {
-            sig_vals[i] = sigma0 * Math.exp(-(t - 1) / tau);
-          } else if (t >= 7) {
-            // Nach elastischer Entlastung bei t=7: elastischer Rücksprung um E * eps0
-            const sigBeforeUnload = sigma0 * Math.exp(-(7 - 1) / tau);
-            const sigAfterUnload = sigBeforeUnload - sigma0;
-            sig_vals[i] = sigAfterUnload * Math.exp(-(t - 7) / tau);
-          } else {
-            sig_vals[i] = 0;
-          }
-        } else if (model === 'kelvin') {
-          // Kelvin-Voigt-Modell: Feder E parallel zu Dämpfer eta
-          // Bei konstanter Dehnung d_eps/dt = 0 -> sigma = E * eps = konst. Keine Relaxation möglich!
-          sig_vals[i] = currentEps * effectiveE;
-        } else if (model === 'zener') {
-          // Standard Linear Solid (Zener-Modell in Maxwell-Form):
-          // Parallele Feder E1 garantiert Gleichgewichtsrestspannung sigma_inf = eps0 * E1
-          // Maxwell-Zweig (E2 + eta) relaxiert viskos
-          const E1 = effectiveE * 0.4;
-          const E2 = effectiveE * 0.6;
-          const tauZener = effectiveEta / E2;
-          if (t >= 1 && t < 7) {
-            sig_vals[i] = eps0 * (E1 + E2 * Math.exp(-(t - 1) / tauZener));
-          } else if (t >= 7) {
-            const sigBeforeUnload = eps0 * (E1 + E2 * Math.exp(-(7 - 1) / tauZener));
-            const sigAfterUnload = sigBeforeUnload - eps0 * effectiveE;
-            sig_vals[i] = sigAfterUnload * Math.exp(-(t - 7) / tauZener);
-          } else {
-            sig_vals[i] = 0;
-          }
-        } else if (model === 'bingham') {
-          // Bingham-Modell: Reibelement tau_0 parallel zu Dämpfer mu_p
-          // Bei konstanter Dehnung d_eps/dt = 0 -> Dämpfer kraftlos, Reibelement hält maximal tau_0
-          sig_vals[i] = currentEps > 0 ? Math.min(sigma0, effectiveFy) : 0;
-        }
-      }
-    } else {
-      // -----------------------------------------------------------------
-      // FALL 2: AUFGEPRÄGTE SPANNUNG σ(t), ERMITTLUNG DER DEHNUNG ε(t)
-      // -----------------------------------------------------------------
-      const get_sigma = (time: number) => {
-        if (stressProfile === 'kriechen') {
-          return (time >= 1 && time < 5) ? sigma0 : 0;
-        } else if (stressProfile === 'dreieck') {
-          if (time < 1) return 0;
-          if (time < 3) return sigma0 * (time - 1) / 2;
-          if (time < 5) return sigma0 * (1 - (time - 3) / 2);
-          return 0;
-        } else if (stressProfile === 'sinus') {
-          if (time < 1) return 0;
-          if (time < 9) return sigma0 * Math.sin((time - 1) * Math.PI / 2);
-          return 0;
-        } else if (stressProfile === 'stufenweise') {
-          if (time < 1) return 0;
-          if (time < 3) return sigma0 * 0.33;
-          if (time < 5) return sigma0 * 0.66;
-          if (time < 7) return sigma0;
-          if (time < 9) return sigma0 * 0.5;
-          return 0;
-        } else if (stressProfile === 'impuls') {
-          if (time >= 1 && time < 1.5) return sigma0;
-          if (time >= 4 && time < 4.5) return sigma0;
-          if (time >= 7 && time < 7.5) return sigma0;
-          return 0;
-        }
-        return 0;
-      };
-
-      for (let i = 0; i < t_vals.length; i++) {
-        sig_vals[i] = get_sigma(t_vals[i]);
-      }
-
-      // Zustandsvariablen für kontinuierliche Zeitintegration:
-      let eps_viscous = 0;     // Viskose Dehnung für Newton / Maxwell
-      let eps_kelvin = 0;      // Kelvin-Voigt Dehnung
-      let eps_zener_kv = 0;    // Zener verzögerter Ast
-      let eps_bingham = 0;     // Bingham viskoplastische Dehnung
-      
-      // Zustand für Elasto-Plastisch mit Verfestigung (Kinematische Verfestigung / Bauschinger-Effekt)
-      let alpha_backstress = 0; // Rückspannung (Kinematische Verschiebung der Fließfläche)
-      let eps_plastic_ep = 0;   // Kumulierte plastische Dehnung
-
-      const tau_kelvin = effectiveEta / effectiveE;
-      const decay_kelvin = Math.exp(-dt / Math.max(0.0001, tau_kelvin));
-
-      // Zener-Modell (Konsistente Maxwell-Zweig-Integration)
-      // Sofortsteifigkeit E0 = E (bei t = 0), Langzeitsteifigkeit E_inf = E1 = 0.4 * E
-      const E_zener1 = effectiveE * 0.4;
-      const E_zener2 = effectiveE * 0.6;
-      const tau_zener = effectiveEta / E_zener2;
-      const decay_zener = Math.exp(-dt / Math.max(0.0001, tau_zener));
-
-      for (let i = 0; i < t_vals.length; i++) {
-        const sig = sig_vals[i];
-        
-        if (model === 'hooke') {
-          // Reines Hooke-Element: Reversibel linear-elastisch
-          eps_vals[i] = sig / effectiveE;
-        } else if (model === 'newton') {
-          // Reiner Dämpfer: Rein viskoses Fließen
-          eps_viscous += (sig / effectiveEta) * dt;
-          eps_vals[i] = eps_viscous;
-        } else if (model === 'st_venant') {
-          // St. Venant (Ideal-plastisches Reibelement ohne Verfestigung):
-          // Bei Spannungssteuerung: Wenn |sigma| > fy, gibt es im reinen Reibelement kein statisches Gleichgewicht
-          if (Math.abs(sig) > effectiveFy) {
-            yieldExceededWarning = true;
-          }
-          // Zeigt Dehnungsverhalten: Starr bis fy, bei Überschreiten plastisches Fließen
-          const sigCap = Math.min(Math.max(sig, -effectiveFy), effectiveFy);
-          eps_vals[i] = (sigCap / effectiveE); // Symbolisch im elastischen Ersatzmaßstab
-        } else if (model === 'prandtl') {
-          // Prandtl-Modell (Elastisch-idealplastisch ohne Verfestigung):
-          // Feder E in Reihe mit Reibelement fy
-          if (Math.abs(sig) > effectiveFy) {
-            yieldExceededWarning = true;
-          }
-          // Vor Überschreiten streng elastisch: eps = sig / E
-          // Bei Überschreiten Fließplateau (Grenzlast)
-          const sigCap = Math.min(Math.max(sig, -effectiveFy), effectiveFy);
-          eps_vals[i] = sigCap / effectiveE;
-        } else if (model === 'elasto_plastic') {
-          // ELASTO-PLASTISCH MIT VERFESTIGUNG (1D Kinematische Verfestigung nach Prager/Ziegler):
-          // Fließbedingung: F = |sig - alpha| - fy <= 0
-          const trialStress = sig - alpha_backstress;
-          const yieldFunction = Math.abs(trialStress) - effectiveFy;
-
-          if (yieldFunction > 0) {
-            // Plastisches Fließen mit Verfestigungsmodul Et:
-            // Delta eps_p = (yieldFunction / Et) * sign(trialStress)
-            const deltaEpsP = (yieldFunction / effectiveEt) * Math.sign(trialStress);
-            eps_plastic_ep += deltaEpsP;
-            alpha_backstress += effectiveEt * deltaEpsP;
-          }
-
-          // Gesamte Dehnung = elastische Dehnung (sig / E) + plastische Verfestigungsdehnung (eps_plastic_ep)
-          eps_vals[i] = (sig / effectiveE) + eps_plastic_ep;
-
-        } else if (model === 'maxwell') {
-          // Maxwell-Modell: Feder E in Reihe mit Dämpfer eta
-          // eps(t) = sig(t) / E + integral(sig / eta dt)
-          eps_viscous += (sig / effectiveEta) * dt;
-          eps_vals[i] = (sig / effectiveE) + eps_viscous;
-        } else if (model === 'kelvin') {
-          // Kelvin-Voigt-Modell: Feder E parallel zu Dämpfer eta
-          // Analytisch exakte Exponential-Integration:
-          eps_kelvin = eps_kelvin * decay_kelvin + (sig / effectiveE) * (1 - decay_kelvin);
-          eps_vals[i] = eps_kelvin;
-        } else if (model === 'zener') {
-          // Standard Linear Solid (SLS):
-          // Sofortige elastische Dehnung (sig / effectiveE) + verzögertes viskoelastisches Kriechen
-          eps_zener_kv = eps_zener_kv * decay_zener + (sig / E_zener2) * (1 - decay_zener);
-          eps_vals[i] = (sig / (effectiveE * 1.5)) + eps_zener_kv;
-        } else if (model === 'bingham') {
-          // Bingham-Körper (Viskoplastisch): Reibelement parallel zu Dämpfer
-          // Unterhalb fy: kein Fließen (starr). Oberhalb fy: Fließen mit plastischer Viskosität eta
-          if (Math.abs(sig) > effectiveFy) {
-            const overstress = Math.abs(sig) - effectiveFy;
-            eps_bingham += Math.sign(sig) * (overstress / effectiveEta) * dt;
-          }
-          eps_vals[i] = eps_bingham;
-        }
-      }
-    }
-
-    // Kennwerte der Spannungsrelaxation
-    const idxBeforeUnload = Math.min(Math.floor(6.90 / dt), t_vals.length - 1);
-    const sigAtEnd = sig_vals[idxBeforeUnload] || 0;
-    const sigDrop = Math.max(0, sigma0 - sigAtEnd);
-    const relaxPercent = sigma0 > 0 ? (sigDrop / sigma0) * 100 : 0;
-    const halfLife = tau * Math.LN2;
-
-    const sigDataPoints = t_vals.map((t, i) => ({ x: Number(t.toFixed(2)), y: Number(sig_vals[i].toFixed(3)) }));
-    const epsDataPoints = t_vals.map((t, i) => ({ x: Number(t.toFixed(2)), y: Number(eps_vals[i].toFixed(4)) }));
-    const sigEpsData = eps_vals.map((e, i) => ({ x: Number(e.toFixed(4)), y: Number(sig_vals[i].toFixed(3)) }));
-
-    // Dissipationsarbeit / Hysteresefläche berechnen: W_diss = ∮ σ dε
-    // σ in MPa (= 10^6 N/m²), ε einheitenlos (-) -> Produkt ist in MPa = 1000 kJ/m³ = 1 N/mm²
-    let rawDissEnergy = 0;
-    if (sigEpsData.length > 2) {
-      for (let i = 0; i < sigEpsData.length - 1; i++) {
-        rawDissEnergy += (sigEpsData[i].x * sigEpsData[i+1].y - sigEpsData[i+1].x * sigEpsData[i].y);
-      }
-      rawDissEnergy = Math.abs(rawDissEnergy) * 0.5;
-    }
-    // Umrechnung: 1 MPa·1 = 1000 kJ/m³ (korrekte physikalische Skalierung!)
-    const dissEnergy_kJ_m3 = rawDissEnergy * 1000;
-
-    return {
-      t_labels: _tLabels,
-      sigDataPoints,
-      epsDataPoints,
-      sigEpsData,
-      tau,
-      eps0,
-      sigAtEnd,
-      sigDrop,
-      relaxPercent,
-      halfLife,
-      dissEnergy_kJ_m3,
-      yieldExceededWarning
-    };
-  }, [model, E, eta, fy, Et, sigma0, stressProfile]);
-
-  const sharedOptions = {
-    responsive: true, 
-    maintainAspectRatio: false,
-    elements: {
-      line: { borderWidth: 2.5, tension: 0.1 },
-      point: { radius: 0 }
-    },
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: (context: any) => `${context.dataset.label || ''}: ${context.parsed.y}`
-        }
-      }
-    }
-  };
-
-  const sigChartData = {
-    datasets: [{
-      label: 'Spannung (MPa)',
-      data: sigDataPoints,
-      borderColor: '#A3113E',
-      backgroundColor: 'rgba(163, 17, 62, 0.12)',
-      fill: true
-    }]
-  };
-
-  const epsChartData = {
-    datasets: [{
-      label: 'Dehnung ε',
-      data: epsDataPoints,
-      borderColor: '#10b981',
-      backgroundColor: 'rgba(16, 185, 129, 0.12)',
-      fill: true
-    }]
-  };
-
-  const sigEpsChartData = {
-    datasets: [{
-      label: 'σ-ε',
-      data: sigEpsData,
-      borderColor: '#2563eb',
-      backgroundColor: 'rgba(37, 99, 235, 0.12)',
-      fill: false
-    }]
-  };
-
-  // Automatische Skalierung der Hysterese-Kurve (σ-ε)
-  const hystLimits = useMemo(() => {
-    if (!sigEpsData || sigEpsData.length === 0) return null;
-    let minX = Infinity;
-    let maxX = -Infinity;
-    let minY = Infinity;
-    let maxY = -Infinity;
-    for (const p of sigEpsData) {
-      if (p.x < minX) minX = p.x;
-      if (p.x > maxX) maxX = p.x;
-      if (p.y < minY) minY = p.y;
-      if (p.y > maxY) maxY = p.y;
-    }
-    const spanX = Math.max(0.0001, maxX - minX);
-    const spanY = Math.max(0.1, maxY - minY);
-
-    if (hystScaleMode === 'autoMax') {
-      const axisMinX = minX < -0.001 ? Number((minX - spanX * 0.05).toFixed(4)) : 0;
-      const axisMaxX = maxX > 0 ? Number((maxX * 1.05).toFixed(4)) : 0.05;
-      const axisMinY = minY < -0.05 ? Number((minY - spanY * 0.05).toFixed(2)) : 0;
-      const axisMaxY = maxY > 0 ? Number((maxY * 1.05).toFixed(2)) : 10;
-      return {
-        minX: axisMinX,
-        maxX: axisMaxX,
-        minY: axisMinY,
-        maxY: axisMaxY,
-        peakX: maxX,
-        peakY: maxY,
-        lowX: minX,
-        lowY: minY
-      };
-    } else {
-      const padX = spanX * 0.05;
-      const padY = spanY * 0.05;
-      return {
-        minX: Number((minX - padX).toFixed(4)),
-        maxX: Number((maxX + padX).toFixed(4)),
-        minY: Number((minY - padY).toFixed(2)),
-        maxY: Number((maxY + padY).toFixed(2)),
-        peakX: maxX,
-        peakY: maxY,
-        lowX: minX,
-        lowY: minY
-      };
-    }
-  }, [sigEpsData, hystScaleMode]);
-
-  const sigLimits = useMemo(() => {
-    let minS = 0;
-    let maxS = 1;
-    for (const p of sigDataPoints) {
-      if (p.y < minS) minS = p.y;
-      if (p.y > maxS) maxS = p.y;
-    }
-    const span = Math.max(1, maxS - minS);
-    return {
-      min: Number((minS < 0 ? minS - span * 0.1 : 0).toFixed(1)),
-      max: Number((maxS + span * 0.1).toFixed(1))
-    };
-  }, [sigDataPoints]);
-
-  const epsLimits = useMemo(() => {
-    let minE = 0;
-    let maxE = 0.05;
-    for (const p of epsDataPoints) {
-      if (p.y < minE) minE = p.y;
-      if (p.y > maxE) maxE = p.y;
-    }
-    const span = Math.max(0.01, maxE - minE);
-    return {
-      min: Number((minE < 0 ? minE - span * 0.1 : 0).toFixed(3)),
-      max: Number((maxE + span * 0.1).toFixed(3))
-    };
-  }, [epsDataPoints]);
-
-  const infos: Record<typeof model, { name: string; desc: string; category: string }> = {
-    hooke: { name: 'Hooke', desc: 'Reinelastisch', category: 'Elastisch' },
-    newton: { name: 'Newton', desc: 'Reinviskose Flüssigkeit', category: 'Viskos' },
-    st_venant: { name: 'St. Venant', desc: 'Ideal-Plastisch', category: 'Plastisch' },
-    prandtl: { name: 'Prandtl', desc: 'Elastisch-Idealplastisch', category: 'Elasto-Plastisch' },
-    elasto_plastic: { name: 'Elasto-Plastisch mit Verfestigung', desc: 'Bilineare Verfestigung (E + fy + Et)', category: 'Elasto-Plastisch' },
-    maxwell: { name: 'Maxwell', desc: 'Visko-Elastisch (Spannungsrelaxation)', category: 'Viskoelastisch' },
-    kelvin: { name: 'Kelvin-Voigt', desc: 'Verzögert Elastisch (Kriechen / Retardation)', category: 'Viskoelastisch' },
-    zener: { name: 'Zener (SLS)', desc: 'Standard Linear Solid (Viskoelastischer Festkörper)', category: 'Viskoelastisch' },
-    bingham: { name: 'Bingham', desc: 'Viskoplastisches Fluid (Frischbeton / Mörtel)', category: 'Viskoplastisch' }
-  };
-
   return (
     <div className="bg-white border-y border-home-grau/30 -mx-4 sm:mx-0 sm:rounded-3xl sm:border flex flex-col pt-8 mt-12 mb-8 relative overflow-hidden shadow-sm">
-      
-      {/* Background Decorator */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#A3113E]/5 rounded-full blur-3xl -z-10 -translate-y-1/2 translate-x-1/4"></div>
-
       <div className="px-4 md:px-8 flex flex-col gap-8 pb-8">
         <div>
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
@@ -592,496 +128,50 @@ function RheologySection() {
           </h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
             <p>
-              Interaktives Prüflabor für rheologische Ersatzmodelle der Baustoffkunde. Stelle Einwirkungen (Kriechen, Relaxation, zyklische Lasten) 
-              und Materialparameter ein, um Spannungs- und Dehnungsantworten sowie die Hysteresefläche in Echtzeit zu analysieren.
+              Interaktives Prüflabor für rheologische Ersatzmodelle der Baustoffkunde. Stellen Sie Einwirkungen (Kriechen, Relaxation, zyklische Lasten)
+              und Materialparameter ein, um Spannungs- und Dehnungsantworten sowie Formänderungsarbeit und Hysterese zu analysieren.
             </p>
           </div>
         </div>
-        
-        {/* Model Selector */}
-        <div className="flex flex-wrap gap-2">
-          {(Object.keys(infos) as Array<keyof typeof infos>).map(m => (
-            <button
-              key={m}
-              onClick={() => setModel(m)}
-              className={`px-4 py-2.5 rounded-2xl text-left transition-all duration-200 cursor-pointer ${
-                model === m 
-                  ? 'bg-shiraz text-white shadow-md font-bold' 
-                  : 'bg-off-white text-text-main border border-home-grau/30 hover:border-shiraz hover:bg-white'
-              }`}
-            >
-              <div className="text-xs font-bold leading-tight">{infos[m].name}</div>
-              <div className={`text-[10px] mt-0.5 ${model === m ? 'text-white/80' : 'text-text-main/60'}`}>{infos[m].desc}</div>
-            </button>
-          ))}
-        </div>
 
-        {/* Warnhinweis bei Prandtl / St. Venant ohne Verfestigung bei Überschreiten von fy */}
-        {yieldExceededWarning && (model === 'prandtl' || model === 'st_venant') && (
-          <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900 flex items-start gap-2.5 animate-in fade-in">
-            <AlertTriangle className="text-amber-700 shrink-0 mt-0.5" size={16} />
-            <div>
-              <strong>Fließgrenze <InlineMath math="f_y" /> überschritten (Traglastversagen):</strong> Im idealplastischen Modell <em>ohne</em> Verfestigung 
-              kann das Bauteil unter reiner Kraftsteuerung keine Spannung <InlineMath math="\sigma > f_y" /> im statischen Gleichgewicht halten. 
-              Um das reale Nachfließverhalten mit Verfestigung zu untersuchen, wähle das Modell <strong>„Elasto-Plastisch mit Verfestigung“</strong>.
-            </div>
-          </div>
-        )}
-
-        <div className="flex flex-col gap-8 mt-2">
-          
-          <div className="flex flex-col gap-4">
-            <h3 className="font-bold text-text-main uppercase tracking-widest text-xs flex items-center gap-2">
-              <Sliders size={14} className="text-shiraz" /> Einwirkungen &amp; Parameter
-            </h3>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              
-              {/* Belastungsprofil-Wähler */}
-              <div className="h-full">
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 h-full">
-                  <button 
-                    onClick={() => setStressProfile('kriechen')} 
-                    className={`flex flex-col items-center justify-center py-4 border rounded-2xl transition-all cursor-pointer ${stressProfile === 'kriechen' ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold shadow-sm' : 'border-home-grau/30 text-text-main/60 bg-off-white hover:bg-white'}`}
-                    title="Konstante Spannung σ = σ0 von t=1 bis 5 s (Kriechversuch)"
-                  >
-                    <div className="w-8 h-4 border-t-2 border-r-2 border-l-2 border-b-0 mb-2 border-current"></div>
-                    <span className="text-[10px] uppercase tracking-wider">Kriechen</span>
-                  </button>
-                  <button 
-                    onClick={() => setStressProfile('relaxieren')} 
-                    className={`flex flex-col items-center justify-center py-4 border rounded-2xl transition-all cursor-pointer ${stressProfile === 'relaxieren' ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold shadow-sm' : 'border-home-grau/30 text-text-main/60 bg-off-white hover:bg-white'}`}
-                    title="Konstante Dehnung ε = ε0 von t=1 bis 7 s (Relaxationsversuch)"
-                  >
-                    <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2">
-                      <path d="M 0 16 L 4 16 L 4 2 Q 12 4 24 12 L 28 16 L 32 16" />
-                    </svg>
-                    <span className="text-[10px] uppercase tracking-wider">Relaxieren</span>
-                  </button>
-                  <button 
-                    onClick={() => setStressProfile('dreieck')} 
-                    className={`flex flex-col items-center justify-center py-4 border rounded-2xl transition-all cursor-pointer ${stressProfile === 'dreieck' ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold shadow-sm' : 'border-home-grau/30 text-text-main/60 bg-off-white hover:bg-white'}`}
-                    title="Dreieckförmige Be- und Entlastung bis σ0"
-                  >
-                    <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 16 2 L 32 16" /></svg>
-                    <span className="text-[10px] uppercase tracking-wider">Dreieck</span>
-                  </button>
-                  <button 
-                    onClick={() => setStressProfile('sinus')} 
-                    className={`flex flex-col items-center justify-center py-4 border rounded-2xl transition-all cursor-pointer ${stressProfile === 'sinus' ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold shadow-sm' : 'border-home-grau/30 text-text-main/60 bg-off-white hover:bg-white'}`}
-                    title="Zyklische Wechselbeanspruchung (-σ0 bis +σ0, Bauschinger-Hysterese)"
-                  >
-                    <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2"><path d="M 0 16 Q 8 2 16 9 T 32 0" /></svg>
-                    <span className="text-[10px] uppercase tracking-wider">Zyklisch</span>
-                  </button>
-                  <button 
-                    onClick={() => setStressProfile('stufenweise')} 
-                    className={`flex flex-col items-center justify-center py-4 border rounded-2xl transition-all cursor-pointer ${stressProfile === 'stufenweise' ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold shadow-sm' : 'border-home-grau/30 text-text-main/60 bg-off-white hover:bg-white'}`}
-                    title="Stufenförmige Lasterhöhung und Rücklast"
-                  >
-                    <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 0 10 L 10 10 L 10 4 L 20 4 L 20 12 L 30 12 L 30 16" /></svg>
-                    <span className="text-[10px] uppercase tracking-wider leading-tight text-center">Stufen-<br/>weise</span>
-                  </button>
-                  <button 
-                    onClick={() => setStressProfile('impuls')} 
-                    className={`flex flex-col items-center justify-center py-4 border rounded-2xl transition-all cursor-pointer ${stressProfile === 'impuls' ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold shadow-sm' : 'border-home-grau/30 text-text-main/60 bg-off-white hover:bg-white'}`}
-                    title="Wiederholte Rechteck-Stoßimpulse"
-                  >
-                    <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 4 16 L 4 4 L 8 4 L 8 16 L 16 16 L 16 4 L 20 4 L 20 16 L 32 16" /></svg>
-                    <span className="text-[10px] uppercase tracking-wider">Impuls</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Slider-Parameter */}
-              <div className="space-y-4 bg-white p-5 rounded-3xl border border-home-grau/30 shadow-sm h-full flex flex-col justify-center">
-                <Slider 
-                  label={<FormulaText text={stressProfile === 'relaxieren' ? "Anfangsspannung \\sigma_0 (\\varepsilon_0 = \\sigma_0 / E)" : "Spannungsamplitude \\sigma_0"} />} 
-                  min={1} 
-                  max={20} 
-                  step={1} 
-                  value={sigma0} 
-                  unit="MPa" 
-                  onChange={e => setSigma0(Number(e.target.value))} 
-                />
-                
-                {(model === 'hooke' || model === 'prandtl' || model === 'elasto_plastic' || model === 'maxwell' || model === 'kelvin' || model === 'zener') && (
-                  <Slider label={<FormulaText text="Elastizitätsmodul E" />} min={1} max={50} step={1} value={E} unit="MPa" onChange={e => setE(Number(e.target.value))} />
-                )}
-                {(model === 'newton' || model === 'maxwell' || model === 'kelvin' || model === 'zener' || model === 'bingham') && (
-                  <Slider label={<FormulaText text="Viskosität \eta \text{ bzw. } \mu_p" />} min={5} max={100} step={5} value={eta} unit="MPa·s" onChange={e => setEta(Number(e.target.value))} />
-                )}
-                {(model === 'st_venant' || model === 'prandtl' || model === 'elasto_plastic' || model === 'bingham') && (
-                  <Slider label={<FormulaText text="Fließgrenze f_y \text{ bzw. } \tau_0" />} min={1} max={20} step={1} value={fy} unit="MPa" onChange={e => setFy(Number(e.target.value))} />
-                )}
-                {model === 'elasto_plastic' && (
-                  <Slider label={<FormulaText text="Verfestigungsmodul E_t (Tangentenmodul)" />} min={0.5} max={10} step={0.5} value={Et} unit="MPa" onChange={e => setEt(Number(e.target.value))} />
-                )}
-              </div>
-
-              {/* Rheologisches Ersatzschaltbild (SVG) */}
+        <RheologySimulator
+          renderCircuit={(m, name) => (
               <div className="p-6 bg-white border border-home-grau/30 text-text-main rounded-3xl flex flex-col justify-center items-center shadow-sm relative overflow-hidden h-full">
                 <div className="flex items-center justify-between w-full mb-3">
                   <span className="text-[10px] uppercase tracking-widest text-text-main/60 font-bold">Ersatzschaltbild</span>
-                  <span className="text-[10px] font-mono bg-off-white text-shiraz px-2 py-0.5 rounded border border-home-grau/30 font-bold">{infos[model].name}</span>
+                  <span className="text-[10px] font-mono bg-off-white text-shiraz px-2 py-0.5 rounded border border-home-grau/30 font-bold">{name}</span>
                 </div>
                 <div className="text-shiraz scale-[1.15] origin-center z-10 py-2">
-                  {model === 'hooke' && <svg width="100" height="40" viewBox="0 0 100 40"><HookeShape x={0} y={0} /></svg>}
-                  {model === 'newton' && <svg width="100" height="40" viewBox="0 0 100 40"><NewtonShape x={0} y={0} /></svg>}
-                  {model === 'st_venant' && <svg width="100" height="40" viewBox="0 0 100 40"><StVenantShape x={0} y={0} /></svg>}
-                  {model === 'prandtl' && <svg width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><StVenantShape x={100} y={0} /></svg>}
-                  {model === 'elasto_plastic' && <svg width="230" height="90" viewBox="0 0 230 90"><ElastoPlasticShape x={0} y={0} /></svg>}
-                  {model === 'maxwell' && <svg width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><NewtonShape x={100} y={0} /></svg>}
-                  {model === 'kelvin' && (
+                  {m === 'hooke' && <svg width="100" height="40" viewBox="0 0 100 40"><HookeShape x={0} y={0} /></svg>}
+                  {m === 'newton' && <svg width="100" height="40" viewBox="0 0 100 40"><NewtonShape x={0} y={0} /></svg>}
+                  {m === 'st_venant' && <svg width="100" height="40" viewBox="0 0 100 40"><StVenantShape x={0} y={0} /></svg>}
+                  {m === 'prandtl' && <svg width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><StVenantShape x={100} y={0} /></svg>}
+                  {m === 'elasto_plastic' && <svg width="230" height="90" viewBox="0 0 230 90"><ElastoPlasticShape x={0} y={0} /></svg>}
+                  {m === 'maxwell' && <svg width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><NewtonShape x={100} y={0} /></svg>}
+                  {m === 'kelvin' && (
                     <svg width="160" height="90" viewBox="0 0 160 90">
                       <path d="M 0 45 L 30 45 M 30 15 L 30 75 M 130 15 L 130 75 M 130 45 L 160 45" className="stroke-current" strokeWidth="2" fill="none" />
                       <HookeShape x={30} y={-5} /> 
                       <NewtonShape x={30} y={55} />
                     </svg>
                   )}
-                  {model === 'zener' && (
+                  {m === 'zener' && (
                     <svg width="200" height="90" viewBox="0 0 200 90">
                       <ZenerShape x={0} y={0} />
                     </svg>
                   )}
-                  {model === 'bingham' && (
+                  {m === 'bingham' && (
                     <svg width="170" height="90" viewBox="0 0 170 90">
                       <BinghamShape x={0} y={0} />
                     </svg>
                   )}
                 </div>
               </div>
-
-            </div>
-          </div>
-
-          {/* RELAXATIONS-COCKPIT & ANALYTIK (wenn Profil = relaxieren) */}
-          {stressProfile === 'relaxieren' && (
-            <div className="bg-purple-50/70 border border-purple-200 rounded-3xl p-5 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-purple-200/60 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-purple-600 animate-pulse"></div>
-                  <h4 className="text-sm font-bold text-purple-950 uppercase tracking-wide flex items-center gap-1.5">
-                    <Timer size={16} className="text-purple-700" /> Live-Cockpit Spannungsrelaxation (ε = konst.)
-                  </h4>
-                </div>
-                <span className="text-xs font-mono font-semibold bg-purple-150 text-purple-900 px-3 py-1 rounded-full border border-purple-300">
-                  Modell: {infos[model].name}
-                </span>
-              </div>
-
-              {/* 4 Live Kennwerte */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-                <div className="bg-white p-3 rounded-2xl border border-purple-100 shadow-sm text-center">
-                  <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Aufgeprägte Dehnung</span>
-                  <span className="font-mono font-bold text-base text-purple-900 block mt-1">
-                    {formatDeZahl(eps0 * 1000, 1)} ‰
-                  </span>
-                  <span className="text-[10px] text-slate-500 font-mono">ε₀ = σ₀ / E</span>
-                </div>
-
-                <div className="bg-white p-3 rounded-2xl border border-purple-100 shadow-sm text-center">
-                  <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Relaxationszeit τ</span>
-                  <span className="font-mono font-bold text-base text-shiraz block mt-1">
-                    {formatDeZahl(tau, 2)} s
-                  </span>
-                  <span className="text-[10px] text-slate-500 font-mono">
-                    {model === 'zener' ? 'τ_SLS = η / E₂' : 'τ = η / E (1/e-Zeit)'}
-                  </span>
-                </div>
-
-                <div className="bg-white p-3 rounded-2xl border border-purple-100 shadow-sm text-center">
-                  <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Restspannung (t=6,9 s)</span>
-                  <span className="font-mono font-bold text-base text-text-main block mt-1">
-                    {formatDeZahl(sigAtEnd, 2)} MPa
-                  </span>
-                  <span className="text-[10px] text-slate-500 font-mono">vor Entlastungssprung</span>
-                </div>
-
-                <div className="bg-white p-3 rounded-2xl border border-purple-100 shadow-sm text-center">
-                  <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Relaxationsgrad R</span>
-                  <span className={`font-mono font-bold text-base block mt-1 ${relaxPercent > 50 ? 'text-emerald-700' : relaxPercent > 0 ? 'text-amber-700' : 'text-slate-600'}`}>
-                    {formatDeZahl(relaxPercent, 1)} %
-                  </span>
-                  <span className="text-[10px] text-slate-500 font-mono">Δσ = -{formatDeZahl(sigDrop, 2)} MPa</span>
-                </div>
-              </div>
-
-              {/* Modell-spezifische physikalische Diagnose */}
-              <div className="bg-white p-3.5 rounded-2xl border border-purple-100 text-xs text-text-main/80 space-y-1.5 leading-relaxed">
-                <div className="font-bold text-purple-950 flex items-center gap-1.5">
-                  <span>Physikalischer Befund zum Modell „{infos[model].name}“:</span>
-                </div>
-                {model === 'maxwell' && (
-                  <p>
-                    <strong>Vollständige Spannungsrelaxation:</strong> Bei <InlineMath math="t=1\text{ s}" /> federt die Feder sofort mit <InlineMath math="\sigma_0" /> ein. 
-                    Während der Standzeit unter konstanter Dehnung fließt der serielle Dämpfer mit <InlineMath math="\dot{\varepsilon}_D = \sigma / \eta" />, 
-                    wodurch die Feder entlastet wird. Die Spannung sinkt asymptotisch gegen Null: 
-                    <span className="font-mono text-purple-900 font-bold ml-1">σ(t) = σ₀ · exp(-t / τ)</span>.
-                  </p>
-                )}
-                {model === 'kelvin' && (
-                  <p className="text-amber-900 bg-amber-50/70 p-2.5 rounded-xl border border-amber-200">
-                    <strong>Achtung – Kelvin-Voigt kann physikalisch NICHT relaxieren!</strong> Da Feder und Dämpfer parallel liegen, 
-                    müssen beide dieselbe Dehnung erfahren. Bei konstanter Dehnung ist <InlineMath math="\dot{\varepsilon} = 0" />. 
-                    Damit ist der Dämpfer kraftlos und die Hooke-Feder hält die volle Spannung unbegrenzt aufrecht (<span className="font-bold text-amber-950">Relaxationsgrad R = 0 %</span>).
-                  </p>
-                )}
-                {model === 'zener' && (
-                  <p>
-                    <strong>Standard Linear Solid (SLS / Zener):</strong> Reale viskoelastische Festkörper (Spannstahl, Kunststoffe, Asphalt &amp; Beton) bauen unter 
-                    Dauerdehnung nie 100 % ihrer Spannung ab. Die parallele Feder <InlineMath math="E_1" /> garantiert eine bleibende Gleichgewichtsspannung 
-                    <InlineMath math="\sigma_\infty = E_1 \cdot \varepsilon_0 > 0" />, während der Maxwell-Zweig <InlineMath math="E_2 + \eta" /> die viskose Relaxation abbildet.
-                  </p>
-                )}
-                {model === 'elasto_plastic' && (
-                  <p>
-                    <strong>Elasto-Plastisch mit Verfestigung:</strong> Bei Aufprägung von <InlineMath math="\varepsilon_0 > \varepsilon_y" /> steigt die Spannung 
-                    über die Fließgrenze <InlineMath math="f_y" /> hinaus entlang des Verfestigungsmoduls <InlineMath math="E_t" /> auf 
-                    <InlineMath math="\sigma = f_y + E_t \cdot (\varepsilon_0 - \varepsilon_y)" />. 
-                    Da das Modell keine Viskosität besitzt, findet keine zeitabhängige Relaxation statt. Bei erzwungener Rückkehr auf <InlineMath math="\varepsilon = 0" /> entsteht eine Druck-Eigenspannung.
-                  </p>
-                )}
-                {model === 'hooke' && (
-                  <p>
-                    <strong>Reinelastischer Körper:</strong> Reversibel ohne Dämpfung und Energieverluste. Die Spannung folgt starr dem Dehnungssprung (<InlineMath math="\sigma = E \cdot \varepsilon_0" />) 
-                    und bleibt zeitlich unverändert.
-                  </p>
-                )}
-                {model === 'newton' && (
-                  <p>
-                    <strong>Ideale viskose Flüssigkeit:</strong> Ein Dehnungssprung erfordert eine unendliche Dehngeschwindigkeit (Spannungsimpuls). 
-                    Sobald die Dehnung ruht (<InlineMath math="\dot{\varepsilon} = 0" />), fällt die Spannung schlagartig auf Null ab.
-                  </p>
-                )}
-                {(model === 'st_venant' || model === 'prandtl' || model === 'bingham') && (
-                  <p>
-                    <strong>Reibelement / Viskoplastizität:</strong> Die Spannung wird durch die plastische Fließgrenze <InlineMath math="f_y" /> nach oben begrenzt. 
-                    Sobald das Reibelement gleitet, verbleibt nach Entlastung eine irreversible plastische Dehnung.
-                  </p>
-                )}
-              </div>
-            </div>
           )}
+        />
 
-          {/* DIAGRAMME: SPANNUNG σ(t), DEHNUNG ε(t) & HYSTERESE σ-ε */}
+        <div className="flex flex-col gap-8 mt-2">
           <div className="flex flex-col gap-6">
-            <h3 className="font-bold text-text-main uppercase tracking-widest text-xs flex items-center gap-2">
-              <Activity size={14} className="text-shiraz" /> Simulations-Ergebnisse
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-              {/* Plot 1: Spannung σ(t) */}
-              <div className="h-[280px] bg-white border border-home-grau/30 shadow-sm rounded-3xl p-5 flex flex-col group transition-shadow hover:shadow-md">
-                <div className="text-xs font-bold text-shiraz uppercase tracking-wider mb-4 flex items-center gap-2">
-                   <div className="w-2 h-2 rounded-full bg-shiraz"></div> Spannung σ(t) / Zeit
-                </div>
-                <div className="grow w-full relative">
-                  <Line 
-                    data={sigChartData} 
-                    options={{
-                      ...sharedOptions,
-                      scales: {
-                        x: { 
-                          type: 'linear',
-                          min: 0,
-                          max: 10,
-                          display: true, 
-                          title: { 
-                            display: true, 
-                            text: 'Zeit t (s)', 
-                            color: '#1e293b', 
-                            font: { size: 12, weight: 'bold' } 
-                          },
-                          ticks: {
-                            stepSize: 1,
-                            color: '#475569',
-                            font: { size: 11, weight: 'bold' },
-                            callback: (val: any) => `${val} s`
-                          },
-                          grid: { color: 'rgba(0,0,0,0.06)' }
-                        },
-                        y: { 
-                          display: true, 
-                          title: { 
-                            display: true, 
-                            text: 'Spannung σ (MPa)', 
-                            color: '#A3113E', 
-                            font: { size: 12, weight: 'bold' } 
-                          },
-                          ticks: {
-                            color: '#64748b',
-                            font: { size: 11 },
-                            callback: (val: any) => `${val} MPa`
-                          },
-                          suggestedMin: sigLimits.min,
-                          suggestedMax: sigLimits.max,
-                          grid: { color: 'rgba(0,0,0,0.06)' }
-                        }
-                      }
-                    }} 
-                  />
-                </div>
-              </div>
-
-              {/* Plot 2: Dehnung ε(t) */}
-              <div className="h-[280px] bg-white border border-home-grau/30 shadow-sm rounded-3xl p-5 flex flex-col group transition-shadow hover:shadow-md">
-                <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-4 flex items-center gap-2">
-                   <div className="w-2 h-2 rounded-full bg-emerald-600"></div> Dehnung ε(t) / Zeit
-                </div>
-                <div className="grow w-full relative">
-                  <Line 
-                    data={epsChartData} 
-                    options={{
-                      ...sharedOptions,
-                      scales: {
-                        x: { 
-                          type: 'linear',
-                          min: 0,
-                          max: 10,
-                          display: true, 
-                          title: { 
-                            display: true, 
-                            text: 'Zeit t (s)', 
-                            color: '#1e293b', 
-                            font: { size: 12, weight: 'bold' } 
-                          },
-                          ticks: {
-                            stepSize: 1,
-                            color: '#475569',
-                            font: { size: 11, weight: 'bold' },
-                            callback: (val: any) => `${val} s`
-                          },
-                          grid: { color: 'rgba(0,0,0,0.06)' }
-                        },
-                        y: { 
-                          display: true, 
-                          title: { 
-                            display: true, 
-                            text: 'Dehnung ε (-)', 
-                            color: '#059669', 
-                            font: { size: 12, weight: 'bold' } 
-                          },
-                          ticks: {
-                            color: '#64748b',
-                            font: { size: 11 },
-                            callback: (val: any) => typeof val === 'number' ? (Math.abs(val) < 0.01 && val !== 0 ? val.toExponential(1) : val.toFixed(3)) : val
-                          },
-                          suggestedMin: epsLimits.min,
-                          suggestedMax: epsLimits.max,
-                          grid: { color: 'rgba(0,0,0,0.06)' }
-                        }
-                      }
-                    }} 
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Plot 3: Spannung σ vs. Dehnung ε (Hysterese & Dissipationsenergie) */}
-            <div className="bg-white border border-home-grau/30 shadow-sm rounded-3xl p-5 flex flex-col mt-2 hover:shadow-md transition-shadow">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
-                  <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">
-                    Spannungs-Dehnungs-Diagramm σ / ε (Hysterese &amp; Dissipationsarbeit)
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-2">
-                  {/* Skalierungs-Umschalter */}
-                  <div className="inline-flex rounded-lg border border-home-grau/30 bg-slate-100 p-0.5 text-xs font-medium">
-                    <button
-                      type="button"
-                      onClick={() => setHystScaleMode('autoMax')}
-                      className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
-                        hystScaleMode === 'autoMax'
-                          ? 'bg-blue-600 text-white font-bold shadow-sm'
-                          : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                      title="Skaliert Diagramm automatisch auf die realen Maximalwerte (0 bis Max)"
-                    >
-                      Auto-Max [0 → Max]
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setHystScaleMode('zoom')}
-                      className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
-                        hystScaleMode === 'zoom'
-                          ? 'bg-blue-600 text-white font-bold shadow-sm'
-                          : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                      title="Fokussiert den Wertebereich direkt auf die Kurve"
-                    >
-                      Fokus-Zoom [Min → Max]
-                    </button>
-                  </div>
-
-                  {hystLimits && (
-                    <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
-                      <span className="bg-blue-50 text-blue-800 border border-blue-200 px-2 py-0.5 rounded-md font-bold">
-                        σ_max = {formatDeZahl(hystLimits.peakY, 2)} MPa
-                      </span>
-                      <span className="bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded-md font-bold">
-                        ε_max = {formatDeZahl(hystLimits.peakX * 1000, 2)} ‰
-                      </span>
-                      {dissEnergy_kJ_m3 > 0.01 && (
-                        <span className="bg-purple-50 text-purple-800 border border-purple-200 px-2 py-0.5 rounded-md font-semibold" title="Dissipierte mechanische Arbeit W_diss = ∮ σ dε (1 MPa = 1000 kJ/m³)">
-                          ΔW_diss = {formatDeZahl(dissEnergy_kJ_m3, 1)} kJ/m³ ({formatDeZahl(dissEnergy_kJ_m3 / 1000, 3)} N/mm²)
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="h-[320px] w-full relative">
-                <Line 
-                  data={sigEpsChartData} 
-                  options={{
-                    ...sharedOptions,
-                    scales: {
-                      x: { 
-                        type: 'linear', 
-                        position: 'bottom', 
-                        min: hystLimits?.minX,
-                        max: hystLimits?.maxX,
-                        title: { 
-                          display: true, 
-                          text: 'Dehnung ε (-)', 
-                          color: '#1e293b', 
-                          font: { size: 12, weight: 'bold' } 
-                        },
-                        ticks: {
-                          color: '#475569',
-                          font: { size: 11, weight: 'bold' },
-                          callback: (val: any) => typeof val === 'number' ? (Math.abs(val) < 0.01 && val !== 0 ? val.toExponential(1) : val.toFixed(3)) : val
-                        },
-                        grid: { color: 'rgba(0,0,0,0.06)' }
-                      },
-                      y: { 
-                        display: true, 
-                        min: hystLimits?.minY,
-                        max: hystLimits?.maxY,
-                        title: { 
-                          display: true, 
-                          text: 'Spannung σ (MPa)', 
-                          color: '#2563eb', 
-                          font: { size: 12, weight: 'bold' } 
-                        },
-                        ticks: {
-                          color: '#64748b',
-                          font: { size: 11 },
-                          callback: (val: any) => `${typeof val === 'number' ? val.toFixed(1) : val} MPa`
-                        },
-                        grid: { color: 'rgba(0,0,0,0.06)' }
-                      }
-                    }
-                  }} 
-                />
-              </div>
-            </div>
-
             {/* PRAXISBEISPIELE DER RHEOLOGISCHEN MODELLE */}
             <div className="mt-8 pt-6 border-t border-home-grau/25 space-y-5">
               <div>
@@ -1130,8 +220,8 @@ function RheologySection() {
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
                       <div><strong>Typische Baustoffe:</strong></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Heißbitumen / Gussasphalt flüssig:</strong> Beim Mischen und Einbau (<InlineMath math="T > 160^\circ\text{C}" />) ideal viskose Flüssigkeit zur vollflächigen Gesteinsbenetzung.</li>
-                        <li><strong>Frisches Anmachwasser &amp; Zementleim:</strong> Stark verdünnte Injektionsmischungen ohne Partikelnetzwerk.</li>
+                        <li><strong>Heißbitumen (T &gt; 140 °C):</strong> Beim Mischen näherungsweise newtonsch-viskos zur vollflächigen Gesteinsbenetzung. Gussasphalt als Bitumen-Gesteinskörnungs-Gemisch ist dagegen kein Newton-Fluid (Fließgrenze, strukturviskos).</li>
+                        <li><strong>Wasser und stark verdünnte Feinstsuspensionen:</strong> näherungsweise newtonsch. Zementleim üblicher w/z-Werte verhält sich dagegen wie ein Bingham-Fluid.</li>
                         <li><strong>Niedrigviskose Epoxidharze:</strong> Zur drucklosen Rissverpressung vor dem Gelieren.</li>
                       </ul>
                     </div>
@@ -1152,7 +242,7 @@ function RheologySection() {
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
                       <div><strong>Typische Baustoffe:</strong></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Trockener Baugrund (Sand &amp; Kies):</strong> Coulomb'sches Reibungsgesetz (<InlineMath math="\tau = \sigma \cdot \tan\varphi" />). Unterhalb der Scherfestigkeit starr, bei Überschreiten Gleiten.</li>
+                        <li><strong>Trockener Baugrund (Sand &amp; Kies):</strong> Coulomb'sches Gesetz <InlineMath math="\tau = c + \sigma \cdot \tan\varphi" /> (trockener Sand: c ≈ 0). Unterhalb der Scherfestigkeit starr, bei Überschreiten Gleiten. Die Grenzschubspannung hängt hier von der Normalspannung ab – das St.-Venant-Element bildet nur eine konstante Grenze ab.</li>
                         <li><strong>PTFE-Gleitplatten in Brückenlagern:</strong> Feste Reibungsgrenze zur Verschiebungskompensation.</li>
                         <li><strong>Reines Fließplateau von Weichstahl:</strong> Plastisches Gleiten bei konstanter Streckgrenzenspannung.</li>
                       </ul>
@@ -1174,8 +264,8 @@ function RheologySection() {
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
                       <div><strong>Typische Baustoffe:</strong></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Warmgewalzter Baustahl (S235, S355):</strong> Elastische Dehnung bis zur Streckgrenze <InlineMath math="f_y" />, danach langes Fließplateau ohne Spannungsanstieg.</li>
-                        <li><strong>Fließgelenke im Stahl- &amp; Stahlbetonbau:</strong> Basis des Traglastverfahrens nach Eurocode 3 (plastische Querschnittsklassen 1 und 2).</li>
+                        <li><strong>Warmgewalzter Baustahl (S235, S355):</strong> Elastische Dehnung bis zur Streckgrenze <InlineMath math="f_y" />, danach Fließplateau ohne Spannungsanstieg (Lüdersband-Bereich, ca. 1–2 % Dehnung); anschließend folgt Verfestigung.</li>
+                        <li><strong>Fließgelenke im Stahl- &amp; Stahlbetonbau:</strong> Basis der Fließgelenktheorie nach DIN EN 1993-1-1 (plastische Tragwerksberechnung nur mit Querschnittsklasse 1; Klasse 2 erreicht die plastische Querschnittstragfähigkeit, aber ohne ausreichende Rotationskapazität).</li>
                       </ul>
                     </div>
                   </div>
@@ -1191,12 +281,12 @@ function RheologySection() {
                       <span className="font-bold text-shiraz text-sm">5. Elasto-Plastisch mit Verfestigung</span>
                       <span className="font-mono text-[10px] bg-red-100 text-shiraz px-2 py-0.5 rounded font-bold">Hardening</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Feder + Reibelement mit parallelem Tangentenmodul Et</div>
+                    <div className="text-[11px] font-mono text-slate-700 font-semibold mb-2">Feder E in Reihe mit (Reibelement f_y ∥ Feder H), E_t = E·H/(E+H)</div>
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
                       <div><strong>Typische Baustoffe &amp; Normbezug:</strong></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Betonstabstahl (B500B nach EC2):</strong> Ausgeprägter Verfestigungsast mit <InlineMath math="k = (f_t/f_y)_k \ge 1{,}08" /> zur Sicherung hoher Rotationsfähigkeit im Bruchzustand (GZT).</li>
-                        <li><strong>Kaltgezogener Betonstahl (B500A):</strong> Kaltverfestigt mit kontinuierlichem Spannungsanstieg ohne Fließplateau.</li>
+                        <li><strong>Betonstabstahl (B500B nach EC2):</strong> Ausgeprägter Verfestigungsast mit <InlineMath math="k = (f_t/f_y)_k \ge 1{,}08" /> und <InlineMath math="\varepsilon_{uk} \ge 5{,}0\,\%" /> zur Sicherung hoher Rotationsfähigkeit im Bruchzustand (GZT).</li>
+                        <li><strong>Kaltverformter Betonstahl B500A (Duktilitätsklasse A: k ≥ 1,05, ε<sub>uk</sub> ≥ 2,5 %):</strong> Kaltverfestigt mit kontinuierlichem Spannungsanstieg ohne Fließplateau.</li>
                         <li><strong>Aluminiumlegierungen (EN AW-6060 / 6082):</strong> Ausgeprägte Dehnungsverfestigung ab Dehngrenze <InlineMath math="R_{p0{,}2}" />.</li>
                       </ul>
                     </div>
@@ -1217,13 +307,13 @@ function RheologySection() {
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
                       <div><strong>Typische Baustoffe:</strong></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Hochfester Spannstahl (Spannbeton nach EC2):</strong> Vorspanndrähte und Litzen stehen unter konstanter Vordehnung (<InlineMath math="\varepsilon = \text{konst.}" />). Spannkraftverlust durch Relaxation (<InlineMath math="\Delta \sigma_{pr}" />).</li>
-                        <li><strong>Elastomere Fugendichtstoffe (Silikon / PU):</strong> In Dehnfugen baut sich die Zugspannung bei Fugenöffnung viskos ab.</li>
+                        <li><strong>Bitumen und bitumenhaltige Fugenvergussmassen bei Dauerdehnung:</strong> Zwangspannungen aus Temperatur bauen sich viskos ab.</li>
+                        <li><strong>Thermoplaste oberhalb der Glasübergangstemperatur:</strong> Spannungen unter konstanter Dehnung relaxieren nahezu vollständig.</li>
                       </ul>
                     </div>
                   </div>
                   <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Der serielle Dämpfer fließt stetig und entlastet die elastische Feder (<InlineMath math="\sigma(t) \to 0" />).
+                    Mechanismus: Der serielle Dämpfer fließt stetig und entlastet die elastische Feder (<InlineMath math="\sigma(t) \to 0" />). Spannstahl relaxiert dagegen nur um wenige Prozent (Relaxationsklasse 2: ρ<sub>1000</sub> = 2,5 %) → Zener-Modell.
                   </div>
                 </div>
 
@@ -1239,12 +329,12 @@ function RheologySection() {
                       <div><strong>Typische Baustoffe:</strong></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
                         <li><strong>Normalbeton &amp; Zementstein (DIN EN 1992-1-1):</strong> Langzeitdurchbiegung von Decken unter Dauerlastspannung. Die Verformung ist durch das elastische Gesteinsgerüst asymptotisch begrenzt (<InlineMath math="\varphi \approx 1{,}5 - 3{,}0" />).</li>
-                        <li><strong>Konstruktionsvollholz (C24 nach EC5):</strong> Langzeitkriechen (<InlineMath math="k_{\text{def}} = 0{,}6 - 2{,}0" />) der Ligninmatrix.</li>
+                        <li><strong>Konstruktionsvollholz (C24 nach EC5):</strong> Langzeitkriechen der Zellwand (Hemicellulose-Lignin-Matrix); k<sub>def</sub> nach DIN EN 1995-1-1, Tab. 3.2: Vollholz NKL 1 = 0,6; NKL 2 = 0,8; NKL 3 = 2,0.</li>
                       </ul>
                     </div>
                   </div>
                   <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Mechanismus: Dämpfer bremst Verformungsgeschwindigkeit; parallele Feder garantiert endlichen Gleichgewichtsendwert.
+                    Mechanismus: Dämpfer bremst Verformungsgeschwindigkeit; parallele Feder garantiert endlichen Gleichgewichtsendwert. Kelvin-Voigt allein hat keine elastische Sofortverformung und keinen irreversiblen Kriechanteil – für Beton und Holz wird daher die Reihenschaltung Feder + Kelvin (= Zener/SLS) oder das Burgers-Modell verwendet.
                   </div>
                 </div>
 
@@ -1259,7 +349,9 @@ function RheologySection() {
                     <div className="space-y-1.5 text-[11px] text-text-main/80">
                       <div><strong>Typische Baustoffe:</strong></div>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
-                        <li><strong>Asphaltbeton im Straßenbau (DIN EN 13108):</strong> Das Mineralgerüst federt elastisch (<InlineMath math="E_1" />), während der Bitumenfilm viskose Relaxationen steuert.</li>
+                        <li><strong>Spannstahl (EC2):</strong> Relaxation unter konstanter Vordehnung auf einen Endwert σ<sub>∞</sub> &gt; 0 (Spannkraftverlust <InlineMath math="\Delta \sigma_{pr}" />).</li>
+                        <li><strong>Beton unter Dauerlast:</strong> Die Kriechzahl φ entspricht im Zener-Modell E₂/E₁.</li>
+                        <li><strong>Asphaltbeton im Straßenbau (DIN EN 13108):</strong> Das Mineralgerüst federt elastisch (<InlineMath math="E_1" />), während der Bitumenfilm viskose Relaxationen steuert; für bleibende Verformung (Spurrinnen) → Burgers-Modell.</li>
                         <li><strong>Elastomer-Brückenlager (Neopren nach DIN EN 1337-3):</strong> Sofortige elastische Stauchung, gefolgt von Relaxation auf Restspannung <InlineMath math="\sigma_\infty > 0" />.</li>
                       </ul>
                     </div>
@@ -1287,7 +379,7 @@ function RheologySection() {
                     </div>
                   </div>
                   <div className="mt-3 pt-2 border-t border-home-grau/20 text-[10px] text-slate-500">
-                    Fließt erst nach Überwinden der inneren Haft- und Fließgrenze; Standardmodell der Frischbeton-Rheologie.
+                    Fließt erst nach Überwinden der inneren Haft- und Fließgrenze; Standardmodell der Frischbeton-Rheologie. Größenordnungen (stark rezepturabhängig): Normalbeton F3 τ₀ ≈ 0,5–2 kPa, μ<sub>p</sub> ≈ 20–100 Pa·s; SVB τ₀ ≈ 0–60 Pa. Der Bingham-Körper wird in Scherung (τ, γ̇) beschrieben, nicht in Normalspannung σ/ε.
                   </div>
                 </div>
 
@@ -1313,8 +405,8 @@ export default function Materialmodelle() {
   const [epPreset, setEpPreset] = useState<'b500b' | 's355' | 's235' | 'alu' | 'custom'>('b500b');
   const [fyVal, setFyVal] = useState<number>(500); // MPa
   const [eModVal, setEModVal] = useState<number>(200000); // MPa
-  const [etModVal, setEtModVal] = useState<number>(2000); // MPa (Verfestigungsmodul)
-  const [appliedMaxEpsPromille, setAppliedMaxEpsPromille] = useState<number>(15); // max. Dehnung in Promille für Entlastungspfad
+  const [etModVal, setEtModVal] = useState<number>(1600); // MPa (Verfestigungsmodul, Preset B500B)
+  const [appliedMaxEpsPromille, setAppliedMaxEpsPromille] = useState<number>(50); // max. Dehnung in Promille (Preset B500B: ε_uk = 50 ‰)
 
   // Preset-Wechsel für Elasto-Plastisch mit Verfestigung
   const handleSelectEpPreset = (preset: 'b500b' | 's355' | 's235' | 'alu' | 'custom') => {
@@ -1323,7 +415,7 @@ export default function Materialmodelle() {
       setFyVal(500);
       setEModVal(200000);
       setEtModVal(1600); // ca. (540 - 500) / (0.050 - 0.0025) ≈ 840-2000 MPa
-      setAppliedMaxEpsPromille(20);
+      setAppliedMaxEpsPromille(50); // ε_uk ≥ 5 % → k sichtbar ≥ 1,08
     } else if (preset === 's355') {
       setFyVal(355);
       setEModVal(210000);
@@ -1713,7 +805,7 @@ export default function Materialmodelle() {
                   <Slider 
                     label={<FormulaText text="Max. aufgeprägte Dehnung \varepsilon_{\text{max}} (für Entlastungspfad)" />} 
                     min={3} 
-                    max={40} 
+                    max={60} 
                     step={1} 
                     value={appliedMaxEpsPromille} 
                     unit="‰" 
@@ -1738,11 +830,11 @@ export default function Materialmodelle() {
                     <span className="text-[9px] text-slate-400 font-mono">bei ε = {appliedMaxEpsPromille} ‰</span>
                   </div>
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-[10px] text-slate-500 block uppercase font-semibold">Verfestigung k = f_t / f_y</span>
+                    <span className="text-[10px] text-slate-500 block uppercase font-semibold">Spannungsverhältnis σ_max / f_y bei ε_max</span>
                     <span className={`font-mono font-bold text-sm mt-0.5 block ${epAnalytics.kVerhaeltnis >= 1.08 ? 'text-emerald-700' : 'text-amber-700'}`}>
                       {formatDeZahl(epAnalytics.kVerhaeltnis, 3)}
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">EC2: Klasse B ≥ 1,08</span>
+                    <span className="text-[9px] text-slate-400 font-mono">k = f_t/f_y wird bei ε_uk bestimmt (B500B: k ≥ 1,08 bei ε_uk ≥ 5 %)</span>
                   </div>
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-[10px] text-slate-500 block uppercase font-semibold">Rückfederung Δε_e</span>
