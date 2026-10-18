@@ -1,0 +1,346 @@
+src/modules/Asphalt.tsx:            formel: '\\rho _A = m_{Gesamt} / V_{Gesamt}',
+src/modules/Asphalt.tsx:            erklaerung: 'ρ_A: Raumdichte des Asphalts in g/cm³\nBerechnet aus den Massen- und Volumenanteilen von Gestein, Bitumen und Hohlräumen.\n\nQuelle: DIN EN 12697-6 (Prüfverfahren für Heißasphalt - Teil 6: Bestimmung der Raumdichte von Asphalt-Probekörpern)'
+src/modules/Asphalt.tsx:            formel: 'V_{Hohlraum} = V_{Luft} / V_{Gesamt} \\cdot  100',
+src/modules/Asphalt.tsx:            erklaerung: 'Hohlraumgehalt in Vol.-%\n\nQuelle: DIN EN 12697-8 (Prüfverfahren für Heißasphalt - Teil 8: Bestimmung des Hohlraumgehaltes von Asphalt-Probekörpern)'
+src/modules/Korrosion.tsx:                    <FormulaText text="C(x,t) = C_s \cdot [ 1 - erf( x / (2 \cdot \sqrt{D_{app}(t) \cdot t}) ) ]" />
+src/modules/Korrosion.tsx:                    <FormulaText text="C_{crit} \approx 0.5" /> Gew.-% (Kritischer Chloridgehalt zur Depassivierung)
+src/modules/Korrosion.tsx:                    <FormulaText text="D_{app}(t) = D_{app}(t_0) \cdot (t_0 / t)^a" />
+src/modules/Korrosion.tsx:                  formel: 'd_c(t) = K \\cdot \\sqrt{t}',
+src/modules/Korrosion.tsx:                  erklaerung: 'Wurzel-t-Gesetz der Karbonatisierung:\nd_c: Karbonatisierungstiefe in mm\nt: Zeit in Jahren\nK: Karbonatisierungskoeffizient in mm/√a\n\nQuelle: Empirisches Modell nach z.B. fib Model Code / DAfStb-Heft 600'
+src/modules/Korrosion.tsx:                  formel: '\\text{pH-Wert Abfall}',
+src/modules/Korrosion.tsx:                  erklaerung: 'CO₂ aus der Luft reagiert mit dem Calciumhydroxid im Beton zu Calciumcarbonat. Dadurch sinkt der pH-Wert von ca. 12.5 auf unter 9. Erreicht die Karbonatisierungsfront die Bewehrung (d_c ≥ c_nom), geht der alkalische Korrosionsschutz (Passivschicht) verloren und Rostbildung kann beginnen.\n\nQuelle: Grundlagen der Betonkorrosion (z.B. Hilsdorf/Kropp)'
+src/modules/Korrosion.tsx:                  formel: 'K_{nat} \\approx K_{schnell} \\cdot \\sqrt{\\text{CO}_{2,nat} / \\text{CO}_{2,schnell}}',
+src/modules/Korrosion.tsx:                  erklaerung: 'Vereinfachte Umrechnung des Karbonatisierungskoeffizienten aus dem Schnelltest (K_schnell) auf natürliche Bedingungen (K_nat) über das Verhältnis der CO₂-Konzentrationen. In der Praxis fließen weitere Faktoren (Feuchte, Porenstruktur) ein.\n\nQuelle: Fick\'sches Diffusionsgesetz (vereinfachte Anwendung)'
+src/modules/Holz.tsx:                <FormulaText text="f_{c,\\alpha,d} = f_{c,0,d} / \\left( \\left(\\frac{f_{c,0,d}}{k_{c,90} \\cdot f_{c,90,d}}\\right) \\cdot \\sin^2(\\alpha) + \\cos^2(\\alpha) \\right)" />
+src/modules/Holz.tsx:            formel: 'f_d = k_{mod} \\cdot  f_k / \\gamma _M',
+src/modules/Holz.tsx:            erklaerung: 'f_d: Bemessungswert der Festigkeit\nf_k: Charakteristischer Wert der Festigkeit\nk_{mod}: Modifikationsbeiwert (berücksichtigt Feuchte und Lasteinwirkungsdauer)\nγ_M: Teilsicherheitsbeiwert für das Material\n\nQuelle: DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)'
+src/modules/Holz.tsx:            formel: 'f_{c,\\alpha ,d} = f_{c,0,d} / ( (f_{c,0,d} / (k_{c,90} \\cdot  f_{c,90,d})) \\cdot  \\sin^2(\\alpha ) + \\cos^2(\\alpha ) )',
+src/modules/Holz.tsx:            erklaerung: 'Hankinson-Gleichung für Druck unter einem Winkel α zur Faserrichtung\nf_{c,0,d}: Bemessungswert der Druckfestigkeit parallel zur Faser\nf_{c,90,d}: Bemessungswert der Druckfestigkeit rechtwinklig zur Faser\nk_{c,90}: Beiwert für die Auflagerbedingung\n\nQuelle: DIN EN 1995-1-1 (Eurocode 5)'
+src/modules/Holz.tsx:            formel: '\\Delta l = l \\cdot  \\Delta u \\cdot  \\alpha ',
+src/modules/Holz.tsx:            erklaerung: 'Schwind- oder Quellmaß\nΔl: Längenänderung\nl: Ausgangslänge\nΔu: Änderung der Holzfeuchte\nα: Schwindmaß (tangential, radial oder longitudinal)\n\nQuelle: Holztechnische Grundlagen (z.B. Niemz: Physik des Holzes)'
+src/modules/Baustatik.tsx:            formel: 'M_{max} = (q \\cdot  l^2) / 8',
+src/modules/Baustatik.tsx:            erklaerung: 'Maximales Biegemoment in Feldmitte bei reiner Gleichlast q (Einfeldträger)\n\nQuelle: Gross, D. et al.: Technische Mechanik 1: Statik, Springer Vieweg'
+src/modules/Baustatik.tsx:            formel: 'M_A = -(q \\cdot  l^2) / 2 - F \\cdot  a',
+src/modules/Baustatik.tsx:            erklaerung: 'Einspannmoment am Auflager A (Kragarm)\n\nQuelle: Gross, D. et al.: Technische Mechanik 1: Statik, Springer Vieweg'
+src/modules/Baustatik.tsx:            formel: 'V(x) = A - q \\cdot  x - F(x)',
+src/modules/Baustatik.tsx:            erklaerung: 'Querkraftverlauf (Integration der Belastung)\n\nQuelle: Gross, D. et al.: Technische Mechanik 1: Statik, Springer Vieweg'
+src/modules/KriechenSchwinden.tsx:                <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Kriechzahl \\varphi(t, t_0)" /></h2>
+src/modules/KriechenSchwinden.tsx:                Das Relaxationsmodul beschreibt den Spannungsabfall unter konstanter Dehnung, angenähert durch <FormulaText text="R(t, t_0) \\approx E_{cm} / (1 + \\varphi(t, t_0))" />.
+src/modules/KriechenSchwinden.tsx:              formel: '\\varphi (t, t_0) = \\varphi _0 \\cdot  \\beta _c(t, t_0)',
+src/modules/KriechenSchwinden.tsx:              erklaerung: 'φ: Kriechzahl\nφ_0: Grundkriechzahl (abhängig von rel. Feuchte, Festigkeit, Belastungsalter)\nβ_c: Zeitliche Entwicklung des Kriechens\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/KriechenSchwinden.tsx:              formel: '\\varepsilon _{cs} = \\varepsilon _{cd} + \\varepsilon _{ca}',
+src/modules/KriechenSchwinden.tsx:              erklaerung: 'ε_{cs}: Gesamtschwinddehnung\nε_{cd}: Trocknungsschwinddehnung\nε_{ca}: Autogene Schwinddehnung\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/KriechenSchwinden.tsx:              formel: 'R(t, t_0) \\approx  E_{cm} / (1 + \\varphi (t, t_0))',
+src/modules/KriechenSchwinden.tsx:              erklaerung: 'R: Relaxationsmodul (vereinfacht nach Trost/Bazant)\nE_{cm}: Elastizitätsmodul des Betons\n\nQuelle: Trost/Bazant (Age-Adjusted Effective Modulus Method)'
+src/modules/KriechenSchwinden.tsx:              label={<FormulaText text="Feuchteänderung (\\Delta u)" />}
+src/modules/KriechenSchwinden.tsx:              formel: 'u_{fin} = u_{inst} \\cdot  (1 + k_{def})',
+src/modules/KriechenSchwinden.tsx:              erklaerung: 'u_{fin}: Endverformung\nu_{inst}: Anfangsverformung\nk_{def}: Verformungsbeiwert (Kriechen)\n\nQuelle: DIN EN 1995-1-1 (Eurocode 5)'
+src/modules/KriechenSchwinden.tsx:              formel: '\\varepsilon _s = \\Delta u \\cdot  \\alpha _h',
+src/modules/KriechenSchwinden.tsx:              erklaerung: 'ε_s: Schwind-/Quelldehnung\nΔu: Änderung der Holzfeuchte\nα_h: Schwindmaß (ca. 0.24% pro 1% Feuchteänderung quer zur Faser)\n\nQuelle: Holztechnische Grundlagen (z.B. Niemz: Physik des Holzes)'
+src/modules/KriechenSchwinden.tsx:              label={<FormulaText text="Spannungsniveau (\\sigma_{pi} / f_{pk})" />}
+src/modules/KriechenSchwinden.tsx:              <h2 className="text-xl font-bold text-text-main mb-2"><FormulaText text="Relaxationsverlust \\Delta\\sigma_{pr} / \\sigma_{pi}" /></h2>
+src/modules/KriechenSchwinden.tsx:              formel: '\\Delta \\sigma _{pr} / \\sigma _{pi} = 0.66 \\cdot  \\rho _{1000} \\cdot  e^{9.1 \\cdot  \\mu } \\cdot  (t/1000)^{0.75 \\cdot  (1-\\mu )} \\cdot  10^{-5}',
+src/modules/KriechenSchwinden.tsx:              erklaerung: 'Δσ_{pr}: Spannungsverlust durch Relaxation\nσ_{pi}: Anfängliche Vorspannung\nρ_{1000}: Relaxationsverlust nach 1000h (Klasse 1: 8%, Klasse 2: 2.5%, Klasse 3: 4%)\nμ: Spannungsniveau (σ_{pi} / f_{pk})\nt: Zeit in Stunden\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Kunststoffe.tsx:            formel: 'E(T) = f(T_g, T_m, \\text{Vernetzungsgrad})',
+src/modules/Kunststoffe.tsx:            erklaerung: 'Der E-Modul ist stark temperaturabhängig. Bei amorphen Thermoplasten fällt er am Glasübergang (Tg) um bis zu 3 Zehnerpotenzen ab.\n\nQuelle: Grundlagen der Polymerphysik (z.B. Ehrenstein: Polymer-Werkstoffe)'
+src/modules/Kunststoffe.tsx:            formel: '\\sigma  = E(T, t) \\cdot  \\varepsilon ',
+src/modules/Kunststoffe.tsx:            erklaerung: 'Hookesches Gesetz für Kunststoffe: Der E-Modul ist nicht nur temperatur- (T), sondern auch stark zeitabhängig (t) durch Kriechen und Relaxation (Viskoelastizität).\n\nQuelle: Viskoelastizitätstheorie (z.B. Ehrenstein: Polymer-Werkstoffe)'
+src/modules/SpannungDehnung.tsx:              formel: '\\sigma_c = f_{cd} \\cdot [ 1 - (1 - \\varepsilon_c / \\varepsilon_{c2})^n ]',
+src/modules/SpannungDehnung.tsx:              erklaerung: '\\sigma_c: Betonspannung (Druck)\nf_{cd}: Bemessungswert der Betondruckfestigkeit (f_{ck} / \\gamma_c)\n\\varepsilon_c: Betondehnung\n\\varepsilon_{c2}: Dehnung bei Erreichen der Höchstspannung\nn: Exponent (meist 2.0 für Normalbeton)\nQuelle: DIN EN 1992-1-1, 3.1.5 (1)'
+src/modules/SpannungDehnung.tsx:              formel: '\\sigma_s = E_s \\cdot \\varepsilon_s \\text{ (für } \\varepsilon_s \\leq \\varepsilon_{yd})',
+src/modules/SpannungDehnung.tsx:              erklaerung: '\\sigma_s: Stahlspannung\nE_s: Elastizitätsmodul des Stahls (200.000 N/mm²)\n\\varepsilon_s: Stahldehnung\n\\varepsilon_{yd}: Fließdehnung (f_{yd} / E_s)\nQuelle: DIN EN 1992-1-1, 3.2.7 (2)'
+src/modules/SpannungDehnung.tsx:              formel: '\\sigma_s = f_{yd} \\text{ (für } \\varepsilon_s > \\varepsilon_{yd})',
+src/modules/SpannungDehnung.tsx:              erklaerung: 'f_{yd}: Bemessungswert der Streckgrenze (f_{yk} / \\gamma_s)\nQuelle: DIN EN 1992-1-1, 3.2.7 (2)'
+src/modules/Recyclingbeton.tsx:            formel: '\\text{Kernfeuchte-Kompensation}',
+src/modules/Recyclingbeton.tsx:            erklaerung: 'Zusätzliches Wasser, das die RC-Körnung aufsaugt und das beim Mischen zugegeben werden muss (Vorsättigung), abhängig von der Wasseraufnahme WA_{24}.\n\nQuelle: DAfStb-Richtlinie "Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen nach DIN EN 12620"'
+src/modules/Faserverbund.tsx:            formel: 'E_{\\parallel} = E_f \\cdot  v_f + E_m \\cdot  (1 - v_f)',
+src/modules/Faserverbund.tsx:            erklaerung: 'Mischungsregel nach Voigt (Parallelschaltung, Längsrichtung)\nE_||: E-Modul des Verbunds in Faserrichtung\nE_f, E_m: E-Modul von Faser und Matrix\nv_f: Faservolumengehalt\n\nQuelle: Voigt\'sche Mischungsregel (z.B. Schürmann: Konstruieren mit Faser-Kunststoff-Verbunden)'
+src/modules/Faserverbund.tsx:            formel: 'E_{\\perp} = (E_f \\cdot  E_m) / (v_f \\cdot  E_m + (1 - v_f) \\cdot  E_f)',
+src/modules/Faserverbund.tsx:            erklaerung: 'Mischungsregel nach Reuss (Reihenschaltung, Querrichtung)\nE_⊥: E-Modul des Verbunds quer zur Faserrichtung\n\nQuelle: Reuss\'sche Mischungsregel (z.B. Schürmann: Konstruieren mit Faser-Kunststoff-Verbunden)'
+src/modules/Faserverbund.tsx:            formel: '\\sigma _{\\parallel} = \\sigma _f \\cdot  v_f + \\sigma _m \\cdot  (1 - v_f)',
+src/modules/Faserverbund.tsx:            erklaerung: 'Zugfestigkeit in Faserrichtung (vereinfacht)\nσ_f, σ_m: Zugfestigkeit von Faser und Matrix\n\nQuelle: Mischungsregel (z.B. Schürmann: Konstruieren mit Faser-Kunststoff-Verbunden)'
+src/modules/Stahl.tsx:              <label className="text-sm font-medium text-text-main"><FormulaText text="Kerbfall \\Delta\\sigma_C (bei N=2\\cdot 10^6)" /></label>
+src/modules/Stahl.tsx:            formel: 'f_{y,\\theta } = k_{y,\\theta } \\cdot  f_y',
+src/modules/Stahl.tsx:            erklaerung: 'f_{y,θ}: Effektive Streckgrenze bei Temperatur θ\nk_{y,θ}: Abminderungsfaktor für die Streckgrenze\nf_y: Streckgrenze bei 20°C\n\nQuelle: DIN EN 1993-1-2 (Eurocode 3: Tragwerksbemessung für den Brandfall)'
+src/modules/Stahl.tsx:            formel: 'E_{a,\\theta } = k_{E,\\theta } \\cdot  E_a',
+src/modules/Stahl.tsx:            erklaerung: 'E_{a,θ}: Effektiver Elastizitätsmodul bei Temperatur θ\nk_{E,θ}: Abminderungsfaktor für den E-Modul\nE_a: Elastizitätsmodul bei 20°C (210.000 N/mm²)\n\nQuelle: DIN EN 1993-1-2 (Eurocode 3)'
+src/modules/Stahl.tsx:            formel: '\\Delta \\sigma _R^m \\cdot  N = \\Delta \\sigma _c^m \\cdot  2\\cdot 10^6',
+src/modules/Stahl.tsx:            erklaerung: 'Gleichung der Wöhlerlinie\nΔσ_R: Ertragbare Spannungsschwingbreite bei N Lastwechseln\nΔσ_c: Kerbfall (Referenzwert bei 2 Millionen Lastwechseln)\nm: Neigung der Wöhlerlinie (m=3 für N ≤ 5·10^6, m=5 für N > 5·10^6)\n\nQuelle: DIN EN 1993-1-9 (Eurocode 3: Ermüdung)'
+src/modules/Frostwiderstand.tsx:            formel: 'L_{bar} \\approx 3 \\cdot (1.4 \\cdot (w/z - 0.35) / LP)',
+src/modules/Frostwiderstand.tsx:            erklaerung: 'L_bar: Abstandsfaktor (Spacing Factor) in mm\nw/z: Wasserzementwert\nLP: Luftporengehalt in Vol.-%\n(Stark vereinfachte Näherung für die Lehre zur Veranschaulichung des Einflusses von w/z und LP-Gehalt)\n\nQuelle: In Anlehnung an Powers (1949) / ASTM C457 (Abstandsfaktor)'
+src/modules/Frostwiderstand.tsx:            formel: 'S_{krit} \\approx 88\\%',
+src/modules/Frostwiderstand.tsx:            erklaerung: 'S_krit: Kritischer Sättigungsgrad. Da Wasser sich beim Gefrieren um ca. 9% ausdehnt, führt ein Sättigungsgrad > 91% (praktisch oft schon ab 85-88%) zu Frostsprengung, da kein Ausweichraum mehr vorhanden ist.\n\nQuelle: Fagerlund (1977) - Kritischer Sättigungsgrad'
+src/modules/Knicken.tsx:                <Slider label={<FormulaText text="Flächenträgheitsmoment I" />} min={10} max={10000} step={10} value={i} unit={<FormulaText text="\\text{cm}^4" />} onChange={(e) => setI(Number(e.target.value))} />
+src/modules/Knicken.tsx:                    <option value={1}>Fall 1: Eingespannt - Frei (<FormulaText text="\\beta" /> = 2.0)</option>
+src/modules/Knicken.tsx:                    <option value={2}>Fall 2: Gelenk - Gelenk (<FormulaText text="\\beta" /> = 1.0)</option>
+src/modules/Knicken.tsx:                    <option value={3}>Fall 3: Eingespannt - Gelenk (<FormulaText text="\\beta" /> ≈ 0.7)</option>
+src/modules/Knicken.tsx:                    <option value={4}>Fall 4: Eingespannt - Eingespannt (<FormulaText text="\\beta" /> = 0.5)</option>
+src/modules/Knicken.tsx:                  <div className="text-home-grau text-sm mb-1">Knicklänge (<FormulaText text="l_k = \\beta \\cdot l" />)</div>
+src/modules/Knicken.tsx:            formel: 'F_K = (\\pi ^2 \\cdot  E \\cdot  I) / l_k^2',
+src/modules/Knicken.tsx:            erklaerung: 'Ideale Knicklast nach Euler\nF_K: Knicklast\nE: Elastizitätsmodul\nI: Flächenträgheitsmoment\nl_k: Knicklänge\n\nQuelle: Euler\'sche Knickfälle (z.B. Gross et al., Technische Mechanik 2: Elastostatik)'
+src/modules/Knicken.tsx:            formel: 'l_k = \\beta  \\cdot  l',
+src/modules/Knicken.tsx:            erklaerung: 'Knicklänge in Abhängigkeit der Lagerung\nβ: Knicklängenbeiwert (Eulerfall 1-4)\nl: Systemlänge\n\nQuelle: Euler\'sche Knickfälle (z.B. Gross et al., Technische Mechanik 2: Elastostatik)'
+src/modules/Festigkeitsberechnungen.tsx:          <strong>Turmbau (Druck):</strong> Wie hoch kann ein Turm gestapelt werden, bis das Material unten zerdrückt wird? <span className="font-mono text-xs bg-gray-100 px-1 rounded"><FormulaText text="H = f_c / (\\rho \\cdot g)" /></span>
+src/modules/Festigkeitsberechnungen.tsx:          <strong>Reißlänge (Zug):</strong> Wie lang kann ein frei hängendes Seil/Stab sein, bis es unter seinem eigenen Gewicht reißt? <span className="font-mono text-xs bg-gray-100 px-1 rounded"><FormulaText text="L = f_t / (\\rho \\cdot g)" /></span>
+src/modules/Festigkeitsberechnungen.tsx:            formel: 'H = f_c / (\\rho  \\cdot  g)',
+src/modules/Festigkeitsberechnungen.tsx:            erklaerung: 'Maximale Turmhöhe unter Eigengewicht (Druck)\nH: Höhe [m]\nf_c: Druckfestigkeit [Pa]\nρ: Dichte [kg/m³]\ng: Erdbeschleunigung [m/s²]\n\nQuelle: Allgemeine Mechanik, Gleichgewicht der Kräfte (σ = F/A = ρ·g·h)'
+src/modules/Festigkeitsberechnungen.tsx:            formel: 'L = f_t / (\\rho  \\cdot  g)',
+src/modules/Festigkeitsberechnungen.tsx:            erklaerung: 'Maximale Reißlänge unter Eigengewicht (Zug)\nL: Länge [m]\nf_t: Zugfestigkeit [Pa]\nρ: Dichte [kg/m³]\ng: Erdbeschleunigung [m/s²]\n\nQuelle: Allgemeine Mechanik, Reißlänge (σ = F/A = ρ·g·L)'
+src/modules/Festigkeitsberechnungen.tsx:            formel: '\\Delta l = (\\sigma  / E) \\cdot  l',
+src/modules/Festigkeitsberechnungen.tsx:            erklaerung: 'Elastische Verformung (Hookesches Gesetz)\nΔl: Längenänderung\nσ: Spannung\nE: Elastizitätsmodul\nl: Ausgangslänge\n\nQuelle: Hookesches Gesetz der linearen Elastizität'
+src/modules/Nachhaltigkeit.tsx:            formel: '\\text{Indikator}_{total} = \\sum (m_i \\cdot \\text{Indikator}_{i, A1-A3}) + \\text{Indikator}_{A4} + \\text{Indikator}_{C} + \\text{Indikator}_{D}',
+src/modules/Nachhaltigkeit.tsx:            erklaerung: 'Die Gesamtwirkung (z.B. GWP, AP, EP) ergibt sich aus der Summe der Wirkungen aller Materialien über alle betrachteten Lebenszyklusphasen.\n\nQuelle: DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)'
+src/modules/Nachhaltigkeit.tsx:            formel: '\\text{Indikator}_{A4} = m \\cdot d \\cdot e_{\\text{Transport}}',
+src/modules/Nachhaltigkeit.tsx:            erklaerung: 'Transportwirkungen: Masse (m) mal Distanz (d) mal spezifischer Faktor des Transportmittels (e_Transport).\n\nQuelle: DIN EN 15804 / ÖKOBAUDAT'
+src/modules/Nachbehandlung.tsx:              formel: 'E = 5 \\cdot  ((T_c + 18)^{2.5} - r \\cdot  (T_a + 18)^{2.5}) \\cdot  (V + 4) \\cdot  10^{-6}',
+src/modules/Nachbehandlung.tsx:              erklaerung: 'Verdunstungsrate E (Nomogramm nach Menzel):\nT_c: Betontemperatur [°C]\nT_a: Lufttemperatur [°C]\nr: Relative Luftfeuchte [-] (z.B. 0.5 für 50%)\nV: Windgeschwindigkeit [km/h]\n\nQuelle: ACI 305R (Guide to Hot Weather Concreting) / Menzel-Formel'
+src/modules/Nachbehandlung.tsx:              formel: '\\text{Nachbehandlungsdauer}',
+src/modules/Nachbehandlung.tsx:              erklaerung: 'Die Dauer der Nachbehandlung hängt von der Festigkeitsentwicklung des Betons und der Expositionsklasse ab. Sie muss so lange erfolgen, bis die oberflächennahe Randzone eine ausreichende Festigkeit (meist 50% der charakteristischen Festigkeit) erreicht hat.\n\nQuelle: DIN EN 13670 / DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 3: Bauausführung)'
+src/modules/AKR.tsx:            formel: '\\text{Alkalieintrag} = \\text{Zementgehalt} \\cdot  (\\text{Na}_2\\text{O-Äq.} / 100)',
+src/modules/Querkraftbemessung.tsx:            <strong>Für Studierende:</strong> Die Querkraftbemessung basiert auf dem Fachwerkmodell. Der Beton nimmt die Druckkräfte in den geneigten Druckstreben auf (<FormulaText text="V_{Rd,max}" />), während die Bügelbewehrung die Zugkräfte aufnimmt (<FormulaText text="V_{Rd,s}" />). Der Winkel der Druckstrebe (<FormulaText text="\\theta" />) kann in bestimmten Grenzen frei gewählt werden (meist zwischen 21.8° und 45°). Ein flacherer Winkel erfordert weniger Bügelbewehrung, erhöht aber die Belastung der Betondruckstrebe.
+src/modules/Querkraftbemessung.tsx:                <Slider label={<FormulaText text="Druckstrebenneigung \\theta" />} min={21.8} max={45} step={0.1} value={theta} unit="°" onChange={(e) => setTheta(Number(e.target.value))} />
+src/modules/Querkraftbemessung.tsx:                  <div className="font-bold text-red-100 mb-1">Nachweis <FormulaText text="V_{Ed} \\leq V_{Rd,max}" /> nicht erfüllt!</div>
+src/modules/Querkraftbemessung.tsx:                    Die Betondruckstrebe versagt. Erhöhen Sie den Querschnitt (<FormulaText text="b" />, <FormulaText text="h" />), die Betonfestigkeit oder den Druckstrebenwinkel <FormulaText text="\\theta" />.
+src/modules/Querkraftbemessung.tsx:                  <div className="font-bold text-green-100 mb-1">Nachweis <FormulaText text="V_{Ed} \\leq V_{Rd,max}" /> erfüllt.</div>
+src/modules/Querkraftbemessung.tsx:            formel: 'V_{Rd,max} = (\\alpha _{cw} \\cdot  b_w \\cdot  z \\cdot  \\nu _1 \\cdot  f_{cd}) / (\\cot(\\theta ) + \\tan(\\theta ))',
+src/modules/Querkraftbemessung.tsx:            erklaerung: 'Maximale Querkrafttragfähigkeit (Druckstrebenversagen)\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)'
+src/modules/Querkraftbemessung.tsx:            formel: 'a_{sw} = V_{Ed} / (z \\cdot  f_{yd} \\cdot  \\cot(\\theta ))',
+src/modules/Querkraftbemessung.tsx:            erklaerung: 'Erforderliche Querkraftbewehrung (Zugstrebenversagen)\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Querkraftbemessung.tsx:            formel: '\\rho _{w,min} = (0.08 \\cdot  \\sqrt{f_{ck}}) / f_{yk}',
+src/modules/Querkraftbemessung.tsx:            erklaerung: 'Mindestquerkraftbewehrungsgrad\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Mauerwerk.tsx:            formel: 'f_k = K \\cdot  f_b^{0.7} \\cdot  f_m^{0.3}',
+src/modules/Mauerwerk.tsx:            erklaerung: 'f_k: Charakteristische Druckfestigkeit des Mauerwerks\nK: Konstante (abhängig von Steinart und Mörtel)\nf_b: Normierte Steindruckfestigkeit\nf_m: Mörteldruckfestigkeit\n\nQuelle: DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)'
+src/modules/Mauerwerk.tsx:            formel: 'f_{vk} = f_{vk0} + 0.4 \\cdot  \\sigma _d',
+src/modules/Mauerwerk.tsx:            erklaerung: 'f_{vk}: Charakteristische Schubfestigkeit\nf_{vk0}: Haftscherfestigkeit (ohne Auflast)\nσ_d: Bemessungswert der vorhandenen Druckspannung\n\nQuelle: DIN EN 1996-1-1 (Eurocode 6)'
+src/modules/Mauerwerk.tsx:            formel: 'l_{ol} \\ge  0.4 \\cdot  h_u  \\text{ und }  l_{ol} \\ge  40 \\text{ mm}',
+src/modules/Mauerwerk.tsx:            erklaerung: 'Überbindemaß-Regel\nl_{ol}: Überbindemaß (Überlappung der Steine)\nh_u: Steinhöhe\n\nQuelle: DIN EN 1996-1-1 (Eurocode 6)'
+src/modules/Rheologie.tsx:            label={stressModel === 'constant' ? <FormulaText text="Aufgebrachte Spannung \sigma_0" /> : <FormulaText text="Maximale Spannung \sigma_{max}" />}
+src/modules/Rheologie.tsx:              label={<FormulaText text="Viskosität \eta" />}
+src/modules/Rheologie.tsx:              label={<FormulaText text="Fließgrenze \sigma_y / \tau_0" />}
+src/modules/Rheologie.tsx:                label={<FormulaText text="Minimale Viskosität \eta_{inf}" />}
+src/modules/Rheologie.tsx:              formel: '\\tau = \\tau_0 + \\eta \\cdot \\dot{\\gamma}',
+src/modules/Rheologie.tsx:              erklaerung: 'Bingham-Modell für Frischbeton:\n\\tau: Schubspannung\n\\tau_0: Fließgrenze (Mindestspannung für Fließen)\n\\eta: Plastische Viskosität\n\\dot{\\gamma}: Schergeschwindigkeit\n\nQuelle: Rheologische Grundlagen (z.B. Tattersall/Banfill: Rheology of Fresh Concrete)'
+src/modules/Rheologie.tsx:              formel: '\\sigma(t) = E \\cdot \\varepsilon_0 \\cdot e^{-(E/\\eta)\\cdot t}',
+src/modules/Rheologie.tsx:              erklaerung: 'Maxwell-Modell (Relaxation):\nSpannungsabbau bei konstanter Dehnung \\varepsilon_0.\n\nQuelle: Viskoelastizitätstheorie (z.B. W. Grellmann, S. Seidler: Kunststoffprüfung)'
+src/modules/Rheologie.tsx:              formel: '\\varepsilon(t) = (\\sigma_0 / E) \\cdot (1 - e^{-(E/\\eta)\\cdot t})',
+src/modules/Rheologie.tsx:              erklaerung: 'Kelvin-Voigt-Modell (Kriechen):\nVerzögerte Verformung unter konstanter Spannung \\sigma_0.\n\nQuelle: Viskoelastizitätstheorie (z.B. W. Grellmann, S. Seidler: Kunststoffprüfung)'
+src/modules/Bodenmechanik.tsx:                  <Slider label={<FormulaText text="Reibungswinkel (\\varphi)" />} min={0} max={45} step={1} value={phi} unit="°" onChange={(e) => setPhi(Number(e.target.value))} />
+src/modules/Bodenmechanik.tsx:                    <Slider label={<FormulaText text="Vorhandene Normalspannung (\\sigma)" />} min={0} max={300} step={5} value={sigma} unit="kN/m²" onChange={(e) => setSigma(Number(e.target.value))} />
+src/modules/Bodenmechanik.tsx:                  <div className="text-white/70 text-sm mb-1"><FormulaText text="Maximal aufnehmbare Scherspannung (\\tau_f)" /></div>
+src/modules/Bodenmechanik.tsx:                  <Slider label={<FormulaText text="Wichte (\\gamma)" />} min={15} max={22} step={0.5} value={gamma} unit="kN/m³" onChange={(e) => setGamma(Number(e.target.value))} />
+src/modules/Bodenmechanik.tsx:                  <Slider label={<FormulaText text="Reibungswinkel (\\varphi)" />} min={15} max={45} step={1} value={phiErddruck} unit="°" onChange={(e) => setPhiErddruck(Number(e.target.value))} />
+src/modules/Bodenmechanik.tsx:                  <Slider label={<FormulaText text="Zusatzspannung (\\Delta\\sigma)" />} min={10} max={200} step={5} value={deltaSigma} unit="kN/m²" onChange={(e) => setDeltaSigma(Number(e.target.value))} />
+src/modules/Bodenmechanik.tsx:            erklaerung: 'I_P: Plastizitätszahl in %\nw_L: Fließgrenze (Liquid Limit) in %\nw_P: Ausrollgrenze (Plastic Limit) in %'
+src/modules/Bodenmechanik.tsx:            erklaerung: 'I_c: Konsistenzzahl\nw: Natürlicher Wassergehalt in %\n(I_c < 0: flüssig, 0-0.5: weich, 0.5-0.75: steif, 0.75-1.0: halbfest, >1.0: fest)'
+src/modules/Bodenmechanik.tsx:            formel: '\\tau _f = c + \\sigma  \\cdot  \\tan(\\varphi )',
+src/modules/Bodenmechanik.tsx:            erklaerung: 'Bruchkriterium nach Mohr-Coulomb\nτ_f: Scherfestigkeit\nc: Kohäsion\nσ: Normalspannung auf die Scherebene\nφ: Reibungswinkel'
+src/modules/Bodenmechanik.tsx:            formel: 'K_a = \\tan^2(45^\\circ - \\varphi /2)',
+src/modules/Bodenmechanik.tsx:            formel: 's = (\\Delta \\sigma  / E_s) \\cdot  h',
+src/modules/Bodenmechanik.tsx:            erklaerung: 'Eindimensionale Endsetzung\nΔσ: Zusatzspannung\nE_s: Steifemodul\nh: Schichtdicke'
+src/modules/Bodenmechanik.tsx:            formel: 'T_v = (c_v \\cdot  t) / d^2',
+src/modules/Bodenmechanik.tsx:            erklaerung: 'Zeitfaktor T_v\nc_v: Konsolidierungsbeiwert\nt: Zeit\nd: Entwässerungsweg (d=h bei einseitig, d=h/2 bei zweiseitig)'
+src/modules/Festbeton.tsx:                  <FormulaText text="f_{cm} \ge f_{ck} + 1.48 \cdot \sigma" />
+src/modules/Festbeton.tsx:                  <FormulaText text="Kriterium 1: f_{cm} \ge f_{ck} + 4" /><br/>
+src/modules/Festbeton.tsx:                  <FormulaText text="Kriterium 2: f_{ci} \ge f_{ck} - 4" />
+src/modules/Festbeton.tsx:              formel: 'f_{ck} = f_{cm} - 1.645 \\cdot \\sigma',
+src/modules/Festbeton.tsx:              erklaerung: 'Charakteristische Druckfestigkeit (5%-Fraktil)\nf_{cm}: Mittlere Druckfestigkeit\nσ: Standardabweichung\n\nQuelle: DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)'
+src/modules/Festbeton.tsx:              formel: 'f_{cd} = \\alpha_{cc} \\cdot f_{ck,cyl} / \\gamma_c',
+src/modules/Festbeton.tsx:              erklaerung: 'Bemessungswert der Druckfestigkeit\nα_{cc}: Beiwert für Langzeiteffekte (meist 0.85)\nγ_c: Teilsicherheitsbeiwert für Beton (meist 1.5)\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)'
+src/modules/Festbeton.tsx:              formel: 'f_{cm}(t) = \\beta_{cc}(t) \\cdot f_{cm}',
+src/modules/Festbeton.tsx:              erklaerung: 'Zeitliche Entwicklung der Druckfestigkeit\nβ_{cc}(t): Beiwert für die Festigkeitsentwicklung\nf_{cm}: Mittlere Druckfestigkeit nach 28 Tagen\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Festbeton.tsx:              formel: '\\beta_{cc}(t) = \\exp(s \\cdot (1 - \\sqrt{28 / t}))',
+src/modules/Festbeton.tsx:              erklaerung: 'Beiwert für die Festigkeitsentwicklung\ns: Beiwert abhängig von der Zementfestigkeitsklasse\nt: Betonalter in Tagen\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Festbeton.tsx:              <FormulaText text="Für Studierende: Die Druckfestigkeit von Beton wird standardmäßig nach 28 Tagen unter Normlagerung bestimmt. Beton erhärtet jedoch über Monate und Jahre weiter. Die Funktion \beta_{cc}(t) beschreibt diese zeitliche Entwicklung. Zudem zeigen Würfel aufgrund der behinderten Querdehnung scheinbar höhere Festigkeiten als schlanke Zylinder." />
+src/modules/Festbeton.tsx:                    <td className="py-3 px-4 font-medium text-text-main"><FormulaText text="Alter (\beta_{cc})" /></td>
+src/modules/Schallschutz.tsx:                <strong>Hinweis:</strong> Die Berechnung des Schalldämm-Maßes basiert auf einer empirischen Näherungsformel für einschalige Bauteile (<FormulaText text="R_w \\approx 37.5 \\cdot \\log_{10}(m') - 42" />). Mehrschalige Aufbauten verhalten sich komplexer.
+src/modules/Schallschutz.tsx:            formel: "R_w \\approx 37.5 \\cdot \\log_{10}(m') - 42",
+src/modules/Schallschutz.tsx:            erklaerung: "Empirische Näherung für das Schalldämm-Maß R_w in dB für einschalige, biegesteife Bauteile.\nm': flächenbezogene Masse in kg/m²\n\nQuelle: DIN 4109 (Schallschutz im Hochbau) / Berger et al., Bauphysik"
+src/modules/Feedback.tsx:    const body = encodeURIComponent(`Modul: ${module}\n\nNachricht:\n${message}`);
+src/modules/Rissbreite.tsx:              formel: 'w_k = s_{r,max} \\cdot  (\\varepsilon _{sm} - \\varepsilon _{cm})',
+src/modules/Rissbreite.tsx:              erklaerung: 'w_k: Berechnete Rissbreite\ns_{r,max}: Maximaler Rissabstand\nε_{sm}: Mittlere Stahldehnung\nε_{cm}: Mittlere Betondehnung\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)'
+src/modules/Rissbreite.tsx:              formel: 's_{r,max} = k_3 \\cdot  c + k_1 \\cdot  k_2 \\cdot  k_4 \\cdot  \\varnothing  / \\rho _{p,eff}',
+src/modules/Rissbreite.tsx:              erklaerung: 'c: Betondeckung\nØ: Stabdurchmesser\nρ_{p,eff}: Effektiver Bewehrungsgrad\nk_1, k_2, k_3, k_4: Beiwerte für Verbund, Dehnungsverteilung etc.\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Rissbreite.tsx:              formel: '\\varepsilon _{sm} - \\varepsilon _{cm} = [\\sigma _s - k_t \\cdot  (f_{ct,eff} / \\rho _{p,eff}) \\cdot  (1 + \\alpha _e \\cdot  \\rho _{p,eff})] / E_s',
+src/modules/Rissbreite.tsx:              erklaerung: 'σ_s: Stahlspannung im gerissenen Zustand\nk_t: Beiwert für die Dauer der Lasteinwirkung\nf_{ct,eff}: Wirksame Betonzugfestigkeit\nα_e: Verhältnis E_s / E_{cm}\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/HistorischeMaterialkennwerte.tsx:            formel: 'E_d \\leq R_d',
+src/modules/HistorischeMaterialkennwerte.tsx:            erklaerung: 'Grundgleichung des Teilsicherheitskonzepts (Eurocode)\nE_d: Bemessungswert der Einwirkung (E_k · γ_F)\nR_d: Bemessungswert des Widerstands (R_k / γ_M)\n\nQuelle: DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)'
+src/modules/HistorischeMaterialkennwerte.tsx:            formel: '\\text{vorh } \\sigma \\leq \\text{zul } \\sigma = f_k / \\gamma_{global}',
+src/modules/HistorischeMaterialkennwerte.tsx:            erklaerung: 'Grundgleichung des globalen Sicherheitskonzepts (alte Normen)\nvorh σ: Vorhandene Spannung unter Gebrauchslast\nzul σ: Zulässige Spannung\nf_k: Charakteristische Festigkeit\nγ_{global}: Globaler Sicherheitsbeiwert\n\nQuelle: Historische Normen (z.B. DIN 1045:1988, DIN 18800:1990)'
+src/modules/Brandschutz.tsx:            formel: 'T = 20 + 345 \\cdot \\log_{10}(8 \\cdot t + 1)',
+src/modules/Brandschutz.tsx:            erklaerung: 'T: Gastemperatur in °C\nt: Branddauer in Minuten\n(ISO-Normbrandkurve / Einheitstemperaturzeitkurve ETK)\n\nQuelle: DIN EN 1991-1-2 (Eurocode 1: Einwirkungen auf Tragwerke - Teil 1-2: Allgemeine Einwirkungen - Brandeinwirkungen auf Tragwerke)'
+src/modules/Brandschutz.tsx:            formel: 'd_{char} = \\beta _0 \\cdot t',
+src/modules/Brandschutz.tsx:            erklaerung: 'd_{char}: Abbrandtiefe in mm\nβ_0: Eindimensionale Abbrandrate (ca. 0.7 mm/min für Nadelholz)\nt: Branddauer in Minuten\n\nQuelle: DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Allgemeine Regeln - Tragwerksbemessung für den Brandfall)'
+src/modules/WUBauwerke.tsx:            erklaerung: 'I: Druckgefälle\nh_w: Wasserdruckhöhe in m\nh: Bauteildicke in m\nQuelle: DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)'
+src/modules/Bauphysik.tsx:            formel: 'U = 1 / R_T = 1 / (R_{si} + \\sum (d_i / \\lambda _i) + R_{se})',
+src/modules/Bauphysik.tsx:            erklaerung: 'U: Wärmedurchgangskoeffizient (U-Wert) in W/(m²K)\nR_T: Wärmedurchgangswiderstand\nR_{si}, R_{se}: Wärmeübergangswiderstände (innen, außen)\nd_i: Schichtdicke in m\nλ_i: Wärmeleitfähigkeit in W/(mK)\n\nQuelle: DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)'
+src/modules/Bauphysik.tsx:            formel: 's_d = \\mu  \\cdot  d',
+src/modules/Bauphysik.tsx:            erklaerung: 's_d: Wasserdampfdiffusionsäquivalente Luftschichtdicke in m\nμ: Wasserdampfdiffusionswiderstandszahl (materialspezifisch)\nd: Schichtdicke in m\n\nQuelle: DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)'
+src/modules/Bauphysik.tsx:            formel: 'p_{sat}(T) \\approx  610.5 \\cdot  \\exp(17.269 \\cdot  T / (237.3 + T))',
+src/modules/Bauphysik.tsx:            erklaerung: 'p_{sat}: Sättigungsdampfdruck in Pa bei Temperatur T in °C (Magnus-Formel)\n\nQuelle: DIN EN ISO 13788 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)'
+src/modules/ZfP.tsx:                <FormulaText text={`\\text{Grobe Festigkeitsabschätzung: } \\approx ${ultrasonicResults.fcEst.toFixed(1)} \\text{ N/mm}^2`} />
+src/modules/ZfP.tsx:                label={<FormulaText text="Dielektrizitätszahl (\\varepsilon_r)" />}
+src/modules/ZfP.tsx:                <FormulaText text="Misst das elektrochemische Potential der Bewehrung gegen eine Referenzelektrode (z.B. \\text{Cu/CuSO}_4), um aktive Korrosion zu lokalisieren." />
+src/modules/ZfP.tsx:                <FormulaText text="Referenzelektrode: \\text{Cu/CuSO}_4" />
+src/modules/ZfP.tsx:              label={<FormulaText text="Temperaturdifferenz (\\Delta T)" />}
+src/modules/ZfP.tsx:            formel: 'f_c \\approx a \\cdot R^b',
+src/modules/ZfP.tsx:            erklaerung: 'Empirische Korrelation zwischen Rückprallzahl R und Druckfestigkeit f_c. Die Konstanten a und b hängen vom verwendeten Gerät, dem Alter und der Feuchtigkeit des Betons ab.\nQuelle: DIN EN 13791 / Herstellerangaben'
+src/modules/ZfP.tsx:            formel: 'E_{dyn} = \\rho \\cdot v^2 \\cdot \\frac{(1+\\nu)(1-2\\nu)}{1-\\nu}',
+src/modules/ZfP.tsx:            erklaerung: 'Dynamischer Elastizitätsmodul E_{dyn}:\nρ: Dichte des Betons\nv: Ultraschallgeschwindigkeit\nν: Querdehnzahl (Poisson-Zahl, ca. 0.2)\nQuelle: Grundlagen der Elastodynamik / DIN EN 12504-4'
+src/modules/ZfP.tsx:            formel: 'd = \\frac{c}{\\sqrt{\\varepsilon_r}} \\cdot \\frac{t}{2}',
+src/modules/ZfP.tsx:            erklaerung: 'Tiefenberechnung beim Georadar:\nd: Tiefe des Objekts\nc: Lichtgeschwindigkeit im Vakuum (300 mm/ns)\nε_r: Relative Dielektrizitätszahl des Betons\nt: Gemessene Laufzeit (Hin- und Rückweg)\nQuelle: DGZfP-Merkblatt B04'
+src/modules/ZfP.tsx:            formel: 'd = \\frac{v}{2 \\cdot f}',
+src/modules/ZfP.tsx:            erklaerung: 'Tiefenberechnung beim Impuls-Echo-Verfahren:\nd: Tiefe der Reflexionsfläche (Bauteildicke oder Fehlstelle)\nv: P-Wellengeschwindigkeit im Material\nf: Gemessene Resonanzfrequenz\nQuelle: Grundlagen der Akustik'
+src/modules/ZfP.tsx:            formel: 'I = I_0 \\cdot e^{-\\mu \\cdot d}',
+src/modules/ZfP.tsx:            erklaerung: 'Schwächungsgesetz (Durchstrahlungsprüfung):\nI: Intensität nach Durchstrahlung\nI_0: Ausgangsintensität\nμ: Linearer Schwächungskoeffizient (material- und energieabhängig)\nd: durchstrahlte Dicke\nQuelle: Lambert-Beersches Gesetz'
+src/modules/Hydratation.tsx:              formel: 't_e = \\sum \\Delta t_i \\cdot \\exp(Q \\cdot (1/T_{ref} - 1/T_c))',
+src/modules/Hydratation.tsx:              erklaerung: 't_e: Äquivalentalter\nΔt_i: Zeitintervall\nQ: Aktivierungsenergie (als Temperatur E_a/R)\nT_ref: Referenztemperatur (293.15 K)\nT_c: Bauteiltemperatur in K\n\nQuelle: Arrhenius-Gleichung (z.B. in DIN EN 1992-1-1 / fib Model Code)'
+src/modules/Hydratation.tsx:              formel: 'f_{cm}(t) = \\exp(s \\cdot (1 - \\sqrt{28/t_e})) \\cdot f_{cm}',
+src/modules/Hydratation.tsx:              erklaerung: 'f_cm(t): Druckfestigkeit zum Zeitpunkt t\ns: Beiwert abhängig von Zementart und Festigkeitsklasse\nt_e: Äquivalentalter in Tagen\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Hydratation.tsx:              formel: '\\Delta T = (z \\cdot H) / (c \\cdot \\rho )',
+src/modules/Hydratation.tsx:              erklaerung: 'ΔT: Adiabatischer Temperaturanstieg\nz: Zementgehalt\nH: Hydratationswärme\nc: Spezifische Wärmekapazität\nρ: Dichte\n\nQuelle: Thermodynamische Grundlagen (z.B. Stark/Wicht: Zement und Kalk)'
+src/modules/Eigenspannungen.tsx:                  <Slider label={<FormulaText text="Schwinddehnung (Rand) \varepsilon_{cs}" />} min={0} max={1.0} step={0.1} value={epsilonCs} unit="‰" onChange={(e) => setEpsilonCs(Number(e.target.value))} />
+src/modules/Eigenspannungen.tsx:            <div className="text-sm text-blue-700 mb-2"><FormulaText text="N = \int \sigma_{res} dA = 0" /></div>
+src/modules/Eigenspannungen.tsx:            <div className="text-sm text-blue-700 mb-2"><FormulaText text="M = \int \sigma_{res} \cdot z dA = 0" /></div>
+src/modules/Eigenspannungen.tsx:            <div className="text-sm text-blue-700 mb-2"><FormulaText text="V = \int \tau_{res} dA = 0" /></div>
+src/modules/Eigenspannungen.tsx:            formel: '\\sigma _{res,c} \\approx  -0.3 \\dots -0.5 \\cdot  f_y',
+src/modules/Eigenspannungen.tsx:            formel: 'b_t \\propto  Q / t',
+src/modules/Eigenspannungen.tsx:            formel: '\\sigma _{res}(x) = E_c \\cdot  \\alpha _T \\cdot  \\Delta T \\cdot  ((2x/d)^2 - 1/3)',
+src/modules/Eigenspannungen.tsx:            formel: '\\sigma _{res,cs}(x) = E_c \\cdot  \\varepsilon _{cs} \\cdot  ((2x/d)^2 - 1/3)',
+src/modules/Frischbetondruck.tsx:          formel: '\\sigma _{hk,max} = (C_1 \\cdot v + C_2) \\cdot K_1',
+src/modules/Frischbetondruck.tsx:          erklaerung: 'Maximaler Frischbetondruck auf lotrechte Schalungen:\nC1, C2: Beiwerte je nach Konsistenzklasse (F1-F6)\nv: Steiggeschwindigkeit [m/h]\nK1: Temperaturbeiwert\n\nQuelle: DIN 18218 (Frischbetondruck auf lotrechte Schalungen)'
+src/modules/Frischbetondruck.tsx:          formel: 'K_1 = 1 + 0.077 \\cdot (t_E - 5)',
+src/modules/Frischbetondruck.tsx:          erklaerung: 'Temperaturbeiwert K1:\nBerücksichtigt Erstarrungszeiten t_E abweichend von 5h.\n\nQuelle: DIN 18218'
+src/modules/Frischbetondruck.tsx:          formel: '\\sigma _{hk} = \\gamma _c \\cdot h',
+src/modules/Frischbetondruck.tsx:          erklaerung: 'Hydrostatischer Druck:\nγ_c: Wichte des Betons (≈ 25 kN/m³)\nh: Höhe der Betonsäule [m]\n\nQuelle: DIN 18218 / Hydrostatik'
+src/modules/Stoffraumrechnung.tsx:            <FormulaText text="Für Studierende: Die Stoffraumrechnung ermittelt die Volumina aller Betonbestandteile, die zusammen genau 1 \\text{ m}^3 (1000 \\text{ dm}^3) ergeben müssen. Hierbei werden auch Zusatzstoffe (mit k-Wert-Ansatz), die Gesteinsfeuchte (für das Zugabewasser) und der detaillierte \\text{CO}_2-Fußabdruck berücksichtigt. Zudem wird geprüft, ob die normativen Grenzwerte für Zementgehalt und w/z-Wert eingehalten werden." />
+src/modules/Stoffraumrechnung.tsx:                  <div className="text-2xl font-bold"><FormulaText text={`${results.volLeim.toFixed(1)} \\text{ dm}^3`} /></div>
+src/modules/Stoffraumrechnung.tsx:                  <div className="text-2xl font-bold"><FormulaText text={`${results.frischbetonRohdichte.toFixed(2)} \\text{ kg/dm}^3`} /></div>
+src/modules/Stoffraumrechnung.tsx:              <div className="text-3xl font-bold text-green-700"><FormulaText text={`${results.co2Gesamt.toFixed(0)} \\text{ kg CO}_2\\text{-Äq.}`} /></div>
+src/modules/Stoffraumrechnung.tsx:              <h3 className="font-semibold mb-4 text-text-main"><FormulaText text="Volumenanteile (\\text{dm}^3/\\text{m}^3)" /></h3>
+src/modules/Stoffraumrechnung.tsx:              <h3 className="font-semibold mb-4 text-text-main"><FormulaText text="Betonrezeptur (für 1 \\text{ m}^3)" /></h3>
+src/modules/Lehmbau.tsx:            formel: '\\text{Empirische Schätzwerte}',
+src/modules/Lehmbau.tsx:            erklaerung: 'Die hier gezeigten Werte für Rohdichte, Druckfestigkeit und Schwinden sind stark vereinfachte empirische Schätzwerte zur Veranschaulichung der Abhängigkeiten von Ton-, Sand- und Wassergehalt. In der Praxis müssen diese Werte experimentell ermittelt werden.\n\nQuelle: Angelehnt an Lehmbau Regeln (Dachverband Lehm e.V.) / DIN 18945'
+src/modules/Praxisbeispiele.tsx:            formel: '\\Delta T_{ad} \\approx  c \\cdot  Q_{max} / (c_p \\cdot  \\rho )',
+src/modules/Praxisbeispiele.tsx:            formel: '\\sigma _Z(t) = \\alpha _T \\cdot  E_{c,eff}(t) \\cdot  R \\cdot  (T_{max} - T(t))',
+src/modules/Ermuedung.tsx:            <strong>Für Studierende:</strong> Bauteile, die dynamisch belastet werden (z.B. Brücken, Kranbahnen, Windenergieanlagen), können weit unterhalb ihrer statischen Festigkeit versagen. Dieses Phänomen nennt man <strong>Ermüdung</strong>. Die Wöhlerlinie (S-N-Kurve) stellt den Zusammenhang zwischen der Spannungsschwingbreite (<FormulaText text="\\Delta\\sigma" />) und der Anzahl der ertragbaren Lastwechsel (N) doppellogarithmisch dar. Das Kerbfallkonzept (EC3) ordnet Konstruktionsdetails (z.B. Schweißnähte) bestimmten Ermüdungsklassen (Kerbfällen) zu.
+src/modules/Ermuedung.tsx:                  <label className="text-sm font-medium text-text-main"><FormulaText text="Kerbfall (\\Delta\\sigma_C in MPa)" /></label>
+src/modules/Ermuedung.tsx:                  label={<FormulaText text="Spannungsschwingbreite (\\Delta\\sigma)" />} 
+src/modules/Ermuedung.tsx:              <strong>Schadensakkumulation (Miner-Regel):</strong> In der Realität treten nicht immer konstante Spannungsschwingbreiten auf. Belastungskollektive werden in Blöcke unterteilt. Der Gesamtschaden <FormulaText text="D" /> berechnet sich als Summe der Teilschäden: <FormulaText text="D = \\sum (n_i / N_{R,i})" />. Ist <FormulaText text="D \ge 1" />, tritt theoretisch ein Ermüdungsbruch ein.
+src/modules/Ermuedung.tsx:            formel: '\\Delta \\sigma _R^m \\cdot  N_R = \\Delta \\sigma _C^m \\cdot  2\\cdot 10^6',
+src/modules/Ermuedung.tsx:            erklaerung: 'Gleichung der Wöhlerlinie\nΔσ_R: Ertragbare Spannungsschwingbreite\nN_R: Ertragbare Lastwechsel\nΔσ_C: Ermüdungsfestigkeit des Kerbfalls (bei 2 Mio. Zyklen)\nm: Neigung der Wöhlerlinie (meist 3)\n\nQuelle: DIN EN 1993-1-9 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-9: Ermüdung)'
+src/modules/Ermuedung.tsx:            formel: 'N_R = 2\\cdot 10^6 \\cdot  (\\Delta \\sigma _C / \\Delta \\sigma )^m',
+src/modules/Ermuedung.tsx:            erklaerung: 'Umgestellte Formel zur Berechnung der ertragbaren Lastwechsel für eine gegebene Spannungsschwingbreite Δσ.\n\nQuelle: DIN EN 1993-1-9 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-9: Ermüdung)'
+src/modules/Glas.tsx:            formel: 'P_f = 1 - \\exp( - (\\sigma /\\sigma _0)^m \\cdot (A/A_0) )',
+src/modules/Glas.tsx:            erklaerung: 'P_f: Bruchwahrscheinlichkeit\nσ: Vorhandene Spannung\nσ_0: Charakteristische Festigkeit (Skalierungsparameter)\nm: Weibull-Modul (Streuung der Festigkeit)\nA: Bauteilfläche\nA_0: Bezugsfläche (meist 1 m²)\n\nQuelle: Weibull-Verteilung (Weibull, 1939) für spröde Werkstoffe'
+src/modules/Glas.tsx:            formel: 'h_{ef,w} = \\sqrt{h_1^2 + h_2^2 + 12 \\cdot \\Gamma \\cdot h_m^2}',
+src/modules/Glas.tsx:            erklaerung: 'h_{ef,w}: Effektive Dicke für Durchbiegung bei VSG\nh_1, h_2: Dicken der Einzelscheiben\nΓ: Schubverbundbeiwert (abhängig vom Schubmodul G der PVB-Folie)\nh_m: Abstand der Schwerachsen der Einzelscheiben\n\nQuelle: DIN 18008-1 (Glas im Bauwesen - Bemessungs- und Konstruktionsregeln)'
+src/modules/Zementchemie.tsx:            <FormulaText text="Für Studierende: Portlandzementklinker besteht hauptsächlich aus vier Mineralphasen: Alit (\\text{C}_3\\text{S}), Belit (\\text{C}_2\\text{S}), Aluminat (\\text{C}_3\\text{A}) und Ferrit (\\text{C}_4\\text{AF}). Die Bogue-Rechnung schätzt deren Massenanteile aus der chemischen Oxid-Analyse ab. Alit sorgt für hohe Frühfestigkeit, Belit für späte Nacherhärtung. Aluminat reagiert sehr schnell (hohe Hydratationswärme) und ist sulfatempfindlich. Ferrit senkt die Sintertemperatur im Drehrohrofen." />
+src/modules/Zementchemie.tsx:                    <FormulaText text="Alit (\\text{C}_3\\text{S})" />
+src/modules/Zementchemie.tsx:                    <FormulaText text="Belit (\\text{C}_2\\text{S})" />
+src/modules/Zementchemie.tsx:                    <FormulaText text="Aluminat (\\text{C}_3\\text{A})" />
+src/modules/Zementchemie.tsx:                    <FormulaText text="Ferrit (\\text{C}_4\\text{AF})" />
+src/modules/Zementchemie.tsx:            formel: '\\text{C}_3\\text{S} = 4.071 \\cdot \\text{CaO} - 7.600 \\cdot \\text{SiO}_2 - 6.718 \\cdot \\text{Al}_2\\text{O}_3 - 1.430 \\cdot \\text{Fe}_2\\text{O}_3 - 2.852 \\cdot \\text{SO}_3',
+src/modules/Zementchemie.tsx:            erklaerung: 'Bogue-Gleichung für Tricalciumsilicat (Alit)\nQuelle: Bogue, R.H. (1929)'
+src/modules/Zementchemie.tsx:            formel: '\\text{C}_2\\text{S} = 2.867 \\cdot \\text{SiO}_2 - 0.7544 \\cdot \\text{C}_3\\text{S}',
+src/modules/Zementchemie.tsx:            erklaerung: 'Bogue-Gleichung für Dicalciumsilicat (Belit)\nQuelle: Bogue, R.H. (1929)'
+src/modules/Zementchemie.tsx:            formel: '\\text{C}_3\\text{A} = 2.650 \\cdot \\text{Al}_2\\text{O}_3 - 1.692 \\cdot \\text{Fe}_2\\text{O}_3',
+src/modules/Zementchemie.tsx:            erklaerung: 'Bogue-Gleichung für Tricalciumaluminat\nQuelle: Bogue, R.H. (1929)'
+src/modules/Zementchemie.tsx:            formel: '\\text{C}_4\\text{AF} = 3.043 \\cdot \\text{Fe}_2\\text{O}_3',
+src/modules/Zementchemie.tsx:            erklaerung: 'Bogue-Gleichung für Tetracalciumaluminatferrit\nQuelle: Bogue, R.H. (1929)'
+src/modules/Bruchmechanik.tsx:              <Slider label={<FormulaText text="Nennspannung (\\sigma)" />} min={1} max={500} step={1} value={sigma} unit="MPa" onChange={(e) => setSigma(Number(e.target.value))} />
+src/modules/Bruchmechanik.tsx:            formel: 'K_I = Y \\cdot  \\sigma  \\cdot  \\sqrt{\\pi  \\cdot  a}',
+src/modules/Bruchmechanik.tsx:            erklaerung: 'Spannungsintensitätsfaktor (Modus I)\nK_I: Spannungsintensitätsfaktor\nY: Geometriefaktor\nσ: Nennspannung\na: Risslänge\n\nQuelle: Linear-elastische Bruchmechanik (LEBM), z.B. Gross/Seelig: Bruchmechanik'
+src/modules/Bruchmechanik.tsx:            formel: 'K_I \\le  K_{Ic}',
+src/modules/Bruchmechanik.tsx:            erklaerung: 'Bruchkriterium der linear-elastischen Bruchmechanik (LEBM)\nK_{Ic}: Risszähigkeit (Materialkennwert)\n\nQuelle: Linear-elastische Bruchmechanik (LEBM), z.B. Gross/Seelig: Bruchmechanik'
+src/modules/Zwang.tsx:                label={<FormulaText text="Temperaturabfluss \\Delta T" />}
+src/modules/Zwang.tsx:                  label={<FormulaText text="Schwindmaß \\varepsilon_{cs}" />}
+src/modules/Zwang.tsx:                  <div className="text-white/70 text-sm mb-1"><FormulaText text="Zwangspannung \\sigma_z" /></div>
+src/modules/Zwang.tsx:            formel: '\\varepsilon _{frei} = \\alpha _T \\cdot  \\Delta T + \\varepsilon _{cs}',
+src/modules/Zwang.tsx:            erklaerung: 'Die freie (ungehinderte) Dehnung setzt sich aus der thermischen Dehnung und dem Schwinden zusammen. α_T ist der Wärmedehnungskoeffizient (für Beton ca. 10^{-5} 1/K).\nQuelle: Grundlagen der Festigkeitslehre / DIN EN 1992-1-1'
+src/modules/Zwang.tsx:            formel: '\\sigma _z = \\varepsilon _{frei} \\cdot  E_c \\cdot  R',
+src/modules/Zwang.tsx:            erklaerung: 'Die Zwangspannung σ_z entsteht, wenn die freie Dehnung behindert wird. R ist der Festhaltungsgrad (0 = frei beweglich, 1 = starr eingespannt).\nQuelle: Hookesches Gesetz / DAfStb-Heft 466'
+src/modules/Zwang.tsx:            formel: '\\sigma _z \\ge  f_{ct} \\rightarrow  Riss',
+src/modules/Zwang.tsx:            erklaerung: 'Überschreitet die Zwangspannung die Zugfestigkeit des Betons, entsteht ein Trennriss. Um die Rissbreite zu begrenzen, ist eine Mindestbewehrung erforderlich.\nQuelle: DIN EN 1992-1-1, 7.3.2'
+src/modules/Biegebemessung.tsx:            <strong>Für Studierende:</strong> Die Biegebemessung ermittelt die erforderliche Längsbewehrung (<FormulaText text="A_s" />) für ein gegebenes Biegemoment (<FormulaText text="M_{Ed}" />). Das bezogene Biegemoment (<FormulaText text="\\mu_{Ed}" />) zeigt an, wie stark der Querschnitt ausgelastet ist. Ist <FormulaText text="\\mu_{Ed}" /> zu groß, versagt der Beton auf Druck, bevor der Stahl fließt (Druckbewehrung erforderlich).
+src/modules/Biegebemessung.tsx:                  <div className="text-home-grau text-sm mb-1">Bezogenes Moment (<FormulaText text="\\mu_{Ed}" />)</div>
+src/modules/Biegebemessung.tsx:                  <div className="text-home-grau text-sm mb-1">Mech. Bewehrungsgrad (<FormulaText text="\\omega" />)</div>
+src/modules/Biegebemessung.tsx:            formel: '\\mu _{Ed} = M_{Ed} / (b \\cdot  d^2 \\cdot  f_{cd})',
+src/modules/Biegebemessung.tsx:            erklaerung: 'Bezogenes Biegemoment\nM_{Ed}: Bemessungswert des einwirkenden Biegemoments\nb: Querschnittsbreite\nd: Statische Nutzhöhe\nf_{cd}: Bemessungswert der Betondruckfestigkeit\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2), Bemessungstabellen (z.B. w-Tafeln)'
+src/modules/Biegebemessung.tsx:            formel: '\\omega  = 1 - \\sqrt{1 - 2\\cdot \\mu _{Ed}}',
+src/modules/Biegebemessung.tsx:            erklaerung: 'Mechanischer Bewehrungsgrad (für Rechteckquerschnitt ohne Druckbewehrung)\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2), Herleitung aus Gleichgewichtsbedingungen'
+src/modules/Biegebemessung.tsx:            formel: 'A_s = \\omega  \\cdot  b \\cdot  d \\cdot  (f_{cd} / f_{yd})',
+src/modules/Biegebemessung.tsx:            erklaerung: 'Erforderliche Zugbewehrung\nf_{yd}: Bemessungswert der Streckgrenze des Betonstahls\n\nQuelle: DIN EN 1992-1-1 (Eurocode 2)'
+src/modules/Porositaet.tsx:            formel: 'p = 1 - (\\rho_b / \\rho_t)',
+src/modules/Porositaet.tsx:            erklaerung: 'Gesamtporosität:\nρ_b: Rohdichte (inkl. Poren)\nρ_t: Reindichte (Feststoff ohne Poren)\n\nQuelle: Bauphysikalische Grundlagen (z.B. Fischer/Kast/Kohl: Bauphysik)'
+src/modules/Porositaet.tsx:            formel: 'u_v = u_m \\cdot (\\rho_b / \\rho_w)',
+src/modules/Porositaet.tsx:            erklaerung: 'Volumenbezogener Feuchtegehalt:\nu_m: massenbezogener Feuchtegehalt\nρ_w: Dichte von Wasser (1000 kg/m³)\n\nQuelle: Bauphysikalische Grundlagen (z.B. Fischer/Kast/Kohl: Bauphysik)'
+src/modules/Porositaet.tsx:            erklaerung: 'Sättigungsgrad:\nVerhältnis von wassergefülltem Porenvolumen zum Gesamtporenvolumen.\n\nQuelle: Bauphysikalische Grundlagen (z.B. Fischer/Kast/Kohl: Bauphysik)'
+src/modules/Baubetrieb.tsx:            formel: "T_m = \\frac{c_z \\cdot m_z \\cdot T_z + c_g \\cdot m_g \\cdot T_g + c_w \\cdot m_w \\cdot T_w}{c_z \\cdot m_z + c_g \\cdot m_g + c_w \\cdot m_w}"
+src/modules/Baubetrieb.tsx:            formel: "M = \\sum (T_c + 10) \\cdot \\Delta t"
+src/modules/Baubetrieb.tsx:            formel: "f_{cm}(t) = f_{cm} \\cdot \\exp\\left(s \\cdot \\left(1 - \\sqrt{\\frac{28}{t_{eq}}}\\right)\\right)"
+src/modules/EModul.tsx:            formel: "E_{cm} = 22 \\cdot \\left(\\frac{f_{cm}}{10}\\right)^{0.3}"
+src/modules/EModul.tsx:            formel: "E_{Voigt} = v_G \\cdot E_G + v_M \\cdot E_M"
+src/modules/EModul.tsx:            formel: "E_{Reuss} = \\left(\\frac{v_G}{E_G} + \\frac{v_M}{E_M}\\right)^{-1}"
+src/modules/Carbonbeton.tsx:            formel: "f_{td} = \\frac{f_{tk}}{\\gamma_{tex}}"
+src/modules/Carbonbeton.tsx:            formel: "m_{Rd} = a_{tex} \\cdot f_{td} \\cdot z"
+src/modules/Carbonbeton.tsx:            formel: "\\sigma_{tex} = E_{tex} \\cdot \\varepsilon_{tex} \\quad \\text{für} \\quad \\varepsilon_{tex} \\le \\varepsilon_{bruch}"
+src/modules/Spannbeton.tsx:                  <div><FormulaText text="\sigma_{top} =" /> {results.sigmaTotalTop.toFixed(2)} MPa</div>
+src/modules/Spannbeton.tsx:                  <div><FormulaText text="\sigma_{bot} =" /> {results.sigmaTotalBot.toFixed(2)} MPa</div>
+src/modules/Spannbeton.tsx:                (<FormulaText text="\sigma = 0" />). Wenn Zugspannungen auftreten (positive Werte im Diagramm), 
+src/modules/Spannbeton.tsx:            formel: "\\sigma_{P,N} = \\frac{-P_0}{A_c}"
+src/modules/Spannbeton.tsx:            formel: "\\sigma_{P,M}(z) = \\frac{-P_0 \\cdot e_p}{I_c} \\cdot z"
+src/modules/Spannbeton.tsx:            formel: "\\sigma_{M_{Ed}}(z) = \\frac{M_{Ed}}{I_c} \\cdot z"
+src/modules/Spannbeton.tsx:            formel: "\\sigma_{total}(z) = \\sigma_{P,N} + \\sigma_{P,M}(z) + \\sigma_{M_{Ed}}(z)"
+src/modules/Waermeeigenschaften.tsx:                label={<FormulaText text="Wärmeleitfähigkeit (\lambda)" />}
+src/modules/Waermeeigenschaften.tsx:                label={<FormulaText text="Rohdichte (\rho)" />}
+src/modules/Waermeeigenschaften.tsx:                label={<FormulaText text="Wärmeleitfähigkeit (\lambda_{Base})" />}
+src/modules/Waermeeigenschaften.tsx:            formel: "C = \\rho \\cdot c \\quad [\\text{J/(m}^3\\text{K)}]"
+src/modules/Waermeeigenschaften.tsx:            formel: "a = \\frac{\\lambda}{\\rho \\cdot c} \\quad [\\text{m}^2\\text{/s}]"
+src/modules/Waermeeigenschaften.tsx:            formel: "b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad [\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})]"
+src/modules/Waermeeigenschaften.tsx:            formel: "T_m = \\frac{b_1 \\cdot T_1 + b_2 \\cdot T_2}{b_1 + b_2}"
+src/modules/Waermeeigenschaften.tsx:            formel: "R = \\frac{d}{\\lambda} \\quad [\\text{m}^2\\text{K/W}]"
+src/modules/Waermeeigenschaften.tsx:            formel: "U = \\frac{1}{R_{si} + \\sum R_i + R_{se}} \\quad [\\text{W/(m}^2\\text{K)}]"
+src/components/ui/FormulaText.tsx:    // Remove \text{} wrapper but keep the content
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\text\{([^}]+)\}/g, '$1');
+src/components/ui/FormulaText.tsx:    // Remove \mathrm{} wrapper but keep the content
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\mathrm\{([^}]+)\}/g, '$1');
+src/components/ui/FormulaText.tsx:    // Remove \quad
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\quad/g, ' ');
+src/components/ui/FormulaText.tsx:      const regex = new RegExp(`\\b${chem}\\b|${chem}`, 'g');
+src/components/ui/FormulaText.tsx:        return match.replace(/(\d+)/g, '<sub>$1</sub>');
+src/components/ui/FormulaText.tsx:      const regex = new RegExp(`\\b${escapedUnit}\\b`, 'g');
+src/components/ui/FormulaText.tsx:        return match.replace(/(\d+)/g, '<sup>$1</sup>');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\cdot/g, '·');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\approx/g, '≈');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\le(q)?/g, '≤');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\ge(q)?/g, '≥');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\rightarrow/g, '→');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\circ/g, '°');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\tan/g, 'tan');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\cot/g, 'cot');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\sin/g, 'sin');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\cos/g, 'cos');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\log/g, 'log');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\Delta/g, 'Δ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\sigma/g, 'σ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\varepsilon/g, 'ε');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\epsilon/g, 'ε');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\tau/g, 'τ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\alpha/g, 'α');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\beta/g, 'β');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\gamma/g, 'γ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\theta/g, 'θ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\varphi/g, 'φ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\phi/g, 'φ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\rho/g, 'ρ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\mu/g, 'μ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\eta/g, 'η');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\lambda/g, 'λ');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\pi/g, 'π');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\sum/g, '∑');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\int/g, '∫');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\infty/g, '∞');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\sqrt\{([^}]+)\}/g, '√($1)');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\left\(/g, '(');
+src/components/ui/FormulaText.tsx:    processed = processed.replace(/\\right\)/g, ')');

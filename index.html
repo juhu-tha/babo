@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <script>
+      (function() {
+        var handler = function(e) {
+          var msg = (e && (e.message || (e.reason && (e.reason.message || String(e.reason))) || '')) + '';
+          var file = (e && (e.filename || (e.reason && e.reason.stack) || '')) + '';
+          if (
+            msg.indexOf('WebSocket') !== -1 ||
+            msg.indexOf('@vite/client') !== -1 ||
+            msg.indexOf('createWebSocketModuleRunnerTransport') !== -1 ||
+            file.indexOf('@vite/client') !== -1
+          ) {
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            if (e.preventDefault) e.preventDefault();
+            return true;
+          }
+        };
+        window.addEventListener('error', handler, true);
+        window.addEventListener('unhandledrejection', handler, true);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BaustoffBoard – Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen &amp; Co | baustoffboard.de</title>
+    
+    <!-- Suchmaschinen-Optimierung (SEO) -->
+    <!-- 
+      SEO-STRATEGIE & METADATEN-INJEKTION (HINWEISE FÜR ENTWICKLER):
+      Dieses Portal nutzt eine hybride SEO-Strategie, um optimale Indexierung durch Suchmaschinen (z. B. Googlebot) zu gewährleisten:
+      
+      1. PASSIVES/FALLBACK-INDEXIEREN: 
+         - Im HTML-Body existiert ein visuell ausgeblendeter Bereich (<div style="display: none;" aria-hidden="true">), 
+           der flache HTML-Strukturen (<article> und <nav> mit Anker-Links) enthält. Das stellt sicher, dass Crawler, 
+           die kein JavaScript ausführen, alle Themenmodule und historischen Daten fehlerfrei indexieren können.
+         
+      2. DYNAMISCHE INJEKTION (React-seitig):
+         - Wenn ein Nutzer oder fähiger Crawler zwischen den Modulen (Tabs / Unterseiten) navigiert, 
+           injiziert 'React.useEffect' in '/src/App.tsx' dynamisch die passenden Meta-Description-Tags sowie Document-Titles.
+         - Die Quelltexte für diese Beschreibungen sind zentral in '/src/metaDescriptions.ts' hinterlegt.
+
+      ANLEITUNG FÜR NEUE MODULE:
+      Wenn ein neues Modul oder ein neuer Tab hinzugefügt wird, müssen folgende Schritte durchgeführt werden:
+      
+      Step A: In '/src/metaDescriptions.ts' einen neuen Key mit der exakten TabId anlegen und eine prägnante, 
+              suchbegriffoptimierte Beschreibung (ca. 120-160 Zeichen) hinterlegen.
+      Step B: In '/index.html' im JSON-LD (Schema.org) Objekt unter "hasPart" das neue Modul als 'WebPage' eintragen.
+      Step C: Im visuell ausgeblendeten SEO-Fallback-Bereich im Body einen neuen '<article id="ihreTabId_seo">' mit 
+              Stichpunkten und Inhalten des Moduls hinzufügen.
+      Step D: Die URL/Anker-Kombination in '/sitemap.xml' eintragen, um die Crawling-Priorität zu steuern.
+    -->
+    <meta name="description" content="BaustoffBoard (TH Augsburg, Prof. Dr.-Ing. Jürgen Huber): Interaktive Lern- und Wissensplattform für Baustoffkunde, Betontechnologie (DIN 1045-1000 / BBQ), Eurocode 2, Bauproduktrecht (CPR 2024/3110), Ökobilanzierung (LCA / QNG), WTA-Merkblätter (WTA 2-9 / DIN 18533) und zirkulären Rückbau (EBV / GefStoffV)." />
+    <meta name="keywords" content="BaustoffBoard, Baustoffkunde, Betontechnologie, DIN 1045-1000, BBQ-Klassen, Eurocode 2, Bauprodukte, CPR 2024/3110, Digitaler Produktpass, DPP, Ersatzbaustoffverordnung, EBV, GefStoffV, Asbest, TRGS 519, Ökobilanzierung, DIN EN 15804, QNG, ÖKOBAUDAT, WTA 2-9, WTA 4-6, DIN 18533, TH Augsburg, Prof. Huber" />
+    <meta name="author" content="Prof. Huber, TH Augsburg" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://baustoffboard.de/" />
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BaustoffBoard" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:url" content="https://baustoffboard.de/" />
+    <meta property="og:title" content="BaustoffBoard – Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen &amp; Co" />
+    <meta property="og:description" content="Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen &amp; Co. Entwickelt an der TH Augsburg." />
+    <meta property="og:image" content="https://baustoffboard.de/favicon.svg" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://baustoffboard.de/" />
+    <meta name="twitter:title" content="BaustoffBoard – Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen &amp; Co" />
+    <meta name="twitter:description" content="Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen &amp; Co. Entwickelt an der TH Augsburg." />
+    <meta name="twitter:image" content="https://baustoffboard.de/favicon.svg" />
+
+    <!-- Strukturierte Daten (Schema.org JSON-LD) für Bildungs-Webanwendungen -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "BaustoffBoard",
+      "inLanguage": "de",
+      "url": "https://baustoffboard.de/",
+      "description": "Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand und Nachhaltigkeit an der TH Augsburg.",
+      "applicationCategory": "EducationalApplication",
+      "genre": "Civil Engineering, Architecture, Materials Science",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5, CSS3, ES6 JavaScript Support",
+      "educationalLevel": "Hochschule / Universität / Bauingenieurwesen",
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student"
+      },
+      "creator": {
+        "@type": "CollegeOrUniversity",
+        "name": "Technische Hochschule Augsburg",
+        "alternateName": "TH Augsburg",
+        "url": "https://www.tha.de"
+      },
+      "provider": {
+        "@type": "Person",
+        "name": "Prof. Huber",
+        "jobTitle": "Professor für Baustoffkunde und Werkstoffprüfung"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "featureList": [
+        "Interaktive Ausbreitversuch- & E-Modul-Animationen",
+        "Präziser U-Wert Berechnungsrechner für Bauteile",
+        "Materialkennwerte-Enzyklopädie für Beton, Stahl, Holz",
+        "Zeitabhängige Spannbeton-Verlustrechnung & Biegezugsimulation",
+        "Ringversuche & Round-Robin Prüfungsbewertung (DIN EN ISO/IEC 17043)",
+        "Baustoff-Schadstoffforensik (Asbest, PCB, PAK, Toxine)",
+        "Spurenstoff- und Isotopen-Diagnostik für Bauschäden",
+        "Zentrale Innenausbau- & Trockenbausammlung (DIN 18181, DIN 18560)",
+        "Stahlbeton-Instandhaltungsplanung nach TR Instandhaltung (DIBt) & DIN EN 1504",
+        "Interaktiver Fick-II Chlorid-Diffusionsrechner & KKS-Schutzpotential-Simulation",
+        "Hochdruck-Rissinjektionsplaner (Klasse F, D, S) nach DIN EN 1504-5",
+        "Interaktive Baustellen-Checklisten für Instandsetzung (SKP, HDW, SIVV)"
+      ],
+      "hasPart": [
+        {
+          "@type": "WebPage",
+          "name": "Grundlagen &amp; Kennwerte",
+          "url": "https://baustoffboard.tha.de/#grundlagen_info",
+          "description": "Lernportal für physikalische Einheiten, Materialkennwerte (Beton, Stahl, Holz, Mauerwerk), Sicherheitsbeiwerte nach DIN/Eurocode."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Labor &amp; Auswertung",
+          "url": "https://baustoffboard.tha.de/#labor_info",
+          "description": "Wissensbereich zur Durchführung und Auswertung von Baustoffprüfungen wie Konsistenz, Druckfestigkeit mit n-Prüfkörper-Statik und chemische Analytik."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Baustoffe von A bis Z",
+          "url": "https://baustoffboard.tha.de/#baustoffe_info",
+          "description": "Enzyklopädie mit detailliertem Materialwissen über mineralische, metallische, organische und ökologische Baustoffe."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Bauprodukte &amp; Zulassungen",
+          "url": "https://baustoffboard.de/#bauprodukte_info",
+          "description": "Regelwerke, AVCP-Systeme, Bauproduktenverordnung (BauPVO) und CE-Kennzeichnung für Hochbau- und Tunnelbauprodukte."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Bauprodukt-Innovationen &amp; F&amp;E (TRL)",
+          "url": "https://baustoffboard.de/#bp_innovationen",
+          "description": "Technology Readiness Levels (TRL 1 bis 9) im Bauwesen, F&E-Roadmap, Zukunftswerkstoffe wie Carbonbeton und Geopolymere sowie DIBt-Zulassungen (abZ, aBG, ETA)."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Betontechnologie",
+          "url": "https://baustoffboard.tha.de/#beton_info",
+          "description": "Interaktive Simulationen der Hydratationswärme, Ausbreitversuch, Konsistenzberechnung und Betonüberwachung nach DIN 1045."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Stahlbeton- &amp; Spannbetonbau",
+          "url": "https://baustoffboard.tha.de/#stahlbeton_info",
+          "description": "Konstruktiver Ingenieurbau, Biegebemessung, Querkraftbewertung, Durchstanzwiderstand und Berechner für Spannkraftverluste."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Holzbau",
+          "url": "https://baustoffboard.tha.de/#holzbau_info",
+          "description": "Ingenieurholzbau nach Eurocode 5, Holzwerkstoffe, Holzverbindungen und bauphysikalische Besonderheiten."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Werkstoffmechanik &amp; Statik",
+          "url": "https://baustoffboard.tha.de/#mechanik_info",
+          "description": "Spannungs-Dehnungs-Beziehungen, E-Modul-Bestimmung, Biegung, elastische/plastische Formänderungen und Tragverhalten."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Bauphysik",
+          "url": "https://baustoffboard.tha.de/#bauphysik_info",
+          "description": "Interaktiver U-Wert-Rechner, Wärmeschutz, Diffusionsberechnung nach Glaser, Luft- und Trittschallschutz sowie Brandschutzanforderungen."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Nachhaltigkeit &amp; Zirkuläres Bauen",
+          "url": "https://baustoffboard.tha.de/#nachhaltigkeit_info",
+          "description": "Ökobilanzierung (LCA von Baustoffen), graue Energie, CO2-Senkung durch biobasierte Baustoffe und digitaler Produktpass."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Bauen im Bestand &amp; Diagnose",
+          "url": "https://baustoffboard.tha.de/#bestand_info",
+          "description": "Bauwerkserfassung, zerstörungsfreie und zerstörungsarme Baustoffuntersuchung im denkmalgeschützten Bestand."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Rückbau &amp; Schadstoffe",
+          "url": "https://baustoffboard.tha.de/#rueckbau_info",
+          "description": "Schadstoff-Forensik für Asbest, PCB, PAK, Ziegel-Recycling und selektive Rückbauverfahren."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Dauerhaftigkeit &amp; Schäden",
+          "url": "https://baustoffboard.tha.de/#dauerhaftigkeit_info",
+          "description": "Schadensanalytik für Carbonatisierung, Alkali-Kieselsäure-Reaktion (AKR), Metallkorrosion, Holzfäule und Instandsetzung von Beton."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Innenausbau &amp; Trockenbau",
+          "url": "https://baustoffboard.tha.de/#innenausbau",
+          "description": "Zentrale Fachsammlung für Trockenbausysteme, Gipsplatten, Estrich- und Putzsysteme, Akustik sowie Brandschutz nach DIN 18181 und DIN 18560."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Schutz- &amp; Instandsetzungs-Grundlagen",
+          "url": "https://baustoffboard.tha.de/#schutz_grundlagen",
+          "description": "Normative Instandsetzungsprinzipien nach DIN EN 1504-9 und TR Instandhaltung, passive vs. aktive Schutzsysteme, Tuutti-Modell und De-Sitter-Regel."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Stahlbetoninstandhaltung",
+          "url": "https://baustoffboard.tha.de/#instandhaltung",
+          "description": "Massivbau-Instandsetzung nach DIBt TR Instandhaltung: Oberflächenschutzsysteme OS 1 bis OS 11, Rissinjektionsplaner, Chlorid-Diffusionssimulator und KKS."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Instandsetzung nach Werkstoffen",
+          "url": "https://baustoffboard.tha.de/#instandsetzung_materialien",
+          "description": "Werkstoffspezifische Sanierung für Holzbau (DIN 68800), Stahlkorrosionsschutz (ISO 12944), Kunststoffe & Fugen (DVS), Asphalt und Mauerwerk."
+        },
+        {
+          "@type": "WebPage",
+          "name": "WTA-Merkblätter &amp; Denkmalschutz",
+          "url": "https://baustoffboard.tha.de/#wta",
+          "description": "Fachregeln der WTA für Sanierputzsysteme, Mauerwerksinjektion gegen kapillare Feuchte, nachträgliche Bauwerksabdichtung und Innendämmung."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Instandsetzungs-Checklisten",
+          "url": "https://baustoffboard.tha.de/#instandsetzung_checklisten",
+          "description": "Interaktives Baustellenprotokoll für Sachkundige Planer (SKP), Untergrundvorbereitung (HDW), Mörtelapplikation, OS-Systeme und SIVV-Abnahme."
+        },
+        {
+          "@type": "WebPage",
+          "name": "Übungsaufgaben &amp; Prüfungsfragen",
+          "url": "https://baustoffboard.tha.de/#aufgaben_beton",
+          "description": "Wissensüberprüfung mit interaktiven Rechenaufgaben und Multiple-Choice-Fragen zu allen bauingenieurrelevanten Baustoffthemen."
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Validierungs-Check für Webmaster & Crawler -->
+    <script>
+      (function() {
+        window.validateJSONLD = function() {
+          const jsonLdScript = document.querySelector('script[type="application/ld+json"]');
+          if (!jsonLdScript) {
+            console.error("❌ Schema.org JSON-LD fehlt oder konnte nicht geladen werden.");
+            return { success: false, errors: ["No JSON-LD script found"], warnings: [], results: [] };
+          }
+          try {
+            const data = JSON.parse(jsonLdScript.textContent);
+            const parts = data.hasPart || [];
+            const results = [];
+            const errors = [];
+            const warnings = [];
+
+            parts.forEach(part => {
+              const url = part.url || "";
+              const hashIdx = url.indexOf('#');
+              if (hashIdx === -1) {
+                errors.push(`Modul "${part.name}" hat keine ID/Anker-URL oder Hash: ${url}`);
+                results.push({ name: part.name, url, status: "ERR: Kein Hash" });
+                return;
+              }
+              const hash = url.substring(hashIdx + 1);
+              // Pruefe ob fallback-seo-artikel existiert (z. B. hash + "_seo") im HTML-Body
+              const fallbackExists = document.getElementById(`${hash}_seo`) !== null;
+              
+              if (!fallbackExists) {
+                // Auch checken ob der nackte hasPart-Anchor als Fallback oder ID existiert
+                const directExists = document.getElementById(hash) !== null;
+                if (!directExists) {
+                  warnings.push(`Modul "${part.name}" (#${hash}) hat keinen entsprechenden Fallback-Bereich (<article id="${hash}_seo">) im HTML-Body.`);
+                  results.push({ name: part.name, url, status: "WARN: Fallback fehlt" });
+                } else {
+                  results.push({ name: part.name, url, status: "OK (Direkte ID)" });
+                }
+              } else {
+                results.push({ name: part.name, url, status: "OK (SEO Fallback)" });
+              }
+            });
+
+            console.group("🏷️ Schema.org JSON-LD Webmaster-Validierung");
+            console.log("%cValidierung des strukturierten WebApplication-Markups nach Schema.org:", "font-weight: bold; color: #92003B;");
+            console.table(results);
+            if (errors.length > 0) {
+              console.error("❌ JSON-LD Fehler gefunden:", errors);
+            }
+            if (warnings.length > 0) {
+              console.warn("⚠️ JSON-LD Warnungen (Verbesserungspotenzial):", warnings);
+            }
+            if (errors.length === 0 && warnings.length === 0) {
+              console.log("%c✔ JSON-LD Schema.org Markup ist 100% valide und vollständig!", "color: #047857; font-weight: bold;");
+            }
+            console.log("🔗 Webmaster-Tools zur Live-Prüfung des Schema-Markups:");
+            console.log("   - Google Rich Results Test: %chttps://search.google.com/test/rich-results", "color: #2563eb; text-decoration: underline; font-weight: bold;");
+            console.log("   - Schema Markup Validator: %chttps://validator.schema.org/", "color: #2563eb; text-decoration: underline; font-weight: bold;");
+            console.groupEnd();
+
+            return {
+              success: errors.length === 0,
+              errors,
+              warnings,
+              results
+            };
+          } catch (e) {
+            console.error("❌ Fehler beim Parsen des JSON-LD Markups:", e);
+            return { success: false, errors: [e.message], warnings: [], results: [] };
+          }
+        };
+        
+        // Führe die Validierung direkt nach dem Laden aus
+        window.addEventListener('DOMContentLoaded', function() {
+          setTimeout(window.validateJSONLD, 500);
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Barrierefreie & Suchmaschinen-relevante strukturelle Orientierungspunkte (SEO Fallback Navigation) -->
+    <!-- Visuell verborgen für menschliche Webseitenbesucher, voll indexierbar für Crawler -->
+    <div style="display: none;" aria-hidden="true">
+      <header>
+        <h1>BaustoffBoard - Technische Hochschule Augsburg</h1>
+        <p>Interaktives Portal für Baustoffkunde, Werkstoffprüfung, Tragwerkslehre, Bauphysik und kreislaufgerechten Rückbau.</p>
+      </header>
+      <nav>
+        <h2>Themenbereiche und Fachdatenbanken</h2>
+        <ul>
+          <li><a href="#grundlagen_info">Grundlagen, Einheiten und Materialkennwerte</a></li>
+          <li><a href="#labor_info">Laborversuche, Probenahme und Statistische Auswertung</a></li>
+          <li><a href="#baustoffe_info">Baustoffe von A bis Z (Naturstein, Mauerwerk, Stahl, Holz, Kunststoffe u.v.m.)</a></li>
+          <li><a href="#bauprodukte_info">Bauprodukte, Baurecht, AVCP-Systeme und Straßendecken aus Asphalt</a></li>
+          <li><a href="#beton_info">Betontechnologie: Hydratationswärme-Rechner, Konsistenzprüfung, Ausbreitversuch, DIN 1045</a></li>
+          <li><a href="#stahlbeton_info">Stahlbetonbau, Spannbeton-Nachweise, Carbonbeton und Rissbreitenberechnung</a></li>
+          <li><a href="#holzbau_info">Holzbau nach Eurocode 5, Verbindungsmittel und Werkstoffe des Holzbaus</a></li>
+          <li><a href="#mechanik_info">Werkstoffmechanik, E-Modul, Spannungs-Dehnungs-Linie, Knicken und Biegung</a></li>
+          <li><a href="#bauphysik_info">Bauphysik: Interaktiver U-Wert-Berechner für Wärmeschutz, Dampfdiffusion und Glaser-Nachweise</a></li>
+          <li><a href="#nachhaltigkeit_info">Nachhaltigkeit, Lebenszykluskosten (LCC), Ökobilanzierung (LCA von Baustoffen) und graue Energie</a></li>
+          <li><a href="#bestand_info">Bauen im Bestand, Bauwerkserfassung, Denkmalpflege und Schadensdiagnostik</a></li>
+          <li><a href="#rueckbau_info">Geordneter Rückbau, Aufbereitung mineralischer Abfälle und Schadstoffanalytik</a></li>
+          <li><a href="#dauerhaftigkeit_info">Dauerhaftigkeit von Bauteilen, Alkali-Kieselsäure-Reaktion (AKR), Stahl- und Holzkorrosion</a></li>
+          <li><a href="#schaeden_info">Bauschadensbilder, Überwachung von Hochbauten nach VDI 6200 und Instandsetzungsplanung</a></li>
+          <li><a href="#innenausbau">Innenausbau &amp; Trockenbau-Sammlung: Gipsplatten, Unterdecken, Estrichsysteme, Akustik</a></li>
+          <li><a href="#schutz_grundlagen">Schutz- &amp; Instandsetzungs-Grundlagen: DIN EN 1504-9, Tuutti-Modell, De-Sitter-Regel</a></li>
+          <li><a href="#instandhaltung">Stahlbetoninstandhaltung: TR Instandhaltung (DIBt), OS-Systeme, Rissinjektion, Chloriddiffusion</a></li>
+          <li><a href="#instandsetzung_materialien">Instandsetzung nach Werkstoffen: Holz (DIN 68800), Stahl (ISO 12944), Kunststoffe, Asphalt</a></li>
+          <li><a href="#wta">WTA-Merkblätter: Sanierputze, Mauerwerksinjektion, Bauwerksabdichtung</a></li>
+          <li><a href="#instandsetzung_checklisten">Instandsetzungs-Checklisten: Interaktive Qualitätssicherung für SKP und SIVV</a></li>
+          <li><a href="#praxiswissen_info">Karriere und Praxiswissen für Bauleitung, Bautagebücher und Werksüberwachung</a></li>
+          <li><a href="#software">Fachliteratur, Enzyklopädien, Glossare und Softwareempfehlungen</a></li>
+          <li><a href="#aufgaben_beton">Interaktive Übungsaufgaben für Bauingenieure und Architekten</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <!-- Grundlagen -->
+        <article id="grundlagen_info_seo">
+          <h3>Grundlagen &amp; physikalische Einheiten</h3>
+          <p>Dieses Modul behandelt die grundlegenden Einheiten im Bauwesen sowie Materialkennwerte und physikalische Gesetzmäßigkeiten. Es bietet Nachschlagewerke für Rohdichten, Festigkeiten, Wärmeleitfähigkeiten und Sicherheitsbeiwerte.</p>
+        </article>
+
+        <!-- Labor -->
+        <article id="labor_info_seo">
+          <h3>Labor &amp; Statistische Baustoffprüfung</h3>
+          <p>Fokus auf zerstörungsfreie und zerstörende Prüfungen. Erläuterung der Probenahmeverfahren und statistische Instrumente zur Festigkeitsermittlung aus einer Serie von n Prüfzylindern oder Würfeln nach DIN EN 206.</p>
+        </article>
+
+        <!-- Baustoffe von A bis Z -->
+        <article id="baustoffe_info_seo">
+          <h3>Baustoff-Enzyklopädie</h3>
+          <p>Datenbank für alle relevanten Baustoffe: Gesteinskörnungen, Ziegelmauerwerk, Baugips, Kalk, Lehmbau, Konstruktionsstahl, Nichteisenmetalle, Bauholz, modifiziertes Holz, Kunststoffe, Mineralfaserdämmstoffe und nachwachsende Rohstoffe.</p>
+        </article>
+
+        <!-- Bauprodukte -->
+        <article id="bauprodukte_info_seo">
+          <h3>Bauproduktenrecht &amp; CPR-Novelle (Verordnung (EU) 2024/3110)</h3>
+          <p>Leitfaden zum novellierten EU-Bauproduktenrecht Stand 2026: Verordnung (EU) 2024/3110, Einführung des Digitalen Produktpasses (DPP), kombinierte Leistungs- und Konformitätserklärung (DoPC) mit verpflichtenden GWP-Kennwerten nach DIN EN 15804+A2 sowie AVCP-Systeme inklusive System 3+ (Validierung der Umweltleistungsbewertung / LCA).</p>
+        </article>
+
+        <!-- Bauprodukte & Innovationen -->
+        <article id="bp_innovationen_seo">
+          <h3>Bauprodukt-Innovationen, F&amp;E &amp; Technology Readiness Level (TRL)</h3>
+          <p>Systematische Reifegradbewertung (TRL 1 bis 9 nach DIN EN ISO 16290 und Horizon Europe) für Baustoffe und Bauprodukte. Phasen von der akademischen Grundlagenforschung über Werks-Scale-Up und Reallabore (ZiE) bis zur DIBt-Zulassung (abZ / aBG) und CE-Kennzeichnung nach BauPVO. Portraits von Zukunftswerkstoffen: Carbonbeton, Geopolymere und alkalisch aktivierte Bindemittel (AAM), Myzel-Biokomposite, bakteriell selbstheilender Bio-Beton sowie CO2-Mineralisierung (CCU).</p>
+        </article>
+
+        <!-- Betontechnologie -->
+        <article id="beton_info_seo">
+          <h3>Betontechnologie &amp; Transportbeton (DIN 1045-1000 &amp; DIN 1045-2:2023-08)</h3>
+          <p>Umfassende Systematik nach DIN 1045-1000, DIN 1045-2 und DIN 1045-3 (Stand 2026) in Verbindung mit DIN EN 206. Behandelt Betonbauqualitätsklassen (BBQ-N, BBQ-E, BBQ-S), Überwachungsklassen ÜK 1 bis ÜK 3, die Aufgaben des BBQ-Ingenieurs, dekarbonisierte k-Wert-Konzepte für Typ-II-Zusatzstoffe sowie Hydratationswärme- und Ausbreitmaß-Simulationen.</p>
+        </article>
+
+        <!-- Stahl- und Spannbeton -->
+        <article id="stahlbeton_info_seo">
+          <h3>Konstruktiver Stahlbetonbau &amp; Eurocode 2 (DIN EN 1992-1-1 &amp; 2. Generation)</h3>
+          <p>Bemessung nach DIN EN 1992-1-1 (Eurocode 2 + Nationaler Anhang DE) für Biegung, Querkraft, Stützen, Durchstanzen, Verankerung und Rissbreite (GZG). Inklusive vergleichender Analyse der 2. Generation des Eurocode 2 (prEN 1992-1-1 / FprEN 1992-1-1:2023ff.) mit CSCT-Querkraft- und Durchstanzmodellen sowie Expositions-Widerstandsklassen (ERC).</p>
+        </article>
+
+        <!-- Holzbau -->
+        <article id="holzbau_info_seo">
+          <h3>Ingenieurholzbau nach Eurocode 5</h3>
+          <p>Bemessung von Trägern, Stützen und Holzverbindungen. Kennwerte für Brettschichtholz (BSH), Konstruktionsvollholz (KVH) und kreuzweise verleimtes Massivholz (CLT).</p>
+        </article>
+
+        <!-- Werkstoffmechanik -->
+        <article id="mechanik_info_seo">
+          <h3>Angewandte Werkstoffmechanik</h3>
+          <p>Experimentelle Ermittlung des Elastizitätsmoduls, Bestimmung von Zug- und Druckspannungen und Materialverhalten unter mehraxialen Beanspruchungen.</p>
+        </article>
+
+        <!-- Bauphysik -->
+        <article id="bauphysik_info_seo">
+          <h3>Bauphysik, Wärmeschutz &amp; U-Wert Rechner</h3>
+          <p>Interaktives Berechnungstool für den Wärmedurchgangskoeffizienten (U-Wert) mehrschichtiger Wände, Dächer und Kellerwände. Glaser-Nachverfahren zur Taupunkt- und Feuchtigkeitsbeurteilung.</p>
+        </article>
+
+        <!-- Nachhaltigkeit -->
+        <article id="nachhaltigkeit_info_seo">
+          <h3>Zirkuläre Nachhaltigkeit, Ökobilanzierung (LCA) &amp; QNG</h3>
+          <p>Ökobilanzierung nach DIN EN 15804+A2 (GWP-total, GWP-fossil, GWP-biogenic, PENRT, PERT) und DIN EN 15978 über die Lebenszyklusphasen A1–A3, B, C1–C4 und Modul D. Zertifizierung nach dem staatlichen QNG-Qualitätssiegel (BMWSB / KFN-Förderung), Verknüpfung zur ÖKOBAUDAT sowie zirkuläre Kennwerte wie Urban Mining Index (UMI) und Materialpässe.</p>
+        </article>
+
+        <!-- Bauen im Bestand -->
+        <article id="bestand_info_seo">
+          <h3>Bauen im Bestand &amp; WTA-Merkblätter (WTA 2-9 / WTA 4-6 / DIN 18533)</h3>
+          <p>Erfassung und Diagnose von Bestandsbauwerken. Sanierputzsysteme nach WTA-Merkblatt 2-9 (Ausgabe 2020), nachträgliche Bauwerksabdichtung nach WTA-Merkblatt 4-6 in systematischer Verknüpfung mit DIN 18533 (Wassereinwirkungsklassen W1-E bis W4-E, Rissklassen RÜ1-E bis RÜ4-E und Raumnutzungsklassen RN1-E bis RN3-E).</p>
+        </article>
+
+        <!-- Rückbau und Schadstoffe -->
+        <article id="rueckbau_info_seo">
+          <h3>Rückbau, Ersatzbaustoffverordnung (EBV) &amp; GefStoffV (Stand 2026)</h3>
+          <p>Geordneter selektiver Rückbau nach Ersatzbaustoffverordnung (EBV) mit Materialklassen RC-1, RC-2, RC-3, Bodenmaterial (BM) und Gleisschotter (GS) unter Beachtung der Güteüberwachung. Asbest- und Gefahrstoffsanierung nach novellierter GefStoffV und TRGS 519 inkl. Bauherren-Erkundungspflicht (vor dem 31.10.1993) und risikobasiertem Ampelmodell (grün/gelb/rot).</p>
+        </article>
+
+        <!-- Dauerhaftigkeit & Schäden -->
+        <article id="dauerhaftigkeit_info_seo">
+          <h3>Dauerhaftigkeit &amp; Schadensanalytik</h3>
+          <p>Mechanismen von Bauschäden: Alkalitreiben (Betonkrebs / AKR), Bewehrungskorrosion infolge Chlorideintrag oder Carbonatisierung, Holzfäule durch Pilze und statische Bewertung nach VDI 6200.</p>
+        </article>
+
+        <!-- Innenausbau -->
+        <article id="innenausbau_seo">
+          <h3>Innenausbau &amp; Trockenbau (DIN 18181 / DIN 18560)</h3>
+          <p>Zentrales Übersichtsmodul für modernen Innenausbau und Trockenbau: Metall-Ständerwerke (CW/UW), Gipsplatten (DIN EN 520 / Typ A, DF, DFH2IR), Fließ- und Zementestriche, Trittschallverbesserungsmaß, Belegreife nach CM-Methode sowie Brandschutzdecken F30 bis F90.</p>
+        </article>
+
+        <!-- Schutz- & Instandsetzungs-Grundlagen -->
+        <article id="schutz_grundlagen_seo">
+          <h3>Schutz- &amp; Instandsetzungs-Grundlagen (DIN EN 1504-9 / TR Instandhaltung)</h3>
+          <p>Europäisches Prinzipiensystem: Prinzipien 1 bis 6 für Betongefügeschutz und Prinzipien 7 bis 11 für Bewehrungskorrosion. Gegenüberstellung von passivem Barriereschutz (Hydrophobierung, OS-Beschichtungen) und aktivem elektrochemischem Schutz (KKS nach DIN EN ISO 12696, Realkalisierung). Modellierung der Restnutzungsdauer nach Tuutti und De-Sitter-Kostenfortschritt (Law of Fives).</p>
+        </article>
+
+        <!-- Stahlbetoninstandhaltung -->
+        <article id="instandhaltung_seo">
+          <h3>Stahlbetoninstandhaltung &amp; Technische Regel Instandhaltung (DIBt)</h3>
+          <p>Planung und Ausführung von Instandsetzungen an tragenden Betonbauteilen nach DIBt TR Instandhaltung (MVV TB): Prinzipien W, C, R, K. Systematik der Oberflächenschutzsysteme OS 1 bis OS 11 (OS 8 starr, OS 11 rissüberbrückend), Rissinjektion nach DIN EN 1504-5 (Klassen F, D, S), Fick-II Chloriddiffusionsrechner und Kathodischer Korrosionsschutz (KKS).</p>
+        </article>
+
+        <!-- Instandsetzung nach Materialien -->
+        <article id="instandsetzung_materialien_seo">
+          <h3>Werkstoffspezifischer Bautenschutz &amp; Instandsetzung</h3>
+          <p>Sanierungsverfahren für die Hauptwerkstoffe des Bauwesens: Holzschutz und Holzinstandsetzung nach DIN 68800 (GK 0 bis GK 4, Schwammsanierung, Holzprothesen), Korrosionsschutz von Stahlbauten nach DIN EN ISO 12944 (Korrosivitätskategorien C1 bis CX, Schutzdauer L/M/H/VH, Sa 2 ½, Duplex-Systeme), Schweißen und Fugenabdichtung bei Kunststoffen nach DVS und DIN 18540 sowie Erhaltung von Asphaltbefestigungen nach ZTV BEA-StB.</p>
+        </article>
+
+        <!-- WTA-Merkblätter -->
+        <article id="wta_seo">
+          <h3>WTA-Merkblätter &amp; Bauwerkserhaltung im Bestand</h3>
+          <p>Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege: WTA-zertifizierte Sanierputzsysteme (Merkblatt 2-9 / 2-10), Injektionsverfahren gegen kapillar aufsteigende Feuchte (Merkblatt 4-4 / 4-10), nachträgliche Bauwerksabdichtung erdberührter Bauteile (Merkblatt 4-6) und hygrothermische Nachweise für Innendämmungen (Merkblatt 6-4 / 6-5).</p>
+        </article>
+
+        <!-- Instandsetzungs-Checklisten -->
+        <article id="instandsetzung_checklisten_seo">
+          <h3>Interaktive Instandsetzungs-Checklisten &amp; Qualitätssicherung</h3>
+          <p>Strukturiertes Baustellenprotokoll für Ingenieure und Sachkundige Planer (SKP): Checklisten von der Voruntersuchung über Untergrundvorbereitung mit Höchstdruckwasserstrahlen (HDW 1000–2000 bar), Bewehrungsfreilegung (15 mm Hinterstemmung), Abreißfestigkeit (mind. 1,5 MPa), Mörtelapplikation (PCC/SPCC), Taupunktkontrolle, Rissinjektion bis zur SIVV-Bauüberwachung und Abnahme.</p>
+        </article>
+      </main>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

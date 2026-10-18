@@ -1,0 +1,871 @@
+{
+  "version": "1.0.0",
+  "schema": [
+    {
+      "id": "density",
+      "label": "Rohdichte ρ",
+      "unit": "kg/m³",
+      "desc": "Masse pro Volumeneinheit."
+    },
+    {
+      "id": "eModul",
+      "label": "E-Modul E",
+      "unit": "MPa",
+      "desc": "Widerstand gegen elastische Verformung (Steifigkeit)."
+    },
+    {
+      "id": "compressive",
+      "label": "Druckfestigkeit fc",
+      "unit": "MPa",
+      "desc": "Maximal ertragbare Druckspannung."
+    },
+    {
+      "id": "tensile",
+      "label": "Zugfestigkeit ft",
+      "unit": "MPa",
+      "desc": "Maximal ertragbare Zugspannung."
+    },
+    {
+      "id": "thermalCond",
+      "label": "Wärmeleitfähigkeit λ",
+      "unit": "W/(m·K)",
+      "desc": "Fähigkeit, thermische Energie zu transportieren."
+    },
+    {
+      "id": "thermalExp",
+      "label": "Wärmedehnungkoeff. αT",
+      "unit": "10⁻⁶ 1/K",
+      "desc": "Längenänderung bei Temperaturänderung um 1 Kelvin."
+    },
+    {
+      "id": "heatCap",
+      "label": "Spez. Wärmekapazität cp",
+      "unit": "J/(kg·K)",
+      "desc": "Energie, um 1 kg des Stoffes um 1 K zu erwärmen."
+    }
+  ],
+  "categories": [
+    {
+      "id": "beton_mineralische_baustoffe",
+      "name": "Beton & Mineralische Baustoffe"
+    },
+    {
+      "id": "gesteine",
+      "name": "Gesteine"
+    },
+    {
+      "id": "putze_m_rtel",
+      "name": "Putze & Mörtel"
+    },
+    {
+      "id": "metalle",
+      "name": "Metalle"
+    },
+    {
+      "id": "holz_holzwerkstoffe",
+      "name": "Holz & Holzwerkstoffe"
+    },
+    {
+      "id": "d_mmstoffe",
+      "name": "Dämmstoffe"
+    },
+    {
+      "id": "kunststoffe_verbundwerkstoffe",
+      "name": "Kunststoffe & Verbundwerkstoffe"
+    },
+    {
+      "id": "glas",
+      "name": "Glas"
+    },
+    {
+      "id": "asphalt_bitumen",
+      "name": "Asphalt & Bitumen"
+    },
+    {
+      "id": "sonstige",
+      "name": "Sonstige"
+    }
+  ],
+  "materials": [
+    {
+      "id": "beton",
+      "categoryId": "beton_mineralische_baustoffe",
+      "name": "Beton (C30/37)",
+      "properties": {
+        "density": 2400,
+        "eModul": 33000,
+        "compressive": 38,
+        "tensile": 2.9,
+        "thermalCond": 2,
+        "thermalExp": 10,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "hochleistungsbeton",
+      "categoryId": "beton_mineralische_baustoffe",
+      "name": "Hochleistungsbeton (C80/95)",
+      "properties": {
+        "density": 2500,
+        "eModul": 44000,
+        "compressive": 88,
+        "tensile": 4.8,
+        "thermalCond": 2.2,
+        "thermalExp": 10,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "leichtbeton",
+      "categoryId": "beton_mineralische_baustoffe",
+      "name": "Leichtbeton (LC20/22)",
+      "properties": {
+        "density": 1600,
+        "eModul": 15000,
+        "compressive": 22,
+        "tensile": 1.6,
+        "thermalCond": 0.8,
+        "thermalExp": 8,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "mauerwerk",
+      "categoryId": "beton_mineralische_baustoffe",
+      "name": "Kalksandstein (KS 12)",
+      "properties": {
+        "density": 1800,
+        "eModul": 8000,
+        "compressive": 12,
+        "tensile": 1,
+        "thermalCond": 0.9,
+        "thermalExp": 8,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "ziegel",
+      "categoryId": "beton_mineralische_baustoffe",
+      "name": "Ziegelmauerwerk (MZ 12)",
+      "properties": {
+        "density": 1600,
+        "eModul": 4000,
+        "compressive": 12,
+        "tensile": 0.5,
+        "thermalCond": 0.5,
+        "thermalExp": 6,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "vollziegel",
+      "categoryId": "beton_mineralische_baustoffe",
+      "name": "Vollziegel (MZ 20)",
+      "properties": {
+        "density": 1800,
+        "eModul": 6000,
+        "compressive": 20,
+        "tensile": 1.5,
+        "thermalCond": 0.81,
+        "thermalExp": 5,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "porenbeton",
+      "categoryId": "beton_mineralische_baustoffe",
+      "name": "Porenbeton (PB 4)",
+      "properties": {
+        "density": 500,
+        "eModul": 1500,
+        "compressive": 4,
+        "tensile": 0.2,
+        "thermalCond": 0.12,
+        "thermalExp": 8,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "granit",
+      "categoryId": "gesteine",
+      "name": "Granit",
+      "properties": {
+        "density": 2700,
+        "eModul": 50000,
+        "compressive": 200,
+        "tensile": 15,
+        "thermalCond": 2.8,
+        "thermalExp": 8,
+        "heatCap": 800
+      },
+      "metadata": {}
+    },
+    {
+      "id": "basalt",
+      "categoryId": "gesteine",
+      "name": "Basalt",
+      "properties": {
+        "density": 2950,
+        "eModul": 70000,
+        "compressive": 300,
+        "tensile": 20,
+        "thermalCond": 1.7,
+        "thermalExp": 8,
+        "heatCap": 840
+      },
+      "metadata": {}
+    },
+    {
+      "id": "sandstein",
+      "categoryId": "gesteine",
+      "name": "Sandstein",
+      "properties": {
+        "density": 2200,
+        "eModul": 15000,
+        "compressive": 80,
+        "tensile": 5,
+        "thermalCond": 2.3,
+        "thermalExp": 10,
+        "heatCap": 800
+      },
+      "metadata": {}
+    },
+    {
+      "id": "schiefer",
+      "categoryId": "gesteine",
+      "name": "Schiefer",
+      "properties": {
+        "density": 2800,
+        "eModul": 60000,
+        "compressive": 120,
+        "tensile": 30,
+        "thermalCond": 2,
+        "thermalExp": 9,
+        "heatCap": 800
+      },
+      "metadata": {}
+    },
+    {
+      "id": "zementmoertel",
+      "categoryId": "putze_m_rtel",
+      "name": "Zementmörtel (M10)",
+      "properties": {
+        "density": 2000,
+        "eModul": 15000,
+        "compressive": 10,
+        "tensile": 2,
+        "thermalCond": 1.4,
+        "thermalExp": 10,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "kalkmoertel",
+      "categoryId": "putze_m_rtel",
+      "name": "Kalkmörtel (M2.5)",
+      "properties": {
+        "density": 1800,
+        "eModul": 4000,
+        "compressive": 2.5,
+        "tensile": 0.5,
+        "thermalCond": 0.8,
+        "thermalExp": 8,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "gipsputz",
+      "categoryId": "putze_m_rtel",
+      "name": "Gipsputz",
+      "properties": {
+        "density": 1200,
+        "eModul": 3000,
+        "compressive": 3,
+        "tensile": 1,
+        "thermalCond": 0.35,
+        "thermalExp": 12,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "stahl",
+      "categoryId": "metalle",
+      "name": "Baustahl (S235)",
+      "properties": {
+        "density": 7850,
+        "eModul": 210000,
+        "compressive": 235,
+        "tensile": 360,
+        "thermalCond": 50,
+        "thermalExp": 12,
+        "heatCap": 440
+      },
+      "metadata": {}
+    },
+    {
+      "id": "spannstahl",
+      "categoryId": "metalle",
+      "name": "Spannstahl (St 1570/1770)",
+      "properties": {
+        "density": 7850,
+        "eModul": 195000,
+        "compressive": 1570,
+        "tensile": 1770,
+        "thermalCond": 50,
+        "thermalExp": 12,
+        "heatCap": 440
+      },
+      "metadata": {}
+    },
+    {
+      "id": "edelstahl",
+      "categoryId": "metalle",
+      "name": "Edelstahl (1.4301 / V2A)",
+      "properties": {
+        "density": 7900,
+        "eModul": 200000,
+        "compressive": 210,
+        "tensile": 500,
+        "thermalCond": 15,
+        "thermalExp": 16,
+        "heatCap": 500
+      },
+      "metadata": {}
+    },
+    {
+      "id": "gusseisen",
+      "categoryId": "metalle",
+      "name": "Gusseisen (EN-GJL-200)",
+      "properties": {
+        "density": 7200,
+        "eModul": 100000,
+        "compressive": 800,
+        "tensile": 200,
+        "thermalCond": 50,
+        "thermalExp": 10,
+        "heatCap": 500
+      },
+      "metadata": {}
+    },
+    {
+      "id": "aluminium",
+      "categoryId": "metalle",
+      "name": "Aluminium (EN AW-6060)",
+      "properties": {
+        "density": 2700,
+        "eModul": 70000,
+        "compressive": 160,
+        "tensile": 190,
+        "thermalCond": 200,
+        "thermalExp": 23,
+        "heatCap": 900
+      },
+      "metadata": {}
+    },
+    {
+      "id": "kupfer",
+      "categoryId": "metalle",
+      "name": "Kupfer (Cu-DHP)",
+      "properties": {
+        "density": 8920,
+        "eModul": 130000,
+        "compressive": 200,
+        "tensile": 250,
+        "thermalCond": 380,
+        "thermalExp": 16.5,
+        "heatCap": 385
+      },
+      "metadata": {}
+    },
+    {
+      "id": "titan",
+      "categoryId": "metalle",
+      "name": "Titan (Grade 2)",
+      "properties": {
+        "density": 4500,
+        "eModul": 105000,
+        "compressive": 400,
+        "tensile": 400,
+        "thermalCond": 22,
+        "thermalExp": 8.6,
+        "heatCap": 520
+      },
+      "metadata": {}
+    },
+    {
+      "id": "holz",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "Nadelholz (C24, 0°)",
+      "properties": {
+        "density": 420,
+        "eModul": 11000,
+        "compressive": 21,
+        "tensile": 14.5,
+        "thermalCond": 0.13,
+        "thermalExp": 5,
+        "heatCap": 1600
+      },
+      "metadata": {}
+    },
+    {
+      "id": "laubholz",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "Laubholz (D30, Eiche, 0°)",
+      "properties": {
+        "density": 530,
+        "eModul": 12000,
+        "compressive": 23,
+        "tensile": 18,
+        "thermalCond": 0.17,
+        "thermalExp": 5,
+        "heatCap": 1600
+      },
+      "metadata": {}
+    },
+    {
+      "id": "bsh",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "Brettschichtholz (GL24h)",
+      "properties": {
+        "density": 380,
+        "eModul": 11500,
+        "compressive": 24,
+        "tensile": 19.2,
+        "thermalCond": 0.13,
+        "thermalExp": 5,
+        "heatCap": 1600
+      },
+      "metadata": {}
+    },
+    {
+      "id": "bsp",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "Brettsperrholz (BSP)",
+      "properties": {
+        "density": 450,
+        "eModul": 11000,
+        "compressive": 21,
+        "tensile": 14,
+        "thermalCond": 0.13,
+        "thermalExp": 5,
+        "heatCap": 1600
+      },
+      "metadata": {}
+    },
+    {
+      "id": "osb",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "OSB/3-Platte",
+      "properties": {
+        "density": 600,
+        "eModul": 3500,
+        "compressive": 15,
+        "tensile": 9,
+        "thermalCond": 0.13,
+        "thermalExp": 5,
+        "heatCap": 1700
+      },
+      "metadata": {}
+    },
+    {
+      "id": "spanplatte",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "Flachpressplatte (P5)",
+      "properties": {
+        "density": 650,
+        "eModul": 2500,
+        "compressive": 12,
+        "tensile": 8,
+        "thermalCond": 0.14,
+        "thermalExp": 5,
+        "heatCap": 1700
+      },
+      "metadata": {}
+    },
+    {
+      "id": "mdf",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "MDF-Platte",
+      "properties": {
+        "density": 750,
+        "eModul": 3000,
+        "compressive": 18,
+        "tensile": 12,
+        "thermalCond": 0.14,
+        "thermalExp": 5,
+        "heatCap": 1700
+      },
+      "metadata": {}
+    },
+    {
+      "id": "sperrholz",
+      "categoryId": "holz_holzwerkstoffe",
+      "name": "Sperrholz (Birke)",
+      "properties": {
+        "density": 700,
+        "eModul": 7000,
+        "compressive": 30,
+        "tensile": 25,
+        "thermalCond": 0.15,
+        "thermalExp": 5,
+        "heatCap": 1600
+      },
+      "metadata": {}
+    },
+    {
+      "id": "eps",
+      "categoryId": "d_mmstoffe",
+      "name": "EPS (Styropor)",
+      "properties": {
+        "density": 20,
+        "eModul": 5,
+        "compressive": 0.1,
+        "tensile": 0.15,
+        "thermalCond": 0.035,
+        "thermalExp": 60,
+        "heatCap": 1450
+      },
+      "metadata": {}
+    },
+    {
+      "id": "xps",
+      "categoryId": "d_mmstoffe",
+      "name": "XPS (Styrodur)",
+      "properties": {
+        "density": 35,
+        "eModul": 12,
+        "compressive": 0.3,
+        "tensile": 0.4,
+        "thermalCond": 0.035,
+        "thermalExp": 60,
+        "heatCap": 1450
+      },
+      "metadata": {}
+    },
+    {
+      "id": "pur",
+      "categoryId": "d_mmstoffe",
+      "name": "PUR/PIR-Hartschaum",
+      "properties": {
+        "density": 30,
+        "eModul": 8,
+        "compressive": 0.15,
+        "tensile": 0.2,
+        "thermalCond": 0.025,
+        "thermalExp": 50,
+        "heatCap": 1400
+      },
+      "metadata": {}
+    },
+    {
+      "id": "mineralwolle",
+      "categoryId": "d_mmstoffe",
+      "name": "Mineralwolle (allg.)",
+      "properties": {
+        "density": 50,
+        "eModul": 1,
+        "compressive": 0.05,
+        "tensile": 0.05,
+        "thermalCond": 0.035,
+        "thermalExp": 0,
+        "heatCap": 840
+      },
+      "metadata": {}
+    },
+    {
+      "id": "steinwolle",
+      "categoryId": "d_mmstoffe",
+      "name": "Steinwolle",
+      "properties": {
+        "density": 100,
+        "eModul": 1,
+        "compressive": 0.05,
+        "tensile": 0.05,
+        "thermalCond": 0.035,
+        "thermalExp": 0,
+        "heatCap": 840
+      },
+      "metadata": {}
+    },
+    {
+      "id": "glaswolle",
+      "categoryId": "d_mmstoffe",
+      "name": "Glaswolle",
+      "properties": {
+        "density": 20,
+        "eModul": 0.5,
+        "compressive": 0.02,
+        "tensile": 0.02,
+        "thermalCond": 0.035,
+        "thermalExp": 0,
+        "heatCap": 840
+      },
+      "metadata": {}
+    },
+    {
+      "id": "holzfaser",
+      "categoryId": "d_mmstoffe",
+      "name": "Holzfaserdämmplatte",
+      "properties": {
+        "density": 160,
+        "eModul": 2,
+        "compressive": 0.05,
+        "tensile": 0.05,
+        "thermalCond": 0.04,
+        "thermalExp": 5,
+        "heatCap": 2100
+      },
+      "metadata": {}
+    },
+    {
+      "id": "zellulose",
+      "categoryId": "d_mmstoffe",
+      "name": "Zellulose (Einblasdämmung)",
+      "properties": {
+        "density": 50,
+        "eModul": 0.5,
+        "compressive": 0.02,
+        "tensile": 0.02,
+        "thermalCond": 0.04,
+        "thermalExp": 5,
+        "heatCap": 2100
+      },
+      "metadata": {}
+    },
+    {
+      "id": "schaumglas",
+      "categoryId": "d_mmstoffe",
+      "name": "Schaumglas",
+      "properties": {
+        "density": 120,
+        "eModul": 1000,
+        "compressive": 0.6,
+        "tensile": 0.1,
+        "thermalCond": 0.04,
+        "thermalExp": 9,
+        "heatCap": 840
+      },
+      "metadata": {}
+    },
+    {
+      "id": "hanffaser",
+      "categoryId": "d_mmstoffe",
+      "name": "Hanffaser",
+      "properties": {
+        "density": 40,
+        "eModul": 0.5,
+        "compressive": 0.02,
+        "tensile": 0.02,
+        "thermalCond": 0.04,
+        "thermalExp": 5,
+        "heatCap": 2100
+      },
+      "metadata": {}
+    },
+    {
+      "id": "schafwolle",
+      "categoryId": "d_mmstoffe",
+      "name": "Schafwolle",
+      "properties": {
+        "density": 20,
+        "eModul": 0.1,
+        "compressive": 0.01,
+        "tensile": 0.01,
+        "thermalCond": 0.04,
+        "thermalExp": 5,
+        "heatCap": 1700
+      },
+      "metadata": {}
+    },
+    {
+      "id": "vip",
+      "categoryId": "d_mmstoffe",
+      "name": "Vakuumisolationspaneel (VIP)",
+      "properties": {
+        "density": 180,
+        "eModul": 5,
+        "compressive": 0.15,
+        "tensile": 0.1,
+        "thermalCond": 0.007,
+        "thermalExp": 0,
+        "heatCap": 800
+      },
+      "metadata": {}
+    },
+    {
+      "id": "pvc",
+      "categoryId": "kunststoffe_verbundwerkstoffe",
+      "name": "PVC (Hart)",
+      "properties": {
+        "density": 1400,
+        "eModul": 3000,
+        "compressive": 80,
+        "tensile": 50,
+        "thermalCond": 0.16,
+        "thermalExp": 80,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    },
+    {
+      "id": "pe",
+      "categoryId": "kunststoffe_verbundwerkstoffe",
+      "name": "PE-HD",
+      "properties": {
+        "density": 950,
+        "eModul": 1000,
+        "compressive": 25,
+        "tensile": 30,
+        "thermalCond": 0.4,
+        "thermalExp": 150,
+        "heatCap": 1900
+      },
+      "metadata": {}
+    },
+    {
+      "id": "cfk",
+      "categoryId": "kunststoffe_verbundwerkstoffe",
+      "name": "CFK (Carbonfaserverstärkter Kunststoff)",
+      "properties": {
+        "density": 1600,
+        "eModul": 150000,
+        "compressive": 1000,
+        "tensile": 1500,
+        "thermalCond": 5,
+        "thermalExp": 0.1,
+        "heatCap": 800
+      },
+      "metadata": {}
+    },
+    {
+      "id": "gfk",
+      "categoryId": "kunststoffe_verbundwerkstoffe",
+      "name": "GFK (Glasfaserverstärkter Kunststoff)",
+      "properties": {
+        "density": 1800,
+        "eModul": 30000,
+        "compressive": 300,
+        "tensile": 400,
+        "thermalCond": 0.3,
+        "thermalExp": 15,
+        "heatCap": 1200
+      },
+      "metadata": {}
+    },
+    {
+      "id": "glas",
+      "categoryId": "glas",
+      "name": "Floatglas",
+      "properties": {
+        "density": 2500,
+        "eModul": 70000,
+        "compressive": 500,
+        "tensile": 45,
+        "thermalCond": 1,
+        "thermalExp": 9,
+        "heatCap": 720
+      },
+      "metadata": {}
+    },
+    {
+      "id": "esg",
+      "categoryId": "glas",
+      "name": "ESG (Einscheibensicherheitsglas)",
+      "properties": {
+        "density": 2500,
+        "eModul": 70000,
+        "compressive": 500,
+        "tensile": 120,
+        "thermalCond": 1,
+        "thermalExp": 9,
+        "heatCap": 720
+      },
+      "metadata": {}
+    },
+    {
+      "id": "vsg",
+      "categoryId": "glas",
+      "name": "VSG (Verbundsicherheitsglas)",
+      "properties": {
+        "density": 2500,
+        "eModul": 70000,
+        "compressive": 500,
+        "tensile": 80,
+        "thermalCond": 1,
+        "thermalExp": 9,
+        "heatCap": 720
+      },
+      "metadata": {}
+    },
+    {
+      "id": "asphalt",
+      "categoryId": "asphalt_bitumen",
+      "name": "Walzasphalt",
+      "properties": {
+        "density": 2400,
+        "eModul": 5000,
+        "compressive": 5,
+        "tensile": 1,
+        "thermalCond": 1.2,
+        "thermalExp": 20,
+        "heatCap": 920
+      },
+      "metadata": {}
+    },
+    {
+      "id": "gussasphalt",
+      "categoryId": "asphalt_bitumen",
+      "name": "Gussasphalt",
+      "properties": {
+        "density": 2350,
+        "eModul": 3000,
+        "compressive": 2,
+        "tensile": 0.5,
+        "thermalCond": 1,
+        "thermalExp": 30,
+        "heatCap": 920
+      },
+      "metadata": {}
+    },
+    {
+      "id": "bitumen",
+      "categoryId": "asphalt_bitumen",
+      "name": "Strassenbaubitumen",
+      "properties": {
+        "density": 1040,
+        "eModul": 100,
+        "compressive": 0,
+        "tensile": 0,
+        "thermalCond": 0.17,
+        "thermalExp": 200,
+        "heatCap": 1670
+      },
+      "metadata": {}
+    },
+    {
+      "id": "gipskarton",
+      "categoryId": "sonstige",
+      "name": "Gipskarton",
+      "properties": {
+        "density": 800,
+        "eModul": 2500,
+        "compressive": 4,
+        "tensile": 1.5,
+        "thermalCond": 0.25,
+        "thermalExp": 15,
+        "heatCap": 1000
+      },
+      "metadata": {}
+    }
+  ]
+}

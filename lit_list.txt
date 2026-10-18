@@ -1,0 +1,268 @@
+LITERATUR:
+Radenberg, M.: Asphaltbauweisen (2014)
+Wistuba, M. et al.: Asphalt im Straßenbau (2020)
+Wendehorst, R. et al.: Baustoffkunde
+Scholz, W. et al.: Baustoffkenntnis
+Bendix, P. (2020). Bauchemie für das Bachelor-Studium. Springer Vieweg.
+Stark, J., & Wicht, B. (2013). Dauerhaftigkeit von Beton. Springer-Verlag.
+Grübl, P., Weigler, H., & Karl, S. (2001). Beton: Arten, Herstellung und Eigenschaften. Ernst & Sohn.
+Klopfer, H. (1978). Wassertransport durch Dispersionen. Bautenschutz + Bausanierung.
+Willems, W. M. et al.: Lehrbuch der Bauphysik (2017)
+Lutz, P. et al.: Lehrbuch der Bauphysik (2013)
+Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 1: Statik
+Dallmann, W.: Baustatik 1
+Wendehorst, R. (2020). Baustoffkunde. Springer Vieweg.
+Scholz, W. (2018). Baustoffkenntnis. Werner Verlag.
+Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau
+Gorris, A.: Stahlbetonbau-Praxis
+Wendehorst Baustoffkunde (2020)
+Zilch, K., Zehetmaier, G.: Bemessung im konstruktiven Betonbau (2010)
+Kolymbas, D.: Geotechnik - Bodenmechanik, Grundbau und Tunnelbau (2011)
+Kempfert, H.-G., Raithel, M.: Bodenmechanik und Grundbau (2015)
+Hosser, D.: Brandschutz in Europa (2007)
+Zehfuß, J.: Baulicher Brandschutz (2020)
+Gross, D., Seelig, T.: Bruchmechanik (aktuelle Auflage)
+Karihaloo, B. L.: Fracture Mechanics and Structural Concrete (1995)
+Curbach, M. et al.: Carbonbeton - Das Handbuch (2023)
+C³ - Carbon Concrete Composite e.V. Publikationen
+EU-Kommission: Circular Economy Action Plan (CEAP)
+ÖKOBAUDAT: Informationsportal Nachhaltiges Bauen des Bundes
+IBU (Institut Bauen und Umwelt e.V.): EPD-Programmbetreiber
+Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)
+Hashin, Z., Shtrikman, S.: A variational approach to the theory of the elastic behaviour of multiphase materials (1963)
+Rostásy, F. S., Marx, S.: Baustoffe (2015)
+"Kolymbas: Geotechnik - Bodenmechanik, Grundbau und Tunnelbau"
+"Henning/Roos: Erdbau"
+Schürmann, H.: Konstruieren mit Faser-Kunststoff-Verbunden (2007)
+Ehrenstein, G. W.: Faserverbund-Kunststoffe (2006)
+Grübl, P., Weigler, H., Karl, S.: Beton - Arten, Herstellung und Eigenschaften (2001)
+Locher, F. W.: Zement - Grundlagen der Herstellung und Verwendung (2000)
+Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (aktuelle Auflage)
+Wendehorst, R.: Bautechnische Zahlentafeln (aktuelle Auflage)
+Proske, T., Graubner, C.-A.: Formwork pressure of highly workable concrete (2008)
+Schmitt, A.: Schalungstechnik (2001)
+Grübl, P., Weigler, H., Karl, S.: Beton (2001)
+Wörner, J.-D. et al.: Glasbau. Grundlagen, Berechnung, Konstruktion (2001)
+Feldmann, M. et al.: Glas für tragende Bauteile (2012)
+Wicke, M.: Historische Baukostruktionen (2010)
+Ahnert, R., Krause, K. H.: Typische Baukonstruktionen von 1860 bis 1960 (2009)
+Neuhaus, H.: Lehrbuch des Holzbaus (2017)
+Götz, K.-H. et al.: Holzbau Atlas (2000)
+Stark, J., Wicht, B.: Dauerhaftigkeit von Beton (2013)
+Locher, F.W.: Zement – Grundlagen der Herstellung und Verwendung (2000)
+Publikationen, Leitfäden und Fachzeitschriften der genannten Institutionen
+Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik
+Gehlen, C.: Probabilistische Lebensdauerbemessung von Stahlbetonbauwerken (2000)
+Hebel, D. E. et al.: Urban Mining und Kreislaufwirtschaft im Bauwesen
+DGNB: Leitfaden Zirkuläres Bauen
+Grasser, E. et al.: Bemessung von Betonbauten (2001)
+Domininghaus, H.: Die Kunststoffe und ihre Eigenschaften (2012)
+Ehrenstein, G. W.: Polymerwerkstoffe (2011)
+Bargel, H. J., Schulze, G.: Werkstoffkunde (2012)
+Minke, G.: Handbuch Lehmbau (2009)
+Volhard, F.: Leichtlehmbau (2013)
+BBSR: Handbuch für die ÖKOBAUDAT
+IBU: Leitfaden zur Erstellung von EPDs
+Schneider, K.-J.: Bautabellen für Ingenieure (aktuelle Auflage)
+Jäger, W. et al.: Mauerwerk-Kalender (jährlich)
+Schubert, P.: Eigenschaften von Mauerwerk (2011)
+Neville, A.M.: Properties of Concrete (2011)
+Braune, A. et al.: Ökobilanzierung von Gebäuden - Grundlagen und Anwendung (2021)
+Graubner, C.-A. et al.: Nachhaltigkeit im Bauwesen - Grundlagen, Instrumente, Beispiele (2020)
+BMWSB: Qualitätssiegel Nachhaltiges Gebäude (QNG) - Bilanzierungsregeln (aktuelle Fassung)
+FNR: Baustoffe aus nachwachsenden Rohstoffen
+Hegger et al.: Baustoffkunde (Kapitel Holz und Naturbaustoffe)
+Andreasen, A.H.M., Andersen, J.: Ueber die Beziehung zwischen Kornabstufung und Zwischenraum in Produkten aus losen Körnern (1930)
+Funk, J.E., Dinger, D.R.: Predictive Process Control of Crowded Particulate Suspensions (1994)
+De Larrard, F.: Concrete Mixture Proportioning - A Scientific Approach (1999)
+Lohmeyer, G.: Weiße Wannen - Einfach und sicher (2018)
+Destatis: Fachserie 17, Reihe 4 (Baupreisindizes)
+Hauptverband der Deutschen Bauindustrie: Wirtschaftszahlen
+Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch
+Lohmeyer/Ebeling: Betonböden für Hallen und Freiflächen (Kapitel Fördern)
+Gorris, A., Hegger, J.: Querkraftbemessung nach Eurocode 2 (2014)
+Deutscher Ausschuss für Stahlbeton (DAfStb): Heft 600
+Deutsches Institut für Bautechnik (DIBt): Publikationen zu Zulassungen
+Europäische Kommission: CE-Kennzeichnung von Bauprodukten
+Gorris, A. et al.: Rissbreitenbegrenzung nach Eurocode 2 (2014)
+Schulz, J.: Sichtbeton - Planung, Ausführung, Bewertung
+Leonhardt, F.: Vorlesungen über Massivbau - Teil 5: Spannbeton (1980)
+Bargel, H. J., Schulze, G.: Werkstoffkunde (2012) - Für den Einfluss des Kohlenstoffgehalts bei Stahl
+Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3 (2014)
+Kuhlmann, U. et al.: Stahlbau-Kalender (jährlich)
+Radaj, D.: Eigenspannungen und Verzug beim Schweißen (2002)
+Wendehorst Bautechnische Zahlentafeln (2022)
+Sachs, L.: Angewandte Statistik (2003)
+VDI-Gesellschaft Bauen und Gebäudetechnik: VDI 6200
+Rostásy, F. S.: Baustoffe (Kapitel Dauerhaftigkeit und Instandsetzung)
+Lohmeyer, G. et al.: Weiße Wannen - Einfach und sicher (2018)
+Zement-Merkblatt H10: Wasserundurchlässige Betonbauwerke
+Fischer, H. et al.: Bauphysik (2021)
+Willems, W. et al.: Lehrbuch der Bauphysik (2017)
+Bogue, R.H.: Calculation of the compounds in Portland cement (1929)
+Taylor, H.F.W.: Cement Chemistry (1997)
+Proske, D.: Zerstörungsfreie Prüfung im Bauwesen (2015)
+Grosse, C. U.: Grundlagen der zerstörungsfreien Prüfung (2013)
+Litzner, H.-U.: Grundlagen der Bemessung nach Eurocode 2
+Zilch, K. et al.: Bemessung im Konstruktiven Betonbau
+
+
+REGELWERKE:
+DIN EN 13108 (Asphaltmischgut)
+ZTV Asphalt-StB
+FGSV-Regelwerke
+M NTA (Merkblatt für die Herstellung und den Einbau von Niedrigtemperaturasphalt)
+DIN 18181: Gipsplatten im Hochbau
+DIN 18560: Estriche im Bauwesen
+DIN 18531 bis 18535: Bauwerksabdichtungen
+DIN EN 197-1: Zement – Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement
+DIN EN 934: Zusatzmittel für Beton, Mörtel und Einpressmörtel
+DIN EN 1504: Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken
+DIN 68800: Holzschutz
+DIN 4108-2: Wärmeschutz und Energie-Einsparung in Gebäuden - Mindestanforderungen an den Wärmeschutz
+DIN 4108-3: Klimabedingter Feuchteschutz (Glaser-Verfahren)
+GEG: Gebäudeenergiegesetz
+DIN EN 1990 (Eurocode 0): Grundlagen der Tragwerksplanung
+DIN EN 1992-1-1 (Eurocode 2): Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken
+DAfStb-Richtlinie (bei Nichtmetallischer Bewehrung)
+DIN EN 12390-5: Prüfung von Festbeton - Teil 5: Biegezugfestigkeit von Probekörpern
+DAfStb-Richtlinie Stahlfaserbeton
+DIN EN 1426: Bestimmung der Nadelpenetration
+DIN EN 1427: Bestimmung des Erweichungspunktes - Ring- und Kugel-Verfahren
+DIN EN ISO 14688-1: Geotechnische Erkundung und Untersuchung - Benennung, Beschreibung und Klassifizierung von Boden
+DIN 18122-1: Baugrund, Untersuchung von Bodenproben - Zustandsgrenzen (Konsistenzgrenzen)
+DIN 18196: Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke
+DIN EN 1997-1 (Eurocode 7): Entwurf, Berechnung und Bemessung in der Geotechnik
+DIN 18137: Baugrund, Untersuchung von Bodenproben - Bestimmung der Scherfestigkeit
+DIN 4085: Baugrund - Berechnung des Erddrucks
+DIN 4019: Baugrund - Setzungsberechnungen
+DIN 4102 (Brandverhalten von Baustoffen und Bauteilen)
+DIN EN 13501-1 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten)
+DIN EN 13501-2 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten - Teil 2: Feuerwiderstand)
+DIN EN 1992-1-2 (Eurocode 2: Brandschutz)
+DIN EN 1995-1-2 (Eurocode 5: Holzbauten im Brandfall)
+FIB Model Code 2010 (für Beton)
+DAfStb-Hefte zur Bruchmechanik von Beton
+DAfStb-Richtlinie: Carbonbeton (Entwurf)
+Zulassungen im Einzelfall (ZiE) / Allgemeine Bauartgenehmigungen (aBG)
+ESPR (Ecodesign for Sustainable Products Regulation): EU-Ökodesign-Verordnung
+BauPVO (Bauproduktenverordnung): Überarbeitung inkl. DPP-Anforderungen
+DIN EN 15804: Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen
+DIN EN 1992-1-1 (Eurocode 2): Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken, Abschnitt 6.4
+DAfStb-Richtlinie "Massige Bauteile aus Beton"
+"DIN 18196: Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke"
+"DIN EN ISO 14688: Geotechnische Erkundung und Untersuchung - Benennung, Beschreibung und Klassifizierung von Boden"
+"ZTV E-StB: Zusätzliche Technische Vertragsbedingungen und Richtlinien für Erdarbeiten im Straßenbau"
+"RStO 12: Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen"
+"ZTV HGT-StB: Zusätzliche Technische Vertragsbedingungen für hydraulisch gebundene Tragschichten"
+DAfStb-Richtlinie: Verstärken von Betonbauteilen mit geklebter Bewehrung
+DIN EN 13706: Spezifikationen für pultrudierte Profile
+DIN EN 206-1: Beton - Teil 1: Festlegung, Eigenschaften, Herstellung und Konformität
+DIN 1045-2: Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton
+DIN EN 206: Beton - Festlegung, Eigenschaften, Herstellung und Konformität
+DIN 1045-2: Tragwerke aus Beton, Stahlbeton und Spannbeton
+Materialspezifische Eurocodes (EN 1992 bis EN 1999)
+DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)
+DIN EN 206-1 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)
+DIN 18008 (Glas im Bauwesen - Bemessungs- und Konstruktionsregeln)
+DIN 1045 (alte Ausgaben 1943, 1972, 1988): Tragwerke aus Beton, Stahlbeton und Spannbeton
+DIN 1052 (alte Ausgaben): Holzbauwerke
+DIN 1053 (alte Ausgaben): Mauerwerk
+DIN EN 1995-1-1 (Eurocode 5): Bemessung und Konstruktion von Holzbauten
+DIN EN 338: Bauholz für tragende Zwecke - Festigkeitsklassen
+DIN EN 13986: Holzwerkstoffe zur Verwendung im Bauwesen
+DIN EN 14080: Holzbauwerke - Brettschichtholz und Balkenschichtholz
+DIN EN 300: Platten aus langen, flachen, ausgerichteten Spänen (OSB)
+DIN EN 1992-1-1 (Eurocode 2)
+DIN 1045-3: Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 3: Bauausführung
+fib Model Code 2010
+ZTV-ING
+Herausgegebene Richtlinien und Merkblätter der jeweiligen Verbände gelten oft als "Anerkannte Regeln der Technik".
+DIN EN 1993-1-1 (Eurocode 3): Bemessung und Konstruktion von Stahlbauten
+DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)
+Kreislaufwirtschaftsgesetz (KrWG)
+Ersatzbaustoffverordnung (EBV)
+EU-Aktionsplan für die Kreislaufwirtschaft
+DIN EN ISO 527 (Kunststoffe - Bestimmung der Zugeigenschaften)
+DIN EN ISO 6721 (Kunststoffe - Bestimmung dynamisch-mechanischer Eigenschaften)
+DIN EN ISO 11357 (Kunststoffe - Dynamische Differenzkalorimetrie (DSC))
+DIN EN ISO 14040: Umweltmanagement – Ökobilanz – Grundsätze und Rahmenbedingungen
+DIN EN ISO 14044: Umweltmanagement – Ökobilanz – Anforderungen und Anleitungen
+DIN EN 15804: Nachhaltigkeit von Bauwerken – Umweltproduktdeklarationen – Grundregeln für die Produktkategorie Bauprodukte
+DIN EN 15978: Nachhaltigkeit von Bauwerken – Bewertung der umweltbezogenen Qualität von Gebäuden
+DIN EN 12390-3: Prüfung von Festbeton - Druckfestigkeit von Probekörpern
+DIN EN 12390-13: Prüfung von Festbeton - Bestimmung des Elastizitätsmoduls
+DIN EN ISO 6892-1: Metallische Werkstoffe - Zugversuch
+DIN EN 408: Holzbauwerke - Prüfverfahren
+DIN EN 12350-5: Prüfung von Frischbeton - Teil 5: Ausbreitmaß
+BNB - Bewertungssystem Nachhaltiges Bauen: Nutzungsdauern von Bauteilen
+VDI 2067 - Wirtschaftlichkeit gebäudetechnischer Anlagen
+DGNB - Deutsche Gesellschaft für Nachhaltiges Bauen: Lebenszyklusanalyse (LCA)
+DIN 18945: Lehmsteine - Begriffe, Anforderungen, Prüfverfahren
+DIN 18946: Lehmmauermörtel - Begriffe, Anforderungen, Prüfverfahren
+DIN 18947: Lehmputzmörtel - Begriffe, Anforderungen, Prüfverfahren
+Dachverband Lehm e.V.: Lehmbau Regeln
+BNB-Kriterium 1.1.1: Treibhausgaspotenzial und Primärenergiebedarf
+DIN EN 1991 (Eurocode 1): Einwirkungen auf Tragwerke
+DIN EN 1992 (Eurocode 2): Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken
+DIN EN 1993 (Eurocode 3): Bemessung und Konstruktion von Stahlbauten
+DIN EN 1995 (Eurocode 5): Bemessung und Konstruktion von Holzbauten
+DIN EN 1996 (Eurocode 6): Bemessung und Konstruktion von Mauerwerksbauten
+DIN EN 1996-1-1 (Eurocode 6): Bemessung und Konstruktion von Mauerwerksbauten
+DIN EN 1996-3: Vereinfachte Berechnungsmethoden für unbewehrte Mauerwerksbauten
+DIN EN 1999-1-1 (Eurocode 9): Bemessung und Konstruktion von Aluminiumtragwerken
+DIN EN 10088: Nichtrostende Stähle
+DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)
+ACI 305R (Hot Weather Concreting)
+DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)
+DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)
+ÖKOBAUDAT (Datenbank für Ökobilanzierungsdaten im Bauwesen)
+FNR (Fachagentur Nachwachsende Rohstoffe e.V.) Richtlinien
+DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)
+Gebäudeenergiegesetz (GEG)
+DIN EN 12620: Gesteinskörnungen für Beton
+DAfStb-Richtlinie: Massige Bauteile aus Beton', 'DIN EN 1992-1-1 (Eurocode 2)
+Baupreisindizes des Statistischen Bundesamtes (Destatis)
+Erzeugerpreisindizes gewerblicher Produkte
+DBV-Merkblatt "Pumpbeton"
+DAfStb-Richtlinie "Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen nach DIN EN 12620" (Recycling-Richtlinie)
+DIN 4226-101: Rezyklierte Gesteinskörnungen für Beton
+Musterbauordnung (MBO)
+Bauproduktenverordnung (BauPVO) - Verordnung (EU) Nr. 305/2011
+Musterbauordnung (MBO) und Landesbauordnungen (LBO)
+Vergabe- und Vertragsordnung für Bauleistungen (VOB)
+Kreislaufwirtschaftsgesetz (KrWG) & Ersatzbaustoffverordnung (ErsatzbaustoffV)
+REACH-Verordnung (EG) Nr. 1907/2006
+DIN EN 1992-1-1 (Eurocode 2): Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken, Abschnitt 7.3.4
+DIN EN 206-1 / DIN 1045-2
+DAfStb-Richtlinie "Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton"
+DIN 4109-1: Schallschutz im Hochbau - Mindestanforderungen
+DBV/VDZ-Merkblatt "Sichtbeton" (Definiert die Klassen SB 1 bis SB 4)
+DIN EN 206-1 / DIN 1045-2 (Beton)
+DIN EN 1992-1-1 (Eurocode 2): Bemessung und Konstruktion von Spannbetontragwerken
+EC2 Abschnitt 3.1.5: Spannungs-Dehnungs-Beziehung für die Querschnittsbemessung (Parabel-Rechteck)
+EC2 Abschnitt 3.1.4: Nichtlineare Spannungs-Dehnungs-Beziehung (Wirklichkeitsnahes Modell)
+EC2 Abschnitt 3.2: Betonstahl
+DIN EN 1993-1-2: Tragwerksbemessung für den Brandfall
+DIN EN 1993-1-9: Ermüdung
+DIN EN 1090-2: Ausführung von Stahltragwerken
+DIN 1319: Grundlagen der Messtechnik
+VDI 6200: Standsicherheit von Bauwerken - Regelmäßige Überprüfung
+DIN 1076: Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung
+Rili-SIB / TR Instandhaltung (DAfStb)
+DIN EN 1992-1-1 (Eurocode 2): Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken, Abschnitt 8.4 (Verankerung) und 8.7 (Übergreifung)
+DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)
+DIN EN ISO 10456: Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften
+DIN 4108-4: Wärmeschutz und Energie-Einsparung in Gebäuden - Wärme- und feuchteschutztechnische Bemessungswerte
+DIN EN 197-1: Zement - Zusammensetzung, Anforderungen und Konformitätskriterien
+DGNB System (Neubau, Bestand, Quartiere)
+Qualitätssiegel Nachhaltiges Gebäude (QNG) des BMWSB
+LEED v4.1 Building Design and Construction
+BREEAM International New Construction
+DIN EN 13791 (Bewertung der Druckfestigkeit von Beton in Bauwerken und in Bauwerksteilen)
+DIN EN 12504-2 (Zerstörungsfreie Prüfung - Rückprallhammer)
+DIN EN 12504-4 (Zerstörungsfreie Prüfung - Ultraschalllaufzeit)
+DGZfP-Merkblatt B04 (Georadar)
+DGZfP-Merkblatt B02 (Bewehrungsnachweis)
+DGZfP-Merkblatt B03 (Elektrochemische Potentialmessung)
+DAfStb-Heft 466: Zur Rissbreitenbeschränkung im Stahlbetonbau

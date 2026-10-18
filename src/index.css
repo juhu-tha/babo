@@ -1,0 +1,928 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('/fonts/inter-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('/fonts/inter-bold.ttf') format('truetype');
+}
+
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   STUFE 1: THA AUGSBURG DESIGN-TOKEN & FARB-HARMONISIERUNG
+   - Farbpalette: Schwarz, Weiß, Graustufen + THA-Magenta (#A3113E)
+   - Typografie: Inter als primäre Schriftart, JetBrains Mono für Daten & Formeln
+   - Orientierung: Minimalistische Informationsarchitektur analog tha.de
+   ========================================================================== */
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* THA-MAGENTA (Akzent wie bei "Hinweise zur Nutzung", Pantone 200/207C analog tha.de) */
+  --color-shiraz: #A3113E;
+  --color-magenta: #A3113E;
+  --color-tha-magenta: #A3113E;
+  --color-torch-red: #A3113E;
+  --color-tickle-pink: #A3113E;
+  
+  /* MONOCHROME & GRAUSTUFEN-PALETTE */
+  --color-home-grau: #64748B;
+  --color-off-white: #F8FAFC;
+  --color-text-main: #0F172A;
+  --color-middle-blue: #64748B;
+
+  /* STUFE 3: SYSTEMISCHE MONOCHROME & THA-MAGENTA REDUKTION */
+  /* 1. Magenta / Shiraz Abstufungen (Farbe für Textakzente & Hinterlegungsstufen) */
+  --color-shiraz-50: #fdf2f4;
+  --color-shiraz-100: #fbe5e9;
+  --color-shiraz-200: #f7ced6;
+  --color-shiraz-300: #f1a7b6;
+  --color-shiraz-400: #e6748d;
+  --color-shiraz-500: #d64768;
+  --color-shiraz-600: #c0284d;
+  --color-shiraz-700: #a3113e;
+  --color-shiraz-800: #881235;
+  --color-shiraz-900: #741331;
+  --color-shiraz-950: #420516;
+
+  /* Rose & Red zu THA-Magenta harmonisiert */
+  --color-rose-50: #fdf2f4;
+  --color-rose-100: #fbe5e9;
+  --color-rose-200: #f7ced6;
+  --color-rose-300: #f1a7b6;
+  --color-rose-400: #e6748d;
+  --color-rose-500: #d64768;
+  --color-rose-600: #c0284d;
+  --color-rose-700: #a3113e;
+  --color-rose-800: #881235;
+  --color-rose-900: #741331;
+
+  --color-red-50: #fdf2f4;
+  --color-red-100: #fbe5e9;
+  --color-red-200: #f7ced6;
+  --color-red-300: #f1a7b6;
+  --color-red-400: #e6748d;
+  --color-red-500: #d64768;
+  --color-red-600: #c0284d;
+  --color-red-700: #a3113e;
+  --color-red-800: #881235;
+  --color-red-900: #741331;
+
+  /* 2. Alle Buntfarben auf pure neutrale Graustufen (Slate) abgebildet */
+  --color-blue-50: #f8fafc;
+  --color-blue-100: #f1f5f9;
+  --color-blue-200: #e2e8f0;
+  --color-blue-300: #cbd5e1;
+  --color-blue-400: #94a3b8;
+  --color-blue-500: #64748b;
+  --color-blue-600: #475569;
+  --color-blue-700: #334155;
+  --color-blue-800: #1e293b;
+  --color-blue-900: #0f172a;
+  --color-blue-950: #020617;
+
+  --color-emerald-50: #f8fafc;
+  --color-emerald-100: #f1f5f9;
+  --color-emerald-200: #e2e8f0;
+  --color-emerald-300: #cbd5e1;
+  --color-emerald-400: #94a3b8;
+  --color-emerald-500: #64748b;
+  --color-emerald-600: #475569;
+  --color-emerald-700: #334155;
+  --color-emerald-800: #1e293b;
+  --color-emerald-900: #0f172a;
+  --color-emerald-950: #020617;
+
+  --color-green-50: #f8fafc;
+  --color-green-100: #f1f5f9;
+  --color-green-200: #e2e8f0;
+  --color-green-300: #cbd5e1;
+  --color-green-400: #94a3b8;
+  --color-green-500: #64748b;
+  --color-green-600: #475569;
+  --color-green-700: #334155;
+  --color-green-800: #1e293b;
+  --color-green-900: #0f172a;
+  --color-green-950: #020617;
+
+  --color-teal-50: #f8fafc;
+  --color-teal-100: #f1f5f9;
+  --color-teal-200: #e2e8f0;
+  --color-teal-300: #cbd5e1;
+  --color-teal-400: #94a3b8;
+  --color-teal-500: #64748b;
+  --color-teal-600: #475569;
+  --color-teal-700: #334155;
+  --color-teal-800: #1e293b;
+  --color-teal-900: #0f172a;
+  --color-teal-950: #020617;
+
+  --color-cyan-50: #f8fafc;
+  --color-cyan-100: #f1f5f9;
+  --color-cyan-200: #e2e8f0;
+  --color-cyan-300: #cbd5e1;
+  --color-cyan-400: #94a3b8;
+  --color-cyan-500: #64748b;
+  --color-cyan-600: #475569;
+  --color-cyan-700: #334155;
+  --color-cyan-800: #1e293b;
+  --color-cyan-900: #0f172a;
+  --color-cyan-950: #020617;
+
+  --color-sky-50: #f8fafc;
+  --color-sky-100: #f1f5f9;
+  --color-sky-200: #e2e8f0;
+  --color-sky-300: #cbd5e1;
+  --color-sky-400: #94a3b8;
+  --color-sky-500: #64748b;
+  --color-sky-600: #475569;
+  --color-sky-700: #334155;
+  --color-sky-800: #1e293b;
+  --color-sky-900: #0f172a;
+  --color-sky-950: #020617;
+
+  --color-indigo-50: #f8fafc;
+  --color-indigo-100: #f1f5f9;
+  --color-indigo-200: #e2e8f0;
+  --color-indigo-300: #cbd5e1;
+  --color-indigo-400: #94a3b8;
+  --color-indigo-500: #64748b;
+  --color-indigo-600: #475569;
+  --color-indigo-700: #334155;
+  --color-indigo-800: #1e293b;
+  --color-indigo-900: #0f172a;
+  --color-indigo-950: #020617;
+
+  --color-violet-50: #f8fafc;
+  --color-violet-100: #f1f5f9;
+  --color-violet-200: #e2e8f0;
+  --color-violet-300: #cbd5e1;
+  --color-violet-400: #94a3b8;
+  --color-violet-500: #64748b;
+  --color-violet-600: #475569;
+  --color-violet-700: #334155;
+  --color-violet-800: #1e293b;
+  --color-violet-900: #0f172a;
+  --color-violet-950: #020617;
+
+  --color-purple-50: #f8fafc;
+  --color-purple-100: #f1f5f9;
+  --color-purple-200: #e2e8f0;
+  --color-purple-300: #cbd5e1;
+  --color-purple-400: #94a3b8;
+  --color-purple-500: #64748b;
+  --color-purple-600: #475569;
+  --color-purple-700: #334155;
+  --color-purple-800: #1e293b;
+  --color-purple-900: #0f172a;
+  --color-purple-950: #020617;
+
+  --color-fuchsia-50: #fdf2f4;
+  --color-fuchsia-100: #fbe5e9;
+  --color-fuchsia-200: #f7ced6;
+  --color-fuchsia-300: #f1a7b6;
+  --color-fuchsia-400: #e6748d;
+  --color-fuchsia-500: #d64768;
+  --color-fuchsia-600: #c0284d;
+  --color-fuchsia-700: #a3113e;
+  --color-fuchsia-800: #881235;
+  --color-fuchsia-900: #741331;
+
+  --color-amber-50: #f8fafc;
+  --color-amber-100: #f1f5f9;
+  --color-amber-200: #e2e8f0;
+  --color-amber-300: #cbd5e1;
+  --color-amber-400: #94a3b8;
+  --color-amber-500: #64748b;
+  --color-amber-600: #475569;
+  --color-amber-700: #334155;
+  --color-amber-800: #1e293b;
+  --color-amber-900: #0f172a;
+  --color-amber-950: #020617;
+
+  --color-yellow-50: #f8fafc;
+  --color-yellow-100: #f1f5f9;
+  --color-yellow-200: #e2e8f0;
+  --color-yellow-300: #cbd5e1;
+  --color-yellow-400: #94a3b8;
+  --color-yellow-500: #64748b;
+  --color-yellow-600: #475569;
+  --color-yellow-700: #334155;
+  --color-yellow-800: #1e293b;
+  --color-yellow-900: #0f172a;
+  --color-yellow-950: #020617;
+
+  --color-orange-50: #f8fafc;
+  --color-orange-100: #f1f5f9;
+  --color-orange-200: #e2e8f0;
+  --color-orange-300: #cbd5e1;
+  --color-orange-400: #94a3b8;
+  --color-orange-500: #64748b;
+  --color-orange-600: #475569;
+  --color-orange-700: #334155;
+  --color-orange-800: #1e293b;
+  --color-orange-900: #0f172a;
+  --color-orange-950: #020617;
+}
+
+:root {
+  /* THA-Magenta */
+  --shiraz: #A3113E;
+  --magenta: #A3113E;
+  --tha-magenta: #A3113E;
+  --torch-red: #A3113E;
+  --tickle-pink: #A3113E;
+
+  /* Magenta-Abstufungen für zarte Hinterlegungen & Konturen */
+  --magenta-5: rgba(163, 17, 62, 0.05);
+  --magenta-10: rgba(163, 17, 62, 0.10);
+  --magenta-15: rgba(163, 17, 62, 0.15);
+  --magenta-20: rgba(163, 17, 62, 0.20);
+
+  /* Schwarz, Weiß & Graustufen */
+  --home-grau: #64748B;
+  --off-white: #F8FAFC;
+  --text-main: #0F172A;
+  --border-subtle: #E2E8F0;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--off-white);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  --shiraz: #FF3B77;
+  --magenta: #FF3B77;
+  --tha-magenta: #FF3B77;
+  --torch-red: #FF3B77;
+  --tickle-pink: #FF3B77;
+  
+  --magenta-5: rgba(255, 59, 119, 0.08);
+  --magenta-10: rgba(255, 59, 119, 0.15);
+  --magenta-15: rgba(255, 59, 119, 0.20);
+  --magenta-20: rgba(255, 59, 119, 0.28);
+
+  --middle-blue: #94A3B8;
+  --home-grau: #94A3B8;
+  --off-white: #090D16;
+  --text-main: #F8FAFC;
+  --border-subtle: #1E293B;
+  
+  --color-shiraz: #FF3B77;
+  --color-magenta: #FF3B77;
+  --color-tha-magenta: #FF3B77;
+  --color-torch-red: #FF3B77;
+  --color-tickle-pink: #FF3B77;
+  --color-middle-blue: #94A3B8;
+  --color-home-grau: #94A3B8;
+  --color-off-white: #090D16;
+  --color-text-main: #F8FAFC;
+  
+  background-color: #040814;
+  color: #F8FAFC;
+}
+
+/* GLOBAL DARK-THEME OVERLAYS */
+/* Map standard white background items to beautiful deep slate blocks */
+.dark .bg-white,
+.dark .bg-white\/100,
+.dark .bg-white\/80,
+.dark .bg-white\/90,
+.dark [class*="bg-white"] {
+  background-color: #0f172a !important; /* slate-900 card background */
+}
+
+/* Adjust transparency elements for dark base */
+.dark .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+.dark .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Soft secondary panel backgrounds */
+.dark .bg-off-white,
+.dark [class*="bg-off-white"],
+.dark .bg-\[\#FCFAF7\],
+.dark .bg-\[\#fcf8f2\],
+.dark .bg-\[\#FCF8F2\],
+.dark .bg-\[\#FAF9F5\],
+.dark .bg-\[\#f2f6fc\],
+.dark [class*="bg-\[\#FC"],
+.dark [class*="bg-\[\#fc"],
+.dark [class*="bg-\[\#FA"],
+.dark [class*="bg-\[\#fa"],
+.dark [class*="bg-\[\#f2"],
+.dark .bg-slate-50,
+.dark .bg-slate-50\/50,
+.dark .bg-gray-50,
+.dark .bg-gray-50\/50,
+.dark .bg-zinc-50,
+.dark .bg-zinc-50\/50,
+.dark .bg-zinc-100,
+.dark .bg-zinc-100\/50,
+.dark .bg-zinc-100\/70,
+.dark .bg-zinc-200,
+.dark .bg-slate-100,
+.dark .bg-gray-100,
+.dark .bg-stone-50,
+.dark .bg-stone-50\/50,
+.dark .bg-stone-100,
+.dark .bg-stone-100\/50,
+.dark .bg-stone-100\/70,
+.dark .bg-neutral-50,
+.dark .bg-neutral-100,
+.dark .bg-slate-50\/30,
+.dark .quick-calc-card,
+.dark .bg-slate-50\/80 {
+  background-color: #1e293b !important; /* slate-800 soft dark panels */
+}
+
+/* Crisp and visible borders in dark mode */
+.dark .border-home-grau\/35,
+.dark .border-home-grau\/30,
+.dark .border-home-grau\/25,
+.dark .border-home-grau\/20,
+.dark .border-home-grau\/15,
+.dark .border-home-grau\/10,
+.dark [class*="border-home-grau"],
+.dark .border-slate-150,
+.dark .border-slate-200,
+.dark .border-slate-200\/80,
+.dark .border-slate-100 {
+  border-color: #334155 !important; /* slate-700 clear visible borders */
+}
+
+/* Base progress and track indicators */
+.dark .bg-stone-200,
+.dark .bg-slate-200,
+.dark .bg-gray-200,
+.dark .bg-zinc-200,
+.dark .bg-neutral-200 {
+  background-color: #334155 !important;
+}
+
+/* Neutral text colors overrides to ensure supreme contrast and readability */
+.dark .text-text-main,
+.dark .text-gray-950,
+.dark .text-slate-950,
+.dark .text-gray-900,
+.dark .text-slate-900,
+.dark .text-stone-900,
+.dark .text-stone-850,
+.dark .text-stone-800,
+.dark .text-neutral-900,
+.dark .text-neutral-800,
+.dark .text-zinc-900,
+.dark .text-zinc-800,
+.dark .text-black,
+.dark h1,
+.dark h2,
+.dark h3 {
+  color: #f8fafc !important; /* slate-50 */
+}
+
+.dark .text-text-main\/90,
+.dark .text-text-main\/85,
+.dark .text-text-main\/80,
+.dark .text-text-main\/75,
+.dark .text-gray-800,
+.dark .text-slate-800,
+.dark .text-gray-700,
+.dark .text-slate-700,
+.dark .text-stone-700,
+.dark .text-neutral-700,
+.dark .text-zinc-700,
+.dark .text-semibold,
+.dark h4,
+.dark h5 {
+  color: #e2e8f0 !important; /* slate-200 */
+}
+
+.dark .text-text-main\/70,
+.dark .text-text-main\/65,
+.dark .text-text-main\/60,
+.dark .text-text-main\/50,
+.dark .text-home-grau,
+.dark [class*="text-home-grau"],
+.dark .text-gray-650,
+.dark .text-slate-650,
+.dark .text-stone-650,
+.dark .text-slate-600,
+.dark .text-stone-600,
+.dark .text-gray-600,
+.dark .text-slate-500,
+.dark .text-stone-500,
+.dark .text-gray-500,
+.dark .text-zinc-600,
+.dark .text-zinc-500 {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+.dark .text-shiraz {
+  color: #ff3377 !important; /* luminous Shiraz with high WCAG contrast in dark mode */
+}
+
+.dark .text-gray-400,
+.dark .text-slate-400,
+.dark .text-stone-400,
+.dark .text-zinc-400 {
+  color: #64748b !important; /* slate-500 */
+}
+
+/* STUFE 3: Dark Mode Harmonisation - Streng Schwarz, Weiß, Graustufen & THA-Magenta */
+.dark [class*="text-rose-"],
+.dark [class*="text-red-"],
+.dark [class*="text-fuchsia-"],
+.dark [class*="text-magenta"] {
+  color: #ff3b77 !important; /* Luminous THA-Magenta for text accents */
+}
+
+/* Alle weiteren Textfarben auf klare neutrale Graustufen standardisieren */
+.dark [class*="text-emerald-"],
+.dark [class*="text-green-"],
+.dark [class*="text-blue-"],
+.dark [class*="text-sky-"],
+.dark [class*="text-cyan-"],
+.dark [class*="text-indigo-"],
+.dark [class*="text-purple-"],
+.dark [class*="text-violet-"],
+.dark [class*="text-amber-"],
+.dark [class*="text-yellow-"],
+.dark [class*="text-orange-"] {
+  color: #e2e8f0 !important; /* slate-200 neutral legible text */
+}
+
+/* Rose/Red/Magenta Hinterlegungen in Dark Mode */
+.dark [class*="bg-rose-50"],
+.dark [class*="bg-rose-100"],
+.dark [class*="bg-red-50"],
+.dark [class*="bg-red-100"],
+.dark [class*="bg-shiraz/5"],
+.dark [class*="bg-shiraz/10"],
+.dark [class*="bg-shiraz/20"] {
+  background-color: rgba(255, 59, 119, 0.12) !important;
+}
+
+/* ==========================================================================
+   SYSTEMWEIT KEINE FARBVERLÄUFE IM DUNKELMODUS (Flat Dark System)
+   Eliminiert reflexionsbehaftete und unruhige Farb- und Helligkeitsverläufe
+   im Dark Mode zugunsten planer, homogener und augenschonender Oberflächen.
+   ========================================================================== */
+.dark [class*="bg-gradient-"],
+.dark [class*="bg-gradient"],
+.dark [style*="linear-gradient"],
+.dark [style*="radial-gradient"] {
+  background-image: none !important;
+}
+
+/* Spezifische flache Belegungen für Card- & Rig-Hintergründe im Dunkelmodus */
+.dark [class*="bg-gradient-"][class*="from-slate-100"],
+.dark [class*="bg-gradient-"][class*="from-slate-50"],
+.dark [class*="bg-gradient-"][class*="from-white"],
+.dark [class*="bg-gradient-"][class*="from-off-white"],
+.dark [class*="bg-gradient-"][class*="from-middle-blue"],
+.dark [class*="bg-gradient-"][class*="from-shiraz/5"],
+.dark [class*="bg-gradient-"][class*="from-rose-50"] {
+  background-color: #0f172a !important; /* slate-900 */
+  border-color: #334155 !important;
+}
+
+.dark [class*="bg-gradient-"][class*="from-slate-700"],
+.dark [class*="bg-gradient-"][class*="from-slate-800"],
+.dark [class*="bg-gradient-"][class*="from-slate-600"],
+.dark [class*="bg-gradient-"][class*="from-slate-400"] {
+  background-color: #1e293b !important; /* slate-800 */
+  border-color: #334155 !important;
+}
+
+.dark [class*="bg-gradient-"][class*="from-slate-900"],
+.dark [class*="bg-gradient-"][class*="from-slate-950"],
+.dark [class*="bg-gradient-"][class*="from-black"] {
+  background-color: #020617 !important; /* slate-950 */
+}
+
+.dark [class*="bg-gradient-"][class*="from-shiraz"] {
+  background-color: #a3113e !important;
+}
+
+/* Universeller Fallback für alle weiteren Gradient-Klassen im Dunkelmodus */
+.dark [class*="bg-gradient-"] {
+  background-color: #0f172a !important;
+}
+
+/* Alle weiteren bunten Hinterlegungen auf dezente Slate-800 Panels abbilden */
+.dark [class*="bg-emerald-50"],
+.dark [class*="bg-emerald-100"],
+.dark [class*="bg-green-50"],
+.dark [class*="bg-green-100"],
+.dark [class*="bg-blue-50"],
+.dark [class*="bg-blue-100"],
+.dark [class*="bg-sky-50"],
+.dark [class*="bg-sky-100"],
+.dark [class*="bg-indigo-50"],
+.dark [class*="bg-indigo-100"],
+.dark [class*="bg-purple-50"],
+.dark [class*="bg-purple-100"],
+.dark [class*="bg-violet-50"],
+.dark [class*="bg-violet-100"],
+.dark [class*="bg-amber-50"],
+.dark [class*="bg-amber-100"],
+.dark [class*="bg-yellow-50"],
+.dark [class*="bg-yellow-100"],
+.dark [class*="bg-orange-50"],
+.dark [class*="bg-orange-100"] {
+  background-color: #1e293b !important; /* slate-800 */
+}
+
+/* Rose/Red/Magenta Rahmen in Dark Mode */
+.dark [class*="border-rose-200"],
+.dark [class*="border-rose-300"],
+.dark [class*="border-red-200"],
+.dark [class*="border-shiraz/20"],
+.dark [class*="border-shiraz/30"] {
+  border-color: rgba(255, 59, 119, 0.28) !important;
+}
+
+/* Alle weiteren Rahmen auf Slate-700 abbilden */
+.dark [class*="border-emerald-200"],
+.dark [class*="border-green-200"],
+.dark [class*="border-blue-200"],
+.dark [class*="border-sky-200"],
+.dark [class*="border-indigo-200"],
+.dark [class*="border-purple-200"],
+.dark [class*="border-violet-200"],
+.dark [class*="border-amber-200"],
+.dark [class*="border-yellow-200"],
+.dark [class*="border-orange-200"] {
+  border-color: #334155 !important;
+}
+
+/* Table styling adjustments */
+.dark table,
+.dark thead,
+.dark tbody,
+.dark tr,
+.dark th,
+.dark td {
+  border-color: #334155 !important;
+}
+.dark thead,
+.dark th,
+.dark tr.bg-slate-50,
+.dark tr.bg-gray-50 {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+.dark tr:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* General interactive controls */
+.dark input[type="text"], 
+.dark input[type="number"], 
+.dark input[type="password"],
+.dark input[type="email"],
+.dark textarea, 
+.dark select {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+.dark input::placeholder {
+  color: #64748b !important;
+}
+
+/* Interactive buttons & tab pills in dark mode */
+.dark button.bg-white:not([class*="bg-shiraz"]),
+.dark [role="button"].bg-white:not([class*="bg-shiraz"]) {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+.dark button.bg-white:not([class*="bg-shiraz"]):hover,
+.dark [role="button"].bg-white:not([class*="bg-shiraz"]):hover {
+  background-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+/* Katex / mathematical expressions readability */
+.dark .katex {
+  color: #f8fafc !important; /* crisp neutral formula rendering in dark mode */
+}
+
+/* GLOBAL MINIMUM FONT SIZE SAFETY LAYER FOR ACCESSIBILITY
+   Verhindert unlesbare Mikro-Schriften in der gesamten App, ohne das Layout zu brechen. */
+.text-\[9px\], .text-\[9\.5px\] {
+  font-size: 0.75rem !important; /* Erhöht 9px/9.5px auf 12px (text-xs) */
+}
+.text-\[10px\], .text-\[10\.5px\] {
+  font-size: 0.8125rem !important; /* Erhöht 10px/10.5px auf 13px */
+}
+.text-\[11px\] {
+  font-size: 0.875rem !important; /* Erhöht 11px auf 14px (text-sm) */
+}
+
+/* Schutz vor zu kleinen Zwischenüberschriften */
+h4 {
+  font-size: 0.9375rem !important; /* Gewährleistet mind. 15px für Unterüberschriften */
+}
+h5 {
+  font-size: 0.875rem !important; /* Gewährleistet mind. 14px für Kärtchen-Titel */
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom Slider Styling */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: var(--shiraz);
+  cursor: pointer;
+  margin-top: -8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background 0.2s, transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  background: var(--torch-red);
+  transform: scale(1.1);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: var(--home-grau);
+  border-radius: 2px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+@media print {
+  @page {
+    margin: 1.5cm 1cm;
+    size: A4 portrait;
+  }
+  
+  body {
+    background-color: white !important;
+    color: #111827 !important;
+    font-size: 13px !important;
+  }
+  
+  /* Hide sidebar, headers, footers and tabs */
+  aside, 
+  header, 
+  nav, 
+  footer, 
+  .print\:hidden,
+  #print-spickzettel-btn {
+    display: none !important;
+  }
+  
+  /* Adjust main container to full screen space for printing */
+  .lg\:pl-64 {
+    padding-left: 0 !important;
+  }
+  
+  .pt-16 {
+    padding-top: 0 !important;
+  }
+  
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ensure backgrounds and exact colors print high fidelity */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Force multi-column flex/grids to stack vertically in a clean document list format */
+  .grid, 
+  .grid-cols-1, 
+  .grid-cols-2, 
+  .sm\:grid-cols-3, 
+  .sm\:grid-cols-4, 
+  .md\:grid-cols-2, 
+  .md\:grid-cols-5 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+  }
+  
+  /* Render card borders sharply, ensure no splitting across pages */
+  .bg-white, 
+  .bg-slate-50\/50, 
+  .rounded-2xl, 
+  .rounded-xl, 
+  .rounded-lg, 
+  .p-6, 
+  .p-5, 
+  .p-4,
+  .quick-calc-card,
+  blockquote, 
+  table, 
+  tr, 
+  pre {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border: 1px solid #d1d5db !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    margin-bottom: 1.25rem !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+  }
+  
+  /* Hide range sliders to leave only their descriptive numeric value text labels */
+  input[type="range"] {
+    display: none !important;
+  }
+  
+  /* Format interactive buttons as simple, print-safe flat badge labels */
+  button, 
+  [role="button"] {
+    display: inline-block !important;
+    background-color: #ffffff !important;
+    color: #374151 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 0.35rem 0.65rem !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    pointer-events: none !important;
+  }
+  
+  /* Highlight active/selected materials or options elements cleanly in print */
+  button.bg-indigo-600, 
+  button.bg-shiraz, 
+  button[class*="bg-indigo-650"] {
+    background-color: #f3f4f6 !important;
+    border: 2px solid #111827 !important;
+    color: #111827 !important;
+  }
+  
+  /* Format info alert boxes cleanly */
+  .bg-amber-50, 
+  .bg-indigo-50, 
+  .bg-emerald-50, 
+  .bg-red-50 {
+    background-color: #f9fafb !important;
+    border: 1.5px dashed #9ca3af !important;
+    color: #111827 !important;
+  }
+
+  /* Expand hidden details to be visible on printed form */
+  .collapse, .hidden-print-show {
+    display: block !important;
+  }
+
+  /* Standardized print footer typography and spacing rules */
+  .print-footer {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border: none !important;
+    border-top: 1px dashed #9ca3af !important;
+    background: transparent !important;
+    padding-top: 0.75rem !important;
+    margin-top: 2.5rem !important;
+    font-size: 11px !important;
+    color: #4b5563 !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Ensure canvases and charts rescale to fit print bounds */
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* ==========================================================================
+   BARRIEREFREIHEIT / ACCESSIBILITY (BITV 2.0 / WCAG 2.1 AAA) MODES
+   ========================================================================== */
+
+/* 1. Hoher Kontrast Modus */
+.a11y-high-contrast {
+  --color-text-main: #000000 !important;
+  --text-main: #000000 !important;
+  color: #000000 !important;
+}
+
+.a11y-high-contrast p,
+.a11y-high-contrast span,
+.a11y-high-contrast li,
+.a11y-high-contrast td {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+.a11y-high-contrast .dark p,
+.a11y-high-contrast.dark p,
+.a11y-high-contrast.dark span,
+.a11y-high-contrast.dark li,
+.a11y-high-contrast.dark td {
+  color: #ffffff !important;
+}
+
+.a11y-high-contrast input,
+.a11y-high-contrast select,
+.a11y-high-contrast textarea,
+.a11y-high-contrast button {
+  border-width: 2px !important;
+  border-color: #000000 !important;
+}
+
+.a11y-high-contrast.dark input,
+.a11y-high-contrast.dark select,
+.a11y-high-contrast.dark textarea,
+.a11y-high-contrast.dark button {
+  border-color: #ffffff !important;
+}
+
+/* 2. Lesefreundliche Schriftart (Dyslexia / Reading Ease) */
+.a11y-dyslexic-font body,
+.a11y-dyslexic-font p,
+.a11y-dyslexic-font span,
+.a11y-dyslexic-font button,
+.a11y-dyslexic-font input,
+.a11y-dyslexic-font table {
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.1em !important;
+  line-height: 1.8 !important;
+}
+
+/* 3. Reduzierte Bewegung */
+.a11y-reduced-motion *,
+.a11y-reduced-motion *::before,
+.a11y-reduced-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* 4. Tastatur-Fokusindikator */
+.a11y-focus-ring *:focus-visible {
+  outline: 3px solid #ff0350 !important;
+  outline-offset: 3px !important;
+}
+
+/* Theme Toggle Button Layout Stability on Dark Mode Loading */
+@media (prefers-color-scheme: dark) {
+  #theme-toggle-btn {
+    display: block;
+  }
+}
+
+

@@ -1,0 +1,145 @@
+import React, { useState } from 'react';
+import { Recycle, RotateCcw, Box, ArrowRight, ArrowDown, RefreshCw, Calculator, Building2 } from 'lucide-react';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+
+export default function Kreislaufwirtschaft() {
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="p-2 bg-blue-100 rounded-lg text-blue-700">
+            <RefreshCw size={24} />
+          </div>
+          <h2 className="text-xl font-bold text-text-main">Kreislaufwirtschaft (Circular Economy)</h2>
+        </div>
+        
+        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
+          <p>
+            Die Kreislaufwirtschaft im Bauwesen zielt darauf ab, den Ressourcenverbrauch zu minimieren, Abfälle zu vermeiden und Materialien so lange wie möglich in geschlossenen Kreisläufen zu halten. 
+            Der Bausektor ist für über 50% des weltweiten Ressourcenverbrauchs und Abfallaufkommens verantwortlich, weshalb ein Umdenken vom linearen Modell ("Take-Make-Dispose") zwingend erforderlich ist.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* R-Strategien */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
+              <RotateCcw size={20} className="text-shiraz" /> Die R-Strategien (Hierarchie)
+            </h3>
+            
+            <div className="flex flex-col gap-3">
+              <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl flex gap-4 items-start">
+                <div className="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                <div>
+                  <h4 className="font-bold text-emerald-800">Refuse (Verzichten) / Reduce (Reduzieren)</h4>
+                  <p className="text-sm text-emerald-700/80 mt-1">
+                    Höchste Priorität. Vermeidung von Neubau durch Umnutzung von Bestandsgebäuden. Materialsparende Konstruktionen (z.B. Leichtbau, Topologieoptimierung).
+                  </p>
+                </div>
+              </div>
+              
+              <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl flex gap-4 items-start">
+                <div className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                <div>
+                  <h4 className="font-bold text-blue-800">Reuse (Wiederverwenden)</h4>
+                  <p className="text-sm text-blue-700/80 mt-1">
+                    Bauteile (z.B. Stahlträger, Ziegel, Fenster) werden nach dem Rückbau direkt oder mit minimaler Aufbereitung in neuen Projekten wiederverwendet. Erfordert zerstörungsfreien Rückbau (Design for Disassembly).
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl flex gap-4 items-start">
+                <div className="bg-amber-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                <div>
+                  <h4 className="font-bold text-amber-800">Repair (Reparieren) / Refurbish (Aufarbeiten)</h4>
+                  <p className="text-sm text-amber-700/80 mt-1">
+                    Verlängerung der Lebensdauer von Bauteilen und Gebäuden durch Instandhaltung, Sanierung und Modernisierung.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-orange-50 border border-orange-200 p-4 rounded-xl flex gap-4 items-start">
+                <div className="bg-orange-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">4</div>
+                <div>
+                  <h4 className="font-bold text-orange-800">Recycle (Recyceln)</h4>
+                  <p className="text-sm text-orange-700/80 mt-1">
+                    Stoffliche Verwertung von Materialien. Das Material wird eingeschmolzen oder gebrochen (z.B. Recyclingbeton, Stahlschrott). Benötigt oft viel Energie und führt häufig zu "Downcycling" (Qualitätsverlust).
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-torch-red/5 border border-torch-red/20 p-4 rounded-xl flex gap-4 items-start">
+                <div className="bg-torch-red text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">5</div>
+                <div>
+                  <h4 className="font-bold text-torch-red">Recover (Energetisch Verwerten) / Dispose (Deponieren)</h4>
+                  <p className="text-sm text-text-main/70 mt-1">
+                    Letzte Option. Verbrennung von Holz/Kunststoffen zur Energiegewinnung oder Ablagerung auf Deponien (z.B. asbesthaltige Stoffe, Bauschutt ohne Recyclingpotenzial).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Urban Mining & Design */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="border border-home-grau/20 rounded-xl p-5 bg-white">
+              <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
+                <Box size={20} className="text-shiraz" /> Urban Mining & Gebäuderessourcenpässe
+              </h3>
+              <p className="text-sm text-text-main/80 mb-3">
+                Betrachtet die gebaute Umwelt (Städte) als Rohstofflager der Zukunft. Das Gebäude wird als Materialdatenbank verstanden.
+              </p>
+              <ul className="text-sm text-text-main/70 space-y-2 list-disc list-inside">
+                <li><strong>Gebäudepass / Materialpass (z.B. Madaster):</strong> Digitale Zwillinge, die exakt dokumentieren, welche Materialien in welchen Mengen und Qualitäten wo im Gebäude verbaut sind.</li>
+                <li><strong>Rückbaukataster:</strong> Erfassung von Gebäuden, die abgerissen werden, um Materialien gezielt zu bergen und in die Lieferkette zurückzuführen.</li>
+                <li><strong>Sekundärrohstoffe:</strong> Aktive Nutzung von umgearbeiteten Rohstoffen (z.B. RC-Gesteinskörnung, Altholz, recycelter Baustahl) statt Primärmaterialausbeutung.</li>
+              </ul>
+            </div>
+
+            <div className="border border-home-grau/20 rounded-xl p-5 bg-white">
+              <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
+                <Recycle size={20} className="text-shiraz" /> Design for Disassembly (DfD)
+              </h3>
+              <p className="text-sm text-text-main/80 mb-3">
+                Konstruieren für den Rückbau: Gebäude müssen so geplant werden, dass sie am Ende ihrer Lebensdauer sortenrein zerlegt werden können.
+              </p>
+              <div className="bg-off-white p-3 rounded-lg border border-home-grau/20 text-sm">
+                <div className="flex items-center gap-2 text-torch-red font-bold mb-1">
+                  <ArrowDown size={16} /> Verbundbauweise (hemmt Zirkularität)
+                </div>
+                <p className="text-xs text-text-main/70 mb-3">
+                  Geklebte Schichten (z.B. Fliesenkleber), Verbundwerkstoffe (WDVS, CFK), Nassverbindungen (Ortbeton, Mörtel). Diese Materialien müssen beim Abbruch aufwendig recycelt oder oft sogar verbrannt/deponiert werden.
+                </p>
+                
+                <div className="flex items-center gap-2 text-emerald-600 font-bold mb-1">
+                  <ArrowRight size={16} /> Trennbare Bauweise (fördert Zirkularität)
+                </div>
+                <p className="text-xs text-text-main/70">
+                  Geschraubte oder gesteckte Verbindungen, modulare Bauteile, sichtbare Leitungsführung und sortenreine Bauteilschichten. Diese Bauweisen ermöglichen eine direkte Wiederverwendung (Reuse) von Elementen in neuen Projekten.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ModuleFooter 
+        wikipedia={[
+                { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' }
+              ]}
+              regelwerke={[
+          'Kreislaufwirtschaftsgesetz (KrWG)',
+          'Ersatzbaustoffverordnung (EBV)',
+          'EU-Aktionsplan für die Kreislaufwirtschaft'
+        ]}
+        literatur={[
+          'Hebel, D. E. et al.: Urban Mining und kreislaufgerechtes Bauen',
+          'DGNB: Leitfaden Zirkuläres Bauen'
+        ]}
+        formeln={[]}
+      />
+    </div>
+  );
+}
+

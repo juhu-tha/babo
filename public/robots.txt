@@ -1,0 +1,6 @@
+# Robots.txt for BaustoffBoard (baustoffboard.de)
+User-agent: *
+Allow: /
+
+Sitemap: https://baustoffboard.de/sitemap.xml
+Sitemap: https://www.baustoffboard.de/sitemap.xml

@@ -1,0 +1,8 @@
+{
+  "name": "BaustoffBoard (beta)",
+  "description": "Interaktive Lern- und Wissensplattform f\u00fcr Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen & Co.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
