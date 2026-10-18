@@ -385,6 +385,15 @@ export function isKnownTab(tab: string): boolean {
 }
 
 function getInitialTab(): TabId {
+  // Direktlinks (z. B. baustoffboard.de/#spannbeton) beim ersten Laden berücksichtigen
+  try {
+    if (typeof window !== 'undefined') {
+      const hash = decodeURIComponent(window.location.hash.substring(1)).trim();
+      if (hash && isKnownTab(hash)) return resolveTabId(hash.toLowerCase());
+    }
+  } catch {
+    /* ungültiger Hash → Startseite */
+  }
   return 'start';
 }
 
