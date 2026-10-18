@@ -487,7 +487,7 @@ export default function Biegebemessung() {
                   })()}
                 </svg>
                 <div className="p-4 text-xs text-text-main/70 border-t border-home-grau/30">
-                  Diese Darstellung ist <strong>maßstäblich in Bezug auf die Profilhöhe h</strong>. Der Betondruckblock wird vereinfacht als Rechteck (<FormulaText text="0{,}8 \\cdot x" />) mit der Bemessungsspannung <FormulaText text="f_{cd}" /> angenommen.
+                  Diese Darstellung ist <strong>maßstäblich in Bezug auf die Profilhöhe h</strong>. Der Betondruckblock wird vereinfacht als Rechteck (<FormulaText text="0{,}8 \cdot x" />) mit der Bemessungsspannung <FormulaText text="f_{cd}" /> angenommen.
                 </div>
               </div>
             </div>

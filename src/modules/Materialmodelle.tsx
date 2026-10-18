@@ -709,10 +709,10 @@ function RheologySection() {
                   <Slider label={<FormulaText text="Elastizitätsmodul E" />} min={1} max={50} step={1} value={E} unit="MPa" onChange={e => setE(Number(e.target.value))} />
                 )}
                 {(model === 'newton' || model === 'maxwell' || model === 'kelvin' || model === 'zener' || model === 'bingham') && (
-                  <Slider label={<FormulaText text="Viskosität \\eta \\text{ bzw. } \\mu_p" />} min={5} max={100} step={5} value={eta} unit="MPa·s" onChange={e => setEta(Number(e.target.value))} />
+                  <Slider label={<FormulaText text="Viskosität \eta \text{ bzw. } \mu_p" />} min={5} max={100} step={5} value={eta} unit="MPa·s" onChange={e => setEta(Number(e.target.value))} />
                 )}
                 {(model === 'st_venant' || model === 'prandtl' || model === 'elasto_plastic' || model === 'bingham') && (
-                  <Slider label={<FormulaText text="Fließgrenze f_y \\text{ bzw. } \\tau_0" />} min={1} max={20} step={1} value={fy} unit="MPa" onChange={e => setFy(Number(e.target.value))} />
+                  <Slider label={<FormulaText text="Fließgrenze f_y \text{ bzw. } \tau_0" />} min={1} max={20} step={1} value={fy} unit="MPa" onChange={e => setFy(Number(e.target.value))} />
                 )}
                 {model === 'elasto_plastic' && (
                   <Slider label={<FormulaText text="Verfestigungsmodul E_t (Tangentenmodul)" />} min={0.5} max={10} step={0.5} value={Et} unit="MPa" onChange={e => setEt(Number(e.target.value))} />
@@ -1711,7 +1711,7 @@ export default function Materialmodelle() {
                     onChange={e => { setEtModVal(Number(e.target.value)); setEpPreset('custom'); }} 
                   />
                   <Slider 
-                    label={<FormulaText text="Max. aufgeprägte Dehnung \\varepsilon_{\\text{max}} (für Entlastungspfad)" />} 
+                    label={<FormulaText text="Max. aufgeprägte Dehnung \varepsilon_{\text{max}} (für Entlastungspfad)" />} 
                     min={3} 
                     max={40} 
                     step={1} 

@@ -1178,7 +1178,7 @@ export default function Rueckbau() {
                     <div>
                       <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
-                        Schritt 4: Bestimmung der Gesamtmasse (<FormulaText text="m_{\\text{ges}} = \sum m_i" />)
+                        Schritt 4: Bestimmung der Gesamtmasse (<FormulaText text="m_{\text{ges}} = \sum m_i" />)
                       </h5>
                       <p className="mb-2 text-text-main/75 text-xs">
                         Die Summe aller Fraktionen ergibt das geschätzte Abbruchgewicht auf der Baustelle:
@@ -1189,7 +1189,7 @@ export default function Rueckbau() {
                     <div>
                       <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
-                        Schritt 5: Mineralischer Anteil (<FormulaText text="P_{\\text{min}}" />) und Getrennthalte-Quote
+                        Schritt 5: Mineralischer Anteil (<FormulaText text="P_{\text{min}}" />) und Getrennthalte-Quote
                       </h5>
                       <p className="mb-2 text-text-main/75 text-xs">
                         Nach der Gewerbeabfallverordnung (GewAbfV) müssen Bauschuttfraktionen getrennt erfasst werden. Der mineralische Haupt-Massenstrom (Beton- und Mauerwerksbruch) beträgt:

@@ -1756,7 +1756,7 @@ export default function ZfP() {
               
               <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                 <p>
-                  <FormulaText text="Misst das elektrochemische Potential der Bewehrung gegen eine Referenzelektrode (z.B. \\text{Cu/CuSO}_4), um aktive Korrosion zu lokalisieren." />
+                  <FormulaText text="Misst das elektrochemische Potential der Bewehrung gegen eine Referenzelektrode (z.B. \text{Cu/CuSO}_4), um aktive Korrosion zu lokalisieren." />
                 </p>
               </div>
 
@@ -1771,7 +1771,7 @@ export default function ZfP() {
                 <div className="text-sm opacity-90 mb-1">Korrosionswahrscheinlichkeit</div>
                 <div className="text-3xl font-bold">{potentialResults.risk}</div>
                 <div className="text-xs opacity-75 mt-2">
-                  <FormulaText text="Referenzelektrode: \\text{Cu/CuSO}_4" />
+                  <FormulaText text="Referenzelektrode: \text{Cu/CuSO}_4" />
                 </div>
               </div>
             </div>
@@ -1847,7 +1847,7 @@ export default function ZfP() {
             </div>
 
             <Slider info="Parameter zur Anpassung der Berechnung."
-              label={<FormulaText text="Temperaturdifferenz (\\Delta T)" />}
+              label={<FormulaText text="Temperaturdifferenz (\Delta T)" />}
               min={0} max={5} step={0.1}
               value={tempDiff} unit="K"
               

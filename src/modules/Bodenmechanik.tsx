@@ -507,19 +507,19 @@ export default function Bodenmechanik() {
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Bodenparameter</h3>
                 <div className="grid grid-cols-1 gap-4">
                   <Slider info="Kohäsion des Bodens." label={<FormulaText text="Kohäsion (c)" />} min={0} max={100} step={1} value={c} unit="kN/m²" onChange={(e) => setC(Number(e.target.value))} />
-                  <Slider  label={<FormulaText text="Reibungswinkel (\\varphi)" />} min={0} max={45} step={1} value={phi} unit="°" onChange={(e) => setPhi(Number(e.target.value))} />
+                  <Slider  label={<FormulaText text="Reibungswinkel (\varphi)" />} min={0} max={45} step={1} value={phi} unit="°" onChange={(e) => setPhi(Number(e.target.value))} />
                 </div>
               </div>
 
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Spannungszustand</h3>
                 <div className="grid grid-cols-1 gap-4">
-                  <Slider info="Kleinste Hauptspannung (z.B. Seitendruck im Triaxialversuch)." label={<FormulaText text="Kleinste Hauptspannung (\\sigma_3)" />} min={0} max={200} step={5} value={sigma3} unit="kN/m²" onChange={(e) => {
+                  <Slider info="Kleinste Hauptspannung (z.B. Seitendruck im Triaxialversuch)." label={<FormulaText text="Kleinste Hauptspannung (\sigma_3)" />} min={0} max={200} step={5} value={sigma3} unit="kN/m²" onChange={(e) => {
                     const val = Number(e.target.value);
                     setSigma3(val);
                     if (val > sigma1) setSigma1(val);
                   }} />
-                  <Slider info="Größte Hauptspannung (z.B. Vertikaldruck)." label={<FormulaText text="Größte Hauptspannung (\\sigma_1)" />} min={0} max={500} step={5} value={sigma1} unit="kN/m²" onChange={(e) => {
+                  <Slider info="Größte Hauptspannung (z.B. Vertikaldruck)." label={<FormulaText text="Größte Hauptspannung (\sigma_1)" />} min={0} max={500} step={5} value={sigma1} unit="kN/m²" onChange={(e) => {
                     const val = Number(e.target.value);
                     setSigma1(val);
                     if (val < sigma3) setSigma3(val);
@@ -574,8 +574,8 @@ export default function Bodenmechanik() {
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Geometrie & Boden</h3>
                 <div className="grid grid-cols-1 gap-4">
                   <Slider label={<FormulaText text="Wandhöhe (h)" />} info="Höhe der Stützwand bzw. der vertikalen Geländestufe." min={1} max={10} step={0.5} value={h} unit="m" onChange={(e) => setH(Number(e.target.value))} />
-                  <Slider label={<FormulaText text="Wichte (\\gamma)" />} info="Die Wichte (feuchtes Raumgewicht) des anstehenden Bodens." min={15} max={22} step={0.5} value={gamma} unit="kN/m³" onChange={(e) => setGamma(Number(e.target.value))} />
-                  <Slider info="Der charakteristische Reibungswinkel des Bodens zur Scherfestigkeitsberechnung." label={<FormulaText text="Reibungswinkel (\\varphi)" />} min={15} max={45} step={1} value={phiErddruck} unit="°" onChange={(e) => setPhiErddruck(Number(e.target.value))} />
+                  <Slider label={<FormulaText text="Wichte (\gamma)" />} info="Die Wichte (feuchtes Raumgewicht) des anstehenden Bodens." min={15} max={22} step={0.5} value={gamma} unit="kN/m³" onChange={(e) => setGamma(Number(e.target.value))} />
+                  <Slider info="Der charakteristische Reibungswinkel des Bodens zur Scherfestigkeitsberechnung." label={<FormulaText text="Reibungswinkel (\varphi)" />} min={15} max={45} step={1} value={phiErddruck} unit="°" onChange={(e) => setPhiErddruck(Number(e.target.value))} />
                 </div>
               </div>
 
@@ -647,7 +647,7 @@ export default function Bodenmechanik() {
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Boden & Belastung</h3>
                 <div className="grid grid-cols-1 gap-4">
                   <Slider info="Dicke der Bodenschicht." label={<FormulaText text="Schichtdicke (h)" />} min={1} max={20} step={0.5} value={hSchicht} unit="m" onChange={(e) => setHSchicht(Number(e.target.value))} />
-                  <Slider  label={<FormulaText text="Zusatzspannung (\\Delta\\sigma)" />} min={10} max={200} step={5} value={deltaSigma} unit="kN/m²" onChange={(e) => setDeltaSigma(Number(e.target.value))} />
+                  <Slider  label={<FormulaText text="Zusatzspannung (\Delta\sigma)" />} min={10} max={200} step={5} value={deltaSigma} unit="kN/m²" onChange={(e) => setDeltaSigma(Number(e.target.value))} />
                   <Slider info="Steifemodul des Bodens." label={<FormulaText text="Steifemodul (E_s)" />} min={1} max={20} step={0.5} value={es} unit="MN/m²" onChange={(e) => setEs(Number(e.target.value))} />
                   <Slider  label={<FormulaText text="Konsolidierungsbeiwert (c_v)" />} min={0.1} max={10} step={0.1} value={cv} unit="m²/Jahr" onChange={(e) => setCv(Number(e.target.value))} />
                   
@@ -674,11 +674,11 @@ export default function Bodenmechanik() {
                   </div>
                   <div className="grid grid-cols-2 gap-4 border-t border-white/20 pt-4">
                     <div>
-                      <div className="text-white/80 text-xs mb-1 flex items-center gap-1"><Clock size={12}/> <FormulaText text="t_{50} (U=50\\%)" /></div>
+                      <div className="text-white/80 text-xs mb-1 flex items-center gap-1"><Clock size={12}/> <FormulaText text="t_{50} (U=50\%)" /></div>
                       <div className="text-xl font-bold">{formatDeZahl(konsolidierungResults.t_50, 1)} a</div>
                     </div>
                     <div>
-                      <div className="text-white/80 text-xs mb-1 flex items-center gap-1"><Clock size={12}/> <FormulaText text="t_{90} (U=90\\%)" /></div>
+                      <div className="text-white/80 text-xs mb-1 flex items-center gap-1"><Clock size={12}/> <FormulaText text="t_{90} (U=90\%)" /></div>
                       <div className="text-xl font-bold">{formatDeZahl(konsolidierungResults.t_90, 1)} a</div>
                     </div>
                   </div>

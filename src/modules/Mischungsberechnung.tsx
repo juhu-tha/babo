@@ -1946,7 +1946,7 @@ export default function Mischungsberechnung() {
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main"><FormulaText text="Volumenanteile (\\text{dm}^3/\\text{m}^3)" /></h3>
+              <h3 className="font-semibold mb-4 text-text-main"><FormulaText text="Volumenanteile (\text{dm}^3/\text{m}^3)" /></h3>
               <div className="h-[250px] mb-6">
                 <Pie data={pieChartData} options={{ maintainAspectRatio: false }} />
               </div>

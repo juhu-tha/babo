@@ -124,7 +124,7 @@ export default function Bruchmechanik() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <Slider info="Die von außen aufgebrachte Nennspannung im ungestörten Bauteilquerschnitt." label={<FormulaText text="Nennspannung (\\sigma)" />} min={1} max={500} step={1} value={sigma} unit="MPa" onChange={(e) => setSigma(Number(e.target.value))} />
+              <Slider info="Die von außen aufgebrachte Nennspannung im ungestörten Bauteilquerschnitt." label={<FormulaText text="Nennspannung (\sigma)" />} min={1} max={500} step={1} value={sigma} unit="MPa" onChange={(e) => setSigma(Number(e.target.value))} />
               <div className="mt-4"><Slider info="Die Länge des primären Risses (bzw. halbe Risslänge bei Innenrissen)." label={<FormulaText text="Risslänge (a)" />} min={0.1} max={100} step={0.1} value={a} unit="mm" onChange={(e) => setA(Number(e.target.value))} /></div>
               <div className="mt-4"><Slider info="Korrekturbeiwert für die Bauteilgeometrie, Risslage und Einspannbedingungen." label={<FormulaText text="Geometriefaktor (Y)" />} min={0.5} max={3.0} step={0.01} value={y} unit="-" onChange={(e) => setY(Number(e.target.value))} /></div>
               <div className="mt-4"><Slider info="Kritischer Spannungsintensitätsfaktor, bei dem sprödes Werkstoffversagen oder instabile Rissausbreitung beginnt." label={<FormulaText text="Risszähigkeit (K_{Ic})" />} min={0.1} max={100} step={0.1} value={kIc} unit="MPa√m" onChange={(e) => setKIc(Number(e.target.value))} /></div>
