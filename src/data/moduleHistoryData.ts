@@ -580,7 +580,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '1975',
         title: 'Europäisches Denkmalschutzjahr: Die Wende zur behutsamen Stadterneuerung',
         category: 'Recht & Regularien',
-        description: 'Abkehr von der rücksichtslosen Flächensanierung („Autogerechte Stadt“, Abriss historischer Altbauviertel). Beginn der denkmalpflegerischen Landesgesetze in den deutschen Bundesländern.',
+        description: 'Abkehr von der rücksichtslosen Flächensanierung („Autogerechte Stadt“, Abriss historischer Altbauviertel). Die meisten Landesdenkmalschutzgesetze entstanden 1971–1980 (z. B. Baden-Württemberg 1971, Bayern 1973).',
         impact: 'Rettung hunderttausender Gründerzeitaltbauten und historischer Innenstädte vor dem Abriss; Etablierung steuerlicher Förderungen (Denkmal-AfA).',
         keyReference: 'Charta von Amsterdam (1975)'
       },
@@ -596,7 +596,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2020er–heute (2024–2026)',
         title: 'Paradigmenwechsel: Bestandserhalt als primärer Klimaschutz',
         category: 'Paradigmenwechsel',
-        description: 'Über 70 % der Bauinvestitionen in Deutschland entfallen heute auf den Bestand. Umbauordnung der Architektenkammern und Gebäudetyp-e-Initiativen fordern Erleichterungen für das Bauen im Bestand, um Abriss und Neubauemissionen zu stoppen.',
+        description: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen heute auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Umbauordnung der Architektenkammern und Gebäudetyp-e-Initiativen fordern Erleichterungen für das Bauen im Bestand, um Abriss und Neubauemissionen zu stoppen.',
         impact: 'Der Bestand wird als unverzichtbarer CO2-Speicher begriffen; Sanierung und Umnutzung genießen Vorrang vor Neubau.',
         keyReference: 'Bundesstiftung Baukultur / Gebäudetyp e'
       }

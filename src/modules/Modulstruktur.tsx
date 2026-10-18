@@ -621,7 +621,7 @@ export default function Modulstruktur() {
       glowColor: 'border-slate-300 text-slate-400 ring-slate-400/10',
       icon: <Building2 size={16} className="text-shiraz" />,
       nodes: [
-        { id: 'vl_bauen_im_bestand', label: 'Bauen im Bestand (1/2 SWS)', type: 'standard', description: 'Vorlesung: 1/2 SWS, Bestandserfassung, ZfP und prEN 1990-2.' }
+        { id: 'vl_bauen_im_bestand', label: 'Bauen im Bestand (1/2 SWS)', type: 'standard', description: 'Vorlesung: 1/2 SWS, Bestandserfassung, ZfP und EN 1990-2:2026.' }
       ]
     },
     {

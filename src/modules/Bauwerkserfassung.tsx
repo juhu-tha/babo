@@ -119,7 +119,7 @@ export default function Bauwerkserfassung() {
             <span>Hinweis: Gilt für die an der TH Augsburg vorhandenen Geräte und verwendeten Softwaretools.</span>
           </div>
           <div className="bg-slate-50 border border-home-grau/30 px-4 py-2.5 rounded-lg text-xs font-mono text-slate-600 flex gap-4 items-center shrink-0">
-            <span>📐 Toleranz: DIN 18202 / DIN 18702</span>
+            <span>📐 Toleranz: DIN 18202 / DIN 18710</span>
             <span>🏛️ Leitfaden: Denkmalpflege-Richtlinien</span>
           </div>
         </div>
@@ -236,7 +236,7 @@ export default function Bauwerkserfassung() {
                   )}
                   {selectedStufe === 3 && (
                     <>
-                      <li><strong>Genauigkeitseignung:</strong> Vorgeschriebener Standard der Landesämter für Denkmalpflege (LfD) bei schützenswerten Bauwerken.</li>
+                      <li><strong>Genauigkeitseignung:</strong> Von den Landesdenkmalämtern empfohlener Standard bei schützenswerten Bauwerken (Eckstein; Toleranzwerte dort prüfen).</li>
                       <li><strong>Gerätespektrum:</strong> Tachymeter (Totalstation) zur Festpunktnetzmessung kombiniert mit verzugsarmer Fotogrammetrie oder lokalem Multipunktscanning.</li>
                       <li><strong>Besonderheit:</strong> Verbiegungen und krumme Wandfluchten werden geometrisch korrekt in Form von deformierten Schnitten dargestellt.</li>
                     </>
@@ -260,7 +260,7 @@ export default function Bauwerkserfassung() {
                     </span>
                   </div>
                   <div className="flex justify-between border-b border-home-grau/30 pb-1.5 mb-1.5">
-                    <span>Grenzabweichung DIN 18202:</span>
+                    <span>Vergleich Ausführungstoleranz DIN 18202 (keine Aufmaßgenauigkeit):</span>
                     <span className="font-bold text-slate-800">
                       {selectedStufe === 1 && 'N/A (nicht nachprüfbar)'}
                       {selectedStufe === 2 && 'Grenze Spalte 5 (± 16mm auf 4m)'}
@@ -337,7 +337,7 @@ export default function Bauwerkserfassung() {
                       tol: '± 1.0 - 3.0 mm',
                       speed: 'Sehr schnell',
                       work: 'Hoch (Registrierung, Filterung in Leica Cyclone)',
-                      pros: 'Millionen Punkte pro Sekunde, lückenloses 3D-Bashing, Millimetergenauigkeit auch bei Verbeulung.',
+                      pros: 'Bis 680.000 Punkte/s (BLK360 G2), lückenlose 3D-Erfassung, Genauigkeit laut Datenblatt im Bereich weniger Millimeter (z. B. 4 mm @ 10 m).',
                       cons: 'Hohe Anschaffungskosten, enorme Datenmengen, Abschattung (tote Winkel) erfordern viele Standpunkte.',
                       bg: 'bg-slate-50/15'
                     },
@@ -494,7 +494,7 @@ export default function Bauwerkserfassung() {
                     Eurocode 5 Holz-Dachstuhlnachweis mit Vorverformung hocheffizient simulieren
                   </h3>
                   <p className="text-xs text-slate-500 font-sans mt-0.5">
-                    Sieh live, wie eine vernachlässigte Vorverformung (Schiefstellung des Sparrens) aus dem unpräzisen Aufmaß zu lebensbedrohlichen Spannungsüberhöhungen führen kann.
+                    Sehen Sie live, wie eine vernachlässigte Vorverformung (Schiefstellung des Sparrens) aus einem unpräzisen Aufmaß zu deutlichen Spannungserhöhungen führen kann.
           </p>
         </div>
               </div>
@@ -662,7 +662,7 @@ export default function Bauwerkserfassung() {
                         </div>
                       ) : (
                         <div className="text-slate-700 border-indigo-100 bg-indigo-50/20 p-2 rounded">
-                          <strong>Tragverhalten stabil:</strong> Das verformte Bauteil hält den Lasten noch stand (Auslastung: {formatDeZahl(staticsResults.limitRatio, 1)} %). Dennoch ist der Sicherheitsbeiwert durch die Exzentrizität um <strong>{formatDeZahl(staticsResults.limitRatio - staticsResults.limitRatioIdeal, 1)} %</strong> gemindert worden.
+                          <strong>Tragverhalten stabil:</strong> Das verformte Bauteil hält den Lasten noch stand (Auslastung: {formatDeZahl(staticsResults.limitRatio, 1)} %). Die Auslastung steigt durch die Exzentrizität von <strong>{formatDeZahl(staticsResults.limitRatioIdeal, 1)} %</strong> auf <strong>{formatDeZahl(staticsResults.limitRatio, 1)} %</strong> (Interaktion σ_c,d/(k_c·f_c,0,d) + σ_m,d/f_m,d ≤ 1, EC5 6.3.2).
                         </div>
                       )}
                     </div>
@@ -688,14 +688,13 @@ export default function Bauwerkserfassung() {
           { title: "Eurocode 5 (Holzbau)", url: "https://de.wikipedia.org/wiki/Eurocode_5" }
         ]}
         literatur={[
-          "Möller, D.: Geodätische Bauwerksaufnahme - Grundlagen und Praxis verformungsgetreuer Pläne.",
-          "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011",
-          "Neuhaus, H.: Ingenieurholzbau: Grundlagen - Bemessung - Nachweise nach Eurocode 5."
+          "Neuhaus, H.: Ingenieurholzbau: Grundlagen - Bemessung - Nachweise nach Eurocode 5.",
+          "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
         ]}
         regelwerke={[
           { title: "DIN 18710-1 (Ingenieurvermessung - Teil 1: Allgemeine Anforderungen)", url: "https://www.dinmedia.de/" },
           { title: "DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/" },
-          { title: "Richtlinie für verformungsgetreues Aufmaß (Verband der Landesarchäologen)", url: "https://www.landesarchaeologen.de/" }
+          { title: "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg)", url: "https://www.denkmalpflege-bw.de/" }
         ]}
         formeln={[
           {

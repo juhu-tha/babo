@@ -343,7 +343,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
                   ects: '5 ECTS',
                   sws: '1/2 SWS',
                   icon: Building2,
-                  desc: 'Bauaufnahme, historische Baustoffe, Genauigkeitsstufen nach Koldewey, DBV-Merkblatt und prEN 1990-2.',
+                  desc: 'Bauaufnahme, historische Baustoffe, Genauigkeitsstufen nach Koldewey, DBV-Merkblatt und EN 1990-2:2026.',
                   targetTab: 'bestand'
                 },
                 {
@@ -427,7 +427,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         <LectureModuleView
           lectureId="bauen_im_bestand"
           title="Vorlesung: Bauen im Bestand"
-          subtitle="Bestandserfassung, historische Werkstoffe, ZfP-Diagnostik und probabilistische Nachrechnung (prEN 1990-2)"
+          subtitle="Bestandserfassung, historische Werkstoffe, ZfP-Diagnostik und probabilistische Nachrechnung (EN 1990-2:2026)"
           icon={Building2}
           modulDetails={{
             sws: '1/2',
@@ -452,7 +452,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             { nr: 11, title: 'Bauordnungsrecht & Bestandsschutz', topic: 'Rechtmäßige Errichtung, Erlöschensgründe, WTA-Merkblätter (Referate 1–11)' },
             { nr: 12, title: 'Statische Nachweise im Bestand', topic: 'Grenzen des semiprobabilistischen Konzepts (β = 3,8), rechnerische Bestrafung im Bestand' },
             { nr: 13, title: 'DBV-Merkblatt Modifizierte Teilsicherheitsbeiwerte', topic: 'Abminderung von γ_c auf 1,30 und γ_G auf 1,20 bei duktilem Biegezugversagen' },
-            { nr: 14, title: 'Eurocode prEN 1990-2 & Bayes\'sches Updating', topic: 'Preliminary vs. Detailed Assessment, Formel f_yd = f_ym · exp(-α_R β V_f - 0,5 V_f²)' }
+            { nr: 14, title: 'Eurocode EN 1990-2:2026 & Bayes\'sches Updating', topic: 'Preliminary vs. Detailed Assessment, Formel f_yd = f_ym · exp(-α_R β V_f - 0,5 V_f²)' }
           ]}
         />
       )}
@@ -623,7 +623,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         regelwerke={[
           { title: 'Rahmenprüfungsordnung der Technischen Hochschule Augsburg (THA)', url: 'https://www.tha.de/' },
           { title: 'DIN EN 1990: Eurocode - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/' },
-          { title: 'prEN 1990-2: Eurocode - Bewertung bestehender Tragwerke', url: 'https://www.dinmedia.de/' }
+          { title: 'EN 1990-2:2026: Eurocode - Bewertung bestehender Tragwerke', url: 'https://www.dinmedia.de/' }
         ]}
         formeln={[]}
       />

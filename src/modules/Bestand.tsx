@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { GMODG_ANLAGE7, FX, uRetrofit, dRequired } from '@/src/utils/bestandKern';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Slider } from '@/src/components/ui/Slider';
@@ -223,26 +224,28 @@ export default function Bestand() {
 
   // Calculations for thermal refurbishment
   const sanierungResults = useMemo(() => {
+    // Höchstwerte nach Anlage 7 GModG; Temperatur-Korrekturfaktor Fx nach DIN V 4108-6
     let originalU = currentEraData.uValueWall;
-    let gegLimit = 0.24;
+    let gegLimit: number = GMODG_ANLAGE7.aussenwand;
+    let fx = FX.aussenwand ?? 1.0;
 
     if (selectedComp === 'roof') {
       originalU = currentEraData.uValueRoof;
-      gegLimit = 0.20;
+      gegLimit = GMODG_ANLAGE7.steildach_oGD; // Steildach / oberste Geschossdecke (Flachdach: 0,20)
+      fx = FX.steildach_oGD ?? 0.8;
     } else if (selectedComp === 'floor') {
       originalU = currentEraData.uValueFloor;
-      gegLimit = 0.30;
+      gegLimit = GMODG_ANLAGE7.kellerdecke_erdreich;
+      fx = FX.kellerdecke_erdreich ?? 0.6;
     }
 
-    const rOriginal = 1 / originalU;
-    const rInsulation = (thickness / 1000) / lambda;
-    const rNew = rOriginal + rInsulation;
-    const newU = 1 / rNew;
+    const newU = uRetrofit(originalU, thickness / 1000, lambda);
     const deltaU = Math.max(0, originalU - newU);
 
-    // Energy calculations
-    // Formula: ΔQ = ΔU * A * HGT * 24h / 1000  (approx 85 kKh equivalent to ~3000 HGT * 24 / 1000)
-    const annualEnergySavings = deltaU * area * 85; 
+    // Heizwärmeeinsparung: ΔQ = ΔU · A · F_x · G_t20/15 · 24 / 1000 [kWh/a], G_t = 3 500 Kd/a (Standortmittel)
+    const GT = 3500;
+    const annualEnergySavings = deltaU * area * fx * GT * 24 / 1000;
+    const dReqMm = Math.ceil(dRequired(newU, gegLimit, lambda) * 1000);
 
     const heatConfig = HEATING_SOURCES.find(h => h.id === heatingSource) || HEATING_SOURCES[0];
     const annualCostSavings = annualEnergySavings * heatConfig.costPerKwh;
@@ -250,7 +253,7 @@ export default function Bestand() {
 
     const totalInvestment = area * insulationCostM2;
     const paybackYears = annualCostSavings > 0 ? (totalInvestment / annualCostSavings) : 999;
-    const gegCompliant = newU <= gegLimit;
+    const gegCompliant = newU <= gegLimit + 1e-9;
 
     return {
       originalU,
@@ -262,7 +265,8 @@ export default function Bestand() {
       annualCostSavings,
       annualCo2Savings,
       totalInvestment,
-      paybackYears
+      paybackYears,
+      fx, GT, dReqMm
     };
   }, [currentEraData, selectedComp, area, thickness, lambda, insulationCostM2, heatingSource]);
 
@@ -296,8 +300,8 @@ export default function Bestand() {
         fill: false,
       },
       {
-        label: 'GModG Grenzwert Steildach (0,20 W/(m²K))',
-        data: Array(BAUALTERSKLASSEN.length).fill(0.20),
+        label: 'GModG Grenzwert Steildach / oberste Geschossdecke (0,24 W/(m²K))',
+        data: Array(BAUALTERSKLASSEN.length).fill(0.24),
         borderColor: '#94A3B8',
         borderDash: [4, 4],
         pointRadius: 0,
@@ -336,7 +340,7 @@ export default function Bestand() {
       {/* Header Panel */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Building2 className="text-shiraz" /> Altbau-Bestand &amp; energetische Sanierung (AP 12)
+          <Building2 className="text-shiraz" /> Altbau-Bestand &amp; energetische Sanierung
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
           <p>
@@ -538,7 +542,7 @@ export default function Bestand() {
                     <div className="grid grid-cols-3 gap-2">
                       {[
                         { id: 'wall' as const, label: 'Außenwand' },
-                        { id: 'roof' as const, label: 'Dach' },
+                        { id: 'roof' as const, label: 'Steildach / oGD' },
                         { id: 'floor' as const, label: 'Kellerdecke' }
                       ].map(c => (
                         <button
@@ -635,7 +639,7 @@ export default function Bestand() {
                         ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                         : 'bg-rose-50 text-rose-800 border-rose-300'
                     }`}>
-                      {sanierungResults.gegCompliant ? '✓ GModG / GEG konform' : '⚠ Grenzwert überschritten'}
+                      {sanierungResults.gegCompliant ? '✓ GModG-konform (Anlage 7)' : `⚠ Grenzwert überschritten – ca. ${sanierungResults.dReqMm} mm mehr Dämmung`}
                     </span>
                   </div>
 
@@ -743,9 +747,9 @@ export default function Bestand() {
                       <BlockMath math={`U_{\\text{neu}} = \\frac{1}{R_{\\text{alt}} + R_{\\text{Dämm}}} = \\frac{1}{${formatDeZahl(1 / sanierungResults.originalU, 3)} + ${formatDeZahl((thickness / 1000) / lambda, 3)}} \\approx ${formatDeZahl(sanierungResults.newU, 3)} \\text{ W/(m}^2\\text{K)}`} />
 
                       <p>
-                        4. Jährliche Heizwärmeeinsparung über 85 kKh Gradtagszahl-Äquivalent:
+                        4. Jährliche Heizwärmeeinsparung mit Gradtagzahl G_t20/15 = 3 500 Kd/a und Temperatur-Korrekturfaktor F_x (DIN V 4108-6):
                       </p>
-                      <BlockMath math={`\\Delta Q = (U_{\\text{alt}} - U_{\\text{neu}}) \\cdot A \\cdot 85 = (${formatDeZahl(sanierungResults.originalU, 2)} - ${formatDeZahl(sanierungResults.newU, 3)}) \\cdot ${area} \\cdot 85 \\approx ${formatDeZahl(sanierungResults.annualEnergySavings, 0)} \\text{ kWh/a}`} />
+                      <BlockMath math={`\\Delta Q = \\Delta U \\cdot A \\cdot F_x \\cdot G_t \\cdot 0{,}024 = (${formatDeZahl(sanierungResults.originalU, 2)} - ${formatDeZahl(sanierungResults.newU, 3)}) \\cdot ${area} \\cdot ${formatDeZahl(sanierungResults.fx, 1)} \\cdot 3500 \\cdot 0{,}024 \\approx ${formatDeZahl(sanierungResults.annualEnergySavings, 0)} \\text{ kWh/a}`} />
                     </div>
                   )}
                 </div>
@@ -775,14 +779,14 @@ export default function Bestand() {
                   <span className="font-bold text-slate-900 block mb-1">
                     Bauphysikalische Epochensprünge:
                   </span>
-                  Bis in die 1970er Jahre lagen die U-Werte von Außenwänden meist über 1,1 W/(m²K). Erst die Wärmeschutzverordnung 1977 leitete den systematischen Einsatz von WDVS ein. Das GModG verlangt heute bei Sanierungen Maximalwerte von 0,24 W/(m²K) für Außenwände und 0,20 W/(m²K) für Steildächer.
+                  Bis in die 1970er Jahre lagen die U-Werte von Außenwänden meist über 1,1 W/(m²K). WDVS gibt es seit den 1960er Jahren; die Wärmeschutzverordnung 1977 brachte erstmals verbindliche Wärmeschutzanforderungen. Das GModG verlangt heute bei Sanierungen Höchstwerte von 0,24 W/(m²K) für Außenwände und Steildächer/oberste Geschossdecken sowie 0,20 W/(m²K) für Flachdächer.
                 </div>
 
                 <div className="bg-rose-50/40 p-4 rounded-xl border border-shiraz/20 text-xs text-slate-700 leading-relaxed">
                   <span className="font-bold text-shiraz block mb-1">
                     Grenzwerte nach Gebäudemodernisierungsgesetz (GModG, vormals GEG):
                   </span>
-                  Nach § 36 GModG (vormals § 48 GEG / Anlage 7) dürfen bei Änderungen an Außenbauteilen bestehender Gebäude die Höchstwerte des Wärmedurchgangskoeffizienten nicht überschritten werden, sofern mehr als 10 % der jeweiligen Bauteilfläche saniert oder erneuert werden (Bagatellgrenze). Außenwände müssen maximal 0,24 W/(m²K), Steildächer 0,14 W/(m²K) und Fenster 1,30 W/(m²K) einhalten.
+                  Nach § 36 GModG (vormals § 48 GEG / Anlage 7) dürfen bei Änderungen an Außenbauteilen bestehender Gebäude die Höchstwerte des Wärmedurchgangskoeffizienten nicht überschritten werden, sofern mehr als 10 % der jeweiligen Bauteilfläche saniert oder erneuert werden (Bagatellgrenze). Außenwände und Steildächer/oberste Geschossdecken müssen höchstens 0,24 W/(m²K), Flachdächer 0,20 W/(m²K), Kellerdecken 0,30 W/(m²K) und Fenster U_w = 1,30 W/(m²K) einhalten (Anlage 7 GModG).
                 </div>
               </div>
             </div>
@@ -806,7 +810,7 @@ export default function Bestand() {
                     <strong>Preußische Kappendecken:</strong> Korrosion der freiliegenden I-Träger-Unterflansche durch aufsteigende Feuchte in Altbaukellern oder hygroskopische Salze.
                   </li>
                   <li className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                    <strong>Schadstoffe der Nachkriegsepochen:</strong> Asbestzement (1960–1990), teerhaltige Kleber und Bitumenpappen (PAK), sowie künstliche Mineralfasern (KMF, Baujahr vor 2000).
+                    <strong>Schadstoffe der Nachkriegsepochen:</strong> Asbestzement (etwa 1930–1993, Verbot 1993), teerhaltige Kleber und Bitumenpappen (PAK), sowie künstliche Mineralfasern (alte KMF: vor 1996 hergestellt, Einbau bis 06/2000 möglich).
                   </li>
                 </ul>
               </div>
@@ -843,7 +847,7 @@ export default function Bestand() {
           { title: "Innendämmung nach WTA", url: "https://de.wikipedia.org/wiki/Innend%C3%A4mmung" }
         ]}
         literatur={[
-          "Bundesarbeitskreis Altbausanierung (BAKA): Altbau-Atlas – Bauteilkatalog und energetische Kennwerte.",
+          "BMWi/BMI (2020): Bekanntmachung der Regeln zur Datenaufnahme und Datenverwendung im Wohngebäudebestand (pauschale U-Werte nach Baualtersklassen).",
           "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011",
           "Klopfer, H.: Feuchtetransport in Baustoffen – Mechanismen und Sanierungsmethoden."
         ]}
@@ -851,7 +855,8 @@ export default function Bestand() {
           { title: "Gebäudemodernisierungsgesetz (GModG / GEG) - Sanierungsanforderungen für bestehende Gebäude", url: "https://www.gesetze-im-internet.de/geg/" },
           { title: "DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz; Vermeidung von Tauwasser und Schimmel)", url: "https://www.dinmedia.de" },
           { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de" },
-          { title: "WTA-Merkblatt 6-5: Innendämmung nach WTA II: Messtechnische Validierung", url: "https://www.wta-gmbh.de" }
+          { title: "WTA-Merkblatt 6-4: Innendämmung nach WTA I – Planungsleitfaden", url: "https://www.wta-gmbh.de" },
+          { title: "WTA-Merkblatt 6-5: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
         ]}
         formeln={[
           {
@@ -871,7 +876,7 @@ export default function Bestand() {
           }
         ]}
         weblinks={[
-          { title: 'Altbau-Atlas (Wissenschaftliche Begleitdaten des Bundesarbeitskreises Altbausanierung e.V.)', url: 'https://www.altbauatlas.de' }
+          { title: 'Bundesarbeitskreis Altbauerneuerung e.V. (BAKA)', url: 'https://www.bakaberlin.de' }
         ]}
       />
     </div>

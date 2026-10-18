@@ -663,7 +663,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                   onClick={() => setFailureType('kleber')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'kleber' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 >
-                  Kleberversagen (C)
+                  Kleberversagen (Y)
                 </button>
               </div>
             </div>
@@ -722,7 +722,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                Wasseraufnahmekoeffizient w_kap (DIN EN 15148)
+                Wasseraufnahme (Karsten, Richtwert – nicht w nach DIN EN ISO 15148)
               </span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{karstenCalc.w}</span>
@@ -866,7 +866,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                In-situ-Druckfestigkeit (DIN EN 12504-1)
+                In-situ-Druckfestigkeit (DIN EN 12504-1; bei L/D = 1, Ø 100 mm ≈ Würfelfestigkeit 150 mm)
               </span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{bohrkernCalc.f_corr}</span>
@@ -877,7 +877,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </div>
             </div>
             <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100">
-              Gerichtlich und baurechtlich unanfechtbare Referenz zur statischen Nachrechnung nach DIN EN 13791.
+              Anerkanntes Referenzverfahren für die statische Nachrechnung nach DIN EN 13791.
             </div>
           </div>
         </div>
@@ -978,7 +978,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                   onClick={() => setTimberCondition('faeule')}
                   className={`py-1.5 rounded-lg border font-bold ${timberCondition === 'faeule' ? 'bg-amber-700 text-white' : 'bg-white text-slate-700'}`}
                 >
-                  Kernfäule
+                  Braunfäule
                 </button>
                 <button
                   type="button"

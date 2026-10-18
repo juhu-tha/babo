@@ -162,7 +162,7 @@ export default function LaborAuswertung() {
     {
       verfahren: 'Impakt-Echo-Verfahren',
       zielgroese: 'Zerstörungsfreie Dickenmessung, Ortung von Delaminationen und Kiesnestern',
-      normen: 'DGZfP Merkblatt B11',
+      normen: 'DGZfP-Merkblatt B 11 (2022), ASTM C1383',
       zerstoerungsfrei: 'Ja'
     },
     {

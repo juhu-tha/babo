@@ -24,13 +24,15 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import { GMODG_ANLAGE7, FX, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
 
 interface BuildingComponentLimit {
   id: string;
   name: string;
-  limitU: number; // W/(m²K)
+  limitU: number; // W/(m²K) – aus GMODG_ANLAGE7
+  bauteil: Bauteil;
   typicalOldU: number;
   description: string;
 }
@@ -38,36 +40,41 @@ interface BuildingComponentLimit {
 const GMODG_COMPONENT_LIMITS: BuildingComponentLimit[] = [
   { 
     id: 'wall', 
-    name: 'Außenwand (Putz / WDVS / Innendämmung)', 
-    limitU: 0.24, 
+    name: 'Außenwand (Putz / WDVS / Bekleidung)', 
+    bauteil: 'aussenwand',
+    limitU: GMODG_ANLAGE7.aussenwand, 
     typicalOldU: 1.40,
-    description: 'Außenwände gegen Außenluft oder unbeheizte Räume (§ 36 GModG).'
+    description: 'Außenwände gegen Außenluft (Anlage 7 Nr. 1, § 36 GModG). Innendämmung: keine Höchstwertanforderung, Nachweis Tauwasserfreiheit nach DIN 4108-3 / WTA 6-4/6-5.'
   },
   { 
     id: 'roof_pitched', 
     name: 'Steildach / Oberste Geschossdecke', 
-    limitU: 0.14, 
+    bauteil: 'steildach_oGD',
+    limitU: GMODG_ANLAGE7.steildach_oGD, 
     typicalOldU: 1.20,
-    description: 'Gedämmte Steildächer gegen Außenluft sowie oberste begehbare Decken (§ 35 / § 36 GModG).'
+    description: 'Steildächer, Gauben, oberste Geschossdecken und Wände zu unbeheiztem Dachraum (Anlage 7 Nr. 5a/5b; § 35 / § 36 GModG).'
   },
   { 
     id: 'roof_flat', 
     name: 'Flachdach', 
-    limitU: 0.20, 
+    bauteil: 'flachdach',
+    limitU: GMODG_ANLAGE7.flachdach, 
     typicalOldU: 1.10,
     description: 'Flachdächer gegen Außenluft inklusive Warm- und Umkehrdächer (§ 36 GModG).'
   },
   { 
     id: 'basement_ceiling', 
     name: 'Kellerdecke (gegen unbeheizt / Erdreich)', 
-    limitU: 0.30, 
+    bauteil: 'kellerdecke_erdreich',
+    limitU: GMODG_ANLAGE7.kellerdecke_erdreich, 
     typicalOldU: 1.50,
     description: 'Decken nach unten gegen Erdreich oder unbeheizte Kellerräume (§ 36 GModG).'
   },
   { 
     id: 'windows', 
     name: 'Fenster & Fenstertüren (Uw)', 
-    limitU: 1.30, 
+    bauteil: 'fenster',
+    limitU: GMODG_ANLAGE7.fenster, 
     typicalOldU: 2.80,
     description: 'Vertikale Fenster im Wohnungsbestand (DIN EN ISO 10077-1, § 36 GModG).'
   }
@@ -100,7 +107,9 @@ export default function Modernisierung() {
   const [thicknessMm, setThicknessMm] = useState<number>(140); // mm
   const [componentArea, setComponentArea] = useState<number>(160); // m²
   const [energyPriceKwh, setEnergyPriceKwh] = useState<number>(0.12); // €/kWh
-  const [hgtVal, setHgtVal] = useState<number>(3400); // Kd/a (Heizgradtage)
+  const [hgtVal, setHgtVal] = useState<number>(3500); // Kd/a (Gradtagzahl G_t20/15, standortabhängig)
+  const [etaSys, setEtaSys] = useState<number>(0.9); // Anlagennutzungsgrad η_sys
+  const [sowiesoAktiv, setSowiesoAktiv] = useState<boolean>(false); // Gerüst/Putz fällt ohnehin an (Kopplungsprinzip)
 
   const activeComponent = GMODG_COMPONENT_LIMITS.find(c => c.id === selectedComponentId) || GMODG_COMPONENT_LIMITS[0];
   const activeMaterial = INSULATION_MATERIALS[selectedMaterialKey] || INSULATION_MATERIALS.eps_032;
@@ -114,24 +123,28 @@ export default function Modernisierung() {
     const newU = 1 / R_tot;
     const deltaU = Math.max(0, originalU - newU);
 
-    // Gesetzliche Konformität nach § 36 GModG
-    const isCompliant = newU <= activeComponent.limitU;
+    // Gesetzliche Konformität nach § 36 GModG (Anlage 7)
+    const isCompliant = newU <= activeComponent.limitU + 1e-9;
+    const dReqMm = isCompliant ? 0 : Math.ceil(dRequired(newU, activeComponent.limitU, activeMaterial.wlg) * 1000);
 
-    // Jährliche Einsparung nach VDI 3807 / HGT:
-    // Q_save = deltaU * A * HGT * 24 / 1000 [kWh/a]
-    const annualKwhSaved = deltaU * componentArea * hgtVal * 0.024;
-    const annualEuroSaved = annualKwhSaved * energyPriceKwh;
-
-    // Investitionskosten Dämmstoff + Montageanteil (ca. 90 €/m² Fixkosten für Gerüst/Putz/Unterbau + Material)
+    // Investitionskosten Dämmstoff + Montageanteil (ca. 85 €/m² für Gerüst/Putz/Unterbau)
     const materialCost = (d_m * activeMaterial.costPerM3) * componentArea;
     const baseLaborCost = 85 * componentArea; // Montage, Gerüst, Armierung, Putz
     const totalInvestEuro = materialCost + baseLaborCost;
 
-    // Statische Amortisationszeit
-    const amortizationYears = annualEuroSaved > 0 ? totalInvestEuro / annualEuroSaved : 99;
-
-    // Jährliche CO2-Einsparung (ca. 0,22 kg CO2/kWh bei Gas/Öl-Mix)
-    const annualCo2KgSaved = annualKwhSaved * 0.22;
+    // Einsparung mit Temperatur-Korrekturfaktor Fx (DIN V 4108-6) und Anlagenaufwand η_sys;
+    // Amortisation auf energiebedingte Mehrkosten (ohne Sowieso-Kosten)
+    const sav = savings({
+      uOld: originalU, uNew: newU, A: componentArea, bauteil: activeComponent.bauteil, Gt: hgtVal,
+      etaSys, price: energyPriceKwh, co2: 0.22, invest: totalInvestEuro,
+      sowiesoKosten: sowiesoAktiv ? baseLaborCost : 0
+    });
+    const annualKwhSaved = sav.qEnd;
+    const annualEuroSaved = sav.euro;
+    const amortizationYears = Number.isFinite(sav.amortisation) ? sav.amortisation : 99;
+    const annualCo2KgSaved = sav.co2kg;
+    const fx = sav.fx;
+    const mehrkosten = sav.mehrkosten;
 
     return {
       R_orig,
@@ -144,9 +157,10 @@ export default function Modernisierung() {
       annualEuroSaved,
       totalInvestEuro,
       amortizationYears,
-      annualCo2KgSaved
+      annualCo2KgSaved,
+      dReqMm, fx, mehrkosten
     };
-  }, [originalU, thicknessMm, componentArea, activeMaterial, activeComponent, energyPriceKwh, hgtVal]);
+  }, [originalU, thicknessMm, componentArea, activeMaterial, activeComponent, energyPriceKwh, hgtVal, etaSys, sowiesoAktiv]);
 
   const handleSelectComponent = (comp: BuildingComponentLimit) => {
     setSelectedComponentId(comp.id);
@@ -172,7 +186,7 @@ export default function Modernisierung() {
             <p>
               Wissenschaftliche und baupraktische Grundlagen der energetischen Bestandssanierung (SANREMO), normative Nachrüst- 
               und Sanierungspflichten nach dem <strong>Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, BGBl. 2026 I Nr. 226)</strong>, 
-              die neue gestaffelte Bio-Treppe für Heizungsanlagen sowie bauphysikalische Bilanzierungsmodelle (DIN EN ISO 6946 / VDI 3807) 
+              die neue gestaffelte Bio-Treppe für Heizungsanlagen sowie bauphysikalische Bilanzierungsmodelle (DIN EN ISO 6946 / Gradtagzahlen nach VDI 4710) 
               zur Amortisationsermittlung.
             </p>
           </div>
@@ -185,9 +199,9 @@ export default function Modernisierung() {
               <p className="leading-relaxed text-amber-900">
                 1. <strong>Entfall des starren 65-%-EE-Zwangs:</strong> Beim Heizungstausch entfällt die unmittelbare 65-%-Erneuerbaren-Pflicht sowie die Bindung an kommunale Wärmepläne.
                 <br />
-                2. <strong>Einführung der verbindlichen Bio-Treppe:</strong> Neue Gas- und Ölheizungen dürfen weiterhin installiert werden, müssen jedoch ab 2029 steigende Anteile klimaneutraler Brennstoffe (Biomethan, biogenes Flüssiggas, Wasserstoff) nutzen (2029: 10 %, 2030: 15 %, 2035: 30 %, 2040: 60 %, 2045: 100 %).
+                2. <strong>Einführung der verbindlichen Bio-Treppe:</strong> Neue Gas- und Ölheizungen dürfen weiterhin installiert werden, müssen jedoch ab 2029 steigende Anteile klimaneutraler Brennstoffe (Biomethan, biogenes Flüssiggas, Wasserstoff) nutzen (§ 43 Abs. 1 GModG: 2029: 10 %, 2030: 15 %, 2035: 30 %, 2040: 60 %; ein Ziel von 100 % in 2045 ist über eine gesondert angekündigte Grüngas-/Grünheizöl-Quote vorgesehen).
                 <br />
-                3. <strong>Abschaffung des 30-Jahre-Betriebsverbots:</strong> Das pauschale Kesseltausch-Verbot nach 30 Jahren (§ 72 GEG a.F.) ist entfallen; Bestandsanlagen genießen Bestandsschutz.
+                3. <strong>Wegfall des Betriebsverbots 2045:</strong> Das Betriebsverbot fossiler Heizungen ab 2045 (§ 72 Abs. 4 GEG a. F.) ist entfallen, ebenso die Austauschpflicht für über 30 Jahre alte Konstanttemperaturkessel (§ 72 Abs. 1–2 GEG a. F.).
                 <br />
                 4. <strong>Neuordnung der Hüllanforderungen:</strong> Nachrüstpflicht für oberste Geschossdecken (§ 35 GModG, <InlineMath math="U \le 0{,}24" />) und Bauteilanforderungen bei &gt; 10 % Sanierung (§ 36 GModG).
               </p>
@@ -206,7 +220,7 @@ export default function Modernisierung() {
             }`}
             onClick={() => setActiveTab('begriffe')}
           >
-            <Target size={16} /> SANREMO-Systematik
+            <Target size={16} /> SANREMO-Systematik (Merkhilfe)
           </button>
           
           <button
@@ -397,12 +411,12 @@ export default function Modernisierung() {
                     <h4 className="font-bold text-text-main text-sm">Rechtsstand Heizkessel (bisher § 72 GEG)</h4>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                    Das bisherige pauschale Verbot für Standard- und Konstanttemperaturkessel nach 30 Jahren (§ 72 GEG a.F.) ist mit dem GModG entfallen. 
+                    Gestrichen wurden das Betriebsverbot fossiler Heizungen ab 2045 (§ 72 Abs. 4 GEG a. F.) und die Austauschpflicht für über 30 Jahre alte Konstanttemperaturkessel (§ 72 Abs. 1–2 GEG a. F.). 
                     Bestehende Anlagen dürfen weiterbetrieben werden; bei Neuerrichtung greift die Bio-Treppe ab 2029.
                   </p>
                 </div>
                 <div className="bg-slate-100 p-2.5 rounded text-[11px] font-mono border">
-                  <strong>GModG Neuregelung:</strong> Kein pauschales 30-Jahre-Betriebsverbot mehr; Übergang über die Bio-Treppe ab 2029 (10 % bis 100 % in 2045).
+                  <strong>GModG Neuregelung:</strong> Kein pauschales 30-Jahre-Betriebsverbot mehr; Übergang über die Bio-Treppe ab 2029 (10 % bis 60 % in 2040).
                 </div>
               </div>
 
@@ -453,9 +467,9 @@ export default function Modernisierung() {
                     </tr>
                     <tr className="hover:bg-slate-50">
                       <td className="p-3 font-medium">Steildach / oberste Geschossdecke</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">U ≤ 0,14 W/(m²K)</td>
+                      <td className="p-3 font-mono font-bold text-shiraz">U ≤ 0,24 W/(m²K)</td>
                       <td className="p-3 font-mono">1,00 – 1,60 W/(m²K)</td>
-                      <td className="p-3 font-mono">22 – 26 cm (WLG 035)</td>
+                      <td className="p-3 font-mono">12 – 14 cm (WLG 035)</td>
                     </tr>
                     <tr className="hover:bg-slate-50">
                       <td className="p-3 font-medium">Flachdach (Warm-/Umkehrdach)</td>
@@ -639,6 +653,44 @@ export default function Modernisierung() {
                   </div>
                 </div>
 
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-bold text-text-main/80 block">Gradtagzahl <InlineMath math="G_{t20/15}" />:</label>
+                    <div className="flex items-center gap-1.5">
+                      <input
+                        type="number"
+                        min="2000"
+                        max="5500"
+                        step="50"
+                        value={hgtVal}
+                        onChange={(e) => setHgtVal(Math.min(5500, Math.max(2000, Number(e.target.value) || 3500)))}
+                        className="w-full p-2 border border-home-grau/30 rounded-lg text-xs font-mono font-bold"
+                      />
+                      <span className="text-xs text-slate-500 font-mono">Kd/a</span>
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-bold text-text-main/80 block">Anlagennutzungsgrad <InlineMath math="\eta_{sys}" />:</label>
+                    <div className="flex items-center gap-1.5">
+                      <input
+                        type="number"
+                        min="0.5"
+                        max="4"
+                        step="0.05"
+                        value={etaSys}
+                        onChange={(e) => setEtaSys(Math.min(4, Math.max(0.5, Number(e.target.value) || 0.9)))}
+                        className="w-full p-2 border border-home-grau/30 rounded-lg text-xs font-mono font-bold"
+                      />
+                      <span className="text-xs text-slate-500 font-mono">–</span>
+                    </div>
+                  </div>
+                </div>
+
+                <label className="flex items-start gap-2 text-[11px] text-text-main/80 cursor-pointer">
+                  <input type="checkbox" checked={sowiesoAktiv} onChange={(e) => setSowiesoAktiv(e.target.checked)} className="mt-0.5 accent-shiraz" />
+                  <span>Gerüst/Putz fallen ohnehin an (Sowieso-Kosten, Kopplungsprinzip) – Amortisation nur auf die energiebedingten Mehrkosten beziehen.</span>
+                </label>
+
               </div>
 
               {/* Ergebnisse & Prüfbericht (Rechts) */}
@@ -646,7 +698,7 @@ export default function Modernisierung() {
                 <div>
                   <h4 className="font-bold text-sm text-text-main pb-2 border-b border-home-grau/20 flex items-center justify-between">
                     <span>Berechnungsbericht &amp; Amortisation</span>
-                    <span className="text-xs font-mono text-slate-500 font-normal">HGT: {hgtVal} Kd/a</span>
+                    <span className="text-xs font-mono text-slate-500 font-normal">G_t20/15 = {hgtVal} Kd/a · F_x = {formatDeZahl(simResults.fx, 1)} · η = {formatDeZahl(etaSys, 2)}</span>
                   </h4>
                   
                   {/* 4 Kennwerte */}
@@ -678,7 +730,7 @@ export default function Modernisierung() {
                       <span className="font-mono font-bold text-sm text-shiraz mt-0.5 block">
                         ~{formatDeZahl(simResults.amortizationYears, 1)} a
                       </span>
-                      <span className="text-[9px] text-slate-400">statischer Zeitraum</span>
+                      <span className="text-[9px] text-slate-400">auf {formatDeZahl(simResults.mehrkosten, 0)} € Mehrkosten</span>
                     </div>
                   </div>
 
@@ -714,8 +766,8 @@ export default function Modernisierung() {
                       </h4>
                       <p className="text-xs mt-1 opacity-90 leading-normal">
                         {simResults.isCompliant 
-                          ? `Hervorragend: Der berechnete U-Wert von ${formatDeZahl(simResults.newU, 3)} W/(m²K) unterschreitet den gesetzlichen Grenzwert von ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K) für ${activeComponent.name}. Die Sanierung spart ca. ${formatDeZahl(simResults.annualCo2KgSaved, 0)} kg CO₂ pro Jahr ein.`
-                          : `Achtung: Der Bauteil-U-Wert von ${formatDeZahl(simResults.newU, 3)} W/(m²K) liegt über dem Höchstwert von ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K) nach § 36 GModG. Erhöhen Sie die Dämmstoffdicke um mindestens ${Math.ceil(((1/activeComponent.limitU - simResults.R_tot) * activeMaterial.wlg) * 1000)} mm oder wählen Sie einen Dämmstoff mit geringerer Wärmeleitfähigkeit (z. B. WLG 032 oder 024).`
+                          ? `Der berechnete U-Wert von ${formatDeZahl(simResults.newU, 3)} W/(m²K) unterschreitet den gesetzlichen Grenzwert von ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K) für ${activeComponent.name}. Die Sanierung spart ca. ${formatDeZahl(simResults.annualCo2KgSaved, 0)} kg CO₂ pro Jahr ein.`
+                          : `Achtung: Der Bauteil-U-Wert von ${formatDeZahl(simResults.newU, 3)} W/(m²K) liegt über dem Höchstwert von ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K) nach § 36 GModG. Erhöhen Sie die Dämmstoffdicke um mindestens ${simResults.dReqMm} mm oder wählen Sie einen Dämmstoff mit geringerer Wärmeleitfähigkeit (z. B. WLG 032 oder 024).`
                         }
                       </p>
                     </div>
@@ -750,7 +802,7 @@ export default function Modernisierung() {
                 <Zap size={16} className="text-shiraz" /> Die gesetzliche Bio-Treppe für Gas- &amp; Öl-Neuanlagen
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Wer nach dem 29.07.2026 eine neue Gas- oder Ölheizung einbaut, muss vertraglich sicherstellen, dass die bezogenen Brennstoffe 
+                Wer nach dem 29.07.2026 eine neue Gas- oder Ölheizung einbaut, muss <strong>ab 2029</strong> sicherstellen, dass die bezogenen Brennstoffe 
                 folgende Mindestanteile an erneuerbaren Energien (Biomethan, biogenes Flüssiggas, Wasserstoff) aufweisen:
               </p>
 
@@ -776,9 +828,9 @@ export default function Modernisierung() {
                   <span className="text-[10px] text-slate-500">Erneuerbarer Brennstoff</span>
                 </div>
                 <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-300 col-span-2 sm:col-span-1">
-                  <span className="text-[10px] text-emerald-800 uppercase font-bold block">Ab 2045</span>
+                  <span className="text-[10px] text-emerald-800 uppercase font-bold block">Ziel 2045</span>
                   <strong className="text-sm text-emerald-950 block mt-1">100 %</strong>
-                  <span className="text-[10px] text-emerald-700">Vollständig klimaneutral</span>
+                  <span className="text-[10px] text-emerald-700">keine Stufe der Bio-Treppe – geplante Quote (§ 42a)</span>
                 </div>
               </div>
 
@@ -837,7 +889,7 @@ export default function Modernisierung() {
                   </div>
                   <div className="flex justify-between p-2 bg-slate-50 rounded-lg border">
                     <span>+ 20 % Klimageschwindigkeitsbonus</span>
-                    <strong className="font-mono">bei Tausch funktionstüchtiger Altheizung</strong>
+                    <strong className="font-mono">nur Selbstnutzer; Tausch von Öl-, Kohle-, Nachtspeicher- oder ≥ 20 Jahre alten Gas-/Biomasseheizungen (Konditionen vor Antragstellung bei KfW/BAFA prüfen)</strong>
                   </div>
                   <div className="flex justify-between p-2 bg-slate-50 rounded-lg border">
                     <span>+ 30 % Einkommensbonus</span>
@@ -931,9 +983,7 @@ export default function Modernisierung() {
           { title: "Wärmepumpe", url: "https://de.wikipedia.org/wiki/W%C3%A4rmepumpe" }
         ]} 
         literatur={[
-          "Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)",
-          "Hens, H.: Applied Building Physics: Boundary Conditions and Heat Transfer (Ernst & Sohn, 2017)",
-          "Jagnow, K., Wolff, D.: GModG & GEG in der praktischen Anwendung für Energieberater und Tragwerksplaner (2026)"
+          "Hens, H.: Applied Building Physics: Boundary Conditions and Heat Transfer (Ernst & Sohn, 2017)"
         ]} 
         regelwerke={[
           { title: "Gebäudemodernisierungsgesetz (GModG, BGBl. 2026 I Nr. 226, vormals GEG) - Bauteilanforderungen (§ 35/§ 36)", url: "https://www.gesetze-im-internet.de/geg/" },
@@ -953,9 +1003,9 @@ export default function Modernisierung() {
             quelle: "DIN EN ISO 6946 / § 36 GModG"
           },
           {
-            formel: "\\Delta Q_h = \\Delta U \\cdot A \\cdot HGT \\cdot \\frac{24}{1000} \\quad [\\text{kWh/a}]",
-            erklaerung: "Transmissionswärmeeinsparung über die Heizgradtage (HGT in Kd/a).",
-            quelle: "VDI 3807"
+            formel: "\\Delta Q_E = \\frac{\\Delta U \\cdot A \\cdot F_x \\cdot G_{t20/15} \\cdot 24}{1000 \\cdot \\eta_{sys}} \\quad [\\text{kWh/a}]",
+            erklaerung: "Endenergieeinsparung über die Gradtagzahl G_t20/15 (Kd/a) mit Temperatur-Korrekturfaktor F_x und Anlagennutzungsgrad η_sys.",
+            quelle: "VDI 4710 / DWD-Gradtagzahlen; F_x nach DIN V 4108-6"
           },
           {
             formel: "t_{\\text{Amort}} = \\frac{\\text{Investitionserstkosten [€]}}{\\text{Jährliche Energiekosteneinsparung [€/a]}}",

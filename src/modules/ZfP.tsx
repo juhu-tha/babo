@@ -41,38 +41,38 @@ function DGZfPSection() {
     if (method === 'gpr') {
       schoolHours = level === '1' ? 40 : 80;
       practiceDays = background === 'ingenieur' ? (level === '1' ? 15 : 45) : (level === '1' ? 30 : 90);
-      details = "Georadar-Verfahren (GPR / Bodenradar im Bauwesen) nach Merkblatt B5. Dient dem berührungsfreien Aufspüren von Spannkanälen, Rohrleitungen und Bewehrungslagen.";
+      details = "Georadar-Verfahren (GPR / Bodenradar im Bauwesen) nach DGZfP-Merkblatt B 10. Dient dem berührungsfreien Aufspüren von Spannkanälen, Rohrleitungen und Bewehrungslagen.";
       typicalTasks = level === '1' 
         ? "Datenerfassung auf Rasterflächen vor Ort nach klaren Vorgaben, Systemkalibrierung." 
         : "Komplexe Radargramm-Auswertung, 3D-B-Scan Visualisierung, Bestimmung von Dielektrizitätskonstanten und Erstellung von Prüfberichten.";
     } else if (method === 'ut') {
       schoolHours = level === '1' ? 40 : 80;
       practiceDays = background === 'ingenieur' ? (level === '1' ? 15 : 60) : (level === '1' ? 30 : 120);
-      details = "Ultraschallverfahren (UT-Bau) nach Merkblatt B4. Lokalisierung von Kiesnestern, Verbundmängeln, Rissen und Ablösungen im Inneren mineralischer Baustoffe.";
+      details = "Ultraschallverfahren (UT-Bau) nach DGZfP-Merkblatt B 04. Lokalisierung von Kiesnestern, Verbundmängeln, Rissen und Ablösungen im Inneren mineralischer Baustoffe.";
       typicalTasks = level === '1'
         ? "Kopplung der Sensoren, Oberfächenpräparation, Messung von Durchschallungs-Laufzeiten."
         : "Laufzeit-Tomographie-Auswertung, Bestimmung des dynamischen E-Moduls in-situ, Fehlerbeurteilung.";
     } else if (method === 'et') {
       schoolHours = level === '1' ? 24 : 40;
       practiceDays = background === 'ingenieur' ? (level === '1' ? 10 : 20) : (level === '1' ? 20 : 40);
-      details = "Elektromagnetische Betondeckungsmessgeräte (Wirbelstromprüfung / ET-Bau) nach Merkblatt B3. Präzise Bestimmung der Überdeckungshöhe.";
+      details = "Elektromagnetische Betondeckungsmessgeräte (Wirbelstromprüfung / ET-Bau) nach DGZfP-Merkblatt B 02. Präzise Bestimmung der Überdeckungshöhe.";
       typicalTasks = level === '1'
         ? "Systematische Linien-Scans an Bauteilen, Bestimmung nominaler Überdeckungen unter Laboraufsicht."
         : "Ermittlung von Stabdurchmessern bei unbekannter Bewehrung, statistische Konformitätsprüfung nach DBV-Merkblatt.";
     } else if (method === 'chemical') {
       schoolHours = level === '1' ? 24 : 40;
       practiceDays = background === 'ingenieur' ? (level === '1' ? 15 : 30) : (level === '1' ? 30 : 60);
-      details = "Elektrochemische Potenzialmessung (Corrosion Diagnostics) nach Merkblatt B1. Aufspüren aktiver Korrosionsherde (Lochfraßerfassung).";
+      details = "Elektrochemische Potenzialmessung (Corrosion Diagnostics) nach DGZfP-Merkblatt B 03. Aufspüren aktiver Korrosionsherde (Lochfraßerfassung).";
       typicalTasks = level === '1'
         ? "Rastervorbereitung, Aufstemmen von Kontaktstellen zur Bewehrung, Durchführung von Spannungsmessungen."
         : "Interpretation von Potenzialfeldern, Erstellung von Korrosionswahrscheinlichkeits-Karten, Sanierungsprüfung.";
     } else if (method === 'ie') {
       schoolHours = level === '1' ? 32 : 64;
       practiceDays = background === 'ingenieur' ? (level === '1' ? 15 : 45) : (level === '1' ? 30 : 90);
-      details = "Impact-Echo-Verfahren (IE-Bau) nach Merkblatt B11. Dickenmessung einseitig zugänglicher Bauteile und Ortung tief liegender Hohlräume.";
+      details = "Impact-Echo-Verfahren (IE-Bau) nach DGZfP-Merkblatt B 11. Dickenmessung einseitig zugänglicher Bauteile und Ortung tief liegender Hohlräume.";
       typicalTasks = level === '1'
         ? "Prüfkörper-Anregung per Stahlkugelschlag, Fourier-Transformations-Messwertaufnahme."
-        : "Analyse des Resonanzfrequenz-Spektrums, Bestimmung der realen Bauteildicke nach d = v_e / (2 * f).";
+        : "Analyse des Resonanzfrequenz-Spektrums, Bestimmung der realen Bauteildicke nach d = β · v_p / (2 · f) mit β ≈ 0,96 (ASTM C1383).";
     }
 
     return { schoolHours, practiceDays, details, typicalTasks };
@@ -81,50 +81,50 @@ function DGZfPSection() {
   const MERKBLAETTER = [
     {
       id: 'B1',
-      title: 'Merkblatt B1 (Potentialmessung)',
-      subtitle: 'Elektrochemische Potenzialmessung zur Erfassung von Bewehrungskorrosion',
+      title: 'Merkblatt B 03 (Potentialmessung)',
+      subtitle: 'Elektrochemische Potentialmessungen zur Detektion von Bewehrungsstahlkorrosion (2025)',
       focus: 'Zerstörungsfreies Auffinden aktiver Korrosionsherde (Anoden) in bewehrten Betonbauteilen (Brückenkappen, Parkdecks). Beschreibt Grenzwerte und Rasterabstände für praxisgerechte Korrosionspotentiale (z.B. Cu/CuSO4-Bezugselektrode).'
     },
     {
       id: 'B2',
-      title: 'Merkblatt B2 (Methodenübersicht)',
-      subtitle: 'Zerstörungsfreie Prüfung im Bauwesen - Übersicht über Prüfverfahren',
+      title: 'DBV-Merkblatt (Methodenübersicht)',
+      subtitle: 'Anwendung zerstörungsfreier Prüfverfahren im Bauwesen (DBV, Fassung 01/2014)',
       focus: 'Zentrale Leitlinie für Ingenieurbüros und Prüfämter. Ordnet baupraktische Fragestellungen (z.B. Druckfestigkeitsschätzung, feuchte Betonanalytik, Rissverläufe) den physikalisch geeignetsten ZfP-Verfahren zu.'
     },
     {
       id: 'B3',
-      title: 'Merkblatt B3 (Betondeckung)',
-      subtitle: 'Elektromagnetische Betondeckungsmessgeräte',
+      title: 'Merkblatt B 02 (Betondeckung)',
+      subtitle: 'Zerstörungsfreie Betondeckungsmessung und Bewehrungsortung an Stahl- und Spannbetonbauteilen',
       focus: 'Spezifiziert den elektromagnetischen Messbereich von Wirbelstromsonden. Regelt Richtlinien zur Kalibrierung, Einflussfaktoren wie Nachbarstäbe oder Bindedrahtwindungen sowie Fehlertoleranzen bei Bewehrungsdurchmessern.'
     },
     {
       id: 'B4',
-      title: 'Merkblatt B4 (Ultraschall)',
+      title: 'Merkblatt B 04 (Ultraschall)',
       subtitle: 'Ultraschallverfahren zur zerstörungsfreien Prüfung im Bauwesen',
       focus: 'Behandelt Kompressionswellenlängen in heterogenen Stoffen. Legt Prüfbedingungen fest für Transmission, Impuls-Laufzeitverfahren und 2D/3D-Ultraschall-Laufzeittomographie zur Bestimmung von inneren Bauteilschichten.'
     },
     {
       id: 'B5',
-      title: 'Merkblatt B5 (Georadar)',
-      subtitle: 'Georadar-Verfahren im Bauwesen',
+      title: 'Merkblatt B 10 (Radar)',
+      subtitle: 'Radarverfahren zur zerstörungsfreien Prüfung im Bauwesen',
       focus: 'Regelt Hochfrequenzantennen-Messungen (0,5 bis 4,0 GHz). Bietet exakte mathematische Grundlagen zur Bestimmung der relativen Permittivität (Dielektrizitätszahl) und die korrekte geophysikalische Interpretation von Radargrammen.'
     },
     {
       id: 'B8',
-      title: 'Merkblatt B8 (Feuchtigkeitsmessung)',
-      subtitle: 'Zerstörungsfreie Feuchtemessverfahren im Bauwesen',
-      focus: 'Umfassender Leitfaden zu kapazitiven/dielektrischen Messungen und Mikrowellensonden. Vergleicht Messprinzipien und zeigt Kalibriergrenzen für Zementestriche und Altbau-Mauerwerke auf.'
+      title: 'Merkblatt B 06 (Sichtprüfung & Endoskopie)',
+      subtitle: 'Sichtprüfung und Endoskopie als optische Verfahren der zerstörungsfreien Prüfung',
+      focus: 'Beschreibt Geräte, Durchführung und Dokumentation der visuellen Prüfung und der Endoskopie (z. B. in Hüllrohren, Hohlräumen, zweischaligem Mauerwerk). Feuchtemessverfahren sind nicht Gegenstand der B-Merkblätter; für Feuchte siehe DIN EN ISO 12570 (Darr) und CM-Methode.'
     },
     {
       id: 'B10',
-      title: 'Merkblatt B10 (Thermografie)',
-      subtitle: 'Infrarot-Thermografie im Bauwesen',
+      title: 'Merkblatt B 05 (Thermografie)',
+      subtitle: 'Aktives Thermographieverfahren zur zerstörungsfreien Prüfung im Bauwesen',
       focus: 'Legt Prüfungsbedingungen für berührungslose Oberflächentemperaturmessungen fest. Behandelt bauphysikalische Randbedingungen (Sonneneinstrahlung, Wind, Feuchtigkeit) für thermische Dämmstoff- und Fassadenprüfungen.'
     },
     {
       id: 'B11',
-      title: 'Merkblatt B11 (Impact-Echo)',
-      subtitle: 'Impact-Echo-Verfahren',
+      title: 'Merkblatt B 11 (Impact-Echo)',
+      subtitle: 'Anwendung des Impakt-Echo-Verfahrens zur ZfP von Betonbauteilen (2022)',
       focus: 'Standardisiert die elastomechanische Impulsanregung. Definiert die Auswertung im Frequenzbereich (FFT) zur Lokalisierung von Verpressmängeln in Hüllrohren von Spanngliedern und Dickenbestimmungen von unbewehrten Platten.'
     }
   ];
@@ -609,7 +609,7 @@ export default function ZfP() {
       category: "monitoring",
       categoryLabel: "Echtzeit-Monitoring & Sensorik",
       desc: "Mechanische Präzisionsmessung kleinster Längenänderungen zur präzisen Rissüberwachung.",
-      norm: "VDI / VDE 2635 / DIN 53504",
+      norm: "Kein Normverfahren (Herstellerangaben); DMS-Messtechnik: VDI/VDE 2635",
       useCase: "Kurz- und Langzeitrissmonitoring an Brücken, Stützwänden, historischen Mauerwerken bei Lastwechsel.",
       details: [
         "Präzisionstaster mit mechanischer Messuhr (Auflösung bis zu 1 µm).",
@@ -670,7 +670,7 @@ export default function ZfP() {
       categoryLabel: "Zerstörungsfreie ZfP",
       desc: "Infrarot-Wärmebildaufnahmen zur Visualisierung von Delaminationen, Wärmebrücken und Feuchtstellen.",
       norm: "DIN EN 13187",
-      useCase: "Auffinden von Wärmebrücken im Hochbau, Feuchtezonen sowie Hohlräumen und Putzablösungen under der Oberfläche.",
+      useCase: "Auffinden von Wärmebrücken im Hochbau, Feuchtezonen sowie Hohlräumen und Putzablösungen unter der Oberfläche.",
       details: [
         "Ausnutzung der unterschiedlichen Wärmekapazität und Leitfähigkeit von Beton, Hohlräumen und EPS.",
         "Detektion von Leckagen in verdeckten wasserführenden Leitungen (z.B. Fußbodenheizungen).",
@@ -909,7 +909,7 @@ export default function ZfP() {
       klassifizierung = "Klasse III (Mittel)";
       bewertung = "Durchschnittlich";
       textClass = "text-amber-700 bg-amber-50 border-amber-200";
-      description = "Durchschnittlicher Betonüberdeckungswiderstand. Standardbeton ohne gesondere Expositionsklassenschutz-Vorgaben.";
+      description = "Durchschnittlicher Betonüberdeckungswiderstand. Standardbeton ohne gesonderte Expositionsklassenschutz-Vorgaben.";
     } else if (torrentKt >= 0.01) {
       klassifizierung = "Klasse II (Niedrig)";
       bewertung = "Gute Qualität";
@@ -972,9 +972,9 @@ export default function ZfP() {
 
   // Berechnungen Impact-Echo
   const impactEchoResults = useMemo(() => {
-    // d = v / (2 * f)
-    // f in kHz -> f * 1000 Hz
-    const depth = waveVelocity / (2 * (frequency * 1000)); // in m
+    // d = β · v_p / (2 · f), Formfaktor β ≈ 0,96 für Platten (ASTM C1383); f in kHz → Hz
+    const beta = 0.96;
+    const depth = frequency > 0 ? (beta * waveVelocity) / (2 * (frequency * 1000)) : 0; // in m
     return { depth: depth * 1000 }; // in mm
   }, [frequency, waveVelocity]);
 
@@ -1517,6 +1517,7 @@ export default function ZfP() {
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
               <div className="text-sm opacity-90 mb-1">Berechnete Tiefe (Bauteildicke / Fehlstelle)</div>
               <div className="text-3xl font-bold">{impactEchoResults.depth.toFixed(0)} mm</div>
+              <div className="text-[11px] opacity-80 mt-1">d = β · v_p / (2 · f), β = 0,96 (ASTM C1383)</div>
               
               {/* Impact-Echo Animation */}
               <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
@@ -1995,12 +1996,12 @@ export default function ZfP() {
         ]}
         literatur={[
           'Schickert, M.: Verfahren der zerstörungsfreien Prüfung im Bauwesen.',
-          'DGZfP-Merkblatt B3: Ultraschallecho-Verfahren zur zerstörungsfreien Prüfung im Bauwesen.'
+          'DGZfP-Merkblatt B 04: Ultraschallverfahren zur Zerstörungsfreien Prüfung im Bauwesen.'
         ]}
         regelwerke={[
           { title: 'DIN EN 12504-2 (Prüfung von Beton - Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/norm/din-en-12504-2/342171172' },
           { title: 'DIN EN 12504-4 (Prüfung von Beton - Bestimmung der Ultraschalllaufzeit)', url: 'https://www.dinmedia.de/de/norm/din-en-12504-4/339462854' },
-          { title: 'DGZfP Richtlinie B1 (Zerstörungsfreie Prüfung im Bauwesen)', url: 'https://www.dgzfp.de' }
+          { title: 'DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen)', url: 'https://publikationen.dgzfp.de/' }
         ]}
         formeln={[
           {
@@ -2011,7 +2012,7 @@ export default function ZfP() {
           {
             formel: 'd = \\frac{v \\cdot t}{2}',
             erklaerung: 'Tiefenberechnung beim akustischen Impuls-Echo-Verfahren aus Ultraschallgeschwindigkeit v und Reflexionslaufzeit t.',
-            quelle: 'DGZfP Merkblatt B3'
+            quelle: 'DGZfP-Merkblatt B 04'
           },
           {
             formel: 'd = \\frac{c_0}{\\sqrt{\\varepsilon_r}} \\cdot \\frac{t}{2}',

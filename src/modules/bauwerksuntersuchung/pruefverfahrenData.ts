@@ -25,7 +25,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'minimalinvasiv',
     categoryLabel: 'Minimalinvasives Prüfverfahren',
     badge: 'Nadel-Torque',
-    standard: 'DIN EN 338, WTA-Merkblatt 8-15-20/D, DIN 1052-1',
+    standard: 'Nicht genormt; Bewertung nach DIN 68800-2/-4',
     principle: 'Mechanisch-energetische Dichteanalyse von Holzquerschnitten. Eine ultradünne Bohrnadel (Ø 1,5–3,0 mm) mit speziellem Schneidkopf wird mit konstantem linearem Vorschub und geregelter Drehzahl ins Holz getrieben. Die elektrische Stromaufnahme des Antriebsmotors oder die mechanische Torsionsenergie korreliert proportional zur lokalen Festigkeit und Rohdichte des durchstoßenen Holzes. Frühholz (geringere Dichte) erzeugt Täler, Spätholz (hohe Dichte) erzeugt Peaks. Fäulnis, Insektenfraßgänge oder Risse führen zu einem abrupten Abfall des Messwerts auf den Leerlauf-Reibungswert der Nadelwelle.',
     formula: 'M_{\\text{Bohr}}(z) = c_1 \\cdot \\rho_{\\text{local}}(z) \\cdot A_{\\text{Nadel}} + f_{\\text{friction}}(z)',
     formulaExplanation: 'Das gemessene Bohrdrehmoment M_Bohr an der Bohrtiefe z ist proportional zur lokalen Rohdichte ρ_local und der projizierten Nadelquerschnittsfläche A_Nadel. f_friction(z) ist die mit der Tiefe ansteigende Mantelreibung der Nadelwelle im Bohrkanal.',
@@ -59,7 +59,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'zfp',
     categoryLabel: 'Zerstörungsfreie Prüfung (ZfP / NDT)',
     badge: 'Wirbelstrom',
-    standard: 'DIN EN 1992-1-1 (Eurocode 2), DGZfP-Merkblatt B2/B3, DBV-Merkblatt „Betondeckung und Bewehrung“ (2015)',
+    standard: 'DIN EN 1992-1-1 (Eurocode 2), DGZfP-Merkblatt B 02, DBV-Merkblatt „Betondeckung und Bewehrung“ (2015)',
     principle: 'Elektromagnetische Induktion nach dem Wirbelstromverfahren. Eine Sensorspule im Prüfkopf erzeugt ein hochfrequentes magnetisches Wechselfeld. Befindet sich ein ferromagnetischer Bewehrungsstab im Wirkungsbereich, induziert das Wechselfeld Wirbelströme im Stahl, welche ein sekundäres Gegenmagnetfeld aufbauen. Die Phasenverschiebung und Amplitudenänderung der Sensorspannung wird präzise gemessen. Bei bekanntem oder kalibriertem Stabdurchmesser Ø lässt sich die Betondeckung c millimetergenau bestimmen.',
     formula: 'U_{\\text{ind}}(c) = K_0 \\cdot \\frac{\\emptyset^{a} \\cdot f}{(c + z_0)^b} \\quad \\implies \\quad c = \\left( \\frac{K_0 \\cdot \\emptyset^a \\cdot f}{U_{\\text{ind}}} \\right)^{1/b} - z_0',
     formulaExplanation: 'Die induzierte Sensorspannung U_ind fällt streng nichtlinear mit der Betondeckung c ab (typischer Exponent b ≈ 2,5–3,0) und steigt mit dem Stabdurchmesser Ø (Exponent a ≈ 1,0–1,5). K_0 und z_0 sind gerätespezifische Spulengeometrie-Konstanten, f ist die Arbeitsfrequenz.',
@@ -127,7 +127,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'zfp',
     categoryLabel: 'Zerstörungsfreie Prüfung (ZfP / NDT)',
     badge: 'Akustische Wellen',
-    standard: 'DIN EN 12504-4 („Ultraschall-Impulsgeschwindigkeit“), DGZfP-Merkblatt B4, RILEM TC 43-CND',
+    standard: 'DIN EN 12504-4 („Ultraschall-Impulsgeschwindigkeit“), DGZfP-Merkblatt B 04, RILEM TC 43-CND',
     principle: 'Piezoelektrische Impulslaufzeitmessung von elastischen Longitudinalwellen (P-Wellen). Ein piezoelektrischer Prüfkopf koppelt hochfrequente Druckwellen (20–100 kHz) über ein Koppelmedium (Viskosegel) in den Baustoff ein. Die Wellen breiten sich im Kontinuum mit materialspezifischer Schallgeschwindigkeit aus und werden von einem Empfänger registriert. Fehlstellen wie Kiesnester, Risse oder Hohlräume besitzen eine verschwindend geringe akustische Impedanz im Vergleich zum dichten Zementstein, wodurch der Schall umgelenkt wird – dies führt zu signifikanten Laufzeitverzögerungen und Amplitudendämpfungen.',
     formula: 'v_p = \\frac{s}{\\Delta t} \\quad \\implies \\quad E_{\\text{dyn}} = \\rho \\cdot v_p^2 \\cdot \\frac{(1 + \\nu)(1 - 2\\nu)}{1 - \\nu}',
     formulaExplanation: 'v_p ist die Schallgeschwindigkeit (m/s), s ist die Messstrecke (m), Δt die Signallaufzeit (s). E_dyn ist der dynamische Elastizitätsmodul (N/m²), ρ die Rohdichte des Betons (kg/m³) und ν die Querdehnzahl (Poisson-Zahl, für Festbeton typisch ν ≈ 0,20).',
@@ -161,7 +161,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'zfp',
     categoryLabel: 'Zerstörungsfreie Prüfung (ZfP / NDT)',
     badge: 'Halbzelle / Korrosion',
-    standard: 'DGZfP-Merkblatt B1 („Potenzialmessung zur Korrosionsortung“), SIA 2006, ASTM C876-09',
+    standard: 'DGZfP-Merkblatt B 03 („Elektrochemische Potentialmessungen zur Detektion von Bewehrungsstahlkorrosion“, 2025), SIA 2006, ASTM C876-09',
     principle: 'Elektrochemische Lokalisierung aktiv korrodierender Bewehrungsbereiche. Bei chloridinduzierter Lochfraßkorrosion oder Karbonatisierung bilden sich Makroelemente: Der korrodierende Bewehrungsstahl fungiert als Anode (Eisenlösung: Fe → Fe²⁺ + 2e⁻), während unbeschädigte Passivbereiche als Kathode wirken (Sauerstoffreduktion). Über eine elektrochemische Referenzelektrode (Kupfer/Kupfersulfat Cu/CuSO₄ oder Silber/Silberchlorid Ag/AgCl) auf der feuchten Betonoberfläche wird das elektrochemische Oberflächenpotential gegen das Bewehrungsgitter gemessen.',
     formula: 'E_{\\text{cell}} = E_{\\text{Ref}} - E_{\\text{Stahl}} = E^0 - \\frac{R \\cdot T}{z \\cdot F} \\ln\\left( \\frac{a_{\\text{Fe}^{2+}}}{a_{\\text{Fe}}} \\right) - I \\cdot R_{\\Omega}',
     formulaExplanation: 'E_cell ist das an der Betonoberfläche gemessene Potential. Gemäß Nernst-Gleichung verschiebt sich das Potential bei aktiver Eisenauflösung stark ins Negative. I · R_Ω repräsentiert den ohmschen Spannungsabfall im Beton-Elektrolyten.',
@@ -195,7 +195,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'zfp',
     categoryLabel: 'Zerstörungsfreie Prüfung (ZfP / NDT)',
     badge: 'Radarwellen / B-Scan',
-    standard: 'ASTM D6432-19, DGZfP-Merkblatt B5 („Georadar im Bauwesen“), EN 302 065',
+    standard: 'ASTM D6432-19, DGZfP-Merkblatt B 10 („Radarverfahren zur ZfP im Bauwesen“), ETSI EN 302 066',
     principle: 'Elektromagnetische Impulsreflexionsmessung im Mikrowellenbereich (1,0 bis 4,0 GHz). Eine Sendeantenne sendet ultrakurze elektromagnetische Wellenpulse in das Bauteil. An Grenzflächen zwischen Medien mit unterschiedlicher relativer Permittivität (Dielektrizitätskonstante ε_r) – z.B. Beton zu Stahl, Beton zu Luft (Hohlraum), feuchter zu trockenem Beton – wird ein Teil der Welle reflektiert. Die Empfangsantenne registriert die Zweiwegelaufzeit t und Amplitude. Aus der Schar einzelner A-Scans entlang einer Messlinie entsteht das zweidimensionale Radargramm (B-Scan) mit charakteristischen Hyperbeln an stiftförmigen Reflektoren.',
     formula: 'v = \\frac{c_0}{\\sqrt{\\varepsilon_r}} \\quad \\implies \\quad z = v \\cdot \\frac{t}{2} = \\frac{c_0 \\cdot t}{2 \\cdot \\sqrt{\\varepsilon_r}}',
     formulaExplanation: 'v ist die Ausbreitungsgeschwindigkeit der Radarwelle im Material, c_0 die Vakuumlichtgeschwindigkeit (≈ 300.000 km/s), ε_r die relative Dielektrizitätskonstante des Baustoffs und t die Zweiwegelaufzeit. Die Tiefenlage z errechnet sich aus v · (t / 2).',
@@ -229,7 +229,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'zfp',
     categoryLabel: 'Zerstörungsfreie Prüfung (ZfP / NDT)',
     badge: 'Resonanz / Dicke',
-    standard: 'DGZfP-Merkblatt B11 („Impact-Echo-Verfahren“), ASTM C1383-15',
+    standard: 'DGZfP-Merkblatt B 11 („Impakt-Echo-Verfahren“, 2022), ASTM C1383-15',
     principle: 'Kurzzeit-Schallanregung und Spektralanalyse von Spannungsresonanzwellen. Ein kleiner mechanischer Impaktor (Stahlkugel Ø 3–12 mm) schlägt punktförmig auf die Betonoberfläche und erzeugt niederfrequente elastische P- und S-Wellen sowie Rayleigh-Oberflächenwellen. Die P-Wellen reflektieren an der Bauteilrückwand oder an inneren Fehlstellen (Kiesnester, Delaminationen, Verpressmängel von Spanngliedern) und laufen mehrfach hin und her. Ein hochempfindlicher Piezo-Aufnehmer registriert die Oberflächenverschiebung. Mittels Fast-Fourier-Transformation (FFT) wird das Frequenzspektrum berechnet; der dominante Resonanzpeak f_peak korrespondiert direkt mit der Reflektortiefe.',
     formula: 'f_{\\text{peak}} = \\frac{\\beta_T \\cdot v_p}{2 \\cdot d} \\quad \\implies \\quad d = \\frac{\\beta_T \\cdot v_p}{2 \\cdot f_{\\text{peak}}}',
     formulaExplanation: 'f_peak ist die dominante Resonanzfrequenz im Amplitudenspektrum (Hz), v_p die P-Wellengeschwindigkeit im Beton (m/s), d die Bauteildicke bzw. Tiefe der Fehlstelle (m) und β_T ein Formfaktor (für unendlich ausgedehnte Platten typisch β_T ≈ 0,96).',
@@ -263,7 +263,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'minimalinvasiv',
     categoryLabel: 'Minimalinvasives Prüfverfahren',
     badge: 'pH-Indikator / Chemie',
-    standard: 'DIN EN 14630 („Bestimmung der Karbonatisierungstiefe im Festbeton“), DIN EN 206, DAfStb TR Instandhaltung',
+    standard: 'DIN EN 14630 („Bestimmung der Karbonatisierungstiefe im Festbeton“), DIN EN 206, TR Instandhaltung (DIBt)',
     principle: 'Farbindikatorbasierte pH-Wert-Analyse des Porenwassers. Im unkarbonatisierten Beton herrscht durch das bei der Zementhydratation freigesetzte Calciumhydroxid Ca(OH)₂ ein stark alkalisches Milieu (pH ≈ 12,6 bis 13,5), das den Bewehrungsstahl durch eine dichte Passivschicht aus Eisenoxiden vor Korrosion schützt. Reagiert das Ca(OH)₂ mit dem atmosphärischen Kohlendioxid CO₂ zu Calciumcarbonat CaCO₃, sinkt der pH-Wert auf unter 9,0 ab (Depassivierung). Wird eine 1 %ige ethanolische Phenolphthalein-Lösung auf eine frische Bruchfläche gesprüht, schlägt der Farbstoff im basischen Bereich (pH ≥ 9,2) schlagartig in leuchtendes Purpur/Weinrot um, während entalkalisierter Beton farblos bleibt.',
     formula: '\\text{Ca(OH)}_2 + \\text{CO}_2 \\xrightarrow{} \\text{CaCO}_3 + \\text{H}_2\\text{O} \\quad \\implies \\quad d_k(t) = k_{\\text{carb}} \\cdot \\sqrt{t}',
     formulaExplanation: 'Die Karbonatisierungsreaktion verbraucht Calciumhydroxid und bildet Kalkstein. Die Karbonatisierungstiefe d_k wächst näherungsweise mit der Wurzel der Expositionszeit t (Diffusionsgesetz). k_carb ist der Karbonatisierungsbeiwert (mm/√Jahr), abhängig von Betonporosität, w/z-Wert und Feuchtegehalt.',
@@ -276,7 +276,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
       'Mittelwert d_k,mean und Maximalwert d_k,max protokollieren und mit der vorhandenen Betondeckung c abgleichen.'
     ],
     pros: [
-      'Extrem anschauliches, kontrastreiches und gerichtlich unanfechtbares Prüfergebnis vor Ort.',
+      'Sehr anschauliches, kontrastreiches Prüfergebnis vor Ort, gut dokumentierbar.',
       'Sehr geringe Material- und Gerätekosten bei unmittelbarer Ergebnisverfügbarkeit.',
       'Ermöglicht über das Wurzelsystem die rechnerische Prognose der Rest-Passivierungsdauer des Stahls.'
     ],
@@ -310,7 +310,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
       'Druckversuch nach DIN EN 12390-3 mit stetiger Laststeigerung (0,6 ± 0,2 N/mm²s) bis zum Bruch durchführen.'
     ],
     pros: [
-      'Einziges rechtssicheres, baurechtlich und gutachterlich unanfechtbares Prüfverfahren für Festigkeitsnachweise.',
+      'Anerkanntes Referenzverfahren für Festigkeitsnachweise im Bauwerk (DIN EN 13791).',
       'Liefert ungestörtes Probenmaterial für Folgeuntersuchungen (Rohdichte, statischer E-Modul, Porosität, Dünnschliff).',
       'Ermöglicht die verbindliche Kalibrierung aller indirekten ZfP-Verfahren (SonReb, Schmidt-Hammer).'
     ],
@@ -331,7 +331,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'zerstoerend',
     categoryLabel: 'Zerstörendes Labor- & Feldprüfverfahren',
     badge: 'Lochfraß / Titration',
-    standard: 'DIN EN 14629 („Chloridgehalt von Festbeton“), DBV-Merkblatt „Chloridbestimmung an Betonbauwerken“ (2018), DAfStb TR Instandhaltung',
+    standard: 'DIN EN 14629 („Chloridgehalt von Festbeton“), DBV-Merkblatt „Chloridbestimmung an Betonbauwerken“ (2018), TR Instandhaltung (DIBt)',
     principle: 'Quantitative Erfassung der Tiefenverteilung korrosionsauslösender Chloridionen (Cl⁻). Tausalze im Sprühnebelbereich von Brücken oder Parkdecks penetrieren über Kapillartransport und Diffusion die Zementsteinmatrix. Durch schrittweises Bohren mit Spezialbohrern (Ø 12–20 mm) in definierten Tiefenstufen (z.B. 0–5, 5–10, 10–20, 20–30 mm) wird reines Bohrmehl fraktionsweise abgesaugt. Im Labor wird das Bohrmehl mit Salpetersäure aufgeschlossen; die freigesetzten Chloride werden mittels potentiometrischer Titration mit Silbernitrat (AgNO₃) quantifiziert.',
     formula: '\\text{Cl}^{-}_{\\text{Gew.-\\% bez. auf Zement}} = \\frac{V_{\\text{AgNO}_3} \\cdot c_{\\text{AgNO}_3} \\cdot M_{\\text{Cl}}}{m_{\\text{Einwaage}} \\cdot f_{\\text{Zement}}} \\cdot 100',
     formulaExplanation: 'V_AgNO3 ist das verbrauchte Titrationsvolumen, c_AgNO3 die Stoffmengenkonzentration (typ. 0,1 mol/l), M_Cl die Molmasse von Chlor (35,45 g/mol), m_Einwaage die Masse des getrockneten Bohrmehls und f_Zement der Zementsteinanteil des Betons (typisch ca. 14–18 Gew.-%).',
@@ -365,10 +365,10 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'zerstoerend',
     categoryLabel: 'Zerstörendes Prüfverfahren',
     badge: 'Abreißkraft',
-    standard: 'DIN EN 1542 („Messung der Haftfestigkeit im Abreißversuch“), DAfStb TR Instandhaltung (Teil 4), ZTV-ING',
+    standard: 'DIN EN 1542 („Messung der Haftfestigkeit im Abreißversuch“), TR Instandhaltung (DIBt), ZTV-ING',
     principle: 'Mechanische Prüfung der Abreißfestigkeit der oberflächennahen Betonschichten oder der Verbundfestigkeit von Instandsetzungsmörteln und Beschichtungen (OS-Systeme). Ein kreisrunder Prüfstempel aus Stahl (Ø 50 mm) wird mit schnellhärtendem Zweikomponenten-Epoxidharzklebstoff kraftschlüssig auf die vorbereitete Oberfläche geklebt. Anschließend wird der Beton koaxial um den Stempel herum ca. 10–15 mm tief kreisförmig eingeschnitten (Ringnut), um Querdehnungs- und Randschubkräfte zu eliminieren. Das Abzugsgerät zieht den Stempel mit konstanter Laststeigerung senkrecht ab.',
     formula: 'f_{ct} = \\frac{4 \\cdot F_{\\text{break}}}{\\pi \\cdot d^2} \\quad \\implies \\quad f_{ct} = \\frac{F_{\\text{break}}}{A_{\\text{Stempel}}}',
-    formulaExplanation: 'f_ct ist die Abreißfestigkeit (N/mm²), F_break die Bruchkraft beim Versagen (N), d der Stempeldurchmesser (für d = 50 mm ist A_Stempel = 1.963,5 mm²). Neben dem Zahlenwert muss zwingend das Bruchbild protokolliert werden (z.B. A = Kohäsionsbruch im Beton, B = Adhäsionsbruch, C = Kleberversagen).',
+    formulaExplanation: 'f_ct ist die Abreißfestigkeit (N/mm²), F_break die Bruchkraft beim Versagen (N), d der Stempeldurchmesser (für d = 50 mm ist A_Stempel = 1.963,5 mm²). Neben dem Zahlenwert muss zwingend das Bruchbild protokolliert werden (Bezeichnungen nach DIN EN 1542, z. B. A = Bruch im Untergrund, A/B = Bruch Untergrund/Schicht, B = Bruch in der Schicht, Y = Bruch im Kleber).',
     steps: [
       'Prüffläche reinigen, leicht anschleifen und staubfrei absaugen.',
       'Prüfstempel (Ø 50 mm) mit 2K-Epoxidharz vollflächig und ohne Lufteinschlüsse auf die Prüfstelle kleben.',
@@ -387,7 +387,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
       'Erfordert mehrmalige Baustellenanfahrten (Klebemörtel benötigt Aushärtezeit von mehreren Stunden).',
       'Zerstört die Oberfläche lokal (Reprofilierung mit Reparaturmörtel erforderlich).'
     ],
-    referenceValues: 'Anforderungen nach DAfStb TR Instandhaltung / ZTV-ING: Untergrund vor Betonersatz: Mittelwert f_ct,mean ≥ 1,5 N/mm², kein Einzelwert < 1,0 N/mm². Für starre PCC-Beschichtungen (OS 8 / OS 11): f_ct,mean ≥ 1,5 N/mm² bei 100 % Betonbruch.',
+    referenceValues: 'Anforderungen nach TR Instandhaltung (DIBt) / ZTV-ING: Untergrund vor Betonersatz: Mittelwert f_ct,mean ≥ 1,5 N/mm², kein Einzelwert < 1,0 N/mm². Für Oberflächenschutzsysteme aus Reaktionsharz (z. B. OS 8 / OS 11) gelten systemabhängige Anforderungen; maßgebend sind die Tabellen der jeweils geltenden TR Instandhaltung bzw. ZTV-ING Teil 3-4.',
     interactiveType: 'haftabzug'
   },
 
@@ -399,7 +399,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     category: 'minimalinvasiv',
     categoryLabel: 'Minimalinvasives Prüfverfahren',
     badge: 'Wasseraufnahme / Fassade',
-    standard: 'DIN EN 15148 („Kapillare Wasseraufnahme“), WTA-Merkblatt 2-11 („Natursteinmauerwerk“), RILEM II.4',
+    standard: 'RILEM II.4, WTA-Merkblätter; Laborwert w nach DIN EN ISO 15148 nicht gleichzusetzen',
     principle: 'Messtechnische Erfassung der kapillaren Wasseraufnahme mineralischer Baustoffoberflächen (Putz, Beton, Mauerziegel, Naturstein) unter realitätsnahem hydrostatischem Druck. Ein graduiertes Glas-Prüfröhrchen mit glockenförmigem Flansch wird mit plastischem Dichtungskitt absolut wasserdicht auf die Oberfläche geklebt. Das Röhrchen wird bis zur 0-Marke mit Wasser befüllt. Die Wassersäule von 10 cm Höhe erzeugt einen hydrostatischen Überdruck von ca. 1.000 Pa (10 hPa), was dem Staudruck von orkanartigem Schlagregen bei Windgeschwindigkeiten von ca. 140 km/h entspricht. Das in die Poren eingesaugte Wasservolumen wird zeitabhängig gemessen.',
     formula: 'w_{\\text{kap}} = \\frac{\\Delta V \\cdot \\rho_w}{A \\cdot \\sqrt{t}} \\quad \\left[ \\frac{\\text{kg}}{\\text{m}^2 \\cdot \\sqrt{\\text{h}}} \\right]',
     formulaExplanation: 'w_kap ist der Wasseraufnahmekoeffizient, ΔV das absorbierte Wasservolumen (ml = cm³), ρ_w die Wasserdichte (1 g/cm³), A die kreisförmige Kontaktfläche des Röhrchens (typisch A ≈ 4,5 cm²) und t die Messzeit (h).',
@@ -482,7 +482,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     pros: [
       'Unerlässliches Referenzverfahren zur Eichung aller elektronischen Feuchtesonden (CM-Gerät, Mikrowelle, TDR).',
       'Vollkommen unbeeinflusst von Salzen, Chloriden oder chemischen Inhaltsstoffen im Porenwasser.',
-      'Gilt vor Gericht als unanfechtbarer Beweis für Feuchteschäden und Trocknungszustände.'
+      'Gilt als Referenzverfahren für die Feuchtebestimmung (Darr-Methode).'
     ],
     cons: [
       'Zerstörendes Verfahren mit Probenahmeaufwand vor Ort.',

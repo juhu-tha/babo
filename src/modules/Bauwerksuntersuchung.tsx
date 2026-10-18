@@ -77,7 +77,7 @@ export default function Bauwerksuntersuchung() {
         "Karbonatisierungstiefe bestimmen mittels Phenolphthalein-Indikatorsprühung an frisch hergestellten Stemmbrüchen."
       ],
       standards: [
-        "DGZfP-Merkblatt B1 / B3 / B4 (NDT-Prüfrichtlinien)",
+        "DGZfP-Merkblätter B 02 (Betondeckung) / B 03 (Potentialmessung) / B 04 (Ultraschall)",
         "DBV-Merkblatt \"Betondeckung und Bewehrung\" (2015)",
         "DIN EN 12504-4 (\"Ultraschalllaufzeit im Festbeton\")"
       ],
@@ -347,7 +347,7 @@ export default function Bauwerksuntersuchung() {
                 className="p-3 bg-white hover:bg-slate-100 border border-home-grau/30 hover:border-shiraz/40 rounded-xl text-left transition-all cursor-pointer flex flex-col gap-1"
               >
                 <span className="font-bold text-xs text-slate-800">Laboranalytik</span>
-                <span className="text-xs text-slate-500">Röntgendiffraktometrie (XRD), REM Mikroskopie, Chloridgehälter bestimmen.</span>
+                <span className="text-xs text-slate-500">Röntgendiffraktometrie (XRD), REM Mikroskopie, Chloridgehalte bestimmen.</span>
               </button>
               <button
                 onClick={() => setActiveTab('bauschaeden')}
@@ -392,10 +392,8 @@ export default function Bauwerksuntersuchung() {
           { title: 'Schmidt-Hammer', url: 'https://de.wikipedia.org/wiki/Schmidt-Hammer' }
         ]}
         literatur={[
-          'Gieler, R.; Osterminski, K. (2014): Zerstörungsfreie Prüfung von Betonbauteilen im Hoch- und Ingenieurbau (Fraunhofer IRB Verlag)',
-          'Bundis, H. (2018): Zustandserfassung und Schadensanalyse von Betonbauwerken (Expert Verlag)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Rinn, F.: Device for checking materials such as timber. US-Patent 5,179,855 (Bohrwiderstandsmesstechnik / Resistograph)'
+          'Rinn, F.: Bohrwiderstandsmessung an Holz (Resistograph) – Originalpatent/Quelle prüfen'
         ]}
         regelwerke={[
           { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/' },
@@ -406,16 +404,16 @@ export default function Bauwerksuntersuchung() {
           { title: 'DIN EN 14630:2007-01 (Bestimmung der Karbonatisierungstiefe im Festbeton mit Phenolphthalein)', url: 'https://www.dinmedia.de/' },
           { title: 'DIN EN 1542:1999-07 (Messung der Haftfestigkeit im Abreißversuch mit Prüfstempel Ø 50 mm)', url: 'https://www.dinmedia.de/' },
           { title: 'DBV-Merkblatt Betondeckung und Bewehrung (2015-12, statistisches 5 %-Quantil)', url: 'https://www.betonverein.de/' },
-          { title: 'DGZfP-Merkblätter B1 (Potentialfeldmessung), B3 (Betondeckung), B4 (Ultraschall), B5 (Georadar)', url: 'https://www.dgzfp.de/' },
-          { title: 'DIBt TR Instandhaltung von Betonbauwerken (Teile 1 & 2: Prinzipien W, C, R, C_krit = 0,50 M.-%)', url: 'https://www.dibt.de/' },
-          { title: 'WTA-Merkblatt 8-15-20/D (Verfahren zur Holzdiagnostik im Bestand - Bohrwiderstandsmessung)', url: 'https://www.wta-international.org/' },
-          { title: 'VDI 6200:2020-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' }
+          { title: 'DGZfP-Merkblätter B 02 (Betondeckung), B 03 (Potentialmessung, 2025), B 04 (Ultraschall), B 10 (Radar), B 11 (Impakt-Echo, 2022)', url: 'https://publikationen.dgzfp.de/' },
+          { title: 'TR Instandhaltung von Betonbauwerken (DIBt) – korrosionsauslösender Chloridgehalt objektspezifisch durch den sachkundigen Planer', url: 'https://www.dibt.de/' },
+          { title: 'DIN 68800-2 / -4 (Holzschutz; bekämpfende Maßnahmen) – Bohrwiderstandsmessung selbst ist nicht genormt', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-4' },
+          { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' }
         ]}
         formeln={[
           {
             formel: 'M_{\\text{Bohr}}(z) = c_1 \\cdot \\rho_{\\text{local}}(z) \\cdot A_{\\text{Nadel}} + f_{\\text{friction}}(z)',
             erklaerung: 'Bohrprofil-Widerstandsmessung (Holzresistographie): Bohrdrehmoment M_Bohr über die Eindringtiefe z zur Detektion von Jahrringdichten, Fäulnis und Insektenfraß.',
-            quelle: 'WTA-Merkblatt 8-15'
+            quelle: 'Bohrwiderstandsmessung (nicht genormt)'
           },
           {
             formel: 'v_L = \\frac{L}{t_p} = \\sqrt{\\frac{E \\cdot (1 - \\nu)}{\\rho \\cdot (1 + \\nu)(1 - 2\\nu)}}',
@@ -439,7 +437,7 @@ export default function Bauwerksuntersuchung() {
           },
           {
             formel: 'f_{ck,\\text{is}} = \\min\\left(f_{m,\\text{is}} - 1{,}48 \\cdot s, \\; f_{\\text{is,lowest}} + 4\\right)',
-            erklaerung: 'Normative In-situ-Druckfestigkeit nach DIN EN 13791 (Verfahren A bei n ≥ 14 Bohrkernen) zur Bestimmung des 5%-Quantils ohne überhöhte statistische Sicherheitsabzüge.',
+            erklaerung: 'Charakteristische In-situ-Druckfestigkeit nach DIN EN 13791:2020-02 (ab n = 8 Bohrkernen; k_n = 2,00 bis 1,64, s mindestens entsprechend V = 8 %, Zuschlag M = 1–4 N/mm²); Einstufung mit f_ck = f_ck,is / 0,85.',
             quelle: 'DIN EN 13791'
           },
           {
@@ -449,8 +447,8 @@ export default function Bauwerksuntersuchung() {
           },
           {
             formel: 'C(x, t) = C_s \\cdot \\left[1 - \\text{erf}\\left(\\frac{x}{2 \\sqrt{D_{\\text{app}} \\cdot t}}\\right)\\right]',
-            erklaerung: 'Ficksches 2. Diffusionsgesetz zur Modellierung des Chloridprofils aus tiefengestaffelter Bohrmehlanalyse zur Prognose der Restlebensdauer bis C_krit = 0,50 M.-% am Bewehrungsstahl.',
-            quelle: 'DIN EN 14629 / DIBt TR'
+            erklaerung: 'Ficksches 2. Diffusionsgesetz zur Modellierung des Chloridprofils aus tiefengestaffelter Bohrmehlanalyse zur Prognose der Restlebensdauer bis zum korrosionsauslösenden Chloridgehalt (Anhaltswert ≈ 0,5 M.-% bez. Zement, objektspezifisch).',
+            quelle: 'DIN EN 14629 / TR Instandhaltung (DIBt)'
           },
           {
             formel: '\\Delta c = c_{\\text{act,0.05}} - d_k = c_{\\text{act,0.05}} - k_{\\text{carb}} \\cdot \\sqrt{t}',

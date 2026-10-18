@@ -117,7 +117,7 @@ export default function HistorischeBauweisen() {
     // Note: for a shallow arch, thrust per meter is H = (q * a^2) / (8 * f)
     const thrustPerMeter = (q * a * a) / (8 * fMeters);
 
-    // Total horizontal thrust on the full span of the beam (transferred to the end supports or tie-rods)
+    // Total horizontal thrust on the full span of the beam (transferred to the end supports or Zugbänder)
     const totalThrust = thrustPerMeter * s;
 
     // Cross-sectional area of the round tie rod (A = pi * d^2 / 4)
@@ -208,12 +208,12 @@ export default function HistorischeBauweisen() {
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20">
                     <h4 className="font-bold text-slate-900 text-sm mb-2">Vollziegel &amp; Reichsformat</h4>
                     <p className="text-xs text-slate-700 leading-relaxed">
-                      Ziegelmauerwerk wurde vor 1950 im Regelfall im <strong>Reichsformat (DF: 240 × 115 × 71 mm bzw. RF: 250 × 120 × 65 mm)</strong> und im vollfugigen Verband gemauert. Die Steinfestigkeit lag oft hoch (<InlineMath math="f_b \ge 10 - 20\text{ N/mm}^2" />), wohingegen die historische Mörtelfestigkeit (<InlineMath math="f_m" />) mangels Zementanteil oft unter <InlineMath math="1.0 - 2.5\text{ N/mm}^2" /> liegt. Dies führt zu einem weichen, verformungsfähigen Tragverhalten.
+                      Ziegelmauerwerk wurde vor 1950 im Regelfall im <strong>Reichsformat RF (250 × 120 × 65 mm)</strong> (zum Vergleich heute: Normalformat NF 240 × 115 × 71 mm, Dünnformat DF 240 × 115 × 52 mm) und im vollfugigen Verband gemauert. Die Steinfestigkeit lag oft hoch (<InlineMath math="f_b \ge 10 - 20\text{ N/mm}^2" />), wohingegen die historische Mörtelfestigkeit (<InlineMath math="f_m" />) mangels Zementanteil oft unter <InlineMath math="1.0 - 2.5\text{ N/mm}^2" /> liegt. Dies führt zu einem weichen, verformungsfähigen Tragverhalten.
                     </p>
                   </div>
 
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20">
-                    <h4 className="font-bold text-slate-900 text-sm mb-2">Stampfbeton (früher Gussbeton)</h4>
+                    <h4 className="font-bold text-slate-900 text-sm mb-2">Stampfbeton</h4>
                     <p className="text-xs text-slate-700 leading-relaxed">
                       Im späten 19. und frühen 20. Jahrhundert weit verbreitet für Fundamente, Kellerwände und schwere Stützwände. Ohne oder mit nur minimaler Bewehrung eingebracht, erfordert dieser Baustoff die konsequente Vermeidung exzentrischer Belastungen und klaffender Fugen, da sonst schlagartig Zugrisse auftreten.
                     </p>
@@ -225,9 +225,9 @@ export default function HistorischeBauweisen() {
                     <AlertTriangle className="text-amber-700" size={16} /> Statische Besonderheiten &amp; Schwachstellen
                   </h4>
                   <ul className="list-disc pl-5 text-xs text-amber-900 space-y-1.5">
-                    <li><strong>Zweischaliges Mauerwerk ohne Luftschichtanker:</strong> Bei historischen Vorsatzschalen (z.B. Sichtmauerwerk der Gründerzeit) fehlen oft korrosionsbeständige Drahtanker. Es besteht akute Einsturzgefahr bei Windbelastung.</li>
+                    <li><strong>Zweischaliges Mauerwerk ohne Luftschichtanker:</strong> Bei historischen Vorsatzschalen (z.B. Sichtmauerwerk der Gründerzeit) fehlen oft korrosionsbeständige Drahtanker. Unter Windsog können Vorsatzschalen dann abgelöst werden; Verankerung prüfen.</li>
                     <li><strong>Spreizdruck von Gewölben:</strong> Jeder gemauerte Bogen leitet beträchtliche horizontale Schubkräfte in die Auflagerwände ein. Setzen sich diese Wände seitlich ab, stürzt das Gewölbe ein.</li>
-                    <li><strong>Sulfattreiben im Mörtel:</strong> Kontakt mit Feuchtigkeit führt bei historischen Gips-Kalk-Mörteln zu zerstörerischem Sulfattreiben (Ettringitbildung), was das Gefüge komplett pulverisiert.</li>
+                    <li><strong>Sulfattreiben im Mörtel:</strong> Ettringit- bzw. Thaumasittreiben entsteht, wenn gipshaltige Mörtel oder Steine mit zementhaltigen (aluminathaltigen) Reparaturmörteln in Kontakt kommen und durchfeuchtet werden; das Gefüge kann dabei vollständig zerstört werden.</li>
                   </ul>
                 </div>
 
@@ -450,7 +450,7 @@ export default function HistorischeBauweisen() {
                     </div>
                     <div className="bg-white p-3 rounded-lg border border-slate-200">
                       <strong className="text-slate-900 block mb-1">2. Ständer (Säulen/Pfosten):</strong>
-                      Die vertikalen, tragenden Säulen, die geschossübergreifend (Rähmbauweise oder Ständerbauweise) angeordnet sind und Druckkräfte aufnehmen.
+                      Die vertikalen, tragenden Hölzer, die Druckkräfte aufnehmen. Ständerbau: Ständer laufen geschossübergreifend durch; Rähmbau (Stockwerkbau): Ständer werden je Geschoss abgezimmert und auf Rähm bzw. Schwelle gestellt.
                     </div>
                     <div className="bg-white p-3 rounded-lg border border-slate-200">
                       <strong className="text-slate-900 block mb-1">3. Riegel (Brust-/Sturzriegel):</strong>
@@ -473,12 +473,12 @@ export default function HistorischeBauweisen() {
                   <ul className="list-disc pl-5 text-xs text-amber-900 space-y-1.5">
                     <li><strong>Flankenabrisse:</strong> Zementmörtel verbindet sich nicht elastisch mit Holz. Regen dringt in die Haarrisse zwischen Holz und Gefach ein.</li>
                     <li><strong>Feuchtestau:</strong> Zement und Dispersionsfarben behindern die Austrocknung. Das eingedrungene Wasser staut sich am Holzgefüge, was zu rasanter <strong>Schwellenfäule</strong> durch Echten Hausschwamm oder den Braunen Kellerschwamm führt.</li>
-                    <li><strong>Insektenbefall:</strong> Feuchtes Holz zieht Schadinsekten wie den Hausbocksprung oder den Gewöhnlichen Nagekäfer (Anobium punctatum, „Holzwurm“) an, welche die statischen Restquerschnitte aushöhlen.</li>
+                    <li><strong>Insektenbefall:</strong> Feuchtes Holz zieht Schadinsekten wie den Hausbock (Hylotrupes bajulus) oder den Gewöhnlichen Nagekäfer (Anobium punctatum, „Holzwurm“) an, welche die statischen Restquerschnitte aushöhlen.</li>
                   </ul>
                 </div>
 
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-semibold text-slate-900 text-sm mb-2">Holzfeuchtemechanik (LaTeX-Vorschrift)</h4>
+                  <h4 className="font-semibold text-slate-900 text-sm mb-2">Holzfeuchtemechanik</h4>
                   <p className="text-xs text-slate-600 mb-2">
                     Holz schwindet und quillt hygroskopisch unterhalb des Fasersättigungsbereichs (<InlineMath math="u \approx 30\%" />). Das differentielle Schwindmaß <InlineMath math="\Delta d" /> einer Holzdimension <InlineMath math="d_0" /> berechnet sich über:
                   </p>
@@ -595,7 +595,7 @@ export default function HistorischeBauweisen() {
                         <span>{formatDeZahl(shrinkageCalculations.change, 2)} mm</span>
                       </div>
                       <p className="text-[10px] text-amber-800 mt-1 leading-relaxed">
-                        Das Bauteil verringert seine Abmessung von ehemals {dimensionInitial} mm auf <strong>{formatDeZahl(shrinkageCalculations.finalDim, 1)} mm</strong>. Im Fachwerk führt dieser Schwund zu Spalten an den Verbindungen und Flankenabrisssen an Ausfachungen!
+                        Das Bauteil verringert seine Abmessung von ehemals {dimensionInitial} mm auf <strong>{formatDeZahl(shrinkageCalculations.finalDim, 1)} mm</strong>. Im Fachwerk führt dieser Schwund zu Spalten an den Verbindungen und Flankenabrissen an Ausfachungen!
                       </p>
                     </div>
                   </div>
@@ -636,7 +636,7 @@ export default function HistorischeBauweisen() {
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-xs">
                     <strong className="text-slate-950 font-bold block mb-1">Preußische Kappen (Kappendecke)</strong>
                     <p className="text-slate-700 leading-relaxed">
-                      Flach gewölbte Ziegelschalen zwischen stählernen oder gusseisernen I-Trägern. Sie kamen ab ca. 1870 vor allem in feuchtegefährdeten Kellern oder Gewerbebauten zum Einsatz. Erfordern statisch zwingend ein stabiles Randwiderlager oder tie-rods (Zugbänder).
+                      Flach gewölbte Ziegelschalen zwischen stählernen oder gusseisernen I-Trägern. Sie kamen ab ca. 1870 vor allem in feuchtegefährdeten Kellern oder Gewerbebauten zum Einsatz. Erfordern statisch zwingend ein stabiles Randwiderlager oder Zugbänder (Zugbänder).
                     </p>
                   </div>
                 </div>
@@ -647,14 +647,14 @@ export default function HistorischeBauweisen() {
                   </h4>
                   <ul className="list-disc pl-5 text-xs text-amber-900 space-y-1.5">
                     <li><strong>Erlöschen des Auflagerbereichs (Balkenköpfe):</strong> Holzbalkenköpfe liegen oft direkt in kalten Außenmauern. Durch Kondensation der Raumluft fault das Hirnholz unbemerkt ab (Fäulnis im Mauerauflager).</li>
-                    <li><strong>Korrosion an I-Trägern bei Kappendecken:</strong> Feuchtigkeit in Kellern lässt die Flansche der Stahlträger rosten. Rost dehnt sich um das 2,5-fache Volumen aus, sprengt die Ziegelkappe ab und destabilisiert das Gewölbe.</li>
+                    <li><strong>Korrosion an I-Trägern bei Kappendecken:</strong> Feuchtigkeit in Kellern lässt die Flansche der Stahlträger rosten. Rost nimmt je nach Oxid das 2- bis 6-fache Volumen des Stahls ein, sprengt die Ziegelkappe ab und destabilisiert das Gewölbe.</li>
                     <li><strong>Durchhang historischer Decken:</strong> Durch jahrzehntelanges Kriechen des Holzes verformen sich Holzbalkendecken massiv plastisch. Das führt zu unebenen Fußböden und Rissen in den Deckenputzen darunter.</li>
                   </ul>
                 </div>
 
                 {/* Preussische Kappe Formel */}
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-semibold text-slate-900 text-sm mb-1.5">Gewölbeschub einer Preußischen Kappe (LaTeX)</h4>
+                  <h4 className="font-semibold text-slate-900 text-sm mb-1.5">Gewölbeschub einer Preußischen Kappe</h4>
                   <p className="text-xs text-slate-600 mb-2">
                     Der statische Horizontalschub <InlineMath math="H" /> einer flach gewölbten Kappendecke unter Vollbelastung <InlineMath math="q" /> (kN/m²) je Meter Trägerlänge beträgt:
                   </p>
@@ -674,7 +674,7 @@ export default function HistorischeBauweisen() {
                     <PenTool className="text-shiraz" size={16} /> Kappendecken-Schub &amp; Zugband-Rechner
                   </h3>
                   <p className="text-xs text-slate-600">
-                    Ermitteln Sie den horizontalen Spreizdruck einer Preußischen Kappe auf die Randträger und berechne den erforderlichen Querschnitt der stählernen Zugbänder.
+                    Ermitteln Sie den horizontalen Spreizdruck einer Preußischen Kappe auf die Randträger und berechnen Sie den erforderlichen Querschnitt der stählernen Zugbänder.
                   </p>
                 </div>
 
@@ -772,7 +772,7 @@ export default function HistorischeBauweisen() {
                         <span className="text-sm text-blue-700">{Math.ceil(kappeCalculations.requiredRods)} Stk.</span>
                       </div>
                       <p className="text-[10px] text-blue-800 mt-1 leading-normal">
-                        Für die Trägergesamtlänge von {formatDeZahl(kappeSpan, 1)} m sind mindestens <strong>{Math.ceil(kappeCalculations.requiredRods)} Zugstangen</strong> Ø {tieRodDiameter} mm (S235 bzw. Schweißeisen, zul. Spannung <InlineMath math="\sigma_{zul} = 120\text{ N/mm}^2" />) anzuordnen, um den Horizontalschub schadlos abzufangen.
+                        Für die Trägergesamtlänge von {formatDeZahl(kappeSpan, 1)} m sind mindestens <strong>{Math.ceil(kappeCalculations.requiredRods)} Zugstangen</strong> Ø {tieRodDiameter} mm anzuordnen (historischer Vergleich mit zulässiger Spannung <InlineMath math="\sigma_{zul} = 120\text{ N/mm}^2" /> für Schweißeisen/Flussstahl; ein Nachweis nach Eurocode 3 erfolgt dagegen mit Bemessungslasten und <InlineMath math="f_y/\gamma_{M0}" />, bei Gewindestangen mit dem Spannungsquerschnitt im Gewinde). Zugbänder sind nur in Endfeldern und an freien Rändern erforderlich; in Innenfeldern heben sich die Horizontalschübe benachbarter Kappen weitgehend auf.
                       </p>
                     </div>
                   </div>
@@ -857,7 +857,7 @@ export default function HistorischeBauweisen() {
                     <div className="bg-white p-3 rounded-lg border border-amber-100">
                       <strong className="text-slate-950 block mb-1">Passgenaue Schäftungen</strong>
                       <p className="text-slate-600 leading-relaxed">
-                        Verrottete Balkenabschnitte müssen nicht komplett getauscht werden. Durch zimmermannsmäßige Schäftungen (z.B. Gerberblatt, französisches Schloss) wird das Holz formschlüssig unter minimalem Materialverlust repariert.
+                        Verrottete Balkenabschnitte müssen nicht komplett getauscht werden. Durch zimmermannsmäßige Schäftungen (z. B. schräges Hakenblatt, Jupiterstoß) wird das Holz formschlüssig unter minimalem Materialverlust repariert.
                       </p>
                     </div>
                     <div className="bg-white p-3 rounded-lg border border-amber-100">
@@ -886,14 +886,13 @@ export default function HistorischeBauweisen() {
           { title: "Dachwerk", url: "https://de.wikipedia.org/wiki/Dachwerk" }
         ]}
         literatur={[
-          "Mende, M.: Historische Baukonstruktionen im Bestand. Erkennen, Bewerten, Sanieren. (Huss-Medien)",
           "Breymann, G. A.: Allgemeine Baukonstruktionslehre. Band I-III, Neuausgabe historischer Handbücher.",
-          "WTA-Merkblatt 8-1: Fachwerk - Instandsetzung nach WTA-Richtlinien.",
-          "Scholz, W.: Baustoffkunde. Grundlagen des historischen Mauerwerkbaus."
+          "WTA-Merkblatt 8-1: Fachwerk - Instandsetzung nach WTA-Richtlinien."
         ]}
         regelwerke={[
-          { title: "DIN 1053-1 (Historisches Mauerwerk - Tragfähigkeit und Ausführung)", url: "https://www.dinmedia.de" },
-          { title: "WTA-Merkblatt 8-2 (Ausfachung von Sichtfachwerken)", url: "https://www.wta-gmbh.de" },
+          { title: "DIN 1053-1:1996 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)", url: "https://www.dinmedia.de/de/suche?q=DIN+1053-1" },
+          { title: "WTA-Merkblätter Reihe 8 (Fachwerkinstandsetzung, u. a. Ausfachungen)", url: "https://www.wta-gmbh.de" },
+          { title: "DIN 68100:2010-07 (Toleranzsystem für Holzbe- und -verarbeitung – Schwind- und Quellmaße)", url: "https://www.dinmedia.de/de/suche?q=DIN+68100" },
           { title: "DIN EN 1995-1-1/NA (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de" }
         ]}
         formeln={[
@@ -905,7 +904,7 @@ export default function HistorischeBauweisen() {
           {
             formel: "\\epsilon_{hyg} = \\alpha \\cdot \\Delta u",
             erklaerung: "Hygrische Quell- und Schwindverformung von Holz quer zur Faserrichtung bei Feuchteänderungen unterhalb des Fasersättigungsbereichs.",
-            quelle: "DIN EN 1995-1-1"
+            quelle: "DIN 68100 / Holzkunde-Literatur"
           }
         ]}
       />

@@ -103,10 +103,10 @@ export default function Denkmalpflege() {
               <div className="border border-home-grau/30 rounded-2xl p-5 space-y-4 shadow-sm bg-white">
                 <div className="flex items-center gap-2">
                   <BookOpen className="text-shiraz" size={20} />
-                  <h4 className="font-bold text-slate-900 text-sm">Die Charta von Venedig (1964) — Das denkmalpflegerische Manifest</h4>
+                  <h4 className="font-bold text-slate-900 text-sm">Denkmalpflegerische Grundsätze (u. a. Charta von Venedig 1964, Art. 9–12)</h4>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Die 1964 verabschiedete Charta von Venedig ist die international anerkannte Leitlinie für Denkmalschutz-Architekten. Sie legt fest, wie historisch respektvoll mit alter Substanz umzugehen ist:
+                  Die 1964 verabschiedete Charta von Venedig ist die international anerkannte Leitlinie der Denkmalpflege. Reversibilität und Materialverträglichkeit sind später formulierte Fachgrundsätze, die auf ihr aufbauen:
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -123,7 +123,7 @@ export default function Denkmalpflege() {
                   <div className="bg-slate-50/50 p-3.5 rounded-xl border border-home-grau/30 flex gap-3">
                     <span className="text-shiraz font-mono font-bold text-xs mt-0.5">II.</span>
                     <div>
-                      <strong className="text-slate-800 text-xs block mb-1">Materialgerechtigkeit</strong>
+                      <strong className="text-slate-800 text-xs block mb-1">Materialverträglichkeit (späterer Fachgrundsatz, nicht Wortlaut der Charta)</strong>
                       <p className="text-xs text-slate-600 leading-normal">
                         Neue Baustoffe müssen materialtechnisch und chemisch mit dem historischen Gefüge kompatibel sein (z.B. weicher Luftkalk statt harter Zementmischungen bei antiken Ziegeln).
                       </p>
@@ -171,13 +171,13 @@ export default function Denkmalpflege() {
                 </div>
                 <div className="text-xs text-slate-700 leading-relaxed md:pr-4">
                   <p className="mb-2">
-                    In vielen deutschen Bundesländern ist der Denkmallisten-Eintrag <strong>konstitutiv</strong> — der Schutz beginnt also erst mit Unterzeichnung des Bescheids und bürokratischer Listeneintragung. 
+                    Ob die Eintragung in die Denkmalliste <strong>nachrichtlich (deklaratorisch)</strong> oder <strong>konstitutiv</strong> wirkt (Schutz erst ab Bescheid), regelt das jeweilige Landesdenkmalschutzgesetz. In Bayern gilt das nachrichtliche System: Ein Baudenkmal ist auch ohne Listeneintrag geschützt. 
                   </p>
                   <p className="bg-white p-3 rounded-xl border border-rose-100 text-slate-800 shadow-sm leading-relaxed">
                     <strong>Der bayerische Systemwechsel:</strong> In Bayern gilt das <strong>deklaratorische Prinzip</strong> (Art. 2 BayDSchG). Ein Gebäude ist gesetzlich geschütztes Baudenkmal, sobald es die wissenschaftlichen/historischen Anforderungen des Art. 1 erfüllt. Die <em>Bayerische Denkmalliste</em> (und damit der Denkmalatlas) ist rein nachrichtlich! 
                   </p>
                   <p className="mt-2 text-rose-800 font-medium">
-                    ⚠️ Planungsrisiko: Findet ein Architekt im Zuge eines Umbaus bauhistorisch hochbedeutende Fachwerkreste in einer alten Scheune, die nicht gelistet ist, greift der volle Denkmalschutz sofort kraft Gesetzes. Unerlaubtes Abreißen ist eine Straftat!
+                    ⚠️ Planungsrisiko: Findet ein Architekt im Zuge eines Umbaus bauhistorisch hochbedeutende Fachwerkreste in einer alten Scheune, die nicht gelistet ist, greift der volle Denkmalschutz sofort kraft Gesetzes. Unerlaubtes Abreißen ist eine Ordnungswidrigkeit nach Art. 20 BayDSchG mit hohem Bußgeld; strafrechtlich kann § 304 StGB greifen.
                   </p>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function Denkmalpflege() {
                       Sämtliche Eingriffe, Sanierungen, Umnutzungen oder bauliche Änderungen bedürfen der vorherigen und schriftlichen <strong>Denkmalschutzrechtlichen Erlaubnis</strong> durch die Untere Denkmalschutzbehörde. 
                     </p>
                     <p className="text-slate-600 text-xs leading-relaxed">
-                      Wird das Bauvorhaben baugenehmigungspflichtig, wird die Denkmalschutz-Erlaubnis im konzentrierten Verfahren durch die Bauaufsichtsbehörde mitentschieden (Art. 73 BayBO).
+                      Wird das Bauvorhaben baugenehmigungspflichtig, entscheidet die Bauaufsichtsbehörde im Baugenehmigungsverfahren über die denkmalrechtliche Erlaubnis mit (BayDSchG, Erlaubnisverfahren – Artikel in der geltenden Fassung prüfen).
                     </p>
                   </div>
                   <div className="bg-slate-50 p-2 text-xs text-slate-500 rounded border border-home-grau/30 mt-2">
@@ -206,7 +206,7 @@ export default function Denkmalpflege() {
                 <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-3 flex flex-col justify-between shadow-sm">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="bg-slate-100 text-slate-800 px-2 py-0.5 rounded text-xs font-mono font-bold">Art. 6 Abs. 1 S. 1 Nr. 2</span>
+                      <span className="bg-slate-100 text-slate-800 px-2 py-0.5 rounded text-xs font-mono font-bold">Art. 6 BayDSchG (Umgebung) – Absatz prüfen</span>
                       <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider">Der Umgebungsschutz</h4>
                     </div>
                     <p className="text-slate-600 text-xs leading-relaxed">
@@ -250,15 +250,13 @@ export default function Denkmalpflege() {
                 <div className="mt-4 pt-4 border-t border-home-grau/30">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-xs font-bold rounded uppercase">Rechtsänderung</span>
-                    <h5 className="font-bold text-slate-800 text-xs">Änderung July 2023: Einführung des bayerischen Schatzregals (Art. 12a)</h5>
+                    <h5 className="font-bold text-slate-800 text-xs">Änderung Juli 2023: Einführung des bayerischen Schatzregals (heute Art. 9 BayDSchG)</h5>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
                     Jahrzehntelang war Bayern das einzige deutsche Bundesland ohne ein vollständiges staatliches Eigentumsrecht an Bodenschätzen (Schatzregal). Es galt die römische <em>Hadrianische Teilung</em> (Fund gehört zu 50% dem Finder und 50% dem Grundstückseigentümer). 
                   </p>
                   <p className="text-xs text-slate-700 bg-slate-50 p-3 rounded-xl border border-home-grau/30 mt-2 leading-relaxed">
-                    Zum <strong>1. Juli 2023</strong> wurde das bayerische Schatzregal (Art. 12a BayDSchG) in Kraft gesetzt. Bodendenkmäler, 
-                    die von besonderem wissenschaftlichem Wert sind oder in staatlichen <em>Grabungsschutzgebieten</em> entdeckt werden, fallen nun 
-                    <strong> direkt und automatisch in das Eigentum des Freistaates Bayern</strong>.
+                    Zum <strong>1. Juli 2023</strong> wurde das bayerische Schatzregal in Kraft gesetzt (heute Art. 9 BayDSchG). Bewegliche Bodendenkmäler, die herrenlos oder so lange verborgen waren, dass ihr Eigentümer nicht mehr zu ermitteln ist, werden <strong>mit der Entdeckung Eigentum des Freistaates Bayern</strong>. Grundeigentümer und Finder können eine Entschädigung bzw. Belohnung erhalten (nicht bei geringwertigen oder unrechtmäßigen Funden).
                   </p>
                 </div>
               </div>
@@ -275,10 +273,10 @@ export default function Denkmalpflege() {
                 <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-3 shadow-sm flex flex-col justify-between">
                   <div className="space-y-2">
                     <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
-                      <Check className="text-emerald-600" size={16} /> Gebäudeenergiegesetz: GEG § 105
+                      <Check className="text-emerald-600" size={16} /> § 105 GModG (vormals GEG)
                     </h4>
                     <p className="text-slate-600 text-xs leading-relaxed">
-                      Das Gebäudeenergiegesetz verpflichtet im Grundsatz zur energetischen Aufrüstung des Bestandes. Gemäß <strong>§ 105 GEG</strong> sind Baudenkmäler und sonstige besonders erhaltenswerte Bausubstanz hiervon jedoch weitgehend befreit.
+                      Das Gebäudeenergiegesetz verpflichtet im Grundsatz zur energetischen Aufrüstung des Bestandes. Gemäß <strong>§ 105 GModG (vormals GEG)</strong> kann bei Baudenkmälern und sonstiger besonders erhaltenswerter Bausubstanz von den Anforderungen abgewichen werden, soweit deren Erfüllung die Substanz oder das Erscheinungsbild beeinträchtigt oder zu unverhältnismäßigem Aufwand führt (Kann-Regelung, keine automatische Befreiung).
                     </p>
                     <p className="text-slate-600 text-xs leading-relaxed">
                       Eine Pflicht zur Durchführung energetischer Verbesserungen (z.B. Dachbodendämmung, Fassadendämmung) entfällt, wenn die Maßnahme das äußere Erscheinungsbild unzumutbar verzerrt oder die Substanz schädigt.
@@ -303,7 +301,7 @@ export default function Denkmalpflege() {
                     </p>
                   </div>
                   <div className="p-3 bg-rose-50/40 border border-rose-100 rounded-xl text-rose-800 text-xs leading-relaxed">
-                    <strong>Das Gebot:</strong> Verwendung elastischerer, hoch diffusionsoffener Bindemittel wie <strong>Luftkalkputz</strong>, <strong>Natürlicher Trasskalk (NHL)</strong> und pigmentierter <strong>Silikatfarben</strong>.
+                    <strong>Das Gebot:</strong> Verwendung elastischerer, hoch diffusionsoffener Bindemittel wie <strong>Luftkalkputz</strong>, <strong>natürlich hydraulischer Kalk (NHL, DIN EN 459-1), Trasskalk</strong> und pigmentierter <strong>Silikatfarben</strong>.
                   </div>
                 </div>
               </div>
@@ -318,7 +316,7 @@ export default function Denkmalpflege() {
                 </p>
 
                 <div className="bg-slate-50 p-4 rounded-xl space-y-3 border border-home-grau/30">
-                  <h5 className="font-bold text-slate-800 text-xs">Zwei zugelassene und schadensfreie Systemlösungen:</h5>
+                  <h5 className="font-bold text-slate-800 text-xs">Zwei bewährte Systemprinzipien:</h5>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-medium text-slate-900">
                     <div className="bg-white p-3 rounded-lg border border-home-grau/30 space-y-1">
                       <span className="text-rose-700 block font-bold">1. Kapillaraktive, dampfoffene Systeme:</span>
@@ -329,7 +327,7 @@ export default function Denkmalpflege() {
                     <div className="bg-white p-3 rounded-lg border border-home-grau/30 space-y-1">
                       <span className="text-rose-700 block font-bold">2. Holzweichfaserplatten in Lehmbettung:</span>
                       <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                        Dampfbremsendes, hochgradig sorptionsfähiges, ökologisches System. Der <strong>Lehmunterputz</strong> gleicht unebene historische Wände vollflächig aus. Dies verhindert absolut schädliche Hohlräume zwischen Dämmplatte und altem Mauerwerk (Gefahr von Konvektion &amp; stehendem Wasser).
+                        Kapillaraktives, diffusionsoffenes, sorptionsfähiges System. Der <strong>Lehmunterputz</strong> gleicht unebene historische Wände vollflächig aus. Dies vermeidet schädliche Hohlräume zwischen Dämmplatte und altem Mauerwerk (Gefahr von Konvektion &amp; stehendem Wasser).
                       </p>
                     </div>
                   </div>
@@ -351,7 +349,7 @@ export default function Denkmalpflege() {
               <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-4 shadow-sm">
                 <h4 className="font-bold text-slate-800 text-sm">Das denkmalpflegerische Dreistufen-System im Freistaat</h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Wie fast der gesamte deutsche Föderalismus ist auch der bayerische Denkmalschutz dreistufig organisiert. Für dich als Planer ist die Kenntnis der Zuständigkeiten elementar:
+                  Wie fast der gesamte deutsche Föderalismus ist auch der bayerische Denkmalschutz dreistufig organisiert. Für Sie als Planer ist die Kenntnis der Zuständigkeiten elementar:
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-medium text-slate-900">
@@ -386,7 +384,7 @@ export default function Denkmalpflege() {
                   <h4 className="font-bold text-slate-800 text-sm">Die Sonder-AfA des Einkommensteuergesetzes (EStG): Der Finanzierungsmotor</h4>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Die Sanierung historischer Gebäude ist oft 30% bis 100% teurer als ein Neubau. Um dies zu kompensieren, bietet das deutsche Steuerrecht durch die steuerliche Erleichterung (§§ 7i, 10f EStG) einen enormen Hebel.
+                  Die Sanierung historischer Gebäude verursacht häufig erhebliche Mehrkosten. Zum Ausgleich bietet das deutsche Steuerrecht durch die steuerliche Erleichterung (§§ 7i, 10f EStG) einen enormen Hebel.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -405,14 +403,14 @@ export default function Denkmalpflege() {
                       <strong className="text-xs text-slate-950 block">§ 10f EStG — Eigennutzung</strong>
                       <span className="text-shiraz font-bold text-sm block">10 Jahre lang Abschreibung (90% der Kosten)</span>
                       <p className="text-xs text-slate-600 leading-relaxed">
-                        Wer das Denkmal selbst bewohnt, kann 10 Jahre lang jährlich je <strong>9%</strong> (insgesamt 90%) der begünstigten Sanierungsaufwendungen wie Aufwendungen für Energieberatung und Rekonstruktion direkt als Sonderausgaben geltend machen.
+                        Wer das Denkmal selbst bewohnt, kann 10 Jahre lang jährlich je <strong>9%</strong> (insgesamt 90%) der begünstigten Aufwendungen als Sonderausgaben geltend machen – begünstigt sind nur Maßnahmen, die nach Art und Umfang zur Erhaltung erforderlich sind, mit Bescheinigung der Denkmalbehörde.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-rose-50/50 p-3 rounded-xl border border-rose-100 text-xs text-rose-900 leading-relaxed">
-                  <strong>CRITICAL DEADLINE VORSCHRIFT:</strong> Steuervorteile unterliegen strenger Abstimmungspflicht. Alle Baumaßnahmen müssen <strong>vor Beginn</strong> in einer schriftlichen Vereinbarung (Abstimmung) mit der Denkmalbehörde festgelegt werden. Nachträglich beantragte oder bereits gestartete Maßnahmen sind von der Steuerbescheinigung rechtlich zwingend ausgeschlossen!
+                  <strong>Wichtige Frist:</strong> Steuervorteile unterliegen strenger Abstimmungspflicht. Alle Baumaßnahmen müssen <strong>vor Beginn</strong> in einer schriftlichen Vereinbarung (Abstimmung) mit der Denkmalbehörde festgelegt werden. Nachträglich beantragte oder bereits gestartete Maßnahmen sind von der Steuerbescheinigung rechtlich zwingend ausgeschlossen!
                 </div>
               </div>
 
@@ -436,8 +434,7 @@ export default function Denkmalpflege() {
         literatur={[
           "Eberl, H.; Martin, D. (2019): Denkmalschutzgesetz (BayDSchG). Kommentar für die Praxis (C.H. Beck)",
           "WTA-Merkblatt 6-4: Innendämmung nach WTA: Planungsleitfaden",
-          "WTA-Merkblatt 2-9: Sanierputzsysteme",
-          "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+          "WTA-Merkblatt 2-9: Sanierputzsysteme"
         ]} 
         regelwerke={[
           { title: "Bayerisches Denkmalschutzgesetz (BayDSchG)", url: "https://www.gesetze-bayern.de/Content/Document/BayDSchG" },
@@ -447,7 +444,7 @@ export default function Denkmalpflege() {
         formeln={[
           {
             formel: 'p_{\\text{krist}} = \\frac{R \\cdot T}{V_m} \\cdot \\ln\\left(\\frac{c}{c_{\\text{sat}}}\\right) \\le \\sigma_{\\text{Zug,Stein}}',
-            erklaerung: 'Kristallisationsdruck p_krist von Schadsalzen (z.B. Natriumsulfat/Glauberit) in Porenräumen: Übersteigt der Druck die Zugfestigkeit des Steins, kommt es zu Absandungen und Schalenbildung.',
+            erklaerung: 'Kristallisationsdruck p_krist von Schadsalzen (z.B. Natriumsulfat: Thenardit/Mirabilit) in Porenräumen: Übersteigt der Druck die Zugfestigkeit des Steins, kommt es zu Absandungen und Schalenbildung.',
             quelle: 'WTA / Correns-Gleichung'
           },
           {
