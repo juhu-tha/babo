@@ -94,8 +94,8 @@
       "properties": {
         "density": 2400,
         "eModul": 33000,
-        "compressive": 38,
-        "tensile": 2.9,
+        "compressive": 30,
+        "tensile": 2.0,
         "thermalCond": 2,
         "thermalExp": 10,
         "heatCap": 1000
@@ -108,9 +108,9 @@
       "name": "Hochleistungsbeton (C80/95)",
       "properties": {
         "density": 2500,
-        "eModul": 44000,
-        "compressive": 88,
-        "tensile": 4.8,
+        "eModul": 42000,
+        "compressive": 80,
+        "tensile": 3.4,
         "thermalCond": 2.2,
         "thermalExp": 10,
         "heatCap": 1000
@@ -123,9 +123,9 @@
       "name": "Leichtbeton (LC20/22)",
       "properties": {
         "density": 1600,
-        "eModul": 15000,
-        "compressive": 22,
-        "tensile": 1.6,
+        "eModul": 16000,
+        "compressive": 20,
+        "tensile": 1.3,
         "thermalCond": 0.8,
         "thermalExp": 8,
         "heatCap": 1000
@@ -335,7 +335,7 @@
         "density": 7900,
         "eModul": 200000,
         "compressive": 210,
-        "tensile": 500,
+        "tensile": 520,
         "thermalCond": 15,
         "thermalExp": 16,
         "heatCap": 500
@@ -394,8 +394,8 @@
       "properties": {
         "density": 4500,
         "eModul": 105000,
-        "compressive": 400,
-        "tensile": 400,
+        "compressive": 275,
+        "tensile": 345,
         "thermalCond": 22,
         "thermalExp": 8.6,
         "heatCap": 520
@@ -422,8 +422,8 @@
       "categoryId": "holz_holzwerkstoffe",
       "name": "Laubholz (D30, Eiche, 0°)",
       "properties": {
-        "density": 530,
-        "eModul": 12000,
+        "density": 640,
+        "eModul": 11000,
         "compressive": 23,
         "tensile": 18,
         "thermalCond": 0.17,
@@ -437,7 +437,7 @@
       "categoryId": "holz_holzwerkstoffe",
       "name": "Brettschichtholz (GL24h)",
       "properties": {
-        "density": 380,
+        "density": 420,
         "eModul": 11500,
         "compressive": 24,
         "tensile": 19.2,
@@ -468,7 +468,7 @@
       "name": "OSB/3-Platte",
       "properties": {
         "density": 600,
-        "eModul": 3500,
+        "eModul": 4930,
         "compressive": 15,
         "tensile": 9,
         "thermalCond": 0.13,
@@ -795,12 +795,12 @@
     {
       "id": "vsg",
       "categoryId": "glas",
-      "name": "VSG (Verbundsicherheitsglas)",
+      "name": "VSG (Verbundsicherheitsglas aus Floatglas)",
       "properties": {
         "density": 2500,
         "eModul": 70000,
         "compressive": 500,
-        "tensile": 80,
+        "tensile": 45,
         "thermalCond": 1,
         "thermalExp": 9,
         "heatCap": 720
