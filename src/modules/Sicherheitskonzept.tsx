@@ -116,7 +116,7 @@ export default function Sicherheitskonzept() {
           </div>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col gap-2">
             <p><strong>Geltende Fassung in Deutschland:</strong> DIN EN 1990:2010-12 mit Nationalem Anhang DIN EN 1990/NA:2010-12 und Änderung /NA/A1:2012-08. Jeder Eurocode-Teil gilt nur zusammen mit seinem Nationalen Anhang (NA), der die national festzulegenden Parameter (NDP) – etwa Teilsicherheits- und Kombinationsbeiwerte – bestimmt. Bauaufsichtlich verbindlich werden die Normen über die Verwaltungsvorschrift Technische Baubestimmungen (MVV TB / VV TB der Länder).</p>
-            <p><strong>Zweite Eurocode-Generation:</strong> CEN hat die überarbeiteten Eurocodes (u. a. EN 1990:2023, EN 1992-1-1:2023) veröffentlicht; sie werden erst nach Erscheinen der deutschen Fassungen mit Nationalem Anhang und ihrer bauaufsichtlichen Einführung anwendbar. Bis dahin bleiben die oben genannten Fassungen maßgebend. Neu hinzu kommen Regeln für Glas (CEN/TS 19100) und Faserverbundkunststoffe (CEN/TS 19101).</p>
+            <p><strong>Zweite Eurocode-Generation:</strong> CEN hat die überarbeiteten Eurocodes (u. a. EN 1990:2023, EN 1992-1-1:2023) veröffentlicht; die ersten deutschen Fassungen sind erschienen (z. B. DIN EN 1993-1-1:2025-04, DIN EN 1992-1-1:2025-09). Bauaufsichtlich anwendbar werden sie erst mit Nationalem Anhang und Einführung in die MVV TB bzw. VV TB der Länder – bis dahin bleiben die oben genannten Fassungen maßgebend. Neu hinzu kommen Regeln für Glas (CEN/TS 19100) und Faserverbundkunststoffe (CEN/TS 19101).</p>
           </div>
         </div>
       )}

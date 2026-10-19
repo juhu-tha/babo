@@ -8,6 +8,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import Elastomechanik from './Elastomechanik';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -86,18 +87,18 @@ export default function Baustoffkenngroessen() {
 
   const dichtePresets = {
     ziegel: {
-      name: "Hochlochziegel",
+      name: "Ziegelscherben (Vollziegel)",
       rhoR: 2650,
       rho: 1800,
       rhoS: 1100,
-      desc: "Tonkeramik besitzt eine hohe Steifigkeit und Reindichte (2650 kg/m³). Durch eingebettete Poren sinkt die Rohdichte auf ca. 1800 kg/m³. Bei geschüttetem Ziegelsplit (Haufwerk) verringert sich die Schüttdichte auf 1100 kg/m³."
+      desc: "Der gebrannte Ziegelscherben hat eine Reindichte von etwa 2650 kg/m³. Durch die Brennporen sinkt die Scherbenrohdichte eines Vollziegels auf ca. 1800 kg/m³ (Lochziegel: Steinrohdichte durch die Lochung deutlich geringer). Geschütteter Ziegelsplitt erreicht ca. 1100 kg/m³."
     },
     blaehton: {
       name: "Blähtongranulat",
       rhoR: 2500,
       rho: 650,
       rhoS: 380,
-      desc: "Die dichte Mineralsubstanz hat 2500 kg/m³ Reindichte. Durch thermodynamische Porenbildung beim Brennen liegt die Kornrohdichte bei nur 650 kg/m³. Die lose Schüttung bildet Haufwerksporen und wiegt nur 380 kg/m³."
+      desc: "Die Mineralsubstanz hat ca. 2500 kg/m³ Reindichte. Beim Brennen bei ca. 1200 °C blähen Gase den erweichten Ton auf; die Kornrohdichte sinkt dadurch auf ca. 650 kg/m³. Die lose Schüttung mit Haufwerksporen wiegt nur ca. 380 kg/m³."
     },
     granit: {
       name: "Monolithischer Granit",
@@ -111,7 +112,7 @@ export default function Baustoffkenngroessen() {
       rhoR: 2400,
       rho: 500,
       rhoS: 310,
-      desc: "Porenbetongerüst besitzt 2400 kg/m³ Feststoffdichte. Eingeblasene künstliche Luftblasen lassen die Steindichte massiv auf 500 kg/m³ abrutschen. Als Granulatschüttung wiegt der Baustoff kaum noch 310 kg/m³."
+      desc: "Das Feststoffgerüst (Tobermorit, Quarz) hat ca. 2400 kg/m³ Reindichte. Aluminiumpulver reagiert in der alkalischen Mischung unter Wasserstoffbildung und treibt den Mörtel auf; die Steinrohdichte sinkt dadurch auf ca. 500 kg/m³. Als Granulatschüttung wiegt der Baustoff nur noch ca. 310 kg/m³."
     }
   };
 
@@ -162,7 +163,7 @@ export default function Baustoffkenngroessen() {
       setThermischRho(1800);
       setThermischC(1000);
     } else if (preset === 'beton') {
-      setThermischLambda(2.10);
+      setThermischLambda(2.0);
       setThermischRho(2400);
       setThermischC(1000);
     } else if (preset === 'stahl') {
@@ -189,7 +190,7 @@ export default function Baustoffkenngroessen() {
       setSaeulenA(80);
     } else if (mat === 'holz') {
       setSaeulenE(11000);
-      setSaeulenFy(24);
+      setSaeulenFy(21);
       setSaeulenA(400);
     } else if (mat === 'beton') {
       setSaeulenE(30000);
@@ -554,7 +555,7 @@ export default function Baustoffkenngroessen() {
                   rheologyDesc: 'Verformt sich unter Dauerlast über die Zeit (zeitabhängiges viskoses Kriechen). Die Kriechrate ist stark gekoppelt an hygrische Wechsel (De- und Adsorption), bekannt als mechano-sorptiver Effekt.',
                   example: 'Ein massiver Holzbinder biegt sich im Dachwerk über Jahrzehnte hinweg langsam viskös durch (Kriechen). Bei Querzugspannung bricht das Holz schlagartig ohne Vorwarnung längs auf, da die radialen Bindekräfte minimal sind.',
                   norm: 'Entwurf nach DIN EN 1995-1-1 (Eurocode 5), Holzbeständigkeit nach DIN 68800.',
-                  test: 'Visuelle und zerstörungsfreie Ultraschall-Festigkeitssortierung nach DIN 4074-1.'
+                  test: 'Visuelle Festigkeitssortierung nach DIN 4074-1 bzw. maschinelle Sortierung nach DIN EN 14081; Prüfung der Festigkeitswerte nach DIN EN 408.'
                 },
                 beton: {
                   name: 'Normalbeton (z. B. C25/30)',
@@ -570,14 +571,14 @@ export default function Baustoffkenngroessen() {
                   rheologyDesc: 'Zeigt bei Kurzzeitbelastung elastisches Rückfederungsverhalten. Unter Dauerlast kriecht Beton erheblich (Zementsteingel fließt um). Das Schwinden (Feuchteabgabe an die Umwelt) erzeugt zusätzliche zeitabhängige Schwindstauchungen.',
                   example: 'Die Druckstützen im Untergeschoss stauchen sich in den ersten Jahren merklich ein. Das Tragwerk kriecht infolge permanenter Eigenlasten und schwindet gleichzeitig durch die fortschreitende Austrocknung.',
                   norm: 'Konstruktion nach DIN EN 1992-1-1 (Eurocode 2) und Herstellungsnorm DIN EN 206 / DIN 1045-2.',
-                  test: 'Zerstörende Druckprüfung von Prüfwürfeln (150 mm Kantenlänge) nach DIN EN 12390-3 nach 28 Tagen Wasserlagerung.'
+                  test: 'Zerstörende Druckprüfung von Würfeln (150 mm Kantenlänge) nach DIN EN 12390-3 im Alter von 28 Tagen; Lagerung nach DIN EN 12390-2 (in Deutschland meist Trockenlagerung nach Anhang NA mit Umrechnung auf Wasserlagerung).'
                 },
                 stahl: {
                   name: 'Baustahl (z. B. S235J0)',
                   description: 'Metallischer Legierungswerkstoff mit fein-polykristallinem, metallogefüglichem Kristallgitter.',
                   isotropy: 'Isotrop',
                   isotropyBadge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-                  isotropyDesc: 'Durch die regellose Richtungsverteilung der mikroskopischen Metallkörner verhalten sich alle Festigkeiten, Elastizitätsmoduln (<InlineMath math="E \\approx 210.000" /> MPa) und Querdehnzahlen (<InlineMath math="\\nu \\approx 0.3" />) in allen drei Raumachsen exakt identisch.',
+                  isotropyDesc: 'Durch die regellose Richtungsverteilung der mikroskopischen Metallkörner verhalten sich alle Festigkeiten, Elastizitätsmoduln (<InlineMath math="E \\approx 210\\,000" /> MPa) und Querdehnzahlen (<InlineMath math="\\nu \\approx 0{,}3" />) in allen drei Raumachsen praktisch identisch (Walztexturen bewirken nur geringe Unterschiede).',
                   homogeneity: 'Homogen (makroskopisch)',
                   homogeneityBadge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
                   homogeneityDesc: 'Auf der makroskopischen Ebene sind alle physikalischen Eigenschaften homogen im gesamten Profilquerschnitt verteilt. Es gibt keine ausgeprägten Phasengrenzflächen im Zentimetermaßstab.',
@@ -596,13 +597,13 @@ export default function Baustoffkenngroessen() {
                   isotropyDesc: 'Wegen der ungeordneten, nicht-kristallinen Atomanordnung besitzt Fensterglas in alle Achsenrichtungen exakt dieselben physikalischen, spannungsoptischen und elastischen Eigenschaften.',
                   homogeneity: 'Homogen',
                   homogeneityBadge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-                  homogeneityDesc: 'Aufgrund des kontinuierlichen Floatprozesses liegt ein absolut phasenreines System ohne Körner, Fehlstellen oder Phasengrenzflächen vor.',
+                  homogeneityDesc: 'Makroskopisch homogen: Der Floatprozess erzeugt ein einphasiges, amorphes Gefüge ohne Körner oder Phasengrenzen. Die Festigkeit wird aber von mikroskopischen Oberflächendefekten (Griffith-Risse) bestimmt – deshalb streut sie stark.',
                   rheology: 'Rein linear-elastisch & extrem spröde',
                   rheologyBadge: 'bg-rose-50 text-rose-700 border-rose-200',
                   rheologyDesc: 'Zeigt bis zum eigentlichen Bruch keinerlei plastisches Fließen oder Dehnkriechen. Es verwindet sich absolut linear und federt schadensfrei zurück, bricht jedoch bei Überschreiten der Oberflächenzugfestigkeit schlagartig.',
                   example: 'Eine Schaufensterscheibe hält hohen Windböen rein elastisch stand. Ein auftreffender Kieselstein erzeugt Mikrorisse; wird die kritische Risszähigkeit lokal überschritten, erfolgt unverzüglich der Sprödbruch.',
                   norm: 'Bemessung im Bauwesen nach DIN 18008-1 bis 6 (Glas im Bauwesen).',
-                  test: 'Doppelring-Biegeversuch zur Feststellung der Oberflächenzugspannungsfestigkeiten nach DIN EN 1288-1.'
+                  test: 'Doppelring-Biegeversuch zur Bestimmung der Biegefestigkeit nach DIN EN 1288-2 bzw. -5.'
                 },
                 mauerwerk: {
                   name: 'Mauerwerk (Ziegel mitsamt Mörtelfuge)',
@@ -612,13 +613,13 @@ export default function Baustoffkenngroessen() {
                   isotropyDesc: 'Besitzt extreme Richtungsabhängigkeiten. Die vertikale Tragfähigkeit senkrecht zur horizontalen Mörtellagerfuge ist hoch. Horizontalschub oder Parallelbeanspruchungen führen sehr früh zu Gleitfugenrissen oder Ziegelscheren.',
                   homogeneity: 'Extrem Heterogen',
                   homogeneityBadge: 'bg-amber-50 text-amber-700 border-amber-200',
-                  homogeneityDesc: 'Zwei völlig verschiedene Festkörpermaterialien (Ziegelstein mit geringer Porosität, hoher Festigkeit vs. Fugenmörtel mit hoher Porosität, starker Elastizität) sind schubfest miteinander verkettet.',
+                  homogeneityDesc: 'Zwei sehr unterschiedliche Materialien – Mauerstein (höhere Festigkeit und Steifigkeit) und Fugenmörtel (meist geringere Steifigkeit, stärkere Querdehnung) – sind über den Haftverbund miteinander verbunden.',
                   rheology: 'Nichtlinear-elastisch mit Fugenstauchungskriechen',
                   rheologyBadge: 'bg-blue-50 text-blue-700 border-blue-200',
                   rheologyDesc: 'Das Verformungsverhalten ist nichtlinear und stark von den Fugeneigenschaften abhängig. Der plastische Fugenanteil unterliegt unter kontinuierlicher Auflast signifikanten Setzungen und Stauchungen.',
                   example: 'Ein Ziegelpfeiler fängt vertikale Deckenkräfte sehr steif ab. Bei einer seitlich einwirkenden Windböe gleiten die Ziegel auf den Lagerfugen ab, wenn die Haftscherfestigkeit überschritten wird.',
-                  norm: 'Mauerwerksberechnungen nach DIN EN 1996-1-1 (Eurocode 6) und Mauerwerkeigenschaften nach DIN 105.',
-                  test: 'Experimentelle Prüfung der zweiaxialen Mauerwerksfestigkeiten an kleinen Wandkörpern nach DIN EN 1052-1.'
+                  norm: 'Bemessung nach DIN EN 1996-1-1 (Eurocode 6); Mauersteine nach DIN EN 771-1 mit DIN 20000-401 (Ziegel).',
+                  test: 'Bestimmung der Mauerwerksdruckfestigkeit an Prüfkörpern (Wandabschnitten) nach DIN EN 1052-1; Haftscherfestigkeit nach DIN EN 1052-3.'
                 },
                 asphalt: {
                   name: 'Asphalttragschicht (z. B. AC 32 TN)',
@@ -633,7 +634,7 @@ export default function Baustoffkenngroessen() {
                   rheologyBadge: 'bg-blue-50 text-blue-700 border-blue-200',
                   rheologyDesc: 'Zentrales mechanisches Verhalten ist stark temperatur- und frequenzabhängig (Lastwechselrate). Bei Winterkälte (-15°C) verhält sich Asphalt spröde und elastisch. Bei Hitze (>40°C) wird er plastisch-weich und fließt viskös.',
                   example: 'Im Winter fängt der Asphalt Erschütterungen elastisch ab, neigt aber bei Frost zu Kälterissen. Im warmen Sommer verformt sich der Fahrbahnbelag durch stehende Lastschwerpunkte plastisch dauerhaft zu Spurrinnen.',
-                  norm: 'Asphalteigenschaften geregelt in DIN EN 13108 und Zusammensetzungsentwürfen der RStO.',
+                  norm: 'Asphaltmischgut nach DIN EN 13108 mit TL Asphalt-StB; Schichtdicken nach RStO.',
                   test: 'Spurbildungsversuch im Wasserbad/Luft zur Bestimmung der Verformungsbeständigkeit am Spurbildungsgerät nach DIN EN 12697-22.'
                 }
               }[selectedMaterial];
@@ -768,7 +769,7 @@ export default function Baustoffkenngroessen() {
                   <span className="p-1 bg-amber-50 text-amber-600 rounded-md text-xs">H / H</span> Homogenität vs. Heterogenität (Struktur)
                 </h3>
                 <p className="text-xs sm:text-sm text-text-main/80 leading-relaxed">
-                  Ein Werkstoff ist <strong>homogen</strong> (griechisch <i>homogenis</i> „gleichartig“), wenn seine stoffliche Zusammensetzung und alle Materialkennwerte an jedem beliebigen Ort des Bauteils vollkommen identisch sind. Ein idealer Einkristall oder reiner Kohlenstoffstahl erfüllt diese Anforderung auf makroskopischer Ebene.
+                  Ein Werkstoff ist <strong>homogen</strong> (griechisch <i>homogenēs</i> „gleichartig“), wenn seine stoffliche Zusammensetzung und alle Materialkennwerte an jedem beliebigen Ort des Bauteils vollkommen identisch sind. Ein idealer Einkristall oder reiner Kohlenstoffstahl erfüllt diese Anforderung auf makroskopischer Ebene.
                 </p>
                 <p className="text-xs sm:text-sm text-text-main/80 leading-relaxed">
                   Ein <strong>heterogener</strong> Baustoff besitzt eine ungleichmäßige Phasen- oder stoffliche Verteilung. Gesteine, Beton oder Verbundwerkstoffe weisen extreme mikro- und makroskopische Heterogenitäten aus Matrix, Poren und Aggregaten auf. Die Kennwerte hängen herkunftsmäßig stark vom untersuchten Volumen ab (REV-Prinzip).
@@ -845,7 +846,7 @@ export default function Baustoffkenngroessen() {
                 <div className="font-mono text-[10px] bg-white p-2 border border-home-grau/30 rounded mt-3 text-slate-500">
                   Hookesches Gesetz:<br />
                   <InlineMath math="\sigma = E \cdot \varepsilon" /> (linear-elastisch)<br />
-                  Beispiel: Federstahl, Gummi
+                  Beispiel: Federstahl, Glas
                 </div>
               </div>
 
@@ -867,7 +868,7 @@ export default function Baustoffkenngroessen() {
                 <div>
                   <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1.5 text-shiraz">3. Viskoelastizität</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Eine temperatur- und zeitabhängige Kombination aus elastischem Federungsverhalten und viskosem, trägem Fließen. Trägt maßgeblich zum kontinuierlichen <strong>Kriechen und Schwinden</strong> unter konstanten Nutzlasten bei.
+                    Eine temperatur- und zeitabhängige Kombination aus elastischem Federungsverhalten und viskosem, trägem Fließen. Sie verursacht <strong>Kriechen</strong> unter konstanter Last und <strong>Relaxation</strong> unter konstanter Verformung. (Schwinden ist dagegen ein lastunabhängiger, hygrischer Vorgang.)
                   </p>
                 </div>
                 <div className="font-mono text-[10px] bg-white p-2 border border-home-grau/30 rounded mt-3 text-slate-500">
@@ -948,7 +949,7 @@ export default function Baustoffkenngroessen() {
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl">
                   <span className="px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded font-bold text-[10px] uppercase tracking-wider">3. Relaxation</span>
                   <p className="text-xs text-text-main/80 mt-1.5 leading-relaxed">
-                    Kontinuierlicher <strong>Spannungsabfall</strong> über die Zeit bei einer <strong>erzwungenen, absolut konstanten Dehnung</strong> (Zwang-Verformung wandelt sich von elastisch in plastisch).
+                    Kontinuierlicher <strong>Spannungsabfall</strong> über die Zeit bei einer <strong>erzwungenen, absolut konstanten Dehnung</strong> (ein Teil der elastischen Dehnung wird durch Kriechvorgänge in bleibende Verformung umgewandelt).
                   </p>
                   <div className="mt-2 bg-white px-3 py-1.5 rounded border border-home-grau/30 text-center">
                     <BlockMath math="\sigma(t) = \sigma_0 \cdot [1 - \psi(t)]" />
@@ -967,6 +968,7 @@ export default function Baustoffkenngroessen() {
             {/* Interaktive Parameterregelungen */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
               <h3 className="text-md font-bold text-text-main border-b border-home-grau/30 pb-2">Interaktives Simulationslabor</h3>
+              <p className="text-[11px] text-slate-500">Lehrmodell mit vereinfachten Zeitfunktionen β(t) = t/(t + 30) für Kriechen und Relaxation sowie t/(t + 150) für Schwinden. Die genauen Funktionen nach DIN EN 1992-1-1, Anhang B, hängen zusätzlich von wirksamer Bauteildicke, Luftfeuchte, Zementart und Belastungsalter ab.</p>
               
               <div className="space-y-4">
                 <Slider 
@@ -1069,7 +1071,7 @@ export default function Baustoffkenngroessen() {
               <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-indigo-600 font-bold block uppercase">Spannungsabfall durch Relaxation σ(t)</span>
-                  <span className="text-[9px] text-indigo-500 mt-0.5 block">Von σ₀ = {formatDeWert(zeitlichSigma0)} MPa abgedreht</span>
+                  <span className="text-[9px] text-indigo-500 mt-0.5 block">ausgehend von σ₀ = {formatDeWert(zeitlichSigma0)} MPa</span>
                 </div>
                 <div className="text-right">
                   <span className="text-xl font-black text-indigo-700">{formatDeZahl(currentTimed.sigma_t, 2)} MPa</span>
@@ -1166,6 +1168,7 @@ export default function Baustoffkenngroessen() {
                     <li>E-Modul: <strong>{saeulenE.toLocaleString('de-DE')} MPa</strong></li>
                     <li>Druckfestigkeit (<InlineMath math="f_{crit}" />): <strong>{saeulenFy.toLocaleString('de-DE')} MPa</strong></li>
                   </ul>
+                  <p className="mt-2 text-[11px] text-slate-500">Charakteristische Werte ohne Teilsicherheitsbeiwerte und ohne Knicknachweis – das Beispiel zeigt nur den Zusammenhang σ = F/A und ε = σ/E. Bemessung siehe Module Eurocode und Knicken.</p>
                 </div>
               )}
             </div>
@@ -1325,7 +1328,7 @@ export default function Baustoffkenngroessen() {
                   </div>
                   <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2">2. Rohdichte (<InlineMath math="\rho" />)</h4>
                   <p className="text-xs text-slate-600 leading-relaxed min-h-[64px]">
-                    Die Rohdichte (Scherbichte/Steindichte) beschreibt das Verhältnis der Masse zum äußeren Hüllvolumen des Festkörpers, also inklusive aller eingebetteten Poren und Risse.
+                    Die Rohdichte (Scherben- bzw. Steinrohdichte) beschreibt das Verhältnis der Masse zum äußeren Hüllvolumen des Festkörpers, also inklusive aller eingebetteten Poren und Risse.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-home-grau/30">
@@ -1335,7 +1338,7 @@ export default function Baustoffkenngroessen() {
                     Ziegelstein: <InlineMath math="m = 3{,}6\text{ kg}" />, <InlineMath math="V_{Hüll} = 2\text{ dm}^3\ (0{,}002\text{ m}^3)" />.
                     <div className="font-mono mt-0.5 text-slate-800">&rho; = 3,6 kg / 0,002 m³ = 1800 kg/m³</div>
                   </div>
-                  <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Quecksilber-Intrusion / DIN EN 1936</span>
+                  <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Wägung und Volumen über Ausmessen oder Unterwasserwägung (z. B. DIN EN 1936, DIN EN 772-13)</span>
                 </div>
               </div>
 
@@ -1521,7 +1524,7 @@ export default function Baustoffkenngroessen() {
                         </div>
                         <div className="text-center mt-3 bg-white p-2 rounded border border-home-grau/30">
                           <strong className="text-lg font-extrabold text-shiraz">{formatDeZahl(totalVoidRatio, 1)}%</strong>
-                          <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5">Vakuum / Luftanteil gesamt</span>
+                          <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5">Hohlraumanteil gesamt</span>
                         </div>
                       </div>
                     </div>
@@ -1604,7 +1607,7 @@ export default function Baustoffkenngroessen() {
               </div>
               
               <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-2 text-slate-600">
-                <p><strong>Norm-Prüfverfahren:</strong> Gravimetrische Bestimmung (Darrmethode) nach <strong>DIN EN ISO 12570</strong>. Trocknung bei 105°C bis zur Gewichtskonstanz.</p>
+                <p><strong>Norm-Prüfverfahren:</strong> Gravimetrische Bestimmung (Darrmethode) nach <strong>DIN EN ISO 12570</strong>. Trocknung bis zur Massenkonstanz, in der Regel bei 105 °C; temperaturempfindliche Stoffe (z. B. Gips, Dämmstoffe) bei 40 bzw. 70 °C.</p>
                 <p><strong>Praxisanwendung:</strong> Qualitätskontrolle beim Einbau, Bauwerksdiagnostik bei Wasserschäden, Restfeuchtebeurteilung vor Estrichbelegung (CM-Messung).</p>
               </div>
             </div>
@@ -1671,13 +1674,13 @@ export default function Baustoffkenngroessen() {
                   classification = "diffusionshemmend";
                   colorClass = "bg-amber-50 border-amber-200 text-amber-800";
                 } else if (sdCalculated >= 1500) {
-                  classification = "diffusionssperrend (Dampfsperre)";
+                  classification = "diffusionsdicht (Dampfsperre)";
                   colorClass = "bg-rose-50 border-rose-200 text-rose-800";
                 }
                 return (
                   <div className={`p-3 rounded-xl border text-center font-bold text-xs space-y-1 ${colorClass}`}>
                     <div>Errechneter s_d-Wert: {formatDeZahl(sdCalculated, 3)} m</div>
-                    <div className="uppercase text-[10px] tracking-wider">Klassifizierung: {classification}</div>
+                    <div className="uppercase text-[10px] tracking-wider">Klassifizierung nach DIN 4108-3: {classification}</div>
                   </div>
                 );
               })()}
@@ -1698,7 +1701,7 @@ export default function Baustoffkenngroessen() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div className="space-y-4">
                 <p className="text-xs sm:text-sm text-text-main/80 leading-relaxed">
-                  Der Wasseraufnahmekoeffizient (<InlineMath math="w" />-Wert, auch historically als <span className="font-bold font-mono">B-Wert</span> bezeichnet) beschreibt das kapillare Saugverhalten eines Baustoffs bei direktem Flüssigwasserkontakt.
+                  Der Wasseraufnahmekoeffizient (<InlineMath math="w" />-Wert, früher auch als <span className="font-bold font-mono">B-Wert</span> bezeichnet) beschreibt das kapillare Saugverhalten eines Baustoffs bei direktem Flüssigwasserkontakt.
                 </p>
                 
                 <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 text-center mb-2">
@@ -1712,7 +1715,7 @@ export default function Baustoffkenngroessen() {
                   <span className="font-bold text-indigo-950 block mb-0.5">🔢 Einfache Beispielrechnung:</span>
                   Ein Backstein hat nach der Saugzeit <InlineMath math="t = 4 \text{ Stunden}" /> ein Flächenwassergewicht von <InlineMath math="W_w = 1{,}4 \text{ kg/m}^2" /> aufgenommen.
                   <div className="font-mono mt-1 text-slate-900 bg-white/80 p-1 rounded border border-indigo-100/30 text-[11px]">
-                    w = 1,4 kg/m² / &radic;4 h = 1,4 / 2 = 0,70 kg/(m² · h⁰⁵)
+                    w = 1,4 kg/m² / &radic;(4 h) = 1,4 / 2 = 0,70 kg/(m² · h^0,5)
                   </div>
                 </div>
 
@@ -1730,11 +1733,11 @@ export default function Baustoffkenngroessen() {
                   let styleClass = "bg-rose-50 border-rose-200 text-rose-800";
                   
                   if (wCurrentValue <= 0.5) {
-                    rating = "Wasserabweisend (Hydrophob) nach DIN 4108-3";
+                    rating = "Wasserabweisend (w ≤ 0,5; zusätzlich s_d ≤ 2,0 m und w · s_d ≤ 0,2 nach DIN 4108-3)";
                     ratingDetail = "Hervorragender Schlagregenschutz. Wasser perlt gut ab, kapillares Saugen ist stark unterbunden (Verwendung für Außenputze, Klinker oder hydrophobiertes Mauerwerk).";
                     styleClass = "bg-emerald-50 border-emerald-200 text-emerald-800";
                   } else if (wCurrentValue <= 2.0) {
-                    rating = "Wasserhemmend nach DIN 4108-3";
+                    rating = "Wasserhemmend (0,5 < w ≤ 2,0)";
                     ratingDetail = "Eingeschränkte kapillare Leitfähigkeit. Ein Kompromiss aus Saugaktivität und Schutz vor Durchnässung. Geeignet in mäßig regenbeanspruchten Schutzbereichen.";
                     styleClass = "bg-amber-50 border-amber-200 text-amber-800";
                   }
@@ -1751,8 +1754,8 @@ export default function Baustoffkenngroessen() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-2 text-slate-600">
                         <p className="font-bold text-slate-800">Prüfverfahren und Normenbezug:</p>
                         <ul className="list-disc list-inside space-y-1">
-                          <li><strong>DIN EN ISO 15148:</strong> Kapillare Wasseraufnahme. Die Probenunterseite wird in ca. 2-3 mm Wasser eingetaucht, die Gewichtszunahme wird gravimetrisch registriert.</li>
-                          <li><strong>DIN 4108-3:</strong> Festlegung der bauphysikalischen Grenzwerte für schlagregensichere Bauteile. Das Produkt <InlineMath math="w \cdot s_d \le 0{,}1" /> beschreibt die ideale Balance aus Regenschutz und Austrocknung.</li>
+                          <li><strong>DIN EN ISO 15148:</strong> Kapillare Wasseraufnahme. Die Probenunterseite taucht ca. 5 mm (± 2 mm) in Wasser ein; die Massenzunahme wird über die Wurzel der Zeit aufgetragen.</li>
+                          <li><strong>DIN 4108-3:</strong> Festlegung der bauphysikalischen Grenzwerte für schlagregensichere Bauteile. Für wasserabweisende Putze und Beschichtungen gilt <InlineMath math="w \le 0{,}5" />, <InlineMath math="s_d \le 2{,}0\,\text{m}" /> und <InlineMath math="w \cdot s_d \le 0{,}2\,\text{kg/(m}\cdot\text{h}^{0{,}5})" /> – eine Balance aus Regenschutz und Austrocknung (nach der Fassadenschutztheorie von Künzel strenger ≤ 0,1).</li>
                         </ul>
                       </div>
                     </div>
@@ -1812,7 +1815,7 @@ export default function Baustoffkenngroessen() {
                     <button onClick={() => setLambda(0.035)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Dämmung/EPS (λ=0,035)</button>
                     <button onClick={() => setLambda(0.13)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Holz (λ=0,13)</button>
                     <button onClick={() => setLambda(0.70)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Mauerwerk (λ=0,70)</button>
-                    <button onClick={() => setLambda(2.10)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Beton (λ=2,10)</button>
+                    <button onClick={() => setLambda(2.0)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Normalbeton (λ=2,0)</button>
                   </div>
                 </div>
               </div>
@@ -1829,7 +1832,7 @@ export default function Baustoffkenngroessen() {
                       <strong className="text-slate-800">{formatDeZahl(rCalc, 2)} m²K/W</strong>
                     </div>
                     <div className="flex justify-between text-[11px] text-slate-500">
-                      <span>Geschätzter U-Wert (Außenwand):</span>
+                      <span>Geschätzter U-Wert (einschichtige Außenwand, R_si = 0,13, R_se = 0,04):</span>
                       <strong className="text-indigo-600 font-bold">{formatDeZahl(uCalc, 2)} W/(m²K)</strong>
                     </div>
                   </div>
@@ -1838,7 +1841,7 @@ export default function Baustoffkenngroessen() {
 
               <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1.5 text-slate-600">
                 <p><strong>Zugelassenes Prüfverfahren:</strong> Schutzplatten-Verfahren nach <strong>DIN EN 12667</strong> oder Wärmeflussmesser-Verfahren für Dämmstoffe.</p>
-                <p><strong>GEG-Nachhaltigkeitsbezug:</strong> Nachweis des baulichen Wärmeschutzes nach Gebäudeenergiegesetz (GEG) und DIN 4108-2 zur Energieeinsparung und CO₂-Reduktion.</p>
+                <p><strong>Rechtlicher Bezug:</strong> Nachweis des baulichen Wärmeschutzes nach Gebäudemodernisierungsgesetz (GModG, bis 07/2026 GEG) und Mindestwärmeschutz nach DIN 4108-2; Bemessungswerte der Wärmeleitfähigkeit nach DIN 4108-4 bzw. DIN EN ISO 10456.</p>
               </div>
             </div>
           </div>
@@ -1948,11 +1951,12 @@ export default function Baustoffkenngroessen() {
                     value={alphaT}
                     onChange={(e) => setAlphaT(Number(e.target.value))}
                   >
-                    <option value={1.2}>Stahl / Normalbeton (1,1 - 1.3 × 10⁻⁵ 1/K)</option>
+                    <option value={1.2}>Stahl (1,2 × 10⁻⁵ 1/K)</option>
+                    <option value={1.0}>Normalbeton (1,0 × 10⁻⁵ 1/K)</option>
                     <option value={2.4}>Aluminium (2,4 × 10⁻⁵ 1/K)</option>
                     <option value={0.5}>Holz parallel (0,5 × 10⁻⁵ 1/K)</option>
                     <option value={0.9}>Kalknatronscheibenglas (0,9 × 10⁻⁵ 1/K)</option>
-                    <option value={0.1}>Moderne Invar-Speziallegierung (0,1 × 10⁻⁵ 1/K)</option>
+                    <option value={0.1}>Invar-Legierung FeNi36 (ca. 0,1 × 10⁻⁵ 1/K)</option>
                   </select>
                 </div>
 
@@ -2040,8 +2044,8 @@ export default function Baustoffkenngroessen() {
                         <BlockMath math="a = \frac{\lambda}{\rho \cdot c}" />
                         <div className="p-2.5 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal mb-2">
                           <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung (Beton):</span>
-                          <InlineMath math="\lambda = 2{,}1\,\text{W/(mK)}" />, <InlineMath math="\rho = 2400\,\text{kg/m}^3" />, <InlineMath math="c = 1000\,\text{J/(kgK)}" />.
-                          <div className="font-mono mt-0.5 text-slate-800">a = 2,1 / (2400 · 1000) = 8,75 · 10⁻⁷ m²/s (0,875 mm²/s)</div>
+                          <InlineMath math="\lambda = 2{,}0\,\text{W/(mK)}" />, <InlineMath math="\rho = 2400\,\text{kg/m}^3" />, <InlineMath math="c = 1000\,\text{J/(kgK)}" />.
+                          <div className="font-mono mt-0.5 text-slate-800">a = 2,0 / (2400 · 1000) = 8,33 · 10⁻⁷ m²/s (0,833 mm²/s)</div>
                         </div>
                         <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
                           Maß für die Ausbreitungsgeschwindigkeit einer Wärmeleit-Welle. Hohe Werte bedeuten schnellen Temperaturausgleich.
@@ -2049,7 +2053,7 @@ export default function Baustoffkenngroessen() {
                       </div>
                       <div className="mt-4 bg-white p-2.5 rounded border border-home-grau/30 text-center font-mono">
                         <strong className="text-md text-slate-800 font-extrabold block">{formatDeZahl(a_mm2_s, 3)} mm²/s</strong>
-                        <span className="text-[9px] text-slate-400 block font-bold">(= {a_m2_s.toExponential(3)} m²/s)</span>
+                        <span className="text-[9px] text-slate-400 block font-bold">(= {formatDeZahl(a_m2_s * 1e7, 2)} · 10⁻⁷ m²/s)</span>
                       </div>
                     </div>
 
@@ -2061,14 +2065,14 @@ export default function Baustoffkenngroessen() {
                         <div className="p-2.5 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal mb-2">
                           <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung (Fichte):</span>
                           <InlineMath math="\lambda = 0{,}13\,\text{W/(mK)}" />, <InlineMath math="\rho = 500\,\text{kg/m}^3" />, <InlineMath math="c = 1600\,\text{J/(kgK)}" />.
-                          <div className="font-mono mt-0.5 text-slate-800">b = &radic;(0,13 · 500 · 1600) = 322,5 J/(m&sup2;·K·s⁰⁵)</div>
+                          <div className="font-mono mt-0.5 text-slate-800">b = &radic;(0,13 · 500 · 1600) = 322,5 J/(m&sup2;·K·s^0,5)</div>
                         </div>
                         <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
                           Maß für das Aufheizverhalten von Oberflächen. Hohe Werte (z.B. Beton, Stahl) entziehen dem menschlichen Körper viel Wärme (Kalte Haptik).
                         </p>
                       </div>
                       <div className="mt-4 bg-white p-2.5 rounded border border-home-grau/30 text-center font-mono">
-                        <strong className="text-md text-shiraz font-extrabold block">{formatDeZahl(b_eff, 0)} J/(m²·K·s⁰⁵)</strong>
+                        <strong className="text-md text-shiraz font-extrabold block">{formatDeZahl(b_eff, 0)} J/(m²·K·s^0,5)</strong>
                         <span className="text-[9px] text-slate-400 block font-bold">Barfußkontakt: {b_eff < 1000 ? '✓ Behaglich-Warm' : '❌ Kühleffekt'}</span>
                       </div>
                     </div>
@@ -2087,6 +2091,8 @@ export default function Baustoffkenngroessen() {
         </div>
       )}
 
+      <ModulTest moduleId="baustoffkenngroessen" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Werkstoffeigenschaft', url: 'https://de.wikipedia.org/wiki/Werkstoffeigenschaft' },
@@ -2094,14 +2100,19 @@ export default function Baustoffkenngroessen() {
           { title: 'Wasserdampfdiffusionswiderstandszahl', url: 'https://de.wikipedia.org/wiki/Wasserdampfdiffusionswiderstandszahl' }
         ]}
         literatur={[
-          'Willems, W. M. (2018): Lehrbuch der Bauphysik (8. Auflage, Springer Vieweg)',
+          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. 9. Aufl., Wiesbaden: Springer Vieweg 2022',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Liersch, K. W. (2014): Belüftete Dach- und Wandkonstruktionen (Bauverlag)'
+          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin/Heidelberg: Springer Vieweg 2013'
         ]}
         regelwerke={[
           { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
           { title: 'DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
-          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' }
+          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' },
+          { title: 'DIN 4108-4 (Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-4' },
+          { title: 'DIN EN ISO 12570 (Bestimmung des Feuchtegehaltes durch Trocknen bei erhöhter Temperatur)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12570' },
+          { title: 'DIN EN ISO 12572 (Bestimmung der Wasserdampfdurchlässigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12572' },
+          { title: 'DIN EN ISO 15148 (Bestimmung des Wasseraufnahmekoeffizienten bei teilweisem Eintauchen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+15148' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2) – Kriechen und Schwinden (3.1.4, Anhang B)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         formeln={[
           {
@@ -2115,6 +2126,7 @@ export default function Baustoffkenngroessen() {
             quelle: 'DIN 4108-3 / DIN EN ISO 13788'
           }
         ]}
+        lastReviewed="Oktober 2026 (AP 3 Grundlagen: Dichten, Feuchte, Diffusion, Kapillarität, Wärme und Zeitverhalten gegen DIN 4108-3/-4, DIN EN ISO 10456, 12570, 15148 und DIN EN 1992-1-1 geprüft; fachliche Freigabe durch den Autor ausstehend)"
       />
     </div>
   );
