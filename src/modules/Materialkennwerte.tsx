@@ -13,6 +13,9 @@ import {
 import { Radar } from 'react-chartjs-2';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { formatDeWert } from '@/src/utils/numberFormat';
 
 ChartJS.register(
   RadialLinearScale,
@@ -78,7 +81,7 @@ export default function Materialkennwerte() {
     }, {} as Record<string, number>);
 
     return {
-      labels: properties.map(p => [p.label, `(0 - ${maxValues[p.id]} ${p.unit})`]),
+      labels: properties.map(p => [p.label, `(0 – ${formatDeWert(maxValues[p.id])} ${p.unit})`]),
       datasets: selectedMaterials.map((m, idx) => {
         const colors = [
           { bg: 'rgba(163, 17, 62, 0.2)', border: '#A3113E' }, // Shiraz
@@ -118,7 +121,7 @@ export default function Materialkennwerte() {
             const index = context.dataIndex;
             const rawValue = dataset.rawData[index];
             const propInfo = properties[index];
-            return `${dataset.label}: ${rawValue} ${propInfo.unit}`;
+            return `${dataset.label}: ${formatDeWert(rawValue)} ${propInfo.unit}`;
           }
         }
       }
@@ -288,9 +291,9 @@ export default function Materialkennwerte() {
               const wertartMap: Record<string, string> = {
                 density: 'Mittelwert',
                 eModul: 'Mittelwert',
-                compressive: 'charakteristisch',
-                tensile: 'charakteristisch',
-                thermalCond: 'Nennwert / Mittelwert',
+                compressive: 'charakteristisch / Nennwert',
+                tensile: 'charakteristisch / Nennwert',
+                thermalCond: 'Tabellen- / Nennwert',
                 thermalExp: 'Mittelwert',
                 heatCap: 'Mittelwert'
               };
@@ -306,18 +309,19 @@ export default function Materialkennwerte() {
                       {wertart}
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{materialsData[mat1][prop.id]}</td>
-                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{materialsData[mat2][prop.id]}</td>
+                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat1][prop.id])}</td>
+                  <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat2][prop.id])}</td>
                   {mat3 !== 'none' && (
-                    <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{materialsData[mat3][prop.id]}</td>
+                    <td className="py-3 px-4 text-sm text-text-main font-mono font-medium">{formatDeWert(materialsData[mat3][prop.id])}</td>
                   )}
                 </tr>
               );
             })}
           </tbody>
         </table>
-        <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-xs text-text-main/70">
-          Hinweis Holzfestigkeit: Nadelholz C24 charakteristische Zugfestigkeit parallel zur Faser <FormulaText text="f_{t,0,k} = 14{,}5\text{ N/mm}^2" /> (DIN EN 338:2016 / DIN EN 1995-1-1).
+        <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-xs text-text-main/70 flex flex-col gap-1.5">
+          <div><strong>Lesehinweis Festigkeiten (charakteristisch / Nennwert):</strong> Beton <FormulaText text="f_{ck}" /> und <FormulaText text="f_{ctk;0,05}" /> nach DIN EN 1992-1-1 Tab. 3.1 (bei Leichtbeton mit <FormulaText text="\eta_1" /> abgemindert); Baustahl, Edelstahl, Aluminium, Titan: Streckgrenze bzw. 0,2-%-Dehngrenze (Spalte Druck) und Zugfestigkeit (Spalte Zug); Holz: <FormulaText text="f_{c,0,k}" /> und <FormulaText text="f_{t,0,k}" /> nach DIN EN 338 bzw. DIN EN 14080 (z. B. C24: <FormulaText text="f_{t,0,k} = 14{,}5\text{ N/mm}^2" />); Glas: charakteristische Biegezugfestigkeit (Floatglas 45, ESG 120 N/mm²); Mauerwerk: Steindruckfestigkeitsklasse des Steins, nicht die Mauerwerksfestigkeit <FormulaText text="f_k" />; Gesteine, Dämm- und Kunststoffe: typische Mittelwerte aus Herstellerangaben.</div>
+          <div><strong>Steifigkeit und Dichte</strong> sind Mittelwerte (<FormulaText text="E_{cm}" />, <FormulaText text="E_{0,mean}" />, <FormulaText text="\rho_{mean}" />). Ein Wärmedehnkoeffizient von 0 bei Faserdämmstoffen und VIP bedeutet „kein sinnvoller Kennwert“ (lose bzw. faserige Struktur), nicht „keine Wärmedehnung“. Für Nachweise sind stets die Werte der jeweiligen Produktnorm, Leistungserklärung bzw. Bemessungsnorm maßgebend.</div>
         </div>
       </div>
 
@@ -335,13 +339,13 @@ export default function Materialkennwerte() {
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
             <h4 className="font-bold text-shiraz h-7 flex items-center">Steifigkeit vs. Festigkeit</h4>
             <p className="text-sm text-text-main/80 leading-relaxed">
-              Stahl hat einen extrem hohen E-Modul (210.000 MPa) und ist sehr fest, aber auch schwer. Holz ist leicht, hat aber eine geringere Steifigkeit. Die Abstimmung dieser Eigenschaften entscheidet über Bauteilschlankheit und Durchbiegungsstufen.
+              Stahl hat einen sehr hohen E-Modul (210.000 MPa) und ist sehr fest, aber auch schwer. Holz ist leicht, hat parallel zur Faser aber nur etwa ein Zwanzigstel der Steifigkeit von Stahl (E₀,mean ≈ 11.000 MPa bei C24). Die Abstimmung dieser Eigenschaften entscheidet über Bauteilschlankheit und Durchbiegungsstufen.
             </p>
           </div>
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
             <h4 className="font-bold text-shiraz h-7 flex items-center">Zug- vs. Druckfestigkeit</h4>
             <p className="text-sm text-text-main/80 leading-relaxed">
-              Beton und Mauerwerk können hohe Druckkräfte aufnehmen, versagen aber bei Zugbeanspruchung sehr früh (meist bei ca. 10% der Druckfestigkeit), weshalb sie im Verbund mit zugfestem Stahl bewehrt werden müssen.
+              Beton und Mauerwerk können hohe Druckkräfte aufnehmen, versagen aber bei Zugbeanspruchung sehr früh (Beton: mittlere Zugfestigkeit f_ctm nur etwa 7–10 % der Druckfestigkeit), weshalb sie im Verbund mit zugfestem Stahl bewehrt werden müssen.
             </p>
           </div>
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
@@ -353,11 +357,44 @@ export default function Materialkennwerte() {
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-2">
             <h4 className="font-bold text-shiraz h-7 flex items-center">Wärmedehnung</h4>
             <p className="text-sm text-text-main/80 leading-relaxed">
-              Aluminium dehnt sich bei Erwärmung fast doppelt so stark aus wie Stahl oder Beton. Dies muss bei Mischkonstruktionen durch Dehnfugen zwingend berücksichtigt werden, um zerstörungsfreie Verformungen zu garantieren.
+              Aluminium dehnt sich bei Erwärmung fast doppelt so stark aus wie Stahl oder Beton. Bei Mischkonstruktionen muss dies durch Dehnfugen, Gleitlager oder Langlöcher berücksichtigt werden, damit keine Zwängungen und Schäden entstehen.
             </p>
           </div>
         </div>
       </div>
+
+      {/* ANWENDUNG (Stufe 3 des Lehrpfads) */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2 animate-in fade-in duration-300">
+        <h3 className="text-base font-bold text-text-main flex items-center gap-2 border-b border-home-grau/20 pb-3">
+          <Scale className="text-shiraz w-5 h-5" /> Anwendung: Kennwerte im Rechenbeispiel
+        </h3>
+        <FormulaDerivationBox
+          title="Beispiel 1: Wärmedehnung einer Aluminium-Attikaabdeckung neben Stahlbeton"
+          zielGleichung="\Delta L = \alpha_T \cdot L_0 \cdot \Delta T"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Attikaabdeckung aus Aluminium, Länge L₀ = 10 m, Temperaturspanne zwischen Montage und Sommerhöchstwert ΔT = 60 K. Zum Vergleich: Stahlbeton-Attika gleicher Länge.', formel: 'L_0 = 10\\,000\\,\\text{mm},\\quad \\Delta T = 60\\,\\text{K}' },
+            { titel: 'Aluminium', erklaerung: 'Mit α_T = 23 · 10⁻⁶ 1/K aus der Kennwerte-Tabelle:', formel: '\\Delta L_{Al} = 23 \\cdot 10^{-6} \\cdot 10\\,000 \\cdot 60 = 13{,}8\\,\\text{mm}', einheit: 'mm' },
+            { titel: 'Stahlbeton', erklaerung: 'Mit α_T = 10 · 10⁻⁶ 1/K (DIN EN 1992-1-1, 3.1.3):', formel: '\\Delta L_{StB} = 10 \\cdot 10^{-6} \\cdot 10\\,000 \\cdot 60 = 6{,}0\\,\\text{mm}', einheit: 'mm' },
+            { titel: 'Bewertung', erklaerung: 'Die Relativbewegung von rund 8 mm je 10 m muss über Langlöcher, Gleitbefestigungen oder Stoßfugen aufgenommen werden. Starr verschraubt entstehen Zwängungen, die Befestiger abscheren oder die Abdeckung beulen.', formel: '\\Delta L_{Al} - \\Delta L_{StB} = 7{,}8\\,\\text{mm}' }
+          ]}
+          ergebnisHinweis="Aluminium dehnt sich gut doppelt so stark wie Stahlbeton – Fugen- und Befestigungsabstände richten sich nach diesem Unterschied."
+          normQuelle="DIN EN 1991-1-5 (Temperatureinwirkungen); α_T-Werte: DIN EN 1992-1-1, DIN EN 1999-1-1"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 2: Spezifische Steifigkeit – warum Holz trotz kleinem E-Modul effizient ist"
+          zielGleichung="\frac{E}{\rho}\ \text{(spezifische Steifigkeit)}"
+          schritte={[
+            { titel: 'Baustahl S235', erklaerung: 'E = 210.000 MPa, ρ = 7.850 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{210\\,000}{7\\,850} \\approx 26{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' },
+            { titel: 'Nadelholz C24 (faserparallel)', erklaerung: 'E₀,mean = 11.000 MPa, ρ_mean = 420 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{11\\,000}{420} \\approx 26{,}2\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' },
+            { titel: 'Beton C30/37', erklaerung: 'E_cm = 33.000 MPa, ρ = 2.400 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{33\\,000}{2\\,400} \\approx 13{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' }
+          ]}
+          ergebnisHinweis="Bezogen auf das Gewicht sind Stahl und Holz (in Faserrichtung) etwa gleich steif, Beton nur halb so steif. Das Netzdiagramm zeigt absolute Werte – für den Leichtbau zählt das Verhältnis."
+          normQuelle="Kennwerte: DIN EN 1993-1-1, DIN EN 338, DIN EN 1992-1-1"
+        />
+      </div>
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="materialkennwerte" />
 
       {/* FOOTER */}
       <ModuleFooter 
@@ -371,12 +408,16 @@ export default function Materialkennwerte() {
           { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991' },
           { title: 'DIN EN 1992 (Eurocode 2: Bemessung von Betonbauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992' },
           { title: 'DIN EN 1993 (Eurocode 3: Bemessung von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993' },
-          { title: 'DIN EN 1995 (Eurocode 5: Bemessung von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995' }
+          { title: 'DIN EN 1995 (Eurocode 5: Bemessung von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995' },
+          { title: 'DIN EN 338 (Bauholz für tragende Zwecke – Festigkeitsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+338' },
+          { title: 'DIN EN 14080 (Brettschichtholz und Balkenschichtholz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14080' },
+          { title: 'DIN EN ISO 10456 (Wärmetechnische Eigenschaften – Tabellierte Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
         ]}
+        lastReviewed="Oktober 2026 (AP 3 Grundlagen: Kennwerte gegen DIN EN 1992-1-1, DIN EN 338, DIN EN 14080, DIN EN 1993-1-4 geprüft; fachliche Freigabe durch den Autor ausstehend)"
         formeln={[
           {
             formel: 'E = \\frac{\\sigma}{\\varepsilon} \\quad [\\text{MPa}] \\quad \\text{bzw.} \\quad G = \\frac{E}{2\\,(1 + \\nu)}',

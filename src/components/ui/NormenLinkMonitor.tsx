@@ -30,16 +30,16 @@ interface LinkCheckItem {
 }
 
 const LIVE_LINK_AUDIT: LinkCheckItem[] = [
-  { id: '1', name: 'DIN Media Normenportal (vormals Beuth)', url: 'https://www.dinmedia.de/de/suche?q=DIN+Media+Normenportal', sourceModule: 'Regularien & ModuleFooter', category: 'Normen', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '2', name: 'DAfStb (Deutscher Ausschuss für Stahlbeton)', url: 'https://www.dafstb.de/', sourceModule: 'Beton & Forschung', category: 'Fachverbände', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '3', name: 'DIBt (Deutsches Institut für Bautechnik)', url: 'https://www.dibt.de/', sourceModule: 'Zertifizierung & Zulassungen', category: 'Bauaufsicht', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '4', name: 'VDZ (Verein Deutscher Zementwerke)', url: 'https://www.vdz-online.de/', sourceModule: 'Zementchemie & LCA', category: 'Industrie', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '5', name: 'DBV (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/', sourceModule: 'Betonpraxis & Merkblätter', category: 'Praxis', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '6', name: 'LfU Bayern (Schadstoffratgeber Gebäuderückbau)', url: 'https://www.lfu.bayern.de/', sourceModule: 'Informationsquellen', category: 'Umwelt', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '7', name: 'WINGISonline (BG BAU)', url: 'https://www.wingis-online.de/', sourceModule: 'Informationsquellen & Arbeitsschutz', category: 'Arbeitsschutz', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '8', name: 'DGNB Navigator (Deutsche Gesellschaft für Nachhaltiges Bauen)', url: 'https://www.dgnb-navigator.de/', sourceModule: 'Nachhaltigkeit & EPD', category: 'Zertifizierung', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '9', name: 'ÖKOBAUDAT (Bundesministerium BMWSB)', url: 'https://www.oekobaudat.de/', sourceModule: 'LCA & Nachhaltigkeit', category: 'Ökobilanz', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
-  { id: '10', name: 'Technische Hochschule Augsburg (THA) Portal app.tha.de', url: 'https://app.tha.de/', sourceModule: 'Studium THA', category: 'Hochschule', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' }
+  { id: '1', name: 'DIN Media Normenportal (vormals Beuth)', url: 'https://www.dinmedia.de/', sourceModule: 'Regularien & ModuleFooter', category: 'Normen', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
+  { id: '2', name: 'DAfStb (Deutscher Ausschuss für Stahlbeton)', url: 'https://www.dafstb.de/', sourceModule: 'Beton & Forschung', category: 'Fachverbände', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
+  { id: '3', name: 'DIBt (Deutsches Institut für Bautechnik)', url: 'https://www.dibt.de/', sourceModule: 'Zertifizierung & Zulassungen', category: 'Bauaufsicht', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
+  { id: '4', name: 'VDZ (Verein Deutscher Zementwerke)', url: 'https://www.vdz-online.de/', sourceModule: 'Zementchemie & LCA', category: 'Industrie', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
+  { id: '5', name: 'DBV (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/', sourceModule: 'Betonpraxis & Merkblätter', category: 'Praxis', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
+  { id: '6', name: 'LfU Bayern (Schadstoffratgeber Gebäuderückbau)', url: 'https://www.lfu.bayern.de/', sourceModule: 'Informationsquellen', category: 'Umwelt', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
+  { id: '7', name: 'WINGISonline (BG BAU)', url: 'https://www.wingis-online.de/', sourceModule: 'Informationsquellen & Arbeitsschutz', category: 'Arbeitsschutz', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
+  { id: '8', name: 'DGNB Navigator (Deutsche Gesellschaft für Nachhaltiges Bauen)', url: 'https://www.dgnb-navigator.de/', sourceModule: 'Nachhaltigkeit & EPD', category: 'Zertifizierung', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
+  { id: '9', name: 'ÖKOBAUDAT (Bundesministerium BMWSB)', url: 'https://www.oekobaudat.de/', sourceModule: 'LCA & Nachhaltigkeit', category: 'Ökobilanz', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
+  { id: '10', name: 'Technische Hochschule Augsburg (THA) Portal app.tha.de', url: 'https://app.tha.de/', sourceModule: 'Studium THA', category: 'Hochschule', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' }
 ];
 
 export function NormenLinkMonitor() {
@@ -104,7 +104,7 @@ export function NormenLinkMonitor() {
             Normen- &amp; Link-Aktualitätsmonitor
           </h2>
           <p className="text-xs text-text-main/70 mt-1 max-w-2xl">
-            Zentrales Verzeichnis für DIN-, EN- und ISO-Normenstände sowie automatisierte Integritätsüberprüfung aller referenzierten Fachgesellschaften und Weblinks.
+            Zentrales Verzeichnis für DIN-, EN- und ISO-Normenstände sowie der Prüfstand der wichtigsten verlinkten Fachportale. Die Prüfungen erfolgen redaktionell zum angegebenen Datum; die App selbst prüft Links nicht live.
           </p>
         </div>
 
@@ -114,7 +114,7 @@ export function NormenLinkMonitor() {
           className="flex items-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer disabled:opacity-50"
         >
           <RefreshCw size={14} className={isSimulatingCheck ? "animate-spin" : ""} />
-          {isSimulatingCheck ? "Erreichbarkeit wird geprüft …" : "Live-Audit durchführen"}
+          {isSimulatingCheck ? "Ansicht wird aktualisiert …" : "Ansicht aktualisieren"}
         </button>
       </div>
 
@@ -124,7 +124,7 @@ export function NormenLinkMonitor() {
           <span className="text-[11px] font-bold text-text-main/60 uppercase block">Geführte Kernnormen</span>
           <span className="text-2xl font-black text-text-main mt-1 block">{normenList.length}</span>
           <span className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1 mt-1">
-            <CheckCircle2 size={12} /> 100% harmonisiert
+            <CheckCircle2 size={12} /> {normenList.filter(n => n.status === 'gueltig').length} gültig · {normenList.filter(n => n.status === 'ersetzt').length} zurückgezogen
           </span>
         </div>
         <div className="bg-off-white p-4 rounded-2xl border border-home-grau/30">
@@ -133,21 +133,21 @@ export function NormenLinkMonitor() {
             {normenList.filter(n => n.status === 'in_ueberarbeitung').length}
           </span>
           <span className="text-[11px] text-amber-700 font-semibold flex items-center gap-1 mt-1">
-            <Clock size={12} /> EC2 &amp; EC5 Novelle
+            <Clock size={12} /> neue Fassung erschienen oder in Arbeit
           </span>
         </div>
         <div className="bg-off-white p-4 rounded-2xl border border-home-grau/30">
           <span className="text-[11px] font-bold text-text-main/60 uppercase block">Geprüfte Weblinks</span>
           <span className="text-2xl font-black text-text-main mt-1 block">{LIVE_LINK_AUDIT.length}</span>
           <span className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1 mt-1">
-            <CheckCircle2 size={12} /> 0 tote Links (404)
+            <CheckCircle2 size={12} /> {LIVE_LINK_AUDIT.filter(l => l.status === 'valid').length} erreichbar · {LIVE_LINK_AUDIT.filter(l => l.status !== 'valid').length} manuell prüfen
           </span>
         </div>
         <div className="bg-off-white p-4 rounded-2xl border border-home-grau/30">
           <span className="text-[11px] font-bold text-text-main/60 uppercase block">Audit-Zyklus</span>
-          <span className="text-sm font-black text-text-main mt-1 block">Semester-Rhythmus</span>
+          <span className="text-sm font-black text-text-main mt-1 block">Bei jeder Revision</span>
           <span className="text-[11px] text-text-main/60 font-semibold mt-1 block">
-            Nächstes Audit: SoSe 2027
+            Letzte Prüfung: 19.10.2026
           </span>
         </div>
       </div>
@@ -282,8 +282,8 @@ export function NormenLinkMonitor() {
           <div className="text-xs text-text-main/70 bg-emerald-50/60 p-4 rounded-xl border border-emerald-200/80 flex items-start gap-3">
             <CheckCircle2 size={18} className="text-emerald-600 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-emerald-950 font-bold block mb-0.5">Automatisierte Link-Integrität</strong>
-              Alle hinterlegten Hyperlinks zu behördlichen Portalen (DIBt, LfU, BG Bau), Normungsseiten (DIN Media) und Hochschul-Diensten werden regelmäßig auf HTTP-Erreichbarkeit (200 OK) gescannt.
+              <strong className="text-emerald-950 font-bold block mb-0.5">Redaktionelle Link-Prüfung</strong>
+              Die wichtigsten Portale (DIBt, LfU, BG Bau, DIN Media, Hochschuldienste) werden bei jeder inhaltlichen Revision abgerufen; das Datum steht in der Spalte „Geprüft“. Seiten, die automatische Abrufe sperren, sind zur manuellen Prüfung markiert. Normlinks führen auf die DIN-Media-Suche, damit sie auch bei neuen Ausgaben gültig bleiben.
             </div>
           </div>
 
@@ -316,9 +316,15 @@ export function NormenLinkMonitor() {
                     <td className="p-3.5 text-text-main/70">{item.sourceModule}</td>
                     <td className="p-3.5 text-text-main/60 font-mono">{item.lastChecked}</td>
                     <td className="p-3.5 text-right">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-100/70 text-emerald-800 border border-emerald-200">
-                        <CheckCircle2 size={11} /> {item.statusText}
-                      </span>
+                      {item.status === 'valid' ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-100/70 text-emerald-800 border border-emerald-200">
+                          <CheckCircle2 size={11} /> {item.statusText}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-amber-50 text-amber-700 border border-amber-200">
+                          <AlertTriangle size={11} /> {item.statusText}
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))}

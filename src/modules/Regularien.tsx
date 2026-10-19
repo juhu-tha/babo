@@ -6,6 +6,7 @@ import {
   Award, BookOpen
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { NormenLinkMonitor } from '@/src/components/ui/NormenLinkMonitor';
 import { getNormsByCategory } from '@/src/data/centralNormenRegistry';
@@ -26,15 +27,15 @@ const REGELUNGS_HIERARCHIE_DATA = [
       {
         name: "Bauproduktenverordnung (BauPVO)",
         abbreviation: "BauPVO (EU) 2024/3110 / VO (EU) 305/2011",
-        description: "Regelt das Inverkehrbringen und die Bereitstellung von Bauprodukten auf dem europäischen Markt durch gemeinsame Bewertungsverfahren und harmonisierte Normen (hEN).",
-        impact: "Hersteller müssen eine Leistungserklärung (DoP - Declaration of Performance) und eine CE-Kennzeichnung ausstellen. Fehlt diese, dürfen Produkte im EWR nicht vertrieben oder eingebaut werden.",
+        description: "Regelt das Inverkehrbringen und die Bereitstellung von Bauprodukten auf dem europäischen Markt durch harmonisierte technische Spezifikationen (hEN, EAD). Die neue BauPVO (EU) 2024/3110 gilt seit 08.01.2026; die VO (EU) 305/2011 bleibt für bereits zitierte hEN übergangsweise anwendbar. Neu: Leistungs- und Konformitätserklärung sowie digitaler Produktpass.",
+        impact: "Für Produkte, die von einer harmonisierten technischen Spezifikation erfasst sind, muss der Hersteller eine Leistungserklärung (DoP) erstellen und die CE-Kennzeichnung anbringen; ohne sie darf das Produkt nicht in Verkehr gebracht werden. Ob es für ein konkretes Bauwerk verwendet werden darf, regelt zusätzlich das nationale Bauordnungsrecht (MVV TB).",
         regulatoryLevel: "Verordnung"
       },
       {
         name: "EU-Gebäuderichtlinie (EPBD)",
         abbreviation: "Richtlinie (EU) 2024/1275 / RL 2010/31/EU",
         description: "Neufassung der Richtlinie über die Gesamtenergieeffizienz von Gebäuden (EPBD 2024). Schreibt Nullemissionsgebäude bis 2030 (öffentliche Gebäude bis 2028), Ausstieg aus fossilen Heizungen und Solarpflichten vor.",
-        impact: "Diese Richtlinie bindet nicht direkt den Bürger, sondern verpflichtet die Bundesrepublik zur gesetzgeberischen Umsetzung (erfolgt durch das deutsche Gebäudeenergiegesetz - GEG).",
+        impact: "Die Richtlinie bindet nicht unmittelbar den Bürger, sondern verpflichtet die Mitgliedstaaten zur Umsetzung bis Mai 2026. In Deutschland erfolgt sie über das Gebäudemodernisierungsgesetz (GModG); die EPBD-bezogenen Teile gelten ab 01.01.2027.",
         regulatoryLevel: "Richtlinie"
       },
       {
@@ -48,7 +49,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
         name: "EU-Taxonomie-Verordnung",
         abbreviation: "Verordnung (EU) 2020/852",
         description: "Regelt die Kriterien zur Bestimmung, ob eine Wirtschaftstätigkeit (wie der Bau eines Gebäudes oder die Herstellung eines Baustoffs) als ökologisch nachhaltig einzustufen ist, insbesondere bezogen auf Klimaschutz und Kreislaufwirtschaft.",
-        impact: "Bestimmt maßgeblich den Zugang zu 'grünen Krediten' (Sustainable Finance) für Bauträger und verlangt strikte Nachweise über den Verbleib von Abbruchabfällen (mind. 70% Recyclingquote) sowie den Einsatz emissionsarmer Baustoffe.",
+        impact: "Beeinflusst den Zugang zu nachhaltigen Finanzierungen (Sustainable Finance). Für Neubau und Renovierung verlangen die technischen Bewertungskriterien u. a., dass mindestens 70 % (Masse) der nicht gefährlichen Bau- und Abbruchabfälle für Wiederverwendung oder Recycling vorbereitet werden.",
         regulatoryLevel: "Verordnung"
       }
     ]
@@ -61,7 +62,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
     icon: "scale",
     colorClass: "bg-indigo-50 border-indigo-200 text-indigo-900 border-l-4 border-l-indigo-500",
     badgeColor: "bg-indigo-100 text-indigo-800",
-    bindingForce: "Absolut zwingendes, formelles Recht des Bundes. Verstöße führen zur Nichtigkeit von Vorhaben oder straf-/ordnungswidrigkeitsrechtlichen Konsequenzen.",
+    bindingForce: "Verbindliches Recht des Bundes. Verstöße können zur Unzulässigkeit eines Vorhabens, zu Bußgeldern oder zu behördlichen Anordnungen führen.",
     summary: "Gesetze und Verordnungen, die vom Bundestag beschlossen oder über Ermächtigungsgrundlagen von der Bundesregierung erlassen werden.",
     detailDesc: "Das Bundesrecht regelt vor allem das allgemeine raumbezogene Planungsrecht (Wo und Was darf gebaut werden?), den Umweltschutz, die stofflichen Abfalleinstufungen sowie die übergeordneten energetischen Ziele Deutschlands.",
     items: [
@@ -69,7 +70,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
         name: "Baugesetzbuch (BauGB)",
         abbreviation: "BauGB",
         description: "Das fundamentale Bundesgesetz des Städtebaurechts. Regelt die städtebauliche Planung (Bebauungspläne), die Zulässigkeit von Bauvorhaben im Innen- und Außenbereich (§§ 34, 35) sowie die Bodenordnung.",
-        impact: "Das BauGB definiert rechtlich, unter welchen raumplanerischen Voraussetzungen ein Baugrundstück bebaut werden darf. Ein Widerspruch zum BauGB macht ein Bauvorhaben absolut unzulässig.",
+        impact: "Das BauGB definiert, unter welchen planungsrechtlichen Voraussetzungen ein Grundstück bebaut werden darf. Ein planungsrechtlich unzulässiges Vorhaben ist nicht genehmigungsfähig (Ausnahmen und Befreiungen nach § 31 BauGB).",
         regulatoryLevel: "Formelles Bundesgesetz"
       },
       {
@@ -80,10 +81,10 @@ const REGELUNGS_HIERARCHIE_DATA = [
         regulatoryLevel: "Rechtsverordnung"
       },
       {
-        name: "Gebäudeenergiegesetz (GEG)",
-        abbreviation: "GEG",
-        description: "Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG): Führt die früheren EnEV, EnEG und EEWärmeG zusammen. Regelt bauphysikalische Mindestanforderungen an Dämmung, Heiztechnik, Primärenergiebedarf und erneuerbare Energien bei Neubau und Sanierung.",
-        impact: "Bei Nichtbeachtung der GEG-Dämmwerte oder Heizregelungen drohen empfindliche Bußgelder und im Extremfall der Nutzungsentzug. Ein qualifizierter Energieausweis ist Pflicht.",
+        name: "Gebäudemodernisierungsgesetz (GModG, bis 28.07.2026 Gebäudeenergiegesetz GEG)",
+        abbreviation: "GModG (vormals GEG)",
+        description: "Das GEG (2020; Zusammenführung von EnEG, EnEV und EEWärmeG) wurde durch Änderungsgesetz in Gebäudemodernisierungsgesetz umbenannt (BGBl. vom 28.07.2026, in Kraft seit 29.07.2026). Es regelt Anforderungen an Wärmeschutz, Anlagentechnik und Primärenergiebedarf bei Neubau und Bestand; EPBD-Anforderungen folgen gestaffelt ab 2027.",
+        impact: "Verstöße gegen Anforderungen können als Ordnungswidrigkeit mit Bußgeld geahndet werden. Bei Neubau, Verkauf und Vermietung ist ein Energieausweis vorzulegen.",
         regulatoryLevel: "Formelles Bundesgesetz"
       },
       {
@@ -97,7 +98,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
         name: "Ersatzbaustoffverordnung (EBV)",
         abbreviation: "ErsatzbaustoffV (Teil der MantelV)",
         description: "Seit August 2023 in Kraft. Regelt bundesweit einheitlich den rechtskonformen Einsatz mineralischer Ersatzbaustoffe (z.B. RC-Baustoffe, Schlacken, Aschen) in technischen Bauwerken zum Schutz von Boden und Grundwasser.",
-        impact: "Klassifiziert RC-Materialien in bestimmte Materialwerte (z.B. RC-1, RC-2, RC-3) und legt zulässige Einbauweisen und Einbautiefen fest. Erreicht das Material diese Anforderungen, gilt es nicht mehr als Abfall.",
+        impact: "Ordnet RC-Baustoffe Materialklassen zu (z. B. RC-1, RC-2, RC-3) und legt zulässige Einbauweisen fest. Wichtig: Ersatzbaustoffe bleiben auch bei Einhaltung der Werte rechtlich Abfall – eine bundesweite Abfallende-Regelung ist nur angekündigt (Stand Oktober 2026); eine Novelle der Verordnung befindet sich im Verfahren.",
         regulatoryLevel: "Rechtsverordnung"
       }
     ]
@@ -110,7 +111,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
     icon: "building",
     colorClass: "bg-emerald-50 border-emerald-200 text-emerald-900 border-l-4 border-l-emerald-500",
     badgeColor: "bg-emerald-100 text-emerald-800",
-    bindingForce: "Absolut zwingendes, formelles Recht des jeweiligen Bundeslandes. Maßgeblich für das Genehmigungsverfahren auf der Baustelle.",
+    bindingForce: "Verbindliches Recht des jeweiligen Bundeslandes. Maßgeblich für Genehmigungsverfahren und bauliche Ausführung.",
     summary: "Gesetze, die von den Landesparlamenten beschlossen werden. Aufgrund der Kulturhoheit und Bauordnungskompetenz liegt das technische Bauordnungsrecht vollständig bei den Ländern.",
     detailDesc: "Während das Bundesrecht die planerische Zulässigkeit (Wo?) regelt, bestimmt das Landesrecht die konkrete bauliche Ausführung (Wie darf gebaut werden, damit keine Gefahren entstehen?).",
     items: [
@@ -123,10 +124,10 @@ const REGELUNGS_HIERARCHIE_DATA = [
       },
       {
         name: "Verwaltungsvorschrift Technische Baubestimmungen",
-        abbreviation: "BayTyTB / VV TB",
+        abbreviation: "BayTB / VV TB (nach MVV TB)",
         description: "Verbindliche Liste technischer Vorschriften und Normen (z.B. ausgewählte DIN-Normen, Eurocodes), die zur Erfüllung der bauordnungsrechtlichen Grundanforderungen an Tragfähigkeit und Brandschutz zwingend einzuhalten sind.",
-        impact: "Durch die Aufnahme einer technischen Norm in die BayTyTB erhält diese Norm quasi Gesetzescharakter. Planer müssen die dort aufgeführten Planungsdetails exakt berücksichtigen.",
-        regulatoryLevel: "Verbindungsvorschrift / Verwaltungserlass"
+        impact: "Durch die Aufnahme einer technischen Regel als Technische Baubestimmung wird sie bauaufsichtlich verbindlich (Art. 81a BayBO bzw. § 85a MBO); Abweichungen sind nur mit gleichwertiger Lösung zulässig.",
+        regulatoryLevel: "Verwaltungsvorschrift"
       },
       {
         name: "Sonderbauverordnungen (z.B. BayVStättV, GaStellV)",
@@ -145,7 +146,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
     icon: "globe",
     colorClass: "bg-amber-50 border-amber-200 text-amber-900 border-l-4 border-l-amber-500",
     badgeColor: "bg-amber-100 text-amber-800",
-    bindingForce: "Ortsrechtlich absolut zwingend. Steht in der Hierarchie unter den Landesgesetzen, hat aber für das konkrete Flurstück vor Ort unmittelbare Rechtswirkung.",
+    bindingForce: "Verbindliches Ortsrecht. Steht in der Hierarchie unter den Landesgesetzen, hat aber für das konkrete Grundstück unmittelbare Rechtswirkung.",
     summary: "Rechtsnormen, die von Städten und Gemeinden im Rahmen ihrer verfassungsmäßigen kommunalen Selbstverwaltung erlassen werden.",
     detailDesc: "Das Kommunalrecht regelt die parzellenscharfe Zulassung von Gebäuden und die Einhaltung eines harmonischen städtebaulichen Ortsbildes.",
     items: [
@@ -160,7 +161,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
         name: "Gestaltungssatzung",
         abbreviation: "GestS",
         description: "Regelt gestalterische Merkmale der Gebäude zur Erhaltung des charakteristischen Ortsbildes (z.B. Vorgaben zu Fassadenmaterialien, Farbpaletten, Fenstertypen, Werbeanlagen, Altstadtschutz).",
-        impact: "Ermöglicht Kommunen, unpassende moderne Architekturstile oder grelle farbliche Ausreißer in historisch gewachsenen Stadtkernen gerichtlich zu untersagen.",
+        impact: "Ermöglicht Kommunen, als örtliche Bauvorschrift (z. B. Art. 81 BayBO) gestalterische Vorgaben für historisch gewachsene Ortskerne verbindlich festzulegen.",
         regulatoryLevel: "Kommunale Satzung"
       },
       {
@@ -188,29 +189,29 @@ const REGELUNGS_HIERARCHIE_DATA = [
         name: "BGB-Werkvertragsrecht",
         abbreviation: "§§ 631 ff. BGB",
         description: "Das gesetzliche Fundament für Bau- und Planerverträge in Deutschland. Vergütungspflicht bei Abnahme, Anspruch auf Mängelbeseitigung und Haftung.",
-        impact: "Das gesetzliche Auffangbecken. Wenn nichts anderes im Bauvertrag vereinbart wurde, gilt das BGB. Die Mängelhaftungsfrist (Gewährleistung) beträgt hier standardmäßig 5 Jahre ab Abnahme.",
+        impact: "Gilt, soweit vertraglich nichts anderes wirksam vereinbart ist; seit 2018 mit eigenem Bauvertragsrecht (§§ 650a ff. BGB). Mängelansprüche bei Bauwerken verjähren in 5 Jahren ab Abnahme (§ 634a BGB).",
         regulatoryLevel: "Zivilgesetzbuch (Bundesrecht)"
       },
       {
         name: "Vergabe- und Vertragsordnung für Bauleistungen - Teil B",
         abbreviation: "VOB/B",
-        description: "Vorformulierte Vertragsbedingungen der Bauwirtschaft. Bietet einen ausgewogenen, kooperativen Interessenausgleich bei Abrechnung, Behinderung, Abgabeterminen und Mängellanglebigkeit.",
-        impact: "Muss explizit als Ganzes vertraglich vereinbart werden, gilt nicht automatisch. Wichtig: Die Standard-Gewährleistungsfrist verkürzt sich hier auf 4 Jahre nach § 13 VOB/B.",
+        description: "Vorformulierte Vertragsbedingungen (AGB) für Bauverträge. Regelt u. a. Vergütung, Nachträge, Behinderung, Abnahme und Mängelansprüche.",
+        impact: "Gilt nur, wenn sie vereinbart wird; nur bei Vereinbarung als Ganzes und gegenüber Unternehmern ist sie der AGB-Inhaltskontrolle entzogen. Verjährung für Bauwerke: 4 Jahre nach § 13 Abs. 4 VOB/B.",
         regulatoryLevel: "Allgemeine Geschäftsbedingung (AGB-Standard)"
       },
       {
         name: "HOAI (Honorarordnung)",
         abbreviation: "HOAI",
-        description: "Sichert die Honorierungsberechnung für Architekten- und Planungsverträge anhand der anrechenbaren Kosten, Honorarzonen und den erbrachten Leistungsphasen (1 bis 9).",
-        impact: "Dient als vertragliche Abrechnungsrichtlinie. Nach jüngerem EU-Recht sind die Honorare zwar frei verhandelbar geworden, die HOAI-Tabelle gilt aber weiterhin als branchenübliches Orientierungsraster.",
+        description: "Regelt die Honorarermittlung für Architekten- und Ingenieurleistungen anhand der anrechenbaren Kosten, Honorarzonen und Leistungsphasen (1 bis 9).",
+        impact: "Nach dem EuGH-Urteil vom 04.07.2019 (C-377/17) sind die Honorare seit der HOAI 2021 frei vereinbar; die Honorartafeln dienen als Orientierung, ohne Vereinbarung gilt der Basishonorarsatz.",
         regulatoryLevel: "Bundes-Rechtsverordnung"
       },
       {
         name: "Gebäudetyp E (BGB-Reform & Landesinitiativen)",
-        abbreviation: "Gebäudetyp E / § 650a BGBf",
-        description: "Rechtliche und gesetzliche Initiative (pionierhaft in Bayern durch das Gebäudetyp-E-Gesetz, folgend als Bundesgesetz zur Ergänzung des BGB), um abweichend von reinen Komfort-DIN-Normen kostengünstiger, flexibler und einfacher bauen zu können, sofern Schutzziele wie Standsicherheit und Brandschutz gewahrt bleiben.",
-        impact: "Erleichtert experimentelles und reduziertes Bauen. Vereinbaren Planer und Bauherr vertraglich eine Abweichung von baupraktischen Komfort-DINs (z.B. Schallschutzstufen oder Steckdosenzahl), gilt dies rechtlich belastbar nicht als Mangel und schützt Planer aktiv vor Haftungsprozessen.",
-        regulatoryLevel: "Gesetzesinitiative / BGB-Ergänzung"
+        abbreviation: "Gebäudetyp E (Gesetzentwurf)",
+        description: "Initiative für einfacheres und günstigeres Bauen (Bayern mit Pilotprojekten „Gebäudetyp E“; auf Bundesebene ein Gesetzentwurf zur Änderung des BGB-Bauvertragsrechts, im parlamentarischen Verfahren seit 06/2026). Ziel: Abweichungen von nicht sicherheitsrelevanten technischen Standards vertraglich rechtssicherer zu machen, solange Schutzziele wie Standsicherheit und Brandschutz gewahrt bleiben.",
+        impact: "Soll reduziertes Bauen erleichtern: Vereinbaren fachkundige Vertragsparteien eine Abweichung von Komfortstandards (z. B. erhöhter Schallschutz, Ausstattungsnormen), soll diese nicht automatisch als Mangel gelten. Bis zum Inkrafttreten gilt das bisherige Recht – Abweichungen sind weiterhin ausdrücklich und aufgeklärt zu vereinbaren.",
+        regulatoryLevel: "Gesetzentwurf (Stand Oktober 2026)"
       }
     ]
   },
@@ -222,29 +223,29 @@ const REGELUNGS_HIERARCHIE_DATA = [
     icon: "shieldAlert",
     colorClass: "bg-rose-50 border-rose-200 text-rose-900 border-l-4 border-l-rose-500",
     badgeColor: "bg-rose-100 text-rose-800",
-    bindingForce: "Nicht direkt Gesetz. Aber: Juristisch als 'Anerkannte Regeln der Technik' (aRdT) vermutet. Abweichungen ohne schriftliches Einverständnis sind fast immer ein rechtlicher Mangel!",
+    bindingForce: "Kein Gesetz. Für DIN-Normen besteht aber die widerlegbare Vermutung, die allgemein anerkannten Regeln der Technik (aRdT) wiederzugeben. Wer ohne Vereinbarung von den aRdT abweicht, liefert in der Regel ein mangelhaftes Werk.",
     summary: "Wissenschaftlich erarbeitete, freiwillig anwendbare Standards zur Definition von Abmessungen, Prüfverfahren, Materialparametern und Verarbeitungsregeln im Hochbau.",
-    detailDesc: "Entstehen im Konsensverfahren der Wirtschaft und Forschung. Sie dienen Gerichten im Schadensfall als absoluter Maßtab für mangelfreies Handeln.",
+    detailDesc: "Entstehen im Konsensverfahren von Wirtschaft, Forschung und öffentlicher Hand. Gerichte ziehen sie im Streitfall als wichtigen Maßstab für fachgerechtes Handeln heran.",
     items: [
       {
         name: "DIN-Normen / Europäische Normen (EN)",
         abbreviation: "DIN / DIN EN / DIN EN ISO",
-        description: "Umfassender Korpus von tausenden Einzelregeln (z.B. DIN EN 206 für Beton, DIN 18202 für Maßtoleranzen im Hochbau, DIN 18195 für Bauwerksabdichtungen).",
-        impact: "Werden als Standard für fachgerechtes Arbeiten vermutet. Weicht ein Unternehmer von einer DIN-Norm ab, muss er im Gewährleistungsfall beweisen, dass seine Ausführung mindestens gleichwertig sicher ist.",
+        description: "Umfassender Korpus von tausenden Einzelregeln (z. B. DIN EN 206 / DIN 1045-2 für Beton, DIN 18202 für Maßtoleranzen im Hochbau, DIN 18531 bis 18535 für Abdichtungen – die frühere DIN 18195 enthält seit 2017 nur noch Begriffe).",
+        impact: "Werden als Standard für fachgerechtes Arbeiten vermutet. Weicht ein Unternehmer ohne Vereinbarung von einer Norm ab, muss er im Streitfall darlegen, dass seine Ausführung dennoch den anerkannten Regeln der Technik entspricht.",
         regulatoryLevel: "Technischer Standard"
       },
       {
-        name: "Allgemeine bauaufsichtliche Zulassung",
-        abbreviation: "aBZ / abG / abP",
-        description: "Erteilt vom Deutschen Institut für Bautechnik (DIBt) für neue, innovative Bauprodukte oder Bauarten, für die es keine harmonisierten Normen oder etablierten Standards gibt.",
-        impact: "Ermöglicht den legalen Einbau moderner Technologien (z.B. Spezialdübel, Sandwichfassaden, neuartige Dämmungen). Fehlt die Zulassung, ist das Produkt bauaufsichtlich illegal und darf nicht verbaut werden.",
-        regulatoryLevel: "Verwaltungsakt (Zulassung)"
+        name: "Nationale Verwendbarkeits- und Anwendbarkeitsnachweise",
+        abbreviation: "abZ / aBG / abP / ZiE / vBG",
+        description: "Allgemeine bauaufsichtliche Zulassung (abZ) und allgemeine Bauartgenehmigung (aBG) erteilt das Deutsche Institut für Bautechnik (DIBt) für Bauprodukte bzw. Bauarten ohne Technische Baubestimmung; das allgemeine bauaufsichtliche Prüfzeugnis (abP) erteilt eine anerkannte Prüfstelle; Zustimmung im Einzelfall (ZiE) und vorhabenbezogene Bauartgenehmigung (vBG) die oberste Bauaufsichtsbehörde.",
+        impact: "Ermöglicht die Verwendung neuer Produkte und Bauarten (z. B. Spezialdübel, neuartige Dämmsysteme). Fehlt der erforderliche Nachweis, ist das Produkt für diesen Zweck nicht verwendbar.",
+        regulatoryLevel: "Verwaltungsakt"
       },
       {
         name: "Allgemeine Technische Vertragsbedingungen (VOB/C)",
         abbreviation: "VOB/C (ATV)",
         description: "Das technische Bindeglied bei Werkverträgen. Enthält gewerkespezifische Ausführungs- und Abrechnungsvorschriften (z.B. Messregeln, Nebenleistungen).",
-        impact: "Wird bei Vertragsvereinbarung der VOB/B automatisch Vertragsbestandteil. Klärt im Detail Streitigkeiten darüber, wie bestimmte Leistungen abzurechnen sind (z.B. Fensteröffnungen abziehen).",
+        impact: "Wird bei Vereinbarung der VOB/B automatisch Vertragsbestandteil (§ 1 Abs. 1 VOB/B). Klärt z. B., wie Leistungen abzurechnen sind (Übermessungsregeln für Öffnungen) und welche Nebenleistungen nicht gesondert vergütet werden.",
         regulatoryLevel: "Vertragsrelevante DIN-Normensammlung"
       }
     ]
@@ -376,7 +377,7 @@ export default function Regularien() {
                     Stufenbau der Rechtsordnung im deutschen Bauwesen
                   </h3>
                   <p className="text-xs text-text-main/70">
-                    Suchen Sie nach bestimmten Regelungen (z.B. \"BauGB\", \"EBV\") oder wählen Sie direkt eine Stufe aus der rechtlichen Pyramide aus.
+                    Suchen Sie nach bestimmten Regelungen (z. B. „BauGB“, „EBV“) oder wählen Sie direkt eine Stufe aus der rechtlichen Pyramide aus.
                   </p>
                 </div>
                 
@@ -456,7 +457,7 @@ export default function Regularien() {
                       Der goldene Grundsatz d. Rechtshierarchie:
                     </span>
                     <p className="text-[11px] leading-relaxed">
-                      Die jeweils höhere Norm bricht das niederrangige Recht (z.B. bricht EU-Recht deutsches Bundesrecht, Bundesrecht bricht Landesrecht). Technische Regeln (z.B. DIN-Normen) sind formal zwar privatrechtlicher Natur, im Schadenfall werden sie jedoch vor Gericht als <strong>allgemein anerkannte Regeln der Technik</strong> angewandt und sind damit de facto zwingend!
+                      Höherrangiges Recht geht dem niederrangigen vor: EU-Recht hat Anwendungsvorrang vor nationalem Recht, Bundesrecht bricht Landesrecht (Art. 31 GG). Technische Regeln (z. B. DIN-Normen) sind private Regelwerke; verbindlich werden sie durch Einführung als Technische Baubestimmung oder durch Vertrag. Im Streitfall dienen sie als Maßstab für die <strong>allgemein anerkannten Regeln der Technik</strong> – Abweichungen sollten deshalb immer ausdrücklich vereinbart werden.
                     </p>
                   </div>
                 </div>
@@ -560,22 +561,22 @@ export default function Regularien() {
                 <div className="flex items-center justify-between border-b border-home-grau/20 pb-2.5">
                   <span className="text-xs font-bold text-text-main flex items-center gap-2">
                     <Search size={14} />
-                    Suchergebnisse für \"{hierarchySearchTerm}\" ({filteredHierarchy.length} Treffer)
+                    Suchergebnisse für „{hierarchySearchTerm}“ ({filteredHierarchy.length} Treffer)
                   </span>
                   
                   <button
                     onClick={() => setHierarchySearchTerm('')}
                     className="text-shiraz hover:underline text-xs font-bold"
                   >
-                    Suchen Sie zurücksetzen
+                    Suche zurücksetzen
                   </button>
                 </div>
 
                 {filteredHierarchy.length === 0 ? (
                   <div className="text-center py-16 border border-dashed border-home-grau/20 rounded-2xl bg-white text-home-grau text-xs">
-                    Keine Regelungen oder Verordnungen für <strong>\"{hierarchySearchTerm}\"</strong> in der Hierarchie gefunden.
+                    Keine Regelungen oder Verordnungen für <strong>„{hierarchySearchTerm}“</strong> in der Hierarchie gefunden.
                     <br />
-                    <span className="block mt-2 text-slate-400">Tipp: Suchen Sie nach \"BauGB\", \"BayBO\", \"Zulassung\" oder \"EBV\".</span>
+                    <span className="block mt-2 text-slate-400">Tipp: Suchen Sie nach „BauGB“, „BayBO“, „Zulassung“ oder „EBV“.</span>
                   </div>
                 ) : (
                   <div className="space-y-6">
@@ -674,7 +675,7 @@ export default function Regularien() {
                   <p className="text-sm text-text-main/70 mb-3">
                     <strong>ISO:</strong> Internationale Normen (weltweit)<br/>
                     <strong>EN:</strong> Europäische Normen (im EWR gültig)<br/>
-                    <strong>DIN:</strong> Deutsche Industrie-Normen (national)<br/>
+                    <strong>DIN:</strong> Normen des Deutschen Instituts für Normung (national)<br/>
                     <strong>Richtlinien/Merkblätter:</strong> Ergänzende technische Regeln (z.B. DAfStb, VDI)
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
@@ -691,7 +692,7 @@ export default function Regularien() {
                     <h4 className="font-bold text-text-main text-lg">Technikklauseln</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    <strong>Anerkannte Regeln der Technik (aRdT):</strong> In der Praxis bewährt und von der Mehrheit der Fachleute anerkannt (z.B. eingeführte DIN-Normen).<br/>
+                    <strong>Allgemein anerkannte Regeln der Technik (aRdT):</strong> Wissenschaftlich als richtig anerkannt, in der Praxis bewährt und von der Mehrheit der Fachleute angewandt (DIN-Normen können ihnen entsprechen, müssen es aber nicht).<br/>
                     <strong>Stand der Technik:</strong> Technisch machbar und fortschrittlich, aber noch nicht zwingend breit bewährt.<br/>
                     <strong>Stand von Wissenschaft und Technik:</strong> Neueste wissenschaftliche Erkenntnisse, oft noch im Laborstadium.
                   </p>
@@ -807,7 +808,7 @@ export default function Regularien() {
                     <h4 className="font-bold text-text-main text-lg">MBO &amp; LBO</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    <strong>Musterbauordnung (MBO):</strong> Rahmengesetz des Bundes, dient als Vorlage zur Vereinheitlichung.<br/>
+                    <strong>Musterbauordnung (MBO):</strong> Mustergesetz der Bauministerkonferenz der Länder (ARGEBAU) – kein Bundesgesetz, sondern Vorlage zur Vereinheitlichung der Landesbauordnungen.<br/>
                     <strong>Landesbauordnungen (LBO):</strong> Länderspezifische Gesetze, die das Bauordnungsrecht regeln (Genehmigungspflichten, Abstandsflächen, Brandschutz).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
@@ -821,10 +822,10 @@ export default function Regularien() {
                     <div className="bg-green-100 text-green-700 p-2 rounded-lg">
                       <Leaf size={20} />
                     </div>
-                    <h4 className="font-bold text-text-main text-lg">GEG (Gebäudeenergiegesetz)</h4>
+                    <h4 className="font-bold text-text-main text-lg">GModG (vormals GEG)</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    Führt EnEG, EnEV und EEWärmeG zusammen. Regelt energetische Anforderungen an beheizte und klimatisierte Gebäude.
+                    Das Gebäudeenergiegesetz (2020, Zusammenführung von EnEG, EnEV und EEWärmeG) heißt seit 29.07.2026 Gebäudemodernisierungsgesetz. Regelt energetische Anforderungen an beheizte und klimatisierte Gebäude.
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
                     <strong>Fokus:</strong> Begrenzung des Primärenergiebedarfs und Wärmeverlusts, Nutzung erneuerbarer Energien.
@@ -853,14 +854,14 @@ export default function Regularien() {
                     <div className="bg-amber-100 text-amber-700 p-2 rounded-lg">
                       <ShieldCheck size={20} />
                     </div>
-                    <h4 className="font-bold text-text-main text-lg">aBZ / abG</h4>
+                    <h4 className="font-bold text-text-main text-lg">abZ / aBG</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    <strong>aBZ:</strong> allgemeine bauaufsichtliche Zulassung<br/>
-                    <strong>abG:</strong> allgemeine Bauartgenehmigung
+                    <strong>abZ:</strong> allgemeine bauaufsichtliche Zulassung (Bauprodukt)<br/>
+                    <strong>aBG:</strong> allgemeine Bauartgenehmigung (Bauart)
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>National (D):</strong> Erteilt vom DIBt für Bauprodukte/Bauarten, für die es keine harmonisierten Normen gibt oder die wesentlich davon abweichen.
+                    <strong>National (D):</strong> Erteilt vom DIBt für Bauprodukte bzw. Bauarten, die von Technischen Baubestimmungen wesentlich abweichen oder für die es keine gibt. Für CE-gekennzeichnete Produkte dürfen keine zusätzlichen nationalen Produktanforderungen gestellt werden.
                   </div>
                 </div>
 
@@ -873,7 +874,7 @@ export default function Regularien() {
                     <h4 className="font-bold text-text-main text-lg">Ü-Zeichen</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    <strong>Übereinstimmungszeichen:</strong> Bestätigt die Übereinstimmung eines Bauprodukts mit den maßgebenden nationalen technischen Regeln, einer aBZ, einem abP oder einer ZiE.
+                    <strong>Übereinstimmungszeichen:</strong> Bestätigt die Übereinstimmung eines Bauprodukts mit den maßgebenden Technischen Baubestimmungen, einer abZ, einem abP oder einer ZiE.
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
                     <strong>Funktion:</strong> Das nationale Pendant zur CE-Kennzeichnung für Produkte, die (noch) nicht europäisch harmonisiert sind.
@@ -906,7 +907,7 @@ export default function Regularien() {
                     <h4 className="font-bold text-text-main text-lg">abP</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    <strong>allgemeines bauaufsichtliches Prüfzeugnis:</strong> Für geregelte Bauprodukte/Bauarten mit geringerem Sicherheitsrisiko (z.B. Abdichtungen, Fertigteile).
+                    <strong>allgemeines bauaufsichtliches Prüfzeugnis:</strong> Für nicht geregelte Bauprodukte bzw. Bauarten, deren Verwendbarkeit nach allgemein anerkannten Prüfverfahren beurteilt werden kann (abschließend festgelegt in der MVV TB, z. B. bestimmte Abdichtungsbahnen und Brandschutzprodukte).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
                     <strong>Nachweis:</strong> Wird von einer anerkannten Prüfstelle nach erfolgreicher Prüfung erteilt und bedarf keiner DIBt-Zulassung.
@@ -925,7 +926,7 @@ export default function Regularien() {
                     <strong>Vergabe- und Vertragsordnung für Bauleistungen:</strong> Regelt die Vergabe (Teil A), den Bauvertrag (Teil B) und die Ausführung (Teil C, ATV - Allgemeine Technische Vertragsbedingungen).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>Relevanz:</strong> ATV (VOB/C) gilt als anerkannte Regel der Technik und ist bei öffentlichen Ausschreibungen zwingend zu vereinbaren.
+                    <strong>Relevanz:</strong> Öffentliche Auftraggeber müssen VOB/B und VOB/C vereinbaren (§ 8a VOB/A). Die ATV geben weitgehend die anerkannten Regeln der Technik wieder.
                   </div>
                 </div>
 
@@ -941,7 +942,7 @@ export default function Regularien() {
                     <strong>Baugesetzbuch &amp; Baunutzungsverordnung:</strong> Das Fundament des deutschen Bauplanungsrechts. Regelt die Zulässigkeit von Bauvorhaben im Raum (z. B. im Innenbereich § 34, Außenbereich § 35 oder per B-Plan § 30) und die Art/Maß der baulichen Nutzung (GRZ, GFZ, BMZ).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>Unterschied:</strong> Bauplanungsrecht regelt das \"Ob\" und \"Wo\" eines Vorhabens, das Bauordnungsrecht (LBO) regelt das \"Wie\" (technische Ausführung).
+                    <strong>Unterschied:</strong> Bauplanungsrecht regelt das „Ob“ und „Wo“ eines Vorhabens, das Bauordnungsrecht (LBO) regelt das „Wie“ (technische Ausführung).
                   </div>
                 </div>
 
@@ -954,10 +955,10 @@ export default function Regularien() {
                     <h4 className="font-bold text-text-main text-lg">BGB-Werkvertragsrecht</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    <strong>§§ 631 ff. BGB:</strong> Das gesetzliche Fundament für Bau- und Werkverträge in Deutschland. Regelt die Pflichten von Unternehmer und Besteller, falls die VOB/B nicht wirksam vereinbart wurde. Seit 2018 gibt es ein eigenes Kapitel für das spezielle \"Bauvertragsrecht\".
+                    <strong>§§ 631 ff. BGB:</strong> Das gesetzliche Fundament für Bau- und Werkverträge in Deutschland. Regelt die Pflichten von Unternehmer und Besteller, falls die VOB/B nicht wirksam vereinbart wurde. Seit 2018 gibt es ein eigenes Kapitel für das spezielle „Bauvertragsrecht“ (§§ 650a ff. BGB).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>Primat:</strong> Gesetzliche Regelungen des BGB sind zwingendes Recht und schlagen im Zweifel Allgemeine Geschäftsbedingungen, falls Verbraucher beteiligt sind.
+                    <strong>Verhältnis zur VOB/B:</strong> Die BGB-Regeln sind überwiegend abdingbar. Vorformulierte Klauseln wie die VOB/B unterliegen aber der AGB-Kontrolle; gegenüber Verbrauchern immer, gegenüber Unternehmern nur, wenn die VOB/B nicht als Ganzes vereinbart wurde.
                   </div>
                 </div>
               </div>
@@ -1030,7 +1031,7 @@ export default function Regularien() {
                     <strong>Honorarordnung für Architekten und Ingenieure:</strong> Regelt die Berechnung der Honorare für Planungsleistungen im Bauwesen, aufgeteilt in <strong>9 Leistungsphasen (LPH)</strong> (Grundlagenermittlung bis Objektbetreuung).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>Wichtig:</strong> Seit dem EuGH-Urteil sind Mindest- und Höchstsätze nicht mehr zwingend vorgeschrieben, die LPH-Struktur ist jedoch weiterhin Branchenstandard.
+                    <strong>Wichtig:</strong> Seit dem EuGH-Urteil vom 04.07.2019 und der HOAI 2021 sind Mindest- und Höchstsätze nicht mehr verbindlich; die Leistungsphasen bleiben Branchenstandard.
                   </div>
                 </div>
 
@@ -1040,15 +1041,15 @@ export default function Regularien() {
                     <div className="bg-red-100 text-red-700 p-2 rounded-lg">
                       <ShieldCheck size={20} />
                     </div>
-                    <h4 className="font-bold text-text-main text-lg">Gewährleistung (s. BGB / VOB)</h4>
+                    <h4 className="font-bold text-text-main text-lg">Verjährung von Mängelansprüchen (BGB / VOB)</h4>
                   </div>
                   <p className="text-sm text-text-main/70 mb-3">
-                    Garantiefristen für auftretende Mängel an Bauwerken:<br/>
+                    Verjährungsfristen für Mängelansprüche bei Bauwerken (keine Garantie im Rechtssinn):<br/>
                     • <strong>BGB § 634a:</strong> Grundsätzlich <strong>5 Jahre</strong> ab Abnahme.<br/>
                     • <strong>VOB/B § 13:</strong> Grundsätzlich <strong>4 Jahre</strong> ab Abnahme (sofern VOB/B als Ganzes vereinbart wurde).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>Fristenhemmung:</strong> Mängelrügen innerhalb der Verjährungsfrist hemmen oder verlängern die Gewährleistung je nach vertraglicher Basis.
+                    <strong>Hemmung und Verlängerung:</strong> Nach BGB hemmen z. B. Verhandlungen über den Mangel die Verjährung (§ 203 BGB). Nach VOB/B löst eine schriftliche Mängelrüge eine neue Frist von 2 Jahren für diesen Mangel aus, jedoch nicht vor Ablauf der Regelfrist (§ 13 Abs. 5).
                   </div>
                 </div>
 
@@ -1105,7 +1106,7 @@ export default function Regularien() {
                     <strong>Technische Regeln für Gefahrstoffe:</strong> Konkretisieren die Gefahrstoffverordnung (GefStoffV) hinsichtlich Ermittlung und Arbeitsschutzmaßnahmen (Zementdermatitis-Schutz, Lungenschutz).
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>Beispiel:</strong> TRGS 559 (Mineralischer Staub - Quarzfeinstaub) oder TRGS 519 (Asbest).
+                    <strong>Beispiel:</strong> TRGS 559 (Quarzhaltiger Staub) oder TRGS 519 (Asbest).
                   </div>
                 </div>
 
@@ -1170,7 +1171,7 @@ export default function Regularien() {
                     Ein staatliches deutsches Gütesiegel des BMWSB, das die Erfüllung hoher ökologischer, soziokultureller und ökonomischer Anforderungen an Gebäude im Neubau und in der Sanierung nachweist.
                   </p>
                   <div className="bg-off-white p-3 rounded-lg text-xs text-text-main/80 border border-home-grau/30">
-                    <strong>Förderung:</strong> Die Vergabe von staatlichen KfW-Förderkrediten (Klimafreundlicher Neubau KFN) ist heute zwingend an das QNG gekoppelt.
+                    <strong>Förderung:</strong> Im KfW-Programm „Klimafreundlicher Neubau“ (KFN) ermöglicht ein QNG-Zertifikat die höhere Förderstufe; die Basisförderung setzt Effizienzhaus-40-Standard und die Einhaltung von Ökobilanz-Grenzwerten voraus.
                   </div>
                 </div>
               </div>
@@ -1186,7 +1187,7 @@ export default function Regularien() {
               <div className="max-w-xl text-xs text-text-main/80">
                 <p className="font-semibold text-text-main mb-1">Gewerkübergreifendes Normenverzeichnis des BaustoffBoards</p>
                 <p>
-                  Suchen Sie gezielt nach Kürzeln (z.B. <strong>\"DIN 1045\"</strong> oder <strong>\"Eurocode\"</strong>) oder Begriffen (z.B. <strong>\"Schallschutz\"</strong>, <strong>\"Zement\"</strong>/<strong>\"Holz\"</strong>), um die maßgeblichen allgemein anerkannten Regeln der Technik (aRdT) schnell zu filtern.
+                  Suchen Sie gezielt nach Kürzeln (z. B. <strong>„DIN 1045“</strong> oder <strong>„Eurocode“</strong>) oder Begriffen (z. B. <strong>„Schallschutz“</strong>, <strong>„Zement“</strong>/<strong>„Holz“</strong>), um die maßgeblichen technischen Regeln schnell zu filtern.
                 </p>
               </div>
 
@@ -1208,7 +1209,7 @@ export default function Regularien() {
             {/* Normen Content Rendering */}
             {filteredNormenData.length === 0 ? (
               <div className="text-center py-12 border border-dashed border-home-grau/30 rounded-xl bg-white text-home-grau text-sm">
-                Keine passenden Normen für <strong>\"{searchTerm}\"</strong> gefunden. Probieren Sie andere Suchbegriffe aus wie \"DIN\", \"Eurocode\" oder \"Gips\".
+                Keine passenden Normen für <strong>„{searchTerm}“</strong> gefunden. Probieren Sie andere Suchbegriffe aus wie „DIN“, „Eurocode“ oder „Gips“.
               </div>
             ) : (
               <div className="space-y-8">
@@ -1228,9 +1229,13 @@ export default function Regularien() {
                             <span className="inline-block bg-slate-100 border border-home-grau/30 text-slate-700 font-mono text-xs font-bold px-2.5 py-1 rounded">
                               {norm.code}
                             </span>
-                            {norm.status === 'in_ueberarbeitung' ? (
+                            {norm.status === 'ersetzt' ? (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-shiraz/10 text-shiraz border border-shiraz/20" title={norm.ersetztDurch ? `Ersetzt durch ${norm.ersetztDurch}` : undefined}>
+                                Zurückgezogen ({norm.ausgabeStand})
+                              </span>
+                            ) : norm.status === 'in_ueberarbeitung' ? (
                               <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
-                                In Überarbeitung
+                                Übergang / neue Fassung ({norm.ausgabeStand})
                               </span>
                             ) : (
                               <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -1251,7 +1256,7 @@ export default function Regularien() {
                                   rel="noopener noreferrer"
                                   className="text-xs font-bold text-shiraz hover:underline inline-flex items-center gap-1"
                                 >
-                                  DIN Media / Beuth <ArrowUpRight size={13} />
+                                  DIN Media <ArrowUpRight size={13} />
                                 </a>
                               )}
                             </div>
@@ -1278,6 +1283,8 @@ export default function Regularien() {
 
       </div>
 
+      <ModulTest moduleId="regularien" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Baurecht (Deutschland)', url: 'https://de.wikipedia.org/wiki/Baurecht_(Deutschland)' },
@@ -1286,29 +1293,30 @@ export default function Regularien() {
         ]}
         regelwerke={[
           { title: 'Musterbauordnung (MBO) der Bauministerkonferenz', url: 'https://www.bauministerkonferenz.de/' },
-          { title: 'Gebäudeenergiegesetz (GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'Bauproduktenverordnung (BauPVO) - Verordnung (EU) 2024/3110 (übergangsweise VO (EU) 305/2011)', url: 'https://eur-lex.europa.eu/' },
+          { title: 'Gebäudemodernisierungsgesetz (GModG; bis 28.07.2026 Gebäudeenergiegesetz GEG) – Infoportal des BBSR', url: 'https://www.gmodg.bund.de/' },
+          { title: 'Bauproduktenverordnung (BauPVO) – Verordnung (EU) 2024/3110 (übergangsweise VO (EU) 305/2011)', url: 'https://eur-lex.europa.eu/eli/reg/2024/3110/oj' },
           { title: 'Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB)', url: 'https://www.dibt.de/' },
           { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB Teile A, B, C)', url: 'https://www.dinmedia.de/de/suche?q=VOB+2019' },
           { title: 'Ersatzbaustoffverordnung (ErsatzbaustoffV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
         ]}
         literatur={[
           'Deutsches Institut für Bautechnik (DIBt): Publikationen und Hinweise zu Bauprodukten und Bauarten',
-          'Jagenburg, W. et al. (2020): VOB Vergabe- und Vertragsordnung für Bauleistungen: Kommentar (Werner Verlag)',
+          'Ingenstau, H.; Korbion, H. (Begr.): VOB Teile A und B – Kommentar. Köln: Werner Verlag (jeweils aktuelle Auflage)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         formeln={[
           {
             formel: 'H_T\' = \\frac{H_T}{A} = \\frac{\\sum U_i \\cdot A_i \\cdot f_{x,i} + \\sum \\psi_j \\cdot l_j}{A} \\le H_{T,\\text{zul}}\'',
-            erklaerung: 'Spezifischer transmissionswärmeverlustbezogener Nachweis nach Gebäudeenergiegesetz (GEG Anlage 1) der thermischen Gebäudehülle.',
-            quelle: 'GEG § 16 / DIN V 18599'
+            erklaerung: 'Spezifischer, auf die wärmeübertragende Umfassungsfläche A bezogener Transmissionswärmetransferkoeffizient H_T\' als Nachweis für den baulichen Wärmeschutz (Höchstwert nach GEG/GModG, Wohngebäude).',
+            quelle: 'GEG § 16 (seit 29.07.2026 GModG) / DIN V 18599'
           },
           {
-            formel: '\\text{DoP (Declaration of Performance)} \\implies \\text{NPD} \\lor (\\text{Wert} \\ge \\text{hEN-Anforderung})',
-            erklaerung: 'Leistungserklärung nach BauPVO: Angabe wesentlicher Merkmale eines harmonisierten Bauprodukts nach hEN oder EAD mit CE-Kennzeichnung.',
-            quelle: 'BauPVO Art. 4 & 6'
+            formel: '\\text{Leistungserklärung} = \\{\\text{wesentliches Merkmal}_i \\mapsto \\text{Wert, Stufe oder Klasse}_i\\}',
+            erklaerung: 'Leistungserklärung nach BauPVO: Der Hersteller erklärt für die wesentlichen Merkmale eines Bauprodukts nach hEN oder EAD die Leistung als Wert, Stufe oder Klasse; sie ist Voraussetzung für die CE-Kennzeichnung. Ob die erklärte Leistung für ein Bauwerk genügt, entscheidet der Planer anhand der Bauwerksanforderungen (MVV TB).',
+            quelle: 'VO (EU) 305/2011 Art. 4 und 6; VO (EU) 2024/3110'
           }
         ]}
+        lastReviewed="Oktober 2026 (AP 3 Grundlagen: BauPVO 2024/3110, GModG, ErsatzbaustoffV, BGB/VOB, MBO/MVV TB geprüft; keine Rechtsberatung; fachliche Freigabe durch den Autor ausstehend)"
       />
     </div>
   );

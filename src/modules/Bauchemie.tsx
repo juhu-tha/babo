@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { FlaskConical, Droplets, ShieldAlert, Layers, Activity, Paintbrush, Shield, Snowflake, ArrowRight, Flame, AlertTriangle, Sliders, Sparkles, Paperclip } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Slider } from '@/src/components/ui/Slider';
 import { Line } from 'react-chartjs-2';
@@ -78,9 +80,9 @@ export const Bauchemie: React.FC = () => {
       }
     } else {
       // SHEARING STATE (Verarbeitung unter Kraftaufwand)
-      const forceRequired = currentViscosity > 15 ? "hoch (" + currentViscosity + " Pa·s)" : currentViscosity < 4 ? "sehr leicht (" + currentViscosity + " Pa·s)" : "optimal (" + currentViscosity + " Pa·s)";
+      const forceRequired = currentViscosity > 15 ? "hoch (" + formatDeZahl(currentViscosity, 1) + " Pa·s)" : currentViscosity < 4 ? "sehr leicht (" + formatDeZahl(currentViscosity, 1) + " Pa·s)" : "optimal (" + formatDeZahl(currentViscosity, 1) + " Pa·s)";
       if (stellmittelConc < 0.4) {
-        stateMessage = "Sehr leichtzuzügig, verliert beim Aufziehen jedoch sofort die Stegkontur der Zahnkelle und verfließt flach.";
+        stateMessage = "Sehr leichtzügig, verliert beim Aufziehen jedoch sofort die Stegkontur der Zahnkelle und verfließt flach.";
         stateColor = "text-blue-700 bg-blue-50 border-blue-200 shadow-blue-100";
         statusClass = "Keine Zahnung!";
       } else if (stellmittelConc >= 0.4 && stellmittelConc <= 1.5) {
@@ -88,7 +90,7 @@ export const Bauchemie: React.FC = () => {
         stateColor = "text-emerald-700 bg-emerald-50 border-emerald-200 shadow-emerald-100";
         statusClass = "Perfekte Verarbeitung!";
       } else {
-        stateMessage = `Scherausdünnung unzureichend! Bemessungskraft beim Streichen ist extrem hoch (${forceRequired} Pa·s). Schwer verarbeitbar.`;
+        stateMessage = `Scherverdünnung unzureichend! Der Kraftaufwand beim Aufziehen ist sehr hoch, Viskosität ${forceRequired}. Schwer verarbeitbar.`;
         stateColor = "text-amber-700 bg-amber-50 border-amber-200 shadow-amber-100";
         statusClass = "Sehr zäh!";
       }
@@ -149,9 +151,9 @@ export const Bauchemie: React.FC = () => {
   const karbonatisierungData = {
     labels: [0, 5, 10, 25, 50, 100],
     datasets: [
-      { label: 'w/z = 0.60 (schlechter Beton)', data: [0, 5, 10, 25, 50, 100].map(t => 4 * Math.sqrt(t)), borderColor: '#A3113E', tension: 0.4 },
-      { label: 'w/z = 0.50 (normaler Beton)', data: [0, 5, 10, 25, 50, 100].map(t => 2 * Math.sqrt(t)), borderColor: '#64748b', tension: 0.4 },
-      { label: 'w/z = 0.40 (guter Beton)', data: [0, 5, 10, 25, 50, 100].map(t => 0.5 * Math.sqrt(t)), borderColor: '#475569', tension: 0.4 },
+      { label: 'w/z = 0,60 (K ≈ 4 mm/√a)', data: [0, 5, 10, 25, 50, 100].map(t => 4 * Math.sqrt(t)), borderColor: '#A3113E', tension: 0.4 },
+      { label: 'w/z = 0,50 (K ≈ 2 mm/√a)', data: [0, 5, 10, 25, 50, 100].map(t => 2 * Math.sqrt(t)), borderColor: '#64748b', tension: 0.4 },
+      { label: 'w/z = 0,40 (K ≈ 0,5 mm/√a)', data: [0, 5, 10, 25, 50, 100].map(t => 0.5 * Math.sqrt(t)), borderColor: '#475569', tension: 0.4 },
     ]
   };
 
@@ -271,8 +273,8 @@ export const Bauchemie: React.FC = () => {
                 <h4 className="font-bold text-sm text-text-main mb-2">pH-Skala & Beton</h4>
                 <div className="relative h-12 w-full rounded-full overflow-hidden flex text-xs font-bold text-white shadow-inner">
                   <div className="bg-torch-red flex items-center justify-center" style={{ width: '42.8%' }}>Säureangriff (pH &lt; 6)</div>
-                  <div className="bg-amber-500 flex items-center justify-center" style={{ width: '21.4%' }}>Karbonatisierung (pH 6-9)</div>
-                  <div className="bg-emerald-500 flex items-center justify-center" style={{ width: '35.8%' }}>Passivierung (pH &gt; 9)</div>
+                  <div className="bg-amber-500 flex items-center justify-center" style={{ width: '21.4%' }}>Karbonatisiert (pH 6–9)</div>
+                  <div className="bg-emerald-500 flex items-center justify-center" style={{ width: '35.8%' }}>Alkalisch (pH &gt; 9; Passivschicht stabil ab ≈ 11,5)</div>
                 </div>
                 <div className="flex justify-between text-xs text-text-main/60 mt-1 px-2">
                   <span>0</span>
@@ -283,7 +285,7 @@ export const Bauchemie: React.FC = () => {
               </div>
 
               <ul className="list-disc list-inside text-sm text-text-main/80 space-y-2 mt-2">
-                <li><strong>Frischbeton:</strong> Durch die Lösung von Alkalien und Calciumhydroxid (<InlineMath math="Ca(OH)_2" />) entsteht ein stark alkalisches Milieu mit einem <strong>pH-Wert &gt; 12,5</strong>.</li>
+                <li><strong>Porenlösung:</strong> Durch gelöste Alkalihydroxide (Na, K) und Calciumhydroxid (<InlineMath math="Ca(OH)_2" />) liegt der pH-Wert der Porenlösung bei <strong>12,5 bis 13,5</strong>.</li>
                 <li><strong>Passivierung:</strong> In diesem hochalkalischen Milieu bildet sich auf der Oberfläche des Bewehrungsstahls eine mikroskopisch dünne, dichte Oxidschicht (Passivschicht), die den Stahl vor Korrosion schützt.</li>
                 <li><strong>Depassivierung:</strong> Sinkt der pH-Wert unter ca. 9 (z.B. durch Karbonatisierung), löst sich diese Schutzschicht auf. Bei Anwesenheit von Feuchtigkeit und Sauerstoff beginnt der Stahl zu rosten.</li>
               </ul>
@@ -294,7 +296,7 @@ export const Bauchemie: React.FC = () => {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
               <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Thermische Gefügebildung: Die Sinterung</h3>
               <p className="text-sm text-text-main/80 leading-relaxed">
-                Das Sinterverfahren ist eine thermische Oberflächenveredelung, bei der feinkörnige, mineralische Feststoffe unter hohem Druck und starker Hitzeeinwirkung (jedoch <strong>unterhalb der Schmelztemperatur</strong> der Hauptkomponenten) verdichtet und zusammengefügt werden. Triebkraft ist der Abbau freier Oberflächenenergie durch Oberflächendiffusion.
+                Beim Sintern verdichten sich feinkörnige mineralische Feststoffe bei hoher Temperatur <strong>unterhalb der Schmelztemperatur</strong> der Hauptkomponenten zu einem festen Gefüge – bei Zementklinker und Ziegeln mit Hilfe einer teilweisen Schmelzphase (Flüssigphasensintern), ohne äußeren Druck. Triebkraft ist der Abbau freier Oberflächenenergie durch Diffusion und Stofftransport über die Schmelze.
               </p>
               <div className="space-y-3 text-xs text-text-main/80">
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
@@ -309,7 +311,7 @@ export const Bauchemie: React.FC = () => {
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
                   <span className="font-bold text-shiraz block mb-1">2. Tonkeramik- &amp; Ziegelsinterung (900 – 1100 °C)</span>
                   <p className="leading-relaxed">
-                    Beim Ziegelbrand wird zunächst das physikalisch gebundene Wasser und folgend das chemische Gitterwasser der Tonminerale (z. B. Kaolinit) ausgetrieben. Bei Erreichen der Sintergrenze bilden Flussmittel (Feldspäte, Alkalien, Eisenoxide) glasige Schmelzbrücken zwischen den Quarzkörnern. Das Gefüge schwindet (Brennschwindung); Mauerziegel bleiben porös, bei Klinker (Brand bis ca. 1.200 °C) entsteht ein dicht gesintertes, frostbeständiges Gefüge. und bilden glasige Verklebungsbrücken zwischen den härteren Quarzkörnern aus. Das Gefüge schrumpft (Brandschwindung) und verdichtet sich zu einem frostbeständigen, langlebigen Klinkerskelett.
+                    Beim Ziegelbrand wird zunächst das physikalisch gebundene Wasser und folgend das chemische Gitterwasser der Tonminerale (z. B. Kaolinit) ausgetrieben. Bei Erreichen der Sintergrenze bilden Flussmittel (Feldspäte, Alkalien, Eisenoxide) glasige Schmelzbrücken zwischen den Quarzkörnern. Das Gefüge schwindet (Brennschwindung); Mauerziegel bleiben porös, bei Klinkerziegeln (Brand bis ca. 1.200 °C) entsteht ein dicht gesintertes, frostbeständiges Gefüge.
                   </p>
                 </div>
               </div>
@@ -318,7 +320,7 @@ export const Bauchemie: React.FC = () => {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
               <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Das Rückgrat des Massivbaus: CSH-Phasen</h3>
               <p className="text-sm text-text-main/80 leading-relaxed">
-                Trifft Zement auf Anmachwasser, reagieren die Klinkerphasen rasch (Hydratation). Dabei wachsen nadelartige, kristalline und amorphe Plateaustrukturen – die sogenannten <strong>Calcium-Silicat-Hydrat-Phasen (C-S-H)</strong>. Sie machen über 70% des erhärteten Zementsteins aus und sind für dessen mechanische Festigkeit und Dichtigkeit verantwortlich.
+                Trifft Zement auf Anmachwasser, reagieren die Klinkerphasen rasch (Hydratation). Dabei entstehen schlecht kristalline bis amorphe, folien- und faserartige <strong>Calcium-Silicat-Hydrat-Phasen (C-S-H)</strong>. Sie machen rund 50–60 Vol.-% des erhärteten Zementsteins aus (Portlandit etwa 20–25 %) und bestimmen Festigkeit und Dichtigkeit.
               </p>
               
               <div className="bg-off-white p-3 rounded-lg border border-home-grau/30 text-center text-xs">
@@ -331,7 +333,7 @@ export const Bauchemie: React.FC = () => {
                 <div className="p-3.5 bg-[#fcf8f2] rounded-xl border border-stone-200/50">
                   <h4 className="font-bold text-[#A3113E] uppercase tracking-wide text-[10px] mb-1 font-mono">Die Gel-Poren-Architektur (Treval C. Powers)</h4>
                   <p className="leading-relaxed">
-                    CSH-Gele bilden eine extrem ungeordnete Schichtstruktur (ähnlich dem natürlichen Mineral Tobermorit) mit einer unvorstellbar großen inneren Oberfläche von ca. 200 m² pro Gramm. Zwischen diesen CSH-Schichten liegen winzige <strong>Gel-Poren</strong> (Breite nur ca. 1,5 bis 3 Nanometer). Die extreme Kohäsions- und Druckfestigkeit beruht nicht auf rein mechanischer Verkrallung, sondern auf den weitreichenden coulombschen Anziehungskräften (ionisch-kovalente Mischbindung) und zwischenmolekularen Anhangskräften (Van-der-Waals) zwischen diesen nanometer-nahen Schichten.
+                    CSH-Gele bilden eine extrem ungeordnete Schichtstruktur (ähnlich dem natürlichen Mineral Tobermorit) mit einer unvorstellbar großen inneren Oberfläche von ca. 200 m² pro Gramm. Zwischen diesen CSH-Schichten liegen winzige <strong>Gel-Poren</strong> (Breite nur ca. 1,5 bis 3 Nanometer). Die Festigkeit beruht nicht auf mechanischer Verkrallung, sondern auf Oberflächen- und Bindungskräften (ionisch-kovalente Bindungen, elektrostatische und Van-der-Waals-Kräfte) zwischen diesen nanometerfeinen Schichten.
                   </p>
                 </div>
               </div>
@@ -351,13 +353,13 @@ export const Bauchemie: React.FC = () => {
               <ul className="list-disc list-inside text-sm text-text-main/80 space-y-4">
                 <li>
                   <strong>Betonverflüssiger (BV):</strong> 
-                  <br/><em>Chemie:</em> Ligninsulfonate, Melaminharze.
+                  <br/><em>Chemie:</em> Ligninsulfonate, Gluconate.
                   <br/><em>Wirkung:</em> Elektrostatische Abstoßung. Die Moleküle lagern sich an Zementpartikel an und laden diese negativ auf. Gleichnamige Ladungen stoßen sich ab.
                 </li>
                 <li>
                   <strong>Fließmittel (FM):</strong> 
-                  <br/><em>Chemie:</em> Polycarboxylatether (PCE).
-                  <br/><em>Wirkung:</em> Sterische Hinderung. Die Hauptkette adsorbiert am Zementkorn, lange Seitenketten ragen in die Porenlösung und halten die Partikel physisch auf Abstand. Sehr hohe Wasserreduktion möglich.
+                  <br/><em>Chemie:</em> Polycarboxylatether (PCE); ältere Generationen: Naphthalin- und Melaminsulfonate (elektrostatisch wirkend).
+                  <br/><em>Wirkung (PCE):</em> Sterische Hinderung. Die Hauptkette adsorbiert am Zementkorn, lange Seitenketten ragen in die Porenlösung und halten die Partikel physisch auf Abstand. Sehr hohe Wasserreduktion möglich.
                 </li>
               </ul>
 
@@ -579,7 +581,7 @@ export const Bauchemie: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-[10px] text-text-main/50 italic leading-normal text-center select-none">
-                  Hinweis: Pseudoplastisches (scherentzähendes) Verhalten ist für moderne bauchemische Pasten unabdingbar. Newtonsche Fluide (z. B. Wasser, dünnflüssige Öle) haben eine scherratenunabhängige Viskosität und wären als standfeste Pasten untauglich. behalten ihre Viskosität unter Last bei und wären untauglich.
+                  Hinweis: Pseudoplastisches (scherentzähendes) Verhalten ist für moderne bauchemische Pasten unabdingbar. Newtonsche Fluide (z. B. Wasser, dünnflüssige Öle) haben eine scherratenunabhängige Viskosität und wären als standfeste Pasten untauglich. Die Kurven sind ein qualitatives Lehrmodell, keine Produktkennwerte.
                 </p>
               </div>
             </div>
@@ -645,12 +647,12 @@ export const Bauchemie: React.FC = () => {
             
             <h4 className="font-bold text-shiraz mt-2">Sulfattreiben</h4>
             <p className="text-sm text-text-main/80">
-              Sulfationen (aus Boden/Wasser) dringen in den Beton ein und reagieren mit den Aluminatphasen (Monosulfat, unhydratisiertes C3A) zu Ettringit (Volumenzunahme, Rissbildung); bei tiefen Temperaturen und Carbonatangebot kann zusätzlich Thaumasit aus den C-S-H-Phasen entstehen, was zur Entfestigung des Zementsteins führt.. Diese Reaktion ist mit einer starken Volumenvergrößerung verbunden und führt zu Rissbildung und Abplatzungen.
+              Sulfationen (aus Boden oder Grundwasser) dringen in den Beton ein und reagieren mit den Aluminatphasen (Monosulfat, unhydratisiertes C₃A) zu sekundärem Ettringit, bei hohen Konzentrationen auch zu Gips. Die Volumenzunahme führt zu Rissbildung und Abplatzungen. Bei tiefen Temperaturen und Carbonatangebot kann zusätzlich Thaumasit aus den C-S-H-Phasen entstehen – der Zementstein verliert dabei seine Festigkeit. Vorbeugend wirken Zemente mit hohem Sulfatwiderstand (SR-Zemente nach DIN EN 197-1) und ein dichter Beton (Expositionsklassen XA).
             </p>
 
             <h4 className="font-bold text-shiraz mt-4">Alkali-Kieselsäure-Reaktion (AKR)</h4>
             <p className="text-sm text-text-main/80">
-              Reaktion zwischen Alkalien (Na, K) aus dem Porenwasser und amorpher Kieselsäure aus der Gesteinskörnung. Es entsteht ein quellfähiges Alkali-Kieselgel.
+              Reaktion zwischen Alkalihydroxiden (Na, K) der Porenlösung und alkaliempfindlicher, amorpher oder feinkristalliner Kieselsäure der Gesteinskörnung (z. B. Opalsandstein, Flint, Grauwacke). Es entsteht ein quellfähiges Alkali-Kieselgel. Voraussetzungen: reaktive Gesteinskörnung, ausreichend Alkalien und Feuchte (relative Luftfeuchte über ca. 80 %). Maßnahmen regelt die DAfStb-Alkali-Richtlinie. Die Kurve unten ist ein qualitatives Lehrmodell, kein Prognosemodell.
             </p>
             <div className="space-y-4 mt-2">
               <Slider 
@@ -696,7 +698,7 @@ export const Bauchemie: React.FC = () => {
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-3">
               <li><strong>Chloride (Tausalz, Meerwasser):</strong> Sehr gut wasserlöslich und extrem hygroskopisch. Halten das Mauerwerk dauerfeucht und verursachen schwere Bewehrungskorrosion in Stahlbeton.</li>
               <li><strong>Nitrate (Fäkalien, Landwirtschaft):</strong> Ebenfalls stark hygroskopisch. Treten häufig in landwirtschaftlichen Gebäuden oder an alten Stallungen auf (Mauersalpeter).</li>
-              <li><strong>Sulfate (Gips, saurer Regen, Boden):</strong> Weniger hygroskopisch, verursachen aber beim Auskristallisieren (z.B. Umwandlung von Thenardit in Mirabilit) enorme Volumenvergrößerungen.</li>
+              <li><strong>Sulfate (Gips, saurer Regen, Boden):</strong> Weniger hygroskopisch, verursachen aber beim Kristallisieren und beim Wechsel der Hydratstufe (z. B. Thenardit Na₂SO₄ → Mirabilit Na₂SO₄·10H₂O, rund dreifaches Volumen) hohe Drücke.</li>
             </ul>
 
             <div className="mt-4 border border-home-grau/30 rounded-xl p-4 bg-off-white flex flex-col items-center">
@@ -725,7 +727,7 @@ export const Bauchemie: React.FC = () => {
             <div className="mt-2 p-4 bg-off-white rounded-xl border border-home-grau/30">
               <h4 className="font-bold text-shiraz text-sm mb-2">Sanierungsansätze</h4>
               <p className="text-sm text-text-main/80">
-                <strong>Sanierputzsysteme (WTA):</strong> Besitzen eine sehr hohe Porosität und sind wasserabweisend eingestellt. Das Wasser verdunstet <em>im</em> Putz, die Salze kristallisieren schadlos in den großen Poren aus, die Oberfläche bleibt trocken und salzfrei.<br/>
+                <strong>Sanierputzsysteme (WTA-Merkblatt 2-9):</strong> Besitzen eine sehr hohe Porosität (über 40 Vol.-%) und sind hydrophob eingestellt. Das Wasser verdunstet <em>im</em> Putz, die Salze kristallisieren schadlos in den großen Poren aus, die Oberfläche bleibt trocken und salzfrei.<br/>
                 <strong>Opferputz:</strong> Saugt Salze auf und wird nach Sättigung abgeschlagen und erneuert.
               </p>
             </div>
@@ -825,17 +827,17 @@ export const Bauchemie: React.FC = () => {
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-3">
               <li><strong>Bimetallkorrosion (Kontaktkorrosion) vermeiden:</strong> Direkten Kontakt unterschiedlicher Metalle (z.B. Kupfer und verzinkter Stahl) in Gegenwart eines Elektrolyten (Wasser) durch isolierende Zwischenlagen (Neopren/EPDM) verhindern. Das unedlere Metall opfert sich sonst auf (galvanisches Element).</li>
               <li><strong>Passiver Korrosionsschutz:</strong> Trennung des Metalls vom korrosiven Medium (Sauerstoff, Wasser) durch Lacke, Epoxidharz- oder Polyurethanbeschichtungen.</li>
-              <li><strong>Metallischer Überzug (Feuerverzinken, DIN EN ISO 1461): Zink schützt als Barriere und zusätzlich kathodisch, da es unedler als Eisen ist; an kleinen Fehlstellen korrodiert zuerst das Zink und schützt den Stahl.:</strong> Überzug mit Zink. Zink ist unedler als Eisen und wirkt als <strong>Opferanode</strong>. Selbst bei kleinen Kratzern bis auf den Stahl korrodiert zuerst das Zink in der Umgebung und schützt den Stahl kathodisch.</li>
+              <li><strong>Metallischer Überzug (Feuerverzinken, DIN EN ISO 1461):</strong> Zink schützt als Barriere und zusätzlich kathodisch: Es ist unedler als Eisen und wirkt als <strong>Opferanode</strong>. Selbst bei kleinen Kratzern bis auf den Stahl korrodiert zuerst das Zink in der Umgebung und schützt den Stahl.</li>
             </ul>
 
             <div className="mt-4 border border-home-grau/30 rounded-xl p-4 bg-stone-50">
                <h4 className="font-bold text-sm text-text-main mb-2">Elektrochemische Spannungsreihe</h4>
-               <p className="text-xs text-text-main/80 mb-2">Metalle sind nach ihrem Standardpotenzial ordnbar. Je negativer (unedler) ein Metall ist, desto eher gibt es Elektronen ab (oxidiert/korrodiert). Wenn zwei Metalle leitend verbunden und nass sind, wird das unedlere zerstört.</p>
+               <p className="text-xs text-text-main/80 mb-2">Standardpotenziale gegen Normalwasserstoffelektrode bei 25 °C. In der Praxis zählt die tatsächliche Stellung im jeweiligen Elektrolyten (praktische Spannungsreihe), die durch Deckschichten abweichen kann. Metalle sind nach ihrem Standardpotenzial ordnbar. Je negativer (unedler) ein Metall ist, desto eher gibt es Elektronen ab (oxidiert/korrodiert). Wenn zwei Metalle leitend verbunden und nass sind, wird das unedlere zerstört.</p>
                <div className="flex flex-col gap-1 text-xs">
-                 <div className="flex justify-between items-center bg-gray-200 p-1.5 rounded text-gray-800"><span className="font-bold">Magnesium (Mg)</span><span>-2,36 V (Verzehranode)</span></div>
-                 <div className="flex justify-between items-center bg-gray-300 p-1.5 rounded text-gray-800"><span className="font-bold">Aluminium (Al)</span><span>-1,66 V</span></div>
-                 <div className="flex justify-between items-center bg-slate-300 p-1.5 rounded text-slate-800"><span className="font-bold">Zink (Zn)</span><span>-0,76 V (Verzinkung)</span></div>
-                 <div className="flex justify-between items-center bg-zinc-400 p-1.5 rounded text-white"><span className="font-bold">Eisen (Fe)</span><span>-0,44 V (Baustahl)</span></div>
+                 <div className="flex justify-between items-center bg-gray-200 p-1.5 rounded text-gray-800"><span className="font-bold">Magnesium (Mg)</span><span>−2,37 V (Opferanode)</span></div>
+                 <div className="flex justify-between items-center bg-gray-300 p-1.5 rounded text-gray-800"><span className="font-bold">Aluminium (Al)</span><span>−1,66 V (praktisch durch Oxidschicht passiv)</span></div>
+                 <div className="flex justify-between items-center bg-slate-300 p-1.5 rounded text-slate-800"><span className="font-bold">Zink (Zn)</span><span>−0,76 V (Verzinkung)</span></div>
+                 <div className="flex justify-between items-center bg-zinc-400 p-1.5 rounded text-white"><span className="font-bold">Eisen (Fe)</span><span>−0,44 V (Baustahl)</span></div>
                  <div className="flex justify-between items-center bg-orange-200 p-1.5 rounded text-orange-900 border border-orange-300"><span className="font-bold">Kupfer (Cu)</span><span>+0,34 V (sehr edel, greift unedle an)</span></div>
                </div>
                <p className="text-xs text-shiraz mt-2 font-bold flex items-center gap-1"><AlertTriangle size={12}/> Regel: In Fließrichtung des Wassers niemals edlere Metalle vor unedleren verbauen (z.B. Kupferrinne über Zinkrohr = Lochfraß im Zink).</p>
@@ -1127,7 +1129,7 @@ export const Bauchemie: React.FC = () => {
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
                   <span className="font-bold text-shiraz block mb-1">DIN EN 12004 – Mörtel und Klebstoffe für Fliesen und Platten</span>
                   <p className="leading-relaxed">
-                    Klassenkürzel: <strong>C</strong> (zementär), <strong>D</strong> (Dispersionskleber), <strong>R</strong> (Reaktionsharzkleber). Zusatzanforderungen: <strong>1</strong> (Grundklasse), <strong>2</strong> (erhöhte Anforderungen), <strong>T</strong> (abrutschsicher), <strong>E</strong> (verlängerte offene Zeit), <strong>S1 / S2</strong> (Verformbarkeit / Deformierbarkeit).
+                    Klassenkürzel: <strong>C</strong> (zementär), <strong>D</strong> (Dispersionskleber), <strong>R</strong> (Reaktionsharzkleber). Zusatzanforderungen: <strong>1</strong> (Grundklasse), <strong>2</strong> (erhöhte Anforderungen), <strong>F</strong> (schnell erhärtend), <strong>T</strong> (abrutschsicher), <strong>E</strong> (verlängerte offene Zeit), <strong>S1 / S2</strong> (Verformbarkeit / Deformierbarkeit).
                   </p>
                 </div>
 
@@ -1143,6 +1145,36 @@ export const Bauchemie: React.FC = () => {
         </div>
       )}
 
+      {/* ANWENDUNG (Stufe 3 des Lehrpfads) */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
+        <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Anwendung: Bauchemie in Zahlen</h3>
+        <FormulaDerivationBox
+          title="Beispiel 1: Wann erreicht die Karbonatisierungsfront die Bewehrung?"
+          zielGleichung="d_k = K \cdot \sqrt{t} \;\Rightarrow\; t = \left(\frac{c}{K}\right)^2"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Außenbauteil, Expositionsklasse XC4: Mindestbetondeckung c_min,dur = 25 mm plus Vorhaltemaß Δc_dev = 15 mm nach DIN EN 1992-1-1/NA ergibt das Nennmaß c_nom = 40 mm.', formel: 'c_{nom} = 25 + 15 = 40\\,\\text{mm}' },
+            { titel: 'Beton mit w/z = 0,60', erklaerung: 'Karbonatisierungskoeffizient K ≈ 4 mm/√a (Richtwert aus dem Diagramm oben):', formel: 't = \\left(\\frac{40}{4}\\right)^2 = 100\\,\\text{Jahre}' },
+            { titel: 'Beton mit w/z = 0,50', erklaerung: 'K ≈ 2 mm/√a – halbierter Koeffizient, vierfache Zeit:', formel: 't = \\left(\\frac{40}{2}\\right)^2 = 400\\,\\text{Jahre}' },
+            { titel: 'Bauausführung', erklaerung: 'Wird die Deckung auf der Baustelle um 10 mm unterschritten (c = 30 mm), sinkt die Zeit beim w/z-0,60-Beton auf (30/4)² ≈ 56 Jahre – das Vorhaltemaß ist also kein Luxus.', formel: 't = \\left(\\frac{30}{4}\\right)^2 \\approx 56\\,\\text{Jahre}' }
+          ]}
+          ergebnisHinweis="Wurzel-t-Gesetz: Doppelte Deckung bedeutet vierfache Zeit bis zur Depassivierung. Die K-Werte sind Richtwerte; sie hängen von Zementart, Nachbehandlung und Feuchte ab."
+          normQuelle="DIN EN 1992-1-1/NA, Tab. 4.4DE (c_min,dur), 4.4.1.3 (Δc_dev)"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 2: Wie viel CO₂ bindet Portlandit bei der Karbonatisierung?"
+          zielGleichung="Ca(OH)_2 + CO_2 \rightarrow CaCO_3 + H_2O"
+          schritte={[
+            { titel: 'Molare Massen', erklaerung: 'Aus dem Periodensystem (Ca 40,08; O 16,00; H 1,01; C 12,01 g/mol):', formel: 'M_{Ca(OH)_2} = 74{,}1\\,\\tfrac{\\text{g}}{\\text{mol}},\\quad M_{CO_2} = 44{,}0\\,\\tfrac{\\text{g}}{\\text{mol}}' },
+            { titel: 'Stoffmengenverhältnis 1 : 1', erklaerung: 'Je Mol Portlandit wird ein Mol CO₂ gebunden:', formel: '\\frac{m_{CO_2}}{m_{Ca(OH)_2}} = \\frac{44{,}0}{74{,}1} = 0{,}59' },
+            { titel: 'Ergebnis', erklaerung: '1 kg Portlandit bindet rechnerisch rund 0,59 kg CO₂ – ein Teil des bei der Klinkerherstellung freigesetzten CO₂ wird über die Lebensdauer wieder aufgenommen (in Ökobilanzen nach DIN EN 16757 als Rekarbonatisierung berücksichtigt).', formel: '1\\,\\text{kg}\\ Ca(OH)_2 \\;\\hat{=}\\; 0{,}59\\,\\text{kg}\\ CO_2' }
+          ]}
+          normQuelle="Stöchiometrie; DIN EN 16757 (Produktkategorieregeln Beton)"
+        />
+      </div>
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bauchemie" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Bauchemie', url: 'https://de.wikipedia.org/wiki/Bauchemie' },
@@ -1153,9 +1185,8 @@ export const Bauchemie: React.FC = () => {
           { title: 'Passivierung', url: 'https://de.wikipedia.org/wiki/Passivierung' }
         ]}
         literatur={[
-          'Knoblauch, H.; Schneider, U. (2006): Bauchemie (6. Auflage, Werner Verlag / Wolters Kluwer)',
-          'Habermann, R. (2020): Kleb- und Dichtstoffe im Bauwesen (Springer Vieweg)',
-          'Plank, J. (2018): Bauchemie: Bindemittel, Zusatzmittel, Dauerhaftigkeit (TU München)',
+          'Benedix, R.: Bauchemie für das Bachelor-Studium. 3. Aufl., Wiesbaden: Springer Vieweg 2017',
+          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin/Heidelberg: Springer Vieweg 2013',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
@@ -1164,7 +1195,10 @@ export const Bauchemie: React.FC = () => {
           { title: 'DIN EN 204 (Klassifizierung von thermoplastischen Holzklebstoffen für nichttragende Anwendungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+204' },
           { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit Fugendichtstoffen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18540' },
           { title: 'DIN EN 934-2 (Zusatzmittel für Beton, Mörtel und Einpressmörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+934-2' },
-          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' }
+          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' },
+          { title: 'DIN EN ISO 1461 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+1461' },
+          { title: 'DIN EN 923 (Klebstoffe – Benennungen und Definitionen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+923' },
+          { title: 'DAfStb-Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)', url: 'https://www.dafstb.de/' }
         ]}
         formeln={[
           {
@@ -1183,6 +1217,7 @@ export const Bauchemie: React.FC = () => {
             quelle: 'DIN EN 206 / DAfStb'
           }
         ]}
+        lastReviewed="Oktober 2026 (AP 3 Grundlagen: Hydratation, Zusatzmittel, Korrosions- und Klebstoffchemie gegen Fachliteratur geprüft; fachliche Freigabe durch den Autor ausstehend)"
       />
     </div>
   );
