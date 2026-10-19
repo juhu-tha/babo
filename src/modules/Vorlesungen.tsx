@@ -28,7 +28,6 @@ import { useTabContext, TabId } from '@/src/contexts/TabContext';
 import LecturePollSession from '@/src/components/polls/LecturePollSession';
 
 export type VorlesungTab = 
-  | 'ueberblick'
   | 'bauen_im_bestand'
   | 'nachhaltiges_bauen'
   | 'bauschaeden'
@@ -44,7 +43,7 @@ const STORAGE_KEY = 'tha_vorlesungen_auth_v1';
 
 export default function Vorlesungen({ forceTab }: VorlesungenProps) {
   const { setActiveTab } = useTabContext();
-  const [activeSubTab, setActiveSubTab] = useState<VorlesungTab>(forceTab || 'ueberblick');
+  const [activeSubTab, setActiveSubTab] = useState<VorlesungTab>(forceTab || 'bauen_im_bestand');
   const [passwordInput, setPasswordInput] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [authError, setAuthError] = useState<string | null>(null);
@@ -91,7 +90,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         // Ignore storage errors
       }
     } else {
-      setAuthError('Falsches Passwort. Bitte prüfen Sie Ihre Eingabe (Hinweis: tha_ws26).');
+      setAuthError('Falsches Passwort. Bitte prüfen Sie Ihre Eingabe.');
     }
   };
 
@@ -169,11 +168,8 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           </form>
 
           <div className="mt-6 pt-5 border-t border-home-grau/20 text-xs text-text-main/60 flex flex-col gap-1.5">
-            <p>
-              Passwort für Studierende des Semesters: <code className="bg-slate-100 px-2 py-0.5 rounded font-mono text-slate-800 font-bold">tha_ws26</code>
-            </p>
             <p className="text-[11px] text-slate-400">
-              Bei Fragen wenden Sie sich an die Modulverantwortlichen der Fakultät für Architektur und Bauwesen.
+              Bei Fragen wenden Sie sich an die Modulverantwortlichen der Fakultät für Architektur und Bauwesen. Das Passwort wird in den Lehrveranstaltungen bekannt gegeben.
             </p>
           </div>
         </div>
@@ -225,17 +221,6 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
 
         {/* Tab-Navigation for Submodules */}
         <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20">
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'ueberblick'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveSubTab('ueberblick')}
-          >
-            <BookOpen size={16} /> Übersicht &amp; Termine
-          </button>
 
           <button
             type="button"
@@ -299,127 +284,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         </div>
       </div>
 
-      {/* ===================================================================== */}
-      {/* TAB 0: ÜBERSICHT & LEHRVERANSTALTUNGEN                                */}
-      {/* ===================================================================== */}
-      {activeSubTab === 'ueberblick' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Semester</span>
-              <strong className="text-xl font-extrabold text-slate-900 block mt-1">WS 2026 / 2027</strong>
-              <p className="text-xs text-slate-500 mt-2">
-                Vorlesungszeit: Oktober 2026 – Februar 2027. Prüfungsphase im Februar 2027.
-              </p>
-            </div>
 
-            <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Fakultät</span>
-              <strong className="text-xl font-extrabold text-shiraz block mt-1">Architektur &amp; Bauwesen</strong>
-              <p className="text-xs text-slate-500 mt-2">
-                Technische Hochschule Augsburg (THA) • Studiengänge Bachelor &amp; Master Bauingenieurwesen.
-              </p>
-            </div>
-
-            <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30">
-              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Lehrmodule</span>
-              <strong className="text-xl font-extrabold text-slate-900 block mt-1">5 Vorlesungsfächer</strong>
-              <p className="text-xs text-slate-500 mt-2">
-                Bauen im Bestand, Nachhaltigkeit, Bauschäden, Baustoffkunde &amp; Instandhaltung.
-              </p>
-            </div>
-          </div>
-
-          {/* Module Cards Grid */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h3 className="text-base font-bold text-text-main mb-4 flex items-center gap-2">
-              <BookOpen className="text-shiraz" size={20} /> Die Vorlesungsmodule im Überblick
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                {
-                  id: 'bauen_im_bestand' as VorlesungTab,
-                  title: 'Bauen im Bestand',
-                  ects: '5 ECTS',
-                  sws: '1/2 SWS',
-                  icon: Building2,
-                  desc: 'Bauaufnahme, historische Baustoffe, Genauigkeitsstufen nach Koldewey, DBV-Merkblatt und EN 1990-2:2026.',
-                  targetTab: 'bestand'
-                },
-                {
-                  id: 'nachhaltiges_bauen' as VorlesungTab,
-                  title: 'Nachhaltiges Bauen',
-                  ects: '5 ECTS',
-                  sws: '2 SWS',
-                  icon: Leaf,
-                  desc: 'Ökobilanzierung (LCA), UN-SDGs, EU-Taxonomie, EPBD 2024/1275, Stoffströme, EPD und Digitaler Produktpass.',
-                  targetTab: 'nachhaltigkeit_daten_regeln'
-                },
-                {
-                  id: 'bauschaeden' as VorlesungTab,
-                  title: 'Bauschäden',
-                  ects: '5 ECTS',
-                  sws: '1/2 SWS',
-                  icon: AlertTriangle,
-                  desc: 'Bauschadensanalyse, Ursache-Wirkung-Kausalketten, Rissdiagnose, Baugrund- und Feuchteschäden.',
-                  targetTab: 'bauschaeden'
-                },
-                {
-                  id: 'baustoffkunde' as VorlesungTab,
-                  title: 'Baustoffkunde',
-                  ects: '6 ECTS',
-                  sws: '2-4 SWS',
-                  icon: Layers,
-                  desc: 'Grundlagen mineralischer, metallischer und organischer Baustoffe, Bauchemie, Bindemittel und Laborversuche.',
-                  targetTab: 'baustoffe'
-                },
-                {
-                  id: 'instandhaltung' as VorlesungTab,
-                  title: 'Instandhaltung',
-                  ects: '5 ECTS',
-                  sws: '4 SWS',
-                  icon: Wrench,
-                  desc: 'Schutz und Instandsetzung von Stahlbeton, WTA-Richtlinien, Betoninstandhaltungsrichtlinie und Monitoring.',
-                  targetTab: 'instandhaltung'
-                }
-              ].map((mod) => {
-                const Icon = mod.icon;
-                return (
-                  <div
-                    key={mod.id}
-                    className="p-5 rounded-xl border border-home-grau/30 bg-slate-50/50 hover:bg-slate-50 hover:border-shiraz/40 transition-all flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="w-9 h-9 rounded-xl bg-shiraz/10 text-shiraz flex items-center justify-center font-bold">
-                          <Icon size={18} />
-                        </div>
-                        <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500">
-                          <span className="px-2 py-0.5 rounded bg-white border border-slate-200">{mod.ects}</span>
-                          <span className="px-2 py-0.5 rounded bg-white border border-slate-200">{mod.sws}</span>
-                        </div>
-                      </div>
-                      <h4 className="font-bold text-slate-900 text-sm mb-1">{mod.title}</h4>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">{mod.desc}</p>
-                    </div>
-
-                    <div className="flex items-center gap-2 pt-3 border-t border-slate-200/60">
-                      <button
-                        type="button"
-                        onClick={() => setActiveSubTab(mod.id)}
-                        className="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-shiraz text-white hover:bg-shiraz/90 transition-colors flex items-center justify-center gap-1 cursor-pointer"
-                      >
-                        Vorlesungsbereich öffnen <ArrowRight size={14} />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* ===================================================================== */}
       {/* TAB 1: VORLESUNG BAUEN IM BESTAND                                     */}

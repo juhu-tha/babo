@@ -1,8 +1,3 @@
-Hier ist ein professioneller, modular aufgebauter Entwurf für eine `README.md`, der die Architektur, die Inhalte und die technische Ausrichtung des **BaustoffBoards** (entwickelt im Rahmen der Lehr- und Forschungsaktivitäten an der Technischen Hochschule Augsburg) präzise und übersichtlich beschreibt.
-
----
-
-```markdown
 # BaustoffBoard 🏗️🔬
 
 > **Interaktives Portal für Baustoffkunde, Werkstoffprüfung, Tragwerkslehre, Bauphysik und kreislaufgerechten Rückbau.**
@@ -38,7 +33,7 @@ Das Portal gliedert sich in folgende zentrale Themencluster:
 
 ## 🛠️ Technische Details & Bibliotheken
 
-* **Frontend:** Modulare JavaScript-/HTML5-Architektur mit dynamischem Rendering.
+* **Frontend:** Modulare React-/TypeScript-/Vite-Architektur mit dynamischem Rendering und Tailwind CSS.
 * **Formelsatz:** Saubere Darstellung mathematischer und physikalischer Gleichungen mittels **KaTeX**.
 * **Zahlenformatierung:** Konsequenter Einsatz deutscher Formatierungsstandards (`formatDeZahl` für Komma-Dezimaltrennzeichen und Tausenderpunkte).
 * **Hosting:** Cloud-Infrastruktur über Google Cloud Run.
@@ -56,5 +51,3 @@ Das Portal gliedert sich in folgende zentrale Themencluster:
 ## 📄 Lizenz
 
 Dieses Projekt und die zugehörigen Inhalte sind urheberrechtlich geschützt. Alle Rechte vorbehalten © 2026 Technische Hochschule Augsburg / Prof. Dr.-Ing. Jürgen Huber.
-
-```

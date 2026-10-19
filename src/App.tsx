@@ -495,39 +495,19 @@ const tabGroups = [
     ]
   },
   {
-    name: 'Übersicht & Zugang',
+    name: 'Vorlesungen',
     tabs: [
-      { id: 'vl_ueberblick', label: 'Übersicht & Zugang', icon: GraduationCap },
+      { id: 'vl_bauen_im_bestand', label: 'Bauen im Bestand (VL)', icon: Building2 },
+      { id: 'vl_nachhaltiges_bauen', label: 'Nachhaltiges Bauen (VL)', icon: Leaf },
+      { id: 'vl_bauschaeden', label: 'Bauschäden (VL)', icon: AlertTriangle },
+      { id: 'vl_baustoffkunde', label: 'Baustoffkunde (VL)', icon: Layers },
+      { id: 'vl_instandhaltung', label: 'Instandhaltung (VL)', icon: Wrench },
     ]
   },
   {
-    name: 'Bauen im Bestand (VL)',
+    name: 'Baustofflabor',
     tabs: [
-      { id: 'vl_bauen_im_bestand', label: 'Bauen im Bestand (1/2 SWS)', icon: Building2 },
-    ]
-  },
-  {
-    name: 'Nachhaltiges Bauen (VL)',
-    tabs: [
-      { id: 'vl_nachhaltiges_bauen', label: 'Nachhaltiges Bauen (2 SWS)', icon: Leaf },
-    ]
-  },
-  {
-    name: 'Bauschäden (VL)',
-    tabs: [
-      { id: 'vl_bauschaeden', label: 'Bauschäden (1/2 SWS)', icon: AlertTriangle },
-    ]
-  },
-  {
-    name: 'Baustoffkunde (VL)',
-    tabs: [
-      { id: 'vl_baustoffkunde', label: 'Baustoffkunde (2-4 SWS)', icon: Layers },
-    ]
-  },
-  {
-    name: 'Instandhaltung (VL)',
-    tabs: [
-      { id: 'vl_instandhaltung', label: 'Instandhaltung (4 SWS)', icon: Wrench },
+      { id: 'labor_sicherheit', label: 'Laborsicherheit', icon: ShieldAlert },
     ]
   }
 ] as const;
@@ -553,6 +533,7 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   regularien: ['normen', 'din', 'en', 'iso', 'regelwerke', 'gesetze', 'vob', 'bauordnung', 'richtlinien', 'abz', 'dibt'],
 
   // Labor
+  labor_sicherheit: ['sicherheit', 'labor', 'baustofflabor', 'psa', 'schutzbrille', 'sicherheitsschuhe', 'notfall', 'ersthelfer', 'hubervorlesung', 'gefahrstoffe', 'lechner', 'sedlmeier', 'g2', 'brandschutz', 'not-aus', 'betriebsanweisung'],
   labor_info: ['prüftechnik', 'prüfstand', 'labor', 'untersuchung', 'verfahren', 'prüflabor'],
   probenahme: ['bohrkern', 'probekörper', 'erkundung', 'aufmaß', 'entnahme', 'prüfung', 'probenahme', 'kernbohrung'],
   messen_pruefen: ['messtechnik', 'prüfung', 'sensoren', 'dms', 'dehnungsmessstreifen', 'laser', 'sensorik', 'messgeräte'],
@@ -799,7 +780,7 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   rechnung_bestand: ['bauen im bestand', 'historische kennwerte', 'beton b225', 'bst 220', 'altbau', 'ziegelmauerwerk', 'reichsformat', 'beispielrechnung'],
 
   // Vorlesungen
-  vl_ueberblick: ['vorlesungen', 'vorlesung', 'lehrveranstaltungen', 'tha', 'semester', 'passwort', 'zugang', 'tha_ws26'],
+  vl_ueberblick: ['vorlesungen', 'vorlesung', 'lehrveranstaltungen', 'tha', 'semester', 'passwort', 'zugang'],
   vl_bauen_im_bestand: ['vorlesung bauen im bestand', 'bestand', 'altbau', 'denkmalpflege', 'koldewey', 'pren 1990-2'],
   vl_nachhaltiges_bauen: ['vorlesung nachhaltiges bauen', 'lca', 'ökobilanz', 'thg', 'stoffströme', 'epd', 'dpp', 'taxonomie'],
   vl_bauschaeden: ['vorlesung bauschäden', 'schadensanalyse', 'risse', 'feuchteschäden', 'gutachten', 'vdi 6200'],
@@ -1974,9 +1955,7 @@ function AppContent() {
           {(activeTab === 'vl_ueberblick' || activeTab === 'vl_bauen_im_bestand' || activeTab === 'vl_nachhaltiges_bauen' || activeTab === 'vl_bauschaeden' || activeTab === 'vl_baustoffkunde' || activeTab === 'vl_instandhaltung') && (
             <Vorlesungen
               forceTab={
-                activeTab === 'vl_bauen_im_bestand'
-                  ? 'bauen_im_bestand'
-                  : activeTab === 'vl_nachhaltiges_bauen'
+                activeTab === 'vl_nachhaltiges_bauen'
                   ? 'nachhaltiges_bauen'
                   : activeTab === 'vl_bauschaeden'
                   ? 'bauschaeden'
@@ -1984,13 +1963,14 @@ function AppContent() {
                   ? 'baustoffkunde'
                   : activeTab === 'vl_instandhaltung'
                   ? 'instandhaltung'
-                  : 'ueberblick'
+                  : 'bauen_im_bestand'
               }
             />
           )}
           {activeTab === 'studium_tha' && <StudiumTHA />}
           {activeTab === 'thesen_projekte' && <ThesenProjekte />}
           {activeTab === 'kuriositaeten' && <Kuriositaeten />}
+          {activeTab === 'labor_sicherheit' && <LaborSicherheit />}
           </React.Suspense>
           </div>
 
@@ -2259,6 +2239,7 @@ const HolzbauBeta = React.lazy(() => import('./modules/HolzbauBeta'));
 const ThesenProjekte = React.lazy(() => import('./modules/ThesenProjekte'));
 const Kuriositaeten = React.lazy(() => import('./modules/Kuriositaeten'));
 const Datenschutz = React.lazy(() => import('./modules/Datenschutz'));
+const LaborSicherheit = React.lazy(() => import('./modules/LaborSicherheit'));
 
 export default function App() {
   return (

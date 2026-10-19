@@ -8,6 +8,20 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.20.0',
+    date: '19.10.2026',
+    title: 'Konsolidierung Cluster VI Studium & Lehre: Vorlesungsportal, Baustofflabor & Laborsicherheit Gebäude G2',
+    badge: 'minor',
+    changes: [
+      'Struktur-Konsolidierung in Cluster VI „Studium & Lehre“: Integration des gesamten Vorlesungsportals (Übersicht, Bauen im Bestand, Nachhaltiges Bauen, Bauschäden, Baustoffkunde, Instandhaltung) sowie des Baustofflabors unter dem gemeinsamen akademischen Dach von Cluster VI.',
+      'Neues Fachmodul „Laborsicherheit“: Laborordnung für das Labor für Baustofftechnologie, Umwelt und Chemie der TH Augsburg (Laborleitung Prof. Dr.-Ing. Jürgen Huber, Gebäude G2).',
+      'Die 8 Sicherheitsregeln im Baustofflabor: Verbindliche Regelungen zu voller Aufsichtspflicht & Stopp-Gebot, Zutrittskontrolle & absolutem Alleinarbeitsverbot bei Maschinenarbeiten, Geräteberechtigungen (Sperrgeräte), PSA-Pflichten inklusive roter Alarmwarnung zum Handschuh-, Ring- und Uhrenverbot an rotierenden Maschinen.',
+      'Sperrgeräte & Maschinen-Betriebsanweisungen: Detaillierte Sicherheitsanforderungen für Großprüfpressen (Splitterschutz, zentrischer Einbau), Steintrennsägen (strikter Nassschnitt gegen Quarzfeinstaub, Werkstückspannung, PRCD-S), Zwangsmischer (Schutzgitter, Netzstecker vor Reinigung) und Brückenkrane / Flurförderzeuge.',
+      'Gefahrstoff-Prävention: Zementsicherheit (stark ätzend, pH > 12, Augenduschen-Sofortspülung), alveolengängiger Quarzfeinstaub mit absolutem Trockenkehr- und Abblasverbot (nur Nassreinigung / Klasse-M/H-Sauger) sowie Verbot kontaminierter Verdachtsproben (Asbest, PAK, PCB).',
+      'Notfallkette Gebäude G2: Direkte Notfall- und Sofortmaßnahmen mit NOT-HALT, Notruf 112 (Ortsangabe THA Campus Brunnenlech G2 EG), Einweiser-Pflicht zur Campuseinfahrt, namentliche Ersthelferkontakte (Silvia Lechner -3220, Michael Sedlmeier -3127, Siegfried Hager -3121, Prof. Huber -3710, Hausservice Kai Bolten -3720) und D-Arzt-Vorgabe.'
+    ]
+  },
+  {
     version: 'v3.19.1',
     date: '19.10.2026',
     title: '100% Bildschirmauflösung (Fluid-Layout), Impressum-Profillink & Normen-Audit',

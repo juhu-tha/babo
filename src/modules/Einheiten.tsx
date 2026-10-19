@@ -399,9 +399,9 @@ export default function Einheiten() {
           title="Beispiel 1: Druckspannung in einer Stütze"
           zielGleichung="\sigma = \frac{F}{A}"
           schritte={[
-            { titel: 'Gegeben', erklaerung: 'Normalkraft F = 500 kN, Querschnitt 30 cm × 30 cm.', formel: 'F = 500\,\text{kN} = 500\,000\,\text{N},\quad A = 300 \cdot 300 = 90\,000\,\text{mm}^2' },
-            { titel: 'Spannung', erklaerung: 'Division in N und mm liefert direkt N/mm²:', formel: '\sigma = \frac{500\,000\,\text{N}}{90\,000\,\text{mm}^2} = 5{,}56\,\frac{\text{N}}{\text{mm}^2} = 5{,}56\,\text{MPa}', einheit: 'N/mm²' },
-            { titel: 'Typischer Fehler', erklaerung: 'Wer kN durch cm² teilt, erhält kN/cm² – das Ergebnis 0,556 ist um den Faktor 10 kleiner als der MPa-Wert (1 kN/cm² = 10 N/mm²).', formel: '\frac{500\,\text{kN}}{900\,\text{cm}^2} = 0{,}556\,\frac{\text{kN}}{\text{cm}^2} = 5{,}56\,\frac{\text{N}}{\text{mm}^2}' }
+            { titel: 'Gegeben', erklaerung: 'Normalkraft F = 500 kN, Querschnitt 30 cm × 30 cm.', formel: 'F = 500\\,\\text{kN} = 500\\,000\\,\\text{N},\\quad A = 300 \\cdot 300 = 90\\,000\\,\\text{mm}^2' },
+            { titel: 'Spannung', erklaerung: 'Division in N und mm liefert direkt N/mm²:', formel: '\\sigma = \\frac{500\\,000\\,\\text{N}}{90\\,000\\,\\text{mm}^2} = 5{,}56\\,\\frac{\\text{N}}{\\text{mm}^2} = 5{,}56\\,\\text{MPa}', einheit: 'N/mm²' },
+            { titel: 'Typischer Fehler', erklaerung: 'Wer kN durch cm² teilt, erhält kN/cm² – das Ergebnis 0,556 ist um den Faktor 10 kleiner als der MPa-Wert (1 kN/cm² = 10 N/mm²).', formel: '\\frac{500\\,\\text{kN}}{900\\,\\text{cm}^2} = 0{,}556\\,\\frac{\\text{kN}}{\\text{cm}^2} = 5{,}56\\,\\frac{\\text{N}}{\\text{mm}^2}' }
           ]}
           ergebnisHinweis="Vergleich mit der Festigkeit: Ein C30/37 hat f_ck = 30 N/mm² – die Stütze ist gering ausgenutzt."
           normQuelle="DIN 1301-1 (Einheitenzeichen), DIN EN 1992-1-1 (Bezeichnungen)"
@@ -410,9 +410,9 @@ export default function Einheiten() {
           title="Beispiel 2: Biegespannung eines Balkens – Moment in Nmm"
           zielGleichung="\sigma = \frac{M}{W},\quad W = \frac{b\,h^2}{6}"
           schritte={[
-            { titel: 'Moment', erklaerung: 'Einfeldträger, Streckenlast q = 10 kN/m, Spannweite l = 6 m:', formel: 'M = \frac{q\,l^2}{8} = \frac{10 \cdot 6^2}{8} = 45\,\text{kNm} = 45 \cdot 10^6\,\text{Nmm}' },
-            { titel: 'Widerstandsmoment', erklaerung: 'Rechteck b = 30 cm, h = 50 cm, in mm:', formel: 'W = \frac{300 \cdot 500^2}{6} = 12{,}5 \cdot 10^6\,\text{mm}^3' },
-            { titel: 'Spannung', erklaerung: 'Die Zehnerpotenzen kürzen sich:', formel: '\sigma = \frac{45 \cdot 10^6\,\text{Nmm}}{12{,}5 \cdot 10^6\,\text{mm}^3} = 3{,}6\,\frac{\text{N}}{\text{mm}^2}', einheit: 'N/mm²' }
+            { titel: 'Moment', erklaerung: 'Einfeldträger, Streckenlast q = 10 kN/m, Spannweite l = 6 m:', formel: 'M = \\frac{q\\,l^2}{8} = \\frac{10 \\cdot 6^2}{8} = 45\\,\\text{kNm} = 45 \\cdot 10^6\\,\\text{Nmm}' },
+            { titel: 'Widerstandsmoment', erklaerung: 'Rechteck b = 30 cm, h = 50 cm, in mm:', formel: 'W = \\frac{300 \\cdot 500^2}{6} = 12{,}5 \\cdot 10^6\\,\\text{mm}^3' },
+            { titel: 'Spannung', erklaerung: 'Die Zehnerpotenzen kürzen sich:', formel: '\\sigma = \\frac{45 \\cdot 10^6\\,\\text{Nmm}}{12{,}5 \\cdot 10^6\\,\\text{mm}^3} = 3{,}6\\,\\frac{\\text{N}}{\\text{mm}^2}', einheit: 'N/mm²' }
           ]}
           ergebnisHinweis="1 kNm = 10⁶ Nmm – diese Umrechnung prüfen Sie im Einheitenumrechner unter „Moment“."
           normQuelle="Technische Mechanik; Einheiten nach DIN 1301-1"
@@ -421,8 +421,8 @@ export default function Einheiten() {
           title="Beispiel 3: Flächenlast in Spannung umrechnen"
           zielGleichung="1\,\frac{\text{kN}}{\text{m}^2} = 10^{-3}\,\frac{\text{N}}{\text{mm}^2}"
           schritte={[
-            { titel: 'Umrechnung', erklaerung: '1 kN = 10³ N und 1 m² = 10⁶ mm²:', formel: '1\,\frac{\text{kN}}{\text{m}^2} = \frac{10^3\,\text{N}}{10^6\,\text{mm}^2} = 0{,}001\,\frac{\text{N}}{\text{mm}^2} = 1\,\text{kPa}' },
-            { titel: 'Anwendung', erklaerung: 'Eine Nutzlast von 5 kN/m² entspricht einem Flächendruck von nur 0,005 N/mm² – Bodenpressungen und Lasten werden deshalb in kN/m², Materialspannungen in N/mm² angegeben.', formel: '5\,\frac{\text{kN}}{\text{m}^2} = 0{,}005\,\frac{\text{N}}{\text{mm}^2}' }
+            { titel: 'Umrechnung', erklaerung: '1 kN = 10³ N und 1 m² = 10⁶ mm²:', formel: '1\\,\\frac{\\text{kN}}{\\text{m}^2} = \\frac{10^3\\,\\text{N}}{10^6\\,\\text{mm}^2} = 0{,}001\\,\\frac{\\text{N}}{\\text{mm}^2} = 1\\,\\text{kPa}' },
+            { titel: 'Anwendung', erklaerung: 'Eine Nutzlast von 5 kN/m² entspricht einem Flächendruck von nur 0,005 N/mm² – Bodenpressungen und Lasten werden deshalb in kN/m², Materialspannungen in N/mm² angegeben.', formel: '5\\,\\frac{\\text{kN}}{\\text{m}^2} = 0{,}005\\,\\frac{\\text{N}}{\\text{mm}^2}' }
           ]}
           normQuelle="DIN EN 1991-1-1 (Nutzlasten in kN/m²)"
         />

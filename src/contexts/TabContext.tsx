@@ -5,6 +5,7 @@ export type TabId =
   | 'admin'
  
   | 'start'
+  | 'labor_sicherheit'
   | 'modulstruktur'
   | 'beton_info'
   | 'grundlagen_info'
@@ -362,8 +363,9 @@ export const TAB_ALIASES: Record<string, TabId> = {
   'bauteilbemessung': 'stahlbeton_bemessung',
   'bauprodukte': 'bauprodukte_info',
   'sonderbeton': 'sonderbetone',
-  'vorlesungen': 'vl_ueberblick',
-  'vorlesung': 'vl_ueberblick',
+  'vorlesungen': 'vl_bauen_im_bestand',
+  'vorlesung': 'vl_bauen_im_bestand',
+  'vl_ueberblick': 'vl_bauen_im_bestand',
   'vl_bestand': 'vl_bauen_im_bestand',
   'vl_nachhaltigkeit': 'vl_nachhaltiges_bauen',
   'vl_schaeden': 'vl_bauschaeden',

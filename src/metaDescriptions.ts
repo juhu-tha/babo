@@ -18,6 +18,7 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
   regularien: "Regelwerke und technische Baubestimmungen: Normung (DIN, EN, ISO), anerkannte Regeln der Technik und bauaufsichtliche Zulassungen.",
 
   // Labor
+  labor_sicherheit: "Sicherheit im Baustofflabor der TH Augsburg: Laborordnung, PSA-Pflichten, Einzugsgefahren, Sperrgeräte, Notfallkette Gebäude G2 und Ersthelferkontakte.",
   labor_info: "Modulinfos zur Prüftechnik und Bauwerksdiagnostik im Labor. Erfahren Sie alles über ZfP-Verfahren und experimentelle mechanische Prüfungen.",
   probenahme: "Leitfaden zur sachgerechten Probenahme im Bestand, Erkundung der Bausubstanz und Durchführung von Kernbohrungen.",
   messen_pruefen: "Messtechnik im Bauwesen: Sensorik, Dehnungsmessstreifen (DMS), Laserscan-Verfahren und präzise experimentelle Weg-Kraft-Messungen.",

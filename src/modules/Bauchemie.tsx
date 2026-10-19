@@ -1152,10 +1152,10 @@ export const Bauchemie: React.FC = () => {
           title="Beispiel 1: Wann erreicht die Karbonatisierungsfront die Bewehrung?"
           zielGleichung="d_k = K \cdot \sqrt{t} \;\Rightarrow\; t = \left(\frac{c}{K}\right)^2"
           schritte={[
-            { titel: 'Gegeben', erklaerung: 'Außenbauteil, Expositionsklasse XC4: Mindestbetondeckung c_min,dur = 25 mm plus Vorhaltemaß Δc_dev = 15 mm nach DIN EN 1992-1-1/NA ergibt das Nennmaß c_nom = 40 mm.', formel: 'c_{nom} = 25 + 15 = 40\,\text{mm}' },
-            { titel: 'Beton mit w/z = 0,60', erklaerung: 'Karbonatisierungskoeffizient K ≈ 4 mm/√a (Richtwert aus dem Diagramm oben):', formel: 't = \left(\frac{40}{4}\right)^2 = 100\,\text{Jahre}' },
-            { titel: 'Beton mit w/z = 0,50', erklaerung: 'K ≈ 2 mm/√a – halbierter Koeffizient, vierfache Zeit:', formel: 't = \left(\frac{40}{2}\right)^2 = 400\,\text{Jahre}' },
-            { titel: 'Bauausführung', erklaerung: 'Wird die Deckung auf der Baustelle um 10 mm unterschritten (c = 30 mm), sinkt die Zeit beim w/z-0,60-Beton auf (30/4)² ≈ 56 Jahre – das Vorhaltemaß ist also kein Luxus.', formel: 't = \left(\frac{30}{4}\right)^2 \approx 56\,\text{Jahre}' }
+            { titel: 'Gegeben', erklaerung: 'Außenbauteil, Expositionsklasse XC4: Mindestbetondeckung c_min,dur = 25 mm plus Vorhaltemaß Δc_dev = 15 mm nach DIN EN 1992-1-1/NA ergibt das Nennmaß c_nom = 40 mm.', formel: 'c_{nom} = 25 + 15 = 40\\,\\text{mm}' },
+            { titel: 'Beton mit w/z = 0,60', erklaerung: 'Karbonatisierungskoeffizient K ≈ 4 mm/√a (Richtwert aus dem Diagramm oben):', formel: 't = \\left(\\frac{40}{4}\\right)^2 = 100\\,\\text{Jahre}' },
+            { titel: 'Beton mit w/z = 0,50', erklaerung: 'K ≈ 2 mm/√a – halbierter Koeffizient, vierfache Zeit:', formel: 't = \\left(\\frac{40}{2}\\right)^2 = 400\\,\\text{Jahre}' },
+            { titel: 'Bauausführung', erklaerung: 'Wird die Deckung auf der Baustelle um 10 mm unterschritten (c = 30 mm), sinkt die Zeit beim w/z-0,60-Beton auf (30/4)² ≈ 56 Jahre – das Vorhaltemaß ist also kein Luxus.', formel: 't = \\left(\\frac{30}{4}\\right)^2 \\approx 56\\,\\text{Jahre}' }
           ]}
           ergebnisHinweis="Wurzel-t-Gesetz: Doppelte Deckung bedeutet vierfache Zeit bis zur Depassivierung. Die K-Werte sind Richtwerte; sie hängen von Zementart, Nachbehandlung und Feuchte ab."
           normQuelle="DIN EN 1992-1-1/NA, Tab. 4.4DE (c_min,dur), 4.4.1.3 (Δc_dev)"
@@ -1164,9 +1164,9 @@ export const Bauchemie: React.FC = () => {
           title="Beispiel 2: Wie viel CO₂ bindet Portlandit bei der Karbonatisierung?"
           zielGleichung="Ca(OH)_2 + CO_2 \rightarrow CaCO_3 + H_2O"
           schritte={[
-            { titel: 'Molare Massen', erklaerung: 'Aus dem Periodensystem (Ca 40,08; O 16,00; H 1,01; C 12,01 g/mol):', formel: 'M_{Ca(OH)_2} = 74{,}1\,\tfrac{\text{g}}{\text{mol}},\quad M_{CO_2} = 44{,}0\,\tfrac{\text{g}}{\text{mol}}' },
-            { titel: 'Stoffmengenverhältnis 1 : 1', erklaerung: 'Je Mol Portlandit wird ein Mol CO₂ gebunden:', formel: '\frac{m_{CO_2}}{m_{Ca(OH)_2}} = \frac{44{,}0}{74{,}1} = 0{,}59' },
-            { titel: 'Ergebnis', erklaerung: '1 kg Portlandit bindet rechnerisch rund 0,59 kg CO₂ – ein Teil des bei der Klinkerherstellung freigesetzten CO₂ wird über die Lebensdauer wieder aufgenommen (in Ökobilanzen nach DIN EN 16757 als Rekarbonatisierung berücksichtigt).', formel: '1\,\text{kg}\ Ca(OH)_2 \;\hat{=}\; 0{,}59\,\text{kg}\ CO_2' }
+            { titel: 'Molare Massen', erklaerung: 'Aus dem Periodensystem (Ca 40,08; O 16,00; H 1,01; C 12,01 g/mol):', formel: 'M_{Ca(OH)_2} = 74{,}1\\,\\tfrac{\\text{g}}{\\text{mol}},\\quad M_{CO_2} = 44{,}0\\,\\tfrac{\\text{g}}{\\text{mol}}' },
+            { titel: 'Stoffmengenverhältnis 1 : 1', erklaerung: 'Je Mol Portlandit wird ein Mol CO₂ gebunden:', formel: '\\frac{m_{CO_2}}{m_{Ca(OH)_2}} = \\frac{44{,}0}{74{,}1} = 0{,}59' },
+            { titel: 'Ergebnis', erklaerung: '1 kg Portlandit bindet rechnerisch rund 0,59 kg CO₂ – ein Teil des bei der Klinkerherstellung freigesetzten CO₂ wird über die Lebensdauer wieder aufgenommen (in Ökobilanzen nach DIN EN 16757 als Rekarbonatisierung berücksichtigt).', formel: '1\\,\\text{kg}\\ Ca(OH)_2 \\;\\hat{=}\\; 0{,}59\\,\\text{kg}\\ CO_2' }
           ]}
           normQuelle="Stöchiometrie; DIN EN 16757 (Produktkategorieregeln Beton)"
         />

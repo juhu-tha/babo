@@ -28,7 +28,8 @@ import {
   Map,
   BookOpen,
   Filter,
-  Check
+  Check,
+  HardHat
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -122,27 +123,18 @@ export const THEMATIC_CLUSTERS: ThematicCluster[] = [
     badgeColor: 'bg-slate-100 text-slate-700 border border-slate-200/60',
     accentColor: 'text-shiraz',
     glowColor: 'border-slate-300 text-slate-400 ring-slate-400/10'
-  },
-  {
-    id: 'vorlesungen',
-    name: 'Vorlesungen',
-    description: 'Passwortgeschütztes Vorlesungsportal (THA): Unterlagen, Skripte, Semesterpläne & Vorlesungseinheiten',
-    icon: GraduationCap,
-    baseColor: 'border-slate-200 bg-white hover:bg-slate-50',
-    badgeColor: 'bg-slate-100 text-slate-700 border border-slate-200/60',
-    accentColor: 'text-shiraz',
-    glowColor: 'border-slate-300 text-slate-400 ring-slate-400/10'
   }
 ];
 
 export const GROUP_CLUSTER_MAPPING: Record<string, string> = {
-  'Vorlesungen': 'vorlesungen',
-  'Übersicht & Zugang': 'vorlesungen',
-  'Bauen im Bestand (VL)': 'vorlesungen',
-  'Nachhaltiges Bauen (VL)': 'vorlesungen',
-  'Bauschäden (VL)': 'vorlesungen',
-  'Baustoffkunde (VL)': 'vorlesungen',
-  'Instandhaltung (VL)': 'vorlesungen',
+  'Baustofflabor': 'studium',
+  'Vorlesungen': 'studium',
+  'Übersicht & Zugang': 'studium',
+  'Bauen im Bestand (VL)': 'studium',
+  'Nachhaltiges Bauen (VL)': 'studium',
+  'Bauschäden (VL)': 'studium',
+  'Baustoffkunde (VL)': 'studium',
+  'Instandhaltung (VL)': 'studium',
   'Allgemein': 'studium',
   'Weiter@THA': 'studium',
   'Thesen & Projekte': 'studium',
@@ -613,7 +605,7 @@ export default function Modulstruktur() {
       glowColor: 'border-slate-300 text-slate-400 ring-slate-400/10',
       icon: <GraduationCap size={16} className="text-shiraz" />,
       nodes: [
-        { id: 'vl_ueberblick', label: 'Übersicht & Zugang', type: 'info', description: 'Geschützter Bereich mit Passwort tha_ws26.' }
+        { id: 'vl_ueberblick', label: 'Übersicht & Zugang', type: 'info', description: 'Geschützter Bereich für Studierende der TH Augsburg.' }
       ]
     },
     {
