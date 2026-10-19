@@ -2441,5 +2441,545 @@
       "targetModuleLabel": "Festbeton (Statistik)"
     },
     "verified": false
+  },
+  {
+    "id": "q_form_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Systematik der Formänderungen",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Wie ist Schwinden von Beton in die Systematik der Formänderungen einzuordnen?",
+    "options": [
+      "Spannungsabhängig, sofort, elastisch",
+      "Spannungsabhängig, zeitabhängig (Kriechen)",
+      "Spannungsunabhängig (Feuchtedehnung bzw. chemisch)",
+      "Plastische Verformung"
+    ],
+    "correctIdx": 2,
+    "explanation": "Schwinden tritt ohne äußere Last auf: Trocknungsschwinden ist eine Feuchtedehnung, autogenes Schwinden eine chemisch bedingte Dehnung. Kriechen ist dagegen lastabhängig.",
+    "gapAnalysis": {
+      "topic": "Systematik der Formänderungen",
+      "misconception": "Schwinden und Kriechen werden verwechselt, weil beide zeitabhängig sind.",
+      "coreRule": "Kriechen = Last + Zeit; Schwinden = ohne Last (Feuchte, Chemie); Wärmedehnung = Temperatur.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Systematik der Formänderungen“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_form_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Wärmedehnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 3.1.3",
+    "question": "Eine 20 m lange Stahlbetonwand erwärmt sich um 30 K (α_T = 10·10⁻⁶ 1/K). Wie groß ist die freie Längenänderung?",
+    "options": [
+      "0,6 mm",
+      "6 mm",
+      "60 mm",
+      "0,06 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "Δl = α_T·ΔT·l = 10·10⁻⁶ · 30 · 20 000 mm = 6 mm.",
+    "gapAnalysis": {
+      "topic": "Wärmedehnung",
+      "misconception": "Längeneinheiten (m und mm) werden beim Einsetzen vermischt.",
+      "coreRule": "Δl = α_T · ΔT · l; Beton und Stahl α_T ≈ 10·10⁻⁶ 1/K.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_form_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Kriechzahl",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 3.1.4",
+    "question": "Eine Stütze wird mit σ_c = 12 N/mm² belastet (E_c = 34 650 N/mm²). Wie groß ist die Kriechdehnung bei einer Endkriechzahl φ = 2,5?",
+    "options": [
+      "0,35 ‰",
+      "0,87 ‰",
+      "1,22 ‰",
+      "2,50 ‰"
+    ],
+    "correctIdx": 1,
+    "explanation": "ε_el = 12/34 650 = 0,346 ‰; ε_cc = φ · ε_el = 2,5 · 0,346 = 0,87 ‰. Die Gesamtstauchung beträgt rund 1,21 ‰.",
+    "gapAnalysis": {
+      "topic": "Kriechzahl",
+      "misconception": "Die Kriechzahl wird zur elastischen Dehnung addiert statt mit ihr multipliziert, oder die Gesamtdehnung wird als Kriechdehnung angegeben.",
+      "coreRule": "ε_cc = φ · σ_c / E_c; Gesamt = (1 + φ) · ε_el.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechzahl“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_emod_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "emodul",
+    "moduleTitle": "E-Modul & Mikromechanik",
+    "topic": "E-Modul nach Eurocode 2",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1, 3.1.3",
+    "question": "Wie ändert sich der rechnerische E-Modul eines Betons, wenn statt quarzitischer eine Sandstein-Gesteinskörnung verwendet wird?",
+    "options": [
+      "+20 %",
+      "unverändert",
+      "−10 %",
+      "−30 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "Nach DIN EN 1992-1-1, 3.1.3(2) gilt für Sandstein ein Abminderungsfaktor von 0,7, für Kalkstein 0,9, für Basalt 1,2.",
+    "gapAnalysis": {
+      "topic": "E-Modul nach Eurocode 2",
+      "misconception": "Der E-Modul wird allein der Betonfestigkeitsklasse zugeschrieben.",
+      "coreRule": "E_cm = α_E · 22 · (f_cm/10)^0,3 mit α_E nach Gesteinsart.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „E-Modul nach Eurocode 2“ im Modul E-Modul & Mikromechanik noch einmal durch.",
+      "targetModuleTab": "emodul",
+      "targetModuleLabel": "E-Modul & Mikromechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_emod_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "emodul",
+    "moduleTitle": "E-Modul & Mikromechanik",
+    "topic": "Voigt und Reuss",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Welche Annahme liegt dem Reuss-Modell (untere Schranke) eines Zweiphasenwerkstoffs zugrunde?",
+    "options": [
+      "Gleiche Dehnung in beiden Phasen",
+      "Gleiche Spannung in beiden Phasen",
+      "Kugelförmige Einschlüsse in einer Matrix",
+      "Gleiche Querdehnzahl"
+    ],
+    "correctIdx": 1,
+    "explanation": "Reuss = Reihenschaltung, beide Phasen tragen dieselbe Spannung; Voigt = Parallelschaltung mit gleicher Dehnung. Der wahre Wert liegt dazwischen.",
+    "gapAnalysis": {
+      "topic": "Voigt und Reuss",
+      "misconception": "Parallel- und Reihenschaltung werden vertauscht.",
+      "coreRule": "Voigt: E = Σ v_i E_i (oben); Reuss: 1/E = Σ v_i/E_i (unten).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Voigt und Reuss“ im Modul E-Modul & Mikromechanik noch einmal durch.",
+      "targetModuleTab": "emodul",
+      "targetModuleLabel": "E-Modul & Mikromechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fest_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Grenzhöhe unter Eigengewicht",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Warum hängt die theoretische Grenzhöhe einer prismatischen Säule unter Eigengewicht nicht von ihrem Querschnitt ab?",
+    "options": [
+      "Weil größere Querschnitte stabiler sind",
+      "Weil Gewicht und tragende Fläche beide proportional zur Querschnittsfläche sind",
+      "Weil die Druckfestigkeit mit dem Querschnitt steigt",
+      "Weil die Erdbeschleunigung oben kleiner ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ = ρ·g·A·H / A = ρ·g·H – die Fläche kürzt sich heraus. Grenzhöhe H = f_c/(ρ·g). Stabilität (Knicken) bleibt dabei unberücksichtigt.",
+    "gapAnalysis": {
+      "topic": "Grenzhöhe unter Eigengewicht",
+      "misconception": "Ein dickerer Querschnitt wird für Druck unter Eigengewicht als tragfähiger angenommen.",
+      "coreRule": "Eigengewichtsspannung am Fuß: σ = ρ · g · H.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzhöhe unter Eigengewicht“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bruch_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bruchmechanik",
+    "moduleTitle": "Bruchmechanik",
+    "topic": "Spannungsintensitätsfaktor",
+    "difficulty": "Fortgeschritten",
+    "normRef": "LEBM",
+    "question": "Wie verändert sich die kritische Bruchspannung eines spröden Bauteils, wenn sich die Risslänge vervierfacht?",
+    "options": [
+      "Sie bleibt gleich",
+      "Sie halbiert sich",
+      "Sie sinkt auf ein Viertel",
+      "Sie verdoppelt sich"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ_c = K_Ic/(Y·√(πa)) ∝ 1/√a. Vierfache Risslänge → √4 = 2 → halbe Bruchspannung.",
+    "gapAnalysis": {
+      "topic": "Spannungsintensitätsfaktor",
+      "misconception": "Ein linearer Zusammenhang zwischen Risslänge und Bruchspannung wird angenommen.",
+      "coreRule": "K_I = Y · σ · √(π a); Bruch bei K_I = K_Ic.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spannungsintensitätsfaktor“ im Modul Bruchmechanik noch einmal durch.",
+      "targetModuleTab": "bruchmechanik",
+      "targetModuleLabel": "Bruchmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bruch_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bruchmechanik",
+    "moduleTitle": "Bruchmechanik",
+    "topic": "Grenzen der LEBM",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "fib Model Code 2010",
+    "question": "Warum ist die linear-elastische Bruchmechanik für normale Betonbauteile nur eingeschränkt anwendbar?",
+    "options": [
+      "Weil Beton keine Risse bildet",
+      "Weil sich vor der Rissspitze eine ausgedehnte Bruchprozesszone mit Mikrorissen bildet (quasi-sprödes Verhalten)",
+      "Weil Beton ein ideal plastischer Werkstoff ist",
+      "Weil der E-Modul von Beton zu hoch ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Bruchprozesszone ist im Verhältnis zur Bauteilgröße groß; deshalb werden nichtlineare Modelle wie das fiktive Rissmodell (Hillerborg) mit der Bruchenergie G_F verwendet. Daraus folgt auch der Maßstabseffekt.",
+    "gapAnalysis": {
+      "topic": "Grenzen der LEBM",
+      "misconception": "Beton wird wie Glas als ideal spröder Werkstoff behandelt.",
+      "coreRule": "Glas: LEBM; Beton: quasi-spröde, Bruchenergie G_F, Maßstabseffekt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzen der LEBM“ im Modul Bruchmechanik noch einmal durch.",
+      "targetModuleTab": "bruchmechanik",
+      "targetModuleLabel": "Bruchmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_knick_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "knicken",
+    "moduleTitle": "Knicken",
+    "topic": "Euler-Fälle: Knicklänge",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1993-1-1, 6.3",
+    "question": "Eine beidseitig gelenkig gelagerte Stütze hat die Euler-Knicklast F_K. Wie groß ist die Knicklast derselben Stütze als Kragstütze (unten eingespannt, oben frei)?",
+    "options": [
+      "F_K / 4",
+      "F_K / 2",
+      "2 · F_K",
+      "4 · F_K"
+    ],
+    "correctIdx": 0,
+    "explanation": "Kragstütze: Knicklänge l_cr = 2 · l. Da F_K ∝ 1/l_cr², sinkt die Knicklast auf ein Viertel.",
+    "gapAnalysis": {
+      "topic": "Euler-Fälle: Knicklänge",
+      "misconception": "Die Knicklänge wird linear statt quadratisch in die Knicklast übernommen.",
+      "coreRule": "F_K = π²EI/(βl)²; β = 2 (Kragstütze), 1 (gelenkig), 0,7 (eingespannt–gelenkig), 0,5 (beidseitig eingespannt).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Euler-Fälle: Knicklänge“ im Modul Knicken noch einmal durch.",
+      "targetModuleTab": "knicken",
+      "targetModuleLabel": "Knicken"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_knick_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "knicken",
+    "moduleTitle": "Knicken",
+    "topic": "Theorie II. Ordnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1993-1-1, 6.3.1",
+    "question": "Warum darf eine reale Stahlstütze nicht bis zur idealen Euler-Knicklast F_K belastet werden?",
+    "options": [
+      "Weil der E-Modul unter Druck abnimmt",
+      "Weil Imperfektionen und Eigenspannungen die Ausbiegung schon unterhalb F_K stark vergrößern und der Querschnitt vorher fließt",
+      "Weil F_K nur für Holz gilt",
+      "Weil Stahl unter Druck spröde bricht"
+    ],
+    "correctIdx": 1,
+    "explanation": "Vorkrümmung w₀ wird mit 1/(1 − N/F_K) vergrößert; das Zusatzmoment N · w führt zum Fließen vor Erreichen von F_K. Der Eurocode erfasst das über Knickspannungslinien und den Abminderungsbeiwert χ.",
+    "gapAnalysis": {
+      "topic": "Theorie II. Ordnung",
+      "misconception": "Die ideale Verzweigungslast wird als reale Traglast angesehen.",
+      "coreRule": "N_b,Rd = χ · A · f_y / γ_M1 mit χ ≤ 1 aus der Knickspannungslinie.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Theorie II. Ordnung“ im Modul Knicken noch einmal durch.",
+      "targetModuleTab": "knicken",
+      "targetModuleLabel": "Knicken"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bstat_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustatik",
+    "moduleTitle": "Baustatik",
+    "topic": "Einfeldträger: Feldmoment",
+    "difficulty": "Basis",
+    "normRef": "Technische Mechanik",
+    "question": "Ein Einfeldträger (l = 6 m) trägt q = 10 kN/m. Wie groß ist das maximale Feldmoment?",
+    "options": [
+      "30 kNm",
+      "45 kNm",
+      "60 kNm",
+      "90 kNm"
+    ],
+    "correctIdx": 1,
+    "explanation": "M_max = q · l²/8 = 10 · 36/8 = 45 kNm. 90 kNm wäre q·l²/4, 180 kNm das Einspannmoment eines Kragarms q·l²/2.",
+    "gapAnalysis": {
+      "topic": "Einfeldträger: Feldmoment",
+      "misconception": "Die Faktoren 1/8 (Einfeldträger) und 1/2 (Kragarm) werden verwechselt.",
+      "coreRule": "Einfeldträger: M = ql²/8, V = ql/2; Kragarm: M = ql²/2, V = ql.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Einfeldträger: Feldmoment“ im Modul Baustatik noch einmal durch.",
+      "targetModuleTab": "baustatik",
+      "targetModuleLabel": "Baustatik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bstat_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustatik",
+    "moduleTitle": "Baustatik",
+    "topic": "Zweifeldträger: Mittelauflager",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Dreimomentengleichung (Clapeyron)",
+    "question": "Ein symmetrischer Zweifeldträger (zwei Felder je l, EI konstant) trägt die Gleichlast q. Welche Kraft erhält das Mittelauflager?",
+    "options": [
+      "q · l",
+      "1,5 · q · l",
+      "1,25 · q · l",
+      "2,0 · q · l"
+    ],
+    "correctIdx": 2,
+    "explanation": "Stützmoment M_B = −ql²/8; damit A = C = 0,375 ql und B = 1,25 ql. Die Durchlaufwirkung lädt das Mittelauflager um 25 % mehr als zwei getrennte Einfeldträger.",
+    "gapAnalysis": {
+      "topic": "Zweifeldträger: Mittelauflager",
+      "misconception": "Das Mittelauflager wird wie bei zwei Einfeldträgern mit q·l angesetzt.",
+      "coreRule": "Zweifeldträger gleicher Felder: A = 0,375 ql, B = 1,25 ql, M_B = −ql²/8.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zweifeldträger: Mittelauflager“ im Modul Baustatik noch einmal durch.",
+      "targetModuleTab": "baustatik",
+      "targetModuleLabel": "Baustatik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_boden_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Konsistenzzahl",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 17892-12",
+    "question": "Ein Ton hat w = 25 %, w_L = 45 % und w_P = 20 %. Welche Zustandsform liegt vor?",
+    "options": [
+      "breiig (I_C = 0,40)",
+      "weich (I_C = 0,60)",
+      "steif (I_C = 0,80)",
+      "halbfest (I_C = 1,20)"
+    ],
+    "correctIdx": 2,
+    "explanation": "I_C = (w_L − w)/(w_L − w_P) = 20/25 = 0,80; 0,75 ≤ I_C < 1,00 entspricht steif.",
+    "gapAnalysis": {
+      "topic": "Konsistenzzahl",
+      "misconception": "Zähler und Nenner werden vertauscht oder w_P statt w_L im Zähler verwendet.",
+      "coreRule": "I_C = (w_L − w)/I_P; < 0,5 breiig, 0,5–0,75 weich, 0,75–1,0 steif, > 1,0 halbfest.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzzahl“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_boden_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Konsolidation",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 4019",
+    "question": "Eine Tonschicht wird statt zweiseitig nur einseitig entwässert. Wie ändert sich die Zeit bis 90 % Konsolidation?",
+    "options": [
+      "Sie halbiert sich",
+      "Sie bleibt gleich",
+      "Sie verdoppelt sich",
+      "Sie vervierfacht sich"
+    ],
+    "correctIdx": 3,
+    "explanation": "t = T_v · d²/c_v; bei einseitiger Entwässerung verdoppelt sich der Entwässerungsweg d, die Zeit wächst mit d² um den Faktor 4. Die Endsetzung bleibt unverändert.",
+    "gapAnalysis": {
+      "topic": "Konsolidation",
+      "misconception": "Die Entwässerung wird für die Größe der Endsetzung statt für ihren zeitlichen Verlauf gehalten.",
+      "coreRule": "Konsolidationszeit ∝ d²; Endsetzung s = Δσ · h / E_s.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsolidation“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_matm_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialmodelle",
+    "moduleTitle": "Materialmodelle",
+    "topic": "Kriechen vs. Relaxation",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1, 3.1.4 / 3.3.2",
+    "question": "Was beschreibt die Relaxation eines Spannstahls?",
+    "options": [
+      "Zunahme der Dehnung bei konstanter Spannung",
+      "Abnahme der Spannung bei konstant gehaltener Dehnung",
+      "Rückfederung nach Entlastung",
+      "Abnahme des E-Moduls durch Korrosion"
+    ],
+    "correctIdx": 1,
+    "explanation": "Relaxation: Spannungsabbau bei konstanter Dehnung (Maxwell-Verhalten). Kriechen ist der umgekehrte Fall: Dehnungszunahme bei konstanter Spannung.",
+    "gapAnalysis": {
+      "topic": "Kriechen vs. Relaxation",
+      "misconception": "Kriechen und Relaxation werden synonym verwendet.",
+      "coreRule": "Kriechen: σ = konst., ε wächst; Relaxation: ε = konst., σ sinkt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechen vs. Relaxation“ im Modul Materialmodelle noch einmal durch.",
+      "targetModuleTab": "materialmodelle",
+      "targetModuleLabel": "Materialmodelle"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_matm_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialmodelle",
+    "moduleTitle": "Materialmodelle",
+    "topic": "Bingham-Fluid",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Rheologie (Bingham)",
+    "question": "Frischbeton (τ₀ = 500 Pa, μ_p = 50 Pa·s) wird mit 800 Pa geschert. Welche Scherrate stellt sich ein?",
+    "options": [
+      "0 s⁻¹",
+      "6 s⁻¹",
+      "10 s⁻¹",
+      "16 s⁻¹"
+    ],
+    "correctIdx": 1,
+    "explanation": "γ̇ = (τ − τ₀)/μ_p = 300/50 = 6 s⁻¹. Unterhalb von τ₀ fließt der Beton nicht (γ̇ = 0); 16 s⁻¹ ergibt sich, wenn τ₀ vergessen wird.",
+    "gapAnalysis": {
+      "topic": "Bingham-Fluid",
+      "misconception": "Die Fließgrenze wird ignoriert und Frischbeton wie ein Newtonsches Fluid behandelt.",
+      "coreRule": "Bingham: τ = τ₀ + μ_p · γ̇ für |τ| > τ₀.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bingham-Fluid“ im Modul Materialmodelle noch einmal durch.",
+      "targetModuleTab": "materialmodelle",
+      "targetModuleLabel": "Materialmodelle"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mk_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "mechanische_kenngroessen",
+    "moduleTitle": "Mechanische Kenngrößen",
+    "topic": "Dehnsteifigkeit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1993-1-1, 3.2.6",
+    "question": "Ein Rundstab S235 (d = 30 mm, L = 4 m, E = 210 000 MPa) wird mit 120 kN gezogen. Wie groß ist die Verlängerung?",
+    "options": [
+      "0,32 mm",
+      "3,23 mm",
+      "8,08 mm",
+      "32,3 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "A = 706,9 mm², EA = 148 440 kN; ΔL = F · L/EA = 120 · 4000/148 440 = 3,23 mm.",
+    "gapAnalysis": {
+      "topic": "Dehnsteifigkeit",
+      "misconception": "Einheiten (kN, mm, N/mm²) werden nicht konsistent umgerechnet.",
+      "coreRule": "ΔL = N · L/(E · A).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dehnsteifigkeit“ im Modul Mechanische Kenngrößen noch einmal durch.",
+      "targetModuleTab": "mechanische_kenngroessen",
+      "targetModuleLabel": "Mechanische Kenngrößen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mk_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "mechanische_kenngroessen",
+    "moduleTitle": "Mechanische Kenngrößen",
+    "topic": "Kriechzahl",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 3.1.4",
+    "question": "Eine Betonstütze staucht sich unter Dauerlast sofort um 0,80 mm. Wie groß ist die Endstauchung bei der Kriechzahl φ = 2,0?",
+    "options": [
+      "1,60 mm",
+      "2,40 mm",
+      "3,20 mm",
+      "0,27 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "ε_∞ = ε_el · (1 + φ) bzw. E_c,eff = E_cm/(1 + φ): 0,80 · 3 = 2,40 mm. Der reine Kriechanteil beträgt 1,60 mm.",
+    "gapAnalysis": {
+      "topic": "Kriechzahl",
+      "misconception": "Die Kriechzahl wird als Gesamt- statt als Zusatzfaktor verstanden (0,80 · 2 = 1,60 mm).",
+      "coreRule": "ε_tot = ε_el · (1 + φ); E_c,eff = E_cm/(1 + φ).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechzahl“ im Modul Mechanische Kenngrößen noch einmal durch.",
+      "targetModuleTab": "mechanische_kenngroessen",
+      "targetModuleLabel": "Mechanische Kenngrößen"
+    },
+    "verified": false
   }
 ]

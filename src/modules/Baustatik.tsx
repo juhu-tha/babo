@@ -17,6 +17,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 ChartJS.register(
   CategoryScale,
@@ -116,7 +118,7 @@ export default function Baustatik() {
 
     for (let i = 0; i <= steps; i++) {
       const x = i * dx;
-      labels.push(x.toFixed(2));
+      labels.push(formatDeZahl(x, 2));
 
       let vx = A - q * x;
       if (system === 'zweifeld' && x > l1_pos) vx += B;
@@ -454,25 +456,25 @@ export default function Baustatik() {
                   >
                     <option value="einfeld">Einfeldträger</option>
                     <option value="kragarm">Kragarm (links eingespannt)</option>
-                    <option value="zweifeld">Zweifeldträger (verschiebliches Mittelauflager)</option>
+                    <option value="zweifeld">Zweifeldträger (Lage des Mittelauflagers wählbar)</option>
                   </select>
                 </div>
 
                 <Slider label={system === 'zweifeld' ? "Gesamtlänge (l)" : "Stützweite / Länge (l)"} info={system === 'zweifeld' ? "Gesamtlänge des Bauteils über beide Felder." : "Abstand zwischen den Auflagern oder Gesamtlänge des Bauteils."} min={1} max={30} step={0.5} value={l} unit="m" onChange={(e) => setL(Number(e.target.value))} />
                 
                 {system === 'zweifeld' && (
-                  <Slider label="Position Mittelauflager (l₁)" info="Verschiebliches mittleres Auflager." min={0.5} max={l - 0.5} step={0.1} value={Math.min(l1, l-0.5)} unit="m" onChange={(e) => setL1(Number(e.target.value))} />
+                  <Slider label="Position Mittelauflager (l₁)" info="Lage des mittleren Auflagers; die Felder dürfen ungleich lang sein. Annahme: konstante Biegesteifigkeit EI über beide Felder." min={0.5} max={l - 0.5} step={0.1} value={Math.min(l1, l-0.5)} unit="m" onChange={(e) => setL1(Number(e.target.value))} />
                 )}
 
                 <div className="mt-2 pt-4 border-t border-home-grau/30">
                   <Slider label="Gleichlast (q)"  min={0} max={100} step={1} value={q} unit="kN/m" onChange={(e) => setQ(Number(e.target.value))} />
                 </div>
                 <div className="mt-2 pt-4 border-t border-home-grau/30">
-                  <Slider label="Einzellast/Querkraft (F)" info="Punktuell einwirkende Kraft auf das Bauteil." min={0} max={500} step={5} value={f} unit="kN" onChange={(e) => setF(Number(e.target.value))} />
+                  <Slider label="Einzellast (F)" info="Punktuell einwirkende Kraft auf das Bauteil." min={0} max={500} step={5} value={f} unit="kN" onChange={(e) => setF(Number(e.target.value))} />
                   {f > 0 && <Slider label="Position Einzellast (a)"  min={0} max={results.totalLength} step={0.1} value={results.a_pos} unit="m" onChange={(e) => setA(Number(e.target.value))} />}
                 </div>
                 <div className="mt-2 pt-4 border-t border-home-grau/30">
-                  <Slider label="Einzellmoment (M)" info="Punktuell einwirkendes Biegemoment." min={-200} max={200} step={10} value={m0} unit="kNm" onChange={(e) => setM0(Number(e.target.value))} />
+                  <Slider label="Einzelmoment (M)" info="Punktuell einwirkendes Biegemoment." min={-200} max={200} step={10} value={m0} unit="kNm" onChange={(e) => setM0(Number(e.target.value))} />
                   {m0 !== 0 && <Slider label="Position Moment (a_m)"  min={0} max={results.totalLength} step={0.1} value={results.am_pos} unit="m" onChange={(e) => setAM(Number(e.target.value))} />}
                 </div>
               </div>
@@ -815,7 +817,37 @@ export default function Baustatik() {
         )}
       </div>
       
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Einfeldträger mit Gleich- und Einzellast"
+        zielGleichung="M_{max} = A \cdot a - \frac{q \cdot a^2}{2}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Stützweite l = 6 m, Gleichlast q = 10 kN/m, Einzellast F = 50 kN bei a = 2 m.', formel: 'l = 6\\,\\text{m},\\; q = 10\\,\\text{kN/m},\\; F = 50\\,\\text{kN},\\; a = 2\\,\\text{m}' },
+          { titel: 'Auflagerkräfte', erklaerung: 'Momentengleichgewicht um B bzw. A:', formel: 'A = \\frac{10 \\cdot 6}{2} + \\frac{50 \\cdot 4}{6} = 63{,}3\\,\\text{kN}, \\quad B = 30 + \\frac{50 \\cdot 2}{6} = 46{,}7\\,\\text{kN}' },
+          { titel: 'Querkraftnullstelle', erklaerung: 'V springt unter der Einzellast von +43,3 kN auf −6,7 kN; dort liegt das Momentenmaximum.', formel: 'V(2^-) = 63{,}3 - 20 = 43{,}3\\,\\text{kN}, \\quad V(2^+) = -6{,}7\\,\\text{kN}' },
+          { titel: 'Maximales Moment', erklaerung: 'Moment an der Stelle x = a:', formel: 'M_{max} = 63{,}3 \\cdot 2 - \\frac{10 \\cdot 2^2}{2} = 106{,}7\\,\\text{kNm}' }
+        ]}
+        ergebnisHinweis="Kontrolle: A + B = 110 kN = q · l + F. Das Moment ist dort maximal, wo die Querkraft das Vorzeichen wechselt (dM/dx = V)."
+        normQuelle="Gleichgewichtsbedingungen der Statik (statisch bestimmtes System)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Zweifeldträger und Dreigelenkrahmen unter Gleichlast"
+        zielGleichung="M_B = -\frac{q \cdot (l_1^3 + l_2^3)}{8 \cdot (l_1 + l_2)}"
+        schritte={[
+          { titel: 'Zweifeldträger', erklaerung: 'l₁ = l₂ = 5 m, q = 20 kN/m, EI konstant; Stützmoment aus der Dreimomentengleichung (Clapeyron):', formel: 'M_B = -\\frac{20 \\cdot (125 + 125)}{8 \\cdot 10} = -62{,}5\\,\\text{kNm}' },
+          { titel: 'Auflagerkräfte', erklaerung: 'Das Stützmoment entlastet die Endauflager und belastet das Mittelauflager:', formel: 'A = C = 50 - \\frac{62{,}5}{5} = 37{,}5\\,\\text{kN}, \\quad B = 2 \\cdot (50 + 12{,}5) = 125\\,\\text{kN}' },
+          { titel: 'Dreigelenkrahmen', erklaerung: 'Riegel L = 8 m, Stielhöhe H = 4 m, q = 10 kN/m: Horizontalschub aus der Gelenkbedingung M_C = 0:', formel: 'H = \\frac{q \\cdot L^2}{8 \\cdot H_{Stiel}} = \\frac{10 \\cdot 64}{8 \\cdot 4} = 20\\,\\text{kN}' },
+          { titel: 'Rahmenecke', erklaerung: 'Eckmoment aus Horizontalschub mal Stielhöhe:', formel: '|M_{Ecke}| = 20 \\cdot 4 = 80\\,\\text{kNm} = \\frac{q \\cdot L^2}{8}' }
+        ]}
+        ergebnisHinweis="Durchlaufwirkung und Rahmenwirkung verlagern Moment aus dem Feld in Stützen bzw. Ecken: Beim Zweifeldträger erhält das Mittelauflager 1,25 · q · l statt q · l, beim Dreigelenkrahmen ist das Feldmoment im Scheitelgelenk null."
+        normQuelle="Dreimomentengleichung (Clapeyron); Gleichgewicht am Dreigelenkrahmen"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="baustatik" />
+
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Auflager- und Schnittgrößenformeln, Zweifeld- und Rahmenstatik nachgerechnet, Normbezüge geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
         { title: 'Baustatik', url: 'https://de.wikipedia.org/wiki/Baustatik' },
         { title: 'Träger (Statik)', url: 'https://de.wikipedia.org/wiki/Tr%C3%A4ger_(Statik)' },
@@ -823,12 +855,12 @@ export default function Baustatik() {
       ]}
         literatur={[
           'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
+          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)'
         ]}
         regelwerke={[
           { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'DIN EN 1991-1-1:2010-12 (Eurocode 1: Einwirkungen auf Tragwerke - Wichten, Eigengewicht, Nutzlasten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991-1-1' },
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' }
+          { title: 'DIN EN 1991-1-1:2010-12 mit NA (Eurocode 1: Einwirkungen auf Tragwerke – Wichten, Eigengewicht, Nutzlasten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991-1-1' },
+          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, bauaufsichtlich eingeführt); neue Generation DIN EN 1993-1-1:2025-04', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' }
         ]}
         formeln={[
           {
@@ -839,7 +871,7 @@ export default function Baustatik() {
           {
             formel: '\\sigma(z) = \\frac{N}{A} \\pm \\frac{M_y}{I_y} \\cdot z \\le f_{y,d}',
             erklaerung: 'Normalspannungsverteilung im Querschnitt bei einachsiger Biegung mit Normalkraft nach der linearen Elastizitätstheorie (Navier-Hypothese).',
-            quelle: 'Technische Mechanik / DIN EN 1993-1-1'
+            quelle: 'Technische Mechanik; elastischer Querschnittsnachweis nach DIN EN 1993-1-1, 6.2.1 (5)'
           },
           {
             formel: 'w\'\'(x) = -\\frac{M(x)}{E \\cdot I}',

@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -474,7 +476,7 @@ export default function Materialmodelle() {
       const thixo_eta = [];
       const rheo_eta = [];
       for (let t = 0; t <= 10; t += 0.2) {
-        times.push(t.toFixed(1));
+        times.push(formatDeZahl(t, 1));
         thixo_eta.push(20 + 80 * Math.exp(-0.5 * t));
         rheo_eta.push(100 - 80 * Math.exp(-0.5 * t));
       }
@@ -518,7 +520,7 @@ export default function Materialmodelle() {
 
       for (let ep = 0; ep <= maxPlotEps; ep += 0.5) {
         const e = ep / 1000; // Dehnung als Dezimalzahl
-        epsLabels.push(ep.toFixed(1));
+        epsLabels.push(formatDeZahl(ep, 1));
 
         // 1. Belastungsast bis zum Bruch / Maximalbereich
         if (e <= epsY) {
@@ -577,11 +579,11 @@ export default function Materialmodelle() {
     // Standard qualitative Verläufe für andere Modelle
     const eps = [];
     const sig = [];
-    const E = 200000; // MPa (typisch für Stahl)
+    const E = 210000; // MPa (Baustahl nach DIN EN 1993-1-1)
     const fy = 355; // MPa (z.B. S355)
 
     for (let e = 0; e <= 0.005; e += 0.0001) {
-      eps.push((e * 1000).toFixed(1)); // in Promille
+      eps.push(formatDeZahl(e * 1000, 1)); // in Promille
       
       if (activeModel === 'linear') {
         sig.push(e * E);
@@ -714,8 +716,8 @@ export default function Materialmodelle() {
                 <p><strong>Krümmung des Verlaufs:</strong> Spannung und Dehnung sind nicht proportional, jedoch gibt es keine bleibenden Verformungen (elastisch).</p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Der Zusammenhang zwischen Spannung und Dehnung ändert sich kontinuierlich.</li>
-                  <li>Typisch für Beton unter Druckbelastung vor dem Bruch oder für elastomere Werkstoffe.</li>
-                  <li>Oft durch Parabel-Rechteck-Diagramme nach Eurocode 2 oder das Ramberg-Osgood-Modell angenähert.</li>
+                  <li>Typisch für Elastomere. Beton unter Druck zeigt ebenfalls eine gekrümmte Arbeitslinie, jedoch mit bleibenden Anteilen aus Mikrorissbildung – streng genommen also nicht rein elastisch.</li>
+                  <li>Rechnerisch für Beton über die Arbeitslinie nach DIN EN 1992-1-1, 3.1.5 (Schnittgrößenermittlung) bzw. das Parabel-Rechteck-Diagramm nach 3.1.7 (Querschnittsbemessung); für Metalle ohne ausgeprägte Streckgrenze über den Ramberg-Osgood-Ansatz.</li>
                 </ul>
               </>
             )}
@@ -867,6 +869,7 @@ export default function Materialmodelle() {
                   <li><strong>Kriechen (Retardation):</strong> Zunahme der Dehnung unter konstanter Spannung. Relevant für Beton, Holz und Kunststoffe.</li>
                   <li><strong>Relaxation:</strong> Abnahme der Spannung unter konstanter Dehnung. Maßgebend bei hochfestem Spannstahl (Vorspannungsverluste).</li>
                   <li>Abgebildet durch Kombinationen von elastischen Federn (Hooke) und viskosen Dämpfern (Newton) – z.B. Maxwell- oder Kelvin-Voigt-Modelle.</li>
+                  <li>Das Diagramm zeigt qualitativ eine σ-ε-Kurve bei konstanter Dehnrate: Je schneller belastet wird, desto steiler verläuft sie. Quantitative Verläufe liefert der Rheologie-Simulator unten.</li>
                 </ul>
               </>
             )}
@@ -950,7 +953,7 @@ export default function Materialmodelle() {
                   tooltip: {
                     callbacks: {
                       label: function(context) {
-                        const val = context.parsed.y !== null ? context.parsed.y.toFixed(1) : '';
+                        const val = context.parsed.y !== null ? formatDeZahl(context.parsed.y, 1) : '';
                         const unit = activeModel === 'thixotropy-rheopexy' ? ' Pa·s' : ' MPa';
                         return `${context.dataset.label ? context.dataset.label.split(' ')[0] : 'Wert'}: ${val}${unit}`;
                       }
@@ -966,8 +969,38 @@ export default function Materialmodelle() {
       {/* RHEOLOGIE-SIMULATOR FÜR ERSATZMODELLE */}
       <RheologySection />
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Bleibende Dehnung eines Betonstahls B500B nach Überlastung"
+        zielGleichung="\varepsilon_p = \varepsilon_{max} - \frac{\sigma_{max}}{E}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Bilineares Modell: f_y = 500 MPa, E = 200 000 MPa, Verfestigungsmodul E_t = 2 000 MPa; Stab wird bis ε_max = 20 ‰ gedehnt und entlastet.', formel: 'f_y = 500\\,\\text{MPa},\\; E = 200\\,000\\,\\text{MPa},\\; E_t = 2\\,000\\,\\text{MPa}' },
+          { titel: 'Fließdehnung', erklaerung: 'Ende des elastischen Bereichs:', formel: '\\varepsilon_y = \\frac{500}{200\\,000} = 2{,}5\\,\\text{‰}' },
+          { titel: 'Höchstspannung', erklaerung: 'Verfestigungsast bis ε_max:', formel: '\\sigma_{max} = 500 + 2\\,000 \\cdot (0{,}020 - 0{,}0025) = 535\\,\\text{MPa}' },
+          { titel: 'Entlastung', erklaerung: 'Rückfederung parallel zur Hookeschen Geraden:', formel: '\\varepsilon_p = 20 - \\frac{535}{200\\,000} \\cdot 1\\,000 = 20 - 2{,}68 = 17{,}3\\,\\text{‰}' }
+        ]}
+        ergebnisHinweis="Fast die gesamte Dehnung bleibt erhalten; die erneute Belastung verläuft elastisch bis 535 MPa (Kaltverfestigung). Das Verhältnis 535/500 = 1,07 bei 20 ‰ zeigt, warum k = f_t/f_y ≥ 1,08 erst bei ε_uk ≥ 5 % nachgewiesen wird."
+        normQuelle="DIN EN 1992-1-1, 3.2.7 und Anhang C (Duktilitätsklasse B)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Relaxation (Maxwell) und Bingham-Fließen von Frischbeton"
+        zielGleichung="\sigma(t) = \sigma_0 \cdot e^{-t/\tau}"
+        schritte={[
+          { titel: 'Maxwell-Relaxation', erklaerung: 'Aufgezwungene Dehnung mit σ₀ = 10 MPa, Relaxationszeit τ = η/E = 2 s. Spannung nach t = 3 s:', formel: '\\sigma(3\\,\\text{s}) = 10 \\cdot e^{-3/2} = 2{,}23\\,\\text{MPa}' },
+          { titel: 'Halbwertszeit', erklaerung: 'Zeit bis zum Abbau auf 50 %:', formel: 't_{1/2} = \\tau \\cdot \\ln 2 = 2 \\cdot 0{,}693 = 1{,}39\\,\\text{s}' },
+          { titel: 'Bingham-Fluid', erklaerung: 'Frischbeton mit τ₀ = 500 Pa und μ_p = 50 Pa·s unter einer Scherspannung von 800 Pa:', formel: '\\dot{\\gamma} = \\frac{800 - 500}{50} = 6\\,\\text{s}^{-1}' },
+          { titel: 'Unterhalb der Fließgrenze', erklaerung: 'Bei τ = 400 Pa < τ₀ fließt der Beton nicht:', formel: '\\dot{\\gamma} = 0' }
+        ]}
+        ergebnisHinweis="Rüttelenergie senkt die wirksame Fließgrenze; selbstverdichtender Beton erreicht durch Fließmittel eine sehr niedrige Fließgrenze (rund 10 bis 50 Pa) und entlüftet allein unter Eigengewicht."
+        normQuelle="Rheologische Grundmodelle (Maxwell, Bingham); Begriffe nach DIN 1342"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="materialmodelle" />
+
       {/* FOOTER MIT FORMELN, WIKIPEDIA, NORMEN & LITERATUR */}
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Stoffgesetze, Duktilitätskriterium, Rheologie-Ersatzmodelle und Normausgaben geprüft; Wikipedia-Links manuell prüfen; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Hookesches Gesetz', url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
           { title: 'Rheologie', url: 'https://de.wikipedia.org/wiki/Rheologie' },
@@ -977,12 +1010,12 @@ export default function Materialmodelle() {
         ]}
         regelwerke={[
           { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Stahlbeton - Nichtlineare Stoffgesetze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung von Stahlbauten - Plastische Grenzzustände)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
-          { title: 'DIN 1342-1..3:2003-11 (Viskosität - Rheologische Begriffe und Messverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1342-1..3' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.5 / 3.1.7 / 3.2.7 Arbeitslinien); neue Generation DIN EN 1992-1-1:2025-09', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 5.4.3 plastische Tragwerksberechnung); neue Generation DIN EN 1993-1-1:2025-04', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN 1342-1 bis -3:2003-11 (Viskosität – Rheologische Begriffe, Newtonsche und nicht-newtonsche Flüssigkeiten; Ausgabestand manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1342' }
         ]}
         literatur={[
-          'Mang, H., Hofstetter, G.: Festigkeitslehre (Springer Vieweg, 2013)',
+          'Mang, H.; Hofstetter, G.: Festigkeitslehre. 4. Aufl., Berlin: Springer Vieweg 2013',
           'Gross, D., Hauger, W. et al.: Technische Mechanik 4: Hydromechanik, Elemente der Höheren Mechanik (Springer, 2018)',
           'Wriggers, P.: Nichtlineare Finite-Element-Methoden (Springer, 2001)'
         ]}
@@ -992,11 +1025,11 @@ export default function Materialmodelle() {
             formel: "\\sigma = E \\cdot \\varepsilon"
           },
           {
-            erklaerung: "Elasto-Plastisch mit bilinearer Verfestigung (DIN EN 1992-1-1)\nf_y: Fließgrenze\nE_t: Tangentenmodul (Verfestigungsmodul)\n\\varepsilon_y: Fließdehnung (\\varepsilon_y = f_y / E)\n\\varepsilon_p: bleibende plastische Dehnung nach Entlastung (\\varepsilon_p = \\varepsilon - \\sigma / E)",
+            erklaerung: "Elasto-Plastisch mit bilinearer Verfestigung (Betonstahl-Arbeitslinie nach DIN EN 1992-1-1, Bild 3.8)\nf_y: Fließgrenze\nE_t: Tangentenmodul (Verfestigungsmodul)\n\\varepsilon_y: Fließdehnung (\\varepsilon_y = f_y / E)\n\\varepsilon_p: bleibende plastische Dehnung nach Entlastung (\\varepsilon_p = \\varepsilon - \\sigma / E)",
             formel: "\\sigma(\\varepsilon) = \\begin{cases} E \\cdot \\varepsilon & \\text{für } \\varepsilon \\le \\varepsilon_y \\\\ f_y + E_t \\cdot (\\varepsilon - \\varepsilon_y) & \\text{für } \\varepsilon > \\varepsilon_y \\end{cases}"
           },
           {
-            erklaerung: "Verfestigungsverhältnis k (Duktilitätskriterium nach Eurocode 2)\nf_t: Zugfestigkeit bei Höchstlast\nf_y: Streckgrenze des Betonstahls (B500B erfordert k >= 1,08)",
+            erklaerung: "Verfestigungsverhältnis k (Duktilitätskriterium nach Eurocode 2)\nf_t: Zugfestigkeit bei Höchstlast\nf_y: Streckgrenze des Betonstahls (B500B erfordert k ≥ 1,08 und ε_uk ≥ 5 % nach DIN EN 1992-1-1, Anhang C)",
             formel: "k = \\frac{f_t}{f_y} = 1 + \\frac{E_t}{f_y} \\cdot (\\varepsilon_{uk} - \\varepsilon_y)"
           },
           {

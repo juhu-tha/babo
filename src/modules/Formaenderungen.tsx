@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Activity, ArrowRight, Thermometer, Droplets, FlaskConical } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { motion } from 'framer-motion';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function Formaenderungen() {
   const [activeTab, setActiveTab] = useState<'tabelle' | 'visualisierung'>('tabelle');
@@ -73,12 +75,13 @@ export default function Formaenderungen() {
                     elastisch
                   </td>
                   <td className="border border-home-grau/30 px-4 py-4 w-1/4">
-                    verzögert elastisch
+                    verzögert elastisch<br/>
+                    (reversibler Kriechanteil)
                   </td>
                   <td className="border border-home-grau/30 px-4 py-4 w-1/4">
                     Wärmedehnung<br/>
                     Feuchtedehnung<br/>
-                    (Schwinden, Quellen)
+                    (Schwinden, Quellen – bei Beton teils irreversibel)
                   </td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
@@ -89,7 +92,8 @@ export default function Formaenderungen() {
                     plastisch
                   </td>
                   <td className="border border-home-grau/30 px-4 py-4">
-                    viskos
+                    viskos<br/>
+                    (Fließen, irreversibler Kriechanteil)
                   </td>
                   <td className="border border-home-grau/30 px-4 py-4">
                     chemische Dehnung<br/>
@@ -221,7 +225,7 @@ export default function Formaenderungen() {
               {activeVis === 'verzoegert' && (
                 <div className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80">
-                    <strong>Verzögert elastische Verformung:</strong> Nimmt unter konstanter Last mit der Zeit zu und bildet sich nach Entlastung mit der Zeit wieder zurück.
+                    <strong>Verzögert elastische Verformung:</strong> Nimmt unter konstanter Last mit der Zeit zu und bildet sich nach Entlastung mit der Zeit wieder zurück (reversibler Anteil des Kriechens).
                   </p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -251,7 +255,7 @@ export default function Formaenderungen() {
               {activeVis === 'viskos' && (
                 <div className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80">
-                    <strong>Viskose Verformung (Kriechen):</strong> Nimmt unter konstanter Last mit der Zeit stetig zu und ist irreversibel.
+                    <strong>Viskose Verformung (Fließen):</strong> Nimmt unter konstanter Last mit der Zeit zu und bleibt nach Entlastung bestehen. Zusammen mit dem verzögert elastischen Anteil bildet sie das <em>Kriechen</em>.
                   </p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -281,7 +285,7 @@ export default function Formaenderungen() {
               {activeVis === 'waerme' && (
                 <div className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80">
-                    <strong>Wärmedehnung:</strong> Spannungsunabhängige, reversible Volumenänderung durch Temperaturänderung.
+                    <strong>Wärmedehnung:</strong> Spannungsunabhängige, reversible Längen- bzw. Volumenänderung durch Temperaturänderung: Δl = α_T · ΔT · l.
                   </p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -312,7 +316,7 @@ export default function Formaenderungen() {
               {activeVis === 'feuchte' && (
                 <div className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80">
-                    <strong>Feuchtedehnung (Quellen/Schwinden):</strong> Spannungsunabhängige Volumenänderung durch Feuchtigkeitsaufnahme (Quellen) oder -abgabe (Schwinden).
+                    <strong>Feuchtedehnung (Quellen/Schwinden):</strong> Spannungsunabhängige Volumenänderung durch Feuchtigkeitsaufnahme (Quellen) oder -abgabe (Schwinden). Beim Beton ist ein Teil des ersten Trocknungsschwindens irreversibel.
                   </p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -333,7 +337,7 @@ export default function Formaenderungen() {
                       animate={{ opacity: [0, 1, 0, 0, 1, 0] }}
                       transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.4, 0.6, 0.8, 1] }}
                     >
-                      <div className="text-blue-600 font-bold bg-white/80 px-2 rounded">{'{'} Quellen / Schwinden {'}'}</div>
+                      <div className="text-blue-600 font-bold bg-white/80 px-2 rounded">Quellen / Schwinden</div>
                     </motion.div>
                   </div>
                 </div>
@@ -342,7 +346,7 @@ export default function Formaenderungen() {
               {activeVis === 'chemisch' && (
                 <div className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80">
-                    <strong>Chemische Dehnung:</strong> Spannungsunabhängige, meist irreversible Volumenänderung durch chemische Reaktionen (z.B. Hydratation, Treiben).
+                    <strong>Chemische Dehnung:</strong> Spannungsunabhängige, meist irreversible Volumenänderung durch chemische Reaktionen (z. B. chemisches Schrumpfen bei der Hydratation, Treiben durch Ettringit- oder AKR-Bildung).
                   </p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -375,20 +379,48 @@ export default function Formaenderungen() {
         </div>
       )}
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Wie viel verlängert sich eine 30 m lange Betonwand im Sommer?"
+        zielGleichung="\Delta l = \alpha_T \cdot \Delta T \cdot l"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Wandlänge 30 m ohne Fuge, Temperaturdifferenz zwischen Winter- und Sommerzustand 40 K, Wärmedehnzahl von Beton nach DIN EN 1992-1-1, 3.1.3: 10 · 10⁻⁶ 1/K.', formel: 'l = 30\\,000\\,\\text{mm},\\quad \\Delta T = 40\\,\\text{K}' },
+          { titel: 'Längenänderung', erklaerung: 'Einsetzen:', formel: '\\Delta l = 10 \\cdot 10^{-6} \\cdot 40 \\cdot 30\\,000 = 12\\,\\text{mm}' },
+          { titel: 'Behinderung', erklaerung: 'Wäre die Dehnung vollständig behindert, entstünde (ohne Kriechen, E = 33 000 N/mm²) die Spannung:', formel: '\\sigma = E \\cdot \\alpha_T \\cdot \\Delta T = 33\\,000 \\cdot 4 \\cdot 10^{-4} = 13{,}2\\,\\text{N/mm}^2' }
+        ]}
+        ergebnisHinweis="Als Zug bei Abkühlung liegen 13,2 N/mm² weit über der Betonzugfestigkeit (≈ 3 N/mm²) – deshalb Fugen oder Bewehrung zur Rissbreitenbegrenzung."
+        normQuelle="DIN EN 1992-1-1, 3.1.3 (α_T = 10 · 10⁻⁶ 1/K)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Kriechen einer Stütze unter Dauerlast"
+        zielGleichung="\varepsilon_{cc}(\infty,t_0) = \varphi(\infty,t_0) \cdot \frac{\sigma_c}{E_c}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'C30/37, E_cm = 33 000 N/mm², Dauerspannung σ_c = 10 N/mm², Endkriechzahl φ = 2,0 (aus DIN EN 1992-1-1, Bild 3.1).', formel: 'E_c = 1{,}05 \\cdot E_{cm} = 34\\,650\\,\\text{N/mm}^2' },
+          { titel: 'Elastische Dehnung', erklaerung: 'Sofortige Stauchung bei Belastung:', formel: '\\varepsilon_{el} = \\frac{10}{34\\,650} = 0{,}29\\,\\text{‰}' },
+          { titel: 'Kriechdehnung', erklaerung: 'Zeitabhängiger Zuwachs bis t = ∞:', formel: '\\varepsilon_{cc} = 2{,}0 \\cdot 0{,}29 = 0{,}58\\,\\text{‰}' }
+        ]}
+        ergebnisHinweis="Die Gesamtstauchung verdreifacht sich durch Kriechen auf etwa 0,87 ‰ – eine 3 m hohe Stütze verkürzt sich um rund 2,6 mm (zuzüglich Schwinden)."
+        normQuelle="DIN EN 1992-1-1, 3.1.4, Gl. (3.6)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="formaenderungen" />
+
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Systematik der Formänderungen, Kriechen und Schwinden nach DIN EN 1992-1-1 geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Verformung', url: 'https://de.wikipedia.org/wiki/Verformung' },
           { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
-          { title: 'Schwinden', url: 'https://de.wikipedia.org/wiki/Schwinden' }
+          { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Neville, A. M. (2011): Properties of Concrete (5th Edition, Pearson)',
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)'
+          'Neville, A. M.: Properties of Concrete. 5th ed., Harlow: Pearson 2011',
+          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Anhang B: Kriech- und Schwindmodelle)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 12390-16 (Prüfverfahren für Beton - Bestimmung der Schwind- und Quellmaße)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-16' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (3.1.4 und Anhang B: Kriechen und Schwinden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 12390-16 (EN 12390-16:2019; Prüfung von Festbeton – Bestimmung des Schwindens von Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-16' }
         ]}
         formeln={[
           {

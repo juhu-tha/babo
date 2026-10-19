@@ -376,7 +376,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '1826 / 1850er',
         title: 'Navier & Saint-Venant: Spannungen und Torsion',
         category: 'Technologie',
-        description: 'Henri Navier verknüpft Statik und Verformungsgeometrie (Naviersche Biegung: σ = M/W). Adhémar Jean Claude Barré de Saint-Venant löst das Torsionsproblem nicht-kreisförmiger Querschnitte (Wölbkrafttorsion).',
+        description: 'Henri Navier verknüpft Statik und Verformungsgeometrie (Naviersche Biegung: σ = M/W). Adhémar Jean Claude Barré de Saint-Venant löst das Torsionsproblem nicht-kreisförmiger Querschnitte (reine bzw. Saint-Venant’sche Torsion, 1855); die Wölbkrafttorsion dünnwandiger Profile folgt erst im 20. Jahrhundert (Wagner, Wlassow).',
         impact: 'Exakte Dimensionierung von Tragwerkselementen unter Biegung, Schub und Verdrehung.',
         keyReference: 'Navier: Résumé des leçons (1826)'
       },
@@ -389,20 +389,20 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'Mohr: Zivilingenieur (1882)'
       },
       {
-        era: '1879 / 1883',
-        title: 'Castigliano & Maxwell: Das Prinzip der virtuellen Arbeiten (PvK)',
+        era: '1864 / 1879 / 1886',
+        title: 'Maxwell, Castigliano & Müller-Breslau: Energiesätze und Kraftgrößenverfahren',
         category: 'Technologie',
         description: 'Alberto Castigliano formuliert die Sätze über die Ableitung der Formänderungsenergie nach den Kräften (Satz von Castigliano). James Clerk Maxwell und Heinrich Müller-Breslau entwickeln das Kraftgrößenverfahren.',
         impact: 'Erstmals können statisch unbestimmte Tragwerke (Durchlaufträger, Rahmenwerke, Bogenbrücken) systematisch berechnet werden.',
         keyReference: 'Castigliano: Théorie de l\'équilibre des systèmes élastiques'
       },
       {
-        era: '1960er–heute (2024–2026)',
+        era: '1956 / 1960 bis heute',
         title: 'Die Finite-Elemente-Revolution (FEM) & Nichtlineare Kontinuumsmechanik',
         category: 'Technologie',
         description: 'John Argyris, Ray Clough und O.C. Zienkiewicz überführen die Differentialgleichungen der Elastomechanik in algebraische Matrizengleichungen auf diskretisierten Netzen. Moderne FEM löst physikalisch und geometrisch nichtlineare Probleme (Fließen, Rissbildung, Kontakt).',
         impact: 'Berechnung komplexester Freiform-Architektur, 3D-Boden-Bauwerk-Interaktionen und dynamischer Erdbebenbelastungen im Minutentakt.',
-        keyReference: 'Zienkiewicz: The Finite Element Method (1967)'
+        keyReference: 'Zienkiewicz, O. C.; Cheung, Y. K.: The Finite Element Method in Structural and Continuum Mechanics (1967)'
       }
     ],
     keyTakeaway: 'Die Technische Mechanik schuf das formale Gerüst, um Naturkräfte im Tragwerk durch Gleichgewicht, Kinematik und Stoffgesetze mathematisch exakt beherrschbar zu machen.'

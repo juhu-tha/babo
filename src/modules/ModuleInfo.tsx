@@ -490,14 +490,15 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Plastische Reserven', desc: 'Ausnutzung überelastischer Werkstoffkapazitäten bei duktilen Stählen zur Gewichtsoptimierung.' }
     ],
     submodules: [
-      { title: 'Formänderungen', icon: Activity, purpose: 'Erfassung elastischer Biegelinien, Biegemomente und Deformationsflächen schlanker Balken.', standards: 'Klassische Elastizitätstheorie', useCase: 'Durchbiegungsnachweis im Grenzzustand der Gebrauchstauglichkeit (L/300).' },
-      { title: 'Materialmodelle', icon: Activity, purpose: 'Mathematische Modellierung von Elastoplastizität, Viskoplastizität und Kriechansätzen der Baustoffe.', standards: 'Modellierungsstandards FEM', useCase: 'Einstellung elastisch-plastischer Verfestigungsparameter im FE-Programm.' },
+      { title: 'Mechanische Kenngrößen', icon: Activity, purpose: 'Spannung, Dehnung, Querdehnzahl, Dehn- und Biegesteifigkeit sowie Kriechen und Relaxation mit gerechneten Beispielen.', standards: 'DIN EN ISO 6892-1; DIN EN 1992-1-1, 3.1.4 / 3.3.2', useCase: 'Verlängerung eines Zugstabs und Endstauchung einer Betonstütze unter Dauerlast.' },
+      { title: 'Formänderungen', icon: Activity, purpose: 'Lastunabhängige und zeitabhängige Verformungen: Temperaturdehnung, Schwinden und Kriechen der Baustoffe.', standards: 'DIN EN 1992-1-1, 3.1.4; DIN EN 12390-16', useCase: 'Bemessung von Dehnfugen und Abschätzung der Kriechverformung einer Stütze.' },
+      { title: 'Materialmodelle', icon: Activity, purpose: 'Mathematische Modellierung von Elastoplastizität, Viskoplastizität und Kriechansätzen der Baustoffe.', standards: 'DIN EN 1992-1-1 (Arbeitslinien 3.1.5, 3.1.7, Bild 3.8); DIN 1342', useCase: 'Einstellung elastisch-plastischer Verfestigungsparameter im FE-Programm.' },
       { title: 'E-Modul & Mikromechanik', icon: Activity, purpose: 'Ermittlung des Elastizitätsmoduls aus Spannungs-Dehnungs-Messkurven und mikromechanischen Mischungsregeln.', standards: 'DIN EN ISO 527-1', useCase: 'Bestimmung des homogenisierten Quer-E-Moduls eines Faserverbundes.' },
-      { title: 'Festigkeit', icon: TrendingUp, purpose: 'Verspannte Festigkeitshypothesen für mehrachsige Spannungszustände (von Mises, Rankine, Mohr-Coulomb).', standards: 'Tragwiderstandsmodelle', useCase: 'Nachweis mehrachsiger Spannungen in dickwandigen Druckbehältern.' },
-      { title: 'Baustatik', icon: Activity, purpose: 'Ermittlung von Schnittgrößen (N, V, M) statisch unbestimmter Systeme mit dem Kraftgrößenverfahren.', standards: 'Eurocode 3 / EC5', useCase: 'Lösung des dreifach statisch unbestimmten Rahmensystems.' },
-      { title: 'Knicken (Euler)', icon: TrendingUp, purpose: 'Stabilitätsversagen schlanker Stäbe unter Druckbelastung, Knickfälle 1 bis 4 nach Euler.', standards: 'DIN EN 1993-1-1 (EC3) Kap. 6.3', useCase: 'Ermittlung der kritischen Euler-Knicklast für ein beidseitig gelenkig gelagertes Stützenprofil.' },
-      { title: 'Bruchmechanik', icon: ShieldAlert, purpose: 'Spannungsintensitätsfaktoren (K-Konzept), Energiefreisetzungsrate G und Rissausbreitungskriterien von Griffith.', standards: 'DIN EN ISO 12737', useCase: 'Abschätzung des kritischen Rissradius bei spröden Glas- und Feinkeramikquerschnitten.' },
-      { title: 'Bodenmechanik', icon: Mountain, purpose: 'Grundbau und Bodenkenngrößen, Setzungsberechnungen, Erddruckformen nach Rankine und Coulomb.', standards: 'DIN EN 1997 (Eurocode 7)', useCase: 'Berechnung des aktiven Erddrucks auf eine Stützmauer.' }
+      { title: 'Festigkeit', icon: TrendingUp, purpose: 'Festigkeitskennwerte im Vergleich, spezifische Festigkeit und Reißlänge (Grenzlänge unter Eigengewicht).', standards: 'DIN EN 1992-1-1 / DIN EN 1993-1-1 (charakteristische Festigkeiten)', useCase: 'Materialvergleich über die Reißlänge und Grenzhöhe unter Eigengewicht.' },
+      { title: 'Baustatik', icon: Activity, purpose: 'Auflagerkräfte und Schnittgrößen (N, V, M) von Einfeldträger, Kragarm und Dreigelenkrahmen sowie des einfach statisch unbestimmten Zweifeldträgers (Dreimomentengleichung).', standards: 'Technische Mechanik; Einwirkungen nach DIN EN 1990 / DIN EN 1991-1-1', useCase: 'Momentenmaximum unter Einzellast und Stützmoment eines Durchlaufträgers.' },
+      { title: 'Knicken (Euler)', icon: TrendingUp, purpose: 'Stabilitätsversagen schlanker Stäbe unter Druckbelastung, Knickfälle 1 bis 4 nach Euler und Vergrößerung von Vorkrümmungen nach Theorie II. Ordnung.', standards: 'DIN EN 1993-1-1 (EC3), 6.3', useCase: 'Ermittlung der kritischen Euler-Knicklast für ein beidseitig gelenkig gelagertes Stützenprofil.' },
+      { title: 'Bruchmechanik', icon: ShieldAlert, purpose: 'Spannungsintensitätsfaktoren (K-Konzept), Energiefreisetzungsrate G und Rissausbreitungskriterien von Griffith.', standards: 'ISO 12737 (Metalle); fib Model Code 2010 (Beton)', useCase: 'Abschätzung der kritischen Risslänge bzw. Bruchspannung bei spröden Glas- und Keramikbauteilen.' },
+      { title: 'Bodenmechanik', icon: Mountain, purpose: 'Konsistenzgrenzen und Bodengruppen, Scherfestigkeit nach Mohr-Coulomb, Erddruck nach Rankine sowie Setzung und Konsolidation nach Terzaghi.', standards: 'DIN EN 1997-1 / DIN 1054; DIN 4085; DIN 18196; DIN 4019', useCase: 'Berechnung des aktiven Erddrucks auf eine Stützmauer.' }
     ],
     didacticCards: [
       { title: 'Werkstoffübergreifende Abstraktion', desc: 'Dieselben mathematischen Bewegungsgleichungen steuern das Verhalten von Holz, Stahl und Felsen.' },
@@ -511,16 +512,16 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Baustatik', url: 'https://de.wikipedia.org/wiki/Baustatik' }
     ],
     literatur: [
-      'Gross, D.; Hauger, W. (2014): Technische Mechanik 2 - Elastostatik (Springer Vieweg)',
+      'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)',
       'Meschede, D. (2015): Gerthsen Physik (Springer)'
     ],
     regelwerke: [
-      { title: 'DIN EN 1993-1-1: Eurocode 3 - Bemessung und Konstruktion von Stahlbauten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
-      { title: 'DIN EN 1997-1: Eurocode 7 - Entwurf, Berechnung und Bemessung in der Geotechnik', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1997-1' }
+      { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3 – Bemessung und Konstruktion von Stahlbauten); neue Generation DIN EN 1993-1-1:2025-04', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+      { title: 'DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7 – Entwurf, Berechnung und Bemessung in der Geotechnik)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1997-1' }
     ],
     formeln: [
       { formel: 'w\'\'(x) = -\\frac{M(x)}{E \\cdot I}', erklaerung: 'Differentialgleichung der elastischen Biegelinie. Verknüpft die Krümmung w\'\'(x) des Balkens mit dem Biegemoment M(x), dem Elastizitätsmodul E und dem Flächenträgheitsmoment I.', quelle: 'Technische Mechanik / Elastostatik' },
-      { formel: 'F_{ki} = \\frac{\\pi^2 \\cdot E \\cdot I}{s_k^2}', erklaerung: 'Eulersche Knicklast (Kritische Kraft). Bestimmt die Grenze der elastischen Stabilität einer ideal geraden Stütze bei Knicklänge s_k.', quelle: 'DIN EN 1993-1-1' }
+      { formel: 'F_{ki} = \\frac{\\pi^2 \\cdot E \\cdot I}{s_k^2}', erklaerung: 'Eulersche Knicklast (Kritische Kraft). Bestimmt die Grenze der elastischen Stabilität einer ideal geraden Stütze bei Knicklänge s_k.', quelle: 'Euler (1744); als N_cr in DIN EN 1993-1-1, 6.3.1.2' }
     ]
   },
   bauphysik: {

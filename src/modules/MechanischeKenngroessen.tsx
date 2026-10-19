@@ -8,6 +8,7 @@ import {
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
 
@@ -2338,7 +2339,7 @@ export default function MechanischeKenngroessen() {
               <p>
                 <strong>Aufgabenstellung:</strong> Ein Deckenbalken aus Nadelholz C24 (<InlineMath math="E_{0,\text{mean}} = 11.000\text{ MPa}" />) 
                 mit Querschnitt <InlineMath math="b/h = 12 / 24\text{ cm}" /> überbrückt eine Spannweite von <InlineMath math="L = 5{,}00\text{ m}" />. 
-                In Feldmitte wirkt eine Verkehrslast von <InlineMath math="F = 15\text{ kN}" />.
+                In Feldmitte wirkt eine Nutzlast (Einzellast) von <InlineMath math="F = 15\text{ kN}" />.
                 Gesucht sind das Flächenträgheitsmoment <InlineMath math="I_y" />, die Biegesteifigkeit <InlineMath math="EI_y" /> und die maximale Durchbiegung <InlineMath math="w_{\max}" />.
               </p>
 
@@ -2355,7 +2356,7 @@ export default function MechanischeKenngroessen() {
                   <div>w_max = (F · L³) / (48 · EIy)</div>
                   <div>w_max = (15.000 N · (5000 mm)³) / (48 · 1,521 · 10¹² N·mm²)</div>
                   <div>w_max = 1,875 · 10¹⁵ / 7,299 · 10¹³ = <strong>25,69 mm</strong></div>
-                  <div className="text-indigo-800">Vergleich: L/200 = 25,0 mm (Gebrauchstauglichkeitsgrenze)</div>
+                  <div className="text-indigo-800">Vergleich mit dem Empfehlungswert w_inst ≤ L/300 = 16,7 mm (DIN EN 1995-1-1/NA): nicht eingehalten – Querschnitt vergrößern; Kriechen (k_def) erhöht die Enddurchbiegung zusätzlich.</div>
                 </div>
               </div>
             </div>
@@ -2375,7 +2376,7 @@ export default function MechanischeKenngroessen() {
             <div className="text-xs text-text-main/80 space-y-3 leading-relaxed">
               <p>
                 <strong>Aufgabenstellung:</strong> Eine quadratische Stahlbetonstütze (<InlineMath math="b = h = 40\text{ cm}" />, <InlineMath math="L_0 = 3{,}50\text{ m}" />) 
-                aus Beton C30/37 (<InlineMath math="E_{cm} = 33.000\text{ MPa}" />) wird durch eine ständige Normalkraft <InlineMath math="N = 1200\text{ kN}" /> 
+                aus Beton C30/37 (<InlineMath math="E_{cm} = 33.000\text{ MPa}" />, Bewehrung vereinfachend vernachlässigt) wird durch eine ständige Normalkraft <InlineMath math="N = 1200\text{ kN}" /> 
                 auf Druck beansprucht. Die Kriechzahl nach DIN EN 1992-1-1 beträgt <InlineMath math="\varphi = 2{,}0" />.
                 Gesucht sind die sofortige elastische Stauchung <InlineMath math="\Delta L_0" /> und die Endstauchung <InlineMath math="\Delta L_{\infty}" /> nach Abschluss des Kriechens.
               </p>
@@ -2415,7 +2416,7 @@ export default function MechanischeKenngroessen() {
               <p>
                 <strong>Aufgabenstellung:</strong> Ein Spannstahl Y1860 (<InlineMath math="f_{pk} = 1860\text{ MPa}, f_{p0{,}1k} = 1600\text{ MPa}" />) 
                 wird mit <InlineMath math="\sigma_{p0} = 0{,}75 \cdot f_{pk} = 1395\text{ MPa}" /> vorgespannt. Die Dehnung wird konstant gehalten (<InlineMath math="\varepsilon_p = \text{konst.}" />).
-                Für Spannstahllitzen der Klasse 2 (sehr niedrige Relaxation) beträgt der 1000-Stunden-Relaxationsverlust <InlineMath math="\rho_{1000} = 2{,}5\,\%" />.
+                Für Spannstahllitzen der Klasse 2 (niedrige Relaxation nach DIN EN 1992-1-1, 3.3.2) beträgt der 1000-Stunden-Relaxationsverlust <InlineMath math="\rho_{1000} = 2{,}5\,\%" />.
                 Gesucht ist der 1000-Stunden-Spannungsverlust <InlineMath math="\Delta\sigma_{pr}" />.
               </p>
 
@@ -2433,27 +2434,31 @@ export default function MechanischeKenngroessen() {
         </div>
       )}
 
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="mechanische_kenngroessen" />
+
       {/* FOOTER */}
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Rechenbeispiele nachgerechnet, Relaxationsklasse und Durchbiegungsgrenze korrigiert, Normausgaben ergänzt; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Mechanische Spannung', url: 'https://de.wikipedia.org/wiki/Mechanische_Spannung' },
           { title: 'Dehnung', url: 'https://de.wikipedia.org/wiki/Dehnung' },
-          { title: 'Elastizit%C3%A4tsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
-          { title: 'Kriechen_(Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
+          { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
+          { title: 'Kriechen (Werkstoffe) – Link manuell prüfen', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
           { title: 'Schwinden', url: 'https://de.wikipedia.org/wiki/Schwinden' },
           { title: 'Spannungsrelaxation', url: 'https://de.wikipedia.org/wiki/Spannungsrelaxation' },
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' },
-          { title: 'DIN EN 1993-1-1 (Eurocode 3: Bemessung von Stahlbauten - Dehnsteifigkeit und Biegung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbetonbauten - Kriechen und Schwinden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung von Holzbauten - Verformungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
+          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe – Zugversuch – Teil 1: Prüfverfahren bei Raumtemperatur; aktuelle Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' },
+          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 3.2.6 Werkstoffkennwerte); neue Generation DIN EN 1993-1-1:2025-04', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.4 Kriechen und Schwinden, 3.3.2 Relaxation); neue Generation DIN EN 1992-1-1:2025-09', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5, 2.2.3 Verformungen, 3.2 k_def)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
         ]}
         literatur={[
           'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',
-          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)',
-          'Kindmann, R., Kraus, D.: Finite-Elemente-Methoden im Stahlbau (Ernst & Sohn)'
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Kindmann, R.; Kraus, M.: Finite-Elemente-Methoden im Stahlbau. Berlin: Ernst & Sohn 2007'
         ]}
         formeln={
           activeTab === 'grundlagen'
@@ -2474,7 +2479,7 @@ export default function MechanischeKenngroessen() {
                 {
                   formel: '\\sigma = E \\cdot \\varepsilon \\iff \\varepsilon = \\frac{\\sigma}{E}',
                   erklaerung: 'Eindimensionales Hooke\'sches Gesetz für linear-elastische isotrope Festkörper.',
-                  quelle: 'Eurocode-Basisnormen'
+                  quelle: 'Elastizitätstheorie (Hooke)'
                 },
                 {
                   formel: 'G = \\frac{E}{2(1+\\nu)}, \\quad K = \\frac{E}{3(1-2\\nu)}',

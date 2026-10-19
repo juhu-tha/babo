@@ -7,7 +7,7 @@ export const mechanikTasks: Task[] = [
     title: 'Baustatik: Schnittgrößen am Einfeldträger',
     question: 'Ein Einfeldträger (Spannweite L = 6,0 m) wird mit einer Gleichlast von q = 15 kN/m belastet. Berechnen Sie das maximale Biegemoment und die maximale Querkraft.',
     moduleHint: { id: 'baustatik', name: 'Baustatik (Einfeldträger)' },
-    solution: 'Berechnung nach den statischen Gleichgewichtsbedingungen:\n1. **Maximales Biegemoment ($M_{\\text{max}}$):** Tritt in Trägermitte ($x = L/2$) auf:\n$$M_{\\text{max}} = \\frac{q \\cdot L^2}{8} = \\frac{15\\text{ kN/m} \\times (6.0\\text{ m})^2}{8} = \\frac{15 \\times 36}{8} = **67{,}5\\text{ kNm}**$$\n2. **Maximale Querkraft ($V_{\\text{max}}$):** Tritt direkt an den Auflagern ($x = 0$ und $x = L$) auf:\n$$V_{\\text{max}} = \\frac{q \\cdot L}{2} = \\frac{15\\text{ kN/m} \\times 6{,}0\\text{ m}}{2} = **45{,}0\\text{ kN}**$$'
+    solution: 'Berechnung nach den statischen Gleichgewichtsbedingungen:\n1. **Maximales Biegemoment ($M_{\\text{max}}$):** Tritt in Trägermitte ($x = L/2$) auf:\n$$M_{\\text{max}} = \\frac{q \\cdot L^2}{8} = \\frac{15\\text{ kN/m} \\times (6{,}0\\text{ m})^2}{8} = \\frac{15 \\times 36}{8} = **67{,}5\\text{ kNm}**$$\n2. **Maximale Querkraft ($V_{\\text{max}}$):** Tritt direkt an den Auflagern ($x = 0$ und $x = L$) auf:\n$$V_{\\text{max}} = \\frac{q \\cdot L}{2} = \\frac{15\\text{ kN/m} \\times 6{,}0\\text{ m}}{2} = **45{,}0\\text{ kN}**$$'
   },
   {
     id: 't11',
@@ -39,7 +39,7 @@ export const mechanikTasks: Task[] = [
     title: 'Bruchmechanik: Rissausbreitung & K_Ic',
     question: 'Ein Stahlbauteil hat einen initialen Anriss der Länge a = 2 mm. Der kritische Spannungsintensitätsfaktor (Bruchzähigkeit K_Ic) beträgt 50 MPa*m^0.5. Bei welcher Spannung kommt es zum Sprödbruch?',
     moduleHint: { id: 'bruchmechanik', name: 'Bruchmechanik' },
-    solution: 'Standardgleichung nach Irwin: $K_I = \\sigma \\cdot Y \\cdot \\sqrt{\\pi \\cdot a}$.\nSprödbruch tritt auf, wenn $K_I \\ge K_{Ic}$:\n$$\\sigma_c = \\frac{K_{Ic}}{Y \\cdot \\sqrt{\\pi \\cdot a}} = \\frac{50}{1{,}0 \\cdot \\sqrt{\\pi \\times 0{,}002\\text{ m}}} = \\frac{50}{\\sqrt{0{,}006283}} \\approx **630{,}8\\text{ MPa}**$$'
+    solution: 'Standardgleichung nach Irwin: $K_I = \\sigma \\cdot Y \\cdot \\sqrt{\\pi \\cdot a}$.\nSprödbruch tritt auf, wenn $K_I \\ge K_{Ic}$:\n$$\\sigma_c = \\frac{K_{Ic}}{Y \\cdot \\sqrt{\\pi \\cdot a}} = \\frac{50}{1{,}0 \\cdot \\sqrt{\\pi \\times 0{,}002\\text{ m}}} = \\frac{50}{\\sqrt{0{,}006283}} \\approx **630{,}8\\text{ MPa}**$$\nAnnahme: Geometriefaktor Y = 1,0 (Innenriss in einer großen Scheibe); für einen Randriss gilt Y ≈ 1,12, die kritische Spannung sinkt dann auf etwa 563 MPa.'
   },
   {
     id: 't18',
@@ -61,7 +61,7 @@ export const mechanikTasks: Task[] = [
     id: 't_von_mises',
     difficulty: 'Mittel',
     title: 'Festigkeitslehre: Gestaltänderungsenergiehypothese (von Mises)',
-    question: 'Ein dünnwandiger Stahlhohlkasten erfährt im Grenzzustand eine Normalspannung von \\sigma_x = 180 N/mm² und eine Schubspannung von \\tau_{xy} = 65 N/mm². Berechnen Sie die von Mises-Vergleichsspannung \\sigma_v und prüfe, ob die Streckgrenze von S235 (f_y = 235 N/mm²) überschritten wird.',
+    question: 'Ein dünnwandiger Stahlhohlkasten erfährt im Grenzzustand eine Normalspannung von \\sigma_x = 180 N/mm² und eine Schubspannung von \\tau_{xy} = 65 N/mm². Berechnen Sie die von Mises-Vergleichsspannung \\sigma_v und prüfen Sie, ob die Streckgrenze von S235 (f_y = 235 N/mm²) überschritten wird.',
     moduleHint: { id: 'festigkeit', name: 'Festigkeitsberechnungen' },
     solution: '1. **Formel nach von Mises für den ebenen Spannungszustand:**\n   $$\\sigma_v = \\sqrt{\\sigma_x^2 + 3 \\cdot \\tau_{xy}^2}$$\n2. **Berechnung:**\n   $$\\sigma_v = \\sqrt{180^2 + 3 \\times 65^2} = \\sqrt{32400 + 3 \\times 4225} = \\sqrt{32400 + 12675} = \\sqrt{45075} \\approx **212{,}3\\text{ N/mm}^2$$\n3. **Nachweis:**\n   Da $\\sigma_v = 212{,}3\\text{ N/mm}^2 \\le f_y = 235\\text{ N/mm}^2$ (Ausnutzungsgrad $\\eta = 212{,}3 / 235 \\approx 90{,}3\\%$), fließt der Stahl noch nicht. Die Tragsicherheit ist erfüllt.'
   },
@@ -85,7 +85,7 @@ export const mechanikTasks: Task[] = [
     id: 't_mechanik_volumendehnung',
     difficulty: 'Mittel',
     title: 'Mechanik-Grundlagen: Volumendehnung & Poissonzahl',
-    question: 'Warum gilt ein Werkstoff mit einer Poissonzahl von \\nu = 0.5 als vollkommen inkompressibel (volumenbeständig)?',
+    question: 'Warum gilt ein Werkstoff mit einer Poissonzahl von \\nu = 0,5 als vollkommen inkompressibel (volumenbeständig)?',
     moduleHint: { id: 'mechanik_info', name: 'Mechanik Überblick' },
     solution: 'Die relative Volumenänderung (Volumendehnung $\\varepsilon_V$) unter hydrostatischem Druck beträgt:\n$$\\varepsilon_V = \\varepsilon_x + \\varepsilon_y + \\varepsilon_z = \\frac{1 - 2\\nu}{E} (\\sigma_x + \\sigma_y + \\sigma_z)$$\nSetzt man $\\nu = 0{,}5$ ein, so wird der Term $(1 - 2\\nu) = (1 - 2 \\times 0{,}5) = 0$. Das bedeutet, dass sich das Volumen des Werkstoffs unter beliebiger mehraxialer Spannung nicht ändert (reine Gestaltänderung, kein Volumenschrumpf, typisch für Gummi, Elastomere und plastisch fließende Metalle).'
   }
