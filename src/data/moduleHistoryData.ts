@@ -449,7 +449,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2020 / 2024 / 2026',
         title: 'Vom Gebäudeenergiegesetz (GEG) zum Gebäudemodernisierungsgesetz (GModG)',
         category: 'Recht & Regularien',
-        description: 'Zusammenführung von EnEV, EEWärmeG und EnEG im Gebäudeenergiegesetz (GEG 2020) und Novellierung 2024 („Heizungsgesetz“) mit Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungsanlagen. Mit dem am 28.07.2026 verkündeten Gebäudemodernisierungsgesetz entfällt diese Vorgabe zugunsten einer „Bio-Treppe“ für neue Gas- und Ölheizungen; die Anforderungen an Neubau und Energieausweis bleiben in den bisherigen Paragrafen erhalten.',
+        description: 'Zusammenführung von EnEV, EEWärmeG und EnEG im Gebäudeenergiegesetz (GEG 2020) und Novellierung 2024 („Heizungsgesetz“) mit Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungsanlagen. Mit dem am 28.07.2026 verkündeten Gebäudemodernisierungsgesetz entfällt diese Vorgabe zugunsten einer „Bio-Treppe“ für neue Gas- und Ölheizungen; die Anforderungen an Neubau (§§ 15, 16) und Energieausweis (§§ 79–88) bleiben unter denselben Nummern, die Bestandsanforderungen stehen jetzt in §§ 35–37.',
         impact: 'Koppelung von hochgedämmter Gebäudehülle (Niedrigstenergiegebäude) mit Wärmepumpen, PV-Eigenstrom und kommunaler Wärmeplanung.',
         keyReference: 'GEG 2020/2024; GModG 2026; EU-Gebäuderichtlinie EPBD'
       }
@@ -593,12 +593,12 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'BMVI Nachrechnungsrichtlinie'
       },
       {
-        era: '2020er–heute (2024–2026)',
+        era: '2020 bis 2026',
         title: 'Paradigmenwechsel: Bestandserhalt als primärer Klimaschutz',
         category: 'Paradigmenwechsel',
-        description: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen heute auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Umbauordnung der Architektenkammern und Gebäudetyp-e-Initiativen fordern Erleichterungen für das Bauen im Bestand, um Abriss und Neubauemissionen zu stoppen.',
+        description: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen heute auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Initiativen für eine Umbauordnung und das Gebäudetyp-E-Vorhaben (Gesetzentwurf 2024, neuer Anlauf mit Eckpunkten 2025) zielen auf Erleichterungen für das Bauen im Bestand. 2026 erscheint mit EN 1990-2 erstmals eine europäische Norm zur Bewertung und Ertüchtigung bestehender Tragwerke.',
         impact: 'Der Bestand wird als unverzichtbarer CO2-Speicher begriffen; Sanierung und Umnutzung genießen Vorrang vor Neubau.',
-        keyReference: 'Bundesstiftung Baukultur / Gebäudetyp e'
+        keyReference: 'Bundesstiftung Baukultur; Gebäudetyp-E-Vorhaben; EN 1990-2:2026'
       }
     ],
     keyTakeaway: 'Bauen im Bestand wandelte sich von einer nostalgischen Nischendisziplin zum unbestrittenen Hauptvolumen des Bauens und dem effektivsten Hebel zur Vermeidung grauer Emissionen.'

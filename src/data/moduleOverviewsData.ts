@@ -1027,7 +1027,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Statische Nachrechnung mit modifizierten Teilsicherheitsbeiwerten und Ist-Materialfestigkeiten.',
         iconName: 'Calculator',
         keyFacts: ['Aktivierung von Tragreserven', 'Reduzierte γ-Werte durch Prüfung', 'Grenztragfähigkeit'],
-        normOrFormula: 'EN 1990-2:2026 / DBV-Heft 43',
+        normOrFormula: 'EN 1990-2:2026 / DBV-Merkblätter Bauen im Bestand',
         color: 'from-indigo-600 to-indigo-700'
       },
       {

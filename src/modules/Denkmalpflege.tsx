@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   Landmark, FileSignature, Paintbrush, Hammer, Scale, Coins, 
   ShieldAlert, Check, TrendingUp, AlertTriangle, FileText, BookOpen, Info, ArrowRight, ClipboardCheck
@@ -276,7 +278,7 @@ export default function Denkmalpflege() {
                       <Check className="text-emerald-600" size={16} /> § 105 GModG (vormals GEG)
                     </h4>
                     <p className="text-slate-600 text-xs leading-relaxed">
-                      Das Gebäudeenergiegesetz verpflichtet im Grundsatz zur energetischen Aufrüstung des Bestandes. Gemäß <strong>§ 105 GModG (vormals GEG)</strong> kann bei Baudenkmälern und sonstiger besonders erhaltenswerter Bausubstanz von den Anforderungen abgewichen werden, soweit deren Erfüllung die Substanz oder das Erscheinungsbild beeinträchtigt oder zu unverhältnismäßigem Aufwand führt (Kann-Regelung, keine automatische Befreiung).
+                      Das Gebäudemodernisierungsgesetz (vormals GEG) stellt Anforderungen an Änderungen und Nachrüstungen im Bestand (§§ 35, 36). Gemäß <strong>§ 105 GModG (vormals GEG)</strong> kann bei Baudenkmälern und sonstiger besonders erhaltenswerter Bausubstanz von den Anforderungen abgewichen werden, soweit deren Erfüllung die Substanz oder das Erscheinungsbild beeinträchtigt oder zu unverhältnismäßigem Aufwand führt (Kann-Regelung, keine automatische Befreiung).
                     </p>
                     <p className="text-slate-600 text-xs leading-relaxed">
                       Eine Pflicht zur Durchführung energetischer Verbesserungen (z.B. Dachbodendämmung, Fassadendämmung) entfällt, wenn die Maßnahme das äußere Erscheinungsbild unzumutbar verzerrt oder die Substanz schädigt.
@@ -420,7 +422,35 @@ export default function Denkmalpflege() {
         </div>
       </div>
       
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Kristallisationsdruck von Halit nach Correns"
+        zielGleichung="p = \frac{R \cdot T}{V_m} \cdot \ln\frac{c}{c_s}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Natriumchlorid (Halit), molares Volumen V_m = 27,0 cm³/mol, T = 293 K, Übersättigung c/c_s = 2:', formel: 'R \\cdot T = 8{,}314 \\cdot 293 = 2\\,437\\,\\text{J/mol}' },
+          { titel: 'Kristallisationsdruck', erklaerung: 'Einsetzen in die Correns-Gleichung:', formel: 'p = \\frac{2\\,437}{27{,}0 \\cdot 10^{-6}} \\cdot \\ln 2 = 9{,}0 \\cdot 10^{7} \\cdot 0{,}693 = 62\\,\\text{MPa}' },
+          { titel: 'Vergleich', erklaerung: 'Zugfestigkeit historischer Ziegel oder Sandsteine liegt bei etwa 1 bis 5 MPa:', formel: 'p \\gg f_t' }
+        ]}
+        ergebnisHinweis="Schon geringe Übersättigungen erzeugen theoretisch Drücke weit über der Steinfestigkeit; real begrenzen Porengröße und Kristallisationsort den Druck. Salzreduzierung (Kompressen) und Sanierputze nach WTA-Merkblatt 2-9 sind daher Teil jeder Denkmalinstandsetzung."
+        normQuelle="Correns (1949); WTA-Merkblatt 2-9 (Sanierputzsysteme)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Denkmalverträgliche Innendämmung einer Fachwerkwand"
+        zielGleichung="U_{neu} = \frac{1}{1/U_{alt} + d/\lambda}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Fachwerkwand mit Lehmausfachung U_alt = 1,20 W/(m²K); 4 cm Holzfaser-Lehm-System (λ = 0,045 W/(mK)), diffusionsoffen und kapillaraktiv.', formel: 'R_D = \\frac{0{,}04}{0{,}045} = 0{,}89\\,\\text{m}^2\\text{K/W}' },
+          { titel: 'Neuer U-Wert', erklaerung: 'Halbierung der Verluste bei geringer Dicke:', formel: 'U_{neu} = \\frac{1}{0{,}833 + 0{,}89} = 0{,}58\\,\\text{W/(m}^2\\text{K)}' },
+          { titel: 'Rechtlicher Rahmen', erklaerung: 'Der Höchstwert 0,24 W/(m²K) ist ohne Substanzverlust nicht erreichbar; § 105 GModG erlaubt die Abweichung, die Denkmalschutzbehörde ist einzubinden.', formel: '0{,}58 > 0{,}24 \\Rightarrow \\text{Abweichung nach § 105 GModG}' }
+        ]}
+        ergebnisHinweis="Bei Fachwerk sind Schlagregenbelastung und Anschlussfugen zwischen Holz und Gefach entscheidend; WTA-Merkblatt 8-1 und ein hygrothermischer Nachweis (WTA 6-5) sind zu beachten."
+        normQuelle="GModG § 105; WTA-Merkblätter 6-4, 6-5, 8-1"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="denkmalpflege" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: § 105 GModG, Salzkristallisation und Innendämmung geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         weblinks={[
           { title: "WTA e.V. Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung", url: "https://www.wta-gmbh.de/" },
           { title: "Bayerisches Landesamt für Denkmalpflege (BLfD)", url: "https://www.blfd.bayern.de/" }
@@ -432,13 +462,13 @@ export default function Denkmalpflege() {
           { title: "Charta von Venedig", url: "https://de.wikipedia.org/wiki/Charta_von_Venedig" }
         ]} 
         literatur={[
-          "Eberl, H.; Martin, D. (2019): Denkmalschutzgesetz (BayDSchG). Kommentar für die Praxis (C.H. Beck)",
+          "Eberl, W.; Martin, D.; Spennemann, J.: Bayerisches Denkmalschutzgesetz – Kommentar. Stuttgart: Kohlhammer (aktuelle Auflage; Angaben manuell prüfen)",
           "WTA-Merkblatt 6-4: Innendämmung nach WTA: Planungsleitfaden",
           "WTA-Merkblatt 2-9: Sanierputzsysteme"
         ]} 
         regelwerke={[
-          { title: "Bayerisches Denkmalschutzgesetz (BayDSchG)", url: "https://www.gesetze-bayern.de/Content/Document/BayDSchG" },
-          { title: "Gebäudeenergiegesetz (GEG) - § 105 Ausnahmen", url: "https://www.gesetze-im-internet.de/geg/__105.html" },
+          { title: "Bayerisches Denkmalschutzgesetz (BayDSchG; in anderen Ländern gilt das jeweilige Landesdenkmalschutzgesetz)", url: "https://www.gesetze-bayern.de/Content/Document/BayDSchG" },
+          { title: "Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 105 Baudenkmäler und sonstige besonders erhaltenswerte Bausubstanz", url: "https://www.gesetze-im-internet.de/geg/__105.html" },
           { title: "Bayerische Bauordnung (BayBO) - Konzentrationswirkung", url: "https://www.gesetze-bayern.de/Content/Document/BayBO" }
         ]} 
         formeln={[
@@ -448,8 +478,8 @@ export default function Denkmalpflege() {
             quelle: 'WTA / Correns-Gleichung'
           },
           {
-            formel: 'U_{\\text{eff}} = \\frac{1}{R_{si} + \\sum \\frac{d_i}{\\lambda_i} + R_{\\text{Dämm}} + R_{se}} \\le U_{\\text{max,WTA}}',
-            erklaerung: 'U-Wert-Berechnung bei denkmalgerechter Innendämmung unter Vermeidung von tauwassergefährdeten Grenzschichten nach WTA-Merkblatt 6-4.',
+            formel: 'U_{\\text{eff}} = \\frac{1}{R_{si} + \\sum \\frac{d_i}{\\lambda_i} + R_{\\text{Dämm}} + R_{se}}',
+            erklaerung: 'U-Wert bei denkmalgerechter Innendämmung. WTA-Merkblatt 6-4 nennt keinen Höchst-U-Wert; maßgebend ist der Feuchtenachweis (Grenzschicht, Tauwasser, Rücktrocknung).',
             quelle: 'WTA-Merkblatt 6-4'
           }
         ]} 

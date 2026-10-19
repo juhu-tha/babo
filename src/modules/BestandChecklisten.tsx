@@ -11,6 +11,8 @@ import {
   ClipboardList
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 interface ChecklistItem {
   id: string;
@@ -339,16 +341,43 @@ export default function BestandChecklisten() {
       </div>
 
       {/* Module Footer Links */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Chloridgehalt aus Bohrmehl auf den Zementgehalt umrechnen"
+        zielGleichung="Cl_{Z} = Cl_{B} \cdot \frac{\rho_B}{z}"
+        schritte={[
+          { titel: 'Analyse', erklaerung: 'Bohrmehl aus 20–40 mm Tiefe: 0,08 M.-% Chlorid bezogen auf Beton; Rohdichte 2 350 kg/m³, Zementgehalt laut Bestandsunterlagen 300 kg/m³.', formel: 'Cl_B = 0{,}08\\,\\text{M.-\\%}' },
+          { titel: 'Umrechnung', erklaerung: 'Bezug auf Zementmasse:', formel: 'Cl_Z = 0{,}08 \\cdot \\frac{2\\,350}{300} = 0{,}63\\,\\text{M.-\\% v. z}' },
+          { titel: 'Bewertung', erklaerung: 'Anhaltswert für korrosionsauslösenden Chloridgehalt ≈ 0,5 M.-% bezogen auf Zement (objektspezifisch festzulegen):', formel: '0{,}63 > 0{,}5 \\Rightarrow \\text{Korrosionsrisiko in Bewehrungstiefe}' }
+        ]}
+        ergebnisHinweis="Ist der Zementgehalt unbekannt, ist er zu schätzen oder analytisch zu bestimmen – der Fehler geht direkt in das Ergebnis ein."
+        normQuelle="DIN EN 14629; TR Instandhaltung (DIBt)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Materialfeuchte nach der Darr-Methode"
+        zielGleichung="u = \frac{m_f - m_{tr}}{m_{tr}} \cdot 100\,\%"
+        schritte={[
+          { titel: 'Wägung', erklaerung: 'Probe aus erdberührtem Ziegelmauerwerk: feucht 520 g, nach Trocknung bei 105 °C bis zur Massekonstanz 495 g.', formel: 'm_f = 520\\,\\text{g},\\; m_{tr} = 495\\,\\text{g}' },
+          { titel: 'Feuchtegehalt', erklaerung: 'Massebezogener Wassergehalt:', formel: 'u = \\frac{520 - 495}{495} \\cdot 100 = 5{,}1\\,\\text{M.-\\%}' }
+        ]}
+        ergebnisHinweis="Für die Bewertung ist der Durchfeuchtungsgrad aussagekräftiger (Bezug auf die maximale Wasseraufnahme); zusätzlich sind Salzgehalt und hygroskopische Feuchte zu bestimmen (WTA-Merkblatt 4-5)."
+        normQuelle="WTA-Merkblatt 4-5 (Mauerwerksdiagnostik)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bestand_checklisten" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: Regelwerke und Prüfverfahren geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Bauen im Bestand', url: 'https://de.wikipedia.org/wiki/Bauen_im_Bestand' },
           { title: 'Bauaufnahme', url: 'https://de.wikipedia.org/wiki/Bauaufnahme' },
           { title: 'Zerstörungsfreie Prüfung im Bauwesen', url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Pr%C3%BCfung_im_Bauwesen' }
         ]}
         regelwerke={[
-          { title: 'VDI-Richtlinie 6200: Standsicherheit von Bauwerken - Regelmäßige Überprüfung', url: 'https://www.vdi.de/' },
+          { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
           { title: 'WTA-Merkblatt 4-5-99/D: Beurteilung von Mauerwerk – Mauerwerksdiagnostik', url: 'https://www.wta-gmbh.de/' },
-          { title: 'DIN 1076: Ingenieurbauwerke - Überwachung und Prüfung', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' }
+          { title: 'DIN 1076:1999-11 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'

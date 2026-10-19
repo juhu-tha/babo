@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   Building2, Landmark, Layers, HelpCircle, ArrowRight, Activity, 
   Info, AlertTriangle, BookOpen, PenTool, Flame, RefreshCw, Hammer
@@ -877,7 +879,34 @@ export default function HistorischeBauweisen() {
       </div>
 
       {/* Standardized Module Footer */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Biegespannung in einer Holzbalkendecke um 1900"
+        zielGleichung="\sigma_m = \frac{q \cdot l^2 / 8}{b \cdot h^2 / 6}"
+        schritte={[
+          { titel: 'System', erklaerung: 'Balken 16/22 cm im Abstand 0,80 m, Spannweite 4,50 m; Eigenlast 1,5 kN/m² (mit Schüttung), Nutzlast 2,0 kN/m² (charakteristisch):', formel: 'q = (1{,}5 + 2{,}0) \\cdot 0{,}80 = 2{,}8\\,\\text{kN/m}' },
+          { titel: 'Moment und Widerstandsmoment', erklaerung: 'Einfeldträger:', formel: 'M = \\frac{2{,}8 \\cdot 4{,}5^2}{8} = 7{,}09\\,\\text{kNm}, \\quad W = \\frac{160 \\cdot 220^2}{6} = 1{,}29 \\cdot 10^6\\,\\text{mm}^3' },
+          { titel: 'Spannung', erklaerung: 'Charakteristische Biegespannung:', formel: '\\sigma_m = \\frac{7{,}09 \\cdot 10^6}{1{,}29 \\cdot 10^6} = 5{,}5\\,\\text{N/mm}^2' }
+        ]}
+        ergebnisHinweis="Die Biegung ist bei historischen Decken selten maßgebend; kritisch sind Durchbiegung, Schwingungen und Balkenkopffäule im Mauerwerksauflager."
+        normQuelle="Technische Mechanik; Nachweis nach DIN EN 1995-1-1 mit NA"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Schwindmaß eines Deckenbalkens nach dem Austrocknen"
+        zielGleichung="\Delta b = b \cdot \alpha_t \cdot \Delta u"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Fichte, tangentiale Querschnittsabmessung 220 mm; Einbau mit u = 30 %, Ausgleichsfeuchte im beheizten Gebäude u = 12 %; differentielles Schwindmaß tangential ≈ 0,24 % je % Holzfeuchte (Richtwert).', formel: '\\Delta u = 30 - 12 = 18\\,\\%' },
+          { titel: 'Schwindmaß', erklaerung: 'Lineare Näherung unterhalb des Fasersättigungsbereichs:', formel: '\\Delta b = 220 \\cdot 0{,}0024 \\cdot 18 = 9{,}5\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Fast 1 cm Schwinden erklärt typische Risse, lockere Verbindungen und Fugen in Fachwerk und Dielenböden. Schwindrisse sind meist unkritisch, Verbindungsmittel sind aber nachzuziehen."
+        normQuelle="DIN 68100:2010-07 (Schwind- und Quellmaße)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="historische_bauweisen" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: Konstruktionsbeispiele und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: "Mauerwerk", url: "https://de.wikipedia.org/wiki/Mauerwerk" },
           { title: "Fachwerkhaus", url: "https://de.wikipedia.org/wiki/Fachwerkhaus" },
@@ -886,14 +915,14 @@ export default function HistorischeBauweisen() {
           { title: "Dachwerk", url: "https://de.wikipedia.org/wiki/Dachwerk" }
         ]}
         literatur={[
-          "Breymann, G. A.: Allgemeine Baukonstruktionslehre. Band I-III, Neuausgabe historischer Handbücher.",
-          "WTA-Merkblatt 8-1: Fachwerk - Instandsetzung nach WTA-Richtlinien."
+          "Breymann, G. A.: Allgemeine Bau-Constructions-Lehre, mehrere Bände (ab 1849; Nachdrucke verfügbar).",
+          "WTA-Merkblatt 8-1: Fachwerkinstandsetzung nach WTA I – Bauphysikalische Anforderungen an Fachwerkgebäude (Ausgabe manuell prüfen)."
         ]}
         regelwerke={[
-          { title: "DIN 1053-1:1996 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)", url: "https://www.dinmedia.de/de/suche?q=DIN+1053-1" },
+          { title: "DIN 1053-1:1996-11 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)", url: "https://www.dinmedia.de/de/suche?q=DIN+1053-1" },
           { title: "WTA-Merkblätter Reihe 8 (Fachwerkinstandsetzung, u. a. Ausfachungen)", url: "https://www.wta-gmbh.de" },
           { title: "DIN 68100:2010-07 (Toleranzsystem für Holzbe- und -verarbeitung – Schwind- und Quellmaße)", url: "https://www.dinmedia.de/de/suche?q=DIN+68100" },
-          { title: "DIN EN 1995-1-1/NA (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1" }
+          { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1" }
         ]}
         formeln={[
           {
