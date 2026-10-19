@@ -8,6 +8,17 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.19.0',
+    date: '18.10.2026',
+    title: 'Spannbeton-Gesamtrevision: Differenzierte Einwirkungen (M_g1, M_perm, M_char), EC2-Grenzspannungsrechner & Dehnungsdynamik',
+    badge: 'minor',
+    changes: [
+      'Differenzierte Einwirkungskombinationen im Querschnitts-Rechner: Trennung der äußeren Schnittgrößen in M_g1 (Eigengewicht zum Vorspannzeitpunkt), M_perm (quasi-ständige Einwirkung: g1 + g2 + ψ₂·q) und M_char (charakteristische Lastkombination: g1 + g2 + q) zur normkonformen Spannungs- und Rissverifikation gemäß DIN EN 1992-1-1.',
+      'Interaktiver EC2-Grenzspannungs-Rechner mit Zementklassen-Dynamik: Integration der Zementfestigkeitsklassen (Klasse N, R, S) und der zeitabhängigen Festigkeitsentwicklung f_ck(t₀) über β_cc(t) nach Eurocode 2 Abschnitt 3.1.2 mit exakter Berechnung der zulässigen Betondruckspannungen (0,60·f_ck(t₀) zur Übergabe bzw. 0,45·f_ck für lineares Kriechen).',
+      'Vorspann- & Dehnungs-Simulator mit Eigengewichtskopplung: Realitätsnahe Modellierung des Balkeneigengewichts (g = 12,5 kN/m) und zusätzlicher Nutzlasten q, Ermittlung der Entlastungsvorspannkraft P_bal sowie präzise Spannungszustands-Klassifizierung (voll überdrückt, Zustand I mit Zugspannungen, Zustand II Rissbildung) inklusive Auslastungsgrad σ_p / σ_pm0,zul.'
+    ]
+  },
+  {
     version: 'v3.18.0',
     date: '17.10.2026',
     title: 'GModG-Vollaktualisierung, Elasto-Plastizität & Rheologie, Cluster III & Zusatzstoffe',
