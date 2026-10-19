@@ -1541,5 +1541,155 @@
       "targetModuleLabel": "Baustoffkenngrößen"
     },
     "verified": false
+  },
+  {
+    "id": "q_prob_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Probenahme nach EBV",
+    "difficulty": "Basis",
+    "normRef": "EBV § 8",
+    "question": "Nach welchem Regelwerk ist die Probenahme mineralischer Ersatzbaustoffe für die Erstprüfung nach § 8 EBV durchzuführen?",
+    "options": [
+      "DIN EN 12504-1",
+      "LAGA PN 98",
+      "DIN EN 206",
+      "DIN 4108-3"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 8 Abs. 1 EBV schreibt die LAGA-Richtlinie PN 98 vor; DIN 19698-1/-2 darf ergänzend herangezogen werden. DIN EN 12504-1 regelt Bohrkerne aus Beton im Bauwerk.",
+    "gapAnalysis": {
+      "topic": "Probenahme nach EBV",
+      "misconception": "Betonprüfnormen werden mit der abfallrechtlichen Haufwerksbeprobung verwechselt.",
+      "coreRule": "Haufwerke/Ersatzbaustoffe: LAGA PN 98 (ergänzend DIN 19698); Probenteilung DIN EN 932-2.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Probenahme nach EBV“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Bohrkerne: Schlankheit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 13791",
+    "question": "Welcher Festigkeit entspricht nach DIN EN 13791 das Prüfergebnis eines Bohrkerns mit d = 100 mm und h/d = 1?",
+    "options": [
+      "Zylinderdruckfestigkeit",
+      "Würfeldruckfestigkeit",
+      "Biegezugfestigkeit",
+      "Spaltzugfestigkeit"
+    ],
+    "correctIdx": 1,
+    "explanation": "Kurze Kerne (h/d = 1) werden durch die Endflächenreibung gestützt; ihr Ergebnis wird der In-situ-Würfeldruckfestigkeit zugeordnet. Kerne mit h/d = 2 entsprechen der Zylinderdruckfestigkeit.",
+    "gapAnalysis": {
+      "topic": "Bohrkerne: Schlankheit",
+      "misconception": "Die Querdehnungsbehinderung durch die Druckplatten wird übersehen.",
+      "coreRule": "h/d = 1 → Würfel, h/d = 2 → Zylinder; Zwischenwerte umrechnen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bohrkerne: Schlankheit“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Rückprallhammer: Schlagrichtung",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN EN 12504-2",
+    "question": "Sie prüfen mit dem Rückprallhammer senkrecht nach unten auf eine Bodenplatte. Wie ist der Rohwert gegenüber horizontaler Schlagrichtung zu korrigieren?",
+    "options": [
+      "Gar nicht – die Schlagrichtung ist ohne Einfluss",
+      "Nach unten (negative Korrektur), weil die Schwerkraft den Schlag verstärkt",
+      "Nach oben (positive Korrektur), weil der Bolzen gegen die Schwerkraft zurückprallt",
+      "Um pauschal 50 %"
+    ],
+    "correctIdx": 2,
+    "explanation": "Beim Schlag nach unten muss die Masse gegen die Schwerkraft zurückprallen – der angezeigte Wert ist zu niedrig, die Korrektur positiv. Gegen eine Decke ist es umgekehrt. Die Werte sind gerätespezifisch.",
+    "gapAnalysis": {
+      "topic": "Rückprallhammer: Schlagrichtung",
+      "misconception": "Es wird nur der Hinweg der Schlagmasse betrachtet, nicht der gemessene Rückprall.",
+      "coreRule": "Nach unten: R zu niedrig → +ΔR; nach oben: R zu hoch → −ΔR.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer: Schlagrichtung“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Rückprallhammer: Auswertung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12504-2",
+    "question": "Welcher Kennwert wird nach DIN EN 12504-2 aus den mindestens 9 Einzelschlägen einer Prüffläche gebildet?",
+    "options": [
+      "Der Maximalwert",
+      "Der arithmetische Mittelwert nach Streichen von Min. und Max.",
+      "Der Median",
+      "Der kleinste Wert"
+    ],
+    "correctIdx": 2,
+    "explanation": "Kennwert ist der Median. Weichen mehr als 20 % der Werte um mehr als 25 % vom Median ab, wird die ganze Messreihe verworfen.",
+    "gapAnalysis": {
+      "topic": "Rückprallhammer: Auswertung",
+      "misconception": "Mittelwertbildung wie bei Festigkeitsprüfungen wird übertragen.",
+      "coreRule": "≥ 9 Schläge, Abstand ≥ 25 mm, Median; Verwerfungskriterium 20 %/25 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer: Auswertung“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Leichtflüchtige Schadstoffe",
+    "difficulty": "Fortgeschritten",
+    "normRef": "LAGA PN 98",
+    "question": "Bei Verdacht auf LHKW oder BTEX in einem Haufwerk – wie sind die Einzelproben zu behandeln?",
+    "options": [
+      "Intensiv mischen und vierteln wie üblich",
+      "Trocknen bei 105 °C vor dem Versand",
+      "Ohne Homogenisierung direkt gasdicht abfüllen (z. B. Septumgläser)",
+      "Mit Wasser auswaschen"
+    ],
+    "correctIdx": 2,
+    "explanation": "Leichtflüchtige Stoffe gasen beim Mischen aus; die Analyse würde zu niedrige Gehalte zeigen. Einzelproben werden daher direkt gasdicht gefasst. Die meisten PAK sind schwerflüchtig und werden über die Sammelprobe erfasst.",
+    "gapAnalysis": {
+      "topic": "Leichtflüchtige Schadstoffe",
+      "misconception": "Die Homogenisierungsregel wird auch auf flüchtige Stoffe angewendet.",
+      "coreRule": "Flüchtige Parameter: keine Homogenisierung, sofort gasdicht abfüllen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Leichtflüchtige Schadstoffe“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
   }
 ]
