@@ -6,6 +6,7 @@ import {
   User, Users, CheckCircle, Box
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 interface HistoricalPeriod {
   era: string;
@@ -55,16 +56,16 @@ export default function Baustoffkunde() {
     {
       id: 'vitruv',
       name: 'Marcus Vitruvius Pollio (Vitruv)',
-      lifespan: 'ca. 80 v. Chr. – 15 v. Chr.',
+      lifespan: 'ca. 80/70 v. Chr. – nach 15 v. Chr.',
       role: 'Römischer Architekt, Ingenieur & Offizier',
       field: 'Antiker Gussmauerwerksbau (Opus Caementicium)',
       origin: 'Römisches Reich',
-      contribution: 'Verfasste das legendäre Standardwerk "De Architectura" (Zehn Bücher über Architektur), in dem er erstmals detailliert die physikalisch-chemische Wirkungsweise von sandig-vulkanischen Puzzolanerden und geeigneten Luftkalköfen beschrieb.',
+      contribution: 'Verfasste „De architectura“ (Zehn Bücher über Architektur), das einzige vollständig erhaltene Architekturlehrbuch der Antike. Im zweiten Buch beschreibt er Kalkbrennen, Sand, Ziegel und die vulkanische Puzzolanerde (pulvis puteolanus), die Kalkmörtel wasserbeständig macht – als Erfahrungswissen, noch ohne chemische Erklärung.',
       achievements: [
         'Formulierte die klassischen Kriterien guter Architektur, die noch heute für Baustoffe gelten: Firmitas (Festigkeit), Utilitas (Gebrauchstauglichkeit) und Venustas (Schönheit).',
-        'Dokumentierte das Rezeptur-Geheimnis der römischen Unterwasserhärtung von Opus Caementicium durch Beimischen von reaktiver Vulkanerde aus Baiae und Pozzuoli.'
+        'Dokumentierte die Herstellung wasserbeständiger Mörtel und Hafenbauten durch Beimischen von Vulkanerde aus der Gegend von Baiae und Puteoli (Pozzuoli).'
       ],
-      quote: '„Es gibt auch eine Art Staub, welche aus natürlichen Ursachen eine bewundernswerte Wirkung hervorbringt. Sie findet sich in der Gegend von Baiae und den Landstrichen um den Vesuv.“'
+      quote: '„Es gibt auch eine Art Staub, der von Natur aus wunderbare Wirkungen hervorbringt. Er findet sich in der Gegend von Baiae und im Gebiet der Gemeinden rings um den Vesuv.“ (De architectura II, 6, 1; sinngemäße Übersetzung)'
     },
     {
       id: 'aspdin',
@@ -73,12 +74,12 @@ export default function Baustoffkunde() {
       role: 'Britischer Maurer & Erfinder',
       field: 'Erfindung des Portlandzements (OPC)',
       origin: 'Großbritannien (Leeds)',
-      contribution: 'Er erhielt am 21. Oktober 1824 das fundamentale Patent für das künstliche Bindemittel „Portland Cement“. Er entwickelte das Herstellungsverfahren durch zielgerichtetes Brennen einer fein gemahlenen Mischung aus weichem Kalkstein und tonreichen Gesteinen.',
+      contribution: 'Erhielt am 21. Oktober 1824 das britische Patent Nr. 5022 für einen künstlichen Stein bzw. Zement, den er „Portland Cement“ nannte. Gebrannt wurde eine Mischung aus Kalkstein und Ton. Aspdins Brenntemperaturen lagen aber unter der Sintergrenze – sein Produkt entsprach eher einem hydraulischen Kalk. Den gesinterten, im heutigen Sinn echten Portlandzement stellte erst Isaac Charles Johnson um 1844 her.',
       achievements: [
-        'Brachte die künstliche Zementherstellung durch reproduzierbare Mischverhältnisse und kontrolliertes Trockenbrennen auf ein industrielles Niveau.',
-        'Wählte bewusst den werbewirksamen Begriff „Portlandzement“, da das ausgehärtete Material farblich und haptisch dem edlen, damals hochpreisigen Portland-Naturstein der englischen Halbinsel Portland ähnelte.'
+        'Gründete Zementwerke in Wakefield; sein Sohn William Aspdin trug wesentlich zur Weiterentwicklung und Verbreitung bei.',
+        'Wählte den werbewirksamen Namen „Portland Cement“, weil das erhärtete Material farblich dem geschätzten Portland-Kalkstein von der Isle of Portland ähnelte.'
       ],
-      quote: '„Ich, Joseph Aspdin, erkläre hiermit mein Verfahren zur Herstellung einer Zementmischung, die ich Portlandzement nenne...“'
+      quote: '„Mein Verfahren zur Herstellung eines Zements oder künstlichen Steins … den ich Portland Cement nenne, ist wie folgt …“ (Patentschrift Nr. 5022, 1824; sinngemäße Übersetzung)'
     },
     {
       id: 'vicat',
@@ -87,12 +88,12 @@ export default function Baustoffkunde() {
       role: 'Französischer Bauingenieur & Forscher',
       field: 'Hydraulizitätstheorie & standardisierte Zementprüfung',
       origin: 'Frankreich (Grenoble)',
-      contribution: 'Erforste als Erster rein physikalisch-chemisch das Phänomen der Hydraulizität (wasserfeste Erhärtung). Er erfand das noch heute weltweit genormte Nadelprüfgerät ("Vicat-Nadel") zur prazisen Ermittlung des Erstarrungsbeginns von Zementleim.',
+      contribution: 'Untersuchte systematisch die Hydraulizität (Erhärtung unter Wasser) von Kalken und zeigte, dass sie auf dem Tongehalt beruht. Nach ihm ist das Nadelgerät benannt, mit dem bis heute Erstarrungsbeginn und -ende von Zementleim bestimmt werden (DIN EN 196-3).',
       achievements: [
-        'Veröffentlichte 1818 das chemische Prinzip für künstliche hydraulische Kalke und verzichtete selbstlos auf Patente, um das weltweite Bauwesen voranzubringen.',
-        'Formulierte den Vicatsche Index (Verhältnis von SiO2 + Al2O3 zu CaO/MgO) zur Beurteilung der Eignung von Zementrohmehlen.'
+        'Veröffentlichte 1818 seine Untersuchungen zur Herstellung künstlicher hydraulischer Kalke aus Kalkstein und Ton und verzichtete auf ein Patent.',
+        'Ordnete Kalke nach ihrem Tongehalt in Gruppen schwach bis stark hydraulisch – Grundlage des später so genannten Hydraulizitätsindex (Verhältnis der Säure- zu den Basenanteilen).'
       ],
-      quote: '„Die Wissenschaft verzeichnet ihren größten Triumph erst dann, wenn sie direkt zum materiellen Fortschritt und zur Lebenssicherheit der menschlichen Gesellschaft beiträgt.“'
+      quote: 'Kernaussage (Zusammenfassung, kein Originalzitat): Die Wasserbeständigkeit eines Kalks ist keine Eigenschaft geheimnisvoller Rohstoffe, sondern lässt sich über den Tonanteil gezielt einstellen.'
     },
     {
       id: 'monier',
@@ -100,13 +101,13 @@ export default function Baustoffkunde() {
       lifespan: '1823 – 1906',
       role: 'Französischer Gärtner & Erfinder',
       field: 'Erfindung des Verbundbaus (Eisen-/Stahlbeton)',
-      origin: 'Frankreich (Saint-Quentin)',
-      contribution: 'Erkannte die mangelhafte Zugfestigkeit bei unbewehrten Mörtelschalen. Ab 1849 legte er Eisendrahtgeflechte als zugfeste Skeletteinlage in seine Gärtnereizuber ein und schuf damit die Geburtsstunde des Verbundbaus.',
+      origin: 'Frankreich (Saint-Quentin-la-Poterie, Gard)',
+      contribution: 'Stellte als Pariser Gärtner Pflanzkübel aus Zementmörtel mit Einlagen aus Eisendraht her und erhielt dafür 1867 ein erstes Patent. Er war nicht der Erste (u. a. Lambot 1848, Wilkinson 1854), aber seine Patente wurden zum Ausgangspunkt der industriellen Verbreitung des Eisenbetons.',
       achievements: [
-        'Sicherte sich zukunftsentscheidende Patente für weitreichendere Konstruktionen wie Rohre, Fassadenplatten, Gewölbedecken und erste Brückenträger.',
-        'Sein Name ging dauerhaft in den Bauwortschatz über (sogenannte „Monier-Eisen“ für Betonstahlbewehrungen).'
+        'Erweiterte seine Patente bis 1878 auf Rohre, Behälter, Platten, Treppen und Brücken.',
+        'Sein Name ging in den Bauwortschatz ein („Moniereisen“ als historische Bezeichnung für Betonstahl, „Monierbau“).'
       ],
-      quote: '„Ich suchte nach einer Methode, um große Pflanzenkübel zu produzieren, die nicht im Frost platzen, wenn das feuchte Erdreich sich ausdehnt. Das Eisen gab dem Mörtelkörper die nötige Zähigkeit.“'
+      quote: 'Kernaussage (Zusammenfassung, kein Originalzitat): Monier bewehrte nach praktischer Erfahrung, nicht nach Berechnung – die Lage der Eisen entsprach anfangs oft nicht der Zugzone.'
     },
     {
       id: 'wayss_freytag',
@@ -115,12 +116,12 @@ export default function Baustoffkunde() {
       role: 'Deutsche Bauunternehmer & Bautechnik-Pioniere',
       field: 'Wissenschaftliche Validierung des Stahlbetonprinzips',
       origin: 'Deutschland (Neustadt/Weinstraße & Berlin)',
-      contribution: 'Erkannten das immense Tragpotenzial des elastischen Zusammenspiels von Stahl und Beton. Sie erwarben die Patentrechte von Monier für den deutschen Raum und finanzierten die ersten wissenschaftlich exakten Tragbarkeitsversuche.',
+      contribution: 'Gustav Adolf Wayss erwarb 1885 die Monier-Patente für Deutschland; Conrad Freytag (Freytag & Heidschuch) beteiligte sich an der Verwertung. Sie ließen Belastungsversuche durchführen und förderten die erste Berechnungstheorie.',
       achievements: [
-        'Brachten das monolithische Verbundprinzip auf den baurechtlich anerkannten Stand der Technik und gründeten die weltbekannte Wayss & Freytag AG.',
-        'Veröffentlichten 1887 das Buch „Das System Monier“, welches als Initialzündung der Berechnungsverfahren im konstruktiven Ingenieurbau gilt.'
+        'Aus der Zusammenarbeit ging die Bauunternehmung Wayss & Freytag hervor, über Jahrzehnte eine der führenden Firmen des Betonbaus.',
+        'Gaben 1887 die Schrift „Das System Monier“ heraus; sie enthielt die von Regierungsbaumeister Matthias Koenen 1886 aufgestellte erste Bemessungsmethode für Monierplatten.'
       ],
-      quote: '„Erst durch die präzise, tiefe Einbettung des Eisens in die neutrale Faser des Betons wird aus zwei gewöhnlichen Baustoffen ein harmonisches, unverwüstliches Verbundtragwerk.“'
+      quote: 'Kernaussage (Zusammenfassung, kein Originalzitat): Das Eisen gehört in die Zugzone – Beton übernimmt den Druck, der Stahl den Zug; nur über den Verbund wirken beide zusammen.'
     },
     {
       id: 'moersch',
@@ -128,13 +129,13 @@ export default function Baustoffkunde() {
       lifespan: '1872 – 1950',
       role: 'Bauingenieur & Hochschulprofessor',
       field: 'Theorie des Massivbaus & Schubbemessung',
-      origin: 'Deutschland (Stuttgart)',
-      contribution: 'Gilt weltweit als der Begründer des wissenschaftlich fundierten Stahlbetonbaus. Er systematisierte die Schubbemessung und entwickelte das zeitlose Fachwerkmodell für Querkraftnachweise im Massivbau.',
+      origin: 'Deutschland (Reutlingen / Stuttgart)',
+      contribution: 'Gilt als einer der Begründer der wissenschaftlichen Stahlbetontheorie. Er baute das von Wilhelm Ritter (1899) vorgeschlagene Fachwerkmodell für die Querkraft aus – bis heute als Ritter-Mörsch-Fachwerk Grundlage der Querkraftbemessung.',
       achievements: [
         'Formulierte die Berechnungsverfahren für den gerissenen Zustand II unter Einbeziehung des Elastizitätsbeiwertes n.',
         'Verfasste das epochale, über Jahrzehnte führende Standardwerk „Der Eisenbetonbau – Seine Theorie und Anwendung“ ab der Erstauflage 1902.'
       ],
-      quote: '„Der Ingenieur darf nicht bloß blind rechnen, er muss die Kraftpfade des Werkstoffs im Verbund körperlich spüren und verstehen lernen.“'
+      quote: 'Kernaussage (Zusammenfassung, kein Originalzitat): Bemessung folgt dem Kraftfluss – Druckstreben im Beton, Zugstreben im Stahl.'
     },
     {
       id: 'powers',
@@ -143,12 +144,12 @@ export default function Baustoffkunde() {
       role: 'US-amerikanischer Werkstoffwissenschaftler',
       field: 'Portlandzement-Mikrostruktur & Gel-Poren-Modell',
       origin: 'USA (Chicago / Portland Cement Association)',
-      contribution: 'Entschlüsselte als globaler Pionier das komplexe physikalische Gefüge des erhärteten Zementsteins. Powers formulierte das Gel-Poren-Modell des Hydratationsprodukts, welches Festigkeiten und Dauerhaftigkeiten mathematisch berechenbar machte.',
+      contribution: 'Entwickelte mit T. L. Brownyard (1946/47) das Modell des Zementsteins aus Zementgel, Gelporen und Kapillarporen. Daraus folgen der Hydratationsgrad, der Kapillarporenraum in Abhängigkeit vom w/z-Wert und das Gel-Raum-Verhältnis als Festigkeitsmaß.',
       achievements: [
-        'Wies experimentell nach, dass Zementstein aus kristallinen Plattenschichten (CSH-Gelen) sowie winzigen Gelporen (Breite ~1,5 nm) und Kapillarporen aufgebaut ist.',
-        'Erstellte exakte Gleichungsverfahren für die Wasserbindungskoeffizienten im Reifezyklus mineralischer Baustoffe.'
+        'Zeigte, dass das Hydratationsprodukt (C-S-H-Gel, weitgehend nanokristallin bis amorph) selbst rund 28 % Gelporen enthält und dass bei w/z > ca. 0,4 auch bei vollständiger Hydratation Kapillarporen verbleiben.',
+        'Begründete die Mechanismen des Frostschadens in Beton (hydraulischer Druck) und die Bemessung von Luftporen über den Abstandsfaktor.'
       ],
-      quote: '„Die Festigkeit von erhärtetem Zement ist kein Zufall, sondern steht in direkter Funktion zur Packungsdichte und dem Verhältnis von festem Gelkörper zu freiem Porenvolumen.“'
+      quote: 'Kernaussage (Zusammenfassung, kein Originalzitat): Die Festigkeit des Zementsteins hängt vom Gel-Raum-Verhältnis ab – also davon, wie viel des verfügbaren Raums mit Hydratationsprodukten gefüllt ist.'
     }
   ];
 
@@ -172,9 +173,9 @@ export default function Baustoffkunde() {
       ],
       keyAttributes: [
         { name: 'Druckfestigkeit', value: 'Sehr hoch (bis > 150 MPa bei UHPC)' },
-        { name: 'Zugfestigkeit', value: 'Gering (ca. 10% der Druckfestigkeit)' },
+        { name: 'Zugfestigkeit', value: 'Gering (Beton: ca. 7–10 % der Druckfestigkeit)' },
         { name: 'Thermisches Verhalten', value: 'Hervorragende Feuerbeständigkeit, nicht brennbar (A1)' },
-        { name: 'Rohdichte', value: 'Typischerweise 1200 - 2800 kg/m³' }
+        { name: 'Rohdichte', value: 'Von ca. 300 kg/m³ (Porenbeton) bis ca. 2800 kg/m³ (Naturstein)' }
       ],
       appLinkTab: 'gesteine',
       appLinkName: 'Gesteine, Mauerwerk & Beton'
@@ -195,9 +196,9 @@ export default function Baustoffkunde() {
         'Nichteisenmetalle (Aluminium, Kupfer, Zink)'
       ],
       keyAttributes: [
-        { name: 'Festigkeit', value: 'Extrem hoch in Zug- und Druckrichtung (350 - 1800 MPa)' },
+        { name: 'Festigkeit', value: 'Hoch in Zug und Druck (Streckgrenze ca. 160 MPa bei Aluminium bis Zugfestigkeit 1860 MPa bei Spannstahl)' },
         { name: 'Verhalten', value: 'Plastisch verformbar (duktil), ausgeprägtes Fließverhalten' },
-        { name: 'Korrosion', value: 'Empfindlich gegen Oxidation (Rosten) ohne aktiven Schutz' },
+        { name: 'Korrosion', value: 'Unlegierter Stahl rostet ohne Schutz; Zink, Kupfer, Aluminium bilden Deckschichten' },
         { name: 'Rohdichte', value: 'Hoch (Stahl ca. 7850 kg/m³, Aluminium ca. 2700 kg/m³)' }
       ],
       appLinkTab: 'metalle',
@@ -220,7 +221,7 @@ export default function Baustoffkunde() {
       ],
       keyAttributes: [
         { name: 'Anisotropie', value: 'Richtungsabhängige Kennwerte (faserparallel vs. faserquer)' },
-        { name: 'Treibhauspotenzial', value: 'Negatives GWP (wirkt temporär als Kohlenstoffspeicher)' },
+        { name: 'Treibhauspotenzial', value: 'Biogener Kohlenstoff wird in Modul A1 negativ bilanziert und am Lebensende (Modul C) wieder ausgewiesen – Holz ist ein temporärer Kohlenstoffspeicher' },
         { name: 'Dauerhaftigkeit', value: 'Risiko von Pilz- und Insektenbefall bei Feuchteeinwirkung' },
         { name: 'Rohdichte', value: 'Gering (ca. 400 - 800 kg/m³ für Holz)' }
       ],
@@ -237,16 +238,16 @@ export default function Baustoffkunde() {
       description: 'Riesenmoleküle (Makromoleküle) aus kovalent gebundenen Kohlenstoffketten. Man unterscheidet Thermoplaste, Duroplaste und Elastomere sowie viskoelastische Naturstoffe wie Bitumen.',
       subclasses: [
         'Kunststoff-Dämmstoffe (Expandiertes Polystyrol EPS, Polyurethan PUR)',
-        'Folien, Dampfbremsen und geometrische Abdichtungsbahnen',
+        'Folien, Dampfbremsen, Kunststoff-Abdichtungsbahnen und Geokunststoffe',
         'Fassadenbekleidungen und Rohrleitungssysteme (PVC, PE, PP)',
         'Bautenklebstoffe, Kunstharze und Versiegelungen',
         'Bitumen und polymer-modifiziertes Bitumen im Straßen- & Dachbau'
       ],
       keyAttributes: [
         { name: 'Gewicht', value: 'Sehr leicht (z.B. EPS ca. 15 - 30 kg/m³)' },
-        { name: 'Dämmeigenschaften', value: 'Sehr niedrige Wärmeleitfähigkeit (ca. 0.030 - 0.040 W/(mK))' },
+        { name: 'Dämmeigenschaften', value: 'Sehr niedrige Wärmeleitfähigkeit (ca. 0,022–0,040 W/(m·K))' },
         { name: 'Kriechneigung', value: 'Hoch viskoelastisch unter Dauerlasten' },
-        { name: 'Brandschutz', value: 'Brennbar (B1/B2 nach DIN 4102), Rauchentwicklung' }
+        { name: 'Brandschutz', value: 'Brennbar (z. B. EPS meist Klasse E nach DIN EN 13501-1 bzw. B1/B2 nach DIN 4102-1), Rauchentwicklung' }
       ],
       appLinkTab: 'daemmstoffe',
       appLinkName: 'Dämmstoffe & Baupolymere'
@@ -264,7 +265,7 @@ export default function Baustoffkunde() {
         'Stahlfaserbeton und makrosynthetische Faserbetone',
         'Zukunftsweisender Carbonbeton (korrosionsfreie Carbonbewehrung)',
         'Glasfaserverstärkte Kunststoffe (GFK) für Konsolen und Brückenträger',
-        'Faserzementplatten (historisch Asbestzement, heute harmlose Kunstfasern)'
+        'Faserzementplatten (bis zum Verbot 1993 Asbestzement, heute mit Kunststoff- und Zellulosefasern)'
       ],
       keyAttributes: [
         { name: 'Verbundwirkung', value: 'Kraftübertragung über Haft-, Scher- und Reibeverbund' },
@@ -286,7 +287,7 @@ export default function Baustoffkunde() {
       description: 'Konstruktionen erfolgten rein mit den am Fundort verfügbaren Materialien. Mechanische Bearbeitung war rudimentär, Haltbarkeit basierte auf konstruktivem Schutz.',
       icon: <TreePine className="text-amber-700 font-bold" size={20} />,
       materials: ['Lehm / Stampflehm', 'Naturstein trocken', 'Schilf & Stroh', 'Rundholz'],
-      milestone: 'Entdeckung der thermischen Materialveredelung (Brennen von Ton zu ersten Lehmsteinen).',
+      milestone: 'Luftgetrocknete Lehmziegel; ab dem 4./3. Jahrtausend v. Chr. gebrannte Ziegel im Vorderen Orient – der Beginn der thermischen Baustoffveredelung.',
       details: 'Die ersten Behausungen nutzten Astwerke, Tierhäute und unverfestigten Lehm. Der konstruktive Holzbau entwickelte sich im Pfahlbau. Haltbarkeit war primär ein Problem biotischer Verrottung.'
     },
     {
@@ -296,7 +297,7 @@ export default function Baustoffkunde() {
       description: 'Die Römer revolutionierten die Weltarchitektur durch Erfindung des ersten echten hydraulischen Betons. Dies erlaubte weite Bögen, Gewölbekuppeln und Unterwasserbauten.',
       icon: <Landmark className="text-indigo-700" size={20} />,
       materials: ['Römischer Beton (Opus Caementicium)', 'Puzzolanasche (Vulkanerde)', 'Luftkalk-Mörtel', 'Puzzolanische Ziegelmehle'],
-      milestone: 'Kuppel des Pantheons in Rom (erbaut ca. 120 n. Chr., 43,3 m freie Weite aus unbewehrtem Gussbeton).',
+      milestone: 'Kuppel des Pantheons in Rom (um 125 n. Chr. vollendet, 43,3 m Durchmesser aus unbewehrtem Gussbeton mit nach oben leichter werdenden Zuschlägen).',
       details: 'Das Opus Caementicium bestand aus gebranntem Kalkstein gebunden mit reaktivem Gesteinsmehl aus vulkanischen Regionen (Pozzuoli bei Neapel). Der Clou: Diese Puzzolane enthalten reaktive Kieselsäure und Tonerde, wodurch der Mörtel im Gegensatz zu reinem Luftkalk auch unter Luftabschluss und sogar unter Wasser steinhart hydratisiert.'
     },
     {
@@ -307,7 +308,7 @@ export default function Baustoffkunde() {
       icon: <Hammer className="text-slate-600" size={20} />,
       materials: ['Sanfte Luftkalke', 'Gipsmörtel', 'Eichen- und Tannenholz', 'Handgestrichene Ziegel'],
       milestone: 'Konstruktion gotischer Kathedralen mit filigranen Rippengewölben, Strebepfeilern und meisterhaften hölzernen Dachstühlen.',
-      details: 'Fachwerkbauten dominierten die mitteleuropäischen Städte. Der Werkstoff Kalkmörtel hielt ausschließlich über Karbonatisierung (CO₂-Aufnahme) stand, was bei dicken Wänden Jahrzehnte dauerte. Gotische Baumeister sicherten die Standsicherheit rein empirisch über geometrische Verhältnisregeln.'
+      details: 'Fachwerkbauten dominierten die mitteleuropäischen Städte. Luftkalkmörtel erhärtete überwiegend durch Karbonatisierung (CO₂-Aufnahme), was in dicken Wänden Jahrzehnte dauern konnte; Ziegelmehl- oder Trasszusätze machten manche Mörtel hydraulisch. Gotische Baumeister sicherten die Standsicherheit rein empirisch über geometrische Verhältnisregeln.'
     },
     {
       era: 'Industrielle Revolution (19. Jahrhundert)',
@@ -316,8 +317,8 @@ export default function Baustoffkunde() {
       description: 'Mit dem Beginn der Industrialisierung und der Chemie als exakte Wissenschaft wurden Baustoffe standardisiert, künstlich synthetisiert und maschinell geprüft.',
       icon: <Zap className="text-amber-500" size={20} />,
       materials: ['Portlandzement (OPC)', 'Schmiedeeisen / Gusseisen', 'Frühformen des Flussstahls', 'Eisenbeton nach J. Monier'],
-      milestone: '1824 patentiert Joseph Aspdin die Herstellung des "Portland-Cementes". Ende des 19. Jh. formuliert Conrad Freytag die physikalischen Grundlagen des Stahlbetons.',
-      details: 'Durch extrem hohes Brennen von Kalkstein- und Tonmischungen bis zur Sintergrenze (~1450 °C) entstand der Portlandzementklinker mit den hydraulischen Hauptphasen Alit und Belit. Um 1867 meldet der Gärtner Joseph Monier eiserne Einlagen in Pflanzenkübeln aus Zementmörtel als Patent an ("Monier-Eisen"). Die geniale Erkenntnis: Beton und Stahl dehnen sich bei Hitze fast identisch aus (gleicher thermischer Ausdehnungskoeffizient α ≈ 1.2·10⁻⁵ K⁻¹).'
+      milestone: '1824 patentiert Joseph Aspdin seinen „Portland Cement“; um 1844 gelingt I. C. Johnson der gesinterte Portlandzement. 1886 stellt Matthias Koenen die erste Bemessungsmethode für Eisenbeton auf.',
+      details: 'Durch extrem hohes Brennen von Kalkstein- und Tonmischungen bis zur Sintergrenze (~1450 °C) entstand der Portlandzementklinker mit den hydraulischen Hauptphasen Alit und Belit. Um 1867 meldet der Gärtner Joseph Monier eiserne Einlagen in Pflanzenkübeln aus Zementmörtel als Patent an ("Monier-Eisen"). Glückliche Voraussetzung: Beton und Stahl dehnen sich bei Temperaturänderung nahezu gleich (Beton α ≈ 1,0 · 10⁻⁵ 1/K, Stahl α ≈ 1,2 · 10⁻⁵ 1/K), und das alkalische Milieu des Betons schützt den Stahl vor Korrosion.'
     },
     {
       era: 'Moderne (20. Jahrhundert)',
@@ -326,18 +327,18 @@ export default function Baustoffkunde() {
       description: 'Das Jahrhundert des uneingeschränkten Betonbooms. Erforschung der Zementchemie führte zu ultra-festen Werkstoffen, Spannstählen und synthetischen Polymerdämmstoffen.',
       icon: <GraduationCap className="text-blue-600" size={20} />,
       materials: ['Hochleistungsbeton (z. B. UHPC)', 'Spannstahl', 'Polystyrol (EPS/XPS)', 'Bewehrungsstahl B500B', 'Floatglas'],
-      milestone: 'Bau weitgespannter Spannbetonbrücken und extremer Hochhäuser. Einführung des Sicherheitskonzepts auf Basis von Teilsicherheitsbeiwerten (Eurocodes).',
+      milestone: 'Bau weitgespannter Spannbetonbrücken und Hochhäuser. Übergang vom globalen Sicherheitsbeiwert zum Teilsicherheitskonzept (Eurocodes; in Deutschland bauaufsichtlich eingeführt ab 2012).',
       details: 'Mit Fließmitteln (Polycarboxylatether, PCE) und reaktiven Feinststoffen (Silicastaub) gelingt es, den Wasserzementwert (w/z-Wert) auf unter 0,25 zu senken, was zu Ultra-Hochleistungsbetonen (UHPC) mit Druckfestigkeiten von weit über 150 MPa führt. Dämmstoffe aus Mineralwolle und Polystyrol verändern den winterlichen Wärmeschutz.'
     },
     {
       era: 'Anthropozän & Zukunft (21. Jahrhundert)',
       century: 'Seit 2000',
       title: 'Dekarbonisierung, zirkuläres Bauen',
-      description: 'Das Bauwesen ist für knapp 40% der globalen CO₂-Emissionen verantwortlich. Der Fokus schwenkt radikal von rein mechanischer Festigkeit zu Nachhaltigkeit, CO₂-Einbindung und Materialkreisläufen.',
+      description: 'Bau und Betrieb von Gebäuden verursachen nach UNEP-Angaben rund 37 % der energiebedingten CO₂-Emissionen weltweit. Der Fokus schwenkt radikal von rein mechanischer Festigkeit zu Nachhaltigkeit, CO₂-Einbindung und Materialkreisläufen.',
       icon: <ShieldCheck className="text-emerald-600 font-bold" size={20} />,
       materials: ['Carbonbeton (korrosionsfrei)', 'Zemente mit Klinkerersatzstoffen (LC3)', 'Rezyklat-Beton (RC-Gestein)', 'Pflanzenkohle-Beton', 'Ingenieurholz-Produkte'],
-      milestone: 'Erste Carbonbetongebäude ("CUBE" Dresden) ohne Stahlkorrosionsgefahr. Einführung digitaler Produktpässe (DPP) zur Erfassung zirkulärer Materialressourcen im Baurecht.',
-      details: 'Die CO₂-neutrale Baustoffkunde ersetzt herkömmlichen Klinker durch calcinierten Ton und Kalksteinmehl (LC3-Zement). Pflanzenkohle wird als dauerhafter Kohlenstoffspeicher in Beton eingebunden (Kohlenstoff-Senke). Korrosionsfreie Carbonbewehrungen sparen bis zu 50% Beton-Bauteildicke und verbilligen den Transport erheblich.'
+      milestone: 'Erstes Carbonbetongebäude („CUBE“, TU Dresden, eröffnet 2022) ohne Stahlkorrosionsgefahr. Digitaler Produktpass für Bauprodukte mit der neuen Bauproduktenverordnung (EU) 2024/3110.',
+      details: 'Die CO₂-neutrale Baustoffkunde ersetzt herkömmlichen Klinker durch calcinierten Ton und Kalksteinmehl (LC3-Zement). Pflanzenkohle wird als dauerhafter Kohlenstoffspeicher in Beton eingebunden (Kohlenstoff-Senke). Korrosionsfreie Carbonbewehrungen erlauben sehr geringe Betondeckungen und damit deutlich schlankere, leichtere Bauteile.'
     }
   ];
 
@@ -588,7 +589,7 @@ export default function Baustoffkunde() {
                 <Clock size={18} /> Geschichtlicher Aufriss der Werkstoffevolution
               </h3>
               <p className="text-xs text-text-main/80 leading-relaxed max-w-4xl">
-                Die Geschichte des Bauens ist untrennbar mit der Entdeckung und Beherrschung neuer Baustoffe verknüpft. Jede tektonische Epoche wurde durch veränderte stoffchemische und mechanische Möglichkeiten definiert – vom unbewehrten Monument der Antike bis zum hochgradig ressourcen-optimierten und digitalisierten Bauteil der Gegenwart. Navigiere unten durch die wichtigsten Meilensteine.
+                Die Geschichte des Bauens ist untrennbar mit der Entdeckung und Beherrschung neuer Baustoffe verknüpft. Jede tektonische Epoche wurde durch veränderte stoffchemische und mechanische Möglichkeiten definiert – vom unbewehrten Monument der Antike bis zum hochgradig ressourcen-optimierten und digitalisierten Bauteil der Gegenwart. Wählen Sie unten eine Epoche aus.
               </p>
             </div>
 
@@ -699,7 +700,7 @@ export default function Baustoffkunde() {
                 <Users size={18} /> Wegbereiter &amp; Väter der Werkstoffwissenschaft
               </h3>
               <p className="text-xs text-text-main/80 leading-relaxed max-w-4xl">
-                Hinter jedem modernen Hochleistungsbaustoff stehen genialer Forschergeist, beharrliche Experimente und bahnbrechende Entdeckungen. Diese Pioniere haben die Brücke zwischen geologischem Vorkommen, chemischer Synthese und mathematischer Tragwerkslehre geschlagen. Entdecke die Meilensteine dieser Persönlichkeiten.
+                Hinter jedem modernen Hochleistungsbaustoff stehen genialer Forschergeist, beharrliche Experimente und bahnbrechende Entdeckungen. Diese Pioniere haben die Brücke zwischen geologischem Vorkommen, chemischer Synthese und mathematischer Tragwerkslehre geschlagen. Wählen Sie eine Person aus, um ihren Beitrag kennenzulernen.
               </p>
             </div>
 
@@ -830,6 +831,9 @@ export default function Baustoffkunde() {
 
       </div>
 
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="baustoffkunde" />
+
       {/* 3. CORE VALUE MODULE FOOTER */}
       <ModuleFooter 
         wikipedia={[
@@ -839,19 +843,23 @@ export default function Baustoffkunde() {
           { title: 'Portlandzement', url: 'https://de.wikipedia.org/wiki/Portlandzement' }
         ]}
         literatur={[
-          'W. Scholz: Baustoffkenntnis (19. Auflage, Werner Verlag, Neuwied, 2020)'
+          'Möhring, R. (Hrsg.): Baustoffkenntnis (begr. von W. Scholz). 18. Aufl., Köln: Bundesanzeiger Verlag 2016',
+          'Vitruv: Zehn Bücher über Architektur. Übers. und erl. von C. Fensterbusch. Darmstadt: Wissenschaftliche Buchgesellschaft (Neuauflagen)',
+          'Powers, T. C.; Brownyard, T. L.: Studies of the Physical Properties of Hardened Portland Cement Paste. Journal of the American Concrete Institute 43 (1946/47)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode: Grundlagen der Tragwerksplanung)' },
-          { title: 'DIN EN 197-1 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)' }
+          { title: 'DIN EN 1990 (Eurocode: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 197-1 (Zement – Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },
+          { title: 'DIN EN 196-3 (Prüfverfahren für Zement – Erstarrungszeiten und Raumbeständigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-3' }
         ]}
         formeln={[
           {
-            formel: "\\epsilon_{\\Theta} = \\alpha_T \\cdot \\Delta T",
-            erklaerung: "Thermodynamische Längendehnung durch Temperaturänderungen in einem ungehinderten Werkstoff.",
-            quelle: "Allgemeine Bauphysik / Elastomechanik"
+            formel: "\\varepsilon_T = \\alpha_T \\cdot \\Delta T",
+            erklaerung: "Temperaturdehnung eines frei verformbaren Bauteils (Beton α_T ≈ 10 · 10⁻⁶ 1/K, Stahl ≈ 12 · 10⁻⁶ 1/K).",
+            quelle: "DIN EN 1992-1-1, 3.1.3 und 3.2.7"
           }
         ]}
+        lastReviewed="Oktober 2026 (AP 3 Grundlagen: Geschichte, Pioniere und Stoffklassen gegen Primär- und Fachquellen geprüft, erfundene Zitate entfernt; fachliche Freigabe durch den Autor ausstehend)"
       />
 
     </div>
