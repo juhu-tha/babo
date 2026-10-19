@@ -4,6 +4,8 @@ import { Activity } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -62,12 +64,15 @@ export default function EModul() {
     // HS Lower (Matrix is continuous)
     const kHSMinus = kM + vG / (1 / (kG - kM) + 3 * vM / (3 * kM + 4 * gM));
     const gHSMinus = gM + vG / (1 / (gG - gM) + 6 * vM * (kM + 2 * gM) / (5 * gM * (3 * kM + 4 * gM)));
-    const eHSMinus = (9 * kHSMinus * gHSMinus) / (3 * kHSMinus + gHSMinus);
+    const eHSMinusRaw = (9 * kHSMinus * gHSMinus) / (3 * kHSMinus + gHSMinus);
 
     // HS Upper (Inclusion is continuous - less realistic for concrete but good for theory)
     const kHSPlus = kG + vM / (1 / (kM - kG) + 3 * vG / (3 * kG + 4 * gG));
     const gHSPlus = gG + vM / (1 / (gM - gG) + 6 * vG * (kG + 2 * gG) / (5 * gG * (3 * kG + 4 * gG)));
-    const eHSPlus = (9 * kHSPlus * gHSPlus) / (3 * kHSPlus + gHSPlus);
+    const eHSPlusRaw = (9 * kHSPlus * gHSPlus) / (3 * kHSPlus + gHSPlus);
+    // Die Schranke mit der steiferen Phase als Bezugsphase ist die obere – bei E_M > E_G tauschen die Rollen
+    const eHSPlus = Math.max(eHSPlusRaw, eHSMinusRaw);
+    const eHSMinus = Math.min(eHSPlusRaw, eHSMinusRaw);
 
     // Chart Data: Variation des Gesteinsvolumens von 0 bis 100%
     const chartLabels = [];
@@ -85,11 +90,13 @@ export default function EModul() {
 
       const kHS_m = kM + vg / (1 / (kG - kM) + 3 * vm / (3 * kM + 4 * gM));
       const gHS_m = gM + vg / (1 / (gG - gM) + 6 * vm * (kM + 2 * gM) / (5 * gM * (3 * kM + 4 * gM)));
-      hsMinusData.push((9 * kHS_m * gHS_m) / (3 * kHS_m + gHS_m));
+      const eHS_m = (9 * kHS_m * gHS_m) / (3 * kHS_m + gHS_m);
 
       const kHS_p = kG + vm / (1 / (kM - kG) + 3 * vg / (3 * kG + 4 * gG));
       const gHS_p = gG + vm / (1 / (gM - gG) + 6 * vg * (kG + 2 * gG) / (5 * gG * (3 * kG + 4 * gG)));
-      hsPlusData.push((9 * kHS_p * gHS_p) / (3 * kHS_p + gHS_p));
+      const eHS_p = (9 * kHS_p * gHS_p) / (3 * kHS_p + gHS_p);
+      hsMinusData.push(Math.min(eHS_m, eHS_p));
+      hsPlusData.push(Math.max(eHS_m, eHS_p));
       
       chartLabels.push(v);
     }
@@ -106,7 +113,7 @@ export default function EModul() {
       hsMinusData,
       hsPlusData
     };
-  }, [fck, eModulGestein, volGestein, eModulMatrix]);
+  }, [fck, alphaE, eModulGestein, volGestein, eModulMatrix]);
 
   const chartData = {
     labels: results.chartLabels,
@@ -161,7 +168,7 @@ export default function EModul() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Normativer E-Modul (Eurocode 2)</h3>
+              <h3 className="font-semibold mb-4 text-text-main">Normativer E-Modul (DIN EN 1992-1-1, 3.1.3)</h3>
               <Slider
                 label="Charakt. Druckfestigkeit (fck)" info="Charakteristische Zylinderdruckfestigkeit des Betons nach 28 Tagen."
                 value={fck}
@@ -180,8 +187,8 @@ export default function EModul() {
                   onChange={(e) => setAlphaE(Number(e.target.value))}
                   className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white text-text-main focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 >
-                  <option value={1.2}>Basalt, dichte Kalksteine (α_E = 1,20)</option>
-                  <option value={1.0}>Quarzit (α_E = 1,00 - Standard)</option>
+                  <option value={1.2}>Basalt (α_E = 1,20)</option>
+                  <option value={1.0}>Quarzit (α_E = 1,00 – Bezugswert)</option>
                   <option value={0.9}>Kalkstein (α_E = 0,90)</option>
                   <option value={0.7}>Sandstein (α_E = 0,70)</option>
                 </select>
@@ -246,7 +253,7 @@ export default function EModul() {
                 </div>
               </div>
               <div className="mt-4 text-sm text-text-main/80">
-                Für Beton ist das untere Hashin-Shtrikman-Modell (Matrix umschließt Partikel) meist die beste theoretische Näherung.
+                Bei Normalbeton (Gestein steifer als Zementstein, Matrix umschließt die Körner) liegt der gemessene E-Modul meist nahe der unteren Hashin-Shtrikman-Schranke; die weichere Übergangszone (ITZ) kann ihn noch darunter drücken.
               </div>
             </div>
 
@@ -329,24 +336,52 @@ export default function EModul() {
         </div>
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: E-Modul eines C30/37 mit Kalkstein-Gesteinskörnung"
+        zielGleichung="E_{cm} = \alpha_E \cdot 22 \cdot \left(\frac{f_{cm}}{10}\right)^{0{,}3}"
+        schritte={[
+          { titel: 'Mittlere Festigkeit', erklaerung: 'Nach DIN EN 1992-1-1, Tab. 3.1:', formel: 'f_{cm} = f_{ck} + 8 = 30 + 8 = 38\\,\\text{N/mm}^2' },
+          { titel: 'Quarzitische Gesteinskörnung', erklaerung: 'Bezugswert der Norm:', formel: 'E_{cm} = 22 \\cdot 3{,}8^{0{,}3} = 32{,}8\\,\\text{GPa} \\approx 33\\,\\text{GPa}' },
+          { titel: 'Kalkstein', erklaerung: 'Abminderung um 10 % nach 3.1.3(2):', formel: 'E_{cm} = 0{,}9 \\cdot 32{,}8 = 29{,}5\\,\\text{GPa}' }
+        ]}
+        ergebnisHinweis="Bei Sandstein (−30 %) wären es nur rund 23 GPa – die Gesteinskörnung beeinflusst Durchbiegungen und Spannungsumlagerungen deutlich."
+        normQuelle="DIN EN 1992-1-1, 3.1.3(2) und Tab. 3.1"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Schranken für den E-Modul aus Gestein und Zementstein"
+        zielGleichung="E_{Reuss} \le E \le E_{Voigt}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Gestein E_G = 60 GPa mit 70 Vol.-%, Zementstein E_M = 20 GPa mit 30 Vol.-%.', formel: 'v_G = 0{,}70,\\quad v_M = 0{,}30' },
+          { titel: 'Voigt (gleiche Dehnung)', erklaerung: 'Obere Schranke:', formel: 'E_{Voigt} = 0{,}7 \\cdot 60 + 0{,}3 \\cdot 20 = 48{,}0\\,\\text{GPa}' },
+          { titel: 'Reuss (gleiche Spannung)', erklaerung: 'Untere Schranke:', formel: 'E_{Reuss} = \\left(\\frac{0{,}7}{60} + \\frac{0{,}3}{20}\\right)^{-1} = 37{,}5\\,\\text{GPa}' }
+        ]}
+        ergebnisHinweis="Der wahre Wert liegt dazwischen, nach Hashin-Shtrikman enger eingegrenzt. Gemessene Betonwerte (≈ 33 GPa) liegen oft sogar darunter – Ursache sind Poren und die weichere Kontaktzone zwischen Korn und Zementstein."
+        normQuelle="Mikromechanik (Voigt 1889, Reuss 1929, Hashin & Shtrikman 1963)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="emodul" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: E-Modul nach DIN EN 1992-1-1 und Mehrphasenmodelle geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 12390-13 (Prüfung von Festbeton - Bestimmung des Elastizitätsmoduls unter Druckbeanspruchung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-13' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2, Abschn. 3.1.3 und Tab. 3.1)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 12390-13:2021-09 (Prüfung von Festbeton – Bestimmung des Elastizitätsmoduls unter Druckbelastung (Sekantenmodul))', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-13' }
         ]}
         literatur={[
-          'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
-          'Hashin, Z., Shtrikman, S. (1963): A variational approach to the theory of the elastic behaviour of multiphase materials. J. Mech. Phys. Solids',
-          'Gross, D.; Hauger, W.: Technische Mechanik 2: Elastostatik (Springer Vieweg)'
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Hashin, Z.; Shtrikman, S.: A variational approach to the theory of the elastic behaviour of multiphase materials. Journal of the Mechanics and Physics of Solids 11 (1963), S. 127–140',
+          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)'
         ]}
         formeln={[
           {
             formel: 'E_{cm} = \\alpha_E \\cdot 22 \\cdot \\left(\\frac{f_{cm}}{10}\\right)^{0{,}3} \\quad [\\text{GPa}]',
-            erklaerung: 'Mittlerer Elastizitätsmodul von Normalbeton nach Eurocode 2 in Abhängigkeit von mittlerer Zylinderdruckfestigkeit fcm und Gesteinszuschlagsbeiwert αE.',
-            quelle: 'DIN EN 1992-1-1 Tab. 3.1'
+            erklaerung: 'Mittlerer Elastizitätsmodul (Sekantenmodul) von Normalbeton mit quarzitischer Gesteinskörnung nach Tab. 3.1 (f_cm in N/mm²); für andere Gesteinsarten Faktor α_E nach 3.1.3(2).',
+            quelle: 'DIN EN 1992-1-1, 3.1.3 und Tab. 3.1'
           },
           {
             formel: 'E_{\\text{Voigt}} = v_G \\cdot E_G + v_M \\cdot E_M',

@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
@@ -36,20 +38,22 @@ type Material = {
   color: string;
 };
 
+// Lehrvergleich: Beton f_ck/f_ctm und E_cm nach DIN EN 1992-1-1 Tab. 3.1, Stahl f_y/f_u (Mindestwerte),
+// Holz C24 nach DIN EN 338 (charakteristisch), übrige Werte typische Literaturwerte (Größenordnung).
 const materials: Record<string, Material> = {
   'beton_c20': { name: 'Beton C20/25', rho: 2400, fc: 20, ft: 2.2, E: 30000, color: '#94a3b8' },
   'beton_c50': { name: 'Beton C50/60', rho: 2400, fc: 50, ft: 4.1, E: 37000, color: '#64748b' },
   'beton_uhpc': { name: 'UHPC', rho: 2500, fc: 150, ft: 8.0, E: 50000, color: '#475569' },
-  'stahl_s235': { name: 'Baustahl S235', rho: 7850, fc: 235, ft: 360, E: 210000, color: '#475569' },
-  'stahl_hochfest': { name: 'Hochfester Stahl (S690)', rho: 7850, fc: 690, ft: 770, E: 210000, color: '#334155' },
-  'alu': { name: 'Aluminium', rho: 2700, fc: 160, ft: 200, E: 70000, color: '#94a3b8' },
-  'holz_fichte_par': { name: 'Holz (Fichte, ||)', rho: 450, fc: 21, ft: 14, E: 11000, color: '#475569' },
-  'mauerwerk': { name: 'Mauerwerk', rho: 1800, fc: 12, ft: 0.5, E: 4000, color: '#A3113E' },
+  'stahl_s235': { name: 'Baustahl S235 (f_y / f_u)', rho: 7850, fc: 235, ft: 360, E: 210000, color: '#475569' },
+  'stahl_hochfest': { name: 'Hochfester Stahl S690 (f_y / f_u)', rho: 7850, fc: 690, ft: 770, E: 210000, color: '#334155' },
+  'alu': { name: 'Aluminium (EN AW-6060, Richtwert)', rho: 2700, fc: 160, ft: 200, E: 70000, color: '#94a3b8' },
+  'holz_fichte_par': { name: 'Holz C24 (faserparallel, charakt.)', rho: 450, fc: 21, ft: 14, E: 11000, color: '#475569' },
+  'mauerwerk': { name: 'Mauerwerk (Richtwert)', rho: 1800, fc: 12, ft: 0.5, E: 4000, color: '#A3113E' },
   'glas': { name: 'Glas', rho: 2500, fc: 500, ft: 45, E: 70000, color: '#64748b' },
   'titan': { name: 'Titan', rho: 4430, fc: 830, ft: 900, E: 105000, color: '#64748b' },
   'carbon': { name: 'Carbon (CFK)', rho: 1500, fc: 600, ft: 1500, E: 150000, color: '#475569' },
   'kevlar': { name: 'Kevlar', rho: 1440, fc: 300, ft: 3600, E: 112000, color: '#94a3b8' },
-  'spinnenseide': { name: 'Spinnenseide', rho: 1300, fc: 100, ft: 1100, E: 30000, color: '#A3113E' }
+  'spinnenseide': { name: 'Spinnenseide (Faser, Literaturwert)', rho: 1300, fc: 100, ft: 1100, E: 30000, color: '#A3113E' }
 };
 
 export default function Festigkeitsberechnungen() {
@@ -131,7 +135,7 @@ export default function Festigkeitsberechnungen() {
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
           <p>
-            Festigkeitsberechnungen dienen dem Nachweis, dass die auftretenden Spannungen in einem Bauteil die zulässigen Materialfestigkeiten nicht überschreiten.
+            Festigkeitsberechnungen dienen dem Nachweis, dass die auftretenden Spannungen in einem Bauteil die Festigkeit des Werkstoffs (in der Bemessung: den Bemessungswert nach Eurocode) nicht überschreiten. Die folgenden Gedankenexperimente arbeiten ohne Teilsicherheitsbeiwerte und ohne Stabilitätsversagen.
           </p>
         </div>
 
@@ -280,7 +284,7 @@ export default function Festigkeitsberechnungen() {
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2"><Layers className="text-shiraz" /> Das Würfelstapel-Problem</h2>
         <p className="text-home-grau mb-6">
           Es sollen Würfel solange aufeinandergestapelt werden, bis der unterste aufgrund des Gewichts auf Druck versagt 
-          (kein Stabilitätsversagen, keine Horizontalkräfte). Die Verformung aus der Einwirkung wird über den E-Modul berechnet.
+          (kein Stabilitätsversagen, keine Horizontalkräfte, keine Sicherheitsbeiwerte). Die Verformung wird linear-elastisch über den E-Modul berechnet.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -358,7 +362,34 @@ export default function Festigkeitsberechnungen() {
         </div>
       </div>
     
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Wie hoch könnte eine Betonsäule aus C20/25 werden?"
+        zielGleichung="H = \frac{f_c}{\rho \cdot g}"
+        schritte={[
+          { titel: 'Gleichgewicht', erklaerung: 'Am Fuß einer prismatischen Säule wirkt das Eigengewicht ρ·g·A·H auf die Fläche A – die Querschnittsfläche kürzt sich heraus:', formel: '\\sigma = \\rho \\cdot g \\cdot H' },
+          { titel: 'Einheiten', erklaerung: 'f_c = 20 N/mm² = 20 · 10⁶ N/m², ρ = 2400 kg/m³, g = 9,81 m/s².', formel: 'H = \\frac{20 \\cdot 10^{6}}{2400 \\cdot 9{,}81}' },
+          { titel: 'Ergebnis', erklaerung: 'Theoretische Grenzhöhe ohne Sicherheiten und ohne Knicken:', formel: 'H = 849\\,\\text{m}' }
+        ]}
+        ergebnisHinweis="Mit Bemessungswerten (f_cd = 0,85 · 20/1,5 = 11,3 N/mm², γ_G = 1,35) schrumpft die Höhe auf rund 356 m – und lange vorher wird Knicken maßgebend."
+        normQuelle="Gleichgewicht; Bemessungswerte nach DIN EN 1990/1992-1-1"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Reißlänge von Baustahl S235"
+        zielGleichung="L = \frac{f_u}{\rho \cdot g}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Zugfestigkeit f_u = 360 N/mm² (Mindestwert), ρ = 7850 kg/m³.', formel: 'f_u = 360 \\cdot 10^{6}\\,\\text{N/m}^2' },
+          { titel: 'Ergebnis', erklaerung: 'Länge, bei der ein frei hängender Stab an der Aufhängung reißt:', formel: 'L = \\frac{360 \\cdot 10^{6}}{7850 \\cdot 9{,}81} = 4\\,675\\,\\text{m} \\approx 4{,}7\\,\\text{km}' }
+        ]}
+        ergebnisHinweis="Die Reißlänge ist eine spezifische Festigkeit (Festigkeit je Gewicht) – deshalb schneiden leichte Fasern wie CFK oder Aramid um ein Vielfaches besser ab als Stahl."
+        normQuelle="Technische Mechanik; f_u nach DIN EN 10025-2"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="festigkeit" />
+
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Werkstoffwerte und Grenzhöhen-/Reißlängenmodell geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Festigkeit', url: 'https://de.wikipedia.org/wiki/Festigkeit' },
           { title: 'Hookesches Gesetz', url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
@@ -370,24 +401,24 @@ export default function Festigkeitsberechnungen() {
           { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' }
         ]}
         literatur={[
-          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',
+          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         formeln={[
           {
               formel: 'H = \\frac{f_c}{\\rho \\cdot g}',
-              erklaerung: 'Maximale Turmhöhe unter Eigengewicht (Druck)\n$\\rho$: Dichte [kg/m³]\n$f_c$: Druckfestigkeit [N/mm²]\n$H$: Höhe [m]\n$g$: Erdbeschleunigung [m/s²]',
-              quelle: 'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: ...'
+              erklaerung: 'Maximale Turmhöhe unter Eigengewicht (Druck)\n$\\rho$: Dichte [kg/m³]\n$f_c$: Druckfestigkeit [N/m²] (1 N/mm² = 10⁶ N/m²)\n$H$: Höhe [m]\n$g$: Erdbeschleunigung [m/s²]',
+              quelle: 'Technische Mechanik (Gleichgewicht am Prisma)'
             },
           {
               formel: 'L = \\frac{f_t}{\\rho \\cdot g}',
-              erklaerung: 'Maximale Reißlänge unter Eigengewicht (Zug)\n$\\rho$: Dichte [kg/m³]\n$f_t$: Zugfestigkeit [N/mm²]\n$g$: Erdbeschleunigung [m/s²]\n$L$: Länge [m]',
-              quelle: 'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: ...'
+              erklaerung: 'Maximale Reißlänge unter Eigengewicht (Zug)\n$\\rho$: Dichte [kg/m³]\n$f_t$: Zugfestigkeit [N/m²]\n$g$: Erdbeschleunigung [m/s²]\n$L$: Länge [m]',
+              quelle: 'Technische Mechanik (Gleichgewicht am Seil)'
             },
           {
               formel: '\\Delta l = \\frac{\\sigma}{E} \\cdot l',
-              erklaerung: 'Elastische Verformung (Hookesches Gesetz)\n$\\Delta l$: Längenänderung [mm]\n$\\sigma$: Normalspannung [N/mm²]\n$l$: Länge [m]\n$E$: Elastizitätsmodul [N/mm²]',
-              quelle: 'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: ...'
+              erklaerung: 'Elastische Verformung (Hookesches Gesetz)\n$\\Delta l$: Längenänderung (Einheit wie l)\n$\\sigma$: Normalspannung [N/mm²]\n$l$: Länge\n$E$: Elastizitätsmodul [N/mm²]',
+              quelle: 'Hookesches Gesetz'
             }
         ]}
       />
