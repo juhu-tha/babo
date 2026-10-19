@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Leaf, 
@@ -293,17 +294,17 @@ export default function Ressourceneffizienz() {
     const primaryMineralSavings = Math.max(0, (baselineVolume * 1.8) - primaryGravelNeed);
 
     return {
-      finalVolume: finalVolume.toFixed(0),
-      rawMass: (finalVolume * 2.4).toFixed(0),
-      concreteCo2: (concreteCo2 / 1000).toFixed(1),
-      steelCo2: (steelCo2 / 1000).toFixed(1),
-      logisticsCo2: (logisticsCo2 / 1000).toFixed(1),
-      totalCo2: (totalCo2 / 1000).toFixed(1),
-      baselineCo2: (baselineTotalCo2 / 1000).toFixed(1),
-      co2SavingsPercent: co2SavingsPercent.toFixed(0),
-      primaryMineralSavings: primaryMineralSavings.toFixed(1),
-      secondaryGravelNeed: secondaryGravelNeed.toFixed(1),
-      rebarWeight: (finalSteelWeightKilograms / 1000).toFixed(1)
+      finalVolume: formatDeZahl(finalVolume, 0),
+      rawMass: formatDeZahl((finalVolume * 2.4), 0),
+      concreteCo2: formatDeZahl((concreteCo2 / 1000), 1),
+      steelCo2: formatDeZahl((steelCo2 / 1000), 1),
+      logisticsCo2: formatDeZahl((logisticsCo2 / 1000), 1),
+      totalCo2: formatDeZahl((totalCo2 / 1000), 1),
+      baselineCo2: formatDeZahl((baselineTotalCo2 / 1000), 1),
+      co2SavingsPercent: formatDeZahl(co2SavingsPercent, 0),
+      primaryMineralSavings: formatDeZahl(primaryMineralSavings, 1),
+      secondaryGravelNeed: formatDeZahl(secondaryGravelNeed, 1),
+      rebarWeight: formatDeZahl((finalSteelWeightKilograms / 1000), 1)
     };
   };
 
@@ -340,13 +341,13 @@ export default function Ressourceneffizienz() {
     const certificationBonus = recyclingUsage >= 30 ? 'Auszeichnung Gold-Standard möglich (DGNB/QNG)' : 'Basis-Standard';
 
     return {
-      wasteBaseline: standardConstructionWasteTons.toFixed(1),
-      wasteOptimized: optimizedWasteTons.toFixed(1),
-      disposalSavings: disposalSavings.toFixed(0),
-      materialCostSavings: materialCostSavings.toFixed(0),
-      co2TaxSavings: co2TaxSavings.toFixed(0),
-      fundingBonus: fundingBonus.toFixed(0),
-      totalAnnualBenefits: totalAnnualBenefits.toFixed(0),
+      wasteBaseline: formatDeZahl(standardConstructionWasteTons, 1),
+      wasteOptimized: formatDeZahl(optimizedWasteTons, 1),
+      disposalSavings: formatDeZahl(disposalSavings, 0),
+      materialCostSavings: formatDeZahl(materialCostSavings, 0),
+      co2TaxSavings: formatDeZahl(co2TaxSavings, 0),
+      fundingBonus: formatDeZahl(fundingBonus, 0),
+      totalAnnualBenefits: formatDeZahl(totalAnnualBenefits, 0),
       certificationBonus
     };
   };
@@ -492,7 +493,7 @@ export default function Ressourceneffizienz() {
           
           <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-450 font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-lg">
             <Info size={14} className="text-blue-500" />
-            <span>Klicke oben auf eine Säule zum Umschalten</span>
+            <span>Klicken Sie oben auf eine Säule zum Umschalten</span>
           </div>
         </div>
 
@@ -620,7 +621,7 @@ export default function Ressourceneffizienz() {
                   <p className="text-xs text-slate-650 dark:text-slate-350 max-w-4xl leading-relaxed">
                     Die Schonung der Rohstoffvorräte wird durch intelligente Entwurfs- und Verwertungsstufen systematisiert. 
                     Das Spektrum reicht von der radikalen Vermeidung <strong>(R0)</strong> bis zur ungeliebten thermischen Entsorgung <strong>(R9)</strong>. 
-                    Klicke auf eines der Wertschöpfungsfelder in der bayerischen Heuristik-Matrix, um Praxisanwendungen im Hoch- und Tiefbau zu studieren:
+                    Klicken Sie auf eines der Wertschöpfungsfelder in der bayerischen Heuristik-Matrix, um Praxisanwendungen im Hoch- und Tiefbau zu studieren:
                   </p>
                 </div>
 
@@ -1015,7 +1016,7 @@ export default function Ressourceneffizienz() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
                       <span>3. Bewehrungsgehalt (Stahl)</span>
-                      <span className="font-mono text-shiraz dark:text-rose-400">{reinforcementRatio}%</span>
+                      <span className="font-mono text-shiraz dark:text-rose-400">{formatDeWert(reinforcementRatio)}%</span>
                     </div>
                     <input 
                       type="range" 
@@ -1106,7 +1107,7 @@ export default function Ressourceneffizienz() {
                       <span className="text-xs text-slate-450 dark:text-slate-500 block italic">geg. Standard-Skelettbau</span>
                     </div>
                     <div className="md:col-span-8 text-xs text-slate-650 dark:text-slate-300 space-y-1.5 border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 pt-3 md:pt-0 md:pl-4">
-                      <p>🚀 <strong>Vergleichsanalyse:</strong> Dein optimierter Entwurf emittiert ca. {simResult.totalCo2} Tonnen CO₂-eq im Vergleich zum veralteten traditionellen Referenzwert von <strong>{simResult.baselineCo2} Tonnen</strong>.</p>
+                      <p>🚀 <strong>Vergleichsanalyse:</strong> Ihr optimierter Entwurf emittiert ca. {simResult.totalCo2} Tonnen CO₂-eq im Vergleich zum veralteten traditionellen Referenzwert von <strong>{simResult.baselineCo2} Tonnen</strong>.</p>
                       <p>🌾 <strong>Recycling-Bonus:</strong> Sie verwenden {simResult.secondaryGravelNeed} t aufbereiteten Bauschutt und stoppen damit die Mülldeponierung wertvollen Betons.</p>
                     </div>
                   </div>
@@ -1152,7 +1153,7 @@ export default function Ressourceneffizienz() {
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
                         <span>Gebäude-Nutzfläche (m²)</span>
-                        <span className="font-mono text-shiraz dark:text-rose-400 font-bold">{projectSize} m²</span>
+                        <span className="font-mono text-shiraz dark:text-rose-400 font-bold">{formatDeWert(projectSize)} m²</span>
                       </div>
                       <input 
                         type="range" 
@@ -1169,7 +1170,7 @@ export default function Ressourceneffizienz() {
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
                         <span>Abfallvermeidung vor Ort (Gewerke-Trennung)</span>
-                        <span className="font-mono text-shiraz dark:text-rose-400 font-bold">{wasteOptimization}%</span>
+                        <span className="font-mono text-shiraz dark:text-rose-400 font-bold">{formatDeWert(wasteOptimization)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1190,7 +1191,7 @@ export default function Ressourceneffizienz() {
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
                         <span>RC-Baustoff-Ersatzanteil im Rohbau</span>
-                        <span className="font-mono text-shiraz dark:text-rose-400 font-bold">{recyclingUsage}%</span>
+                        <span className="font-mono text-shiraz dark:text-rose-400 font-bold">{formatDeWert(recyclingUsage)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1408,7 +1409,7 @@ export default function Ressourceneffizienz() {
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Kreislaufwirtschaftsgesetz (KrWG § 14 Stoffliche Verwertung)', url: 'https://www.gesetze-im-internet.de/krwg/' },
           { title: 'VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien', url: 'https://www.vdi.de/' },
-          { title: 'DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' }
         ]}
         formeln={[
           {

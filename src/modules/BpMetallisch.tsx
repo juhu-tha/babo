@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { 
@@ -445,7 +446,7 @@ export default function BpMetallisch() {
               >
                 <div>
                   <span className={`text-[9px] uppercase font-mono font-bold tracking-wider block ${selectedMetal.id === m.id ? 'text-white/70' : 'text-text-main/40'}`}>
-                    Potential: {(m.potential > 0 ? '+' : '') + m.potential.toFixed(2) + ' V'}
+                    Potential: {(m.potential > 0 ? '+' : '') + formatDeZahl(m.potential, 2) + ' V'}
                   </span>
                   <span className="font-extrabold text-sm">{m.name}</span>
                 </div>
@@ -479,7 +480,7 @@ export default function BpMetallisch() {
               </div>
               <div className="bg-slate-50 border border-home-grau/15 px-3 py-1.5 rounded-lg text-right">
                 <span className="text-[10px] text-text-main/50 block leading-tight font-medium">Grenz-Potential (U₀)</span>
-                <span className="text-sm font-extrabold text-slate-800 font-mono">{(selectedMetal.potential > 0 ? '+' : '') + selectedMetal.potential.toFixed(2)} V</span>
+                <span className="text-sm font-extrabold text-slate-800 font-mono">{(selectedMetal.potential > 0 ? '+' : '') + formatDeZahl(selectedMetal.potential, 2)} V</span>
               </div>
             </div>
 
@@ -491,11 +492,11 @@ export default function BpMetallisch() {
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Wärmeleitfähigkeit λ</span>
-                <span className="text-sm font-extrabold font-mono text-slate-800">{selectedMetal.lambda} W/(m·K)</span>
+                <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMetal.lambda)} W/(m·K)</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Wärmedehnung α</span>
-                <span className="text-sm font-extrabold font-mono text-slate-800">{selectedMetal.alpha} × 10⁻⁶/K</span>
+                <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMetal.alpha)} × 10⁻⁶/K</span>
               </div>
             </div>
 
@@ -539,7 +540,7 @@ export default function BpMetallisch() {
                 {selectedMetal.poissonRatio && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
                     <span className="text-[10px] text-text-main/50 block font-bold uppercase">Querdehnzahl ν (Poisson)</span>
-                    <span className="text-xs font-bold font-mono text-slate-800">{selectedMetal.poissonRatio.toFixed(2)} [-]</span>
+                    <span className="text-xs font-bold font-mono text-slate-800">{formatDeZahl(selectedMetal.poissonRatio, 2)} [-]</span>
                   </div>
                 )}
                 {selectedMetal.elongationAtBreak && (
@@ -600,7 +601,7 @@ export default function BpMetallisch() {
               >
                 {metalsDb.map((x) => (
                   <option key={x.id} value={x.id}>
-                    {x.name} (U_anode = {x.potential > 0 ? '+' : ''}{x.potential.toFixed(2)} V)
+                    {x.name} (U_anode = {x.potential > 0 ? '+' : ''}{formatDeZahl(x.potential, 2)} V)
                   </option>
                 ))}
               </select>
@@ -615,7 +616,7 @@ export default function BpMetallisch() {
               >
                 {metalsDb.map((x) => (
                   <option key={x.id} value={x.id}>
-                    {x.name} (U_kathode = {x.potential > 0 ? '+' : ''}{x.potential.toFixed(2)} V)
+                    {x.name} (U_kathode = {x.potential > 0 ? '+' : ''}{formatDeZahl(x.potential, 2)} V)
                   </option>
                 ))}
               </select>
@@ -624,7 +625,7 @@ export default function BpMetallisch() {
             <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-[11px] text-text-main/70 space-y-1">
               <div className="flex justify-between font-mono">
                 <span>Spannungsdifferenz ΔU₀:</span>
-                <strong className="text-slate-800">{deltaE.toFixed(2)} V ({(deltaE * 1000).toFixed(0)} mV)</strong>
+                <strong className="text-slate-800">{formatDeZahl(deltaE, 2)} V ({formatDeZahl((deltaE * 1000), 0)} mV)</strong>
               </div>
               <div className="flex justify-between font-mono text-[10px]">
                 <span>Grenzschwelle DIN 8044:</span>
@@ -643,7 +644,7 @@ export default function BpMetallisch() {
                     {corrosionResult.rating}
                   </h4>
                   <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-white/70">
-                    ΔU = {(deltaE * 1000).toFixed(0)} mV
+                    ΔU = {formatDeZahl((deltaE * 1000), 0)} mV
                   </span>
                 </div>
                 <p className="text-xs leading-relaxed font-normal">
@@ -679,7 +680,7 @@ export default function BpMetallisch() {
               className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
             >
               {metalsDb.map((x) => (
-                <option key={x.id} value={x.id}>{x.name} ({x.density} kg/m³)</option>
+                <option key={x.id} value={x.id}>{x.name} ({formatDeWert(x.density)} kg/m³)</option>
               ))}
             </select>
           </div>
@@ -729,21 +730,21 @@ export default function BpMetallisch() {
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Flächenbezogene Masse</span>
             <span className="text-lg font-extrabold font-mono text-slate-800">
-              {((sheetThick / 1000) * calcMetal.density).toFixed(2)} kg/m²
+              {formatDeZahl(((sheetThick / 1000) * calcMetal.density), 2)} kg/m²
             </span>
           </div>
 
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Charakteristisches Eigengewicht (gk)</span>
             <span className="text-lg font-extrabold font-mono text-shiraz">
-              {(((sheetThick / 1000) * calcMetal.density * 9.81) / 1000).toFixed(3)} kN/m²
+              {formatDeZahl((((sheetThick / 1000) * calcMetal.density * 9.81) / 1000), 3)} kN/m²
             </span>
           </div>
 
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Tafel-Gesamtgewicht</span>
             <span className="text-lg font-extrabold font-mono text-slate-800">
-              {totalWeightKg.toFixed(2)} kg
+              {formatDeZahl(totalWeightKg, 2)} kg
             </span>
           </div>
         </div>
@@ -809,11 +810,11 @@ export default function BpMetallisch() {
           'Deutsches Kupferinstitut: Kupfer im Hochbau - Planung und Ausführung'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN EN 1090 (Ausführung von Stahltragwerken und Aluminiumtragwerken)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN EN ISO 1461 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1999-1-1 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+10025' }, 
+          { title: 'DIN EN 1090 (Ausführung von Stahltragwerken und Aluminiumtragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1090' }, 
+          { title: 'DIN EN ISO 1461 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+1461' },
+          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1999-1-1 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1999-1-1' }
         ]} 
         weblinks={[
           { title: 'bauforumstahl e.V. – Bemessungshilfen & Nachhaltigkeitsdaten', url: 'https://www.bauforumstahl.de/' },
@@ -822,7 +823,7 @@ export default function BpMetallisch() {
         ]}
         formeln={[
           { 
-            formel: 'G_k = L \\cdot W \\cdot \\frac{t}{1000} \\cdot \\rho_{\\text{metal}} \\cdot 9.81 \\cdot 10^{-3} \\quad [\\text{kN}]', 
+            formel: 'G_k = L \\cdot W \\cdot \\frac{t}{1000} \\cdot \\rho_{\\text{metal}} \\cdot 9{,}81 \\cdot 10^{-3} \\quad [\\text{kN}]', 
             erklaerung: 'Charakteristische Eigengewichtslast Gk flächiger Bleche: L = Länge [m], W = Breite [m], t = Blechdicke [mm], rho = Dichte [kg/m³].',
             quelle: 'DIN EN 1991-1-1'
           },

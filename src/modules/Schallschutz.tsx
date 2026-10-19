@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Volume2 } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
@@ -218,20 +219,20 @@ export default function Schallschutz() {
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
                     <FormulaText text="Flächenbezogene Masse m'" />
                   </div>
-                  <div className="text-3xl font-bold">{schallData.m_prime.toFixed(1)} <span className="text-lg font-normal">kg/m²</span></div>
+                  <div className="text-3xl font-bold">{formatDeZahl(schallData.m_prime, 1)} <span className="text-lg font-normal">kg/m²</span></div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
                     <FormulaText text="Schalldämm-Maß R_w" />
-                    <InfoTooltip text="Berechnet nach DIN 4109-32 für einschalige massive Bauteile: Rw = 30.9 · log10(m'/1) - 22.2 dB. Historisch nach DIN 4109 Bbl. 1:1989: Rw ≈ 37.5 · log10(m') - 42 dB." />
+                    <InfoTooltip text="Berechnet nach DIN 4109-32 für einschalige massive Bauteile: Rw = 30.9 · log10(m'/1) - 22,2 dB. Historisch nach DIN 4109 Bbl. 1:1989: Rw ≈ 37.5 · log10(m') - 42 dB." />
                   </div>
-                  <div className="text-3xl font-bold">{schallData.Rw.toFixed(1)} <span className="text-lg font-normal">dB</span></div>
+                  <div className="text-3xl font-bold">{formatDeZahl(schallData.Rw, 1)} <span className="text-lg font-normal">dB</span></div>
                 </div>
               </div>
 
               {!schallData.isValidRange && (
                 <div className="mt-3 p-3 bg-amber-500/20 border border-amber-300/40 rounded-lg text-amber-200 text-xs">
-                  ⚠️ <strong>Gültigkeitsbereich beachten:</strong> Die Formel nach DIN 4109-32 gilt für 65 ≤ m' ≤ 720 kg/m². Der aktuelle Wert liegt außerhalb dieses Bereichs ({schallData.m_prime.toFixed(1)} kg/m²).
+                  ⚠️ <strong>Gültigkeitsbereich beachten:</strong> Die Formel nach DIN 4109-32 gilt für 65 ≤ m' ≤ 720 kg/m². Der aktuelle Wert liegt außerhalb dieses Bereichs ({formatDeZahl(schallData.m_prime, 1)} kg/m²).
                 </div>
               )}
 
@@ -324,9 +325,9 @@ export default function Schallschutz() {
                     {resolvedLayers.map((layer, idx) => (
                       <tr key={layer.id} className="border-b border-home-grau/10">
                         <td className="py-2 px-2 text-text-main">{idx + 1}. {layer.name}</td>
-                        <td className="py-2 px-2">{layer.d.toFixed(3)}</td>
-                        <td className="py-2 px-2">{layer.density}</td>
-                        <td className="py-2 px-2 font-medium">{(layer.d * layer.density).toFixed(1)}</td>
+                        <td className="py-2 px-2">{formatDeZahl(layer.d, 3)}</td>
+                        <td className="py-2 px-2">{formatDeWert(layer.density)}</td>
+                        <td className="py-2 px-2 font-medium">{formatDeZahl((layer.d * layer.density), 1)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -342,9 +343,9 @@ export default function Schallschutz() {
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' }
         ]}
         regelwerke={[
-          { title: 'DIN 4109-1: Schallschutz im Hochbau - Mindestanforderungen', url: 'https://www.beuth.de/' },
-          { title: 'DIN 4109-32: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Massivbau)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 4109-34: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Vorsatzkonstruktionen)', url: 'https://www.beuth.de/' }
+          { title: 'DIN 4109-1: Schallschutz im Hochbau - Mindestanforderungen', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1' },
+          { title: 'DIN 4109-32: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Massivbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-32' },
+          { title: 'DIN 4109-34: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Vorsatzkonstruktionen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-34' }
         ]}
         literatur={[
           'Willems, W. M. et al.: Lehrbuch der Bauphysik (2017)',
@@ -352,12 +353,12 @@ export default function Schallschutz() {
         ]}
         formeln={[
           {
-            formel: "R_w = 30.9 \\cdot \\log_{10}(m'/1) - 22.2",
+            formel: "R_w = 30{,}9 \\cdot \\log_{10}(m'/1) - 22{,}2",
             erklaerung: "Berechnung des bewerteten Schalldämm-Maßes R_w in dB für einschalige massive Bauteile nach DIN 4109-32 (gültig für 65 ≤ m' ≤ 720 kg/m²).\nR_w: bewertetes Schalldämm-Maß [dB]\nm': flächenbezogene Masse [kg/m²]",
             quelle: 'DIN 4109-32'
           },
           {
-            formel: "R_w \\approx 37.5 \\cdot \\log_{10}(m') - 42",
+            formel: "R_w \\approx 37{,}5 \\cdot \\log_{10}(m') - 42",
             erklaerung: "Historische Näherungsformel für das Schalldämm-Maß einschaliger Bauteile nach DIN 4109 Bbl. 1:1989 (abgelöst durch DIN 4109-32).\nm': flächenbezogene Masse [kg/m²]",
             quelle: 'DIN 4109 Bbl. 1:1989 (historisch)'
           }

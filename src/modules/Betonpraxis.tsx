@@ -25,7 +25,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 
 interface ExposureDetails {
   title: string;
@@ -291,7 +291,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
   } else if (kValue <= 0.31) {
     kResultText = 'Normales Zusammenhaltevermögen (~0.30)';
     kResultClass = 'bg-sky-50 text-sky-800 border-sky-100';
-    kAdvice = 'Übliches Bluten von ca. 3 bis 5 l/m³ (bzw. 0.5 Vol.-%). Bietet ein ausgewogenes Verhalten für übliche Hochbauteile bei 20°C.';
+    kAdvice = 'Übliches Bluten von ca. 3 bis 5 l/m³ (bzw. 0,5 Vol.-%). Bietet ein ausgewogenes Verhalten für übliche Hochbauteile bei 20°C.';
   } else if (kValue <= 0.34) {
     kResultText = 'Mäßige Wasseranreicherung oben ("normal / dünn") (≥ 0.33)';
     kResultClass = 'bg-orange-50 text-orange-800 border-orange-200';
@@ -511,7 +511,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
                   <div className="font-bold text-shiraz mb-1">2. Blasenaufstieg</div>
-                  Bestimme die Aufstiegsdauer großer Blasen beim Rütteln. Je zäher/klebriger der Beton, desto länger dauert es. Mehr Luftporen (Lunker) sind zu erwarten.
+                  Bestimmen Sie die Aufstiegsdauer großer Blasen beim Rütteln. Je zäher/klebriger der Beton, desto länger dauert es. Mehr Luftporen (Lunker) sind zu erwarten.
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
                   <div className="font-bold text-shiraz mb-1">3. Fingertest</div>
@@ -539,16 +539,16 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
             <div className="space-y-2">
               <span className="text-xs font-bold uppercase text-text-main/60 block">Frischbetonrohdichte bewerten</span>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Vergleiche die gemessene Frischrohdichte sofort mit der Soll-Frischrohdichte der Erstprüfung:
+                Vergleichen Sie die gemessene Frischrohdichte sofort mit der Soll-Frischrohdichte der Erstprüfung:
               </p>
               
               <div className="space-y-1.5 text-xs">
                 <div className="bg-red-50 border border-red-100 p-2.5 rounded">
-                  <span className="font-bold text-red-800 block">Abweichung &gt; +0.02 kg/l</span>
+                  <span className="font-bold text-red-800 block">Abweichung &gt; +0,02 kg/l</span>
                   Hinweis auf eine Überverdichtung des Betons. Einbaugefahr!
                 </div>
                 <div className="bg-orange-50 border border-orange-100 p-2.5 rounded">
-                  <span className="font-bold text-orange-850 block">Abweichung &gt; -0.02 kg/l (zu niedrig)</span>
+                  <span className="font-bold text-orange-850 block">Abweichung &gt; -0,02 kg/l (zu niedrig)</span>
                   Gefahr von erhöhter Porosität: Entspricht ca. <span className="font-bold">10 l/m³ Luft</span> oder alternativ <span className="font-bold">15 kg/m³ unzulässigem Zusatzwasser</span>.
                 </div>
               </div>
@@ -558,7 +558,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
             <div className="p-3 bg-yellow-50/20 border border-yellow-200/50 rounded-lg space-y-2">
               <span className="text-xs font-bold uppercase text-yellow-800 block">Luftgehalt bestimmen</span>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Selbst ohne Luftporen-Bildner (LP) verbleiben bei sachgerechter Verdichtung üblicherweise <strong>0.5 bis 3.5 Vol.-% Luft</strong> (deutlich schwankend von den standardmäßig im Rezeptentwurf angenommenen 1.5 Vol.-%).
+                Selbst ohne Luftporen-Bildner (LP) verbleiben bei sachgerechter Verdichtung üblicherweise <strong>0,5 bis 3,5 Vol.-% Luft</strong> (deutlich schwankend von den standardmäßig im Rezeptentwurf angenommenen 1,5 Vol.-%).
               </p>
               <div className="text-xs text-text-main/70 bg-white p-2 rounded border border-home-grau/10">
                 <strong>Achtung:</strong> Betone mit geringem w/z-Wert und mehlkornreiche (klebrige) Betone halten Luftblasen stark fest. Nicht „kaputt-rütteln“ oder unkontrolliert Feinstoff abschneiden!
@@ -591,7 +591,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs">
                     <label className="font-semibold text-text-main">Wassergehalt w</label>
-                    <span className="font-mono text-xs">{calcW} kg/m³</span>
+                    <span className="font-mono text-xs">{formatDeWert(calcW)} kg/m³</span>
                   </div>
                   <input 
                     type="range" 
@@ -605,8 +605,8 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs">
-                    <label className="font-semibold text-text-main">Mehlkorn MK (Partikel &lt; 0.125 mm)</label>
-                    <span className="font-mono text-xs">{calcMK} kg/m³</span>
+                    <label className="font-semibold text-text-main">Mehlkorn MK (Partikel &lt; 0,125 mm)</label>
+                    <span className="font-mono text-xs">{formatDeWert(calcMK)} kg/m³</span>
                   </div>
                   <input 
                     type="range" 
@@ -678,7 +678,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   {
                     titel: "3. Überschusswasser-Quotient berechnen",
                     erklaerung: "Die empirische Konstante 70 l/m³ beschreibt das an den Kornoberflächen adhäsiv gebundene Wasser. Das verbleibende freie Wasser bestimmt die Stabilität.",
-                    formel: `k = \\frac{${calcW} - 70}{${calcMK}} = \\frac{${calcW - 70}}{${calcMK}} = ${formatDeZahl(kValue, 3)}`,
+                    formel: `k = \\frac{${formatDeTeXWert(calcW)} - 70}{${formatDeTeXWert(calcMK)}} = \\frac{${formatDeTeXWert(calcW - 70)}}{${formatDeTeXWert(calcMK)}} = ${formatDeZahl(kValue, 3)}`,
                     einheit: "[-]"
                   },
                   {
@@ -699,7 +699,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 Interaktiver Baustellen-Wasser- &amp; Luftmengen-Simulator
               </h3>
               <p className="text-xs text-text-main/80">
-                Gib unerlaubte Wasserzugaben oder abweichende Luftporenanteile ein, um die fatalen Auswirkungen auf Festigkeiten und Schwinddehnungen zu kalkulieren.
+                Geben Sie unerlaubte Wasserzugaben oder abweichende Luftporenanteile ein, um die fatalen Auswirkungen auf Festigkeiten und Schwinddehnungen zu kalkulieren.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -714,7 +714,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   <div className="space-y-3 mt-4">
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-semibold text-text-main">Zusatzwassergehalt</span>
-                      <span className="font-mono text-red-700 font-bold">{waterAddition} Liter/m³</span>
+                      <span className="font-mono text-red-700 font-bold">{formatDeWert(waterAddition)} Liter/m³</span>
                     </div>
                     <input 
                       type="range" 
@@ -731,7 +731,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                         onClick={() => setWaterAddition(20)} 
                         className="text-xs bg-red-800 text-white font-bold py-1 px-2 rounded-lg hover:bg-red-900 transition-colors w-full animate-in"
                       >
-                        Setze "20 l/m³" (Verbotenes Maß)
+                        Setzen Sie "20 l/m³" (Verbotenes Maß)
                       </button>
                       <button 
                         onClick={() => setWaterAddition(0)} 
@@ -754,7 +754,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   <div className="space-y-3 mt-4">
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-semibold text-text-main">Porengehalt-Differenz</span>
-                      <span className="font-mono text-sky-700 font-bold">+{airAddition} Vol.-%</span>
+                      <span className="font-mono text-sky-700 font-bold">+{formatDeWert(airAddition)} Vol.-%</span>
                     </div>
                     <input 
                       type="range" 
@@ -824,7 +824,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     <ul className="list-disc list-inside space-y-1 text-red-105">
                       <li><strong>Druckfestigkeit:</strong> Fällt um &gt; -8 N/mm² ab. Ein Konformitätstest scheitert fast immer (alle Würfel fallen durch).</li>
                       <li><strong>Wasserläufer &amp; Entmischung:</strong> Sand- und Feinanteile sammeln sich oben, Grobkorn sinkt stark ab.</li>
-                      <li><strong>Schwinden &amp; Risse:</strong> Schwindanstieg +0.2 mm/m (deutlich mehr, tiefere und breitere Netzrisse).</li>
+                      <li><strong>Schwinden &amp; Risse:</strong> Schwindanstieg +0,2 mm/m (deutlich mehr, tiefere und breitere Netzrisse).</li>
                     </ul>
                   </div>
                 </div>
@@ -853,7 +853,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-3">
               <div className="flex justify-between items-center text-xs">
                 <span className="font-semibold text-text-main">Umgebungstemperatur</span>
-                <span className="font-mono text-xs font-bold text-shiraz">{tempWalk} °C</span>
+                <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(tempWalk)} °C</span>
               </div>
               <input 
                 type="range" 
@@ -875,10 +875,10 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
             <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/10 space-y-2 text-center text-xs">
               <span className="text-xs font-bold uppercase text-shiraz block">Erwartete Dauer bis zur Trittfestigkeit:</span>
               <div className="text-2xl font-bold text-shiraz font-mono">
-                {calcSettingTimeHours.toFixed(1)} Stunden
+                {formatDeZahl(calcSettingTimeHours, 1)} Stunden
               </div>
               <p className="text-xs text-text-main/60">
-                (Faktor gegenüber Standard-Referenz: {(walkTimeFactor * 100).toFixed(0)}%)
+                (Faktor gegenüber Standard-Referenz: {formatDeZahl((walkTimeFactor * 100), 0)}%)
               </p>
             </div>
 
@@ -886,7 +886,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
             <div className="text-xs bg-yellow-50/25 border border-yellow-200/50 p-3 rounded-lg space-y-1">
               <div className="font-bold text-yellow-800">Sollwerte für Temperatur-Verhalten:</div>
               <p className="text-xs text-text-main/85 leading-relaxed">
-                • <strong>30°C:</strong> Nur 60% der Zeit (~2.5 h) - Rasantes Vorgehen gefordert!<br />
+                • <strong>30°C:</strong> Nur 60% der Zeit (~2,5 h) - Rasantes Vorgehen gefordert!<br />
                 • <strong>20°C:</strong> 100% (~4 h)<br />
                 • <strong>10°C:</strong> 200% (~8 h) - Verzögertes Ausschalen bedenken.<br />
                 • <strong>5°C:</strong> 400% (~16 h) - Frostschutz-Heizung/Matten einplanen.
@@ -1128,7 +1128,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-home-grau/5'
                       }`}
                     >
-                      GK {size} mm
+                      GK {formatDeWert(size)} mm
                     </button>
                   ))}
                 </div>
@@ -1251,7 +1251,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                             <div className="flex items-center justify-between flex-wrap gap-2">
                               <span className="font-bold text-shiraz text-sm px-1.5 py-0.5 bg-shiraz/5 border border-shiraz/15 rounded font-mono">{cls.key}</span>
                               <span className="font-bold text-text-main font-mono text-xs bg-slate-50 px-2 py-0.5 rounded border border-home-grau/10">Min. Güteklasse: {cls.minClass}</span>
-                              <span className="font-bold text-red-700 font-mono text-xs bg-red-50/50 px-2 py-0.5 rounded border border-red-100">max w/z: {cls.maxWz.toFixed(2)}</span>
+                              <span className="font-bold text-red-700 font-mono text-xs bg-red-50/50 px-2 py-0.5 rounded border border-red-100">max w/z: {formatDeZahl(cls.maxWz, 2)}</span>
                             </div>
                             <p className="font-semibold text-text-main mt-1">{cls.name}</p>
                             <p className="text-xs text-text-main/60 italic mt-0.5">Praxis-Beispiel: {cls.example}</p>
@@ -1310,19 +1310,19 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                         <div className="grid grid-cols-2 gap-2 mt-2 font-mono text-center">
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XC1</div>
-                            <div className="text-sm font-bold text-slate-800">{steelCovers[rebarDiameter]?.XC1 || 20} mm</div>
+                            <div className="text-sm font-bold text-slate-800">{formatDeWert(steelCovers[rebarDiameter]?.XC1 || 20)} mm</div>
                           </div>
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XC2/3</div>
-                            <div className="text-sm font-bold text-slate-800">{steelCovers[rebarDiameter]?.XC2_3 || 35} mm</div>
+                            <div className="text-sm font-bold text-slate-800">{formatDeWert(steelCovers[rebarDiameter]?.XC2_3 || 35)} mm</div>
                           </div>
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XC4</div>
-                            <div className="text-sm font-bold text-slate-800">{steelCovers[rebarDiameter]?.XC4 || 35} mm</div>
+                            <div className="text-sm font-bold text-slate-800">{formatDeWert(steelCovers[rebarDiameter]?.XC4 || 35)} mm</div>
                           </div>
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XD / XS</div>
-                            <div className="text-sm font-bold text-shiraz font-mono">{steelCovers[rebarDiameter]?.XD_XS || 40} mm</div>
+                            <div className="text-sm font-bold text-shiraz font-mono">{formatDeWert(steelCovers[rebarDiameter]?.XD_XS || 40)} mm</div>
                           </div>
                         </div>
                         <span className="text-xs text-text-main/50 mt-1.5 block text-center italic leading-normal">
@@ -1472,9 +1472,9 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       <div className="space-y-2">
                         <span className="text-xs uppercase font-bold text-sky-800 tracking-wider block">Empfehlung der WU-Richtlinie</span>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-3xl font-bold text-sky-900 font-mono">{result.dicke} mm</span>
+                          <span className="text-3xl font-bold text-sky-900 font-mono">{formatDeWert(result.dicke)} mm</span>
                           {result.core && (
-                            <span className="text-sm text-sky-700 font-semibold font-mono">({result.core} mm Kernbeton)</span>
+                            <span className="text-sm text-sky-700 font-semibold font-mono">({formatDeWert(result.core)} mm Kernbeton)</span>
                           )}
                         </div>
                         <p className="text-xs text-text-main/80 mt-1 leading-relaxed font-semibold">{result.comment}</p>
@@ -1532,7 +1532,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   <label className="text-xs font-semibold text-text-main block">Betonvolumen (Baustelle)</label>
                   <div className="relative">
                     <input 
-                      type="number" 
+                      type="number" min="0" 
                       value={concreteVol} 
                       onChange={(e) => setConcreteVol(Number(e.target.value))} 
                       className="w-full text-xs p-2 border border-home-grau/30 rounded pr-8"
@@ -1566,8 +1566,8 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     <p className="text-xs text-text-main/60 mt-0.5">Kleinster Einzelwert der Bohrkerndruckfestigkeit (Druckprüfung am Bohrkern nach DIN EN 12504-1, umgerechnet auf den Referenzkörper)., ermittelt an der schwächsten Stelle.</p>
                   </div>
                   <div className="mt-3">
-                    <span className="text-xs text-text-main/50 font-bold font-mono">Formel: ≥ 0.85 * (f_ck - 4)</span>
-                    <div className="text-lg font-bold text-shiraz font-mono mt-1">≥ {reqBkMin.toFixed(2)} N/mm²</div>
+                    <span className="text-xs text-text-main/50 font-bold font-mono">Formel: ≥ 0,85 * (f_ck - 4)</span>
+                    <div className="text-lg font-bold text-shiraz font-mono mt-1">≥ {formatDeZahl(reqBkMin, 2)} N/mm²</div>
                   </div>
                 </div>
 
@@ -1580,7 +1580,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     <span className="text-xs text-text-main/50 font-bold font-mono mb-1 block">
                       {coresTested <= 4 ? 'Für 2-4 Kerne: ≥ 0.85 * (f_ck + 1)' : 'Für 5-6 Kerne: ≥ 0.85 * (f_ck + 2)'}
                     </span>
-                    <div className="text-lg font-bold text-shiraz font-mono">≥ {reqBkMedian.toFixed(2)} N/mm²</div>
+                    <div className="text-lg font-bold text-shiraz font-mono">≥ {formatDeZahl(reqBkMedian, 2)} N/mm²</div>
                   </div>
                 </div>
               </div>
@@ -1655,10 +1655,10 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           { title: 'Nachbehandlung', url: 'https://de.wikipedia.org/wiki/Nachbehandlung_(Beton)' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
+          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-1000' },
+          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
           { title: 'DBV-Merkblätter: Sichtbeton (2015), Industrieböden, Betondeckung (Deutscher Beton- und Bautechnik-Verein E.V.)', url: 'https://www.betonverein.de/' }
         ]}
         literatur={[
@@ -1673,7 +1673,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
             quelle: 'Krell (2022)'
           },
           {
-            formel: 'f_{ct,eff,td} = 0.75 \\dots 0.85 \\cdot f_{ctm,28d}',
+            formel: 'f_{ct,eff,td} = 0{,}75 \\dots 0{,}85 \\cdot f_{ctm,28d}',
             erklaerung: 'Vorgabe für langsame Hydratationsfestigkeitsentwicklung zur Bestimmung des frühen Zwangsriss-Risikos am Bauteil.',
             quelle: 'DIN EN 1992-1-1'
           }

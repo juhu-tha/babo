@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { AlertTriangle, CheckCircle2, Leaf, Droplets } from 'lucide-react';
@@ -60,9 +61,9 @@ export default function Recyclingbeton() {
 
     if (rcAnteil > maxAnteil) {
       isOk = false;
-      hinweis = `Der Anteil von ${rcAnteil}% überschreitet den nach DAfStb-Richtlinie zulässigen Maximalwert von ${maxAnteil}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% überschreitet den nach DAfStb-Richtlinie zulässigen Maximalwert von ${formatDeWert(maxAnteil)}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
     } else {
-      hinweis = `Der Anteil von ${rcAnteil}% liegt innerhalb der normativen Grenzen (max. ${maxAnteil}%).`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% liegt innerhalb der normativen Grenzen (max. ${formatDeWert(maxAnteil)}%).`;
     }
 
     // Wasseraufnahme (Kernfeuchte)
@@ -212,26 +213,26 @@ export default function Recyclingbeton() {
               <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1">E-Modul Reduktion</div>
-                  <div className="text-2xl font-bold">-{results.eModulReduktion.toFixed(1)} %</div>
+                  <div className="text-2xl font-bold">-{formatDeZahl(results.eModulReduktion, 1)} %</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1">Wasseranspruch Erhöhung</div>
-                  <div className="text-2xl font-bold">+{results.wasseranspruchErhoehung.toFixed(1)} %</div>
+                  <div className="text-2xl font-bold">+{formatDeZahl(results.wasseranspruchErhoehung, 1)} %</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">Schwinden/Kriechen <InfoTooltip text="Zunahme des Schwind- und Kriechmaßes gegenüber Normalbeton" /></div>
-                  <div className="text-2xl font-bold">+{results.schwindenErhoehung.toFixed(1)} %</div>
+                  <div className="text-2xl font-bold">+{formatDeZahl(results.schwindenErhoehung, 1)} %</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">Trockenrohdichte Red. <InfoTooltip text="Abnahme der Dichte des Festbetons" /></div>
-                  <div className="text-2xl font-bold">-{results.rohdichteReduktion.toFixed(1)} %</div>
+                  <div className="text-2xl font-bold">-{formatDeZahl(results.rohdichteReduktion, 1)} %</div>
                 </div>
                 <div className="col-span-2 mt-2">
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
                     <Droplets size={16} /> Kernfeuchte-Kompensation (Schätzung)
                     <InfoTooltip text="Zusätzliches Wasser, das die RC-Körnung aufsaugt und das beim Mischen zugegeben werden muss (Vorsättigung)." />
                   </div>
-                  <div className="text-xl font-bold">ca. {results.zusatzWasser.toFixed(0)} Liter/m³</div>
+                  <div className="text-xl font-bold">ca. {formatDeZahl(results.zusatzWasser, 0)} Liter/m³</div>
                 </div>
               </div>
               
@@ -347,8 +348,8 @@ export default function Recyclingbeton() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Beton nach DIN EN 206 und DIN 1045-2 mit rezyklierten Gesteinskörnungen:2010-09', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-2:2023-08 (R-Beton Typ A und Typ B)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },
+          { title: 'DIN 1045-2:2023-08 (R-Beton Typ A und Typ B)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' }
         ]}
         literatur={[
           'DAfStb Heft 580 & Heft 600: Bemessung und Konstruktion bei Verwendung von rezyklierten Gesteinskörnungen',

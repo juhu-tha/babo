@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   LayoutGrid, 
@@ -853,7 +854,7 @@ export default function Innenausbau() {
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <label className="text-xs font-bold text-text-main">Gemessener CM-Wert:</label>
-                    <span className="text-sm font-mono font-bold text-shiraz">{gemessenerCM.toFixed(1)} CM-%</span>
+                    <span className="text-sm font-mono font-bold text-shiraz">{formatDeZahl(gemessenerCM, 1)} CM-%</span>
                   </div>
                   <input
                     type="range"
@@ -897,8 +898,8 @@ export default function Innenausbau() {
                       </h4>
                       <p className="text-xs mt-1 leading-relaxed">
                         {istBelegreif 
-                          ? `Der gemessene Feuchtigkeitsgehalt von ${gemessenerCM.toFixed(1)} CM-% unterschreitet den normativen Grenzwert von ${cmGrenzwert.toFixed(1)} CM-%. Die Verlegung des Oberbelags (${belagArt}) darf erfolgen.`
-                          : `Der gemessene Wert (${gemessenerCM.toFixed(1)} CM-%) liegt über dem zulässigen Grenzwert von ${cmGrenzwert.toFixed(1)} CM-%. Eine Verlegung führt zu schweren Folgeschäden (Parkettaufwölbung, Schimmelbildung, Hohllagen)!`}
+                          ? `Der gemessene Feuchtigkeitsgehalt von ${formatDeZahl(gemessenerCM, 1)} CM-% unterschreitet den normativen Grenzwert von ${formatDeZahl(cmGrenzwert, 1)} CM-%. Die Verlegung des Oberbelags (${belagArt}) darf erfolgen.`
+                          : `Der gemessene Wert (${formatDeZahl(gemessenerCM, 1)} CM-%) liegt über dem zulässigen Grenzwert von ${formatDeZahl(cmGrenzwert, 1)} CM-%. Eine Verlegung führt zu schweren Folgeschäden (Parkettaufwölbung, Schimmelbildung, Hohllagen)!`}
                       </p>
                     </div>
                   </div>
@@ -906,12 +907,12 @@ export default function Innenausbau() {
                   <div className="grid grid-cols-2 gap-3 text-xs font-mono">
                     <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                       <span className="text-slate-500 text-[10px] block">Zulässiger Grenzwert:</span>
-                      <strong className="text-text-main text-sm">≤ {cmGrenzwert.toFixed(1)} CM-%</strong>
+                      <strong className="text-text-main text-sm">≤ {formatDeZahl(cmGrenzwert, 1)} CM-%</strong>
                     </div>
                     <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                       <span className="text-slate-500 text-[10px] block">Differenz / Überschreitung:</span>
                       <strong className={`text-sm ${istBelegreif ? 'text-emerald-700' : 'text-rose-700'}`}>
-                        {(gemessenerCM - cmGrenzwert > 0 ? '+' : '') + (gemessenerCM - cmGrenzwert).toFixed(1)} CM-%
+                        {(gemessenerCM - cmGrenzwert > 0 ? '+' : '') + formatDeZahl((gemessenerCM - cmGrenzwert), 1)} CM-%
                       </strong>
                     </div>
                   </div>
@@ -941,11 +942,11 @@ export default function Innenausbau() {
           'BEB-Merkblätter: Bundesverband Estrich und Belag e.V. (Schnittstellenkoordination FBH)'
         ]}
         regelwerke={[
-          { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18560-1..7:2021-02 (Estriche im Bauwesen - Teile 1 bis 7: Anforderungen, Prüfung und Ausführung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18534-1..6:2017-07 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18181' },
+          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+520' },
+          { title: 'DIN 18560-1..7:2021-02 (Estriche im Bauwesen - Teile 1 bis 7: Anforderungen, Prüfung und Ausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1..7' },
+          { title: 'DIN 18534-1..6:2017-07 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18534-1..6' },
+          { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4103-1' }
         ]}
         formeln={[
           {

@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Thermometer } from 'lucide-react';
 import React, { useState, useMemo, useEffect } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -251,19 +252,19 @@ export default function Waermeeigenschaften() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
                   <div className="text-xs text-text-main/70 mb-1">Wärmespeicherfähigkeit (C)</div>
-                  <div className="text-lg font-bold text-orange-800">{results.capVolMJ.toFixed(2)} <span className="text-xs font-normal">MJ/(m³K)</span></div>
+                  <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.capVolMJ, 2)} <span className="text-xs font-normal">MJ/(m³K)</span></div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
                   <div className="text-xs text-text-main/70 mb-1">Temperaturleitfähigkeit (a)</div>
-                  <div className="text-lg font-bold text-orange-800">{results.a_mm2_s.toFixed(2)} <span className="text-xs font-normal">mm²/s</span></div>
+                  <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.a_mm2_s, 2)} <span className="text-xs font-normal">mm²/s</span></div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
                   <div className="text-xs text-text-main/70 mb-1">Wärmeeindringfähigkeit (b)</div>
-                  <div className="text-lg font-bold text-orange-800">{results.b.toFixed(0)} <span className="text-xs font-normal">J/(m²K√s)</span></div>
+                  <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.b, 0)} <span className="text-xs font-normal">J/(m²K√s)</span></div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 shadow-sm">
                   <div className="text-xs text-text-main/70 mb-1">Kontakttemperatur (Haut)</div>
-                  <div className="text-lg font-bold text-orange-800">{results.T_contact.toFixed(1)} <span className="text-xs font-normal">°C</span></div>
+                  <div className="text-lg font-bold text-orange-800">{formatDeZahl(results.T_contact, 1)} <span className="text-xs font-normal">°C</span></div>
                 </div>
               </div>
               <div className="h-48">
@@ -299,7 +300,7 @@ export default function Waermeeigenschaften() {
                         legend: { display: false },
                         tooltip: {
                           callbacks: {
-                            label: (context) => `${context.parsed.y.toFixed(1)} cm`
+                            label: (context) => `${formatDeZahl(context.parsed.y, 1)} cm`
                           }
                         }
                       },
@@ -323,12 +324,12 @@ export default function Waermeeigenschaften() {
                     <div className="w-3 h-3 rounded-full mt-1 shrink-0" style={{ backgroundColor: mat.color }}></div>
                     <div>
                       <div className="font-semibold text-text-main">
-                        {mat.name} <span className="text-home-grau font-normal">(λ = {mat.lambda.toFixed(3)} W/mK)</span>
+                        {mat.name} <span className="text-home-grau font-normal">(λ = {formatDeZahl(mat.lambda, 3)} W/mK)</span>
                       </div>
                       <div className="text-text-main/70">{mat.desc}</div>
                       {daemmResults.rInsReq > 0 && (
                         <div className="font-medium mt-0.5 text-orange-800">
-                          Erforderlich: {daemmResults.thicknesses[idx].toFixed(1)} cm
+                          Erforderlich: {formatDeZahl(daemmResults.thicknesses[idx], 1)} cm
                         </div>
                       )}
                     </div>
@@ -348,8 +349,8 @@ export default function Waermeeigenschaften() {
           { title: 'Temperaturleitfähigkeit', url: 'https://de.wikipedia.org/wiki/Temperaturleitf%C3%A4higkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4108-4 (Wärmeschutz und Energie-Einsparung in Gebäuden - Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' },
+          { title: 'DIN 4108-4 (Wärmeschutz und Energie-Einsparung in Gebäuden - Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-4' },
           { title: 'Gebäudeenergiegesetz (GEG)', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[

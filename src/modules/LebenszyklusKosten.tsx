@@ -72,7 +72,7 @@ export default function LebenszyklusKosten() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken - Allgemeine Rahmenbedingungen)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken - Allgemeine Rahmenbedingungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' },
           { title: 'ISO 15686-5 (Buildings and constructed assets - Life cycle costing)', url: 'https://www.iso.org/' },
           { title: 'BNB Leitfaden Nachhaltiges Bauen (Anlage 1: Nutzungsdauern von Bauteilen)', url: 'https://www.nachhaltigesbauen.de/' }
         ]}

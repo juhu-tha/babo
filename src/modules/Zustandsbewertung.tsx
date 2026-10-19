@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AlertTriangle, Search, Filter, FileText, CheckCircle, XCircle, Info, Sliders, Calculator, Award, Plus, Minus, BookOpen, Wrench, Shield, Clipboard, Eye, ClipboardCheck, ShieldCheck } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 const SCHADEN_KATEGORIEN = [
@@ -121,9 +121,10 @@ export default function Zustandsbewertung() {
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'datenbank' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
-          onClick={() => setActiveTab('datenbank')}
+          onClick={() => { window.location.hash = 'schadensbilder'; }}
+          title="Öffnet das Untermodul „Typische Bauschäden“"
         >
-          <Search size={16} /> Typische Bauschäden
+          <Search size={16} /> Typische Bauschäden ↗
         </button>
         <button
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
@@ -184,7 +185,7 @@ export default function Zustandsbewertung() {
                   <h4 className="font-bold text-text-main text-sm">Laufende Beobachtung (L)</h4>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed">
-                  <strong>Vierteljährlich:</strong> Kontinuierliche Überwachung durch das Straßenunterhaltungspersonal (Straßenwärter) im Zuge ihrer regulären Kontrollfahrten. Dokumentiert werden plötzliche Anomalien wie Anfahrschäden, akute Setzungen oder Hochwasserbeeinflussungen.
+                  <strong>In der Regel zweimal jährlich:</strong> Überwachung durch das Straßenunterhaltungspersonal (Straßenwärter) im Zuge ihrer regulären Kontrollfahrten. Dokumentiert werden plötzliche Anomalien wie Anfahrschäden, akute Setzungen oder Hochwasserbeeinflussungen.
                 </p>
               </div>
 
@@ -201,10 +202,10 @@ export default function Zustandsbewertung() {
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-[#7c3aed] text-white flex items-center justify-center font-bold text-sm">P</div>
-                  <h4 className="font-bold text-text-main text-sm">Bauabnahme- / Gewährleistungs-P</h4>
+                  <h4 className="font-bold text-text-main text-sm">Prüfung vor Abnahme / vor Ablauf der Verjährungsfrist</h4>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed">
-                  <strong>Vor Übergabe / Ablauf Gewährleistung:</strong> Ausgeführt unmittelbar vor der Verkehrsübergabe des Neubaus (Abnahmeprüfung) und ca. 10–12 Monate vor Ablauf der vertraglichen Gewährleistungsfrist (oft 4 oder 5 Jahre), um Baumängel rechtzeitig anzuzeigen.
+                  <strong>Jeweils als Hauptprüfung:</strong> Prüfung vor der Abnahme des Neubaus und Prüfung vor Ablauf der Verjährungsfrist für Mängelansprüche, damit Mängel rechtzeitig geltend gemacht werden können.
                 </p>
               </div>
             </div>
@@ -214,13 +215,13 @@ export default function Zustandsbewertung() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
             <h3 className="font-bold text-lg text-text-main mb-4">Bauwerksbewertung (Zustandsnoten nach RI-EBW-PRÜF)</h3>
             <p className="text-sm text-text-main/80 mb-6">
-              Die Bewertung eines Ingenieurbauwerks erfolgt in Deutschland standardisiert über das IT-System <strong>SIB-Bauwerke</strong> auf Grundlage der Richtlinie <strong>RI-EBW-PRÜF</strong>. Die Note ist ein mathematisch-objektiver Indikator für den Handlungs- und Sanierungsbedarf.
+              Die Bewertung eines Ingenieurbauwerks erfolgt in Deutschland standardisiert über das IT-System <strong>SIB-Bauwerke</strong> auf Grundlage der Richtlinie <strong>RI-EBW-PRÜF</strong>. Die Note ist ein nach festgelegtem Algorithmus ermittelter Indikator für den Handlungsbedarf, der auf den Einzelbewertungen des Prüfers beruht.
             </p>
 
             <div className="space-y-3">
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-emerald-500 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">1.0 - 1.4</span>
+                  <span className="text-2xl">1,0 - 1.4</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Sehr gut</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -232,7 +233,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-lime-500 text-text-main font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">1.5 - 1.9</span>
+                  <span className="text-2xl">1,5 - 1.9</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Gut</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -244,7 +245,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-yellow-400 text-text-main font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">2.0 - 2.4</span>
+                  <span className="text-2xl">2,0 - 2.4</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Befriedigend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -256,7 +257,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-orange-400 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">2.5 - 2.9</span>
+                  <span className="text-2xl">2,5 - 2.9</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Ausreichend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -268,8 +269,8 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-orange-600 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">3.0 - 3.4</span>
-                  <span className="text-xs uppercase font-bold tracking-wider">Mangelhaft</span>
+                  <span className="text-2xl">3,0 - 3.4</span>
+                  <span className="text-xs uppercase font-bold tracking-wider">Nicht ausreichend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
                   <p className="text-xs text-text-main font-semibold leading-relaxed">
@@ -280,12 +281,12 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-red-600 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">3.5 - 4.0</span>
+                  <span className="text-2xl">3,5 - 4.0</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Ungenügend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
                   <p className="text-xs text-text-main font-semibold leading-relaxed">
-                    Kritischer Zustand! Sehr schwere Mängel gefährden die Standsicherheit (z.B. Versagen von Spanngliedern, akuter Bruchverdacht, herabfallende große Betonteile über Verkehrswegen). Die Standsicherheit ist nicht mehr rechnerisch nachgewiesen. Sofortige Sperrung oder Lastbeschränkung (z.B. Tonnagebegrenzung) ist unumgänglich.
+                    Kritischer Zustand! Sehr schwere Mängel gefährden die Standsicherheit (z.B. Versagen von Spanngliedern, akuter Bruchverdacht, herabfallende große Betonteile über Verkehrswegen). Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben; sofortige Maßnahmen (Sperrung, Lastbeschränkung, Instandsetzung) sind erforderlich.
                   </p>
                 </div>
               </div>
@@ -299,7 +300,7 @@ export default function Zustandsbewertung() {
               Mängel-Einzelnoten (0 - 4) &amp; Bewertungsschema nach RI-EBW-PRÜF / DIN 1076
             </h3>
             <p className="text-sm text-text-main/80 mb-6 leading-relaxed">
-              Sowohl nach <strong>DIN 1076 (RI-EBW-PRÜF)</strong> als auch nach <strong>VDI 6200</strong> werden einzelne Schäden und Abweichungen an Bauteilen strukturiert erfasst. Dabei wird jeder Mangel bezüglich der drei Hauptkriterien <strong>Standsicherheit (S)</strong>, <strong>Verkehrssicherheit (V)</strong> und <strong>Dauerhaftigkeit (D)</strong> in eine Schadensklasse von <strong>0 bis 4 (Mängel-Einzelnote)</strong> eingestuft.
+              Nach <strong>RI-EBW-PRÜF (DIN 1076)</strong> werden einzelne Schäden und Abweichungen an Bauteilen strukturiert erfasst. Dabei wird jeder Mangel bezüglich der drei Hauptkriterien <strong>Standsicherheit (S)</strong>, <strong>Verkehrssicherheit (V)</strong> und <strong>Dauerhaftigkeit (D)</strong> in eine Bewertungsstufe von <strong>0 bis 4</strong> eingestuft. Für den Hochbau enthält VDI 6200 Blatt 1.1:2026-06 ein eigenes Bewertungs- und Notensystem; die folgende Darstellung bezieht sich auf RI-EBW-PRÜF.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mb-6">
@@ -344,7 +345,7 @@ export default function Zustandsbewertung() {
                   <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-bold font-mono text-xs">4</span>
                   <h4 className="font-extrabold text-red-800 text-xs">Sehr schwer</h4>
                 </div>
-                <p className="text-xs text-red-900/80 leading-relaxed">Sehr schwerer Mangel mit akutem Traglast- oder Sicherheitsverlust. Gefahr im Verzug. Standsicherheit rechnerisch nicht erfüllt.</p>
+                <p className="text-xs text-red-900/80 leading-relaxed">Sehr schwerer Mangel: Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben.</p>
                 <div className="text-xs text-red-700 italic mt-1.5 font-semibold">Maßnahme: Sofortmaßnahmen (Sperrung).</div>
               </div>
             </div>
@@ -355,11 +356,12 @@ export default function Zustandsbewertung() {
                 Das Bewertungsschema zur Gesamtbauwerksnote
               </div>
               <p>
-                Um aus den S-V-D Einzelnoten (0-4) die finale, stufenlose <strong>Gesamt-Zustandsnote (1,0 bis 4,0)</strong> für ein Bauwerk zu ermitteln, sieht die Richtlinie ein klares Verknüpfungsschema vor:
+                Vereinfachte Darstellung des Algorithmus (maßgebend sind RI-EBW-PRÜF und SIB-Bauwerke):
               </p>
               <ul className="list-disc pl-5 space-y-1 mt-1">
-                <li><strong>Maximalwert-Prinzip (Anker):</strong> Die Note basiert primär auf dem schlechtesten Einzelwert (S, V oder D) des kritischsten Bauteils. Hat ein tragendes Teil in Standsicherheit (S) die Einzelnote 3, verankert dies die Gesamtnote direkt im Bereich ab 3,0 (Mangelhaft).</li>
-                <li><strong>Mängelakkumulation (Gewichtungsfaktor):</strong> Haben weitere Bauteile zusätzliche Mängel (z. B. zusätzliche Gehobene Mängel der Note 2 in Dauerhaftigkeit), addieren sich diese nach einem mathematischen Schlüssel auf. Jeder relevante Nebenmangel erhöht die Gesamtnote inkrementell (im Schnitt um <strong>+0,1 bis +0,2</strong>), bis die absolute Obergrenze von 4,0 erreicht ist.</li>
+                <li><strong>Basiszahl:</strong> Je Bauteilgruppe ergibt sich eine Basiszahl aus der ungünstigsten Einzelbewertung (S, V, D).</li>
+                <li><strong>Zu- und Abschläge:</strong> Schadensumfang und Anzahl der Schäden führen zu Zu- bzw. Abschlägen; feste Inkremente je Nebenmangel gibt es nicht.</li>
+                <li><strong>Bauwerksnote:</strong> Maßgebend ist die ungünstigste Bauteilgruppe (Notenbereich 1,0 bis 4,0).</li>
               </ul>
             </div>
           </div>
@@ -375,22 +377,22 @@ export default function Zustandsbewertung() {
               <h2 className="text-2xl font-bold text-text-main">Überprüfung nach VDI 6200</h2>
             </div>
             <p className="text-text-main/80 mb-6 text-sm leading-relaxed">
-              Die Richtlinie <strong>VDI 6200 "Standsicherheit von Bauwerken - Regelmäßige Überprüfung"</strong> regelt im Hoch- und Industriebau (im Gegensatz zur DIN 1076 für Straßeninfrastruktur) die regelmäßige und methodische Prüfung der Standsicherheit. Sie dient Eigentümern zur Entlastung bei der zivilrechtlichen Verkehrssicherungspflicht nach § 823 BGB.
+              Die Richtlinie <strong>VDI 6200 "Standsicherheit von Bauwerken - Regelmäßige Überprüfung"</strong> regelt im Hoch- und Industriebau (im Gegensatz zur DIN 1076 für Straßeninfrastruktur) die regelmäßige und methodische Prüfung der Standsicherheit. Die Reihe VDI 6200 ist ein privates technisches Regelwerk, keine Rechtsnorm und nicht als Technische Baubestimmung eingeführt. Sie konkretisiert die Instandhaltungspflicht des Eigentümers (§ 3 MBO bzw. Art. 3 BayBO, §§ 823, 836–838 BGB) und gilt als anerkannte Regel der Technik; verbindlich wird sie durch Vertrag. Für Bundesbauten gilt zusätzlich die RÜV (2008). Ausgaben: VDI 6200:2010-02 (Grundrichtlinie) und VDI 6200 Blatt 1.1:2026-06 (Berichtsdokumentation, Bewertung und Zustandsnote).
             </p>
 
             <h3 className="font-bold text-lg text-text-main mb-4">Prüfungsarten nach VDI 6200</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30">
                 <h4 className="font-bold text-shiraz mb-2">Begehung</h4>
-                <p className="text-xs text-text-main/80 leading-relaxed">Regelmäßige Sichtkontrolle durch sachkundige Personen (z.B. eingewiesene Haustechniker, Eigentümer). Erkennen von offensichtlichen Mängeln, starken Rissen, großem Bewuchs, Feuchtpunkte oder Verformungen.</p>
+                <p className="text-xs text-text-main/80 leading-relaxed">Sichtkontrolle durch den Eigentümer/Verfügungsberechtigten oder eine beauftragte Person. Erkennen von offensichtlichen Mängeln, starken Rissen, großem Bewuchs, Feuchtpunkte oder Verformungen.</p>
               </div>
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30">
                 <h4 className="font-bold text-shiraz mb-2">Inspektion</h4>
-                <p className="text-xs text-text-main/80 leading-relaxed">Eingehende Sichtprüfung durch fachkundige Personen (z.B. Tragwerksplaner mit Berufserfahrung). Systematische Erfassung aller Bauteile, Protokollierung, ggf. vereinfachte Messungen des Rissfortschritts oder der Holznässe.</p>
+                <p className="text-xs text-text-main/80 leading-relaxed">Eingehende Sichtprüfung durch eine fachkundige Person. Systematische Erfassung aller Bauteile, Protokollierung, ggf. vereinfachte Messungen des Rissfortschritts oder der Holznässe.</p>
               </div>
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30">
                 <h4 className="font-bold text-shiraz mb-2">Eingehende Überprüfung</h4>
-                <p className="text-xs text-text-main/80 leading-relaxed">Detaillierte, tiefgreifende Bauwerksuntersuchung durch besonders fachkundige Personen (z.B. staatlich anerkannte Sachverständige). Häufiger Einsatz zerstörungsfreier Prüfverfahren (ZfP), Endoskopie, Bauteilöffnungen oder rechnerischer Standsicherheitsnachweise.</p>
+                <p className="text-xs text-text-main/80 leading-relaxed">Detaillierte, tiefgreifende Bauwerksuntersuchung durch eine besonders fachkundige Person (handnahe Prüfung, ggf. Materialentnahmen, Sicherheitsanalyse). Häufiger Einsatz zerstörungsfreier Prüfverfahren (ZfP), Endoskopie, Bauteilöffnungen oder rechnerischer Standsicherheitsnachweise.</p>
               </div>
             </div>
 
@@ -408,15 +410,15 @@ export default function Zustandsbewertung() {
                 <tbody className="divide-y divide-home-grau/20 text-text-main">
                   <tr className="hover:bg-home-grau/5">
                     <td className="px-4 py-3 border border-home-grau/30 font-bold text-shiraz">Wer? (Qualifikation)</td>
-                    <td className="px-4 py-3 border border-home-grau/30"><strong>Sachkundige Person:</strong> Eingewiesenes Personal, Hausmeister, Eigentümer. Keine formale Ingenieurausbildung nötig.</td>
-                    <td className="px-4 py-3 border border-home-grau/30"><strong>Fachkundige Person:</strong> Bauingenieur/Architekt mit mind. 3 Jahren Berufserfahrung im konstruktiven Ingenieurbau.</td>
-                    <td className="px-4 py-3 border border-home-grau/30"><strong>Besonders fachkundige Person:</strong> Prüfingenieur, Sachverständiger (z.B. VDI-Zertifikat) mit &gt;5 Jahren spezifischer Erfahrung.</td>
+                    <td className="px-4 py-3 border border-home-grau/30"><strong>Eigentümer/Verfügungsberechtigter</strong> oder eine von ihm beauftragte Person.</td>
+                    <td className="px-4 py-3 border border-home-grau/30"><strong>Fachkundige Person</strong> (Anforderungen nach VDI 6200; ein eigenes Blatt zu Qualifikationen ist in Bearbeitung).</td>
+                    <td className="px-4 py-3 border border-home-grau/30"><strong>Besonders fachkundige Person</strong> mit vertiefter Erfahrung in Tragwerksplanung und Bauwerksdiagnostik.</td>
                   </tr>
                   <tr className="hover:bg-home-grau/5">
                     <td className="px-4 py-3 border border-home-grau/30 font-bold text-shiraz">Wann? (Intervall)</td>
-                    <td className="px-4 py-3 border border-home-grau/30">Oft jährlich oder halbjährlich (abhängig von Schadensfolgeklasse CC).</td>
-                    <td className="px-4 py-3 border border-home-grau/30">Alle 2 bis 5 Jahre (z.B. CC2: alle 3 bis 5 Jahre).</td>
-                    <td className="px-4 py-3 border border-home-grau/30">Alle 6 bis 15 Jahre (z.B. CC2: alle 12 bis 15 Jahre) oder anlassbezogen (nach auffälligen Inspektionen).</td>
+                    <td className="px-4 py-3 border border-home-grau/30">VDI 6200 Tab. 3: CC3 alle 1–2 Jahre, CC2 alle 2–3 Jahre, CC1 alle 3–5 Jahre; zusätzlich nach außergewöhnlichen Ereignissen (Sturm, Schnee, Brand).</td>
+                    <td className="px-4 py-3 border border-home-grau/30">CC3 alle 2–3 Jahre, CC2 alle 4–5 Jahre, CC1 nach Erfordernis.</td>
+                    <td className="px-4 py-3 border border-home-grau/30">CC3 alle 6–9 Jahre, CC2 alle 12–15 Jahre, CC1 nach Erfordernis; außerdem anlassbezogen.</td>
                   </tr>
                   <tr className="hover:bg-home-grau/5">
                     <td className="px-4 py-3 border border-home-grau/30 font-bold text-shiraz">Was? (Umfang)</td>
@@ -442,7 +444,7 @@ export default function Zustandsbewertung() {
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h3 className="font-bold text-lg text-text-main mb-4">Wichtige Bewertungs-Säulen (S, V, D) nach VDI 6200</h3>
+            <h3 className="font-bold text-lg text-text-main mb-4">Bewertungskriterien S, V, D (RI-EBW-PRÜF; VDI 6200 Blatt 1.1)</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
@@ -477,64 +479,69 @@ export default function Zustandsbewertung() {
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h3 className="font-bold text-lg text-text-main mb-4">Schadensfolgeklassen (CC) nach DIN EN 1990</h3>
+            <h3 className="font-bold text-lg text-text-main mb-4">Schadensfolgeklassen (CC) nach VDI 6200, Tab. 1</h3>
             <p className="text-sm text-text-main/80 mb-4">
-              Die VDI 6200 koppelt die Inspektionsabstände direkt an die Schadensfolgeklassen (Consequence Classes, CC) nach DIN EN 1990.
+              VDI 6200 knüpft die Überprüfungsintervalle an Schadensfolgeklassen (CC, angelehnt an DIN EN 1990) und nennt dafür Gebäudebeispiele.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30">
-                <h4 className="font-bold text-text-main mb-2 text-sm">CC1 / RC1 (Niedrige Folgen)</h4>
+                <h4 className="font-bold text-text-main mb-2 text-sm">CC 1 (Niedrige Folgen)</h4>
                 <p className="text-text-main/80 mb-2 leading-relaxed">Geringes Risiko für Menschenleben. Kleine wirtschaftliche, umwelttechnische oder soziale Versagensfolgen.</p>
-                <p className="text-text-main/60 italic">Beispiele: Landwirtschaftliche Lagerspeicher, unbeheizte Schuppen, Gewächshäuser.</p>
+                <p className="text-text-main/60 italic">Beispiele: Ein- und Mehrfamilienhäuser, landwirtschaftliche Gebäude, robuste Bauwerke mit Stützweiten &lt; 6 m.</p>
               </div>
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 border-l-4 border-l-[#0284c7]">
-                <h4 className="font-bold text-text-main mb-2 text-sm">CC2 / RC2 (Mittlere Folgen)</h4>
+                <h4 className="font-bold text-text-main mb-2 text-sm">CC 2 (Mittlere Folgen)</h4>
                 <p className="text-text-main/80 mb-2 leading-relaxed">Mittleres Risiko für Menschenleben. Beträchtliche wirtschaftliche Schäden im Falle eines Bauteilversagens.</p>
-                <p className="text-text-main/60 italic">Beispiele: Reguläre Wohn- und Bürogebäude, Standard-Industriehallen, Einkaufszentren unter mittlerer Größe.</p>
+                <p className="text-text-main/60 italic">Beispiele: Bürogebäude, Industriebauten, Krankenhäuser, Schulen, Hallenbäder, Sporthallen, Bauwerke über 60 m Höhe, große Vordächer, Balkone, vorgehängte Fassaden, Kuppeln.</p>
               </div>
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 border-l-4 border-l-shiraz">
-                <h4 className="font-bold text-text-main mb-2 text-sm">CC3 / RC3 (Hohe Folgen)</h4>
+                <h4 className="font-bold text-text-main mb-2 text-sm">CC 3 (Hohe Folgen)</h4>
                 <p className="text-text-main/80 mb-2 leading-relaxed">Extremes Risiko für Menschenleben. Enorme wirtschaftliche, gesellschaftliche oder umweltbezogene Folgeverluste.</p>
-                <p className="text-text-main/60 italic">Beispiele: Große Sporttribünen, Krankenhäuser, Hochhäuser ab 60m, Bahnhöfe, Kernkraftwerke, große Schulen.</p>
+                <p className="text-text-main/60 italic">Beispiele: Versammlungsstätten für mehr als 5 000 Personen, Stadien, Kongresshallen, Mehrzweckarenen.</p>
               </div>
             </div>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h3 className="font-bold text-lg text-text-main mb-4">Robustheitsklassen (RK) des Tragwerks nach VDI 6200</h3>
+            <h3 className="font-bold text-lg text-text-main mb-4">Robustheitsklassen (RC) des Tragwerks nach VDI 6200, Abschn. 4.2</h3>
             <p className="text-sm text-text-main/80 mb-4">
               Neben den Versagensfolgen spielt die Tragwerkkonstruktion und ihre Unempfindlichkeit gegenüber unerwarteten Schädigungen (Robustheit) eine tragende Rolle bei der Definition der notwendigen Überwachungsabstände.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs mb-6">
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 border-t-4 border-t-red-550">
-                <h4 className="font-bold text-text-main mb-2 text-sm">RK1 - Geringe Robustheit / Sensibel</h4>
-                <p className="text-text-main/80 mb-2 leading-relaxed">Tragwerke ohne Redundanz. Ein begrenztes lokales Versagen eines einzelnen Bauteils (etwa eines Binders) führt unweigerlich zu einem fortschreitenden Versagen oder Kompletteinsturz.</p>
-                <p className="text-text-main/60 italic">Beispiele: Holzbinder-Dachtragwerke mit Einfeldträgern, weitgespannte Hallendächer ohne Tragreserven.</p>
+                <h4 className="font-bold text-text-main mb-2 text-sm">RC 1 – geringe Robustheit</h4>
+                <p className="text-text-main/80 mb-2 leading-relaxed">Statisch bestimmt, ohne Systemreserven, imperfektionsempfindlich bzw. spröde.</p>
+                <p className="text-text-main/60 italic">Beispiele: Einfeldträger, schlanke Schalen, Glas- und Gusskonstruktionen.</p>
               </div>
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 border-t-4 border-t-[#0284c7]">
-                <h4 className="font-bold text-text-main mb-2 text-sm">RK2 - Mittlere Robustheit</h4>
-                <p className="text-text-main/80 mb-2 leading-relaxed">Standardbauten mit normaler Redundanz. Ein lokales Versagen einzelner untergeordneter Tragelemente führt dank Lastumlagerung nicht direkt zum katastrophalen Einsturz.</p>
-                <p className="text-text-main/60 italic">Beispiele: Geschossbauten in konventioneller Skelettbauweise, Mehrfeld-Rahmensysteme in Stahl oder Stahlbeton.</p>
+                <h4 className="font-bold text-text-main mb-2 text-sm">RC 2</h4>
+                <p className="text-text-main/80 mb-2 leading-relaxed">Statisch unbestimmt mit Systemreserven, elastisch-plastisches Verhalten.</p>
+                <p className="text-text-main/60 italic">Beispiele: Durchlaufträger, eingeschossige Rahmen.</p>
               </div>
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 border-t-4 border-t-emerald-600">
-                <h4 className="font-bold text-text-main mb-2 text-sm">RK3 - Hohe Robustheit / Redundant</h4>
-                <p className="text-text-main/80 mb-2 leading-relaxed">Tragwerke mit ausgeprägter statischer Redundanz und hoher Unempfindlichkeit gegenüber punktuellem Versagen. Zahlreiche alternative Lastpfade verhindern Verfall.</p>
-                <p className="text-text-main/60 italic">Beispiele: Monolithisch verbundene Raumzellensysteme, räumlich dichte Tragwerksgitter, gekoppelte Wandscheiben.</p>
+                <h4 className="font-bold text-text-main mb-2 text-sm">RC 3</h4>
+                <p className="text-text-main/80 mb-2 leading-relaxed">Große Systemredundanz.</p>
+                <p className="text-text-main/60 italic">Beispiele: mehrgeschossige Rahmen, vielfach unbestimmte und seilverspannte Systeme.</p>
+              </div>
+              <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 border-t-4 border-t-emerald-600">
+                <h4 className="font-bold text-text-main mb-2 text-sm">RC 4 – nachgewiesene Robustheit</h4>
+                <p className="text-text-main/80 mb-2 leading-relaxed">Robustheit für alternative Gefährdungsszenarien rechnerisch nachgewiesen.</p>
+                <p className="text-text-main/60 italic">Beispiel: Nachweis des Stützenausfalls.</p>
               </div>
             </div>
 
-            <h4 className="font-bold text-md text-text-main mb-3">Verschneidungsmatrix: Ermittlung der Prüfklasse (PK 1 - PK 4)</h4>
+            <h4 className="font-bold text-md text-text-main mb-3">Didaktisches Modell (nicht Bestandteil von VDI 6200): Prüfklassen PK 1 – PK 4</h4>
             <p className="text-xs text-text-main/80 mb-4 leading-relaxed">
-              Die Kombination der Schadensfolgeklasse (CC) und Robustheitsklasse (RK) steuert die Einordnung in eine der vier <strong>Prüfklassen (PK)</strong>. Höhere Prüfklassen erfordern deutlich kürzere Überwachungsabstände:
+              Eigene Veranschaulichung, wie Schadensfolge (CC) und Robustheit (RC) zusammenwirken. VDI 6200 selbst legt die Intervalle über die Schadensfolgeklasse fest (Tab. 3); eine geringe Robustheit spricht für Intervalle an der unteren Grenze:
             </p>
             <div className="overflow-x-auto text-xs">
               <table className="w-full text-left border-collapse">
                 <thead className="bg-[#8c1d40]/10 text-text-main">
                   <tr>
-                    <th className="px-4 py-2 border border-home-grau/30">Schadensfolgeklasse \ Robustheit</th>
-                    <th className="px-4 py-2 border border-home-grau/30 font-bold text-emerald-600">RK3 (Erhöht robust)</th>
-                    <th className="px-4 py-2 border border-home-grau/30 font-bold text-[#0284c7]">RK2 (Normal robust)</th>
-                    <th className="px-4 py-2 border border-home-grau/30 font-bold text-red-500">RK1 (Gering robust)</th>
+                    <th className="px-4 py-2 border border-home-grau/30">Schadensfolgeklasse / Robustheit</th>
+                    <th className="px-4 py-2 border border-home-grau/30 font-bold text-emerald-600">RC 3/4 (robust)</th>
+                    <th className="px-4 py-2 border border-home-grau/30 font-bold text-[#0284c7]">RC 2</th>
+                    <th className="px-4 py-2 border border-home-grau/30 font-bold text-red-500">RC 1 (gering robust)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/20 text-text-main font-semibold">
@@ -563,96 +570,6 @@ export default function Zustandsbewertung() {
         </div>
       )}
 
-      {/* TAB Content 3: Schadensdatenbank */}
-      {activeTab === 'datenbank' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <div className="flex items-center gap-3 mb-4">
-              <ClipboardCheck className="text-shiraz" size={28} />
-              <h2 className="text-2xl font-bold text-text-main">Typische Bauschäden & Schadensbilder</h2>
-            </div>
-            <p className="text-text-main/80 mb-6 text-sm leading-relaxed">
-              Eine Übersicht häufig anzutreffender Schadensbilder an Tragwerkstrukturen aus Beton, Stahl, Holz und Mauerwerk mit deren Ursachen, bautechnischen Bewertungen und den dafür vorgesehenen Instandsetzungsmaßnahmen.
-            </p>
-
-            <div className="flex flex-col md:flex-row gap-4 mb-6">
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-home-grau" size={20} />
-                <input
-                  type="text"
-                  placeholder="Schadensbilder durchsuchen..."
-                  className="w-full pl-10 pr-4 py-2 border border-home-grau/30 rounded-lg text-sm text-text-main focus:outline-none focus:border-shiraz"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0">
-                {SCHADEN_KATEGORIEN.map(cat => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={`px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                      activeCategory === cat.id
-                        ? 'bg-shiraz text-white'
-                        : 'bg-off-white text-text-main hover:bg-home-grau/20 border border-home-grau/10'
-                    }`}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {filteredSchaeden.map(schaden => (
-                <div key={schaden.id} className="border border-home-grau/30 rounded-xl p-5 hover:border-shiraz/50 transition-all bg-off-white shadow-xs">
-                  <div className="flex justify-between items-start mb-3 border-b border-home-grau/10 pb-2">
-                    <h3 className="font-extrabold text-base text-text-main">{schaden.titel}</h3>
-                    <span className="text-xs font-bold uppercase tracking-wider text-shiraz bg-shiraz/10 border border-shiraz/15 px-2.5 py-0.5 rounded">
-                      {SCHADEN_KATEGORIEN.find(c => c.id === schaden.kategorie)?.label}
-                    </span>
-                  </div>
-                  <p className="text-xs text-text-main/80 mb-4 leading-relaxed">{schaden.beschreibung}</p>
-                  
-                  <div className="space-y-3.5 pt-2 border-t border-home-grau/30">
-                    <div>
-                      <div className="text-xs font-extrabold text-text-main/50 uppercase tracking-wider mb-1">Häufige Ursachen:</div>
-                      <ul className="list-disc list-inside text-xs text-text-main/90 space-y-0.5">
-                        {schaden.ursachen.map((u, i) => <li key={i}>{u}</li>)}
-                      </ul>
-                    </div>
-                    <div>
-                      <div className="text-xs font-extrabold text-text-main/50 uppercase tracking-wider mb-1">Bewertung (VDI 6200 / DIN 1076):</div>
-                      <p className="text-xs text-text-main">{schaden.bewertung}</p>
-                    </div>
-                    
-                    {/* Maßnahmen / Instandsetzungsverfahren in deep black text as requested */}
-                    <div className="bg-white p-3 rounded-lg border border-home-grau/15 mt-2 shadow-2xs">
-                      <div className="text-xs font-extrabold text-black uppercase tracking-wider mb-1.5 flex items-center gap-1.5 border-b border-home-grau/30 pb-1">
-                        <Wrench size={12} className="text-shiraz" />
-                        Instandsetzungsverfahren / Maßnahmen:
-                      </div>
-                      <ul className="list-disc pl-4 text-xs text-black font-semibold space-y-1.5 leading-relaxed">
-                        {schaden.massnahmen.map((m, i) => (
-                          <li key={i} className="text-black">
-                            {m}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {filteredSchaeden.length === 0 && (
-                <div className="col-span-full text-center py-12 text-home-grau italic text-xs">
-                  Keine typischen Bauschäden für diese Suchkriterien in der Wissensdatenbank gefunden.
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* TAB Content 4: Notenrechner */}
       {activeTab === 'rechner' && (
         <div className="space-y-6 animate-in fade-in duration-200">
@@ -664,7 +581,7 @@ export default function Zustandsbewertung() {
                 <h3 className="text-xl font-bold text-text-main flex items-center gap-2">Notenrechner &amp; Schulnoten-Konverter</h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Interaktive Umrechnung der Bauwerksnote (VDI 6200 / DIN 1076) in das klassische Schulnotensystem (1–6)
+            Didaktische Veranschaulichung der Zustandsnote (RI-EBW-PRÜF) über die sechs Notenbereiche – keine Regelwerksgröße; eine einheitliche oder normative Umrechnung in Schulnoten gibt es nicht.
           </p>
         </div>
               </div>
@@ -708,69 +625,68 @@ export default function Zustandsbewertung() {
               const finalZustandsnote = Math.round(calculatedZustandsnote * 10) / 10;
               const currentZ = calculatorTab === 'quick' ? zustandsnoteInput : finalZustandsnote;
 
-              // Linear scaling from [1.0, 4.0] Zustandsnote to [1.0, 6.0] Schulnote
-              // Formula: N = 1.0 + (Z - 1.0) / 3 * 5
-              const interpolatedSchulnote = Math.max(1.0, Math.min(6.0, Math.round((1.0 + ((currentZ - 1.0) / 3) * 5) * 10) / 10));
+              // Kategoriale Zuordnung der RI-EBW-Notenbereiche zu Schulnoten (didaktisch, keine Regelwerksgröße)
+              const interpolatedSchulnote = currentZ < 1.5 ? 1 : currentZ < 2.0 ? 2 : currentZ < 2.5 ? 3 : currentZ < 3.0 ? 4 : currentZ < 3.5 ? 5 : 6;
 
               const getSchulnoteInfo = (zn: number) => {
-                if (zn >= 1.0 && zn <= 1.4) {
+                if (zn < 1.5) {
                   return {
                     grade: 1,
-                    label: 'Sehr Gut',
+                    label: 'Sehr guter Bauwerkszustand',
                     color: 'bg-emerald-500 text-white',
                     borderCol: 'border-emerald-500',
                     textColor: 'text-emerald-700',
                     desc: 'Sehr guter Bauwerkszustand. Keine oder nur äußerst marginale Mängel erkennbar. Die Standsicherheit, Verkehrssicherheit und Dauerhaftigkeit sind vollumfänglich gegeben.',
                     action: 'Normale Überwachung gem. Regelintervall der VDI 6200 bzw. DIN 1076.'
                   };
-                } else if (zn >= 1.5 && zn <= 1.9) {
+                } else if (zn < 2.0) {
                   return {
                     grade: 2,
-                    label: 'Gut',
+                    label: 'Guter Bauwerkszustand',
                     color: 'bg-[#84cc16] text-[#1a3804]',
                     borderCol: 'border-[#84cc16]',
                     textColor: 'text-lime-700',
                     desc: 'Guter Bauwerkszustand. Kleinere Verschleißerscheinungen oder oberflächliche Schäden, welche die Tragwirkung und allgemeine Stabilität nicht beeinflussen.',
                     action: 'Beobachtung im Rahmen regulärer Begehungen, Behebung bei turnusmäßiger Wartung.'
                   };
-                } else if (zn >= 2.0 && zn <= 2.4) {
+                } else if (zn < 2.5) {
                   return {
                     grade: 3,
-                    label: 'Befriedigend',
+                    label: 'Befriedigender Bauwerkszustand',
                     color: 'bg-yellow-400 text-text-main',
                     borderCol: 'border-yellow-400',
                     textColor: 'text-yellow-600',
                     desc: 'Befriedigender Bauwerkszustand. Mängel vorhanden, welche die Dauerhaftigkeit (D) beeinträchtigen können, aber die Standsicherheit (S) und Verkehrssicherheit (V) sind zurzeit gewährleistet.',
                     action: 'Instandsetzungsmaßnahmen mittelfristig einplanen, Schadensausbreitung beobachten.'
                   };
-                } else if (zn >= 2.5 && zn <= 2.9) {
+                } else if (zn < 3.0) {
                   return {
                     grade: 4,
-                    label: 'Ausreichend',
+                    label: 'Ausreichender Bauwerkszustand',
                     color: 'bg-orange-400 text-white',
                     borderCol: 'border-orange-400',
                     textColor: 'text-orange-600',
                     desc: 'Ausreichender Bauwerkszustand. Größere Mängel. Die Standsicherheit und Verkehrssicherheit sind kurzfristig gegeben, jedoch ist die Dauerhaftigkeit der Bauteile akut gefährdet.',
                     action: 'Planung von Instandsetzungen in naher Zukunft, engere Überwachungsabstände.'
                   };
-                } else if (zn >= 3.0 && zn <= 3.4) {
+                } else if (zn < 3.5) {
                   return {
                     grade: 5,
-                    label: 'Mangelhaft',
+                    label: 'Nicht ausreichender Bauwerkszustand',
                     color: 'bg-orange-600 text-white',
                     borderCol: 'border-orange-600',
                     textColor: 'text-orange-700',
-                    desc: 'Mangelhafter Bauwerkszustand. Deutliche Einschränkung der Standsicherheit (S) oder der Verkehrssicherheit (V).',
+                    desc: 'Nicht ausreichender Bauwerkszustand. Deutliche Einschränkung der Standsicherheit (S) oder der Verkehrssicherheit (V).',
                     action: 'Feinere statisch-konstruktive Bauwerksuntersuchung sowie kurzfristige Instandsetzung anfordern.'
                   };
                 } else {
                   return {
                     grade: 6,
-                    label: 'Ungenügend',
+                    label: 'Ungenügender Bauwerkszustand',
                     color: 'bg-red-600 text-white',
                     borderCol: 'border-red-600',
                     textColor: 'text-red-600',
-                    desc: 'Kritischer Zustand / Gefahr im Verzug. Akute Gefährdung der Standsicherheit oder Verkehrssicherheit des Gebäudes oder des öffentlichen Verkehrsraums.',
+                    desc: 'Ungenügender Bauwerkszustand: Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben.',
                     action: 'Sofortige Notmaßnahmen: Sperrung der betroffenen Bereiche, provisorische Abstützung, Sicherung lockerer Bauteile.'
                   };
                 }
@@ -822,10 +738,10 @@ export default function Zustandsbewertung() {
                           />
 
                           <div className="grid grid-cols-4 gap-1 text-xs text-center text-text-main/50 font-semibold">
-                            <div>1.0 (Optimal)</div>
-                            <div>2.0 (Befriedigend)</div>
-                            <div>3.0 (Kritisch)</div>
-                            <div>4.0 (Gefahr!)</div>
+                            <div>1,0 (sehr gut)</div>
+                            <div>2,0 (befriedigend)</div>
+                            <div>3,0 (nicht ausreichend)</div>
+                            <div>4,0 (ungenügend)</div>
                           </div>
                         </div>
                       </div>
@@ -834,10 +750,10 @@ export default function Zustandsbewertung() {
                         <div className="flex justify-between items-center pb-2 border-b border-home-grau/10">
                           <span className="text-sm font-bold text-text-main flex items-center gap-1.5">
                             <FileText size={16} className="text-shiraz" />
-                            S, V, D Einstufungs-Matrix (VDI)
+                            S, V, D Einzelbewertung (angelehnt an RI-EBW-PRÜF bzw. VDI 6200 Blatt 1.1)
                           </span>
                           <span className="text-xs font-bold text-text-main/60 bg-home-grau/10 px-2 py-0.5 rounded uppercase">
-                            VDI Rechner
+                            Didaktisch
                           </span>
                         </div>
 
@@ -875,7 +791,7 @@ export default function Zustandsbewertung() {
                                 <p className="text-xs text-text-main/60 leading-tight">{row.desc}</p>
                               </div>
                               <span className="text-xs font-bold bg-shiraz text-white px-2 py-0.5 rounded">
-                                Wert: {row.currVal}
+                                Wert: {formatDeWert(row.currVal)}
                               </span>
                             </div>
 
@@ -891,7 +807,7 @@ export default function Zustandsbewertung() {
                                       : 'bg-white border-home-grau/25 text-text-main hover:bg-home-grau/5'
                                   }`}
                                 >
-                                  Stufe {v}
+                                  Stufe {formatDeWert(v)}
                                 </button>
                               ))}
                             </div>
@@ -901,8 +817,8 @@ export default function Zustandsbewertung() {
                         {/* Additional Mängel count */}
                         <div className="pt-3 border-t border-home-grau/10 flex justify-between items-center">
                           <div>
-                            <span className="text-xs font-bold text-text-main">Weitere Nebenmängel (+0.1 je Mangel)</span>
-                            <p className="text-xs text-text-main/60 leading-tight">Geringfügige Fehler addieren sich auf</p>
+                            <span className="text-xs font-bold text-text-main">Weitere Schäden (vereinfachter Zuschlag +0,1)</span>
+                            <p className="text-xs text-text-main/60 leading-tight">Didaktische Vereinfachung – RI-EBW-PRÜF arbeitet mit Zu-/Abschlägen nach Umfang</p>
                           </div>
                           <div className="flex items-center gap-2">
                             <button
@@ -955,7 +871,7 @@ export default function Zustandsbewertung() {
                               onClick={() => loadPreset(4, 2, 4, 1)}
                               className="text-xs font-semibold bg-red-50 text-red-800 border border-red-200 px-2 py-1 rounded hover:bg-red-100 transition-colors"
                             >
-                              Gefahr im Verzug (Note 4,0)
+                              Kritischer Zustand (Note 4,0)
                             </button>
                           </div>
                         </div>
@@ -969,13 +885,13 @@ export default function Zustandsbewertung() {
                         Hintergrund &amp; Herkunft:
                       </div>
                       <p>
-                        Im deutschen Bauingenieurwesen orientiert sich die VDI 6200- und die DIN 1076-Zustandsnote an den klassischen Schulnotenkategorien (6 Stufen). Zur exakten mathematischen Herleitung wird folgende lineare Skalierung verwendet:
+                        Die Zustandsnote nach RI-EBW-PRÜF kennt sechs Notenbereiche. Zur Veranschaulichung wird jeder Bereich kategorial einer Schulnote zugeordnet (Praxisbeispiele für Umrechnungen existieren, eine normative Umrechnung nicht):
                       </p>
                       <div className="bg-white/80 p-2 rounded-md font-mono text-center text-xs border border-home-grau/15 text-text-main my-2">
-                        <span className="font-bold text-shiraz">Schulnote</span> = 1,0 + ( <span className="font-bold">Zustandsnote</span> - 1,0 ) / 3 * 5
+                        sehr gut → 1 · gut → 2 · befriedigend → 3 · ausreichend → 4 · nicht ausreichend → 5 · ungenügend → 6
                       </div>
                       <p className="text-xs text-text-main/70">
-                        Dadurch wird die Bauwerks-Skala von [1,0; 4,0] perfekt auf das bewährte Notenspektrum von [1,0; 6,0] abgebildet (1 = Sehr gut, 6 = Ungenügend).
+                        Eine lineare Umrechnung passt nicht zu den RI-EBW-Bereichen (z. B. ZN 1,4 „sehr gut“ würde sonst 1,7 ergeben).
                       </p>
                     </div>
                   </div>
@@ -992,12 +908,12 @@ export default function Zustandsbewertung() {
                         <div className="p-3 bg-white rounded-lg border border-home-grau/15 text-center shadow-xs">
                           <div className="text-xs font-bold text-text-main/50 uppercase tracking-wide font-sans">Bauwerksnote</div>
                           <div className="text-3xl font-black text-text-main mt-1 font-mono">{formatDeZahl(currentZ, 1)}</div>
-                          <div className="text-xs font-semibold text-text-main/60 mt-1 uppercase">VDI 6200 / DIN 1076</div>
+                          <div className="text-xs font-semibold text-text-main/60 mt-1 uppercase">RI-EBW-PRÜF</div>
                         </div>
 
                         <div className="p-3 bg-white rounded-lg border border-home-grau/15 text-center shadow-xs">
-                          <div className="text-xs font-bold text-text-main/50 uppercase tracking-wide font-sans">Schulnote (Äquiv.)</div>
-                          <div className={`text-3xl font-black mt-1 font-mono text-shiraz`}>{formatDeZahl(interpolatedSchulnote, 1)}</div>
+                          <div className="text-xs font-bold text-text-main/50 uppercase tracking-wide font-sans">Schulnote (didaktisch)</div>
+                          <div className={`text-3xl font-black mt-1 font-mono text-shiraz`}>{interpolatedSchulnote}</div>
                           <div className="text-xs font-semibold text-text-main/60 mt-1 uppercase">Schulnotensystem</div>
                         </div>
                       </div>
@@ -1007,7 +923,7 @@ export default function Zustandsbewertung() {
                         <div className="flex justify-between items-center flex-wrap gap-1">
                           <div className="text-xs font-bold uppercase text-text-main/50">Wertung:</div>
                           <div className={`text-xs px-2.5 py-0.5 rounded-full font-bold ${noteInfo.color}`}>
-                            {noteInfo.label} (Kategorie {noteInfo.grade})
+                            {noteInfo.label} (Kategorie {formatDeWert(noteInfo.grade)})
                           </div>
                         </div>
                         <div>
@@ -1035,50 +951,50 @@ export default function Zustandsbewertung() {
                         let color = "bg-emerald-50/60 text-emerald-950 border-emerald-250";
                         let iconColor = "text-emerald-600";
                         let alertText = "Bauwerk befindet sich im ordnungsgemäßen Regelbetrieb. Keine sicherheitsrelevanten Abweichungen.";
-                        let timeFrame = "Nächste Hauptprüfung gem. DIN 1076 in 6 Jahren.";
+                        let timeFrame = "Nächste Hauptprüfung im Regelzyklus nach DIN 1076.";
                         let protocol = [
-                          "Regelmäßige einfache Sichtprüfungen durch den Baulastträger.",
-                          "Regelmäßige Hauptprüfungen alle 6 Jahre durch Sachkundige nach DIN 1076.",
-                          "Fortlaufende Datenpflege im bayerischen IT-System SIB-Bauwerke."
+                          "Besichtigung und laufende Beobachtung durch den Baulastträger.",
+                          "Hauptprüfung alle 6 Jahre, einfache Prüfung 3 Jahre danach (DIN 1076).",
+                          "Fortlaufende Datenpflege in SIB-Bauwerke."
                         ];
 
                         if (isKOSafety || isKOTraffic || zn >= 3.5) {
                           stufe = 5;
-                          label = "Stufe 5: Rote Alarmstufe (Gefahr im Verzug)";
+                          label = "Ungenügend: sofortiger Handlungsbedarf";
                           color = "bg-red-50 text-red-950 border-red-500 ring-2 ring-red-200 animate-pulse";
                           iconColor = "text-red-600 animate-bounce";
                           alertText = isKOSafety 
-                            ? "K.O.-KRITERIUM STANDSICHERHEIT ERREICHT! Akute Einsturzgefahr droht bei Standsicherheit = Stufe 4." 
+                            ? "Einzelbewertung S = 4: Standsicherheit nicht mehr gegeben." 
                             : isKOTraffic 
-                              ? "K.O.-KRITERIUM VERKEHRSSICHERHEIT ERREICHT! Akute Gefahr für Leib und Leben von Verkehrsteilnehmern durch herabfallende Teile."
-                              : "Sehr kritischer Bauwerkszustand mit akuter Beeinträchtigung der Standsicherheit.";
-                          timeFrame = "Sofortige Teil- oder Vollsperrung (binnen 3 Std.), bautechnische Notsicherungsmaßnahmen.";
+                              ? "Einzelbewertung V = 4: Verkehrssicherheit nicht mehr gegeben (z. B. herabfallende Teile)."
+                              : "Standsicherheit und/oder Verkehrssicherheit sind nicht mehr gegeben.";
+                          timeFrame = "Sofortmaßnahmen (Sperrung, Lastbeschränkung, Notsicherung); weitere Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.";
                           protocol = [
                             "Sofortige Sperrung des Bauwerks oder intensive Lastbegrenzung (z.B. Tonnagebegrenzung).",
                             "Einleitung von Not-Abstützungen (Traggerüst / Hilfsunterstützungen).",
-                            "Eskalationsmeldung an die Landesbaudirektion Bayern & Zentralstelle BMDV.",
-                            "Konstruktiver Standsicherheitsnachweis durch staatlich anerkannten Prüfstatiker."
+                            "Unverzügliche Information des Baulastträgers bzw. der zuständigen Straßenbauverwaltung.",
+                            "Statische Nachrechnung und Instandsetzungsplanung durch Fachplaner."
                           ];
                         } else if (zn >= 3.0 && zn < 3.5) {
                           stufe = 4;
-                          label = "Stufe 4: Akute Gefährdung (Mangelhaft)";
+                          label = "Nicht ausreichend: kurzfristiger Handlungsbedarf";
                           color = "bg-orange-50 text-orange-950 border-orange-400";
                           iconColor = "text-orange-700";
                           alertText = "Deutliche Mängel an standsicherheitsrelevanten Tragelementen. Schnelles Handeln erforderlich.";
-                          timeFrame = "Einfache Sonderprüfung nach DIN 1076 innerhalb von 3 bis 6 Monaten.";
+                          timeFrame = "Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.";
                           protocol = [
                             "Detaillierte Sonderprüfung (z.B. Ultraschall- oder Endoskopiemessungen an Spanngliedern).",
                             "Aufstellung eines bautechnischen Instandsetzungsentwurfs nach RI-EBW-PRÜF.",
                             "Provisorische Sicherungsmaßnahmen (z.B. Abfangnetze gegen Betonabplatzungen).",
-                            "Kürzung der turnusmäßigen Überwachungsintervalle um mindestens 50%."
+                            "Ggf. ergänzende Überwachung (z. B. Monitoring) bis zur Instandsetzung."
                           ];
                         } else if (zn >= 2.5 && zn < 3.0) {
                           stufe = 3;
-                          label = "Stufe 3: Erhöhte Priorität (Präventions-Eskalation)";
+                          label = "Ausreichend: Instandsetzung planen";
                           color = "bg-yellow-50 text-yellow-950 border-yellow-350";
                           iconColor = "text-yellow-700";
                           alertText = "Größere Mängel beeinträchtigen die Dauerhaftigkeit des Ingenieurbauwerks erheblich.";
-                          timeFrame = "Sanierungsplanung und Bauvergabe innerhalb der nächsten 12 bis 18 Monate.";
+                          timeFrame = "Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.";
                           protocol = [
                             "Objektbezogene baudynamische Schadensanalysen (ZfP-Prüfungen).",
                             "Aufnahme des Objekts in das mittelfristige Erhaltungsprogramm des Baulastträgers.",
@@ -1086,11 +1002,11 @@ export default function Zustandsbewertung() {
                           ];
                         } else if (zn >= 2.0 && zn < 2.5) {
                           stufe = 2;
-                          label = "Stufe 2: Planerischer Beobachtungskreis";
+                          label = "Befriedigend: Beobachtung, mittelfristige Instandsetzung";
                           color = "bg-lime-50/50 text-lime-950 border-lime-300";
                           iconColor = "text-lime-700";
                           alertText = "Mängel vorhanden, welche die Dauerhaftigkeit des Baustoff-Gefüges beeinträchtigen.";
-                          timeFrame = "Instandsetzungsmaßnahmen mittelfristig einplanen (2 bis 5 Jahre).";
+                          timeFrame = "Fristen legt der Prüfer bzw. die zuständige Straßenbauverwaltung fest.";
                           protocol = [
                             "Fortlaufende Erfassung und Vermessung der Rissfortschritte bei Begehungen.",
                             "Lokale Sanierungsmaßnahmen (z.B. Erneuerung von schadhaften Dehnfugen, Epoxidharz-Injektionen).",
@@ -1098,7 +1014,7 @@ export default function Zustandsbewertung() {
                           ];
                         } else if (zn >= 1.5 && zn < 2.0) {
                           stufe = 1;
-                          label = "Stufe 1: Frühe Verschleiß-Beobachtung";
+                          label = "Gut: Beobachtung im Regelzyklus";
                           color = "bg-emerald-50/30 text-emerald-950 border-emerald-150";
                           iconColor = "text-emerald-700";
                           alertText = "Geringfügige Verschleißmängel ohne unmittelbare statische Auswirkung am Bauteil.";
@@ -1115,7 +1031,7 @@ export default function Zustandsbewertung() {
                             <div className="flex justify-between items-center flex-wrap gap-2 border-b border-home-grau/10 pb-2">
                               <span className="text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                                 <ShieldCheck size={11} className={iconColor} />
-                                RI-EBW-PRÜF Eskalations-Logik
+                                Handlungsbedarf (didaktisch, angelehnt an RI-EBW-PRÜF)
                               </span>
                               <span className="text-xs font-bold font-mono px-2 py-0.5 bg-black/10 rounded-full">
                                 {label}
@@ -1126,14 +1042,14 @@ export default function Zustandsbewertung() {
                               <p className="text-xs font-bold leading-snug">{alertText}</p>
                               
                               <div className="text-xs space-y-1">
-                                <div className="font-semibold text-black/65 block">Rechtliche Frist &amp; Handlungsrahmen:</div>
+                                <div className="font-semibold text-black/65 block">Handlungsrahmen:</div>
                                 <div className="bg-white/60 p-1.5 rounded text-black font-semibold border border-black/5">
                                   ⏱️ {timeFrame}
                                 </div>
                               </div>
                               
                               <div className="space-y-1 text-xs pt-1">
-                                <span className="font-bold text-black/60 uppercase block">Amtliches SIB-Überwachungsprotokoll:</span>
+                                <span className="font-bold text-black/60 uppercase block">Typische Maßnahmen (Beispiele):</span>
                                 <ul className="space-y-1 list-none pl-0">
                                   {protocol.map((step, i) => (
                                     <li key={i} className="flex items-start gap-1.5 leading-snug">
@@ -1166,7 +1082,7 @@ export default function Zustandsbewertung() {
                         {/* The indicator bar */}
                         <div
                           className="absolute top-0 bottom-0 w-2 bg-text-main border-2 border-white rounded-full transition-all duration-300 -translate-x-1/2"
-                          style={{ left: `${((interpolatedSchulnote - 1.0) / 5.0) * 100}%` }}
+                          style={{ left: `${((interpolatedSchulnote - 1) / 5) * 100}%` }}
                         />
                       </div>
                     </div>
@@ -1180,32 +1096,35 @@ export default function Zustandsbewertung() {
         </div>
       )}
 
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Bauwerksüberwachung', url: 'https://de.wikipedia.org/wiki/Bauwerks%C3%BCberwachung' },
           { title: 'Standsicherheit', url: 'https://de.wikipedia.org/wiki/Standsicherheit' }
         ]}
         regelwerke={[
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.beuth.de/' },
-          { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
+          { title: 'DIN 1076:1999-11 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
+          { title: 'VDI 6200 Blatt 1.1:2026-06 (Berichtsdokumentation der Überprüfung)', url: 'https://www.vdi.de/' },
+          { title: 'ARGEBAU: Hinweise für die Überprüfung der Standsicherheit von baulichen Anlagen durch den Eigentümer/Verfügungsberechtigten (09/2006)', url: 'https://www.is-argebau.de/' },
           { title: 'RI-EBW-PRÜF (Richtlinie zur einheitlichen Erfassung, Bewertung und Aufzeichnung der Ergebnisse der Bauwerksprüfungen nach DIN 1076)', url: 'https://www.bmdv.bund.de/' },
           { title: 'DAfStb-Richtlinien zur Bauwerkserhaltung & Instandhaltung', url: 'https://www.dafstb.de/' }
         ]}
         literatur={[
           'Bundesministerium für Digitales und Verkehr (BMDV): SIB-Bauwerke Programmdokumentation',
-          'VDI-Gesellschaft Bauen und Gebäudetechnik: VDI 6200 Blatt 1',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
+          'VDI-Gesellschaft Bauen und Gebäudetechnik: VDI 6200:2010-02 und VDI 6200 Blatt 1.1:2026-06',
+          'RI-EBW-PRÜF (aktuelle Ausgabe, BMV)'
         ]}
         formeln={[
           {
-            formel: 'Z_N = \\text{Basisnote} + \\sum \\Delta Z_i \\quad (1.0 \\le Z_N \\le 4.0)',
+            formel: 'Z_N = \\text{Basisnote} + \\sum \\Delta Z_i \\quad (1.0 \\le Z_N \\le 4{,}0)',
             erklaerung: 'Zustandsnotenermittlung ZN nach RI-EBW-PRÜF: Bewertung von Standsicherheit (S), Verkehrssicherheit (V) und Dauerhaftigkeit (D). Noten von 1.0 (sehr gut) bis 4.0 (ungenügend / sofortiger Handlungsbedarf).',
             quelle: 'RI-EBW-PRÜF / DIN 1076'
           },
           {
-            formel: '\\beta = \\frac{\\mu_R - \\mu_S}{\\sqrt{\\sigma_R^2 + \\sigma_S^2}} \\ge \\beta_{\\text{target}} = 3.8 \\quad (P_f = \\Phi(-\\beta))',
-            erklaerung: 'Zuverlässigkeitsindex beta für die Tragfähigkeit (ULS) nach DIN EN 1990 bei der rechnerischen Zustandsbewertung bestehender Tragwerke (Zielwert beta = 3.8 für 50 Jahre Bezugszeitraum).',
-            quelle: 'DIN EN 1990 Anhang B'
+            formel: '\\beta = \\frac{\\mu_R - \\mu_S}{\\sqrt{\\sigma_R^2 + \\sigma_S^2}} \\ge \\beta_{\\text{target}} = 3{,}8 \\quad (P_f = \\Phi(-\\beta))',
+            erklaerung: 'Zuverlässigkeitsindex beta (ULS): Zielwert 3,8 für RC2 und 50 Jahre Bezugszeitraum (DIN EN 1990, Anhang B/C). Für bestehende Tragwerke kann die Zielzuverlässigkeit nach EN 1990-2:2026 abweichen.',
+            quelle: 'DIN EN 1990 Anhang B/C; EN 1990-2:2026'
           }
         ]}
       />

@@ -579,7 +579,7 @@ export default function SchutzGrundlagen() {
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-600">Basisinvestition:</span>
                 <input
-                  type="number"
+                  type="number" min="0"
                   value={deSitterInitialCost}
                   onChange={(e) => setDeSitterInitialCost(Math.max(100, Number(e.target.value)))}
                   className="w-24 px-2 py-1 text-xs border border-home-grau/30 rounded font-bold text-right"
@@ -793,12 +793,12 @@ export default function SchutzGrundlagen() {
           'Tuutti, K. (1982): Corrosion of steel in concrete. Swedish Cement and Concrete Research Institute'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-9' },
           { title: 'TR Instandhaltung:2020-05 (DIBt: Technische Regel Instandhaltung von Betonbauwerken)', url: 'https://www.dibt.de/' },
-          { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14038-1:2021-03 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 1: Chloridextraktion)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14038-2:2020-09 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 2: Realkalisierung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+31051' },
+          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
+          { title: 'DIN EN 14038-1:2021-03 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 1: Chloridextraktion)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-1' },
+          { title: 'DIN EN 14038-2:2020-09 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 2: Realkalisierung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-2' }
         ]}
         formeln={[
           {
@@ -812,7 +812,7 @@ export default function SchutzGrundlagen() {
             quelle: 'De Sitter (1984)'
           },
           {
-            formel: 'E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0.5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}',
+            formel: 'E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0{,}5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}',
             erklaerung: 'KKS-Schutzkriterien (DIN EN ISO 12696): Ausschaltpotential negativer als −720 mV gegen Ag/AgCl/0,5 M KCl ODER Depolarisation ≥ 100 mV innerhalb von 24 h bis 72 h (-850 mV gegen CSE gilt für erdberührte Stähle).',
             quelle: 'DIN EN ISO 12696'
           }

@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import QRCode from 'qrcode';
 import { 
@@ -241,7 +242,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
           </div>
           <div>
             <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Hörsaal-Stimmen</div>
-            <strong className="text-xl font-mono font-extrabold text-white">{totalVotes}</strong>
+            <strong className="text-xl font-mono font-extrabold text-white">{formatDeWert(totalVotes)}</strong>
           </div>
         </div>
       </div>
@@ -284,7 +285,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
             <ChevronLeft size={16} />
           </button>
           <span className="text-xs font-mono font-bold text-slate-600 px-1">
-            {currentIdx + 1} / {questions.length}
+            {formatDeWert(currentIdx + 1)} / {questions.length}
           </span>
           <button
             type="button"
@@ -386,7 +387,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                         <strong className={`font-mono text-base font-extrabold ${
                           isRevealed && isCorrect ? 'text-emerald-700' : 'text-slate-900'
                         }`}>
-                          {pct}%
+                          {formatDeWert(pct)}%
                         </strong>
                       </div>
                     </div>
@@ -544,7 +545,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
 
             <div>
               <span className="text-[10px] uppercase font-bold text-shiraz tracking-wider block mb-1">
-                Frage {currentIdx + 1} von {questions.length} ({currentQ.category})
+                Frage {formatDeWert(currentIdx + 1)} von {questions.length} ({currentQ.category})
               </span>
               <p className="text-sm font-bold text-slate-900 leading-snug">
                 {currentQ.question}
@@ -654,7 +655,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                         : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
                     }`}
                   >
-                    Aktuelle Frage (Q{currentIdx + 1})
+                    Aktuelle Frage (Q{formatDeWert(currentIdx + 1)})
                   </button>
                   <button
                     type="button"

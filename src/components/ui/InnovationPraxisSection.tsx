@@ -131,7 +131,7 @@ const DATABASE: Record<string, ModuleData> = {
     innovations: [
       {
         title: 'Ziegel mit integriertem Vakuum-Dämmkern (VIP)',
-        description: 'Hochloch-Planziegel, deren Hohlräume industriell mit hochwirksamen Vakuum-Isolationspaneelen (VIP) bestückt sind. Dies ermöglicht Passivhaus-taugliche Außenwände mit Wärmeleitfähigkeiten von $\\lambda \\approx 0,05$ W/(mK) ohne zusätzliche WDVS-Außendämmung.',
+        description: 'Hochloch-Planziegel, deren Hohlräume industriell mit hochwirksamen Vakuum-Isolationspaneelen (VIP) bestückt sind. Dies ermöglicht Passivhaus-taugliche Außenwände mit Wärmeleitfähigkeiten von $\\lambda \\approx 0{,}05$ W/(mK) ohne zusätzliche WDVS-Außendämmung.',
         standard: 'DIBt-Zulassungen dämmstoffgefüllter Planziegel'
       },
       {
@@ -224,7 +224,7 @@ const DATABASE: Record<string, ModuleData> = {
     innovations: [
       {
         title: 'Aerogel-Hochleistungsdämmputz',
-        description: 'Ein Dämmputz, dessen mineralische Matrix mit Silizium-Aerogel-Granulat angereichert ist. Erreicht eine überragende Wärmeleitfähigkeit von $\\lambda \\approx 0,028$ W/(mK). Dies ermöglicht die exzellente energetische Sanierung von krummen, denkmalgeschützten Fassaden bei vollständiger Erhaltung der Konturen.',
+        description: 'Ein Dämmputz, dessen mineralische Matrix mit Silizium-Aerogel-Granulat angereichert ist. Erreicht eine überragende Wärmeleitfähigkeit von $\\lambda \\approx 0{,}028$ W/(mK). Dies ermöglicht die exzellente energetische Sanierung von krummen, denkmalgeschützten Fassaden bei vollständiger Erhaltung der Konturen.',
         standard: 'Fixit 222 Aerogel Dämmputz / EMPA Schweiz'
       },
       {
@@ -286,7 +286,7 @@ const DATABASE: Record<string, ModuleData> = {
     innovations: [
       {
         title: 'Vakuum-Isolationspaneele (VIP)',
-        description: 'Paneele mit einem porösen Kieselsäurenkern, der unter Vakuum verschweißt ist. Erreicht Spitzenwerte von $\\lambda \\approx 0,007$ W/(mK). Dadurch lassen sich Passivhausdämmungen bei Balkonen oder Altbaunischen realisieren, bei denen nur 2-3 cm Platz zur Verfügung stehen.',
+        description: 'Paneele mit einem porösen Kieselsäurenkern, der unter Vakuum verschweißt ist. Erreicht Spitzenwerte von $\\lambda \\approx 0{,}007$ W/(mK). Dadurch lassen sich Passivhausdämmungen bei Balkonen oder Altbaunischen realisieren, bei denen nur 2-3 cm Platz zur Verfügung stehen.',
         standard: 'Zulassung durch das DIBt'
       },
       {

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
-import { formatDeZahl } from "@/src/utils/numberFormat";
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from "react-katex";
 import { InfoTooltip } from "@/src/components/ui/InfoTooltip";
 import { 
@@ -368,7 +368,7 @@ export interface ScenarioPreset {
 export const PRESETS: ScenarioPreset[] = [
   {
     name: "Szenario A: Konventioneller Massivbau",
-    description: "Klassische Ziegelaußenwand (36.5 cm) mit Stahlbetondecken (CEM I) und EPS-Dämmung. Geringe Zirkularitätsquoten.",
+    description: "Klassische Ziegelaußenwand (36,5 cm) mit Stahlbetondecken (CEM I) und EPS-Dämmung. Geringe Zirkularitätsquoten.",
     badge: "Fossil-Mineralisch",
     bgClass: "bg-rose-50/40 border-rose-100",
     borderClass: "border-rose-200",
@@ -1516,7 +1516,7 @@ export default function InteractiveLCACalc() {
                       </span>
                       {v.reductionPct > 0 && (
                         <span className="text-[10px] px-1.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800">
-                          -{v.reductionPct}%
+                          -{formatDeWert(v.reductionPct)}%
                         </span>
                       )}
                     </div>
@@ -1548,11 +1548,11 @@ export default function InteractiveLCACalc() {
         ]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
         regelwerke={[
-          { title: "DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)", url: "https://www.dinmedia.de/" },
-          { title: "DIN EN 15978:2012-10 (Berechnungsmethode für die Umweltleistung von Gebäuden)", url: "https://www.dinmedia.de/" },
-          { title: "DIN EN 17472:2022-09 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)", url: "https://www.dinmedia.de/" },
+          { title: "DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+15804" },
+          { title: "DIN EN 15978:2012-10 (Berechnungsmethode für die Umweltleistung von Gebäuden)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+15978" },
+          { title: "DIN EN 17472:2022-09 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+17472" },
           { title: "Qualitätssiegel Nachhaltiges Gebäude (QNG Anhangdokument 3.1.1, Stand 2026)", url: "https://www.qng.info/" },
-          { title: "VDI 6210 / DIN SPEC 91484 (Rückbau- und Zirkularitätsbewertung)", url: "https://www.dinmedia.de/" },
+          { title: "VDI 6210 / DIN SPEC 91484 (Rückbau- und Zirkularitätsbewertung)", url: "https://www.dinmedia.de/de/suche?q=VDI+6210" },
           { title: "ÖKOBAUDAT Plattform (BMWSB EPD-Datenbank)", url: "https://www.oekobaudat.de/" }
         ]}
         formeln={[

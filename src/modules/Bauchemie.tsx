@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { FlaskConical, Droplets, ShieldAlert, Layers, Activity, Paintbrush, Shield, Snowflake, ArrowRight, Flame, AlertTriangle, Sliders, Sparkles, Paperclip } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -105,7 +106,7 @@ export const Bauchemie: React.FC = () => {
   }, [stellmittelConc, currentShear]);
 
   const rheologyChartData = {
-    labels: rheologyResults.shearRates.map(s => `${s} s⁻¹`),
+    labels: rheologyResults.shearRates.map(s => `${formatDeWert(s)} s⁻¹`),
     datasets: [
       {
         label: 'Mörtel MIT Rheologie-Stellmittel (Thixotrop)',
@@ -403,7 +404,7 @@ export const Bauchemie: React.FC = () => {
                 <li>
                   <strong>Luftporenbildner (LP):</strong> 
                   <br/><em>Chemie:</em> Tenside (grenzflächenaktive Stoffe).
-                  <br/><em>Wirkung:</em> Erzeugen mikroskopisch kleine, künstliche Luftporen (Abstandsfaktor &lt; 0.2 mm). Diese dienen als Expansionsraum für gefrierendes Wasser und erhöhen den Frost-Tausalz-Widerstand drastisch.
+                  <br/><em>Wirkung:</em> Erzeugen mikroskopisch kleine, künstliche Luftporen (Abstandsfaktor &lt; 0,2 mm). Diese dienen als Expansionsraum für gefrierendes Wasser und erhöhen den Frost-Tausalz-Widerstand drastisch.
                 </li>
                 <li>
                   <strong>Verzögerer (VZ):</strong> 
@@ -472,7 +473,7 @@ export const Bauchemie: React.FC = () => {
                 <Sliders className="text-shiraz h-5 w-5" /> Rheologie-Additiv-Simulator (Strukturviskosität & Thixotropie)
               </h3>
               <p className="text-xs text-text-main/60">
-                Experimentiere mit der Dosierung von Thixotropier-Stellmitteln (z.B. pyrogene Kieselsäure) und beobachte den Einfluss von Scherkräften (Mörtel auftragen vs. Stillstand an der Wand).
+                Experimentieren Sie mit der Dosierung von Thixotropier-Stellmitteln (z.B. pyrogene Kieselsäure) und beobachten Sie den Einfluss von Scherkräften (Mörtel auftragen vs. Stillstand an der Wand).
               </p>
             </div>
             
@@ -482,7 +483,7 @@ export const Bauchemie: React.FC = () => {
                 <div className="flex flex-col gap-2">
                   <h4 className="text-sm font-bold text-text-main flex items-center justify-between">
                     <span>Stellmittel-Konzentration (z.B. Aerosil/MC)</span>
-                    <span className="text-shiraz font-mono font-bold text-sm">{stellmittelConc.toFixed(1)} %</span>
+                    <span className="text-shiraz font-mono font-bold text-sm">{formatDeZahl(stellmittelConc, 1)} %</span>
                   </h4>
                   <p className="text-[11px] text-text-main/60 leading-normal">
                     Erhöht die Viskosität im Ruhezustand über ein reversibles Fließnetzwerk dramatischer als im fließenden Zustand.
@@ -497,16 +498,16 @@ export const Bauchemie: React.FC = () => {
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
                   <div className="flex justify-between text-[10px] text-text-main/40 font-mono">
-                    <span>0.0% (Flüssige Suppe)</span>
-                    <span>1.0% (Standfest)</span>
-                    <span>2.0% (Übersteift)</span>
+                    <span>0,0% (Flüssige Suppe)</span>
+                    <span>1,0% (Standfest)</span>
+                    <span>2,0% (Übersteift)</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <h4 className="text-sm font-bold text-text-main flex items-center justify-between">
                     <span>Auswirkende Scherrate (Einwirkkraft)</span>
-                    <span className="text-shiraz font-mono font-bold text-sm">{currentShear.toFixed(0)} s⁻¹</span>
+                    <span className="text-shiraz font-mono font-bold text-sm">{formatDeZahl(currentShear, 0)} s⁻¹</span>
                   </h4>
                   <p className="text-[11px] text-text-main/60 leading-normal">
                     Scherrate simuliert äußere Kräfte. &lt; 5 s⁻¹ entspricht Stillstand an der Wand (Tragfähigkeit prüfen). &gt; 15 s⁻¹ simuliert mechanisches Rühren oder Kämmen mit der Zahnkelle.
@@ -521,7 +522,7 @@ export const Bauchemie: React.FC = () => {
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
                   <div className="flex justify-between text-[10px] text-text-main/40 font-mono">
-                    <span>0.1 (Stillstand)</span>
+                    <span>0,1 (Stillstand)</span>
                     <span>50 (Rühren)</span>
                     <span>100 (Kellenaufzug)</span>
                   </div>
@@ -540,7 +541,7 @@ export const Bauchemie: React.FC = () => {
                   </p>
                   <div className="text-[11px] font-mono mt-2 pt-2 border-t border-current/10 flex justify-between">
                     <span>Wirksame Viskosität:</span>
-                    <span className="font-bold">{rheologyResults.currentViscosity.toFixed(1)} Pa·s</span>
+                    <span className="font-bold">{formatDeZahl(rheologyResults.currentViscosity, 1)} Pa·s</span>
                   </div>
                 </div>
               </div>
@@ -573,8 +574,8 @@ export const Bauchemie: React.FC = () => {
                   />
                   {/* Highlight current state marker */}
                   <div className="absolute top-4 right-4 bg-white/95 border border-home-grau/30 shadow-sm rounded-lg px-2 py-1 text-[10px] font-mono flex flex-col gap-0.5">
-                    <div>γ = {currentShear.toFixed(0)} s⁻¹</div>
-                    <div className="font-bold text-shiraz">η ≈ {rheologyResults.currentViscosity.toFixed(1)} Pa·s</div>
+                    <div>γ = {formatDeZahl(currentShear, 0)} s⁻¹</div>
+                    <div className="font-bold text-shiraz">η ≈ {formatDeZahl(rheologyResults.currentViscosity, 1)} Pa·s</div>
                   </div>
                 </div>
                 <p className="text-[10px] text-text-main/50 italic leading-normal text-center select-none">
@@ -1158,12 +1159,12 @@ export const Bauchemie: React.FC = () => {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15651-1 bis -4 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12004-1 (Mörtel und Klebstoffe für Fliesen und Platten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 204 (Klassifizierung von thermoplastischen Holzklebstoffen für nichttragende Anwendungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit Fugendichtstoffen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 934-2 (Zusatzmittel für Beton, Mörtel und Einpressmörtel)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15651-1 bis -4 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15651-1' },
+          { title: 'DIN EN 12004-1 (Mörtel und Klebstoffe für Fliesen und Platten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12004-1' },
+          { title: 'DIN EN 204 (Klassifizierung von thermoplastischen Holzklebstoffen für nichttragende Anwendungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+204' },
+          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit Fugendichtstoffen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18540' },
+          { title: 'DIN EN 934-2 (Zusatzmittel für Beton, Mörtel und Einpressmörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+934-2' },
+          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' }
         ]}
         formeln={[
           {
@@ -1172,7 +1173,7 @@ export const Bauchemie: React.FC = () => {
             quelle: 'DIN EN 828 / Oberflächenchemie'
           },
           {
-            formel: '\\text{pH} = 14 + \\log_{10}[\\text{OH}^-] \\ge 12.6 \\implies \\text{Fe} + 2\\,\\text{OH}^- \\rightarrow \\text{Fe(OH)}_2 \\rightarrow \\gamma\\text{-FeOOH (Passivschicht)}',
+            formel: '\\text{pH} = 14 + \\log_{10}[\\text{OH}^-] \\ge 12{,}6 \\implies \\text{Fe} + 2\\,\\text{OH}^- \\rightarrow \\text{Fe(OH)}_2 \\rightarrow \\gamma\\text{-FeOOH (Passivschicht)}',
             erklaerung: 'Alkalische Passivierung des Bewehrungsstahls im ungestörten Betonporenwasser (hohe Konzentration an Ca(OH)2 und Alkali-Ionen verhindert Korrosion).',
             quelle: 'Bauchemie / Elektrochemie'
           },

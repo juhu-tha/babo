@@ -281,7 +281,7 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Normenentwicklung &amp; Stand 2026</span>
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2 mt-0.5">
                   <Sparkles className="text-amber-500 h-5 w-5" />
-                  2. Generation des Eurocode 2 (DIN EN 1992-1-1:2023ff. / FprEN 1992-1-1)
+                  2. Generation des Eurocode 2 (EN 1992-1-1:2023; bauaufsichtliche Einführung in Deutschland steht noch aus)
                 </h3>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200">
@@ -290,7 +290,7 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
             </div>
 
             <p className="text-xs text-text-main/80 leading-relaxed">
-              Die 2. Generation des Eurocode 2 (prEN 1992-1-1 / FprEN 1992-1-1) führt fundamentale mechanische und 
+              Die 2. Generation des Eurocode 2 (EN 1992-1-1:2023) führt fundamentale mechanische und 
               nachhaltigkeitsbezogene Weiterentwicklungen ein, die über die klassische Ausgabe 2004/2010 hinausgehen:
             </p>
 

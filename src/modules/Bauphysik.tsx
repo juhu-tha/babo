@@ -5,7 +5,7 @@ import { Line } from 'react-chartjs-2';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { 
   Plus, 
   Trash2, 
@@ -237,7 +237,7 @@ export default function Bauphysik() {
 
     return {
       U,
-      labels: sd_profile.map(sd => sd.toFixed(2) + 'm'),
+      labels: sd_profile.map(sd => formatDeZahl(sd, 2) + 'm'),
       T_labels: T_profile.map((_, i) => i === 0 ? 'Innen' : i === T_profile.length - 1 ? 'Außen' : `Grenzfl. ${i}`),
       T_profile,
       sd_total,
@@ -503,7 +503,7 @@ export default function Bauphysik() {
     const targetCenter = frequencies.map(() => baseTarget);
 
     return {
-      labels: frequencies.map(f => `${f} Hz`),
+      labels: frequencies.map(f => `${formatDeWert(f)} Hz`),
       calculatedTimes,
       targetMin,
       targetMax,
@@ -686,10 +686,10 @@ export default function Bauphysik() {
                   onChange={(e) => setBuildingPart(e.target.value as any)}
                   className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-bold text-slate-800 cursor-pointer focus:ring-1 focus:ring-shiraz"
                 >
-                  <option value="wall">Außenwand (Soll: U ≤ 0.24 W/(m²K), Rsi=0.13)</option>
-                  <option value="pitched_roof">Steildach / Dachfläche (Soll: U ≤ 0.24 W/(m²K), Rsi=0.10)</option>
-                  <option value="flat_roof">Flachdach (Soll: U ≤ 0.20 W/(m²K), Rsi=0.10)</option>
-                  <option value="basement">Kellerdecke / Bodenplatte (Soll: U ≤ 0.30 W/(m²K), Rsi=0.17)</option>
+                  <option value="wall">Außenwand (Soll: U ≤ 0,24 W/(m²K), Rsi = 0,13 m²K/W)</option>
+                  <option value="pitched_roof">Steildach / Dachfläche (Soll: U ≤ 0,24 W/(m²K), Rsi = 0,10 m²K/W)</option>
+                  <option value="flat_roof">Flachdach (Soll: U ≤ 0,20 W/(m²K), Rsi = 0,10 m²K/W)</option>
+                  <option value="basement">Kellerdecke / Bodenplatte (Soll: U ≤ 0,30 W/(m²K), Rsi = 0,17 m²K/W)</option>
                 </select>
               </div>
               
@@ -700,7 +700,7 @@ export default function Bauphysik() {
                     <div className="space-y-2">
                       <div className="flex justify-between text-[11px] font-bold text-slate-700">
                         <span>Temperatur (T_i)</span>
-                        <span className="text-shiraz">{Ti} °C</span>
+                        <span className="text-shiraz">{formatDeWert(Ti)} °C</span>
                       </div>
                       <input 
                         type="range" min="15" max="25" step="1" value={Ti} 
@@ -710,7 +710,7 @@ export default function Bauphysik() {
                       />
                       <div className="flex justify-between text-[11px] font-bold text-slate-700 mt-2">
                         <span>Feuchte (RH_i)</span>
-                        <span className="text-shiraz">{RHi}%</span>
+                        <span className="text-shiraz">{formatDeWert(RHi)}%</span>
                       </div>
                       <input 
                         type="range" min="30" max="80" step="5" value={RHi} 
@@ -728,7 +728,7 @@ export default function Bauphysik() {
                     <div className="space-y-2">
                       <div className="flex justify-between text-[11px] font-bold text-slate-700">
                         <span>Temperatur (T_e)</span>
-                        <span className="text-blue-600">{Te} °C</span>
+                        <span className="text-blue-600">{formatDeWert(Te)} °C</span>
                       </div>
                       <input 
                         type="range" min="-20" max="5" step="1" value={Te} 
@@ -738,7 +738,7 @@ export default function Bauphysik() {
                       />
                       <div className="flex justify-between text-[11px] font-bold text-slate-700 mt-2">
                         <span>Feuchte (RH_e)</span>
-                        <span className="text-blue-600">{RHe}%</span>
+                        <span className="text-blue-600">{formatDeWert(RHe)}%</span>
                       </div>
                       <input 
                         type="range" min="40" max="100" step="5" value={RHe} 
@@ -753,7 +753,7 @@ export default function Bauphysik() {
                 <div className="col-span-2 p-3 bg-slate-50 border border-slate-200 rounded-xl">
                   <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
                     <span>Dauer Tauperiode (DIN 4108-3):</span>
-                    <span className="text-shiraz font-mono">{tauperiodeDauer} Tage ({tauperiodeDauer * 24} h)</span>
+                    <span className="text-shiraz font-mono">{formatDeWert(tauperiodeDauer)} Tage ({formatDeWert(tauperiodeDauer * 24)} h)</span>
                   </div>
                   <input 
                     type="range" min="30" max="150" step="5" value={tauperiodeDauer} 
@@ -935,7 +935,7 @@ export default function Bauphysik() {
                   <div>
                     <h4 className="font-extrabold text-sm text-emerald-800">BAUTEIL ABSOLUT KONDENSATIONSFREI</h4>
                     <p className="text-xs text-emerald-700 mt-1 leading-relaxed">
-                      Unter den gewählten Klimarandbedingungen wird an keiner Grenzfläche die Sättigungsgrenze (<FormulaText text="p < p_{sat}" />) erreicht. Es fällt <strong>kein Tauwasser (0.0 g/m²)</strong> an. Der normative Nachweis nach DIN 4108-3 gilt für diese Periode als rein rechnerisch bestanden!
+                      Unter den gewählten Klimarandbedingungen wird an keiner Grenzfläche die Sättigungsgrenze (<FormulaText text="p < p_{sat}" />) erreicht. Es fällt <strong>kein Tauwasser (0,0 g/m²)</strong> an. Der normative Nachweis nach DIN 4108-3 gilt für diese Periode als rein rechnerisch bestanden!
                     </p>
                   </div>
                 </div>
@@ -946,7 +946,7 @@ export default function Bauphysik() {
                     <CloudRain className="text-rose-600 flex-shrink-0 mt-0.5" size={20} />
                     <div className="flex-1">
                       <h4 className="font-extrabold text-sm text-rose-800 uppercase tracking-wide">
-                        Tauwasserausfall an Grenzfläche {glaserData.condensationIndex}!
+                        Tauwasserausfall an Grenzfläche {formatDeWert(glaserData.condensationIndex)}!
                       </h4>
                       <p className="text-xs text-shiraz-900 mt-1 leading-relaxed">
                         Die rote und blaue Kennlinie berühren sich. Im Bauteilinneren an der Schnittstelle nach dem Werkstoff <strong>"{resolvedLayers[glaserData.condensationIndex - 1]?.name}"</strong> kommt es zur Kondensation infolge ungenügender Dampfsperrwirkung auf der warmen Innenseite.
@@ -1054,7 +1054,7 @@ export default function Bauphysik() {
                         </div>
                         <div className="flex justify-between items-baseline pb-1">
                           <span className="font-semibold text-slate-600">Norm-Sollwert (DIN 4108-2):</span>
-                          <span className="font-mono text-slate-500">≥ 0.700</span>
+                          <span className="font-mono text-slate-500">≥ 0,700</span>
                         </div>
                         <div className="text-[9.5px] leading-relaxed text-slate-500 pt-1 border-t border-slate-200/50">
                           {is_f_RSi_compliant 
@@ -1098,7 +1098,7 @@ export default function Bauphysik() {
                           <td className="py-2 px-1 font-bold text-slate-800">{layer.name}</td>
                           <td className="py-2 px-1 text-right font-mono">{formatDeZahl(layer.d, 3)}</td>
                           <td className="py-2 px-1 text-right font-mono">{formatDeZahl(layer.lambda, 3)}</td>
-                          <td className="py-2 px-1 text-right font-mono">{layer.mu}</td>
+                          <td className="py-2 px-1 text-right font-mono">{formatDeWert(layer.mu)}</td>
                           <td className="py-2 px-1 text-right font-mono font-bold">{formatDeZahl(layer.d * layer.mu, 3)}</td>
                           <td className="py-2 px-1 text-right font-mono text-shiraz font-bold">{formatDeZahl(temp_at_interface, 1)} °C</td>
                         </tr>
@@ -1233,11 +1233,11 @@ export default function Bauphysik() {
                   </h4>
                   <p className="text-xs mt-1 leading-relaxed opacity-90 font-medium">
                     {summerHeatAnalysis.phaseShift >= 10.0 ? (
-                      `Eine phänomenale Phasenverzögerung von ${summerHeatAnalysis.phaseShift.toFixed(1)} Stunden stellt sicher, dass die Mittagshitze erst mitten in der kühlen Nacht an den Innenraum abgegeben wird. Das Schlafzimmer bleibt angenehm kühl, Lüftungskonzepte greifen exzellent!`
+                      `Eine phänomenale Phasenverzögerung von ${formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden stellt sicher, dass die Mittagshitze erst mitten in der kühlen Nacht an den Innenraum abgegeben wird. Das Schlafzimmer bleibt angenehm kühl, Lüftungskonzepte greifen exzellent!`
                     ) : summerHeatAnalysis.phaseShift >= 6.0 ? (
-                      `Eine Phasenverzögerung von ${summerHeatAnalysis.phaseShift.toFixed(1)} Stunden ist befriedigend. Erhöhen Sie eventuell die Schichtdicke dickerer Wandbaustoffe oder nutze Einblas-Holzfaserdämmstoffe für zusätzliche kapillare Trägheit.`
+                      `Eine Phasenverzögerung von ${formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden ist befriedigend. Erhöhen Sie eventuell die Schichtdicke dickerer Wandbaustoffe oder nutzen Sie Einblas-Holzfaserdämmstoffe für zusätzliche kapillare Trägheit.`
                     ) : (
-                      `Vorsicht: Mit einer thermischen Verzögerung von nur ${summerHeatAnalysis.phaseShift.toFixed(1)} Stunden heizt sich der Dach- oder Wohnraum rasch auf (typisch bei ungedämmten Leichtbauten). Einbringen schwerer Bauteilmassen oder Dämmungen mit hoher Rohdichte empfohlen!`
+                      `Vorsicht: Mit einer thermischen Verzögerung von nur ${formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden heizt sich der Dach- oder Wohnraum rasch auf (typisch bei ungedämmten Leichtbauten). Einbringen schwerer Bauteilmassen oder Dämmungen mit hoher Rohdichte empfohlen!`
                     )}
                   </p>
                 </div>
@@ -1248,7 +1248,7 @@ export default function Bauphysik() {
                 <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest mb-3 flex items-center justify-between">
                   <span>Temperaturverlauf-Schnitt (24-Stunden-Welle)</span>
                   <span className="text-[9px] font-mono text-slate-400 font-bold bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded">
-                    η = {summerHeatAnalysis.phaseShift.toFixed(1)} Stunden | TAV = {formatDeZahl(summerHeatAnalysis.TAV, 3)}
+                    η = {formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden | TAV = {formatDeZahl(summerHeatAnalysis.TAV, 3)}
                   </span>
                 </h4>
                 <div className="h-[250px] w-full relative">
@@ -1308,8 +1308,8 @@ export default function Bauphysik() {
                         <tr key={layer.id} className="border-b border-slate-100 hover:bg-slate-50/50">
                           <td className="py-2 px-1 font-mono text-slate-400 font-bold">{idx + 1}</td>
                           <td className="py-2 px-1 font-bold text-slate-900">{layer.name}</td>
-                          <td className="py-2 px-1 text-right font-mono">{layer.density}</td>
-                          <td className="py-2 px-1 text-right font-mono">{layer.c}</td>
+                          <td className="py-2 px-1 text-right font-mono">{formatDeWert(layer.density)}</td>
+                          <td className="py-2 px-1 text-right font-mono">{formatDeWert(layer.c)}</td>
                           <td className="py-2 px-1 text-right font-mono text-slate-600 font-bold">{formatDeZahl(layer_mass, 1)}</td>
                           <td className="py-2 px-1 text-right font-mono text-shiraz font-bold">{formatDeZahl(layer_capacity, 0)}</td>
                         </tr>
@@ -1411,7 +1411,7 @@ export default function Bauphysik() {
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
                     >
                       {acousticMaterials.map(m => (
-                        <option key={m.id} value={m.id}>{m.name} [α={m.alpha}]</option>
+                        <option key={m.id} value={m.id}>{m.name} [α={formatDeWert(m.alpha)}]</option>
                       ))}
                     </select>
                   </div>
@@ -1427,7 +1427,7 @@ export default function Bauphysik() {
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
                     >
                       {acousticMaterials.map(m => (
-                        <option key={m.id} value={m.id}>{m.name} [α={m.alpha}]</option>
+                        <option key={m.id} value={m.id}>{m.name} [α={formatDeWert(m.alpha)}]</option>
                       ))}
                     </select>
                   </div>
@@ -1443,7 +1443,7 @@ export default function Bauphysik() {
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
                     >
                       {acousticMaterials.map(m => (
-                        <option key={m.id} value={m.id}>{m.name} [α={m.alpha}]</option>
+                        <option key={m.id} value={m.id}>{m.name} [α={formatDeWert(m.alpha)}]</option>
                       ))}
                     </select>
                   </div>
@@ -1459,7 +1459,7 @@ export default function Bauphysik() {
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
                     >
                       {acousticMaterials.map(m => (
-                        <option key={m.id} value={m.id}>{m.name} [α={m.alpha}]</option>
+                        <option key={m.id} value={m.id}>{m.name} [α={formatDeWert(m.alpha)}]</option>
                       ))}
                     </select>
                   </div>
@@ -1475,7 +1475,7 @@ export default function Bauphysik() {
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
                     >
                       {acousticMaterials.map(m => (
-                        <option key={m.id} value={m.id}>{m.name} [α={m.alpha}]</option>
+                        <option key={m.id} value={m.id}>{m.name} [α={formatDeWert(m.alpha)}]</option>
                       ))}
                     </select>
                   </div>
@@ -1491,7 +1491,7 @@ export default function Bauphysik() {
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
                     >
                       {acousticMaterials.map(m => (
-                        <option key={m.id} value={m.id}>{m.name} [α={m.alpha}]</option>
+                        <option key={m.id} value={m.id}>{m.name} [α={formatDeWert(m.alpha)}]</option>
                       ))}
                     </select>
                   </div>
@@ -1643,9 +1643,9 @@ export default function Bauphysik() {
           { title: 'Nachhallzeit', url: 'https://de.wikipedia.org/wiki/Nachhallzeit' }
         ]}
         regelwerke={[
-          { title: 'DIN 4108-2:2013-02 (Mindestanforderungen an den Wärmeschutz zur Vermeidung von Schimmel)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz - Nachweis des Glaser-Verfahrens)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen - Anforderungen und Richtwerte)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 4108-2:2013-02 (Mindestanforderungen an den Wärmeschutz zur Vermeidung von Schimmel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' },
+          { title: 'DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz - Nachweis des Glaser-Verfahrens)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
+          { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen - Anforderungen und Richtwerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18041' },
           { title: 'Gebäudeenergiegesetz (GEG 2024)', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[
@@ -1669,7 +1669,7 @@ export default function Bauphysik() {
             quelle: 'DIN 4108-3 Kap. 5'
           },
           {
-            formel: 'T = 0.163 \\cdot \\frac{V}{A} \\quad \\text{mit} \\quad A = \\sum S_i \\cdot \\alpha_i',
+            formel: 'T = 0{,}163 \\cdot \\frac{V}{A} \\quad \\text{mit} \\quad A = \\sum S_i \\cdot \\alpha_i',
             erklaerung: 'Sabinesche Nachhallzeit-Gleichung zur quantitativen Ermittlung der akustischen Raumantwort T in Sekunden.',
             quelle: 'DIN 18041 Anhang B'
           }

@@ -41,7 +41,7 @@ const THA_PORTALS: Portal[] = [
   {
     tag: 'OPAC / InfoGuide',
     name: 'Bibliothek & Literaturrecherche',
-    desc: 'Onlinekatalog (InfoGuide) der THA-Bibliothek: Suche nach Fachbüchern, Zeitschriften, E-Books und Normen (wie DIN-Vorschriften) sowie Bibliothekskonto-Verwaltung.',
+    desc: 'Onlinekatalog (InfoGuide) der THA-Bibliothek: Suchen Sie nach Fachbüchern, Zeitschriften, E-Books und Normen (wie DIN-Vorschriften) sowie Bibliothekskonto-Verwaltung.',
     url: 'https://infoguide.hs-augsburg.de/opacTHA.html',
     colorClass: 'text-indigo-600',
     badgeBg: 'bg-indigo-50 text-indigo-700'

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, Waves, Droplet, ArrowDown, Info } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -164,16 +165,16 @@ export default function FrischbetonPruefung() {
       norm: isSpread ? 'DIN EN 12350-5' : 'DIN EN 12350-2',
       operator: 'Frischbetonprüfer (Baustoffboard)',
       specimen: {
-        material: `Frischbeton (w/z = ${wzValue.toFixed(2)}, PCE = ${fließmittelPCE.toFixed(1)} %)`,
+        material: `Frischbeton (w/z = ${formatDeZahl(wzValue, 2)}, PCE = ${formatDeZahl(fließmittelPCE, 1)} %)`,
         geometry: isSpread ? 'Ausbreitkegel (h = 200 mm)' : 'Abrams-Trichter (h = 300 mm)',
         dimensions: isSpread ? 'Tisch 700 × 700 mm' : 'Kegel Ø 100/200 mm',
         conditioning: 'Frisch angemischt (Prüfung innerhalb 15 min)'
       },
       parameters: {
         'Wasserzementwert w/z': `${wzValue.toFixed(2)}`,
-        'Fließmittel (PCE)': `${fließmittelPCE.toFixed(1)} M.-%`,
+        'Fließmittel (PCE)': `${formatDeZahl(fließmittelPCE, 1)} M.-%`,
         'Luftporenbildner': airEntrainment ? 'Ja' : 'Nein',
-        ...(isSpread ? { 'Hubschläge': `${shocksDone} / 15` } : {})
+        ...(isSpread ? { 'Hubschläge': `${formatDeWert(shocksDone)} / 15` } : {})
       },
       metrics: isSpread ? {
         'Ausbreitmaß d (mm)': `${spreadDiameterMm}`,
@@ -244,7 +245,7 @@ export default function FrischbetonPruefung() {
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-bold text-text-main">
                 <span>Wasserzementwert (w/z-Wert):</span>
-                <span className="font-mono text-shiraz">{wzValue.toFixed(2)}</span>
+                <span className="font-mono text-shiraz">{formatDeZahl(wzValue, 2)}</span>
               </div>
               <input
                 type="range"
@@ -256,8 +257,8 @@ export default function FrischbetonPruefung() {
                 className="w-full accent-shiraz cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-text-main/60">
-                <span>0.35 (Sehr steif / hochfest)</span>
-                <span>0.70 (Sehr weich / porös)</span>
+                <span>0,35 (Sehr steif / hochfest)</span>
+                <span>0,70 (Sehr weich / porös)</span>
               </div>
             </div>
 
@@ -265,7 +266,7 @@ export default function FrischbetonPruefung() {
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
               <div className="flex justify-between text-xs font-bold text-text-main">
                 <span>Fließmittel (PCE):</span>
-                <span className="font-mono text-emerald-700">{fließmittelPCE.toFixed(1)} M.-%</span>
+                <span className="font-mono text-emerald-700">{formatDeZahl(fließmittelPCE, 1)} M.-%</span>
               </div>
               <input
                 type="range"
@@ -327,7 +328,7 @@ export default function FrischbetonPruefung() {
 
               {activeTest === 'ausbreittisch' && (
                 <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-3 py-1 rounded-full">
-                  Hubschläge: {shocksDone} / 15
+                  Hubschläge: {formatDeWert(shocksDone)} / 15
                 </span>
               )}
             </div>
@@ -384,7 +385,7 @@ export default function FrischbetonPruefung() {
                       >
                         <div className="w-2 h-2 rounded-full bg-shiraz"></div>
                         <span className="text-[10px] font-mono font-bold bg-white text-shiraz px-1.5 py-0.5 rounded shadow-sm border border-shiraz/30">
-                          Ø {spreadDiameterMm} mm
+                          Ø {formatDeWert(spreadDiameterMm)} mm
                         </span>
                         <div className="w-2 h-2 rounded-full bg-shiraz"></div>
                       </div>
@@ -430,7 +431,7 @@ export default function FrischbetonPruefung() {
                   <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-3 text-xs">
                     <div>
                       <span className="text-text-main/60 block text-[10px] uppercase font-bold">Ausbreitmaß d</span>
-                      <strong className="text-xl text-shiraz font-mono">{spreadDiameterMm} mm</strong>
+                      <strong className="text-xl text-shiraz font-mono">{formatDeWert(spreadDiameterMm)} mm</strong>
                     </div>
 
                     <div>
@@ -482,7 +483,7 @@ export default function FrischbetonPruefung() {
                       }}
                     >
                       <span className="text-[10px] font-bold text-stone-800">
-                        {slumpLifted ? `${slumpMm} mm Setzmaß` : 'Gefüllter Trichter'}
+                        {slumpLifted ? `${formatDeWert(slumpMm)} mm Setzmaß` : 'Gefüllter Trichter'}
                       </span>
                     </div>
 
@@ -497,7 +498,7 @@ export default function FrischbetonPruefung() {
                           <div className="absolute -bottom-1 -left-1 w-3 h-1 bg-red-600"></div>
                         </div>
                         <span className="ml-2 text-xs font-mono font-bold text-red-600 bg-white px-1.5 py-0.5 rounded shadow border border-red-300">
-                          s = {slumpMm} mm
+                          s = {formatDeWert(slumpMm)} mm
                         </span>
                       </div>
                     )}
@@ -516,7 +517,7 @@ export default function FrischbetonPruefung() {
                   <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-3 text-xs">
                     <div>
                       <span className="text-text-main/60 block text-[10px] uppercase font-bold">Setzmaß s</span>
-                      <strong className="text-xl text-shiraz font-mono">{slumpMm} mm</strong>
+                      <strong className="text-xl text-shiraz font-mono">{formatDeWert(slumpMm)} mm</strong>
                     </div>
 
                     <div>
@@ -550,7 +551,7 @@ export default function FrischbetonPruefung() {
                       Fließgrenze τ0 (Yield Stress)
                     </span>
                     <span className="text-xl font-mono font-bold text-amber-400">
-                      {binghamYieldStress.toFixed(0)} <span className="text-xs text-slate-300 font-normal">Pa</span>
+                      {formatDeZahl(binghamYieldStress, 0)} <span className="text-xs text-slate-300 font-normal">Pa</span>
                     </span>
                     <span className="text-[10px] text-slate-400 block mt-0.5">Mindestspannung zum Fließbeginn</span>
                   </div>
@@ -560,7 +561,7 @@ export default function FrischbetonPruefung() {
                       Plastische Viskosität μp
                     </span>
                     <span className="text-xl font-mono font-bold text-emerald-400">
-                      {binghamPlasticViscosity.toFixed(1)} <span className="text-xs text-slate-300 font-normal">Pa·s</span>
+                      {formatDeZahl(binghamPlasticViscosity, 1)} <span className="text-xs text-slate-300 font-normal">Pa·s</span>
                     </span>
                     <span className="text-[10px] text-slate-400 block mt-0.5">Fließwiderstand in Bewegung</span>
                   </div>
@@ -604,7 +605,7 @@ export default function FrischbetonPruefung() {
                         legend: { display: false },
                         tooltip: {
                           callbacks: {
-                            label: (ctx: any) => `τ = ${Number(ctx.parsed.y).toFixed(1)} Pa bei γ̇ = ${Number(ctx.parsed.x).toFixed(0)} 1/s`
+                            label: (ctx: any) => `τ = ${formatDeZahl(Number(ctx.parsed.y), 1)} Pa bei γ̇ = ${formatDeZahl(Number(ctx.parsed.x), 0)} 1/s`
                           }
                         }
                       }

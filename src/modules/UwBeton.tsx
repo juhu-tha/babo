@@ -105,7 +105,7 @@ export default function UwBeton() {
           { title: 'Hydrostatischer Druck', url: 'https://de.wikipedia.org/wiki/Hydrostatischer_Druck' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Abschnitt Unterwasserbeton, Mindestzementgehalt 350-380 kg/m³)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Abschnitt Unterwasserbeton, Mindestzementgehalt 350-380 kg/m³)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
           { title: 'ZTV-W LB 215 (Zusätzliche Technische Vertragsbedingungen im Wasserbau - Wasserbauwerke aus Beton)', url: 'https://izw.baw.de/' },
           { title: 'DBV-Merkblatt: Unterwasserbeton (Schütt- und Pumprohrverfahren / Contractor)', url: 'https://www.betonverein.de/' }
         ]}
@@ -121,7 +121,7 @@ export default function UwBeton() {
             quelle: 'DBV-Merkblatt Unterwasserbeton'
           },
           {
-            formel: 'h_{\\text{Eintauch}} \\ge 1.5 - 2.0\\,\\text{m}',
+            formel: 'h_{\\text{Eintauch}} \\ge 1{,}5 - 2{,}0\\,\\text{m}',
             erklaerung: 'Mindesteintauchtiefe des Schüttrohres im frischen Betonbett, um den direkten Kontakt des frischen Zementleims mit dem umgebenden Wasser zu verhindern.',
             quelle: 'ZTV-W LB 215'
           }

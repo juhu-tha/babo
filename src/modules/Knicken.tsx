@@ -5,7 +5,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -250,7 +250,7 @@ export default function Knicken() {
                 {/* E-Modul */}
                 <div className="flex items-center justify-between text-xs pt-2 border-t border-home-grau/20">
                   <span className="text-text-main/70">Elastizitätsmodul E:</span>
-                  <span className="font-mono font-bold text-text-main">{eModul.toLocaleString()} MPa (Stahl)</span>
+                  <span className="font-mono font-bold text-text-main">{formatDeWert(eModul)} MPa (Stahl)</span>
                 </div>
 
                 {/* Results Card */}
@@ -258,7 +258,7 @@ export default function Knicken() {
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                     <span className="text-[10px] uppercase font-bold text-text-main/60 block">Knicklänge l_k</span>
                     <span className="text-lg font-mono font-bold text-text-main">{formatDeZahl(results.l_k, 2)} m</span>
-                    <span className="text-[9px] text-text-main/70 block">β = {results.beta}</span>
+                    <span className="text-[9px] text-text-main/70 block">β = {formatDeWert(results.beta)}</span>
                   </div>
 
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
@@ -294,7 +294,7 @@ export default function Knicken() {
                       <Activity size={18} className="text-shiraz" /> 2. Live Knickfigur &amp; Auslenkung
                     </h3>
                     <span className="text-xs text-text-main/70 font-medium">
-                      Euler-Fall {eulerFall}: {eulerFall === 1 ? 'Kragarm' : eulerFall === 2 ? 'Gelenk-Gelenk' : eulerFall === 3 ? 'Eingespannt-Gelenk' : 'Beidseitig eingespannt'}
+                      Euler-Fall {formatDeWert(eulerFall)}: {eulerFall === 1 ? 'Kragarm' : eulerFall === 2 ? 'Gelenk-Gelenk' : eulerFall === 3 ? 'Eingespannt-Gelenk' : 'Beidseitig eingespannt'}
                     </span>
                   </div>
                   <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200">
@@ -484,7 +484,7 @@ export default function Knicken() {
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="font-bold text-shiraz text-sm">{f.name}</span>
-                      <span className="font-mono text-xs font-bold bg-white px-2 py-0.5 rounded border border-home-grau/30">β = {f.beta}</span>
+                      <span className="font-mono text-xs font-bold bg-white px-2 py-0.5 rounded border border-home-grau/30">β = {formatDeWert(f.beta)}</span>
                     </div>
                     <div className="font-mono text-xs text-text-main font-semibold mb-2">{f.lk}</div>
                     <p className="text-xs text-text-main/75 leading-relaxed">{f.desc}</p>
@@ -503,9 +503,9 @@ export default function Knicken() {
           { title: 'Euler-Knickung', url: 'https://de.wikipedia.org/wiki/Knickung#Euler-F%C3%A4lle' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Stabilitätsnachweise & Knicken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Betonbauten - Druckglieder & Theorie II. Ordnung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-1:2024-03 (Eurocode 5: Bemessung von Holzbauten - Ersatzstabsverfahren & Biegeknicken)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Stabilitätsnachweise & Knicken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Betonbauten - Druckglieder & Theorie II. Ordnung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1:2024-03 (Eurocode 5: Bemessung von Holzbauten - Ersatzstabsverfahren & Biegeknicken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
         ]}
         literatur={[
           'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',

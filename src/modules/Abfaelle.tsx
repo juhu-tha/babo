@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, LucideIcon, Search, FileSignature, BookOpen, ArrowRight, HelpCircle, Calendar, Check, X, AlertCircle, Scale, Droplets, Leaf, ClipboardList } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 type AbfallTab = 'schema' | 'hierarchie' | 'avv' | 'ebv' | 'deponie' | 'altlasten' | 'rueckbau' | 'eanv' | 'pn98' | 'altholz' | 'checklisten';
 
@@ -87,7 +87,7 @@ export default function Abfaelle() {
       wann: 'Vor und während der Einstufung und Deklaration der Abfälle für den Transport.',
       was: 'Exakte europaweit gültige Abfallklassifizierung (6-stelliger Abfallschlüssel).',
       wie: 'Zuordnung nach Herkunft/Art sowie Einstufung von gefährlichen Abfällen (Spiegel-Einträge mit *).',
-      wozu: 'Eindeutige und rechtssichere rechtliche Einstufung für Transport, Abrechnung und Verwertbarkeit.'
+      wozu: 'Eindeutige und rechtlich belastbare Einstufung für Transport, Abrechnung und Verwertbarkeit.'
     },
     {
       id: 'ebv',
@@ -185,7 +185,7 @@ export default function Abfaelle() {
       wann: 'Vor der Entsorgungs-Deklaration zur Absicherung der Einstufung.',
       was: 'Haufwerke (Bauschutthalden) oder unberührter anstehender Boden in Baugruben.',
       wie: 'Repräsentative Beprobung nach verbindlichem LAGA PN 98-Schema durch sachkundige Gutachter.',
-      wozu: 'Chemisch rechtssichere Einstufung, wodurch Falschdeklarationen und Abweisungen an Deponietoren verhindert werden.'
+      wozu: 'Chemisch rechtlich belastbare Einstufung, wodurch Falschdeklarationen und Abweisungen an Deponietoren verhindert werden.'
     },
     {
       id: 'checklisten',
@@ -609,7 +609,7 @@ export default function Abfaelle() {
                         Vorhandensein von Gefahrstoffen prüfen
                       </h5>
                       <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                        Prüfe, ob Hinweise auf historische Schadstoffe vorliegen (z.B. Asbest, teerhaltiger Gussasphalt, PCB-haltige Fugendichtstoffe, Holzschutzmittelhaltiges Altholz). Ziehe hierzu Schadstoffgutachten, Bestandspläne und die historische Nutzung des Bauwerks heran.
+                        Prüfen Sie, ob Hinweise auf historische Schadstoffe vorliegen (z.B. Asbest, teerhaltiger Gussasphalt, PCB-haltige Fugendichtstoffe, Holzschutzmittelhaltiges Altholz). Ziehen Sie hierzu Schadstoffgutachten, Bestandspläne und die historische Nutzung des Bauwerks heran.
                       </p>
                     </div>
                   </div>
@@ -637,7 +637,7 @@ export default function Abfaelle() {
                         Abfallschlüssel final festlegen & deklarieren
                       </h5>
                       <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                        Lege basierend auf den Analyseergebnissen und Grenzwerten den finalen Abfallschlüssel fest. Handelt es sich um gefährlichen Abfall (gekennzeichnet mit einem Sternchen *), greift das elektronische Abfallnachweisverfahren (eANV) mit Erzeugernummer und Entsorgungsnachweis.
+                        Legen Sie basierend auf den Analyseergebnissen und Grenzwerten den finalen Abfallschlüssel fest. Handelt es sich um gefährlichen Abfall (gekennzeichnet mit einem Sternchen *), greift das elektronische Abfallnachweisverfahren (eANV) mit Erzeugernummer und Entsorgungsnachweis.
                       </p>
                     </div>
                   </div>
@@ -755,7 +755,7 @@ export default function Abfaelle() {
                       <ul className="space-y-1.5 text-slate-600 font-medium font-semibold">
                         <li>✓ <strong className="text-slate-800 font-bold">Bundesrecht:</strong> Ein einheitliches Gesetz bricht ungleiches Länderrecht. Volle Akzeptanz bei länderübergreifenden Projekten.</li>
                         <li>✓ <strong className="text-slate-800 font-bold">Produktstatus (§ 12 KrWG):</strong> Erstmalige gesetzlich verankerte Entlassung überwachter Sekundärbaustoffe aus dem Abfallregime.</li>
-                        <li>✓ <strong className="text-slate-800 font-bold">Katasterpflicht:</strong> Größere Wiedereinbaumaßnahmen (ab 250 m³) sind rechtssicher behördenregistriert (Sicherheit für nachfolgende Baueigentümer).</li>
+                        <li>✓ <strong className="text-slate-800 font-bold">Katasterpflicht:</strong> Größere Wiedereinbaumaßnahmen (ab 250 m³) sind rechtlich belastbar behördenregistriert (Sicherheit für nachfolgende Baueigentümer).</li>
                       </ul>
                     </div>
                   </div>
@@ -1303,7 +1303,7 @@ export default function Abfaelle() {
                             <div>
                               <div className="flex items-center gap-2">
                                 <span className={`inline-block px-2 py-0.5 text-xs font-bold rounded ${cls.color} ${cls.text} border border-home-grau/30`}>{cls.label}</span>
-                                <span className="font-bold text-slate-800">C ≤ {lim} {paramInfo.unit}</span>
+                                <span className="font-bold text-slate-800">C ≤ {formatDeWert(lim)} {paramInfo.unit}</span>
                               </div>
                               <p className="text-xs text-slate-500 mt-0.5">{cls.desc}</p>
                             </div>
@@ -1512,7 +1512,7 @@ export default function Abfaelle() {
                           Geotechnischer Schichtenaufbau nach DepV Anhang 1
                         </h4>
                         <p className="text-xs text-slate-500 mt-0.5">
-                          Vergleiche den normativen Aufbau der wissenschaftlich fundierten Dichtungsschichten an der Deponiebasis und der Oberfläche.
+                          Vergleichen Sie den normativen Aufbau der wissenschaftlich fundierten Dichtungsschichten an der Deponiebasis und der Oberfläche.
                         </p>
                       </div>
                       
@@ -1562,7 +1562,7 @@ export default function Abfaelle() {
                           {
                             index: 2,
                             name: "HDPE-Kunststoffdichtungsbahn (KDB)",
-                            thickness: "≥ 2.5 mm",
+                            thickness: "≥ 2,5 mm",
                             color: "bg-slate-950 hover:bg-slate-900 border-slate-900 text-slate-100",
                             previewText: "Kunststoffdichtungsbahn (KDB - HDPE)"
                           },
@@ -1576,7 +1576,7 @@ export default function Abfaelle() {
                           {
                             index: 4,
                             name: "Geologischer Barriereuntergrund (Tonmergel)",
-                            thickness: "≥ 1.0 m",
+                            thickness: "≥ 1,0 m",
                             color: "bg-amber-200/50 hover:bg-amber-200/70 border-amber-300/50 text-amber-900",
                             previewText: "Natürlicher Baugrund (kf ≤ 1e-7 m/s)"
                           }
@@ -1584,7 +1584,7 @@ export default function Abfaelle() {
                           {
                             index: 0,
                             name: "Rekultivierungsschicht (Mutterboden)",
-                            thickness: "≥ 1.0 m",
+                            thickness: "≥ 1,0 m",
                             color: "bg-emerald-700/80 hover:bg-emerald-700/90 border-emerald-800 text-white",
                             previewText: "Mutterboden + Bepflanzung (Frostschutz)"
                           },
@@ -1598,7 +1598,7 @@ export default function Abfaelle() {
                           {
                             index: 2,
                             name: "Dichtungskomponente (KDB / Ton)",
-                            thickness: "KDB ≥ 2.5mm",
+                            thickness: "KDB ≥ 2,5mm",
                             color: "bg-slate-800 hover:bg-slate-700 border-slate-900 text-slate-200",
                             previewText: "Verbunddichtung (Polymer/Bentonit)"
                           },
@@ -1664,7 +1664,7 @@ export default function Abfaelle() {
                             },
                             2: {
                               name: "HDPE-Kunststoffdichtungsbahn (KDB)",
-                              thickness: "≥ 2.5 mm",
+                              thickness: "≥ 2,5 mm",
                               material: "PE-HD (Polyethylen hoher Dichte) mit BAM-Zulassung",
                               requirement: "Heißluft- oder Extruderschweißung, vollständige geoelektrische Lecksuchprüfung, Schutz durch schwere Geotextil-Schutzvliese (GRK 5)",
                               function: "Die primäre, absolut wasserdichte stoffliche Barriere gegen den Durchstrom und die Diffusion schadstoffbelasteter Wässer."
@@ -1678,7 +1678,7 @@ export default function Abfaelle() {
                             },
                             4: {
                               name: "Geologischer Barriereuntergrund (Natürliche Barriere)",
-                              thickness: "≥ 1.0 m",
+                              thickness: "≥ 1,0 m",
                               material: "Homogener Fest- oder Lockergesteinskörper (z.B. Tonmergel, feiner Ton)",
                               requirement: "kf ≤ 1 · 10⁻⁷ m/s (oder ersetzende gleichwertige technische Barriere)",
                               function: "Letzter massiver Schutz des lokalen Wasserspiegels durch hohes chemisch-physikalisches Schadstoff-Rückhalte- und Absorptionsvermögen geologischer Massivschichten."
@@ -1688,7 +1688,7 @@ export default function Abfaelle() {
                           const oberflaecheLayers: Record<number, { name: string; thickness: string; material: string; requirement: string; function: string }> = {
                             0: {
                               name: "Rekultivierungsschicht (Mutterboden)",
-                              thickness: "≥ 1.0 m",
+                              thickness: "≥ 1,0 m",
                               material: "Humusreicher Bodenaushub, wurzelfähiges Substrat",
                               requirement: "Vermeidung tiefwurzelnder Gehölze nach Bepflanzungsordnung (Dichtungsschutz)",
                               function: "Sichert ein stabiles Pflanzenwachstum als Erosionsschutz, schützt das Dichtungssystem vor winterlichem Frost/Dürre und speichert Regenwasser zur Verdunstung."
@@ -1702,7 +1702,7 @@ export default function Abfaelle() {
                             },
                             2: {
                               name: "Dichtungselement (KDB & Tonverbund)",
-                              thickness: "KDB ≥ 2.5 mm und/oder Tonschicht",
+                              thickness: "KDB ≥ 2,5 mm und/oder Tonschicht",
                               material: "PE-HD Folie o. geosynthetische Tonsubstratbahn (Bento)",
                               requirement: "Zulassung nach Bundesanstalt für Materialforschung (BAM)",
                               function: "Verhindert verlässlich und dauerhaft das Einsickern von Oberflächen- bzw. Regenwasser in den darunterliegenden Deponiekörper, um so die Sickerwasserbildung im Kern zu stoppen."
@@ -1730,7 +1730,7 @@ export default function Abfaelle() {
                             <div className="space-y-4">
                               <div className="flex items-center justify-between border-b border-home-grau/25 pb-2">
                                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider">
-                                  {deponieSection === 'basis' ? `Basis-Schicht ${selectedLayerIndex + 1}` : `Oberflächen-Schicht ${selectedLayerIndex + 1}`}
+                                  {deponieSection === 'basis' ? `Basis-Schicht ${formatDeWert(selectedLayerIndex + 1)}` : `Oberflächen-Schicht ${formatDeWert(selectedLayerIndex + 1)}`}
                                 </span>
                                 <span className="text-xs font-bold text-slate-500 font-mono">
                                   Dicke: {activeLayer.thickness}
@@ -1763,7 +1763,7 @@ export default function Abfaelle() {
 
                         <div className="mt-5 pt-3 border-t border-home-grau/20 flex items-center gap-1.5 text-xs text-slate-400">
                           <HelpCircle className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
-                          <span>Klicke auf eine Schicht im linken Stapel, um die hydraulischen Eigenschaften und materialtechnischen Parameter einzusehen.</span>
+                          <span>Klicken Sie auf eine Schicht im linken Stapel, um die hydraulischen Eigenschaften und materialtechnischen Parameter einzusehen.</span>
                         </div>
                       </div>
                     </div>
@@ -1899,7 +1899,7 @@ export default function Abfaelle() {
                       {Object.entries(selectedBbod.values).map(([contaminant, value]) => (
                         <div key={contaminant} className="p-3 bg-slate-50/50 rounded-xl border border-home-grau/30 flex justify-between items-center text-xs">
                           <span className="font-semibold text-slate-700">{contaminant}</span>
-                          <span className="font-mono font-extrabold text-slate-900 bg-white border border-home-grau/30 px-2.5 py-1 rounded shadow-xs">≤ {value}</span>
+                          <span className="font-mono font-extrabold text-slate-900 bg-white border border-home-grau/30 px-2.5 py-1 rounded shadow-xs">≤ {formatDeWert(value)}</span>
                         </div>
                       ))}
                     </div>
@@ -1926,8 +1926,8 @@ export default function Abfaelle() {
                     <div className="p-4 rounded-xl bg-slate-50 space-y-2 border border-home-grau/30">
                       <h5 className="font-bold text-slate-900">1. Vermeidung von Bodenschäden (Konstruktive Maßnahmen)</h5>
                       <ul className="space-y-1.5 text-slate-600 font-medium">
-                        <li>• <strong className="text-slate-800">Bodendruck reduzieren:</strong> Verwendung von Kettenlaufwerken, Breitreifen im Niederdruckbereich (≤ 0.8 bar) oder Baggermatten aus Hartholz.</li>
-                        <li>• <strong className="text-slate-800">Hydrologische Grenzwerte einhalten:</strong> Keine Befahrung von weichen, schluffigen oder tonigen Böden im feuchten Zustand (pF-Wert ≤ 1.8 oder Saugspannung beachten).</li>
+                        <li>• <strong className="text-slate-800">Bodendruck reduzieren:</strong> Verwendung von Kettenlaufwerken, Breitreifen im Niederdruckbereich (≤ 0,8 bar) oder Baggermatten aus Hartholz.</li>
+                        <li>• <strong className="text-slate-800">Hydrologische Grenzwerte einhalten:</strong> Keine Befahrung von weichen, schluffigen oder tonigen Böden im feuchten Zustand (pF-Wert ≤ 1,8 oder Saugspannung beachten).</li>
                         <li>• <strong className="text-slate-800">Mutterbodenschutz:</strong> Abtrag des Oberbodens (Mutterboden) vor Baubeginn und sachgemäße Lagerung in Mieten (≤ 2 m Höhe, Belüftung bewahren) zur Erhaltung der Mikrobiologie.</li>
                       </ul>
                     </div>
@@ -2271,7 +2271,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Anzahl Einzelproben (EP)</span>
-                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{einzelproben}</div>
+                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{formatDeWert(einzelproben)}</div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Einzelproben müssen gleichmäßig verteilt über drei Dimensionen (oben, mitte, unten, tief im Haldenkörper) entnommen werden.
                           </p>
@@ -2282,9 +2282,9 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Labor- / Mischproben (MP)</span>
-                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{mischproben}</div>
+                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{formatDeWert(mischproben)}</div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
-                            Die EP werden zu {mischproben} repräsentativen Mischprobe(n) vereint und anschließend fachgerecht homogenisiert.
+                            Die EP werden zu {formatDeWert(mischproben)} repräsentativen Mischprobe(n) vereint und anschließend fachgerecht homogenisiert.
                           </p>
                         </div>
                       </div>
@@ -2293,7 +2293,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Mindestvolumen je Einzelprobe</span>
-                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{minVolEinzel} Liter <span className="text-xs font-semibold text-slate-500">({minVolEinzel} kg)</span></div>
+                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolEinzel)} Liter <span className="text-xs font-semibold text-slate-500">({formatDeWert(minVolEinzel)} kg)</span></div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Abhängig vom Größtkorn. Zu geringe Probemengen verletzen das Repräsentativitätsgebot der LAGA Richtlinie.
                           </p>
@@ -2304,7 +2304,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Laborproben-Sollvolumen</span>
-                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{minVolVerbund} Liter <span className="text-xs font-semibold text-slate-500">({minVolVerbund} kg)</span></div>
+                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolVerbund)} Liter <span className="text-xs font-semibold text-slate-500">({formatDeWert(minVolVerbund)} kg)</span></div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Mindestvolumen der laborbereiten Probe nach Homogenisierung (mittels Kegel- &amp; Viertelmethode oder Probenteiler).
                           </p>
@@ -2313,7 +2313,7 @@ export default function Abfaelle() {
                     </div>
 
                     <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-150 text-xs leading-relaxed text-emerald-950 font-semibold">
-                      📋 <strong className="text-emerald-900 leading-normal">Gesamtbilanz für {pnVolume} m³ ({pnMaterialState}):</strong> Es müssen mindestens <strong>{einzelproben} Einzelproben</strong> à <strong>{minVolEinzel} l</strong> gezogen werden. Das Gesamtgewicht des Beprobungsvorganges im Feld liegt somit bei mindestens <strong>{formatDeZahl(einzelproben * minVolEinzel, 1)} Litern / kg</strong> mineralischem Probengut, um daraus die <strong>{mischproben} Laborprobe(n)</strong> zu speisen.
+                      📋 <strong className="text-emerald-900 leading-normal">Gesamtbilanz für {formatDeWert(pnVolume)} m³ ({pnMaterialState}):</strong> Es müssen mindestens <strong>{formatDeWert(einzelproben)} Einzelproben</strong> à <strong>{formatDeWert(minVolEinzel)} l</strong> gezogen werden. Das Gesamtgewicht des Beprobungsvorganges im Feld liegt somit bei mindestens <strong>{formatDeZahl(einzelproben * minVolEinzel, 1)} Litern / kg</strong> mineralischem Probengut, um daraus die <strong>{formatDeWert(mischproben)} Laborprobe(n)</strong> zu speisen.
                     </div>
                   </div>
                 </div>
@@ -2375,7 +2375,7 @@ export default function Abfaelle() {
                   Praxis-Checklisten für Abfälle, Altlasten und Rückbau
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  Kompakte und rechtssichere Handlungsanleitungen für die Baustellenpraxis. Wählen Sie unten ein Thema aus, um die detaillierte Checkliste für anfallende Prozesse anzuzeigen.
+                  Kompakte und rechtlich belastbare Handlungsanleitungen für die Baustellenpraxis. Wählen Sie unten ein Thema aus, um die detaillierte Checkliste für anfallende Prozesse anzuzeigen.
                 </p>
               </div>
 
@@ -2421,7 +2421,7 @@ export default function Abfaelle() {
                   <div className="space-y-6">
                     <div className="border-b border-slate-100 pb-3">
                       <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                        <Scale className="text-shiraz w-5 h-5" /> Leitfaden zur rechtssicheren Abfalleinstufung (§ 3, 5, 8 KrWG &amp; AVV)
+                        <Scale className="text-shiraz w-5 h-5" /> Leitfaden zur rechtlich belastbaren Abfalleinstufung (§ 3, 5, 8 KrWG &amp; AVV)
                       </h4>
                       <p className="text-xs text-slate-500 mt-1">
                         Rechtliche Zuordnung, Bestimmung gefährlicher/nicht gefährlicher Abfälle und Voraussetzungen für das Erreichen des Produktstatus (Abfallende).
@@ -2457,7 +2457,7 @@ export default function Abfaelle() {
                         {
                           step: 5,
                           title: 'Prüfung der kumulativen Voraussetzungen des Abfallendes (§ 5 KrWG)',
-                          desc: 'Kann das Material die Abfalleigenschaft verlieren und Produktstatus erlangen? Prüfe: 1) Zweckbestimmung (Nutzung für Wegebau o.ä.), 2) Marktnachfrage, 3) Erfüllung aller technischen Normen (z.B. Frostschutz nach TL BuB), 4) Unbedenklichkeit für Mensch und Umwelt (EBV-Konformität).',
+                          desc: 'Kann das Material die Abfalleigenschaft verlieren und Produktstatus erlangen? Prüfen Sie: 1) Zweckbestimmung (Nutzung für Wegebau o.ä.), 2) Marktnachfrage, 3) Erfüllung aller technischen Normen (z.B. Frostschutz nach TL BuB), 4) Unbedenklichkeit für Mensch und Umwelt (EBV-Konformität).',
                           ref: 'Kreislaufwirtschaftsgesetz § 5 (1)'
                         },
                         {
@@ -2507,13 +2507,13 @@ export default function Abfaelle() {
                         {
                           step: 1,
                           title: 'Güteüberwachung des RC-Herstellers absichern',
-                          desc: 'Stelle sicher, dass der Sekundärbaustoff aus einer gemäß EBV zugelassenen Brech- und Siebanlage stammt. Fordern Sie das aktuelle QUBA-Gütezeichen (Qualitätssicherung Sekundärbaustoffe) oder das landesspezifische QRB-Zertifikat an.',
+                          desc: 'Stellen Sie sicher, dass der Sekundärbaustoff aus einer gemäß EBV zugelassenen Brech- und Siebanlage stammt. Fordern Sie das aktuelle QUBA-Gütezeichen (Qualitätssicherung Sekundärbaustoffe) oder das landesspezifische QRB-Zertifikat an.',
                           ref: 'EBV § 4 - § 11'
                         },
                         {
                           step: 2,
                           title: 'Konformitätszertifikat & Laborwerte prüfen',
-                          desc: 'Sichten Sie die werkseigene Produktionskontrolle (WPK) und die Fremdüberwachungsberichte des Herstellers. Vergleiche die deklarierte Materialklasse (z.B. RC-1, RC-2 oder BM-0) mitsamt den Laboranalysen.',
+                          desc: 'Sichten Sie die werkseigene Produktionskontrolle (WPK) und die Fremdüberwachungsberichte des Herstellers. Vergleichen Sie die deklarierte Materialklasse (z.B. RC-1, RC-2 oder BM-0) mitsamt den Laboranalysen.',
                           ref: 'EBV Anhang 1 Tabellen'
                         },
                         {
@@ -2531,7 +2531,7 @@ export default function Abfaelle() {
                         {
                           step: 5,
                           title: 'Bautechnische Eignung & Verdichtungsgüte nachweisen',
-                          desc: 'Stelle sicher, dass das RC-Gemisch die mechanischen Anforderungen der TL Gestein-StB erfüllt (z.B. Frostbeständigkeit, Tragfähigkeit). Prüfe nach Einbau den Verdichtungsgrad mittels Plattendruckversuchen (Soll-Wert: Ev2 ≥ 120 MN/m² bei Tragschichten).',
+                          desc: 'Stellen Sie sicher, dass das RC-Gemisch die mechanischen Anforderungen der TL Gestein-StB erfüllt (z.B. Frostbeständigkeit, Tragfähigkeit). Prüfen Sie nach Einbau den Verdichtungsgrad mittels Plattendruckversuchen (Soll-Wert: Ev2 ≥ 120 MN/m² bei Tragschichten).',
                           ref: 'ZTV SoB-StB / DIN EN 13285'
                         },
                         {
@@ -2593,7 +2593,7 @@ export default function Abfaelle() {
                         {
                           step: 3,
                           title: 'Probenahme- und Analytikplan (VDI 3866 / 3876)',
-                          desc: 'Lege ein systematisches Raster zur Probenentnahme fest. Führe gezielte Laboranalysen an Putzen, Klebern und Spachtelmassen (REM-EDX Analysen auf Asbest nach VDI 3866 Blatt 5) sowie nasschemische Aufschlüsse für PAK, CPS, PCP und Schwermetalle durch.',
+                          desc: 'Legen Sie ein systematisches Raster zur Probenentnahme fest. Führen Sie gezielte Laboranalysen an Putzen, Klebern und Spachtelmassen (REM-EDX Analysen auf Asbest nach VDI 3866 Blatt 5) sowie nasschemische Aufschlüsse für PAK, CPS, PCP und Schwermetalle durch.',
                           ref: 'VDI 3866 / DIN EN ISO 16000-9'
                         },
                         {
@@ -2611,7 +2611,7 @@ export default function Abfaelle() {
                         {
                           step: 6,
                           title: 'Verwertungsbericht &amp; Behördenfreigabe',
-                          desc: 'Erstelle nach Abschluss der Abbrucharbeiten eine Massenbilanz mitsamt Entsorgungsbelegen und Wiegescheinen. Lege diesen Verwertungsbericht der zuständigen Bauordnungsbehörde/Umweltbehörde zur abschließenden Entlastung des Bauherrn vor.',
+                          desc: 'Erstellen Sie nach Abschluss der Abbrucharbeiten eine Massenbilanz mitsamt Entsorgungsbelegen und Wiegescheinen. Legen Sie diesen Verwertungsbericht der zuständigen Bauordnungsbehörde/Umweltbehörde zur abschließenden Entlastung des Bauherrn vor.',
                           ref: 'LBO / KrWG Abfallregister'
                         }
                       ].map((item) => (
@@ -2655,7 +2655,7 @@ export default function Abfaelle() {
                         {
                           step: 1,
                           title: 'Verwertungsausschluss formell prüfen &amp; begründen',
-                          desc: 'Dokumentiere pflichtbewusst, dass eine stoffliche (z.B. Brechanlage) oder energetische Verwertung aus technischen Gründen unmöglich oder wegen unverhältnismäßiger Mehrkosten unzumutbar ist. Deponierung ist gesetzlich die allerletzte Entsorgungsstufe.',
+                          desc: 'Dokumentieren Sie pflichtbewusst, dass eine stoffliche (z.B. Brechanlage) oder energetische Verwertung aus technischen Gründen unmöglich oder wegen unverhältnismäßiger Mehrkosten unzumutbar ist. Deponierung ist gesetzlich die allerletzte Entsorgungsstufe.',
                           ref: 'KrWG § 6 Abfallhierarchie'
                         },
                         {
@@ -2673,7 +2673,7 @@ export default function Abfaelle() {
                         {
                           step: 4,
                           title: 'Einstufung in Deponieklassen (DK 0 bis DK IV)',
-                          desc: 'Vergleiche die Messwerte mit den Zuordnungswerten der DepV: DK 0 (unbelasteter Inertabfall), DK I (oberirdisch, geringe Belastung), DK II (Hausmüll, typischer schwerer Bauschutt), DK III (gefährlicher Industrieabfall), DK IV (Sonderabfälle, unter Tage).',
+                          desc: 'Vergleichen Sie die Messwerte mit den Zuordnungswerten der DepV: DK 0 (unbelasteter Inertabfall), DK I (oberirdisch, geringe Belastung), DK II (Hausmüll, typischer schwerer Bauschutt), DK III (gefährlicher Industrieabfall), DK IV (Sonderabfälle, unter Tage).',
                           ref: 'DepV Anhang 3 Tabelle 2'
                         },
                         {
@@ -2729,7 +2729,7 @@ export default function Abfaelle() {
                         {
                           step: 1,
                           title: 'Probenahmestrategie &amp; Untersuchungsziele definieren',
-                          desc: 'Erstelle vorab einen schriftlichen Probenahmeplan. Bestimme das Ziel der Untersuchung (z.B. Schadstoffbewertung gemäß BBodSchV oder Entsorgungsdeklaration) und definiere die Analyse-Kennwerte im Labor.',
+                          desc: 'Erstellen Sie vorab einen schriftlichen Probenahmeplan. Bestimmen Sie das Ziel der Untersuchung (z.B. Schadstoffbewertung gemäß BBodSchV oder Entsorgungsdeklaration) und definiere die Analyse-Kennwerte im Labor.',
                           ref: 'DIN 19698-1 / LAGA PN 98'
                         },
                         {
@@ -2747,7 +2747,7 @@ export default function Abfaelle() {
                         {
                           step: 4,
                           title: 'Einzelproben (EP) im Feld entnehmen',
-                          desc: 'Entnimm die Einzelproben gleichmäßig über das gesamte Haufwerksvolumen verteilt (oben, mitte, unten, tief im Haldenkörper). Verwende ggf. einen Minibagger, um tiefe Schichten aufzuschließen. Kratzen Sie oberflächlich verwitterte Außenzonen (ca. 10 cm Tiefe) ab und verwerfen Sie diese.',
+                          desc: 'Entnehmen Sie die Einzelproben gleichmäßig über das gesamte Haufwerksvolumen verteilt (oben, mitte, unten, tief im Haldenkörper). Verwenden Sie ggf. einen Minibagger, um tiefe Schichten aufzuschließen. Kratzen Sie oberflächlich verwitterte Außenzonen (ca. 10 cm Tiefe) ab und verwerfen Sie diese.',
                           ref: 'DIN 19698-1 Abs. 7.4'
                         },
                         {
@@ -2759,7 +2759,7 @@ export default function Abfaelle() {
                         {
                           step: 6,
                           title: 'Protokollierung &amp; gekühlter Transport',
-                          desc: 'Dokumentiere jeden Probenahmeschritt detailliert in einem schriftlichen, fälschungssicheren Feldprotokoll (inkl. Halden-Skizzen, Höhenangaben, Probenahmedatum, Fotos und GPS-Koordinaten). Sichern Sie die Kühlung der Proben während des Transports zum akkreditierten Umweltlabor.',
+                          desc: 'Dokumentieren Sie jeden Probenahmeschritt detailliert in einem schriftlichen, fälschungssicheren Feldprotokoll (inkl. Halden-Skizzen, Höhenangaben, Probenahmedatum, Fotos und GPS-Koordinaten). Sichern Sie die Kühlung der Proben während des Transports zum akkreditierten Umweltlabor.',
                           ref: 'DIN 19698-1 Abs. 8'
                         }
                       ].map((item) => (
@@ -2809,13 +2809,13 @@ export default function Abfaelle() {
                         {
                           step: 2,
                           title: 'Gefährdungsbeurteilung &amp; behördliche Arbeitsanzeige',
-                          desc: 'Erstelle vor Ausführungsbeginn eine Gefährdungsbeurteilung. Bei Asbestsanierungen (TRGS 519) oder Arbeiten in kontaminierten Bereichen (TRGS 524) ist die Baustelle mindestens 14 Tage vor Arbeitsbeginn der Gewerbeaufsicht und der Berufsgenossenschaft (BG BAU) anzuzeigen.',
+                          desc: 'Erstellen Sie vor Ausführungsbeginn eine Gefährdungsbeurteilung. Bei Asbestsanierungen (TRGS 519) oder Arbeiten in kontaminierten Bereichen (TRGS 524) ist die Baustelle mindestens 14 Tage vor Arbeitsbeginn der Gewerbeaufsicht und der Berufsgenossenschaft (BG BAU) anzuzeigen.',
                           ref: 'GefStoffV / TRGS 519 Abs. 3'
                         },
                         {
                           step: 3,
                           title: 'Personelle Sachkunde &amp; Fachbetriebsnachweis',
-                          desc: 'Für Sanierungsarbeiten müssen sachkundige Aufsichtspersonen benannt werden. Stelle sicher, dass für Asbestarbeiten die Sachkunde nach TRGS 519 (Anlage 3 für Großbaustellen, Anlage 4 für Arbeiten geringen Umfanges) und für kontaminierte Bereiche nach TRGS 524 vorliegt.',
+                          desc: 'Für Sanierungsarbeiten müssen sachkundige Aufsichtspersonen benannt werden. Stellen Sie sicher, dass für Asbestarbeiten die Sachkunde nach TRGS 519 (Anlage 3 für Großbaustellen, Anlage 4 für Arbeiten geringen Umfanges) und für kontaminierte Bereiche nach TRGS 524 vorliegt.',
                           ref: 'TRGS 519 Abs. 2.7 / TRGS 524'
                         },
                         {

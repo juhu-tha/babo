@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -292,7 +293,7 @@ export default function Statistik() {
         lowerBound = mean - gCrit * stdDev;
         upperBound = mean + gCrit * stdDev;
         isOutlierFn = (v) => v < lowerBound || v > upperBound;
-        thresholdDesc = `Grubbs G > ${gCrit}`;
+        thresholdDesc = `Grubbs G > ${formatDeWert(gCrit)}`;
         formula = '\\mu \\pm G_{crit} \\cdot \\sigma';
       }
     }
@@ -417,7 +418,7 @@ export default function Statistik() {
     for (let i = 0; i < binCount; i++) {
       const binStart = min + i * binWidth;
       const binEnd = binStart + binWidth;
-      labels[i] = `${binStart.toFixed(1)} - ${binEnd.toFixed(1)}`;
+      labels[i] = `${formatDeZahl(binStart, 1)} - ${formatDeZahl(binEnd, 1)}`;
       
       statValues.forEach(v => {
         if (v >= binStart && (v < binEnd || (i === binCount - 1 && v <= binEnd))) {
@@ -527,7 +528,7 @@ export default function Statistik() {
               </h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            <strong>Anleitung:</strong> Ziehe die kreisförmigen Proben (P1 bis P6) <strong>direkt im Diagramm</strong> nach links/rechts, nutze die Zylinderschieberegler darunter oder schalte zwischen der <strong>Dichte-</strong> und <strong>Verteilungsfunktion</strong> um!
+            <strong>Anleitung:</strong> Ziehen Sie die kreisförmigen Proben (P1 bis P6) <strong>direkt im Diagramm</strong> nach links/rechts, nutzen Sie die Zylinderschieberegler darunter oder schalten Sie zwischen der <strong>Dichte-</strong> und <strong>Verteilungsfunktion</strong> um!
           </p>
         </div>
             
@@ -567,7 +568,7 @@ export default function Statistik() {
                 Glocken- &amp; Verteilungsfunktionen der Normalverteilung (MPa)
               </span>
               <span className="text-[9.5px] font-semibold text-text-main/60 italic font-mono select-none">
-                Klicken &amp; Ziehe die Messpunkte
+                Klicken &amp; Ziehen Sie die Messpunkte
               </span>
             </div>
             <div className="w-full max-w-[500px] aspect-[500/145] relative">
@@ -636,7 +637,7 @@ export default function Statistik() {
                         className="transition-all duration-300 select-none"
                         opacity={hoveredMetric === 'stddev' || hoveredMetric === 'cv' ? 1 : 0.6}
                       >
-                        Streuung (μ ± s): {lowerS.toFixed(1)}–{upperS.toFixed(1)} MPa
+                        Streuung (μ ± s): {formatDeZahl(lowerS, 1)}–{formatDeZahl(upperS, 1)} MPa
                       </text>
                     </g>
                   );
@@ -681,7 +682,7 @@ export default function Statistik() {
                   <g key={tick} className="opacity-80">
                     <line x1={getSgX(tick)} y1={115} x2={getSgX(tick)} y2={121} stroke="#64748b" strokeWidth={1} />
                     <text x={getSgX(tick)} y={133} fontSize={9} fontFamily="monospace" textAnchor="middle" fill="#334155">
-                      {tick}
+                      {formatDeWert(tick)}
                     </text>
                   </g>
                 ))}
@@ -716,7 +717,7 @@ export default function Statistik() {
                         textAnchor={medianX > getSgX(intStats.mean) ? "start" : "end"}
                         className="transition-all duration-300 select-none"
                       >
-                        Median: {intStats.median.toFixed(1)}
+                        Median: {formatDeZahl(intStats.median, 1)}
                       </text>
                     </g>
                   );
@@ -752,7 +753,7 @@ export default function Statistik() {
                         textAnchor="middle"
                         className="transition-all duration-300 select-none"
                       >
-                        μ = {intStats.mean.toFixed(1)} MPa
+                        μ = {formatDeZahl(intStats.mean, 1)} MPa
                       </text>
                     </g>
                   );
@@ -814,7 +815,7 @@ export default function Statistik() {
                         fontWeight="bold"
                         className="select-none pointer-events-none transition-all"
                       >
-                        P{idx + 1}({v.toFixed(0)})
+                        P{idx + 1}({formatDeZahl(v, 0)})
                       </text>
                     </g>
                   );
@@ -847,7 +848,7 @@ export default function Statistik() {
                     </div>
                     {/* Measurement label */}
                     <div className="z-10 text-[9.5px] font-mono font-bold text-stone-900 drop-shadow mb-1 whitespace-nowrap bg-white/75 px-1 rounded">
-                      {v.toFixed(0)} <span className="text-[7.5px]">MPa</span>
+                      {formatDeZahl(v, 0)} <span className="text-[7.5px]">MPa</span>
                     </div>
                   </div>
                   {/* Slider */}
@@ -888,7 +889,7 @@ export default function Statistik() {
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px]">μ</div>
                 <h4 className="font-bold text-xs text-emerald-950">Mittelwert (Arithmetisches Mittel)</h4>
-                <span className="font-mono text-xs font-bold text-emerald-600 ml-auto">{intStats.mean.toFixed(2)} MPa</span>
+                <span className="font-mono text-xs font-bold text-emerald-600 ml-auto">{formatDeZahl(intStats.mean, 2)} MPa</span>
               </div>
               <FormulaText text="\mu = \frac{1}{n} \sum_{i=1}^{n} x_i" />
               <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5">
@@ -910,7 +911,7 @@ export default function Statistik() {
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-blue-600 text-white flex items-center justify-center font-bold text-[10px]">M</div>
                 <h4 className="font-bold text-xs text-blue-950">Median (Zentralwert)</h4>
-                <span className="font-mono text-xs font-bold text-blue-600 ml-auto">{intStats.median.toFixed(1)} MPa</span>
+                <span className="font-mono text-xs font-bold text-blue-600 ml-auto">{formatDeZahl(intStats.median, 1)} MPa</span>
               </div>
               <div className="text-[9.5px] text-stone-500 font-mono mb-1 bg-stone-100 px-1.5 py-0.5 rounded inline-block">
                 Sortierte Messreihe: {intStats.sorted.map(x => x.toFixed(0)).join(', ')}
@@ -933,7 +934,7 @@ export default function Statistik() {
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-amber-600 text-white flex items-center justify-center font-bold text-[10px]">s</div>
                 <h4 className="font-bold text-xs text-amber-950">Standardabweichung (Streuungsbreite)</h4>
-                <span className="font-mono text-xs font-bold text-amber-600 ml-auto">s = {intStats.stdDev.toFixed(2)} MPa</span>
+                <span className="font-mono text-xs font-bold text-amber-600 ml-auto">s = {formatDeZahl(intStats.stdDev, 2)} MPa</span>
               </div>
               <FormulaText text="s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \mu)^2}" />
               <p className="text-[11px] text-slate-605 leading-relaxed mt-1.5">
@@ -954,7 +955,7 @@ export default function Statistik() {
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-5 h-5 rounded bg-indigo-650 text-white flex items-center justify-center font-bold text-[10px]">V</div>
                 <h4 className="font-bold text-xs text-indigo-950">Variationskoeffizient (Var.Koeff.)</h4>
-                <span className="font-mono text-xs font-bold text-indigo-600 ml-auto">V = {intStats.cv.toFixed(1)} %</span>
+                <span className="font-mono text-xs font-bold text-indigo-600 ml-auto">V = {formatDeZahl(intStats.cv, 1)} %</span>
               </div>
               <FormulaText text="V = \frac{s}{\mu} \cdot 100\,\%" />
               <p className="text-[11px] text-slate-605 leading-relaxed mt-1.5">
@@ -976,9 +977,9 @@ export default function Statistik() {
             'DIN EN 1990:2023-11: Eurocode - Grundlagen der Tragwerksplanung, Anhang D: Bemessung mit Hilfe von Versuchen'
           ]}
           regelwerke={[
-            { title: 'DIN EN 1990:2023-11 Anhang D (Versuchsgestützte Bemessung und statistische Auswertung)', url: 'https://www.dinmedia.de/' },
+            { title: 'DIN EN 1990:2023-11 Anhang D (Versuchsgestützte Bemessung und statistische Auswertung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
             { title: 'ISO 2394:2015 (General principles on reliability for structures)', url: 'https://www.iso.org/' },
-            { title: 'DIN ISO 12491:2000-09 (Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen)', url: 'https://www.dinmedia.de/' }
+            { title: 'DIN ISO 12491:2000-09 (Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+12491' }
           ]}
           formeln={[
             {
@@ -1060,7 +1061,7 @@ export default function Statistik() {
                   className="w-full p-2 border border-home-grau/30 rounded-lg bg-off-white text-sm"
                 >
                   <option value="2sigma">± 2σ (Standardabweichung)</option>
-                  <option value="boxplot">Boxplot (1.5 IQR)</option>
+                  <option value="boxplot">Boxplot (1,5 IQR)</option>
                   <option value="grubbs">Grubbs-Test (vereinfacht)</option>
                 </select>
               </div>
@@ -1117,7 +1118,7 @@ export default function Statistik() {
                       <div className="grid grid-cols-5 gap-2 mt-4">
                         {statValues.map((val, idx) => (
                           <div key={idx} className="p-2 text-center rounded-md border bg-off-white border-home-grau/30 text-text-main text-xs">
-                            {val?.toFixed(1) ?? '-'}
+                            {formatDeZahl(val, 1) ?? '-'}
                           </div>
                         ))}
                       </div>
@@ -1133,7 +1134,7 @@ export default function Statistik() {
                                 <span>Formel:</span> <FormulaText text={stats.formula} />
                               </div>
                               <div className="text-xs font-bold text-torch-red">
-                                Grenzwerte: {stats.lowerBound.toFixed(1)} / {stats.upperBound.toFixed(1)}
+                                Grenzwerte: {formatDeZahl(stats.lowerBound, 1)} / {formatDeZahl(stats.upperBound, 1)}
                               </div>
                             </div>
                           )}
@@ -1143,7 +1144,7 @@ export default function Statistik() {
                             const isOutlier = val !== undefined ? stats.isOutlierFn(val) : false;
                             return (
                               <div key={idx} className={`p-2 text-center rounded-md border text-sm font-medium ${isOutlier ? 'bg-torch-red/10 border-torch-red text-torch-red' : 'bg-white border-home-grau/30 text-text-main'}`}>
-                                {val?.toFixed(1) ?? '-'}
+                                {formatDeZahl(val, 1) ?? '-'}
                               </div>
                             );
                           })}
@@ -1158,19 +1159,19 @@ export default function Statistik() {
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
                           <div className="text-xs text-home-grau font-bold uppercase">Mittelwert (μ)</div>
-                          <div className="text-lg font-bold text-text-main">{stats.mean.toFixed(1)}</div>
+                          <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.mean, 1)}</div>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
                           <div className="text-xs text-home-grau font-bold uppercase">Median</div>
-                          <div className="text-lg font-bold text-text-main">{stats.median.toFixed(1)}</div>
+                          <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.median, 1)}</div>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
                           <div className="text-xs text-home-grau font-bold uppercase">Std.Abw. (σ)</div>
-                          <div className="text-lg font-bold text-text-main">{stats.stdDev.toFixed(2)}</div>
+                          <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.stdDev, 2)}</div>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
                           <div className="text-xs text-home-grau font-bold uppercase">Var.Koeff. (V)</div>
-                          <div className="text-lg font-bold text-text-main">{stats.cv.toFixed(1)} %</div>
+                          <div className="text-lg font-bold text-text-main">{formatDeZahl(stats.cv, 1)} %</div>
                         </div>
                       </div>
 
@@ -1210,18 +1211,18 @@ export default function Statistik() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div>
                             <div className="text-xs text-black font-bold uppercase">Bereinigter Mittelwert</div>
-                            <div className="text-xl font-bold text-text-main">{stats.meanClean.toFixed(1)}</div>
-                            <div className="text-xs text-black mt-1">n = {stats.nClean}</div>
+                            <div className="text-xl font-bold text-text-main">{formatDeZahl(stats.meanClean, 1)}</div>
+                            <div className="text-xs text-black mt-1">n = {formatDeWert(stats.nClean)}</div>
                           </div>
                           <div>
                             <div className="text-xs text-black font-bold uppercase">Charakt. Wert (X_k)</div>
-                            <div className="text-xl font-bold text-fuchsia-600">{stats.xk.toFixed(1)}</div>
-                            <div className="text-xs text-black mt-1">5%-Fraktil (k_n = {stats.kn})</div>
+                            <div className="text-xl font-bold text-fuchsia-600">{formatDeZahl(stats.xk, 1)}</div>
+                            <div className="text-xs text-black mt-1">5%-Fraktil (k_n = {formatDeWert(stats.kn)})</div>
                           </div>
                           <div>
                             <div className="text-xs text-black font-bold uppercase">Bemessungswert (X_d)</div>
-                            <div className="text-xl font-bold text-torch-red">{stats.xd.toFixed(1)}</div>
-                            <div className="text-xs text-black mt-1">γ_M = {stats.gammaM}</div>
+                            <div className="text-xl font-bold text-torch-red">{formatDeZahl(stats.xd, 1)}</div>
+                            <div className="text-xs text-black mt-1">γ_M = {formatDeWert(stats.gammaM)}</div>
                           </div>
                         </div>
                       </div>
@@ -1245,8 +1246,8 @@ export default function Statistik() {
           'Wendehorst Bautechnische Zahlentafeln: Statistische Auswertungen und 5%-Fraktilwerte'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN ISO 2859-1 (Annahmestichprobenprüfung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN ISO 2859-1 (Annahmestichprobenprüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+2859-1' }
         ]}
         formeln={[
           {

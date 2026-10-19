@@ -42,7 +42,10 @@ export default function DaemmungVergleich() {
               
               {/* Temperaturkurve */}
               <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-                <path d="M 0 80 L 33% 80 L 66% 20 L 100% 20" fill="none" stroke="#A3113E" strokeWidth="3" />
+                {/* SVG-Pfade akzeptieren keine %-Koordinaten → Linienzüge */}
+                <line x1="0" y1="80" x2="33%" y2="80" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
+                <line x1="33%" y1="80" x2="66%" y2="20" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
+                <line x1="66%" y1="20" x2="100%" y2="20" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
                 <circle cx="33%" cy="80" r="4" fill="#A3113E" />
                 <circle cx="66%" cy="20" r="4" fill="#A3113E" />
               </svg>
@@ -97,7 +100,10 @@ export default function DaemmungVergleich() {
               
               {/* Temperaturkurve */}
               <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-                <path d="M 0 80 L 33% 80 L 66% 80 L 100% 20" fill="none" stroke="#A3113E" strokeWidth="3" />
+                {/* SVG-Pfade akzeptieren keine %-Koordinaten → Linienzüge */}
+                <line x1="0" y1="80" x2="33%" y2="80" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
+                <line x1="33%" y1="80" x2="66%" y2="80" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
+                <line x1="66%" y1="80" x2="100%" y2="20" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
                 <circle cx="66%" cy="80" r="4" fill="#A3113E" />
                 <circle cx="100%" cy="20" r="4" fill="#A3113E" />
               </svg>
@@ -158,7 +164,7 @@ export default function DaemmungVergleich() {
           'Willems, W. M. (2018): Lehrbuch der Bauphysik (8. Auflage, Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-3 (Klimabedingter Feuchteschutz - Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 4108-3 (Klimabedingter Feuchteschutz - Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
           { title: 'WTA-Merkblatt 6-4 (Innendämmung nach WTA I: Planungsleitfaden)', url: 'https://www.wta-international.org/' },
           { title: 'WTA-Merkblatt 6-5 (Innendämmung nach WTA II: Nachweis von Innendämmsystemen mittels rechnerischer Simulation)', url: 'https://www.wta-international.org/' }
         ]}
@@ -169,8 +175,8 @@ export default function DaemmungVergleich() {
             quelle: 'DIN 4108-2 / DIN 4108-3'
           },
           {
-            formel: 'f_{Rsi} = \\frac{\\theta_{si} - T_e}{T_i - T_e} \\ge 0.70',
-            erklaerung: 'Temperaturfaktor f_Rsi an der ungünstigsten Stelle zur Vermeidung von Schimmelpilzwachstum (entspricht ca. 12.6 °C Oberflächentemperatur bei 20 °C Innen- und -5 °C Außentemperatur).',
+            formel: 'f_{Rsi} = \\frac{\\theta_{si} - T_e}{T_i - T_e} \\ge 0{,}70',
+            erklaerung: 'Temperaturfaktor f_Rsi an der ungünstigsten Stelle zur Vermeidung von Schimmelpilzwachstum (entspricht ca. 12,6 °C Oberflächentemperatur bei 20 °C Innen- und -5 °C Außentemperatur).',
             quelle: 'DIN 4108-2 Mindestwärmeschutz'
           }
         ]}

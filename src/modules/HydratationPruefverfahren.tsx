@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -211,7 +212,7 @@ export default function HydratationPruefverfahren() {
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
                     <span>Frischbeton-Temp. (T_frisch)</span>
-                    <span className="text-shiraz font-mono">{freshTemp} °C</span>
+                    <span className="text-shiraz font-mono">{formatDeWert(freshTemp)} °C</span>
                   </div>
                   <input
                     type="range" min={5} max={35} step={1}
@@ -228,7 +229,7 @@ export default function HydratationPruefverfahren() {
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
                     <span>Umgebungstemp. (T_umg)</span>
-                    <span className="text-shiraz font-mono">{ambientTemp} °C</span>
+                    <span className="text-shiraz font-mono">{formatDeWert(ambientTemp)} °C</span>
                   </div>
                   <input
                     type="range" min={5} max={30} step={1}
@@ -242,7 +243,7 @@ export default function HydratationPruefverfahren() {
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
                     <span>Fasergehalt (PP / Stahl)</span>
-                    <span className="text-shiraz font-mono">{fiberContent} kg/m³</span>
+                    <span className="text-shiraz font-mono">{formatDeWert(fiberContent)} kg/m³</span>
                   </div>
                   <input
                     type="range" min={0} max={60} step={5}
@@ -259,7 +260,7 @@ export default function HydratationPruefverfahren() {
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase tracking-wider">
                     <span>Rahmenfesselungsgrad (restraint stiffness)</span>
-                    <span className="text-shiraz font-mono">{stiffnessFrame} %</span>
+                    <span className="text-shiraz font-mono">{formatDeWert(stiffnessFrame)} %</span>
                   </div>
                   <input
                     type="range" min={30} max={100} step={5}
@@ -270,7 +271,7 @@ export default function HydratationPruefverfahren() {
                   <div className="text-[10px] text-slate-500">
                     {stiffnessFrame === 100 
                       ? 'Starrer Stahlrahmen (100% Einspannung; maximaler Zwang)' 
-                      : `Teilnachgiebiger Rahmen (${stiffnessFrame}% Festhaltungsgrad)`}
+                      : `Teilnachgiebiger Rahmen (${formatDeWert(stiffnessFrame)}% Festhaltungsgrad)`}
                   </div>
                 </div>
 
@@ -299,7 +300,7 @@ export default function HydratationPruefverfahren() {
                   </h4>
                   <ul className="list-disc pl-4 space-y-1.5 text-text-main/80 text-[11px]">
                     <li><strong>RILEM TC 119-TCE / TC 195-ATG:</strong> Internationale Empfehlungen für standardisierte Zwangsprüfrahmen (Cracking Frames) zur Bestimmung thermo-mechanischer Werkstoffkennwerte.</li>
-                    <li><strong>DAfStb-Richtlinie „Massige Bauteile“:</strong> Regelt die messtechnische Einordnung für Bauteile mit einer kleinsten Abmessung <InlineMath math="d \ge 0.80\,\text{m}" /> zur Rissvermeidung.</li>
+                    <li><strong>DAfStb-Richtlinie „Massige Bauteile“:</strong> Regelt die messtechnische Einordnung für Bauteile mit einer kleinsten Abmessung <InlineMath math="d \ge 0{,}80\,\text{m}" /> zur Rissvermeidung.</li>
                     <li><strong>Soll-Steifigkeit:</strong> Der Prüfrahmen muss eine Dehnsteifigkeit von mindestens <InlineMath math="500\,\text{kN/mm}" /> aufweisen, um starre Randbedingungen abzubilden.</li>
                     <li><strong>Temperatursimulation:</strong> Prüfungen werden entweder temperaturgeregelt (z.B. Nachfahren eines adiabatischen Hydratationsverlaufs im Kern) oder isotherm bei <InlineMath math="20\,^{\circ}\text{C}" /> durchgeführt.</li>
                   </ul>
@@ -332,13 +333,13 @@ export default function HydratationPruefverfahren() {
                 <div className="grid grid-cols-2 gap-4 mt-3">
                   <div>
                     <span className="text-xs opacity-75 block">Maximaltemperatur</span>
-                    <span className="text-xl font-bold font-mono">{reissrahmenSimData.maxTemp.toFixed(1)} °C</span>
+                    <span className="text-xl font-bold font-mono">{formatDeZahl(reissrahmenSimData.maxTemp, 1)} °C</span>
                   </div>
                   <div>
                     <span className="text-xs opacity-75 block">Status Rissereignis</span>
                     <span className="text-xl font-bold font-mono">
                       {reissrahmenSimData.crackedHour !== -1 
-                        ? `Nach t = ${reissrahmenSimData.crackedHour} Std.` 
+                        ? `Nach t = ${formatDeWert(reissrahmenSimData.crackedHour)} Std.` 
                         : 'Kein Riss (72h)'}
                     </span>
                   </div>
@@ -346,7 +347,7 @@ export default function HydratationPruefverfahren() {
                 
                 <p className="text-xs mt-3 opacity-90 leading-relaxed border-t border-black/10 pt-3">
                   {reissrahmenSimData.crackedHour !== -1 
-                    ? `Der Beton riss frühzeitig infolge hoher Hydratationstemperatur und unzureichender Kriechrelaxation. Tipp: Reduziere die Frischbetontemperatur oder wähle einen langsameren LH-Zement (z.B. CEM III/B).`
+                    ? `Der Beton riss frühzeitig infolge hoher Hydratationstemperatur und unzureichender Kriechrelaxation. Tipp: Reduzieren Sie die Frischbetontemperatur oder wählen Sie einen langsameren LH-Zement (z.B. CEM III/B).`
                     : `Hervorragend! Die induzierten Zugspannungen blieben im gesamten Zeitlauf sicher unterhalb der Zugfestigkeitslinie. Die Kombination aus geringerer Wärme und hohem viskoelastischen Kriechen verhinderte Rissbildung.`
                   }
                 </p>
@@ -379,7 +380,7 @@ export default function HydratationPruefverfahren() {
                       return (
                         <g key={hr}>
                           <line x1={posX} y1="220" x2={posX} y2="223" stroke="#888888" strokeWidth="1" />
-                          <text x={posX} y="235" fontSize="8" textAnchor="middle" fill="#64748b" className="font-mono">{hr}h</text>
+                          <text x={posX} y="235" fontSize="8" textAnchor="middle" fill="#64748b" className="font-mono">{formatDeWert(hr)}h</text>
                         </g>
                       );
                     })}
@@ -391,7 +392,7 @@ export default function HydratationPruefverfahren() {
                       return (
                         <g key={stress}>
                           <line x1="37" y1={posY} x2="40" y2={posY} stroke="#888888" strokeWidth="1" />
-                          <text x="32" y={posY + 3} fontSize="8" textAnchor="end" fill="#64748b" className="font-mono">{stress} MPa</text>
+                          <text x="32" y={posY + 3} fontSize="8" textAnchor="end" fill="#64748b" className="font-mono">{formatDeWert(stress)} MPa</text>
                         </g>
                       );
                     })}
@@ -402,7 +403,7 @@ export default function HydratationPruefverfahren() {
                       return (
                         <g key={temp}>
                           <line x1="480" y1={posY} x2="483" y2={posY} stroke="#888888" strokeWidth="1" />
-                          <text x="487" y={posY + 3} fontSize="8" textAnchor="start" fill="#d97706" className="font-mono">{temp}°C</text>
+                          <text x="487" y={posY + 3} fontSize="8" textAnchor="start" fill="#d97706" className="font-mono">{formatDeWert(temp)}°C</text>
                         </g>
                       );
                     })}
@@ -464,7 +465,7 @@ export default function HydratationPruefverfahren() {
                               <circle cx={cx} cy={cy} r="4" fill="#ef4444" />
                               {/* Crack flash icon or line */}
                               <path d={`M ${cx} ${cy - 20} L ${cx} ${cy + 30}`} stroke="#ef4444" strokeWidth="1.5" strokeDasharray="2" />
-                              <text x={cx + 7} y={cy - 10} fontSize="9" fill="#991b1b" fontWeight="bold">Risszeitpunkt ({reissrahmenSimData.crackedHour} h)</text>
+                              <text x={cx + 7} y={cy - 10} fontSize="9" fill="#991b1b" fontWeight="bold">Risszeitpunkt ({formatDeWert(reissrahmenSimData.crackedHour)} h)</text>
                             </>
                           );
                         })()}
@@ -504,7 +505,7 @@ export default function HydratationPruefverfahren() {
                   
                   <div className="bg-[#FCF8F2] p-4 rounded-xl border border-scratch/30 text-xs">
                     <span className="font-bold block text-shiraz mb-1">Prüfungsaufbau Schwindrinne:</span>
-                    Eine Gussform (oft u-förmiges Profil mit PTFE-Antihaftfolie, Länge meist 1.0 m) wird mit Frischbeton befüllt. 
+                    Eine Gussform (oft u-förmiges Profil mit PTFE-Antihaftfolie, Länge meist 1,0 m) wird mit Frischbeton befüllt. 
                     Am festen Anschlag lagert eine Ankerplatte, während am entgegengesetzten freien Ende eine Ankerplatte mit einem hochempfindlichen **Wegaufnehmer (LVDT-Taster)** verbunden ist.
                     Die Längenänderung wird kontinuierlich mit einer Auflösung von <InlineMath math="< 1\,\mu\text{m}" /> aufgezeichnet.
                   </div>
@@ -638,9 +639,9 @@ export default function HydratationPruefverfahren() {
           'Zementchemie: Reaktionsmechanismen der Hydratationsphasen, Prof. Dr. Stark, Bauhaus-Universität Weimar'
         ]}
         regelwerke={[
-          { title: 'DIN EN 196-9 (Bestimmung der Hydratationswärme - Teil-adiabatisches Verfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 196-11 (Bestimmung der Hydratationswärme - Isothermes Konduktionskalorimeter-Verfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 196-8 (Bestimmung der Hydratationswärme - Lösungswärmeverfahren)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 196-9 (Bestimmung der Hydratationswärme - Teil-adiabatisches Verfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-9' },
+          { title: 'DIN EN 196-11 (Bestimmung der Hydratationswärme - Isothermes Konduktionskalorimeter-Verfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-11' },
+          { title: 'DIN EN 196-8 (Bestimmung der Hydratationswärme - Lösungswärmeverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-8' },
           { title: 'WTA-Merkblatt 8-10 (Schwinden von Beton - Messverfahren)', url: 'https://www.wta-gmbh.de/' },
           { title: 'RILEM TC 119-TCE / 195-ATG (Testing conditions for Cracking Frames)', url: 'https://www.rilem.net/' },
           { title: 'DAfStb-Richtlinie „Massige Bauteile aus Beton“', url: 'https://www.dafstb.de/' }

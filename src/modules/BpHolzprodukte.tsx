@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Layers, Calculator, Info, Trees, HelpCircle, ArrowRight, CheckCircle2, AlertTriangle, Play, RefreshCw, Star, Info as FactIcon, BookOpen, ShieldAlert } from 'lucide-react';
@@ -98,7 +99,7 @@ const woodProducts: WoodProductType[] = [
       'Kragarme und aussteifende Deckenscheiben',
       'Aufstockungen im urbanen Raum (geringeres Gewicht als Beton)'
     ],
-    dimensions: 'Plattenbreiten bis 3.5 m, Längen bis 16 m, Stärken 60-350 mm'
+    dimensions: 'Plattenbreiten bis 3,5 m, Längen bis 16 m, Stärken 60-350 mm'
   },
   {
     id: 'lvl',
@@ -125,7 +126,7 @@ const woodProducts: WoodProductType[] = [
       'Schalungsplatten und Gerüstbohlen',
       'Gurtmaterial für I-Beams (Stegträger)'
     ],
-    dimensions: 'Dicken 21-75 mm, Breiten bis 1.8 m, Längen bis 20m+'
+    dimensions: 'Dicken 21-75 mm, Breiten bis 1,8 m, Längen bis 20m+'
   }
 ];
 
@@ -367,7 +368,7 @@ export default function BpHolzprodukte() {
             </div>
             <div className="bg-slate-50 px-3 py-1.5 rounded-lg border border-home-grau/10 text-right">
               <span className="text-[10px] text-text-main/40 block leading-tight">Typisches Biege-f_m,k</span>
-              <span className="text-sm font-bold text-slate-800 font-mono">{selectedWood.f_mk} N/mm²</span>
+              <span className="text-sm font-bold text-slate-800 font-mono">{formatDeWert(selectedWood.f_mk)} N/mm²</span>
             </div>
           </div>
 
@@ -375,15 +376,15 @@ export default function BpHolzprodukte() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
               <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Dichte (ρ_k)</span>
-              <span className="text-base font-bold font-mono text-slate-800">~{selectedWood.density} kg/m³</span>
+              <span className="text-base font-bold font-mono text-slate-800">~{formatDeWert(selectedWood.density)} kg/m³</span>
             </div>
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
               <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">E-Modul (E_mean)</span>
-              <span className="text-base font-bold font-mono text-slate-800">{selectedWood.eModulus.toLocaleString()} MPa</span>
+              <span className="text-base font-bold font-mono text-slate-800">{formatDeWert(selectedWood.eModulus)} MPa</span>
             </div>
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
               <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Schub-f_v,k</span>
-              <span className="text-base font-bold font-mono text-slate-800">{selectedWood.f_vk.toFixed(1)} N/mm²</span>
+              <span className="text-base font-bold font-mono text-slate-800">{formatDeZahl(selectedWood.f_vk, 1)} N/mm²</span>
             </div>
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
               <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Liefermaße</span>
@@ -456,7 +457,7 @@ export default function BpHolzprodukte() {
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
                 <label className="text-text-main">Spannweite L:</label>
-                <span className="text-shiraz font-mono">{span.toFixed(2)} m</span>
+                <span className="text-shiraz font-mono">{formatDeZahl(span, 2)} m</span>
               </div>
               <input 
                 type="range" 
@@ -472,7 +473,7 @@ export default function BpHolzprodukte() {
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
                 <label className="text-text-main">Achsabstand der Balken s:</label>
-                <span className="text-shiraz font-mono">{(spacing * 100).toFixed(1)} cm</span>
+                <span className="text-shiraz font-mono">{formatDeZahl((spacing * 100), 1)} cm</span>
               </div>
               <input 
                 type="range" 
@@ -488,7 +489,7 @@ export default function BpHolzprodukte() {
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
                 <label className="text-text-main">Einfluss-Flächenlast q_k:</label>
-                <span className="text-shiraz font-mono">{loadk.toFixed(1)} kN/m²</span>
+                <span className="text-shiraz font-mono">{formatDeZahl(loadk, 1)} kN/m²</span>
               </div>
               <input 
                 type="range" 
@@ -524,7 +525,7 @@ export default function BpHolzprodukte() {
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
                 <label className="text-text-main">Balkenbreite b:</label>
-                <span className="text-shiraz font-mono">{beamWidth} mm</span>
+                <span className="text-shiraz font-mono">{formatDeWert(beamWidth)} mm</span>
               </div>
               <input 
                 type="range" 
@@ -540,7 +541,7 @@ export default function BpHolzprodukte() {
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
                 <label className="text-text-main">Balkenhöhe h:</label>
-                <span className="text-shiraz font-mono">{beamHeight} mm</span>
+                <span className="text-shiraz font-mono">{formatDeWert(beamHeight)} mm</span>
               </div>
               <input 
                 type="range" 
@@ -572,7 +573,7 @@ export default function BpHolzprodukte() {
                   <div className="flex justify-between mb-0.5">
                     <span className="font-sans font-semibold text-text-main/80">1. Biegespannung (ULS):</span>
                     <span className={`font-bold ${bendingUtilization > 100 ? 'text-red-700' : 'text-slate-700'}`}>
-                      {bendingUtilization.toFixed(0)}%
+                      {formatDeZahl(bendingUtilization, 0)}%
                     </span>
                   </div>
                   <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
@@ -582,7 +583,7 @@ export default function BpHolzprodukte() {
                     />
                   </div>
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
-                    σ_md = {sigma_md.toFixed(2)} N/mm² vs. f_md = {f_md.toFixed(2)} N/mm²
+                    σ_md = {formatDeZahl(sigma_md, 2)} N/mm² vs. f_md = {formatDeZahl(f_md, 2)} N/mm²
                   </span>
                 </div>
 
@@ -590,7 +591,7 @@ export default function BpHolzprodukte() {
                   <div className="flex justify-between mb-0.5">
                     <span className="font-sans font-semibold text-text-main/80">2. Schubspannung (ULS):</span>
                     <span className={`font-bold ${shearUtilization > 100 ? 'text-red-700' : 'text-slate-700'}`}>
-                      {shearUtilization.toFixed(0)}%
+                      {formatDeZahl(shearUtilization, 0)}%
                     </span>
                   </div>
                   <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
@@ -600,7 +601,7 @@ export default function BpHolzprodukte() {
                     />
                   </div>
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
-                    τ_d = {tau_d.toFixed(2)} N/mm² vs. f_vd = {f_vd.toFixed(2)} N/mm²
+                    τ_d = {formatDeZahl(tau_d, 2)} N/mm² vs. f_vd = {formatDeZahl(f_vd, 2)} N/mm²
                   </span>
                 </div>
 
@@ -608,7 +609,7 @@ export default function BpHolzprodukte() {
                   <div className="flex justify-between mb-0.5">
                     <span className="font-sans font-semibold text-text-main/80">3. Durchbiegung (SLS comfort):</span>
                     <span className={`font-bold ${deflectionUtilization > 100 ? 'text-red-700' : 'text-slate-700'}`}>
-                      {deflectionUtilization.toFixed(0)}%
+                      {formatDeZahl(deflectionUtilization, 0)}%
                     </span>
                   </div>
                   <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
@@ -618,16 +619,16 @@ export default function BpHolzprodukte() {
                     />
                   </div>
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
-                    w_inst = {w_inst.toFixed(1)} mm vs. Max (L/300) = {w_limit.toFixed(1)} mm
+                    w_inst = {formatDeZahl(w_inst, 1)} mm vs. Max (L/300) = {formatDeZahl(w_limit, 1)} mm
                   </span>
                 </div>
               </div>
             </div>
 
             <div className="pt-3 border-t border-home-grau/10 text-[10px] space-y-1 text-text-main/60 font-sans leading-relaxed">
-              <div>• Eigengewicht: <strong>{(selfWeightKN_m * 100).toFixed(0)} kg/m</strong> (~{activeMat.density} kg/m³ density)</div>
-              <div>• Teilsicherheitsbeiwerte: γ_G = 1.35, γ_Q = 1.50</div>
-              <div>• k_mod Beiwert = 0.8 / Material-γ_M = {activeMat.gammaM}</div>
+              <div>• Eigengewicht: <strong>{formatDeZahl((selfWeightKN_m * 100), 0)} kg/m</strong> (~{formatDeWert(activeMat.density)} kg/m³ density)</div>
+              <div>• Teilsicherheitsbeiwerte: γ_G = 1,35, γ_Q = 1,50</div>
+              <div>• k_mod Beiwert = 0,8 / Material-γ_M = {formatDeWert(activeMat.gammaM)}</div>
             </div>
           </div>
         </div>
@@ -699,10 +700,10 @@ export default function BpHolzprodukte() {
           'Kaufmann, H. et al.: Building with Timber.' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }, 
+          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14080' },
+          { title: 'DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15497' },
+          { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16351' }
         ]} 
         formeln={[
           { 

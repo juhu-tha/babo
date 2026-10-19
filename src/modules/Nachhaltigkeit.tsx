@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
@@ -472,7 +473,7 @@ export default function Nachhaltigkeit() {
       legend: { display: false },
       tooltip: {
         callbacks: {
-          label: (context: any) => ` ${context.raw.toFixed(2)} kg CO₂-eq`
+          label: (context: any) => ` ${formatDeZahl(context.raw, 2)} kg CO₂-eq`
         }
       }
     },
@@ -735,7 +736,7 @@ export default function Nachhaltigkeit() {
               <strong className="text-sm text-slate-900 font-bold">2. Kohlendioxid (CO₂)</strong>
             </div>
             <p className="text-xs text-slate-700 leading-relaxed">
-              Kohlendioxid dient als internationaler Referenzmaßstab der Klimawirkung mit einem Treibhauspotenzial (Global Warming Potential, <strong>GWP</strong>) von exakt <strong>1.0</strong>. 
+              Kohlendioxid dient als internationaler Referenzmaßstab der Klimawirkung mit einem Treibhauspotenzial (Global Warming Potential, <strong>GWP</strong>) von exakt <strong>1,0</strong>. 
               Mehr als die Hälfte der CO₂-Emissionen im Massivbau entsteht direkt chemisch-prozessbedingt während des Klinker-Brennens (Kalkstein-Entsäuerung im Zementwerk).
             </p>
           </div>
@@ -760,9 +761,9 @@ export default function Nachhaltigkeit() {
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { gas: 'CO₂', name: 'Kohlendioxid', factor: '1.0', units: '1.0 kg CO₂-eq', desc: 'Referenzgas' },
-              { gas: 'CH₄', name: 'Methan', factor: '29.8', units: '29.8 kg CO₂-eq', desc: 'z.B. aus Erdgas-Leitungen' },
-              { gas: 'N₂O', name: 'Distickstoffmonoxid', factor: '273.0', units: '273.0 kg CO₂-eq', desc: 'z.B. durch Dünger/Klinkerprozesse' },
+              { gas: 'CO₂', name: 'Kohlendioxid', factor: '1.0', units: '1,0 kg CO₂-eq', desc: 'Referenzgas' },
+              { gas: 'CH₄', name: 'Methan', factor: '29.8', units: '29,8 kg CO₂-eq', desc: 'z.B. aus Erdgas-Leitungen' },
+              { gas: 'N₂O', name: 'Distickstoffmonoxid', factor: '273.0', units: '273,0 kg CO₂-eq', desc: 'z.B. durch Dünger/Klinkerprozesse' },
               { gas: 'SF₆', name: 'Schwefelhexafluorid', factor: '24.300', units: '24.300 kg CO₂-eq', desc: 'stärkstes THG (z.B. Isoliergase)' }
             ].map((u, i) => (
               <div key={i} className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col justify-between hover:shadow-xs transition-shadow">
@@ -911,7 +912,7 @@ export default function Nachhaltigkeit() {
                       <div>
                         <strong className="text-xs text-slate-900 font-bold block leading-snug">{layer.mat.name}</strong>
                         <span className="text-[9px] text-slate-400 uppercase tracking-widest font-mono font-bold">
-                          {layer.mat.category} &bull; λ = {layer.mat.lambda.toFixed(3)} W/mK
+                          {layer.mat.category} &bull; λ = {formatDeZahl(layer.mat.lambda, 3)} W/mK
                         </span>
                       </div>
                     </div>
@@ -921,7 +922,7 @@ export default function Nachhaltigkeit() {
                       <div className="flex flex-col w-full">
                         <div className="flex justify-between text-[10px] text-slate-400 mb-0.5 px-0.5">
                           <span>Dicke:</span>
-                          <span className="font-mono font-bold text-shiraz">{layer.thicknessCm} cm</span>
+                          <span className="font-mono font-bold text-shiraz">{formatDeWert(layer.thicknessCm)} cm</span>
                         </div>
                         <input
                           type="range"
@@ -998,18 +999,18 @@ export default function Nachhaltigkeit() {
               <div className="grid grid-cols-2 gap-3 text-center">
                 <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/30">
                   <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wide">Gesamtstärke</span>
-                  <strong className="text-sm font-mono font-bold text-slate-900 mt-0.5 block">{computedWall.thicknessCm.toFixed(1)} cm</strong>
+                  <strong className="text-sm font-mono font-bold text-slate-900 mt-0.5 block">{formatDeZahl(computedWall.thicknessCm, 1)} cm</strong>
                 </div>
                 <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/30">
                   <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wide">Flächengewicht</span>
-                  <strong className="text-sm font-mono font-bold text-slate-900 mt-0.5 block">~ {Math.round(computedWall.totalWeightKg)} kg/m²</strong>
+                  <strong className="text-sm font-mono font-bold text-slate-900 mt-0.5 block">~ {formatDeWert(Math.round(computedWall.totalWeightKg))} kg/m²</strong>
                 </div>
               </div>
 
               {/* Thermal conductivity indicator */}
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col items-center">
                 <span className="text-[11px] text-slate-400 font-bold uppercase tracking-widest leading-none mb-1">Berechneter U-Wert</span>
-                <strong className="text-2xl font-mono text-shiraz font-bold">{computedWall.uValue.toFixed(3)} W/m²K</strong>
+                <strong className="text-2xl font-mono text-shiraz font-bold">{formatDeZahl(computedWall.uValue, 3)} W/m²K</strong>
                 
                 {/* GEG limits validation badge */}
                 <div className={`mt-2.5 px-3 py-1 text-[10px] font-bold border rounded-full text-center ${gegRating.color}`}>
@@ -1025,7 +1026,7 @@ export default function Nachhaltigkeit() {
                     Zirkularitäts-Index (MCI)
                   </span>
                   <span className="text-[10px] bg-shiraz/10 text-shiraz border border-shiraz/20 px-1.5 py-0.5 rounded font-bold font-mono">
-                    {Math.round(computedWall.effectiveCircularity)} / 100
+                    {formatDeWert(Math.round(computedWall.effectiveCircularity))} / 100
                   </span>
                 </div>
 
@@ -1044,11 +1045,11 @@ export default function Nachhaltigkeit() {
                   <div className="grid grid-cols-2 gap-2 text-[10px]">
                     <div className="bg-white p-2 rounded-lg border border-slate-200">
                       <span className="text-slate-400 block font-normal">Material-Zyklus (Inhärent):</span>
-                      <strong className="text-slate-800 font-bold font-mono mt-0.5 block">{Math.round(computedWall.inherentCircularity)}%</strong>
+                      <strong className="text-slate-800 font-bold font-mono mt-0.5 block">{formatDeWert(Math.round(computedWall.inherentCircularity))}%</strong>
                     </div>
                     <div className="bg-white p-2 rounded-lg border border-slate-200">
                       <span className="text-slate-400 block font-normal">Trennungs-Weiche (Fügung):</span>
-                      <strong className="text-slate-800 font-bold font-mono mt-0.5 block">{Math.round(computedWall.jointSeparabilityFactor * 100)}%</strong>
+                      <strong className="text-slate-800 font-bold font-mono mt-0.5 block">{formatDeWert(Math.round(computedWall.jointSeparabilityFactor * 100))}%</strong>
                     </div>
                   </div>
 
@@ -1056,7 +1057,7 @@ export default function Nachhaltigkeit() {
                     {computedWall.effectiveCircularity >= 70 ? (
                       <span className="text-slate-800 font-medium">✓ Exzellentes Design! Erleichtert das Cradle-to-Cradle Kreislaufverfahren vollends.</span>
                     ) : computedWall.effectiveCircularity >= 40 ? (
-                      <span className="text-slate-600 font-medium font-normal">⚠ Teilweise kreislauffähig. Verbessern Sie die Fügung auf "Geschraubt" oder nutze naturnah rückbaubare Rohstoffe.</span>
+                      <span className="text-slate-600 font-medium font-normal">⚠ Teilweise kreislauffähig. Verbessern Sie die Fügung auf "Geschraubt" oder nutzen Sie naturnah rückbaubare Rohstoffe.</span>
                     ) : (
                       <span className="text-shiraz font-medium font-normal">❌ Hohes Downcycling- oder Deponierisiko! Inseparable Verklebungen sabotieren künftige Erdnischen oder Recyclingkörper.</span>
                     )}
@@ -1084,9 +1085,9 @@ export default function Nachhaltigkeit() {
                   <Percent size={13} className="text-shiraz" /> GWP-Biogenic Nachweisbericht
                 </strong>
                 Mit diesem Schichtenaufbau binden die nachwachsenden Anteile rechnerisch{' '}
-                <span className="font-bold text-slate-900">{computedWall.gwpBiogenicA1A3.toFixed(1)} kg CO₂-eq/m²</span> biogenen Kohlenstoff in der Herstellungsphase. 
+                <span className="font-bold text-slate-900">{formatDeZahl(computedWall.gwpBiogenicA1A3, 1)} kg CO₂-eq/m²</span> biogenen Kohlenstoff in der Herstellungsphase. 
                 Die herstellungsbedingten fossilen Emissionen belaufen sich auf{' '}
-                <span className="font-bold text-shiraz">+{computedWall.gwpFossilA1A3.toFixed(1)} kg CO₂-eq</span>. 
+                <span className="font-bold text-shiraz">+{formatDeZahl(computedWall.gwpFossilA1A3, 1)} kg CO₂-eq</span>. 
                 Die Netto-LCA über 50 Jahre schließt die Entsorgungsemissionen und Recyclinggutschriften außerhalb der Systemgrenze voll ein.
               </div>
             </div>
@@ -1106,7 +1107,7 @@ export default function Nachhaltigkeit() {
               
               <div className="border-b border-home-grau/30 pb-2">
                 <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Gebäudekonfiguration &amp; Primärenergetik</h3>
-                <p className="text-xs text-slate-400 mt-0.5">Stelle Bausubstanz und Betriebsenergie ein, um die QNG-Jahresbilanz zu berechnen.</p>
+                <p className="text-xs text-slate-400 mt-0.5">Stellen Sie Bausubstanz und Betriebsenergie ein, um die QNG-Jahresbilanz zu berechnen.</p>
               </div>
 
               <div className="space-y-4">
@@ -1115,7 +1116,7 @@ export default function Nachhaltigkeit() {
                 <div>
                   <div className="flex justify-between text-xs text-slate-900 font-bold mb-1.5">
                     <span>Bruttogrundfläche (BGF):</span>
-                    <span className="font-mono text-shiraz">{bgf} m²</span>
+                    <span className="font-mono text-shiraz">{formatDeWert(bgf)} m²</span>
                   </div>
                   <input
                     type="range"
@@ -1208,7 +1209,7 @@ export default function Nachhaltigkeit() {
                   <div className="bg-slate-50 p-3.5 border border-home-grau/30 rounded-xl">
                     <div className="flex justify-between text-xs text-slate-900 font-bold mb-1">
                       <span>Photovoltaikanlage:</span>
-                      <span className="font-mono text-emerald-700 font-bold">{pvSizeKwp} kWp</span>
+                      <span className="font-mono text-emerald-700 font-bold">{formatDeWert(pvSizeKwp)} kWp</span>
                     </div>
                     <input
                       type="range"
@@ -1241,7 +1242,7 @@ export default function Nachhaltigkeit() {
               <div className="flex flex-col items-center">
                 <span className="text-[11px] text-slate-400 uppercase tracking-wider block font-medium">Nachweis-GWP</span>
                 <strong className="text-4xl font-mono text-shiraz font-black mt-1">
-                  {qngComputation.totalYearlyGwp.toFixed(1)}
+                  {formatDeZahl(qngComputation.totalYearlyGwp, 1)}
                 </strong>
                 <span className="text-[10px] text-slate-500 block mt-0.5">
                   kg CO₂-eq / m² BGF / Jahr
@@ -1257,11 +1258,11 @@ export default function Nachhaltigkeit() {
               <div className="w-full text-xs space-y-2 mt-2 leading-relaxed font-normal text-slate-500">
                 <div className="flex justify-between items-center text-[11px] border-b border-stone-100 pb-1.5">
                   <span className="font-bold">QNG-Premium Grenzwert:</span>
-                  <span className="font-mono bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">≤ 16.0</span>
+                  <span className="font-mono bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">≤ 16,0</span>
                 </div>
                 <div className="flex justify-between items-center text-[11px] border-b border-stone-100 pb-1.5">
                   <span className="font-bold">QNG-Plus Grenzwert:</span>
-                  <span className="font-mono bg-green-100 text-green-800 px-1.5 py-0.5 rounded font-bold">≤ 24.0</span>
+                  <span className="font-mono bg-green-100 text-green-800 px-1.5 py-0.5 rounded font-bold">≤ 24,0</span>
                 </div>
                 <div className="flex justify-between items-center text-[11px] text-slate-400">
                   <span>Projektlaufzeit Referenzwert:</span>
@@ -1319,7 +1320,7 @@ export default function Nachhaltigkeit() {
                     <CheckCircle size={16} className="text-emerald-700 shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[11px] font-bold text-emerald-900">Ausgezeichnete KfW 40 QNG-Förderfähigkeit:</strong>
-                      Dein Entwurf erzielt mit {qngComputation.totalYearlyGwp.toFixed(1)} kg CO₂-eq locker die Premium-Stufe. 
+                      Ihr Entwurf erzielt mit {formatDeZahl(qngComputation.totalYearlyGwp, 1)} kg CO₂-eq locker die Premium-Stufe. 
                       Sie erfüllen alle Anforderungen des BMWSB zur Beantragung zinsgünstiger Kredite.
                     </div>
                   </div>
@@ -1446,7 +1447,7 @@ export default function Nachhaltigkeit() {
               <div>
                 <div className="flex justify-between text-xs text-slate-900 font-bold mb-1.5">
                   <span>Aktuelle CO₂-Intensität des Betriebs (Ist-Zustand 2026):</span>
-                  <span className="font-mono text-shiraz text-sm">{crremCurrentGwp} kg CO₂e / (m²_NFA &middot; a)</span>
+                  <span className="font-mono text-shiraz text-sm">{formatDeWert(crremCurrentGwp)} kg CO₂e / (m²_NFA &middot; a)</span>
                 </div>
                 <input
                   type="range"
@@ -1499,16 +1500,16 @@ export default function Nachhaltigkeit() {
                 <div className="flex items-baseline justify-between">
                   <span className="text-xs text-slate-700">Effektive CO₂-Intensität nach Intervention:</span>
                   <strong className="text-base font-mono text-slate-900 font-extrabold">
-                    {crremResult.effectiveGwp.toFixed(1)} kg CO₂e / (m² &middot; a)
+                    {formatDeZahl(crremResult.effectiveGwp, 1)} kg CO₂e / (m² &middot; a)
                   </strong>
                 </div>
                 <div className="flex items-baseline justify-between text-xs text-slate-600">
                   <span>Zulässiger CRREM-Zielwert im Jahr 2026:</span>
-                  <span className="font-mono font-bold text-slate-800">{crremResult.target2026.toFixed(1)} kg CO₂e</span>
+                  <span className="font-mono font-bold text-slate-800">{formatDeZahl(crremResult.target2026, 1)} kg CO₂e</span>
                 </div>
                 <div className="flex items-baseline justify-between text-xs text-slate-600">
                   <span>Zulässiger CRREM-Zielwert im Jahr 2030:</span>
-                  <span className="font-mono font-bold text-slate-800">{crremResult.target2030.toFixed(1)} kg CO₂e</span>
+                  <span className="font-mono font-bold text-slate-800">{formatDeZahl(crremResult.target2030, 1)} kg CO₂e</span>
                 </div>
               </div>
 
@@ -2120,7 +2121,7 @@ export default function Nachhaltigkeit() {
                   Prüfungsrelevant:
                 </h4>
                 <p className="text-[10px] text-emerald-800/80 mt-1.5 leading-relaxed">
-                  Ökobilanzierungen sind Kernbestandteil moderner Bauingenieurs- und Projektmanagement-Thesis-Ausarbeitungen. Verwende diesen Leitfaden als strukturelles Grundgerüst.
+                  Ökobilanzierungen sind Kernbestandteil moderner Bauingenieurs- und Projektmanagement-Thesis-Ausarbeitungen. Verwenden Sie diesen Leitfaden als strukturelles Grundgerüst.
                 </p>
               </div>
             </div>
@@ -2889,7 +2890,7 @@ export default function Nachhaltigkeit() {
                   </div>
 
                   <p className="text-xs text-slate-700 leading-relaxed">
-                    Studienerfolge hängen meist davon ab, systematische Ungenauigkeiten auszuschließen. Verwende diese interaktiven Checklisten für deine Seminar- und Klausurausarbeitungen.
+                    Studienerfolge hängen meist davon ab, systematische Ungenauigkeiten auszuschließen. Verwenden Sie diese interaktiven Checklisten für Ihre Seminar- und Klausurausarbeitungen.
                   </p>
 
                   <div className="space-y-3.5">
@@ -3072,7 +3073,7 @@ export default function Nachhaltigkeit() {
                   </div>
 
                   <p className="text-xs text-slate-700 leading-relaxed">
-                    Testen Sie Ihr rechnerisches und begriffliches Geschick mit den typischen Vorlesungs- und Klausuraufgaben. Klicke auf „Lösungsweg einblenden", um die akademischen Berechnungen nachzuvollziehen.
+                    Testen Sie Ihr rechnerisches und begriffliches Geschick mit den typischen Vorlesungs- und Klausuraufgaben. Klicken Sie auf „Lösungsweg einblenden", um die akademischen Berechnungen nachzuvollziehen.
                   </p>
 
                   <div className="space-y-5">
@@ -3418,7 +3419,7 @@ export default function Nachhaltigkeit() {
                           </div>
                         </div>
                         <div className="bg-emerald-50/20 border-l-4 border-emerald-500 p-3 rounded-r-lg text-[10.5px] text-emerald-950">
-                          <span className="font-bold">Akademischer Nachweistipp:</span> Versuche stets, durch den Nachweis spezifischer Hersteller-EPDs (wie sie in IBU.data gelistet sind) die generischen Datensätze zu ersetzen. Dies mindert den rechnerischen GWP-Wert deines Gebäudes um signifikante Prozentpunkte und sichert somit leichter die KfW-KFN-Förderkredite!
+                          <span className="font-bold">Akademischer Nachweistipp:</span> Versuchen Sie stets, durch den Nachweis spezifischer Hersteller-EPDs (wie sie in IBU.data gelistet sind) die generischen Datensätze zu ersetzen. Dies mindert den rechnerischen GWP-Wert Ihres Gebäudes um signifikante Prozentpunkte und sichert somit leichter die KfW-KFN-Förderkredite!
                         </div>
                       </div>
                     )}
@@ -3649,7 +3650,7 @@ export default function Nachhaltigkeit() {
           { title: 'Bundes-Klimaschutzgesetz (KSG – Treibhausgasneutralität 2045)', url: 'https://www.gesetze-im-internet.de/ksg/' },
           { title: 'Ersatzbaustoffverordnung (EBV – Mineralische Sekundärbaustoffe)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG Kriterienkatalog)', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' }
         ]}
         formeln={[
           {

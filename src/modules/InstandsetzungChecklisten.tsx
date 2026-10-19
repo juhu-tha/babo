@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Wrench, 
@@ -458,12 +459,12 @@ export default function InstandsetzungChecklisten() {
             <div className="flex items-center gap-2">
               <span className="font-bold text-slate-900">Gesamtfortschritt Instandsetzung:</span>
               <span className="font-mono text-shiraz font-bold">
-                {totalStats.completedCount} von {totalStats.totalCount} Prüfpunkten ({totalStats.percent} %)
+                {totalStats.completedCount} von {totalStats.totalCount} Prüfpunkten ({formatDeWert(totalStats.percent)} %)
               </span>
             </div>
             <div className="flex items-center gap-2 text-[11px] text-slate-600">
               <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
-              <span>Kritische Punkte: {totalStats.criticalCompleted} / {totalStats.criticalCount}</span>
+              <span>Kritische Punkte: {formatDeWert(totalStats.criticalCompleted)} / {totalStats.criticalCount}</span>
             </div>
           </div>
           
@@ -508,12 +509,12 @@ export default function InstandsetzungChecklisten() {
 
                 <div className="mt-2 pt-2 border-t border-current/10 flex items-center justify-between text-[10px] font-mono">
                   <span className={isActive ? 'text-white/80' : 'text-slate-500'}>
-                    {prog.done}/{prog.total} erledigt
+                    {formatDeWert(prog.done)}/{formatDeWert(prog.total)} erledigt
                   </span>
                   <span className={`font-bold ${
                     prog.percent === 100 ? (isActive ? 'text-emerald-300' : 'text-emerald-600') : ''
                   }`}>
-                    {prog.percent}%
+                    {formatDeWert(prog.percent)}%
                   </span>
                 </div>
               </button>
@@ -700,9 +701,9 @@ export default function InstandsetzungChecklisten() {
         ]}
         regelwerke={[
           { title: 'TR Instandhaltung (DIBt Technische Regel Instandhaltung von Betonbauwerken Teil 1 und 2)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 1504-10 (Anwendung von Produkten und Systemen auf der Baustelle und Qualitätsüberwachung)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 1504-10 (Anwendung von Produkten und Systemen auf der Baustelle und Qualitätsüberwachung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-10' },
           { title: 'ZTV-ING Teil 3: Massivbau, Betoninstandsetzung (BASt)', url: 'https://www.bast.de/' },
-          { title: 'DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' }
         ]}
         formeln={[
           {

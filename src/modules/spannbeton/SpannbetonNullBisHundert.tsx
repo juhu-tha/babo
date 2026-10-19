@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import {
@@ -404,7 +405,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div className="text-xs text-emerald-950 space-y-2 leading-relaxed">
                   <p>
                     Spannstahl Y1860 (z. B. 7-drähtige Spannstahllitzen) besitzt eine Zugfestigkeit von <InlineMath math="f_{pk} = 1860\,\text{N/mm}^2" />. 
-                    Die zulässige Anfangsspannung beträgt nach EC2 <InlineMath math="\sigma_{pm0} = \min(0{,}75 \cdot f_{pk};\, 0{,}85 \cdot f_{p0,1k}) = 1360\,\text{N/mm}^2" />:
+                    Die zulässige Anfangsspannung beträgt nach EC2 <InlineMath math="\sigma_{pm0} = \min(0{,}75 \cdot f_{pk};\, 0{,}85 \cdot f_{p0{,}1k}) = 1360\,\text{N/mm}^2" />:
                   </p>
                   <div className="p-2 bg-white rounded border border-emerald-200 font-mono text-center">
                     <InlineMath math="\varepsilon_{p0} = \frac{\sigma_{pm0}}{E_p} = \frac{1360}{195\,000} \approx 6{,}97\,\text{‰}" />
@@ -430,14 +431,14 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   <Activity size={15} /> Interaktive Simulation: Einfluss der Betonstauchung
                 </span>
                 <span className="text-xs font-mono font-bold text-text-main">
-                  Verkürzung <InlineMath math="\Delta \varepsilon_c" />: <strong className="text-shiraz">{concreteStauchung.toFixed(2)} ‰</strong>
+                  Verkürzung <InlineMath math="\Delta \varepsilon_c" />: <strong className="text-shiraz">{formatDeZahl(concreteStauchung, 2)} ‰</strong>
                 </span>
               </div>
 
               <div>
                 <label className="block text-xs text-text-main/70 mb-1 flex justify-between font-semibold">
                   <span>Gesamte zeitabhängige Betonverkürzung (Kriechen <InlineMath math="\varepsilon_{cc}" /> + Schwinden <InlineMath math="\varepsilon_{cs}" />):</span>
-                  <span className="font-mono text-shiraz font-bold">{concreteStauchung.toFixed(2)} ‰</span>
+                  <span className="font-mono text-shiraz font-bold">{formatDeZahl(concreteStauchung, 2)} ‰</span>
                 </label>
                 <input
                   type="range"
@@ -449,9 +450,9 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   className="w-full accent-shiraz cursor-pointer"
                 />
                 <div className="flex justify-between text-[10px] text-text-main/50 font-mono mt-1">
-                  <span>0.20 ‰ (Geringe Dauerlast)</span>
+                  <span>0,20 ‰ (Geringe Dauerlast)</span>
                   <span>typisch 0,8–1,5 ‰ (ε_cs + φ·σ_c/E_cm)</span>
-                  <span>2.00 ‰ (Sehr ungünstiges Klima & hohe Dauerlast)</span>
+                  <span>2,00 ‰ (Sehr ungünstiges Klima & hohe Dauerlast)</span>
                 </div>
               </div>
 
@@ -459,7 +460,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div className="bg-red-50 p-3.5 rounded-lg border border-red-200">
                   <div className="text-[11px] font-bold text-red-900 mb-1 flex justify-between">
                     <span>Betonstahl B500</span>
-                    <span className="font-mono">{lossPercent_b500} % Verlust</span>
+                    <span className="font-mono">{formatDeWert(lossPercent_b500)} % Verlust</span>
                   </div>
                   <div className="w-full bg-red-200 h-2 rounded-full overflow-hidden mb-2">
                     <div
@@ -469,14 +470,14 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <div className="text-[11px] font-mono text-red-950 flex justify-between">
                     <span>Restspannung:</span>
-                    <strong>{remaining_b500.toFixed(0)} N/mm²</strong>
+                    <strong>{formatDeZahl(remaining_b500, 0)} N/mm²</strong>
                   </div>
                 </div>
 
                 <div className="bg-emerald-50 p-3.5 rounded-lg border border-emerald-200">
                   <div className="text-[11px] font-bold text-emerald-900 mb-1 flex justify-between">
                     <span>Spannstahl Y1860</span>
-                    <span className="font-mono">{lossPercent_y1860} % Verlust</span>
+                    <span className="font-mono">{formatDeWert(lossPercent_y1860)} % Verlust</span>
                   </div>
                   <div className="w-full bg-emerald-200 h-2 rounded-full overflow-hidden mb-2">
                     <div
@@ -486,7 +487,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <div className="text-[11px] font-mono text-emerald-950 flex justify-between">
                     <span>Restspannung:</span>
-                    <strong>{remaining_y1860.toFixed(0)} N/mm²</strong>
+                    <strong>{formatDeZahl(remaining_y1860, 0)} N/mm²</strong>
                   </div>
                 </div>
               </div>
@@ -824,7 +825,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
                     <span>Stützweite (L):</span>
-                    <span className="font-mono text-shiraz font-bold">{beamLength} m</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(beamLength)} m</span>
                   </label>
                   <input
                     type="range"
@@ -840,7 +841,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
                     <span>Eigengewicht (g):</span>
-                    <span className="font-mono text-shiraz font-bold">{deadLoad} kN/m</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(deadLoad)} kN/m</span>
                   </label>
                   <input
                     type="range"
@@ -856,7 +857,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
                     <span>Parabelstich (f):</span>
-                    <span className="font-mono text-shiraz font-bold">{(sagittaF * 100).toFixed(0)} cm</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeZahl((sagittaF * 100), 0)} cm</span>
                   </label>
                   <input
                     type="range"
@@ -874,17 +875,17 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
               <div className="grid sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Erforderliche Spannkraft</span>
-                  <span className="text-lg font-mono font-black text-shiraz">{requiredP_kN.toLocaleString()} kN</span>
-                  <span className="text-[10px] text-text-main/50 block font-mono">ca. {Math.round(requiredP_kN / 150)} Standard-Litzen</span>
+                  <span className="text-lg font-mono font-black text-shiraz">{formatDeWert(requiredP_kN)} kN</span>
+                  <span className="text-[10px] text-text-main/50 block font-mono">ca. {formatDeWert(Math.round(requiredP_kN / 150))} Standard-Litzen</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Aufwärts-Umlenkkraft (u)</span>
-                  <span className="text-lg font-mono font-black text-emerald-700">{upwardLoad_u} kN/m</span>
+                  <span className="text-lg font-mono font-black text-emerald-700">{formatDeWert(upwardLoad_u)} kN/m</span>
                   <span className="text-[10px] text-emerald-600 block font-bold">Kompensiert Eigengewicht g</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Netto-Biegemoment aus (g - u)</span>
-                  <span className="text-lg font-mono font-black text-slate-800">{netMomentMidspan} kNm</span>
+                  <span className="text-lg font-mono font-black text-slate-800">{formatDeWert(netMomentMidspan)} kNm</span>
                   <span className="text-[10px] text-slate-500 block font-mono">Reine Axialdruckkraft im Träger</span>
                 </div>
               </div>

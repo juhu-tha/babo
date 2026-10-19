@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { BlockMath, InlineMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import ModuleHistoryView from '@/src/components/ui/ModuleHistoryView';
 import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';
 
@@ -98,7 +98,7 @@ const dataholzConstructions: DataholzConstruction[] = [
       'Holzfaserdämmplatte HFD-U (160 mm)',
       'Brettsperrholz-Wandelement CLT (90 mm, 3 Schichten kreuzweise verklebt)',
       'Installationsebene unterkonstruiert mit Justierschwingen (50 mm), gedämmt mit Hanffaser',
-      'Doppelte Gipsplattenbeplankung Gipsfaser / Gipskarton (2 x 12.5 mm)'
+      'Doppelte Gipsplattenbeplankung Gipsfaser / Gipskarton (2 x 12,5 mm)'
     ]
   },
   {
@@ -131,7 +131,7 @@ const dataholzConstructions: DataholzConstruction[] = [
       'Traglattung und Konterlattung (Hinterlüftungsebene, 40/60 mm)',
       'Unterdeckplatte aus Holzfasern, wasserableitend Typ HFD-UD (35 mm)',
       'Konstruktionsvollholz-Konstruktionssparren 80/200 mm, e = 75 cm, Gefach ausgedämmt mit flexibler Holzfaser (200 mm)',
-      'Feuchtevariable Klimamembran (sd-Wert = 0.5 bis 5.0 m, proaktiv gegen sommerliche Feuchteakkumulation)',
+      'Feuchtevariable Klimamembran (sd-Wert = 0,5 bis 5,0 m, proaktiv gegen sommerliche Feuchteakkumulation)',
       'Unterkonstruktion gedämmt mit Hanfmatten (40 mm)',
       'Gipskarton-Feuerschutzplatte Typ GKF raumseitig (15 mm)'
     ]
@@ -748,12 +748,12 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <tr key={m.class} className="hover:bg-off-white/50">
                       <td className="py-2 px-3 font-bold text-text-main font-mono">{m.class}</td>
                       <td className="py-2 px-3 text-text-main/80 font-medium">{m.type}</td>
-                      <td className="py-2 px-3 font-bold text-emerald-700 font-mono">{m.f_mk} N/mm²</td>
-                      <td className="py-2 px-3 font-mono text-text-main/70">{m.f_t0k} N/mm²</td>
-                      <td className="py-2 px-3 font-mono text-text-main/70">{m.f_c0k} N/mm²</td>
-                      <td className="py-2 px-3 font-mono text-text-main/70">{m.f_vk} N/mm²</td>
-                      <td className="py-2 px-3 font-mono text-text-main/70">{m.E_0mean.toLocaleString()} N/mm²</td>
-                      <td className="py-2 px-3 font-mono text-text-main/70">{m.rho_k} kg/m³</td>
+                      <td className="py-2 px-3 font-bold text-emerald-700 font-mono">{formatDeWert(m.f_mk)} N/mm²</td>
+                      <td className="py-2 px-3 font-mono text-text-main/70">{formatDeWert(m.f_t0k)} N/mm²</td>
+                      <td className="py-2 px-3 font-mono text-text-main/70">{formatDeWert(m.f_c0k)} N/mm²</td>
+                      <td className="py-2 px-3 font-mono text-text-main/70">{formatDeWert(m.f_vk)} N/mm²</td>
+                      <td className="py-2 px-3 font-mono text-text-main/70">{formatDeWert(m.E_0mean)} N/mm²</td>
+                      <td className="py-2 px-3 font-mono text-text-main/70">{formatDeWert(m.rho_k)} kg/m³</td>
                     </tr>
                   ))}
                 </tbody>
@@ -858,7 +858,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     </div>
                     <p className="text-[11px] text-text-main/60 line-clamp-1">{c.structure}</p>
                     <div className="flex justify-between items-center text-[10px] text-text-main/40 mt-1 font-mono font-medium">
-                      <span>U-Wert: {c.uValue} W/(m²K)</span>
+                      <span>U-Wert: {formatDeWert(c.uValue)} W/(m²K)</span>
                       <span>Brand: {c.fireClass}</span>
                     </div>
                   </button>
@@ -877,7 +877,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-3 gap-2.5">
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-xs text-center">
                     <span className="text-[9px] text-text-main/40 font-bold block">Wärmeschutz (U)</span>
-                    <span className="font-mono text-xs font-black text-emerald-700 block mt-0.5">{activeConstruction.uValue} W/(m²K)</span>
+                    <span className="font-mono text-xs font-black text-emerald-700 block mt-0.5">{formatDeWert(activeConstruction.uValue)} W/(m²K)</span>
                   </div>
                   
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-xs text-center">
@@ -887,7 +887,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-xs text-center">
                     <span className="text-[9px] text-text-main/40 font-bold block">Schallschutz (Rw)</span>
-                    <span className="font-mono text-xs font-black text-blue-700 block mt-0.5">{activeConstruction.soundRating} dB</span>
+                    <span className="font-mono text-xs font-black text-blue-700 block mt-0.5">{formatDeWert(activeConstruction.soundRating)} dB</span>
                   </div>
                 </div>
 
@@ -976,7 +976,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Breite b (mm)</label>
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={shreB}
                       onChange={(e) => setShreB(Math.max(1, parseInt(e.target.value) || 0))}
                       className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white font-semibold"
@@ -985,7 +985,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Höhe h (mm)</label>
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={shreH}
                       onChange={(e) => setShreH(Math.max(1, parseInt(e.target.value) || 0))}
                       className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white font-semibold"
@@ -1032,13 +1032,13 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="grid grid-cols-2 gap-3 bg-white p-3.5 rounded-xl border border-home-grau/15">
                     <div className="text-xs">
                       <span className="text-text-main/50 font-bold block text-[10px] uppercase">Schwindkoeffizienten α:</span>
-                      <div>&bull; Breite (<span className="font-mono text-[11px] font-bold">{shreBDir}</span>): <span className="font-mono font-bold">{shrinkResults.alpha_b}%</span></div>
-                      <div>&bull; Höhe (<span className="font-mono text-[11px] font-bold">{shreHDir}</span>): <span className="font-mono font-bold">{shrinkResults.alpha_h}%</span></div>
+                      <div>&bull; Breite (<span className="font-mono text-[11px] font-bold">{shreBDir}</span>): <span className="font-mono font-bold">{formatDeWert(shrinkResults.alpha_b)}%</span></div>
+                      <div>&bull; Höhe (<span className="font-mono text-[11px] font-bold">{shreHDir}</span>): <span className="font-mono font-bold">{formatDeWert(shrinkResults.alpha_h)}%</span></div>
                     </div>
                     <div className="text-xs border-l border-home-grau/10 pl-3">
                       <span className="text-text-main/50 font-bold block text-[10px] uppercase">Feuchteänderung:</span>
                       <div className="font-medium text-text-main">
-                        <span className="font-mono font-bold text-blue-800">{shreUStart}%</span> zu <span className="font-mono font-bold text-blue-800">{shreUEnd}%</span> (<InlineMath math={`\\Delta u = ${shrinkResults.deltaU}\\%`} />)
+                        <span className="font-mono font-bold text-blue-800">{formatDeWert(shreUStart)}%</span> zu <span className="font-mono font-bold text-blue-800">{formatDeWert(shreUEnd)}%</span> (<InlineMath math={`\\Delta u = ${formatDeTeXWert(shrinkResults.deltaU)}\\%`} />)
                       </div>
                       {(shreUStart > 30 || shreUEnd > 30) ? (
                         <span className="text-[9px] text-amber-700 bg-amber-50 px-1 rounded block leading-tight mt-1">
@@ -1093,7 +1093,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                     {/* Quick indicator arrows */}
                     <span className="absolute bottom-[2px] right-2 text-[9px] font-mono font-bold text-text-main/50">
-                      Original: {shreB}x{shreH}
+                      Original: {formatDeWert(shreB)}x{formatDeWert(shreH)}
                     </span>
                   </div>
 
@@ -1223,7 +1223,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <option value="GL28c">Brettschichtholz GL28c (Kombiniert)</option>
                   <option value="GL30h">BHS GL30h (Hochleistung)</option>
                 </select>
-                <span className="text-[10px] text-text-main/50 font-mono">f_c,0,k = {currentMaterial.f_c0k} N/mm², E_mean = {currentMaterial.E_0mean.toLocaleString()} N/mm²</span>
+                <span className="text-[10px] text-text-main/50 font-mono">f_c,0,k = {formatDeWert(currentMaterial.f_c0k)} N/mm², E_mean = {formatDeWert(currentMaterial.E_0mean)} N/mm²</span>
               </div>
 
               {/* Parameter Row 2: Service class */}
@@ -1262,7 +1262,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Stützenbreite b (mm)</label>
                   <input 
-                    type="number" 
+                    type="number" min="0" 
                     value={colB} 
                     onChange={(e) => setColB(Math.max(60, parseInt(e.target.value) || 60))}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -1272,7 +1272,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Stützenhöhe h (mm)</label>
                   <input 
-                    type="number" 
+                    type="number" min="0" 
                     value={colH} 
                     onChange={(e) => setColH(Math.max(60, parseInt(e.target.value) || 60))}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -1285,7 +1285,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Stützenlänge L (m)</label>
                   <input 
-                    type="number" 
+                    type="number" min="0" 
                     step="0.1"
                     value={colLen} 
                     onChange={(e) => setColLen(Math.max(0.5, parseFloat(e.target.value) || 0.5))}
@@ -1300,10 +1300,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     onChange={(e) => setEulerCase(parseInt(e.target.value))}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-medium"
                   >
-                    <option value={1}>Euler 1: Gelenkig / Gelenkig (β=1.0)</option>
-                    <option value={2}>Euler 2: Fest / Gelenkig (β=0.7)</option>
-                    <option value={3}>Euler 3: Fest / Fest (β=0.5)</option>
-                    <option value={4}>Euler 4: Kragarm / Freistehend (β=2.0)</option>
+                    <option value={1}>Euler 1: Gelenkig / Gelenkig (β=1,0)</option>
+                    <option value={2}>Euler 2: Fest / Gelenkig (β=0,7)</option>
+                    <option value={3}>Euler 3: Fest / Fest (β=0,5)</option>
+                    <option value={4}>Euler 4: Kragarm / Freistehend (β=2,0)</option>
                   </select>
                 </div>
               </div>
@@ -1313,7 +1313,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <label className="text-xs font-bold text-text-main text-emerald-800">Einwirkende Druckkraft N_Ed (kN)</label>
                 <div className="relative">
                   <input 
-                    type="number" 
+                    type="number" min="0" 
                     value={designLoad} 
                     onChange={(e) => setDesignLoad(Math.max(0, parseFloat(e.target.value) || 0))}
                     className="w-full border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-black"
@@ -1421,10 +1421,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     onChange={(e) => setQpConfig(e.target.value)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
                   >
-                    <option value="schwelle">Schwelle auf Beton (Continuous) (kc,90 = 1.50)</option>
-                    <option value="pfosten_riegel">Pfosten-Riegel Trägerauflager (kc,90 = 1.25)</option>
-                    <option value="traeger_ende">Endauflager (Balkenkopf) (kc,90 = 1.00)</option>
-                    <option value="clt_plate">Flächiges CLT-Plattenauflager (kc,90 = 1.75)</option>
+                    <option value="schwelle">Schwelle auf Beton (Continuous) (kc,90 = 1,50)</option>
+                    <option value="pfosten_riegel">Pfosten-Riegel Trägerauflager (kc,90 = 1,25)</option>
+                    <option value="traeger_ende">Endauflager (Balkenkopf) (kc,90 = 1,00)</option>
+                    <option value="clt_plate">Flächiges CLT-Plattenauflager (kc,90 = 1,75)</option>
                   </select>
                 </div>
 
@@ -1433,7 +1433,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Auflagerbreite b (mm)</label>
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={qpB}
                       onChange={(e) => setQpB(Math.max(40, parseInt(e.target.value) || 40))}
                       className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -1442,7 +1442,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Auflagerlänge l (mm)</label>
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={qpL}
                       onChange={(e) => setQpL(Math.max(40, parseInt(e.target.value) || 40))}
                       className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -1471,7 +1471,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <label className="text-xs font-bold text-emerald-800">Querpressende Einwirkung F_c,90,d (kN)</label>
                   <div className="relative">
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={qpForce}
                       onChange={(e) => setQpForce(Math.max(0, parseFloat(e.target.value) || 0))}
                       className="w-full border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-black"
@@ -1493,10 +1493,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="text-xs text-text-main/80 space-y-1">
                     <span className="font-bold text-text-main block">1. Wirksame Auflagerfläche <InlineMath math="A_{ef}" />:</span>
                     <p className="text-[11px] leading-relaxed">
-                      Länge <InlineMath math="l" /> wird erhöht um bis zu 30 mm je Überhangseite. Wirksame Länge: <span className="font-bold font-mono text-amber-800">{qpResults.l_ef} mm</span>
+                      Länge <InlineMath math="l" /> wird erhöht um bis zu 30 mm je Überhangseite. Wirksame Länge: <span className="font-bold font-mono text-amber-800">{formatDeWert(qpResults.l_ef)} mm</span>
                     </p>
                     <div className="my-1 bg-[#fef3c7]/20 p-1.5 rounded border border-[#fef3c7] text-center font-mono text-[11px]">
-                      <InlineMath math={`A_{ef} = b \\times l_{ef} = ${qpB} \\times ${qpResults.l_ef} = ${qpResults.A_ef.toLocaleString()}\\text{ mm}^2`} />
+                      <InlineMath math={`A_{ef} = b \\times l_{ef} = ${formatDeTeXWert(qpB)} \\times ${formatDeTeXWert(qpResults.l_ef)} = ${formatDeTeXWert(qpResults.A_ef)}\\text{ mm}^2`} />
                     </div>
                   </div>
 
@@ -1504,7 +1504,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="text-xs text-text-main/80 space-y-1">
                     <span className="font-bold text-text-main block">2. Bemessungsquerpressfestigkeit <InlineMath math="f_{c,90,d}" />:</span>
                     <p className="text-[11px] leading-relaxed">
-                      Wert für Holzart <span className="font-bold">{woodClass}</span> (<InlineMath math={`f_{c,90,k} = ${qpResults.f_c90k}\\text{ N/mm}^2`} />) modifiziert mit <InlineMath math={`k_{mod} = ${calculationResults.k_mod}`} />:
+                      Wert für Holzart <span className="font-bold">{woodClass}</span> (<InlineMath math={`f_{c,90,k} = ${qpResults.f_c90k}\\text{ N/mm}^2`} />) modifiziert mit <InlineMath math={`k_{mod} = ${formatDeTeXWert(calculationResults.k_mod)}`} />:
                     </p>
                     <div className="my-1 bg-[#fef3c7]/20 p-1.5 rounded border border-[#fef3c7] text-center font-mono text-[11px]">
                       <InlineMath math={`f_{c,90,d} = ${calculationResults.k_mod} \\times \\frac{${qpResults.f_c90k}}{${qpResults.gamma_M}} = ${formatDeZahl(qpResults.f_c90d, 2)}\\text{ N/mm}^2`} />
@@ -1668,10 +1668,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                       onChange={(e) => setConnD(parseInt(e.target.value) || 8)}
                       className="border border-home-grau/30 bg-white text-xs p-1.5 rounded-lg text-text-main font-semibold"
                     >
-                      <option value={6}>d = 6.0 mm (Spax)</option>
-                      <option value={8}>d = 8.0 mm (Standard Holzbau)</option>
-                      <option value={10}>d = 10.0 mm (Schwerlast)</option>
-                      <option value={12}>d = 12.0 mm (Extrem-Träger)</option>
+                      <option value={6}>d = 6,0 mm (Spax)</option>
+                      <option value={8}>d = 8,0 mm (Standard Holzbau)</option>
+                      <option value={10}>d = 10,0 mm (Schwerlast)</option>
+                      <option value={12}>d = 12,0 mm (Extrem-Träger)</option>
                     </select>
                   </div>
                   <div className="flex flex-col gap-1">
@@ -1717,7 +1717,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <label className="text-xs font-bold text-rose-800">Bemessungseinwirkung V_Ed (kN)</label>
                   <div className="relative">
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={connForce}
                       onChange={(e) => setConnForce(Math.max(0, parseFloat(e.target.value) || 0))}
                       className="w-full border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-black"
@@ -1742,7 +1742,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                       <span className="font-mono text-emerald-800">{formatDeZahl(connResults.F_ax_Rd_total_kN, 1)} kN</span>
                     </span>
                     <p className="text-[10px] text-text-main/60 pl-2 leading-relaxed">
-                      Erhöhte Auszugsfestigkeit dank Dichteverhältnis <InlineMath math="(\rho_k/350)^{0.8}" />. Wirksamer Eindrehwinkel-Koeffizient bei {connAngle}° beträgt <span className="font-bold">{connAngle === 45 ? '1,09' : '1,00'}</span>.
+                      Erhöhte Auszugsfestigkeit dank Dichteverhältnis <InlineMath math="(\rho_k/350)^{0{,}8}" />. Wirksamer Eindrehwinkel-Koeffizient bei {formatDeWert(connAngle)}° beträgt <span className="font-bold">{connAngle === 45 ? '1,09' : '1,00'}</span>.
                     </p>
                   </div>
 
@@ -1829,9 +1829,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="bg-amber-50 p-3.5 rounded-lg border border-amber-200">
                   <h4 className="font-bold text-amber-900 mb-1">Standard-Abbrandraten nach DIN EN 1995-1-2:</h4>
                   <ul className="list-disc list-inside space-y-1 text-[11px] font-mono text-amber-950">
-                    <li>Nadelhölzer (C24, KVH, BSH): <InlineMath math="\beta_0 = 0.65-0.80 \text{ mm/min}" /></li>
-                    <li>Sperrholz &amp; CLT: <InlineMath math="\beta_{0} = 0.65 \text{ mm/min}" /></li>
-                    <li>Laubhölzer (Buche, Eiche): <InlineMath math="\beta_{0} = 0.50 \text{ mm/min}" /></li>
+                    <li>Nadelhölzer (C24, KVH, BSH): <InlineMath math="\beta_0 = 0{,}65-0{,}80 \text{ mm/min}" /></li>
+                    <li>Sperrholz &amp; CLT: <InlineMath math="\beta_{0} = 0{,}65 \text{ mm/min}" /></li>
+                    <li>Laubhölzer (Buche, Eiche): <InlineMath math="\beta_{0} = 0{,}50 \text{ mm/min}" /></li>
                   </ul>
                 </div>
 
@@ -1841,7 +1841,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <InlineMath math="d_{ef} = \beta_{0} \cdot t_{fi} + d_0" />
                   </div>
                   <span className="text-[10px] text-text-main/50 font-normal leading-normal block">
-                    (mit <InlineMath math="d_0 = 7.0 \text{ mm}" /> als zusätzliche ungeschützte Sicherheits-Dicke. t_fi repräsentiert die Branddauer REI-30 = 30min, etc.).
+                    (mit <InlineMath math="d_0 = 7{,}0 \text{ mm}" /> als zusätzliche ungeschützte Sicherheits-Dicke. t_fi repräsentiert die Branddauer REI-30 = 30min, etc.).
                   </span>
                 </div>
               </div>
@@ -1914,9 +1914,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     onChange={(e) => setFireType(e.target.value)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
                   >
-                    <option value="nadel">KVH / BSH Nadelholz (β₀ = 0.70 mm/min)</option>
-                    <option value="laub">Buche / Eiche Laubholz (β₀ = 0.50 mm/min)</option>
-                    <option value="clt">Brettsperrholz / CLT (β₀ = 0.65 mm/min)</option>
+                    <option value="nadel">KVH / BSH Nadelholz (β₀ = 0,70 mm/min)</option>
+                    <option value="laub">Buche / Eiche Laubholz (β₀ = 0,50 mm/min)</option>
+                    <option value="clt">Brettsperrholz / CLT (β₀ = 0,65 mm/min)</option>
                   </select>
                 </div>
 
@@ -1970,7 +1970,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Balkenbreite b (mm)</label>
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={fireB}
                       onChange={(e) => setFireB(Math.max(60, parseInt(e.target.value) || 60))}
                       className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -1979,7 +1979,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Balkenhöhe h (mm)</label>
                     <input
-                      type="number"
+                      type="number" min="0"
                       value={fireH}
                       onChange={(e) => setFireH(Math.max(60, parseInt(e.target.value) || 60))}
                       className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -1993,7 +1993,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div>
                   <span className="text-[10px] font-black uppercase text-rose-800 tracking-wider block mb-1">Brandnachweis</span>
                   <p className="text-xs text-text-main/80 font-medium">
-                    Nach <span className="font-bold">{fireTime} min</span> Brandeinwirkung mit <InlineMath math={`\\beta_0 = ${fireResults.beta_0}\\text{ mm/min}`} />:
+                    Nach <span className="font-bold">{formatDeWert(fireTime)} min</span> Brandeinwirkung mit <InlineMath math={`\\beta_0 = ${fireResults.beta_0}\\text{ mm/min}`} />:
                   </p>
 
                   <div className="grid grid-cols-2 gap-4 mt-2.5">
@@ -2080,7 +2080,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <Volume2 size={20} className="text-blue-600" /> CLT Decken-Schwingungs-Eigenfrequenzrechner
               </h3>
               <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                Leichte Brettsperrholzdecken sind hochgradig schwingungsanfällig durch dynamische Anregung (z.B. Gehen). Eurocode 5 verlangt zur Gewährleistung der Wohnqualität im mehrgeschossigen Wohnungsbau eine Mindest-Eigenfrequenz von <InlineMath math="f_{1} \ge 8.0 \text{ Hz}" />.
+                Leichte Brettsperrholzdecken sind hochgradig schwingungsanfällig durch dynamische Anregung (z.B. Gehen). Eurocode 5 verlangt zur Gewährleistung der Wohnqualität im mehrgeschossigen Wohnungsbau eine Mindest-Eigenfrequenz von <InlineMath math="f_{1} \ge 8{,}0 \text{ Hz}" />.
               </p>
             </div>
 
@@ -2161,7 +2161,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="space-y-1 pt-1 text-[11px] leading-relaxed">
                     <span className="font-bold text-text-main block">Biegesteifigkeit <InlineMath math="EI_L" /> (pro m Plattenbreite):</span>
                     <div className="bg-stone-50 p-1.5 rounded text-center border font-mono">
-                      <InlineMath math={`EI_{L} = \\frac{11000 \\times 10^6 \\times 1.0 \\times ${vibCltThick / 1000}^3}{12} = ${formatDeZahl(vibResults.ei_L / 1000, 0)}\\text{ kNm}^2/\\text{m}`} />
+                      <InlineMath math={`EI_{L} = \\frac{11000 \\times 10^6 \\times 1{,}0 \\times ${formatDeTeXWert(vibCltThick / 1000)}^3}{12} = ${formatDeZahl(vibResults.ei_L / 1000, 0)}\\text{ kNm}^2/\\text{m}`} />
                     </div>
                   </div>
 
@@ -2176,7 +2176,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                 {/* Status bar & gauge */}
                 <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs text-center flex flex-col gap-1.5">
-                  <span className="text-[10px] text-text-main/50 font-black uppercase tracking-wider block">Schwingungsnachweis (Kriterium &gt;= 8.0 Hz)</span>
+                  <span className="text-[10px] text-text-main/50 font-black uppercase tracking-wider block">Schwingungsnachweis (Kriterium &gt;= 8,0 Hz)</span>
                   <div className="flex items-center justify-center gap-3">
                     <span className={`text-[11px] font-black px-3 py-1 rounded-full ${
                       vibResults.isCompliant ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
@@ -2208,9 +2208,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Tragwerksbemessung für den Brandfall)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 16351 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Tragwerksbemessung für den Brandfall)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-2' },
+          { title: 'DIN EN 16351 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16351' }
         ]}
         literatur={[
           'Informationsdienst Holz - Holzbau Handbuch Reihe 1 bis 5',
@@ -2225,13 +2225,13 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
         ]}
         formeln={[
           {
-            formel: 'f_1 = \\frac{\\pi}{2 \\cdot L^2} \\cdot \\sqrt{\\frac{(EI)_L}{m}} \\ge 8.0\\,\\text{Hz}',
+            formel: 'f_1 = \\frac{\\pi}{2 \\cdot L^2} \\cdot \\sqrt{\\frac{(EI)_L}{m}} \\ge 8{,}0\\,\\text{Hz}',
             erklaerung: 'Eigenfrequenz f1 zur Vermeidung störender Resonanzschwingungen bei Wohnungsdecken im Holzbau nach Eurocode 5.',
             quelle: 'DIN EN 1995-1-1 Abs. 7.3'
           },
           {
             formel: 'd_{\\text{ef}} = d_{\\text{char,0}} + k_0 \\cdot d_0 = \\beta_0 \\cdot t + d_0',
-            erklaerung: 'Effektive Verkohlungstiefe d_ef im Brandfall (beta_0 = 0.65 mm/min für Nadelholz, d0 = 7 mm Nulldeckschicht nach EN 1995-1-2).',
+            erklaerung: 'Effektive Verkohlungstiefe d_ef im Brandfall (beta_0 = 0,65 mm/min für Nadelholz, d0 = 7 mm Nulldeckschicht nach EN 1995-1-2).',
             quelle: 'DIN EN 1995-1-2'
           }
         ]}

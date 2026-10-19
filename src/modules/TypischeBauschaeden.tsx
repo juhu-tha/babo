@@ -18,11 +18,14 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { useTabContext } from '@/src/contexts/TabContext';
 
 type TypSchadTab = 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'analysator';
 
 export default function TypischeBauschaeden() {
-  const [activeSubTab, setActiveSubTab] = useState<TypSchadTab>('feuchtigkeit');
+  const { typischeBauschaedenSubTab } = useTabContext();
+  // Startkategorie aus Querverweisen (z. B. Fallakten in „Große Materialschäden“)
+  const [activeSubTab, setActiveSubTab] = useState<TypSchadTab>(typischeBauschaedenSubTab ?? 'feuchtigkeit');
   const [selectedScenario, setSelectedScenario] = useState<string | null>(null);
 
   const tabs = [
@@ -60,7 +63,7 @@ export default function TypischeBauschaeden() {
       id: 'frost_balkon',
       title: 'Frostabplatzungen an einer Balkonkante',
       category: 'Korrosion & Betonabplatzungen',
-      description: 'An einer freien Balkonkante bröckelt Beton ab; brauner Rost schimmert durch. Der Beton besaß einen w/z-Wert von 0.65 (statt maximal 0.45 nach DIN EN 206 für Außenbauteile mit Frost/Taumitteleinwirkung XF3). Ohne Tropfkante drang dauerhaft Wasser ein.',
+      description: 'An einer freien Balkonkante bröckelt Beton ab; brauner Rost schimmert durch. Der Beton besaß einen w/z-Wert von 0,65 (statt höchstens 0,55 mit Luftporen bzw. 0,50 ohne Luftporen für XF3 – hohe Wassersättigung ohne Taumittel – nach DIN 1045-2, Tab. F.2.1). Ohne Tropfkante drang dauerhaft Wasser ein.',
       status: 'Schwerwiegender Mangel mit akuter Beeinträchtigung der Dauerhaftigkeit (Rostsprengung)',
       responsibility: 'Ausführungsfehler des Betonwerks (falsche Betongüte geliefert) und des Unternehmers (falsch verbaut + Tropfprofil weggelassen).',
       insurance: 'Eigensanierung durch das Bauunternehmen während der Verjährungsfrist (5 Jahre nach BGB).',
@@ -70,7 +73,7 @@ export default function TypischeBauschaeden() {
       id: 'estrich_abriss',
       title: 'Dehnfugenabriss im Industrie-Fließestrich',
       category: 'Risse & Bewegungsfugen',
-      description: 'In einer Logistikhalle bricht der Fließestrich an den Feldgrenzen aus. Es wurde versäumt, Es wurde versäumt, die nach Estrichart, Beheizung und Feldgeometrie erforderlichen Bewegungsfugen anzuordnen … Sanierung: Scheinfugen nachschneiden, Wildrisse mit Epoxidharz und Wellenverbindern (Estrichklammern) verharzen. Bewegungsfugen anzulegen, obwohl schwere Gabelstapler hohe dynamische Horizontallasten eintragen.',
+      description: 'In einer Logistikhalle bricht der Fließestrich an den Feldgrenzen aus. Es wurde versäumt, die nach Estrichart, Beheizung und Feldgeometrie erforderlichen Bewegungsfugen anzuordnen … Sanierung: Scheinfugen nachschneiden, Wildrisse mit Epoxidharz und Wellenverbindern (Estrichklammern) verharzen. Schwere Gabelstapler tragen zusätzlich hohe dynamische Horizontallasten ein.',
       status: 'Planungsmangel (Klassischer Koordinationsfehler im Fugenplan)',
       responsibility: 'Planer für fehlenden Fugenplan und Estrichleger, falls dieser nicht schriftlich Bedenken angemeldet hat (Prüf- und Hinweispflicht verfehlt).',
       insurance: 'Berufshaftpflicht des planenden Ingenieurbüros (Tragwerksplanung/Objektplanung).',
@@ -101,7 +104,7 @@ export default function TypischeBauschaeden() {
       title: 'Pfeiler- und Lagerfugenkorrosion einer Autobahnbrücke (XF4/XD3)',
       category: 'Tief- & Ingenieurbau',
       description: 'Bei einer Brückenprüfung nach DIN 1076 werden an Pfeilerköpfen gravierende Betonabplatzungen und völlig durchgerostete Spannglieder entdeckt. Die Brückenentwässerung war verstopft, wodurch chloridbelastetes Tausalzwasser jahrzehntelang ungehindert auf den Beton und die Lagerkonstruktion einwirken konnte.',
-      status: 'Kritischer Bauschaden mit akuter Beeinträchtigung der Standsicherheit (Gefahr im Verzug)',
+      status: 'Kritischer Bauschaden – Standsicherheit umgehend durch Fachplaner beurteilen lassen',
       responsibility: 'Wartungs- und Unterhaltspflichtverletzung des Baulastträgers (Kommune oder Autobahngesellschaft) sowie Ausführungsfehler bei der Fugenabdichtung.',
       insurance: 'Keine klassische private Versicherungsdeckung. Die Sanierung erfolgt vollumfänglich aus öffentlichen Haushaltsmitteln des Baulastträgers.',
       remedy: 'Sofortige Teilsperrung oder Tonnagebeschränkung. Hydrodynamischer Betonabtrag (HDW), Reprofilierung mit Spritzbeton und Erneuerung der Fahrbahnübergänge.'
@@ -176,14 +179,14 @@ export default function TypischeBauschaeden() {
                         <span className="text-slate-600 block text-[11px] font-sans mb-0.5">Kapillare Steighöhe nach Jurin:</span>
                         <BlockMath math="h = \frac{2 \cdot \sigma \cdot \cos\theta}{\rho \cdot g \cdot r}" />
                         <span className="text-[10px] text-slate-500 font-sans block mt-1">
-                          Mit Oberflächenspannung <InlineMath math="\sigma" />, Kontaktwinkel <InlineMath math="\theta" />, Dichte <InlineMath math="\rho" />, Erdbeschleunigung <InlineMath math="g" /> und Kapillarradius <InlineMath math="r" />. Je feiner die Poren (z.B. Ziegel- und Mörtelporen), desto höher die kapillare Steigung (bis zu mehreren Metern).
+                          Mit Oberflächenspannung <InlineMath math="\sigma" />, Kontaktwinkel <InlineMath math="\theta" />, Dichte <InlineMath math="\rho" />, Erdbeschleunigung <InlineMath math="g" /> und Kapillarradius <InlineMath math="r" />. Je feiner die Poren (z.B. Ziegel- und Mörtelporen), desto höher die theoretische kapillare Steighöhe (mehrere Meter); in der Praxis begrenzt die Verdunstung sie meist auf 0,5–1,5 m über Gelände.
                         </span>
                       </div>
                     </div>
                     <div>
                       <strong className="text-slate-950">2. Querdurchfeuchtung & hydrostatischer Druck:</strong>
                       <p className="mt-0.5 text-slate-700">
-                        Versagen der vertikalen Bauwerksabdichtung (DIN 18533 W1-E bis W2-E). Bei anstehendem drückendem Wasser wirkt hydrostatischer Druck <InlineMath math="p = \rho \cdot g \cdot h" />, der ungesicherte Fugen, Kiesnester und Risse penetriert.
+                        Versagen der vertikalen Bauwerksabdichtung (DIN 18533: W2.1-E mäßige Einwirkung ≤ 3 m Eintauchtiefe, W2.2-E hohe Einwirkung &gt; 3 m; W1-E = Bodenfeuchte und nicht drückendes Wasser). Bei anstehendem drückendem Wasser wirkt hydrostatischer Druck <InlineMath math="p = \rho \cdot g \cdot h" />, der ungesicherte Fugen, Kiesnester und Risse penetriert.
                       </p>
                     </div>
                     <div>
@@ -328,24 +331,24 @@ export default function TypischeBauschaeden() {
                     </thead>
                     <tbody>
                       <tr className="border-b border-home-grau/30">
-                        <td className="p-2 font-mono text-slate-700">&lt; 0.1 mm</td>
+                        <td className="p-2 font-mono text-slate-700">&lt; 0,1 mm</td>
                         <td className="p-2">Haarrisse</td>
                         <td className="p-2">Meist unkritisch / kosmetisch. Wasserunwirksam im Beton.</td>
                       </tr>
                       <tr className="border-b border-home-grau/30">
-                        <td className="p-2 font-mono text-shiraz">&gt;= 0.1 - 0.3 mm</td>
+                        <td className="p-2 font-mono text-shiraz">&gt;= 0,1 - 0,3 mm</td>
                         <td className="p-2">Feine Risse</td>
                         <td className="p-2">Im Außenbereich wegen Frostgefahr und Bewehrungskorrosion zu beobachten.</td>
                       </tr>
                       <tr className="border-b border-home-grau/30">
-                        <td className="p-2 font-mono text-shiraz font-semibold">0.3 - 1.0 mm</td>
+                        <td className="p-2 font-mono text-shiraz font-semibold">0,3 - 1,0 mm</td>
                         <td className="p-2">Konstruktionsrisse</td>
                         <td className="p-2">Statisch-konstruktive Ursachenprüfung zwingend erforderlich. Abdichtung gefährdet.</td>
                       </tr>
                       <tr>
-                        <td className="p-2 font-mono text-shiraz font-bold">&gt; 1.0 mm</td>
+                        <td className="p-2 font-mono text-shiraz font-bold">&gt; 1,0 mm</td>
                         <td className="p-2 font-bold">Gefügerisse / Klaffende Risse</td>
-                        <td className="p-2 text-shiraz font-bold">Gefahr im Verzug! Setzungsverhalten, standsicherheitsbedrohlich.</td>
+                        <td className="p-2 text-shiraz font-bold">Ursache und Tragwirkung umgehend durch Fachplaner klären (keine automatische Gefahr im Verzug).</td>
                       </tr>
                     </tbody>
                   </table>
@@ -361,7 +364,7 @@ export default function TypischeBauschaeden() {
                       <strong>Rissbreitenlineal:</strong> Transparente Karte mit Strichstärken zum präzisen Abgleich der Oberflächenbreite.
                     </p>
                     <div className="p-3 bg-white rounded border border-home-grau/30 text-sm">
-                      <strong>💡 Sanierungsmethodik bei ruhendem Riss:</strong> Einbringen von Injektionsharzen (Epoxidharz EP oder Polyurethan PUR) unter Hochdruck oder Niedrigdruck, um das Bauteil dehnfähig wasserdicht zu verbinden.
+                      <strong>💡 Sanierungsmethodik bei ruhendem Riss:</strong> Kraftschlüssiges Verbinden ruhender, trockener oder feuchter Risse mit EP (Tränkung/Injektion); begrenzt dehnfähiges Verbinden oder Abdichten wasserführender Risse mit PUR bzw. Acrylatgel; Zementleim/-suspension (ZL/ZS) bei breiteren Rissen (TR Instandhaltung / DIN EN 1504-5).
                     </div>
                   </div>
                 </div>
@@ -385,13 +388,13 @@ export default function TypischeBauschaeden() {
                         Die Rissinjektion hat zum Ziel, die Barrierewirkung des Betons gegenüber Schadstoffen wiederherzustellen (Füllen/Abdichten) oder das Bauteil wieder kraftschlüssig zu verbinden (Zusammenhalt).
                       </p>
 
-                      {/* Strömungsgesetz nach Hagen-Poiseuille */}
+                      {/* Spaltströmung (ebener Spalt) */}
                       <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-xs my-2">
-                        <strong className="block text-slate-900 mb-1">Druckverhältnis der Injektion (Hagen-Poiseuille-Beziehung):</strong>
+                        <strong className="block text-slate-900 mb-1">Durchfluss im Riss (laminare Spaltströmung):</strong>
                         <p className="text-[11px] text-slate-500 leading-tight mb-2">
-                          Der Volumenstrom <InlineMath math="Q" /> des Injektionsstoffs im Risskanal ist hochentwickelt abhängig von der Rissbreite <InlineMath math="w" />, der dynamischen Viskosität <InlineMath math="\eta" /> und dem aufgebrachten Druckgradienten <InlineMath math="\Delta p" />:
+                          Der Volumenstrom <InlineMath math="Q" /> des Injektionsstoffs im Risskanal hängt stark von der Rissbreite <InlineMath math="w" />, der Risslänge <InlineMath math="b" />, der dynamischen Viskosität <InlineMath math="\eta" />, dem Druckunterschied <InlineMath math="\Delta p" /> und dem Fließweg <InlineMath math="L" /> ab:
                         </p>
-                        <BlockMath math="Q = \frac{\pi \cdot w^3 \cdot \Delta p}{12 \cdot \eta \cdot L}" />
+                        <BlockMath math="Q = \frac{w^3 \cdot b \cdot \Delta p}{12 \cdot \eta \cdot L}" />
                         <span className="text-[10px] text-slate-500 block mt-1">
                           Das bedeutet: Bei einer Halbierung der Rissbreite <InlineMath math="w" /> sinkt der Zufluss bei gleichem Druck auf <InlineMath math="1/8" />. Feine Risse benötigen daher extrem niedrigviskose Epoxidharze.
                         </span>
@@ -411,17 +414,17 @@ export default function TypischeBauschaeden() {
                             <tr>
                               <td className="p-1.5 font-bold font-mono text-shiraz">Epoxidharz (EP)</td>
                               <td className="p-1.5 text-slate-600">Sehr hohe Zug-/Druckfestigkeit, starr</td>
-                              <td className="p-1.5">Kraftschlüssiges Verbinden von Bauteilen.</td>
+                              <td className="p-1.5">Kraftschlüssiges Verbinden ruhender, trockener oder feuchter Risse.</td>
                             </tr>
                             <tr>
                               <td className="p-1.5 font-bold font-mono text-shiraz">Polyurethan (PUR)</td>
                               <td className="p-1.5 text-slate-600">Elastisch, schäumt bei Wasserkontakt</td>
-                              <td className="p-1.5">Dehnfähiges Abdichten wasserführender Risse.</td>
+                              <td className="p-1.5">Begrenzt dehnfähiges Verbinden bzw. Abdichten wasserführender Risse.</td>
                             </tr>
                             <tr>
                               <td className="p-1.5 font-bold font-mono text-shiraz">Zementsuspens. (ZS)</td>
                               <td className="p-1.5 text-slate-600">Mineralisch, starr, füllstark</td>
-                              <td className="p-1.5">Füllen breiter Risse (&gt; 0.8 mm) &amp; Hohlräume.</td>
+                              <td className="p-1.5">Füllen breiter Risse (&gt; 0,8 mm) &amp; Hohlräume.</td>
                             </tr>
                             <tr>
                               <td className="p-1.5 font-bold font-mono text-shiraz">Acrylatgel (GEL)</td>
@@ -459,11 +462,11 @@ export default function TypischeBauschaeden() {
 
                       {/* Verbundnachweis Formel */}
                       <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-xs my-2">
-                        <strong className="block text-slate-900 mb-1">Grenzschubspannung im Klebeverbund (Schälriss-Vermeidung):</strong>
+                        <strong className="block text-slate-900 mb-1">Verbundnachweis am Lamellenende (Endverankerung):</strong>
                         <p className="text-[11px] text-slate-500 leading-tight mb-2">
-                          Um ein schlagartiges Abplatzen der Lamellenenden vor dem Erreichen der CFK-Zugfestigkeit zu verhindern, muss die Grenzschubspannung im Klebeverbund <InlineMath math="\tau_{bond}" /> streng limitiert werden:
+                          Um ein schlagartiges Abplatzen der Lamellenenden vor dem Erreichen der CFK-Zugfestigkeit zu verhindern, ist die Verbundkraft am Lamellenende zu begrenzen. Die maßgebenden Gleichungen (Endverankerung, Zwischenrisselemente) enthält die DAfStb-Richtlinie „Verstärken von Betonbauteilen mit geklebter Bewehrung“ (2012); vereinfachte Grundform:
                         </p>
-                        <BlockMath math="\tau_{bond} \le \tau_{crit} = k_b \cdot c \cdot \sqrt{f_{ck} \cdot f_{ctm}}" />
+                        <BlockMath math="\tau_{bd} \propto k_b \cdot \sqrt{f_{cm} \cdot f_{ctm}}" />
                         <span className="text-[10px] text-slate-500 block mt-1">
                           Hierbei ist <InlineMath math="k_b" /> ein Beiwert zur Lamellenbreite, <InlineMath math="f_{ck}" /> die Zylinderdruckfestigkeit des Betons und <InlineMath math="f_{ctm}" /> die mittlere Betonzugfestigkeit, welche die eigentliche Schwachstelle darstellt.
                         </span>
@@ -483,7 +486,7 @@ export default function TypischeBauschaeden() {
                           </div>
                           <div>
                             <span className="text-slate-400 block">Eigengewicht:</span>
-                            <strong className="text-slate-800">Extrem gering (~1.6 g/cm³)</strong>
+                            <strong className="text-slate-800">Extrem gering (~1,6 g/cm³)</strong>
                           </div>
                           <div>
                             <span className="text-slate-400 block">Korrosion:</span>
@@ -496,7 +499,7 @@ export default function TypischeBauschaeden() {
                       <div className="border-t border-home-grau/20 pt-2 mt-2">
                         <strong className="text-xs text-slate-800 block mb-1">⚙️ Arbeitsverfahren zur CFK-Lamellenverstärkung</strong>
                         <ol className="list-decimal pl-4 text-[11px] text-slate-600 space-y-1">
-                          <li><strong>Untergrundprüfung (Zwingend):</strong> Prüfung der Beton-Abreißfestigkeit (mind. <InlineMath math="1.5 \text{ N/mm}^2" />). Zu schwacher Beton reißt flächig ab!</li>
+                          <li><strong>Untergrundprüfung (Zwingend):</strong> Prüfung der Beton-Abreißfestigkeit (mind. <InlineMath math="1{,}5 \text{ N/mm}^2" />). Zu schwacher Beton reißt flächig ab!</li>
                           <li><strong>Vorbereitung (Kugelstrahlen/Schleifen):</strong> Die Betonoberfläche wird gefräst, kugelgestrahlt oder geschliffen, um die Zementhaut zu entfernen und Gesteinskörnungen freizulegen.</li>
                           <li><strong>Applikation Epoxidkleber:</strong> Auftrag eines thixotropen (pastösen) Epoxidharzklebstoffes auf den Beton und auf die Carbonlamelle (dachprofilartig aufgespachtelt, um Lufteinschlüsse zu vermeiden).</li>
                           <li><strong>Andrücken der Lamelle:</strong> Lamelle von Hand positionieren und mit einer Gummirolle gleichmäßig andrücken, bis der überschüssige Kleber an den Seiten gleichmäßig herausquillt.</li>
@@ -531,7 +534,7 @@ export default function TypischeBauschaeden() {
                   </h3>
                   <div className="space-y-2.5 text-sm text-slate-800 leading-relaxed">
                     <p>
-                      Stahl im unbeschädigten Beton ist durch das hochalkalische Porenwasser (<InlineMath math="\text{pH} \ge 12{,}6" /> durch gelöstes Calciumhydroxid <InlineMath math="\text{Ca(OH)}_2" />) thermodynamisch passiviert. Es bildet sich eine atomare, epitaktisch aufgewachsene Schutzhaut aus Magnetit (<InlineMath math="\gamma\text{-Fe}_2\text{O}_3" />).
+                      Stahl im unbeschädigten Beton ist durch das hochalkalische Porenwasser (<InlineMath math="\text{pH} \ge 12{,}6" /> durch gelöstes Calciumhydroxid <InlineMath math="\text{Ca(OH)}_2" />) thermodynamisch passiviert. Es bildet sich eine nur wenige Nanometer dicke Passivschicht aus Eisenoxiden bzw. -hydroxiden (u. a. Fe₃O₄ und <InlineMath math="\gamma\text{-Fe}_2\text{O}_3" />).
                     </p>
                     <p>
                       <strong>Karbonatisierungsfront &amp; Wurzel-t-Gesetz:</strong> Diffundierendes atmosphärisches <InlineMath math="\text{CO}_2" /> neutralisiert das Alkali:
@@ -540,14 +543,14 @@ export default function TypischeBauschaeden() {
                       <BlockMath math="\text{Ca(OH)}_2 + \text{CO}_2 \longrightarrow \text{CaCO}_3 \downarrow + \text{H}_2\text{O} \quad (\text{pH sinkt auf } \le 8{,}5)" />
                     </div>
                     <div className="bg-[#FCFAF7] border border-home-grau/20 p-2.5 rounded-lg text-xs text-slate-700">
-                      <span className="font-semibold block text-slate-900 mb-0.5">Fortschritt nach Fickschem Diffusionsgesetz:</span>
+                      <span className="font-semibold block text-slate-900 mb-0.5">Fortschritt nach dem √t-Gesetz (aus dem Fick’schen Gesetz mit wandernder Reaktionsfront abgeleitet):</span>
                       <BlockMath math="x_c(t) = k_{\text{carb}} \cdot \sqrt{t}" />
                       <span className="text-[10px] text-slate-500 block">
                         Dabei ist <InlineMath math="k_{\text{carb}}" /> der Karbonatisierungsbeiwert (abhängig von w/z-Wert, Porosität und Umgebungsfeuchte 50–70% r.F.). Sobald <InlineMath math="x_c \ge c_{\text{nom}}" /> (Betondeckung), beginnt Muldenkorrosion.
                       </span>
                     </div>
                     <p className="text-xs text-slate-700">
-                      <strong>Rostexpansion:</strong> Die Eisenoxidhydrate (<InlineMath math="\text{Fe(OH)}_3, \text{FeOOH}" />) besitzen das 2,5- bis 4-fache Volumen des Ausgangsstahls. Es entstehen radiale Sprengdrücke von &gt; 100 MPa, die die Betondeckung absprengen.
+                      <strong>Rostexpansion:</strong> Die Eisenoxidhydrate (<InlineMath math="\text{Fe(OH)}_3, \text{FeOOH}" />) besitzen je nach Oxid/Hydroxid das 2- bis 6-fache Volumen des Ausgangsstahls. Der entstehende Sprengdruck übersteigt die Betonzugfestigkeit um ein Vielfaches und sprengt die Betondeckung ab.
                     </p>
                   </div>
                 </div>
@@ -568,10 +571,10 @@ export default function TypischeBauschaeden() {
                       <BlockMath math="\text{Fe} + 2\,\text{Cl}^- \longrightarrow \text{FeCl}_2 + 2\,e^- \quad \xrightarrow{+\text{H}_2\text{O}} \quad \text{Fe(OH)}_2 + 2\,\text{H}^+ + 2\,\text{Cl}^-" />
                     </div>
                     <div className="bg-rose-50/50 p-2.5 rounded-lg border border-shiraz/25 text-xs text-slate-800 leading-relaxed">
-                      <strong>Kritischer Chloridgehalt nach DIN EN 1992-1-1:</strong>
-                      <BlockMath math="c_{\text{krit}} = 0{,}40\,\% \text{ bis } 0{,}50\,\% \text{ Cl}^- \text{ bezogen auf Zementmasse}" />
+                      <strong>Korrosionsauslösender Chloridgehalt (Anhaltswert, kein Normwert):</strong>
+                      <BlockMath math="c_{\text{krit}} \approx 0{,}5\,\% \text{ Cl}^- \text{ bezogen auf Zementmasse}" />
                       <span className="text-[10px] text-slate-600 block mt-0.5">
-                        Für Spannbeton gilt der noch strengere Grenzwert von maximal <strong>0,20 % Cl⁻</strong>, da Lochfraßgrübchen Kerben bilden und Spannungsrisskorrosion auslösen.
+                        Weder EC2 noch DIN EN 206 nennen einen „kritischen Chloridgehalt“; DIN EN 206 / DIN 1045-2 begrenzen nur den Chloridgehalt bei der Herstellung (Stahlbeton Cl 0,40, Spannbeton Cl 0,20 M.-% bez. Zement). Im Bestand bewertet ein sachkundiger Planer im Einzelfall (Feuchte, Karbonatisierung, Potentialfeld). Für Spannstahl gibt es keinen gesicherten Grenzwert – Chloride an Spanngliedern sind immer kritisch.
                       </span>
                     </div>
                   </div>
@@ -587,13 +590,13 @@ export default function TypischeBauschaeden() {
                   </h3>
                   <div className="space-y-2 text-xs leading-relaxed text-slate-800">
                     <p>
-                      Gefürchtetster Schadensmechanismus im Spannbetonbau (Ursache für den Einsturz der <strong>Kongresshalle Berlin</strong> und der <strong>Carolabrücke Dresden</strong>).
+                      Gefürchtetster Schadensmechanismus im Spannbetonbau (wasserstoffinduziert, Chloride sind keine Voraussetzung; maßgebliche Ursache beim Teileinsturz der <strong>Carolabrücke Dresden</strong> 2024. Der Teileinsturz der Kongresshalle Berlin 1980 war dagegen Korrosion bei mangelhafter Verpressung, keine SpRK).
                     </p>
                     <p>
                       <strong>Voraussetzungen (Schadens-Trias):</strong>
                     </p>
                     <ul className="list-disc pl-4 space-y-1 text-slate-700">
-                      <li><strong>Werkstoff:</strong> Höchstzugfester, spannungsempfindlicher Stahl (insb. vergütete Stähle vor 1978 wie Hennigsdorfer St 140/160 oder Neptun-Sigma-Stahl).</li>
+                      <li><strong>Werkstoff:</strong> Höchstzugfester, spannungsempfindlicher Stahl (insb. vergütete Stähle wie Hennigsdorfer Spannstahl St 140/160 (DDR), Neptun N 40 und Sigma oval; gefährdete Stähle und Herstellzeiträume nach der Handlungsanweisung SpRK, BMVBS 2011).</li>
                       <li><strong>Mechanische Spannung:</strong> Hohe statische Vorspannung (<InlineMath math="\sigma \ge 0{,}6 \cdot f_{pk}" />).</li>
                       <li><strong>Elektrochemisches Milieu:</strong> Unvollständige Hüllrohrverpressung, Feuchtezutritt, Chloride und kathodische Wasserstoffentwicklung.</li>
                     </ul>
@@ -662,7 +665,7 @@ export default function TypischeBauschaeden() {
                     </div>
                   </div>
                   <div className="mt-3 text-xs bg-rose-50/50 text-slate-900 p-2.5 rounded border border-shiraz/25 font-semibold">
-                    📍 <strong>Praxis-Regel (DIN EN 13914-1 / DIN 18550-1)::</strong> Verwende niemals Elektrikergips als Schnellfixierer für Installationen im Außenbereich oder unter Zement-/Kalkzementputzen. Gips und Zement sind in Feuchtbereichen strikt unverträglich!
+                    📍 <strong>Praxis-Regel (Putz: DIN EN 13914-1 / DIN 18550-1; Sulfatangriff auf Beton: DIN EN 206 / DIN 1045-2, XA):</strong> Verwenden Sie niemals Elektrikergips als Schnellfixierer für Installationen im Außenbereich oder unter Zement-/Kalkzementputzen. Gips und Zement sind in Feuchtbereichen strikt unverträglich!
                   </div>
                 </div>
 
@@ -684,7 +687,7 @@ export default function TypischeBauschaeden() {
                         <div>Kupfer: <InlineMath math="E^0 = +0{,}34\,\text{V}" /></div>
                       </div>
                       <div className="mt-2 text-[10px] text-slate-600 leading-relaxed font-sans">
-                        Zellspannung <InlineMath math="\Delta E = E_{\text{Kathode}} - E_{\text{Anode}} > 0{,}2\,\text{V}" /> führt zur massiven galvanischen Auflösung des unedleren Partners (<InlineMath math="\text{Zn} \rightarrow \text{Zn}^{2+} + 2e^-" />).
+                        Zellspannung <InlineMath math="\Delta E = E_{\text{Kathode}} - E_{\text{Anode}} > 0{,}2\,\text{V}" /> gilt als grobe Orientierung für eine relevante Kontaktkorrosion des unedleren Partners (<InlineMath math="\text{Zn} \rightarrow \text{Zn}^{2+} + 2e^-" />). Maßgeblich sind die praktische Spannungsreihe im jeweiligen Elektrolyten und das Flächenverhältnis Kathode/Anode (kleine Anode an großer Kathode ist besonders ungünstig).
                       </div>
                     </div>
                     <p className="text-[11px] text-slate-700 italic leading-relaxed">
@@ -715,7 +718,7 @@ export default function TypischeBauschaeden() {
                     </div>
                   </div>
                   <div className="mt-3 text-xs bg-white text-slate-800 p-2.5 rounded border border-home-grau/30 font-semibold">
-                    📍 <strong>Praxis-Regel (DIN EN 1995-1-1 / Eurocode 5):</strong> Für gerbsäurereiche Hölzer im Außenbereich (Nutzungsklasse 2 und 3) sind ausschließlich Verbindungsmittel aus austenitischem Edelstahl (A2 oder säurefestes A4) bauaufsichtlich zulässig!
+                    📍 <strong>Praxis-Regel (DIN EN 1995-1-1 / Eurocode 5):</strong> Für gerbsäurereiche Hölzer im Außenbereich (Nutzungsklasse 2 und 3) werden bei Feuchte Verbindungsmittel aus nichtrostendem Stahl (z. B. 1.4401/1.4571) empfohlen; die Korrosionsschutzanforderungen ergeben sich aus DIN EN 1995-1-1, Tab. 4.1, und den Zulassungen der Verbindungsmittel.
                   </div>
                 </div>
 
@@ -797,10 +800,10 @@ export default function TypischeBauschaeden() {
                         Wenn die nach oben gerichtete Strömungskraft des zuströmenden Grundwassers am Fuß einer unvollständig abgeriegelten Baugrube das Eigengewicht des anstehenden Bodens übersteigt.
                       </p>
                       <div className="mt-2 bg-white p-2.5 rounded border border-home-grau/30 text-xs">
-                        <span className="font-semibold block mb-1 text-slate-800">Sicherheitsnachweis nach DIN EN 1997-1 (Eurocode 7):</span>
-                        <BlockMath math="S_{hyd} = \frac{\gamma_{sub} \cdot i_{crit}}{i} \ge 1.5" />
+                        <span className="font-semibold block mb-1 text-slate-800">Nachweis HYD nach DIN EN 1997-1 (Eurocode 7) mit NA:</span>
+                        <BlockMath math="S_{dst,k} \cdot \gamma_{H} \le G'_{stb,k} \cdot \gamma_{G,stb}" />
                         <span className="text-slate-500 block mt-1 leading-normal">
-                          Dabei ist <InlineMath math="\gamma_{sub}" /> das untergetauchte Bodengewicht, <InlineMath math="i_{crit}" /> der kritische hydraulische Gradient und <InlineMath math="i" /> das anstehende hydraulische Gefälle.
+                          Strömungskraft <InlineMath math="S" /> (aus dem hydraulischen Gefälle <InlineMath math="i" />) gegen das Gewicht des Bodens unter Auftrieb <InlineMath math="G'" />, jeweils mit Teilsicherheitsbeiwerten nach DIN EN 1997-1/NA bzw. DIN 1054.
                         </span>
                       </div>
                     </div>
@@ -808,7 +811,7 @@ export default function TypischeBauschaeden() {
                     <div>
                       <strong className="block text-slate-900">2. Pfahlkopf- & Bohrpfahlerstellungsfehler:</strong>
                       <p className="mt-0.5 text-slate-700">
-                        Beim Betonieren von Tiefgründungen (Bohrpfählen) unter Wasser wird die oberste Betonschicht wird die oberste Betonschicht mit Bohrschlamm und Stützflüssigkeit verunreinigt und ist minderfest (Kopfbeton). Wird diese "Sperrschicht" nach dem Aushärten nicht fachgerecht mechanisch abgestemmt (bis auf gesunden, tragfähigen Betonquerschnitt), entstehen folgenschwere Schwachstellen in der Lastübertragung.
+                        Beim Betonieren von Tiefgründungen (Bohrpfählen) unter Wasser wird die oberste Betonschicht mit Bohrschlamm und Stützflüssigkeit verunreinigt und ist minderfest (Kopfbeton). Wird diese "Sperrschicht" nach dem Aushärten nicht fachgerecht mechanisch abgestemmt (bis auf gesunden, tragfähigen Betonquerschnitt), entstehen folgenschwere Schwachstellen in der Lastübertragung.
                       </p>
                       <div className="mt-2 bg-white p-2.5 rounded border border-home-grau/30 text-xs text-slate-500">
                         <strong className="text-slate-700 block">Grenzzustand der Tragfähigkeit (Bohrpfahl):</strong>
@@ -847,7 +850,7 @@ export default function TypischeBauschaeden() {
                   <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 space-y-1.5">
                     <strong className="text-shiraz block">Brückenmonitoring nach DIN 1076</strong>
                     <p className="text-slate-700 leading-relaxed text-xs">
-                      Reglementierter Überwachungszyklus für alle Ingenieurbauwerke im öffentlichen Verkehrsraum: Hauptprüfung (alle 6 Jahre), Überwachung der Ingenieurbauwerke im Zuge von Straßen und Wegen nach DIN 1076: Hauptprüfung alle 6 Jahre, Einfache Prüfung jeweils 3 Jahre nach der Hauptprüfung, dazu jährliche Besichtigung und halbjährliche laufende Beobachtung. und jährliche Sichtprüfung zur Gewährleistung der Standsicherheit und Verkehrssicherheit.
+                      Überwachung der Ingenieurbauwerke im Zuge von Straßen und Wegen nach DIN 1076: Hauptprüfung alle 6 Jahre, einfache Prüfung 3 Jahre nach der Hauptprüfung, Besichtigung jährlich (sofern keine H/E), laufende Beobachtung in der Regel zweimal jährlich, Sonderprüfung anlassbezogen.
                     </p>
                   </div>
                 </div>
@@ -949,7 +952,8 @@ export default function TypischeBauschaeden() {
         </div>
       </div>
 
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
         weblinks={[
           { title: "WTA e.V. (Wissenschaftlich-Technische Arbeitsgemeinschaft)", url: "https://www.wta-gmbh.de/" },
           { title: "DIN 18533 - Bauwerksabdichtungen", url: "https://www.din.de/" },
@@ -963,15 +967,16 @@ export default function TypischeBauschaeden() {
           { title: "Spannungsrisskorrosion", url: "https://de.wikipedia.org/wiki/Spannungsrisskorrosion" }
         ]} 
         literatur={[
-          'Frössel, F. (2019): Schadensanalyse im Altbau und Neubau (Fraunhofer IRB Verlag)',
+          'Zimmermann, G. (Hrsg.): Bauschadens-Sammlung. Fraunhofer IRB Verlag',
+          'Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Raupach, M.: Korrosion und Korrosionsschutz von Stahl in Beton (Bauwerk Verlag)',
           'Oswald, R. / Abel, R.: Hahne/Aachener Bausachverständigentage: Rissbildung und Bauwerksabdichtung (Fraunhofer IRB Verlag)'
         ]} 
         regelwerke={[
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' },
+          { title: 'DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
           { title: 'Deutscher Ausschuss für Stahlbeton (DAfStb): Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)', url: 'https://www.dafstb.de/' },
           { title: 'WTA-Merkblatt 4-6: Nachträgliches Abdichten erdberührter Bauteile', url: 'https://www.wta-gmbh.de/' }
         ]} 

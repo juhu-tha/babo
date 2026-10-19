@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Sparkles, 
@@ -468,7 +469,7 @@ export default function KiUeberblick() {
           input: 'Ingenieuranfrage: "Mindestbetondeckung c_min,dur und Vorhaltemaß Δc_dev für Expositionsklasse XD3 bei 100 Jahren Entwurfslebensdauer nach deutschem Nationalen Anhang?"',
           process: 'Vektorsuche ruft Tabelle 4.4N und Absatz 4.4.1.2 des Nationalen Anhangs zu DIN EN 1992-1-1:2011-01 ab.',
           output: 'Präzise Bemessungswerte: c_min,dur = 40 mm, Δc_dev = 10 mm -> c_nom = 50 mm unter Nennung von Tabelle NA.4.4.',
-          benefit: '100 %ige Rechtssicherheit; Ausschluss schwerwiegender Planungsfehler bei Korrosionsschutzmaßnahmen.',
+          benefit: 'Höhere Rechtssicherheit; Ausschluss schwerwiegender Planungsfehler bei Korrosionsschutzmaßnahmen.',
           normRef: 'DIN EN 1992-1-1:2011-01 Tab. 4.4N (NA Deutschland)'
         },
         {
@@ -488,7 +489,7 @@ export default function KiUeberblick() {
           input: 'Nachtragsbegründung des Auftragnehmers im Abgleich mit Hauptbauvertrag, Baubeschreibung und Baugrundgutachten.',
           process: 'RAG führt einen semantischen Abgleich mit den Vertragsklauseln durch und identifiziert explizite Vergütungsregelungen.',
           output: 'Nachweisdokumentation: "Bodenklasse 5 war gemäß Pos. 01.02.0018 der Leistungsbeschreibung ausdrücklich mit dem Einheitspreis abgegolten; die Forderung widerspricht VOB/B § 2 Abs. 1."',
-          benefit: 'Rechtssichere Zurückweisung unberechtigter Nachträge; erhebliche Entlastung der Bauleitung.',
+          benefit: 'Rechtlich belastbare Zurückweisung unberechtigter Nachträge; erhebliche Entlastung der Bauleitung.',
           normRef: 'VOB/B § 2 (Vergütung) & § 4 (Ausführung)'
         }
       ],
@@ -506,7 +507,7 @@ export default function KiUeberblick() {
           'Direkte Zitation der Primärquelle mit Verknüpfung zum Originaldokument und Markierung der Fundstelle.',
           'Unternehmenseigenes Wissensmanagement wird zu einer strukturierten, abfragbaren Wissensbasis.'
         ],
-        aiAdvantage: 'Null Halluzination, verifizierbare Zitate, sofortige rechtssichere Nachweisbarkeit.',
+        aiAdvantage: 'Weniger Halluzinationen durch Quellenbindung, verifizierbare Zitate, nachvollziehbare Belege (Prüfung durch den Ingenieur bleibt erforderlich).',
         roiSummary: '90 % Zeitersparnis bei Normen- und Aktenrecherchen im Büro.'
       },
       math: {
@@ -554,7 +555,7 @@ export default function KiUeberblick() {
           input: 'UAV-Befliegung (500 Luftbilder mit RTK-GNSS-Georeferenzierung) + IFC-Ausführungsmodell.',
           process: 'Dense Matching generiert eine dichte 3D-Punktwolke; Algorithmen berechnen Soll-Ist-Abweichungen und Massendifferenzen zur Abrechnung.',
           output: 'Metrischer Differenzbericht: "Deckendurchbiegung im Feld 3 beträgt 14 mm (L/430); Aushubvolumen Baugrube: 14.250 m³ (98 % Soll)".',
-          benefit: 'Rechtssichere Dokumentation für Abschlagsrechnungen nach VOB/B § 16; lückenlose Beweissicherung vor Folgegewerken.',
+          benefit: 'Rechtlich belastbare Dokumentation für Abschlagsrechnungen nach VOB/B § 16; lückenlose Beweissicherung vor Folgegewerken.',
           normRef: 'DIN 18202 & VOB/B § 16 (Zahlungen)'
         },
         {
@@ -647,10 +648,10 @@ export default function KiUeberblick() {
         {
           title: 'Automatisierte Mängeldokumentation, Fristenüberwachung und Rügeerstellung nach VOB/B',
           category: 'Bauoberleitung & Baurecht (LPH 8)',
-          scenario: 'Rechtssichere Rüge fehlerhaft verlegter Bewehrung vor dem Betoniertermin.',
+          scenario: 'Rechtlich belastbare Rüge fehlerhaft verlegter Bewehrung vor dem Betoniertermin.',
           input: 'Bauleiter-Audionotiz ("Abstandhalter Decke 2. OG Feld B fehlen, Betondeckung unzureichend, Unternehmer Meier") + Fotobeleg.',
           process: 'Agent ordnet Mangel dem Nachunternehmervertrag zu, ermittelt die relevante Normenforderung, berechnet eine angemessene Frist nach VOB/B § 4 Abs. 7 (4 Werktage vor Betonage) und generiert das formale Mahnschreiben.',
-          output: 'Vollständiges, rechtssicheres Mängelrüge-Dokument mit Planverortung zur 1-Klick-Signatur durch den verantwortlichen Bauleiter.',
+          output: 'Vollständiges, rechtlich belastbares Mängelrüge-Dokument mit Planverortung zur 1-Klick-Signatur durch den verantwortlichen Bauleiter.',
           benefit: 'Lückenlose Beweissicherung; Vermeidung von Fristversäumnissen und Erhalt von Gewährleistungsansprüchen.',
           normRef: 'VOB/B § 4 Abs. 7 & BGB § 634'
         },
@@ -741,7 +742,7 @@ export default function KiUeberblick() {
       rag: {
         text: 'Nein! Nach DIN 1045-2 (Abschnitt 5.1.3) und der DAfStb-Richtlinie "Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen" gilt:\n• Rezyklierte Gesteinskörnungen (Typ 1 und Typ 2) dürfen NICHT für Spannbeton verwendet werden.\n• Der Einsatz ist beschränkt auf unbewehrten und schlaff bewehrten Beton bis maximal Festigkeitsklasse C30/37.',
         source: 'DIN 1045-2:2023, Abs. 5.1.3 & DAfStb-RC-Richtlinie',
-        verdict: 'Rechtssicher belegt',
+        verdict: 'Rechtlich belastbar belegt',
         benefit: 'Schützt das Ingenieurbüro vor schweren Haftungs- und Gewährleistungsansprüchen.'
       }
     }
@@ -1030,7 +1031,7 @@ export default function KiUeberblick() {
                               {termsData[selectedTerm].examples[selectedExampleIndex].category}
                             </span>
                             <h4 className="text-base font-bold text-text-main mt-1 flex items-center gap-2">
-                              <span>Anwendungsfall {selectedExampleIndex + 1}:</span>
+                              <span>Anwendungsfall {formatDeWert(selectedExampleIndex + 1)}:</span>
                               <span>{termsData[selectedTerm].examples[selectedExampleIndex].title}</span>
                             </h4>
                           </div>
@@ -1922,7 +1923,7 @@ export default function KiUeberblick() {
 
           {/* Question Selector */}
           <div className="space-y-2">
-            <label className="text-xs font-bold text-text-main">Wähle eine typische bautechnische Fachfrage:</label>
+            <label className="text-xs font-bold text-text-main">Wählen Sie eine typische bautechnische Fachfrage:</label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
               <button
                 onClick={() => setSimQuestion('xc4')}
@@ -2056,8 +2057,8 @@ export default function KiUeberblick() {
         regelwerke={[
           { title: 'Verordnung (EU) 2024/1689 (EU AI Act – Europäisches KI-Gesetz)', url: 'https://eur-lex.europa.eu/' },
           { title: 'ISO/IEC 22989:2022 (Information technology — Artificial intelligence concepts and terminology)', url: 'https://www.iso.org/' },
-          { title: 'DIN SPEC 92001 (Künstliche Intelligenz – Qualitätsanforderungen an KI-Module)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken / BIM)', url: 'https://www.beuth.de/' }
+          { title: 'DIN SPEC 92001 (Künstliche Intelligenz – Qualitätsanforderungen an KI-Module)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+92001' },
+          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken / BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' }
         ]}
         formeln={
           activeTab === 'kernbegriffe'

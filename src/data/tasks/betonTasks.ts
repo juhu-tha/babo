@@ -5,25 +5,25 @@ export const betonTasks: Task[] = [
     id: 't1',
     difficulty: 'Schwer',
     title: 'Mischungsberechnung: Rezepturermittlung',
-    question: 'Sie planen eine Betonrezeptur für 1 m³. Gegeben: 320 kg Zement (Dichte 3.1 kg/dm³), w/z-Wert 0.50, 1.5% Luftporen. Wie viel Gesteinskörnung (Dichte 2.65 kg/dm³) wird benötigt?',
+    question: 'Sie planen eine Betonrezeptur für 1 m³. Gegeben: 320 kg Zement (Dichte 3,1 kg/dm³), w/z-Wert 0.50, 1,5% Luftporen. Wie viel Gesteinskörnung (Dichte 2,65 kg/dm³) wird benötigt?',
     moduleHint: { id: 'mischungsberechnung', name: 'Mischungsberechnung' },
-    solution: 'Nutzen Sie das Modul Mischungsberechnung zur volumetrischen Bilanzierung:\n1. **Wassergehalt ($W$):** $W = 320 \\times 0.50 = 160\\text{ Liter}$ (entspricht $160\\text{ dm}^3$).\n2. **Zementvolumen ($V_c$):** $V_c = \\frac{320}{3.1} = 103.2\\text{ dm}^3$.\n3. **Luftporenvolumen ($V_l$):** $1.5\\% \\times 1000\\text{ dm}^3 = 15.0\\text{ dm}^3$.\n4. **Volumen der Gesteinskörnung ($V_{\\text{gk}}$):** $V_{\\text{gk}} = 1000 - W - V_c - V_l = 1000 - 160 - 103.2 - 15.0 = 721.8\\text{ dm}^3$.\n5. **Masse der Gesteinskörnung ($M_{\\text{gk}}$):** $M_{\\text{gk}} = V_{\\text{gk}} \\times \\rho_{\\text{gk}} = 721.8\\text{ dm}^3 \\times 2.65\\text{ kg/dm}^3 = 1912.8\\text{ kg}$.'
+    solution: 'Nutzen Sie das Modul Mischungsberechnung zur volumetrischen Bilanzierung:\n1. **Wassergehalt ($W$):** $W = 320 \\times 0{,}50 = 160\\text{ Liter}$ (entspricht $160\\text{ dm}^3$).\n2. **Zementvolumen ($V_c$):** $V_c = \\frac{320}{3{,}1} = 103{,}2\\text{ dm}^3$.\n3. **Luftporenvolumen ($V_l$):** $1{,}5\\% \\times 1000\\text{ dm}^3 = 15{,}0\\text{ dm}^3$.\n4. **Volumen der Gesteinskörnung ($V_{\\text{gk}}$):** $V_{\\text{gk}} = 1000 - W - V_c - V_l = 1000 - 160 - 103{,}2 - 15{,}0 = 721{,}8\\text{ dm}^3$.\n5. **Masse der Gesteinskörnung ($M_{\\text{gk}}$):** $M_{\\text{gk}} = V_{\\text{gk}} \\times \\rho_{\\text{gk}} = 721{,}8\\text{ dm}^3 \\times 2{,}65\\text{ kg/dm}^3 = 1912{,}8\\text{ kg}$.'
   },
   {
     id: 't2',
     difficulty: 'Schwer',
     title: 'Frischbetondruck: Schalungsbemessung',
-    question: 'Eine 4,50 m hohe Wandschalung wird mit Beton der Konsistenz F3 bei 10°C betoniert. Die Steiggeschwindigkeit beträgt 3.0 m/h. Wie hoch ist der maximale Frischbetondruck nach DIN 18218?',
+    question: 'Eine 4,50 m hohe Wandschalung wird mit Beton der Konsistenz F3 bei 10°C betoniert. Die Steiggeschwindigkeit beträgt 3,0 m/h. Wie hoch ist der maximale Frischbetondruck nach DIN 18218?',
     moduleHint: { id: 'frischbeton', name: 'Frischbetondruck' },
-    solution: 'Die Berechnung erfolgt nach dem mathematischen Modell der DIN 18218:2010-01:\n1. **Effektive Erstarrungszeit ($t_{E,\\text{eff}}$):** Bei $10^\\circ\\text{C}$ wird die Referenzzeit ($t_{E,\\text{ref}} = 5.0\\text{ h}$ bei $15^\\circ\\text{C}$) temperaturkorrigiert: $t_{E,\\text{eff}} = t_{E,\\text{ref}} \\times 2^{(15 - T_{\\text{Beton}})/10} = 5.0 \\times 2^{0.5} \\approx 7.07\\text{ h}$.\n2. **Erstarren-Beiwert ($K_1$):** $K_1 = 1 + 0.077 \\times (t_{E,\\text{eff}} - 5.0) \\approx 1.159$.\n3. **Schalungsdruck-Zustandsbeiwert (F3):** $\\sigma_{\\text{hk,max}} = (14 \\cdot v + 18) \\times K_1 \\times (\\gamma_c / 25)$. Mit $\\gamma_c = 25\\text{ kN/m}^3$ (Standardbeton) und $v = 3.0\\text{ m/h}$: $\\sigma_{\\text{hk,max}} = (14 \\times 3.0 + 18) \\times 1.159 \\times 1.0 = 60 \\times 1.159 \\approx 69.5\\text{ kN/m}^2$.\n4. **Hydrostatische Begrenzung:** $\\sigma_{\\text{hydro}} = \\gamma_c \\times H = 25 \\times 4.50 = 112.5\\text{ kN/m}^2$.\nDa $\\sigma_{\\text{hk,max}} = 69.5\\text{ kN/m}^2 \\le 112.5\\text{ kN/m}^2$, liegt der maßgebende maximale Frischbetondruck bei **$69.5\\text{ kN/m}^2$**.'
+    solution: 'Die Berechnung erfolgt nach dem mathematischen Modell der DIN 18218:2010-01:\n1. **Effektive Erstarrungszeit ($t_{E,\\text{eff}}$):** Bei $10^\\circ\\text{C}$ wird die Referenzzeit ($t_{E,\\text{ref}} = 5{,}0\\text{ h}$ bei $15^\\circ\\text{C}$) temperaturkorrigiert: $t_{E,\\text{eff}} = t_{E,\\text{ref}} \\times 2^{(15 - T_{\\text{Beton}})/10} = 5{,}0 \\times 2^{0{,}5} \\approx 7{,}07\\text{ h}$.\n2. **Erstarren-Beiwert ($K_1$):** $K_1 = 1 + 0{,}077 \\times (t_{E,\\text{eff}} - 5{,}0) \\approx 1.159$.\n3. **Schalungsdruck-Zustandsbeiwert (F3):** $\\sigma_{\\text{hk,max}} = (14 \\cdot v + 18) \\times K_1 \\times (\\gamma_c / 25)$. Mit $\\gamma_c = 25\\text{ kN/m}^3$ (Standardbeton) und $v = 3{,}0\\text{ m/h}$: $\\sigma_{\\text{hk,max}} = (14 \\times 3{,}0 + 18) \\times 1.159 \\times 1{,}0 = 60 \\times 1.159 \\approx 69{,}5\\text{ kN/m}^2$.\n4. **Hydrostatische Begrenzung:** $\\sigma_{\\text{hydro}} = \\gamma_c \\times H = 25 \\times 4{,}50 = 112{,}5\\text{ kN/m}^2$.\nDa $\\sigma_{\\text{hk,max}} = 69{,}5\\text{ kN/m}^2 \\le 112{,}5\\text{ kN/m}^2$, liegt der maßgebende maximale Frischbetondruck bei **$69{,}5\\text{ kN/m}^2$**.'
   },
   {
     id: 't3',
     difficulty: 'Mittel',
     title: 'Hydratation: Massige Bauteile',
-    question: 'Ein 1.5 m dickes Fundament wird im Sommer (25°C) betoniert. Vergleichen Sie die maximale Kerntemperatur bei Verwendung von CEM I 42.5 R (schnell) und CEM III/B 32.5 N (langsam).',
+    question: 'Ein 1,5 m dickes Fundament wird im Sommer (25°C) betoniert. Vergleichen Sie die maximale Kerntemperatur bei Verwendung von CEM I 42.5 R (schnell) und CEM III/B 32.5 N (langsam).',
     moduleHint: { id: 'hydratation_folgen', name: 'Hydratation & Reife' },
-    solution: 'Die Hydratationswärme ($Q$) ist werkstoffchemisch stark ausgeprägt: CEM I 42.5 R besitzt eine hohe Reaktionsrate ($Q_{7d} \\approx 350\\text{ J/g}$), während ein klinkerreduzierter Hochofenzement CEM III/B 32.5 N durch den hohen Hüttensandanteil langsam reagiert ($Q_{7d} \\approx 220\\text{ J/g}$).\nIn einem massigen Bauteil ($1.5\\text{ m}$ Dicke) führt CEM I zu einer adiabatischen Erwärmung des Kerns auf ca. $65^\\circ\\text{C}$ bis $70^\\circ\\text{C}$. Durch das steile Gefälle zur Außenluft entstehen Oberflächenzugspannungen (Zwang) und Risse. Mit CEM III/B verläuft die Hydratation träger, Wärme kann entweichen und der Temperaturpeak bleibt unkritisch bei ca. $40^\\circ\\text{C}$ bis $45^\\circ\\text{C}$.'
+    solution: 'Die Hydratationswärme ($Q$) ist werkstoffchemisch stark ausgeprägt: CEM I 42.5 R besitzt eine hohe Reaktionsrate ($Q_{7d} \\approx 350\\text{ J/g}$), während ein klinkerreduzierter Hochofenzement CEM III/B 32.5 N durch den hohen Hüttensandanteil langsam reagiert ($Q_{7d} \\approx 220\\text{ J/g}$).\nIn einem massigen Bauteil ($1{,}5\\text{ m}$ Dicke) führt CEM I zu einer adiabatischen Erwärmung des Kerns auf ca. $65^\\circ\\text{C}$ bis $70^\\circ\\text{C}$. Durch das steile Gefälle zur Außenluft entstehen Oberflächenzugspannungen (Zwang) und Risse. Mit CEM III/B verläuft die Hydratation träger, Wärme kann entweichen und der Temperaturpeak bleibt unkritisch bei ca. $40^\\circ\\text{C}$ bis $45^\\circ\\text{C}$.'
   },
   {
     id: 't4',
@@ -31,7 +31,7 @@ export const betonTasks: Task[] = [
     title: 'Nachbehandlung: Verdunstungsschutz',
     question: 'Sommertag: 32°C Lufttemperatur, 35% relative Feuchte, Windgeschwindigkeit 25 km/h. Die Betontemperatur beträgt 28°C. Wie hoch ist die Verdunstungsrate? Sind Maßnahmen erforderlich?',
     moduleHint: { id: 'nachbehandlung', name: 'Nachbehandlung' },
-    solution: 'Die Verdunstungsrate $E$ lässt sich mathematisch über das empirische Menzel-Modell der Betontechnologie berechnen:\n$E = 5 \\times \\left[ (T_{\\text{Beton}} + 18)^{2.5} - r \\cdot (T_{\\text{Luft}} + 18)^{2.5} \\right] \\times (v_{\\text{Wind}} + 4) \\times 10^{-6} \\quad [\\text{kg/(m}^2\\text{h)}]$\nMit $T_{\\text{Beton}} = 28^\\circ\\text{C}$, $T_{\\text{Luft}} = 32^\\circ\\text{C}$, $r = 0.35$ (35% relative Feuchte) und $v_{\\text{Wind}} = 25\\text{ km/h}$:\n- $term_1 = 46^{2.5} \\approx 14351.4$\n- $term_2 = 0.35 \\times 50^{2.5} \\approx 6187.2$\n- $E = 5 \\times (14351.4 - 6187.2) \\times 29 \\times 10^{-6} \\approx 1.18\\text{ kg/(m}^2\\text{h)}$.\nDa $E > 1.0\\text{ kg/(m}^2\\text{h)}$, besteht akute Gefahr von Frühschwindrissen. Sofortige Nachbehandlung (Folie, Curing, feuchte Vliese) ist gemäß DIN EN 13670 zwingend erforderlich.'
+    solution: 'Die Verdunstungsrate $E$ lässt sich mathematisch über das empirische Menzel-Modell der Betontechnologie berechnen:\n$E = 5 \\times \\left[ (T_{\\text{Beton}} + 18)^{2{,}5} - r \\cdot (T_{\\text{Luft}} + 18)^{2{,}5} \\right] \\times (v_{\\text{Wind}} + 4) \\times 10^{-6} \\quad [\\text{kg/(m}^2\\text{h)}]$\nMit $T_{\\text{Beton}} = 28^\\circ\\text{C}$, $T_{\\text{Luft}} = 32^\\circ\\text{C}$, $r = 0{,}35$ (35% relative Feuchte) und $v_{\\text{Wind}} = 25\\text{ km/h}$:\n- $term_1 = 46^{2{,}5} \\approx 14351{,}4$\n- $term_2 = 0{,}35 \\times 50^{2{,}5} \\approx 6187{,}2$\n- $E = 5 \\times (14351.4 - 6187{,}2) \\times 29 \\times 10^{-6} \\approx 1{,}18\\text{ kg/(m}^2\\text{h)}$.\nDa $E > 1{,}0\\text{ kg/(m}^2\\text{h)}$, besteht akute Gefahr von Frühschwindrissen. Sofortige Nachbehandlung (Folie, Curing, feuchte Vliese) ist gemäß DIN EN 13670 zwingend erforderlich.'
   },
   {
     id: 't_festbeton_allg',
@@ -47,7 +47,7 @@ export const betonTasks: Task[] = [
     title: 'Festbeton: Statistik & Konformität',
     question: 'Bei einer Druckfestigkeitsprüfung (n=3) ergeben sich die Werte 32, 34 und 36 MPa. Wie hoch ist die mittlere Druckfestigkeit f_cm?',
     moduleHint: { id: 'festbeton_statistik', name: 'Festbeton (Statistik)' },
-    solution: 'Modul Festbeton (Statistik): f_cm = (32 + 34 + 36) / 3 = 34.0 MPa.'
+    solution: 'Modul Festbeton (Statistik): f_cm = (32 + 34 + 36) / 3 = 34,0 MPa.'
   },
   {
     id: 't_frischbetontemperatur',
@@ -141,9 +141,9 @@ export const betonTasks: Task[] = [
     id: 't_hydratation_adiabatisch',
     difficulty: 'Schwer',
     title: 'Hydratation: Adiabatischer Temperaturanstieg',
-    question: 'Ein massiges Bauteil (Fundamentplatte d = 2.0 m) wird mit C25/30 hergestellt. Zementgehalt c = 340 kg/m³, CEM I 42,5 R mit Q_7d = 360 J/g. Berechnen Sie den theoretischen adiabatischen Temperaturanstieg \\Delta T_{\\text{adiab}} bei c_p = 1.0 kJ/(kg·K) und \\rho = 2400 kg/m³.',
+    question: 'Ein massiges Bauteil (Fundamentplatte d = 2,0 m) wird mit C25/30 hergestellt. Zementgehalt c = 340 kg/m³, CEM I 42,5 R mit Q_7d = 360 J/g. Berechnen Sie den theoretischen adiabatischen Temperaturanstieg \\Delta T_{\\text{adiab}} bei c_p = 1,0 kJ/(kg·K) und \\rho = 2400 kg/m³.',
     moduleHint: { id: 'frischbeton', name: 'Frischbetontemperatur' },
-    solution: 'Thermodynamischer Ansatz: $$\\Delta T_{\\text{adiab}} = \\frac{c \\cdot Q_{7\\text{d}}}{c_p \\cdot \\rho} = \\frac{340 \\times 360}{1.0 \\times 2400} = \\frac{122400}{2400} = 51\\text{ K}$$. Bei 20°C Frischbetontemperatur beträgt die maximale Kerntemperatur $T_{\\text{max}} = 20 + 51 = 71^\\circ\\text{C}$. Dies führt zu Rissgefahren beim Abkühlen und Spätettringit-Bildungsrisiken bei über 65–70°C.'
+    solution: 'Thermodynamischer Ansatz: $$\\Delta T_{\\text{adiab}} = \\frac{c \\cdot Q_{7\\text{d}}}{c_p \\cdot \\rho} = \\frac{340 \\times 360}{1{,}0 \\times 2400} = \\frac{122400}{2400} = 51\\text{ K}$$. Bei 20°C Frischbetontemperatur beträgt die maximale Kerntemperatur $T_{\\text{max}} = 20 + 51 = 71^\\circ\\text{C}$. Dies führt zu Rissgefahren beim Abkühlen und Spätettringit-Bildungsrisiken bei über 65–70°C.'
   },
   {
     id: 't_plastisches_schwinden',
@@ -151,15 +151,15 @@ export const betonTasks: Task[] = [
     title: 'Frühschwinden: Kapillardrucktheorie',
     question: 'Erklären Sie den physikalischen Mechanismus des plastischen Schrumpfens (Kapillardrucktheorie) im jungen Frischbeton. Ab welcher Verdunstungsrate drohen Risse?',
     moduleHint: { id: 'nachbehandlung', name: 'Nachbehandlung' },
-    solution: 'Übersteigt die Verdunstungsrate das nachgelieferte Blutungswasser (Bleeding), weicht der Wassermeniskus in die kapillaren Porenräume zwischen den Zementpartikeln zurück. Nach der Young-Laplace-Gleichung entsteht ein negativer Kapillardruck (Zugspannung im Porenwasser), der das noch unvollständig erhärtete Gefüge zusammenzieht. Ab einer Verdunstungsrate von ca. $E \\ge 1.0\\text{ kg/(m}^2\\cdot\\text{h)}$ entstehen dadurch breite, unregelmäßige Frühschwindrisse.'
+    solution: 'Übersteigt die Verdunstungsrate das nachgelieferte Blutungswasser (Bleeding), weicht der Wassermeniskus in die kapillaren Porenräume zwischen den Zementpartikeln zurück. Nach der Young-Laplace-Gleichung entsteht ein negativer Kapillardruck (Zugspannung im Porenwasser), der das noch unvollständig erhärtete Gefüge zusammenzieht. Ab einer Verdunstungsrate von ca. $E \\ge 1{,}0\\text{ kg/(m}^2\\cdot\\text{h)}$ entstehen dadurch breite, unregelmäßige Frühschwindrisse.'
   },
   {
     id: 't_trennrisse_zwang',
     difficulty: 'Schwer',
     title: 'Äußerer Zwang: Trennrisse infolge Abkühlung',
-    question: 'Eine 30 cm dicke Betonwand kühlt um \\Delta T = 22 K bei äußerem Zwang K = 0.85 ab. Gegeben: \\alpha_T = 10 · 10^-6 K^-1, E_{\\text{cm,eff}} = 15.000 N/mm². Berechnen Sie die induzierte Zugspannung und vergleiche mit f_{\\text{ct,eff}} = 1.6 N/mm².',
+    question: 'Eine 30 cm dicke Betonwand kühlt um \\Delta T = 22 K bei äußerem Zwang K = 0.85 ab. Gegeben: \\alpha_T = 10 · 10^-6 K^-1, E_{\\text{cm,eff}} = 15.000 N/mm². Berechnen Sie die induzierte Zugspannung und vergleichen Sie mit f_{\\text{ct,eff}} = 1,6 N/mm².',
     moduleHint: { id: 'hydratation_folgen', name: 'Zwang & Risse' },
-    solution: '1. Behinderte Wärmedehnung: $\\varepsilon_{\\text{zwang}} = K \\cdot \\alpha_T \\cdot \\Delta T = 0.85 \\cdot (10 \\cdot 10^{-6}) \\cdot 22 = 1.87 \\cdot 10^{-4}$.\n2. Zugspannung: $\\sigma_{\\text{ct}} = E_{\\text{cm,eff}} \\cdot \\varepsilon_{\\text{zwang}} = 15000 \\cdot 1.87 \\cdot 10^{-4} = 2.805\\text{ N/mm}^2$.\nDa $\\sigma_{\\text{ct}} = 2.81\\text{ N/mm}^2 > f_{\\text{ct,eff}} = 1.6\\text{ N/mm}^2$, reißt die Wand vollständig auf (durchgehender Trennriss). Mindestbewehrung nach DIN EN 1992-1-1 ist zur Rissbreitenbegrenzung zwingend erforderlich.'
+    solution: '1. Behinderte Wärmedehnung: $\\varepsilon_{\\text{zwang}} = K \\cdot \\alpha_T \\cdot \\Delta T = 0{,}85 \\cdot (10 \\cdot 10^{-6}) \\cdot 22 = 1{,}87 \\cdot 10^{-4}$.\n2. Zugspannung: $\\sigma_{\\text{ct}} = E_{\\text{cm,eff}} \\cdot \\varepsilon_{\\text{zwang}} = 15000 \\cdot 1{,}87 \\cdot 10^{-4} = 2.805\\text{ N/mm}^2$.\nDa $\\sigma_{\\text{ct}} = 2{,}81\\text{ N/mm}^2 > f_{\\text{ct,eff}} = 1{,}6\\text{ N/mm}^2$, reißt die Wand vollständig auf (durchgehender Trennriss). Mindestbewehrung nach DIN EN 1992-1-1 ist zur Rissbreitenbegrenzung zwingend erforderlich.'
   },
   {
     id: 't_uhpc_duktilitaet',
@@ -167,7 +167,7 @@ export const betonTasks: Task[] = [
     title: 'Innovative Werkstoffe: UHPC Gefüge & Mikrostahlfasern',
     question: 'Warum benötigt Ultra-Hochleistungsbeton (UHPC) mit Druckfestigkeiten f_ck > 150 MPa zwingend eine Faserbewehrung (z.B. Mikrostahlfasern)?',
     moduleHint: { id: 'innovative_werkstoffe', name: 'Innovative Werkstoffe' },
-    solution: 'Mit steigender Druckfestigkeit sinkt die elastische Grenzdehnung und der Werkstoff wird extrem spröde. Bei unbewehrtem UHPC würde es bei Rissbildung zu einem explosionsartigen, schlagartigen Sprödbruch ohne Vorankündigung kommen. Hochfeste Mikrostahlfasern (typisch 1.5–2.5 Vol.-%) überbrücken Mikrorisse, erzeugen eine signifikante Nachrisszugfestigkeit und verleihen dem Werkstoff eine quasi-duktile Verformbarkeit.'
+    solution: 'Mit steigender Druckfestigkeit sinkt die elastische Grenzdehnung und der Werkstoff wird extrem spröde. Bei unbewehrtem UHPC würde es bei Rissbildung zu einem explosionsartigen, schlagartigen Sprödbruch ohne Vorankündigung kommen. Hochfeste Mikrostahlfasern (typisch 1,5–2,5 Vol.-%) überbrücken Mikrorisse, erzeugen eine signifikante Nachrisszugfestigkeit und verleihen dem Werkstoff eine quasi-duktile Verformbarkeit.'
   },
   {
     id: 't_betonpraxis_nachdosierung',
@@ -181,9 +181,9 @@ export const betonTasks: Task[] = [
     id: 't_mehlkorngehalt',
     difficulty: 'Mittel',
     title: 'Beton-Grundlagen: Mehlkorngehalt & Zusammenhalt',
-    question: 'Was versteht man unter dem Mehlkorngehalt (Korngröße < 0.125 mm) und welche Konsequenzen hat ein zu geringer bzw. zu hoher Mehlkorngehalt?',
+    question: 'Was versteht man unter dem Mehlkorngehalt (Korngröße < 0,125 mm) und welche Konsequenzen hat ein zu geringer bzw. zu hoher Mehlkorngehalt?',
     moduleHint: { id: 'grundlagen', name: 'Grundlagen Beton' },
-    solution: 'Der Mehlkorngehalt umfasst den Zement, Betonzusatzstoffe (z.B. Flugasche, Kalksteinmehl) und den Gesteinskörnungsanteil < 0.125 mm. Zu geringer Gehalt: Der Beton neigt zum Entmischen, Wasserabsondern (Bleeding) und lässt sich schlecht pumpen. Zu hoher Gehalt: Erhöhter Wasseranspruch zur Benetzung der riesigen spezifischen Oberfläche, dadurch entweder Festigkeitsabfall oder höherer Fließmittelbedarf, sowie erhöhtes Schwindmaß.'
+    solution: 'Der Mehlkorngehalt umfasst den Zement, Betonzusatzstoffe (z.B. Flugasche, Kalksteinmehl) und den Gesteinskörnungsanteil < 0,125 mm. Zu geringer Gehalt: Der Beton neigt zum Entmischen, Wasserabsondern (Bleeding) und lässt sich schlecht pumpen. Zu hoher Gehalt: Erhöhter Wasseranspruch zur Benetzung der riesigen spezifischen Oberfläche, dadurch entweder Festigkeitsabfall oder höherer Fließmittelbedarf, sowie erhöhtes Schwindmaß.'
   },
   {
     id: 'ts_svb',

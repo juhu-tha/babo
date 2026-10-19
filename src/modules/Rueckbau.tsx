@@ -1,3 +1,4 @@
+import { formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Trash2, 
@@ -527,7 +528,7 @@ export default function Rueckbau() {
           <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-2 pb-2 border-b border-home-grau/10">
-                <span className="text-3xl font-extrabold text-shiraz/20">Phase 0{selectedPhase}</span>
+                <span className="text-3xl font-extrabold text-shiraz/20">Phase 0{formatDeWert(selectedPhase)}</span>
                 <div>
                   <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
                     {processPhases[selectedPhase - 1].title}
@@ -780,10 +781,10 @@ export default function Rueckbau() {
                     <div className="flex items-center gap-2 bg-white p-2 rounded-lg border border-home-grau/10 flex-shrink-0">
                       <div className="text-right">
                         <div className="text-xs text-text-main/60 font-bold">RECYCLING-QUOTE</div>
-                        <div className="text-sm font-mono font-bold text-shiraz">{baustoffRecyclingData[selectedRecyclingMaterial].percentage}%</div>
+                        <div className="text-sm font-mono font-bold text-shiraz">{formatDeWert(baustoffRecyclingData[selectedRecyclingMaterial].percentage)}%</div>
                       </div>
                       <div className="w-10 h-10 rounded-full bg-shiraz/5 border border-shiraz/20 flex items-center justify-center text-xs font-bold text-shiraz">
-                        {baustoffRecyclingData[selectedRecyclingMaterial].percentage}%
+                        {formatDeWert(baustoffRecyclingData[selectedRecyclingMaterial].percentage)}%
                       </div>
                     </div>
                   </div>
@@ -851,7 +852,7 @@ export default function Rueckbau() {
                   <tr key={idx} className="hover:bg-slate-50/50">
                     <td className="py-2.5 px-3 font-bold text-slate-800">{mat.name}</td>
                     <td className="py-2.5 px-3 font-mono text-xs text-slate-500">{mat.avv}</td>
-                    <td className="py-2.5 px-3 font-semibold text-shiraz">{mat.percentage}%</td>
+                    <td className="py-2.5 px-3 font-semibold text-shiraz">{formatDeWert(mat.percentage)}%</td>
                     <td className="py-2.5 px-3">
                       <span className={`text-xs px-1.5 py-0.5 rounded font-bold uppercase ${
                         mat.rating.includes('Sehr hoch')
@@ -1071,7 +1072,7 @@ export default function Rueckbau() {
               </div>
               <div className="flex justify-between">
                 <span>Mineralischer Anteil:</span>
-                <span className="font-mono font-bold text-slate-800">{mineralPercentage} %</span>
+                <span className="font-mono font-bold text-slate-800">{formatDeWert(mineralPercentage)} %</span>
               </div>
             </div>
           </div>
@@ -1106,7 +1107,7 @@ export default function Rueckbau() {
                         </span>
                         <div className="flex items-center gap-2">
                           <span className="text-xs font-mono text-slate-500 bg-slate-100 p-0.5 rounded">AVV {item.avv}</span>
-                          <span className="font-bold font-mono text-text-main">{item.mass.toLocaleString('de-DE')} t ({percent}%)</span>
+                          <span className="font-bold font-mono text-text-main">{item.mass.toLocaleString('de-DE')} t ({formatDeWert(percent)}%)</span>
                         </div>
                       </div>
                       <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
@@ -1153,14 +1154,14 @@ export default function Rueckbau() {
                         Für die gewählte Bauart ergeben sich folgende statistische Massenkonzentrationen (in Tonnen pro Kubikmeter umbauter Raum) nach Aufmaßwerten typischer Rückbaustrukturen:
                       </p>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs bg-slate-50 p-2.5 rounded-lg border border-home-grau/15 font-mono">
-                        <div>Beton: {currentDensity.concrete} t/m³</div>
-                        <div>Mauerwerk: {currentDensity.masonry} t/m³</div>
-                        <div>Holz: {currentDensity.wood} t/m³</div>
-                        <div>Metalle: {currentDensity.metals} t/m³</div>
-                        <div>Gips: {currentDensity.gypsum} t/m³</div>
-                        <div>Plastik: {currentDensity.plastics} t/m³</div>
-                        <div>Gefahrstoffe: {currentDensity.hazardous} t/m³</div>
-                        <div>Mischabfall: {currentDensity.mixed} t/m³</div>
+                        <div>Beton: {formatDeWert(currentDensity.concrete)} t/m³</div>
+                        <div>Mauerwerk: {formatDeWert(currentDensity.masonry)} t/m³</div>
+                        <div>Holz: {formatDeWert(currentDensity.wood)} t/m³</div>
+                        <div>Metalle: {formatDeWert(currentDensity.metals)} t/m³</div>
+                        <div>Gips: {formatDeWert(currentDensity.gypsum)} t/m³</div>
+                        <div>Plastik: {formatDeWert(currentDensity.plastics)} t/m³</div>
+                        <div>Gefahrstoffe: {formatDeWert(currentDensity.hazardous)} t/m³</div>
+                        <div>Mischabfall: {formatDeWert(currentDensity.mixed)} t/m³</div>
                       </div>
                     </div>
 
@@ -1183,7 +1184,7 @@ export default function Rueckbau() {
                       <p className="mb-2 text-text-main/75 text-xs">
                         Die Summe aller Fraktionen ergibt das geschätzte Abbruchgewicht auf der Baustelle:
                       </p>
-                      <FormulaText text={`m_{\\text{ges}} = ${massConcrete} + ${massMasonry} + ${massWood} + ${massMetals} + ${massPlastics} + ${massGypsum} + ${massHazardous} + ${massMixed} = ${totalMass} \\text{ t}`} />
+                      <FormulaText text={`m_{\\text{ges}} = ${formatDeTeXWert(massConcrete)} + ${formatDeTeXWert(massMasonry)} + ${formatDeTeXWert(massWood)} + ${formatDeTeXWert(massMetals)} + ${formatDeTeXWert(massPlastics)} + ${formatDeTeXWert(massGypsum)} + ${formatDeTeXWert(massHazardous)} + ${formatDeTeXWert(massMixed)} = ${formatDeTeXWert(totalMass)} \\text{ t}`} />
                     </div>
 
                     <div>
@@ -1194,10 +1195,10 @@ export default function Rueckbau() {
                       <p className="mb-2 text-text-main/75 text-xs">
                         Nach der Gewerbeabfallverordnung (GewAbfV) müssen Bauschuttfraktionen getrennt erfasst werden. Der mineralische Haupt-Massenstrom (Beton- und Mauerwerksbruch) beträgt:
                       </p>
-                      <FormulaText text={`P_{\\text{min}} = \\frac{m_{\\text{Beton}} + m_{\\text{Mauerwerk}}}{m_{\\text{ges}}} \\cdot 100 = \\frac{${massConcrete} + ${massMasonry}}{${totalMass}} \\cdot 100 \\approx ${mineralPercentage} \\%`} />
+                      <FormulaText text={`P_{\\text{min}} = \\frac{m_{\\text{Beton}} + m_{\\text{Mauerwerk}}}{m_{\\text{ges}}} \\cdot 100 = \\frac{${formatDeTeXWert(massConcrete)} + ${formatDeTeXWert(massMasonry)}}{${formatDeTeXWert(totalMass)}} \\cdot 100 \\approx ${formatDeTeXWert(mineralPercentage)} \\%`} />
                       <div className="mt-2 text-indigo-950 bg-indigo-50/50 border border-indigo-100 p-2.5 rounded-lg text-xs">
                         <span className="font-bold font-semibold text-indigo-900 block mb-0.5">✓ Kreislauffähigkeit &amp; LfU-Konformität:</span>
-                        Da der mineralische Anteil über 85% liegt ({mineralPercentage}%), ist dieses Bauwerk baustofflich prädestiniert für ein hochwertiges RC-Recycling nach der neuen Ersatzbaustoffverordnung (EBV) von 2023. Das sortenreine Rückbaukonzept ist zwingend umzusetzen, um eine unzulässige Vermischung zu verhindern.
+                        Da der mineralische Anteil über 85% liegt ({formatDeWert(mineralPercentage)}%), ist dieses Bauwerk baustofflich prädestiniert für ein hochwertiges RC-Recycling nach der neuen Ersatzbaustoffverordnung (EBV) von 2023. Das sortenreine Rückbaukonzept ist zwingend umzusetzen, um eine unzulässige Vermischung zu verhindern.
                       </div>
                     </div>
                   </div>
@@ -1320,7 +1321,7 @@ export default function Rueckbau() {
               </span>
             </div>
             <p className="text-xs text-text-main/80 leading-relaxed">
-              Für eine rechtssichere Planung, die Ausschreibung und den kontrollierten selektiven Rückbau bilden neben der EBV und GewAbfV vier spezialisierte Regelwerke das normative Fundament:
+              Für eine rechtlich belastbare Planung, die Ausschreibung und den kontrollierten selektiven Rückbau bilden neben der EBV und GewAbfV vier spezialisierte Regelwerke das normative Fundament:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1597,10 +1598,10 @@ export default function Rueckbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18007 (Abbruch- und Rückbauarbeiten - Begriffe, Verfahren, Arbeitssicherheit)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 18007 (Abbruch- und Rückbauarbeiten - Begriffe, Verfahren, Arbeitssicherheit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18007' },
           { title: 'VDI 6210 Blatt 1 & Blatt 2 (Rückbau baulicher und technischer Anlagen)', url: 'https://www.vdi.de/' },
-          { title: 'DIN SPEC 91484 (Verfahren für das Rückbau-Audit vor Abbrucharbeiten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN SPEC 91525-1 (Digitaler Gebäuderessourcenpass für den zirkulären Rückbau)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN SPEC 91484 (Verfahren für das Rückbau-Audit vor Abbrucharbeiten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91484' },
+          { title: 'DIN SPEC 91525-1 (Digitaler Gebäuderessourcenpass für den zirkulären Rückbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91525-1' },
           { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche Anlagen - Erkundung und Bewertung)', url: 'https://www.vdi.de/' },
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Gewerbeabfallverordnung (GewAbfV)', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },
@@ -1608,7 +1609,7 @@ export default function Rueckbau() {
         ]}
         formeln={[
           {
-            formel: 'M_{\\text{Sortenrein}} = \\frac{\\sum m_{\\text{getrennt}}}{\\sum m_{\\text{gesamt}}} \\ge 0.90 \\quad (90\\%\\text{-Getrenntsammlungsquote})',
+            formel: 'M_{\\text{Sortenrein}} = \\frac{\\sum m_{\\text{getrennt}}}{\\sum m_{\\text{gesamt}}} \\ge 0{,}90 \\quad (90\\%\\text{-Getrenntsammlungsquote})',
             erklaerung: 'Gesetzlich geforderte Getrenntsammlungsquote der Gewerbeabfallverordnung (GewAbfV § 8) für mineralische und nicht-mineralische Bau- und Abbruchabfälle.',
             quelle: 'GewAbfV § 8 Abs. 1'
           },

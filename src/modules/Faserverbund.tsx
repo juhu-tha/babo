@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -230,13 +231,13 @@ export default function Faserverbund() {
               <div className="mt-6 p-3 bg-white rounded-lg border border-home-grau/30 text-sm">
                 <h4 className="font-bold mb-2 text-text-main">Materialkennwerte</h4>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-                  <div className="flex justify-between"><span className="text-text-main/60">E-Modul Faser:</span><span className="font-bold">{ef} GPa</span></div>
-                  <div className="flex justify-between"><span className="text-text-main/60">Zugfestigkeit Faser:</span><span className="font-bold">{sf} MPa</span></div>
-                  <div className="flex justify-between"><span className="text-text-main/60">Dichte Faser:</span><span className="font-bold">{fibers[fiberType].rho} g/cm³</span></div>
+                  <div className="flex justify-between"><span className="text-text-main/60">E-Modul Faser:</span><span className="font-bold">{formatDeWert(ef)} GPa</span></div>
+                  <div className="flex justify-between"><span className="text-text-main/60">Zugfestigkeit Faser:</span><span className="font-bold">{formatDeWert(sf)} MPa</span></div>
+                  <div className="flex justify-between"><span className="text-text-main/60">Dichte Faser:</span><span className="font-bold">{formatDeWert(fibers[fiberType].rho)} g/cm³</span></div>
                   <div className="col-span-2 border-t border-home-grau/30 my-1"></div>
-                  <div className="flex justify-between"><span className="text-text-main/60">E-Modul Matrix:</span><span className="font-bold">{em} GPa</span></div>
-                  <div className="flex justify-between"><span className="text-text-main/60">Zugfestigkeit Matrix:</span><span className="font-bold">{sm} MPa</span></div>
-                  <div className="flex justify-between"><span className="text-text-main/60">Dichte Matrix:</span><span className="font-bold">{matrices[matrixType].rho} g/cm³</span></div>
+                  <div className="flex justify-between"><span className="text-text-main/60">E-Modul Matrix:</span><span className="font-bold">{formatDeWert(em)} GPa</span></div>
+                  <div className="flex justify-between"><span className="text-text-main/60">Zugfestigkeit Matrix:</span><span className="font-bold">{formatDeWert(sm)} MPa</span></div>
+                  <div className="flex justify-between"><span className="text-text-main/60">Dichte Matrix:</span><span className="font-bold">{formatDeWert(matrices[matrixType].rho)} g/cm³</span></div>
                 </div>
               </div>
             </div>
@@ -245,10 +246,10 @@ export default function Faserverbund() {
             <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Steifigkeit & Festigkeit</h3>
               <div className="grid grid-cols-1 gap-4">
-                <div><div className="text-white/70 text-sm">Dichte Verbund</div><div className="text-3xl font-bold">{results.rho_composite.toFixed(2)} g/cm³</div></div>
-                <div><div className="text-white/70 text-sm">E-Modul Längsrichtung (Voigt)</div><div className="text-3xl font-bold">{results.E_parallel.toFixed(1)} GPa</div></div>
-                <div><div className="text-white/70 text-sm">E-Modul Querrichtung (Reuss)</div><div className="text-3xl font-bold">{results.E_quer.toFixed(1)} GPa</div></div>
-                <div><div className="text-white/70 text-sm">Zugfestigkeit Längsrichtung</div><div className="text-3xl font-bold">{results.S_parallel.toFixed(0)} MPa</div></div>
+                <div><div className="text-white/70 text-sm">Dichte Verbund</div><div className="text-3xl font-bold">{formatDeZahl(results.rho_composite, 2)} g/cm³</div></div>
+                <div><div className="text-white/70 text-sm">E-Modul Längsrichtung (Voigt)</div><div className="text-3xl font-bold">{formatDeZahl(results.E_parallel, 1)} GPa</div></div>
+                <div><div className="text-white/70 text-sm">E-Modul Querrichtung (Reuss)</div><div className="text-3xl font-bold">{formatDeZahl(results.E_quer, 1)} GPa</div></div>
+                <div><div className="text-white/70 text-sm">Zugfestigkeit Längsrichtung</div><div className="text-3xl font-bold">{formatDeZahl(results.S_parallel, 0)} MPa</div></div>
               </div>
             </div>
 
@@ -370,9 +371,9 @@ export default function Faserverbund() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 14125 (Faserverstärkte Kunststoffe - Bestimmung der Biegeeigenschaften)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 527-4 (Kunststoffe - Bestimmung der Zugeigenschaften von isotropen und anisotropen faserverstärkten Kunststoffverbundwerkstoffen)', url: 'https://www.dinmedia.de/' },
-          { title: 'VDI 2014 Blatt 3 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 14125 (Faserverstärkte Kunststoffe - Bestimmung der Biegeeigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14125' },
+          { title: 'DIN EN ISO 527-4 (Kunststoffe - Bestimmung der Zugeigenschaften von isotropen und anisotropen faserverstärkten Kunststoffverbundwerkstoffen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+527-4' },
+          { title: 'VDI 2014 Blatt 3 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)', url: 'https://www.dinmedia.de/de/suche?q=VDI+2014+Blatt+3' }
         ]}
         formeln={[
           {

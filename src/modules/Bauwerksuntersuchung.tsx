@@ -204,7 +204,7 @@ export default function Bauwerksuntersuchung() {
             
             <div className="text-sm text-slate-800 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed">
               <p>
-                Eine umfassende <strong>Bauwerksuntersuchung (Ist-Analyse)</strong> stellt die maßgebliche Grundlage für das Bauen im Bestand dar. Sie schätzt die Restlebensdauer ab, liefert verlässliche rechnerische Kennwerte für Statiker bei Traglaststeigerungen und dient als rechtssichere Grundlage für Instandsetzungsmaßnahmen gemäß der <strong>DIBt-Instandhaltungsrichtlinie (TR Instandhaltung)</strong>.
+                Eine umfassende <strong>Bauwerksuntersuchung (Ist-Analyse)</strong> stellt die maßgebliche Grundlage für das Bauen im Bestand dar. Sie schätzt die Restlebensdauer ab, liefert verlässliche rechnerische Kennwerte für Statiker bei Traglaststeigerungen und dient als rechtlich belastbare Grundlage für Instandsetzungsmaßnahmen gemäß der <strong>DIBt-Instandhaltungsrichtlinie (TR Instandhaltung)</strong>.
               </p>
             </div>
           </div>
@@ -396,13 +396,13 @@ export default function Bauwerksuntersuchung() {
           'Rinn, F.: Bohrwiderstandsmessung an Holz (Resistograph) – Originalpatent/Quelle prüfen'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12504-1:2019-09 (Bohrkernproben - Herstellung, Untersuchung und Prüfung der Druckfestigkeit)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12504-2:2021-08 (Bestimmung der Rückprallzahl mit dem Schmidt-Hammer)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12504-4:2021-08 (Bestimmung der Ultraschallimpulsgeschwindigkeit)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehaltes in Festbeton - Säureaufschluss und Titration)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14630:2007-01 (Bestimmung der Karbonatisierungstiefe im Festbeton mit Phenolphthalein)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1542:1999-07 (Messung der Haftfestigkeit im Abreißversuch mit Prüfstempel Ø 50 mm)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
+          { title: 'DIN EN 12504-1:2019-09 (Bohrkernproben - Herstellung, Untersuchung und Prüfung der Druckfestigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
+          { title: 'DIN EN 12504-2:2021-08 (Bestimmung der Rückprallzahl mit dem Schmidt-Hammer)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
+          { title: 'DIN EN 12504-4:2021-08 (Bestimmung der Ultraschallimpulsgeschwindigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-4' },
+          { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehaltes in Festbeton - Säureaufschluss und Titration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629' },
+          { title: 'DIN EN 14630:2007-01 (Bestimmung der Karbonatisierungstiefe im Festbeton mit Phenolphthalein)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14630' },
+          { title: 'DIN EN 1542:1999-07 (Messung der Haftfestigkeit im Abreißversuch mit Prüfstempel Ø 50 mm)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1542' },
           { title: 'DBV-Merkblatt Betondeckung und Bewehrung (2015-12, statistisches 5 %-Quantil)', url: 'https://www.betonverein.de/' },
           { title: 'DGZfP-Merkblätter B 02 (Betondeckung), B 03 (Potentialmessung, 2025), B 04 (Ultraschall), B 10 (Radar), B 11 (Impakt-Echo, 2022)', url: 'https://publikationen.dgzfp.de/' },
           { title: 'TR Instandhaltung von Betonbauwerken (DIBt) – korrosionsauslösender Chloridgehalt objektspezifisch durch den sachkundigen Planer', url: 'https://www.dibt.de/' },

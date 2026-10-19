@@ -248,7 +248,7 @@ export default function Bruchmechanik() {
         regelwerke={[
           { title: 'fib Model Code 2010 (Bruchmechanische Ansätze für zementgebundene Baustoffe)', url: 'https://www.fib-international.org/' },
           { title: 'DAfStb Heft 449 / Heft 500 (Bruchmechanische Untersuchungen an Beton)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN ISO 12737 (Metallische Werkstoffe - Bestimmung der Bruchzähigkeit K_Ic)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 12737 (Metallische Werkstoffe - Bestimmung der Bruchzähigkeit K_Ic)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12737' }
         ]}
         literatur={[
           'Gross, D.; Seelig, T. (2016): Bruchmechanik: Mit einer Einführung in die Mikromechanik (Springer Vieweg)',

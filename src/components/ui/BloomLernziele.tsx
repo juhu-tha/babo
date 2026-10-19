@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import { Target, CheckCircle2, ChevronDown, ChevronUp, Clock, Award, BookOpen, Layers, Calculator, ShieldCheck } from 'lucide-react';
 import { getBloomCompleted, setBloomCompleted } from '@/src/utils/studyStorage';
@@ -113,11 +114,11 @@ export const BloomLernziele: React.FC<BloomLernzieleProps> = ({
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2 text-xs text-text-main/70">
             <span className="flex items-center gap-1">
-              <Clock size={13} className="text-home-grau" /> ca. {timeMinutes} Min.
+              <Clock size={13} className="text-home-grau" /> ca. {formatDeWert(timeMinutes)} Min.
             </span>
             {ects && (
               <span className="flex items-center gap-1">
-                <Award size={13} className="text-home-grau" /> {ects} ECTS
+                <Award size={13} className="text-home-grau" /> {formatDeWert(ects)} ECTS
               </span>
             )}
           </div>

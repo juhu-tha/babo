@@ -30,7 +30,7 @@ interface LinkCheckItem {
 }
 
 const LIVE_LINK_AUDIT: LinkCheckItem[] = [
-  { id: '1', name: 'DIN Media Normenportal (vormals Beuth)', url: 'https://www.dinmedia.de/', sourceModule: 'Regularien & ModuleFooter', category: 'Normen', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
+  { id: '1', name: 'DIN Media Normenportal (vormals Beuth)', url: 'https://www.dinmedia.de/de/suche?q=DIN+Media+Normenportal', sourceModule: 'Regularien & ModuleFooter', category: 'Normen', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
   { id: '2', name: 'DAfStb (Deutscher Ausschuss für Stahlbeton)', url: 'https://www.dafstb.de/', sourceModule: 'Beton & Forschung', category: 'Fachverbände', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
   { id: '3', name: 'DIBt (Deutsches Institut für Bautechnik)', url: 'https://www.dibt.de/', sourceModule: 'Zertifizierung & Zulassungen', category: 'Bauaufsicht', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
   { id: '4', name: 'VDZ (Verein Deutscher Zementwerke)', url: 'https://www.vdz-online.de/', sourceModule: 'Zementchemie & LCA', category: 'Industrie', lastChecked: '2026-09-24', status: 'valid', statusText: 'Online (HTTP 200)' },
@@ -114,7 +114,7 @@ export function NormenLinkMonitor() {
           className="flex items-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer disabled:opacity-50"
         >
           <RefreshCw size={14} className={isSimulatingCheck ? "animate-spin" : ""} />
-          {isSimulatingCheck ? "Prüfe Erreichbarkeit..." : "Live-Audit durchführen"}
+          {isSimulatingCheck ? "Erreichbarkeit wird geprüft …" : "Live-Audit durchführen"}
         </button>
       </div>
 

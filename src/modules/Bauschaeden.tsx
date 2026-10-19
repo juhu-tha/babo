@@ -37,9 +37,9 @@ export default function Bauschaeden() {
   const [senderName, setSenderName] = useState('Ingenieurbüro Dr.-Ing. M. Huber');
   const [recipientName, setRecipientName] = useState('Bauwerksgesellschaft Nord GmbH & Co. KG');
   const [projectName, setProjectName] = useState('TH Augsburg - Modernisierung Trakt D / Raum D1.05');
-  const [affectedTrade, setAffectedTrade] = useState('Anstrich- und Spachtelarbeiten (Gewerk 034)');
+  const [affectedTrade, setAffectedTrade] = useState('Bodenbelagsarbeiten (Gewerk 036) – Vorleistung Estrich/Betonboden');
   const [noticeDetail, setNoticeDetail] = useState('Die Rohbetondecke weist an diversen Stellen eine Restfeuchte von über 3,8 CM-% auf.');
-  const [consequenceText, setConsequenceText] = useState('Gefahr von nachfolgenden Fleckenbildungen, mangelhafter Haftung der Grundierung und Blasenbildung im Designguss-Bodenbelag.');
+  const [consequenceText, setConsequenceText] = useState('Gefahr von Blasenbildung, Haftungsverlust der Grundierung und Ablösungen des Designguss-Bodenbelags.');
   const [deadlineDate, setDeadlineDate] = useState('25.10.2026');
   const [copySuccess, setCopySuccess] = useState(false);
 
@@ -54,9 +54,9 @@ export default function Bauschaeden() {
     setRecipientName('Bauwerksgesellschaft Nord GmbH & Co. KG');
     setProjectName('TH Augsburg - Modernisierung Trakt D / Raum D1.05');
     if (noticeType === 'bedenken') {
-      setAffectedTrade('Anstrich- und Spachtelarbeiten (Gewerk 034)');
+      setAffectedTrade('Bodenbelagsarbeiten (Gewerk 036) – Vorleistung Estrich/Betonboden');
       setNoticeDetail('Die Rohbetondecke weist an diversen Stellen eine Restfeuchte von über 3,8 CM-% auf.');
-      setConsequenceText('Gefahr von nachfolgenden Fleckenbildungen, mangelhafter Haftung der Grundierung und Blasenbildung im Designguss-Bodenbelag.');
+      setConsequenceText('Gefahr von Blasenbildung, Haftungsverlust der Grundierung und Ablösungen des Designguss-Bodenbelags.');
     } else if (noticeType === 'behinderung') {
       setAffectedTrade('Estrich- und Bodenbelagsarbeiten (Gewerk 024)');
       setNoticeDetail('Vorgewerk Heizungsinstallation hat die Fußbodenheizung nicht abgedrückt und fertiges Trocknungs-Aufheizprotokoll fehlt.');
@@ -75,9 +75,9 @@ export default function Bauschaeden() {
   const handleTypeChange = (type: 'bedenken' | 'behinderung' | 'mangel' | 'nachtrag') => {
     setNoticeType(type);
     if (type === 'bedenken') {
-      setAffectedTrade('Anstrich- und Spachtelarbeiten (Gewerk 034)');
+      setAffectedTrade('Bodenbelagsarbeiten (Gewerk 036) – Vorleistung Estrich/Betonboden');
       setNoticeDetail('Die Rohbetondecke weist an diversen Stellen eine Restfeuchte von über 3,8 CM-% auf.');
-      setConsequenceText('Gefahr von nachfolgenden Fleckenbildungen, mangelhafter Haftung der Grundierung und Blasenbildung im Designguss-Bodenbelag.');
+      setConsequenceText('Gefahr von Blasenbildung, Haftungsverlust der Grundierung und Ablösungen des Designguss-Bodenbelags.');
     } else if (type === 'behinderung') {
       setAffectedTrade('Estrich- und Bodenbelagsarbeiten (Gewerk 024)');
       setNoticeDetail('Vorgewerk Heizungsinstallation hat die Fußbodenheizung nicht abgedrückt und fertiges Trocknungs-Aufheizprotokoll fehlt.');
@@ -118,9 +118,9 @@ hiermit melden wir gemäß § 4 Abs. 3 VOB/B unverzüglich und vor Beginn unsere
 3. Absehbare Schadensfolge bei Ausführung:
    ${consequenceText}
 
-Durch diese Fehlerhaftigkeit ist die fachgerechte, mangelfreie Leistungserbringung im Sinne von § 13 VOB/B nachweislich gefährdet. Wir bitten Sie, diese Bedenken umgehend mit dem Tragwerksplaner / der Bauleitung zu prüfen und uns eine entsprechende schriftliche Anordnung zukommen zu lassen.
+Durch diese Fehlerhaftigkeit ist die fachgerechte, mangelfreie Leistungserbringung im Sinne von § 13 VOB/B nachweislich gefährdet. Wir bitten Sie als Auftraggeber, diese Bedenken umgehend – ggf. unter Einbeziehung Ihrer Fachplaner – zu prüfen und uns eine entsprechende schriftliche Anordnung zukommen zu lassen.
 
-Gemäß § 13 Abs. 3 VOB/B weisen wir vorsorglich darauf hin, dass wir bei Nichtbeachtung dieser Rüge für alle sich daraus ergebenden Folgeschäden, Funktionsmängel oder Festigkeitsverluste jegliche Gewährleistung und Haftung ablehnen.
+Sollte die Leistung entgegen diesen Bedenken auf Ihre Anordnung ausgeführt werden, sind wir nach § 13 Abs. 3 VOB/B von der Mängelhaftung für die hier dargestellten Folgen frei.
 
 Mit freundlichen Grüßen,
 ${senderName}`;
@@ -342,11 +342,11 @@ ${senderName}`;
                       </tr>
                       <tr className="bg-slate-50/50">
                         <td className="p-2 border border-home-grau/30 font-medium">VOB/B (§ 13)</td>
-                        <td className="p-2 border border-home-grau/30"><strong>4 Jahre</strong> für Bauwerke (sofern VOB/B als Ganzes vereinbart ist).</td>
+                        <td className="p-2 border border-home-grau/30"><strong>4 Jahre</strong> für Bauwerke nach § 13 Abs. 4 Nr. 1 VOB/B, sofern nichts anderes vereinbart. Eine schriftliche Mängelrüge setzt nach § 13 Abs. 5 Nr. 1 eine neue 2-Jahres-Frist in Gang (nicht vor Ablauf der Regelfrist).</td>
                       </tr>
                       <tr>
                         <td className="p-2 border border-home-grau/30 font-medium">Arglistige Täuschung</td>
-                        <td className="p-2 border border-home-grau/30 text-shiraz font-medium"><strong>3 Jahre Regelverjährung</strong> ab Kenntnis (maximal 10 Jahre ab Entstehung).</td>
+                        <td className="p-2 border border-home-grau/30 text-shiraz font-medium"><strong>Regelverjährung</strong> nach §§ 195, 199 BGB (3 Jahre ab Schluss des Jahres der Kenntnis, Höchstfristen § 199 Abs. 3/4), bei Bauwerken jedoch nicht vor Ablauf der 5-Jahres-Frist (§ 634a Abs. 3 Satz 2 BGB).</td>
                       </tr>
                     </tbody>
                   </table>
@@ -366,7 +366,7 @@ ${senderName}`;
                       <strong>Nach der Abnahme (Beweislastumkehr):</strong> Mit Vollzug der Abnahme geht das Werk in die Obhut des Bauherrn über. Ab diesem Tag muss der Bauherr nachweisen, dass der gerügte Mangel bereits bei Abnahme im Keim verborgen lag.
                     </li>
                     <li>
-                      <strong>Mängelrüge-Verfahren:</strong> Entdeckt der Bauherr einen Mangel, ist er verpflichtet, diesen unmissverständlich schriftlich beim Vertragspartner zu rügen, und eine klar terminierte, <strong>angemessene Frist zur Nacherfüllung</strong> zu setzen. Erst nach fruchtlosem Fristablauf greifen Sekundärrechte (z.B. Ersatzvornahme auf Kosten des Unternehmers).
+                      <strong>Mängelrüge-Verfahren:</strong> Beim BGB-Vertrag ist die Mängelanzeige formfrei (Textform aus Beweisgründen dringend empfohlen); beim VOB/B-Vertrag ist für die Wirkungen des § 13 Abs. 5 VOB/B die Schriftform erforderlich. Der Bauherr setzt eine <strong>angemessene Frist zur Nacherfüllung</strong>; Sekundärrechte (Selbstvornahme § 637, Rücktritt, Minderung, Schadensersatz) setzen grundsätzlich deren erfolglosen Ablauf voraus.
                     </li>
                   </ul>
                 </div>
@@ -382,7 +382,7 @@ ${senderName}`;
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                   <div className="bg-white p-4 rounded-xl border border-slate-205/80 space-y-2">
                     <span className="font-bold text-shiraz flex items-center gap-1.5 uppercase text-xs tracking-wide">
-                      🛑 BGH-Urteil von 2018: Verbot fiktiver Mängelbeseitigungskosten
+                      🛑 BGH, Urt. v. 22.02.2018 – VII ZR 46/17: keine fiktiven Mängelbeseitigungskosten
                     </span>
                     <p className="text-xs text-slate-800 leading-relaxed">
                       Der Bundesgerichtshof (BGH) hat im Jahr 2018 seine langjährige Rechtsprechung grundlegend geändert (Az. VII ZR 46/17). Zuvor konnten Bauherren Mängelbeseitigungskosten auf Basis von Kostenvoranschlägen fiktiv abrechnen und das Geld anderweitig behalten.
@@ -393,21 +393,22 @@ ${senderName}`;
                         <li><strong>Vorschussanspruch:</strong> Anforderung eines zweckgebundenen Vorab-Vorschusses zur tatsächlichen Behebung des Mangels (Abrechnungspflicht nach Durchführung!).</li>
                         <li><strong>Minderung:</strong> Geltendmachung des Wertverlusts des Objekts durch den verbleibenden Mangel.</li>
                         <li><strong>Nachträgliche Abrechnung:</strong> Mangel erst beheben lassen und dann Erstattung der konkret angefallenen (IST) Kosten fordern.</li>
+                        <li className="list-none -ml-4 mt-1 text-slate-500">Hinweis: Im Kaufrecht hält der V. Zivilsenat an der fiktiven Abrechnung fest (BGH, V ZR 33/19).</li>
                       </ul>
                     </div>
                   </div>
 
                   <div className="bg-white p-4 rounded-xl border border-slate-205/80 space-y-2">
                     <span className="font-bold text-[#A3113E] flex items-center gap-1.5 uppercase text-xs tracking-wide">
-                      🏗️ Gebäudetyp E: "Einfaches Bauen" (Aktueller Trend 2025/2026)
+                      🏗️ Gebäudetyp E: "Einfaches Bauen" (Gesetzgebungsstand 2026)
                     </span>
                     <p className="text-xs text-slate-850 leading-relaxed">
-                      Die bayerische Initiative und der neue Gesetzesentwurf zum <strong>Gebäudetyp E</strong> (E wie "Einfach" oder "Experimentell") zielen darauf ab, das Bauen in Deutschland bezahlbarer zu gestalten. 
+                      Die bayerische Initiative (Pilotprojekte, Abweichungen nach Art. 63 BayBO) und der Bundesgesetzentwurf zum <strong>Gebäudetyp E</strong> (E wie "Einfach" oder "Experimentell") zielen darauf ab, das Bauen bezahlbarer zu machen. Der Kabinettsentwurf vom 06.11.2024 entfiel mit dem Ende der 20. Wahlperiode; ein neuer Gesetzentwurf liegt dem Bundestag seit Juni 2026 vor (Stand 08/2026, noch nicht verabschiedet). 
                     </p>
                     <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded border border-slate-150 leading-relaxed">
-                      <strong>Rechtlicher Hintergrund:</strong> Bislang wird standardmäßig verlangt, dass Wohngebäude allen Komfort-DIN-Normen vollumfänglich entsprechen (z.B. Schallschutz, Steckdosenanzahl, etc.), da diese als "Anerkannte Regeln der Technik" gelten. Jede Abweichung war ein vertraglicher Mangel, selbst ohne physikalischen Schaden.
+                      <strong>Rechtlicher Hintergrund:</strong> Bislang wird standardmäßig verlangt, dass Wohngebäude allen Komfort-DIN-Normen vollumfänglich entsprechen (z.B. Schallschutz, Steckdosenanzahl, etc.), da diese als "Anerkannte Regeln der Technik" gelten. Eine nicht vereinbarte Abweichung ist daher ein Mangel, auch ohne Schaden.
                       <p className="mt-1.5">
-                        <strong>Die Neuerung:</strong> Durch vertragliche Vereinbarungen können Partner einvernehmlich und rechtssicher von reinen Komfortstandards abweichen, sofern die <strong>Standsicherheit, der Brandschutz und elementare Sicherheitsstandards</strong> unberührt bleiben. Dies entlastet Planer vor unberechtigten Mangelklagen und fördert ressourcenschonendes, zirkuläres Bauen.
+                        <strong>Ziel der Neuregelung:</strong> Vertragspartner sollen einfacher von reinen Komfortstandards abweichen können, sofern die <strong>Standsicherheit, der Brandschutz und elementare Sicherheitsstandards</strong> unberührt bleiben. Schon heute zulässig ist eine ausdrückliche, informierte Vereinbarung einer Abweichung von den a. R. d. T. (ständige BGH-Rechtsprechung).
                       </p>
                     </div>
                   </div>
@@ -429,7 +430,7 @@ ${senderName}`;
                   <h3 className="text-xl font-bold text-text-main flex items-center gap-2">Interaktives VOB-Anzeigen- &amp; Schriftverkehrscenter</h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Schnittstellendisziplin am Bau: Schriftliche Anzeigen sind im VOB/B-Vertrag keine bürokratische Schikane, sondern oft die einzige Möglichkeit zur <strong>Vermeidung von Haftungsansprüchen</strong>, <strong>Verlängerung von Bauzeiten</strong> oder <strong>Erhalt von Vergütungsansprüchen</strong>. Wählen Sie unten ein Dokument aus, passen Sie die Parameter an, und erhalten Sie ein rechtssicheres Musterschreiben nach DIN 5008 für Ihr Bautagebuch!
+            Schnittstellendisziplin am Bau: Schriftliche Anzeigen sind im VOB/B-Vertrag keine bürokratische Schikane, sondern oft die einzige Möglichkeit zur <strong>Vermeidung von Haftungsansprüchen</strong>, <strong>Verlängerung von Bauzeiten</strong> oder <strong>Erhalt von Vergütungsansprüchen</strong>. Wählen Sie unten ein Dokument aus, passen Sie die Parameter an, und erhalten Sie ein rechtlich belastbares Musterschreiben nach DIN 5008 für Ihr Bautagebuch!
           </p>
         </div>
                 </div>
@@ -646,7 +647,7 @@ ${senderName}`;
                       <div className="flex items-center gap-2">
                         <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
                         <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                          Live DIN 5008-Entwurfsvorschau
+                          Live DIN 5008-Entwurfsvorschau · Mustertext (keine Rechtsberatung)
                         </span>
                       </div>
                       
@@ -684,13 +685,13 @@ ${senderName}`;
                         <div className="bg-white/85 p-2.5 rounded border border-amber-100">
                           <strong className="block text-amber-950">1. Nur per SMS / WhatsApp?</strong>
                           <p className="text-xs text-slate-705 leading-normal mt-1">
-                            Laut VOB/B ist stricte <strong>Schrift- oder Textform</strong> verlangt (§ 6 Abs. 1 VOB/B). Sende wichtige Anzeigen daher immer vorab digital und zusätzlich per Einschreiben mit Unterschrift.
+                            § 6 Abs. 1 VOB/B verlangt eine <strong>schriftliche Behinderungsanzeige</strong>; ohne Anzeige wird die Behinderung nur bei Offenkundigkeit berücksichtigt. Senden Sie wichtige Anzeigen daher vorab digital und zusätzlich nachweisbar (z. B. Einschreiben).
                           </p>
                         </div>
                         <div className="bg-white/85 p-2.5 rounded border border-amber-100">
                           <strong className="block text-amber-950">2. Adressat: Nur der Architekt?</strong>
                           <p className="text-xs text-slate-705 leading-normal mt-1">
-                            Der Architekt ist Vertretungsorgan für technische Belange, besitzt aber <strong>ohne Vollmacht keine rechtsgeschäftliche Vollmacht</strong> für Fristen/Finanzen! Schicke Anzeigen <strong>immer</strong> auch direkt an den Bauherrn (AG).
+                            Der Architekt ist Sachwalter des Bauherrn, aber <strong>ohne Vollmacht nicht rechtsgeschäftlich vertretungsbefugt</strong> (z. B. für Fristen oder Nachträge). Schicken Sie Anzeigen <strong>immer</strong> auch direkt an den Bauherrn (AG).
                           </p>
                         </div>
                         <div className="bg-white/85 p-2.5 rounded border border-amber-100">
@@ -725,7 +726,7 @@ ${senderName}`;
                   <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col gap-2">
                     <div className="font-bold text-shiraz border-b border-shiraz/10 pb-2">1. Stand der Wissenschaft</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Ebene der theoretischen Grundlagen und brandaktuellen Forschungsergebnisse. Keine oder minimale praktische Langzeiterfahrungen vorhanden. Muss im Standardhochbau rechtlich <strong>nicht</strong> eingehalten werden, es sei denn, es wurde vertraglich explizit vereinbart (Premium-Detaillösung) oder ist sicherheitsrelevant.
+                      Ebene der theoretischen Grundlagen und brandaktuellen Forschungsergebnisse. Keine oder minimale praktische Langzeiterfahrungen vorhanden. Muss im Standardhochbau rechtlich <strong>nicht</strong> eingehalten werden, es sei denn, es wurde vertraglich explizit vereinbart (Premium-Detaillösung) oder ein Spezialgesetz verlangt es (z. B. Atomrecht; Produkthaftung: Stand von Wissenschaft und Technikheitsrelevant.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col gap-2">
@@ -740,7 +741,7 @@ ${senderName}`;
                     </div>
                     <div className="font-bold text-shiraz border-b border-shiraz/10 pb-2">3. Anerkannte Regeln der Technik</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Die Standardstufe am Bau (a.R.d.T.). Es handelt sich um theoretisch wissenschaftlich als richtig anerkannte Grundsätze, die von der breiten Mehrheit der Fachpraktiker angewandt und als bewährt eingestuft werden. Jedes Bauwerk muss diese als <strong>Mindeststandard</strong> bedingungslos einhalten.
+                      Die Standardstufe am Bau (a.R.d.T.). Es handelt sich um theoretisch wissenschaftlich als richtig anerkannte Grundsätze, die von der breiten Mehrheit der Fachpraktiker angewandt und als bewährt eingestuft werden. Der Unternehmer schuldet sie mangels abweichender, informierter Vereinbarung als <strong>Mindeststandard</strong> (maßgeblich: Zeitpunkt der Abnahme).
                     </p>
                   </div>
                 </div>
@@ -750,7 +751,7 @@ ${senderName}`;
                   <div>
                     <strong className="font-bold text-slate-900 block mb-1">Achtung: Die DIN-Haftungsfalle für Ingenieure</strong>
                     <p className="text-xs text-slate-700 leading-relaxed">
-                      DIN-Normen, Richtlinien und Verordnungen sind keineswegs Gesetze! Sie sind private technische Empfehlungen des Deutschen Instituts für Normung e.V. Es gilt zwar die richterliche Vermutungswirkung, dass eine eingehaltene DIN-Norm den a.R.d.T. entspricht.
+                      DIN-Normen und Richtlinien sind private Regelwerke ohne Rechtsnormcharakter. Verordnungen sind dagegen Recht; über die MVV TB / VV TB eingeführte Technische Baubestimmungen sind bauaufsichtlich verbindlich. Es gilt zwar die richterliche Vermutungswirkung, dass eine eingehaltene DIN-Norm den a.R.d.T. entspricht.
                       <br />
                       <strong>Jedoch:</strong> Hat sich die Praxis weiterentwickelt, während die Norm veraltet ist, haftet der Planer/Unternehmer trotz "DIN-Konformität", sofern die DIN-Vorgabe hinter den tatsächlichen anerkannten Regeln der Technik zurückbleibt!
                     </p>
@@ -778,19 +779,19 @@ ${senderName}`;
                     <div className="border-l-2 border-shiraz pl-3">
                       <strong className="text-slate-900">1. Öffentlich bestellt und vereidigt (ö.b.u.v.):</strong>
                       <p className="text-xs text-slate-600 mt-1">
-                        Durch eine öffentlich-rechtliche Institution (z. B. Ingenieurkammer, IHK) rigoros auf Fachkompetenz und persönliche Eignung geprüft. Geniesst vor Gerichten die höchste Glaubwürdigkeit und Beweiskraft.
+                        Durch eine öffentlich-rechtliche Institution (z. B. Ingenieurkammer, IHK) rigoros auf Fachkompetenz und persönliche Eignung geprüft. Gerichte sollen nach § 404 Abs. 3 ZPO vorrangig öffentlich bestellte Sachverständige heranziehen.
                       </p>
                     </div>
                     <div className="border-l-2 border-home-grau/30 pl-3">
                       <strong className="text-slate-900">2. Zertifiziert nach DIN EN ISO/IEC 17024:</strong>
                       <p className="text-xs text-slate-600 mt-1">
-                        International anerkannter Qualifikationsnachweis. Personenbezogene Zertifizierung, die ständige Weiterbildung und Rezertifizierungen erfordert. Gerichtlich oft der ö.b.u.v. gleichgestellt.
+                        International anerkannter Qualifikationsnachweis. Personenbezogene Zertifizierung, die ständige Weiterbildung und Rezertifizierungen erfordert. In der Praxis werden auch zertifizierte Sachverständige von Gerichten beauftragt; die gesetzliche Vorrangregel des § 404 Abs. 3 ZPO gilt aber nur für öffentlich bestellte.
                       </p>
                     </div>
                     <div className="border-l-2 border-home-grau/30 pl-3">
-                      <strong className="text-slate-900">3. Staatlich anerkannter Sachverständiger:</strong>
+                      <strong className="text-slate-900">3. Prüfsachverständige / staatlich anerkannte Sachverständige:</strong>
                       <p className="text-xs text-slate-600 mt-1">
-                        Behördennahe Funktionäre in den Bundesländern zur administrativen Prüfung bauordnungsrechtlicher Nachweise (z.B. Brandschutzkonzepte, Standsicherheit).
+                        Freiberuflich tätige, nach Landesrecht (z. B. PrüfVBau in Bayern) behördlich anerkannte Personen, die bauordnungsrechtliche Nachweise prüfen und bescheinigen (Standsicherheit, Brandschutz, technische Anlagen).
                       </p>
                     </div>
                   </div>
@@ -819,7 +820,7 @@ ${senderName}`;
                         <span className="w-1.5 h-1.5 bg-shiraz rounded-full animate-ping"></span>
                         Selbstständiges Beweisverfahren
                       </strong>
-                      Ein eigenständiges gerichtliches Eilverfahren. Es dient der schnellen, amtlichen Zustandssicherung (z. B. bei fortschreitender Rissbildung oder bevor Bauteile abgerissen/überbaut werden), um langwierige Hauptprozessblockaden abzuwenden.
+                      Verfahren nach §§ 485 ff. ZPO zur Beweissicherung; es hemmt die Verjährung (§ 204 Abs. 1 Nr. 7 BGB). Es dient der Zustandsfeststellung (z. B. bei fortschreitender Rissbildung oder bevor Bauteile abgerissen/überbaut werden), um langwierige Hauptprozessblockaden abzuwenden.
                     </div>
                   </div>
                 </div>
@@ -851,7 +852,7 @@ ${senderName}`;
                       <Gavel size={14} className="text-shiraz" /> Planer / Architekt
                     </h4>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Schuldet eine mangelfreie, genehmigungsfähige und ausführbare Werkplanung streng nach den a.R.d.T. Haftet vollumfänglich für Planungs- und statische Fehler sowie für Aufsichts- und Bauüberwachungsfehler im Rahmen der Bauleitung.
+                      Schuldet eine mangelfreie, genehmigungsfähige und ausführbare Werkplanung streng nach den a.R.d.T. Haftet für Fehler seiner Leistung; für die Tragwerksplanung haftet primär der Tragwerksplaner. Bei Überwachungsfehlern haftet er gesamtschuldnerisch mit dem Unternehmer (vorrangige Inanspruchnahme des Unternehmers nach § 650t BGB).
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col gap-1">
@@ -882,7 +883,7 @@ ${senderName}`;
                         Bauleistungs-Versicherung
                       </h4>
                       <p className="text-slate-600 leading-relaxed text-xs">
-                        Schützt Bauherr und Unternehmer während der Rohbauphase vor <strong>unvorhergesehenen Sachschäden</strong> am Objekt, ausgelöst durch extremes Unwetter, Vandalismus, Diebstahl fest montierter Teile oder Fundamenteinbrechen.
+                        Schützt Bauherr und Unternehmer während der Bauzeit bis zur Abnahme vor <strong>unvorhergesehenen Sachschäden</strong> am Objekt, z. B. durch Unwetter, Vandalismus, Diebstahl fest eingebauter Teile oder unvorhergesehene Baugrundereignisse.
                       </p>
                     </div>
                     <p className="mt-3 text-xs text-shiraz font-bold bg-rose-50/40 p-1.5 rounded border border-shiraz/10">
@@ -914,7 +915,7 @@ ${senderName}`;
                       </p>
                     </div>
                     <p className="mt-3 text-xs text-slate-700 font-bold bg-slate-50 p-1.5 rounded border border-home-grau/30 text-center">
-                      Pflicht zur Architektenkammer
+                      Pflicht für Kammermitglieder (Architekten-/Ingenieurgesetze der Länder)
                     </p>
                   </div>
 
@@ -952,7 +953,7 @@ ${senderName}`;
                   </span>
                 </div>
                 <p className="text-sm text-slate-800 leading-relaxed">
-                  Fugendichtstoffe und Bauklebstoffe gehören zu den am höchsten beanspruchten Baustoffen der Gebäudehülle und des Innenausbaus. Sie müssen gleichzeitig permanente thermische Bauwerksbewegungen aufnehmen, chemisch an unterschiedlichen Substraten haften und Witterungs-, UV- sowie Feuchtigkeitseinflüssen trotzen. <strong>Über 75 % aller Fugen- und Klebeschäden entstehen nicht durch Materialversagen, sondern durch Planungs- und Verarbeitungsfehler!</strong>
+                  Fugendichtstoffe und Bauklebstoffe gehören zu den am höchsten beanspruchten Baustoffen der Gebäudehülle und des Innenausbaus. Sie müssen gleichzeitig permanente thermische Bauwerksbewegungen aufnehmen, chemisch an unterschiedlichen Substraten haften und Witterungs-, UV- sowie Feuchtigkeitseinflüssen trotzen. <strong>Ein großer Teil der Fugen- und Klebeschäden entsteht nicht durch Materialversagen, sondern durch Planungs- und Verarbeitungsfehler!</strong>
                 </p>
               </div>
 
@@ -998,7 +999,7 @@ ${senderName}`;
                         <CheckCircle2 size={15} /> 3. Fugendimensionierung
                       </div>
                       <p className="text-slate-700 leading-relaxed">
-                        <strong>Geometrie nach DIN 18540:</strong> Bei Fugenbreite <span className="font-semibold">b ≤ 10 mm gilt b : t ≈ 1 : 1</span>. Bei Fugenbreite <span className="font-semibold">b &gt; 10 mm gilt b : t ≈ 2 : 1</span> (z.B. 20 mm Breite &rarr; 10 mm Tiefe). Mindestfugenbreite außen: 10 mm!
+                        <strong>Geometrie:</strong> Zuordnung Fugenbreite ↔ Dichtstoffdicke nach Tabelle DIN 18540 (Außenwandfugen, Mindestbreite 10 mm). Faustregel (IVD): <span className="font-semibold">b ≤ 10 mm: b : t ≈ 1 : 1</span>, <span className="font-semibold">b &gt; 10 mm: b : t ≈ 2 : 1</span> (z. B. 20 mm Breite &rarr; 10 mm Tiefe).
                       </p>
                     </div>
                     <div className="mt-2 text-[11px] text-slate-500 bg-off-white p-1.5 rounded border border-home-grau/20">
@@ -1156,7 +1157,7 @@ ${senderName}`;
                     <p className="text-slate-700 leading-relaxed">
                       In Feuchträumen nutzen Pilzsporen Seifenreste, Hautschuppen und verbrauchte Fungizide als Nährboden. Das Myzel wächst in die Poren ein und zersetzt Weichmacherbestandteile bio-chemisch.
                     </p>
-                    <span className="text-[11px] text-slate-500 block">Fungizide Zusätze waschen sich nach 2–5 Jahren weitgehend aus.</span>
+                    <span className="text-[11px] text-slate-500 block">Fungizide Zusätze werden mit der Zeit ausgewaschen; Silikonfugen in Nassbereichen sind daher Wartungsfugen.</span>
                   </div>
                 </div>
               </div>
@@ -1175,11 +1176,11 @@ ${senderName}`;
                       <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
                         <span className="font-bold text-slate-900 text-sm">Flankenabriss (Adhäsionsbruch)</span>
                         <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-800">
-                          Häufigkeit: ~50%
+                          häufigstes Schadensbild
                         </span>
                       </div>
                       <p className="text-slate-700 leading-relaxed">
-                        <strong>Erscheinungsbild:</strong> Der Dichtstoffstrang löst sich bandförmig von einer oder beiden Flankenflanken ab, bleibt in sich aber elastisch und unbeschädigt.
+                        <strong>Erscheinungsbild:</strong> Der Dichtstoffstrang löst sich bandförmig von einer oder beiden Fugenflanken ab, bleibt in sich aber elastisch und unbeschädigt.
                       </p>
                       <p className="text-slate-700 leading-relaxed">
                         <strong>Hauptursachen:</strong> Fehlender oder ungeeigneter Primer, staubiger oder feuchter Untergrund bei Einbau, Tauwasserbeschlag, unzureichender Anpressdruck beim Glätten, Dreiflankenhaftung.
@@ -1196,7 +1197,7 @@ ${senderName}`;
                       <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
                         <span className="font-bold text-slate-900 text-sm">Kohäsionsbruch (Mittenriss / Materialriss)</span>
                         <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">
-                          Häufigkeit: ~25%
+                          häufig
                         </span>
                       </div>
                       <p className="text-slate-700 leading-relaxed">
@@ -1264,7 +1265,7 @@ ${senderName}`;
                     <p className="text-slate-700 leading-relaxed">
                       Häufig deklarieren Verarbeiter Silikonfugen pauschal als „Wartungsfugen“, um jegliche Gewährleistung nach VOB/B oder BGB abzuwehren.
                       <br />
-                      <strong>Rechtliche Realität:</strong> Nach DIN 52460 ist eine Wartungsfuge nur eine solche, die starken chemischen, thermischen oder mechanischen Belastungen ausgesetzt ist und deren Dichtstoff planmäßig vor Ablauf der bauüblichen Verjährungsfrist erneuert werden muss (z.B. in gewerblichen Großküchen, Schwimmbädern, Kläranlagen). <strong>Im normalen Wohnungsbau (z.B. Bad-Eckfuge) schützt die Bezeichnung „Wartungsfuge“ den Handwerker NICHT vor der 5-jährigen Gewährleistungspflicht für mangelhafte Ausführung!</strong>
+                      <strong>Rechtliche Realität:</strong> Ob eine Fuge Wartungsfuge ist, richtet sich nach Vertrag und Beanspruchung; eine Wartungsfuge entbindet nicht von der Haftung für Ausführungsmängel, und der Unternehmer muss über den Wartungsbedarf aufklären. Nach DIN 52460 ist eine Wartungsfuge nur eine solche, die starken chemischen, thermischen oder mechanischen Belastungen ausgesetzt ist und deren Dichtstoff planmäßig vor Ablauf der bauüblichen Verjährungsfrist erneuert werden muss (z.B. in gewerblichen Großküchen, Schwimmbädern, Kläranlagen). <strong>Im normalen Wohnungsbau (z.B. Bad-Eckfuge) schützt die Bezeichnung „Wartungsfuge“ den Handwerker NICHT vor der 5-jährigen Gewährleistungspflicht für mangelhafte Ausführung!</strong>
                     </p>
                   </div>
                 </div>
@@ -1276,7 +1277,8 @@ ${senderName}`;
         </div>
       </div>
 
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
         weblinks={[
           { title: "BGB - Bürgerliches Gesetzbuch (Werkvertragsrecht)", url: "https://www.gesetze-im-internet.de/bgb/BJNR001950896.html#BJNR001950896BJNG005802377" },
           { title: "WTA e.V. - Wissenschaftlich-Technische Arbeitsgemeinschaft", url: "https://www.wta-gmbh.de" },
@@ -1290,31 +1292,32 @@ ${senderName}`;
           { title: "Rissbreite", url: "https://de.wikipedia.org/wiki/Rissbreite" }
         ]} 
         literatur={[
-          'Oswald, R.; Abel, R. (2014): Hahne/Schulze - Bauschadensfälle (Fraunhofer IRB Verlag)',
-          'Frössel, F. (2018): Mauerwerkstrockenlegung und Kellersanierung (Springer Vieweg)',
+          'Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg',
+          'Zimmermann, G. (Hrsg.): Bauschadens-Sammlung. Fraunhofer IRB Verlag',
+          'Frössel, F.: Mauerwerkstrockenlegung und Kellersanierung. Fraunhofer IRB Verlag',
           'WTA-Merkblattsammlung: Bauwerksabdichtung und Denkmalpflege',
           'IVD-Merkblatt Nr. 1: Abdichtung von Bodenfugen mit elastischen Dichtstoffen',
           'IVD-Merkblatt Nr. 3: Konstruktive Ausführung und Abdichtung von Fugen im Sanitärbereich'
         ]} 
         regelwerke={[
-          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 52460 (Fugen- und Glasabdichtung - Begriffe)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18540' },
+          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15651' },
+          { title: 'DIN 52460 (Fugen- und Glasabdichtung - Begriffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+52460' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' },
+          { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18195' },
           { title: 'WTA-Merkblatt 4-6 (Nachträgliches Abdichten erdberührter Bauteile)', url: 'https://www.wta-gmbh.de/' },
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0.2 bis 0.4 mm)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0,2 bis 0,4 mm)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]} 
         formeln={[
           {
             formel: 'w_k = s_{r,\\text{max}} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm}) \\le w_{\\text{lim}}',
-            erklaerung: 'Charakteristische Rissbreite wk nach Eurocode 2: Produkt aus maximalem Rissabstand sr,max und Dehnungsdifferenz zwischen Bewehrungsstahl und Betonmatrix (Grenzwert w_lim meist 0.20 bis 0.40 mm).',
+            erklaerung: 'Charakteristische Rissbreite wk nach Eurocode 2: Produkt aus maximalem Rissabstand sr,max und Dehnungsdifferenz zwischen Bewehrungsstahl und Betonmatrix (Grenzwert w_lim meist 0,20 bis 0,40 mm).',
             quelle: 'DIN EN 1992-1-1 Gl. 7.8'
           },
           {
             formel: 'b_{\\text{erf}} = \\frac{\\Delta L}{\\text{ZGV}} = \\frac{L \\cdot \\alpha_T \\cdot \\Delta T}{\\text{ZGV}}',
-            erklaerung: 'Erforderliche Mindestfugenbreite elastischer Fugen: Ermittelt aus thermischer Längenänderung Delta L der angrenzenden Bauteile und der zulässigen Gesamtverformung (ZGV, z.B. 25% nach DIN 18540).',
-            quelle: 'DIN 18540 / IVD-Merkblatt Nr. 2'
+            erklaerung: 'Erforderliche Mindestfugenbreite elastischer Fugen: Ermittelt aus thermischer Längenänderung Delta L der angrenzenden Bauteile und der zulässigen Gesamtverformung (ZGV des Dichtstoffs nach Klasse, z. B. 25 % für 25LM/25HM nach DIN EN ISO 11600 bzw. DIN EN 15651-1) zuzüglich Herstell- und Montagetoleranzen.',
+            quelle: 'DIN 18540 / DIN EN 15651-1'
           },
           {
             formel: 'q_w = k_f \\cdot i = k_f \\cdot \\frac{\\Delta h}{L}',

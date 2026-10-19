@@ -127,7 +127,7 @@ export default function PruefverfahrenKatalog() {
                 {m.shortName}
               </span>
               <span className={`text-[8.5px] truncate font-mono ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
-                {m.categoryLabel.split(' ')[0]}
+                {m.category === 'zfp' ? 'Zerstörungsfrei' : m.category === 'minimalinvasiv' ? 'Minimalinvasiv' : 'Zerstörend'}
               </span>
             </button>
           );
@@ -485,7 +485,7 @@ export default function PruefverfahrenKatalog() {
                 <th className="py-2.5 px-3">Kategorie</th>
                 <th className="py-2.5 px-3">Baustoff / Objekt</th>
                 <th className="py-2.5 px-3">Primäre Messgröße</th>
-                <th className="py-2.5 px-3">Baurechtliche Aussagekraft</th>
+                <th className="py-2.5 px-3">Aussage</th>
                 <th className="py-2.5 px-3">Normative Grundlage</th>
               </tr>
             </thead>
@@ -503,7 +503,7 @@ export default function PruefverfahrenKatalog() {
                       m.category === 'minimalinvasiv' ? 'bg-amber-100 text-amber-800' :
                       'bg-rose-100 text-rose-800'
                     }`}>
-                      {m.categoryLabel.split(' ')[0]}
+                      {m.category === 'zfp' ? 'Zerstörungsfrei' : m.category === 'minimalinvasiv' ? 'Minimalinvasiv' : 'Zerstörend'}
                     </span>
                   </td>
                   <td className="py-2 px-3 text-[11px] text-slate-600">

@@ -5,7 +5,7 @@ import {
   Info, AlertTriangle, BookOpen, PenTool, Flame, RefreshCw, Hammer
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 export default function HistorischeBauweisen() {
   const [activeTab, setActiveTab] = useState<'massivbau' | 'fachwerk' | 'decken' | 'dachwerke'>('massivbau');
@@ -208,7 +208,7 @@ export default function HistorischeBauweisen() {
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20">
                     <h4 className="font-bold text-slate-900 text-sm mb-2">Vollziegel &amp; Reichsformat</h4>
                     <p className="text-xs text-slate-700 leading-relaxed">
-                      Ziegelmauerwerk wurde vor 1950 im Regelfall im <strong>Reichsformat RF (250 × 120 × 65 mm)</strong> (zum Vergleich heute: Normalformat NF 240 × 115 × 71 mm, Dünnformat DF 240 × 115 × 52 mm) und im vollfugigen Verband gemauert. Die Steinfestigkeit lag oft hoch (<InlineMath math="f_b \ge 10 - 20\text{ N/mm}^2" />), wohingegen die historische Mörtelfestigkeit (<InlineMath math="f_m" />) mangels Zementanteil oft unter <InlineMath math="1.0 - 2.5\text{ N/mm}^2" /> liegt. Dies führt zu einem weichen, verformungsfähigen Tragverhalten.
+                      Ziegelmauerwerk wurde vor 1950 im Regelfall im <strong>Reichsformat RF (250 × 120 × 65 mm)</strong> (zum Vergleich heute: Normalformat NF 240 × 115 × 71 mm, Dünnformat DF 240 × 115 × 52 mm) und im vollfugigen Verband gemauert. Die Steinfestigkeit lag oft hoch (<InlineMath math="f_b \ge 10 - 20\text{ N/mm}^2" />), wohingegen die historische Mörtelfestigkeit (<InlineMath math="f_m" />) mangels Zementanteil oft unter <InlineMath math="1{,}0 - 2{,}5\text{ N/mm}^2" /> liegt. Dies führt zu einem weichen, verformungsfähigen Tragverhalten.
                     </p>
                   </div>
 
@@ -559,7 +559,7 @@ export default function HistorischeBauweisen() {
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
                       <span>Bauteil-Nennmaß d₀ (Dicke/Höhe):</span>
-                      <span className="text-shiraz font-bold">{dimensionInitial} mm</span>
+                      <span className="text-shiraz font-bold">{formatDeWert(dimensionInitial)} mm</span>
                     </label>
                     <input 
                       type="range" min="60" max="300" step="10" 
@@ -595,7 +595,7 @@ export default function HistorischeBauweisen() {
                         <span>{formatDeZahl(shrinkageCalculations.change, 2)} mm</span>
                       </div>
                       <p className="text-[10px] text-amber-800 mt-1 leading-relaxed">
-                        Das Bauteil verringert seine Abmessung von ehemals {dimensionInitial} mm auf <strong>{formatDeZahl(shrinkageCalculations.finalDim, 1)} mm</strong>. Im Fachwerk führt dieser Schwund zu Spalten an den Verbindungen und Flankenabrissen an Ausfachungen!
+                        Das Bauteil verringert seine Abmessung von ehemals {formatDeWert(dimensionInitial)} mm auf <strong>{formatDeZahl(shrinkageCalculations.finalDim, 1)} mm</strong>. Im Fachwerk führt dieser Schwund zu Spalten an den Verbindungen und Flankenabrissen an Ausfachungen!
                       </p>
                     </div>
                   </div>
@@ -707,7 +707,7 @@ export default function HistorischeBauweisen() {
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
                       <span>Stichhöhe des Gewölbes f:</span>
-                      <span className="text-shiraz font-bold">{kappeRise} cm</span>
+                      <span className="text-shiraz font-bold">{formatDeWert(kappeRise)} cm</span>
                     </label>
                     <input 
                       type="range" min="5" max="25" step="1" 
@@ -731,7 +731,7 @@ export default function HistorischeBauweisen() {
                   <div>
                     <label className="text-xs font-semibold text-slate-800 flex justify-between">
                       <span>Durchmesser der runden Zugstangen d_rod:</span>
-                      <span className="text-shiraz font-bold">Ø {tieRodDiameter} mm</span>
+                      <span className="text-shiraz font-bold">Ø {formatDeWert(tieRodDiameter)} mm</span>
                     </label>
                     <input 
                       type="range" min="10" max="24" step="2" 
@@ -769,10 +769,10 @@ export default function HistorischeBauweisen() {
                     <div className="bg-blue-50 p-3 rounded-lg border border-blue-100">
                       <div className="flex justify-between items-center text-xs font-bold text-blue-950">
                         <span>Erforderliche Anzahl Zugbänder:</span>
-                        <span className="text-sm text-blue-700">{Math.ceil(kappeCalculations.requiredRods)} Stk.</span>
+                        <span className="text-sm text-blue-700">{formatDeWert(Math.ceil(kappeCalculations.requiredRods))} Stk.</span>
                       </div>
                       <p className="text-[10px] text-blue-800 mt-1 leading-normal">
-                        Für die Trägergesamtlänge von {formatDeZahl(kappeSpan, 1)} m sind mindestens <strong>{Math.ceil(kappeCalculations.requiredRods)} Zugstangen</strong> Ø {tieRodDiameter} mm anzuordnen (historischer Vergleich mit zulässiger Spannung <InlineMath math="\sigma_{zul} = 120\text{ N/mm}^2" /> für Schweißeisen/Flussstahl; ein Nachweis nach Eurocode 3 erfolgt dagegen mit Bemessungslasten und <InlineMath math="f_y/\gamma_{M0}" />, bei Gewindestangen mit dem Spannungsquerschnitt im Gewinde). Zugbänder sind nur in Endfeldern und an freien Rändern erforderlich; in Innenfeldern heben sich die Horizontalschübe benachbarter Kappen weitgehend auf.
+                        Für die Trägergesamtlänge von {formatDeZahl(kappeSpan, 1)} m sind mindestens <strong>{formatDeWert(Math.ceil(kappeCalculations.requiredRods))} Zugstangen</strong> Ø {formatDeWert(tieRodDiameter)} mm anzuordnen (historischer Vergleich mit zulässiger Spannung <InlineMath math="\sigma_{zul} = 120\text{ N/mm}^2" /> für Schweißeisen/Flussstahl; ein Nachweis nach Eurocode 3 erfolgt dagegen mit Bemessungslasten und <InlineMath math="f_y/\gamma_{M0}" />, bei Gewindestangen mit dem Spannungsquerschnitt im Gewinde). Zugbänder sind nur in Endfeldern und an freien Rändern erforderlich; in Innenfeldern heben sich die Horizontalschübe benachbarter Kappen weitgehend auf.
                       </p>
                     </div>
                   </div>
@@ -893,7 +893,7 @@ export default function HistorischeBauweisen() {
           { title: "DIN 1053-1:1996 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)", url: "https://www.dinmedia.de/de/suche?q=DIN+1053-1" },
           { title: "WTA-Merkblätter Reihe 8 (Fachwerkinstandsetzung, u. a. Ausfachungen)", url: "https://www.wta-gmbh.de" },
           { title: "DIN 68100:2010-07 (Toleranzsystem für Holzbe- und -verarbeitung – Schwind- und Quellmaße)", url: "https://www.dinmedia.de/de/suche?q=DIN+68100" },
-          { title: "DIN EN 1995-1-1/NA (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de" }
+          { title: "DIN EN 1995-1-1/NA (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1" }
         ]}
         formeln={[
           {

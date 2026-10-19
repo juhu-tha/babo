@@ -105,9 +105,9 @@ export default function Schleuderbeton() {
           { title: 'Zentrifugalkraft', url: 'https://de.wikipedia.org/wiki/Zentrifugalkraft' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 12843 (Betonfertigteile - Maste)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1916 / DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 12843 (Betonfertigteile - Maste)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12843' },
+          { title: 'DIN EN 1916 / DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1916' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
         ]}
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
@@ -121,7 +121,7 @@ export default function Schleuderbeton() {
             quelle: 'Grübl et al. (2001)'
           },
           {
-            formel: '(w/z)_{\\text{eff}} = (w/z)_0 - \\frac{\\Delta m_w}{z} \\quad (\\approx 0.30 - 0.35)',
+            formel: '(w/z)_{\\text{eff}} = (w/z)_0 - \\frac{\\Delta m_w}{z} \\quad (\\approx 0{,}30 - 0{,}35)',
             erklaerung: 'Effektiver w/z-Wert des erhärtenden Rohrkörpers nach radialem Auspressen und Abfließen des Schlempewassers Δm_w zum Rohrinnenraum.',
             quelle: 'DIN EN 12843'
           }

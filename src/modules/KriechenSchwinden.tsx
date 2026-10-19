@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import {
   Chart as ChartJS,
@@ -552,7 +553,7 @@ export default function KriechenSchwinden() {
                       legend: { display: false },
                       tooltip: {
                         callbacks: {
-                          label: (context) => `Verlust: ${context.parsed.y.toFixed(2)}%`
+                          label: (context) => `Verlust: ${formatDeZahl(context.parsed.y, 2)}%`
                         }
                       }
                     }
@@ -576,7 +577,7 @@ export default function KriechenSchwinden() {
           ]}
           formeln={[
             {
-              formel: '\\frac{\\Delta \\sigma _{pr}}{\\sigma _{pi}} = k_1 \\cdot  \\rho _{1000} \\cdot  e^{k_2 \\cdot  \\mu } \\cdot  \\left(\\frac{t}{1000}\\right)^{0.75 \\cdot  (1-\\mu )} \\cdot  10^{-5}',
+              formel: '\\frac{\\Delta \\sigma _{pr}}{\\sigma _{pi}} = k_1 \\cdot  \\rho _{1000} \\cdot  e^{k_2 \\cdot  \\mu } \\cdot  \\left(\\frac{t}{1000}\\right)^{0{,}75 \\cdot  (1-\\mu )} \\cdot  10^{-5}',
               erklaerung: 'Spannungsverlust durch Relaxation\n\\Delta\\sigma_{pr}: Spannungsverlust durch Relaxation [MPa]\n\\sigma_{pi}: Anfängliche Vorspannung [MPa]\n\\rho_{1000}: Relaxationsverlust nach 1000h in % (Klasse 1: 8.0, Klasse 2: 2.5, Klasse 3: 4.0)\n\\mu: Spannungsniveau (\\sigma_{pi} / f_{pk}) [-]\nt: Zeit [Stunden]\nk_1, k_2: Beiwerte nach Klasse (Kl. 1: 5.39, 6.7 | Kl. 2: 0.66, 9.1 | Kl. 3: 1.98, 8.0)\nQuelle: DIN EN 1992-1-1 (EC2)',
               quelle: 'Zilch, K., Zehetmaier, G.: Bemessung im Konstrukti...'
             }
@@ -718,11 +719,11 @@ export default function KriechenSchwinden() {
                   </div>
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
                     <span className="text-text-main/60 block">E-Modul Ecm:</span>
-                    <strong className="font-mono text-text-main">{Ecm.toFixed(0)} MPa</strong>
+                    <strong className="font-mono text-text-main">{formatDeZahl(Ecm, 0)} MPa</strong>
                   </div>
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
                     <span className="text-text-main/60 block">Luftfeuchte RH:</span>
-                    <strong className="font-mono text-text-main">{rh} %</strong>
+                    <strong className="font-mono text-text-main">{formatDeWert(rh)} %</strong>
                   </div>
                 </div>
               </div>
@@ -732,7 +733,7 @@ export default function KriechenSchwinden() {
                 <div className="bg-blue-50/80 p-2.5 rounded-xl border border-blue-200">
                   <span className="text-[10px] uppercase font-bold text-blue-900 block">Elastisch ΔL_el</span>
                   <span className="text-lg font-mono font-bold text-blue-700">
-                    {currentState.dL_el.toFixed(2)} mm
+                    {formatDeZahl(currentState.dL_el, 2)} mm
                   </span>
                   <span className="text-[9px] text-blue-900/70 block">Spontan bei Lastbeginn</span>
                 </div>
@@ -740,15 +741,15 @@ export default function KriechenSchwinden() {
                 <div className="bg-rose-50/80 p-2.5 rounded-xl border border-rose-200">
                   <span className="text-[10px] uppercase font-bold text-rose-900 block">Kriechen ΔL_cr</span>
                   <span className="text-lg font-mono font-bold text-shiraz">
-                    {currentState.dL_cr.toFixed(2)} mm
+                    {formatDeZahl(currentState.dL_cr, 2)} mm
                   </span>
-                  <span className="text-[9px] text-rose-900/70 block">φ = {currentState.phiT.toFixed(2)}</span>
+                  <span className="text-[9px] text-rose-900/70 block">φ = {formatDeZahl(currentState.phiT, 2)}</span>
                 </div>
 
                 <div className="bg-purple-50/80 p-2.5 rounded-xl border border-purple-200">
                   <span className="text-[10px] uppercase font-bold text-purple-900 block">Schwinden ΔL_cs</span>
                   <span className="text-lg font-mono font-bold text-purple-700">
-                    {currentState.dL_cs.toFixed(2)} mm
+                    {formatDeZahl(currentState.dL_cs, 2)} mm
                   </span>
                   <span className="text-[9px] text-purple-900/70 block">Lastunabhängig</span>
                 </div>
@@ -756,9 +757,9 @@ export default function KriechenSchwinden() {
                 <div className="bg-emerald-50/80 p-2.5 rounded-xl border border-emerald-300">
                   <span className="text-[10px] uppercase font-bold text-emerald-900 block">Gesamtstauchung</span>
                   <span className="text-lg font-mono font-bold text-emerald-800">
-                    {currentState.dL_tot.toFixed(2)} mm
+                    {formatDeZahl(currentState.dL_tot, 2)} mm
                   </span>
-                  <span className="text-[9px] text-emerald-900/70 block">ΔL_tot = {(currentState.dL_tot / L0_mm * 1000).toFixed(2)} ‰</span>
+                  <span className="text-[9px] text-emerald-900/70 block">ΔL_tot = {formatDeZahl((currentState.dL_tot / L0_mm * 1000), 2)} ‰</span>
                 </div>
               </div>
 
@@ -829,7 +830,7 @@ export default function KriechenSchwinden() {
 
                         {/* Force Arrow N */}
                         <path d="M 40 42 L 40 70" stroke="#ef4444" strokeWidth="3" markerEnd="url(#arrow)" />
-                        <text x="56" y="58" fill="#ef4444" fontSize="11" fontWeight="bold">N (8.5 MPa)</text>
+                        <text x="56" y="58" fill="#ef4444" fontSize="11" fontWeight="bold">N (8,5 MPa)</text>
 
                         {/* Stütze Original Height Ghost Outline */}
                         <rect x="10" y={baseTopY} width="60" height={baseHeight} fill="none" stroke="#64748b" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5" />
@@ -842,7 +843,7 @@ export default function KriechenSchwinden() {
                         <line x1="71" y1={baseTopY} x2="77" y2={baseTopY} stroke="#38bdf8" strokeWidth="2" />
                         <line x1="71" y1={loadedTopY} x2="77" y2={loadedTopY} stroke="#38bdf8" strokeWidth="2" />
                         <text x="82" y={baseTopY + visualDef / 2 + 4} fill="#38bdf8" fontSize="10" fontWeight="bold">
-                          - {currentState.dL_tot.toFixed(2)} mm
+                          - {formatDeZahl(currentState.dL_tot, 2)} mm
                         </text>
 
                         {/* Label under Column */}
@@ -930,7 +931,7 @@ export default function KriechenSchwinden() {
                         <line x1="53" y1={baseTopY} x2="59" y2={baseTopY} stroke="#c084fc" strokeWidth="2" />
                         <line x1="53" y1={shrinkTopY} x2="59" y2={shrinkTopY} stroke="#c084fc" strokeWidth="2" />
                         <text x="64" y={baseTopY + visualDef / 2 + 4} fill="#c084fc" fontSize="9" fontWeight="bold">
-                          - {currentState.dL_cs.toFixed(2)} mm
+                          - {formatDeZahl(currentState.dL_cs, 2)} mm
                         </text>
 
                         {/* Label under Prism */}
@@ -965,7 +966,7 @@ export default function KriechenSchwinden() {
             { title: 'Kelvin-Voigt-Modell', url: 'https://de.wikipedia.org/wiki/Kelvin-Voigt-Modell' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.beuth.de/' },
+            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
             { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
           ]}
           literatur={[

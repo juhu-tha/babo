@@ -384,11 +384,11 @@ export default function Aufgaben() {
         ]}
         regelwerke={[
           { title: 'Rahmenprüfungsordnung für Ingenieurstudiengänge (APO)', url: 'https://www.tha.de/' },
-          { title: 'DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+Normenreihe+Baustoffe+und+Konstruktiver' }
         ]}
         formeln={[
           {
-            formel: '\\text{Note} = 1.0 + 3.0 \\cdot \\left(1 - \\frac{P_{\\text{erreicht}} - P_{\\text{bestehen}}}{P_{\\text{max}} - P_{\\text{bestehen}}}\\right)',
+            formel: '\\text{Note} = 1{,}0 + 3{,}0 \\cdot \\left(1 - \\frac{P_{\\text{erreicht}} - P_{\\text{bestehen}}}{P_{\\text{max}} - P_{\\text{bestehen}}}\\right)',
             erklaerung: 'Lineare Notenberechnungsskala für akademische Klausuren und Übungsaufgaben im Bauingenieurwesen mit 50 % Bestehensgrenze.',
             quelle: 'Allgemeine Prüfungsordnung'
           },

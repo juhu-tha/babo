@@ -257,7 +257,7 @@ export const LabProtocolManager: React.FC = () => {
           <Activity size={48} className="text-home-grau/40 mb-3" />
           <h4 className="text-sm font-bold text-text-main">Noch keine Labor-Protokolle aufgezeichnet</h4>
           <p className="text-xs text-text-main/70 max-w-md mt-1 mb-4">
-            Führe im Tab <strong>Festbeton &amp; Mechanik</strong> einen Druckversuch, Zugversuch oder E-Modul-Test durch und klicke anschließend auf <em>„Messung im Prüfprotokoll archivieren“</em>.
+            Führen Sie im Tab <strong>Festbeton &amp; Mechanik</strong> einen Druckversuch, Zugversuch oder E-Modul-Test durch und klicken Sie anschließend auf <em>„Messung im Prüfprotokoll archivieren“</em>.
           </p>
           <div className="inline-flex items-center gap-1.5 text-xs text-shiraz font-bold bg-white px-3 py-1.5 rounded-lg border border-shiraz/20 shadow-xs">
             <Sparkles size={14} /> Plausibilitätsprüfungen und Prüfsummen werden automatisch generiert.

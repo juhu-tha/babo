@@ -551,11 +551,11 @@ export default function BpBetonwaren() {
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Biegewiderstand:</span>
-                                <strong className="text-slate-900 block font-semibold">≥ 5.0 MPa (Klasse T)</strong>
+                                <strong className="text-slate-900 block font-semibold">≥ 5,0 MPa (Klasse T)</strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Frost-Tausalz-Axiom:</span>
-                                <strong className="text-emerald-700 block font-bold">XF4 (≤ 1.0 kg/m² Abwitterung)</strong>
+                                <strong className="text-emerald-700 block font-bold">XF4 (≤ 1,0 kg/m² Abwitterung)</strong>
                               </div>
                             </div>
                           </div>
@@ -571,7 +571,7 @@ export default function BpBetonwaren() {
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Dichtheitsprüfung:</span>
-                                <strong className="text-slate-900 block font-semibold">Prüfdruck ≥ 0.5 bar (Kanal)</strong>
+                                <strong className="text-slate-900 block font-semibold">Prüfdruck ≥ 0,5 bar (Kanal)</strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Scheiteldruckkraft:</span>
@@ -636,7 +636,7 @@ export default function BpBetonwaren() {
                   </p>
                   <ul className="text-[11.5px] leading-relaxed text-slate-650 space-y-1.5 pl-4 list-decimal">
                     <li>
-                      <strong>Konsistenzbereich erdfeucht:</strong> Der Wasser-Zement-Wert wird extrem niedrig eingestellt (<span className="font-mono font-bold text-slate-800">w/z ≤ 0.38</span>). Der Frischbeton verhält sich wie leicht feuchter Sand.
+                      <strong>Konsistenzbereich erdfeucht:</strong> Der Wasser-Zement-Wert wird extrem niedrig eingestellt (<span className="font-mono font-bold text-slate-800">w/z ≤ 0,38</span>). Der Frischbeton verhält sich wie leicht feuchter Sand.
                     </li>
                     <li>
                       <strong>Rüttelpress-Verdichtung:</strong> Der Beton wird in die Gussform gefüllt. Ein Rütteltisch versetzt das System in Schwingung, wodurch die Körner dicht gleiten. Gleichzeitig presst ein Hydraulikschuh (Auflast) mechanisch von oben.
@@ -709,7 +709,7 @@ export default function BpBetonwaren() {
                       <tr>
                         <td className="px-4 py-2.5 font-bold text-slate-900">Spaltzugprüfung (DIN EN 1338)</td>
                         <td className="px-4 py-2.5">Ermittlung der Festigkeit im Keilschnitt. Sichert die mechanische Scher- und Rollwiderstandfestigkeit.</td>
-                        <td className="px-4 py-2.5">Mindestens 3.6 MPa Spaltzugfestigkeitsmittelwert ist bei Betonwarenpflaster nachzuweisen. Sichert Zähfestigkeit.</td>
+                        <td className="px-4 py-2.5">Mindestens 3,6 MPa Spaltzugfestigkeitsmittelwert ist bei Betonwarenpflaster nachzuweisen. Sichert Zähfestigkeit.</td>
                       </tr>
                       <tr>
                         <td className="px-4 py-2.5 font-bold text-slate-900">Biogene Schwefelsäurekorrosion</td>
@@ -743,20 +743,20 @@ export default function BpBetonwaren() {
           'ZTV Wegebau: Zusätzliche Technische Vertragsbedingungen für den Wegebau.'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1339 (Platten aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1340 (Bordsteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1916 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton für Abwasserleitungen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1338' },
+          { title: 'DIN EN 1339 (Platten aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1339' },
+          { title: 'DIN EN 1340 (Bordsteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1340' },
+          { title: 'DIN EN 1916 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1916' },
+          { title: 'DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton für Abwasserleitungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+V+1201' }
         ]}
         formeln={[
           {
-            formel: 'T = \\frac{2 \\cdot F}{\\pi \\cdot l \\cdot t} \\ge 3.6\\,\\text{N/mm}^2',
-            erklaerung: 'Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338: F = Bruchlast [N], l = Länge der Bruchlinie [mm], t = Steindicke [mm]. Einzelwert >= 2.9 N/mm².',
+            formel: 'T = \\frac{2 \\cdot F}{\\pi \\cdot l \\cdot t} \\ge 3{,}6\\,\\text{N/mm}^2',
+            erklaerung: 'Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338: F = Bruchlast [N], l = Länge der Bruchlinie [mm], t = Steindicke [mm]. Einzelwert >= 2,9 N/mm².',
             quelle: 'DIN EN 1338 Anhang F'
           },
           {
-            formel: 'w/z \\approx 0.30 - 0.38 \\quad (\\text{Konsistenz: erdfeucht})',
+            formel: 'w/z \\approx 0{,}30 - 0{,}38 \\quad (\\text{Konsistenz: erdfeucht})',
             erklaerung: 'Extrem niedriger Wasserzementwert zur Gewährleistung der sofortigen Entschalung und Formstabilität (Grünstandsfestigkeit).',
             quelle: 'Betonwaren-Technologie'
           }

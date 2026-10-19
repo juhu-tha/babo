@@ -1,3 +1,4 @@
+import { carbonationK } from '@/src/utils/schadensKern';
 import React, { useState, useMemo } from 'react';
 import { 
   Search, Activity, Layers, Hammer, Droplets, Ruler, ClipboardCheck, 
@@ -5,7 +6,7 @@ import {
   Info, LineChart, Cpu, HardHat, Compass, FileText, ChevronRight
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import PruefverfahrenKatalog from './bauwerksuntersuchung/PruefverfahrenKatalog';
 
@@ -130,7 +131,7 @@ export default function Bauwerksunters_Monitoring() {
     return points;
   }, [selectedTimber, selectedState]);
 
-  // Moisture evaluation based on German standards (DIN 18560)
+  // Belegreife: CM-Grenzwerte nach Schnittstellenkoordination (BVF/ZDB u. a.), belagsabhängig
   const moistureEvaluation = useMemo(() => {
     let limitCM = 2.0;
     let evalText = "";
@@ -141,28 +142,26 @@ export default function Bauwerksunters_Monitoring() {
       limitCM = isHeated ? 1.8 : 2.0;
       isBelegreif = measuredCM <= limitCM;
       evalText = isBelegreif 
-        ? `Der Zementestrich ist mit ${measuredCM} CM-% belegreif (Grenzwert: ≤ ${limitCM} CM-%).` 
-        : `Der Zementestrich ist mit ${measuredCM} CM-% NICHT belegreif! Es drohen Verformungen oder Haftungsabrisse im Oberbelag (Grenzwert: ≤ ${limitCM} CM-%).`;
+        ? `Der Zementestrich ist mit ${formatDeWert(measuredCM)} CM-% belegreif (Richtwert Schnittstellenkoordination: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).` 
+        : `Der Zementestrich ist mit ${formatDeWert(measuredCM)} CM-% NICHT belegreif! Es drohen Verformungen oder Haftungsabrisse im Oberbelag (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`;
     } else if (substrate === 'anhydrite') {
       limitCM = isHeated ? 0.3 : 0.5;
       isBelegreif = measuredCM <= limitCM;
       evalText = isBelegreif
-        ? `Der Calciumsulfatestrich (Anhydrit) ist mit ${measuredCM} CM-% belegreif (Grenzwert: ≤ ${limitCM} CM-%).`
-        : `Der Calciumsulfatestrich ist mit ${measuredCM} CM-% NICHT belegreif! Ein Einbau von Belägen führt zu mineralischer Nadelbildung (Ettringit-ähnlich) und Blasen (Grenzwert: ≤ ${limitCM} CM-%).`;
+        ? `Der Calciumsulfatestrich (Anhydrit) ist mit ${formatDeWert(measuredCM)} CM-% belegreif (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`
+        : `Der Calciumsulfatestrich ist mit ${formatDeWert(measuredCM)} CM-% NICHT belegreif! Ein Einbau von Belägen führt zu mineralischer Nadelbildung (Ettringit-ähnlich) und Blasen (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`;
     } else {
-      // Mauerwerk brick
-      limitCM = 1.5;
-      isBelegreif = measuredCM <= limitCM;
-      evalText = isBelegreif
-        ? `Das Ziegelmauerwerk ist für Instandsetzungsanstriche ausreichend trocken (${measuredCM} CM-%).`
-        : `Das Mauerwerk weist mit ${measuredCM} CM-% eine zu hohe Materialfeuchte auf. Eine Zirkulationsbehinderung führt zu Frostabplatzungen.`;
+      // Mauerwerk: keine Belegreife-Grenze; Beurteilung über Darr-Feuchte und Durchfeuchtungsgrad
+      limitCM = NaN;
+      isBelegreif = false;
+      evalText = `Für Mauerwerk gibt es keinen Belegreife-Grenzwert. Gemessen: ${formatDeWert(measuredCM)} CM-%. Feuchte über Darrprüfung (DIN EN ISO 12570) und Durchfeuchtungsgrad (Bezug auf Sättigungsfeuchte) beurteilen.`;
     }
 
     // HF Indicator Interpretation (approximate mapping)
     if (measuredDigits < 40) {
       hfIndication = "Trocken (unter 40 Digits - oberflächennah unkritisch)";
     } else if (measuredDigits >= 40 && measuredDigits <= 80) {
-      hfIndication = "Feuchtigkeitsgrenzbereich (40-80 Digits - Tiefenmessung zwingend ratsam)";
+      hfIndication = "Feuchtigkeitsgrenzbereich (40-80 Digits - Messung in der Tiefe empfohlen)";
     } else {
       hfIndication = "Nass (über 80 Digits - Akute Feuchtebelastung)";
     }
@@ -172,25 +171,18 @@ export default function Bauwerksunters_Monitoring() {
 
   // Calculate concrete properties with carbonatization effects (rebound correlation)
   const reboundEvaluation = useMemo(() => {
-    // Rebound correlation: fc = 0.028 * R^2.05 (approx)
-    const rawStrength = 0.028 * Math.pow(reboundVal, 2.05);
-    
-    // In-situ carbonatization factor: carbonated concrete is harder on surface than internal core
-    // Phenolphthalein shows depth in mm unit. If depth is large, Schmidt Hammer hits the carbonated 'hard' rim,
-    // which leads to an overestimation of internal core strength.
-    // Correction formula according to literature (e.g., DIN EN 13791):
-    // Correction: -1 N/mm² per 5mm of carbonatization
-    const correction = Math.min(10, (carbDepth / 5.0) * 1.3);
-    const correctedStrength = Math.max(10, rawStrength - correction);
-
-    // Approximate age-rebound carbonatization rate constant:
-    // x_c = k_c * sqrt(t) => k_c = x_c / sqrt(t)
-    const k_c = carbDepth / Math.sqrt(Math.max(1, concreteAge));
+    // DIN EN 13791: Rückprallzahlen dürfen nur über eine Kalibrierung an Bohrkernen desselben
+    // Bauteils in Festigkeiten umgerechnet werden; eine pauschale Karbonatisierungskorrektur gibt es nicht.
+    const kategorie = reboundVal < 30 ? 'niedrig' : reboundVal <= 40 ? 'mittel' : 'hoch';
+    const karbonatisiert = carbDepth >= 5;
+    // √t-Gesetz: x_c = k_c · √t  →  k_c = x_c / √t  (carbonationK, schadensKern)
+    const k_c = carbonationK(carbDepth, Math.max(1, concreteAge));
 
     return {
-      rawStrength: formatDeZahl(rawStrength, 1),
-      correction: formatDeZahl(correction, 1),
-      correctedStrength: formatDeZahl(correctedStrength, 1),
+      rawStrength: String(reboundVal),
+      correction: kategorie,
+      correctedStrength: karbonatisiert ? 'Randzone karbonatisiert' : 'Randzone nicht karbonatisiert',
+      karbonatisiert,
       k_c: formatDeZahl(k_c, 2)
     };
   }, [reboundVal, carbDepth, concreteAge]);
@@ -297,7 +289,7 @@ export default function Bauwerksunters_Monitoring() {
                 Interaktiver Bohrwiderstands-Simulator (Holzuntersuchung)
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Simuliere das hochpräzise mechanische Kraftprofil von <strong>Resistographen-Prüfungen</strong> im Inneren tragender Holzbauteile (z.B. Deckenbalken, Fachwerk, Brückenpfähle). Durch die Dichteunterschiede zwischen dichtem Spätholz und weicherem Frühholz oszilliert die Kurve; Fehlstellen, Fäule oder Insektenfraß führen zu charakteristischen Kurveneinbrüchen.
+                Simulieren Sie das mechanische Kraftprofil von <strong>Resistographen-Prüfungen</strong> im Inneren tragender Holzbauteile (z.B. Deckenbalken, Fachwerk, Brückenpfähle). Durch die Dichteunterschiede zwischen dichtem Spätholz und weicherem Frühholz oszilliert die Kurve; Fehlstellen, Fäule oder Insektenfraß führen zu charakteristischen Kurveneinbrüchen.
               </p>
             </div>
 
@@ -350,7 +342,7 @@ export default function Bauwerksunters_Monitoring() {
 
                 <div className="pt-3 border-t border-slate-200 text-slate-500 text-[11px] leading-relaxed">
                   <span className="font-extrabold text-slate-800 uppercase block text-[9px] tracking-wider mb-1">Mess-Funktionsweise:</span>
-                  Eine rotierende Stahlnadel (<InlineMath math="\emptyset \approx 1.5\,\text{mm}" />) wird mit einer kontinuierlichen Eintriebsgeschwindigkeit ins Holz gedrückt. Der Stromverbrauch des Elektromotors korreliert direkt mit dem Bohrwiderstand und ermöglicht Rückschlüsse auf Gefügedichten in-situ.
+                  Eine rotierende Stahlnadel (<InlineMath math="\emptyset \approx 1{,}5\,\text{mm}" />) wird mit einer kontinuierlichen Eintriebsgeschwindigkeit ins Holz gedrückt. Der Stromverbrauch des Elektromotors korreliert mit der lokalen Rohdichte; Absolutwerte sind gerätespezifisch, ausgewertet wird relativ (Profilvergleich).
                 </div>
               </div>
 
@@ -492,7 +484,7 @@ export default function Bauwerksunters_Monitoring() {
                       <span className="text-shiraz">•</span>
                       <span>
                         <strong>Induktive Wegaufnehmer (LVDTs):</strong> Erfassen Rissbreitenbewegungen im Mikrometerbereich (<InlineMath math="\mu\text{m}" />).
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: VDI/VDE 2624 Blatt 1, VDI/VDE 2624 Blatt 1, TR Instandhaltung (DIBt) / DAfStb-Richtlinie Schutz und Instandsetzung von Betonbauteilen</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: Kalibrierung nach Herstellerangabe bzw. DAkkS-Kalibrierschein; Messkonzept nach Bauwerksmonitoring-Literatur (DGZfP). Rissbreitenkriterien ggf. nach TR Instandhaltung</span>
                       </span>
                     </li>
                     <li className="flex gap-1.5 items-start">
@@ -513,7 +505,7 @@ export default function Bauwerksunters_Monitoring() {
                       <span className="text-shiraz">•</span>
                       <span>
                         <strong>TDR-Feuchtesonden:</strong> Messen zeitlich aufgelöste elektrolytische Bauwerksfeuchten direkt im Gefügeinneren.
-                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: WTA-Merkblatt 4-11 (Messung der Feuchte von mineralischen Baustoffen)</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Prüfvorschrift: WTA-Merkblatt 4-11-16/D (Messung des Wassergehalts bzw. der Feuchte von mineralischen Baustoffen)</span>
                       </span>
                     </li>
                   </ul>
@@ -521,7 +513,7 @@ export default function Bauwerksunters_Monitoring() {
               </div>
 
               <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 mt-4 text-[10.5px] text-slate-500 leading-normal">
-                <strong>Ingenieur-Vorteil:</strong> Durch zeitaufgelöstes Monitoring können teure, zeitaufwendige Hauptprüfungen nach DIN 1076 an Brückenbauwerken gestreckt werden, da das Risikopotential transparent überwacht wird.
+                <strong>Ingenieur-Vorteil:</strong> Monitoring ergänzt die Prüfungen nach DIN 1076, ersetzt oder verlängert die Regelintervalle aber nicht; es kann Sonderprüfungen gezielt auslösen und Nutzungsauflagen absichern, da das Risikopotential transparent überwacht wird.
               </div>
             </div>
 
@@ -532,7 +524,7 @@ export default function Bauwerksunters_Monitoring() {
                   <LineChart size={14} /> Dynamisches Rissbreiten-Monitoring &amp; Temperaturgang-Simulator
                 </span>
                 <p className="text-xs text-slate-600 leading-normal">
-                  Risse in Bauwerken stehen unter mechanischer Dehnung. Die größte Bewegungsamplitude entsteht jedoch meist nicht durch die Nutzlast, sondern durch die thermische Längenänderung der Bauteilkörper (<strong>"Riss-Atmung"</strong>). Betrachte die periodische 24h-Kurve zwischen Bauteiltemperatur und LVDT-Rissöffnung:
+                  Risse in Bauwerken stehen unter mechanischer Dehnung. Die größte Bewegungsamplitude entsteht jedoch meist nicht durch die Nutzlast, sondern durch die thermische Längenänderung der Bauteilkörper (<strong>"Riss-Atmung"</strong>). Betrachten Sie die periodische 24h-Kurve zwischen Bauteiltemperatur und LVDT-Rissöffnung:
                 </p>
               </div>
 
@@ -602,7 +594,7 @@ export default function Bauwerksunters_Monitoring() {
               <div className="space-y-2 text-xs text-slate-700 leading-normal">
                 <span className="font-extrabold text-slate-800">Diagnostische Erkenntnis:</span>
                 <p>
-                  Im Sommer dehnt sich das Tragwerk infolge solarer Aufheizung aus <InlineMath math="\Delta l = \alpha_t \cdot l_0 \cdot \Delta T" />. Dadurch schließen sich Risse und Dehnfugen mechanisch (LVDT-Kurve sinkt). Bei winterlichem Frost zieht sich das Bauteil zusammen, Dehnfugen und Risse öffnen sich maximal (Vorsicht bei Frost-Tausalz-Angriffen!). Ein Rissgitter ohne Einbezug dieses Dehneffekts ist extrem fehleranfällig. Nur wenn die Rissöffnung über mehrere Zyklen bleibend zunimmt, liegt eine aktive Tragwerksbewegung (Setzung) vor!
+                  Im Sommer dehnt sich das Tragwerk infolge solarer Aufheizung aus <InlineMath math="\Delta l = \alpha_t \cdot l_0 \cdot \Delta T" />. Dadurch schließen sich Risse und Dehnfugen mechanisch (LVDT-Kurve sinkt). Bei winterlichem Frost zieht sich das Bauteil zusammen, Dehnfugen und Risse öffnen sich maximal (Vorsicht bei Frost-Tausalz-Angriffen!). Ein Rissgitter ohne Einbezug dieses Dehneffekts ist extrem fehleranfällig. Für eine Trendaussage müssen die Messwerte temperaturkompensiert werden. Nimmt die Rissöffnung über mehrere Zyklen bleibend zu, deutet das auf aktive Ursachen hin (Setzung, Kriechen, Korrosion, Überlast).
                 </p>
               </div>
             </div>
@@ -620,7 +612,7 @@ export default function Bauwerksunters_Monitoring() {
                     <Droplets size={16} />
                   </span>
                   <div>
-                    <h3 className="font-bold text-sm text-slate-900">Feuchtigkeitsrechner (Belegreife nach DIN 18560)</h3>
+                    <h3 className="font-bold text-sm text-slate-900">Feuchtigkeitsrechner (Belegreife, CM-Methode)</h3>
                     <p className="text-[10px] text-slate-400 font-semibold uppercase">Estriche &amp; Mauerwerke bewerten</p>
                   </div>
                 </div>
@@ -657,7 +649,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between text-xs font-medium text-slate-600 mb-1">
                       <span>Messergebnis Calciumcarbid-Methode:</span>
-                      <span className="font-bold text-shiraz">{measuredCM} CM-%</span>
+                      <span className="font-bold text-shiraz">{formatDeWert(measuredCM)} CM-%</span>
                     </div>
                     <input
                       type="range"
@@ -673,7 +665,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between text-xs font-medium text-slate-600 mb-1">
                       <span>Zerstörungsfreie HF-Messung (Eindringtiefe ca. 3cm):</span>
-                      <span className="font-bold text-slate-800">{measuredDigits} Digits</span>
+                      <span className="font-bold text-slate-800">{formatDeWert(measuredDigits)} Digits</span>
                     </div>
                     <input
                       type="range"
@@ -688,7 +680,7 @@ export default function Bauwerksunters_Monitoring() {
 
                 <div className={`p-4 rounded-xl border ${moistureEvaluation.isBelegreif ? 'bg-emerald-50 border-emerald-100 text-emerald-900' : 'bg-amber-50 border-amber-100 text-amber-900'} text-xs space-y-2`}>
                   <div className="font-bold flex items-center gap-1">
-                    <span>{moistureEvaluation.isBelegreif ? '✔ Freigabe erteilt (Belegreif)' : '⚠ Verlege-Sperre (Nicht Belegreif)'}</span>
+                    <span>{substrate === 'brick' ? 'ℹ Mauerwerk: keine Belegreife-Grenze' : moistureEvaluation.isBelegreif ? '✔ Freigabe erteilt (Belegreif)' : '⚠ Verlege-Sperre (Nicht Belegreif)'}</span>
                   </div>
                   <p className="leading-relaxed">{moistureEvaluation.evalText}</p>
                   <p className="border-t border-current/20 pt-1.5 text-[11px] opacity-80">
@@ -698,7 +690,7 @@ export default function Bauwerksunters_Monitoring() {
               </div>
 
               <div className="pt-3 border-t border-slate-100 text-[10px] text-slate-500 leading-normal space-y-1">
-                <p><strong>Normhinweis:</strong> Das kapazitive Hochfrequenz-Verfahren (HF) dient ausschließlich der schnellen, zerstörungsfreien Eingrenzung feuchter Zonen. Das einzige gerichtlich anerkannte Belegreife-Prüfmittel nach DIN 18560 ist die <strong>Calciumcarbid-Methode (CM)</strong>.</p>
+                <p><strong>Normhinweis:</strong> Das kapazitive Hochfrequenz-Verfahren (HF) dient ausschließlich der schnellen, zerstörungsfreien Eingrenzung feuchter Zonen. Die <strong>CM-Messung</strong> ist das in der Praxis vereinbarte Prüfverfahren für die Belegreife; Darr- und KRL-Verfahren sind Referenz- bzw. alternative Verfahren. Die CM-Richtwerte (CT ≤ 2,0 / beheizt ≤ 1,8; CA ≤ 0,5 / beheizt ≤ 0,3 CM-%) stammen aus der Schnittstellenkoordination und hängen vom Belag ab.</p>
               </div>
             </div>
 
@@ -710,8 +702,8 @@ export default function Bauwerksunters_Monitoring() {
                     <Ruler size={16} strokeWidth={2.5} />
                   </span>
                   <div>
-                    <h3 className="font-bold text-sm text-slate-900">Rückprallhammer-Karbonatisierungs-Abgleich</h3>
-                    <p className="text-[10px] text-slate-400 font-semibold uppercase">Genauigkeitskalibrierung nach EN 13791</p>
+                    <h3 className="font-bold text-sm text-slate-900">Rückprallhammer & Karbonatisierung</h3>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase">DIN EN 12504-2 · Festigkeit nur mit Kalibrierung (DIN EN 13791)</p>
                   </div>
                 </div>
 
@@ -719,7 +711,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between mb-1">
                       <span>Gemessener Schlagrückprall R (Mittelwert):</span>
-                      <span className="font-bold text-slate-900">R = {reboundVal}</span>
+                      <span className="font-bold text-slate-900">R = {formatDeWert(reboundVal)}</span>
                     </div>
                     <input
                       type="range"
@@ -734,7 +726,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between mb-1">
                       <span>Mit Phenolphthalein bestimmte Karbonatisierungstiefe:</span>
-                      <span className="font-shiraz font-bold">{carbDepth} mm</span>
+                      <span className="font-shiraz font-bold">{formatDeWert(carbDepth)} mm</span>
                     </div>
                     <input
                       type="range"
@@ -749,7 +741,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between mb-1">
                       <span>Alter des Tragwerks:</span>
-                      <span className="font-bold text-slate-900">{concreteAge} Jahre</span>
+                      <span className="font-bold text-slate-900">{formatDeWert(concreteAge)} Jahre</span>
                     </div>
                     <input
                       type="range"
@@ -763,20 +755,20 @@ export default function Bauwerksunters_Monitoring() {
                 </div>
 
                 <div className="bg-[#f8fafc] p-4 rounded-xl border border-home-grau/25 space-y-2.5">
-                  <span className="text-[10px] font-black uppercase text-shiraz tracking-widest block">Tragwerksdiagnostische Verrechnung:</span>
+                  <span className="text-[10px] font-black uppercase text-shiraz tracking-widest block">Auswertung:</span>
                   <div className="grid grid-cols-2 gap-3 text-xs leading-none">
                     <div className="bg-white p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-[9px] text-slate-400 font-bold block mb-1">Unkorrigierte Druckfestigkeit:</span>
-                      <strong className="text-sm font-mono text-slate-800">{reboundEvaluation.rawStrength} N/mm²</strong>
+                      <span className="text-[9px] text-slate-400 font-bold block mb-1">Rückprallzahl R:</span>
+                      <strong className="text-sm font-mono text-slate-800">{reboundEvaluation.rawStrength}</strong>
                     </div>
                     <div className="bg-white p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-[9px] text-slate-400 font-bold block mb-1">Karbonatisierungs-Abschlag:</span>
-                      <strong className="text-sm font-mono text-rose-600">-{reboundEvaluation.correction} N/mm²</strong>
+                      <span className="text-[9px] text-slate-400 font-bold block mb-1">Qualitative Einordnung (Relativvergleich):</span>
+                      <strong className="text-sm font-mono text-rose-600">{reboundEvaluation.correction}</strong>
                     </div>
                     <div className="bg-[#1e293b] p-2.5 rounded-lg border border-[#334155] col-span-2 text-white">
-                      <span className="text-[9px] text-orange-200 font-bold block mb-1">Wahre in-situ Beton-Festigkeit:</span>
-                      <strong className="text-base font-black font-mono text-amber-300">{reboundEvaluation.correctedStrength} N/mm²</strong>
-                      <span className="text-[9px] text-slate-300 block mt-1 leading-normal italic">(Präziser Kernschätzwert für Statiker)</span>
+                      <span className="text-[9px] text-orange-200 font-bold block mb-1">Prüffläche:</span>
+                      <strong className="text-base font-black font-mono text-amber-300">{reboundEvaluation.correctedStrength}</strong>
+                      <span className="text-[9px] text-slate-300 block mt-1 leading-normal italic">{reboundEvaluation.karbonatisiert ? 'Karbonatisierte Randzonen erhöhen R – Prüffläche abschleifen bzw. Karbonatisierungstiefe dokumentieren.' : 'In Festigkeit umrechnen nur über eine Kalibrierung an Bohrkernen desselben Bauteils (DIN EN 13791).'}</span>
                     </div>
                   </div>
                   <div className="text-[10px] text-slate-500 leading-normal pt-1.5 border-t border-slate-205">
@@ -786,7 +778,7 @@ export default function Bauwerksunters_Monitoring() {
               </div>
 
               <div className="pt-3 border-t border-slate-100 text-[10px] text-slate-500 leading-normal">
-                <p><strong>Hintergrund:</strong> Durch Aufnahme von atmosphärischem <InlineMath math="\text{CO}_2" /> wandelt sich Calciumhydroxid <InlineMath math="\text{Ca(OH)}_2" /> im Beton unter Oberflächenhärtung in Kalkstein <InlineMath math="\text{CaCO}_3" /> um. Ein Sklerometer (Rückprallhammer) prallt dort härter ab und überschätzt die innere Kernfestigkeit, wenn die Karbonatisierungstiefe nicht erfasst und abgezogen wird!</p>
+                <p><strong>Hintergrund:</strong> Durch Aufnahme von atmosphärischem <InlineMath math="\text{CO}_2" /> wandelt sich Calciumhydroxid <InlineMath math="\text{Ca(OH)}_2" /> im Beton unter Oberflächenhärtung in Kalkstein <InlineMath math="\text{CaCO}_3" /> um. Ein Sklerometer (Rückprallhammer) prallt dort härter ab und liefert dort höhere Rückprallzahlen. Deshalb Prüffläche abschleifen, Karbonatisierungstiefe dokumentieren und die Rückprallzahl nur über Bohrkerne kalibriert in Festigkeit umrechnen.</p>
               </div>
             </div>
           </div>
@@ -812,7 +804,7 @@ export default function Bauwerksunters_Monitoring() {
           </div>
           <div className="space-y-2 md:pl-4">
             <span className="font-bold text-slate-800 uppercase text-[9px] tracking-wider block">2. Diffusionsfortschritt der Karbonatisierung</span>
-            <p>Die zeitliche Entwicklung der Entalkalisierung des Betons folgt dem Fick'schen Diffusionsgesetz:</p>
+            <p>Die zeitliche Entwicklung der Karbonatisierungsfront folgt näherungsweise dem √t-Gesetz (aus dem Fick’schen Gesetz mit wandernder Reaktionsfront abgeleitet):</p>
             <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/20 my-1 text-center">
               <BlockMath math="x_c(t) = k_c \cdot \sqrt{t}" />
             </div>
@@ -824,7 +816,8 @@ export default function Bauwerksunters_Monitoring() {
       </div>
 
       {/* 5. Standardized Module Footer */}
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Bauwerksdiagnostik', url: 'https://de.wikipedia.org/wiki/Bauwerksdiagnostik' },
           { title: 'Zerstörungsfreie Werkstoffprüfung', url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Werkstoffpr%C3%BCfung' },
@@ -833,13 +826,13 @@ export default function Bauwerksunters_Monitoring() {
         ]}
         literatur={[
           'DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen); DIN 1076 und RI-EBW-PRÜF: Zustandserfassung, Analyse und Bauwerksdiagnostik im Bestand.',
-          'Heid, J., Gieler, R.: Ultraschall- und Georadar-Messtechnik an mineralischen und historischen Bauteilen.',
-          'Bruch, H.: Standsicherheitsnachweise im Holzbau unter Einbezug von Bohrwiderstands-Gefügekartierungen.'
+          'DGZfP-Merkblätter B 02, B 03 (2025), B 04, B 10, B 11 (2022) – Deutsche Gesellschaft für Zerstörungsfreie Prüfung.',
+          'DIN 68800-4: Holzschutz – Bekämpfungs- und Sanierungsmaßnahmen gegen Holz zerstörende Pilze und Insekten.'
         ]}
         regelwerke={[
           { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18560 (Estriche im Bauwesen - Bestimmung der Belegreife)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'DIN 18560-1 (Estriche im Bauwesen – Allgemeine Anforderungen, Prüfung und Ausführung); Belegreife nach Schnittstellenkoordination (BVF/ZDB) bzw. DIN 18356/18365', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1' },
           { title: 'RILEM TC 154-EMC: Test methods for on-site measurement of resistivity of concrete (Polder, Materials and Structures 33, 2000)', url: 'https://www.rilem.net/' }
         ]}
         formeln={[

@@ -894,9 +894,9 @@ export default function HistorischeBauprodukte() {
           'Bauwerkserhaltung im Denkmal- und Altbaubestand (WTA-Wissenschaftlich-Technische Arbeitsgemeinschaft)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 771-4 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 771-2 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12467 (Faserzement-Flachplatten - Produktspezifikation und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 771-4 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-4' },
+          { title: 'DIN EN 771-2 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-2' },
+          { title: 'DIN EN 12467 (Faserzement-Flachplatten - Produktspezifikation und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12467' },
           { title: 'GefStoffV (Novelle 12/2024): Erkundungspflicht des Veranlassers bei Gebäuden mit Baubeginn vor 31.10.1993', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
           { title: 'TRGS 519 (Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' },
           { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.vdi.de/' },

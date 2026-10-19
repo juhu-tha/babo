@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Layers, BookOpen, CheckCircle2, Lightbulb, Calculator, Sparkles, ShieldCheck, AlertTriangle, BadgeCheck } from 'lucide-react';
@@ -184,7 +185,7 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Fensterbreite (B):</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{fensterBreite.toFixed(2)} m</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeZahl(fensterBreite, 2)} m</span>
                     </div>
                     <input 
                       type="range" 
@@ -201,7 +202,7 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Fensterhöhe (H):</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{fensterHoehe.toFixed(2)} m</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeZahl(fensterHoehe, 2)} m</span>
                     </div>
                     <input 
                       type="range" 
@@ -218,7 +219,7 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Ansichtsbreite Rahmen (<InlineMath math="b_f" />):</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{rahmenBreite} cm</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(rahmenBreite)} cm</span>
                     </div>
                     <input 
                       type="range" 
@@ -240,7 +241,7 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Verglasungs-U-Wert (<InlineMath math="U_g" />):</span>
-                      <span className="font-mono text-xs font-bold text-sky-700 dark:text-sky-450">{u_g_wert.toFixed(1)} W/m²K</span>
+                      <span className="font-mono text-xs font-bold text-sky-700 dark:text-sky-450">{formatDeZahl(u_g_wert, 1)} W/m²K</span>
                     </div>
                     <div className="flex gap-2">
                       <input 
@@ -269,7 +270,7 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Rahmen-U-Wert (<InlineMath math="U_f" />):</span>
-                      <span className="font-mono text-xs font-bold text-amber-700 dark:text-amber-400">{u_f_wert.toFixed(1)} W/m²K</span>
+                      <span className="font-mono text-xs font-bold text-amber-700 dark:text-amber-400">{formatDeZahl(u_f_wert, 1)} W/m²K</span>
                     </div>
                     <div className="flex gap-2">
                       <input 
@@ -298,17 +299,17 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Abstandshalter Randverbund (<InlineMath math="\Psi_g" />):</span>
-                      <span className="font-mono text-xs font-bold text-violet-700 dark:text-violet-400">{psi_g_wert.toFixed(3)} W/mK</span>
+                      <span className="font-mono text-xs font-bold text-violet-700 dark:text-violet-400">{formatDeZahl(psi_g_wert, 3)} W/mK</span>
                     </div>
                     <select 
                       value={psi_g_wert}
                       onChange={(e) => setPsiWert(parseFloat(e.target.value))}
                       className="w-full text-xs p-1.5 border rounded bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 font-mono"
                     >
-                      <option value="0.035">Warme Kante Premium (Kunststoff-Spezial) - 0.035 W/mK</option>
-                      <option value="0.045">Warme Kante Standard (Edelstahl/Kunststoff) - 0.045 W/mK</option>
-                      <option value="0.060">Edelstahlabstandshalter - 0.060 W/mK</option>
-                      <option value="0.080">Aluminium Abstandshalter (Konventionell) - 0.080 W/mK</option>
+                      <option value="0.035">Warme Kante Premium (Kunststoff-Spezial) - 0,035 W/mK</option>
+                      <option value="0.045">Warme Kante Standard (Edelstahl/Kunststoff) - 0,045 W/mK</option>
+                      <option value="0.060">Edelstahlabstandshalter - 0,060 W/mK</option>
+                      <option value="0.080">Aluminium Abstandshalter (Konventionell) - 0,080 W/mK</option>
                     </select>
                   </div>
                 </div>
@@ -321,7 +322,7 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Energiedurchlassgrad (<InlineMath math="g" />-Wert):</span>
-                      <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-450">{(g_wert * 100).toFixed(0)} %</span>
+                      <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-450">{formatDeZahl((g_wert * 100), 0)} %</span>
                     </div>
                     <input 
                       type="range" 
@@ -338,7 +339,7 @@ export default function BpDachFassade() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-medium">
                       <span>Solarstrahlung (<InlineMath math="I_{\text{solar}}" />):</span>
-                      <span className="font-mono text-xs font-bold text-emerald-850">{einstrahlung} W/m²</span>
+                      <span className="font-mono text-xs font-bold text-emerald-850">{formatDeWert(einstrahlung)} W/m²</span>
                     </div>
                     <input 
                       type="range" 
@@ -406,7 +407,7 @@ export default function BpDachFassade() {
                       <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-inner flex items-center justify-between">
                         <div>
                           <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block mb-1 uppercase tracking-wider">Gesamt-U-Wert des Fensters (Uw):</span>
-                          <span className="text-4xl font-black font-mono text-zinc-900 dark:text-white mt-1 block">{u_w.toFixed(3)} <span className="text-sm font-normal text-slate-500 text-xs">W/m²K</span></span>
+                          <span className="text-4xl font-black font-mono text-zinc-900 dark:text-white mt-1 block">{formatDeZahl(u_w, 3)} <span className="text-sm font-normal text-slate-500 text-xs">W/m²K</span></span>
                         </div>
                         <div className="p-3 bg-shiraz/10 text-shiraz rounded-xl">
                           <Layers className="w-8 h-8" />
@@ -417,15 +418,15 @@ export default function BpDachFassade() {
                       <div className="grid grid-cols-3 gap-3 text-center text-xs font-mono">
                         <div className="bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-800">
                           <span className="text-[9px] text-zinc-400 block">TotalAw</span>
-                          <span className="font-extrabold text-zinc-800 dark:text-slate-200">{f_area.toFixed(2)} m²</span>
+                          <span className="font-extrabold text-zinc-800 dark:text-slate-200">{formatDeZahl(f_area, 2)} m²</span>
                         </div>
                         <div className="bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-800">
-                          <span className="text-[9px] text-zinc-405 block">GlasAg ({(g_area / f_area * 100).toFixed(0)}%)</span>
-                          <span className="font-extrabold text-sky-700 dark:text-sky-455">{g_area.toFixed(2)} m²</span>
+                          <span className="text-[9px] text-zinc-405 block">GlasAg ({formatDeZahl((g_area / f_area * 100), 0)}%)</span>
+                          <span className="font-extrabold text-sky-700 dark:text-sky-455">{formatDeZahl(g_area, 2)} m²</span>
                         </div>
                         <div className="bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-800">
                           <span className="text-[9px] text-zinc-405 block">RahmenAf</span>
-                          <span className="font-extrabold text-amber-700 dark:text-amber-455">{r_area.toFixed(2)} m²</span>
+                          <span className="font-extrabold text-amber-700 dark:text-amber-455">{formatDeZahl(r_area, 2)} m²</span>
                         </div>
                       </div>
 
@@ -435,19 +436,19 @@ export default function BpDachFassade() {
                         <div className="space-y-1.5 font-mono text-[11px] font-normal">
                           <div className="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-0.5">
                             <span className="text-sky-750">Glasfläche (<InlineMath math="A_g \cdot U_g" />):</span>
-                            <span className="font-bold">{q_glass.toFixed(2)} W/K</span>
+                            <span className="font-bold">{formatDeZahl(q_glass, 2)} W/K</span>
                           </div>
                           <div className="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-0.5">
                             <span className="text-amber-750">Rahmenfläche (<InlineMath math="A_f \cdot U_f" />):</span>
-                            <span className="font-bold">{q_frame.toFixed(2)} W/K</span>
+                            <span className="font-bold">{formatDeZahl(q_frame, 2)} W/K</span>
                           </div>
                           <div className="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-805 pb-0.5">
                             <span className="text-violet-750">Randverbund-Verlust (<InlineMath math="l_g \cdot \Psi_g" />):</span>
-                            <span className="font-bold">{q_psi.toFixed(2)} W/K</span>
+                            <span className="font-bold">{formatDeZahl(q_psi, 2)} W/K</span>
                           </div>
                           <div className="flex justify-between text-xs font-semibold pt-1 text-zinc-900 dark:text-white border-t border-slate-200 dark:border-slate-800 mt-1">
                             <span>Summenwärmestrom (<InlineMath math="\Phi_{\text{tot}}" />):</span>
-                            <span>{(q_glass + q_frame + q_psi).toFixed(2)} W/K</span>
+                            <span>{formatDeZahl((q_glass + q_frame + q_psi), 2)} W/K</span>
                           </div>
                         </div>
                       </div>
@@ -459,10 +460,10 @@ export default function BpDachFassade() {
                             <Sparkles className="w-4 h-4 text-emerald-600" />
                             <span>Sonneneintrag (Vorteil):</span>
                           </div>
-                          <span className="font-mono font-extrabold text-emerald-800 dark:text-emerald-400 text-sm">+{q_solar.toFixed(0)} W</span>
+                          <span className="font-mono font-extrabold text-emerald-800 dark:text-emerald-400 text-sm">+{formatDeZahl(q_solar, 0)} W</span>
                         </div>
                         <p className="text-[10px] text-zinc-500 dark:text-slate-400 mt-1 leading-normal font-normal">
-                          Bei klarer Einstrahlung gewinnt das Fenster durch die verglaste Fläche <InlineMath math="A_g" /> solare Energie im Wert von ca. {q_solar.toFixed(0)} Watt. Im Winter stützt dieser solare Wärmebetrag die Raumheizung direkt.
+                          Bei klarer Einstrahlung gewinnt das Fenster durch die verglaste Fläche <InlineMath math="A_g" /> solare Energie im Wert von ca. {formatDeZahl(q_solar, 0)} Watt. Im Winter stützt dieser solare Wärmebetrag die Raumheizung direkt.
                         </p>
                       </div>
 
@@ -505,7 +506,7 @@ export default function BpDachFassade() {
           'Willems, W. M. (2018): Lehrbuch der Bauphysik (8. Auflage, Springer Vieweg)'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN ISO 10077-1 (Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen - Berechnung des Wärmedurchgangskoeffizienten)', url: 'https://www.dinmedia.de/' }, 
+          { title: 'DIN EN ISO 10077-1 (Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen - Berechnung des Wärmedurchgangskoeffizienten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10077-1' }, 
           { title: 'GEG (Gebäudeenergiegesetz - Anforderungen an opake und transparente Außenbauteile)', url: 'https://www.gesetze-im-internet.de/geg/' }, 
           { title: 'ZVDH (Zentralverband des Deutschen Dachdeckerhandwerks) - Fachregeln für Abdichtungen und Dachdeckungen', url: 'https://www.dachdecker.org/' } 
         ]} 

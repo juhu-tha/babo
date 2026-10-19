@@ -154,7 +154,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
   labor: {
     title: 'Labor, Sensorik & Analytik',
     tagline: 'Praxisnahe Prüfverfahren, moderne Bauwerksdiagnostik und statistische Versuchsplanung',
-    leitfrage: 'Wie wandeln wir verrauschte messtechnische Rohdaten aus Bohrkernen und Sensoren in rechtssichere Festigkeits- und Konformitätsurteile um?',
+    leitfrage: 'Wie wandeln wir verrauschte messtechnische Rohdaten aus Bohrkernen und Sensoren in rechtlich belastbare Festigkeits- und Konformitätsurteile um?',
     corePrinciples: [
       {
         title: 'Repräsentativität schlägt Probenanzahl',
@@ -193,7 +193,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Konditionierung',
         desc: 'Planparalleles Schleifen oder Einspachteln, Darr-Trocknung, Feuchte-Äquilibrierung.',
         iconName: 'Wrench',
-        keyFacts: ['L/D-Verhältnis = 1.0', 'Toleranz < 0.05 mm', '20°C / 65% r.F.'],
+        keyFacts: ['L/D-Verhältnis = 1.0', 'Toleranz < 0,05 mm', '20°C / 65% r.F.'],
         normOrFormula: 'DIN EN 12390-1',
         color: 'from-indigo-500 to-indigo-600'
       },
@@ -203,7 +203,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Bruchversuch & Sensorik',
         desc: 'Kraft- und wegaufnehmende Belastung (Druck, Spaltzug, Haftzug), Rissfortschrittsmessung.',
         iconName: 'Activity',
-        keyFacts: ['Belastungsrate 0.5 MPa/s', 'DMS / Laser-Wegaufnehmer', 'Spannungs-Dehnungskurve'],
+        keyFacts: ['Belastungsrate 0,5 MPa/s', 'DMS / Laser-Wegaufnehmer', 'Spannungs-Dehnungskurve'],
         normOrFormula: 'f_c = \\frac{F_{max}}{A_c}',
         color: 'from-amber-500 to-amber-600'
       },
@@ -325,12 +325,12 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       {
         title: 'Europäisches Inverkehrbringen vs. Nationale Verwendung',
         description: 'Die EU regelt das Inverkehrbringen (CE-Zeichen), aber die Bundesländer regeln über die Landesbauordnungen (MBO/LBO) und die Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB), was tatsächlich eingebaut werden darf.',
-        takeaway: 'CE-Kennzeichnung + nationale Anwendungsnorm = rechtssicheres Bauwerk.'
+        takeaway: 'CE-Kennzeichnung + nationale Anwendungsnorm = rechtlich belastbares Bauwerk.'
       }
     ],
     systemicExplanation: 'Dieses Modul klärt die juristisch-technische Schnittstelle jedes Bauprojekts. Es führt durch den Dschungel aus hEN-Normen, allgemeinen bauaufsichtlichen Zulassungen (abZ), allgemeinen Bauartgenehmigungen (aBG), Vorhabenbezogenen Bauartgenehmigungen (vBg) und Umwelt-Produktdeklarationen (EPDs).',
     zusammenhaengeText: 'Das Bauproduktenrecht schützt Bauleiter und Planer vor massiven Haftungsrisiken: Wer Bauprodukte ohne gültige CE-Kennzeichnung oder ohne Passfähigkeit zur MVV TB einbaut, riskiert behördliche Baustopps und den Verlust des Versicherungsschutzes.',
-    graphicalPipelineTitle: 'Der rechtssichere Zulassungs- und Verifikationspfad',
+    graphicalPipelineTitle: 'Der rechtlich belastbare Zulassungs- und Verifikationspfad',
     graphicalPipelineDesc: 'Vom Fabriktor bis zur Abnahme auf der Baustelle nach BauPVO und Landesbauordnung:',
     steps: [
       {
@@ -1182,7 +1182,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Kritischer Grenzwert',
         desc: 'Carbonatisierungsfront oder kritischer Chloridgehalt erreicht die Bewehrungsoberfläche.',
         iconName: 'AlertTriangle',
-        keyFacts: ['pH < 9.0', 'Cl- > 0.4–0.5% m/z', 'Lochfraßgefahr'],
+        keyFacts: ['pH < 9.0', 'Cl- > 0,4–0,5% m/z', 'Lochfraßgefahr'],
         normOrFormula: 'c_{crit} \\text{ erreicht}',
         color: 'from-amber-500 to-amber-600'
       },
@@ -1220,7 +1220,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Rissmorphologie liest das Kraftfeld',
-        description: 'Risse verlaufen immer rechtwinklig zur Hauptzugspannung. Horizontale Risse deuten auf Biegung, diagonale 45°-Risse auf Schub/Querkraft oder Baugrundsetzung, netzartige Risse auf Schwinden.',
+        description: 'Risse verlaufen immer rechtwinklig zur Hauptzugspannung. Biegerisse verlaufen von der Zugseite senkrecht zur Bauteilachse (bei Balken also vertikal); horizontale Risse in Wänden deuten eher auf Lagerfugenversagen, Kipp- oder Ausmittigkeitsprobleme, Längsrisse entlang der Bewehrung auf Korrosion; diagonale 45°-Risse auf Schub/Querkraft oder Baugrundsetzung, netzartige Risse auf Schwinden.',
         takeaway: 'Das Rissbild ist der Fingerabdruck der mechanischen Überlastung.'
       },
       {
@@ -1229,10 +1229,10 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         takeaway: 'Die gutachterliche Beweislast verlangt lückenlose Kausalketten.'
       }
     ],
-    systemicExplanation: 'Dieses Modul ist die gerichtsverwertbare Kriminalistik des Bauwesens. Es führt durch optische und instrumentelle Diagnoseverfahren (Risslupe, Rissmonitore, Rissbreitenmikroskope, Ultraschall, Kernbohrungen), ordnet Schadensbilder den physikalisch-chemischen Phänomenen zu und strukturiert Sachverständigengutachten nach VDI 6200.',
+    systemicExplanation: 'Dieses Modul ist die forensische Ursachenanalyse des Bauwesens. Es führt durch optische und instrumentelle Diagnoseverfahren (Risslupe, Rissmonitore, Rissbreitenmikroskope, Ultraschall, Kernbohrungen), ordnet Schadensbilder den physikalisch-chemischen Phänomenen zu und strukturiert Sachverständigengutachten nach VDI 6200.',
     zusammenhaengeText: 'Die Schadensdiagnostik schließt den Kreis aller Module: Sie deckt auf, wo Grundlagen, Betontechnologie, Bauphysik oder Ausführung versagt haben, und leitet direkt in die Instandsetzung über.',
     graphicalPipelineTitle: 'Der gutachterliche Schadensanalyse-Pfad',
-    graphicalPipelineDesc: 'Vom Schadenssymptom über instrumentelle Diagnose zur gerichtsfesten Kausalitätsprüfung:',
+    graphicalPipelineDesc: 'Vom Schadenssymptom über instrumentelle Diagnose zur nachvollziehbaren Kausalitätsprüfung:',
     steps: [
       {
         step: '1',
@@ -1261,7 +1261,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Soll-Ist-Abgleich mit Statik, Baustoffnormen und Ausführungsplänen. Identifikation des Primärauslösers.',
         iconName: 'Compass',
         keyFacts: ['Planungs- vs. Ausführungsfehler', 'Normabweichung zum Bauzeitpunkt', 'Schadensmechanismus'],
-        normOrFormula: 'VDI 6200 Schadensmatrix',
+        normOrFormula: 'BGB § 633 / a. R. d. T. zum Abnahmezeitpunkt',
         color: 'from-indigo-600 to-indigo-700'
       },
       {
@@ -1318,7 +1318,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Abtragen & Entrosten',
         desc: 'Entfernen von carbonatisiertem Beton, Freilegen der Bewehrung um min. 15 mm, HDW-Strahlen.',
         iconName: 'Wrench',
-        keyFacts: ['HDW bis 2500 bar', 'Entrostung Sa 2½', 'Haftzug f_ctm ≥ 1.5 MPa'],
+        keyFacts: ['HDW bis 2500 bar', 'Entrostung Sa 2½', 'Haftzug f_ctm ≥ 1,5 MPa'],
         normOrFormula: 'DIN EN 1504-10',
         color: 'from-amber-600 to-amber-700'
       },
@@ -1377,7 +1377,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
   praxiswissen: {
     title: 'Praxiswissen, Bauleitung & VOB',
     tagline: 'Baustellenmanagement, VOB-Vertragsrecht, Bautagebuch und Qualitätsüberwachung',
-    leitfrage: 'Wie steuert man die Baustelle rechtssicher, termin- und qualitätskonform zwischen Entwurf, Bauleiter und Subunternehmern?',
+    leitfrage: 'Wie steuert man die Baustelle rechtlich belastbar, termin- und qualitätskonform zwischen Entwurf, Bauleiter und Subunternehmern?',
     corePrinciples: [
       {
         title: 'Die VOB als Spielregel des Bauens',
@@ -1385,7 +1385,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         takeaway: 'Wer als Bauleiter Fristen versäumt oder Bedenken nicht schriftlich anmeldet, haftet persönlich.'
       },
       {
-        title: 'Das Bautagebuch als gerichtsfeste Urkunde',
+        title: 'Das Bautagebuch als beweissichere Urkunde',
         description: 'Tägliche lückenlose Dokumentation von Wetter (Temperatur, Niederschlag), Personalstärke je Gewerk, Geräteeinsatz, angelieferten Materialien (inkl. Lieferscheinnummern) und Baubehinderungen.',
         takeaway: 'Was nicht im Bautagebuch steht, hat juristisch auf der Baustelle nie stattgefunden.'
       },
@@ -1398,7 +1398,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
     systemicExplanation: 'Dieses Modul verbindet akademische Theorie mit der rauen Wirklichkeit der Baustelle. Es schult Bauleiter in VOB-Mängelrügen, Abnahmeprozessen, Lieferscheinprüfung bei Betonagen, Bewehrungsabnahmen vor dem Betonieren und digitaler Mängeldokumentation.',
     zusammenhaengeText: 'Praxiswissen ist der operative Realitätscheck aller Ingenieurmodule: Es setzt statische Pläne, betontechnologische Vorgaben und bauphysikalische Details in gebaute Realität um.',
     graphicalPipelineTitle: 'Der baubegleitende Qualitäts- und Rechtszyklus',
-    graphicalPipelineDesc: 'Von der Arbeitsvorbereitung über Baustellenkontrollen zur rechtssicheren VOB-Abnahme:',
+    graphicalPipelineDesc: 'Von der Arbeitsvorbereitung über Baustellenkontrollen zur rechtlich belastbaren VOB-Abnahme:',
     steps: [
       {
         step: '1',

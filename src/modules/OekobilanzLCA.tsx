@@ -79,10 +79,10 @@ export default function OekobilanzLCA() {
         ]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
         regelwerke={[
-          { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Umweltmanagement - Ökobilanz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15978:2012-10 (Bewertung der umweltbezogenen Qualität von Gebäuden - Berechnungsmethode)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Umweltmanagement - Ökobilanz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14040' },
+          { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN 15978:2012-10 (Bewertung der umweltbezogenen Qualität von Gebäuden - Berechnungsmethode)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
+          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+17472' },
           { title: 'DGNB System Kriterium ENV1.1 (Ökobilanz des Gebäudes)', url: 'https://www.dgnb.de/' }
         ]}
         weblinks={[

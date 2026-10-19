@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
   Chart as ChartJS,
@@ -120,7 +121,7 @@ export default function Frischbetondruck() {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${context.raw.toFixed(1)} kN/m² bei Tiefe ${context.label.toFixed(2)} m`
+          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.raw, 1)} kN/m² bei Tiefe ${formatDeZahl(context.label, 2)} m`
         }
       }
     }
@@ -171,9 +172,9 @@ export default function Frischbetondruck() {
           />
           
           <div className="text-xs text-text-main/70 bg-white p-3 rounded-lg border border-home-grau/30 flex flex-col gap-1">
-            <span className="font-medium text-text-main">Effektive Erstarrungszeit t<sub>E</sub>: <strong>{tE_eff.toFixed(1)} h</strong></span>
+            <span className="font-medium text-text-main">Effektive Erstarrungszeit t<sub>E</sub>: <strong>{formatDeZahl(tE_eff, 1)} h</strong></span>
             <span>Berücksichtigt den Temperatureinfluss nach Abs. 5.3 der DIN 18218.</span>
-            <span className="font-medium text-text-main mt-1">Beiwert K<sub>1</sub>: <strong>{K1.toFixed(3)}</strong></span>
+            <span className="font-medium text-text-main mt-1">Beiwert K<sub>1</sub>: <strong>{formatDeZahl(K1, 3)}</strong></span>
           </div>
         </div>
 
@@ -217,7 +218,7 @@ export default function Frischbetondruck() {
           <div className="text-sm text-text-main/80 space-y-2">
             <div className="flex justify-between items-center">
               <span>Max. Schalungsdruck:</span>
-              <span className="font-bold text-shiraz">{maxP.toFixed(1)} kN/m²</span>
+              <span className="font-bold text-shiraz">{formatDeZahl(maxP, 1)} kN/m²</span>
             </div>
             <div className="p-3 bg-white border border-home-grau/30 rounded mt-2">
               {maxP <= 40 && (
@@ -300,9 +301,9 @@ export default function Frischbetondruck() {
         { title: 'Frischbetondruck', url: 'https://de.wikipedia.org/wiki/Frischbetondruck' }
       ]}
       regelwerke={[
-        { title: 'DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)', url: 'https://www.dinmedia.de/' },
-        { title: 'DIN 18216 (Schalungsanker für Betonschalungen - Anforderungen, Prüfung, Verwendung)', url: 'https://www.dinmedia.de/' },
-        { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen und Frischbetoneigenschaften)', url: 'https://www.dinmedia.de/' }
+        { title: 'DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18218' },
+        { title: 'DIN 18216 (Schalungsanker für Betonschalungen - Anforderungen, Prüfung, Verwendung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18216' },
+        { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen und Frischbetoneigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
       ]}
       literatur={[
         'Graubner, C.-A.; Proske, T. (2010): Frischbetondruck auf lotrechte Schalungen. Beton- und Stahlbetonbau 105(1), S. 12-23',

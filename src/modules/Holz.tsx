@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo, useEffect } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -400,7 +401,7 @@ export default function Holz() {
     const currentPoint = [];
 
     for (let w = 0; w <= 90; w += 5) {
-      labels.push(`${w}°`);
+      labels.push(`${formatDeWert(w)}°`);
       const rad = (w * Math.PI) / 180;
       const currentFcad = fc0d / ((fc0d / (kc90 * fc90d)) * Math.pow(Math.sin(rad), 2) + Math.pow(Math.cos(rad), 2));
       data.push(currentFcad);
@@ -550,17 +551,17 @@ export default function Holz() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-2xs flex flex-col justify-between">
                 <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider">Tangential (Ringrichtung | q_t)</span>
-                <span className="text-xl font-mono font-black text-shiraz mt-1">{holzArten[holz].qt.toFixed(2)} %</span>
+                <span className="text-xl font-mono font-black text-shiraz mt-1">{formatDeZahl(holzArten[holz].qt, 2)} %</span>
                 <p className="text-[10px] text-slate-500 mt-1">Breitenänderung senkrecht zur radialen Schichtebene.</p>
               </div>
               <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-2xs flex flex-col justify-between">
                 <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider">Radial (Strahlenrichtung | q_r)</span>
-                <span className="text-xl font-mono font-black text-slate-800 mt-1">{holzArten[holz].qr.toFixed(2)} %</span>
+                <span className="text-xl font-mono font-black text-slate-800 mt-1">{formatDeZahl(holzArten[holz].qr, 2)} %</span>
                 <p className="text-[10px] text-slate-500 mt-1">Dickenänderung parallel zu den Markstrahlen.</p>
               </div>
               <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-2xs flex flex-col justify-between">
                 <span className="text-[10px] text-home-grau font-bold uppercase tracking-wider">Longitudinal (Faserrichtung | q_l)</span>
-                <span className="text-xl font-mono font-black text-slate-800 mt-1">{holzArten[holz].ql.toFixed(2)} %</span>
+                <span className="text-xl font-mono font-black text-slate-800 mt-1">{formatDeZahl(holzArten[holz].ql, 2)} %</span>
                 <p className="text-[10px] text-slate-500 mt-1">Äußerst geringe Maßänderung längs der Faserrichtung.</p>
               </div>
             </div>
@@ -571,9 +572,9 @@ export default function Holz() {
                 Wird das Material von Fasersättigung (~30% Holzfeuchte) auf eine typische Wohnraum-Ausgleichsfeuchte von 12% getrocknet (<FormulaText text="\Delta u = 18\%" />), verringern sich die Abmessungen rechnerisch um:
               </p>
               <ul className="list-disc pl-5 space-y-1 text-slate-650">
-                <li>Tangential: <strong className="font-mono text-shiraz">{(18 * holzArten[holz].qt).toFixed(2)}%</strong> (Spürbare Breitenreduktion)</li>
-                <li>Radial: <strong className="font-mono text-slate-800">{(18 * holzArten[holz].qr).toFixed(2)}%</strong> (Moderate Dickenreduktion)</li>
-                <li>Longitudinal: <strong className="font-mono text-slate-800">{(18 * holzArten[holz].ql).toFixed(2)}%</strong> (Längenänderung vernachlässigbar)</li>
+                <li>Tangential: <strong className="font-mono text-shiraz">{formatDeZahl((18 * holzArten[holz].qt), 2)}%</strong> (Spürbare Breitenreduktion)</li>
+                <li>Radial: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].qr), 2)}%</strong> (Moderate Dickenreduktion)</li>
+                <li>Longitudinal: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].ql), 2)}%</strong> (Längenänderung vernachlässigbar)</li>
               </ul>
               <div className="text-[10px] text-slate-550 border-t border-home-grau/10 pt-1.5 mt-1.5 italic">
                 {holz.includes('OSB') || holz.includes('Furnier') || holz.includes('Brettschichtholz') 
@@ -663,15 +664,15 @@ export default function Holz() {
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="flex justify-between">
                   <span className="text-text-main/60">Rohdichte <FormulaText text="\rho" />:</span>
-                  <span className="font-bold">{holzArten[holz].rho} kg/m³</span>
+                  <span className="font-bold">{formatDeWert(holzArten[holz].rho)} kg/m³</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-text-main/60">Wärmeleitf. <FormulaText text="\lambda" />:</span>
-                  <span className="font-bold">{holzArten[holz].lambda} W/(mK)</span>
+                  <span className="font-bold">{formatDeWert(holzArten[holz].lambda)} W/(mK)</span>
                 </div>
                 <div className="flex justify-between col-span-2">
                   <span className="text-text-main/60">Abbrandrate <FormulaText text="\beta_0" /> (Brandschutz):</span>
-                  <span className="font-bold">{holzArten[holz].beta0} mm/min</span>
+                  <span className="font-bold">{formatDeWert(holzArten[holz].beta0)} mm/min</span>
                 </div>
               </div>
             </div>
@@ -717,11 +718,11 @@ export default function Holz() {
             />
             <div className="flex justify-between text-sm mt-2 pt-2 border-t border-home-grau/30">
               <span className="text-text-main/70">Gleichgewichtsfeuchte:</span>
-              <span className="font-bold text-shiraz">{uGleichgewicht.toFixed(1)} %</span>
+              <span className="font-bold text-shiraz">{formatDeZahl(uGleichgewicht, 1)} %</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-text-main/70">Erreichte Endfeuchte:</span>
-              <span className="font-bold text-shiraz">{uEnde.toFixed(1)} %</span>
+              <span className="font-bold text-shiraz">{formatDeZahl(uEnde, 1)} %</span>
             </div>
           </div>
 
@@ -827,33 +828,33 @@ export default function Holz() {
               <div className="text-xs text-text-main/60 uppercase tracking-wider">
                 {querschnitt === 'rund' ? 'Durchmesser (T)' : 'Breite (T)'}
               </div>
-              <div className="text-lg font-bold text-shiraz">{newBreite.toFixed(1)} mm</div>
-              <div className="text-xs text-torch-red">Δ {(newBreite - breite).toFixed(1)} mm</div>
+              <div className="text-lg font-bold text-shiraz">{formatDeZahl(newBreite, 1)} mm</div>
+              <div className="text-xs text-torch-red">Δ {formatDeZahl((newBreite - breite), 1)} mm</div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
               <div className="text-xs text-text-main/60 uppercase tracking-wider">
                 {querschnitt === 'rund' ? 'Durchmesser (R)' : 'Dicke (R)'}
               </div>
               <div className="text-lg font-bold text-shiraz">
-                {querschnitt === 'rund' ? (breite * scaleY).toFixed(1) : newDicke.toFixed(1)} mm
+                {querschnitt === 'rund' ? formatDeZahl((breite * scaleY), 1) : formatDeZahl(newDicke, 1)} mm
               </div>
               <div className="text-xs text-torch-red">
-                Δ {(querschnitt === 'rund' ? (breite * scaleY) - breite : newDicke - dicke).toFixed(1)} mm
+                Δ {formatDeZahl((querschnitt === 'rund' ? (breite * scaleY) - breite : newDicke - dicke), 1)} mm
               </div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
               <div className="text-xs text-text-main/60 uppercase tracking-wider">Länge (L)</div>
-              <div className="text-lg font-bold text-shiraz">{newLaenge.toFixed(1)} mm</div>
-              <div className="text-xs text-torch-red">Δ {(newLaenge - laenge).toFixed(1)} mm</div>
+              <div className="text-lg font-bold text-shiraz">{formatDeZahl(newLaenge, 1)} mm</div>
+              <div className="text-xs text-torch-red">Δ {formatDeZahl((newLaenge - laenge), 1)} mm</div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
               <div className="text-xs text-text-main/60 uppercase tracking-wider">Volumenschwindmaß</div>
-              <div className="text-lg font-bold text-shiraz">{((1 - (scaleX * scaleY * scaleZ)) * 100).toFixed(1)} %</div>
+              <div className="text-lg font-bold text-shiraz">{formatDeZahl(((1 - (scaleX * scaleY * scaleZ)) * 100), 1)} %</div>
               <div className="text-xs text-text-main/60">ΔV / V</div>
             </div>
             <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
               <div className="text-xs text-text-main/60 uppercase tracking-wider">Verhältnis T/R</div>
-              <div className="text-lg font-bold text-shiraz">{(shrinkT / shrinkR || 0).toFixed(2)}</div>
+              <div className="text-lg font-bold text-shiraz">{formatDeZahl((shrinkT / shrinkR || 0), 2)}</div>
               <div className="text-xs text-text-main/60">Anisotropie</div>
             </div>
           </div>
@@ -912,10 +913,10 @@ export default function Holz() {
               value={kc90}
               onChange={(e) => setKc90(Number(e.target.value))}
             >
-              <option value={1.0}>1.00 (Standard, keine Erhöhung)</option>
-              <option value={1.25}>1.25 (Vollholz, l_1 ≥ 150mm)</option>
-              <option value={1.50}>1.50 (Vollholz, l_1 ≥ 150mm, l ≥ 400mm)</option>
-              <option value={1.75}>1.75 (BSH, l_1 ≥ 150mm, l ≥ 400mm)</option>
+              <option value={1.0}>1,00 (Standard, keine Erhöhung)</option>
+              <option value={1.25}>1,25 (Vollholz, l_1 ≥ 150mm)</option>
+              <option value={1.50}>1,50 (Vollholz, l_1 ≥ 150mm, l ≥ 400mm)</option>
+              <option value={1.75}>1,75 (BSH, l_1 ≥ 150mm, l ≥ 400mm)</option>
             </select>
           </div>
 
@@ -934,19 +935,19 @@ export default function Holz() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
               <h3 className="text-xs font-bold text-home-grau mb-1">Modifikationsbeiwert k_mod</h3>
-              <div className="text-2xl font-bold text-text-main">{kmod.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-text-main">{formatDeZahl(kmod, 2)}</div>
             </div>
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
               <h3 className="text-xs font-bold text-home-grau mb-1">Teilsicherheitsbeiwert γ_M</h3>
-              <div className="text-2xl font-bold text-text-main">{gammaM.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-text-main">{formatDeZahl(gammaM, 2)}</div>
             </div>
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
               <h3 className="text-xs font-bold text-home-grau mb-1">E-Modul E_0,mean</h3>
-              <div className="text-2xl font-bold text-text-main">{E0mean} <span className="text-sm font-normal">MPa</span></div>
+              <div className="text-2xl font-bold text-text-main">{formatDeWert(E0mean)} <span className="text-sm font-normal">MPa</span></div>
             </div>
             <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/20">
-              <h3 className="text-xs font-bold text-shiraz mb-1">Druckfestigkeit f_c,α,d ({winkel}°)</h3>
-              <div className="text-2xl font-bold text-shiraz">{fcad.toFixed(2)} <span className="text-sm font-normal">MPa</span></div>
+              <h3 className="text-xs font-bold text-shiraz mb-1">Druckfestigkeit f_c,α,d ({formatDeWert(winkel)}°)</h3>
+              <div className="text-2xl font-bold text-shiraz">{formatDeZahl(fcad, 2)} <span className="text-sm font-normal">MPa</span></div>
             </div>
           </div>
 
@@ -962,33 +963,33 @@ export default function Holz() {
               <tbody>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-3 px-4 font-medium text-text-main">Biegung (f_m)</td>
-                  <td className="py-3 px-4">{fm.toFixed(1)} MPa</td>
-                  <td className="py-3 px-4 font-bold text-shiraz">{fmd.toFixed(2)} MPa</td>
+                  <td className="py-3 px-4">{formatDeZahl(fm, 1)} MPa</td>
+                  <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fmd, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 bg-off-white/50">
                   <td className="py-3 px-4 font-medium text-text-main">Zug parallel (f_t,0)</td>
-                  <td className="py-3 px-4">{ft0.toFixed(1)} MPa</td>
-                  <td className="py-3 px-4 font-bold text-shiraz">{ft0d.toFixed(2)} MPa</td>
+                  <td className="py-3 px-4">{formatDeZahl(ft0, 1)} MPa</td>
+                  <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(ft0d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-3 px-4 font-medium text-text-main">Zug rechtwinklig (f_t,90)</td>
-                  <td className="py-3 px-4">{ft90.toFixed(1)} MPa</td>
-                  <td className="py-3 px-4 font-bold text-shiraz">{ft90d.toFixed(2)} MPa</td>
+                  <td className="py-3 px-4">{formatDeZahl(ft90, 1)} MPa</td>
+                  <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(ft90d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 bg-off-white/50">
                   <td className="py-3 px-4 font-medium text-text-main">Druck parallel (f_c,0)</td>
-                  <td className="py-3 px-4">{fc0.toFixed(1)} MPa</td>
-                  <td className="py-3 px-4 font-bold text-shiraz">{fc0d.toFixed(2)} MPa</td>
+                  <td className="py-3 px-4">{formatDeZahl(fc0, 1)} MPa</td>
+                  <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fc0d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-3 px-4 font-medium text-text-main">Druck rechtwinklig (f_c,90)</td>
-                  <td className="py-3 px-4">{fc90.toFixed(1)} MPa</td>
-                  <td className="py-3 px-4 font-bold text-shiraz">{fc90d.toFixed(2)} MPa</td>
+                  <td className="py-3 px-4">{formatDeZahl(fc90, 1)} MPa</td>
+                  <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fc90d, 2)} MPa</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 bg-off-white/50">
                   <td className="py-3 px-4 font-medium text-text-main">Schub/Scherung (f_v)</td>
-                  <td className="py-3 px-4">{fv.toFixed(1)} MPa</td>
-                  <td className="py-3 px-4 font-bold text-shiraz">{fvd.toFixed(2)} MPa</td>
+                  <td className="py-3 px-4">{formatDeZahl(fv, 1)} MPa</td>
+                  <td className="py-3 px-4 font-bold text-shiraz">{formatDeZahl(fvd, 2)} MPa</td>
                 </tr>
               </tbody>
             </table>
@@ -1150,7 +1151,7 @@ export default function Holz() {
                   else if (holz.includes('OSB')) holzType = 'OSB';
                   else if (holz.includes('FSH')) holzType = 'FSH';
                   const kdef = kdefMap[holzType]?.[nkl] || 0;
-                  return kdef > 0 ? kdef.toFixed(2) : 'N/A';
+                  return kdef > 0 ? formatDeZahl(kdef, 2) : 'N/A';
                 })()}
               </div>
               <p className="text-sm text-text-main/80">
@@ -1179,7 +1180,7 @@ export default function Holz() {
                   <span className="text-xs font-semibold text-slate-500">Tangential (quer zur Faser):</span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-[#A3113E]">
-                      {Math.abs(deltaU * qt * 10000).toFixed(0)}
+                      {formatDeZahl(Math.abs(deltaU * qt * 10000), 0)}
                     </span>
                     <span className="text-xs font-bold text-slate-500 ml-1">μm/m</span>
                   </div>
@@ -1188,7 +1189,7 @@ export default function Holz() {
                   <span className="text-xs font-semibold text-slate-500">Radial (quer zur Faser):</span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-[#A3113E]">
-                      {Math.abs(deltaU * qr * 10000).toFixed(0)}
+                      {formatDeZahl(Math.abs(deltaU * qr * 10000), 0)}
                     </span>
                     <span className="text-xs font-bold text-slate-500 ml-1">μm/m</span>
                   </div>
@@ -1197,7 +1198,7 @@ export default function Holz() {
                   <span className="text-xs font-semibold text-slate-500">Longitudinal (faserparallel):</span>
                   <div className="text-right">
                     <span className="text-2xl font-black text-slate-400">
-                      {Math.abs(deltaU * ql * 10000).toFixed(0)}
+                      {formatDeZahl(Math.abs(deltaU * ql * 10000), 0)}
                     </span>
                     <span className="text-xs font-bold text-slate-400 ml-1">μm/m</span>
                   </div>
@@ -1205,7 +1206,7 @@ export default function Holz() {
               </div>
 
               <p className="text-[11px] text-text-main/70 text-center leading-relaxed">
-                Rechnerische Hübe bei Feuchteänderung um <span className="font-bold text-shiraz">{deltaU.toFixed(1)}%</span> (Einbau {uStart}% vs. Endfeuchte {uEnde.toFixed(1)}%) basierend auf den materialspezifischen Parametern für <strong>{holz}</strong>.
+                Rechnerische Hübe bei Feuchteänderung um <span className="font-bold text-shiraz">{formatDeZahl(deltaU, 1)}%</span> (Einbau {formatDeWert(uStart)}% vs. Endfeuchte {formatDeZahl(uEnde, 1)}%) basierend auf den materialspezifischen Parametern für <strong>{holz}</strong>.
               </p>
             </div>
           </div>
@@ -1246,11 +1247,11 @@ export default function Holz() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für den Hochbau)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 68800-1..4:2019-06 (Holzschutz - Teile 1 bis 4: Vorbeugender baulicher und chemischer Holzschutz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für den Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+338' },
+          { title: 'DIN 68800-1..4:2019-06 (Holzschutz - Teile 1 bis 4: Vorbeugender baulicher und chemischer Holzschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-1..4' },
+          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14080' },
+          { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14081-1' }
         ]}
         weblinks={[
           { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5', url: 'https://www.schneider-holz.com/service/statiksoftware.html' },
@@ -1271,7 +1272,7 @@ export default function Holz() {
           },
           {
             formel: '\\Delta l = l_0 \\cdot \\alpha \\cdot \\Delta u \\quad (u \\le u_{\\text{FSP}} \\approx 30\\,\\%)',
-            erklaerung: 'Differentielles Schwind- und Quellmaß: \\alpha = Schwindmaß pro 1% Feuchteänderung (radial ca. 0.16%, tangential ca. 0.33%, longitudinal ca. 0.01%). Nur unterhalb des Fasersättigungspunkts (FSP).',
+            erklaerung: 'Differentielles Schwind- und Quellmaß: \\alpha = Schwindmaß pro 1% Feuchteänderung (radial ca. 0,16%, tangential ca. 0,33%, longitudinal ca. 0,01%). Nur unterhalb des Fasersättigungspunkts (FSP).',
             quelle: 'Niemz: Holzphysik'
           },
           {

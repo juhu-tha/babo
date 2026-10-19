@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 export type DatenRegelnTab = 
@@ -218,7 +218,7 @@ export const ALL_17_SDGS: SdgItem[] = [
       'Schwammstadt-Infrastruktur: Entsiegelung, Rigolensysteme und Retentionsmulden gegen Starkregen',
       'Bauen im Bestand als Primärstrategie zur Bewahrung grauer Energie und baukultureller Identität',
       'Dach- und Fassadenbegrünung zur Reduktion des städtischen Wärmeinseleffekts (Urban Heat Island)',
-      'Rechtssicheres Abweichen von Komfortnormen über Gebäudetyp E (§ 650o BGB)'
+      'Rechtlich belastbares Abweichen von Komfortnormen über Gebäudetyp E (§ 650o BGB)'
     ]
   },
   {
@@ -290,11 +290,11 @@ export const ALL_17_SDGS: SdgItem[] = [
     englishTitle: 'Promote peaceful and inclusive societies, provide access to justice for all',
     badgeBg: 'bg-[#00689D]',
     bauRelevant: false,
-    baupraxis: 'Transparente, diskriminierungsfreie Vergabeverfahren (VOB/A, VgV) ohne Korruption. Rechtssichere Bauvertragsgestaltung nach BGB und HOAI sowie verlässliche, digitale Genehmigungsverfahren im Baurecht.',
+    baupraxis: 'Transparente, diskriminierungsfreie Vergabeverfahren (VOB/A, VgV) ohne Korruption. Rechtlich belastbare Bauvertragsgestaltung nach BGB und HOAI sowie verlässliche, digitale Genehmigungsverfahren im Baurecht.',
     measures: [
       'Strikte Einhaltung von Compliance- und Antikorruptionsrichtlinien bei öffentlichen Bauvergaben',
       'Digitale, transparente Bauantragsverfahren nach dem Onlinezugangsgesetz (OZG)',
-      'Rechtssichere Durchsetzung anerkannter Regeln der Technik zum Schutz der Allgemeinheit'
+      'Rechtlich belastbare Durchsetzung anerkannter Regeln der Technik zum Schutz der Allgemeinheit'
     ]
   },
   {
@@ -888,7 +888,7 @@ export default function NachhaltigkeitDatenRegeln() {
                   Interaktiver Stoffstrom-Rechner: Urban Mining Potenzial
                 </span>
                 <span className="text-xs font-mono font-bold text-emerald-800">
-                  Eingabe: {interactiveMasse} Tonnen Bauschutt
+                  Eingabe: {formatDeWert(interactiveMasse)} Tonnen Bauschutt
                 </span>
               </div>
 
@@ -1433,7 +1433,7 @@ export default function NachhaltigkeitDatenRegeln() {
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">Suffizienz</span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Ermöglicht fachkundigen Baupartnern das rechtssichere Abweichen von reinen Komfort- und Ausstattungsnormen (DIN-Normen) ohne Sachmangelrisiko nach § 633 BGB. 
+                    Ermöglicht fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen (DIN-Normen) ohne Sachmangelrisiko nach § 633 BGB. 
                     Grundlegende öffentlich-rechtliche Schutzziele (**Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz**) bleiben voll gewahrt.
                   </p>
                 </div>
@@ -1464,12 +1464,12 @@ export default function NachhaltigkeitDatenRegeln() {
           'Nagler, F.; Auer, T.: Einfach Bauen – Forschungshäuser Bad Aibling (Detail Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken – Rahmenbedingungen für die Bewertung von Gebäuden)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 15392 (Nachhaltigkeit im Hoch- und Tiefbau – Allgemeine Grundsätze)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken – Rahmenbedingungen für die Bewertung von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' },
+          { title: 'DIN EN ISO 15392 (Nachhaltigkeit im Hoch- und Tiefbau – Allgemeine Grundsätze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+15392' },
           { title: 'EPBD (EU 2024/1275 Energy Performance of Buildings Directive)', url: 'https://eur-lex.europa.eu/' },
           { title: 'EU-Taxonomie-Verordnung (EU 2020/852)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN 15804+A2 (Umweltproduktdeklarationen für Bauprodukte)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15978 (Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 15804+A2 (Umweltproduktdeklarationen für Bauprodukte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN 15978 (Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
           { title: 'Gebäudeenergiegesetz (GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
         ]}

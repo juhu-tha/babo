@@ -18,7 +18,7 @@ import {
   FileCheck
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 export default function IngenieurbauLCA() {
@@ -398,7 +398,7 @@ export default function IngenieurbauLCA() {
               </p>
             </div>
             <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-shiraz/10 text-shiraz border border-shiraz/20">
-              RSP = {studyPeriod} Jahre
+              RSP = {formatDeWert(studyPeriod)} Jahre
             </span>
           </div>
 
@@ -426,7 +426,7 @@ export default function IngenieurbauLCA() {
             <div className="space-y-1.5">
               <div className="flex justify-between font-bold text-slate-700">
                 <label>Betrachtungszeitraum (<InlineMath math="t_{\text{ref}}" />):</label>
-                <span className="font-mono bg-white px-1.5 py-0.5 rounded border">{studyPeriod} Jahre</span>
+                <span className="font-mono bg-white px-1.5 py-0.5 rounded border">{formatDeWert(studyPeriod)} Jahre</span>
               </div>
               <input
                 type="range"
@@ -521,7 +521,7 @@ export default function IngenieurbauLCA() {
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
                   <span className="text-slate-600">
-                    Instandhaltung (B2–B5) [{results.asphaltCycles}x Belag, {results.bearingCycles}x Lager]:
+                    Instandhaltung (B2–B5) [{formatDeWert(results.asphaltCycles)}x Belag, {formatDeWert(results.bearingCycles)}x Lager]:
                   </span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.beton.b2b5, 1)} t CO₂e</strong>
                 </div>
@@ -550,7 +550,7 @@ export default function IngenieurbauLCA() {
                   </strong>
                 </div>
                 <span className="text-[10px] text-slate-500 max-w-[140px] text-right">
-                  Über {studyPeriod} Jahre Betriebszeit
+                  Über {formatDeWert(studyPeriod)} Jahre Betriebszeit
                 </span>
               </div>
             </div>
@@ -582,7 +582,7 @@ export default function IngenieurbauLCA() {
                 </div>
                 <div className="flex justify-between py-1 border-b border-home-grau/15">
                   <span className="text-slate-600">
-                    Instandhaltung (B2–B5) [{results.coatingCycles}x Anstrich, {results.asphaltCycles}x Belag]:
+                    Instandhaltung (B2–B5) [{formatDeWert(results.coatingCycles)}x Anstrich, {formatDeWert(results.asphaltCycles)}x Belag]:
                   </span>
                   <strong className="font-mono text-slate-900">{formatDeZahl(results.stahl.b2b5, 1)} t CO₂e</strong>
                 </div>

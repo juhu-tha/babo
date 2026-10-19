@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Layers, 
@@ -310,7 +311,7 @@ export default function BpLehmbauprodukte() {
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
                     <span>Lichte Wandhöhe (h):</span>
-                    <span className="text-shiraz">{height.toFixed(2)} m</span>
+                    <span className="text-shiraz">{formatDeZahl(height, 2)} m</span>
                   </label>
                   <input
                     type="range"
@@ -322,15 +323,15 @@ export default function BpLehmbauprodukte() {
                     className="w-full accent-shiraz cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-slate-500 font-mono">
-                    <span>2.00 m</span>
-                    <span>3.50 m</span>
+                    <span>2,00 m</span>
+                    <span>3,50 m</span>
                   </div>
                 </div>
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
                     <span>Wandstärke (t):</span>
-                    <span className="text-shiraz">{thickness} cm</span>
+                    <span className="text-shiraz">{formatDeWert(thickness)} cm</span>
                   </label>
                   <div className="grid grid-cols-3 gap-2">
                     {[24, 30, 36.5].map((val) => (
@@ -343,7 +344,7 @@ export default function BpLehmbauprodukte() {
                             : 'bg-white border-home-grau/25 text-text-main hover:bg-slate-50'
                         }`}
                       >
-                        {val} cm
+                        {formatDeWert(val)} cm
                       </button>
                     ))}
                   </div>
@@ -352,7 +353,7 @@ export default function BpLehmbauprodukte() {
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
                     <span>Festigkeitsklasse (FK):</span>
-                    <span className="text-shiraz">Klasse {strengthClass}</span>
+                    <span className="text-shiraz">Klasse {formatDeWert(strengthClass)}</span>
                   </label>
                   <div className="grid grid-cols-6 gap-1">
                     {[2, 2.5, 3, 4, 5, 6].map((val) => (
@@ -365,12 +366,12 @@ export default function BpLehmbauprodukte() {
                             : 'bg-white border-home-grau/25 text-text-main hover:bg-slate-50'
                         }`}
                       >
-                        {val}
+                        {formatDeWert(val)}
                       </button>
                     ))}
                   </div>
                   <span className="text-[10px] text-slate-500 leading-normal block pt-1">
-                    Charakteristische Mauerwerksdruckfestigkeit f<sub>k</sub> = {getFk(strengthClass).toFixed(1)} N/mm² (nach DIN 18940)
+                    Charakteristische Mauerwerksdruckfestigkeit f<sub>k</sub> = {formatDeZahl(getFk(strengthClass), 1)} N/mm² (nach DIN 18940)
                   </span>
                 </div>
 
@@ -384,7 +385,7 @@ export default function BpLehmbauprodukte() {
                         onChange={() => setHoldsTopAndBottom(true)}
                         className="accent-shiraz"
                       />
-                      <span>Ja (Slab-Halterung, β = 0.75)</span>
+                      <span>Ja (Slab-Halterung, β = 0,75)</span>
                     </label>
                     <label className="flex items-center gap-2 text-xs font-medium cursor-pointer">
                       <input
@@ -393,7 +394,7 @@ export default function BpLehmbauprodukte() {
                         onChange={() => setHoldsTopAndBottom(false)}
                         className="accent-shiraz"
                       />
-                      <span>Nein (Frei/Auskragend, β = 1.0)</span>
+                      <span>Nein (Frei/Auskragend, β = 1,0)</span>
                     </label>
                   </div>
                 </div>
@@ -401,7 +402,7 @@ export default function BpLehmbauprodukte() {
                 <div className="space-y-1 pt-1 border-t border-home-grau/10">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
                     <span>Bemessungslast (N<sub>Ed</sub>):</span>
-                    <span className="text-amber-800 font-bold">{designLoad} kN/m</span>
+                    <span className="text-amber-800 font-bold">{formatDeWert(designLoad)} kN/m</span>
                   </label>
                   <input
                     type="range"
@@ -427,22 +428,22 @@ export default function BpLehmbauprodukte() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
                       <span className="text-[10px] text-slate-500 block">Knicklänge h<sub>ef</sub></span>
-                      <span className="font-mono font-bold text-sm text-text-main">{effectiveHeight.toFixed(2)} m</span>
+                      <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl(effectiveHeight, 2)} m</span>
                     </div>
 
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
                       <span className="text-[10px] text-slate-500 block">Schlankheitsgrad λ</span>
-                      <span className="font-mono font-bold text-sm text-text-main">{slenderness.toFixed(1)}</span>
+                      <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl(slenderness, 1)}</span>
                     </div>
 
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
                       <span className="text-[10px] text-slate-500 block">Reduktionsbeiwert &Phi;</span>
-                      <span className="font-mono font-bold text-sm text-text-main">{phi.toFixed(3)}</span>
+                      <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl(phi, 3)}</span>
                     </div>
 
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
                       <span className="text-[10px] text-slate-500 block">Erhöhung f<sub>d</sub></span>
-                      <span className="font-mono font-bold text-sm text-text-main">{(f_d * 1000).toFixed(0)} kN/m²</span>
+                      <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl((f_d * 1000), 0)} kN/m²</span>
                     </div>
                   </div>
 
@@ -450,9 +451,9 @@ export default function BpLehmbauprodukte() {
                   <div className="bg-white p-4 rounded-xl border border-home-grau/20 mt-5 space-y-3">
                     <h5 className="text-xs font-bold text-slate-600">Rechnerischer Festigkeitsbezug (LaTeX):</h5>
                     <div className="text-[13px] overflow-x-auto py-1">
-                      <BlockMath math={`h_{ef} = \\beta \\cdot h = ${effectiveHeightBeiwert.toFixed(2)} \\cdot ${height.toFixed(2)} = ${effectiveHeight.toFixed(2)}\\text{ m}`} />
-                      <BlockMath math={`\\lambda = \\frac{h_{ef}}{t} = \\frac{${effectiveHeight.toFixed(2)}}{${wallThicknessM.toFixed(3)}} = ${slenderness.toFixed(1)} \\leq 21`} />
-                      <BlockMath math={`N_{Rd} = \\Phi \\cdot t \\cdot f_d = ${phi.toFixed(3)} \\cdot ${wallThicknessM.toFixed(3)} \\text{ m} \\cdot ${f_d * 1000} \\text{ kN/m}^2 = ${n_Rd.toFixed(1)} \\text{ kN/m}`} />
+                      <BlockMath math={`h_{ef} = \\beta \\cdot h = ${formatDeTeX(effectiveHeightBeiwert, 2)} \\cdot ${formatDeTeX(height, 2)} = ${formatDeTeX(effectiveHeight, 2)}\\text{ m}`} />
+                      <BlockMath math={`\\lambda = \\frac{h_{ef}}{t} = \\frac{${formatDeTeX(effectiveHeight, 2)}}{${formatDeTeX(wallThicknessM, 3)}} = ${formatDeTeX(slenderness, 1)} \\leq 21`} />
+                      <BlockMath math={`N_{Rd} = \\Phi \\cdot t \\cdot f_d = ${formatDeTeX(phi, 3)} \\cdot ${formatDeTeX(wallThicknessM, 3)} \\text{ m} \\cdot ${f_d * 1000} \\text{ kN/m}^2 = ${formatDeTeX(n_Rd, 1)} \\text{ kN/m}`} />
                     </div>
                   </div>
                 </div>
@@ -480,9 +481,9 @@ export default function BpLehmbauprodukte() {
                       <p className="text-xs leading-normal opacity-90">
                         {isSlendernessOk ? (
                           isCapacityOk 
-                            ? `Die bemessene Wandstärke von ${thickness} cm hält mit einer rechnerischen Wandkapazität von ${n_Rd.toFixed(1)} kN/m der Traglast von ${designLoad} kN/m einwandfrei stand.`
-                            : `Die berechnete Wandtragfähigkeit beträgt nur ${n_Rd.toFixed(1)} kN/m. Dies reicht für die äußere Belastung von ${designLoad} kN/m nicht aus!`
-                        ) : `Der berechnete Schlankheitsgrad beträgt ${slenderness.toFixed(1)}, welcher das festgelegte Limit von 21 nach DIN 18940 überschreitet. Die Wand droht auszubeulen! Erhöhen Sie die Wanddicke.`}
+                            ? `Die bemessene Wandstärke von ${thickness} cm hält mit einer rechnerischen Wandkapazität von ${formatDeZahl(n_Rd, 1)} kN/m der Traglast von ${designLoad} kN/m einwandfrei stand.`
+                            : `Die berechnete Wandtragfähigkeit beträgt nur ${formatDeZahl(n_Rd, 1)} kN/m. Dies reicht für die äußere Belastung von ${designLoad} kN/m nicht aus!`
+                        ) : `Der berechnete Schlankheitsgrad beträgt ${formatDeZahl(slenderness, 1)}, welcher das festgelegte Limit von 21 nach DIN 18940 überschreitet. Die Wand droht auszubeulen! Erhöhen Sie die Wanddicke.`}
                       </p>
                     </div>
                   </div>
@@ -562,11 +563,11 @@ export default function BpLehmbauprodukte() {
           'Ziegert, Chr.: Instandsetzung historischer Lehmbauten (DIN Media)'
         ]}
         regelwerke={[
-          { title: 'DIN 18940:2023-04: Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion', url: 'https://www.dinmedia.de' },
-          { title: 'DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de' },
-          { title: 'DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de' },
-          { title: 'DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de' },
-          { title: 'DIN 18948:2024-03: Lehmplatten - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de' }
+          { title: 'DIN 18940:2023-04: Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion', url: 'https://www.dinmedia.de/de/suche?q=DIN+18940' },
+          { title: 'DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18945' },
+          { title: 'DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18946' },
+          { title: 'DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18947' },
+          { title: 'DIN 18948:2024-03: Lehmplatten - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18948' }
         ]}
         formeln={[
           {

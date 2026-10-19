@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Search, ShieldAlert, AlertTriangle, CheckCircle2, XCircle, RotateCcw, 
@@ -480,18 +481,18 @@ export function SchadensforensikSimulator() {
             <div className="mt-4 space-y-3">
               <div className="flex justify-between items-center text-xs">
                 <span className="text-text-main/70">Verfügbares Gesamtbudget:</span>
-                <span className="font-mono font-bold text-text-main">{currentCase.budget.toLocaleString()} €</span>
+                <span className="font-mono font-bold text-text-main">{formatDeWert(currentCase.budget)} €</span>
               </div>
               <div className="flex justify-between items-center text-xs">
                 <span className="text-text-main/70">Bisherige Ausgaben:</span>
-                <span className="font-mono font-bold text-rose-600">- {spentBudget.toLocaleString()} €</span>
+                <span className="font-mono font-bold text-rose-600">- {formatDeWert(spentBudget)} €</span>
               </div>
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
                 <span className="text-xs font-bold text-text-main">Verbleibendes Budget:</span>
                 <span className={`text-base font-mono font-bold ${
                   remainingBudget > 1500 ? 'text-emerald-700' : remainingBudget > 500 ? 'text-amber-700' : 'text-red-700'
                 }`}>
-                  {remainingBudget.toLocaleString()} €
+                  {formatDeWert(remainingBudget)} €
                 </span>
               </div>
             </div>
@@ -506,7 +507,7 @@ export function SchadensforensikSimulator() {
                 />
               </div>
               <span className="text-[10px] text-text-main/60 mt-1 block text-right font-mono">
-                {((spentBudget / currentCase.budget) * 100).toFixed(0)} % aufgebraucht
+                {formatDeZahl(((spentBudget / currentCase.budget) * 100), 0)} % aufgebraucht
               </span>
             </div>
           </div>
@@ -553,7 +554,7 @@ export function SchadensforensikSimulator() {
                 <div>
                   <div className="flex justify-between items-start gap-2">
                     <span className="font-bold text-xs text-text-main">{method.name}</span>
-                    <span className="font-mono text-xs font-bold text-shiraz shrink-0">{method.cost} €</span>
+                    <span className="font-mono text-xs font-bold text-shiraz shrink-0">{formatDeWert(method.cost)} €</span>
                   </div>
                   <div className="flex items-center gap-2 text-[10px] text-text-main/60 mt-1">
                     <span className="capitalize bg-slate-200 px-1.5 py-0.5 rounded text-[9px] font-medium">
@@ -603,7 +604,7 @@ export function SchadensforensikSimulator() {
                     }`}
                   >
                     <FileText size={14} />
-                    <span>Untersuchung beauftragen ({method.cost} €)</span>
+                    <span>Untersuchung beauftragen ({formatDeWert(method.cost)} €)</span>
                   </button>
                 )}
               </div>

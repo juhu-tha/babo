@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { MessageSquare, Send, AlertCircle, Lightbulb, ThumbsUp, ClipboardCheck, Star } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
@@ -26,14 +27,14 @@ function EvaluierungContent() {
     const subject = encodeURIComponent('Evaluierung Baustoff-Dashboard');
     const body = encodeURIComponent(
       `Bewertung durch Studierende:\n\n` +
-      `Inhalte: ${ratings.inhalte}/5\n` +
-      `Umfang: ${ratings.umfang}/5\n` +
-      `Verständlichkeit: ${ratings.verstaendlichkeit}/5\n` +
-      `Nutzen/Praxisrelevanz: ${ratings.nutzen}/5\n` +
-      `Bedienbarkeit & Design: ${ratings.design}/5\n` +
-      `Interaktive Elemente & Rechner: ${ratings.interaktivitaet}/5\n` +
-      `Stabilität & Struktur: ${ratings.performance}/5\n` +
-      `Lernmotivation & Spaß: ${ratings.motivation}/5\n\n` +
+      `Inhalte: ${formatDeWert(ratings.inhalte)}/5\n` +
+      `Umfang: ${formatDeWert(ratings.umfang)}/5\n` +
+      `Verständlichkeit: ${formatDeWert(ratings.verstaendlichkeit)}/5\n` +
+      `Nutzen/Praxisrelevanz: ${formatDeWert(ratings.nutzen)}/5\n` +
+      `Bedienbarkeit & Design: ${formatDeWert(ratings.design)}/5\n` +
+      `Interaktive Elemente & Rechner: ${formatDeWert(ratings.interaktivitaet)}/5\n` +
+      `Stabilität & Struktur: ${formatDeWert(ratings.performance)}/5\n` +
+      `Lernmotivation & Spaß: ${formatDeWert(ratings.motivation)}/5\n\n` +
       `Weiteres Feedback/Freitext:\n${freitext}`
     );
     
@@ -246,13 +247,13 @@ function FeedbackContent() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2"><label htmlFor="message" className="text-sm font-bold text-text-main">Deine Nachricht</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
+          <div className="flex items-center gap-2"><label htmlFor="message" className="text-sm font-bold text-text-main">Ihre Nachricht</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
           <textarea
             id="message"
             required={type !== 'lob'}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder={type === 'fehler' ? 'Beschreiben Sie den Fehler möglichst genau...' : type === 'lob' ? 'Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)' : 'Welches Thema oder welche Funktion fehlt dir?'}
+            placeholder={type === 'fehler' ? 'Beschreiben Sie den Fehler möglichst genau...' : type === 'lob' ? 'Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)' : 'Welches Thema oder welche Funktion fehlt Ihnen?'}
             rows={5}
             className="p-3 rounded-xl border border-home-grau/30 bg-off-white focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz transition-all resize-none"
           />
@@ -316,8 +317,8 @@ export default function Feedback() {
         ]}
         regelwerke={[
           { title: 'Bayerisches Hochschulinnovationsgesetz (BayHIG - Art. 18 Evaluation und Qualitätssicherung)', url: 'https://www.gesetze-bayern.de/' },
-          { title: 'DIN EN ISO 9001:2015 (Qualitätsmanagementsysteme - Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 9004:2018 (Qualitätsmanagement - Leitfaden zum Erreichen nachhaltigen Erfolgs)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 9001:2015 (Qualitätsmanagementsysteme - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9001' },
+          { title: 'DIN EN ISO 9004:2018 (Qualitätsmanagement - Leitfaden zum Erreichen nachhaltigen Erfolgs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9004' }
         ]}
         hideFormeln={true}
       />

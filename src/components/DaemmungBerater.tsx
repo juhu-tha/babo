@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Calculator, 
@@ -139,7 +140,7 @@ export function DaemmungBerater() {
       return {
         class: 'info',
         title: 'Diffusionsdichter Schichtaufbau',
-        text: 'Dieses Material blockiert Dampfdiffusion vollständig. Ein Feuchteausgleich nach außen wird unterbunden. Stelle sicher, dass keine feuchte Luft im Innenraum hinter die Dämmschicht wandern kann.',
+        text: 'Dieses Material blockiert Dampfdiffusion vollständig. Ein Feuchteausgleich nach außen wird unterbunden. Stellen Sie sicher, dass keine feuchte Luft im Innenraum hinter die Dämmschicht wandern kann.',
         icon: Info
       };
     }
@@ -211,7 +212,7 @@ export function DaemmungBerater() {
               ))}
             </select>
             <p className="text-[11px] text-slate-500 italic leading-normal">
-              {app.description} (GModG Ziel-U-Wert: <strong className="font-bold text-slate-700">{app.gegTarget} W/m²K</strong>)
+              {app.description} (GModG Ziel-U-Wert: <strong className="font-bold text-slate-700">{formatDeWert(app.gegTarget)} W/m²K</strong>)
             </p>
           </div>
 
@@ -231,7 +232,7 @@ export function DaemmungBerater() {
             </select>
             {existing.id !== 'none' && (
               <p className="text-[11px] text-slate-500 leading-normal">
-                {existing.description} (Wärmeleitfähigkeit λ: <strong className="font-bold text-slate-700">{existing.lambda} W/mK</strong>, Altwert U: <strong className="font-bold text-red-700">{u_existing.toFixed(2)} W/m²K</strong>)
+                {existing.description} (Wärmeleitfähigkeit λ: <strong className="font-bold text-slate-700">{formatDeWert(existing.lambda)} W/mK</strong>, Altwert U: <strong className="font-bold text-red-700">{formatDeZahl(u_existing, 2)} W/m²K</strong>)
               </p>
             )}
           </div>
@@ -263,7 +264,7 @@ export function DaemmungBerater() {
                   <span className="text-xs font-bold text-slate-800">{m.name}</span>
                   <div className="flex justify-between items-center text-[9px] w-full text-slate-500 font-mono">
                     <span>{m.abbreviation}</span>
-                    <span>λ: {m.lambda.toFixed(3)}</span>
+                    <span>λ: {formatDeZahl(m.lambda, 3)}</span>
                   </div>
                 </button>
               ))}
@@ -277,7 +278,7 @@ export function DaemmungBerater() {
                 4. Dämmstoff-Dicke (cm)
               </label>
               <div className="text-sm font-mono font-black text-shiraz">
-                {thickness} cm
+                {formatDeWert(thickness)} cm
               </div>
             </div>
             
@@ -304,7 +305,7 @@ export function DaemmungBerater() {
                 onClick={() => setThickness(recThickness)} 
                 className="font-bold text-shiraz hover:underline cursor-pointer flex items-center gap-1 font-mono text-[11px]"
               >
-                Auf {recThickness} cm setzen &rarr;
+                Auf {formatDeWert(recThickness)} cm setzen &rarr;
               </button>
             </div>
           </div>
@@ -344,7 +345,7 @@ export function DaemmungBerater() {
                   }}
                 >
                   <span className="text-[10px] font-black text-red-900 text-center leading-tight truncate px-1">{existing.name}</span>
-                  <span className="text-[9px] font-mono text-red-800 mt-0.5">{(existing.thickness * 100)} cm</span>
+                  <span className="text-[9px] font-mono text-red-800 mt-0.5">{formatDeWert((existing.thickness * 100))} cm</span>
                 </div>
               )}
 
@@ -359,7 +360,7 @@ export function DaemmungBerater() {
                 {/* Visual insulation pattern */}
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
                 <span className="text-xs font-black text-slate-900 text-center leading-tight relative">{material.name} ({material.abbreviation})</span>
-                <span className="text-[9.5px] font-mono font-bold text-slate-800 mt-1 relative bg-white/65 px-1 py-0.5 rounded shadow-sm">{thickness} cm</span>
+                <span className="text-[9.5px] font-mono font-bold text-slate-800 mt-1 relative bg-white/65 px-1 py-0.5 rounded shadow-sm">{formatDeWert(thickness)} cm</span>
               </div>
 
               {/* External transition label */}
@@ -379,9 +380,9 @@ export function DaemmungBerater() {
             </div>
 
             <div className="flex justify-between items-center text-[10px] text-slate-400 font-mono font-bold">
-              <span>R_si: {app.r_si.toFixed(2)} m²K/W (Innen)</span>
-              <span>Dämmwiderstand R: {r_insulation.toFixed(3)} m²K/W</span>
-              <span>R_se: {app.r_se.toFixed(2)} m²K/W (Außen)</span>
+              <span>R_si: {formatDeZahl(app.r_si, 2)} m²K/W (Innen)</span>
+              <span>Dämmwiderstand R: {formatDeZahl(r_insulation, 3)} m²K/W</span>
+              <span>R_se: {formatDeZahl(app.r_se, 2)} m²K/W (Außen)</span>
             </div>
           </div>
 
@@ -392,7 +393,7 @@ export function DaemmungBerater() {
             <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-sm flex flex-col justify-between">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">U-WERT (BERECHNET)</span>
               <div className="my-2 flex items-baseline gap-1.5">
-                <span className="text-2xl font-mono font-black text-slate-900">{u_value.toFixed(3)}</span>
+                <span className="text-2xl font-mono font-black text-slate-900">{formatDeZahl(u_value, 3)}</span>
                 <span className="text-[10px] text-slate-500 font-bold font-mono">W/(m²K)</span>
               </div>
               <div className="flex items-center gap-1">
@@ -416,7 +417,7 @@ export function DaemmungBerater() {
                   <span className="text-xs text-slate-400 italic font-mono block">Kein Altbestand ausgewertet</span>
                 ) : (
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-2xl font-mono font-black text-amber-600">~{energySavingsKwh}</span>
+                    <span className="text-2xl font-mono font-black text-amber-600">~{formatDeWert(energySavingsKwh)}</span>
                     <span className="text-[10px] text-slate-500 font-bold font-mono">kWh/m²a</span>
                   </div>
                 )}
@@ -434,7 +435,7 @@ export function DaemmungBerater() {
                   <span className="text-xs text-slate-400 italic font-mono block">Kein Altbestand</span>
                 ) : (
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-2xl font-mono font-black text-emerald-600">~{co2SavingsKg}</span>
+                    <span className="text-2xl font-mono font-black text-emerald-600">~{formatDeWert(co2SavingsKg)}</span>
                     <span className="text-[10px] text-slate-500 font-bold font-mono">kg / m²a</span>
                   </div>
                 )}
@@ -494,11 +495,11 @@ export function DaemmungBerater() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-xs text-slate-700">
               <div className="flex justify-between border-b border-dashed border-slate-200 py-1 font-normal">
                 <span>Wärmedurchgangswiderstand R_T:</span>
-                <span className="font-mono font-bold text-slate-800">{r_total.toFixed(3)} m²K/W</span>
+                <span className="font-mono font-bold text-slate-800">{formatDeZahl(r_total, 3)} m²K/W</span>
               </div>
               <div className="flex justify-between border-b border-dashed border-slate-200 py-1 font-normal">
                 <span>Dampfdiffusions-Äquivalent d_s:</span>
-                <span className="font-mono font-bold text-slate-800">{((thickness / 100) * material.vaporResistance).toFixed(2)} m (s_d-Wert)</span>
+                <span className="font-mono font-bold text-slate-800">{formatDeZahl(((thickness / 100) * material.vaporResistance), 2)} m (s_d-Wert)</span>
               </div>
               <div className="flex justify-between border-b border-dashed border-slate-200 py-1 font-normal">
                 <span>Brandklasse nach DIN 4102:</span>

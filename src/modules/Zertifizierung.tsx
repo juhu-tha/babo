@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Award, CheckCircle2, Leaf, Building, Users, Zap, Settings, ShieldCheck, Trees, Calculator, Building2, Activity, RefreshCw } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -374,7 +375,7 @@ export default function Zertifizierung() {
                       Gesamterfüllungsgrad (DGNB Score)
                     </span>
                     <span className="text-lg font-black font-mono text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">
-                      {dgnbScore}%
+                      {formatDeWert(dgnbScore)}%
                     </span>
                   </div>
                   <input
@@ -505,7 +506,7 @@ export default function Zertifizierung() {
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div className="p-2.5 bg-white rounded-lg border border-home-grau/10">
                             <span className="text-[10px] text-text-main/50 block font-bold uppercase">Gesamtscore</span>
-                            <span className="text-lg font-bold text-text-main font-mono">{dgnbScore}%</span>
+                            <span className="text-lg font-bold text-text-main font-mono">{formatDeWert(dgnbScore)}%</span>
                           </div>
                           <div className="p-2.5 bg-white rounded-lg border border-home-grau/10">
                             <span className="text-[10px] text-text-main/50 block font-bold uppercase">Mindest-Teilerfüllung</span>
@@ -1092,12 +1093,12 @@ export default function Zertifizierung() {
         regelwerke={[
           { title: 'DGNB System Kriterienkatalog Gebäude Neubau', url: 'https://www.dgnb.de/' },
           { title: 'QNG Handbuch: Qualitätssiegel Nachhaltiges Gebäude', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken - Bewertung der Nachhaltigkeit von Gebäuden)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken - Bewertung der Nachhaltigkeit von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' }
         ]}
         formeln={[
           {
             formel: '\\text{GEG}_{\\text{DGNB}} = \\sum_{i=1}^6 W_i \\cdot E_i \\ge 80\\% \\implies \\text{Zertifikat: Platin}',
-            erklaerung: 'DGNB-Gesamterfüllungsgrad aus den 6 Themenfeldern Ökologie (22.5%), Ökonomie (22.5%), Soziokulturelles (22.5%), Technik (15%), Prozess (12.5%) und Standort (5%). Platin ab 80%, Gold ab 65%, Silber ab 50%.',
+            erklaerung: 'DGNB-Gesamterfüllungsgrad aus den 6 Themenfeldern Ökologie (22,5%), Ökonomie (22,5%), Soziokulturelles (22,5%), Technik (15%), Prozess (12,5%) und Standort (5%). Platin ab 80%, Gold ab 65%, Silber ab 50%.',
             quelle: 'DGNB Kriterienkatalog'
           },
           {

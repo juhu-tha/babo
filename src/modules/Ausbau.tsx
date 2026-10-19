@@ -335,9 +335,9 @@ export default function Ausbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18560 (Estriche im Bauwesen - Teile 1 bis 7)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18157-1 bis -3 (Ausführung von Bekleidungen und Belägen im Dünnbettverfahren; Teil 1: hydraulisch erhärtende Dünnbettmörtel, Teil 2: Dispersionsklebstoffe, Teil 3: Reaktionsharzklebstoffe)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18202 (Toleranzen im Hochbau - Bauwerke)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18560 (Estriche im Bauwesen - Teile 1 bis 7)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560' },
+          { title: 'DIN 18157-1 bis -3 (Ausführung von Bekleidungen und Belägen im Dünnbettverfahren; Teil 1: hydraulisch erhärtende Dünnbettmörtel, Teil 2: Dispersionsklebstoffe, Teil 3: Reaktionsharzklebstoffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18157-1' },
+          { title: 'DIN 18202 (Toleranzen im Hochbau - Bauwerke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18202' }
         ]}
         formeln={[
           {
@@ -346,7 +346,7 @@ export default function Ausbau() {
             quelle: 'DIN 18560 / BEB'
           },
           {
-            formel: 'f_{\\text{ct,Haft}} = \\frac{F_{\\text{Bruch}}}{A_{\\text{Prüf}}} \\ge 1.0\\,\\text{N/mm}^2 \\quad (\\text{Klasse C2})',
+            formel: 'f_{\\text{ct,Haft}} = \\frac{F_{\\text{Bruch}}}{A_{\\text{Prüf}}} \\ge 1{,}0\\,\\text{N/mm}^2 \\quad (\\text{Klasse C2})',
             erklaerung: 'Haftzugfestigkeit von zementärem Fliesenkleber nach DIN EN 12004 bei Abreißversuchen auf Betonuntergrund.',
             quelle: 'DIN EN 12004'
           }

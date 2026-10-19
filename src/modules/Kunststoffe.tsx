@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
   Chart as ChartJS,
@@ -274,7 +275,7 @@ export default function Kunststoffe() {
         callbacks: {
           label: (context: any) => {
             if (context.raw === null) return '';
-            return `E-Modul: ${Number(context.raw).toFixed(1)} MPa`;
+            return `E-Modul: ${formatDeZahl(Number(context.raw), 1)} MPa`;
           }
         }
       }
@@ -376,10 +377,10 @@ export default function Kunststoffe() {
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md">
               <div className="text-sm opacity-90 mb-1">Aktueller E-Modul</div>
               <div className="text-3xl font-bold">
-                {chartData.currentE < 1 ? '< 1' : chartData.currentE.toFixed(0)} MPa
+                {chartData.currentE < 1 ? '< 1' : formatDeZahl(chartData.currentE, 0)} MPa
               </div>
               <div className="text-xs opacity-75 mt-2">
-                Bei {temperature} °C
+                Bei {formatDeWert(temperature)} °C
               </div>
             </div>
           </div>
@@ -648,11 +649,11 @@ export default function Kunststoffe() {
           { title: 'Ethylen-Tetrafluorethylen (ETFE)', url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 527-1:2019-12 (Kunststoffe - Bestimmung der Zugeigenschaften - Teil 1: Allgemeine Grundsätze)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 6721-1:2019-09 (Kunststoffe - Bestimmung dynamisch-mechanischer Eigenschaften - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 11357-1:2023-08 (Kunststoffe - Dynamische Differenz-Thermoanalyse (DSC) - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 11359-2:2022-03 (Kunststoffe - Thermomechanische Analyse (TMA) - Teil 2: Bestimmung des linearen thermischen Längenausdehnungskoeffizienten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 178:2019-08 (Kunststoffe - Bestimmung der Biegeeigenschaften)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 527-1:2019-12 (Kunststoffe - Bestimmung der Zugeigenschaften - Teil 1: Allgemeine Grundsätze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+527-1' },
+          { title: 'DIN EN ISO 6721-1:2019-09 (Kunststoffe - Bestimmung dynamisch-mechanischer Eigenschaften - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6721-1' },
+          { title: 'DIN EN ISO 11357-1:2023-08 (Kunststoffe - Dynamische Differenz-Thermoanalyse (DSC) - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+11357-1' },
+          { title: 'DIN EN ISO 11359-2:2022-03 (Kunststoffe - Thermomechanische Analyse (TMA) - Teil 2: Bestimmung des linearen thermischen Längenausdehnungskoeffizienten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+11359-2' },
+          { title: 'DIN EN ISO 178:2019-08 (Kunststoffe - Bestimmung der Biegeeigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+178' }
         ]}
         literatur={[
           'Domininghaus, H. (2012): Die Kunststoffe und ihre Eigenschaften (Springer Vieweg)',

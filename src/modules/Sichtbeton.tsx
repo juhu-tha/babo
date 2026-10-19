@@ -173,9 +173,9 @@ export default function Sichtbeton() {
         ]}
         regelwerke={[
           { title: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung 2015/2023 - Klassen SB1 bis SB4)', url: 'https://www.betonverein.de/' },
-          { title: 'DIN 18217 (Betonflächen und Schalungshaut)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 18218 (Frischbetondruck auf Schalungen)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 13670 (Ausführung von Tragwerken aus Beton)', url: 'https://www.beuth.de/' }
+          { title: 'DIN 18217 (Betonflächen und Schalungshaut)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18217' },
+          { title: 'DIN 18218 (Frischbetondruck auf Schalungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18218' },
+          { title: 'DIN EN 13670 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' }
         ]}
         literatur={[
           'Peck, M. (Hrsg.): Sichtbeton - Planung und Ausführung (Detail Praxis, Birkhäuser)',

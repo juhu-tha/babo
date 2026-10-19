@@ -237,10 +237,10 @@ export default function Kalk() {
         ]}
         normIds={['DIN_EN_459_1', 'DIN_EN_998', 'DIN_EN_13914']}
         regelwerke={[
-          { title: 'DIN EN 459-1:2015-07 (Baukalk - Teil 1: Begriffe, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 459-2:2021-09 (Baukalk - Teil 2: Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 998-1:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13914-1:2016-09 (Planung, Zubereitung und Ausführung von Außenputzen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 459-1:2015-07 (Baukalk - Teil 1: Begriffe, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+459-1' },
+          { title: 'DIN EN 459-2:2021-09 (Baukalk - Teil 2: Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+459-2' },
+          { title: 'DIN EN 998-1:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-1' },
+          { title: 'DIN EN 13914-1:2016-09 (Planung, Zubereitung und Ausführung von Außenputzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13914-1' }
         ]}
         formeln={[
           {

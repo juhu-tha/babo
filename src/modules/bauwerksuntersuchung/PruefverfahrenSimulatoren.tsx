@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Activity, Gauge, AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Waves, Hammer, Compass, Trees, Scale, Layers } from 'lucide-react';
@@ -82,10 +83,10 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     else if (fc_est >= 20) grade = 'C20/25';
 
     return {
-      r_corr: r_corr.toFixed(1),
-      k_carb: k_carb.toFixed(2),
-      r_final: r_final.toFixed(1),
-      fc_est: fc_est.toFixed(1),
+      r_corr: formatDeZahl(r_corr, 1),
+      k_carb: formatDeZahl(k_carb, 2),
+      r_final: formatDeZahl(r_final, 1),
+      fc_est: formatDeZahl(fc_est, 1),
       grade
     };
   }, [rebound, impactAngle, carbDepth]);
@@ -110,7 +111,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
     return {
       vp: Math.round(vp),
-      edyn: edyn.toFixed(1),
+      edyn: formatDeZahl(edyn, 1),
       status,
       color
     };
@@ -154,16 +155,18 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     return {
       c_min: req.min,
       c_nom: req.req,
-      diff: diff > 0 ? `+${diff}` : `${diff}`,
+      diff: diff > 0 ? `+${formatDeWert(diff)}` : `${diff}`,
       isOk
     };
   }, [exposureClass, measuredCover]);
 
   // Bohrmehl / Chlorid
   const chlorideCalc = useMemo(() => {
-    const limit = isPrestressed ? 0.20 : 0.40;
-    const isExceeded = chlorideVal > limit;
-    const ratio = (chlorideVal / limit).toFixed(2);
+    // Kein Normwert: Anhaltswert ≈ 0,5 M.-% bez. Zement (Einzelfallbewertung); Spannstahl: kein gesicherter Grenzwert
+    const limit = 0.5;
+    const isExceeded = isPrestressed ? chlorideVal >= 0.2 : chlorideVal >= limit;
+    const stufe = chlorideVal < 0.2 ? 'unkritisch' : chlorideVal < 0.5 ? 'Beobachtung / Prävention' : 'Korrosion wahrscheinlich';
+    const ratio = formatDeZahl(chlorideVal / limit, 1) + ' (' + stufe + ')';
 
     return {
       limit,
@@ -180,7 +183,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
     return {
       area: Math.round(area),
-      fct: fct.toFixed(2),
+      fct: formatDeZahl(fct, 2),
       isNormOk
     };
   }, [breakForce, failureType]);
@@ -202,7 +205,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     }
 
     return {
-      w: w.toFixed(2),
+      w: formatDeZahl(w, 2),
       evalText,
       badgeClass
     };
@@ -216,7 +219,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const restJahre = Math.max(0, Math.round(t_depass - elementAge));
 
     return {
-      k_carb: k_carb.toFixed(2),
+      k_carb: formatDeZahl(k_carb, 2),
       t_depass: Math.round(t_depass),
       restJahre,
       depassivated: elementCover <= carbMeasured
@@ -230,18 +233,15 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const rawStrength = (coreMaxForce * 1000) / area; // N/mm²
 
     const lambda = coreLength / coreDiameter; // L/D
-    // DIN EN 12504-1 Korrekturfaktor auf L/D = 1.0 bzw. 2.0
-    let f_corr = rawStrength;
-    if (lambda < 0.95 || lambda > 1.05) {
-      // Norm-Formel: f_is = raw / (0.80 + 0.22 / lambda) für L/D < 2
-      f_corr = rawStrength / (0.80 + (0.22 / Math.max(0.5, lambda)));
-    }
+    // DIN EN 12504-1 enthält keine Umrechnungsfaktoren. DIN EN 13791:2020-02: Kern L/D = 1 (Ø 100 mm)
+    // ≈ 150-mm-Würfel, L/D = 2 ≈ Zylinder 150/300. Andere Schlankheiten werden nicht umgerechnet.
+    const f_corr = rawStrength;
 
     return {
       area: Math.round(area),
       lambda: lambda.toFixed(2),
-      rawStrength: rawStrength.toFixed(1),
-      f_corr: f_corr.toFixed(1)
+      rawStrength: formatDeZahl(rawStrength, 1),
+      f_corr: formatDeZahl(f_corr, 1)
     };
   }, [coreDiameter, coreLength, coreMaxForce]);
 
@@ -256,7 +256,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const isDelam = diff > 4.0 && d_cm < ieNominalThickness;
 
     return {
-      d_cm: d_cm.toFixed(1),
+      d_cm: formatDeZahl(d_cm, 1),
       isDelam
     };
   }, [ieFreq, ieVp, ieNominalThickness]);
@@ -289,7 +289,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Rückprallwert R (Median aus 10 Schlägen):</span>
-                <span className="font-bold text-shiraz">{rebound}</span>
+                <span className="font-bold text-shiraz">{formatDeWert(rebound)}</span>
               </div>
               <input
                 type="range"
@@ -332,7 +332,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Karbonatisierungstiefe d_k:</span>
-                <span className="font-bold text-slate-800">{carbDepth} mm</span>
+                <span className="font-bold text-slate-800">{formatDeWert(carbDepth)} mm</span>
               </div>
               <input
                 type="range"
@@ -365,7 +365,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div className="text-[11px] text-slate-500 pt-3 border-t border-slate-100 space-y-1">
               <p>• Richtungsbereinigter Rückprallwert: <strong>{schmidtCalc.r_corr}</strong></p>
               <p>• Karbonatisierungs-Korrekturfaktor k_carb: <strong>{schmidtCalc.k_carb}</strong></p>
-              <p className="text-[10px] text-amber-700">Hinweis: Gemäß DIN EN 13791 müssen Rückprallwerte stets durch mindestens 3 bis 9 Bohrkernprüfungen kalibriert werden.</p>
+              <p className="text-[10px] text-amber-700">Hinweis: Nach DIN EN 13791 dürfen Rückprallwerte nur über eine Kalibrierung an Bohrkernen desselben Bauteils in Festigkeiten umgerechnet werden.</p>
             </div>
           </div>
         </div>
@@ -378,7 +378,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Messstrecke s (Durchschallungsdicke):</span>
-                <span className="font-bold text-shiraz">{(usDistance * 100).toFixed(0)} cm</span>
+                <span className="font-bold text-shiraz">{formatDeZahl((usDistance * 100), 0)} cm</span>
               </div>
               <input
                 type="range"
@@ -394,7 +394,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Gemessene P-Wellenlaufzeit Δt:</span>
-                <span className="font-bold text-shiraz">{usTime} µs</span>
+                <span className="font-bold text-shiraz">{formatDeWert(usTime)} µs</span>
               </div>
               <input
                 type="range"
@@ -416,7 +416,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
                   <span className="text-[10px] text-slate-500 block">Schallgeschwindigkeit v_p</span>
-                  <span className="text-xl font-black text-slate-900 font-mono">{usCalc.vp}</span>
+                  <span className="text-xl font-black text-slate-900 font-mono">{formatDeWert(usCalc.vp)}</span>
                   <span className="text-[10px] text-slate-500 ml-1">m/s</span>
                 </div>
                 <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
@@ -440,7 +440,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Halbzellenpotential E_cell (Cu/CuSO₄):</span>
-                <span className="font-bold text-shiraz font-mono">{potentialVal} mV</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(potentialVal)} mV</span>
               </div>
               <input
                 type="range"
@@ -506,7 +506,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Gemessene Betondeckung c_ist:</span>
-                <span className="font-bold text-shiraz font-mono">{measuredCover} mm</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(measuredCover)} mm</span>
               </div>
               <input
                 type="range"
@@ -527,11 +527,11 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </span>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-600">Gefordertes Nennmaß c_nom:</span>
-                <span className="font-mono font-bold text-slate-900">{coverCalc.c_nom} mm</span>
+                <span className="font-mono font-bold text-slate-900">{formatDeWert(coverCalc.c_nom)} mm</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-600">Mindestdeckung c_min:</span>
-                <span className="font-mono font-bold text-slate-900">{coverCalc.c_min} mm</span>
+                <span className="font-mono font-bold text-slate-900">{formatDeWert(coverCalc.c_min)} mm</span>
               </div>
               <div className="flex items-center justify-between pt-1">
                 <span className="text-xs font-semibold text-slate-700">Deckungsdifferenz Δc:</span>
@@ -579,7 +579,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Chloridgehalt an Bewehrungslage:</span>
-                <span className="font-bold text-shiraz font-mono">{chlorideVal.toFixed(2)} M.-%</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(chlorideVal, 2)} M.-%</span>
               </div>
               <input
                 type="range"
@@ -599,23 +599,23 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           }`}>
             <div className="space-y-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 block">
-                Kritischer Chloridgehalt Cl_krit (DAfStb)
+                Chloridgehalt an der Bewehrung (Anhaltswert, kein Normwert)
               </span>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-700">Normativer Grenzwert:</span>
-                <span className="font-mono font-bold text-slate-900">{chlorideCalc.limit.toFixed(2)} M.-%</span>
+                <span className="text-xs text-slate-700">Anhaltswert korrosionsauslösend:</span>
+                <span className="font-mono font-bold text-slate-900">≈ {formatDeZahl(chlorideCalc.limit, 1)} M.-% bez. Zement</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-700">Verhältnis Ist/Grenzwert:</span>
+                <span className="text-xs text-slate-700">Verhältnis Ist/Anhaltswert:</span>
                 <span className={`font-mono font-bold text-sm ${chlorideCalc.isExceeded ? 'text-rose-700' : 'text-emerald-700'}`}>
-                  {chlorideCalc.ratio} × Cl_krit
+                  {chlorideCalc.ratio}
                 </span>
               </div>
             </div>
             <div className="text-xs font-bold pt-3 border-t border-slate-200">
               {chlorideCalc.isExceeded 
-                ? '❌ Grenzwert überschritten: Lochfraßkorrosion aktiv! Vollständiger Betonabtrag bis hinter die Bewehrung erforderlich.'
-                : '✅ Unkritisch: Unterhalb des korrosionsauslösenden Schwellenwerts. Keine akute Lochfraßgefahr.'}
+                ? (isPrestressed ? '❌ Chloride am Spannglied: immer kritisch – gesonderte Beurteilung (SpRK, Lochkorrosion) erforderlich.' : '❌ Korrosionsgefahr erhöht: Instandsetzungsprinzip nach TR Instandhaltung wählen (Chloridentfernung, Beschichtung/Trocknung, KKS nach DIN EN ISO 12696).')
+                : '✅ Unterhalb des Anhaltswerts – Bewertung im Einzelfall (Feuchte, Karbonatisierung, Potentialfeld).'}
             </div>
           </div>
         </div>
@@ -628,7 +628,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Bruchlast F_break am Manometer:</span>
-                <span className="font-bold text-shiraz font-mono">{breakForce.toFixed(1)} kN</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(breakForce, 1)} kN</span>
               </div>
               <input
                 type="range"
@@ -656,7 +656,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                   onClick={() => setFailureType('verbund')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'verbund' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 >
-                  Verbundfuge (B)
+                  Verbundfuge (A/B)
                 </button>
                 <button
                   type="button"
@@ -679,7 +679,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
               <div className="text-xs text-slate-600">
-                Stempelfläche: {haftCalc.area} mm² (Ø 50 mm)
+                Stempelfläche: {formatDeWert(haftCalc.area)} mm² (Ø 50 mm)
               </div>
             </div>
             <div className={`p-2.5 rounded-lg border text-xs font-bold ${
@@ -702,7 +702,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Eingesaugtes Wasservolumen nach 60 min:</span>
-                <span className="font-bold text-shiraz font-mono">{waterLoss60.toFixed(1)} ml</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(waterLoss60, 1)} ml</span>
               </div>
               <input
                 type="range"
@@ -743,7 +743,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Gemessene Karbonatisierungstiefe d_k:</span>
-                <span className="font-bold text-shiraz font-mono">{carbMeasured} mm</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(carbMeasured)} mm</span>
               </div>
               <input
                 type="range"
@@ -759,7 +759,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Bauteilalter:</span>
-                <span className="font-bold text-slate-800">{elementAge} Jahre</span>
+                <span className="font-bold text-slate-800">{formatDeWert(elementAge)} Jahre</span>
               </div>
               <input
                 type="range"
@@ -775,7 +775,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Vorhandene Betondeckung c:</span>
-                <span className="font-bold text-slate-800">{elementCover} mm</span>
+                <span className="font-bold text-slate-800">{formatDeWert(elementCover)} mm</span>
               </div>
               <input
                 type="range"
@@ -800,7 +800,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-600">Errechnete Gesamtdauer bis Stahl:</span>
-                <span className="font-mono font-bold text-slate-900">{carbCalc.t_depass} Jahre</span>
+                <span className="font-mono font-bold text-slate-900">{formatDeWert(carbCalc.t_depass)} Jahre</span>
               </div>
               <div className="flex items-center justify-between pt-1">
                 <span className="text-xs font-semibold text-slate-800">Verbleibende Schutzdauer:</span>
@@ -827,12 +827,12 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <div className="text-xs font-semibold text-slate-700 mb-1">Durchmesser D:</div>
-                <div className="font-bold text-shiraz text-sm font-mono">{coreDiameter} mm</div>
+                <div className="font-bold text-shiraz text-sm font-mono">{formatDeWert(coreDiameter)} mm</div>
               </div>
               <div>
                 <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                   <span>Kernhöhe L:</span>
-                  <span className="font-bold text-slate-800 font-mono">{coreLength} mm</span>
+                  <span className="font-bold text-slate-800 font-mono">{formatDeWert(coreLength)} mm</span>
                 </div>
                 <input
                   type="range"
@@ -849,7 +849,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Bruchkraft F_max in der Laborpresse:</span>
-                <span className="font-bold text-shiraz font-mono">{coreMaxForce} kN</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(coreMaxForce)} kN</span>
               </div>
               <input
                 type="range"
@@ -866,18 +866,18 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                In-situ-Druckfestigkeit (DIN EN 12504-1; bei L/D = 1, Ø 100 mm ≈ Würfelfestigkeit 150 mm)
+                Kerndruckfestigkeit f_c,core (DIN EN 12504-1)
               </span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{bohrkernCalc.f_corr}</span>
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
               <div className="text-xs text-slate-600">
-                Schlankheit L/D = {bohrkernCalc.lambda} (Rohfestigkeit: {bohrkernCalc.rawStrength} N/mm²)
+                Schlankheit L/D = {formatDeZahl(Number(bohrkernCalc.lambda), 2)}: {Math.abs(Number(bohrkernCalc.lambda) - 1) < 0.05 ? 'entspricht etwa einem 150-mm-Würfel' : Math.abs(Number(bohrkernCalc.lambda) - 2) < 0.1 ? 'entspricht etwa einem Zylinder 150/300' : 'kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen'}
               </div>
             </div>
             <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100">
-              Anerkanntes Referenzverfahren für die statische Nachrechnung nach DIN EN 13791.
+              Referenzverfahren. Charakteristischer Wert erst aus n ≥ 8 Kernen: f_ck,is = min(f_m − k_n·s; f_lowest + M), Einstufung mit f_ck = f_ck,is / 0,85 (DIN EN 13791:2020-02).
             </div>
           </div>
         </div>
@@ -890,7 +890,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Dominante Resonanzfrequenz f_peak:</span>
-                <span className="font-bold text-shiraz font-mono">{ieFreq.toFixed(1)} kHz</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(ieFreq, 1)} kHz</span>
               </div>
               <input
                 type="range"
@@ -906,7 +906,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Soll-Bauteildicke (Plattenstärke):</span>
-                <span className="font-bold text-slate-800">{ieNominalThickness} cm</span>
+                <span className="font-bold text-slate-800">{formatDeWert(ieNominalThickness)} cm</span>
               </div>
               <input
                 type="range"

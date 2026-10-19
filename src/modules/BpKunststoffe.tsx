@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath } from 'react-katex';
@@ -494,7 +495,7 @@ export default function BpKunststoffe() {
               </div>
               <div className="bg-slate-50 px-3 py-1.5 rounded-lg border border-home-grau/10 text-right">
                 <span className="text-[10px] text-text-main/40 block leading-tight">Ausdehnungskoeff. α</span>
-                <span className="text-sm font-bold text-slate-800 font-mono">{selectedPlastic.alpha} × 10⁻⁶/K</span>
+                <span className="text-sm font-bold text-slate-800 font-mono">{formatDeWert(selectedPlastic.alpha)} × 10⁻⁶/K</span>
               </div>
             </div>
 
@@ -502,11 +503,11 @@ export default function BpKunststoffe() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Dichte (Haftgewicht)</span>
-                <span className="text-sm font-bold font-mono text-slate-800">{selectedPlastic.density.toFixed(2)} g/cm³</span>
+                <span className="text-sm font-bold font-mono text-slate-800">{formatDeZahl(selectedPlastic.density, 2)} g/cm³</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Thermische Leitfähigkeit λ</span>
-                <span className="text-sm font-bold font-mono text-slate-800">{selectedPlastic.lambda.toFixed(2)} W/(m·K)</span>
+                <span className="text-sm font-bold font-mono text-slate-800">{formatDeZahl(selectedPlastic.lambda, 2)} W/(m·K)</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Einsatztemperatur (lim.)</span>
@@ -800,7 +801,7 @@ export default function BpKunststoffe() {
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center text-xs font-bold">
                     <label className="text-text-main">2. Zugspannung (Konstantlast σ₀):</label>
-                    <span className="text-shiraz font-mono font-bold">{burgersStress.toFixed(1)} MPa</span>
+                    <span className="text-shiraz font-mono font-bold">{formatDeZahl(burgersStress, 1)} MPa</span>
                   </div>
                   <input 
                     type="range" 
@@ -817,7 +818,7 @@ export default function BpKunststoffe() {
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center text-xs font-bold">
                     <label className="text-text-main">3. Standzeit / Lastzeitraum (t):</label>
-                    <span className="text-shiraz font-mono font-bold">{burgersTime} Stunden</span>
+                    <span className="text-shiraz font-mono font-bold">{formatDeWert(burgersTime)} Stunden</span>
                   </div>
                   <input 
                     type="range" 
@@ -835,7 +836,7 @@ export default function BpKunststoffe() {
               {/* Outputs Area */}
               <div className="md:col-span-7 bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <span className="text-xs font-bold text-slate-700 uppercase block">Berechnungsdaten (ε-Anteile) nach {burgersTime} Stunden:</span>
+                  <span className="text-xs font-bold text-slate-700 uppercase block">Berechnungsdaten (ε-Anteile) nach {formatDeWert(burgersTime)} Stunden:</span>
                   
                   {/* Results bars stack representation */}
                   <div className="space-y-3.5">
@@ -844,7 +845,7 @@ export default function BpKunststoffe() {
                     <div>
                       <div className="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1">
                         <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-red-600 rounded-full inline-block"></span>Sofortelastisch (reversible ε_elastic):</span>
-                        <span className="font-mono font-bold text-red-600">{strainElastic.toFixed(4)} %</span>
+                        <span className="font-mono font-bold text-red-600">{formatDeZahl(strainElastic, 4)} %</span>
                       </div>
                       <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                         <div className="h-full bg-red-600 transition-all duration-300" style={{ width: `${Math.min(100, (strainElastic / strainTotal) * 100)}%` }}></div>
@@ -855,7 +856,7 @@ export default function BpKunststoffe() {
                     <div>
                       <div className="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1">
                         <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-amber-500 rounded-full inline-block"></span>Verzögert-elastisch (Viskoelastisches ε_delayed):</span>
-                        <span className="font-mono font-bold text-amber-500">{strainDelayed.toFixed(4)} %</span>
+                        <span className="font-mono font-bold text-amber-500">{formatDeZahl(strainDelayed, 4)} %</span>
                       </div>
                       <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                         <div className="h-full bg-amber-500 transition-all duration-300" style={{ width: `${Math.min(100, (strainDelayed / strainTotal) * 100)}%` }}></div>
@@ -866,7 +867,7 @@ export default function BpKunststoffe() {
                     <div>
                       <div className="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1">
                         <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-purple-600 rounded-full inline-block"></span>Zähflüssige Gleitung (irreversibles ε_viscous):</span>
-                        <span className="font-mono font-bold text-purple-600">{strainViscous.toFixed(4)} %</span>
+                        <span className="font-mono font-bold text-purple-600">{formatDeZahl(strainViscous, 4)} %</span>
                       </div>
                       <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                         <div className="h-full bg-purple-600 transition-all duration-300" style={{ width: `${Math.min(100, (strainViscous / strainTotal) * 100)}%` }}></div>
@@ -880,8 +881,8 @@ export default function BpKunststoffe() {
                 <div className="bg-white p-4 rounded-xl border border-slate-300 mt-4 flex flex-col justify-between sm:flex-row items-center gap-4">
                   <div className="text-center sm:text-left">
                     <span className="text-[10px] text-slate-400 uppercase font-extrabold tracking-wider block">Gesamtdehnung (ε_total)</span>
-                    <span className="text-xl font-black text-rose-800 leading-tight block">{strainTotal.toFixed(3)} %</span>
-                    <span className="text-[9px] text-slate-400 font-medium leading-none block mt-0.5">Dauerhafte Kriechverformung: {(strainViscous).toFixed(3)}%</span>
+                    <span className="text-xl font-black text-rose-800 leading-tight block">{formatDeZahl(strainTotal, 3)} %</span>
+                    <span className="text-[9px] text-slate-400 font-medium leading-none block mt-0.5">Dauerhafte Kriechverformung: {formatDeZahl((strainViscous), 3)}%</span>
                   </div>
                   <div className="bg-rose-50 text-rose-950 px-3.5 py-2 rounded-lg border border-rose-100 text-[11px] leading-relaxed max-w-[280px] font-normal">
                     <strong>Sicherheitswarnung:</strong> Unter 50 Jahren Dauerlast (Zeitstandfestigkeit) sinkt der E-Modul von Kunststoffen effektiv um bis zu <strong>80-85% (Kriechmodul Ec)</strong>. Für Standsicherheitsnachweise darf niemals der Kurzzeit-E-Modul verwendet werden!
@@ -957,11 +958,11 @@ export default function BpKunststoffe() {
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">PIR-Hartschaumplatten (Standard-Werte)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polyisocyanurat-Hartschaum (Duroplast). Ultradünne Platten mit hervorragender Dämmwirkung (λ = 0.022 W/(m·K)).</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polyisocyanurat-Hartschaum (Duroplast). Ultradünne Platten mit hervorragender Dämmwirkung (λ = 0,022 W/(m·K)).</span>
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">Phenolharz-Resolhartschaum (Standard-Werte)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Phenolformaldehyd-Resolhartschaum (λ = 0.021 W/(m·K)) für schlankeste Außendämmung. Hoher Brandschutz (B1).</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Phenolformaldehyd-Resolhartschaum (λ = 0,021 W/(m·K)) für schlankeste Außendämmung. Hoher Brandschutz (B1).</span>
                   </div>
                 </div>
               </div>
@@ -1109,7 +1110,7 @@ export default function BpKunststoffe() {
                 >
                   {plasticsDatabase.map((x) => (
                     <option key={x.id} value={x.id}>
-                      {x.name} (α = {x.alpha} × 10⁻⁶/K)
+                      {x.name} (α = {formatDeWert(x.alpha)} × 10⁻⁶/K)
                     </option>
                   ))}
                 </select>
@@ -1118,7 +1119,7 @@ export default function BpKunststoffe() {
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-xs font-bold">
                   <label className="text-text-main">Ausgangslänge L₀ des Profils/Rohrs:</label>
-                  <span className="text-shiraz font-mono font-bold">{length.toFixed(1)} Meter</span>
+                  <span className="text-shiraz font-mono font-bold">{formatDeZahl(length, 1)} Meter</span>
                 </div>
                 <input 
                   type="range" 
@@ -1134,7 +1135,7 @@ export default function BpKunststoffe() {
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-xs font-bold">
                   <label className="text-text-main">Temperaturbereich ΔT (z. B. Montage vs. Extrem-Sommer):</label>
-                  <span className="text-shiraz font-mono font-bold">{tempDelta} K (°C)</span>
+                  <span className="text-shiraz font-mono font-bold">{formatDeWert(tempDelta)} K (°C)</span>
                 </div>
                 <input 
                   type="range" 
@@ -1159,7 +1160,7 @@ export default function BpKunststoffe() {
                   <div>
                     <div className="flex justify-between mb-0.5 text-slate-800">
                       <span className="font-sans font-bold">{compObj.short}:</span>
-                      <span className="font-bold text-red-700">+{elongationPlastic.toFixed(2)} mm</span>
+                      <span className="font-bold text-red-700">+{formatDeZahl(elongationPlastic, 2)} mm</span>
                     </div>
                     <div className="w-full bg-slate-200 h-3 rounded-full overflow-hidden">
                       <div 
@@ -1173,7 +1174,7 @@ export default function BpKunststoffe() {
                   <div>
                     <div className="flex justify-between mb-0.5 text-slate-600">
                       <span className="font-sans font-semibold text-text-main/80">Baustahl / Betonstahl (α ≈ 12):</span>
-                      <span className="font-bold text-slate-750">+{elongationSteel.toFixed(2)} mm</span>
+                      <span className="font-bold text-slate-750">+{formatDeZahl(elongationSteel, 2)} mm</span>
                     </div>
                     <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                       <div 
@@ -1187,7 +1188,7 @@ export default function BpKunststoffe() {
                   <div>
                     <div className="flex justify-between mb-0.5 text-slate-600">
                       <span className="font-sans font-semibold text-text-main/80">Beton (α ≈ 10):</span>
-                      <span className="font-bold text-slate-750">+{elongationConcrete.toFixed(2)} mm</span>
+                      <span className="font-bold text-slate-750">+{formatDeZahl(elongationConcrete, 2)} mm</span>
                     </div>
                     <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                       <div 
@@ -1206,8 +1207,8 @@ export default function BpKunststoffe() {
                   <span>Konstruktionsempfehlung gegen Zwangsspannungen</span>
                 </div>
                 <p className="leading-snug text-text-main/80 text-[11px] font-normal leading-relaxed">
-                  Der Thermodehnungs-Mismatch beträgt ca. <strong>{(elongationPlastic / Math.max(0.1, elongationConcrete)).toFixed(1)}x</strong> gegenüber Normalbeton. Ohne Gleitmuffen oder Dehnungskompensatoren entstehen an Muffen sofort Risse und Undichtigkeiten. 
-                  {compObj.id === 'pe' && ' Lege bei PE-HD Abwasserrohren alle 5 m Festmuffen an oder plane Umlenkschenkel mit ausreichend Freiraum ein.'}
+                  Der Thermodehnungs-Mismatch beträgt ca. <strong>{formatDeZahl((elongationPlastic / Math.max(0.1, elongationConcrete)), 1)}x</strong> gegenüber Normalbeton. Ohne Gleitmuffen oder Dehnungskompensatoren entstehen an Muffen sofort Risse und Undichtigkeiten. 
+                  {compObj.id === 'pe' && ' Legen Sie bei PE-HD Abwasserrohren alle 5 m Festmuffen an oder planen Sie Umlenkschenkel mit ausreichend Freiraum ein.'}
                   {compObj.id === 'pvc-u' && ' Hart-PVC-Rinnen müssen an den Rinnenkopplungen min. 10 - 15 mm Verfahrweg aufweisen, ansonsten beult die Rinne im Sommer aus.'}
                 </p>
               </div>
@@ -1242,9 +1243,9 @@ export default function BpKunststoffe() {
           'Puntigam, W.: Die Flachdach-Richtlinien (Fachregel für Abdichtungen).' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+1043-1' },
+          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18531' },
+          { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13956' }
         ]} 
         formeln={[
           { 

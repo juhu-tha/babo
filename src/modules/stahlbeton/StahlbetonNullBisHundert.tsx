@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import {
@@ -382,7 +383,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
                 <h4 className="font-bold text-sm text-text-main flex items-center justify-between">
                   <span>Beton: Parabel-Rechteck (EC2 3.1.7)</span>
-                  <span className="text-xs font-mono text-shiraz font-bold">εc2 = -2.0 ‰</span>
+                  <span className="text-xs font-mono text-shiraz font-bold">εc2 = -2,0 ‰</span>
                 </h4>
                 <div className="space-y-2 text-xs text-text-main/80 leading-relaxed">
                   <p>
@@ -455,22 +456,22 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Charakt. Druckfestigkeit</span>
-                  <span className="text-lg font-mono font-black text-slate-900">{currentConcrete.fck} N/mm²</span>
+                  <span className="text-lg font-mono font-black text-slate-900">{formatDeWert(currentConcrete.fck)} N/mm²</span>
                   <span className="text-[10px] text-slate-500 block font-mono">f_ck (Zylinder)</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Bemessungsfestigkeit</span>
-                  <span className="text-lg font-mono font-black text-shiraz">{fcd.toFixed(2)} N/mm²</span>
-                  <span className="text-[10px] text-shiraz/80 block font-mono">f_cd = 0.85 · f_ck / 1.5</span>
+                  <span className="text-lg font-mono font-black text-shiraz">{formatDeZahl(fcd, 2)} N/mm²</span>
+                  <span className="text-[10px] text-shiraz/80 block font-mono">f_cd = 0,85 · f_ck / 1.5</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Mittlere Zugfestigkeit</span>
-                  <span className="text-lg font-mono font-black text-slate-900">{currentConcrete.fctm} N/mm²</span>
+                  <span className="text-lg font-mono font-black text-slate-900">{formatDeWert(currentConcrete.fctm)} N/mm²</span>
                   <span className="text-[10px] text-slate-500 block font-mono">f_ctm (ca. 10 % von f_ck)</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Elastizitätsmodul</span>
-                  <span className="text-lg font-mono font-black text-emerald-700">{(currentConcrete.Ecm / 1000).toFixed(0)} kN/mm²</span>
+                  <span className="text-lg font-mono font-black text-emerald-700">{formatDeZahl((currentConcrete.Ecm / 1000), 0)} kN/mm²</span>
                   <span className="text-[10px] text-emerald-600 block font-mono">E_cm (Sekantenmodul)</span>
                 </div>
               </div>
@@ -610,7 +611,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
                     <span>Bemessungsmoment (M_Ed):</span>
-                    <span className="font-mono text-shiraz font-bold">{calcMed} kNm</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(calcMed)} kNm</span>
                   </label>
                   <input
                     type="range"
@@ -626,7 +627,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
                     <span>Balkenbreite (b):</span>
-                    <span className="font-mono text-shiraz font-bold">{calcWidth} cm</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(calcWidth)} cm</span>
                   </label>
                   <input
                     type="range"
@@ -642,7 +643,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div>
                   <label className="block text-xs font-semibold text-text-main/70 mb-1 flex justify-between">
                     <span>Nutzhöhe (d):</span>
-                    <span className="font-mono text-shiraz font-bold">{calcDepth} cm</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(calcDepth)} cm</span>
                   </label>
                   <input
                     type="range"
@@ -660,21 +661,21 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
               <div className="grid sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Beiwert μ_Eds</span>
-                  <span className="text-lg font-mono font-black text-slate-900">{mu_Eds.toFixed(3)}</span>
+                  <span className="text-lg font-mono font-black text-slate-900">{formatDeZahl(mu_Eds, 3)}</span>
                   <span className="text-[10px] text-slate-500 block font-mono">
                     {mu_Eds <= 0.296 ? '✓ Einfach bewehrt' : '⚠ Druckbewehrung nötig'}
                   </span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Hebelarm-Faktor ζ</span>
-                  <span className="text-lg font-mono font-black text-slate-900">{zeta.toFixed(3)}</span>
-                  <span className="text-[10px] text-slate-500 block font-mono">z = {(zeta * calcDepth).toFixed(1)} cm</span>
+                  <span className="text-lg font-mono font-black text-slate-900">{formatDeZahl(zeta, 3)}</span>
+                  <span className="text-[10px] text-slate-500 block font-mono">z = {formatDeZahl((zeta * calcDepth), 1)} cm</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Erforderliche Bewehrung</span>
-                  <span className="text-lg font-mono font-black text-shiraz">{As_erf_cm2.toFixed(2)} cm²</span>
+                  <span className="text-lg font-mono font-black text-shiraz">{formatDeZahl(As_erf_cm2, 2)} cm²</span>
                   <span className="text-[10px] text-shiraz/80 block font-mono">
-                    z. B. {Math.ceil(As_erf_cm2 / 2.01)} ⌀ 16 mm Stäbe
+                    z. B. {formatDeWert(Math.ceil(As_erf_cm2 / 2.01))} ⌀ 16 mm Stäbe
                   </span>
                 </div>
               </div>

@@ -112,8 +112,8 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     category: 'schwinden',
     kategorieLabel: 'Schwinden',
     einheit: 'Stauchung [‰] bzw. [mm/m]',
-    schaetzwertKurz: '-0.30 bis -0.55 ‰ (typ. -0.35 bis -0.40 ‰)',
-    schaetzwert: 'Für Vordimensionierung im Hochbau: ε_cs ≈ -0.40 ‰ (-0.40 mm/m). Im feuchten Außenbereich (RH 80 %): ε_cs ≈ -0.25 bis -0.32 ‰. Im trockenen Innenbereich (RH 50 %): ε_cs ≈ -0.45 bis -0.55 ‰.',
+    schaetzwertKurz: '-0.30 bis -0,55 ‰ (typ. -0.35 bis -0,40 ‰)',
+    schaetzwert: 'Für Vordimensionierung im Hochbau: ε_cs ≈ -0,40 ‰ (-0,40 mm/m). Im feuchten Außenbereich (RH 80 %): ε_cs ≈ -0.25 bis -0,32 ‰. Im trockenen Innenbereich (RH 50 %): ε_cs ≈ -0.45 bis -0,55 ‰.',
     rechenwertNorm: '\\varepsilon_{cs}(\\infty) = \\varepsilon_{cd}(\\infty) + \\varepsilon_{ca}(\\infty) \\quad (\\text{Trocknungs- + Autogenschwinden})',
     normBezug: 'DIN EN 1992-1-1 (EC2), Abs. 3.1.4 (6) & Gl. (3.8)',
     bedeutungUndEinfluss: 'Volumenkontraktion ohne äußere Last durch Feuchteverlust und Hydratationsreaktion. Führt bei Spannstahl (Ep = 195.000 MPa) zu direkten Spannungsverlusten: Δε_p,s = ε_cs · Ep ≈ 60 bis 100 MPa (~4–8 % von P₀).',
@@ -133,8 +133,8 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     category: 'schwinden',
     kategorieLabel: 'Schwinden',
     einheit: 'Stauchung [‰] bzw. [mm/m]',
-    schaetzwertKurz: '-0.03 bis -0.10 ‰ (C35/45: -0.06 ‰, C60/75: -0.10 ‰)',
-    schaetzwert: 'Bei Normalbetonen (C30/37) mit ~-0.05 ‰ gering, bei Hochleistungsbeton (C50/60 bis C90/105 mit niedrigem w/z < 0.40) stark ansteigend auf bis zu -0.15 ‰.',
+    schaetzwertKurz: '-0.03 bis -0,10 ‰ (C35/45: -0,06 ‰, C60/75: -0,10 ‰)',
+    schaetzwert: 'Bei Normalbetonen (C30/37) mit ~-0,05 ‰ gering, bei Hochleistungsbeton (C50/60 bis C90/105 mit niedrigem w/z < 0.40) stark ansteigend auf bis zu -0,15 ‰.',
     rechenwertNorm: '\\varepsilon_{ca}(\\infty) = 2.5 \\cdot (f_{ck} - 10) \\cdot 10^{-6} \\quad [\\text{für } f_{ck} \\ge 10\\text{ MPa}]',
     normBezug: 'EC2 Gl. (3.12)',
     bedeutungUndEinfluss: 'Entsteht durch Selbstaustrocknung (chemische Schrumpfung der Hydratphasen). Tritt unabhängig von der Luftfeuchtigkeit und auch unter Wasser auf.',
@@ -148,8 +148,8 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     category: 'schwinden',
     kategorieLabel: 'Schwinden',
     einheit: 'Stauchung [‰]',
-    schaetzwertKurz: 'Zementklasse N: ~0.45 ‰ | R: ~0.55 ‰ | S: ~0.35 ‰',
-    schaetzwert: 'Für Standardzemente CEM I 42.5 N bei C35/45: ε_cd,0 ≈ 0.48 ‰; bei CEM I 52.5 R ca. 0.58 ‰.',
+    schaetzwertKurz: 'Zementklasse N: ~0,45 ‰ | R: ~0,55 ‰ | S: ~0,35 ‰',
+    schaetzwert: 'Für Standardzemente CEM I 42.5 N bei C35/45: ε_cd,0 ≈ 0,48 ‰; bei CEM I 52.5 R ca. 0,58 ‰.',
     rechenwertNorm: '\\varepsilon_{cd,0} = 0.85 \\cdot \\left[ (220 + 110 \\alpha_{ds1}) \\cdot \\exp\\left(-\\alpha_{ds2} \\frac{f_{cm}}{f_{cmo}}\\right) \\right] \\cdot 10^{-6} \\cdot \\beta_{RH}',
     normBezug: 'EC2 Anhang B.2, Gl. (B.11)',
     bedeutungUndEinfluss: 'Referenz-Schwindmaß für unendlich dünne Probekörper bei vollständiger Austrocknung.',
@@ -180,8 +180,8 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     category: 'relaxation',
     kategorieLabel: 'Relaxation',
     einheit: 'Prozent [%]',
-    schaetzwertKurz: 'Klasse 2 (niedrig): 2,5 % | Klasse 1 (Draht): 8.0 %',
-    schaetzwert: 'In modernen Tragwerken wird nahezu ausschließlich Klasse 2 (kaltgezogene 7-drähtige Litzen mit abZ des DIBt) verbaut mit ρ₁₀₀₀ = 2.5 %. Ältere Konstruktionen oder Stäbe: Klasse 1 (ρ₁₀₀₀ ≈ 8.0 %) oder Klasse 3 (ρ₁₀₀₀ ≈ 4.0 %).',
+    schaetzwertKurz: 'Klasse 2 (niedrig): 2,5 % | Klasse 1 (Draht): 8,0 %',
+    schaetzwert: 'In modernen Tragwerken wird nahezu ausschließlich Klasse 2 (kaltgezogene 7-drähtige Litzen mit abZ des DIBt) verbaut mit ρ₁₀₀₀ = 2,5 %. Ältere Konstruktionen oder Stäbe: Klasse 1 (ρ₁₀₀₀ ≈ 8,0 %) oder Klasse 3 (ρ₁₀₀₀ ≈ 4,0 %).',
     rechenwertNorm: '\\rho_{1000} = 2.5\\,\\% \\quad (\\text{Klasse 2, Normwert nach EC2 Abs. 3.3.2 (4)})',
     normBezug: 'DIN EN 1992-1-1 Abs. 3.3.2 & abZ des Spannstahls',
     bedeutungUndEinfluss: 'Gibt den Spannungsabfall im Spannstahl nach 1000 Stunden bei 20 °C und einer Anfangsspannung von 0.70 f_pk an.',
@@ -267,7 +267,7 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     rechenwertNorm: 'k = 0.005 \\dots 0.010\\text{ rad/m} \\quad (\\text{nach Zulassung des Spannverfahrens})',
     normBezug: 'EC2 Abs. 5.10.5.2 (3)',
     bedeutungUndEinfluss: 'Erfasst unvermeidliche geometrische Verlegetoleranzen und Durchhang der Hüllrohre zwischen den Unterstützungsträgern während des Betonierens.',
-    einflussparameter: ['Unterstützungsabstand der Hüllrohre (typ. 1.0 bis 1.5 m)', 'Steifigkeit des Rohres', 'Sorgfalt der Baustellen-Verlegung']
+    einflussparameter: ['Unterstützungsabstand der Hüllrohre (typ. 1,0 bis 1,5 m)', 'Steifigkeit des Rohres', 'Sorgfalt der Baustellen-Verlegung']
   },
   {
     id: 'delta_l_schlupf',
@@ -362,7 +362,7 @@ export default function BeiwerteKatalog() {
             Was zeichnet Schätzwerte (Vordimensionierung) aus?
           </div>
           <p className="text-amber-950/80 leading-relaxed">
-            In der Entwurfsphase liegen exakte Parameter (Betonfeuchte, Betonalter beim Spannen <InlineMath math="t_0" />, wirksame Bauteildicke <InlineMath math="h_0" />, Lieferant des Spannstahls) noch nicht vor. Ingenieure verwenden hier <strong>robuste Schätzgrößen</strong> (z.B. Endkriechzahl <InlineMath math="\varphi \approx 2.0" />, Gesamtschwindmaß <InlineMath math="\varepsilon_{cs} \approx -0.35\,\text{mm/m}" />, Langzeitverlust ca. 15–20 % von <InlineMath math="P_0" />), um die Querschnittsabmessungen und Spanngliedanzahl schnell festzulegen.
+            In der Entwurfsphase liegen exakte Parameter (Betonfeuchte, Betonalter beim Spannen <InlineMath math="t_0" />, wirksame Bauteildicke <InlineMath math="h_0" />, Lieferant des Spannstahls) noch nicht vor. Ingenieure verwenden hier <strong>robuste Schätzgrößen</strong> (z.B. Endkriechzahl <InlineMath math="\varphi \approx 2{,}0" />, Gesamtschwindmaß <InlineMath math="\varepsilon_{cs} \approx -0{,}35\,\text{mm/m}" />, Langzeitverlust ca. 15–20 % von <InlineMath math="P_0" />), um die Querschnittsabmessungen und Spanngliedanzahl schnell festzulegen.
           </p>
         </div>
         <div className="p-4 rounded-xl bg-blue-50/80 border border-blue-200/80 space-y-2">
@@ -371,7 +371,7 @@ export default function BeiwerteKatalog() {
             Was verlangt der normative Rechenwert (Ausführungsstatik)?
           </div>
           <p className="text-blue-950/80 leading-relaxed">
-            Für die prüffähige Statik nach <strong>Eurocode 2 (DIN EN 1992-1-1)</strong> müssen die Beiwerte funktional aus den exakten Randbedingungen ermittelt werden: Feuchtebeiwert <InlineMath math="\varphi_{RH}" />, Festigkeitsbeiwert <InlineMath math="\beta(f_{cm})" />, Reifeentwicklung <InlineMath math="\beta(t_0)" />, Zeitbeiwert <InlineMath math="\beta_c(t, t_0)" /> sowie die gekoppelte Verlustgleichung (5.46). Sie bilden die juristisch verbindliche Nachweisgrundlage.
+            Für die prüffähige Statik nach <strong>Eurocode 2 (DIN EN 1992-1-1)</strong> müssen die Beiwerte funktional aus den exakten Randbedingungen ermittelt werden: Feuchtebeiwert <InlineMath math="\varphi_{RH}" />, Festigkeitsbeiwert <InlineMath math="\beta(f_{cm})" />, Reifeentwicklung <InlineMath math="\beta(t_0)" />, Zeitbeiwert <InlineMath math="\beta_c(t, t_0)" /> sowie die gekoppelte Verlustgleichung (5,46). Sie bilden die juristisch verbindliche Nachweisgrundlage.
           </p>
         </div>
       </div>

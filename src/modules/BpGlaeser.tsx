@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Layers, 
@@ -1069,11 +1070,11 @@ export default function BpGlaeser() {
                   <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-home-grau/15 text-xs">
                     <div>
                       <span className="text-home-grau text-[10px] uppercase font-bold block">Typischer Uw-Wert:</span>
-                      <span className="font-bold text-shiraz text-sm">{win.typicalUw} W/(m²K)</span>
+                      <span className="font-bold text-shiraz text-sm">{formatDeWert(win.typicalUw)} W/(m²K)</span>
                     </div>
                     <div>
                       <span className="text-home-grau text-[10px] uppercase font-bold block">Richtpreis Element:</span>
-                      <span className="font-bold text-emerald-800 text-sm">~ {win.typicalPricePerSqm} €/m²</span>
+                      <span className="font-bold text-emerald-800 text-sm">~ {formatDeWert(win.typicalPricePerSqm)} €/m²</span>
                     </div>
                     <div>
                       <span className="text-home-grau text-[10px] uppercase font-bold block">Schallschutz:</span>
@@ -1189,7 +1190,7 @@ export default function BpGlaeser() {
                   <div>
                     <div className="flex justify-between text-xs font-bold mb-1">
                       <span>Fensterbreite (B):</span>
-                      <span className="font-mono text-shiraz">{fensterBreite.toFixed(2)} m</span>
+                      <span className="font-mono text-shiraz">{formatDeZahl(fensterBreite, 2)} m</span>
                     </div>
                     <input 
                       type="range"
@@ -1211,7 +1212,7 @@ export default function BpGlaeser() {
                   <div>
                     <div className="flex justify-between text-xs font-bold mb-1">
                       <span>Fensterhöhe (H):</span>
-                      <span className="font-mono text-shiraz">{fensterHoehe.toFixed(2)} m</span>
+                      <span className="font-mono text-shiraz">{formatDeZahl(fensterHoehe, 2)} m</span>
                     </div>
                     <input 
                       type="range"
@@ -1235,7 +1236,7 @@ export default function BpGlaeser() {
                   <div>
                     <div className="flex justify-between text-xs font-bold mb-1">
                       <span>Rahmenbreite (b_f):</span>
-                      <span className="font-mono text-shiraz">{rahmenBreiteMm} mm</span>
+                      <span className="font-mono text-shiraz">{formatDeWert(rahmenBreiteMm)} mm</span>
                     </div>
                     <input 
                       type="range"
@@ -1257,7 +1258,7 @@ export default function BpGlaeser() {
                   <div>
                     <div className="flex justify-between text-xs font-bold mb-1">
                       <span>Rahmen Uf-Wert:</span>
-                      <span className="font-mono text-shiraz">{ufWert.toFixed(2)} W/(m²K)</span>
+                      <span className="font-mono text-shiraz">{formatDeZahl(ufWert, 2)} W/(m²K)</span>
                     </div>
                     <input 
                       type="range"
@@ -1281,7 +1282,7 @@ export default function BpGlaeser() {
                   <div>
                     <div className="flex justify-between text-xs font-bold mb-1">
                       <span>Glas Ug-Wert:</span>
-                      <span className="font-mono text-shiraz">{ugWert.toFixed(2)} W/(m²K)</span>
+                      <span className="font-mono text-shiraz">{formatDeZahl(ugWert, 2)} W/(m²K)</span>
                     </div>
                     <input 
                       type="range"
@@ -1319,7 +1320,7 @@ export default function BpGlaeser() {
                   <div>
                     <div className="flex justify-between text-xs font-bold mb-1">
                       <span>Gesamtenergiedurchlass (g-Wert):</span>
-                      <span className="font-mono text-shiraz">{(gWert * 100).toFixed(0)} % ({gWert.toFixed(2)})</span>
+                      <span className="font-mono text-shiraz">{formatDeZahl((gWert * 100), 0)} % ({formatDeZahl(gWert, 2)})</span>
                     </div>
                     <input 
                       type="range"
@@ -1340,7 +1341,7 @@ export default function BpGlaeser() {
                   <div>
                     <div className="flex justify-between text-xs font-bold mb-1">
                       <span>Sonneneinstrahlung auf Fassade:</span>
-                      <span className="font-mono text-shiraz">{sonneneinstrahlung} W/m²</span>
+                      <span className="font-mono text-shiraz">{formatDeWert(sonneneinstrahlung)} W/m²</span>
                     </div>
                     <input 
                       type="range"
@@ -1379,7 +1380,7 @@ export default function BpGlaeser() {
                   <div className="text-center my-3">
                     <span className="text-xs text-home-grau font-semibold block">Gesamter Wärmedurchgangskoeffizient</span>
                     <div className="text-4xl font-extrabold text-shiraz font-mono mt-1">
-                      {calcResults.uw.toFixed(2)}
+                      {formatDeZahl(calcResults.uw, 2)}
                       <span className="text-base font-normal text-text-main ml-1">W/(m²K)</span>
                     </div>
                   </div>
@@ -1388,19 +1389,19 @@ export default function BpGlaeser() {
                   <div className="mt-4 pt-4 border-t border-home-grau/20 space-y-2 text-xs">
                     <div className="flex justify-between">
                       <span className="text-text-main/70">Gesamtfensterfläche (A_w):</span>
-                      <span className="font-mono font-bold text-slate-800">{calcResults.Af_total.toFixed(2)} m²</span>
+                      <span className="font-mono font-bold text-slate-800">{formatDeZahl(calcResults.Af_total, 2)} m²</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-text-main/70">Sichtbare Glasfläche (A_g):</span>
-                      <span className="font-mono font-bold text-slate-800">{calcResults.Ag.toFixed(2)} m² ({(calcResults.Ag / calcResults.Af_total * 100).toFixed(0)} %)</span>
+                      <span className="font-mono font-bold text-slate-800">{formatDeZahl(calcResults.Ag, 2)} m² ({formatDeZahl((calcResults.Ag / calcResults.Af_total * 100), 0)} %)</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-text-main/70">Rahmenfläche (A_f):</span>
-                      <span className="font-mono font-bold text-slate-800">{calcResults.Af.toFixed(2)} m²</span>
+                      <span className="font-mono font-bold text-slate-800">{formatDeZahl(calcResults.Af, 2)} m²</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-text-main/70">Glasumfang (l_g):</span>
-                      <span className="font-mono font-bold text-slate-800">{calcResults.Lg.toFixed(2)} m</span>
+                      <span className="font-mono font-bold text-slate-800">{formatDeZahl(calcResults.Lg, 2)} m</span>
                     </div>
                   </div>
 
@@ -1408,15 +1409,15 @@ export default function BpGlaeser() {
                     <div className="font-bold text-slate-900 mb-1">Anteilige Wärmeverluste (bei ΔT = 1 K):</div>
                     <div className="flex justify-between">
                       <span>Glasverlust (A_g · U_g):</span>
-                      <span className="font-mono font-semibold">{calcResults.waermestromGlas.toFixed(2)} W/K ({(calcResults.waermestromGlas / (calcResults.uw * calcResults.Af_total) * 100).toFixed(0)} %)</span>
+                      <span className="font-mono font-semibold">{formatDeZahl(calcResults.waermestromGlas, 2)} W/K ({formatDeZahl((calcResults.waermestromGlas / (calcResults.uw * calcResults.Af_total) * 100), 0)} %)</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Rahmenverlust (A_f · U_f):</span>
-                      <span className="font-mono font-semibold">{calcResults.waermestromRahmen.toFixed(2)} W/K ({(calcResults.waermestromRahmen / (calcResults.uw * calcResults.Af_total) * 100).toFixed(0)} %)</span>
+                      <span className="font-mono font-semibold">{formatDeZahl(calcResults.waermestromRahmen, 2)} W/K ({formatDeZahl((calcResults.waermestromRahmen / (calcResults.uw * calcResults.Af_total) * 100), 0)} %)</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Kantenverlust (l_g · Ψ_g):</span>
-                      <span className="font-mono font-semibold">{calcResults.waermestromKante.toFixed(2)} W/K ({(calcResults.waermestromKante / (calcResults.uw * calcResults.Af_total) * 100).toFixed(0)} %)</span>
+                      <span className="font-mono font-semibold">{formatDeZahl(calcResults.waermestromKante, 2)} W/K ({formatDeZahl((calcResults.waermestromKante / (calcResults.uw * calcResults.Af_total) * 100), 0)} %)</span>
                     </div>
                   </div>
 
@@ -1424,10 +1425,10 @@ export default function BpGlaeser() {
                   <div className="mt-4 p-3 bg-amber-50/70 border border-amber-200 rounded-xl text-xs">
                     <div className="flex items-center justify-between text-amber-900 font-bold mb-0.5">
                       <span>Solare Wärmezufuhr:</span>
-                      <span className="font-mono">{calcResults.solareGewinneWatt.toFixed(0)} Watt</span>
+                      <span className="font-mono">{formatDeZahl(calcResults.solareGewinneWatt, 0)} Watt</span>
                     </div>
                     <p className="text-[10px] text-amber-800">
-                      Passive Erwärmung durch Sonneneinstrahlung bei {sonneneinstrahlung} W/m² (Winter-Heizunterstützung vs. Sommer-Kühllast).
+                      Passive Erwärmung durch Sonneneinstrahlung bei {formatDeWert(sonneneinstrahlung)} W/m² (Winter-Heizunterstützung vs. Sommer-Kühllast).
                     </p>
                   </div>
                 </div>
@@ -1519,10 +1520,10 @@ export default function BpGlaeser() {
           { title: 'Fenster', url: 'https://de.wikipedia.org/wiki/Fenster' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 14351-1: Fenster und Außentüren – Produktnorm, Leistungseigenschaften', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1279-1 bis 6: Glas im Bauwesen – Mehrscheiben-Isolierglas', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18008-1 bis 5: Glas im Bauwesen – Bemessungs- und Konstruktionsregeln', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 10077-1: Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen – Berechnung des Wärmedurchgangskoeffizienten', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 14351-1: Fenster und Außentüren – Produktnorm, Leistungseigenschaften', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14351-1' },
+          { title: 'DIN EN 1279-1 bis 6: Glas im Bauwesen – Mehrscheiben-Isolierglas', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1279-1' },
+          { title: 'DIN 18008-1 bis 5: Glas im Bauwesen – Bemessungs- und Konstruktionsregeln', url: 'https://www.dinmedia.de/de/suche?q=DIN+18008-1' },
+          { title: 'DIN EN ISO 10077-1: Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen – Berechnung des Wärmedurchgangskoeffizienten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10077-1' },
           { title: 'Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG): Anforderungen an den sommerlichen und winterlichen Wärmeschutz von Fenstern', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[

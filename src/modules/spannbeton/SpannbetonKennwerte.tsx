@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import BeiwerteKatalog from './BeiwerteKatalog';
@@ -583,7 +584,7 @@ export default function SpannbetonKennwerte() {
                 <strong className="text-text-main block mb-1">Vorspannzeitpunkt (<InlineMath math="t_0" />) &amp; Frühfestigkeit:</strong>
                 <p>
                   Die Spannkraft darf erst eingeleitet werden, wenn der Beton eine ausreichende Druckfestigkeit aufweist 
-                  (typischerweise <InlineMath math="f_{ck}(t) \ge 0.70 \cdot f_{ck}" />). Ein zu frühes Spannen führt zu 
+                  (typischerweise <InlineMath math="f_{ck}(t) \ge 0{,}70 \cdot f_{ck}" />). Ein zu frühes Spannen führt zu 
                   übermäßigen Kriechverlusten, Gefügezerrüttung und Verankerungsversagen.
                 </p>
               </div>
@@ -597,7 +598,7 @@ export default function SpannbetonKennwerte() {
                   Interaktiver Werkstoff- &amp; Reifesimulator
                 </span>
                 <span className="text-[11px] font-mono text-slate-500">
-                  Aktuell: <strong className="text-shiraz font-bold">{matGrade}</strong> | Alter: <strong className="text-slate-800 font-bold">{matAgeDays} d</strong> ({matTemp} °C)
+                  Aktuell: <strong className="text-shiraz font-bold">{matGrade}</strong> | Alter: <strong className="text-slate-800 font-bold">{formatDeWert(matAgeDays)} d</strong> ({formatDeWert(matTemp)} °C)
                 </span>
               </div>
 
@@ -623,7 +624,7 @@ export default function SpannbetonKennwerte() {
                       >
                         <span className="text-xs font-bold font-mono">{grade}</span>
                         <span className={`text-[10px] mt-0.5 ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
-                          {item.fck} / {item.fck_cube} MPa
+                          {formatDeWert(item.fck)} / {formatDeWert(item.fck_cube)} MPa
                         </span>
                       </button>
                     );
@@ -644,9 +645,9 @@ export default function SpannbetonKennwerte() {
                     onChange={(e) => setMatCement(e.target.value as 'R' | 'N' | 'S')}
                     className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium outline-none focus:border-shiraz"
                   >
-                    <option value="R">Klasse R (schnell; s = 0.20)</option>
-                    <option value="N">Klasse N (normal; s = 0.25)</option>
-                    <option value="S">Klasse S (langsam; s = 0.38)</option>
+                    <option value="R">Klasse R (schnell; s = 0,20)</option>
+                    <option value="N">Klasse N (normal; s = 0,25)</option>
+                    <option value="S">Klasse S (langsam; s = 0,38)</option>
                   </select>
                   <p className="text-[10px] text-slate-500">Beiwert s in EC2 Gl. (3.2)</p>
                 </div>
@@ -655,7 +656,7 @@ export default function SpannbetonKennwerte() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-semibold text-text-main">
                     <span>Betonalter t:</span>
-                    <span className="font-mono text-shiraz font-bold">{matAgeDays} d</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(matAgeDays)} d</span>
                   </div>
                   <input
                     type="range"
@@ -682,7 +683,7 @@ export default function SpannbetonKennwerte() {
                       <Thermometer size={13} className="text-shiraz" />
                       Temperatur T:
                     </span>
-                    <span className="font-mono text-shiraz font-bold">{matTemp} °C</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(matTemp)} °C</span>
                   </div>
                   <input
                     type="range"
@@ -704,17 +705,17 @@ export default function SpannbetonKennwerte() {
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-text-main flex items-center justify-between">
                     <span>Gestein (EC2 3.1.3):</span>
-                    <span className="font-mono text-shiraz font-bold">α_E = {matMaturity.aggFactor.toFixed(2)}</span>
+                    <span className="font-mono text-shiraz font-bold">α_E = {formatDeZahl(matMaturity.aggFactor, 2)}</span>
                   </label>
                   <select
                     value={matAggregate}
                     onChange={(e) => setMatAggregate(e.target.value as 'quarzit' | 'basalt' | 'kalkstein' | 'sandstein')}
                     className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium outline-none focus:border-shiraz"
                   >
-                    <option value="quarzit">Quarzit (α_E = 1.00)</option>
-                    <option value="basalt">Basalt (+20 %, α_E = 1.20)</option>
-                    <option value="kalkstein">Kalkstein (-10 %, α_E = 0.90)</option>
-                    <option value="sandstein">Sandstein (-30 %, α_E = 0.70)</option>
+                    <option value="quarzit">Quarzit (α_E = 1,00)</option>
+                    <option value="basalt">Basalt (+20 %, α_E = 1,20)</option>
+                    <option value="kalkstein">Kalkstein (-10 %, α_E = 0,90)</option>
+                    <option value="sandstein">Sandstein (-30 %, α_E = 0,70)</option>
                   </select>
                   <p className="text-[10px] text-slate-500">Beeinflusst E-Modul &amp; Kriechen</p>
                 </div>
@@ -723,7 +724,7 @@ export default function SpannbetonKennwerte() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-semibold text-text-main">
                     <span>Höhe h (f_ctm,fl):</span>
-                    <span className="font-mono text-shiraz font-bold">{matBeamHeight} mm</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(matBeamHeight)} mm</span>
                   </div>
                   <input
                     type="range"
@@ -735,8 +736,8 @@ export default function SpannbetonKennwerte() {
                     className="w-full accent-shiraz cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-slate-500 font-mono">
-                    <span>h = {matBeamHeight} mm</span>
-                    <span>f_ctm,fl = {matMaturity.fctm_fl_t} MPa</span>
+                    <span>h = {formatDeWert(matBeamHeight)} mm</span>
+                    <span>f_ctm,fl = {formatDeWert(matMaturity.fctm_fl_t)} MPa</span>
                   </div>
                 </div>
               </div>
@@ -748,28 +749,28 @@ export default function SpannbetonKennwerte() {
               <div className="p-4 rounded-xl bg-white border border-home-grau/30 shadow-xs space-y-2">
                 <div className="flex items-center justify-between text-xs text-text-main/70">
                   <span className="font-semibold uppercase tracking-wider">Zylinderfestigkeit</span>
-                  <span className="font-mono text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">t = {matAgeDays} d</span>
+                  <span className="font-mono text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">t = {formatDeWert(matAgeDays)} d</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold font-mono text-shiraz">{matMaturity.fck_t}</span>
+                  <span className="text-2xl font-bold font-mono text-shiraz">{formatDeWert(matMaturity.fck_t)}</span>
                   <span className="text-xs text-text-main/60 font-medium">N/mm² (f_ck(t))</span>
                 </div>
                 <div className="text-[11px] text-text-main/80 space-y-0.5 border-t border-home-grau/15 pt-2">
                   <div className="flex justify-between">
                     <span>28-Tage-Normwert:</span>
-                    <strong className="font-mono">{activeMatData.fck} N/mm²</strong>
+                    <strong className="font-mono">{formatDeWert(activeMatData.fck)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Mittlere Druckfestigkeit:</span>
-                    <strong className="font-mono">{matMaturity.fcm_t} N/mm²</strong>
+                    <strong className="font-mono">{formatDeWert(matMaturity.fcm_t)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Würfelfestigkeit f_ck,cube:</span>
-                    <strong className="font-mono">{activeMatData.fck_cube} N/mm²</strong>
+                    <strong className="font-mono">{formatDeWert(activeMatData.fck_cube)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Bemessungswert f_cd(t):</span>
-                    <strong className="font-mono text-shiraz">{matMaturity.fcd_t} N/mm²</strong>
+                    <strong className="font-mono text-shiraz">{formatDeWert(matMaturity.fcd_t)} N/mm²</strong>
                   </div>
                 </div>
               </div>
@@ -781,25 +782,25 @@ export default function SpannbetonKennwerte() {
                   <span className="font-mono text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">E_cm(t)</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold font-mono text-slate-900">{matMaturity.Ecm_t}</span>
+                  <span className="text-2xl font-bold font-mono text-slate-900">{formatDeWert(matMaturity.Ecm_t)}</span>
                   <span className="text-xs text-text-main/60 font-medium">N/mm²</span>
                 </div>
                 <div className="text-[11px] text-text-main/80 space-y-0.5 border-t border-home-grau/15 pt-2">
                   <div className="flex justify-between">
                     <span>28-Tage-Wert (mit Gestein):</span>
-                    <strong className="font-mono">{matMaturity.Ecm_28} N/mm²</strong>
+                    <strong className="font-mono">{formatDeWert(matMaturity.Ecm_28)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Tabellenwert EC2 Tab. 3.1:</span>
-                    <strong className="font-mono">{activeMatData.Ecm} N/mm²</strong>
+                    <strong className="font-mono">{formatDeWert(activeMatData.Ecm)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Gesteinsfaktor α_E:</span>
-                    <strong className="font-mono">{matMaturity.aggFactor.toFixed(2)}</strong>
+                    <strong className="font-mono">{formatDeZahl(matMaturity.aggFactor, 2)}</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Elastische Stauchung bei 10 MPa:</span>
-                    <strong className="font-mono">{((10 / matMaturity.Ecm_t) * 1000).toFixed(2)} ‰</strong>
+                    <strong className="font-mono">{formatDeZahl(((10 / matMaturity.Ecm_t) * 1000), 2)} ‰</strong>
                   </div>
                 </div>
               </div>
@@ -811,21 +812,21 @@ export default function SpannbetonKennwerte() {
                   <span className="font-mono text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">f_ctm(t)</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold font-mono text-slate-900">{matMaturity.fctm_t}</span>
+                  <span className="text-2xl font-bold font-mono text-slate-900">{formatDeWert(matMaturity.fctm_t)}</span>
                   <span className="text-xs text-text-main/60 font-medium">N/mm²</span>
                 </div>
                 <div className="text-[11px] text-text-main/80 space-y-0.5 border-t border-home-grau/15 pt-2">
                   <div className="flex justify-between">
                     <span>Unteres 5%-Quantil f_ctk,0.05:</span>
-                    <strong className="font-mono text-blue-700">{matMaturity.fctk005_t} N/mm²</strong>
+                    <strong className="font-mono text-blue-700">{formatDeWert(matMaturity.fctk005_t)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Oberes 95%-Quantil f_ctk,0.95:</span>
-                    <strong className="font-mono text-purple-700">{matMaturity.fctk095_t} N/mm²</strong>
+                    <strong className="font-mono text-purple-700">{formatDeWert(matMaturity.fctk095_t)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Biegezugfestigkeit f_ctm,fl:</span>
-                    <strong className="font-mono">{matMaturity.fctm_fl_t} N/mm²</strong>
+                    <strong className="font-mono">{formatDeWert(matMaturity.fctm_fl_t)} N/mm²</strong>
                   </div>
                   <div className="flex justify-between text-[10px] text-slate-500">
                     <span>Rissnachweis / Dekompression maßgebend: f_ctk,0.05</span>
@@ -857,21 +858,21 @@ export default function SpannbetonKennwerte() {
                   <span className={`text-2xl font-bold font-mono ${
                     matMaturity.releaseOptimum ? 'text-emerald-900' : matMaturity.releaseReady ? 'text-amber-900' : 'text-rose-900'
                   }`}>
-                    {matMaturity.maturity_pct} %
+                    {formatDeWert(matMaturity.maturity_pct)} %
                   </span>
                   <span className="text-xs text-slate-600 font-medium">von f_ck,28</span>
                 </div>
                 <div className="text-[11px] text-slate-700 space-y-0.5 border-t border-slate-300/40 pt-2">
                   <div className="flex justify-between">
                     <span>Zulässige Betondruckspannung:</span>
-                    <strong className="font-mono text-slate-900">{matMaturity.sigma_c_zul} N/mm²</strong>
+                    <strong className="font-mono text-slate-900">{formatDeWert(matMaturity.sigma_c_zul)} N/mm²</strong>
                   </div>
                   <div className="text-[10px] text-slate-600">
-                    <InlineMath math="\sigma_{c,zul} = 0.60 \cdot f_{ck}(t)" /> (EC2 5.10.2.2)
+                    <InlineMath math="\sigma_{c,zul} = 0{,}60 \cdot f_{ck}(t)" /> (EC2 5.10.2.2)
                   </div>
                   <div className="flex justify-between pt-0.5">
                     <span>Äquivalentes Alter t_eff:</span>
-                    <strong className="font-mono">{matMaturity.t_eff} d</strong>
+                    <strong className="font-mono">{formatDeWert(matMaturity.t_eff)} d</strong>
                   </div>
                 </div>
               </div>
@@ -883,7 +884,7 @@ export default function SpannbetonKennwerte() {
                 <div>
                   <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
                     <Activity className="text-shiraz h-4 w-4" />
-                    Spannungs-Dehnungs-Kennlinie (<InlineMath math="\sigma_c - \varepsilon_c" />) für {matGrade} bei t = {matAgeDays} d
+                    Spannungs-Dehnungs-Kennlinie (<InlineMath math="\sigma_c - \varepsilon_c" />) für {matGrade} bei t = {formatDeWert(matAgeDays)} d
                   </h5>
                   <p className="text-[11px] text-text-main/70">
                     Vergleich der realen Arbeitslinie nach DIN EN 1992-1-1 Gl. (3.14) mit dem Parabel-Rechteck-Diagramm (GZT)
@@ -924,7 +925,7 @@ export default function SpannbetonKennwerte() {
                       return (
                         <g key={val}>
                           <line x1={xPos} y1="240" x2={xPos} y2="30" stroke="#cbd5e1" strokeWidth="1" strokeDasharray="3 3" />
-                          <text x={xPos} y="255" fontSize="10" fill="#64748b" textAnchor="middle">{val} ‰</text>
+                          <text x={xPos} y="255" fontSize="10" fill="#64748b" textAnchor="middle">{formatDeWert(val)} ‰</text>
                         </g>
                       );
                     })}
@@ -944,7 +945,7 @@ export default function SpannbetonKennwerte() {
                         return (
                           <g key={yVal}>
                             <line x1="70" y1={yPos} x2="630" y2={yPos} stroke="#e2e8f0" strokeWidth="1" />
-                            <text x="62" y={yPos + 3} fontSize="10" fill="#64748b" textAnchor="end">{yVal}</text>
+                            <text x="62" y={yPos + 3} fontSize="10" fill="#64748b" textAnchor="end">{formatDeWert(yVal)}</text>
                           </g>
                         );
                       });
@@ -993,14 +994,14 @@ export default function SpannbetonKennwerte() {
                           <line x1={peakX} y1={peakY} x2={peakX} y2="240" stroke="#990033" strokeWidth="1" strokeDasharray="3 3" />
                           <line x1="70" y1={peakY} x2={peakX} y2={peakY} stroke="#990033" strokeWidth="1" strokeDasharray="3 3" />
                           <text x={peakX + 8} y={peakY - 6} fontSize="11" fill="#990033" fontWeight="bold">
-                            f_cm(t) = {matMaturity.fcm_t} MPa (ε_c1 = {activeMatData.eps_c1} ‰)
+                            f_cm(t) = {formatDeWert(matMaturity.fcm_t)} MPa (ε_c1 = {formatDeWert(activeMatData.eps_c1)} ‰)
                           </text>
 
                           {/* Bruchstauchung ε_cu1 Marker (Arbeitslinie Gl. 3.14) */}
                           <circle cx={ultX} cy={ultY} r="4" fill="#990033" stroke="#ffffff" strokeWidth="1.5" />
                           <line x1={ultX} y1={ultY} x2={ultX} y2="240" stroke="#990033" strokeWidth="1" strokeDasharray="3 3" />
                           <text x={ultX} y={235} fontSize="10" fill="#990033" textAnchor="end" fontWeight="bold">
-                            Arbeitslinie: ε_cu1 = {activeMatData.eps_cu1} ‰
+                            Arbeitslinie: ε_cu1 = {formatDeWert(activeMatData.eps_cu1)} ‰
                           </text>
 
                           {/* Parabel-Rechteck Marker: eps_c2 und eps_cu2 */}
@@ -1011,11 +1012,11 @@ export default function SpannbetonKennwerte() {
                               <g>
                                 <line x1={c2X} y1={fcdY} x2={c2X} y2="240" stroke="#64748b" strokeWidth="1" strokeDasharray="2 2" />
                                 <text x={c2X} y={fcdY - 5} fontSize="9" fill="#475569" textAnchor="middle">
-                                  ε_c2 = {activeMatData.eps_c2} ‰
+                                  ε_c2 = {formatDeWert(activeMatData.eps_c2)} ‰
                                 </text>
                                 <line x1={cu2X} y1={fcdY} x2={cu2X} y2="240" stroke="#64748b" strokeWidth="1" strokeDasharray="2 2" />
                                 <text x={cu2X} y={fcdY - 5} fontSize="9" fill="#475569" textAnchor="end" fontWeight="bold">
-                                  Parabel Bruch: ε_cu2 = {activeMatData.eps_cu2} ‰
+                                  Parabel Bruch: ε_cu2 = {formatDeWert(activeMatData.eps_cu2)} ‰
                                 </text>
                               </g>
                             );
@@ -1028,7 +1029,7 @@ export default function SpannbetonKennwerte() {
                               <g>
                                 <line x1="70" y1={zulY} x2="550" y2={zulY} stroke="#059669" strokeWidth="1.5" strokeDasharray="4 2" />
                                 <text x="555" y={zulY + 3} fontSize="10" fill="#059669" fontWeight="bold">
-                                  zul σ_c = 0.60 f_ck(t) ({matMaturity.sigma_c_zul} MPa)
+                                  zul σ_c = 0,60 f_ck(t) ({formatDeWert(matMaturity.sigma_c_zul)} MPa)
                                 </text>
                               </g>
                             );
@@ -1037,7 +1038,7 @@ export default function SpannbetonKennwerte() {
                           {/* fcd Bemessungswert */}
                           <line x1="70" y1={fcdY} x2="450" y2={fcdY} stroke="#64748b" strokeWidth="1" strokeDasharray="2 2" />
                           <text x="455" y={fcdY + 3} fontSize="10" fill="#64748b">
-                            f_cd(t) = {matMaturity.fcd_t} MPa
+                            f_cd(t) = {formatDeWert(matMaturity.fcd_t)} MPa
                           </text>
                         </g>
                       );
@@ -1098,15 +1099,15 @@ export default function SpannbetonKennwerte() {
                             {isRowActive && <Check size={13} className="text-shiraz" />}
                             {grade}
                           </td>
-                          <td className="p-2.5 font-mono">{d.fck}</td>
-                          <td className="p-2.5 font-mono">{d.fck_cube}</td>
-                          <td className="p-2.5 font-mono">{d.fcm}</td>
-                          <td className="p-2.5 font-mono">{d.fctm.toFixed(2)}</td>
-                          <td className="p-2.5 font-mono text-blue-700">{d.fctk005.toFixed(2)}</td>
-                          <td className="p-2.5 font-mono text-purple-700">{d.fctk095.toFixed(2)}</td>
-                          <td className="p-2.5 font-mono">{d.Ecm}</td>
-                          <td className="p-2.5 font-mono">{d.eps_c1}</td>
-                          <td className="p-2.5 font-mono">{d.eps_cu1}</td>
+                          <td className="p-2.5 font-mono">{formatDeWert(d.fck)}</td>
+                          <td className="p-2.5 font-mono">{formatDeWert(d.fck_cube)}</td>
+                          <td className="p-2.5 font-mono">{formatDeWert(d.fcm)}</td>
+                          <td className="p-2.5 font-mono">{formatDeZahl(d.fctm, 2)}</td>
+                          <td className="p-2.5 font-mono text-blue-700">{formatDeZahl(d.fctk005, 2)}</td>
+                          <td className="p-2.5 font-mono text-purple-700">{formatDeZahl(d.fctk095, 2)}</td>
+                          <td className="p-2.5 font-mono">{formatDeWert(d.Ecm)}</td>
+                          <td className="p-2.5 font-mono">{formatDeWert(d.eps_c1)}</td>
+                          <td className="p-2.5 font-mono">{formatDeWert(d.eps_cu1)}</td>
                           <td className="p-2.5 text-[11px]">{d.typicalUse}</td>
                         </tr>
                       );
@@ -1163,10 +1164,10 @@ export default function SpannbetonKennwerte() {
                   Der Elastizitätsmodul hängt stark vom Gesteinstyp der Gesteinskörnung ab (EC2 Abs. 3.1.3):
                 </p>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-main/80">
-                  <li><strong>Basalt / Diabas:</strong> <InlineMath math="\alpha_E = 1.20" /> (+20 % E-Modul, extrem steif, minimale Durchbiegung).</li>
-                  <li><strong>Quarzit (Normreferenz):</strong> <InlineMath math="\alpha_E = 1.00" />.</li>
-                  <li><strong>Kalkstein:</strong> <InlineMath math="\alpha_E = 0.90" /> (-10 % E-Modul).</li>
-                  <li><strong>Sandstein:</strong> <InlineMath math="\alpha_E = 0.70" /> (-30 % E-Modul, führt zu massiv erhöhter elastischer Stauchung und Kriechverlusten!).</li>
+                  <li><strong>Basalt / Diabas:</strong> <InlineMath math="\alpha_E = 1{,}20" /> (+20 % E-Modul, extrem steif, minimale Durchbiegung).</li>
+                  <li><strong>Quarzit (Normreferenz):</strong> <InlineMath math="\alpha_E = 1{,}00" />.</li>
+                  <li><strong>Kalkstein:</strong> <InlineMath math="\alpha_E = 0{,}90" /> (-10 % E-Modul).</li>
+                  <li><strong>Sandstein:</strong> <InlineMath math="\alpha_E = 0{,}70" /> (-30 % E-Modul, führt zu massiv erhöhter elastischer Stauchung und Kriechverlusten!).</li>
                 </ul>
               </div>
 
@@ -1181,7 +1182,7 @@ export default function SpannbetonKennwerte() {
                   der die lokale Druckfestigkeit des Betons gegenüber dem einachsigen Zylinderwert dramatisch steigert (EC2 Gl. 6.63):
                 </p>
                 <div className="bg-white p-2 rounded-lg border border-home-grau/20 text-center font-mono text-[11px]">
-                  <BlockMath math="F_{Rdu} = A_{c0} \cdot f_{cd} \cdot \sqrt{\frac{A_{c1}}{A_{c0}}} \le 3.0 \cdot f_{cd} \cdot A_{c0}" />
+                  <BlockMath math="F_{Rdu} = A_{c0} \cdot f_{cd} \cdot \sqrt{\frac{A_{c1}}{A_{c0}}} \le 3{,}0 \cdot f_{cd} \cdot A_{c0}" />
                 </div>
                 <p className="text-[11px] text-text-main/70">
                   Trotzdem müssen Spaltzug- und Berstzugkräfte im dahinterliegenden ungestörten Bereich 
@@ -1269,7 +1270,7 @@ export default function SpannbetonKennwerte() {
                   Im nachträglichen Verbund und bei unverbundenen Spanngliedern ist der hochfeste Spannstahl extrem 
                   korrosionsgefährdet (Gefahr von <strong>Spannungsrisskorrosion / Wasserstoffversprödung</strong>). 
                   Die Systembaustoffe bilden eine mehrstufige Barriere: 
-                  <strong> 1. Einpressmörtel</strong> (chemische Passivierung mit <InlineMath math="\text{pH} \ge 12.5" />), 
+                  <strong> 1. Einpressmörtel</strong> (chemische Passivierung mit <InlineMath math="\text{pH} \ge 12{,}5" />), 
                   <strong> 2. Hüllrohr</strong> (mechanischer Schutz gegen Feuchte und Chloride), 
                   <strong> 3. Korrosionsschutzfett/Wachs</strong> (bei Monolitzen) und 
                   <strong> 4. Keilverankerungen</strong> aus einsatzgehärtetem Qualitätsstahl.
@@ -1280,8 +1281,8 @@ export default function SpannbetonKennwerte() {
                 <p>
                   Einpressmörtel muss über Entfernungen von bis zu 100 m durch enge Litzenzwischenräume gepresst werden. 
                   Er erfordert <strong>extrem hohe Fließfähigkeit</strong> bei gleichzeitig 
-                  <strong> minimalem Wassergehalt (<InlineMath math="w/z \le 0.35 - 0.40" />)</strong>, 
-                  darf <strong>kein freies Wasser absondern (Bluten <InlineMath math="\le 0.3\,\%" />)</strong> und muss durch 
+                  <strong> minimalem Wassergehalt (<InlineMath math="w/z \le 0{,}35 - 0{,}40" />)</strong>, 
+                  darf <strong>kein freies Wasser absondern (Bluten <InlineMath math="\le 0{,}3\,\%" />)</strong> und muss durch 
                   spezielle Quellmittel das plastische Schwinden vollständig kompensieren.
                 </p>
               </div>
@@ -1308,7 +1309,7 @@ export default function SpannbetonKennwerte() {
                     <span className={`font-mono font-bold ${
                       groutWz <= 0.40 ? 'text-emerald-700' : 'text-rose-600'
                     }`}>
-                      {groutWz.toFixed(2)} {groutWz > 0.40 ? '(Normüberschreitung!)' : '(zulässig)'}
+                      {formatDeZahl(groutWz, 2)} {groutWz > 0.40 ? '(Normüberschreitung!)' : '(zulässig)'}
                     </span>
                   </div>
                   <input
@@ -1321,10 +1322,10 @@ export default function SpannbetonKennwerte() {
                     className="w-full accent-shiraz cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-slate-400">
-                    <span>0.30 (sehr zäh)</span>
-                    <span className="text-emerald-700 font-bold">0.36 (Optimum)</span>
-                    <span className="text-rose-600 font-bold">0.44 (Grenze DIN EN 447 prüfen)</span>
-                    <span>0.45 (Bluten!)</span>
+                    <span>0,30 (sehr zäh)</span>
+                    <span className="text-emerald-700 font-bold">0,36 (Optimum)</span>
+                    <span className="text-rose-600 font-bold">0,44 (Grenze DIN EN 447 prüfen)</span>
+                    <span>0,45 (Bluten!)</span>
                   </div>
                 </div>
 
@@ -1332,7 +1333,7 @@ export default function SpannbetonKennwerte() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-semibold text-text-main">
                     <span>Einpresshilfe (DIN EN 934-4):</span>
-                    <span className="font-mono text-shiraz font-bold">{groutAdmixturePct.toFixed(1)} % v. Zement</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeZahl(groutAdmixturePct, 1)} % v. Zement</span>
                   </div>
                   <input
                     type="range"
@@ -1344,9 +1345,9 @@ export default function SpannbetonKennwerte() {
                     className="w-full accent-shiraz cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-slate-400">
-                    <span>0.2 % (Gering)</span>
-                    <span className="text-shiraz font-bold">1.0 % (Standard)</span>
-                    <span>2.0 % (Stark quellend)</span>
+                    <span>0,2 % (Gering)</span>
+                    <span className="text-shiraz font-bold">1,0 % (Standard)</span>
+                    <span>2,0 % (Stark quellend)</span>
                   </div>
                 </div>
 
@@ -1364,7 +1365,7 @@ export default function SpannbetonKennwerte() {
                     <option value="CEM I 42.5 N (Standard)">CEM I 42.5 N (Standard-Portlandzement)</option>
                     <option value="Werktrockenmörtel (Zugelassen)">Werkstrockenmörtel (werksgemischt nach EAD)</option>
                   </select>
-                  <p className="text-[10px] text-slate-500">Chloridgehalt strikt ≤ 0.10 M-%</p>
+                  <p className="text-[10px] text-slate-500">Chloridgehalt strikt ≤ 0,10 M-%</p>
                 </div>
               </div>
 
@@ -1383,7 +1384,7 @@ export default function SpannbetonKennwerte() {
                     </span>
                   </div>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold font-mono text-slate-900">{groutCalculations.flowTimeT0}</span>
+                    <span className="text-2xl font-bold font-mono text-slate-900">{formatDeWert(groutCalculations.flowTimeT0)}</span>
                     <span className="text-xs text-slate-500">s (t₀)</span>
                   </div>
                   <div className="text-[11px] text-slate-600 space-y-0.5 border-t border-slate-200 pt-1.5">
@@ -1393,7 +1394,7 @@ export default function SpannbetonKennwerte() {
                     </div>
                     <div className="flex justify-between">
                       <span>Nach 30 min (t₃₀):</span>
-                      <strong className="font-mono">{groutCalculations.flowTimeT30} s (max. 28 s)</strong>
+                      <strong className="font-mono">{formatDeWert(groutCalculations.flowTimeT30)} s (max. 28 s)</strong>
                     </div>
                   </div>
                 </div>
@@ -1414,14 +1415,14 @@ export default function SpannbetonKennwerte() {
                     <span className={`text-2xl font-bold font-mono ${
                       groutCalculations.bleedingValid ? 'text-slate-900' : 'text-rose-700'
                     }`}>
-                      {groutCalculations.bleeding3h}
+                      {formatDeWert(groutCalculations.bleeding3h)}
                     </span>
                     <span className="text-xs text-slate-500">% Vol.</span>
                   </div>
                   <div className="text-[11px] text-slate-600 space-y-0.5 border-t border-slate-200 pt-1.5">
                     <div className="flex justify-between">
                       <span>Grenzwert DIN EN 447:</span>
-                      <strong className="font-mono">≤ 0.30 %</strong>
+                      <strong className="font-mono">≤ 0,30 %</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Wiederaufnahme 24 h:</span>
@@ -1444,7 +1445,7 @@ export default function SpannbetonKennwerte() {
                   </div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl font-bold font-mono text-slate-900">
-                      {groutCalculations.expansion24h > 0 ? `+${groutCalculations.expansion24h}` : groutCalculations.expansion24h}
+                      {groutCalculations.expansion24h > 0 ? `+${formatDeWert(groutCalculations.expansion24h)}` : groutCalculations.expansion24h}
                     </span>
                     <span className="text-xs text-slate-500">%</span>
                   </div>
@@ -1469,17 +1470,17 @@ export default function SpannbetonKennwerte() {
                     </span>
                   </div>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold font-mono text-shiraz">{groutCalculations.fc28d}</span>
+                    <span className="text-2xl font-bold font-mono text-shiraz">{formatDeWert(groutCalculations.fc28d)}</span>
                     <span className="text-xs text-slate-500">MPa (28 d)</span>
                   </div>
                   <div className="text-[11px] text-slate-600 space-y-0.5 border-t border-slate-200 pt-1.5">
                     <div className="flex justify-between">
                       <span>Nach 7 Tagen (fc,7):</span>
-                      <strong className="font-mono">{groutCalculations.fc7d} MPa (≥ 27)</strong>
+                      <strong className="font-mono">{formatDeWert(groutCalculations.fc7d)} MPa (≥ 27)</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Alkalische Passivierung:</span>
-                      <strong className="font-mono text-emerald-700">pH 12.8 ≥ 12.5</strong>
+                      <strong className="font-mono text-emerald-700">pH 12.8 ≥ 12,5</strong>
                     </div>
                   </div>
                 </div>
@@ -1499,7 +1500,7 @@ export default function SpannbetonKennwerte() {
                   </p>
                 </div>
                 <span className="text-xs font-mono bg-slate-100 text-slate-700 px-2 py-0.5 rounded">
-                  Länge: {groutTendonLength} m | {groutStrandCount} Litzen 150 mm²
+                  Länge: {formatDeWert(groutTendonLength)} m | {groutStrandCount} Litzen 150 mm²
                 </span>
               </div>
 
@@ -1508,7 +1509,7 @@ export default function SpannbetonKennwerte() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-semibold text-text-main">
                     <span>Spanngliedlänge (L):</span>
-                    <span className="font-mono text-shiraz font-bold">{groutTendonLength} m</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(groutTendonLength)} m</span>
                   </div>
                   <input
                     type="range"
@@ -1547,7 +1548,7 @@ export default function SpannbetonKennwerte() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-semibold text-text-main">
                     <span>Hüllrohr-Innendurchmesser (Di):</span>
-                    <span className="font-mono text-shiraz font-bold">{groutDuctDia} mm</span>
+                    <span className="font-mono text-shiraz font-bold">{formatDeWert(groutDuctDia)} mm</span>
                   </div>
                   <select
                     value={groutDuctDia}
@@ -1567,25 +1568,25 @@ export default function SpannbetonKennwerte() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 bg-slate-50/70 rounded-xl border border-slate-200 text-center">
                 <div className="space-y-0.5">
                   <span className="text-[10px] uppercase font-bold text-slate-500 block">Netto-Mörtelvolumen</span>
-                  <span className="text-xl font-bold font-mono text-slate-800">{groutCalculations.netVoidVolumeLiter} Liter</span>
+                  <span className="text-xl font-bold font-mono text-slate-800">{formatDeWert(groutCalculations.netVoidVolumeLiter)} Liter</span>
                   <span className="text-[10px] text-slate-500">Freier Hohlquerschnitt – zzgl. 10–20 % für Entlüftung, Leitungen und Überlauf</span>
                 </div>
 
                 <div className="space-y-0.5">
                   <span className="text-[10px] uppercase font-bold text-slate-500 block">Zementbedarf</span>
-                  <span className="text-xl font-bold font-mono text-shiraz">{groutCalculations.totalCementKg} kg</span>
-                  <span className="text-[10px] text-slate-500">ca. {groutCalculations.cementBags25} Säcke à 25 kg</span>
+                  <span className="text-xl font-bold font-mono text-shiraz">{formatDeWert(groutCalculations.totalCementKg)} kg</span>
+                  <span className="text-[10px] text-slate-500">ca. {formatDeWert(groutCalculations.cementBags25)} Säcke à 25 kg</span>
                 </div>
 
                 <div className="space-y-0.5">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 block">Wasserbedarf (w/z = {groutWz})</span>
-                  <span className="text-xl font-bold font-mono text-blue-700">{groutCalculations.totalWaterLiter} Liter</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-500 block">Wasserbedarf (w/z = {formatDeWert(groutWz)})</span>
+                  <span className="text-xl font-bold font-mono text-blue-700">{formatDeWert(groutCalculations.totalWaterLiter)} Liter</span>
                   <span className="text-[10px] text-slate-500">Trinkwasserqualität</span>
                 </div>
 
                 <div className="space-y-0.5">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 block">Einpresshilfe ({groutAdmixturePct} %)</span>
-                  <span className="text-xl font-bold font-mono text-purple-700">{groutCalculations.totalAdmixtureKg} kg</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-500 block">Einpresshilfe ({formatDeWert(groutAdmixturePct)} %)</span>
+                  <span className="text-xl font-bold font-mono text-purple-700">{formatDeWert(groutCalculations.totalAdmixtureKg)} kg</span>
                   <span className="text-[10px] text-slate-500">Quell- &amp; Fließmittel</span>
                 </div>
               </div>
@@ -1648,8 +1649,8 @@ export default function SpannbetonKennwerte() {
                     </tr>
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold">Ungewollte Krümmung (Wobble k)</td>
-                      <td className="p-2.5 font-mono">0.005 – 0.010 rad/m</td>
-                      <td className="p-2.5 font-mono text-shiraz">0.004 – 0.007 rad/m</td>
+                      <td className="p-2.5 font-mono">0,005 – 0,010 rad/m</td>
+                      <td className="p-2.5 font-mono text-shiraz">0,004 – 0,007 rad/m</td>
                       <td className="p-2.5 text-[11px]">Steifere Geometrie verringert Wellenbildung beim Betonieren.</td>
                     </tr>
                     <tr className="hover:bg-off-white">
@@ -1762,8 +1763,8 @@ export default function SpannbetonKennwerte() {
                   <strong>Typische Kriechzahlen nach DIN EN 1992-1-1:</strong>
                 </p>
                 <ul className="list-disc pl-5 space-y-1 text-xs text-text-main/80">
-                  <li><strong>Trockener Innenraum (RH 50 %):</strong> <InlineMath math="\varphi_\infty \approx 2.2 - 3.5" /></li>
-                  <li><strong>Feuchtes Außenklima (RH 80 %):</strong> <InlineMath math="\varphi_\infty \approx 1.4 - 2.0" /></li>
+                  <li><strong>Trockener Innenraum (RH 50 %):</strong> <InlineMath math="\varphi_\infty \approx 2{,}2 - 3{,}5" /></li>
+                  <li><strong>Feuchtes Außenklima (RH 80 %):</strong> <InlineMath math="\varphi_\infty \approx 1{,}4 - 2{,}0" /></li>
                   <li><strong>Frühes Vorspannen (t₀ = 3 d):</strong> Kriechzahl um 30–50 % höher als bei t₀ = 28 d!</li>
                 </ul>
               </div>
@@ -1789,7 +1790,7 @@ export default function SpannbetonKennwerte() {
                   </div>
                   <div className="p-2.5 rounded-lg bg-white border border-home-grau/20">
                     <strong className="text-text-main block mb-0.5">3. Nichtlineares Kriechen bei Überlastung:</strong>
-                    Liegt die Betondruckspannung über <InlineMath math="0.45 \cdot f_{ck}(t_0)" />, entstehen Mikrorisse im Gefüge. Es tritt unkontrolliertes, beschleunigtes Kriechen auf (Gefahr des Kriechbruchs!).
+                    Liegt die Betondruckspannung über <InlineMath math="0{,}45 \cdot f_{ck}(t_0)" />, entstehen Mikrorisse im Gefüge. Es tritt unkontrolliertes, beschleunigtes Kriechen auf (Gefahr des Kriechbruchs!).
                   </div>
                 </div>
               </div>
@@ -2029,10 +2030,10 @@ export default function SpannbetonKennwerte() {
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] space-y-1">
                   <div>Endwert nach EC2:</div>
                   <div className="text-shiraz font-bold">
-                    <InlineMath math="\varepsilon_{ca}(\infty) = 2.5 \cdot (f_{ck} - 10) \cdot 10^{-6}" />
+                    <InlineMath math="\varepsilon_{ca}(\infty) = 2{,}5 \cdot (f_{ck} - 10) \cdot 10^{-6}" />
                   </div>
                   <div className="text-[10px] text-slate-500 pt-1">
-                    C50/60: <InlineMath math="\varepsilon_{ca} \approx -0.10\text{ mm/m}" /> | C90/105: <InlineMath math="\varepsilon_{ca} \approx -0.20\text{ mm/m}" />
+                    C50/60: <InlineMath math="\varepsilon_{ca} \approx -0{,}10\text{ mm/m}" /> | C90/105: <InlineMath math="\varepsilon_{ca} \approx -0{,}20\text{ mm/m}" />
                   </div>
                 </div>
                 <p className="text-xs text-slate-600">
@@ -2078,12 +2079,12 @@ export default function SpannbetonKennwerte() {
                 Auswirkung auf den Spannstahl im Tragwerk (Zahlenbeispiel):
               </div>
               <p>
-                Beträgt das Gesamtschwindmaß <InlineMath math="\varepsilon_{cs} = -0.35\text{ mm/m} = -0.00035" /> und der 
+                Beträgt das Gesamtschwindmaß <InlineMath math="\varepsilon_{cs} = -0{,}35\text{ mm/m} = -0{,}00035" /> und der 
                 Spannstahl-E-Modul <InlineMath math="E_p = 195.000\text{ N/mm}^2" />, so verkürzt sich das Bauteil lastfrei. 
                 Da das Spannglied starr im Bauteil verankert ist, wird der Stahl um genau dieses Maß zusammengestaucht:
               </p>
               <div className="font-mono bg-white p-2.5 rounded border border-amber-200 font-bold text-center">
-                <InlineMath math="\Delta\sigma_{p,s} = \varepsilon_{cs} \cdot E_p = 0.00035 \cdot 195.000\text{ N/mm}^2 = 68.25\text{ N/mm}^2" />
+                <InlineMath math="\Delta\sigma_{p,s} = \varepsilon_{cs} \cdot E_p = 0{,}00035 \cdot 195.000\text{ N/mm}^2 = 68{,}25\text{ N/mm}^2" />
               </div>
               <p>
                 Bei einer typischen Anfangsspannung von <InlineMath math="\sigma_{p0} = 1400\text{ N/mm}^2" /> entspricht allein der 
@@ -2159,7 +2160,7 @@ export default function SpannbetonKennwerte() {
                   <BlockMath math="\varepsilon_p = \text{const.} \quad \Longrightarrow \quad \sigma_p(t) < \sigma_{p0}" />
                 </div>
                 <p>
-                  <strong>Mikrostruktureller Vorgang im Kristallgitter:</strong> An der Presse höchstens <InlineMath math="\sigma_{p,max} = \min(0{,}80 f_{pk};\, 0{,}90 f_{p0,1k}) = 1440\text{ N/mm}^2" />, nach dem Verankern <InlineMath math="\sigma_{pm0} \le 1360\text{ N/mm}^2" /> (Y1860). Unter 
+                  <strong>Mikrostruktureller Vorgang im Kristallgitter:</strong> An der Presse höchstens <InlineMath math="\sigma_{p,max} = \min(0{,}80 f_{pk};\, 0{,}90 f_{p0{,}1k}) = 1440\text{ N/mm}^2" />, nach dem Verankern <InlineMath math="\sigma_{pm0} \le 1360\text{ N/mm}^2" /> (Y1860). Unter 
                   dieser immensen atomaren Spannung wandern Versetzungen (Gitterbaufehler) durch thermisch aktiviertes Versetzungsgleiten. Ein winziger Teil der elastischen Gitterdehnung wandelt sich mikroskopisch in bleibende plastische 
                   Verformung um <InlineMath math="\rightarrow" /> die makroskopische Zugspannung sinkt ab!
                 </p>
@@ -2175,7 +2176,7 @@ export default function SpannbetonKennwerte() {
                   <div className="p-3 bg-white rounded-lg border border-slate-200">
                     <div className="flex justify-between font-bold text-slate-900 mb-1">
                       <span>Klasse 1: Normale Relaxation</span>
-                      <span className="text-red-700 font-mono">ρ₁₀₀₀ ≈ 8.0 %</span>
+                      <span className="text-red-700 font-mono">ρ₁₀₀₀ ≈ 8,0 %</span>
                     </div>
                     <p className="text-[11px] text-slate-600">Kaltgezogene Drähte und Litzen ohne spezielle Thermobehandlung. Historischer Standard, heute kaum noch verwendet.</p>
                   </div>
@@ -2183,7 +2184,7 @@ export default function SpannbetonKennwerte() {
                   <div className="p-3 bg-purple-50/70 rounded-lg border border-purple-200">
                     <div className="flex justify-between font-bold text-purple-950 mb-1">
                       <span>Klasse 2: Sehr niedrige Relaxation (Low-Relaxation)</span>
-                      <span className="text-purple-800 font-mono font-bold">ρ₁₀₀₀ ≈ 2.5 %</span>
+                      <span className="text-purple-800 font-mono font-bold">ρ₁₀₀₀ ≈ 2,5 %</span>
                     </div>
                     <p className="text-[11px] text-purple-900">
                       <strong>Heutiger Standard:</strong> Die Litzen werden nach dem Ziehen unter ständiger Zugspannung kurz auf ca. 350 °C erwärmt („thermisches Stabilisieren“). 
@@ -2194,7 +2195,7 @@ export default function SpannbetonKennwerte() {
                   <div className="p-3 bg-white rounded-lg border border-slate-200">
                     <div className="flex justify-between font-bold text-slate-900 mb-1">
                       <span>Klasse 3: Warmgewalzte Spannstähle</span>
-                      <span className="text-amber-800 font-mono">ρ₁₀₀₀ ≈ 4.0 %</span>
+                      <span className="text-amber-800 font-mono">ρ₁₀₀₀ ≈ 4,0 %</span>
                     </div>
                     <p className="text-[11px] text-slate-600">Spannstäbe mit warm aufgewalztem Gewinde (z. B. Dywidag-Gewindestangen SAS).</p>
                   </div>
@@ -2209,12 +2210,12 @@ export default function SpannbetonKennwerte() {
                 <span className="font-mono text-[11px] text-purple-700">t = Zeit in Stunden</span>
               </div>
               <div className="bg-white p-3 rounded-lg border border-purple-200 text-center font-mono text-xs overflow-x-auto">
-                <BlockMath math="\frac{\Delta\sigma_{pr}}{\sigma_{pi}} = 0.66 \cdot \rho_{1000} \cdot e^{9.1 \mu} \cdot \left(\frac{t}{1000}\right)^{0.75 \cdot (1 - \mu)} \cdot 10^{-5}" />
+                <BlockMath math="\frac{\Delta\sigma_{pr}}{\sigma_{pi}} = 0{,}66 \cdot \rho_{1000} \cdot e^{9{,}1 \mu} \cdot \left(\frac{t}{1000}\right)^{0{,}75 \cdot (1 - \mu)} \cdot 10^{-5}" />
               </div>
               <div className="text-[11px] text-slate-600 space-y-1">
                 <p>wobei <InlineMath math="\mu = \sigma_{pi} / f_{pk}" /> das Ausnutzungsverhältnis der Vorspannung darstellt. Für den Endwert setzt EC2 3.3.2(8) <InlineMath math="t = 500\,000\text{ h} \approx 57\text{ Jahre}" /> in Gl. (3.28)–(3.30) ein; der Faktor gegenüber dem 1000-h-Wert hängt von μ ab (μ = 0,70 → ≈ 4,1; μ = 0,75 → ≈ 3,2; μ = 0,80 → ≈ 2,5). In Deutschland gelten die Relaxationswerte der abZ des Spannstahls:</p>
                 <div className="font-bold text-purple-950 font-mono text-center">
-                  <InlineMath math="\Delta\sigma_{pr,\infty} \approx 3.0 \cdot \Delta\sigma_{pr,1000}" />
+                  <InlineMath math="\Delta\sigma_{pr,\infty} \approx 3{,}0 \cdot \Delta\sigma_{pr,1000}" />
                 </div>
               </div>
             </div>
@@ -2391,7 +2392,7 @@ export default function SpannbetonKennwerte() {
                   </div>
                   <div className="text-slate-500 text-[10px] pt-1 border-t border-slate-100">Zugehöriger E-Modul:</div>
                   <div className="text-blue-700 font-bold">
-                    <InlineMath math="E_{cm}(t) = E_{cm} \cdot \left(\frac{f_{cm}(t)}{f_{cm}}\right)^{0.3}" />
+                    <InlineMath math="E_{cm}(t) = E_{cm} \cdot \left(\frac{f_{cm}(t)}{f_{cm}}\right)^{0{,}3}" />
                   </div>
                 </div>
                 <div className="p-2.5 bg-amber-50 rounded border border-amber-200 text-[11px] text-amber-900">
@@ -2437,7 +2438,7 @@ export default function SpannbetonKennwerte() {
                 <span className="text-shiraz font-bold bg-shiraz/5 border border-shiraz/20 px-2 py-0.5 rounded">DIN EN 1992-1-1 Gl. (5.46)</span>
               </div>
               <div className="py-4 px-4 bg-white rounded-xl border border-home-grau/20 text-center overflow-x-auto text-text-main">
-                <BlockMath math="\Delta\sigma_{p,c+s+r} = \frac{\varepsilon_{cs} \cdot E_p + 0{,}8 \cdot \Delta\sigma_{pr} + \frac{E_p}{E_{cm}} \cdot \varphi(t, t_0) \cdot \sigma_{c,QP}}{1 + \frac{E_p}{E_{cm}} \cdot \frac{A_p}{A_c} \cdot \left(1 + \frac{A_c \cdot e_p^2}{I_c}\right) \cdot \left(1 + 0.8 \cdot \varphi(t, t_0)\right)}" />
+                <BlockMath math="\Delta\sigma_{p,c+s+r} = \frac{\varepsilon_{cs} \cdot E_p + 0{,}8 \cdot \Delta\sigma_{pr} + \frac{E_p}{E_{cm}} \cdot \varphi(t, t_0) \cdot \sigma_{c,QP}}{1 + \frac{E_p}{E_{cm}} \cdot \frac{A_p}{A_c} \cdot \left(1 + \frac{A_c \cdot e_p^2}{I_c}\right) \cdot \left(1 + 0{,}8 \cdot \varphi(t, t_0)\right)}" />
               </div>
             </div>
 
@@ -2458,7 +2459,7 @@ export default function SpannbetonKennwerte() {
                     Spannungsabnahme durch das Dauerlast-Kriechen am Spanngliedschwerpunkt (oft der größte Einzelposten, ca. 80–180 N/mm²).
                   </div>
                   <div className="p-2 bg-white rounded border border-slate-200">
-                    <strong className="text-purple-700 block">3. Gedämpfte Relaxation: <InlineMath math="0.8 \cdot \Delta\sigma_{pr}" /></strong>
+                    <strong className="text-purple-700 block">3. Gedämpfte Relaxation: <InlineMath math="0{,}8 \cdot \Delta\sigma_{pr}" /></strong>
                     Faktor 0.8 berücksichtigt, dass die tatsächliche Relaxation geringer ausfällt, weil der Stahl durch Betonverkürzung entlastet wird!
                   </div>
                 </div>
@@ -2470,13 +2471,13 @@ export default function SpannbetonKennwerte() {
                   Der Nenner: Der dämpfende Rückkopplungsfaktor
                 </h5>
                 <p className="text-xs text-slate-700 leading-relaxed">
-                  Der Nenner ist <strong>stets größer als 1.0</strong> (typischerweise zwischen <strong>1.15 und 1.35</strong>). 
+                  Der Nenner ist <strong>stets größer als 1.0</strong> (typischerweise zwischen <strong>1,15 und 1.35</strong>). 
                   Er drückt mathematisch aus, dass:
                 </p>
                 <ul className="list-disc pl-5 text-xs text-slate-600 space-y-1.5">
                   <li>der Querschnitt durch die Bewehrung <InlineMath math="A_p / A_c" /> versteift wird,</li>
                   <li>die Exzentrizität <InlineMath math="e_p^2 / I_c" /> elastische Schnittkraftumlagerungen erzeugt,</li>
-                  <li>das Kriechen <InlineMath math="(1 + 0.8 \cdot \varphi)" /> die Spannungsabnahme dämpft.</li>
+                  <li>das Kriechen <InlineMath math="(1 + 0{,}8 \cdot \varphi)" /> die Spannungsabnahme dämpft.</li>
                 </ul>
                 <div className="p-2 bg-emerald-50 rounded border border-emerald-200 text-[11px] text-emerald-900 font-medium">
                   Ohne diesen Nenner würde man den zeitabhängigen Spannkraftverlust um 15–35 % überschätzen!
@@ -2715,11 +2716,11 @@ export default function SpannbetonKennwerte() {
                   3. Unmittelbare Verluste (t = t₀)
                 </span>
                 <div className="space-y-1 text-text-main/80 font-mono">
-                  <div className="flex justify-between"><span>Nennvorspannung σ_p0:</span><span className="font-bold">{exCalc.sigma_p0} N/mm²</span></div>
-                  <div className="flex justify-between"><span>Reibung + Schlupf + El.:</span><span className="font-bold text-amber-700">-{exCalc.immediateLosses} N/mm²</span></div>
-                  <div className="flex justify-between"><span>Initialspannung σ_pm0:</span><span className="font-bold text-slate-900">{exCalc.sigma_pm0} N/mm²</span></div>
-                  <div className="flex justify-between"><span>Initialkraft Pm0:</span><span className="font-bold text-slate-900">{exCalc.Pm0} kN</span></div>
-                  <div className="flex justify-between"><span>Ausnutzung σ_pm0/fpk:</span><span className="font-bold">{(exCalc.sigma_pm0 / 1860).toFixed(2)}</span></div>
+                  <div className="flex justify-between"><span>Nennvorspannung σ_p0:</span><span className="font-bold">{formatDeWert(exCalc.sigma_p0)} N/mm²</span></div>
+                  <div className="flex justify-between"><span>Reibung + Schlupf + El.:</span><span className="font-bold text-amber-700">-{formatDeWert(exCalc.immediateLosses)} N/mm²</span></div>
+                  <div className="flex justify-between"><span>Initialspannung σ_pm0:</span><span className="font-bold text-slate-900">{formatDeWert(exCalc.sigma_pm0)} N/mm²</span></div>
+                  <div className="flex justify-between"><span>Initialkraft Pm0:</span><span className="font-bold text-slate-900">{formatDeWert(exCalc.Pm0)} kN</span></div>
+                  <div className="flex justify-between"><span>Ausnutzung σ_pm0/fpk:</span><span className="font-bold">{formatDeZahl((exCalc.sigma_pm0 / 1860), 2)}</span></div>
                 </div>
               </div>
             </div>
@@ -2733,14 +2734,14 @@ export default function SpannbetonKennwerte() {
               <p className="text-xs text-text-main/80 leading-relaxed">
                 Zur Ermittlung des Kriechverlusts wird die Betonlängsspannung <InlineMath math="\sigma_{c,QP}" /> am Spanngliedschwerpunkt (EC2 5.10.6; hier vereinfachend nur Eigengewicht, ohne g₂ + ψ₂·q) 
                 unter der Kombination aus Initialvorspannkraft <InlineMath math="P_{m0}" /> und dem Eigengewichtsmoment 
-                <InlineMath math="M_g = \frac{g \cdot L^2}{8} = \frac{12,5 \cdot 24^2}{8} = 900\text{ kNm}" /> in Feldmitte ermittelt:
+                <InlineMath math="M_g = \frac{g \cdot L^2}{8} = \frac{12{,}5 \cdot 24^2}{8} = 900\text{ kNm}" /> in Feldmitte ermittelt:
               </p>
               <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20 text-center font-mono text-xs overflow-x-auto">
-                <BlockMath math={`\\sigma_{c,QP} = \\frac{P_{m0}}{A_c} + \\frac{P_{m0} \\cdot e_p^2}{I_c} - \\frac{M_g \\cdot e_p}{I_c} = \\frac{${(exCalc.Pm0 * 1000).toLocaleString()}}{500.000} + \\frac{${(exCalc.Pm0 * 1000).toLocaleString()} \\cdot 450^2}{8,5 \\cdot 10^{10}} - \\frac{900 \\cdot 10^6 \\cdot 450}{8,5 \\cdot 10^{10}} = ${exCalc.sig_c_p0}\\text{ N/mm²}`} />
+                <BlockMath math={`\\sigma_{c,QP} = \\frac{P_{m0}}{A_c} + \\frac{P_{m0} \\cdot e_p^2}{I_c} - \\frac{M_g \\cdot e_p}{I_c} = \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))}}{500.000} + \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))} \\cdot 450^2}{8{,}5 \\cdot 10^{10}} - \\frac{900 \\cdot 10^6 \\cdot 450}{8{,}5 \\cdot 10^{10}} = ${exCalc.sig_c_p0}\\text{ N/mm²}`} />
               </div>
               <div className="grid grid-cols-3 gap-2 text-[11px] text-center text-slate-600 pt-1">
-                <div className="p-1.5 bg-slate-50 rounded border">Normalkraftanteil: +{((exCalc.Pm0 * 1000) / 500000).toFixed(2)} N/mm²</div>
-                <div className="p-1.5 bg-slate-50 rounded border">Vorspann-Moment: +{((exCalc.Pm0 * 1000 * 450 * 450) / 8.5e10).toFixed(2)} N/mm²</div>
+                <div className="p-1.5 bg-slate-50 rounded border">Normalkraftanteil: +{formatDeZahl(((exCalc.Pm0 * 1000) / 500000), 2)} N/mm²</div>
+                <div className="p-1.5 bg-slate-50 rounded border">Vorspann-Moment: +{formatDeZahl(((exCalc.Pm0 * 1000 * 450 * 450) / 8.5e10), 2)} N/mm²</div>
                 <div className="p-1.5 bg-slate-50 rounded border">Eigengewichtsentlastung: -4,76 N/mm²</div>
               </div>
             </div>
@@ -2757,14 +2758,14 @@ export default function SpannbetonKennwerte() {
                 <div className="p-4 bg-amber-50/60 rounded-xl border border-amber-200/80 space-y-2 text-xs">
                   <div className="flex justify-between items-center">
                     <strong className="text-amber-900 font-bold uppercase tracking-wider">1. Kriechzahl φ(∞, t₀)</strong>
-                    <span className="font-mono font-bold text-amber-950 text-base">{exCalc.phi}</span>
+                    <span className="font-mono font-bold text-amber-950 text-base">{formatDeWert(exCalc.phi)}</span>
                   </div>
                   <p className="text-amber-950/80 leading-relaxed text-[11px]">
                     Berechnet nach DIN EN 1992-1-1 Anhang B mit wirksamer Bauteildicke <InlineMath math="h_0 = \frac{2 A_c}{u} = 278\text{ mm}" />, 
-                    Spannalter <InlineMath math="t_0 = " /> {exSpanT0} d (Zement R) und <InlineMath math="RH = " /> {exSpanRH} %.
+                    Spannalter <InlineMath math="t_0 = " /> {formatDeWert(exSpanT0)} d (Zement R) und <InlineMath math="RH = " /> {formatDeWert(exSpanRH)} %.
                   </p>
                   <div className="p-2 bg-white rounded border border-amber-200 text-center font-mono font-bold text-amber-900">
-                    φ(∞, {exSpanT0}) = {exCalc.phi}
+                    φ(∞, {formatDeWert(exSpanT0)}) = {formatDeWert(exCalc.phi)}
                   </div>
                 </div>
 
@@ -2772,14 +2773,14 @@ export default function SpannbetonKennwerte() {
                 <div className="p-4 bg-blue-50/60 rounded-xl border border-blue-200/80 space-y-2 text-xs">
                   <div className="flex justify-between items-center">
                     <strong className="text-blue-900 font-bold uppercase tracking-wider">2. Endschwindmaß ε_cs(∞)</strong>
-                    <span className="font-mono font-bold text-blue-950 text-base">{(exCalc.eps_cs * 1000).toFixed(2)} mm/m</span>
+                    <span className="font-mono font-bold text-blue-950 text-base">{formatDeZahl((exCalc.eps_cs * 1000), 2)} mm/m</span>
                   </div>
                   <p className="text-blue-950/80 leading-relaxed text-[11px]">
-                    Summe aus autogenem Schwinden (<InlineMath math="\varepsilon_{ca} = " /> {exCalc.eps_ca} mm/m) und 
-                    Trocknungsschwinden (<InlineMath math="\varepsilon_{cd} = " /> {exCalc.eps_cd} mm/m) nach Gl. (3.8).
+                    Summe aus autogenem Schwinden (<InlineMath math="\varepsilon_{ca} = " /> {formatDeWert(exCalc.eps_ca)} mm/m) und 
+                    Trocknungsschwinden (<InlineMath math="\varepsilon_{cd} = " /> {formatDeWert(exCalc.eps_cd)} mm/m) nach Gl. (3.8).
                   </p>
                   <div className="p-2 bg-white rounded border border-blue-200 text-center font-mono font-bold text-blue-900">
-                    ε_cs(∞) = {(exCalc.eps_cs * 1000).toFixed(3)} · 10⁻³
+                    ε_cs(∞) = {formatDeZahl((exCalc.eps_cs * 1000), 3)} · 10⁻³
                   </div>
                 </div>
 
@@ -2787,14 +2788,14 @@ export default function SpannbetonKennwerte() {
                 <div className="p-4 bg-purple-50/60 rounded-xl border border-purple-200/80 space-y-2 text-xs">
                   <div className="flex justify-between items-center">
                     <strong className="text-purple-900 font-bold uppercase tracking-wider">3. Stahlrelaxation Δσ_pr</strong>
-                    <span className="font-mono font-bold text-purple-950 text-base">{exCalc.delta_sig_pr} N/mm²</span>
+                    <span className="font-mono font-bold text-purple-950 text-base">{formatDeWert(exCalc.delta_sig_pr)} N/mm²</span>
                   </div>
                   <p className="text-purple-950/80 leading-relaxed text-[11px]">
-                    1000-Stunden-Referenzrelaxation nach DIN EN 1992-1-1 Gl. (3.29) für Klasse 2 (<InlineMath math="\rho_{1000} \le 2,5\%" />) 
-                    bei Spannungsgrad <InlineMath math="\mu = " /> {(exCalc.sigma_pm0 / 1860).toFixed(2)}.
+                    1000-Stunden-Referenzrelaxation nach DIN EN 1992-1-1 Gl. (3.29) für Klasse 2 (<InlineMath math="\rho_{1000} \le 2{,}5\%" />) 
+                    bei Spannungsgrad <InlineMath math="\mu = " /> {formatDeZahl((exCalc.sigma_pm0 / 1860), 2)}.
                   </p>
                   <div className="p-2 bg-white rounded border border-purple-200 text-center font-mono font-bold text-purple-900">
-                    Δσ_pr = {exCalc.delta_sig_pr} N/mm²
+                    Δσ_pr = {formatDeWert(exCalc.delta_sig_pr)} N/mm²
                   </div>
                 </div>
               </div>
@@ -2812,7 +2813,7 @@ export default function SpannbetonKennwerte() {
 
               {/* Formelbox mit weißem Hintergrund */}
               <div className="p-4 bg-white rounded-xl border border-home-grau/30 text-center overflow-x-auto">
-                <BlockMath math="\Delta\sigma_{p,c+s+r} = \frac{\varepsilon_{cs} \cdot E_p + 0{,}8 \cdot \Delta\sigma_{pr} + \frac{E_p}{E_{cm}} \cdot \varphi(t, t_0) \cdot \sigma_{c,QP}}{1 + \frac{E_p}{E_{cm}} \cdot \frac{A_p}{A_c} \cdot \left(1 + \frac{A_c \cdot e_p^2}{I_c}\right) \cdot \left(1 + 0.8 \cdot \varphi(t, t_0)\right)}" />
+                <BlockMath math="\Delta\sigma_{p,c+s+r} = \frac{\varepsilon_{cs} \cdot E_p + 0{,}8 \cdot \Delta\sigma_{pr} + \frac{E_p}{E_{cm}} \cdot \varphi(t, t_0) \cdot \sigma_{c,QP}}{1 + \frac{E_p}{E_{cm}} \cdot \frac{A_p}{A_c} \cdot \left(1 + \frac{A_c \cdot e_p^2}{I_c}\right) \cdot \left(1 + 0{,}8 \cdot \varphi(t, t_0)\right)}" />
               </div>
 
               {/* Aufschlüsselung Zähler & Nenner */}
@@ -2825,19 +2826,19 @@ export default function SpannbetonKennwerte() {
                   <div className="space-y-1.5 font-mono text-[11px]">
                     <div className="flex justify-between p-1.5 bg-white rounded border border-slate-200">
                       <span>1. Schwindanteil (ε_cs · Ep):</span>
-                      <span className="font-bold text-blue-700">+{exCalc.term_schwinden} N/mm²</span>
+                      <span className="font-bold text-blue-700">+{formatDeWert(exCalc.term_schwinden)} N/mm²</span>
                     </div>
                     <div className="flex justify-between p-1.5 bg-white rounded border border-slate-200">
                       <span>2. Kriechanteil (φ · α_p · σ_cp0):</span>
-                      <span className="font-bold text-amber-700">+{exCalc.term_kriechen} N/mm²</span>
+                      <span className="font-bold text-amber-700">+{formatDeWert(exCalc.term_kriechen)} N/mm²</span>
                     </div>
                     <div className="flex justify-between p-1.5 bg-white rounded border border-slate-200">
-                      <span>3. Gedämpfte Relaxation (0.8 · Δσ_pr):</span>
-                      <span className="font-bold text-purple-700">+{exCalc.term_relaxation} N/mm²</span>
+                      <span>3. Gedämpfte Relaxation (0,8 · Δσ_pr):</span>
+                      <span className="font-bold text-purple-700">+{formatDeWert(exCalc.term_relaxation)} N/mm²</span>
                     </div>
                     <div className="flex justify-between p-2 bg-slate-100 rounded border border-slate-300 font-bold text-xs">
                       <span>ZÄHLER-SUMME:</span>
-                      <span className="text-slate-900">{exCalc.zaehler} N/mm²</span>
+                      <span className="text-slate-900">{formatDeWert(exCalc.zaehler)} N/mm²</span>
                     </div>
                   </div>
                 </div>
@@ -2850,19 +2851,19 @@ export default function SpannbetonKennwerte() {
                   <div className="space-y-1.5 font-mono text-[11px]">
                     <div className="flex justify-between p-1.5 bg-white rounded border border-slate-200">
                       <span>Modulverhältnis α_p = Ep/Ecm:</span>
-                      <span className="font-bold">{exConc.alpha_p.toFixed(3)}</span>
+                      <span className="font-bold">{formatDeZahl(exConc.alpha_p, 3)}</span>
                     </div>
                     <div className="flex justify-between p-1.5 bg-white rounded border border-slate-200">
                       <span>Geometriefaktor [1 + (Ac·ep²)/Ic]:</span>
-                      <span className="font-bold">{exCalc.k_geom}</span>
+                      <span className="font-bold">{formatDeWert(exCalc.k_geom)}</span>
                     </div>
                     <div className="flex justify-between p-1.5 bg-white rounded border border-slate-200">
-                      <span>Kriechdämpfung [1 + 0.8 · φ]:</span>
-                      <span className="font-bold">{(1 + 0.8 * exCalc.phi).toFixed(3)}</span>
+                      <span>Kriechdämpfung [1 + 0,8 · φ]:</span>
+                      <span className="font-bold">{formatDeZahl((1 + 0.8 * exCalc.phi), 3)}</span>
                     </div>
                     <div className="flex justify-between p-2 bg-slate-100 rounded border border-slate-300 font-bold text-xs">
                       <span>NENNER-WERT:</span>
-                      <span className="text-slate-900">{exCalc.nenner}</span>
+                      <span className="text-slate-900">{formatDeWert(exCalc.nenner)}</span>
                     </div>
                   </div>
                 </div>
@@ -2874,11 +2875,11 @@ export default function SpannbetonKennwerte() {
                   Ergebnis des gekoppelten Gesamtverlusts:
                 </span>
                 <div className="text-2xl font-black font-mono text-shiraz">
-                  Δσ_p,c+s+r = {exCalc.zaehler} / {exCalc.nenner} = {exCalc.delta_sig_csr} N/mm²
+                  Δσ_p,c+s+r = {formatDeWert(exCalc.zaehler)} / {formatDeWert(exCalc.nenner)} = {formatDeWert(exCalc.delta_sig_csr)} N/mm²
                 </div>
                 <p className="text-[11px] text-text-main/70">
-                  Durch die Kopplung mit dem Nenner ({exCalc.nenner}) fallen die tatsächlichen Gesamtverluste um 
-                  <strong> {((1 - 1 / exCalc.nenner) * 100).toFixed(0)} % geringer</strong> aus als bei einer naiven linearen Addition!
+                  Durch die Kopplung mit dem Nenner ({formatDeWert(exCalc.nenner)}) fallen die tatsächlichen Gesamtverluste um 
+                  <strong> {formatDeZahl(((1 - 1 / exCalc.nenner) * 100), 0)} % geringer</strong> aus als bei einer naiven linearen Addition!
                 </p>
               </div>
             </div>
@@ -2893,66 +2894,66 @@ export default function SpannbetonKennwerte() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                   <span className="text-[10px] uppercase font-bold text-slate-500 block">Nennkraft P₀ (Presse)</span>
-                  <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{exP0} kN</span>
+                  <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{formatDeWert(exP0)} kN</span>
                   <span className="text-[10px] text-slate-500">100 % (Ausgangswert)</span>
                 </div>
 
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                   <span className="text-[10px] uppercase font-bold text-slate-500 block">Initialkraft Pm0 (t₀)</span>
-                  <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{exCalc.Pm0} kN</span>
+                  <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{formatDeWert(exCalc.Pm0)} kN</span>
                   <span className="text-[10px] text-slate-500">nach Reibung &amp; Schlupf</span>
                 </div>
 
                 <div className="p-3 bg-shiraz/10 rounded-xl border border-shiraz/30">
                   <span className="text-[10px] uppercase font-bold text-shiraz block">Endvorspannkraft Pm,∞</span>
-                  <span className="text-2xl font-black text-shiraz font-mono mt-0.5 block">{exCalc.Pminf} kN</span>
+                  <span className="text-2xl font-black text-shiraz font-mono mt-0.5 block">{formatDeWert(exCalc.Pminf)} kN</span>
                   <span className="text-[10px] text-shiraz/80 font-bold">Verbleibend bei t=∞</span>
                 </div>
 
                 <div className="p-3 bg-rose-50 rounded-xl border border-rose-200">
                   <span className="text-[10px] uppercase font-bold text-rose-800 block">Gesamtverlust ΔP_ges</span>
-                  <span className="text-xl font-black text-rose-900 font-mono mt-0.5 block">-{exCalc.delta_P_total} kN</span>
-                  <span className="text-[10px] text-rose-700 font-bold">({exCalc.loss_pct} % von P₀)</span>
+                  <span className="text-xl font-black text-rose-900 font-mono mt-0.5 block">-{formatDeWert(exCalc.delta_P_total)} kN</span>
+                  <span className="text-[10px] text-rose-700 font-bold">({formatDeWert(exCalc.loss_pct)} % von P₀)</span>
                 </div>
               </div>
 
               {/* Verlust-Balkendiagramm visuell */}
               <div className="space-y-1.5 text-xs pt-1">
-                <span className="font-bold text-slate-700 block">Aufschlüsselung der Gesamtverluste ({exCalc.loss_pct} %):</span>
+                <span className="font-bold text-slate-700 block">Aufschlüsselung der Gesamtverluste ({formatDeWert(exCalc.loss_pct)} %):</span>
                 <div className="w-full h-7 bg-slate-100 rounded-xl overflow-hidden flex font-mono text-[10px] font-bold text-white text-center leading-7 shadow-xs">
                   <div 
                     className="bg-amber-600 transition-all duration-300" 
                     style={{ width: `${((exCalc.immediateLosses / exCalc.sigma_p0) * 100).toFixed(1)}%` }}
-                    title={`Unmittelbar (Reibung/Schlupf/Elast.): -${((exCalc.immediateLosses / exCalc.sigma_p0) * 100).toFixed(1)} %`}
+                    title={`Unmittelbar (Reibung/Schlupf/Elast.): -${formatDeZahl(((exCalc.immediateLosses / exCalc.sigma_p0) * 100), 1)} %`}
                   >
-                    Unmittelbar ({((exCalc.immediateLosses / exCalc.sigma_p0) * 100).toFixed(0)}%)
+                    Unmittelbar ({formatDeZahl(((exCalc.immediateLosses / exCalc.sigma_p0) * 100), 0)}%)
                   </div>
                   <div 
                     className="bg-amber-500 transition-all duration-300" 
                     style={{ width: `${((exCalc.term_kriechen / exCalc.nenner / exCalc.sigma_p0) * 100).toFixed(1)}%` }}
-                    title={`Kriechen: -${((exCalc.term_kriechen / exCalc.nenner / exCalc.sigma_p0) * 100).toFixed(1)} %`}
+                    title={`Kriechen: -${formatDeZahl(((exCalc.term_kriechen / exCalc.nenner / exCalc.sigma_p0) * 100), 1)} %`}
                   >
                     Kriechen
                   </div>
                   <div 
                     className="bg-blue-600 transition-all duration-300" 
                     style={{ width: `${((exCalc.term_schwinden / exCalc.nenner / exCalc.sigma_p0) * 100).toFixed(1)}%` }}
-                    title={`Schwinden: -${((exCalc.term_schwinden / exCalc.nenner / exCalc.sigma_p0) * 100).toFixed(1)} %`}
+                    title={`Schwinden: -${formatDeZahl(((exCalc.term_schwinden / exCalc.nenner / exCalc.sigma_p0) * 100), 1)} %`}
                   >
                     Schwinden
                   </div>
                   <div 
                     className="bg-purple-600 transition-all duration-300" 
                     style={{ width: `${((exCalc.term_relaxation / exCalc.nenner / exCalc.sigma_p0) * 100).toFixed(1)}%` }}
-                    title={`Relaxation: -${((exCalc.term_relaxation / exCalc.nenner / exCalc.sigma_p0) * 100).toFixed(1)} %`}
+                    title={`Relaxation: -${formatDeZahl(((exCalc.term_relaxation / exCalc.nenner / exCalc.sigma_p0) * 100), 1)} %`}
                   >
                     Rel.
                   </div>
                   <div 
                     className="bg-emerald-600 transition-all duration-300 flex-1"
-                    title={`Verbleibende Vorspannkraft Pm,inf: ${(100 - exCalc.loss_pct).toFixed(1)} %`}
+                    title={`Verbleibende Vorspannkraft Pm,inf: ${formatDeZahl((100 - exCalc.loss_pct), 1)} %`}
                   >
-                    Verbleibend: {(100 - exCalc.loss_pct).toFixed(0)} %
+                    Verbleibend: {formatDeZahl((100 - exCalc.loss_pct), 0)} %
                   </div>
                 </div>
               </div>
@@ -2961,7 +2962,7 @@ export default function SpannbetonKennwerte() {
               <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-text-main/80 space-y-1 leading-relaxed">
                 <strong className="text-slate-900 block">Ingenieurmäßiges Fazit aus dem Zahlenbeispiel:</strong>
                 <p>
-                  1. Im Beispiel gehen insgesamt <strong>{exCalc.loss_pct} %</strong> der Pressenkraft verloren (Sofortverluste plus zeitabhängige Verluste). Üblich sind zeitabhängig 10–20 % von P<sub>m0</sub> und insgesamt 20–30 % der Pressenkraft. 
+                  1. Im Beispiel gehen insgesamt <strong>{formatDeWert(exCalc.loss_pct)} %</strong> der Pressenkraft verloren (Sofortverluste plus zeitabhängige Verluste). Üblich sind zeitabhängig 10–20 % von P<sub>m0</sub> und insgesamt 20–30 % der Pressenkraft. 
                   Das ist im Spannbetonbau normal und wird bei der Festlegung von <InlineMath math="P_0" /> von vornherein einkalkuliert.
                 </p>
                 <p>
@@ -2998,7 +2999,7 @@ export default function SpannbetonKennwerte() {
               <div>
                 <label className="block text-xs font-semibold text-text-main mb-1 flex justify-between">
                   <span>Betonfestigkeit f_ck:</span>
-                  <span className="text-shiraz font-mono font-bold">{calcFck} MPa</span>
+                  <span className="text-shiraz font-mono font-bold">{formatDeWert(calcFck)} MPa</span>
                 </label>
                 <input
                   type="range"
@@ -3018,7 +3019,7 @@ export default function SpannbetonKennwerte() {
               <div>
                 <label className="block text-xs font-semibold text-text-main mb-1 flex justify-between">
                   <span>Vorspannalter t₀:</span>
-                  <span className="text-shiraz font-mono font-bold">{calcT0} Tage</span>
+                  <span className="text-shiraz font-mono font-bold">{formatDeWert(calcT0)} Tage</span>
                 </label>
                 <input
                   type="range"
@@ -3038,7 +3039,7 @@ export default function SpannbetonKennwerte() {
               <div>
                 <label className="block text-xs font-semibold text-text-main mb-1 flex justify-between">
                   <span>Luftfeuchte RH:</span>
-                  <span className="text-shiraz font-mono font-bold">{calcRH} %</span>
+                  <span className="text-shiraz font-mono font-bold">{formatDeWert(calcRH)} %</span>
                 </label>
                 <div className="grid grid-cols-2 gap-1 mt-1">
                   <button
@@ -3061,16 +3062,16 @@ export default function SpannbetonKennwerte() {
               <div>
                 <label className="block text-xs font-semibold text-text-main mb-1 flex justify-between">
                   <span>Relaxationsklasse:</span>
-                  <span className="text-shiraz font-mono font-bold">ρ₁₀₀₀ = {calcSteelLoss}%</span>
+                  <span className="text-shiraz font-mono font-bold">ρ₁₀₀₀ = {formatDeWert(calcSteelLoss)}%</span>
                 </label>
                 <select
                   value={calcSteelLoss}
                   onChange={(e) => setCalcSteelLoss(Number(e.target.value))}
                   className="w-full text-xs bg-white border border-slate-300 rounded p-1.5 outline-none font-medium mt-1"
                 >
-                  <option value={2.5}>Klasse 2 (Low-Relax.) 2.5%</option>
-                  <option value={4.0}>Klasse 3 (Spannstäbe) 4.0%</option>
-                  <option value={8.0}>Klasse 1 (Normal) 8.0%</option>
+                  <option value={2.5}>Klasse 2 (Low-Relax.) 2,5%</option>
+                  <option value={4.0}>Klasse 3 (Spannstäbe) 4,0%</option>
+                  <option value={8.0}>Klasse 1 (Normal) 8,0%</option>
                 </select>
               </div>
             </div>
@@ -3079,7 +3080,7 @@ export default function SpannbetonKennwerte() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200 space-y-1">
                 <span className="text-xs text-amber-800 font-medium">Resultierende Kriechzahl φ(∞):</span>
-                <div className="text-2xl font-bold font-mono text-amber-900">{estPhi.toFixed(2)}</div>
+                <div className="text-2xl font-bold font-mono text-amber-900">{formatDeZahl(estPhi, 2)}</div>
                 <p className="text-[10px] text-amber-700">
                   {estPhi > 2.5 ? 'Hohes Kriechen (junger Beton / trockene Luft)' : 'Geringes Kriechen (günstig)'}
                 </p>
@@ -3087,17 +3088,17 @@ export default function SpannbetonKennwerte() {
 
               <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200 space-y-1">
                 <span className="text-xs text-blue-800 font-medium">Gesamtschwindmaß ε_cs(∞):</span>
-                <div className="text-2xl font-bold font-mono text-blue-900">{(estEpsCs * 1000).toFixed(2)} mm/m</div>
+                <div className="text-2xl font-bold font-mono text-blue-900">{formatDeZahl((estEpsCs * 1000), 2)} mm/m</div>
                 <p className="text-[10px] text-blue-700">
-                  Entspricht {(estEpsCs * 195000).toFixed(0)} N/mm² theoretischem Spannungsabfall
+                  Entspricht {formatDeZahl((estEpsCs * 195000), 0)} N/mm² theoretischem Spannungsabfall
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-purple-50/60 border border-purple-200 space-y-1">
                 <span className="text-xs text-purple-800 font-medium">Prognostizierter Gesamtverlust (c+s+r):</span>
-                <div className="text-2xl font-bold font-mono text-purple-900">≈ {estCsrLossPct.toFixed(1)} %</div>
+                <div className="text-2xl font-bold font-mono text-purple-900">≈ {formatDeZahl(estCsrLossPct, 1)} %</div>
                 <p className="text-[10px] text-purple-700">
-                  Restspannkraft im Endzustand: ca. {(100 - estCsrLossPct).toFixed(1)} % von P₀
+                  Restspannkraft im Endzustand: ca. {formatDeZahl((100 - estCsrLossPct), 1)} % von P₀
                 </p>
               </div>
             </div>

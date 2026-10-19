@@ -106,9 +106,9 @@ export default function Faserbeton() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie Stahlfaserbeton (Leistungsklassen L0.9/0.6 bis L3.0/2.4)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 14889-1 (Fasern für Beton - Teil 1: Stahlfasern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14889-2 (Fasern für Beton - Teil 2: Polymerfasern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14651 (Prüfverfahren für Beton mit metallischen Fasern - Biegezugfestigkeit)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 14889-1 (Fasern für Beton - Teil 1: Stahlfasern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14889-1' },
+          { title: 'DIN EN 14889-2 (Fasern für Beton - Teil 2: Polymerfasern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14889-2' },
+          { title: 'DIN EN 14651 (Prüfverfahren für Beton mit metallischen Fasern - Biegezugfestigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14651' }
         ]}
         literatur={[
           'König, G.; Kützing, L.; Dahlhaus, F. (2008): Grundlagen des Faserbetons (Teubner)',
@@ -118,7 +118,7 @@ export default function Faserbeton() {
         formeln={[
           {
             formel: 'f_{R,j} = \\frac{3 \\cdot F_j \\cdot l}{2 \\cdot b \\cdot h_{\\text{sp}}^2}',
-            erklaerung: 'Residuelle Biegezugfestigkeit f_R,j nach DIN EN 14651 am gekerbten Balken bei Rissöffnungsweiten CMOD (j = 1: 0.5 mm, j = 4: 3.5 mm).',
+            erklaerung: 'Residuelle Biegezugfestigkeit f_R,j nach DIN EN 14651 am gekerbten Balken bei Rissöffnungsweiten CMOD (j = 1: 0,5 mm, j = 4: 3,5 mm).',
             quelle: 'DIN EN 14651'
           },
           {

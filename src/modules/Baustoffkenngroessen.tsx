@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Scale, Activity, Droplets, Flame, ArrowRight, Clock, Layers, Timer, Calculator, GraduationCap, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -245,7 +246,7 @@ export default function Baustoffkenngroessen() {
 
   // Kurvendaten über Zeitachse für Beispiel B generieren
   const daysList = [3, 7, 14, 28, 56, 90, 180, 270, 360, 720, 1080];
-  const chartLabelsB = daysList.map(d => `${d} d`);
+  const chartLabelsB = daysList.map(d => `${formatDeWert(d)} d`);
 
   const tensileStrengthsB = daysList.map(x => {
     const b_cc = Math.exp(0.25 * (1 - Math.sqrt(28 / x)));
@@ -350,7 +351,7 @@ export default function Baustoffkenngroessen() {
 
   const timeLabels = [0, 3, 7, 14, 28, 90, 180, 270, 360, 540, 720, 1080];
   const dehnungenChartData = {
-    labels: timeLabels.map(d => `${d} d`),
+    labels: timeLabels.map(d => `${formatDeWert(d)} d`),
     datasets: [
       {
         label: 'Elastische Dehnung',
@@ -393,7 +394,7 @@ export default function Baustoffkenngroessen() {
   };
 
   const relaxationChartData = {
-    labels: timeLabels.map(d => `${d} d`),
+    labels: timeLabels.map(d => `${formatDeWert(d)} d`),
     datasets: [
       {
         label: 'Spannungsverlauf (Relaxation)',
@@ -918,7 +919,7 @@ export default function Baustoffkenngroessen() {
                   </div>
                   <div className="mt-2 p-2.5 bg-indigo-50/60 rounded-lg border border-indigo-100/40 text-[10px] text-slate-700 leading-relaxed text-left">
                     <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                    Dauerlastspannung <InlineMath math="\sigma_0 = 10 \text{ MPa}" />, E-Modul <InlineMath math="E = 30.000 \text{ MPa}" /> (elastische Dehnung <InlineMath math="\varepsilon_{el} = 0,33 \ \text{‰}" />) und Endkriechbeiwert <InlineMath math="\phi = 2,0" />.
+                    Dauerlastspannung <InlineMath math="\sigma_0 = 10 \text{ MPa}" />, E-Modul <InlineMath math="E = 30.000 \text{ MPa}" /> (elastische Dehnung <InlineMath math="\varepsilon_{el} = 0{,}33 \ \text{‰}" />) und Endkriechbeiwert <InlineMath math="\phi = 2{,}0" />.
                     <div className="font-mono mt-1 bg-white/80 p-1 rounded border border-indigo-100/30 text-slate-900">
                       &epsilon;_cr = (10 / 30.000) · 2,0 = 0,000333 · 2,0 = 0,000667 (0,67 &permil;)
                     </div>
@@ -936,7 +937,7 @@ export default function Baustoffkenngroessen() {
                   </div>
                   <div className="mt-2 p-2.5 bg-indigo-50/60 rounded-lg border border-indigo-100/40 text-[10px] text-slate-700 leading-relaxed text-left">
                     <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                    Endschwindmaß <InlineMath math="\varepsilon_{cs,\infty} = -0,5 \ \text{‰}" /> und zeitabhängiger Beiwert <InlineMath math="\beta_{ds}(t) = 0,6" /> (nach ca. 100 Tagen).
+                    Endschwindmaß <InlineMath math="\varepsilon_{cs,\infty} = -0{,}5 \ \text{‰}" /> und zeitabhängiger Beiwert <InlineMath math="\beta_{ds}(t) = 0{,}6" /> (nach ca. 100 Tagen).
                     <div className="font-mono mt-1 bg-white/80 p-1 rounded border border-indigo-100/30 text-slate-900">
                       &epsilon;_cs = -0,5 &permil; · 0,6 = -0,30 &permil;
                     </div>
@@ -954,7 +955,7 @@ export default function Baustoffkenngroessen() {
                   </div>
                   <div className="mt-2 p-2.5 bg-indigo-50/60 rounded-lg border border-indigo-100/40 text-[10px] text-slate-700 leading-relaxed text-left">
                     <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                    Anfangsspannung <InlineMath math="\sigma_0 = 20 \text{ MPa}" /> und Spannungsabfallbeiwert (Relaxationsgrad) <InlineMath math="\psi = 0,15" /> (15 %).
+                    Anfangsspannung <InlineMath math="\sigma_0 = 20 \text{ MPa}" /> und Spannungsabfallbeiwert (Relaxationsgrad) <InlineMath math="\psi = 0{,}15" /> (15 %).
                     <div className="font-mono mt-1 bg-white/80 p-1 rounded border border-indigo-100/30 text-slate-900">
                       σ(t) = 20 MPa · (1 - 0,15) = 20 · 0,85 = 17,0 MPa
                     </div>
@@ -1029,27 +1030,27 @@ export default function Baustoffkenngroessen() {
           {/* Spalte 2: Echtzeit-Diagramme & Kennwerte */}
           <div className="flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
-              <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Echtzeit-Berechnungsprotokoll für t = {zeitlichT} d</h3>
+              <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Echtzeit-Berechnungsprotokoll für t = {formatDeWert(zeitlichT)} d</h3>
 
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="p-3 rounded-xl bg-slate-50 border border-home-grau/30">
                   <span className="text-[10px] text-slate-400 font-bold block uppercase">Elastische Erstdehnung</span>
-                  <span className="text-md font-extrabold text-slate-700 block mt-1">{currentTimed.eps_el.toFixed(3)} ‰</span>
+                  <span className="text-md font-extrabold text-slate-700 block mt-1">{formatDeZahl(currentTimed.eps_el, 3)} ‰</span>
                   <span className="text-[9px] text-slate-400 mt-0.5 block">(elastischer Initialwert bei Belastung)</span>
                 </div>
                 <div className="p-3 rounded-xl bg-amber-50 border border-amber-200">
                   <span className="text-[10px] text-amber-600 font-bold block uppercase">Kriechbeiwert φ(t)</span>
-                  <span className="text-md font-extrabold text-amber-700 block mt-1">{currentTimed.phi_t.toFixed(2)}</span>
-                  <span className="text-[9px] text-amber-500 mt-0.5 block">(Endwert war: {zeitlichPhi.toFixed(1)})</span>
+                  <span className="text-md font-extrabold text-amber-700 block mt-1">{formatDeZahl(currentTimed.phi_t, 2)}</span>
+                  <span className="text-[9px] text-amber-500 mt-0.5 block">(Endwert war: {formatDeZahl(zeitlichPhi, 1)})</span>
                 </div>
                 <div className="p-3 rounded-xl bg-amber-50 border border-amber-200">
                   <span className="text-[10px] text-amber-600 font-bold block uppercase">Kriechdehnung ε_cr(t)</span>
-                  <span className="text-md font-extrabold text-amber-700 block mt-1">{currentTimed.eps_cr.toFixed(3)} ‰</span>
-                  <span className="text-[9px] text-amber-500 mt-0.5 block">({(currentTimed.phi_t * 100).toFixed(0)}% der Erstdehnung)</span>
+                  <span className="text-md font-extrabold text-amber-700 block mt-1">{formatDeZahl(currentTimed.eps_cr, 3)} ‰</span>
+                  <span className="text-[9px] text-amber-500 mt-0.5 block">({formatDeZahl((currentTimed.phi_t * 100), 0)}% der Erstdehnung)</span>
                 </div>
                 <div className="p-3 rounded-xl bg-blue-50 border border-blue-200">
                   <span className="text-[10px] text-blue-600 font-bold block uppercase">Schwinddehnung ε_cs(t)</span>
-                  <span className="text-md font-extrabold text-blue-700 block mt-1">{currentTimed.eps_cs.toFixed(3)} ‰</span>
+                  <span className="text-md font-extrabold text-blue-700 block mt-1">{formatDeZahl(currentTimed.eps_cs, 3)} ‰</span>
                   <span className="text-[9px] text-blue-500 mt-0.5 block">(Schrumpfung ohne Last)</span>
                 </div>
               </div>
@@ -1060,7 +1061,7 @@ export default function Baustoffkenngroessen() {
                   <span className="text-[9px] text-rose-500 mt-0.5 block">ε_gesamt = ε_el + ε_cr + ε_cs</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-xl font-black text-shiraz">{currentTimed.eps_total.toFixed(3)} ‰</span>
+                  <span className="text-xl font-black text-shiraz">{formatDeZahl(currentTimed.eps_total, 3)} ‰</span>
                   <span className="text-[10px] text-rose-600 font-bold block">Gesamtdehnung</span>
                 </div>
               </div>
@@ -1068,10 +1069,10 @@ export default function Baustoffkenngroessen() {
               <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-indigo-600 font-bold block uppercase">Spannungsabfall durch Relaxation σ(t)</span>
-                  <span className="text-[9px] text-indigo-500 mt-0.5 block">Von σ₀ = {zeitlichSigma0} MPa abgedreht</span>
+                  <span className="text-[9px] text-indigo-500 mt-0.5 block">Von σ₀ = {formatDeWert(zeitlichSigma0)} MPa abgedreht</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-xl font-black text-indigo-700">{currentTimed.sigma_t.toFixed(2)} MPa</span>
+                  <span className="text-xl font-black text-indigo-700">{formatDeZahl(currentTimed.sigma_t, 2)} MPa</span>
                   <span className="text-[10px] text-indigo-600 font-bold block">Restspannung</span>
                 </div>
               </div>
@@ -1181,8 +1182,8 @@ export default function Baustoffkenngroessen() {
                   <div className="mt-3">
                     <span className="text-[11px] text-slate-500 block">Rechnung:</span>
                     <code className="text-xs text-shiraz font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col">
-                      <span>({saeulenF} * 10³) N / ({saeulenA} * 100) mm²</span>
-                      <span className="text-shiraz font-black text-sm mt-0.5">= {stressA.toFixed(2)} MPa</span>
+                      <span>({formatDeWert(saeulenF)} * 10³) N / ({formatDeWert(saeulenA)} * 100) mm²</span>
+                      <span className="text-shiraz font-black text-sm mt-0.5">= {formatDeZahl(stressA, 2)} MPa</span>
                     </code>
                   </div>
                 </div>
@@ -1194,8 +1195,8 @@ export default function Baustoffkenngroessen() {
                   <div className="mt-3">
                     <span className="text-[11px] text-slate-500 block">Rechnung:</span>
                     <code className="text-xs text-shiraz font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col">
-                      <span>{stressA.toFixed(2)} MPa / {saeulenE.toLocaleString('de-DE')} MPa</span>
-                      <span className="text-shiraz font-black text-sm mt-0.5">= {strainA.toFixed(6)} ({strainAPromille.toFixed(3)} ‰)</span>
+                      <span>{formatDeZahl(stressA, 2)} MPa / {saeulenE.toLocaleString('de-DE')} MPa</span>
+                      <span className="text-shiraz font-black text-sm mt-0.5">= {formatDeZahl(strainA, 6)} ({formatDeZahl(strainAPromille, 3)} ‰)</span>
                     </code>
                   </div>
                 </div>
@@ -1207,8 +1208,8 @@ export default function Baustoffkenngroessen() {
                   <div className="mt-3">
                     <span className="text-[11px] text-slate-500 block">Rechnung:</span>
                     <code className="text-xs text-shiraz font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col">
-                      <span>{strainA.toFixed(6)} * {saeulenL0 * 1000} mm</span>
-                      <span className="text-shiraz font-black text-sm mt-0.5">= {deltaLA.toFixed(3)} mm</span>
+                      <span>{formatDeZahl(strainA, 6)} * {formatDeWert(saeulenL0 * 1000)} mm</span>
+                      <span className="text-shiraz font-black text-sm mt-0.5">= {formatDeZahl(deltaLA, 3)} mm</span>
                     </code>
                   </div>
                 </div>
@@ -1220,8 +1221,8 @@ export default function Baustoffkenngroessen() {
                   <div className="mt-3">
                     <span className="text-[11px] text-slate-500 block">Rechnung:</span>
                     <code className="text-xs font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col" style={{ color: utilizationA > 100 ? '#A3113E' : '#475569' }}>
-                      <span>({stressA.toFixed(2)} / {saeulenFy}) * 100</span>
-                      <span className="font-black text-sm mt-0.5">= {utilizationA.toFixed(1)} %</span>
+                      <span>({formatDeZahl(stressA, 2)} / {formatDeWert(saeulenFy)}) * 100</span>
+                      <span className="font-black text-sm mt-0.5">= {formatDeZahl(utilizationA, 1)} %</span>
                     </code>
                   </div>
                 </div>
@@ -1237,12 +1238,12 @@ export default function Baustoffkenngroessen() {
                   </h4>
                   <p className="text-slate-600 mt-1">
                     {utilizationA > 100 
-                      ? `Die Beanspruchung überschreitet die materialspezifische Druckfestigkeit von ${saeulenFy} MPa. Vergrößere die Säulenfläche oder verringern Sie die Tragkraft.` 
+                      ? `Die Beanspruchung überschreitet die materialspezifische Druckfestigkeit von ${formatDeWert(saeulenFy)} MPa. Vergrößern Sie die Säulenfläche oder verringern Sie die Tragkraft.` 
                       : `Die Säule trägt die Belastung problemlos im elastisch-sicheren Beanspruchungsbereich.`}
                   </p>
                 </div>
                 <div className="shrink-0 text-center w-full md:w-auto">
-                  <div className="text-3xl font-extrabold text-slate-800">{utilizationA.toFixed(0)}%</div>
+                  <div className="text-3xl font-extrabold text-slate-800">{formatDeZahl(utilizationA, 0)}%</div>
                   <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mt-0.5">Ausnutzungsgrad</span>
                 </div>
               </div>
@@ -1300,7 +1301,7 @@ export default function Baustoffkenngroessen() {
                   <BlockMath math="\rho_R = \frac{m}{V_{Fest}}" />
                   <div className="mt-2 mb-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
                     <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                    Ziegelmehl: <InlineMath math="m = 26,5\text{ g}" />, <InlineMath math="V_{Fest} = 10\text{ cm}^3" />.
+                    Ziegelmehl: <InlineMath math="m = 26{,}5\text{ g}" />, <InlineMath math="V_{Fest} = 10\text{ cm}^3" />.
                     <div className="font-mono mt-0.5 text-slate-800">&rho;_R = 26,5 g / 10 cm³ = 2,65 g/cm³ (2650 kg/m³)</div>
                   </div>
                   <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Helium-Pyknometrie / DIN 51057</span>
@@ -1331,7 +1332,7 @@ export default function Baustoffkenngroessen() {
                   <BlockMath math="\rho = \frac{m}{V_{H\ddot{u}ll}}" />
                   <div className="mt-2 mb-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
                     <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                    Ziegelstein: <InlineMath math="m = 3,6\text{ kg}" />, <InlineMath math="V_{Hüll} = 2\text{ dm}^3\ (0,002\text{ m}^3)" />.
+                    Ziegelstein: <InlineMath math="m = 3{,}6\text{ kg}" />, <InlineMath math="V_{Hüll} = 2\text{ dm}^3\ (0{,}002\text{ m}^3)" />.
                     <div className="font-mono mt-0.5 text-slate-800">&rho; = 3,6 kg / 0,002 m³ = 1800 kg/m³</div>
                   </div>
                   <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Quecksilber-Intrusion / DIN EN 1936</span>
@@ -1373,7 +1374,7 @@ export default function Baustoffkenngroessen() {
                   <BlockMath math="\rho_S = \frac{m}{V_{Sch\ddot{u}tt}}" />
                   <div className="mt-2 mb-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
                     <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                    Splitschüttung: <InlineMath math="m = 11\text{ kg}" />, <InlineMath math="V_{Schütt} = 10\text{ Liter}\ (0,01\text{ m}^3)" />.
+                    Splitschüttung: <InlineMath math="m = 11\text{ kg}" />, <InlineMath math="V_{Schütt} = 10\text{ Liter}\ (0{,}01\text{ m}^3)" />.
                     <div className="font-mono mt-0.5 text-slate-800">&rho;_S = 11 kg / 0,01 m³ = 1100 kg/m³</div>
                   </div>
                   <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Messzylindermessung / DIN EN 1097-3</span>
@@ -1449,9 +1450,9 @@ export default function Baustoffkenngroessen() {
                     <p className="text-slate-600 leading-relaxed italic">{dichtePresets[selectedDichtePreset].desc}</p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-home-grau/30 text-slate-500 font-mono text-[10px] space-y-1">
-                    <div>Reindichte: <strong>{dichtePresets[selectedDichtePreset].rhoR} kg/m³</strong></div>
-                    <div>Rohdichte: <strong>{dichtePresets[selectedDichtePreset].rho} kg/m³</strong></div>
-                    <div>Schüttdichte: <strong>{dichtePresets[selectedDichtePreset].rhoS} kg/m³</strong></div>
+                    <div>Reindichte: <strong>{formatDeWert(dichtePresets[selectedDichtePreset].rhoR)} kg/m³</strong></div>
+                    <div>Rohdichte: <strong>{formatDeWert(dichtePresets[selectedDichtePreset].rho)} kg/m³</strong></div>
+                    <div>Schüttdichte: <strong>{formatDeWert(dichtePresets[selectedDichtePreset].rhoS)} kg/m³</strong></div>
                   </div>
                 </div>
               )}
@@ -1485,7 +1486,7 @@ export default function Baustoffkenngroessen() {
                           </div>
                         </div>
                         <div className="text-center mt-3 bg-white p-2 rounded border border-home-grau/30">
-                          <strong className="text-lg font-extrabold text-blue-600">{grainPorosity.toFixed(1)}%</strong>
+                          <strong className="text-lg font-extrabold text-blue-600">{formatDeZahl(grainPorosity, 1)}%</strong>
                           <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5">Inneres Porenvolumen</span>
                         </div>
                       </div>
@@ -1502,7 +1503,7 @@ export default function Baustoffkenngroessen() {
                           </div>
                         </div>
                         <div className="text-center mt-3 bg-white p-2 rounded border border-home-grau/30">
-                          <strong className="text-lg font-extrabold text-indigo-600">{haufwerkPorosity.toFixed(1)}%</strong>
+                          <strong className="text-lg font-extrabold text-indigo-600">{formatDeZahl(haufwerkPorosity, 1)}%</strong>
                           <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5">Zwischenkörnungshohlraum</span>
                         </div>
                       </div>
@@ -1519,7 +1520,7 @@ export default function Baustoffkenngroessen() {
                           </div>
                         </div>
                         <div className="text-center mt-3 bg-white p-2 rounded border border-home-grau/30">
-                          <strong className="text-lg font-extrabold text-shiraz">{totalVoidRatio.toFixed(1)}%</strong>
+                          <strong className="text-lg font-extrabold text-shiraz">{formatDeZahl(totalVoidRatio, 1)}%</strong>
                           <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5">Vakuum / Luftanteil gesamt</span>
                         </div>
                       </div>
@@ -1534,7 +1535,7 @@ export default function Baustoffkenngroessen() {
                           style={{ width: `${(100 - totalVoidRatio)}%` }}
                           title="Reines Feststoffvolumen (Skelett)"
                         >
-                          {(100 - totalVoidRatio) > 12 && `Skelett ${(100 - totalVoidRatio).toFixed(1)}%`}
+                          {(100 - totalVoidRatio) > 12 && `Skelett ${formatDeZahl((100 - totalVoidRatio), 1)}%`}
                         </div>
                         <div 
                           className="bg-blue-500 flex items-center justify-center transition-all duration-300"
@@ -1548,7 +1549,7 @@ export default function Baustoffkenngroessen() {
                           style={{ width: `${haufwerkPorosity}%` }}
                           title="Volumen der Interporen (Haufwerkshohlräume)"
                         >
-                          {haufwerkPorosity > 12 && `Haufwerk ${haufwerkPorosity.toFixed(1)}%`}
+                          {haufwerkPorosity > 12 && `Haufwerk ${formatDeZahl(haufwerkPorosity, 1)}%`}
                         </div>
                       </div>
                       <div className="flex justify-between text-[10px] text-slate-500 mt-2 font-medium">
@@ -1599,7 +1600,7 @@ export default function Baustoffkenngroessen() {
 
             <div className="mt-6 space-y-3">
               <div className="p-3 bg-shiraz/10 rounded-lg text-shiraz font-bold text-center text-sm">
-                Massenbezogener Feuchtegehalt: {Math.max(0, wassergehalt).toFixed(2)} M.-%
+                Massenbezogener Feuchtegehalt: {formatDeZahl(Math.max(0, wassergehalt), 2)} M.-%
               </div>
               
               <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-2 text-slate-600">
@@ -1628,7 +1629,7 @@ export default function Baustoffkenngroessen() {
 
               <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/40 text-xs text-slate-700 leading-relaxed text-left mb-4">
                 <span className="font-bold text-indigo-950 block mb-0.5">🔢 Einfache Beispielrechnung:</span>
-                Ein Bauteil aus Beton (<InlineMath math="\mu = 130" />) hat eine Dicke von <InlineMath math="d = 20 \text{ cm} = 0,20 \text{ m}" />.
+                Ein Bauteil aus Beton (<InlineMath math="\mu = 130" />) hat eine Dicke von <InlineMath math="d = 20 \text{ cm} = 0{,}20 \text{ m}" />.
                 <div className="font-mono mt-1 text-slate-900 bg-white/80 p-1 rounded border border-indigo-100/30 text-[11px]">
                   s_d = 130 · 0,20 m = 26,0 m (äquivalenter Luftwiderstand)
                 </div>
@@ -1675,7 +1676,7 @@ export default function Baustoffkenngroessen() {
                 }
                 return (
                   <div className={`p-3 rounded-xl border text-center font-bold text-xs space-y-1 ${colorClass}`}>
-                    <div>Errechneter s_d-Wert: {sdCalculated.toFixed(3)} m</div>
+                    <div>Errechneter s_d-Wert: {formatDeZahl(sdCalculated, 3)} m</div>
                     <div className="uppercase text-[10px] tracking-wider">Klassifizierung: {classification}</div>
                   </div>
                 );
@@ -1709,7 +1710,7 @@ export default function Baustoffkenngroessen() {
 
                 <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/40 text-xs text-slate-700 leading-relaxed text-left">
                   <span className="font-bold text-indigo-950 block mb-0.5">🔢 Einfache Beispielrechnung:</span>
-                  Ein Backstein hat nach der Saugzeit <InlineMath math="t = 4 \text{ Stunden}" /> ein Flächenwassergewicht von <InlineMath math="W_w = 1,4 \text{ kg/m}^2" /> aufgenommen.
+                  Ein Backstein hat nach der Saugzeit <InlineMath math="t = 4 \text{ Stunden}" /> ein Flächenwassergewicht von <InlineMath math="W_w = 1{,}4 \text{ kg/m}^2" /> aufgenommen.
                   <div className="font-mono mt-1 text-slate-900 bg-white/80 p-1 rounded border border-indigo-100/30 text-[11px]">
                     w = 1,4 kg/m² / &radic;4 h = 1,4 / 2 = 0,70 kg/(m² · h⁰⁵)
                   </div>
@@ -1742,7 +1743,7 @@ export default function Baustoffkenngroessen() {
                     <div className="space-y-4">
                       <div className={`p-4 rounded-2xl border text-center ${styleClass}`}>
                         <div className="text-[10px] uppercase font-bold tracking-wider opacity-85">Berechneter w-Wert / B-Wert:</div>
-                        <div className="text-2xl font-black my-1">{wCurrentValue.toFixed(4)} <span className="text-xs font-normal">kg/(m² · h<sup>0.5</sup>)</span></div>
+                        <div className="text-2xl font-black my-1">{formatDeZahl(wCurrentValue, 4)} <span className="text-xs font-normal">kg/(m² · h<sup>0,5</sup>)</span></div>
                         <div className="text-xs font-bold mt-1 uppercase tracking-wider">{rating}</div>
                         <p className="text-[11px] font-normal leading-relaxed mt-1">{ratingDetail}</p>
                       </div>
@@ -1751,7 +1752,7 @@ export default function Baustoffkenngroessen() {
                         <p className="font-bold text-slate-800">Prüfverfahren und Normenbezug:</p>
                         <ul className="list-disc list-inside space-y-1">
                           <li><strong>DIN EN ISO 15148:</strong> Kapillare Wasseraufnahme. Die Probenunterseite wird in ca. 2-3 mm Wasser eingetaucht, die Gewichtszunahme wird gravimetrisch registriert.</li>
-                          <li><strong>DIN 4108-3:</strong> Festlegung der bauphysikalischen Grenzwerte für schlagregensichere Bauteile. Das Produkt <InlineMath math="w \cdot s_d \le 0.1" /> beschreibt die ideale Balance aus Regenschutz und Austrocknung.</li>
+                          <li><strong>DIN 4108-3:</strong> Festlegung der bauphysikalischen Grenzwerte für schlagregensichere Bauteile. Das Produkt <InlineMath math="w \cdot s_d \le 0{,}1" /> beschreibt die ideale Balance aus Regenschutz und Austrocknung.</li>
                         </ul>
                       </div>
                     </div>
@@ -1784,7 +1785,7 @@ export default function Baustoffkenngroessen() {
 
               <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/40 text-xs text-slate-700 leading-relaxed text-left mb-4">
                 <span className="font-bold text-indigo-950 block mb-0.5">🔢 Einfache Beispielrechnung:</span>
-                Eine Zellulosedämmung hat eine Dicke von <InlineMath math="d = 14 \text{ cm} = 0,14 \text{ m}" /> und <InlineMath math="\lambda = 0,04 \text{ W/(m · K)}" />.
+                Eine Zellulosedämmung hat eine Dicke von <InlineMath math="d = 14 \text{ cm} = 0{,}14 \text{ m}" /> und <InlineMath math="\lambda = 0{,}04 \text{ W/(m · K)}" />.
                 <div className="font-mono mt-1 text-slate-900 bg-white/80 p-1 rounded border border-indigo-100/30 text-[11px]">
                   R = 0,14 m / 0,04 W/(m·K) = 3,50 m&sup2;K/W
                 </div>
@@ -1796,7 +1797,7 @@ export default function Baustoffkenngroessen() {
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between text-xs font-bold text-slate-600">
                     <label>Wärmeleitfähigkeit (λ)</label>
-                    <span className="text-indigo-600">{lambda.toFixed(3)} W / (m · K)</span>
+                    <span className="text-indigo-600">{formatDeZahl(lambda, 3)} W / (m · K)</span>
                   </div>
                   <input 
                     type="range" 
@@ -1808,10 +1809,10 @@ export default function Baustoffkenngroessen() {
                     className="w-full accent-shiraz"
                   />
                   <div className="flex gap-1.5 flex-wrap mt-1">
-                    <button onClick={() => setLambda(0.035)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Dämmung/EPS (λ=0.035)</button>
-                    <button onClick={() => setLambda(0.13)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Holz (λ=0.13)</button>
-                    <button onClick={() => setLambda(0.70)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Mauerwerk (λ=0.70)</button>
-                    <button onClick={() => setLambda(2.10)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Beton (λ=2.10)</button>
+                    <button onClick={() => setLambda(0.035)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Dämmung/EPS (λ=0,035)</button>
+                    <button onClick={() => setLambda(0.13)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Holz (λ=0,13)</button>
+                    <button onClick={() => setLambda(0.70)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Mauerwerk (λ=0,70)</button>
+                    <button onClick={() => setLambda(2.10)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700">Beton (λ=2,10)</button>
                   </div>
                 </div>
               </div>
@@ -1825,11 +1826,11 @@ export default function Baustoffkenngroessen() {
                   <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-xs space-y-1">
                     <div className="flex justify-between">
                       <span>Wärmedurchlasswiderstand <span className="font-semibold">R</span>:</span>
-                      <strong className="text-slate-800">{rCalc.toFixed(2)} m²K/W</strong>
+                      <strong className="text-slate-800">{formatDeZahl(rCalc, 2)} m²K/W</strong>
                     </div>
                     <div className="flex justify-between text-[11px] text-slate-500">
                       <span>Geschätzter U-Wert (Außenwand):</span>
-                      <strong className="text-indigo-600 font-bold">{uCalc.toFixed(2)} W/(m²K)</strong>
+                      <strong className="text-indigo-600 font-bold">{formatDeZahl(uCalc, 2)} W/(m²K)</strong>
                     </div>
                   </div>
                 );
@@ -1861,7 +1862,7 @@ export default function Baustoffkenngroessen() {
 
               <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/40 text-xs text-slate-700 leading-relaxed text-left mb-4">
                 <span className="font-bold text-indigo-950 block mb-0.5">🔢 Einfache Beispielrechnung:</span>
-                Eine Holzweichfaserwand mit Masse <InlineMath math="m = 500 \text{ kg}" /> (<InlineMath math="c = 2100 \text{ J/(kg·K)} = 2,1 \text{ kJ/(kg·K)}" />) erwärmt sich um <InlineMath math="\Delta T = 10 \text{ K}" />.
+                Eine Holzweichfaserwand mit Masse <InlineMath math="m = 500 \text{ kg}" /> (<InlineMath math="c = 2100 \text{ J/(kg·K)} = 2{,}1 \text{ kJ/(kg·K)}" />) erwärmt sich um <InlineMath math="\Delta T = 10 \text{ K}" />.
                 <div className="font-mono mt-1 text-slate-900 bg-white/80 p-1 rounded border border-indigo-100/30 text-[11px]">
                   Q = 500 kg · 2,1 kJ/(kg·K) · 10 K = 10.500 kJ (ca. 2,92 kWh)
                 </div>
@@ -1902,7 +1903,7 @@ export default function Baustoffkenngroessen() {
                 return (
                   <div className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-800 rounded-xl text-xs space-y-1 text-center font-sans">
                     <div className="font-bold">Gespeicherte Wärmeenergie (Q):</div>
-                    <div className="text-xl font-black">{energyKJ.toLocaleString('de-DE', { maximumFractionDigits: 1 })} kJ <span className="text-xs font-normal">({(energyWh / 1000).toFixed(2)} kWh)</span></div>
+                    <div className="text-xl font-black">{energyKJ.toLocaleString('de-DE', { maximumFractionDigits: 1 })} kJ <span className="text-xs font-normal">({formatDeZahl((energyWh / 1000), 2)} kWh)</span></div>
                   </div>
                 );
               })()}
@@ -1933,7 +1934,7 @@ export default function Baustoffkenngroessen() {
 
               <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/40 text-xs text-slate-700 leading-relaxed text-left mb-4">
                 <span className="font-bold text-indigo-950 block mb-0.5">🔢 Einfache Beispielrechnung:</span>
-                Ein stählerner Träger (<InlineMath math="l_0 = 20 \text{ m}" />, <InlineMath math="\alpha_T = 1,2 \cdot 10^{-5} \text{ 1/K}" />) erfährt eine Erwärmung von <InlineMath math="\Delta T = 30 \text{ K}" />.
+                Ein stählerner Träger (<InlineMath math="l_0 = 20 \text{ m}" />, <InlineMath math="\alpha_T = 1{,}2 \cdot 10^{-5} \text{ 1/K}" />) erfährt eine Erwärmung von <InlineMath math="\Delta T = 30 \text{ K}" />.
                 <div className="font-mono mt-1 text-slate-900 bg-white/80 p-1 rounded border border-indigo-100/30 text-[11px]">
                   &Delta;l = 1,2 · 10⁻⁵ · 20 m · 30 K = 0,0072 m = 7,20 mm
                 </div>
@@ -1947,11 +1948,11 @@ export default function Baustoffkenngroessen() {
                     value={alphaT}
                     onChange={(e) => setAlphaT(Number(e.target.value))}
                   >
-                    <option value={1.2}>Stahl / Normalbeton (1.1 - 1.3 × 10⁻⁵ 1/K)</option>
-                    <option value={2.4}>Aluminium (2.4 × 10⁻⁵ 1/K)</option>
-                    <option value={0.5}>Holz parallel (0.5 × 10⁻⁵ 1/K)</option>
-                    <option value={0.9}>Kalknatronscheibenglas (0.9 × 10⁻⁵ 1/K)</option>
-                    <option value={0.1}>Moderne Invar-Speziallegierung (0.1 × 10⁻⁵ 1/K)</option>
+                    <option value={1.2}>Stahl / Normalbeton (1,1 - 1.3 × 10⁻⁵ 1/K)</option>
+                    <option value={2.4}>Aluminium (2,4 × 10⁻⁵ 1/K)</option>
+                    <option value={0.5}>Holz parallel (0,5 × 10⁻⁵ 1/K)</option>
+                    <option value={0.9}>Kalknatronscheibenglas (0,9 × 10⁻⁵ 1/K)</option>
+                    <option value={0.1}>Moderne Invar-Speziallegierung (0,1 × 10⁻⁵ 1/K)</option>
                   </select>
                 </div>
 
@@ -1962,7 +1963,7 @@ export default function Baustoffkenngroessen() {
 
             <div className="mt-6 space-y-3">
               <div className="p-3 bg-shiraz/10 rounded-lg text-shiraz font-bold text-center text-sm">
-                Resultierende Längenänderung (Δl): {waermedehnung.toFixed(3)} mm
+                Resultierende Längenänderung (Δl): {formatDeZahl(waermedehnung, 3)} mm
               </div>
 
               <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1.5 text-slate-600">
@@ -2011,15 +2012,15 @@ export default function Baustoffkenngroessen() {
                   <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-mono text-slate-600 pt-1.5">
                     <div className="bg-white p-1.5 rounded border border-home-grau/30">
                       <span className="text-[9px] text-slate-400 block uppercase font-bold">λ (mK)</span>
-                      <strong>{thermischLambda.toFixed(3)}</strong>
+                      <strong>{formatDeZahl(thermischLambda, 3)}</strong>
                     </div>
                     <div className="bg-white p-1.5 rounded border border-home-grau/30">
                       <span className="text-[9px] text-slate-400 block uppercase font-bold">ρ (kg/m³)</span>
-                      <strong>{thermischRho}</strong>
+                      <strong>{formatDeWert(thermischRho)}</strong>
                     </div>
                     <div className="bg-white p-1.5 rounded border border-home-grau/30">
                       <span className="text-[9px] text-slate-400 block uppercase font-bold">c (J/kgK)</span>
-                      <strong>{thermischC}</strong>
+                      <strong>{formatDeWert(thermischC)}</strong>
                     </div>
                   </div>
                 )}
@@ -2039,7 +2040,7 @@ export default function Baustoffkenngroessen() {
                         <BlockMath math="a = \frac{\lambda}{\rho \cdot c}" />
                         <div className="p-2.5 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal mb-2">
                           <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung (Beton):</span>
-                          <InlineMath math="\lambda = 2,1\,\text{W/(mK)}" />, <InlineMath math="\rho = 2400\,\text{kg/m}^3" />, <InlineMath math="c = 1000\,\text{J/(kgK)}" />.
+                          <InlineMath math="\lambda = 2{,}1\,\text{W/(mK)}" />, <InlineMath math="\rho = 2400\,\text{kg/m}^3" />, <InlineMath math="c = 1000\,\text{J/(kgK)}" />.
                           <div className="font-mono mt-0.5 text-slate-800">a = 2,1 / (2400 · 1000) = 8,75 · 10⁻⁷ m²/s (0,875 mm²/s)</div>
                         </div>
                         <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
@@ -2047,7 +2048,7 @@ export default function Baustoffkenngroessen() {
                         </p>
                       </div>
                       <div className="mt-4 bg-white p-2.5 rounded border border-home-grau/30 text-center font-mono">
-                        <strong className="text-md text-slate-800 font-extrabold block">{a_mm2_s.toFixed(3)} mm²/s</strong>
+                        <strong className="text-md text-slate-800 font-extrabold block">{formatDeZahl(a_mm2_s, 3)} mm²/s</strong>
                         <span className="text-[9px] text-slate-400 block font-bold">(= {a_m2_s.toExponential(3)} m²/s)</span>
                       </div>
                     </div>
@@ -2059,7 +2060,7 @@ export default function Baustoffkenngroessen() {
                         <BlockMath math="b = \sqrt{\lambda \cdot \rho \cdot c}" />
                         <div className="p-2.5 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal mb-2">
                           <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung (Fichte):</span>
-                          <InlineMath math="\lambda = 0,13\,\text{W/(mK)}" />, <InlineMath math="\rho = 500\,\text{kg/m}^3" />, <InlineMath math="c = 1600\,\text{J/(kgK)}" />.
+                          <InlineMath math="\lambda = 0{,}13\,\text{W/(mK)}" />, <InlineMath math="\rho = 500\,\text{kg/m}^3" />, <InlineMath math="c = 1600\,\text{J/(kgK)}" />.
                           <div className="font-mono mt-0.5 text-slate-800">b = &radic;(0,13 · 500 · 1600) = 322,5 J/(m&sup2;·K·s⁰⁵)</div>
                         </div>
                         <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
@@ -2067,7 +2068,7 @@ export default function Baustoffkenngroessen() {
                         </p>
                       </div>
                       <div className="mt-4 bg-white p-2.5 rounded border border-home-grau/30 text-center font-mono">
-                        <strong className="text-md text-shiraz font-extrabold block">{b_eff.toFixed(0)} J/(m²·K·s⁰⁵)</strong>
+                        <strong className="text-md text-shiraz font-extrabold block">{formatDeZahl(b_eff, 0)} J/(m²·K·s⁰⁵)</strong>
                         <span className="text-[9px] text-slate-400 block font-bold">Barfußkontakt: {b_eff < 1000 ? '✓ Behaglich-Warm' : '❌ Kühleffekt'}</span>
                       </div>
                     </div>
@@ -2098,9 +2099,9 @@ export default function Baustoffkenngroessen() {
           'Liersch, K. W. (2014): Belüftete Dach- und Wandkonstruktionen (Bauverlag)'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
+          { title: 'DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
+          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' }
         ]}
         formeln={[
           {

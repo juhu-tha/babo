@@ -229,7 +229,7 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
   dauerhaftigkeit_checklisten: "Inspektionschecklisten für Brücken- und Hochbauten zur rechtzeitigen Detektion von Schadstoffen und Korrosionsrisiken.",
 
   // Mängel & Schäden
-  schaeden_info: "Diagnostik von Mängeln & Schäden, Schadensursachenermittlung, baustatische Standsicherheitsprüfung nach VDI 6200 und gerichtsfeste Beweissicherung.",
+  schaeden_info: "Diagnostik von Mängeln & Schäden, Schadensursachenermittlung, baustatische Standsicherheitsprüfung nach VDI 6200 und beweissichere Beweissicherung.",
   bauschaeden: "Juristische und technische Abgrenzung von Mängeln & Schäden, Beweisverfahren und Gewährleistungsfristen nach VOB und BGB.",
   schadensbilder: "Schadensatlas & Ursachenanalyse: Nasse Keller (Jurin, DIN 18533), Wärmebrücken & Schimmelpilze (DIN 4108-2/3), Rissbildung & Bruchmechanik (LEBM), Bewehrungskorrosion & Spannungsrisskorrosion (SpRK), AKR-Betonkrebs, Sulfattreiben und ZTV-ING.",
   bauwerksunters_monitoring: "Umfassende Bauwerksdiagnostik & Monitoring bei Mängeln & Schäden: Zerstörende Prüfungen, minimalinvasive Bohr- und Endoskopietests, LVDT-Rissüberwachung und Feuchtebewertungen.",

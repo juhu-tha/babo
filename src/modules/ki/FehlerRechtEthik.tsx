@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   AlertTriangle, 
@@ -671,7 +672,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                   ? 'bg-amber-50 text-amber-700 border-amber-200'
                   : 'bg-emerald-50 text-emerald-700 border-emerald-200'
               }`}>
-                {riskScore} / 100 ({riskScore > 65 ? 'HOCH' : riskScore > 35 ? 'MITTEL' : 'GERING'})
+                {formatDeWert(riskScore)} / 100 ({riskScore > 65 ? 'HOCH' : riskScore > 35 ? 'MITTEL' : 'GERING'})
               </span>
             </div>
           </div>

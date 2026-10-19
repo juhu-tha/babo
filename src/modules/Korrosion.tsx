@@ -17,7 +17,7 @@ import { erf } from "@/src/lib/math";
 import { FormulaText } from "@/src/components/ui/FormulaText";
 import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
 import { InlineMath, BlockMath } from "react-katex";
-import { formatDeZahl } from "@/src/utils/numberFormat";
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 ChartJS.register(
   CategoryScale,
@@ -121,9 +121,9 @@ function LokalelementSimulator() {
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <div className="flex justify-between text-[10px] text-text-main/60">
-                <span>0.10 % (Passiv)</span>
-                <span className="font-bold text-shiraz">Kritisch: 0.50 %</span>
-                <span>2.50 % (Extrem)</span>
+                <span>0,10 % (Passiv)</span>
+                <span className="font-bold text-shiraz">Kritisch: 0,50 %</span>
+                <span>2,50 % (Extrem)</span>
               </div>
             </div>
 
@@ -132,7 +132,7 @@ function LokalelementSimulator() {
               <div className="flex justify-between items-center text-xs">
                 <span className="font-bold text-text-main">Relative Betonfeuchte (RH):</span>
                 <span className="font-mono font-bold bg-slate-100 text-text-main px-2 py-0.5 rounded text-xs">
-                  {relHum} %
+                  {formatDeWert(relHum)} %
                 </span>
               </div>
               <input
@@ -158,7 +158,7 @@ function LokalelementSimulator() {
               <div className="flex justify-between items-center text-xs">
                 <span className="font-bold text-text-main">Betondeckung (cnom):</span>
                 <span className="font-mono font-bold bg-slate-100 text-text-main px-2 py-0.5 rounded text-xs">
-                  {coverMm} mm
+                  {formatDeWert(coverMm)} mm
                 </span>
               </div>
               <input
@@ -288,7 +288,7 @@ function LokalelementSimulator() {
                   <line x1="-5" y1="40" x2="5" y2="40" stroke="#fde047" strokeWidth="2" />
                   <line x1="-5" y1={40 + coverMm * 3.5} x2="5" y2={40 + coverMm * 3.5} stroke="#fde047" strokeWidth="2" />
                   <text x="-12" y={40 + (coverMm * 3.5) / 2 + 4} fill="#fde047" fontSize="10" fontWeight="bold" textAnchor="end">
-                    cnom = {coverMm} mm
+                    cnom = {formatDeWert(coverMm)} mm
                   </text>
                 </g>
 
@@ -519,7 +519,7 @@ export default function Korrosion() {
           fill: false,
         },
         {
-          label: "Kritischer Gehalt (0.5%)",
+          label: "Kritischer Gehalt (0,5%)",
           data: depths.map(() => 0.5),
           borderColor: "#1e293b",
           borderWidth: 1,
@@ -960,7 +960,7 @@ export default function Korrosion() {
                     fill="#334155"
                     textAnchor="middle"
                   >
-                    c_nom = {cNom} mm
+                    c_nom = {formatDeWert(cNom)} mm
                   </text>
 
                   {/* Kritische Front (vereinfacht dargestellt bei 0.5%) */}
@@ -1224,9 +1224,9 @@ export default function Korrosion() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 12390-12 (Beschleunigte Karbonatisierung von Beton)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 12390-10 (Karbonatisierungswiderstand bei atmosphärischer CO2-Konzentration)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Betondeckung cnom und Expositionsklassen)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 12390-12 (Beschleunigte Karbonatisierung von Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-12' },
+          { title: 'DIN EN 12390-10 (Karbonatisierungswiderstand bei atmosphärischer CO2-Konzentration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-10' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Betondeckung cnom und Expositionsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         formeln={[
           {

@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React, { useState } from 'react';
 import { Waves, Zap } from 'lucide-react';
@@ -95,7 +96,7 @@ export default function Spritzbeton() {
             <div className="px-4">
               <label className="text-sm font-medium text-text-main flex justify-between mb-2">
                 <span>Dicke pro Lage</span>
-                <span className="text-shiraz font-bold">{schichtdicke} cm</span>
+                <span className="text-shiraz font-bold">{formatDeWert(schichtdicke)} cm</span>
               </label>
               <input 
                 type="range" min="1" max="15" step="1"
@@ -154,9 +155,9 @@ export default function Spritzbeton() {
           { title: 'Neue Österreichische Tunnelbaumethode', url: 'https://de.wikipedia.org/wiki/Neue_%C3%96sterreichische_Tunnelbaumethode' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 18314 (VOB/C: Spritzbetonarbeiten)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14487-1' },
+          { title: 'DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18551' },
+          { title: 'DIN 18314 (VOB/C: Spritzbetonarbeiten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18314' },
           { title: 'ÖBV-Richtlinie Spritzbeton (Klassen J1, J2, J3 zur Frühfestigkeit)', url: 'https://www.bautechnik.pro/' }
         ]}
         literatur={[

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Activity, Scale, Sliders, BookOpen, Layers, ArrowRight, 
@@ -1048,7 +1049,7 @@ export default function MechanischeKenngroessen() {
                             Spannungsverlauf σ(t) bei vorgegebener Dehnung ε(t) = ε₀ = konst.
                           </span>
                           <span className="text-[11px] font-mono text-slate-500">
-                            Halbwertszeit t½ = {halfLife.toFixed(2)} s
+                            Halbwertszeit t½ = {formatDeZahl(halfLife, 2)} s
                           </span>
                         </div>
 
@@ -1065,7 +1066,7 @@ export default function MechanischeKenngroessen() {
                                 <g key={idx}>
                                   <line x1={padL} y1={yPos} x2={W - padR} y2={yPos} stroke="#f1f5f9" strokeWidth="1" />
                                   <text x={padL - 6} y={yPos + 3} textAnchor="end" fontSize="9" fill="#94a3b8">
-                                    {yVal.toFixed(1)}
+                                    {formatDeZahl(yVal, 1)}
                                   </text>
                                 </g>
                               );
@@ -1077,7 +1078,7 @@ export default function MechanischeKenngroessen() {
                                 <g key={tVal}>
                                   <line x1={xPos} y1={padT} x2={xPos} y2={padT + plotH} stroke="#f1f5f9" strokeWidth="1" />
                                   <text x={xPos} y={H - padB + 18} textAnchor="middle" fontSize="10" fill="#334155" fontWeight="bold">
-                                    {tVal} s
+                                    {formatDeWert(tVal)} s
                                   </text>
                                 </g>
                               );
@@ -1126,7 +1127,7 @@ export default function MechanischeKenngroessen() {
                                   fill="#1d4ed8" 
                                   fontWeight="bold"
                                 >
-                                  τ = {rheoTauSec} s (36,8 %)
+                                  τ = {formatDeWert(rheoTauSec)} s (36,8 %)
                                 </text>
                               </g>
                             )}
@@ -1157,22 +1158,22 @@ export default function MechanischeKenngroessen() {
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Anfangsspannung σ₀</span>
-                          <span className="font-mono font-bold text-base text-text-main block mt-0.5">{rheoWert0.toFixed(1)} MPa</span>
+                          <span className="font-mono font-bold text-base text-text-main block mt-0.5">{formatDeZahl(rheoWert0, 1)} MPa</span>
                           <span className="text-[10px] text-slate-500 font-mono">aufgeprägt bei t = 0</span>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Relaxationszeit τ</span>
-                          <span className="font-mono font-bold text-base text-blue-700 block mt-0.5">{rheoTauSec.toFixed(1)} s</span>
-                          <span className="text-[10px] text-slate-500 font-mono">t½ = {halfLife.toFixed(2)} s</span>
+                          <span className="font-mono font-bold text-base text-blue-700 block mt-0.5">{formatDeZahl(rheoTauSec, 1)} s</span>
+                          <span className="text-[10px] text-slate-500 font-mono">t½ = {formatDeZahl(halfLife, 2)} s</span>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Maxwell σ(10 s)</span>
-                          <span className="font-mono font-bold text-base text-blue-800 block mt-0.5">{sigEndMaxwell.toFixed(2)} MPa</span>
-                          <span className="text-[10px] text-slate-500 font-mono">Abbau: -{relaxRateMaxwell.toFixed(0)} %</span>
+                          <span className="font-mono font-bold text-base text-blue-800 block mt-0.5">{formatDeZahl(sigEndMaxwell, 2)} MPa</span>
+                          <span className="text-[10px] text-slate-500 font-mono">Abbau: -{formatDeZahl(relaxRateMaxwell, 0)} %</span>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Zener σ(10 s)</span>
-                          <span className="font-mono font-bold text-base text-purple-800 block mt-0.5">{sigEndZener.toFixed(2)} MPa</span>
+                          <span className="font-mono font-bold text-base text-purple-800 block mt-0.5">{formatDeZahl(sigEndZener, 2)} MPa</span>
                           <span className="text-[10px] text-slate-500 font-mono">Restgrenze: 40 %</span>
                         </div>
                       </div>
@@ -1250,7 +1251,7 @@ export default function MechanischeKenngroessen() {
                             Dehnungsverlauf ε(t) bei konstanter Lastspannung σ(t) = σ₀ = konst.
                           </span>
                           <span className="text-[11px] font-mono text-slate-500">
-                            Retardationszeit τ = {rheoTauSec.toFixed(1)} s
+                            Retardationszeit τ = {formatDeZahl(rheoTauSec, 1)} s
                           </span>
                         </div>
 
@@ -1265,7 +1266,7 @@ export default function MechanischeKenngroessen() {
                                 <g key={idx}>
                                   <line x1={padL} y1={yPos} x2={W - padR} y2={yPos} stroke="#f1f5f9" strokeWidth="1" />
                                   <text x={padL - 6} y={yPos + 3} textAnchor="end" fontSize="9" fill="#94a3b8">
-                                    {yVal.toFixed(1)} ‰
+                                    {formatDeZahl(yVal, 1)} ‰
                                   </text>
                                 </g>
                               );
@@ -1277,7 +1278,7 @@ export default function MechanischeKenngroessen() {
                                 <g key={tVal}>
                                   <line x1={xPos} y1={padT} x2={xPos} y2={padT + plotH} stroke="#f1f5f9" strokeWidth="1" />
                                   <text x={xPos} y={H - padB + 18} textAnchor="middle" fontSize="10" fill="#334155" fontWeight="bold">
-                                    {tVal} s
+                                    {formatDeWert(tVal)} s
                                   </text>
                                 </g>
                               );
@@ -1321,22 +1322,22 @@ export default function MechanischeKenngroessen() {
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Elast. Anfangsdehnung</span>
-                          <span className="font-mono font-bold text-base text-text-main block mt-0.5">{epsEl.toFixed(2)} ‰</span>
+                          <span className="font-mono font-bold text-base text-text-main block mt-0.5">{formatDeZahl(epsEl, 2)} ‰</span>
                           <span className="text-[10px] text-slate-500 font-mono">ε_el = σ₀ / E</span>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Retardationszeit τ</span>
-                          <span className="font-mono font-bold text-base text-green-700 block mt-0.5">{rheoTauSec.toFixed(1)} s</span>
+                          <span className="font-mono font-bold text-base text-green-700 block mt-0.5">{formatDeZahl(rheoTauSec, 1)} s</span>
                           <span className="text-[10px] text-slate-500 font-mono">63,2 % Erreichen</span>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Kelvin-Voigt ε(10 s)</span>
-                          <span className="font-mono font-bold text-base text-green-800 block mt-0.5">{epsEndKelvin.toFixed(2)} ‰</span>
+                          <span className="font-mono font-bold text-base text-green-800 block mt-0.5">{formatDeZahl(epsEndKelvin, 2)} ‰</span>
                           <span className="text-[10px] text-slate-500 font-mono">Kriechzahl φ ≈ 1,5</span>
                         </div>
                         <div className="bg-off-white p-3 rounded-xl border border-home-grau/25 text-center">
                           <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Maxwell ε(10 s)</span>
-                          <span className="font-mono font-bold text-base text-blue-800 block mt-0.5">{epsEndMaxwell.toFixed(2)} ‰</span>
+                          <span className="font-mono font-bold text-base text-blue-800 block mt-0.5">{formatDeZahl(epsEndMaxwell, 2)} ‰</span>
                           <span className="text-[10px] text-slate-500 font-mono">lineares Fließen</span>
                         </div>
                       </div>
@@ -1822,7 +1823,7 @@ export default function MechanischeKenngroessen() {
                 >
                   {Object.values(MATERIALIEN).map((m) => (
                     <option key={m.id} value={m.id}>
-                      {m.name} (E = {m.E.toLocaleString()} MPa, ν = {m.nu})
+                      {m.name} (E = {formatDeWert(m.E)} MPa, ν = {formatDeWert(m.nu)})
                     </option>
                   ))}
                 </select>
@@ -1886,14 +1887,14 @@ export default function MechanischeKenngroessen() {
                 }`}>
                   <div>
                     <span className="font-bold block">Euler-Knicklast FK (β=1,0):</span>
-                    <span className="text-[10px] text-text-main/70">I_min = {(sim.I_min_mm4 / 1e4).toFixed(1)} cm⁴</span>
+                    <span className="text-[10px] text-text-main/70">I_min = {formatDeZahl((sim.I_min_mm4 / 1e4), 1)} cm⁴</span>
                   </div>
                   <div className="text-right">
                     <span className={`font-mono font-bold text-sm ${sim.isKnickGefaehrdet ? 'text-red-700 font-extrabold' : ''}`}>
-                      {sim.F_K_kN.toFixed(1)} kN
+                      {formatDeZahl(sim.F_K_kN, 1)} kN
                     </span>
                     <span className="block text-[10px] font-mono">
-                      (Auslastung: {sim.knickAuslastung.toFixed(0)} %)
+                      (Auslastung: {formatDeZahl(sim.knickAuslastung, 0)} %)
                     </span>
                   </div>
                 </div>
@@ -1989,19 +1990,19 @@ export default function MechanischeKenngroessen() {
                 <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                   <span className="text-[10px] uppercase font-bold text-text-main/60 block">Spannung σ</span>
                   <span className={`text-lg font-mono font-bold ${sim.isVersagt ? 'text-red-600' : sim.isPlastisch ? 'text-amber-600' : 'text-shiraz'}`}>
-                    {sim.sigma > 0 ? '+' : ''}{sim.sigma.toFixed(1)} MPa
+                    {sim.sigma > 0 ? '+' : ''}{formatDeZahl(sim.sigma, 1)} MPa
                   </span>
                   <span className="text-[9px] text-text-main/70 block">
-                    Grenz: {sim.zulSpannung} MPa ({sim.auslastungFestigkeit.toFixed(0)} %)
+                    Grenz: {formatDeWert(sim.zulSpannung)} MPa ({formatDeZahl(sim.auslastungFestigkeit, 0)} %)
                   </span>
                 </div>
 
                 <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                   <span className="text-[10px] uppercase font-bold text-text-main/60 block">Dehnung ε_el</span>
                   <span className="text-lg font-mono font-bold text-text-main">
-                    {sim.epsilonPromille > 0 ? '+' : ''}{sim.epsilonPromille.toFixed(2)} ‰
+                    {sim.epsilonPromille > 0 ? '+' : ''}{formatDeZahl(sim.epsilonPromille, 2)} ‰
                   </span>
-                  <span className="text-[9px] text-text-main/70 block">({(sim.epsilonProzent).toFixed(3)} %)</span>
+                  <span className="text-[9px] text-text-main/70 block">({formatDeZahl((sim.epsilonProzent), 3)} %)</span>
                 </div>
               </div>
 
@@ -2016,15 +2017,15 @@ export default function MechanischeKenngroessen() {
                   : 'bg-emerald-50 text-emerald-800 border-emerald-300'
               }`}>
                 {sim.isKnickGefaehrdet ? (
-                  `STABILITÄTSVERSAGEN DURCH BIEGEKNICKEN! Euler-Knicklast FK = ${sim.F_K_kN.toFixed(1)} kN überschritten (Knickauslastung: ${sim.knickAuslastung.toFixed(0)} %). Der Druckstab knickt seitlich aus, bevor die Druckfestigkeit erreicht wird!`
+                  `STABILITÄTSVERSAGEN DURCH BIEGEKNICKEN! Euler-Knicklast FK = ${formatDeZahl(sim.F_K_kN, 1)} kN überschritten (Knickauslastung: ${formatDeZahl(sim.knickAuslastung, 0)} %). Der Druckstab knickt seitlich aus, bevor die Druckfestigkeit erreicht wird!`
                 ) : sim.isVersagt ? (
                   sim.isSproede && lastArt === 'zug'
-                    ? `SPRÖDBRUCH! Zugfestigkeit fctm (${sim.zulSpannung} MPa) überschritten. Werkstoff reißt schlagartig ohne plastische Fließzone ab!`
-                    : `BRUCHVERSAGEN! Grenzfestigkeit (${sim.zulSpannung} MPa) überschritten.`
+                    ? `SPRÖDBRUCH! Zugfestigkeit fctm (${formatDeWert(sim.zulSpannung)} MPa) überschritten. Werkstoff reißt schlagartig ohne plastische Fließzone ab!`
+                    : `BRUCHVERSAGEN! Grenzfestigkeit (${formatDeWert(sim.zulSpannung)} MPa) überschritten.`
                 ) : sim.isPlastisch ? (
-                  `PLASTISCHES FLIEßEN! Streckgrenze fy (${sim.fliessGrenze} MPa) überschritten (Fließauslastung: ${sim.auslastungFliess.toFixed(0)} %)`
+                  `PLASTISCHES FLIEßEN! Streckgrenze fy (${formatDeWert(sim.fliessGrenze)} MPa) überschritten (Fließauslastung: ${formatDeZahl(sim.auslastungFliess, 0)} %)`
                 ) : (
-                  `Linear-elastisch tragfähig (Auslastung: ${sim.auslastungFestigkeit.toFixed(0)} %${lastArt === 'druck' ? `, Knickauslastung: ${sim.knickAuslastung.toFixed(0)} %` : ''})`
+                  `Linear-elastisch tragfähig (Auslastung: ${formatDeZahl(sim.auslastungFestigkeit, 0)} %${lastArt === 'druck' ? `, Knickauslastung: ${formatDeZahl(sim.knickAuslastung, 0)} %` : ''})`
                 )}
               </div>
 
@@ -2041,11 +2042,11 @@ export default function MechanischeKenngroessen() {
                     <Activity size={18} className="text-shiraz" /> Stabverformung &amp; Querdehnung
                   </h3>
                   <span className="text-xs text-text-main/70 font-medium">
-                    ΔL_el = {sim.deltaL_mm > 0 ? '+' : ''}{sim.deltaL_mm.toFixed(2)} mm | Einschnürung Δd = {sim.deltaD_mm > 0 ? '+' : ''}{(sim.deltaD_mm * 1000).toFixed(1)} µm
+                    ΔL_el = {sim.deltaL_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_mm, 2)} mm | Einschnürung Δd = {sim.deltaD_mm > 0 ? '+' : ''}{formatDeZahl((sim.deltaD_mm * 1000), 1)} µm
                   </span>
                 </div>
                 <span className="text-[11px] font-mono bg-off-white text-slate-700 px-2.5 py-1 rounded border border-home-grau/20">
-                  U = {sim.U_Joule.toFixed(2)} J
+                  U = {formatDeZahl(sim.U_Joule, 2)} J
                 </span>
               </div>
 
@@ -2096,7 +2097,7 @@ export default function MechanischeKenngroessen() {
                           rx="2"
                         />
                         <text x={originX + baseWidth / 2} y={originY - baseHeight / 2 - 8} fill="#94a3b8" fontSize="10" textAnchor="middle" className="font-mono">
-                          Ausgangszustand: L0 = {stabLaengeM.toFixed(1)} m, d0 = {sim.d0_mm.toFixed(0)} mm
+                          Ausgangszustand: L0 = {formatDeZahl(stabLaengeM, 1)} m, d0 = {formatDeZahl(sim.d0_mm, 0)} mm
                         </text>
 
                         {/* Verformter Stab */}
@@ -2118,7 +2119,7 @@ export default function MechanischeKenngroessen() {
                               <line x1="0" y1="0" x2="45" y2="0" stroke="#dc2626" strokeWidth="3" />
                               <polygon points="45,0 35,-5 35,5" fill="#dc2626" />
                               <text x="50" y="4" fill="#dc2626" fontSize="12" fontWeight="bold">
-                                +F = {kraftKn} kN
+                                +F = {formatDeWert(kraftKn)} kN
                               </text>
                             </>
                           ) : (
@@ -2126,7 +2127,7 @@ export default function MechanischeKenngroessen() {
                               <line x1="50" y1="0" x2="5" y2="0" stroke="#b45309" strokeWidth="3" />
                               <polygon points="5,0 15,-5 15,5" fill="#b45309" />
                               <text x="55" y="4" fill="#b45309" fontSize="12" fontWeight="bold">
-                                -F = {kraftKn} kN
+                                -F = {formatDeWert(kraftKn)} kN
                               </text>
                             </>
                           )}
@@ -2139,7 +2140,7 @@ export default function MechanischeKenngroessen() {
                           <line x1={currentWidth} y1="-5" x2={currentWidth} y2="5" stroke="#475569" strokeWidth="1.5" />
                           
                           <text x={currentWidth / 2} y="15" fill="#334155" fontSize="11" fontWeight="bold" textAnchor="middle">
-                            L = {sim.endLaenge_mm.toFixed(1)} mm (ΔL_el = {sim.deltaL_mm > 0 ? '+' : ''}{sim.deltaL_mm.toFixed(2)} mm)
+                            L = {formatDeZahl(sim.endLaenge_mm, 1)} mm (ΔL_el = {sim.deltaL_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_mm, 2)} mm)
                           </text>
                         </g>
 
@@ -2151,7 +2152,7 @@ export default function MechanischeKenngroessen() {
                                 <line x1="0" y1={-baseHeight / 2} x2="0" y2={-currentHeight / 2} stroke="#b45309" strokeWidth="1.5" />
                                 <line x1="0" y1={baseHeight / 2} x2="0" y2={currentHeight / 2} stroke="#b45309" strokeWidth="1.5" />
                                 <text x="8" y="3" fill="#b45309" fontSize="9" fontWeight="bold" className="font-mono">
-                                  -Δd = {(sim.deltaD_mm * 1000).toFixed(0)} µm
+                                  -Δd = {formatDeZahl((sim.deltaD_mm * 1000), 0)} µm
                                 </text>
                               </>
                             ) : (
@@ -2159,7 +2160,7 @@ export default function MechanischeKenngroessen() {
                                 <line x1="0" y1={-currentHeight / 2} x2="0" y2={-baseHeight / 2} stroke="#0284c7" strokeWidth="1.5" />
                                 <line x1="0" y1={currentHeight / 2} x2="0" y2={baseHeight / 2} stroke="#0284c7" strokeWidth="1.5" />
                                 <text x="8" y="3" fill="#0284c7" fontSize="9" fontWeight="bold" className="font-mono">
-                                  +Δd = {(Math.abs(sim.deltaD_mm) * 1000).toFixed(0)} µm
+                                  +Δd = {formatDeZahl((Math.abs(sim.deltaD_mm) * 1000), 0)} µm
                                 </text>
                               </>
                             )}
@@ -2175,21 +2176,21 @@ export default function MechanischeKenngroessen() {
               <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                 <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase block font-bold">Dehnsteifigkeit EA</span>
-                  <span className="font-mono font-bold text-shiraz">{sim.EA_MN.toFixed(2)} MN</span>
+                  <span className="font-mono font-bold text-shiraz">{formatDeZahl(sim.EA_MN, 2)} MN</span>
                 </div>
                 <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase block font-bold">Biegesteifigkeit EI</span>
-                  <span className="font-mono font-bold text-shiraz">{sim.EI_kNm2.toFixed(2)} kNm²</span>
+                  <span className="font-mono font-bold text-shiraz">{formatDeZahl(sim.EI_kNm2, 2)} kNm²</span>
                 </div>
                 <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase block font-bold">Langzeit ΔL (Kriechen)</span>
                   <span className="font-mono font-bold text-blue-700">
-                    {sim.deltaL_kriechen_mm > 0 ? '+' : ''}{sim.deltaL_kriechen_mm.toFixed(2)} mm
+                    {sim.deltaL_kriechen_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_kriechen_mm, 2)} mm
                   </span>
                 </div>
                 <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase block font-bold">Schwindverkürzung</span>
-                  <span className="font-mono font-bold text-amber-700">{sim.deltaL_schwinden_mm.toFixed(2)} mm</span>
+                  <span className="font-mono font-bold text-amber-700">{formatDeZahl(sim.deltaL_schwinden_mm, 2)} mm</span>
                 </div>
               </div>
 
@@ -2198,11 +2199,11 @@ export default function MechanischeKenngroessen() {
                 <div>
                   <span className="font-bold text-text-main block">Gesamtverformung nach Kriechen &amp; Schwinden:</span>
                   <span className="text-[10px] text-text-main/70">
-                    ΔL_ges = ΔL_el ({sim.deltaL_mm > 0 ? '+' : ''}{sim.deltaL_mm.toFixed(2)} mm) + ΔL_kriech ({sim.deltaL_kriechen_mm > 0 ? '+' : ''}{sim.deltaL_kriechen_mm.toFixed(2)} mm) + ΔL_schwind ({sim.deltaL_schwinden_mm.toFixed(2)} mm)
+                    ΔL_ges = ΔL_el ({sim.deltaL_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_mm, 2)} mm) + ΔL_kriech ({sim.deltaL_kriechen_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_kriechen_mm, 2)} mm) + ΔL_schwind ({formatDeZahl(sim.deltaL_schwinden_mm, 2)} mm)
                   </span>
                 </div>
                 <div className="font-mono font-bold text-sm bg-white px-3 py-1.5 rounded-lg border border-home-grau/25 text-text-main shadow-xs">
-                  ΔL_ges = {sim.deltaL_gesamt_mm > 0 ? '+' : ''}{sim.deltaL_gesamt_mm.toFixed(2)} mm (L_end = {sim.endLaengeGesamt_mm.toFixed(1)} mm)
+                  ΔL_ges = {sim.deltaL_gesamt_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_gesamt_mm, 2)} mm (L_end = {formatDeZahl(sim.endLaengeGesamt_mm, 1)} mm)
                 </div>
               </div>
 
@@ -2254,12 +2255,12 @@ export default function MechanischeKenngroessen() {
                           {m.kategorie}
                         </span>
                       </td>
-                      <td className="p-3 text-right font-mono font-bold text-shiraz">{m.E.toLocaleString()}</td>
-                      <td className="p-3 text-right font-mono">{m.nu.toFixed(2)}</td>
-                      <td className="p-3 text-right font-mono text-slate-600">{G.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
-                      <td className="p-3 text-right font-mono font-semibold text-blue-800">{m.phiKriechen !== undefined ? m.phiKriechen.toFixed(1) : '-'}</td>
-                      <td className="p-3 text-right font-mono font-semibold">{m.fy.toLocaleString()}</td>
-                      <td className="p-3 text-right font-mono">{m.dichte.toLocaleString()}</td>
+                      <td className="p-3 text-right font-mono font-bold text-shiraz">{formatDeWert(m.E)}</td>
+                      <td className="p-3 text-right font-mono">{formatDeZahl(m.nu, 2)}</td>
+                      <td className="p-3 text-right font-mono text-slate-600">{formatDeZahl(G, 0)}</td>
+                      <td className="p-3 text-right font-mono font-semibold text-blue-800">{m.phiKriechen !== undefined ? formatDeZahl(m.phiKriechen, 1) : '-'}</td>
+                      <td className="p-3 text-right font-mono font-semibold">{formatDeWert(m.fy)}</td>
+                      <td className="p-3 text-right font-mono">{formatDeWert(m.dichte)}</td>
                     </tr>
                   );
                 })}
@@ -2444,10 +2445,10 @@ export default function MechanischeKenngroessen() {
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1993-1-1 (Eurocode 3: Bemessung von Stahlbauten - Dehnsteifigkeit und Biegung)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbetonbauten - Kriechen und Schwinden)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung von Holzbauten - Verformungen)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' },
+          { title: 'DIN EN 1993-1-1 (Eurocode 3: Bemessung von Stahlbauten - Dehnsteifigkeit und Biegung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbetonbauten - Kriechen und Schwinden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung von Holzbauten - Verformungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
         ]}
         literatur={[
           'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',

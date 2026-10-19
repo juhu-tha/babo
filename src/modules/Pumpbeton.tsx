@@ -130,8 +130,8 @@ export default function Pumpbeton() {
         ]}
         regelwerke={[
           { title: 'DBV-Merkblatt: Pumpbeton (Technologische Grundlagen und Anforderungen)', url: 'https://www.betonverein.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Mindestmehlkorngehalt für pumpbare Betone)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 24200 (Betonpumpen und Verteilermaste - Sicherheitstechnische Anforderungen)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 206 / DIN 1045-2 (Mindestmehlkorngehalt für pumpbare Betone)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN 24200 (Betonpumpen und Verteilermaste - Sicherheitstechnische Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+24200' }
         ]}
         literatur={[
           'Kaplan, D.; de Larrard, F.; Sedran, T. (2005): Design of Concrete Pumping Pipes and Rheology (ACI Materials Journal)',
@@ -145,7 +145,7 @@ export default function Pumpbeton() {
             quelle: 'Kaplan et al. (2005)'
           },
           {
-            formel: 'm_{\\text{Mehlkorn}} \\ge 350 - 400\\,\\text{kg/m}^3 \\quad (\\le 0.125\\,\\text{mm})',
+            formel: 'm_{\\text{Mehlkorn}} \\ge 350 - 400\\,\\text{kg/m}^3 \\quad (\\le 0{,}125\\,\\text{mm})',
             erklaerung: 'Erforderlicher Mehlkorngehalt (Zement + Flugasche + Feinsandanteile) zur kontinuierlichen Ausbildung der 1-2 mm Gleitschicht an der Stahlwandung.',
             quelle: 'DBV-Merkblatt Pumpbeton'
           }

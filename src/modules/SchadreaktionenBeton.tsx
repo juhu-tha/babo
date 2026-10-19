@@ -6,7 +6,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Line } from 'react-chartjs-2';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -131,9 +131,9 @@ function AkrGefuegeSimulator() {
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <div className="flex justify-between text-[10px] text-text-main/60">
-                <span>0.40 % (NA-Zement)</span>
-                <span className="font-bold text-shiraz">Grenze: 0.60 %</span>
-                <span>1.60 % (Sehr hoch)</span>
+                <span>0,40 % (NA-Zement)</span>
+                <span className="font-bold text-shiraz">Grenze: 0,60 %</span>
+                <span>1,60 % (Sehr hoch)</span>
               </div>
             </div>
 
@@ -215,7 +215,7 @@ function AkrGefuegeSimulator() {
                 }`}>
                   {formatDeZahl(simResults.currentGelPressure, 1)} MPa
                 </span>
-                <span className="text-[9px] text-text-main/70 block">fctm ≈ 3.0 MPa</span>
+                <span className="text-[9px] text-text-main/70 block">fctm ≈ 3,0 MPa</span>
               </div>
 
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
@@ -508,11 +508,11 @@ export default function SchadreaktionenBeton() {
     } else {
       if (alkaliEintrag <= 3.0) {
         risiko = 'Mittel';
-        massnahmen = 'Alkalieintrag ≤ 3.0 kg/m³. Verwendung von NA-Zement (z.B. CEM I-NA) oder begrenzter Zementgehalt ausreichend.';
+        massnahmen = 'Alkalieintrag ≤ 3,0 kg/m³. Verwendung von NA-Zement (z.B. CEM I-NA) oder begrenzter Zementgehalt ausreichend.';
       } else {
         risiko = 'Hoch';
         isOk = false;
-        massnahmen = 'Alkalieintrag > 3.0 kg/m³. Maßnahmen zwingend erforderlich! (NA-Zement verwenden, Zementgehalt reduzieren oder Gesteinskörnung E1 wählen).';
+        massnahmen = 'Alkalieintrag > 3,0 kg/m³. Maßnahmen zwingend erforderlich! (NA-Zement verwenden, Zementgehalt reduzieren oder Gesteinskörnung E1 wählen).';
       }
       if (feuchteklasse === 'WS' && eKlasse === 'E3') {
         risiko = 'Sehr Hoch';
@@ -536,14 +536,14 @@ export default function SchadreaktionenBeton() {
       labels,
       datasets: [
         {
-          label: `Aktueller Zement (${na2o} M.-%)`,
+          label: `Aktueller Zement (${formatDeWert(na2o)} M.-%)`,
           data: dataCurrent,
           borderColor: '#dc2626',
           backgroundColor: '#dc2626',
           tension: 0.1,
         },
         {
-          label: 'NA-Zement (0.60 M.-%)',
+          label: 'NA-Zement (0,60 M.-%)',
           data: dataNA,
           borderColor: '#3b82f6',
           backgroundColor: '#3b82f6',
@@ -565,12 +565,12 @@ export default function SchadreaktionenBeton() {
     if (saettigung > s_krit) {
       risiko = 'Sehr Hoch (Frostsprengung)';
       isOk = false;
-      massnahmen = `Der Sättigungsgrad (${saettigung}%) überschreitet den kritischen Wert (${s_krit}%). Das gefrierende Wasser hat keinen Platz zum Ausweichen. Frostsprengung wahrscheinlich!`;
+      massnahmen = `Der Sättigungsgrad (${formatDeWert(saettigung)}%) überschreitet den kritischen Wert (${s_krit}%). Das gefrierende Wasser hat keinen Platz zum Ausweichen. Frostsprengung wahrscheinlich!`;
     } else if (tausalz) {
       if (wz > 0.50 || lp < 4.0 || l_bar > 0.20) {
         risiko = 'Hoch (Oberflächenabwitterung)';
         isOk = false;
-        massnahmen = 'Bei Frost-Tausalz-Angriff (XF4) ist ein w/z-Wert ≤ 0.50 und ausreichend künstliche Luftporen (LP ≥ 4.0 Vol.-%, Abstandsfaktor ≤ 0.20 mm) zwingend erforderlich.';
+        massnahmen = 'Bei Frost-Tausalz-Angriff (XF4) ist ein w/z-Wert ≤ 0.50 und ausreichend künstliche Luftporen (LP ≥ 4,0 Vol.-%, Abstandsfaktor ≤ 0,20 mm) zwingend erforderlich.';
       } else {
         risiko = 'Gering (Frost-Tausalz-beständig)';
         massnahmen = 'Ausreichender Luftporengehalt und niedriger w/z-Wert schützen vor osmotischem Druck und Abwitterung.';
@@ -748,7 +748,7 @@ export default function SchadreaktionenBeton() {
 
               <Slider info="Menge an Zement im Beton." label={<FormulaText text="Zementgehalt" />} min={250} max={500} step={10} value={zement} unit="kg/m³" onChange={(e) => setZement(Number(e.target.value))} />
               <div className="mt-4">
-                <Slider label={<FormulaText text="Alkaligehalt Zement (Na_2O-Äq.)" />} info="NA-Zemente haben i.d.R. ≤ 0.60 M.-%" min={0.2} max={1.5} step={0.05} value={na2o} unit="M.-%" onChange={(e) => setNa2o(Number(e.target.value))} />
+                <Slider label={<FormulaText text="Alkaligehalt Zement (Na_2O-Äq.)" />} info="NA-Zemente haben i.d.R. ≤ 0,60 M.-%" min={0.2} max={1.5} step={0.05} value={na2o} unit="M.-%" onChange={(e) => setNa2o(Number(e.target.value))} />
               </div>
             </div>
           </div>
@@ -964,9 +964,9 @@ export default function SchadreaktionenBeton() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DAfStb Alkali-Richtlinie (Vorbeugung von Schäden durch Alkali-Kieselsäure-Reaktion im Beton)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Festlegung und Expositionen)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 19573 (Zusätzliche Anforderungen an schadensresistente Beton- und Mörtelsysteme)', url: 'https://www.beuth.de/' }
+          { title: 'DAfStb Alkali-Richtlinie (Vorbeugung von Schäden durch Alkali-Kieselsäure-Reaktion im Beton)', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Alkali' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Festlegung und Expositionen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN 19573 (Zusätzliche Anforderungen an schadensresistente Beton- und Mörtelsysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19573' }
         ]}
         formeln={[
           {
@@ -980,8 +980,8 @@ export default function SchadreaktionenBeton() {
             quelle: 'VDZ-AKR-Richtlinie'
           },
           {
-            formel: 'S_{\\text{crit}} = \\frac{V_w}{V_p} \\approx 91.7\\,\\% \\quad (\\Delta V_{\\text{Eis}} \\approx +9\\,\\%)',
-            erklaerung: 'Kritischer Wassersättigungsgrad bei Frostbeanspruchung. Überschreitet der Füllungsgrad der Kapillarporen 91.7%, kann das Wasser die 9-prozentige Volumenzunahme beim Phasenübergang zu Eis nicht mehr schadlos in freie Luftporen verdrängen; es entsteht zerstörerischer hydraulischer Sprengdruck.',
+            formel: 'S_{\\text{crit}} = \\frac{V_w}{V_p} \\approx 91{,}7\\,\\% \\quad (\\Delta V_{\\text{Eis}} \\approx +9\\,\\%)',
+            erklaerung: 'Kritischer Wassersättigungsgrad bei Frostbeanspruchung. Überschreitet der Füllungsgrad der Kapillarporen 91,7%, kann das Wasser die 9-prozentige Volumenzunahme beim Phasenübergang zu Eis nicht mehr schadlos in freie Luftporen verdrängen; es entsteht zerstörerischer hydraulischer Sprengdruck.',
             quelle: 'Powers: Freezing in Hardened Cement Paste'
           }
         ]}

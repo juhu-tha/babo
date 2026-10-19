@@ -3,7 +3,7 @@ import { GMODG_ANLAGE7, FX, uRetrofit, dRequired } from '@/src/utils/bestandKern
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Slider } from '@/src/components/ui/Slider';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
 import {
@@ -639,7 +639,7 @@ export default function Bestand() {
                         ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                         : 'bg-rose-50 text-rose-800 border-rose-300'
                     }`}>
-                      {sanierungResults.gegCompliant ? '✓ GModG-konform (Anlage 7)' : `⚠ Grenzwert überschritten – ca. ${sanierungResults.dReqMm} mm mehr Dämmung`}
+                      {sanierungResults.gegCompliant ? '✓ GModG-konform (Anlage 7)' : `⚠ Grenzwert überschritten – ca. ${formatDeWert(sanierungResults.dReqMm)} mm mehr Dämmung`}
                     </span>
                   </div>
 
@@ -737,7 +737,7 @@ export default function Bestand() {
                       <BlockMath math={`R_{\\text{alt}} = \\frac{1}{U_{\\text{alt}}} = \\frac{1}{${formatDeZahl(sanierungResults.originalU, 2)}} \\approx ${formatDeZahl(1 / sanierungResults.originalU, 3)} \\text{ m}^2\\text{K/W}`} />
 
                       <p>
-                        2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = {thickness} mm = {formatDeZahl(thickness / 1000, 3)} m):
+                        2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = {formatDeWert(thickness)} mm = {formatDeZahl(thickness / 1000, 3)} m):
                       </p>
                       <BlockMath math={`R_{\\text{Dämm}} = \\frac{d}{\\lambda_D} = \\frac{${formatDeZahl(thickness / 1000, 3)}}{${formatDeZahl(lambda, 3)}} \\approx ${formatDeZahl((thickness / 1000) / lambda, 3)} \\text{ m}^2\\text{K/W}`} />
 
@@ -853,8 +853,8 @@ export default function Bestand() {
         ]}
         regelwerke={[
           { title: "Gebäudemodernisierungsgesetz (GModG / GEG) - Sanierungsanforderungen für bestehende Gebäude", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz; Vermeidung von Tauwasser und Schimmel)", url: "https://www.dinmedia.de" },
-          { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de" },
+          { title: "DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz; Vermeidung von Tauwasser und Schimmel)", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-3" },
+          { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
           { title: "WTA-Merkblatt 6-4: Innendämmung nach WTA I – Planungsleitfaden", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
         ]}

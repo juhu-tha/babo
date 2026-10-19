@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { 
@@ -227,7 +228,7 @@ export default function Kuriositaeten() {
                     </ul>
                     <div className="text-slate-850 font-bold">Effektive Strukturmasse: G_real ≈ 7.425 t</div>
                     <div className="text-emerald-700 font-bold block text-[11px] mt-1">
-                      Resultierende Massereduktion: {((10800 - 7425) / 10800 * 100).toFixed(1)}% (≈ 3.375 t Entlastung)
+                      Resultierende Massereduktion: {formatDeZahl(((10800 - 7425) / 10800 * 100), 1)}% (≈ 3.375 t Entlastung)
                     </div>
                   </div>
                   <p className="text-xs text-slate-650 italic">
@@ -886,8 +887,8 @@ export default function Kuriositaeten() {
           'Marie Jackson et al.: Phillipsite and Al-Tobermorite crystallization in ancient Roman harbor concrete — American Mineralogist'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauwerken)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 206 / DIN 1045-2', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
           { title: 'DAfStb-Richtlinie "Massenbauteile aus Beton" (Massenbeton-Wärmeentwicklung)', url: 'https://www.dafstb.de' },
           { title: 'ÖVBB-Richtlinie "Spritzbeton" (Tunnelbau-Regelwerk)', url: 'https://www.bautechnik.co.at' }
         ]}

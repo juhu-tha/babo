@@ -80,7 +80,7 @@ export default function BpBetonfertigteile() {
             <Info className="w-5 h-5 mx-auto text-slate-350" />
             <p className="text-xs font-semibold">Interaktive Hotspots</p>
             <p className="text-[10px] leading-snug">
-              Fahre mit der Maus über die rot oder blau eingefärbten Bereiche der Skizze oder klicke auf die Schaltflächen unten, um detaillierte Werkstoff- und Funktionseigenschaften einzublenden.
+              Fahren Sie mit der Maus über die rot oder blau eingefärbten Bereiche der Skizze oder klicken Sie auf die Schaltflächen unten, um detaillierte Werkstoff- und Funktionseigenschaften einzublenden.
             </p>
           </div>
         </div>
@@ -175,7 +175,7 @@ export default function BpBetonfertigteile() {
                         <Sparkles className="text-shiraz w-4 h-4" /> Interaktives Elementen-Studio (mit bautechnischen Skizzen)
                       </h4>
                       <p className="text-xs text-slate-600 font-medium">
-                        Klicke auf ein Element, um die 2D-Querschnittszeichnung zu laden und dessen Aufbau im Detail zu analysieren.
+                        Klicken Sie auf ein Element, um die 2D-Querschnittszeichnung zu laden und dessen Aufbau im Detail zu analysieren.
                       </p>
                     </div>
 
@@ -642,7 +642,7 @@ export default function BpBetonfertigteile() {
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Stützweiten (Max):</span>
-                                <strong className="text-slate-900 block font-semibold">bis ~7.50 m (schlaff)</strong>
+                                <strong className="text-slate-900 block font-semibold">bis ~7,50 m (schlaff)</strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Montagestützen:</span>
@@ -664,7 +664,7 @@ export default function BpBetonfertigteile() {
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Wandstärken:</span>
-                                <strong className="text-slate-900 block font-semibold">20, 24, 30, 36.5 cm</strong>
+                                <strong className="text-slate-900 block font-semibold">20, 24, 30, 36,5 cm</strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Schalungsdruck:</span>
@@ -672,7 +672,7 @@ export default function BpBetonfertigteile() {
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Betonier-Limit:</span>
-                                <strong className="text-rose-700 block font-bold">Max. v ≤ 1.5 m/h</strong>
+                                <strong className="text-rose-700 block font-bold">Max. v ≤ 1,5 m/h</strong>
                               </div>
                             </div>
                           </div>
@@ -836,20 +836,20 @@ export default function BpBetonfertigteile() {
           'Wendehorst Bautechnische Zahlentafeln, 38. Auflage, Springer Vieweg 2026'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13369 (Allgemeine Regeln für Betonfertigteile)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1168 (Betonfertigteile - Hohlplatten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13747 (Betonfertigteile - Deckensysteme mit Ortbetonergänzung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14992 (Betonfertigteile - Wandelemente)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-4:2023-08 (Zusatzregeln für Herstellung und Konformität von Fertigteilen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 13369 (Allgemeine Regeln für Betonfertigteile)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13369' },
+          { title: 'DIN EN 1168 (Betonfertigteile - Hohlplatten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1168' },
+          { title: 'DIN EN 13747 (Betonfertigteile - Deckensysteme mit Ortbetonergänzung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13747' },
+          { title: 'DIN EN 14992 (Betonfertigteile - Wandelemente)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14992' },
+          { title: 'DIN 1045-4:2023-08 (Zusatzregeln für Herstellung und Konformität von Fertigteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-4' }
         ]}
         formeln={[
           {
-            formel: 'v_{Rdi} = c \\cdot f_{ctd} + \\mu \\cdot \\sigma_n + \\rho \\cdot f_{yd} \\cdot (\\mu \\cdot \\sin\\alpha + \\cos\\alpha) \\le 0.5 \\, \\nu \\, f_{cd}',
+            formel: 'v_{Rdi} = c \\cdot f_{ctd} + \\mu \\cdot \\sigma_n + \\rho \\cdot f_{yd} \\cdot (\\mu \\cdot \\sin\\alpha + \\cos\\alpha) \\le 0{,}5 \\, \\nu \\, f_{cd}',
             erklaerung: 'Bemessungswert der Schubtragfähigkeit in der Verbundfuge zwischen Fertigteil und Ortbetonschicht nach Eurocode 2 (DIN EN 1992-1-1 Abs. 6.2.5).',
             quelle: 'DIN EN 1992-1-1'
           },
           {
-            formel: 'G_{\\text{Hohl}} \\approx (1 - \\eta) \\cdot G_{\\text{Voll}} \\quad (\\eta \\approx 0.35 - 0.45)',
+            formel: 'G_{\\text{Hohl}} \\approx (1 - \\eta) \\cdot G_{\\text{Voll}} \\quad (\\eta \\approx 0{,}35 - 0{,}45)',
             erklaerung: 'Gewichtsersparnis einer Spannbeton-Hohlplatte gegenüber einer Vollbeton-Massivdecke gleicher Bauhöhe durch innenliegende Hohlkanäle.',
             quelle: 'DIN EN 1168'
           }

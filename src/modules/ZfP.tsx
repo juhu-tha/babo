@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
   Chart as ChartJS,
@@ -160,7 +161,7 @@ function DGZfPSection() {
           <div className="space-y-3">
             <h3 className="font-bold text-slate-900 text-base">Rolle & Bedeutung für die Bauwerkserhaltung</h3>
             <p>
-              Die <strong>DGZfP</strong> wurde bereits 1933 gegründet und ist heute der führende wissenschaftlich-technische Verein zur Förderung zerstörungsfreier Prüfverfahren (NDT - Non-Destructive Testing) in Deutschland. Dein <strong>Fachausschuss ZfP im Bauwesen (FA ZfP-Bau)</strong> und der zugehörige <strong>Unterausschuss</strong> fassen Experten aller führenden Prüfämter, Universitäten und Hersteller von Sonden zusammen.
+              Die <strong>DGZfP</strong> wurde bereits 1933 gegründet und ist heute der führende wissenschaftlich-technische Verein zur Förderung zerstörungsfreier Prüfverfahren (NDT - Non-Destructive Testing) in Deutschland. Ihr <strong>Fachausschuss ZfP im Bauwesen (FA ZfP-Bau)</strong> und der zugehörige <strong>Unterausschuss</strong> fassen Experten aller führenden Prüfämter, Universitäten und Hersteller von Sonden zusammen.
             </p>
             <p>
               Im Gegensatz zu metallischen Werkstoffen weisen Baustoffe wie Beton, Holz und Mauerwerk komplexe, stark heterogene Gefüge auf. Die DGZfP erarbeitet deshalb eigens darauf zugeschnittene <strong>Richtlinien (Merkblätter)</strong>, die als unbestrittener Stand der Wissenschaft und Technik und in rechtlichen Streitfällen als <strong>anerkannte Regeln der Technik</strong> herangezogen werden.
@@ -261,12 +262,12 @@ function DGZfPSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-slate-800 p-4 rounded-xl border border-home-grau/30">
                   <div className="text-[10px] text-slate-400 font-bold uppercase">Theorieausbildung (DGZfP Kurs)</div>
-                  <div className="text-2xl font-black text-shiraz mt-1">{simulationRes.schoolHours} Stunden</div>
+                  <div className="text-2xl font-black text-shiraz mt-1">{formatDeWert(simulationRes.schoolHours)} Stunden</div>
                   <div className="text-[10px] text-slate-300 mt-1">Vorausgesetzte Theoriezeit des DGZfP-Lehrgangs.</div>
                 </div>
                 <div className="bg-slate-800 p-4 rounded-xl border border-home-grau/30">
                   <div className="text-[10px] text-slate-400 font-bold uppercase">Praxiserfahrung im Bauwesen</div>
-                  <div className="text-2xl font-black text-teal-400 mt-1">{simulationRes.practiceDays} Arbeitstage</div>
+                  <div className="text-2xl font-black text-teal-400 mt-1">{formatDeWert(simulationRes.practiceDays)} Arbeitstage</div>
                   <div className="text-[10px] text-slate-300 mt-1">Nachzuweisende Tage unter Anleitung eines Stufe-2/3 Prüfers.</div>
                 </div>
               </div>
@@ -525,7 +526,7 @@ export default function ZfP() {
         "Aufkleben von standardisierten Prüfstempeln (Ø 50 mm) mittels Epoxidharzklebstoff.",
         "Kernbohrung der Beschichtung bis in den tragenden Betonuntergrund.",
         "Zentrischer Zugversuch bis zum Bruch mit mobiler Zugvorrichtung.",
-        "Sollwerte: Meist mind. 1.5 N/mm² für Oberflächenfestigkeit bei Instandsetzungen."
+        "Sollwerte: Meist mind. 1,5 N/mm² für Oberflächenfestigkeit bei Instandsetzungen."
       ]
     },
     {
@@ -1061,7 +1062,7 @@ export default function ZfP() {
     plugins: {
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${context.raw.toFixed(1)} N/mm²`
+          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.raw, 1)} N/mm²`
         }
       }
     }
@@ -1286,9 +1287,9 @@ export default function ZfP() {
 
                 <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
                   <div className="text-sm opacity-90 mb-1">Geschätzte Druckfestigkeit</div>
-                  <div className="text-3xl font-bold">{reboundResults.fc.toFixed(1)} N/mm²</div>
+                  <div className="text-3xl font-bold">{formatDeZahl(reboundResults.fc, 1)} N/mm²</div>
                   <div className="text-xs opacity-75 mt-2">
-                    Korrigiertes R: {reboundResults.rCorr.toFixed(1)}
+                    Korrigiertes R: {formatDeZahl(reboundResults.rCorr, 1)}
                   </div>
                   {/* Animation */}
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center animate-bounce">
@@ -1406,7 +1407,7 @@ export default function ZfP() {
                   <span className="font-mono text-slate-700 bg-slate-200 px-1.5 py-0.5 rounded text-[10px]">RILEM II.4</span>
                 </div>
                 <div className="text-2xl font-bold text-slate-900">
-                  {karstenResults.w.toFixed(3)} kg/(m² · h^{"0.5"})
+                  {formatDeZahl(karstenResults.w, 3)} kg/(m² · h^{"0.5"})
                 </div>
 
                 <div className={`mt-2 p-3 rounded-lg border text-xs flex flex-col gap-1 ${karstenResults.textClass}`}>
@@ -1429,7 +1430,7 @@ export default function ZfP() {
                   ></div>
                 </div>
                 <div className="text-xs font-mono font-bold text-blue-600">
-                  {Math.max(0, 10 - karstenAbsorbed).toFixed(1)} ml übrig
+                  {formatDeZahl(Math.max(0, 10 - karstenAbsorbed), 1)} ml übrig
                 </div>
               </div>
             </div>
@@ -1468,9 +1469,9 @@ export default function ZfP() {
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
               <div className="text-sm opacity-90 mb-1"><FormulaText text="Dyn. Elastizitätsmodul (E_{dyn})" /></div>
-              <div className="text-3xl font-bold">{ultrasonicResults.eDyn.toFixed(1)} GPa</div>
+              <div className="text-3xl font-bold">{formatDeZahl(ultrasonicResults.eDyn, 1)} GPa</div>
               <div className="text-xs opacity-75 mt-2">
-                <FormulaText text={`\\text{Grobe Festigkeitsabschätzung: } \\approx ${ultrasonicResults.fcEst.toFixed(1)} \\text{ N/mm}^2`} />
+                <FormulaText text={`\\text{Grobe Festigkeitsabschätzung: } \\approx ${formatDeTeX(ultrasonicResults.fcEst, 1)} \\text{ N/mm}^2`} />
               </div>
               {/* Animation */}
               <div className="absolute right-0 top-0 h-full w-full pointer-events-none">
@@ -1516,7 +1517,7 @@ export default function ZfP() {
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
               <div className="text-sm opacity-90 mb-1">Berechnete Tiefe (Bauteildicke / Fehlstelle)</div>
-              <div className="text-3xl font-bold">{impactEchoResults.depth.toFixed(0)} mm</div>
+              <div className="text-3xl font-bold">{formatDeZahl(impactEchoResults.depth, 0)} mm</div>
               <div className="text-[11px] opacity-80 mt-1">d = β · v_p / (2 · f), β = 0,96 (ASTM C1383)</div>
               
               {/* Impact-Echo Animation */}
@@ -1569,7 +1570,7 @@ export default function ZfP() {
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
               <div className="text-sm opacity-90 mb-1">Relative Signalstärke</div>
-              <div className="text-3xl font-bold">{bewehrungssucherResults.signalStrength.toFixed(0)} %</div>
+              <div className="text-3xl font-bold">{formatDeZahl(bewehrungssucherResults.signalStrength, 0)} %</div>
               
               {/* Animation für Signalstärke */}
               <div className="relative w-full h-48 bg-slate-200 rounded-lg overflow-hidden border border-home-grau/30 mt-4">
@@ -1583,8 +1584,11 @@ export default function ZfP() {
                 
                 {/* Magnetic Field Lines (simplified) */}
                 <svg className="absolute inset-0 w-full h-full" style={{ opacity: bewehrungssucherResults.signalStrength / 100 }}>
-                  <path d="M 50% 24 Q 30% 50 50% 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
-                  <path d="M 50% 24 Q 70% 50 50% 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
+                  {/* SVG-Pfade akzeptieren keine %-Koordinaten → zentriertes Unter-SVG */}
+                  <svg x="50%" overflow="visible">
+                    <path d="M 0 24 Q -40 50 0 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
+                    <path d="M 0 24 Q 40 50 0 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
+                  </svg>
                 </svg>
 
                 {/* Rebar */}
@@ -1617,7 +1621,7 @@ export default function ZfP() {
                     transform: 'translateY(-50%)'
                   }}
                 >
-                  c = {cover} mm
+                  c = {formatDeWert(cover)} mm
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 h-1 bg-white/50 w-full">
@@ -1670,9 +1674,9 @@ export default function ZfP() {
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
               <div className="text-sm opacity-90 mb-1">Berechnete Tiefe des Objekts</div>
-              <div className="text-3xl font-bold">{radarResults.depth.toFixed(1)} mm</div>
+              <div className="text-3xl font-bold">{formatDeZahl(radarResults.depth, 1)} mm</div>
               <div className="text-xs opacity-75 mt-2">
-                Radargeschwindigkeit: {radarResults.vRadar.toFixed(1)} mm/ns
+                Radargeschwindigkeit: {formatDeZahl(radarResults.vRadar, 1)} mm/ns
               </div>
               {/* Animation */}
               <div className="relative w-full h-48 bg-slate-200 rounded-lg overflow-hidden border border-home-grau/30 mt-4">
@@ -1685,7 +1689,7 @@ export default function ZfP() {
                 </div>
                 
                 {/* Radar Waves (SVG) */}
-                <svg className="absolute inset-0 w-full h-full">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="radarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                       <stop offset="0%" stopColor="rgba(37, 99, 235, 0.6)" />
@@ -1693,7 +1697,7 @@ export default function ZfP() {
                     </linearGradient>
                   </defs>
                   <path 
-                    d={`M 50% 32 L ${50 - radarResults.depth/5}% ${Math.min(90, 32 + radarResults.depth/2)}% L ${50 + radarResults.depth/5}% ${Math.min(90, 32 + radarResults.depth/2)}% Z`} 
+                    d={`M 50 16.7 L ${50 - radarResults.depth/5} ${Math.min(90, 32 + radarResults.depth/2)} L ${50 + radarResults.depth/5} ${Math.min(90, 32 + radarResults.depth/2)} Z`} /* viewBox 0–100: Prozentkoordinaten ohne %-Zeichen (in SVG-Pfaden ungültig); Start = Unterkante Sensor (32 px von 192 px) */ 
                     fill="url(#radarGrad)" 
                     className="animate-pulse"
                     style={{ animationDuration: '2s' }}
@@ -1727,7 +1731,7 @@ export default function ZfP() {
                     transform: 'translateY(-50%)'
                   }}
                 >
-                  d = {radarResults.depth.toFixed(0)} mm
+                  d = {formatDeZahl(radarResults.depth, 0)} mm
                 </div>
               </div>
               <div className="absolute right-8 top-0 h-full w-32 flex flex-col items-center justify-between py-2">
@@ -1812,8 +1816,8 @@ export default function ZfP() {
               <div className="mt-2 p-4 rounded-xl border border-home-grau/20 bg-slate-50 flex flex-col gap-2">
                 <div className="text-xs font-bold uppercase tracking-wider text-slate-500">Spezifischer elektrischer Widerstand</div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold text-slate-900">{wennerResults.rho.toFixed(1)} Ω·m</span>
-                  <span className="text-sm text-slate-500">({wennerResults.rhoKohmCm.toFixed(1)} kΩ·cm)</span>
+                  <span className="text-2xl font-bold text-slate-900">{formatDeZahl(wennerResults.rho, 1)} Ω·m</span>
+                  <span className="text-sm text-slate-500">({formatDeZahl(wennerResults.rhoKohmCm, 1)} kΩ·cm)</span>
                 </div>
 
                 <div className={`mt-2 p-3 rounded-lg border text-xs flex flex-col gap-1 ${wennerResults.textClass}`}>
@@ -1900,7 +1904,7 @@ export default function ZfP() {
 
             <div className={`mt-4 p-4 text-white rounded-xl shadow-md transition-colors duration-500 ${radiographyResults.color} relative overflow-hidden`}>
               <div className="text-sm opacity-90 mb-1">Transmission & Bildqualität</div>
-              <div className="text-3xl font-bold">{radiographyResults.transmission.toFixed(2)} %</div>
+              <div className="text-3xl font-bold">{formatDeZahl(radiographyResults.transmission, 2)} %</div>
               <div className="text-xs opacity-75 mt-2">
                 Qualität: {radiographyResults.quality}
               </div>

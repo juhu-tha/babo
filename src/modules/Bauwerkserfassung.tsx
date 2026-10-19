@@ -5,7 +5,7 @@ import {
   Settings, Zap, ShieldCheck, HelpCircle, LayoutGrid
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 export default function Bauwerkserfassung() {
   const [activeSubTab, setActiveSubTab] = useState<'grundlagen' | 'methoden' | 'leica_workflow' | 'tragwerksplanung'>('grundlagen');
@@ -195,7 +195,7 @@ export default function Bauwerkserfassung() {
                     <span className={`text-xs font-mono font-bold px-1.5 py-0.5 rounded border ${
                       selectedStufe === stufe.level ? 'bg-shiraz text-white border-shiraz' : 'bg-slate-200 text-slate-600 border-home-grau/30'
                     }`}>
-                      Stufe {stufe.level}
+                      Stufe {formatDeWert(stufe.level)}
                     </span>
                     <h4 className="font-extrabold text-xs mt-3 text-slate-900">{stufe.name}</h4>
                     <p className="text-xs text-slate-500 font-mono mt-1.5">
@@ -217,7 +217,7 @@ export default function Bauwerkserfassung() {
               <div>
                 <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
                   <span className="font-sans w-2 h-2 rounded-full bg-shiraz inline-block"></span>
-                  Metrologische Details zu Stufe {selectedStufe}
+                  Metrologische Details zu Stufe {formatDeWert(selectedStufe)}
                 </h3>
                 <ul className="space-y-2 text-xs text-slate-600 pl-4 list-disc font-sans">
                   {selectedStufe === 1 && (
@@ -316,7 +316,7 @@ export default function Bauwerkserfassung() {
                     },
                     {
                       name: 'Laser-Entfernungsmesser',
-                      tol: '± 1.0 - 5.0 mm',
+                      tol: '± 1,0 - 5,0 mm',
                       speed: 'Mittel',
                       work: 'Manuelle Eingabe in CAD-Zeichnungen',
                       pros: 'Schnelle Einzelschüsse, hohe Präzision am Einzelpunkt, hohe Mobilität auf der Baustelle.',
@@ -325,7 +325,7 @@ export default function Bauwerkserfassung() {
                     },
                     {
                       name: 'Tachymetrie (Totalstation)',
-                      tol: '± 1.0 - 2.0 mm',
+                      tol: '± 1,0 - 2,0 mm',
                       speed: 'Mittel-Langsam',
                       work: 'Direktimport von Festpunkthöhen',
                       pros: 'Höchste geodätische Genauigkeit, perfektes, verzugfreies Koordinatennetz an Festpunkten.',
@@ -334,7 +334,7 @@ export default function Bauwerkserfassung() {
                     },
                     {
                       name: 'Terrestrisches LiDAR (TLS)',
-                      tol: '± 1.0 - 3.0 mm',
+                      tol: '± 1,0 - 3,0 mm',
                       speed: 'Sehr schnell',
                       work: 'Hoch (Registrierung, Filterung in Leica Cyclone)',
                       pros: 'Bis 680.000 Punkte/s (BLK360 G2), lückenlose 3D-Erfassung, Genauigkeit laut Datenblatt im Bereich weniger Millimeter (z. B. 4 mm @ 10 m).',
@@ -343,7 +343,7 @@ export default function Bauwerkserfassung() {
                     },
                     {
                       name: '3D-Photogrammetrie (SfM)',
-                      tol: '± 5.0 - 15.0 mm',
+                      tol: '± 5,0 - 15,0 mm',
                       speed: 'Schnell (Kameradrohne)',
                       work: 'Sehr hoch (Bildrekonstruktion auf GPU)',
                       pros: 'Zusätzliche dichte RGB-Farbinformationen, hervorragend für Dachaußenseiten & Stuckverzierungen.',
@@ -527,7 +527,7 @@ export default function Bauwerkserfassung() {
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5">Breite b (mm):</label>
                       <input
-                        type="number"
+                        type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterWidth}
                         onChange={(e) => setRafterWidth(Math.max(40, parseInt(e.target.value) || 1))}
@@ -536,7 +536,7 @@ export default function Bauwerkserfassung() {
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5">Höhe h (mm):</label>
                       <input
-                        type="number"
+                        type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterHeight}
                         onChange={(e) => setRafterHeight(Math.max(60, parseInt(e.target.value) || 1))}
@@ -547,7 +547,7 @@ export default function Bauwerkserfassung() {
                   <div>
                     <label className="block font-semibold text-slate-700 mb-0.5">Sparrenlänge L (mm):</label>
                     <input
-                      type="number"
+                      type="number" min="0"
                       className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                       value={spanLength}
                       onChange={(e) => setSpanLength(Math.max(1000, parseInt(e.target.value) || 1))}
@@ -559,7 +559,7 @@ export default function Bauwerkserfassung() {
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5 text-xs">Axialdruck N_d (kN):</label>
                       <input
-                        type="number"
+                        type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={axialForce}
                         onChange={(e) => setAxialForce(Math.max(0, parseFloat(e.target.value) || 0))}
@@ -568,7 +568,7 @@ export default function Bauwerkserfassung() {
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5 text-xs">Biegelast q_d (kN/m):</label>
                       <input
-                        type="number"
+                        type="number" min="0"
                         step="0.1"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={bendingLoad}
@@ -581,7 +581,7 @@ export default function Bauwerkserfassung() {
                   <div className="pt-2 border-t border-home-grau/30">
                     <div className="flex justify-between font-semibold mb-1">
                       <span>Gemessene Verformung e_0 (mm):</span>
-                      <span className="text-shiraz font-mono font-bold">{initialDeformation} mm</span>
+                      <span className="text-shiraz font-mono font-bold">{formatDeWert(initialDeformation)} mm</span>
                     </div>
                     <input
                       type="range"
@@ -606,7 +606,7 @@ export default function Bauwerkserfassung() {
 
                     <div className="grid grid-cols-2 gap-4 text-xs font-mono mb-4 text-slate-600">
                       <div>
-                        Querschnittsfläche A: <strong className="text-slate-800">{staticsResults.A} mm²</strong>
+                        Querschnittsfläche A: <strong className="text-slate-800">{formatDeWert(staticsResults.A)} mm²</strong>
                       </div>
                       <div>
                         Trägheitsmoment I: <strong className="text-slate-800">{formatDeZahl(staticsResults.I / 10000, 1)} · 10⁴ mm⁴</strong>
@@ -638,7 +638,7 @@ export default function Bauwerkserfassung() {
                       {/* Real deformed bar */}
                       <div>
                         <div className="flex justify-between text-xs font-semibold mb-1">
-                          <span className="text-slate-900 font-bold">Statik nach Verformungsgerechtem Aufmaß (e_0 = {initialDeformation}mm)</span>
+                          <span className="text-slate-900 font-bold">Statik nach Verformungsgerechtem Aufmaß (e_0 = {formatDeWert(initialDeformation)}mm)</span>
                           <span className={`font-mono font-bold ${staticsResults.limitRatio > 100 ? 'text-red-600' : 'text-amber-600'}`}>
                             {formatDeZahl(staticsResults.limitRatio, 1)} %
                           </span>
@@ -692,8 +692,8 @@ export default function Bauwerkserfassung() {
           "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
         ]}
         regelwerke={[
-          { title: "DIN 18710-1 (Ingenieurvermessung - Teil 1: Allgemeine Anforderungen)", url: "https://www.dinmedia.de/" },
-          { title: "DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/" },
+          { title: "DIN 18710-1 (Ingenieurvermessung - Teil 1: Allgemeine Anforderungen)", url: "https://www.dinmedia.de/de/suche?q=DIN+18710-1" },
+          { title: "DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1" },
           { title: "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg)", url: "https://www.denkmalpflege-bw.de/" }
         ]}
         formeln={[

@@ -16,7 +16,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 ChartJS.register(
   CategoryScale,
@@ -272,7 +272,7 @@ export default function Baustatik() {
           <rect x={getX(0)} y={baseY - 40} width={drawWidth} height={35} fill="rgba(59, 130, 246, 0.1)" />
           <line x1={getX(0)} y1={baseY - 40} x2={getX(results.totalLength)} y2={baseY - 40} stroke="#475569" strokeWidth="2" />
           {arrows}
-          <text x={getX(results.totalLength / 2)} y={baseY - 48} fill="#475569" textAnchor="middle" fontWeight="bold" fontSize="14">q = {q} kN/m</text>
+          <text x={getX(results.totalLength / 2)} y={baseY - 48} fill="#475569" textAnchor="middle" fontWeight="bold" fontSize="14">q = {formatDeWert(q)} kN/m</text>
         </g>
       );
     };
@@ -283,7 +283,7 @@ export default function Baustatik() {
       return (
         <g>
           <line x1={x} y1={baseY - 80} x2={x} y2={baseY - 5} stroke="#A3113E" strokeWidth="3" markerEnd="url(#arrowhead-red)" />
-          <text x={x} y={baseY - 88} fill="#A3113E" textAnchor="middle" fontWeight="bold" fontSize="14">F = {f} kN</text>
+          <text x={x} y={baseY - 88} fill="#A3113E" textAnchor="middle" fontWeight="bold" fontSize="14">F = {formatDeWert(f)} kN</text>
         </g>
       );
     };
@@ -295,7 +295,7 @@ export default function Baustatik() {
       return (
         <g>
           <path d={`M ${x-15} ${baseY-15} A 15 15 0 1 1 ${x+15} ${baseY-15}`} fill="none" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead-yellow)" />
-          <text x={x} y={baseY - 35} fill="#64748b" textAnchor="middle" fontWeight="bold" fontSize="14">M = {m0} kNm</text>
+          <text x={x} y={baseY - 35} fill="#64748b" textAnchor="middle" fontWeight="bold" fontSize="14">M = {formatDeWert(m0)} kNm</text>
         </g>
       );
     };
@@ -323,7 +323,7 @@ export default function Baustatik() {
             <>
               <line x1={getX(l)} y1={baseY + 10} x2={getX(l)} y2={dimY1 + 10} />
               <line x1={getX(0)} y1={dimY1} x2={getX(l)} y2={dimY1} markerStart="url(#tick)" markerEnd="url(#tick)" />
-              <text x={getX(l/2)} y={dimY1 - 5} textAnchor="middle">l = {l} m</text>
+              <text x={getX(l/2)} y={dimY1 - 5} textAnchor="middle">l = {formatDeWert(l)} m</text>
             </>
           )}
 
@@ -826,9 +826,9 @@ export default function Baustatik() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1991-1-1:2010-12 (Eurocode 1: Einwirkungen auf Tragwerke - Wichten, Eigengewicht, Nutzlasten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1991-1-1:2010-12 (Eurocode 1: Einwirkungen auf Tragwerke - Wichten, Eigengewicht, Nutzlasten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991-1-1' },
+          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' }
         ]}
         formeln={[
           {

@@ -15,7 +15,7 @@ export const nachhaltigkeitTasks: Task[] = [
     title: 'Ökobilanz: GWP von Baustoffen & Biogener Kohlenstoff',
     question: 'Warum hat Brettschichtholz in der Herstellungsphase (A1-A3) oft ein negatives Treibhausgaspotenzial (GWP), während Stahlbeton stark positiv ist?',
     moduleHint: { id: 'oekobilanz_lca', name: 'Ökobilanzierung (LCA)' },
-    solution: 'Bäume entziehen der Atmosphäre während des Wachstums CO2 durch Photosynthese und speichern den Kohlenstoff in den Holzfasern. Nach EN 15804 wird dies als negativer GWP-Wert in Phase A1–A3 bilanziert (-1 kg Holz bindet rechnerisch ca. 1.83 kg CO2). Bei der Zementherstellung hingegen wird durch das Entsäuern des Kalksteins im Drehrohrofen (thermische Zersetzung von CaCO3) zwingend CO2 freigesetzt.'
+    solution: 'Bäume entziehen der Atmosphäre während des Wachstums CO2 durch Photosynthese und speichern den Kohlenstoff in den Holzfasern. Nach EN 15804 wird dies als negativer GWP-Wert in Phase A1–A3 bilanziert (-1 kg Holz bindet rechnerisch ca. 1,83 kg CO2). Bei der Zementherstellung hingegen wird durch das Entsäuern des Kalksteins im Drehrohrofen (thermische Zersetzung von CaCO3) zwingend CO2 freigesetzt.'
   },
   {
     id: 't_lca_module_en15804',
@@ -37,9 +37,9 @@ export const nachhaltigkeitTasks: Task[] = [
     id: 't_lcc_lebenszykluskosten',
     difficulty: 'Schwer',
     title: 'Lebenszykluskosten (LCC): Barwertmethode nach DIN EN 15643',
-    question: 'Für ein Bauteil stehen zwei Varianten zur Wahl:\n- Variante A: Investitionskosten C_0 = 50.000 €, jährliche Wartungskosten A_t = 1.000 €/a über n = 30 Jahre.\n- Variante B: Investitionskosten C_0 = 65.000 €, jährliche Wartungskosten A_t = 200 €/a über n = 30 Jahre.\n\nBerechnen Sie den Barwert der Lebenszykluskosten (Net Present Value, NPV) für beide Varianten bei einem Diskontierungszinssatz von r = 3.0 % und bestimme die wirtschaftlichere Variante.',
+    question: 'Für ein Bauteil stehen zwei Varianten zur Wahl:\n- Variante A: Investitionskosten C_0 = 50.000 €, jährliche Wartungskosten A_t = 1.000 €/a über n = 30 Jahre.\n- Variante B: Investitionskosten C_0 = 65.000 €, jährliche Wartungskosten A_t = 200 €/a über n = 30 Jahre.\n\nBerechnen Sie den Barwert der Lebenszykluskosten (Net Present Value, NPV) für beide Varianten bei einem Diskontierungszinssatz von r = 3,0 % und bestimme die wirtschaftlichere Variante.',
     moduleHint: { id: 'lebenszyklus_kosten', name: 'Lebenszykluskosten (LCC)' },
-    solution: 'Berechnung nach der Barwertmethode:\n1. **Rentenbarwertfaktor ($RBF$):**\n   $$RBF = \\frac{(1+r)^n - 1}{r \\cdot (1+r)^n} = \\frac{(1.03)^{30} - 1}{0.03 \\cdot (1.03)^{30}} = \\frac{2.4273 - 1}{0.03 \\cdot 2.4273} = \\frac{1.4273}{0.07282} \\approx 19.60$$\n2. **Barwert Variante A:**\n   $$\\text{LCC}_A = C_0 + A_t \\cdot RBF = 50000\\text{ €} + 1000\\text{ €/a} \\times 19.60 = 50000 + 19600 = **69.600\\text{ €}**$$\n3. **Barwert Variante B:**\n   $$\\text{LCC}_B = C_0 + A_t \\cdot RBF = 65000\\text{ €} + 200\\text{ €/a} \\times 19.60 = 65000 + 3920 = **68.920\\text{ €}**$$\n4. **Ergebnis:**\n   Obwohl Variante B bei der Erstinvestition um 15.000 € teurer ist, ist sie über den Betrachtungszeitraum von 30 Jahren um **680 € günstiger** als Variante A (Variante B ist die wirtschaftlichere Lebenszyklus-Lösung).'
+    solution: 'Berechnung nach der Barwertmethode:\n1. **Rentenbarwertfaktor ($RBF$):**\n   $$RBF = \\frac{(1+r)^n - 1}{r \\cdot (1+r)^n} = \\frac{(1.03)^{30} - 1}{0{,}03 \\cdot (1.03)^{30}} = \\frac{2{,}4273 - 1}{0{,}03 \\cdot 2{,}4273} = \\frac{1{,}4273}{0{,}07282} \\approx 19{,}60$$\n2. **Barwert Variante A:**\n   $$\\text{LCC}_A = C_0 + A_t \\cdot RBF = 50000\\text{ €} + 1000\\text{ €/a} \\times 19{,}60 = 50000 + 19600 = **69.600\\text{ €}**$$\n3. **Barwert Variante B:**\n   $$\\text{LCC}_B = C_0 + A_t \\cdot RBF = 65000\\text{ €} + 200\\text{ €/a} \\times 19{,}60 = 65000 + 3920 = **68.920\\text{ €}**$$\n4. **Ergebnis:**\n   Obwohl Variante B bei der Erstinvestition um 15.000 € teurer ist, ist sie über den Betrachtungszeitraum von 30 Jahren um **680 € günstiger** als Variante A (Variante B ist die wirtschaftlichere Lebenszyklus-Lösung).'
   },
   {
     id: 't25',

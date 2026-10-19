@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 export interface DeconstructionComponent {
   id: string;
@@ -382,7 +382,7 @@ export default function Kreislaufwirtschaft() {
                       style={{ maxWidth: `${100 - index * 6}%` }}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="bg-white/20 w-6 h-6 rounded-full flex items-center justify-center text-sm">{s.id}</div>
+                        <div className="bg-white/20 w-6 h-6 rounded-full flex items-center justify-center text-sm">{formatDeWert(s.id)}</div>
                         <span className="text-left text-sm sm:text-base">{s.name}</span>
                       </div>
                       <span className="text-xs sm:text-sm font-medium opacity-90 hidden sm:block truncate ml-2">{s.label}</span>
@@ -748,7 +748,7 @@ export default function Kreislaufwirtschaft() {
                           <div className="col-span-12 md:col-span-4 flex flex-col gap-0.5">
                             <strong className="text-xs text-slate-900 font-bold leading-snug">{comp.name}</strong>
                             <span className="text-[9px] font-mono uppercase font-bold text-slate-400">
-                              {comp.category} &bull; {comp.weightKgPerUnit} kg/{comp.unit}
+                              {comp.category} &bull; {formatDeWert(comp.weightKgPerUnit)} kg/{comp.unit}
                             </span>
                           </div>
 
@@ -804,7 +804,7 @@ export default function Kreislaufwirtschaft() {
                           <div className="col-span-4 md:col-span-1 md:text-right">
                             <label className="block md:hidden text-[9px] font-bold text-slate-400 uppercase mb-0.5">Menge</label>
                             <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
-                              {comp.quantity} {comp.unit}
+                              {formatDeWert(comp.quantity)} {comp.unit}
                             </span>
                           </div>
 
@@ -1133,7 +1133,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                           <span>Wiederverwendete Bauteile (Reuse)</span>
                           <InfoTooltip text="Bauteile, die eins-zu-eins aus Abbruchobjekten ohne stoffliche Umwandlung übernommen wurden (z.B. historische KS-Ziegel, gusseiserne Säulen)." />
                         </div>
-                        <span className="font-mono font-bold text-xs">{umiReuseIn}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(umiReuseIn)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1149,7 +1149,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                           <span>Recyclingmaterialien (Sekundär)</span>
                           <InfoTooltip text="Baustoffe mit echtem Post-Consumer Recyclinganteil (z.B. RC-Beton mit gebrochener Gesteinskörnung, Holzwerkstoffe aus Altholzklasse A I/A II)." />
                         </div>
-                        <span className="font-mono font-bold text-xs">{umiRecyclingIn}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(umiRecyclingIn)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1165,7 +1165,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                           <span>Erneuerbare Rohstoffe (Nawaro)</span>
                           <InfoTooltip text="Biogene, nachwachsende Rohstoffe aus nachhaltigem Anbau (z.B. Konstruktionsvollholz (PEFC), Einblasdämmung aus Zellulose, Flachsfaserplatten)." />
                         </div>
-                        <span className="font-mono font-bold text-xs">{umiRenewableIn}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(umiRenewableIn)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1175,7 +1175,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
                     </div>
-                    <div className="text-[10px] text-text-main/50 text-right font-medium">Zirkuläre Input-Rate: <span className="font-bold text-text-main">{umiInputRate}%</span> (max. 100%)</div>
+                    <div className="text-[10px] text-text-main/50 text-right font-medium">Zirkuläre Input-Rate: <span className="font-bold text-text-main">{formatDeWert(umiInputRate)}%</span> (max. 100%)</div>
                   </div>
                 </div>
 
@@ -1188,7 +1188,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                           <span>Demontierbarkeit &amp; Re-Use Potential</span>
                           <InfoTooltip text="Bauteile, die zerstörungsfrei demontiert und an anderer Stelle wiederverwendet werden können (abhängig von Fügungsart)." />
                         </div>
-                        <span className="font-mono font-bold text-xs">{umiReuseOut}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(umiReuseOut)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1204,7 +1204,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                           <span>Kreislauf-Recyclingfähigkeit</span>
                           <InfoTooltip text="Werkstoffe, die durch sortenreine Trennung gleichwertig stofflich recycelt werden können (z.B. Kupferrohre, reiner Gips, PE-Noppenbahnen)." />
                         </div>
-                        <span className="font-mono font-bold text-xs">{umiRecyclingOut}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(umiRecyclingOut)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1214,7 +1214,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
                     </div>
-                    <div className="text-[10px] text-text-main/50 text-right font-medium">Zirkuläre Output-Rate: <span className="font-bold text-text-main">{umiOutputRate}%</span> (max. 100%)</div>
+                    <div className="text-[10px] text-text-main/50 text-right font-medium">Zirkuläre Output-Rate: <span className="font-bold text-text-main">{formatDeWert(umiOutputRate)}%</span> (max. 100%)</div>
                   </div>
                 </div>
 
@@ -1261,7 +1261,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-medium text-text-main">RC-Anteil</span>
-                        <span className="font-mono font-bold text-xs">{mciRecycledIn}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(mciRecycledIn)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1274,7 +1274,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-medium text-text-main">Re-Use Bauteile</span>
-                        <span className="font-mono font-bold text-xs">{mciReusedIn}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(mciReusedIn)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1291,7 +1291,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-medium text-text-main">Recyclingquote</span>
-                        <span className="font-mono font-bold text-xs">{mciRecycledOut}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(mciRecycledOut)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1304,7 +1304,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-medium text-text-main">Wiederverwendung</span>
-                        <span className="font-mono font-bold text-xs">{mciReusedOut}%</span>
+                        <span className="font-mono font-bold text-xs">{formatDeWert(mciReusedOut)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1326,7 +1326,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                       <label className="block text-[11px] font-semibold text-text-main mb-1">Gebäude-Lebensdauer</label>
                       <div className="flex items-center gap-1.5">
                         <input 
-                          type="number" 
+                          type="number" min="0" 
                           value={lifespan} 
                           onChange={(e) => setLifespan(Number(e.target.value))}
                           className="w-full p-1.5 border border-home-grau/30 rounded-lg text-xs font-bold"
@@ -1338,7 +1338,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                       <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Ø Branchen-Schnitt</label>
                       <div className="flex items-center gap-1.5">
                         <input 
-                          type="number" 
+                          type="number" min="0" 
                           value={avgLifespan} 
                           onChange={(e) => setAvgLifespan(Number(e.target.value))}
                           className="w-full p-1.5 border border-home-grau/30 rounded-lg text-xs"
@@ -1351,7 +1351,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Nutzungshäufigkeit</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         step="0.1"
                         value={intensity} 
                         onChange={(e) => setIntensity(Number(e.target.value))}
@@ -1361,7 +1361,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Ø Branchen-Intensität</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         step="0.1"
                         value={avgIntensity} 
                         onChange={(e) => setAvgIntensity(Number(e.target.value))}

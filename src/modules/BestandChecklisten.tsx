@@ -348,7 +348,7 @@ export default function BestandChecklisten() {
         regelwerke={[
           { title: 'VDI-Richtlinie 6200: Standsicherheit von Bauwerken - Regelmäßige Überprüfung', url: 'https://www.vdi.de/' },
           { title: 'WTA-Merkblatt 4-5-99/D: Beurteilung von Mauerwerk – Mauerwerksdiagnostik', url: 'https://www.wta-gmbh.de/' },
-          { title: 'DIN 1076: Ingenieurbauwerke - Überwachung und Prüfung', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 1076: Ingenieurbauwerke - Überwachung und Prüfung', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'

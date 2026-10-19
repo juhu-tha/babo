@@ -105,7 +105,7 @@ export default function Infraleichtbeton() {
         ]}
         regelwerke={[
           { title: 'DIBt: Vorhabenbezogene Bauartgenehmigung (vBG) / Zustimmung im Einzelfall (ZiE)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Rohdichteklassen D0.8 und D1.0)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Rohdichteklassen D0.8 und D1.0)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
           { title: 'DAfStb-Richtlinie: Beton mit rezykliertem oder leichtem Zuschlag', url: 'https://www.dafstb.de/' }
         ]}
         literatur={[
@@ -119,8 +119,8 @@ export default function Infraleichtbeton() {
             quelle: 'TU Berlin / Schlaich (2018)'
           },
           {
-            formel: '\\lambda_{10,dry} \\approx 0.12 - 0.18\\,\\text{W/(m}\\cdot\\text{K)}',
-            erklaerung: 'Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände (U-Wert < 0.24 W/(m²K) bei Wandstärken um 40-50 cm) ohne Zusatzdämmung.',
+            formel: '\\lambda_{10,dry} \\approx 0{,}12 - 0{,}18\\,\\text{W/(m}\\cdot\\text{K)}',
+            erklaerung: 'Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände (U-Wert < 0,24 W/(m²K) bei Wandstärken um 40-50 cm) ohne Zusatzdämmung.',
             quelle: 'Schlaich & Hückler (2018)'
           }
         ]}

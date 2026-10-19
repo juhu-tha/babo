@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Thermometer, ArrowDownToLine, Flame, BookOpen, Activity, Box } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -235,7 +236,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
 
                      {testStatus === 'running' && (
                        <div className="absolute top-4 right-4 text-xs font-mono bg-white px-2 py-1 rounded border border-home-grau/30">
-                         {((progress / 100) * 5).toFixed(1)} s
+                         {formatDeZahl(((progress / 100) * 5), 1)} s
                        </div>
                      )}
                    </>
@@ -287,7 +288,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      </div>
 
                      <div className="absolute top-4 right-4 text-xs font-mono bg-white px-2 py-1 rounded border border-home-grau/30 shadow-sm">
-                       {(20 + (progress / 100) * (currentProps.ruk - 20)).toFixed(1)} °C
+                       {formatDeZahl((20 + (progress / 100) * (currentProps.ruk - 20)), 1)} °C
                      </div>
                    </>
                  )}
@@ -300,12 +301,12 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                        <h4 className="font-bold text-emerald-900 mb-2">Ergebnis</h4>
                        {activeTest === 'penetration' ? (
                          <div>
-                           <div className="text-3xl font-bold text-emerald-700">{currentProps.pen} <span className="text-sm font-normal text-emerald-800">1/10 mm</span></div>
-                           <p className="text-sm text-emerald-800 mt-2">Die Nadel ist standardgemäß {currentProps.pen / 10} mm in die Bitumenprobe eingedrungen.</p>
+                           <div className="text-3xl font-bold text-emerald-700">{formatDeWert(currentProps.pen)} <span className="text-sm font-normal text-emerald-800">1/10 mm</span></div>
+                           <p className="text-sm text-emerald-800 mt-2">Die Nadel ist standardgemäß {formatDeWert(currentProps.pen / 10)} mm in die Bitumenprobe eingedrungen.</p>
                          </div>
                        ) : (
                          <div>
-                           <div className="text-3xl font-bold text-emerald-700">{currentProps.ruk.toFixed(1)} <span className="text-sm font-normal text-emerald-800">°C</span></div>
+                           <div className="text-3xl font-bold text-emerald-700">{formatDeZahl(currentProps.ruk, 1)} <span className="text-sm font-normal text-emerald-800">°C</span></div>
                            <p className="text-sm text-emerald-800 mt-2">Die Bitumenprobe hat bei dieser Temperatur die vorgegebene Fließlänge (25,4 mm) erreicht.</p>
                          </div>
                        )}
@@ -341,9 +342,9 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             { title: 'Erweichungspunkt RuK', url: 'https://de.wikipedia.org/wiki/Erweichungspunkt_Ring_und_Kugel' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)', url: 'https://www.dinmedia.de/' },
-            { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/' },
-            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)', url: 'https://www.dinmedia.de/' }
+            { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12591' },
+            { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1426' },
+            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1427' }
           ]}
           literatur={[
             'Radenberg, M. (2014): Asphalt im Straßenbau (Kirschbaum Verlag)',
@@ -357,12 +358,12 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
               quelle: 'DIN EN 12591 Anhang A'
             },
             {
-              formel: '\\text{Pen} = \\frac{s}{0.1\\,\\text{mm}}',
+              formel: '\\text{Pen} = \\frac{s}{0{,}1\\,\\text{mm}}',
               erklaerung: 'Nadelpenetration nach DIN EN 1426: Eindringtiefe einer genormten Prüfnadel (100 g Belastung, 5 s Prüfdauer, 25 °C Prüftemperatur) in Zehntelmillimetern.',
               quelle: 'DIN EN 1426'
             },
             {
-              formel: 'T_{\\text{R\\&K}} = T \\quad \\text{bei} \\quad \\Delta h = 25.0\\,\\text{mm}',
+              formel: 'T_{\\text{R\\&K}} = T \\quad \\text{bei} \\quad \\Delta h = 25{,}0\\,\\text{mm}',
               erklaerung: 'Erweichungspunkt Ring und Kugel nach DIN EN 1427: Badtemperatur, bei welcher die Stahlkugel das Bitumen im Ring um exakt 25 mm nach unten durchbiegt.',
               quelle: 'DIN EN 1427'
             },

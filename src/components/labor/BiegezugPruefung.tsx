@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, Layers, Info } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -357,21 +358,21 @@ export default function BiegezugPruefung() {
       operator: 'Biegeprüfstand (Baustoffboard)',
       specimen: {
         material: matProps.name,
-        geometry: `Prismatischer Balken ${beamWidth}×${beamHeight}×${spanLength + 100} mm`,
+        geometry: `Prismatischer Balken ${beamWidth}×${beamHeight}×${formatDeWert(spanLength + 100)} mm`,
         dimensions: `b=${beamWidth} mm, h=${beamHeight} mm, L=${spanLength} mm`,
         conditioning: 'Normklima (20 °C, 65 % r.F.)'
       },
       parameters: {
         'Lagerungsart': loadingSystem === '4punkt' ? '4-Punkt-Biegung (Querkraftfreies Mittelfeld)' : '3-Punkt-Einzellast in Feldmitte',
-        'Stützweite L': `${spanLength} mm`,
-        'Widerstandsmoment W': `${(W / 1000).toFixed(1)} cm³`,
-        'Trägheitsmoment I': `${(I / 10000).toFixed(1)} cm⁴`
+        'Stützweite L': `${formatDeWert(spanLength)} mm`,
+        'Widerstandsmoment W': `${formatDeZahl((W / 1000), 1)} cm³`,
+        'Trägheitsmoment I': `${formatDeZahl((I / 10000), 1)} cm⁴`
       },
       metrics: {
-        'Biegezugfestigkeit fct,fl (MPa)': maxStressObserved.toFixed(2),
-        'Höchstkraft Fmax (kN)': maxForceObserved.toFixed(1),
-        'Mittige Durchbiegung δ (mm)': currentDeflectionMm.toFixed(2),
-        'E-Modul (GPa)': (matProps.E / 1000).toFixed(1)
+        'Biegezugfestigkeit fct,fl (MPa)': formatDeZahl(maxStressObserved, 2),
+        'Höchstkraft Fmax (kN)': formatDeZahl(maxForceObserved, 1),
+        'Mittige Durchbiegung δ (mm)': formatDeZahl(currentDeflectionMm, 2),
+        'E-Modul (GPa)': formatDeZahl((matProps.E / 1000), 1)
       },
       status: validation.status,
       validationNotes: validation.notes,
@@ -420,10 +421,10 @@ export default function BiegezugPruefung() {
       legend: { display: false },
       tooltip: {
         callbacks: {
-          title: (items: any[]) => `Durchbiegung δ = ${Number(items[0].parsed.x).toFixed(2)} mm`,
+          title: (items: any[]) => `Durchbiegung δ = ${formatDeZahl(Number(items[0].parsed.x), 2)} mm`,
           label: (ctx: any) => chartMode === 'force'
-            ? `Prüfkraft: ${Number(ctx.parsed.y).toFixed(2)} kN`
-            : `Biegezugspannung: ${Number(ctx.parsed.y).toFixed(2)} MPa`
+            ? `Prüfkraft: ${formatDeZahl(Number(ctx.parsed.y), 2)} kN`
+            : `Biegezugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
         }
       }
     }
@@ -505,15 +506,15 @@ export default function BiegezugPruefung() {
               <div className="grid grid-cols-3 gap-2">
                 <div className="bg-off-white p-2 rounded-lg border border-home-grau/20 text-center">
                   <span className="text-text-main/60 text-[10px] block">Breite b</span>
-                  <span className="font-mono font-bold">{beamWidth} mm</span>
+                  <span className="font-mono font-bold">{formatDeWert(beamWidth)} mm</span>
                 </div>
                 <div className="bg-off-white p-2 rounded-lg border border-home-grau/20 text-center">
                   <span className="text-text-main/60 text-[10px] block">Höhe h</span>
-                  <span className="font-mono font-bold">{beamHeight} mm</span>
+                  <span className="font-mono font-bold">{formatDeWert(beamHeight)} mm</span>
                 </div>
                 <div className="bg-off-white p-2 rounded-lg border border-home-grau/20 text-center">
                   <span className="text-text-main/60 text-[10px] block">Stützweite L</span>
-                  <span className="font-mono font-bold">{spanLength} mm</span>
+                  <span className="font-mono font-bold">{formatDeWert(spanLength)} mm</span>
                 </div>
               </div>
             </div>
@@ -678,21 +679,21 @@ export default function BiegezugPruefung() {
                       {/* Crossbeam connecting the two rollers */}
                       <rect x="180" y="32" width="180" height="8" fill="#475569" rx="2" />
                       <polygon points="270,32 260,15 280,15" fill="#A3113E" />
-                      <text x="270" y="12" textAnchor="middle" fill="#A3113E" fontSize="11" fontWeight="bold">F = {currentForceKN.toFixed(1)} kN</text>
+                      <text x="270" y="12" textAnchor="middle" fill="#A3113E" fontSize="11" fontWeight="bold">F = {formatDeZahl(currentForceKN, 1)} kN</text>
                     </>
                   ) : (
                     <>
                       {/* 3-Point Center Load */}
                       <polygon points="270,72 260,50 280,50" fill="#64748b" stroke="#334155" />
                       <line x1="270" y1="50" x2="270" y2="25" stroke="#A3113E" strokeWidth="3" />
-                      <text x="270" y="20" textAnchor="middle" fill="#A3113E" fontSize="11" fontWeight="bold">F = {currentForceKN.toFixed(1)} kN</text>
+                      <text x="270" y="20" textAnchor="middle" fill="#A3113E" fontSize="11" fontWeight="bold">F = {formatDeZahl(currentForceKN, 1)} kN</text>
                     </>
                   )}
 
                   {/* LVDT Deflection Sensor in Center Bottom */}
                   <line x1="270" y1={112 + currentDeflectionMm * 3} x2="270" y2="150" stroke="#475569" strokeWidth="2" />
                   <rect x="264" y="135" width="12" height="18" fill="#334155" rx="2" />
-                  <text x="282" y="148" fill="#334155" fontSize="9" fontWeight="bold">LVDT: {currentDeflectionMm.toFixed(2)} mm</text>
+                  <text x="282" y="148" fill="#334155" fontSize="9" fontWeight="bold">LVDT: {formatDeZahl(currentDeflectionMm, 2)} mm</text>
                 </svg>
               </div>
 
@@ -704,21 +705,21 @@ export default function BiegezugPruefung() {
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Prüfkraft F</span>
                     <span className="text-xl font-mono font-bold text-amber-400">
-                      {currentForceKN.toFixed(1)} <span className="text-xs text-slate-300 font-normal">kN</span>
+                      {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-300 font-normal">kN</span>
                     </span>
                   </div>
 
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Biegezugspannung σ</span>
                     <span className="text-xl font-mono font-bold text-emerald-400">
-                      {currentBendingStressMPa.toFixed(2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
+                      {formatDeZahl(currentBendingStressMPa, 2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
                     </span>
                   </div>
 
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Durchbiegung δ</span>
                     <span className="text-xl font-mono font-bold text-cyan-400">
-                      {currentDeflectionMm.toFixed(2)} <span className="text-xs text-slate-300 font-normal">mm</span>
+                      {formatDeZahl(currentDeflectionMm, 2)} <span className="text-xs text-slate-300 font-normal">mm</span>
                     </span>
                   </div>
                 </div>
@@ -798,19 +799,19 @@ export default function BiegezugPruefung() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Biegezugfestigkeit fct,fl</span>
-                    <strong className="text-base text-shiraz font-mono">{maxStressObserved.toFixed(2)} MPa</strong>
+                    <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} MPa</strong>
                   </div>
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Höchstkraft Fmax</span>
-                    <strong className="text-base text-text-main font-mono">{maxForceObserved.toFixed(1)} kN</strong>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl(maxForceObserved, 1)} kN</strong>
                   </div>
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Enddurchbiegung δu</span>
-                    <strong className="text-base text-cyan-800 font-mono">{currentDeflectionMm.toFixed(2)} mm</strong>
+                    <strong className="text-base text-cyan-800 font-mono">{formatDeZahl(currentDeflectionMm, 2)} mm</strong>
                   </div>
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Widerstandsmoment W</span>
-                    <strong className="text-base text-text-main font-mono">{(W / 1000).toFixed(0)} cm³</strong>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl((W / 1000), 0)} cm³</strong>
                   </div>
                 </div>
 
@@ -923,25 +924,25 @@ export default function BiegezugPruefung() {
             <div className="p-3 grid grid-cols-1 md:grid-cols-4 gap-2">
               <span className="font-bold text-slate-800">Unbewehrter Beton</span>
               <span className="text-text-main/70">Sprödbruch ohne Vorankündigung</span>
-              <span className="font-mono text-text-main/80">Risslast = Bruchlast (~4.2 MPa)</span>
+              <span className="font-mono text-text-main/80">Risslast = Bruchlast (~4,2 MPa)</span>
               <span className="text-amber-800">Schlagartiger Kraftabfall auf 0 kN</span>
             </div>
             <div className="p-3 grid grid-cols-1 md:grid-cols-4 gap-2 bg-slate-50/50">
               <span className="font-bold text-slate-800">Stahlbeton (B500B)</span>
               <span className="text-text-main/70">Duktiler Biegebruch mit Rissverteilung</span>
-              <span className="font-mono text-text-main/80">Riss bei ~4.2 MPa, Fließen bei ~14 MPa</span>
+              <span className="font-mono text-text-main/80">Riss bei ~4,2 MPa, Fließen bei ~14 MPa</span>
               <span className="text-emerald-700">Große Durchbiegung mit Fließplateau</span>
             </div>
             <div className="p-3 grid grid-cols-1 md:grid-cols-4 gap-2 bg-blue-50/40">
               <span className="font-bold text-blue-900">Spannbeton (Y1860)</span>
               <span className="text-text-main/70">Drucküberdrückung &amp; Dekompression</span>
-              <span className="font-mono text-blue-900 font-bold">Riss erst bei ~16.5 MPa, Bruch ~24 MPa</span>
+              <span className="font-mono text-blue-900 font-bold">Riss erst bei ~16,5 MPa, Bruch ~24 MPa</span>
               <span className="text-blue-800">Sehr steif im Zustand I, danach hohe Tragreserve</span>
             </div>
             <div className="p-3 grid grid-cols-1 md:grid-cols-4 gap-2">
               <span className="font-bold text-slate-800">Stahlfaserbeton</span>
               <span className="text-text-main/70">Zähes Nachrisszugverhalten (Pull-Out)</span>
-              <span className="font-mono text-text-main/80">Riss bei ~4.5 MPa, Resttragfähigkeit</span>
+              <span className="font-mono text-text-main/80">Riss bei ~4,5 MPa, Resttragfähigkeit</span>
               <span className="text-purple-800">Fasern vernähen Rissflanken sukzessive</span>
             </div>
           </div>

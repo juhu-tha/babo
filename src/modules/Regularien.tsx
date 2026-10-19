@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   FileText, ShieldCheck, Scale, AlertTriangle, FileSignature, CheckCircle, Globe, 
@@ -208,7 +209,7 @@ const REGELUNGS_HIERARCHIE_DATA = [
         name: "Gebäudetyp E (BGB-Reform & Landesinitiativen)",
         abbreviation: "Gebäudetyp E / § 650a BGBf",
         description: "Rechtliche und gesetzliche Initiative (pionierhaft in Bayern durch das Gebäudetyp-E-Gesetz, folgend als Bundesgesetz zur Ergänzung des BGB), um abweichend von reinen Komfort-DIN-Normen kostengünstiger, flexibler und einfacher bauen zu können, sofern Schutzziele wie Standsicherheit und Brandschutz gewahrt bleiben.",
-        impact: "Erleichtert experimentelles und reduziertes Bauen. Vereinbaren Planer und Bauherr vertraglich eine Abweichung von baupraktischen Komfort-DINs (z.B. Schallschutzstufen oder Steckdosenzahl), gilt dies rechtssicher nicht als Mangel und schützt Planer aktiv vor Haftungsprozessen.",
+        impact: "Erleichtert experimentelles und reduziertes Bauen. Vereinbaren Planer und Bauherr vertraglich eine Abweichung von baupraktischen Komfort-DINs (z.B. Schallschutzstufen oder Steckdosenzahl), gilt dies rechtlich belastbar nicht als Mangel und schützt Planer aktiv vor Haftungsprozessen.",
         regulatoryLevel: "Gesetzesinitiative / BGB-Ergänzung"
       }
     ]
@@ -375,7 +376,7 @@ export default function Regularien() {
                     Stufenbau der Rechtsordnung im deutschen Bauwesen
                   </h3>
                   <p className="text-xs text-text-main/70">
-                    Suche nach bestimmten Regelungen (z.B. \"BauGB\", \"EBV\") oder wähle direkt eine Stufe aus der rechtlichen Pyramide aus.
+                    Suchen Sie nach bestimmten Regelungen (z.B. \"BauGB\", \"EBV\") oder wählen Sie direkt eine Stufe aus der rechtlichen Pyramide aus.
                   </p>
                 </div>
                 
@@ -431,7 +432,7 @@ export default function Regularien() {
                               <span className={`text-[10px] uppercase font-bold tracking-wider ${
                                 isSelected ? 'text-shiraz' : 'text-slate-500'
                               }`}>
-                                Stufe {level.level}
+                                Stufe {formatDeWert(level.level)}
                               </span>
                               <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide ${level.badgeColor}`}>
                                 {level.scope}
@@ -472,7 +473,7 @@ export default function Regularien() {
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <span className="text-[10px] bg-slate-100 text-slate-700 border border-home-grau/20 px-2 py-0.5 rounded font-mono font-bold">
-                                Stufe {level.level} von 6
+                                Stufe {formatDeWert(level.level)} von 6
                               </span>
                               <span className={`text-[10px] uppercase font-bold tracking-wider ${level.badgeColor} px-2 py-0.5 rounded`}>
                                 {level.scope}
@@ -566,7 +567,7 @@ export default function Regularien() {
                     onClick={() => setHierarchySearchTerm('')}
                     className="text-shiraz hover:underline text-xs font-bold"
                   >
-                    Suche zurücksetzen
+                    Suchen Sie zurücksetzen
                   </button>
                 </div>
 
@@ -574,7 +575,7 @@ export default function Regularien() {
                   <div className="text-center py-16 border border-dashed border-home-grau/20 rounded-2xl bg-white text-home-grau text-xs">
                     Keine Regelungen oder Verordnungen für <strong>\"{hierarchySearchTerm}\"</strong> in der Hierarchie gefunden.
                     <br />
-                    <span className="block mt-2 text-slate-400">Tipp: Suche nach \"BauGB\", \"BayBO\", \"Zulassung\" oder \"EBV\".</span>
+                    <span className="block mt-2 text-slate-400">Tipp: Suchen Sie nach \"BauGB\", \"BayBO\", \"Zulassung\" oder \"EBV\".</span>
                   </div>
                 ) : (
                   <div className="space-y-6">
@@ -590,7 +591,7 @@ export default function Regularien() {
                               </div>
                               <div>
                                 <span className="text-[9px] uppercase font-mono font-bold tracking-wider text-home-grau block leading-none">
-                                  Stufe {level.level} ({level.scope})
+                                  Stufe {formatDeWert(level.level)} ({level.scope})
                                 </span>
                                 <h4 className="font-extrabold text-sm text-text-main mt-0.5">
                                   {level.title}
@@ -1185,7 +1186,7 @@ export default function Regularien() {
               <div className="max-w-xl text-xs text-text-main/80">
                 <p className="font-semibold text-text-main mb-1">Gewerkübergreifendes Normenverzeichnis des BaustoffBoards</p>
                 <p>
-                  Suche gezielt nach Kürzeln (z.B. <strong>\"DIN 1045\"</strong> oder <strong>\"Eurocode\"</strong>) oder Begriffen (z.B. <strong>\"Schallschutz\"</strong>, <strong>\"Zement\"</strong>/<strong>\"Holz\"</strong>), um die maßgeblichen allgemein anerkannten Regeln der Technik (aRdT) schnell zu filtern.
+                  Suchen Sie gezielt nach Kürzeln (z.B. <strong>\"DIN 1045\"</strong> oder <strong>\"Eurocode\"</strong>) oder Begriffen (z.B. <strong>\"Schallschutz\"</strong>, <strong>\"Zement\"</strong>/<strong>\"Holz\"</strong>), um die maßgeblichen allgemein anerkannten Regeln der Technik (aRdT) schnell zu filtern.
                 </p>
               </div>
 
@@ -1207,7 +1208,7 @@ export default function Regularien() {
             {/* Normen Content Rendering */}
             {filteredNormenData.length === 0 ? (
               <div className="text-center py-12 border border-dashed border-home-grau/30 rounded-xl bg-white text-home-grau text-sm">
-                Keine passenden Normen für <strong>\"{searchTerm}\"</strong> gefunden. Probiere andere Suchbegriffe aus wie \"DIN\", \"Eurocode\" oder \"Gips\".
+                Keine passenden Normen für <strong>\"{searchTerm}\"</strong> gefunden. Probieren Sie andere Suchbegriffe aus wie \"DIN\", \"Eurocode\" oder \"Gips\".
               </div>
             ) : (
               <div className="space-y-8">
@@ -1288,7 +1289,7 @@ export default function Regularien() {
           { title: 'Gebäudeenergiegesetz (GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
           { title: 'Bauproduktenverordnung (BauPVO) - Verordnung (EU) 2024/3110 (übergangsweise VO (EU) 305/2011)', url: 'https://eur-lex.europa.eu/' },
           { title: 'Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB)', url: 'https://www.dibt.de/' },
-          { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB Teile A, B, C)', url: 'https://www.dinmedia.de/' },
+          { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB Teile A, B, C)', url: 'https://www.dinmedia.de/de/suche?q=VOB+2019' },
           { title: 'Ersatzbaustoffverordnung (ErsatzbaustoffV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
         ]}
         literatur={[

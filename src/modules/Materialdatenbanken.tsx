@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Database, Leaf, Search, Globe, FileText, CheckCircle2, ShieldAlert, FileSpreadsheet, Eye, Info, RefreshCw, RotateCcw, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -401,7 +402,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
                     <span className="text-[9px] text-gray-400 uppercase font-semibold block">GWP (Treibhauspotenzial)</span>
                     <strong className="text-base text-emerald-400 font-bold block mt-0.5">
-                      {activeRecord.gwp.toFixed(2)} <span className="text-[10px] text-gray-300 font-normal">kg CO₂-eq/{activeRecord.unit.split(' ').pop()}</span>
+                      {formatDeZahl(activeRecord.gwp, 2)} <span className="text-[10px] text-gray-300 font-normal">kg CO₂-eq/{activeRecord.unit.split(' ').pop()}</span>
                     </strong>
                     <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Einfluss auf die Erderwärmung.</span>
                   </div>
@@ -417,7 +418,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
                     <span className="text-[9px] text-gray-400 uppercase font-semibold block">AP (Versauerung)</span>
                     <strong className="text-base text-blue-400 font-bold block mt-0.5">
-                      {activeRecord.ap.toFixed(3)} <span className="text-[10px] text-gray-300 font-normal">kg SO₂-eq</span>
+                      {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-gray-300 font-normal">kg SO₂-eq</span>
                     </strong>
                     <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Saurer Regen Belastung.</span>
                   </div>
@@ -425,7 +426,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
                     <span className="text-[9px] text-gray-400 uppercase font-semibold block">EP (Eutrophierung)</span>
                     <strong className="text-base text-purple-400 font-bold block mt-0.5">
-                      {activeRecord.ep.toFixed(3)} <span className="text-[10px] text-gray-300 font-normal">kg PO₄-eq</span>
+                      {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-gray-300 font-normal">kg PO₄-eq</span>
                     </strong>
                     <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Nährstoffeintrag in Gewässer.</span>
                   </div>
@@ -447,7 +448,7 @@ export default function Materialdatenbanken() {
                 ))}
                 {activeRecord.recycledContent > 0 && (
                   <span className="text-[9px] font-semibold bg-gray-900 border border-gray-800 text-blue-300 px-2.5 py-0.5 rounded-lg">
-                    ♻ Post-Consumer Recycling: {activeRecord.recycledContent}%
+                    ♻ Post-Consumer Recycling: {formatDeWert(activeRecord.recycledContent)}%
                   </span>
                 )}
               </div>
@@ -488,7 +489,7 @@ export default function Materialdatenbanken() {
                 Das <strong>Qualitätssiegel Nachhaltiges Gebäude (QNG)</strong> ist ein staatliches deutsches Gütesiegel. Es setzt anspruchsvolle Grenzwerte für die Treibhausgasemissionen (GWP) und den Primärenergiebedarf (PENRT) im Lebenszyklus eines Gebäudes (A1-A3 Herstellung, A4-A5 Errichtung, B4-B6 Nutzung, C1-C4 Entsorgung).
               </p>
               <p className="text-xs text-text-main/70">
-                Diese Rechenwerttabelle bietet Lehrenden und Studierenden der TH Augsburg eine interaktive Arbeitsdatei, um Baustoffentscheidungen bereits im Vorentwurf quantitativ zu bewerten. Trage einfach die geschätzten projektbezogenen Mengen ein, um die kumulierten Werte in Echtzeit zu überschauen.
+                Diese Rechenwerttabelle bietet Lehrenden und Studierenden der TH Augsburg eine interaktive Arbeitsdatei, um Baustoffentscheidungen bereits im Vorentwurf quantitativ zu bewerten. Tragen Sie einfach die geschätzten projektbezogenen Mengen ein, um die kumulierten Werte in Echtzeit zu überschauen.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-200 text-xs text-slate-500 mt-3">
@@ -524,7 +525,7 @@ export default function Materialdatenbanken() {
                           totalGwp += mat.gwp * qty;
                         }
                       });
-                      return (totalGwp / 1000).toFixed(2);
+                      return formatDeZahl(totalGwp / 1000, 2);
                     })()}
                   </span>
                   <span className="text-xs text-slate-500 font-sans font-bold">t CO₂-eq</span>
@@ -546,7 +547,7 @@ export default function Materialdatenbanken() {
                       <span className="text-[10px] text-emerald-800 block font-bold uppercase">Biogene Kohlenstoff-Senke:</span>
                       <div className="flex items-baseline gap-1 font-mono text-emerald-700">
                         <span className="text-sm font-bold">
-                          {(totalBiogenic / 1000).toFixed(2)}
+                          {formatDeZahl((totalBiogenic / 1000), 2)}
                         </span>
                         <span className="text-[10px] font-sans font-medium">t CO₂ (interne Einlagerung)</span>
                       </div>
@@ -571,7 +572,7 @@ export default function Materialdatenbanken() {
                           totalPenrt += mat.penrt * qty;
                         }
                       });
-                      return (totalPenrt / 1000).toFixed(1);
+                      return formatDeZahl(totalPenrt / 1000, 1);
                     })()}
                   </span>
                   <span className="text-xs text-blue-500 font-sans font-bold">GJ (Gigajoule)</span>
@@ -646,12 +647,12 @@ export default function Materialdatenbanken() {
                     </td>
                     <td className="p-3 text-right">
                       <span className={`font-mono font-bold ${mat.gwp < 0 ? 'text-emerald-600' : 'text-slate-800'}`}>
-                        {mat.gwp}
+                        {formatDeWert(mat.gwp)}
                       </span>
                       <span className="text-slate-400 text-[10px] ml-1">kg CO₂-eq/{mat.unit}</span>
                     </td>
                     <td className="p-3 text-right">
-                      <span className="font-mono font-medium text-slate-700">{mat.penrt}</span>
+                      <span className="font-mono font-medium text-slate-700">{formatDeWert(mat.penrt)}</span>
                       <span className="text-slate-400 text-[10px] ml-1">MJ/{mat.unit}</span>
                     </td>
                     <td className="p-3 text-right">
@@ -735,11 +736,11 @@ export default function Materialdatenbanken() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 mt-0">
         <h3 className="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
           <Search className="text-shiraz" size={20} />
-          Konkretes Praxisbeispiel: Suche in der ÖKOBAUDAT
+          Konkretes Praxisbeispiel: Suchen Sie in der ÖKOBAUDAT
         </h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Stelle sich vor, Sie planen ein Gebäude und benötigen den <span className="font-semibold cursor-help" title="Global Warming Potential">GWP-Wert</span> (Treibhausgaspotenzial) für die verwendeten Stahlbetonstützen. So gehe vor:
+            Stellen Sie sich vor, Sie planen ein Gebäude und benötigen den <span className="font-semibold cursor-help" title="Global Warming Potential">GWP-Wert</span> (Treibhausgaspotenzial) für die verwendeten Stahlbetonstützen. So gehe vor:
           </p>
         </div>
         
@@ -786,7 +787,7 @@ export default function Materialdatenbanken() {
                 <code>10 m³ × 245 kg CO₂/m³ = 2.450 kg CO₂</code>.
               </p>
               <p className="text-[11px] text-shiraz font-semibold mt-2">
-                Tipp: Später im Bauprojekt, wenn der reale Hersteller feststeht, suchen Sie nach der herstellerspezifischen EPD dieses Zementwerks, die oft deutlich niedriger liegt (z. B. 180 kg CO₂-Äqv. / m³), um deine Ökobilanz zu verbessern.
+                Tipp: Später im Bauprojekt, wenn der reale Hersteller feststeht, suchen Sie nach der herstellerspezifischen EPD dieses Zementwerks, die oft deutlich niedriger liegt (z. B. 180 kg CO₂-Äqv. / m³), um Ihre Ökobilanz zu verbessern.
               </p>
             </div>
           </div>
@@ -798,7 +799,7 @@ export default function Materialdatenbanken() {
           { title: 'Materialdatenbanken', url: 'https://de.wikipedia.org/wiki/Werkstoffdatenbank' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
           { title: 'BNB-Kriterium 1.1.1 (Treibhausgaspotenzial und Primärenergiebedarf)', url: 'https://www.bnb-nachhaltigesbauen.de/' }
         ]}
         literatur={[

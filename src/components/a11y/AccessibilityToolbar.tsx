@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import { 
   Eye, 
@@ -171,7 +172,7 @@ export function AccessibilityToolbar() {
                   <Type size={13} className="text-shiraz" /> Schriftgröße
                 </span>
                 <span className="font-mono text-[11px] font-bold text-shiraz dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-900">
-                  {Math.round(settings.fontSizeScale * 100)}% {settings.fontSizeScale < 0.98 ? '(Verkleinert)' : settings.fontSizeScale > 1.02 ? '(Vergrößert)' : '(Standard)'}
+                  {formatDeWert(Math.round(settings.fontSizeScale * 100))}% {settings.fontSizeScale < 0.98 ? '(Verkleinert)' : settings.fontSizeScale > 1.02 ? '(Vergrößert)' : '(Standard)'}
                 </span>
               </div>
 

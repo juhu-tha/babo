@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { 
   FileText, 
   Building, 
@@ -45,7 +45,7 @@ const evaluateKombination = (
   if (salzClass === 'high') {
     score -= 30;
     criticalAlarms.push("Hohe Salzbeladung (Klasse S3) führt zu Sprengkräften hinter der Dämmplatte (Fehlende Dampfdurchlässigkeit).");
-    recommendations.push("Trage zwingend vor Plattenmontage einen Porengrundputz WTA (d ≥ 10 mm) als weiches mechanisches Salzspeicherdepot auf.");
+    recommendations.push("Tragen Sie zwingend vor Plattenmontage einen Porengrundputz WTA (d ≥ 10 mm) als weiches mechanisches Salzspeicherdepot auf.");
   } else if (salzClass === 'medium' && daemmType !== 'calciumsilicat') {
     score -= 10;
     recommendations.push("Bei mittlerem Salzgehalt und organischen Dämmplatten ist ein zementfreier WTA-Ausgleichsputz dringend angeraten.");
@@ -64,7 +64,7 @@ const evaluateKombination = (
   if (daemmType === 'pur_foelie') {
     score -= 40;
     criticalAlarms.push("Diffusionsdichte PUR-Systeme mit Dampfsperrfolie blockieren jegliche raumseitige Trocknung. Kleinste Risse in der Folie führen zu Kondensationsnestern!");
-    recommendations.push("Wähle bevorzugt kapillaraktive mineralische Dämmstoffe (wie Calciumsilicat oder Mineralschaum) ohne separate Dampfsperrfolie.");
+    recommendations.push("Wählen Sie bevorzugt kapillaraktive mineralische Dämmstoffe (wie Calciumsilicat oder Mineralschaum) ohne separate Dampfsperrfolie.");
   } else if (daemmType === 'calciumsilicat') {
     score += 15; // calcareous systems are highly robust
     recommendations.push("Calciumsilicat bietet die höchste Sicherheit. Verkleben Sie die Platten zwingend vollflächig (ohne Hohlräume) mit dem materialspezifischen Systemkleber.");
@@ -339,7 +339,7 @@ export default function WTA() {
                 <label className="font-bold text-text-main flex items-center gap-1">
                   Mauerwerk-Wandstärke (<InlineMath math="d" />):
                 </label>
-                <span className="font-mono font-bold text-shiraz bg-white border border-home-grau/20 px-2 py-0.5 rounded shadow-3xs">{wallThicknessInput} cm</span>
+                <span className="font-mono font-bold text-shiraz bg-white border border-home-grau/20 px-2 py-0.5 rounded shadow-3xs">{formatDeWert(wallThicknessInput)} cm</span>
               </div>
               <input 
                 type="range" 
@@ -351,7 +351,7 @@ export default function WTA() {
                 className="w-full h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <p className="text-xs text-home-grau flex justify-between">
-                <span>Min: 11.5 cm</span>
+                <span>Min: 11,5 cm</span>
                 <span>Max: 100 cm (z.B. historisches Fundament)</span>
               </p>
             </div>
@@ -363,7 +363,7 @@ export default function WTA() {
                   Mauerwerk-Durchfeuchtungsgrad (DF_Soll):
                 </label>
                 <span className={`font-mono font-bold bg-white border px-2 py-0.5 rounded shadow-3xs ${moistureLevel > 95 ? 'text-red-600 border-red-200 animate-pulse' : moistureLevel > 60 ? 'text-orange-600 border-orange-200' : 'text-slate-800 border-home-grau/25'}`}>
-                  {moistureLevel} % DF
+                  {formatDeWert(moistureLevel)} % DF
                 </span>
               </div>
               <input 
@@ -500,19 +500,19 @@ export default function WTA() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between">
                     <span className="text-home-grau text-xs uppercase font-bold tracking-tight">Errechnete Bohrlochtiefe (t_B)</span>
-                    <span className="text-xl font-mono font-black text-slate-900 mt-1">{drillDepth} cm</span>
+                    <span className="text-xl font-mono font-black text-slate-900 mt-1">{formatDeWert(drillDepth)} cm</span>
                     <p className="text-xs text-slate-500 mt-1">Formel: t_B = d_wand - 5 cm. Bohrloch darf die Gegenseite des Mauerwerks nicht durchbrechen.</p>
                   </div>
 
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between">
                     <span className="text-home-grau text-xs uppercase font-bold tracking-tight">Max. Bohrlochabstand (a)</span>
-                    <span className="text-xl font-mono font-black text-slate-900 mt-1">{drillSpacing} cm</span>
+                    <span className="text-xl font-mono font-black text-slate-900 mt-1">{formatDeWert(drillSpacing)} cm</span>
                     <p className="text-xs text-slate-500 mt-1">Enge Bohrung sichert eine lückenlose horizontale Überlappung der Wirkstoff-Ausbreitungskeile.</p>
                   </div>
 
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between">
                     <span className="text-home-grau text-xs uppercase font-bold tracking-tight">Bohrwinkel ({"\u03b1"}) &amp; Durchmesser (D_B)</span>
-                    <span className="text-sm font-bold text-slate-800 mt-1">Durchmesser: {drillDiameter * 10} mm</span>
+                    <span className="text-sm font-bold text-slate-800 mt-1">Durchmesser: {formatDeWert(drillDiameter * 10)} mm</span>
                     <p className="text-xs text-slate-500 mt-1">{angleSpec}</p>
                   </div>
 
@@ -531,7 +531,7 @@ export default function WTA() {
                     <BlockMath math="V_{\text{meter}} = \frac{100}{a} \cdot \left[ \frac{\pi \cdot D_B^2}{4} \cdot t_B \right] \cdot F_{\text{Sicherheit}} \cdot 10^{-3} \quad [\text{Liter/m}]" />
                   </div>
                   <p className="text-xs text-slate-500 text-center leading-normal">
-                    Berechneter Einzelfüllungsinhalt pro Bohrloch (V_bore = {formatDeZahl(singleHoleVolume, 1)} cm³) multipliziert mit n = {holesPerMeter} Bohrungen pro Meter.
+                    Berechneter Einzelfüllungsinhalt pro Bohrloch (V_bore = {formatDeZahl(singleHoleVolume, 1)} cm³) multipliziert mit n = {formatDeWert(holesPerMeter)} Bohrungen pro Meter.
                   </p>
                 </div>
 
@@ -577,7 +577,7 @@ export default function WTA() {
                         : 'bg-white border-home-grau/25 text-slate-700'
                     }`}
                   >
-                    <span>Gering (&lt; 0.1% M.-%)</span>
+                    <span>Gering (&lt; 0,1% M.-%)</span>
                   </button>
                   <button
                     type="button"
@@ -588,7 +588,7 @@ export default function WTA() {
                         : 'bg-white border-home-grau/25 text-slate-700'
                     }`}
                   >
-                    <span>Mittel (0.1% - 0.5% M.-%)</span>
+                    <span>Mittel (0,1% - 0,5% M.-%)</span>
                   </button>
                   <button
                     type="button"
@@ -599,7 +599,7 @@ export default function WTA() {
                         : 'bg-white border-home-grau/25 text-slate-700'
                     }`}
                   >
-                    <span>Hoch (&gt; 0.5% M.-%)</span>
+                    <span>Hoch (&gt; 0,5% M.-%)</span>
                   </button>
                 </div>
               </div>
@@ -670,7 +670,7 @@ export default function WTA() {
                     Der Putz bleibt für gasförmigen Wasserdampf extrem durchlässig (<InlineMath math="\mu \le 12" />), während das Eindringen von flüssigem Schlagregen von außen durch die Hydrophobierung blockiert wird. Es gilt gemäß WTA:
                   </p>
                   <div className="font-mono text-center text-shiraz font-bold mt-1 text-xs">
-                    <BlockMath math="w_{24} \le 0.2\,\text{kg/(m}^2\cdot\text{h}^{0.5}) \quad \text{und} \quad s_d \le 0.2\,\text{m}" />
+                    <BlockMath math="w_{24} \le 0{,}2\,\text{kg/(m}^2\cdot\text{h}^{0{,}5}) \quad \text{und} \quad s_d \le 0{,}2\,\text{m}" />
                   </div>
                 </div>
               </div>
@@ -681,7 +681,7 @@ export default function WTA() {
                   2. Salzchemie &amp; Kristallisationsdruck (<InlineMath math="\sigma_k" />)
                 </span>
                 <p>
-                  Wenn Salze (vor allem Sulfate wie Gips <InlineMath math="\text{CaSO}_4 \cdot 2\text{H}_2\text{O}" />, Mirabilit <InlineMath math="\text{Na}_2\text{SO}_4 \cdot 10\text{H}_2\text{O}" />, Nitrate und Chloride) verdunsten, dehnen sie sich beim Phasenübergang stark aus. Findet dies in engen Mikroporen (<InlineMath math="r < 0.1\,\mu\text{m}" />) statt, entstehen extreme Sprengkräfte.
+                  Wenn Salze (vor allem Sulfate wie Gips <InlineMath math="\text{CaSO}_4 \cdot 2\text{H}_2\text{O}" />, Mirabilit <InlineMath math="\text{Na}_2\text{SO}_4 \cdot 10\text{H}_2\text{O}" />, Nitrate und Chloride) verdunsten, dehnen sie sich beim Phasenübergang stark aus. Findet dies in engen Mikroporen (<InlineMath math="r < 0{,}1\,\mu\text{m}" />) statt, entstehen extreme Sprengkräfte.
                 </p>
                 <p>
                   Der theoretische Kristallisationsdruck wird über die thermodynamische Beziehung beschrieben:
@@ -693,7 +693,7 @@ export default function WTA() {
                   </span>
                 </div>
                 <p>
-                  Dieser Druck kann Werte von über <strong>100 MPa</strong> erreichen und übersteigt die geringe Zugfestigkeit mineralischer Matrizen bei weitem. Sanierputze besitzen daher ein künstliches Porensystem mit einem hohen Anteil an schadfreien Makroporen (<InlineMath math="r \ge 0.1\,\mu\text{m}" />), in denen Kristalle ohne Druckentwicklung auf das Mörtelskelett wachsen können.
+                  Dieser Druck kann Werte von über <strong>100 MPa</strong> erreichen und übersteigt die geringe Zugfestigkeit mineralischer Matrizen bei weitem. Sanierputze besitzen daher ein künstliches Porensystem mit einem hohen Anteil an schadfreien Makroporen (<InlineMath math="r \ge 0{,}1\,\mu\text{m}" />), in denen Kristalle ohne Druckentwicklung auf das Mörtelskelett wachsen können.
                 </p>
               </div>
             </div>
@@ -888,7 +888,7 @@ export default function WTA() {
                 </div>
                 <div>
                   <span className="block text-home-grau font-semibold mb-0.5">Packerdruck (Max Bar):</span>
-                  <input type="number" defaultValue={5} className="w-full bg-white border border-home-grau/30 rounded p-1 font-mono font-bold" />
+                  <input type="number" min="0" defaultValue={5} className="w-full bg-white border border-home-grau/30 rounded p-1 font-mono font-bold" />
                 </div>
               </div>
               <p className="text-xs text-home-grau leading-tight italic">
@@ -1003,7 +1003,7 @@ export default function WTA() {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="bg-[#FAF9F5] p-3 rounded border border-home-grau/20 text-center">
                           <span className="text-home-grau text-xs uppercase font-bold tracking-tight block">Kombi-Score</span>
-                          <span className="text-3xl font-mono font-black text-slate-900 mt-1 block">{evalData.score} / 100</span>
+                          <span className="text-3xl font-mono font-black text-slate-900 mt-1 block">{formatDeWert(evalData.score)} / 100</span>
                           <span className="text-xs text-home-grau font-semibold">Punkte (Sicherheitsindex)</span>
                         </div>
 
@@ -1191,7 +1191,7 @@ export default function WTA() {
         regelwerke={[
           { title: "WTA-Merkblatt 2-9 (Ausgabe 2020): Sanierputzsysteme (konsolidiert 2-9-04 & 2-10)", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 4-6 (Ausgabe 2021): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de" },
+          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de/de/suche?q=DIN+18533" },
           { title: "WTA-Merkblatt 4-10: Injektionsverfahren mit zertifizierten Wirkstoffen", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5: Feuchtetechnische Bewertung von Innendämmungen", url: "https://www.wta-gmbh.de" }
         ]} 

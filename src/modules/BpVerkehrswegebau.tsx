@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo, useEffect } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -28,9 +29,9 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     description: 'Für hochbelastete Autobahnen mit hohem Schwerverkehr (> 32 Mio. äquivalente 10-t-Achsübergänge nach RStO 12/24). Fokus auf Spurbildungswiderstand und Verformungsstabilität.',
     totalThickness: 85,
     layers: [
-      { name: 'Asphaltdeckschicht (SMA 8 S oder PA)', thickness: 4, material: 'Splittmastixasphalt / Offenporig mit PmB 25/55-55 A', normRequirement: 'PSV-Wert ≥ 51 (hohe Griffigkeit), Hohlraumgehalt 3.0-4.5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
+      { name: 'Asphaltdeckschicht (SMA 8 S oder PA)', thickness: 4, material: 'Splittmastixasphalt / Offenporig mit PmB 25/55-55 A', normRequirement: 'PSV-Wert ≥ 51 (hohe Griffigkeit), Hohlraumgehalt 3,0-4,5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit PmB 25/55-55 A', normRequirement: 'Dicke 6 cm, hohe Standfestigkeit gegen Schubverformungen im Sommer', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-805' },
-      { name: 'Asphalttragschicht (AC 32 TS)', thickness: 24, material: 'Straßenbaubitumen 50/70 oder PmB', normRequirement: 'Dicke 24 cm in mehreren Lagen, Bindergehalt ≥ 4.2 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
+      { name: 'Asphalttragschicht (AC 32 TS)', thickness: 24, material: 'Straßenbaubitumen 50/70 oder PmB', normRequirement: 'Dicke 24 cm in mehreren Lagen, Bindergehalt ≥ 4,2 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 51, material: 'Kies/Splitt-Gemisch (GW/GI, FSS 0/45)', normRequirement: 'EV2 ≥ 120 MPa auf der Tragschicht, Frostunempfindlichkeit nach TL Gestein-StB', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
@@ -40,8 +41,8 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     totalThickness: 75,
     layers: [
       { name: 'Asphaltdeckschicht (SMA 11 S oder AC 11 D S)', thickness: 4, material: 'Splittmastix- / Beton-Asphalt mit PmB oder 50/70', normRequirement: 'PSV-Wert ≥ 51, Einbaudicke ca. 4 cm nach ZTV Asphalt-StB', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
-      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit 50/70 oder PmB', normRequirement: 'Hohlraumgehalt des Marshall-Probekörpers 4.0-6.0 Vol.-%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-805' },
-      { name: 'Asphalttragschicht (AC 22 TS)', thickness: 16, material: 'Straßenbaubitumen 50/70', normRequirement: 'Bindergehalt ≥ 4.3 M.-%, Verdichtungsgrad ≥ 98.0%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
+      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit 50/70 oder PmB', normRequirement: 'Hohlraumgehalt des Marshall-Probekörpers 4,0-6,0 Vol.-%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-805' },
+      { name: 'Asphalttragschicht (AC 22 TS)', thickness: 16, material: 'Straßenbaubitumen 50/70', normRequirement: 'Bindergehalt ≥ 4,3 M.-%, Verdichtungsgrad ≥ 98,0%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 49, material: 'Frostschutzsand / Kiessand-Gemisch (0/32 od. 0/45)', normRequirement: 'Statischer Verformungsmodul EV2 ≥ 120 MPa', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
@@ -52,7 +53,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     layers: [
       { name: 'Asphaltdeckschicht (AC 11 D S / SMA 8)', thickness: 4, material: 'Asphaltbeton / SMA mit 50/70', normRequirement: 'Gute Verschleißfestigkeit, PSV-Wert ≥ 48', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 5, material: 'Binder mit Straßenbaubitumen 50/70', normRequirement: 'Hohlraumfüllungsgrad mind. 70%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-805' },
-      { name: 'Asphalttragschicht (AC 22 TS)', thickness: 13, material: 'Bitumen 50/70 oder 70/100', normRequirement: 'Dicke 13 cm, Bindergehalt ≥ 4.3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
+      { name: 'Asphalttragschicht (AC 22 TS)', thickness: 13, material: 'Bitumen 50/70 oder 70/100', normRequirement: 'Dicke 13 cm, Bindergehalt ≥ 4,3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 43, material: 'Sand-Kies-Schottergemisch FSS', normRequirement: 'EV2 ≥ 100 MPa, hohe Filterstabilität', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
@@ -61,8 +62,8 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     description: 'Ortsverbindungsstraßen und Sammelstraßen (1.0 bis 3.2 Mio. äquivalente Achsübergänge). Geringerer Lkw-Spuranteil.',
     totalThickness: 60,
     layers: [
-      { name: 'Asphaltdeckschicht (AC 11 D / SMA 8)', thickness: 4, material: 'Asphaltbeton mit 70/100', normRequirement: 'Hohlraumgehalt am fertigen Bauteil 1.5-4.5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
-      { name: 'Asphalttragschicht (AC 22 TS)', thickness: 14, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97.0%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
+      { name: 'Asphaltdeckschicht (AC 11 D / SMA 8)', thickness: 4, material: 'Asphaltbeton mit 70/100', normRequirement: 'Hohlraumgehalt am fertigen Bauteil 1,5-4,5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
+      { name: 'Asphalttragschicht (AC 22 TS)', thickness: 14, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97,0%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 42, material: 'Sand/Schotter-Recycling-Gemisch', normRequirement: 'Statischer Verformungsmodul EV2 ≥ 80 MPa auf der FSS', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
@@ -72,7 +73,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     totalThickness: 55,
     layers: [
       { name: 'Asphaltdeckschicht (AC 8 N oder AC 11 N)', thickness: 4, material: 'Asphaltbeton mit weicherem Bitumen 70/100', normRequirement: 'Dichtheit gegen Sauerstoff/Wasser, PSV ≥ 45 ausreichend', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
-      { name: 'Asphalttragschicht (AC 22 TN)', thickness: 10, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97.0%, Bindergehalt ≥ 4.3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
+      { name: 'Asphalttragschicht (AC 22 TN)', thickness: 10, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97,0%, Bindergehalt ≥ 4,3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 41, material: 'Sand-Kies FSS', normRequirement: 'EV2 ≥ 80 MPa auf der Frostschutzschicht', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
@@ -105,7 +106,7 @@ const RSTO_CONCRETE_DATA: Record<string, RstoProfile> = {
     description: 'Starre Struktur ideal für Bereiche mit hoch-dynamischen punktuellen Scherkräften und Kriechverkehr.',
     totalThickness: 75,
     layers: [
-      { name: 'Betondecke (bewehrt / verdübelt)', thickness: 26, material: 'Fahrbahndeckenbeton C30/37 (Kornklasse 0/22)', normRequirement: 'Biegezugfestigkeit m_fct,sp ≥ 4.5 MPa, Waschbetonoberfläche gegen Aquaplaning', bgClass: 'bg-slate-300 text-slate-800', borderColor: 'border-home-grau/30' },
+      { name: 'Betondecke (bewehrt / verdübelt)', thickness: 26, material: 'Fahrbahndeckenbeton C30/37 (Kornklasse 0/22)', normRequirement: 'Biegezugfestigkeit m_fct,sp ≥ 4,5 MPa, Waschbetonoberfläche gegen Aquaplaning', bgClass: 'bg-slate-300 text-slate-800', borderColor: 'border-home-grau/30' },
       { name: 'Vliesstoff / Trennlage', thickness: 0.5, material: 'Geotextil', normRequirement: 'Trenn- und Entwässerungselement', bgClass: 'bg-slate-200 text-slate-600', borderColor: 'border-home-grau/30' },
       { name: 'Hydraulisch gebundene Tragschicht (HGT)', thickness: 15, material: 'HGT nach ZTV Beton-StB', normRequirement: 'EV2 ≥ 120 MPa auf der HGT-Schicht', bgClass: 'bg-slate-400 text-slate-800', borderColor: 'border-home-grau/30' },
       { name: 'Frostschutzschicht', thickness: 33.5, material: 'Frostunempfindliches Gestein 0/45', normRequirement: 'Verdichtungsgrad DPr ≥ 103%', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
@@ -184,7 +185,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
     // Luftporengehalt (V_u) in Vol.-% = (1 - Raumdichte/Maximaldichte) * 100
     const luftporen = (1 - (asphaltMischung.raumdichteMischung / maxDichte)) * 100;
     return {
-      maxDichte: maxDichte.toFixed(3),
+      maxDichte: formatDeZahl(maxDichte, 3),
       luftporen: luftporen.toFixed(2),
       isOk: luftporen >= 1.5 && luftporen <= 4.5
     };
@@ -397,7 +398,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                       Soll-Aufbau nach RStO {bauweise === 'asphalt' ? 'Tafel 1 (Asphalt)' : 'Tafel 2 (Beton)'}
                     </h5>
                     <span className="text-xs bg-zinc-100 border border-zinc-200 px-2 py-1 rounded font-mono font-bold text-zinc-700">
-                      Gesamtdicke: {activeProfile.totalThickness} cm
+                      Gesamtdicke: {formatDeWert(activeProfile.totalThickness)} cm
                     </span>
                   </div>
 
@@ -421,7 +422,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                               {layer.name}
                             </span>
                             <span className="font-mono text-xs font-bold bg-white/20 px-2 py-0.5 rounded">
-                              h = {layer.thickness} cm
+                              h = {formatDeWert(layer.thickness)} cm
                             </span>
                           </div>
                           <span className="text-[10px] text-white/80 font-mono mt-1 opacity-90 leading-tight group-hover:opacity-100 transition-all z-10">
@@ -481,7 +482,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   </p>
                 </div>
                 <div className="border-t border-zinc-100 pt-3 mt-3 text-[11px] text-zinc-600 font-mono">
-                  <div>Hohlraum: <span className="text-zinc-900 font-semibold">1.5 - 4.5 %</span></div>
+                  <div>Hohlraum: <span className="text-zinc-900 font-semibold">1,5 - 4,5 %</span></div>
                   <div>Bitumen: <span className="text-zinc-900 font-semibold">ca. 5 - 6 M.-%</span></div>
                 </div>
               </div>
@@ -499,8 +500,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   </p>
                 </div>
                 <div className="border-t border-zinc-100 pt-3 mt-3 text-[11px] text-zinc-600 font-mono">
-                  <div>Hohlraum: <span className="text-zinc-900 font-semibold">3.0 - 4.0 %</span></div>
-                  <div>Bitumen: <span className="text-zinc-900 font-semibold">ca. 6.5 - 7.5 M.-%</span></div>
+                  <div>Hohlraum: <span className="text-zinc-900 font-semibold">3,0 - 4,0 %</span></div>
+                  <div>Bitumen: <span className="text-zinc-900 font-semibold">ca. 6,5 - 7,5 M.-%</span></div>
                 </div>
               </div>
 
@@ -518,7 +519,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                 </div>
                 <div className="border-t border-zinc-100 pt-3 mt-3 text-[11px] text-zinc-600 font-mono">
                   <div>Hohlraum: <span className="text-zinc-900 font-semibold">völlig dicht (~0%)</span></div>
-                  <div>Bitumen: <span className="text-zinc-900 font-semibold">ca. 7.5 - 8.5 M.-%</span></div>
+                  <div>Bitumen: <span className="text-zinc-900 font-semibold">ca. 7,5 - 8,5 M.-%</span></div>
                 </div>
               </div>
 
@@ -535,8 +536,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   </p>
                 </div>
                 <div className="border-t border-zinc-100 pt-3 mt-3 text-[11px] text-zinc-600 font-mono">
-                  <div>Hohlraum: <span className="text-zinc-900 font-semibold">≥ 22.0 Vol.-%</span></div>
-                  <div>Bitumen: <span className="text-zinc-900 font-semibold">ca. 5.5 - 6.5 M.-%</span></div>
+                  <div>Hohlraum: <span className="text-zinc-900 font-semibold">≥ 22,0 Vol.-%</span></div>
+                  <div>Bitumen: <span className="text-zinc-900 font-semibold">ca. 5,5 - 6,5 M.-%</span></div>
                 </div>
               </div>
             </div>
@@ -587,7 +588,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="p-3 bg-zinc-50 border border-zinc-200 rounded-lg text-xs">
                     <p className="font-bold text-zinc-800">1. Nadelpenetration (DIN EN 1426)</p>
                     <p className="text-text-main/75 mt-1">
-                      Eine standardisierte Stahlnadel (100g) dringt 5 Sekunden bei 25 °C in das Bitumen ein. Ein Eindringtiefe-Wert von 50 Zehntelmillimeter (0.1 mm) entspricht der Klassifizierung "50". 
+                      Eine standardisierte Stahlnadel (100g) dringt 5 Sekunden bei 25 °C in das Bitumen ein. Ein Eindringtiefe-Wert von 50 Zehntelmillimeter (0,1 mm) entspricht der Klassifizierung "50". 
                       Standard-Straßenbitumen: <strong>50/70</strong> oder <strong>70/100</strong>. Je höher die Zahl, desto weicher das Bitumen.
                     </p>
                   </div>
@@ -652,7 +653,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1">Marshall-Stabilität und -Fließwert (DIN EN 12697-34)</h5>
                     <p>
                       Mischproben werden mit dem Standard-Marshall-Hammer typischerweise mit 2x50 Schlägen im Zylinder verdichtet. 
-                      Anschließend wird der Probekörper bei 60 °C (kritische Sommertemperatur) bis zum Bruch beansprucht. Die Maximalkraft ist die <strong>Marshall-Stabilität (Spezifikation &gt; 5 kN beziehungsweise &gt; 7.5 kN für Schwerverkehr)</strong>, die Verformung ist der <strong>Fließwert (in mm)</strong>.
+                      Anschließend wird der Probekörper bei 60 °C (kritische Sommertemperatur) bis zum Bruch beansprucht. Die Maximalkraft ist die <strong>Marshall-Stabilität (Spezifikation &gt; 5 kN beziehungsweise &gt; 7,5 kN für Schwerverkehr)</strong>, die Verformung ist der <strong>Fließwert (in mm)</strong>.
                     </p>
                   </div>
 
@@ -671,7 +672,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <Calculator size={16} className="text-shiraz" /> Interaktiver Hohlraumrechner & Rice-Maximaldichte
                 </h3>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Studentische Übungsrechnung: Bestimme den Luftporengehalt $V_u$ eines Labor-Asphaltprobekörpers. Ein zu hoher Hohlraumgehalt führt zu Oxidation und Wassereintritt (Frostschäden), ein zu niedriger zu fataler Spurrinne/Bindemittelaustritt.
+                  Studentische Übungsrechnung: Bestimmen Sie den Luftporengehalt $V_u$ eines Labor-Asphaltprobekörpers. Ein zu hoher Hohlraumgehalt führt zu Oxidation und Wassereintritt (Frostschäden), ein zu niedriger zu fataler Spurrinne/Bindemittelaustritt.
                 </p>
 
                 <div className="space-y-4">
@@ -680,7 +681,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold text-text-main">
                       <span>Bitumengehalt (<InlineMath math="B" />):</span>
-                      <span className="font-mono text-xs">{asphaltMischung.bitumenAnteil.toFixed(1)} M.-% (Gestein: {asphaltMischung.gesteinAnteil.toFixed(1)} M.-%)</span>
+                      <span className="font-mono text-xs">{formatDeZahl(asphaltMischung.bitumenAnteil, 1)} M.-% (Gestein: {formatDeZahl(asphaltMischung.gesteinAnteil, 1)} M.-%)</span>
                     </div>
                     <input 
                       type="range" 
@@ -704,7 +705,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold text-text-main">
                       <span>Gemessene Raumdichte (<InlineMath math="\rho_r" /> / Bulk Density):</span>
-                      <span className="font-mono text-xs">{asphaltMischung.raumdichteMischung.toFixed(2)} g/cm³</span>
+                      <span className="font-mono text-xs">{formatDeZahl(asphaltMischung.raumdichteMischung, 2)} g/cm³</span>
                     </div>
                     <input 
                       type="range" 
@@ -731,13 +732,13 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     </div>
                     <div className="grid grid-cols-2 text-xs font-mono border-t border-zinc-200/50 pt-2">
                       <div className="font-bold">Errechneter Luftporengehalt (<InlineMath math="V_u" />):</div>
-                      <div className="text-right font-extrabold text-lg text-zinc-900">{luftPorenErrechnet.luftporen} Vol.-%</div>
+                      <div className="text-right font-extrabold text-lg text-zinc-900">{formatDeZahl(Number(luftPorenErrechnet.luftporen), 2)} Vol.-%</div>
                     </div>
 
                     <div className="mt-2 text-[10.5px] border-t border-zinc-250 pt-2">
                       {luftPorenErrechnet.isOk ? (
                         <span className="text-emerald-700 font-bold flex items-center gap-1">
-                          ✓ Konform (ZTV Asphalt-StB Zielbereich 1.5 - 4.5% für Deckschichten eingehalten!)
+                          ✓ Konform (ZTV Asphalt-StB Zielbereich 1,5 - 4,5% für Deckschichten eingehalten!)
                         </span>
                       ) : (
                         <span className="text-rose-700 font-bold flex items-center gap-1">
@@ -977,7 +978,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main">
                         <span>Angeschlossene Auffangfläche (A_E):</span>
-                        <span className="font-mono text-zinc-900 font-bold">{tiefbauArea} m²</span>
+                        <span className="font-mono text-zinc-900 font-bold">{formatDeWert(tiefbauArea)} m²</span>
                       </div>
                       <input 
                         type="range" 
@@ -994,17 +995,17 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main">
                         <span>Abflussbeiwert (ψ):</span>
-                        <span className="font-mono text-zinc-900 font-bold">{tiefbauPsi.toFixed(2)}</span>
+                        <span className="font-mono text-zinc-900 font-bold">{formatDeZahl(tiefbauPsi, 2)}</span>
                       </div>
                       <select 
                         value={tiefbauPsi}
                         onChange={(e) => setTiefbauPsi(parseFloat(e.target.value))}
                         className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white"
                       >
-                        <option value="0.9">0.90 (Asphalt, fugenloser Beton, Metalldach)</option>
-                        <option value="0.75">0.75 (Betonpflaster mit dichten Fugen)</option>
-                        <option value="0.5">0.50 (Kiesbelag, Kiesdach)</option>
-                        <option value="0.3">0.30 (Gründach, unbefestigter Boden)</option>
+                        <option value="0.9">0,90 (Asphalt, fugenloser Beton, Metalldach)</option>
+                        <option value="0.75">0,75 (Betonpflaster mit dichten Fugen)</option>
+                        <option value="0.5">0,50 (Kiesbelag, Kiesdach)</option>
+                        <option value="0.3">0,30 (Gründach, unbefestigter Boden)</option>
                       </select>
                     </div>
 
@@ -1012,7 +1013,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main">
                         <span>Bemessungsregen-Intensität (r_D):</span>
-                        <span className="font-mono text-zinc-900 font-bold">{tiefbauRain} l/(s·ha)</span>
+                        <span className="font-mono text-zinc-900 font-bold">{formatDeWert(tiefbauRain)} l/(s·ha)</span>
                       </div>
                       <input 
                         type="range" 
@@ -1029,7 +1030,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main border-none">
                         <span>Regendauer (t_d):</span>
-                        <span className="font-mono text-zinc-900 font-bold">{tiefbauDuration} min</span>
+                        <span className="font-mono text-zinc-900 font-bold">{formatDeWert(tiefbauDuration)} min</span>
                       </div>
                       <input 
                         type="range" 
@@ -1046,7 +1047,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main border-none">
                         <span>Sickerelement Typ (Speichereffizienz):</span>
-                        <span className="font-mono text-zinc-900 font-bold">{(tiefbauFss * 100).toFixed(0)}% Hohlraum</span>
+                        <span className="font-mono text-zinc-900 font-bold">{formatDeZahl((tiefbauFss * 100), 0)}% Hohlraum</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2 mt-1">
                         <button
@@ -1100,18 +1101,18 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                           {/* Zufluss-Details */}
                           <div className="bg-zinc-50 p-4 rounded-xl border border-zinc-200">
                             <span className="text-[10px] uppercase font-mono font-bold text-zinc-500">Hydraulischer Zufluss</span>
-                            <div className="text-xl font-bold text-zinc-900 font-mono mt-1">{v_zu_m3.toFixed(2)} m³</div>
+                            <div className="text-xl font-bold text-zinc-900 font-mono mt-1">{formatDeZahl(v_zu_m3, 2)} m³</div>
                             <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full">
-                              Spitzenzuflussrate Q_in beträgt <strong className="font-mono">{q_in.toFixed(1)} l/s</strong> über die reduzierte Auffangfläche A_red = {a_red.toFixed(0)} m².
+                              Spitzenzuflussrate Q_in beträgt <strong className="font-mono">{formatDeZahl(q_in, 1)} l/s</strong> über die reduzierte Auffangfläche A_red = {formatDeZahl(a_red, 0)} m².
                             </p>
                           </div>
 
                           {/* Sicker-Details */}
                           <div className="bg-zinc-50 p-4 rounded-xl border border-zinc-200">
                             <span className="text-[10px] uppercase font-mono font-bold text-zinc-500">Boden-Infiltration</span>
-                            <div className="text-xl font-bold text-zinc-900 font-mono mt-1">{v_sicker_m3.toFixed(3)} m³</div>
+                            <div className="text-xl font-bold text-zinc-900 font-mono mt-1">{formatDeZahl(v_sicker_m3, 3)} m³</div>
                             <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full">
-                              Infiltration über Sohle (A_soh ≈ {a_sohle.toFixed(1)} m²) bei Sand/Schluff-Boden (k_f = 10⁻⁵ m/s): <strong className="font-mono">{q_sicker_l_s.toFixed(3)} l/s</strong>.
+                              Infiltration über Sohle (A_soh ≈ {formatDeZahl(a_sohle, 1)} m²) bei Sand/Schluff-Boden (k_f = 10⁻⁵ m/s): <strong className="font-mono">{formatDeZahl(q_sicker_l_s, 3)} l/s</strong>.
                             </p>
                           </div>
 
@@ -1122,11 +1123,11 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                           <div className="flex justify-between items-start">
                             <div>
                               <span className="text-[10px] uppercase font-mono font-bold text-shiraz">Erforderliches Rigolen-Nutzvolumen (V_rig)</span>
-                              <div className="text-3xl font-extrabold text-slate-900 font-mono mt-1">{v_speicher_m3.toFixed(2)} m³</div>
+                              <div className="text-3xl font-extrabold text-slate-900 font-mono mt-1">{formatDeZahl(v_speicher_m3, 2)} m³</div>
                             </div>
                             <div className="text-right text-[10px] text-slate-800 font-mono">
                               <div>DWA-A 138 Planungsentwurf</div>
-                              <div>Sicherheitsbeiwert f_S = 1.1 integriert</div>
+                              <div>Sicherheitsbeiwert f_S = 1,1 integriert</div>
                             </div>
                           </div>
 
@@ -1136,18 +1137,18 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                               <p className="font-bold">Konstruktive Empfehlung:</p>
                               {tiefbauFss === 0.95 ? (
                                 <p className="text-[11px] mt-0.5 text-slate-900 font-medium">
-                                  Verwendung von PP-Sickerboxen (Rigolenfüllkörper): <span className="font-mono font-bold text-slate-800">{num_boxes} Standard-Sickerboxen</span> (0.24m³ Nutzkapazität je Box) mit umhüllendem Filtervlies (Geotextil) erforderlich.
+                                  Verwendung von PP-Sickerboxen (Rigolenfüllkörper): <span className="font-mono font-bold text-slate-800">{num_boxes} Standard-Sickerboxen</span> (0,24m³ Nutzkapazität je Box) mit umhüllendem Filtervlies (Geotextil) erforderlich.
                                 </p>
                               ) : (
                                 <p className="text-[11px] mt-0.5 text-slate-900 font-medium">
-                                  Verwendung eines Kiesgrabens (Körnung 16/32, Hohlraumfaktor s_R = 0.3): Gesamter Aushubgraben benötigt ein Volumen von ca. <span className="font-mono font-bold text-slate-800">{(v_speicher_m3 / 0.3).toFixed(1)} m³</span>.
+                                  Verwendung eines Kiesgrabens (Körnung 16/32, Hohlraumfaktor s_R = 0,3): Gesamter Aushubgraben benötigt ein Volumen von ca. <span className="font-mono font-bold text-slate-800">{formatDeZahl((v_speicher_m3 / 0.3), 1)} m³</span>.
                                 </p>
                               )}
                             </div>
                             <div className="font-mono text-[11px] bg-white/60 p-2.5 rounded border border-home-grau/30 flex flex-col justify-center">
-                              <div>Sohlentiefe: <span className="font-bold">0.60 m</span></div>
-                              <div>Breite: <span className="font-bold">1.20 m</span></div>
-                              <div>Erforderliche Länge: <span className="font-bold text-slate-800">{l_rig.toFixed(2)} m</span></div>
+                              <div>Sohlentiefe: <span className="font-bold">0,60 m</span></div>
+                              <div>Breite: <span className="font-bold">1,20 m</span></div>
+                              <div>Erforderliche Länge: <span className="font-bold text-slate-800">{formatDeZahl(l_rig, 2)} m</span></div>
                             </div>
                           </div>
                         </div>
@@ -1206,7 +1207,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
                     <h5 className="font-bold text-zinc-800 text-xs mb-1">UIC 60 Schienenprofil</h5>
                     <p className="text-[11px]">
-                      Das Standardprofil für den Fernbahnoberbau besitzt ein Metergewicht von 60.34 kg/m und eine Querschnittsfläche von A = 76.86 cm² (7686 mm²). Schienenstähle (z. B. R260) besitzen eine Festigkeit von mind. 880 N/mm² und sind lückenlos verschweißt.
+                      Das Standardprofil für den Fernbahnoberbau besitzt ein Metergewicht von 60,34 kg/m und eine Querschnittsfläche von A = 76,86 cm² (7686 mm²). Schienenstähle (z. B. R260) besitzen eine Festigkeit von mind. 880 N/mm² und sind lückenlos verschweißt.
                     </p>
                   </div>
                 </div>
@@ -1218,7 +1219,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <Calculator size={16} className="text-shiraz" /> Interaktives Labor: Thermische Eigenspannung & Verwerfungsrisiko
                 </h3>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Das kontinuierlich verschweißte Gleis (lückenloses Gleis) verhindert Stoßlücken, erzwingt jedoch bei Erwärmung Schienenlängskräfte. Berechne die statischen Zwangsspannungen und evaluieren Sie das Risiko elastischer Ausknickungen (Gleisverwerfungen).
+                  Das kontinuierlich verschweißte Gleis (lückenloses Gleis) verhindert Stoßlücken, erzwingt jedoch bei Erwärmung Schienenlängskräfte. Berechnen Sie die statischen Zwangsspannungen und evaluieren Sie das Risiko elastischer Ausknickungen (Gleisverwerfungen).
                 </p>
 
                 <div className="space-y-4">
@@ -1226,7 +1227,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold text-text-main">
                       <span>Aktuelle Schienentemperatur (T_Schiene):</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{schieneTemp} °C</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(schieneTemp)} °C</span>
                     </div>
                     <div className="text-[10px] text-zinc-500 mb-1">Im Sommer können absorbierende Stahlschienen bis zu 25°C über der Lufttemperatur liegen!</div>
                     <input 
@@ -1244,7 +1245,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold text-text-main border-none">
                       <span>Herstellungs- / Neutralisationstemperatur (T_Neutral):</span>
-                      <span className="font-mono text-xs">{neutralTemp} °C</span>
+                      <span className="font-mono text-xs">{formatDeWert(neutralTemp)} °C</span>
                     </div>
                     <input 
                       type="range" 
@@ -1311,24 +1312,24 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                       <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs">
                         <div className="grid grid-cols-2 font-mono gap-y-1">
                           <div className="text-zinc-500 font-bold">Temperaturdifferenz (ΔT):</div>
-                          <div className="text-right font-extrabold text-zinc-900">{deltaT > 0 ? `+${deltaT}` : deltaT} K</div>
+                          <div className="text-right font-extrabold text-zinc-900">{deltaT > 0 ? `+${formatDeWert(deltaT)}` : deltaT} K</div>
                           
                           <div className="text-zinc-500 font-bold">Eigenspannung (σ_T):</div>
                           <div className={`text-right font-extrabold ${sigma_T >= 0 ? 'text-rose-800' : 'text-blue-800'}`}>
-                            {sigma_T.toFixed(2)} MPa {(sigma_T >= 0 ? '(Druck)' : '(Zug)')}
+                            {formatDeZahl(sigma_T, 2)} MPa {(sigma_T >= 0 ? '(Druck)' : '(Zug)')}
                           </div>
 
                           <div className="text-zinc-500 font-bold">Längskraft pro Schiene:</div>
-                          <div className="text-right font-bold text-zinc-700">{force_per_rail_kN.toFixed(1)} kN</div>
+                          <div className="text-right font-bold text-zinc-700">{formatDeZahl(force_per_rail_kN, 1)} kN</div>
 
                           <div className="text-zinc-500 font-bold">Gleislängskraft (2 Schienen):</div>
-                          <div className="text-right font-extrabold text-zinc-950">{force_total_track_kN.toFixed(1)} kN</div>
+                          <div className="text-right font-extrabold text-zinc-950">{formatDeZahl(force_total_track_kN, 1)} kN</div>
                         </div>
 
                         {/* Formel-Dokumentation */}
                         <div className="text-[10px] text-zinc-400 bg-white p-2 rounded border border-zinc-150 font-mono">
                           Berechnungsformel: σ_T = E · α_T · (T_Schiene - T_Neutral)
-                          mit E = 210.000 N/mm² und α_T = 1.2 · 10⁻⁵ / K.
+                          mit E = 210.000 N/mm² und α_T = 1,2 · 10⁻⁵ / K.
                         </div>
 
                         {/* Status Alert */}
@@ -1403,7 +1404,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold text-text-main">
                       <span>Vortriebs-Aussenradius (R):</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{tunnelRadius.toFixed(1)} m</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(tunnelRadius, 1)} m</span>
                     </div>
                     <input 
                       type="range" 
@@ -1420,9 +1421,9 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold text-text-main">
                       <span>Gebirgsdruck (p_g / Radialspannung):</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{gebirgsdruck.toFixed(2)} MPa</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(gebirgsdruck, 2)} MPa</span>
                     </div>
-                    <div className="text-[10px] text-zinc-500 mb-1">Hinweis: 0.10 MPa ≈ 10 t/m² vertikale Auflast.</div>
+                    <div className="text-[10px] text-zinc-500 mb-1">Hinweis: 0,10 MPa ≈ 10 t/m² vertikale Auflast.</div>
                     <input 
                       type="range" 
                       min="0.05" 
@@ -1438,7 +1439,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold text-text-main">
                       <span>Sicherungsdicke (d):</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{spritzbetonDicke} cm</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(spritzbetonDicke)} cm</span>
                     </div>
                     <input 
                       type="range" 
@@ -1485,24 +1486,24 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                       <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs font-sans">
                         <div className="grid grid-cols-2 font-mono gap-y-1">
                           <div className="text-zinc-500 font-bold">Ringdruckkraft (N_ring):</div>
-                          <div className="text-right font-bold text-zinc-950">{(gebirgsdruck * tunnelRadius * 1000).toFixed(1)} kN/m</div>
+                          <div className="text-right font-bold text-zinc-950">{formatDeZahl((gebirgsdruck * tunnelRadius * 1000), 1)} kN/m</div>
 
                           <div className="text-zinc-500 font-bold">Ringdruckspannung (σ_Ring):</div>
-                          <div className="text-right font-extrabold text-shiraz">{sigma_ring.toFixed(2)} MPa</div>
+                          <div className="text-right font-extrabold text-shiraz">{formatDeZahl(sigma_ring, 2)} MPa</div>
 
                           <div className="text-zinc-500 font-bold">Bemessungsfestigkeit (f_cd,temp):</div>
-                          <div className="text-right font-bold text-emerald-800">{f_cd.toFixed(2)} MPa</div>
+                          <div className="text-right font-bold text-emerald-800">{formatDeZahl(f_cd, 2)} MPa</div>
 
                           <div className="text-zinc-500 font-bold">Auslastungsgrad (η):</div>
                           <div className={`text-right font-extrabold ${isSafe ? 'text-emerald-700' : 'text-rose-700'}`}>
-                            {utilization.toFixed(1)} %
+                            {formatDeZahl(utilization, 1)} %
                           </div>
                         </div>
 
                         {/* Formel-Dokumentation */}
                         <div className="text-[10px] text-zinc-400 bg-white p-2 rounded border border-zinc-150 font-mono leading-relaxed">
                           Ringnormalspannungsformel: σ_Ring = (p_g · R) / d
-                          Sicherheitsbeiwert für den Bauzustand: γ_c = 1.3
+                          Sicherheitsbeiwert für den Bauzustand: γ_c = 1,3
                         </div>
 
                         {/* Status Alert */}
@@ -1512,7 +1513,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                           {isSafe ? (
                             <span>✓ Tragfähigkeit im Bauzustand gewährleistet! Die Spritzbetonsicherung fängt den Gebirgsdruck stabil ab (Sicherheitsreserve vorhanden).</span>
                           ) : (
-                            <span>✗ WARNUNG: ÜBUNG NICHT BESTANDEN! Die Betongefügespannung übersteigt die Festigkeit des Spritzbetons. Gefahr des Ausbrechens des Ausbruchsquerschnitts! Erhöhen Sie die Dicke oder wähle C30/37.</span>
+                            <span>✗ WARNUNG: ÜBUNG NICHT BESTANDEN! Die Betongefügespannung übersteigt die Festigkeit des Spritzbetons. Gefahr des Ausbrechens des Ausbruchsquerschnitts! Erhöhen Sie die Dicke oder wählen Sie C30/37.</span>
                           )}
                         </div>
                       </div>
@@ -1542,7 +1543,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
               <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-1 text-[11px]">
                 <div className="bg-white p-2.5 rounded border border-zinc-200">
                   <span className="font-bold text-shiraz block">Betonfestigkeit</span>
-                  Standardmäßig <strong>C30/37</strong> (Biegezugprüfung m_fct,sp ≥ 4.5 MPa).
+                  Standardmäßig <strong>C30/37</strong> (Biegezugprüfung m_fct,sp ≥ 4,5 MPa).
                 </div>
                 <div className="bg-white p-2.5 rounded border border-zinc-200">
                   <span className="font-bold text-shiraz block">Expositionsklassen</span>
@@ -1580,7 +1581,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main">
                         <span>Deckendicke (h):</span>
-                        <span className="font-mono text-xs text-shiraz font-bold">{betonSlabThickness} cm</span>
+                        <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(betonSlabThickness)} cm</span>
                       </div>
                       <input 
                         type="range" 
@@ -1601,7 +1602,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main">
                         <span>Bemessungs-Achsübergang (P_achse):</span>
-                        <span className="font-mono text-xs text-shiraz font-bold">{betonAchslast} kN</span>
+                        <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(betonAchslast)} kN</span>
                       </div>
                       <input 
                         type="range" 
@@ -1613,7 +1614,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         className="w-full accent-shiraz" 
                       />
                       <div className="text-[10px] text-zinc-500">
-                        Radlast (P_rad) = P_achse / 2 = {(betonAchslast / 2).toFixed(0)} kN. Typisches Lkw-Rad für Dimensionierungen.
+                        Radlast (P_rad) = P_achse / 2 = {formatDeZahl((betonAchslast / 2), 0)} kN. Typisches Lkw-Rad für Dimensionierungen.
                       </div>
                     </div>
 
@@ -1621,7 +1622,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main">
                         <span>Bettungsmodul des Unterbaus (k-Wert):</span>
-                        <span className="font-mono text-xs text-shiraz font-bold">{betonBettung} MN/m³</span>
+                        <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(betonBettung)} MN/m³</span>
                       </div>
                       <input 
                         type="range" 
@@ -1668,26 +1669,26 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                           <h5 className="font-bold text-zinc-800">Spannungsermittlung nach Westergaard-Theorie:</h5>
                           <div className="grid grid-cols-2 font-mono gap-y-1 text-[11px]">
                             <div className="text-zinc-500">Radaufstandsfläche (r_t):</div>
-                            <div className="text-right text-zinc-800">ø {(r_mm * 2 / 10).toFixed(1)} cm (r = {r_mm.toFixed(0)} mm)</div>
+                            <div className="text-right text-zinc-800">ø {formatDeZahl((r_mm * 2 / 10), 1)} cm (r = {formatDeZahl(r_mm, 0)} mm)</div>
                             
                             <div className="text-zinc-500">Elastische Steifigkeitslänge (l):</div>
-                            <div className="text-right text-zinc-800">{(l_mm / 10).toFixed(1)} cm (l = {l_mm.toFixed(0)} mm)</div>
+                            <div className="text-right text-zinc-800">{formatDeZahl((l_mm / 10), 1)} cm (l = {formatDeZahl(l_mm, 0)} mm)</div>
 
                             <div className="text-zinc-500">Berechnete Dehnspannung (σ_e):</div>
-                            <div className="text-right text-shiraz font-black">{sigma_e.toFixed(2)} N/mm² (MPa)</div>
+                            <div className="text-right text-shiraz font-black">{formatDeZahl(sigma_e, 2)} N/mm² (MPa)</div>
 
                             <div className="text-zinc-500">Zul. Dehnspannung (Dauerlast):</div>
-                            <div className="text-right text-emerald-800 font-bold">{allowed_sigma.toFixed(2)} N/mm²</div>
+                            <div className="text-right text-emerald-800 font-bold">{formatDeZahl(allowed_sigma, 2)} N/mm²</div>
 
                             <div className="text-zinc-500">Ausnutzungsgrad (η_Biege):</div>
-                            <div className={`text-right font-black ${isThicknessOK ? 'text-emerald-700' : 'text-red-700'}`}>{ratio.toFixed(1)} %</div>
+                            <div className={`text-right font-black ${isThicknessOK ? 'text-emerald-700' : 'text-red-700'}`}>{formatDeZahl(ratio, 1)} %</div>
                           </div>
 
                           <div className={`p-2 rounded border text-[11px] leading-relaxed ${
                             isThicknessOK ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-red-50 text-red-800 border-red-200'
                           }`}>
                             {isThicknessOK ? (
-                              <span>✓ <strong>Dimensionierung ausreichend!</strong> Die Betondecke mit d = {betonSlabThickness} cm hält den Dauer-Biegezugspannungen der Lkw-Verkehrslast stand.</span>
+                              <span>✓ <strong>Dimensionierung ausreichend!</strong> Die Betondecke mit d = {formatDeWert(betonSlabThickness)} cm hält den Dauer-Biegezugspannungen der Lkw-Verkehrslast stand.</span>
                             ) : (
                               <span>✗ <strong>MANGELHAFT (Bruchgefahr):</strong> Die Deckenspannung übersteigt die zyklische Biegefestigkeit. Wilde Spontanrisse und Eckenabbrüche vorprogrammiert! Erhöhen Sie d oder verbessern Sie die Bettung (k-Wert).</span>
                             )}
@@ -1751,13 +1752,13 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
 
                       if (betonFreshAir > reqMax) {
                         strengthLoss = (betonFreshAir - reqMin) * 4.5; // assume 4.5% loss per 1% extra air
-                        lpMsg = `⚠ LUFTPOREN ZU HOCH! Der Grenzwert (${reqMax}%) wird überschritten. Dies führt zu einem geschätzten Festigkeitsverlust von ca. ${strengthLoss.toFixed(0)}% gegenüber dem Kernbetongefüge!`;
+                        lpMsg = `⚠ LUFTPOREN ZU HOCH! Der Grenzwert (${formatDeWert(reqMax)}%) wird überschritten. Dies führt zu einem geschätzten Festigkeitsverlust von ca. ${formatDeZahl(strengthLoss, 0)}% gegenüber dem Kernbetongefüge!`;
                         lpColor = "bg-amber-50 text-amber-800 border-amber-200";
                       } else if (betonFreshAir < reqMin) {
                         lpMsg = `✗ ALARM: FROST-SCHADEN GEFÄHRDET! Die künstlichen Poren genügen nicht (${betonFreshAir}% < gefordert ${reqMin}%). Der Beton wird im Winter unter Tausalz-Sprühmist unweigerlich großflächig absanden/abquetschen!`;
                         lpColor = "bg-red-50 text-red-800 border-red-200";
                       } else {
-                        lpMsg = `✓ KONFORM nach ZTV Beton-StB. Mikroklimatische Reserveporen sind optimal gefüllt (Sollbereich: ${reqMin}-${reqMax}%).`;
+                        lpMsg = `✓ KONFORM nach ZTV Beton-StB. Mikroklimatische Reserveporen sind optimal gefüllt (Sollbereich: ${formatDeWert(reqMin)}-${formatDeWert(reqMax)}%).`;
                         lpColor = "bg-emerald-50 text-emerald-800 border-emerald-100";
                       }
 
@@ -1765,7 +1766,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         <div className={`p-3 rounded-lg border space-y-1.5 text-xs ${lpColor}`}>
                           <div className="font-bold flex justify-between items-center">
                             <span>Soll-LP-Bereich für GK {betonMaxAggregateSize}:</span>
-                            <span className="font-mono">{reqMin}% bis {reqMax}%</span>
+                            <span className="font-mono">{formatDeWert(reqMin)}% bis {formatDeWert(reqMax)}%</span>
                           </div>
                           <p className="leading-relaxed text-[11px] font-sans">
                             {lpMsg}
@@ -1797,7 +1798,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-semibold text-text-main">
                         <span>Längsabstand der Scheinfugen (Plattenlänge L):</span>
-                        <span className="font-mono text-xs text-shiraz font-bold">{betonFugenAbstand.toFixed(1)} m</span>
+                        <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(betonFugenAbstand, 1)} m</span>
                       </div>
                       <input 
                         type="range" 
@@ -1809,8 +1810,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         className="w-full accent-shiraz" 
                       />
                       <div className="flex justify-between text-[10px] text-zinc-400">
-                        <span>ZTV Standard: ≤ 5.0 m</span>
-                        <span>Kritischer Baufehler: &gt; 5.0 m</span>
+                        <span>ZTV Standard: ≤ 5,0 m</span>
+                        <span>Kritischer Baufehler: &gt; 5,0 m</span>
                       </div>
                     </div>
 
@@ -1831,9 +1832,9 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                             isFugenOK ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-rose-50 text-rose-800 border-red-200'
                           }`}>
                             {isFugenOK ? (
-                              <span>✓ <strong>Fugenabstand konform:</strong> L = {betonFugenAbstand.toFixed(1)} m ist kleiner als das Maximum von {maxAllowedL.toFixed(2)} m (25·h-Grenze). Quer-Verzugrisse werden vermieden.</span>
+                              <span>✓ <strong>Fugenabstand konform:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m ist kleiner als das Maximum von {formatDeZahl(maxAllowedL, 2)} m (25·h-Grenze). Quer-Verzugrisse werden vermieden.</span>
                             ) : (
-                              <span>✗ <strong>ACUTE RISSGEFAHR:</strong> L = {betonFugenAbstand.toFixed(1)} m übersteigt den rechnerischen Grenzwert ({maxAllowedL.toFixed(2)} m) für unbewehrte Platten. Wilde Spontan-Querrisse sind unvermeidbar!</span>
+                              <span>✗ <strong>ACUTE RISSGEFAHR:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m übersteigt den rechnerischen Grenzwert ({formatDeZahl(maxAllowedL, 2)} m) für unbewehrte Platten. Wilde Spontan-Querrisse sind unvermeidbar!</span>
                             )}
                           </div>
 
@@ -1883,8 +1884,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                           onChange={(e) => setBetonCementAlkali(e.target.value as any)}
                           className="w-full text-xs p-1.5 rounded border border-zinc-200 bg-white"
                         >
-                          <option value="high">Standard CEM I (Na2O_eq ≥ 0.60%)</option>
-                          <option value="low">NA-Zement (Na2O_eq &lt; 0.60% / Low Alkali)</option>
+                          <option value="high">Standard CEM I (Na2O_eq ≥ 0,60%)</option>
+                          <option value="low">NA-Zement (Na2O_eq &lt; 0,60% / Low Alkali)</option>
                         </select>
                       </div>
                     </div>
@@ -1903,7 +1904,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         } else {
                           riskTitle = "Mäßiges Risiko (Beherrscht durch NA-Zement)";
                           riskColor = "bg-amber-50 text-amber-800 border-amber-200";
-                          riskAdvice = "Durch die Verwendung eines NA-Zements (Na2O-Äquivalent < 0.60%) ist das autogene Alkalidepot stark gedeckelt. Dennoch ist Feuchtigkeitsklasse WS (Feucht + Tausalzzufuhr) gegeben; zusätzliche Fremdüberwachung der Gesteinspolierbarkeit empfohlen.";
+                          riskAdvice = "Durch die Verwendung eines NA-Zements (Na2O-Äquivalent < 0,60%) ist das autogene Alkalidepot stark gedeckelt. Dennoch ist Feuchtigkeitsklasse WS (Feucht + Tausalzzufuhr) gegeben; zusätzliche Fremdüberwachung der Gesteinspolierbarkeit empfohlen.";
                         }
                       } else {
                         riskTitle = "Unkritisches Risiko (AKR-Gefahr extrem minimal)";
@@ -1931,7 +1932,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                                 <div><strong>Chemismus der AKR:</strong></div>
                                 <div>1. Gelbildungsverfahren: SiO_2 (Zuschlag) + 2 NaOH (Zement) + H_2O → Na_2SiO_3·H_2O (Alkaligel)</div>
                                 <div>2. Volumendehnung: Das Gel zieht im Frost-Tausalz-Zyklus kapillares Wasser an und quillt massiv auf.</div>
-                                <div>3. Zerrüttung: Überschreitet der Spaltdruck die Zugfestigkeit des Betons (ca. 3.0 MPa), zerreißt das monolithische Aggregatgefüge netzartig.</div>
+                                <div>3. Zerrüttung: Überschreitet der Spaltdruck die Zugfestigkeit des Betons (ca. 3,0 MPa), zerreißt das monolithische Aggregatgefüge netzartig.</div>
                               </div>
                             )}
                           </div>
@@ -1974,7 +1975,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
             quelle: 'RStO 12/24 Gl. 1'
           },
           {
-            formel: 'E_{v2} \\ge 120\\,\\text{MN/m}^2, \\quad \\frac{E_{v2}}{E_{v1}} \\le 2.2',
+            formel: 'E_{v2} \\ge 120\\,\\text{MN/m}^2, \\quad \\frac{E_{v2}}{E_{v1}} \\le 2{,}2',
             erklaerung: 'Verformungsmodul Ev2 und Verdichtungsverhältnis Ev2/Ev1 beim statischen Plattendruckversuch auf ungebundenen Frostschutz- und Schottertragschichten.',
             quelle: 'ZTVE-StB / DIN 18134'
           }

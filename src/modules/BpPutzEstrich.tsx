@@ -24,7 +24,7 @@ const plasterProducts: PutzEstrichProduct[] = [
     name: 'Gipsputzmörtel (Innenputz)',
     code: 'GP / B1-B7',
     standard: 'DIN EN 13279-1',
-    strengthClass: 'Druckfestigkeit ≥ 2.0 N/mm²',
+    strengthClass: 'Druckfestigkeit ≥ 2,0 N/mm²',
     binder: 'Baugips (Calciumsulfat-Hemihydrat)',
     density: 'ca. 900 - 1100 kg/m³',
     shrinkage: 'Sehr gering (quillt minimal)',
@@ -389,15 +389,15 @@ export default function BpPutzEstrich() {
           'Wohnungsbau-Ausschuss: Richtlinie für das Verputzen von Mauerwerk.'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 13914-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN 18550-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Bestimmungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18560-1 bis 7 (Estriche im Bauwesen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13813 (Estrichmörtel und Estrichmassen - Eigenschaften und Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 998-1 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 13914-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13914-1' }, 
+          { title: 'DIN 18550-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Bestimmungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18550-1' },
+          { title: 'DIN 18560-1 bis 7 (Estriche im Bauwesen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1' },
+          { title: 'DIN EN 13813 (Estrichmörtel und Estrichmassen - Eigenschaften und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13813' },
+          { title: 'DIN EN 998-1 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-1' }
         ]} 
         formeln={[
           { 
-            formel: '\\text{CaSO}_4 \\cdot 0.5\\,\\text{H}_2\\text{O} + 1.5\\,\\text{H}_2\\text{O} \\rightarrow \\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O}', 
+            formel: '\\text{CaSO}_4 \\cdot 0{,}5\\,\\text{H}_2\\text{O} + 1{,}5\\,\\text{H}_2\\text{O} \\rightarrow \\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O}', 
             erklaerung: 'Kristalline Abbindereaktion von Calciumsulfat-Halbhydrat zu Dihydrat unter leichter Volumenzunahme (ca. 1%).',
             quelle: 'DIN EN 13279'
           },
@@ -407,7 +407,7 @@ export default function BpPutzEstrich() {
             quelle: 'DIN EN 459'
           },
           {
-            formel: 's_d = \\mu \\cdot d \\le 0.2\\,\\text{m}',
+            formel: 's_d = \\mu \\cdot d \\le 0{,}2\\,\\text{m}',
             erklaerung: 'Diffusionsäquivalente Luftschichtdicke sd für hoch diffusionsoffene mineralische Innenputze zur Vermeidung von Feuchteakkumulation.',
             quelle: 'DIN 4108-3'
           }

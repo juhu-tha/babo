@@ -17,6 +17,7 @@ export function FormulaText({ text, className = "" }: FormulaTextProps) {
     let processed = sanitizeHTML(input);
     
     // 0. Decode common HTML entities that might appear escaped
+    processed = processed.replace(/\{,\}/g, ','); // TeX-Dezimalkomma {,} im Textmodus als Komma
     processed = processed.replace(/&amp;approx;|≈/g, '≈');
     processed = processed.replace(/&amp;ge;|≥/g, '≥');
     processed = processed.replace(/&amp;le;|≤/g, '≤');

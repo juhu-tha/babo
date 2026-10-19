@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Recycle, Sliders, Activity, CheckCircle2, Info, AlertTriangle, AlertCircle, FileText, SlidersHorizontal, BookOpen, Layers, ClipboardCheck, Scale, Printer } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
 
@@ -88,7 +88,7 @@ const TREATMENT_OPTIONS = {
     },
     mkw_pak: {
       method: 'Thermische Desorption (Drehrohrofen)',
-      efficiency: 'Extrem hoch (> 99.9% Abbauquote)',
+      efficiency: 'Extrem hoch (> 99,9% Abbauquote)',
       co2: 'Sehr hoch (~60-90 kg CO₂/t)',
       cost: 'Sehr teuer (70 - 110 €/t)',
       principles: 'Da bindige Böden mikrobiell nur sehr langsam abgebaut werden können, ist die Thermik das einzig sichere Verfahren für hohe Belastungen. Der Boden wird in einem indirekt beheizten Drehrohrofen auf 350°C bis 550°C erwärmt. Organische Schadstoffe verdampfen (Desorption) und werden in einer thermischen Nachverbrennungsanlage bei > 850°C vollständig in CO₂ und Wasser zertrümmert.',
@@ -192,7 +192,7 @@ const TREATMENT_OPTIONS = {
         'Echtzeit-Scannen mittels Nahinfrarotspektroskopie zur Gipserkennung.',
         'Pneumatischer Auswurf der Gipsfraktion.'
       ],
-      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0.8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
+      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0,8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
     }
   },
   altablagerung: {
@@ -613,7 +613,7 @@ export default function BodenMaterialAufbereitung() {
             </div>
 
             <p className="text-sm text-slate-700 leading-normal mb-6">
-              Damit mineralische Ersatzbaustoffe (MEB) anstelle von Primärkiestypen rechtssicher verbaut werden können, schreibt die EBV einen vierstufigen Gütekreislauf vor. Hierdurch verliert der recycelte Baustoff rechtlich seine Abfalleigenschaft und wird zum normgerechten Bauprodukt.
+              Damit mineralische Ersatzbaustoffe (MEB) anstelle von Primärkiestypen rechtlich belastbar verbaut werden können, schreibt die EBV einen vierstufigen Gütekreislauf vor. Hierdurch verliert der recycelte Baustoff rechtlich seine Abfalleigenschaft und wird zum normgerechten Bauprodukt.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
@@ -706,7 +706,7 @@ export default function BodenMaterialAufbereitung() {
                     <label className="text-xs font-semibold text-slate-800">Haufwerksvolumen (<InlineMath math="V" />):</label>
                     <div className="flex items-center gap-1">
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         value={heapVolume} 
                         onChange={(e) => setHeapVolume(Math.max(1, parseInt(e.target.value) || 0))}
                         disabled={isFinalized}
@@ -745,11 +745,11 @@ export default function BodenMaterialAufbereitung() {
                     disabled={isFinalized}
                     className="w-full p-2 text-xs border border-home-grau/40 rounded bg-white"
                   >
-                    <option value="1.5">1.5 t/m³ (Ziegel / Bauschuttleichtfraktion)</option>
-                    <option value="1.6">1.6 t/m³ (Bindiger Tonschlamm / Schluff)</option>
-                    <option value="1.8">1.8 t/m³ (Sandiger / kiesiger Boden / Erdaushub)</option>
-                    <option value="1.7">1.7 t/m³ (Heterogene Altablagerungen / Deponiematerial)</option>
-                    <option value="2.0">2.0 t/m³ (Betonbruch / Schwerer Bauschutt)</option>
+                    <option value="1.5">1,5 t/m³ (Ziegel / Bauschuttleichtfraktion)</option>
+                    <option value="1.6">1,6 t/m³ (Bindiger Tonschlamm / Schluff)</option>
+                    <option value="1.8">1,8 t/m³ (Sandiger / kiesiger Boden / Erdaushub)</option>
+                    <option value="1.7">1,7 t/m³ (Heterogene Altablagerungen / Deponiematerial)</option>
+                    <option value="2.0">2,0 t/m³ (Betonbruch / Schwerer Bauschutt)</option>
                   </select>
                 </div>
 
@@ -769,7 +769,7 @@ export default function BodenMaterialAufbereitung() {
                             : 'bg-slate-50 border-home-grau/30 text-slate-600 hover:bg-slate-100'
                         }`}
                       >
-                        {sz === 126 ? '> 125 mm' : `≤ ${sz} mm`}
+                        {sz === 126 ? '> 125 mm' : `≤ ${formatDeWert(sz)} mm`}
                       </button>
                     ))}
                   </div>
@@ -860,7 +860,7 @@ export default function BodenMaterialAufbereitung() {
                         <span className="text-xs text-slate-400 block mt-0.5 font-mono">1 Mischprobe pro Untersuchungseinheit</span>
                       </div>
                       <span className="text-sm font-black text-shiraz bg-shiraz/5 border border-shiraz/20 px-3 py-1 rounded">
-                        {samplingReq.mp} MP
+                        {formatDeWert(samplingReq.mp)} MP
                       </span>
                     </div>
 
@@ -870,7 +870,7 @@ export default function BodenMaterialAufbereitung() {
                         <span className="text-xs text-slate-400 block mt-0.5 font-mono">Insgesamt aus verschiedenen Tiefenstufen</span>
                       </div>
                       <span className="text-sm font-black text-slate-800 bg-slate-50 border border-slate-200 px-3 py-1 rounded">
-                        {samplingReq.ep} EP
+                        {formatDeWert(samplingReq.ep)} EP
                       </span>
                     </div>
 
@@ -880,7 +880,7 @@ export default function BodenMaterialAufbereitung() {
                         <span className="text-xs text-slate-400 block mt-0.5 font-mono">Orientiert nach d_max ({specs.name})</span>
                       </div>
                       <span className="text-xs font-mono font-extrabold text-slate-700 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded">
-                        {specs.vol >= 1 ? `${specs.vol} L` : `${specs.vol * 1000} ml`} / {specs.mass} kg
+                        {specs.vol >= 1 ? `${formatDeWert(specs.vol)} L` : `${formatDeWert(specs.vol * 1000)} ml`} / {formatDeWert(specs.mass)} kg
                       </span>
                     </div>
 
@@ -890,7 +890,7 @@ export default function BodenMaterialAufbereitung() {
                         <span className="text-xs text-slate-400 block mt-0.5 font-mono">Analysenprobe + Behördenprobe + Beweissicherung</span>
                       </div>
                       <span className="text-xs font-mono font-extrabold text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded">
-                        3 x {totalMinLabSampleMass} kg (= {totalFieldMassRequired} kg)
+                        3 x {formatDeWert(totalMinLabSampleMass)} kg (= {formatDeWert(totalFieldMassRequired)} kg)
                       </span>
                     </div>
                   </div>
@@ -1105,7 +1105,7 @@ export default function BodenMaterialAufbereitung() {
                     <tbody>
                       <tr>
                         <td className="border border-slate-300 p-1">Haufwerksvolumen / Masse</td>
-                        <td className="border border-slate-300 p-1 font-mono">{heapVolume} m³ / {tonnage} t</td>
+                        <td className="border border-slate-300 p-1 font-mono">{formatDeWert(heapVolume)} m³ / {formatDeWert(tonnage)} t</td>
                         <td className="border border-slate-300 p-1 font-semibold">Laut Vermessung erfüllt</td>
                       </tr>
                       <tr>
@@ -1115,13 +1115,13 @@ export default function BodenMaterialAufbereitung() {
                       </tr>
                       <tr>
                         <td className="border border-slate-300 p-1">Anzahl Mischproben (MP)</td>
-                        <td className="border border-slate-300 p-1 font-mono">≥ {samplingReq.mp} MP</td>
-                        <td className="border border-slate-300 p-1 font-semibold">{samplingReq.mp} MP entnommen</td>
+                        <td className="border border-slate-300 p-1 font-mono">≥ {formatDeWert(samplingReq.mp)} MP</td>
+                        <td className="border border-slate-300 p-1 font-semibold">{formatDeWert(samplingReq.mp)} MP entnommen</td>
                       </tr>
                       <tr>
                         <td className="border border-slate-300 p-1">Anzahl Einzelproben (EP)</td>
-                        <td className="border border-slate-300 p-1 font-mono">≥ {samplingReq.ep} EP (verteilt)</td>
-                        <td className="border border-slate-300 p-1 font-semibold">{samplingReq.ep} EP homogen vermischt</td>
+                        <td className="border border-slate-300 p-1 font-mono">≥ {formatDeWert(samplingReq.ep)} EP (verteilt)</td>
+                        <td className="border border-slate-300 p-1 font-semibold">{formatDeWert(samplingReq.ep)} EP homogen vermischt</td>
                       </tr>
                       <tr>
                         <td className="border border-slate-300 p-1">Maximales Korn d_max</td>
@@ -1130,12 +1130,12 @@ export default function BodenMaterialAufbereitung() {
                       </tr>
                       <tr>
                         <td className="border border-slate-350 p-1">Inkrementmenge je EP</td>
-                        <td className="border border-slate-350 p-1 font-mono">≥ {specs.vol} Liters / {specs.mass} kg</td>
+                        <td className="border border-slate-350 p-1 font-mono">≥ {formatDeWert(specs.vol)} Liters / {formatDeWert(specs.mass)} kg</td>
                         <td className="border border-slate-350 p-1 font-semibold">Eingehalten (Schaufelbeprobung)</td>
                       </tr>
                       <tr>
                         <td className="border border-slate-350 p-1">Probenkonservierung &amp; Rückhalt (LfU)</td>
-                        <td className="border border-slate-350 p-1 font-mono">3 x {totalMinLabSampleMass} kg Replikate</td>
+                        <td className="border border-slate-350 p-1 font-mono">3 x {formatDeWert(totalMinLabSampleMass)} kg Replikate</td>
                         <td className="border border-slate-350 p-1 font-semibold">In verplombten PE-Eimern verpackt</td>
                       </tr>
                     </tbody>
@@ -1218,13 +1218,13 @@ export default function BodenMaterialAufbereitung() {
           { title: 'Bayerisches LfU Infoblatt lfu_abfall_00266 (PDF-Download)', url: 'https://www.bestellen.bayern.de/med/801504b0-b4a5-11f0-81ee-c3fc7d0a3316/4b0e6a70-1059-11d9-4c85-9d915831e9eb/0/lfu_abfall_00266.pdf' }
         ]}
         regelwerke={[
-          { title: 'Ersatzbaustoffverordnung (EBV) - Richtlinien zur rechtssicheren Verwertung von mineralischen Ersatzbaustoffen', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
+          { title: 'Ersatzbaustoffverordnung (EBV) - Richtlinien zur rechtlich belastbaren Verwertung von mineralischen Ersatzbaustoffen', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Bundes-Bodenschutz- und Altlastenverordnung (BBodSchV) - Regelungen zum vorsorgenden und sanierenden Bodenschutz', url: 'https://de.wikipedia.org/wiki/Bodenschutz' },
           { title: 'LAGA PN 98 - Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen', url: 'https://www.laga-online.de/' }
         ]}
         formeln={[
           { formel: 'n_{MP} = 6 + \\lceil \\frac{V_{Haufwerk} - 2000}{500} \\rceil \\quad \\text{mit} \\quad n_{EP} = n_{MP} \\times 10', erklaerung: 'Mischprobenbestimmung nach LAGA PN 98 (>2000m³)' },
-          { formel: 'V_{EP, min} = f(d_{max}) \\in [0.1, 25.0]\\ \\text{Liter}', erklaerung: 'Mindesteinzelprobenvolumen nach Größtkorn' }
+          { formel: 'V_{EP, min} = f(d_{max}) \\in [0{,}1, 25{,}0]\\ \\text{Liter}', erklaerung: 'Mindesteinzelprobenvolumen nach Größtkorn' }
         ]}
       />
     </div>

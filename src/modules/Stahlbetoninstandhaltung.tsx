@@ -21,7 +21,7 @@ import {
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
 // Analytical approximation of Gauss error function erf(x)
@@ -139,11 +139,11 @@ export function Stahlbetoninstandhaltung() {
       if (crackWidth < 0.20) {
         harzTyp = 'Niedrigviskoses Epoxidharz (EP)';
         harzKlasse = 'Klasse F (Kraftübertragend) nach DIN EN 1504-5';
-        detailVerfahren = 'Sehr niedrige Viskosität (< 150 mPa·s) ermöglicht vollständige Penetration selbst in feinste Mikrorisse (w < 0.2 mm). Stellt Zug- und Druckfestigkeit voll wieder her (fh > 3.0 MPa). Untergrund muss trocken oder mattfeucht sein.';
+        detailVerfahren = 'Sehr niedrige Viskosität (< 150 mPa·s) ermöglicht vollständige Penetration selbst in feinste Mikrorisse (w < 0,2 mm). Stellt Zug- und Druckfestigkeit voll wieder her (fh > 3,0 MPa). Untergrund muss trocken oder mattfeucht sein.';
       } else {
         harzTyp = 'Epoxidharz (EP) oder Feinzementsuspension (ZS)';
         harzKlasse = 'Klasse F (Kraftübertragend) nach DIN EN 1504-5 / DIN V 18028';
-        detailVerfahren = 'Bei Rissbreiten w >= 0.2 mm kann neben EP auch hochfließfähige Feinzementsuspension (w/z-Wert ~0.4) wirtschaftlich verpresst werden. ZS ist unempfindlich gegenüber Feuchte und bietet natürlichen Passivierungsschutz.';
+        detailVerfahren = 'Bei Rissbreiten w >= 0,2 mm kann neben EP auch hochfließfähige Feinzementsuspension (w/z-Wert ~0.4) wirtschaftlich verpresst werden. ZS ist unempfindlich gegenüber Feuchte und bietet natürlichen Passivierungsschutz.';
       }
     } else {
       harzTyp = 'Polyacrylatgel (PC) / Schleierinjektion';
@@ -754,7 +754,7 @@ export function Stahlbetoninstandhaltung() {
                   <div>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 rounded-full bg-shiraz/5 flex items-center justify-center font-bold text-shiraz shrink-0 border border-shiraz/10">
-                        {prinzip.id}
+                        {formatDeWert(prinzip.id)}
                       </div>
                       <div>
                         <span className="text-xs font-bold text-home-grau uppercase tracking-wider">{prinzip.code}</span>
@@ -816,7 +816,7 @@ export function Stahlbetoninstandhaltung() {
                     <div className="p-3 bg-slate-50 rounded-lg border border-home-grau/15 space-y-1">
                       <span className="font-bold text-xs text-slate-900 block">Mechanische Strömungsbeziehung (Hagen-Poiseuille):</span>
                       <p className="text-[11px] text-text-main/85 leading-relaxed">
-                        Die Fließgeschwindigkeit des Injektionsharzes im Riss ist umgekehrt proportional zur dynamischen Viskosität (&eta;) und quadratisch abhängig von der Rissbreite (w). Feine Risse (w &lt; 0.2 mm) erfordern Viskositäten von &eta; &lt; 100 mPa·s und hohe Verpressdrücke.
+                        Die Fließgeschwindigkeit des Injektionsharzes im Riss ist umgekehrt proportional zur dynamischen Viskosität (&eta;) und quadratisch abhängig von der Rissbreite (w). Feine Risse (w &lt; 0,2 mm) erfordern Viskositäten von &eta; &lt; 100 mPa·s und hohe Verpressdrücke.
                       </p>
                     </div>
 
@@ -860,7 +860,7 @@ export function Stahlbetoninstandhaltung() {
                         <div className="bg-white p-2 rounded border border-home-grau/15 text-center my-1">
                           <BlockMath math="F_{bd} = b_f \cdot \sqrt{2 \cdot E_f \cdot t_f \cdot G_{cbd}}" />
                         </div>
-                        Wobei G_cbd die spezifische Verbundenergie und E_f der Elastizitätsmodul des Materials sind. Die Betonoberflächen-Abreißfestigkeit muss zwingend ≥ 1.5 N/mm² betragen.
+                        Wobei G_cbd die spezifische Verbundenergie und E_f der Elastizitätsmodul des Materials sind. Die Betonoberflächen-Abreißfestigkeit muss zwingend ≥ 1,5 N/mm² betragen.
                       </p>
                     </div>
 
@@ -905,7 +905,7 @@ export function Stahlbetoninstandhaltung() {
                   sub: 'Cementitious Mortar / Reparaturmörtel',
                   desc: 'Reine zementgebundene Mörtelsysteme ohne nennenswerten Polymerzusatz. Nur für statisch ruhende Bauteile geeignet.',
                   binder: 'Zement (starr)',
-                  density: 'Sehr hoch (~2.2 kg/dm³)',
+                  density: 'Sehr hoch (~2,2 kg/dm³)',
                   thickness: '10 - 50 mm (einlagig)',
                   eMod: 'Hoch (~25-35 GPa)',
                   shrink: 'Mittel bis hoch',
@@ -916,7 +916,7 @@ export function Stahlbetoninstandhaltung() {
                   sub: 'Polymer Cement Concrete',
                   desc: 'Kunststoffmodifizierter zementgebundener Mörtel (zweikomponentig). Standard bei dymamisch / thermisch belasteten Bauwerken.',
                   binder: 'Zement + Dispersionspulver/Acrylat',
-                  density: 'Mittel (~2.0 kg/dm³)',
+                  density: 'Mittel (~2,0 kg/dm³)',
                   thickness: '5 - 40 mm (mehrlagig)',
                   eMod: 'Reduziert (~18-25 GPa)',
                   shrink: 'Sehr gering (durch Polymere)',
@@ -938,7 +938,7 @@ export function Stahlbetoninstandhaltung() {
                   sub: 'Polymer Concrete / Harzmörtel',
                   desc: 'Vollständig reaktionsharzgebundener Mörtel ohne Zementanteil. Extrem widerstandsfähig, chemisch hochresistent und wasserdicht.',
                   binder: 'Epoxidharz (EP) oder PUR + Sand',
-                  density: 'Gering (~1.8 kg/dm³)',
+                  density: 'Gering (~1,8 kg/dm³)',
                   thickness: '5 - 30 mm',
                   eMod: 'Sehr hoch / variabel (~15-40 GPa)',
                   shrink: 'Extrem gering',
@@ -1042,32 +1042,32 @@ export function Stahlbetoninstandhaltung() {
                         recommendedType = 'PCC II / SPCC';
                         mortarClass = 'R4 (statisch relevant)';
                         detailDesc = 'Verwendung von spritzbarem oder zweikomponentigem kunststoffmodifiziertem Zementmörtel (PCC/SPCC). Gewährleistet exzellenten Verankerungsverbund und Karbonatisierungsschutz.';
-                        minBond = '≥ 2.0 MPa (nach Frost-Tausalz-Wechsel)';
+                        minBond = '≥ 2,0 MPa (nach Frost-Tausalz-Wechsel)';
                         protectiveMeasure = 'OS-System (z.B. OS 4 oder OS 2/3)';
                       } else {
                         recommendedType = 'CC-Mörtel oder PCC I';
                         mortarClass = 'R3 (statisch relevant oder nicht-statisch)';
                         detailDesc = 'Händischer Einbau eines CC-Reparaturmörtels (Klasse R3) möglich. Geringe Zugkräfte zu erwarten.';
-                        minBond = '≥ 1.5 MPa';
+                        minBond = '≥ 1,5 MPa';
                         protectiveMeasure = 'Standard-Acrylatbeschichtung (Prinzip C)';
                       }
                     } else if (productApp === 'deck') {
                       recommendedType = 'PCC I (Fließmörtel) / PC (Epoxid)';
                       mortarClass = 'R4 (Extrem verschleißfest)';
                       detailDesc = 'Hohe Anforderungen an dynamische Raddrucklasten und Tausalzbeständigkeit. Ein herkömmlicher CC-Mörtel bricht hier auf.';
-                      minBond = '≥ 2.0 MPa';
+                      minBond = '≥ 2,0 MPa';
                       protectiveMeasure = 'Zwingend OS 8 oder OS 11 (befahrbarer Oberflächenschutz)';
                     } else if (productApp === 'sewage') {
                       recommendedType = 'PC-Mörtel (Epoxidharzmörtel)';
                       mortarClass = 'R4 (Chemisch beständig, pH-Wert < 4)';
                       detailDesc = 'Säuren im Abwasser zerstören das zementöse Zementstein-Gefüge (Säureangriff/Entkalkung). Harzbindung ist absolut resistent.';
-                      minBond = '≥ 2.0 MPa (Haftuntergrund meist staub- und ölfrei)';
+                      minBond = '≥ 2,0 MPa (Haftuntergrund meist staub- und ölfrei)';
                       protectiveMeasure = 'Chemische Beschichtung oder GFK-Systemausmauerung';
                     } else {
                       recommendedType = 'PCC / Händischer RM-Mörtel';
                       mortarClass = 'R2 / R3 (nicht statisch)';
                       detailDesc = 'Kosmetische Ausbrüche im Außenbereich können gut händisch mit gebrauchsfertigem PCC-Reparaturmörtel ausgebessert werden.';
-                      minBond = '≥ 0.8 bis 1.5 MPa';
+                      minBond = '≥ 0,8 bis 1,5 MPa';
                       protectiveMeasure = 'Dünner carbonatisierungsbremsender Schutzanstrich (OS 1/4)';
                     }
 
@@ -1126,17 +1126,17 @@ export function Stahlbetoninstandhaltung() {
                       </tr>
                       <tr>
                         <td className="p-2 font-bold text-slate-800">Chloridgehalt (%)</td>
-                        <td className="p-2 text-center font-mono">≤ 0.05</td>
-                        <td className="p-2 text-center font-mono">≤ 0.05</td>
-                        <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≤ 0.05</td>
-                        <td className="p-2 text-center font-mono font-semibold text-shiraz bg-shiraz/5">≤ 0.05</td>
+                        <td className="p-2 text-center font-mono">≤ 0,05</td>
+                        <td className="p-2 text-center font-mono">≤ 0,05</td>
+                        <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≤ 0,05</td>
+                        <td className="p-2 text-center font-mono font-semibold text-shiraz bg-shiraz/5">≤ 0,05</td>
                       </tr>
                       <tr>
                         <td className="p-2 font-bold text-slate-800">Adhäsions-Haftzug (MPa)</td>
                         <td className="p-2 text-center font-mono">-</td>
-                        <td className="p-2 text-center font-mono">≥ 0.8</td>
-                        <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≥ 1.5</td>
-                        <td className="p-2 text-center font-mono font-semibold text-shiraz bg-shiraz/5">≥ 2.0</td>
+                        <td className="p-2 text-center font-mono">≥ 0,8</td>
+                        <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≥ 1,5</td>
+                        <td className="p-2 text-center font-mono font-semibold text-shiraz bg-shiraz/5">≥ 2,0</td>
                       </tr>
                       <tr>
                         <td className="p-2 font-bold text-slate-800">Karbonatisierungswid.</td>
@@ -1482,7 +1482,7 @@ export function Stahlbetoninstandhaltung() {
                           : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                       }`}
                     >
-                      Ruhender Riss (&Delta;w ≤ 0.05 mm)
+                      Ruhender Riss (&Delta;w ≤ 0,05 mm)
                     </button>
                     <button
                       type="button"
@@ -1493,7 +1493,7 @@ export function Stahlbetoninstandhaltung() {
                           : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                       }`}
                     >
-                      Dynamisch / Bewegt (&Delta;w &gt; 0.05 mm)
+                      Dynamisch / Bewegt (&Delta;w &gt; 0,05 mm)
                     </button>
                   </div>
                 </div>
@@ -1541,9 +1541,9 @@ export function Stahlbetoninstandhaltung() {
                     className="w-full accent-shiraz cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-slate-400 font-mono">
-                    <span>0.10 mm (Haarriss)</span>
-                    <span>0.50 mm (Trennrisse)</span>
-                    <span>1.50 mm (Klaffend)</span>
+                    <span>0,10 mm (Haarriss)</span>
+                    <span>0,50 mm (Trennrisse)</span>
+                    <span>1,50 mm (Klaffend)</span>
                   </div>
                 </div>
 
@@ -1552,7 +1552,7 @@ export function Stahlbetoninstandhaltung() {
                   <div className="flex justify-between items-center">
                     <label className="font-bold text-slate-800">5. Bauteildicke (h):</label>
                     <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                      {bauteilDicke} mm
+                      {formatDeWert(bauteilDicke)} mm
                     </span>
                   </div>
                   <input
@@ -1599,7 +1599,7 @@ export function Stahlbetoninstandhaltung() {
                     <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20">
                       <span className="text-[10px] text-slate-500 uppercase font-bold block">Packer-Abstand (&Delta;l)</span>
                       <div className="text-lg font-bold font-mono text-slate-900 mt-0.5">
-                        ≈ {rissStats.packerSpacingMm} mm
+                        ≈ {formatDeWert(rissStats.packerSpacingMm)} mm
                       </div>
                       <span className="text-[10px] text-slate-400 block mt-0.5">Regel: &Delta;l = h / 2</span>
                     </div>
@@ -1607,7 +1607,7 @@ export function Stahlbetoninstandhaltung() {
                     <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20">
                       <span className="text-[10px] text-slate-500 uppercase font-bold block">Zul. Verpressdruck (p_max)</span>
                       <div className="text-lg font-bold font-mono text-blue-700 mt-0.5">
-                        ≤ {rissStats.maxPressureBar} bar
+                        ≤ {formatDeWert(rissStats.maxPressureBar)} bar
                       </div>
                       <span className="text-[10px] text-slate-400 block mt-0.5">Schutz vor Hydrofraktur</span>
                     </div>
@@ -1632,7 +1632,7 @@ export function Stahlbetoninstandhaltung() {
                   <svg width="100%" height="220" viewBox="0 0 540 220" className="select-none mt-2">
                     {/* Concrete Cross-Section */}
                     <rect x="20" y="30" width="500" height="150" fill="#f8fafc" stroke="#64748b" strokeWidth="2" rx="4" />
-                    <text x="35" y="50" fill="#475569" fontSize="10" fontWeight="bold">Betonbauteil (h = {bauteilDicke} mm)</text>
+                    <text x="35" y="50" fill="#475569" fontSize="10" fontWeight="bold">Betonbauteil (h = {formatDeWert(bauteilDicke)} mm)</text>
 
                     {/* Crack Line */}
                     <path
@@ -1670,7 +1670,7 @@ export function Stahlbetoninstandhaltung() {
                     {/* Distance arrow between packers */}
                     <line x1="210" y1="195" x2="330" y2="195" stroke="#64748b" strokeWidth="1.5" />
                     <text x="270" y="210" fill="#475569" fontSize="10" textAnchor="middle" fontFamily="monospace" fontWeight="bold">
-                      Abstand &Delta;l ≈ {rissStats.packerSpacingMm} mm
+                      Abstand &Delta;l ≈ {formatDeWert(rissStats.packerSpacingMm)} mm
                     </text>
                   </svg>
 
@@ -1753,7 +1753,7 @@ export function Stahlbetoninstandhaltung() {
                     onChange={(e) => setDiffD(parseFloat(e.target.value))}
                     className="w-full accent-amber-600 cursor-pointer"
                   />
-                  <span className="text-[10px] text-slate-400 block">Dichter Beton w/z ≤ 0.45: ~1.0; poröser Beton: &gt; 3.0</span>
+                  <span className="text-[10px] text-slate-400 block">Dichter Beton w/z ≤ 0,45: ~1,0; poröser Beton: &gt; 3,0</span>
                 </div>
 
                 {/* Alter t Input */}
@@ -1761,7 +1761,7 @@ export function Stahlbetoninstandhaltung() {
                   <div className="flex justify-between items-center">
                     <label className="font-bold text-slate-800">Bauteilalter / Expositionsdauer (<FormulaText text="t" />):</label>
                     <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                      {bauteilAlter} Jahre
+                      {formatDeWert(bauteilAlter)} Jahre
                     </span>
                   </div>
                   <input
@@ -1780,7 +1780,7 @@ export function Stahlbetoninstandhaltung() {
                   <div className="flex justify-between items-center">
                     <label className="font-bold text-slate-800">Betondeckung (<FormulaText text="c_{\text{nom}}" />):</label>
                     <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                      {betondeckung} mm
+                      {formatDeWert(betondeckung)} mm
                     </span>
                   </div>
                   <input
@@ -1817,7 +1817,7 @@ export function Stahlbetoninstandhaltung() {
                     </span>
                   </div>
                   <p className="text-[11px]">
-                    Chloridgehalt bei x = {betondeckung} mm: <strong>{formatDeZahl(chloridStats.cAtRebar, 2)} M.-%</strong> (Grenzwert: 0.50 M.-%).
+                    Chloridgehalt bei x = {formatDeWert(betondeckung)} mm: <strong>{formatDeZahl(chloridStats.cAtRebar, 2)} M.-%</strong> (Grenzwert: 0,50 M.-%).
                   </p>
                 </div>
               </div>
@@ -1845,10 +1845,10 @@ export function Stahlbetoninstandhaltung() {
                       <line x1="50" y1="180" x2="470" y2="180" stroke="#94a3b8" strokeWidth="1.5" />
 
                       {/* Y-Axis Labels */}
-                      <text x="42" y="34" fill="#64748b" fontSize="9" textAnchor="end">3.0%</text>
-                      <text x="42" y="84" fill="#64748b" fontSize="9" textAnchor="end">2.0%</text>
-                      <text x="42" y="134" fill="#64748b" fontSize="9" textAnchor="end">1.0%</text>
-                      <text x="42" y="184" fill="#64748b" fontSize="9" textAnchor="end">0.0%</text>
+                      <text x="42" y="34" fill="#64748b" fontSize="9" textAnchor="end">3,0%</text>
+                      <text x="42" y="84" fill="#64748b" fontSize="9" textAnchor="end">2,0%</text>
+                      <text x="42" y="134" fill="#64748b" fontSize="9" textAnchor="end">1,0%</text>
+                      <text x="42" y="184" fill="#64748b" fontSize="9" textAnchor="end">0,0%</text>
 
                       {/* Critical Chlorid Threshold Line (0.50 M.-%) */}
                       {(() => {
@@ -1858,7 +1858,7 @@ export function Stahlbetoninstandhaltung() {
                           <g>
                             <line x1="50" y1={yCrit} x2="470" y2={yCrit} stroke="#A3113E" strokeWidth="1.5" strokeDasharray="5,2" />
                             <text x="465" y={yCrit - 4} fill="#A3113E" fontSize="9" textAnchor="end" fontWeight="bold">
-                              C_krit = 0.50 M.-% (Lochfraßgrenze)
+                              C_krit = 0,50 M.-% (Lochfraßgrenze)
                             </text>
                           </g>
                         );
@@ -1873,7 +1873,7 @@ export function Stahlbetoninstandhaltung() {
                             <line x1={pxRebar} y1="20" x2={pxRebar} y2="180" stroke="#475569" strokeWidth="2" strokeDasharray="4,3" />
                             <circle cx={pxRebar} cy="180" r="4" fill="#475569" />
                             <text x={pxRebar} y="16" fill="#334155" fontSize="9" textAnchor="middle" fontWeight="bold">
-                              Bewehrung (c = {betondeckung} mm)
+                              Bewehrung (c = {formatDeWert(betondeckung)} mm)
                             </text>
                           </g>
                         );
@@ -1921,7 +1921,7 @@ export function Stahlbetoninstandhaltung() {
                     </p>
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-[11px] space-y-1">
                       <div>
-                        Erforderliche Abtragstiefe: <strong className="text-slate-900 font-mono">{chloridStats.erfAbtrag} mm</strong>
+                        Erforderliche Abtragstiefe: <strong className="text-slate-900 font-mono">{formatDeWert(chloridStats.erfAbtrag)} mm</strong>
                       </div>
                       <div className="text-[10px] text-slate-500">
                         (Depassivierungstiefe {formatDeZahl(chloridStats.depassivatedDepth, 0)} mm + 15 mm Hinterstemmung Bewehrung).
@@ -1978,10 +1978,10 @@ export function Stahlbetoninstandhaltung() {
         ]}
         regelwerke={[
           { title: 'DIBt Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung Teile 1 bis 3)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teile 1 bis 10)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teile 1 bis 10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' },
+          { title: 'DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
           { title: 'ZTV-ING Teil 3: Massivbau (Bundesanstalt für Straßenwesen / BMVI)', url: 'https://www.bast.de/' },
-          { title: 'DIN EN 1504-5 (Füllen von Rissen, Hohlräumen und Fehlstellen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1504-5 (Füllen von Rissen, Hohlräumen und Fehlstellen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-5' }
         ]}
         literatur={[
           'Raupach, M.; Orlowsky, J. (2018): Schutz und Instandsetzung von Stahlbetonbauten (Ernst & Sohn)',
@@ -1997,11 +1997,11 @@ export function Stahlbetoninstandhaltung() {
           },
           {
             formel: 'C(x, t) = C_s \\cdot \\left[ 1 - \\text{erf}\\left( \\frac{x}{2\\sqrt{D_{app} \\cdot t}} \\right) \\right]',
-            erklaerung: 'Chloriddiffusion in die Randzone nach Fick II: C(x,t) = Chloridgehalt in Tiefe x nach Zeit t, Cs = Oberflächenchloridgehalt, Dapp = scheinbarer Diffusionskoeffizient, erf = Gaußsche Fehlerfunktion. Kritischer Grenzwert: ca. 0.40 - 0.50 M.-% bezogen auf Zementmasse.',
+            erklaerung: 'Chloriddiffusion in die Randzone nach Fick II: C(x,t) = Chloridgehalt in Tiefe x nach Zeit t, Cs = Oberflächenchloridgehalt, Dapp = scheinbarer Diffusionskoeffizient, erf = Gaußsche Fehlerfunktion. Kritischer Grenzwert: ca. 0,40 - 0,50 M.-% bezogen auf Zementmasse.',
             quelle: 'Ficksches Gesetz / DAfStb-Heft 510'
           },
           {
-            formel: 'E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0.5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}',
+            formel: 'E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0{,}5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}',
             erklaerung: 'KKS-Schutzkriterien nach DIN EN ISO 12696: Ausschaltpotential negativer als −720 mV gegen Ag/AgCl/0,5 M KCl ODER Depolarisation ≥ 100 mV innerhalb von 24 h bis 72 h.',
             quelle: 'DIN EN ISO 12696'
           }

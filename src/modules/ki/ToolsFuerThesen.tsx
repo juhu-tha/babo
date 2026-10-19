@@ -419,7 +419,7 @@ Die Versuchsergebnisse belegen, dass bei einem Substitutionsgrad von 25 Masse-% 
 ### Abstract (English)
 Decarbonising the cementitious building materials sector necessitates the accelerated utilization of supplementary cementitious materials. This Master's thesis investigates the efficacy of calcined clays as reactive binder components in normal-weight concrete conforming to strength class C30/37. In an experimental laboratory campaign, 48 cylindrical specimens with clinker replacement ratios ranging from 0 to 40 wt.% were cast and tested for mechanical performance and microstructural evolution at 2, 7, 28, and 91 days. Microstructural modifications were quantified via mercury intrusion porosimetry (MIP) and X-ray diffraction (XRD).
 
-Experimental findings demonstrate that a 25 wt.% calcined clay substitution yields a 28-day compressive strength of 48.3 MPa, matching the reference mix with pure Portland cement. Total capillary porosity decreased by 14.2% due to pozzolanic C-A-S-H phase precipitation, accompanied by a substantial reduction in chloride migration. Adhering to a maximum w/c ratio of 0.45 achieves a 32% reduction in global warming potential (GWP) relative to standard mixtures. These findings confirm the operational viability of metakaolin-blended concrete for structural elements in exposure classes XC3 and XD1.
+Experimental findings demonstrate that a 25 wt.% calcined clay substitution yields a 28-day compressive strength of 48,3 MPa, matching the reference mix with pure Portland cement. Total capillary porosity decreased by 14,2% due to pozzolanic C-A-S-H phase precipitation, accompanied by a substantial reduction in chloride migration. Adhering to a maximum w/c ratio of 0.45 achieves a 32% reduction in global warming potential (GWP) relative to standard mixtures. These findings confirm the operational viability of metakaolin-blended concrete for structural elements in exposure classes XC3 and XD1.
 
 **Keywords:** Calcined clay, Clinker substitution, Compressive strength, Mercury intrusion porosimetry, Decarbonisation, Durability.`
   }
@@ -977,7 +977,7 @@ Richte die Dezimalzahlen mit dem siunitx-Paket S-Spalten am Komma aus. Keine ver
               </p>
             </div>
             <div className="inline-flex items-center gap-1 text-xs font-mono bg-white px-3 py-1.5 rounded-lg border border-home-grau/25 text-shiraz font-bold shrink-0">
-              Rechtssicher
+              Rechtlich belastbar
             </div>
           </div>
 

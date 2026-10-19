@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Scale, 
@@ -489,7 +490,7 @@ export default function MessenPruefen() {
                           {selectedTool === 'nivellier' && 'Entfernung zur Nivellierlatte (mm):'}
                         </label>
                         <input
-                          type="number"
+                          type="number" min="0"
                           step={selectedTool === 'risslupe' ? '0.05' : '10'}
                           value={toolInputValue}
                           onChange={(e) => setToolInputValue(Math.max(0.01, parseFloat(e.target.value) || 0))}
@@ -500,19 +501,19 @@ export default function MessenPruefen() {
                         <span className="text-[10px] text-slate-400 font-semibold block uppercase">Erwartete Maximalabweichung (GUM k=2)</span>
                         <span className="text-xs font-mono font-extrabold text-indigo-700">
                           {selectedTool === 'meterstab' && (
-                            <>± {(0.3 + 0.2 * (toolInputValue / 1000)).toFixed(2)} mm</>
+                            <>± {formatDeZahl((0.3 + 0.2 * (toolInputValue / 1000)), 2)} mm</>
                           )}
                           {selectedTool === 'messschieber' && (
                             <>{toolInputValue <= 100 ? '± 0,03' : '± 0,05'} mm</>
                           )}
                           {selectedTool === 'laser' && (
-                            <>± {(1.0 + 0.05 * (toolInputValue / 1000)).toFixed(2)} mm</>
+                            <>± {formatDeZahl((1.0 + 0.05 * (toolInputValue / 1000)), 2)} mm</>
                           )}
                           {selectedTool === 'risslupe' && (
-                            <>± 0.05 mm</>
+                            <>± 0,05 mm</>
                           )}
                           {selectedTool === 'nivellier' && (
-                            <>± {Math.max(0.5, 1.5 * Math.sqrt((toolInputValue / 1000) / 1000)).toFixed(2)} mm</>
+                            <>± {formatDeZahl(Math.max(0.5, 1.5 * Math.sqrt((toolInputValue / 1000) / 1000)), 2)} mm</>
                           )}
                         </span>
                       </div>
@@ -769,7 +770,7 @@ export default function MessenPruefen() {
                 <div className="space-y-1.5 pt-3.5 border-t border-home-grau/30 font-sans">
                   <div className="flex justify-between items-center text-xs text-slate-700 font-bold">
                     <label>Digitalauflösung d (Skalenabteilung):</label>
-                    <span className="font-mono text-slate-900">{resolution} MPa</span>
+                    <span className="font-mono text-slate-900">{formatDeWert(resolution)} MPa</span>
                   </div>
                   <input
                     type="range"
@@ -789,7 +790,7 @@ export default function MessenPruefen() {
                 <div className="space-y-1.5 pt-3.5 border-t border-home-grau/30 font-sans">
                   <div className="flex justify-between items-center text-xs text-slate-700 font-bold">
                     <label>Kalibrierschein-Unsicherheit U_cal (k=2):</label>
-                    <span className="font-mono text-slate-900">{calibrationError} MPa</span>
+                    <span className="font-mono text-slate-900">{formatDeWert(calibrationError)} MPa</span>
                   </div>
                   <input
                     type="range"
@@ -827,7 +828,7 @@ export default function MessenPruefen() {
                       <h3 className="text-sm font-bold text-slate-900 leading-tight">GUM-Konformer Prüfbericht</h3>
                     </div>
                     <div className="text-right text-xs font-mono font-bold text-shiraz">
-                      <span>95.45% Vertrauensgrenze</span>
+                      <span>95,45% Vertrauensgrenze</span>
                     </div>
                   </div>
 
@@ -837,11 +838,11 @@ export default function MessenPruefen() {
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                         <div className="bg-white p-2.5 rounded border border-home-grau/30">
                           <span className="text-[10px] font-bold text-slate-400 uppercase block font-mono">arithm. Mittel µ</span>
-                          <span className="font-mono text-slate-900 font-bold text-sm">{mean.toFixed(3)} MPa</span>
+                          <span className="font-mono text-slate-900 font-bold text-sm">{formatDeZahl(mean, 3)} MPa</span>
                         </div>
                         <div className="bg-white p-2.5 rounded border border-home-grau/30">
                           <span className="text-[10px] font-bold text-slate-400 uppercase block font-mono">Standardabweich. s</span>
-                          <span className="font-mono text-slate-900 font-bold text-sm">{sampleStdDev.toFixed(3)} MPa</span>
+                          <span className="font-mono text-slate-900 font-bold text-sm">{formatDeZahl(sampleStdDev, 3)} MPa</span>
                         </div>
                         <div className="bg-white p-2.5 rounded border border-home-grau/30">
                           <span className="text-[10px] font-bold text-slate-400 uppercase block font-mono">Probenanzahl n</span>
@@ -855,17 +856,17 @@ export default function MessenPruefen() {
                         
                         <div className="flex justify-between items-center text-[11px] border-b border-home-grau/30 py-1 font-mono">
                           <span>uA (Type A, statistisch: s_x / &radic;n)</span>
-                          <span className="font-bold text-slate-800">{uA.toFixed(4)} MPa</span>
+                          <span className="font-bold text-slate-800">{formatDeZahl(uA, 4)} MPa</span>
                         </div>
 
                         <div className="flex justify-between items-center text-[11px] border-b border-home-grau/30 py-1 font-mono">
                           <span>uB,1 (Type B, Auflösung: d / &radic;12)</span>
-                          <span className="font-bold text-slate-800">{uB1.toFixed(4)} MPa</span>
+                          <span className="font-bold text-slate-800">{formatDeZahl(uB1, 4)} MPa</span>
                         </div>
 
                         <div className="flex justify-between items-center text-[11px] py-1 font-mono">
                           <span>uB,2 (Type B, Kalibrierung: U_cal / 2)</span>
-                          <span className="font-bold text-slate-800">{uB2.toFixed(4)} MPa</span>
+                          <span className="font-bold text-slate-800">{formatDeZahl(uB2, 4)} MPa</span>
                         </div>
                       </div>
 
@@ -888,19 +889,19 @@ export default function MessenPruefen() {
                     <div className="space-y-1 font-sans">
                       <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">Konformes Messergebnis</span>
                       <div className="text-base md:text-lg font-mono font-bold text-slate-900 tracking-tight">
-                        {mean.toFixed(2)} ± {expandedU.toFixed(2)} MPa
+                        {formatDeZahl(mean, 2)} ± {formatDeZahl(expandedU, 2)} MPa
                       </div>
                       <p className="text-[10px] text-slate-500">
-                        Das tatsächliche Intervall liegt mit p=95.45% (k=2) zwischen <strong>{minInterval.toFixed(2)}</strong> und <strong>{maxInterval.toFixed(2)}</strong> MPa.
+                        Das tatsächliche Intervall liegt mit p=95,45% (k=2) zwischen <strong>{formatDeZahl(minInterval, 2)}</strong> und <strong>{formatDeZahl(maxInterval, 2)}</strong> MPa.
                       </p>
                     </div>
                     <div className="bg-shiraz/5 border border-shiraz/20 p-3 rounded-lg flex items-center gap-3 self-stretch md:self-auto justify-between md:justify-start shrink-0 font-sans">
                       <div className="text-right">
                         <span className="text-[9px] font-bold text-slate-500 uppercase block">Komb. Unsicherheit u_c</span>
-                        <span className="text-xs font-bold font-mono text-shiraz">{uc.toFixed(3)} MPa</span>
+                        <span className="text-xs font-bold font-mono text-shiraz">{formatDeZahl(uc, 3)} MPa</span>
                       </div>
                       <div className="w-10 h-10 rounded-full bg-shiraz/10 border border-shiraz/30 flex items-center justify-center text-[10px] font-mono font-bold text-shiraz shrink-0">
-                        ±{expandedU.toFixed(2)}
+                        ±{formatDeZahl(expandedU, 2)}
                       </div>
                     </div>
                   </div>
@@ -1036,7 +1037,7 @@ export default function MessenPruefen() {
                   <div className="flex justify-between items-center">
                     <label className="font-medium text-slate-700">Eigenes Prüfergebnis (<FormulaText text="x_{\text{lab}}" />):</label>
                     <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                      {rvMeasuredValue.toFixed(1)} MPa
+                      {formatDeZahl(rvMeasuredValue, 1)} MPa
                     </span>
                   </div>
                   <input
@@ -1056,7 +1057,7 @@ export default function MessenPruefen() {
                   <div className="flex justify-between items-center">
                     <label className="font-medium text-slate-700">Referenzwert des Ringversuchs (<FormulaText text="X" />):</label>
                     <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                      {rvAssignedValue.toFixed(1)} MPa
+                      {formatDeZahl(rvAssignedValue, 1)} MPa
                     </span>
                   </div>
                   <input
@@ -1076,7 +1077,7 @@ export default function MessenPruefen() {
                   <div className="flex justify-between items-center">
                     <label className="font-medium text-slate-700">Ziel-Standardabweichung (<FormulaText text="\sigma_{\text{pt}}" />):</label>
                     <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-home-grau/30">
-                      ±{rvSigmaPT.toFixed(2)} MPa
+                      ±{formatDeZahl(rvSigmaPT, 2)} MPa
                     </span>
                   </div>
                   <input
@@ -1140,7 +1141,7 @@ export default function MessenPruefen() {
                       onClick={() => { setRvMeasuredValue(49.8); setRvAssignedValue(50.0); setRvSigmaPT(1.8); setRvULab(1.2); setRvURef(0.5); }}
                       className="px-2 py-1 bg-white hover:bg-emerald-50 border border-emerald-300 text-emerald-800 rounded text-[10px] font-bold transition-all cursor-pointer"
                     >
-                      Exzellent (|z| &lt; 0.2)
+                      Exzellent (|z| &lt; 0,2)
                     </button>
                     <button
                       onClick={() => { setRvMeasuredValue(46.0); setRvAssignedValue(50.0); setRvSigmaPT(1.8); setRvULab(1.4); setRvURef(0.6); }}
@@ -1152,7 +1153,7 @@ export default function MessenPruefen() {
                       onClick={() => { setRvMeasuredValue(43.5); setRvAssignedValue(50.0); setRvSigmaPT(1.8); setRvULab(1.5); setRvURef(0.6); }}
                       className="px-2 py-1 bg-white hover:bg-red-50 border border-red-300 text-red-800 rounded text-[10px] font-bold transition-all cursor-pointer"
                     >
-                      Nichtkonform (|z| ≥ 3.0)
+                      Nichtkonform (|z| ≥ 3,0)
                     </button>
                   </div>
                 </div>
@@ -1188,13 +1189,13 @@ export default function MessenPruefen() {
                       <div className="mt-3">
                         <span className="text-xs text-slate-600 font-medium">Standardisierter Kennwert:</span>
                         <div className="text-2xl font-mono font-bold mt-0.5 text-slate-900">
-                          z-Score = {rvStats.zScore > 0 ? `+${rvStats.zScore.toFixed(2)}` : rvStats.zScore.toFixed(2)}
+                          z-Score = {rvStats.zScore > 0 ? `+${formatDeZahl(rvStats.zScore, 2)}` : formatDeZahl(rvStats.zScore, 2)}
                         </div>
                       </div>
 
                       <div className="mt-2 text-xs text-slate-600 leading-relaxed font-sans">
                         <p>
-                          Abweichung: <strong>{rvStats.dVal > 0 ? `+${rvStats.dVal.toFixed(2)}` : rvStats.dVal.toFixed(2)} MPa</strong> ({((rvStats.dVal / rvAssignedValue) * 100).toFixed(1)} %)
+                          Abweichung: <strong>{rvStats.dVal > 0 ? `+${formatDeZahl(rvStats.dVal, 2)}` : formatDeZahl(rvStats.dVal, 2)} MPa</strong> ({formatDeZahl(((rvStats.dVal / rvAssignedValue) * 100), 1)} %)
                         </p>
                       </div>
                     </div>
@@ -1202,17 +1203,17 @@ export default function MessenPruefen() {
                     <div className="mt-4 pt-3 border-t border-slate-200/70 text-[11px] text-slate-700 leading-snug">
                       {rvStats.zStatus === 'ok' && (
                         <span className="text-emerald-800 font-medium flex items-center gap-1.5">
-                          <CheckCircle2 size={14} className="shrink-0" /> |z| ≤ 2.0: Labor erfüllt die Qualitätskriterien nach ISO 13528 vollumfänglich.
+                          <CheckCircle2 size={14} className="shrink-0" /> |z| ≤ 2,0: Labor erfüllt die Qualitätskriterien nach ISO 13528 vollumfänglich.
                         </span>
                       )}
                       {rvStats.zStatus === 'warning' && (
                         <span className="text-amber-800 font-medium flex items-center gap-1.5">
-                          <AlertTriangle size={14} className="shrink-0" /> 2.0 &lt; |z| &lt; 3.0: Erhöhtes Risiko für systematische Drift. Laborinterne Prüfung empfohlen.
+                          <AlertTriangle size={14} className="shrink-0" /> 2,0 &lt; |z| &lt; 3,0: Erhöhtes Risiko für systematische Drift. Laborinterne Prüfung empfohlen.
                         </span>
                       )}
                       {rvStats.zStatus === 'critical' && (
                         <span className="text-rose-800 font-bold flex items-center gap-1.5">
-                          <AlertTriangle size={14} className="shrink-0" /> |z| ≥ 3.0: Nichtkonformität nach ISO/IEC 17025. Ursachenanalyse &amp; Korrekturmaßnahme erforderlich!
+                          <AlertTriangle size={14} className="shrink-0" /> |z| ≥ 3,0: Nichtkonformität nach ISO/IEC 17025. Ursachenanalyse &amp; Korrekturmaßnahme erforderlich!
                         </span>
                       )}
                     </div>
@@ -1239,13 +1240,13 @@ export default function MessenPruefen() {
                       <div className="mt-3">
                         <span className="text-xs text-slate-600 font-medium">Metrologische En-Zahl:</span>
                         <div className="text-2xl font-mono font-bold mt-0.5 text-slate-900">
-                          E<sub>n</sub> = {rvStats.enScore > 0 ? `+${rvStats.enScore.toFixed(2)}` : rvStats.enScore.toFixed(2)}
+                          E<sub>n</sub> = {rvStats.enScore > 0 ? `+${formatDeZahl(rvStats.enScore, 2)}` : formatDeZahl(rvStats.enScore, 2)}
                         </div>
                       </div>
 
                       <div className="mt-2 text-xs text-slate-600 leading-relaxed font-sans">
                         <p>
-                          Vergleichsgrenze: <FormulaText text="\sqrt{U_{\text{lab}}^2 + U_{\text{ref}}^2}" /> = <strong>±{rvStats.denomEn.toFixed(2)} MPa</strong>
+                          Vergleichsgrenze: <FormulaText text="\sqrt{U_{\text{lab}}^2 + U_{\text{ref}}^2}" /> = <strong>±{formatDeZahl(rvStats.denomEn, 2)} MPa</strong>
                         </p>
                       </div>
                     </div>
@@ -1332,7 +1333,7 @@ export default function MessenPruefen() {
                             {/* Label */}
                             <rect x={curX - 45} y={curY - 24} width="90" height="16" fill="rgba(15, 23, 42, 0.9)" rx="3" stroke={col} strokeWidth="1" />
                             <text x={curX} y={curY - 13} textAnchor="middle" fill="#ffffff" fontSize="8.5" fontWeight="bold">
-                              Ihr Labor (z={rvStats.zScore.toFixed(1)})
+                              Ihr Labor (z={formatDeZahl(rvStats.zScore, 1)})
                             </text>
                           </g>
                         );
@@ -1418,10 +1419,10 @@ export default function MessenPruefen() {
           { title: 'Ringversuch', url: 'https://de.wikipedia.org/wiki/Ringversuch' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO/IEC 17043:2023-09 (Konformitätsbewertung – Allgemeine Anforderungen an die Kompetenz von Anbietern von Eignungsprüfungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN ISO 13528:2020-09 (Statistische Verfahren für Eignungsprüfungen durch Ringversuche)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 5725-1:2023-07 (Genauigkeit von Messverfahren und Messergebnissen - Teil 1: Grundlagen und Begriffe)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO%2FIEC+17025' },
+          { title: 'DIN EN ISO/IEC 17043:2023-09 (Konformitätsbewertung – Allgemeine Anforderungen an die Kompetenz von Anbietern von Eignungsprüfungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO%2FIEC+17043' },
+          { title: 'DIN ISO 13528:2020-09 (Statistische Verfahren für Eignungsprüfungen durch Ringversuche)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+13528' },
+          { title: 'DIN EN ISO 5725-1:2023-07 (Genauigkeit von Messverfahren und Messergebnissen - Teil 1: Grundlagen und Begriffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+5725-1' },
           { title: 'JCGM 100:2008 (Guide to the expression of uncertainty in measurement - GUM)', url: 'https://www.bipm.org/en/committees/jc/jcgm/publications' }
         ]}
         literatur={[

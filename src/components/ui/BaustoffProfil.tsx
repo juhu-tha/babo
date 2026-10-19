@@ -63,7 +63,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Ausgangsmaterialien sind magmatische Tiefen-/Ergussgesteine (z. B. Granit, Basalt), sedimentäre Ablagerungsgesteine (z. B. Kalkstein, Sandstein) oder metamorphe Umwandlungsgesteine (z. B. Marmor, Gneis, Schiefer). Abbau erfolgt im Festgesteinstagebau (Sprengung) oder Nass- und Trockenabbau von Lockergesteinen (Sand/Kies).",
       herstellung: "Bei Naturwerkstein erfolgt der mechanische Nasszuschnitt (Gattersägen, Seilsägen) im Steinmetzbetrieb gefolgt von Oberflächenveredelung (Polieren, Schleißen, Flammen). Gesteinskörnungen für Beton/Asphalt werden im Bohr- und Sprengbetrieb gewonnen, in Brecheranlagen zerkleinert und in Siebmaschinen in genormte Kornklassen fraktioniert.",
       eigenschaften: {
-        technisch: "Enorm hohe Druckfestigkeit (Granit ca. 150-250 MPa, Basalt bis zu 350 MPa). Hohe Rohdichte (2.200-3.000 kg/m³). Sprödes Versagensverhalten ohne plastische Zugreserven. Wärmeleitfähigkeit ist hoch (λ ≈ 1.5 - 3.5 W/(m·K)). Mohshärte variiert stark von Weichgestein (Marmor Härte 3) bis Hartgestein (Granit/Quarzit Härte 7).",
+        technisch: "Enorm hohe Druckfestigkeit (Granit ca. 150-250 MPa, Basalt bis zu 350 MPa). Hohe Rohdichte (2.200-3.000 kg/m³). Sprödes Versagensverhalten ohne plastische Zugreserven. Wärmeleitfähigkeit ist hoch (λ ≈ 1,5 - 3,5 W/(m·K)). Mohshärte variiert stark von Weichgestein (Marmor Härte 3) bis Hartgestein (Granit/Quarzit Härte 7).",
         oekologisch: "Hervorragende Ökobilanz als Primärbaustoff. Geringer Treibhausgas-Emissionsgrad bei regionalem Abbau (ca. 5-15 kg CO2-Äq./t für Gesteinskörnung). Extrem hohe Graue Energie entsteht jedoch bei importierten Natursteinen (z.B. Granit aus Fernost-Transportwegen)."
       },
       anwendungen: "Grobe/feine Körnungen als tragendes Skelett in Beton (70-80 Vol.-%) und Asphalt. Naturwerkstein als hinterlüftete Außenwandbekleidung (DIN 18516-3), widerstandsfähige Boden- und Pflasterbeläge im Straßen-/U-Bahnbereich, Bordsteine, Treppenstufen, Gleisschotter (Basalt) und Wasserbasteine im Wasserbau.",
@@ -103,7 +103,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Reiner Ton, Schluff, Lehm und Wasser. Gegebenenfalls Beimischungen von Porosierungsstoffen (wie Sägemehl, Styroporkügelchen), die beim Brennen rückstandsfrei verbrennen und isolierende Hohlräume bilden.",
       herstellung: "Der Rohguss wird im Strangpreßverfahren geformt, getrocknet und im Tunnelofen bei 900 °C bis 1100 °C (hochfeste Klinker bis zu 1200 °C) keramisch gebrannt, wodurch die feste Phasensinterung der Tonsilikate eintritt.",
       eigenschaften: {
-        technisch: "Sehr hohe Druckfestigkeiten (Standardziegel fb ≈ 12-28 MPa, hochfeste Klinker bis zu 60+ MPa). Rohdichten variieren von extrem gewichtsreduzierten Hochloch-Dämmziegeln (600 kg/m³) bis hin zu massiven Klinkern (2200 kg/m³). Wärmeleitfähigkeit ab λ ≈ 0.05 W/(m·K) (gefüllter Planziegel) bis λ ≈ 0.8 W/(m·K) (Vollziegel).",
+        technisch: "Sehr hohe Druckfestigkeiten (Standardziegel fb ≈ 12-28 MPa, hochfeste Klinker bis zu 60+ MPa). Rohdichten variieren von extrem gewichtsreduzierten Hochloch-Dämmziegeln (600 kg/m³) bis hin zu massiven Klinkern (2200 kg/m³). Wärmeleitfähigkeit ab λ ≈ 0,05 W/(m·K) (gefüllter Planziegel) bis λ ≈ 0,8 W/(m·K) (Vollziegel).",
         oekologisch: "Aufgrund hoher Prozesstemperaturen (Tunnelofen) hoher Energieaufwand bei der Herstellung (Graue Energie ca. 1.8 - 2.8 MJ/kg). Hoher CO₂-Ausstoß. Die extrem lange Lebensdauer gleicht den ökologischen Rucksack im Gebäude-Lebenszyklus jedoch hervorragend aus."
       },
       anwendungen: "Sichtmauerwerk/Verblendschalen (Klinker), wärmedämmende monolithische Außenwände (moderne gefüllte Hochlochziegel), tragende und nichttragende Innenwände.",
@@ -123,7 +123,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Branntkalk (CaO, ca. 5-8 Gew.-%), quarzreicher Sand (ca. 90-95 Gew.-%) und Wasser. Keine künstlichen Bindemittel oder umweltgefährdende Additive.",
       herstellung: "Mischen der Rohstoffe und kontrollierte Calciumhydroxid-Zubereitung im Reaktor. Mechanisches Hochdruckpressen der Rohlinge in Steinpressen. Letztendliche Gefügehärtung im Autoklaven unter gesättigtem Wasserdampf (16 bar, 200 °C) für ca. 4-8 Stunden, bei denen sich CSH-Kristalle bilden.",
       eigenschaften: {
-        technisch: "Ausgeprägte Steindruckfestigkeiten (fbl ≈ 12 bis 36 MPa, teils bis zu 48 MPa). Hohe Steinrohdichte (1600-2400 kg/m³), woraus ein unerreichtes Schallschutzmaß (Schalldämmung Rw) resultiert. Wärmeleitfähigkeit hoch (λ ≈ 0.79 bis 1.3 W/(m·K)), daher kaum eigenständige Dämmwirkung.",
+        technisch: "Ausgeprägte Steindruckfestigkeiten (fbl ≈ 12 bis 36 MPa, teils bis zu 48 MPa). Hohe Steinrohdichte (1600-2400 kg/m³), woraus ein unerreichtes Schallschutzmaß (Schalldämmung Rw) resultiert. Wärmeleitfähigkeit hoch (λ ≈ 0,79 bis 1,3 W/(m·K)), daher kaum eigenständige Dämmwirkung.",
         oekologisch: "Hervorragend niedrige Graue Energie (nur ca. 0.4 - 0.7 MJ/kg), da die Festigkeit nicht durch Brennen bei 1000 °C, sondern mittels hydrothermaler Reaktion bei energiesparenden 200 °C gebildet wird."
       },
       anwendungen: "Tragende Innenwände, hochbelastete Mauerwerkspfeiler, Wohnungstrennwände (hoher Schallschutzbedarf), Außenwand-Innenschalen mehrschaliger Konstruktionen.",
@@ -143,7 +143,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Feinstgemahlenes Quarzsandmehl, Branntkalk (CaO), Portlandzement, Wasser und eine minimale Dosierung Aluminiumpulver (welches als physikalisches Aufblähmittel dient).",
       herstellung: "Anmischen der Rohstoffe. In der Gussform reagiert das Aluminium im basischen Gemisch, setzt Wasserstoffgas frei und bläht die Schlämme auf. Nach der Vorgelierung wird der halbfeste Block mit Schneidedrähten präzise getrennt und im Autoklaven dampfgehärtet.",
       eigenschaften: {
-        technisch: "Niedrige mechanische Festigkeiten (fb ≈ 2 bis 8 MPa). Überragend niedrige Porenrohdichten (300-600 kg/m³). Die Wärmeleitfähigkeit ist mit λ ≈ 0.07 bis 0.12 W/(m·K) unerreicht und ermöglicht den monolithischen Bau ohne WDVS-Platten.",
+        technisch: "Niedrige mechanische Festigkeiten (fb ≈ 2 bis 8 MPa). Überragend niedrige Porenrohdichten (300-600 kg/m³). Die Wärmeleitfähigkeit ist mit λ ≈ 0,07 bis 0,12 W/(m·K) unerreicht und ermöglicht den monolithischen Bau ohne WDVS-Platten.",
         oekologisch: "Moderat niedriger Energiebedarf (Graue Energie ~1.2 MJ/kg). Extrem rohstoffsparend, da der Porenanteil über 80% des Gesamtvolumens ausmacht, was Materialressourcen schont."
       },
       anwendungen: "Monolithische tragende Außenwände im Wohnungs-, Hallen- und Skelettbau, aussteifende Innenwände, hervorragende Brandwände (nicht brennbar Baustoffklasse A1).",
@@ -163,7 +163,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Zement als Bindemittel, Wasser sowie natürliche oder künstliche poröse Gesteinskörnungen (Naturbims, Blähton, Blähschiefer oder geschäumtes Perlite).",
       herstellung: "Mischen der Komponenten und Verdichtung in Formmaschinen unter mechanischer Vibration. Die Aushärtung geschieht sehr umweltschonend durch Hydratation bei Umgebungstemperatur oder mäßiger Abwärme ohne Autoklavieren und schont Primärenergien.",
       eigenschaften: {
-        technisch: "Mittlere Druckfestigkeiten (fb ≈ 2 bis 12 MPa). Mittlere Rohdichten (500-1200 kg/m³). Ausgezeichnete wärmetechnische Leistungsfähigkeit (λ ≈ 0.10 bis 0.22 W/(m·K)). Besitzt durch das Gesteinsskelett eine hocheffiziente Schalldämpfung.",
+        technisch: "Mittlere Druckfestigkeiten (fb ≈ 2 bis 12 MPa). Mittlere Rohdichten (500-1200 kg/m³). Ausgezeichnete wärmetechnische Leistungsfähigkeit (λ ≈ 0,10 bis 0,22 W/(m·K)). Besitzt durch das Gesteinsskelett eine hocheffiziente Schalldämpfung.",
         oekologisch: "Sehr günstige Umweltbilanz im Vergleich zu klassischen Ziegeln, da keine energieintensiven Brennkammern oder Autoklaven durchlaufen werden müssen. Das spart signifikant Primärenergie (Graue Energie)."
       },
       anwendungen: "Tragende Außen- und Innenwände, einschaliges monolithisches Mauerwerk im Wohnungsbau, exzellente hochschalldämmende Brandschutzwände.",
@@ -203,7 +203,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Gemisch aus primären mineralischen Bindemitteln (Baukalk nach DIN EN 459, Portlandzement nach DIN EN 197 oder Gips nach DIN EN 13279), Gesteinskörnungen (feiner Grubensand, Quarzsand mit Kornstufen 0-1, 0-2 oder 0-4 mm) sowie rheologischen Additiven (Methylcellulose als Wasserrückhaltemittel, Luftporenbildner).",
       herstellung: "Industrielle Trockenmörtelherstellung im Werk durch exakte, computergesteuerte Dosierung der Silokomponenten. Homogene Vormischung im Intensivmischer. Auslieferung erfolgt als Sackware oder trocken im Baustellensilo mit nachgeschaltetem Durchlaufmischer.",
       eigenschaften: {
-        technisch: "Klassifizierung über Festigkeitsklassen (Mörtelklasse M1 bis M20 nach DIN EN 998-2; Putzmörtelklasse GP, LW, CR nach DIN EN 998-1). Druckfestigkeiten liegen im Bereich von ca. 1.0 - 5.0 MPa (Putz) bzw. bis zu 20 MPa (Zementmörtel), E-Modul muss im Putzsystem von innen nach außen abnehmen.",
+        technisch: "Klassifizierung über Festigkeitsklassen (Mörtelklasse M1 bis M20 nach DIN EN 998-2; Putzmörtelklasse GP, LW, CR nach DIN EN 998-1). Druckfestigkeiten liegen im Bereich von ca. 1,0 - 5,0 MPa (Putz) bzw. bis zu 20 MPa (Zementmörtel), E-Modul muss im Putzsystem von innen nach außen abnehmen.",
         oekologisch: "Ökologische Bilanz ist abhängig vom Bindemittelanteil: Zementreiche Mörtel besitzen das höchste Treibhauspotenzial; reine Kalk- oder Gipsmörtel weisen durch deutlich schonendere Rohstoffverarbeitung (niedrige Brenntemperaturen) einen geringeren Carbon Footprint auf."
       },
       anwendungen: "Verbindung von Mauersteinen (Lager- und Stoßfuge). Putzsysteme zur Oberflächenglättung, zum Wetterschutz, zur Regulation des Raumklimas und als Tragmedium für dekorative Anstriche sowie als integraler Bestandteil von Wärmedämmverbundsystemen (WDVS).",
@@ -212,7 +212,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       kosten: "Äußerst wirtschaftliche Schichtbaustoffe. Normalmörtel-Sackware ist mit 5-8 € pro 25 kg sehr preisgünstig. Dünnbettkleber ist kilogrammbezogen teurer, kompensiert dies aber durch extrem geringen Materialverbrauch (nur ca. 1-3 mm Fugendicke anstelle von 12 mm).",
       recycling: "Als mineralisches Mischsystem im Verbund schwer stofflich im Hochbau einzusetzen. Im Zuge von Sanierung und Abbruch wird verputztes Mauerwerk als herkömmlicher Bauschutt deponiert, gebrochen oder im Tiefbau als Füllmaterial oder Straßenbau-Unterbau thermisch-mechanisch verwertet.",
       besonderheiten: "Eindringende Baufeuchte im frisch verputzten Zustand zwingend meiden. Auf WDVS-Platten ist der Putzaufbau sorgfältig diffusionsoffen auszuführen, um der Taupunktverschiebung im winterlichen Abkühlungszyklus ohne bauphysikalischen Feuchtigkeitsstau zu trotzen.",
-      innovationen: "Entwicklung von Aerogel-Hochleistungsdämmputzen mit Wärmeleitfähigkeiten von λ ≈ 0.028 W/(m·K) zur energetischen Altbausanierung im Denkmalschutz. Selbstreinigende hydrophobe Putze mit Lotuseffekt. Faserarmierte Funktionsputze zur Minimierung von Schwundrissen.",
+      innovationen: "Entwicklung von Aerogel-Hochleistungsdämmputzen mit Wärmeleitfähigkeiten von λ ≈ 0,028 W/(m·K) zur energetischen Altbausanierung im Denkmalschutz. Selbstreinigende hydrophobe Putze mit Lotuseffekt. Faserarmierte Funktionsputze zur Minimierung von Schwundrissen.",
       historie: "Schon in der Vorgeschichte (ca. 7.000 v. Chr.) wurden Putze aus Gips und Lehm aufgetragen. Vulkansande erlaubten den Römern die Entwicklung hochfester Luft- und Wasserkalke. Mit der Etablierung des Portlandzements im 19. Jahrhundert wuchs das Portfolio der Außenputze zu widerstandsfähigen Mehrschichtsystemen."
     }
   },
@@ -231,7 +231,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       dauerhaftigkeit: "Im Trockenbereich extrem formstabil und zeitbeständig. Absolut ungeeignet für den Außenbereich und stark belastete Nasszellen (z.B. öffentliche Duschen): Calciumsulfat besitzt eine stetige Löslichkeit (ca. 2 g/l in Wasser), wodurch Feuchtigkeit das Kristallgitter auflöst und irreversible Festigkeitseinbußen verursacht.",
       kosten: "Enorm wirtschaftliche Systembaustoffe. Standard-Gipskartonplatten gehören mit ca. 3-5 €/m² zu den kostengünstigsten Beplankungsmaterialien des modernen Ausbaus. Fließestriche liegen preislich auf Augenhöhe mit Zementestrichen, sparen aber erhebliche Einbauzeit.",
       recycling: "Theoretisch zu 100 % im geschlossenen Kreislauf (Cradle-to-Cradle) recycelbar. Ausgebaute Gipskartonplatten können mechanisch zerkleinert werden, um Papierkarton vom Gips zu trennen. Das Gipspulver wird erneut gebrannt. Praxisnah verringert schlechte Schutttrennung oft die Recyclingquote.",
-      besonderheiten: "Vermeide das berüchtigte 'Ettringittreiben': Gipsbaustoffe dürfen in feuchtem Zustand niemals in direkten Verbund mit Portlandzement gelangen! Die freien Sulfate des Gipses reagieren mit den Aluminaten des Zements unter enormem Volumenwachstum (Sprengwirkung).",
+      besonderheiten: "Vermeiden Sie das berüchtigte 'Ettringittreiben': Gipsbaustoffe dürfen in feuchtem Zustand niemals in direkten Verbund mit Portlandzement gelangen! Die freien Sulfate des Gipses reagieren mit den Aluminaten des Zements unter enormem Volumenwachstum (Sprengwirkung).",
       innovationen: "Entwicklung von Trockenbauplatten mit Phasenwechselmaterialien (PCM-Mikrokapseln mit Wachs), die tagsüber latent Wärme speichern und nachts abgeben, um das sommerliche Überhitzen von Leichtbauten passiv zu drosseln.",
       historie: "Gipsmörtel diente bereits beim Bau der ägyptischen Pyramiden von Gizeh als Fugen- und Gleitbeschleuniger. Die Römer schätzten fein gebrannten Stuckgips für repräsentative Dekore. Die moderne Gipsplatte wurde 1894 vom US-amerikanischen Erfinder Augustine Sackett patentiert und bildet das Fundament des modernen Trockenbaus."
     }
@@ -263,7 +263,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Natürlich vorkommende Lehmvorkommen. Lehm ist ein physikalisches Gemisch aus tonigen Mineralien (als Bindemittel), Schluff (Feinstsand als Füllstoff) und Sand/Kiesen (als Stützgerüst). Oft mit organischen Zuschlägen (Stroh, Hanffasern) versetzt.",
       herstellung: "Lehm wird trocken oder erdfeucht abgebaut, mechanisch aufbereitet (Zerkleinerung von Tonklumpen) und gemischt. Im Gegensatz zu Zement oder Kalk wird Lehm nicht gebrannt. Er härtet rein physikalisch durch den Entzug von Wasser beim Trocknen aus (reversibles Bindemittel).",
       eigenschaften: {
-        technisch: "Geringe Druckfestigkeit (0.5 - 4.0 MPa). Hohe Trockenrohdichte bei Stampflehm (1.700-2.100 kg/m³). Überragende Sorptionsfähigkeit (puffert Feuchtespitzen der Raumluft und wirkt ausgleichend auf die relative Luftfeuchte). Wasserlöslich und quellfähig bei Wasserzufuhr. Schwindmaß beim Trocknen beträgt ca. 1-4%.",
+        technisch: "Geringe Druckfestigkeit (0,5 - 4,0 MPa). Hohe Trockenrohdichte bei Stampflehm (1.700-2.100 kg/m³). Überragende Sorptionsfähigkeit (puffert Feuchtespitzen der Raumluft und wirkt ausgleichend auf die relative Luftfeuchte). Wasserlöslich und quellfähig bei Wasserzufuhr. Schwindmaß beim Trocknen beträgt ca. 1-4%.",
         oekologisch: "Spitzenreiter im ökologischen Bauen. Keine Brennprozesse zur Herstellung nötig, daher sehr geringe graue Energie und niedriges Treibhauspotenzial (Aufbereitung, Trocknung und Transport verursachen dennoch Emissionen). Hervorragende CO2-Bilanz. Kann vollständig schadstoff- und abfallfrei in die Natur zurückgeführt werden."
       },
       anwendungen: "Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE. Ausmauerung von Gefachen im Fachwerkbau. Lehmbauplatten als ökologischer Trockenbau. Einschubdecken mit Lehmwickeln als Schall- und Hitzeschutz im Holzbau. Lehm-Dekorputze.",
@@ -304,7 +304,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       herstellung: "Die Rohstoffmischung wird im Glasschmelzofen bei ca. 1500-1600 °C geschmolzen. Bei Floatglas fließt das flüssige Glasband kontinuierlich auf ein langes Bad aus flüssigem Zinn (Floatprozess), kühlt dort absolut plan und spannungsfrei ab und wird geschnitten.",
       eigenschaften: {
         technisch: "Enorm druckfest (> 700-900 MPa), aber geringe Biegezugfestigkeit (ca. 45 MPa für Float, gesteigert durch thermischen Vorspannprozess bei ESG auf ca. 120 MPa). Sprödes Bruchverhalten ohne jegliche Vorwarnung. Dichte beträgt 2500 kg/m³. Transmission bis 90%.",
-        oekologisch: "Energieintensives Schmelzen verursacht hohe Treibhausgase (ca. 0.8-1.2 kg CO2-Äq./kg Flachglas). Die hohe Lebensdauer und die Senkung des Heizenergiebedarfs durch moderne Dreifach-Wärmeschutzverglasungen mit Low-E-Beschichtung kompensieren dies jedoch im Betrieb."
+        oekologisch: "Energieintensives Schmelzen verursacht hohe Treibhausgase (ca. 0,8-1,2 kg CO2-Äq./kg Flachglas). Die hohe Lebensdauer und die Senkung des Heizenergiebedarfs durch moderne Dreifach-Wärmeschutzverglasungen mit Low-E-Beschichtung kompensieren dies jedoch im Betrieb."
       },
       anwendungen: "Transparente Gebäudehüllen (Pfosten-Riegel-Fassaden), Fensterflächen zur solaren Wärmegewinnung, Überkopfverglasungen (Vordächer), absturzsichernde Brüstungen, begehbare Glasböden, tragende Glasschwerter zur Windlastabtragung bei Glasfassaden.",
       produkte: "Floatglas (Standard-Kalknatronglas), Einscheibensicherheitsglas (ESG - thermisch vorgespannt), Verbundsicherheitsglas (VSG - zwei Scheiben verbunden mit zähelastischer PVB-Folie), Mehrscheiben-Isolierglas (MIG) mit Edelgasfüllung (Argon).",
@@ -321,10 +321,10 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
     subtitle: "Duktiler Konstruktions- und Bewehrungsstahl für den Stahlbau und Stahlbetonbau",
     sections: {
       rohstoffe: "Eisenerz, Koks (Kohlenstoffträger) und Zuschlagstoffe (Kalk) beim Primärweg (Hochofenroute) sowie fast ausschließlich Stahlschrott und recycelte Legierungsmetalle beim ressourcenschonenden Sekundärweg (Elektrolichtbogenofen-Route).",
-      herstellung: "Erschmelzen des Vormaterials im Hochofen oder Elektroofen, Entkohlen und Frischen im Konverter (Reduktion des Kohlenstoffgehaltes auf unter 2.0% zur Erzielung der Verformbarkeit). Vergießen im Stranggussverfahren und anschließendes Warmwalzen zu Profilen.",
+      herstellung: "Erschmelzen des Vormaterials im Hochofen oder Elektroofen, Entkohlen und Frischen im Konverter (Reduktion des Kohlenstoffgehaltes auf unter 2,0% zur Erzielung der Verformbarkeit). Vergießen im Stranggussverfahren und anschließendes Warmwalzen zu Profilen.",
       eigenschaften: {
         technisch: "Hervorragende Zug- und Druckfestigkeit (Streckgrenze f_y von 235 MPa bei S235 bis über 460 MPa bei hochfestem Stahl; Bewehrungsstahl B500B f_yk = 500 MPa). Extrem ausgeprägte Duktilität (elastisch-plastisches Verformungsverhalten). E-Modul E = 210.000 N/mm².",
-        oekologisch: "Hochofenroute ist energieintensiv und stößt erhebliche Mengen CO2 aus (ca. 1.8-2.2 t CO2/t Stahl). Der Sekundärweg über Altstahlschrott im Elektrolichtbogenofen reduziert die CO2-Emissionen um ca. 70-80 % auf unter 0.4 t CO2/t."
+        oekologisch: "Hochofenroute ist energieintensiv und stößt erhebliche Mengen CO2 aus (ca. 1,8-2,2 t CO2/t Stahl). Der Sekundärweg über Altstahlschrott im Elektrolichtbogenofen reduziert die CO2-Emissionen um ca. 70-80 % auf unter 0,4 t CO2/t."
       },
       anwendungen: "Skeletttragwerke von Hallen- und Hochhäusern, Brückenbau, Fachwerkträger, Schweißkonstruktionen, Bewehrungseinlagen (Betonstahlmatten und Stabstahl) im Verbundbaustoff Stahlbeton zur sicheren Aufnahme der entstehenden Zugkräfte.",
       produkte: "Walzprofile (Breitflanschträger HEA, HEB, HEM und IPE nach DIN 1025), Hohlprofile für Stützen, Betonstahlstäbe (B500B nach DIN 488), Betonstahlmatten (Q- und R-Matten), hochfeste Spannstähle für vorgespannten Beton.",
@@ -504,7 +504,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       herstellung: "Einschlag im Forstfeuchtbestand, Ablängen im Sägewerk und Einschneiden zu Bauschnittholz (Kanthölzer, Bretter, Latten). Es erfolgt eine technische Kammertrocknung auf eine Ziel-Holzfeuchte von ca. 15 ± 3 % (KVH®) bzw. max. 18–20 % zur Schwindbegrenzung nach DIN 4074.",
       eigenschaften: {
         technisch: "Stark ausgeprägte Anisotropie (Festigkeiten längs zur Faser um ein Vielfaches höher als quer zur Faser: Biegefestigkeit f_mk ≈ 24 N/mm² bei C24, Querzugfestigkeit f_t90k ist minimal). Geringe Dichte (ca. 400-550 kg/m³). Hervorragendes Verhältnis von Tragkraft zu Eigengewicht.",
-        oekologisch: "Hervorragender Öko-Akteur. Holz speichert während des Baumwachstums CO2 (ca. 0.9 t CO2/m³ Holz) und speichert biogenen Kohlenstoff (in der Ökobilanz nach EN 15804+A2 getrennt ausgewiesen, am Lebensende wieder freigesetzt, sofern nicht weiterverwendet). Geringste Graue Energie bei lokaler Verarbeitung."
+        oekologisch: "Hervorragender Öko-Akteur. Holz speichert während des Baumwachstums CO2 (ca. 0,9 t CO2/m³ Holz) und speichert biogenen Kohlenstoff (in der Ökobilanz nach EN 15804+A2 getrennt ausgewiesen, am Lebensende wieder freigesetzt, sofern nicht weiterverwendet). Geringste Graue Energie bei lokaler Verarbeitung."
       },
       anwendungen: "Tragwerke für Dachstühle (Sparren, Pfetten), Holzrahmenbauwände im Wohnungsbau, Deckenbalkenlagen, tragende Fachwerkbauten, feingliedrige Fassadenschalungen, Konstruktionsunterlagen, Terrassendielen im Außenbereich.",
       produkte: "Bauschnittholz (DIN 4074), Konstruktionsvollholz (KVH®) mit definierter Holzfeuchte und werkseitiger Keilzinkungsverbindung für anspruchsvolle Längen, Brettschichtholz (BSH) für extrem tragfeste Leimbinder.",
@@ -564,7 +564,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       herstellung: "Polymerisation, Polykondensation oder Polyaddition im chemischen Reaktor. Durch Beigabe von Weichmachern, UV-Stabilisatoren und Pigmenten wird das Rohpolymer im Extruder zu Endprodukten wie Profilen oder Folien verarbeitet.",
       eigenschaften: {
         technisch: "Sehr geringe Rohdichte (900-1.400 kg/m³). Enorm gutes Verhältnis von Festigkeit zu Gewicht. Geringe Wärmeleitfähigkeit (ideal für Dämmzwecke). Hohe Elastizität und Stoßunempfindlichkeit bei Polyethylenrohren. Geringe Eigensteifigkeit bei Last.",
-        oekologisch: "Erheblicher CO2-Fußabdruck in der Herstellung aufgrund fossiler Basis (ca. 2.0-3.5 kg CO2-Äq./kg Kunststoff). Mikroplastikabrieb und Schadstoffe (z.B. flüchtige Weichmacher in altem PVC) fordern ein strenges Recycling und Baustoffmonitoring."
+        oekologisch: "Erheblicher CO2-Fußabdruck in der Herstellung aufgrund fossiler Basis (ca. 2,0-3,5 kg CO2-Äq./kg Kunststoff). Mikroplastikabrieb und Schadstoffe (z.B. flüchtige Weichmacher in altem PVC) fordern ein strenges Recycling und Baustoffmonitoring."
       },
       anwendungen: "Kanalisations- und Trinkwasserrohre (PVC-U, PE-HD, PP), Fensterrahmenprofile (PVC), Abdichtungsbahnen auf Dächern, Geotextilien zur Baugrundstabilisierung, Dampfbremsfolien, Befestigungsdübel, elastische Fugenbänder.",
       produkte: "Standardprodukte wie Abwasserrohre (KG-Rohre), Kabelschutzrohre, Polyethylen-Folien, EPDM-Dachdichtungsbahnen für extreme Langlebigkeit (DIN 18531), EPS- und XPS-Hartschaumplatten zur Keller- und Fassadendämmung.",
@@ -603,7 +603,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Abhängig von der Stoffklasse: Mineralische (Altglas, Basalt für Glas-/Steinwolle), Synthetische (Styrol aus Erdöl für polymerbasiertes EPS/XPS, Polyurethan PIR) oder Ökologische (Holzfasern, Hanfstroh, Seegras, Schafwolle, Zelluloseflocken aus Altpapier).",
       herstellung: "Mineralwolle wird durch Schleudern flüssiger Silikatschmelzen und Faserbindung hergestellt. EPS wird durch Aufschäumen von Polystyrol-Granulat unter Zugabe von Pentan als Treibmittel zu großen Blöcken geschäumt und geschnitten. Holzfaserdämmung wird durch Zerfasern von Sägeresten und nass- oder trockengepresstes Verkleben geformt.",
       eigenschaften: {
-        technisch: "Ausgezeichnete, extrem niedrige Wärmeleitfähigkeiten im Spitzenwert (λ ≈ 0.022 W/(m·K) bei PIR, mineralische Wolle λ ≈ 0.035 W/(m·K), Hanfdämmung λ ≈ 0.040 W/(m·K)). Geringe Rohdichte (15-180 kg/m³). Rohstoffe bestimmen das Brandverhalten (A1 bei Mineralwolle, B2 bei EPS/Öko).",
+        technisch: "Ausgezeichnete, extrem niedrige Wärmeleitfähigkeiten im Spitzenwert (λ ≈ 0,022 W/(m·K) bei PIR, mineralische Wolle λ ≈ 0,035 W/(m·K), Hanfdämmung λ ≈ 0,040 W/(m·K)). Geringe Rohdichte (15-180 kg/m³). Rohstoffe bestimmen das Brandverhalten (A1 bei Mineralwolle, B2 bei EPS/Öko).",
         oekologisch: "Synthetisch geschäumte Dämmstoffe weisen eine hohe Graue Energie auf. Ökologische Dämmstoffe speichern CO2 dauerhaltig über den Lebenszyklus des Gebäudes. Der Einspareffekt an Transmissions-Heizwärme gleicht die graue Herstellungs-Energie fast aller Dämmstoffe nach 1-2 Heizperioden vollständig aus."
       },
       anwendungen: "Wärmedämmung der Gebäudehülle (Außenwand-WDVS, zweischaliges Mauerwerk, hinterlüftete Fassade), Steildach-Zwischensparrendämmung, Flachdachisolierung, Trittschall- und Tragschichtdämmung unter dem Estrich, Kellerdecken- und Perimeterdämmung.",
@@ -612,7 +612,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       kosten: "Mineralwolle und EPS sind extrem wirtschaftliche Standarddämmstoffe (ca. 8-15 €/m² Materialpreis je nach Dämmschnitt). Hochwertige PIR-Dämmungen sowie ökologische Hanf- oder Holzfaserdämmungen sind ca. 40-80% teurer in der Anschaffung.",
       recycling: "Synthetische EPS-Materialien wurden früher mit dem mittlerweile verbotenen Flammschutzmittel HBCD ausgerüstet und gelten als gefährlicher Abfall. Heutzutage wird reines EPS im mechanischen Kreislauf zu neuen Platten aufgeschäumt. Holzfaserplatten sind thermisch nutzbar.",
       besonderheiten: "Konstruktionstipp für Steildächer: Die diffusionsäquivalente Luftschichtdicke (s_d-Wert) des Schichtenaufbaus zwingend im Auge behalten! Der Aufbau muss von warm nach kalt (innen nach außen) diffusionsoffen ausgeführt werden (Dampfbremse innen).",
-      innovationen: "Vakuum-Isolationspaneele (VIP) mit extrem geringer Wärmeleitfähigkeit von λ ≈ 0.007 W/(m·K) zur exklusiven Dämmung bei dünnsten Platzverhältnissen. Bio-Dämmschäume auf Myzel-Basis (Pilzkulturen gewachsen auf landwirtschaftlichen Reststoffen).",
+      innovationen: "Vakuum-Isolationspaneele (VIP) mit extrem geringer Wärmeleitfähigkeit von λ ≈ 0,007 W/(m·K) zur exklusiven Dämmung bei dünnsten Platzverhältnissen. Bio-Dämmschäume auf Myzel-Basis (Pilzkulturen gewachsen auf landwirtschaftlichen Reststoffen).",
       historie: "Bis zur Mitte des 20. Jahrhunderts dienten Stroh, Torf und Kork als händisch eingefügte Isolierstoffe. Das Patentieren von expandiertem Polystyrol (EPS) im Jahr 1949 und die Etablierung moderner Schleuder-Mineralwolle begründeten nach den Ölkrisen der 1970er Jahre den modernen, systematischen Wärmeschutz."
     }
   },
@@ -851,7 +851,7 @@ export default function BaustoffProfil({ materialKey }: BaustoffProfilProps) {
         </div>
 
         <p className="text-xs text-text-main/75 font-sans leading-relaxed">
-          Verwende die Kennwerte dieses Baustoffprofils direkt in den interaktiven Rechen- und Bemessungsmodulen:
+          Verwenden Sie die Kennwerte dieses Baustoffprofils direkt in den interaktiven Rechen- und Bemessungsmodulen:
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-1">

@@ -167,7 +167,7 @@ const PROGRAMS: Program[] = [
       'Haftungsrecht in der Fassadenplanung, Abnahme & gutachterliche Schadensermittlung'
     ],
     benefitsTitle: 'Wer profitiert am meisten?',
-    benefitsIntro: 'Die Fortbildung bringt dich auf Augenhöhe mit spezialisierten Systemherstellern und schützt Sie vor kostspieligen Haftungsfällen:',
+    benefitsIntro: 'Die Fortbildung bringt Sie auf Augenhöhe mit spezialisierten Systemherstellern und schützt Sie vor kostspieligen Haftungsfällen:',
     benefits: [
       'Planungsbüros für Fassadentechnik sowie Bauingenieure und Architekten in der Tragwerksplanung',
       'Bauleiter & QS-Beauftragte von Fassadenbauunternehmen zur Schadensvermeidung',
@@ -273,7 +273,7 @@ const PROGRAMS: Program[] = [
       'Interdisziplinäres Forschungsseminar der bayerischen Hochschulen'
     ],
     benefitsTitle: 'Herausragende Perspektiven',
-    benefitsIntro: 'Bereite dich zielgerichtet auf forschungsintensive Führungsrollen oder eine anschließende Promotion vor:',
+    benefitsIntro: 'Bereite Sie zielgerichtet auf forschungsintensive Führungsrollen oder eine anschließende Promotion vor:',
     benefits: [
       'Direkte Anbindung an modernste Forschungsaktivitäten und exzellente Labore der THA',
       'Hervorragende Vorbereitung auf F&E-Leitungsfunktionen in der High-Tech-Industrie',
@@ -535,9 +535,9 @@ export default function WeiterTHA() {
         ]}
         regelwerke={[
           { title: 'AHO-Heft Nr. 9 (Projektmanagementleistungen in der Bau- und Immobilienwirtschaft)', url: 'https://www.aho.de/' },
-          { title: 'VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 68800 (Holzschutz im Hochbau)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)', url: 'https://www.dinmedia.de/' }
+          { title: 'VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)', url: 'https://www.dinmedia.de/de/suche?q=VOB%2FB' },
+          { title: 'DIN 68800 (Holzschutz im Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+          { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18516' }
         ]}
         weblinks={[
           { title: 'ibi Augsburg - Institut für Bau und Immobilien', url: 'https://www.tha.de/ibi' },

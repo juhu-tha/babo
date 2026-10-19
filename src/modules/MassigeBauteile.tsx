@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Layers, ThermometerSun } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -76,7 +77,7 @@ export default function MassigeBauteile() {
             <div>
               <label className="text-sm font-medium text-text-main flex justify-between mb-2">
                 <span>Zementgehalt <FormulaText text="z" /></span>
-                <span className="text-shiraz font-bold">{zementGehalt} kg/m³</span>
+                <span className="text-shiraz font-bold">{formatDeWert(zementGehalt)} kg/m³</span>
               </label>
               <input 
                 type="range" min="250" max="500" step="10"
@@ -91,10 +92,10 @@ export default function MassigeBauteile() {
             
             <div className="bg-orange-50 border border-orange-100 p-6 rounded-2xl flex flex-col items-center justify-center">
               <div className="text-xs text-orange-800/80 mb-2 font-semibold uppercase tracking-wider">Adiabatischer Temp.-Anstieg <FormulaText text="\Delta T_{ad}" /></div>
-              <div className="text-4xl font-black text-orange-600 mb-2"><FormulaText text={`+${deltaT.toFixed(1)}`} /> <span className="text-xl">K</span></div>
+              <div className="text-4xl font-black text-orange-600 mb-2"><FormulaText text={`+${formatDeZahl(deltaT, 1)}`} /> <span className="text-xl">K</span></div>
               <p className="text-[10px] text-orange-900/60 text-center">
                 Bei einer Frischbetontemperatur von 20°C erhitzt sich der Betonkern 
-                abgeschirmt auf ca. {(20 + deltaT).toFixed(0)}°C!
+                abgeschirmt auf ca. {formatDeZahl((20 + deltaT), 0)}°C!
               </p>
             </div>
           </div>
@@ -114,13 +115,13 @@ export default function MassigeBauteile() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN 1045-2:2023-08 / DIN EN 206 (Anforderungen an LH- und VLH-Zemente)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 197-1 (Zement mit niedriger Hydratationswärme LH)', url: 'https://www.beuth.de/' }
+          { title: 'DIN 1045-2:2023-08 / DIN EN 206 (Anforderungen an LH- und VLH-Zemente)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 197-1 (Zement mit niedriger Hydratationswärme LH)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' }
         ]}
         formeln={[
           {
             formel: '\\Delta T_{ad} = \\frac{z \\cdot Q_h}{c_p \\cdot \\rho}',
-            erklaerung: 'Maximal möglicher adiabatischer Temperaturanstieg im Kern massiger Bauteile ohne Wärmeabfuhr (z: Zementgehalt in kg/m³, Q_h: Hydratationswärme in J/kg, c_p: spezifische Wärmekapazität ~ 1.0 kJ/(kg·K), ρ: Betondichte ~ 2400 kg/m³).',
+            erklaerung: 'Maximal möglicher adiabatischer Temperaturanstieg im Kern massiger Bauteile ohne Wärmeabfuhr (z: Zementgehalt in kg/m³, Q_h: Hydratationswärme in J/kg, c_p: spezifische Wärmekapazität ~ 1,0 kJ/(kg·K), ρ: Betondichte ~ 2400 kg/m³).',
             quelle: 'DAfStb-Richtlinie Massige Bauteile'
           },
           {

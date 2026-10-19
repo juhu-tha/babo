@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Slider } from '@/src/components/ui/Slider';
@@ -153,9 +154,9 @@ export default function HydratationRissberechnung() {
             <em> Die Antwort lautet: Nur unvollständig!</em> Einfache thermische Abschätzungen vernachlässigen fundamentale mechanische Wechselbeziehungen wie:
           </p>
           <ul className="list-disc pl-5 space-y-1 text-xs">
-            <li><strong>Relaxation von Eigenspannungen:</strong> In jungem Beton bauen sich Spannungen infolge von viskoelastischem Kriechen (Kriech-Relaxation) erheblich ab (<InlineMath math="\alpha_{cr} \approx 0.50 - 0.70" />).</li>
-            <li><strong>Effektive Zugfestigkeitsentwicklung:</strong> Am ersten Hydratationsmaximum besitzt der Beton erst einen Bruchteil seiner 28-Tage-Normzugfestigkeit (<InlineMath math="f_{ct,eff} \approx 0.70 \cdot f_{ctm}" />).</li>
-            <li><strong>Mindestbewehrung zur Rissbreitenbegrenzung (<InlineMath math="A_{s,min}" />):</strong> Ist Zwang nicht vermeidbar, reißt der Zementleim zwangsweise. Nur durch eine korrekt dimensionierte Mindestbewehrung wird die Rissöffnung auf unkritische, mikroskopische Breiten (<InlineMath math="w_k \le 0.2\,\text{mm}" />) beschränkt.</li>
+            <li><strong>Relaxation von Eigenspannungen:</strong> In jungem Beton bauen sich Spannungen infolge von viskoelastischem Kriechen (Kriech-Relaxation) erheblich ab (<InlineMath math="\alpha_{cr} \approx 0{,}50 - 0{,}70" />).</li>
+            <li><strong>Effektive Zugfestigkeitsentwicklung:</strong> Am ersten Hydratationsmaximum besitzt der Beton erst einen Bruchteil seiner 28-Tage-Normzugfestigkeit (<InlineMath math="f_{ct,eff} \approx 0{,}70 \cdot f_{ctm}" />).</li>
+            <li><strong>Mindestbewehrung zur Rissbreitenbegrenzung (<InlineMath math="A_{s,min}" />):</strong> Ist Zwang nicht vermeidbar, reißt der Zementleim zwangsweise. Nur durch eine korrekt dimensionierte Mindestbewehrung wird die Rissöffnung auf unkritische, mikroskopische Breiten (<InlineMath math="w_k \le 0{,}2\,\text{mm}" />) beschränkt.</li>
           </ul>
           <p className="text-xs font-semibold text-shiraz mt-1">
             Dieses Praxismodul führt die ingenieurmäßige Bemessung nach Eurocode 2 und den DAfStb-Richtlinien für massige Bauteile interaktiv durch.
@@ -186,8 +187,8 @@ export default function HydratationRissberechnung() {
                 ))}
               </select>
               <div className="text-[10px] text-slate-500 font-mono flex gap-3 mt-0.5">
-                <span>f_ctm: {concreteData.fctm.toFixed(1)} N/mm²</span>
-                <span>E_cm: {concreteData.Ecm} N/mm²</span>
+                <span>f_ctm: {formatDeZahl(concreteData.fctm, 1)} N/mm²</span>
+                <span>E_cm: {formatDeWert(concreteData.Ecm)} N/mm²</span>
               </div>
             </div>
 
@@ -210,9 +211,9 @@ export default function HydratationRissberechnung() {
                 onChange={(e) => setRestraint(Number(e.target.value))}
               />
               <div className="flex gap-2.5 mt-1">
-                <button onClick={() => setRestraint(0.20)} className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded transition">Gleitlager (0.20)</button>
-                <button onClick={() => setRestraint(0.45)} className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded transition">Bodenplatte (0.45)</button>
-                <button onClick={() => setRestraint(0.80)} className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded transition">Starr gekoppelt (0.80)</button>
+                <button onClick={() => setRestraint(0.20)} className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded transition">Gleitlager (0,20)</button>
+                <button onClick={() => setRestraint(0.45)} className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded transition">Bodenplatte (0,45)</button>
+                <button onClick={() => setRestraint(0.80)} className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded transition">Starr gekoppelt (0,80)</button>
               </div>
             </div>
 
@@ -281,9 +282,9 @@ export default function HydratationRissberechnung() {
                 onChange={(e) => setAllowableCrackWidth(Number(e.target.value))}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
               >
-                <option value={0.20}>w_k = 0.20 mm (Z.B. Weiße Wannen / WU-Bauwerke / aggressive Medien)</option>
-                <option value={0.30}>w_k = 0.30 mm (Standard-Stahlbetonbau, Expositionsklassen XC2, XC3, XC4)</option>
-                <option value={0.40}>w_k = 0.40 mm (Trockene Innenräume, Expositionsklasse XC1)</option>
+                <option value={0.20}>w_k = 0,20 mm (Z.B. Weiße Wannen / WU-Bauwerke / aggressive Medien)</option>
+                <option value={0.30}>w_k = 0,30 mm (Standard-Stahlbetonbau, Expositionsklassen XC2, XC3, XC4)</option>
+                <option value={0.40}>w_k = 0,40 mm (Trockene Innenräume, Expositionsklasse XC1)</option>
               </select>
             </div>
 
@@ -296,7 +297,7 @@ export default function HydratationRissberechnung() {
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
               >
                 {[8, 10, 12, 14, 16, 20, 25, 28].map(d => (
-                  <option key={d} value={d}>Ø {d} mm</option>
+                  <option key={d} value={d}>Ø {formatDeWert(d)} mm</option>
                 ))}
               </select>
             </div>
@@ -336,10 +337,10 @@ export default function HydratationRissberechnung() {
                 
                 <div className="mt-3">
                   <div className="text-2xl font-black">
-                    σ_z = {calcResults.restraintStress.toFixed(2)} MPa
+                    σ_z = {formatDeZahl(calcResults.restraintStress, 2)} MPa
                   </div>
                   <div className="text-xs opacity-85 mt-1">
-                    Aktuelle Zwangspannung im jungen Betonalter vs. wirksame Zugfestigkeit f_ct,eff = {calcResults.fctEff.toFixed(2)} MPa
+                    Aktuelle Zwangspannung im jungen Betonalter vs. wirksame Zugfestigkeit f_ct,eff = {formatDeZahl(calcResults.fctEff, 2)} MPa
                   </div>
                 </div>
               </div>
@@ -380,11 +381,11 @@ export default function HydratationRissberechnung() {
 
                 <div className="mt-3">
                   <div className="text-2xl font-black flex items-baseline gap-1.5">
-                    As,prov = {calcResults.AsProvCm2.toFixed(2)} cm²/m
-                    <span className="text-xs font-normal opacity-75">/ As,min = {calcResults.AsMinCm2.toFixed(2)} cm²/m</span>
+                    As,prov = {formatDeZahl(calcResults.AsProvCm2, 2)} cm²/m
+                    <span className="text-xs font-normal opacity-75">/ As,min = {formatDeZahl(calcResults.AsMinCm2, 2)} cm²/m</span>
                   </div>
                   <div className="text-xs opacity-85 mt-1">
-                    Auslastung der Mindestbewehrung: <strong className="font-bold">{(calcResults.utilization * 100).toFixed(0)}%</strong>
+                    Auslastung der Mindestbewehrung: <strong className="font-bold">{formatDeZahl((calcResults.utilization * 100), 0)}%</strong>
                   </div>
                 </div>
               </div>
@@ -394,14 +395,14 @@ export default function HydratationRissberechnung() {
                   <>
                     <AlertTriangle className="text-orange-600 flex-shrink-0" size={18} />
                     <span className="text-xs font-semibold leading-tight text-orange-900">
-                      A_s,prov unzureichend! Reduziere den Stababstand oder vergrößere Ø_s.
+                      A_s,prov unzureichend! Reduzieren Sie den Stababstand oder vergrößern Sie Ø_s.
                     </span>
                   </>
                 ) : (
                   <>
                     <CheckCircle2 className="text-teal-600 flex-shrink-0" size={18} />
                     <span className="text-xs font-semibold leading-tight text-teal-900">
-                      Bewehrungsmenge ausreichend, um Rissbreite w_k ≤ {allowableCrackWidth.toFixed(2)} mm zu halten.
+                      Bewehrungsmenge ausreichend, um Rissbreite w_k ≤ {formatDeZahl(allowableCrackWidth, 2)} mm zu halten.
                     </span>
                   </>
                 )}
@@ -430,7 +431,7 @@ export default function HydratationRissberechnung() {
               <div className="p-3 bg-slate-50/50 rounded-xl border border-slate-100 flex flex-col gap-1.5">
                 <div className="font-bold flex justify-between">
                   <span>Schritt 1: Gesamte freie Zwangsdehnung ε_tot</span>
-                  <span className="text-slate-600">{(calcResults.totalFreeStrain * 1000).toFixed(4)} ‰</span>
+                  <span className="text-slate-600">{formatDeZahl((calcResults.totalFreeStrain * 1000), 4)} ‰</span>
                 </div>
                 <p className="text-slate-500 text-[11px]">
                   Summe aus thermischer Längenänderung (Kernaufheizung und anschließende Abkühlung) und Schwinden:
@@ -438,7 +439,7 @@ export default function HydratationRissberechnung() {
                 {showFormulas && (
                   <div className="bg-white py-1.5 px-3 rounded border text-center font-mono overflow-x-auto text-[10px] text-slate-700">
                     <BlockMath math={`\\varepsilon_{tot} = \\alpha_T \\cdot (\\Delta T_{hyd} + \\Delta T_{cool}) + \\varepsilon_{cs}`} />
-                    <BlockMath math={`\\varepsilon_{tot} = ${alphaT.toFixed(2)} \\cdot 10^{-5} \\cdot (${deltaThyd} + ${deltaTcool}) + \\frac{${shrinkage.toFixed(2)}}{1000} = ${(calcResults.totalFreeStrain * 1000).toFixed(4)}\\,\\text{‰}`} />
+                    <BlockMath math={`\\varepsilon_{tot} = ${formatDeTeX(alphaT, 2)} \\cdot 10^{-5} \\cdot (${formatDeTeXWert(deltaThyd)} + ${formatDeTeXWert(deltaTcool)}) + \\frac{${formatDeTeX(shrinkage, 2)}}{1000} = ${formatDeTeX((calcResults.totalFreeStrain * 1000), 4)}\\,\\text{‰}`} />
                   </div>
                 )}
               </div>
@@ -447,7 +448,7 @@ export default function HydratationRissberechnung() {
               <div className="p-3 bg-slate-50/50 rounded-xl border border-slate-100 flex flex-col gap-1.5">
                 <div className="font-bold flex justify-between">
                   <span>Schritt 2: Ermittlung der Zwangspannung σ_z</span>
-                  <span className="text-slate-600 font-mono">{calcResults.restraintStress.toFixed(2)} MPa</span>
+                  <span className="text-slate-600 font-mono">{formatDeZahl(calcResults.restraintStress, 2)} MPa</span>
                 </div>
                 <p className="text-slate-500 text-[11px]">
                   Errechnet aus dem Elastizitätsmodul des Betons unter Berücksichtigung des Festhaltungsgrades (Behinderung) und dem Abklingbeiwert der Kriechrelaxation (early-age relaxation factor):
@@ -455,7 +456,7 @@ export default function HydratationRissberechnung() {
                 {showFormulas && (
                   <div className="bg-white py-1.5 px-3 rounded border text-center font-mono overflow-x-auto text-[10px] text-slate-700">
                     <BlockMath math={`\\sigma_z = E_{cm} \\cdot \\varepsilon_{tot} \\cdot R \\cdot k_{relax}`} />
-                    <BlockMath math={`\\sigma_z = ${concreteData.Ecm} \\cdot ${(calcResults.totalFreeStrain).toFixed(6)} \\cdot ${restraint.toFixed(2)} \\cdot ${relaxation.toFixed(2)} = ${calcResults.restraintStress.toFixed(2)}\\,\\text{N/mm}^2`} />
+                    <BlockMath math={`\\sigma_z = ${concreteData.Ecm} \\cdot ${formatDeTeX((calcResults.totalFreeStrain), 6)} \\cdot ${formatDeTeX(restraint, 2)} \\cdot ${formatDeTeX(relaxation, 2)} = ${formatDeTeX(calcResults.restraintStress, 2)}\\,\\text{N/mm}^2`} />
                   </div>
                 )}
               </div>
@@ -464,14 +465,14 @@ export default function HydratationRissberechnung() {
               <div className="p-3 bg-slate-50/50 rounded-xl border border-slate-100 flex flex-col gap-1.5">
                 <div className="font-bold flex justify-between">
                   <span>Schritt 3: Bemessungswert der Zugfestigkeit f_ct,eff</span>
-                  <span className="text-slate-600 font-mono">{calcResults.fctEff.toFixed(2)} MPa</span>
+                  <span className="text-slate-600 font-mono">{formatDeZahl(calcResults.fctEff, 2)} MPa</span>
                 </div>
                 <p className="text-slate-500 text-[11px]">
                   Um das Risiko der Erstbelastungsrisse am Hydratationsmaximum (meist nach 3-5 Tagen) sicher abzubilden, wird die wirksame Zugfestigkeit zum Risszeitpunkt mit 70% des Normmittelwerts angesetzt:
                 </p>
                 {showFormulas && (
                   <div className="bg-white py-1.5 px-3 rounded border text-center font-mono overflow-x-auto text-[10px] text-slate-700">
-                    <BlockMath math={`f_{ct,eff} = 0.70 \\cdot f_{ctm} = 0.70 \\cdot ${concreteData.fctm.toFixed(2)} = ${calcResults.fctEff.toFixed(2)}\\,\\text{N/mm}^2`} />
+                    <BlockMath math={`f_{ct,eff} = 0{,}70 \\cdot f_{ctm} = 0{,}70 \\cdot ${formatDeTeX(concreteData.fctm, 2)} = ${formatDeTeX(calcResults.fctEff, 2)}\\,\\text{N/mm}^2`} />
                   </div>
                 )}
               </div>
@@ -480,16 +481,16 @@ export default function HydratationRissberechnung() {
               <div className="p-3 bg-slate-50/50 rounded-xl border border-slate-100 flex flex-col gap-1.5">
                 <div className="font-bold flex justify-between">
                   <span>Schritt 4: Wirksame Zugzonenhöhe h_eff &amp; Betonzugfläche A_ct</span>
-                  <span className="text-slate-600 font-mono">h_eff = {calcResults.hEff.toFixed(0)} mm</span>
+                  <span className="text-slate-600 font-mono">h_eff = {formatDeZahl(calcResults.hEff, 0)} mm</span>
                 </div>
                 <p className="text-slate-500 text-[11px]">
                   Berechnung der maßgeblichen Betonrandzone am einseitigen Querschnitt, die unter Abkühlung auf Zug beansprucht wird (nach DIN EN 1992-1-1 Cl. 7.3.2):
                 </p>
                 {showFormulas && (
                   <div className="bg-white py-1.5 px-3 rounded border text-center font-mono overflow-x-auto text-[10px] text-slate-700">
-                    <BlockMath math={`h_{eff} = \\min\\left( 2.5 \\cdot (c_{nom} + \\varnothing_s/2), \\frac{h}{2} \\right)`} />
-                    <BlockMath math={`h_{eff} = \\min\\left( 2.5 \\cdot (${concreteCover} + ${barDiameter}/2), \\frac{${thickness * 1000}}{2} \\right) = ${calcResults.hEff.toFixed(1)}\\,\\text{mm}`} />
-                    <BlockMath math={`A_{ct} = h_{eff} \\cdot 1000\\,\\text{mm} = ${calcResults.Act.toFixed(0)}\\,\\text{mm}^2/\\text{m}`} />
+                    <BlockMath math={`h_{eff} = \\min\\left( 2{,}5 \\cdot (c_{nom} + \\varnothing_s/2), \\frac{h}{2} \\right)`} />
+                    <BlockMath math={`h_{eff} = \\min\\left( 2{,}5 \\cdot (${formatDeTeXWert(concreteCover)} + ${formatDeTeXWert(barDiameter)}/2), \\frac{${formatDeTeXWert(thickness * 1000)}}{2} \\right) = ${formatDeTeX(calcResults.hEff, 1)}\\,\\text{mm}`} />
+                    <BlockMath math={`A_{ct} = h_{eff} \\cdot 1000\\,\\text{mm} = ${formatDeTeX(calcResults.Act, 0)}\\,\\text{mm}^2/\\text{m}`} />
                   </div>
                 )}
               </div>
@@ -498,13 +499,13 @@ export default function HydratationRissberechnung() {
               <div className="p-3 bg-slate-50/50 rounded-xl border border-slate-100 flex flex-col gap-1.5">
                 <div className="font-bold flex justify-between">
                   <span>Schritt 5: Grenzstahlspannung σ_s für Rissbreite w_k</span>
-                  <span className="text-slate-600 font-mono">Grenzspannung σ_s = {calcResults.limitSteelStress} MPa</span>
+                  <span className="text-slate-600 font-mono">Grenzspannung σ_s = {formatDeWert(calcResults.limitSteelStress)} MPa</span>
                 </div>
                 <p className="text-slate-500 text-[11px]">
-                  Zur Beschränkung der Rissbreite auf den zulässigen Grenzwert (<InlineMath math={`w_k = ${allowableCrackWidth.toFixed(2)}\\text{ mm}`} />) wird die maximale Stahlspannung bei Rissöffnung nach Tabelle 7.2N/7.3N abgegrenzt:
+                  Zur Beschränkung der Rissbreite auf den zulässigen Grenzwert (<InlineMath math={`w_k = ${formatDeTeX(allowableCrackWidth, 2)}\\text{ mm}`} />) wird die maximale Stahlspannung bei Rissöffnung nach Tabelle 7.2N/7.3N abgegrenzt:
                 </p>
                 <div className="bg-white p-2 rounded border text-center text-[10px] font-mono select-none">
-                  Für Ø {barDiameter} mm und w_k = {allowableCrackWidth.toFixed(2)} mm → <span className="font-bold text-shiraz">σ_s,lim = {calcResults.limitSteelStress} N/mm²</span>
+                  Für Ø {formatDeWert(barDiameter)} mm und w_k = {formatDeZahl(allowableCrackWidth, 2)} mm → <span className="font-bold text-shiraz">σ_s,lim = {formatDeWert(calcResults.limitSteelStress)} N/mm²</span>
                 </div>
               </div>
 
@@ -512,7 +513,7 @@ export default function HydratationRissberechnung() {
               <div className="p-3 bg-slate-50/50 rounded-xl border border-slate-100 flex flex-col gap-1.5">
                 <div className="font-bold flex justify-between">
                   <span>Schritt 6: Mindestbewehrungsmenge A_s,min</span>
-                  <span className="text-shiraz font-bold font-mono">A_s,min = {calcResults.AsMinCm2.toFixed(2)} cm²/m</span>
+                  <span className="text-shiraz font-bold font-mono">A_s,min = {formatDeZahl(calcResults.AsMinCm2, 2)} cm²/m</span>
                 </div>
                 <p className="text-slate-500 text-[11px]">
                   Rechnerischer Mindeststahlquerschnitt zur Sicherung einer feingliedrigen Rissverteilung ohne unkontrollierte Klusterrisse (Trennrisse):
@@ -520,8 +521,8 @@ export default function HydratationRissberechnung() {
                 {showFormulas && (
                   <div className="bg-white py-1.5 px-3 rounded border text-center font-mono overflow-x-auto text-[10px] text-slate-700">
                     <BlockMath math={`A_{s,min} = k_c \\cdot k \\cdot f_{ct,eff} \\cdot \\frac{A_{ct}}{\\sigma_s}`} />
-                    <p className="text-[10px] text-slate-500 italic my-1">(Beiwert k = {calcResults.kCoeff.toFixed(2)} wegen Massigkeit, k_c = {calcResults.kcCoeff.toFixed(1)} für zentrische Normkraft)</p>
-                    <BlockMath math={`A_{s,min} = ${calcResults.kcCoeff.toFixed(1)} \\cdot ${calcResults.kCoeff.toFixed(2)} \\cdot ${calcResults.fctEff.toFixed(2)} \\cdot \\frac{${calcResults.Act.toFixed(0)}}{${calcResults.limitSteelStress}} = ${calcResults.AsMinCm2.toFixed(2)}\\,\\text{cm}^2/\\text{m}`} />
+                    <p className="text-[10px] text-slate-500 italic my-1">(Beiwert k = {formatDeZahl(calcResults.kCoeff, 2)} wegen Massigkeit, k_c = {formatDeZahl(calcResults.kcCoeff, 1)} für zentrische Normkraft)</p>
+                    <BlockMath math={`A_{s,min} = ${formatDeTeX(calcResults.kcCoeff, 1)} \\cdot ${formatDeTeX(calcResults.kCoeff, 2)} \\cdot ${formatDeTeX(calcResults.fctEff, 2)} \\cdot \\frac{${formatDeTeX(calcResults.Act, 0)}}{${formatDeTeXWert(calcResults.limitSteelStress)}} = ${formatDeTeX(calcResults.AsMinCm2, 2)}\\,\\text{cm}^2/\\text{m}`} />
                   </div>
                 )}
               </div>
@@ -530,7 +531,7 @@ export default function HydratationRissberechnung() {
               <div className="p-3 bg-[#FCF8F2] rounded-xl border border-home-grau/25 flex flex-col gap-1.5">
                 <div className="font-bold flex justify-between text-text-main">
                   <span>Schritt 7: Vorhandene Bewehrungsmenge A_s,prov &amp; Nachweis</span>
-                  <span className="font-mono">{calcResults.AsProvCm2.toFixed(2)} cm²/m</span>
+                  <span className="font-mono">{formatDeZahl(calcResults.AsProvCm2, 2)} cm²/m</span>
                 </div>
                 <p className="text-slate-500 text-[11px]">
                   Bewehrungsmenge der gewählten Verlegeparameter (Stabdurchmesser und Verlegeabstand):
@@ -538,7 +539,7 @@ export default function HydratationRissberechnung() {
                 {showFormulas && (
                   <div className="bg-white py-1.5 px-3 rounded border text-center font-mono overflow-x-auto text-[10px] text-slate-700">
                     <BlockMath math={`A_{s,prov} = \\frac{\\pi \\cdot \\varnothing_s^2}{4} \\cdot \\frac{1000}{s}`} />
-                    <BlockMath math={`A_{s,prov} = \\frac{\\pi \\cdot ${barDiameter}^2}{4} \\cdot \\frac{1000}{${barSpacing}} = ${calcResults.AsProvCm2.toFixed(2)}\\,\\text{cm}^2/\\text{m}`} />
+                    <BlockMath math={`A_{s,prov} = \\frac{\\pi \\cdot ${formatDeTeXWert(barDiameter)}^2}{4} \\cdot \\frac{1000}{${formatDeTeXWert(barSpacing)}} = ${formatDeTeX(calcResults.AsProvCm2, 2)}\\,\\text{cm}^2/\\text{m}`} />
                   </div>
                 )}
                 <div className="flex justify-between items-center mt-1">
@@ -548,7 +549,7 @@ export default function HydratationRissberechnung() {
                       ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' 
                       : 'bg-orange-100 text-orange-850 border border-orange-200'
                   }`}>
-                    {calcResults.utilization <= 1.0 ? '✓ Nachweis erfüllt' : '✗ Nicht erfüllt'} ({ (calcResults.utilization * 100).toFixed(0) } %)
+                    {calcResults.utilization <= 1.0 ? '✓ Nachweis erfüllt' : '✗ Nicht erfüllt'} ({ formatDeZahl((calcResults.utilization * 100), 0) } %)
                   </span>
                 </div>
               </div>
@@ -586,8 +587,8 @@ export default function HydratationRissberechnung() {
           'Heft 600 DAfStb: Erläuterungen zu DIN EN 1992-1-1 (Eurocode 2)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Massige+Bauteile+aus+Beton' }
         ]}
         formeln={[
           {

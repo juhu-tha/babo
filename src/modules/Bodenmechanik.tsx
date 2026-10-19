@@ -712,10 +712,10 @@ export default function Bodenmechanik() {
           'Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1997-1:2024-04 (Eurocode 7: Geotechnische Bemessung - Teil 1: Allgemeine Regeln)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18122-1:2020-11 (Baugrund: Untersuchung von Bodenproben - Zustandsgrenzen / Konsistenzgrenzen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4085:2017-08 (Baugrund - Berechnung des Erddrucks)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1997-1:2024-04 (Eurocode 7: Geotechnische Bemessung - Teil 1: Allgemeine Regeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1997-1' },
+          { title: 'DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1054' },
+          { title: 'DIN 18122-1:2020-11 (Baugrund: Untersuchung von Bodenproben - Zustandsgrenzen / Konsistenzgrenzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18122-1' },
+          { title: 'DIN 4085:2017-08 (Baugrund - Berechnung des Erddrucks)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4085' }
         ]}
         formeln={[
           {

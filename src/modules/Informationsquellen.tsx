@@ -59,7 +59,7 @@ const FREE_DATABASES: DBRecord[] = [
     accessibility: 'Frei zugänglich, anmeldefrei online',
     url: 'https://www.wingis-online.de/',
     standards: ['TRGS 500', 'GefStoffV', 'ArbSchG'],
-    evaluation: 'Das führende Gefahrstoff-Informationssystem der BG Bau konzentriert sich auf den baustellengerechten Gesundheitsschutz. Es übersetzt gefahrstoffrechtliche Kennzeichnungen in rechtssichere, leicht verständliche Betriebsanweisungen direkt für den Polier und Handwerker.',
+    evaluation: 'Das führende Gefahrstoff-Informationssystem der BG Bau konzentriert sich auf den baustellengerechten Gesundheitsschutz. Es übersetzt gefahrstoffrechtliche Kennzeichnungen in rechtlich belastbare, leicht verständliche Betriebsanweisungen direkt für den Polier und Handwerker.',
     benefits: [
       'Abfrage über standardisierte GISCODEs / Produktgruppen',
       'Exakte Handlungshilfen zu PSA (Atemschutz, Schutzhandschuhe)',
@@ -102,7 +102,7 @@ const FREE_DATABASES: DBRecord[] = [
       'Alterungsschutz- und Emissionsprofile über Jahrzehnte hinweg'
     ],
     relevance: 'Nachhaltige Werkstoffwahl, Vermeidung flüchtiger Schadstoffe (VOC) im Gebäudeinnenraum.',
-    tip: 'Nutze die textlichen Ausschreibungs-Hilfsmittel zur Integration ökologischer Anforderungen.'
+    tip: 'Nutzen Sie die textlichen Ausschreibungs-Hilfsmittel zur Integration ökologischer Anforderungen.'
   },
   {
     id: 'oekobaudat',
@@ -138,7 +138,7 @@ const FREE_DATABASES: DBRecord[] = [
       'Zusammenfassung aller gesetzlichen und normativen Baurechte'
     ],
     relevance: 'Strategisches Verständnis für rechtliche und planerische Nachhaltigkeitsvorgaben des Bundes.',
-    tip: 'Hervorragender, rechtssicherer Einstiegspunkt für Planer, Bauherren und Studierende.'
+    tip: 'Hervorragender, rechtlich belastbarer Einstiegspunkt für Planer, Bauherren und Studierende.'
   },
   {
     id: 'bnb',
@@ -156,7 +156,7 @@ const FREE_DATABASES: DBRecord[] = [
       'Konkrete Zielwerte für Treibhausgase und Primärenergiebedarf'
     ],
     relevance: 'Strukturierte ganzheitliche Lebenszyklusanalyse von der Planung bis zum Rückbau.',
-    tip: 'Nutze die Steckbriefe als praxisgerechten Leitfaden zur Qualitätssicherung am eigenen Entwurf.'
+    tip: 'Nutzen Sie die Steckbriefe als praxisgerechten Leitfaden zur Qualitätssicherung am eigenen Entwurf.'
   },
   {
     id: 'beton_tech',
@@ -210,7 +210,7 @@ const FREE_DATABASES: DBRecord[] = [
       'Verifizierte Richtlinien zum ökologischen Zirkulärholzbau'
     ],
     relevance: 'CO2-Schonung durch biogene Tragwerke mit lückenlosem Brandschutznachweis.',
-    tip: 'Nutze die Schriftenreihe zur fehlerfreien Werkplanung von Holz-Beton-Verbunddecken.'
+    tip: 'Nutzen Sie die Schriftenreihe zur fehlerfreien Werkplanung von Holz-Beton-Verbunddecken.'
   },
   {
     id: 'elca_lca',
@@ -264,7 +264,7 @@ const FREE_DATABASES: DBRecord[] = [
       'Fachbücher und Studien zum zirkulären Sekundärbaustoffeinsatz'
     ],
     relevance: 'Rechts- und gesundheitssichere Sanierung zur Vermeidung von Bauschäden und Schadstoffemissionen.',
-    tip: 'Prüfe vor Sanierungsanlagen den UBA-Schimmelpilz-Leitfaden auf anerkannte Sanierungsmethoden.'
+    tip: 'Prüfen Sie vor Sanierungsanlagen den UBA-Schimmelpilz-Leitfaden auf anerkannte Sanierungsmethoden.'
   },
   {
     id: 'madaster_germany',
@@ -297,7 +297,7 @@ const FREE_DATABASES: DBRecord[] = [
     benefits: [
       'Gezielte Identifikation und Prüfung wiederverwendbarer Bauteile vor dem Abbruch',
       'CO₂- und Kosteneinsparungsberechnung im Vergleich zur Neuherstellung',
-      'Rechtssichere Begleitung bei Gewährleistung und Schadstoffausschluss'
+      'Rechtlich belastbare Begleitung bei Gewährleistung und Schadstoffausschluss'
     ],
     relevance: 'Reduktion von Primärrohstoffen und Abfallmengen durch direkte Wiederverwendung (Re-Use).',
     tip: 'Ideal zur Vorbereitung von selektiven Rückbaukonzepten nach VDI 6210.'
@@ -318,7 +318,7 @@ const FREE_DATABASES: DBRecord[] = [
       'Filterung nach regionalen Produkten, Recyclinganteilen und Schadstofffreiheit'
     ],
     relevance: 'Schnelle Auswahl nachweislich nachhaltiger Bauprodukte im Planungsprozess.',
-    tip: 'Prüfe hier Baustoffe auf Erfüllung der Qualitätsstufen QS 1 bis QS 4 für die Innenraumluft.'
+    tip: 'Prüfen Sie hier Baustoffe auf Erfüllung der Qualitätsstufen QS 1 bis QS 4 für die Innenraumluft.'
   },
   {
     id: 'fraunhofer_irb',
@@ -461,7 +461,7 @@ export default function Informationsquellen() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-home-grau" size={16} />
               <input
                 type="text"
-                placeholder="Suche nach Systemen, Betreibern, Normen..."
+                placeholder="Suchen Sie nach Systemen, Betreibern, Normen..."
                 className="w-full pl-9 pr-4 py-2 border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-off-white text-xs"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -649,7 +649,7 @@ export default function Informationsquellen() {
           { title: 'Leitfaden Nachhaltiges Bauen (BMWSB) - Standard für Bundesbauten', url: 'https://www.nachhaltigesbauen.de/' },
           { title: 'VDI 6202 Blatt 1: Schadstofferkundung von Gebäuden und baulichen Anlagen', url: 'https://www.vdi.de/' },
           { title: 'TRGS 519 / 521 / 524: Technische Regeln für Gefahrstoffe', url: 'https://www.baua.de/' },
-          { title: 'DIN SPEC 91484: Verfahren zur Erfassung von Bauprodukten vor Abbruch- und Umbaumaßnahmen', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN SPEC 91484: Verfahren zur Erfassung von Bauprodukten vor Abbruch- und Umbaumaßnahmen', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91484' }
         ]}
         literatur={[
           'BMWSB: Bewertungssystem Nachhaltiges Bauen (BNB) Kriteriensteckbriefe',

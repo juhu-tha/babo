@@ -75,7 +75,7 @@ export default function Gips() {
                 <h3 className="font-bold text-shiraz text-lg mb-2">Herstellung (Brennen)</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
                   <li><strong>Rohstoff:</strong> Calciumsulfat-Dihydrat <InlineMath math="CaSO_4 \cdot 2H_2O" /></li>
-                  <li>Beim Erhitzen (ca. 100 - 180°C) entsteht Halbhydrat (Stuckgips): <br/><BlockMath math="CaSO_4 \cdot 2H_2O \rightarrow CaSO_4 \cdot 0,5H_2O + 1,5H_2O" /></li>
+                  <li>Beim Erhitzen (ca. 100 - 180°C) entsteht Halbhydrat (Stuckgips): <br/><BlockMath math="CaSO_4 \cdot 2H_2O \rightarrow CaSO_4 \cdot 0{,}5H_2O + 1{,}5H_2O" /></li>
                   <li>Bei höheren Temperaturen (&gt; 180°C) entsteht Anhydrit-Gips (ohne Kristallwasser, <InlineMath math="CaSO_4" />), z.B. für Fließestriche (Anhydritestrich).</li>
                 </ul>
               </div>
@@ -85,7 +85,7 @@ export default function Gips() {
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
                   <li><strong>Lösen:</strong> Das aus gebranntem Gips und Wasser bestehende Gemisch geht in Lösung. Das Halbhydrat ist in Wasser besser löslich als das Dihydrat.</li>
                   <li><strong>Kristallisation:</strong> Aus der übersättigten Lösung kristallisiert das schwerer lösliche Calciumsulfat-Dihydrat in Form feiner Nadeln aus.</li>
-                  <li><strong>Reaktionsgleichung:</strong> <br/><BlockMath math="CaSO_4 \cdot 0,5H_2O + 1,5H_2O \rightarrow CaSO_4 \cdot 2H_2O" /></li>
+                  <li><strong>Reaktionsgleichung:</strong> <br/><BlockMath math="CaSO_4 \cdot 0{,}5H_2O + 1{,}5H_2O \rightarrow CaSO_4 \cdot 2H_2O" /></li>
                   <li><strong>Volumenänderung:</strong> Das Material dehnt sich beim Abbinden leicht aus (ca. 1%), was ein scharfkantiges und exaktes Ausfüllen von Formen ermöglicht.</li>
                 </ul>
               </div>
@@ -237,11 +237,11 @@ export default function Gips() {
           'Bundesverband der Gipsindustrie e. V.: GIPS-Datenbuch'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13279-1:2008-11 (Gipsbinder und Gips-Trockenmörtel - Teil 1: Begriffe und Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13279-2:2014-03 (Gipsbinder und Gips-Trockenmörtel - Teil 2: Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18180:2014-09 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18181:2019-03 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 13279-1:2008-11 (Gipsbinder und Gips-Trockenmörtel - Teil 1: Begriffe und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13279-1' },
+          { title: 'DIN EN 13279-2:2014-03 (Gipsbinder und Gips-Trockenmörtel - Teil 2: Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13279-2' },
+          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+520' },
+          { title: 'DIN 18180:2014-09 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18180' },
+          { title: 'DIN 18181:2019-03 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18181' }
         ]}
         formeln={[
           {

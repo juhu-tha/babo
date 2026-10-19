@@ -300,7 +300,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     standard: 'DIN EN 12504-1 („Bohrkerne - Entnahme und Prüfung“), DIN EN 13791 („Bewertung der In-situ-Druckfestigkeit“), DIN 1045-2',
     principle: 'Echtes physikalisches Referenzprüfverfahren zur Bestimmung der realen In-situ-Betondruckfestigkeit. Eine wassergekühlte Diamantkernbohrlafette schneidet zylindrische Prüfkörper (Regeldurchmesser Ø 100 mm oder Ø 50 mm) direkt aus dem Tragwerk. Die Stirnflächen der entnommenen Zylinder werden im Baustofflabor planparallel geschliffen oder mit Schwefelmörtel/Capping präpariert. In einer kalibrierten hydraulischen Universalprüfmaschine wird der Kern anschließend unter axialer, weggesteuerter Lasteinleitung bis zum Gefügebruch belastet.',
     formula: 'f_{c,\\text{is}} = \\frac{F_{\\text{max}}}{A_c} \\quad \\implies \\quad f_{c,\\text{cube150}} = k_{\\text{shape}} \\cdot f_{c,\\text{is}}',
-    formulaExplanation: 'f_c,is ist die In-situ-Zylinderdruckfestigkeit (N/mm²), F_max die Höchstlast beim Bruch (N), A_c die Querschnittsfläche (mm²). k_shape ist der Umrechnungsfaktor auf Standard-Würfelfestigkeit (für L/D = 1,0 gilt typisch k ≈ 1,00, für L/D = 2,0 gilt k ≈ 1,25; Bohrkern-Schlankheitskorrektur nach DIN EN 12504-1).',
+    formulaExplanation: 'f_c,is ist die Kerndruckfestigkeit (N/mm²), F_max die Höchstlast beim Bruch (N), A_c die Querschnittsfläche (mm²). DIN EN 12504-1 enthält keine Umrechnungsfaktoren. Nach DIN EN 13791:2020-02 entspricht ein Kern Ø 100 mm mit L/D = 1 etwa einem 150-mm-Würfel, ein Kern mit L/D = 2 etwa einem Zylinder 150/300 (k_shape ≈ 1,00 für den jeweiligen Bezugskörper).',
     steps: [
       'Bewehrung vorab mittels Covermeter lokalisieren, um das Durchtrennen tragender Hauptbewehrung zwingend zu vermeiden.',
       'Bohrlafette mit Dübelanker oder Vakuumpumpe schwingungsfrei am Bauteil befestigen.',
@@ -319,7 +319,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
       'Gefahr von Querschnittsfehlern bei unzureichend verankertem Bohrstativ (Riffelungen am Zylindermantel).',
       'Bewehrungstreffer im Bohrkern verfälschen das Bruchbild und führen zur Ungültigkeit der Druckprüfung.'
     ],
-    referenceValues: 'Druckfestigkeitsklassen nach DIN EN 206-1: C20/25 (f_ck,cyl = 20 N/mm², f_ck,cube = 25 N/mm²); C30/37 (f_ck,cyl = 30 N/mm²); C50/60 (f_ck,cyl = 50 N/mm²). In-situ-Kerne erreichen normgemäß etwa 85 % der 28-Tage-Laborprobekörperfestigkeit (DIN EN 13791).',
+    referenceValues: 'Druckfestigkeitsklassen nach DIN EN 206-1: C20/25 (f_ck,cyl = 20 N/mm², f_ck,cube = 25 N/mm²); C30/37 (f_ck,cyl = 30 N/mm²); C50/60 (f_ck,cyl = 50 N/mm²). Nach DIN EN 13791 Tab. 1 gilt eine Druckfestigkeitsklasse als erreicht, wenn f_ck,is ≥ 0,85 · f_ck (Verhältnis Bauwerk/Normprobekörper – nicht der Dauerstandsbeiwert α_cc aus EC2).',
     interactiveType: 'bohrkern'
   },
 
@@ -353,7 +353,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
       'Unsauberes Aussaugen zwischen den Stufen verschleppt Chloride von außen in tiefere Schichten (Schein-Tiefenwerte).',
       'Der Zementgehalt des Altbetons muss geschätzt oder petrografisch bestimmt werden, um auf Gew.-% bezogen auf Zement umzurechnen.'
     ],
-    referenceValues: 'Kritischer Chloridgehalt nach DAfStb / Eurocode 2: Schlaff bewehrter Beton: Cl_krit = 0,40 Gew.-% bezogen auf Zement; Spannbeton (extrem hohe Riss- und Lochfraßgefahr): Cl_krit = 0,20 Gew.-% bezogen auf Zement. Bei Werten > Cl_krit ist Betonabtrag bis hinter die Bewehrung erforderlich.',
+    referenceValues: 'Ein normativer „kritischer Chloridgehalt“ existiert nicht. DIN EN 206 / DIN 1045-2 begrenzen nur den Herstellungs-Chloridgehalt (Cl 0,40 Stahlbeton, Cl 0,20 Spannbeton, M.-% bez. Zement). Anhaltswert korrosionsauslösend an der Bewehrung ≈ 0,5 M.-% bez. Zement; Bewertung durch sachkundigen Planer im Einzelfall. Ampel (Orientierung): < 0,2 unkritisch, 0,2–0,5 Beobachtung/Prävention, ≥ 0,5 Korrosion wahrscheinlich. Spannstahl: kein gesicherter Grenzwert.',
     interactiveType: 'bohrmehl'
   },
 
@@ -378,13 +378,13 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
       'Bruchlast F_break am Schleppzeiger/Digitaldisplay notieren und Bruchbild (Bruchfläche in %) visuell klassifizieren.'
     ],
     pros: [
-      'Normativ zwingend vorgeschriebene Abnahmeprüfung vor und nach jeder Betoninstandsetzung.',
+      'Im Rahmen der Qualitätssicherung nach TR Instandhaltung / ZTV-ING gefordert (Untergrundprüfung und Verbundprüfung).',
       'Eindeutige Aussage über die Festigkeit der oberflächennahen Randzone und den Verbund neuer Schichten.',
       'Direkte Unterscheidung zwischen Werkstoffversagen (Betonbruch) und Verarbeitungsfehlern (Verbundversagen).'
     ],
     cons: [
       'Nicht-zentrischer, schräger Kraftangriff erzeugt Biegemomente und führt zu drastisch zu niedrigen Bruchwerten.',
-      'Erfordert mehrmalige Baustellenanfahrten (Klebemörtel benötigt Aushärtezeit von mehreren Stunden).',
+      'Erfordert mehrmalige Baustellenanfahrten (Klebstoff je nach Produkt: schnellhärtend wenige Stunden, sonst bis 24 h).',
       'Zerstört die Oberfläche lokal (Reprofilierung mit Reparaturmörtel erforderlich).'
     ],
     referenceValues: 'Anforderungen nach TR Instandhaltung (DIBt) / ZTV-ING: Untergrund vor Betonersatz: Mittelwert f_ct,mean ≥ 1,5 N/mm², kein Einzelwert < 1,0 N/mm². Für Oberflächenschutzsysteme aus Reaktionsharz (z. B. OS 8 / OS 11) gelten systemabhängige Anforderungen; maßgebend sind die Tabellen der jeweils geltenden TR Instandhaltung bzw. ZTV-ING Teil 3-4.',
@@ -481,15 +481,15 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     ],
     pros: [
       'Unerlässliches Referenzverfahren zur Eichung aller elektronischen Feuchtesonden (CM-Gerät, Mikrowelle, TDR).',
-      'Vollkommen unbeeinflusst von Salzen, Chloriden oder chemischen Inhaltsstoffen im Porenwasser.',
+      'Bezugsverfahren, aber nicht störungsfrei: hygroskopische Salze erhöhen den Feuchtegehalt, Hydratphasen (Ettringit, Gips) verlieren bei 105 °C chemisch gebundenes Wasser – daher Gips bei 40 °C trocknen und bei Zementstein als „Darrfeuchte“ interpretieren.',
       'Gilt als Referenzverfahren für die Feuchtebestimmung (Darr-Methode).'
     ],
     cons: [
       'Zerstörendes Verfahren mit Probenahmeaufwand vor Ort.',
-      'Mehrtägige Trocknungsdauer (mind. 24 bis 48 Stunden bis zur Massekonstanz).',
+      'Mehrtägige Trocknungsdauer bis zur Massekonstanz (DIN EN ISO 12570: Massenänderung zwischen zwei Wägungen im Abstand von 24 h < 0,1 %).',
       'Organisch vergütete Baustoffe (z.B. kunstharzmodifizierte Mörtel) können bei 105 °C zersetzt werden.'
     ],
-    referenceValues: 'Praktische Feuchtewerte im Festbeton: Ausgleichsfeuchte Innenraum (trocken) ≈ 2,0–3,0 M.-%; Freie Bewitterung Außenbereich ≈ 4,5–5,5 M.-%; Vollständige Porenwassersättigung ≈ 8,0–10,0 M.-%. Estrich-Belegreife (Zementestrich unbeheizt) nach DIN 18560: ≤ 2,0 CM-% (entspricht ca. 3,0–3,5 M.-% Darrfeuchte).',
+    referenceValues: 'Praktische Feuchtewerte im Festbeton: Ausgleichsfeuchte Innenraum (trocken) ≈ 2,0–3,0 M.-%; Freie Bewitterung Außenbereich ≈ 4,5–5,5 M.-%; Vollständige Porenwassersättigung ≈ 8,0–10,0 M.-%. Estrich-Belegreife (Zementestrich unbeheizt): ≤ 2,0 CM-% nach Schnittstellenkoordination (entspricht etwa 3,0–3,5 M.-% Darrfeuchte; CM- und Darrwerte sind nicht identisch).',
     interactiveType: 'darrmethode'
   }
 ];

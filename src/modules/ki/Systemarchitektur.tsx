@@ -195,7 +195,7 @@ export default function Systemarchitektur() {
           output: 'Tabelle mit Abweichungen, Risikoeinschätzungen und Paragrafenverweisen'
         },
         {
-          titel: 'Rechtssichere Bedenkenanzeigen nach § 4 Abs. 7 VOB/B',
+          titel: 'Rechtlich belastbare Bedenkenanzeigen nach § 4 Abs. 7 VOB/B',
           bereich: 'Bauleitung & Projektmanagement',
           beschreibung: 'Formulierung präziser, formal unangreifbarer Bedenkenanzeigen aus Stichpunkten des Baustellen-Tagebuchs (z. B. unzureichende Vorleistung, zu hohe Bauteilfeuchte vor Estrichverlegung).',
           output: 'Fertiger, unterschriftsreifer Briefentwurf mit Fristsetzung'
@@ -649,7 +649,7 @@ export default function Systemarchitektur() {
             </div>
             <h4 className="text-xs font-bold text-slate-800">Agenten, APIs &amp; Human-in-the-Loop</h4>
             <p className="text-[11px] text-slate-600 mt-1 leading-snug">
-              Agenten rufen Statik-APIs (Dlubal, Sofistik) und AVA-Software auf. Der Ingenieur prüft und signiert das Ergebnis rechtssicher.
+              Agenten rufen Statik-APIs (Dlubal, Sofistik) und AVA-Software auf. Der Ingenieur prüft und signiert das Ergebnis rechtlich belastbar.
             </p>
             <div className="mt-2 text-[10px] font-mono text-rose-800 bg-white/80 p-1.5 rounded border border-rose-200">
               Output: Prüffähige Statik &amp; signierte Freigabe
@@ -1007,8 +1007,8 @@ export default function Systemarchitektur() {
           'Wendehorst Baustoffkunde: Werkstoffe, Prüfung und Dauerhaftigkeit (37. Auflage, Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
           { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen – Teil B', url: 'https://www.gesetze-im-internet.de/vob_b/' },
           { title: 'EU Artificial Intelligence Act (Verordnung (EU) 2024/1689 des Europäischen Parlaments)', url: 'https://eur-lex.europa.eu/' }
         ]}

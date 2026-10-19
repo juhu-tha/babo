@@ -18,7 +18,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Line } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { RheologySimulator } from '@/src/components/rheology/RheologySimulator';
 import {
   Chart as ChartJS,
@@ -827,7 +827,7 @@ export default function Materialmodelle() {
                     <span className="font-mono font-bold text-sm text-shiraz mt-0.5 block">
                       {formatDeZahl(epAnalytics.peakStress, 1)} MPa
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">bei ε = {appliedMaxEpsPromille} ‰</span>
+                    <span className="text-[9px] text-slate-400 font-mono">bei ε = {formatDeWert(appliedMaxEpsPromille)} ‰</span>
                   </div>
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-[10px] text-slate-500 block uppercase font-semibold">Spannungsverhältnis σ_max / f_y bei ε_max</span>
@@ -976,10 +976,10 @@ export default function Materialmodelle() {
           { title: 'Bauschinger-Effekt', url: 'https://de.wikipedia.org/wiki/Bauschinger-Effekt' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Stahlbeton - Nichtlineare Stoffgesetze)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung von Stahlbauten - Plastische Grenzzustände)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1342-1..3:2003-11 (Viskosität - Rheologische Begriffe und Messverfahren)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Stahlbeton - Nichtlineare Stoffgesetze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung von Stahlbauten - Plastische Grenzzustände)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN 1342-1..3:2003-11 (Viskosität - Rheologische Begriffe und Messverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1342-1..3' }
         ]}
         literatur={[
           'Mang, H., Hofstetter, G.: Festigkeitslehre (Springer Vieweg, 2013)',

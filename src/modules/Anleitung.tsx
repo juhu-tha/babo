@@ -51,7 +51,7 @@ export default function Anleitung() {
             </div>
             <h4 className="font-bold text-text-main">2. Zusammenhänge erkennen</h4>
             <p className="text-sm text-text-main/70">
-              Die dynamischen Diagramme zeigen dir sofort, ob ein Zusammenhang linear, exponentiell oder logarithmisch ist. Suche nach Grenzwerten und Extremata.
+              Die dynamischen Diagramme zeigen Ihnen sofort, ob ein Zusammenhang linear, exponentiell oder logarithmisch ist. Suchen Sie nach Grenzwerten und Extremata.
             </p>
           </div>
 
@@ -287,8 +287,8 @@ export default function Anleitung() {
         ]}
         regelwerke={[
           { title: 'Hochschulrektorenkonferenz (HRK): Leitlinien für digital gestütztes Lehren und Lernen in den Ingenieurwissenschaften', url: 'https://www.hrk.de/' },
-          { title: 'DIN EN ISO 9241-110:2020-10 (Ergonomie der Mensch-System-Interaktion - Teil 110: Interaktionsprinzipien)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1990:2021-10 (Eurocode: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 9241-110:2020-10 (Ergonomie der Mensch-System-Interaktion - Teil 110: Interaktionsprinzipien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9241-110' },
+          { title: 'DIN EN 1990:2021-10 (Eurocode: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' }
         ]}
         hideFormeln={true}
       />

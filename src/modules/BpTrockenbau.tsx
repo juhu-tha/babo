@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath } from 'react-katex';
@@ -246,40 +247,40 @@ const DRY_SYSTEMS_DB: SystemSpec[] = [
     id: 'w111',
     code: 'Standard-Wandsystem M50A (Typ W111)',
     name: 'Einfachständerwerk, 1-lagig beplankt',
-    structure: '1x 12.5 mm Gipsplatte + CW 50 Stehprofile + 1x 12.5 mm Gipsplatte',
+    structure: '1x 12,5 mm Gipsplatte + CW 50 Stehprofile + 1x 12,5 mm Gipsplatte',
     thickness: '75 mm',
     fireRating: 'Kein Brandschutz (bzw. max. F30 bei GKF-Ausführung)',
     soundRating: 'ca. 42 - 45 dB',
     description: 'Das einfachste Metallständerwandsystem. Besteht aus einer Unterkonstruktion aus verzinkten Stahlblechprofilen, die beidseitig einfach beplankt wird. Gut geeignet als kosteneffizientes Raumtrennelement ohne nennenswerte Brandschutz- oder Schallschutzanforderungen.',
     application: 'Abstellkammern, einfache Flurgestaltungen, Raumaufteilungen ohne Schallschutz.',
     profileType: 'CW 50 / UW 50',
-    spacing: '62.5 cm'
+    spacing: '62,5 cm'
   },
   {
     id: 'w112',
     code: 'Standard-Wandsystem M50B (Typ W112)',
     name: 'Einfachständerwerk, 2-lagig beplankt',
-    structure: '2x 12.5 mm Gipsplatte + CW 50/75 Stehprofile + 2x 12.5 mm Gipsplatte',
+    structure: '2x 12,5 mm Gipsplatte + CW 50/75 Stehprofile + 2x 12,5 mm Gipsplatte',
     thickness: '100 mm',
     fireRating: 'F 90-A (bei Feuerschutzplatten-Beplankung)',
     soundRating: 'ca. 52 - 56 dB',
     description: 'Das klassische Standard-Trennwandsystem des modernen Innenausbaus. Durch die zweilagige Beplankung wird die Stabilität der Wand enorm gesteigert und Kreuzfugenrisse werden drastisch minimiert. Mit GKF-Platten wird ein ausgezeichneter Brandschutz nach DIN 4102-4 erreicht.',
     application: 'Zimmertrennwände im Wohnungsbau, Bürobereiche, Brandschutzwände.',
     profileType: 'CW 75 / UW 75',
-    spacing: '62.5 cm'
+    spacing: '62,5 cm'
   },
   {
     id: 'w115',
     code: 'Akustik-Doppelständerwand (Typ W115)',
     name: 'Doppelständerwerk, entkoppelt, 2-lagig',
-    structure: '2x 12.5 mm High-Schall-Gipsplatte + doppeltes, entkoppeltes Metallständerwerk + 2x 12.5 mm',
+    structure: '2x 12,5 mm High-Schall-Gipsplatte + doppeltes, entkoppeltes Metallständerwerk + 2x 12,5 mm',
     thickness: '155 mm',
     fireRating: 'F 90-A',
     soundRating: 'ca. 62 - 68 dB',
     description: 'Hochleistungsschallschutzwand. Zwei von sich getrennt stehende Metallständerwerke werden nebeneinander aufgestellt. Zwischen den Profilen wird ein Entkopplungs-Dichtstreifen verlegt. Schallschwingungen können somit nicht mechanisch von einer Seite zur anderen fließen (Biegesteifer Feder-Masse-Effekt).',
     application: 'Wohnungstrennwände, Hotelzimmer-Trennwände, Aufnahmeräume, Arztpraxen.',
     profileType: '2x CW 50, getrennt mit Schaumstofftape',
-    spacing: '62.5 cm'
+    spacing: '62,5 cm'
   },
   {
     id: 'd112',
@@ -305,7 +306,7 @@ const DRY_SYSTEMS_DB: SystemSpec[] = [
     description: 'Ein geniales Deckensystem, welches gänzlich ohne Abhänger an der Rohdecke auskommt. Es spannt sich statisch tragend ausschließlich von Wand zu Wand. Hervorragend geeignet für enge Flure, bei denen eine Unmenge an Kabelpritschen und Lüftungsrohren unter der Decke das Bohren behindert.',
     application: 'Sanierungsflure, Hotel-Kabelleitkanäle, Fluchtwege ohne Deckenanker-Zulassung.',
     profileType: 'UA-Profile oder Doppel-CW-Profile wandgebunden',
-    spacing: 'Breitenabhängige Profilbemessung bis zu ca. 5.5 m Spannweite'
+    spacing: 'Breitenabhängige Profilbemessung bis zu ca. 5,5 m Spannweite'
   },
   {
     id: 'f141',
@@ -486,25 +487,25 @@ export default function BpTrockenbau() {
                   <div className="p-5 grid grid-cols-2 md:grid-cols-3 gap-3 bg-slate-50/50">
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Flächengewicht</span>
-                      <span className="text-sm font-mono font-black text-slate-800">{activeProduct.weightPerM2.toFixed(1)} kg/m²</span>
-                      <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Stärke d=12.5mm)</span>
+                      <span className="text-sm font-mono font-black text-slate-800">{formatDeZahl(activeProduct.weightPerM2, 1)} kg/m²</span>
+                      <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Stärke d=12,5mm)</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Rohdichte α</span>
-                      <span className="text-sm font-mono font-black text-slate-800">{activeProduct.density} kg/m³</span>
+                      <span className="text-sm font-mono font-black text-slate-800">{formatDeWert(activeProduct.density)} kg/m³</span>
                       <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Verdichtungsfaktor)</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Wasserdampf µ</span>
-                      <span className="text-sm font-mono font-black text-slate-800">µ = {activeProduct.muValue}</span>
+                      <span className="text-sm font-mono font-black text-slate-800">µ = {formatDeWert(activeProduct.muValue)}</span>
                       <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Diffusionswiderstand)</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Thermische Leitf. λ</span>
-                      <span className="text-sm font-mono font-black text-slate-800">{activeProduct.lambda.toFixed(3)} W/mK</span>
+                      <span className="text-sm font-mono font-black text-slate-800">{formatDeZahl(activeProduct.lambda, 3)} W/mK</span>
                       <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Wärmeübertrag)</span>
                     </div>
 
@@ -650,11 +651,11 @@ export default function BpTrockenbau() {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-700">
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                  <p className="font-semibold text-slate-900 border-b border-slate-200 pb-1.5 mb-1.5">Wand-Ständerwerke (Stahlstärke 0.6 mm verzinkt)</p>
+                  <p className="font-semibold text-slate-900 border-b border-slate-200 pb-1.5 mb-1.5">Wand-Ständerwerke (Stahlstärke 0,6 mm verzinkt)</p>
                   <ul className="list-inside list-disc space-y-1 leading-relaxed">
                     <li><strong>UW-Rahmenprofil:</strong> Horizontale Befestigung an Boden und Decke zur formschlüssigen Fixierung des Wandverlaufs. Unterlegt mit elastischem Anschlussdichtband zur akustischen Trennung.</li>
                     <li><strong>CW-Ständerprofil:</strong> Vertikale Steh-Profile, werden lose eingestellt zur Aufnahme von Temperaturänderungen und Kriechbewegungen des Baukörpers. Ausstanzungen für Kabeldurchführungen.</li>
-                    <li><strong>UA-Aussteifungsprofil:</strong> 2.0 mm starke massive Spezial-Profile zur Lastaufnahme von schweren Türen und Sanitäreinbaugestellen.</li>
+                    <li><strong>UA-Aussteifungsprofil:</strong> 2,0 mm starke massive Spezial-Profile zur Lastaufnahme von schweren Türen und Sanitäreinbaugestellen.</li>
                   </ul>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
@@ -736,7 +737,7 @@ export default function BpTrockenbau() {
                       <td className="p-3">CW 50 - einfach beplankt</td>
                       <td className="p-3">50</td>
                       <td className="p-3">75</td>
-                      <td className="p-3">1x 12.5 mm GKB</td>
+                      <td className="p-3">1x 12,5 mm GKB</td>
                       <td className="p-3">ca. 45 dB</td>
                       <td className="p-3">F 30-A (mit GKF)</td>
                     </tr>
@@ -744,7 +745,7 @@ export default function BpTrockenbau() {
                       <td className="p-3">CW 75 - einfach beplankt</td>
                       <td className="p-3">75</td>
                       <td className="p-3">100</td>
-                      <td className="p-3">1x 12.5 mm GKB</td>
+                      <td className="p-3">1x 12,5 mm GKB</td>
                       <td className="p-3">ca. 48 dB</td>
                       <td className="p-3">F 30-A</td>
                     </tr>
@@ -752,7 +753,7 @@ export default function BpTrockenbau() {
                       <td className="p-3 font-semibold">CW 50 - doppelt beplankt (Standard)</td>
                       <td className="p-3">50</td>
                       <td className="p-3">100</td>
-                      <td className="p-3">2x 12.5 mm GKB</td>
+                      <td className="p-3">2x 12,5 mm GKB</td>
                       <td className="p-3">ca. 52 dB</td>
                       <td className="p-3">F 90-A (mit GKF)</td>
                     </tr>
@@ -760,7 +761,7 @@ export default function BpTrockenbau() {
                       <td className="p-3 font-semibold">CW 75 - doppelt beplankt</td>
                       <td className="p-3">75</td>
                       <td className="p-3">125</td>
-                      <td className="p-3">2x 12.5 mm GKB</td>
+                      <td className="p-3">2x 12,5 mm GKB</td>
                       <td className="p-3">ca. 56 dB</td>
                       <td className="p-3">F 90-A</td>
                     </tr>
@@ -768,7 +769,7 @@ export default function BpTrockenbau() {
                       <td className="p-3">Doppelständerwerk CW 50+50</td>
                       <td className="p-3">2x 50 (entkoppelt)</td>
                       <td className="p-3">155</td>
-                      <td className="p-3">2x 12.5 mm GKB</td>
+                      <td className="p-3">2x 12,5 mm GKB</td>
                       <td className="p-3">ca. 62 dB (hervorragend)</td>
                       <td className="p-3">F 90-A</td>
                     </tr>
@@ -821,8 +822,8 @@ export default function BpTrockenbau() {
                     onChange={(e) => setLayerCount(parseInt(e.target.value) as 1 | 2)}
                     className="w-full bg-white border border-home-grau/30 rounded-lg p-2.5 text-sm text-text-main focus:ring-1 focus:ring-shiraz focus:outline-none"
                   >
-                    <option value={1}>1-lagig (Einfach - 12.5mm)</option>
-                    <option value={2}>2-lagig (Doppelt - 25.0mm)</option>
+                    <option value={1}>1-lagig (Einfach - 12,5mm)</option>
+                    <option value={2}>2-lagig (Doppelt - 25,0mm)</option>
                   </select>
                 </div>
 
@@ -836,8 +837,8 @@ export default function BpTrockenbau() {
                     onChange={(e) => setProfileSpacing(parseFloat(e.target.value) as 62.5 | 31.25)}
                     className="w-full bg-white border border-home-grau/30 rounded-lg p-2.5 text-sm text-text-main focus:ring-1 focus:ring-shiraz focus:outline-none"
                   >
-                    <option value={62.5}>62.5 cm (Standard)</option>
-                    <option value={31.25}>31.25 cm (Erhöhter Schall/Fliesen)</option>
+                    <option value={62.5}>62,5 cm (Standard)</option>
+                    <option value={31.25}>31,25 cm (Erhöhter Schall/Fliesen)</option>
                   </select>
                 </div>
 
@@ -868,7 +869,7 @@ export default function BpTrockenbau() {
                       <p className="text-sm font-semibold text-text-main">Gipsbauplatten</p>
                       <p className="text-xs text-text-main/50">Beidseitig beplankt (inkl. 5% Puffer)</p>
                     </div>
-                    <p className="text-base font-bold text-shiraz">{plasterboardArea} m²</p>
+                    <p className="text-base font-bold text-shiraz">{formatDeWert(plasterboardArea)} m²</p>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 pb-2">
@@ -876,7 +877,7 @@ export default function BpTrockenbau() {
                       <p className="text-sm font-semibold text-text-main">CW-Ständerprofile</p>
                       <p className="text-xs text-text-main/50">Vertikales Ständerwerk (Schnittgrößen z.B. CW 50 / CW 75)</p>
                     </div>
-                    <p className="text-base font-bold text-text-main">{cwProfilesMeter} lfm</p>
+                    <p className="text-base font-bold text-text-main">{formatDeWert(cwProfilesMeter)} lfm</p>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 pb-2">
@@ -884,7 +885,7 @@ export default function BpTrockenbau() {
                       <p className="text-sm font-semibold text-text-main">UW-Boden/Deckenprofile</p>
                       <p className="text-xs text-text-main/50">Oberer und unterer Wandanschluss</p>
                     </div>
-                    <p className="text-base font-bold text-text-main">{uwProfilesMeter} lfm</p>
+                    <p className="text-base font-bold text-text-main">{formatDeWert(uwProfilesMeter)} lfm</p>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 pb-2">
@@ -900,7 +901,7 @@ export default function BpTrockenbau() {
                       <p className="text-sm font-semibold text-text-main">Fugen- und Spachtelmasse (Kunststoff- o. Gips-Fugenspachtel)</p>
                       <p className="text-xs text-text-main/50">Für Fugen und Schraubenköpfe</p>
                     </div>
-                    <p className="text-base font-bold text-text-main">{jointFillerKg} kg</p>
+                    <p className="text-base font-bold text-text-main">{formatDeWert(jointFillerKg)} kg</p>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 pb-2">
@@ -908,7 +909,7 @@ export default function BpTrockenbau() {
                       <p className="text-sm font-semibold text-text-main">Anschluss-Dichtungsband</p>
                       <p className="text-xs text-text-main/50">Elastisches Schaumstoffband für Entkopplung zur aRdT</p>
                     </div>
-                    <p className="text-base font-bold text-text-main">{sealTapeMeter} lfm</p>
+                    <p className="text-base font-bold text-text-main">{formatDeWert(sealTapeMeter)} lfm</p>
                   </div>
 
                   {includeInsulation && (
@@ -917,7 +918,7 @@ export default function BpTrockenbau() {
                         <p className="text-sm font-semibold">Trennwand-Dämmung (Mineralwolle)</p>
                         <p className="text-xs text-emerald-700">Dicke angepasst an CW-Profil (40 / 60 / 80 mm)</p>
                       </div>
-                      <p className="text-base font-bold">{insulationArea} m²</p>
+                      <p className="text-base font-bold">{formatDeWert(insulationArea)} m²</p>
                     </div>
                   )}
                 </div>
@@ -934,7 +935,7 @@ export default function BpTrockenbau() {
                     <strong>1. Zweitlagige Verschraubung:</strong> Bei einer doppelten Beplankung muss die erste Lage nur mit ca. einem Drittel der Schrauben (Ständerachsabstand 75 cm) fixiert werden. Die zweite Lage wird voll verschraubt (Achsabstand 25 cm).
                   </p>
                   <p>
-                    <strong>2. Fugenversatz:</strong> Vermeide unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Statiksicherheit und Rissvermeidung um mindestens <strong>400 mm</strong> zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.
+                    <strong>2. Fugenversatz:</strong> Vermeiden Sie unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Statiksicherheit und Rissvermeidung um mindestens <strong>400 mm</strong> zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.
                   </p>
                   <p>
                     <strong>3. Schallentkopplung:</strong> Ohne das untergelegte Schaumstoff-Dichtungsband leitet die Trockenbauwand Körperschall ungehindert in Decke, Flur und Wände. Das ist einer der häufigsten Baumängel (Schallbrücke!).
@@ -964,12 +965,12 @@ export default function BpTrockenbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[ 
-          { title: 'DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN 18180 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18181' }, 
+          { title: 'DIN 18180 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18180' },
+          { title: 'DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+520' },
+          { title: 'DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14195' },
+          { title: 'DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109' },
+          { title: 'DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-4' }
         ]} 
         formeln={[
           {
@@ -978,7 +979,7 @@ export default function BpTrockenbau() {
             quelle: 'DIN 4109-2 / Gösele'
           },
           {
-            formel: '\\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O} \\xrightarrow{\\approx 100-140^{\\circ}\\text{C}} \\text{CaSO}_4 \\cdot \\frac{1}{2}\\,\\text{H}_2\\text{O} + 1.5\\,\\text{H}_2\\text{O} \\uparrow',
+            formel: '\\text{CaSO}_4 \\cdot 2\\,\\text{H}_2\\text{O} \\xrightarrow{\\approx 100-140^{\\circ}\\text{C}} \\text{CaSO}_4 \\cdot \\frac{1}{2}\\,\\text{H}_2\\text{O} + 1{,}5\\,\\text{H}_2\\text{O} \\uparrow',
             erklaerung: 'Endotherme Dehydratationsreaktion im Brandfall: Kristallwasser (~21 Gew.-%) verdampft und kühlt den Raum hinter der Platte wirksam ab (Brandschutzwirkung F30 bis F120).',
             quelle: 'DIN EN 520 / DIN 4102'
           }

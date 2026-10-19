@@ -266,7 +266,7 @@ const TREATMENT_OPTIONS = {
     },
     mkw_pak: {
       method: 'Thermische Desorption (Drehrohrofen)',
-      efficiency: 'Extrem hoch (> 99.9% Abbauquote)',
+      efficiency: 'Extrem hoch (> 99,9% Abbauquote)',
       co2: 'Sehr hoch (~60-90 kg CO₂/t)',
       cost: 'Sehr teuer (70 - 110 €/t)',
       principles: 'Da bindige Böden mikrobiell nur sehr langsam abgebaut werden können, ist die Thermik das einzig sichere Verfahren für hohe Belastungen. Der Boden wird in einem indirekt beheizten Drehrohrofen auf 350°C bis 550°C erwärmt. Organische Schadstoffe verdampfen (Desorption) und werden in einer thermischen Nachverbrennungsanlage bei > 850°C vollständig in CO₂ und Wasser zertrümmert.',
@@ -370,7 +370,7 @@ const TREATMENT_OPTIONS = {
         'Echtzeit-Scannen mittels Nahinfrarotspektroskopie zur Gipserkennung.',
         'Pneumatischer Auswurf der Gipsfraktion.'
       ],
-      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0.8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
+      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0,8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
     }
   },
   altablagerung: {
@@ -708,7 +708,7 @@ export default function Schadstoffe() {
                         <h5 className="font-bold text-slate-900 text-sm">Interaktiver Kanzerogenitätsindex (KI) Schnellrechner (nach TRGS 521)</h5>
                       </div>
                       <p className="text-xs text-slate-600 leading-relaxed mb-1">
-                        Gib die im Labor ermittelten Gewichtsanteile der Oxide (in Gew.-%) ein, um die Biolöslichkeit und Krebs-Einstufung für künstliche Mineralfasern wie Glas- oder Steinwolle direkt zu berechnen:
+                        Geben Sie die im Labor ermittelten Gewichtsanteile der Oxide (in Gew.-%) ein, um die Biolöslichkeit und Krebs-Einstufung für künstliche Mineralfasern wie Glas- oder Steinwolle direkt zu berechnen:
                       </p>
                       
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -808,7 +808,7 @@ export default function Schadstoffe() {
                   <Search className="text-shiraz" /> Interaktiver Fibel-Schadstofffinder (Gebäudecheck)
                 </h3>
                 <p className="text-xs text-slate-500 mb-6 font-medium leading-relaxed">
-                  Stelle das Erbauungsjahr des Objekts sowie das zu untersuchende Bauteil ein. Die Matrix simuliert basierend auf historischen Datenbanken deutscher Schadstofffibeln die typischen Verdachtsmomente, biologischen und chemischen Gefährdungsstufen, Probenahmetaktiken und die rechtlichen Rahmenbedingungen für die Labor-Analytik.
+                  Stellen Sie das Erbauungsjahr des Objekts sowie das zu untersuchende Bauteil ein. Die Matrix simuliert basierend auf historischen Datenbanken deutscher Schadstofffibeln die typischen Verdachtsmomente, biologischen und chemischen Gefährdungsstufen, Probenahmetaktiken und die rechtlichen Rahmenbedingungen für die Labor-Analytik.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -940,7 +940,7 @@ export default function Schadstoffe() {
                     <h4 className="font-bold text-base mb-3 text-shiraz border-b border-home-grau/30 pb-2">LAGA PN 98 (Abfallbeprobung)</h4>
                     <ul className="list-disc pl-5 space-y-2 text-sm text-slate-700 relative z-10">
                       <li><strong>Was:</strong> Feste und stichfeste Abfälle (z. B. aufgeschütteter Bauschutt, Erdaushub, Haufwerke).</li>
-                      <li><strong>Warum:</strong> Um die exakte Abfallklasse (z.B. Z0 bis Z2 nach LAGA, oder Nachweisverordnung) für die Depionierung oder Verwertung (Recycling) rechtssicher zu bestimmen. Das Laborergebnis entscheidet über gigantische Entsorgungskosten.</li>
+                      <li><strong>Warum:</strong> Um die exakte Abfallklasse (z.B. Z0 bis Z2 nach LAGA, oder Nachweisverordnung) für die Depionierung oder Verwertung (Recycling) rechtlich belastbar zu bestimmen. Das Laborergebnis entscheidet über gigantische Entsorgungskosten.</li>
                       <li><strong>Wer darf beproben:</strong> Ausschliesslich qualifizierte Personen mit einem <strong>Sachkundenachweis nach LAGA PN 98</strong>. Der Bauherr oder ungeschulte Poliere dürfen <em>keine</em> rechtsgültigen Proben abfüllen.</li>
                       <li><strong>Wie:</strong> Fest definiertes Raster. Repräsentative Beprobung durch "Kreuzschlag" und Erstellung von Mischproben aus exakt vorgeschriebenen Schichttiefen/Haufwerksbereichen. Es muss ein striktes Probenahmeprotokoll inkl. Fotodokumentation geführt werden.</li>
                     </ul>
@@ -1026,7 +1026,7 @@ export default function Schadstoffe() {
         </div>
                   </div>
                   <p className="text-sm text-slate-700 leading-relaxed mb-4">
-                    Die <strong>Ersatzbaustoffverordnung (EBV)</strong> ist am 1. August 2023 in Kraft getreten (als Teil der Mantelverordnung). Sie löst die länderspezifischen LAGA-Regelungen ab. Das Hauptziel ist die Förderung der Kreislaufwirtschaft durch die Bereitstellung bundesweit einheitlicher Kriterien zur rechtssicheren Verwertung von <strong>mineralischen Ersatzbaustoffen (MEB)</strong> unter striktem Ausschluss schädlicher Auswaschungen ins Grundwasser.
+                    Die <strong>Ersatzbaustoffverordnung (EBV)</strong> ist am 1. August 2023 in Kraft getreten (als Teil der Mantelverordnung). Sie löst die länderspezifischen LAGA-Regelungen ab. Das Hauptziel ist die Förderung der Kreislaufwirtschaft durch die Bereitstellung bundesweit einheitlicher Kriterien zur rechtlich belastbaren Verwertung von <strong>mineralischen Ersatzbaustoffen (MEB)</strong> unter striktem Ausschluss schädlicher Auswaschungen ins Grundwasser.
                   </p>
                   
                   {/* Highlight-Panel: EBV vs. BBodSchV */}
@@ -1111,7 +1111,7 @@ export default function Schadstoffe() {
                               <span>Bodenklasse: BM-0, BM-1 &amp; BM-2</span>
                               <span className="text-teal-600">Reiner Erdaushub</span>
                             </div>
-                            <div><strong>Leitparameter im Eluat:</strong> Arsen (≤ 10 µg/l), Blei (≤ 7 µg/l), Cadmium (≤ 0.2 µg/l), Chlorid (≤ 50 mg/l).</div>
+                            <div><strong>Leitparameter im Eluat:</strong> Arsen (≤ 10 µg/l), Blei (≤ 7 µg/l), Cadmium (≤ 0,2 µg/l), Chlorid (≤ 50 mg/l).</div>
                             <div className="text-xs text-slate-600 bg-teal-50 border border-teal-200 p-2 rounded mt-1">
                               <strong>Erlaubte Einbaulagen:</strong> BM-0 unbeschränkt für Böden und Rekultivierungen. BM-1/2 erfordern technische Sicherungsmaßnahmen und Verfülltiefen-Begrenzungen.
                             </div>
@@ -1214,7 +1214,7 @@ export default function Schadstoffe() {
                     Expositions-Risiko-Stufenmodell für krebserzeugende Stoffe
                   </h4>
                   <p className="text-xs text-slate-500 mb-4">
-                    Die Intensität des Arbeitsschutzes bei Asbest und anderen Feinstäuben richtet sich nach den exakten Faserkonzentrationen in der Atemluft (F/m³). Klicke eine Konzentration an:
+                    Die Intensität des Arbeitsschutzes bei Asbest und anderen Feinstäuben richtet sich nach den exakten Faserkonzentrationen in der Atemluft (F/m³). Klicken Sie eine Konzentration an:
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -1327,7 +1327,7 @@ export default function Schadstoffe() {
             quelle: 'TRGS 519 / VDI 3492'
           },
           {
-            formel: 'I = \\frac{\\sum c_i \\cdot t_i}{\\text{AGW} \\cdot 8\\,\\text{h}} \\le 1.0',
+            formel: 'I = \\frac{\\sum c_i \\cdot t_i}{\\text{AGW} \\cdot 8\\,\\text{h}} \\le 1{,}0',
             erklaerung: 'Expositionsindex I nach TRGS 402 zur Bewertung der Mischbelastung am Arbeitsplatz bezogen auf die Arbeitsplatzgrenzwerte (AGW).',
             quelle: 'TRGS 402'
           }

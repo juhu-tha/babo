@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -201,7 +202,7 @@ export default function Stuetzenbemessung() {
   const chartData = {
     datasets: [
       ...results.interactionCurves.map((curve: any, index: number) => ({
-        label: `ω = ${curve.omega.toFixed(2)}${curve.isRequired ? ' (erf.)' : ''}`,
+        label: `ω = ${formatDeZahl(curve.omega, 2)}${curve.isRequired ? ' (erf.)' : ''}`,
         data: curve.points,
         borderColor: curve.isRequired ? '#A3113E' : `rgba(71, 85, 105, ${0.3 + (index % 8) * 0.1})`,
         borderWidth: curve.isRequired ? 3 : 2,
@@ -273,7 +274,7 @@ export default function Stuetzenbemessung() {
                 Theorie II. Ordnung erforderlich – nicht Teil dieses Lehrrechners
               </div>
               <div className="text-xs text-amber-700 mt-1">
-                Die Schlankheit der Stütze beträgt <FormulaText text={`\\lambda = ${results.lambda.toFixed(1)}`} /> und überschreitet die Grenzschlankheit <FormulaText text={`\\lambda_{lim} = ${results.lambda_lim.toFixed(1)}`} /> nach DIN EN 1992-1-1, Abs. 5.8.3.1. Schnittgrößen nach Theorie II. Ordnung müssen nachgewiesen werden.
+                Die Schlankheit der Stütze beträgt <FormulaText text={`\\lambda = ${formatDeTeX(results.lambda, 1)}`} /> und überschreitet die Grenzschlankheit <FormulaText text={`\\lambda_{lim} = ${formatDeTeX(results.lambda_lim, 1)}`} /> nach DIN EN 1992-1-1, Abs. 5.8.3.1. Schnittgrößen nach Theorie II. Ordnung müssen nachgewiesen werden.
               </div>
             </div>
           </div>
@@ -331,19 +332,19 @@ export default function Stuetzenbemessung() {
               <div className="mt-4 p-3 bg-white rounded-lg border border-home-grau/20 text-xs space-y-1.5 text-text-main/80">
                 <div className="flex justify-between">
                   <span>Mindestausmitte <FormulaText text="e_0" />:</span>
-                  <span className="font-mono font-bold">{results.e0_mm.toFixed(1)} mm</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.e0_mm, 1)} mm</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Imperfektion <FormulaText text="e_i" /> (l₀/400):</span>
-                  <span className="font-mono font-bold">{results.ei_mm.toFixed(1)} mm</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.ei_mm, 1)} mm</span>
                 </div>
                 <div className="flex justify-between border-t border-home-grau/20 pt-1">
                   <span>Maßgebendes <FormulaText text="M_{Ed,1}" />:</span>
-                  <span className="font-mono font-bold text-shiraz">{results.mEd_1.toFixed(2)} kNm</span>
+                  <span className="font-mono font-bold text-shiraz">{formatDeZahl(results.mEd_1, 2)} kNm</span>
                 </div>
                 <div className="flex justify-between border-t border-home-grau/20 pt-1">
                   <span>Schlankheit <FormulaText text="\lambda" /> / <FormulaText text="\lambda_{lim}" />:</span>
-                  <span className="font-mono font-bold">{results.lambda.toFixed(1)} / {results.lambda_lim.toFixed(1)}</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.lambda, 1)} / {formatDeZahl(results.lambda_lim, 1)}</span>
                 </div>
               </div>
             </div>
@@ -355,11 +356,11 @@ export default function Stuetzenbemessung() {
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <div className="text-sm opacity-80">Bezogene Normalkraft <FormulaText text="\nu_{Ed}" /></div>
-                  <div className="text-xl font-bold">{results.nu_Ed.toFixed(3)}</div>
+                  <div className="text-xl font-bold">{formatDeZahl(results.nu_Ed, 3)}</div>
                 </div>
                 <div>
                   <div className="text-sm opacity-80">Bezogenes Moment <FormulaText text="\mu_{Ed}" /> (inkl. e₀, eᵢ)</div>
-                  <div className="text-xl font-bold">{results.mu_Ed.toFixed(3)}</div>
+                  <div className="text-xl font-bold">{formatDeZahl(results.mu_Ed, 3)}</div>
                 </div>
               </div>
               
@@ -367,9 +368,9 @@ export default function Stuetzenbemessung() {
                 <div className="text-sm font-bold uppercase mb-2">Erf. Gesamtbewehrung <FormulaText text="A_{s,tot}" /></div>
                 {results.isPossible ? (
                   <>
-                    <div className="text-4xl font-bold text-shiraz">{results.as_final.toFixed(2)} cm²</div>
+                    <div className="text-4xl font-bold text-shiraz">{formatDeZahl(results.as_final, 2)} cm²</div>
                     <div className="text-xs mt-2 opacity-70">
-                      (Rechnerisch: {results.as_tot_req.toFixed(2)} cm² | Mindestbewehrung NA DE: {results.as_min.toFixed(2)} cm²)
+                      (Rechnerisch: {formatDeZahl(results.as_tot_req, 2)} cm² | Mindestbewehrung NA DE: {formatDeZahl(results.as_min, 2)} cm²)
                     </div>
                   </>
                 ) : (
@@ -395,7 +396,7 @@ export default function Stuetzenbemessung() {
           { title: 'Interaktionsdiagramm', url: 'https://de.wikipedia.org/wiki/Interaktionsdiagramm' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitte 5.8 und 9.5)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitte 5.8 und 9.5)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         literatur={['Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)']}
         formeln={[

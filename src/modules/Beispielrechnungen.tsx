@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { 
@@ -555,8 +556,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     className="w-full accent-shiraz"
                   />
                   <div className="flex justify-between text-xxs text-text-main/70 font-mono">
-                    <span>{uConcreteThick} cm</span>
-                    <span><InlineMath math="\lambda_1 = 2,3 \, \text{W/(mK)}" /></span>
+                    <span>{formatDeWert(uConcreteThick)} cm</span>
+                    <span><InlineMath math="\lambda_1 = 2{,}3 \, \text{W/(mK)}" /></span>
                   </div>
                 </div>
 
@@ -571,8 +572,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     className="w-full accent-shiraz"
                   />
                   <div className="flex justify-between text-xxs text-text-main/70 font-mono">
-                    <span>{uInsuThick} cm</span>
-                    <span><InlineMath math="\lambda_2 = 0,035 \, \text{W/(mK)}" /></span>
+                    <span>{formatDeWert(uInsuThick)} cm</span>
+                    <span><InlineMath math="\lambda_2 = 0{,}035 \, \text{W/(mK)}" /></span>
                   </div>
                 </div>
 
@@ -587,8 +588,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     className="w-full accent-shiraz"
                   />
                   <div className="flex justify-between text-xxs text-text-main/70 font-mono">
-                    <span>{uPlasterThick} cm</span>
-                    <span><InlineMath math="\lambda_3 = 0,70 \, \text{W/(mK)}" /></span>
+                    <span>{formatDeWert(uPlasterThick)} cm</span>
+                    <span><InlineMath math="\lambda_3 = 0{,}70 \, \text{W/(mK)}" /></span>
                   </div>
                 </div>
 
@@ -607,8 +608,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <p className="mt-1">
                     Nach DIN EN ISO 6946 werden für horizontale Wärmeströme durch Außenwände folgende Standardwerte angesetzt:
                   </p>
-                  <BlockMath math="R_{si} = 0,13 \, \text{m}^2\text{K/W} \quad \text{(Wärmeübergang Innen)}" />
-                  <BlockMath math="R_{se} = 0,04 \, \text{m}^2\text{K/W} \quad \text{(Wärmeübergang Außen)}" />
+                  <BlockMath math="R_{si} = 0{,}13 \, \text{m}^2\text{K/W} \quad \text{(Wärmeübergang Innen)}" />
+                  <BlockMath math="R_{se} = 0{,}04 \, \text{m}^2\text{K/W} \quad \text{(Wärmeübergang Außen)}" />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
@@ -617,22 +618,22 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     Die Einzelwiderstände <InlineMath math="R_i" /> ergeben sich aus <InlineMath math="R_i = d_i / \lambda_i" /> (mit Dicke <InlineMath math="d_i" /> in Metern):
                   </p>
                   <div className="space-y-2 mt-2 bg-slate-50 p-3 rounded-lg font-mono text-xxs border border-home-grau/20">
-                    <p>• Schicht 1 (Normalbeton): R₁ = <span className="text-shiraz font-bold">{(uConcreteThick/100).toFixed(2)}</span> m / {uConcreteLambda.toFixed(2)} W/(mK) = <span className="text-shiraz font-bold">{R_concrete.toFixed(4)}</span> m²K/W</p>
-                    <p>• Schicht 2 (EPS-Dämmung): R₂ = <span className="text-shiraz font-bold">{(uInsuThick/100).toFixed(2)}</span> m / {uInsuLambda.toFixed(3)} W/(mK) = <span className="text-shiraz font-bold">{R_insulation.toFixed(4)}</span> m²K/W</p>
-                    <p>• Schicht 3 (Kalkgipsputz): R₃ = <span className="text-shiraz font-bold">{(uPlasterThick/100).toFixed(3)}</span> m / {uPlasterLambda.toFixed(2)} W/(mK) = <span className="text-shiraz font-bold">{R_plaster.toFixed(4)}</span> m²K/W</p>
+                    <p>• Schicht 1 (Normalbeton): R₁ = <span className="text-shiraz font-bold">{formatDeZahl((uConcreteThick/100), 2)}</span> m / {formatDeZahl(uConcreteLambda, 2)} W/(mK) = <span className="text-shiraz font-bold">{formatDeZahl(R_concrete, 4)}</span> m²K/W</p>
+                    <p>• Schicht 2 (EPS-Dämmung): R₂ = <span className="text-shiraz font-bold">{formatDeZahl((uInsuThick/100), 2)}</span> m / {formatDeZahl(uInsuLambda, 3)} W/(mK) = <span className="text-shiraz font-bold">{formatDeZahl(R_insulation, 4)}</span> m²K/W</p>
+                    <p>• Schicht 3 (Kalkgipsputz): R₃ = <span className="text-shiraz font-bold">{formatDeZahl((uPlasterThick/100), 3)}</span> m / {formatDeZahl(uPlasterLambda, 2)} W/(mK) = <span className="text-shiraz font-bold">{formatDeZahl(R_plaster, 4)}</span> m²K/W</p>
                   </div>
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 3: Gesamtwärmedurchlasswiderstand R_T aufsummieren</strong>
                   <BlockMath math={`R_T = R_{si} + R_1 + R_2 + R_3 + R_{se}`} />
-                  <BlockMath math={`R_T = 0,13 + \\color{#A3113E}{${R_concrete.toFixed(4)}} + \\color{#A3113E}{${R_insulation.toFixed(4)}} + \\color{#A3113E}{${R_plaster.toFixed(4)}} + 0,04 = \\color{#A3113E}{${R_T.toFixed(4)}} \\, \\text{m}^2\\text{K/W}`} />
+                  <BlockMath math={`R_T = 0{,}13 + \\color{#A3113E}{${formatDeTeX(R_concrete, 4)}} + \\color{#A3113E}{${formatDeTeX(R_insulation, 4)}} + \\color{#A3113E}{${formatDeTeX(R_plaster, 4)}} + 0{,}04 = \\color{#A3113E}{${formatDeTeX(R_T, 4)}} \\, \\text{m}^2\\text{K/W}`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 4: Wärmedurchgangskoeffizient U ermitteln</strong>
                   <p className="mt-1">Der Kehrwert des Gesamtwiderstands liefert den gesuchten U-Wert:</p>
-                  <BlockMath math={`U = \\frac{1}{R_T} = \\frac{1}{\\color{#A3113E}{${R_T.toFixed(4)}}} = \\color{#A3113E}{${U_value.toFixed(4)}} \\, \\text{W/(m}^2\\text{K)}`} />
+                  <BlockMath math={`U = \\frac{1}{R_T} = \\frac{1}{\\color{#A3113E}{${formatDeTeX(R_T, 4)}}} = \\color{#A3113E}{${formatDeTeX(U_value, 4)}} \\, \\text{W/(m}^2\\text{K)}`} />
                 </div>
               </div>
             </div>
@@ -660,7 +661,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   </span>
                 </div>
                 <p>
-                  Dein berechneter U-Wert beträgt <strong>{U_value.toFixed(3)} W/(m²K)</strong>. 
+                  Ihr berechneter U-Wert beträgt <strong>{formatDeZahl(U_value, 3)} W/(m²K)</strong>. 
                   Das Gebäudeenergiegesetz (GEG), Anlage 7 fordert bei nachträglicher Sanierung oder Neuerrichtung von Außenwänden einen maximalen U-Wert von <strong>0,24 W/(m²K)</strong>.
                 </p>
                 <p className="text-xxs opacity-90 mt-1">
@@ -800,9 +801,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Info Display */}
                     <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xxs leading-relaxed font-normal text-slate-600">
                       <span className="font-bold text-slate-800 block text-xs mb-1">Randbedingungen DIN 1045-2:</span>
-                      <div>• Maximaler <InlineMath math="(w/z)_{max}" />: <strong className="text-shiraz font-black">{maxWz.toFixed(2)}</strong></div>
+                      <div>• Maximaler <InlineMath math="(w/z)_{max}" />: <strong className="text-shiraz font-black">{formatDeZahl(maxWz, 2)}</strong></div>
                       <div>• Mindestzement <InlineMath math="z_{min}" />: <strong className="text-slate-800 font-bold">{minCement} kg/m³</strong></div>
-                      <div>• Angenommene Reindichte Zement: <strong>3.10 kg/dm³</strong></div>
+                      <div>• Angenommene Reindichte Zement: <strong>3,10 kg/dm³</strong></div>
                     </div>
 
                   </div>
@@ -825,13 +826,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <p className="mt-1">
                         Die erforderliche Zementmenge <InlineMath math="c" /> ergibt sich aus dem maximal zulässigen <InlineMath math="w/z" />-Verhältnis der Expositionsklasse <span className="text-shiraz font-bold">{targetExposure}</span>:
                       </p>
-                      <BlockMath math={`c_{\\text{erf}} = \\frac{w}{(w/z)_{max}} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${maxWz.toFixed(2)}}} = \\color{#A3113E}{${cementFromWz.toFixed(1)}} \\, \\text{kg/m}^3`} />
+                      <BlockMath math={`c_{\\text{erf}} = \\frac{w}{(w/z)_{max}} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${formatDeTeX(maxWz, 2)}}} = \\color{#A3113E}{${formatDeTeX(cementFromWz, 1)}} \\, \\text{kg/m}^3`} />
                       <p className="mt-1">
-                        Da <InlineMath math={`c_{\\text{erf}} = ${cementFromWz.toFixed(1)} \\, \\text{kg/m}^3`} /> mit dem normativen Mindestzementgehalt <InlineMath math={`z_{min} = ${minCement} \\, \\text{kg/m}^3`} /> abgeglichen werden muss, wählen wir:
+                        Da <InlineMath math={`c_{\\text{erf}} = ${formatDeTeX(cementFromWz, 1)} \\, \\text{kg/m}^3`} /> mit dem normativen Mindestzementgehalt <InlineMath math={`z_{min} = ${minCement} \\, \\text{kg/m}^3`} /> abgeglichen werden muss, wählen wir:
                       </p>
                       <BlockMath math={`c = \\max(c_{\\text{erf}}, z_{min}) = \\color{#A3113E}{${cementContent}} \\, \\text{kg/m}^3`} />
                       <p className="mt-1">Daraus resultiert das tatsächliche (wirksame) w/z-Verhältnis:</p>
-                      <BlockMath math={`(w/z)_{\\text{tats}} = \\frac{w}{c} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${cementContent}}} = \\color{#A3113E}{${actualWz.toFixed(3)}}`} />
+                      <BlockMath math={`(w/z)_{\\text{tats}} = \\frac{w}{c} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${cementContent}}} = \\color{#A3113E}{${formatDeTeX(actualWz, 3)}}`} />
                     </div>
 
                     <div className="border-t border-slate-100 pt-3">
@@ -842,18 +843,18 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <BlockMath math={`V_c + V_w + V_{\\text{air}} + V_a = 1000 \\, \\text{dm}^3`} />
                       <p className="mt-1">Wir berechnen die bekannten Volumenanteile:</p>
                       <div className="space-y-1 bg-slate-50 p-3 rounded-lg font-mono text-xxs border border-home-grau/20">
-                        <p>• Zementvolumen: V_c = c / ρ_c = <span className="text-shiraz font-bold">{cementContent}</span> kg / 3.10 kg/dm³ = <span className="text-shiraz font-bold">{V_c.toFixed(2)}</span> dm³</p>
-                        <p>• Wasservolumen: V_w = w / ρ_w = <span className="text-shiraz font-bold">{waterDemand}</span> kg / 1.00 kg/dm³ = <span className="text-shiraz font-bold">{V_w.toFixed(2)}</span> dm³</p>
-                        <p>• Verdichtungsporen (1.5% Luft): V_air = {V_air} dm³</p>
+                        <p>• Zementvolumen: V_c = c / ρ_c = <span className="text-shiraz font-bold">{formatDeWert(cementContent)}</span> kg / 3,10 kg/dm³ = <span className="text-shiraz font-bold">{formatDeZahl(V_c, 2)}</span> dm³</p>
+                        <p>• Wasservolumen: V_w = w / ρ_w = <span className="text-shiraz font-bold">{waterDemand}</span> kg / 1,00 kg/dm³ = <span className="text-shiraz font-bold">{formatDeZahl(V_w, 2)}</span> dm³</p>
+                        <p>• Verdichtungsporen (1,5% Luft): V_air = {V_air} dm³</p>
                       </div>
                       <p className="mt-2">Das verbleibende Restvolumen entfällt vollständig auf die Gesteinskörnung (Zuschlag) <InlineMath math="V_a" />:</p>
-                      <BlockMath math={`V_a = 1000 - (\\color{#A3113E}{${V_c.toFixed(2)}} + \\color{#A3113E}{${V_w.toFixed(2)}} + ${V_air}) = \\color{#A3113E}{${V_a.toFixed(2)}} \\, \\text{dm}^3`} />
+                      <BlockMath math={`V_a = 1000 - (\\color{#A3113E}{${formatDeTeX(V_c, 2)}} + \\color{#A3113E}{${formatDeTeX(V_w, 2)}} + ${V_air}) = \\color{#A3113E}{${formatDeTeX(V_a, 2)}} \\, \\text{dm}^3`} />
                     </div>
 
                     <div className="border-t border-slate-100 pt-3">
                       <strong>Schritt 3: Masse der Gesteinskörnung ermitteln</strong>
-                      <p className="mt-1">Unter Annahme einer mittleren Gesteinsreindichte von <InlineMath math="\rho_a = 2,65 \, \text{kg/dm}^3" />:</p>
-                      <BlockMath math={`m_a = V_a \\cdot \\rho_a = \\color{#A3113E}{${V_a.toFixed(2)}} \\cdot 2,65 = \\color{#A3113E}{${aggregateMass.toFixed(1)}} \\, \\text{kg/m}^3`} />
+                      <p className="mt-1">Unter Annahme einer mittleren Gesteinsreindichte von <InlineMath math="\rho_a = 2{,}65 \, \text{kg/dm}^3" />:</p>
+                      <BlockMath math={`m_a = V_a \\cdot \\rho_a = \\color{#A3113E}{${formatDeTeX(V_a, 2)}} \\cdot 2{,}65 = \\color{#A3113E}{${formatDeTeX(aggregateMass, 1)}} \\, \\text{kg/m}^3`} />
                     </div>
                   </div>
                 </div>
@@ -866,7 +867,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div className="bg-white p-3 rounded-xl border border-slate-200">
                       <span className="text-xxs text-slate-400 block font-normal">Zement CEM I</span>
-                      <strong className="text-sm text-slate-800">{cementContent} kg</strong>
+                      <strong className="text-sm text-slate-800">{formatDeWert(cementContent)} kg</strong>
                     </div>
                     <div className="bg-white p-3 rounded-xl border border-slate-200">
                       <span className="text-xxs text-slate-400 block font-normal">Wasser (wirksam)</span>
@@ -874,17 +875,17 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     </div>
                     <div className="bg-white p-3 rounded-xl border border-slate-200">
                       <span className="text-xxs text-slate-400 block font-normal">Gesteinskörnung</span>
-                      <strong className="text-sm text-slate-800">{aggregateMass.toFixed(1)} kg</strong>
+                      <strong className="text-sm text-slate-800">{formatDeZahl(aggregateMass, 1)} kg</strong>
                     </div>
                     <div className="bg-white p-3 rounded-xl border border-slate-200">
                       <span className="text-xxs text-slate-400 block font-normal">Frischbetondichte</span>
-                      <strong className="text-sm text-shiraz">{freshConcreteDensity.toFixed(1)} kg/m³</strong>
+                      <strong className="text-sm text-shiraz">{formatDeZahl(freshConcreteDensity, 1)} kg/m³</strong>
                     </div>
                   </div>
 
                   <div className="text-xxs font-normal text-slate-500 mt-4 leading-relaxed bg-white/50 p-2.5 rounded-lg border border-slate-200/50">
-                    <strong>Bewertung:</strong> Das tatsächliche w/z-Verhältnis von <strong>{actualWz.toFixed(3)}</strong> hält den Grenzwert von <strong>{maxWz.toFixed(2)}</strong> sicher ein. 
-                    Die berechnete Frischbetondichte liegt mit {freshConcreteDensity.toFixed(0)} kg/m³ im typischen Bereich für Normalbeton (2000 bis 2600 kg/m³ nach DIN EN 206). 
+                    <strong>Bewertung:</strong> Das tatsächliche w/z-Verhältnis von <strong>{formatDeZahl(actualWz, 3)}</strong> hält den Grenzwert von <strong>{formatDeZahl(maxWz, 2)}</strong> sicher ein. 
+                    Die berechnete Frischbetondichte liegt mit {formatDeZahl(freshConcreteDensity, 0)} kg/m³ im typischen Bereich für Normalbeton (2000 bis 2600 kg/m³ nach DIN EN 206). 
                     Diese Rezeptur stellt sicher, dass der Beton nach dem Erhärten das erforderliche Porengefüge aufweist, um dem Frostangriff (XC4/XD3) dauerhaft zu widerstehen.
                   </div>
                 </div>
@@ -923,8 +924,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         }}
                         className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
                       >
-                        <option value="flugasche">Flugasche (k = 0.4)</option>
-                        <option value="silikastaub">Silikastaub (k = 2.0)</option>
+                        <option value="flugasche">Flugasche (k = 0,4)</option>
+                        <option value="silikastaub">Silikastaub (k = 2,0)</option>
                       </select>
                     </div>
 
@@ -937,7 +938,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         onChange={(e) => setKCement(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
-                      <div className="text-xxs text-text-main/70 font-mono text-right">{kCement} kg/m³</div>
+                      <div className="text-xxs text-text-main/70 font-mono text-right">{formatDeWert(kCement)} kg/m³</div>
                     </div>
 
                     {/* Addition content */}
@@ -949,7 +950,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         onChange={(e) => setKAddition(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
-                      <div className="text-xxs text-text-main/70 font-mono text-right">{kAddition} kg/m³</div>
+                      <div className="text-xxs text-text-main/70 font-mono text-right">{formatDeWert(kAddition)} kg/m³</div>
                     </div>
 
                     {/* Water content */}
@@ -961,7 +962,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         onChange={(e) => setKWater(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
-                      <div className="text-xxs text-text-main/70 font-mono text-right">{kWater} l/m³</div>
+                      <div className="text-xxs text-text-main/70 font-mono text-right">{formatDeWert(kWater)} l/m³</div>
                     </div>
                   </div>
 
@@ -973,14 +974,14 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <div>
                         <strong>Schritt 1: k-Beiwert und Anrechnungsgrenze ermitteln</strong>
                         <p className="mt-1">
-                          Für <span className="text-shiraz font-bold">{kAddType === 'flugasche' ? 'Flugasche' : 'Silikastaub'}</span> ist normativ ein k-Beiwert von <InlineMath math={`k = ${k_factor}`} /> vorgegeben. 
-                          Die maximale anrechenbare Menge beträgt das <InlineMath math={`${(k_max_ratio*100).toFixed(0)}\\%`} /> des Zementgehalts (bei CEM I):
+                          Für <span className="text-shiraz font-bold">{kAddType === 'flugasche' ? 'Flugasche' : 'Silikastaub'}</span> ist normativ ein k-Beiwert von <InlineMath math={`k = ${formatDeTeXWert(k_factor)}`} /> vorgegeben. 
+                          Die maximale anrechenbare Menge beträgt das <InlineMath math={`${formatDeTeX((k_max_ratio*100), 0)}\\%`} /> des Zementgehalts (bei CEM I):
                         </p>
-                        <BlockMath math={`f_{max} = ${k_max_ratio} \\cdot c = ${k_max_ratio} \\cdot \\color{#A3113E}{${kCement}} = \\color{#A3113E}{${k_max_allowed_addition.toFixed(1)}} \\, \\text{kg/m}^3`} />
+                        <BlockMath math={`f_{max} = ${k_max_ratio} \\cdot c = ${k_max_ratio} \\cdot \\color{#A3113E}{${kCement}} = \\color{#A3113E}{${formatDeTeX(k_max_allowed_addition, 1)}} \\, \\text{kg/m}^3`} />
                         <p className="mt-1">
                           Die anrechenbare Zusatzstoffmenge <InlineMath math="f_{anr}" /> ergibt sich als Minimum aus der tatsächlichen Zugabe und der Begrenzung:
                         </p>
-                        <BlockMath math={`f_{anr} = \\min(f, f_{max}) = \\min(\\color{#A3113E}{${kAddition}}, \\color{#A3113E}{${k_max_allowed_addition.toFixed(1)}}) = \\color{#A3113E}{${k_credited_addition.toFixed(1)}} \\, \\text{kg/m}^3`} />
+                        <BlockMath math={`f_{anr} = \\min(f, f_{max}) = \\min(\\color{#A3113E}{${kAddition}}, \\color{#A3113E}{${formatDeTeX(k_max_allowed_addition, 1)}}) = \\color{#A3113E}{${formatDeTeX(k_credited_addition, 1)}} \\, \\text{kg/m}^3`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
@@ -988,19 +989,19 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <p className="mt-1">
                           Die klassische w/z-Zahl beträgt:
                         </p>
-                        <BlockMath math={`w/z = \\frac{w}{c} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}}} = \\color{#A3113E}{${k_w_z_pure.toFixed(3)}}`} />
+                        <BlockMath math={`w/z = \\frac{w}{c} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}}} = \\color{#A3113E}{${formatDeTeX(k_w_z_pure, 3)}}`} />
                         <p className="mt-1">
                           Durch Anrechnung des Zusatzstoffs ergibt sich das wirksame äquivalente Wasser-Zement-Verhältnis <InlineMath math="(w/z)_{eq}" />:
                         </p>
-                        <BlockMath math={`(w/z)_{eq} = \\frac{w}{c + k \\cdot f_{anr}} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}} + ${k_factor} \\cdot \\color{#A3113E}{${k_credited_addition.toFixed(1)}}} = \\color{#A3113E}{${k_w_z_eq.toFixed(3)}}`} />
+                        <BlockMath math={`(w/z)_{eq} = \\frac{w}{c + k \\cdot f_{anr}} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}} + ${k_factor} \\cdot \\color{#A3113E}{${formatDeTeX(k_credited_addition, 1)}}} = \\color{#A3113E}{${formatDeTeX(k_w_z_eq, 3)}}`} />
                       </div>
                     </div>
 
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2">
                       <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1">Ergebnis und Einsparung</span>
                       <p className="text-xs font-normal">
-                        Dein äquivalenter Wasser-Zement-Wert sinkt um <strong className="text-shiraz">{Math.max(0, k_w_z_pure - k_w_z_eq).toFixed(3)}</strong> von <span className="text-shiraz font-bold">{k_w_z_pure.toFixed(3)}</span> auf <strong className="text-shiraz">{k_w_z_eq.toFixed(3)}</strong>. 
-                        Dies entspricht rechnerisch einer fiktiven Zementeinsparung von ca. <strong className="text-shiraz">{(k_factor * k_credited_addition).toFixed(1)} kg</strong> Portlandzement-Klinker pro Kubikmeter Beton bei identischer hydratationschemischer Wirksamkeit!
+                        Ihr äquivalenter Wasser-Zement-Wert sinkt um <strong className="text-shiraz">{formatDeZahl(Math.max(0, k_w_z_pure - k_w_z_eq), 3)}</strong> von <span className="text-shiraz font-bold">{formatDeZahl(k_w_z_pure, 3)}</span> auf <strong className="text-shiraz">{formatDeZahl(k_w_z_eq, 3)}</strong>. 
+                        Dies entspricht rechnerisch einer fiktiven Zementeinsparung von ca. <strong className="text-shiraz">{formatDeZahl((k_factor * k_credited_addition), 1)} kg</strong> Portlandzement-Klinker pro Kubikmeter Beton bei identischer hydratationschemischer Wirksamkeit!
                       </p>
                     </div>
                   </div>
@@ -1038,8 +1039,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         className="w-full accent-shiraz"
                       />
                       <div className="flex justify-between text-xxs text-text-main/70 font-mono">
-                        <span>{mAggregateInput} kg</span>
-                        <span className="font-bold text-shiraz">{tempAggregate} °C</span>
+                        <span>{formatDeWert(mAggregateInput)} kg</span>
+                        <span className="font-bold text-shiraz">{formatDeWert(tempAggregate)} °C</span>
                       </div>
                     </div>
 
@@ -1053,8 +1054,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         className="w-full accent-shiraz"
                       />
                       <div className="flex justify-between text-xxs text-text-main/70 font-mono">
-                        <span>{mCementInput} kg</span>
-                        <span className="font-bold text-shiraz">{tempCement} °C</span>
+                        <span>{formatDeWert(mCementInput)} kg</span>
+                        <span className="font-bold text-shiraz">{formatDeWert(tempCement)} °C</span>
                       </div>
                     </div>
 
@@ -1068,8 +1069,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         className="w-full accent-shiraz"
                       />
                       <div className="flex justify-between text-xxs text-text-main/70 font-mono">
-                        <span>{mWaterInput} l</span>
-                        <span className="font-bold text-shiraz">{tempWater} °C</span>
+                        <span>{formatDeWert(mWaterInput)} l</span>
+                        <span className="font-bold text-shiraz">{formatDeWert(tempWater)} °C</span>
                       </div>
                     </div>
 
@@ -1087,7 +1088,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       />
                       <div className="flex justify-between text-xxs text-text-main/70 font-mono">
                         <span>Melting latent: 334 kJ/kg</span>
-                        <span className="font-bold text-shiraz">{mIceInput} kg</span>
+                        <span className="font-bold text-shiraz">{formatDeWert(mIceInput)} kg</span>
                       </div>
                     </div>
                   </div>
@@ -1103,19 +1104,19 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                           Die Enthalpiebeträge ergeben sich aus Masse <InlineMath math="m_i" />, Temperatur <InlineMath math="T_i" /> und spezifischer Wärme <InlineMath math="c_i" />:
                         </p>
                         <div className="bg-slate-50 p-2.5 rounded-lg space-y-1 font-mono text-xxs my-2 border border-home-grau/20">
-                          <p>• Gestein: {mAggregateInput} kg · 0,84 kJ/(kg·K) · <span className="text-shiraz font-bold">{tempAggregate}</span>°C = <span className="text-shiraz font-bold">{heat_agg.toFixed(0)}</span> kJ</p>
-                          <p>• Zement: {mCementInput} kg · 0,84 kJ/(kg·K) · <span className="text-shiraz font-bold">{tempCement}</span>°C = <span className="text-shiraz font-bold">{heat_cement.toFixed(0)}</span> kJ</p>
-                          <p>• Flüssiges Wasser: <span className="text-shiraz font-bold">{mLiquidWater}</span> kg · 4,18 kJ/(kg·K) · <span className="text-shiraz font-bold">{tempWater}</span>°C = <span className="text-shiraz font-bold">{heat_liquid_water.toFixed(0)}</span> kJ</p>
+                          <p>• Gestein: {formatDeWert(mAggregateInput)} kg · 0,84 kJ/(kg·K) · <span className="text-shiraz font-bold">{formatDeWert(tempAggregate)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_agg, 0)}</span> kJ</p>
+                          <p>• Zement: {formatDeWert(mCementInput)} kg · 0,84 kJ/(kg·K) · <span className="text-shiraz font-bold">{formatDeWert(tempCement)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_cement, 0)}</span> kJ</p>
+                          <p>• Flüssiges Wasser: <span className="text-shiraz font-bold">{formatDeWert(mLiquidWater)}</span> kg · 4,18 kJ/(kg·K) · <span className="text-shiraz font-bold">{formatDeWert(tempWater)}</span>°C = <span className="text-shiraz font-bold">{formatDeZahl(heat_liquid_water, 0)}</span> kJ</p>
                           {mIceInput > 0 && (
-                            <p className="text-blue-600 font-bold">• Schmelzwärme Eis: -(<span className="text-shiraz">{mIceInput}</span> kg · 334 kJ/kg) = <span className="text-shiraz">{heat_ice_melting.toFixed(0)}</span> kJ</p>
+                            <p className="text-blue-600 font-bold">• Schmelzwärme Eis: -(<span className="text-shiraz">{formatDeWert(mIceInput)}</span> kg · 334 kJ/kg) = <span className="text-shiraz">{formatDeZahl(heat_ice_melting, 0)}</span> kJ</p>
                           )}
-                          <p className="border-t border-slate-200 pt-1 font-bold">Summe der Enthalpien Q = <span className="text-shiraz font-bold">{total_heat.toFixed(0)}</span> kJ</p>
+                          <p className="border-t border-slate-200 pt-1 font-bold">Summe der Enthalpien Q = <span className="text-shiraz font-bold">{formatDeZahl(total_heat, 0)}</span> kJ</p>
                         </div>
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Berechnung der Frischbetontemperatur <InlineMath math="T_{Beton}" />:</strong>
-                        <BlockMath math={`T_B = \\frac{\\sum Q}{\\sum (m_i \\cdot c_i)} = \\frac{\\color{#A3113E}{${total_heat.toFixed(0)}} \\, \\text{kJ}}{${total_heat_capacity.toFixed(0)} \\, \\text{kJ/K}} = \\color{#A3113E}{${finalFreshTemp.toFixed(1)}} \\, ^\\circ\\text{C}`} />
+                        <BlockMath math={`T_B = \\frac{\\sum Q}{\\sum (m_i \\cdot c_i)} = \\frac{\\color{#A3113E}{${formatDeTeX(total_heat, 0)}} \\, \\text{kJ}}{${formatDeTeX(total_heat_capacity, 0)} \\, \\text{kJ/K}} = \\color{#A3113E}{${formatDeTeX(finalFreshTemp, 1)}} \\, ^\\circ\\text{C}`} />
                       </div>
                     </div>
 
@@ -1130,7 +1131,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       </div>
                       <div>
                         <strong className="block font-bold">
-                          Betontemperatur: {finalFreshTemp.toFixed(1)} °C ({
+                          Betontemperatur: {formatDeZahl(finalFreshTemp, 1)} °C ({
                             finalFreshTemp < 5 ? 'Frostgefahr / zu kalt' :
                             finalFreshTemp > 30 ? 'Zu heiß / Rissgefahr' :
                             'Optimal'
@@ -1193,9 +1194,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         onChange={(e) => setStrengthCementType(e.target.value as 'S' | 'N' | 'R')}
                         className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
                       >
-                        <option value="S">Klasse S (CEM 32,5 N - s = 0.38)</option>
-                        <option value="N">Klasse N (CEM 32,5 R / 42,5 N - s = 0.25)</option>
-                        <option value="R">Klasse R (CEM 42,5 R / 52,5 - s = 0.20)</option>
+                        <option value="S">Klasse S (CEM 32,5 N - s = 0,38)</option>
+                        <option value="N">Klasse N (CEM 32,5 R / 42,5 N - s = 0,25)</option>
+                        <option value="R">Klasse R (CEM 42,5 R / 52,5 - s = 0,20)</option>
                       </select>
                     </div>
 
@@ -1208,7 +1209,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         onChange={(e) => setStrengthCureTemp(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
-                      <div className="text-xxs text-text-main/70 font-mono text-right font-bold text-shiraz">{strengthCureTemp} °C</div>
+                      <div className="text-xxs text-text-main/70 font-mono text-right font-bold text-shiraz">{formatDeWert(strengthCureTemp)} °C</div>
                     </div>
 
                     {/* Age in days */}
@@ -1220,7 +1221,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         onChange={(e) => setStrengthCureAge(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
-                      <div className="text-xxs text-text-main/70 font-mono text-right font-bold text-shiraz">{strengthCureAge} Tage</div>
+                      <div className="text-xxs text-text-main/70 font-mono text-right font-bold text-shiraz">{formatDeWert(strengthCureAge)} Tage</div>
                     </div>
                   </div>
 
@@ -1235,13 +1236,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                           Aufgrund erhöhter oder verringerter Hydratationstemperatur wird die wirksame Reifezeit normativ skaliert:
                         </p>
                         <BlockMath math={`t_T = t \\cdot \\exp\\left( 4000 \\cdot \\left[ \\frac{1}{293} - \\frac{1}{273 + T} \\right] \\right)`} />
-                        <BlockMath math={`t_T = \\color{#A3113E}{${strengthCureAge}} \\cdot \\exp\\left( 4000 \\cdot \\left[ \\frac{1}{293} - \\frac{1}{273 + \\color{#A3113E}{${strengthCureTemp}}} \\right] \\right) = \\color{#A3113E}{${maturityAge.toFixed(2)}} \\, \\text{Tage}`} />
+                        <BlockMath math={`t_T = \\color{#A3113E}{${formatDeTeXWert(strengthCureAge)}} \\cdot \\exp\\left( 4000 \\cdot \\left[ \\frac{1}{293} - \\frac{1}{273 + \\color{#A3113E}{${formatDeTeXWert(strengthCureTemp)}}} \\right] \\right) = \\color{#A3113E}{${formatDeTeX(maturityAge, 2)}} \\, \\text{Tage}`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Schritt 2: Festigkeitsbeiwert <InlineMath math="\beta_{cc}" /> ermitteln</strong>
                         <BlockMath math={`\\beta_{cc}(t_T) = \\exp\\left( s \\cdot \\left[ 1 - \\sqrt{\\frac{28}{t_T}} \\right] \\right)`} />
-                        <BlockMath math={`\\beta_{cc}(t_T) = \\exp\\left( ${s_param} \\cdot \\left[ 1 - \\sqrt{\\frac{28}{\\color{#A3113E}{${maturityAge.toFixed(2)}}}} \\right] \\right) = \\color{#A3113E}{${beta_cc.toFixed(4)}}`} />
+                        <BlockMath math={`\\beta_{cc}(t_T) = \\exp\\left( ${formatDeTeXWert(s_param)} \\cdot \\left[ 1 - \\sqrt{\\frac{28}{\\color{#A3113E}{${formatDeTeX(maturityAge, 2)}}}} \\right] \\right) = \\color{#A3113E}{${formatDeTeX(beta_cc, 4)}}`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
@@ -1249,13 +1250,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <div className="grid grid-cols-2 gap-4 mt-2 bg-slate-50 p-3 rounded-lg font-mono text-xxs border border-home-grau/20">
                           <div>
                             <p className="font-bold text-slate-700">Mittlere Festigkeit f_cm(t):</p>
-                            <p className="text-xs text-slate-900 font-extrabold mt-1"><span className="text-shiraz">{f_cm_t.toFixed(2)}</span> N/mm²</p>
-                            <p className="text-[10px] text-slate-500">von f_cm,28 = {f_cm_28} MPa</p>
+                            <p className="text-xs text-slate-900 font-extrabold mt-1"><span className="text-shiraz">{formatDeZahl(f_cm_t, 2)}</span> N/mm²</p>
+                            <p className="text-[10px] text-slate-500">von f_cm,28 = {formatDeWert(f_cm_28)} MPa</p>
                           </div>
                           <div>
                             <p className="font-bold text-slate-700">Charakteristische Festigkeit f_ck(t):</p>
-                            <p className="text-xs text-shiraz font-extrabold mt-1">{f_ck_t.toFixed(2)} N/mm²</p>
-                            <p className="text-[10px] text-slate-500">von f_ck,28 = {strengthClassFck} MPa</p>
+                            <p className="text-xs text-shiraz font-extrabold mt-1">{formatDeZahl(f_ck_t, 2)} N/mm²</p>
+                            <p className="text-[10px] text-slate-500">von f_ck,28 = {formatDeWert(strengthClassFck)} MPa</p>
                           </div>
                         </div>
                       </div>
@@ -1267,7 +1268,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <div className="flex items-center gap-2 mt-1">
                         <span className={`w-3 h-3 rounded-full ${beta_cc >= 0.5 ? 'bg-green-500' : 'bg-amber-500'}`} />
                         <p className="font-normal">
-                          Der Beton hat <strong>{(beta_cc * 100).toFixed(1)}%</strong> seiner 28-Tage-Nennfestigkeit erreicht. 
+                          Der Beton hat <strong>{formatDeZahl((beta_cc * 100), 1)}%</strong> seiner 28-Tage-Nennfestigkeit erreicht. 
                           {beta_cc >= 0.5 ? (
                             <span className="text-green-800"> Ein Ausschalen tragender Bauteile ist nach DBV-Leitfaden im Regelfall zulässig (&gt; 50% Festigkeit).</span>
                           ) : (
@@ -1314,7 +1315,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     onChange={(e) => setMEd(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{mEd} kNm</div>
+                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeWert(mEd)} kNm</div>
                 </div>
 
                 {/* Concrete Class */}
@@ -1370,22 +1371,22 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <strong>Schritt 1: Rechnerische Materialfestigkeiten ermitteln</strong>
                   <p className="mt-1">
                     Zylinderdruckfestigkeit des Betons <InlineMath math={`f_{ck} = ${f_ck} \\, \\text{N/mm}^2`} />. <br />
-                    Bemessungswert der Betondruckfestigkeit <InlineMath math="f_{cd}" /> (mit Teilsicherheitsbeiwert <InlineMath math="\gamma_C = 1,5" /> und Beiwert für Langzeitwirkungen <InlineMath math="\alpha_{cc} = 0,85" />):
+                    Bemessungswert der Betondruckfestigkeit <InlineMath math="f_{cd}" /> (mit Teilsicherheitsbeiwert <InlineMath math="\gamma_C = 1{,}5" /> und Beiwert für Langzeitwirkungen <InlineMath math="\alpha_{cc} = 0{,}85" />):
                   </p>
-                  <BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_C} = 0,85 \\cdot \\frac{\\color{#A3113E}{${f_ck}}}{1,5} = \\color{#A3113E}{${f_cd.toFixed(2)}} \\, \\text{N/mm}^2 \\, (\\text{MPa})`} />
+                  <BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_C} = 0{,}85 \\cdot \\frac{\\color{#A3113E}{${f_ck}}}{1{,}5} = \\color{#A3113E}{${formatDeTeX(f_cd, 2)}} \\, \\text{N/mm}^2 \\, (\\text{MPa})`} />
                   <p className="mt-1">
-                    Bemessungswert der Stahlstreckgrenze <InlineMath math="f_{yd}" /> (mit <InlineMath math="f_{yk} = 500 \, \text{N/mm}^2" /> und Teilsicherheitsbeiwert <InlineMath math="\gamma_S = 1,15" />):
+                    Bemessungswert der Stahlstreckgrenze <InlineMath math="f_{yd}" /> (mit <InlineMath math="f_{yk} = 500 \, \text{N/mm}^2" /> und Teilsicherheitsbeiwert <InlineMath math="\gamma_S = 1{,}15" />):
                   </p>
-                  <BlockMath math={`f_{yd} = \\frac{f_{yk}}{\\gamma_S} = \\frac{500}{1,15} = ${f_yd.toFixed(1)} \\, \\text{N/mm}^2`} />
+                  <BlockMath math={`f_{yd} = \\frac{f_{yk}}{\\gamma_S} = \\frac{500}{1{,}15} = ${formatDeTeX(f_yd, 1)} \\, \\text{N/mm}^2`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 2: Nutzhöhe d bestimmen</strong>
                   <p className="mt-1">
                     Die Nutzhöhe <InlineMath math="d" /> ist der Abstand des am stärksten gedrückten Betonrandes zum Schwerpunkt der Zugbewehrung. 
-                    Wir nehmen einen Vorhaltemaß-Abstand von <InlineMath math={`d_1 = ${d1Margin} \\, \\text{cm}`} /> an:
+                    Wir nehmen einen Vorhaltemaß-Abstand von <InlineMath math={`d_1 = ${formatDeTeXWert(d1Margin)} \\, \\text{cm}`} /> an:
                   </p>
-                  <BlockMath math={`d = h - d_1 = \\color{#A3113E}{${hHeight}} - ${d1Margin} = \\color{#A3113E}{${(hHeight - d1Margin).toFixed(1)}} \\, \\text{cm} \\quad (= \\color{#A3113E}{${d_m.toFixed(3)}} \\, \\text{m})`} />
+                  <BlockMath math={`d = h - d_1 = \\color{#A3113E}{${hHeight}} - ${formatDeTeXWert(d1Margin)} = \\color{#A3113E}{${formatDeTeX((hHeight - d1Margin), 1)}} \\, \\text{cm} \\quad (= \\color{#A3113E}{${formatDeTeX(d_m, 3)}} \\, \\text{m})`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
@@ -1394,7 +1395,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     Hiermit wird geprüft, ob die Druckzone des Querschnitts ohne zusätzliche Druckbewehrung ausreicht:
                   </p>
                   <BlockMath math={`\\mu_{Ed} = \\frac{M_{Ed}}{b \\cdot d^2 \\cdot f_{cd}}`} />
-                  <BlockMath math={`\\mu_{Ed} = \\frac{\\color{#A3113E}{${(mEd * 0.001).toFixed(3)}} \\, \\text{MNm}}{\\color{#A3113E}{${b_m.toFixed(2)}} \\, \\text{m} \\cdot (\\color{#A3113E}{${d_m.toFixed(3)}} \\, \\text{m})^2 \\cdot \\color{#A3113E}{${f_cd.toFixed(2)}} \\, \\text{MN/m}^2} = \\color{#A3113E}{${mu_Ed.toFixed(4)}}`} />
+                  <BlockMath math={`\\mu_{Ed} = \\frac{\\color{#A3113E}{${formatDeTeX((mEd * 0.001), 3)}} \\, \\text{MNm}}{\\color{#A3113E}{${formatDeTeX(b_m, 2)}} \\, \\text{m} \\cdot (\\color{#A3113E}{${formatDeTeX(d_m, 3)}} \\, \\text{m})^2 \\cdot \\color{#A3113E}{${formatDeTeX(f_cd, 2)}} \\, \\text{MN/m}^2} = \\color{#A3113E}{${formatDeTeX(mu_Ed, 4)}}`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
@@ -1402,15 +1403,15 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   {mu_Ed < mu_lim ? (
                     <>
                       <p className="mt-1">
-                        Da <InlineMath math={`\\mu_{Ed} = ${mu_Ed.toFixed(4)} \\le \\mu_{lim} = 0,371`} /> ist, liegt ein reiner Zugbruch vor. Keine Druckbewehrung erforderlich.
+                        Da <InlineMath math={`\\mu_{Ed} = ${formatDeTeX(mu_Ed, 4)} \\le \\mu_{lim} = 0{,}371`} /> ist, liegt ein reiner Zugbruch vor. Keine Druckbewehrung erforderlich.
                         Der mechanische Bewehrungsbeiwert <InlineMath math="\omega" /> und der Hebelarmbeiwert <InlineMath math="\zeta" /> ergeben sich aus dem parabolisch-rechteckigen Spannungsdiagramm zu:
                       </p>
-                      <BlockMath math={`\\zeta = \\frac{1 + \\sqrt{1 - 2 \\cdot \\mu_{Ed}}}{2} = \\frac{1 + \\sqrt{1 - 2 \\cdot \\color{#A3113E}{${mu_Ed.toFixed(4)}}}}{2} = \\color{#A3113E}{${zeta.toFixed(4)}}`} />
-                      <BlockMath math={`z = \\zeta \\cdot d = \\color{#A3113E}{${zeta.toFixed(4)}} \\cdot \\color{#A3113E}{${d_m.toFixed(3)}} = \\color{#A3113E}{${z_m.toFixed(3)}} \\, \\text{m}`} />
+                      <BlockMath math={`\\zeta = \\frac{1 + \\sqrt{1 - 2 \\cdot \\mu_{Ed}}}{2} = \\frac{1 + \\sqrt{1 - 2 \\cdot \\color{#A3113E}{${formatDeTeX(mu_Ed, 4)}}}}{2} = \\color{#A3113E}{${formatDeTeX(zeta, 4)}}`} />
+                      <BlockMath math={`z = \\zeta \\cdot d = \\color{#A3113E}{${formatDeTeX(zeta, 4)}} \\cdot \\color{#A3113E}{${formatDeTeX(d_m, 3)}} = \\color{#A3113E}{${formatDeTeX(z_m, 3)}} \\, \\text{m}`} />
                     </>
                   ) : (
                     <p className="text-red-600 font-bold">
-                      Achtung! \mu_Ed (<span className="text-shiraz">{mu_Ed.toFixed(4)}</span>) &gt; \mu_lim ({mu_lim}). Der Querschnitt ist überbeansprucht! 
+                      Achtung! \mu_Ed (<span className="text-shiraz">{formatDeZahl(mu_Ed, 4)}</span>) &gt; \mu_lim ({formatDeWert(mu_lim)}). Der Querschnitt ist überbeansprucht! 
                       Es ist Druckbewehrung erforderlich oder die Balkenabmessungen (b, h) müssen vergrößert werden, um ein sprödes Betonversagen zu verhindern.
                     </p>
                   )}
@@ -1420,7 +1421,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <strong>Schritt 5: Erforderliche Stahlfläche A_s berechnen</strong>
                   <BlockMath math={`A_{s,\\text{erf}} = \\frac{M_{Ed}}{f_{yd} \\cdot z}`} />
                   {mu_Ed < mu_lim ? (
-                    <BlockMath math={`A_{s,\\text{erf}} = \\frac{\\color{#A3113E}{${mEd}} \\, \\text{kNm} \\cdot 10}{${f_yd.toFixed(1)} \\, \\text{N/mm}^2 \\cdot \\color{#A3113E}{${z_m.toFixed(3)}} \\, \\text{m}} = \\color{#A3113E}{${a_s_req.toFixed(2)}} \\, \\text{cm}^2`} />
+                    <BlockMath math={`A_{s,\\text{erf}} = \\frac{\\color{#A3113E}{${mEd}} \\, \\text{kNm} \\cdot 10}{${formatDeTeX(f_yd, 1)} \\, \\text{N/mm}^2 \\cdot \\color{#A3113E}{${formatDeTeX(z_m, 3)}} \\, \\text{m}} = \\color{#A3113E}{${formatDeTeX(a_s_req, 2)}} \\, \\text{cm}^2`} />
                   ) : (
                     <div className="text-center text-red-650 font-bold bg-red-50 p-3 rounded-lg border border-red-200">
                       Berechnung gesperrt wegen Querschnitts-Überbeanspruchung!
@@ -1435,7 +1436,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
               <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs font-normal text-text-main/80 space-y-3">
                 <span className="font-extrabold text-slate-800 block">Ergebnis-Interpretation &amp; Konstruktionsvorschlag:</span>
                 <p>
-                  Die statisch erforderliche Längsbewehrung an der Balkenunterseite beträgt <strong>{a_s_req.toFixed(2)} cm²</strong>. 
+                  Die statisch erforderliche Längsbewehrung an der Balkenunterseite beträgt <strong>{formatDeZahl(a_s_req, 2)} cm²</strong>. 
                   Im Ingenieurbüro muss diese Fläche nun in konkrete Bewehrungsdurchmesser umgesetzt werden.
                 </p>
                 <div className="p-3 bg-white border rounded-lg space-y-2.5 font-normal text-xxs">
@@ -1443,18 +1444,18 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="p-2 bg-slate-50 rounded-lg border text-center">
                       <span className="block font-bold mb-1">Option A (Standard):</span>
                       <strong className="text-shiraz">3 Ø 16</strong> (6,03 cm²)
-                      <span className="block text-[10px] text-slate-400 mt-1">Auslastung: {(a_s_req / 6.03 * 100).toFixed(0)}%</span>
+                      <span className="block text-[10px] text-slate-400 mt-1">Auslastung: {formatDeZahl((a_s_req / 6.03 * 100), 0)}%</span>
                     </div>
                     <div className="p-2 bg-slate-50 rounded-lg border text-center">
                       <span className="block font-bold mb-1">Option B (Kompakt):</span>
                       <strong className="text-teal-700">2 Ø 20</strong> (6,28 cm²)
-                      <span className="block text-[10px] text-slate-400 mt-1">Auslastung: {(a_s_req / 6.28 * 100).toFixed(0)}%</span>
+                      <span className="block text-[10px] text-slate-400 mt-1">Auslastung: {formatDeZahl((a_s_req / 6.28 * 100), 0)}%</span>
                     </div>
                     <div className="p-2 bg-slate-50 rounded-lg border text-center">
                       <span className="block font-bold mb-1">Option C (Minimalistisch):</span>
                       <strong className="text-indigo-700">4 Ø 12</strong> (4,52 cm²)
                       <span className="block text-[10px] text-slate-400 mt-1">
-                        {4.52 >= a_s_req ? `Auslastung: ${(a_s_req / 4.52 * 100).toFixed(0)}%` : 'Fläche unzureichend!'}
+                        {4.52 >= a_s_req ? `Auslastung: ${formatDeZahl((a_s_req / 4.52 * 100), 0)}%` : 'Fläche unzureichend!'}
                       </span>
                     </div>
                   </div>
@@ -1495,7 +1496,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     onChange={(e) => setColLength(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{colLength.toFixed(1)} m</div>
+                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeZahl(colLength, 1)} m</div>
                 </div>
 
                 {/* Section b x h */}
@@ -1510,7 +1511,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     }}
                     className="w-full accent-shiraz"
                   />
-                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{colHeight} x {colHeight} cm</div>
+                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeWert(colHeight)} x {formatDeWert(colHeight)} cm</div>
                 </div>
 
                 {/* Axial Force */}
@@ -1522,7 +1523,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     onChange={(e) => setDesignForce(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{designForce} kN</div>
+                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeWert(designForce)} kN</div>
                 </div>
 
                 {/* Timber Grade */}
@@ -1552,41 +1553,41 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <strong>Schritt 1: Festigkeiten bestimmen</strong>
                   <p className="mt-1">
                     Für die Holzgüte <span className="text-shiraz font-bold">{timberGrade}</span> beträgt der Festigkeitswert <InlineMath math={`f_{c,0,k} = ${f_c0k} \\, \\text{N/mm}^2`} />. <br />
-                    Unter Klasse NKL 1 (beheizter Innenraum) ist <InlineMath math="k_{mod} = 0,9" />. Der Bemessungswert lautet:
+                    Unter Klasse NKL 1 (beheizter Innenraum) ist <InlineMath math="k_{mod} = 0{,}9" />. Der Bemessungswert lautet:
                   </p>
-                  <BlockMath math={`f_{c,0,d} = k_{mod} \\cdot \\frac{f_{c,0,k}}{\\gamma_M} = 0,9 \\cdot \\frac{\\color{#A3113E}{${f_c0k}}}{1,3} = \\color{#A3113E}{${f_c0d.toFixed(2)}} \\, \\text{N/mm}^2`} />
+                  <BlockMath math={`f_{c,0,d} = k_{mod} \\cdot \\frac{f_{c,0,k}}{\\gamma_M} = 0{,}9 \\cdot \\frac{\\color{#A3113E}{${f_c0k}}}{1{,}3} = \\color{#A3113E}{${formatDeTeX(f_c0d, 2)}} \\, \\text{N/mm}^2`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 2: Geometrische Kennwerte &amp; Schlankheit ermitteln</strong>
                   <p className="mt-1">Fläche <InlineMath math="A" /> und Trägheitsradius <InlineMath math="i" /> des quadratischen Querschnitts:</p>
-                  <BlockMath math={`A = b \\cdot h = \\color{#A3113E}{${colWidth}} \\cdot \\color{#A3113E}{${colHeight}} = \\color{#A3113E}{${A_wood}} \\, \\text{cm}^2`} />
-                  <BlockMath math={`i = \\frac{h}{\\sqrt{12}} = \\frac{\\color{#A3113E}{${colHeight}}}{3,464} = \\color{#A3113E}{${i_radius.toFixed(2)}} \\, \\text{cm}`} />
+                  <BlockMath math={`A = b \\cdot h = \\color{#A3113E}{${colWidth}} \\cdot \\color{#A3113E}{${colHeight}} = \\color{#A3113E}{${formatDeTeXWert(A_wood)}} \\, \\text{cm}^2`} />
+                  <BlockMath math={`i = \\frac{h}{\\sqrt{12}} = \\frac{\\color{#A3113E}{${colHeight}}}{3{,}464} = \\color{#A3113E}{${formatDeTeX(i_radius, 2)}} \\, \\text{cm}`} />
                   <p className="mt-1">Daraus folgt der dimensionslose Schlankheitsgrad <InlineMath math="\lambda" />:</p>
-                  <BlockMath math={`\\lambda = \\frac{s_k}{i} = \\frac{\\color{#A3113E}{${(colLength * 100).toFixed(0)}} \\, \\text{cm}}{\\color{#A3113E}{${i_radius.toFixed(2)}} \\, \\text{cm}} = \\color{#A3113E}{${slenderness.toFixed(2)}}`} />
+                  <BlockMath math={`\\lambda = \\frac{s_k}{i} = \\frac{\\color{#A3113E}{${formatDeTeX((colLength * 100), 0)}} \\, \\text{cm}}{\\color{#A3113E}{${formatDeTeX(i_radius, 2)}} \\, \\text{cm}} = \\color{#A3113E}{${formatDeTeX(slenderness, 2)}}`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 3: Relativen Schlankheitsgrad berechnen</strong>
-                  <p className="mt-1">Mit dem E-Modul-Quantilswert <InlineMath math={`E_{0,05} = ${E_005} \\, \\text{N/mm}^2`} />:</p>
-                  <BlockMath math={`\\lambda_{rel} = \\frac{\\lambda}{\\pi} \\cdot \\sqrt{\\frac{f_{c,0,k}}{E_{0,05}}} = \\frac{\\color{#A3113E}{${slenderness.toFixed(2)}}}{\\pi} \\cdot \\sqrt{\\frac{\\color{#A3113E}{${f_c0k}}}{${E_005}}} = \\color{#A3113E}{${lambda_rel.toFixed(4)}}`} />
+                  <p className="mt-1">Mit dem E-Modul-Quantilswert <InlineMath math={`E_{0{,}05} = ${E_005} \\, \\text{N/mm}^2`} />:</p>
+                  <BlockMath math={`\\lambda_{rel} = \\frac{\\lambda}{\\pi} \\cdot \\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{\\color{#A3113E}{${formatDeTeX(slenderness, 2)}}}{\\pi} \\cdot \\sqrt{\\frac{\\color{#A3113E}{${f_c0k}}}{${E_005}}} = \\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}}`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 4: Knickbeiwert k_c bestimmen</strong>
-                  <p className="mt-1">Mit dem Grad der Systemunvollkommenheit <InlineMath math="\beta_c = 0,2" /> für Vollholz:</p>
-                  <BlockMath math={`k = 0,5 \\cdot [1 + \\beta_c \\cdot (\\lambda_{rel} - 0,3) + \\lambda_{rel}^2]`} />
-                  <BlockMath math={`k = 0,5 \\cdot [1 + 0,2 \\cdot (\\color{#A3113E}{${lambda_rel.toFixed(4)}} - 0,3) + \\color{#A3113E}{${Math.pow(lambda_rel, 2).toFixed(4)}}] = \\color{#A3113E}{${k_factor_wood.toFixed(4)}}`} />
+                  <p className="mt-1">Mit dem Grad der Systemunvollkommenheit <InlineMath math="\beta_c = 0{,}2" /> für Vollholz:</p>
+                  <BlockMath math={`k = 0{,}5 \\cdot [1 + \\beta_c \\cdot (\\lambda_{rel} - 0{,}3) + \\lambda_{rel}^2]`} />
+                  <BlockMath math={`k = 0{,}5 \\cdot [1 + 0{,}2 \\cdot (\\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}} - 0{,}3) + \\color{#A3113E}{${formatDeTeX(Math.pow(lambda_rel, 2), 4)}}] = \\color{#A3113E}{${formatDeTeX(k_factor_wood, 4)}}`} />
                   <p className="mt-1">Daraus ergibt sich der Abminderungsbeiwert <InlineMath math="k_c" />:</p>
-                  <BlockMath math={`k_c = \\frac{1}{k + \\sqrt{k^2 - \\lambda_{rel}^2}} = \\frac{1}{\\color{#A3113E}{${k_factor_wood.toFixed(4)}} + \\sqrt{\\color{#A3113E}{${k_factor_wood.toFixed(4)}}^2 - \\color{#A3113E}{${lambda_rel.toFixed(4)}}^2}} = \\color{#A3113E}{${k_c_final.toFixed(4)}}`} />
+                  <BlockMath math={`k_c = \\frac{1}{k + \\sqrt{k^2 - \\lambda_{rel}^2}} = \\frac{1}{\\color{#A3113E}{${formatDeTeX(k_factor_wood, 4)}} + \\sqrt{\\color{#A3113E}{${formatDeTeX(k_factor_wood, 4)}}^2 - \\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}}^2}} = \\color{#A3113E}{${formatDeTeX(k_c_final, 4)}}`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 5: Spannungsnachweis durchführen</strong>
                   <p className="mt-1">Einwirkende Druckspannung <InlineMath math="\sigma_{c,0,d}" />:</p>
-                  <BlockMath math={`\\sigma_{c,0,d} = \\frac{N_d \\cdot 10}{A} = \\frac{\\color{#A3113E}{${designForce}} \\cdot 10}{\\color{#A3113E}{${A_wood}}} = \\color{#A3113E}{${sigma_c0d.toFixed(3)}} \\, \\text{N/mm}^2`} />
+                  <BlockMath math={`\\sigma_{c,0,d} = \\frac{N_d \\cdot 10}{A} = \\frac{\\color{#A3113E}{${designForce}} \\cdot 10}{\\color{#A3113E}{${A_wood}}} = \\color{#A3113E}{${formatDeTeX(sigma_c0d, 3)}} \\, \\text{N/mm}^2`} />
                   <p className="mt-1">Knicknachweis-Bedingung:</p>
-                  <BlockMath math={`\\eta = \\frac{\\sigma_{c,0,d}}{k_c \\cdot f_{c,0,d}} = \\frac{\\color{#A3113E}{${sigma_c0d.toFixed(3)}}}{\\color{#A3113E}{${k_c_final.toFixed(3)}} \\cdot \\color{#A3113E}{${f_c0d.toFixed(2)}}} = \\color{#A3113E}{${utilizationWood.toFixed(3)}} \\le 1,0`} />
+                  <BlockMath math={`\\eta = \\frac{\\sigma_{c,0,d}}{k_c \\cdot f_{c,0,d}} = \\frac{\\color{#A3113E}{${formatDeTeX(sigma_c0d, 3)}}}{\\color{#A3113E}{${formatDeTeX(k_c_final, 3)}} \\cdot \\color{#A3113E}{${formatDeTeX(f_c0d, 2)}}} = \\color{#A3113E}{${formatDeTeX(utilizationWood, 3)}} \\le 1{,}0`} />
                 </div>
               </div>
             </div>
@@ -1610,11 +1611,11 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <span className={`px-2.5 py-0.5 rounded-full font-bold text-xxs tracking-wider uppercase ${
                     utilizationWood <= 1.0 ? 'bg-green-200 text-green-900' : 'bg-red-200 text-red-900'
                   }`}>
-                    {(utilizationWood * 100).toFixed(0)}% Ausnutzung
+                    {formatDeZahl((utilizationWood * 100), 0)}% Ausnutzung
                   </span>
                 </div>
                 <p>
-                  Die Stütze ist zu <strong>{(utilizationWood * 100).toFixed(1)}%</strong> ausgelastet.
+                  Die Stütze ist zu <strong>{formatDeZahl((utilizationWood * 100), 1)}%</strong> ausgelastet.
                 </p>
                 <p className="text-xxs opacity-90 mt-1">
                   {utilizationWood <= 1.0 
@@ -1657,7 +1658,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     onChange={(e) => setWallHeight(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{wallHeight.toFixed(2)} m</div>
+                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeZahl(wallHeight, 2)} m</div>
                 </div>
 
                 {/* Wall Thickness */}
@@ -1668,10 +1669,10 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     onChange={(e) => setWallThick(Number(e.target.value))}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
                   >
-                    <option value={11.5}>11.5 cm</option>
-                    <option value={17.5}>17.5 cm</option>
-                    <option value={24.0}>24.0 cm</option>
-                    <option value={30.0}>30.0 cm</option>
+                    <option value={11.5}>11,5 cm</option>
+                    <option value={17.5}>17,5 cm</option>
+                    <option value={24.0}>24,0 cm</option>
+                    <option value={30.0}>30,0 cm</option>
                   </select>
                 </div>
 
@@ -1684,7 +1685,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     onChange={(e) => setVerticalLoad(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
-                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{verticalLoad} kN/m</div>
+                  <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeWert(verticalLoad)} kN/m</div>
                 </div>
 
                 {/* Masonry Compressive strength */}
@@ -1695,8 +1696,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     onChange={(e) => setMasonryType(e.target.value as 'KS' | 'HLZ')}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
                   >
-                    <option value="KS">Kalksandstein (f_k = 5.6 MPa)</option>
-                    <option value="HLZ">Hochlochziegel (f_k = 3.2 MPa)</option>
+                    <option value="KS">Kalksandstein (f_k = 5,6 MPa)</option>
+                    <option value="HLZ">Hochlochziegel (f_k = 3,2 MPa)</option>
                   </select>
                 </div>
 
@@ -1713,9 +1714,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 <div>
                   <strong>Schritt 1: Rechnerische Mauerwerksfestigkeit f_d</strong>
                   <p className="mt-1">
-                    Der Bemessungswert der Druckfestigkeit <InlineMath math="f_d" /> berechnet sich aus der charakteristischen Festigkeit <InlineMath math="f_k" /> und dem materialspezifischen Sicherheitsbeiwert <InlineMath math="\gamma_M = 1,5" /> (unter vereinfachten Verfahren):
+                    Der Bemessungswert der Druckfestigkeit <InlineMath math="f_d" /> berechnet sich aus der charakteristischen Festigkeit <InlineMath math="f_k" /> und dem materialspezifischen Sicherheitsbeiwert <InlineMath math="\gamma_M = 1{,}5" /> (unter vereinfachten Verfahren):
                   </p>
-                  <BlockMath math={`f_d = \\frac{f_k}{\\gamma_M} = \\frac{\\color{#A3113E}{${f_k.toFixed(1)}}}{1,5} = \\color{#A3113E}{${f_d.toFixed(2)}} \\, \\text{N/mm}^2 \\, (\\text{MPa})`} />
+                  <BlockMath math={`f_d = \\frac{f_k}{\\gamma_M} = \\frac{\\color{#A3113E}{${formatDeTeX(f_k, 1)}}}{1{,}5} = \\color{#A3113E}{${formatDeTeX(f_d, 2)}} \\, \\text{N/mm}^2 \\, (\\text{MPa})`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
@@ -1723,10 +1724,10 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <p className="mt-1">
                     Bei zweiseitiger Halterung am Wandkopf und Wandfuß durch ausreichend steife Deckenplatten entspricht die effektive Knicklänge der lichten Wandhöhe <InlineMath math="h_{ef} = h" />:
                   </p>
-                  <BlockMath math={`\\bar{\\lambda} = \\frac{h_{ef}}{t} = \\frac{\\color{#A3113E}{${wallHeight.toFixed(2)}} \\, \\text{m}}{\\color{#A3113E}{${t_m.toFixed(3)}} \\, \\text{m}} = \\color{#A3113E}{${slenderness_mauer.toFixed(2)}}`} />
+                  <BlockMath math={`\\bar{\\lambda} = \\frac{h_{ef}}{t} = \\frac{\\color{#A3113E}{${formatDeTeX(wallHeight, 2)}} \\, \\text{m}}{\\color{#A3113E}{${formatDeTeX(t_m, 3)}} \\, \\text{m}} = \\color{#A3113E}{${formatDeTeX(slenderness_mauer, 2)}}`} />
                   <p className="mt-1">
                     Nach DIN EN 1996-3 darf die Slenderness bei tragenden Wänden im vereinfachten Verfahren den Grenzwert <strong>25</strong> nicht überschreiten. <br />
-                    Die Schlankheit beträgt: <strong className="text-shiraz">{slenderness_mauer.toFixed(2)}</strong>. 
+                    Die Schlankheit beträgt: <strong className="text-shiraz">{formatDeZahl(slenderness_mauer, 2)}</strong>. 
                     {slenderness_mauer > 25 ? (
                       <span className="text-red-600 font-bold block mt-1">Achtung: Wand ist zu schlank! Erhöhen Sie die Dicke t.</span>
                     ) : (
@@ -1740,8 +1741,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <p className="mt-1">
                     Der Abminderungsfaktor <InlineMath math="\Phi" /> berücksichtigt Tragfähigkeitseinbußen durch Exzentrizitäten und Verformungen in Wandmitte nach dem vereinfachten Verfahren:
                   </p>
-                  <BlockMath math={`\\Phi = 0,85 - 0,0011 \\cdot \\left(\\frac{h_{ef}}{t}\\right)^2`} />
-                  <BlockMath math={`\\Phi = 0,85 - 0,0011 \\cdot (\\color{#A3113E}{${slenderness_mauer.toFixed(2)}})^2 = \\color{#A3113E}{${phi_final.toFixed(4)}}`} />
+                  <BlockMath math={`\\Phi = 0{,}85 - 0{,}0011 \\cdot \\left(\\frac{h_{ef}}{t}\\right)^2`} />
+                  <BlockMath math={`\\Phi = 0{,}85 - 0{,}0011 \\cdot (\\color{#A3113E}{${formatDeTeX(slenderness_mauer, 2)}})^2 = \\color{#A3113E}{${formatDeTeX(phi_final, 4)}}`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
@@ -1750,12 +1751,12 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     Der Bemessungswert der aufnehmbaren Vertikallast pro Meter Wandlänge ergibt sich aus:
                   </p>
                   <BlockMath math={`N_{Rd} = \\Phi \\cdot t \\cdot f_d`} />
-                  <BlockMath math={`N_{Rd} = \\color{#A3113E}{${phi_final.toFixed(3)}} \\cdot \\color{#A3113E}{${t_m.toFixed(3)}} \\, \\text{m} \\cdot \\color{#A3113E}{${f_d.toFixed(2)}} \\, \\text{MN/m}^2 \\cdot 1000 = \\color{#A3113E}{${n_Rd.toFixed(1)}} \\, \\text{kN/m}`} />
+                  <BlockMath math={`N_{Rd} = \\color{#A3113E}{${formatDeTeX(phi_final, 3)}} \\cdot \\color{#A3113E}{${formatDeTeX(t_m, 3)}} \\, \\text{m} \\cdot \\color{#A3113E}{${formatDeTeX(f_d, 2)}} \\, \\text{MN/m}^2 \\cdot 1000 = \\color{#A3113E}{${formatDeTeX(n_Rd, 1)}} \\, \\text{kN/m}`} />
                 </div>
 
                 <div className="border-t border-slate-100 pt-3">
                   <strong>Schritt 5: Auslastungsvergleich</strong>
-                  <BlockMath math={`\\eta = \\frac{N_{Ed}}{N_{Rd}} = \\frac{\\color{#A3113E}{${verticalLoad}} \\, \\text{kN/m}}{\\color{#A3113E}{${n_Rd.toFixed(1)}} \\, \\text{kN/m}} = \\color{#A3113E}{${utilizationMauer.toFixed(3)}} \\le 1,0`} />
+                  <BlockMath math={`\\eta = \\frac{N_{Ed}}{N_{Rd}} = \\frac{\\color{#A3113E}{${verticalLoad}} \\, \\text{kN/m}}{\\color{#A3113E}{${formatDeTeX(n_Rd, 1)}} \\, \\text{kN/m}} = \\color{#A3113E}{${formatDeTeX(utilizationMauer, 3)}} \\le 1{,}0`} />
                 </div>
               </div>
             </div>
@@ -1783,12 +1784,12 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   </span>
                 </div>
                 <p>
-                  Die Mauerwerkswand ist zu <strong>{(utilizationMauer * 100).toFixed(1)}%</strong> ausgelastet.
+                  Die Mauerwerkswand ist zu <strong>{formatDeZahl((utilizationMauer * 100), 1)}%</strong> ausgelastet.
                 </p>
                 <p className="text-xxs opacity-90 mt-1">
                   {utilizationMauer <= 1.0 && slenderness_mauer <= 25
                     ? 'Der Standsicherheitsnachweis für unbewehrtes Mauerwerk unter vertikalen Lasten ist erfolgreich erfüllt. Die Wandstärke reicht aus, um Knickerscheinungen und Quetschversagen zu verhindern.'
-                    : 'Die Wand ist überlastet oder überschreitet die zulässige Grenzschlankheit. Erhöhen Sie die Wandstärke t oder wechsle zu einem Steinmaterial mit höherer Steinfestigkeitsklasse (z.B. Kalksandstein).'}
+                    : 'Die Wand ist überlastet oder überschreitet die zulässige Grenzschlankheit. Erhöhen Sie die Wandstärke t oder wechseln Sie zu einem Steinmaterial mit höherer Steinfestigkeitsklasse (z.B. Kalksandstein).'}
                 </p>
               </div>
             </div>
@@ -1835,7 +1836,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-bold">
                         <span className="text-slate-700">Karbonatisierungsbeiwert k:</span>
-                        <span className="text-shiraz">{kFactor.toFixed(1)} mm/√a</span>
+                        <span className="text-shiraz">{formatDeZahl(kFactor, 1)} mm/√a</span>
                       </div>
                       <input 
                         type="range" 
@@ -1870,7 +1871,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-bold">
                         <span className="text-slate-700">Zementgehalt c:</span>
-                        <span className="text-shiraz">{cementGehalt} kg/m³</span>
+                        <span className="text-shiraz">{formatDeWert(cementGehalt)} kg/m³</span>
                       </div>
                       <input 
                         type="range" 
@@ -1887,7 +1888,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-bold">
                         <span className="text-slate-700">CaO-Anteil im Zement:</span>
-                        <span className="text-shiraz">{caoAnteil}%</span>
+                        <span className="text-shiraz">{formatDeWert(caoAnteil)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1905,7 +1906,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-bold">
                         <span className="text-slate-700">Karbonatisierungsgrad:</span>
-                        <span className="text-shiraz">{carbGrad}%</span>
+                        <span className="text-shiraz">{formatDeWert(carbGrad)}%</span>
                       </div>
                       <input 
                         type="range" 
@@ -1934,25 +1935,25 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <p className="mt-1 text-xxs">
                           Die Tiefenwirkung der Karbonatisierung folgt dem Quadratwurzel-Zeit-Gesetz (Fick'sche Diffusion):
                         </p>
-                        <BlockMath math={`d_k = k \\cdot \\sqrt{t} = \\color{#A3113E}{${kFactor.toFixed(1)}} \\cdot \\sqrt{\\color{#A3113E}{${durabilityYears}}} = \\color{#A3113E}{${carbonationDepth.toFixed(2)}} \\, \\text{mm} = \\color{#A3113E}{${(carbonationDepth/1000).toFixed(4)}} \\, \\text{m}`} />
+                        <BlockMath math={`d_k = k \\cdot \\sqrt{t} = \\color{#A3113E}{${formatDeTeX(kFactor, 1)}} \\cdot \\sqrt{\\color{#A3113E}{${durabilityYears}}} = \\color{#A3113E}{${formatDeTeX(carbonationDepth, 2)}} \\, \\text{mm} = \\color{#A3113E}{${formatDeTeX((carbonationDepth/1000), 4)}} \\, \\text{m}`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Schritt 2: Stoffmengen im karbonatisierten Volumen</strong>
                         <p className="mt-1 text-xxs">
-                          Betrachtet wird 1 m² Wandfläche. Das betroffene Volumen beträgt <InlineMath math="V = 1.0 \, \text{m}^2 \times d_k" />.
+                          Betrachtet wird 1 m² Wandfläche. Das betroffene Volumen beträgt <InlineMath math="V = 1{,}0 \, \text{m}^2 \times d_k" />.
                         </p>
-                        <BlockMath math={`m_{\\text{Zement}} = V \\cdot c = \\color{#A3113E}{${(carbonationDepth/1000).toFixed(4)}} \\, \\text{m}^3 \\cdot \\color{#A3113E}{${cementGehalt}} \\, \\text{kg/m}^3 = \\color{#A3113E}{${cementMassPerM2.toFixed(2)}} \\, \\text{kg}`} />
-                        <BlockMath math={`m_{\\text{CaO}} = m_{\\text{Zement}} \\cdot \\text{Anteil} = \\color{#A3113E}{${cementMassPerM2.toFixed(2)}} \\cdot \\color{#A3113E}{${(caoAnteil/100).toFixed(2)}} = \\color{#A3113E}{${caoMassPerM2.toFixed(2)}} \\, \\text{kg}`} />
-                        <BlockMath math={`m_{\\text{CaO,react}} = m_{\\text{CaO}} \\cdot \\text{Grad} = \\color{#A3113E}{${caoMassPerM2.toFixed(2)}} \\cdot \\color{#A3113E}{${(carbGrad/100).toFixed(2)}} = \\color{#A3113E}{${reactedCaoMassPerM2.toFixed(2)}} \\, \\text{kg}`} />
+                        <BlockMath math={`m_{\\text{Zement}} = V \\cdot c = \\color{#A3113E}{${formatDeTeX((carbonationDepth/1000), 4)}} \\, \\text{m}^3 \\cdot \\color{#A3113E}{${cementGehalt}} \\, \\text{kg/m}^3 = \\color{#A3113E}{${formatDeTeX(cementMassPerM2, 2)}} \\, \\text{kg}`} />
+                        <BlockMath math={`m_{\\text{CaO}} = m_{\\text{Zement}} \\cdot \\text{Anteil} = \\color{#A3113E}{${formatDeTeX(cementMassPerM2, 2)}} \\cdot \\color{#A3113E}{${formatDeTeX((caoAnteil/100), 2)}} = \\color{#A3113E}{${formatDeTeX(caoMassPerM2, 2)}} \\, \\text{kg}`} />
+                        <BlockMath math={`m_{\\text{CaO,react}} = m_{\\text{CaO}} \\cdot \\text{Grad} = \\color{#A3113E}{${formatDeTeX(caoMassPerM2, 2)}} \\cdot \\color{#A3113E}{${formatDeTeX((carbGrad/100), 2)}} = \\color{#A3113E}{${formatDeTeX(reactedCaoMassPerM2, 2)}} \\, \\text{kg}`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Schritt 3: CO2-Absorption (Molares Verhältnis)</strong>
                         <p className="mt-1 text-xxs">
-                          Die chemische Umwandlung lautet <InlineMath math="CaO + CO_2 \rightarrow CaCO_3" />. Das Verhältnis der Molmassen beträgt <InlineMath math="44,01 / 56,08 \approx 0,784" />:
+                          Die chemische Umwandlung lautet <InlineMath math="CaO + CO_2 \rightarrow CaCO_3" />. Das Verhältnis der Molmassen beträgt <InlineMath math="44{,}01 / 56{,}08 \approx 0{,}784" />:
                         </p>
-                        <BlockMath math={`m_{\\text{CO2}} = m_{\\text{CaO,react}} \\cdot 0,784 = \\color{#A3113E}{${reactedCaoMassPerM2.toFixed(2)}} \\cdot 0,784 = \\color{#A3113E}{${co2UptakePerM2.toFixed(2)}} \\, \\text{kg CO}_2 / \\text{m}^2`} />
+                        <BlockMath math={`m_{\\text{CO2}} = m_{\\text{CaO,react}} \\cdot 0{,}784 = \\color{#A3113E}{${formatDeTeX(reactedCaoMassPerM2, 2)}} \\cdot 0{,}784 = \\color{#A3113E}{${formatDeTeX(co2UptakePerM2, 2)}} \\, \\text{kg CO}_2 / \\text{m}^2`} />
                       </div>
                     </div>
                   </div>
@@ -1963,10 +1964,10 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <span>CO2-Klimabilanz (Sicherer Kohlenstoffspeicher):</span>
                     </div>
                     <p>
-                      Durch die Re-Karbonatisierung des Zementsteins hat die Betonwand über die {durabilityYears} Jahre hinweg pro m² Bauteilfläche ca. <strong>{co2UptakePerM2.toFixed(2)} kg CO2</strong> dauerhaft aus der Atmosphäre zurückgebunden.
+                      Durch die Re-Karbonatisierung des Zementsteins hat die Betonwand über die {durabilityYears} Jahre hinweg pro m² Bauteilfläche ca. <strong>{formatDeZahl(co2UptakePerM2, 2)} kg CO2</strong> dauerhaft aus der Atmosphäre zurückgebunden.
                     </p>
                     <p className="text-xxs text-green-800 opacity-90">
-                      Hinweis: Bei einer typischen Tragwerk-Sichtfläche von 1.000 m² entspricht dies einer Speichermenge von ca. <strong>{(co2UptakePerM2 * 1000 / 1000).toFixed(1)} Tonnen CO2</strong>. Dies mildert den CO2-Fußabdruck der Herstellung (GWP) nachträglich ab. Jedoch schwächt die Karbonatisierung das alkalische Milieu (Depassivierung des Bewehrungsstahls bei Erreichen der Bewehrungslage!).
+                      Hinweis: Bei einer typischen Tragwerk-Sichtfläche von 1.000 m² entspricht dies einer Speichermenge von ca. <strong>{formatDeZahl((co2UptakePerM2 * 1000 / 1000), 1)} Tonnen CO2</strong>. Dies mildert den CO2-Fußabdruck der Herstellung (GWP) nachträglich ab. Jedoch schwächt die Karbonatisierung das alkalische Milieu (Depassivierung des Bewehrungsstahls bei Erreichen der Bewehrungslage!).
                     </p>
                   </div>
                 </div>
@@ -1984,7 +1985,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <div className="space-y-2 text-xs">
                     <div className="flex justify-between font-bold">
                       <span className="text-slate-700">Bauteilvolumen V:</span>
-                      <span className="text-shiraz">{bauteilVol} m³</span>
+                      <span className="text-shiraz">{formatDeWert(bauteilVol)} m³</span>
                     </div>
                     <input 
                       type="range" 
@@ -2003,7 +2004,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-normal">
                         <span className="text-slate-600">Zementgehalt c_A:</span>
-                        <span className="font-bold">{cementGehaltA} kg/m³</span>
+                        <span className="font-bold">{formatDeWert(cementGehaltA)} kg/m³</span>
                       </div>
                       <input 
                         type="range" 
@@ -2019,7 +2020,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-normal">
                         <span className="text-slate-600">Spezifischer GWP_A (klinkerreich):</span>
-                        <span className="font-bold">{gwpZementA} kg CO2-eq/t</span>
+                        <span className="font-bold">{formatDeWert(gwpZementA)} kg CO2-eq/t</span>
                       </div>
                       <input 
                         type="range" 
@@ -2039,7 +2040,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-normal">
                         <span className="text-slate-600">Zementgehalt c_B:</span>
-                        <span className="font-bold text-shiraz">{cementGehaltB} kg/m³</span>
+                        <span className="font-bold text-shiraz">{formatDeWert(cementGehaltB)} kg/m³</span>
                       </div>
                       <input 
                         type="range" 
@@ -2055,7 +2056,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-normal">
                         <span className="text-slate-600">Spezifischer GWP_B (hüttensandreich):</span>
-                        <span className="font-bold text-shiraz">{gwpZementB} kg CO2-eq/t</span>
+                        <span className="font-bold text-shiraz">{formatDeWert(gwpZementB)} kg CO2-eq/t</span>
                       </div>
                       <input 
                         type="range" 
@@ -2079,20 +2080,20 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-4 text-xs text-text-main/80 leading-relaxed">
                       <div>
                         <strong>Berechnung Rezeptur A (CEM I):</strong>
-                        <BlockMath math={`M_{c,A} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltA} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${totalCementA.toFixed(1)}} \\, \\text{t Zement}`} />
-                        <BlockMath math={`GWP_A = \\frac{${totalCementA.toFixed(1)} \\, \\text{t} \\cdot ${gwpZementA} \\, \\text{kg CO}_2\\text{-eq/t}}{1000} = \\color{#A3113E}{${totalGwpA.toFixed(2)}} \\, \\text{t CO}_2\\text{-eq}`} />
+                        <BlockMath math={`M_{c,A} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltA} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${formatDeTeX(totalCementA, 1)}} \\, \\text{t Zement}`} />
+                        <BlockMath math={`GWP_A = \\frac{${formatDeTeX(totalCementA, 1)} \\, \\text{t} \\cdot ${gwpZementA} \\, \\text{kg CO}_2\\text{-eq/t}}{1000} = \\color{#A3113E}{${formatDeTeX(totalGwpA, 2)}} \\, \\text{t CO}_2\\text{-eq}`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Berechnung Rezeptur B (CEM III):</strong>
-                        <BlockMath math={`M_{c,B} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltB} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${totalCementB.toFixed(1)}} \\, \\text{t Zement}`} />
-                        <BlockMath math={`GWP_B = \\frac{${totalCementB.toFixed(1)} \\, \\text{t} \\cdot ${gwpZementB} \\, \\text{kg CO}_2\\text{-eq/t}}{1000} = \\color{#A3113E}{${totalGwpB.toFixed(2)}} \\, \\text{t CO}_2\\text{-eq}`} />
+                        <BlockMath math={`M_{c,B} = \\frac{${bauteilVol} \\, \\text{m}^3 \\cdot ${cementGehaltB} \\, \\text{kg/m}^3}{1000} = \\color{#A3113E}{${formatDeTeX(totalCementB, 1)}} \\, \\text{t Zement}`} />
+                        <BlockMath math={`GWP_B = \\frac{${formatDeTeX(totalCementB, 1)} \\, \\text{t} \\cdot ${gwpZementB} \\, \\text{kg CO}_2\\text{-eq/t}}{1000} = \\color{#A3113E}{${formatDeTeX(totalGwpB, 2)}} \\, \\text{t CO}_2\\text{-eq}`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Ergebnis GWP-Einsparung:</strong>
-                        <BlockMath math={`\\Delta GWP = GWP_A - GWP_B = ${totalGwpA.toFixed(2)} - ${totalGwpB.toFixed(2)} = \\color{#A3113E}{${deltaGwp.toFixed(2)}} \\, \\text{t CO}_2\\text{-eq}`} />
-                        <BlockMath math={`\\text{Prozentuale Einsparung} = \\color{#A3113E}{${percentSavings.toFixed(1)}\\%}`} />
+                        <BlockMath math={`\\Delta GWP = GWP_A - GWP_B = ${formatDeTeX(totalGwpA, 2)} - ${formatDeTeX(totalGwpB, 2)} = \\color{#A3113E}{${formatDeTeX(deltaGwp, 2)}} \\, \\text{t CO}_2\\text{-eq}`} />
+                        <BlockMath math={`\\text{Prozentuale Einsparung} = \\color{#A3113E}{${formatDeTeX(percentSavings, 1)}\\%}`} />
                       </div>
                     </div>
                   </div>
@@ -2184,7 +2185,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <div className="space-y-2 text-xs bg-slate-50 p-3 rounded-lg border border-slate-150 animate-in slide-in-from-top-2 duration-200">
                         <div className="flex justify-between font-bold">
                           <span className="text-slate-700">Mittlere Prüffestigkeit (150mm Würfel):</span>
-                          <span className="text-shiraz">{pruefFestigkeit.toFixed(1)} N/mm²</span>
+                          <span className="text-shiraz">{formatDeZahl(pruefFestigkeit, 1)} N/mm²</span>
                         </div>
                         <input 
                           type="range" 
@@ -2213,7 +2214,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <p className="mt-1 text-xxs">
                           Die historische Kantenlänge von 200 mm wird auf den heutigen 150 mm Prüfwürfel normiert:
                         </p>
-                        <BlockMath math={`\\beta_{WN,150} = 0,95 \\cdot \\beta_{WN} = 0,95 \\cdot \\color{#A3113E}{${beta_WN.toFixed(1)}} = \\color{#A3113E}{${beta_WN_150.toFixed(2)}} \\, \\text{N/mm}^2`} />
+                        <BlockMath math={`\\beta_{WN,150} = 0{,}95 \\cdot \\beta_{WN} = 0{,}95 \\cdot \\color{#A3113E}{${formatDeTeX(beta_WN, 1)}} = \\color{#A3113E}{${formatDeTeX(beta_WN_150, 2)}} \\, \\text{N/mm}^2`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
@@ -2221,7 +2222,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <p className="mt-1 text-xxs">
                           Das standardisierte Zylinder-zu-Würfel-Verhältnis beträgt 0,80:
                         </p>
-                        <BlockMath math={`f_{ck,cyl} = 0,80 \\cdot \\beta_{WN,150} = 0,80 \\cdot \\color{#A3113E}{${beta_WN_150.toFixed(2)}} = \\color{#A3113E}{${f_ck_cyl_raw.toFixed(2)}} \\, \\text{N/mm}^2`} />
+                        <BlockMath math={`f_{ck,cyl} = 0{,}80 \\cdot \\beta_{WN,150} = 0{,}80 \\cdot \\color{#A3113E}{${formatDeTeX(beta_WN_150, 2)}} = \\color{#A3113E}{${formatDeTeX(f_ck_cyl_raw, 2)}} \\, \\text{N/mm}^2`} />
                       </div>
 
                       {!hasPruefung ? (
@@ -2230,13 +2231,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                           <p className="mt-1 text-xxs text-red-700">
                             Wegen reiner Einstufung nach Aktenlage ohne Bohrkernprüfung ist ein pauschaler Abschlag von <strong>3,0 N/mm²</strong> vorgeschrieben:
                           </p>
-                          <BlockMath math={`f_{ck,act} = f_{ck,cyl} - 3,0 = ${f_ck_cyl_raw.toFixed(2)} - 3,0 = \\color{#A3113E}{${f_ck_act.toFixed(2)}} \\, \\text{N/mm}^2`} />
+                          <BlockMath math={`f_{ck,act} = f_{ck,cyl} - 3{,}0 = ${formatDeTeX(f_ck_cyl_raw, 2)} - 3{,}0 = \\color{#A3113E}{${formatDeTeX(f_ck_act, 2)}} \\, \\text{N/mm}^2`} />
                         </div>
                       ) : (
                         <div className="border-t border-slate-100 pt-3 bg-green-50/50 p-2.5 rounded-lg border border-green-150">
                           <strong>Schritt 3: Einstufung nach Bauwerksprüfung</strong>
                           <p className="mt-1 text-xxs text-green-700">
-                            Prüfwert: <InlineMath math={`f_{cm,cube} = ${pruefFestigkeit.toFixed(1)} \\, \\text{N/mm}^2`} />. Zuordnung zur Festigkeitsklasse: <strong>{testedKlasseLabel}</strong> (<InlineMath math={`f_{ck} = ${f_ck_tested} \\, \\text{N/mm}^2`} />)
+                            Prüfwert: <InlineMath math={`f_{cm,cube} = ${formatDeTeX(pruefFestigkeit, 1)} \\, \\text{N/mm}^2`} />. Zuordnung zur Festigkeitsklasse: <strong>{testedKlasseLabel}</strong> (<InlineMath math={`f_{ck} = ${f_ck_tested} \\, \\text{N/mm}^2`} />)
                           </p>
                         </div>
                       )}
@@ -2246,7 +2247,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <p className="mt-1 text-xxs">
                           Der Bemessungswert für die Tragfähigkeitsberechnung nach Eurocode 2 lautet:
                         </p>
-                        <BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_C} = 0,85 \\cdot \\frac{\\color{#A3113E}{${f_ck_final.toFixed(1)}}}{1,5} = \\color{#A3113E}{${f_cd_bestand.toFixed(2)}} \\, \\text{N/mm}^2`} />
+                        <BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_C} = 0{,}85 \\cdot \\frac{\\color{#A3113E}{${formatDeTeX(f_ck_final, 1)}}}{1{,}5} = \\color{#A3113E}{${formatDeTeX(f_cd_bestand, 2)}} \\, \\text{N/mm}^2`} />
                       </div>
                     </div>
                   </div>
@@ -2259,7 +2260,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <span>Tragfähigkeits-Potenzial im Bestand:</span>
                     </div>
                     <p>
-                      Der Bemessungswert der Betondruckfestigkeit im Altbau beträgt für die Berechnungen <strong>{f_cd_bestand.toFixed(2)} N/mm²</strong>.
+                      Der Bemessungswert der Betondruckfestigkeit im Altbau beträgt für die Berechnungen <strong>{formatDeZahl(f_cd_bestand, 2)} N/mm²</strong>.
                     </p>
                     {hasPruefung ? (
                       <p className="text-xxs opacity-95 mt-1">
@@ -2301,7 +2302,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between font-bold">
                         <span className="text-slate-700">Stabdurchmesser Ø:</span>
-                        <span className="text-shiraz">{diameterStahl} mm</span>
+                        <span className="text-shiraz">{formatDeWert(diameterStahl)} mm</span>
                       </div>
                       <input 
                         type="range" 
@@ -2326,15 +2327,15 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       <div>
                         <strong>Schritt 1: Bemessungswert der Streckgrenze f_yd</strong>
                         <p className="mt-1 text-xxs">
-                          Berechnung mit dem Materialsicherheitsbeiwert <InlineMath math="\gamma_S = 1,15" />:
+                          Berechnung mit dem Materialsicherheitsbeiwert <InlineMath math="\gamma_S = 1{,}15" />:
                         </p>
-                        <BlockMath math={`f_{yd} = \\frac{f_{yk}}{\\gamma_S} = \\frac{\\color{#A3113E}{${f_yk_stahl}}}{1,15} = \\color{#A3113E}{${f_yd_stahl.toFixed(1)}} \\, \\text{N/mm}^2`} />
+                        <BlockMath math={`f_{yd} = \\frac{f_{yk}}{\\gamma_S} = \\frac{\\color{#A3113E}{${f_yk_stahl}}}{1{,}15} = \\color{#A3113E}{${formatDeTeX(f_yd_stahl, 1)}} \\, \\text{N/mm}^2`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <strong>Schritt 2: Zugkapazität eines Einzelstabs F_yd</strong>
-                        <BlockMath math={`A_s = \\frac{\\pi \\cdot d^2}{4} = \\frac{\\pi \\cdot \\color{#A3113E}{${diameterStahl}}^2}{4} = \\color{#A3113E}{${steelArea.toFixed(1)}} \\, \\text{mm}^2`} />
-                        <BlockMath math={`F_{yd} = A_s \\cdot f_{yd} = \\color{#A3113E}{${steelArea.toFixed(1)}} \\cdot \\color{#A3113E}{${f_yd_stahl.toFixed(1)}} \\cdot 10^{-3} = \\color{#A3113E}{${yieldCapacity.toFixed(1)}} \\, \\text{kN}`} />
+                        <BlockMath math={`A_s = \\frac{\\pi \\cdot d^2}{4} = \\frac{\\pi \\cdot \\color{#A3113E}{${formatDeTeXWert(diameterStahl)}}^2}{4} = \\color{#A3113E}{${formatDeTeX(steelArea, 1)}} \\, \\text{mm}^2`} />
+                        <BlockMath math={`F_{yd} = A_s \\cdot f_{yd} = \\color{#A3113E}{${formatDeTeX(steelArea, 1)}} \\cdot \\color{#A3113E}{${formatDeTeX(f_yd_stahl, 1)}} \\cdot 10^{-3} = \\color{#A3113E}{${formatDeTeX(yieldCapacity, 1)}} \\, \\text{kN}`} />
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
@@ -2345,7 +2346,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                               <p className="font-bold">Achtung: Unberuhigt vergossener glatter Rundstahl (BSt 220 RU):</p>
                               <p>
                                 - <strong>Keine Schweißeignung!</strong> Schweißen ist aufgrund der Gefahr von Heißrissen und plötzlichem Sprödbruch strengstens verboten.<br />
-                                - <strong>Extrem geringe Verbundfestigkeit:</strong> Weil glatte Oberfläche, muss die Verbundspannung um 70% abgemindert werden (<InlineMath math="\eta_1 = 0,3" />).<br />
+                                - <strong>Extrem geringe Verbundfestigkeit:</strong> Weil glatte Oberfläche, muss die Verbundspannung um 70% abgemindert werden (<InlineMath math="\eta_1 = 0{,}3" />).<br />
                                 - <strong>Hakenverankerung zwingend erforderlich:</strong> Die Kraftübertragung kann statisch nicht allein durch Haftung am Stab entlang erfolgen. Winkelhaken oder Endhaken sind an Stabenden zwingend unerlässlich!
                               </p>
                             </div>
@@ -2355,7 +2356,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                               <p className="font-bold">Hinweis: Betonstahl III (BSt 420/500 RU):</p>
                               <p>
                                 - <strong>Schweißeignung kritisch:</strong> Meist unberuhigt vergossen, daher Schweißen nur in Ausnahmefällen unter strengen metallurgischen Sonderprüfungen gestattet.<br />
-                                - <strong>Geringere Verbundwirkung:</strong> Die historische Schrägrippung ist unregelmäßiger und liefert eine geringere Verbundfestigkeit als moderne Betonstähle (<InlineMath math="\eta_1 \approx 0,7" />).
+                                - <strong>Geringere Verbundwirkung:</strong> Die historische Schrägrippung ist unregelmäßiger und liefert eine geringere Verbundfestigkeit als moderne Betonstähle (<InlineMath math="\eta_1 \approx 0{,}7" />).
                               </p>
                             </div>
                           )}
@@ -2364,7 +2365,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                               <p className="font-bold">Hinweis: Kaltverformter gerippter Stahl (BSt 500 RK):</p>
                               <p>
                                 - <strong>Bedingt schweißgeeignet:</strong> Kaltverformter Stahl verliert beim Erwärmen an Festigkeit. Schweißen vermindert die Streckgrenze in der Wärmeeinflusszone.<br />
-                                - <strong>Gute Verbundwirkung:</strong> Gerippte Oberfläche erlaubt normalen Verbundnachweis (<InlineMath math="\eta_1 = 1,0" />).
+                                - <strong>Gute Verbundwirkung:</strong> Gerippte Oberfläche erlaubt normalen Verbundnachweis (<InlineMath math="\eta_1 = 1{,}0" />).
                               </p>
                             </div>
                           )}
@@ -2427,7 +2428,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       >
                         <div className="text-[11px] leading-tight">{mat.name}</div>
                         <div className={`text-[9.5px] font-mono ${schallWandTyp === mat.id ? 'text-white/80' : 'text-slate-400'}`}>
-                          {mat.rho} kg/m³
+                          {formatDeWert(mat.rho)} kg/m³
                         </div>
                       </button>
                     ))}
@@ -2438,7 +2439,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 <div className="space-y-1.5">
                   <div className="flex justify-between text-xs font-bold text-slate-700">
                     <span>Wanddicke Rohbauteil (d):</span>
-                    <span className="text-shiraz font-mono">{schallDicke.toFixed(1)} cm</span>
+                    <span className="text-shiraz font-mono">{formatDeZahl(schallDicke, 1)} cm</span>
                   </div>
                   <input 
                     type="range" 
@@ -2450,10 +2451,10 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     className="w-full accent-shiraz"
                   />
                   <div className="flex justify-between text-[10px] text-slate-400 font-mono">
-                    <span>10.0 cm</span>
-                    <span>17.5 cm (Standard KS)</span>
-                    <span>24.0 cm</span>
-                    <span>36.5 cm</span>
+                    <span>10,0 cm</span>
+                    <span>17,5 cm (Standard KS)</span>
+                    <span>24,0 cm</span>
+                    <span>36,5 cm</span>
                   </div>
                 </div>
 
@@ -2461,7 +2462,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 <div className="space-y-1.5">
                   <div className="flex justify-between text-xs font-bold text-slate-700">
                     <span>Trockenrohdichte (ρ):</span>
-                    <span className="text-shiraz font-mono">{schallRohdichte} kg/m³</span>
+                    <span className="text-shiraz font-mono">{formatDeWert(schallRohdichte)} kg/m³</span>
                   </div>
                   <input 
                     type="range" 
@@ -2533,8 +2534,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         Produkt aus Wanddicke <InlineMath math="d" /> und Rohdichte <InlineMath math="\rho" /> zuzüglich Putzmasse:
                       </p>
                       <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
-                        <BlockMath math={`m'_0 = \\frac{${schallDicke.toFixed(1)}}{100} \\, \\text{m} \\times ${schallRohdichte} \\, \\text{kg/m}^3 = ${schall_m0.toFixed(1)} \\, \\text{kg/m}^2`} />
-                        <BlockMath math={`m' = ${schall_m0.toFixed(1)} + ${schallPutz ? 40 : 0} = \\color{#A3113E}{\\mathbf{${schall_m_total.toFixed(1)}}} \\, \\text{kg/m}^2`} />
+                        <BlockMath math={`m'_0 = \\frac{${formatDeTeX(schallDicke, 1)}}{100} \\, \\text{m} \\times ${schallRohdichte} \\, \\text{kg/m}^3 = ${formatDeTeX(schall_m0, 1)} \\, \\text{kg/m}^2`} />
+                        <BlockMath math={`m' = ${formatDeTeX(schall_m0, 1)} + ${schallPutz ? 40 : 0} = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_m_total, 1)}}} \\, \\text{kg/m}^2`} />
                       </div>
                     </div>
 
@@ -2545,7 +2546,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         Für massive biegesteife Schalen (<InlineMath math="m' \ge 150 \, \text{kg/m}^2" />) nach DIN 4109 Beiblatt 1:
                       </p>
                       <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
-                        <BlockMath math={`R_w = 32{,}4 \\cdot \\lg(m') - 26{,}0 = 32{,}4 \\cdot \\lg(${schall_m_total.toFixed(1)}) - 26{,}0 = \\color{#A3113E}{\\mathbf{${schall_Rw.toFixed(1)}}} \\, \\text{dB}`} />
+                        <BlockMath math={`R_w = 32{,}4 \\cdot \\lg(m') - 26{,}0 = 32{,}4 \\cdot \\lg(${formatDeTeX(schall_m_total, 1)}) - 26{,}0 = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_Rw, 1)}}} \\, \\text{dB}`} />
                       </div>
                     </div>
 
@@ -2553,7 +2554,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="border-t border-slate-100 pt-3">
                       <strong>Schritt 3: Bauschalldämm-Maß R&apos;_w mit Flankenabzug K_F</strong>
                       <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
-                        <BlockMath math={`R'_w = R_w - K_F = ${schall_Rw.toFixed(1)} - ${schall_KF} = \\color{#A3113E}{\\mathbf{${schall_R_prime_w.toFixed(1)}}} \\, \\text{dB}`} />
+                        <BlockMath math={`R'_w = R_w - K_F = ${formatDeTeX(schall_Rw, 1)} - ${schall_KF} = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_R_prime_w, 1)}}} \\, \\text{dB}`} />
                       </div>
                     </div>
 
@@ -2569,11 +2570,11 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                           <span>{schall_passed ? 'Normnachweis ERFÜLLT' : 'Normnachweis NICHT ERFÜLLT'}</span>
                         </div>
                         <p className="mt-1.5 text-xs leading-relaxed">
-                          Vorhandenes Bauschalldämm-Maß <strong>R&apos;_w = {schall_R_prime_w.toFixed(1)} dB</strong> vs. normative Mindestanforderung <strong>R&apos;_w,erf = {schall_erf} dB</strong> für {schall_soll_werte[schallSollTyp].label}.
+                          Vorhandenes Bauschalldämm-Maß <strong>R&apos;_w = {formatDeZahl(schall_R_prime_w, 1)} dB</strong> vs. normative Mindestanforderung <strong>R&apos;_w,erf = {formatDeWert(schall_erf)} dB</strong> für {schall_soll_werte[schallSollTyp].label}.
                         </p>
                         {!schall_passed && (
                           <p className="mt-2 text-xxs font-medium text-rose-800">
-                            Empfohlene Gegenmaßnahmen: Wanddicke vergrößern (z.B. auf 24 cm KS), Baustoff mit höherer Rohdichteklasse wählen (RDK ≥ 2.0) oder flankierende Bauteile durch elastische Entkopplung optimieren.
+                            Empfohlene Gegenmaßnahmen: Wanddicke vergrößern (z.B. auf 24 cm KS), Baustoff mit höherer Rohdichteklasse wählen (RDK ≥ 2,0) oder flankierende Bauteile durch elastische Entkopplung optimieren.
                           </p>
                         )}
                       </div>
@@ -2643,9 +2644,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       onChange={(e) => setHolzArtBrand(e.target.value as any)}
                       className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
                     >
-                      <option value="bsh">Brettschichtholz GL28h (β = 0.70 mm/min, fmk = 28 N/mm²)</option>
-                      <option value="c24">Vollholz Nadelholz C24 (β = 0.65 mm/min, fmk = 24 N/mm²)</option>
-                      <option value="laubholz">Laubholz D30 / Buche (β = 0.50 mm/min, fmk = 30 N/mm²)</option>
+                      <option value="bsh">Brettschichtholz GL28h (β = 0,70 mm/min, fmk = 28 N/mm²)</option>
+                      <option value="c24">Vollholz Nadelholz C24 (β = 0,65 mm/min, fmk = 24 N/mm²)</option>
+                      <option value="laubholz">Laubholz D30 / Buche (β = 0,50 mm/min, fmk = 30 N/mm²)</option>
                     </select>
                   </div>
 
@@ -2654,7 +2655,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-700 block">Breite b [cm]:</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         value={holzBreite}
                         onChange={(e) => setHolzBreite(Math.max(8, parseFloat(e.target.value) || 8))}
                         className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-mono"
@@ -2663,7 +2664,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-700 block">Höhe h [cm]:</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         value={holzHoehe}
                         onChange={(e) => setHolzHoehe(Math.max(12, parseFloat(e.target.value) || 12))}
                         className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-mono"
@@ -2715,7 +2716,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                               : 'bg-white text-slate-700 border-slate-200'
                           }`}
                         >
-                          R{mins}
+                          R{formatDeWert(mins)}
                         </button>
                       ))}
                     </div>
@@ -2725,7 +2726,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-xs font-bold text-slate-700">
                       <span>Biegemoment Kaltzustand (M_Ed):</span>
-                      <span className="text-shiraz font-mono">{momentKaltEd} kNm</span>
+                      <span className="text-shiraz font-mono">{formatDeWert(momentKaltEd)} kNm</span>
                     </div>
                     <input 
                       type="range" 
@@ -2752,26 +2753,26 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         Zuschlag <InlineMath math="d_0 = 7\,\text{mm}" /> für die temperaturgeschädigte Kohleschicht:
                       </p>
                       <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
-                        <BlockMath math={`d_{\\text{char},n} = ${beta_char} \\cdot ${brandDauerMin} = ${d_char_n.toFixed(1)} \\, \\text{mm}`} />
-                        <BlockMath math={`d_{\\text{ef}} = ${d_char_n.toFixed(1)} + 7{,}0 = \\color{#A3113E}{\\mathbf{${d_ef.toFixed(1)}}} \\, \\text{mm}`} />
+                        <BlockMath math={`d_{\\text{char},n} = ${formatDeTeXWert(beta_char)} \\cdot ${brandDauerMin} = ${formatDeTeX(d_char_n, 1)} \\, \\text{mm}`} />
+                        <BlockMath math={`d_{\\text{ef}} = ${formatDeTeX(d_char_n, 1)} + 7{,}0 = \\color{#A3113E}{\\mathbf{${formatDeTeX(d_ef, 1)}}} \\, \\text{mm}`} />
                       </div>
                     </div>
 
                     <div className="border-t border-slate-100 pt-2.5">
                       <strong>Schritt 2: Effektiver Restquerschnitt b_ef × h_ef</strong>
                       <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
-                        <BlockMath math={`b_{\\text{ef}} = ${holzBreite * 10} - 2 \\cdot ${d_ef.toFixed(1)} = \\mathbf{${b_ef_mm.toFixed(1)}} \\, \\text{mm}`} />
-                        <BlockMath math={`h_{\\text{ef}} = ${holzHoehe * 10} - ${brandBeanspruchung === '4_seitig' ? '2 \\cdot ' : ''}${d_ef.toFixed(1)} = \\mathbf{${h_ef_mm.toFixed(1)}} \\, \\text{mm}`} />
-                        <BlockMath math={`W_{\\text{ef}} = \\frac{b_{\\text{ef}} \\cdot h_{\\text{ef}}^2}{6} = \\mathbf{${(W_ef_mm3 / 1000).toFixed(0)}} \\, \\text{cm}^3`} />
+                        <BlockMath math={`b_{\\text{ef}} = ${formatDeTeXWert(holzBreite * 10)} - 2 \\cdot ${formatDeTeX(d_ef, 1)} = \\mathbf{${formatDeTeX(b_ef_mm, 1)}} \\, \\text{mm}`} />
+                        <BlockMath math={`h_{\\text{ef}} = ${holzHoehe * 10} - ${brandBeanspruchung === '4_seitig' ? '2 \\cdot ' : ''}${formatDeTeX(d_ef, 1)} = \\mathbf{${formatDeTeX(h_ef_mm, 1)}} \\, \\text{mm}`} />
+                        <BlockMath math={`W_{\\text{ef}} = \\frac{b_{\\text{ef}} \\cdot h_{\\text{ef}}^2}{6} = \\mathbf{${formatDeTeX((W_ef_mm3 / 1000), 0)}} \\, \\text{cm}^3`} />
                       </div>
                     </div>
 
                     <div className="border-t border-slate-100 pt-2.5">
                       <strong>Schritt 3: Heißtragfähigkeit M_fi,Rd vs. Einwirkung M_fi,Ed</strong>
                       <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
-                        <BlockMath math={`M_{\\text{fi,Ed}} = 0{,}60 \\cdot ${momentKaltEd} = \\mathbf{${M_fi_Ed.toFixed(1)}} \\, \\text{kNm}`} />
-                        <BlockMath math={`M_{\\text{fi,Rd}} = W_{\\text{ef}} \\cdot f_{m,\\text{fi},d} = \\mathbf{${M_fi_Rd.toFixed(1)}} \\, \\text{kNm}`} />
-                        <BlockMath math={`\\eta_{\\text{fi}} = \\frac{${M_fi_Ed.toFixed(1)}}{${M_fi_Rd.toFixed(1)}} = \\color{#A3113E}{\\mathbf{${eta_brand_holz.toFixed(2)}}} \\, ${brand_holz_passed ? '\\le 1{,}0' : '> 1{,}0'}`} />
+                        <BlockMath math={`M_{\\text{fi,Ed}} = 0{,}60 \\cdot ${formatDeTeXWert(momentKaltEd)} = \\mathbf{${formatDeTeX(M_fi_Ed, 1)}} \\, \\text{kNm}`} />
+                        <BlockMath math={`M_{\\text{fi,Rd}} = W_{\\text{ef}} \\cdot f_{m,\\text{fi},d} = \\mathbf{${formatDeTeX(M_fi_Rd, 1)}} \\, \\text{kNm}`} />
+                        <BlockMath math={`\\eta_{\\text{fi}} = \\frac{${formatDeTeX(M_fi_Ed, 1)}}{${formatDeTeX(M_fi_Rd, 1)}} = \\color{#A3113E}{\\mathbf{${formatDeTeX(eta_brand_holz, 2)}}} \\, ${brand_holz_passed ? '\\le 1{,}0' : '> 1{,}0'}`} />
                       </div>
                     </div>
 
@@ -2782,7 +2783,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     }`}>
                       <div className="flex items-center gap-2 font-bold text-xs">
                         {brand_holz_passed ? <CheckCircle2 size={16} className="text-emerald-700" /> : <AlertTriangle size={16} className="text-rose-700" />}
-                        <span>{brand_holz_passed ? `Feuerwiderstand R${brandDauerMin} ERFÜLLT (Ausnutzung ${(eta_brand_holz * 100).toFixed(0)} %)` : `Feuerwiderstand R${brandDauerMin} NICHT ERFÜLLT (Überlastung ${(eta_brand_holz * 100).toFixed(0)} %)`}</span>
+                        <span>{brand_holz_passed ? `Feuerwiderstand R${brandDauerMin} ERFÜLLT (Ausnutzung ${formatDeZahl((eta_brand_holz * 100), 0)} %)` : `Feuerwiderstand R${brandDauerMin} NICHT ERFÜLLT (Überlastung ${formatDeZahl((eta_brand_holz * 100), 0)} %)`}</span>
                       </div>
                     </div>
                   </div>
@@ -2873,13 +2874,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           'Klingsch, W. et al.: Brandschutz im Bauwesen. Berlin: Springer 2018'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DAfStb-Richtlinie: Bauen im Bestand (März 2017)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
+          { title: 'DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-3' },
+          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1' },
+          { title: 'DAfStb-Richtlinie: Bauen im Bestand (März 2017)', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Bauen+im+Bestand' }
         ]}
         formeln={[
           {

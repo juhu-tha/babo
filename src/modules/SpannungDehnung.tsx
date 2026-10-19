@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
   Chart as ChartJS,
@@ -95,7 +96,7 @@ export default function SpannungDehnung() {
       datasets: [
         {
           type: 'line' as const,
-          label: `Bemessung (fcd = ${fcd.toFixed(1)} MPa)`,
+          label: `Bemessung (fcd = ${formatDeZahl(fcd, 1)} MPa)`,
           data: dataDesign,
           borderColor: '#A3113E',
           backgroundColor: '#A3113E',
@@ -105,7 +106,7 @@ export default function SpannungDehnung() {
         },
         {
           type: 'line' as const,
-          label: `Realverhalten (fcm = ${fcm.toFixed(1)} MPa)`,
+          label: `Realverhalten (fcm = ${formatDeZahl(fcm, 1)} MPa)`,
           data: dataReal,
           borderColor: '#10b981', // Emerald 500
           backgroundColor: '#10b981',
@@ -163,7 +164,7 @@ export default function SpannungDehnung() {
       datasets: [
         {
           type: 'line' as const,
-          label: `Stahl (C = ${carbon.toFixed(2)} %)`,
+          label: `Stahl (C = ${formatDeZahl(carbon, 2)} %)`,
           data,
           borderColor: '#0e558c',
           backgroundColor: '#0e558c',
@@ -216,19 +217,19 @@ export default function SpannungDehnung() {
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Bemessungswert f_{cd}" /></div>
-                <div className="text-lg font-bold text-text-main">{betonProps.fcd.toFixed(1)} MPa</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl(betonProps.fcd, 1)} MPa</div>
               </div>
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Mittlere Festigkeit f_{cm}" /></div>
-                <div className="text-lg font-bold text-text-main">{betonProps.fcm.toFixed(1)} MPa</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl(betonProps.fcm, 1)} MPa</div>
               </div>
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="E-Modul E_{cm}" /></div>
-                <div className="text-lg font-bold text-text-main">{(betonProps.Ecm / 1000).toFixed(1)} GPa</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl((betonProps.Ecm / 1000), 1)} GPa</div>
               </div>
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Stauchung \varepsilon_{c2}" /></div>
-                <div className="text-lg font-bold text-text-main">{betonProps.ec2.toFixed(2)} ‰</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl(betonProps.ec2, 2)} ‰</div>
               </div>
             </div>
           </div>
@@ -266,19 +267,19 @@ export default function SpannungDehnung() {
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Streckgrenze f_y" /></div>
-                <div className="text-lg font-bold text-text-main">{stahlProps.fy.toFixed(0)} MPa</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.fy, 0)} MPa</div>
               </div>
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Zugfestigkeit f_u" /></div>
-                <div className="text-lg font-bold text-text-main">{stahlProps.fu.toFixed(0)} MPa</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.fu, 0)} MPa</div>
               </div>
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Fließdehnung \varepsilon_y" /></div>
-                <div className="text-lg font-bold text-text-main">{stahlProps.ey.toFixed(2)} ‰</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.ey, 2)} ‰</div>
               </div>
               <div>
                 <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Bruchdehnung \varepsilon_u" /></div>
-                <div className="text-lg font-bold text-text-main">{stahlProps.eu.toFixed(0)} ‰</div>
+                <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.eu, 0)} ‰</div>
               </div>
             </div>
           </div>
@@ -303,10 +304,10 @@ export default function SpannungDehnung() {
           { title: 'Spannungs-Dehnungs-Diagramm', url: 'https://de.wikipedia.org/wiki/Spannungs-Dehnungs-Diagramm' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Allgemeine Regeln)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.5 (Parabel-Rechteck-Diagramm für Querschnittsbemessung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.4 (Nichtlineare Spannungs-Dehnungs-Beziehung des Betons)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 488-1:2009-08 / DIN EN 1992-1-1:2023-08 Abschnitt 5.2 (Betonstahl - Eigenschaften und Kennwerte)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Allgemeine Regeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.5 (Parabel-Rechteck-Diagramm für Querschnittsbemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.4 (Nichtlineare Spannungs-Dehnungs-Beziehung des Betons)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN 488-1:2009-08 / DIN EN 1992-1-1:2023-08 Abschnitt 5.2 (Betonstahl - Eigenschaften und Kennwerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+488-1' }
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G. (2010): Bemessung im Konstruktiven Betonbau (Springer-Verlag)',
@@ -316,7 +317,7 @@ export default function SpannungDehnung() {
         formeln={[
           {
             formel: '\\sigma_c = f_{cd} \\cdot \\left[ 1 - \\left(1 - \\frac{\\varepsilon_c}{\\varepsilon_{c2}}\\right)^n \\right]',
-            erklaerung: 'Bemessungsmodell Beton (Parabel-Rechteck-Diagramm nach Eurocode 2): σc ist die Betonspannung, fcd der Bemessungswert der Betondruckfestigkeit, εc2 die Dehnung bei Höchstspannung (2.0 ‰ für fck ≤ 50 MPa) und n der Exponent (2.0 für fck ≤ 50 MPa).',
+            erklaerung: 'Bemessungsmodell Beton (Parabel-Rechteck-Diagramm nach Eurocode 2): σc ist die Betonspannung, fcd der Bemessungswert der Betondruckfestigkeit, εc2 die Dehnung bei Höchstspannung (2,0 ‰ für fck ≤ 50 MPa) und n der Exponent (2.0 für fck ≤ 50 MPa).',
             quelle: 'DIN EN 1992-1-1 Abs. 3.1.5'
           },
           {
