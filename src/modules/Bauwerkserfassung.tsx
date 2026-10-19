@@ -99,7 +99,7 @@ export default function Bauwerkserfassung() {
   }, [rafterWidth, rafterHeight, spanLength, axialForce, bendingLoad, initialDeformation, woodParams]);
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto text-slate-800 animate-fade-in">
+    <div className="flex flex-col gap-6 w-full text-slate-800 animate-fade-in">
       
       {/* --- Unified Header: Modern Cockpit Theme --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm flex flex-col gap-6">

@@ -232,7 +232,7 @@ export default function SchaedenChecklisten() {
   const currentSection = INITIAL_CHECKLISTS[activeSubTab];
 
   return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto px-4 py-4 animate-in fade-in duration-300">
+    <div className="flex flex-col gap-6 w-full py-4 animate-in fade-in duration-300">
       
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">

@@ -351,7 +351,7 @@ export default function MechanischePruefungen() {
 
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto text-slate-800 animate-fade-in font-sans">
+    <div className="flex flex-col gap-6 w-full text-slate-800 animate-fade-in font-sans">
       
       {/* --- Unified Header: Modern Laboratory Setup --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm">

@@ -8,6 +8,18 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.19.1',
+    date: '19.10.2026',
+    title: '100% Bildschirmauflösung (Fluid-Layout), Impressum-Profillink & Normen-Audit',
+    badge: 'patch',
+    changes: [
+      '100% Breite nutzt volle Bildschirmauflösung: Aufhebung aller einschränkenden max-w-Containergrenzen (max-w-7xl, max-w-6xl etc.) über sämtliche Fach- und Cockpitmodule sowie Implementierung einer globalen Fluid-Layout-Regel in index.css. Das Portal nutzt im 100%-Breite-Modus nun die uneingeschränkte Displayauflösung von Widescreen-, QHD- und 4K-Monitoren.',
+      'Modul Impressum: Aktualisierung des Hochschul-Profil-Links für Prof. Dr.-Ing. Jürgen Huber auf die offizielle Fakultäts-Kontaktseite (https://www.tha.de/hochschule/fakultaet/ab/kontakt/juergen-huber/) der Technischen Hochschule Augsburg.',
+      'Normen- & Link-Aktualitätsmonitor: Revisionsstand auf den 19.10.2026 aktualisiert, Audit-Statusbereinigung mit Alert-Kennzeichnung für manuelle Prüfpfade bei automatisiert gesperrten Portalen.',
+      'Zentrales Normenregister (centralNormenRegistry): Vollständige Harmonisierung aller Normen-Verlinkungen auf das deterministische DIN-Media-Such-Schema (https://www.dinmedia.de/de/suche?q=...) zur Vermeidung von Linkfäule.'
+    ]
+  },
+  {
     version: 'v3.19.0',
     date: '18.10.2026',
     title: 'Spannbeton-Gesamtrevision: Differenzierte Einwirkungen (M_g1, M_perm, M_char), EC2-Grenzspannungsrechner & Dehnungsdynamik',

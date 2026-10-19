@@ -11,7 +11,9 @@ import {
   Check, 
   ShieldCheck, 
   Contrast, 
-  Keyboard
+  Keyboard,
+  Columns,
+  LayoutGrid
 } from 'lucide-react';
 
 export interface A11ySettings {
@@ -97,6 +99,37 @@ if (typeof document !== 'undefined') {
 export function AccessibilityToolbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [settings, setSettings] = useState<A11ySettings>(getA11yPreferences);
+  const [screenWidth, setScreenWidth] = useState<'standard' | 'wide' | 'full'>(() => {
+    try {
+      const saved = localStorage.getItem('baustoffboard_screen_width');
+      if (saved === 'standard' || saved === 'wide' || saved === 'full') return saved;
+      const legacyFluid = localStorage.getItem('baustoffboard_fluid_width');
+      if (legacyFluid !== null) return legacyFluid === 'true' ? 'full' : 'standard';
+      return 'wide';
+    } catch {
+      return 'wide';
+    }
+  });
+
+  useEffect(() => {
+    const handleWidthChange = (e: Event) => {
+      const custom = e as CustomEvent<'standard' | 'wide' | 'full'>;
+      if (custom.detail && (custom.detail === 'standard' || custom.detail === 'wide' || custom.detail === 'full')) {
+        setScreenWidth(custom.detail);
+      }
+    };
+    window.addEventListener('baustoffboard_width_change', handleWidthChange);
+    return () => window.removeEventListener('baustoffboard_width_change', handleWidthChange);
+  }, []);
+
+  const changeScreenWidth = (mode: 'standard' | 'wide' | 'full') => {
+    setScreenWidth(mode);
+    try {
+      localStorage.setItem('baustoffboard_screen_width', mode);
+      localStorage.setItem('baustoffboard_fluid_width', mode === 'full' ? 'true' : 'false');
+      window.dispatchEvent(new CustomEvent('baustoffboard_width_change', { detail: mode }));
+    } catch {}
+  };
 
   useEffect(() => {
     applyA11yToDocument(settings);
@@ -264,7 +297,60 @@ export function AccessibilityToolbar() {
               </div>
             </div>
 
-            {/* 2. Starker Kontrast */}
+            {/* 2. Bildschirmbreite / Layout */}
+            <div className="space-y-2 pt-1 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+                  <Columns size={13} className="text-shiraz" /> Bildschirmbreite
+                </span>
+                <span className="font-mono text-[11px] font-bold text-shiraz dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-900">
+                  {screenWidth === 'standard' ? '1152 px (Standard)' : screenWidth === 'wide' ? '1536 px (Breit)' : '100% (Vollbild)'}
+                </span>
+              </div>
+              <div className="grid grid-cols-3 gap-1">
+                <button
+                  type="button"
+                  onClick={() => changeScreenWidth('standard')}
+                  className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
+                    screenWidth === 'standard'
+                      ? 'bg-shiraz text-white border-shiraz shadow-xs'
+                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50'
+                  }`}
+                  title="Standardbreite 1152px (optimale Lesbarkeit)"
+                >
+                  <span className="flex items-center gap-1"><Columns size={11} /> Standard</span>
+                  <span className="text-[9px] font-normal opacity-80">1152 px</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changeScreenWidth('wide')}
+                  className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
+                    screenWidth === 'wide'
+                      ? 'bg-shiraz text-white border-shiraz shadow-xs'
+                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50'
+                  }`}
+                  title="Erweitertes Breitbild-Layout 1536px (für Widescreen & Tabellen)"
+                >
+                  <span className="flex items-center gap-1"><LayoutGrid size={11} /> Breit</span>
+                  <span className="text-[9px] font-normal opacity-80">1536 px</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changeScreenWidth('full')}
+                  className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
+                    screenWidth === 'full'
+                      ? 'bg-shiraz text-white border-shiraz shadow-xs'
+                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50'
+                  }`}
+                  title="100% Volle Bildschirmbreite (Fluid-Modus)"
+                >
+                  <span className="flex items-center gap-1"><Maximize2 size={11} /> Vollbild</span>
+                  <span className="text-[9px] font-normal opacity-80">100%</span>
+                </button>
+              </div>
+            </div>
+
+            {/* 3. Starker Kontrast */}
             <div className="flex items-center justify-between pt-1 border-t border-slate-100 dark:border-slate-800">
               <div>
                 <span className="font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">

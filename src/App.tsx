@@ -895,14 +895,29 @@ function AppContent() {
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [fluidWidth, setFluidWidth] = useState<boolean>(() => {
+  const [screenWidth, setScreenWidth] = useState<'standard' | 'wide' | 'full'>(() => {
     try {
-      const saved = localStorage.getItem('baustoffboard_fluid_width');
-      return saved !== null ? saved === 'true' : true;
+      const saved = localStorage.getItem('baustoffboard_screen_width');
+      if (saved === 'standard' || saved === 'wide' || saved === 'full') return saved;
+      const legacyFluid = localStorage.getItem('baustoffboard_fluid_width');
+      if (legacyFluid !== null) return legacyFluid === 'true' ? 'full' : 'standard';
+      return 'wide';
     } catch {
-      return true;
+      return 'wide';
     }
   });
+  const fluidWidth = screenWidth === 'full';
+
+  useEffect(() => {
+    const handleWidthChange = (e: Event) => {
+      const custom = e as CustomEvent<'standard' | 'wide' | 'full'>;
+      if (custom.detail && (custom.detail === 'standard' || custom.detail === 'wide' || custom.detail === 'full')) {
+        setScreenWidth(custom.detail);
+      }
+    };
+    window.addEventListener('baustoffboard_width_change', handleWidthChange);
+    return () => window.removeEventListener('baustoffboard_width_change', handleWidthChange);
+  }, []);
 
   const [seoLogs, setSeoLogs] = React.useState<string[]>([]);
   const [showMetadataModal, setShowMetadataModal] = useState(false);
@@ -1597,26 +1612,43 @@ function AppContent() {
               <AccessibilityToolbar />
               <button 
                 onClick={() => {
-                  setFluidWidth(prev => {
-                    const next = !prev;
-                    try { localStorage.setItem('baustoffboard_fluid_width', String(next)); } catch {}
-                    return next;
-                  });
+                  const next: 'standard' | 'wide' | 'full' = screenWidth === 'standard' ? 'wide' : screenWidth === 'wide' ? 'full' : 'standard';
+                  setScreenWidth(next);
+                  try {
+                    localStorage.setItem('baustoffboard_screen_width', next);
+                    localStorage.setItem('baustoffboard_fluid_width', next === 'full' ? 'true' : 'false');
+                    window.dispatchEvent(new CustomEvent('baustoffboard_width_change', { detail: next }));
+                  } catch {}
                 }}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-text-main dark:text-white transition-colors border cursor-pointer ${
-                  fluidWidth 
-                    ? 'bg-shiraz/10 border-shiraz/40 text-shiraz dark:text-rose-300 font-semibold' 
+                className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-text-main dark:text-white transition-colors border cursor-pointer ${
+                  screenWidth === 'full' 
+                    ? 'bg-shiraz text-white border-shiraz shadow-xs font-semibold' 
+                    : screenWidth === 'wide'
+                    ? 'bg-shiraz/10 border-shiraz/40 text-shiraz dark:text-rose-300 font-semibold'
                     : 'bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-700 border-home-grau/20 dark:border-slate-700'
                 }`}
-                title={fluidWidth 
-                  ? (language === 'en' ? "Width: Automatic 100% (Click to switch to standard 1152px)" : "Breite: Automatisch an Bildschirm angepasst (Klicken für 1152px Standard)") 
-                  : (language === 'en' ? "Width: Standard 1152px (Click for automatic full screen width)" : "Breite: Standard 1152px (Klicken für automatische volle Bildschirmbreite)")}
+                title={
+                  screenWidth === 'standard'
+                    ? (language === 'en' ? "Width: Standard 1152px (Click for Wide 1536px)" : "Bildschirmbreite: Standard 1152px (Klicken für Breit 1536px)")
+                    : screenWidth === 'wide'
+                    ? (language === 'en' ? "Width: Wide 1536px (Click for Full Width 100%)" : "Bildschirmbreite: Breit 1536px (Klicken für 100% Vollbild)")
+                    : (language === 'en' ? "Width: Full 100% (Click for Standard 1152px)" : "Bildschirmbreite: 100% Vollbild (Klicken für Standard 1152px)")
+                }
+                aria-label="Bildschirmbreite anpassen"
               >
-                {fluidWidth ? <Minimize2 size={14} className="text-shiraz dark:text-rose-400" /> : <Maximize2 size={14} />}
+                {screenWidth === 'full' ? (
+                  <Maximize2 size={14} className="text-white" />
+                ) : screenWidth === 'wide' ? (
+                  <LayoutGrid size={14} className="text-shiraz dark:text-rose-400" />
+                ) : (
+                  <Columns size={14} />
+                )}
                 <span className="text-xs font-medium leading-none select-none hidden lg:inline">
-                  {fluidWidth 
-                    ? (language === 'en' ? 'Full Width' : '100% Breite') 
-                    : (language === 'en' ? 'Standard' : 'Standard')}
+                  {screenWidth === 'standard' 
+                    ? (language === 'en' ? 'Standard' : 'Standard (1152px)') 
+                    : screenWidth === 'wide'
+                    ? (language === 'en' ? 'Wide' : 'Breit (1536px)')
+                    : (language === 'en' ? '100% Full' : '100% Vollbild')}
                 </span>
               </button>
               <button 
@@ -1637,7 +1669,17 @@ function AppContent() {
         </div>
       </header>
       <main className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-6 lg:px-8 py-6 custom-scrollbar" id="scroll-container">
-        <div className={`mx-auto flex flex-col min-h-full transition-all duration-200 ${fluidWidth ? 'w-full max-w-none' : 'w-full max-w-6xl'}`}>
+        <div 
+          data-fluid={screenWidth === 'full' ? "true" : "false"}
+          data-width={screenWidth}
+          className={`mx-auto flex flex-col min-h-full transition-all duration-200 ${
+            screenWidth === 'full'
+              ? 'w-full max-w-none'
+              : screenWidth === 'wide'
+              ? 'w-full max-w-[1536px]'
+              : 'w-full max-w-6xl'
+          }`}
+        >
           <LanguageBanner />
           <div id="module-content" className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-8 relative flex-1">
             <div className="hidden pdf-header mb-8 pb-4 border-b-2 border-shiraz">

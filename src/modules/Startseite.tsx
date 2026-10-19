@@ -27,7 +27,7 @@ export default function Startseite() {
   const { language } = useLanguage();
 
   return (
-    <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto mt-4">
+    <div className="flex flex-col gap-8 w-full mt-4">
       <div className="bg-white p-8 rounded-2xl shadow-sm border border-home-grau/30 text-center flex flex-col items-center">
         <div className="w-20 h-20 bg-shiraz/10 rounded-full flex items-center justify-center mb-4">
           <GraduationCap size={40} className="text-shiraz" />

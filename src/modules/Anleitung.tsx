@@ -5,7 +5,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export default function Anleitung() {
   return (
-    <div className="flex flex-col gap-8 max-w-4xl mx-auto mt-4">
+    <div className="flex flex-col gap-8 w-full mt-4">
       <div className="bg-white p-8 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-8">
         
         <div className="flex items-center gap-4 border-b border-home-grau/20 pb-6">

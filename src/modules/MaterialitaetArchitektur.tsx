@@ -218,7 +218,7 @@ export default function MaterialitaetArchitektur() {
   };
 
   return (
-    <div className="flex flex-col gap-6 max-w-6xl mx-auto">
+    <div className="flex flex-col gap-6 w-full">
       {/* Header Banner */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-6 mb-6">

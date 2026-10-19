@@ -30,7 +30,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
   const [activeSubSection, setActiveSubSection] = useState<'uebersicht' | 'schutz' | 'instandsetzung' | 'praxis'>('uebersicht');
 
   return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto px-4 py-4 animate-in fade-in duration-300">
+    <div className="flex flex-col gap-6 w-full py-4 animate-in fade-in duration-300">
       
       {/* Header Container */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

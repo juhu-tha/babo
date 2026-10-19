@@ -234,7 +234,7 @@ export default function RueckbauChecklisten() {
   const currentSection = INITIAL_CHECKLISTS[activeSubTab];
 
   return (
-    <div className="space-y-4 container mx-auto px-4 max-w-7xl animate-in fade-in duration-300">
+    <div className="space-y-4 w-full animate-in fade-in duration-300">
       
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">

@@ -68,7 +68,7 @@ export default function ThesenProjekte() {
   };
 
   return (
-    <div className="flex flex-col gap-8 max-w-5xl mx-auto mt-4 px-2 sm:px-4">
+    <div className="flex flex-col gap-8 w-full mt-4">
       
       {/* Upper Hero Welcome Panel */}
       <div className="bg-white text-text-main rounded-2xl p-6 md:p-8 border border-home-grau/20 shadow-xs relative overflow-hidden">
