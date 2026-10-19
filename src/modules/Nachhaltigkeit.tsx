@@ -512,7 +512,7 @@ export default function Nachhaltigkeit() {
 
   // QNG-Nachweis Simulator Calculations
   const qngComputation = useMemo(() => {
-    // 1. Material-based footprint estimation (kg CO₂/m²BGF/year) over 50 years standard lifetime
+    // 1. Material-based footprint estimation (kg CO₂/m² NRF/year) over 50 years standard lifetime
     let materialGwpAnnual = 0;
     if (constructionType === 'holzbau') materialGwpAnnual = 5.5; // low, sequestering offsets some elements
     else if (constructionType === 'hybrid') materialGwpAnnual = 11.2;
@@ -532,12 +532,12 @@ export default function Nachhaltigkeit() {
     const totalYearlyGwp = Math.max(0.5, (materialGwpAnnual + heatingGwpAnnual) - pvYieldCo2Credit);
 
     // QNG certification thresholds (residential new builds)
-    // Limits: QNG-Plus <= 24.0, QNG-Premium <= 16.0 kg CO₂-eq / BGF m² / a
+    // Limits WG23: QNG-Plus <= 24,0, QNG-Premium <= 20,0 kg CO₂-eq / (m² NRF · a) (QNG-Handbuch Anlage 3, v1.4)
     let label = 'Nicht gefördert';
     let ratingColor = 'text-shiraz bg-shiraz/5 border-shiraz/20';
     let status = 'failed';
 
-    if (totalYearlyGwp <= 16.0) {
+    if (totalYearlyGwp <= 20.0) {
       label = 'QNG-PREMIUM Siegel erreicht';
       ratingColor = 'text-slate-900 bg-slate-100 border-slate-300';
       status = 'premium';
@@ -1245,7 +1245,7 @@ export default function Nachhaltigkeit() {
                   {formatDeZahl(qngComputation.totalYearlyGwp, 1)}
                 </strong>
                 <span className="text-[10px] text-slate-500 block mt-0.5">
-                  kg CO₂-eq / m² BGF / Jahr
+                  kg CO₂-eq / m² NRF / Jahr
                 </span>
               </div>
 
@@ -1258,7 +1258,7 @@ export default function Nachhaltigkeit() {
               <div className="w-full text-xs space-y-2 mt-2 leading-relaxed font-normal text-slate-500">
                 <div className="flex justify-between items-center text-[11px] border-b border-stone-100 pb-1.5">
                   <span className="font-bold">QNG-Premium Grenzwert:</span>
-                  <span className="font-mono bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">≤ 16,0</span>
+                  <span className="font-mono bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">≤ 20,0</span>
                 </div>
                 <div className="flex justify-between items-center text-[11px] border-b border-stone-100 pb-1.5">
                   <span className="font-bold">QNG-Plus Grenzwert:</span>
@@ -1286,7 +1286,7 @@ export default function Nachhaltigkeit() {
                     <span className="text-red-600 block text-lg leading-none shrink-0 font-bold">&#10007;</span>
                     <div>
                       <strong className="block text-[11px] font-bold">Fossile Energie blockiert das Siegel:</strong>
-                      Der Erdgaskessel erzeugt extreme Verbrennungsfrachten von ca. 28 kg CO₂/m²BGF/a. 
+                      Der Erdgaskessel erzeugt extreme Verbrennungsfrachten von ca. 28 kg CO₂/(m² NRF · a). 
                       Das QNG-Siegel ist so unmöglich zu erreichen. 
                       <span className="font-bold block mt-1 underline">Lösung: Installiere eine Wärmepumpe.</span>
                     </div>
@@ -1604,7 +1604,7 @@ export default function Nachhaltigkeit() {
                   </div>
                   <div className="p-2 rounded-lg bg-slate-50 border border-slate-150">
                     <strong className="text-slate-900 block font-bold">CO₂-Bepreisung (ETS II &amp; BEHG):</strong>
-                    Mit dem europäischen Brennstoffemissionshandel (ETS II ab 2027) steigen die Betriebskosten fossiler Heizsysteme drastisch.
+                    Mit dem europäischen Brennstoffemissionshandel (ETS II; Start nach Beschluss von Ende 2025 auf 2028 verschoben, bis dahin nationaler Emissionshandel nach BEHG) steigen die Betriebskosten fossiler Heizsysteme deutlich.
                   </div>
                   <div className="p-2 rounded-lg bg-slate-50 border border-slate-150">
                     <strong className="text-slate-900 block font-bold">98 % Sanierungsdruck:</strong>
@@ -1667,7 +1667,7 @@ export default function Nachhaltigkeit() {
           {/* Subnavigation Tabs for Praxis */}
           <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-3">
             {[
-              { id: 'gebaeudetyp_e', label: '1. Gebäudetyp E & Einfach Bauen', icon: FileText, desc: '§ 650o BGB & Bad Aibling' },
+              { id: 'gebaeudetyp_e', label: '1. Gebäudetyp E & Einfach Bauen', icon: FileText, desc: 'Gesetzesvorhaben & Bad Aibling' },
               { id: 'urban_mining', label: '2. Urban Mining & Materialpässe', icon: Recycle, desc: 'Rathaus Korbach & Neues Museum' },
               { id: 'lehmbau', label: '3. Tragender Lehmbau (DIN 18940)', icon: Layers, desc: 'Normenreihe 2023 & SFK 3' },
               { id: 'holz_hybrid', label: '4. Holz- & Hybrid-Leuchttürme', icon: Building, desc: 'Timber Pioneer, Prinz-Eugen-Park & Diedorf' }
@@ -1699,7 +1699,7 @@ export default function Nachhaltigkeit() {
                 <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
                   <div>
                     <h3 className="text-base font-extrabold text-slate-900">
-                      Forschungsprojekt &bdquo;Einfach Bauen&ldquo; &amp; Das Gebäudetyp-E-Gesetz (&sect; 650o BGB)
+                      Forschungsprojekt &bdquo;Einfach Bauen&ldquo; &amp; Das Gebäudetyp-E-Vorhaben
                     </h3>
                     <p className="text-xs text-slate-500 mt-0.5">Befreiung von Komfortnormen zugunsten robuster, bezahlbarer und langlebiger Architektur.</p>
                   </div>
@@ -1710,18 +1710,18 @@ export default function Nachhaltigkeit() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   
-                  {/* Left: Das juristische Problem und der neue § 650o BGB */}
+                  {/* Left: Das juristische Problem und das Gebäudetyp-E-Vorhaben */}
                   <div className="flex flex-col gap-3">
                     <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
                       <Scale size={14} className="text-shiraz" />
-                      Der juristische Paradigmenwechsel (&sect; 650o BGB)
+                      Der angestrebte juristische Paradigmenwechsel
                     </h4>
                     <p className="text-xs text-slate-700 leading-relaxed">
                       Bislang galt im deutschen Bauvertragsrecht (&sect; 633 BGB) die strikte Vermutung, dass jede Abweichung von den <strong>&bdquo;anerkannten Regeln der Technik&ldquo; (aRdT)</strong> einen Sachmangel begründet. Da DIN-Normen zunehmend reine Komfort- und Ausstattungsansprüche festschreiben (z.B. Schallschutzstufen, Raumautomation, extreme Steckdosenzahlen), führte dies zu einer Kosten- und Fehler-Explosion.
                     </p>
                     <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200 text-xs text-amber-950 leading-relaxed">
-                      <strong className="block font-bold text-amber-900 mb-1">Kern des neuen &sect; 650o BGB:</strong>
-                      Fachkundige Vertragsparteien können im Bauvertrag wirksam vereinbaren, von reinen <em>Komfort- und Ausstattungsnormen</em> abzuweichen. Dies begründet keinen Mangel mehr, <strong>solange die öffentlich-rechtlichen Schutzziele gewahrt bleiben:</strong>
+                      <strong className="block font-bold text-amber-900 mb-1">Kern des Gebäudetyp-E-Vorhabens (Stand Oktober 2026: noch kein Gesetz):</strong>
+                      Der Regierungsentwurf von 2024 (BT-Drs. 20/13959, u. a. § 650a Abs. 3/4 und § 650o BGB-E) ist mit Ablauf der 20. Wahlperiode erledigt; BMJ und BMWSB haben im November 2025 Eckpunkte für einen neuen Entwurf vorgelegt. Ziel: Fachkundige Vertragsparteien sollen im Bauvertrag wirksam vereinbaren können, von reinen <em>Komfort- und Ausstattungsnormen</em> abzuweichen. Dies soll keinen Mangel begründen, <strong>solange die öffentlich-rechtlichen Schutzziele gewahrt bleiben:</strong>
                       <ul className="list-disc pl-4 mt-1.5 space-y-0.5 font-medium text-[11px]">
                         <li>Standsicherheit (Statik &amp; Tragfähigkeit nach Eurocodes)</li>
                         <li>Brandschutz (Rettungswege, Brandwände, Baustoffklassen)</li>
@@ -2518,8 +2518,8 @@ export default function Nachhaltigkeit() {
                         Das staatliche <strong>Qualitätssiegel Nachhaltiges Gebäude</strong> ist Voraussetzung für die Inanspruchnahme der zinsgünstigen KFN-Förderung (Klimafreundlicher Neubau) der KfW-Bank.
                       </p>
                       <ul className="text-[10px] text-slate-500 space-y-1 list-disc pl-4 leading-normal">
-                        <li><strong>QNG-Plus:</strong> ≤ 24 kg CO₂-eq/m²BGF/a (LCA über 50 Jahre).</li>
-                        <li><strong>QNG-Premium:</strong> ≤ 16 kg CO₂-eq/m²BGF/a (erfordert z.B. exzellent gedämmten Holzbau).</li>
+                        <li><strong>QNG-Plus:</strong> ≤ 24 kg CO₂-eq/(m² NRF · a) (LCA über 50 Jahre; PENRT ≤ 96 kWh/(m² NRF · a)).</li>
+                        <li><strong>QNG-Premium:</strong> ≤ 20 kg CO₂-eq/(m² NRF · a) (PENRT ≤ 64 kWh/(m² NRF · a); erfordert z. B. sehr gut gedämmten Holz- oder Hybridbau).</li>
                         <li>Strikte Pflichten zur schadstofffreien Baustoffwahl auf der Baustelle.</li>
                       </ul>
                     </div>
@@ -3219,7 +3219,7 @@ export default function Nachhaltigkeit() {
                         <div className="space-y-0.5">
                           <strong className="text-slate-900 text-xs font-bold block">LCA-Transfer &amp; Reduzierung von GWP-Grenzwerten</strong>
                           <p className="text-[11px] text-slate-700 leading-relaxed pt-1">
-                            Der berechnete Lebenszyklus-Treibhauswert eines Entwurfs liegt bei <strong>26,0 kg CO₂-eq/(m²BGF·a)</strong>. Der Bauherr fordert das staatliche QNG-PLUS-Siegel (≤ 24 kg), um Fördergelder zu sichern.
+                            Der berechnete Lebenszyklus-Treibhauswert eines Entwurfs liegt bei <strong>26,0 kg CO₂-eq/(m² NRF·a)</strong>. Der Bauherr fordert das staatliche QNG-PLUS-Siegel (≤ 24 kg), um Fördergelder zu sichern.
                             Nennen Sie drei konkrete baubegleitende Optimierungsmaßnahmen, begründen Sie deren GWP-Kompensationseffekt, und ordnen Sie diese den jeweiligen Lebenszyklusmodulen zu.
                           </p>
                         </div>
@@ -3524,7 +3524,7 @@ export default function Nachhaltigkeit() {
                         { term: 'EEE', def: 'Energieeffizienz-Experte; staatlich registrierter Gutachter für Förderungen und Konformitätsprüfungen.' },
                         { term: 'eLCA / Bauteileditor', def: 'Vom BBSR entwickeltes kostenloses Online-Tool zur vereinfachten Bilanzierung von Gebäudeschichten.' },
                         { term: 'End-of-Life (EoL)', def: 'Lebensende eines Baustoffes (Rückbau, Sortierung, thermische Verwertung oder Deponierung).' },
-                        { term: 'EPBD', def: 'EU-Gebäuderichtlinie. Novelle 2024 dekretiert GWP-Nachweispflichten im Energiepass ab 2028/2030.' },
+                        { term: 'EPBD', def: 'EU-Gebäuderichtlinie (EU) 2024/1275: Lebenszyklus-GWP ist für Neubauten ab 2028 (> 1 000 m²) bzw. 2030 (alle) zu berechnen und im Energieausweis offenzulegen.' },
                         { term: 'GWP 100', def: 'Global Warming Potential – Erderwärmungspotenzial über einen normierten Zeithorizont von 100 Jahren.' },
                         { term: 'ILCD+EPD', def: 'Gemeinsames xml-Datenformat zur Standardübertragung von EPD-Kennwerten in die ÖKOBAUDAT.' },
                         { term: 'KFN / KNN', def: 'KfW-Klimaförderrichtlinien (Klimafreundlicher Neubau). Knüpfen Kredite an strenge GWP-Grenzwerte.' },
@@ -3645,7 +3645,7 @@ export default function Nachhaltigkeit() {
           { title: 'EU-Klimagesetz (VO EU 2021/1119 – 55 % bis 2030, Net-Zero 2050)', url: 'https://eur-lex.europa.eu/' },
           { title: 'EU-ETS I & II (Richtlinie EU 2023/958 & 2023/959)', url: 'https://eur-lex.europa.eu/' },
           { title: 'EU-Taxonomie-Verordnung (VO EU 2020/852 mit DNSH-Kriterien)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'Gebäudeenergiegesetz (GEG i.d.F. 2024 – 65-%-EE-Pflicht)', url: 'https://www.gesetze-im-internet.de/geg/' },
+          { title: 'Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026; vormals GEG – 65-%-Vorgabe entfallen, Bio-Treppe)', url: 'https://www.gesetze-im-internet.de/geg/' },
           { title: 'Wärmeplanungsgesetz (WPG vom 20.12.2023)', url: 'https://www.gesetze-im-internet.de/wpg/' },
           { title: 'Bundes-Klimaschutzgesetz (KSG – Treibhausgasneutralität 2045)', url: 'https://www.gesetze-im-internet.de/ksg/' },
           { title: 'Ersatzbaustoffverordnung (EBV – Mineralische Sekundärbaustoffe)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
@@ -3665,7 +3665,7 @@ export default function Nachhaltigkeit() {
           },
           {
             formel: '\\text{GWP}_{\\text{life-cycle}} = \\frac{\\text{GWP}_{\\text{emb}} + \\sum_{t=1}^{50} \\text{GWP}_{\\text{use}}(t) + \\text{GWP}_{\\text{EoL}}}{A_{\\text{NFA}} \\cdot 50\\,\\text{a}} \\quad [\\text{kg CO}_2\\text{e/(m}^2\\cdot\\text{a})]',
-            erklaerung: 'Verbindliches Lebenszyklus-GWP gemäß EPBD (EU 2024/1275) Art. 7 & Anhang III für Neubauten und Bestandsgebäude über 50 Jahre Betrachtungszeitraum.',
+            erklaerung: 'Lebenszyklus-GWP nach EPBD (EU 2024/1275) Art. 7 und Anhang III: Berechnung und Offenlegung für Neubauten ab 01.01.2028 (Nutzfläche > 1 000 m²) bzw. ab 01.01.2030 (alle Neubauten), Betrachtungszeitraum 50 Jahre.',
             quelle: 'EPBD (EU 2024/1275) / DIN EN 15978'
           },
           {

@@ -3,6 +3,8 @@ import Zertifizierung from './Zertifizierung';
 import Produktsiegel from './Produktsiegel';
 import { Award, ShieldCheck } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function ZertifizierungSiegel() {
   const [activeTab, setActiveTab ] = useState<'Zertifizierung' | 'Produktsiegel'>('Zertifizierung');
@@ -58,25 +60,54 @@ export default function ZertifizierungSiegel() {
         </div>
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Gesamterfüllungsgrad und Auszeichnungsstufe nach DGNB"
+        zielGleichung="\text{GE} = \sum_j w_j \cdot E_j"
+        schritte={[
+          { titel: 'Gewichte (Lehrbeispiel)', erklaerung: 'Themenfeldgewichte DGNB Neubau (Version 2018): Ökologie 22,5 %, Ökonomie 22,5 %, Soziokultur 22,5 %, Technik 15 %, Prozess 12,5 %, Standort 5 %. Aktuelle Version manuell prüfen.', formel: '\\sum_j w_j = 100\\,\\%' },
+          { titel: 'Erfüllungsgrade', erklaerung: 'ENV 78 %, ECO 82 %, SOC 75 %, TEC 70 %, PRO 85 %, SITE 60 %:', formel: '0{,}225 \\cdot (78 + 82 + 75) + 0{,}15 \\cdot 70 + 0{,}125 \\cdot 85 + 0{,}05 \\cdot 60' },
+          { titel: 'Gesamterfüllungsgrad', erklaerung: 'Summe der gewichteten Themenfelder:', formel: '52{,}9 + 10{,}5 + 10{,}6 + 3{,}0 = 77{,}0\\,\\%' },
+          { titel: 'Auszeichnung', erklaerung: 'Platin ab 80 %, Gold ab 65 % (jeweils mit Mindesterfüllungsgraden je Themenfeld):', formel: '65\\,\\% \\le 77{,}0\\,\\% < 80\\,\\% \\Rightarrow \\text{Gold}' }
+        ]}
+        ergebnisHinweis="Für Platin fehlen 3 Prozentpunkte; am wirksamsten sind die hoch gewichteten Themenfelder Ökologie, Ökonomie und Soziokultur."
+        normQuelle="DGNB System Neubau (Version 2018, Lehrbeispiel – aktuelle Systemversion manuell prüfen)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: QNG-Prüfung beider Ökobilanz-Indikatoren"
+        zielGleichung="\text{GWP} \le 24 \;\wedge\; \text{PENRT} \le 96"
+        schritte={[
+          { titel: 'Ergebnis der Ökobilanz', erklaerung: 'Wohngebäude, 50 Jahre, bezogen auf m² NRF und Jahr:', formel: '\\text{GWP} = 22{,}8\\,\\text{kg CO}_2\\text{-Äq./(m}^2\\text{a)}, \\quad \\text{PENRT} = 101\\,\\text{kWh/(m}^2\\text{a)}' },
+          { titel: 'Prüfung QNG-PLUS', erklaerung: 'Beide Anforderungen müssen gleichzeitig erfüllt sein:', formel: '22{,}8 \\le 24 \\;\\checkmark, \\qquad 101 > 96 \\;\\times' },
+          { titel: 'Folgerung', erklaerung: 'Das Siegel wird trotz eingehaltenem GWP verfehlt; PENRT lässt sich vor allem über die Anlagentechnik (Wärmepumpe, PV-Eigenstrom) senken.', formel: '\\Delta\\text{PENRT}_{erf} = 5\\,\\text{kWh/(m}^2\\text{a)}' }
+        ]}
+        ergebnisHinweis="Typ-III-Deklarationen (EPD nach DIN EN 15804) liefern die Indikatorwerte, Typ-I-Umweltzeichen (z. B. Blauer Engel) dienen im QNG eher dem Nachweis der Schadstoffanforderungen."
+        normQuelle="QNG-Handbuch Anlage 3, v1.4 (WG23)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="zertifizierung_siegel" />
+
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: QNG-Anforderungswerte, DGNB-Stufen und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Deutsche Gesellschaft für Nachhaltiges Bauen', url: 'https://de.wikipedia.org/wiki/Deutsche_Gesellschaft_f%C3%BCr_Nachhaltiges_Bauen' },
           { title: 'Bewertungssystem Nachhaltiges Bauen für Bundesgebäude', url: 'https://de.wikipedia.org/wiki/Bewertungssystem_Nachhaltiges_Bauen_f%C3%BCr_Bundesgeb%C3%A4ude' },
           { title: 'Umweltsiegel', url: 'https://de.wikipedia.org/wiki/Umweltsiegel' }
         ]}
         literatur={[
-          'Bauer, M.; Mösle, P.; Schwarz, M.: Green Building - Konzepte für nachhaltige Architektur (Callwey Verlag)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
+          'Bauer, M.; Mösle, P.; Schwarz, M.: Green Building – Leitfaden für nachhaltiges Bauen. 2. Aufl., Berlin: Springer Vieweg 2013',
+          'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (Hrsg.): Leitfaden Nachhaltiges Bauen. Berlin (aktuelle Fassung)'
         ]}
         regelwerke={[
-          { title: 'DGNB Kriterienkatalog Gebäude Neubau', url: 'https://www.dgnb.de/' },
+          { title: 'DGNB System – Kriterienkatalog Gebäude Neubau (Systemversion manuell prüfen)', url: 'https://www.dgnb.de/' },
           { title: 'BNB Leitfaden Nachhaltiges Bauen', url: 'https://www.nachhaltigesbauen.de/' },
-          { title: 'QNG Handbuch (Qualitätssiegel Nachhaltiges Gebäude)', url: 'https://www.nachhaltigesbauen.de/' },
-          { title: 'ISO 14024 (Umweltkennzeichnungen und -deklarationen - Typ I)', url: 'https://www.iso.org/' }
+          { title: 'QNG-Handbuch mit Anlage 3 (Version 1.4 vom 19.07.2024)', url: 'https://www.qng.info/' },
+          { title: 'ISO 14024:2018 (Umweltkennzeichnungen und -deklarationen – Typ I); ISO 14025:2006 (Typ III)', url: 'https://www.iso.org/' }
         ]}
         formeln={[
           {
-            formel: '\\text{Gesamterfüllungsgrad} = \\sum_{j=1}^m w_j \\cdot E_j \\ge 80\\% \\quad (\\text{DGNB Platin})',
+            formel: '\\text{Gesamterfüllungsgrad} = \\sum_{j=1}^m w_j \\cdot E_j \\ge 80\\,\\% \\quad (\\text{DGNB Platin; Gold} \\ge 65\\,\\%)',
             erklaerung: 'Gewichteter Gesamterfüllungsgrad über die Themenfelder Ökologie, Ökonomie, Soziokulturelles, Technik, Prozess und Standort.',
             quelle: 'DGNB Kriteriensystematik'
           },

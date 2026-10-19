@@ -7,6 +7,8 @@ import {
   Scale, Award, ArrowRight, Building2, Sliders, Check, FileText
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
@@ -1498,8 +1500,36 @@ export default function Materialoptimierung() {
         </div>
       )}
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Treibhausgas einer Stahlbetondecke je m² – Standard gegen optimiert"
+        zielGleichung="\text{GWP} = V_c \cdot \text{gwp}_c + m_s \cdot \text{gwp}_s"
+        schritte={[
+          { titel: 'Standard', erklaerung: 'Vollplatte 20 cm, C25/30 mit CEM I (Lehrwert 245 kg CO₂-Äq./m³), Bewehrung 20 kg/m² (Elektrostahl, Lehrwert 0,7 kg CO₂-Äq./kg):', formel: '0{,}20 \\cdot 245 + 20 \\cdot 0{,}7 = 49{,}0 + 14{,}0 = 63{,}0\\,\\text{kg CO}_2\\text{-Äq./m}^2' },
+          { titel: 'Optimiert', erklaerung: 'Hohlkörperdecke mit 25 % weniger Beton (0,15 m³/m²), CEM III/A (174 kg CO₂-Äq./m³), Bewehrung 18 kg/m²:', formel: '0{,}15 \\cdot 174 + 18 \\cdot 0{,}7 = 26{,}1 + 12{,}6 = 38{,}7\\,\\text{kg CO}_2\\text{-Äq./m}^2' },
+          { titel: 'Einsparung', erklaerung: 'Relative Minderung:', formel: '\\frac{63{,}0 - 38{,}7}{63{,}0} = 39\\,\\%' }
+        ]}
+        ergebnisHinweis="Geometrie (Masse) und Zementart wirken multiplikativ. Tragfähigkeit, Durchstanzen, Schall- und Brandschutz der Hohlkörperdecke sind gesondert nachzuweisen."
+        normQuelle="Lehrwerte; Projektwerte aus EPD (DIN EN 15804+A2) bzw. ÖKOBAUDAT"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Äquivalenter w/z-Wert mit Flugasche"
+        zielGleichung="(w/z)_{eq} = \frac{w}{z + k_f \cdot f}"
+        schritte={[
+          { titel: 'Rezeptur', erklaerung: 'Wasser 165 kg/m³, Zement 280 kg/m³, Flugasche 60 kg/m³, k_f = 0,4:', formel: 'w = 165,\\; z = 280,\\; f = 60' },
+          { titel: 'Anrechenbarer Bindemittelgehalt', erklaerung: 'Flugasche wird nur mit dem k-Wert angerechnet:', formel: 'z + 0{,}4 \\cdot 60 = 304\\,\\text{kg/m}^3' },
+          { titel: 'Äquivalenter w/z-Wert', erklaerung: 'Vergleich mit Grenzwerten der Expositionsklassen (z. B. XC4: max. 0,60):', formel: '(w/z)_{eq} = \\frac{165}{304} = 0{,}54 \\le 0{,}60' }
+        ]}
+        ergebnisHinweis="Der k-Wert-Ansatz erlaubt Klinkereinsparung ohne Dauerhaftigkeitsverlust. Für Hüttensandmehl ist er in Deutschland nur eingeschränkt anwendbar; Höchstmengen an Flugasche je Zementart sind zu beachten."
+        normQuelle="DIN EN 206 / DIN 1045-2 (k-Wert-Ansatz; Ausgaben manuell prüfen)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="materialoptimierung" />
+
       {/* --- Module Footer --- */}
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: Bilanzformeln, k-Wert-Ansatz und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: "Deutscher Ausschuss für Stahlbeton", url: "https://de.wikipedia.org/wiki/Deutscher_Ausschuss_f%C3%BCr_Stahlbeton" },
           { title: "Bionik", url: "https://de.wikipedia.org/wiki/Bionik" },
@@ -1507,27 +1537,27 @@ export default function Materialoptimierung() {
           { title: "Materialeffizienz", url: "https://de.wikipedia.org/wiki/Materialeffizienz" }
         ]}
         literatur={[
-          "DAfStb: 'Treibhausgasoptimierte Tragwerke aus Beton und Stahlbeton - Grundlagen und Praxisleitfaden', Deutscher Ausschuss für Stahlbeton e.V., Berlin",
-          "Sobek, W.: 'Recyclinggerechtes Konstruieren und Bauen im Massivbau'.",
-          "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011",
-          "Stark, J., Wicht, B.: 'Dauerhaftigkeit von Beton - Beanspruchung und Optimierung'."
+          "Deutscher Ausschuss für Stahlbeton (DAfStb): Veröffentlichungen zu treibhausgasreduzierten Betonbauteilen (konkrete Fundstelle manuell prüfen)",
+          "Sobek, W.: non nobis – über das Bauen in der Zukunft. Band 1: Ausgehen muss man von dem, was ist. Stuttgart: av edition 2022",
+          "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+          "Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013"
         ]}
         regelwerke={[
-          { title: "DAfStb-Richtlinie: Treibhausgasoptimierte Tragwerke aus Beton und Stahlbeton", url: "https://www.dinmedia.de/de/suche?q=DAfStb+Treibhausgasoptimierte+Tragwerke+aus+Beton+und+Stahlbeton" },
-          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1" },
-          { title: "DIN EN 206 / DIN 1045-2: Beton - Festlegung, Eigenschaften, Herstellung und Konformität", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+206" },
-          { title: "DIN EN 13670: Ausführung von Tragwerken aus Beton", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+13670" },
+          { title: "DAfStb-Veröffentlichungen zur Treibhausgasreduktion im Betonbau (Titel und Status manuell prüfen)", url: "https://www.dafstb.de/" },
+          { title: "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1" },
+          { title: "DIN EN 206 / DIN 1045-2 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Ausgaben manuell prüfen)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+206" },
+          { title: "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+13670" },
           { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien", url: "https://www.dinmedia.de/de/suche?q=VDI+4800+Blatt+1" }
         ]}
         formeln={[
           {
             formel: "GWP_{\\text{Bauteil}} = V_{\\text{c}} \\cdot gwp_{\\text{c}} + m_{\\text{s}} \\cdot gwp_{\\text{s}} \\quad [\\text{kg CO}_2\\text{-eq}]",
-            erklaerung: "Treibhausgasbilanzierung von Stahlbetonbauteilen nach DAfStb-Richtlinie über Beton- und Bewehrungsstahlanteile (Modul A1–A3).",
-            quelle: "DAfStb-Richtlinie Treibhausgasoptimierte Tragwerke"
+            erklaerung: "Treibhausgasbilanzierung von Stahlbetonbauteilen über Beton- und Bewehrungsstahlanteile (Modul A1–A3).",
+            quelle: "Bilanzierung nach DIN EN 15804+A2 / DIN EN 15978 (Module A1–A3)"
           },
           {
             formel: "(w/c)_{\\text{eq}} = \\frac{w}{c + k \\cdot z} \\quad [\\text{k-Wert nach DIN 1045-2}]",
-            erklaerung: "Äquivalenter Wasserzementwert zur normativen Anrechnung von Flugasche (k=0,4) und Hüttensandmehl (k=0,6) als Klinkerersatz.",
+            erklaerung: "Äquivalenter Wasserzementwert zur Anrechnung von Flugasche (k = 0,4) und Silikastaub (k = 1,0); Hüttensandmehl (k = 0,6 nach DIN EN 206) ist in Deutschland nur eingeschränkt anrechenbar (manuell prüfen).",
             quelle: "DIN 1045-2 / DIN EN 206"
           },
           {

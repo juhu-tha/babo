@@ -508,13 +508,13 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_EN_15978': {
     id: 'DIN_EN_15978',
-    code: 'DIN EN 15978:2012-10',
-    title: 'Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden - Berechnungsmethode',
+    code: 'DIN EN 15978:2026-09',
+    title: 'Nachhaltigkeit von Bauwerken - Bewertung der Umweltqualität von Gebäuden - Methodik (EN 15978:2026; ersetzt Ausgabe 2012-10)',
     category: 'nachhaltigkeit',
-    ausgabeStand: '2012-10',
+    ausgabeStand: '2026-09',
     status: 'gueltig',
     url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978',
-    beschreibung: 'Berechnungsmethode zur Bewertung der Ökobilanz von Gebäuden über alle Lebenszyklusphasen (A1-D) und 50 Jahre Betrachtungszeitraum.',
+    beschreibung: 'Methodik zur Bewertung der Umweltqualität von Gebäuden über alle Lebenszyklusphasen (A1–C4, Modul D getrennt); der Betrachtungszeitraum wird vom Bewertungssystem festgelegt (QNG/BNB/DGNB: 50 Jahre). Übergangsregeln in den Bewertungssystemen manuell prüfen.',
     relevanteModule: ['nachhaltigkeit', 'lca', 'interactive_lca']
   },
   'DIN_EN_17472': {

@@ -495,12 +495,12 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'DIN EN 15804+A2 / IBU'
       },
       {
-        era: '2020er–heute (2024–2026)',
-        title: 'EU-Taxonomie, Zirkularität & Materialpässe (Madaster)',
+        era: '2020 bis 2026',
+        title: 'EU-Taxonomie, EPBD-Neufassung, Zirkularität & Materialpässe',
         category: 'Werkstoffwende',
-        description: 'Einführung der EU-Taxonomie-Verordnung für nachhaltige Finanzierung. Fokus verschiebt sich von der Betriebsenergie zur „grauen Energie“ (Embodied Carbon) und Zirkularität nach dem Cradle-to-Cradle-Prinzip mit Gebäudematrizen und Materialpässen.',
+        description: 'Einführung der EU-Taxonomie-Verordnung für nachhaltige Finanzierung. Fokus verschiebt sich von der Betriebsenergie zur „grauen Energie“ (Embodied Carbon) und Zirkularität mit Materialpässen. 2024 folgen die EPBD-Neufassung (EU) 2024/1275 mit Lebenszyklus-GWP-Pflicht ab 2028/2030, die Ökodesign-Verordnung (EU) 2024/1781 (Digitaler Produktpass) und die neue Bauproduktenverordnung (EU) 2024/3110; 2026 erscheint EN 15978:2026.',
         impact: 'Gebäude werden als Rohstofflager der Zukunft (Urban Mining) geplant; zirkuläre Rückbaubarkeit wird zu einer harten Finanzierungsbedingung.',
-        keyReference: 'EU-Taxonomie VO 2020/852 / Madaster'
+        keyReference: 'VO (EU) 2020/852; Richtlinie (EU) 2024/1275; VO (EU) 2024/1781; VO (EU) 2024/3110'
       }
     ],
     keyTakeaway: 'Nachhaltigkeit wandelte sich vom idealistischen Zusatzaspekt zum zentralen Steuerungsfaktor der Bauwirtschaft mit harten Vorgaben für graue Emissionen, Lebenszykluskosten und Materialzirkularität.'

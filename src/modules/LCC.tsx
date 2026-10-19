@@ -1032,7 +1032,7 @@ export default function LCC() {
         ]}
         regelwerke={[
           { title: 'DIN 18960 (Nutzungskosten im Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18960' },
-          { title: 'ISO 15686-5 (Buildings and constructed assets — Service-life planning — Part 5: Life-cycle costing)', url: 'https://www.iso.org/' },
+          { title: 'ISO 15686-5:2017 (Buildings and constructed assets — Service-life planning — Part 5: Life-cycle costing)', url: 'https://www.iso.org/' },
           { title: 'GEFMA 220 (Lebenszykluskostenrechnung im Facility Management)', url: 'https://www.gefma.de/' }
         ]}
         literatur={[

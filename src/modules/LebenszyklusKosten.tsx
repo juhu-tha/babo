@@ -4,6 +4,8 @@ import LCC from './LCC';
 import Preisentwicklung from './Preisentwicklung';
 import { Clock, Coins, TrendingUp } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function LebenszyklusKosten() {
   const [activeTab, setActiveTab ] = useState<'Lebensdauern' | 'LCC' | 'Preisentwicklung'>('Lebensdauern');
@@ -61,19 +63,48 @@ export default function LebenszyklusKosten() {
         </div>
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Barwert jährlicher Energiekosten über 30 Jahre"
+        zielGleichung="BW = C \cdot \frac{1 - (1 + r)^{-T}}{r}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Heizkosten 2 000 € pro Jahr (real konstant), Kalkulationszins r = 2 %, T = 30 Jahre.', formel: 'C = 2\\,000\\,\\text{€/a},\\; r = 0{,}02,\\; T = 30' },
+          { titel: 'Rentenbarwertfaktor', erklaerung: 'Summe der abgezinsten Jahre:', formel: '\\frac{1 - 1{,}02^{-30}}{0{,}02} = \\frac{1 - 0{,}552}{0{,}02} = 22{,}40' },
+          { titel: 'Barwert', erklaerung: 'Heutiger Wert aller künftigen Zahlungen:', formel: 'BW = 2\\,000 \\cdot 22{,}40 = 44\\,800\\,\\text{€}' }
+        ]}
+        ergebnisHinweis="Ohne Abzinsung wären es 60 000 €. Je höher der Zins, desto weniger zählen Betriebskosten gegenüber der Investition – die Zinswahl beeinflusst den Variantenvergleich erheblich."
+        normQuelle="ISO 15686-5:2017; DIN EN 16627:2015-09"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Ersatzinvestition für Fenster nach 30 Jahren"
+        zielGleichung="BW = \frac{C_t}{(1 + r)^t}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Fenstertausch nach angenommener Nutzungsdauer von 30 Jahren für 20 000 €, r = 3 %.', formel: 'C_{30} = 20\\,000\\,\\text{€}' },
+          { titel: 'Abzinsungsfaktor', erklaerung: 'Einmalzahlung im Jahr 30:', formel: '(1{,}03)^{30} = 2{,}427' },
+          { titel: 'Barwert', erklaerung: 'In der LCC-Bilanz anzusetzender Wert:', formel: 'BW = \\frac{20\\,000}{2{,}427} = 8\\,240\\,\\text{€}' }
+        ]}
+        ergebnisHinweis="Langlebige Bauteile mit späten Ersatzzeitpunkten erscheinen im Barwert günstig; die Nutzungsdauern nach BNB bzw. VDI 2067 bestimmen daher maßgeblich das Ergebnis."
+        normQuelle="ISO 15686-5:2017; BNB-Nutzungsdauern von Bauteilen"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="lebenszyklus_kosten" />
+
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: Barwertmethode, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Lebenszykluskostenrechnung', url: 'https://de.wikipedia.org/wiki/Lebenszykluskostenrechnung' },
           { title: 'Barwert', url: 'https://de.wikipedia.org/wiki/Barwert' },
           { title: 'Baupreisindex', url: 'https://de.wikipedia.org/wiki/Baupreisindex' }
         ]}
         literatur={[
-          'Pelzeter, A.: Lebenszykluskosten von Immobilien (Bauwerk Verlag)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
+          'Pelzeter, A.: Lebenszykluskosten von Immobilien. Köln: Rudolf Müller 2006 (Verlag manuell prüfen)',
+          'König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken - Allgemeine Rahmenbedingungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' },
-          { title: 'ISO 15686-5 (Buildings and constructed assets - Life cycle costing)', url: 'https://www.iso.org/' },
+          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' },
+          { title: 'ISO 15686-5:2017 (Buildings and constructed assets – Service life planning – Part 5: Life-cycle costing)', url: 'https://www.iso.org/' },
+          { title: 'DIN EN 16627:2015-09 (Bewertung der ökonomischen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16627' },
           { title: 'BNB Leitfaden Nachhaltiges Bauen (Anlage 1: Nutzungsdauern von Bauteilen)', url: 'https://www.nachhaltigesbauen.de/' }
         ]}
         formeln={[
