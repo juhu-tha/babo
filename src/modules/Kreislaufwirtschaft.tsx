@@ -6,6 +6,8 @@ import {
   HelpCircle, ExternalLink, Share2 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
@@ -1396,38 +1398,67 @@ ${auditComponents.slice(0, 2).map(c => `    {
 
               <div className="text-[11px] text-text-main/70 bg-stone-50 p-3 rounded-lg border border-home-grau/15">
                 <strong className="block text-text-main mb-1 text-xs font-bold">MCI-Bedeutung in der Wissenschaft</strong>
-                Der MCI wurde von der McKinsey &amp; Ellen MacArthur Foundation etabliert, um lineares Verschwenden quantifizierbar zu machen. Je höher der Koeffizient, desto resilienter ist ein zirkuläres System gegenüber unberechenbaren Primärrohstoffpreisen.
+                Der MCI wurde 2015 von der Ellen MacArthur Foundation gemeinsam mit Granta Design entwickelt, um lineares Verschwenden quantifizierbar zu machen. Je höher der Koeffizient, desto resilienter ist ein zirkuläres System gegenüber unberechenbaren Primärrohstoffpreisen.
               </div>
             </div>
           </div>
         )}
       </div>
 
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Material Circularity Indicator eines Fassadenelements"
+        zielGleichung="\text{MCI} = 1 - \text{LFI} \cdot \frac{0{,}9}{X}"
+        schritte={[
+          { titel: 'Linear Flow Index', erklaerung: '40 % Rezyklatanteil im Input, 80 % stoffliche Verwertung am Lebensende; der lineare Anteil beträgt im Mittel (60 % + 20 %)/2:', formel: '\\text{LFI} = \\frac{0{,}60 + 0{,}20}{2} = 0{,}40' },
+          { titel: 'Nutzungsfaktor', erklaerung: 'Lebensdauer doppelt so lang wie der Branchendurchschnitt, gleiche Nutzungsintensität:', formel: 'X = 2{,}0 \\cdot 1{,}0 = 2{,}0 \\Rightarrow F(X) = \\frac{0{,}9}{2{,}0} = 0{,}45' },
+          { titel: 'MCI', erklaerung: 'Einsetzen:', formel: '\\text{MCI} = 1 - 0{,}40 \\cdot 0{,}45 = 0{,}82' }
+        ]}
+        ergebnisHinweis="Lange Nutzung wirkt so stark wie Rezyklat: Bei durchschnittlicher Lebensdauer (X = 1) läge der MCI nur bei 0,64. Die vollständige Methode berücksichtigt zusätzlich Ausbeuteverluste der Recyclingprozesse."
+        normQuelle="Ellen MacArthur Foundation / Granta Design: Material Circularity Indicator (vereinfachte Lehrdarstellung)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Verwertungsquote eines Rückbauprojekts"
+        zielGleichung="Q_{\text{stofflich}} = \frac{m_{\text{Recycling}} + m_{\text{Verfüllung}}}{m_{\text{gesamt}}}"
+        schritte={[
+          { titel: 'Massenbilanz', erklaerung: '1 200 t nicht gefährliche Bau- und Abbruchabfälle: 950 t Recycling (RC-Baustoffe), 120 t Verfüllung, 50 t energetische Verwertung, 80 t Deponie.', formel: '950 + 120 + 50 + 80 = 1\\,200\\,\\text{t}' },
+          { titel: 'Stoffliche Verwertung', erklaerung: 'Recycling und Verfüllung zählen, energetische Verwertung nicht:', formel: 'Q = \\frac{950 + 120}{1\\,200} = 89\\,\\%' },
+          { titel: 'Zielvorgabe', erklaerung: 'Mindestens 70 Gew.-% stoffliche Verwertung für nicht gefährliche Bau- und Abbruchabfälle:', formel: '89\\,\\% \\ge 70\\,\\%' }
+        ]}
+        ergebnisHinweis="Hochwertig ist erst die Rückführung in den Hochbau (z. B. RC-Beton); Verfüllung und Straßenunterbau sind Downcycling. Für mineralische Ersatzbaustoffe im technischen Bauwerk gilt die EBV."
+        normQuelle="KrWG § 14; Abfallrahmenrichtlinie 2008/98/EG Art. 11 Abs. 2; EBV"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="kreislauf_dpp" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: MCI- und UMI-Formeln, Rechtsgrundlagen und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
           { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' }
         ]}
         regelwerke={[
-          { title: 'Kreislaufwirtschaftsgesetz (KrWG)', url: 'https://www.gesetze-im-internet.de/krwg/' },
-          { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.bmuv.de/gesetz/ersatzbaustoffverordnung' },
+          { title: 'Kreislaufwirtschaftsgesetz (KrWG), u. a. § 14 (70 % Verwertung von Bau- und Abbruchabfällen)', url: 'https://www.gesetze-im-internet.de/krwg/' },
+          { title: 'Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023; Novelle in Vorbereitung)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
+          { title: 'Ökodesign-Verordnung (EU) 2024/1781 (ESPR, Digitaler Produktpass) und Bauproduktenverordnung (EU) 2024/3110', url: 'https://eur-lex.europa.eu/' },
           { title: 'Gütegemeinschaft Kreislaufwirtschaft im Hochbau e.V.', url: 'https://www.gkh-ev.de' }
         ]}
         literatur={[
-          'Hebel, D. E. et al.: Urban Mining und kreislaufgerechtes Bauen - Reallabor Hochhaus.',
-          'DGNB: Leitfaden Zirkuläres Bauen - Bewertungssysteme der Zirkularität.',
-          'Ellen MacArthur Foundation: Material Circularity Indicator (MCI) Methodology.'
+          'Hebel, D. E.; Wisniewska, M. H.; Heisel, F.: Building from Waste – Recovered Materials in Architecture and Construction. Basel: Birkhäuser 2014',
+          'Rosen, A.: Urban Mining Index – Entwicklung einer Systematik zur quantitativen Bewertung der Kreislaufkonsistenz von Baukonstruktionen in der Neubauplanung. Stuttgart: Fraunhofer IRB 2021',
+          'Ellen MacArthur Foundation; Granta Design: Circularity Indicators – An Approach to Measuring Circularity. Methodology (2015, aktualisiert 2019)'
         ]}
         formeln={[
           {
             formel: "\\text{UMI}_{\\text{Gesamt}} = \\frac{\\text{Rate}_{\\text{Input}} + \\text{Rate}_{\\text{Output}}}{2} \\quad [\\%]",
-            erklaerung: "Urban Mining Index (UMI). Bestimmt die quantitative Kreislauffähigkeit eines Bauwerks durch die arithmetische Mittelung von Rezyklat-Input und stofflicher Verwertbarkeit nach Nutzung (Output).",
-            quelle: "DGNB / UMI e.V."
+            erklaerung: "Vereinfachte Lehrdarstellung des Urban Mining Index (UMI): Mittelung von Rezyklat-Input und stofflicher Verwertbarkeit nach der Nutzung (Output). Die Originalmethode gewichtet nach Verwertungsqualität (Wiederverwendung, Recycling, Downcycling).",
+            quelle: "Rosen (2021), vereinfacht"
           },
           {
             formel: "\\text{MCI} = 1 - \\text{LFI} \\cdot F_u \\quad [-]",
-            erklaerung: "Material Circularity Indicator (MCI). Quantifizierung von linearem Fluss (LFI) abgemindert um einen Nutzungsfaktor (F_u) basierend auf Bauteillebensdauer und Nutzungsintensität.",
-            quelle: "Ellen MacArthur Foundation"
+            erklaerung: "Material Circularity Indicator (MCI): linearer Fluss (LFI) gewichtet mit dem Nutzungsfaktor F(X) = 0,9/X; X aus Lebensdauer und Nutzungsintensität relativ zum Branchendurchschnitt.",
+            quelle: "Ellen MacArthur Foundation / Granta Design (2015)"
           }
         ]}
       />

@@ -838,7 +838,7 @@ export default function Modernisierung() {
                 <AlertTriangle className="text-amber-600 shrink-0 mt-0.5" size={16} />
                 <div>
                   <strong>Wirtschaftliche Kostenfalle:</strong> Der Einbau fossiler Heizkessel birgt durch den nationalen CO₂-Preis (BEHG) 
-                  und das europäische Emissionshandelssystem für Gebäude (EU-ETS 2 ab 2027) sowie die knappen und teuren Biomethan-Kontingente 
+                  und das europäische Emissionshandelssystem für Gebäude (EU-ETS 2, Start auf 2028 verschoben) sowie die knappen und teuren Biomethan-Kontingente 
                   ein hohes Risiko drastisch steigender Betriebskosten.
                 </div>
               </div>

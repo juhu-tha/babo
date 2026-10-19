@@ -994,12 +994,12 @@ export default function Nawaro() {
           'FNR e.V. (2023): Planungsleitfaden - Dämmstoffe aus nachwachsenden Rohstoffen (Gülzow-Prüzen)'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-2:2013-02 (Wärmeschutz und Energie-Einsparung in Gebäuden - Teil 2: Mindestanforderungen an den Wärmeschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' },
+          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' },
           { title: 'DIN 4108-10:2021-11 (Wärmeschutz und Energie-Einsparung in Gebäuden - Anwendungsbezogene Anforderungen an Dämmstoffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-10' },
-          { title: 'DIN 68800-1..4:2019-06 (Holzschutz im Hochbau - Vorbeugender baulicher und chemischer Holzschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-1..4' },
+          { title: 'DIN 68800 Teile 1 bis 4 (Holzschutz; Teil 1:2019-06, Ausgaben der übrigen Teile manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
           { title: 'DIN EN 13171:2015-04 (Wärmedämmstoffe für Gebäude - Werkmäßig hergestellte Produkte aus Holzfasern (WF))', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13171' },
-          { title: 'DIN EN 15137:2006-03 (Wärmedämmstoffe für Gebäude - In-situ hergestellte Wärmedämmung aus Zellulose-Fasern (LF))', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15137' },
-          { title: 'GModG (Gebäudemodernisierungsgesetz) / GEG 2024 / EPBD 2024/1275 (Anforderungen an den baulichen Wärmeschutz)', url: 'https://www.gesetze-im-internet.de/geg/' }
+          { title: 'DIN EN 15101-1:2019-07 (Wärmedämmstoffe für Gebäude – An der Verwendungsstelle hergestellte Wärmedämmung aus Zellulosefüllstoff (LFCI))', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15101-1' },
+          { title: 'GModG (Gebäudemodernisierungsgesetz, seit 29.07.2026; vormals GEG) / EPBD (EU) 2024/1275', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         formeln={[
           {

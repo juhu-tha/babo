@@ -821,11 +821,11 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
   nachhaltigkeit: {
     title: 'Nachhaltigkeit & Ökobilanzierung',
     tagline: 'LCA-Methodik, Treibhauspotenzial (GWP), Zirkularität, Materialeffizienz und EPBD',
-    leitfrage: 'Wie dekarbonisieren wir den Bausektor von 40 % der globalen Emissionen auf Netto-Null bis 2045?',
+    leitfrage: 'Wie dekarbonisieren wir den Gebäude- und Bausektor (rund 37 % der globalen energie- und prozessbedingten CO₂-Emissionen) bis zur Treibhausgasneutralität – in Deutschland bis 2045?',
     corePrinciples: [
       {
         title: 'Lebenszyklusanalyse (LCA nach DIN EN 15978)',
-        description: 'Gebäudeemissionen teilen sich in "graue Emissionen" (Herstellung A1–A3, Transport & Einbau A4–A5) und "betriebliche Emissionen" (Heizen, Kühlen B1–B7). Bei hocheffizienten Neubauten dominiert die graue Energie mit über 60 % der Gesamtemissionen.',
+        description: 'Gebäudeemissionen teilen sich in "graue Emissionen" (Herstellung A1–A3, Transport & Einbau A4–A5) und "betriebliche Emissionen" (Heizen, Kühlen B1–B7). Bei hocheffizienten Neubauten entfällt häufig mehr als die Hälfte der Lebenszyklusemissionen auf die Herstellung.',
         takeaway: 'Klimaschutz im Bauen entscheidet sich in den ersten 6 Monaten auf der Baustelle, nicht über 50 Jahre Betrieb.'
       },
       {
@@ -839,7 +839,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         takeaway: 'Nur was sortenrein demontiert werden kann, ist kreislauffähig.'
       }
     ],
-    systemicExplanation: 'Dieses Modul verankert die ökologische Transformation des Bauingenieurwesens. Es führt durch Ökobilanzen nach ÖKOBAUDAT, Umweltproduktdeklarationen (EPDs), EU-Taxonomie, Gebäudeenergiegesetz (GEG), Zertifizierungssysteme (DGNB, BNB, QNG) und die DAfStb-Richtlinie für treibhausgasoptimierte Tragwerke.',
+    systemicExplanation: 'Dieses Modul verankert die ökologische Transformation des Bauingenieurwesens. Es führt durch Ökobilanzen nach ÖKOBAUDAT, Umweltproduktdeklarationen (EPDs), EU-Taxonomie, EPBD (EU) 2024/1275, Gebäudemodernisierungsgesetz (GModG, vormals GEG) und Zertifizierungssysteme (DGNB, BNB, QNG).',
     zusammenhaengeText: 'Nachhaltigkeit ist das Dach aller Module: Sie hinterfragt Materialmengen der Mechanik, Zementgehalte der Betontechnologie, Entsorgbarkeit von Bauprodukten und setzt das Bauen im Bestand als Leitstrategie durch.',
     graphicalPipelineTitle: 'Das zirkuläre Lebenszyklusmodell des Bauens',
     graphicalPipelineDesc: 'Von der Wiege bis zur Bahre – und zurück in den Stoffkreislauf nach DIN EN 15804 / 15978:',
@@ -861,7 +861,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Nutzung (B1), Instandhaltung (B2), Reparatur (B3), Ersatz (B4), Energie- & Wasserbetrieb (B6/B7).',
         iconName: 'Leaf',
         keyFacts: ['Wärmepumpenstrom', 'Photovoltaik-Eigenstrom', 'Rebound-Effekte'],
-        normOrFormula: 'GEG / EPBD-Richtlinie',
+        normOrFormula: 'GModG / EPBD (EU) 2024/1275',
         color: 'from-amber-500 to-amber-600'
       },
       {
@@ -888,7 +888,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
     interconnections: [
       { from: 'A1–A5', to: 'B1–B7', relation: 'Amortisationszeit', causeEffect: 'Hoher Materialaufwand in A1–A3 (z. B. dicke Dreifachverglasung, massive Dämmung) muss sich über geringere B6-Betriebsemissionen innerhalb von 15 Jahren amortisieren.' },
       { from: 'C1–C4', to: 'Modul D', relation: 'Sortenreinheit', causeEffect: 'Nur sauber getrennte Rückbaumassen erzielen in Modul D signifikante CO2-Gutschriften; Mischabbruch führt zu Deponielasten in C4.' },
-      { from: 'Modul D', to: 'A1–A5', relation: 'Stoffkreislaufschluss', causeEffect: 'Sekundärrohstoffe aus Modul D ersetzen Primärrohstoffe in Phase A1 und senken den CO2-Fußabdruck neuer Gebäude um bis zu 50 %.' }
+      { from: 'Modul D', to: 'A1–A5', relation: 'Stoffkreislaufschluss', causeEffect: 'Sekundärrohstoffe ersetzen Primärrohstoffe in künftigen Produkten (Phase A1); die dadurch vermiedenen Lasten werden als Modul D getrennt ausgewiesen und nicht mit A–C verrechnet.' }
     ],
     practicalInsight: {
       title: 'Die wichtigste Formel des Klimaschutzes',

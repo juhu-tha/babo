@@ -137,8 +137,8 @@ export default function RessourcenEmissionen() {
           'Umweltbundesamt (UBA): ÖKOBAUDAT Leitfaden - Datenbasis für die Ökobilanzierung von Bauwerken.'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 14040/44 (Umweltmanagement - Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.din.de' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.din.de' }
+          { title: 'DIN EN ISO 14040:2021-02 / DIN EN ISO 14044:2021-02 (Umweltmanagement – Ökobilanz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14040' },
+          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln; EN 15804+A2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
         ]}
         formeln={[
           {

@@ -30,6 +30,8 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { useTabContext } from '@/src/contexts/TabContext';
@@ -153,7 +155,7 @@ export const ALL_17_SDGS: SdgItem[] = [
     relevanceLabel: 'Absolute Kernrelevanz Bauwesen',
     baupraxis: 'Der Gebäudebetrieb (Heizung, Warmwasser, Kälte) verantwortet ca. 28 % der weltweiten energiebedingten CO₂-Emissionen. Nullemissionsgebäude (ZEB nach EPBD 2024/1275), gebäudeintegrierte Photovoltaik (BIPV) und Geothermie machen Gebäude zu regenerativen Kraftwerken.',
     measures: [
-      'Umsetzung der 65 % EE-Vorgabe im Gebäudeenergiegesetz (GEG 2024) bei Heizungserneuerung',
+      'Heizungserneuerung nach dem Gebäudemodernisierungsgesetz (GModG 2026: 65-%-Vorgabe entfallen, Bio-Treppe für Gas- und Ölheizungen)',
       'Gebäudeintegrierte Photovoltaik (BIPV) auf Dächern und solaraktiven Fassaden',
       'Nutzung von Umweltwärme über Wärmepumpenkaskaden, Erdsonden und Eisspeicher',
       'Passivhaus- und Effizienzhaus-Dämmstandards zur nachhaltigen Senkung des Primärenergiebedarfs'
@@ -218,7 +220,7 @@ export const ALL_17_SDGS: SdgItem[] = [
       'Schwammstadt-Infrastruktur: Entsiegelung, Rigolensysteme und Retentionsmulden gegen Starkregen',
       'Bauen im Bestand als Primärstrategie zur Bewahrung grauer Energie und baukultureller Identität',
       'Dach- und Fassadenbegrünung zur Reduktion des städtischen Wärmeinseleffekts (Urban Heat Island)',
-      'Rechtlich belastbares Abweichen von Komfortnormen über Gebäudetyp E (§ 650o BGB)'
+      'Rechtlich belastbares Abweichen von Komfortnormen über den Gebäudetyp E (Gesetz in Vorbereitung)'
     ]
   },
   {
@@ -352,7 +354,7 @@ export default function NachhaltigkeitDatenRegeln() {
             internationale Abkommen und Leitlinien (<strong>UN-Klimakonferenzen, SDGs</strong>), 
             europäische Richtlinien (<strong>EU-Taxonomie, EPBD 2024/1275, CSRD</strong>), 
             zirkuläre Deklarationssysteme (<strong>EPD nach DIN EN 15804+A2, Digitaler Produktpass DPP, Madaster</strong>) 
-            sowie das geltende nationale Gesetzesgefüge (<strong>GEG, QNG, EBV, KrWG und Gebäudetyp E nach § 650o BGB</strong>).
+            sowie das geltende nationale Gesetzesgefüge (<strong>GModG (vormals GEG), QNG, EBV, KrWG und das Gebäudetyp-E-Vorhaben</strong>).
           </p>
         </div>
 
@@ -427,7 +429,7 @@ export default function NachhaltigkeitDatenRegeln() {
             }`}
             onClick={() => setActiveTab('national')}
           >
-            <ShieldCheck size={16} /> 6. Deutsches Baurecht (GEG, QNG, EBV, § 650o)
+            <ShieldCheck size={16} /> 6. Deutsches Baurecht (GModG, QNG, EBV, Gebäudetyp E)
           </button>
         </div>
       </div>
@@ -460,7 +462,7 @@ export default function NachhaltigkeitDatenRegeln() {
                 Im Bauwesen wandelt sich die Definition von einer rein philosophisch-ethischen Leitlinie zu einem 
                 <strong> quantifizierbaren, normativ geregelten Ingenieuransatz</strong>: Nachhaltiges Bauen umfasst die integrale Optimierung aller 
                 Schutzgüter über den vollständigen Lebenszyklus (Rohstoffgewinnung bis Rezyklierung) auf Basis reproduzierbarer Messgrößen 
-                (Ökobilanzierung nach DIN EN 15978, Lebenszykluskosten LCC nach DIN EN 15686-5 und soziokulturelle Kriterien nach DIN EN 15643).
+                (Ökobilanzierung nach DIN EN 15978, Lebenszykluskosten LCC nach ISO 15686-5 bzw. DIN EN 16627 und soziokulturelle Kriterien nach DIN EN 15643).
               </p>
             </div>
 
@@ -636,7 +638,7 @@ export default function NachhaltigkeitDatenRegeln() {
                       Optimierung der Gesamtwirtschaftlichkeit über den Lebenszyklus; Abkehr von rein investitionskostengetriebener Planung.
                     </p>
                     <ul className="text-[11px] text-text-main/70 space-y-1.5 list-disc list-inside">
-                      <li><strong>Lebenszykluskosten (LCC)</strong> nach DIN EN 15686-5 &amp; DIN 18960</li>
+                      <li><strong>Lebenszykluskosten (LCC)</strong> nach ISO 15686-5, DIN EN 16627 &amp; DIN 18960</li>
                       <li><strong>Herstellungskosten (KG 300/400)</strong> vs. Betriebs- &amp; Instandhaltungskosten</li>
                       <li><strong>Wertstabilität &amp; Drittverwendungsfähigkeit:</strong> Umnutzungsflexibilität</li>
                       <li><strong>Risikoabsicherung:</strong> Vermeidung von <em>Stranded Assets</em> (CRREM-Pfad)</li>
@@ -1158,7 +1160,7 @@ export default function NachhaltigkeitDatenRegeln() {
             {/* 6 Environmental Goals Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
-                { id: 1, title: '1. Klimaschutz (Climate Mitigation)', desc: 'Neubau: Primärenergiebedarf mind. 10 % unter NZEB/GEG. Bei Bauten > 1.000 m² zwingende Lebenszyklus-Ökobilanz (GWP nach EN 15978).' },
+                { id: 1, title: '1. Klimaschutz (Climate Mitigation)', desc: 'Neubau: Primärenergiebedarf mind. 10 % unter NZEB/GEG. Bei Gebäuden > 5 000 m² zusätzlich Berechnung und Offenlegung des Lebenszyklus-GWP (Delegierte VO (EU) 2021/2139, Anhang I, 7.1).' },
                 { id: 2, title: '2. Anpassung an Klimawandel (Adaptation)', desc: 'Klimarisiko- und Vulnerabilitätsanalyse (Hitze, Hochwasser, Sturm) über 30 Jahre; Umsetzung physischer Anpassungsmaßnahmen.' },
                 { id: 3, title: '3. Wasser- & Meeresressourcen', desc: 'Wassersparende Armaturen (Durchflussbegrenzer, Grauwassernutzung); Schutz vor Schadstoffeinträgen in Grundwasser.' },
                 { id: 4, title: '4. Übergang zur Kreislaufwirtschaft', desc: 'Mindestens 70 % der nicht gefährlichen Bau- und Abbruchabfälle müssen stofflich wiederverwendet oder recycelt werden (Design for Deconstruction).' },
@@ -1335,7 +1337,7 @@ export default function NachhaltigkeitDatenRegeln() {
       )}
 
       {/* ========================================================================= */}
-      {/* TAB 5: DEUTSCHES BAURECHT (GEG, QNG, EBV, § 650o)                          */}
+      {/* TAB 5: DEUTSCHES BAURECHT (GModG, QNG, EBV, Gebäudetyp E)                          */}
       {/* ========================================================================= */}
       {activeTab === 'national' && (
         <div className="space-y-6 animate-in fade-in duration-200">
@@ -1346,7 +1348,7 @@ export default function NachhaltigkeitDatenRegeln() {
                   Die fünf Säulen des deutschen Nachhaltigkeits-Baurechts
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Vom Gebäudeenergiegesetz (GEG) über die Ersatzbaustoffverordnung bis zum Gebäudetyp E (§ 650o BGB).
+                  Vom Gebäudemodernisierungsgesetz (GModG, vormals GEG) über die Ersatzbaustoffverordnung bis zum Gebäudetyp-E-Vorhaben.
                 </p>
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-bold">
@@ -1381,7 +1383,7 @@ export default function NachhaltigkeitDatenRegeln() {
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
                     Staatliches Gütesiegel des BMWSB für zinsgünstige KfW-Förderdarlehen (Klimafreundlicher Neubau KFN) und degressive AfA (5 %). 
-                    Grenzwerte: <strong>QNG-Plus (<InlineMath math="\le 24\,\text{kg CO}_2\text{e}/(\text{m}^2\cdot\text{a})" />)</strong> und <strong>QNG-Premium (<InlineMath math="\le 16\text{--}20\,\text{kg CO}_2\text{e}/(\text{m}^2\cdot\text{a})" />)</strong> über 50 Jahre Betrachtungszeitraum.
+                    Grenzwerte: <strong>QNG-Plus (<InlineMath math="\le 24\,\text{kg CO}_2\text{e}/(\text{m}^2\cdot\text{a})" />)</strong> und <strong>QNG-Premium (<InlineMath math="\le 20\,\text{kg CO}_2\text{e}/(\text{m}^2_{\text{NRF}}\cdot\text{a})" />)</strong> für Wohngebäude (WG23) über 50 Jahre Betrachtungszeitraum.
                   </p>
                 </div>
                 <div className="text-right shrink-0">
@@ -1429,12 +1431,12 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-rose-200 bg-rose-50/50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <strong className="text-xs font-bold text-slate-900">5. Gebäudetyp-E-Gesetz (§ 650o BGB)</strong>
+                    <strong className="text-xs font-bold text-slate-900">5. Gebäudetyp E (Gesetzesvorhaben)</strong>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">Suffizienz</span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Ermöglicht fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen (DIN-Normen) ohne Sachmangelrisiko nach § 633 BGB. 
-                    Grundlegende öffentlich-rechtliche Schutzziele (**Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz**) bleiben voll gewahrt.
+                    Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; seit November 2025 liegen Eckpunkte für einen neuen Entwurf vor (Stand manuell prüfen). 
+                    Grundlegende öffentlich-rechtliche Schutzziele (Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz) bleiben gewahrt.
                   </p>
                 </div>
                 <div className="text-right shrink-0">
@@ -1447,8 +1449,36 @@ export default function NachhaltigkeitDatenRegeln() {
         </div>
       )}
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: EU-Taxonomie – Primärenergie-Kriterium für einen Neubau"
+        zielGleichung="Q_{P} \le 0{,}90 \cdot Q_{P,\text{NZEB}}"
+        schritte={[
+          { titel: 'NZEB-Schwelle', erklaerung: 'In Deutschland entspricht der Niedrigstenergiegebäude-Standard der Neubauanforderung nach GModG § 15 (0,55 · Referenzgebäude). Angenommen: zulässiger Wert 40 kWh/(m²a).', formel: 'Q_{P,\\text{NZEB}} = 40\\,\\text{kWh/(m}^2\\text{a)}' },
+          { titel: 'Taxonomie-Schwelle', erklaerung: 'Neubau, Klimaschutz-Kriterium: mindestens 10 % unter NZEB:', formel: 'Q_{P,\\text{Tax}} = 0{,}90 \\cdot 40 = 36\\,\\text{kWh/(m}^2\\text{a)}' },
+          { titel: 'Prüfung', erklaerung: 'Planungswert 34 kWh/(m²a):', formel: '34 \\le 36 \\Rightarrow \\text{Kriterium erfüllt}' }
+        ]}
+        ergebnisHinweis="Für Gebäude über 5 000 m² ist zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen; außerdem gelten Luftdichtheits- bzw. Thermografie-Nachweise und die DNSH-Kriterien."
+        normQuelle="Delegierte VO (EU) 2021/2139, Anhang I, Abschnitt 7.1 (Stand manuell prüfen)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: CRREM-Pfad – wann wird ein Bürogebäude „stranded“?"
+        zielGleichung="I_{\text{Ziel}}(t) = I_{2020} - \frac{I_{2020} - I_{2030}}{10} \cdot (t - 2020)"
+        schritte={[
+          { titel: 'Pfad (Lehrwerte)', erklaerung: 'Linear zwischen 52 kg CO₂e/(m²a) im Jahr 2020 und 18 kg CO₂e/(m²a) im Jahr 2030:', formel: 'I_{\\text{Ziel}}(2026) = 52 - 3{,}4 \\cdot 6 = 31{,}6\\,\\text{kg CO}_2\\text{e/(m}^2\\text{a)}' },
+          { titel: 'Ist-Intensität', erklaerung: 'Betriebsemissionen des Gebäudes:', formel: 'I_{\\text{Ist}} = 32{,}0 > 31{,}6' },
+          { titel: 'Misalignment Year', erklaerung: 'Ohne Maßnahmen liegt das Gebäude bereits 2026 über dem Pfad; eine Senkung auf 20 kg CO₂e/(m²a) verschiebt den Schnittpunkt:', formel: '52 - 3{,}4 \\cdot (t - 2020) = 20 \\Rightarrow t \\approx 2029{,}4' }
+        ]}
+        ergebnisHinweis="CRREM-Pfade sind länder- und nutzungsspezifisch; für Investitionsentscheidungen sind die aktuellen veröffentlichten Pfade zu verwenden, nicht diese Lehrwerte."
+        normQuelle="CRREM-Methodik (Lehrbeispiel)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="nachhaltigkeit_daten_regeln" />
+
       {/* Standardized ModuleFooter according to Styleguide */}
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: QNG, EPBD, Taxonomie, ETS II, Gebäudetyp E und GModG auf Rechtsstand Oktober 2026 geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Ziele für nachhaltige Entwicklung (SDGs)', url: 'https://de.wikipedia.org/wiki/Ziele_f%C3%BCr_nachhaltige_Entwicklung' },
           { title: 'EU-Taxonomie', url: 'https://de.wikipedia.org/wiki/EU-Taxonomie' },
@@ -1457,32 +1487,32 @@ export default function NachhaltigkeitDatenRegeln() {
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' }
         ]}
         literatur={[
-          'Hegger, M. et al.: Baustoff-Atlas (Detail Verlag / Birkhäuser)',
-          'Klöpffer, W.; Grahl, B.: Ökobilanz (LCA): Ein Leitfaden für Ausbildung und Praxis (Wiley-VCH)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Springer Vieweg',
-          'BMWSB: Leitfaden Nachhaltiges Bauen – Zukunftsfähiges Planen, Bauen und Betreiben von Gebäuden (2021)',
-          'Nagler, F.; Auer, T.: Einfach Bauen – Forschungshäuser Bad Aibling (Detail Verlag)'
+          'Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T.: Baustoff Atlas. München: Edition Detail 2005',
+          'Klöpffer, W.; Grahl, B.: Ökobilanz (LCA) – Ein Leitfaden für Ausbildung und Beruf. Weinheim: Wiley-VCH 2009',
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Bundesbauministerium (Hrsg.): Leitfaden Nachhaltiges Bauen – Zukunftsfähiges Planen, Bauen und Betreiben von Gebäuden. Berlin (aktuelle Auflage manuell prüfen)',
+          'Nagler, F. et al.: Forschungsprojekt „Einfach Bauen“, Forschungshäuser Bad Aibling, TU München (Veröffentlichung manuell prüfen)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken – Rahmenbedingungen für die Bewertung von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' },
-          { title: 'DIN EN ISO 15392 (Nachhaltigkeit im Hoch- und Tiefbau – Allgemeine Grundsätze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+15392' },
-          { title: 'EPBD (EU 2024/1275 Energy Performance of Buildings Directive)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'EU-Taxonomie-Verordnung (EU 2020/852)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN 15804+A2 (Umweltproduktdeklarationen für Bauprodukte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
-          { title: 'DIN EN 15978 (Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
-          { title: 'Gebäudeenergiegesetz (GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
+          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen zur Bewertung von Gebäuden und Ingenieurbauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' },
+          { title: 'DIN EN ISO 15392 (Nachhaltigkeit von Bauwerken – Allgemeine Grundsätze; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+15392' },
+          { title: 'EPBD – Richtlinie (EU) 2024/1275 (Neufassung; Nullemissionsgebäude ab 2028/2030, Lebenszyklus-GWP Art. 7)', url: 'https://eur-lex.europa.eu/' },
+          { title: 'EU-Taxonomie-Verordnung (EU) 2020/852 mit Delegierter VO (EU) 2021/2139 (Klimaschutz-Kriterien)', url: 'https://eur-lex.europa.eu/' },
+          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden; ersetzt 2012-10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
+          { title: 'Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
+          { title: 'Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023; Novelle in Vorbereitung)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
         ]}
         formeln={[
           {
             formel: 'GWP_{\\text{Gebäude}} = \\sum_{i} m_i \\cdot GWP_{\\text{A1-A3},i} + \\sum_{t=1}^{50} E_t \\cdot f_{\\text{CO2},t} \\quad [\\text{kg CO}_2\\text{-eq}]',
-            erklaerung: 'Lebenszyklus-Treibhausgasbilanzierung über 50 Jahre nach DIN EN 15978 und QNG unter Berücksichtigung von grauer Herstellungsenergie (A1–A3) und operationeller Betriebsenergie (B6).',
+            erklaerung: 'Vereinfachte Lebenszyklus-Treibhausgasbilanz über 50 Jahre (QNG, EPBD) mit Herstellung (A1–A3) und Betrieb (B6); vollständig zusätzlich Austausch (B4) und Lebensende (C3/C4).',
             quelle: 'DIN EN 15978 / QNG'
           },
           {
-            formel: 'CI = \\frac{M_{\\text{recyc}} + M_{\\text{re-use}}}{M_{\\text{gesamt}}} \\cdot \\left( 1 - \\frac{0{,}1}{L/L_0} \\right) \\quad [\\%]',
-            erklaerung: 'Circularity Index (Zirkularitätsgrad) nach Madaster / Ellen MacArthur Foundation zur Bewertung der stofflichen Rezyklierbarkeit und Langlebigkeit verbauter Massen.',
-            quelle: 'Madaster / C2C'
+            formel: '\\text{MCI} = 1 - \\text{LFI} \\cdot \\frac{0{,}9}{X}, \\quad X = \\frac{L}{L_{av}} \\cdot \\frac{U}{U_{av}}',
+            erklaerung: 'Material Circularity Indicator: LFI = Linear Flow Index (Anteil linearer Stoffflüsse aus Primärrohstoff und Abfall), X = Nutzungsfaktor aus Lebensdauer L und Nutzungsintensität U relativ zum Branchendurchschnitt. Der Madaster-Zirkularitätsindex baut auf diesem Ansatz auf.',
+            quelle: 'Ellen MacArthur Foundation / Granta Design: Material Circularity Indicator'
           },
           {
             formel: '\\text{GHG-Intensität} = \\frac{\\sum_{j} E_j \\cdot f_{\\text{CO2},j}}{\\text{NFA}} \\le \\text{Target}_{\\text{CRREM}}(t) \\quad [\\text{kg CO}_2\\text{e/(m}^2_{\\text{NFA}}\\cdot\\text{a})]',

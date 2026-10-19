@@ -582,18 +582,19 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Zertifizierungssysteme', desc: 'Bedeutung der Nachhaltigkeitssysteme DGNB, BNB und QNG zur Absicherung zukunftssicherer Investitionen.' }
     ],
     submodules: [
-      { title: 'Materialoptimierung', icon: LeafIcon, purpose: 'Wege zur CO2-Reduzierung im Hochbau, klinkereffiziente Betone, rezyklierte Komponenten.', standards: 'CO2-Protokolle', useCase: 'Reduzierung des Carbon-Fußabdrucks durch Substitution von Portlandzement durch Hüttensand.' },
-      { title: 'Ökobilanzierung (LCA)', icon: LeafIcon, purpose: 'Berechnung des Treibhausgaspotenzials GWP in kg CO2-Äq sowie Versauerungspotenzial (AP).', standards: 'DIN EN ISO 14040, DIN EN 15804', useCase: 'Erstellung einer detaillierten Ökobilanz für eine Geschossdecke.' },
-      { title: 'Zertifizierung & Deklarationen', icon: Award, purpose: 'Aufbau von Umweltproduktdeklarationen (EPDs) für Herstellerbaustoffe und Gebäudezertifizierungen.', standards: 'ISO 14025 (Typ III Deklaration)', useCase: 'Heraussuchen der Primärenergie-Zahlen aus einer typischen Gipskartonplatten-EPD.' },
-      { title: 'Kreislaufwirtschaft', icon: RefreshCw, purpose: 'Zirkuläres Bauen, Langlebigkeit, sortenreiner Rückbau und rezyklierbare Werkstoffe im Hochbau.', standards: 'Klartext Kreislaufwirtschaftsgesetz', useCase: 'Entwurf einer schraubbaren, demontierbaren Fassade.' },
-      { title: 'Ressourcen & Umwelt', icon: Factory, purpose: 'Analyse stofflicher globaler Ressourcenentscheidungen, NaWaRo (Holz, Hanf, Schafwolle).', standards: 'Ökobilanzdatenbanken (ÖKOBAUDAT)', useCase: 'Erfassung des PENRT-Verbrauchs von Steinwolle im Vergleich zu Holzfaserplatten.' },
-      { title: 'Lebenszyklus & Kosten', icon: TrendingUp, purpose: 'Barwertmethode (LCC), künftige Ersatzinvestitionen und Instandhaltungskosten über 50 Jahre simulieren.', standards: 'ISO 15686-5', useCase: 'Berechnung des Lebenszyklus-Barwertvorteils eines Schieferdachs gegenüber Ziegeldeckung.' },
+      { title: 'Daten & Regeln', icon: Globe, purpose: 'Globale Kennzahlen, Rechtsrahmen (EPBD, EU-Taxonomie, GModG, EBV, QNG) und Dekarbonisierungspfade (CRREM).', standards: 'EPBD (EU) 2024/1275; VO (EU) 2020/852; GModG', useCase: 'Prüfung, ob ein Neubau die Taxonomie-Kriterien für Klimaschutz erfüllt.' },
+      { title: 'Materialoptimierung', icon: LeafIcon, purpose: 'Wege zur CO2-Reduzierung im Hochbau, klinkereffiziente Betone, rezyklierte Komponenten.', standards: 'DIN EN 15804+A2; DIN EN 206 / DIN 1045-2', useCase: 'Reduzierung des Carbon-Fußabdrucks durch Substitution von Portlandzement durch Hüttensand.' },
+      { title: 'Ökobilanzierung (LCA)', icon: LeafIcon, purpose: 'Berechnung des Treibhausgaspotenzials GWP in kg CO2-Äq sowie Versauerungspotenzial (AP).', standards: 'DIN EN ISO 14040/14044; DIN EN 15804+A2; DIN EN 15978:2026-09; DIN EN 17472', useCase: 'Erstellung einer Ökobilanz für eine Geschossdecke und QNG-Nachweis eines Wohngebäudes.' },
+      { title: 'Zertifizierung & Deklarationen', icon: Award, purpose: 'Aufbau von Umweltproduktdeklarationen (EPDs) für Herstellerbaustoffe und Gebäudezertifizierungen.', standards: 'ISO 14024/14025; DGNB, BNB, QNG', useCase: 'Heraussuchen der Primärenergie-Zahlen aus einer typischen Gipskartonplatten-EPD.' },
+      { title: 'Kreislaufwirtschaft', icon: RefreshCw, purpose: 'Zirkuläres Bauen, Langlebigkeit, sortenreiner Rückbau und rezyklierbare Werkstoffe im Hochbau.', standards: 'KrWG; EBV; ESPR (EU) 2024/1781', useCase: 'Entwurf einer schraubbaren, demontierbaren Fassade.' },
+      { title: 'Ressourcen & Umwelt', icon: Factory, purpose: 'Analyse stofflicher globaler Ressourcenentscheidungen, NaWaRo (Holz, Hanf, Schafwolle).', standards: 'ÖKOBAUDAT; DIN EN 16449', useCase: 'Erfassung des PENRT-Verbrauchs von Steinwolle im Vergleich zu Holzfaserplatten.' },
+      { title: 'Lebenszyklus & Kosten', icon: TrendingUp, purpose: 'Barwertmethode (LCC), künftige Ersatzinvestitionen und Instandhaltungskosten über 50 Jahre simulieren.', standards: 'ISO 15686-5:2017; DIN EN 16627; DIN 18960', useCase: 'Berechnung des Lebenszyklus-Barwertvorteils eines Schieferdachs gegenüber Ziegeldeckung.' },
       { title: 'Nachhaltigkeits-Checklisten', icon: ClipboardCheck, purpose: 'Strukturierte Prüffragen zu DGNB-, BNB- und QNG-Kriterien, Baustoffauswahl und Zirkularitätsnachweisen.', standards: 'DGNB / QNG Handbücher', useCase: 'Audit-Vorbereitung für die Zertifizierung eines nachhaltigen Bürogebäudes.' }
     ],
     didacticCards: [
       { title: 'Lebenszyklusphasen verstehen', desc: 'Sichere Differenzierung der Module A1-A3 (Herstellung), B1-B7 (Nutzung), C1-C4 (Entsorgung) und D (Gutschriften).' },
       { title: 'Transparente Bewertung', desc: 'Nutzung realer ÖKOBAUDAT-Referenzdaten als wissenschaftliche Berechnungsgrundlage.' },
-      { title: 'Finanzieller Nebenerhalt', desc: 'Darstellung der untrennbaren Verknüpfung von Ökologie (LCA) und Ökonomie (LCC).' }
+      { title: 'Ökologie und Ökonomie verbinden', desc: 'Gemeinsame Betrachtung von Ökobilanz (LCA) und Lebenszykluskosten (LCC) über denselben Betrachtungszeitraum.' }
     ],
     appStudents: 'Zentraler Wegweiser zur Durchführung integrierter Entwurfskonzepte sowie zur Anfertigung bauökologischer Abschlussarbeiten.',
     appProfessionals: 'Zielsicheres Unterstützungstool für DGNB-Consultants, Auditoren und Architekten, um das begehrte QNG-Siegel nachzuweisen.',
@@ -602,12 +603,13 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
     ],
     literatur: [
-      'König, H. (2012): Lebenszyklusanalyse von Gebäuden (Detail Green Books)',
-      'Bauer, M. et al. (2013): Green Building - Leitfaden für nachhaltiges Bauen (Springer)'
+      'König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009',
+      'Bauer, M.; Mösle, P.; Schwarz, M.: Green Building – Leitfaden für nachhaltiges Bauen. 2. Aufl., Berlin: Springer Vieweg 2013'
     ],
     regelwerke: [
-      { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltdeklarationen für Produkte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
-      { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG) - Anforderungen', url: 'https://www.qng.info/' }
+      { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen; EN 15804+A2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+      { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
+      { title: 'QNG-Handbuch, Anlage 3 (v1.4, 19.07.2024): WG23 PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)', url: 'https://www.qng.info/' }
     ],
     formeln: [
       { formel: '\\text{GWP}_{\\text{Gesamt}} = \\sum a_i \\cdot GWP_{\\text{Ref},i}', erklaerung: 'Ökologische Bilanzierungsformel. Das Gesamt-Treibhausgaspotenzial errechnet sich aus den Massen/Volumina a_i der Baustoffe multipliziert mit den spezifischen GWP-Emissionswerten laut EPD / ÖKOBAUDAT.', quelle: 'DIN EN 15978' },

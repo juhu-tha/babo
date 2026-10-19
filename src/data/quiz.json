@@ -3371,5 +3371,425 @@
       "targetModuleLabel": "Energieausweis"
     },
     "verified": false
+  },
+  {
+    "id": "q_ndr_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "EPBD Lebenszyklus-GWP",
+    "difficulty": "Basis",
+    "normRef": "Richtlinie (EU) 2024/1275, Art. 7",
+    "question": "Ab wann muss nach der EPBD-Neufassung das Lebenszyklus-GWP für alle neuen Gebäude berechnet und offengelegt werden?",
+    "options": [
+      "ab 2025",
+      "ab 2028 für alle Neubauten",
+      "ab 2030 für alle Neubauten (ab 2028 bereits für Gebäude über 1 000 m²)",
+      "erst ab 2050"
+    ],
+    "correctIdx": 2,
+    "explanation": "Art. 7 EPBD: ab 1.1.2028 für neue Gebäude mit mehr als 1 000 m² Nutzfläche, ab 1.1.2030 für alle neuen Gebäude; Betrachtungszeitraum 50 Jahre.",
+    "gapAnalysis": {
+      "topic": "EPBD Lebenszyklus-GWP",
+      "misconception": "Die gestufte Einführung wird übersehen.",
+      "coreRule": "GWP-Offenlegung: 2028 (> 1 000 m²), 2030 (alle Neubauten).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EPBD Lebenszyklus-GWP“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ndr_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "Rechtsstand Gebäudetyp E",
+    "difficulty": "Fortgeschritten",
+    "normRef": "BT-Drs. 20/13959",
+    "question": "Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?",
+    "options": [
+      "Seit 2025 als § 650o BGB in Kraft",
+      "Der Regierungsentwurf von 2024 ist mit der 20. Wahlperiode erledigt; seit November 2025 liegen Eckpunkte für einen neuen Entwurf vor",
+      "Er ist Teil der Musterbauordnung",
+      "Er wurde durch die EU-Bauproduktenverordnung eingeführt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Entwurf (u. a. § 650a Abs. 3/4 und § 650o BGB-E) wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. BMJ und BMWSB haben im November 2025 Eckpunkte vorgelegt; ein neues Gesetz steht aus.",
+    "gapAnalysis": {
+      "topic": "Rechtsstand Gebäudetyp E",
+      "misconception": "Ein Gesetzentwurf wird für geltendes Recht gehalten.",
+      "coreRule": "Entwurf ≠ Gesetz: Rechtsstand immer am Gesetzgebungsverfahren prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand Gebäudetyp E“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mo_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialoptimierung",
+    "moduleTitle": "Materialoptimierung",
+    "topic": "Zementart und GWP",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Welche Maßnahme senkt das GWP (A1–A3) von Transportbeton meist am stärksten?",
+    "options": [
+      "Kürzere Transportwege der Gesteinskörnung",
+      "Verringerung des Klinkeranteils, z. B. CEM III/A statt CEM I",
+      "Mehr Fließmittel",
+      "Höhere Frischbetontemperatur"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Zement verursacht 80 bis 90 % des Beton-GWP; im Lehrbeispiel sinkt das GWP mit CEM III/A von 286 auf 174 kg CO₂-Äq./m³ (−39 %).",
+    "gapAnalysis": {
+      "topic": "Zementart und GWP",
+      "misconception": "Transport wird als Haupttreiber des Beton-GWP angesehen.",
+      "coreRule": "Beton-GWP ≈ Zementgehalt × Klinkeranteil × spezifisches GWP.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zementart und GWP“ im Modul Materialoptimierung noch einmal durch.",
+      "targetModuleTab": "materialoptimierung",
+      "targetModuleLabel": "Materialoptimierung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mo_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialoptimierung",
+    "moduleTitle": "Materialoptimierung",
+    "topic": "k-Wert-Ansatz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Wie groß ist (w/z)_eq bei w = 165, z = 280 und f = 60 kg/m³ Flugasche (k = 0,4)?",
+    "options": [
+      "0,49",
+      "0,54",
+      "0,59",
+      "0,62"
+    ],
+    "correctIdx": 1,
+    "explanation": "(w/z)_eq = 165/(280 + 0,4 · 60) = 165/304 = 0,54.",
+    "gapAnalysis": {
+      "topic": "k-Wert-Ansatz",
+      "misconception": "Flugasche wird voll (k = 1) angerechnet.",
+      "coreRule": "(w/z)_eq = w/(z + k · f) mit k_f = 0,4.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „k-Wert-Ansatz“ im Modul Materialoptimierung noch einmal durch.",
+      "targetModuleTab": "materialoptimierung",
+      "targetModuleLabel": "Materialoptimierung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_oe_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "oekobilanz_lca",
+    "moduleTitle": "Ökobilanzierung (LCA)",
+    "topic": "QNG-Anforderungswerte",
+    "difficulty": "Basis",
+    "normRef": "QNG-Handbuch Anlage 3 (v1.4)",
+    "question": "Welche GWP-Anforderungswerte gelten für Wohngebäude nach QNG (WG23)?",
+    "options": [
+      "PLUS ≤ 28, PREMIUM ≤ 24 kg CO₂-Äq./(m² BGF·a)",
+      "PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)",
+      "PLUS ≤ 24, PREMIUM ≤ 16 kg CO₂-Äq./(m² NRF·a)",
+      "PLUS ≤ 32, PREMIUM ≤ 26 kg CO₂-Äq./(m² NRF·a)"
+    ],
+    "correctIdx": 1,
+    "explanation": "Seit 01.01.2023 (WG23): PLUS ≤ 24 und PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a), dazu PENRT ≤ 96 bzw. 64 kWh/(m² NRF·a); Bezug NRF nach DIN 277, 50 Jahre.",
+    "gapAnalysis": {
+      "topic": "QNG-Anforderungswerte",
+      "misconception": "Veraltete (bis 2022: PLUS 28) oder erfundene Werte und falsche Bezugsfläche.",
+      "coreRule": "QNG WG23: 24/20 kg CO₂-Äq. und 96/64 kWh je m² NRF und Jahr.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG-Anforderungswerte“ im Modul Ökobilanzierung (LCA) noch einmal durch.",
+      "targetModuleTab": "oekobilanz_lca",
+      "targetModuleLabel": "Ökobilanzierung (LCA)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_oe_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "oekobilanz_lca",
+    "moduleTitle": "Ökobilanzierung (LCA)",
+    "topic": "Modul D",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 15804+A2 / DIN EN 15978",
+    "question": "Wie werden Recycling-Gutschriften (Modul D) in einer Gebäude-Ökobilanz behandelt?",
+    "options": [
+      "Sie werden von A–C abgezogen",
+      "Sie werden getrennt als Information ausgewiesen und nicht mit A–C verrechnet",
+      "Sie ersetzen Modul B6",
+      "Sie werden nur bei Holzbauten berücksichtigt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Modul D liegt außerhalb der Systemgrenze; eine Saldierung würde Entlastungen doppelt zählen, die erst im Folgesystem wirken.",
+    "gapAnalysis": {
+      "topic": "Modul D",
+      "misconception": "Modul D wird als Bestandteil des Gebäude-GWP verstanden.",
+      "coreRule": "A1–C4 bilden das Ergebnis; D wird getrennt berichtet.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Modul D“ im Modul Ökobilanzierung (LCA) noch einmal durch.",
+      "targetModuleTab": "oekobilanz_lca",
+      "targetModuleLabel": "Ökobilanzierung (LCA)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_zs_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "DGNB-Auszeichnung",
+    "difficulty": "Basis",
+    "normRef": "DGNB System",
+    "question": "Ein Projekt erreicht einen Gesamterfüllungsgrad von 77 %. Welche DGNB-Auszeichnung ist möglich (bei erfüllten Mindestgraden)?",
+    "options": [
+      "Platin",
+      "Gold",
+      "Silber",
+      "Bronze"
+    ],
+    "correctIdx": 1,
+    "explanation": "Platin ab 80 %, Gold ab 65 %, Silber ab 50 %; zusätzlich gelten Mindesterfüllungsgrade je Themenfeld.",
+    "gapAnalysis": {
+      "topic": "DGNB-Auszeichnung",
+      "misconception": "Die Stufengrenzen werden verwechselt.",
+      "coreRule": "DGNB: Platin ≥ 80 %, Gold ≥ 65 %, Silber ≥ 50 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DGNB-Auszeichnung“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_zs_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "Typen von Umweltkennzeichnungen",
+    "difficulty": "Basis",
+    "normRef": "ISO 14024 / ISO 14025",
+    "question": "Was ist eine Umweltproduktdeklaration (EPD) nach DIN EN 15804?",
+    "options": [
+      "Ein Typ-I-Umweltzeichen mit Bestanden/Nicht-bestanden-Urteil (z. B. Blauer Engel)",
+      "Eine Typ-II-Herstellerselbsterklärung ohne Prüfung",
+      "Eine Typ-III-Deklaration mit quantifizierten, extern verifizierten Ökobilanzdaten ohne Bewertung",
+      "Ein Gebäudezertifikat"
+    ],
+    "correctIdx": 2,
+    "explanation": "EPD sind Typ-III-Deklarationen (ISO 14025): Sie liefern Indikatorwerte (GWP, PENRT …) für die Gebäudebilanz, bewerten aber nicht.",
+    "gapAnalysis": {
+      "topic": "Typen von Umweltkennzeichnungen",
+      "misconception": "EPD wird als Gütesiegel missverstanden.",
+      "coreRule": "Typ I = Label, Typ II = Selbsterklärung, Typ III = EPD.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Typen von Umweltkennzeichnungen“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kw_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "kreislauf_dpp",
+    "moduleTitle": "Kreislaufwirtschaft",
+    "topic": "Material Circularity Indicator",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Ellen MacArthur Foundation",
+    "question": "LFI = 0,40, Nutzungsfaktor X = 2,0. Wie groß ist der MCI = 1 − LFI · 0,9/X?",
+    "options": [
+      "0,64",
+      "0,73",
+      "0,82",
+      "0,96"
+    ],
+    "correctIdx": 2,
+    "explanation": "F(X) = 0,9/2 = 0,45; MCI = 1 − 0,40 · 0,45 = 0,82. Bei X = 1 ergäbe sich 0,64.",
+    "gapAnalysis": {
+      "topic": "Material Circularity Indicator",
+      "misconception": "Der Einfluss der Nutzungsdauer wird vernachlässigt.",
+      "coreRule": "MCI = 1 − LFI · 0,9/X.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Material Circularity Indicator“ im Modul Kreislaufwirtschaft noch einmal durch.",
+      "targetModuleTab": "kreislauf_dpp",
+      "targetModuleLabel": "Kreislaufwirtschaft"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kw_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "kreislauf_dpp",
+    "moduleTitle": "Kreislaufwirtschaft",
+    "topic": "Verwertungsquote Bau- und Abbruchabfälle",
+    "difficulty": "Basis",
+    "normRef": "KrWG § 14 / 2008/98/EG",
+    "question": "Welche Mindestquote für die stoffliche Verwertung nicht gefährlicher Bau- und Abbruchabfälle gilt nach KrWG und EU-Abfallrahmenrichtlinie?",
+    "options": [
+      "50 Gew.-%",
+      "60 Gew.-%",
+      "70 Gew.-%",
+      "90 Gew.-%"
+    ],
+    "correctIdx": 2,
+    "explanation": "Vorbereitung zur Wiederverwendung, Recycling und sonstige stoffliche Verwertung (einschließlich Verfüllung) sollen mindestens 70 Gew.-% erreichen; energetische Verwertung zählt nicht.",
+    "gapAnalysis": {
+      "topic": "Verwertungsquote Bau- und Abbruchabfälle",
+      "misconception": "Energetische Verwertung wird in die Quote eingerechnet.",
+      "coreRule": "Bau- und Abbruchabfälle: ≥ 70 Gew.-% stoffliche Verwertung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verwertungsquote Bau- und Abbruchabfälle“ im Modul Kreislaufwirtschaft noch einmal durch.",
+      "targetModuleTab": "kreislauf_dpp",
+      "targetModuleLabel": "Kreislaufwirtschaft"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ru_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourcen_umwelt",
+    "moduleTitle": "Ressourcen & Umwelt",
+    "topic": "Biogener Kohlenstoff",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 16449",
+    "question": "Wie viel CO₂ ist in 1 m³ Nadelholz (ρ = 500 kg/m³ bei u = 12 %) gespeichert?",
+    "options": [
+      "etwa 410 kg",
+      "etwa 620 kg",
+      "etwa 820 kg",
+      "etwa 920 kg"
+    ],
+    "correctIdx": 2,
+    "explanation": "m_atro = 500/1,12 = 446 kg; Kohlenstoff 50 % = 223 kg; CO₂ = 223 · 44/12 = 818 kg.",
+    "gapAnalysis": {
+      "topic": "Biogener Kohlenstoff",
+      "misconception": "Die Holzfeuchte wird nicht herausgerechnet oder der C-Anteil wird mit der Gesamtmasse angesetzt.",
+      "coreRule": "m_CO₂ = 44/12 · 0,5 · ρ_u/(1 + u/100) · V.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biogener Kohlenstoff“ im Modul Ressourcen & Umwelt noch einmal durch.",
+      "targetModuleTab": "ressourcen_umwelt",
+      "targetModuleLabel": "Ressourcen & Umwelt"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ru_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourcen_umwelt",
+    "moduleTitle": "Ressourcen & Umwelt",
+    "topic": "PENRT",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Woraus setzt sich der Indikator PENRT zusammen?",
+    "options": [
+      "Erneuerbare Primärenergie energetisch und stofflich",
+      "Nicht erneuerbare Primärenergie zur energetischen Nutzung (PENRE) plus stofflich genutzte (PENRM)",
+      "Nur Strombedarf der Herstellung",
+      "Endenergie im Gebäudebetrieb"
+    ],
+    "correctIdx": 1,
+    "explanation": "PENRT = PENRE + PENRM; entsprechend PERT = PERE + PERM für erneuerbare Energie.",
+    "gapAnalysis": {
+      "topic": "PENRT",
+      "misconception": "PENRT wird mit Endenergie gleichgesetzt.",
+      "coreRule": "T = total = energetisch (E) + stofflich (M).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PENRT“ im Modul Ressourcen & Umwelt noch einmal durch.",
+      "targetModuleTab": "ressourcen_umwelt",
+      "targetModuleLabel": "Ressourcen & Umwelt"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lk_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "lebenszyklus_kosten",
+    "moduleTitle": "Lebenszyklus & Kosten",
+    "topic": "Rentenbarwert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ISO 15686-5",
+    "question": "Barwert von 2 000 €/a über 30 Jahre bei r = 2 %?",
+    "options": [
+      "60 000 €",
+      "44 800 €",
+      "38 800 €",
+      "22 400 €"
+    ],
+    "correctIdx": 1,
+    "explanation": "Rentenbarwertfaktor (1 − 1,02⁻³⁰)/0,02 = 22,40; 2 000 · 22,40 = 44 800 €.",
+    "gapAnalysis": {
+      "topic": "Rentenbarwert",
+      "misconception": "Die Zahlungen werden nicht abgezinst (60 000 €).",
+      "coreRule": "BW = C · (1 − (1 + r)^−T)/r.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rentenbarwert“ im Modul Lebenszyklus & Kosten noch einmal durch.",
+      "targetModuleTab": "lebenszyklus_kosten",
+      "targetModuleLabel": "Lebenszyklus & Kosten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lk_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "lebenszyklus_kosten",
+    "moduleTitle": "Lebenszyklus & Kosten",
+    "topic": "Einfluss des Zinssatzes",
+    "difficulty": "Basis",
+    "normRef": "ISO 15686-5",
+    "question": "Wie wirkt ein höherer Kalkulationszins auf den Variantenvergleich „teure, langlebige Lösung“ gegen „billige Lösung mit hohen Folgekosten“?",
+    "options": [
+      "Er begünstigt die langlebige Lösung",
+      "Er begünstigt die billige Lösung, weil künftige Kosten stärker abgezinst werden",
+      "Er hat keinen Einfluss",
+      "Er erhöht alle Barwerte gleichmäßig"
+    ],
+    "correctIdx": 1,
+    "explanation": "Je höher r, desto kleiner der Barwert künftiger Zahlungen; Investitionen heute gewinnen relativ an Gewicht.",
+    "gapAnalysis": {
+      "topic": "Einfluss des Zinssatzes",
+      "misconception": "Der Zinssatz wird als neutral betrachtet.",
+      "coreRule": "Hoher Zins → Gegenwartskosten dominieren; Sensitivitätsanalyse durchführen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Einfluss des Zinssatzes“ im Modul Lebenszyklus & Kosten noch einmal durch.",
+      "targetModuleTab": "lebenszyklus_kosten",
+      "targetModuleLabel": "Lebenszyklus & Kosten"
+    },
+    "verified": false
   }
 ]

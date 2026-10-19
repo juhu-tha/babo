@@ -172,10 +172,10 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: "Nachwachsend (Holzbau)",
     unit: "m³",
     densityKg: 500,
-    gwpA1A3: -410, // -620 kg biogenic storage offset by +210 kg processing emissions
-    gwpC: 620,    // Re-released at incinerator EoL
+    gwpA1A3: -740, // Lehrwert: biogener Kohlenstoff nach DIN EN 16449 (500 kg/m³ bei u = 12 %: ca. -820 kg CO2) + ca. 80 kg fossile Herstellung
+    gwpC: 820,    // Freisetzung des biogenen Kohlenstoffs bei thermischer Verwertung (Modul C3)
     gwpD: -180,   // Energy recovery credit (thermal substitutes)
-    biogenicContent: 620,
+    biogenicContent: 820,
     umiScore: 85,
     penrt: 1650,
     description: "Nadelholz technisch getrocknet. Speichert große Mengen biogenen Kohlenstoffs (negativer A1-A3-Wert!), welcher am Lebensende emittiert wird.",
@@ -189,10 +189,10 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: "Nachwachsend (Holzbau)",
     unit: "m³",
     densityKg: 520,
-    gwpA1A3: -380, // Biogenic storage of -640 offset by +260 kg gluing/pressing
-    gwpC: 640,
+    gwpA1A3: -720, // Lehrwert: biogener Kohlenstoff nach DIN EN 16449 (520 kg/m³ bei u = 12 %: ca. -850 kg CO2) + ca. 130 kg fossile Herstellung (Kleben, Pressen)
+    gwpC: 850,
     gwpD: -190,
-    biogenicContent: 640,
+    biogenicContent: 850,
     umiScore: 80,
     penrt: 2100,
     description: "Kreuzweise verleimte Schichten. Hervorragend geeignet für tragende Wände und Deckenplatten im modernen ökologischen Holzwohnbau.",
@@ -450,23 +450,23 @@ export default function InteractiveLCACalc() {
   const [transportDistance, setTransportDistance] = useState<number>(120);
   const [transportType, setTransportType] = useState<"lkw" | "bahn">("lkw");
   const [buildingArea, setBuildingArea] = useState<number>(140);
-  const [studyPeriod, setStudyPeriod] = useState<number>(50); // 50 Jahre nach DIN EN 15978 / QNG
-
-  // QNG-Grenzwerte Stand 2026 je nach Gebäudetyp
+  const [studyPeriod, setStudyPeriod] = useState<number>(50); // 50 Jahre nach DIN EN 15978 / QNG  // QNG-Anforderungswerte: Wohngebäude WG23 (QNG-Handbuch Anlage 3, v1.4, 19.07.2024):
+  // QNG-PLUS <= 24, QNG-PREMIUM <= 20 kg CO2-Äq./(m² NRF·a) über 50 Jahre.
+  // Nichtwohngebäude: projektspezifischer Anforderungswert – hier nur didaktischer Lehrwert.
   const qngThresholds = useMemo(() => {
     if (buildingType === "wohnbau") {
       return {
-        plus: 28.0,
-        premium: 24.0,
-        label: "Wohngebäude (WG)",
-        areaUnit: "m² BGF"
+        plus: 24.0,
+        premium: 20.0,
+        label: "Wohngebäude (WG23)",
+        areaUnit: "m² NRF"
       };
     } else {
       return {
         plus: 32.0,
         premium: 26.0,
-        label: "Nichtwohngebäude (NWG)",
-        areaUnit: "m² BGF"
+        label: "Nichtwohngebäude (Lehrwert; QNG: projektspezifisch)",
+        areaUnit: "m² NRF"
       };
     }
   }, [buildingType]);
@@ -1197,7 +1197,7 @@ export default function InteractiveLCACalc() {
                       <span>Normative Berechnung nach DIN EN 15978 / DIN EN 17472</span>
                     </div>
                     <p>
-                      Betrachtungszeitraum: <strong>{formatDeZahl(studyPeriod, 0)} Jahre</strong>. Die Umweltlasten werden auf 1 Jahr und 1 m² BGF normiert: <strong className="font-mono text-slate-800">kg CO₂-eq / (m²·a)</strong>.
+                      Betrachtungszeitraum: <strong>{formatDeZahl(studyPeriod, 0)} Jahre</strong>. Die Umweltlasten werden auf 1 Jahr und 1 m² Netto-Raumfläche (NRF nach DIN 277) normiert: <strong className="font-mono text-slate-800">kg CO₂-eq / (m²·a)</strong>.
                     </p>
                   </div>
                 </div>
@@ -1557,7 +1557,7 @@ export default function InteractiveLCACalc() {
         ]}
         formeln={[
           {
-            formel: "\\text{GWP}_{\\text{Bauwerk}} = \\frac{\\sum_{i} m_i \\cdot \\text{GWP}_{\\text{spez},i}}{A_{\\text{BGF}} \\cdot t_{\\text{Studie}}} \\quad [\\text{kg CO}_2\\text{-eq}/(\\text{m}^2\\cdot\\text{a})]",
+            formel: "\\text{GWP}_{\\text{Bauwerk}} = \\frac{\\sum_{i} m_i \\cdot \\text{GWP}_{\\text{spez},i}}{A_{\\text{NRF}} \\cdot t_{\\text{Studie}}} \\quad [\\text{kg CO}_2\\text{-eq}/(\\text{m}^2\\cdot\\text{a})]",
             erklaerung: "Normativer Jahres-Treibhausgasbezugswert der Errichtungs- und Entsorgungsphasen (Module A1-C) über die Standardlebensdauer von t = 50 Jahren.",
             quelle: "DIN EN 15978 / QNG 2026"
           },
@@ -1609,7 +1609,7 @@ function CalculationDashboard({
         }`}>
           {formatDeZahl(results.gwpPerSqmYearAC, 2)}
         </strong>
-        <span className="text-[10.5px] text-slate-500 block font-mono mt-1">kg CO₂-eq / (m² BGF · a)</span>
+        <span className="text-[10.5px] text-slate-500 block font-mono mt-1">kg CO₂-eq / (m² NRF · a)</span>
 
         <div className="mt-3 flex items-center gap-2">
           <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full shadow-xs ${benchmarkStatus.badge}`}>
