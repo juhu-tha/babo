@@ -4,6 +4,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
@@ -63,7 +65,8 @@ export default function Knicken() {
     const utilization = (N_Ed_kN / F_K_kN) * 100;
     const isBuckled = loadPercent >= 100;
 
-    // Theorie II. Ordnung: Auslenkung w(x) mit Vorverkrümmung w0 = L / 300
+    // Theorie II. Ordnung: Auslenkung w = w0 / (1 − N/F_K) mit angenommener Vorkrümmung w0 = l/300 (Lehrwert;
+    // die Ersatzimperfektionen nach DIN EN 1993-1-1, Tab. 5.1 hängen von der Knicklinie ab)
     const w0_mm = (l * 1000) / 300;
     const amplification = isBuckled ? 8.5 : (1 / Math.max(0.08, 1 - (loadPercent / 100)));
     const maxDeflectionMm = w0_mm * amplification;
@@ -76,7 +79,7 @@ export default function Knicken() {
 
     for (let j = 0; j <= steps; j++) {
       const x = j * dx;
-      labels.push(x.toFixed(2));
+      labels.push(formatDeZahl(x, 2));
       const pi_x_l = (Math.PI * x) / l;
 
       let w = 0;
@@ -277,8 +280,8 @@ export default function Knicken() {
                     : 'bg-emerald-50 text-emerald-800 border-emerald-300'
                 }`}>
                   {results.isBuckled
-                    ? 'STABILITÄTSVERSAGEN! Knicklast überschritten (N_Ed ≥ FK)'
-                    : `Tragfähigkeit sicher (Auslastung: ${formatDeZahl(results.utilization, 0)} %)`}
+                    ? 'STABILITÄTSVERSAGEN: ideale Knicklast erreicht (N_Ed ≥ F_K)'
+                    : `Unterhalb der idealen Knicklast (N_Ed/F_K = ${formatDeZahl(results.utilization, 0)} %) – der Bemessungsnachweis erfordert zusätzlich den Abminderungsbeiwert χ nach DIN EN 1993-1-1, 6.3.1`}
                 </div>
 
               </div>
@@ -448,7 +451,7 @@ export default function Knicken() {
                   <div className="font-bold text-shiraz">Theorie II. Ordnung (Verformungsrückkopplung):</div>
                   <p className="leading-relaxed">
                     Mit steigender Normalkraft <InlineMath math="N_{\text{Ed}}" /> erzeugt die Querverschiebung <InlineMath math="w(x)" /> zusätzliche Biegemomente <InlineMath math="\Delta M = N \cdot w" />. 
-                    Bei <InlineMath math="N \rightarrow F_K" /> divergiert die Verformung gegen Unendlich (Bruchversagen).
+                    Bei <InlineMath math="N \rightarrow F_K" /> wächst die Verformung theoretisch über alle Grenzen; in der Realität versagt der Stab vorher durch Fließen bzw. Bruch des Querschnitts. Hier angenommen: Vorkrümmung w₀ = l/300.
                   </p>
                 </div>
 
@@ -477,7 +480,7 @@ export default function Knicken() {
               {[
                 { fall: 1, beta: 2.0, name: 'Euler-Fall 1', lk: 'lk = 2 · l', desc: 'Kragarm (unten fest eingespannt, oben völlig frei verschieblich). Kleinste Knicklast aller Fälle.' },
                 { fall: 2, beta: 1.0, name: 'Euler-Fall 2', lk: 'lk = 1 · l', desc: 'Grundfall: Beidseitig gelenkig gelagert. Sinushalbwelle über die volle Stablänge.' },
-                { fall: 3, beta: 0.7, name: 'Euler-Fall 3', lk: 'lk ≈ 0,7 · l', desc: 'Unten starr eingespannt, oben unverschieblich gelenkig gelagert. Wendepunkt bei 0,7 l.' },
+                { fall: 3, beta: 0.7, name: 'Euler-Fall 3', lk: 'lk ≈ 0,7 · l', desc: 'Unten starr eingespannt, oben unverschieblich gelenkig gelagert. Der Abstand zwischen Wendepunkt der Knickfigur und Gelenk beträgt ≈ 0,7 l (rund doppelte Knicklast gegenüber Fall 2).' },
                 { fall: 4, beta: 0.5, name: 'Euler-Fall 4', lk: 'lk = 0,5 · l', desc: 'Beidseitig starr eingespannt. Höchste Knicklast (4-fache Knicklast im Vergleich zu Fall 2!).' }
               ].map((f) => (
                 <div key={f.fall} className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
@@ -497,19 +500,47 @@ export default function Knicken() {
 
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Euler-Knicklast einer Stahlstütze – gelenkig vs. Kragarm"
+        zielGleichung="F_K = \frac{\pi^2 \cdot E \cdot I}{(\beta \cdot l)^2}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Stahlstütze l = 3,5 m, E = 210 000 N/mm², maßgebendes Trägheitsmoment I = 850 cm⁴ = 8,5 · 10⁶ mm⁴.', formel: 'E \\cdot I = 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}\\,\\text{Nmm}^2' },
+          { titel: 'Euler-Fall 2 (β = 1,0)', erklaerung: 'Beidseitig gelenkig, Knicklänge 3500 mm:', formel: 'F_K = \\frac{\\pi^2 \\cdot 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}}{3\\,500^2} = 1\\,438\\,\\text{kN}' },
+          { titel: 'Euler-Fall 1 (β = 2,0)', erklaerung: 'Kragstütze: doppelte Knicklänge, also ein Viertel der Knicklast:', formel: 'F_K = \\frac{1\\,438}{4} = 360\\,\\text{kN}' }
+        ]}
+        ergebnisHinweis="Die Lagerung wirkt quadratisch: Die Kragstütze trägt nur ein Viertel, die beidseitig eingespannte Stütze (β = 0,5) das Vierfache des Grundfalls."
+        normQuelle="Euler (1744); Knicklängenbeiwerte der vier Euler-Fälle"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Wie stark vergrößert sich eine Vorkrümmung bei 65 % der Knicklast?"
+        zielGleichung="w = \frac{w_0}{1 - N_{Ed}/F_K}"
+        schritte={[
+          { titel: 'Vorkrümmung', erklaerung: 'Angenommene Vorkrümmung l/300 bei l = 3,5 m:', formel: 'w_0 = \\frac{3\\,500}{300} = 11{,}7\\,\\text{mm}' },
+          { titel: 'Vergrößerungsfaktor', erklaerung: 'Bei N_Ed/F_K = 0,65:', formel: '\\frac{1}{1 - 0{,}65} = 2{,}86' },
+          { titel: 'Gesamtausmitte', erklaerung: 'Ausbiegung in Stabmitte nach Theorie II. Ordnung:', formel: 'w = 2{,}86 \\cdot 11{,}7 = 33{,}3\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Das Zusatzmoment N · w kann den Querschnitt zum Fließen bringen, lange bevor F_K erreicht ist – deshalb rechnet der Eurocode mit Abminderungsbeiwerten χ < 1."
+        normQuelle="Stabilitätstheorie; Nachweis nach DIN EN 1993-1-1, 6.3.1"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="knicken" />
+
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Euler-Fälle, Theorie II. Ordnung und Normbezüge geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Knicken', url: 'https://de.wikipedia.org/wiki/Knicken' },
-          { title: 'Euler-Knickung', url: 'https://de.wikipedia.org/wiki/Knickung#Euler-F%C3%A4lle' }
+          { title: 'Eulersche Knickfälle', url: 'https://de.wikipedia.org/wiki/Knicken' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Stabilitätsnachweise & Knicken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Betonbauten - Druckglieder & Theorie II. Ordnung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1995-1-1:2024-03 (Eurocode 5: Bemessung von Holzbauten - Ersatzstabsverfahren & Biegeknicken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
+          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (bauaufsichtlich eingeführt; 6.3 Biegeknicken); neue Generation DIN EN 1993-1-1:2025-04', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (5.8 Theorie II. Ordnung); neue Generation DIN EN 1992-1-1:2025-09', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (6.3 Ersatzstabverfahren, Biegeknicken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
         ]}
         literatur={[
-          'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',
-          'Kindmann, R., Kraus, D.: Finite-Elemente-Methoden im Stahlbau (Ernst & Sohn)'
+          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)',
+          'Kindmann, R.; Kraus, M.: Finite-Elemente-Methoden im Stahlbau. Berlin: Ernst & Sohn 2007'
         ]}
         formeln={[
           {
@@ -519,8 +550,8 @@ export default function Knicken() {
           },
           {
             formel: 'w(x) = \\frac{w_0(x)}{1 - \\frac{N_{\\text{Ed}}}{F_K}}',
-            erklaerung: 'Theorie II. Ordnung: Vergrößerungsfaktor für Querverschiebungen unter anwachsender Längsdruckkraft N_Ed.',
-            quelle: 'DIN EN 1993-1-1'
+            erklaerung: 'Theorie II. Ordnung: Vergrößerung einer sinusförmigen Vorverformung w₀ unter der Längsdruckkraft N_Ed (Näherung, Dischinger-Faktor 1/(1 − N/F_K)).',
+            quelle: 'Technische Mechanik / Stabilitätstheorie'
           }
         ]}
       />

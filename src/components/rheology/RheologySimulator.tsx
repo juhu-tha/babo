@@ -446,10 +446,10 @@ export function RheologySimulator({ renderCircuit }: { renderCircuit?: (model: M
                 scales: {
                   x: { type: 'linear', min: hyst?.minX, max: hyst?.maxX,
                     title: { display: true, text: `${epsName} (${epsUnit})`, color: '#1e293b', font: { size: 12, weight: 'bold' } },
-                    ticks: { color: '#475569', font: { size: 11 }, callback: tick }, grid: { color: 'rgba(0,0,0,0.06)' } },
+                    ticks: { color: '#475569', font: { size: 11 }, callback: tick, includeBounds: false }, grid: { color: 'rgba(0,0,0,0.06)' } },
                   y: { min: hyst?.minY, max: hyst?.maxY,
                     title: { display: true, text: `${sigName} (${sigUnit})`, color: '#2563eb', font: { size: 12, weight: 'bold' } },
-                    ticks: { color: '#64748b', font: { size: 11 }, callback: tick }, grid: { color: 'rgba(0,0,0,0.06)' } },
+                    ticks: { color: '#64748b', font: { size: 11 }, callback: tick, includeBounds: false }, grid: { color: 'rgba(0,0,0,0.06)' } },
                 } }} />
           </div>
         </div>

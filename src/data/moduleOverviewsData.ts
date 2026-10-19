@@ -682,7 +682,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         step: '1',
         title: 'Modellierung',
         subtitle: 'Lager & Lasten',
-        desc: 'Idealisierung des realen Tragwerks: Stäbe, Gelenke, feste/verschieblicher Lager, Einwirkungen.',
+        desc: 'Idealisierung des realen Tragwerks: Stäbe, Gelenke, feste und verschiebliche Lager, Einwirkungen.',
         iconName: 'Compass',
         keyFacts: ['Freikörperbild', 'Auflagerreaktionen', 'Statische Bestimmtheit'],
         normOrFormula: '\\sum F_x = 0, \\sum F_y = 0, \\sum M = 0',

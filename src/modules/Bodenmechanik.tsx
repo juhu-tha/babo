@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Mountain, Droplets, Activity, MoveHorizontal, Clock, Scissors, ArrowDownToLine, Timer } from 'lucide-react';
 import {
@@ -69,11 +71,11 @@ export default function Bodenmechanik() {
     if (iP >= aLine && iP >= 4) {
       if (wL < 35) klasse = 'TL (Ton, leicht plastisch)';
       else if (wL <= 50) klasse = 'TM (Ton, mittelplastisch)';
-      else klasse = 'TA (Ton, ausgeprägt plastisch)';
+      else klasse = 'TA (Ton, ausgeprägt plastisch) bzw. OT bei organischen Beimengungen';
     } else {
-      if (wL < 35) klasse = 'UL (Schluff, leicht plastisch) oder organisch (OU)';
-      else if (wL <= 50) klasse = 'UM (Schluff, mittelplastisch) oder organisch (OM)';
-      else klasse = 'UA (Schluff, ausgeprägt plastisch) oder organisch (OA)';
+      if (wL < 35) klasse = 'UL (Schluff, leicht plastisch)';
+      else if (wL <= 50) klasse = 'UM (Schluff, mittelplastisch) bzw. OU bei organischen Beimengungen';
+      else klasse = 'UA (Schluff, ausgeprägt plastisch)';
     }
 
     return { iP, iC, zustand, farbe, klasse };
@@ -698,7 +700,37 @@ export default function Bodenmechanik() {
         </div>
       )}
       
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Zustandsform und Bodengruppe eines bindigen Bodens"
+        zielGleichung="I_C = \frac{w_L - w}{w_L - w_P}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Laborwerte: natürlicher Wassergehalt w = 25 %, Fließgrenze w_L = 45 %, Ausrollgrenze w_P = 20 %.', formel: 'w = 25\\,\\%,\\; w_L = 45\\,\\%,\\; w_P = 20\\,\\%' },
+          { titel: 'Plastizitäts- und Konsistenzzahl', erklaerung: 'Plastizitätsbereich und Lage des Wassergehalts darin:', formel: 'I_P = 45 - 20 = 25\\,\\%, \\quad I_C = \\frac{45 - 25}{25} = 0{,}80' },
+          { titel: 'Zustandsform', erklaerung: 'I_C zwischen 0,75 und 1,00 bedeutet steif.', formel: '0{,}75 \\le I_C = 0{,}80 < 1{,}00 \\Rightarrow \\text{steif}' },
+          { titel: 'Bodengruppe', erklaerung: 'A-Linie im Plastizitätsdiagramm; I_P liegt darüber, w_L zwischen 35 und 50 %:', formel: 'I_{P,A} = 0{,}73 \\cdot (45 - 20) = 18{,}3\\,\\% < 25\\,\\% \\Rightarrow \\text{TM}' }
+        ]}
+        ergebnisHinweis="Ein steifer, mittelplastischer Ton (TM) ist ein typischer Baugrund für Flachgründungen, aber setzungs- und frostempfindlich. Steigt w auf 35 %, sinkt I_C auf 0,40 (breiig)."
+        normQuelle="DIN EN ISO 17892-12:2022-08; DIN 18196:2023-02"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Aktiver Erddruck auf eine Stützwand und Konsolidationssetzung"
+        zielGleichung="E_a = \frac{1}{2} \cdot K_a \cdot \gamma \cdot h^2"
+        schritte={[
+          { titel: 'Erddruckbeiwert', erklaerung: 'Rankine, φ = 30°, Wand lotrecht und glatt:', formel: 'K_a = \\tan^2(45^\\circ - 15^\\circ) = 0{,}333' },
+          { titel: 'Erddruckkraft', erklaerung: 'γ = 20 kN/m³, Wandhöhe h = 5 m; dreieckförmige Verteilung, Angriff bei h/3 über dem Wandfuß:', formel: 'e_a = 0{,}333 \\cdot 20 \\cdot 5 = 33{,}3\\,\\text{kN/m}^2, \\quad E_a = \\tfrac{1}{2} \\cdot 33{,}3 \\cdot 5 = 83{,}3\\,\\text{kN/m}' },
+          { titel: 'Endsetzung', erklaerung: 'Tonschicht h = 4 m, Zusatzspannung Δσ = 50 kN/m², Steifemodul E_s = 5 MN/m²:', formel: 's_\\infty = \\frac{50}{5\\,000} \\cdot 4\\,000\\,\\text{mm} = 40\\,\\text{mm}' },
+          { titel: 'Zeitpunkt 90 % Konsolidierung', erklaerung: 'Zweiseitige Entwässerung (d = 2 m), c_v = 2 m²/Jahr, T_v(90 %) = 0,848:', formel: 't_{90} = \\frac{0{,}848 \\cdot 2^2}{2} = 1{,}70\\,\\text{Jahre}' }
+        ]}
+        ergebnisHinweis="Bei einseitiger Entwässerung verdoppelt sich d und die Konsolidationszeit vervierfacht sich (etwa 6,8 Jahre) – Dränschichten oder Vertikaldräns verkürzen sie gezielt."
+        normQuelle="DIN 4085:2017-08 (Erddruck); DIN 4019:2015-05 (Setzungen); Terzaghi-Konsolidationstheorie"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bodenmechanik" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Konsistenzgrenzen, Bodengruppen nach DIN 18196, Mohr-Coulomb, Rankine-Erddruck und Terzaghi-Konsolidation geprüft, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
         { title: 'Bodenmechanik', url: 'https://de.wikipedia.org/wiki/Bodenmechanik' },
         
@@ -707,36 +739,38 @@ export default function Bodenmechanik() {
         { title: 'Konsolidierung', url: 'https://de.wikipedia.org/wiki/Konsolidation_(Bodenmechanik)' }
       ]}
         literatur={[
-          'Kolymbas, D. (2019): Geotechnik: Bodenmechanik, Grundbau und Tunnelbau (Springer-Verlag)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Kolymbas, D.: Geotechnik – Bodenmechanik, Grundbau und Tunnelbau. 5. Aufl., Berlin: Springer Vieweg 2019',
+          'Witt, K. J. (Hrsg.): Grundbau-Taschenbuch, Teil 1: Geotechnische Grundlagen. 8. Aufl., Berlin: Ernst & Sohn 2017',
           'Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1997-1:2024-04 (Eurocode 7: Geotechnische Bemessung - Teil 1: Allgemeine Regeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1997-1' },
+          { title: 'DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7, bauaufsichtlich eingeführt); neue Generation auf Basis EN 1997-1:2024 – Ausgabe der deutschen Fassung manuell prüfen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1997-1' },
           { title: 'DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1054' },
-          { title: 'DIN 18122-1:2020-11 (Baugrund: Untersuchung von Bodenproben - Zustandsgrenzen / Konsistenzgrenzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18122-1' },
-          { title: 'DIN 4085:2017-08 (Baugrund - Berechnung des Erddrucks)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4085' }
+          { title: 'DIN EN ISO 17892-12:2022-08 (Laborversuche an Bodenproben – Teil 12: Bestimmung der Fließ- und Ausrollgrenzen; ersetzt DIN 18122-1)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+17892-12' },
+          { title: 'DIN 18196:2023-02 (Erd- und Grundbau – Bodenklassifikation für bautechnische Zwecke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18196' },
+          { title: 'DIN 4019:2015-05 (Baugrund – Setzungsberechnungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4019' },
+          { title: 'DIN 4085:2017-08 (Baugrund – Berechnung des Erddrucks)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4085' }
         ]}
         formeln={[
           {
             formel: 'I_c = \\frac{w_L - w}{I_P}',
-            erklaerung: 'Konsistenzzahl: I_c gibt die plastische Zustandsform bindiger Böden an (w_L = Fließgrenze, w = aktueller Wassergehalt, I_P = Plastizitätsindex).',
-            quelle: 'DIN 18122'
+            erklaerung: 'Konsistenzzahl: I_c gibt die plastische Zustandsform bindiger Böden an (w_L = Fließgrenze, w = aktueller Wassergehalt, I_P = Plastizitätszahl).',
+            quelle: 'DIN EN ISO 17892-12; Zustandsformen nach DIN EN ISO 14688-2'
           },
           {
             formel: '\\tau_f = c + \\sigma \\cdot \\tan(\\varphi)',
-            erklaerung: 'Bruchkriterium nach Mohr-Coulomb: \\tau_f = Scherfestigkeit, c = Kohäsion, \\sigma = wirksame Normalspannung, \\varphi = Reibungswinkel.',
-            quelle: 'DIN EN 1997-1 / DIN 1054'
+            erklaerung: 'Bruchkriterium nach Mohr-Coulomb: \\tau_f = Scherfestigkeit, c = Kohäsion, \\sigma = wirksame Normalspannung, \\varphi = Reibungswinkel (wirksame Scherparameter).',
+            quelle: 'Mohr-Coulomb; Scherparameter nach DIN EN 1997-1 / DIN 1054'
           },
           {
             formel: 'K_a = \\tan^2\\left(45^\\circ - \\frac{\\varphi}{2}\\right)',
-            erklaerung: 'Aktiver Erddruckbeiwert nach Rankine bei horizontaler Geländeoberfläche und reibungsfreier Wand.',
-            quelle: 'DIN 4085'
+            erklaerung: 'Aktiver Erddruckbeiwert nach Rankine bei lotrechter, reibungsfreier Wand (δ = 0) und horizontaler Geländeoberfläche; DIN 4085 erfasst zusätzlich Wandreibung und Geländeneigung.',
+            quelle: 'Rankine (1857); DIN 4085'
           },
           {
             formel: 's = \\frac{\\Delta \\sigma}{E_s} \\cdot h',
             erklaerung: 'Eindimensionale Endsetzung einer Bodenschicht: \\Delta \\sigma = Spannungszuwachs, E_s = Steifemodul (Ödometerversuch), h = Schichtdicke.',
-            quelle: 'DIN 4019'
+            quelle: 'DIN 4019:2015-05'
           },
           {
             formel: 'T_v = \\frac{c_v \\cdot t}{d^2}',
