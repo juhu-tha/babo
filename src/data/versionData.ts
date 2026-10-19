@@ -8,17 +8,25 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.21.0',
+    date: '19.10.2026',
+    title: 'Analytik-Erweiterung, Prüfungs- & Quizsystem 2.0 sowie Skalen-Harmonisierung',
+    badge: 'minor',
+    changes: [
+      'Bauchemische Analytik & Mikroskopie: Erweiterung um interaktiven TGA-Zementsteinsimulator, MIP-Porendiagnostik nach Washburn-Gleichung, XRD-Reflexidentifikation (Cu-Kα) sowie Formelherleitungsboxen nach KaTeX-Standard.',
+      'Prüfungs- & ModulTest-System 2.0: Systemweite Integration interaktiver Modultests mit typografisch formatiertem Fortschritts- und Erfolgszähler (formatDeWert) sowie massiver Ausbau des fachspezifischen Fragenpools in quiz.json.',
+      'Modul-Überblicke & Skalen-Harmonisierung: Physikalische Präzisierung von Porositäts- und Dichtebeziehungen (P = 1 - ρ/ρ_R), Eurocode-Zuverlässigkeitsindizes (β = 3,8 für CC2) und kausale Skalenübergänge von der Mikro- bis zur Nachweisebene.'
+    ]
+  },
+  {
     version: 'v3.20.0',
     date: '19.10.2026',
     title: 'Konsolidierung Cluster VI Studium & Lehre: Vorlesungsportal, Baustofflabor & Laborsicherheit Gebäude G2',
     badge: 'minor',
     changes: [
-      'Struktur-Konsolidierung in Cluster VI „Studium & Lehre“: Integration des gesamten Vorlesungsportals (Übersicht, Bauen im Bestand, Nachhaltiges Bauen, Bauschäden, Baustoffkunde, Instandhaltung) sowie des Baustofflabors unter dem gemeinsamen akademischen Dach von Cluster VI.',
-      'Neues Fachmodul „Laborsicherheit“: Laborordnung für das Labor für Baustofftechnologie, Umwelt und Chemie der TH Augsburg (Laborleitung Prof. Dr.-Ing. Jürgen Huber, Gebäude G2).',
-      'Die 8 Sicherheitsregeln im Baustofflabor: Verbindliche Regelungen zu voller Aufsichtspflicht & Stopp-Gebot, Zutrittskontrolle & absolutem Alleinarbeitsverbot bei Maschinenarbeiten, Geräteberechtigungen (Sperrgeräte), PSA-Pflichten inklusive roter Alarmwarnung zum Handschuh-, Ring- und Uhrenverbot an rotierenden Maschinen.',
-      'Sperrgeräte & Maschinen-Betriebsanweisungen: Detaillierte Sicherheitsanforderungen für Großprüfpressen (Splitterschutz, zentrischer Einbau), Steintrennsägen (strikter Nassschnitt gegen Quarzfeinstaub, Werkstückspannung, PRCD-S), Zwangsmischer (Schutzgitter, Netzstecker vor Reinigung) und Brückenkrane / Flurförderzeuge.',
-      'Gefahrstoff-Prävention: Zementsicherheit (stark ätzend, pH > 12, Augenduschen-Sofortspülung), alveolengängiger Quarzfeinstaub mit absolutem Trockenkehr- und Abblasverbot (nur Nassreinigung / Klasse-M/H-Sauger) sowie Verbot kontaminierter Verdachtsproben (Asbest, PAK, PCB).',
-      'Notfallkette Gebäude G2: Direkte Notfall- und Sofortmaßnahmen mit NOT-HALT, Notruf 112 (Ortsangabe THA Campus Brunnenlech G2 EG), Einweiser-Pflicht zur Campuseinfahrt, namentliche Ersthelferkontakte (Silvia Lechner -3220, Michael Sedlmeier -3127, Siegfried Hager -3121, Prof. Huber -3710, Hausservice Kai Bolten -3720) und D-Arzt-Vorgabe.'
+      'Struktur-Konsolidierung Cluster VI (Studium & Lehre): Direkte Integration des Vorlesungsportals (Bauen im Bestand, Nachhaltiges Bauen, Bauschäden, Baustoffkunde, Instandhaltung) und des Baustofflabors unter einem gemeinsamen akademischen Dach.',
+      'Neues Fachmodul Laborsicherheit (Gebäude G2): Vollständige Laborordnung für das Labor für Baustofftechnologie, Umwelt und Chemie (Leitung Prof. Dr.-Ing. Jürgen Huber) mit den 8 Sicherheitsregeln und striktem Alleinarbeitsverbot.',
+      'Betriebsanweisungen, Gefahrstoffe & Notfallkette G2: Schutzvorgaben für Sperrgeräte (Prüfpressen, Steintrennsägen, Zwangsmischer), Zement- und Quarzstaubprävention sowie Notfallprotokoll mit Ersthelferkontakten und Campus-Einweiser.'
     ]
   },
   {
@@ -27,10 +35,9 @@ export const VERSION_HISTORY: VersionItem[] = [
     title: '100% Bildschirmauflösung (Fluid-Layout), Impressum-Profillink & Normen-Audit',
     badge: 'patch',
     changes: [
-      '100% Breite nutzt volle Bildschirmauflösung: Aufhebung aller einschränkenden max-w-Containergrenzen (max-w-7xl, max-w-6xl etc.) über sämtliche Fach- und Cockpitmodule sowie Implementierung einer globalen Fluid-Layout-Regel in index.css. Das Portal nutzt im 100%-Breite-Modus nun die uneingeschränkte Displayauflösung von Widescreen-, QHD- und 4K-Monitoren.',
-      'Modul Impressum: Aktualisierung des Hochschul-Profil-Links für Prof. Dr.-Ing. Jürgen Huber auf die offizielle Fakultäts-Kontaktseite (https://www.tha.de/hochschule/fakultaet/ab/kontakt/juergen-huber/) der Technischen Hochschule Augsburg.',
-      'Normen- & Link-Aktualitätsmonitor: Revisionsstand auf den 19.10.2026 aktualisiert, Audit-Statusbereinigung mit Alert-Kennzeichnung für manuelle Prüfpfade bei automatisiert gesperrten Portalen.',
-      'Zentrales Normenregister (centralNormenRegistry): Vollständige Harmonisierung aller Normen-Verlinkungen auf das deterministische DIN-Media-Such-Schema (https://www.dinmedia.de/de/suche?q=...) zur Vermeidung von Linkfäule.'
+      '100% Bildschirmauflösung (Fluid-Layout): Aufhebung einschränkender max-w-Containergrenzen über alle Module sowie globale Fluid-Layout-Regel in index.css für optimale Widescreen-, QHD- und 4K-Darstellung.',
+      'Modul Impressum: Aktualisierung des Hochschul-Profil-Links für Prof. Dr.-Ing. Jürgen Huber auf die offizielle Fakultäts-Kontaktseite der Technischen Hochschule Augsburg.',
+      'Normen- & Link-Harmonisierung: Systemweite Vereinheitlichung aller Regelwerksverweise auf das deterministische DIN-Media-Such-Schema sowie Audit-Statusaktualisierung im Revisionsmonitor.'
     ]
   },
   {
@@ -50,11 +57,9 @@ export const VERSION_HISTORY: VersionItem[] = [
     title: 'GModG-Vollaktualisierung, Elasto-Plastizität & Rheologie, Cluster III & Zusatzstoffe',
     badge: 'minor',
     changes: [
-      'GModG-Vollaktualisierung (Gebäudemodernisierungsgesetz): Vollständige normative Umstellung auf das am 29.07.2026 in Kraft getretene GModG (BGBl. 2026 I Nr. 226) mit der Bio-Treppe (§ 35 GModG: 15% bis 100%), Bauteil-Grenzwerten (§ 36 GModG) und Kesselaustausch (§ 69 GModG). Inklusive interaktivem U-Wert- & Amortisationsrechner sowie Harmonisierung im Rechtsrahmen-Kompendium, Bestand.tsx und Dämmungsberater.',
-      'Werkstoffmodelle: Elasto-Plastisch mit Verfestigung & Rheologie-Simulator: Vollständige Überarbeitung beider Mechanik-Rechner. Elasto-Plastizität mit Werkstoff-Presets (B500B, S355, S235, Aluminium), linearer Verfestigung vs. Ramberg-Osgood-Potenzgesetz, elastischer Rückfederung und plastischer Dissipationsenergie. Rheologie-Simulator mit rigoroser Korrektur aller Differentialgleichungen, Relaxationszeiten, Kriechfunktionen und Promille-Dehnungen für Maxwell-, Kelvin-Voigt-, Zener-, Burgers- und Bingham-Systeme.',
-      'Didaktik & 0-100-Reiter: Sachliche, akademische Einleitungen ohne O-Ton, vollständige Beseitigung dunkler/schwarzer Hintergründe gemäß Styleguide (GEMINI_md) und Integration des 0-100-Reiters im Modul Stahlbeton.',
-      'Verschiebung Zusatzstoff-Wirkungsmechanismen: Hydratationswärme & ITZ (Interfacial Transition Zone mit Wall-Effekt und CH-Phasen) aus der Mischungsberechnung in das Nachschlagewerk Grundlagen & Regularien (Tab "Zusätze") transferiert.',
-      'Cluster-Harmonisierung: Einheitliche Umbenennung von Cluster III von "Konstr. & Bemessung" in "Entwurf & Bemessung" über das gesamte Quiz-Dashboard, InteractiveQuizSystem, Routing und den Fragenkatalog.'
+      'GModG-Vollaktualisierung: Vollständige normative Umstellung auf das Gebäudemodernisierungsgesetz (BGBl. 2026 I Nr. 226) mit Bio-Treppe (§ 35), Bauteil-Grenzwerten (§ 36), U-Wert- & Amortisationsrechner.',
+      'Werkstoffmodelle & Rheologie-Simulator: Elasto-Plastizität mit Werkstoff-Presets (B500B, S355, S235, Alu) und Ramberg-Osgood sowie Korrektur aller Differentialgleichungen für Maxwell-, Kelvin-Voigt-, Zener-, Burgers- und Bingham-Systeme.',
+      'Didaktik- & Cluster-Harmonisierung: Akademisch sachliche Einleitungen, 0-100-Reiter im Modul Stahlbeton, ITZ-Verlagerung in die Grundlagen sowie Umbenennung von Cluster III in „Entwurf & Bemessung“.'
     ]
   },
   {
