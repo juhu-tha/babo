@@ -1691,5 +1691,155 @@
       "targetModuleLabel": "Probenahme & Erkundung"
     },
     "verified": false
+  },
+  {
+    "id": "q_mp_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Kalibrieren, Justieren, Eichen",
+    "difficulty": "Basis",
+    "normRef": "MessEG / DIN EN ISO 7500-1",
+    "question": "Ein Kalibrierlabor belastet die Betonpresse mit Referenz-Kraftaufnehmern und dokumentiert die Abweichungen, ohne etwas am Gerät zu verändern. Wie heißt dieser Vorgang?",
+    "options": [
+      "Eichen",
+      "Justieren",
+      "Kalibrieren",
+      "Verifizieren nach MessEG"
+    ],
+    "correctIdx": 2,
+    "explanation": "Kalibrieren ermittelt und dokumentiert die Abweichung gegenüber einem rückgeführten Normal – ohne Eingriff. Justieren verändert das Gerät; Eichen ist die gesetzlich geregelte Prüfung nach MessEG.",
+    "gapAnalysis": {
+      "topic": "Kalibrieren, Justieren, Eichen",
+      "misconception": "Die drei Begriffe werden synonym verwendet.",
+      "coreRule": "Kalibrieren = ermitteln; Justieren = einstellen; Eichen = gesetzlich prüfen und kennzeichnen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kalibrieren, Justieren, Eichen“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Richtigkeit und Präzision",
+    "difficulty": "Basis",
+    "normRef": "ISO 5725-1",
+    "question": "Alle Messwerte liegen eng beieinander, aber gemeinsam deutlich neben dem Referenzwert. Was beschreibt das?",
+    "options": [
+      "Hohe Richtigkeit, geringe Präzision",
+      "Hohe Präzision, geringe Richtigkeit",
+      "Hohe Genauigkeit",
+      "Rein zufällige Abweichungen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Geringe Streuung bedeutet hohe Präzision; die gemeinsame Verschiebung ist eine systematische Abweichung (geringe Richtigkeit). Mehrfachmessung hilft dagegen nicht – nur Kalibrierung.",
+    "gapAnalysis": {
+      "topic": "Richtigkeit und Präzision",
+      "misconception": "Geringe Streuung wird mit Richtigkeit gleichgesetzt.",
+      "coreRule": "Genauigkeit = Richtigkeit (systematisch) + Präzision (zufällig).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Richtigkeit und Präzision“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "GUM: Typ-B-Beitrag der Auflösung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "JCGM 100 (GUM)",
+    "question": "Eine Digitalanzeige hat die Auflösung d = 0,1 MPa. Welche Standardunsicherheit ergibt sich nach GUM unter Annahme einer Rechteckverteilung?",
+    "options": [
+      "0,1 MPa",
+      "0,05 MPa",
+      "0,029 MPa",
+      "0,2 MPa"
+    ],
+    "correctIdx": 2,
+    "explanation": "u = d/√12 = 0,1/3,46 = 0,029 MPa. Die halbe Auflösung (0,05) ist die Halbbreite a der Rechteckverteilung; u = a/√3.",
+    "gapAnalysis": {
+      "topic": "GUM: Typ-B-Beitrag der Auflösung",
+      "misconception": "Die Halbbreite der Verteilung wird direkt als Standardunsicherheit verwendet.",
+      "coreRule": "Rechteckverteilung mit Halbbreite a: u = a/√3 = d/√12.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „GUM: Typ-B-Beitrag der Auflösung“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Eignungsprüfung: z-Score",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN ISO 13528:2025-07",
+    "question": "Ihr Labor erzielt im Ringversuch z = −2,4. Wie ist das Ergebnis nach DIN ISO 13528 einzustufen?",
+    "options": [
+      "Zufriedenstellend",
+      "Fragwürdig (Warnsignal)",
+      "Nicht zufriedenstellend (Eingriffssignal)",
+      "Nicht bewertbar ohne En-Zahl"
+    ],
+    "correctIdx": 1,
+    "explanation": "|z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend. Bei −2,4 ist eine laborinterne Ursachenprüfung angezeigt.",
+    "gapAnalysis": {
+      "topic": "Eignungsprüfung: z-Score",
+      "misconception": "Jede Überschreitung von |z| = 2 wird als Nichtkonformität gewertet.",
+      "coreRule": "Grenzen 2 und 3 für |z|; |En| ≤ 1 bei der En-Zahl.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Eignungsprüfung: z-Score“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Wiederhol- und Vergleichsgrenze",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ISO 5725",
+    "question": "Die Vergleichsstandardabweichung eines Prüfverfahrens beträgt σ_R = 1,5 MPa. Ab welcher Differenz zwischen den Ergebnissen zweier Labore ist der Unterschied signifikant?",
+    "options": [
+      "1,5 MPa",
+      "3,0 MPa",
+      "4,2 MPa",
+      "6,0 MPa"
+    ],
+    "correctIdx": 2,
+    "explanation": "R = 2,8 · σ_R = 2,8 · 1,5 = 4,2 MPa. Kleinere Differenzen sind mit etwa 95 % Wahrscheinlichkeit durch die normale Verfahrensstreuung erklärbar.",
+    "gapAnalysis": {
+      "topic": "Wiederhol- und Vergleichsgrenze",
+      "misconception": "Die Standardabweichung selbst wird als Grenze für Differenzen genommen.",
+      "coreRule": "r = 2,8·σ_r, R = 2,8·σ_R (2,8 ≈ 1,96·√2).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wiederhol- und Vergleichsgrenze“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
   }
 ]
