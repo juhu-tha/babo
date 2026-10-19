@@ -3,6 +3,9 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,7 +32,7 @@ export default function Bruchmechanik() {
   const [sigma, setSigma] = useState(50); // MPa
   const [a, setA] = useState(10); // mm
   const [y, setY] = useState(1.12); // Geometriefaktor (Kantenriss)
-  const [kIc, setKIc] = useState(2.0); // Risszähigkeit MPa*m^0.5 (z.B. Beton/Glas)
+  const [kIc, setKIc] = useState(2.0); // Risszähigkeit in MPa·√m (Richtwerte: Glas ≈ 0,75; Beton ≈ 0,5–1,5; Baustahl ≈ 50–150)
 
   const results = useMemo(() => {
     // K_I = Y * sigma * sqrt(pi * a)
@@ -46,7 +49,7 @@ export default function Bruchmechanik() {
     const currentPointData = [];
 
     for (let i = 0.1; i <= 100; i += 1) {
-      labels.push(i.toFixed(1));
+      labels.push(formatDeZahl(i, 1));
       const current_a_m = i / 1000;
       const current_kI = y * sigma * Math.sqrt(Math.PI * current_a_m);
       kIData.push(current_kI);
@@ -117,7 +120,7 @@ export default function Bruchmechanik() {
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
           <p>
-            Die Bruchmechanik befasst sich mit der Rissausbreitung in rissbehafteten Bauteilen. Sie ist besonders für spröde Werkstoffe wie Beton oder Glas von Bedeutung.
+            Die Bruchmechanik befasst sich mit der Rissausbreitung in rissbehafteten Bauteilen. Die linear-elastische Bruchmechanik (LEBM) beschreibt spröde Werkstoffe wie Glas sehr gut. Beton ist dagegen quasi-spröde: Vor der Rissspitze bildet sich eine ausgedehnte Bruchprozesszone, daher werden dort nichtlineare Modelle (z. B. fiktives Rissmodell nach Hillerborg mit der Bruchenergie G_F) verwendet.
           </p>
         </div>
 
@@ -127,7 +130,12 @@ export default function Bruchmechanik() {
               <Slider info="Die von außen aufgebrachte Nennspannung im ungestörten Bauteilquerschnitt." label={<FormulaText text="Nennspannung (\sigma)" />} min={1} max={500} step={1} value={sigma} unit="MPa" onChange={(e) => setSigma(Number(e.target.value))} />
               <div className="mt-4"><Slider info="Die Länge des primären Risses (bzw. halbe Risslänge bei Innenrissen)." label={<FormulaText text="Risslänge (a)" />} min={0.1} max={100} step={0.1} value={a} unit="mm" onChange={(e) => setA(Number(e.target.value))} /></div>
               <div className="mt-4"><Slider info="Korrekturbeiwert für die Bauteilgeometrie, Risslage und Einspannbedingungen." label={<FormulaText text="Geometriefaktor (Y)" />} min={0.5} max={3.0} step={0.01} value={y} unit="-" onChange={(e) => setY(Number(e.target.value))} /></div>
-              <div className="mt-4"><Slider info="Kritischer Spannungsintensitätsfaktor, bei dem sprödes Werkstoffversagen oder instabile Rissausbreitung beginnt." label={<FormulaText text="Risszähigkeit (K_{Ic})" />} min={0.1} max={100} step={0.1} value={kIc} unit="MPa√m" onChange={(e) => setKIc(Number(e.target.value))} /></div>
+              <div className="mt-4"><Slider info="Kritischer Spannungsintensitätsfaktor, bei dem instabile Rissausbreitung beginnt. Richtwerte: Glas ≈ 0,75; Beton ≈ 0,5–1,5 (scheinbar, größenabhängig); Baustahl ≈ 50–150 MPa√m." label={<FormulaText text="Risszähigkeit (K_{Ic})" />} min={0.1} max={100} step={0.1} value={kIc} unit="MPa√m" onChange={(e) => setKIc(Number(e.target.value))} /></div>
+              <div className={`mt-4 p-3 rounded-lg border text-sm ${results.isCritical ? 'bg-shiraz/10 border-shiraz/20 text-shiraz' : 'bg-white border-home-grau/30 text-text-main'}`}>
+                <div className="flex justify-between"><span>Spannungsintensität K_I:</span><strong>{formatDeZahl(results.kI, 2)} MPa√m</strong></div>
+                <div className="flex justify-between"><span>Ausnutzung K_I / K_Ic:</span><strong>{formatDeZahl(results.kI / kIc, 2)}</strong></div>
+                <div className="mt-1 font-bold">{results.isCritical ? 'K_I ≥ K_Ic: instabile Rissausbreitung (Bruch)' : `Riss stabil, Sicherheit gegen Bruch η = ${formatDeZahl(results.safetyFactor, 2)}`}</div>
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-6">
@@ -233,7 +241,7 @@ export default function Bruchmechanik() {
                   </defs>
                 </svg>
                 <div className="text-xs text-text-main/70 text-center mt-2">
-                  Die Bruchmechanik unterscheidet drei Rissöffnungsmodi. Modus I (Öffnungsmodus durch Normalspannung) ist in der Praxis am häufigsten und kritischsten. Modus II und III entstehen durch Scherspannungen.
+                  Die Bruchmechanik unterscheidet drei Rissöffnungsarten. Modus I (Öffnung durch Normalspannung senkrecht zum Riss) ist in der Praxis meist maßgebend. Modus II (ebener Schub) und Modus III (nicht-ebener Schub) entstehen durch Schubspannungen.
                 </div>
               </div>
             </div>
@@ -241,18 +249,45 @@ export default function Bruchmechanik() {
         </div>
       </div>
     
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Warum bricht Glas schon bei geringen Spannungen?"
+        zielGleichung="\sigma_c = \frac{K_{Ic}}{Y \cdot \sqrt{\pi \cdot a}}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Kalk-Natron-Glas, K_Ic ≈ 0,75 MPa√m; Kratzer an der Kante mit Tiefe a = 0,5 mm, Kantenriss Y = 1,12.', formel: 'a = 0{,}5\\,\\text{mm} = 5 \\cdot 10^{-4}\\,\\text{m}' },
+          { titel: 'Kritische Spannung', erklaerung: 'Umstellen des Bruchkriteriums K_I = K_Ic nach σ:', formel: '\\sigma_c = \\frac{0{,}75}{1{,}12 \\cdot \\sqrt{\\pi \\cdot 5 \\cdot 10^{-4}}} = 16{,}9\\,\\text{MPa}' }
+        ]}
+        ergebnisHinweis="Ein halber Millimeter Kantenverletzung senkt die Festigkeit weit unter die charakteristische Biegezugfestigkeit von 45 MPa – deshalb werden Glaskanten geschliffen und Gläser vorgespannt."
+        normQuelle="LEBM nach Irwin; vgl. Gross/Seelig 2016"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Ist ein 10 mm tiefer Riss in einem Stahlblech gefährlich?"
+        zielGleichung="K_I = Y \cdot \sigma \cdot \sqrt{\pi \cdot a},\qquad \eta = \frac{K_{Ic}}{K_I}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Baustahl mit K_Ic ≈ 100 MPa√m, Nennspannung 200 MPa, Kantenriss a = 10 mm (Y = 1,12).', formel: 'a = 0{,}010\\,\\text{m}' },
+          { titel: 'Spannungsintensität', erklaerung: 'Einsetzen:', formel: 'K_I = 1{,}12 \\cdot 200 \\cdot \\sqrt{\\pi \\cdot 0{,}010} = 39{,}7\\,\\text{MPa}\\sqrt{\\text{m}}' },
+          { titel: 'Sicherheit gegen instabiles Risswachstum', erklaerung: 'Verhältnis zur Risszähigkeit:', formel: '\\eta = \\frac{100}{39{,}7} = 2{,}5' }
+        ]}
+        ergebnisHinweis="Statisch unkritisch – unter wiederholter Belastung kann der Riss aber durch Ermüdung wachsen. Bei tiefen Temperaturen sinkt die Zähigkeit (Gütegruppe nach DIN EN 1993-1-10 wählen)."
+        normQuelle="LEBM; Stahlgütewahl nach DIN EN 1993-1-10"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bruchmechanik" />
+
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: LEBM, Risszähigkeiten und Grenzen für Beton geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Bruchmechanik', url: 'https://de.wikipedia.org/wiki/Bruchmechanik' }
         ]}
         regelwerke={[
-          { title: 'fib Model Code 2010 (Bruchmechanische Ansätze für zementgebundene Baustoffe)', url: 'https://www.fib-international.org/' },
-          { title: 'DAfStb Heft 449 / Heft 500 (Bruchmechanische Untersuchungen an Beton)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN ISO 12737 (Metallische Werkstoffe - Bestimmung der Bruchzähigkeit K_Ic)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12737' }
+          { title: 'fib Model Code for Concrete Structures 2010 (Bruchenergie G_F, Zugentfestigung)', url: 'https://www.fib-international.org/' },
+          { title: 'RILEM TC 50-FMC (1985): Bestimmung der Bruchenergie von Mörtel und Beton am gekerbten Balken', url: 'https://www.rilem.net/' },
+          { title: 'ISO 12737 (Metallische Werkstoffe – Bestimmung der Bruchzähigkeit bei ebener Dehnung K_Ic)', url: 'https://www.dinmedia.de/de/suche?q=ISO+12737' }
         ]}
         literatur={[
-          'Gross, D.; Seelig, T. (2016): Bruchmechanik: Mit einer Einführung in die Mikromechanik (Springer Vieweg)',
-          'Karihaloo, B. L. (1995): Fracture Mechanics and Structural Concrete (Longman Scientific & Technical)',
+          'Gross, D.; Seelig, T.: Bruchmechanik – Mit einer Einführung in die Mikromechanik. 6. Aufl., Berlin: Springer Vieweg 2016',
+          'Karihaloo, B. L.: Fracture Mechanics and Structural Concrete. Harlow: Longman 1995',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         formeln={[

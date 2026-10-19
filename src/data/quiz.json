@@ -2441,5 +2441,245 @@
       "targetModuleLabel": "Festbeton (Statistik)"
     },
     "verified": false
+  },
+  {
+    "id": "q_form_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Systematik der Formänderungen",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Wie ist Schwinden von Beton in die Systematik der Formänderungen einzuordnen?",
+    "options": [
+      "Spannungsabhängig, sofort, elastisch",
+      "Spannungsabhängig, zeitabhängig (Kriechen)",
+      "Spannungsunabhängig (Feuchtedehnung bzw. chemisch)",
+      "Plastische Verformung"
+    ],
+    "correctIdx": 2,
+    "explanation": "Schwinden tritt ohne äußere Last auf: Trocknungsschwinden ist eine Feuchtedehnung, autogenes Schwinden eine chemisch bedingte Dehnung. Kriechen ist dagegen lastabhängig.",
+    "gapAnalysis": {
+      "topic": "Systematik der Formänderungen",
+      "misconception": "Schwinden und Kriechen werden verwechselt, weil beide zeitabhängig sind.",
+      "coreRule": "Kriechen = Last + Zeit; Schwinden = ohne Last (Feuchte, Chemie); Wärmedehnung = Temperatur.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Systematik der Formänderungen“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_form_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Wärmedehnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 3.1.3",
+    "question": "Eine 20 m lange Stahlbetonwand erwärmt sich um 30 K (α_T = 10·10⁻⁶ 1/K). Wie groß ist die freie Längenänderung?",
+    "options": [
+      "0,6 mm",
+      "6 mm",
+      "60 mm",
+      "0,06 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "Δl = α_T·ΔT·l = 10·10⁻⁶ · 30 · 20 000 mm = 6 mm.",
+    "gapAnalysis": {
+      "topic": "Wärmedehnung",
+      "misconception": "Längeneinheiten (m und mm) werden beim Einsetzen vermischt.",
+      "coreRule": "Δl = α_T · ΔT · l; Beton und Stahl α_T ≈ 10·10⁻⁶ 1/K.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_form_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Kriechzahl",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 3.1.4",
+    "question": "Eine Stütze wird mit σ_c = 12 N/mm² belastet (E_c = 34 650 N/mm²). Wie groß ist die Kriechdehnung bei einer Endkriechzahl φ = 2,5?",
+    "options": [
+      "0,35 ‰",
+      "0,87 ‰",
+      "1,22 ‰",
+      "2,50 ‰"
+    ],
+    "correctIdx": 1,
+    "explanation": "ε_el = 12/34 650 = 0,346 ‰; ε_cc = φ · ε_el = 2,5 · 0,346 = 0,87 ‰. Die Gesamtstauchung beträgt rund 1,21 ‰.",
+    "gapAnalysis": {
+      "topic": "Kriechzahl",
+      "misconception": "Die Kriechzahl wird zur elastischen Dehnung addiert statt mit ihr multipliziert, oder die Gesamtdehnung wird als Kriechdehnung angegeben.",
+      "coreRule": "ε_cc = φ · σ_c / E_c; Gesamt = (1 + φ) · ε_el.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechzahl“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_emod_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "emodul",
+    "moduleTitle": "E-Modul & Mikromechanik",
+    "topic": "E-Modul nach Eurocode 2",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1, 3.1.3",
+    "question": "Wie ändert sich der rechnerische E-Modul eines Betons, wenn statt quarzitischer eine Sandstein-Gesteinskörnung verwendet wird?",
+    "options": [
+      "+20 %",
+      "unverändert",
+      "−10 %",
+      "−30 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "Nach DIN EN 1992-1-1, 3.1.3(2) gilt für Sandstein ein Abminderungsfaktor von 0,7, für Kalkstein 0,9, für Basalt 1,2.",
+    "gapAnalysis": {
+      "topic": "E-Modul nach Eurocode 2",
+      "misconception": "Der E-Modul wird allein der Betonfestigkeitsklasse zugeschrieben.",
+      "coreRule": "E_cm = α_E · 22 · (f_cm/10)^0,3 mit α_E nach Gesteinsart.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „E-Modul nach Eurocode 2“ im Modul E-Modul & Mikromechanik noch einmal durch.",
+      "targetModuleTab": "emodul",
+      "targetModuleLabel": "E-Modul & Mikromechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_emod_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "emodul",
+    "moduleTitle": "E-Modul & Mikromechanik",
+    "topic": "Voigt und Reuss",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Welche Annahme liegt dem Reuss-Modell (untere Schranke) eines Zweiphasenwerkstoffs zugrunde?",
+    "options": [
+      "Gleiche Dehnung in beiden Phasen",
+      "Gleiche Spannung in beiden Phasen",
+      "Kugelförmige Einschlüsse in einer Matrix",
+      "Gleiche Querdehnzahl"
+    ],
+    "correctIdx": 1,
+    "explanation": "Reuss = Reihenschaltung, beide Phasen tragen dieselbe Spannung; Voigt = Parallelschaltung mit gleicher Dehnung. Der wahre Wert liegt dazwischen.",
+    "gapAnalysis": {
+      "topic": "Voigt und Reuss",
+      "misconception": "Parallel- und Reihenschaltung werden vertauscht.",
+      "coreRule": "Voigt: E = Σ v_i E_i (oben); Reuss: 1/E = Σ v_i/E_i (unten).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Voigt und Reuss“ im Modul E-Modul & Mikromechanik noch einmal durch.",
+      "targetModuleTab": "emodul",
+      "targetModuleLabel": "E-Modul & Mikromechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fest_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Grenzhöhe unter Eigengewicht",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Warum hängt die theoretische Grenzhöhe einer prismatischen Säule unter Eigengewicht nicht von ihrem Querschnitt ab?",
+    "options": [
+      "Weil größere Querschnitte stabiler sind",
+      "Weil Gewicht und tragende Fläche beide proportional zur Querschnittsfläche sind",
+      "Weil die Druckfestigkeit mit dem Querschnitt steigt",
+      "Weil die Erdbeschleunigung oben kleiner ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ = ρ·g·A·H / A = ρ·g·H – die Fläche kürzt sich heraus. Grenzhöhe H = f_c/(ρ·g). Stabilität (Knicken) bleibt dabei unberücksichtigt.",
+    "gapAnalysis": {
+      "topic": "Grenzhöhe unter Eigengewicht",
+      "misconception": "Ein dickerer Querschnitt wird für Druck unter Eigengewicht als tragfähiger angenommen.",
+      "coreRule": "Eigengewichtsspannung am Fuß: σ = ρ · g · H.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzhöhe unter Eigengewicht“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bruch_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bruchmechanik",
+    "moduleTitle": "Bruchmechanik",
+    "topic": "Spannungsintensitätsfaktor",
+    "difficulty": "Fortgeschritten",
+    "normRef": "LEBM",
+    "question": "Wie verändert sich die kritische Bruchspannung eines spröden Bauteils, wenn sich die Risslänge vervierfacht?",
+    "options": [
+      "Sie bleibt gleich",
+      "Sie halbiert sich",
+      "Sie sinkt auf ein Viertel",
+      "Sie verdoppelt sich"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ_c = K_Ic/(Y·√(πa)) ∝ 1/√a. Vierfache Risslänge → √4 = 2 → halbe Bruchspannung.",
+    "gapAnalysis": {
+      "topic": "Spannungsintensitätsfaktor",
+      "misconception": "Ein linearer Zusammenhang zwischen Risslänge und Bruchspannung wird angenommen.",
+      "coreRule": "K_I = Y · σ · √(π a); Bruch bei K_I = K_Ic.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spannungsintensitätsfaktor“ im Modul Bruchmechanik noch einmal durch.",
+      "targetModuleTab": "bruchmechanik",
+      "targetModuleLabel": "Bruchmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bruch_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bruchmechanik",
+    "moduleTitle": "Bruchmechanik",
+    "topic": "Grenzen der LEBM",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "fib Model Code 2010",
+    "question": "Warum ist die linear-elastische Bruchmechanik für normale Betonbauteile nur eingeschränkt anwendbar?",
+    "options": [
+      "Weil Beton keine Risse bildet",
+      "Weil sich vor der Rissspitze eine ausgedehnte Bruchprozesszone mit Mikrorissen bildet (quasi-sprödes Verhalten)",
+      "Weil Beton ein ideal plastischer Werkstoff ist",
+      "Weil der E-Modul von Beton zu hoch ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Bruchprozesszone ist im Verhältnis zur Bauteilgröße groß; deshalb werden nichtlineare Modelle wie das fiktive Rissmodell (Hillerborg) mit der Bruchenergie G_F verwendet. Daraus folgt auch der Maßstabseffekt.",
+    "gapAnalysis": {
+      "topic": "Grenzen der LEBM",
+      "misconception": "Beton wird wie Glas als ideal spröder Werkstoff behandelt.",
+      "coreRule": "Glas: LEBM; Beton: quasi-spröde, Bruchenergie G_F, Maßstabseffekt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzen der LEBM“ im Modul Bruchmechanik noch einmal durch.",
+      "targetModuleTab": "bruchmechanik",
+      "targetModuleLabel": "Bruchmechanik"
+    },
+    "verified": false
   }
 ]
