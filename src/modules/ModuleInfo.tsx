@@ -659,21 +659,21 @@ const MODULES_DATA: Record<string, GroupData> = {
   },
   bestand: {
     title: 'Bauen im Bestand & Denkmalpflege',
-    tagline: 'Altbausanierung, Denkmalpflegepraxis, GEG-Anpassungen und historische Werkstoffkennwerte',
+    tagline: 'Altbausanierung, Denkmalpflegepraxis, GModG-Anforderungen und historische Werkstoffkennwerte',
     icon: Building2Icon,
     basicsTitle: 'Erhalt grauer Energie durch nachhaltiges Sanieren',
     basicsDesc1: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Die historische Bausubstanz enthält viel graue Energie. Ihr Erhalt erfordert tiefgreifendes Wissen über historische Herstellungsverfahren und Tragwerkseigenschaften.',
-    basicsDesc2: 'Wir stellen den Altbauatlas vor, erarbeiten Erfassungsmethoden vom Handaufmaß bis zum 3D-Laserscan, diskutieren Vorgaben des GEG für Sanierungen und greifen auf authentische Festigkeiten historischer Ziegel, Gusseisen und Trassmörtel zurück.',
+    basicsDesc2: 'Wir stellen den Altbauatlas vor, erarbeiten Erfassungsmethoden vom Handaufmaß bis zum 3D-Laserscan, diskutieren Vorgaben des Gebäudemodernisierungsgesetzes (GModG, vormals GEG) für Sanierungen und greifen auf authentische Festigkeiten historischer Ziegel, Gusseisen und Trassmörtel zurück.',
     basicsCards: [
       { title: 'Historische Kennwerte', desc: 'Verlässliches Datenarchiv für Ziegelmauerwerk, Naturstein, frühe Betone und Profile aus der Zeit von 1850 bis 1960.' },
       { title: 'Bauwerksdiagnostik', desc: 'Verwendung moderner zerstörungsfreier Prüfverfahren (ZfP) zur Aufspürung innerer Fehlstellen.' }
     ],
     submodules: [
-      { title: 'Altbauatlas', icon: Building2Icon, purpose: 'Klassifizierung typischer Schadensmechanismen in Abhängigkeit von Gebäudeepoche und Bauweise.', standards: 'Forschungsberichte Denkmalschutz', useCase: 'Sanierung feuchter Kellerdecken aus der Gründerzeit (Kappendecken).' },
+      { title: 'Altbauatlas', icon: Building2Icon, purpose: 'Klassifizierung typischer Schadensmechanismen in Abhängigkeit von Gebäudeepoche und Bauweise.', standards: 'Bekanntmachung der Regeln zur Datenaufnahme im Wohngebäudebestand (2020); WTA', useCase: 'Sanierung feuchter Kellerdecken aus der Gründerzeit (Kappendecken).' },
       { title: 'Bauwerkserfassung', icon: Compass, purpose: 'Zusammenstellung von Handaufmaß, 3D-Verformungsaufmaß, Photogrammetrie und TLS (Laserscan).', standards: 'Eckstein: Empfehlungen für Baudokumentationen (LDA Baden-Württemberg)', useCase: 'Erstellung einer zentimetergenauen Punktwolke einer Kirchdachstruktur.' },
       { title: 'Denkmalpflege', icon: Landmark, purpose: 'Denkmalschutzgesetzliche Vorgaben, reversible Sanierungsverfahren, historische Putze und Baustoffe.', standards: 'Charta von Venedig / WTA', useCase: 'Rekonstruktion eines barocken Luftkalk-Außenputzes.' },
-      { title: 'Modernisierung & GEG', icon: RefreshCw, purpose: 'Vorgaben des Gebäudeenergiegesetzes bei Änderungen an der Gebäudehülle, Erleichterungen für Baudenkmäler.', standards: '§ 105 GModG, vormals GEG (Ausnahmen Denkmale)', useCase: 'Nachweis der Wirtschaftlichkeit von dämmenden Maßnahmen im denkmalgeschützten Einzelhof.' },
-      { title: 'Bauwerksdiagnose & ZfP-Katalog', icon: Search, purpose: 'Systematische Vor-Ort-Zustandserfassung im Bestand: 4-Phasen-Diagnostik (Vorerkundung, ZfP, Labor, Tragfähigkeitsnachweis) und konsolidierter Katalog aller 14 Prüfverfahren (Rückprallhammer, Ultraschall, Potentialfeld, Georadar, Karsten, Karbonatisierung, Bohrkern etc.) mit interaktiven Rechnern.', standards: 'DGZfP Richtlinien B1–B4, DBV-Merkblätter, DIN EN 12504, DIN EN 13791', useCase: 'Zustandserfassung einer Tiefgarage und Brückenkappe: Betondeckungs-Konformität (DBV), Karbonatisierungsfortschritt und Rissweitenbestimmung.' },
+      { title: 'Modernisierung & GModG', icon: RefreshCw, purpose: 'Vorgaben des Gebäudemodernisierungsgesetzes (vormals GEG) bei Nachrüstung und Änderung der Gebäudehülle, Bio-Treppe beim Heizungstausch, Erleichterungen für Baudenkmäler.', standards: 'GModG §§ 35–37, Anlage 7, § 105', useCase: 'Nachweis der Wirtschaftlichkeit von dämmenden Maßnahmen im denkmalgeschützten Einzelhof.' },
+      { title: 'Bauwerksdiagnose & ZfP-Katalog', icon: Search, purpose: 'Systematische Vor-Ort-Zustandserfassung im Bestand: 4-Phasen-Diagnostik (Vorerkundung, ZfP, Labor, Tragfähigkeitsnachweis) und konsolidierter Katalog aller 14 Prüfverfahren (Rückprallhammer, Ultraschall, Potentialfeld, Georadar, Karsten, Karbonatisierung, Bohrkern etc.) mit interaktiven Rechnern.', standards: 'DGZfP-Merkblätter (Reihe B), DBV-Merkblätter, DIN EN 12504, DIN EN 13791', useCase: 'Zustandserfassung einer Tiefgarage und Brückenkappe: Betondeckungs-Konformität (DBV), Karbonatisierungsfortschritt und Rissweitenbestimmung.' },
       { title: 'Historische Kennwerte', icon: History, purpose: 'Materialkennwerte alter Baustoffe wie Schweißeisen, Gussstahl und historisches Ziegelmauerwerk.', standards: 'DBV-Merkblätter Bauen im Bestand, historische Normen (DIN 1045, DIN 1050, DIN 4074)', useCase: 'Tragfähigkeitsnachweis einer Industriehalle von 1910.' },
       { title: 'Historische Bauweisen', icon: BookOpen, purpose: 'Epochenspezifische Tragsysteme wie Holzbalkendecken, Kappendecken, Monier-Gewölbe, Rabitzwände und Fachwerk.', standards: 'WTA-Merkblätter / Denkmalbau-Archive', useCase: 'Ertüchtigung und statische Begutachtung einer preußischen Kappendecke.' },
       { title: 'Historische Bauprodukte', icon: Layers, purpose: 'Rezepturen, Brandgrade und Schadensanfälligkeiten historischer Bindemittel, Ziegel, Zemente und Schmiedemetalle.', standards: 'Historische DIN-Normenarchive', useCase: 'Identifikation von Romanzement und hydraulischen Kalken in Gründerzeitfassaden.' },
@@ -694,7 +694,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       'WTA-Merkblattreihe (Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.)'
     ],
     regelwerke: [
-      { title: 'Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 36 und Anlage 7: Anforderungen bei Änderung bestehender Gebäude', url: 'https://lxgesetze.de/gmodg/AL-7' },
+      { title: 'Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 35 Nachrüstung, § 36 Änderung, § 37 U-Wert, Anlage 7, § 105 Baudenkmäler', url: 'https://www.gesetze-im-internet.de/geg/' },
       { title: 'EN 1990-2:2026 (Bewertung bestehender Tragwerke; ersetzt CEN/TS 17440:2020) – nationale Fassung/NA prüfen', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' },
       { title: 'DIN EN 13791:2020-02 + DIN EN 13791/A20 (Bewertung der Druckfestigkeit von Beton im Bauwerk)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' }
     ],

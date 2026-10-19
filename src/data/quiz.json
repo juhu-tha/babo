@@ -3356,7 +3356,7 @@
     "question": "Was gilt seit dem 29. Juli 2026 für das Gebäudeenergiegesetz (GEG)?",
     "options": [
       "Es wurde ersatzlos aufgehoben",
-      "Es heißt nun Gebäudemodernisierungsgesetz (GModG); Neubauanforderungen und Energieausweis-Regeln bleiben in den bisherigen Paragrafen",
+      "Es heißt nun Gebäudemodernisierungsgesetz (GModG); Neubauanforderungen (§§ 15, 16) und Energieausweis-Regeln (§§ 79–88) bleiben unter denselben Nummern; Bestandsanforderungen wurden teils neu nummeriert",
       "Es gilt unverändert weiter, einschließlich der 65-%-Regel",
       "Es wurde durch die EnEV 2014 ersetzt"
     ],
@@ -3365,7 +3365,7 @@
     "gapAnalysis": {
       "topic": "Rechtsstand 2026",
       "misconception": "Die Gesetzesreform wird als Abschaffung aller energetischen Anforderungen verstanden.",
-      "coreRule": "GEG → GModG (2026): Paragrafennummern weitgehend unverändert.",
+      "coreRule": "GEG → GModG (2026): §§ 15, 16, 79–88 unverändert; Bestand: § 35 Nachrüstung, § 36 Änderung (vormals §§ 47, 48); § 72 (Betriebsverbot) weggefallen.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand 2026“ im Modul Energieausweis noch einmal durch.",
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
@@ -3789,6 +3789,546 @@
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Einfluss des Zinssatzes“ im Modul Lebenszyklus & Kosten noch einmal durch.",
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bst_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "Innendämmung und Tauwasser",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-3:2024-03",
+    "question": "Warum steigt bei einer Innendämmung das Risiko von Tauwasser an der Grenzschicht zur Bestandswand?",
+    "options": [
+      "Weil die Bestandswand nach der Dämmung kälter wird und die Raumluftfeuchte bis zu ihr diffundieren kann",
+      "Weil der U-Wert der Wand steigt",
+      "Weil die Raumlufttemperatur sinkt",
+      "Weil die Außenwand stärker beregnet wird"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Dämmebene liegt warmseitig; das Mauerwerk dahinter kühlt aus. Ohne Dampfbremse oder kapillaraktives System kann an der kalten Grenzschicht Tauwasser ausfallen.",
+    "gapAnalysis": {
+      "topic": "Innendämmung und Tauwasser",
+      "misconception": "Innendämmung verhält sich bauphysikalisch wie Außendämmung.",
+      "coreRule": "Innendämmung immer mit Feuchtenachweis (Glaser nur eingeschränkt, besser hygrothermische Simulation) planen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Innendämmung und Tauwasser“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bst_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "Anforderungen bei Änderung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "GModG § 36, Anlage 7",
+    "question": "Ab welchem Umfang greifen die Höchstwerte nach Anlage 7 GModG bei der Änderung eines Außenbauteils?",
+    "options": [
+      "Bei jeder Reparatur",
+      "Wenn mehr als 10 % der gesamten jeweiligen Bauteilfläche geändert werden",
+      "Erst ab 50 % der Gebäudehüllfläche",
+      "Nur bei Nutzungsänderung"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 36 GModG (vormals § 48 GEG) knüpft die Anforderungen an Änderungen von mehr als 10 % der jeweiligen Bauteilfläche des Gebäudes.",
+    "gapAnalysis": {
+      "topic": "Anforderungen bei Änderung",
+      "misconception": "Jede Putzausbesserung löst Dämmpflichten aus.",
+      "coreRule": "Bagatellgrenze 10 % je Bauteilgruppe; dann U-Höchstwerte nach Anlage 7 (z. B. Außenwand 0,24 W/(m²K)).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anforderungen bei Änderung“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwe_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerkserfassung",
+    "moduleTitle": "Bauwerkserfassung",
+    "topic": "Verformungsgetreues Aufmaß",
+    "difficulty": "Basis",
+    "normRef": "Eckstein, Genauigkeitsstufen",
+    "question": "Wofür ist ein verformungsgetreues Aufmaß bei einem historischen Dachstuhl besonders wichtig?",
+    "options": [
+      "Für die Kostenschätzung der Dachdeckung",
+      "Um tatsächliche Querschnitte, Schiefstellungen und Vorverformungen für die Nachrechnung zu erfassen",
+      "Nur für die Denkmalliste",
+      "Es ersetzt die Holzfeuchtemessung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Gemessene Restquerschnitte und Vorverformungen gehen direkt in die Nachweise ein (z. B. Zusatzmoment N · e₀).",
+    "gapAnalysis": {
+      "topic": "Verformungsgetreues Aufmaß",
+      "misconception": "Planzeichnungen genügen als Grundlage der Nachrechnung.",
+      "coreRule": "Maßgebend ist der Ist-Zustand: Querschnitt, Schäden und Verformung aus dem Aufmaß.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verformungsgetreues Aufmaß“ im Modul Bauwerkserfassung noch einmal durch.",
+      "targetModuleTab": "bauwerkserfassung",
+      "targetModuleLabel": "Bauwerkserfassung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwe_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerkserfassung",
+    "moduleTitle": "Bauwerkserfassung",
+    "topic": "Druck und Biegung im Holz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1:2010-12, Gl. (6.19)",
+    "question": "Wie geht die Druckspannung in den Querschnittsnachweis für Druck und Biegung nach Eurocode 5 ein?",
+    "options": [
+      "Linear",
+      "Quadratisch, (σ_c,0,d / f_c,0,d)²",
+      "Gar nicht",
+      "Mit dem Exponenten 0,5"
+    ],
+    "correctIdx": 1,
+    "explanation": "Gl. (6.19): (σ_c,0,d/f_c,0,d)² + σ_m,d/f_m,d ≤ 1 – der Druckanteil wirkt quadratisch, weil Holz unter Druck plastisch reagiert.",
+    "gapAnalysis": {
+      "topic": "Druck und Biegung im Holz",
+      "misconception": "Druck- und Biegeanteil werden immer linear addiert.",
+      "coreRule": "Querschnittsnachweis EC5: Druckterm quadratisch; Stabilität (6.3) separat nachweisen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Druck und Biegung im Holz“ im Modul Bauwerkserfassung noch einmal durch.",
+      "targetModuleTab": "bauwerkserfassung",
+      "targetModuleLabel": "Bauwerkserfassung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dp_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "denkmalpflege",
+    "moduleTitle": "Denkmalpflege",
+    "topic": "Mörtelverträglichkeit",
+    "difficulty": "Basis",
+    "normRef": "WTA-Merkblätter (Auswahl manuell prüfen)",
+    "question": "Welche Eigenschaft sollte ein Fugenmörtel für historisches Mauerwerk im Verhältnis zum Stein haben?",
+    "options": [
+      "Höhere Festigkeit und Dichtheit als der Stein",
+      "Geringere Festigkeit und höhere Porosität als der Stein (Opfermörtel)",
+      "Gleiche Festigkeit wie moderner Zementmörtel M10",
+      "Er sollte wasserabweisend und dampfdicht sein"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Mörtel soll das schwächere Glied sein: Feuchte und Salze verdunsten über die Fuge, Spannungen werden dort abgebaut, nicht im Stein.",
+    "gapAnalysis": {
+      "topic": "Mörtelverträglichkeit",
+      "misconception": "Je fester der Mörtel, desto dauerhafter die Mauer.",
+      "coreRule": "Mörtel weicher und offenporiger als der Stein; Kalk oder NHL statt Zement.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mörtelverträglichkeit“ im Modul Denkmalpflege noch einmal durch.",
+      "targetModuleTab": "denkmalpflege",
+      "targetModuleLabel": "Denkmalpflege"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dp_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "denkmalpflege",
+    "moduleTitle": "Denkmalpflege",
+    "topic": "Energieanforderungen am Baudenkmal",
+    "difficulty": "Fortgeschritten",
+    "normRef": "GModG § 105",
+    "question": "Was regelt § 105 GModG für Baudenkmäler?",
+    "options": [
+      "Eine Pflicht zur Außendämmung",
+      "Abweichungen von den Anforderungen, soweit deren Erfüllung die Substanz oder das Erscheinungsbild beeinträchtigen würde",
+      "Ein generelles Verbot jeder Dämmung",
+      "Eine Befreiung nur für Kirchen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei Baudenkmälern und sonstiger besonders erhaltenswerter Bausubstanz kann von den Anforderungen abgewichen werden; die Denkmalbehörde ist einzubinden.",
+    "gapAnalysis": {
+      "topic": "Energieanforderungen am Baudenkmal",
+      "misconception": "Denkmäler sind von energetischen Fragen völlig ausgenommen.",
+      "coreRule": "§ 105 erlaubt Abweichungen – energetische Verbesserung bleibt Ziel, wo substanzverträglich.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Energieanforderungen am Baudenkmal“ im Modul Denkmalpflege noch einmal durch.",
+      "targetModuleTab": "denkmalpflege",
+      "targetModuleLabel": "Denkmalpflege"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mod_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "modernisierung",
+    "moduleTitle": "Modernisierung & GModG",
+    "topic": "Erforderliche Dämmdicke",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 6946:2018-03",
+    "question": "Eine Wand mit U = 1,40 W/(m²K) soll mit EPS (λ = 0,032 W/(mK)) auf U ≤ 0,24 W/(m²K) gedämmt werden. Welche Dämmdicke ist mindestens erforderlich?",
+    "options": [
+      "ca. 4 cm",
+      "ca. 7 cm",
+      "ca. 11 cm",
+      "ca. 20 cm"
+    ],
+    "correctIdx": 2,
+    "explanation": "d = λ · (1/U_soll − 1/U_alt) = 0,032 · (4,17 − 0,71) = 0,111 m ≈ 11 cm; gewählt wird die nächste Handelsdicke.",
+    "gapAnalysis": {
+      "topic": "Erforderliche Dämmdicke",
+      "misconception": "Die Dämmdicke wird aus dem Neubau-Referenzwert ohne Bestandswiderstand berechnet.",
+      "coreRule": "Vorhandenen Wärmedurchlasswiderstand anrechnen: d = λ (1/U_soll − 1/U_alt).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Erforderliche Dämmdicke“ im Modul Modernisierung & GModG noch einmal durch.",
+      "targetModuleTab": "modernisierung",
+      "targetModuleLabel": "Modernisierung & GModG"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mod_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "modernisierung",
+    "moduleTitle": "Modernisierung & GModG",
+    "topic": "Nachrüstpflicht oberste Geschossdecke",
+    "difficulty": "Fortgeschritten",
+    "normRef": "GModG § 35",
+    "question": "Welche Regelung trifft das GModG für ungedämmte oberste Geschossdecken beheizter Räume?",
+    "options": [
+      "Nachrüstung so, dass U ≤ 0,24 W/(m²K) eingehalten wird (§ 35, vormals § 47 GEG)",
+      "Keine Anforderung mehr",
+      "Nur Empfehlung im Energieausweis",
+      "U ≤ 0,50 W/(m²K) bei jedem Eigentümerwechsel"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Nachrüstpflicht für oberste Geschossdecken ist im GModG in § 35 geregelt; Höchstwert 0,24 W/(m²K), alternativ Dämmung des darüberliegenden Dachs.",
+    "gapAnalysis": {
+      "topic": "Nachrüstpflicht oberste Geschossdecke",
+      "misconception": "Mit dem GModG sind alle Nachrüstpflichten entfallen.",
+      "coreRule": "Bestand: Nachrüstung § 35, Änderung § 36, Berechnung § 37 GModG.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachrüstpflicht oberste Geschossdecke“ im Modul Modernisierung & GModG noch einmal durch.",
+      "targetModuleTab": "modernisierung",
+      "targetModuleLabel": "Modernisierung & GModG"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwu_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerksuntersuchung",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Karbonatisierungsprognose",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 14630:2007-01",
+    "question": "Nach 36 Jahren beträgt die Karbonatisierungstiefe 15 mm. Wann erreicht die Front nach dem √t-Gesetz eine Betondeckung von 25 mm?",
+    "options": [
+      "nach ca. 60 Jahren",
+      "nach ca. 100 Jahren",
+      "nach ca. 150 Jahren",
+      "nie"
+    ],
+    "correctIdx": 1,
+    "explanation": "k = 15/√36 = 2,5 mm/√a; t = (25/2,5)² = 100 a, also rund 64 Jahre Restzeit.",
+    "gapAnalysis": {
+      "topic": "Karbonatisierungsprognose",
+      "misconception": "Die Karbonatisierung schreitet linear mit der Zeit fort.",
+      "coreRule": "x = k · √t; Prognose nur bei gleichbleibenden Feuchtebedingungen belastbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Karbonatisierungsprognose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "targetModuleTab": "bauwerksuntersuchung",
+      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwu_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerksuntersuchung",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Rückprallhammer",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12504-2:2021-10; DIN EN 13791",
+    "question": "Warum darf der Rückprallwert allein nicht zur Festigkeitseinstufung eines Bestandsbetons verwendet werden?",
+    "options": [
+      "Weil er nur die Oberflächenhärte misst, die z. B. durch Karbonatisierung erhöht ist; eine Kalibrierung an Bohrkernen ist erforderlich",
+      "Weil der Hammer nur an Stahl funktioniert",
+      "Weil der Rückprallwert mit der Festigkeit nicht korreliert",
+      "Weil er nur bei Frischbeton zulässig ist"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Härte der karbonatisierten Randzone überschätzt die Festigkeit; DIN EN 13791 verlangt die Verknüpfung indirekter Verfahren mit Bohrkernen.",
+    "gapAnalysis": {
+      "topic": "Rückprallhammer",
+      "misconception": "Die Herstellerkurve liefert direkt die charakteristische Festigkeit.",
+      "coreRule": "Indirekte Prüfverfahren immer an Bohrkernen kalibrieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "targetModuleTab": "bauwerksuntersuchung",
+      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hk_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Alter Betonstahl",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045 (historische Ausgaben)",
+    "question": "Welche Streckgrenze ist für \"Betonstahl III\" (BSt 420/500) in der Nachrechnung anzusetzen?",
+    "options": [
+      "220 N/mm²",
+      "420 N/mm²",
+      "500 N/mm²",
+      "550 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die erste Zahl der Bezeichnung BSt 420/500 ist die Streckgrenze, die zweite die Zugfestigkeit; B500 ist nicht gleichwertig.",
+    "gapAnalysis": {
+      "topic": "Alter Betonstahl",
+      "misconception": "Alter Betonstahl III entspricht B500.",
+      "coreRule": "Historische Stahlbezeichnung = Streckgrenze/Zugfestigkeit; f_yk aus der Bezeichnung oder aus Proben ansetzen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Alter Betonstahl“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hk_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Streuung im Bestand",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1990, Anhang D; EN 1990-2:2026",
+    "question": "Wie wirkt sich ein kleiner gemessener Variationskoeffizient der Betonfestigkeit auf den Bemessungswert aus?",
+    "options": [
+      "Er senkt den Bemessungswert",
+      "Er erhöht den Bemessungswert, weil der Abstand zum Mittelwert kleiner wird",
+      "Er hat keinen Einfluss",
+      "Er macht Teilsicherheitsbeiwerte überflüssig"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_d = f_m · exp(−α_R β V − 0,5 V²): kleineres V führt zu einem größeren Bemessungswert – so lassen sich im Bestand Reserven aufdecken.",
+    "gapAnalysis": {
+      "topic": "Streuung im Bestand",
+      "misconception": "Mehr Proben verschlechtern immer das Ergebnis.",
+      "coreRule": "Gemessene Streuung ersetzt Annahmen; Modellunsicherheiten bleiben zu berücksichtigen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Streuung im Bestand“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hb_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauweisen",
+    "moduleTitle": "Hist. Bauweisen",
+    "topic": "Preußische Kappendecke",
+    "difficulty": "Basis",
+    "normRef": "Breymann, Baukonstruktionslehre",
+    "question": "Welche Kraft muss bei einer preußischen Kappendecke an den Randfeldern zusätzlich aufgenommen werden?",
+    "options": [
+      "Der horizontale Gewölbeschub",
+      "Eine abhebende Windlast",
+      "Nur die Eigenlast der Träger",
+      "Torsion der Träger"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Segmentbögen erzeugen Horizontalschub; innen heben sich die Schübe benachbarter Kappen auf, am Rand übernehmen Zuganker oder die Außenwand.",
+    "gapAnalysis": {
+      "topic": "Preußische Kappendecke",
+      "misconception": "Kappen tragen wie einachsige Platten ohne Horizontalkraft.",
+      "coreRule": "Gewölbe = Druck + Horizontalschub; Zuganker und Auflager prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Preußische Kappendecke“ im Modul Hist. Bauweisen noch einmal durch.",
+      "targetModuleTab": "historische_bauweisen",
+      "targetModuleLabel": "Hist. Bauweisen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hb_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauweisen",
+    "moduleTitle": "Hist. Bauweisen",
+    "topic": "Holzschwinden",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1:2010-12",
+    "question": "Warum ist das Schwindmaß von Holz bei der Sanierung von Holzbalkendecken relevant?",
+    "options": [
+      "Weil Holz in Faserrichtung stark schwindet",
+      "Weil Austrocknung nach Feuchteschäden Querschnittsmaße und Verbindungen verändert (radial/tangential deutlich mehr als längs)",
+      "Weil Schwinden die Festigkeit halbiert",
+      "Es ist nicht relevant"
+    ],
+    "correctIdx": 1,
+    "explanation": "Quer zur Faser schwindet Holz um ein Vielfaches stärker als längs; trocknet ein durchfeuchteter Balken aus, öffnen sich Fugen und Anschlüsse lockern sich.",
+    "gapAnalysis": {
+      "topic": "Holzschwinden",
+      "misconception": "Holz schwindet in allen Richtungen gleich.",
+      "coreRule": "Schwinden quer ≫ längs; Einbaufeuchte und Nutzungsfeuchte abgleichen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzschwinden“ im Modul Hist. Bauweisen noch einmal durch.",
+      "targetModuleTab": "historische_bauweisen",
+      "targetModuleLabel": "Hist. Bauweisen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hp_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauprodukte",
+    "moduleTitle": "Hist. Bauprodukte",
+    "topic": "PCB-Raumluft",
+    "difficulty": "Basis",
+    "normRef": "PCB-Richtlinie (Fassung manuell prüfen)",
+    "question": "Eine Raumluftmessung ergibt 1 400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?",
+    "options": [
+      "Unbedenklich (< 300 ng/m³)",
+      "Zwischen Vorsorge- und Eingreifwert (300–3 000 ng/m³): Quelle suchen, mittelfristig sanieren",
+      "Über dem Eingreifwert: sofortige Maßnahmen",
+      "Die Richtlinie kennt keine Werte"
+    ],
+    "correctIdx": 1,
+    "explanation": "300 ng/m³ ist der Vorsorgewert, 3 000 ng/m³ der Eingreifwert; dazwischen sind Quellensuche und mittelfristige Sanierung angezeigt.",
+    "gapAnalysis": {
+      "topic": "PCB-Raumluft",
+      "misconception": "Jeder PCB-Nachweis erfordert sofortige Räumung.",
+      "coreRule": "PCB-Raumluft: < 300 langfristig tolerierbar, 300–3 000 mittelfristig sanieren, > 3 000 sofort handeln.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PCB-Raumluft“ im Modul Hist. Bauprodukte noch einmal durch.",
+      "targetModuleTab": "historische_bauprodukte",
+      "targetModuleLabel": "Hist. Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hp_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauprodukte",
+    "moduleTitle": "Hist. Bauprodukte",
+    "topic": "Bleileitungen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TrinkwV 2023",
+    "question": "Was gilt nach der Trinkwasserverordnung 2023 für Trinkwasserleitungen aus Blei?",
+    "options": [
+      "Sie dürfen unbefristet weiterbetrieben werden",
+      "Sie waren bis 12.01.2026 zu entfernen oder stillzulegen",
+      "Sie müssen nur gekennzeichnet werden",
+      "Sie sind nur in Schulen verboten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die TrinkwV 2023 verlangte den Austausch oder die Stilllegung von Bleileitungen bis 12.01.2026; der Grenzwert für Blei sinkt ab 12.01.2028 von 10 auf 5 µg/l.",
+    "gapAnalysis": {
+      "topic": "Bleileitungen",
+      "misconception": "Bleileitungen sind nur bei Grenzwertüberschreitung zu ersetzen.",
+      "coreRule": "Bleileitungen raus; Grenzwert 10 µg/l, ab 2028 5 µg/l.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bleileitungen“ im Modul Hist. Bauprodukte noch einmal durch.",
+      "targetModuleTab": "historische_bauprodukte",
+      "targetModuleLabel": "Hist. Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_cl_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Regelmäßige Bauwerksprüfung",
+    "difficulty": "Basis",
+    "normRef": "VDI 6200:2010-02",
+    "question": "Wozu dient die Richtlinie VDI 6200?",
+    "options": [
+      "Bemessung von Stahlbetonbauteilen",
+      "Regelmäßige Überprüfung der Standsicherheit von Bauwerken (Begehung, Inspektion, eingehende Überprüfung)",
+      "Brandschutzplanung",
+      "Schallschutznachweis"
+    ],
+    "correctIdx": 1,
+    "explanation": "VDI 6200 empfiehlt gestufte Prüfungen und Intervalle je nach Schadensfolgeklasse und Robustheitsklasse.",
+    "gapAnalysis": {
+      "topic": "Regelmäßige Bauwerksprüfung",
+      "misconception": "Für Hochbauten gibt es keine Empfehlung zu Prüfintervallen.",
+      "coreRule": "Hochbau: VDI 6200; Brücken und Ingenieurbauwerke: DIN 1076.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Regelmäßige Bauwerksprüfung“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_cl_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Chloridgehalt",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TR Instandhaltung (DIBt); DAfStb",
+    "question": "Wie wird der korrosionsauslösende Chloridgehalt im Rahmen einer Instandsetzungsplanung festgelegt?",
+    "options": [
+      "Immer pauschal 0,1 M.-% bezogen auf den Beton",
+      "Objektspezifisch durch den sachkundigen Planer, häufig mit 0,5 M.-% bezogen auf den Zement als Orientierungswert",
+      "Gar nicht, Chloride sind unschädlich",
+      "Nur durch Sichtprüfung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die TR Instandhaltung überlässt die Festlegung dem sachkundigen Planer; 0,5 M.-% v. z. ist ein üblicher Orientierungswert, der objektspezifisch zu bewerten ist.",
+    "gapAnalysis": {
+      "topic": "Chloridgehalt",
+      "misconception": "Es gibt einen festen gesetzlichen Chloridgrenzwert.",
+      "coreRule": "Chloridprofil in Tiefenstufen messen; Grenzwert objektspezifisch festlegen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chloridgehalt“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Checklisten"
     },
     "verified": false
   }

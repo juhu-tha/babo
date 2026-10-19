@@ -20,6 +20,8 @@ import {
   Coins 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Slider } from '@/src/components/ui/Slider';
@@ -975,7 +977,36 @@ export default function Modernisierung() {
       </div>
 
       {/* Structured Footer nach RULE[GEMINI_md] */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Erforderliche Dämmdicke für eine Außenwand nach § 36 GModG"
+        zielGleichung="d_{erf} = \lambda \cdot \left(\frac{1}{U_{max}} - \frac{1}{U_{alt}}\right)"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Bestandswand U_alt = 1,40 W/(m²K); WDVS mit EPS 032; Höchstwert Anlage 7 Nr. 1: 0,24 W/(m²K).', formel: 'U_{alt} = 1{,}40,\\; \\lambda = 0{,}032,\\; U_{max} = 0{,}24' },
+          { titel: 'Erforderlicher Zusatzwiderstand', erklaerung: 'Differenz der Gesamtwiderstände:', formel: '\\Delta R = \\frac{1}{0{,}24} - \\frac{1}{1{,}40} = 4{,}167 - 0{,}714 = 3{,}45\\,\\text{m}^2\\text{K/W}' },
+          { titel: 'Dämmdicke', erklaerung: 'Mindestdicke und gewählte Lieferdicke:', formel: 'd_{erf} = 3{,}45 \\cdot 0{,}032 = 0{,}110\\,\\text{m} \\Rightarrow \\text{gewählt } 14\\,\\text{cm}' },
+          { titel: 'Kontrolle', erklaerung: 'U-Wert mit 14 cm:', formel: 'U = \\frac{1}{0{,}714 + 0{,}14/0{,}032} = \\frac{1}{5{,}09} = 0{,}20\\,\\text{W/(m}^2\\text{K)} \\le 0{,}24' }
+        ]}
+        ergebnisHinweis="Die Pflicht greift nur, wenn mehr als 10 % der Bauteilfläche geändert werden. Die Berechnung berücksichtigt neue und vorhandene Schichten (§ 37 GModG)."
+        normQuelle="GModG §§ 36, 37 und Anlage 7 (Lesefassung Stand 29.07.2026); DIN EN ISO 6946"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Energieeinsparung und Amortisation der Fassadendämmung"
+        zielGleichung="\Delta Q_E = \frac{\Delta U \cdot A \cdot F_x \cdot G_{t20/15} \cdot 24}{1000 \cdot \eta_{sys}}"
+        schritte={[
+          { titel: 'Einsparung', erklaerung: 'ΔU = 1,40 − 0,197 = 1,20 W/(m²K), A = 160 m², F_x = 1,0, G = 3 500 Kd/a, η = 0,90:', formel: '\\Delta Q_E = \\frac{1{,}20 \\cdot 160 \\cdot 3\\,500 \\cdot 24}{1\\,000 \\cdot 0{,}90} = 17\\,970\\,\\text{kWh/a}' },
+          { titel: 'Kosten', erklaerung: 'Energiepreis 0,12 €/kWh; Vollkosten 16 400 € (Dämmstoff 14 cm EPS 032 und 85 €/m² für Gerüst, Armierung, Putz):', formel: '17\\,970 \\cdot 0{,}12 = 2\\,156\\,\\text{€/a}' },
+          { titel: 'Statische Amortisation', erklaerung: 'Vollkosten bzw. nur energiebedingte Mehrkosten, wenn Gerüst und Putz ohnehin anfallen (Kopplungsprinzip):', formel: 't = \\frac{16\\,400}{2\\,156} = 7{,}6\\,\\text{a}, \\qquad t_{Kopplung} = \\frac{2\\,800}{2\\,156} = 1{,}3\\,\\text{a}' }
+        ]}
+        ergebnisHinweis="Die Kopplung an ohnehin nötige Instandsetzungen macht Dämmung hoch wirtschaftlich. Rebound- und Prebound-Effekte können die reale Einsparung deutlich verändern."
+        normQuelle="VDI 4710 / VDI 2067; F_x nach DIN V 4108-6"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="modernisierung" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: GModG-Paragrafen §§ 35–37, Anlage 7 und Bio-Treppe gegen die Lesefassung geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: "Gebäudeenergiegesetz", url: "https://de.wikipedia.org/wiki/Geb%C3%A4udeenergiegesetz" },
           { title: "Wärmedurchgangskoeffizient", url: "https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient" },
@@ -983,13 +1014,13 @@ export default function Modernisierung() {
           { title: "Wärmepumpe", url: "https://de.wikipedia.org/wiki/W%C3%A4rmepumpe" }
         ]} 
         literatur={[
-          "Hens, H.: Applied Building Physics: Boundary Conditions and Heat Transfer (Ernst & Sohn, 2017)"
+          "Hens, H.: Applied Building Physics – Ambient Conditions, Building Performance and Material Properties. 2. Aufl., Berlin: Ernst & Sohn 2016"
         ]} 
         regelwerke={[
-          { title: "Gebäudemodernisierungsgesetz (GModG, BGBl. 2026 I Nr. 226, vormals GEG) - Bauteilanforderungen (§ 35/§ 36)", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN EN ISO 6946: Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
-          { title: "DIN 4108-2: Mindestanforderungen an den Wärmeschutz von Gebäuden", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-2" },
-          { title: "DIN V 18599: Energetische Bewertung von Gebäuden", url: "https://www.dinmedia.de/de/suche?q=DIN+V+18599" }
+          { title: "Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026, vormals GEG; BGBl.-Fundstelle manuell prüfen) – Nachrüstung § 35, Änderung § 36, U-Wert-Berechnung § 37, Anlage 7", url: "https://www.gesetze-im-internet.de/geg/" },
+          { title: "DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
+          { title: "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-2" },
+          { title: "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG referenziert, Nachfolge DIN/TS 18599 seit 2025-10)", url: "https://www.dinmedia.de/de/suche?q=DIN+V+18599" }
         ]} 
         formeln={[
           {
