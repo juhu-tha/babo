@@ -411,7 +411,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
   bauphysik: {
     groupKey: 'bauphysik',
     title: 'Bauphysik',
-    leadSummary: 'Von dicken, ungedämmten Speicherwänden über die erste Wärmeschutzverordnung nach den Ölkrisen der 1970er bis hin zum modernen Gebäudeenergiegesetz (GEG 2024) und instationären hygrothermischen Simulationsverfahren (WUFI).',
+    leadSummary: 'Von dicken, ungedämmten Speicherwänden über die erste Wärmeschutzverordnung nach den Ölkrisen der 1970er bis hin zum Gebäudeenergiegesetz (GEG, seit Juli 2026 Gebäudemodernisierungsgesetz GModG) und instationären hygrothermischen Simulationsverfahren (WUFI).',
     milestones: [
       {
         era: '1952',
@@ -446,12 +446,12 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'Künzel (1995) / DIN EN 15026'
       },
       {
-        era: '2020 / 2024 (GEG-Novelle)',
-        title: 'Gebäudeenergiegesetz (GEG) & 65-%-Erneuerbare-Energien-Vorgabe',
+        era: '2020 / 2024 / 2026',
+        title: 'Vom Gebäudeenergiegesetz (GEG) zum Gebäudemodernisierungsgesetz (GModG)',
         category: 'Recht & Regularien',
-        description: 'Zusammenführung von EnEV, EEWärmeG und EnEG im Gebäudeenergiegesetz (GEG 2020) und Novellierung 2024 („Heizungsgesetz“) mit verbindlicher Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungsanlagen.',
+        description: 'Zusammenführung von EnEV, EEWärmeG und EnEG im Gebäudeenergiegesetz (GEG 2020) und Novellierung 2024 („Heizungsgesetz“) mit Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungsanlagen. Mit dem am 28.07.2026 verkündeten Gebäudemodernisierungsgesetz entfällt diese Vorgabe zugunsten einer „Bio-Treppe“ für neue Gas- und Ölheizungen; die Anforderungen an Neubau und Energieausweis bleiben in den bisherigen Paragrafen erhalten.',
         impact: 'Koppelung von hochgedämmter Gebäudehülle (Niedrigstenergiegebäude) mit Wärmepumpen, PV-Eigenstrom und kommunaler Wärmeplanung.',
-        keyReference: 'GEG 2024 / EU-Gebäuderichtlinie EPBD'
+        keyReference: 'GEG 2020/2024; GModG 2026; EU-Gebäuderichtlinie EPBD'
       }
     ],
     keyTakeaway: 'Die Bauphysik entwickelte sich von der reinen Schadensvermeidung (Schimmel/Tauwasser) zu einer Schlüsseldisziplin der Energiewende, des Klimaschutzes und des akustischen Wohlbefindens.'

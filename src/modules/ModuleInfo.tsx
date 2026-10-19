@@ -530,22 +530,22 @@ const MODULES_DATA: Record<string, GroupData> = {
     icon: Thermometer,
     basicsTitle: 'Behaglichkeit, Dauerhaftigkeit & Funktionsschutz',
     basicsDesc1: 'Die Bauphysik gestaltet das Innenklima von Gebäuden und schützt das Tragwerk vor vorzeitiger Zerstörung durch Feuchtigkeits- und Temperatureinflüsse. Die Kerndisziplinen sind Wärmeschutz, Feuchteschutz, Bauakustik (Schall) und Brandschutz.',
-    basicsDesc2: 'In dieser interaktiven Suite optimiere Schichtenfolgen, lokalisieren Taupunkte nach dem Glaser-Verfahren, berechnen den mittleren Schallkomfort von Bauteilen und ermitteln den Feuerwiderstand tragender Wände nach Eurocode.',
+    basicsDesc2: 'Die interaktiven Module optimieren Schichtenfolgen, lokalisieren Tauwasserebenen nach dem Glaser-Verfahren, berechnen das Schalldämm-Maß massiver Bauteile und die Nachhallzeit von Räumen und zeigen Brandverhalten, Feuerwiderstand und Holzabbrand.',
     basicsCards: [
-      { title: 'Klimatische Wechselwirkung', desc: 'Untersuchung des instationären Wärmedurchgangs zur Ermittlung sommerlicher Überhitzungsrisiken.' },
+      { title: 'Wärmespeicherung', desc: 'Wärmespeicherfähigkeit, Temperaturleitfähigkeit und Wärmeeindringfähigkeit als Grundlage für sommerlichen Wärmeschutz und Behaglichkeit.' },
       { title: 'Taupunkt-Lokalisator', desc: 'Berechnung des Wasserdampfdruckverlaufs zur Verhinderung schädlichen Schimmelpilzwachstums.' }
     ],
     submodules: [
-      { title: 'Bauphysik (Grundlagen)', icon: Thermometer, purpose: 'Wärmedurchgang und thermische Behaglichkeit, Energieflüsse bilanzieren.', standards: 'DIN EN ISO 6946', useCase: 'U-Wert-Berechnung eines hinterlüfteten Flachgurt-Daches.' },
-      { title: 'Thermische Eigenschaften', icon: Flame, purpose: 'Wärmeleitfähigkeiten, Dämmdicken, spezifische Wärmekapazitäten gängiger Baustoffe.', standards: 'DIN 4108-4', useCase: 'Ermittlung des winterlichen Dämmkomforts einer Sanierung.' },
-      { title: 'Feuchteschutz & Tauwasser', icon: Droplets, purpose: 'Stationäre Transportrechnung von Wasserdampf (Glaser-Verfahren), relative Luftfeuchten berechnen.', standards: 'DIN 4108-3', useCase: 'Nachweis der Tauwasserfreiheit im Bauteilinneren einer Holzständerwand.' },
-      { title: 'Dämmung im Vergleich', icon: Thermometer, purpose: 'Vor- und Nachteile von Innendämmung (Taupunkt verlagert sich) versus Außendämmung (WDVS).', standards: 'Energieeffizienz-Fachregeln', useCase: 'Sanierungskonzept für denkmalgeschützte Fachwerksfassaden.' },
-      { title: 'Schallschutz', icon: Volume2, purpose: 'Luftschalldämmung (R_w), Trittschallschutz (L_n,w) und Raumakustik (Nachhallzeit).', standards: 'DIN 4109 (Schallschutz im Hochbau)', useCase: 'Dimensionierung einer massiven Wohnungstrennwand zur Einhaltung erhöhter Schallschutzstufen.' },
-      { title: 'Brandschutz', icon: Flame, purpose: 'Klassifizierung des Brandverhaltens (A1 bis B3), Feuerwiderstandsklassen (F30 bis F90 bzw. REI 30 bis REI 90).', standards: 'DIN 4102 / DIN EN 13501-1', useCase: 'Einordnung eines Dämmstoffs als "nichtbrennbar" (Mineralwolle) oder "schwerentflammbar" (Polystyrol).' },
-      { title: 'Energieausweis', icon: FileCheck, purpose: 'Ermittlung des Primärenergiebedarfs Q_p, GEG-Referenzgebäudeverfahren und Energieklassen.', standards: 'GEG / DIN V 18599', useCase: 'Erstellung des Energiebedarfsausweises für ein neu geplantes Mehrfamilienhaus.' }
+      { title: 'Bauphysik (Grundlagen)', icon: Thermometer, purpose: 'U-Wert, Temperatur- und Dampfdruckverlauf (Glaser), Temperaturfaktor f_Rsi sowie Nachhallzeit von Räumen.', standards: 'DIN EN ISO 6946; DIN 4108-2/-3; DIN 18041', useCase: 'Nachweis einer gedämmten Außenwand und akustische Ertüchtigung eines Klassenraums.' },
+      { title: 'Thermische Eigenschaften', icon: Flame, purpose: 'Wärmeleitfähigkeiten, Dämmdicken, spezifische Wärmekapazitäten gängiger Baustoffe.', standards: 'DIN 4108-4; DIN EN ISO 10456', useCase: 'Erforderliche Dämmdicke für die nachträgliche Außendämmung einer Bestandswand.' },
+      { title: 'Feuchteschutz & Tauwasser', icon: Droplets, purpose: 'Stationäre Transportrechnung von Wasserdampf (Glaser-Verfahren), relative Luftfeuchten berechnen.', standards: 'DIN 4108-3:2024-03; DIN EN ISO 13788', useCase: 'Nachweis der Tauwasserfreiheit im Bauteilinneren einer Holzständerwand.' },
+      { title: 'Dämmung im Vergleich', icon: Thermometer, purpose: 'Vor- und Nachteile von Innendämmung (Taupunkt verlagert sich) versus Außendämmung (WDVS).', standards: 'DIN 4108-3; WTA-Merkblätter 6-4 / 6-5', useCase: 'Sanierungskonzept für eine erhaltenswerte Ziegelfassade.' },
+      { title: 'Schallschutz', icon: Volume2, purpose: 'Luftschalldämmung einschaliger Massivbauteile über die flächenbezogene Masse (Massekurve).', standards: 'DIN 4109-1/-2:2018-01; DIN 4109-32:2016-07', useCase: 'Dimensionierung einer massiven Wohnungstrennwand für R′w ≥ 53 dB.' },
+      { title: 'Brandschutz', icon: Flame, purpose: 'Brandverhalten (A1 bis B3 bzw. Euroklassen A1 bis F), Feuerwiderstand (F 30 bis F 90 bzw. REI 30 bis REI 90), Einheitstemperaturzeitkurve und Holzabbrand.', standards: 'DIN 4102; DIN EN 13501-1/-2; DIN EN 1995-1-2', useCase: 'Einordnung eines Dämmstoffs als nichtbrennbar (Steinwolle, A1) oder normalentflammbar (EPS, meist Euroklasse E).' },
+      { title: 'Energieausweis', icon: FileCheck, purpose: 'Ermittlung von End- und Primärenergiebedarf, Referenzgebäudeverfahren und Effizienzklassen.', standards: 'GModG (vormals GEG); DIN V 18599:2018-09', useCase: 'Erstellung des Energiebedarfsausweises für ein neu geplantes Mehrfamilienhaus.' }
     ],
     didacticCards: [
-      { title: 'Transportphänomene verstehen', desc: 'Gegenüberstellung von diffusivem (Dampf) und konvektivem (Wärmeleitung) Energie- und Massetransfer.' },
+      { title: 'Transportphänomene verstehen', desc: 'Gegenüberstellung von Wärmeleitung (Fourier) und Dampfdiffusion (Fick) als analoge Transportvorgänge; Konvektion und Luftundichtheiten als zusätzliche Risiken.' },
       { title: 'Schnittstellenschäden meiden', desc: 'Sicheres Aufzeigen konstruktiver Wärmebrücken (Geometrie vs. Werkstoffwechsel).' },
       { title: 'Ganzheitlicher Ansatz', desc: 'Verbindung bauphysikalischer Qualität mit ökologischer Bewertung und gesundem Raumkomfort.' }
     ],
@@ -556,12 +556,14 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Wärmedurchgangskoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' }
     ],
     literatur: [
-      'Willems, W. M. (2018): Lehrbuch der Bauphysik (Springer Vieweg)',
-      'Lohmeyer, G. (2021): Praktische Bauphysik - Eine Einführung mit Berechnungsbeispielen (Leitfaden)'
+      'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',
+      'Lohmeyer, G.; Post, M.: Praktische Bauphysik – Eine Einführung mit Berechnungsbeispielen. Wiesbaden: Springer Vieweg (aktuelle Auflage)'
     ],
     regelwerke: [
-      { title: 'DIN 4108: Wärmeschutz und Energie-Einsparung in Gebäuden', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108' },
-      { title: 'DIN 4109: Schallschutz im Hochbau - Anforderungen und Nachweise', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109' }
+      { title: 'DIN 4108 (Wärmeschutz und Energie-Einsparung in Gebäuden): Teil 2 2026-05, Teil 3 2024-03, Teil 4 2020-11', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108' },
+      { title: 'DIN 4109-1/-2:2018-01 (Schallschutz im Hochbau – Mindestanforderungen und rechnerische Nachweise)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109' },
+      { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18041' },
+      { title: 'Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG)', url: 'https://www.gesetze-im-internet.de/geg/' }
     ],
     formeln: [
       { formel: 'q = -\\lambda \\cdot \\frac{\\Delta T}{\\Delta x}', erklaerung: 'Fouriersches Gesetz der eindimensionalen stationären Wärmeleitung. Der Wärmestrom q ist proportional zum Temperaturgradienten.', quelle: 'Physikalische Grundlagen' },

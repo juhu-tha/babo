@@ -757,11 +757,11 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Massegesetz der Bauakustik & Entkopplung',
-        description: 'Luftschalldämmung folgt für einschalige Bauteile dem Berger\'schen Massegesetz: R\'w steigt um ca. 6 dB bei Verdoppelung der flächenbezogenen Masse m\'. Trittschall und Flankenübertragung erfordern zwingend elastische Entkopplung.',
+        description: 'Luftschalldämmung folgt für einschalige Bauteile dem Massegesetz: Theoretisch (Berger) steigt R um 6 dB je Verdopplung der flächenbezogenen Masse m\', nach der empirischen Massekurve der DIN 4109-32 um rund 9 dB. Trittschall und Flankenübertragung erfordern zwingend elastische Entkopplung.',
         takeaway: 'Gegen Luftschall hilft Masse, gegen Tritt- und Körperschall hilft nur elastische Entkopplung.'
       }
     ],
-    systemicExplanation: 'Die Bauphysik ist die Schutzdisziplin des Hochbaus nach GEG (Gebäudeenergiegesetz), DIN 4108 (Wärme- und Feuchteschutz), DIN 4109 (Schallschutz) und DIN 4102 / DIN EN 13501 (Brandschutz). Sie garantiert die physiologische Behaglichkeit der Nutzer und den baulichen Werterhalt.',
+    systemicExplanation: 'Die Bauphysik ist die Schutzdisziplin des Hochbaus nach GModG (Gebäudemodernisierungsgesetz, vormals GEG), DIN 4108 (Wärme- und Feuchteschutz), DIN 4109 (Schallschutz) und DIN 4102 / DIN EN 13501 (Brandschutz). Sie garantiert die physiologische Behaglichkeit der Nutzer und den baulichen Werterhalt.',
     zusammenhaengeText: 'Bauphysik greift tief in die Werkstoffkunde ein: Die Wahl von Dämmstoffen (Mineralwolle, Holzfaser, EPS), Putzen und Fenstern bestimmt U-Werte, fRsi-Faktoren und Feuerwiderstandsdauern (REI 30–REI 120).',
     graphicalPipelineTitle: 'Die 4 Schutzdimensionen der Bauphysik',
     graphicalPipelineDesc: 'Integrales Schichtenmodell für hygrothermische, akustische und brandschutztechnische Sicherheit:',
@@ -772,7 +772,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'U-Wert & Wärmebrücken',
         desc: 'Wärmeleitfähigkeit λ, Wärmedurchgangswiderstand R, U-Wert-Berechnung, Isothermenanalyse.',
         iconName: 'Thermometer',
-        keyFacts: ['GEG-Anforderungen', 'Temperaturfaktor f_Rsi ≥ 0.70', 'Sommerlicher Wärmeschutz'],
+        keyFacts: ['GModG-/GEG-Anforderungen', 'Temperaturfaktor f_Rsi ≥ 0,70', 'Sommerlicher Wärmeschutz'],
         normOrFormula: 'U = \\frac{1}{R_{si} + \\sum \\frac{d_i}{\\lambda_i} + R_{se}}',
         color: 'from-amber-500 to-amber-600'
       },
@@ -808,13 +808,13 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       }
     ],
     interconnections: [
-      { from: 'Wärmeschutz', to: 'Feuchteschutz', relation: 'Kondensatrisiko', causeEffect: 'Schlecht gedämmte Wärmebrücken kühlen die Innenoberfläche ab; fällt f_Rsi unter 0,70, kondensiert Raumfeuchte und Schimmel entsteht.' },
+      { from: 'Wärmeschutz', to: 'Feuchteschutz', relation: 'Kondensatrisiko', causeEffect: 'Schlecht gedämmte Wärmebrücken kühlen die Innenoberfläche ab; fällt f_Rsi unter 0,70, steigt die Oberflächenfeuchte über 80 % und Schimmel droht.' },
       { from: 'Feuchteschutz', to: 'Wärmeschutz', relation: 'Leitfähigkeitserhöhung', causeEffect: 'Nasse Dämmung verliert ihre Dämmwirkung: Wasser leitet Wärme 25-mal besser als ruhende Luft (λ_Wasser ≈ 0,6 vs. λ_Luft ≈ 0,025).' },
       { from: 'Wärmeschutz', to: 'Schallschutz', relation: 'Materialzielkonflikt', causeEffect: 'Leichte, steife Hartschaumdämmplatten (EPS) verschlechtern die Schalldämmung; faserige, schwere Mineralwolle dämmt thermisch und akustisch gleichermaßen.' }
     ],
     practicalInsight: {
       title: 'Die goldene Faustregel der Bauphysik',
-      desc: 'Dampfdichte Schichten (Dampfsperren, Bitumen) gehören immer auf die warme Innenseite der Dämmebene. Liegen sie auf der kalten Außenseite, säuft die Konstruktion im Winter unweigerlich ab!'
+      desc: 'Dampfdichte Schichten (Dampfsperren, Bitumen) gehören auf die warme Innenseite der Dämmebene. Liegen sie ohne innere Dampfsperre auf der kalten Außenseite, droht Tauwasser in der Dämmebene; Ausnahmen (z. B. Umkehrdach, Holzkonstruktionen mit Feuchtenachweis) erfordern einen Nachweis.'
     }
   },
 

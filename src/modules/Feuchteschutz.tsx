@@ -7,6 +7,8 @@ import {
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BlockMath, InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
 import { 
   Chart as ChartJS, 
@@ -37,10 +39,10 @@ const MAT_LIBRARY: Material[] = [
   { id: 'innenputz_gips', name: 'Gips-Innenputz', mu: 10, defaultD: 0.015, lambda: 0.35 },
   { id: 'kalksandstein', name: 'Kalksandstein-Mauerwerk', mu: 15, defaultD: 0.175, lambda: 0.99 },
   { id: 'ziegel_hochloch', name: 'Hochlochziegel-Mauerwerk', mu: 5, defaultD: 0.24, lambda: 0.42 },
-  { id: 'beton_arm', name: 'Stahlbeton (tragend)', mu: 80, defaultD: 0.20, lambda: 2.10 },
+  { id: 'beton_arm', name: 'Stahlbeton (tragend)', mu: 80, defaultD: 0.20, lambda: 2.30 },
   { id: 'porenbeton', name: 'Porenbeton-Planstein', mu: 10, defaultD: 0.305, lambda: 0.11 },
   { id: 'mineralwolle', name: 'Mineralwolle (MW) Dämmung', mu: 1, defaultD: 0.16, lambda: 0.035 },
-  { id: 'eps', name: 'EPS / Styropor (035)', mu: 50, defaultD: 0.16, lambda: 0.035 },
+  { id: 'eps', name: 'EPS (Polystyrol, WLS 035)', mu: 50, defaultD: 0.16, lambda: 0.035 },
   { id: 'holz', name: 'Nadelholz (quer)', mu: 40, defaultD: 0.024, lambda: 0.13 },
   { id: 'dampfbremse_var', name: 'Feuchtevariable Dampfbremsbahn', mu: 15000, defaultD: 0.0002, lambda: 0.20 },
   { id: 'pe_folie', name: 'Dampfsperre PE-Folie', mu: 100000, defaultD: 0.0002, lambda: 0.50 },
@@ -67,7 +69,9 @@ export default function Feuchteschutz() {
 
   // Helper functions for thermodynamic physics (Magnus-Formula)
   const calcPsat = (temp: number): number => {
-    // Sättigungsdampfdruck in Pascal nach Magnus-Formel (-20°C bis +50°C)
+    // Sättigungsdampfdruck in Pascal nach Magnus-Formel (DIN 4108-3 / DIN EN ISO 13788):
+    // über Wasser für T >= 0 °C, über Eis für T < 0 °C
+    if (temp < 0) return 610.5 * Math.exp((21.875 * temp) / (265.5 + temp));
     return 610.5 * Math.exp((17.269 * temp) / (237.3 + temp));
   };
 
@@ -84,9 +88,9 @@ export default function Feuchteschutz() {
   const calcDewPoint = (temp: number, relHum: number): number => {
     const p_sat = calcPsat(temp);
     const p = p_sat * (relHum / 100);
-    // Inverse Magnus formulation to retrieve target Dewpoint
-    const a = 17.269;
-    const b = 237.3;
+    // Inverse Magnus formulation to retrieve target Dewpoint (Eis-Koeffizienten unterhalb 610,5 Pa)
+    const a = p < 610.5 ? 21.875 : 17.269;
+    const b = p < 610.5 ? 265.5 : 237.3;
     const ln_p = Math.log(p / 610.5);
     return (b * ln_p) / (a - ln_p);
   };
@@ -101,8 +105,8 @@ export default function Feuchteschutz() {
     // Mold critical temperature (where humidity reaches 80% on surfaces)
     // T_schimmel -> p_act / p_sat(T_schimmel) = 0.8 => p_sat(T_schimmel) = p_act / 0.8
     const p_schimmel_limit = p_act / 0.8;
-    const a = 17.269;
-    const b = 237.3;
+    const a = p_schimmel_limit < 610.5 ? 21.875 : 17.269;
+    const b = p_schimmel_limit < 610.5 ? 265.5 : 237.3;
     let schimmelPoint = 0;
     if (p_schimmel_limit > 0) {
       const ln_pschimmel = Math.log(p_schimmel_limit / 610.5);
@@ -283,7 +287,7 @@ export default function Feuchteschutz() {
               Feuchteschutz &amp; Wasserdampf-Taupunkt
             </h2>
             <p className="text-xs text-text-main/50 font-mono mt-1">
-              Berechnungsverfahren nach DIN 4108-3 &amp; physikalische Sättigungskurven (Magnus-Effekt)
+              Berechnungsverfahren nach DIN 4108-3 &amp; Sättigungsdampfdruck nach der Magnus-Formel
             </p>
           </div>
           <span className="hidden md:inline-flex items-center gap-1 bg-shiraz/10 text-shiraz px-2.5 py-1 rounded-full text-xs font-bold border border-shiraz/20">
@@ -294,8 +298,8 @@ export default function Feuchteschutz() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
           <p>
             Feuchtigkeit im Bauwerk führt zu Bauschäden und gesundheitsschädlichem Schimmel. 
-            Mit diesem Berechnungs- und Demonstrationstool analysiere die Luftfeuchte, den thermischen <strong>Taupunkt (Kondensation)</strong> 
-            sowie den Diffusionswiderstand geschichteter Konstruktionen nach der bauphysikalischen <strong>Glaser-Basisphysik</strong>.
+            Mit diesem Berechnungs- und Demonstrationstool lassen sich die Luftfeuchte, der <strong>Taupunkt (Kondensation)</strong> 
+            sowie der Diffusionswiderstand geschichteter Konstruktionen nach dem <strong>Periodenbilanzverfahren (Glaser-Verfahren)</strong> analysieren.
           </p>
         </div>
       </div>
@@ -387,7 +391,7 @@ export default function Feuchteschutz() {
                   <span className="font-mono">{formatDeZahl(indoorClimate.schimmelPoint, 1)} °C</span>
                 </div>
                 <p className="text-slate-500 leading-relaxed text-[9.5px]">
-                  Fällt die Wandoberfläche unter diesen Wert, herrscht direkt auf der Wand eine Feuchte von &gt; 80%. Idealer Nährboden für Mikropilze!
+                  Fällt die Wandoberfläche unter diesen Wert, herrscht direkt auf der Wand eine Feuchte von &gt; 80%. Hält dieser Zustand mehrere Tage an, können Schimmelpilze wachsen.
                 </p>
               </div>
             </div>
@@ -449,7 +453,7 @@ export default function Feuchteschutz() {
                       ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' }
                     },
                     y: {
-                      title: { display: true, text: 'Wasserdampfdampfdruck p (Pa)', font: { size: 10, weight: 'bold' } },
+                      title: { display: true, text: 'Wasserdampfpartialdruck p (Pa)', font: { size: 10, weight: 'bold' } },
                       ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' }
                     }
                   },
@@ -619,12 +623,12 @@ export default function Feuchteschutz() {
 
               {/* Dynamic Analysis Check */}
               <div className={`p-4 rounded-xl border flex items-start gap-2.5 text-[11px] leading-relaxed ${
-                layerCalculations.isInnerTighter || !layerCalculations.hasGlaserTauwasser
+                !layerCalculations.hasGlaserTauwasser
                   ? 'bg-emerald-50 border-emerald-100 text-emerald-950' 
                   : 'bg-red-50/50 border-red-200 text-red-950'
               }`}>
                 <div className="mt-0.5 shrink-0">
-                  {layerCalculations.isInnerTighter || !layerCalculations.hasGlaserTauwasser
+                  {!layerCalculations.hasGlaserTauwasser
                     ? <CheckCircle size={16} className="text-emerald-600" />
                     : <AlertTriangle size={16} className="text-red-600 animate-pulse" />
                   }
@@ -634,8 +638,10 @@ export default function Feuchteschutz() {
                     Regel-Check "Innen dichter als außen"
                   </h6>
                   <p className="font-medium mt-1">
-                    {layerCalculations.isInnerTighter 
-                      ? 'Konstruktion korrekt: Die innenseitigen Schichten bieten einen höheren Wasserdampfwiderstand als die Bauteilaußenseite. Feuchte dringt schwer ein, aber leicht nach außen ab.'
+                    {layerCalculations.isInnerTighter && !layerCalculations.hasGlaserTauwasser
+                      ? 'Konstruktion günstig: Die innenseitigen Schichten bieten einen höheren Wasserdampfwiderstand als die Bauteilaußenseite. Feuchte dringt schwer ein, aber leicht nach außen ab.'
+                      : layerCalculations.isInnerTighter
+                        ? 'Innen dichter als außen, aber im Glaser-Klima rechnerisch Tauwasser: Tauwassermasse und Verdunstung nach DIN 4108-3 nachweisen (Grenzwerte u. a. 1,0 kg/m² gesamt, 0,5 kg/m² an nicht kapillar wasseraufnahmefähigen Schichtgrenzen).'
                       : layerCalculations.hasGlaserTauwasser
                         ? 'Kritischer Konstruktionsfehler! Die äußeren Bauteilschichten bremsen den Dampf stärker als die inneren Schichten. Feuchte sammelt sich im Inneren an und kann nicht austrocknen.'
                         : 'Außen diffusionsdichter als innen – für diesen Aufbau rechnerisch unkritisch. Wärmedämmverbundsysteme auf Mauerwerk sind nach DIN 4108-3 ohne Nachweis zulässig.'
@@ -661,9 +667,9 @@ export default function Feuchteschutz() {
                 </div>
 
                 <div>
-                  <span className="font-bold text-slate-800">2. Dampfdruck-Magnusgleichung (nach DIN EN ISO 13788):</span>
+                  <span className="font-bold text-slate-800">2. Dampfdruck-Magnusgleichung (über Wasser, DIN 4108-3 / DIN EN ISO 13788):</span>
                   <div className="my-1.5 p-1 bg-white border border-slate-100 rounded text-center overflow-x-auto text-xs">
-                    <BlockMath math="p_{\text{sat}}(T) \approx 610{,}5 \cdot \exp\left( \frac{17.269 \cdot T}{237{,}3 + T} \right)" />
+                    <BlockMath math="p_{\text{sat}}(T) \approx 610{,}5 \cdot \exp\left( \frac{17{,}269 \cdot T}{237{,}3 + T} \right)" />
                   </div>
                 </div>
               </div>
@@ -673,8 +679,37 @@ export default function Feuchteschutz() {
         </div>
       </div>
       
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Taupunkt und Schimmelgrenze eines Wohnraums"
+        zielGleichung="\theta_{d} = \frac{237{,}3 \cdot \ln(p/610{,}5)}{17{,}269 - \ln(p/610{,}5)}"
+        schritte={[
+          { titel: 'Dampfdruck', erklaerung: 'Raumklima 20 °C / 50 % r. F.:', formel: 'p_{sat}(20\\,^\\circ\\text{C}) = 2\\,337\\,\\text{Pa}, \\quad p = 0{,}50 \\cdot 2\\,337 = 1\\,169\\,\\text{Pa}' },
+          { titel: 'Taupunkt', erklaerung: 'Umkehrung der Magnus-Formel:', formel: '\\ln\\frac{1\\,169}{610{,}5} = 0{,}650 \\Rightarrow \\theta_d = \\frac{237{,}3 \\cdot 0{,}650}{17{,}269 - 0{,}650} = 9{,}3\\,^\\circ\\text{C}' },
+          { titel: 'Schimmelgrenze (80 % r. F.)', erklaerung: 'Sättigungsdampfdruck, bei dem die Oberflächenfeuchte 80 % erreicht:', formel: 'p_{sat} = \\frac{1\\,169}{0{,}80} = 1\\,461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}' },
+          { titel: 'Bei höherer Raumfeuchte', erklaerung: 'Bad oder schlecht gelüftetes Schlafzimmer mit 65 % r. F.:', formel: 'p = 1\\,519\\,\\text{Pa} \\Rightarrow \\theta_d = 13{,}2\\,^\\circ\\text{C}, \\quad \\theta_{si,min} = 16{,}7\\,^\\circ\\text{C}' }
+        ]}
+        ergebnisHinweis="Schimmel droht deutlich oberhalb des Taupunkts. Mehr Lüften senkt p und damit beide Grenztemperaturen; Dämmung hebt die Oberflächentemperatur."
+        normQuelle="DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: s_d-Werte und die Regel „innen dichter als außen“"
+        zielGleichung="s_d = \mu \cdot d"
+        schritte={[
+          { titel: 'Innen', erklaerung: 'Gipsputz 1,5 cm (µ = 10) und Hochlochziegel 24 cm (µ = 5):', formel: 's_{d,innen} = 10 \\cdot 0{,}015 + 5 \\cdot 0{,}24 = 0{,}15 + 1{,}20 = 1{,}35\\,\\text{m}' },
+          { titel: 'Außen', erklaerung: 'EPS 16 cm (µ = 50) und Kalk-Zement-Putz 2 cm (µ = 25):', formel: 's_{d,außen} = 50 \\cdot 0{,}16 + 25 \\cdot 0{,}02 = 8{,}0 + 0{,}5 = 8{,}5\\,\\text{m}' },
+          { titel: 'Bewertung', erklaerung: 'Außen ist diffusionsdichter, die Dämmung liegt aber außen und hält die Tauebene warm. Der Glaser-Nachweis im Rechner zeigt für 20 °C/50 % und −5 °C/80 % kein Tauwasser.', formel: 's_{d,außen} > s_{d,innen}, \\quad \\text{trotzdem tauwasserfrei}' }
+        ]}
+        ergebnisHinweis="Die Faustregel gilt vor allem für Holzbau und Innendämmung. WDVS auf Mauerwerk zählt nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; maßgebend ist der Temperaturverlauf, nicht allein das s_d-Verhältnis."
+        normQuelle="Bemessungswerte nach DIN 4108-4:2020-11; Nachweisfreiheit nach DIN 4108-3:2024-03"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="feuchteschutz" />
+
       {/* Footer-Integration mit normenbezogenen Vorgaben */}
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Magnus-Formel über Eis ergänzt, Glaser-Bewertung korrigiert, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Feuchteschutz', url: 'https://de.wikipedia.org/wiki/Feuchteschutz' },
           { title: 'Wasserdampfdiffusionswiderstand', url: 'https://de.wikipedia.org/wiki/Wasserdampfdiffusionswiderstand' },
@@ -682,12 +717,13 @@ export default function Feuchteschutz() {
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Hens, H.: Building Physics - Heat, Air and Moisture (Hydrologie & Bauphysik, Wilhelm Ernst & Sohn)'
+          'Hens, H.: Building Physics – Heat, Air and Moisture. 3. Aufl., Berlin: Ernst & Sohn 2017'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Teil 3: Klimabedingter Feuchteschutz)', url: 'https://www.din.de' },
-          { title: 'DIN EN ISO 13788 (Hygrothermisches Verhalten von Bauteilen und Bauelementen - Raumluftfeuchte zur Vermeidung kritischer Oberflächenfeuchte)', url: 'https://www.iso.org' },
-          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz zur Vermeidung von Schimmelpilzwachstum)', url: 'https://www.din.de' }
+          { title: 'DIN 4108-3:2024-03 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz; ersetzt 2018-10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
+          { title: 'DIN EN ISO 13788:2013-05 (Wärme- und feuchtetechnisches Verhalten von Bauteilen – Raumseitige Oberflächentemperatur zur Vermeidung kritischer Oberflächenfeuchte und Tauwasserbildung im Bauteilinneren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+13788' },
+          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02 – Änderungen manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' },
+          { title: 'DIN 4108-4:2020-11 (Bemessungswerte µ und λ)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-4' }
         ]}
         formeln={[
           {
@@ -696,9 +732,9 @@ export default function Feuchteschutz() {
             quelle: 'DIN 4108-3'
           },
           {
-            formel: 'p_{sat}(T) \\approx 610{,}5 \\cdot e^{\\frac{17.269 \\cdot T}{237{,}3 + T}}',
-            erklaerung: 'Sättigungsdampfdruck [Pa] von Wasserdampf über flüssigem Wasser in Abhängigkeit von der Temperatur T in °C nach der Magnus-Formel.',
-            quelle: 'DIN EN ISO 13788'
+            formel: 'p_{sat}(T) \\approx 610{,}5 \\cdot e^{\\frac{17{,}269 \\cdot T}{237{,}3 + T}} \\; (T \\ge 0), \\quad 610{,}5 \\cdot e^{\\frac{21{,}875 \\cdot T}{265{,}5 + T}} \\; (T < 0)',
+            erklaerung: 'Sättigungsdampfdruck [Pa] von Wasserdampf über Wasser (T ≥ 0 °C) bzw. über Eis (T < 0 °C) in Abhängigkeit von der Temperatur T in °C nach der Magnus-Formel.',
+            quelle: 'DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05'
           }
         ]}
       />
