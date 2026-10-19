@@ -16,8 +16,8 @@ interface MaterialPreset {
 const MATERIAL_PRESETS: MaterialPreset[] = [
   { name: 'Baustahl (S235)', eModul: 210000, f_yk: 235, description: 'Klassischer Konstruktionsstahl mit hoher Steifigkeit und ausgeprägtem Fließbereichen.' },
   { name: 'Normalbeton (C30/37)', eModul: 33000, f_yk: 30, description: 'Spröder Verbundbaustoff, hohe Druckfestigkeit, aber geringe Zugfestigkeit (ca. 10%).' },
-  { name: 'Nadelholz (C24)', eModul: 11000, f_yk: 24, description: 'Anisotroper biologischer Faserwerkstoff. Hohes Verhältnis von E-Modul zu Eigengewicht.' },
-  { name: 'Floatglas', eModul: 70000, f_yk: 45, description: 'Amorpher, rein elastischer Werkstoff. Versagt ohne Vorwarnung rein spröde.' },
+  { name: 'Nadelholz (C24)', eModul: 11000, f_yk: 24, description: 'Anisotroper Faserwerkstoff (Werte faserparallel; Festigkeit hier: Biegefestigkeit f_m,k = 24 N/mm²). Hohes Verhältnis von E-Modul zu Eigengewicht.' },
+  { name: 'Floatglas', eModul: 70000, f_yk: 45, description: 'Amorpher, rein elastischer Werkstoff (Festigkeit: charakteristische Biegezugfestigkeit 45 N/mm²). Versagt ohne Vorwarnung spröde.' },
   { name: 'CFK (Kohlenstofffaser)', eModul: 150000, f_yk: 1200, description: 'Hochleistungswerkstoff mit extrem hoher Zugfestigkeit und geringem Eigengewicht.' },
 ];
 
@@ -324,12 +324,12 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   <span className="text-xs font-bold text-slate-700 block">Grenzwert-Einordnung bei typischen Baustoffen:</span>
                   <div className="grid grid-cols-1 gap-2 text-[11px]">
                     <div className="flex items-center justify-between p-2 rounded-lg bg-orange-50 border border-orange-100">
-                      <span>🧱 C25/30 Beton (Druckversagen):</span>
-                      <span className="font-mono font-bold text-orange-950">~30 N/mm²</span>
+                      <span>🧱 C30/37 Beton (charakteristische Zylinderdruckfestigkeit f_ck):</span>
+                      <span className="font-mono font-bold text-orange-950">30 N/mm²</span>
                     </div>
                     <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-100">
-                      <span>🏗️ S235 Baustahl (Fließen):</span>
-                      <span className="font-mono font-bold text-emerald-950">~235 N/mm²</span>
+                      <span>🏗️ S235 Baustahl (Streckgrenze f_y, t ≤ 40 mm):</span>
+                      <span className="font-mono font-bold text-emerald-950">235 N/mm²</span>
                     </div>
                   </div>
                 </div>
@@ -460,16 +460,16 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   <span className="text-xs font-bold text-slate-700 block">Dehnungsgrenzwerte im Baustoffbereich:</span>
                   <div className="grid grid-cols-1 gap-2 text-[11px]">
                     <div className="flex items-center justify-between p-2 rounded-lg bg-red-50 border border-red-100">
-                      <span>🧱 Beton-Druckstauchungsgrenze (<InlineMath math="\varepsilon_{c2}" />):</span>
-                      <span className="font-mono font-bold text-red-950">-2,0 ‰ (sprödes Limit)</span>
+                      <span>🧱 Beton: Stauchung bei Erreichen der Festigkeit (<InlineMath math="\varepsilon_{c2}" />, bis C50/60):</span>
+                      <span className="font-mono font-bold text-red-950">−2,0 ‰ (Parabel-Rechteck-Diagramm)</span>
                     </div>
                     <div className="flex items-center justify-between p-2 rounded-lg bg-pink-50 border border-pink-100">
                       <span>🏗️ Beton-Bruchstauchung (<InlineMath math="\varepsilon_{cu2}" />):</span>
-                      <span className="font-mono font-bold text-pink-950">-3,5 ‰ (plastifiziertes Limit)</span>
+                      <span className="font-mono font-bold text-pink-950">−3,5 ‰ (Grenzstauchung, bis C50/60)</span>
                     </div>
                     <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-100">
-                      <span>🏗️ Stahldehnung bei Fließgrenze S235 (<InlineMath math="\varepsilon_{yd}" />):</span>
-                      <span className="font-mono font-bold text-emerald-950">~1,12 ‰ (elastische Fließgrenze)</span>
+                      <span>🏗️ Stahldehnung bei Streckgrenze S235 (<InlineMath math="\varepsilon_{y} = f_y / E" />):</span>
+                      <span className="font-mono font-bold text-emerald-950">235 / 210.000 = 1,12 ‰</span>
                     </div>
                   </div>
                 </div>

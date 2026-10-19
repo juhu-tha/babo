@@ -828,5 +828,718 @@
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
     "reviewedAt": "2026-09-28",
     "verified": true
+  },
+  {
+    "id": "q_einh_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "einheiten",
+    "moduleTitle": "Einheiten im Bauwesen",
+    "topic": "Spannungseinheiten",
+    "difficulty": "Basis",
+    "normRef": "DIN 1301-1",
+    "question": "Eine Stütze mit 30 cm × 30 cm Querschnitt trägt 500 kN. Wie groß ist die Druckspannung?",
+    "options": [
+      "0,556 N/mm²",
+      "5,56 N/mm²",
+      "55,6 N/mm²",
+      "556 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "In N und mm umgerechnet: σ = 500 000 N / 90 000 mm² = 5,56 N/mm² (= 5,56 MPa). Wer kN durch cm² teilt, erhält 0,556 kN/cm² – ein um den Faktor 10 anderer Zahlenwert, weil 1 kN/cm² = 10 N/mm² ist.",
+    "gapAnalysis": {
+      "topic": "Spannungseinheiten",
+      "misconception": "kN/cm² und N/mm² werden verwechselt.",
+      "coreRule": "Alle Größen zuerst in N und mm umrechnen – dann ergibt sich die Spannung direkt in N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spannungseinheiten“ im Modul Einheiten noch einmal durch.",
+      "targetModuleTab": "einheiten",
+      "targetModuleLabel": "Einheiten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_einh_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "einheiten",
+    "moduleTitle": "Einheiten im Bauwesen",
+    "topic": "Momenteinheiten",
+    "difficulty": "Basis",
+    "normRef": "DIN 1301-1",
+    "question": "Wie viele Newtonmillimeter entsprechen einem Biegemoment von 45 kNm?",
+    "options": [
+      "45 · 10³ Nmm",
+      "45 · 10⁴ Nmm",
+      "45 · 10⁶ Nmm",
+      "45 · 10⁹ Nmm"
+    ],
+    "correctIdx": 2,
+    "explanation": "1 kNm = 1000 N · 1000 mm = 10⁶ Nmm, also 45 kNm = 45 · 10⁶ Nmm. Erst damit ergibt σ = M / W mit W in mm³ eine Spannung in N/mm².",
+    "gapAnalysis": {
+      "topic": "Momenteinheiten",
+      "misconception": "Nur einer der beiden Faktoren (kN → N oder m → mm) wird berücksichtigt.",
+      "coreRule": "kNm → Nmm: Faktor 10⁶ (10³ aus der Kraft, 10³ aus der Länge).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Momenteinheiten“ im Modul Einheiten noch einmal durch.",
+      "targetModuleTab": "einheiten",
+      "targetModuleLabel": "Einheiten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_einh_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "einheiten",
+    "moduleTitle": "Einheiten im Bauwesen",
+    "topic": "Flächenlasten",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1991-1-1",
+    "question": "Eine Nutzlast von 5 kN/m² entspricht welchem Druck?",
+    "options": [
+      "5 N/mm²",
+      "0,5 N/mm²",
+      "0,05 N/mm²",
+      "0,005 N/mm² (= 5 kPa)"
+    ],
+    "correctIdx": 3,
+    "explanation": "1 kN/m² = 10³ N / 10⁶ mm² = 10⁻³ N/mm² = 1 kPa. 5 kN/m² sind also 0,005 N/mm². Deshalb werden Lasten in kN/m², Materialspannungen in N/mm² angegeben.",
+    "gapAnalysis": {
+      "topic": "Flächenlasten",
+      "misconception": "Die Flächenumrechnung m² → mm² (Faktor 10⁶) wird unterschätzt.",
+      "coreRule": "Flächen umrechnen mit dem Quadrat des Längenfaktors: 1 m² = 10⁶ mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Flächenlasten“ im Modul Einheiten noch einmal durch.",
+      "targetModuleTab": "einheiten",
+      "targetModuleLabel": "Einheiten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_einh_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "einheiten",
+    "moduleTitle": "Einheiten im Bauwesen",
+    "topic": "Temperatur und Temperaturdifferenz",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 80000-5",
+    "question": "Warum steht in der Einheit der Wärmedehnzahl α_T (1/K) und des U-Werts (W/(m²·K)) das Kelvin und nicht °C?",
+    "options": [
+      "Weil Kelvin die einzige zulässige Einheit für Temperaturen über 0 °C ist.",
+      "Weil Temperaturdifferenzen in K und °C zahlengleich sind und das Kelvin die SI-Basiseinheit ist.",
+      "Weil der Zahlenwert in °C um 273,15 größer wäre.",
+      "Weil °C im Bauwesen seit 2019 nicht mehr verwendet werden darf."
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Kelvin ist SI-Basiseinheit. Eine Differenz von 10 K ist dieselbe wie 10 °C – nur absolute Temperaturen unterscheiden sich um 273,15. Bei Größen, die auf Temperatur*differenzen* bezogen sind, ist K daher die korrekte Einheit.",
+    "gapAnalysis": {
+      "topic": "Temperatur und Temperaturdifferenz",
+      "misconception": "Absolute Temperatur und Temperaturdifferenz werden verwechselt.",
+      "coreRule": "Temperaturdifferenzen: 1 K = 1 °C; absolute Temperaturen: T/K = ϑ/°C + 273,15.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperatur und Temperaturdifferenz“ im Modul Einheiten noch einmal durch.",
+      "targetModuleTab": "einheiten",
+      "targetModuleLabel": "Einheiten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kenn_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialkennwerte",
+    "moduleTitle": "Kennwerte & Materialdatenbank",
+    "topic": "Charakteristischer Wert vs. Mittelwert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, Tab. 3.1",
+    "question": "Welche Werte gehören bei einem Beton C30/37 zusammen?",
+    "options": [
+      "f_ck = 37 N/mm², f_cm = 30 N/mm²",
+      "f_ck = 30 N/mm², f_cm = 38 N/mm²",
+      "f_ck = 30 N/mm², f_cm = 30 N/mm²",
+      "f_ck = 38 N/mm², f_ck,cube = 30 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die erste Zahl der Festigkeitsklasse ist die charakteristische Zylinderdruckfestigkeit f_ck = 30 N/mm² (5-%-Quantil), die zweite die Würfelfestigkeit f_ck,cube = 37 N/mm². Der Mittelwert liegt nach EC2 bei f_cm = f_ck + 8 = 38 N/mm².",
+    "gapAnalysis": {
+      "topic": "Charakteristischer Wert vs. Mittelwert",
+      "misconception": "Charakteristischer Wert, Mittelwert und Würfelfestigkeit werden vermischt.",
+      "coreRule": "C x/y: x = f_ck (Zylinder), y = f_ck,cube (Würfel); f_cm = f_ck + 8 N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristischer Wert vs. Mittelwert“ im Modul Kennwerte noch einmal durch.",
+      "targetModuleTab": "materialkennwerte",
+      "targetModuleLabel": "Kennwerte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kenn_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialkennwerte",
+    "moduleTitle": "Kennwerte & Materialdatenbank",
+    "topic": "Wärmedehnung im Vergleich",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1991-1-5",
+    "question": "Eine 10 m lange Aluminium-Attikaabdeckung (α_T = 23 · 10⁻⁶ 1/K) erwärmt sich um 60 K. Wie groß ist die Längenänderung?",
+    "options": [
+      "1,38 mm",
+      "6,0 mm",
+      "13,8 mm",
+      "138 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "ΔL = α_T · L₀ · ΔT = 23 · 10⁻⁶ · 10 000 mm · 60 K = 13,8 mm. Stahlbeton (α_T = 10 · 10⁻⁶ 1/K) dehnt sich unter gleichen Bedingungen nur um 6,0 mm – die Differenz muss die Befestigung aufnehmen.",
+    "gapAnalysis": {
+      "topic": "Wärmedehnung im Vergleich",
+      "misconception": "Die Länge wird in m statt in mm eingesetzt oder die Zehnerpotenz falsch gelesen.",
+      "coreRule": "ΔL = α_T · L₀ · ΔT; mit L₀ in mm ergibt sich ΔL in mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung im Vergleich“ im Modul Kennwerte noch einmal durch.",
+      "targetModuleTab": "materialkennwerte",
+      "targetModuleLabel": "Kennwerte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kenn_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialkennwerte",
+    "moduleTitle": "Kennwerte & Materialdatenbank",
+    "topic": "Spezifische Steifigkeit",
+    "difficulty": "Fortgeschritten",
+    "question": "Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?",
+    "options": [
+      "Stahl ist auch gewichtsbezogen rund 20-mal steifer als Holz.",
+      "Stahl und Holz (faserparallel) sind gewichtsbezogen etwa gleich steif.",
+      "Holz ist gewichtsbezogen 20-mal steifer als Stahl.",
+      "E/ρ ist für Baustoffe nicht aussagekräftig."
+    ],
+    "correctIdx": 1,
+    "explanation": "E/ρ: Stahl 210 000 / 7850 ≈ 26,8; Holz 11 000 / 420 ≈ 26,2 (jeweils MPa je kg/m³). Bezogen auf das Gewicht sind beide nahezu gleich steif – ein Grund für die Effizienz des Holzbaus. Quer zur Faser gilt das nicht.",
+    "gapAnalysis": {
+      "topic": "Spezifische Steifigkeit",
+      "misconception": "Absolute und gewichtsbezogene Kennwerte werden nicht unterschieden.",
+      "coreRule": "Für Leichtbau zählt E/ρ bzw. f/ρ, nicht der Absolutwert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spezifische Steifigkeit“ im Modul Kennwerte noch einmal durch.",
+      "targetModuleTab": "materialkennwerte",
+      "targetModuleLabel": "Kennwerte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ec0_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "sicherheitskonzept",
+    "moduleTitle": "Eurocode – Sicherheitskonzept",
+    "topic": "Grundkombination Gl. (6.10)",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN EN 1990/NA, Tab. NA.A.1.2(B)",
+    "question": "Eine Stütze erhält G_k = 800 kN und Q_k = 300 kN (Nutzlast, Leiteinwirkung). Wie groß ist N_Ed nach Gl. (6.10)?",
+    "options": [
+      "1100 kN",
+      "1380 kN",
+      "1530 kN",
+      "1650 kN"
+    ],
+    "correctIdx": 2,
+    "explanation": "N_Ed = 1,35 · 800 + 1,50 · 300 = 1080 + 450 = 1530 kN. Beide Einwirkungen wirken ungünstig, die Nutzlast ist Leiteinwirkung und wird nicht mit ψ₀ abgemindert.",
+    "gapAnalysis": {
+      "topic": "Grundkombination Gl. (6.10)",
+      "misconception": "Teilsicherheitsbeiwerte vertauscht oder die Leiteinwirkung mit ψ₀ abgemindert.",
+      "coreRule": "Ständig ungünstig γ_G = 1,35; Leiteinwirkung γ_Q = 1,50 ohne ψ₀; Begleiteinwirkungen γ_Q · ψ₀.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grundkombination Gl. (6.10)“ im Modul Eurocode noch einmal durch.",
+      "targetModuleTab": "sicherheitskonzept",
+      "targetModuleLabel": "Eurocode"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ec0_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "sicherheitskonzept",
+    "moduleTitle": "Eurocode – Sicherheitskonzept",
+    "topic": "Günstig wirkende ständige Einwirkung",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN EN 1990/NA, Tab. NA.A.1.2(B)",
+    "question": "Für ein Leichtdach unter Windsog (Abheben) wird die Verankerung bemessen. Welcher Teilsicherheitsbeiwert gilt für das Eigengewicht?",
+    "options": [
+      "γ_G = 1,35, weil ständige Lasten immer erhöht werden",
+      "γ_G = 1,50 wie für veränderliche Einwirkungen",
+      "γ_G,inf = 1,00, weil das Eigengewicht hier günstig wirkt",
+      "γ_G = 0, weil Eigengewicht beim Abheben vernachlässigt wird"
+    ],
+    "correctIdx": 2,
+    "explanation": "Wirkt eine ständige Einwirkung der maßgebenden Beanspruchung entgegen, ist sie günstig und wird mit γ_G,inf = 1,00 angesetzt. Mit 1,35 würde man die stabilisierende Wirkung überschätzen und läge auf der unsicheren Seite.",
+    "gapAnalysis": {
+      "topic": "Günstig wirkende ständige Einwirkung",
+      "misconception": "Teilsicherheitsbeiwerte werden schematisch ohne Blick auf die Wirkungsrichtung angesetzt.",
+      "coreRule": "Ungünstig: γ_G = 1,35; günstig: γ_G,inf = 1,00 (γ_Q günstig = 0).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Günstig wirkende ständige Einwirkung“ im Modul Eurocode noch einmal durch.",
+      "targetModuleTab": "sicherheitskonzept",
+      "targetModuleLabel": "Eurocode"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ec0_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "sicherheitskonzept",
+    "moduleTitle": "Eurocode – Sicherheitskonzept",
+    "topic": "Kombinationsbeiwerte ψ₀",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1990/NA, Tab. NA.A.1.1",
+    "question": "Welcher Kombinationsbeiwert ψ₀ gilt in Deutschland für Schnee an Orten bis NN + 1000 m?",
+    "options": [
+      "0,5",
+      "0,6",
+      "0,7",
+      "1,0"
+    ],
+    "correctIdx": 0,
+    "explanation": "Nach DIN EN 1990/NA, Tab. NA.A.1.1 gilt für Schnee bis NN + 1000 m ψ₀ = 0,5, darüber 0,7. Wind und Temperatur haben ψ₀ = 0,6, Nutzlasten der Kategorien A–D 0,7, Lagerflächen (E) 1,0.",
+    "gapAnalysis": {
+      "topic": "Kombinationsbeiwerte ψ₀",
+      "misconception": "ψ₀-Werte werden zwischen Einwirkungsarten verwechselt.",
+      "coreRule": "ψ₀ ist je Einwirkungsart im Nationalen Anhang festgelegt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kombinationsbeiwerte ψ₀“ im Modul Eurocode noch einmal durch.",
+      "targetModuleTab": "sicherheitskonzept",
+      "targetModuleLabel": "Eurocode"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ec0_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "sicherheitskonzept",
+    "moduleTitle": "Eurocode – Sicherheitskonzept",
+    "topic": "Bemessungswert der Betonfestigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA",
+    "question": "Wie groß ist der Bemessungswert der Betondruckfestigkeit f_cd für C30/37 (α_cc = 0,85, γ_C = 1,5)?",
+    "options": [
+      "17,0 N/mm²",
+      "20,0 N/mm²",
+      "25,5 N/mm²",
+      "30,0 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "f_cd = α_cc · f_ck / γ_C = 0,85 · 30 / 1,5 = 17,0 N/mm². α_cc berücksichtigt Langzeiteinflüsse, γ_C Streuungen und Modellunsicherheiten.",
+    "gapAnalysis": {
+      "topic": "Bemessungswert der Betonfestigkeit",
+      "misconception": "Nur durch γ_C geteilt oder α_cc vergessen.",
+      "coreRule": "f_cd = α_cc · f_ck / γ_C (NA Deutschland: α_cc = 0,85).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungswert der Betonfestigkeit“ im Modul Eurocode noch einmal durch.",
+      "targetModuleTab": "sicherheitskonzept",
+      "targetModuleLabel": "Eurocode"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bk_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustoffkunde",
+    "moduleTitle": "Baustoffkunde",
+    "topic": "Geschichte des Zements",
+    "difficulty": "Basis",
+    "question": "Was trifft auf Joseph Aspdins Patent von 1824 zu?",
+    "options": [
+      "Es beschreibt den heutigen, bei 1450 °C gesinterten Portlandzement.",
+      "Es führte den Namen „Portland Cement“ ein; das Produkt wurde aber noch unter der Sintergrenze gebrannt.",
+      "Es betraf die Bewehrung von Pflanzkübeln mit Eisendraht.",
+      "Es betraf die Vicat-Nadel zur Erstarrungsprüfung."
+    ],
+    "correctIdx": 1,
+    "explanation": "Aspdin prägte 1824 den Namen „Portland Cement“, brannte aber noch unterhalb der Sintergrenze; sein Produkt entsprach eher einem hydraulischen Kalk. Den gesinterten Portlandzement stellte erst I. C. Johnson um 1844 her. Die Eisenbewehrung von Kübeln geht auf Monier zurück, die Nadel auf Vicat.",
+    "gapAnalysis": {
+      "topic": "Geschichte des Zements",
+      "misconception": "Namensgebung und technische Entwicklung werden gleichgesetzt.",
+      "coreRule": "Name 1824 (Aspdin) – Sintern um 1844 (Johnson) – Klinkerbrand heute ca. 1450 °C.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Geschichte des Zements“ im Modul Baustoffkunde noch einmal durch.",
+      "targetModuleTab": "baustoffkunde",
+      "targetModuleLabel": "Baustoffkunde"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bk_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustoffkunde",
+    "moduleTitle": "Baustoffkunde",
+    "topic": "Verbundprinzip Stahlbeton",
+    "difficulty": "Basis",
+    "question": "Welche Kombination von Eigenschaften macht Stahl und Beton zu einem funktionierenden Verbundbaustoff?",
+    "options": [
+      "Gleiche Festigkeit und gleiche Dichte",
+      "Ähnliche Wärmedehnzahlen, guter Verbund und Korrosionsschutz des Stahls durch das alkalische Milieu",
+      "Beide sind duktil und zugfest",
+      "Der Stahl liegt in der neutralen Faser und erhöht so die Druckfestigkeit"
+    ],
+    "correctIdx": 1,
+    "explanation": "Beton (α_T ≈ 1,0 · 10⁻⁵ 1/K) und Stahl (≈ 1,2 · 10⁻⁵ 1/K) dehnen sich nahezu gleich, der Verbund überträgt Kräfte und die Alkalität (pH > 12,5) passiviert den Stahl. Die Bewehrung gehört in die Zugzone – nicht in die neutrale Faser.",
+    "gapAnalysis": {
+      "topic": "Verbundprinzip Stahlbeton",
+      "misconception": "Die Rolle der Bewehrung wird in der Druckzone bzw. neutralen Faser gesehen.",
+      "coreRule": "Beton trägt Druck, Stahl trägt Zug; Voraussetzungen: Verbund, ähnliche Wärmedehnung, Passivierung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verbundprinzip Stahlbeton“ im Modul Baustoffkunde noch einmal durch.",
+      "targetModuleTab": "baustoffkunde",
+      "targetModuleLabel": "Baustoffkunde"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bk_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustoffkunde",
+    "moduleTitle": "Baustoffkunde",
+    "topic": "Gefüge des Zementsteins",
+    "difficulty": "Fortgeschritten",
+    "question": "Was beschreibt das Modell von Powers und Brownyard für erhärteten Zementstein?",
+    "options": [
+      "Zementstein besteht ausschließlich aus kristallinem Portlandit.",
+      "Zementstein besteht aus Zementgel mit Gelporen sowie Kapillarporen, deren Anteil vom w/z-Wert und Hydratationsgrad abhängt.",
+      "Die Festigkeit hängt nur vom Zementgehalt ab, nicht vom Porenraum.",
+      "Kapillarporen entstehen erst durch Frost."
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach Powers/Brownyard (1946/47) enthält das C-S-H-Gel selbst rund 28 % Gelporen; zusätzlich bleiben Kapillarporen, wenn mehr Wasser zugegeben wird, als die Hydratation bindet (ab w/z ≈ 0,4). Die Festigkeit steigt mit dem Gel-Raum-Verhältnis.",
+    "gapAnalysis": {
+      "topic": "Gefüge des Zementsteins",
+      "misconception": "Der Zusammenhang zwischen w/z-Wert, Porenraum und Festigkeit ist nicht bekannt.",
+      "coreRule": "Mehr Wasser → mehr Kapillarporen → geringere Festigkeit und Dichtigkeit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gefüge des Zementsteins“ im Modul Baustoffkunde noch einmal durch.",
+      "targetModuleTab": "baustoffkunde",
+      "targetModuleLabel": "Baustoffkunde"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bch_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauchemie",
+    "moduleTitle": "Bauchemie",
+    "topic": "Karbonatisierung und Betondeckung",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN EN 1992-1-1/NA",
+    "question": "Ein Beton hat den Karbonatisierungskoeffizienten K = 4 mm/√a, die Betondeckung beträgt 40 mm. Nach wie vielen Jahren erreicht die Front die Bewehrung (d_k = K·√t)?",
+    "options": [
+      "10 Jahre",
+      "40 Jahre",
+      "100 Jahre",
+      "160 Jahre"
+    ],
+    "correctIdx": 2,
+    "explanation": "t = (c/K)² = (40/4)² = 100 Jahre. Wird die Deckung nur 30 mm, sind es (30/4)² ≈ 56 Jahre – das Wurzel-t-Gesetz macht die Deckung zur wichtigsten Dauerhaftigkeitsgröße.",
+    "gapAnalysis": {
+      "topic": "Karbonatisierung und Betondeckung",
+      "misconception": "Das Wurzel-t-Gesetz wird linear statt quadratisch umgestellt.",
+      "coreRule": "d_k = K·√t ⇒ t = (d/K)²: doppelte Deckung = vierfache Zeit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Karbonatisierung und Betondeckung“ im Modul Bauchemie noch einmal durch.",
+      "targetModuleTab": "bauchemie",
+      "targetModuleLabel": "Bauchemie"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bch_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauchemie",
+    "moduleTitle": "Bauchemie",
+    "topic": "Wirkung von Fließmitteln",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 934-2",
+    "question": "Wie verflüssigen Polycarboxylatether-Fließmittel (PCE) den Zementleim?",
+    "options": [
+      "Durch Erhöhung des Wassergehalts",
+      "Durch sterische Hinderung: Seitenketten halten die Zementpartikel auf Abstand",
+      "Durch Beschleunigung der C₃S-Hydratation",
+      "Durch Einführung von Luftporen"
+    ],
+    "correctIdx": 1,
+    "explanation": "PCE adsorbieren mit der Hauptkette an den Zementkörnern; die langen Seitenketten ragen in die Porenlösung und verhindern das Agglomerieren (sterische Hinderung). Ligninsulfonate (BV) und Melamin- bzw. Naphthalinsulfonate wirken überwiegend elektrostatisch.",
+    "gapAnalysis": {
+      "topic": "Wirkung von Fließmitteln",
+      "misconception": "Verflüssigung wird mit „mehr Wasser“ gleichgesetzt.",
+      "coreRule": "PCE = sterisch, Sulfonate = elektrostatisch; beide senken den Wasseranspruch bei gleicher Konsistenz.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wirkung von Fließmitteln“ im Modul Bauchemie noch einmal durch.",
+      "targetModuleTab": "bauchemie",
+      "targetModuleLabel": "Bauchemie"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bch_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauchemie",
+    "moduleTitle": "Bauchemie",
+    "topic": "Alkali-Kieselsäure-Reaktion",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-Alkali-Richtlinie",
+    "question": "Welche drei Voraussetzungen müssen gleichzeitig vorliegen, damit eine schädigende AKR auftreten kann?",
+    "options": [
+      "Hoher Zementgehalt, Frost und Tausalz",
+      "Alkaliempfindliche Gesteinskörnung, ausreichender Alkaligehalt und Feuchte",
+      "Sulfat, Carbonat und tiefe Temperatur",
+      "Chlorid, Sauerstoff und Bewehrung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die AKR braucht reaktive Kieselsäure in der Gesteinskörnung, genügend Alkalihydroxide in der Porenlösung und Feuchte (relative Luftfeuchte über ca. 80 %). Fehlt eine Voraussetzung, entsteht kein schädigendes Treiben – darauf bauen die Maßnahmen der Alkali-Richtlinie auf.",
+    "gapAnalysis": {
+      "topic": "Alkali-Kieselsäure-Reaktion",
+      "misconception": "AKR wird mit Frost-, Sulfat- oder Chloridschäden verwechselt.",
+      "coreRule": "AKR: reaktive SiO₂ + Alkalien + Feuchte → quellfähiges Alkali-Kieselgel.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Alkali-Kieselsäure-Reaktion“ im Modul Bauchemie noch einmal durch.",
+      "targetModuleTab": "bauchemie",
+      "targetModuleLabel": "Bauchemie"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bch_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauchemie",
+    "moduleTitle": "Bauchemie",
+    "topic": "Kontaktkorrosion",
+    "difficulty": "Basis",
+    "question": "Warum darf eine Kupferdachrinne nicht über ein verzinktes Fallrohr entwässern?",
+    "options": [
+      "Kupfer ist brennbar.",
+      "Abgelöste Kupferionen lagern sich auf dem unedleren Zink ab und lösen dort Lochkorrosion aus.",
+      "Zink ist edler als Kupfer und greift das Kupfer an.",
+      "Weil beide Metalle die gleiche Wärmedehnung haben."
+    ],
+    "correctIdx": 1,
+    "explanation": "Kupfer (E⁰ = +0,34 V) ist edler als Zink (−0,76 V). Mit Wasser als Elektrolyt entsteht ein galvanisches Element; das unedlere Zink löst sich auf. Regel: In Fließrichtung nie edlere vor unedleren Metallen anordnen.",
+    "gapAnalysis": {
+      "topic": "Kontaktkorrosion",
+      "misconception": "Die Stellung der Metalle in der Spannungsreihe wird verwechselt.",
+      "coreRule": "Das unedlere Metall wird zur Anode und korrodiert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kontaktkorrosion“ im Modul Bauchemie noch einmal durch.",
+      "targetModuleTab": "bauchemie",
+      "targetModuleLabel": "Bauchemie"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_recht_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "V",
+    "clusterName": "Praxis, Digitales & Studium",
+    "moduleId": "regularien",
+    "moduleTitle": "Baurecht & Normenwesen",
+    "topic": "Verjährung von Mängelansprüchen",
+    "difficulty": "Basis",
+    "normRef": "§ 634a BGB, § 13 Abs. 4 VOB/B",
+    "question": "Wie lange verjähren Mängelansprüche bei Bauwerken, wenn nichts anderes vereinbart ist?",
+    "options": [
+      "BGB: 2 Jahre; VOB/B: 5 Jahre",
+      "BGB: 5 Jahre; VOB/B: 4 Jahre (bei Vereinbarung der VOB/B)",
+      "BGB und VOB/B: jeweils 10 Jahre",
+      "BGB: 4 Jahre; VOB/B: 2 Jahre"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach § 634a BGB verjähren Mängelansprüche bei Bauwerken in 5 Jahren ab Abnahme. Wird die VOB/B vereinbart, gilt nach § 13 Abs. 4 eine Regelfrist von 4 Jahren; eine schriftliche Mängelrüge löst für diesen Mangel eine neue 2-Jahres-Frist aus.",
+    "gapAnalysis": {
+      "topic": "Verjährung von Mängelansprüchen",
+      "misconception": "BGB- und VOB/B-Fristen werden vertauscht.",
+      "coreRule": "BGB 5 Jahre, VOB/B 4 Jahre – jeweils ab Abnahme.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verjährung von Mängelansprüchen“ im Modul Regulatives noch einmal durch.",
+      "targetModuleTab": "regularien",
+      "targetModuleLabel": "Regulatives"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_recht_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "V",
+    "clusterName": "Praxis, Digitales & Studium",
+    "moduleId": "regularien",
+    "moduleTitle": "Baurecht & Normenwesen",
+    "topic": "CE-Kennzeichnung",
+    "difficulty": "Basis",
+    "normRef": "VO (EU) 2024/3110",
+    "question": "Was bestätigt die CE-Kennzeichnung eines Bauprodukts?",
+    "options": [
+      "Dass das Produkt für jedes Bauwerk in Deutschland verwendet werden darf.",
+      "Dass der Hersteller die Leistung nach einer harmonisierten technischen Spezifikation (hEN oder EAD) erklärt hat.",
+      "Dass ein deutsches Prüfamt die Qualität geprüft hat.",
+      "Dass das Produkt besonders umweltfreundlich ist."
+    ],
+    "correctIdx": 1,
+    "explanation": "CE bestätigt, dass der Hersteller eine Leistungserklärung nach hEN bzw. ETA/EAD erstellt hat – es ist der „Reisepass“ für den Binnenmarkt, kein Qualitätssiegel. Ob die erklärte Leistung für ein konkretes Bauwerk genügt, entscheidet der Planer anhand der Bauwerksanforderungen (MVV TB).",
+    "gapAnalysis": {
+      "topic": "CE-Kennzeichnung",
+      "misconception": "CE wird als Qualitäts- oder Verwendbarkeitssiegel missverstanden.",
+      "coreRule": "CE = erklärte Leistung nach harmonisierter Spezifikation; Eignung im Bauwerk = Planeraufgabe.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „CE-Kennzeichnung“ im Modul Regulatives noch einmal durch.",
+      "targetModuleTab": "regularien",
+      "targetModuleLabel": "Regulatives"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_recht_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "V",
+    "clusterName": "Praxis, Digitales & Studium",
+    "moduleId": "regularien",
+    "moduleTitle": "Baurecht & Normenwesen",
+    "topic": "Rechtscharakter von DIN-Normen",
+    "difficulty": "Fortgeschritten",
+    "question": "Welche Aussage zum Rechtscharakter von DIN-Normen ist zutreffend?",
+    "options": [
+      "DIN-Normen sind Bundesgesetze.",
+      "DIN-Normen sind private Regelwerke; verbindlich werden sie durch Einführung als Technische Baubestimmung oder durch Vertrag, und es besteht die widerlegbare Vermutung, dass sie die anerkannten Regeln der Technik wiedergeben.",
+      "DIN-Normen gelten nur, wenn ein Gericht sie bestätigt.",
+      "DIN-Normen sind nach Einführung der Eurocodes ungültig."
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN-Normen entstehen im Konsensverfahren und haben keinen Gesetzesrang. Bauaufsichtlich verbindlich werden sie über die MVV TB/VV TB, vertraglich durch Vereinbarung. Für die anerkannten Regeln der Technik spricht eine widerlegbare Vermutung.",
+    "gapAnalysis": {
+      "topic": "Rechtscharakter von DIN-Normen",
+      "misconception": "Normen werden mit Gesetzen gleichgesetzt.",
+      "coreRule": "Norm ≠ Gesetz; Verbindlichkeit über Technische Baubestimmungen oder Vertrag.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtscharakter von DIN-Normen“ im Modul Regulatives noch einmal durch.",
+      "targetModuleTab": "regularien",
+      "targetModuleLabel": "Regulatives"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kg_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustoffkenngroessen",
+    "moduleTitle": "Baustoffkenngrößen & Dichten",
+    "topic": "Diffusionsäquivalente Luftschichtdicke",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-3",
+    "question": "Eine Betonwand (μ = 130) ist 20 cm dick. Wie ist sie nach DIN 4108-3 einzustufen?",
+    "options": [
+      "diffusionsoffen (s_d ≤ 0,5 m)",
+      "diffusionshemmend (0,5 m < s_d < 1500 m), s_d = 26 m",
+      "diffusionsdicht (s_d ≥ 1500 m)",
+      "s_d = 2,6 m, diffusionsoffen"
+    ],
+    "correctIdx": 1,
+    "explanation": "s_d = μ · d = 130 · 0,20 m = 26 m. Das liegt zwischen 0,5 und 1500 m – die Schicht ist diffusionshemmend.",
+    "gapAnalysis": {
+      "topic": "Diffusionsäquivalente Luftschichtdicke",
+      "misconception": "Die Dicke wird in cm statt in m eingesetzt oder die Grenzen nicht gekannt.",
+      "coreRule": "s_d = μ · d (d in m); offen ≤ 0,5 m < hemmend < 1500 m ≤ dicht.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Diffusionsäquivalente Luftschichtdicke“ im Modul Baustoffkenngrößen noch einmal durch.",
+      "targetModuleTab": "baustoffkenngroessen",
+      "targetModuleLabel": "Baustoffkenngrößen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kg_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustoffkenngroessen",
+    "moduleTitle": "Baustoffkenngrößen & Dichten",
+    "topic": "Wasserabweisende Putze",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN 4108-3",
+    "question": "Welche Anforderungen stellt DIN 4108-3 an einen wasserabweisenden Außenputz?",
+    "options": [
+      "w ≤ 2,0 kg/(m²·h^0,5)",
+      "w ≤ 0,5 kg/(m²·h^0,5), s_d ≤ 2,0 m und w · s_d ≤ 0,2 kg/(m·h^0,5)",
+      "s_d ≥ 1500 m",
+      "w = 0, damit kein Wasser eindringt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Wasserabweisend heißt nach DIN 4108-3: w ≤ 0,5, s_d ≤ 2,0 m und w · s_d ≤ 0,2. Die Kombination begrenzt die Wasseraufnahme und sichert zugleich die Austrocknung nach außen.",
+    "gapAnalysis": {
+      "topic": "Wasserabweisende Putze",
+      "misconception": "Es wird nur die Wasseraufnahme betrachtet, nicht die Austrocknung.",
+      "coreRule": "Regenschutz und Austrocknung gehören zusammen: w klein, s_d klein.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserabweisende Putze“ im Modul Baustoffkenngrößen noch einmal durch.",
+      "targetModuleTab": "baustoffkenngroessen",
+      "targetModuleLabel": "Baustoffkenngrößen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kg_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "baustoffkenngroessen",
+    "moduleTitle": "Baustoffkenngrößen & Dichten",
+    "topic": "Porosität",
+    "difficulty": "Basis",
+    "question": "Ein Ziegelscherben hat die Rohdichte ρ = 1800 kg/m³ und die Reindichte ρ_R = 2650 kg/m³. Wie groß ist die Porosität?",
+    "options": [
+      "ca. 15 %",
+      "ca. 32 %",
+      "ca. 47 %",
+      "ca. 68 %"
+    ],
+    "correctIdx": 1,
+    "explanation": "P = 1 − ρ/ρ_R = 1 − 1800/2650 = 0,321 → rund 32 %. Die Porosität ist der Volumenanteil der Poren am Hüllvolumen.",
+    "gapAnalysis": {
+      "topic": "Porosität",
+      "misconception": "Der Quotient wird umgekehrt gebildet (ρ_R/ρ).",
+      "coreRule": "P = 1 − ρ/ρ_R (Rohdichte durch Reindichte).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Porosität“ im Modul Baustoffkenngrößen noch einmal durch.",
+      "targetModuleTab": "baustoffkenngroessen",
+      "targetModuleLabel": "Baustoffkenngrößen"
+    },
+    "verified": false
   }
 ]

@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useMemo, useState } from 'react';
 import { GraduationCap, CheckCircle2, XCircle, AlertTriangle, ExternalLink, RotateCcw } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
@@ -34,7 +35,7 @@ export function ModulTest({ moduleId, title }: ModulTestProps) {
         </h3>
         <div className="flex items-center gap-2 text-xs font-bold text-text-main">
           <span className="px-2.5 py-1 bg-shiraz text-white rounded-lg text-xs font-mono">
-            {correct} / {questions.length} richtig
+            {formatDeWert(correct)} / {questions.length} richtig
           </span>
           {answered.length > 0 && (
             <button
@@ -64,7 +65,7 @@ export function ModulTest({ moduleId, title }: ModulTestProps) {
             <div className="p-6 bg-off-white rounded-2xl border border-home-grau/30 flex flex-col gap-4">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-[10px] font-bold px-2.5 py-1 rounded-md bg-white text-shiraz border border-home-grau/30 uppercase tracking-wider">
-                  Frage {qIdx + 1} / {questions.length}
+                  Frage {formatDeWert(qIdx + 1)} / {questions.length}
                 </span>
                 <span className="text-[10px] font-bold px-2.5 py-1 rounded-md bg-white text-slate-700 border border-home-grau/30">
                   {q.topic}

@@ -85,7 +85,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Semiprobabilistische Sicherheit (Eurocode 0)',
-        description: 'Lasten und Materialfestigkeiten streuen stochastisch. Das Sicherheitskonzept trennt Einwirkungen Ed von Widerständen Rd und sichert durch Teilsicherheitsbeiwerte γ und Kombinationsbeiwerte ψ eine Zuverlässigkeit mit einer Versagenswahrscheinlichkeit von β ≥ 3,8.',
+        description: 'Lasten und Materialfestigkeiten streuen stochastisch. Das Sicherheitskonzept trennt Einwirkungen Ed von Widerständen Rd und sichert durch Teilsicherheitsbeiwerte γ und Kombinationsbeiwerte ψ eine Zielzuverlässigkeit ab: Zuverlässigkeitsindex β = 3,8 für 50 Jahre in der üblichen Schadensfolgeklasse CC2 – das entspricht einer Versagenswahrscheinlichkeit von rund 7 · 10⁻⁵.',
         takeaway: 'Bemessung bedeutet nicht absolute Lastgleichheit, sondern stochastisch abgesicherte Grenztragfähigkeit: Ed ≤ Rd.'
       },
       {
@@ -116,7 +116,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Porenverteilung (Gel-, Kapillar- & Luftporen), Roh- vs. Reindichte, Wasseraufnahmekinetik.',
         iconName: 'Layers',
         keyFacts: ['Porosität P', 'Dichteverhältnis', 'Sättigungsgrad'],
-        normOrFormula: 'P = 1 - \\frac{\\rho_R}{\\rho_0}',
+        normOrFormula: 'P = 1 - \\frac{\\rho}{\\rho_R}',
         color: 'from-blue-500 to-blue-600'
       },
       {
@@ -142,7 +142,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
     ],
     interconnections: [
       { from: 'Mikroebene', to: 'Mesoebene', relation: 'Struktursteuerung', causeEffect: 'Hydratphasen und Kristallwachstum formen die Porengrößenverteilung und die Grenzflächenzone (ITZ).' },
-      { from: 'Mesoebene', to: 'Makroebene', relation: 'Kennwertgenerierung', causeEffect: 'Ein geringeres Kapillarporenvolumen steigert E-Modul und Druckfestigkeit nach dem Potenzgesetz.' },
+      { from: 'Mesoebene', to: 'Makroebene', relation: 'Kennwertgenerierung', causeEffect: 'Ein geringeres Kapillarporenvolumen steigert E-Modul und Druckfestigkeit (z. B. Potenzansatz nach Powers über das Gel-Raum-Verhältnis).' },
       { from: 'Makroebene', to: 'Nachweisebene', relation: 'Quantilfestlegung', causeEffect: 'Aus Labor-Mittelwerten und Standardabweichungen wird das charakteristische 5%-Quantil f_k für den Sicherheitsnachweis abgeleitet.' }
     ],
     practicalInsight: {
