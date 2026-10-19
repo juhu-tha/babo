@@ -2,31 +2,38 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Microscope, Activity, Compass, Wind, Layers, Flame, MousePointerClick, Info } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 const TGAInteraction = () => {
   const [temp, setTemp] = useState(20);
   
   // Mass loss logic
   const getMass = (t: number) => {
+    // Lehrmodell einer Zementstein-/Betonprobe (Massenanteile in %):
+    // freies Wasser 30–105 °C, C-S-H/Ettringit/AFm 105–400 °C, Portlandit 400–500 °C, Calcit 600–800 °C
+    const anteil = (a: number, b: number) => Math.min(1, Math.max(0, (t - a) / (b - a)));
     let mass = 100;
-    if (t > 100) mass -= 2; // freies Wasser
-    if (t > 450) mass -= 5 * Math.min(1, (t - 450) / 50); // Ca(OH)2
-    if (t > 750) mass -= 15 * Math.min(1, (t - 750) / 80); // CaCO3
+    mass -= 2 * anteil(30, 105);   // freies (verdampfbares) Wasser
+    mass -= 4 * anteil(105, 400);  // chemisch gebundenes Wasser aus C-S-H, Ettringit, AFm
+    mass -= 2.5 * anteil(400, 500); // Ca(OH)2 → CaO + H2O
+    mass -= 6 * anteil(600, 800);  // CaCO3 → CaO + CO2 (Karbonatisierung bzw. kalkst. Gesteinskörnung)
     return formatDeZahl(mass, 1);
   };
 
   const getPhase = (t: number) => {
-    if (t < 100) return "Stabile Phase (Trocknung)";
-    if (t >= 100 && t < 400) return "Abgabe von gebundenem Wasser (z.B. C-S-H)";
-    if (t >= 400 && t < 500) return "Zersetzung von Portlandit (Ca(OH)₂ → CaO + H₂O)";
-    if (t >= 500 && t < 700) return "Stabile Phase";
-    if (t >= 700 && t < 850) return "Zersetzung von Calciumcarbonat (CaCO₃ → CaO + CO₂)";
-    return "Sinterung / Schmelzphase";
+    if (t < 30) return "Ausgangszustand";
+    if (t < 105) return "Verdampfen des freien Wassers (Trocknung)";
+    if (t < 400) return "Abgabe chemisch gebundenen Wassers (C-S-H, Ettringit, AFm)";
+    if (t < 500) return "Zersetzung von Portlandit (Ca(OH)₂ → CaO + H₂O)";
+    if (t < 600) return "Kaum Massenänderung";
+    if (t < 800) return "Zersetzung von Calciumcarbonat (CaCO₃ → CaO + CO₂)";
+    return "Zersetzungsreaktionen weitgehend abgeschlossen";
   };
 
   return (
     <div className="mt-4 p-4 bg-white rounded-lg border border-home-grau/30 shadow-inner">
-      <h4 className="font-bold text-sm mb-2 flex items-center gap-2"><MousePointerClick size={16}/> Interaktiv: TGA-Simulator (Betonprobe)</h4>
+      <h4 className="font-bold text-sm mb-2 flex items-center gap-2"><MousePointerClick size={16}/> Interaktiv: TGA-Simulator (Zementsteinprobe, Lehrmodell)</h4>
       <div className="mb-4">
         <label className="block text-xs font-medium text-gray-700 mb-1">Temperatur: {formatDeWert(temp)}°C</label>
         <input 
@@ -61,13 +68,13 @@ const MIPInteraction = () => {
   const getPoreType = (p: number) => {
     const r = 7500 / p;
     if (r > 50) return "Kapillarporen (Transport von Wasser & Schadstoffen)";
-    if (r > 10) return "Mesoporen / Größere Gelporen";
-    return "Gelporen (Kaum Wassertransport, Festigkeitsbildner)";
+    if (r > 10) return "Übergangsbereich (kleine Kapillarporen / große Gelporen)";
+    return "Gelporen (Teil des C-S-H-Gefüges, kaum Wassertransport)";
   };
 
   return (
     <div className="mt-4 p-4 bg-white rounded-lg border border-home-grau/30 shadow-inner">
-      <h4 className="font-bold text-sm mb-2 flex items-center gap-2"><MousePointerClick size={16}/> Interaktiv: MIP-Druck in MPa (≙ 10 bar)</h4>
+      <h4 className="font-bold text-sm mb-2 flex items-center gap-2"><MousePointerClick size={16}/> Interaktiv: MIP – Einpressdruck und Porenradius (Washburn, Hg: γ = 0,485 N/m, θ = 140°)</h4>
       <div className="mb-4">
         <label className="block text-xs font-medium text-gray-700 mb-1">Druck (log): 10^{formatDeWert(pressure)} bar</label>
         <input 
@@ -156,7 +163,7 @@ const XrdInteraction = () => {
                 <MousePointerClick size={16} /> Interaktiv: XRD Diffraktogramm (Reflex-ID)
             </h4>
             <div className="relative h-40 bg-slate-50 border-b-2 border-l-2 border-home-grau/30 rounded-bl-sm pt-4 pr-4 ml-6 mb-6 mt-4">
-                <div className="absolute -bottom-6 right-2 text-xs text-slate-500 font-mono">2 Theta (°)</div>
+                <div className="absolute -bottom-6 right-2 text-xs text-slate-500 font-mono">2θ (°), Cu-Kα</div>
                 <div className="absolute top-2 -left-8 text-xs text-slate-500 font-mono -rotate-90 origin-top-left transform translate-y-8">Intensität</div>
                 
                 {/* Simulated baseline noise */}
@@ -262,7 +269,7 @@ export default function Analytik() {
             }`}
             onClick={() => setActiveTab('poren_thermo')}
           >
-            Porendiagnostik &amp; Thermobar
+            Porendiagnostik &amp; Thermoanalyse
           </button>
         </div>
 
@@ -276,11 +283,11 @@ export default function Analytik() {
                 XRD (Röntgendiffraktometrie)
               </h3>
               <p className="text-sm text-gray-700 mb-3">
-                Bestimmt die <strong>mineralogische (kristalline) Phasenzusammensetzung</strong>. Amorphe Stoffe (wie Glas oder C-S-H-Phasen) können nicht direkt erfasst werden.
+                Bestimmt die <strong>mineralogische (kristalline) Phasenzusammensetzung</strong>. Amorphe Stoffe (wie Glas oder C-S-H-Phasen) erzeugen keine scharfen Reflexe; ihr Anteil lässt sich nur indirekt (Rietveld-Analyse mit innerem Standard) bestimmen.
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
                 <li><strong>Was wird gemessen:</strong> Beugung (Diffraktion) von Röntgenstrahlen am Kristallgitter. Jedes Mineral hat ein einzigartiges "Fingerabdruck"-Diffraktogramm.</li>
-                <li><strong>Anwendung:</strong> Klinkerphasen im Zement bestimmen, Nachweis von Ettringit oder Thaumasit bei Sulfattreiben, Identifikation von bauschädlichen Salzen (Nitrate, Sulfate).</li>
+                <li><strong>Anwendung:</strong> Klinkerphasen im Zement bestimmen, Nachweis von Ettringit oder Thaumasit bei Sulfatangriff, Identifikation von bauschädlichen Salzen (Nitrate, Sulfate).</li>
                 <li><strong>Probenvorbereitung:</strong> Material muss zu feinem Pulver zermahlen werden (Pulverdiffraktometrie).</li>
               </ul>
               <XrdInteraction />
@@ -309,15 +316,15 @@ export default function Analytik() {
             <div className="bg-stone-50 border border-home-grau/30 p-5 rounded-xl shadow-sm transition-all animate-in fade-in duration-300">
               <h3 className="font-bold text-lg text-home-prim mb-3 flex items-center gap-2">
                 <Activity className="text-indigo-500" size={20} />
-                NIR (Nahes Infrarotspektroskopie)
+                NIR (Nahinfrarotspektroskopie)
               </h3>
               <p className="text-sm text-gray-700 mb-3">
                 Zerstörungsfreie optische Absorptionsspektroskopie im Wellenlängenbereich von 780 bis 2500 nm für schnelle Screenings und Recycling.
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
                 <li><strong>Was wird gemessen:</strong> Molekulare Oberschwingungen und Kombinationsbanden (besonders empfindlich auf C-H, O-H, N-H-Bindungen im Baustoff).</li>
-                <li><strong>Anwendung:</strong> Zerstörungsfreie Bestimmung der Holzfeuchte, Sortierung von Bau- und Abbruchholz im Recyclingprozess, Identifikation von Asbestvorkommen in Putzen sowie Sortentrennung von Kunststoffen und Gipsplatten im Schuttstrom.</li>
-                <li><strong>Vorteil:</strong> Kontaklose Echtzeitmessung (auch bandfähig), extrem transportabel (Handgeräte) und vollständig zerstörungsfrei ohne Chemie.</li>
+                <li><strong>Anwendung:</strong> Zerstörungsfreie Bestimmung der Holzfeuchte, Sortierung von Bau- und Abbruchholz im Recyclingprozess sowie Sortentrennung von Kunststoffen und Gipsplatten im Schuttstrom. (Asbest wird dagegen mikroskopisch nachgewiesen, z. B. REM/EDX oder Polarisationsmikroskopie.)</li>
+                <li><strong>Vorteil:</strong> Kontaktlose Echtzeitmessung (auch am Förderband), transportable Handgeräte, zerstörungsfrei und ohne Chemikalien. Erfasst wird nur die oberflächennahe Schicht.</li>
               </ul>
             </div>
           )}
@@ -334,8 +341,8 @@ export default function Analytik() {
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
                 <li><strong>Was wird gemessen:</strong> Probe wird mit Röntgenstrahlung angeregt. Elemente senden spezifische Fluoreszenzstrahlung zurück.</li>
-                <li><strong>Anwendung:</strong> Nachweis von Schwermetallen (Blei, Cadmium) im Altbestand, Chloridgehalt im Beton, Bestimmung der Hauptoxide von Zement (CaO, SiO2, Al2O3).</li>
-                <li><strong>Tragbare Geräte:</strong> Hand-RFA ("guns") ermöglichen schnelle Analysen direkt auf der Baustelle, z.B. für die Legierungsbestimmung im Stahlbau oder Schadstoffdetektion (HBCD).</li>
+                <li><strong>Anwendung:</strong> Nachweis von Schwermetallen (Blei, Cadmium) im Altbestand, Abschätzung des Chlorgehalts, Bestimmung der Hauptoxide von Zement (CaO, SiO₂, Al₂O₃, Fe₂O₃).</li>
+                <li><strong>Tragbare Geräte:</strong> Hand-RFA ("guns") ermöglichen schnelle Analysen direkt auf der Baustelle, z. B. für die Legierungsbestimmung im Stahlbau oder den Bromnachweis als Hinweis auf bromierte Flammschutzmittel (z. B. HBCD in Dämmstoffen).</li>
               </ul>
             </div>
           )}
@@ -351,8 +358,8 @@ export default function Analytik() {
                 <strong>Optische Emissionsspektroskopie mit induktiv gekoppeltem Plasma.</strong>
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li><strong>Wie es funktioniert:</strong> Eine flüssige Probe wird in ein bis zu 10.000 K heißes Argon-Plasma vernebelt. Die emittierten Wellenlängen der Atome werden spektral ausgewertet.</li>
-                <li><strong>Anwendung:</strong> Hochempfindliches Verfahren zur exakten Spurenelement-Analyse von gelösten Stoffen (Schwermetalle, Kationen) – häufig der Standard zur chemischen Untersuchung nach Elutionsversuchen gemäß Ersatzbaustoffverordnung.</li>
+                <li><strong>Wie es funktioniert:</strong> Eine flüssige Probe (z. B. Eluat oder Säureaufschluss) wird in ein ca. 6.000 bis 10.000 K heißes Argon-Plasma vernebelt. Die emittierten Wellenlängen der Atome werden spektral ausgewertet.</li>
+                <li><strong>Anwendung:</strong> Hochempfindliches Verfahren zur exakten Spurenelement-Analyse von gelösten Stoffen (Schwermetalle, Kationen) – häufig eingesetzt zur Untersuchung von Eluaten, z. B. im Rahmen der Ersatzbaustoffverordnung.</li>
               </ul>
             </div>
           )}
@@ -365,12 +372,12 @@ export default function Analytik() {
                 LIPS / LIBS (Laserinduzierte Plasmaspektroskopie)
               </h3>
               <p className="text-sm text-gray-700 mb-3">
-                <strong>Laser-Induced Breakdown Spectroscopy (Zerstörungsfreie Mikrosondierung mittels Hochenergie-Laserpuls).</strong>
+                <strong>Laser-Induced Breakdown Spectroscopy (zerstörungsarme Mikroanalyse mittels Laserpuls).</strong>
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
                 <li><strong>Wie es funktioniert:</strong> Ein ultrakurzer, hochenergetischer Laserpuls wird auf die Baustoffoberfläche gebündelt. Eine mikroskopische Menge des Stoffs verdampft und bildet ein heißes, leuchtendes Gas-Plasma. Die optischen Emissionslinien dieses abkühlenden Plasmas werden spektral analysiert und verraten die Elementzusammensetzung.</li>
-                <li><strong>Anwendung:</strong> Schnelle, kontinuierliche Vor-Ort-Tiefenprofile von Schadelementen (z. B. zerstörungsfreie Erhöhungen oder Profilkurven von Chlorideneindringtiefen an Brücken/Stahlbeton), Nachweis von extrem leichten Elementen (C, Li, Be, B), die mit tragbaren RFA-Systemen nicht erfasst werden können.</li>
-                <li><strong>Vorteil:</strong> Vor-Ort-Eignung als Handgerät, vernachlässigbare Probebeschädigung, keinerlei zeitintensive nasschemische Vorbereitung von Säureaufschlüssen oder Presslingen.</li>
+                <li><strong>Anwendung:</strong> Ortsaufgelöste Elementverteilungen, z. B. Chlorid-Tiefenprofile an der Schnittfläche von Bohrkernen (Brücken, Parkdecks); Nachweis leichter Elemente (z. B. C, Li, Be, B, Na), die mit tragbaren RFA-Geräten nicht erfasst werden können.</li>
+                <li><strong>Vorteil:</strong> Auch als mobiles System verfügbar, nur geringe Probenbeschädigung (Mikrokrater), keine nasschemische Vorbereitung (Säureaufschluss, Pressling). Für quantitative Ergebnisse ist eine Kalibrierung an Referenzproben erforderlich.</li>
               </ul>
             </div>
           )}
@@ -383,26 +390,26 @@ export default function Analytik() {
                 Nasschemische Chloridbestimmung (DIN EN 14629)
               </h3>
               <p className="text-sm text-gray-700 mb-3">
-                Der Standard-Laborweg zur Quantifizierung korrosionsauslösender <strong>Chloride im Beton</strong>. Schützt Bauwerke vor unerwartetem Lochfraß (Bewehrungskorrosion).
+                Der Standard-Laborweg zur Quantifizierung korrosionsauslösender <strong>Chloride im Beton</strong>. Grundlage für die Bewertung des Korrosionsrisikos der Bewehrung (Lochfraß). Die Höchstwerte nach DIN EN 206 gelten für die Zusammensetzung von Neubeton; im Bestand ist der kritische korrosionsauslösende Chloridgehalt objektspezifisch durch den sachkundigen Planer zu bewerten (vgl. DAfStb-Richtlinie Instandhaltung).
               </p>
               <div className="space-y-4 text-xs text-gray-700">
                 <div className="bg-white p-2.5 rounded border border-home-grau/15">
                   <span className="font-bold text-shiraz">Prüfungsablauf im Detail:</span>
                   <ol className="list-decimal pl-4 mt-1 space-y-1">
-                    <li><strong>Probenahme & Aufbereitung:</strong> Entnahme von Bohrmehl aus verschiedenen Tiefen (z.B. 0-10 mm, 10-20 mm, etc.) zur Erstellung eines Tiefenprofils. Einwiegen einer pulverisierten Teilprobe im Labor.</li>
-                    <li><strong>Säureaufschluss:</strong> Kochen des Bohrmehls in heißer, verdünnter Salpetersäure (<strong className="font-mono text-[10px]">HNO₃</strong>), um sämtliche gebundenen Chloride aus der Zementsteinmatrix vollständig freizusetzen.</li>
-                    <li><strong>Titration (Volhard oder Potentiometrisch):</strong> Ausfällung der Chlorid-Ionen durch Zugabe von Silbernitrat (<strong className="font-mono text-[10px]">AgNO₃</strong>) zu Silberchlorid-Niederschlag. Die Erfassung des Endpunkts erfolgt hochpräzise über eine ionenselektive Silberelektrode.</li>
-                    <li><strong>Berechnung:</strong> Bestimmung des prozentualen Chloridgewichts bezogen auf die Zementmasse.</li>
+                    <li><strong>Probenahme & Aufbereitung:</strong> Entnahme von Bohrmehl aus verschiedenen Tiefen (z. B. 0–10 mm, 10–20 mm usw.) zur Erstellung eines Tiefenprofils. Einwiegen einer pulverisierten Teilprobe im Labor.</li>
+                    <li><strong>Säureaufschluss:</strong> Aufschluss des Bohrmehls in heißer, verdünnter Salpetersäure (<strong className="font-mono text-[10px]">HNO₃</strong>); erfasst wird der säurelösliche Gesamtchloridgehalt (freie und gebundene Chloride).</li>
+                    <li><strong>Titration (Volhard oder Potentiometrisch):</strong> Ausfällung der Chlorid-Ionen mit Silbernitrat (<strong className="font-mono text-[10px]">AgNO₃</strong>) als Silberchlorid. Endpunkt potentiometrisch über eine Silberelektrode oder nach Volhard durch Rücktitration des Silberüberschusses mit Thiocyanat (Eisen(III)-Indikator).</li>
+                    <li><strong>Berechnung:</strong> Chloridgehalt zunächst in M.-% bezogen auf die Probe (Beton), Umrechnung auf die Zementmasse über den bekannten oder abgeschätzten Zementgehalt.</li>
                   </ol>
                 </div>
                 <div className="bg-white p-2.5 rounded border border-home-grau/15 flex justify-between gap-2.5">
                   <div className="flex-1">
-                    <span className="font-bold text-gray-800">Grenzwert ULS (Stahlbeton):</span>
-                    <p className="font-mono font-bold text-amber-600 text-[11px] mt-0.5">max. 0.40 Masse-% / Zement</p>
+                    <span className="font-bold text-gray-800">Höchstwert Neubeton, Stahlbeton (DIN EN 206, Klasse Cl 0,40):</span>
+                    <p className="font-mono font-bold text-amber-600 text-[11px] mt-0.5">max. 0,40 M.-% bez. Zement</p>
                   </div>
                   <div className="border-l border-home-grau/15 pl-2.5 flex-1">
-                    <span className="font-bold text-gray-800">Grenzwert ULS (Spannbeton):</span>
-                    <p className="font-mono font-bold text-red-600 text-[11px] mt-0.5">max. 0.20 Masse-% / Zement</p>
+                    <span className="font-bold text-gray-800">Höchstwert Neubeton, Spannbeton (DIN EN 206, Klasse Cl 0,20):</span>
+                    <p className="font-mono font-bold text-red-600 text-[11px] mt-0.5">max. 0,20 M.-% bez. Zement</p>
                   </div>
                 </div>
               </div>
@@ -439,9 +446,9 @@ export default function Analytik() {
                 Zerstörungsfreie dreidimensionale Bildgebung der inneren Mikrostruktur mit hoher räumlicher Auflösung im Mikrometerbereich.
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li><strong>Was wird gemessen:</strong> Prototypische Röntgen-Abschwächung aus hunderten rotatorischen Richtungen. Ein Hochleistungsrechner rekonstruiert ein lückenloses 3D-Volumenmodell des inneren Aufbaus.</li>
+                <li><strong>Was wird gemessen:</strong> Röntgenabschwächung in Durchstrahlungsbildern aus Hunderten von Winkelstellungen. Daraus wird rechnerisch ein 3D-Volumenmodell des inneren Aufbaus rekonstruiert.</li>
                 <li><strong>Anwendung:</strong> Charakterisierung von Porensystemen in Dämmstoffen und Beton, In-situ-Spurenverfolgung von Rissentwicklung bei Zug-/Druckbelastung, Überprüfung der Faserorientierung in Carbon- und Faserbeton, berührungsfreie Verschleiß- und Gefügediagnostik.</li>
-                <li><strong>Vorteil:</strong> Völlig zerstörungsfrei und liefert echte, unverzerrte 3D-Volumendaten gegenüber traditionellen zweidimensionalen Dünnschliffen.</li>
+                <li><strong>Vorteil:</strong> Zerstörungsfrei und dreidimensional, im Gegensatz zum zweidimensionalen Dünnschliff. Grenze: Je feiner die Auflösung, desto kleiner muss die Probe sein (Auflösung im µm-Bereich nur an Proben im mm- bis cm-Bereich).</li>
               </ul>
             </div>
           )}
@@ -457,7 +464,7 @@ export default function Analytik() {
                 Misst die <strong>Massenänderung einer Probe in Abhängigkeit ihrer Temperatur</strong>.
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li><strong>Anwendung:</strong> Bestimmung des Portlanditgehalts Ca(OH)2 (Abgabe von chemisch gebundenem Wasser bei ca. 450°C), Bestimmung des Karbonatisierungsgrads (CO2-Abspaltung bei ca. 800°C).</li>
+                <li><strong>Anwendung:</strong> Bestimmung des Portlanditgehalts Ca(OH)₂ (Wasserabgabe bei ca. 400–500 °C), Bestimmung des Calcitgehalts bzw. Karbonatisierungsgrads (CO₂-Abspaltung bei ca. 600–800 °C). Häufig gekoppelt mit DTA/DSC (Wärmetönung).</li>
               </ul>
               <TGAInteraction />
             </div>
@@ -474,7 +481,7 @@ export default function Analytik() {
                 Bestimmung der <strong>Porenradienverteilung und Porosität</strong> poröser Baustoffe.
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li><strong>Wie es funktioniert:</strong> Quecksilber (nicht-benetzend) wird unter extrem hohem Druck (bis über 4000 bar) in die Poren gepresst. Je höher der Druck, desto kleinere Poren werden gefüllt.</li>
+                <li><strong>Wie es funktioniert:</strong> Quecksilber (nicht benetzend) wird unter hohem Druck (bis ca. 4000 bar) in die Poren gepresst. Je höher der Druck, desto kleinere Poren werden gefüllt; erfasst werden die Porenzugänge („Flaschenhals-Effekt“).</li>
                 <li><strong>Anwendung:</strong> Frostwiderstand von Beton/Ziegeln, Kapillarsaugverhalten, Dichtigkeit, Dauerhaftigkeitsstudien.</li>
               </ul>
               <MIPInteraction />
@@ -486,14 +493,14 @@ export default function Analytik() {
             <div className="bg-stone-50 border border-home-grau/30 p-5 rounded-xl shadow-sm transition-all md:col-span-2 animate-in fade-in duration-300">
               <h3 className="font-bold text-lg text-home-prim mb-3 flex items-center gap-2">
                 <Wind className="text-teal-600" size={20} />
-                GC-MS / MS-GC (Gaschromatografie-Massenspektrometrie)
+                GC-MS (Gaschromatografie-Massenspektrometrie)
               </h3>
               <p className="text-sm text-gray-700 mb-3">
                 <strong>Gaschromatografie mit gekoppeltem Massenspektrometer zur hochempfindlichen Schadstoffanalyse.</strong>
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li><strong>Funktionsweise:</strong> Das organische Gemisch wird thermisch verdampft und in einer Kapillartrennsäule molekülspezifisch aufgetrennt (Gaschromatografie). Der Austrittsstrom wird im Massenspektrometer ionisiert, fragmentiert und anhand des Ladung-Masse-Verhältnisses (m/z) im Detektor absolut identifiziert.</li>
-                <li><strong>Anwendung:</strong> Der unangefochtene Goldstandard zur Qualifizierung und Quantifizierung von komplexen schwer- und leichtflüchtigen organischen Schadstoffen (z. B. PAK, Holzschutzmittel wie PCP, Lindan oder Carbolineum, PCB, flüchtige Emissionen / VOCs sowie Weichmacher in Farben oder Klebstoffen).</li>
+                <li><strong>Funktionsweise:</strong> Das organische Gemisch wird thermisch verdampft und in einer Kapillartrennsäule molekülspezifisch aufgetrennt (Gaschromatografie). Der Austrittsstrom wird im Massenspektrometer ionisiert und fragmentiert; die Stoffe werden über Retentionszeit und Massenspektrum (Masse-Ladungs-Verhältnis m/z) identifiziert und quantifiziert.</li>
+                <li><strong>Anwendung:</strong> Standardverfahren zur Identifizierung und Quantifizierung von komplexen schwer- und leichtflüchtigen organischen Schadstoffen (z. B. PAK, Holzschutzmittel wie PCP, Lindan oder Carbolineum, PCB, flüchtige Emissionen / VOCs sowie Weichmacher in Farben oder Klebstoffen).</li>
               </ul>
             </div>
           )}
@@ -509,8 +516,8 @@ export default function Analytik() {
                 <strong>Zerstörungsfreie Kernspinresonanz-Spektroskopie zur Bestimmung von Wasserzuständen und Porengeometrien.</strong>
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li><strong>Wie es funktioniert:</strong> In einem statischen Magnetfeld werden die magnetischen Momente von Wasserstoffkernen (Protonen ¹H) des Porenwassers ausgerichtet und durch Hochfrequenzpulse ausgelenkt. Die gemessene Relaxationszeit beim Zurückschwenken in den Grundzustand ist direkt proportional zur spezifischen Oberfläche und Porengröße.</li>
-                <li><strong>Anwendung:</strong> Kontinuierliche In-situ-Verfolgung der Zementhydratation (Erstarrungsprozess) ab Minute 1, quantitative Unterscheidung von chemisch, physikalisch und kapillar gebundenem Wasser im Betongefüge, Bestimmung der Porengrößenverteilung im Nanometerbereich ohne den Einsatz hochgiftigen Quecksilbers.</li>
+                <li><strong>Wie es funktioniert:</strong> In einem statischen Magnetfeld werden die magnetischen Momente von Wasserstoffkernen (Protonen ¹H) des Porenwassers ausgerichtet und durch Hochfrequenzpulse ausgelenkt. Die Relaxationszeit T₂ des Porenwassers ist näherungsweise proportional zum Verhältnis Porenvolumen/Porenoberfläche – kurze T₂ bedeuten kleine Poren (Gelporen), lange T₂ große Poren.</li>
+                <li><strong>Anwendung:</strong> Kontinuierliche Verfolgung der Zementhydratation ab dem Anmachen, quantitative Unterscheidung von chemisch, physikalisch und kapillar gebundenem Wasser im Betongefüge, Bestimmung der Porengrößenverteilung im Nanometerbereich ohne den Einsatz hochgiftigen Quecksilbers.</li>
                 <li><strong>Vorteil:</strong> Extrem schonendes und zerstörungsfreies Online-Monitoring, das die echte Gefügestruktur nicht durch schädigendes Austrocknen oder Vakuumbeanspruchung verändert.</li>
               </ul>
             </div>
@@ -519,40 +526,88 @@ export default function Analytik() {
         </div>
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <div className="flex flex-col gap-6">
+        <FormulaDerivationBox
+          title="Beispiel 1: Portlanditgehalt aus der TGA-Stufe 400–500 °C"
+          zielGleichung="w_{CH} = \Delta m_{H_2O} \cdot \frac{M_{Ca(OH)_2}}{M_{H_2O}}"
+          schritte={[
+            { titel: 'Messung', erklaerung: 'Im Temperaturbereich 400–500 °C verliert die getrocknete Zementsteinprobe 2,5 % ihrer Masse (Tangentenmethode an der Stufe).', formel: '\\Delta m_{H_2O} = 2{,}5\\,\\%' },
+            { titel: 'Reaktion', erklaerung: 'Je Mol Portlandit wird ein Mol Wasser abgegeben:', formel: 'Ca(OH)_2 \\rightarrow CaO + H_2O' },
+            { titel: 'Stöchiometrischer Faktor', erklaerung: 'Molare Massen 74,1 g/mol (Ca(OH)₂) und 18,0 g/mol (H₂O):', formel: '\\frac{74{,}1}{18{,}0} = 4{,}11' },
+            { titel: 'Ergebnis', erklaerung: 'Portlanditgehalt bezogen auf die Ausgangsmasse der Probe:', formel: 'w_{CH} = 2{,}5 \\cdot 4{,}11 = 10{,}3\\,\\text{M.-}\\%' }
+          ]}
+          ergebnisHinweis="Ein niedriger Portlanditgehalt in der Randzone bei hohem Calcitanteil (Stufe 600–800 °C) zeigt Karbonatisierung oder einen hohen Anteil puzzolanischer Zusatzstoffe."
+          normQuelle="Stöchiometrie; vgl. Scrivener/Snellings/Lothenbach 2016, Kap. Thermogravimetrie"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 2: Welcher Porenradius wird bei 100 bar mit Quecksilber gefüllt?"
+          zielGleichung="r = \frac{-2\gamma \cos\theta}{p}"
+          schritte={[
+            { titel: 'Kennwerte für Quecksilber', erklaerung: 'Oberflächenspannung γ = 0,485 N/m, Kontaktwinkel θ = 140° (üblicher Ansatz):', formel: '-2 \\cdot 0{,}485 \\cdot \\cos 140^\\circ = 0{,}743\\,\\text{N/m}' },
+            { titel: 'Druck umrechnen', erklaerung: '1 bar = 10⁵ Pa:', formel: 'p = 100\\,\\text{bar} = 1{,}0 \\cdot 10^{7}\\,\\text{Pa}' },
+            { titel: 'Ergebnis', erklaerung: 'Grenzradius der bei diesem Druck gefüllten Porenzugänge:', formel: 'r = \\frac{0{,}743}{1{,}0 \\cdot 10^{7}} = 7{,}4 \\cdot 10^{-8}\\,\\text{m} = 74\\,\\text{nm}' }
+          ]}
+          ergebnisHinweis="Faustformel: r [nm] ≈ 7 400 / p [bar]. Gelporen (wenige nm) erfordern Drücke von über 1 000 bar."
+          normQuelle="DIN ISO 15901-1:2019-03 (Washburn-Gleichung)"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 3: Netzebenenabstand des Quarz-Hauptreflexes (Bragg)"
+          zielGleichung="n\lambda = 2d \sin\theta"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Cu-Kα-Strahlung λ = 0,15406 nm, Quarz-Hauptreflex bei 2θ = 26,6°, Beugungsordnung n = 1:', formel: '\\theta = 13{,}3^\\circ,\\quad \\sin\\theta = 0{,}2300' },
+            { titel: 'Umstellen', erklaerung: 'Nach dem Netzebenenabstand d auflösen:', formel: 'd = \\frac{\\lambda}{2\\sin\\theta} = \\frac{0{,}15406}{2 \\cdot 0{,}2300} = 0{,}335\\,\\text{nm}' }
+          ]}
+          ergebnisHinweis="d = 0,335 nm ist der (101)-Reflex des Quarzes. Die Phasenidentifikation erfolgt durch Vergleich aller Reflexlagen und -intensitäten mit einer Referenzdatenbank."
+          normQuelle="DIN EN 13925-1:2003-07"
+        />
+      </div>
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="analytik" />
+
       <ModuleFooter 
         wikipedia={[
-          { title: 'Röntgendiffraktometrie (XRD)', url: 'https://de.wikipedia.org/wiki/R%C3%B6ntgendiffraktometrie' },
+          { title: 'Röntgenbeugung (XRD)', url: 'https://de.wikipedia.org/wiki/R%C3%B6ntgenbeugung' },
           { title: 'Röntgenfluoreszenzanalyse (RFA)', url: 'https://de.wikipedia.org/wiki/R%C3%B6ntgenfluoreszenzanalyse' },
           { title: 'Rasterelektronenmikroskop (REM)', url: 'https://de.wikipedia.org/wiki/Rasterelektronenmikroskop' },
           { title: 'Infrarotspektroskopie (FTIR)', url: 'https://de.wikipedia.org/wiki/Infrarotspektroskopie' }
         ]}
         literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Stark, J., Wicht, B.: Zement und Beton: Entstehung, Eigenschaften und Verwendung (Springer)',
-          'Plank, J.: Vorlesungsskriptum Bauchemische Analytik (TU München)'
+          'Scrivener, K.; Snellings, R.; Lothenbach, B. (Hrsg.): A Practical Guide to Microstructural Analysis of Cementitious Materials. Boca Raton: CRC Press 2016',
+          'Benedix, R.: Bauchemie für das Bachelor-Studium. 3. Aufl., Wiesbaden: Springer Vieweg 2017',
+          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin/Heidelberg: Springer Vieweg 2013',
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
           { title: 'DIN EN 14629:2007-06 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Bestimmung des Chloridgehaltes von Festbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629' },
-          { title: 'DIN ISO 15901-1:2019-03 (Porengrößenverteilung und Porosität von Feststoffen durch Quecksilberporosimetrie)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+15901-1' },
-          { title: 'DIN EN 13925-1:2003-07 (Zerstörungsfreie Prüfung - Röntgendiffraktometrie an polykristallinen und amorphen Materialien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13925-1' }
+          { title: 'DIN EN 206 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Chloridgehaltsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN ISO 15901-1:2019-03 (Porengrößenverteilung und Porosität von Feststoffen – Teil 1: Quecksilberporosimetrie)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+15901-1' },
+          { title: 'DIN EN 13925-1:2003-07 (Zerstörungsfreie Prüfung - Röntgendiffraktometrie von polykristallinen und amorphen Materialien – Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13925-1' }
         ]}
         formeln={[
           {
-            formel: '\\lambda = 2d \\cdot \\sin(\\theta)',
-            erklaerung: 'Bragg-Gleichung für die Röntgendiffraktometrie (XRD). Bestimmt den Netzebenenabstand d riss- und zerstörungsfrei aus Beugungswinkeln.',
+            formel: 'n \\lambda = 2d \\cdot \\sin(\\theta)',
+            erklaerung: 'Bragg-Gleichung der Röntgenbeugung (XRD): Aus dem Beugungswinkel θ und der Wellenlänge λ folgt der Netzebenenabstand d (n: Beugungsordnung).',
             quelle: 'DIN EN 13925-1:2003-07'
           },
           {
             formel: 'p \\cdot r = -2\\gamma \\cdot \\cos(\\theta)',
-            erklaerung: 'Washburn-Gleichung für die Quecksilberdruckporosimetrie (MIP). Setzt den erforderlichen Einpressdruck p in Relation zum Porenradius r, Oberflächenspannung γ und Benetzungswinkel θ.',
+            erklaerung: 'Washburn-Gleichung für die Quecksilberdruckporosimetrie (MIP): verknüpft Einpressdruck p, Porenradius r, Oberflächenspannung γ und Kontaktwinkel θ (Zylinderporenmodell).',
             quelle: 'DIN ISO 15901-1:2019-03'
           },
           {
+            formel: 'w_{CH} = \\Delta m_{400-500} \\cdot \\frac{74{,}1}{18{,}0}',
+            erklaerung: 'Portlanditgehalt aus dem Masseverlust der TGA-Stufe 400–500 °C.',
+            quelle: 'Stöchiometrie'
+          },
+          {
             formel: 'E = h \\cdot \\nu = \\frac{h \\cdot c}{\\lambda}',
-            erklaerung: 'Planck-Einstein-Beziehung für spektroskopische Verfahren (FTIR/RFA). Verknüpft die Energie der Strahlung E mit Wellenlänge λ.',
-            quelle: 'Basis-Physik'
+            erklaerung: 'Planck-Einstein-Beziehung für spektroskopische Verfahren (FTIR/RFA). Verknüpft die Energie der Strahlung E mit Frequenz ν bzw. Wellenlänge λ.',
+            quelle: 'Physikalische Grundlage'
           }
         ]}
+        lastReviewed="Oktober 2026 (AP 4 Labor: Analyseverfahren, Chloridbestimmung, Thermoanalyse, Porosimetrie und XRD gegen DIN EN 14629, DIN ISO 15901-1, DIN EN 13925-1 und Fachliteratur geprüft; fachliche Freigabe durch den Autor ausstehend)"
       />
     </div>
   );

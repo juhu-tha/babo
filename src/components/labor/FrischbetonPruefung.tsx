@@ -13,7 +13,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { LabProtocolRecord, exportToCSV } from '@/src/utils/labExportUtils';
+import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -128,13 +128,14 @@ export default function FrischbetonPruefung() {
 
   // Consistency Class determination
   const consistencyClass = (spread: number): { code: string; name: string } => {
-    if (spread <= 340) return { code: 'F1', name: 'Sehr steif' };
-    if (spread <= 410) return { code: 'F2', name: 'Steif' };
-    if (spread <= 480) return { code: 'F3', name: 'Plastisch' };
-    if (spread <= 550) return { code: 'F4', name: 'Weich' };
-    if (spread <= 620) return { code: 'F5', name: 'Sehr weich' };
-    if (spread < 700) return { code: 'F6', name: 'Fließfähig' };
-    return { code: 'SVB', name: 'Selbstverdichtender Beton' };
+    // Ausbreitmaßklassen nach DIN EN 206 (Benennung nach DIN 1045-2)
+    if (spread <= 345) return { code: 'F1', name: 'steif (≤ 340 mm)' };
+    if (spread <= 415) return { code: 'F2', name: 'plastisch (350–410 mm)' };
+    if (spread <= 485) return { code: 'F3', name: 'weich (420–480 mm)' };
+    if (spread <= 555) return { code: 'F4', name: 'sehr weich (490–550 mm)' };
+    if (spread <= 625) return { code: 'F5', name: 'fließfähig (560–620 mm)' };
+    if (spread < 700) return { code: 'F6', name: 'sehr fließfähig (≥ 630 mm)' };
+    return { code: 'F6', name: 'sehr fließfähig – für SVB Setzfließversuch nach DIN EN 12350-8 (Klassen SF)' };
   };
 
   const slumpClass = (slump: number): { code: string; name: string } => {
@@ -163,35 +164,35 @@ export default function FrischbetonPruefung() {
       timestamp: new Date().toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }),
       testTitle: isSpread ? 'Ausbreitversuch nach DIN EN 12350-5' : 'Setzversuch (Slump) nach DIN EN 12350-2',
       norm: isSpread ? 'DIN EN 12350-5' : 'DIN EN 12350-2',
-      operator: 'Frischbetonprüfer (Baustoffboard)',
+      operator: 'Frischbetonprüfung (Lehrsimulation)',
       specimen: {
         material: `Frischbeton (w/z = ${formatDeZahl(wzValue, 2)}, PCE = ${formatDeZahl(fließmittelPCE, 1)} %)`,
         geometry: isSpread ? 'Ausbreitkegel (h = 200 mm)' : 'Abrams-Trichter (h = 300 mm)',
         dimensions: isSpread ? 'Tisch 700 × 700 mm' : 'Kegel Ø 100/200 mm',
-        conditioning: 'Frisch angemischt (Prüfung innerhalb 15 min)'
+        conditioning: 'Frisch angemischt, Prüfung unmittelbar nach der Probenahme (simuliert)'
       },
       parameters: {
-        'Wasserzementwert w/z': `${wzValue.toFixed(2)}`,
+        'Wasserzementwert w/z': formatDeZahl(wzValue, 2),
         'Fließmittel (PCE)': `${formatDeZahl(fließmittelPCE, 1)} M.-%`,
         'Luftporenbildner': airEntrainment ? 'Ja' : 'Nein',
         ...(isSpread ? { 'Hubschläge': `${formatDeWert(shocksDone)} / 15` } : {})
       },
       metrics: isSpread ? {
-        'Ausbreitmaß d (mm)': `${spreadDiameterMm}`,
+        'Ausbreitmaß d (mm)': formatDeWert(spreadDiameterMm),
         'Konsistenzklasse': `${classInfo.code} (${classInfo.name})`,
-        'Fließgrenze τ0 (Pa)': binghamYieldStress.toFixed(0),
-        'Plastische Viskosität μp (Pa·s)': binghamPlasticViscosity.toFixed(1)
+        'Fließgrenze τ0 (Pa, Lehrmodell)': formatDeZahl(binghamYieldStress, 0),
+        'Plastische Viskosität μp (Pa·s, Lehrmodell)': formatDeZahl(binghamPlasticViscosity, 1)
       } : {
-        'Setzmaß h (mm)': `${slumpMm}`,
+        'Setzmaß h (mm)': formatDeWert(slumpMm),
         'Setzmaßklasse': `${classInfo.code} (${classInfo.name})`,
-        'Fließgrenze τ0 (Pa)': binghamYieldStress.toFixed(0)
+        'Fließgrenze τ0 (Pa, Lehrmodell)': formatDeZahl(binghamYieldStress, 0)
       },
-      status: 'Gültig',
+      status: 'Plausibel',
       validationNotes: [
-        `Normgerechte Konsistenzprüfung durchgeführt.`,
+        `Simulierte Konsistenzprüfung nach ${isSpread ? 'DIN EN 12350-5' : 'DIN EN 12350-2'}; Konsistenzwerte aus einem Lehrmodell (w/z, Fließmittel, LP).`,
         `Klassifizierung: ${classInfo.code} (${classInfo.name}).`
       ],
-      integrityHash: 'FRISCHBETON-ISO12350',
+      integrityHash: generateIntegrityChecksum(`frisch|${activeTest}|${wzValue}|${fließmittelPCE}|${airEntrainment}|${spreadDiameterMm}|${slumpMm}|${Date.now()}`),
       dataPointsCount: isSpread ? shocksDone : 1
     };
 
@@ -278,7 +279,7 @@ export default function FrischbetonPruefung() {
                 className="w-full accent-emerald-600 cursor-pointer"
               />
               <span className="text-[10px] text-text-main/60 block">
-                Senkt die Fließgrenze <InlineMath math="\tau_0" /> dramatisch durch sterische Hinderung der Zementpartikel.
+                Senkt die Fließgrenze <InlineMath math="\tau_0" /> deutlich durch elektrosterische Abstoßung der Zementpartikel.
               </span>
             </div>
 
@@ -320,9 +321,9 @@ export default function FrischbetonPruefung() {
                   }
                 </h3>
                 <p className="text-xs text-text-main/70">
-                  {activeTest === 'ausbreittisch' && '15 Hubschläge innerhalb von 15 Sekunden erzeugen Fließausbreitung'}
+                  {activeTest === 'ausbreittisch' && '15 Hubschläge (je Hub etwa 1 bis 3 s) breiten den Beton auf dem Ausbreittisch aus'}
                   {activeTest === 'slump' && 'Senkrechtes Heben des Abrams-Trichters in 2 bis 5 Sekunden'}
-                  {activeTest === 'rheologie' && 'Linear-viskose Modellierung: τ = τ0 + μp · γ̇'}
+                  {activeTest === 'rheologie' && 'Bingham-Modell (Lehrwerte): τ = τ0 + μp · γ̇'}
                 </p>
               </div>
 

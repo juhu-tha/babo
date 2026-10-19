@@ -7,6 +7,8 @@ import {
 import React, { useState } from 'react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function Probenahme() {
   const [activeTab, setActiveTab] = useState<'haufwerk' | 'diagnostik'>('haufwerk');
@@ -76,14 +78,14 @@ export default function Probenahme() {
             <h3 className="text-xl font-bold text-text-main flex items-center gap-2">Grundlagen der Beprobung</h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Um die Eigenschaften eines großen Haufwerks (z. B. mineralische Ersatzbaustoffe, Gesteinskörnung, Bauabfälle, Erdaushub) repräsentativ beurteilen zu können, muss die Probenahme planmäßig und normgerecht erfolgen. Zufällige oder unsachgemäße Probenahmen führen zu verfälschten Ergebnissen (z. B. Entmischung beim Schütten, wo große Körner nach außen rollen). Dies ist besonders kritisch bei der Klassifizierung nach der <strong>Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023)</strong> bzw. LAGA PN 98 / DIN 19698-1, da Fehler in der Beprobung zu massiven Fehleinschätzungen der Materialwerte und Entsorgungskosten führen.
+            Um die Eigenschaften eines großen Haufwerks (z. B. mineralische Ersatzbaustoffe, Gesteinskörnung, Bauabfälle, Erdaushub) repräsentativ beurteilen zu können, muss die Probenahme planmäßig und normgerecht erfolgen. Zufällige oder unsachgemäße Probenahmen führen zu verfälschten Ergebnissen (z. B. Entmischung beim Schütten, wo große Körner nach außen rollen). Dies ist besonders kritisch bei der Klassifizierung nach der <strong>Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023)</strong> – die Probenahme hat nach § 8 EBV gemäß <strong>LAGA PN 98</strong> zu erfolgen (DIN 19698-1/-2 darf ergänzend herangezogen werden), da Fehler in der Beprobung zu massiven Fehleinschätzungen der Materialwerte und Entsorgungskosten führen.
               </p>
 
               <h4 className="font-bold text-home-prim mt-6 mb-2">Die "Proben-Hierarchie"</h4>
               <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 <div className="p-4 bg-off-white border border-home-grau/30 rounded-xl">
                   <div className="font-bold text-text-main mb-1 text-sm animate-in">1. Einzelprobe / Stichprobe</div>
-                  <p className="text-xs text-text-main/70 leading-relaxed">Eine Menge an Material, die in einem einzigen Durchgang (z.b. mit Schaufel oder Bohrgestänge) punktuell entnommen wurde.
+                  <p className="text-xs text-text-main/70 leading-relaxed">Eine Menge an Material, die in einem einzigen Durchgang (z. B. mit Schaufel oder Bohrgestänge) punktuell entnommen wurde.
           </p>
         </div>
                 <div className="p-4 bg-off-white border border-home-grau/30 rounded-xl relative">
@@ -99,7 +101,7 @@ export default function Probenahme() {
                 <div className="p-4 bg-off-white border border-home-grau/30 rounded-xl relative">
                   <ArrowRight className="hidden md:block absolute -left-3 top-1/2 -translate-y-1/2 text-home-grau/40" size={16} />
                   <div className="font-bold text-text-main mb-1 text-sm">4. Messprobe oder Prüfprobe</div>
-                  <p className="text-xs text-text-main/70 leading-relaxed">Die kleine Fraktion (Oft nur wenige Gramm), die konkret in das Prüfgerät (z.B. Eluat-Analyse) gegeben wird.</p>
+                  <p className="text-xs text-text-main/70 leading-relaxed">Die kleine Fraktion (oft nur wenige Gramm bis wenige Kilogramm), die konkret in das Prüfverfahren (z. B. Eluatherstellung nach DIN 19529) gegeben wird.</p>
                 </div>
               </div>
             </div>
@@ -109,30 +111,30 @@ export default function Probenahme() {
                 <GitMerge className="text-shiraz" size={20} /> Der korrekte Prozessablauf (z. B. nach LAGA PN 98)
               </h3>
               <p className="text-sm text-text-main/80 mb-4">
-                Besonders bei der Entsorgung von Boden, Bauschutt und dekontaminationspflichtigen Materialien müssen repräsentative Proben erstellt werden. Wer einfach nur eine Schaufel von der Oberfläche des Haufwerks kratzt, macht sich strafbar oder ruiniert wirtschaftliche Kalkulationen.
+                Besonders bei der Entsorgung von Boden, Bauschutt und dekontaminationspflichtigen Materialien müssen repräsentative Proben erstellt werden. Wer einfach nur eine Schaufel von der Oberfläche des Haufwerks kratzt, erhält kein verwertbares Ergebnis: Die Deklaration ist angreifbar, und Fehleinstufungen verursachen erhebliche Mehrkosten bei Verwertung oder Entsorgung.
               </p>
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-start text-sm">
                   <div className="bg-shiraz/10 text-shiraz font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">1</div>
-                  <div className="leading-relaxed"><strong>Vorabbegehung &amp; Rasterung:</strong> Das Haufwerk (z. B. 500 m³ Bodenaushub) wird in Teilmengen (Lose) untergeteilt und gedanklich gerastert. Auffällige Zonen (z.b. Öl-Geruch oder schwarze Färbungen) werden sofort separiert (Hot-Spot-Beprobung).</div>
+                  <div className="leading-relaxed"><strong>Vorabbegehung &amp; Rasterung:</strong> Das Haufwerk (z. B. 500 m³ Bodenaushub) wird in Teilmengen (Lose) untergeteilt und gedanklich gerastert. Auffällige Zonen (z. B. Öl-Geruch oder schwarze Färbungen) werden sofort separiert (Hot-Spot-Beprobung).</div>
                 </div>
                 <div className="flex gap-3 items-start text-sm">
                   <div className="bg-shiraz/10 text-shiraz font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">2</div>
-                  <div className="leading-relaxed"><strong>Stichprobenentnahme (Einzelproben):</strong> Mit geeignetem Gerät (z. B. Radlader für tiefe Schichten, Handbohrstock) werden über das Haufwerk verteilt (Tiefenprofil beachten!) eine vordefinierte Anzahl an Einzelproben entnommen (z. B. 20 Einstiche).</div>
+                  <div className="leading-relaxed"><strong>Stichprobenentnahme (Einzelproben):</strong> Mit geeignetem Gerät (z. B. Radlader für tiefe Schichten, Handbohrstock) werden über das Haufwerk verteilt (Tiefenprofil beachten!) eine vordefinierte Anzahl an Einzelproben entnommen (Anzahl nach LAGA PN 98 abhängig vom Haufwerksvolumen).</div>
                 </div>
                 <div className="flex gap-3 items-start text-sm">
                   <div className="bg-shiraz/10 text-shiraz font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">3</div>
-                  <div className="leading-relaxed"><strong>Homogenisierung zur Sammelprobe:</strong> Die Einzelproben werden in einer Wanne oder auf Planen intensiv durchmischt. Klobige Stücke werden zerkleinert. Das Material muss absolut homogen durchmischt sein.</div>
+                  <div className="leading-relaxed"><strong>Homogenisierung zur Sammelprobe:</strong> Die Einzelproben werden in einer Wanne oder auf Planen intensiv durchmischt. Grobe Stücke werden zerkleinert; die Probenvorbehandlung im Labor richtet sich nach DIN 19747.</div>
                 </div>
                 <div className="flex gap-3 items-start text-sm">
                   <div className="bg-shiraz/10 text-shiraz font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">4</div>
-                  <div className="leading-relaxed"><strong>Probenteiler (Laborprobe erstellen):</strong> Da die Sammelprobe meist viel zu groß ist (z. B. 20 kg), muss sie durch normgerechte Probenteilung auf die vom Labor benötigte Menge (z. B. 3-5 kg) verkleinert werden.</div>
+                  <div className="leading-relaxed"><strong>Probenteiler (Laborprobe erstellen):</strong> Da die Sammelprobe meist viel zu groß ist (z. B. 20 kg), muss sie durch normgerechte Probenteilung (DIN EN 932-2) auf die vom Labor benötigte Menge (z. B. 3–5 kg) verkleinert werden.</div>
                 </div>
               </div>
               <div className="mt-4 p-4 bg-orange-50 border border-orange-200 rounded-xl flex gap-3 text-orange-900">
                 <AlertTriangle className="shrink-0 text-orange-500" />
                 <p className="text-sm leading-relaxed">
-                  <strong>Vorsicht bei leichtflüchtigen Schadstoffen (z.B. PAK, LHKW):</strong> Hier darf <em>nicht</em> intensiv gemischt oder homogenisiert werden, da die Schadstoffe sonst ausgasen und die Laboranalyse fälschlicherweise "sauberes" Material anzeigt! In diesen Fällen werden die Einzelproben direkt gasdicht in Probengläser (z.B. mit Septum) gefüllt.
+                  <strong>Vorsicht bei leichtflüchtigen Schadstoffen (z. B. LHKW, BTEX, Naphthalin):</strong> Hier darf <em>nicht</em> intensiv gemischt oder homogenisiert werden, da die Schadstoffe sonst ausgasen und die Laboranalyse fälschlicherweise "sauberes" Material anzeigt! In diesen Fällen werden die Einzelproben direkt gasdicht in Probengläser (z. B. mit Septum bzw. Methanolvorlage) gefüllt. Die meisten PAK sind dagegen schwerflüchtig und werden regulär über die Sammelprobe erfasst.
                 </p>
               </div>
             </div>
@@ -155,8 +157,8 @@ export default function Probenahme() {
                   </p>
                   <ul className="list-disc pl-5 text-sm text-text-main/80 space-y-1">
                     <li>Halbiert die Probe schrittweise (100% → 50% → 25% usw.)</li>
-                    <li>Sehr genau und normgerecht für rolliges / trockenes Material.</li>
-                    <li>Die Schachtbreite muss mind. das 3-fache des Größtkorns betragen.</li>
+                    <li>Sehr genau und normgerecht (DIN EN 932-2) für rolliges / trockenes Material.</li>
+                    <li>Die Schachtbreite muss deutlich größer als das Größtkorn sein; das Mindestverhältnis und die Gerätegrößen legt DIN EN 932-2 fest.</li>
                   </ul>
                 </div>
                 
@@ -181,7 +183,7 @@ export default function Probenahme() {
             <h3 className="text-xl font-bold text-text-main flex items-center gap-2">Grundlagen der Bauwerksdiagnostik</h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Im Gegensatz zur lockeren Schüttgutbeprobung erfordert die Bauwerksprüfung an stehenden Bauteilen (z. B. Brücken, Stützwänden, Parkhäusern) ein zerstörungsarmes, materialtechnisches Vorgehen. Der Schutz der tragenden Substanz (VDI 6200) sowie die unfehlbare Lokalisierung von Schadensfronten (Karbonatisierungstiefe, Chlorideintragstiefe) stehen im Mittelpunkt.
+            Im Gegensatz zur lockeren Schüttgutbeprobung erfordert die Bauwerksprüfung an stehenden Bauteilen (z. B. Brücken, Stützwänden, Parkhäusern) ein zerstörungsarmes, materialtechnisches Vorgehen. Die Schonung der tragenden Substanz, die regelmäßige Überprüfung der Standsicherheit (VDI 6200) sowie die zuverlässige Lokalisierung von Schadensfronten (Karbonatisierungstiefe, Chlorideintragstiefe) stehen im Mittelpunkt.
           </p>
         </div>
 
@@ -229,10 +231,10 @@ export default function Probenahme() {
                     <label className="block text-xs font-bold text-slate-700">Wählen Sie Ihr Bauteil zur Analyse:</label>
                     <div className="grid grid-cols-2 gap-2">
                       {[
-                        { id: 'pier', label: 'Brückenpfeiler', exp: 'Splash zone / Carbonation' },
-                        { id: 'deck', label: 'Parkdeck-Platte', exp: 'Severe chlorides' },
-                        { id: 'wall', label: 'Kellerwand', exp: 'Moisture & Ground salt' },
-                        { id: 'balcony', label: 'Balkonplatte', exp: 'Carbonation / Concrete cover' }
+                        { id: 'pier', label: 'Brückenpfeiler', exp: 'Spritzwasser / Karbonatisierung' },
+                        { id: 'deck', label: 'Parkdeck-Platte', exp: 'Hoher Chlorideintrag' },
+                        { id: 'wall', label: 'Kellerwand', exp: 'Feuchte & bauschädliche Salze' },
+                        { id: 'balcony', label: 'Balkonplatte', exp: 'Karbonatisierung / Betondeckung' }
                       ].map((b) => (
                         <button
                           key={b.id}
@@ -255,27 +257,27 @@ export default function Probenahme() {
                       let locations = '';
                       let prepSteps = '';
                       if (elemType === 'pier') {
-                        recommendPoints = 'Mindestens 4-6 Probestellen';
-                        locations = 'Bereich Spritzwasserkanal (0-1,5m über Terrain), unberegnete Unterseiten (Carbonatisierungs-Hotspot).';
+                        recommendPoints = 'Orientierungswert: 4–6 Probestellen je Pfeiler';
+                        locations = 'Spritzwasserbereich (ca. 0–1,5 m über Gelände bzw. Fahrbahn), unberegnete, trockene Flächen (dort schreitet die Karbonatisierung am schnellsten fort).';
                         prepSteps = 'Bewehrungsscan mit Covermeter zwingend vorab, Entfernung von Streusalzkrusten trocken mit Drahtbürste.';
                       } else if (elemType === 'deck') {
-                        recommendPoints = 'Mindestens 6-8 Probestellen pro Fahrgassenabschnitt';
-                        locations = 'Tiefpunkte im Gefälle, Entwässerungsrinnen, Thermische Fugenübergänge, Risszonen am Stützenkopf.';
+                        recommendPoints = 'Orientierungswert: 6–8 Probestellen je Fahrgassenabschnitt';
+                        locations = 'Tiefpunkte im Gefälle, Entwässerungsrinnen, Fugenübergänge, Risszonen über den Stützen und Stützenfüße.';
                         prepSteps = 'Entfernen der OS-Dichtungsbeschichtung mittels Fräse/Schleifwerkzeug im Durchmesser von ca. 150 mm.';
                       } else if (elemType === 'wall') {
-                        recommendPoints = 'Mindestens 3 Stellen pro Wandachse';
+                        recommendPoints = 'Orientierungswert: 3 Stellen je Wandachse';
                         locations = 'Horizontaldichtungsebene, erdberührende Sockelbereiche (Dränagewasser-Einfluss), Rissverläufe.';
                         prepSteps = 'Abklopfen hohler Putzschichten; getrennte Beprobung von Mörtelfuge und Ziegelkörper, um Verfälschungen auszuschließen.';
                       } else {
-                        recommendPoints = 'Mindestens 3 Probestellen';
+                        recommendPoints = 'Orientierungswert: 3 Probestellen';
                         locations = 'Balkonschnittkante (Tropfnasen-Bereich), freibewitterte Hauptfläche, Einspannungsquerschnitt am Wandanschluss.';
-                        prepSteps = 'Sondierung der tatsächlichen geringen Betondeckung, vorsichtiger Meißelabstich zur Feststellung der Karbonatisierung.';
+                        prepSteps = 'Messung der tatsächlichen Betondeckung; Karbonatisierungstiefe an frischer Bruch- oder Spaltfläche mit Phenolphthalein-Lösung bestimmen.';
                       }
 
                       return (
                         <div className="bg-white border border-home-grau/30 rounded-lg p-3 space-y-2.5 text-xs text-slate-705">
                           <div>
-                            <span className="text-[9px] uppercase font-bold text-slate-400 block">Empfohlene Probenanzahl:</span>
+                            <span className="text-[9px] uppercase font-bold text-slate-400 block">Empfohlene Probenanzahl (Lehr-Richtwert – maßgebend ist der objektspezifische Prüfplan):</span>
                             <strong className="text-slate-950 mt-0.5 block">{recommendPoints}</strong>
                           </div>
                           <div>
@@ -312,13 +314,13 @@ export default function Probenahme() {
                     <div className="flex gap-2">
                       <div className="bg-shiraz/10 text-shiraz font-bold rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">1</div>
                       <p className="text-xs text-text-main/80 leading-relaxed">
-                        <strong>Die Dreifach-Regel (d ≥ 3 · D_max):</strong> Ist der Kerndurchmesser kleiner als das Dreifache des nominalen Größtkorns der Gesteinskörnung, treten beim Belastungsversuch unnatürliche Spannungskonzentrationen auf. Einzelne große Kieselsteine verhalten sich im schmalen Zylinder wie starre Fremdkörper, was zu extremer Streuung und Verfälschung der Festigkeit nach unten führt.
+                        <strong>Die Dreifach-Regel (d ≥ 3 · D_max):</strong> Ist der Kerndurchmesser kleiner als das Dreifache des Größtkorns der Gesteinskörnung, wirken einzelne große Körner im schmalen Zylinder wie Störkörper – die Ergebnisse streuen stark. Regelkerne haben d = 100 mm oder 150 mm; kleinere Kerne (z. B. 50 mm) lässt DIN EN 13791 nur mit erhöhter Probenanzahl zu.
                       </p>
                     </div>
                     <div className="flex gap-2">
                       <div className="bg-shiraz/10 text-shiraz font-bold rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">2</div>
                       <p className="text-xs text-text-main/80 leading-relaxed">
-                        <strong>Schlankheitseinfluss (h/d-Verhältnis):</strong> Die Stahlplatten der Prüfpresse behindern die Querdehnung des Betonkerns an den Endflächen durch Reibung. Bei kurzen Kernen (h/d ≈ 1) stützt dieser Effekt den Kern weitgehend, was zu Überhöhung führt (Würfeldruckfestigkeit). Erst bei langen Zylindern (h/d = 2) herrscht im Mittelbereich ein reiner einachsiger Spannungszustand (Zylinderdruckfestigkeit).
+                        <strong>Schlankheitseinfluss (h/d-Verhältnis):</strong> Die Stahlplatten der Prüfpresse behindern die Querdehnung des Betonkerns an den Endflächen durch Reibung. Bei kurzen Kernen (h/d = 1) stützt dieser Effekt den Kern weitgehend; das Ergebnis entspricht nach DIN EN 13791 einer In-situ-<em>Würfel</em>druckfestigkeit. Erst bei h/d = 2 herrscht im Mittelbereich ein nahezu einachsiger Spannungszustand – das Ergebnis entspricht der In-situ-<em>Zylinder</em>druckfestigkeit.
                       </p>
                     </div>
                     <div className="flex gap-2">
@@ -344,8 +346,8 @@ export default function Probenahme() {
                       >
                         <option value="8">8 mm (z.B. Estrich / Feinkorn)</option>
                         <option value="16">16 mm (Standard-Beton)</option>
-                        <option value="22">22 mm (Grobbahn-Beton)</option>
-                        <option value="32">32 mm (Sehr grober Massenbeton)</option>
+                        <option value="22">22 mm (Konstruktionsbeton, grobe Sieblinie)</option>
+                        <option value="32">32 mm (Grobkorn, z. B. Massenbeton)</option>
                       </select>
                     </div>
 
@@ -382,9 +384,20 @@ export default function Probenahme() {
                       const tripleRequired = 3 * dMax;
                       const passesAgg = coreD >= tripleRequired;
                       const lambda = coreH / coreD;
-                      let correctionFactor = 1.5 / (0.3 + 1.2 / lambda);
-                      if (correctionFactor > 1.25) correctionFactor = 1.25;
-                      if (correctionFactor < 0.85) correctionFactor = 0.85;
+                      // Umrechnung auf h/d = 2 (Literaturansatz ASTM C42/C42M, Tabelle der Korrekturfaktoren;
+                      // DIN EN 13791 regelt nur h/d = 1 (→ Würfel) und h/d = 2 (→ Zylinder)).
+                      const astmStuetz: [number, number][] = [[1.0, 0.87], [1.25, 0.93], [1.5, 0.96], [1.75, 0.98], [2.0, 1.0]];
+                      let correctionFactor = NaN;
+                      if (lambda >= 1.0 && lambda <= 2.0) {
+                        for (let i = 0; i < astmStuetz.length - 1; i++) {
+                          const [l0, k0] = astmStuetz[i];
+                          const [l1, k1] = astmStuetz[i + 1];
+                          if (lambda >= l0 && lambda <= l1) {
+                            correctionFactor = k0 + (k1 - k0) * (lambda - l0) / (l1 - l0);
+                            break;
+                          }
+                        }
+                      }
 
                       return (
                         <div className="bg-white p-3 rounded-lg border border-home-grau/30 space-y-2.5 mt-2 leading-relaxed text-[11px] text-slate-705">
@@ -402,13 +415,13 @@ export default function Probenahme() {
                               <span className="text-[9px] text-slate-400 block font-bold leading-none">Schlankheit λ = h/d:</span>
                               <strong className="font-mono text-xs block mt-1">{formatDeZahl(lambda, 2)}</strong>
                               <span className="text-[9px] text-slate-500 block leading-tight mt-0.5">
-                                ({lambda === 1.0 ? 'Würfelform' : lambda === 2.0 ? 'Zylinderform' : 'Gezerrte Geometrie'})
+                                ({lambda === 1.0 ? 'entspricht Würfel (DIN EN 13791)' : lambda === 2.0 ? 'entspricht Zylinder (DIN EN 13791)' : lambda < 1.0 ? 'zu kurz – nicht prüfbar' : lambda > 2.0 ? 'zu lang – auf h/d = 2 kürzen' : 'Zwischenwert – Umrechnung nötig'})
                               </span>
                             </div>
                             <div>
                               <span className="text-[9px] text-slate-400 block font-bold leading-none">Umrechnungsfaktor:</span>
                               <strong className="font-mono text-xs text-indigo-700 block mt-1">{formatDeZahl(correctionFactor, 3)}</strong>
-                              <span className="text-[9px] text-slate-500 block leading-tight mt-0.5">nach DIN EN 12504-1</span>
+                              <span className="text-[9px] text-slate-500 block leading-tight mt-0.5">auf h/d = 2 (Literaturansatz ASTM C42; nur für 1 ≤ h/d ≤ 2)</span>
                             </div>
                           </div>
                         </div>
@@ -443,13 +456,13 @@ export default function Probenahme() {
                     <div className="flex gap-2">
                       <div className="bg-shiraz/10 text-shiraz font-bold rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">✔</div>
                       <p className="text-xs text-text-main/80 leading-relaxed">
-                        <strong>Verschleppungsverbot &amp; Stufenbohrung:</strong> Wird ein Bohrloch tiefer getrieben, rieselt hochbelastetes Bohrmehl von der Oberfläche hinab. Bei der stufenweisen Probe (z.B. alle und exakt 10 mm) muss vor jedem tieferen Schritt das Loch penibelst staubfrei ausgesaugt und die Bohrkrone abgebürstet werden (Vermeidung von Verschleppungsfehlern).
+                        <strong>Verschleppungsverbot &amp; Stufenbohrung:</strong> Wird ein Bohrloch tiefer getrieben, rieselt hochbelastetes Bohrmehl von der Oberfläche hinab. Bei der stufenweisen Probe (z. B. in Tiefenstufen von 10 mm) muss vor jedem tieferen Schritt das Loch penibelst staubfrei ausgesaugt und die Bohrkrone abgebürstet werden (Vermeidung von Verschleppungsfehlern).
                       </p>
                     </div>
                     <div className="flex gap-2">
                       <div className="bg-shiraz/10 text-shiraz font-bold rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">✔</div>
                       <p className="text-xs text-text-main/80 leading-relaxed">
-                        <strong>Erforderliches Mindestprobengewicht (Min. 5g - 10g):</strong> Für die quantitative nasschemische Laboranalyse (z.B. argentometrische Titration nach Charpentier-Volhard) müssen mindestens 5g Zementstein-reichen Bohrmehls vorliegen. Bei geringen Bohrdurchmessern müssen daher mehrere benachbarte Löcher für denselben Tiefenbereich vereinigt werden.
+                        <strong>Ausreichende Probenmenge (Richtwert ≥ 5 g je Tiefenstufe):</strong> Für die nasschemische Bestimmung des Chloridgehalts (Aufschluss mit Salpetersäure und Titration nach DIN EN 14629, z. B. potentiometrisch oder nach Volhard) muss genügend Bohrmehl vorliegen; die konkrete Mindestmenge legt das Prüflabor fest. Bei geringen Bohrdurchmessern müssen daher mehrere benachbarte Löcher für denselben Tiefenbereich vereinigt werden.
                       </p>
                     </div>
                   </div>
@@ -487,7 +500,7 @@ export default function Probenahme() {
                     <div>
                       <div className="flex justify-between font-bold text-slate-700 mb-1">
                         <span>Vereinigte Bohrungen (N):</span>
-                        <span className="text-shiraz font-mono font-bold">{numHoles} Löcher</span>
+                        <span className="text-shiraz font-mono font-bold">{formatDeWert(numHoles)} Löcher</span>
                       </div>
                       <input
                         type="range" min="1" max="5" step="1"
@@ -525,7 +538,7 @@ export default function Probenahme() {
                           </div>
                           {!isValidWeight && (
                             <p className="text-[9.5px] text-red-500 font-medium leading-tight pt-1">
-                              Die gewonnene Menge liegt unter dem nasschemischen Analyselimit von 5 g. Es sollte der Bohrdurchmesser vergrößert oder mehr Löcher vereinigt werden, um repräsentative Zementsteingehalte zu sichern.
+                              Die gewonnene Menge liegt unter dem hier angesetzten Richtwert von 5 g. Es sollte der Bohrdurchmesser vergrößert oder mehr Löcher vereinigt werden, um repräsentative Zementsteingehalte zu sichern.
                             </p>
                           )}
                         </div>
@@ -542,7 +555,7 @@ export default function Probenahme() {
                 <Gauge className="text-shiraz" size={20} /> 4. Rückprallhammer: Untergrundpräparation &amp; Korrekturen
               </h3>
               <p className="text-sm text-text-main/80 leading-relaxed mb-4">
-                Der Schmidt-Rückprallhammer dient der schnellen, zerstörungsfreien Abschätzung der Beton-Gleichmäßigkeit und Druckfestigkeit im Bestand. Die gemessene Härte (Rebound-Wert R) reagiert jedoch hochsensibel auf Oberflächenstörungen.
+                Der Rückprallhammer (Schmidt-Hammer, DIN EN 12504-2) dient vor allem der schnellen, zerstörungsfreien Beurteilung der Gleichmäßigkeit des Betons; eine Festigkeitsschätzung ist nur über eine Kalibrierung an Bohrkernen nach DIN EN 13791 zulässig. Die gemessene Härte (Rebound-Wert R) reagiert jedoch hochsensibel auf Oberflächenstörungen.
               </p>
 
               <div className="grid md:grid-cols-2 gap-6 mt-4 pb-4">
@@ -554,19 +567,19 @@ export default function Probenahme() {
                     <div className="flex gap-2">
                       <div className="bg-shiraz/10 text-shiraz font-bold rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">▲</div>
                       <p className="text-xs text-text-main/80 leading-relaxed">
-                        <strong>Der fatale Karbonatisierungsfehler (Karbonatisierungshaut):</strong> Atmosphärisches CO₂ wandelt weiches Calciumhydroxid an der Betonoberfläche in hartes Calciumcarbonat (CaCO₃) um. Diese dichte Sinterschicht bläht den Rückprall-Index künstlich auf. Die gemessene Festigkeit kann dadurch <strong>um bis zu 50 % höher</strong> erscheinen als die wahre Kernfestigkeit im Inneren! Vor dem Test muss die Karbonatisierungstiefe gemessen und die Oberfläche an der Prüfstelle zwingend mindestens 5–10 mm blank geschliffen werden.
+                        <strong>Der Karbonatisierungsfehler (Karbonatisierungshaut):</strong> Atmosphärisches CO₂ wandelt Calciumhydroxid in der Randzone in Calciumcarbonat (CaCO₃) um. Die dichtere, härtere Randzone erhöht den Rückprallwert – bei älterem Beton mit tiefer Karbonatisierung wird die Festigkeit ohne Kalibrierung deutlich überschätzt. Die Prüffläche wird nach DIN EN 12504-2 nur mit einem Schleifstein geglättet; die Karbonatisierungsschicht bleibt dabei erhalten. Deshalb wird die Karbonatisierungstiefe mitgemessen und der Einfluss über Vergleichsbohrkerne (DIN EN 13791) erfasst.
                       </p>
                     </div>
                     <div className="flex gap-2">
                       <div className="bg-shiraz/10 text-shiraz font-bold rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">▲</div>
                       <p className="text-xs text-text-main/80 leading-relaxed">
-                        <strong>Winkelkorrektur (Gravitations-Einfluss):</strong> Die Erdbeschleunigung wirkt auf die innere Masse des Hammers ein. Schlägt man senkrecht nach unten (Bodenplatte), beschleunigt die Schwerkraft die Schlagmasse mit, was den Wert scheinbar erhöht. Schlägt man gegen eine Decke (nach oben), bremst die Schwerkraft. Die Auswertung darf nur mit korrigierten Kurvenscharen (Winkelkorrekturen nach EN 13791) erfolgen.
+                        <strong>Winkelkorrektur (Gravitations-Einfluss):</strong> Die Schwerkraft wirkt auf den zurückprallenden Schlagbolzen. Schlägt man senkrecht nach unten (Bodenplatte), muss die Masse gegen die Schwerkraft zurückprallen – der Wert fällt zu <em>niedrig</em> aus, die Korrektur ist positiv. Gegen eine Decke (nach oben) unterstützt die Schwerkraft den Rückprall – der Wert fällt zu <em>hoch</em> aus, die Korrektur ist negativ. Die Korrekturwerte sind gerätespezifisch (Bedienungsanleitung des Herstellers); bei Kalibrierung nach DIN EN 13791 wird in derselben Schlagrichtung kalibriert.
                       </p>
                     </div>
                     <div className="flex gap-2">
                       <div className="bg-shiraz/10 text-shiraz font-bold rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">▲</div>
                       <p className="text-xs text-text-main/80 leading-relaxed">
-                        <strong>Grid-Impacts &amp; Ausreißer-Filterung:</strong> Ein einzelner Schlag hat keine Aussagekraft. Stets muss ein dichtes Feld (z.B. 10x10 cm mit mind. 9 bis 12 Einschlägen) gewählt werden. Ein Einzelschlag auf ein großes Kieselstein-Aggregat führt zu einem Ausreißer nach oben; ein Schlag auf einen Porenhohlraum bricht ein. Ausreißer außerhalb der Standardabweichung müssen statistisch gelöscht werden.
+                        <strong>Messfeld &amp; Auswertung nach DIN EN 12504-2:</strong> Ein einzelner Schlag hat keine Aussagekraft. Je Prüffläche (ca. 300 mm × 300 mm) werden mindestens 9 Schläge mit mindestens 25 mm Abstand zueinander und zum Rand ausgeführt. Kennwert ist der <strong>Median</strong>. Weichen mehr als 20 % der Einzelwerte um mehr als 25 % vom Median ab, wird die gesamte Messreihe verworfen. Schläge, die eine oberflächennahe Pore eindrücken, werden nicht gewertet.
                       </p>
                     </div>
                   </div>
@@ -579,8 +592,8 @@ export default function Probenahme() {
                   <div className="space-y-3.5 text-xs">
                     <div>
                       <div className="flex justify-between font-bold text-slate-700 mb-1">
-                        <span>Rohwert Rückprall (R_raw):</span>
-                        <span className="text-shiraz font-mono font-bold">{formatDeWert(rawR)} Skl.</span>
+                        <span>Rohwert Rückprall (Median R):</span>
+                        <span className="text-shiraz font-mono font-bold">{formatDeWert(rawR)} Skt.</span>
                       </div>
                       <input
                         type="range" min="20" max="55" step="1"
@@ -626,14 +639,23 @@ export default function Probenahme() {
                     </div>
 
                     {(() => {
+                      // Winkelkorrektur: typische Herstellerwerte für Schmidt-Hammer Typ N (gerätespezifisch!),
+                      // linear interpoliert zwischen R = 20 und R = 60.
+                      // Nach unten (−90°): Rückprall gegen die Schwerkraft → R zu niedrig → Korrektur positiv.
+                      // Nach oben (+90°): Rückprall mit der Schwerkraft → R zu hoch → Korrektur negativ.
+                      const rKlemm = Math.min(60, Math.max(20, rawR));
+                      const interpol = (a20: number, a60: number) => a20 + (a60 - a20) * (rKlemm - 20) / 40;
                       let angleCorr = 0;
-                      if (impactAngle === -90) angleCorr = -2.5;
-                      else if (impactAngle === 90) angleCorr = 3.2;
+                      if (impactAngle === -90) angleCorr = interpol(3.4, 1.7);
+                      else if (impactAngle === 90) angleCorr = interpol(-5.4, -2.3);
 
+                      // Karbonatisierung: Lehrmodell (−0,15 Skt. je mm, max. −6 Skt.). Kein Normansatz –
+                      // in der Praxis wird der Einfluss über Vergleichsbohrkerne (DIN EN 13791) kalibriert.
                       let carbCorr = carbX > 0 ? -0.15 * carbX : 0;
                       if (carbCorr < -6.0) carbCorr = -6.0;
 
                       const finalR = rawR + angleCorr + carbCorr;
+                      // Festigkeitsschätzung: lineare Lehr-Näherung f ≈ 1,4·R − 20 (nicht normativ).
                       const rawEstStr = Math.max(10, (rawR * 1.4) - 20);
                       const finalEstStr = Math.max(10, (finalR * 1.4) - 20);
 
@@ -642,27 +664,30 @@ export default function Probenahme() {
                           <div className="flex justify-between items-center pb-1 border-b border-home-grau/30 text-shiraz font-bold">
                             <span>Ergebnis-Klassifizierung:</span>
                             <span className="font-mono text-slate-900 font-bold text-xs">
-                              True R = {formatDeZahl(finalR, 1)}
+                              R korr. = {formatDeZahl(finalR, 1)}
                             </span>
                           </div>
                           <div className="space-y-1 text-slate-600 text-[10px]">
                             <div className="flex justify-between">
-                              <span>Korrektur Karbonatisierung:</span>
-                              <strong className="font-semibold text-rose-800">{formatDeZahl(carbCorr, 1)} Skl.</strong>
+                              <span>Korrektur Karbonatisierung (Lehrmodell):</span>
+                              <strong className="font-semibold text-rose-800">{formatDeZahl(carbCorr, 1)} Skt.</strong>
                             </div>
                             <div className="flex justify-between">
-                              <span>Korrektur Winkel (Schwerkraft):</span>
-                              <strong className="font-semibold text-indigo-800">{angleCorr > 0 ? `+${formatDeZahl(angleCorr, 1)}` : formatDeZahl(angleCorr, 1)} Skl.</strong>
+                              <span>Korrektur Winkel (Herstellerrichtwert):</span>
+                              <strong className="font-semibold text-indigo-800">{angleCorr > 0 ? `+${formatDeZahl(angleCorr, 1)}` : formatDeZahl(angleCorr, 1)} Skt.</strong>
                             </div>
                             <div className="flex justify-between border-t border-home-grau/30 pt-1 text-[11px] text-slate-850">
-                              <span className="font-bold">Scheinbare Festigkeit (Roh):</span>
+                              <span className="font-bold">Schätzung aus Rohwert (Lehr-Näherung):</span>
                               <span className="font-mono text-red-650 font-bold">~{formatDeZahl(rawEstStr, 0)} MPa</span>
                             </div>
                             <div className="flex justify-between text-[11px] text-slate-850">
-                              <span className="font-bold">Tatsächliche Festigkeit (Korrigiert):</span>
+                              <span className="font-bold">Schätzung aus korrigiertem R (Lehr-Näherung):</span>
                               <span className="font-mono text-emerald-700 font-bold">~{formatDeZahl(finalEstStr, 0)} MPa</span>
                             </div>
                           </div>
+                          <p className="text-[9.5px] text-slate-500 leading-tight pt-1">
+                            Lehrmodell: Winkelkorrektur nach typischen Herstellertabellen, Karbonatisierungsabzug und Festigkeitsgerade sind didaktische Näherungen. Eine belastbare Festigkeitsaussage ist nur mit einer Beziehung aus Vergleichsbohrkernen nach DIN EN 13791 möglich.
+                          </p>
                         </div>
                       );
                     })()}
@@ -681,38 +706,91 @@ export default function Probenahme() {
         )}
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <div className="flex flex-col gap-6">
+        <FormulaDerivationBox
+          title="Beispiel 1: Reicht das Bohrmehl einer Tiefenstufe für die Chloridanalyse?"
+          zielGleichung="m = n \cdot \pi \cdot \left(\frac{D_b}{2}\right)^2 \cdot \Delta z \cdot \rho"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Parkdeckstütze, Bohrdurchmesser D_b = 16 mm, Tiefenstufe Δz = 10 mm, Rohdichte des Bohrmehls als Beton ρ ≈ 2,2 g/cm³, Richtwert des Labors: mindestens 5 g je Stufe.', formel: 'D_b = 1{,}6\\,\\text{cm},\\quad \\Delta z = 1{,}0\\,\\text{cm}' },
+            { titel: 'Volumen je Bohrloch', erklaerung: 'Zylindervolumen der Tiefenstufe:', formel: 'V = \\pi \\cdot 0{,}8^2 \\cdot 1{,}0 = 2{,}01\\,\\text{cm}^3' },
+            { titel: 'Masse je Bohrloch', erklaerung: 'Ein einzelnes Loch liefert zu wenig Material:', formel: 'm_1 = 2{,}01 \\cdot 2{,}2 = 4{,}42\\,\\text{g} < 5\\,\\text{g}' },
+            { titel: 'Zwei Bohrlöcher vereinigen', erklaerung: 'Das Bohrmehl zweier benachbarter Löcher derselben Tiefenstufe wird zu einer Probe vereinigt:', formel: 'm_2 = 2 \\cdot 4{,}42 = 8{,}85\\,\\text{g} \\geq 5\\,\\text{g}' }
+          ]}
+          ergebnisHinweis="Jede Tiefenstufe braucht zwei vereinigte Bohrungen. Zwischen den Stufen das Loch aussaugen, sonst verschleppt hochbelastetes Mehl aus der Randzone in die tieferen Proben."
+          normQuelle="DIN EN 14629:2007-06 (Chloridbestimmung); Mengenrichtwert laborabhängig"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 2: Bohrkern mit h/d = 1,5 auf Zylinderfestigkeit umrechnen"
+          zielGleichung="f_{c,\,h/d=2} = k(\lambda) \cdot f_{core},\quad \lambda = h/d"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Bohrkern aus einer Decke, d = 100 mm, nach dem Planschleifen h = 150 mm, Größtkorn D_max = 16 mm, gemessene Bruchspannung f_core = 35,0 N/mm².', formel: 'd \\geq 3 \\cdot D_{max} = 48\\,\\text{mm} \\;\\checkmark' },
+            { titel: 'Schlankheit', erklaerung: 'Der Kern liegt zwischen den beiden in DIN EN 13791 geregelten Fällen h/d = 1 (Würfel) und h/d = 2 (Zylinder):', formel: '\\lambda = \\frac{150}{100} = 1{,}5' },
+            { titel: 'Korrekturfaktor', erklaerung: 'Literaturansatz ASTM C42 für die Umrechnung auf h/d = 2:', formel: 'k(1{,}5) = 0{,}96' },
+            { titel: 'Ergebnis', erklaerung: 'Gleichwertige Zylinderdruckfestigkeit dieses einen Kerns:', formel: 'f_{c,\\,h/d=2} = 0{,}96 \\cdot 35{,}0 = 33{,}6\\,\\text{N/mm}^2' }
+          ]}
+          ergebnisHinweis="Ein Einzelkern ist kein Festigkeitsnachweis. Die charakteristische In-situ-Festigkeit wird nach DIN EN 13791 aus mehreren Kernen eines Prüfbereichs statistisch ermittelt."
+          normQuelle="DIN EN 12504-1:2021-02, DIN EN 13791:2020-02; Faktor k nach ASTM C42/C42M (Literaturansatz)"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 3: Rückprallwert an einer Deckenunterseite korrigieren"
+          zielGleichung="R_{korr} = R_{Median} + \Delta R_{\alpha}"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Prüffläche an einer Deckenunterseite, Schlagrichtung nach oben (α = +90°), Median aus 9 gültigen Schlägen: R = 36.', formel: 'R_{Median} = 36' },
+            { titel: 'Richtung der Korrektur', erklaerung: 'Nach oben unterstützt die Schwerkraft den Rückprall – der Wert ist zu hoch, die Korrektur also negativ.', formel: '\\Delta R_{\\alpha} < 0' },
+            { titel: 'Korrekturwert (Herstellertabelle, interpoliert)', erklaerung: 'Typische Werte Typ N: −5,4 bei R = 20 und −2,3 bei R = 60:', formel: '\\Delta R_{\\alpha} = -5{,}4 + 3{,}1 \\cdot \\frac{36-20}{40} = -4{,}2' },
+            { titel: 'Ergebnis', erklaerung: 'Auf horizontale Schlagrichtung bezogener Rückprallwert:', formel: 'R_{korr} = 36 - 4{,}2 = 31{,}8' }
+          ]}
+          ergebnisHinweis="Die Korrekturwerte sind gerätespezifisch. Für eine Festigkeitsaussage wird R mit Vergleichsbohrkernen derselben Bauteile kalibriert (DIN EN 13791)."
+          normQuelle="DIN EN 12504-2:2021-10 (Durchführung, Median); Korrekturwerte nach Herstellerangaben"
+        />
+      </div>
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="probenahme" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Probenahme', url: 'https://de.wikipedia.org/wiki/Probenahme' },
           { title: 'Bauwerksdiagnostik', url: 'https://de.wikipedia.org/wiki/Bauwerksdiagnostik' },
-          { title: 'Betonprüfhammer', url: 'https://de.wikipedia.org/wiki/Betonpr%C3%BCfhammer' }
+          { title: 'Rückprallhammer', url: 'https://de.wikipedia.org/wiki/R%C3%BCckprallhammer' }
         ]}
         literatur={[
-          'Ersatzbaustoffverordnung (EBV) - Verordnung über Anforderungen an den Einbau von mineralischen Ersatzbaustoffen in technische Bauwerke (BGBl. I)',
-          'LAGA PN 98: Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen',
+          'Ersatzbaustoffverordnung (EBV) vom 09.07.2021 (BGBl. I S. 2598), in Kraft seit 01.08.2023 – § 8 Probenahme',
+          'LAGA PN 98: Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen (Stand Mai 2019)',
+          'ASTM C42/C42M: Standard Test Method for Obtaining and Testing Drilled Cores and Sawed Beams of Concrete (Korrekturfaktoren für h/d < 2)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'Ersatzbaustoffverordnung (EBV) 2023 - Anhang 1: Probenahme', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
+          { title: 'Ersatzbaustoffverordnung (EBV) – § 8 Probenahme und Probenaufbereitung', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/__8.html' },
           { title: 'LAGA PN 98 (Beprobung von Haufwerken - Richtlinie für das Vorgehen)', url: 'https://www.laga-online.de/' },
-          { title: 'DIN 19698-1:2014-05 (Untersuchung von Feststoffen - Probenahme aus Haufwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19698-1' },
-          { title: 'DIN 19528:2009-01 (Eluierungsverfahren für anorganische Schadstoffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19528' },
-          { title: 'DIN EN 12504-1:2021-04 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
-          { title: 'DIN EN 12504-2:2021-11 (Prüfung von Beton in Bauwerken - Teil 2: Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' }
+          { title: 'DIN 19698-1:2014-05 / DIN 19698-2:2016-12 (Probenahme von festen und stichfesten Materialien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19698-1' },
+          { title: 'DIN 19747:2009-07 (Probenvorbehandlung, -vorbereitung und -aufarbeitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19747' },
+          { title: 'DIN EN 932-1:1996-11 / DIN EN 932-2:1999-03 (Gesteinskörnungen – Probenahme; Einengen von Laboratoriumsproben)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+932-2' },
+          { title: 'DIN 19528:2009-01 (Elution von Feststoffen – Perkolationsverfahren) / DIN 19529:2015-12 (Schüttelverfahren W/F = 2 l/kg)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19528' },
+          { title: 'DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
+          { title: 'DIN EN 12504-2:2021-10 (Prüfung von Beton in Bauwerken - Teil 2: Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
+          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der Druckfestigkeit von Beton in Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
+          { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehalts in Festbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629' }
         ]}
         formeln={[
           {
-            formel: 'd_{\\text{Kern}} \\ge 3 \\cdot d_{\\text{max}}',
-            erklaerung: 'Prüftechnische geometrische Mindestanforderung an den Bohrkerndurchmesser d_Kern bezüglich des maximalen Überkorns d_max der Gesteinskörnung zur Vermeidung von Festigkeitsstörungen.',
-            quelle: 'DIN EN 12504-1:2021-04'
+            formel: 'd_{\\text{Kern}} \\ge 3 \\cdot D_{\\text{max}}',
+            erklaerung: 'Geometrische Mindestanforderung an den Bohrkerndurchmesser d_Kern bezogen auf das Größtkorn D_max der Gesteinskörnung zur Begrenzung der Streuung.',
+            quelle: 'Fachregel; vgl. DIN EN 12504-1 / DIN EN 13791'
           },
           {
-            formel: 'f_{\\text{is}} = 0{,}85 \\cdot f_{\\text{core}} \\cdot K_{\\text{h}} \\cdot K_{\\text{d}}',
-            erklaerung: 'In-situ-Zylinderdruckfestigkeit f_is konvertiert aus der gemessenen Bohrkernfestigkeit f_core unter Berücksichtigung von Höhenfaktor K_h und Durchmesserfaktor K_d.',
-            quelle: 'DIN EN 13791:2020-02'
+            formel: 'f_{c,\\,h/d=2} = k(\\lambda) \\cdot f_{\\text{core}},\\quad \\lambda = h/d,\\; k(1{,}0) = 0{,}87 \\ldots k(2{,}0) = 1{,}00',
+            erklaerung: 'Umrechnung der Bohrkernfestigkeit f_core mit Schlankheit 1 ≤ h/d ≤ 2 auf die gleichwertige Festigkeit eines Kerns mit h/d = 2. DIN EN 13791 ordnet h/d = 1 der Würfel- und h/d = 2 der Zylinderdruckfestigkeit zu; Zwischenwerte nach Literaturansatz.',
+            quelle: 'ASTM C42/C42M; DIN EN 13791:2020-02'
+          },
+          {
+            formel: 'm = n \\cdot \\pi \\cdot (D_b/2)^2 \\cdot \\Delta z \\cdot \\rho',
+            erklaerung: 'Bohrmehlmasse je Tiefenstufe aus n vereinigten Bohrungen mit Durchmesser D_b, Stufenhöhe Δz und Rohdichte ρ.',
+            quelle: 'Geometrie; Probenahme nach DIN EN 14629'
           }
         ]}
+        lastReviewed="Oktober 2026 (AP 4 Labor: Probenahme nach EBV § 8/LAGA PN 98, Bohrkerne, Chloridbeprobung und Rückprallprüfung gegen DIN EN 12504-1/-2, DIN EN 13791 und DIN EN 14629 geprüft; fachliche Freigabe durch den Autor ausstehend)"
       />
     </div>
   );

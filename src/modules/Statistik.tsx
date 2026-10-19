@@ -17,6 +17,8 @@ import {
 } from 'chart.js';
 import { Scatter, Bar } from 'react-chartjs-2';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
@@ -277,7 +279,7 @@ export default function Statistik() {
         lowerBound = mean - threshold;
         upperBound = mean + threshold;
         isOutlierFn = (v) => v < lowerBound || v > upperBound;
-        thresholdDesc = `± 2σ`;
+        thresholdDesc = `± 2σ (Faustregel)`;
         formula = '\\mu \\pm 2\\sigma';
       } else if (outlierMethod === 'boxplot') {
         const q1 = sorted[Math.floor(n * 0.25)];
@@ -286,14 +288,23 @@ export default function Statistik() {
         lowerBound = q1 - 1.5 * iqr;
         upperBound = q3 + 1.5 * iqr;
         isOutlierFn = (v) => v < lowerBound || v > upperBound;
-        thresholdDesc = `1.5 IQR`;
-        formula = '[Q_1 - 1.5 \\cdot IQR, Q_3 + 1.5 \\cdot IQR]';
+        thresholdDesc = `1,5 IQR`;
+        formula = '[Q_1 - 1{,}5 \\cdot IQR,\\; Q_3 + 1{,}5 \\cdot IQR]';
       } else if (outlierMethod === 'grubbs') {
-        const gCrit = 2.409;
+        // Kritische Werte des Grubbs-Tests (einseitig, α = 5 %), z. B. ISO 5725-2 / ASTM E178;
+        // vereinfacht auf alle Werte angewendet (der strenge Test prüft iterativ nur den Extremwert).
+        const grubbsTab: [number, number][] = [[3, 1.153], [4, 1.463], [5, 1.672], [6, 1.822], [7, 1.938], [8, 2.032], [9, 2.110], [10, 2.176], [12, 2.285], [15, 2.409], [20, 2.557], [25, 2.663], [30, 2.745], [40, 2.866], [50, 2.956]];
+        let gCrit = grubbsTab[grubbsTab.length - 1][1];
+        if (n <= grubbsTab[0][0]) gCrit = grubbsTab[0][1];
+        for (let i = 0; i < grubbsTab.length - 1; i++) {
+          const [n0, g0] = grubbsTab[i];
+          const [n1, g1] = grubbsTab[i + 1];
+          if (n >= n0 && n <= n1) { gCrit = g0 + (g1 - g0) * (n - n0) / (n1 - n0); break; }
+        }
         lowerBound = mean - gCrit * stdDev;
         upperBound = mean + gCrit * stdDev;
         isOutlierFn = (v) => v < lowerBound || v > upperBound;
-        thresholdDesc = `Grubbs G > ${formatDeWert(gCrit)}`;
+        thresholdDesc = `Grubbs G > ${formatDeZahl(gCrit, 3)} (n = ${formatDeWert(n)})`;
         formula = '\\mu \\pm G_{crit} \\cdot \\sigma';
       }
     }
@@ -306,11 +317,21 @@ export default function Statistik() {
     const varianceClean = nClean > 1 ? cleanedValues.reduce((a, b) => a + Math.pow(b - meanClean, 2), 0) / (nClean - 1) : 0;
     const stdDevClean = Math.sqrt(varianceClean);
 
-    let kn = 2.0; 
-    if (nClean === 15) kn = 1.99;
-    else if (nClean === 14) kn = 2.01;
-    else if (nClean === 13) kn = 2.04;
-    else kn = 2.0;
+    // Fraktilfaktor k_n für das 5-%-Quantil bei unbekanntem Variationskoeffizienten
+    // nach DIN EN 1990, Anhang D, Tab. D1 (V_X unbekannt); Zwischenwerte linear in 1/n interpoliert.
+    const knTab: [number, number][] = [[3, 3.37], [4, 2.63], [5, 2.33], [6, 2.18], [8, 2.00], [10, 1.92], [20, 1.76], [30, 1.73], [Infinity, 1.64]];
+    let kn = NaN;
+    if (nClean >= 3) {
+      for (let i = 0; i < knTab.length - 1; i++) {
+        const [n0, k0] = knTab[i];
+        const [n1, k1] = knTab[i + 1];
+        if (nClean >= n0 && nClean <= n1) {
+          const inv = (x: number) => (Number.isFinite(x) ? 1 / x : 0);
+          kn = n1 === n0 ? k0 : k0 + (k1 - k0) * (inv(n0) - inv(nClean)) / (inv(n0) - inv(n1));
+          break;
+        }
+      }
+    }
 
     const xk = meanClean - kn * stdDevClean;
     
@@ -470,7 +491,7 @@ export default function Statistik() {
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Mathematisch-statistische Auswertung von Baustoffuntersuchungen zur Ermittlung von charakteristischen Festigkeitswerten nach DIN EN 1990.
+            Mathematisch-statistische Auswertung von Baustoffuntersuchungen zur Ermittlung charakteristischer Festigkeitswerte nach DIN EN 1990, Anhang D.
           </p>
         </div>
       </div>
@@ -513,8 +534,8 @@ export default function Statistik() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 font-medium">
             <p>
-              <strong>Statistische Auswertung von Materialkennwerten:</strong> Generieren Sie zufällige Stichproben für verschiedene Materialien und analysiere diese. 
-              Identifizieren Sie Ausreißer und berechne charakteristische Werte sowie Bemessungswerte nach EC0.
+              <strong>Statistische Auswertung von Materialkennwerten:</strong> Generieren Sie zufällige Stichproben für verschiedene Materialien und analysieren Sie diese. 
+              Identifizieren Sie Ausreißer und berechnen Sie charakteristische Werte sowie Bemessungswerte nach DIN EN 1990.
             </p>
           </div>
         </div>
@@ -893,8 +914,8 @@ export default function Statistik() {
               </div>
               <FormulaText text="\mu = \frac{1}{n} \sum_{i=1}^{n} x_i" />
               <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5">
-                Der physikalische <strong>Schwerpunkt</strong> bzw. Schwerpunkt des Waagebalkens. Jeder Wert zieht an der Waage. Ein extremer Ausreißer verschiebt den Mittelwert stark mit.
-                <span className="text-emerald-700 block mt-1 font-semibold">📈 Tipp: Schiebe Probe 6 ganz nach rechts (80) – beobachte den Mittelwert!</span>
+                Der <strong>Schwerpunkt</strong> der Werte – wie bei einem Waagebalken. Jeder Wert zieht an der Waage. Ein extremer Ausreißer verschiebt den Mittelwert stark mit.
+                <span className="text-emerald-700 block mt-1 font-semibold">📈 Tipp: Schieben Sie Probe 6 ganz nach rechts (80) und beobachten Sie den Mittelwert!</span>
               </p>
             </div>
 
@@ -917,7 +938,7 @@ export default function Statistik() {
                 Sortierte Messreihe: {intStats.sorted.map(x => x.toFixed(0)).join(', ')}
               </div>
               <p className="text-[11px] text-slate-605 leading-relaxed mt-1">
-                Teilt die sortierte Stichprobe exakt in <strong>zwei Hälften</strong> (50% kleiner, 50% größer). Der Median ist extrem <strong>ausreißerrobust</strong>. Egal wie hoch der Maximalwert ist – der Median bleibt ungerührt auf Platzmitte.
+                Teilt die sortierte Stichprobe exakt in <strong>zwei Hälften</strong> (50% kleiner, 50% größer). Der Median ist <strong>robust gegen Ausreißer</strong>: Egal wie hoch der Maximalwert ist – der Median bleibt in der Mitte der sortierten Reihe.
               </p>
             </div>
 
@@ -938,7 +959,7 @@ export default function Statistik() {
               </div>
               <FormulaText text="s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \mu)^2}" />
               <p className="text-[11px] text-slate-605 leading-relaxed mt-1.5">
-                Die mittlere Abweichung der Einzelwerte vom Mittelwert. Sie spannt das <strong>gestreifte orange Band</strong> im Diagramm auf. Je homogener die Werte (enger beieinander), desto geringer ist die Standardabweichung und desto schmaler das Band.
+                Ein Maß für die typische Abweichung der Einzelwerte vom Mittelwert (Wurzel aus der Varianz). Sie spannt das <strong>gestreifte orange Band</strong> im Diagramm auf. Je homogener die Werte (enger beieinander), desto geringer ist die Standardabweichung und desto schmaler das Band.
               </p>
             </div>
 
@@ -959,27 +980,56 @@ export default function Statistik() {
               </div>
               <FormulaText text="V = \frac{s}{\mu} \cdot 100\,\%" />
               <p className="text-[11px] text-slate-605 leading-relaxed mt-1.5">
-                Das relative Maß für die Streuung, normiert auf den Mittelwert. Macht die Streuung verschiedener Baustoffgüten direkt vergleichbar. Ein Baustellenbeton hat ca. 10–15 %, kontrollierter Werksbeton ca. 6 %, Konstruktionsstahl oft unter 5 %.
+                Das relative Maß für die Streuung, normiert auf den Mittelwert. Macht die Streuung verschiedener Baustoffgüten direkt vergleichbar. Richtwerte: Transportbeton bei guter Produktionskontrolle etwa 8–12 %, Betonstahl meist unter 5 %, Bauholz 15–25 % (Orientierungswerte).
               </p>
             </div>
 
           </div>
         </div>
 
+        {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+        <FormulaDerivationBox
+          title="Beispiel 1: Charakteristischer Wert aus 10 Bohrkernen"
+          zielGleichung="X_k = \bar{x} - k_n \cdot s,\qquad X_d = \frac{X_k}{\gamma_M}"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Zehn Bohrkerne aus einer Bestandsdecke, Mittelwert 38,2 N/mm², Standardabweichung 3,1 N/mm²; Variationskoeffizient vorab unbekannt.', formel: 'n = 10,\\quad \\bar{x} = 38{,}2,\\quad s = 3{,}1\\,\\text{N/mm}^2' },
+            { titel: 'Fraktilfaktor', erklaerung: 'DIN EN 1990, Anhang D, Tab. D1 (V_X unbekannt) für n = 10:', formel: 'k_n = 1{,}92' },
+            { titel: 'Charakteristischer Wert', erklaerung: '5-%-Quantil mit Aussagewahrscheinlichkeit nach Anhang D:', formel: 'X_k = 38{,}2 - 1{,}92 \\cdot 3{,}1 = 32{,}2\\,\\text{N/mm}^2' },
+            { titel: 'Bemessungswert (vereinfacht)', erklaerung: 'Mit γ_M = 1,5 (Beton) ohne weitere Beiwerte:', formel: 'X_d = \\frac{32{,}2}{1{,}5} = 21{,}5\\,\\text{N/mm}^2' }
+          ]}
+          ergebnisHinweis="Mit nur n = 3 Kernen wäre k_n = 3,37 und X_k = 27,8 N/mm² – mehr Proben lohnen sich, weil der Sicherheitsabschlag für die unsichere Streuung sinkt."
+          normQuelle="DIN EN 1990:2021-10, Anhang D, Tab. D1"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 2: Ist der Höchstwert ein Ausreißer? (Grubbs-Test)"
+          zielGleichung="G = \frac{|x_{ext} - \bar{x}|}{s} \;>\; G_{krit}(n,\alpha)"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'n = 10 Würfelergebnisse, Mittelwert 37,6 N/mm², s = 3,4 N/mm², verdächtiger Höchstwert 46,9 N/mm².', formel: 'x_{ext} = 46{,}9\\,\\text{N/mm}^2' },
+            { titel: 'Prüfgröße', erklaerung: 'Abstand des Extremwerts in Vielfachen der Standardabweichung:', formel: 'G = \\frac{46{,}9 - 37{,}6}{3{,}4} = 2{,}74' },
+            { titel: 'Vergleich', erklaerung: 'Kritischer Wert (einseitig, α = 5 %) für n = 10:', formel: 'G = 2{,}74 > G_{krit} = 2{,}18 \;\\Rightarrow\; \\text{auffällig}' }
+          ]}
+          ergebnisHinweis="Der Test zeigt nur statistische Auffälligkeit. Gestrichen werden darf der Wert erst, wenn eine technische Ursache belegt ist (z. B. Prüffehler, falsch gekennzeichneter Probekörper) – sonst verfälscht das Streichen die Streuung nach unten."
+          normQuelle="Grubbs-Test, kritische Werte z. B. nach ISO 5725-2"
+        />
+
+        {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+        <ModulTest moduleId="statistik" />
+
         <CalculatorDisclaimerBanner className="my-2" />
       <ModuleFooter 
+          lastReviewed="Oktober 2026 (AP 4 Labor: Lage- und Streumaße, Fraktilfaktoren nach DIN EN 1990 Anhang D, Ausreißertests geprüft; fachliche Freigabe durch den Autor ausstehend)"
           wikipedia={[
             { title: 'Statistik', url: 'https://de.wikipedia.org/wiki/Statistik' }
           ]}
           literatur={[
-            'Sachs, L.; Hedderich, J. (2018): Angewandte Statistik: Methodensammlung mit R (Springer-Verlag)',
+            'Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018',
             'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024',
-            'DIN EN 1990:2023-11: Eurocode - Grundlagen der Tragwerksplanung, Anhang D: Bemessung mit Hilfe von Versuchen'
+            'DIN EN 1990:2021-10: Eurocode – Grundlagen der Tragwerksplanung, Anhang D: Versuchsgestützte Bemessung'
           ]}
           regelwerke={[
-            { title: 'DIN EN 1990:2023-11 Anhang D (Versuchsgestützte Bemessung und statistische Auswertung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+            { title: 'DIN EN 1990:2021-10 mit NA, Anhang D (Versuchsgestützte Bemessung); Nachfolger DIN EN 1990 (EN 1990:2023) angekündigt', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
             { title: 'ISO 2394:2015 (General principles on reliability for structures)', url: 'https://www.iso.org/' },
-            { title: 'DIN ISO 12491:2000-09 (Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+12491' }
+            { title: 'ISO 12491:1997-05 (Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=ISO+12491' }
           ]}
           formeln={[
             {
@@ -1002,8 +1052,8 @@ export default function Statistik() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 font-medium font-sans">
             <p>
-              <strong>Statistische Auswertung von Materialkennwerten (Probengenerator):</strong> Generieren Sie zufällige Stichproben für verschiedene Materialien und analysiere diese. 
-              Identifizieren Sie Ausreißer und berechne charakteristische Werte sowie Bemessungswerte nach EC0.
+              <strong>Statistische Auswertung von Materialkennwerten (Probengenerator):</strong> Generieren Sie zufällige Stichproben für verschiedene Materialien und analysieren Sie diese. 
+              Identifizieren Sie Ausreißer und berechnen Sie charakteristische Werte sowie Bemessungswerte nach DIN EN 1990.
             </p>
           </div>
         </div>
@@ -1060,7 +1110,7 @@ export default function Statistik() {
                   disabled={testStatus === 'running'}
                   className="w-full p-2 border border-home-grau/30 rounded-lg bg-off-white text-sm"
                 >
-                  <option value="2sigma">± 2σ (Standardabweichung)</option>
+                  <option value="2sigma">± 2σ (Faustregel, kein Ausreißertest)</option>
                   <option value="boxplot">Boxplot (1,5 IQR)</option>
                   <option value="grubbs">Grubbs-Test (vereinfacht)</option>
                 </select>
@@ -1151,7 +1201,7 @@ export default function Statistik() {
                         </div>
                         {stats.outliers.length > 0 && (
                           <div className="mt-3 text-sm text-torch-red font-medium">
-                            {stats.outliers.length} Ausreißer gefunden und eliminiert.
+                            {formatDeWert(stats.outliers.length)} Wert(e) als Ausreißer markiert und von der Auswertung ausgeschlossen. In der Praxis nur mit technischer Begründung (z. B. Prüffehler) zulässig.
                           </div>
                         )}
                       </div>
@@ -1207,7 +1257,7 @@ export default function Statistik() {
                       </div>
 
                       <div className="bg-off-white p-4 rounded-xl border border-shiraz/20">
-                        <h4 className="text-sm font-bold text-shiraz mb-3">Bemessungswerte nach EC0</h4>
+                        <h4 className="text-sm font-bold text-shiraz mb-3">Bemessungswerte nach DIN EN 1990</h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div>
                             <div className="text-xs text-black font-bold uppercase">Bereinigter Mittelwert</div>
@@ -1217,12 +1267,12 @@ export default function Statistik() {
                           <div>
                             <div className="text-xs text-black font-bold uppercase">Charakt. Wert (X_k)</div>
                             <div className="text-xl font-bold text-fuchsia-600">{formatDeZahl(stats.xk, 1)}</div>
-                            <div className="text-xs text-black mt-1">5%-Fraktil (k_n = {formatDeWert(stats.kn)})</div>
+                            <div className="text-xs text-black mt-1">5-%-Quantil, DIN EN 1990 Tab. D1 (k_n = {formatDeZahl(stats.kn, 2)})</div>
                           </div>
                           <div>
                             <div className="text-xs text-black font-bold uppercase">Bemessungswert (X_d)</div>
                             <div className="text-xl font-bold text-torch-red">{formatDeZahl(stats.xd, 1)}</div>
-                            <div className="text-xs text-black mt-1">γ_M = {formatDeWert(stats.gammaM)}</div>
+                            <div className="text-xs text-black mt-1">γ_M = {formatDeZahl(stats.gammaM, 2)}{material === 'holz' ? ' (vereinfacht ohne k_mod nach DIN EN 1995-1-1)' : material === 'beton' ? ' (ohne α_cc)' : ''}</div>
                           </div>
                         </div>
                       </div>
@@ -1236,14 +1286,14 @@ export default function Statistik() {
       </div>
       
       <ModuleFooter 
+        lastReviewed="Oktober 2026 (AP 4 Labor: Probengenerator, Ausreißertests und Fraktilwerte geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
         { title: 'Statistik', url: 'https://de.wikipedia.org/wiki/Statistik' },
         { title: 'Statistische Versuchsplanung', url: 'https://de.wikipedia.org/wiki/Statistische_Versuchsplanung' }
       ]}
         literatur={[
-          'Montgomery, D. C. (2017): Design and Analysis of Experiments (John Wiley & Sons)',
-          'Sachs, L.; Hedderich, J. (2018): Angewandte Statistik (Springer-Verlag)',
-          'Wendehorst Bautechnische Zahlentafeln: Statistische Auswertungen und 5%-Fraktilwerte'
+          'Montgomery, D. C.: Design and Analysis of Experiments. 9th ed., Hoboken: Wiley 2017',
+          'Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018',
         ]}
         regelwerke={[
           { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },

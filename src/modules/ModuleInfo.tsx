@@ -204,18 +204,18 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Statistische Absicherung', desc: 'Beurteilung von Prozessdaten, Standardabweichung, Signifikanztests und Konformitätsnachweisen.' }
     ],
     submodules: [
-      { title: 'Probenahme & Erkundung', icon: FileSearch, purpose: 'Richtlinien zur repräsentativen Entnahme von Festbetonbohrkernen, Ziegeln oder Bodenproben.', standards: 'DIN EN 12504-1', useCase: 'Planung von Bohrkernentnahmen zur Absicherung historischer Mauerwerksfestigkeiten.' },
-      { title: 'Messen & Prüfen', icon: Scale, purpose: 'Übersicht physikalischer Messeinrichtungen, DMS, Kraftmessdosen und Laserinterferometer.', standards: 'DIN VDE V 0827-x', useCase: 'Auswahl sensitiver Wegaufnehmer für Rissmonitoring.' },
-      { title: 'Analytik & Diagnostik', icon: Microscope, purpose: 'Chemische Laborverfahren wie DTA/TG, Röntgendiffraktometrie und Rasterelektronenmikroskopie.', standards: 'Lehrbücher Analytische Chemie', useCase: 'Nachweis von Ettringit-Nadeln im rasterelektronenmikroskopischen Bild.' },
+      { title: 'Probenahme & Erkundung', icon: FileSearch, purpose: 'Repräsentative Beprobung von Haufwerken sowie Entnahme von Bohrkernen, Bohrmehl und Rückprallmessungen am Bauwerk.', standards: 'LAGA PN 98, DIN 19698-1, DIN EN 12504-1/-2, DIN EN 13791', useCase: 'Planung von Bohrkern- und Bohrmehlentnahmen an einer Parkdeckstütze.' },
+      { title: 'Messen & Prüfen', icon: Scale, purpose: 'Messtechnische Begriffe (Kalibrieren, Justieren, Eichen), Richtigkeit und Präzision, Messunsicherheit nach GUM und Eignungsprüfungen.', standards: 'JCGM 100 (GUM), ISO 5725-1, DIN ISO 13528, DIN EN ISO 7500-1', useCase: 'Unsicherheitsbudget einer Druckprüfung und Bewertung eines Ringversuchs (z-Score, En-Zahl).' },
+      { title: 'Analytik & Diagnostik', icon: Microscope, purpose: 'Chemische und mineralogische Laborverfahren wie TGA, Röntgendiffraktometrie, RFA, Porosimetrie und Rasterelektronenmikroskopie.', standards: 'DIN EN 14629, DIN ISO 15901-1, DIN EN 13925-1', useCase: 'Nachweis von Ettringit-Nadeln im rasterelektronenmikroskopischen Bild.' },
       { title: 'Mechanische Prüfungen', icon: ClipboardCheck, purpose: 'Durchführung zerstörender Festigkeitsprüfungen im Labor, Druckprüfmaschinen, Biegezugvorrichtungen.', standards: 'DIN EN 12390-3', useCase: 'Ermittlung der 28-Tage-Zylinderdruckfestigkeit.' },
-      { title: 'Virtuelle Versuche', icon: Beaker, purpose: 'Simulationen von Standardversuchen mit dynamischen Messreihen, Lastkurven und Rissbildung.', standards: 'Forschungsberichte MPA', useCase: 'Ermittlung der Spannungs-Dehnungs-Linie im interaktiven Zugversuch.' },
-      { title: 'Statistik & Auswertung', icon: BarChart3, purpose: 'Berechnung von Vertrauensbereichen, Quantilwerten und Gauß\'schen Normalverteilungen.', standards: 'DIN ISO 12491', useCase: 'Berechnung der charakteristischen 5%-Quantil-Festigkeit aus 10 Probekörpern.' },
-      { title: 'Festbeton (Statistik)', icon: BarChart3, purpose: 'Interaktive Konformitätskontrolle und statistische Festigkeitsauswertung von Beton-Güteserien.', standards: 'DIN EN 206 / DIN ISO 12491', useCase: 'Prüfung der Konformitätskriterien für Normal- oder Leichtbeton-Druckfestigkeit im Werk.' }
+      { title: 'Virtuelle Versuche', icon: Beaker, purpose: 'Lehrsimulationen von Standardversuchen mit Messreihen, Lastkurven und Rissbildung.', standards: 'DIN EN 12390, DIN EN 1542, DIN EN 12350, DIN EN 12504-2', useCase: 'Ermittlung der Spannungs-Dehnungs-Linie im interaktiven Zugversuch.' },
+      { title: 'Statistik & Auswertung', icon: BarChart3, purpose: 'Berechnung von Vertrauensbereichen, Quantilwerten und Gauß\'schen Normalverteilungen.', standards: 'DIN EN 1990, Anhang D; ISO 12491', useCase: 'Berechnung der charakteristischen 5%-Quantil-Festigkeit aus 10 Probekörpern.' },
+      { title: 'Festbeton (Statistik)', icon: BarChart3, purpose: 'Interaktive Konformitätskontrolle und statistische Festigkeitsauswertung von Beton-Güteserien.', standards: 'DIN EN 206, Tab. 14', useCase: 'Prüfung der Konformitätskriterien für Normal- oder Leichtbeton-Druckfestigkeit im Werk.' }
     ],
     didacticCards: [
       { title: 'Praxisnahes Labordesign', desc: 'Verbindung von haptischer Werkstoffprüfung mit numerischer Rechenpräzision.' },
-      { title: 'Rauschfreie Auswertungen', desc: 'Statistische Bereinigung und Ausreißertests nach etablierten mathematischen Regeln.' },
-      { title: 'Validierung der Sensorik', desc: 'Verstehen von Messfehlern, Toleranzgrenzen und Kalregistrierklassen.' }
+      { title: 'Nachvollziehbare Auswertungen', desc: 'Ausreißertests nach etablierten Verfahren – Werte werden nur mit technischer Begründung ausgeschlossen.' },
+      { title: 'Validierung der Sensorik', desc: 'Verstehen von Messabweichungen, Fehlergrenzen und Genauigkeitsklassen von Prüfmaschinen.' }
     ],
     appStudents: 'Hilft Studierenden, Laborpraktika virtuell vorzubereiten, Versuche nachzuvollziehen und wissenschaftlich saubere Laborberichte zu schreiben.',
     appProfessionals: 'Unterstützt Prüfingenieure und Betonprüfer bei der statistischen Bewertung von Baustellen-Würfelserien und Abnahmeentscheidungen.',
@@ -225,14 +225,17 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     literatur: [
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-      'Hartung, J. (2012): Statistik - Lehr- und Handbuch der angewandten Statistik (Oldenbourg)'
+      'Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018',
+      'Scrivener, K.; Snellings, R.; Lothenbach, B. (Hrsg.): A Practical Guide to Microstructural Analysis of Cementitious Materials. Boca Raton: CRC Press 2016'
     ],
     regelwerke: [
       { title: 'DIN EN 12504-1: Prüfung von Beton im Bauwerk - Teil 1: Bohrkernproben', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
-      { title: 'DIN ISO 12491: Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+12491' }
+      { title: 'ISO 12491:1997-05: Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen', url: 'https://www.dinmedia.de/de/suche?q=ISO+12491' },
+      { title: 'DIN EN 206:2021-06: Beton – Festlegung, Eigenschaften, Herstellung und Konformität', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+      { title: 'DIN EN 13791:2020-02: Bewertung der Druckfestigkeit von Beton in Bauwerken', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' }
     ],
     formeln: [
-      { formel: 'f_{ck} = f_{m} - 1{,}64 \\cdot s', erklaerung: 'Berechnung des charakteristischen Festigkeitswertes (5%-Quantil) bei bekannter Standardabweichung s und Mittelwert f_m unter Annahme einer Normalverteilung.', quelle: 'DIN ISO 12491 / DIN EN 1990' },
+      { formel: 'f_{ck} = f_{m} - 1{,}64 \\cdot s', erklaerung: 'Charakteristischer Festigkeitswert (5-%-Quantil) bei bekannter Standardabweichung und Normalverteilung; bei aus wenigen Proben geschätzter Streuung ist 1,64 durch k_n nach DIN EN 1990, Anhang D zu ersetzen.', quelle: 'DIN EN 1990, Anhang D; ISO 12491' },
       { formel: 's = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}', erklaerung: 'Empirische Standardabweichung s einer Stichprobe der Größe n.', quelle: 'Standardstatistik' }
     ]
   },
@@ -961,22 +964,19 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   labor: {
     websites: [
-      { name: "DGZfP", url: "https://www.dgzfp.de", desc: "Deutsche Gesellschaft für Zerstörungsfreie Prüfung e.V. mit Fachaufsätzen und Merkblättern." },
-      { name: "MPA Universität Stuttgart", url: "https://www.mpa.uni-stuttgart.de", desc: "Materialprüfungsanstalt der Universität Stuttgart für bautechnische Verifikationsprüfungen." },
-      { name: "BAM Bundesanstalt für Materialforschung", url: "https://www.bam.de", desc: "Amtliche Forschungsberichte, Schadensanalysen und Prüftechnik-Zulassungen." }
+      { name: "DGZfP", url: "https://www.dgzfp.de", desc: "Deutsche Gesellschaft für Zerstörungsfreie Prüfung e.V. mit Fachausschüssen (u. a. ZfP im Bauwesen) und Merkblättern." },
+      { name: "MPA Universität Stuttgart", url: "https://www.mpa.uni-stuttgart.de", desc: "Materialprüfungsanstalt der Universität Stuttgart (Prüf-, Überwachungs- und Zertifizierungsstelle)." },
+      { name: "BAM Bundesanstalt für Materialforschung", url: "https://www.bam.de", desc: "Bundesoberbehörde für Materialforschung und -prüfung, u. a. Bauwerksdiagnostik und Referenzmaterialien." }
     ],
     books: [
-      { title: "Zerstörungsfreie Prüfverfahren im Bauwesen", desc: "Schierenbeck - Umfassender Leitfaden für akustische, elektromagnetische und thermische Diagnostiken vor Ort." },
-      { title: "Messelektronik und Sensorik im Bauwesen", desc: "Kühne, Springer Vieweg. Praktische Vermittlung von DMS-Technologie und Laserinterferometer-Schaltungen." }
+      { title: "Maierhofer, C.; Reinhardt, H.-W.; Dobmann, G. (Hrsg.): Non-Destructive Evaluation of Reinforced Concrete Structures. Bd. 1–2. Cambridge: Woodhead Publishing 2010", desc: "Schädigungsprozesse und zerstörungsfreie Prüfverfahren für Stahlbetonbauwerke." },
+      { title: "Scrivener, K.; Snellings, R.; Lothenbach, B. (Hrsg.): A Practical Guide to Microstructural Analysis of Cementitious Materials. Boca Raton: CRC Press 2016", desc: "Praxisleitfaden zu XRD, TGA, REM/EDX und weiteren Gefügeanalysen an Zementstein." },
+      { title: "Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018", desc: "Statistische Verfahren für die Auswertung von Prüfserien." }
     ],
     publications: [
-      { journal: "NDT & E International", title: "Ultrasonic monitoring of concrete hydration and setting behavior", desc: "Zerstörungsfreie Ultraschall-Schallgeschwindigkeitsmessungen zur Bestimmung der Frischerstarrung." },
-      { journal: "Journal of Thermal Analysis and Calorimetry", title: "Characterization of hydrated cement phases using advanced thermal analysis (TGA/DSC)", desc: "Präzise Bestimmung gebundener Wasseranteile mittels Thermoanalytik." }
+      { journal: "Transportation Research Record 2290 (2012)", title: "Kim, T.; Olek, J.: Effects of Sample Preparation and Interpretation of Thermogravimetric Curves on Calcium Hydroxide in Hydrated Pastes and Mortars", desc: "Einfluss von Probenvorbereitung und Auswertemethode auf den per TGA bestimmten Portlanditgehalt." }
     ],
-    dissertations: [
-      { title: "Beitrag zur quantitativen Schadensdetektion mittels elastischer Wellen im Betonbau", desc: "Dissertation, Technische Universität München (TUM), 2019. Nutzung seismischer Sensorik zur Mikroriss-Ortung." },
-      { title: "Röntgenografische Phasenschnittanalyse spröder mineralischer Baustoffe unter mehraxieller Druckbeanspruchung", desc: "Dissertation, Karlsruher Institut für Technologie (KIT), 2020. Kristallgitter-Verzerrungsanalysen unter Last." }
-    ]
+    dissertations: []
   },
   baustoffe: {
     websites: [
@@ -1440,26 +1440,26 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                           <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">DIN EN 12504-1 / LAGA PN 98</span>
                         </div>
                         <p className="text-xs text-slate-700 leading-relaxed">
-                          Keine Laborprüfung ist besser als ihre Probenahme. Eine unsachgemäße oder willkürliche Materialentnahme (z. B. am Schüttgut-Haufwerk oder aus nur einer einzelnen Betonzarge) führt zu massiver Entmischung und Verfälschung der Kennwerte.
+                          Keine Laborprüfung ist besser als ihre Probenahme. Eine unsachgemäße oder willkürliche Materialentnahme (z. B. nur von der Oberfläche eines Haufwerks oder aus nur einem Bauteilbereich) führt zu Entmischungseffekten und nicht repräsentativen Kennwerten.
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Praxistipp für Bohrkernentnahme:</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
                               <li><strong>Bewehrung orten:</strong> Vor der Kernbohrung ist ein zerstörungsfreies Scannen der Bewehrungsstähle zwingend erforderlich, um ein Durchtrennen tragender Eisen zu vermeiden.</li>
-                              <li><strong>Mindestmaß beachten:</strong> Der Randeinfluss verlangt einen Bohrkern-Durchmesser von d_K ≥ 3 · d_max (mind. jedoch 2 · d_max). Bei 32 mm Größtkorn ist ein Zerspankopf von mindestens 100 mm Pflicht!</li>
-                              <li><strong>Kernanzahl sichern:</strong> Mindestens 3 Bohrkerne entnehmen, um Ausreißereffekte abzusichern.</li>
+                              <li><strong>Mindestmaß beachten:</strong> Der Kerndurchmesser sollte mindestens das Dreifache des Größtkorns betragen (d_K ≥ 3 · d_max). Bei 32 mm Größtkorn ist daher eine Bohrkrone von mindestens 100 mm erforderlich.</li>
+                              <li><strong>Kernanzahl planen:</strong> Je Prüfbereich mehrere Kerne entnehmen (Mindestanzahl je Bewertungsverfahren nach DIN EN 13791).</li>
                             </ul>
                           </div>
                           <div className="p-3 bg-stone-50 border border-home-grau/15 rounded-md flex flex-col justify-between">
                             <div>
                               <span className="font-bold text-shiraz block text-[10.5px]">LAGA PN 98 (Abfallbeprobung)</span>
                               <p className="text-[10.5px] text-slate-600 leading-normal mt-1">
-                                Um gefährliche PAK-haltige Asphalt-Beläge, giftiges HBCD in FCKW-Zellplatten oder Eluatsalze im Bauschutt rechtskonform nachzuweisen, verlangt die LAGA PN 98 ein Rasterverfahren über das gesamte Haufwerksvolumen.
+                                Um z. B. PAK-haltige Asphaltschichten, HBCD-haltige Dämmstoffe (EPS/XPS) oder auslaugbare Salze im Bauschutt nachvollziehbar zu erfassen, verlangt die LAGA PN 98 eine planmäßige Beprobung des gesamten Haufwerks (nach § 8 EBV verbindlich für mineralische Ersatzbaustoffe).
                               </p>
                             </div>
                             <div className="bg-white p-1.5 border border-home-grau/10 rounded text-[9.5px] font-mono text-slate-500 mt-2 text-center">
-                              Formel Mindestvolumen: V_Probe ≥ 0,05 · d_max [Liter]
+                              Mindestvolumen der Proben: abhängig vom Größtkorn (Tabelle der LAGA PN 98)
                             </div>
                           </div>
                         </div>
@@ -1482,7 +1482,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                           <div className="space-y-1.5">
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Dehnungsaufzeichnung (DMS):</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Oberflächenvorbereitung:</strong> Die Baustoffkontaktfläche muss planparallel angeschliffen, absolut staubbefreit und chemisch entfettet (z.b. mit Propanol) werden.</li>
+                              <li><strong>Oberflächenvorbereitung:</strong> Die Baustoffkontaktfläche muss planparallel angeschliffen, absolut staubbefreit und chemisch entfettet (z. B. mit Isopropanol) werden.</li>
                               <li><strong>Brückenschaltung konfigurieren:</strong> Verwenden Sie Wheatstone-Voll- oder Halbbrücken, um parasitäre Biegespannungen oder witterungsbedingte Temperatureffekte (&Delta;T) automatisch zu kompensieren.</li>
                               <li><strong>Kalibrierfaktor (k-Wert):</strong> Exakt im Verstärker einstellen. Dehnung entspricht &epsilon; = (1/k) · (&Delta;R/R).</li>
                             </ul>
@@ -1491,11 +1491,11 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                             <div>
                               <span className="font-bold text-indigo-900 block text-[10.5px]">Messunsicherheit nach GUM (BIPM)</span>
                               <p className="text-[10.5px] text-indigo-950/80 leading-normal mt-1">
-                                Messwerte ohne Angabe der Unsicherheit sind wissenschaftlich unbrauchbar. Im Modul &quot;Messen &amp; Prüfen&quot; berechne die kombinierte Standardunsicherheit u_c aus Typ-A-Statistik (Zufallsfehler) und Typ-B-Korrekturen (Geräteauflösung, Kalbrierschein).
+                                Messwerte ohne Angabe der Unsicherheit sind wissenschaftlich unbrauchbar. Im Modul &quot;Messen &amp; Prüfen&quot; berechnen Sie die kombinierte Standardunsicherheit u_c aus Typ-A-Beiträgen (Statistik der Messreihe) und Typ-B-Beiträgen (Geräteauflösung, Kalibrierschein).
                               </p>
                             </div>
                             <div className="bg-white p-1.5 border border-indigo-100 rounded text-[9.5px] font-mono text-indigo-700 mt-2 text-center">
-                              GUM-Ziel: Erweiterte Unsicherheit U_95% = k · u_c mit k = 2
+                              GUM: Erweiterte Unsicherheit U = k · u_c mit k = 2 (≈ 95 % Überdeckung)
                             </div>
                           </div>
                         </div>
@@ -1512,14 +1512,14 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                           <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">DIN EN 12390-3 / -13</span>
                         </div>
                         <p className="text-xs text-slate-700 leading-relaxed">
-                          Die Bestimmung der Iststärken (Druckfestigkeit, Zug- und Biegezugfestigkeit) erfolgt in hydraulischen Prüfmaschinen unter exakt definierten Belastungsraten und Probenbedingungen.
+                          Die Bestimmung der Festigkeiten (Druckfestigkeit, Spaltzug- und Biegezugfestigkeit) erfolgt in hydraulischen Prüfmaschinen unter exakt definierten Belastungsraten und Probenbedingungen.
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Prüfungsdurchführung &amp; Fehlerminimierung:</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Planparallelität sichern:</strong> Die Belastungsflächen von Betonwürfeln oder Zylindern dürfen max. 0,05 mm auf 100 mm Planabweichung aufweisen, da sonst unzulässige Kantenpressung die Messwerte um bis zu 30% abmindert. Planschleifen ist Pflicht!</li>
-                              <li><strong>Lasteinleitungsrate steuern:</strong> Beton verhält sich viskoelastisch. Zu schnelle Lasteinleitung (&gt; 1 MPa/s) verfälscht die Kennwerte nach oben. Normativ gelten z. B. 0,5 ± 0,2 MPa/s.</li>
+                              <li><strong>Ebenheit sichern:</strong> Die Lastflächen von Würfeln und Zylindern müssen die Ebenheitstoleranz nach DIN EN 12390-1 (0,0006 · d) einhalten, sonst führen Kantenpressungen zu deutlich zu niedrigen Werten. Andernfalls planschleifen oder abgleichen.</li>
+                              <li><strong>Lasteinleitungsrate steuern:</strong> Beton verhält sich viskoelastisch. Zu schnelle Lasteinleitung verfälscht die Kennwerte nach oben. Für die Druckprüfung gilt nach DIN EN 12390-3 0,6 ± 0,2 MPa/s.</li>
                               <li><strong>E-Modul-Zyklen:</strong> Der Elastizitätsmodul wird nicht beim Erstbruch, sondern durch wiederholte Be- und Entlastungszyklen (Hystereseeffekte) im elastischen Kernspannungsbereich ermittelt.</li>
                             </ul>
                           </div>
@@ -1527,7 +1527,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                             <div>
                               <span className="font-bold text-red-900 block text-[10.5px]">Spannungs-Dehnungs-Visualisierung</span>
                               <p className="text-[10.5px] text-red-950/80 leading-normal mt-1">
-                                Im &quot;Virtuelle Versuche&quot; Modul simuliere interaktiv Spannungs-Dehnungs-Kurven unter Veränderung von Porosität und Werkstoffparametern. Vergleichen Sie sprödes Versagen (Beton, Glas) mit zähelastischem Fließverhalten (B500B Betonstahl).
+                                Im Modul &quot;Virtuelle Versuche&quot; simulieren Sie Spannungs-Dehnungs-Kurven für verschiedene Werkstoffe und Prüfarten. Vergleichen Sie sprödes Versagen (Beton, Glas) mit zähelastischem Fließverhalten (B500B Betonstahl).
                               </p>
                             </div>
                             <div className="bg-white p-1.5 border border-red-100 rounded text-[9.5px] font-mono text-red-700 mt-2 text-center">
@@ -1554,10 +1554,10 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                           <div className="space-y-1.5">
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Analysen-Entscheidungsmatrix:</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>XRD &amp; FTIR (Mineralogie / Kristallographie):</strong> Weist zerstörungsfrei Treibreaktionen (Ettringit, Thaumasit) nach und identifiziert organische Polymeradditive.</li>
-                              <li><strong>TGA (Thermogravimetrie):</strong> Schätzt präzise den Portlanditgehalt Ca(OH)_2 (Wasserabspaltung bei ca. 450&deg;C) ab.</li>
-                              <li><strong>RFA &amp; LIPS (Elemente):</strong> RFA liefert makroskopische Elementoxide, während LIPS (vor Ort mit Laser) hochempfindliche Verlaufs-Eindringtiefen (z. B. Chloridbelastung an Tunnelsockeln) misst.</li>
-                              <li><strong>GC-MS (Geleimte Schadstoffe):</strong> Der absolute Goldstandard für Gifte wie Holzschutzmittel (PCP/Lindan), Teer (PAK) oder Flammschutzmittel.</li>
+                              <li><strong>XRD &amp; FTIR (Mineralogie / Molekülbindungen):</strong> XRD weist an Pulverproben kristalline Treibphasen (Ettringit, Thaumasit) nach; FTIR identifiziert organische Polymeradditive.</li>
+                              <li><strong>TGA (Thermogravimetrie):</strong> Bestimmt den Portlanditgehalt Ca(OH)₂ (Wasserabgabe bei ca. 400–500&nbsp;&deg;C) und den Calcitgehalt (CO₂-Abgabe bei ca. 600–800&nbsp;&deg;C).</li>
+                              <li><strong>RFA &amp; LIPS (Elemente):</strong> RFA liefert makroskopische Elementoxide, während LIBS (laserbasiert, auch mobil) ortsaufgelöste Tiefenprofile (z. B. Chlorid an Bohrkernen aus Tunnelsockeln) liefert.</li>
+                              <li><strong>GC-MS (organische Schadstoffe):</strong> Standardverfahren für Holzschutzmittel (PCP/Lindan), Teerbestandteile (PAK) oder Flammschutzmittel.</li>
                             </ul>
                           </div>
                           <div className="p-3 bg-emerald-50/50 border border-emerald-100 rounded-md flex flex-col justify-between">
@@ -1582,25 +1582,25 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                             <span className="w-5 h-5 bg-shiraz text-white text-xs font-bold rounded-full flex items-center justify-center">5</span>
                             Schritt 5: Statistische Absicherung &amp; Konformitätsnachweis (Statistik-Untermodule)
                           </h5>
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">DIN ISO 12491 / DIN EN 206</span>
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 font-mono rounded">DIN EN 206 / DIN EN 1990 / ISO 12491</span>
                         </div>
                         <p className="text-xs text-slate-700 leading-relaxed">
-                          Keine Einzelfestigkeit entscheidet allein über die Freigabe eines Bauwerks oder einer Betoncharge. Statistische Prüfstreuungen und Ausreißer müssen mathematisch separiert und bewertet werden.
+                          Keine Einzelfestigkeit entscheidet allein über die Freigabe eines Bauwerks oder einer Betoncharge. Prüfstreuungen und mögliche Ausreißer werden statistisch bewertet und – nur mit technischer Begründung – ausgeschlossen.
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1.5">
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Statistisches Handwerkszeug für Konstrukteure:</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Ausreißertest nach Grubbs:</strong> Ermittelt, ob ein extrem niedriger Einzelmesswert ein unzulässiger Prüffehler (z. B. Hohlraum im Würfel) oder natürliche Streuung ist.</li>
-                              <li><strong>Das 5%-Quantil (f_ck):</strong> Berechnet jene Festigkeit, die mit einer statistischen Wahrscheinlichkeit von 95% überschritten wird: f_ck = f_m - 1.645 · s.</li>
-                              <li><strong>Konformität nach EN 206:</strong> Regelt die Zulassung chargenweise (z. B. Kriterium 1: f_cm ≥ f_ck + 1,48 · σ, Einzelwert f_ci ≥ f_ck - 4 MPa).</li>
+                              <li><strong>Ausreißertest nach Grubbs:</strong> Zeigt, ob ein extremer Einzelwert statistisch auffällig ist; ob er ein Prüffehler ist (z. B. Hohlraum im Würfel), muss technisch geklärt werden.</li>
+                              <li><strong>Das 5%-Quantil (f_ck):</strong> Festigkeit, die mit 95 % Wahrscheinlichkeit überschritten wird: f_ck = f_m − 1,645 · σ bei bekannter Streuung; bei aus der Stichprobe geschätztem s mit k_n nach DIN EN 1990, Anhang D.</li>
+                              <li><strong>Konformität nach EN 206:</strong> Regelt die Konformität der Produktion (stetige Herstellung: f_cm ≥ f_ck + 1,48 · σ und f_ci ≥ f_ck − 4 N/mm²).</li>
                             </ul>
                           </div>
                           <div className="p-3 bg-purple-50/50 border border-purple-100 rounded-md flex flex-col justify-between">
                             <div>
                               <span className="font-bold text-purple-950 block text-[10.5px]">Statistik &amp; Festbeton-Module</span>
                               <p className="text-[10.5px] text-purple-800 leading-normal mt-1">
-                                Nutzen Sie die Module &quot;Statistik&quot; und &quot;Festbeton (Statistik)&quot;, um Stichprobenstärken dynamisch zu generieren, Histogramme zur Normalverteilung zu kalkulieren und die Konformität einer echten Güteprüfung abzusichern.
+                                Nutzen Sie die Module &quot;Statistik&quot; und &quot;Festbeton (Statistik)&quot;, um Stichproben zu erzeugen, Histogramme mit der Normalverteilung zu vergleichen und Konformitätskriterien nachzuvollziehen.
                               </p>
                             </div>
                             <div className="bg-white p-1.5 border border-purple-100 rounded text-[9.5px] font-mono text-purple-700 mt-2 text-center">

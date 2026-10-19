@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function MessenPruefen() {
   // Tabs for the Messen & Prüfen component
@@ -31,7 +33,7 @@ export default function MessenPruefen() {
   const [precision, setPrecision] = useState<'high' | 'low'>('high');
 
   // Input states for Measurement Uncertainty Calculator
-  const [measurements, setMeasurements] = useState<string>('38.5, 39.2, 37.8, 38.9, 39.6');
+  const [measurements, setMeasurements] = useState<string>('38,5; 39,2; 37,8; 38,9; 39,6');
   const [resolution, setResolution] = useState<number>(0.1); // d (digital resolution)
   const [calibrationError, setCalibrationError] = useState<number>(0.15); // U_cal from cert (k=2)
 
@@ -45,10 +47,14 @@ export default function MessenPruefen() {
 
   // Parse measurements string into numbers
   const parsedData = useMemo(() => {
-    return measurements
-      .split(',')
-      .map(v => parseFloat(v.trim()))
-      .filter(v => !isNaN(v));
+    // Deutsche Eingabe: Semikolon als Trenner, Dezimalkomma. Ohne Semikolon wird (wie bisher)
+    // am Komma getrennt und der Punkt als Dezimaltrenner gelesen.
+    const teile = measurements.includes(';')
+      ? measurements.split(';').map(v => v.trim().replace(',', '.'))
+      : measurements.split(',').map(v => v.trim());
+    return teile
+      .map(v => parseFloat(v))
+      .filter(v => Number.isFinite(v));
   }, [measurements]);
 
   // Calculations according to GUM
@@ -207,7 +213,7 @@ export default function MessenPruefen() {
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
           <p>
-            Metrologische Grundlagen der Baustoffprüfung. Theorie und Normen zur Messgenauigkeit, Prüfmaschinenkalibrierung und statistischen Messunsicherheitsermittlung nach GUM und DIN EN ISO/IEC 17025.
+            Metrologische Grundlagen der Baustoffprüfung: Begriffe und Normen zur Genauigkeit von Messverfahren (ISO 5725-1), zur Kalibrierung von Prüfmaschinen (DIN EN ISO 7500-1) und zur Ermittlung der Messunsicherheit nach GUM (JCGM 100) im Rahmen der DIN EN ISO/IEC 17025.
           </p>
         </div>
       </div>
@@ -276,7 +282,7 @@ export default function MessenPruefen() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
             Im alltäglichen Laborbetrieb werden diese drei Begriffe fälschlicherweise oft synonym verwendet. 
-              Sie bezeichnen jedoch grundlegend verschiedene physikalische und rechtliche Handlungen an einer Prüfeinrichtung (z.B. Betonpresse oder Prallhammer).
+              Sie bezeichnen jedoch grundlegend verschiedene physikalische und rechtliche Handlungen an einer Prüfeinrichtung (z. B. Betonpresse oder Rückprallhammer).
           </p>
         </div>
 
@@ -291,11 +297,11 @@ export default function MessenPruefen() {
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 mt-2.5 font-sans">Zusammenhang ermitteln</h3>
                   <p className="text-xs text-slate-500 leading-relaxed mt-2 font-sans">
-                    Feststellen der Messabweichung zwischen dem angezeigten Wert des Prüfgeräts und dem bekannten, &quot;wahren&quot; Wert eines höherwertigen Normals oder Standards. 
+                    Ermitteln der Messabweichung zwischen dem angezeigten Wert des Prüfgeräts und dem bekannten Wert eines höherwertigen, rückgeführten Normals (Bezugswert). 
                     Der gemessene Wert wird in einem <strong>Kalibrierschein</strong> protokolliert.
                   </p>
                   <blockquote className="border-l-2 border-shiraz/40 pl-2.5 text-[11px] text-slate-600 italic mt-3 font-sans">
-                    Beispiel: Ermitteln des Abweichungsfaktors einer Kraftmessdose einer Betonprüfmaschine durch Belastung mit GUM-Referenzkraftaufnehmern.
+                    Beispiel: Kalibrierung des Kraftmesssystems einer Betonprüfmaschine mit rückgeführten Referenz-Kraftaufnehmern nach DIN EN ISO 7500-1 (für Betonprüfmaschinen nach DIN EN 12390-4 mindestens Klasse 1).
                   </blockquote>
                 </div>
                 <div className="mt-4 pt-3.5 border-t border-home-grau/30 flex items-center gap-1.5 text-[10px] text-slate-500 font-mono">
@@ -333,15 +339,15 @@ export default function MessenPruefen() {
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 mt-2.5 font-sans">Amtliche Prüfung</h3>
                   <p className="text-xs text-slate-500 leading-relaxed mt-2 font-sans">
-                    Gesetzlich vorgeschriebene Prüfung, Zulassung und Stempelung durch das zuständige Eichamt (oder staatlich anerkannte Institutionen). 
-                    Dies dient dem Verbraucherschutz im geschäftlichen Verkehr, Medizin- oder Umweltbereich.
+                    Gesetzlich vorgeschriebene Prüfung und Kennzeichnung eines verwendeten Messgeräts durch die Eichbehörde des Landes (oder eine staatlich anerkannte Prüfstelle) nach Mess- und Eichgesetz. 
+                    Pflicht gilt u. a. im geschäftlichen Verkehr (Abrechnung nach Messwert) sowie im amtlichen, Medizin- und Umweltbereich.
                   </p>
                   <blockquote className="border-l-2 border-shiraz/40 pl-2.5 text-[11px] text-slate-600 italic mt-3 font-sans">
-                    Beispiel: Amtliche Eichung der Behälterwaagen für Zement und Wasser in einem Transportbetonwerk zur Einhaltung gesetzlicher Richtlinien.
+                    Beispiel: Eichung der Fahrzeugwaage eines Kies- oder Transportbetonwerks, über die Lieferungen nach Gewicht abgerechnet werden. Die Dosierwaagen der Mischanlage werden dagegen im Rahmen der Produktionskontrolle nach DIN EN 206 kalibriert.
                   </blockquote>
                 </div>
                 <div className="mt-4 pt-3.5 border-t border-home-grau/30 flex items-center gap-1.5 text-[10px] text-slate-500 font-mono">
-                  <CheckCircle2 size={12} className="text-amber-500" /> Erfordert amtliche Eichstempel (Plomben).
+                  <CheckCircle2 size={12} className="text-amber-500" /> Eichmarke mit Ablauf der Eichfrist, Sicherungsplomben.
                 </div>
               </div>
 
@@ -371,11 +377,11 @@ export default function MessenPruefen() {
                   <td className="py-2.5 px-3 font-semibold text-slate-800">Wer darf es durchführen?</td>
                   <td className="py-2.5 px-3 text-slate-600">Beliebige geschulte Stelle (DAkkS-Labor empfohlen)</td>
                   <td className="py-2.5 px-3 text-slate-600">Prüfgerät-Betreiber, Service-Techniker des Herstellers</td>
-                  <td className="py-2.5 px-3 text-slate-600 font-semibold text-amber-700">Ausschließlich zuständiges Eichamt</td>
+                  <td className="py-2.5 px-3 text-slate-600 font-semibold text-amber-700">Eichbehörde oder staatlich anerkannte Prüfstelle</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 px-3 font-semibold text-slate-800">Gesetzliche Grundlage</td>
-                  <td className="py-2.5 px-3 text-slate-600">ISO 9001, DIN EN ISO/IEC 17025 (Qualitätsmanagement)</td>
+                  <td className="py-2.5 px-3 font-semibold text-slate-800">Rechtliche bzw. normative Grundlage</td>
+                  <td className="py-2.5 px-3 text-slate-600">Vertrag/QM: DIN EN ISO 9001, DIN EN ISO/IEC 17025; Prüfnormen (z. B. DIN EN ISO 7500-1)</td>
                   <td className="py-2.5 px-3 text-slate-600">Nutzer-Spezifikation, Hersteller-Wartungshandbuch</td>
                   <td className="py-2.5 px-3 text-slate-600 font-semibold text-amber-700">Mess- und Eichgesetz (MessEG) / MessEV</td>
                 </tr>
@@ -383,7 +389,7 @@ export default function MessenPruefen() {
                   <td className="py-2.5 px-3 font-semibold text-slate-800">Resultat / Beleg</td>
                   <td className="py-2.5 px-3 text-slate-600">Kalibrierschein (Messwerte &amp; -unsicherheiten)</td>
                   <td className="py-2.5 px-3 text-slate-600">Gerät ist &quot;sollwertjustiert&quot; (Justierprotokoll)</td>
-                  <td className="py-2.5 px-3 text-slate-600">Eichstempel, Eichschein (Konformitätsbewertung)</td>
+                  <td className="py-2.5 px-3 text-slate-600">Eichmarke; Neugeräte: Konformitätsbewertung mit CE- und Metrologie-Kennzeichnung (MessEG)</td>
                 </tr>
               </tbody>
             </table>
@@ -402,11 +408,11 @@ export default function MessenPruefen() {
               {/* Linkes Menü: Messgeräte */}
               <div className="lg:col-span-4 space-y-2">
                 {[
-                  { id: 'meterstab', label: 'Zollstock / Meterstab', sub: 'EG-Klasse II' },
-                  { id: 'messschieber', label: 'Messschieber (Schieblehre)', sub: 'DIN 862' },
+                  { id: 'meterstab', label: 'Zollstock / Meterstab', sub: 'EU-Genauigkeitsklasse II (MID)' },
+                  { id: 'messschieber', label: 'Messschieber (Schieblehre)', sub: 'DIN EN ISO 13385-1' },
                   { id: 'laser', label: 'Laser-Entfernungsmesser', sub: 'ISO 16331-1' },
                   { id: 'risslupe', label: 'Risslupe & Rissmikroskop', sub: 'Schadensdiagnostik' },
-                  { id: 'nivellier', label: 'Baunivellier (optisch/digital)', sub: 'DIN 18723' },
+                  { id: 'nivellier', label: 'Baunivellier (optisch/digital)', sub: 'DIN ISO 17123-2' },
                 ].map((t) => (
                   <button
                     key={t.id}
@@ -444,10 +450,10 @@ export default function MessenPruefen() {
                     </span>
                     <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-200 py-0.5 px-2 rounded">
                       {selectedTool === 'meterstab' && 'Toleranzklasse II'}
-                      {selectedTool === 'messschieber' && 'DIN 862'}
+                      {selectedTool === 'messschieber' && 'DIN EN ISO 13385-1'}
                       {selectedTool === 'laser' && 'ISO 16331-1'}
                       {selectedTool === 'risslupe' && 'ZfP-Methodik'}
-                      {selectedTool === 'nivellier' && 'Geodätischer Standard'}
+                      {selectedTool === 'nivellier' && 'DIN ISO 17123-2'}
                     </span>
                   </div>
 
@@ -463,13 +469,13 @@ export default function MessenPruefen() {
                       </strong>
                     </div>
                     <div className="bg-white p-3 rounded-lg border border-home-grau/30">
-                      <span className="text-slate-400 font-medium block text-[10px] uppercase">Normierte Grenzabweichung</span>
+                      <span className="text-slate-400 font-medium block text-[10px] uppercase">Fehlergrenze (typisch)</span>
                       <strong className="text-slate-800 text-xs mt-0.5 block font-mono">
-                        {selectedTool === 'meterstab' && '±(0,3 + 0,2 * L) mm  [L in m]'}
-                        {selectedTool === 'messschieber' && '±0,03 mm (bis 100mm) / ±0,05 mm (bis 200mm)'}
-                        {selectedTool === 'laser' && '±(1,0 + 0,05 * L) mm  [L in m]'}
-                        {selectedTool === 'risslupe' && '±0,05 mm standardisiert'}
-                        {selectedTool === 'nivellier' && '±1,5 mm pro Doppelkilometer Nivellierstrecke'}
+                        {selectedTool === 'meterstab' && '±(0,3 + 0,2 · L) mm  [L in m], Klasse II'}
+                        {selectedTool === 'messschieber' && '±0,03 mm (bis 100 mm) / ±0,05 mm (bis 200 mm), Herstellerangabe'}
+                        {selectedTool === 'laser' && '±(1,0 + 0,05 · L) mm  [L in m], Herstellerangabe'}
+                        {selectedTool === 'risslupe' && '±0,05 mm (Ablesegrenze der Skala)'}
+                        {selectedTool === 'nivellier' && '1,5 mm Standardabweichung je km Doppelnivellement'}
                       </strong>
                     </div>
                   </div>
@@ -498,7 +504,7 @@ export default function MessenPruefen() {
                         />
                       </div>
                       <div className="bg-white p-2.5 rounded border border-indigo-100 flex flex-col justify-center">
-                        <span className="text-[10px] text-slate-400 font-semibold block uppercase">Erwartete Maximalabweichung (GUM k=2)</span>
+                        <span className="text-[10px] text-slate-400 font-semibold block uppercase">Fehlergrenze bzw. Standardabweichung</span>
                         <span className="text-xs font-mono font-extrabold text-indigo-700">
                           {selectedTool === 'meterstab' && (
                             <>± {formatDeZahl((0.3 + 0.2 * (toolInputValue / 1000)), 2)} mm</>
@@ -528,15 +534,15 @@ export default function MessenPruefen() {
                           <li><strong>Parallaxenfehler:</strong> Schiefes Ablesen von oben/unten verändert das Maß optisch.</li>
                           <li><strong>Gelenkverschleiß:</strong> Abgenutzte Federgelenke erzeugen Spiel von bis zu 1–2 mm.</li>
                           <li><strong>Thermisches Verhalten:</strong> Holz dehnt sich bei Feuchte aus, Metall z. B. bei Hitze.</li>
-                          <li><strong>Ungeraffte Messlinie:</strong> Schräglage des Maßstabs verlängert Messergebnis künstlich.</li>
+                          <li><strong>Geneigte Messlinie:</strong> Schräglage des Maßstabs verlängert das Messergebnis künstlich.</li>
                         </>
                       )}
                       {selectedTool === 'messschieber' && (
                         <>
-                          <li><strong>Verkanteter Messschenkel:</strong> Führt zu Kippen und Verfälscht Dicken nach oben.</li>
-                          <li><strong>Messdruck:</strong> Überhöhter Handdruck biegt die Digitalschenkel auf (Mikrometermeterbereich).</li>
+                          <li><strong>Verkanteter Messschenkel:</strong> Führt zu Kippen und verfälscht Dicken nach oben.</li>
+                          <li><strong>Messdruck:</strong> Überhöhter Handdruck biegt die Digitalschenkel auf (Mikrometerbereich).</li>
                           <li><strong>Schmutzpartikel:</strong> Betonstaub oder Trennmittel blockieren die feste Anlage.</li>
-                          <li><strong>Abgenutzte Schneiden:</strong> Rundung der Kontaktoberflächen durch häufiges Bestimmen.</li>
+                          <li><strong>Abgenutzte Schneiden:</strong> Rundung der Kontaktflächen durch häufigen Gebrauch.</li>
                         </>
                       )}
                       {selectedTool === 'laser' && (
@@ -560,7 +566,7 @@ export default function MessenPruefen() {
                           <li><strong>Dosenlibelle:</strong> Fehljustierung oder schlampige Horizontierung führt zu Neigungsfehlern.</li>
                           <li><strong>Messlatten-Kippung:</strong> Schräg stehende Latten vergrößern den Höhenwert drastisch.</li>
                           <li><strong>Refraktion / Flimmern:</strong> Flirrende Hitze über Asphalt lenkt den Zielstrahl wellig ab.</li>
-                          <li><strong>Vibrationen:</strong> Baustellenverkehr (z.B. Walzen) bringt das Kompensatorsystem zum Schwingen.</li>
+                          <li><strong>Vibrationen:</strong> Baustellenverkehr (z. B. Walzen) bringt das Kompensatorsystem zum Schwingen.</li>
                         </>
                       )}
                     </ul>
@@ -572,8 +578,8 @@ export default function MessenPruefen() {
                   <span>
                     <strong>Einsatzgebiet &amp; Relevanz:</strong>{' '}
                     {selectedTool === 'meterstab' && 'Standardmäßig verwendet für grobe Raumkontrollen und Maßtoleranzen im Hochbau nach DIN 18202.'}
-                    {selectedTool === 'messschieber' && 'Unerlässlich im Labor für Zylindervorbereitungen, Bestimmung von Stabdurchmessern und Kernproben-Durchmessern (DIN EN 12504-1).'}
-                    {selectedTool === 'laser' && 'Hervorragend geeignet für verformungsgerechte Aufmaße im Bestand, Gebäudeaufmaße und schnelles Einmessen von Prüfgittern.'}
+                    {selectedTool === 'messschieber' && 'Unerlässlich im Labor für die Maßkontrolle von Probekörpern (DIN EN 12390-1), Stabdurchmesser und Bohrkern-Durchmesser (DIN EN 12504-1).'}
+                    {selectedTool === 'laser' && 'Gut geeignet für verformungsgerechte Aufmaße im Bestand, Gebäudeaufmaße und schnelles Einmessen von Prüfgittern.'}
                     {selectedTool === 'risslupe' && 'Wichtiges Handwerkszeug bei Bauzustandsanalysen, Abnahme von Spannbetonbauteilen und Beweissicherungen.'}
                     {selectedTool === 'nivellier' && 'Bestandteil von Deformationsmessungen, Durchbiegungsversuchen auf Baustellen und Abnahmeprüfungen.'}
                   </span>
@@ -593,8 +599,8 @@ export default function MessenPruefen() {
             </h2>
             <p className="text-slate-600 text-xs leading-relaxed max-w-4xl font-sans">
               Das Messergebnis bei Festigkeits- und Verdrängungsversuchen wird durch zwei grundlegende Abweichungsformen beeinflusst. 
-              Nutzen Sie den interaktiven Schusskreis (Treffbild) unten, um die Kombinationen aus Richtigkeit (Genauigkeit/Systemabfall) 
-              und Präzision (Streuung/Zufallsfehler) visuell zu analysieren.
+              Nach ISO 5725-1 setzt sich die <strong>Genauigkeit</strong> aus <strong>Richtigkeit</strong> (systematische Abweichung des Mittelwerts) 
+              und <strong>Präzision</strong> (zufällige Streuung) zusammen. Das Treffbild unten zeigt die vier Kombinationen.
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
@@ -607,11 +613,11 @@ export default function MessenPruefen() {
                   {/* Selector 1: Accuracy (Richtigkeit) */}
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-slate-700 flex items-center justify-between font-sans">
-                      <span>Richtungstreue / Richtigkeit (Accuracy)</span>
+                      <span>Richtigkeit (engl. trueness)</span>
                       <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono font-bold uppercase ${
                         accuracy === 'high' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-red-50 text-red-700 border border-red-200'
                       }`}>
-                        {accuracy === 'high' ? 'Richtigkeit Hoch' : 'Sytemischer Fehler'}
+                        {accuracy === 'high' ? 'Richtigkeit hoch' : 'Systematische Abweichung'}
                       </span>
                     </label>
                     <div className="grid grid-cols-2 gap-2">
@@ -629,18 +635,18 @@ export default function MessenPruefen() {
                           accuracy === 'low' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                       >
-                        Niedrig (Verzogen)
+                        Niedrig (verschoben)
                       </button>
                     </div>
                     <p className="text-[10px] text-slate-500 leading-normal font-sans">
-                      Systematische Messfehler (z.B. verbogene Lastplatte, fehlerhafter Kraftgeber) verzerren den Mittelwert dauerhaft in eine Richtung.
+                      Systematische Messfehler (z. B. verbogene Druckplatte, falsch kalibrierter Kraftaufnehmer) verzerren den Mittelwert dauerhaft in eine Richtung.
                     </p>
                   </div>
 
                   {/* Selector 2: Precision (Präzision) */}
                   <div className="space-y-2 pt-4 border-t border-home-grau/30">
                     <label className="text-xs font-bold text-slate-700 flex items-center justify-between font-sans">
-                      <span>Präzision / Streuung (Precision)</span>
+                      <span>Präzision / Streuung (engl. precision)</span>
                       <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono font-bold uppercase ${
                         precision === 'high' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
                       }`}>
@@ -650,7 +656,7 @@ export default function MessenPruefen() {
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         onClick={() => setPrecision('high')}
-                        className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans_ ${
+                        className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           precision === 'high' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                       >
@@ -666,7 +672,7 @@ export default function MessenPruefen() {
                       </button>
                     </div>
                     <p className="text-[10px] text-slate-500 leading-normal font-sans">
-                      Zufällige Messfehler (z.B. Raumklima-Fluktuation, inhomogenes Gestein, Ableseunsicherheit) führen zu unvorhersehbaren Streuungen um den Mittelwert.
+                      Zufällige Messfehler (z. B. Schwankungen des Raumklimas, inhomogenes Gestein, Ableseunsicherheit) führen zu unvorhersehbaren Streuungen um den Mittelwert.
                     </p>
                   </div>
 
@@ -675,10 +681,10 @@ export default function MessenPruefen() {
                 <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 mt-2 text-xs text-slate-600 space-y-1 font-sans">
                   <span className="font-bold text-slate-800 block">Ingenieurtechnische Diagnose:</span>
                   <p className="text-[11px] leading-relaxed">
-                    {accuracy === 'high' && precision === 'high' && 'Perfekt kalibrierte Prüfmaschine. Geringer systemischer Fehler und minimale Prüferstreuung. Die Ergebnisse sind verlässlich.'}
-                    {accuracy === 'low' && precision === 'high' && 'Achtung: Exzellente Wiederholbarkeit, aber falsche Trichter-Lage! Die Prüfpresse weicht extrem ab. Ursache ist meist ein unentdeckter Kalibrierfehler.'}
-                    {accuracy === 'high' && precision === 'low' && 'Richtigkeit im Mittel akzeptabel, aber die Einzelmessungen streuen verheerend um den wahren Wert. Ursache kann fehlerhafte Probenaufbereitung sein.'}
-                    {accuracy === 'low' && precision === 'low' && 'Kritischer Systemeinbruch! Sowohl Messabweichungen als auch Störfaktoren sind unkontrolliert. Die Prüfeinrichtung ist sofort stillzusetzen.'}
+                    {accuracy === 'high' && precision === 'high' && 'Richtig und präzise: geringe systematische Abweichung und geringe Streuung. Die Ergebnisse sind verlässlich.'}
+                    {accuracy === 'low' && precision === 'high' && 'Achtung: gute Wiederholbarkeit, aber verschobener Mittelpunkt! Alle Werte weichen in dieselbe Richtung ab. Typische Ursache ist ein unentdeckter Kalibrierfehler – Mehrfachmessungen helfen hier nicht.'}
+                    {accuracy === 'high' && precision === 'low' && 'Im Mittel richtig, aber die Einzelwerte streuen stark. Ursache kann eine uneinheitliche Probenherstellung oder -vorbereitung sein; mehr Wiederholungen verkleinern die Unsicherheit des Mittelwerts.'}
+                    {accuracy === 'low' && precision === 'low' && 'Weder richtig noch präzise: systematische und zufällige Abweichungen sind unkontrolliert. Die Prüfeinrichtung ist bis zur Klärung (Kalibrierung, Verfahrensprüfung) außer Betrieb zu nehmen.'}
                   </p>
                 </div>
               </div>
@@ -742,8 +748,8 @@ export default function MessenPruefen() {
             </h2>
             <p className="text-slate-600 text-xs leading-relaxed max-w-4xl font-sans">
               Gemäß dem internationalen Leitfaden <strong>GUM (Guide to the Expression of Uncertainty in Measurement)</strong> gilt es, 
-              unsicherheitstreibende Quellen (Type A: Statistische Streuung aus Versuchen, Type B: Unvollkommenheit der Anzeigegeräte oder Kalibrierungen) 
-              zu einer kombinierten Standardunsicherheit (<FormulaText text="u_c" />) geometrisch aufzuaddieren.
+              die Unsicherheitsbeiträge (Typ A: statistische Auswertung von Messreihen, Typ B: andere Informationen wie Auflösung oder Kalibrierschein) 
+              zu einer kombinierten Standardunsicherheit (<FormulaText text="u_c" />) quadratisch zu addieren (Wurzel aus der Quadratsumme, bei unkorrelierten Größen).
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
@@ -754,7 +760,7 @@ export default function MessenPruefen() {
 
                 {/* Input 1: Raw values string */}
                 <div className="space-y-1.5 font-sans">
-                  <label className="text-xs font-bold text-slate-700 block">Messwerte (Komma-separiert, in MPa):</label>
+                  <label className="text-xs font-bold text-slate-700 block">Messwerte in MPa (durch Semikolon getrennt, Dezimalkomma):</label>
                   <input
                     type="text"
                     value={measurements}
@@ -762,14 +768,14 @@ export default function MessenPruefen() {
                     className="w-full text-xs font-mono p-2.5 bg-white border border-home-grau/30 rounded-lg focus:outline-none focus:ring-1 focus:ring-shiraz"
                   />
                   <p className="text-[10px] text-slate-500 mt-1">
-                    Aktuell erkannt: <strong>{parsedData.length}</strong> gültige Messwerte.
+                    Aktuell erkannt: <strong>{formatDeWert(parsedData.length)}</strong> gültige Messwerte.
                   </p>
                 </div>
 
                 {/* Input 2: Display Resolution (d) */}
                 <div className="space-y-1.5 pt-3.5 border-t border-home-grau/30 font-sans">
                   <div className="flex justify-between items-center text-xs text-slate-700 font-bold">
-                    <label>Digitalauflösung d (Skalenabteilung):</label>
+                    <label>Auflösung d (Ziffernschritt bzw. Skalenteilungswert):</label>
                     <span className="font-mono text-slate-900">{formatDeWert(resolution)} MPa</span>
                   </div>
                   <input
@@ -782,7 +788,7 @@ export default function MessenPruefen() {
                     className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
                   <p className="text-[10px] text-slate-500 leading-normal">
-                    Führt nach GUM zur Type B-Unsicherheit (Rechteckverteilung): <FormulaText text="u_{B,1} = d / \sqrt{12}" />.
+                    Führt nach GUM zu einem Typ-B-Beitrag (Rechteckverteilung): <FormulaText text="u_{B,1} = d / \sqrt{12}" />.
                   </p>
                 </div>
 
@@ -802,14 +808,14 @@ export default function MessenPruefen() {
                     className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
                   <p className="text-[10px] text-slate-500 leading-normal">
-                    Genormte Abweichung laut DAkkS-Kalibrierschein. Type B (Normalverteilung): <FormulaText text="u_{B,2} = U / 2" /> (für k=2).
+                    Erweiterte Unsicherheit laut (DAkkS-)Kalibrierschein. Typ B (Normalverteilung): <FormulaText text="u_{B,2} = U / 2" /> (für k=2).
                   </p>
                 </div>
 
                 {/* Button to restore default sample set */}
                 <button
                   onClick={() => {
-                    setMeasurements('38.5, 39.2, 37.8, 38.9, 39.6');
+                    setMeasurements('38,5; 39,2; 37,8; 38,9; 39,6');
                     setResolution(0.1);
                     setCalibrationError(0.15);
                   }}
@@ -825,10 +831,10 @@ export default function MessenPruefen() {
                   <div className="flex justify-between items-start border-b border-home-grau/30 pb-2.5 font-sans">
                     <div>
                       <span className="text-[9px] font-mono font-bold text-slate-400 uppercase block">Berechnungsberichte</span>
-                      <h3 className="text-sm font-bold text-slate-900 leading-tight">GUM-Konformer Prüfbericht</h3>
+                      <h3 className="text-sm font-bold text-slate-900 leading-tight">Unsicherheitsbudget nach GUM</h3>
                     </div>
                     <div className="text-right text-xs font-mono font-bold text-shiraz">
-                      <span>95,45% Vertrauensgrenze</span>
+                      <span>k = 2 (≈ 95 % Überdeckung)</span>
                     </div>
                   </div>
 
@@ -837,7 +843,7 @@ export default function MessenPruefen() {
                     <div className="space-y-3 mt-4 text-xs font-sans">
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                         <div className="bg-white p-2.5 rounded border border-home-grau/30">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase block font-mono">arithm. Mittel µ</span>
+                          <span className="text-[10px] font-bold text-slate-400 uppercase block font-mono">arithm. Mittel x̄</span>
                           <span className="font-mono text-slate-900 font-bold text-sm">{formatDeZahl(mean, 3)} MPa</span>
                         </div>
                         <div className="bg-white p-2.5 rounded border border-home-grau/30">
@@ -846,7 +852,7 @@ export default function MessenPruefen() {
                         </div>
                         <div className="bg-white p-2.5 rounded border border-home-grau/30">
                           <span className="text-[10px] font-bold text-slate-400 uppercase block font-mono">Probenanzahl n</span>
-                          <span className="font-mono text-slate-900 font-bold text-sm">{parsedData.length}</span>
+                          <span className="font-mono text-slate-900 font-bold text-sm">{formatDeWert(parsedData.length)}</span>
                         </div>
                       </div>
 
@@ -855,30 +861,30 @@ export default function MessenPruefen() {
                         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-sans">Unsicherheitsbeiträge (u_i)</span>
                         
                         <div className="flex justify-between items-center text-[11px] border-b border-home-grau/30 py-1 font-mono">
-                          <span>uA (Type A, statistisch: s_x / &radic;n)</span>
+                          <span>uA (Typ A, statistisch: s / &radic;n)</span>
                           <span className="font-bold text-slate-800">{formatDeZahl(uA, 4)} MPa</span>
                         </div>
 
                         <div className="flex justify-between items-center text-[11px] border-b border-home-grau/30 py-1 font-mono">
-                          <span>uB,1 (Type B, Auflösung: d / &radic;12)</span>
+                          <span>uB,1 (Typ B, Auflösung: d / &radic;12)</span>
                           <span className="font-bold text-slate-800">{formatDeZahl(uB1, 4)} MPa</span>
                         </div>
 
                         <div className="flex justify-between items-center text-[11px] py-1 font-mono">
-                          <span>uB,2 (Type B, Kalibrierung: U_cal / 2)</span>
+                          <span>uB,2 (Typ B, Kalibrierung: U_cal / 2)</span>
                           <span className="font-bold text-slate-800">{formatDeZahl(uB2, 4)} MPa</span>
                         </div>
                       </div>
 
                       {/* Quadratic Summation indicator */}
                       <p className="text-[10px] text-slate-500 italic text-right -mt-1 leading-normal font-sans">
-                        Geometrische Verknüpfung: <FormulaText text="u_c = \sqrt{u_A^2 + u_{B,1}^2 + u_{B,2}^2}" />
+                        Quadratische Addition: <FormulaText text="u_c = \sqrt{u_A^2 + u_{B,1}^2 + u_{B,2}^2}" />
                       </p>
 
                     </div>
                   ) : (
                     <div className="p-8 text-center text-slate-400 text-xs font-sans">
-                      Bitte gib mindestens zwei gültige, Komma-separierte Messwerte an, um die statistische Unsicherheitsberechnung (Type A) zu aktivieren.
+                      Bitte geben Sie mindestens zwei gültige Messwerte (durch Semikolon getrennt) an, um die statistische Auswertung (Typ A) zu aktivieren.
                     </div>
                   )}
                 </div>
@@ -887,12 +893,12 @@ export default function MessenPruefen() {
                 {parsedData.length >= 2 && (
                   <div className="mt-6 pt-4 border-t border-home-grau/30 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div className="space-y-1 font-sans">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">Konformes Messergebnis</span>
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">Vollständiges Messergebnis</span>
                       <div className="text-base md:text-lg font-mono font-bold text-slate-900 tracking-tight">
                         {formatDeZahl(mean, 2)} ± {formatDeZahl(expandedU, 2)} MPa
                       </div>
                       <p className="text-[10px] text-slate-500">
-                        Das tatsächliche Intervall liegt mit p=95,45% (k=2) zwischen <strong>{formatDeZahl(minInterval, 2)}</strong> und <strong>{formatDeZahl(maxInterval, 2)}</strong> MPa.
+                        Der Wert der Messgröße liegt mit einer Überdeckungswahrscheinlichkeit von etwa 95 % (k = 2) zwischen <strong>{formatDeZahl(minInterval, 2)}</strong> und <strong>{formatDeZahl(maxInterval, 2)}</strong> MPa.
                       </p>
                     </div>
                     <div className="bg-shiraz/5 border border-shiraz/20 p-3 rounded-lg flex items-center gap-3 self-stretch md:self-auto justify-between md:justify-start shrink-0 font-sans">
@@ -922,7 +928,7 @@ export default function MessenPruefen() {
             </h2>
             <p className="text-slate-600 text-xs leading-relaxed max-w-4xl font-sans">
               Wenn Prüfungen unter geringfügig wechselnden Randbedingungen durchgeführt werden (anderer Bediener, geändertes Prüfgerät, andere Kalibrierniveaus), 
-              erhöht sich die Streuung der Messergebnisse drastisch. Man unterscheidet normgemäß strikt zwischen Wiederholgrenze <FormulaText text="r" /> 
+              nimmt die Streuung der Messergebnisse zu. Nach ISO 5725 wird zwischen der Wiederholgrenze <FormulaText text="r" /> 
               und Vergleichsgrenze <FormulaText text="R" />.
             </p>
 
@@ -946,8 +952,8 @@ export default function MessenPruefen() {
                     <li className="flex items-center gap-1.5"><span className="text-emerald-500">•</span> Kurzer zeitlicher Abstand (unmittelbarer Versuchsnachlauf)</li>
                   </ul>
                   <p className="text-xs text-slate-500 leading-relaxed mt-3 font-sans">
-                    Statistisch gilt die Wiederholgrenze: <FormulaText text="r = 2.8 \cdot \sigma_r" /> (mit <FormulaText text="\sigma_r" /> als Wiederholstandardabweichung). 
-                    Dies deckt ca. 95% aller Messwertdifferenzen ab.
+                    Statistisch gilt die Wiederholgrenze: <FormulaText text="r = 2{,}8 \cdot \sigma_r" /> (mit <FormulaText text="\sigma_r" /> als Wiederholstandardabweichung). 
+                    Die Differenz zweier Einzelergebnisse überschreitet r nur mit etwa 5 % Wahrscheinlichkeit (2,8 ≈ 1,96 · √2).
                   </p>
                 </div>
                 <div className="mt-4 pt-3 text-[10px] text-slate-400 font-mono italic leading-normal border-t border-home-grau/30">
@@ -970,11 +976,11 @@ export default function MessenPruefen() {
                   <ul className="space-y-1.5 text-xs text-slate-600 mt-3 list-none font-sans">
                     <li className="flex items-center gap-1.5"><span className="text-purple-500">•</span> Unterschiedliche Laboranten</li>
                     <li className="flex items-center gap-1.5"><span className="text-purple-500">•</span> Völlig unterschiedliche Prüfmaschinen / Hersteller</li>
-                    <li className="flex items-center gap-1.5"><span className="text-purple-500">•</span> Größerer zeitlicher Verzug (z.B. Wochen oder Monate)</li>
+                    <li className="flex items-center gap-1.5"><span className="text-purple-500">•</span> Größerer zeitlicher Verzug (z. B. Wochen oder Monate)</li>
                   </ul>
                   <p className="text-xs text-slate-500 leading-relaxed mt-3 font-sans">
-                    Statistisch gilt die Vergleichsgrenze: <FormulaText text="R = 2.8 \cdot \sigma_R" /> (mit <FormulaText text="\sigma_R" /> als Vergleichsstandardabweichung). 
-                    Dies deckt i.d.R. ca. 95% aller Verwerterdifferenzen ab.
+                    Statistisch gilt die Vergleichsgrenze: <FormulaText text="R = 2{,}8 \cdot \sigma_R" /> (mit <FormulaText text="\sigma_R" /> als Vergleichsstandardabweichung). 
+                    Die Differenz zweier Ergebnisse aus verschiedenen Laboren überschreitet R nur mit etwa 5 % Wahrscheinlichkeit.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 text-[10px] text-slate-400 font-mono italic leading-normal border-t border-home-grau/30">
@@ -991,8 +997,8 @@ export default function MessenPruefen() {
             <div className="leading-relaxed">
               <strong>Praktische Relevanz bei Baustoff-Konformität:</strong> 
               Bei der Festigkeitsbewertung von Transportbeton oder Asphaltbelägen sind die Vergleichs- und Wiederholgrenzen von herausragender Bedeutung. 
-              Weichen die Zylinderfestigkeiten zwischen dem Herstellerwerk und einem externen Prüflabor ab, müssen diese metrologischen Grenzen 
-              (<FormulaText text="R" />) zwingend herangezogen werden, bevor rechtliche Mängelansprüche (z.B. nach VOB) geltend gemacht werden.
+              Weichen die Zylinderfestigkeiten zwischen dem Herstellerwerk und einem externen Prüflabor ab, ist zuerst zu prüfen, ob die Differenz die Vergleichsgrenze 
+              (<FormulaText text="R" />) überhaupt überschreitet – erst dann ist sie messtechnisch signifikant und als Grundlage für Mängelansprüche (z. B. nach VOB/B) belastbar.
             </div>
           </div>
         </div>
@@ -1069,7 +1075,7 @@ export default function MessenPruefen() {
                     onChange={(e) => setRvAssignedValue(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
-                  <span className="text-[10px] text-slate-400 block">Robuster Mittelwert (Algorithmus A nach ISO 13528)</span>
+                  <span className="text-[10px] text-slate-400 block">z. B. robuster Mittelwert der Teilnehmer (Algorithmus A nach DIN ISO 13528)</span>
                 </div>
 
                 {/* Input: Sigma_pt */}
@@ -1089,7 +1095,7 @@ export default function MessenPruefen() {
                     onChange={(e) => setRvSigmaPT(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
-                  <span className="text-[10px] text-slate-400 block">Zulässige Vergleichsstreuung für die Eignungsprüfung</span>
+                  <span className="text-[10px] text-slate-400 block">Vom Anbieter festgelegte Standardabweichung für die Eignungsbeurteilung</span>
                 </div>
 
                 {/* Input: U_lab & U_ref */}
@@ -1203,17 +1209,17 @@ export default function MessenPruefen() {
                     <div className="mt-4 pt-3 border-t border-slate-200/70 text-[11px] text-slate-700 leading-snug">
                       {rvStats.zStatus === 'ok' && (
                         <span className="text-emerald-800 font-medium flex items-center gap-1.5">
-                          <CheckCircle2 size={14} className="shrink-0" /> |z| ≤ 2,0: Labor erfüllt die Qualitätskriterien nach ISO 13528 vollumfänglich.
+                          <CheckCircle2 size={14} className="shrink-0" /> |z| ≤ 2,0: zufriedenstellende Leistung nach DIN ISO 13528.
                         </span>
                       )}
                       {rvStats.zStatus === 'warning' && (
                         <span className="text-amber-800 font-medium flex items-center gap-1.5">
-                          <AlertTriangle size={14} className="shrink-0" /> 2,0 &lt; |z| &lt; 3,0: Erhöhtes Risiko für systematische Drift. Laborinterne Prüfung empfohlen.
+                          <AlertTriangle size={14} className="shrink-0" /> 2,0 &lt; |z| &lt; 3,0: fragwürdiges Ergebnis (Warnsignal). Laborinterne Prüfung empfohlen.
                         </span>
                       )}
                       {rvStats.zStatus === 'critical' && (
                         <span className="text-rose-800 font-bold flex items-center gap-1.5">
-                          <AlertTriangle size={14} className="shrink-0" /> |z| ≥ 3,0: Nichtkonformität nach ISO/IEC 17025. Ursachenanalyse &amp; Korrekturmaßnahme erforderlich!
+                          <AlertTriangle size={14} className="shrink-0" /> |z| ≥ 3,0: nicht zufriedenstellend (Eingriffssignal). Nach DIN EN ISO/IEC 17025 sind Ursachenanalyse &amp; Korrekturmaßnahmen erforderlich.
                         </span>
                       )}
                     </div>
@@ -1233,7 +1239,7 @@ export default function MessenPruefen() {
                         <span className={`text-[11px] font-bold font-mono px-2 py-0.5 rounded-full ${
                           rvStats.enStatus === 'ok' ? 'bg-blue-600 text-white' : 'bg-rose-600 text-white animate-pulse'
                         }`}>
-                          {rvStats.enStatus === 'ok' ? '|En| ≤ 1.0 (Konform)' : '|En| &gt; 1.0 (Inkonsistent)'}
+                          {rvStats.enStatus === 'ok' ? '|En| ≤ 1,0 (zufriedenstellend)' : '|En| > 1,0 (nicht zufriedenstellend)'}
                         </span>
                       </div>
 
@@ -1246,7 +1252,7 @@ export default function MessenPruefen() {
 
                       <div className="mt-2 text-xs text-slate-600 leading-relaxed font-sans">
                         <p>
-                          Vergleichsgrenze: <FormulaText text="\sqrt{U_{\text{lab}}^2 + U_{\text{ref}}^2}" /> = <strong>±{formatDeZahl(rvStats.denomEn, 2)} MPa</strong>
+                          Nenner: <FormulaText text="\sqrt{U_{\text{lab}}^2 + U_{\text{ref}}^2}" /> = <strong>±{formatDeZahl(rvStats.denomEn, 2)} MPa</strong>
                         </p>
                       </div>
                     </div>
@@ -1271,7 +1277,7 @@ export default function MessenPruefen() {
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-home-grau/20">
                     <div>
                       <h4 className="font-bold text-slate-900 text-xs flex items-center gap-1.5 font-sans">
-                        <Target size={15} className="text-shiraz" /> Interaktives Youden-Plot (Zwei-Proben-Diagnostik)
+                        <Target size={15} className="text-shiraz" /> Interaktiver Youden-Plot (Zwei-Proben-Diagnostik)
                       </h4>
                       <p className="text-[10px] text-slate-500 font-sans">
                         W. J. Youden-Methode: Trennung von systematischen Laborfehlern von zufälligen Streuungen.
@@ -1346,7 +1352,7 @@ export default function MessenPruefen() {
 
                     <div className="w-full flex items-center justify-between text-[10px] text-slate-400 mt-1 font-mono">
                       <span>• Graue Punkte = 18 teilnehmende Baustofflabore</span>
-                      <span>• Grüner Kreis = Zulässiger Vertrauensbereich (DIN ISO 13528)</span>
+                      <span>• Grüne Ellipse = schematischer Bereich üblicher Streuung</span>
                     </div>
                   </div>
 
@@ -1375,7 +1381,7 @@ export default function MessenPruefen() {
                   <span>Akkreditierung &amp; Recht</span>
                 </div>
                 <p className="text-text-main/80 leading-relaxed">
-                  Nach <strong>DIN EN ISO/IEC 17025 (Kap. 7.7.2)</strong> ist die regelmäßige Teilnahme an Eignungsprüfungen für akkreditierte Prüflaboratorien verpflichtend. Im Straßenbau verlangt die <strong>RAP-Stra</strong> den jährlichen Nachweis für Asphalt-, Boden- und Betonprüfungen.
+                  <strong>DIN EN ISO/IEC 17025 (Abschn. 7.7.2)</strong> verlangt, dass Laboratorien ihre Leistung durch Vergleich mit anderen Laboratorien überwachen, soweit verfügbar und angemessen – in der Praxis durch Eignungsprüfungen, deren Teilnahme die DAkkS bei Akkreditierungen einfordert. Im Straßenbau setzt die Anerkennung von Prüfstellen nach <strong>RAP Stra</strong> die regelmäßige erfolgreiche Teilnahme an Vergleichsprüfungen voraus.
                 </p>
               </div>
 
@@ -1385,7 +1391,7 @@ export default function MessenPruefen() {
                   <span>Robuste Statistik (Algorithmus A)</span>
                 </div>
                 <p className="text-text-main/80 leading-relaxed">
-                  Damit grobe Ausreißer einzelner Labore das Gesamtergebnis nicht verzerren, berechnet der Ringversuchsveranstalter den Referenzwert <FormulaText text="X" /> und die Standardabweichung <FormulaText text="\sigma_{\text{pt}}" /> mittels <strong>robuster Statistik (Huber-M-Schätzer / Algorithmus A nach DIN ISO 13528)</strong> statt eines einfachen arithmetischen Mittels.
+                  Damit grobe Ausreißer einzelner Labore das Gesamtergebnis nicht verzerren, berechnet der Ringversuchsveranstalter den Referenzwert <FormulaText text="X" /> und die Standardabweichung <FormulaText text="\sigma_{\text{pt}}" /> häufig mittels <strong>robuster Statistik (Algorithmus A nach DIN ISO 13528)</strong> statt eines einfachen arithmetischen Mittels.
                 </p>
               </div>
 
@@ -1395,7 +1401,7 @@ export default function MessenPruefen() {
                   <span>Typische Fehlerquellen im Baulabor</span>
                 </div>
                 <p className="text-text-main/80 leading-relaxed">
-                  Häufige Ursachen für &bdquo;Nicht zufriedenstellende&ldquo; Ringversuchsergebnisse: Nicht planparallele Zylinder-Druckflächen (<FormulaText text="> 0.05\,\text{mm}" /> Abweichung), falsche Kraftanstiegsgeschwindigkeit (<FormulaText text="\ne 0.6 \pm 0.2\,\text{MPa/s}" />) oder Reibung im Kugelgelenk der oberen Druckplatte.
+                  Häufige Ursachen für &bdquo;Nicht zufriedenstellende&ldquo; Ringversuchsergebnisse: nicht ebene Druckflächen (Ebenheitstoleranz nach DIN EN 12390-1: <FormulaText text="0{,}0006 \cdot d" />), falsche Belastungsgeschwindigkeit (Soll nach DIN EN 12390-3: <FormulaText text="0{,}6 \pm 0{,}2\,\text{MPa/s}" />) oder Reibung im Kugelgelenk der oberen Druckplatte.
                 </p>
               </div>
 
@@ -1404,6 +1410,36 @@ export default function MessenPruefen() {
           </div>
         </div>
       )}
+
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <div className="flex flex-col gap-6">
+        <FormulaDerivationBox
+          title="Beispiel 1: Unsicherheitsbudget einer Würfeldruckprüfung"
+          zielGleichung="U = k \cdot \sqrt{u_A^2 + u_{B,1}^2 + u_{B,2}^2}"
+          schritte={[
+            { titel: 'Messreihe', erklaerung: 'Fünf Würfel derselben Charge: 38,5 / 39,2 / 37,8 / 38,9 / 39,6 MPa. Mittelwert und Standardabweichung:', formel: '\\bar{x} = 38{,}80\\,\\text{MPa},\\quad s = 0{,}69\\,\\text{MPa}' },
+            { titel: 'Typ A (Streuung des Mittelwerts)', erklaerung: 'Standardunsicherheit des Mittelwerts aus n = 5 Werten:', formel: 'u_A = \\frac{0{,}69}{\\sqrt{5}} = 0{,}31\\,\\text{MPa}' },
+            { titel: 'Typ B (Auflösung und Kalibrierung)', erklaerung: 'Anzeigeauflösung d = 0,1 MPa (Rechteckverteilung) und Kalibrierschein U_cal = 0,15 MPa mit k = 2:', formel: 'u_{B,1} = \\frac{0{,}1}{\\sqrt{12}} = 0{,}029,\\quad u_{B,2} = \\frac{0{,}15}{2} = 0{,}075\\,\\text{MPa}' },
+            { titel: 'Kombinieren und erweitern', erklaerung: 'Quadratische Addition, dann Erweiterung mit k = 2:', formel: 'u_c = \\sqrt{0{,}31^2 + 0{,}029^2 + 0{,}075^2} = 0{,}32,\\quad U = 0{,}64\\,\\text{MPa}' }
+          ]}
+          ergebnisHinweis="Ergebnis: 38,8 MPa ± 0,6 MPa (k = 2). Der Typ-A-Anteil dominiert – mehr Probekörper verringern die Unsicherheit stärker als eine feinere Anzeige."
+          normQuelle="JCGM 100:2008 (GUM), Abschn. 4.2, 4.3.7, 5.1.2, 6.2"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 2: Ringversuch – z-Score und En-Zahl bewerten"
+          zielGleichung="z = \frac{x_{lab} - X}{\sigma_{pt}},\qquad E_n = \frac{x_{lab} - X}{\sqrt{U_{lab}^2 + U_{ref}^2}}"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Eigenes Ergebnis 46,0 MPa, zugewiesener Wert X = 50,0 MPa, σ_pt = 1,8 MPa, U_lab = 1,4 MPa, U_ref = 0,6 MPa (jeweils k = 2).', formel: 'x_{lab} - X = -4{,}0\\,\\text{MPa}' },
+            { titel: 'z-Score', erklaerung: 'Nach DIN ISO 13528: |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.', formel: 'z = \\frac{-4{,}0}{1{,}8} = -2{,}22 \;\\Rightarrow\; \\text{Warnsignal}' },
+            { titel: 'En-Zahl', erklaerung: 'Bezieht die angegebenen Messunsicherheiten ein; |En| ≤ 1 ist zufriedenstellend.', formel: 'E_n = \\frac{-4{,}0}{\\sqrt{1{,}4^2 + 0{,}6^2}} = \\frac{-4{,}0}{1{,}52} = -2{,}63' }
+          ]}
+          ergebnisHinweis="Beide Kennzahlen zeigen eine zu niedrige Festigkeit. |En| > 1 bedeutet zusätzlich, dass die angegebene Laborunsicherheit die Abweichung nicht erklärt – Kalibrierung der Presse und Probenvorbereitung prüfen."
+          normQuelle="DIN ISO 13528:2025-07; DIN EN ISO/IEC 17043:2023-10"
+        />
+      </div>
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="messen_pruefen" />
 
       {/* --- Footer Integration --- */}
       <ModuleFooter 
@@ -1420,48 +1456,53 @@ export default function MessenPruefen() {
         ]}
         regelwerke={[
           { title: 'DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO%2FIEC+17025' },
-          { title: 'DIN EN ISO/IEC 17043:2023-09 (Konformitätsbewertung – Allgemeine Anforderungen an die Kompetenz von Anbietern von Eignungsprüfungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO%2FIEC+17043' },
-          { title: 'DIN ISO 13528:2020-09 (Statistische Verfahren für Eignungsprüfungen durch Ringversuche)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+13528' },
-          { title: 'DIN EN ISO 5725-1:2023-07 (Genauigkeit von Messverfahren und Messergebnissen - Teil 1: Grundlagen und Begriffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+5725-1' },
+          { title: 'DIN EN ISO/IEC 17043:2023-10 + A11:2024-09 (Konformitätsbewertung – Anforderungen an Anbieter von Eignungsprüfungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO%2FIEC+17043' },
+          { title: 'DIN ISO 13528:2025-07 (Statistische Verfahren für Eignungsprüfungen durch Vergleiche zwischen Laboratorien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+13528' },
+          { title: 'ISO 5725-1:2023-07 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen – Teil 1); DIN ISO 5725-1:1997-11 zurückgezogen', url: 'https://www.dinmedia.de/de/suche?q=ISO+5725-1' },
+          { title: 'DIN EN ISO 7500-1:2018-06 (Kalibrierung und Überprüfung von Zug- und Druckprüfmaschinen – Kraftmesssystem)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+7500-1' },
+          { title: 'DIN EN ISO 13385-1:2020-03 (Messschieber; ersetzt DIN 862:2015-03)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+13385-1' },
+          { title: 'DIN ISO 17123-2:2023-12 (Feldprüfverfahren geodätischer Instrumente – Nivelliere)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+17123-2' },
+          { title: 'Mess- und Eichgesetz (MessEG) und Mess- und Eichverordnung (MessEV)', url: 'https://www.gesetze-im-internet.de/messeg/' },
           { title: 'JCGM 100:2008 (Guide to the expression of uncertainty in measurement - GUM)', url: 'https://www.bipm.org/en/committees/jc/jcgm/publications' }
         ]}
         literatur={[
-          'Kessel, W.: Messunsicherheit nach GUM verstehen und berechnen (2018)',
-          'Weyhe, S.: Laborhandbuch Metrologie in der Baustoffprüfung (2020)',
-          'Funk, W.; Dammann, V.; Donnevert, G.: Qualitätssicherung in der Analytischen Chemie: Ringversuche und Eignungsprüfungen (Wiley-VCH, 2019)'
+          'Gerlach, G.; Sommer, K.-D.: Messunsicherheit – kurz und praktisch für Ingenieure und Naturwissenschaftler. Berlin: De Gruyter 2024',
+          'Funk, W.; Dammann, V.; Donnevert, G.: Qualitätssicherung in der Analytischen Chemie. 2. Aufl., Weinheim: Wiley-VCH 2005',
+          'JCGM 100:2008: Evaluation of measurement data – Guide to the expression of uncertainty in measurement (GUM). BIPM 2008'
         ]}
         formeln={[
           {
             formel: 'z = \\frac{x_i - X}{\\sigma_{pt}}',
-            erklaerung: 'z-Score zur standardisierten Bewertung der Einzellaborleistung im Ringversuch nach DIN ISO 13528:2020-09. Werte |z| <= 2 gelten als zufriedenstellend.',
-            quelle: 'DIN EN ISO/IEC 17043:2023-09'
+            erklaerung: 'z-Score zur Bewertung der Laborleistung in Eignungsprüfungen. |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.',
+            quelle: 'DIN ISO 13528:2025-07'
           },
           {
             formel: 'E_n = \\frac{x_{lab} - X_{ref}}{\\sqrt{U_{lab}^2 + U_{ref}^2}}',
-            erklaerung: 'En-Zahl zur Beurteilung der Messwertübereinstimmung unter Berücksichtigung der erweiterten Messunsicherheiten (k=2). Werte |En| <= 1,0 sind konform.',
-            quelle: 'DIN EN ISO/IEC 17043:2023-09'
+            erklaerung: 'En-Zahl zur Beurteilung der Messwertübereinstimmung unter Berücksichtigung der erweiterten Messunsicherheiten (k=2). Werte |En| ≤ 1,0 sind zufriedenstellend.',
+            quelle: 'DIN ISO 13528:2025-07'
           },
           {
             formel: 'u_A = \\frac{s}{\\sqrt{n}}',
-            erklaerung: 'Type A Standardmessunsicherheit (statistischer Standardfehler des Mittelwerts).',
-            quelle: 'JCGM 100:2008 (GUM) Kap. 4'
+            erklaerung: 'Standardunsicherheit Typ A (empirische Standardabweichung des Mittelwerts).',
+            quelle: 'JCGM 100:2008 (GUM) Abschn. 4.2.3'
           },
           {
             formel: 'u_{B,1} = \\frac{d}{2\\sqrt{3}}',
-            erklaerung: 'Type B Standardunsicherheit aus der Ableseauflösung d unter Annahme einer Gleichverteilung (Rechteckbox).',
-            quelle: 'JCGM 100:2008 (GUM) Kap. 5'
+            erklaerung: 'Standardunsicherheit Typ B aus der Auflösung d unter Annahme einer Rechteckverteilung.',
+            quelle: 'JCGM 100:2008 (GUM) Abschn. 4.3.7, F.2.2.1'
           },
           {
             formel: 'u_c = \\sqrt{u_A^2 + u_{B,1}^2 + u_{B,2}^2}',
-            erklaerung: 'Kombinierte Standardmessunsicherheit nach dem Gaußschen Fehlerfortpflanzungsgesetz bei unkorrelierten Eingangsgrößen.',
-            quelle: 'JCGM 100:2008 (GUM) Kap. 5.1'
+            erklaerung: 'Kombinierte Standardunsicherheit nach dem Fortpflanzungsgesetz bei unkorrelierten Eingangsgrößen (Empfindlichkeitskoeffizienten hier 1).',
+            quelle: 'JCGM 100:2008 (GUM) Abschn. 5.1.2'
           },
           {
             formel: 'U = k \\cdot u_c',
-            erklaerung: 'Erweiterte Messunsicherheit mit dem Erweiterungsfaktor k = 2 für ein Vertrauensniveau von ca. 95,45 %.',
-            quelle: 'JCGM 100:2008 (GUM) Kap. 6'
+            erklaerung: 'Erweiterte Messunsicherheit mit dem Erweiterungsfaktor k = 2 für eine Überdeckungswahrscheinlichkeit von etwa 95 % (bei Normalverteilung).',
+            quelle: 'JCGM 100:2008 (GUM) Abschn. 6.2'
           }
         ]}
+        lastReviewed="Oktober 2026 (AP 4 Labor: Begriffe nach ISO 5725-1/MessEG, GUM-Budget, Präzisionsgrenzen und Eignungsprüfung nach DIN ISO 13528:2025-07 geprüft; fachliche Freigabe durch den Autor ausstehend)"
       />
 
     </div>

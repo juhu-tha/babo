@@ -65,15 +65,15 @@ export default function LaborAuswertung() {
     if (dExzess > 10) {
       category = 'condensate';
       diagnosis = 'Tauwasser- / Kondensat-Herkunft';
-      description = `Signifikanter kinetischer Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰ > 10 ‰). Dies beweist physikalisch, dass das Wasser aus der Dampfphase kondensiert ist. Ursachen liegen meist in Wärmebrücken (kühle Betondecken) oder mangelhafter Lüftung.`;
+      description = `Erhöhter Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰ > 10 ‰). Das kann auf Kondensat aus der Raumluft hindeuten (z. B. an Wärmebrücken oder bei unzureichender Lüftung), ist aber kein Beweis: Die Einordnung ist nur im Vergleich mit Referenzproben (Leitungswasser, Niederschlag vor Ort) belastbar.`;
     } else if (dExzess < 5) {
       category = 'evaporated';
       diagnosis = 'Verdunstetes Oberflächenwasser';
       description = `Niedriger Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰) und Abweichung von der globalen meteorischen Wasserlinie (GMWL). Deutet auf stehendes Wasser hin, welches bereits über längere Zeit verdunstet ist. Typisch für flache Pfützen, stehendes Sickerwasser auf Decken oder Altleckagen.`;
     } else {
       category = 'meteoric';
-      diagnosis = 'Meteoriges Wasser (Leitungswasser oder Niederschlag)';
-      description = `Normaler Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰). Das Wasser liegt nahe der meteorischen Wasserlinie. Kann frischer Regenwasser-Eintrag oder ein herkömmlicher Leitungswasserschaden sein. Zur genaueren Trennung ist das Grundwassermittel heranzuziehen.`;
+      diagnosis = 'Meteorisches Wasser (Leitungswasser oder Niederschlag)';
+      description = `Normaler Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰). Das Wasser liegt nahe der meteorischen Wasserlinie. Kann frischer Regenwasser-Eintrag oder ein herkömmlicher Leitungswasserschaden sein. Zur genaueren Trennung sind Referenzproben des örtlichen Leitungswassers und Niederschlags heranzuziehen.`;
     }
 
     return {
@@ -94,7 +94,7 @@ export default function LaborAuswertung() {
     if (gadolinium === 'elevated' && mst === 'human') {
       source = 'Fäkalhaltiges kommunales Abwasser';
       iconColor = 'text-shiraz bg-shiraz/5 border-shiraz/20';
-      details = 'Eindeutiger Doppelnachweis: Die Kombination aus anthropogenem Gadolinium (exklusiver Marker aus MRT-Kontrastmitteln, die Kläranlagen passieren) und wirtspezifischer humaner Bakteriengenetik (Bacteroidales qPCR) beweist zweifelsfrei, dass das Schadenswasser aus Abwasserleitungen stammt (z. B. Rohrbrüche unter der Bodenplatte, Rückstauschäden).';
+      details = 'Starker Doppelhinweis: Die Kombination aus anthropogenem Gadolinium (Rückstand von MRT-Kontrastmitteln) und humanspezifischen Bakterienmarkern (Bacteroidales-qPCR) spricht deutlich dafür, dass das Schadenswasser aus Abwasserleitungen stammt (z. B. Rohrbrüche unter der Bodenplatte, Rückstauschäden).';
     } else if (gadolinium === 'none' && mst === 'animal') {
       source = 'Tierische Kontamination / Oberflächenabfluss';
       iconColor = 'text-slate-700 bg-slate-100 border-slate-200';
@@ -110,7 +110,7 @@ export default function LaborAuswertung() {
     } else {
       source = 'Reines Schadenswasser (Frei von Abwassereffekten)';
       iconColor = 'text-slate-900 bg-slate-100 border-slate-300';
-      details = 'Weder Gadolinium noch fäkale DNA-Sequenzen nachweisbar. Es handelt sich mit sehr hoher Wahrscheinlichkeit um reines Leitungswasser (Frischwasserleck) oder unbelastetes Niederschlagswasser.';
+      details = 'Weder Gadolinium noch fäkale DNA-Sequenzen nachweisbar. Das spricht für Leitungswasser (Frischwasserleck) oder unbelastetes Niederschlagswasser; eine Abwasserbeteiligung unterhalb der Nachweisgrenzen ist nicht ausgeschlossen.';
     }
 
     return { source, iconColor, details };
@@ -120,19 +120,19 @@ export default function LaborAuswertung() {
   const verfahrensMatrix: MethodItem[] = [
     {
       verfahren: 'Isotopenanalyse (d-Exzess)',
-      zielgroese: 'Nachweis Kondensat (d > 10 ‰) vs. Verdunstung / Meteorisches Wasser',
+      zielgroese: 'Hinweise auf Kondensat, Verdunstung oder meteorisches Wasser (Vergleich mit Referenzproben)',
       normen: 'Stand der Wissenschaft / Isotopenhydrologie',
       zerstoerungsfrei: 'Nein (Probe)'
     },
     {
       verfahren: 'Gadolinium-Check',
-      zielgroese: 'Nachweis von Abwasser im Leitungswasser (anthropogener Tracer)',
+      zielgroese: 'Hinweis auf Abwasseranteil im Schadenswasser (anthropogener Tracer; Leitungswasser-Referenz nötig)',
       normen: 'ICP-MS Analytik / Stand der Spurenstoffvorgaben',
       zerstoerungsfrei: 'Nein (Wasserprobe)'
     },
     {
       verfahren: 'Phenolphthalein-Test',
-      zielgroese: 'Karbonatisierungstiefe & Abschätzung frisches vs. altes Rissalter im Beton',
+      zielgroese: 'Karbonatisierungstiefe; grobe Abschätzung frischer vs. alter Risse',
       normen: 'DIN EN 14630',
       zerstoerungsfrei: 'Nein (Probe)'
     },
@@ -145,13 +145,13 @@ export default function LaborAuswertung() {
     {
       verfahren: 'Thermogravimetrie (TGA)',
       zielgroese: 'Mörtelanalysen (Hydraulischer Bindemittelfaktor), Carbonatsubstanz, organische Zuschläge',
-      normen: 'DIN EN 196 (Anlehnung) / Reverse Engineering',
+      normen: 'Fachliteratur Mörtelanalytik; vgl. DIN EN 196-2 (chemische Analyse)',
       zerstoerungsfrei: 'Nein (Pulver)'
     },
     {
       verfahren: 'GC-MS (Wischproben / Material)',
       zielgroese: 'Forensik von Fogging-Ablagerungen (Phthalate, SVOCs), PCB, PAK und Holzschutzmitteln',
-      normen: 'VDI 4300 Blatt 1/2, VDI 4301, VDI 3866',
+      normen: 'VDI 4300 Blatt 1/2, VDI 4301',
       zerstoerungsfrei: 'Nein (Probe)'
     },
     {
@@ -163,13 +163,13 @@ export default function LaborAuswertung() {
     {
       verfahren: 'Impakt-Echo-Verfahren',
       zielgroese: 'Zerstörungsfreie Dickenmessung, Ortung von Delaminationen und Kiesnestern',
-      normen: 'DGZfP-Merkblatt B 11 (2022), ASTM C1383',
+      normen: 'ASTM C1383; DGZfP-Merkblätter (Fachausschuss ZfP im Bauwesen)',
       zerstoerungsfrei: 'Ja'
     },
     {
       verfahren: 'LIBS (Handheld Laser)',
       zielgroese: 'Mobiles Elementmapping vor Ort (z. B. Chloridgehalte, Schwefel, Zementmatrix)',
-      normen: 'WTA-Merkblätter / ZfP Mobilprüfungen',
+      normen: 'Fachliteratur (z. B. BAM); kein genormtes Verfahren',
       zerstoerungsfrei: 'Bedingt (Laserablation)'
     },
     {
@@ -206,12 +206,12 @@ export default function LaborAuswertung() {
       content: (
         <div className="space-y-4">
           <p className="leading-relaxed">
-            Die Beurteilung von Gebäudeschäden hat sich in den letzten Dekaden von einer handwerklich-empirischen Praxis zu einer hochspezialisierten, naturwissenschaftlich fundierten Disziplin entwickelt. Während in der Vergangenheit die visuelle Inspektion und einfache haptische Prüfungen oft als hinreichend erachtet wurden, erfordern die zunehmende Komplexität moderner Verbundbaustoffe, die verschärften bauphysikalischen Anforderungen an die Gebäudehülle sowie die juristische Notwendigkeit einer belastbaren Beweisführung in Haftungsfragen eine tiefgehende analytische Durchdringung der Schadensmechanismen.
+            Die Beurteilung von Gebäudeschäden hat sich in den letzten Dekaden von einer handwerklich-empirischen Praxis zu einer hochspezialisierten, naturwissenschaftlich fundierten Disziplin entwickelt. Während in der Vergangenheit die visuelle Inspektion und einfache haptische Prüfungen oft als hinreichend erachtet wurden, erfordern die zunehmende Komplexität moderner Verbundbaustoffe, die verschärften bauphysikalischen Anforderungen an die Gebäudehülle sowie die Notwendigkeit einer belastbaren Beweisführung in Haftungsfragen eine tiefgehende analytische Durchdringung der Schadensmechanismen.
           </p>
           <div className="bg-slate-50 border-l-4 border-shiraz p-4 rounded-r-xl">
             <h4 className="font-bold text-slate-800 text-sm mb-1">Causa Proxima</h4>
             <p className="text-sm text-slate-600">
-              Gebäudeschäden manifestieren sich oft als das Endstadium schleichender physikalischer oder chemischer Prozesse, deren Ursprung tief im mikrostrukturellen Gefüge der Werkstoffe liegt. Feuchtigkeit ist dabei der zentrale Treiber, sei es als Transportmedium für schädliche Salze, als Reaktionspartner bei der Karbonatisierung oder als Auslöser für biologischen Befall. Die Herausforderung besteht darin, nicht nur das Symptom zu dokumentieren, sondern die <strong>Causa proxima</strong> – die unmittelbare Ursache – zweifelsfrei zu identifizieren.
+              Gebäudeschäden manifestieren sich oft als das Endstadium schleichender physikalischer oder chemischer Prozesse, deren Ursprung tief im mikrostrukturellen Gefüge der Werkstoffe liegt. Feuchtigkeit ist dabei der zentrale Treiber, sei es als Transportmedium für schädliche Salze, als Reaktionspartner bei der Karbonatisierung oder als Auslöser für biologischen Befall. Die Herausforderung besteht darin, nicht nur das Symptom zu dokumentieren, sondern die <strong>Causa proxima</strong> – die unmittelbare Ursache – möglichst eindeutig zu identifizieren.
             </p>
           </div>
         </div>
@@ -242,20 +242,20 @@ export default function LaborAuswertung() {
               <div className="text-[10px] text-slate-500 mt-1">Kopplung des Wasserstoff- und Sauerstoff-Abweichungsverhältnisses vom Ozean-Standard VSMOW.</div>
             </div>
             <p className="text-sm text-slate-700 leading-relaxed">
-              <strong>Deuterium-Exzess (<InlineMath math="d = \delta D - 8 \cdot \delta^{18}O" />):</strong> Wichtigster Kondensat-Fingerabdruck. Während Verdunstungsprozesse den d-Wert typischerweise senken, zeigen Proben von Kondenswasser (z. B. an kühlen Betondecken) durch kinetische Fraktionierungsprozesse einen stark erhöhten Deuterium-Exzess (<InlineMath math="d > 10\,\text{‰}" />, teils bis 32 ‰). Dies gestattet die prompte Klärung von "Lüftungsverhalten vs. Baumangel".
+              <strong>Deuterium-Exzess (<InlineMath math="d = \delta D - 8 \cdot \delta^{18}O" />):</strong> Verdunstung senkt den d-Wert typischerweise unter den Wert der GMWL (10 ‰). Für Kondenswasser werden in Fallstudien teils erhöhte d-Werte beschrieben. Belastbar wird die Aussage erst im Vergleich mit Referenzproben (Leitungswasser, Niederschlag, ggf. Raumluftfeuchte) – sie ist ein Indiz, kein Einzelbeweis für „Lüftungsverhalten vs. Baumangel“.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
               <h5 className="font-bold text-slate-850 text-xs mb-1.5 uppercase tracking-wider text-middle-blue">Gadolinium-Check (MRT-Marker)</h5>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Der selektive Nachweis von anthropogenem Gadolinium (MRT-Kontrastmittel), welches Kläranlagen unverändert passiert, dient als exklusiver Nachweis für fäkalhaltiges Abwasser und grenzt dieses sicher von Leitungswasserlecks ab.
+                Anthropogenes Gadolinium (aus MRT-Kontrastmitteln) passiert Kläranlagen weitgehend unverändert und ist ein Hinweis auf Abwasser. Achtung: Wo Trinkwasser aus Uferfiltrat gewonnen wird, kann es auch im Leitungswasser vorkommen – daher immer eine Leitungswasser-Referenzprobe untersuchen.
               </p>
             </div>
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
               <h5 className="font-bold text-slate-850 text-xs mb-1.5 uppercase tracking-wider text-middle-blue">Microbial Source Tracking (qPCR)</h5>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Genetische Identifizierung wirtspezifischer Darmbakterien (z. B. Bacteroidales) ermöglicht die absolute Unterscheidung, ob Fäkalstoffe menschlicher (Abwasser) oder tierischer (z.B. Marder, Tauben) Natur sind.
+                Genetische Identifizierung wirtspezifischer Darmbakterien (z. B. Bacteroidales) ermöglicht die Unterscheidung, ob Fäkalstoffe überwiegend menschlicher (Abwasser) oder tierischer (z. B. Marder, Tauben) Herkunft sind.
               </p>
             </div>
           </div>
@@ -309,7 +309,7 @@ export default function LaborAuswertung() {
               <div>
                 <strong className="text-xs text-slate-800">Thermogravimetrische Analyse (TGA) & Historischer Mörtel:</strong>
                 <p className="text-xs text-slate-600 mt-1">
-                  Die Probe wird kontrolliert erhitzt (bis 1000 °C), während die kontinuierliche Präzisionswaage Massenverluste misst. Durch gezieltes Entweichen von Hydratwasser und Carbonat-<InlineMath math="CO_2" /> kann das Verhältnis und der hydraulische Faktor des Bindemittels rekonstruiert werden, essenziell für die Denkmalpflege und Schadensnachbesserung.
+                  Die Probe wird kontrolliert erhitzt (bis 1000 °C), während die kontinuierliche Präzisionswaage Massenverluste misst. Durch gezieltes Entweichen von Hydratwasser und Carbonat-<InlineMath math="CO_2" /> lassen sich Bindemittelart und -anteile abschätzen – wichtig für die Denkmalpflege und die Auswahl verträglicher Reparaturmörtel.
                 </p>
               </div>
             </div>
@@ -318,7 +318,7 @@ export default function LaborAuswertung() {
               <div>
                 <strong className="text-xs text-slate-800">Rasterelektronenmikroskopie (REM/EDX) & Asbest:</strong>
                 <p className="text-xs text-slate-600 mt-1">
-                  Der Goldstandard gemäß VDI 3866 für kleinste Asbestfasern in Putzmassen oder Fliesenklebern. EDX-Einzelpunktanalysen analysieren die Elementchemie und trennen krebserregende dünne Chrysotil- oder Amphibolfasern zuverlässig von harmlosen synthetischen Fasern oder nadelförmigen Gipsausblühungen.
+                  Standardverfahren nach VDI 3866 Blatt 5 für Asbest in Putzen, Spachtelmassen oder Fliesenklebern. EDX-Punktanalysen bestimmen die Elementzusammensetzung und unterscheiden Chrysotil- oder Amphibolfasern von anderen Fasern (z. B. Glas- oder Zellulosefasern) und nadeligen Gipskristallen.
                 </p>
               </div>
             </div>
@@ -342,7 +342,7 @@ export default function LaborAuswertung() {
                 "Fogging" (Black Magic Dust)
               </span>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Plötzliche Schwarzstaubablagerungen auf Wandfarben und Heizkörpern resultieren aus schwerflüchtigen organischen Verbindungen (SVOC), primär Weichmachern (Phthalaten), die als Klebefilm wirken. Gaschromatographie mit Massenspektrometrie (GC-MS) trennt Schadstoffemissionen von Kerzenruß.
+                Plötzliche Schwarzstaubablagerungen auf Wandfarben und Heizkörpern resultieren aus schwerflüchtigen organischen Verbindungen (SVOC), primär Weichmachern (Phthalaten), die als Klebefilm wirken. Gaschromatographie mit Massenspektrometrie (GC-MS) hilft, SVOC-Ablagerungen von Ruß (Kerzen, Tabakrauch) abzugrenzen.
               </p>
             </div>
             <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-sm space-y-2">
@@ -351,7 +351,7 @@ export default function LaborAuswertung() {
                 Dauerelastische Fugenmassen (PCB & PAK)
               </span>
               <p className="text-xs text-slate-600 leading-relaxed">
-                In Bauten der 1960er bis 1970er Jahre enthalten Fugenmassen oft giftiges PCB und PAK. Die molekulare Forensik per GC-MS ist unerlässlich, um Primärquellen von nachträglich kontaminierten Sekundärquellen (Wandputz, Möbel) abzugrenzen und den Sanierungsplan zu definieren.
+                In Bauten der 1950er bis 1970er Jahre können Fugenmassen PCB (und teils PAK) enthalten. Die molekulare Forensik per GC-MS ist unerlässlich, um Primärquellen von nachträglich kontaminierten Sekundärquellen (Wandputz, Möbel) abzugrenzen und den Sanierungsplan zu definieren.
               </p>
             </div>
             <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-sm space-y-2">
@@ -369,7 +369,7 @@ export default function LaborAuswertung() {
                 PCDD/F (Dioxine & Furane) nach Bränden
               </span>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Bei Kabelbränden aus PVC synthetisieren sich Dioxine und Furane im Rußfilm. Wischproben und hochauflösende Massenspektrometrie nach VdS-Richtlinie 2357 entscheiden über Wiederaufbaubarkeit, Sanierung im Unterdruck oder Totalabriss.
+                Bei Kabelbränden aus PVC synthetisieren sich Dioxine und Furane im Rußfilm. Wischproben und Analysen nach der Richtlinie zur Brandschadensanierung (VdS 2357) bilden die Grundlage für die Entscheidung über Reinigung, Sanierung oder Rückbau.
               </p>
             </div>
           </div>
@@ -391,7 +391,7 @@ export default function LaborAuswertung() {
                 <Clock className="text-slate-500" size={16} /> Rissalterbestimmung per Karbonatisierung
               </div>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Bruchflächen frisch gerissenen Betons sind hochalkalisch. Erst im Laufe der Jahre dringt atmosphärisches Kohlendioxid in den Rissspalt ein und senkt pH-Wert-Grenzen ab. Der Farbumschlagstest an Rissflanken gibt gerichtsverwertbare Schätzungen, ob ein Riss erst kürzlich gebildet wurde oder uralt ist.
+                Bruchflächen frisch gerissenen Betons sind hochalkalisch. Erst im Laufe der Jahre dringt atmosphärisches Kohlendioxid in den Rissspalt ein und senkt pH-Wert-Grenzen ab. Der Farbumschlagstest an Rissflanken gibt grobe Hinweise, ob ein Riss erst kürzlich entstanden oder schon älter ist; die Karbonatisierung im Riss hängt stark von Rissbreite und Feuchte ab.
               </p>
             </div>
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
@@ -399,7 +399,7 @@ export default function LaborAuswertung() {
                 <Compass className="text-slate-500" size={16} /> Forensische Palynologie (Pollenanalyse)
               </div>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Hervorragendes Verfahren zur Feuchtedatierung. Angetrockneter Wasserschadens-Schlamm konserviert die zur Zeit des Wassereintritts aktiven Flugpollen. Die qualitative Bestimmung des Pollenspektrums (z.B. hohe Anteile von Birkenpollen) grenzt den Schadensvorfall oft auf wenige Wochen genau im Kalender ein.
+                Ergänzendes Verfahren zur Feuchtedatierung. Angetrocknete Ablagerungen eines Wasserschadens können die zur Zeit des Wassereintritts fliegenden Pollen enthalten. Das Pollenspektrum (z. B. hohe Anteile von Birkenpollen) kann Hinweise auf die Jahreszeit des Eintritts geben.
               </p>
             </div>
           </div>
@@ -421,14 +421,14 @@ export default function LaborAuswertung() {
               LIBS (Laser-Induced Breakdown Spectroscopy)
             </h4>
             <p className="text-xs text-slate-700 leading-relaxed">
-              Tragbare Handspektrometer ermöglichen die sofortige Elementanalyse direkt auf der Baustelle mittels minimalst-invasiver Laserablation. Binnen Sekunden lassen sich präzise Schichten-Profile von bauschädlichen Chloriden zeichnen oder unbekannte Salzbelastungen klassifizieren – ohne zeitintensiven Laborrücklauf.
+              Tragbare Handspektrometer ermöglichen die sofortige Elementanalyse direkt auf der Baustelle mittels minimalst-invasiver Laserablation. In kurzer Zeit lassen sich Chlorid-Tiefenprofile (z. B. an Bohrkernschnittflächen) erstellen oder Salzbelastungen eingrenzen; für quantitative Werte ist eine Kalibrierung erforderlich.
             </p>
             <h4 className="font-bold text-sm flex items-center gap-2">
               <Activity className="text-shiraz" size={16} />
               Sensor Fusion & KI
             </h4>
             <p className="text-xs text-slate-700 leading-relaxed">
-              Kollaborative Drohnensysteme koppeln Multispektralkameras mit Impand-Echo-Sonden und Georadar-Scannern. Maschinelle Lernmodelle amalgamieren diese heterogenen Datensätze, um strukturbezogen verdeckte Schachtelungen, Hohlräume und Korrosionsfortschritte auf Mobilgeräten in Echtzeit zu visualisieren.
+              Forschungsansätze koppeln Kamera- und Thermografiedaten (z. B. per Drohne) mit Impakt-Echo- und Georadar-Messungen. Verfahren des maschinellen Lernens führen diese Datensätze zusammen, um Hohlstellen, Delaminationen oder Korrosionsbereiche zu lokalisieren – der Stand ist überwiegend Forschung.
             </p>
           </div>
         </div>
@@ -461,7 +461,7 @@ export default function LaborAuswertung() {
                 : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
-            <BookOpen size={13} /> Forschungsbericht
+            <BookOpen size={13} /> Fachübersicht
           </button>
           <button
             onClick={() => setActiveTab('rechner')}
@@ -521,7 +521,7 @@ export default function LaborAuswertung() {
               <div className="bg-slate-100/80 p-3 rounded-lg border border-slate-200 flex gap-2">
                 <Info size={14} className="text-slate-500 shrink-0 mt-0.5" />
                 <p className="text-[10px] text-slate-500 leading-normal">
-                  Klicken Sie auf ein Kapitel, um die detaillierten chemischen, physikalischen und mineralogischen Methoden aus dem Forschungsbericht abzurufen.
+                  Klicken Sie auf ein Kapitel, um die chemischen, physikalischen und mineralogischen Methoden der Fachübersicht abzurufen.
                 </p>
               </div>
             </div>
@@ -579,7 +579,7 @@ export default function LaborAuswertung() {
               </div>
 
               <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                Tragen Sie die gemessenen Delta-Abweichungsverhältnisse <InlineMath math="\delta\text{D}" /> und <InlineMath math="\delta^{18}\text{O}" /> des getroffenen Schadenswassers ein, um die Causa proxima (Kondensat vs. Regen/Leitungswasser) physikalisch abzuleiten.
+                Tragen Sie die gemessenen Delta-Abweichungsverhältnisse <InlineMath math="\delta\text{D}" /> und <InlineMath math="\delta^{18}\text{O}" /> des getroffenen Schadenswassers ein, um Hinweise auf die Herkunft (Kondensat vs. Regen/Leitungswasser) zu erhalten – stets im Vergleich mit Referenzproben.
               </p>
 
               {/* Slider for Oxygen-18 */}
@@ -664,11 +664,11 @@ export default function LaborAuswertung() {
                     const html = `
                       <div class="header-bar">
                         <div>
-                          <h1 class="header-title">THA Prüflaboratorium – Gutachterliche Isotopenhydrologie</h1>
-                          <div class="header-sub">Forensischer Prüfbericht: Deuterium-Exzess &amp; Schadenswasser-Klassifizierung</div>
+                          <h1 class="header-title">Lehrsimulation – Isotopenrechner</h1>
+                          <div class="header-sub">Übungsauswertung: Deuterium-Exzess (kein Prüfbericht, nicht gutachterlich verwendbar)</div>
                         </div>
                         <div>
-                          <span class="badge badge-success">Geprüft &amp; Valide</span>
+                          <span class="badge badge-warning">Simulation</span>
                         </div>
                       </div>
 
@@ -693,14 +693,14 @@ export default function LaborAuswertung() {
                         </table>
                       </div>
 
-                      <h3 style="font-size:14px; margin-top:20px; color:#0f172a">Gutachterliches Diagnose-Fazit</h3>
+                      <h3 style="font-size:14px; margin-top:20px; color:#0f172a">Interpretation (Lehrbeispiel)</h3>
                       <table>
                         <tr>
                           <th style="width:25%">Klassifikation:</th>
                           <td><strong>${isotopeResults.diagnosis}</strong></td>
                         </tr>
                         <tr>
-                          <th>Physikalische Begründung:</th>
+                          <th>Begründung:</th>
                           <td>${isotopeResults.description}</td>
                         </tr>
                       </table>
@@ -708,7 +708,7 @@ export default function LaborAuswertung() {
                     openPrintableReport(html, `Isotopen_Diagnosebericht_${Date.now()}`);
                   }}
                   className="px-2 py-1 bg-white/80 hover:bg-white text-slate-800 text-[11px] font-bold rounded border border-slate-300 shadow-2xs flex items-center gap-1 shrink-0 cursor-pointer"
-                  title="Gutachten-Bericht drucken oder als PDF sichern"
+                  title="Übungsauswertung drucken oder als PDF sichern"
                 >
                   <Printer size={12} /> Drucken / PDF
                 </button>
@@ -731,7 +731,7 @@ export default function LaborAuswertung() {
               </div>
 
               <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                Wenn Feuchtigkeit in Wänden oder Bodenplatten unklarer Herkunft ist, bestimmen diese beiden Spurenstoffe (Gadolinium & q-PCR) die genaue Abwesenheit oder Präsenz von Fäkalien und Abwasser.
+                Wenn Feuchtigkeit in Wänden oder Bodenplatten unklarer Herkunft ist, liefern diese beiden Marker (Gadolinium & qPCR) Hinweise auf Abwasser- bzw. Fäkalbeteiligung.
               </p>
 
               <div className="space-y-4 pt-1">
@@ -761,7 +761,7 @@ export default function LaborAuswertung() {
                     </button>
                   </div>
                   <span className="text-[10px] text-slate-400 italic block mt-1.5">
-                    Zeigt exklusiv an, ob dem Schadwasser Wasser aus dem städtischen Kanalnetz beigemengt ist.
+                    Hinweis auf Abwasseranteil; Vergleich mit einer Leitungswasser-Referenzprobe erforderlich.
                   </span>
                 </div>
 
@@ -801,7 +801,7 @@ export default function LaborAuswertung() {
                     </button>
                   </div>
                   <span className="text-[10px] text-slate-400 italic block mt-1.5">
-                    Genanalytische Differenzierung nach VDI-Richtlinien zur Bestimmung der betroffenen Spezies.
+                    Genanalytische Differenzierung über wirtsspezifische Marker (z. B. HF183 für humane Bacteroides).
                   </span>
                 </div>
               </div>
@@ -936,7 +936,7 @@ export default function LaborAuswertung() {
                       <strong>Dünnschliffmikroskopie</strong> (25–30 µm Dicke) an Bohrkernen zur Schadgel-Kartierung unter polarisiertem Licht.
                     </div>
                     <div className="bg-slate-50 p-3 rounded-lg border border-slate-150">
-                      <span className="font-bold block text-slate-700 mb-1">Vor-Ort-Härtetest:</span>
+                      <span className="font-bold block text-slate-700 mb-1">Vor-Ort-Schnelltest:</span>
                       <strong>Uranylacetat-Fluoreszenz</strong>: Der Gelschnelltest fluoresziert gelb-grün unter UV-Licht-Ausleuchtung.
                     </div>
                   </div>
@@ -951,12 +951,12 @@ export default function LaborAuswertung() {
                     <span className="text-[10px] font-mono font-bold bg-rose-50 text-rose-700 px-1.5 rounded">Mikro-Schadensanalyse</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Exogener Sulfateintrag erzeugt zerstörenden Kristallisationsdruck durch späte Ettringitbildung. Fällt die Bauteiltemperatur unter 15 °C, erfolgt teilweise die gefürchtete <strong>Thaumasit-Katastrophe</strong>: Die chemische Zersetzung des tragenden calcium-silicatischen Bindemittels zu weichem Gips-Mörtel-Brei.
+                    Exogener Sulfateintrag erzeugt zerstörenden Kristallisationsdruck durch späte Ettringitbildung. Bei Bauteiltemperaturen unter etwa 15 °C kann sich bei Anwesenheit von Carbonat <strong>Thaumasit</strong> bilden: Die C-S-H-Phasen werden zersetzt, der Zementstein wird zu einer weichen, breiigen Masse ohne Bindekraft.
                   </p>
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div className="bg-slate-50 p-3 rounded-lg border border-slate-150">
                       <span className="font-bold block text-slate-700 mb-1">Analytische Abgrenzung:</span>
-                      Die Abgrenzung zwingt zum Nachweis von mineralischen Silizium-Atomen im gipshaltigen Sulfatgel mittels hocheffizientem <strong>EDX</strong>-Elementmapping.
+                      Zur Abgrenzung von Ettringit wird Silicium in der sulfathaltigen Phase nachgewiesen, z. B. mit <strong>EDX</strong>-Elementmapping, ergänzt durch XRD.
                     </div>
                     <div className="bg-slate-50 p-3 rounded-lg border border-slate-150">
                       <span className="font-bold block text-slate-700 mb-1">Herkunftsermittlung:</span>
@@ -974,13 +974,13 @@ export default function LaborAuswertung() {
                     <span className="text-[10px] font-mono font-bold bg-amber-50 text-amber-700 px-1.5 rounded">Denkmalpflege</span>
                   </div>
                   <p className="text-xs text-slate-650 leading-relaxed">
-                    Bei Rekonstruktionen historischer Bauten darf nicht moderner Portlandzement aufgebracht werden, da dieser mechanisch zu steif ist und zerstörende Salze einspeist. Das historische Bindemittel-Verhältnis muss im Labor rückwärtsberechnet werden.
+                    Bei historischen Bauten ist Portlandzementmörtel in der Regel ungeeignet: Er ist zu steif und kann bauschädliche Salze (Sulfate, Alkalien) eintragen. Daher wird das historische Bindemittel im Labor analysiert, um einen verträglichen Reparaturmörtel zu wählen.
                   </p>
                   <div className="bg-slate-50 p-3 rounded-lg border border-slate-150 text-slate-700 text-xs">
                     <span className="font-extrabold text-indigo-950 block mb-1">Thermogravimetrische Analyse (TGA) &amp; XRD:</span>
-                    Eine Mörtelprobe wird kontrolliert bis 1000 °C erhitzt. Der gemessene Masseverlust durch die Abspaltung von chemisch gebundenem Wasser (Abbindung hydraulischer Phase, Gips, Ettringit) und der plötzliche Kohlenstoffdioxid-Ausstoẞ bei 600–800 °C (Kalk-Carbonisierungstiefe) bestimmen exakt das ursprüngliche Bindemittel-Mischungsverhältnis.
+                    Eine Mörtelprobe wird kontrolliert bis 1000 °C erhitzt. Der gemessene Masseverlust durch die Abspaltung von chemisch gebundenem Wasser (Abbindung hydraulischer Phase, Gips, Ettringit) und die CO₂-Abspaltung aus Calcit bei 600–800 °C erlauben eine Abschätzung von Bindemittelart und Bindemittelanteil (Störgröße: kalkhaltige Gesteinskörnung).
                   </div>
-                  <div className="text-[10px] font-mono text-slate-400">Relevante Normen: WTA-Merkblatt 2-9 / Sanierputze</div>
+                  <div className="text-[10px] font-mono text-slate-400">Relevante Regelwerke: Fachliteratur Mörtelanalytik; WTA-Merkblätter (z. B. 2-9 Sanierputzsysteme)</div>
                 </div>
               )}
 
@@ -991,12 +991,12 @@ export default function LaborAuswertung() {
                     <span className="text-[10px] font-mono font-bold bg-red-50 text-red-700 px-1.5 rounded">Gesundheits-Schutz</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Versteckte asbesthaltige Klebemassen unter alten Fliesen, Putzschüttungen oder Brandschutzplatten stellen bei Rückbauarbeiten eine enorme Gesundheitsgefahr dar, da die nanoskaligen Fasern lungengängig sind.
+                    Versteckte asbesthaltige Klebemassen unter alten Fliesen, Putzschüttungen oder Brandschutzplatten stellen bei Rückbauarbeiten eine enorme Gesundheitsgefahr dar, da die feinen Fasern lungengängig sind (WHO-Fasern: Länge &gt; 5 µm, Durchmesser &lt; 3 µm, Länge/Durchmesser &gt; 3 : 1).
                   </p>
                   <div className="bg-slate-50 p-3.5 rounded-lg border border-slate-150 text-xs space-y-2">
                     <div className="font-bold text-slate-750">Goldstandard: Rasterelektronenmikroskopie (REM/EDX)</div>
                     <p className="text-slate-600 leading-relaxed">
-                      Ermöglicht die sichere Identifizierung nadelförmiger Fasergeometrien bauchiger Strukturen unter 3 Mikrometern Breite bei 50.000-facher Vergrößerung. Die angeschlossene Punkt-Elementaranalyse (EDX) unterscheidet Chrysotil und Amosit sicher von harmlosem Gips (Gipsnadeln) oder normalen Glasfasern.
+                      Ermöglicht die Identifizierung von Fasern unter 3 Mikrometern Durchmesser. Die angeschlossene Punkt-Elementanalyse (EDX) unterscheidet Chrysotil und Amosit von Gipsnadeln oder Glasfasern.
                     </p>
                   </div>
                   <div className="text-[10px] font-mono text-slate-400">Umfeldvorgabe: VDI 3866 Blatt 5 / LAGA M 23 Regelwerke</div>
@@ -1014,7 +1014,7 @@ export default function LaborAuswertung() {
                   </p>
                   <div className="bg-slate-50 p-3 rounded-lg border border-slate-150 text-xs">
                     <span className="font-bold block text-indigo-950 mb-1">GC-MS Analyse (Gaschromatographie):</span>
-                    Präzise chemische Trennung von Wischproben. Grenzt organische Weichmacher und SVOC-Ausdünstungen aus modernen Baumaterialien trennscharf gegen gewöhnlichen Ruẞ (durch Rußpartikel aus Kerzen oder Tabakrauch) ab.
+                    Präzise chemische Trennung von Wischproben. Grenzt Weichmacher- und SVOC-Ablagerungen gegen gewöhnlichen Ruß (Kerzen, Tabakrauch) ab.
                   </div>
                   <div className="text-[10px] font-mono text-slate-400">Relevante Normen: VDI 4300 Blatt 1/2 / VDI 4301 / Innenraumvorgaben</div>
                 </div>
@@ -1027,13 +1027,13 @@ export default function LaborAuswertung() {
                     <span className="text-[10px] font-mono font-bold bg-rose-50 text-rose-700 px-1.5 rounded">Primär- vs. Sekundärquelle</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Polychlorierte Biphenyle (PCB) wurden in Gebäuden vor 1978 als Weichmacher in dauerelastischen Dehnungsfugen injiziert. Die Moleküle diffundieren schleichend über Jahrzehnte in angrenzende Bauteile (Beton, Farbanstriche, Mobiliar).
+                    Polychlorierte Biphenyle (PCB) wurden bis in die 1970er Jahre als Weichmacher in dauerelastischen Fugenmassen eingesetzt (in Deutschland in offenen Anwendungen ab 1978 untersagt). Die Moleküle diffundieren schleichend über Jahrzehnte in angrenzende Bauteile (Beton, Farbanstriche, Mobiliar).
                   </p>
                   <div className="bg-slate-50 p-3 rounded-lg border border-slate-150 text-xs text-slate-700">
                     <span className="font-bold block text-slate-800 mb-1">Sanierungsforensik per GC-MS:</span>
                     Der Sanierungsumfang richtet sich nach der Abgrenzung von Primärquellen (Originalfuge mit teils &gt; 10.000 mg/kg PCB) zu sekundär kontaminierten Tragbauteilen (z.B. belasteter Umgebungsputz), um teure Staubablagerungen und Falschentsorgungen im Rückbau zu steuern.
                   </div>
-                  <div className="text-[10px] font-mono text-slate-400">Relevante Normen: LAGA Richtlinie / VDI 4300 Blatt 1</div>
+                  <div className="text-[10px] font-mono text-slate-400">Relevante Regelwerke: PCB-Richtlinie der Länder / VDI 4300 Blatt 2</div>
                 </div>
               )}
 
@@ -1044,17 +1044,17 @@ export default function LaborAuswertung() {
                     <span className="text-[10px] font-mono font-bold bg-blue-50 text-blue-700 px-1.5 rounded">Datierung</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Mithilfe der Naturwissenschaft lässt sich haargenau belegen, zu welchem historischen Kalender-Zeitpunkt Feuchtigkeit eingetragen wurde, um Schadensvorfälle beweissicher zuzuordnen.
+                    Naturwissenschaftliche Verfahren können Indizien liefern, wann Feuchtigkeit eingetragen wurde – sie ersetzen aber keine Gesamtwürdigung durch einen Sachverständigen.
                   </p>
                   <div className="bg-slate-50 p-3 rounded-lg border border-slate-150 text-xs space-y-1 text-slate-700">
                     <div>
                       <strong>Pollenanalyse im Schadschlamm:</strong>
                     </div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Sumpfige Rückstände angetrockneter Wasserschäden an Kellerwänden konservieren die zur Zeit des Eintritts aktiven Luftpollen. Die molekulare Identifikation des Pollenspektrums (z. B. ausschließlich Birkenpollen vorhanden) beweist den Feuchtigkeitseintritt im gezielten Zeitraum (z. B. Frühjahr während der Hauptblüte), schadengleich zu Starkregenindizes.
+                      Angetrocknete Rückstände von Wasserschäden können die zur Zeit des Eintritts fliegenden Pollen enthalten. Die mikroskopische Bestimmung des Pollenspektrums (z. B. hoher Anteil von Birkenpollen) kann auf einen Eintritt während der Blütezeit hindeuten und mit Wetterdaten (Starkregen) abgeglichen werden.
                     </p>
                   </div>
-                  <div className="text-[10px] font-mono text-slate-400">Stand der Forschung und universitäre Gutachten</div>
+                  <div className="text-[10px] font-mono text-slate-400">Stand der Forschung (kein genormtes Verfahren)</div>
                 </div>
               )}
 
@@ -1198,10 +1198,10 @@ export default function LaborAuswertung() {
       <div className="rounded-xl border border-indigo-100 bg-indigo-50/45 p-4.5 text-slate-800 space-y-2 mt-2">
         <h4 className="font-bold text-xs uppercase text-indigo-950 flex items-center gap-1.5 leading-none">
           <BookOpen size={14} className="text-indigo-600" />
-          10. Fazit des Forschungsberichts
+          10. Fazit der Fachübersicht
         </h4>
         <p className="text-xs text-slate-650 leading-relaxed">
-          Die moderne Bauwerksdiagnostik ist eine forensische Wissenschaft, die weit über das bloße Messen von Feuchtigkeit hinausgeht. Die Integration von Isotopen-Exzess-Bestimmung und Abwasser-Tracern (Gadolinium) ermöglicht heute die rechtlich belastbare Unterscheidung von Kondensat, Leckagen und Fäkalwasser. Verfahren wie TGA und Impakt-Echo erlauben den tiefen Blick in die chemische Geschichte und physikalische Integrität des Materials, während die Schadstoffanalytik gesundheitliche Risiken (Asbest, Fogging, Brandlasten) quantifiziert. Mit dem Einzug von KI, Sensor Fusion und LIBS steht die Branche vor einem Sprung in die digitale Echtzeit-Überwachung und hocheffiziente Vor-Ort-Diagnostik.
+          Die moderne Bauwerksdiagnostik ist eine forensische Wissenschaft, die weit über das bloße Messen von Feuchtigkeit hinausgeht. Die Integration von Isotopen-Exzess-Bestimmung und Abwasser-Tracern (Gadolinium) liefert wichtige Indizien zur Unterscheidung von Kondensat, Leckagen und Fäkalwasser – belastbar im Zusammenspiel mit Referenzproben und weiteren Befunden. Verfahren wie TGA und Impakt-Echo erlauben den tiefen Blick in die chemische Geschichte und physikalische Integrität des Materials, während die Schadstoffanalytik gesundheitliche Risiken (Asbest, Fogging, Brandlasten) quantifiziert. Mit dem Einzug von KI, Sensor Fusion und LIBS steht die Branche vor einem Sprung in die digitale Echtzeit-Überwachung und hocheffiziente Vor-Ort-Diagnostik.
         </p>
       </div>
 

@@ -2,7 +2,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, Target, Crosshair, AlertTriangle } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { LabProtocolRecord, exportToCSV } from '@/src/utils/labExportUtils';
+import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 
 type ImpactAngle = 'horizontal' | 'downward' | 'upward';
@@ -35,8 +35,10 @@ export default function SchmidtHammerSimulator() {
   const angleDeltaR = useMemo(() => {
     switch (impactAngle) {
       case 'horizontal': return 0;
-      case 'downward': return -3.0; // Schwerkraft unterstützt Vorstoß -> Messwert fällt höher aus, muss reduziert werden
-      case 'upward': return +3.5;   // Schwerkraft bremst Vorstoß -> Messwert fällt geringer aus, muss addiert werden
+      // Gemessen wird der Rückprall des Schlagbolzens:
+      case 'downward': return +3.0; // nach unten: Rückprall gegen die Schwerkraft -> R zu niedrig -> Korrektur positiv
+      case 'upward': return -3.5;   // nach oben: Rückprall mit der Schwerkraft -> R zu hoch -> Korrektur negativ
+      // Werte: typische Herstellerangaben Typ N bei R ≈ 40 (gerätespezifisch)
     }
   }, [impactAngle]);
 
@@ -94,7 +96,7 @@ export default function SchmidtHammerSimulator() {
   const stats = useMemo(() => {
     const valid = measurements.filter((m): m is number => m !== null);
     if (valid.length === 0) {
-      return { count: 0, median: 0, mean: 0, stdDev: 0, correctedR: 0, estFck: 0, outliers: [] as number[] };
+      return { count: 0, median: 0, mean: 0, stdDev: 0, correctedR: 0, estFck: 0, outliers: [] as number[], seriesInvalid: false };
     }
 
     // Calculate median
@@ -102,22 +104,22 @@ export default function SchmidtHammerSimulator() {
     const mid = Math.floor(sorted.length / 2);
     const median = sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 
-    // DIN EN 12504-2 Outlier filter: > 20% deviation from median
-    const nonOutliers = valid.filter(v => Math.abs(v - median) / median <= 0.20);
-    const outliers = valid.filter(v => Math.abs(v - median) / median > 0.20);
+    // DIN EN 12504-2: Kennwert ist der Median. Weichen mehr als 20 % der Einzelwerte um mehr als 25 %
+    // vom Median ab, ist die gesamte Messreihe zu verwerfen. Einzelwerte werden nicht gestrichen.
+    const outliers = valid.filter(v => Math.abs(v - median) / median > 0.25);
+    const seriesInvalid = outliers.length > 0.2 * valid.length;
 
-    const mean = nonOutliers.reduce((a, b) => a + b, 0) / (nonOutliers.length || 1);
-    const variance = nonOutliers.reduce((acc, v) => acc + Math.pow(v - mean, 2), 0) / (nonOutliers.length > 1 ? nonOutliers.length - 1 : 1);
+    const mean = valid.reduce((a, b) => a + b, 0) / valid.length;
+    const variance = valid.reduce((acc, v) => acc + Math.pow(v - mean, 2), 0) / (valid.length > 1 ? valid.length - 1 : 1);
     const stdDev = Math.sqrt(variance);
 
-    // Apply angle correction and carbonation adjustment to get standard horizontal uncarbonated R
-    let correctedR = mean + angleDeltaR;
+    // Winkelkorrektur auf horizontale Schlagrichtung, angewendet auf den Median
+    let correctedR = median + angleDeltaR;
     if (isCarbonated) {
-      correctedR = correctedR * 0.85; // DIN EN 13791 / DBV Merkblatt Reduktion bei Karbonatisierung
+      correctedR = correctedR * 0.85; // Lehrannahme – in der Praxis Kalibrierung an Vergleichsbohrkernen (DIN EN 13791)
     }
 
-    // Characteristic in-situ strength correlation: fck,is = 1.25 * (R_corr - 10)
-    // Approximate calibration formula for Schmidt Hammer N
+    // Festigkeitsschätzung: Lehr-Näherung (Potenzansatz), keine Normkurve
     const estFck = Math.max(10, 0.027 * Math.pow(correctedR, 1.85));
 
     return {
@@ -127,7 +129,8 @@ export default function SchmidtHammerSimulator() {
       stdDev,
       correctedR,
       estFck,
-      outliers
+      outliers,
+      seriesInvalid
     };
   }, [measurements, angleDeltaR, isCarbonated]);
 
@@ -139,33 +142,35 @@ export default function SchmidtHammerSimulator() {
       timestamp: new Date().toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }),
       testTitle: `Zerstörungsfreie Härteprüfung (Schmidt-Rückprallhammer Typ N) an ${targetClass}`,
       norm: 'DIN EN 12504-2 / DIN EN 13791',
-      operator: 'ZfP-Prüfingenieur (Baustoffboard)',
+      operator: 'ZfP-Prüfung (Lehrsimulation)',
       specimen: {
         material: `Betonbauteil (${targetClass})`,
         geometry: 'Prüfbereich 300 × 300 mm (9-Punkte-Raster)',
-        dimensions: 'Messpunktabstand ≥ 30 mm',
+        dimensions: 'Messpunktabstand ≥ 25 mm (DIN EN 12504-2)',
         conditioning: isCarbonated ? 'Karbonatisiert (dk > 5 mm)' : 'Unkarbonatisiert (dk = 0 mm)'
       },
       parameters: {
         'Gerätetyp': 'Schmidt-Rückprallhammer Typ N (Schlagenergie W = 2,207 Nm)',
         'Stoßrichtung': impactAngle === 'horizontal' ? 'Horizontal (0°)' : impactAngle === 'downward' ? 'Vertikal nach unten (-90°)' : 'Vertikal nach oben (+90°)',
         'Messpunkte': '9 Punkte im Quadratraster',
-        'Karbonatisierungszustand': isCarbonated ? 'Ja (Korrekturfaktor 0,85 angewandt)' : 'Nein'
+        'Karbonatisierungszustand': isCarbonated ? 'Ja (Lehrannahme: Faktor 0,85 angewandt)' : 'Nein'
       },
       metrics: {
         'Messwert-Median': formatDeZahl(stats.median, 1),
         'Mittelwert R': formatDeZahl(stats.mean, 1),
         'Standardabweichung s': formatDeZahl(stats.stdDev, 2),
-        'Korrigierter Rückprallwert R_korr': formatDeZahl(stats.correctedR, 1),
-        'Geschätzte In-situ Druckfestigkeit fck,is (MPa)': formatDeZahl(stats.estFck, 1),
-        'Erkannte Ausreißer (>20%)': `${stats.outliers.length}`
+        'Korrigierter Rückprallwert R_korr (aus Median)': formatDeZahl(stats.correctedR, 1),
+        'Schätzwert Druckfestigkeit, Lehr-Näherung (MPa)': formatDeZahl(stats.estFck, 1),
+        'Werte mit > 25 % Abweichung vom Median': formatDeWert(stats.outliers.length)
       },
-      status: 'Gültig',
+      status: stats.seriesInvalid ? 'Ungültig' : 'Plausibel',
       validationNotes: [
-        `Normgerechte 9-Punkte-Messreihe nach DIN EN 12504-2.`,
-        `Geschätzte In-situ Festigkeit fck,is = ${formatDeZahl(stats.estFck, 1)} MPa korreliert mit Klasse ${targetClass}.`
+        stats.seriesInvalid
+          ? 'Mehr als 20 % der Einzelwerte weichen um mehr als 25 % vom Median ab: Messreihe nach DIN EN 12504-2 verwerfen und wiederholen.'
+          : 'Messreihe mit 9 Schlägen; Verwerfungskriterium nach DIN EN 12504-2 nicht erfüllt, Median ist gültiger Kennwert.',
+        `Schätzwert ${formatDeZahl(stats.estFck, 1)} MPa aus einer Lehr-Näherung – eine Festigkeitsaussage erfordert die Kalibrierung an Bohrkernen nach DIN EN 13791.`
       ],
-      integrityHash: 'SCHMIDT-ZFP-CALIBRATED',
+      integrityHash: generateIntegrityChecksum(`schmidt|${targetClass}|${impactAngle}|${isCarbonated}|${measurements.join(',')}|${Date.now()}`),
       dataPointsCount: stats.count
     };
 
@@ -216,8 +221,8 @@ export default function SchmidtHammerSimulator() {
               <div className="grid grid-cols-1 gap-2">
                 {[
                   { id: 'horizontal', label: 'Horizontal (0°)', sub: 'Wand / Stütze (Standard ΔR = 0)' },
-                  { id: 'downward', label: 'Vertikal nach unten (-90°)', sub: 'Deckenoberseite / Bodenplatte (ΔR = -3,0)' },
-                  { id: 'upward', label: 'Vertikal nach oben (+90°)', sub: 'Deckenuntersicht (ΔR = +3,5)' }
+                  { id: 'downward', label: 'Vertikal nach unten (-90°)', sub: 'Deckenoberseite / Bodenplatte (ΔR ≈ +3,0)' },
+                  { id: 'upward', label: 'Vertikal nach oben (+90°)', sub: 'Deckenuntersicht (ΔR ≈ −3,5)' }
                 ].map(a => (
                   <button
                     key={a.id}
@@ -247,7 +252,7 @@ export default function SchmidtHammerSimulator() {
                 />
               </div>
               <p className="text-[11px] text-text-main/70 bg-off-white p-2.5 rounded-lg border border-home-grau/20">
-                Karbonatisierter Beton bildet harte Calcit-Krusten (<InlineMath math="\text{CaCO}_3" />), wodurch der Rückprallwert scheinbar um bis zu 4–5 Skalenteile steigt. Eine Korrektur um den Faktor 0,85 ist zwingend!
+                Karbonatisierter Beton bildet harte Calcit-Krusten (<InlineMath math="\text{CaCO}_3" />), wodurch der Rückprallwert scheinbar steigt (hier simuliert: +4,5 Skalenteile). Die Simulation verwendet als Lehrannahme den Faktor 0,85; in der Praxis wird der Einfluss über Vergleichsbohrkerne nach DIN EN 13791 kalibriert.
               </p>
             </div>
 
@@ -402,7 +407,7 @@ export default function SchmidtHammerSimulator() {
                 {/* In-situ Strength Result Banner */}
                 <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-emerald-900 block">Geschätzte Druckfestigkeit fck,is</span>
+                    <span className="text-[10px] uppercase font-bold text-emerald-900 block">Schätzwert Druckfestigkeit (Lehr-Näherung)</span>
                     <span className="text-xl font-bold font-mono text-emerald-800">
                       {stats.count >= 9 ? `${formatDeZahl(stats.estFck, 1)} MPa` : '— (9 Punkte nötig)'}
                     </span>
@@ -419,7 +424,7 @@ export default function SchmidtHammerSimulator() {
               <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-xs flex items-center gap-2 mb-2">
                 <AlertTriangle size={16} className="text-amber-700 shrink-0" />
                 <span>
-                  <strong>{stats.outliers.length} Ausreißer</strong> erkannt (Weichen um &gt;20 % vom Median ab). Nach DIN EN 12504-2 werden diese Werte aus der Mittelwertbildung eliminiert.
+                  <strong>{formatDeWert(stats.outliers.length)} Einzelwert(e)</strong> weichen um mehr als 25 % vom Median ab. Nach DIN EN 12504-2 ist die Messreihe zu verwerfen, wenn das mehr als 20 % der Werte betrifft{stats.seriesInvalid ? ' – hier der Fall: Messreihe wiederholen.' : ' – hier nicht der Fall; der Median bleibt gültig.'}
                 </span>
               </div>
             )}

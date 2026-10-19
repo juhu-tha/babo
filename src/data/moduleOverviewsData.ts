@@ -154,11 +154,11 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
   labor: {
     title: 'Labor, Sensorik & Analytik',
     tagline: 'Praxisnahe Prüfverfahren, moderne Bauwerksdiagnostik und statistische Versuchsplanung',
-    leitfrage: 'Wie wandeln wir verrauschte messtechnische Rohdaten aus Bohrkernen und Sensoren in rechtlich belastbare Festigkeits- und Konformitätsurteile um?',
+    leitfrage: 'Wie werden streuende Messdaten aus Probekörpern, Bohrkernen und Sensoren zu belastbaren Festigkeits- und Konformitätsaussagen?',
     corePrinciples: [
       {
         title: 'Repräsentativität schlägt Probenanzahl',
-        description: 'Ein Versuchsresultat ist nur so gut wie die Entnahmeplanung nach DIN EN 12504-1. Systematische Fehler durch ungleiche Feuchte, Bohrrichtungsartefakte oder Randstörungen wiegen schwerer als zufällige Streuungen.',
+        description: 'Ein Versuchsresultat ist nur so gut wie die Entnahmeplanung (Prüfbereiche nach DIN EN 13791, Entnahme nach DIN EN 12504-1). Systematische Fehler durch ungleiche Feuchte, Bohrrichtungsartefakte oder Randstörungen wiegen schwerer als zufällige Streuungen.',
         takeaway: 'Planung und Probenkonditionierung entscheiden über Validität oder Fehlurteil.'
       },
       {
@@ -168,12 +168,12 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Statistische Quantilsicherheit',
-        description: 'Im Bauwesen gilt niemals der Mittelwert fm, sondern das 5%-Quantil fck = fm - k·s. Kleine Probenreihen werden durch Sicherheitszuschläge (Student-t) empfindlich bestraft.',
-        takeaway: 'Große Streuungen senken den Bemessungswert drastisch ab.'
+        description: 'Für Festigkeiten ist nicht der Mittelwert fm maßgebend, sondern das 5-%-Quantil fck = fm − k_n·s. Kleine Probenreihen erhalten einen größeren Faktor k_n (DIN EN 1990, Anhang D).',
+        takeaway: 'Große Streuungen und kleine Stichproben senken den charakteristischen Wert deutlich ab.'
       }
     ],
-    systemicExplanation: 'Das Modul bildet das experimentelle Rückgrat des Bauingenieurwesens. Von der repräsentativen Probenahme vor Ort über die physikalische Belastungsprüfung im servohydraulischen Zylinder bis zur Auswertung mittels Gauß-Verteilung und Ausreißertests nach Grubbs wird der gesamte Prüfpfad abgebildet.',
-    zusammenhaengeText: 'Das Labor verbindet Theorie und Realität: Es prüft, ob die in der Baustoffkunde versprochenen Kennwerte im realen Bauteil tatsächlich ankommen und ob die Konformitätskriterien nach DIN EN 206 / DIN ISO 12491 erfüllt sind.',
+    systemicExplanation: 'Das Modul bildet das experimentelle Rückgrat des Bauingenieurwesens. Von der repräsentativen Probenahme vor Ort über die Belastungsprüfung in der servohydraulischen Prüfmaschine bis zur Auswertung mittels Gauß-Verteilung und Ausreißertests nach Grubbs wird der gesamte Prüfpfad abgebildet.',
+    zusammenhaengeText: 'Das Labor verbindet Theorie und Realität: Es prüft, ob die in der Baustoffkunde versprochenen Kennwerte im realen Bauteil tatsächlich ankommen und ob die Konformitätskriterien nach DIN EN 206 erfüllt sind.',
     graphicalPipelineTitle: 'Der Prüf- und Bewertungskreislauf im Labor',
     graphicalPipelineDesc: 'Von der Bohrkernentnahme bis zur Konformitätsentscheidung nach DIN EN 12504 / DIN EN 206:',
     steps: [
@@ -191,9 +191,9 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         step: '2',
         title: 'Präparation',
         subtitle: 'Konditionierung',
-        desc: 'Planparalleles Schleifen oder Einspachteln, Darr-Trocknung, Feuchte-Äquilibrierung.',
+        desc: 'Planschleifen oder Abgleichen der Lastflächen, Maßkontrolle, Lagerung nach Prüfnorm.',
         iconName: 'Wrench',
-        keyFacts: ['L/D-Verhältnis = 1.0', 'Toleranz < 0,05 mm', '20°C / 65% r.F.'],
+        keyFacts: ['h/d = 1 oder 2', 'Ebenheit 0,0006 · d', 'Lagerung nach DIN EN 12390-2'],
         normOrFormula: 'DIN EN 12390-1',
         color: 'from-indigo-500 to-indigo-600'
       },
@@ -203,7 +203,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Bruchversuch & Sensorik',
         desc: 'Kraft- und wegaufnehmende Belastung (Druck, Spaltzug, Haftzug), Rissfortschrittsmessung.',
         iconName: 'Activity',
-        keyFacts: ['Belastungsrate 0,5 MPa/s', 'DMS / Laser-Wegaufnehmer', 'Spannungs-Dehnungskurve'],
+        keyFacts: ['Belastungsrate 0,6 ± 0,2 MPa/s', 'DMS / Laser-Wegaufnehmer', 'Spannungs-Dehnungskurve'],
         normOrFormula: 'f_c = \\frac{F_{max}}{A_c}',
         color: 'from-amber-500 to-amber-600'
       },
@@ -214,18 +214,18 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Berechnung von Mittelwert, Standardabweichung, 5%-Quantil fck und Konformitätskriterien.',
         iconName: 'Calculator',
         keyFacts: ['Normalverteilung', 'Ausreißertest nach Grubbs', 'Konformitätskriterium 1 & 2'],
-        normOrFormula: 'f_{ck} = f_m - 1{,}64 \\cdot s',
+        normOrFormula: 'f_{ck} = f_m - k_n \\cdot s',
         color: 'from-rose-500 to-rose-600'
       }
     ],
     interconnections: [
-      { from: 'Erkundung', to: 'Präparation', relation: 'Geometriekorrektur', causeEffect: 'Abweichende Schlankheiten L/d erfordern zwingende Formfaktorkorrekturen nach DIN EN 13791.' },
-      { from: 'Präparation', to: 'Prüfmaschine', relation: 'Spannungsfeld', causeEffect: 'Unebene Stirnflächen erzeugen gefährliche Spitzenpressungen und verfälschen die Bruchlast um bis zu 30 %.' },
+      { from: 'Erkundung', to: 'Präparation', relation: 'Geometriekorrektur', causeEffect: 'Abweichende Schlankheiten h/d erfordern eine Umrechnung; DIN EN 13791 ordnet h/d = 1 dem Würfel und h/d = 2 dem Zylinder zu.' },
+      { from: 'Präparation', to: 'Prüfmaschine', relation: 'Spannungsfeld', causeEffect: 'Unebene Lastflächen erzeugen Kantenpressungen und führen zu deutlich zu niedrigen Bruchlasten.' },
       { from: 'Prüfmaschine', to: 'Statistik', relation: 'Datenfeed', causeEffect: 'Einzelprüfwerte speisen die Stichprobenvarianz; je kleiner die Streuung s, desto höher die nutzbare charakteristische Festigkeit.' }
     ],
     practicalInsight: {
       title: 'Praxistipp für die Baustellenabnahme',
-      desc: 'Ein einzelner Ausreißer nach unten führt bei Kleinserien (n = 3) fast immer zum formalen Nichtbestehen der Konformität. Daher immer 6 Probekörper vorhalten, um Reserve für Bohrkernersatzprüfungen zu besitzen.'
+      desc: 'Bei kleinen Gruppen (n = 3) entscheidet jeder Einzelwert mit (Kriterium 2: f_ci ≥ f_ck − 4 N/mm²). Rückstellproben erlauben eine Nachprüfung bei Prüffehlern; bestehen Zweifel an der Festigkeit im Bauwerk, wird an Bohrkernen nach DIN EN 13791 bewertet.'
     }
   },
 

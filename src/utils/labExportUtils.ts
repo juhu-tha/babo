@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 // Utility functions for lab protocols, test verification hashes, and report exports (CSV, JSON, Printable Report)
 
 export interface LabProtocolRecord {
@@ -15,7 +16,7 @@ export interface LabProtocolRecord {
   parameters: Record<string, string | number>;
   metrics: Record<string, string | number>;
   dataPointsCount: number;
-  integrityHash: string; // SHA-256-like deterministic integrity signature
+  integrityHash: string; // deterministische, nicht kryptografische Prüfsumme (FNV-1a-Hybrid)
   status: 'Gültig' | 'Ungültig' | 'Plausibel';
   validationNotes: string[];
 }
@@ -65,40 +66,40 @@ export function validateMechanicalTestIntegrity(
   if (material === 'beton') {
     if (testType === 'druck' && (maxStress < 5 || maxStress > 150)) {
       status = 'Plausibel';
-      notes.push(`Beton-Druckfestigkeit ${maxStress.toFixed(1)} MPa liegt außerhalb üblicher Normalbetone (C8/10 bis C100/115 nach DIN EN 206).`);
+      notes.push(`Beton-Druckfestigkeit ${formatDeZahl(maxStress, 1)} MPa liegt außerhalb des Bereichs der Festigkeitsklassen C8/10 bis C100/115 nach DIN EN 206.`);
     }
     if (testType === 'zug' && maxStress > 10) {
       status = 'Plausibel';
-      notes.push('Reine zentrische Betonzugfestigkeit selten > 6-8 MPa (Prüfkörperversagen oder Keilwirkung prüfen).');
+      notes.push('Zentrische Betonzugfestigkeit liegt selten über 6 bis 8 MPa (Prüfkörpereinspannung bzw. Versagensart prüfen).');
     }
     if (testType === 'haftzug') {
       if (maxStress < 0.5) {
         status = 'Plausibel';
         notes.push('Haftzugfestigkeit fh < 0,5 MPa ist kritisch niedrig (mangelhafte Untergrundvorbereitung oder Schlämmeanhaftung).');
       } else if (maxStress >= 1.5) {
-        notes.push('Haftzugfestigkeit fh ≥ 1,5 MPa erfüllt normativ die Anforderungen der TR Instandhaltung / ZTV-ING für Reprofilierungen & OS-Systeme.');
+        notes.push('Haftzugfestigkeit fh ≥ 1,5 MPa erreicht den häufig geforderten Mittelwert (z. B. für Instandsetzungsmörtel und befahrene Oberflächenschutzsysteme); maßgebend sind die objektspezifischen Anforderungen nach TR Instandhaltung bzw. ZTV-ING einschließlich Einzelwertkriterium.');
       } else {
         notes.push('Haftzugfestigkeit liegt zwischen 0,5 und 1,5 MPa (Prüfung auf Einzelwertkriterium erforderlich).');
       }
     }
     if (testType !== 'haftzug' && (failureStrain < 1.0 || failureStrain > 8.0)) {
-      notes.push(`Bruchstauchung ${failureStrain.toFixed(2)} ‰ weicht vom Normwert ε_c1 / ε_cu1 (2,0 bis 3,5 ‰ nach EC2) ab.`);
+      notes.push(`Bruchstauchung ${formatDeZahl(failureStrain, 2)} ‰ liegt außerhalb des üblichen Bereichs von ε_c1 bis ε_cu1 (etwa 1,8 bis 3,5 ‰ nach DIN EN 1992-1-1, Tab. 3.1).`);
     }
   } else if (material === 'stahl') {
     if (modulusGPa < 180 || modulusGPa > 230) {
       status = 'Plausibel';
-      notes.push(`Stahl-E-Modul ${modulusGPa.toFixed(1)} GPa weicht vom Nennwert (210 GPa nach DIN EN 10025) ab.`);
+      notes.push(`Stahl-E-Modul ${formatDeZahl(modulusGPa, 1)} GPa weicht deutlich vom Rechenwert ab (Betonstahl 200 GPa nach DIN EN 1992-1-1, Baustahl 210 GPa nach DIN EN 1993-1-1).`);
     }
     if (failureStrain < 10) {
       status = 'Plausibel';
-      notes.push('Geringe Bruchdehnung für Baustahl (Duktilitätsklasse B oder C prüfen).');
+      notes.push('Geringe Dehnung für Betonstahl (Duktilität nach DIN 488-1 über A_gt und R_m/R_e prüfen).');
     }
   } else if (material === 'holz') {
-    notes.push('Anisotropie und Holzfeuchte (Standard 12 ± 2 % nach DIN EN 408) normativ dokumentiert.');
+    notes.push('Prüfbedingungen nach DIN EN 408: Normalklima 20 °C / 65 % r. F.; Faserrichtung (Anisotropie) und Holzfeuchte im Protokoll angeben.');
   }
 
   if (notes.length === 0) {
-    notes.push('Alle werkstoffspezifischen Kennwerte entsprechen den normativen Erwartungsfenstern nach DIN EN.');
+    notes.push('Die Kennwerte liegen in den hinterlegten Plausibilitätsbereichen (keine normative Konformitätsbewertung).');
   }
 
   const payload = `${material}|${testType}|${maxStress.toFixed(3)}|${modulusGPa.toFixed(2)}|${failureStrain.toFixed(3)}|${Date.now()}`;

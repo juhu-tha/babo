@@ -131,7 +131,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
           glueShare: 0,
           validTest: true,
           compliantTR: false,
-          desc: 'Typischer Ausführungsfehler: Zementschlämme wurde vor dem Auftrag nicht mechanisch abgetragen. Der Reparaturmörtel löst sich glatt und ohne Betonausbruch von der Kontaktzone ab. Kriterium f_h ≥ 1,5 MPa deutlich verfehlt.',
+          desc: 'Typischer Ausführungsfehler: Zementschlämme wurde vor dem Auftrag nicht mechanisch abgetragen. Der Reparaturmörtel löst sich glatt und ohne Betonausbruch von der Kontaktzone ab. Der Richtwert von 1,5 N/mm² (Mittelwert) wird deutlich verfehlt.',
           layerSubstrateName: 'Altbeton (ungestrahlt / trennmittelbehaftet)',
           layerTopName: 'PCC-Instandsetzungsmörtel'
         };
@@ -149,7 +149,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
           glueShare: 0,
           validTest: true,
           compliantTR: true,
-          desc: 'Normgerechte Verbundestrich-Prüfung: Ausbruch erfolgt überwiegend innerhalb des Zementestrichs oberhalb der Haftbrücke. Haftzugfestigkeit f_h ≥ 1,0 MPa für Verbundestriche eingehalten.',
+          desc: 'Normgerechte Verbundestrich-Prüfung: Ausbruch erfolgt überwiegend innerhalb des Zementestrichs oberhalb der Haftbrücke. Die geforderte Haftzugfestigkeit legt die Planung fest (Haftzugfestigkeitsklasse B nach DIN EN 13813); der Bruch im Estrich zeigt einen tragfähigen Verbund.',
           layerSubstrateName: 'Beton-Rohdecke',
           layerTopName: 'Zementestrich CT (35 mm)'
         };
@@ -167,14 +167,14 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
           glueShare: 0,
           validTest: true,
           compliantTR: true,
-          desc: 'Prüfung des Fliesenverbunds. Flexkleber erreicht die normative Mindesthaftung von 1,0 MPa für C2-Mörtel.',
+          desc: 'Prüfung des Fliesenverbunds. Der Wert liegt über der Mindesthaftzugfestigkeit von 1,0 N/mm² für C2-Mörtel (gilt für die Laborprüfung auf Betonplatte nach DIN EN 12004-2). Auf Calciumsulfatestrich ist eine Grundierung erforderlich.',
           layerSubstrateName: 'Anhydritestrich CA (grundiert)',
           layerTopName: 'Flexkleber + Feinsteinzeug'
         };
       case 'klebefehler_stempel':
         return {
           title: 'Fehlversuch: Montagekleberversagen am Prüfstempel (Epoxidkleber unvollständig)',
-          norm: 'DIN EN 1542 § 6.5 (Ungültig)',
+          norm: 'DIN EN 1542 (Bruch in der Klebefuge – ungültig)',
           nominalStrength: 0.88,
           stiffness: 9.0,
           fractureType: 'Bruchtyp Y',
@@ -185,7 +185,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
           glueShare: 100,
           validTest: false,
           compliantTR: false,
-          desc: 'Achtung: Der Stempel hat sich vom Probekörper gelöst, bevor das Bauteil versagen konnte (z. B. Mischfehler beim 2K-Kleber oder mangelnde Wartezeit). Der Versuch ist normativ ungültig und muss mit neu geklebtem Stempel wiederholt werden!',
+          desc: 'Achtung: Der Stempel hat sich vom Probekörper gelöst, bevor das Bauteil versagen konnte (z. B. Mischfehler beim 2K-Kleber oder mangelnde Wartezeit). Liegt der Wert unter der Anforderung, ist der Versuch ungültig und mit neu geklebtem Stempel zu wiederholen.',
           layerSubstrateName: 'Betonuntergrund',
           layerTopName: 'PCC-Reprofilierung (unbeschädigt)'
         };
@@ -339,7 +339,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
         'Haftzugfestigkeit fh (MPa)': formatDeZahl(maxStressObserved, 2),
         'Abreißkraft Fmax (kN)': formatDeZahl(maxForceObserved, 2),
         'Max. Stempelabhebung (mm)': formatDeZahl(currentDisplacementMm, 3),
-        'TR-Konformität (≥ 1,5 MPa)': systemConfig.compliantTR ? 'Erfüllt' : 'Nicht erfüllt',
+        'Anforderungswert des Systems (Einzelversuch)': systemConfig.compliantTR ? 'Erfüllt' : 'Nicht erfüllt',
         'Prüfstatus': systemConfig.validTest ? 'Gültiger Versuch' : 'Ungültig (Kleberversagen)'
       },
       status: systemConfig.validTest ? validation.status : 'Ungültig',
@@ -347,8 +347,8 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
         ...validation.notes,
         `Bruchcharakteristik: ${systemConfig.fractureShare}.`,
         systemConfig.validTest
-          ? (systemConfig.compliantTR ? 'TR Instandhaltung: Kriterium für Instandsetzung und OS-Systeme (≥ 1,5 MPa) eingehalten.' : 'TR Instandhaltung: Kriterium verfehlt (< 1,5 MPa).')
-          : 'Fehlprüfung nach DIN EN 1542 § 6.5: Klebefuge am Stempel versagt.'
+          ? (systemConfig.compliantTR ? 'Anforderungswert des gewählten Systems eingehalten (Einzelversuch – die Bewertung erfolgt über Mittelwert und kleinsten Einzelwert einer Prüfserie).' : 'Anforderungswert des gewählten Systems verfehlt.')
+          : 'Fehlprüfung nach DIN EN 1542: Klebefuge am Stempel versagt (Bruchbild Y) – Versuch wiederholen.'
       ],
       integrityHash: validation.hash,
       dataPointsCount: curveData.length
@@ -494,12 +494,13 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
             {/* Normative Requirements Box */}
             <div className="bg-amber-50/70 border border-amber-200/80 p-3 rounded-xl text-xs space-y-1 text-amber-950">
               <div className="font-bold flex items-center gap-1.5 text-amber-900">
-                <Info size={14} className="text-amber-700" /> TR Instandhaltung (DAfStb):
+                <Info size={14} className="text-amber-700" /> Regel-Richtwerte Betonuntergrund (TR Instandhaltung):
               </div>
               <ul className="list-disc pl-4 space-y-0.5 text-[11px] text-amber-900/90">
                 <li>Mittelwert <InlineMath math="f_{ctm} \ge 1{,}5\text{ N/mm}^2" /></li>
                 <li>Kleinster Einzelwert <InlineMath math="f_{ct,min} \ge 1{,}0\text{ N/mm}^2" /></li>
-                <li>Laststeigerung: <InlineMath math="\approx 100\text{ N/s}" /> (<InlineMath math="0{,}05\text{ MPa/s}" />)</li>
+                <li>Laststeigerung nach DIN EN 1542: <InlineMath math="0{,}05\text{ MPa/s}" /> (bei Ø 50 mm ≈ 100 N/s)</li>
+                <li>Objektspezifische Anforderungen (z. B. Estrich, Fliesen) gelten vorrangig.</li>
               </ul>
             </div>
 
@@ -679,10 +680,10 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                     <rect x="175" y="45" width="250" height="26" fill="#1e293b" rx="4" stroke="#475569" strokeWidth="1.5" />
                     <text x="300" y="62" fill="#64748b" fontSize="10" fontFamily="monospace" fontWeight="bold" textAnchor="middle">
                       {testStatus === 'running'
-                        ? `LOAD: ${formatDeZahl(currentForceKN, 2)} kN | ${formatDeZahl((currentStressMPa), 2)} MPa`
+                        ? `KRAFT: ${formatDeZahl(currentForceKN, 2)} kN | ${formatDeZahl((currentStressMPa), 2)} MPa`
                         : testStatus === 'finished'
-                        ? `PEAK: ${formatDeZahl(maxForceObserved, 2)} kN | ${formatDeZahl(maxStressObserved, 2)} MPa`
-                        : 'DIGITAL LOAD CELL 10 kN (READY)'}
+                        ? `MAX: ${formatDeZahl(maxForceObserved, 2)} kN | ${formatDeZahl(maxStressObserved, 2)} MPa`
+                        : 'KRAFTMESSDOSE 10 kN (BEREIT)'}
                     </text>
                   </g>
 
@@ -853,7 +854,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                           : 'bg-rose-100 text-rose-800'
                       }`}>
                         {systemConfig.validTest
-                          ? (systemConfig.compliantTR ? 'Anforderung TR Instandhaltung erfüllt' : 'Nicht ausreichend tragfähig')
+                          ? (systemConfig.compliantTR ? 'Anforderungswert erfüllt' : 'Haftzugfestigkeit nicht ausreichend')
                           : 'Fehlprüfung (Wiederholung erforderlich)'}
                       </span>
                     </div>
@@ -897,7 +898,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                     }`}
                   >
                     {savedSuccess ? <Check size={16} /> : <FileText size={16} />}
-                    <span>{savedSuccess ? 'In Prüfprotokoll archiviert!' : 'Prüfprotokoll archivieren (DAkkS)'}</span>
+                    <span>{savedSuccess ? 'In Prüfprotokoll archiviert!' : 'Prüfprotokoll archivieren'}</span>
                   </button>
 
                   <button
