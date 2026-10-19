@@ -1229,9 +1229,13 @@ export default function Regularien() {
                             <span className="inline-block bg-slate-100 border border-home-grau/30 text-slate-700 font-mono text-xs font-bold px-2.5 py-1 rounded">
                               {norm.code}
                             </span>
-                            {norm.status === 'in_ueberarbeitung' ? (
+                            {norm.status === 'ersetzt' ? (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-shiraz/10 text-shiraz border border-shiraz/20" title={norm.ersetztDurch ? `Ersetzt durch ${norm.ersetztDurch}` : undefined}>
+                                Zurückgezogen ({norm.ausgabeStand})
+                              </span>
+                            ) : norm.status === 'in_ueberarbeitung' ? (
                               <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
-                                In Überarbeitung
+                                Übergang / neue Fassung ({norm.ausgabeStand})
                               </span>
                             ) : (
                               <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
