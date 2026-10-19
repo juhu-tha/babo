@@ -5,6 +5,8 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Flame, Shield, Activity, Layers } from 'lucide-react';
 
@@ -19,7 +21,7 @@ export default function Brandschutz() {
     // ISO-Normbrandkurve: T = 20 + 345 * log10(8 * t + 1)
     const tempIso = 20 + 345 * Math.log10(8 * dauer + 1);
     
-    // Holzbalken Abbrand (ca. 0.7 mm/min für Nadelholz)
+    // Holzbalken Abbrand: ideelle Abbrandrate beta_n = 0,7 mm/min (Nadel-BSH, DIN EN 1995-1-2, Tab. 3.1)
     const abbrandRate = 0.7; // mm/min
     const abbrandTiefe = abbrandRate * dauer;
     
@@ -149,10 +151,10 @@ export default function Brandschutz() {
                 <div>
                   <h4 className="font-semibold text-sm text-text-main border-b border-home-grau/30 pb-1 mb-2">Hauptklassen</h4>
                   <ul className="text-sm space-y-2">
-                    <li className="flex gap-2"><span className="font-bold w-12 text-shiraz">A1, A2</span> <span>Nichtbrennbar</span></li>
-                    <li className="flex gap-2"><span className="font-bold w-12 text-orange-600">B, C</span> <span>Schwerentflammbar</span></li>
+                    <li className="flex gap-2"><span className="font-bold w-12 text-shiraz">A1, A2</span> <span>Nichtbrennbar (A2 nur mit s1, d0; Zuordnung nach MVV TB, Anhang 4)</span></li>
+                    <li className="flex gap-2"><span className="font-bold w-12 text-orange-600">B, C</span> <span>Schwerentflammbar (abhängig von Rauch- und Abtropfklasse)</span></li>
                     <li className="flex gap-2"><span className="font-bold w-12 text-orange-500">D, E</span> <span>Normalentflammbar</span></li>
-                    <li className="flex gap-2"><span className="font-bold w-12 text-red-600">F</span> <span>Leichtentflammbar</span></li>
+                    <li className="flex gap-2"><span className="font-bold w-12 text-red-600">F</span> <span>Leichtentflammbar bzw. keine Leistung festgestellt</span></li>
                   </ul>
                 </div>
                 <div>
@@ -265,7 +267,7 @@ export default function Brandschutz() {
                     </tr>
                     <tr className="hover:bg-home-grau/5">
                       <td className="px-3 py-2 font-bold">≥ 120</td>
-                      <td className="px-3 py-2">hochfeuerbeständig</td>
+                      <td className="px-3 py-2">(kein Begriff der MBO; z. B. Sonderbauten)</td>
                       <td className="px-3 py-2 font-mono">F 120</td>
                       <td className="px-3 py-2 font-mono">R 120 / REI 120</td>
                     </tr>
@@ -363,7 +365,7 @@ export default function Brandschutz() {
 
                   </svg>
                   <div className="text-xs text-text-main/70 text-center mt-2">
-                    Bei dreiseitiger Brandbeanspruchung (z.B. Deckenbalken) brennt das Holz von unten und den Seiten ab. Es entsteht eine schützende Holzkohleschicht (schwarz). Der innere Restquerschnitt (gelb) bleibt tragfähig.
+                    Bei dreiseitiger Brandbeanspruchung (z.B. Deckenbalken) brennt das Holz von unten und den Seiten ab. Es entsteht eine schützende Holzkohleschicht (schwarz). Der innere Restquerschnitt (grau) bleibt tragfähig. Dargestellt ist die Abbrandtiefe mit β_n = 0,7 mm/min (Nadel-Brettschichtholz); für die Bemessung nach DIN EN 1995-1-2 kommt die Schicht ohne Festigkeit k₀ · d₀ = 7 mm hinzu.
                   </div>
                 </div>
               </div>
@@ -372,7 +374,36 @@ export default function Brandschutz() {
         </div>
       )}
     
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Brandraumtemperatur nach der Einheitstemperaturzeitkurve"
+        zielGleichung="\theta_g = 20 + 345 \cdot \lg(8t + 1)"
+        schritte={[
+          { titel: '30 Minuten', erklaerung: 'Feuerhemmend (F 30 / R 30):', formel: '\\theta_g = 20 + 345 \\cdot \\lg 241 = 842\\,^\\circ\\text{C}' },
+          { titel: '60 Minuten', erklaerung: 'Hochfeuerhemmend (F 60 / R 60):', formel: '\\theta_g = 20 + 345 \\cdot \\lg 481 = 945\\,^\\circ\\text{C}' },
+          { titel: '90 Minuten', erklaerung: 'Feuerbeständig (F 90 / R 90):', formel: '\\theta_g = 20 + 345 \\cdot \\lg 721 = 1\\,006\\,^\\circ\\text{C}' }
+        ]}
+        ergebnisHinweis="Die Kurve steigt anfangs steil und flacht dann ab: Zwischen 30 und 90 Minuten kommen nur rund 160 K hinzu. Für die Bauteile zählt deshalb vor allem die Dauer der Beanspruchung."
+        normQuelle="DIN EN 1363-1; DIN EN 1991-1-2"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Restquerschnitt eines BSH-Deckenbalkens nach 30 und 60 Minuten"
+        zielGleichung="d_{ef} = \beta_n \cdot t + k_0 \cdot d_0"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'BSH-Balken b/h = 200/400 mm, dreiseitig beflammt (unten und seitlich), β_n = 0,7 mm/min, d₀ = 7 mm:', formel: 'b = 200\\,\\text{mm},\\; h = 400\\,\\text{mm}' },
+          { titel: 'Nach 30 Minuten', erklaerung: 'Effektive Abbrandtiefe und Restquerschnitt:', formel: 'd_{ef} = 21 + 7 = 28\\,\\text{mm} \\Rightarrow b_{ef} \\times h_{ef} = 144 \\times 372\\,\\text{mm}' },
+          { titel: 'Nach 60 Minuten', erklaerung: 'Doppelte Branddauer:', formel: 'd_{ef} = 42 + 7 = 49\\,\\text{mm} \\Rightarrow b_{ef} \\times h_{ef} = 102 \\times 351\\,\\text{mm}' },
+          { titel: 'Biegewiderstand', erklaerung: 'Verhältnis der Widerstandsmomente W = b · h²/6:', formel: '\\frac{W_{ef,30}}{W_0} = \\frac{144 \\cdot 372^2}{200 \\cdot 400^2} = 0{,}62, \\quad \\frac{W_{ef,60}}{W_0} = \\frac{102 \\cdot 351^2}{200 \\cdot 400^2} = 0{,}39' }
+        ]}
+        ergebnisHinweis="Im Brandfall wirken geringere Lasten (außergewöhnliche Kombination) und höhere Festigkeiten (k_mod,fi = 1, 20-%-Fraktile); ob 39 % Restwiderstand für R 60 reichen, entscheidet der Nachweis nach DIN EN 1995-1-2."
+        normQuelle="DIN EN 1995-1-2:2010-12, 4.2.2 (Methode mit reduziertem Querschnitt)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="brandschutz" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Euroklassen-Zuordnung, Feuerwiderstandsbegriffe, Abbrand und Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
         { title: 'Brandschutz', url: 'https://de.wikipedia.org/wiki/Brandschutz' },
         { title: 'Baustoffklasse', url: 'https://de.wikipedia.org/wiki/Baustoffklasse' }
@@ -380,24 +411,25 @@ export default function Brandschutz() {
         literatur={[
           'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Hosser, D. (2018): Brandschutz im Bauwesen (Vieweg+Teubner Verlag)'
+          'Hosser, D. (Hrsg.): Leitfaden Ingenieurmethoden des Brandschutzes. vfdb-Technischer Bericht TB 04-01, 3. Aufl. 2013'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten zu ihrem Brandverhalten - Euroklassen A1..F)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13501-1' },
-          { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen - Klassifizierte Baustoffe & Feuerwiderstand)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-4' },
-          { title: 'DIN EN 1995-1-2:2024-03 (Eurocode 5: Bemessung von Holzbauten - Heißbemessung & Abbrandraten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-2' },
-          { title: 'Musterbauordnung (MBO 2023 - Gebäudeklassen 1 bis 5)', url: 'https://www.bauministerkonferenz.de/' }
+          { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten – Euroklassen A1 bis F)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13501-1' },
+          { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen – Zusammenstellung klassifizierter Baustoffe, Bauteile und Sonderbauteile)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-4' },
+          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Tragwerksbemessung für den Brandfall; bauaufsichtlich eingeführt); neue Generation DIN EN 1995-1-2:2026-10', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-2' },
+          { title: 'Musterbauordnung (MBO, Fassung 2002 mit späteren Änderungen; Gebäudeklassen 1 bis 5, §§ 26–32) – aktuellen Stand manuell prüfen', url: 'https://www.bauministerkonferenz.de/' },
+          { title: 'DIN EN 13501-2 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I) – Ausgabe manuell prüfen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13501-2' }
         ]}
         formeln={[
           {
             formel: 'd_{\\text{ef}} = d_{\\text{char,n}} + k_0 \\cdot d_0 = \\beta_n \\cdot t + k_0 \\cdot d_0',
-            erklaerung: 'Effektive Abbrandtiefe def von Holz nach Eurocode 5 (DIN EN 1995-1-2): Rechnerische Berücksichtigung der durch Erwärmung geschwächten Übergangsschicht d0 = 7 mm.',
-            quelle: 'DIN EN 1995-1-2 Gl. 4.1'
+            erklaerung: 'Effektive Abbrandtiefe def von Holz nach Eurocode 5 (DIN EN 1995-1-2): Rechnerische Berücksichtigung der durch Erwärmung geschwächten Übergangsschicht d0 = 7 mm (k0 = 1 ab 20 min bei ungeschützten Oberflächen).',
+            quelle: 'DIN EN 1995-1-2:2010-12, Gl. (4.1)'
           },
           {
             formel: '\\theta_g - 20 = 345 \\cdot \\log_{10}(8t + 1) \\quad [^\\circ\\text{C}]',
             erklaerung: 'Einheitstemperaturzeitkurve (ETK) nach DIN EN 1363-1 / DIN 4102 zur standardisierten Brandprüfung von Bauteilen im Ofen.',
-            quelle: 'DIN EN 1363-1'
+            quelle: 'DIN EN 1363-1; DIN EN 1991-1-2'
           }
         ]}
       />

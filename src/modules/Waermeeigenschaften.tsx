@@ -4,6 +4,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -52,15 +54,15 @@ export default function Waermeeigenschaften() {
     { name: 'VIP', lambda: 0.007, color: '#64748b', desc: 'Vakuumisolationspaneel, extrem dünn' },
     { name: 'Aerogel', lambda: 0.015, color: '#64748b', desc: 'Hochleistungsdämmstoff, sehr teuer' },
     { name: 'PUR / PIR', lambda: 0.025, color: '#475569', desc: 'Polyurethan, sehr gute Dämmwirkung' },
-    { name: 'EPS / XPS', lambda: 0.035, color: '#475569', desc: 'Styropor/Styrodur, Standard im Hochbau' },
+    { name: 'EPS / XPS', lambda: 0.035, color: '#475569', desc: 'Polystyrol-Hartschaum (expandiert bzw. extrudiert), Standard im Hochbau; XPS auch als Perimeterdämmung' },
     { name: 'Steinwolle', lambda: 0.035, color: '#A3113E', desc: 'Nicht brennbar, guter Schallschutz, formstabil' },
     { name: 'Glaswolle', lambda: 0.035, color: '#94a3b8', desc: 'Nicht brennbar, leicht, flexibel' },
-    { name: 'Mineralwolle', lambda: 0.040, color: '#64748b', desc: 'Allgemein für Stein-/Glaswolle' },
+    { name: 'Mineralwolle', lambda: 0.040, color: '#64748b', desc: 'Sammelbegriff für Stein- und Glaswolle; Bemessungswerte je nach Produkt etwa 0,032 bis 0,040' },
     { name: 'Holzfaser', lambda: 0.040, color: '#475569', desc: 'Ökologisch, sehr guter sommerlicher Wärmeschutz' },
     { name: 'Zellulose', lambda: 0.040, color: '#475569', desc: 'Einblasdämmung, Recyclingmaterial, diffusionsoffen' },
     { name: 'Schaumglas', lambda: 0.040, color: '#64748b', desc: 'Druckfest, wasser- und dampfdicht' },
     { name: 'Hanffaser', lambda: 0.040, color: '#64748b', desc: 'Nachwachsend, feuchtigkeitsregulierend' },
-    { name: 'Schafwolle', lambda: 0.040, color: '#94a3b8', desc: 'Naturfaser, luftreinigende Wirkung' }], []);
+    { name: 'Schafwolle', lambda: 0.040, color: '#94a3b8', desc: 'Naturfaser, nachwachsend; Formaldehyd-Bindung laut Herstellern, Mottenschutz erforderlich' }], []);
 
   // Update sliders when preset changes
   useEffect(() => {
@@ -341,7 +343,35 @@ export default function Waermeeigenschaften() {
         </div>
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Warum fühlt sich Beton kälter an als Holz?"
+        zielGleichung="\vartheta_K = \frac{b_H \cdot \vartheta_H + b_M \cdot \vartheta_M}{b_H + b_M}"
+        schritte={[
+          { titel: 'Wärmeeindringfähigkeit Beton', erklaerung: 'λ = 2,0 W/(mK), ρ = 2400 kg/m³, c = 1000 J/(kgK):', formel: 'b_{Beton} = \\sqrt{2{,}0 \\cdot 2\\,400 \\cdot 1\\,000} = 2\\,191\\,\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})' },
+          { titel: 'Wärmeeindringfähigkeit Fichte', erklaerung: 'λ = 0,13 W/(mK), ρ = 500 kg/m³, c = 1600 J/(kgK):', formel: 'b_{Holz} = \\sqrt{0{,}13 \\cdot 500 \\cdot 1\\,600} = 322\\,\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})' },
+          { titel: 'Kontakttemperatur', erklaerung: 'Haut 33 °C (b ≈ 1100), Material 20 °C:', formel: '\\vartheta_{Beton} = \\frac{1\\,100 \\cdot 33 + 2\\,191 \\cdot 20}{3\\,291} = 24{,}3\\,^\\circ\\text{C}, \\quad \\vartheta_{Holz} = \\frac{1\\,100 \\cdot 33 + 322 \\cdot 20}{1\\,422} = 30{,}1\\,^\\circ\\text{C}' }
+        ]}
+        ergebnisHinweis="Beide Oberflächen haben 20 °C, doch Beton entzieht der Haut schneller Wärme. Für Fußböden ist deshalb neben der Oberflächentemperatur die Wärmeeindringfähigkeit maßgebend (Fußwärme)."
+        normQuelle="Bemessungswerte nach DIN EN ISO 10456:2010-05 / DIN 4108-4:2020-11"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Dämmdicke für die nachträgliche Außendämmung einer Bestandswand"
+        zielGleichung="d_D = \lambda_D \cdot \left(\frac{1}{U_{Ziel}} - R_{si} - R_{Wand} - R_{se}\right)"
+        schritte={[
+          { titel: 'Anforderung', erklaerung: 'Außendämmung einer Außenwand im Bestand: Höchstwert nach GModG, Anlage 7, Zeile 1b.', formel: 'U_{Ziel} = 0{,}24\\,\\text{W/(m}^2\\text{K)} \\Rightarrow R_T = \\frac{1}{0{,}24} = 4{,}17\\,\\text{m}^2\\text{K/W}' },
+          { titel: 'Bestand', erklaerung: 'Wand 24 cm mit λ = 1,0 W/(mK); Übergangswiderstände 0,13 + 0,04:', formel: 'R_{Wand} = \\frac{0{,}24}{1{,}0} = 0{,}24, \\quad R_{D,erf} = 4{,}17 - 0{,}17 - 0{,}24 = 3{,}76\\,\\text{m}^2\\text{K/W}' },
+          { titel: 'Dämmdicken', erklaerung: 'Je nach Bemessungswert der Wärmeleitfähigkeit:', formel: 'd_{EPS\\,035} = 13{,}1\\,\\text{cm}, \\quad d_{Holzfaser\\,040} = 15{,}0\\,\\text{cm}, \\quad d_{PIR\\,025} = 9{,}4\\,\\text{cm}' }
+        ]}
+        ergebnisHinweis="Gewählt wird die nächste Lieferdicke (z. B. 14 cm EPS bzw. 16 cm Holzfaser). Wärmebrücken, Dübel und Fensteranschlüsse sind gesondert zu bewerten."
+        normQuelle="DIN EN ISO 6946:2018-03; GModG Anlage 7 (Lesefassung Stand 29.07.2026)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="waermeeigenschaften" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Kennwerte, Dämmdicken und Normausgaben geprüft, GEG → GModG; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Wärmeleitfähigkeit', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeleitf%C3%A4higkeit' },
           { title: 'Wärmedurchgangskoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
@@ -349,13 +379,14 @@ export default function Waermeeigenschaften() {
           { title: 'Temperaturleitfähigkeit', url: 'https://de.wikipedia.org/wiki/Temperaturleitf%C3%A4higkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' },
-          { title: 'DIN 4108-4 (Wärmeschutz und Energie-Einsparung in Gebäuden - Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-4' },
-          { title: 'Gebäudeenergiegesetz (GEG)', url: 'https://www.gesetze-im-internet.de/geg/' }
+          { title: 'DIN EN ISO 10456:2010-05 (Baustoffe und Bauprodukte – Wärme- und feuchtetechnische Eigenschaften, tabellierte Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' },
+          { title: 'DIN 4108-4:2020-11 (Wärmeschutz und Energie-Einsparung in Gebäuden – Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-4' },
+          { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient – Berechnungsverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
+          { title: 'Gebäudemodernisierungsgesetz (GModG, bis 28.07.2026 Gebäudeenergiegesetz GEG) – Anlage 7: Höchstwerte der U-Werte bei Änderung', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[
-          'Fischer, H. et al.: Bauphysik (2021)',
-          'Willems, W. et al.: Lehrbuch der Bauphysik (2017)'
+          'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',
+          'Bauphysik-Kalender. Berlin: Ernst & Sohn (jährlich)'
         ]}
         formeln={[
           {
@@ -371,7 +402,7 @@ export default function Waermeeigenschaften() {
             formel: "b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad [\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})]"
           },
           {
-            erklaerung: "Kontakttemperatur (zwei Halbräume)",
+            erklaerung: "Kontakttemperatur zweier halbunendlicher Körper (Haut: b ≈ 1100 J/(m²K√s) als Lehrwert)",
             formel: "T_m = \\frac{b_1 \\cdot T_1 + b_2 \\cdot T_2}{b_1 + b_2}"
           },
           {
@@ -379,7 +410,7 @@ export default function Waermeeigenschaften() {
             formel: "R = \\frac{d}{\\lambda} \\quad [\\text{m}^2\\text{K/W}]"
           },
           {
-            erklaerung: "Wärmedurchgangskoeffizient (U-Wert)",
+            erklaerung: "Wärmedurchgangskoeffizient (U-Wert) nach DIN EN ISO 6946; Wand bei horizontalem Wärmestrom: R_si = 0,13, R_se = 0,04 m²K/W",
             formel: "U = \\frac{1}{R_{si} + \\sum R_i + R_{se}} \\quad [\\text{W/(m}^2\\text{K)}]"
           }
         ]}

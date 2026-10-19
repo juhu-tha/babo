@@ -5,6 +5,8 @@ import {
   TrendingDown, ArrowUpRight, Flame, Wind, Layers
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 
@@ -27,7 +29,7 @@ export default function Energieausweis() {
     switch (scaleHouseType) {
       case 'altbau_unsaniert': return { val: 260, class: 'H', desc: 'Typischer unsanierter Altbau (vor der 1. WSVO 1977)' };
       case 'altbau_saniert': return { val: 85, class: 'C', desc: 'Umfassend energetisch modernisierter Altbau' };
-      case 'neubau_geg': return { val: 55, class: 'B', desc: 'Standard-Neubau nach Mindestanforderung GEG' };
+      case 'neubau_geg': return { val: 55, class: 'B', desc: 'Standard-Neubau nach Mindestanforderung GModG/GEG (55 % des Referenzgebäudes)' };
       case 'neubau_eh40': return { val: 25, class: 'A+', desc: 'KfW/BEG Effizienzhaus 40 (höchster Dämmstandard)' };
     }
   };
@@ -178,7 +180,7 @@ export default function Energieausweis() {
     // CO2-Emissionen [kg/(m² a)]
     const co2_emissionen = Math.round((q_e * co2_faktor) / 1000);
 
-    // Effizienzklasse (nach GEG Tabelle Anlage 10)
+    // Effizienzklasse (Wohngebäude, GModG/GEG Anlage 10 zu § 86)
     let klasse = 'H';
     let klasseColor = 'bg-red-800 text-white';
     if (q_e <= 30) {
@@ -228,7 +230,7 @@ export default function Energieausweis() {
       {/* Kopfbereich */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Zap className="text-shiraz" /> Der Energieausweis (nach GEG &amp; DIN V 18599)
+          <Zap className="text-shiraz" /> Der Energieausweis (nach GModG/GEG &amp; DIN V 18599)
         </h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
@@ -244,7 +246,7 @@ export default function Energieausweis() {
         <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-950 my-4 flex items-start gap-2.5">
           <Info className="text-amber-700 shrink-0 mt-0.5" size={16} />
           <div>
-            <strong>Rechtsstand:</strong> Der Bundestag hat das Gebäudemodernisierungsgesetz (GModG) beschlossen. Die 65-%-Vorgabe für Heizungsanlagen wird reformiert; ab 2029 greift ein schrittweise ansteigender Mindestanteil grüner Brennstoffe (Biogas, Wasserstoff, Bioöl) bei fossilen Wärmeerzeugern.
+            <strong>Rechtsstand:</strong> Beschluss von Bundestag und Bundesrat am 10.07.2026, Verkündung am 28.07.2026, Inkrafttreten gestaffelt ab 29.07.2026. Das GEG heißt seither Gebäudemodernisierungsgesetz; Paragrafen zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79–88) bleiben bestehen. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.
           </div>
         </div>
 
@@ -291,7 +293,7 @@ export default function Energieausweis() {
             }`}
             onClick={() => setActiveTab('praxis_recht')}
           >
-            <Scale size={16} /> Praxis, Rebound &amp; GEG-Recht
+            <Scale size={16} /> Praxis, Rebound &amp; GModG-Recht
           </button>
         </div>
 
@@ -352,7 +354,7 @@ export default function Energieausweis() {
 
             {/* Interaktive Farbskala */}
             <div className="pt-4 border-t border-home-grau/20">
-              <h3 className="font-bold text-text-main text-sm mb-3">Interaktive Energieeffizienzskala (GEG Klassen A+ bis H)</h3>
+              <h3 className="font-bold text-text-main text-sm mb-3">Interaktive Energieeffizienzskala (Klassen A+ bis H nach GModG/GEG Anlage 10)</h3>
               
               <div className="flex gap-2 flex-wrap mb-4">
                 <button 
@@ -437,7 +439,7 @@ export default function Energieausweis() {
 
             {/* Historie der Vorschriften */}
             <div className="pt-4 border-t border-home-grau/20">
-              <h3 className="font-bold text-text-main text-sm mb-3">Historischer Stufenplan: Von der 1. WSVO 1977 zum GEG 2024</h3>
+              <h3 className="font-bold text-text-main text-sm mb-3">Historischer Stufenplan: Von der 1. WSVO 1977 zum GModG 2026</h3>
               <div className="text-xs text-text-main/80 space-y-3 relative border-l-2 border-shiraz/40 ml-2 pl-4">
                 <div>
                   <strong className="text-text-main block">1977 – 1. Wärmeschutzverordnung (WSVO):</strong>
@@ -461,7 +463,7 @@ export default function Energieausweis() {
                 </div>
                 <div>
                   <strong className="text-text-main block">2026 – Gebäudemodernisierungsgesetz (GModG):</strong>
-                  Der Bundestag hat das Gebäudemodernisierungsgesetz (GModG) beschlossen. Die 65-%-Vorgabe für Heizungsanlagen wird reformiert; ab 2029 greift ein schrittweise ansteigender Mindestanteil grüner Brennstoffe (Biogas, Wasserstoff, Bioöl) bei fossilen Wärmeerzeugern.
+                  Beschluss von Bundestag und Bundesrat am 10.07.2026, Verkündung am 28.07.2026, Inkrafttreten gestaffelt ab 29.07.2026. Das GEG heißt seither Gebäudemodernisierungsgesetz; Paragrafen zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79–88) bleiben bestehen. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.
                 </div>
               </div>
             </div>
@@ -503,9 +505,9 @@ export default function Energieausweis() {
                     <Home size={15} /> Raum-Solltemperatur
                   </div>
                   <p className="text-xxs text-text-main/80">
-                    Für Wohngebäude wird konstant eine mittlere Innentemperatur von <strong><InlineMath math="T_i = 19^\circ\text{C}" /></strong> 
-                    (bzw. <InlineMath math="20^\circ\text{C}" /> im 24h-Mittel) über die gesamte Heizperiode (typisch Oktober bis April) 
-                    für die gesamte thermische Gebäudehülle angesetzt.
+                    Für Wohngebäude gilt im Heizfall eine Raum-Solltemperatur von <strong><InlineMath math="\theta_{i} = 20^\circ\text{C}" /></strong> (DIN V 18599-10);
+                    Nachtabsenkung und eingeschränkter Heizbetrieb werden rechnerisch berücksichtigt, sodass die wirksame Mitteltemperatur darunter liegt
+                    (im früheren Monatsbilanzverfahren nach DIN V 4108-6 pauschal 19 °C).
                   </p>
                 </div>
 
@@ -526,8 +528,8 @@ export default function Energieausweis() {
                   </div>
                   <p className="text-xxs text-text-main/80">
                     Körperwärme anwesender Personen, Lampen und Elektrogeräte heizen das Gebäude mit. 
-                    Pauschaler Ansatz nach DIN V 18599: <strong><InlineMath math="q_i \approx 5\,\text{W/m}^2" /></strong> Nutzfläche 
-                    (entspricht rund <InlineMath math="45\,\text{kWh}/(\text{m}^2\cdot\text{a})" />).
+                    Pauschaler Ansatz im vereinfachten Verfahren nach DIN V 4108-6: <strong><InlineMath math="q_i = 5\,\text{W/m}^2" /></strong> Gebäudenutzfläche
+                    (über die Heizperiode rund 25 bis 30 kWh/(m²·a)). DIN V 18599-10 setzt nutzungsabhängige Tageswerte in Wh/(m²·d) an (Werte manuell prüfen).
                   </p>
                 </div>
 
@@ -536,9 +538,9 @@ export default function Energieausweis() {
                     <Flame size={15} /> Warmwasserbedarf (<InlineMath math="q_w" />)
                   </div>
                   <p className="text-xxs text-text-main/80">
-                    Nutzenergiebedarf für Trinkwarmwasser wird standardisiert mit 
-                    <strong><InlineMath math="q_w = 12{,}5\,\text{kWh}/(\text{m}^2\cdot\text{a})" /></strong> bezogen auf die 
-                    Gebäudenutzfläche <InlineMath math="A_N" /> festgelegt (ca. 20–25 Liter Warmwasser (60 °C) pro Person und Tag).
+                    Im vereinfachten Verfahren (DIN V 4108-6 / DIN V 4701-10) wird der Nutzenergiebedarf für Trinkwarmwasser pauschal mit
+                    <strong><InlineMath math="q_w = 12{,}5\,\text{kWh}/(\text{m}^2\cdot\text{a})" /></strong> bezogen auf die
+                    Gebäudenutzfläche <InlineMath math="A_N" /> angesetzt; DIN V 18599-10 verwendet nutzungsabhängige Werte.
                   </p>
                 </div>
 
@@ -548,7 +550,7 @@ export default function Energieausweis() {
                   </div>
                   <p className="text-xxs text-text-main/80">
                     Wird vereinfacht aus dem beheizten Brutto-Gebäudevolumen <InlineMath math="V_e" /> ermittelt: 
-                    <strong><InlineMath math="A_N = 0{,}32 \cdot V_e" /></strong> (für Geschosshöhen <InlineMath math="\le 2{,}60\,\text{m}" />). 
+                    <strong><InlineMath math="A_N = 0{,}32 \cdot V_e" /></strong> (für mittlere Geschosshöhen von 2,5 bis 3,0 m; sonst <InlineMath math="A_N = (1/h_G - 0{,}04\,\text{m}^{-1}) \cdot V_e" />). 
                     Sie ist ca. 20–30 % größer als die reine Wohnfläche nach WoFlV!
                   </p>
                 </div>
@@ -668,7 +670,7 @@ export default function Energieausweis() {
                   </div>
 
                   <div className="mt-3">
-                    <strong className="text-xs text-text-main block mb-2">Gesetzliche Primärenergiefaktoren (<InlineMath math="f_P" />) nach GEG:</strong>
+                    <strong className="text-xs text-text-main block mb-2">Primärenergiefaktoren (<InlineMath math="f_P" />, nicht erneuerbarer Anteil) nach GModG/GEG Anlage 4:</strong>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                       <div className="p-2 bg-white rounded-lg border border-slate-200 text-center">
                         <span className="font-bold block text-slate-800">1,1</span>
@@ -711,19 +713,19 @@ export default function Energieausweis() {
 
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 text-xs text-text-main/80 space-y-2">
                 <p>
-                  Im Neubau und bei größeren Sanierungen schreibt das GEG keine starre absolute Zahl vor, 
-                  sondern arbeitet mit einem virtuellen <strong>Referenzgebäude</strong> (GEG Anlage 1):
+                  Im Neubau schreibt das GModG (vormals GEG) keine starre absolute Zahl vor,
+                  sondern arbeitet mit einem virtuellen <strong>Referenzgebäude</strong> (Anlage 1, §§ 15 und 16):
                 </p>
                 <div className="grid sm:grid-cols-2 gap-3 my-2">
                   <div className="p-3 bg-white rounded-lg border border-home-grau/30">
                     <strong className="text-text-main block mb-1">1. Primärenergie-Anforderung:</strong>
                     <BlockMath math="Q_{P,\text{Ist}} \le 0{,}55 \cdot Q_{P,\text{Ref}}" />
-                    <p className="text-xxs text-slate-600">Seit 2023 gilt für Neubauten das EH-55-Niveau als gesetzlicher Mindeststandard (55 % des Referenzgebäudes).</p>
+                    <p className="text-xxs text-slate-600">Seit 2023 gilt für neue Wohngebäude das EH-55-Niveau als gesetzlicher Mindeststandard (§ 15: 55 % des Referenzgebäudes).</p>
                   </div>
                   <div className="p-3 bg-white rounded-lg border border-home-grau/30">
                     <strong className="text-text-main block mb-1">2. Baulicher Wärmeschutz (Hülle):</strong>
                     <BlockMath math="H'_{T,\text{Ist}} \le H'_{T,\text{Ref}}" />
-                    <p className="text-xxs text-slate-600">Verhindert, dass schlechte Dämmung durch überdimensionierte Haustechnik schön gerechnet wird.</p>
+                    <p className="text-xxs text-slate-600">§ 16: höchstens das 1,0-Fache des Referenzwerts. Verhindert, dass schlechte Dämmung durch effiziente Haustechnik ausgeglichen wird.</p>
                   </div>
                 </div>
               </div>
@@ -979,7 +981,7 @@ export default function Energieausweis() {
                       <div className="text-xl font-black text-emerald-800 font-mono">
                         {formatDeWert(simResults.q_p)} <span className="text-xs font-normal text-slate-500">kWh/(m²a)</span>
                       </div>
-                      <span className="text-xxs text-slate-500">GEG-Nachweisgröße (fp = {formatDeWert(simResults.f_p)})</span>
+                      <span className="text-xxs text-slate-500">Nachweisgröße nach § 15 (fp = {formatDeWert(simResults.f_p)})</span>
                     </div>
                   </div>
 
@@ -1072,32 +1074,32 @@ export default function Energieausweis() {
             {/* Rechtliche Pflichten nach GEG */}
             <div className="pt-4 border-t border-home-grau/20">
               <h3 className="font-bold text-text-main text-base mb-3 flex items-center gap-2">
-                <Scale size={18} className="text-shiraz" /> Gesetzliche Pflichten nach GEG (§§ 79–88)
+                <Scale size={18} className="text-shiraz" /> Gesetzliche Pflichten nach GModG, vormals GEG (§§ 79–88)
               </h3>
 
               <div className="space-y-3 text-xs text-text-main/80">
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/30">
-                  <strong className="text-text-main block mb-0.5">Vorlage- und Übergabepflicht bei Besichtigung (§ 80 GEG):</strong>
+                  <strong className="text-text-main block mb-0.5">Vorlage- und Übergabepflicht bei Besichtigung (§ 80 Abs. 4 und 5):</strong>
                   Beim Verkauf oder der Neuvermietung eines Gebäudes oder einer Wohnung muss der Energieausweis potenziellen 
                   Interessenten bereits bei der ersten Besichtigung unaufgefordert vorgelegt und bei Vertragsabschluss unverzüglich als Kopie übergeben werden.
                 </div>
 
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/30">
-                  <strong className="text-text-main block mb-0.5">Pflichtangaben in Immobilienanzeigen (§ 87 GEG):</strong>
+                  <strong className="text-text-main block mb-0.5">Pflichtangaben in Immobilienanzeigen (§ 87):</strong>
                   In kommerziellen Anzeigen (z. B. ImmoScout, Zeitungen) müssen Pflichtangaben zwingend genannt werden: 
                   Art des Ausweises (Bedarfs- oder Verbrauchsausweis), Endenergie-Kennwert, wesentlicher Energieträger der Heizung, Baujahr des Gebäudes und die Energieeffizienzklasse (A+ bis H).
                 </div>
 
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/30">
-                  <strong className="text-text-main block mb-0.5">Gültigkeit &amp; Modernisierungsempfehlungen (§§ 83, 84 GEG):</strong>
-                  Energieausweise sind genau <strong>10 Jahre gültig</strong>. Ein wesentlicher Bestandteil jedes Bedarfsausweises sind fachlich 
+                  <strong className="text-text-main block mb-0.5">Gültigkeit &amp; Modernisierungsempfehlungen (§ 79 Abs. 3, § 84):</strong>
+                  Energieausweise sind genau <strong>10 Jahre gültig</strong>. Ein wesentlicher Bestandteil jedes Energieausweises für Bestandsgebäude sind fachlich 
                   fundierte und wirtschaftlich zumutbare <strong>Modernisierungsempfehlungen</strong> (z. B. Dämmung der obersten Geschossdecke, Fenstertausch, hydraulischer Abgleich, Heizungstausch).
                 </div>
 
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/30">
-                  <strong className="text-text-main block mb-0.5">Aushangpflicht in öffentlichen Gebäuden (§ 85 GEG):</strong>
+                  <strong className="text-text-main block mb-0.5">Aushangpflicht in öffentlichen Gebäuden (§ 80 Abs. 6 und 7):</strong>
                   In behördlichen Gebäuden mit starkem Publikumsverkehr über 250 m² Nutzfläche sowie gewerblichen Bauten über 500 m² Nutzfläche 
-                  muss der Energieausweis an gut sichtbarer Stelle öffentlich ausgehängt werden.
+                  muss der Energieausweis an gut sichtbarer Stelle ausgehängt werden. Für Nichtwohngebäude sieht das GModG gestaffelt neue Effizienzklassen A bis G vor (Stand manuell prüfen).
                 </div>
               </div>
             </div>
@@ -1105,24 +1107,52 @@ export default function Energieausweis() {
           </div>
         )}
 
-      </div>
+      </div>      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: End- und Primärenergie – Gas-Brennwertkessel gegen Wärmepumpe"
+        zielGleichung="Q_P = \sum_i Q_{E,i} \cdot f_{P,i}"
+        schritte={[
+          { titel: 'Wärmebedarf', erklaerung: 'Nutzwärme Heizung und Trinkwarmwasser einschließlich Verteilverlusten:', formel: 'q_h + q_w + q_{Verl} = 60 + 12{,}5 + 7{,}5 = 80\\,\\text{kWh/(m}^2\\text{a)}' },
+          { titel: 'Gas-Brennwert', erklaerung: 'Erzeugernutzungsgrad 0,96, f_P = 1,1 (Gas) bzw. 1,8 (Hilfsstrom 3,5 kWh/(m²a)):', formel: 'q_E = \\frac{80}{0{,}96} + 3{,}5 = 86{,}8, \\quad q_P = 83{,}3 \\cdot 1{,}1 + 3{,}5 \\cdot 1{,}8 = 98{,}0\\,\\text{kWh/(m}^2\\text{a)}' },
+          { titel: 'Luft-Wasser-Wärmepumpe', erklaerung: 'Jahresarbeitszahl 3,3, Strom f_P = 1,8, Hilfsstrom 2,5 kWh/(m²a):', formel: 'q_E = \\frac{80}{3{,}3} + 2{,}5 = 26{,}7, \\quad q_P = 26{,}7 \\cdot 1{,}8 = 48{,}1\\,\\text{kWh/(m}^2\\text{a)}' },
+          { titel: 'Effizienzklasse', erklaerung: 'Die Klasse richtet sich bei Wohngebäuden nach der Endenergie (Anlage 10):', formel: '86{,}8 \\Rightarrow \\text{C}, \\qquad 26{,}7 \\Rightarrow \\text{A+}' }
+        ]}
+        ergebnisHinweis="Bei gleicher Gebäudehülle halbiert die Wärmepumpe den Primärenergiebedarf und landet drei Klassen besser, weil die Effizienzklasse die Endenergie bewertet."
+        normQuelle="GModG/GEG Anlage 4 (Primärenergiefaktoren) und Anlage 10 (Effizienzklassen), Lesefassung Stand 29.07.2026"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Gebäudenutzfläche und Gültigkeit des Energieausweises"
+        zielGleichung="A_N = 0{,}32\,\text{m}^{-1} \cdot V_e"
+        schritte={[
+          { titel: 'Beheiztes Volumen', erklaerung: 'Einfamilienhaus 10 m × 9 m Grundfläche, beheizte Höhe 6,0 m (zwei Geschosse, h_G = 2,75 m):', formel: 'V_e = 10 \\cdot 9 \\cdot 6{,}0 = 540\\,\\text{m}^3' },
+          { titel: 'Gebäudenutzfläche', erklaerung: 'Geschosshöhe zwischen 2,5 und 3,0 m, daher Pauschalfaktor 0,32:', formel: 'A_N = 0{,}32 \\cdot 540 = 172{,}8\\,\\text{m}^2' },
+          { titel: 'Vergleich Wohnfläche', erklaerung: 'Bei rund 140 m² Wohnfläche ist A_N etwa 23 % größer – Kennwerte je m² A_N wirken daher günstiger als je m² Wohnfläche.', formel: '\\frac{172{,}8}{140} = 1{,}23' },
+          { titel: 'Gültigkeit', erklaerung: 'Ausgestellt am 1. Oktober 2026 (§ 79 Abs. 3):', formel: '\\text{gültig bis 30. September 2036}' }
+        ]}
+        ergebnisHinweis="Der Bezug auf A_N statt Wohnfläche ist eine häufige Ursache für Missverständnisse beim Vergleich von Energieausweis und Heizkostenabrechnung."
+        normQuelle="GModG/GEG: Ermittlung der Gebäudenutzfläche A_N (Fundstelle manuell prüfen); § 79 Abs. 3 (Gültigkeit)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="energieausweis" />
 
       {/* Standardisierter Footer */}
-      <ModuleFooter 
-        wikipedia={[
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 6 Bauphysik: GEG → GModG, Paragrafen, Primärenergiefaktoren und Effizienzklassen gegen die Lesefassung geprüft; fachliche Freigabe durch den Autor ausstehend)"
+wikipedia={[
           { title: 'Energieausweis', url: 'https://de.wikipedia.org/wiki/Energieausweis' },
           { title: 'Gebäudeenergiegesetz', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4udeenergiegesetz' },
           { title: 'DIN V 18599', url: 'https://de.wikipedia.org/wiki/DIN_V_18599' }
         ]}
         literatur={[
-          'Willems, W. M. et al.: Lehrbuch der Bauphysik: Schallschutz, Wärmeschutz, Feuchteschutz (Springer Vieweg)',
-          'Pistohl, W.: Handbuch der Gebäudetechnik (Band 1 & 2, Werner Verlag)',
-          'Hegger, M. et al.: Energie Atlas: Nachhaltige Architektur (Birkhäuser Edition Detail)'
+          'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',
+          'Pistohl, W. et al.: Handbuch der Gebäudetechnik, Band 1 und 2. Köln: Reguvis (aktuelle Auflage)',
+          'Hegger, M.; Fuchs, M.; Stark, T.; Zeumer, M.: Energie Atlas – Nachhaltige Architektur. München: Edition Detail 2007'
         ]}
         regelwerke={[
-          /* TODO: GModG Umnummerierung */ { title: 'Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG §§ 79–88: Energieausweise)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'DIN V 18599 (Energetische Bewertung von Gebäuden, Teile 1 bis 12)', url: 'https://www.dinmedia.de/de/suche?q=DIN+V+18599' },
-          { title: 'DIN 4108-2 (Mindestwärmeschutz im Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' }
+          { title: 'Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026, in Kraft gestaffelt ab 29.07.2026; vormals Gebäudeenergiegesetz GEG; Paragrafennummern unverändert, §§ 79–88 Energieausweise)', url: 'https://www.gesetze-im-internet.de/geg/' },
+          { title: 'DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG § 20 referenziert); Nachfolgereihe DIN/TS 18599 seit 2025-10', url: 'https://www.dinmedia.de/de/suche?q=DIN+V+18599' },
+          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' }
         ]}
         formeln={
           activeTab === 'annahmen_berechnung' || activeTab === 'simulator'
@@ -1134,20 +1164,20 @@ export default function Energieausweis() {
                 },
                 {
                   formel: 'Q_P = \\sum_i \\left( Q_{E,i} \\cdot f_{P,i} \\right) \\le Q_{P,\\text{zul}} \\quad [\\text{kWh/(m}^2\\cdot\\text{a)}]',
-                  erklaerung: 'Berechnung des Jahres-Primärenergiebedarfs QP aus den Endenergiemengen QE je Energieträger und den zugehörigen Primärenergiefaktoren fP nach GEG.',
-                  /* TODO: GModG Umnummerierung */ quelle: 'GModG (vormals GEG § 20) / DIN V 18599-1'
+                  erklaerung: 'Berechnung des Jahres-Primärenergiebedarfs QP aus den Endenergiemengen QE je Energieträger und den zugehörigen Primärenergiefaktoren fP nach GModG/GEG Anlage 4.',
+                  quelle: 'GModG § 20 i. V. m. DIN V 18599:2018-09'
                 },
                 {
                   formel: 'H\'_T = \\frac{\\sum_k \\left(A_k \\cdot U_k \\cdot F_{x,k}\\right) + \\Delta U_{WB} \\cdot A}{A} \\le H\'_{T,\\text{zul}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]',
                   erklaerung: 'Spezifischer transmissionsbedingter Wärmeverlust H\'T der wärmeübertragenden Hüllfläche A.',
-                  /* TODO: GModG Umnummerierung */ quelle: 'GModG (vormals GEG Anlage 1) / DIN V 18599-2'
+                  quelle: 'GModG Anlage 1 / DIN V 18599-2:2018-09'
                 }
               ]
             : [
                 {
                   formel: 'Q_P = \\sum_i \\left(Q_{E,i} \\cdot f_{P,i}\\right) \\quad [\\text{kWh/(m}^2\\cdot\\text{a)}]',
                   erklaerung: 'Verknüpfung von Endenergie und ökologischer Primärenergie über den Primärenergiefaktor fP.',
-                  /* TODO: GModG Umnummerierung */ quelle: 'GModG (vormals GEG § 20)'
+                  quelle: 'GModG § 22, Anlage 4'
                 }
               ]
         }

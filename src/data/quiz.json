@@ -2981,5 +2981,395 @@
       "targetModuleLabel": "Mechanische Kenngrößen"
     },
     "verified": false
+  },
+  {
+    "id": "q_bp_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauphysik",
+    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "topic": "U-Wert",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 6946",
+    "question": "Eine Außenwand hat R_T = 4,37 m²K/W (einschließlich R_si und R_se). Wie groß ist der U-Wert, und hält er den Höchstwert 0,24 W/(m²K) nach Anlage 7 GModG/GEG ein?",
+    "options": [
+      "0,229 W/(m²K) – eingehalten",
+      "0,437 W/(m²K) – nicht eingehalten",
+      "4,37 W/(m²K) – nicht eingehalten",
+      "0,17 W/(m²K) – eingehalten"
+    ],
+    "correctIdx": 0,
+    "explanation": "U = 1/R_T = 1/4,37 = 0,229 W/(m²K) ≤ 0,24. Der U-Wert ist der Kehrwert des Gesamtwiderstands, nicht der Widerstand selbst.",
+    "gapAnalysis": {
+      "topic": "U-Wert",
+      "misconception": "U-Wert und Wärmedurchgangswiderstand werden verwechselt.",
+      "coreRule": "U = 1/(R_si + Σ d/λ + R_se); Wand: R_si = 0,13, R_se = 0,04 m²K/W.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „U-Wert“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
+      "targetModuleTab": "bauphysik",
+      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bp_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauphysik",
+    "moduleTitle": "Bauphysik (Wärme & Feuchte)",
+    "topic": "Nachhallzeit nach Sabine",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18041",
+    "question": "Ein Klassenraum (V = 189 m³) hat eine äquivalente Absorptionsfläche von A = 64,7 m². Wie groß ist die Nachhallzeit nach Sabine?",
+    "options": [
+      "0,16 s",
+      "0,48 s",
+      "2,78 s",
+      "4,8 s"
+    ],
+    "correctIdx": 1,
+    "explanation": "T = 0,163 · V/A = 0,163 · 189/64,7 = 0,48 s. Der Sollwert für Nutzungsart A3 beträgt 0,32 · lg 189 − 0,17 = 0,56 s; 0,48 s liegt im Toleranzbereich 0,8 bis 1,2 · T_soll.",
+    "gapAnalysis": {
+      "topic": "Nachhallzeit nach Sabine",
+      "misconception": "Der Faktor 0,163 s/m wird vergessen oder V und A werden vertauscht.",
+      "coreRule": "T = 0,163 · V/A mit A = Σ S_i · α_i.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachhallzeit nach Sabine“ im Modul Bauphysik (Wärme & Feuchte) noch einmal durch.",
+      "targetModuleTab": "bauphysik",
+      "targetModuleLabel": "Bauphysik (Wärme & Feuchte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_we_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "waermeeigenschaften",
+    "moduleTitle": "Thermische Eigenschaften & Dämmstoffe",
+    "topic": "Wärmeeindringfähigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN ISO 10456",
+    "question": "Warum fühlt sich ein 20 °C warmer Betonboden kälter an als ein 20 °C warmer Holzboden?",
+    "options": [
+      "Beton hat eine niedrigere Oberflächentemperatur",
+      "Beton hat die größere Wärmeeindringfähigkeit b = √(λ·ρ·c) und entzieht der Haut schneller Wärme",
+      "Holz hat die größere Wärmeleitfähigkeit",
+      "Beton hat die kleinere spezifische Wärmekapazität"
+    ],
+    "correctIdx": 1,
+    "explanation": "b_Beton ≈ 2190, b_Fichte ≈ 320 J/(m²K√s). Die Kontakttemperatur liegt bei Beton bei etwa 24 °C, bei Holz bei etwa 30 °C. Beide Oberflächen haben 20 °C.",
+    "gapAnalysis": {
+      "topic": "Wärmeeindringfähigkeit",
+      "misconception": "Das Kälteempfinden wird mit einer tieferen Oberflächentemperatur gleichgesetzt.",
+      "coreRule": "Kontakttemperatur θ_K = (b_1 θ_1 + b_2 θ_2)/(b_1 + b_2).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmeeindringfähigkeit“ im Modul Thermische Eigenschaften & Dämmstoffe noch einmal durch.",
+      "targetModuleTab": "waermeeigenschaften",
+      "targetModuleLabel": "Thermische Eigenschaften & Dämmstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fs_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "feuchteschutz",
+    "moduleTitle": "Feuchteschutz & Tauwasser",
+    "topic": "Taupunkt und Schimmelgrenze",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-2 / DIN EN ISO 13788",
+    "question": "Raumklima 20 °C / 50 % r. F.: Ab welcher Oberflächentemperatur droht nach dem 80-%-Kriterium Schimmel?",
+    "options": [
+      "unter 9,3 °C",
+      "unter 12,6 °C",
+      "unter 15,0 °C",
+      "unter 0 °C"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Taupunkt liegt bei 9,3 °C. Schimmel droht bereits, wenn die Oberflächenfeuchte 80 % überschreitet: p_sat(θ) = 1169/0,8 = 1461 Pa, also θ = 12,6 °C. Daraus folgt f_Rsi = (12,6 + 5)/25 = 0,70.",
+    "gapAnalysis": {
+      "topic": "Taupunkt und Schimmelgrenze",
+      "misconception": "Schimmel wird erst ab Tauwasserausfall erwartet.",
+      "coreRule": "Schimmelkriterium: Oberflächenfeuchte ≤ 80 %; f_Rsi ≥ 0,70.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Taupunkt und Schimmelgrenze“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
+      "targetModuleTab": "feuchteschutz",
+      "targetModuleLabel": "Feuchteschutz & Tauwasser"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fs_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "feuchteschutz",
+    "moduleTitle": "Feuchteschutz & Tauwasser",
+    "topic": "s_d-Wert",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-3",
+    "question": "Welche wasserdampfdiffusionsäquivalente Luftschichtdicke hat eine 16 cm dicke EPS-Platte mit µ = 50?",
+    "options": [
+      "0,32 m",
+      "3,1 m",
+      "8,0 m",
+      "80 m"
+    ],
+    "correctIdx": 2,
+    "explanation": "s_d = µ · d = 50 · 0,16 m = 8,0 m.",
+    "gapAnalysis": {
+      "topic": "s_d-Wert",
+      "misconception": "Die Dicke wird in cm eingesetzt oder µ und s_d werden verwechselt.",
+      "coreRule": "s_d = µ · d (d in m).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „s_d-Wert“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
+      "targetModuleTab": "feuchteschutz",
+      "targetModuleLabel": "Feuchteschutz & Tauwasser"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dv_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "daemmung_vergleich",
+    "moduleTitle": "Innendämmung vs. Außendämmung",
+    "topic": "Temperatur der Grenzschicht",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN ISO 6946",
+    "question": "Bei gleicher Dämmdicke: Wo liegt die Grenzschicht Dämmung/Mauerwerk bei Innendämmung im Vergleich zur Außendämmung (20 °C innen, −5 °C außen)?",
+    "options": [
+      "Bei beiden etwa gleich warm",
+      "Bei Innendämmung deutlich kälter (etwa 1,5 °C statt 12,4 °C im Beispiel)",
+      "Bei Innendämmung wärmer, weil die Dämmung die Raumwärme speichert",
+      "Bei Außendämmung unter dem Gefrierpunkt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Dämmschicht nimmt den Großteil des Temperaturabfalls auf. Liegt sie innen, kühlt die Grenzschicht dahinter stark ab und liegt unter dem Taupunkt der Raumluft (9,3 °C); deshalb braucht eine Innendämmung eine Dampfbremse oder ein kapillaraktives System.",
+    "gapAnalysis": {
+      "topic": "Temperatur der Grenzschicht",
+      "misconception": "Die Lage der Dämmung wird für unerheblich gehalten, solange der U-Wert gleich ist.",
+      "coreRule": "Gleicher U-Wert, aber unterschiedlicher Temperaturverlauf: Innendämmung verlagert die kalte Zone in die Konstruktion.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperatur der Grenzschicht“ im Modul Innendämmung vs. Außendämmung noch einmal durch.",
+      "targetModuleTab": "daemmung_vergleich",
+      "targetModuleLabel": "Innendämmung vs. Außendämmung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dv_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "daemmung_vergleich",
+    "moduleTitle": "Innendämmung vs. Außendämmung",
+    "topic": "Nachweis Innendämmung",
+    "difficulty": "Basis",
+    "normRef": "WTA-Merkblatt 6-5",
+    "question": "Womit wird der Feuchteschutz einer kapillaraktiven Innendämmung realistisch nachgewiesen?",
+    "options": [
+      "Nur mit dem U-Wert",
+      "Mit dem Glaser-Verfahren allein, da es kapillare Rücktrocknung erfasst",
+      "Mit hygrothermischer Simulation (z. B. nach WTA-Merkblatt 6-5 / DIN EN 15026)",
+      "Mit dem Schalldämm-Maß"
+    ],
+    "correctIdx": 2,
+    "explanation": "Das stationäre Glaser-Verfahren berücksichtigt keine Kapillarleitung und Feuchtespeicherung. Für kapillaraktive Systeme ist eine instationäre Simulation mit realen Klimadaten angemessen.",
+    "gapAnalysis": {
+      "topic": "Nachweis Innendämmung",
+      "misconception": "Das Glaser-Verfahren wird als universeller Feuchtenachweis betrachtet.",
+      "coreRule": "Glaser: Diffusion stationär; kapillaraktive Systeme: hygrothermische Simulation.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachweis Innendämmung“ im Modul Innendämmung vs. Außendämmung noch einmal durch.",
+      "targetModuleTab": "daemmung_vergleich",
+      "targetModuleLabel": "Innendämmung vs. Außendämmung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ss_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Massekurve DIN 4109-32",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 4109-32",
+    "question": "Eine Wand hat m′ = 380 kg/m². Welches Schalldämm-Maß ergibt die Massekurve R_w = 30,9 · lg(m′) − 22,2 dB?",
+    "options": [
+      "35,3 dB",
+      "51,5 dB",
+      "57,5 dB",
+      "64,0 dB"
+    ],
+    "correctIdx": 2,
+    "explanation": "R_w = 30,9 · lg 380 − 22,2 = 30,9 · 2,580 − 22,2 = 57,5 dB. Im eingebauten Zustand mindert die Flankenübertragung den Wert auf R′w.",
+    "gapAnalysis": {
+      "topic": "Massekurve DIN 4109-32",
+      "misconception": "Natürlicher statt dekadischer Logarithmus.",
+      "coreRule": "R_w = 30,9 lg(m′/1 kg/m²) − 22,2 dB für 65 ≤ m′ ≤ 720 kg/m².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Massekurve DIN 4109-32“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ss_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Anforderung Wohnungstrennwand",
+    "difficulty": "Basis",
+    "normRef": "DIN 4109-1:2018-01",
+    "question": "Welche Mindestanforderung stellt DIN 4109-1 an Wohnungstrennwände?",
+    "options": [
+      "R′w ≥ 47 dB",
+      "R′w ≥ 53 dB",
+      "R′w ≥ 60 dB",
+      "L′n,w ≤ 53 dB"
+    ],
+    "correctIdx": 1,
+    "explanation": "Wohnungstrennwände: R′w ≥ 53 dB; Wohnungstrenndecken: R′w ≥ 54 dB und L′n,w ≤ 50 dB. Der Strich kennzeichnet Werte im eingebauten Zustand einschließlich Flankenübertragung.",
+    "gapAnalysis": {
+      "topic": "Anforderung Wohnungstrennwand",
+      "misconception": "Labor- und Bauwerte (R_w und R′w) werden gleichgesetzt.",
+      "coreRule": "Anforderungen gelten für R′w (Bausituation), nicht für R_w (Prüfstand).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anforderung Wohnungstrennwand“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bs_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "brandschutz",
+    "moduleTitle": "Brandschutz",
+    "topic": "Feuerwiderstand und Bezeichnungen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 13501-2 / MBO",
+    "question": "Was bedeutet REI 90 bei einer tragenden Wand?",
+    "options": [
+      "90 min Tragfähigkeit, Raumabschluss und Wärmedämmung – bauaufsichtlich „feuerbeständig“",
+      "90 min nur Raumabschluss",
+      "Brandverhaltensklasse A1 für 90 min",
+      "90 °C Oberflächentemperatur im Brandfall"
+    ],
+    "correctIdx": 0,
+    "explanation": "R = Tragfähigkeit, E = Raumabschluss, I = Wärmedämmung, jeweils 90 Minuten unter der Einheitstemperaturzeitkurve (nach 90 min rund 1006 °C).",
+    "gapAnalysis": {
+      "topic": "Feuerwiderstand und Bezeichnungen",
+      "misconception": "Feuerwiderstand und Brandverhalten (A1 bis F) werden verwechselt.",
+      "coreRule": "30 min feuerhemmend, 60 min hochfeuerhemmend, 90 min feuerbeständig.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuerwiderstand und Bezeichnungen“ im Modul Brandschutz noch einmal durch.",
+      "targetModuleTab": "brandschutz",
+      "targetModuleLabel": "Brandschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bs_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "brandschutz",
+    "moduleTitle": "Brandschutz",
+    "topic": "Holzabbrand",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-2",
+    "question": "Ein BSH-Balken (β_n = 0,7 mm/min) wird 60 min dreiseitig beflammt. Wie groß ist die effektive Abbrandtiefe nach der Methode mit reduziertem Querschnitt?",
+    "options": [
+      "42 mm",
+      "49 mm",
+      "35 mm",
+      "70 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "d_ef = β_n · t + k_0 · d_0 = 0,7 · 60 + 1,0 · 7 = 49 mm. Die Schicht ohne Festigkeit (7 mm) kommt zur Abbrandtiefe hinzu.",
+    "gapAnalysis": {
+      "topic": "Holzabbrand",
+      "misconception": "Die Schicht ohne Festigkeit (k_0 · d_0) wird vergessen.",
+      "coreRule": "d_ef = d_char,n + k_0 d_0 mit d_0 = 7 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzabbrand“ im Modul Brandschutz noch einmal durch.",
+      "targetModuleTab": "brandschutz",
+      "targetModuleLabel": "Brandschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ea_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "energieausweis",
+    "moduleTitle": "Energieausweis",
+    "topic": "Effizienzklasse",
+    "difficulty": "Fortgeschritten",
+    "normRef": "GModG/GEG Anlage 10",
+    "question": "Welche Größe bestimmt bei Wohngebäuden die Energieeffizienzklasse (A+ bis H) im Energieausweis?",
+    "options": [
+      "Der Primärenergiebedarf",
+      "Der Endenergiebedarf bzw. -verbrauch",
+      "Der Transmissionswärmeverlust H′T",
+      "Die CO₂-Emissionen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Anlage 10 ordnet die Klassen nach dem Endenergiekennwert in kWh/(m²·a) zu (A+ ≤ 30, A ≤ 50, B ≤ 75, C ≤ 100 …). Der Primärenergiebedarf ist die Nachweisgröße nach § 15 für Neubauten.",
+    "gapAnalysis": {
+      "topic": "Effizienzklasse",
+      "misconception": "Primär- und Endenergie werden verwechselt.",
+      "coreRule": "Effizienzklasse: Endenergie; Neubaunachweis: Primärenergie ≤ 0,55 · Referenzgebäude.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Effizienzklasse“ im Modul Energieausweis noch einmal durch.",
+      "targetModuleTab": "energieausweis",
+      "targetModuleLabel": "Energieausweis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ea_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "energieausweis",
+    "moduleTitle": "Energieausweis",
+    "topic": "Rechtsstand 2026",
+    "difficulty": "Basis",
+    "normRef": "GModG 2026",
+    "question": "Was gilt seit dem 29. Juli 2026 für das Gebäudeenergiegesetz (GEG)?",
+    "options": [
+      "Es wurde ersatzlos aufgehoben",
+      "Es heißt nun Gebäudemodernisierungsgesetz (GModG); Neubauanforderungen und Energieausweis-Regeln bleiben in den bisherigen Paragrafen",
+      "Es gilt unverändert weiter, einschließlich der 65-%-Regel",
+      "Es wurde durch die EnEV 2014 ersetzt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das GModG wurde am 28.07.2026 verkündet und tritt gestaffelt in Kraft. Die 65-%-Vorgabe für neue Heizungen entfällt (Bio-Treppe für Gas- und Ölheizungen); §§ 15, 16 und 79 bis 88 bleiben inhaltlich bestehen.",
+    "gapAnalysis": {
+      "topic": "Rechtsstand 2026",
+      "misconception": "Die Gesetzesreform wird als Abschaffung aller energetischen Anforderungen verstanden.",
+      "coreRule": "GEG → GModG (2026): Paragrafennummern weitgehend unverändert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand 2026“ im Modul Energieausweis noch einmal durch.",
+      "targetModuleTab": "energieausweis",
+      "targetModuleLabel": "Energieausweis"
+    },
+    "verified": false
   }
 ]
