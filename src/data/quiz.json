@@ -2291,5 +2291,155 @@
       "targetModuleLabel": "Virtuelle Versuche"
     },
     "verified": false
+  },
+  {
+    "id": "q_stat_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Fraktilfaktor k_n",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1990, Anhang D",
+    "question": "Warum ist der Fraktilfaktor k_n bei 3 Prüfwerten (3,37) deutlich größer als bei unendlich vielen (1,64)?",
+    "options": [
+      "Weil kleine Stichproben systematisch zu hohe Mittelwerte liefern",
+      "Weil Mittelwert und Standardabweichung aus wenigen Werten unsicher geschätzt sind und dafür ein Sicherheitszuschlag nötig ist",
+      "Weil die Norm kleine Serien bestrafen will",
+      "Weil bei kleinen n keine Normalverteilung vorliegt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei kleinem n sind x̄ und s selbst unsicher. Der größere k_n sichert ab, dass das ermittelte X_k mit ausreichender Aussagewahrscheinlichkeit unter dem wahren 5-%-Quantil liegt.",
+    "gapAnalysis": {
+      "topic": "Fraktilfaktor k_n",
+      "misconception": "k_n wird mit dem reinen Normalverteilungsquantil 1,645 gleichgesetzt.",
+      "coreRule": "X_k = x̄ − k_n·s; k_n sinkt mit n (n = 10: 1,92; n → ∞: 1,64).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fraktilfaktor k_n“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stat_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Median und Mittelwert",
+    "difficulty": "Basis",
+    "normRef": "DIN ISO 3534-1",
+    "question": "Eine Messreihe enthält einen extrem hohen Einzelwert. Welcher Kennwert ändert sich dadurch am wenigsten?",
+    "options": [
+      "Arithmetischer Mittelwert",
+      "Standardabweichung",
+      "Median",
+      "Variationskoeffizient"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der Median hängt nur von der Reihenfolge ab und ist robust gegen Ausreißer. Mittelwert, Standardabweichung und Variationskoeffizient reagieren deutlich.",
+    "gapAnalysis": {
+      "topic": "Median und Mittelwert",
+      "misconception": "Mittelwert und Median werden als gleich robust angesehen.",
+      "coreRule": "Median = robust; Mittelwert und s = empfindlich gegenüber Extremwerten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Median und Mittelwert“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stat_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Ausreißer streichen",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "ISO 5725-2",
+    "question": "Ein Grubbs-Test markiert einen Festigkeitswert als statistisch auffällig. Wann darf er aus der Auswertung entfernt werden?",
+    "options": [
+      "Immer, sobald der Test anschlägt",
+      "Nur wenn eine technische Ursache (z. B. Prüffehler) nachgewiesen ist",
+      "Nie – Ausreißer sind stets zu behalten",
+      "Nur wenn er nach unten abweicht"
+    ],
+    "correctIdx": 1,
+    "explanation": "Ein statistischer Test zeigt nur Auffälligkeit. Ohne technische Begründung würde das Streichen die Streuung künstlich verkleinern und den charakteristischen Wert überschätzen.",
+    "gapAnalysis": {
+      "topic": "Ausreißer streichen",
+      "misconception": "Statistische Auffälligkeit wird mit einem Messfehler gleichgesetzt.",
+      "coreRule": "Ausreißer nur mit technischem Grund streichen und im Bericht dokumentieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Ausreißer streichen“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fbs_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "festbeton_statistik",
+    "moduleTitle": "Festbeton (Statistik)",
+    "topic": "Konformität Erstherstellung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206, Tab. 14",
+    "question": "Für C25/30 (Würfel: f_ck,cube = 30 N/mm²) liegen bei Erstherstellung drei Ergebnisse vor: 33,5 / 34,8 / 32,9 N/mm². Ist die Gruppe konform?",
+    "options": [
+      "Ja, beide Kriterien erfüllt",
+      "Nein, Kriterium 1 (Mittelwert ≥ 34) verfehlt",
+      "Nein, Kriterium 2 (Einzelwert ≥ 26) verfehlt",
+      "Nicht beurteilbar ohne Standardabweichung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mittelwert = 33,7 N/mm² < 30 + 4 = 34 N/mm² → Kriterium 1 verfehlt. Der kleinste Einzelwert 32,9 ≥ 26 erfüllt Kriterium 2.",
+    "gapAnalysis": {
+      "topic": "Konformität Erstherstellung",
+      "misconception": "Es wird nur das Einzelwertkriterium geprüft.",
+      "coreRule": "Erstherstellung: f_cm ≥ f_ck + 4 und f_ci ≥ f_ck − 4.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität Erstherstellung“ im Modul Festbeton (Statistik) noch einmal durch.",
+      "targetModuleTab": "festbeton_statistik",
+      "targetModuleLabel": "Festbeton (Statistik)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fbs_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "festbeton_statistik",
+    "moduleTitle": "Festbeton (Statistik)",
+    "topic": "Bemessungswert f_cd",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1/NA",
+    "question": "Welcher Bemessungswert der Druckfestigkeit ergibt sich für C30/37 nach DIN EN 1992-1-1/NA (α_cc = 0,85; γ_c = 1,5)?",
+    "options": [
+      "20,0 N/mm²",
+      "17,0 N/mm²",
+      "21,0 N/mm²",
+      "25,5 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_cd = 0,85 · 30/1,5 = 17,0 N/mm². Maßgebend ist die Zylinderfestigkeit f_ck = 30, nicht der Würfelwert 37.",
+    "gapAnalysis": {
+      "topic": "Bemessungswert f_cd",
+      "misconception": "Die Würfelfestigkeit wird in die Bemessung eingesetzt oder α_cc vergessen.",
+      "coreRule": "f_cd = α_cc·f_ck/γ_c mit f_ck als Zylinderwert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungswert f_cd“ im Modul Festbeton (Statistik) noch einmal durch.",
+      "targetModuleTab": "festbeton_statistik",
+      "targetModuleLabel": "Festbeton (Statistik)"
+    },
+    "verified": false
   }
 ]

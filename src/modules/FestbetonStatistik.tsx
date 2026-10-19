@@ -19,6 +19,8 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { BarChart3, ShieldAlert } from 'lucide-react';
 import Sicherheitskonzept from './Sicherheitskonzept';
 import { formatDeZahl } from '@/src/utils/numberFormat';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 ChartJS.register(
   CategoryScale,
@@ -43,7 +45,7 @@ export default function FestbetonStatistik() {
     // 5% Fraktil
     const fck = fcm - 1.645 * sigma;
     
-    // Scale factor for cube vs cylinder (approx 1 / 0.8 = 1.25)
+    // Näherung Würfel/Zylinder ≈ 1,25 (tatsächlich klassenabhängig, z. B. C30/37: 37/30 = 1,23)
     const scale = format === 'wuerfel' ? 1.25 : 1.0;
     
     const scaledFcm = fcm * scale;
@@ -229,14 +231,14 @@ export default function FestbetonStatistik() {
             <div className="flex flex-col gap-4">
               <h3 className="text-sm font-bold text-text-main mb-2">Bemessungswerte (Design)</h3>
               
-              <Slider info="Beiwert zur Berücksichtigung von Langzeitwirkungen auf die Druckfestigkeit und ungünstigen Lasteinflüssen (nach DIN EN 1992-1-1 Nationaler Anhang meist 0.85)."
+              <Slider info="Beiwert zur Berücksichtigung von Langzeitwirkungen auf die Druckfestigkeit und ungünstiger Lasteinflüsse (nach DIN EN 1992-1-1/NA für Normalbeton 0,85)."
                 label={<FormulaText text="Beiwert (α_{cc})" />}
                 min={0.8} max={1.0} step={0.05}
                 value={alphaCc} unit=""
                 onChange={(e) => setAlphaCc(Number(e.target.value))}
               />
               
-              <Slider info="Teilsicherheitsbeiwert für Beton zur Abminderung der charakteristischen Druckfestigkeit auf das Bemessungsniveau (öffentlich geregelt bei 1.5 für ständige Bemessungssituationen)."
+              <Slider info="Teilsicherheitsbeiwert für Beton (DIN EN 1992-1-1/NA: 1,5 für ständige und vorübergehende, 1,2 für außergewöhnliche Bemessungssituationen)."
                 label={<FormulaText text="Teilsicherheitsbeiwert (γ_c)" />}
                 min={1.2} max={1.5} step={0.1}
                 value={gammaC} unit=""
@@ -246,8 +248,8 @@ export default function FestbetonStatistik() {
 
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-sm font-bold text-text-main">Konformitätsprüfung (DIN EN 206)</h3>
-                <InfoTooltip text="Wählen Sie die Art der Prüfung. Erstprüfung (n=3) für neue Betonsorten oder stetige Produktion (n≥15) für laufende Überwachung." />
+                <h3 className="text-sm font-bold text-text-main">Konformitätskriterien (DIN EN 206, Tab. 14)</h3>
+                <InfoTooltip text="Wählen Sie die Herstellungsart: Erstherstellung (bis zum Vorliegen von 35 Ergebnissen, Gruppen von n = 3) oder stetige Herstellung (n ≥ 15 bei bekannter Standardabweichung σ)." />
               </div>
               <div className="flex flex-col gap-2 mb-2">
                 <label className="flex items-center gap-2 cursor-pointer text-sm">
@@ -259,7 +261,7 @@ export default function FestbetonStatistik() {
                     onChange={() => setPruefArt('erst')}
                     className="accent-shiraz"
                   />
-                  Erstprüfung (n=3)
+                  Erstherstellung (n = 3)
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer text-sm">
                   <input 
@@ -270,7 +272,7 @@ export default function FestbetonStatistik() {
                     onChange={() => setPruefArt('stetig')}
                     className="accent-shiraz"
                   />
-                  Stetige Produktion (n≥15)
+                  Stetige Herstellung (n ≥ 15)
                 </label>
               </div>
               
@@ -278,20 +280,21 @@ export default function FestbetonStatistik() {
                 {pruefArt === 'stetig' ? (
                   <>
                     <p className="text-text-main/80 mb-2">
-                      Für eine stetige Produktion (n ≥ 15) gilt das Vorhaltekriterium:
+                      Für die stetige Herstellung (n ≥ 15, σ aus mindestens 35 Ergebnissen, σ ≥ 3 N/mm²) gelten:
                     </p>
                     <div className="bg-white p-2 rounded border border-home-grau text-center font-mono text-shiraz mb-2">
-                      <FormulaText text="f_{cm} \ge f_{ck} + 1.48 \cdot \sigma" />
+                      <FormulaText text="f_{cm} \ge f_{ck} + 1{,}48 \cdot \sigma" /><br/>
+                      <FormulaText text="f_{ci} \ge f_{ck} - 4" />
                     </div>
                     <p className="text-text-main/80">
                       Bei einem angestrebten 5%-Fraktil von <strong>{formatDeZahl(displayFck, 1)} N/mm²</strong> 
-                      muss das Werk normativ einen Mittelwert von mindestens <strong>{formatDeZahl(displayFck + 1.48 * displaySigma, 1)} N/mm²</strong> nachweisen.
+                      muss der Mittelwert von n ≥ 15 Ergebnissen mindestens <strong>{formatDeZahl(displayFck + 1.48 * displaySigma, 1)} N/mm²</strong> betragen, und kein Einzelwert darf <strong>{formatDeZahl(displayFck - 4, 1)} N/mm²</strong> unterschreiten.
                     </p>
                   </>
                 ) : (
                   <>
                     <p className="text-text-main/80 mb-2">
-                      Für die Erstprüfung (n = 3) gelten die Kriterien:
+                      Für die Erstherstellung (Gruppen von n = 3 Ergebnissen) gelten die Kriterien:
                     </p>
                     <div className="bg-white p-2 rounded border border-home-grau text-center font-mono text-shiraz mb-2">
                       <FormulaText text="Kriterium 1: f_{cm} \ge f_{ck} + 4" /><br/>
@@ -326,7 +329,7 @@ export default function FestbetonStatistik() {
                   <span className="text-shiraz font-bold text-lg">{formatDeZahl(displayFck, 1)} MPa</span>
                 </div>
                 <div className="mt-2 text-xs text-shiraz font-medium bg-shiraz/10 p-2 rounded">
-                  Statistisch gesehen unterschreiten nur 5% aller Proben diesen Wert.
+                  Bei Normalverteilung unterschreiten 5 % der Grundgesamtheit diesen Wert.
                 </div>
               </div>
             </div>
@@ -347,7 +350,7 @@ export default function FestbetonStatistik() {
                   <span className="text-emerald-600 font-bold text-lg">{formatDeZahl(fcd, 1)} MPa</span>
                 </div>
                 <div className="mt-2 text-xs text-emerald-600 font-medium bg-emerald-50 p-2 rounded">
-                  Dieser Wert wird für die statische Bemessung im Grenzzustand der Tragfähigkeit (GZT) verwendet. Basiert immer auf Zylinderfestigkeit.
+                  Dieser Wert wird für die Bemessung im Grenzzustand der Tragfähigkeit (GZT) verwendet und basiert auf der Zylinderfestigkeit.
                 </div>
               </div>
             </div>
@@ -400,7 +403,7 @@ export default function FestbetonStatistik() {
                   <path d="M 70 130 L 130 130 L 100 100 Z" fill="#94a3b8" opacity="0.5" />
                 </svg>
                 <div className="text-xs text-text-main/70 text-center mt-2">
-                  Der mittlere Bereich bleibt ungestört von der Reibung an den Druckplatten. Die Querdehnung kann frei stattfinden. Geringere gemessene Festigkeit (f_ck,cyl).
+                  Der mittlere Bereich bleibt weitgehend unbeeinflusst von der Reibung an den Druckplatten; die Querdehnung ist dort kaum behindert. Geringere gemessene Festigkeit (f_ck,cyl).
                 </div>
               </div>
 
@@ -435,7 +438,36 @@ export default function FestbetonStatistik() {
           </div>
         </div>
 
+        {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+        <FormulaDerivationBox
+          title="Beispiel 1: Konformität bei Erstherstellung (C30/37, Würfel)"
+          zielGleichung="f_{cm} \ge f_{ck} + 4,\qquad f_{ci} \ge f_{ck} - 4"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'Drei Würfelergebnisse einer neuen Betonsorte C30/37 (f_ck,cube = 37 N/mm²): 41,0 / 39,5 / 43,2 N/mm².', formel: 'f_{ck,cube} = 37\\,\\text{N/mm}^2' },
+            { titel: 'Kriterium 1 (Mittelwert)', erklaerung: 'Mittelwert der Gruppe:', formel: 'f_{cm} = \\frac{41{,}0 + 39{,}5 + 43{,}2}{3} = 41{,}2 \\geq 37 + 4 = 41{,}0 \;\\checkmark' },
+            { titel: 'Kriterium 2 (Einzelwert)', erklaerung: 'Kleinster Einzelwert:', formel: 'f_{ci,min} = 39{,}5 \\geq 37 - 4 = 33{,}0 \;\\checkmark' }
+          ]}
+          ergebnisHinweis="Beide Kriterien sind erfüllt – die Gruppe ist konform. Ein Mittelwert von nur 40,9 N/mm² hätte Kriterium 1 knapp verfehlt."
+          normQuelle="DIN EN 206:2021-06, 8.2.1, Tab. 14"
+        />
+        <FormulaDerivationBox
+          title="Beispiel 2: Konformität bei stetiger Herstellung und Bemessungswert"
+          zielGleichung="f_{cm} \ge f_{ck} + 1{,}48\,\sigma,\qquad f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c}"
+          schritte={[
+            { titel: 'Gegeben', erklaerung: 'C30/37, n = 15 Würfelergebnisse, Mittelwert 44,5 N/mm², kleinster Einzelwert 34,1 N/mm², Standardabweichung aus 35 Vorwerten σ = 4,0 N/mm².', formel: '\\sigma = 4{,}0 \\geq 3{,}0\\,\\text{N/mm}^2' },
+            { titel: 'Mittelwertkriterium', erklaerung: 'Erforderlicher Mittelwert:', formel: '37 + 1{,}48 \\cdot 4{,}0 = 42{,}9 \\leq 44{,}5 \;\\checkmark' },
+            { titel: 'Einzelwertkriterium', erklaerung: 'Kleinster Einzelwert:', formel: '34{,}1 \\geq 37 - 4 = 33{,}0 \;\\checkmark' },
+            { titel: 'Bemessungswert', erklaerung: 'Der Statiker rechnet mit der Zylinderfestigkeit f_ck = 30 N/mm² (α_cc = 0,85; γ_c = 1,5):', formel: 'f_{cd} = 0{,}85 \\cdot \\frac{30}{1{,}5} = 17{,}0\\,\\text{N/mm}^2' }
+          ]}
+          ergebnisHinweis="Die Konformität wird im Format der Prüfkörper (hier Würfel) nachgewiesen, die Bemessung erfolgt immer mit der Zylinderfestigkeit."
+          normQuelle="DIN EN 206:2021-06, Tab. 14; DIN EN 1992-1-1/NA, 3.1.6"
+        />
+
+        {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+        <ModulTest moduleId="festbeton_statistik" />
+
         <ModuleFooter 
+          lastReviewed="Oktober 2026 (AP 4 Labor: Konformitätskriterien DIN EN 206, Tab. 14, Fraktilwert und Bemessungswert nach DIN EN 1992-1-1/NA geprüft; fachliche Freigabe durch den Autor ausstehend)"
           wikipedia={[
             { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' },
             { title: 'Normalverteilung', url: 'https://de.wikipedia.org/wiki/Normalverteilung' },
@@ -444,34 +476,34 @@ export default function FestbetonStatistik() {
           regelwerke={[
             { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
             { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-            { title: 'DIN EN 12390-3:2019-08 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' },
-            { title: 'DIN EN 1992-1-1:2023-11 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+            { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' },
+            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit DIN EN 1992-1-1/NA:2013-04 (bauaufsichtlich eingeführt); neue Generation DIN EN 1992-1-1:2025-09', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
           ]}
           literatur={[
             'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-            'Zilch, K.; Zehetmaier, G. (2010): Bemessung im konstruktiven Betonbau (Springer)',
-            'König, G.; Tue, N. V. (2004): Grundlagen des Stahlbetonbaus (Teubner Verlag)'
+            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin: Springer 2010',
+            'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001'
           ]}
           formeln={[
             {
               formel: 'f_{ck} = f_{cm} - 1{,}645 \\cdot \\sigma',
               erklaerung: 'Charakteristische Druckfestigkeit (5 %-Fraktil bei angenommener Gaußscher Normalverteilung): fcm = Mittelwert, σ = Standardabweichung, 1,645 = Quantilwert.',
-              quelle: 'DIN EN 206:2021-06 / Eurocode 2'
+              quelle: 'DIN EN 206:2021-06 / DIN EN 1990, Anhang D'
             },
             {
               formel: 'f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_c}',
               erklaerung: 'Bemessungswert der Druckfestigkeit nach Eurocode 2: αcc = Langzeitbeiwert (im Nationalen Anhang Deutschland meist 0,85), γc = 1,50 (Teilsicherheitsbeiwert).',
-              quelle: 'DIN EN 1992-1-1:2023-11'
+              quelle: 'DIN EN 1992-1-1, 3.1.6 mit NA'
             },
             {
               formel: 'f_{cm} \\ge f_{ck} + 4 \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4',
-              erklaerung: 'Konformitätskriterien nach DIN EN 206:2021-06 Tabelle 14 für Erstprüfung (Stichprobe n = 3 Einzelergebnisse in N/mm²).',
+              erklaerung: 'Konformitätskriterien nach DIN EN 206:2021-06, Tabelle 14, für die Erstherstellung (Gruppen von n = 3 Ergebnissen, Werte in N/mm²).',
               quelle: 'DIN EN 206:2021-06 Tab. 14'
             },
             {
               formel: 'f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4',
-              erklaerung: 'Konformitätskriterien nach DIN EN 206:2021-06 Tabelle 15 für stetige Herstellung (Stichprobe n >= 15 mit bekannter Streuung σ).',
-              quelle: 'DIN EN 206:2021-06 Tab. 15'
+              erklaerung: 'Konformitätskriterien nach DIN EN 206:2021-06, Tabelle 14, für die stetige Herstellung (n ≥ 15 Ergebnisse, Standardabweichung σ aus mindestens 35 Ergebnissen).',
+              quelle: 'DIN EN 206:2021-06 Tab. 14'
             }
           ]}
         />
