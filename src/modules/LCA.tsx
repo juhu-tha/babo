@@ -1253,7 +1253,7 @@ export default function LCA() {
                     <strong className="font-bold text-indigo-950 block">💡 Tutor-Optimierungsberatung:</strong>
                     {calcResults.isWood ? (
                       <p className="leading-relaxed">
-                        Exzellente Holzwahl! Durch die Kohlenstoffspeicherung weist Brettschichtholz eine unschlagbare A1-A3-Bilanz auf. Beachte jedoch, dass bei weiten Transportwegen (z.B. {calcDistance} km) mit Kleintransportern der Transportfaktor (A4) den Umweltvorteil stark schmälert. Versuche stets, dezentrales Nadelholz aus maximal 50-100 km Umkreis zu spezifizieren.
+                        Exzellente Holzwahl! Durch die Kohlenstoffspeicherung weist Brettschichtholz eine unschlagbare A1-A3-Bilanz auf. Beachten Sie jedoch, dass bei weiten Transportwegen (z.B. {calcDistance} km) mit Kleintransportern der Transportfaktor (A4) den Umweltvorteil stark schmälert. Versuchen Sie stets, dezentrales Nadelholz aus maximal 50-100 km Umkreis zu spezifizieren.
                       </p>
                     ) : (
                       <div>
@@ -1263,7 +1263,7 @@ export default function LCA() {
                           </p>
                         ) : (
                           <p className="leading-relaxed">
-                            Die Transportfracht ist gut gedeckelt. Die größte Stellschraube liegt hier in der Klinkerminderung des Materials selbst. Ein Umstieg von klassischen CEM I-Betonen auf CEM III/A Klimabeispiele (z.B. RC-Betonsysteme) senkt den Footprint (A1-A3) deines Tragwerkes sofort und anstrengungslos um ca. 20 %.
+                            Die Transportfracht ist gut gedeckelt. Die größte Stellschraube liegt hier in der Klinkerminderung des Materials selbst. Ein Umstieg von klassischen CEM I-Betonen auf CEM III/A Klimabeispiele (z.B. RC-Betonsysteme) senkt den Footprint (A1-A3) Ihres Tragwerkes sofort und anstrengungslos um ca. 20 %.
                           </p>
                         )}
                       </div>
@@ -1285,7 +1285,7 @@ export default function LCA() {
                   ⚠️ Methodischer Grundsatz: Deklarierte Einheit vs. Funktionelle Einheit &amp; Leistungsfähigkeit
                 </strong>
                 <p className="text-slate-600 leading-relaxed text-[11px] font-sans">
-                  <strong>Wichtiger Hinweis zum Baustoffvergleich:</strong> Vergleiche verschiedene Baustoffe (z.B. <InlineMath math="1\text{ m³}" /> Brettschichtholz vs. <InlineMath math="1\text{ m³}" /> Normalbeton) niemals unreflektiert auf Basis ihres reinen Volumens (<InlineMath math="\text{m³}" />) oder ihrer reinen Masse (<InlineMath math="\text{kg, t}" />). Für einen normenkonformen Vergleich müssen Sie stets die <strong>funktionelle Einheit</strong> mit <strong>gleicher Leistungsfähigkeit (funktionale Äquivalenz)</strong> betrachten. Ein Quadratmeter Außenwand aus Beton benötigt für den gleichen Wärmeschutz (U-Wert) einen völlig anderen Dämmstoff-Schichtaufbau als eine Holztafelwand. Auch statisch müssen die Schichten so dimensioniert sein, dass sie dieselbe Traglast über die geforderte Nutzungsdauer (z.B. 50 oder 100 Jahre) abtragen können.
+                  <strong>Wichtiger Hinweis zum Baustoffvergleich:</strong> Vergleichen Sie verschiedene Baustoffe (z.B. <InlineMath math="1\text{ m³}" /> Brettschichtholz vs. <InlineMath math="1\text{ m³}" /> Normalbeton) niemals unreflektiert auf Basis ihres reinen Volumens (<InlineMath math="\text{m³}" />) oder ihrer reinen Masse (<InlineMath math="\text{kg, t}" />). Für einen normenkonformen Vergleich müssen Sie stets die <strong>funktionelle Einheit</strong> mit <strong>gleicher Leistungsfähigkeit (funktionale Äquivalenz)</strong> betrachten. Ein Quadratmeter Außenwand aus Beton benötigt für den gleichen Wärmeschutz (U-Wert) einen völlig anderen Dämmstoff-Schichtaufbau als eine Holztafelwand. Auch statisch müssen die Schichten so dimensioniert sein, dass sie dieselbe Traglast über die geforderte Nutzungsdauer (z.B. 50 oder 100 Jahre) abtragen können.
                 </p>
               </div>
             </div>
@@ -1334,10 +1334,10 @@ export default function LCA() {
         ]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
         regelwerke={[
-          { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15978:2012-10 (Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14040' },
+          { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN 15978:2012-10 (Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
+          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+17472' },
           { title: 'QNG Handbuch: Bilanzierungsregeln für Gebäude-Ökobilanzen', url: 'https://www.qng.info/' }
         ]}
         weblinks={[

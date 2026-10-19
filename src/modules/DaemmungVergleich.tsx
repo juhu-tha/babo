@@ -158,7 +158,7 @@ export default function DaemmungVergleich() {
           'Willems, W. M. (2018): Lehrbuch der Bauphysik (8. Auflage, Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-3 (Klimabedingter Feuchteschutz - Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 4108-3 (Klimabedingter Feuchteschutz - Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
           { title: 'WTA-Merkblatt 6-4 (Innendämmung nach WTA I: Planungsleitfaden)', url: 'https://www.wta-international.org/' },
           { title: 'WTA-Merkblatt 6-5 (Innendämmung nach WTA II: Nachweis von Innendämmsystemen mittels rechnerischer Simulation)', url: 'https://www.wta-international.org/' }
         ]}

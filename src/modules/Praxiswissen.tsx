@@ -177,15 +177,15 @@ const DATA_PLANUNG: TabContent = {
     {
       title: "Veraltete Normbezüge im LV",
       consequence: "Bieter bieten veraltete Baustoffe oder unzulässige Konstruktionen an. Das LV ist rechtlich angreifbar.",
-      avoid: "Prüfe regelmäßig deine Standardleistungsbücher (STLB-Bau) und vermeide das ungeprüfte Kopieren alter Projekt-LVs."
+      avoid: "Prüfen Sie regelmäßig Ihre Standardleistungsbücher (STLB-Bau) und vermeide das ungeprüfte Kopieren alter Projekt-LVs."
     }
   ],
-  professionalTip: "Erstelle am Ende von Phase 3 eine exakte Schnittstellen-Matrix aller beteiligten Planer (Tragwerk, TGA, Bauphysik, Brandschutz) und lassen Sie diese schriftlich vom Bauherrn freigeben. Nachträgliche geometrische Änderungen an Rohbauteilen kosten im Schnitt das Fünffache der ursprünglichen Planungskosten!"
+  professionalTip: "Erstellen Sie am Ende von Phase 3 eine exakte Schnittstellen-Matrix aller beteiligten Planer (Tragwerk, TGA, Bauphysik, Brandschutz) und lassen Sie diese schriftlich vom Bauherrn freigeben. Nachträgliche geometrische Änderungen an Rohbauteilen kosten im Schnitt das Fünffache der ursprünglichen Planungskosten!"
 };
 
 const DATA_BAULEITUNG: TabContent = {
   title: "Bauleitung & Baustelle",
-  tagline: "Qualitätssicherung vor Ort, Abnahmeprozesse und rechtssichere Dokumentation",
+  tagline: "Qualitätssicherung vor Ort, Abnahmeprozesse und rechtlich belastbare Dokumentation",
   icon: <Wrench size={28} className="text-shiraz" />,
   themeColor: "shiraz",
   intro: "Die Baustelle verzeiht keine Nachlässigkeiten. Als Bauleiter/in sind Sie Sachwalter des Bauherrn. Sie müssen die Ausführung vor Ort auf Übereinstimmung mit Plänen, Baugenehmigung und den Regeln der Technik überwachen.",
@@ -215,7 +215,7 @@ const DATA_BAULEITUNG: TabContent = {
           title: "Konsistenzprüfung (Ausbreitversuch)",
           description: "Regelmäßige Durchführung des Ausbreitmaß-Versuchs bei großen Betonagen oder begründetem Verdacht auf geänderte Konsistenz.",
           standard: "DIN EN 12350-5",
-          tip: "Führe den Ausbreitversuch bei der ersten Lieferung eines Bauteils und danach bei jeder 50 m³ Charge durch. Ein Sollwert von F3 entspricht einem Ausbreitmaß von 420 bis 480 mm. Weicht der Ist-Wert um mehr als 30 mm ab, ist der Mischer abzuweisen."
+          tip: "Führen Sie den Ausbreitversuch bei der ersten Lieferung eines Bauteils und danach bei jeder 50 m³ Charge durch. Ein Sollwert von F3 entspricht einem Ausbreitmaß von 420 bis 480 mm. Weicht der Ist-Wert um mehr als 30 mm ab, ist der Mischer abzuweisen."
         },
         {
           id: "bl_bet_4",
@@ -282,7 +282,7 @@ const DATA_BAULEITUNG: TabContent = {
     {
       id: "recht_doku",
       title: "Bauvertragsrecht & Baustellendokumentation",
-      description: "Rechtssicheres Handeln nach VOB/B und BGB im stressigen Baustellenalltag.",
+      description: "Rechtlich belastbares Handeln nach VOB/B und BGB im stressigen Baustellenalltag.",
       items: [
         {
           id: "bl_rec_1",
@@ -351,7 +351,7 @@ const DATA_BAULEITUNG: TabContent = {
     {
       title: "Ausführung ohne freigegebene Pläne",
       consequence: "Es wird nach Entwurfsplänen gebaut. Spätere Statikänderungen erfordern aufwändige, extrem teure Abbruch- oder Verstärkungsmaßnahmen.",
-      avoid: "Gib niemals mündliche Betonierfreigaben, wenn keine gestempelten Ausführungspläne mit dem Vermerk 'Zur Ausführung freigegeben' vorliegen."
+      avoid: "Geben Sie niemals mündliche Betonierfreigaben, wenn keine gestempelten Ausführungspläne mit dem Vermerk 'Zur Ausführung freigegeben' vorliegen."
     },
     {
       title: "Übersehen von Schlechtwetter-Vorgaben",
@@ -497,10 +497,10 @@ const DATA_PRODUKTION: TabContent = {
     {
       title: "Ausbleiben der Fremdüberwachung",
       consequence: "Das Werk verliert sein Ü-Zeichen oder die CE-Zertifizierung. Ein sofortiger Lieferstopp für zertifizierungspflichtige Baustellen droht.",
-      avoid: "Führe die vorgeschriebene Dokumentation für die Überwachungsstelle absolut lückenlos und planmäßig."
+      avoid: "Führen Sie die vorgeschriebene Dokumentation für die Überwachungsstelle absolut lückenlos und planmäßig."
     }
   ],
-  professionalTip: "Führe im Werk ein aktives Fehlermanagement-System (FMEA) ein. Fehler in der Rezeptierung oder Beschädigungen beim Entschalen von Fertigteilen kosten ein Vielfaches, wenn sie erst auf der Baustelle vom Kunden bemängelt und zurückgewiesen werden."
+  professionalTip: "Führen Sie im Werk ein aktives Fehlermanagement-System (FMEA) ein. Fehler in der Rezeptierung oder Beschädigungen beim Entschalen von Fertigteilen kosten ein Vielfaches, wenn sie erst auf der Baustelle vom Kunden bemängelt und zurückgewiesen werden."
 };
 
 const DATA_KARRIERE: TabContent = {
@@ -508,7 +508,7 @@ const DATA_KARRIERE: TabContent = {
   tagline: "Die ersten 100 Tage im Ingenieursberuf - Kommunikation und persönliche Schutzausrüstung",
   icon: <GraduationCap size={28} className="text-shiraz" />,
   themeColor: "shiraz",
-  intro: "Der Übergang von der Hochschule in die Berufspraxis ist ein Meilenstein. Neben hervorragendem baustofflichen Fachwissen entscheiden vor allem Kommunikationsstärke, Durchsetzungsvermögen und rechtliche Umsicht über deinen Erfolg.",
+  intro: "Der Übergang von der Hochschule in die Berufspraxis ist ein Meilenstein. Neben hervorragendem baustofflichen Fachwissen entscheiden vor allem Kommunikationsstärke, Durchsetzungsvermögen und rechtliche Umsicht über Ihren Erfolg.",
   sections: [
     {
       id: "kommunikation",
@@ -541,7 +541,7 @@ const DATA_KARRIERE: TabContent = {
           title: "Vollständige PSA (Persönliche Schutzausrüstung)",
           description: "Betreten Sie eine Baustelle niemals ohne: Sicherheitsschuhe S3 (durchtrittsicher), Schutzhelm, Warnweste. Je nach Tätigkeit Schutzbrille, Gehörschutz oder Handschuhe.",
           important: true,
-          tip: "Schnittstelle Baustellenverordnung (BaustellV): Als Bauleiter haften Sie mit für die Einhaltung der Unfallverhütungsvorschriften (UVV). Lege sich für unangemeldete Begehungen immer ein ungenutztes Reserve-Set PSA in den PKW."
+          tip: "Schnittstelle Baustellenverordnung (BaustellV): Als Bauleiter haften Sie mit für die Einhaltung der Unfallverhütungsvorschriften (UVV). Legen Sie sich für unangemeldete Begehungen immer ein ungenutztes Reserve-Set PSA in den PKW."
         },
         {
           id: "ka_sec_2",
@@ -603,7 +603,7 @@ const DATA_KARRIERE: TabContent = {
       avoid: "Schaue bei Sicherheitsmängeln niemals weg! Sprechen Sie den Polier oder Sicherheitsbeauftragten (SiGeKo) sofort an und dokumentiere den Vorfall."
     }
   ],
-  professionalTip: "Lege sich in den ersten Wochen ein persönliches Notizbuch (analog oder digital) an. Notieren Sie sich täglich Abkürzungen, Fachbegriffe und Namen von Zulieferern. Das zeigt Initiative, Lernbereitschaft und strukturiertes Arbeiten."
+  professionalTip: "Legen Sie sich in den ersten Wochen ein persönliches Notizbuch (analog oder digital) an. Notieren Sie sich täglich Abkürzungen, Fachbegriffe und Namen von Zulieferern. Das zeigt Initiative, Lernbereitschaft und strukturiertes Arbeiten."
 };
 
 export default function Praxiswissen() {
@@ -880,9 +880,9 @@ export default function Praxiswissen() {
           'Deutscher Beton- und Bautechnik-Verein E.V. (DBV): DBV-Sammelmappe Merkblätter und Leitfäden'
         ]}
         regelwerke={[
-          { title: 'DIN 1045-3 (Beton, Stahlbeton und Spannbeton - Bauausführung)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 1045-3 (Beton, Stahlbeton und Spannbeton - Bauausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' },
           { title: 'DAfStb-Richtlinie Wasserundurchlässige Baukörper aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' }
         ]}
         formeln={[
           {

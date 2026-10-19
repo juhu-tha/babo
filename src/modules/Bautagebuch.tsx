@@ -118,12 +118,12 @@ const SCENARIOS: Scenario[] = [
     tempMax: 4.5,
     weatherConditions: ['Rain', 'Frost'],
     suggestedIncident: 'Bodenplatte gegossen. Starker Wind begünstigt Verdunstung. Polier regte unzulässige Wasserzugabe an, um Fließen zu beschleunigen. Wurde strikt untersagt. Einbau-Frischbetontemperatur gemessen.',
-    objective: 'Dokumentiere die kalte Witterung, untersagen Sie jegliche unkontrollierte Wasserzugabe (Vermeidung von w/z-Werterhöhung), veranlassen Sie das Auflegen von Thermomatten (Wärme-Haltevorkehrung der Hydratationswärme) und messen Sie die Frischbetontemperatur (Soll ≥ +5°C nach DIN 1045-3).',
+    objective: 'Dokumentieren Sie die kalte Witterung, untersagen Sie jegliche unkontrollierte Wasserzugabe (Vermeidung von w/z-Werterhöhung), veranlassen Sie das Auflegen von Thermomatten (Wärme-Haltevorkehrung der Hydratationswärme) und messen Sie die Frischbetontemperatur (Soll ≥ +5°C nach DIN 1045-3).',
     hints: [
-      'Gib die Min-Temperatur exakt auf 1.5 °C an, um die Frost-Hydratationswarnung auszulösen.',
-      'Wähle im Prüfverfahren-Bereich "Frischbetontemperatur gemessen" und "Ausbreitversuch durchgeführt" aus.',
+      'Geben Sie die Min-Temperatur exakt auf 1.5 °C an, um die Frost-Hydratationswarnung auszulösen.',
+      'Wählen Sie im Prüfverfahren-Bereich "Frischbetontemperatur gemessen" und "Ausbreitversuch durchgeführt" aus.',
       'Füge im Freitext "Auflegen von Thermoplanen (NB4-Dämmung nach DIN)" hinzu.',
-      'Dokumentiere das Verbot des Wasserzusatzes zur Verhinderung von Mikrorissen und Entmischung im Zementleim.'
+      'Dokumentieren Sie das Verbot des Wasserzusatzes zur Verhinderung von Mikrorissen und Entmischung im Zementleim.'
     ]
   },
   {
@@ -136,10 +136,10 @@ const SCENARIOS: Scenario[] = [
     tempMax: 26.5,
     weatherConditions: ['Sunny'],
     suggestedIncident: 'Mündliche Anweisung von Herrn Schmidt, auf das Abdichtungssystem am Fundamentanschluss zu verzichten bzw. dieses wegzulassen.',
-    objective: 'Trage die gefahrvolle baustoffliche Abweichung ein. Aktiviere die formale Bedenkenanmeldung gemäß VOB/B § 4 Abs. 3 und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).',
+    objective: 'Tragen Sie die gefahrvolle baustoffliche Abweichung ein. Aktivieren Sie die formale Bedenkenanmeldung gemäß VOB/B § 4 Abs. 3 und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).',
     hints: [
       'Wer schreibt, der bleibt! Notieren Sie den Namen des Projektleiters Schmidt und die unsachgemäße Anordnung.',
-      'Setze den Haken bei "Bedenkenanmeldung erheben" auf AKTIV.',
+      'Setzen Sie den Haken bei "Bedenkenanmeldung erheben" auf AKTIV.',
       'Begründen Sie baustofflich mit den Verletzungen der DIN 18533 (Bauwerksabdichtung) und drohenden Schädlings- und Schimmelbefällen.'
     ]
   },
@@ -153,7 +153,7 @@ const SCENARIOS: Scenario[] = [
     tempMax: 17.5,
     weatherConditions: ['Cloudy'],
     suggestedIncident: 'Subunternehmer meldet Verzug bei Spezial-Quellvergussmörtel. Labor-Festigkeitsattest steht noch aus. Kranmontage Takt 2 blockiert.',
-    objective: 'Protokollieren Sie die Baustörung. Aktiviere die "Behinderungsanzeige" nach VOB/B § 6, um Verzugsstrafen abzuwenden und fordern Sie das bauaufsichtliche Prüfzeugnis des quellfähigen Zementmörtels an.',
+    objective: 'Protokollieren Sie die Baustörung. Aktivieren Sie die "Behinderungsanzeige" nach VOB/B § 6, um Verzugsstrafen abzuwenden und fordern Sie das bauaufsichtliche Prüfzeugnis des quellfähigen Zementmörtels an.',
     hints: [
       'Grenzfälle im Fertigteilbau sind sicherheitskritisch: Markieren Sie die Behinderungsanzeige auf JA.',
       'Erfasse im Störungsfeld die genaue Ursache: Ausstehendes Prüfzeugnis für den Quellvergussmörtel.',
@@ -701,7 +701,7 @@ export default function Bautagebuch() {
                     <Info size={16} className="text-shiraz" /> Was ist ein Bautagebuch?
                   </h4>
                   <p>
-                    Ein Bautagebuch ist die <strong>gerichtsfeste, tagesaktuelle Dokumentation</strong> aller Vorgänge und Bedingungen auf einer Baustelle. Nach HOAI gehört es zu den Grundleistungen der <strong>Leistungsphase 8 (Objektüberwachung)</strong>.
+                    Ein Bautagebuch ist die <strong>beweissichere, tagesaktuelle Dokumentation</strong> aller Vorgänge und Bedingungen auf einer Baustelle. Nach HOAI gehört es zu den Grundleistungen der <strong>Leistungsphase 8 (Objektüberwachung)</strong>.
                   </p>
                 </div>
                 
@@ -877,7 +877,7 @@ export default function Bautagebuch() {
                     </span>
                   )}
                 </h3>
-                <p className="text-xs text-slate-600">Trage alle relevanten Witterungs- und baubetrieblichen Werte ein.</p>
+                <p className="text-xs text-slate-600">Tragen Sie alle relevanten Witterungs- und baubetrieblichen Werte ein.</p>
               </div>
               <div className="flex gap-2">
                 <button
@@ -1061,7 +1061,7 @@ export default function Bautagebuch() {
                       placeholder="z.B. Müller Erdbau GmbH: 1 Polier, 3 Baggerfahrer&#10;TGA Elektro Schmidt: 2 Monteure"
                       className="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 font-mono"
                     />
-                    <p className="text-xs text-slate-600 mt-1">Gib das exakte Gewerk, Firma und Anzahl an. Unbesetzte Positionen sind ein wichtiger Verzugsindikator.</p>
+                    <p className="text-xs text-slate-600 mt-1">Geben Sie das exakte Gewerk, Firma und Anzahl an. Unbesetzte Positionen sind ein wichtiger Verzugsindikator.</p>
                   </div>
                 </div>
 
@@ -1364,7 +1364,7 @@ export default function Bautagebuch() {
         regelwerke={[
           { title: 'VOB/B § 4 Abs. 1 & § 6 (Ausführung und Behinderung)', url: 'https://www.gesetze-im-internet.de/' },
           { title: 'HOAI Honorarordnung (Leistungsphase 8: Bauüberwachung)', url: 'https://www.gesetze-im-internet.de/hoai_2021/' },
-          { title: 'DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Bauausführung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Bauausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' }
         ]}
         formeln={[
           {

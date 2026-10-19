@@ -542,7 +542,7 @@ def search_oekobaudat_material(query="Beton"):
     url = f"{BASE_URL}/processes?search=true&query={query}&format=json"
     headers = {"Accept": "application/json"}
 
-    print(f"Suche nach '{query}' in ÖKOBAUDAT...")
+    print(f"Suchen Sie nach '{query}' in ÖKOBAUDAT...")
     res = requests.get(url, headers=headers, timeout=10)
     
     if res.status_code == 200:
@@ -973,7 +973,7 @@ export default function OnlineTools() {
               <div className="col-span-full bg-white p-12 text-center rounded-2xl border border-home-grau/30 text-text-main/60">
                 <Search size={32} className="mx-auto text-slate-300 mb-3" />
                 <p className="font-medium">Keine Werkzeuge für die gewählten Filterkriterien gefunden.</p>
-                <p className="text-xs mt-1">Setze den Suchbegriff oder die Kategorie zurück.</p>
+                <p className="text-xs mt-1">Setzen Sie den Suchbegriff oder die Kategorie zurück.</p>
               </div>
             )}
           </div>
@@ -1114,11 +1114,11 @@ export default function OnlineTools() {
           'Barth, C.; Rustler, W.: Praxis der Finite-Elemente-Methode im Bauwesen (Bauwerk Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650 (BIM-Informationsmanagement)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 19650 (BIM-Informationsmanagement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15026' }
         ]}
         weblinks={[
           { title: 'Ubakus.de – Interaktiver U-Wert- & Glaser-Rechner', url: 'https://www.ubakus.de/' },

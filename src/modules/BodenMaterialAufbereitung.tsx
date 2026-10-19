@@ -613,7 +613,7 @@ export default function BodenMaterialAufbereitung() {
             </div>
 
             <p className="text-sm text-slate-700 leading-normal mb-6">
-              Damit mineralische Ersatzbaustoffe (MEB) anstelle von Primärkiestypen rechtssicher verbaut werden können, schreibt die EBV einen vierstufigen Gütekreislauf vor. Hierdurch verliert der recycelte Baustoff rechtlich seine Abfalleigenschaft und wird zum normgerechten Bauprodukt.
+              Damit mineralische Ersatzbaustoffe (MEB) anstelle von Primärkiestypen rechtlich belastbar verbaut werden können, schreibt die EBV einen vierstufigen Gütekreislauf vor. Hierdurch verliert der recycelte Baustoff rechtlich seine Abfalleigenschaft und wird zum normgerechten Bauprodukt.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
@@ -1218,7 +1218,7 @@ export default function BodenMaterialAufbereitung() {
           { title: 'Bayerisches LfU Infoblatt lfu_abfall_00266 (PDF-Download)', url: 'https://www.bestellen.bayern.de/med/801504b0-b4a5-11f0-81ee-c3fc7d0a3316/4b0e6a70-1059-11d9-4c85-9d915831e9eb/0/lfu_abfall_00266.pdf' }
         ]}
         regelwerke={[
-          { title: 'Ersatzbaustoffverordnung (EBV) - Richtlinien zur rechtssicheren Verwertung von mineralischen Ersatzbaustoffen', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
+          { title: 'Ersatzbaustoffverordnung (EBV) - Richtlinien zur rechtlich belastbaren Verwertung von mineralischen Ersatzbaustoffen', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Bundes-Bodenschutz- und Altlastenverordnung (BBodSchV) - Regelungen zum vorsorgenden und sanierenden Bodenschutz', url: 'https://de.wikipedia.org/wiki/Bodenschutz' },
           { title: 'LAGA PN 98 - Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen', url: 'https://www.laga-online.de/' }
         ]}

@@ -664,9 +664,9 @@ export default function Packungsdichte() {
           'Frings, K.: Optimierung von Betonzusammensetzungen mittels Kornpackungsmodellen (RWTH Aachen)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 12620: Gesteinskörnungen für Beton', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 933: Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen (Kornverteilung - Siebverfahren)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 1045-2: Anhang L (Kornzusammensetzung der Gesteinskörnung)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 12620: Gesteinskörnungen für Beton', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },
+          { title: 'DIN EN 933: Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen (Kornverteilung - Siebverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+933' },
+          { title: 'DIN 1045-2: Anhang L (Kornzusammensetzung der Gesteinskörnung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' }
         ]}
         formeln={[
           {

@@ -348,8 +348,8 @@ export default function Waermeeigenschaften() {
           { title: 'Temperaturleitfähigkeit', url: 'https://de.wikipedia.org/wiki/Temperaturleitf%C3%A4higkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4108-4 (Wärmeschutz und Energie-Einsparung in Gebäuden - Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' },
+          { title: 'DIN 4108-4 (Wärmeschutz und Energie-Einsparung in Gebäuden - Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-4' },
           { title: 'Gebäudeenergiegesetz (GEG)', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[

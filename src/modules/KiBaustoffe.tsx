@@ -106,7 +106,7 @@ function generateCustomPrompt(materialId: string, objectiveId: string, formatId:
   switch (objectiveId) {
     case 'norm':
       role = "Prüfsachverständiger für Baustoffe im Hoch- und Ingenieurbau";
-      task = `Überprüfe die baurechtliche Konformität des folgenden Materials:
+      task = `Überprüfen Sie die baurechtliche Konformität des folgenden Materials:
 Baustoff: ${materialName} (${matSubject})
 - Führe alle harmonisierten Prüf- und Anforderungsnormen an (z. B. DIN, EN, ISO).
 - Analysiere Leistungserklärungen (DoP), CE-Kennzeichnungen und bauaufsichtliche Zulassungen (abZ).
@@ -121,7 +121,7 @@ Baustoff/Einsatzszenario: ${materialName} (${matSubject})
       break;
     case 'nachhaltig':
       role = "DGNB-Auditor und Fachexperte für Ökobilanzierung (LCA/EPD) nach DIN EN 15804";
-      task = `Erstelle ein Optimierungskonzept zur CO2-Reduktion bzw. Ressourceneinsparung für:
+      task = `Erstellen Sie ein Optimierungskonzept zur CO2-Reduktion bzw. Ressourceneinsparung für:
 Baustoff/Einsatzszenario: ${materialName} (${matSubject})
 - Optimiere die Lebenszyklus-Module A1-A3 (Rohstoffe/Herstellung), C3 (Rückbau) und D (Recyclingpotenzial).
 - Schätze das Treibhauspotenzial (GWP in kg CO2-eq) ab und schlage konkrete Ersatzstoffe vor.`;
@@ -138,7 +138,7 @@ Baustoff/Einsatzszenario: ${materialName} (${matSubject})
       formatDesc = "Präsentiere die Antwort als strukturierter technischer Bericht in Fließtext mit prägnanten ingenieurwissenschaftlichen Zwischenüberschriften (Einleitung, Untersuchung, Befund, Fazit).";
       break;
     case 'bullets':
-      formatDesc = "Gib die Ergebnisse als extrem kondensierte, tabelle-ähnliche oder listenbasierte Checkliste im Telegrammstil aus. Perfekt zur schnellen Qualitätskontrolle direkt am Bau.";
+      formatDesc = "Geben Sie die Ergebnisse als extrem kondensierte, tabelle-ähnliche oder listenbasierte Checkliste im Telegrammstil aus. Perfekt zur schnellen Qualitätskontrolle direkt am Bau.";
       break;
     case 'code':
       formatDesc = "Ergänze das Ergebnis um ein sauberes Python-Grafikskript (z.B. Streamlit- oder Matplotlib-Code), welches die numerischen Beziehungen, Festigkeitskurven oder CO₂-Einsparungen dieses Baustoffs visualisiert.";
@@ -151,10 +151,10 @@ Baustoff/Einsatzszenario: ${materialName} (${matSubject})
   let toneDesc = "";
   switch (toneId) {
     case 'scientific':
-      toneDesc = "Wählen Sie einen hochgradig sachlichen, präzisen, akademischen Schreibstil. Verwende exakte physikalische und mikrostrukturelle Fachbegriffe (z.B. Adhäsionsversagen, Hydratationswärme, Porengrößenverteilung).";
+      toneDesc = "Wählen Sie einen hochgradig sachlichen, präzisen, akademischen Schreibstil. Verwenden Sie exakte physikalische und mikrostrukturelle Fachbegriffe (z.B. Adhäsionsversagen, Hydratationswärme, Porengrößenverteilung).";
       break;
     case 'pragmatic':
-      toneDesc = "Formuliere die Antwort maximal verständlich, praxisnah, direkt und lösungsorientiert. Verzichte auf unnötige akademische Schnörkel und fokussiere dich auf einbaurelevante Handlungsempfehlungen für Poliere und Bauleiter.";
+      toneDesc = "Formuliere die Antwort maximal verständlich, praxisnah, direkt und lösungsorientiert. Verzichte auf unnötige akademische Schnörkel und fokussiere Sie auf einbaurelevante Handlungsempfehlungen für Poliere und Bauleiter.";
       break;
     case 'didactic':
       toneDesc = "Wählen Sie die Perspektive eines didaktischen Hochschul-Dozenten (sokratische Methode). Erkläre die Hintergründe schrittweise, formuliere 3 nützliche Zwischenfragen zum Selbststudium und schließe mit einer eingängigen Eselsbrücke (Mnemonic) ab.";
@@ -174,7 +174,7 @@ ${formatDesc}
 Tonalität & Zielgruppe:
 ${toneDesc}
 
-Wichtig: Verweise explizit auf Baustoffeigenschaften und deutsches/europäisches Regelwerk. Nimm direkten Bezug auf die Praxis oder Nutzung beim Lernen.`;
+Wichtig: Verweise explizit auf Baustoffeigenschaften und deutsches/europäisches Regelwerk. Nehmen Sie direkten Bezug auf die Praxis oder Nutzung beim Lernen.`;
 
   const explanation = `Dieser Prompt kombiniert perfekt die vier Säulen des Prompt Engineering:
 1. **Spezifischer Baustoff-Kontext: ${materialName}**
@@ -326,7 +326,7 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
     description = "Sicherheits- und Haftungsrisiken von KI im Bauwesen: BGB-Werkvertragsrecht, HOAI-Sorgfaltspflichten, EU AI Act, Vermeidung von Normen-Halluzinationen und Rechenfehlern.";
   } else if (activeTab === 'lokal') {
     title = "Lokale KI & LM Studio (100% Datensouveränität)";
-    description = "Betreiben Sie leistungsstarke Open-Source-LLMs (Qwen 3.8, Llama 4, DeepSeek R2) vollkommen offline auf deiner büroeigenen Hardware – datenschutzkonform nach DSGVO ohne Cloud-Zwang.";
+    description = "Betreiben Sie leistungsstarke Open-Source-LLMs (Qwen 3.8, Llama 4, DeepSeek R2) vollkommen offline auf Ihrer büroeigenen Hardware – datenschutzkonform nach DSGVO ohne Cloud-Zwang.";
   } else if (activeTab === 'ressourcen') {
     title = "Unabhängige KI-Ressourcen & Verzeichnisse";
     description = "Eine kuratierte Sammlung unabhängiger Suchdatenbanken, Forschungsplattformen und Repositories für weitreichende Recherchen im Bauwesen.";
@@ -720,7 +720,7 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
                       Füttern Sie die KI mit einem kurzen Textmuster oder einer Tabellenstruktur, um das Design und die fachliche Tiefe der Antwort exakt abzustimmen.
                     </p>
                     <div className="p-2.5 bg-white rounded-xl border border-rose-100/80 font-mono text-[9.5px] text-slate-700 select-all">
-                      &quot;Schreibe ein technisches Gutachten. Nutze exakt folgenden Aufbau: [Dauerhaftigkeitsklasse] / [Mikroskopischer Befund] / [Normbezug DIN 1045] / [Sanierungsempfehlung].&quot;
+                      &quot;Schreibe ein technisches Gutachten. Nutzen Sie exakt folgenden Aufbau: [Dauerhaftigkeitsklasse] / [Mikroskopischer Befund] / [Normbezug DIN 1045] / [Sanierungsempfehlung].&quot;
                     </div>
                   </div>
                 </div>
@@ -859,8 +859,8 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
           'Sacks, R. et al.: BIM and AI in Civil Engineering.' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltdeklarationen für Produkte)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-2 (Beton, Stahlbeton und Spannbeton - Teil 2)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltdeklarationen für Produkte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN 1045-2 (Beton, Stahlbeton und Spannbeton - Teil 2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' }
         ]} 
         formeln={[
           { formel: 'f_{ck, simul} = \\phi_{AI}(w/z, Z_{kg}, PCE_{\\%}, d_{max}) \\quad \\text{[N/mm²]}', erklaerung: 'Prädiktive Druckfestigkeitsschätzung im KI-Modell' },

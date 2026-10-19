@@ -793,12 +793,12 @@ export default function SchutzGrundlagen() {
           'Tuutti, K. (1982): Corrosion of steel in concrete. Swedish Cement and Concrete Research Institute'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-9' },
           { title: 'TR Instandhaltung:2020-05 (DIBt: Technische Regel Instandhaltung von Betonbauwerken)', url: 'https://www.dibt.de/' },
-          { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14038-1:2021-03 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 1: Chloridextraktion)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14038-2:2020-09 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 2: Realkalisierung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+31051' },
+          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
+          { title: 'DIN EN 14038-1:2021-03 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 1: Chloridextraktion)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-1' },
+          { title: 'DIN EN 14038-2:2020-09 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 2: Realkalisierung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-2' }
         ]}
         formeln={[
           {

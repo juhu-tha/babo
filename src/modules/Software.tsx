@@ -171,7 +171,7 @@ export default function Software() {
           'Barth, C.; Rustler, W.: Praxis der Finite-Elemente-Methode im Bauwesen (Bauwerk Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650 (Organisation und Digitalisierung von Informationen zu Bauwerken)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN ISO 19650 (Organisation und Digitalisierung von Informationen zu Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
           { title: 'VDI 2552 (Building Information Modeling - Grundlagen)', url: 'https://www.vdi.de/' }
         ]}
         formeln={[

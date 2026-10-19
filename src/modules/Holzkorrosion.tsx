@@ -977,10 +977,10 @@ export default function Holzkorrosion() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[
-          { title: "DIN 68800-1 (Holzschutz - Teil 1: Allgemeines)", url: "https://www.dinmedia.de/" },
-          { title: "DIN 68800-2 (Holzschutz - Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau)", url: "https://www.dinmedia.de/" },
-          { title: "DIN 68800-3 (Holzschutz - Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln)", url: "https://www.dinmedia.de/" },
-          { title: "DIN 68800-4 (Holzschutz - Teil 4: Bekämpfungs- und Sanierungsmaßnahmen gegen Holz zerstörende Pilze und Insekten)", url: "https://www.dinmedia.de/" }
+          { title: "DIN 68800-1 (Holzschutz - Teil 1: Allgemeines)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-1" },
+          { title: "DIN 68800-2 (Holzschutz - Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-2" },
+          { title: "DIN 68800-3 (Holzschutz - Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-3" },
+          { title: "DIN 68800-4 (Holzschutz - Teil 4: Bekämpfungs- und Sanierungsmaßnahmen gegen Holz zerstörende Pilze und Insekten)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-4" }
         ]} 
         formeln={[
           {

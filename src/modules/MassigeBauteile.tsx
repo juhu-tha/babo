@@ -114,8 +114,8 @@ export default function MassigeBauteile() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN 1045-2:2023-08 / DIN EN 206 (Anforderungen an LH- und VLH-Zemente)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 197-1 (Zement mit niedriger Hydratationswärme LH)', url: 'https://www.beuth.de/' }
+          { title: 'DIN 1045-2:2023-08 / DIN EN 206 (Anforderungen an LH- und VLH-Zemente)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 197-1 (Zement mit niedriger Hydratationswärme LH)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' }
         ]}
         formeln={[
           {

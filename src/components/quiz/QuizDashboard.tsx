@@ -512,7 +512,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
                 Modul-Kompetenz-Heatmap &amp; Lücken-Matrix
               </h3>
               <p className="text-xs text-text-main/70">
-                Farbcodierte Matrix aller {moduleCompetenceMap.length} Lehrplan-Module. Klicke auf ein Modul, 
+                Farbcodierte Matrix aller {moduleCompetenceMap.length} Lehrplan-Module. Klicken Sie auf ein Modul, 
                 um die Wissenslücke direkt im jeweiligen Modul zu schließen.
               </p>
             </div>

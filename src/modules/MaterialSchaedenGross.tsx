@@ -1530,10 +1530,10 @@ export default function MaterialSchaedenGross() {
         regelwerke={[
           { title: 'DAfStb Alkali-Richtlinie (Alkalireaktion im Beton)', url: 'https://www.dafstb.de/' },
           { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung' },
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-1 / Eurocode 5 (Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-2 / Eurocode 2 (Betonbrücken - Bemessungs- und Konstruktionsregeln)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },
+          { title: 'DIN EN 1995-1-1 / Eurocode 5 (Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 1992-2 / Eurocode 2 (Betonbrücken - Bemessungs- und Konstruktionsregeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-2' }
         ]}
         formeln={[
           {

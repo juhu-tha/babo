@@ -385,10 +385,10 @@ export default function Erdbau() {
           'RStO 12 (FGSV Ausgabe 2012 / Fassung 2024): Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (eingeführt mit ARS Nr. 02/2024)'
         ]}
         regelwerke={[
-          { title: 'DIN 18196:2023-07 (Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18127:2012-09 (Baugrund - Versuche und Versuchsgeräte - Proctorversuch)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18134:2012-04 (Baugrund - Versuche und Versuchsgeräte - Plattendruckversuch)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 14688-1:2020-11 / DIN EN ISO 14688-2:2020-11 (Geotechnische Erkundung - Benennung und Klassifizierung von Boden)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 18196:2023-07 (Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18196' },
+          { title: 'DIN 18127:2012-09 (Baugrund - Versuche und Versuchsgeräte - Proctorversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18127' },
+          { title: 'DIN 18134:2012-04 (Baugrund - Versuche und Versuchsgeräte - Plattendruckversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18134' },
+          { title: 'DIN EN ISO 14688-1:2020-11 / DIN EN ISO 14688-2:2020-11 (Geotechnische Erkundung - Benennung und Klassifizierung von Boden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14688-1' },
           { title: 'ZTV E-StB 17:2017 (Zusätzliche Technische Vertragsbedingungen und Richtlinien für Erdarbeiten im Straßenbau)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'RStO 12 (Fassung 2024, Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen, eingeführt mit Allgemeinem Rundschreiben Straßenbau Nr. 02/2024)', url: 'https://www.fgsv-verlag.de/' }
         ]}

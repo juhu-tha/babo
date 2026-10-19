@@ -86,7 +86,7 @@ export const historicalData: Record<MaterialCategory, HistoricalCategoryData> = 
   },
   holz: {
     title: 'Holz (Nadelholz)',
-    description: 'Balken- und Tragkonstruktionen im Bestand wurden früher rein visuell nach Güteklassen (I, II, III) sortiert. Heute erfolgt die Einordnung in normierte Festigkeitsklassen (z. B. C24 für Standard-Fichte/Kiefer) nach DIN EN 338. Beachte, dass die zulässigen Biegespannungen früherer Normen nicht direkt mit den heutigen charakteristischen Festigkeitswerten f_m,k gleichzusetzen sind, da das moderne Teilsicherheitskonzept Minderungswerte wie k_mod hinzuzieht.',
+    description: 'Balken- und Tragkonstruktionen im Bestand wurden früher rein visuell nach Güteklassen (I, II, III) sortiert. Heute erfolgt die Einordnung in normierte Festigkeitsklassen (z. B. C24 für Standard-Fichte/Kiefer) nach DIN EN 338. Beachten Sie, dass die zulässigen Biegespannungen früherer Normen nicht direkt mit den heutigen charakteristischen Festigkeitswerten f_m,k gleichzusetzen sind, da das moderne Teilsicherheitskonzept Minderungswerte wie k_mod hinzuzieht.',
     normOld: 'DIN 1052 (1940 / 1988), DIN 4074',
     normNew: 'DIN EN 1995-1-1 (Eurocode 5) / DIN EN 338',
     data: [

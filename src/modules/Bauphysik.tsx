@@ -1643,9 +1643,9 @@ export default function Bauphysik() {
           { title: 'Nachhallzeit', url: 'https://de.wikipedia.org/wiki/Nachhallzeit' }
         ]}
         regelwerke={[
-          { title: 'DIN 4108-2:2013-02 (Mindestanforderungen an den Wärmeschutz zur Vermeidung von Schimmel)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz - Nachweis des Glaser-Verfahrens)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen - Anforderungen und Richtwerte)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 4108-2:2013-02 (Mindestanforderungen an den Wärmeschutz zur Vermeidung von Schimmel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' },
+          { title: 'DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz - Nachweis des Glaser-Verfahrens)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
+          { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen - Anforderungen und Richtwerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18041' },
           { title: 'Gebäudeenergiegesetz (GEG 2024)', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[

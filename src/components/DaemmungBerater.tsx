@@ -139,7 +139,7 @@ export function DaemmungBerater() {
       return {
         class: 'info',
         title: 'Diffusionsdichter Schichtaufbau',
-        text: 'Dieses Material blockiert Dampfdiffusion vollständig. Ein Feuchteausgleich nach außen wird unterbunden. Stelle sicher, dass keine feuchte Luft im Innenraum hinter die Dämmschicht wandern kann.',
+        text: 'Dieses Material blockiert Dampfdiffusion vollständig. Ein Feuchteausgleich nach außen wird unterbunden. Stellen Sie sicher, dass keine feuchte Luft im Innenraum hinter die Dämmschicht wandern kann.',
         icon: Info
       };
     }

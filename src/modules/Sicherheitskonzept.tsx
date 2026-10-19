@@ -295,8 +295,8 @@ export default function Sicherheitskonzept() {
           'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991' }
         ]}
         formeln={[
           {

@@ -687,7 +687,7 @@ function BetonDauerhaftigkeitsSimulator() {
               <div className="space-y-1">
                 <p className="font-bold text-slate-800">Schritt 1: Bestimmung des Karbonatisierungsbeiwerts k ({k} mm/√a)</p>
                 <p className="text-slate-600 leading-relaxed">
-                  Der Widerstand des Zementsteins gegen neutralisierendes Kohlendioxid (CO₂) hängt maßgeblich von der Betondichte (niedriger w/z-Wert) und der Erhärtungszeit ab. Deine aktuelle Auswahl simuliert einen Beiwert von <strong className="font-mono text-xs">{k} mm/√a</strong>.
+                  Der Widerstand des Zementsteins gegen neutralisierendes Kohlendioxid (CO₂) hängt maßgeblich von der Betondichte (niedriger w/z-Wert) und der Erhärtungszeit ab. Ihre aktuelle Auswahl simuliert einen Beiwert von <strong className="font-mono text-xs">{k} mm/√a</strong>.
                 </p>
               </div>
               <div className="space-y-1">
@@ -1118,7 +1118,7 @@ function TimberDurabilitySimulator() {
       </div>
       <p className="text-xs text-slate-600 mb-4 leading-relaxed">
         Gebrauchsklassen (GK) bestimmen das Gefährdungsspektrum für Holzbauteile. 
-        Klicke die Einsatzkonditionen an, um die Gebrauchsklasse und die zulässigen natürlichen Holzarten (DIN EN 350 i. V. m. DIN 68800-1) zu bestimmen:
+        Klicken Sie die Einsatzkonditionen an, um die Gebrauchsklasse und die zulässigen natürlichen Holzarten (DIN EN 350 i. V. m. DIN 68800-1) zu bestimmen:
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
@@ -1939,9 +1939,9 @@ export default function Dauerhaftigkeit() {
           'fib Bulletin 34: Model Code for Service Life Design (International Federation for Structural Concrete)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DAfStb Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DAfStb Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         formeln={[
           {

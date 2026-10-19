@@ -100,9 +100,9 @@ export default function Schwerbeton() {
           { title: 'Strahlenschutz', url: 'https://de.wikipedia.org/wiki/Strahlenschutz' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Schwerbeton mit Trockenrohdichte > 2600 kg/m³)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 25413-1:1995-10 (Strahlenschutzbeton - Teil 1: Baustoffe für Strahlenschutzbeton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 6847-2:2008-03 (Medizinische Elektronenbeschleuniger-Anlagen - Baulicher Strahlenschutz)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Schwerbeton mit Trockenrohdichte > 2600 kg/m³)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN 25413-1:1995-10 (Strahlenschutzbeton - Teil 1: Baustoffe für Strahlenschutzbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+25413-1' },
+          { title: 'DIN 6847-2:2008-03 (Medizinische Elektronenbeschleuniger-Anlagen - Baulicher Strahlenschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+6847-2' }
         ]}
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',

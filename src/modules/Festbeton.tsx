@@ -646,9 +646,9 @@ export default function Festbeton() {
         { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' }
       ]}
       regelwerke={[
-        { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Konformität)', url: 'https://www.dinmedia.de/' },
-        { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/' },
-        { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/' }
+        { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+        { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' },
+        { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
       ]}
       literatur={[
         'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',

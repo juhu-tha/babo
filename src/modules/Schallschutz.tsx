@@ -342,9 +342,9 @@ export default function Schallschutz() {
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' }
         ]}
         regelwerke={[
-          { title: 'DIN 4109-1: Schallschutz im Hochbau - Mindestanforderungen', url: 'https://www.beuth.de/' },
-          { title: 'DIN 4109-32: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Massivbau)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 4109-34: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Vorsatzkonstruktionen)', url: 'https://www.beuth.de/' }
+          { title: 'DIN 4109-1: Schallschutz im Hochbau - Mindestanforderungen', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1' },
+          { title: 'DIN 4109-32: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Massivbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-32' },
+          { title: 'DIN 4109-34: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Vorsatzkonstruktionen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-34' }
         ]}
         literatur={[
           'Willems, W. M. et al.: Lehrbuch der Bauphysik (2017)',

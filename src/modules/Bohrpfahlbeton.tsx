@@ -110,8 +110,8 @@ export default function Bohrpfahlbeton() {
           { title: 'Spezialtiefbau', url: 'https://de.wikipedia.org/wiki/Spezialtiefbau' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1536:2015-10 (Ausführung von Arbeiten im Spezialtiefbau - Bohrpfähle)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Anforderungen an Beton für Geotechnische Bauteile / Bohrpfähle)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 1536:2015-10 (Ausführung von Arbeiten im Spezialtiefbau - Bohrpfähle)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1536' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Anforderungen an Beton für Geotechnische Bauteile / Bohrpfähle)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
           { title: 'Empfehlungen des Arbeitskreises Pfähle (EA-Pfähle, DGGT)', url: 'https://www.dggt.de/' }
         ]}
         literatur={[

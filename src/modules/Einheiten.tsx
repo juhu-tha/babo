@@ -327,9 +327,9 @@ export default function Einheiten() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 1301-1 (Einheiten - Einheitennamen, Einheitenzeichen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1301-2 (Einheiten - Allgemein angewendete Teile und Vielfache)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 80000-1 (Größen und Einheiten - Teil 1: Allgemeines)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 1301-1 (Einheiten - Einheitennamen, Einheitenzeichen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1301-1' },
+          { title: 'DIN 1301-2 (Einheiten - Allgemein angewendete Teile und Vielfache)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1301-2' },
+          { title: 'DIN EN ISO 80000-1 (Größen und Einheiten - Teil 1: Allgemeines)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+80000-1' }
         ]}
         formeln={[
           {

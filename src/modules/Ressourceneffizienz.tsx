@@ -492,7 +492,7 @@ export default function Ressourceneffizienz() {
           
           <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-450 font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-lg">
             <Info size={14} className="text-blue-500" />
-            <span>Klicke oben auf eine Säule zum Umschalten</span>
+            <span>Klicken Sie oben auf eine Säule zum Umschalten</span>
           </div>
         </div>
 
@@ -620,7 +620,7 @@ export default function Ressourceneffizienz() {
                   <p className="text-xs text-slate-650 dark:text-slate-350 max-w-4xl leading-relaxed">
                     Die Schonung der Rohstoffvorräte wird durch intelligente Entwurfs- und Verwertungsstufen systematisiert. 
                     Das Spektrum reicht von der radikalen Vermeidung <strong>(R0)</strong> bis zur ungeliebten thermischen Entsorgung <strong>(R9)</strong>. 
-                    Klicke auf eines der Wertschöpfungsfelder in der bayerischen Heuristik-Matrix, um Praxisanwendungen im Hoch- und Tiefbau zu studieren:
+                    Klicken Sie auf eines der Wertschöpfungsfelder in der bayerischen Heuristik-Matrix, um Praxisanwendungen im Hoch- und Tiefbau zu studieren:
                   </p>
                 </div>
 
@@ -1106,7 +1106,7 @@ export default function Ressourceneffizienz() {
                       <span className="text-xs text-slate-450 dark:text-slate-500 block italic">geg. Standard-Skelettbau</span>
                     </div>
                     <div className="md:col-span-8 text-xs text-slate-650 dark:text-slate-300 space-y-1.5 border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 pt-3 md:pt-0 md:pl-4">
-                      <p>🚀 <strong>Vergleichsanalyse:</strong> Dein optimierter Entwurf emittiert ca. {simResult.totalCo2} Tonnen CO₂-eq im Vergleich zum veralteten traditionellen Referenzwert von <strong>{simResult.baselineCo2} Tonnen</strong>.</p>
+                      <p>🚀 <strong>Vergleichsanalyse:</strong> Ihr optimierter Entwurf emittiert ca. {simResult.totalCo2} Tonnen CO₂-eq im Vergleich zum veralteten traditionellen Referenzwert von <strong>{simResult.baselineCo2} Tonnen</strong>.</p>
                       <p>🌾 <strong>Recycling-Bonus:</strong> Sie verwenden {simResult.secondaryGravelNeed} t aufbereiteten Bauschutt und stoppen damit die Mülldeponierung wertvollen Betons.</p>
                     </div>
                   </div>
@@ -1408,7 +1408,7 @@ export default function Ressourceneffizienz() {
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Kreislaufwirtschaftsgesetz (KrWG § 14 Stoffliche Verwertung)', url: 'https://www.gesetze-im-internet.de/krwg/' },
           { title: 'VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien', url: 'https://www.vdi.de/' },
-          { title: 'DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' }
         ]}
         formeln={[
           {

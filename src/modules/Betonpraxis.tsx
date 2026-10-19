@@ -511,7 +511,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
                   <div className="font-bold text-shiraz mb-1">2. Blasenaufstieg</div>
-                  Bestimme die Aufstiegsdauer großer Blasen beim Rütteln. Je zäher/klebriger der Beton, desto länger dauert es. Mehr Luftporen (Lunker) sind zu erwarten.
+                  Bestimmen Sie die Aufstiegsdauer großer Blasen beim Rütteln. Je zäher/klebriger der Beton, desto länger dauert es. Mehr Luftporen (Lunker) sind zu erwarten.
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/10">
                   <div className="font-bold text-shiraz mb-1">3. Fingertest</div>
@@ -539,7 +539,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
             <div className="space-y-2">
               <span className="text-xs font-bold uppercase text-text-main/60 block">Frischbetonrohdichte bewerten</span>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Vergleiche die gemessene Frischrohdichte sofort mit der Soll-Frischrohdichte der Erstprüfung:
+                Vergleichen Sie die gemessene Frischrohdichte sofort mit der Soll-Frischrohdichte der Erstprüfung:
               </p>
               
               <div className="space-y-1.5 text-xs">
@@ -699,7 +699,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 Interaktiver Baustellen-Wasser- &amp; Luftmengen-Simulator
               </h3>
               <p className="text-xs text-text-main/80">
-                Gib unerlaubte Wasserzugaben oder abweichende Luftporenanteile ein, um die fatalen Auswirkungen auf Festigkeiten und Schwinddehnungen zu kalkulieren.
+                Geben Sie unerlaubte Wasserzugaben oder abweichende Luftporenanteile ein, um die fatalen Auswirkungen auf Festigkeiten und Schwinddehnungen zu kalkulieren.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -731,7 +731,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                         onClick={() => setWaterAddition(20)} 
                         className="text-xs bg-red-800 text-white font-bold py-1 px-2 rounded-lg hover:bg-red-900 transition-colors w-full animate-in"
                       >
-                        Setze "20 l/m³" (Verbotenes Maß)
+                        Setzen Sie "20 l/m³" (Verbotenes Maß)
                       </button>
                       <button 
                         onClick={() => setWaterAddition(0)} 
@@ -1655,10 +1655,10 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           { title: 'Nachbehandlung', url: 'https://de.wikipedia.org/wiki/Nachbehandlung_(Beton)' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
+          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-1000' },
+          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
           { title: 'DBV-Merkblätter: Sichtbeton (2015), Industrieböden, Betondeckung (Deutscher Beton- und Bautechnik-Verein E.V.)', url: 'https://www.betonverein.de/' }
         ]}
         literatur={[

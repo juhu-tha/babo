@@ -246,13 +246,13 @@ function FeedbackContent() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2"><label htmlFor="message" className="text-sm font-bold text-text-main">Deine Nachricht</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
+          <div className="flex items-center gap-2"><label htmlFor="message" className="text-sm font-bold text-text-main">Ihre Nachricht</label><InfoTooltip text="Parameter zur Anpassung der Berechnung." /></div>
           <textarea
             id="message"
             required={type !== 'lob'}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder={type === 'fehler' ? 'Beschreiben Sie den Fehler möglichst genau...' : type === 'lob' ? 'Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)' : 'Welches Thema oder welche Funktion fehlt dir?'}
+            placeholder={type === 'fehler' ? 'Beschreiben Sie den Fehler möglichst genau...' : type === 'lob' ? 'Ganz großartiges Tool - Vielen Dank für die Umsetzung und Betreuung :)' : 'Welches Thema oder welche Funktion fehlt Ihnen?'}
             rows={5}
             className="p-3 rounded-xl border border-home-grau/30 bg-off-white focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz transition-all resize-none"
           />
@@ -316,8 +316,8 @@ export default function Feedback() {
         ]}
         regelwerke={[
           { title: 'Bayerisches Hochschulinnovationsgesetz (BayHIG - Art. 18 Evaluation und Qualitätssicherung)', url: 'https://www.gesetze-bayern.de/' },
-          { title: 'DIN EN ISO 9001:2015 (Qualitätsmanagementsysteme - Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 9004:2018 (Qualitätsmanagement - Leitfaden zum Erreichen nachhaltigen Erfolgs)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 9001:2015 (Qualitätsmanagementsysteme - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9001' },
+          { title: 'DIN EN ISO 9004:2018 (Qualitätsmanagement - Leitfaden zum Erreichen nachhaltigen Erfolgs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9004' }
         ]}
         hideFormeln={true}
       />

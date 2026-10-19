@@ -404,7 +404,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     legalType: 'Bundesverordnung',
     audiences: ['baustoffe', 'planer'],
     primaryTarget: 'Tiefbauunternehmen, Recyclingbetriebe, Straßenbau, Bodenschutzbehörden',
-    leadQuote: 'Rechtssicheres Ende der Abfalleigenschaft und bundesweit einheitliche Einbauklassen für RC-Baustoffe.',
+    leadQuote: 'Rechtlich belastbares Ende der Abfalleigenschaft und bundesweit einheitliche Einbauklassen für RC-Baustoffe.',
     coreSummary: 'Die EBV harmonisiert das deutsche Verwertungsrecht für mineralische Sekundärbaustoffe und löste die fragmentierten LAGA-Regelungen der Bundesländer ab. Sie definiert einheitliche Materialwerte und Einbauweisen für güteüberwachte Recycling-Baustoffe (RC-1 bis RC-3), Bodenmaterial (BM-0 bis BM-F3), Schlacken und Bauschutt im Erd- und Tiefbau.',
     keyDuties: [
       'Güteüberwachung durch werkseigene Produktionskontrolle (WPK) und Fremdüberwachung.',
@@ -673,7 +673,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     legalType: 'Gesetzesinitiative',
     audiences: ['planer', 'bestand', 'baustoffe'],
     primaryTarget: 'Architekten, Ingenieure, Bauherren, Bauunternehmer, Wohnungsbau',
-    leadQuote: 'Rechtssicheres Abweichen von übertriebenen Komfortnormen für ressourcenschonendes, einfaches Bauen.',
+    leadQuote: 'Rechtlich belastbares Abweichen von übertriebenen Komfortnormen für ressourcenschonendes, einfaches Bauen.',
     coreSummary: 'Das Gebäudetyp-E-Gesetz schafft eine zivilrechtliche Grundlage im Werkvertragsrecht (§ 650o BGB), damit Vertragsparteien wirksam von nicht-sicherheitsrelevanten Komfort- und Ausstattungsnormen (z. B. überdimensionierter Trittschallschutz, überbordende Elektroinstallationen) abweichen können. Die Haftungsfalle der "anerkannten Regeln der Technik" (aRdT) wird entschärft, ohne Standards bei Brandschutz und Statik zu senken.',
     keyDuties: [
       'Möglichkeit der vertraglichen Vereinbarung einfacher, suffizienter Bauweisen zwischen Fachkundigen.',
@@ -849,7 +849,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Suche nach Gesetz, Kürzel (z.B. CBAM, BauPVO, EPBD), Pflicht..."
+              placeholder="Suchen Sie nach Gesetz, Kürzel (z.B. CBAM, BauPVO, EPBD), Pflicht..."
               className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-off-white border border-home-grau/30 text-text-main placeholder:text-slate-400 focus:outline-none focus:border-shiraz focus:bg-white transition-all"
             />
             {searchQuery && (

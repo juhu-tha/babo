@@ -586,8 +586,8 @@ export default function HydratationRissberechnung() {
           'Heft 600 DAfStb: Erläuterungen zu DIN EN 1992-1-1 (Eurocode 2)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Massige+Bauteile+aus+Beton' }
         ]}
         formeln={[
           {

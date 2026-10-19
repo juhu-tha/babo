@@ -2444,10 +2444,10 @@ export default function MechanischeKenngroessen() {
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1993-1-1 (Eurocode 3: Bemessung von Stahlbauten - Dehnsteifigkeit und Biegung)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbetonbauten - Kriechen und Schwinden)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung von Holzbauten - Verformungen)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' },
+          { title: 'DIN EN 1993-1-1 (Eurocode 3: Bemessung von Stahlbauten - Dehnsteifigkeit und Biegung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbetonbauten - Kriechen und Schwinden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung von Holzbauten - Verformungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
         ]}
         literatur={[
           'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',

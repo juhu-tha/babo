@@ -143,7 +143,7 @@ export default function Materialkennwerte() {
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Die Wahl des richtigen Baustoffs hängt von den spezifischen Anforderungen des Tragwerks und der Bauphysik ab. Vergleiche charakteristische Materialparameter wie Rohdichte, Festigkeit und Elastizitätsmodul direkt im visuellen Netzdiagramm und der tabellarischen Übersicht.
+            Die Wahl des richtigen Baustoffs hängt von den spezifischen Anforderungen des Tragwerks und der Bauphysik ab. Vergleichen Sie charakteristische Materialparameter wie Rohdichte, Festigkeit und Elastizitätsmodul direkt im visuellen Netzdiagramm und der tabellarischen Übersicht.
           </p>
         </div>
       </div>
@@ -367,11 +367,11 @@ export default function Materialkennwerte() {
           { title: 'Wärmeleitfähigkeit', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeleitf%C3%A4higkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1992 (Eurocode 2: Bemessung von Betonbauteilen)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1993 (Eurocode 3: Bemessung von Stahlbauten)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 1995 (Eurocode 5: Bemessung von Holzbauten)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991' },
+          { title: 'DIN EN 1992 (Eurocode 2: Bemessung von Betonbauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992' },
+          { title: 'DIN EN 1993 (Eurocode 3: Bemessung von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993' },
+          { title: 'DIN EN 1995 (Eurocode 5: Bemessung von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',

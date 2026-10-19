@@ -487,7 +487,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             { nr: 9, title: 'Digitaler Produktpass (DPP) & Materialpässe', topic: 'EU-Ökodesign ESPR, novellierte BauPVO (CPR), Madaster Circularity Index (CI)' },
             { nr: 10, title: 'Design for Disassembly & Zirkuläres Konstruieren', topic: 'Trennungsverbindungen, Kaskadennutzung, Urban Mining und Rezyklat-Betone' },
             { nr: 11, title: 'Ersatzbaustoffverordnung (EBV) & KrWG', topic: 'Qualitätsklassen RC-1 bis RC-3, Bodenmaterial BM-0 bis BM-F3, Katasterpflicht ab 250 m³' },
-            { nr: 12, title: 'Suffizienz & Gebäudetyp E (§ 650o BGB)', topic: 'Einfaches Bauen, rechtssichere Abweichung von DIN-Komfortnormen' },
+            { nr: 12, title: 'Suffizienz & Gebäudetyp E (§ 650o BGB)', topic: 'Einfaches Bauen, rechtlich belastbare Abweichung von DIN-Komfortnormen' },
             { nr: 13, title: 'Zertifizierungssysteme (DGNB / BNB / LEED / QNG)', topic: 'Kriterienmatrizen, Lebenszykluskosten LCC, KFN-Förderung des Bundes' },
             { nr: 14, title: 'CRREM Decarbonization Pathway', topic: '1,5°C-Pfad für Bestandsgebäude, Stranded Assets Risiko und Brown Discount' }
           ]}
@@ -622,8 +622,8 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         ]}
         regelwerke={[
           { title: 'Rahmenprüfungsordnung der Technischen Hochschule Augsburg (THA)', url: 'https://www.tha.de/' },
-          { title: 'DIN EN 1990: Eurocode - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/' },
-          { title: 'EN 1990-2:2026: Eurocode - Bewertung bestehender Tragwerke', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990: Eurocode - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'EN 1990-2:2026: Eurocode - Bewertung bestehender Tragwerke', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' }
         ]}
         formeln={[]}
       />

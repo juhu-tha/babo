@@ -87,8 +87,8 @@ export default function IntegrationVerformungen() {
                <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30">
                  <h4 className="font-bold text-indigo-800 mb-2">Wie die Module besser genutzt werden:</h4>
                  <ul className="text-sm text-gray-700 space-y-2 list-disc pl-4">
-                   <li><strong>Isolierte Betrachtung:</strong> Nutze die Einzelmodule (z.B. Kriechen), um die rein physikalischen Formeln und Abhängigkeiten (z.B. von der Luftfeuchte) zu berechnen (nach Eurocode).</li>
-                   <li><strong>Vernetzte Betrachtung:</strong> Nutze das Modul <em>Zwang & Risse</em>. Dort sind die Formeln aus Hydratation, Festigkeitsentwicklung und Relaxation bereits zu einer integrativen Zeitsimulation zusammengeführt.</li>
+                   <li><strong>Isolierte Betrachtung:</strong> Nutzen Sie die Einzelmodule (z.B. Kriechen), um die rein physikalischen Formeln und Abhängigkeiten (z.B. von der Luftfeuchte) zu berechnen (nach Eurocode).</li>
+                   <li><strong>Vernetzte Betrachtung:</strong> Nutzen Sie das Modul <em>Zwang & Risse</em>. Dort sind die Formeln aus Hydratation, Festigkeitsentwicklung und Relaxation bereits zu einer integrativen Zeitsimulation zusammengeführt.</li>
                  </ul>
                </div>
                <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30">
@@ -113,10 +113,10 @@ export default function IntegrationVerformungen() {
           { title: 'Kriechen und Schwinden von Beton', url: 'https://de.wikipedia.org/wiki/Kriechen_und_Schwinden_von_Beton' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Rissbegrenzung)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Rissbegrenzung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
           { title: 'DAfStb-Heft 600: Erläuterungen zu Eurocode 2 (Kap. 7: Gebrauchstauglichkeit)', url: 'https://www.dafstb.de/' },
           { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' }
         ]}
         literatur={[
           'Rostásy, F. S.; Krauß, M.; Budelmann, H.: Planungshilfen zur Beherrschung von Zwang in massigen Bauteilen (Heft 483 DAfStb, Beuth Verlag)',

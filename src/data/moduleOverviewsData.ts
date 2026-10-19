@@ -154,7 +154,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
   labor: {
     title: 'Labor, Sensorik & Analytik',
     tagline: 'Praxisnahe Prüfverfahren, moderne Bauwerksdiagnostik und statistische Versuchsplanung',
-    leitfrage: 'Wie wandeln wir verrauschte messtechnische Rohdaten aus Bohrkernen und Sensoren in rechtssichere Festigkeits- und Konformitätsurteile um?',
+    leitfrage: 'Wie wandeln wir verrauschte messtechnische Rohdaten aus Bohrkernen und Sensoren in rechtlich belastbare Festigkeits- und Konformitätsurteile um?',
     corePrinciples: [
       {
         title: 'Repräsentativität schlägt Probenanzahl',
@@ -325,12 +325,12 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       {
         title: 'Europäisches Inverkehrbringen vs. Nationale Verwendung',
         description: 'Die EU regelt das Inverkehrbringen (CE-Zeichen), aber die Bundesländer regeln über die Landesbauordnungen (MBO/LBO) und die Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB), was tatsächlich eingebaut werden darf.',
-        takeaway: 'CE-Kennzeichnung + nationale Anwendungsnorm = rechtssicheres Bauwerk.'
+        takeaway: 'CE-Kennzeichnung + nationale Anwendungsnorm = rechtlich belastbares Bauwerk.'
       }
     ],
     systemicExplanation: 'Dieses Modul klärt die juristisch-technische Schnittstelle jedes Bauprojekts. Es führt durch den Dschungel aus hEN-Normen, allgemeinen bauaufsichtlichen Zulassungen (abZ), allgemeinen Bauartgenehmigungen (aBG), Vorhabenbezogenen Bauartgenehmigungen (vBg) und Umwelt-Produktdeklarationen (EPDs).',
     zusammenhaengeText: 'Das Bauproduktenrecht schützt Bauleiter und Planer vor massiven Haftungsrisiken: Wer Bauprodukte ohne gültige CE-Kennzeichnung oder ohne Passfähigkeit zur MVV TB einbaut, riskiert behördliche Baustopps und den Verlust des Versicherungsschutzes.',
-    graphicalPipelineTitle: 'Der rechtssichere Zulassungs- und Verifikationspfad',
+    graphicalPipelineTitle: 'Der rechtlich belastbare Zulassungs- und Verifikationspfad',
     graphicalPipelineDesc: 'Vom Fabriktor bis zur Abnahme auf der Baustelle nach BauPVO und Landesbauordnung:',
     steps: [
       {
@@ -1377,7 +1377,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
   praxiswissen: {
     title: 'Praxiswissen, Bauleitung & VOB',
     tagline: 'Baustellenmanagement, VOB-Vertragsrecht, Bautagebuch und Qualitätsüberwachung',
-    leitfrage: 'Wie steuert man die Baustelle rechtssicher, termin- und qualitätskonform zwischen Entwurf, Bauleiter und Subunternehmern?',
+    leitfrage: 'Wie steuert man die Baustelle rechtlich belastbar, termin- und qualitätskonform zwischen Entwurf, Bauleiter und Subunternehmern?',
     corePrinciples: [
       {
         title: 'Die VOB als Spielregel des Bauens',
@@ -1385,7 +1385,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         takeaway: 'Wer als Bauleiter Fristen versäumt oder Bedenken nicht schriftlich anmeldet, haftet persönlich.'
       },
       {
-        title: 'Das Bautagebuch als gerichtsfeste Urkunde',
+        title: 'Das Bautagebuch als beweissichere Urkunde',
         description: 'Tägliche lückenlose Dokumentation von Wetter (Temperatur, Niederschlag), Personalstärke je Gewerk, Geräteeinsatz, angelieferten Materialien (inkl. Lieferscheinnummern) und Baubehinderungen.',
         takeaway: 'Was nicht im Bautagebuch steht, hat juristisch auf der Baustelle nie stattgefunden.'
       },
@@ -1398,7 +1398,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
     systemicExplanation: 'Dieses Modul verbindet akademische Theorie mit der rauen Wirklichkeit der Baustelle. Es schult Bauleiter in VOB-Mängelrügen, Abnahmeprozessen, Lieferscheinprüfung bei Betonagen, Bewehrungsabnahmen vor dem Betonieren und digitaler Mängeldokumentation.',
     zusammenhaengeText: 'Praxiswissen ist der operative Realitätscheck aller Ingenieurmodule: Es setzt statische Pläne, betontechnologische Vorgaben und bauphysikalische Details in gebaute Realität um.',
     graphicalPipelineTitle: 'Der baubegleitende Qualitäts- und Rechtszyklus',
-    graphicalPipelineDesc: 'Von der Arbeitsvorbereitung über Baustellenkontrollen zur rechtssicheren VOB-Abnahme:',
+    graphicalPipelineDesc: 'Von der Arbeitsvorbereitung über Baustellenkontrollen zur rechtlich belastbaren VOB-Abnahme:',
     steps: [
       {
         step: '1',

@@ -45,7 +45,7 @@ const evaluateKombination = (
   if (salzClass === 'high') {
     score -= 30;
     criticalAlarms.push("Hohe Salzbeladung (Klasse S3) führt zu Sprengkräften hinter der Dämmplatte (Fehlende Dampfdurchlässigkeit).");
-    recommendations.push("Trage zwingend vor Plattenmontage einen Porengrundputz WTA (d ≥ 10 mm) als weiches mechanisches Salzspeicherdepot auf.");
+    recommendations.push("Tragen Sie zwingend vor Plattenmontage einen Porengrundputz WTA (d ≥ 10 mm) als weiches mechanisches Salzspeicherdepot auf.");
   } else if (salzClass === 'medium' && daemmType !== 'calciumsilicat') {
     score -= 10;
     recommendations.push("Bei mittlerem Salzgehalt und organischen Dämmplatten ist ein zementfreier WTA-Ausgleichsputz dringend angeraten.");
@@ -64,7 +64,7 @@ const evaluateKombination = (
   if (daemmType === 'pur_foelie') {
     score -= 40;
     criticalAlarms.push("Diffusionsdichte PUR-Systeme mit Dampfsperrfolie blockieren jegliche raumseitige Trocknung. Kleinste Risse in der Folie führen zu Kondensationsnestern!");
-    recommendations.push("Wähle bevorzugt kapillaraktive mineralische Dämmstoffe (wie Calciumsilicat oder Mineralschaum) ohne separate Dampfsperrfolie.");
+    recommendations.push("Wählen Sie bevorzugt kapillaraktive mineralische Dämmstoffe (wie Calciumsilicat oder Mineralschaum) ohne separate Dampfsperrfolie.");
   } else if (daemmType === 'calciumsilicat') {
     score += 15; // calcareous systems are highly robust
     recommendations.push("Calciumsilicat bietet die höchste Sicherheit. Verkleben Sie die Platten zwingend vollflächig (ohne Hohlräume) mit dem materialspezifischen Systemkleber.");
@@ -1191,7 +1191,7 @@ export default function WTA() {
         regelwerke={[
           { title: "WTA-Merkblatt 2-9 (Ausgabe 2020): Sanierputzsysteme (konsolidiert 2-9-04 & 2-10)", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 4-6 (Ausgabe 2021): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de" },
+          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de/de/suche?q=DIN+18533" },
           { title: "WTA-Merkblatt 4-10: Injektionsverfahren mit zertifizierten Wirkstoffen", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5: Feuchtetechnische Bewertung von Innendämmungen", url: "https://www.wta-gmbh.de" }
         ]} 

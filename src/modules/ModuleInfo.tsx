@@ -183,7 +183,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
     ],
     regelwerke: [
-      { title: 'DIN EN 1990: Eurocode 0 - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN 1990: Eurocode 0 - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' }
     ],
     formeln: [
       { formel: 'E_d \\leq R_d', erklaerung: 'Grundformel des semiprobabilistischen Sicherheitskonzepts. Die Bemessungswerte der Beanspruchungen E_d müssen kleiner/gleich den Bemessungswerten der Tragwiderstände R_d sein.', quelle: 'DIN EN 1990' }
@@ -225,8 +225,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Hartung, J. (2012): Statistik - Lehr- und Handbuch der angewandten Statistik (Oldenbourg)'
     ],
     regelwerke: [
-      { title: 'DIN EN 12504-1: Prüfung von Beton im Bauwerk - Teil 1: Bohrkernproben', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN ISO 12491: Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN 12504-1: Prüfung von Beton im Bauwerk - Teil 1: Bohrkernproben', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
+      { title: 'DIN ISO 12491: Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+12491' }
     ],
     formeln: [
       { formel: 'f_{ck} = f_{m} - 1.64 \\cdot s', erklaerung: 'Berechnung des charakteristischen Festigkeitswertes (5%-Quantil) bei bekannter Standardabweichung s und Mittelwert f_m unter Annahme einer Normalverteilung.', quelle: 'DIN ISO 12491 / DIN EN 1990' },
@@ -280,8 +280,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
-      { title: 'DIN EN 1996: Eurocode 6 - Bemessung und Konstruktion von Mauerwerksbauten', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN 18008: Glas im Bauwesen - Bemessungs- und Konstruktionsregeln', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN 1996: Eurocode 6 - Bemessung und Konstruktion von Mauerwerksbauten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996' },
+      { title: 'DIN 18008: Glas im Bauwesen - Bemessungs- und Konstruktionsregeln', url: 'https://www.dinmedia.de/de/suche?q=DIN+18008' }
     ],
     formeln: [
       { formel: '\\sigma = E \\cdot \\epsilon', erklaerung: 'Hookesches Gesetz für linear-elastisches Werkstoffverhalten. Bestimmt die proportionale Verknüpfung von Normalspannung und elastischer Dehnung.', quelle: 'Physikalische Grundlagen' },
@@ -301,7 +301,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     submodules: [
       { title: 'Baustoffindustrie', icon: Factory, purpose: 'Wertschöpfungsketten, Rohstoffgewinnung, Energieeinsatz und Zukunftsstrategien der deutschen und europäischen Baustoffindustrie.', standards: 'BDI / bbs Leitlinien', useCase: 'Analyse von CO2-Minderungskostenpfaden in der Zement- und Ziegelherstellung.' },
-      { title: 'CE vs. Ü & MVV TB', icon: Scale, purpose: 'Rechtliche Entflechtung europäischer BauPVO und nationaler Richtlinien sowie Muster-Verwaltungsvorschriften.', standards: 'Musterbauordnung (MBO) § 16a', useCase: 'Rechtssichere Klärung der Notwendigkeit einer Übereinstimmungserklärung bei CE-gekennzeichneten Produkten.' },
+      { title: 'CE vs. Ü & MVV TB', icon: Scale, purpose: 'Rechtliche Entflechtung europäischer BauPVO und nationaler Richtlinien sowie Muster-Verwaltungsvorschriften.', standards: 'Musterbauordnung (MBO) § 16a', useCase: 'Rechtlich belastbare Klärung der Notwendigkeit einer Übereinstimmungserklärung bei CE-gekennzeichneten Produkten.' },
       { title: 'AVCP-Systeme', icon: ShieldAlert, purpose: 'Aufschlüsselung der Systeme zur Bewertung und Überprüfung der Leistungsbeständigkeit (System 1+, 1, 2+, 3, 4).', standards: 'BauPVO (EU) 2024/3110 Anhang IX / VO (EU) 305/2011 Anhang V', useCase: 'Auswahl des korrekten Prüfablaufs für tragenden Baustahl versus Estrichmörtel.' },
       { title: 'Konformität & Auditierung', icon: Award, purpose: 'Ablauf von Audits durch notifizierte Stellen, werkseigene Produktionskontrolle (WPK) und Zertifizierung.', standards: 'DIN EN ISO/IEC 17065', useCase: 'Vorbereitung einer Fertigteilwerksprüfung zur CE-Zertifizierung.' },
       { title: 'Normenarbeit im Bauwesen', icon: BookOpen, purpose: 'Prozess der Normenentwicklung (CEN, DIN, NA), Einspruchsverfahren und Veröffentlichung.', standards: 'DIN 820 (Normungsarbeit)', useCase: 'Klärung des Unterschieds zwischen Weißdruck, Entwurf und harmonisierter Norm.' },
@@ -377,8 +377,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Verein Deutscher Zementwerke e.V. (VDZ): Zement-Taschenbuch'
     ],
     regelwerke: [
-      { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN 1045-2 (Nationale Anwendungsregeln zur DIN EN 206)', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+      { title: 'DIN 1045-2 (Nationale Anwendungsregeln zur DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' }
     ],
     formeln: [
       { formel: 'V = \\frac{m_z}{\\rho_z} + \\frac{m_w}{\\rho_w} + \\sum \\frac{m_{g,i}}{\\rho_{g,i}} + V_l = 1000\\,\\text{dm}^3', erklaerung: 'Stoffraumgleichung für 1 m³ verdichteten Frischbeton.', quelle: 'DIN EN 206 / DIN 1045-2' }
@@ -418,8 +418,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'dataholz.eu: Bauteilkatalog der Holzforschung Austria'
     ],
     regelwerke: [
-      { title: 'DIN EN 1995-1-1: Eurocode 5 - Bemessung und Konstruktion von Holzbauten', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN EN 1995-1-2: Eurocode 5 - Tragwerksbemessung für den Brandfall', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN 1995-1-1: Eurocode 5 - Bemessung und Konstruktion von Holzbauten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
+      { title: 'DIN EN 1995-1-2: Eurocode 5 - Tragwerksbemessung für den Brandfall', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-2' }
     ],
     formeln: [
       { formel: 'f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}', erklaerung: 'Grundformel für den Bemessungswert einer Festigkeitseigenschaft im Holzbau unter Berücksichtigung von Nutzungsklasse und Lasteinwirkungsdauer.', quelle: 'DIN EN 1995-1-1 Gl. 2.1' }
@@ -464,8 +464,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Goris, A. (2021): Stahlbetonbau kompakt nach Eurocode 2 (Werner Verlag)'
     ],
     regelwerke: [
-      { title: 'DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken', url: 'https://www.dinmedia.de/' },
-      { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+      { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Wasserundurchl%C3%A4ssige+Bauwerke+aus+Beton' }
     ],
     formeln: [
       { formel: 'a_s = \\frac{M_{Ed}}{z \\cdot f_{yd}}', erklaerung: 'Näherungsweise Berechnung der erforderlichen Zugbewehrungsfläche a_s eines biegebeanspruchten Querschnitts bei geschätztem inneren Hebelarm z (ca. 0.9·d).', quelle: 'DIN EN 1992-1-1' },
@@ -509,8 +509,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Meschede, D. (2015): Gerthsen Physik (Springer)'
     ],
     regelwerke: [
-      { title: 'DIN EN 1993-1-1: Eurocode 3 - Bemessung und Konstruktion von Stahlbauten', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN EN 1997-1: Eurocode 7 - Entwurf, Berechnung und Bemessung in der Geotechnik', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN 1993-1-1: Eurocode 3 - Bemessung und Konstruktion von Stahlbauten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+      { title: 'DIN EN 1997-1: Eurocode 7 - Entwurf, Berechnung und Bemessung in der Geotechnik', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1997-1' }
     ],
     formeln: [
       { formel: 'w\'\'(x) = -\\frac{M(x)}{E \\cdot I}', erklaerung: 'Differentialgleichung der elastischen Biegelinie. Verknüpft die Krümmung w\'\'(x) des Balkens mit dem Biegemoment M(x), dem Elastizitätsmodul E und dem Flächenträgheitsmoment I.', quelle: 'Technische Mechanik / Elastostatik' },
@@ -553,8 +553,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Lohmeyer, G. (2021): Praktische Bauphysik - Eine Einführung mit Berechnungsbeispielen (Leitfaden)'
     ],
     regelwerke: [
-      { title: 'DIN 4108: Wärmeschutz und Energie-Einsparung in Gebäuden', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN 4109: Schallschutz im Hochbau - Anforderungen und Nachweise', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN 4108: Wärmeschutz und Energie-Einsparung in Gebäuden', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108' },
+      { title: 'DIN 4109: Schallschutz im Hochbau - Anforderungen und Nachweise', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109' }
     ],
     formeln: [
       { formel: 'q = -\\lambda \\cdot \\frac{\\Delta T}{\\Delta x}', erklaerung: 'Fouriersches Gesetz der eindimensionalen stationären Wärmeleitung. Der Wärmestrom q ist proportional zum Temperaturgradienten.', quelle: 'Physikalische Grundlagen' },
@@ -597,7 +597,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Bauer, M. et al. (2013): Green Building - Leitfaden für nachhaltiges Bauen (Springer)'
     ],
     regelwerke: [
-      { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltdeklarationen für Produkte)', url: 'https://www.dinmedia.de/' },
+      { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltdeklarationen für Produkte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
       { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG) - Anforderungen', url: 'https://www.qng.info/' }
     ],
     formeln: [
@@ -639,8 +639,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Hausknecht, K. (2018): BIM Einstieg kompakt (DIN Media)'
     ],
     regelwerke: [
-      { title: 'DIN EN ISO 19650 (Organisation und Digitalisierung von Informationen über Bauwerke und BIM)', url: 'https://www.dinmedia.de/' },
-      { title: 'VDI 2552 (BIM-Richtlinienreihe)', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN EN ISO 19650 (Organisation und Digitalisierung von Informationen über Bauwerke und BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
+      { title: 'VDI 2552 (BIM-Richtlinienreihe)', url: 'https://www.dinmedia.de/de/suche?q=VDI+2552' }
     ],
     formeln: [
       { formel: 'CI = w_m \\cdot CI_M + w_r \\cdot CI_R', erklaerung: 'Circularity Index (CI). Gewichteter Mittelwert des Kreislauf-Index der Materialien (CI_M) und des Tragwerksrückbaus (CI_R) zur Beurteilung der Zirkularität.', quelle: 'Madaster Standards / Ellen MacArthur Foundation' }
@@ -697,7 +697,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     icon: Trash2,
     basicsTitle: 'Schadstofffreie Kreislaufwirtschaft im Tief- und Hochbau',
     basicsDesc1: 'Der geordnete Rückbau hat den klassischen Abbruch abgelöst. Ziel ist es, Schadstoffe frühzeitig zu detektieren, auszuschleusen und die mineralischen Massen in ein unbedenkliches, hochwertiges Baustoffrecycling zurückzuführen.',
-    basicsDesc2: 'Dieses Modul deckt das gesamte schadstoffliche Spektrum ab (Asbest, KMF, PCB, PAK, Schwermetalle), zeigt die rechtssicheren Entsorgungswege nach Deponieverordnung (DepV) auf und strukturiert schadstofffreie Sortierungskonzepte.',
+    basicsDesc2: 'Dieses Modul deckt das gesamte schadstoffliche Spektrum ab (Asbest, KMF, PCB, PAK, Schwermetalle), zeigt die rechtlich belastbaren Entsorgungswege nach Deponieverordnung (DepV) auf und strukturiert schadstofffreie Sortierungskonzepte.',
     basicsCards: [
       { title: 'Gefahrstoffanalyse', desc: 'Sichere Identifikation gesundheitsgefährdender Altlasten in Estrichen, Klebern, Dichtstoffen und Isolierungen.' },
       { title: 'Deponieklassierung', desc: 'Einstufungsrichtwerte von unbelastetem Erdaushub (DK 0) bis zu gefährlichen Sonderabfällen (DK III).' }
@@ -713,7 +713,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     didacticCards: [
       { title: 'Lückenlose Dokumentation', desc: 'Die Wichtigkeit schadstofffreier "Zutatenlisten" für das Gebäude der Zukunft.' },
       { title: 'Schutz vor Kontamination', desc: 'Verhindern der Verschleppung von Gefahrenstoffen in den Recyclingkreislauf.' },
-      { title: 'Gesundheitsschutz', desc: 'Rechtssichere Umsetzung strenger Arbeitsschutzregeln beim Hantieren mit Staub- und Schadstoffquellen.' }
+      { title: 'Gesundheitsschutz', desc: 'Rechtlich belastbare Umsetzung strenger Arbeitsschutzregeln beim Hantieren mit Staub- und Schadstoffquellen.' }
     ],
     appStudents: 'Bereitet angehende Bauleiter und Umweltkoordinatoren auf das anspruchsvolle Abfall- und Sanierungsgeschäft vor.',
     appProfessionals: 'Unverzichtbare Arbeitshilfe für Abbruchplaner, Entsorgungskoordinatoren, Bauleiter und SiGeKos vor Ort.',
@@ -778,11 +778,11 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Wendehorst (2024): Baustoffkunde (Springer Vieweg - Aktuelle Auflage)'
     ],
     regelwerke: [
-      { title: 'DIN 68800: Holzschutz im Hochbau (Teile 1-4)', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten durch Beschichtungssysteme', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN 1045-2: Tragwerke aus Beton, Stahlbeton und Spannbeton - Nationale Festlegungen', url: 'https://www.dinmedia.de/' },
-      { title: 'WTA-Merkblatt 2-9: Sanierputzsysteme - Kriterien für Planung und Ausführung', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN EN 14179: Heißgelagertes thermisch vorgespanntes Einscheiben-Sicherheitsglas (HST)', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN 68800: Holzschutz im Hochbau (Teile 1-4)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten durch Beschichtungssysteme', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
+      { title: 'DIN 1045-2: Tragwerke aus Beton, Stahlbeton und Spannbeton - Nationale Festlegungen', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+      { title: 'WTA-Merkblatt 2-9: Sanierputzsysteme - Kriterien für Planung und Ausführung', url: 'https://www.wta-gmbh.de/' },
+      { title: 'DIN EN 14179: Heißgelagertes thermisch vorgespanntes Einscheiben-Sicherheitsglas (HST)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14179' }
     ],
     formeln: [
       { formel: 's(t) = k \\cdot \\sqrt{t}', erklaerung: 'Quadratisches Zeitgesetz der Carbonatisierungstiefe s(t) in Abhängigkeit vom Carbonatisierungsbeiwert k [mm/√a] und Bauteilalter t [Jahre]. Mit k-Sollwerten nach DIN EN 206.', quelle: 'Stark/Wicht: Dauerhaftigkeit von Beton' },
@@ -873,10 +873,10 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
-      { title: 'DIN EN 1504: Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken (Teile 1 bis 10)', url: 'https://www.dinmedia.de/' },
+      { title: 'DIN EN 1504: Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken (Teile 1 bis 10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' },
       { title: 'TR Instandhaltung: DIBt Technische Regel Instandhaltung von Betonbauwerken', url: 'https://www.dibt.de/' },
-      { title: 'DIN 68800: Holzschutz', url: 'https://www.dinmedia.de/' },
-      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten', url: 'https://www.dinmedia.de/' }
+      { title: 'DIN 68800: Holzschutz', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' }
     ],
     formeln: [
       { formel: 'K_n = K_0 \\cdot 5^n', erklaerung: 'De-Sitter-Regel (Law of Fives): Der finanzielle Instandsetzungsaufwand K_n vervünffacht sich näherungsweise in jeder aufeinanderfolgenden Lebenszyklusphase n bei unterlassener Vorsorge.', quelle: 'De Sitter (1984)' },
@@ -892,12 +892,12 @@ const MODULES_DATA: Record<string, GroupData> = {
     basicsDesc2: 'Wir vermitteln Kenntnisse zur Ausarbeitung sauberer Leistungsverzeichnisse (LV) nach VOB, beleuchten die logistische Steuerung und Qualitätskontrollen des Bauleiters, erörtern Kalkulationsannahmen und geben Starthilfe zur persönlichen Karriereplanung.',
     basicsCards: [
       { title: 'Projektsteuerung', desc: 'Verständnis des magischen Dreiecks aus Kosten, Terminen und Qualitäten im Baubetrieb.' },
-      { title: 'Mängel- & Schadensvermeidung', desc: 'Rechtssicheres Erstellen von Bautagebüchern und Abnahmeprotokollen vor Ort.' }
+      { title: 'Mängel- & Schadensvermeidung', desc: 'Rechtlich belastbares Erstellen von Bautagebüchern und Abnahmeprotokollen vor Ort.' }
     ],
     submodules: [
       { title: 'Planung & Ausschreibung', icon: ClipboardCheck, purpose: 'Erstellung von Leistungsverzeichnissen (LV), Bieterverfahren und Vertragsgestaltung.', standards: 'VOB/A (Ausschreibungsordnung)', useCase: 'Verfassen einer fehlerfreien VOB-Funktionalbeschreibung für Erdbauleistungen.' },
       { title: 'Bauleitung & Baustelle', icon: Wrench, purpose: 'Bautagebuch führen, Bauablaufsteuerung, Abnahmeverfahren, Baustellenkoordination und Sicherheitsbelehrung.', standards: 'VOB/B (Ausführung) / ArbSchG', useCase: 'Durchführung einer förmlichen Mängelrüge wegen fehlerhaft verlegter Trittschalldämmung.' },
-      { title: 'Bautagebuch', icon: ClipboardCheck, purpose: 'Rechtssichere baubetriebliche Dokumentation und Beweissicherung von Baustellenprojekten unter Witterungseinflüssen.', standards: 'VOB/B § 15 / BGB § 650', useCase: 'Dokumentation von Schlechtwetterereignissen (Bohrpfahlbeton, Frostbetonieren) und Mängelrügen im Baustellenprojekt.' },
+      { title: 'Bautagebuch', icon: ClipboardCheck, purpose: 'Rechtlich belastbare baubetriebliche Dokumentation und Beweissicherung von Baustellenprojekten unter Witterungseinflüssen.', standards: 'VOB/B § 15 / BGB § 650', useCase: 'Dokumentation von Schlechtwetterereignissen (Bohrpfahlbeton, Frostbetonieren) und Mängelrügen im Baustellenprojekt.' },
       { title: 'Produktherstellung & QS', icon: Factory, purpose: 'Abläufe in Zement-, Beton- und Fertigteilwerken, Prozessüberwachung vom Rohstoff bis zur Auslieferung.', standards: 'DIN EN ISO 9001', useCase: 'Optimierung des Verdichtungszyklus in einer automatischen Hohldielen-Schalungsbahn.' },
       { title: 'Karrierestart & Soft Skills', icon: GraduationCap, purpose: 'Tipps zum Berufseinstieg in Bauleitung oder Tragwerksplanung, Bauprojektmanagement, Kommunikation im Bauteam.', standards: 'Kammerregelungen', useCase: 'Vorbereitung auf die Aufnahme in die bayerische Ingenieurkammer-Bau.' },
       { title: 'Weiterbildung an der THA', icon: Award, purpose: 'Master- und Zertifikatsprogramme an der Technischen Hochschule Augsburg (THA) für Bauingenieure und Architekten.', standards: 'Akkreditierungsrat / DQR Stufe 7', useCase: 'Berufsbegleitende Weiterbildung im Projektmanagement oder der Fassadentechnologie.' },
@@ -921,7 +921,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Bauer, H. (2016): Baubetrieb (Springer Vieweg)'
     ],
     regelwerke: [
-      { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB) Teil A/B/C', url: 'https://www.dinmedia.de/' },
+      { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB) Teil A/B/C', url: 'https://www.dinmedia.de/de/suche?q=VOB+2019' },
       { title: 'HOAI - Honorarordnung für Architekten und Ingenieure', url: 'https://www.hoai.de/' }
     ],
     formeln: [
@@ -1003,7 +1003,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
     ],
     books: [
       { title: "Die neue Bauproduktenverordnung: Leitfaden für Planer und Hersteller", desc: "Strasburger, DIN Media. Ausführlicher Leitfaden zu CE-Leistungserklärungen und AVCP-Systemen." },
-      { title: "Bauordnungsrecht für Architekten und Ingenieure", desc: "Reinhardt, Beck. Rechtssicheres Navigieren durch die Landesbauordnungen (MBO) und VV TB Technische Baubestimmungen." }
+      { title: "Bauordnungsrecht für Architekten und Ingenieure", desc: "Reinhardt, Beck. Sicheres Navigieren durch die Landesbauordnungen (MBO) und VV TB Technische Baubestimmungen." }
     ],
     publications: [
       { journal: "Journal of European Environmental Law", title: "The transformation of the European Construction Products Regulation (CPR): Market access and digital product passes", desc: "Rechtliche Auswirkungen des digitalisierten Produktpasses." },
@@ -1395,7 +1395,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                       Interaktiver Schritt-für-Schritt Prüfungsleitfaden (Workflow)
                     </h4>
                     <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                      Dieser chronologische Leitfaden führt dich Schritt für Schritt durch das Zusammenwirken aller Einzelmodule und Werkstoffdisziplinen der Baubetreuung – von der Baustelle bis zur schlussendlichen Freigabeentscheidung. Jedes Modul ist so eigenständig und ohne Vorwissen anwendbar.
+                      Dieser chronologische Leitfaden führt Sie Schritt für Schritt durch das Zusammenwirken aller Einzelmodule und Werkstoffdisziplinen der Baubetreuung – von der Baustelle bis zur schlussendlichen Freigabeentscheidung. Jedes Modul ist so eigenständig und ohne Vorwissen anwendbar.
                     </p>
                   </div>
 
@@ -1481,7 +1481,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Dehnungsaufzeichnung (DMS):</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
                               <li><strong>Oberflächenvorbereitung:</strong> Die Baustoffkontaktfläche muss planparallel angeschliffen, absolut staubbefreit und chemisch entfettet (z.b. mit Propanol) werden.</li>
-                              <li><strong>Brückenschaltung konfigurieren:</strong> Verwende Wheatstone-Voll- oder Halbbrücken, um parasitäre Biegespannungen oder witterungsbedingte Temperatureffekte (&Delta;T) automatisch zu kompensieren.</li>
+                              <li><strong>Brückenschaltung konfigurieren:</strong> Verwenden Sie Wheatstone-Voll- oder Halbbrücken, um parasitäre Biegespannungen oder witterungsbedingte Temperatureffekte (&Delta;T) automatisch zu kompensieren.</li>
                               <li><strong>Kalibrierfaktor (k-Wert):</strong> Exakt im Verstärker einstellen. Dehnung entspricht &epsilon; = (1/k) · (&Delta;R/R).</li>
                             </ul>
                           </div>
@@ -1525,7 +1525,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                             <div>
                               <span className="font-bold text-red-900 block text-[10.5px]">Spannungs-Dehnungs-Visualisierung</span>
                               <p className="text-[10.5px] text-red-950/80 leading-normal mt-1">
-                                Im &quot;Virtuelle Versuche&quot; Modul simuliere interaktiv Spannungs-Dehnungs-Kurven unter Veränderung von Porosität und Werkstoffparametern. Vergleiche sprödes Versagen (Beton, Glas) mit zähelastischem Fließverhalten (B500B Betonstahl).
+                                Im &quot;Virtuelle Versuche&quot; Modul simuliere interaktiv Spannungs-Dehnungs-Kurven unter Veränderung von Porosität und Werkstoffparametern. Vergleichen Sie sprödes Versagen (Beton, Glas) mit zähelastischem Fließverhalten (B500B Betonstahl).
                               </p>
                             </div>
                             <div className="bg-white p-1.5 border border-red-100 rounded text-[9.5px] font-mono text-red-700 mt-2 text-center">
@@ -1862,7 +1862,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                   <h3 className="text-lg font-bold text-slate-800">Baustoff-Klassifizierung (Wikipedia-Recherche)</h3>
                 </div>
                 <p className="text-xs text-slate-600 mb-5 leading-relaxed">
-                  Basierend auf der Wikipedia-Enzyklopädie für <strong>Baustoffe</strong> haben wir alle dort klassifizierten Materialarten analysiert und im BaustoffBoard zwecks interaktiver Lehre integriert. Klicke auf einen Baustoff, um direkt in das entsprechende Fachbereichsmodul zu springen:
+                  Basierend auf der Wikipedia-Enzyklopädie für <strong>Baustoffe</strong> haben wir alle dort klassifizierten Materialarten analysiert und im BaustoffBoard zwecks interaktiver Lehre integriert. Klicken Sie auf einen Baustoff, um direkt in das entsprechende Fachbereichsmodul zu springen:
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

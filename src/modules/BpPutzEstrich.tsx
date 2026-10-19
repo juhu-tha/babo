@@ -389,11 +389,11 @@ export default function BpPutzEstrich() {
           'Wohnungsbau-Ausschuss: Richtlinie für das Verputzen von Mauerwerk.'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 13914-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN 18550-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Bestimmungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18560-1 bis 7 (Estriche im Bauwesen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13813 (Estrichmörtel und Estrichmassen - Eigenschaften und Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 998-1 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 13914-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13914-1' }, 
+          { title: 'DIN 18550-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Bestimmungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18550-1' },
+          { title: 'DIN 18560-1 bis 7 (Estriche im Bauwesen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1' },
+          { title: 'DIN EN 13813 (Estrichmörtel und Estrichmassen - Eigenschaften und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13813' },
+          { title: 'DIN EN 998-1 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-1' }
         ]} 
         formeln={[
           { 

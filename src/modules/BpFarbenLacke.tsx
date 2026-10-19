@@ -1694,10 +1694,10 @@ export default function BpFarbenLacke() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme - Teile 1 bis 9)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme - Teile 1 bis 9)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
           { title: 'Decopaint-Richtlinie 2004/42/EG (Begrenzung der Emissionen flüchtiger organischer Verbindungen)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN ISO 2409 (Beschichtungsstoffe - Gitterschnittprüfung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1062-1 (Beschichtungsstoffe - Beschichtungssysteme für mineralische Untergründe und Beton im Außenbereich)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 2409 (Beschichtungsstoffe - Gitterschnittprüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+2409' },
+          { title: 'DIN EN 1062-1 (Beschichtungsstoffe - Beschichtungssysteme für mineralische Untergründe und Beton im Außenbereich)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1062-1' }
         ]}
         formeln={[
           {

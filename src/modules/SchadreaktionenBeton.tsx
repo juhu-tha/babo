@@ -964,9 +964,9 @@ export default function SchadreaktionenBeton() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DAfStb Alkali-Richtlinie (Vorbeugung von Schäden durch Alkali-Kieselsäure-Reaktion im Beton)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Festlegung und Expositionen)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 19573 (Zusätzliche Anforderungen an schadensresistente Beton- und Mörtelsysteme)', url: 'https://www.beuth.de/' }
+          { title: 'DAfStb Alkali-Richtlinie (Vorbeugung von Schäden durch Alkali-Kieselsäure-Reaktion im Beton)', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Alkali' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Festlegung und Expositionen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN 19573 (Zusätzliche Anforderungen an schadensresistente Beton- und Mörtelsysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19573' }
         ]}
         formeln={[
           {

@@ -1158,12 +1158,12 @@ export const Bauchemie: React.FC = () => {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15651-1 bis -4 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12004-1 (Mörtel und Klebstoffe für Fliesen und Platten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 204 (Klassifizierung von thermoplastischen Holzklebstoffen für nichttragende Anwendungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit Fugendichtstoffen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 934-2 (Zusatzmittel für Beton, Mörtel und Einpressmörtel)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15651-1 bis -4 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15651-1' },
+          { title: 'DIN EN 12004-1 (Mörtel und Klebstoffe für Fliesen und Platten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12004-1' },
+          { title: 'DIN EN 204 (Klassifizierung von thermoplastischen Holzklebstoffen für nichttragende Anwendungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+204' },
+          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit Fugendichtstoffen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18540' },
+          { title: 'DIN EN 934-2 (Zusatzmittel für Beton, Mörtel und Einpressmörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+934-2' },
+          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' }
         ]}
         formeln={[
           {

@@ -853,8 +853,8 @@ export default function Bestand() {
         ]}
         regelwerke={[
           { title: "Gebäudemodernisierungsgesetz (GModG / GEG) - Sanierungsanforderungen für bestehende Gebäude", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz; Vermeidung von Tauwasser und Schimmel)", url: "https://www.dinmedia.de" },
-          { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de" },
+          { title: "DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz; Vermeidung von Tauwasser und Schimmel)", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-3" },
+          { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
           { title: "WTA-Merkblatt 6-4: Innendämmung nach WTA I – Planungsleitfaden", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
         ]}

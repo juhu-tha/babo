@@ -715,7 +715,7 @@ export default function InnovativeWerkstoffe() {
                       <Cpu size={18} className="text-indigo-600 animate-spin" /> Standsicherheits- und Frischbetonversagens-Simulator
                     </h3>
                     <p className="text-xs text-slate-500 mt-1">
-                      Simuliere mathematisch exakt das elastische Knicken und das plastische Fließversagen während des Druckvorgangs eines realen Bauteils am Fußpunkt.
+                      Simulieren Sie mathematisch exakt das elastische Knicken und das plastische Fließversagen während des Druckvorgangs eines realen Bauteils am Fußpunkt.
                     </p>
                   </div>
 
@@ -941,7 +941,7 @@ export default function InnovativeWerkstoffe() {
                         <ul className="text-[11px] text-indigo-950 space-y-1 leading-relaxed list-inside list-disc">
                           {isFailed && (
                             <>
-                              <li>Aktiviere den <strong>Schnellbeschleuniger</strong> oder verringern Sie die <strong>Baugeschwindigkeit (<InlineMath math="v" />)</strong>, um dem Bauteilfuß Zeit zu geben, mechanische Steifigkeit aufzubauen.</li>
+                              <li>Aktivieren Sie den <strong>Schnellbeschleuniger</strong> oder verringern Sie die <strong>Baugeschwindigkeit (<InlineMath math="v" />)</strong>, um dem Bauteilfuß Zeit zu geben, mechanische Steifigkeit aufzubauen.</li>
                               <li>Ändern Sie den Bauteilverlauf auf <strong>Gewellt (Folded)</strong> oder <strong>Kreisförmig</strong>. Dadurch vervielfachen Sie das Trägheitsmoment <InlineMath math="I" /> ohne Zusatzmaterial!</li>
                             </>
                           )}
@@ -1113,7 +1113,7 @@ export default function InnovativeWerkstoffe() {
             <div className="border-b border-home-grau/30 pb-3">
               <h3 className="text-lg font-bold text-slate-900 flex items-center gap-1.5"><HelpCircle className="text-indigo-600" /> Interaktiver Baustoff-Wegweiser</h3>
               <p className="text-xs text-slate-500 mt-0.5 leading-relaxed font-medium">
-                Suchen Sie ein passendes Material für ein statisches oder thermisches Vorhaben? Geben Sie die Parameter Ihres Tragwerkes ein und lass dir die optimale innovative Lösung ableiten.
+                Suchen Sie ein passendes Material für ein statisches oder thermisches Vorhaben? Geben Sie die Parameter Ihres Tragwerkes ein und lass Ihnen die optimale innovative Lösung ableiten.
               </p>
             </div>
 
@@ -1248,7 +1248,7 @@ export default function InnovativeWerkstoffe() {
                   <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-400">
                     <Info size={40} className="text-indigo-200 mb-3" />
                     <h4 className="font-bold text-sm text-slate-800 mb-1">Kein Eignungsergebnis berechnet</h4>
-                    <p className="text-xs max-w-xs leading-normal">Klicke links auf "Eignung berechnen &amp; Material vorschlagen", um die statischen und ökologischen Parameter auszuwerten.</p>
+                    <p className="text-xs max-w-xs leading-normal">Klicken Sie links auf "Eignung berechnen &amp; Material vorschlagen", um die statischen und ökologischen Parameter auszuwerten.</p>
                   </div>
                 )}
 
@@ -1431,7 +1431,7 @@ export default function InnovativeWerkstoffe() {
         regelwerke={[
           { title: "DAfStb-Richtlinie Ultrahochfester Beton (UHPC)", url: "https://www.dafstb.de/" },
           { title: "Allgemeine Bauartgenehmigungen (aBG) für Carbonbetonsysteme - DIBt", url: "https://www.dibt.de/" },
-          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauteilen)", url: "https://www.dinmedia.de/" }
+          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauteilen)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1" }
         ]}
         formeln={[
           {

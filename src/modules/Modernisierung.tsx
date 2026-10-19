@@ -987,9 +987,9 @@ export default function Modernisierung() {
         ]} 
         regelwerke={[
           { title: "Gebäudemodernisierungsgesetz (GModG, BGBl. 2026 I Nr. 226, vormals GEG) - Bauteilanforderungen (§ 35/§ 36)", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN EN ISO 6946: Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient", url: "https://www.dinmedia.de" },
-          { title: "DIN 4108-2: Mindestanforderungen an den Wärmeschutz von Gebäuden", url: "https://www.dinmedia.de" },
-          { title: "DIN V 18599: Energetische Bewertung von Gebäuden", url: "https://www.dinmedia.de" }
+          { title: "DIN EN ISO 6946: Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
+          { title: "DIN 4108-2: Mindestanforderungen an den Wärmeschutz von Gebäuden", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-2" },
+          { title: "DIN V 18599: Energetische Bewertung von Gebäuden", url: "https://www.dinmedia.de/de/suche?q=DIN+V+18599" }
         ]} 
         formeln={[
           {

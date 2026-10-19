@@ -16,7 +16,7 @@ export default function Impressum() {
             </p>
           </div>
           <span className="px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap self-start sm:self-auto">
-            Rechtssicher Stand 2026
+            Stand 2026
           </span>
         </div>
         

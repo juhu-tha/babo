@@ -341,9 +341,9 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             { title: 'Erweichungspunkt RuK', url: 'https://de.wikipedia.org/wiki/Erweichungspunkt_Ring_und_Kugel' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)', url: 'https://www.dinmedia.de/' },
-            { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/' },
-            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)', url: 'https://www.dinmedia.de/' }
+            { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12591' },
+            { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1426' },
+            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1427' }
           ]}
           literatur={[
             'Radenberg, M. (2014): Asphalt im Straßenbau (Kirschbaum Verlag)',

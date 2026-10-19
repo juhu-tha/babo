@@ -128,9 +128,9 @@ export default function Leichtbeton() {
           { title: 'Porenbeton', url: 'https://de.wikipedia.org/wiki/Porenbeton' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Leichtbetonklassen LC8/9 bis LC80/88, Rohdichteklassen D1.0 bis D2.0)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2 - Abschnitt 11: Leichtbeton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13055:2016-11 (Leichte Gesteinskörnungen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Leichtbetonklassen LC8/9 bis LC80/88, Rohdichteklassen D1.0 bis D2.0)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2 - Abschnitt 11: Leichtbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 13055:2016-11 (Leichte Gesteinskörnungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13055' },
           { title: 'DBV-Merkblatt: Konstruktionsleichtbeton:2017-09', url: 'https://www.betonverein.de/' }
         ]}
         literatur={[

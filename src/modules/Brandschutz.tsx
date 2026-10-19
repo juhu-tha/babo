@@ -383,9 +383,9 @@ export default function Brandschutz() {
           'Hosser, D. (2018): Brandschutz im Bauwesen (Vieweg+Teubner Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten zu ihrem Brandverhalten - Euroklassen A1..F)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen - Klassifizierte Baustoffe & Feuerwiderstand)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-2:2024-03 (Eurocode 5: Bemessung von Holzbauten - Heißbemessung & Abbrandraten)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten zu ihrem Brandverhalten - Euroklassen A1..F)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13501-1' },
+          { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen - Klassifizierte Baustoffe & Feuerwiderstand)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-4' },
+          { title: 'DIN EN 1995-1-2:2024-03 (Eurocode 5: Bemessung von Holzbauten - Heißbemessung & Abbrandraten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-2' },
           { title: 'Musterbauordnung (MBO 2023 - Gebäudeklassen 1 bis 5)', url: 'https://www.bauministerkonferenz.de/' }
         ]}
         formeln={[

@@ -977,7 +977,7 @@ Richte die Dezimalzahlen mit dem siunitx-Paket S-Spalten am Komma aus. Keine ver
               </p>
             </div>
             <div className="inline-flex items-center gap-1 text-xs font-mono bg-white px-3 py-1.5 rounded-lg border border-home-grau/25 text-shiraz font-bold shrink-0">
-              Rechtssicher
+              Rechtlich belastbar
             </div>
           </div>
 

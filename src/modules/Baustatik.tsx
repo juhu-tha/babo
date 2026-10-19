@@ -826,9 +826,9 @@ export default function Baustatik() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1991-1-1:2010-12 (Eurocode 1: Einwirkungen auf Tragwerke - Wichten, Eigengewicht, Nutzlasten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1991-1-1:2010-12 (Eurocode 1: Einwirkungen auf Tragwerke - Wichten, Eigengewicht, Nutzlasten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991-1-1' },
+          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' }
         ]}
         formeln={[
           {

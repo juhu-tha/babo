@@ -465,7 +465,7 @@ export default function Literatur() {
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-home-grau" size={18} />
             <input 
               type="text"
-              placeholder="Suche nach Titel, Autor (z. B. Vollenschaar, Locher), Verlag, Stichwort (z. B. C-S-H, Eurocode, EPD)..."
+              placeholder="Suchen Sie nach Titel, Autor (z. B. Vollenschaar, Locher), Verlag, Stichwort (z. B. C-S-H, Eurocode, EPD)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-11 pr-4 py-2.5 bg-off-white border border-home-grau/30 rounded-xl text-sm text-text-main placeholder-home-grau focus:outline-none focus:ring-2 focus:ring-shiraz/40 focus:border-shiraz transition-all"
@@ -622,7 +622,7 @@ export default function Literatur() {
               <BookOpen size={14} className="text-shiraz" /> 3. Zitierstandard nach DIN ISO 690
             </h4>
             <p className="leading-relaxed">
-              Verwende für Abschlussarbeiten ein einheitliches Zitierschema (Autor-Jahr oder numerischer Harvard-Stil) mit Angabe von Autor, Erscheinungsjahr, Buchtitel, Auflage, Verlag und Seitenzahl bei konkreten Zahlenwerten.
+              Verwenden Sie für Abschlussarbeiten ein einheitliches Zitierschema (Autor-Jahr oder numerischer Harvard-Stil) mit Angabe von Autor, Erscheinungsjahr, Buchtitel, Auflage, Verlag und Seitenzahl bei konkreten Zahlenwerten.
             </p>
           </div>
         </div>
@@ -644,12 +644,12 @@ export default function Literatur() {
           'Hillebrandt, A. et al.: Atlas Recycling – Gebäude als Materialressource (Edition Detail)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 690: Richtlinien für Titelangaben und Zitate von Informationsressourcen', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1505-2: Zitierregeln für wissenschaftliche Veröffentlichungen', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1990: Eurocode: Grundlagen der Tragwerksplanung (Statistische Auswertung von Werkstoffkennwerten)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 690: Richtlinien für Titelangaben und Zitate von Informationsressourcen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+690' },
+          { title: 'DIN 1505-2: Zitierregeln für wissenschaftliche Veröffentlichungen', url: 'https://www.dinmedia.de/de/suche?q=DIN+1505-2' },
+          { title: 'DIN EN 1990: Eurocode: Grundlagen der Tragwerksplanung (Statistische Auswertung von Werkstoffkennwerten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' }
         ]}
         weblinks={[
-          { title: 'DIN Media (ehemals Beuth Verlag) – Zentrales Normenportal', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN Media (ehemals Beuth Verlag) – Zentrales Normenportal', url: 'https://www.dinmedia.de/de/suche?q=DIN+Media' },
           { title: 'SpringerLink – Bautechnische Fachbücher & Journale', url: 'https://link.springer.com/' },
           { title: 'Wiley Online Library – Beton- und Stahlbetonbau', url: 'https://onlinelibrary.wiley.com/' },
           { title: 'ScienceDirect – Cement and Concrete Research', url: 'https://www.sciencedirect.com/journal/cement-and-concrete-research' },

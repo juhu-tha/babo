@@ -934,7 +934,7 @@ export default function BpTrockenbau() {
                     <strong>1. Zweitlagige Verschraubung:</strong> Bei einer doppelten Beplankung muss die erste Lage nur mit ca. einem Drittel der Schrauben (Ständerachsabstand 75 cm) fixiert werden. Die zweite Lage wird voll verschraubt (Achsabstand 25 cm).
                   </p>
                   <p>
-                    <strong>2. Fugenversatz:</strong> Vermeide unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Statiksicherheit und Rissvermeidung um mindestens <strong>400 mm</strong> zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.
+                    <strong>2. Fugenversatz:</strong> Vermeiden Sie unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Statiksicherheit und Rissvermeidung um mindestens <strong>400 mm</strong> zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.
                   </p>
                   <p>
                     <strong>3. Schallentkopplung:</strong> Ohne das untergelegte Schaumstoff-Dichtungsband leitet die Trockenbauwand Körperschall ungehindert in Decke, Flur und Wände. Das ist einer der häufigsten Baumängel (Schallbrücke!).
@@ -964,12 +964,12 @@ export default function BpTrockenbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[ 
-          { title: 'DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN 18180 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18181' }, 
+          { title: 'DIN 18180 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18180' },
+          { title: 'DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+520' },
+          { title: 'DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14195' },
+          { title: 'DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109' },
+          { title: 'DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-4' }
         ]} 
         formeln={[
           {

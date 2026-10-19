@@ -87,7 +87,7 @@ export default function Abfaelle() {
       wann: 'Vor und während der Einstufung und Deklaration der Abfälle für den Transport.',
       was: 'Exakte europaweit gültige Abfallklassifizierung (6-stelliger Abfallschlüssel).',
       wie: 'Zuordnung nach Herkunft/Art sowie Einstufung von gefährlichen Abfällen (Spiegel-Einträge mit *).',
-      wozu: 'Eindeutige und rechtssichere rechtliche Einstufung für Transport, Abrechnung und Verwertbarkeit.'
+      wozu: 'Eindeutige und rechtlich belastbare Einstufung für Transport, Abrechnung und Verwertbarkeit.'
     },
     {
       id: 'ebv',
@@ -185,7 +185,7 @@ export default function Abfaelle() {
       wann: 'Vor der Entsorgungs-Deklaration zur Absicherung der Einstufung.',
       was: 'Haufwerke (Bauschutthalden) oder unberührter anstehender Boden in Baugruben.',
       wie: 'Repräsentative Beprobung nach verbindlichem LAGA PN 98-Schema durch sachkundige Gutachter.',
-      wozu: 'Chemisch rechtssichere Einstufung, wodurch Falschdeklarationen und Abweisungen an Deponietoren verhindert werden.'
+      wozu: 'Chemisch rechtlich belastbare Einstufung, wodurch Falschdeklarationen und Abweisungen an Deponietoren verhindert werden.'
     },
     {
       id: 'checklisten',
@@ -609,7 +609,7 @@ export default function Abfaelle() {
                         Vorhandensein von Gefahrstoffen prüfen
                       </h5>
                       <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                        Prüfe, ob Hinweise auf historische Schadstoffe vorliegen (z.B. Asbest, teerhaltiger Gussasphalt, PCB-haltige Fugendichtstoffe, Holzschutzmittelhaltiges Altholz). Ziehe hierzu Schadstoffgutachten, Bestandspläne und die historische Nutzung des Bauwerks heran.
+                        Prüfen Sie, ob Hinweise auf historische Schadstoffe vorliegen (z.B. Asbest, teerhaltiger Gussasphalt, PCB-haltige Fugendichtstoffe, Holzschutzmittelhaltiges Altholz). Ziehen Sie hierzu Schadstoffgutachten, Bestandspläne und die historische Nutzung des Bauwerks heran.
                       </p>
                     </div>
                   </div>
@@ -637,7 +637,7 @@ export default function Abfaelle() {
                         Abfallschlüssel final festlegen & deklarieren
                       </h5>
                       <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                        Lege basierend auf den Analyseergebnissen und Grenzwerten den finalen Abfallschlüssel fest. Handelt es sich um gefährlichen Abfall (gekennzeichnet mit einem Sternchen *), greift das elektronische Abfallnachweisverfahren (eANV) mit Erzeugernummer und Entsorgungsnachweis.
+                        Legen Sie basierend auf den Analyseergebnissen und Grenzwerten den finalen Abfallschlüssel fest. Handelt es sich um gefährlichen Abfall (gekennzeichnet mit einem Sternchen *), greift das elektronische Abfallnachweisverfahren (eANV) mit Erzeugernummer und Entsorgungsnachweis.
                       </p>
                     </div>
                   </div>
@@ -755,7 +755,7 @@ export default function Abfaelle() {
                       <ul className="space-y-1.5 text-slate-600 font-medium font-semibold">
                         <li>✓ <strong className="text-slate-800 font-bold">Bundesrecht:</strong> Ein einheitliches Gesetz bricht ungleiches Länderrecht. Volle Akzeptanz bei länderübergreifenden Projekten.</li>
                         <li>✓ <strong className="text-slate-800 font-bold">Produktstatus (§ 12 KrWG):</strong> Erstmalige gesetzlich verankerte Entlassung überwachter Sekundärbaustoffe aus dem Abfallregime.</li>
-                        <li>✓ <strong className="text-slate-800 font-bold">Katasterpflicht:</strong> Größere Wiedereinbaumaßnahmen (ab 250 m³) sind rechtssicher behördenregistriert (Sicherheit für nachfolgende Baueigentümer).</li>
+                        <li>✓ <strong className="text-slate-800 font-bold">Katasterpflicht:</strong> Größere Wiedereinbaumaßnahmen (ab 250 m³) sind rechtlich belastbar behördenregistriert (Sicherheit für nachfolgende Baueigentümer).</li>
                       </ul>
                     </div>
                   </div>
@@ -1512,7 +1512,7 @@ export default function Abfaelle() {
                           Geotechnischer Schichtenaufbau nach DepV Anhang 1
                         </h4>
                         <p className="text-xs text-slate-500 mt-0.5">
-                          Vergleiche den normativen Aufbau der wissenschaftlich fundierten Dichtungsschichten an der Deponiebasis und der Oberfläche.
+                          Vergleichen Sie den normativen Aufbau der wissenschaftlich fundierten Dichtungsschichten an der Deponiebasis und der Oberfläche.
                         </p>
                       </div>
                       
@@ -1763,7 +1763,7 @@ export default function Abfaelle() {
 
                         <div className="mt-5 pt-3 border-t border-home-grau/20 flex items-center gap-1.5 text-xs text-slate-400">
                           <HelpCircle className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
-                          <span>Klicke auf eine Schicht im linken Stapel, um die hydraulischen Eigenschaften und materialtechnischen Parameter einzusehen.</span>
+                          <span>Klicken Sie auf eine Schicht im linken Stapel, um die hydraulischen Eigenschaften und materialtechnischen Parameter einzusehen.</span>
                         </div>
                       </div>
                     </div>
@@ -2375,7 +2375,7 @@ export default function Abfaelle() {
                   Praxis-Checklisten für Abfälle, Altlasten und Rückbau
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  Kompakte und rechtssichere Handlungsanleitungen für die Baustellenpraxis. Wählen Sie unten ein Thema aus, um die detaillierte Checkliste für anfallende Prozesse anzuzeigen.
+                  Kompakte und rechtlich belastbare Handlungsanleitungen für die Baustellenpraxis. Wählen Sie unten ein Thema aus, um die detaillierte Checkliste für anfallende Prozesse anzuzeigen.
                 </p>
               </div>
 
@@ -2421,7 +2421,7 @@ export default function Abfaelle() {
                   <div className="space-y-6">
                     <div className="border-b border-slate-100 pb-3">
                       <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                        <Scale className="text-shiraz w-5 h-5" /> Leitfaden zur rechtssicheren Abfalleinstufung (§ 3, 5, 8 KrWG &amp; AVV)
+                        <Scale className="text-shiraz w-5 h-5" /> Leitfaden zur rechtlich belastbaren Abfalleinstufung (§ 3, 5, 8 KrWG &amp; AVV)
                       </h4>
                       <p className="text-xs text-slate-500 mt-1">
                         Rechtliche Zuordnung, Bestimmung gefährlicher/nicht gefährlicher Abfälle und Voraussetzungen für das Erreichen des Produktstatus (Abfallende).
@@ -2457,7 +2457,7 @@ export default function Abfaelle() {
                         {
                           step: 5,
                           title: 'Prüfung der kumulativen Voraussetzungen des Abfallendes (§ 5 KrWG)',
-                          desc: 'Kann das Material die Abfalleigenschaft verlieren und Produktstatus erlangen? Prüfe: 1) Zweckbestimmung (Nutzung für Wegebau o.ä.), 2) Marktnachfrage, 3) Erfüllung aller technischen Normen (z.B. Frostschutz nach TL BuB), 4) Unbedenklichkeit für Mensch und Umwelt (EBV-Konformität).',
+                          desc: 'Kann das Material die Abfalleigenschaft verlieren und Produktstatus erlangen? Prüfen Sie: 1) Zweckbestimmung (Nutzung für Wegebau o.ä.), 2) Marktnachfrage, 3) Erfüllung aller technischen Normen (z.B. Frostschutz nach TL BuB), 4) Unbedenklichkeit für Mensch und Umwelt (EBV-Konformität).',
                           ref: 'Kreislaufwirtschaftsgesetz § 5 (1)'
                         },
                         {
@@ -2507,13 +2507,13 @@ export default function Abfaelle() {
                         {
                           step: 1,
                           title: 'Güteüberwachung des RC-Herstellers absichern',
-                          desc: 'Stelle sicher, dass der Sekundärbaustoff aus einer gemäß EBV zugelassenen Brech- und Siebanlage stammt. Fordern Sie das aktuelle QUBA-Gütezeichen (Qualitätssicherung Sekundärbaustoffe) oder das landesspezifische QRB-Zertifikat an.',
+                          desc: 'Stellen Sie sicher, dass der Sekundärbaustoff aus einer gemäß EBV zugelassenen Brech- und Siebanlage stammt. Fordern Sie das aktuelle QUBA-Gütezeichen (Qualitätssicherung Sekundärbaustoffe) oder das landesspezifische QRB-Zertifikat an.',
                           ref: 'EBV § 4 - § 11'
                         },
                         {
                           step: 2,
                           title: 'Konformitätszertifikat & Laborwerte prüfen',
-                          desc: 'Sichten Sie die werkseigene Produktionskontrolle (WPK) und die Fremdüberwachungsberichte des Herstellers. Vergleiche die deklarierte Materialklasse (z.B. RC-1, RC-2 oder BM-0) mitsamt den Laboranalysen.',
+                          desc: 'Sichten Sie die werkseigene Produktionskontrolle (WPK) und die Fremdüberwachungsberichte des Herstellers. Vergleichen Sie die deklarierte Materialklasse (z.B. RC-1, RC-2 oder BM-0) mitsamt den Laboranalysen.',
                           ref: 'EBV Anhang 1 Tabellen'
                         },
                         {
@@ -2531,7 +2531,7 @@ export default function Abfaelle() {
                         {
                           step: 5,
                           title: 'Bautechnische Eignung & Verdichtungsgüte nachweisen',
-                          desc: 'Stelle sicher, dass das RC-Gemisch die mechanischen Anforderungen der TL Gestein-StB erfüllt (z.B. Frostbeständigkeit, Tragfähigkeit). Prüfe nach Einbau den Verdichtungsgrad mittels Plattendruckversuchen (Soll-Wert: Ev2 ≥ 120 MN/m² bei Tragschichten).',
+                          desc: 'Stellen Sie sicher, dass das RC-Gemisch die mechanischen Anforderungen der TL Gestein-StB erfüllt (z.B. Frostbeständigkeit, Tragfähigkeit). Prüfen Sie nach Einbau den Verdichtungsgrad mittels Plattendruckversuchen (Soll-Wert: Ev2 ≥ 120 MN/m² bei Tragschichten).',
                           ref: 'ZTV SoB-StB / DIN EN 13285'
                         },
                         {
@@ -2593,7 +2593,7 @@ export default function Abfaelle() {
                         {
                           step: 3,
                           title: 'Probenahme- und Analytikplan (VDI 3866 / 3876)',
-                          desc: 'Lege ein systematisches Raster zur Probenentnahme fest. Führe gezielte Laboranalysen an Putzen, Klebern und Spachtelmassen (REM-EDX Analysen auf Asbest nach VDI 3866 Blatt 5) sowie nasschemische Aufschlüsse für PAK, CPS, PCP und Schwermetalle durch.',
+                          desc: 'Legen Sie ein systematisches Raster zur Probenentnahme fest. Führen Sie gezielte Laboranalysen an Putzen, Klebern und Spachtelmassen (REM-EDX Analysen auf Asbest nach VDI 3866 Blatt 5) sowie nasschemische Aufschlüsse für PAK, CPS, PCP und Schwermetalle durch.',
                           ref: 'VDI 3866 / DIN EN ISO 16000-9'
                         },
                         {
@@ -2611,7 +2611,7 @@ export default function Abfaelle() {
                         {
                           step: 6,
                           title: 'Verwertungsbericht &amp; Behördenfreigabe',
-                          desc: 'Erstelle nach Abschluss der Abbrucharbeiten eine Massenbilanz mitsamt Entsorgungsbelegen und Wiegescheinen. Lege diesen Verwertungsbericht der zuständigen Bauordnungsbehörde/Umweltbehörde zur abschließenden Entlastung des Bauherrn vor.',
+                          desc: 'Erstellen Sie nach Abschluss der Abbrucharbeiten eine Massenbilanz mitsamt Entsorgungsbelegen und Wiegescheinen. Legen Sie diesen Verwertungsbericht der zuständigen Bauordnungsbehörde/Umweltbehörde zur abschließenden Entlastung des Bauherrn vor.',
                           ref: 'LBO / KrWG Abfallregister'
                         }
                       ].map((item) => (
@@ -2655,7 +2655,7 @@ export default function Abfaelle() {
                         {
                           step: 1,
                           title: 'Verwertungsausschluss formell prüfen &amp; begründen',
-                          desc: 'Dokumentiere pflichtbewusst, dass eine stoffliche (z.B. Brechanlage) oder energetische Verwertung aus technischen Gründen unmöglich oder wegen unverhältnismäßiger Mehrkosten unzumutbar ist. Deponierung ist gesetzlich die allerletzte Entsorgungsstufe.',
+                          desc: 'Dokumentieren Sie pflichtbewusst, dass eine stoffliche (z.B. Brechanlage) oder energetische Verwertung aus technischen Gründen unmöglich oder wegen unverhältnismäßiger Mehrkosten unzumutbar ist. Deponierung ist gesetzlich die allerletzte Entsorgungsstufe.',
                           ref: 'KrWG § 6 Abfallhierarchie'
                         },
                         {
@@ -2673,7 +2673,7 @@ export default function Abfaelle() {
                         {
                           step: 4,
                           title: 'Einstufung in Deponieklassen (DK 0 bis DK IV)',
-                          desc: 'Vergleiche die Messwerte mit den Zuordnungswerten der DepV: DK 0 (unbelasteter Inertabfall), DK I (oberirdisch, geringe Belastung), DK II (Hausmüll, typischer schwerer Bauschutt), DK III (gefährlicher Industrieabfall), DK IV (Sonderabfälle, unter Tage).',
+                          desc: 'Vergleichen Sie die Messwerte mit den Zuordnungswerten der DepV: DK 0 (unbelasteter Inertabfall), DK I (oberirdisch, geringe Belastung), DK II (Hausmüll, typischer schwerer Bauschutt), DK III (gefährlicher Industrieabfall), DK IV (Sonderabfälle, unter Tage).',
                           ref: 'DepV Anhang 3 Tabelle 2'
                         },
                         {
@@ -2729,7 +2729,7 @@ export default function Abfaelle() {
                         {
                           step: 1,
                           title: 'Probenahmestrategie &amp; Untersuchungsziele definieren',
-                          desc: 'Erstelle vorab einen schriftlichen Probenahmeplan. Bestimme das Ziel der Untersuchung (z.B. Schadstoffbewertung gemäß BBodSchV oder Entsorgungsdeklaration) und definiere die Analyse-Kennwerte im Labor.',
+                          desc: 'Erstellen Sie vorab einen schriftlichen Probenahmeplan. Bestimmen Sie das Ziel der Untersuchung (z.B. Schadstoffbewertung gemäß BBodSchV oder Entsorgungsdeklaration) und definiere die Analyse-Kennwerte im Labor.',
                           ref: 'DIN 19698-1 / LAGA PN 98'
                         },
                         {
@@ -2747,7 +2747,7 @@ export default function Abfaelle() {
                         {
                           step: 4,
                           title: 'Einzelproben (EP) im Feld entnehmen',
-                          desc: 'Entnimm die Einzelproben gleichmäßig über das gesamte Haufwerksvolumen verteilt (oben, mitte, unten, tief im Haldenkörper). Verwende ggf. einen Minibagger, um tiefe Schichten aufzuschließen. Kratzen Sie oberflächlich verwitterte Außenzonen (ca. 10 cm Tiefe) ab und verwerfen Sie diese.',
+                          desc: 'Entnehmen Sie die Einzelproben gleichmäßig über das gesamte Haufwerksvolumen verteilt (oben, mitte, unten, tief im Haldenkörper). Verwenden Sie ggf. einen Minibagger, um tiefe Schichten aufzuschließen. Kratzen Sie oberflächlich verwitterte Außenzonen (ca. 10 cm Tiefe) ab und verwerfen Sie diese.',
                           ref: 'DIN 19698-1 Abs. 7.4'
                         },
                         {
@@ -2759,7 +2759,7 @@ export default function Abfaelle() {
                         {
                           step: 6,
                           title: 'Protokollierung &amp; gekühlter Transport',
-                          desc: 'Dokumentiere jeden Probenahmeschritt detailliert in einem schriftlichen, fälschungssicheren Feldprotokoll (inkl. Halden-Skizzen, Höhenangaben, Probenahmedatum, Fotos und GPS-Koordinaten). Sichern Sie die Kühlung der Proben während des Transports zum akkreditierten Umweltlabor.',
+                          desc: 'Dokumentieren Sie jeden Probenahmeschritt detailliert in einem schriftlichen, fälschungssicheren Feldprotokoll (inkl. Halden-Skizzen, Höhenangaben, Probenahmedatum, Fotos und GPS-Koordinaten). Sichern Sie die Kühlung der Proben während des Transports zum akkreditierten Umweltlabor.',
                           ref: 'DIN 19698-1 Abs. 8'
                         }
                       ].map((item) => (
@@ -2809,13 +2809,13 @@ export default function Abfaelle() {
                         {
                           step: 2,
                           title: 'Gefährdungsbeurteilung &amp; behördliche Arbeitsanzeige',
-                          desc: 'Erstelle vor Ausführungsbeginn eine Gefährdungsbeurteilung. Bei Asbestsanierungen (TRGS 519) oder Arbeiten in kontaminierten Bereichen (TRGS 524) ist die Baustelle mindestens 14 Tage vor Arbeitsbeginn der Gewerbeaufsicht und der Berufsgenossenschaft (BG BAU) anzuzeigen.',
+                          desc: 'Erstellen Sie vor Ausführungsbeginn eine Gefährdungsbeurteilung. Bei Asbestsanierungen (TRGS 519) oder Arbeiten in kontaminierten Bereichen (TRGS 524) ist die Baustelle mindestens 14 Tage vor Arbeitsbeginn der Gewerbeaufsicht und der Berufsgenossenschaft (BG BAU) anzuzeigen.',
                           ref: 'GefStoffV / TRGS 519 Abs. 3'
                         },
                         {
                           step: 3,
                           title: 'Personelle Sachkunde &amp; Fachbetriebsnachweis',
-                          desc: 'Für Sanierungsarbeiten müssen sachkundige Aufsichtspersonen benannt werden. Stelle sicher, dass für Asbestarbeiten die Sachkunde nach TRGS 519 (Anlage 3 für Großbaustellen, Anlage 4 für Arbeiten geringen Umfanges) und für kontaminierte Bereiche nach TRGS 524 vorliegt.',
+                          desc: 'Für Sanierungsarbeiten müssen sachkundige Aufsichtspersonen benannt werden. Stellen Sie sicher, dass für Asbestarbeiten die Sachkunde nach TRGS 519 (Anlage 3 für Großbaustellen, Anlage 4 für Arbeiten geringen Umfanges) und für kontaminierte Bereiche nach TRGS 524 vorliegt.',
                           ref: 'TRGS 519 Abs. 2.7 / TRGS 524'
                         },
                         {

@@ -546,7 +546,7 @@ export default function BpInnovationen() {
                 <strong>Öffentliche Auftraggeber dürfen nach VOB/A § 7 keine geschützten Markennamen oder patentierte Alleinstellungsmerkmale ausschreiben</strong>, 
                 es sei denn, es existiert keine andere marktreife Lösung. Hersteller innovativer Baustoffe müssen daher eine zweigleisige Strategie fahren: 
                 Verfahrenspatente für die chemische Herstellung sichern, gleichzeitig aber zügig auf <strong>offene Normung (z. B. DIN SPEC, DIN EN)</strong> 
-                oder DIBt-Zulassungen hinwirken, damit Planer die Technologie rechtssicher in Leistungsverzeichnisse aufnehmen können.
+                oder DIBt-Zulassungen hinwirken, damit Planer die Technologie rechtlich belastbar in Leistungsverzeichnisse aufnehmen können.
               </p>
             </div>
           </div>
@@ -922,10 +922,10 @@ export default function BpInnovationen() {
           'BBSR (Hrsg.): Zukunft Bau – Forschungsförderung für die Baupraxis. Berichte Band 45, Bonn 2024'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 16290 (Raumfahrtsysteme – Definition der Technology Readiness Levels (TRL) und Beurteilungskriterien)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO 16290 (Raumfahrtsysteme – Definition der Technology Readiness Levels (TRL) und Beurteilungskriterien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+16290' },
           { title: 'Musterbauordnung (MBO) § 17 bis 25 (Verwendbarkeitsnachweise, abZ, aBG und Ü-Zeichen)', url: 'https://www.bauministerkonferenz.de/' },
           { title: 'EU-Verordnung 2024/1100 (Bauprodukteverordnung CPR Revision zur Kreislaufwirtschaft)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken – Umweltproduktdeklarationen EPD)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken – Umweltproduktdeklarationen EPD)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
         ]}
         formeln={[
           {

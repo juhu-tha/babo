@@ -191,7 +191,7 @@ const XrdInteraction = () => {
                 <span className="text-sm text-gray-600">Erkannte Phase:</span>
                 {selectedMineral ? 
                     <span className="text-sm font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-md shadow-sm border border-blue-200">{peaks.find(p => p.mineral === selectedMineral)?.name}</span> : 
-                    <span className="text-sm italic text-gray-600 bg-gray-100 px-3 py-1 rounded-md">Klicke auf einen Reflex (Linie)</span>
+                    <span className="text-sm italic text-gray-600 bg-gray-100 px-3 py-1 rounded-md">Klicken Sie auf einen Reflex (Linie)</span>
                 }
             </div>
         </div>
@@ -531,9 +531,9 @@ export default function Analytik() {
           'Plank, J.: Vorlesungsskriptum Bauchemische Analytik (TU München)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 14629:2007-06 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Bestimmung des Chloridgehaltes von Festbeton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN ISO 15901-1:2019-03 (Porengrößenverteilung und Porosität von Feststoffen durch Quecksilberporosimetrie)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13925-1:2003-07 (Zerstörungsfreie Prüfung - Röntgendiffraktometrie an polykristallinen und amorphen Materialien)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 14629:2007-06 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Bestimmung des Chloridgehaltes von Festbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629' },
+          { title: 'DIN ISO 15901-1:2019-03 (Porengrößenverteilung und Porosität von Feststoffen durch Quecksilberporosimetrie)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+15901-1' },
+          { title: 'DIN EN 13925-1:2003-07 (Zerstörungsfreie Prüfung - Röntgendiffraktometrie an polykristallinen und amorphen Materialien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13925-1' }
         ]}
         formeln={[
           {

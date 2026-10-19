@@ -1320,7 +1320,7 @@ export default function Rueckbau() {
               </span>
             </div>
             <p className="text-xs text-text-main/80 leading-relaxed">
-              Für eine rechtssichere Planung, die Ausschreibung und den kontrollierten selektiven Rückbau bilden neben der EBV und GewAbfV vier spezialisierte Regelwerke das normative Fundament:
+              Für eine rechtlich belastbare Planung, die Ausschreibung und den kontrollierten selektiven Rückbau bilden neben der EBV und GewAbfV vier spezialisierte Regelwerke das normative Fundament:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1597,10 +1597,10 @@ export default function Rueckbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18007 (Abbruch- und Rückbauarbeiten - Begriffe, Verfahren, Arbeitssicherheit)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 18007 (Abbruch- und Rückbauarbeiten - Begriffe, Verfahren, Arbeitssicherheit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18007' },
           { title: 'VDI 6210 Blatt 1 & Blatt 2 (Rückbau baulicher und technischer Anlagen)', url: 'https://www.vdi.de/' },
-          { title: 'DIN SPEC 91484 (Verfahren für das Rückbau-Audit vor Abbrucharbeiten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN SPEC 91525-1 (Digitaler Gebäuderessourcenpass für den zirkulären Rückbau)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN SPEC 91484 (Verfahren für das Rückbau-Audit vor Abbrucharbeiten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91484' },
+          { title: 'DIN SPEC 91525-1 (Digitaler Gebäuderessourcenpass für den zirkulären Rückbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91525-1' },
           { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche Anlagen - Erkundung und Bewertung)', url: 'https://www.vdi.de/' },
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Gewerbeabfallverordnung (GewAbfV)', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },

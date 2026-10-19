@@ -335,7 +335,7 @@ export default function Durchstanzen() {
           { title: 'Durchstanzen', url: 'https://de.wikipedia.org/wiki/Durchstanzen' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitt 6.4: Durchstanzen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitt 6.4: Durchstanzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         literatur={[
           'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)'

@@ -160,7 +160,7 @@ function DGZfPSection() {
           <div className="space-y-3">
             <h3 className="font-bold text-slate-900 text-base">Rolle & Bedeutung für die Bauwerkserhaltung</h3>
             <p>
-              Die <strong>DGZfP</strong> wurde bereits 1933 gegründet und ist heute der führende wissenschaftlich-technische Verein zur Förderung zerstörungsfreier Prüfverfahren (NDT - Non-Destructive Testing) in Deutschland. Dein <strong>Fachausschuss ZfP im Bauwesen (FA ZfP-Bau)</strong> und der zugehörige <strong>Unterausschuss</strong> fassen Experten aller führenden Prüfämter, Universitäten und Hersteller von Sonden zusammen.
+              Die <strong>DGZfP</strong> wurde bereits 1933 gegründet und ist heute der führende wissenschaftlich-technische Verein zur Förderung zerstörungsfreier Prüfverfahren (NDT - Non-Destructive Testing) in Deutschland. Ihr <strong>Fachausschuss ZfP im Bauwesen (FA ZfP-Bau)</strong> und der zugehörige <strong>Unterausschuss</strong> fassen Experten aller führenden Prüfämter, Universitäten und Hersteller von Sonden zusammen.
             </p>
             <p>
               Im Gegensatz zu metallischen Werkstoffen weisen Baustoffe wie Beton, Holz und Mauerwerk komplexe, stark heterogene Gefüge auf. Die DGZfP erarbeitet deshalb eigens darauf zugeschnittene <strong>Richtlinien (Merkblätter)</strong>, die als unbestrittener Stand der Wissenschaft und Technik und in rechtlichen Streitfällen als <strong>anerkannte Regeln der Technik</strong> herangezogen werden.

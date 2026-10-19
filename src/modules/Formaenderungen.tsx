@@ -387,8 +387,8 @@ export default function Formaenderungen() {
           'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Anhang B: Kriech- und Schwindmodelle)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12390-16 (Prüfverfahren für Beton - Bestimmung der Schwind- und Quellmaße)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Anhang B: Kriech- und Schwindmodelle)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 12390-16 (Prüfverfahren für Beton - Bestimmung der Schwind- und Quellmaße)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-16' }
         ]}
         formeln={[
           {

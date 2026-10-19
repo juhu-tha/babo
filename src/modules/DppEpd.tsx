@@ -611,7 +611,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                     {cameraError && webcamActive && (
                       <div className="bg-amber-950/95 border-b border-amber-850 p-2 px-3 text-[9.5px] text-amber-200 flex items-center gap-1.5 leading-tight shrink-0">
                         <AlertCircle size={11} className="text-amber-400 shrink-0" />
-                        <span>{cameraError}. Verwende Simulator.</span>
+                        <span>{cameraError}. Verwenden Sie Simulator.</span>
                       </div>
                     )}
 
@@ -773,7 +773,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                   <Smartphone size={32} className="mb-2 opacity-50 text-shiraz" />
                   <h3 className="text-sm font-bold text-slate-900 mb-1">Kein Scanner-Ergebnis geladen</h3>
                   <p className="text-[11px] max-w-md text-slate-500 font-normal">
-                    Klicke auf ein Bauteil im Handy-Mockup, um die ausgelesenen Daten des digitalen Bauteilpasses hier anzuzeigen.
+                    Klicken Sie auf ein Bauteil im Handy-Mockup, um die ausgelesenen Daten des digitalen Bauteilpasses hier anzuzeigen.
                   </p>
                 </div>
               )}
@@ -925,9 +925,9 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
           'IBU (Institut Bauen und Umwelt e.V.): Allgemeine Programmanleitung für EPDs'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen - Grundregeln für die Produktkategorie Bauprodukte)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 14040 / 14044 (Umweltmanagement - Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 14025 (Umweltkennzeichnungen und -deklarationen - Typ III Umweltdeklarationen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen - Grundregeln für die Produktkategorie Bauprodukte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN ISO 14040 / 14044 (Umweltmanagement - Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14040' },
+          { title: 'DIN EN ISO 14025 (Umweltkennzeichnungen und -deklarationen - Typ III Umweltdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14025' }
         ]}
         formeln={[
           {

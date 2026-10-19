@@ -153,19 +153,19 @@ export default function Labor() {
           { title: 'Ausbreitmaß', url: 'https://de.wikipedia.org/wiki/Ausbreitma%C3%9F' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1542:1999-07 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Messung der Haftfestigkeit durch Abreißversuch)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 1542:1999-07 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Messung der Haftfestigkeit durch Abreißversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1542' },
           { title: 'TR Instandhaltung:2020-05 (DIBt) / DAfStb-Richtlinie Schutz und Instandsetzung von Betonbauteilen (SIB)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 12390-3:2019-08 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12390-5:2019-10 (Prüfung von Festbeton - Teil 5: Biegezugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12390-6:2024-04 (Prüfung von Festbeton - Teil 6: Spaltzugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12390-13:2021-09 (Prüfung von Festbeton - Teil 13: Bestimmung des Elastizitätsmoduls unter Druck)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12504-2:2021-11 (Prüfung von Beton in Bauwerken - Teil 2: Zerstörungsfreie Prüfung: Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12350-2:2019-09 (Prüfung von Frischbeton - Teil 2: Setzmaß / Slump)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12350-5:2019-09 (Prüfung von Frischbeton - Teil 5: Ausbreitmaß)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe - Zugversuch bei Raumtemperatur)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 408:2012-10 (Holzbauwerke - Bestimmung einiger physikalischer und mechanischer Eigenschaften)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1426:2015-08 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 12390-3:2019-08 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' },
+          { title: 'DIN EN 12390-5:2019-10 (Prüfung von Festbeton - Teil 5: Biegezugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-5' },
+          { title: 'DIN EN 12390-6:2024-04 (Prüfung von Festbeton - Teil 6: Spaltzugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-6' },
+          { title: 'DIN EN 12390-13:2021-09 (Prüfung von Festbeton - Teil 13: Bestimmung des Elastizitätsmoduls unter Druck)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-13' },
+          { title: 'DIN EN 12504-2:2021-11 (Prüfung von Beton in Bauwerken - Teil 2: Zerstörungsfreie Prüfung: Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
+          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
+          { title: 'DIN EN 12350-2:2019-09 (Prüfung von Frischbeton - Teil 2: Setzmaß / Slump)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12350-2' },
+          { title: 'DIN EN 12350-5:2019-09 (Prüfung von Frischbeton - Teil 5: Ausbreitmaß)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12350-5' },
+          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe - Zugversuch bei Raumtemperatur)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' },
+          { title: 'DIN EN 408:2012-10 (Holzbauwerke - Bestimmung einiger physikalischer und mechanischer Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+408' },
+          { title: 'DIN EN 1426:2015-08 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1426' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',

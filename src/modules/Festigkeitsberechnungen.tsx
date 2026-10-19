@@ -365,9 +365,9 @@ export default function Festigkeitsberechnungen() {
           { title: 'Reißlänge', url: 'https://de.wikipedia.org/wiki/Rei%C3%9Fl%C3%A4nge' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992 bis EN 1999 (Werkstoffspezifische Eurocodes)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1992 bis EN 1999 (Werkstoffspezifische Eurocodes)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992' },
+          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' }
         ]}
         literatur={[
           'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',

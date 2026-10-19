@@ -671,7 +671,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <Calculator size={16} className="text-shiraz" /> Interaktiver Hohlraumrechner & Rice-Maximaldichte
                 </h3>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Studentische Übungsrechnung: Bestimme den Luftporengehalt $V_u$ eines Labor-Asphaltprobekörpers. Ein zu hoher Hohlraumgehalt führt zu Oxidation und Wassereintritt (Frostschäden), ein zu niedriger zu fataler Spurrinne/Bindemittelaustritt.
+                  Studentische Übungsrechnung: Bestimmen Sie den Luftporengehalt $V_u$ eines Labor-Asphaltprobekörpers. Ein zu hoher Hohlraumgehalt führt zu Oxidation und Wassereintritt (Frostschäden), ein zu niedriger zu fataler Spurrinne/Bindemittelaustritt.
                 </p>
 
                 <div className="space-y-4">
@@ -1218,7 +1218,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <Calculator size={16} className="text-shiraz" /> Interaktives Labor: Thermische Eigenspannung & Verwerfungsrisiko
                 </h3>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Das kontinuierlich verschweißte Gleis (lückenloses Gleis) verhindert Stoßlücken, erzwingt jedoch bei Erwärmung Schienenlängskräfte. Berechne die statischen Zwangsspannungen und evaluieren Sie das Risiko elastischer Ausknickungen (Gleisverwerfungen).
+                  Das kontinuierlich verschweißte Gleis (lückenloses Gleis) verhindert Stoßlücken, erzwingt jedoch bei Erwärmung Schienenlängskräfte. Berechnen Sie die statischen Zwangsspannungen und evaluieren Sie das Risiko elastischer Ausknickungen (Gleisverwerfungen).
                 </p>
 
                 <div className="space-y-4">

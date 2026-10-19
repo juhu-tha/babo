@@ -145,7 +145,7 @@ const COURSES: OnlineCourse[] = [
     level: 'Einsteiger (0 Vorwissen)',
     summary: 'Technisch fundierte, journalistisch neutrale Erklärungen aus dem c\'t-Labor: Wie verwandeln Sprachmodelle Text in Zahlenvektoren? Warum treten Halluzinationen auf und wie schützt man sich davor?',
     justification: 'Ideal zur Vorbereitung auf wissenschaftliche Arbeiten und Gutachten. Schafft ein kritisches Risikobewusstsein gegen blindes Vertrauen in KI-Generierungen.',
-    constructionTransfer: 'Grundlage für die rechtssichere Verwendung von LLMs bei Bedenkenanzeigen (VOB/B § 4) und Vergabeunterlagen nach HOAI.',
+    constructionTransfer: 'Grundlage für die rechtlich belastbare Verwendung von LLMs bei Bedenkenanzeigen (VOB/B § 4) und Vergabeunterlagen nach HOAI.',
     highlightTopics: ['Token-Ökonomie & Kontextfenster', 'Halluzinationsursachen & Entropie', 'Datensicherheit bei Cloud-APIs', 'Embedding-Visualisierung'],
     recommendedStart: 'c\'t uplink: "Große Sprachmodelle verstehen und lokal betreiben".'
   },
@@ -660,7 +660,7 @@ plt.show()`;
         regelwerke={[
           { title: 'EU AI Act (Verordnung (EU) 2024/1689 über künstliche Intelligenz)', url: 'https://eur-lex.europa.eu/' },
           { title: 'VDI 2221 (Methodik für die Entwicklung von technischen Produkten und Systemen)', url: 'https://www.vdi.de/' },
-          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken - Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken - Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' }
         ]}
         weblinks={[
           { title: 'KI-Campus – Offizielle deutsche Lernplattform für KI', url: 'https://ki-campus.org/' },

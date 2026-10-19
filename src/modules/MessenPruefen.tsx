@@ -1418,10 +1418,10 @@ export default function MessenPruefen() {
           { title: 'Ringversuch', url: 'https://de.wikipedia.org/wiki/Ringversuch' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO/IEC 17043:2023-09 (Konformitätsbewertung – Allgemeine Anforderungen an die Kompetenz von Anbietern von Eignungsprüfungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN ISO 13528:2020-09 (Statistische Verfahren für Eignungsprüfungen durch Ringversuche)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 5725-1:2023-07 (Genauigkeit von Messverfahren und Messergebnissen - Teil 1: Grundlagen und Begriffe)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO%2FIEC+17025' },
+          { title: 'DIN EN ISO/IEC 17043:2023-09 (Konformitätsbewertung – Allgemeine Anforderungen an die Kompetenz von Anbietern von Eignungsprüfungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO%2FIEC+17043' },
+          { title: 'DIN ISO 13528:2020-09 (Statistische Verfahren für Eignungsprüfungen durch Ringversuche)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+13528' },
+          { title: 'DIN EN ISO 5725-1:2023-07 (Genauigkeit von Messverfahren und Messergebnissen - Teil 1: Grundlagen und Begriffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+5725-1' },
           { title: 'JCGM 100:2008 (Guide to the expression of uncertainty in measurement - GUM)', url: 'https://www.bipm.org/en/committees/jc/jcgm/publications' }
         ]}
         literatur={[

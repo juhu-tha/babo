@@ -269,13 +269,13 @@ export default function Gesteine() {
           'Scholz - Baustoffkenntnis: Physikalische Eigenschaften kristalliner Gesteine'
         ]}
         regelwerke={[
-          { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13139:2002-08 (Gesteinskörnungen für Mörtel)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13043:2002-12 (Gesteinskörnungen für Asphalt und Oberflächenbehandlungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1097-2:2020-09 (Prüfverfahren für mechanische und physikalische Eigenschaften von Gesteinskörnungen - Teil 2: Widerstand gegen Zertrümmerung / Los-Angeles-Prüfung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 933-1:2012-03 (Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen - Teil 1: Korngrößenverteilung - Siebverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4226-101:2017-08 (Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 771-6:2015-11 (Festlegungen für Mauersteine - Teil 6: Natursteinmauersteine)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },
+          { title: 'DIN EN 13139:2002-08 (Gesteinskörnungen für Mörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13139' },
+          { title: 'DIN EN 13043:2002-12 (Gesteinskörnungen für Asphalt und Oberflächenbehandlungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13043' },
+          { title: 'DIN EN 1097-2:2020-09 (Prüfverfahren für mechanische und physikalische Eigenschaften von Gesteinskörnungen - Teil 2: Widerstand gegen Zertrümmerung / Los-Angeles-Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1097-2' },
+          { title: 'DIN EN 933-1:2012-03 (Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen - Teil 1: Korngrößenverteilung - Siebverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+933-1' },
+          { title: 'DIN 4226-101:2017-08 (Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4226-101' },
+          { title: 'DIN EN 771-6:2015-11 (Festlegungen für Mauersteine - Teil 6: Natursteinmauersteine)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-6' }
         ]}
         formeln={[
           {

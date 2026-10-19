@@ -58,7 +58,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Second Generation Eurocodes & Klimaresilienz',
         category: 'Normung',
         description: 'Umfassende Neuausgabe der Eurocodes (Eurocode Generation 2). Integration harmonisierter Regeln zur Wiederverwendung bestehender Bauteile, Bemessung unter extremen Klimawandellasten (Wind, Starkregen, Schnee) und ressourceneffiziente Grenzwertdefinitionen.',
-        impact: 'Planungsingenieure bilanzieren Bestandsreserven rechtssicher und planen für eine veränderte klimatische Belastungssituation.',
+        impact: 'Planungsingenieure bilanzieren Bestandsreserven rechtlich belastbar und planen für eine veränderte klimatische Belastungssituation.',
         keyReference: 'CEN/TC 250 Mandate M/515'
       }
     ],
@@ -91,7 +91,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Einzug der Mikroanalytik: REM-EDX und Röntgendiffraktometrie (XRD)',
         category: 'Paradigmenwechsel',
         description: 'Etablierung elektronenmikroskopischer und kristallographischer Analysen für zementgebundene Baustoffe. Exakte Identifikation schadensrelevanter Phasen wie Ettringit, Thaumasit, Friedelschem Salz oder Alkalikieselsäure-Gelen (AKR).',
-        impact: 'Schadensursachen werden nicht mehr nur makroskopisch vermutet, sondern auf Kristallgitterebene gerichtsfest bewiesen.',
+        impact: 'Schadensursachen werden nicht mehr nur makroskopisch vermutet, sondern auf Kristallgitterebene beweissicher bewiesen.',
         keyReference: 'Forschungsinstitut der Zementindustrie (VDZ)'
       },
       {
@@ -540,7 +540,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Normenreihe DIN EN ISO 19650: Informationsmanagement mit BIM',
         category: 'Normung',
         description: 'Internationale Harmonisierung der BIM-Prozesse: Einführung einheitlicher Rollen (BIM-Manager, BIM-Koordinator), Begrifflichkeiten (AIA – Auftraggeber-Informationsanforderungen, BAP – BIM-Abwicklungsplan) und der gemeinsamen Datenumgebung (CDE – Common Data Environment).',
-        impact: 'Strukturierte und rechtssichere digitale Kollaboration über alle Leistungsphasen hinweg.',
+        impact: 'Strukturierte und rechtlich belastbare digitale Kollaboration über alle Leistungsphasen hinweg.',
         keyReference: 'DIN EN ISO 19650-1/-2'
       },
       {
@@ -744,7 +744,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Forensische Sensorik, Mikrotomographie & KI-Mängelanalyse',
         category: 'Technologie',
         description: 'Einsatz industrieller Computertomographie (µCT) für Baustoffgefüge, Drohnenthermografie mit KI-Schadenserkennung und laseroptische Verformungsanalysen bei Gerichtsgutachten.',
-        impact: 'Gerichtsfeste, unstrittige Schadensursachenzuordnung ohne aufwändige destruktive Großbaustellen-Freilegungen.',
+        impact: 'Beweissichere, unstrittige Schadensursachenzuordnung ohne aufwändige destruktive Großbaustellen-Freilegungen.',
         keyReference: 'BVS-Richtlinien / DGSV'
       }
     ],
@@ -846,6 +846,6 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'GLCI (German Lean Construction Institute)'
       }
     ],
-    keyTakeaway: 'Baubetrieb und Bauleitung entwickelten sich von reiner handwerklicher Koordination zu einem hochgradig rechtssicheren, prozessgesteuerten und digital synchronisierten Baustellen-Management.'
+    keyTakeaway: 'Baubetrieb und Bauleitung entwickelten sich von reiner handwerklicher Koordination zu einem hochgradig rechtlich belastbaren, prozessgesteuerten und digital synchronisierten Baustellen-Management.'
   }
 };

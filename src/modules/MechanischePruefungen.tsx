@@ -1058,13 +1058,13 @@ export default function MechanischePruefungen() {
           { title: 'Asphaltprüfungen', url: 'https://de.wikipedia.org/wiki/Asphalt' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 12390-3:2019-08 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12390-5:2019-10 (Prüfung von Festbeton - Teil 5: Biegezugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12390-6:2024-04 (Prüfung von Festbeton - Teil 6: Spaltzugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12697-22:2020-12 / DIN EN 12697-23:2018-03 (Asphalt - Prüfverfahren: Spurbildungstest & Spaltzugfestigkeit)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe - Zugversuch - Teil 1: Prüfverfahren bei Raumtemperatur)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 408:2012-10 (Holzbauwerke - Bauholz für tragende Zwecke: Bestimmung mechanischer Eigenschaften)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 12390-3:2019-08 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' },
+          { title: 'DIN EN 12390-5:2019-10 (Prüfung von Festbeton - Teil 5: Biegezugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-5' },
+          { title: 'DIN EN 12390-6:2024-04 (Prüfung von Festbeton - Teil 6: Spaltzugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-6' },
+          { title: 'DIN EN 12697-22:2020-12 / DIN EN 12697-23:2018-03 (Asphalt - Prüfverfahren: Spurbildungstest & Spaltzugfestigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12697-22' },
+          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe - Zugversuch - Teil 1: Prüfverfahren bei Raumtemperatur)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' },
+          { title: 'DIN EN 408:2012-10 (Holzbauwerke - Bauholz für tragende Zwecke: Bestimmung mechanischer Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+408' },
+          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+338' }
         ]}
         literatur={[
           'Spann, H.: Straßenbaulaboratorium und Asphaltanalytik (2019)',

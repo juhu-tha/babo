@@ -503,9 +503,9 @@ export default function Knicken() {
           { title: 'Euler-Knickung', url: 'https://de.wikipedia.org/wiki/Knickung#Euler-F%C3%A4lle' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Stabilitätsnachweise & Knicken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Betonbauten - Druckglieder & Theorie II. Ordnung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-1:2024-03 (Eurocode 5: Bemessung von Holzbauten - Ersatzstabsverfahren & Biegeknicken)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Stabilitätsnachweise & Knicken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Betonbauten - Druckglieder & Theorie II. Ordnung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1:2024-03 (Eurocode 5: Bemessung von Holzbauten - Ersatzstabsverfahren & Biegeknicken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' }
         ]}
         literatur={[
           'Gross, D., Hauger, W., Schröder, J., Wall, W. A.: Technische Mechanik 2: Elastostatik (Springer Vieweg)',

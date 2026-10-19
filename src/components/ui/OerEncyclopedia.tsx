@@ -279,7 +279,7 @@ export function OerEncyclopedia() {
                     </a>
                   </div>
                   <p className="text-[11px] text-slate-600 leading-relaxed">
-                    Im Zentrum der wissenschaftlichen Videorecherche im deutschsprachigen Raum steht das TIB AV-Portal der Technischen Informationsbibliothek (TIB) in Hannover. Es unterscheidet sich fundamental von kommerziellen Videoplattformen durch seinen Fokus auf Langzeitverfügbarkeit, Zitierfähigkeit und rechtssichere Nutzung im akademischen Kontext.
+                    Im Zentrum der wissenschaftlichen Videorecherche im deutschsprachigen Raum steht das TIB AV-Portal der Technischen Informationsbibliothek (TIB) in Hannover. Es unterscheidet sich fundamental von kommerziellen Videoplattformen durch seinen Fokus auf Langzeitverfügbarkeit, Zitierfähigkeit und rechtlich belastbare Nutzung im akademischen Kontext.
                   </p>
                   
                   {/* Semantic analysis simulator/infographic */}
@@ -314,7 +314,7 @@ export function OerEncyclopedia() {
                     </div>
                     <div className="p-2 bg-purple-50/50 border border-purple-100 rounded">
                       <strong className="block text-purple-955 font-bold">Open Access (CC)</strong>
-                      Rechtssichere Lizenzen erlauben Remixen, Einbinden und Verbreiten.
+                      Rechtlich belastbare Lizenzen erlauben Remixen, Einbinden und Verbreiten.
                     </div>
                   </div>
                 </div>
@@ -839,7 +839,7 @@ export function OerEncyclopedia() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-600">
                     <div className="space-y-1">
                       <strong className="text-slate-800 font-semibold block">1. Visualisierung als Einstieg</strong>
-                      <p className="text-[11px] leading-relaxed">Verwende vor dem Einstieg in komplexe theoretische Themen die animierten Vorlesungskanäle der TIB oder ETH, um ein haptisch-visuelles Gefühl für das Werkstoffphänomen zu erhalten.</p>
+                      <p className="text-[11px] leading-relaxed">Verwenden Sie vor dem Einstieg in komplexe theoretische Themen die animierten Vorlesungskanäle der TIB oder ETH, um ein haptisch-visuelles Gefühl für das Werkstoffphänomen zu erhalten.</p>
                     </div>
                     <div className="space-y-1">
                       <strong className="text-slate-800 font-semibold block">2. Datenbasiert entwerfen</strong>
@@ -872,7 +872,7 @@ export function OerEncyclopedia() {
                 <strong className="text-xs text-indigo-950 font-bold flex items-center gap-1">
                   <Search size={13} className="text-indigo-600" /> Schnorchel nach Original-Links 
                 </strong>
-                <p className="text-[10px] text-indigo-800 leading-tight">Gib Suchwörter wie "Beton", "edX" oder "TIB" ein, um die im Text referenzierten Links schnell zu finden.</p>
+                <p className="text-[10px] text-indigo-800 leading-tight">Geben Sie Suchwörter wie "Beton", "edX" oder "TIB" ein, um die im Text referenzierten Links schnell zu finden.</p>
               </div>
               <input 
                 type="text"

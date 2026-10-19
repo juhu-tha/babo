@@ -578,7 +578,7 @@ export default function LaborAuswertung() {
               </div>
 
               <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                Trage die gemessenen Delta-Abweichungsverhältnisse <InlineMath math="\delta\text{D}" /> und <InlineMath math="\delta^{18}\text{O}" /> des getroffenen Schadenswassers ein, um die Causa proxima (Kondensat vs. Regen/Leitungswasser) physikalisch abzuleiten.
+                Tragen Sie die gemessenen Delta-Abweichungsverhältnisse <InlineMath math="\delta\text{D}" /> und <InlineMath math="\delta^{18}\text{O}" /> des getroffenen Schadenswassers ein, um die Causa proxima (Kondensat vs. Regen/Leitungswasser) physikalisch abzuleiten.
               </p>
 
               {/* Slider for Oxygen-18 */}
@@ -1043,7 +1043,7 @@ export default function LaborAuswertung() {
                     <span className="text-[10px] font-mono font-bold bg-blue-50 text-blue-700 px-1.5 rounded">Datierung</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Mithilfe der Naturwissenschaft lässt sich haargenau belegen, zu welchem historischen Kalender-Zeitpunkt Feuchtigkeit eingetragen wurde, um Schadensvorfälle gerichtsfest zuzuordnen.
+                    Mithilfe der Naturwissenschaft lässt sich haargenau belegen, zu welchem historischen Kalender-Zeitpunkt Feuchtigkeit eingetragen wurde, um Schadensvorfälle beweissicher zuzuordnen.
                   </p>
                   <div className="bg-slate-50 p-3 rounded-lg border border-slate-150 text-xs space-y-1 text-slate-700">
                     <div>
@@ -1200,7 +1200,7 @@ export default function LaborAuswertung() {
           10. Fazit des Forschungsberichts
         </h4>
         <p className="text-xs text-slate-650 leading-relaxed">
-          Die moderne Bauwerksdiagnostik ist eine forensische Wissenschaft, die weit über das bloße Messen von Feuchtigkeit hinausgeht. Die Integration von Isotopen-Exzess-Bestimmung und Abwasser-Tracern (Gadolinium) ermöglicht heute die rechtssichere Unterscheidung von Kondensat, Leckagen und Fäkalwasser. Verfahren wie TGA und Impakt-Echo erlauben den tiefen Blick in die chemische Geschichte und physikalische Integrität des Materials, während die Schadstoffanalytik gesundheitliche Risiken (Asbest, Fogging, Brandlasten) quantifiziert. Mit dem Einzug von KI, Sensor Fusion und LIBS steht die Branche vor einem Sprung in die digitale Echtzeit-Überwachung und hocheffiziente Vor-Ort-Diagnostik.
+          Die moderne Bauwerksdiagnostik ist eine forensische Wissenschaft, die weit über das bloße Messen von Feuchtigkeit hinausgeht. Die Integration von Isotopen-Exzess-Bestimmung und Abwasser-Tracern (Gadolinium) ermöglicht heute die rechtlich belastbare Unterscheidung von Kondensat, Leckagen und Fäkalwasser. Verfahren wie TGA und Impakt-Echo erlauben den tiefen Blick in die chemische Geschichte und physikalische Integrität des Materials, während die Schadstoffanalytik gesundheitliche Risiken (Asbest, Fogging, Brandlasten) quantifiziert. Mit dem Einzug von KI, Sensor Fusion und LIBS steht die Branche vor einem Sprung in die digitale Echtzeit-Überwachung und hocheffiziente Vor-Ort-Diagnostik.
         </p>
       </div>
 

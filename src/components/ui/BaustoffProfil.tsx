@@ -231,7 +231,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       dauerhaftigkeit: "Im Trockenbereich extrem formstabil und zeitbeständig. Absolut ungeeignet für den Außenbereich und stark belastete Nasszellen (z.B. öffentliche Duschen): Calciumsulfat besitzt eine stetige Löslichkeit (ca. 2 g/l in Wasser), wodurch Feuchtigkeit das Kristallgitter auflöst und irreversible Festigkeitseinbußen verursacht.",
       kosten: "Enorm wirtschaftliche Systembaustoffe. Standard-Gipskartonplatten gehören mit ca. 3-5 €/m² zu den kostengünstigsten Beplankungsmaterialien des modernen Ausbaus. Fließestriche liegen preislich auf Augenhöhe mit Zementestrichen, sparen aber erhebliche Einbauzeit.",
       recycling: "Theoretisch zu 100 % im geschlossenen Kreislauf (Cradle-to-Cradle) recycelbar. Ausgebaute Gipskartonplatten können mechanisch zerkleinert werden, um Papierkarton vom Gips zu trennen. Das Gipspulver wird erneut gebrannt. Praxisnah verringert schlechte Schutttrennung oft die Recyclingquote.",
-      besonderheiten: "Vermeide das berüchtigte 'Ettringittreiben': Gipsbaustoffe dürfen in feuchtem Zustand niemals in direkten Verbund mit Portlandzement gelangen! Die freien Sulfate des Gipses reagieren mit den Aluminaten des Zements unter enormem Volumenwachstum (Sprengwirkung).",
+      besonderheiten: "Vermeiden Sie das berüchtigte 'Ettringittreiben': Gipsbaustoffe dürfen in feuchtem Zustand niemals in direkten Verbund mit Portlandzement gelangen! Die freien Sulfate des Gipses reagieren mit den Aluminaten des Zements unter enormem Volumenwachstum (Sprengwirkung).",
       innovationen: "Entwicklung von Trockenbauplatten mit Phasenwechselmaterialien (PCM-Mikrokapseln mit Wachs), die tagsüber latent Wärme speichern und nachts abgeben, um das sommerliche Überhitzen von Leichtbauten passiv zu drosseln.",
       historie: "Gipsmörtel diente bereits beim Bau der ägyptischen Pyramiden von Gizeh als Fugen- und Gleitbeschleuniger. Die Römer schätzten fein gebrannten Stuckgips für repräsentative Dekore. Die moderne Gipsplatte wurde 1894 vom US-amerikanischen Erfinder Augustine Sackett patentiert und bildet das Fundament des modernen Trockenbaus."
     }
@@ -851,7 +851,7 @@ export default function BaustoffProfil({ materialKey }: BaustoffProfilProps) {
         </div>
 
         <p className="text-xs text-text-main/75 font-sans leading-relaxed">
-          Verwende die Kennwerte dieses Baustoffprofils direkt in den interaktiven Rechen- und Bemessungsmodulen:
+          Verwenden Sie die Kennwerte dieses Baustoffprofils direkt in den interaktiven Rechen- und Bemessungsmodulen:
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-1">

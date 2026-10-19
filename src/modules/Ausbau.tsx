@@ -335,9 +335,9 @@ export default function Ausbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18560 (Estriche im Bauwesen - Teile 1 bis 7)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18157-1 bis -3 (Ausführung von Bekleidungen und Belägen im Dünnbettverfahren; Teil 1: hydraulisch erhärtende Dünnbettmörtel, Teil 2: Dispersionsklebstoffe, Teil 3: Reaktionsharzklebstoffe)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18202 (Toleranzen im Hochbau - Bauwerke)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18560 (Estriche im Bauwesen - Teile 1 bis 7)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560' },
+          { title: 'DIN 18157-1 bis -3 (Ausführung von Bekleidungen und Belägen im Dünnbettverfahren; Teil 1: hydraulisch erhärtende Dünnbettmörtel, Teil 2: Dispersionsklebstoffe, Teil 3: Reaktionsharzklebstoffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18157-1' },
+          { title: 'DIN 18202 (Toleranzen im Hochbau - Bauwerke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18202' }
         ]}
         formeln={[
           {

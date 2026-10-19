@@ -1106,7 +1106,7 @@ export default function Nachhaltigkeit() {
               
               <div className="border-b border-home-grau/30 pb-2">
                 <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Gebäudekonfiguration &amp; Primärenergetik</h3>
-                <p className="text-xs text-slate-400 mt-0.5">Stelle Bausubstanz und Betriebsenergie ein, um die QNG-Jahresbilanz zu berechnen.</p>
+                <p className="text-xs text-slate-400 mt-0.5">Stellen Sie Bausubstanz und Betriebsenergie ein, um die QNG-Jahresbilanz zu berechnen.</p>
               </div>
 
               <div className="space-y-4">
@@ -1319,7 +1319,7 @@ export default function Nachhaltigkeit() {
                     <CheckCircle size={16} className="text-emerald-700 shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[11px] font-bold text-emerald-900">Ausgezeichnete KfW 40 QNG-Förderfähigkeit:</strong>
-                      Dein Entwurf erzielt mit {qngComputation.totalYearlyGwp.toFixed(1)} kg CO₂-eq locker die Premium-Stufe. 
+                      Ihr Entwurf erzielt mit {qngComputation.totalYearlyGwp.toFixed(1)} kg CO₂-eq locker die Premium-Stufe. 
                       Sie erfüllen alle Anforderungen des BMWSB zur Beantragung zinsgünstiger Kredite.
                     </div>
                   </div>
@@ -2120,7 +2120,7 @@ export default function Nachhaltigkeit() {
                   Prüfungsrelevant:
                 </h4>
                 <p className="text-[10px] text-emerald-800/80 mt-1.5 leading-relaxed">
-                  Ökobilanzierungen sind Kernbestandteil moderner Bauingenieurs- und Projektmanagement-Thesis-Ausarbeitungen. Verwende diesen Leitfaden als strukturelles Grundgerüst.
+                  Ökobilanzierungen sind Kernbestandteil moderner Bauingenieurs- und Projektmanagement-Thesis-Ausarbeitungen. Verwenden Sie diesen Leitfaden als strukturelles Grundgerüst.
                 </p>
               </div>
             </div>
@@ -2889,7 +2889,7 @@ export default function Nachhaltigkeit() {
                   </div>
 
                   <p className="text-xs text-slate-700 leading-relaxed">
-                    Studienerfolge hängen meist davon ab, systematische Ungenauigkeiten auszuschließen. Verwende diese interaktiven Checklisten für deine Seminar- und Klausurausarbeitungen.
+                    Studienerfolge hängen meist davon ab, systematische Ungenauigkeiten auszuschließen. Verwenden Sie diese interaktiven Checklisten für Ihre Seminar- und Klausurausarbeitungen.
                   </p>
 
                   <div className="space-y-3.5">
@@ -3072,7 +3072,7 @@ export default function Nachhaltigkeit() {
                   </div>
 
                   <p className="text-xs text-slate-700 leading-relaxed">
-                    Testen Sie Ihr rechnerisches und begriffliches Geschick mit den typischen Vorlesungs- und Klausuraufgaben. Klicke auf „Lösungsweg einblenden", um die akademischen Berechnungen nachzuvollziehen.
+                    Testen Sie Ihr rechnerisches und begriffliches Geschick mit den typischen Vorlesungs- und Klausuraufgaben. Klicken Sie auf „Lösungsweg einblenden", um die akademischen Berechnungen nachzuvollziehen.
                   </p>
 
                   <div className="space-y-5">
@@ -3418,7 +3418,7 @@ export default function Nachhaltigkeit() {
                           </div>
                         </div>
                         <div className="bg-emerald-50/20 border-l-4 border-emerald-500 p-3 rounded-r-lg text-[10.5px] text-emerald-950">
-                          <span className="font-bold">Akademischer Nachweistipp:</span> Versuche stets, durch den Nachweis spezifischer Hersteller-EPDs (wie sie in IBU.data gelistet sind) die generischen Datensätze zu ersetzen. Dies mindert den rechnerischen GWP-Wert deines Gebäudes um signifikante Prozentpunkte und sichert somit leichter die KfW-KFN-Förderkredite!
+                          <span className="font-bold">Akademischer Nachweistipp:</span> Versuchen Sie stets, durch den Nachweis spezifischer Hersteller-EPDs (wie sie in IBU.data gelistet sind) die generischen Datensätze zu ersetzen. Dies mindert den rechnerischen GWP-Wert Ihres Gebäudes um signifikante Prozentpunkte und sichert somit leichter die KfW-KFN-Förderkredite!
                         </div>
                       </div>
                     )}
@@ -3649,7 +3649,7 @@ export default function Nachhaltigkeit() {
           { title: 'Bundes-Klimaschutzgesetz (KSG – Treibhausgasneutralität 2045)', url: 'https://www.gesetze-im-internet.de/ksg/' },
           { title: 'Ersatzbaustoffverordnung (EBV – Mineralische Sekundärbaustoffe)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG Kriterienkatalog)', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' }
         ]}
         formeln={[
           {

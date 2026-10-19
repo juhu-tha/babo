@@ -660,7 +660,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   </span>
                 </div>
                 <p>
-                  Dein berechneter U-Wert beträgt <strong>{U_value.toFixed(3)} W/(m²K)</strong>. 
+                  Ihr berechneter U-Wert beträgt <strong>{U_value.toFixed(3)} W/(m²K)</strong>. 
                   Das Gebäudeenergiegesetz (GEG), Anlage 7 fordert bei nachträglicher Sanierung oder Neuerrichtung von Außenwänden einen maximalen U-Wert von <strong>0,24 W/(m²K)</strong>.
                 </p>
                 <p className="text-xxs opacity-90 mt-1">
@@ -999,7 +999,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2">
                       <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1">Ergebnis und Einsparung</span>
                       <p className="text-xs font-normal">
-                        Dein äquivalenter Wasser-Zement-Wert sinkt um <strong className="text-shiraz">{Math.max(0, k_w_z_pure - k_w_z_eq).toFixed(3)}</strong> von <span className="text-shiraz font-bold">{k_w_z_pure.toFixed(3)}</span> auf <strong className="text-shiraz">{k_w_z_eq.toFixed(3)}</strong>. 
+                        Ihr äquivalenter Wasser-Zement-Wert sinkt um <strong className="text-shiraz">{Math.max(0, k_w_z_pure - k_w_z_eq).toFixed(3)}</strong> von <span className="text-shiraz font-bold">{k_w_z_pure.toFixed(3)}</span> auf <strong className="text-shiraz">{k_w_z_eq.toFixed(3)}</strong>. 
                         Dies entspricht rechnerisch einer fiktiven Zementeinsparung von ca. <strong className="text-shiraz">{(k_factor * k_credited_addition).toFixed(1)} kg</strong> Portlandzement-Klinker pro Kubikmeter Beton bei identischer hydratationschemischer Wirksamkeit!
                       </p>
                     </div>
@@ -2873,13 +2873,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           'Klingsch, W. et al.: Brandschutz im Bauwesen. Berlin: Springer 2018'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DAfStb-Richtlinie: Bauen im Bestand (März 2017)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
+          { title: 'DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-3' },
+          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1' },
+          { title: 'DAfStb-Richtlinie: Bauen im Bestand (März 2017)', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Bauen+im+Bestand' }
         ]}
         formeln={[
           {

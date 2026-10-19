@@ -488,7 +488,7 @@ export default function Materialdatenbanken() {
                 Das <strong>Qualitätssiegel Nachhaltiges Gebäude (QNG)</strong> ist ein staatliches deutsches Gütesiegel. Es setzt anspruchsvolle Grenzwerte für die Treibhausgasemissionen (GWP) und den Primärenergiebedarf (PENRT) im Lebenszyklus eines Gebäudes (A1-A3 Herstellung, A4-A5 Errichtung, B4-B6 Nutzung, C1-C4 Entsorgung).
               </p>
               <p className="text-xs text-text-main/70">
-                Diese Rechenwerttabelle bietet Lehrenden und Studierenden der TH Augsburg eine interaktive Arbeitsdatei, um Baustoffentscheidungen bereits im Vorentwurf quantitativ zu bewerten. Trage einfach die geschätzten projektbezogenen Mengen ein, um die kumulierten Werte in Echtzeit zu überschauen.
+                Diese Rechenwerttabelle bietet Lehrenden und Studierenden der TH Augsburg eine interaktive Arbeitsdatei, um Baustoffentscheidungen bereits im Vorentwurf quantitativ zu bewerten. Tragen Sie einfach die geschätzten projektbezogenen Mengen ein, um die kumulierten Werte in Echtzeit zu überschauen.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-200 text-xs text-slate-500 mt-3">
@@ -735,11 +735,11 @@ export default function Materialdatenbanken() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 mt-0">
         <h3 className="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
           <Search className="text-shiraz" size={20} />
-          Konkretes Praxisbeispiel: Suche in der ÖKOBAUDAT
+          Konkretes Praxisbeispiel: Suchen Sie in der ÖKOBAUDAT
         </h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Stelle sich vor, Sie planen ein Gebäude und benötigen den <span className="font-semibold cursor-help" title="Global Warming Potential">GWP-Wert</span> (Treibhausgaspotenzial) für die verwendeten Stahlbetonstützen. So gehe vor:
+            Stellen Sie sich vor, Sie planen ein Gebäude und benötigen den <span className="font-semibold cursor-help" title="Global Warming Potential">GWP-Wert</span> (Treibhausgaspotenzial) für die verwendeten Stahlbetonstützen. So gehe vor:
           </p>
         </div>
         
@@ -786,7 +786,7 @@ export default function Materialdatenbanken() {
                 <code>10 m³ × 245 kg CO₂/m³ = 2.450 kg CO₂</code>.
               </p>
               <p className="text-[11px] text-shiraz font-semibold mt-2">
-                Tipp: Später im Bauprojekt, wenn der reale Hersteller feststeht, suchen Sie nach der herstellerspezifischen EPD dieses Zementwerks, die oft deutlich niedriger liegt (z. B. 180 kg CO₂-Äqv. / m³), um deine Ökobilanz zu verbessern.
+                Tipp: Später im Bauprojekt, wenn der reale Hersteller feststeht, suchen Sie nach der herstellerspezifischen EPD dieses Zementwerks, die oft deutlich niedriger liegt (z. B. 180 kg CO₂-Äqv. / m³), um Ihre Ökobilanz zu verbessern.
               </p>
             </div>
           </div>
@@ -798,7 +798,7 @@ export default function Materialdatenbanken() {
           { title: 'Materialdatenbanken', url: 'https://de.wikipedia.org/wiki/Werkstoffdatenbank' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
           { title: 'BNB-Kriterium 1.1.1 (Treibhausgaspotenzial und Primärenergiebedarf)', url: 'https://www.bnb-nachhaltigesbauen.de/' }
         ]}
         literatur={[

@@ -107,9 +107,9 @@ export default function SVB() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie Selbstverdichtender Beton (SVB-Richtlinie)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 12350-8 (Prüfung von Frischbeton - Teil 8: Selbstverdichtender Beton - Setzfließversuch)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 12350-9 / -10 / -12 (V-Trichter-Versuch, L-Kasten-Versuch, Blockierring-Versuch)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen SF1 bis SF3, Viskositätsklassen VS1/VS2)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 12350-8 (Prüfung von Frischbeton - Teil 8: Selbstverdichtender Beton - Setzfließversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12350-8' },
+          { title: 'DIN EN 12350-9 / -10 / -12 (V-Trichter-Versuch, L-Kasten-Versuch, Blockierring-Versuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12350-9' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen SF1 bis SF3, Viskositätsklassen VS1/VS2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
         ]}
         literatur={[
           'DAfStb Heft 560: Sachstandsbericht Selbstverdichtender Beton (SVB) (Beuth Verlag)',

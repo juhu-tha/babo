@@ -974,9 +974,9 @@ export default function TypischeBauschaeden() {
           'Oswald, R. / Abel, R.: Hahne/Aachener Bausachverständigentage: Rissbildung und Bauwerksabdichtung (Fraunhofer IRB Verlag)'
         ]} 
         regelwerke={[
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' },
+          { title: 'DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
           { title: 'Deutscher Ausschuss für Stahlbeton (DAfStb): Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)', url: 'https://www.dafstb.de/' },
           { title: 'WTA-Merkblatt 4-6: Nachträgliches Abdichten erdberührter Bauteile', url: 'https://www.wta-gmbh.de/' }
         ]} 

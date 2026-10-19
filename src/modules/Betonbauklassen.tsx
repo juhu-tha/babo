@@ -70,7 +70,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
         action: 'Festlegung von BBQ-E im Standsicherheitsnachweis. Vorgabe der Expositionsklassen (XC2, XF1, WF) sowie des rechnerischen Grenzwerts der Rissbreite w_max ≤ 0,2 mm zur Erfüllung der Dichtigkeit.',
         responsible: 'Tragwerksplaner (Statiker)',
         normDetail: 'Nach DIN 1045-1000 muss BBQ-E bei WU-Bauteilen von vornherein im Entwurfsprüfbogen ausgewiesen werden.',
-        tip: 'Vermeide widersprüchliche Angaben im LV bezüglich Festigkeitsklassen und w/z-Wert-Limits.'
+        tip: 'Vermeiden Sie widersprüchliche Angaben im LV bezüglich Festigkeitsklassen und w/z-Wert-Limits.'
       },
       concept: {
         action: 'Formulierung eines detaillierten Betonkonzepts durch das Lieferwerk. Auswahl von Zementen mit langsamer Wärmeentwicklung (NW/LH-Zemente) zur Verringerung thermischer Zwangsspannungen.',
@@ -122,7 +122,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
         action: 'Absprache über Schalungsvorbereitung, spezifische Schalwachse und Schalspray-Mengen. Abstimmung der maximalen Steiggeschwindigkeit des Frischbetons zur Einhaltung des hydrostatischen Schalungsdrucks.',
         responsible: 'Kooperations-Gremium (Planer, Werkstechniker, Schalungsmeister)',
         normDetail: 'Regelung der zulässigen Konsistenzabweichung auf extrem engem Band zur Verhinderung von Farbton-Fluktuationen.',
-        tip: 'Trage das Trennmittel hauchdünn und gleichmäßig auf. Pfützenbildung führt zu hässlichen dunklen Flecken (Ölflecken) auf der Stütze.'
+        tip: 'Tragen Sie das Trennmittel hauchdünn und gleichmäßig auf. Pfützenbildung führt zu hässlichen dunklen Flecken (Ölflecken) auf der Stütze.'
       },
       execution: {
         action: 'Baustellenseitige Verdichtung mit vibrationsoptimierten Innenrüttlern mit Gummikappen (keine Beschädigung der Schalhaut). Überwachung der maximalen Fallhöhe (Fallrohr nutzen ab > 1.50 m Fallhöhe).',
@@ -134,7 +134,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
         action: 'Konstantes Belassen in der Schalung für mindestens 72 Stunden (Hydratationsunterstützung). Nach dem Ausschalen sofortiges Einpacken in reißfeste Planen zum Schutz vor direktem Sonnenlicht.',
         responsible: 'Ausbaugewerke / Polier',
         normDetail: 'Sonder-Nachbehandlung nach Sichtbetonspezifikation zur Konservierung der homogenen Oberflächenhydratation.',
-        tip: 'Verwende zum Schutz vor mechanischen Beschädigungen in den Folgewochen robuste Eckschutzwinkel aus Holz.'
+        tip: 'Verwenden Sie zum Schutz vor mechanischen Beschädigungen in den Folgewochen robuste Eckschutzwinkel aus Holz.'
       }
     }
   },
@@ -162,7 +162,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
         action: 'Erarbeitung eines dedizierten logistischen Abwicklungsplans. Abstimmung über die Einblastaktung der Spannkanal-Injektionsmörtel zur Vermeidung von Luftblasen.',
         responsible: 'Tragwerksplaner, Spannbetonspezialist, Werkstechnologe',
         normDetail: 'Es ist ein objektspezifischer Qualitätssicherungsplan nach DIN 1045-1000 verbindlich zu vereinbaren.',
-        tip: 'Simuliere den Injektionsprozess an einem transparenten Test-Spanngliedstück, um Luftporennester visuell auszuschließen.'
+        tip: 'Simulieren Sie den Injektionsprozess an einem transparenten Test-Spanngliedstück, um Luftporennester visuell auszuschließen.'
       },
       execution: {
         action: 'Überwachung aller Pressenwege und Spannkräfte während des hydraulischen Spannens. Lückenlose Führung des Spannprotokolls. ÜK3 Selbstüberwachung vor Ort.',
@@ -301,7 +301,7 @@ export default function Betonbauklassen() {
             </p>
             <ul className="list-disc list-inside mt-3 text-[11px] text-text-main/70 space-y-1">
               <li>Z.B. C55/67 aufwärts, Sichtbeton SB4, dichte Kappen im Brückenbau</li>
-              <li>Objektspezifischer Qualitätssicherungsplan zwingend vorgeschrieben</li>
+              <li>Objektspezifischer Qualitätssicherungsplan erforderlich</li>
             </ul>
           </div>
           
@@ -670,10 +670,10 @@ export default function Betonbauklassen() {
           'DAfStb-Heft 600: Erläuterungen zu den Normen DIN EN 1992-1-1 und DIN 1045'
         ]}
         regelwerke={[
-          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13670 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1: Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-1000' },
+          { title: 'DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 13670 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
+          { title: 'DIN EN 1992-1-1: Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         formeln={[
           {

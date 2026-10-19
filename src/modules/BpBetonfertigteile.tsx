@@ -175,7 +175,7 @@ export default function BpBetonfertigteile() {
                         <Sparkles className="text-shiraz w-4 h-4" /> Interaktives Elementen-Studio (mit bautechnischen Skizzen)
                       </h4>
                       <p className="text-xs text-slate-600 font-medium">
-                        Klicke auf ein Element, um die 2D-Querschnittszeichnung zu laden und dessen Aufbau im Detail zu analysieren.
+                        Klicken Sie auf ein Element, um die 2D-Querschnittszeichnung zu laden und dessen Aufbau im Detail zu analysieren.
                       </p>
                     </div>
 
@@ -836,11 +836,11 @@ export default function BpBetonfertigteile() {
           'Wendehorst Bautechnische Zahlentafeln, 38. Auflage, Springer Vieweg 2026'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13369 (Allgemeine Regeln für Betonfertigteile)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1168 (Betonfertigteile - Hohlplatten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13747 (Betonfertigteile - Deckensysteme mit Ortbetonergänzung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14992 (Betonfertigteile - Wandelemente)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1045-4:2023-08 (Zusatzregeln für Herstellung und Konformität von Fertigteilen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 13369 (Allgemeine Regeln für Betonfertigteile)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13369' },
+          { title: 'DIN EN 1168 (Betonfertigteile - Hohlplatten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1168' },
+          { title: 'DIN EN 13747 (Betonfertigteile - Deckensysteme mit Ortbetonergänzung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13747' },
+          { title: 'DIN EN 14992 (Betonfertigteile - Wandelemente)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14992' },
+          { title: 'DIN 1045-4:2023-08 (Zusatzregeln für Herstellung und Konformität von Fertigteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-4' }
         ]}
         formeln={[
           {

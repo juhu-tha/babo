@@ -692,8 +692,8 @@ export default function Bauwerkserfassung() {
           "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
         ]}
         regelwerke={[
-          { title: "DIN 18710-1 (Ingenieurvermessung - Teil 1: Allgemeine Anforderungen)", url: "https://www.dinmedia.de/" },
-          { title: "DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/" },
+          { title: "DIN 18710-1 (Ingenieurvermessung - Teil 1: Allgemeine Anforderungen)", url: "https://www.dinmedia.de/de/suche?q=DIN+18710-1" },
+          { title: "DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1" },
           { title: "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg)", url: "https://www.denkmalpflege-bw.de/" }
         ]}
         formeln={[

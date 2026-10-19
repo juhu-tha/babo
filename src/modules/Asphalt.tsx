@@ -1038,13 +1038,13 @@ export default function Asphalt() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'ZTV Asphalt-StB 07/13:2013 (FGSV: Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Verkehrsflächenbefestigungen aus Asphalt)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13108-1:2016-12 (Asphaltmischgut - Mischgutanforderungen - Teil 1: Asphaltbeton)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12591:2015-11 (Bitumen und bitumenhaltige Bindemittel - Anforderungen an Straßenbaubitumen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 14023:2010-09 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifikation von polymermodifizierten Bitumen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12697-8:2019-04 (Asphalt - Prüfverfahren - Teil 8: Bestimmung des Hohlraumgehaltes von Asphalt-Probekörpern)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12697-34:2020-07 (Asphalt - Prüfverfahren - Teil 34: Marshall-Prüfung)', url: 'https://www.dinmedia.de/' },
-          { title: 'RStO 12 (FGSV Ausgabe 2012 / Fassung 2024: Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen, eingeführt mit ARS Nr. 02/2024)', url: 'https://www.dinmedia.de/' }
+          { title: 'ZTV Asphalt-StB 07/13:2013 (FGSV: Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Verkehrsflächenbefestigungen aus Asphalt)', url: 'https://www.fgsv-verlag.de/' },
+          { title: 'DIN EN 13108-1:2016-12 (Asphaltmischgut - Mischgutanforderungen - Teil 1: Asphaltbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13108-1' },
+          { title: 'DIN EN 12591:2015-11 (Bitumen und bitumenhaltige Bindemittel - Anforderungen an Straßenbaubitumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12591' },
+          { title: 'DIN EN 14023:2010-09 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifikation von polymermodifizierten Bitumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14023' },
+          { title: 'DIN EN 12697-8:2019-04 (Asphalt - Prüfverfahren - Teil 8: Bestimmung des Hohlraumgehaltes von Asphalt-Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12697-8' },
+          { title: 'DIN EN 12697-34:2020-07 (Asphalt - Prüfverfahren - Teil 34: Marshall-Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12697-34' },
+          { title: 'RStO 12 (FGSV Ausgabe 2012 / Fassung 2024: Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen, eingeführt mit ARS Nr. 02/2024)', url: 'https://www.fgsv-verlag.de/' }
         ]}
         formeln={[
           {

@@ -109,7 +109,7 @@ function DynamicInteractiveDegradationCalculator() {
           Haltbarkeits- &amp; Alterungs-Simulator für Organik
         </h4>
         <p className="text-xs text-slate-550 mt-0.5">
-          Simuliere den Einfluss von Außenklima, UV-Belastung und Materialqualität auf die chemisch-biologische Zersetzungsrate organischer Bausubstanzen.
+          Simulieren Sie den Einfluss von Außenklima, UV-Belastung und Materialqualität auf die chemisch-biologische Zersetzungsrate organischer Bausubstanzen.
         </p>
       </div>
 
@@ -714,9 +714,9 @@ export default function WeitereOrganik() {
           { title: 'Dämmstoff', url: 'https://de.wikipedia.org/wiki/D%C3%A4mmstoff' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 12944 (Korrosionsschutz durch Beschichtungssysteme)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 68800 (Holzschutz: Vorbeugender Schutz im Hochbau)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 18531 (Abdichtung von Dächern und Bauwerken)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN ISO 12944 (Korrosionsschutz durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
+          { title: 'DIN 68800 (Holzschutz: Vorbeugender Schutz im Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+          { title: 'DIN 18531 (Abdichtung von Dächern und Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18531' }
         ]}
         literatur={[
           'Schunck, E. et al.: Dachatlas: Geneigte Dächer und Flachdächer (Edition Detail)'

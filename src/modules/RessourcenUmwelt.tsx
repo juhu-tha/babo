@@ -69,7 +69,7 @@ export default function RessourcenUmwelt() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.beuth.de/' },
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
           { title: 'ÖKOBAUDAT Plattform (Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen)', url: 'https://www.oekobaudat.de/' },
           { title: 'QNG Kriterien (Qualitätssiegel Nachhaltiges Gebäude)', url: 'https://www.nachhaltigesbauen.de/' }
         ]}

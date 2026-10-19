@@ -394,14 +394,14 @@ export default function Glas() {
           'Feldmann, M. (2018): Konstruktiver Glasbau - Bemessung und Ausführung (Ernst & Sohn)'
         ]}
         regelwerke={[
-          { title: 'DIN 18008-1:2020-05 (Glas im Bauwesen - Bemessungs- und Konstruktionsregeln - Teil 1: Begriffe und allgemeine Grundlagen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18008-2:2020-05 (Glas im Bauwesen - Teil 2: Liniengestützte Verglasungen unter Wind- und Schneeeinwirkungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18008-3:2020-05 (Glas im Bauwesen - Teil 3: Punktförmig gelagerte Verglasungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18008-4:2020-05 (Glas im Bauwesen - Teil 4: Zusatzanforderungen an absturzsichernde Verglasungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 572-1:2016-06 (Glas im Bauwesen - Basiserzeugnisse aus Kalk-Natronsilicatglas)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12150-1:2020-07 (Glas im Bauwesen - Thermisch vorgespanntes Kalknatron-Einscheibensicherheitsglas ESG)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 12543-1:2022-04 (Glas im Bauwesen - Verbundglas und Verbund-Sicherheitsglas VSG)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 16612:2019-12 (Glas im Bauwesen - Bestimmung des Lastwiderstandes von Glasscheiben durch Berechnung und Prüfung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18008-1:2020-05 (Glas im Bauwesen - Bemessungs- und Konstruktionsregeln - Teil 1: Begriffe und allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18008-1' },
+          { title: 'DIN 18008-2:2020-05 (Glas im Bauwesen - Teil 2: Liniengestützte Verglasungen unter Wind- und Schneeeinwirkungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18008-2' },
+          { title: 'DIN 18008-3:2020-05 (Glas im Bauwesen - Teil 3: Punktförmig gelagerte Verglasungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18008-3' },
+          { title: 'DIN 18008-4:2020-05 (Glas im Bauwesen - Teil 4: Zusatzanforderungen an absturzsichernde Verglasungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18008-4' },
+          { title: 'DIN EN 572-1:2016-06 (Glas im Bauwesen - Basiserzeugnisse aus Kalk-Natronsilicatglas)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+572-1' },
+          { title: 'DIN EN 12150-1:2020-07 (Glas im Bauwesen - Thermisch vorgespanntes Kalknatron-Einscheibensicherheitsglas ESG)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12150-1' },
+          { title: 'DIN EN ISO 12543-1:2022-04 (Glas im Bauwesen - Verbundglas und Verbund-Sicherheitsglas VSG)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12543-1' },
+          { title: 'DIN EN 16612:2019-12 (Glas im Bauwesen - Bestimmung des Lastwiderstandes von Glasscheiben durch Berechnung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16612' }
         ]}
         formeln={[
           {

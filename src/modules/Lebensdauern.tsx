@@ -423,9 +423,9 @@ export default function Lebensdauern() {
         ]}
         regelwerke={[
           { title: 'BNB - Nutzungsdauern von Bauteilen für Lebenszyklusanalysen nach dem Bewertungssystem Nachhaltiges Bauen', url: 'https://www.nachhaltigesbauen.de/' },
-          { title: 'DIN EN ISO 15686-1:2011-05 (Gebäude und Bauwerke - Planung der Lebensdauer - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/' },
-          { title: 'VDI 2067 Blatt 1: Wirtschaftlichkeit gebäudetechnischer Anlagen', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 16627: Nachhaltigkeit von Bauwerken - Bewertung der ökonomischen Qualität von Gebäuden', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 15686-1:2011-05 (Gebäude und Bauwerke - Planung der Lebensdauer - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+15686-1' },
+          { title: 'VDI 2067 Blatt 1: Wirtschaftlichkeit gebäudetechnischer Anlagen', url: 'https://www.dinmedia.de/de/suche?q=VDI+2067+Blatt+1' },
+          { title: 'DIN EN 16627: Nachhaltigkeit von Bauwerken - Bewertung der ökonomischen Qualität von Gebäuden', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16627' }
         ]}
         literatur={[
           'Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR): Tabelle Nutzungsdauern von Bauteilen zur Lebenszyklusanalyse',

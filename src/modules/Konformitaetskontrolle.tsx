@@ -626,7 +626,7 @@ export default function Konformitaetskontrolle() {
 
                 {testValues.length === 0 ? (
                   <div className="text-center p-4 bg-white border border-dashed border-home-grau/25 rounded-xl text-xs text-home-grau font-semibold">
-                    Keine Prüfkörper gelistet. Trage Werte ein oder wähle ein Muster.
+                    Keine Prüfkörper gelistet. Tragen Sie Werte ein oder wähle ein Muster.
                   </div>
                 ) : (
                   <div className="flex flex-wrap gap-1 max-h-28 overflow-y-auto p-1 bg-white rounded-lg border border-stone-200">
@@ -661,7 +661,7 @@ export default function Konformitaetskontrolle() {
             {/* 1. Conformity verdict banner */}
             {testValues.length === 0 ? (
               <div className="bg-[#f8fafc] border border-home-grau/35 rounded-2xl p-6 text-center text-sm font-semibold text-slate-600">
-                Gib links Frischbetonprüfwerte oder Festbeton-Messungen ein, um die automatische Konformitätsprüfung nach DIN EN 206 anzustoßen.
+                Geben Sie links Frischbetonprüfwerte oder Festbeton-Messungen ein, um die automatische Konformitätsprüfung nach DIN EN 206 anzustoßen.
               </div>
             ) : (
               <div className="space-y-4">
@@ -1117,9 +1117,9 @@ export default function Konformitaetskontrolle() {
           { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.beuth.de/' },
-          { title: 'DIN 1045-2:2023-08 (Anwendungsregeln zu DIN EN 206)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 12390-3 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN 1045-2:2023-08 (Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 12390-3 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' }
         ]}
         literatur={[
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)',

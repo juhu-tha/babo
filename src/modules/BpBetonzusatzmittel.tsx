@@ -743,7 +743,7 @@ export default function BpBetonzusatzmittel() {
             <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/10 text-sm leading-relaxed text-text-main/80">
               <h3 className="font-extrabold text-shiraz text-base mb-1.5">E-Schein Prüfungsrelevanz: Die Wasser- &amp; Mengenschranken</h3>
               <p className="mb-2">
-                Bei der Bemessung hochpräziser Betonschlämmen greifen strikte normative Schranken aus <strong>DIN EN 206 / DIN 1045-2</strong> sowie der **Zusatzmittelrichtlinie**. Verwende den nachfolgenden Simulator, um die Grenzbereiche zu prüfen. Er prüft Dosiergrenzen und berechnet das anrechenbare Wasser von verflüssigendem Additivwasser auf den korrigierten w/z-Wert.
+                Bei der Bemessung hochpräziser Betonschlämmen greifen strikte normative Schranken aus <strong>DIN EN 206 / DIN 1045-2</strong> sowie der **Zusatzmittelrichtlinie**. Verwenden Sie den nachfolgenden Simulator, um die Grenzbereiche zu prüfen. Er prüft Dosiergrenzen und berechnet das anrechenbare Wasser von verflüssigendem Additivwasser auf den korrigierten w/z-Wert.
               </p>
               <div className="flex flex-wrap gap-4 mt-3 text-xs bg-white p-4 rounded-lg border border-shiraz/10 text-slate-800">
                 <div className="flex items-center gap-1">
@@ -1079,9 +1079,9 @@ export default function BpBetonzusatzmittel() {
           'Basisvortrag Betonzusatzmittel für E-Schein-Lehrgänge, Deutsche Bauchemie e.V., Düsseldorf.'
         ]}
         regelwerke={[
-          { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 480-Reihe (Prüfverfahren für Betonzusatzmittel)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+934-2' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 480-Reihe (Prüfverfahren für Betonzusatzmittel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+480' }
         ]}
         formeln={[
           { 

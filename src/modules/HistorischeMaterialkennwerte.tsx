@@ -1616,14 +1616,14 @@ export default function HistorischeMaterialkennwerte() {
           { title: 'Mauerwerk', url: 'https://de.wikipedia.org/wiki/Mauerwerk' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/' },
-          { title: 'EN 1990-2:2026 (Eurocode: Bewertung bestehender Tragwerke - Existing Structures)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'EN 1990-2:2026 (Eurocode: Bewertung bestehender Tragwerke - Existing Structures)', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' },
           { title: 'DBV-Merkblatt: Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte', url: 'https://www.betonverein.de/' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Betontragwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13791 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12504-1 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkerne)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Betontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 13791 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
+          { title: 'DIN EN 12504-1 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkerne)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
+          { title: 'DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-1-1' },
+          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' }
         ]}
         literatur={[
           'DBV (Deutscher Beton- und Bautechnik-Verein): Merkblatt Modifizierte Teilsicherheitsbeiwerte',

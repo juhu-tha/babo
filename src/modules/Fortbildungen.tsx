@@ -423,7 +423,7 @@ export default function Fortbildungen() {
         'Konzeptionierung behutsamer Anlagentechnik (z. B. Bauteil- und Wandflächentemperierung, Solarpaneel-Integration)',
         'Beantragung und Nachweisführung geförderter Sanierungsstufen ("KfW-Effizienzhaus Denkmal")'
       ],
-      relevance: 'Standardmäßige Außendämmungen (WDVS) sind auf Denkmalfassaden verboten. Die energetische Sanierung muss extrem anspruchsvoll über bauphysikalische Innendämmungen geplant werden. Dies dürfen rechtssicher und im Förderungsrahmen NUR gelistete Energieberater Denkmal tun.',
+      relevance: 'Standardmäßige Außendämmungen (WDVS) sind auf Denkmalfassaden verboten. Die energetische Sanierung muss extrem anspruchsvoll über bauphysikalische Innendämmungen geplant werden. Dies dürfen rechtlich belastbar und im Förderungsrahmen NUR gelistete Energieberater Denkmal tun.',
       category: 'denkmal'
     },
     sigeko: {
@@ -560,7 +560,7 @@ export default function Fortbildungen() {
       title: 'Zertifizierter Sachverständiger für Schäden an Gebäuden',
       abbreviation: 'Bauschadens-Gutachter (IHK / ISO 17024)',
       authority: 'IHK / Personenzertifizierungsstellen nach DIN EN ISO/IEC 17024',
-      scope: 'Höchststufe der bautechnischen Zertifizierung zur unabhängigen, gerichtsfesten Bewertung, Ursachenforschung und Schadensbewertung an Konstruktionen.',
+      scope: 'Höchststufe der bautechnischen Zertifizierung zur unabhängigen, beweissicheren Bewertung, Ursachenforschung und Schadensbewertung an Konstruktionen.',
       legalBase: 'Landesbauordnungen (LBO), Zivilprozessordnung (ZPO) für gerichtliche Gutachten, BGB/VOB Werkvertragsrecht.',
       targetGroup: 'Freiberufliche Bausachverständige, planende Ingenieure, Tragwerksprüfer, Versicherungsingenieure.',
       duration: 'Modulares Studium über ca. 1-2 Jahre (ca. 180-240 Stunden) inkl. Fachgutachten-Hausarbeiten und Abschlusskolloquium.',
@@ -609,7 +609,7 @@ export default function Fortbildungen() {
         recs.push({ cert: certs.trgs521, reason: 'Mit der Fachkunde nach TRGS 521 leiten und koordinieren Sie KMF-Sanierungen staubarm und entsorgungsrechtlich unbedenklich.' });
         recs.push({ cert: certs.mold_remediation, reason: 'Die Schimmel-Sachkunde liefert den biologisch-technischen Leitfaden zur Desinfektion, Beurteilung und Sanierungsbegleitung im Bestand.' });
       } else if (userGoal === 'denkmal_energie') {
-        recs.push({ cert: certs.heritage_energy, reason: 'Als dena-gelisteter Energieberater Denkmal können Sie hochempfindliche, geförderte energetische Modernisierungspläne rechtssicher unterbreiten.' });
+        recs.push({ cert: certs.heritage_energy, reason: 'Als dena-gelisteter Energieberater Denkmal können Sie hochempfindliche, geförderte energetische Modernisierungspläne rechtlich belastbar unterbreiten.' });
         recs.push({ cert: certs.masonry_restoration, reason: 'Die WTA-Instandsetzungsplanung liefert die nötige materialspezifische Abstimmung auf historische Trasskalk- und Natursteingefüge zur Schadensvermeidung.' });
       } else if (userGoal === 'baustellen_sicherheit') {
         recs.push({ cert: certs.sigeko, reason: 'Als Planer/Ingenieur qualifiziert Sie der RAB-30-Nachweis direkt als gesetzlich anerkannter SiGeKo zur Koordinierung paralleler Bauabläufe.' });
@@ -617,7 +617,7 @@ export default function Fortbildungen() {
         recs.push({ cert: certs.skp, reason: 'Planerische Entwürfe, Bauteilauswahlen und Risskartierungen bedürfen des tiefgreifenden betontechnischen SKP-Wissens.' });
         recs.push({ cert: certs.crack_injection, reason: 'Der handwerkliche Injektionsschein vermittelt Ihnen tiefes Systemwissen über Harze, Zementsuspensionen und Bohrpacker zur besseren Detailüberwachung.' });
       } else if (userGoal === 'bauwerk_diagnose') {
-        recs.push({ cert: certs.thermography, reason: 'Erwirb ein anerkanntes Bauthermografen-Zertifikat nach ISO 9712, um gerichtsfeste thermodynamische Bauwerksbeurteilungen zu verfassen.' });
+        recs.push({ cert: certs.thermography, reason: 'Erwirb ein anerkanntes Bauthermografen-Zertifikat nach ISO 9712, um beweissichere thermodynamische Bauwerksbeurteilungen zu verfassen.' });
         recs.push({ cert: certs.drone_inspection, reason: 'Der große Drohnenführerschein A2 des Luftfahrt-Bundesamtes legitimiert dichte Bauwerküberwachungsflüge im urbanen Raum ohne Strafbarkeitsrisiko.' });
       } else if (userGoal === 'abdichtung') {
         recs.push({ cert: certs.waterproofing, reason: 'Als zertifizierter Fachplaner für Bauwerksabdichtungen nach DIN 18533 entwerfen Sie horizontal/vertikale Kellersperren lückenlos und schadensfrei.' });
@@ -645,7 +645,7 @@ export default function Fortbildungen() {
         recs.push({ cert: certs.drone_inspection, reason: 'Befliege komplexe Steildachflächen oder unzugängliche Simse mit einer A2-Drohnenberechtigung zur schnellen handwerklichen Schadensprüfung.' });
       } else if (userGoal === 'abdichtung') {
         recs.push({ cert: certs.waterproofing, reason: 'Bautenschützer und Sanierungshandwerker weisen mit dem Abdichtungs-Zertifikat meisterliche Qualität bei der Kellersanierung nach.' });
-        recs.push({ cert: certs.crack_injection, reason: 'Führe hochdruckverpressende Rissabdichtungen mit PUR- oder Acrylatgelen meisterlich aus.' });
+        recs.push({ cert: certs.crack_injection, reason: 'Sie führen hochdruckverpressende Rissabdichtungen mit PUR- oder Acrylatgelen meisterlich aus.' });
       } else {
         recs.push({ cert: certs.sivv, reason: 'Zur Weiterbildung im Handwerk bildet der SIVV-Mörtelschein die solide, anerkannte Grundlage.' });
       }

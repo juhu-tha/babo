@@ -478,7 +478,7 @@ export default function Materialpaesse() {
                 )}
                 {recycledInput < 30 && (
                   <p className="border-l-2 border-amber-500 pl-3">
-                    💡 <strong>Primärrohstoff-Dominanz:</strong> Sie nutzen extrem viele Jungfräuliche (Virgin) Baustoffe. Versuche, den <strong>Recycling-Beton-Anteil</strong> (RC-Zuschläge) zu erhöhen oder das Tragwerk in Holzbauweise zu planen, um wertvolle CO₂-Gegenbuchungen im Cradle-to-Grave Lebenszyklus (Modul D) zu verbuchen.
+                    💡 <strong>Primärrohstoff-Dominanz:</strong> Sie nutzen extrem viele Jungfräuliche (Virgin) Baustoffe. Versuchen Sie, den <strong>Recycling-Beton-Anteil</strong> (RC-Zuschläge) zu erhöhen oder das Tragwerk in Holzbauweise zu planen, um wertvolle CO₂-Gegenbuchungen im Cradle-to-Grave Lebenszyklus (Modul D) zu verbuchen.
                   </p>
                 )}
                 {joiningMethod === 'screwed' && (
@@ -670,7 +670,7 @@ export default function Materialpaesse() {
         ]}
         regelwerke={[
           { title: 'DGNB Kriterium TEC 1.6 (Rückbaufreundlichkeit und Kreislaufwirtschaft)', url: 'https://www.dgnb.de/' },
-          { title: 'DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
           { title: 'ISO 20887 (Sustainability in buildings - Design for disassembly and adaptability)', url: 'https://www.iso.org/' },
           { title: 'EU-Taxonomie-Verordnung (Kriterien für Zirkulärwirtschaft / Circular Economy)', url: 'https://finance.ec.europa.eu/' }
         ]}

@@ -941,11 +941,11 @@ export default function Innenausbau() {
           'BEB-Merkblätter: Bundesverband Estrich und Belag e.V. (Schnittstellenkoordination FBH)'
         ]}
         regelwerke={[
-          { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18560-1..7:2021-02 (Estriche im Bauwesen - Teile 1 bis 7: Anforderungen, Prüfung und Ausführung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18534-1..6:2017-07 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18181' },
+          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+520' },
+          { title: 'DIN 18560-1..7:2021-02 (Estriche im Bauwesen - Teile 1 bis 7: Anforderungen, Prüfung und Ausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1..7' },
+          { title: 'DIN 18534-1..6:2017-07 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18534-1..6' },
+          { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4103-1' }
         ]}
         formeln={[
           {

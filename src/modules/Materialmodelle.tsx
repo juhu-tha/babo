@@ -976,10 +976,10 @@ export default function Materialmodelle() {
           { title: 'Bauschinger-Effekt', url: 'https://de.wikipedia.org/wiki/Bauschinger-Effekt' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Stahlbeton - Nichtlineare Stoffgesetze)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung von Stahlbauten - Plastische Grenzzustände)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 1342-1..3:2003-11 (Viskosität - Rheologische Begriffe und Messverfahren)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung von Stahlbeton - Nichtlineare Stoffgesetze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1993-1-1:2024-03 (Eurocode 3: Bemessung von Stahlbauten - Plastische Grenzzustände)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
+          { title: 'DIN 1342-1..3:2003-11 (Viskosität - Rheologische Begriffe und Messverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1342-1..3' }
         ]}
         literatur={[
           'Mang, H., Hofstetter, G.: Festigkeitslehre (Springer Vieweg, 2013)',

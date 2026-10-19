@@ -333,8 +333,8 @@ export default function EModul() {
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12390-13 (Prüfung von Festbeton - Bestimmung des Elastizitätsmoduls unter Druckbeanspruchung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 12390-13 (Prüfung von Festbeton - Bestimmung des Elastizitätsmoduls unter Druckbeanspruchung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-13' }
         ]}
         literatur={[
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',

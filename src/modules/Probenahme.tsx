@@ -225,7 +225,7 @@ export default function Probenahme() {
                     <MapPin size={18} /> Entnahme-Taktik nach Bauteiltyp
                   </h4>
                   <div className="space-y-3.5">
-                    <label className="block text-xs font-bold text-slate-700">Wähle Ihr Bauteil zur Analyse:</label>
+                    <label className="block text-xs font-bold text-slate-700">Wählen Sie Ihr Bauteil zur Analyse:</label>
                     <div className="grid grid-cols-2 gap-2">
                       {[
                         { id: 'pier', label: 'Brückenpfeiler', exp: 'Splash zone / Carbonation' },
@@ -394,7 +394,7 @@ export default function Probenahme() {
                             </span>
                           </div>
                           <p className="text-slate-500 text-[10px] leading-tight">
-                            Für D_max = {dMax} mm muss der Bohrdurchmesser d ≥ {tripleRequired} mm betragen. Dein Kern hat d = {coreD} mm.
+                            Für D_max = {dMax} mm muss der Bohrdurchmesser d ≥ {tripleRequired} mm betragen. Ihr Kern hat d = {coreD} mm.
                           </p>
                           <div className="pt-1.5 border-t border-home-grau/30 grid grid-cols-2 gap-2">
                             <div>
@@ -694,11 +694,11 @@ export default function Probenahme() {
         regelwerke={[
           { title: 'Ersatzbaustoffverordnung (EBV) 2023 - Anhang 1: Probenahme', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'LAGA PN 98 (Beprobung von Haufwerken - Richtlinie für das Vorgehen)', url: 'https://www.laga-online.de/' },
-          { title: 'DIN 19698-1:2014-05 (Untersuchung von Feststoffen - Probenahme aus Haufwerken)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 19528:2009-01 (Eluierungsverfahren für anorganische Schadstoffe)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12504-1:2021-04 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 12504-2:2021-11 (Prüfung von Beton in Bauwerken - Teil 2: Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN 19698-1:2014-05 (Untersuchung von Feststoffen - Probenahme aus Haufwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19698-1' },
+          { title: 'DIN 19528:2009-01 (Eluierungsverfahren für anorganische Schadstoffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19528' },
+          { title: 'DIN EN 12504-1:2021-04 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
+          { title: 'DIN EN 12504-2:2021-11 (Prüfung von Beton in Bauwerken - Teil 2: Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
+          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' }
         ]}
         formeln={[
           {

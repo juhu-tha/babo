@@ -863,9 +863,9 @@ export default function Zementchemie() {
           { title: 'Bogue-Berechnung', url: 'https://de.wikipedia.org/wiki/Bogue-Berechnung' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 197-1 (Zement - Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 197-5 (Portland-Kompositzement CEM II/C-M und Kompositzement CEM VI)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN 196-2 (Prüfverfahren für Zement - Chemische Analyse von Zement)', url: 'https://www.beuth.de/' }
+          { title: 'DIN EN 197-1 (Zement - Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },
+          { title: 'DIN EN 197-5 (Portland-Kompositzement CEM II/C-M und Kompositzement CEM VI)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-5' },
+          { title: 'DIN EN 196-2 (Prüfverfahren für Zement - Chemische Analyse von Zement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-2' }
         ]}
         literatur={[
           'Bogue, R. H. (1929): Calculation of the compounds in Portland cement. Industrial & Engineering Chemistry, 1(4), S. 192-197',

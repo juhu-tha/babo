@@ -505,7 +505,7 @@ export default function BpDachFassade() {
           'Willems, W. M. (2018): Lehrbuch der Bauphysik (8. Auflage, Springer Vieweg)'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN ISO 10077-1 (Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen - Berechnung des Wärmedurchgangskoeffizienten)', url: 'https://www.dinmedia.de/' }, 
+          { title: 'DIN EN ISO 10077-1 (Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen - Berechnung des Wärmedurchgangskoeffizienten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10077-1' }, 
           { title: 'GEG (Gebäudeenergiegesetz - Anforderungen an opake und transparente Außenbauteile)', url: 'https://www.gesetze-im-internet.de/geg/' }, 
           { title: 'ZVDH (Zentralverband des Deutschen Dachdeckerhandwerks) - Fachregeln für Abdichtungen und Dachdeckungen', url: 'https://www.dachdecker.org/' } 
         ]} 

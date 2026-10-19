@@ -1207,7 +1207,7 @@ export default function BpKunststoffe() {
                 </div>
                 <p className="leading-snug text-text-main/80 text-[11px] font-normal leading-relaxed">
                   Der Thermodehnungs-Mismatch beträgt ca. <strong>{(elongationPlastic / Math.max(0.1, elongationConcrete)).toFixed(1)}x</strong> gegenüber Normalbeton. Ohne Gleitmuffen oder Dehnungskompensatoren entstehen an Muffen sofort Risse und Undichtigkeiten. 
-                  {compObj.id === 'pe' && ' Lege bei PE-HD Abwasserrohren alle 5 m Festmuffen an oder plane Umlenkschenkel mit ausreichend Freiraum ein.'}
+                  {compObj.id === 'pe' && ' Legen Sie bei PE-HD Abwasserrohren alle 5 m Festmuffen an oder planen Sie Umlenkschenkel mit ausreichend Freiraum ein.'}
                   {compObj.id === 'pvc-u' && ' Hart-PVC-Rinnen müssen an den Rinnenkopplungen min. 10 - 15 mm Verfahrweg aufweisen, ansonsten beult die Rinne im Sommer aus.'}
                 </p>
               </div>
@@ -1242,9 +1242,9 @@ export default function BpKunststoffe() {
           'Puntigam, W.: Die Flachdach-Richtlinien (Fachregel für Abdichtungen).' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+1043-1' },
+          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18531' },
+          { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13956' }
         ]} 
         formeln={[
           { 

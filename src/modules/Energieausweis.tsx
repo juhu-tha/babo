@@ -1121,8 +1121,8 @@ export default function Energieausweis() {
         ]}
         regelwerke={[
           /* TODO: GModG Umnummerierung */ { title: 'Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG §§ 79–88: Energieausweise)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'DIN V 18599 (Energetische Bewertung von Gebäuden, Teile 1 bis 12)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN 4108-2 (Mindestwärmeschutz im Hochbau)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN V 18599 (Energetische Bewertung von Gebäuden, Teile 1 bis 12)', url: 'https://www.dinmedia.de/de/suche?q=DIN+V+18599' },
+          { title: 'DIN 4108-2 (Mindestwärmeschutz im Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' }
         ]}
         formeln={
           activeTab === 'annahmen_berechnung' || activeTab === 'simulator'

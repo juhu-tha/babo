@@ -869,8 +869,8 @@ export default function Admin() {
           { title: 'Audit', url: 'https://de.wikipedia.org/wiki/Audit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 9001:2015-11 (Qualitätsmanagementsysteme - Anforderungen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN ISO 19011:2018-10 (Leitfaden zur Auditierung von Managementsystemen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN ISO 9001:2015-11 (Qualitätsmanagementsysteme - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9001' },
+          { title: 'DIN EN ISO 19011:2018-10 (Leitfaden zur Auditierung von Managementsystemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19011' }
         ]}
         literatur={[
           'Brunner, F. J. (2020): Qualitätsmanagement: Leitfaden für Studium und Praxis (Hanser Verlag)',

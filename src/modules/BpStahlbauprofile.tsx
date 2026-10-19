@@ -623,8 +623,8 @@ export default function BpStahlbauprofile() {
           'Kuhlmann, U. et al.: Stahlbau-Kalender (Ernst & Sohn, jährlich aktualisiert)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+10025' },
+          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' }
         ]}
         formeln={[
           {

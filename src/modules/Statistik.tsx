@@ -527,7 +527,7 @@ export default function Statistik() {
               </h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            <strong>Anleitung:</strong> Ziehe die kreisförmigen Proben (P1 bis P6) <strong>direkt im Diagramm</strong> nach links/rechts, nutze die Zylinderschieberegler darunter oder schalte zwischen der <strong>Dichte-</strong> und <strong>Verteilungsfunktion</strong> um!
+            <strong>Anleitung:</strong> Ziehen Sie die kreisförmigen Proben (P1 bis P6) <strong>direkt im Diagramm</strong> nach links/rechts, nutze die Zylinderschieberegler darunter oder schalte zwischen der <strong>Dichte-</strong> und <strong>Verteilungsfunktion</strong> um!
           </p>
         </div>
             
@@ -567,7 +567,7 @@ export default function Statistik() {
                 Glocken- &amp; Verteilungsfunktionen der Normalverteilung (MPa)
               </span>
               <span className="text-[9.5px] font-semibold text-text-main/60 italic font-mono select-none">
-                Klicken &amp; Ziehe die Messpunkte
+                Klicken &amp; Ziehen Sie die Messpunkte
               </span>
             </div>
             <div className="w-full max-w-[500px] aspect-[500/145] relative">
@@ -976,9 +976,9 @@ export default function Statistik() {
             'DIN EN 1990:2023-11: Eurocode - Grundlagen der Tragwerksplanung, Anhang D: Bemessung mit Hilfe von Versuchen'
           ]}
           regelwerke={[
-            { title: 'DIN EN 1990:2023-11 Anhang D (Versuchsgestützte Bemessung und statistische Auswertung)', url: 'https://www.dinmedia.de/' },
+            { title: 'DIN EN 1990:2023-11 Anhang D (Versuchsgestützte Bemessung und statistische Auswertung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
             { title: 'ISO 2394:2015 (General principles on reliability for structures)', url: 'https://www.iso.org/' },
-            { title: 'DIN ISO 12491:2000-09 (Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen)', url: 'https://www.dinmedia.de/' }
+            { title: 'DIN ISO 12491:2000-09 (Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+12491' }
           ]}
           formeln={[
             {
@@ -1245,8 +1245,8 @@ export default function Statistik() {
           'Wendehorst Bautechnische Zahlentafeln: Statistische Auswertungen und 5%-Fraktilwerte'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN ISO 2859-1 (Annahmestichprobenprüfung)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+          { title: 'DIN ISO 2859-1 (Annahmestichprobenprüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+2859-1' }
         ]}
         formeln={[
           {

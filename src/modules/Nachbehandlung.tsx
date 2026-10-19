@@ -286,8 +286,8 @@ export default function Nachbehandlung() {
             { title: 'Frühschwinden', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Nachbehandlungsklassen)', url: 'https://www.beuth.de/' },
-            { title: 'DIN EN 206 / DIN 1045-2 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.beuth.de/' },
+            { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Nachbehandlungsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
+            { title: 'DIN EN 206 / DIN 1045-2 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
             { title: 'ACI 305R: Guide to Hot Weather Concreting (Verdunstungsnomogramm)', url: 'https://www.concrete.org/' },
             { title: 'DBV-Merkblatt: Nachbehandlung von Beton (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/' }
           ]}

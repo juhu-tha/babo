@@ -170,7 +170,7 @@ export default function BimBaustoffe() {
               </h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Simuliere, wie Material-Fachparameter im offenen Standard IFC strukturiert werden.
+            Simulieren Sie, wie Material-Fachparameter im offenen Standard IFC strukturiert werden.
           </p>
         </div>
             
@@ -392,9 +392,9 @@ export default function BimBaustoffe() {
           'buildingSMART International: IFC4.3 Spezifikationen und Pset-Definitionen'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650 (Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN EN ISO 19650 (Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
           { title: 'ISO 16739-1 (Industry Foundation Classes (IFC) für Datenfreigabe)', url: 'https://www.iso.org/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/' }
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
         ]}
         weblinks={[
           { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' },

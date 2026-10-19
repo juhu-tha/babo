@@ -883,8 +883,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           'Müller, K. (2019): Bautenschutz und Instandsetzung: Leitfaden für Studium und Baupraxis (Fraunhofer IRB Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN 68800 (Holzschutz - Teile 1 bis 4)', url: 'https://www.beuth.de/' },
-          { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)', url: 'https://www.beuth.de/' },
+          { title: 'DIN 68800 (Holzschutz - Teile 1 bis 4)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+          { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
           { title: 'DVS 2207 / DVS 2208 (Schweißen von thermoplastischen Kunststoffen)', url: 'https://www.dvs-regelwerk.de/' },
           { title: 'ZTV BEA-StB (Zusätzliche Technische Vertragsbedingungen für die Erhaltung von Asphaltbefestigungen)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'WTA-Merkblatt 2-9 (Sanierputzsysteme) & 4-4 (Horizontalsperren)', url: 'https://www.wta-international.org/' }

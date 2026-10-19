@@ -631,7 +631,7 @@ export default function Materialoptimierung() {
                 <Layers size={13} className="text-shiraz" /> Klappbare Menüpunkte (Leitfaden-Struktur)
               </span>
               <span className="text-[11px] text-slate-500 block mt-0.5">
-                Klicke auf einzelne Kategorieüberschriften, um spezifische Optimierungswege ein- oder auszublenden.
+                Klicken Sie auf einzelne Kategorieüberschriften, um spezifische Optimierungswege ein- oder auszublenden.
               </span>
             </div>
             <div className="flex gap-2">
@@ -1467,7 +1467,7 @@ export default function Materialoptimierung() {
                   <div className="p-3 bg-indigo-50/25 rounded-xl border border-indigo-100 space-y-1">
                     <span className="font-extrabold text-xs text-indigo-900 block">k-Wert &amp; anrechenbarer Anteil</span>
                     <p className="text-[11px] text-slate-500 font-normal">
-                      Pflanzenkohle dient als inerter Zusatzstoff (Typ I). Sie besitzt keine hydraulischen oder nennenswert puzzeolane Eigenreaktionen, weswegen die Festigkeitsklasse geringfügig absinken kann. Deine Korngrößenverteilung muss präzise auf die Fuller-Sieblinie abgestimmt sein.
+                      Pflanzenkohle dient als inerter Zusatzstoff (Typ I). Sie besitzt keine hydraulischen oder nennenswert puzzeolane Eigenreaktionen, weswegen die Festigkeitsklasse geringfügig absinken kann. Ihre Korngrößenverteilung muss präzise auf die Fuller-Sieblinie abgestimmt sein.
                     </p>
                   </div>
                 </div>
@@ -1513,11 +1513,11 @@ export default function Materialoptimierung() {
           "Stark, J., Wicht, B.: 'Dauerhaftigkeit von Beton - Beanspruchung und Optimierung'."
         ]}
         regelwerke={[
-          { title: "DAfStb-Richtlinie: Treibhausgasoptimierte Tragwerke aus Beton und Stahlbeton", url: "https://www.dinmedia.de/" },
-          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)", url: "https://www.dinmedia.de/" },
-          { title: "DIN EN 206 / DIN 1045-2: Beton - Festlegung, Eigenschaften, Herstellung und Konformität", url: "https://www.dinmedia.de/" },
-          { title: "DIN EN 13670: Ausführung von Tragwerken aus Beton", url: "https://www.dinmedia.de/" },
-          { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien", url: "https://www.dinmedia.de/" }
+          { title: "DAfStb-Richtlinie: Treibhausgasoptimierte Tragwerke aus Beton und Stahlbeton", url: "https://www.dinmedia.de/de/suche?q=DAfStb+Treibhausgasoptimierte+Tragwerke+aus+Beton+und+Stahlbeton" },
+          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1" },
+          { title: "DIN EN 206 / DIN 1045-2: Beton - Festlegung, Eigenschaften, Herstellung und Konformität", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+206" },
+          { title: "DIN EN 13670: Ausführung von Tragwerken aus Beton", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+13670" },
+          { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien", url: "https://www.dinmedia.de/de/suche?q=VDI+4800+Blatt+1" }
         ]}
         formeln={[
           {

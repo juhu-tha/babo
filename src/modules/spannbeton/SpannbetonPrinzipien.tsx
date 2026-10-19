@@ -210,7 +210,7 @@ export default function SpannbetonPrinzipien() {
             }`}
             onClick={() => setActiveSubTab("ausblick_ec2")}
           >
-            <Sparkles size={14} /> 8. 2. Generation EC2 (prEN 1992-1-1)
+            <Sparkles size={14} /> 8. 2. Generation EC2 (EN 1992-1-1:2023)
           </button>
         </div>
       </div>

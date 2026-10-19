@@ -586,7 +586,7 @@ export default function BpAbdichtung() {
                 <h4 className="font-extrabold text-sm text-text-main">3. Interaktiver Fugenband-Planer (DIN 18197 &amp; DIN 18533)</h4>
               </div>
               <p className="text-xs text-slate-600 leading-normal">
-                Gib die Bauteilabmessungen und Wassereinwirkungen an, um die konforme Bandbreite und die Mindestbauteildicke nach DIN 18197 zu prüfen.
+                Geben Sie die Bauteilabmessungen und Wassereinwirkungen an, um die konforme Bandbreite und die Mindestbauteildicke nach DIN 18197 zu prüfen.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -787,7 +787,7 @@ export default function BpAbdichtung() {
                 <h4 className="font-extrabold text-sm text-text-main">4. Interaktiver Injektionsschlauch-Planungsplaner</h4>
               </div>
               <p className="text-xs text-slate-600 leading-normal">
-                Prüfe die Machbarkeit und Detailierungsrichtlinien für Verpressschläuche, um Ausbrüche und mangelhafte Injektionen auf der Baustelle zu vermeiden.
+                Prüfen Sie die Machbarkeit und Detailierungsrichtlinien für Verpressschläuche, um Ausbrüche und mangelhafte Injektionen auf der Baustelle zu vermeiden.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -1331,9 +1331,9 @@ export default function BpAbdichtung() {
           'Weber, H. (2020): Mauerwerksabdichtung und Kellersanierung (Expert Verlag)' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen - Teile 1 bis 3)', url: 'https://www.dinmedia.de/' }, 
-          { title: 'DIN 18534 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/' },
-          { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Rissinjektion)', url: 'https://www.dinmedia.de/' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen - Teile 1 bis 3)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' }, 
+          { title: 'DIN 18534 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18534' },
+          { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Rissinjektion)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-5' },
           { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' }
         ]} 
         formeln={[
