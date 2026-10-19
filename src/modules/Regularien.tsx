@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   FileText, ShieldCheck, Scale, AlertTriangle, FileSignature, CheckCircle, Globe, 
@@ -375,7 +376,7 @@ export default function Regularien() {
                     Stufenbau der Rechtsordnung im deutschen Bauwesen
                   </h3>
                   <p className="text-xs text-text-main/70">
-                    Suchen Sie nach bestimmten Regelungen (z.B. \"BauGB\", \"EBV\") oder wähle direkt eine Stufe aus der rechtlichen Pyramide aus.
+                    Suchen Sie nach bestimmten Regelungen (z.B. \"BauGB\", \"EBV\") oder wählen Sie direkt eine Stufe aus der rechtlichen Pyramide aus.
                   </p>
                 </div>
                 
@@ -431,7 +432,7 @@ export default function Regularien() {
                               <span className={`text-[10px] uppercase font-bold tracking-wider ${
                                 isSelected ? 'text-shiraz' : 'text-slate-500'
                               }`}>
-                                Stufe {level.level}
+                                Stufe {formatDeWert(level.level)}
                               </span>
                               <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide ${level.badgeColor}`}>
                                 {level.scope}
@@ -472,7 +473,7 @@ export default function Regularien() {
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <span className="text-[10px] bg-slate-100 text-slate-700 border border-home-grau/20 px-2 py-0.5 rounded font-mono font-bold">
-                                Stufe {level.level} von 6
+                                Stufe {formatDeWert(level.level)} von 6
                               </span>
                               <span className={`text-[10px] uppercase font-bold tracking-wider ${level.badgeColor} px-2 py-0.5 rounded`}>
                                 {level.scope}
@@ -590,7 +591,7 @@ export default function Regularien() {
                               </div>
                               <div>
                                 <span className="text-[9px] uppercase font-mono font-bold tracking-wider text-home-grau block leading-none">
-                                  Stufe {level.level} ({level.scope})
+                                  Stufe {formatDeWert(level.level)} ({level.scope})
                                 </span>
                                 <h4 className="font-extrabold text-sm text-text-main mt-0.5">
                                   {level.title}

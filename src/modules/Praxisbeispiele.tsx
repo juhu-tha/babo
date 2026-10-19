@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
@@ -232,12 +233,12 @@ export default function Praxisbeispiele() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                 <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Kerntemperatur</div>
-                <div className="text-2xl font-bold text-shiraz">{results.T_max.toFixed(1)} °C</div>
-                <div className="text-xs text-text-main/60 mt-1">ΔT = {(results.T_max - tAmbient).toFixed(1)} K zur Umgebung</div>
+                <div className="text-2xl font-bold text-shiraz">{formatDeZahl(results.T_max, 1)} °C</div>
+                <div className="text-xs text-text-main/60 mt-1">ΔT = {formatDeZahl((results.T_max - tAmbient), 1)} K zur Umgebung</div>
               </div>
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                 <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Zwangspannung</div>
-                <div className="text-2xl font-bold text-fuchsia-600">{results.maxStress.toFixed(2)} MPa</div>
+                <div className="text-2xl font-bold text-fuchsia-600">{formatDeZahl(results.maxStress, 2)} MPa</div>
                 <div className="text-xs text-text-main/60 mt-1">Tritt in der Abkühlphase auf</div>
               </div>
               <div className={`p-4 rounded-xl border shadow-sm text-white ${results.crackRisk ? 'bg-red-500 border-red-600' : 'bg-emerald-500 border-emerald-600'}`}>
@@ -298,7 +299,7 @@ export default function Praxisbeispiele() {
                   <li>Verwendung eines Zements mit niedriger Wärmeentwicklung (z.B. CEM III).</li>
                   <li>Reduzierung des Zementgehalts (sofern statisch/dauerhaft zulässig).</li>
                   <li>Absenkung der Frischbetontemperatur (z.B. durch Zugabe von Eiswasser).</li>
-                  <li>Einbau einer ausreichenden Mindestbewehrung zur Rissbreitenbegrenzung (ca. {results.As_min.toFixed(1)} cm²/m je Seite).</li>
+                  <li>Einbau einer ausreichenden Mindestbewehrung zur Rissbreitenbegrenzung (ca. {formatDeZahl(results.As_min, 1)} cm²/m je Seite).</li>
                 </ul>
               </div>
             )}

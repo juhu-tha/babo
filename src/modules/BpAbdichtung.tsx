@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
@@ -622,7 +623,7 @@ export default function BpAbdichtung() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
                       <span>Wassersäule:</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{fbWaterPressure} m</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(fbWaterPressure)} m</span>
                     </div>
                     <input 
                       type="range" 
@@ -634,7 +635,7 @@ export default function BpAbdichtung() {
                       className="w-full accent-shiraz"
                     />
                     <div className="text-[10px] text-zinc-400">
-                      ({(fbWaterPressure * 0.1).toFixed(1)} bar hydrostatischer Druck)
+                      ({formatDeZahl((fbWaterPressure * 0.1), 1)} bar hydrostatischer Druck)
                     </div>
                   </div>
                 </div>
@@ -644,7 +645,7 @@ export default function BpAbdichtung() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
                       <span>Wand-/Sohldicke (d):</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{fbSlabThickness} cm</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(fbSlabThickness)} cm</span>
                     </div>
                     <input 
                       type="range" 
@@ -738,7 +739,7 @@ export default function BpAbdichtung() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 font-mono text-[11px] text-slate-800">
                       <div>
                         <span className="text-zinc-500 block">Empfohlene Mindestbreite (a):</span>
-                        <strong className="text-shiraz text-xs">{reqWidth} mm</strong>
+                        <strong className="text-shiraz text-xs">{formatDeWert(reqWidth)} mm</strong>
                       </div>
                       <div>
                         <span className="text-zinc-500 block">Normative Produktbezeichnung:</span>
@@ -746,11 +747,11 @@ export default function BpAbdichtung() {
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
                         <span className="text-zinc-500 block">Geforderte Mindestdeckendicke:</span>
-                        <span>{reqWidth / 10} cm (Soll: d ≥ a)</span>
+                        <span>{formatDeWert(reqWidth / 10)} cm (Soll: d ≥ a)</span>
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
                         <span className="text-zinc-500 block">Mindest-Randabstand (Größtkorn check):</span>
-                        <span>{minCoverFromGK.toFixed(1)} cm (3 · GK)</span>
+                        <span>{formatDeZahl(minCoverFromGK, 1)} cm (3 · GK)</span>
                       </div>
                     </div>
 
@@ -759,9 +760,9 @@ export default function BpAbdichtung() {
                         isThicknessOk ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-red-50 text-red-800 border-red-200'
                       }`}>
                         {isThicknessOk ? (
-                          <span>✓ <strong>Bauteildicke konform:</strong> Die Bauteildicke von d = {fbSlabThickness} cm ist ausreichend groß, damit das Fugenband ({reqWidth} mm) vollständig betoniert und porenfrei ummantelt wird.</span>
+                          <span>✓ <strong>Bauteildicke konform:</strong> Die Bauteildicke von d = {formatDeWert(fbSlabThickness)} cm ist ausreichend groß, damit das Fugenband ({formatDeWert(reqWidth)} mm) vollständig betoniert und porenfrei ummantelt wird.</span>
                         ) : (
-                          <span>✗ <strong>MANGELHAFT (Geometriefehler):</strong> Die Bauteildicke ({fbSlabThickness} cm) ist zu gering für ein {reqWidth} mm breites Fugenband! Wasser kann den Fugenrand leicht umfließen, Kiesnestergefahr! Mindestens {reqWidth / 10} cm Dicke einplanen.</span>
+                          <span>✗ <strong>MANGELHAFT (Geometriefehler):</strong> Die Bauteildicke ({formatDeWert(fbSlabThickness)} cm) ist zu gering für ein {formatDeWert(reqWidth)} mm breites Fugenband! Wasser kann den Fugenrand leicht umfließen, Kiesnestergefahr! Mindestens {formatDeWert(reqWidth / 10)} cm Dicke einplanen.</span>
                         )}
                       </div>
 
@@ -769,7 +770,7 @@ export default function BpAbdichtung() {
                         isGkCoverOk ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-amber-50 text-amber-800 border-amber-200'
                       }`}>
                         {isGkCoverOk ? (
-                          <span>✓ <strong>Kornverkrallung gesichert:</strong> Randabstand von ca. {actualCoverEdge.toFixed(1)} cm bietet genügend Fließraum für Beton mit GK {fbMaxAggregate} mm (min. erforderlich: {minCoverFromGK.toFixed(1)} cm).</span>
+                          <span>✓ <strong>Kornverkrallung gesichert:</strong> Randabstand von ca. {formatDeZahl(actualCoverEdge, 1)} cm bietet genügend Fließraum für Beton mit GK {fbMaxAggregate} mm (min. erforderlich: {formatDeZahl(minCoverFromGK, 1)} cm).</span>
                         ) : (
                           <span>⚠ <strong>VORSICHT BEIM BETONIEREN:</strong> Engpass an den Fugenbandflanken! Der Freiraum ist eng für GK {fbMaxAggregate} mm. Gefahr von Zementmangelstellen. Wechseln Sie auf GK 16 oder rütteln Sie besonders vorsichtig!</span>
                         )}
@@ -796,7 +797,7 @@ export default function BpAbdichtung() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
                       <span>Länge:</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{isLength} m</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(isLength)} m</span>
                     </div>
                     <input 
                       type="range" 
@@ -818,7 +819,7 @@ export default function BpAbdichtung() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
                       <span>Abstand zum Rand:</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{isConCover} cm</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(isConCover)} cm</span>
                     </div>
                     <input 
                       type="range" 
@@ -840,7 +841,7 @@ export default function BpAbdichtung() {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
                       <span>Clip-Intervall:</span>
-                      <span className="font-mono text-xs font-bold text-shiraz">{isFasteningInterval} cm</span>
+                      <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(isFasteningInterval)} cm</span>
                     </div>
                     <input 
                       type="range" 
@@ -897,7 +898,7 @@ export default function BpAbdichtung() {
                           {isLengthOk ? 'KONFORM' : 'PROB-LÄNGE'}
                         </span>
                         <div className="text-[11px]">
-                          <strong>Schlauchlänge ({isLength} m):</strong>{' '}
+                          <strong>Schlauchlänge ({formatDeWert(isLength)} m):</strong>{' '}
                           {isLengthOk ? (
                             <span className="text-slate-600">Sicherer verpressbarer Kreislauf. Der Fließdruck bleibt innerhalb des zulässigen Fensters der Verpresspumpe.</span>
                           ) : (
@@ -912,11 +913,11 @@ export default function BpAbdichtung() {
                           {isCoverOk ? 'KONFORM' : 'ABSPRENGGEFAHR'}
                         </span>
                         <div className="text-[11px]">
-                          <strong>Betonüberdeckung ({isConCover} cm):</strong>{' '}
+                          <strong>Betonüberdeckung ({formatDeWert(isConCover)} cm):</strong>{' '}
                           {isCoverOk ? (
                             <span className="text-slate-600">Sicherer Tiefenhalt. Keine Beschädigung des Betonrandes beim Hochdruck-Füllvorgang.</span>
                           ) : (
-                            <span className="text-red-800"><strong>Achtung Ausbrüche!</strong> Der Hochdruck von bis zu 100-150 bar kann dünne Plattenwände ({isConCover} cm) aufsprengen und unkontrolliert nach außen abplatzen lassen.</span>
+                            <span className="text-red-800"><strong>Achtung Ausbrüche!</strong> Der Hochdruck von bis zu 100-150 bar kann dünne Plattenwände ({formatDeWert(isConCover)} cm) aufsprengen und unkontrolliert nach außen abplatzen lassen.</span>
                           )}
                         </div>
                       </div>
@@ -927,7 +928,7 @@ export default function BpAbdichtung() {
                           {isFasteningOk ? 'STABIL' : 'LAGEMANGEL'}
                         </span>
                         <div className="text-[11px]">
-                          <strong>Montageabstand ({isFasteningInterval} cm):</strong>{' '}
+                          <strong>Montageabstand ({formatDeWert(isFasteningInterval)} cm):</strong>{' '}
                           {isFasteningOk ? (
                             <span className="text-slate-600">Der Schlauch fließt und treibt im zähen Betonstrom nicht auf (perfekter mittiger Sitz gewährleistet).</span>
                           ) : (
@@ -1121,8 +1122,8 @@ export default function BpAbdichtung() {
                       { id: 'bodenfeuchte', label: 'Bodenfeuchte / Sickerwasser', detail: 'Durchlässiger Kies-/Sandboden (W1.1-E). Kein stauendes Wasser.' },
                       { id: 'stauend_drain', label: 'Schwach durchlässig + Dränung nach DIN 4095', detail: 'Lehm-/Tonboden mit voll funktionsfähigem Drainagesystem (W1.2-E).' },
                       { id: 'stauend', label: 'Aufstauendes Sickerwasser (O-Drain)', detail: 'Wenig durchlässiger Lehmboden OHNE dränendes Leitungssystem (W2.1-E).' },
-                      { id: 'drueckend_flach', label: 'Drückendes Grundwasser (≤ 3.0 m)', detail: 'Grundwasserstand liegt dauerhaft bis zu 3,0 m über Kellerebene (W2.1-E).' },
-                      { id: 'drueckend_tief', label: 'Drückendes Grundwasser (> 3.0 m)', detail: 'Dauerhafter Wasserdruck bei tiefer Gründungssohle im Grundwasser (W2.2-E).' },
+                      { id: 'drueckend_flach', label: 'Drückendes Grundwasser (≤ 3,0 m)', detail: 'Grundwasserstand liegt dauerhaft bis zu 3,0 m über Kellerebene (W2.1-E).' },
+                      { id: 'drueckend_tief', label: 'Drückendes Grundwasser (> 3,0 m)', detail: 'Dauerhafter Wasserdruck bei tiefer Gründungssohle im Grundwasser (W2.2-E).' },
                       { id: 'spritzwasser', label: 'Spritzwasser im Sockelquerschnitt', detail: 'Oberflächenwasser und Spritzzone im Außen-Bodenanschluss (W4-E).' }
                     ].map((opt) => (
                       <button
@@ -1339,11 +1340,11 @@ export default function BpAbdichtung() {
         formeln={[
           {
             formel: 'd_{\\text{dry}} = d_{\\text{wet}} \\cdot \\left(1 - \\frac{\\text{Flüchtige Anteile}}{100}\\right) \\ge d_{\\text{min,Norm}}',
-            erklaerung: 'Trockenschichtdicke von polymermodifizierten Bitumendickbeschichtungen (PMBC): Muss nach DIN 18533 an jeder Stelle das normativ geforderte Mindestmaß (z.B. 3.0 bzw. 4.0 mm) einhalten.',
+            erklaerung: 'Trockenschichtdicke von polymermodifizierten Bitumendickbeschichtungen (PMBC): Muss nach DIN 18533 an jeder Stelle das normativ geforderte Mindestmaß (z.B. 3.0 bzw. 4,0 mm) einhalten.',
             quelle: 'DIN 18533-3'
           },
           {
-            formel: 'p_{\\text{inj}} \\le 0.33 \\cdot f_{ctm} \\cdot 10 \\quad [\\text{bar}]',
+            formel: 'p_{\\text{inj}} \\le 0{,}33 \\cdot f_{ctm} \\cdot 10 \\quad [\\text{bar}]',
             erklaerung: 'Richtwert für den maximalen Injektionsdruck bei Rissverpressungen zur Vermeidung von Gefügeschädigungen oder Sekundärrissen im Beton.',
             quelle: 'DIN EN 1504-5 / ZTV-ING'
           }

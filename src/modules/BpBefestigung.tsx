@@ -22,7 +22,7 @@ const anchorProducts: FastenerProduct[] = [
     name: 'M4 - M16 Nylon-Spreizdübel',
     category: 'Einfacher Kunststoffdübel',
     standard: 'DIN EN 1992-4 / ETA',
-    loadCapacity: '0.1 kN - 1.5 kN (Gering bis mittel)',
+    loadCapacity: '0,1 kN - 1,5 kN (Gering bis mittel)',
     edgeDistance: 'Große Randabstände erforderlich',
     installTemp: '-40 °C bis +80 °C (Nutzung)',
     substrate: 'Vollmauerwerk, Kalksandstein, Standard-Beton',
@@ -35,7 +35,7 @@ const anchorProducts: FastenerProduct[] = [
     name: 'M8 - M24 Bolzenanker (Spreizanker)',
     category: 'Mechanischer Lastanker',
     standard: 'DIN EN 1992-4 (ehem. ETAG 001)',
-    loadCapacity: '5.0 kN - 45.0 kN (Sehr hoch)',
+    loadCapacity: '5,0 kN - 45,0 kN (Sehr hoch)',
     edgeDistance: 'Mäßig (hohe Spreizkräfte im Untergrund)',
     installTemp: 'Temperaturunabhängig',
     substrate: 'Gerissener & ungerissener Beton (min. C20/25)',
@@ -48,7 +48,7 @@ const anchorProducts: FastenerProduct[] = [
     name: 'M8 - M30 Verbundmörtel (Injektionskleber)',
     category: 'Chemischer Verbunddübel',
     standard: 'DIN EN 1992-4 / EAD 330499',
-    loadCapacity: '10.0 kN - 120.0 kN (Extrem hoch)',
+    loadCapacity: '10,0 kN - 120,0 kN (Extrem hoch)',
     edgeDistance: 'Minimal (vollständig spreizdruckfrei)',
     installTemp: 'Min. +5 °C bis +40 °C (beim Verarbeiten)',
     substrate: 'Beton, hochporöses Mauerwerk, Naturwerkstein',
@@ -61,7 +61,7 @@ const anchorProducts: FastenerProduct[] = [
     name: 'Hinterschnittanker (z. B. Zykon-System als Beispiel)',
     category: 'Dauerwechsel-Schwerlastanker',
     standard: 'DIN EN 1992-4 (Zulassung)',
-    loadCapacity: '15.0 kN - 80.0 kN (Extrem sicher)',
+    loadCapacity: '15,0 kN - 80,0 kN (Extrem sicher)',
     edgeDistance: 'Gering',
     installTemp: 'Temperaturunabhängig',
     substrate: 'Gerissener Beton (selbst unter nuklearen Lasten)',
@@ -320,7 +320,7 @@ export default function BpBefestigung() {
             quelle: 'DIN EN 1992-4 Abs. 7.2.1.4'
           },
           { 
-            formel: '\\beta_N = \\frac{N_{Ed}}{N_{Rd}} \\le 1.0', 
+            formel: '\\beta_N = \\frac{N_{Ed}}{N_{Rd}} \\le 1{,}0', 
             erklaerung: 'Auslastungsgrad des Befestigungsmittels unter einwirkender Zugbeanspruchung NEd gegenüber dem Bemessungswiderstand NRd.',
             quelle: 'DIN EN 1992-4'
           }

@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   CheckCircle2, 
@@ -203,10 +204,10 @@ export default function StudentPollVoteView({
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider">
-                Frage {currentIdx + 1} von {questions.length} • {currentQ.category}
+                Frage {formatDeWert(currentIdx + 1)} von {questions.length} • {currentQ.category}
               </span>
               <span className="text-[11px] text-slate-400 font-semibold">
-                {totalVotes} {totalVotes === 1 ? 'Stimme' : 'Stimmen'} live
+                {formatDeWert(totalVotes)} {totalVotes === 1 ? 'Stimme' : 'Stimmen'} live
               </span>
             </div>
             <h2 className="text-base sm:text-lg font-bold text-white leading-snug">
@@ -263,7 +264,7 @@ export default function StudentPollVoteView({
                         />
                       </div>
                       <span className="text-[11px] font-bold text-slate-400 w-9 text-right shrink-0">
-                        {percent}%
+                        {formatDeWert(percent)}%
                       </span>
                     </div>
                   )}

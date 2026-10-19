@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React, { useState } from 'react';
 import { Waves, Zap } from 'lucide-react';
@@ -95,7 +96,7 @@ export default function Spritzbeton() {
             <div className="px-4">
               <label className="text-sm font-medium text-text-main flex justify-between mb-2">
                 <span>Dicke pro Lage</span>
-                <span className="text-shiraz font-bold">{schichtdicke} cm</span>
+                <span className="text-shiraz font-bold">{formatDeWert(schichtdicke)} cm</span>
               </label>
               <input 
                 type="range" min="1" max="15" step="1"

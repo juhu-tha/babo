@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -30,7 +31,7 @@ const BINDERS: BinderType[] = [
       'Kann Konservierungsstoffe enthalten (Allergiepotenzial)',
       'Nicht rein mineralisch'
     ],
-    sdValue: 'Mittel bis hoch (ca. 0.1 - 0.5 m)',
+    sdValue: 'Mittel bis hoch (ca. 0,1 - 0,5 m)',
     typicalUse: 'Standard-Wandfarbe im Innenbereich, Gipsfaserplatten, Raufasertapeten.',
     pufCode: 'BSW10 (Konservierungsmittelfrei)'
   },
@@ -48,7 +49,7 @@ const BINDERS: BinderType[] = [
       'Ätzend bei ungeschütztem Haut-/Augenkontakt während der Verarbeitung',
       'Begrenzte Farbtonvielfalt'
     ],
-    sdValue: 'Sehr gering (sd < 0.01 m - exzellent)',
+    sdValue: 'Sehr gering (sd < 0,01 m - exzellent)',
     typicalUse: 'Kalk- oder Zementputze, historische Fassaden, feuchtebelastete Innenräume mit Schimmelrisiko.',
     pufCode: 'BSW40 (Silikatfarben)'
   },
@@ -66,7 +67,7 @@ const BINDERS: BinderType[] = [
       'Deckt oft erst nach 2–3 Anstrichen vollständig',
       'Nur auf saugfähigen rein mineralischen Untergründen einsetzbar'
     ],
-    sdValue: 'Extrem gering (sd < 0.01 m - hervorragend)',
+    sdValue: 'Extrem gering (sd < 0,01 m - hervorragend)',
     typicalUse: 'Ökologischer Lehm- oder Kalkputz, Denkmalschutz, Kellerbereiche.',
     pufCode: 'BSW60 (Kalkfarben)'
   },
@@ -148,7 +149,7 @@ const OS_SYSTEMS: OSSystem[] = [
     bridging: 'Keine Rissüberbrückung',
     trafficable: false,
     mainBinders: 'Silane, Siloxane (lösemittelbasiert oder wässrig/cremeförmig)',
-    consumption: '0.15 - 0.40 kg/m²',
+    consumption: '0,15 - 0,40 kg/m²',
     layers: [
       'Untergrundvorbereitung (Sandelstrahlen, HDW-Strahlen)',
       '1 bis 2 flutende, herstellerneutrale Applikationen mit Silan/Siloxan-Wirkstoff'
@@ -164,7 +165,7 @@ const OS_SYSTEMS: OSSystem[] = [
     bridging: 'Keine Rissüberbrückung',
     trafficable: false,
     mainBinders: 'Niedrigviskoses Epoxidharz (EP) oder Polyurethan (PU)',
-    consumption: '0.10 - 0.25 kg/m²',
+    consumption: '0,10 - 0,25 kg/m²',
     layers: [
       'Untergrundvorbereitung (Feinstrahlen)',
       'Saugende Grundierung mit niedrigviskosem Reaktionsharz',
@@ -181,7 +182,7 @@ const OS_SYSTEMS: OSSystem[] = [
     bridging: 'Keine Rissüberbrückung (starr)',
     trafficable: false,
     mainBinders: 'Acrylat-Mischpolymere, Polymerdispersionen (wasserbasiert)',
-    consumption: '0.35 - 0.50 kg/m²',
+    consumption: '0,35 - 0,50 kg/m²',
     layers: [
       'Untergrundvorbereitung (Schnitt / Porenschluss)',
       'Feinspachtelung (Porenfüller) mit PCC-Mörtel oder Epoxid-Zement-Spachtel',
@@ -199,7 +200,7 @@ const OS_SYSTEMS: OSSystem[] = [
     bridging: 'Statische Rissüberbrückung (Klasse A1/A2)',
     trafficable: false,
     mainBinders: 'Modifizierte Acrylat-Kopolymer-Dispersionen',
-    consumption: '0.50 - 0.80 kg/m²',
+    consumption: '0,50 - 0,80 kg/m²',
     layers: [
       'Untergrundvorbereitung & Egalisierungsspachtel',
       'Systemgrundierung',
@@ -216,7 +217,7 @@ const OS_SYSTEMS: OSSystem[] = [
     bridging: 'Dynamische Rissüberbrückung (Klasse B1 bis B2 bei -20 °C)',
     trafficable: false,
     mainBinders: 'Spezial-Polyurethane/Acrylate (lösemittelhaltig oder wässrig)',
-    consumption: '0.80 - 1.25 kg/m²',
+    consumption: '0,80 - 1,25 kg/m²',
     layers: [
       'Untergrundprüfung & herstellerneutrale Grundierung',
       'Satte Applikation der hochelastischen Zwischenschicht',
@@ -229,16 +230,16 @@ const OS_SYSTEMS: OSSystem[] = [
     title: 'Starr befahrbares Parkhaussystem',
     description: 'Der Klassiker für extrem beanspruchte mechanische Verkehrsflächen. Optimal für Tiefgaragen-Bodenplatten, geschützte Zwischendecks, Rampen und Spindeln sowie Industrie- und Werkstattböden. Extrem verschleißfest, raue Oberfläche für hohen Rutschwiderstand (R11/R12).',
     flexible: false,
-    thickness: 'Ca. 1.5 - 3.0 mm Systemdicke',
+    thickness: 'Ca. 1,5 - 3,0 mm Systemdicke',
     bridging: 'Keine Rissüberbrückung (starr)',
     trafficable: true,
     mainBinders: '2K-Epoxidharz (EP), lösungsmittelfrei',
-    consumption: 'Primer: 0.4 kg/m² | Basisschicht: 1.6 kg/m² | Quarzsand (0.4-0.8mm): 4.0 kg/m² | Kopfversiegelung: 0.7 kg/m²',
+    consumption: 'Primer: 0,4 kg/m² | Basisschicht: 1,6 kg/m² | Quarzsand (0,4-0,8mm): 4,0 kg/m² | Kopfversiegelung: 0,7 kg/m²',
     layers: [
-      'Untergrundvorbereitung (Kugelstrahlen verpflichtend, Haftzugfestigkeit ≥ 1.5 N/mm²)',
+      'Untergrundvorbereitung (Kugelstrahlen verpflichtend, Haftzugfestigkeit ≥ 1,5 N/mm²)',
       'Porenfüllende Grundierung mit lösungsmittelfreiem 2K-Epoxidharz (EP)',
       'Ausgleichs- und Kratzspachtelung (Reaktionsharzmischung)',
-      'Einstreuschicht aus Epoxidharz, im Überschuss mit Quarzsand (0.4-0.8 mm) abgestreut',
+      'Einstreuschicht aus Epoxidharz, im Überschuss mit Quarzsand (0,4-0,8 mm) abgestreut',
       'Fegen und Absaugen des ungebundenen Überschuss-Sandes',
       'Pigmentierte Kopfversiegelung mit Epoxidharz zur Festlegung des Sands'
     ]
@@ -249,16 +250,16 @@ const OS_SYSTEMS: OSSystem[] = [
     title: 'Hochelastisches, befahrbares System (2-schichtig)',
     description: 'Hochelastisches, hoch-rissüberbrückendes Beschichtungssystem für freibewitterte Parkdeck-Flächen (Oberdecks, Brückenkappen, Parkdächer im Freien) mit thermischen Dehnungen und aktiven Rissbewegungen. Verwendet getrennte Dichtungsmembranen und Verschleißschichten.',
     flexible: true,
-    thickness: 'Systemstärke ≥ 4.5 mm',
+    thickness: 'Systemstärke ≥ 4,5 mm',
     bridging: 'Exzellente dynamische Rissüberbrückung (Klasse B3.2 bei -20 °C)',
     trafficable: true,
     mainBinders: '2K-Polyurethan (PU) oder PU-Polyurea-Hybride',
-    consumption: 'Grundierung: 0.4 kg/m² | Dichtungsschicht (Membran): 2.0 kg/m² | Verschleißschicht: 1.6 kg/m² | Quarzsandabstreuung: 4.5 kg/m² | Kopfversiegelung: 0.8 kg/m²',
+    consumption: 'Grundierung: 0,4 kg/m² | Dichtungsschicht (Membran): 2,0 kg/m² | Verschleißschicht: 1,6 kg/m² | Quarzsandabstreuung: 4,5 kg/m² | Kopfversiegelung: 0,8 kg/m²',
     layers: [
-      'Untergrundvorbereitung (Kugelstrahlen, Haftzugfestigkeit ≥ 1.5 N/mm²)',
+      'Untergrundvorbereitung (Kugelstrahlen, Haftzugfestigkeit ≥ 1,5 N/mm²)',
       'Systemgrundierung mit EP-Harz, leicht abgesandet',
       'Hochelastische 2K-Polyurethan-Dichtungsschicht (Membran) unbesandet',
-      'Abplatzungssichere Verschleißschicht aus zähelastischem 2K-PU, im Überschuss mit Quarzsand (0.4-0.8 mm) abgestreut',
+      'Abplatzungssichere Verschleißschicht aus zähelastischem 2K-PU, im Überschuss mit Quarzsand (0,4-0,8 mm) abgestreut',
       'Absaugen des losen Sandes',
       'UV- und tausalzbeständige PU-Kopfversiegelung'
     ]
@@ -269,15 +270,15 @@ const OS_SYSTEMS: OSSystem[] = [
     title: 'Elastisches, befahrbares System (1-schichtig/kombiniert)',
     description: 'Günstigere Alternative zu OS 11a für Parkgaragen-Zwischendecks. Die elastische Dichtungsmembran und die mechanische Verschleißschicht sind in einer einzigen, elastischen Kombischicht vereint.',
     flexible: true,
-    thickness: 'Systemstärke ≥ 3.5 mm',
+    thickness: 'Systemstärke ≥ 3,5 mm',
     bridging: 'Mäßige dynamische Rissüberbrückung (Klasse B3.1 bei -20 °C)',
     trafficable: true,
     mainBinders: 'Hochelastisch eingestelltes 2K-Polyurethan (PU)',
-    consumption: 'Grundierung: 0.4 kg/m² | Kombi-Verschleißschicht: 2.2 kg/m² | Quarzsandabstreuung: 4.5 kg/m² | Kopfversiegelung: 0.8 kg/m²',
+    consumption: 'Grundierung: 0,4 kg/m² | Kombi-Verschleißschicht: 2,2 kg/m² | Quarzsandabstreuung: 4,5 kg/m² | Kopfversiegelung: 0,8 kg/m²',
     layers: [
       'Untergrundvorbereitung (Kugelstrahlen)',
       'EP-Grundierung mit Haftbrücke',
-      'Dicke Kombinationsschicht aus robustem PU-Verschleißharz, im Überschuss mit Quarzsand (0.4-0.8 mm) abgesandet',
+      'Dicke Kombinationsschicht aus robustem PU-Verschleißharz, im Überschuss mit Quarzsand (0,4-0,8 mm) abgesandet',
       'Fegen und gründliches Absaugen',
       'Robuste PU-Kopfversiegelung'
     ]
@@ -981,7 +982,7 @@ export default function BpFarbenLacke() {
                           <InfoTooltip text="Die Enddicke der getrockneten Beschichtung. Standardwandfarbe liegt bei ca. 30-50 µm pro Schicht, schwerer Korrosionsschutz bei über 150-250 µm." />
                         </label>
                         <span className="font-mono text-xs font-bold text-shiraz bg-shiraz/5 px-2 py-0.5 rounded border border-shiraz/10">
-                          {targetDft} µm
+                          {formatDeWert(targetDft)} µm
                         </span>
                       </div>
                       <input
@@ -1003,7 +1004,7 @@ export default function BpFarbenLacke() {
                           <InfoTooltip text="Prozentsatz der flüssigen Farbe, der nach Verdunstung des Lösemittels/Wassers dauerhaft auf der Fläche verbleibt." />
                         </label>
                         <span className="font-mono text-xs font-bold text-shiraz bg-shiraz/5 px-2 py-0.5 rounded border border-shiraz/10">
-                          {solidsVol} %
+                          {formatDeWert(solidsVol)} %
                         </span>
                       </div>
                       <input
@@ -1030,7 +1031,7 @@ export default function BpFarbenLacke() {
                           <InfoTooltip text="Wasser- oder Lösemittelmenge, die zur Erleichterung des Farbauftrags hinzugefügt wird (erhöht die temporäre Nassdicke, entweicht vollständig)." />
                         </label>
                         <span className="font-mono text-xs font-bold text-shiraz bg-shiraz/5 px-2 py-0.5 rounded border border-shiraz/10">
-                          {thinning} %
+                          {formatDeWert(thinning)} %
                         </span>
                       </div>
                       <input
@@ -1052,7 +1053,7 @@ export default function BpFarbenLacke() {
                           <InfoTooltip text="Farbverluste durch Spraynebel (Overspray), im Gebinde verbleibende Restmengen oder Verlust in Rollen/Pinseln." />
                         </label>
                         <span className="font-mono text-xs font-bold text-shiraz bg-shiraz/5 px-2 py-0.5 rounded border border-shiraz/10">
-                          {lossFactor} %
+                          {formatDeWert(lossFactor)} %
                         </span>
                       </div>
                       <input
@@ -1109,12 +1110,12 @@ export default function BpFarbenLacke() {
                       <div className="grid grid-cols-2 gap-3.5">
                         <div className="bg-white p-3.5 rounded-lg border border-home-grau/10 shadow-xs">
                           <span className="text-[9px] text-text-main/40 block font-bold uppercase">Erforderliche Nassdicke (WFT)</span>
-                          <span className="text-base font-black text-text-main font-mono block mt-1">{baseWft.toFixed(1)} µm</span>
+                          <span className="text-base font-black text-text-main font-mono block mt-1">{formatDeZahl(baseWft, 1)} µm</span>
                           <span className="text-[9px] text-text-main/50 block leading-tight mt-1">Nassfilm-Auftragsdicke vor Verdunstung</span>
                         </div>
                         <div className="bg-white p-3.5 rounded-lg border border-home-grau/10 shadow-xs">
                           <span className="text-[9px] text-text-main/40 block font-bold uppercase">WFT (inkl. Verdünnung)</span>
-                          <span className="text-base font-black text-indigo-700 font-mono block mt-1">{thinnedWft.toFixed(1)} µm</span>
+                          <span className="text-base font-black text-indigo-700 font-mono block mt-1">{formatDeZahl(thinnedWft, 1)} µm</span>
                           <span className="text-[9px] text-text-main/50 block leading-tight mt-1">Nassfilm-Soll für die Schichtdickenmessung</span>
                         </div>
                       </div>
@@ -1122,27 +1123,27 @@ export default function BpFarbenLacke() {
                       <div className="grid grid-cols-2 gap-3.5">
                         <div className="bg-white p-3.5 rounded-lg border border-home-grau/10 shadow-xs">
                           <span className="text-[9px] text-text-main/40 block font-bold uppercase">Verbrauch (Theoretisch)</span>
-                          <span className="text-base font-black text-text-main font-mono block mt-1">{theoreticalConsumption.toFixed(0)} ml/m²</span>
+                          <span className="text-base font-black text-text-main font-mono block mt-1">{formatDeZahl(theoreticalConsumption, 0)} ml/m²</span>
                           <span className="text-[9px] text-text-main/50 block leading-tight mt-1">Verbrauch ohne jegliche Spritzverluste</span>
                         </div>
                         <div className="bg-white p-3.5 rounded-lg border border-home-grau/10 shadow-xs">
                           <span className="text-[9px] text-text-main/40 block font-bold uppercase">Verbrauch (Praxis/Soll)</span>
-                          <span className="text-base font-black text-emerald-700 font-mono block mt-1">{effectiveConsumption.toFixed(0)} ml/m²</span>
-                          <span className="text-[9px] text-text-main/50 block leading-tight mt-1">Inkl. Verlustfaktor von {lossFactor}%</span>
+                          <span className="text-base font-black text-emerald-700 font-mono block mt-1">{formatDeZahl(effectiveConsumption, 0)} ml/m²</span>
+                          <span className="text-[9px] text-text-main/50 block leading-tight mt-1">Inkl. Verlustfaktor von {formatDeWert(lossFactor)}%</span>
                         </div>
                       </div>
 
                       {/* TOTAL PAINT VALUE GAUGE CARD */}
                       <div className="bg-white p-4 rounded-xl border border-shiraz/20 shadow-xs text-center space-y-1">
                         <span className="text-[10px] text-text-main/50 font-bold uppercase tracking-wider block">
-                          Gesamte benötigte Farbmenge ({areaSquareMeters} m² x {numCoats} Anstriche)
+                          Gesamte benötigte Farbmenge ({formatDeWert(areaSquareMeters)} m² x {numCoats} Anstriche)
                         </span>
                         <div className="text-3xl font-black font-mono text-shiraz block py-1">
-                          {totalLitersRequired.toFixed(2)} Liter
+                          {formatDeZahl(totalLitersRequired, 2)} Liter
                         </div>
                         <div className="text-[10px] text-text-main/60 inline-flex items-center gap-1.5 max-w-sm px-2 text-center">
                           <Check className="text-emerald-600 flex-none" size={12} />
-                          <span>Empfohlene Gebindebestellung: <strong>{Math.ceil(totalLitersRequired / 10)} Eimer &agrave; 10 Liter</strong> (oder {Math.ceil(totalLitersRequired / 2.5)} Eimer &agrave; 2,5 Liter)</span>
+                          <span>Empfohlene Gebindebestellung: <strong>{formatDeWert(Math.ceil(totalLitersRequired / 10))} Eimer &agrave; 10 Liter</strong> (oder {formatDeWert(Math.ceil(totalLitersRequired / 2.5))} Eimer &agrave; 2,5 Liter)</span>
                         </div>
                       </div>
                     </div>
@@ -1371,7 +1372,7 @@ export default function BpFarbenLacke() {
                           Reagieren mit den Silanolgruppen der C-S-H-Phasen des Betons unter Abspaltung von Alkohol (Kondensation). Bilden eine polymere, unlösliche Auskleidung der Porenoberflächen, ohne die Poren zu verschließen.
                         </td>
                         <td className="p-3 text-emerald-800 font-medium bg-emerald-50/10">
-                          Sehr hohe Eindringtiefe (&gt; 1mm), absolut wasserdampfdurchlässig (s_d &lt; 0.01 m), verringert Frost-Tausalz-Angriffe drastisch.
+                          Sehr hohe Eindringtiefe (&gt; 1mm), absolut wasserdampfdurchlässig (s_d &lt; 0,01 m), verringert Frost-Tausalz-Angriffe drastisch.
                         </td>
                         <td className="p-3 text-amber-800 bg-amber-50/10 font-medium">
                           Kein Schutz vor Kohlendioxid (Karbonatisierung), keine Rissüberbrückung.
@@ -1494,7 +1495,7 @@ export default function BpFarbenLacke() {
                     <div className="p-3 bg-blue-50 border border-blue-200 text-blue-950 rounded-lg space-y-1">
                       <span className="font-bold text-[10px] uppercase flex items-center gap-1"><Info size={11} /> Grenzabnahme</span>
                       <p className="text-[10px] leading-relaxed">
-                        Reaktionsharz-Beschichtungen (EP/PU) dürfen nur verarbeitet werden, wenn die Betonfeuchte <strong>&lt; 4.0 %</strong> (CM-Methode) beträgt und die Substrattemperatur mindestens <strong>3 Kelvin über dem Taupunkt</strong> liegt!
+                        Reaktionsharz-Beschichtungen (EP/PU) dürfen nur verarbeitet werden, wenn die Betonfeuchte <strong>&lt; 4,0 %</strong> (CM-Methode) beträgt und die Substrattemperatur mindestens <strong>3 Kelvin über dem Taupunkt</strong> liegt!
                       </p>
                     </div>
                   </div>
@@ -1518,7 +1519,7 @@ export default function BpFarbenLacke() {
                       }
                     } else if (osEinsatzbereich === 'freideck_parkdeck') {
                       recommendedSysId = 'os11a';
-                      categoryText = 'OS 11a (OS-F1) - Höchste dynamische Rissüberbrückung (4.5 mm)';
+                      categoryText = 'OS 11a (OS-F1) - Höchste dynamische Rissüberbrückung (4,5 mm)';
                       noteText = 'Zwingend nach Richtlinie für alle freigelegenen Parkdecks oberhalb bewohnter oder genutzter Ebenen. Schützt den Spannbeton vor dem Eindringen korrosiver Tausalzlösungen (Salzwasser).';
                     } else if (osEinsatzbereich === 'brueckenkappe') {
                       recommendedSysId = 'os1';
@@ -1578,20 +1579,20 @@ export default function BpFarbenLacke() {
                         { material: '2K-Epoxidharz-Grundierharz (lösungsmittelfrei)', rate: 0.45, remark: 'Haftbrücke porentief einreiben' },
                         { material: 'Egalisierungs-Kratzspachtel (2K-EP + 50% Quarzmehl)', rate: 1.25, remark: 'Schutz vor Porenrückschlag' },
                         { material: 'Zähes Basisharz (2K-Epoxidharz)', rate: 1.65, remark: 'Satte Bindemittelschicht für Einstreuung' },
-                        { material: 'Feuergetrockneter Einstreusand (Quarz, 0.4 - 0.8 mm)', rate: 4.50, remark: 'Einstreuung im Überschuss (vollständig absanden. Überschuss fegen)' },
+                        { material: 'Feuergetrockneter Einstreusand (Quarz, 0,4 - 0,8 mm)', rate: 4.50, remark: 'Einstreuung im Überschuss (vollständig absanden. Überschuss fegen)' },
                         { material: 'Kopfversiegelung (pigmentierte 2K-EP-Rollversiegelung)', rate: 0.70, remark: 'Sandeinbindung gegen Reifenabrieb' }
                       ],
                       os11a: [
                         { material: '2K-Epoxidharz-Systemgrundierung', rate: 0.40, remark: 'Füllen der Betonkapillaren' },
                         { material: 'Hochelastische PU-Dichtungsschicht (Membran)', rate: 2.00, remark: 'Rissüberbrückungs-Unterbau (unbesandet aufrakeln)' },
                         { material: 'Zähelastische PU-Verschleißschicht', rate: 1.60, remark: 'Bindeschicht für Quarzsand' },
-                        { material: 'Feuergetrockneter Quarzsand (0.4 - 0.8 mm)', rate: 5.00, remark: 'Vollabsandung im Überschuss' },
+                        { material: 'Feuergetrockneter Quarzsand (0,4 - 0,8 mm)', rate: 5.00, remark: 'Vollabsandung im Überschuss' },
                         { material: 'Chemikalienresistente PU-Kopfversiegelung (lichtecht)', rate: 0.80, remark: 'Schutz vor Streusalz, Benzin und UV-Licht' }
                       ],
                       os11b: [
                         { material: '2K-Epoxidharz-Systemgrundierung', rate: 0.40, remark: 'Absperrung Wasser' },
                         { material: 'Hochelastische Kombi-PU-Verschleißschicht', rate: 2.30, remark: 'Einschichtige Dichtung & Verschleiß' },
-                        { material: 'Feuergetrockneter Absandsand (0.4 - 0.8 mm)', rate: 5.00, remark: 'Rutschfeste Abstreuung' },
+                        { material: 'Feuergetrockneter Absandsand (0,4 - 0,8 mm)', rate: 5.00, remark: 'Rutschfeste Abstreuung' },
                         { material: 'Abrieb- und lichtfeste PU-Kopfversiegelung', rate: 0.85, remark: 'Witterungsstabile Schutzfarbe' }
                       ]
                     };
@@ -1614,8 +1615,8 @@ export default function BpFarbenLacke() {
                         {/* Material volume output table */}
                         <div className="space-y-2">
                           <div className="flex justify-between items-center px-1">
-                            <span className="text-[11px] font-bold text-text-main/50 uppercase tracking-wider">Kalkulierter Gesamtbedarf für {osArea} m²:</span>
-                            <span className="px-2 py-0.5 rounded bg-shiraz/10 text-shiraz font-mono text-[11px] font-bold">Fläche: {osArea} m²</span>
+                            <span className="text-[11px] font-bold text-text-main/50 uppercase tracking-wider">Kalkulierter Gesamtbedarf für {formatDeWert(osArea)} m²:</span>
+                            <span className="px-2 py-0.5 rounded bg-shiraz/10 text-shiraz font-mono text-[11px] font-bold">Fläche: {formatDeWert(osArea)} m²</span>
                           </div>
 
                           <div className="overflow-hidden border border-home-grau/25 rounded-md text-xs bg-white">
@@ -1636,7 +1637,7 @@ export default function BpFarbenLacke() {
                                     <span className="w-4 h-4 rounded-full bg-stone-200 text-[10px] font-mono flex items-center justify-center font-bold">{idx + 1}</span>
                                     <span>{row.material}</span>
                                   </div>
-                                  <div className="col-span-2 text-center font-mono text-text-main/70">{row.rate.toFixed(2)} kg/m²</div>
+                                  <div className="col-span-2 text-center font-mono text-text-main/70">{formatDeZahl(row.rate, 2)} kg/m²</div>
                                   <div className="col-span-2 text-center font-mono font-black text-shiraz bg-shiraz/5 py-1 rounded">{calculatedTotal.toLocaleString('de-DE', { maximumFractionDigits: 0 })} kg</div>
                                   <div className="col-span-3 text-text-main/60 italic leading-snug">{row.remark}</div>
                                 </div>

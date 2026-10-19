@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
@@ -43,7 +44,7 @@ export default function Glas() {
     return {
       datasets: [
         {
-          label: `Bruchwahrscheinlichkeit (A = ${area} m², m = ${m})`,
+          label: `Bruchwahrscheinlichkeit (A = ${formatDeWert(area)} m², m = ${formatDeWert(m)})`,
           data: data,
           borderColor: '#64748b',
           backgroundColor: 'rgba(56, 189, 248, 0.1)',
@@ -187,11 +188,11 @@ export default function Glas() {
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Char. Festigkeit <FormulaText text="f_{g,k}" />:</span>
-                    <span className="font-bold">{glassTypes[glassType].fgk} MPa</span>
+                    <span className="font-bold">{formatDeWert(glassTypes[glassType].fgk)} MPa</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Temp.-Wechsel <FormulaText text="\Delta T" />:</span>
-                    <span className="font-bold">{glassTypes[glassType].deltaT} K</span>
+                    <span className="font-bold">{formatDeWert(glassTypes[glassType].deltaT)} K</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Dichte <FormulaText text="\rho" />:</span>
@@ -269,11 +270,11 @@ export default function Glas() {
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/30">
                   <div className="text-xs text-home-grau mb-1">Schubmodul PVB (<FormulaText text="G_{PVB}" />)</div>
-                  <div className="font-bold text-shiraz text-xl">{vsgData.G.toFixed(2)} MPa</div>
+                  <div className="font-bold text-shiraz text-xl">{formatDeZahl(vsgData.G, 2)} MPa</div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/30">
                   <div className="text-xs text-home-grau mb-1">Effektive Dicke (<FormulaText text="h_{ef,w}" />)</div>
-                  <div className="font-bold text-text-main text-xl">{vsgData.hef_w.toFixed(1)} mm</div>
+                  <div className="font-bold text-text-main text-xl">{formatDeZahl(vsgData.hef_w, 1)} mm</div>
                 </div>
               </div>
             </div>

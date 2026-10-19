@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ShieldAlert, ArrowRight, AlertTriangle, CheckCircle2, Calculator, Shield, Activity, BarChart2 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -238,10 +239,10 @@ export default function Sicherheitskonzept() {
                     value={psi0_2}
                     onChange={(e) => setPsi0_2(Number(e.target.value))}
                   >
-                    <option value={0.7}>0.7 (Nutzlast A, B, C, Schneelast)</option>
-                    <option value={0.6}>0.6 (Windlast)</option>
-                    <option value={0.5}>0.5 (Schneelast Norddt. Tiefland)</option>
-                    <option value={1.0}>1.0 (Keine Abminderung)</option>
+                    <option value={0.7}>0,7 (Nutzlast A, B, C, Schneelast)</option>
+                    <option value={0.6}>0,6 (Windlast)</option>
+                    <option value={0.5}>0,5 (Schneelast Norddt. Tiefland)</option>
+                    <option value={1.0}>1,0 (Keine Abminderung)</option>
                   </select>
                 </div>
               </div>
@@ -253,21 +254,21 @@ export default function Sicherheitskonzept() {
               </h4>
               <div className="space-y-3 font-mono text-sm">
                 <div className="flex justify-between">
-                  <span className="text-text-main/70">Ständig: <FormulaText text={`\\gamma_G \\cdot G_k = ${gammaG.toFixed(2)} \\cdot ${gk}`} /></span>
-                  <span>{(gammaG * gk).toFixed(2)} kN</span>
+                  <span className="text-text-main/70">Ständig: <FormulaText text={`\\gamma_G \\cdot G_k = ${formatDeTeX(gammaG, 2)} \\cdot ${formatDeTeXWert(gk)}`} /></span>
+                  <span>{formatDeZahl((gammaG * gk), 2)} kN</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-main/70">Leit-Einw: <FormulaText text={`\\gamma_Q \\cdot Q_{k,1} = ${gammaQ.toFixed(2)} \\cdot ${qk1}`} /></span>
-                  <span>{(gammaQ * qk1).toFixed(2)} kN</span>
+                  <span className="text-text-main/70">Leit-Einw: <FormulaText text={`\\gamma_Q \\cdot Q_{k,1} = ${formatDeTeX(gammaQ, 2)} \\cdot ${formatDeTeXWert(qk1)}`} /></span>
+                  <span>{formatDeZahl((gammaQ * qk1), 2)} kN</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-main/70">Weitere: <FormulaText text={`\\gamma_Q \\cdot \\psi_0 \\cdot Q_{k,2} = ${gammaQ.toFixed(2)} \\cdot ${psi0_2} \\cdot ${qk2}`} /></span>
-                  <span>{(gammaQ * psi0_2 * qk2).toFixed(2)} kN</span>
+                  <span className="text-text-main/70">Weitere: <FormulaText text={`\\gamma_Q \\cdot \\psi_0 \\cdot Q_{k,2} = ${formatDeTeX(gammaQ, 2)} \\cdot ${formatDeTeXWert(psi0_2)} \\cdot ${formatDeTeXWert(qk2)}`} /></span>
+                  <span>{formatDeZahl((gammaQ * psi0_2 * qk2), 2)} kN</span>
                 </div>
                 <hr className="border-home-grau/50" />
                 <div className="flex justify-between text-shiraz font-bold text-lg pt-2">
                   <span><FormulaText text="E_d" /> =</span>
-                  <span>{ed.toFixed(2)} kN</span>
+                  <span>{formatDeZahl(ed, 2)} kN</span>
                 </div>
               </div>
               

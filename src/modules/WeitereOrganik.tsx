@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '../components/ui/ModuleFooter';
 import { 
@@ -155,7 +156,7 @@ function DynamicInteractiveDegradationCalculator() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-medium text-slate-700">
                 <span className="flex items-center gap-1"><Sun className="w-3.5 h-3.5 text-amber-500" /> UV-Strahlungsintensität (Foto-Aktivität)</span>
-                <span className="font-bold">{uvExposure}/5</span>
+                <span className="font-bold">{formatDeWert(uvExposure)}/5</span>
               </div>
               <input 
                 type="range" min="1" max="5" 
@@ -168,7 +169,7 @@ function DynamicInteractiveDegradationCalculator() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-medium text-slate-700">
                 <span className="flex items-center gap-1"><Droplets className="w-3.5 h-3.5 text-sky-500" /> Dauernässe / Feuchteklasse (Hydrolyserisiko)</span>
-                <span className="font-bold">{moisture}/5</span>
+                <span className="font-bold">{formatDeWert(moisture)}/5</span>
               </div>
               <input 
                 type="range" min="1" max="5" 
@@ -181,7 +182,7 @@ function DynamicInteractiveDegradationCalculator() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-medium text-slate-700">
                 <span className="flex items-center gap-1"><Thermometer className="w-3.5 h-3.5 text-red-500" /> Thermische Zyklen (T-Wechsel extreme)</span>
-                <span className="font-bold">{tempCycles}/5</span>
+                <span className="font-bold">{formatDeWert(tempCycles)}/5</span>
               </div>
               <input 
                 type="range" min="1" max="5" 
@@ -194,7 +195,7 @@ function DynamicInteractiveDegradationCalculator() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-medium text-slate-700">
                 <span className="flex items-center gap-1"><Beaker className="w-3.5 h-3.5 text-indigo-505" /> Chemische Beanspruchung (Säuren/Salze/Ozon)</span>
-                <span className="font-bold">{chemicalLoad}/5</span>
+                <span className="font-bold">{formatDeWert(chemicalLoad)}/5</span>
               </div>
               <input 
                 type="range" min="1" max="5" 
@@ -246,7 +247,7 @@ function DynamicInteractiveDegradationCalculator() {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white p-3 rounded-xl border border-slate-150 text-center">
                 <span className="text-xs text-slate-450 uppercase font-bold tracking-wider">Prognostizierte Standzeit</span>
-                <span className="block text-3xl font-black text-shiraz mt-1 font-mono">{projectedLifetime} Jahre</span>
+                <span className="block text-3xl font-black text-shiraz mt-1 font-mono">{formatDeWert(projectedLifetime)} Jahre</span>
                 <span className="text-xs text-slate-550 mt-0.5 block">Erwarteter Funktionserhalt</span>
               </div>
 
@@ -261,7 +262,7 @@ function DynamicInteractiveDegradationCalculator() {
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-bold text-slate-700 uppercase">
                 <span>Zersetzungsgeschwindigkeit / Degradationsrate:</span>
-                <span className="font-mono text-shiraz">{Math.round(degradationScore * 15)}%</span>
+                <span className="font-mono text-shiraz">{formatDeWert(Math.round(degradationScore * 15))}%</span>
               </div>
               <div className="w-full bg-slate-200 h-3 rounded-full overflow-hidden border border-slate-300">
                 <motion.div 
@@ -341,7 +342,7 @@ function DynamicInteractiveDegradationCalculator() {
                     v<sub>Photo</sub> = &Phi; &middot; I<sub>0</sub> &middot; (1 &minus; e<sup>&minus; &epsilon; &middot; c &middot; d</sup>)
                   </div>
                   <div className="text-xs text-slate-400 max-w-md font-medium leading-relaxed">
-                    Beschreibt das Ausmaß des Kettenbruchs von Polymeren (z. B. PVC, Bitumen) durch solare Strahlung. Die Abbaugeschwindigkeit <strong className="text-white">v<sub>Photo</sub></strong> hängt von der Quantenausbeute <strong className="text-white">&Phi;</strong>, der solaren Anfangsintensität <strong className="text-white">I<sub>0</sub></strong>, dem Extinktionskoeffizienten <strong className="text-white">&epsilon;</strong> und der Schichtdicke <strong className="text-white">d</strong> ab. Integrierte UV-Stabilisatoren (z. B. HALS) fangen gebildete Radikale ab und senken die Quantenausbeute <strong className="text-white">&Phi; (Copolymer Modifierfaktor f<sub>UV</sub> = 0.40)</strong>.
+                    Beschreibt das Ausmaß des Kettenbruchs von Polymeren (z. B. PVC, Bitumen) durch solare Strahlung. Die Abbaugeschwindigkeit <strong className="text-white">v<sub>Photo</sub></strong> hängt von der Quantenausbeute <strong className="text-white">&Phi;</strong>, der solaren Anfangsintensität <strong className="text-white">I<sub>0</sub></strong>, dem Extinktionskoeffizienten <strong className="text-white">&epsilon;</strong> und der Schichtdicke <strong className="text-white">d</strong> ab. Integrierte UV-Stabilisatoren (z. B. HALS) fangen gebildete Radikale ab und senken die Quantenausbeute <strong className="text-white">&Phi; (Copolymer Modifierfaktor f<sub>UV</sub> = 0,40)</strong>.
                   </div>
                 </div>
               </div>
@@ -354,7 +355,7 @@ function DynamicInteractiveDegradationCalculator() {
                     v<sub>Bio</sub> = M<sub>crit</sub> &middot; [&phi;<sub>Wood</sub> &minus; &phi;<sub>crit</sub>(T)] &middot; f<sub>pH</sub>
                   </div>
                   <div className="text-xs text-slate-400 max-w-md font-medium leading-relaxed">
-                    Gilt für Hanffasern und Stroh. Mikrobieller Pilzabbau setzt kritische Substratfeuchte <strong className="text-white">&phi;<sub>Wood</sub> &ge; 20 % Holzfeuchte</strong> voraus. Die Wachstumsgeschwindigkeit des Myzels <strong className="text-white">v<sub>Bio</sub></strong> skaliert linear mit der Überschreitung der kritischen, temperaturabhängigen Luftfeuchtegrenze <strong className="text-white">&phi;<sub>crit</sub>(T) (LIM - Lowest Isopleth for Mold)</strong> und wird durch Imprägnierungen (Borsalze, Soda) modifiziert (<strong className="text-white">f<sub>pH</sub> = 0.35</strong>).
+                    Gilt für Hanffasern und Stroh. Mikrobieller Pilzabbau setzt kritische Substratfeuchte <strong className="text-white">&phi;<sub>Wood</sub> &ge; 20 % Holzfeuchte</strong> voraus. Die Wachstumsgeschwindigkeit des Myzels <strong className="text-white">v<sub>Bio</sub></strong> skaliert linear mit der Überschreitung der kritischen, temperaturabhängigen Luftfeuchtegrenze <strong className="text-white">&phi;<sub>crit</sub>(T) (LIM - Lowest Isopleth for Mold)</strong> und wird durch Imprägnierungen (Borsalze, Soda) modifiziert (<strong className="text-white">f<sub>pH</sub> = 0,35</strong>).
                   </div>
                 </div>
               </div>

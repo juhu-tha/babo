@@ -331,22 +331,22 @@ export default function TypischeBauschaeden() {
                     </thead>
                     <tbody>
                       <tr className="border-b border-home-grau/30">
-                        <td className="p-2 font-mono text-slate-700">&lt; 0.1 mm</td>
+                        <td className="p-2 font-mono text-slate-700">&lt; 0,1 mm</td>
                         <td className="p-2">Haarrisse</td>
                         <td className="p-2">Meist unkritisch / kosmetisch. Wasserunwirksam im Beton.</td>
                       </tr>
                       <tr className="border-b border-home-grau/30">
-                        <td className="p-2 font-mono text-shiraz">&gt;= 0.1 - 0.3 mm</td>
+                        <td className="p-2 font-mono text-shiraz">&gt;= 0,1 - 0,3 mm</td>
                         <td className="p-2">Feine Risse</td>
                         <td className="p-2">Im Außenbereich wegen Frostgefahr und Bewehrungskorrosion zu beobachten.</td>
                       </tr>
                       <tr className="border-b border-home-grau/30">
-                        <td className="p-2 font-mono text-shiraz font-semibold">0.3 - 1.0 mm</td>
+                        <td className="p-2 font-mono text-shiraz font-semibold">0,3 - 1,0 mm</td>
                         <td className="p-2">Konstruktionsrisse</td>
                         <td className="p-2">Statisch-konstruktive Ursachenprüfung zwingend erforderlich. Abdichtung gefährdet.</td>
                       </tr>
                       <tr>
-                        <td className="p-2 font-mono text-shiraz font-bold">&gt; 1.0 mm</td>
+                        <td className="p-2 font-mono text-shiraz font-bold">&gt; 1,0 mm</td>
                         <td className="p-2 font-bold">Gefügerisse / Klaffende Risse</td>
                         <td className="p-2 text-shiraz font-bold">Ursache und Tragwirkung umgehend durch Fachplaner klären (keine automatische Gefahr im Verzug).</td>
                       </tr>
@@ -424,7 +424,7 @@ export default function TypischeBauschaeden() {
                             <tr>
                               <td className="p-1.5 font-bold font-mono text-shiraz">Zementsuspens. (ZS)</td>
                               <td className="p-1.5 text-slate-600">Mineralisch, starr, füllstark</td>
-                              <td className="p-1.5">Füllen breiter Risse (&gt; 0.8 mm) &amp; Hohlräume.</td>
+                              <td className="p-1.5">Füllen breiter Risse (&gt; 0,8 mm) &amp; Hohlräume.</td>
                             </tr>
                             <tr>
                               <td className="p-1.5 font-bold font-mono text-shiraz">Acrylatgel (GEL)</td>
@@ -486,7 +486,7 @@ export default function TypischeBauschaeden() {
                           </div>
                           <div>
                             <span className="text-slate-400 block">Eigengewicht:</span>
-                            <strong className="text-slate-800">Extrem gering (~1.6 g/cm³)</strong>
+                            <strong className="text-slate-800">Extrem gering (~1,6 g/cm³)</strong>
                           </div>
                           <div>
                             <span className="text-slate-400 block">Korrosion:</span>
@@ -499,7 +499,7 @@ export default function TypischeBauschaeden() {
                       <div className="border-t border-home-grau/20 pt-2 mt-2">
                         <strong className="text-xs text-slate-800 block mb-1">⚙️ Arbeitsverfahren zur CFK-Lamellenverstärkung</strong>
                         <ol className="list-decimal pl-4 text-[11px] text-slate-600 space-y-1">
-                          <li><strong>Untergrundprüfung (Zwingend):</strong> Prüfung der Beton-Abreißfestigkeit (mind. <InlineMath math="1.5 \text{ N/mm}^2" />). Zu schwacher Beton reißt flächig ab!</li>
+                          <li><strong>Untergrundprüfung (Zwingend):</strong> Prüfung der Beton-Abreißfestigkeit (mind. <InlineMath math="1{,}5 \text{ N/mm}^2" />). Zu schwacher Beton reißt flächig ab!</li>
                           <li><strong>Vorbereitung (Kugelstrahlen/Schleifen):</strong> Die Betonoberfläche wird gefräst, kugelgestrahlt oder geschliffen, um die Zementhaut zu entfernen und Gesteinskörnungen freizulegen.</li>
                           <li><strong>Applikation Epoxidkleber:</strong> Auftrag eines thixotropen (pastösen) Epoxidharzklebstoffes auf den Beton und auf die Carbonlamelle (dachprofilartig aufgespachtelt, um Lufteinschlüsse zu vermeiden).</li>
                           <li><strong>Andrücken der Lamelle:</strong> Lamelle von Hand positionieren und mit einer Gummirolle gleichmäßig andrücken, bis der überschüssige Kleber an den Seiten gleichmäßig herausquillt.</li>

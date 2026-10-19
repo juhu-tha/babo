@@ -304,7 +304,7 @@ export default function Bindemittel() {
                         <p className="text-[10px] text-text-main/70 mb-1 leading-normal">
                           Das bei der Alithydratation freigesetzte Portlandit liefert die nötigen Hydroxidionen (<InlineMath math="OH^-" />), um das Silikatglas-Netzwerk aufzuspalten und C-S-H Phasen freizusetzen:
                         </p>
-                        <BlockMath math="\text{Hüttensand-Glas} \xrightarrow{\text{pH } > 12.0} \text{C-S-H} + \text{C-A-S-H}" />
+                        <BlockMath math="\text{Hüttensand-Glas} \xrightarrow{\text{pH } > 12{,}0} \text{C-S-H} + \text{C-A-S-H}" />
                       </div>
                     </div>
 
@@ -375,7 +375,7 @@ export default function Bindemittel() {
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/15 space-y-2">
                 <strong className="text-sm text-text-main font-bold block text-shiraz">4. k-Wert Konzept</strong>
                 <p className="text-xs text-text-main/70 leading-relaxed">
-                  Nach DIN EN 206 darf Flugasche mit einem Anrechnungsfaktor von <InlineMath math="k = 0,4" /> (bei CEM I) und Silikastaub mit <InlineMath math="k = 2,0" /> direkt auf den Mindestzementgehalt angerechnet werden, was die CO₂-Bilanz optimiert.
+                  Nach DIN EN 206 darf Flugasche mit einem Anrechnungsfaktor von <InlineMath math="k = 0{,}4" /> (bei CEM I) und Silikastaub mit <InlineMath math="k = 2{,}0" /> direkt auf den Mindestzementgehalt angerechnet werden, was die CO₂-Bilanz optimiert.
                 </p>
               </div>
             </div>

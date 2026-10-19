@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Layers, Lightbulb, Box, Sparkles, Cpu, Check, Zap, TrendingUp, Coins, Leaf, Scale, Settings, Activity, ChevronRight, AlertCircle, Info, HelpCircle, ArrowRight, Wrench, CheckCircle2 } from 'lucide-react';
@@ -122,7 +123,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
     ],
     specs: {
       'Trockenrohdichte': '650 bis 800 kg/m³ (Normalbeton = 2.400 kg/m³)',
-      'Wärmeleitfähigkeit (λ)': '0.15 bis 0.18 W/(m·K)',
+      'Wärmeleitfähigkeit (λ)': '0,15 bis 0,18 W/(m·K)',
       'Druckfestigkeitsklasse': 'LC 8/9 bis LC 12/13',
       'Zuschläge': 'Blähmaterialien, Blähglas (recyceltes Altglas), Blähton',
       'Bewehrung': 'Stahlbewehrung mit Korrosionsschutzbeschichtung oder GFK-Bewehrung'
@@ -454,7 +455,7 @@ export default function InnovativeWerkstoffe() {
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-6 font-mono text-xs text-slate-600">
                     <span className="font-bold text-slate-800 block mb-1">Typische Parameter:</span>
-                    Auflösung: &lt; 1.0 mm | Bauteilvolumen: begrenzt durch Kammergröße | Hoher Zement-Aktivierungsbedarf
+                    Auflösung: &lt; 1,0 mm | Bauteilvolumen: begrenzt durch Kammergröße | Hoher Zement-Aktivierungsbedarf
                   </div>
                 </div>
               </div>
@@ -497,7 +498,7 @@ export default function InnovativeWerkstoffe() {
                         Einsatz strukturviskoser Bindemittel. Im Ruhezustand steigt die Fließgrenze linear durch thixotropen Strukturaufbau an, wodurch der Beton in Sekunden standfest wird:
                       </p>
                       <div className="py-2">
-                        <InlineMath math="\tau_0(t) = \tau_{0,0} + A_{thix} \cdot t" />
+                        <InlineMath math="\tau_0(t) = \tau_{0{,}0} + A_{thix} \cdot t" />
                       </div>
                     </div>
                   </div>
@@ -522,7 +523,7 @@ export default function InnovativeWerkstoffe() {
                       <p className="text-xs text-slate-600 mb-2">
                         Laborprüfungen zeigen, wie das Versagen bei Biegezug- oder Scherbeanspruchung fast ausnahmslos an der horizontalen Schichtgrenze stattfindet:
                       </p>
-                      <BlockMath math="f_{t,interlayer} = \beta_{fugenfactor} \cdot f_{t,bulk} \quad (\beta_{fugen} \approx 0.4\text{ bis }0.85)" />
+                      <BlockMath math="f_{t,interlayer} = \beta_{fugenfactor} \cdot f_{t,bulk} \quad (\beta_{fugen} \approx 0{,}4\text{ bis }0{,}85)" />
                     </div>
                   </div>
                 </div>
@@ -579,7 +580,7 @@ export default function InnovativeWerkstoffe() {
                   <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block font-mono mb-2">Ingenieurpraxis &amp; Regelwerk</span>
                   <h4 className="text-base font-bold mb-2">Normative Situation &amp; Teilsicherheitskonzept</h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Da für den 3D-Druck im Hochbau derzeit <strong>keine harmonisierte europäische Bemessungsnorm</strong> (wie der Eurocode 2) existiert, muss der Tragwerksplaner auf **Zulassungen im Einzelfall (ZiE)** oder **Allgemeine Bauaufsichtliche Zulassungen (abZ)** des DIBt zurückgreifen. Die Erstellung einer Tragstruktur stützt sich auf rigorose experimentelle Vorprüfungen zur Ermittlung des zeitabhängigen Sicherheitsbeiwerts <InlineMath math="\gamma_M \approx 1.5\text{ bis }2.0" /> auf die Scherfestigkeit.
+                    Da für den 3D-Druck im Hochbau derzeit <strong>keine harmonisierte europäische Bemessungsnorm</strong> (wie der Eurocode 2) existiert, muss der Tragwerksplaner auf **Zulassungen im Einzelfall (ZiE)** oder **Allgemeine Bauaufsichtliche Zulassungen (abZ)** des DIBt zurückgreifen. Die Erstellung einer Tragstruktur stützt sich auf rigorose experimentelle Vorprüfungen zur Ermittlung des zeitabhängigen Sicherheitsbeiwerts <InlineMath math="\gamma_M \approx 1{,}5\text{ bis }2{,}0" /> auf die Scherfestigkeit.
                   </p>
                 </div>
               </div>
@@ -726,7 +727,7 @@ export default function InnovativeWerkstoffe() {
                       
                       {/* Sub-block 1: Geometrie */}
                       <div>
-                        <label className="text-xs font-bold text-slate-700 block mb-1">Druckhöhe: {targetHeight.toFixed(2)} m</label>
+                        <label className="text-xs font-bold text-slate-700 block mb-1">Druckhöhe: {formatDeZahl(targetHeight, 2)} m</label>
                         <input
                           type="range"
                           min="0.5"
@@ -736,12 +737,12 @@ export default function InnovativeWerkstoffe() {
                           onChange={(e) => setTargetHeight(parseFloat(e.target.value))}
                           className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                         />
-                        <span className="text-[9px] text-slate-400 font-mono">Bereich: 0.5 bis 4.0 m</span>
+                        <span className="text-[9px] text-slate-400 font-mono">Bereich: 0,5 bis 4,0 m</span>
                       </div>
 
                       {/* Sub-block 2: Print rate */}
                       <div>
-                        <label className="text-xs font-bold text-slate-700 block mb-1">Steigrate (Print Speed): {printSpeed.toFixed(1)} m/h</label>
+                        <label className="text-xs font-bold text-slate-700 block mb-1">Steigrate (Print Speed): {formatDeZahl(printSpeed, 1)} m/h</label>
                         <input
                           type="range"
                           min="0.2"
@@ -756,7 +757,7 @@ export default function InnovativeWerkstoffe() {
 
                       {/* Sub-block 3: Thixotropy */}
                       <div>
-                        <label className="text-xs font-bold text-slate-700 block mb-1">Thixotropierate: {thixotropy.toFixed(1)} Pa/min</label>
+                        <label className="text-xs font-bold text-slate-700 block mb-1">Thixotropierate: {formatDeZahl(thixotropy, 1)} Pa/min</label>
                         <input
                           type="range"
                           min="1"
@@ -772,7 +773,7 @@ export default function InnovativeWerkstoffe() {
                       {/* Sub-block 4: Layer Dimensions */}
                       <div className="grid grid-cols-2 gap-3 pt-1">
                         <div>
-                          <label className="text-[11px] font-bold text-slate-700 block mb-0.5">Lagenbreite: {layerWidth3d} mm</label>
+                          <label className="text-[11px] font-bold text-slate-700 block mb-0.5">Lagenbreite: {formatDeWert(layerWidth3d)} mm</label>
                           <input
                             type="range"
                             min="40"
@@ -783,7 +784,7 @@ export default function InnovativeWerkstoffe() {
                           />
                         </div>
                         <div>
-                          <label className="text-[11px] font-bold text-slate-700 block mb-0.5 font-sans">Dichte: {concreteDensity} kg/m³</label>
+                          <label className="text-[11px] font-bold text-slate-700 block mb-0.5 font-sans">Dichte: {formatDeWert(concreteDensity)} kg/m³</label>
                           <input
                             type="range"
                             min="1800"
@@ -882,7 +883,7 @@ export default function InnovativeWerkstoffe() {
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                           <span className="text-[10px] text-slate-500 font-mono block">Dauer Druckprozess</span>
                           <span className="text-lg font-extrabold text-slate-800 font-mono">
-                            {Math.floor(baseTimeMins / 60)} h {Math.round(baseTimeMins % 60)} min
+                            {formatDeWert(Math.floor(baseTimeMins / 60))} h {formatDeWert(Math.round(baseTimeMins % 60))} min
                           </span>
                           <span className="text-[9px] text-slate-400 block mt-1 font-mono">Alter der 1. Schicht</span>
                         </div>
@@ -890,9 +891,9 @@ export default function InnovativeWerkstoffe() {
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                           <span className="text-[10px] text-slate-500 font-mono block">Fuß-Fließgrenze erreicht</span>
                           <span className="text-lg font-extrabold text-slate-800 font-mono">
-                            {developedYieldBaseKPa.toFixed(2)} kPa
+                            {formatDeZahl(developedYieldBaseKPa, 2)} kPa
                           </span>
-                          <span className="text-[9px] text-slate-400 block mt-1 font-mono">Nötig: ≥ {requiredYieldBaseKPa.toFixed(2)} kPa</span>
+                          <span className="text-[9px] text-slate-400 block mt-1 font-mono">Nötig: ≥ {formatDeZahl(requiredYieldBaseKPa, 2)} kPa</span>
                         </div>
                       </div>
 
@@ -903,7 +904,7 @@ export default function InnovativeWerkstoffe() {
                           <div className="flex justify-between text-xs">
                             <span className="font-bold text-slate-700">Plastische Fließ-Standsicherheit (Tragfähigkeit)</span>
                             <span className={`font-mono font-bold ${sfPlasticVal >= 1.3 ? 'text-emerald-600' : sfPlasticVal >= 1.0 ? 'text-amber-600' : 'text-rose-600'}`}>
-                              SF_p = {sfPlasticVal.toFixed(2)} {sfPlasticVal >= 1.3 ? '(Sicher)' : sfPlasticVal >= 1.0 ? '(Grenzwertig)' : '(Versagen)'}
+                              SF_p = {formatDeZahl(sfPlasticVal, 2)} {sfPlasticVal >= 1.3 ? '(Sicher)' : sfPlasticVal >= 1.0 ? '(Grenzwertig)' : '(Versagen)'}
                             </span>
                           </div>
                           <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
@@ -920,7 +921,7 @@ export default function InnovativeWerkstoffe() {
                           <div className="flex justify-between text-xs">
                             <span className="font-bold text-slate-700">Elastische Knickstabilität (Biegesteifigkeit)</span>
                             <span className={`font-mono font-bold ${sfBucklingVal >= 1.3 ? 'text-emerald-600' : sfBucklingVal >= 1.0 ? 'text-amber-600' : 'text-rose-600'}`}>
-                              SF_k = {sfBucklingVal.toFixed(2)} {sfBucklingVal >= 1.3 ? '(Sicher)' : sfBucklingVal >= 1.0 ? '(Mäßig)' : '(Knicken)'}
+                              SF_k = {formatDeZahl(sfBucklingVal, 2)} {sfBucklingVal >= 1.3 ? '(Sicher)' : sfBucklingVal >= 1.0 ? '(Mäßig)' : '(Knicken)'}
                             </span>
                           </div>
                           <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
@@ -929,7 +930,7 @@ export default function InnovativeWerkstoffe() {
                               style={{ width: `${Math.min(100, (sfBucklingVal / 2.0) * 100)}%` }}
                             />
                           </div>
-                          <span className="text-[9px] text-slate-400 font-mono block">Kritische Knickhöhe: {H_critical_buckling.toFixed(2)} m</span>
+                          <span className="text-[9px] text-slate-400 font-mono block">Kritische Knickhöhe: {formatDeZahl(H_critical_buckling, 2)} m</span>
                         </div>
                       </div>
 
@@ -949,7 +950,7 @@ export default function InnovativeWerkstoffe() {
                             <li>Um den knappen Sicherheitsspielraum zu erhöhen, empfiehlt sich eine Erhöhung der <strong>Thixotropierate</strong> oder eine geringere geplante <strong>Druckhöhe</strong>.</li>
                           )}
                           {isStable && (
-                            <li>Exzellentes Design! Sie können versuchen, die <strong>Steiggeschwindigkeit am Drucker zu erhöhen</strong> (Zeitvorteil), solange Sie den Standsicherheitsfaktor <InlineMath math="SF \ge 1.3" /> halten.</li>
+                            <li>Exzellentes Design! Sie können versuchen, die <strong>Steiggeschwindigkeit am Drucker zu erhöhen</strong> (Zeitvorteil), solange Sie den Standsicherheitsfaktor <InlineMath math="SF \ge 1{,}3" /> halten.</li>
                           )}
                         </ul>
                       </div>
@@ -990,7 +991,7 @@ export default function InnovativeWerkstoffe() {
                         </span>
                         
                         <span className="flex items-center gap-1 text-emerald-600 text-[10px] font-bold font-mono">
-                          <Leaf size={10} /> CO₂: -{100 - mat.co2Index}%
+                          <Leaf size={10} /> CO₂: -{formatDeWert(100 - mat.co2Index)}%
                         </span>
                       </div>
                       
@@ -999,7 +1000,7 @@ export default function InnovativeWerkstoffe() {
                     </div>
 
                     <div className="mt-3 pt-2 border-t border-home-grau/30 flex justify-between items-center text-[10px] text-slate-400 font-semibold">
-                      <span>Kostenindex: {mat.costIndex}%</span>
+                      <span>Kostenindex: {formatDeWert(mat.costIndex)}%</span>
                       <span className="text-indigo-600 flex items-center gap-0.5">Details <ChevronRight size={10} /></span>
                     </div>
                   </button>
@@ -1023,7 +1024,7 @@ export default function InnovativeWerkstoffe() {
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                     <div className="flex justify-between items-center mb-1 text-xs">
                       <span className="font-bold text-slate-700 flex items-center gap-1"><Leaf className="w-4 h-4 text-emerald-600" /> CO₂-Druckminderung</span>
-                      <span className="font-bold font-mono text-emerald-800">-{100 - selectedMaterialData.co2Index}% (Sehr Gut)</span>
+                      <span className="font-bold font-mono text-emerald-800">-{formatDeWert(100 - selectedMaterialData.co2Index)}% (Sehr Gut)</span>
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                       <div className="bg-emerald-500 h-2 rounded-full" style={{ width: `${100 - selectedMaterialData.co2Index}%` }}></div>
@@ -1034,7 +1035,7 @@ export default function InnovativeWerkstoffe() {
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                     <div className="flex justify-between items-center mb-1 text-xs">
                       <span className="font-bold text-slate-700 flex items-center gap-1"><Coins className="w-4 h-4 text-slate-500" /> Relativer Kostenindex</span>
-                      <span className="font-bold font-mono text-slate-800">{selectedMaterialData.costIndex}% (Referenz: 100%)</span>
+                      <span className="font-bold font-mono text-slate-800">{formatDeWert(selectedMaterialData.costIndex)}% (Referenz: 100%)</span>
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                       <div className="bg-indigo-600 h-2 rounded-full" style={{ width: `${Math.min(100, (selectedMaterialData.costIndex / 300) * 100)}%` }}></div>
@@ -1231,7 +1232,7 @@ export default function InnovativeWerkstoffe() {
                             }`}>
                               <span className="text-slate-800 tracking-tight block max-w-[200px] truncate">{m.name.split(' (')[0]}</span>
                               <div className="flex items-center gap-1">
-                                <span className="text-[11px] font-mono text-slate-400 font-bold">({stars}/5)</span>
+                                <span className="text-[11px] font-mono text-slate-400 font-bold">({formatDeWert(stars)}/5)</span>
                                 <div className="flex gap-0.5 text-amber-500">
                                   {Array.from({ length: 5 }).map((_, i) => (
                                     <span key={i} className={i < Math.round(stars) ? 'opacity-100' : 'opacity-20'}>★</span>
@@ -1310,7 +1311,7 @@ export default function InnovativeWerkstoffe() {
                             mat.co2Index < 60 ? 'bg-teal-100 text-teal-850' :
                             'bg-lime-100 text-lime-850'
                           }`}>
-                            {mat.co2Index}% (-{100 - mat.co2Index}%)
+                            {formatDeWert(mat.co2Index)}% (-{formatDeWert(100 - mat.co2Index)}%)
                           </span>
                         </div>
                       </td>
@@ -1321,7 +1322,7 @@ export default function InnovativeWerkstoffe() {
                             mat.costIndex > 130 ? 'bg-orange-100 text-orange-800' :
                             'bg-yellow-100 text-yellow-850'
                           }`}>
-                            {mat.costIndex}%
+                            {formatDeWert(mat.costIndex)}%
                           </span>
                         </div>
                       </td>
@@ -1370,7 +1371,7 @@ export default function InnovativeWerkstoffe() {
                   Einmischen von Bakteriensporen (z.B. Bacillus pseudofirmus) oder Epoxid-Mikrokapseln direkt in die Betonmischung im Transportbetonwerk.
                 </p>
                 <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-400 font-semibold font-medium leading-relaxed">
-                  💧 <strong>Heilungs-Effekt:</strong> Dringt durch Mikrorisse Wasser ein, erwachen die Bakterien, verstoffwechseln Nährsalze und kristallisieren Kalkstein (Calcit) aus, der den Riss bis 0.8 mm Breite autonom abdichtet.
+                  💧 <strong>Heilungs-Effekt:</strong> Dringt durch Mikrorisse Wasser ein, erwachen die Bakterien, verstoffwechseln Nährsalze und kristallisieren Kalkstein (Calcit) aus, der den Riss bis 0,8 mm Breite autonom abdichtet.
                 </div>
               </div>
 
@@ -1409,7 +1410,7 @@ export default function InnovativeWerkstoffe() {
                 <span className="font-mono text-[9px] uppercase font-bold text-slate-400">Kreislaufökologie</span>
                 <div className="text-4xl">🍄</div>
                 <div className="font-bold text-slate-900">Pilzmyzel-Dämmung</div>
-                <div className="text-[10px] text-slate-500 font-medium">Beste Wärmeleitfähigkeit (λ) ca. 0.040 W/(m·K) und vollständig giftfreie Entsorgung.</div>
+                <div className="text-[10px] text-slate-500 font-medium">Beste Wärmeleitfähigkeit (λ) ca. 0,040 W/(m·K) und vollständig giftfreie Entsorgung.</div>
               </div>
             </div>
           </div>

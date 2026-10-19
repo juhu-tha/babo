@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Network, 
@@ -928,19 +929,19 @@ export default function Modulstruktur() {
           {/* Kennzahlen Badges */}
           <div className="flex flex-wrap items-center gap-2">
             <span className="px-2.5 py-1 bg-slate-50 border border-slate-200/80 rounded-lg text-slate-700 font-bold text-[11px] flex items-center gap-1.5">
-              <GraduationCap size={13} className="text-shiraz" /> {stats.categories} Lehrgebiete
+              <GraduationCap size={13} className="text-shiraz" /> {formatDeWert(stats.categories)} Lehrgebiete
             </span>
             <span className="px-2.5 py-1 bg-slate-50 border border-slate-200/80 rounded-lg text-slate-700 font-bold text-[11px] flex items-center gap-1.5">
               <Layers size={13} className="text-shiraz" /> {stats.subpages} Module
             </span>
             <span className="px-2.5 py-1 bg-slate-50 border border-slate-200/80 rounded-lg text-slate-700 font-semibold text-[11px] flex items-center gap-1.5">
-              <Calculator size={13} className="text-amber-600" /> {stats.calculators} Rechner
+              <Calculator size={13} className="text-amber-600" /> {formatDeWert(stats.calculators)} Rechner
             </span>
             <span className="px-2.5 py-1 bg-slate-50 border border-slate-200/80 rounded-lg text-slate-700 font-semibold text-[11px] flex items-center gap-1.5">
-              <Database size={13} className="text-blue-600" /> {stats.databases} Datenbanken
+              <Database size={13} className="text-blue-600" /> {formatDeWert(stats.databases)} Datenbanken
             </span>
             <span className="px-2.5 py-1 bg-slate-50 border border-slate-200/80 rounded-lg text-slate-700 font-semibold text-[11px] flex items-center gap-1.5">
-              <HelpCircle size={13} className="text-emerald-600" /> {stats.quizzes} Quizzes
+              <HelpCircle size={13} className="text-emerald-600" /> {formatDeWert(stats.quizzes)} Quizzes
             </span>
           </div>
 

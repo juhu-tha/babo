@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -373,7 +374,7 @@ export default function BpInnovationen() {
                     }`}
                   >
                     <span className="text-xs uppercase font-mono tracking-wider opacity-70">Level</span>
-                    <span className="text-lg font-black">{lvl}</span>
+                    <span className="text-lg font-black">{formatDeWert(lvl)}</span>
                   </button>
                 );
               })}
@@ -384,7 +385,7 @@ export default function BpInnovationen() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-3">
                   <span className="px-3 py-1 bg-shiraz text-white rounded-lg font-black text-sm">
-                    TRL {selectedTrlLevel}
+                    TRL {formatDeWert(selectedTrlLevel)}
                   </span>
                   <h4 className="font-bold text-base text-slate-800">
                     {selectedTrlLevel === 1 && 'Grundlegende Prinzipien beobachtet und beschrieben'}
@@ -572,7 +573,7 @@ export default function BpInnovationen() {
                   <span className={`ml-1 px-1.5 py-0.2 rounded-full text-xxs font-mono ${
                     selectedPresetId === preset.id ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
                   }`}>
-                    TRL {preset.trlCurrent}
+                    TRL {formatDeWert(preset.trlCurrent)}
                   </span>
                 </button>
               ))}
@@ -585,7 +586,7 @@ export default function BpInnovationen() {
                   <div className="flex items-center gap-2">
                     <h3 className="font-extrabold text-lg text-slate-900">{selectedPreset.name}</h3>
                     <span className="px-2.5 py-0.5 bg-shiraz/10 text-shiraz rounded-full text-xs font-bold">
-                      TRL {selectedPreset.trlCurrent} / 9
+                      TRL {formatDeWert(selectedPreset.trlCurrent)} / 9
                     </span>
                   </div>
                   <span className="text-xs text-slate-500 font-medium">{selectedPreset.category}</span>
@@ -855,12 +856,12 @@ export default function BpInnovationen() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-14 h-14 rounded-2xl bg-shiraz text-white flex items-center justify-center font-black text-2xl shadow-sm">
-                    {currentTrl}
+                    {formatDeWert(currentTrl)}
                   </div>
                   <div>
                     <span className="text-xxs uppercase tracking-wider font-bold text-slate-400">Errechneter Reifegrad</span>
                     <h4 className="font-extrabold text-lg text-slate-900">
-                      Technology Readiness Level {currentTrl} von 9
+                      Technology Readiness Level {formatDeWert(currentTrl)} von 9
                     </h4>
                   </div>
                 </div>

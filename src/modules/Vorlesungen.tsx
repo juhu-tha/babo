@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import { 
   GraduationCap, 
@@ -668,7 +669,7 @@ function LectureModuleView({
     (u) =>
       u.title.toLowerCase().includes(unitSearch.toLowerCase()) ||
       u.topic.toLowerCase().includes(unitSearch.toLowerCase()) ||
-      `einheit ${u.nr}`.includes(unitSearch.toLowerCase())
+      `einheit ${formatDeWert(u.nr)}`.includes(unitSearch.toLowerCase())
   );
 
   return (
@@ -701,7 +702,7 @@ function LectureModuleView({
           </div>
           <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
             <span className="text-[10px] uppercase font-bold text-slate-400 block">Leistungspunkte</span>
-            <strong className="text-sm font-bold text-shiraz mt-0.5 block">{modulDetails.ects} ECTS</strong>
+            <strong className="text-sm font-bold text-shiraz mt-0.5 block">{formatDeWert(modulDetails.ects)} ECTS</strong>
           </div>
           <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
             <span className="text-[10px] uppercase font-bold text-slate-400 block">Turnus</span>

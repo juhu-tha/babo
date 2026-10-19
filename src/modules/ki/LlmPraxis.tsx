@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Terminal, 
@@ -758,7 +759,7 @@ triggers: [bedenkenanmeldung, vob b § 4, vorleistung fehlerhaft, behinderungsan
                       <p className="leading-relaxed bg-white/80 p-2.5 rounded border border-rose-200/60">
                         [Header: Baugrundinstitut Dr. Muelller S. 42]<br/>
                         Schicht 2.... Sand Kies k_f = 1,4 * 10^-4 m/s?<br/>
-                        c=0 phi = 32.5? Wichte gamma=19kN/m3?<br/>
+                        c=0 phi = 32,5? Wichte gamma=19kN/m3?<br/>
                         [Footer: DIN 4020 Vertraulichkeitsvermerk...]
                       </p>
                       <span className="text-[10px] text-rose-700 block">
@@ -929,21 +930,21 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                           style={{ width: `${tokenStats.contextUsagePercent}%` }}
                         />
                       </div>
-                      <span className="text-xs font-mono font-bold text-text-main">{tokenStats.contextUsagePercent}%</span>
+                      <span className="text-xs font-mono font-bold text-text-main">{formatDeWert(tokenStats.contextUsagePercent)}%</span>
                     </div>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-home-grau/20">
                     <span className="text-[10px] uppercase font-bold text-text-main/60 block">Kosten Standard</span>
                     <span className="text-lg font-black text-shiraz font-mono">
-                      ${tokenStats.costInputClaude.toFixed(3)}
+                      ${formatDeZahl(tokenStats.costInputClaude, 3)}
                     </span>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-home-grau/20">
                     <span className="text-[10px] uppercase font-bold text-emerald-700 block">Mit Prompt Caching</span>
                     <span className="text-lg font-black text-emerald-700 font-mono">
-                      ${tokenStats.costCachedClaude.toFixed(3)} (-90%)
+                      ${formatDeZahl(tokenStats.costCachedClaude, 3)} (-90%)
                     </span>
                   </div>
                 </div>

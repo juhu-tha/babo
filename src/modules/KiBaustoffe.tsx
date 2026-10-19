@@ -589,7 +589,7 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
                   {/* Footer with run button */}
                   <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-4">
                     <span className="text-[10px] text-slate-500 font-medium hidden sm:inline">
-                      Passe den Prompt an und teste die Analyse direkt.
+                      Passen Sie den Prompt an und testen Sie die Analyse direkt.
                     </span>
                     <button
                       onClick={handleRunAiPrompt}

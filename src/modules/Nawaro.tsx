@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Leaf, 
@@ -858,7 +859,7 @@ export default function Nawaro() {
 
                       {/* Score visual metric */}
                       <div className="flex flex-col items-end gap-1 flex-shrink-0 self-end md:self-center">
-                        <span className="text-xs font-bold text-emerald-700 font-mono">{m.score}% Eignung</span>
+                        <span className="text-xs font-bold text-emerald-700 font-mono">{formatDeWert(m.score)}% Eignung</span>
                         <div className="w-24 bg-home-grau/20 h-2 rounded-full overflow-hidden">
                           <div
                             className="bg-emerald-600 h-full rounded-full transition-all duration-500"

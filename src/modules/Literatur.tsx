@@ -505,7 +505,7 @@ export default function Literatur() {
           <BookOpen className="text-home-grau mx-auto mb-3 opacity-50" size={40} />
           <h3 className="text-base font-bold text-text-main">Keine Literaturtreffer gefunden</h3>
           <p className="text-sm text-home-grau mt-1">
-            Versuche einen allgemeineren Suchbegriff oder wähle &quot;Alle Werke&quot; als Kategorie.
+            Versuchen Sie einen allgemeineren Suchbegriff oder wählen Sie &quot;Alle Werke&quot; als Kategorie.
           </p>
         </div>
       ) : (

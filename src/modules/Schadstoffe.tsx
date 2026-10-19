@@ -266,7 +266,7 @@ const TREATMENT_OPTIONS = {
     },
     mkw_pak: {
       method: 'Thermische Desorption (Drehrohrofen)',
-      efficiency: 'Extrem hoch (> 99.9% Abbauquote)',
+      efficiency: 'Extrem hoch (> 99,9% Abbauquote)',
       co2: 'Sehr hoch (~60-90 kg CO₂/t)',
       cost: 'Sehr teuer (70 - 110 €/t)',
       principles: 'Da bindige Böden mikrobiell nur sehr langsam abgebaut werden können, ist die Thermik das einzig sichere Verfahren für hohe Belastungen. Der Boden wird in einem indirekt beheizten Drehrohrofen auf 350°C bis 550°C erwärmt. Organische Schadstoffe verdampfen (Desorption) und werden in einer thermischen Nachverbrennungsanlage bei > 850°C vollständig in CO₂ und Wasser zertrümmert.',
@@ -370,7 +370,7 @@ const TREATMENT_OPTIONS = {
         'Echtzeit-Scannen mittels Nahinfrarotspektroskopie zur Gipserkennung.',
         'Pneumatischer Auswurf der Gipsfraktion.'
       ],
-      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0.8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
+      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0,8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
     }
   },
   altablagerung: {
@@ -1111,7 +1111,7 @@ export default function Schadstoffe() {
                               <span>Bodenklasse: BM-0, BM-1 &amp; BM-2</span>
                               <span className="text-teal-600">Reiner Erdaushub</span>
                             </div>
-                            <div><strong>Leitparameter im Eluat:</strong> Arsen (≤ 10 µg/l), Blei (≤ 7 µg/l), Cadmium (≤ 0.2 µg/l), Chlorid (≤ 50 mg/l).</div>
+                            <div><strong>Leitparameter im Eluat:</strong> Arsen (≤ 10 µg/l), Blei (≤ 7 µg/l), Cadmium (≤ 0,2 µg/l), Chlorid (≤ 50 mg/l).</div>
                             <div className="text-xs text-slate-600 bg-teal-50 border border-teal-200 p-2 rounded mt-1">
                               <strong>Erlaubte Einbaulagen:</strong> BM-0 unbeschränkt für Böden und Rekultivierungen. BM-1/2 erfordern technische Sicherungsmaßnahmen und Verfülltiefen-Begrenzungen.
                             </div>
@@ -1327,7 +1327,7 @@ export default function Schadstoffe() {
             quelle: 'TRGS 519 / VDI 3492'
           },
           {
-            formel: 'I = \\frac{\\sum c_i \\cdot t_i}{\\text{AGW} \\cdot 8\\,\\text{h}} \\le 1.0',
+            formel: 'I = \\frac{\\sum c_i \\cdot t_i}{\\text{AGW} \\cdot 8\\,\\text{h}} \\le 1{,}0',
             erklaerung: 'Expositionsindex I nach TRGS 402 zur Bewertung der Mischbelastung am Arbeitsplatz bezogen auf die Arbeitsplatzgrenzwerte (AGW).',
             quelle: 'TRGS 402'
           }

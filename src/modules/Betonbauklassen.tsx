@@ -125,7 +125,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
         tip: 'Tragen Sie das Trennmittel hauchdünn und gleichmäßig auf. Pfützenbildung führt zu hässlichen dunklen Flecken (Ölflecken) auf der Stütze.'
       },
       execution: {
-        action: 'Baustellenseitige Verdichtung mit vibrationsoptimierten Innenrüttlern mit Gummikappen (keine Beschädigung der Schalhaut). Überwachung der maximalen Fallhöhe (Fallrohr nutzen ab > 1.50 m Fallhöhe).',
+        action: 'Baustellenseitige Verdichtung mit vibrationsoptimierten Innenrüttlern mit Gummikappen (keine Beschädigung der Schalhaut). Überwachung der maximalen Fallhöhe (Fallrohr nutzen ab > 1,50 m Fallhöhe).',
         responsible: 'Betonier-Profis / Werkspolier',
         normDetail: 'Fremdüberwachung der Baustelle nach DIN 1045-3 Stufe 3 durch Prüfingenieure oder zertifizierte Institute.',
         tip: 'Durch den Einsatz eines Fallschlauchs wird die gravitative Entmischung des Betons beim Einfüllen ins Schalungsrohr zuverlässig gebannt.'

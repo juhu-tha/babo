@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import {
@@ -99,7 +100,7 @@ function StatistikSection() {
           tension: 0.4,
         },
         {
-          label: `f_ck (${scaledFck.toFixed(1)})`,
+          label: `f_ck (${formatDeZahl(scaledFck, 1)})`,
           data: [{ x: scaledFck, y: 0 }, { x: scaledFck, y: Math.max(...yValues) }],
           borderColor: '#1e293b',
           borderWidth: 2,
@@ -141,7 +142,7 @@ function StatistikSection() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          title: (context: any) => `Festigkeit: ${Number(context[0].parsed.x).toFixed(1)} N/mm²`,
+          title: (context: any) => `Festigkeit: ${formatDeZahl(Number(context[0].parsed.x), 1)} N/mm²`,
           label: () => '' // Simplify tooltip
         }
       }
@@ -278,8 +279,8 @@ function StatistikSection() {
                   <FormulaText text="f_{cm} \ge f_{ck} + 1.48 \cdot \sigma" />
                 </div>
                 <p className="text-text-main/80">
-                  Bei einem angestrebten 5%-Fraktil von <strong>{displayFck.toFixed(1)} N/mm²</strong> 
-                  muss das Werk normativ einen Mittelwert von mindestens <strong>{(displayFck + 1.48 * displaySigma).toFixed(1)} N/mm²</strong> nachweisen.
+                  Bei einem angestrebten 5%-Fraktil von <strong>{formatDeZahl(displayFck, 1)} N/mm²</strong> 
+                  muss das Werk normativ einen Mittelwert von mindestens <strong>{formatDeZahl((displayFck + 1.48 * displaySigma), 1)} N/mm²</strong> nachweisen.
                 </p>
               </>
             ) : (
@@ -292,8 +293,8 @@ function StatistikSection() {
                   <FormulaText text="Kriterium 2: f_{ci} \ge f_{ck} - 4" />
                 </div>
                 <p className="text-text-main/80">
-                  Bei einem angestrebten 5%-Fraktil von <strong>{displayFck.toFixed(1)} N/mm²</strong> 
-                  muss der Mittelwert aus 3 Proben mindestens <strong>{(displayFck + 4).toFixed(1)} N/mm²</strong> betragen, und kein Einzelwert darf <strong>{(displayFck - 4).toFixed(1)} N/mm²</strong> unterschreiten.
+                  Bei einem angestrebten 5%-Fraktil von <strong>{formatDeZahl(displayFck, 1)} N/mm²</strong> 
+                  muss der Mittelwert aus 3 Proben mindestens <strong>{formatDeZahl((displayFck + 4), 1)} N/mm²</strong> betragen, und kein Einzelwert darf <strong>{formatDeZahl((displayFck - 4), 1)} N/mm²</strong> unterschreiten.
                 </p>
               </>
             )}
@@ -308,15 +309,15 @@ function StatistikSection() {
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80"><FormulaText text="Mittelwert (f_{cm}):" /></span>
-                <span className="text-text-main font-bold">{displayFcm.toFixed(1)} MPa</span>
+                <span className="text-text-main font-bold">{formatDeZahl(displayFcm, 1)} MPa</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80"><FormulaText text="Standardabweichung (σ):" /></span>
-                <span className="text-text-main font-bold">{displaySigma.toFixed(1)} MPa</span>
+                <span className="text-text-main font-bold">{formatDeZahl(displaySigma, 1)} MPa</span>
               </div>
               <div className="flex justify-between items-center border-t border-home-grau/30 pt-2 mt-1">
                 <span className="text-text-main font-bold"><FormulaText text="Charakteristische Festigkeit (f_{ck}):" /></span>
-                <span className="text-shiraz font-bold text-lg">{displayFck.toFixed(1)} MPa</span>
+                <span className="text-shiraz font-bold text-lg">{formatDeZahl(displayFck, 1)} MPa</span>
               </div>
               <div className="mt-2 text-xs text-shiraz font-medium bg-shiraz/10 p-2 rounded">
                 Statistisch gesehen unterschreiten nur 5% aller Proben diesen Wert.
@@ -329,15 +330,15 @@ function StatistikSection() {
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80"><FormulaText text="Charakteristischer Wert (f_{ck,cyl}):" /></span>
-                <span className="text-text-main font-bold">{fckCyl.toFixed(1)} MPa</span>
+                <span className="text-text-main font-bold">{formatDeZahl(fckCyl, 1)} MPa</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80"><FormulaText text="Faktoren (α_{cc} / γ_c):" /></span>
-                <span className="text-text-main font-bold">{alphaCc.toFixed(2)} / {gammaC.toFixed(2)}</span>
+                <span className="text-text-main font-bold">{formatDeZahl(alphaCc, 2)} / {formatDeZahl(gammaC, 2)}</span>
               </div>
               <div className="flex justify-between items-center border-t border-home-grau/30 pt-2 mt-1">
                 <span className="text-text-main font-bold"><FormulaText text="Bemessungswert (f_{cd}):" /></span>
-                <span className="text-emerald-600 font-bold text-lg">{fcd.toFixed(1)} MPa</span>
+                <span className="text-emerald-600 font-bold text-lg">{formatDeZahl(fcd, 1)} MPa</span>
               </div>
               <div className="mt-2 text-xs text-emerald-600 font-medium bg-emerald-50 p-2 rounded">
                 Dieser Wert wird für die statische Bemessung im Grenzzustand der Tragfähigkeit (GZT) verwendet. Basiert immer auf Zylinderfestigkeit.
@@ -592,13 +593,13 @@ export default function Festbeton() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-home-grau mb-2">Referenz (28d, Zylinder, Normlagerung)</h3>
-              <div className="text-3xl font-bold text-text-main">{fcm.toFixed(1)} <span className="text-lg font-normal">MPa</span></div>
+              <div className="text-3xl font-bold text-text-main">{formatDeZahl(fcm, 1)} <span className="text-lg font-normal">MPa</span></div>
               <div className="text-sm text-home-grau mt-1"><FormulaText text="Mittlere Druckfestigkeit f_{cm}" /></div>
             </div>
             
             <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/20">
               <h3 className="text-sm font-bold text-shiraz mb-2">Erwartete Festigkeit (Prüfung)</h3>
-              <div className="text-3xl font-bold text-shiraz">{fcm_t_geo_lag.toFixed(1)} <span className="text-lg font-normal">MPa</span></div>
+              <div className="text-3xl font-bold text-shiraz">{formatDeZahl(fcm_t_geo_lag, 1)} <span className="text-lg font-normal">MPa</span></div>
               <div className="text-sm text-shiraz/80 mt-1">Unter gewählten Bedingungen</div>
             </div>
           </div>
@@ -616,17 +617,17 @@ export default function Festbeton() {
               <tbody>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-3 px-4 font-medium text-text-main"><FormulaText text="Alter (\beta_{cc})" /></td>
-                  <td className="py-3 px-4">{beta_cc.toFixed(3)}</td>
-                  <td className="py-3 px-4 text-sm text-home-grau">Festigkeitsentwicklung über die Zeit (t = {alter} d).</td>
+                  <td className="py-3 px-4">{formatDeZahl(beta_cc, 3)}</td>
+                  <td className="py-3 px-4 text-sm text-home-grau">Festigkeitsentwicklung über die Zeit (t = {formatDeWert(alter)} d).</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-3 px-4 font-medium text-text-main">Geometrie</td>
-                  <td className="py-3 px-4">{geoFaktor.toFixed(2)}</td>
+                  <td className="py-3 px-4">{formatDeZahl(geoFaktor, 2)}</td>
                   <td className="py-3 px-4 text-sm text-home-grau">Umrechnung von {geometrie} auf Referenzzylinder.</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-3 px-4 font-medium text-text-main">Lagerung</td>
-                  <td className="py-3 px-4">{lagerungsFaktor.toFixed(2)}</td>
+                  <td className="py-3 px-4">{formatDeZahl(lagerungsFaktor, 2)}</td>
                   <td className="py-3 px-4 text-sm text-home-grau">Einfluss der Nachbehandlung ({lagerung}).</td>
                 </tr>
               </tbody>

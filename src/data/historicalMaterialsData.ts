@@ -90,13 +90,13 @@ export const historicalData: Record<MaterialCategory, HistoricalCategoryData> = 
     normOld: 'DIN 1052 (1940 / 1988), DIN 4074',
     normNew: 'DIN EN 1995-1-1 (Eurocode 5) / DIN EN 338',
     data: [
-      { old: 'Güteklasse I (vor 1940)', new: '-', f_old: 'ca. 10.0 MPa (Zulässige Biegung)', f_new: '-', explanation: 'Uralte, handverlesene Dachstuhlhölzer mit extrem engen Jahresringbreiten. Hohe Harzdurchdringung schützt vor Schädlingsbefall.' },
-      { old: 'Güteklasse II (vor 1940)', new: '-', f_old: 'ca. 7.0 MPa', f_new: '-', explanation: 'Das klassische ländliche Tragholz für Deckenbalkenlagen alter Wohnwirtschaftsgebäude.' },
-      { old: 'S 13 / Güteklasse I (DIN 4074)', new: 'C30', f_old: '13.0 MPa (Zulässige Biegung)', f_new: 30, explanation: 'Hochwertiges astfreies Nadelholz für weitgespannte Pfettendächer oder Kehlbalkenlagen.' },
-      { old: 'S 10 / Güteklasse II (DIN 4074)', new: 'C24', f_old: '10.0 MPa (Zulässige Biegung)', f_new: 24, explanation: 'Der unangefochtene Standard-Balkenwert. Fast 85% aller historischen Sparren und Rähme wurden als Güteklasse II ausgeführt.' },
-      { old: 'S 7 / Güteklasse III (DIN 4074)', new: 'C16', f_old: '7.0 MPa (Zulässige Biegung)', f_new: 16, explanation: 'Holz mit vermehrtem Astanteil oder leichtem Faserverlauf. Nur für untergeordnete Nebentragwerke wie Schalungen zulässig.' },
-      { old: 'BS 11 (Brettschichtholz)', new: 'GL24c', f_old: '11.0 MPa (Zulässige Biegung)', f_new: 24, explanation: 'Frühes kombiniertes Leimholzteil aus Lamellen geringerer Güte. Festigkeit im Kern f_m,g,k = 24 MPa.' },
-      { old: 'BS 14 (Brettschichtholz)', new: 'GL28c', f_old: '14.0 MPa (Zulässige Biegung)', f_new: 28, explanation: 'Hochbelastbares Schichtholzelement für offene Hallendachstühle mit f_m,g,k = 28 MPa.' }
+      { old: 'Güteklasse I (vor 1940)', new: '-', f_old: 'ca. 10,0 MPa (Zulässige Biegung)', f_new: '-', explanation: 'Uralte, handverlesene Dachstuhlhölzer mit extrem engen Jahresringbreiten. Hohe Harzdurchdringung schützt vor Schädlingsbefall.' },
+      { old: 'Güteklasse II (vor 1940)', new: '-', f_old: 'ca. 7,0 MPa', f_new: '-', explanation: 'Das klassische ländliche Tragholz für Deckenbalkenlagen alter Wohnwirtschaftsgebäude.' },
+      { old: 'S 13 / Güteklasse I (DIN 4074)', new: 'C30', f_old: '13,0 MPa (Zulässige Biegung)', f_new: 30, explanation: 'Hochwertiges astfreies Nadelholz für weitgespannte Pfettendächer oder Kehlbalkenlagen.' },
+      { old: 'S 10 / Güteklasse II (DIN 4074)', new: 'C24', f_old: '10,0 MPa (Zulässige Biegung)', f_new: 24, explanation: 'Der unangefochtene Standard-Balkenwert. Fast 85% aller historischen Sparren und Rähme wurden als Güteklasse II ausgeführt.' },
+      { old: 'S 7 / Güteklasse III (DIN 4074)', new: 'C16', f_old: '7,0 MPa (Zulässige Biegung)', f_new: 16, explanation: 'Holz mit vermehrtem Astanteil oder leichtem Faserverlauf. Nur für untergeordnete Nebentragwerke wie Schalungen zulässig.' },
+      { old: 'BS 11 (Brettschichtholz)', new: 'GL24c', f_old: '11,0 MPa (Zulässige Biegung)', f_new: 24, explanation: 'Frühes kombiniertes Leimholzteil aus Lamellen geringerer Güte. Festigkeit im Kern f_m,g,k = 24 MPa.' },
+      { old: 'BS 14 (Brettschichtholz)', new: 'GL28c', f_old: '14,0 MPa (Zulässige Biegung)', f_new: 28, explanation: 'Hochbelastbares Schichtholzelement für offene Hallendachstühle mit f_m,g,k = 28 MPa.' }
     ]
   },
   mauerwerk: {
@@ -105,8 +105,8 @@ export const historicalData: Record<MaterialCategory, HistoricalCategoryData> = 
     normOld: 'DIN 105 (1936 / 1952 / 1957), DIN 1053-1 (1996)',
     normNew: 'DIN EN 1996-1-1 (Eurocode 6)',
     data: [
-      { old: 'DIN 105 (1957) - Weißer Balken (Festigkeit 250)', new: 'Mz 20 / HLz 20 (SFK 20)', f_old: 'Zul. σ = 2.4 MPa', f_new: 20, explanation: 'Farbkennzeichnung DIN 105 (1957): Weißer Balken auf Sichtfläche kennzeichnet Hartbrandziegel der Güte 250. Ermöglicht zulässige Mauerwerksspannung von 2,4 MPa (NM II) – enorme statische Reserve!' },
-      { old: 'DIN 105 (1957) - Grüner Balken (Festigkeit 150)', new: 'Mz 12 / HLz 12 (SFK 12)', f_old: 'Zul. σ = 1.4 MPa', f_new: 12, explanation: 'Farbkennzeichnung DIN 105 (1957): 15 mm breiter grüner Balken markiert Festigkeit 150 (entspricht etwa HLz 12). Zulässige Druckspannung ca. 1,4 MPa.' },
+      { old: 'DIN 105 (1957) - Weißer Balken (Festigkeit 250)', new: 'Mz 20 / HLz 20 (SFK 20)', f_old: 'Zul. σ = 2,4 MPa', f_new: 20, explanation: 'Farbkennzeichnung DIN 105 (1957): Weißer Balken auf Sichtfläche kennzeichnet Hartbrandziegel der Güte 250. Ermöglicht zulässige Mauerwerksspannung von 2,4 MPa (NM II) – enorme statische Reserve!' },
+      { old: 'DIN 105 (1957) - Grüner Balken (Festigkeit 150)', new: 'Mz 12 / HLz 12 (SFK 12)', f_old: 'Zul. σ = 1,4 MPa', f_new: 12, explanation: 'Farbkennzeichnung DIN 105 (1957): 15 mm breiter grüner Balken markiert Festigkeit 150 (entspricht etwa HLz 12). Zulässige Druckspannung ca. 1,4 MPa.' },
       { old: 'Mauerziegel 2. Klasse (DIN 105:1936)', new: 'SFK 10', f_old: '100 kg/cm² (10 MPa)', f_new: 10, explanation: 'Vorkriegsnormung: Garantierte Mindestdruckfestigkeit 100 kg/cm² für gebrannte Ziegel der 2. Klasse.' },
       { old: 'Klosterformat (KF, vor 1850)', new: '-', f_old: 'ca. 8 - 12 (Stein)', f_new: '-', explanation: 'Mittelalterliche Ziegelsteine mit den Prachtmaßen 280 x 140 x 85 mm. Weich im Kern gebrannt. Hohe Saugfähigkeit.' },
       { old: 'Reichsformat (RF, ab 1872)', new: '-', f_old: 'ca. 10 - 15 (Stein)', f_new: '-', explanation: 'Standardisiertes Gründerzeit-Format (250 x 120 x 65 mm). Maschinelle Herstellung, solide Tonqualität.' },

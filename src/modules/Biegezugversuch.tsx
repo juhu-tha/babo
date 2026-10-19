@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -153,8 +154,8 @@ export default function Biegezugversuch() {
       legend: { display: true, position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (context: any) => `Spannung: ${Number(context.parsed.y).toFixed(2)} MPa`,
-          title: (context: any) => `Dehnung: ${Number(context[0].parsed.x).toFixed(2)} ‰`
+          label: (context: any) => `Spannung: ${formatDeZahl(Number(context.parsed.y), 2)} MPa`,
+          title: (context: any) => `Dehnung: ${formatDeZahl(Number(context[0].parsed.x), 2)} ‰`
         }
       }
     }

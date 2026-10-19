@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { MessageSquare, Send, AlertCircle, Lightbulb, ThumbsUp, ClipboardCheck, Star } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
@@ -26,14 +27,14 @@ function EvaluierungContent() {
     const subject = encodeURIComponent('Evaluierung Baustoff-Dashboard');
     const body = encodeURIComponent(
       `Bewertung durch Studierende:\n\n` +
-      `Inhalte: ${ratings.inhalte}/5\n` +
-      `Umfang: ${ratings.umfang}/5\n` +
-      `Verständlichkeit: ${ratings.verstaendlichkeit}/5\n` +
-      `Nutzen/Praxisrelevanz: ${ratings.nutzen}/5\n` +
-      `Bedienbarkeit & Design: ${ratings.design}/5\n` +
-      `Interaktive Elemente & Rechner: ${ratings.interaktivitaet}/5\n` +
-      `Stabilität & Struktur: ${ratings.performance}/5\n` +
-      `Lernmotivation & Spaß: ${ratings.motivation}/5\n\n` +
+      `Inhalte: ${formatDeWert(ratings.inhalte)}/5\n` +
+      `Umfang: ${formatDeWert(ratings.umfang)}/5\n` +
+      `Verständlichkeit: ${formatDeWert(ratings.verstaendlichkeit)}/5\n` +
+      `Nutzen/Praxisrelevanz: ${formatDeWert(ratings.nutzen)}/5\n` +
+      `Bedienbarkeit & Design: ${formatDeWert(ratings.design)}/5\n` +
+      `Interaktive Elemente & Rechner: ${formatDeWert(ratings.interaktivitaet)}/5\n` +
+      `Stabilität & Struktur: ${formatDeWert(ratings.performance)}/5\n` +
+      `Lernmotivation & Spaß: ${formatDeWert(ratings.motivation)}/5\n\n` +
       `Weiteres Feedback/Freitext:\n${freitext}`
     );
     

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Flame, Activity, TrendingUp, Gauge, Info, Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { InlineMath } from 'react-katex';
@@ -337,7 +338,7 @@ export default function Hydratation() {
           pointRadius: 0,
         },
         {
-          label: `Ausschalzielwert (${fReq.toFixed(1)} MPa)`,
+          label: `Ausschalzielwert (${formatDeZahl(fReq, 1)} MPa)`,
           data: new Array(timeSteps.length).fill(Number(fReq.toFixed(1))),
           borderColor: '#d97706',
           borderDash: [3, 3],
@@ -487,7 +488,7 @@ export default function Hydratation() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${(context.raw as number).toFixed(1)}`
+          label: (context: any) => `${context.dataset.label}: ${formatDeZahl((context.raw as number), 1)}`
         }
       }
     }
@@ -572,15 +573,15 @@ export default function Hydratation() {
               const val = context.raw as number;
               const lbl = context.dataset.label || '';
               if (lbl.includes('(%)')) {
-                return `${lbl}: ${val.toFixed(1)} %`;
+                return `${lbl}: ${formatDeZahl(val, 1)} %`;
               }
               if (lbl.includes('(MPa)')) {
-                return `${lbl}: ${val.toFixed(2)} MPa`;
+                return `${lbl}: ${formatDeZahl(val, 2)} MPa`;
               }
               if (lbl.includes('(GPa)')) {
-                return `${lbl}: ${val.toFixed(2)} GPa`;
+                return `${lbl}: ${formatDeZahl(val, 2)} GPa`;
               }
-              return `${lbl}: ${val.toFixed(1)}`;
+              return `${lbl}: ${formatDeZahl(val, 1)}`;
             }
           }
         }
@@ -738,11 +739,11 @@ export default function Hydratation() {
           <h3 className="font-bold text-text-main mb-2">Reifefunktion (Äquivalentalter)</h3>
           <div className="flex justify-between items-center mb-2">
             <span className="text-text-main/80">Nach 28 Tagen real:</span>
-            <span className="text-middle-blue font-bold text-lg">{te28.toFixed(1)} Tage</span>
+            <span className="text-middle-blue font-bold text-lg">{formatDeZahl(te28, 1)} Tage</span>
           </div>
           <div className="flex justify-between items-center mb-2">
             <span className="text-text-main/80">Ausschalfrist (ca.):</span>
-            <span className="text-middle-blue font-bold text-lg">{ausschalTage > 0 ? `${ausschalTage} Tage` : '> 28 Tage'}</span>
+            <span className="text-middle-blue font-bold text-lg">{ausschalTage > 0 ? `${formatDeWert(ausschalTage)} Tage` : '> 28 Tage'}</span>
           </div>
           <p className="text-text-main/80 text-xs mt-2">
             Das Äquivalentalter beschreibt die Zeit, die der Beton bei 20°C benötigen würde, 
@@ -754,7 +755,7 @@ export default function Hydratation() {
           <h3 className="font-bold text-text-main mb-2">Thermische Rissgefahr</h3>
           <div className="flex justify-between items-center mb-2">
             <span className="text-text-main/80">Max. ΔT (Kern - Rand):</span>
-            <span className="font-bold">{maxTempDiff.toFixed(1)} K</span>
+            <span className="font-bold">{formatDeZahl(maxTempDiff, 1)} K</span>
           </div>
           <div className="flex justify-between items-center mb-2">
             <span className="text-text-main/80">Rissgefahr:</span>
@@ -845,16 +846,16 @@ export default function Hydratation() {
               {/* KPI Chips */}
               <div className="flex flex-wrap items-center gap-1.5 mb-3 text-[11px] font-mono">
                 <span className="bg-red-50 text-red-900 border border-red-200 px-2 py-0.5 rounded-md font-bold" title="28-Tage-Mittelwert Druckfestigkeit f_cm">
-                  f_cm,28 = {fcm28.toFixed(1)} MPa
+                  f_cm,28 = {formatDeZahl(fcm28, 1)} MPa
                 </span>
                 <span className="bg-blue-50 text-blue-900 border border-blue-200 px-2 py-0.5 rounded-md font-bold" title="28-Tage-Mittelwert zentrische Zugfestigkeit f_ctm">
-                  f_ctm,28 = {fctm28.toFixed(2)} MPa
+                  f_ctm,28 = {formatDeZahl(fctm28, 2)} MPa
                 </span>
                 <span className="bg-emerald-50 text-emerald-900 border border-emerald-200 px-2 py-0.5 rounded-md font-bold" title="28-Tage-Mittelwert Elastizitätsmodul E_cm">
-                  E_cm,28 = {Ecm28.toFixed(1)} GPa
+                  E_cm,28 = {formatDeZahl(Ecm28, 1)} GPa
                 </span>
                 <span className="bg-amber-50 text-amber-900 border border-amber-200 px-2 py-0.5 rounded-md font-semibold" title="Erreichte Ausschalfrist">
-                  Ausschalzeit: {ausschalTage > 0 ? `${ausschalTage.toFixed(1)} d` : '> 28 d'}
+                  Ausschalzeit: {ausschalTage > 0 ? `${formatDeZahl(ausschalTage, 1)} d` : '> 28 d'}
                 </span>
               </div>
             </div>
@@ -870,7 +871,7 @@ export default function Hydratation() {
             <div className="mt-3 pt-2.5 border-t border-home-grau/20 text-[11px] text-text-main/80 flex items-start gap-1.5 leading-relaxed bg-off-white/80 p-2.5 rounded-xl border border-home-grau/30">
               <Info className="text-shiraz shrink-0 mt-0.5" size={14} />
               <span>
-                <strong>Kinetik nach EC2 (DIN EN 1992-1-1):</strong> Der <strong>E-Modul</strong> eilt stark voraus und erreicht nach 2 Tagen bereits <strong>{E_2d_rel.toFixed(0)} % ({E_2d_val.toFixed(1)} GPa)</strong>, während die <strong>Druckfestigkeit</strong> erst bei <strong>{fc_2d_rel.toFixed(0)} % ({fc_2d_val.toFixed(1)} MPa)</strong> liegt. Die <strong>Zugfestigkeit</strong> <InlineMath math="f_{ctm}" /> folgt <InlineMath math="\beta_{cc}^{1.0}" /> ({fct_2d_val.toFixed(2)} MPa bei 2d).
+                <strong>Kinetik nach EC2 (DIN EN 1992-1-1):</strong> Der <strong>E-Modul</strong> eilt stark voraus und erreicht nach 2 Tagen bereits <strong>{formatDeZahl(E_2d_rel, 0)} % ({formatDeZahl(E_2d_val, 1)} GPa)</strong>, während die <strong>Druckfestigkeit</strong> erst bei <strong>{formatDeZahl(fc_2d_rel, 0)} % ({formatDeZahl(fc_2d_val, 1)} MPa)</strong> liegt. Die <strong>Zugfestigkeit</strong> <InlineMath math="f_{ctm}" /> folgt <InlineMath math="\beta_{cc}^{1{,}0}" /> ({formatDeZahl(fct_2d_val, 2)} MPa bei 2d).
               </span>
             </div>
           </div>
@@ -982,12 +983,12 @@ export default function Hydratation() {
               quelle: 'de Vree (1976)'
             },
             {
-              formel: 't_e = \\sum \\Delta t \\cdot \\exp\\left( \\frac{E_a}{R} \\cdot \\left(\\frac{1}{293.15} - \\frac{1}{T_c + 273.15}\\right) \\right)',
+              formel: 't_e = \\sum \\Delta t \\cdot \\exp\\left( \\frac{E_a}{R} \\cdot \\left(\\frac{1}{293{,}15} - \\frac{1}{T_c + 273{,}15}\\right) \\right)',
               erklaerung: 'Äquivalentalter nach Arrhenius (C-Wert-Methode nach Freiesleben Hansen & Pedersen): Berücksichtigt die Aktivierungsenergie Ea (typisch 30–50 kJ/mol).',
               quelle: 'Freiesleben Hansen & Pedersen (1977)'
             },
             {
-              formel: 't_e = \\sum \\Delta t \\cdot \\exp\\left( 4000 \\cdot \\left(\\frac{1}{293.15} - \\frac{1}{T_c + 273.15}\\right) \\right)',
+              formel: 't_e = \\sum \\Delta t \\cdot \\exp\\left( 4000 \\cdot \\left(\\frac{1}{293{,}15} - \\frac{1}{T_c + 273{,}15}\\right) \\right)',
               erklaerung: 'Vereinfachte Arrhenius-Gleichung nach fib Model Code 2010 mit pauschaler Konstante 4000 K (Ea/R).',
               quelle: 'fib Model Code 2010'
             },
@@ -1008,7 +1009,7 @@ export default function Hydratation() {
             },
             {
               formel: '\\Delta T_{ad} = \\frac{z \\cdot H_z}{c_p \\cdot \\rho}',
-              erklaerung: 'Adiabatischer Temperaturanstieg: z = Zementgehalt [kg/m³], Hz = Hydratationswärme [kJ/kg], cp = spez. Wärmekapazität [ca. 1.0 kJ/(kg·K)], ρ = Betondichte [ca. 2400 kg/m³].',
+              erklaerung: 'Adiabatischer Temperaturanstieg: z = Zementgehalt [kg/m³], Hz = Hydratationswärme [kJ/kg], cp = spez. Wärmekapazität [ca. 1,0 kJ/(kg·K)], ρ = Betondichte [ca. 2400 kg/m³].',
               quelle: 'DAfStb Massige Bauteile'
             }
           ]}

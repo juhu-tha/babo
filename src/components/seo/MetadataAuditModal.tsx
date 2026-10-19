@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Search, 
@@ -77,10 +78,10 @@ export const MetadataAuditModal: React.FC<MetadataAuditModalProps> = ({
           statusText = 'Fehlt (Fallback aktiv)';
         } else if (len < 100) {
           status = 'short';
-          statusText = `Kurz (${len} Z. < 100)`;
+          statusText = `Kurz (${formatDeWert(len)} Z. < 100)`;
         } else if (len > 165) {
           status = 'long';
-          statusText = `Lang (${len} Z. > 165)`;
+          statusText = `Lang (${formatDeWert(len)} Z. > 165)`;
         }
 
         list.push({
@@ -205,7 +206,7 @@ export const MetadataAuditModal: React.FC<MetadataAuditModalProps> = ({
                   SEO-Metadaten Prüfung aller Module
                 </h3>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-shiraz/10 text-shiraz font-bold border border-shiraz/20">
-                  {stats.total} Module
+                  {formatDeWert(stats.total)} Module
                 </span>
               </div>
               <p className="text-xs text-text-main/70 dark:text-slate-400 mt-0.5">
@@ -245,32 +246,32 @@ export const MetadataAuditModal: React.FC<MetadataAuditModalProps> = ({
         <div className="p-4 grid grid-cols-2 sm:grid-cols-5 gap-3 border-b border-home-grau/15 dark:border-slate-800 bg-off-white/40 dark:bg-slate-950/40 shrink-0 text-xs">
           <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-home-grau/20 dark:border-slate-800 shadow-2xs">
             <span className="text-[10px] text-slate-500 font-mono block">Gesamt-Module</span>
-            <span className="text-lg font-bold font-mono text-text-main dark:text-slate-100">{stats.total}</span>
+            <span className="text-lg font-bold font-mono text-text-main dark:text-slate-100">{formatDeWert(stats.total)}</span>
             <span className="text-[10px] text-slate-600 dark:text-slate-400 block mt-0.5">100% Titel definiert</span>
           </div>
 
           <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-home-grau/20 dark:border-slate-800 shadow-2xs">
             <span className="text-[10px] text-slate-500 font-mono block">Eigene Description</span>
-            <span className="text-lg font-bold font-mono text-shiraz">{stats.custom} / {stats.total}</span>
-            <span className="text-[10px] text-slate-500 block mt-0.5">{((stats.custom / stats.total) * 100).toFixed(0)}% Abdeckung</span>
+            <span className="text-lg font-bold font-mono text-shiraz">{formatDeWert(stats.custom)} / {formatDeWert(stats.total)}</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">{formatDeZahl(((stats.custom / stats.total) * 100), 0)}% Abdeckung</span>
           </div>
 
           <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-home-grau/20 dark:border-slate-800 shadow-2xs">
             <span className="text-[10px] text-slate-600 dark:text-slate-400 font-mono block">Optimal (100–165 Z.)</span>
-            <span className="text-lg font-bold font-mono text-text-main dark:text-slate-100">{stats.optimal}</span>
+            <span className="text-lg font-bold font-mono text-text-main dark:text-slate-100">{formatDeWert(stats.optimal)}</span>
             <span className="text-[10px] text-slate-500 block mt-0.5">Google Best Practice</span>
           </div>
 
           <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-home-grau/20 dark:border-slate-800 shadow-2xs">
             <span className="text-[10px] text-slate-600 dark:text-slate-400 font-mono block">Lang (&gt;165 Zeichen)</span>
-            <span className="text-lg font-bold font-mono text-text-main dark:text-slate-100">{stats.long}</span>
+            <span className="text-lg font-bold font-mono text-text-main dark:text-slate-100">{formatDeWert(stats.long)}</span>
             <span className="text-[10px] text-slate-500 block mt-0.5">Wird in SERP gekürzt</span>
           </div>
 
           <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-home-grau/20 dark:border-slate-800 shadow-2xs">
             <span className="text-[10px] text-slate-500 font-mono block">Kurz (&lt;100 Z.) / Fehlt</span>
-            <span className="text-lg font-bold font-mono text-slate-700 dark:text-slate-300">{stats.short + stats.missing}</span>
-            <span className="text-[10px] text-slate-500 block mt-0.5">{stats.missing === 0 ? 'Kein Fehlt-Fehler' : `${stats.missing} ohne Tag`}</span>
+            <span className="text-lg font-bold font-mono text-slate-700 dark:text-slate-300">{formatDeWert(stats.short + stats.missing)}</span>
+            <span className="text-[10px] text-slate-500 block mt-0.5">{stats.missing === 0 ? 'Kein Fehlt-Fehler' : `${formatDeWert(stats.missing)} ohne Tag`}</span>
           </div>
         </div>
 
@@ -281,10 +282,10 @@ export const MetadataAuditModal: React.FC<MetadataAuditModalProps> = ({
             <div className="flex items-center rounded-xl border border-home-grau/25 dark:border-slate-700 p-0.5 bg-off-white dark:bg-slate-800 text-xs">
               {[
                 { id: 'all', label: `Alle (${allItems.length})` },
-                { id: 'optimal', label: `Optimal (${stats.optimal})` },
-                { id: 'long', label: `Lang (${stats.long})` },
-                { id: 'short', label: `Kurz (${stats.short})` },
-                { id: 'missing', label: `Fehlt (${stats.missing})` }
+                { id: 'optimal', label: `Optimal (${formatDeWert(stats.optimal)})` },
+                { id: 'long', label: `Lang (${formatDeWert(stats.long)})` },
+                { id: 'short', label: `Kurz (${formatDeWert(stats.short)})` },
+                { id: 'missing', label: `Fehlt (${formatDeWert(stats.missing)})` }
               ].map(f => (
                 <button
                   key={f.id}

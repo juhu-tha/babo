@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React, { useState } from 'react';
 import { Layers, Mountain } from 'lucide-react';
@@ -56,7 +57,7 @@ export default function Leichtbeton() {
             <div>
               <label className="text-sm font-medium text-text-main flex justify-between mb-2">
                 <span>Rohdichte <FormulaText text="\rho" /></span>
-                <span className="text-shiraz font-bold">{dichte.toFixed(2)} kg/dm³</span>
+                <span className="text-shiraz font-bold">{formatDeZahl(dichte, 2)} kg/dm³</span>
               </label>
               <input 
                 type="range" min="0.8" max="2.0" step="0.1"
@@ -72,11 +73,11 @@ export default function Leichtbeton() {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-slate-50 border border-home-grau/20 p-4 rounded-xl text-center">
                 <div className="text-xs text-text-main/70 mb-1 font-semibold uppercase tracking-wider">Geschätzte Festigkeit</div>
-                <div className="text-2xl font-bold text-shiraz"><FormulaText text={`\\approx ${fc.toFixed(1)}`} /> <span className="text-sm">MPa</span></div>
+                <div className="text-2xl font-bold text-shiraz"><FormulaText text={`\\approx ${formatDeTeX(fc, 1)}`} /> <span className="text-sm">MPa</span></div>
               </div>
               <div className="bg-slate-50 border border-home-grau/20 p-4 rounded-xl text-center">
                 <div className="text-xs text-text-main/70 mb-1 font-semibold uppercase tracking-wider">Wärmeleitfähigkeit <FormulaText text="\lambda" /></div>
-                <div className="text-2xl font-bold text-slate-800"><FormulaText text={`\\approx ${lambda.toFixed(2)}`} /> <span className="text-sm">W/(m·K)</span></div>
+                <div className="text-2xl font-bold text-slate-800"><FormulaText text={`\\approx ${formatDeTeX(lambda, 2)}`} /> <span className="text-sm">W/(m·K)</span></div>
               </div>
             </div>
             <p className="text-[10px] text-text-main/50 text-center">
@@ -145,7 +146,7 @@ export default function Leichtbeton() {
             quelle: 'DIN EN 1992-1-1 Abs. 11.3.2'
           },
           {
-            formel: '\\eta_1 = 0.40 + 0.60 \\cdot \\frac{\\rho}{2200}',
+            formel: '\\eta_1 = 0{,}40 + 0{,}60 \\cdot \\frac{\\rho}{2200}',
             erklaerung: 'Abminderungsfaktor η_1 für Zugfestigkeiten von Leichtbeton infolge der reduzierten Kornfestigkeit des porigen Gefüges.',
             quelle: 'DIN EN 1992-1-1 Abs. 11.3.1'
           },

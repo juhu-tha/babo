@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   GraduationCap, BookOpen, Clock, Layers, AlertCircle, 
@@ -144,7 +145,7 @@ export default function Baustoffkunde() {
       origin: 'USA (Chicago / Portland Cement Association)',
       contribution: 'Entschlüsselte als globaler Pionier das komplexe physikalische Gefüge des erhärteten Zementsteins. Powers formulierte das Gel-Poren-Modell des Hydratationsprodukts, welches Festigkeiten und Dauerhaftigkeiten mathematisch berechenbar machte.',
       achievements: [
-        'Wies experimentell nach, dass Zementstein aus kristallinen Plattenschichten (CSH-Gelen) sowie winzigen Gelporen (Breite ~1.5 nm) und Kapillarporen aufgebaut ist.',
+        'Wies experimentell nach, dass Zementstein aus kristallinen Plattenschichten (CSH-Gelen) sowie winzigen Gelporen (Breite ~1,5 nm) und Kapillarporen aufgebaut ist.',
         'Erstellte exakte Gleichungsverfahren für die Wasserbindungskoeffizienten im Reifezyklus mineralischer Baustoffe.'
       ],
       quote: '„Die Festigkeit von erhärtetem Zement ist kein Zufall, sondern steht in direkter Funktion zur Packungsdichte und dem Verhältnis von festem Gelkörper zu freiem Porenvolumen.“'
@@ -800,7 +801,7 @@ export default function Baustoffkunde() {
                             {p.achievements.map((ach, aIdx) => (
                               <div key={aIdx} className="text-xs text-text-main/80 flex items-start gap-2.5 bg-[#fcf8f2] p-3 rounded-xl border border-home-grau/20">
                                 <span className="w-5 h-5 rounded-full bg-white border border-home-grau/30 text-text-main flex items-center justify-center text-[9.5px] font-mono shrink-0 font-bold">
-                                  {aIdx + 1}
+                                  {formatDeWert(aIdx + 1)}
                                 </span>
                                 <span className="leading-relaxed">{ach}</span>
                               </div>

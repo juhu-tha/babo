@@ -631,8 +631,8 @@ def extract_concrete_volumes(ifc_filepath):
     Bauteils nach DIN EN ISO 6946 (analog zur Ubakus-Berechnungslogik).
     
     layers: Liste von Dicts mit 'name', Dicke 'd' [m] und Leitfähigkeit 'lambda_val' [W/(mK)]
-    r_si: Wärmeübergangswiderstand innen (horizontale Strömung = 0.13 m²K/W)
-    r_se: Wärmeübergangswiderstand außen (0.04 m²K/W)
+    r_si: Wärmeübergangswiderstand innen (horizontale Strömung = 0,13 m²K/W)
+    r_se: Wärmeübergangswiderstand außen (0,04 m²K/W)
     """
     r_t = r_si + r_se
     print(f"{'Schicht-Bezeichnung':<28} | {'Dicke [m]':<10} | {'λ [W/mK]':<10} | {'R [m²K/W]':<10}")

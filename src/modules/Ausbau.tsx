@@ -346,7 +346,7 @@ export default function Ausbau() {
             quelle: 'DIN 18560 / BEB'
           },
           {
-            formel: 'f_{\\text{ct,Haft}} = \\frac{F_{\\text{Bruch}}}{A_{\\text{Prüf}}} \\ge 1.0\\,\\text{N/mm}^2 \\quad (\\text{Klasse C2})',
+            formel: 'f_{\\text{ct,Haft}} = \\frac{F_{\\text{Bruch}}}{A_{\\text{Prüf}}} \\ge 1{,}0\\,\\text{N/mm}^2 \\quad (\\text{Klasse C2})',
             erklaerung: 'Haftzugfestigkeit von zementärem Fliesenkleber nach DIN EN 12004 bei Abreißversuchen auf Betonuntergrund.',
             quelle: 'DIN EN 12004'
           }

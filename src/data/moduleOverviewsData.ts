@@ -193,7 +193,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Konditionierung',
         desc: 'Planparalleles Schleifen oder Einspachteln, Darr-Trocknung, Feuchte-Äquilibrierung.',
         iconName: 'Wrench',
-        keyFacts: ['L/D-Verhältnis = 1.0', 'Toleranz < 0.05 mm', '20°C / 65% r.F.'],
+        keyFacts: ['L/D-Verhältnis = 1.0', 'Toleranz < 0,05 mm', '20°C / 65% r.F.'],
         normOrFormula: 'DIN EN 12390-1',
         color: 'from-indigo-500 to-indigo-600'
       },
@@ -203,7 +203,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Bruchversuch & Sensorik',
         desc: 'Kraft- und wegaufnehmende Belastung (Druck, Spaltzug, Haftzug), Rissfortschrittsmessung.',
         iconName: 'Activity',
-        keyFacts: ['Belastungsrate 0.5 MPa/s', 'DMS / Laser-Wegaufnehmer', 'Spannungs-Dehnungskurve'],
+        keyFacts: ['Belastungsrate 0,5 MPa/s', 'DMS / Laser-Wegaufnehmer', 'Spannungs-Dehnungskurve'],
         normOrFormula: 'f_c = \\frac{F_{max}}{A_c}',
         color: 'from-amber-500 to-amber-600'
       },
@@ -1182,7 +1182,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Kritischer Grenzwert',
         desc: 'Carbonatisierungsfront oder kritischer Chloridgehalt erreicht die Bewehrungsoberfläche.',
         iconName: 'AlertTriangle',
-        keyFacts: ['pH < 9.0', 'Cl- > 0.4–0.5% m/z', 'Lochfraßgefahr'],
+        keyFacts: ['pH < 9.0', 'Cl- > 0,4–0,5% m/z', 'Lochfraßgefahr'],
         normOrFormula: 'c_{crit} \\text{ erreicht}',
         color: 'from-amber-500 to-amber-600'
       },
@@ -1318,7 +1318,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Abtragen & Entrosten',
         desc: 'Entfernen von carbonatisiertem Beton, Freilegen der Bewehrung um min. 15 mm, HDW-Strahlen.',
         iconName: 'Wrench',
-        keyFacts: ['HDW bis 2500 bar', 'Entrostung Sa 2½', 'Haftzug f_ctm ≥ 1.5 MPa'],
+        keyFacts: ['HDW bis 2500 bar', 'Entrostung Sa 2½', 'Haftzug f_ctm ≥ 1,5 MPa'],
         normOrFormula: 'DIN EN 1504-10',
         color: 'from-amber-600 to-amber-700'
       },

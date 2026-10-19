@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
@@ -71,7 +72,7 @@ export default function Eigenspannungen() {
     for (let i = 0; i <= points; i++) {
       const xRatio = (i / points) * 2 - 1; // -1 to 1 (entspricht 2x/d)
       const x = (xRatio * d) / 2;
-      labels.push(`${(x * 100).toFixed(0)} cm`);
+      labels.push(`${formatDeZahl((x * 100), 0)} cm`);
       
       const tX = a * x * x + b * x + c;
       const tN = tAvg;
@@ -230,7 +231,7 @@ export default function Eigenspannungen() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                     <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Zugeigenspannung (Rand)</div>
-                    <div className={`text-2xl font-bold ${betonResults.crackRisk ? 'text-red-600' : 'text-emerald-600'}`}>+{betonResults.maxTensile.toFixed(1)} MPa</div>
+                    <div className={`text-2xl font-bold ${betonResults.crackRisk ? 'text-red-600' : 'text-emerald-600'}`}>+{formatDeZahl(betonResults.maxTensile, 1)} MPa</div>
                     <div className="text-xs text-text-main/60 mt-1">
                       {betonResults.crackRisk ? (
                         <span className="text-red-600 font-medium">Gefahr von Oberflächenrissen! (σ &gt; f_ctm)</span>
@@ -241,7 +242,7 @@ export default function Eigenspannungen() {
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                     <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Druckeigenspannung (Kern)</div>
-                    <div className="text-2xl font-bold text-blue-600">{betonResults.maxCompressive.toFixed(1)} MPa</div>
+                    <div className="text-2xl font-bold text-blue-600">{formatDeZahl(betonResults.maxCompressive, 1)} MPa</div>
                     <div className="text-xs text-text-main/60 mt-1">Ausgleichsspannung im Querschnitt</div>
                   </div>
             </div>
@@ -270,7 +271,7 @@ export default function Eigenspannungen() {
                       tooltip: {
                         callbacks: {
                           label: function(context) {
-                            return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} MPa`;
+                            return `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} MPa`;
                           }
                         }
                       }

@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
@@ -150,7 +151,7 @@ export function ZwangCalculator() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text="Zwangspannung \sigma_{z}" /></div>
-                  <div className="text-3xl font-bold">{calcData.sigmaZ.toFixed(2)} MPa</div>
+                  <div className="text-3xl font-bold">{formatDeZahl(calcData.sigmaZ, 2)} MPa</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1">Zustand</div>
@@ -161,9 +162,9 @@ export function ZwangCalculator() {
               </div>
 
               <div className="text-sm bg-white/10 p-3 rounded-lg">
-                <p>Freie Dehnung (verhindert): <strong>{(calcData.epsTotal * 1000).toFixed(2)} ‰</strong></p>
+                <p>Freie Dehnung (verhindert): <strong>{formatDeZahl((calcData.epsTotal * 1000), 2)} ‰</strong></p>
                 <p className="mt-1 opacity-80 text-xs">
-                  (ΔT: {(calcData.epsT * 1000).toFixed(2)} ‰ | Schwinden: {(calcData.epsS * 1000).toFixed(2)} ‰)
+                  (ΔT: {formatDeZahl((calcData.epsT * 1000), 2)} ‰ | Schwinden: {formatDeZahl((calcData.epsS * 1000), 2)} ‰)
                 </p>
               </div>
             </div>
@@ -187,7 +188,7 @@ export function ZwangCalculator() {
                     plugins: {
                       tooltip: {
                         callbacks: {
-                          label: (context: any) => `${context.dataset.label}: ${context.raw.toFixed(2)} MPa`
+                          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.raw, 2)} MPa`
                         }
                       }
                     }

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   Play,
@@ -322,22 +323,22 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
       operator: 'Haftzug-Prüfstand (Baustoffboard)',
       specimen: {
         material: systemConfig.title,
-        geometry: `Kreisrunder Prüfstempel Ø ${stubDiameter} mm mit Ringnut (Bohrtiefe ${drillDepthMm} mm)`,
-        dimensions: `Stempeldurchmesser d=${stubDiameter} mm, Prüffläche A=${stubArea.toFixed(1)} mm²`,
+        geometry: `Kreisrunder Prüfstempel Ø ${stubDiameter} mm mit Ringnut (Bohrtiefe ${formatDeWert(drillDepthMm)} mm)`,
+        dimensions: `Stempeldurchmesser d=${stubDiameter} mm, Prüffläche A=${formatDeZahl(stubArea, 1)} mm²`,
         conditioning: 'Trockenbaustelle / Labor 20 °C, 65 % r.F.'
       },
       parameters: {
         'Prüfstempeldurchmesser d': `${stubDiameter} mm`,
-        'Prüffläche A': `${stubArea.toFixed(1)} mm²`,
-        'Bohrkerntiefe': `${drillDepthMm} mm`,
-        'Belastungsrate': `${loadingRate} N/s (ca. ${(loadingRate / stubArea).toFixed(3)} MPa/s)`,
+        'Prüffläche A': `${formatDeZahl(stubArea, 1)} mm²`,
+        'Bohrkerntiefe': `${formatDeWert(drillDepthMm)} mm`,
+        'Belastungsrate': `${loadingRate} N/s (ca. ${formatDeZahl((loadingRate / stubArea), 3)} MPa/s)`,
         'Bruchtyp nach DIN EN 1542': systemConfig.fractureType,
         'Bruchbild': systemConfig.fractureShare
       },
       metrics: {
-        'Haftzugfestigkeit fh (MPa)': maxStressObserved.toFixed(2),
-        'Abreißkraft Fmax (kN)': maxForceObserved.toFixed(2),
-        'Max. Stempelabhebung (mm)': currentDisplacementMm.toFixed(3),
+        'Haftzugfestigkeit fh (MPa)': formatDeZahl(maxStressObserved, 2),
+        'Abreißkraft Fmax (kN)': formatDeZahl(maxForceObserved, 2),
+        'Max. Stempelabhebung (mm)': formatDeZahl(currentDisplacementMm, 3),
         'TR-Konformität (≥ 1,5 MPa)': systemConfig.compliantTR ? 'Erfüllt' : 'Nicht erfüllt',
         'Prüfstatus': systemConfig.validTest ? 'Gültiger Versuch' : 'Ungültig (Kleberversagen)'
       },
@@ -392,10 +393,10 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
       legend: { display: false },
       tooltip: {
         callbacks: {
-          title: (items: any[]) => `Abhebung ΔL = ${Number(items[0].parsed.x).toFixed(3)} mm`,
+          title: (items: any[]) => `Abhebung ΔL = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
           label: (ctx: any) => chartMode === 'stress'
-            ? `Haftzugspannung: ${Number(ctx.parsed.y).toFixed(2)} MPa`
-            : `Zugkraft: ${Number(ctx.parsed.y).toFixed(2)} kN`
+            ? `Haftzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
+            : `Zugkraft: ${formatDeZahl(Number(ctx.parsed.y), 2)} kN`
         }
       }
     }
@@ -481,11 +482,11 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
               <div className="grid grid-cols-2 gap-2 mt-2">
                 <div className="bg-off-white p-2.5 rounded-lg border border-home-grau/20 text-center">
                   <span className="text-text-main/60 text-[10px] block">Prüffläche A</span>
-                  <span className="font-mono font-bold text-sm text-text-main">{stubArea.toFixed(1)} mm²</span>
+                  <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl(stubArea, 1)} mm²</span>
                 </div>
                 <div className="bg-off-white p-2.5 rounded-lg border border-home-grau/20 text-center">
                   <span className="text-text-main/60 text-[10px] block">Kernbohrtiefe</span>
-                  <span className="font-mono font-bold text-sm text-text-main">{drillDepthMm} mm</span>
+                  <span className="font-mono font-bold text-sm text-text-main">{formatDeWert(drillDepthMm)} mm</span>
                 </div>
               </div>
             </div>
@@ -601,7 +602,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                   <line x1="218" y1="110" x2="226" y2="110" stroke="#A3113E" strokeWidth="1.5" />
                   <line x1="218" y1="155" x2="226" y2="155" stroke="#A3113E" strokeWidth="1.5" />
                   <text x="180" y="136" fill="#A3113E" fontSize="10" fontWeight="bold">
-                    t = {drillDepthMm} mm
+                    t = {formatDeWert(drillDepthMm)} mm
                   </text>
 
                   {/* 4. Pull-off Cylindrical Core (der freigebohrte Kern) */}
@@ -650,7 +651,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                       <g className="animate-bounce">
                         <polygon points="300,5 292,20 308,20" fill="#A3113E" />
                         <text x="318" y="18" fill="#A3113E" fontSize="12" fontWeight="bold">
-                          F = {currentForceKN.toFixed(2)} kN
+                          F = {formatDeZahl(currentForceKN, 2)} kN
                         </text>
                       </g>
                     )}
@@ -678,9 +679,9 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                     <rect x="175" y="45" width="250" height="26" fill="#1e293b" rx="4" stroke="#475569" strokeWidth="1.5" />
                     <text x="300" y="62" fill="#64748b" fontSize="10" fontFamily="monospace" fontWeight="bold" textAnchor="middle">
                       {testStatus === 'running'
-                        ? `LOAD: ${currentForceKN.toFixed(2)} kN | ${(currentStressMPa).toFixed(2)} MPa`
+                        ? `LOAD: ${formatDeZahl(currentForceKN, 2)} kN | ${formatDeZahl((currentStressMPa), 2)} MPa`
                         : testStatus === 'finished'
-                        ? `PEAK: ${maxForceObserved.toFixed(2)} kN | ${maxStressObserved.toFixed(2)} MPa`
+                        ? `PEAK: ${formatDeZahl(maxForceObserved, 2)} kN | ${formatDeZahl(maxStressObserved, 2)} MPa`
                         : 'DIGITAL LOAD CELL 10 kN (READY)'}
                     </text>
                   </g>
@@ -696,7 +697,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                         {systemConfig.fractureShare}
                       </text>
                       <text x="430" y="60" fill="#0f172a" fontSize="10" fontWeight="bold">
-                        f_h = {maxStressObserved.toFixed(2)} MPa
+                        f_h = {formatDeZahl(maxStressObserved, 2)} MPa
                       </text>
                     </g>
                   )}
@@ -781,21 +782,21 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
                   <span className="text-[10px] uppercase font-bold text-text-main/60 block">Aktuelle Zugkraft F</span>
                   <span className="text-xl font-bold font-mono text-text-main">
-                    {currentForceKN.toFixed(2)} <span className="text-xs font-normal">kN</span>
+                    {formatDeZahl(currentForceKN, 2)} <span className="text-xs font-normal">kN</span>
                   </span>
                 </div>
 
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
                   <span className="text-[10px] uppercase font-bold text-text-main/60 block">Haftzugspannung σ</span>
                   <span className="text-xl font-bold font-mono text-shiraz">
-                    {currentStressMPa.toFixed(2)} <span className="text-xs font-normal">MPa</span>
+                    {formatDeZahl(currentStressMPa, 2)} <span className="text-xs font-normal">MPa</span>
                   </span>
                 </div>
 
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
                   <span className="text-[10px] uppercase font-bold text-text-main/60 block">Höchstwert f_h</span>
                   <span className="text-xl font-bold font-mono text-emerald-700">
-                    {maxStressObserved.toFixed(2)} <span className="text-xs font-normal">N/mm²</span>
+                    {formatDeZahl(maxStressObserved, 2)} <span className="text-xs font-normal">N/mm²</span>
                   </span>
                 </div>
 
@@ -864,19 +865,19 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-slate-200 text-[11px]">
                       <div>
                         <span className="text-slate-500 block">Betonuntergrund (A):</span>
-                        <span className="font-bold font-mono">{systemConfig.concreteShare} %</span>
+                        <span className="font-bold font-mono">{formatDeWert(systemConfig.concreteShare)} %</span>
                       </div>
                       <div>
                         <span className="text-slate-500 block">Kontaktfuge (A/B):</span>
-                        <span className="font-bold font-mono">{systemConfig.interfaceShare} %</span>
+                        <span className="font-bold font-mono">{formatDeWert(systemConfig.interfaceShare)} %</span>
                       </div>
                       <div>
                         <span className="text-slate-500 block">Mörtelschicht (B):</span>
-                        <span className="font-bold font-mono">{systemConfig.mortarShare} %</span>
+                        <span className="font-bold font-mono">{formatDeWert(systemConfig.mortarShare)} %</span>
                       </div>
                       <div>
                         <span className="text-slate-500 block">Klebeschicht (Y):</span>
-                        <span className="font-bold font-mono">{systemConfig.glueShare} %</span>
+                        <span className="font-bold font-mono">{formatDeWert(systemConfig.glueShare)} %</span>
                       </div>
                     </div>
                   </div>

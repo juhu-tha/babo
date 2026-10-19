@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -543,7 +544,7 @@ export default function HistorischeMaterialkennwerte() {
                     <BlockMath math="\sigma_{vorh} \le \sigma_{zul} = \frac{f_k}{\gamma_{global}}" />
                   </div>
                   <ul className="list-disc pl-5 mt-4 text-xs text-slate-500 space-y-1">
-                    <li>Sicherheitsfaktor meist <InlineMath math="\gamma \approx 1.75\text{ bis }2.1" />.</li>
+                    <li>Sicherheitsfaktor meist <InlineMath math="\gamma \approx 1{,}75\text{ bis }2{,}1" />.</li>
                     <li>Keine separate Sicherheit für ständige (G) und variable (Q) Lasten.</li>
                   </ul>
                 </div>
@@ -560,9 +561,9 @@ export default function HistorischeMaterialkennwerte() {
                     <InlineMath math="(E_k \cdot \gamma_F) \le \frac{R_k}{\gamma_M}" />
                   </div>
                   <ul className="list-disc pl-5 mt-4 text-xs text-shiraz/80 space-y-1">
-                    <li><InlineMath math="\gamma_G = 1.35" /> für Eigengewichte</li>
-                    <li><InlineMath math="\gamma_Q = 1.50" /> für Verkehrslasten (Nutz-, Schnee-, Windlast)</li>
-                    <li>Materialbeiwerte: Beton (<InlineMath math="\gamma_C = 1.5" />), Stahl (<InlineMath math="\gamma_{M0} = 1.0" />), Holz (<InlineMath math="\gamma_M = 1.3" />).</li>
+                    <li><InlineMath math="\gamma_G = 1{,}35" /> für Eigengewichte</li>
+                    <li><InlineMath math="\gamma_Q = 1{,}50" /> für Verkehrslasten (Nutz-, Schnee-, Windlast)</li>
+                    <li>Materialbeiwerte: Beton (<InlineMath math="\gamma_C = 1{,}5" />), Stahl (<InlineMath math="\gamma_{M0} = 1{,}0" />), Holz (<InlineMath math="\gamma_M = 1{,}3" />).</li>
                   </ul>
                 </div>
               </div>
@@ -644,7 +645,7 @@ export default function HistorischeMaterialkennwerte() {
                                 : 'bg-white text-text-main border-home-grau/25 hover:bg-home-grau/5'
                             }`}
                           >
-                            {dia} mm
+                            {formatDeWert(dia)} mm
                           </button>
                         ))}
                       </div>
@@ -653,7 +654,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
                         <span>Länge des Bohrkerns (h)</span>
-                        <span className="text-shiraz font-mono">{coreHeight} mm</span>
+                        <span className="text-shiraz font-mono">{formatDeWert(coreHeight)} mm</span>
                       </div>
                       <input
                         type="range"
@@ -666,7 +667,7 @@ export default function HistorischeMaterialkennwerte() {
                       />
                       <div className="flex justify-between text-xs text-home-grau mt-1">
                         <span>50 mm</span>
-                        <span>Verhältnis h/d = <strong className="font-mono text-text-main">{(coreHeight / coreDiameter).toFixed(2)}</strong></span>
+                        <span>Verhältnis h/d = <strong className="font-mono text-text-main">{formatDeZahl((coreHeight / coreDiameter), 2)}</strong></span>
                         <span>300 mm</span>
                       </div>
                     </div>
@@ -674,7 +675,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
                         <span>Prüfkraft Zylinderpresse (F)</span>
-                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{failureForceKn} kN</span>
+                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(failureForceKn)} kN</span>
                       </div>
                       <input
                         type="range"
@@ -749,7 +750,7 @@ export default function HistorischeMaterialkennwerte() {
                       <div>
                         <label className="block text-xs font-bold text-home-grau uppercase mb-1">Breite (w)</label>
                         <input
-                          type="number"
+                          type="number" min="0"
                           value={brickWidth}
                           onChange={(e) => setBrickWidth(Math.max(1, Number(e.target.value)))}
                           className="w-full bg-white border border-home-grau/25 rounded-lg p-2 text-center font-semibold font-mono"
@@ -758,7 +759,7 @@ export default function HistorischeMaterialkennwerte() {
                       <div>
                         <label className="block text-xs font-bold text-home-grau uppercase mb-1">Länge (l)</label>
                         <input
-                          type="number"
+                          type="number" min="0"
                           value={brickLength}
                           onChange={(e) => setBrickLength(Math.max(1, Number(e.target.value)))}
                           className="w-full bg-white border border-home-grau/25 rounded-lg p-2 text-center font-semibold font-mono"
@@ -767,7 +768,7 @@ export default function HistorischeMaterialkennwerte() {
                       <div>
                         <label className="block text-xs font-bold text-home-grau uppercase mb-1">Höhe (h)</label>
                         <input
-                          type="number"
+                          type="number" min="0"
                           value={brickHeight}
                           onChange={(e) => setBrickHeight(Math.max(1, Number(e.target.value)))}
                           className="w-full bg-white border border-home-grau/25 rounded-lg p-2 text-center font-semibold font-mono"
@@ -802,7 +803,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
                         <span>Zylinder-/Stempelprüfkraft (F_c)</span>
-                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{brickForceKn} kN</span>
+                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(brickForceKn)} kN</span>
                       </div>
                       <input
                         type="range"
@@ -818,7 +819,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
                         <span>Mörtelfestigkeitsklasse (f_m)</span>
-                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{mortarStrength.toFixed(1)} MPa</span>
+                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeZahl(mortarStrength, 1)} MPa</span>
                       </div>
                       <input
                         type="range"
@@ -896,7 +897,7 @@ export default function HistorischeMaterialkennwerte() {
                       <div>
                         <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
                           <span>Nenndurchmesser d</span>
-                          <span className="text-shiraz font-mono">{steelDiameter} mm</span>
+                          <span className="text-shiraz font-mono">{formatDeWert(steelDiameter)} mm</span>
                         </div>
                         <input
                           type="range"
@@ -913,7 +914,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
                         <span>Kraft an der Streckgrenze (F_eH / F_p0.2)</span>
-                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{steelForceYieldKn} kN</span>
+                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(steelForceYieldKn)} kN</span>
                       </div>
                       <input
                         type="range"
@@ -929,7 +930,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
                         <span>Zerreißkraft / Plastisch (F_m)</span>
-                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{steelForceTensileKn} kN</span>
+                        <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(steelForceTensileKn)} kN</span>
                       </div>
                       <input
                         type="range"
@@ -964,15 +965,15 @@ export default function HistorischeMaterialkennwerte() {
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 text-center">
                       <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
                         <span className="text-xs font-bold text-home-grau block uppercase">Nettomessfläche A</span>
-                        <span className="text-md font-extrabold text-text-main font-mono">{calculatedConcrete.areaSqCm.toFixed(1)} cm²</span>
+                        <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedConcrete.areaSqCm, 1)} cm²</span>
                       </div>
                       <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
                         <span className="text-xs font-bold text-home-grau block uppercase">Bruchspannung f_c,core</span>
-                        <span className="text-md font-extrabold text-text-main font-mono">{calculatedConcrete.rawStrengthMpa.toFixed(1)} MPa</span>
+                        <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedConcrete.rawStrengthMpa, 1)} MPa</span>
                       </div>
                       <div className="bg-shiraz/10 p-3 rounded-xl border border-shiraz/25">
                         <span className="text-xs font-bold text-shiraz block uppercase">Equiv Cylinder f_is,cyl</span>
-                        <span className="text-lg font-black text-shiraz font-mono">{calculatedConcrete.fIsCyl.toFixed(1)} N/mm²</span>
+                        <span className="text-lg font-black text-shiraz font-mono">{formatDeZahl(calculatedConcrete.fIsCyl, 1)} N/mm²</span>
                       </div>
                     </div>
 
@@ -982,26 +983,26 @@ export default function HistorischeMaterialkennwerte() {
                       <div className="text-[12px] space-y-2 leading-relaxed font-mono text-text-main/90">
                         <div>
                           <span className="font-sans text-home-grau">1. Schlankheitskorrektur: </span>
-                          <InlineMath math={`k_{ ratio} = ${calculatedConcrete.kRatioToCylinder.toFixed(2)}`} /> 
+                          <InlineMath math={`k_{ ratio} = ${formatDeTeX(calculatedConcrete.kRatioToCylinder, 2)}`} /> 
                           <span className="font-sans text-xs text-home-grau ml-1">
-                            (h/d = {calculatedConcrete.ratioHd.toFixed(2)} → {calculatedConcrete.ratioHd >= 2 ? 'Kompakter Zylinder' : 'Interpoliert zu Zylinderstärke'})
+                            (h/d = {formatDeZahl(calculatedConcrete.ratioHd, 2)} → {calculatedConcrete.ratioHd >= 2 ? 'Kompakter Zylinder' : 'Interpoliert zu Zylinderstärke'})
                           </span>
                         </div>
                         <div>
                           <span className="font-sans text-home-grau">2. Feuchtigkeitskorrektur: </span>
-                          <InlineMath math={`k_{moist} = ${calculatedConcrete.kMoist.toFixed(2)}`} />
+                          <InlineMath math={`k_{moist} = ${formatDeTeX(calculatedConcrete.kMoist, 2)}`} />
                         </div>
                         <div>
                           <span className="font-sans text-home-grau">3. Stahleinlagenminderung: </span>
-                          <InlineMath math={`k_{rebar} = ${calculatedConcrete.kRebar.toFixed(2)}`} />
+                          <InlineMath math={`k_{rebar} = ${formatDeTeX(calculatedConcrete.kRebar, 2)}`} />
                         </div>
                         <div>
                           <span className="font-sans text-home-grau">4. Maßstabsfaktor (Ø-Bohrkern): </span>
-                          <InlineMath math={`k_{dia} = ${calculatedConcrete.kDia.toFixed(2)}`} />
+                          <InlineMath math={`k_{dia} = ${formatDeTeX(calculatedConcrete.kDia, 2)}`} />
                         </div>
                         <hr className="my-1 border-home-grau/30" />
                         <div className="text-xs pt-1 font-bold text-shiraz">
-                          <BlockMath math={`f_{is,cyl} = f_{c,core} \\cdot k_{ratio} \\cdot k_{moist} \\cdot k_{rebar} \\cdot k_{dia} = ${calculatedConcrete.fIsCyl.toFixed(2)} \\text{ MPa}`} />
+                          <BlockMath math={`f_{is,cyl} = f_{c,core} \\cdot k_{ratio} \\cdot k_{moist} \\cdot k_{rebar} \\cdot k_{dia} = ${formatDeTeX(calculatedConcrete.fIsCyl, 2)} \\text{ MPa}`} />
                         </div>
                       </div>
                     </div>
@@ -1026,15 +1027,15 @@ export default function HistorischeMaterialkennwerte() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                           <div className="p-3 bg-home-grau/5 rounded-lg border border-home-grau/30">
                             <span className="text-xs font-bold text-home-grau block uppercase">n = {coreSeries.n} · Mittelwert</span>
-                            <div className="text-md font-bold text-text-main">{coreSeries.mean.toFixed(1)} N/mm²</div>
+                            <div className="text-md font-bold text-text-main">{formatDeZahl(coreSeries.mean, 1)} N/mm²</div>
                           </div>
                           <div className="p-3 bg-home-grau/5 rounded-lg border border-home-grau/30">
-                            <span className="text-xs font-bold text-home-grau block uppercase">f_ck,is (k_n = {coreSeries.kn.toFixed(2)})</span>
-                            <div className="text-md font-bold text-text-main">{coreSeries.fckIs.toFixed(1)} N/mm²</div>
+                            <span className="text-xs font-bold text-home-grau block uppercase">f_ck,is (k_n = {formatDeZahl(coreSeries.kn, 2)})</span>
+                            <div className="text-md font-bold text-text-main">{formatDeZahl(coreSeries.fckIs, 1)} N/mm²</div>
                           </div>
                           <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-250">
                             <span className="text-xs font-bold text-emerald-800 block uppercase">f_ck = f_ck,is / 0,85</span>
-                            <div className="text-md font-bold text-emerald-800">{coreSeries.fck.toFixed(1)} N/mm² → {coreSeries.cls}</div>
+                            <div className="text-md font-bold text-emerald-800">{formatDeZahl(coreSeries.fck, 1)} N/mm² → {coreSeries.cls}</div>
                           </div>
                         </div>
                       ) : (
@@ -1055,22 +1056,22 @@ export default function HistorischeMaterialkennwerte() {
                     <div className="flex items-center justify-between border-b pb-4 mb-4">
                       <span className="text-xs font-bold text-amber-800 uppercase tracking-widest block">Protokoll: DIN EN 772-1 & EC6</span>
                       <div className="px-3 py-1 text-xs font-semibold bg-amber-55/10 text-amber-800 rounded-full border border-amber-800/20">
-                        Normfestigkeit Stein <strong className="font-bold">{calculatedBrick.fB.toFixed(1)} N/mm²</strong>
+                        Normfestigkeit Stein <strong className="font-bold">{formatDeZahl(calculatedBrick.fB, 1)} N/mm²</strong>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 text-center">
                       <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
                         <span className="text-xs font-bold text-home-grau block uppercase">Druckfläche A</span>
-                        <span className="text-md font-extrabold text-text-main font-mono">{(calculatedBrick.areaSqMm / 100).toFixed(1)} cm²</span>
+                        <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl((calculatedBrick.areaSqMm / 100), 1)} cm²</span>
                       </div>
                       <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
                         <span className="text-xs font-bold text-home-grau block uppercase">Mauerstein-Druckfestigkeit f_p</span>
-                        <span className="text-md font-extrabold text-text-main font-mono">{calculatedBrick.rawStrengthMpa.toFixed(1)} MPa</span>
+                        <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedBrick.rawStrengthMpa, 1)} MPa</span>
                       </div>
                       <div className="bg-white p-3 rounded-xl border border-amber-300">
                         <span className="text-xs font-bold text-amber-800 block uppercase">Wanddruckfestigkeit f_k</span>
-                        <span className="text-lg font-black text-amber-800 font-mono">{calculatedBrick.fK.toFixed(2)} N/mm²</span>
+                        <span className="text-lg font-black text-amber-800 font-mono">{formatDeZahl(calculatedBrick.fK, 2)} N/mm²</span>
                       </div>
                     </div>
 
@@ -1079,19 +1080,19 @@ export default function HistorischeMaterialkennwerte() {
                       <div className="text-[12px] space-y-2 leading-relaxed font-mono text-text-main/90">
                         <div>
                           <span className="font-sans text-home-grau">1. Proben-Formbeiwert d: </span>
-                          <InlineMath math={`d = ${calculatedBrick.dFactor.toFixed(2)}`} />
+                          <InlineMath math={`d = ${formatDeTeX(calculatedBrick.dFactor, 2)}`} />
                           <span className="font-sans text-xs text-home-grau ml-1">
-                            (h / w = {calculatedBrick.ratioHw.toFixed(2)})
+                            (h / w = {formatDeZahl(calculatedBrick.ratioHw, 2)})
                           </span>
                         </div>
                         <div>
                           <span className="font-sans text-home-grau">2. Deklarierte Steinfestigkeit f_b: </span>
-                          <InlineMath math={`f_b = f_p \\cdot d = ${calculatedBrick.fB.toFixed(2)} \\text{ MPa}`} />
+                          <InlineMath math={`f_b = f_p \\cdot d = ${formatDeTeX(calculatedBrick.fB, 2)} \\text{ MPa}`} />
                         </div>
                         <hr className="my-1 border-home-grau/30" />
                         <div>
-                          <span className="font-sans font-bold text-text-main">Mauerwerkgrundformel (Mörtelklasse M{mortarStrength}):</span>
-                          <BlockMath math={`f_k = K \\cdot f_b^{0.7} \\cdot f_m^{0.3} = 0.55 \\cdot (${calculatedBrick.fB.toFixed(2)})^{0.7} \\cdot (${mortarStrength.toFixed(1)})^{0.3} = ${calculatedBrick.fK.toFixed(2)} \\text{ N/mm}^2`} />
+                          <span className="font-sans font-bold text-text-main">Mauerwerkgrundformel (Mörtelklasse M{formatDeWert(mortarStrength)}):</span>
+                          <BlockMath math={`f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3} = 0{,}55 \\cdot (${formatDeTeX(calculatedBrick.fB, 2)})^{0{,}7} \\cdot (${formatDeTeX(mortarStrength, 1)})^{0{,}3} = ${formatDeTeX(calculatedBrick.fK, 2)} \\text{ N/mm}^2`} />
                         </div>
                       </div>
                     </div>
@@ -1099,7 +1100,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div className="mt-6 border-t pt-4">
                       <h4 className="text-xs font-bold text-text-main uppercase mb-2">Statisch zulässiges Spannungsniveau (<InlineMath math="f_{d} = f_k / \gamma_M" />)</h4>
                       <div className="p-4 bg-white rounded-xl border border-amber-300 text-sm leading-relaxed text-amber-900">
-                        Bemessungswert der Wandfestigkeit: <strong className="font-mono font-bold text-md text-amber-950">{calculatedBrick.fD.toFixed(2)} N/mm²</strong> 
+                        Bemessungswert der Wandfestigkeit: <strong className="font-mono font-bold text-md text-amber-950">{formatDeZahl(calculatedBrick.fD, 2)} N/mm²</strong> 
                         <span className="text-xs text-amber-800 block mt-1">
                           (Mit <InlineMath math="f_d = \zeta \cdot f_k / \gamma_M" />, <InlineMath math="\zeta = 0{,}85" /> und <InlineMath math="\gamma_M = 1{,}5" /> nach DIN EN 1996-1-1/NA.)
                         </span>
@@ -1121,15 +1122,15 @@ export default function HistorischeMaterialkennwerte() {
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 text-center">
                       <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
                         <span className="text-xs font-bold text-home-grau block uppercase">Probenquerschnitt A_0</span>
-                        <span className="text-md font-extrabold text-text-main font-mono">{calculatedSteel.areaSqMm.toFixed(1)} mm²</span>
+                        <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedSteel.areaSqMm, 1)} mm²</span>
                       </div>
                       <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
                         <span className="text-xs font-bold text-home-grau block uppercase">Streckgrenze R_eH</span>
-                        <span className="text-md font-extrabold text-text-main font-mono">{calculatedSteel.yieldStrengthMpa.toFixed(1)} MPa</span>
+                        <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedSteel.yieldStrengthMpa, 1)} MPa</span>
                       </div>
                       <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
                         <span className="text-xs font-bold text-indigo-800 block uppercase">Zugfestigkeit R_m</span>
-                        <span className="text-lg font-black text-indigo-800 font-mono">{calculatedSteel.tensileStrengthMpa.toFixed(1)} MPa</span>
+                        <span className="text-lg font-black text-indigo-800 font-mono">{formatDeZahl(calculatedSteel.tensileStrengthMpa, 1)} MPa</span>
                       </div>
                     </div>
 
@@ -1138,16 +1139,16 @@ export default function HistorischeMaterialkennwerte() {
                       <div className="text-[12px] space-y-2 leading-relaxed font-mono text-text-main/90">
                         <div>
                           <span className="font-sans text-home-grau">Streckgrenze: </span>
-                          <InlineMath math={`R_{eH} = \\frac{F_{eH}}{A_0} = \\frac{${steelForceYieldKn} \\text{ kN}}{${calculatedSteel.areaSqMm.toFixed(1)} \\text{ mm}^2} = ${calculatedSteel.yieldStrengthMpa.toFixed(1)} \\text{ N/mm}^2`} />
+                          <InlineMath math={`R_{eH} = \\frac{F_{eH}}{A_0} = \\frac{${steelForceYieldKn} \\text{ kN}}{${formatDeTeX(calculatedSteel.areaSqMm, 1)} \\text{ mm}^2} = ${formatDeTeX(calculatedSteel.yieldStrengthMpa, 1)} \\text{ N/mm}^2`} />
                         </div>
                         <div>
                           <span className="font-sans text-home-grau">Maximale Reißspannung plastisch: </span>
-                          <InlineMath math={`R_{m} = \\frac{F_m}{A_0} = \\frac{${steelForceTensileKn} \\text{ kN}}{${calculatedSteel.areaSqMm.toFixed(1)} \\text{ mm}^2} = ${calculatedSteel.tensileStrengthMpa.toFixed(1)} \\text{ N/mm}^2`} />
+                          <InlineMath math={`R_{m} = \\frac{F_m}{A_0} = \\frac{${steelForceTensileKn} \\text{ kN}}{${formatDeTeX(calculatedSteel.areaSqMm, 1)} \\text{ mm}^2} = ${formatDeTeX(calculatedSteel.tensileStrengthMpa, 1)} \\text{ N/mm}^2`} />
                         </div>
                         <hr className="my-1 border-home-grau/30" />
                         <div>
                           <span className="font-sans text-home-grau">Duktilitätsmaß (Streckgrenzenverhältnis): </span>
-                          <InlineMath math={`\\frac{R_{eH}}{R_m} = ${calculatedSteel.yieldRatio.toFixed(3)}`} />
+                          <InlineMath math={`\\frac{R_{eH}}{R_m} = ${formatDeTeX(calculatedSteel.yieldRatio, 3)}`} />
                           <span className="font-sans text-xs text-home-grau ml-1">
                             (Duktilität {calculatedSteel.yieldRatio <= 0.85 ? 'Hoch / Ausreichend' : 'Achtung: Spröde!'})
                           </span>
@@ -1158,9 +1159,9 @@ export default function HistorischeMaterialkennwerte() {
                     <div className="mt-6 border-t pt-4">
                       <h4 className="text-xs font-bold text-text-main uppercase mb-2">Bemessungsstreckgrenze Eurocode 3 (<InlineMath math="f_{yd} = f_y / \gamma_{M0}" />)</h4>
                       <div className="p-4 bg-indigo-50/50 rounded-xl border border-indigo-200 text-sm leading-relaxed text-indigo-900">
-                        Bemessungsspannung für Tragfähigkeitsnachweise: <strong className="font-mono font-bold text-md text-indigo-950">{calculatedSteel.fYd.toFixed(1)} N/mm²</strong> 
+                        Bemessungsspannung für Tragfähigkeitsnachweise: <strong className="font-mono font-bold text-md text-indigo-950">{formatDeZahl(calculatedSteel.fYd, 1)} N/mm²</strong> 
                         <span className="text-xs text-indigo-800 block mt-1">
-                          (Nach DIN EN 1993-1-1 beträgt der Teilsicherheitsbeiwert <InlineMath math="\gamma_{M0} = 1.00" />).
+                          (Nach DIN EN 1993-1-1 beträgt der Teilsicherheitsbeiwert <InlineMath math="\gamma_{M0} = 1{,}00" />).
                         </span>
                       </div>
                     </div>
@@ -1190,20 +1191,20 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <strong className="font-sans text-xs text-home-grau block uppercase">Schritt 1: Bestimmung der Würfelfestigkeit (alt)</strong>
                       Die alte Klasse bezieht sich auf die Würfeldruckfestigkeit <InlineMath math="\beta_{WN}" />. Das Nennmaß Bn 250 garantiert eine 5%-Fraktilfestigkeit von:
-                      <BlockMath math="\beta_{WN} = 25.0 \text{ N/mm}^2 \text{ (auf einen 200 mm Würfel)}" />
+                      <BlockMath math="\beta_{WN} = 25{,}0 \text{ N/mm}^2 \text{ (auf einen 200 mm Würfel)}" />
                     </div>
                     <div>
                       <strong className="font-sans text-xs text-home-grau block uppercase">Schritt 2: Umrechnung auf standardisierten Zylinder (f_ck)</strong>
                       Die aktuellen Eurocode 2 Klassen basieren auf der Zylinderdruckfestigkeit <InlineMath math="f_{ck}" /> (Durchmesser 150 mm/Länge 300 mm). Die Festigkeit verhält sich bei unbeschädigtem Beton konstruktiv wie folgt:
-                      <BlockMath math="f_{ck} = \beta_{WN} \cdot 0.80 = 25.0 \cdot 0.80 = 20.0 \text{ N/mm}^2" />
-                      Damit entspricht der Bestandsbeton exakt der aktuellen Festigkeitsklasse <strong>C20/25</strong> (<InlineMath math="f_{ck} = 20.0 \text{ N/mm}^2, f_{ck,cube} = 25.0 \text{ N/mm}^2" />).
+                      <BlockMath math="f_{ck} = \beta_{WN} \cdot 0{,}80 = 25{,}0 \cdot 0{,}80 = 20{,}0 \text{ N/mm}^2" />
+                      Damit entspricht der Bestandsbeton exakt der aktuellen Festigkeitsklasse <strong>C20/25</strong> (<InlineMath math="f_{ck} = 20{,}0 \text{ N/mm}^2, f_{ck,cube} = 25{,}0 \text{ N/mm}^2" />).
                     </div>
                     <div>
                       <strong className="font-sans text-xs text-home-grau block uppercase">Schritt 3: Berechnung des Bemessungswerts (Eurocode 2)</strong>
-                      Der materialspezifische Bemessungswert <InlineMath math="f_{cd}" /> unter ständigen axialen Druckspannungen wird unter Berücksichtigung des Dauerstandseffekts (<InlineMath math="\alpha_{cc} = 0.85" />) ermittelt:
-                      <BlockMath math="f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c} = 0.85 \cdot \frac{20.0 \text{ N/mm}^2}{1.50} = 11.33 \text{ N/mm}^2" />
+                      Der materialspezifische Bemessungswert <InlineMath math="f_{cd}" /> unter ständigen axialen Druckspannungen wird unter Berücksichtigung des Dauerstandseffekts (<InlineMath math="\alpha_{cc} = 0{,}85" />) ermittelt:
+                      <BlockMath math="f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c} = 0{,}85 \cdot \frac{20{,}0 \text{ N/mm}^2}{1{,}50} = 11{,}33 \text{ N/mm}^2" />
                       <span className="font-sans text-xs text-home-grau block mt-1">
-                        *Tipp: Werden im Bestand systematisch Bohrkerne entnommen und so die Geometrie und Güte direkt experimentell verifiziert, darf der Sicherheitsfaktor gemindert werden (<InlineMath math="\gamma_c = 1.35 \rightarrow f_{cd} = 12.59 \text{ N/mm}^2" />).
+                        *Tipp: Werden im Bestand systematisch Bohrkerne entnommen und so die Geometrie und Güte direkt experimentell verifiziert, darf der Sicherheitsfaktor gemindert werden (<InlineMath math="\gamma_c = 1{,}35 \rightarrow f_{cd} = 12{,}59 \text{ N/mm}^2" />).
                       </span>
                     </div>
                   </div>
@@ -1234,8 +1235,8 @@ export default function HistorischeMaterialkennwerte() {
                     </div>
                     <div>
                       <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 3: Bemessungswert-Ermittlung</strong>
-                      Für die Tragfähigkeitsnachweise gilt mit Teilsicherheitsbeiwert <InlineMath math="\gamma_{M0} = 1.00" />:
-                      <BlockMath math="f_{yd} = \frac{f_y}{\gamma_{M0}} = \frac{235 \text{ N/mm}^2}{1.00} = 235.0 \text{ N/mm}^2" />
+                      Für die Tragfähigkeitsnachweise gilt mit Teilsicherheitsbeiwert <InlineMath math="\gamma_{M0} = 1{,}00" />:
+                      <BlockMath math="f_{yd} = \frac{f_y}{\gamma_{M0}} = \frac{235 \text{ N/mm}^2}{1{,}00} = 235{,}0 \text{ N/mm}^2" />
                     </div>
                   </div>
                 </div>
@@ -1253,13 +1254,13 @@ export default function HistorischeMaterialkennwerte() {
                   <div className="space-y-3 font-serif pl-2 border-l-2 border-shiraz/40 my-3">
                     <div>
                       <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 1: Stein-Druckfestigkeit &amp; Formbeiwert (DIN EN 772-1)</strong>
-                      Durch Probeentnahmen von drei unbeschädigten Reichsformat-Mauersteinen im Labor wird das arithmetische Mittel der Druckfestigkeit ermittelt: <InlineMath math="f_p = 15.0 \text{ N/mm}^2" />. Das Reichsformat hat ca. h = 65 mm und w = 120 mm (<InlineMath math="h/w = 0{,}54" />). Für eine belastbare Aussage sind mindestens 6 Steine (DIN EN 772-1) und eine Mörtelprüfung erforderlich. Der zugehörige Formfaktor beträgt <InlineMath math="d = 0.82" />. Damit lautet die normierte Steinfestigkeit <InlineMath math="f_b" />:
-                      <BlockMath math="f_b = f_p \cdot d = 15.0 \cdot 0.82 = 12.3 \text{ N/mm}^2" />
+                      Durch Probeentnahmen von drei unbeschädigten Reichsformat-Mauersteinen im Labor wird das arithmetische Mittel der Druckfestigkeit ermittelt: <InlineMath math="f_p = 15{,}0 \text{ N/mm}^2" />. Das Reichsformat hat ca. h = 65 mm und w = 120 mm (<InlineMath math="h/w = 0{,}54" />). Für eine belastbare Aussage sind mindestens 6 Steine (DIN EN 772-1) und eine Mörtelprüfung erforderlich. Der zugehörige Formfaktor beträgt <InlineMath math="d = 0{,}82" />. Damit lautet die normierte Steinfestigkeit <InlineMath math="f_b" />:
+                      <BlockMath math="f_b = f_p \cdot d = 15{,}0 \cdot 0{,}82 = 12{,}3 \text{ N/mm}^2" />
                     </div>
                     <div>
                       <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 2: Mörtelfestigkeit &amp; charakteristische Festigkeit (f_k) nach EC6</strong>
-                      Für den alten Kalksand-Mörtel (historisch weich, entspr. heute ca. Festigkeitsklasse <InlineMath math="f_m = 2.5 \text{ N/mm}^2" />) liefert die empirische EC6-Formel:
-                      <BlockMath math="f_k = K \cdot f_b^{0.7} \cdot f_m^{0.3} = 0.55 \cdot (12.3)^{0.7} \cdot (2.5)^{0.3} = 4.19 \text{ N/mm}^2" />
+                      Für den alten Kalksand-Mörtel (historisch weich, entspr. heute ca. Festigkeitsklasse <InlineMath math="f_m = 2{,}5 \text{ N/mm}^2" />) liefert die empirische EC6-Formel:
+                      <BlockMath math="f_k = K \cdot f_b^{0{,}7} \cdot f_m^{0{,}3} = 0{,}55 \cdot (12.3)^{0{,}7} \cdot (2.5)^{0{,}3} = 4{,}19 \text{ N/mm}^2" />
                     </div>
                     <div>
                       <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 3: Bemessungswert (f_d) nach DIN EN 1996-1-1/NA</strong>
@@ -1401,7 +1402,7 @@ export default function HistorischeMaterialkennwerte() {
                   <div>
                     <div className="flex justify-between text-xs text-slate-700 mb-1">
                       <span>Mittelwert der Festigkeit (<InlineMath math="f_m" />):</span>
-                      <strong className="font-mono text-shiraz">{sampleMean.toFixed(1)} N/mm²</strong>
+                      <strong className="font-mono text-shiraz">{formatDeZahl(sampleMean, 1)} N/mm²</strong>
                     </div>
                     <input
                       type="range"
@@ -1417,7 +1418,7 @@ export default function HistorischeMaterialkennwerte() {
                   <div>
                     <div className="flex justify-between text-xs text-slate-700 mb-1">
                       <span>Variationskoeffizient (<InlineMath math="V_f" />):</span>
-                      <strong className="font-mono text-slate-900">{(sampleCov * 100).toFixed(1)} %</strong>
+                      <strong className="font-mono text-slate-900">{formatDeZahl((sampleCov * 100), 1)} %</strong>
                     </div>
                     <input
                       type="range"
@@ -1442,7 +1443,7 @@ export default function HistorischeMaterialkennwerte() {
                   <div>
                     <div className="flex justify-between text-xs text-slate-700 mb-1">
                       <span>Ziel-Zuverlässigkeit (<InlineMath math="\beta" />):</span>
-                      <strong className="font-mono text-slate-900">{targetBeta.toFixed(1)}</strong>
+                      <strong className="font-mono text-slate-900">{formatDeZahl(targetBeta, 1)}</strong>
                     </div>
                     <div className="grid grid-cols-2 gap-1.5 mb-2">
                       <button
@@ -1454,7 +1455,7 @@ export default function HistorischeMaterialkennwerte() {
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
                       >
-                        β = 3.8 (50 a)
+                        β = 3,8 (50 a)
                       </button>
                       <button
                         type="button"
@@ -1465,7 +1466,7 @@ export default function HistorischeMaterialkennwerte() {
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
                       >
-                        β = 4.7 (1 a)
+                        β = 4,7 (1 a)
                       </button>
                     </div>
                     <span className="text-[10px] text-slate-500 block">
@@ -1476,7 +1477,7 @@ export default function HistorischeMaterialkennwerte() {
                   <div>
                     <div className="flex justify-between text-xs text-slate-700 mb-1">
                       <span>Modellunsicherheit (<InlineMath math="\gamma_{Rd}" />):</span>
-                      <strong className="font-mono text-slate-900">{gammaRd.toFixed(2)}</strong>
+                      <strong className="font-mono text-slate-900">{formatDeZahl(gammaRd, 2)}</strong>
                     </div>
                     <input
                       type="range"
@@ -1492,7 +1493,7 @@ export default function HistorischeMaterialkennwerte() {
                   <div>
                     <div className="flex justify-between text-xs text-slate-700 mb-1">
                       <span>Sensitivitätsfaktor (<InlineMath math="\alpha_R" />):</span>
-                      <strong className="font-mono text-slate-900">{alphaR.toFixed(2)}</strong>
+                      <strong className="font-mono text-slate-900">{formatDeZahl(alphaR, 2)}</strong>
                     </div>
                     <span className="text-[10px] text-slate-500 block">
                       Normierter Standardwert nach EN 1990 Anhang C: <InlineMath math="\alpha_R = 0{,}8" />
@@ -1510,7 +1511,7 @@ export default function HistorischeMaterialkennwerte() {
                       1. Konventioneller Eurocode (Neubau)
                     </span>
                     <strong className="text-xl font-extrabold text-slate-800 block mt-1">
-                      {nachweisCalc.f_d_ec.toFixed(2)} N/mm²
+                      {formatDeZahl(nachweisCalc.f_d_ec, 2)} N/mm²
                     </strong>
                     <span className="text-xs text-slate-600 block mt-0.5">
                       Bemessungsfestigkeit <InlineMath math="f_d = f_k / \gamma_M" />
@@ -1519,11 +1520,11 @@ export default function HistorischeMaterialkennwerte() {
                   <div className="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-600 space-y-1">
                     <div className="flex justify-between">
                       <span>Charakt. Wert (<InlineMath math="f_k" />):</span>
-                      <strong className="font-mono">{nachweisCalc.f_k.toFixed(1)} N/mm²</strong>
+                      <strong className="font-mono">{formatDeZahl(nachweisCalc.f_k, 1)} N/mm²</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Teilsicherheit (<InlineMath math="\gamma_M" />):</span>
-                      <strong className="font-mono text-slate-700">{nachweisCalc.gamma_M_ec.toFixed(2)}</strong>
+                      <strong className="font-mono text-slate-700">{formatDeZahl(nachweisCalc.gamma_M_ec, 2)}</strong>
                     </div>
                     <span className="text-[10px] text-rose-600 font-semibold block pt-1">
                       Referenzbasis (0 % Reserve)
@@ -1538,7 +1539,7 @@ export default function HistorischeMaterialkennwerte() {
                       2. DBV-Merkblatt (Modifiziert)
                     </span>
                     <strong className="text-xl font-extrabold text-amber-900 block mt-1">
-                      {nachweisCalc.f_d_dbv.toFixed(2)} N/mm²
+                      {formatDeZahl(nachweisCalc.f_d_dbv, 2)} N/mm²
                     </strong>
                     <span className="text-xs text-amber-800 block mt-0.5">
                       Modifizierte Teilsicherheit <InlineMath math="\gamma_{M,\text{mod}}" />
@@ -1547,11 +1548,11 @@ export default function HistorischeMaterialkennwerte() {
                   <div className="mt-4 pt-3 border-t border-amber-200 text-xs text-slate-700 space-y-1">
                     <div className="flex justify-between">
                       <span>Modifizierter Beiwert:</span>
-                      <strong className="font-mono text-amber-900">{nachweisCalc.gamma_M_dbv.toFixed(2)}</strong>
+                      <strong className="font-mono text-amber-900">{formatDeZahl(nachweisCalc.gamma_M_dbv, 2)}</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Traglastvorteil:</span>
-                      <strong className="font-mono text-emerald-700">{nachweisCalc.gainDbvPercent >= 0 ? '+' : ''}{nachweisCalc.gainDbvPercent.toFixed(1)} %</strong>
+                      <strong className="font-mono text-emerald-700">{nachweisCalc.gainDbvPercent >= 0 ? '+' : ''}{formatDeZahl(nachweisCalc.gainDbvPercent, 1)} %</strong>
                     </div>
                     <span className="text-[10px] text-amber-900 font-semibold block pt-1">
                       {nachweisCalc.dbvApplicable
@@ -1568,7 +1569,7 @@ export default function HistorischeMaterialkennwerte() {
                       3. EN 1990-2:2026 (versuchsgestützt)
                     </span>
                     <strong className="text-xl font-extrabold text-emerald-900 block mt-1">
-                      {nachweisCalc.f_d_pren.toFixed(2)} N/mm²
+                      {formatDeZahl(nachweisCalc.f_d_pren, 2)} N/mm²
                     </strong>
                     <span className="text-xs text-emerald-800 block mt-0.5">
                       Lognormaler Bemessungswert mit <InlineMath math="\gamma_{Rd}" /></span>
@@ -1576,12 +1577,12 @@ export default function HistorischeMaterialkennwerte() {
                   <div className="mt-4 pt-3 border-t border-emerald-200 text-xs text-slate-700 space-y-1">
                     <div className="flex justify-between">
                       <span>Äquivalente Sicherheit:</span>
-                      <strong className="font-mono text-emerald-900">{nachweisCalc.equivalentGammaPren.toFixed(2)}</strong>
+                      <strong className="font-mono text-emerald-900">{formatDeZahl(nachweisCalc.equivalentGammaPren, 2)}</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Differenz zum Neubauwert:</span>
                       <strong className={`font-mono text-sm font-extrabold ${nachweisCalc.gainPrenPercent >= 0 ? 'text-emerald-700' : 'text-rose-700'}`}>
-                        {nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{nachweisCalc.gainPrenPercent.toFixed(1)} %
+                        {nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{formatDeZahl(nachweisCalc.gainPrenPercent, 1)} %
                       </strong>
                     </div>
                     <span className="text-[10px] text-emerald-900 font-semibold block pt-1">
@@ -1598,8 +1599,8 @@ export default function HistorischeMaterialkennwerte() {
                 </span>
                 <BlockMath math="f_d = \frac{f_m}{\gamma_{Rd}} \cdot \exp\left(-\alpha_R \cdot \beta \cdot \sigma_{\ln} - 0{,}5 \cdot \sigma_{\ln}^2\right),\quad \sigma_{\ln} = \sqrt{\ln(1 + V_f^2)}" />
                 <div className="text-[11px] text-slate-300 font-sans mt-2 leading-relaxed">
-                  <strong>Ergebnis-Interpretation:</strong> Durch den Nachweis geringer In-situ-Streuung (<InlineMath math={`V_f = ${(sampleCov * 100).toFixed(1)}\\%`} />) ergibt sich gegenüber dem Neubauwert eine Differenz von{' '}
-                  <strong className="text-emerald-400">{nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{nachweisCalc.gainPrenPercent.toFixed(1)} %</strong>. Ergibt sich eine Reserve, kann eine Verstärkung ggf. entfallen; Voraussetzung sind ausreichende Stichproben und die Berücksichtigung der Modellunsicherheit.
+                  <strong>Ergebnis-Interpretation:</strong> Durch den Nachweis geringer In-situ-Streuung (<InlineMath math={`V_f = ${formatDeTeX((sampleCov * 100), 1)}\\%`} />) ergibt sich gegenüber dem Neubauwert eine Differenz von{' '}
+                  <strong className="text-emerald-400">{nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{formatDeZahl(nachweisCalc.gainPrenPercent, 1)} %</strong>. Ergibt sich eine Reserve, kann eine Verstärkung ggf. entfallen; Voraussetzung sind ausreichende Stichproben und die Berücksichtigung der Modellunsicherheit.
                 </div>
               </div>
             </div>

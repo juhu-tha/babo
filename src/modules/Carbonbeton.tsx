@@ -360,7 +360,7 @@ export default function Carbonbeton() {
                     plugins: {
                       tooltip: {
                         callbacks: {
-                          label: (context) => `${context.dataset.label}: ${context.parsed.y.toFixed(0)} MPa`
+                          label: (context) => `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 0)} MPa`
                         }
                       }
                     }

@@ -95,7 +95,7 @@ export default function MischungsberechnungAnleitung() {
                 <FormulaText text="V_{Zement} + V_{Wasser} + V_{Zusatzstoffe} + V_{Luft} + V_{Gestein} = 1000 \text{ Liter}" />
               </div>
               <p className="text-sm text-text-main/70 mb-2">
-                Da Zement, Wasser und Luft (ca. 1.5 - 2.0 % bei Normalbeton) nun bekannt sind, kann das Volumen der Gesteinskörnung als Restgröße berechnet werden:
+                Da Zement, Wasser und Luft (ca. 1,5 - 2,0 % bei Normalbeton) nun bekannt sind, kann das Volumen der Gesteinskörnung als Restgröße berechnet werden:
               </p>
               <div className="bg-off-white p-4 rounded-lg border border-home-grau/30 text-center font-mono text-shiraz">
                 <FormulaText text="V_{Gestein} = 1000 - (V_{Zement} + V_{Wasser} + V_{Luft})" />
@@ -111,7 +111,7 @@ export default function MischungsberechnungAnleitung() {
             <div>
               <h3 className="text-lg font-bold text-text-main mb-2">Masse der Gesteinskörnung berechnen</h3>
               <p className="text-text-main/80 mb-2">
-                Aus dem berechneten Volumen der Gesteinskörnung wird mit der Rohdichte des Gesteins (meist ca. 2.65 kg/dm³) die trockene Masse berechnet.
+                Aus dem berechneten Volumen der Gesteinskörnung wird mit der Rohdichte des Gesteins (meist ca. 2,65 kg/dm³) die trockene Masse berechnet.
               </p>
               <div className="bg-off-white p-4 rounded-lg border border-home-grau/30 text-center font-mono text-shiraz mb-2">
                 <FormulaText text="m_{Gestein, trocken} = V_{Gestein} \cdot \rho_{Gestein}" />
@@ -146,7 +146,7 @@ export default function MischungsberechnungAnleitung() {
             <div>
               <h3 className="text-lg font-bold text-text-main mb-2">Mehlkorngehalt überprüfen</h3>
               <p className="text-text-main/80 mb-2">
-                Der Mehlkorngehalt (Alle Stoffe ≤ 0.125 mm, also Zement, Zusatzstoffe und der Feinanteil im Sand) ist wichtig für das Wasserhaltevermögen, die Verarbeitbarkeit (Pumpfähigkeit) und die Gefügedichtigkeit.
+                Der Mehlkorngehalt (Alle Stoffe ≤ 0,125 mm, also Zement, Zusatzstoffe und der Feinanteil im Sand) ist wichtig für das Wasserhaltevermögen, die Verarbeitbarkeit (Pumpfähigkeit) und die Gefügedichtigkeit.
               </p>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-1 ml-2">
                 <li>Ein zu niedriger Mehlkorngehalt (&lt; 300 kg/m³) führt zu Entmischen und Bluten.</li>

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Layers, 
@@ -395,7 +396,7 @@ export default function BpBetonzusatzmittel() {
                     <div>
                       <span className="text-shiraz font-extrabold text-xs uppercase tracking-wider block mb-1">Betonzusatzmittel BZM</span>
                       <p className="text-xs text-slate-705 leading-normal">
-                        Fluessige Emulsionen oder selten pulverfoermige organische und anorganische Wirksubstanzen mit Massenanteilen meist im Promille- bis niedrigen Prozentbereich, hoechstens 5.0 M.-% vom Zementgewicht. Sie greifen chemisch und physikalisch in die Hydratation und das Oberflächenladungsprofil der Zementteilchen ein.
+                        Fluessige Emulsionen oder selten pulverfoermige organische und anorganische Wirksubstanzen mit Massenanteilen meist im Promille- bis niedrigen Prozentbereich, hoechstens 5,0 M.-% vom Zementgewicht. Sie greifen chemisch und physikalisch in die Hydratation und das Oberflächenladungsprofil der Zementteilchen ein.
                       </p>
                     </div>
                   </div>
@@ -931,7 +932,7 @@ export default function BpBetonzusatzmittel() {
                       <div className="bg-yellow-50 border border-yellow-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs text-yellow-950">
                         <AlertTriangle className="text-yellow-700 mt-0.5 flex-none" size={16} />
                         <div>
-                          <span className="font-bold block">Achtung: Sehr geringe Rezeptdosierung ({dosagePercent} M.-%)</span>
+                          <span className="font-bold block">Achtung: Sehr geringe Rezeptdosierung ({formatDeWert(dosagePercent)} M.-%)</span>
                           Unter **0,2 M.-%** Zementgewicht ist eine gleichmäßige Verteilung des Zusatzmittels im Standard-Mischprozess gefährdet. Das Zusatzmittel sollte zwingend in einem Teil des Zugabewassers vorverdünnt eingedüst werden.
                         </div>
                       </div>
@@ -948,7 +949,7 @@ export default function BpBetonzusatzmittel() {
                         <ShieldAlert className="text-red-700 mt-0.5 flex-none" size={16} />
                         <div>
                           <span className="font-bold block">Fehler: Höchstdosierung nach DIN EN 206 verletzt!</span>
-                          Die Dosierung von **{dosagePercent} M.-%** ist extrem kritisch. Zusatzmittel dürfen nach Norm grundsätzlich **nicht über 5,0 M.-%** bezogen auf den Zementgehalt dosiert werden. Ein genehmigter Sonder-Eignungsnachweis (abZ vom DIBt) ist zwingend bereitzuhalten.
+                          Die Dosierung von **{formatDeWert(dosagePercent)} M.-%** ist extrem kritisch. Zusatzmittel dürfen nach Norm grundsätzlich **nicht über 5,0 M.-%** bezogen auf den Zementgehalt dosiert werden. Ein genehmigter Sonder-Eignungsnachweis (abZ vom DIBt) ist zwingend bereitzuhalten.
                         </div>
                       </div>
                     ) : (
@@ -964,7 +965,7 @@ export default function BpBetonzusatzmittel() {
                         <ShieldAlert className="text-red-700 mt-0.5 flex-none" size={16} />
                         <div>
                           <span className="font-bold block">Fehler: Unzulässige Korrosionsgefährdung (Spannbeton)</span>
-                          Für Spannbeton (vorgespannte Glieder) muss der Chloridgehalt von Zusatzmitteln **≤ 0,10 M.-%** betragen. Der eingegebene Wert von **{admixtureChlorideContent} M.-%** birgt akute Gefahren von katalytischem Lochfraß unter Zugspannung.
+                          Für Spannbeton (vorgespannte Glieder) muss der Chloridgehalt von Zusatzmitteln **≤ 0,10 M.-%** betragen. Der eingegebene Wert von **{formatDeWert(admixtureChlorideContent)} M.-%** birgt akute Gefahren von katalytischem Lochfraß unter Zugspannung.
                         </div>
                       </div>
                     ) : (
@@ -979,17 +980,17 @@ export default function BpBetonzusatzmittel() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div className="bg-stone-50 p-4 rounded-xl border border-slate-200 text-center space-y-0.5">
                       <span className="text-[10px] text-slate-400 uppercase font-bold block">Zusatzmittel-Gewicht</span>
-                      <span className="text-base font-extrabold text-slate-800 block">{admixtureMass.toFixed(2)} kg/m³</span>
+                      <span className="text-base font-extrabold text-slate-800 block">{formatDeZahl(admixtureMass, 2)} kg/m³</span>
                     </div>
 
                     <div className="bg-stone-50 p-4 rounded-xl border border-slate-200 text-center space-y-0.5">
                       <span className="text-[10px] text-slate-400 uppercase font-bold block">Zubehörtes Volumen</span>
-                      <span className="text-base font-extrabold text-slate-800 block">{admixtureVolume.toFixed(2)} l/m³</span>
+                      <span className="text-base font-extrabold text-slate-800 block">{formatDeZahl(admixtureVolume, 2)} l/m³</span>
                     </div>
 
                     <div className="bg-stone-50 p-4 rounded-xl border border-slate-200 text-center space-y-0.5">
                       <span className="text-[10px] text-slate-400 uppercase font-bold block">Anteiliges Wasser (W_Eigenwasser)</span>
-                      <span className="text-base font-extrabold text-slate-800 block">{admixtureWaterMass.toFixed(2)} Liter</span>
+                      <span className="text-base font-extrabold text-slate-800 block">{formatDeZahl(admixtureWaterMass, 2)} Liter</span>
                     </div>
                   </div>
 
@@ -1001,11 +1002,11 @@ export default function BpBetonzusatzmittel() {
                     </div>
                     {isWaterAnrechnungMandatory ? (
                       <p className="text-xs leading-relaxed font-normal">
-                        <strong>Pflichtiges Prüfungskriterium!</strong> Da das zugegebene flüssige Zusatzmittelvolumen mit **{admixtureVolume.toFixed(2)} Litern** die kritische Schranke von **≥ 3,0 Litern je m³** erreicht bzw. überschreitet, muss das in der Emulsion enthaltene Eigenwasser (W_Eigenwasser = {admixtureWaterMass.toFixed(1)} l) **zwingend** als Mischwasser angerechnet werden!
+                        <strong>Pflichtiges Prüfungskriterium!</strong> Da das zugegebene flüssige Zusatzmittelvolumen mit **{formatDeZahl(admixtureVolume, 2)} Litern** die kritische Schranke von **≥ 3,0 Litern je m³** erreicht bzw. überschreitet, muss das in der Emulsion enthaltene Eigenwasser (W_Eigenwasser = {formatDeZahl(admixtureWaterMass, 1)} l) **zwingend** als Mischwasser angerechnet werden!
                       </p>
                     ) : (
                       <p className="text-xs leading-relaxed font-normal">
-                        Da das zugegebene Volumen mit **{admixtureVolume.toFixed(2)} Litern** unter der Grenze von **&lt; 3,0 Litern je m³** liegt, ist eine rechnerische Wasseranrechnung nach deutscher Norm nicht explizit verpflichtend (für Standardbeton). Für anspruchsvolle HPC/UHPC-Rezepturen wird die Anrechnung dennoch dringend unaufgefordert durchgeführt.
+                        Da das zugegebene Volumen mit **{formatDeZahl(admixtureVolume, 2)} Litern** unter der Grenze von **&lt; 3,0 Litern je m³** liegt, ist eine rechnerische Wasseranrechnung nach deutscher Norm nicht explizit verpflichtend (für Standardbeton). Für anspruchsvolle HPC/UHPC-Rezepturen wird die Anrechnung dennoch dringend unaufgefordert durchgeführt.
                       </p>
                     )}
 
@@ -1013,7 +1014,7 @@ export default function BpBetonzusatzmittel() {
                     <div className="bg-white p-4 rounded-xl border border-slate-200 mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <span className="text-[9px] text-slate-400 uppercase font-bold block">Wasserzementwert ohne Anrechnung (rechnerisch)</span>
-                        <span className="text-sm font-extrabold text-slate-800 block font-mono">{rawWcRatio.toFixed(3)}</span>
+                        <span className="text-sm font-extrabold text-slate-800 block font-mono">{formatDeZahl(rawWcRatio, 3)}</span>
                         <span className="text-[10px] text-slate-400 italic block mt-0.5">Frischwasser / Zement</span>
                       </div>
                       <div>
@@ -1021,9 +1022,9 @@ export default function BpBetonzusatzmittel() {
                           Tatsächlicher (effektiver) w/z-Wert {isWaterAnrechnungMandatory && <span className="bg-sky-500 text-white font-mono font-bold text-[8px] px-1 py-0.2 px-1 rounded">VORSCHRIFT</span>}
                         </span>
                         <span className={`text-sm font-extrabold block font-mono ${effectiveWcRatio > targetWcValue ? 'text-red-600' : 'text-emerald-700'}`}>
-                          {effectiveWcRatio.toFixed(3)}
+                          {formatDeZahl(effectiveWcRatio, 3)}
                         </span>
-                        <span className="text-[10px] text-slate-400 italic block mt-0.5">Effektives Wasser ({effectiveWater.toFixed(1)} l) / Zement</span>
+                        <span className="text-[10px] text-slate-400 italic block mt-0.5">Effektives Wasser ({formatDeZahl(effectiveWater, 1)} l) / Zement</span>
                       </div>
                     </div>
 
@@ -1031,14 +1032,14 @@ export default function BpBetonzusatzmittel() {
                       <div className="p-3 bg-red-50 border border-red-200 text-red-950 font-semibold rounded-lg text-xxs leading-relaxed mt-2 flex gap-1.5 items-start">
                         <AlertTriangle size={14} className="text-red-700 flex-none mt-0.5" />
                         <div>
-                          <strong>Gefahr: Ziel-w/z-Wert überschritten!</strong> Der tatsächliche w/z-Wert ({effectiveWcRatio.toFixed(3)}) übersteigt den Grenzwert von {targetWcValue.toFixed(2)} durch das Eigenwasser des Zusatzmittels. 
-                          Reduziere die Frischwasserzugabe im Mischer auf maximal <strong>{(targetWcValue * cementContent - (isWaterAnrechnungMandatory ? admixtureWaterMass : 0)).toFixed(0)} l/m³</strong>, um die Rezeptvorgabe zu halten.
+                          <strong>Gefahr: Ziel-w/z-Wert überschritten!</strong> Der tatsächliche w/z-Wert ({formatDeZahl(effectiveWcRatio, 3)}) übersteigt den Grenzwert von {formatDeZahl(targetWcValue, 2)} durch das Eigenwasser des Zusatzmittels. 
+                          Reduziere die Frischwasserzugabe im Mischer auf maximal <strong>{formatDeZahl((targetWcValue * cementContent - (isWaterAnrechnungMandatory ? admixtureWaterMass : 0)), 0)} l/m³</strong>, um die Rezeptvorgabe zu halten.
                         </div>
                       </div>
                     ) : (
                       <div className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-950 font-semibold rounded-lg text-xxs leading-relaxed mt-2 flex gap-1.5 items-center">
                         <Check size={14} className="text-emerald-700" />
-                        <span>Der tatsächliche w/z-Wert ({effectiveWcRatio.toFixed(3)}) hält den geforderten Grenzwert von ≤ {targetWcValue.toFixed(2)} sicher ein.</span>
+                        <span>Der tatsächliche w/z-Wert ({formatDeZahl(effectiveWcRatio, 3)}) hält den geforderten Grenzwert von ≤ {formatDeZahl(targetWcValue, 2)} sicher ein.</span>
                       </div>
                     )}
                   </div>
@@ -1090,8 +1091,8 @@ export default function BpBetonzusatzmittel() {
             quelle: 'DIN 1045-2 Abs. 5.2.5.3'
           },
           { 
-            formel: 'L_{300} \\ge 1.5\\,\\% \\quad \\text{und} \\quad a \\le 0.20\\,\\text{mm}', 
-            erklaerung: 'Mikroluftporengehalt L300 (Porendurchmesser <= 0.30 mm) und Abstandsfaktor a im Festbetongefüge zur Erzielung hoher Frost-Tausalz-Widerstandsfähigkeit (XF4).',
+            formel: 'L_{300} \\ge 1{,}5\\,\\% \\quad \\text{und} \\quad a \\le 0{,}20\\,\\text{mm}', 
+            erklaerung: 'Mikroluftporengehalt L300 (Porendurchmesser <= 0,30 mm) und Abstandsfaktor a im Festbetongefüge zur Erzielung hoher Frost-Tausalz-Widerstandsfähigkeit (XF4).',
             quelle: 'DIN EN 480-11'
           }
         ]}

@@ -1306,12 +1306,12 @@ ${senderName}`;
           { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' },
           { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18195' },
           { title: 'WTA-Merkblatt 4-6 (Nachträgliches Abdichten erdberührter Bauteile)', url: 'https://www.wta-gmbh.de/' },
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0.2 bis 0.4 mm)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0,2 bis 0,4 mm)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]} 
         formeln={[
           {
             formel: 'w_k = s_{r,\\text{max}} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm}) \\le w_{\\text{lim}}',
-            erklaerung: 'Charakteristische Rissbreite wk nach Eurocode 2: Produkt aus maximalem Rissabstand sr,max und Dehnungsdifferenz zwischen Bewehrungsstahl und Betonmatrix (Grenzwert w_lim meist 0.20 bis 0.40 mm).',
+            erklaerung: 'Charakteristische Rissbreite wk nach Eurocode 2: Produkt aus maximalem Rissabstand sr,max und Dehnungsdifferenz zwischen Bewehrungsstahl und Betonmatrix (Grenzwert w_lim meist 0,20 bis 0,40 mm).',
             quelle: 'DIN EN 1992-1-1 Gl. 7.8'
           },
           {

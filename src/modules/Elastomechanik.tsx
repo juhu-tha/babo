@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Activity, Ruler, Weight, ShieldAlert, Award, ArrowRight, Zap, RefreshCw, Sparkles } from 'lucide-react';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -199,7 +200,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   onChange={(e) => setForceKn(Number(e.target.value))} 
                 />
                 <div className="text-[11px] text-slate-500 italic mt-px pl-2">
-                  (= { (forceKn * 1000).toLocaleString() } N | entsprechend dem Gewicht von ca. {Math.round(forceKn * 1.0197)} Bauarbeitern)
+                  (= { formatDeWert((forceKn * 1000)) } N | entsprechend dem Gewicht von ca. {formatDeWert(Math.round(forceKn * 1.0197))} Bauarbeitern)
                 </div>
 
                 {/* Querschnitts-Geometriewähler */}
@@ -304,17 +305,17 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 <div className="p-5 bg-shiraz/5 rounded-2xl border border-shiraz/10 text-center space-y-2">
                   <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">Vorhandene Normalspannung (σ)</span>
                   <div className="text-4xl font-black text-shiraz tracking-tight font-mono">
-                    {stressMpa.toFixed(2)} <span className="text-lg font-normal">N/mm²</span>
+                    {formatDeZahl(stressMpa, 2)} <span className="text-lg font-normal">N/mm²</span>
                   </div>
                   <div className="text-xs text-text-main/70">
-                    (= {stressMpa.toFixed(2)} MPa)
+                    (= {formatDeZahl(stressMpa, 2)} MPa)
                   </div>
                   
                   <div className="mt-4 pt-3 border-t border-shiraz/10 text-xs font-mono text-slate-600 bg-white/75 rounded p-2 text-left">
                     <div className="font-bold text-slate-800 mb-1">🔢 Berechnungsschritt:</div>
-                    F = {forceKn} kN = {(forceKn * 1000).toLocaleString()} N <br />
-                    A = {areaCalculated.mm2.toLocaleString(undefined, {maximumFractionDigits: 0})} mm² (= {areaCalculated.cm2.toFixed(1)} cm²)<br />
-                    σ = {(forceKn * 1000).toLocaleString()} N / {areaCalculated.mm2.toLocaleString(undefined, {maximumFractionDigits: 1})} mm² = <span className="text-shiraz font-bold">{stressMpa.toFixed(2)} N/mm²</span>
+                    F = {formatDeWert(forceKn)} kN = {formatDeWert((forceKn * 1000))} N <br />
+                    A = {formatDeZahl(areaCalculated.mm2, 0)} mm² (= {formatDeZahl(areaCalculated.cm2, 1)} cm²)<br />
+                    σ = {formatDeWert((forceKn * 1000))} N / {formatDeZahl(areaCalculated.mm2, 1)} mm² = <span className="text-shiraz font-bold">{formatDeZahl(stressMpa, 2)} N/mm²</span>
                   </div>
                 </div>
 
@@ -355,7 +356,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     <ArrowRight className="w-8 h-8 text-shiraz" />
                   </div>
                   <div className="absolute right-4 bg-white px-2 py-1 border border-slate-200 rounded text-[10px] shadow-sm font-mono text-shiraz font-bold">
-                    F = {forceKn} kN
+                    F = {formatDeWert(forceKn)} kN
                   </div>
                 </div>
               </div>
@@ -408,7 +409,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   onChange={(e) => setOriginalLengthM(Number(e.target.value))} 
                 />
                 <div className="text-[11px] text-slate-500 italic mt-px pl-2">
-                  (= { (originalLengthM * 1000).toLocaleString() } mm)
+                  (= { formatDeWert((originalLengthM * 1000)) } mm)
                 </div>
 
                 <Slider 
@@ -439,18 +440,18 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     {elongationMm < 0 ? 'Errechnete Stauchung' : 'Errechnete Dehnung'} (<InlineMath math="\varepsilon" />)
                   </span>
                   <div className="text-4xl font-black text-shiraz tracking-tight font-mono">
-                    {strainCalculated.permille.toFixed(3)} <span className="text-lg font-normal">‰</span>
+                    {formatDeZahl(strainCalculated.permille, 3)} <span className="text-lg font-normal">‰</span>
                   </div>
                   <div className="text-xs text-text-main/70 grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-shiraz/10 max-w-xs mx-auto">
-                    <div>Prozent: <span className="font-bold">{strainCalculated.percent.toFixed(4)} %</span></div>
+                    <div>Prozent: <span className="font-bold">{formatDeZahl(strainCalculated.percent, 4)} %</span></div>
                     <div>Dimensionslos: <span className="font-bold font-mono">{strainCalculated.raw.toExponential(3)}</span></div>
                   </div>
                   
                   <div className="mt-4 pt-3 border-t border-shiraz/10 text-xs font-mono text-slate-600 bg-white/75 rounded p-2 text-left">
                     <div className="font-bold text-slate-800 mb-1">🔢 Berechnungsschritt:</div>
-                    l₀ = {originalLengthM} m = {(originalLengthM * 1000).toLocaleString()} mm<br />
-                    Δl = {elongationMm} mm <br />
-                    ε = {elongationMm} mm / {(originalLengthM * 1000).toLocaleString()} mm = <span className="text-shiraz font-bold">{strainCalculated.raw.toFixed(6)}</span> = <span className="text-shiraz font-bold">{strainCalculated.permille.toFixed(3)} ‰</span>
+                    l₀ = {formatDeWert(originalLengthM)} m = {formatDeWert((originalLengthM * 1000))} mm<br />
+                    Δl = {formatDeWert(elongationMm)} mm <br />
+                    ε = {formatDeWert(elongationMm)} mm / {formatDeWert((originalLengthM * 1000))} mm = <span className="text-shiraz font-bold">{formatDeZahl(strainCalculated.raw, 6)}</span> = <span className="text-shiraz font-bold">{formatDeZahl(strainCalculated.permille, 3)} ‰</span>
                   </div>
                 </div>
 
@@ -480,7 +481,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 <div className="h-16 flex items-center justify-center relative bg-white rounded border border-slate-200">
                   {/* Original outline */}
                   <div className="absolute h-4 border border-dashed border-slate-300 w-2/3 flex items-center justify-center bg-slate-50 opacity-60">
-                    <span className="text-[8px] text-slate-400">Ausgangszustand (l₀ = {originalLengthM.toFixed(1)}m)</span>
+                    <span className="text-[8px] text-slate-400">Ausgangszustand (l₀ = {formatDeZahl(originalLengthM, 1)}m)</span>
                   </div>
                   {/* Stretched specimen */}
                   <div 
@@ -491,7 +492,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     }`}
                     style={{ width: `${Math.max(10, Math.min(95, 66.6 + (elongationMm * 1.5)))}%` }}
                   >
-                    <span>Länge neu (+ {elongationMm.toFixed(1)} mm)</span>
+                    <span>Länge neu (+ {formatDeZahl(elongationMm, 1)} mm)</span>
                   </div>
                 </div>
               </div>
@@ -545,7 +546,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     <div className="flex justify-between items-center w-full">
                       <span className="font-bold">{preset.name}</span>
                       <span className="font-mono font-black text-shiraz whitespace-nowrap bg-white border border-slate-100 rounded px-1.5 py-0.5 text-[10px]">
-                        E = {preset.eModul.toLocaleString()} MPa
+                        E = {formatDeWert(preset.eModul)} MPa
                       </span>
                     </div>
                     <p className="text-[10px] text-text-main/60">{preset.description}</p>
@@ -592,8 +593,8 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     onChange={(e) => setHookeStrainPermille(Number(e.target.value))} 
                   />
                   <div className="text-[10px] text-slate-500 mt-2 italic flex justify-between">
-                    <span>(= {hookeStrainPermille.toFixed(1)} mm Verlängerung pro Meter Länge)</span>
-                    <span>= {(hookeStrainPermille / 1000).toFixed(4)} [-]</span>
+                    <span>(= {formatDeZahl(hookeStrainPermille, 1)} mm Verlängerung pro Meter Länge)</span>
+                    <span>= {formatDeZahl((hookeStrainPermille / 1000), 4)} [-]</span>
                   </div>
                 </div>
 
@@ -603,17 +604,17 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     Errechnete Elastische Spannung (σ)
                   </span>
                   <div className="text-4xl font-black text-shiraz tracking-tight font-mono">
-                    {stressHooke.toFixed(2)} <span className="text-lg font-normal">N/mm²</span>
+                    {formatDeZahl(stressHooke, 2)} <span className="text-lg font-normal">N/mm²</span>
                   </div>
                   <div className="text-xs text-text-main/70">
-                    (= {stressHooke.toFixed(2)} MPa)
+                    (= {formatDeZahl(stressHooke, 2)} MPa)
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-shiraz/10 text-xs font-mono text-slate-600 bg-white/75 rounded p-2 text-left">
                     <div className="font-bold text-slate-800 mb-1">🔢 Berechnungsschritt:</div>
-                    E = {E_to_use.toLocaleString()} MPa (N/mm²)<br />
-                    ε = {hookeStrainPermille} ‰ = {(hookeStrainPermille / 1000).toFixed(4)} <br />
-                    σ = {E_to_use.toLocaleString()} · {(hookeStrainPermille / 1000).toFixed(4)} = <span className="text-shiraz font-bold">{stressHooke.toFixed(2)} N/mm²</span>
+                    E = {formatDeWert(E_to_use)} MPa (N/mm²)<br />
+                    ε = {formatDeWert(hookeStrainPermille)} ‰ = {formatDeZahl((hookeStrainPermille / 1000), 4)} <br />
+                    σ = {formatDeWert(E_to_use)} · {formatDeZahl((hookeStrainPermille / 1000), 4)} = <span className="text-shiraz font-bold">{formatDeZahl(stressHooke, 2)} N/mm²</span>
                   </div>
                 </div>
               </div>
@@ -694,7 +695,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                                   className="fill-shiraz stroke-white stroke-2 animate-pulse" 
                                 />
                                 <text x={currentX + 8} y={currentY - 4} className="text-[9px] font-bold fill-shiraz font-mono bg-white">
-                                  σ = {stressHooke.toFixed(0)} MPa
+                                  σ = {formatDeZahl(stressHooke, 0)} MPa
                                 </text>
                               </g>
                             );

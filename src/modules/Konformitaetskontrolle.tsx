@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   CheckCircle2, 
@@ -330,7 +331,7 @@ export default function Konformitaetskontrolle() {
                   </li>
                   <li className="flex justify-between">
                     <span>Stetige Produktion (n &ge; 15):</span>
-                    <span className="font-mono font-bold bg-stone-100 px-1 rounded">f_cm &ge; f_ck + 1.48 &middot; &sigma;</span>
+                    <span className="font-mono font-bold bg-stone-100 px-1 rounded">f_cm &ge; f_ck + 1,48 &middot; &sigma;</span>
                   </li>
                 </ul>
               </div>
@@ -380,11 +381,11 @@ export default function Konformitaetskontrolle() {
                   <span className="bg-emerald-100 text-emerald-850 text-[9px] font-bold px-1.5 py-0.5 rounded font-sans">KONFORM</span>
                 </div>
                 <p className="text-[10px] text-text-main/70 leading-normal">
-                  Eignungsprüfung (Anfangsproduktion <span className="font-mono font-bold">n = 3</span>) für Deckenbeton. Alle Einzelwerte erfüllen das Kriterium (f_ci &ge; 26.0) und der Mittelwert übertrifft die geforderten 34.0 N/mm².
+                  Eignungsprüfung (Anfangsproduktion <span className="font-mono font-bold">n = 3</span>) für Deckenbeton. Alle Einzelwerte erfüllen das Kriterium (f_ci &ge; 26,0) und der Mittelwert übertrifft die geforderten 34,0 N/mm².
                 </p>
               </div>
               <div className="mt-2 text-[9.5px] font-mono font-bold text-slate-600 bg-stone-100/80 p-1 rounded">
-                Messwerte: 34.8, 35.5, 36.2 N/mm²
+                Messwerte: 34.8, 35.5, 36,2 N/mm²
               </div>
             </button>
 
@@ -400,11 +401,11 @@ export default function Konformitaetskontrolle() {
                   <span className="bg-emerald-100 text-emerald-850 text-[9px] font-bold px-1.5 py-0.5 rounded font-sans">KONFORM</span>
                 </div>
                 <p className="text-[10px] text-text-main/70 leading-normal">
-                  Stetiges Produktionskontrollverfahren (<span className="font-mono font-bold">n = 15</span> Würfel). Die Standardabweichung beträgt realistische 1.76 N/mm² (unterer Deckel s=3.0 greift). Eingehalten!
+                  Stetiges Produktionskontrollverfahren (<span className="font-mono font-bold">n = 15</span> Würfel). Die Standardabweichung beträgt realistische 1,76 N/mm² (unterer Deckel s=3.0 greift). Eingehalten!
                 </p>
               </div>
               <div className="mt-2 text-[9.5px] font-mono font-bold text-slate-600 bg-stone-100/80 p-1 rounded truncate">
-                n = 15 (Mittel: 41.67 N/mm² &ge; Soll-Mittel: 41.44)
+                n = 15 (Mittel: 41,67 N/mm² &ge; Soll-Mittel: 41.44)
               </div>
             </button>
 
@@ -420,11 +421,11 @@ export default function Konformitaetskontrolle() {
                   <span className="bg-rose-100 text-rose-850 text-[9px] font-bold px-1.5 py-0.5 rounded font-sans">MANGELHAFT</span>
                 </div>
                 <p className="text-[10px] text-text-main/70 leading-normal">
-                  Identitätsprüfung für Zylinder (<span className="font-mono font-bold">n = 3</span>). Einzelwerte liegen über dem Mindestwert, aber der Mittelwert (29.93 N/mm²) reißt die geforderten 31.0 N/mm² (f_ck + 1.0).
+                  Identitätsprüfung für Zylinder (<span className="font-mono font-bold">n = 3</span>). Einzelwerte liegen über dem Mindestwert, aber der Mittelwert (29,93 N/mm²) reißt die geforderten 31,0 N/mm² (f_ck + 1,0).
                 </p>
               </div>
               <div className="mt-2 text-[9.5px] font-mono font-bold text-red-800 bg-rose-50/50 p-1 rounded">
-                Messwerte: 31.2, 28.5, 30.1 N/mm²
+                Messwerte: 31.2, 28.5, 30,1 N/mm²
               </div>
             </button>
 
@@ -450,7 +451,7 @@ export default function Konformitaetskontrolle() {
                 >
                   {CONCRETE_CLASSES.map(cls => (
                     <option key={cls.name} value={cls.name}>
-                      {cls.name} (Zylinder: {cls.fck_cyl} / Würfel: {cls.fck_cube} N/mm²)
+                      {cls.name} (Zylinder: {formatDeWert(cls.fck_cyl)} / Würfel: {formatDeWert(cls.fck_cube)} N/mm²)
                     </option>
                   ))}
                 </select>
@@ -485,7 +486,7 @@ export default function Konformitaetskontrolle() {
                 <div>
                   <span className="font-semibold text-text-main/80 block mb-1">Charakt. Wert f_ck:</span>
                   <div className="bg-stone-100 border border-home-grau/30 rounded-lg p-1.5 text-center font-mono font-bold text-slate-800">
-                    {fck} N/mm²
+                    {formatDeWert(fck)} N/mm²
                   </div>
                 </div>
               </div>
@@ -513,7 +514,7 @@ export default function Konformitaetskontrolle() {
                     }`}
                   >
                     <span>Stetige Produktion (n &ge; 15)</span>
-                    <span className="font-mono text-[9px] opacity-80">(f_cm &ge; f_ck + 1.48&middot;s)</span>
+                    <span className="font-mono text-[9px] opacity-80">(f_cm &ge; f_ck + 1,48&middot;s)</span>
                   </button>
 
                   <button
@@ -626,7 +627,7 @@ export default function Konformitaetskontrolle() {
 
                 {testValues.length === 0 ? (
                   <div className="text-center p-4 bg-white border border-dashed border-home-grau/25 rounded-xl text-xs text-home-grau font-semibold">
-                    Keine Prüfkörper gelistet. Tragen Sie Werte ein oder wähle ein Muster.
+                    Keine Prüfkörper gelistet. Tragen Sie Werte ein oder wählen Sie ein Muster.
                   </div>
                 ) : (
                   <div className="flex flex-wrap gap-1 max-h-28 overflow-y-auto p-1 bg-white rounded-lg border border-stone-200">
@@ -639,7 +640,7 @@ export default function Konformitaetskontrolle() {
                             : 'bg-rose-50 text-rose-800 border-rose-250 animate-pulse'
                         }`}
                       >
-                        {val}
+                        {formatDeWert(val)}
                         <button
                           type="button"
                           onClick={() => handleDeleteValue(idx)}
@@ -729,7 +730,7 @@ export default function Konformitaetskontrolle() {
                         <li className="flex gap-1.5 items-start font-semibold text-rose-950">
                           <X className="text-red-600 shrink-0 mt-0.5" size={14} />
                           <span>
-                            Mittelwertkriterium verfehlt: Der Gesamtmittelwert <strong className="font-mono">{stats.mean} N/mm²</strong> liegt unter dem normativ geforderten Mindestmittelwert von <strong className="font-mono">{stats.requiredMean} N/mm²</strong>. (Fehlbetrag: {(stats.requiredMean - stats.mean).toFixed(2)} N/mm²).
+                            Mittelwertkriterium verfehlt: Der Gesamtmittelwert <strong className="font-mono">{formatDeWert(stats.mean)} N/mm²</strong> liegt unter dem normativ geforderten Mindestmittelwert von <strong className="font-mono">{formatDeWert(stats.requiredMean)} N/mm²</strong>. (Fehlbetrag: {formatDeZahl((stats.requiredMean - stats.mean), 2)} N/mm²).
                           </span>
                         </li>
                       )}
@@ -739,7 +740,7 @@ export default function Konformitaetskontrolle() {
                         <li className="flex gap-1.5 items-start font-semibold text-rose-950">
                           <X className="text-red-600 shrink-0 mt-0.5" size={14} />
                           <span>
-                            Einzelwert-Ausreißer gefunden: Mindestens ein geprüfter Wert (<strong className="font-mono text-red-750">{stats.minVal} N/mm²</strong>) liegt unter der kritischen Schranke von <strong className="font-mono">{stats.requiredMin} N/mm²</strong> (f_ck - 4). Das stellt eine lokale strukturelle Gefährdung dar!
+                            Einzelwert-Ausreißer gefunden: Mindestens ein geprüfter Wert (<strong className="font-mono text-red-750">{formatDeWert(stats.minVal)} N/mm²</strong>) liegt unter der kritischen Schranke von <strong className="font-mono">{formatDeWert(stats.requiredMin)} N/mm²</strong> (f_ck - 4). Das stellt eine lokale strukturelle Gefährdung dar!
                           </span>
                         </li>
                       )}
@@ -770,8 +771,8 @@ export default function Konformitaetskontrolle() {
 
                     <div className="bg-stone-50 border p-2.5 rounded-lg border-stone-200">
                       <span className="text-slate-500 text-[9px] uppercase font-bold block">Mittelwert (f_cm)</span>
-                      <span className={`text-lg font-mono font-black mt-0.5 block ${stats.meanPassed ? 'text-emerald-700' : 'text-red-700'}`}>{stats.mean}</span>
-                      <span className="text-[9px] text-slate-500">Soll: &ge;<strong>{stats.requiredMean}</strong> N/mm²</span>
+                      <span className={`text-lg font-mono font-black mt-0.5 block ${stats.meanPassed ? 'text-emerald-700' : 'text-red-700'}`}>{formatDeWert(stats.mean)}</span>
+                      <span className="text-[9px] text-slate-500">Soll: &ge;<strong>{formatDeWert(stats.requiredMean)}</strong> N/mm²</span>
                     </div>
 
                     <div className="bg-stone-50 border p-2.5 rounded-lg border-stone-200">
@@ -780,7 +781,7 @@ export default function Konformitaetskontrolle() {
                         {testValues.length > 1 ? stats.stdDev : '—'}
                       </span>
                       {testMode === 'stetig' ? (
-                        <span className="text-[9px] text-slate-500">Angewandt: <strong>{stats.stdDevUsed}</strong> (min 3.0)</span>
+                        <span className="text-[9px] text-slate-500">Angewandt: <strong>{formatDeWert(stats.stdDevUsed)}</strong> (min 3.0)</span>
                       ) : (
                         <span className="text-[9px] text-slate-400">Inaktiv bei n &lt; 15</span>
                       )}
@@ -788,8 +789,8 @@ export default function Konformitaetskontrolle() {
 
                     <div className="bg-stone-50 border p-2.5 rounded-lg border-stone-200">
                       <span className="text-slate-500 text-[9px] uppercase font-bold block">Min. Einzelwert</span>
-                      <span className={`text-lg font-mono font-black mt-0.5 block ${stats.minPassed ? 'text-slate-850' : 'text-red-700 animate-pulse'}`}>{stats.minVal}</span>
-                      <span className="text-[9px] text-slate-500">Grenz: &ge;<strong>{stats.requiredMin}</strong> N/mm²</span>
+                      <span className={`text-lg font-mono font-black mt-0.5 block ${stats.minPassed ? 'text-slate-850' : 'text-red-700 animate-pulse'}`}>{formatDeWert(stats.minVal)}</span>
+                      <span className="text-[9px] text-slate-500">Grenz: &ge;<strong>{formatDeWert(stats.requiredMin)}</strong> N/mm²</span>
                     </div>
 
                   </div>
@@ -834,7 +835,7 @@ export default function Konformitaetskontrolle() {
                               textAnchor="end" 
                               className="font-mono text-[9px] text-[#1e293b] font-semibold"
                             >
-                              {Math.round(val)}
+                              {formatDeWert(Math.round(val))}
                             </text>
                           </g>
                         );
@@ -878,7 +879,7 @@ export default function Konformitaetskontrolle() {
                               y={coord.y + 3} 
                               className="font-mono text-[8.5px] text-emerald-800 font-bold"
                             >
-                              f_ck ({fck})
+                              f_ck ({formatDeWert(fck)})
                             </text>
                           </g>
                         );
@@ -903,7 +904,7 @@ export default function Konformitaetskontrolle() {
                               y={coord.y + 3} 
                               className="font-mono text-[8.5px] text-red-800 font-bold"
                             >
-                              f_ck - 4 ({stats.requiredMin})
+                              f_ck - 4 ({formatDeWert(stats.requiredMin)})
                             </text>
                           </g>
                         );
@@ -929,7 +930,7 @@ export default function Konformitaetskontrolle() {
                               y={coord.y - 4} 
                               className="font-mono text-[8px] text-amber-700 font-bold"
                             >
-                              Soll-Mittelwert ({stats.requiredMean})
+                              Soll-Mittelwert ({formatDeWert(stats.requiredMean)})
                             </text>
                           </g>
                         );
@@ -954,7 +955,7 @@ export default function Konformitaetskontrolle() {
                               y={coord.y + 9} 
                               className="font-mono text-[8px] text-blue-800 font-bold bg-white-fade px-0.5"
                             >
-                              Ist-Mittelwert f_cm ({stats.mean})
+                              Ist-Mittelwert f_cm ({formatDeWert(stats.mean)})
                             </text>
                           </g>
                         );
@@ -1016,7 +1017,7 @@ export default function Konformitaetskontrolle() {
                               textAnchor="middle" 
                               className="font-mono text-[9px] font-black text-slate-700"
                             >
-                              {val}
+                              {formatDeWert(val)}
                             </text>
                             
                             {/* tick index on bottom X-axis */}
@@ -1133,7 +1134,7 @@ export default function Konformitaetskontrolle() {
             quelle: 'DIN EN 206'
           },
           {
-            formel: 's = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^n (f_{ci} - f_{cm})^2} \\quad (s \\ge 2.0\\,\\text{N/mm}^2)',
+            formel: 's = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^n (f_{ci} - f_{cm})^2} \\quad (s \\ge 2{,}0\\,\\text{N/mm}^2)',
             erklaerung: 'Empirische Standardabweichung der Prüfserie zur Beurteilung der Produktionshomogenität.',
             quelle: 'DIN EN 206'
           }

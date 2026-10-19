@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Leaf, Award, ShieldCheck, Factory, HelpCircle, CheckCircle, Flame, Star, Percent, BookOpen } from 'lucide-react';
@@ -109,7 +110,7 @@ export default function CscZertifizierung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
                 <span>1. Management-Systeme (Gewichtung 10%)</span>
-                <span className="font-mono text-shiraz">{managementScore}%</span>
+                <span className="font-mono text-shiraz">{formatDeWert(managementScore)}%</span>
               </div>
               <input 
                 type="range" min="0" max="100" 
@@ -123,7 +124,7 @@ export default function CscZertifizierung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
                 <span>2. Umwelt &amp; CO₂ (Gewichtung 35%)</span>
-                <span className="font-mono text-shiraz">{umweltScore}%</span>
+                <span className="font-mono text-shiraz">{formatDeWert(umweltScore)}%</span>
               </div>
               <input 
                 type="range" min="0" max="100" 
@@ -137,7 +138,7 @@ export default function CscZertifizierung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
                 <span>3. Soziale Standards (Gewichtung 15%)</span>
-                <span className="font-mono text-shiraz">{sozialesScore}%</span>
+                <span className="font-mono text-shiraz">{formatDeWert(sozialesScore)}%</span>
               </div>
               <input 
                 type="range" min="0" max="100" 
@@ -151,7 +152,7 @@ export default function CscZertifizierung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
                 <span>4. Regionale Ökonomie (Gewichtung 10%)</span>
-                <span className="font-mono text-shiraz">{oekonomieScore}%</span>
+                <span className="font-mono text-shiraz">{formatDeWert(oekonomieScore)}%</span>
               </div>
               <input 
                 type="range" min="0" max="100" 
@@ -165,7 +166,7 @@ export default function CscZertifizierung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
                 <span>5. Nachhaltige Lieferkette / Sourcing (Gewichtung 30%)</span>
-                <span className="font-mono text-shiraz">{supplyChainScore}%</span>
+                <span className="font-mono text-shiraz">{formatDeWert(supplyChainScore)}%</span>
               </div>
               <input 
                 type="range" min="0" max="100" 
@@ -186,7 +187,7 @@ export default function CscZertifizierung() {
                 <span className="text-[10px] font-bold text-text-main/40 uppercase tracking-wider block">Kalkuliertes Gesamtergebnis</span>
                 
                 <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-4xl font-extrabold font-mono text-shiraz">{weightedScore.toFixed(1)}%</span>
+                  <span className="text-4xl font-extrabold font-mono text-shiraz">{formatDeZahl(weightedScore, 1)}%</span>
                   <span className="text-xs text-text-main/50">Gesamt-Score-Punkte</span>
                 </div>
 
@@ -359,7 +360,7 @@ export default function CscZertifizierung() {
             quelle: 'CSC Technical Manual'
           },
           {
-            formel: 'R_{\\text{Supply Chain}} = 0.40 \\cdot S_{\\text{Zement}} + 0.15 \\cdot S_{\\text{Gestein}}',
+            formel: 'R_{\\text{Supply Chain}} = 0{,}40 \\cdot S_{\\text{Zement}} + 0{,}15 \\cdot S_{\\text{Gestein}}',
             erklaerung: 'CSC R-Modul für rezyklierte Gesteinskörnungen und nachhaltige Lieferkettengewichtung zur DGNB-Anrechnung.',
             quelle: 'CSC / DGNB Kriterium ENV1.3'
           }

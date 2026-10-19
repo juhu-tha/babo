@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   FileSpreadsheet, 
@@ -265,7 +266,7 @@ export default function TransportbetonLcaUebung() {
             <label className="text-xxs font-bold text-text-main/80 flex items-center justify-between">
               <span>Zementtyp (Bindemittel nach DIN EN 197-1):</span>
               <span className="text-slate-500 font-mono text-[10px]">
-                EF: {cemFactor.toFixed(3)} kg CO₂-eq/kg
+                EF: {formatDeZahl(cemFactor, 3)} kg CO₂-eq/kg
               </span>
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -296,7 +297,7 @@ export default function TransportbetonLcaUebung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xxs font-bold text-text-main/80">
                 <span>Zementgehalt:</span>
-                <span className="text-shiraz font-mono">{cemAmount} kg/m³</span>
+                <span className="text-shiraz font-mono">{formatDeWert(cemAmount)} kg/m³</span>
               </div>
               <input 
                 type="range" 
@@ -316,7 +317,7 @@ export default function TransportbetonLcaUebung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xxs font-bold text-text-main/80">
                 <span>Zusatzstoff: Flugasche:</span>
-                <span className="text-slate-700 font-mono">{flyAsh} kg/m³</span>
+                <span className="text-slate-700 font-mono">{formatDeWert(flyAsh)} kg/m³</span>
               </div>
               <input 
                 type="range" 
@@ -343,7 +344,7 @@ export default function TransportbetonLcaUebung() {
               <div className="space-y-1">
                 <div className="flex justify-between text-xxs font-bold text-slate-700">
                   <span>Sand 0/4 mm:</span>
-                  <span className="font-mono">{sand} kg</span>
+                  <span className="font-mono">{formatDeWert(sand)} kg</span>
                 </div>
                 <input 
                   type="range" min="500" max="900" step="10" value={sand} 
@@ -354,7 +355,7 @@ export default function TransportbetonLcaUebung() {
               <div className="space-y-1">
                 <div className="flex justify-between text-xxs font-bold text-slate-700">
                   <span>Kies 4/16 (Primär):</span>
-                  <span className="font-mono">{gravel} kg</span>
+                  <span className="font-mono">{formatDeWert(gravel)} kg</span>
                 </div>
                 <input 
                   type="range" min="400" max="1300" step="10" value={gravel} 
@@ -365,7 +366,7 @@ export default function TransportbetonLcaUebung() {
               <div className="space-y-1">
                 <div className="flex justify-between text-xxs font-bold text-emerald-800">
                   <span>RC-Kies 4/16 (Typ 1):</span>
-                  <span className="font-mono font-bold text-emerald-700">{rcGravel} kg</span>
+                  <span className="font-mono font-bold text-emerald-700">{formatDeWert(rcGravel)} kg</span>
                 </div>
                 <input 
                   type="range" min="0" max="700" step="10" value={rcGravel} 
@@ -381,7 +382,7 @@ export default function TransportbetonLcaUebung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xxs font-bold text-slate-700">
                 <span>Zugabewasser:</span>
-                <span className="font-mono">{water} kg/m³</span>
+                <span className="font-mono">{formatDeWert(water)} kg/m³</span>
               </div>
               <input 
                 type="range" min="140" max="210" step="5" value={water} 
@@ -392,7 +393,7 @@ export default function TransportbetonLcaUebung() {
             <div className="space-y-1">
               <div className="flex justify-between text-xxs font-bold text-slate-700">
                 <span>Fließmittel PCE:</span>
-                <span className="font-mono">{superplasticizer.toFixed(1)} kg/m³</span>
+                <span className="font-mono">{formatDeZahl(superplasticizer, 1)} kg/m³</span>
               </div>
               <input 
                 type="range" min="1.0" max="6.0" step="0.2" value={superplasticizer} 
@@ -412,7 +413,7 @@ export default function TransportbetonLcaUebung() {
                 <span className="block text-slate-500">Zementwerk ➔ Betonwerk (A2):</span>
                 <div className="flex items-center gap-2 mt-1">
                   <input 
-                    type="number" value={distA2Cement} onChange={e => setDistA2Cement(Number(e.target.value))}
+                    type="number" min="0" value={distA2Cement} onChange={e => setDistA2Cement(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
                   <span className="text-slate-400">km (Lkw 40t)</span>
@@ -422,7 +423,7 @@ export default function TransportbetonLcaUebung() {
                 <span className="block text-slate-500">Kieswerk ➔ Betonwerk (A2):</span>
                 <div className="flex items-center gap-2 mt-1">
                   <input 
-                    type="number" value={distA2Aggregates} onChange={e => setDistA2Aggregates(Number(e.target.value))}
+                    type="number" min="0" value={distA2Aggregates} onChange={e => setDistA2Aggregates(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
                   <span className="text-slate-400">km (Lkw 40t)</span>
@@ -432,7 +433,7 @@ export default function TransportbetonLcaUebung() {
                 <span className="block text-slate-500">Betonwerk ➔ Baustelle (A4):</span>
                 <div className="flex items-center gap-2 mt-1">
                   <input 
-                    type="number" value={distA4Jobsite} onChange={e => setDistA4Jobsite(Number(e.target.value))}
+                    type="number" min="0" value={distA4Jobsite} onChange={e => setDistA4Jobsite(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
                   <span className="text-slate-400">km (Fahrmischer)</span>
@@ -453,13 +454,13 @@ export default function TransportbetonLcaUebung() {
               <span className={`px-2.5 py-0.5 rounded-full text-xxs font-bold ${
                 savingPct > 30 ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'bg-white text-text-main border border-home-grau/30'
               }`}>
-                {savingPct > 0 ? `-${savingPct.toFixed(1)} % CO₂` : 'Referenzniveau'}
+                {savingPct > 0 ? `-${formatDeZahl(savingPct, 1)} % CO₂` : 'Referenzniveau'}
               </span>
             </div>
             
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-black font-mono tracking-tight text-shiraz">
-                {total_A1A5.toFixed(1)}
+                {formatDeZahl(total_A1A5, 1)}
               </span>
               <span className="text-xs text-text-main/70 font-mono">kg CO₂-eq / m³</span>
             </div>
@@ -469,14 +470,14 @@ export default function TransportbetonLcaUebung() {
               <div>
                 <span className="text-text-main/70 block">Äquivalenter (w/z)_eq:</span>
                 <span className={`font-mono font-bold text-xs ${wz_eq <= 0.50 ? 'text-emerald-700' : 'text-amber-700'}`}>
-                  {wz_eq.toFixed(2)}
+                  {formatDeZahl(wz_eq, 2)}
                 </span>
                 <span className="text-[10px] text-text-main/60 block">{wz_eq <= 0.50 ? 'Normkonform ≤ 0,50' : 'Warnung: > 0,50'}</span>
               </div>
               <div>
                 <span className="text-text-main/70 block">Cradle-to-Gate (A1-A3):</span>
                 <span className="font-mono font-bold text-xs text-text-main">
-                  {sum_A1A3.toFixed(1)} kg CO₂/m³
+                  {formatDeZahl(sum_A1A3, 1)} kg CO₂/m³
                 </span>
                 <span className="text-[10px] text-text-main/60 block">ÖKOBAUDAT-Wert</span>
               </div>
@@ -494,7 +495,7 @@ export default function TransportbetonLcaUebung() {
               <div>
                 <div className="flex justify-between mb-0.5">
                   <span className="font-semibold text-slate-700">A1: Rohstoffe &amp; Zement</span>
-                  <span className="font-mono font-bold">{sum_A1.toFixed(1)} kg ({(sum_A1 / total_A1A5 * 100).toFixed(0)}%)</span>
+                  <span className="font-mono font-bold">{formatDeZahl(sum_A1, 1)} kg ({formatDeZahl((sum_A1 / total_A1A5 * 100), 0)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-shiraz h-full rounded-full" style={{ width: `${(sum_A1 / total_A1A5 * 100)}%` }}></div>
@@ -504,7 +505,7 @@ export default function TransportbetonLcaUebung() {
               <div>
                 <div className="flex justify-between mb-0.5">
                   <span className="font-semibold text-slate-700">A2: Transport der Rohstoffe zum Werk</span>
-                  <span className="font-mono font-bold">{sum_A2.toFixed(1)} kg ({(sum_A2 / total_A1A5 * 100).toFixed(1)}%)</span>
+                  <span className="font-mono font-bold">{formatDeZahl(sum_A2, 1)} kg ({formatDeZahl((sum_A2 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-blue-500 h-full rounded-full" style={{ width: `${(sum_A2 / total_A1A5 * 100)}%` }}></div>
@@ -514,7 +515,7 @@ export default function TransportbetonLcaUebung() {
               <div>
                 <div className="flex justify-between mb-0.5">
                   <span className="font-semibold text-slate-700">A3: Betonmischwerk (Strom &amp; Wärme)</span>
-                  <span className="font-mono font-bold">{sum_A3.toFixed(1)} kg ({(sum_A3 / total_A1A5 * 100).toFixed(1)}%)</span>
+                  <span className="font-mono font-bold">{formatDeZahl(sum_A3, 1)} kg ({formatDeZahl((sum_A3 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-amber-500 h-full rounded-full" style={{ width: `${(sum_A3 / total_A1A5 * 100)}%` }}></div>
@@ -524,7 +525,7 @@ export default function TransportbetonLcaUebung() {
               <div>
                 <div className="flex justify-between mb-0.5">
                   <span className="font-semibold text-slate-700">A4: Fahrmischer-Transport zur Baustelle</span>
-                  <span className="font-mono font-bold">{sum_A4.toFixed(1)} kg ({(sum_A4 / total_A1A5 * 100).toFixed(1)}%)</span>
+                  <span className="font-mono font-bold">{formatDeZahl(sum_A4, 1)} kg ({formatDeZahl((sum_A4 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-indigo-500 h-full rounded-full" style={{ width: `${(sum_A4 / total_A1A5 * 100)}%` }}></div>
@@ -534,7 +535,7 @@ export default function TransportbetonLcaUebung() {
               <div>
                 <div className="flex justify-between mb-0.5">
                   <span className="font-semibold text-slate-700">A5: Einbau &amp; Betonpumpe</span>
-                  <span className="font-mono font-bold">{sum_A5.toFixed(1)} kg ({(sum_A5 / total_A1A5 * 100).toFixed(1)}%)</span>
+                  <span className="font-mono font-bold">{formatDeZahl(sum_A5, 1)} kg ({formatDeZahl((sum_A5 / total_A1A5 * 100), 1)}%)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-teal-500 h-full rounded-full" style={{ width: `${(sum_A5 / total_A1A5 * 100)}%` }}></div>
@@ -551,7 +552,7 @@ export default function TransportbetonLcaUebung() {
               </span>
               <div className="flex items-center gap-1">
                 <input 
-                  type="number" 
+                  type="number" min="0" 
                   value={projectVolumeM3} 
                   onChange={e => setProjectVolumeM3(Number(e.target.value))}
                   className="w-16 p-0.5 text-xxs font-bold text-center bg-white border border-emerald-300 rounded font-mono"
@@ -564,13 +565,13 @@ export default function TransportbetonLcaUebung() {
               <div>
                 <span className="text-emerald-800 block">Projekt-CO₂ (A1-A5):</span>
                 <span className="font-mono font-bold text-xs text-emerald-950">
-                  {projectTotalCO2Ton.toFixed(1)} t CO₂-eq
+                  {formatDeZahl(projectTotalCO2Ton, 1)} t CO₂-eq
                 </span>
               </div>
               <div>
                 <span className="text-emerald-800 block">Eingespart ggü. CEM I:</span>
                 <span className="font-mono font-bold text-xs text-emerald-700">
-                  {projectSavedCO2Ton.toFixed(1)} t CO₂-eq
+                  {formatDeZahl(projectSavedCO2Ton, 1)} t CO₂-eq
                 </span>
               </div>
             </div>

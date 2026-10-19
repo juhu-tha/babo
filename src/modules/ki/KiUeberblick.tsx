@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Sparkles, 
@@ -1030,7 +1031,7 @@ export default function KiUeberblick() {
                               {termsData[selectedTerm].examples[selectedExampleIndex].category}
                             </span>
                             <h4 className="text-base font-bold text-text-main mt-1 flex items-center gap-2">
-                              <span>Anwendungsfall {selectedExampleIndex + 1}:</span>
+                              <span>Anwendungsfall {formatDeWert(selectedExampleIndex + 1)}:</span>
                               <span>{termsData[selectedTerm].examples[selectedExampleIndex].title}</span>
                             </h4>
                           </div>

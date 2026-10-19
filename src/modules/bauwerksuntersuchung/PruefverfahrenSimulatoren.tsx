@@ -1,4 +1,4 @@
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Activity, Gauge, AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Waves, Hammer, Compass, Trees, Scale, Layers } from 'lucide-react';
@@ -83,10 +83,10 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     else if (fc_est >= 20) grade = 'C20/25';
 
     return {
-      r_corr: r_corr.toFixed(1),
-      k_carb: k_carb.toFixed(2),
-      r_final: r_final.toFixed(1),
-      fc_est: fc_est.toFixed(1),
+      r_corr: formatDeZahl(r_corr, 1),
+      k_carb: formatDeZahl(k_carb, 2),
+      r_final: formatDeZahl(r_final, 1),
+      fc_est: formatDeZahl(fc_est, 1),
       grade
     };
   }, [rebound, impactAngle, carbDepth]);
@@ -111,7 +111,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
     return {
       vp: Math.round(vp),
-      edyn: edyn.toFixed(1),
+      edyn: formatDeZahl(edyn, 1),
       status,
       color
     };
@@ -155,7 +155,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     return {
       c_min: req.min,
       c_nom: req.req,
-      diff: diff > 0 ? `+${diff}` : `${diff}`,
+      diff: diff > 0 ? `+${formatDeWert(diff)}` : `${diff}`,
       isOk
     };
   }, [exposureClass, measuredCover]);
@@ -183,7 +183,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
     return {
       area: Math.round(area),
-      fct: fct.toFixed(2),
+      fct: formatDeZahl(fct, 2),
       isNormOk
     };
   }, [breakForce, failureType]);
@@ -205,7 +205,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     }
 
     return {
-      w: w.toFixed(2),
+      w: formatDeZahl(w, 2),
       evalText,
       badgeClass
     };
@@ -219,7 +219,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const restJahre = Math.max(0, Math.round(t_depass - elementAge));
 
     return {
-      k_carb: k_carb.toFixed(2),
+      k_carb: formatDeZahl(k_carb, 2),
       t_depass: Math.round(t_depass),
       restJahre,
       depassivated: elementCover <= carbMeasured
@@ -240,8 +240,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     return {
       area: Math.round(area),
       lambda: lambda.toFixed(2),
-      rawStrength: rawStrength.toFixed(1),
-      f_corr: f_corr.toFixed(1)
+      rawStrength: formatDeZahl(rawStrength, 1),
+      f_corr: formatDeZahl(f_corr, 1)
     };
   }, [coreDiameter, coreLength, coreMaxForce]);
 
@@ -256,7 +256,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const isDelam = diff > 4.0 && d_cm < ieNominalThickness;
 
     return {
-      d_cm: d_cm.toFixed(1),
+      d_cm: formatDeZahl(d_cm, 1),
       isDelam
     };
   }, [ieFreq, ieVp, ieNominalThickness]);
@@ -289,7 +289,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Rückprallwert R (Median aus 10 Schlägen):</span>
-                <span className="font-bold text-shiraz">{rebound}</span>
+                <span className="font-bold text-shiraz">{formatDeWert(rebound)}</span>
               </div>
               <input
                 type="range"
@@ -332,7 +332,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Karbonatisierungstiefe d_k:</span>
-                <span className="font-bold text-slate-800">{carbDepth} mm</span>
+                <span className="font-bold text-slate-800">{formatDeWert(carbDepth)} mm</span>
               </div>
               <input
                 type="range"
@@ -378,7 +378,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Messstrecke s (Durchschallungsdicke):</span>
-                <span className="font-bold text-shiraz">{(usDistance * 100).toFixed(0)} cm</span>
+                <span className="font-bold text-shiraz">{formatDeZahl((usDistance * 100), 0)} cm</span>
               </div>
               <input
                 type="range"
@@ -394,7 +394,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Gemessene P-Wellenlaufzeit Δt:</span>
-                <span className="font-bold text-shiraz">{usTime} µs</span>
+                <span className="font-bold text-shiraz">{formatDeWert(usTime)} µs</span>
               </div>
               <input
                 type="range"
@@ -416,7 +416,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
                   <span className="text-[10px] text-slate-500 block">Schallgeschwindigkeit v_p</span>
-                  <span className="text-xl font-black text-slate-900 font-mono">{usCalc.vp}</span>
+                  <span className="text-xl font-black text-slate-900 font-mono">{formatDeWert(usCalc.vp)}</span>
                   <span className="text-[10px] text-slate-500 ml-1">m/s</span>
                 </div>
                 <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
@@ -440,7 +440,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Halbzellenpotential E_cell (Cu/CuSO₄):</span>
-                <span className="font-bold text-shiraz font-mono">{potentialVal} mV</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(potentialVal)} mV</span>
               </div>
               <input
                 type="range"
@@ -506,7 +506,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Gemessene Betondeckung c_ist:</span>
-                <span className="font-bold text-shiraz font-mono">{measuredCover} mm</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(measuredCover)} mm</span>
               </div>
               <input
                 type="range"
@@ -527,11 +527,11 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </span>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-600">Gefordertes Nennmaß c_nom:</span>
-                <span className="font-mono font-bold text-slate-900">{coverCalc.c_nom} mm</span>
+                <span className="font-mono font-bold text-slate-900">{formatDeWert(coverCalc.c_nom)} mm</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-600">Mindestdeckung c_min:</span>
-                <span className="font-mono font-bold text-slate-900">{coverCalc.c_min} mm</span>
+                <span className="font-mono font-bold text-slate-900">{formatDeWert(coverCalc.c_min)} mm</span>
               </div>
               <div className="flex items-center justify-between pt-1">
                 <span className="text-xs font-semibold text-slate-700">Deckungsdifferenz Δc:</span>
@@ -579,7 +579,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Chloridgehalt an Bewehrungslage:</span>
-                <span className="font-bold text-shiraz font-mono">{chlorideVal.toFixed(2)} M.-%</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(chlorideVal, 2)} M.-%</span>
               </div>
               <input
                 type="range"
@@ -628,7 +628,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Bruchlast F_break am Manometer:</span>
-                <span className="font-bold text-shiraz font-mono">{breakForce.toFixed(1)} kN</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(breakForce, 1)} kN</span>
               </div>
               <input
                 type="range"
@@ -679,7 +679,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
               <div className="text-xs text-slate-600">
-                Stempelfläche: {haftCalc.area} mm² (Ø 50 mm)
+                Stempelfläche: {formatDeWert(haftCalc.area)} mm² (Ø 50 mm)
               </div>
             </div>
             <div className={`p-2.5 rounded-lg border text-xs font-bold ${
@@ -702,7 +702,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Eingesaugtes Wasservolumen nach 60 min:</span>
-                <span className="font-bold text-shiraz font-mono">{waterLoss60.toFixed(1)} ml</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(waterLoss60, 1)} ml</span>
               </div>
               <input
                 type="range"
@@ -743,7 +743,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Gemessene Karbonatisierungstiefe d_k:</span>
-                <span className="font-bold text-shiraz font-mono">{carbMeasured} mm</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(carbMeasured)} mm</span>
               </div>
               <input
                 type="range"
@@ -759,7 +759,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Bauteilalter:</span>
-                <span className="font-bold text-slate-800">{elementAge} Jahre</span>
+                <span className="font-bold text-slate-800">{formatDeWert(elementAge)} Jahre</span>
               </div>
               <input
                 type="range"
@@ -775,7 +775,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Vorhandene Betondeckung c:</span>
-                <span className="font-bold text-slate-800">{elementCover} mm</span>
+                <span className="font-bold text-slate-800">{formatDeWert(elementCover)} mm</span>
               </div>
               <input
                 type="range"
@@ -800,7 +800,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-600">Errechnete Gesamtdauer bis Stahl:</span>
-                <span className="font-mono font-bold text-slate-900">{carbCalc.t_depass} Jahre</span>
+                <span className="font-mono font-bold text-slate-900">{formatDeWert(carbCalc.t_depass)} Jahre</span>
               </div>
               <div className="flex items-center justify-between pt-1">
                 <span className="text-xs font-semibold text-slate-800">Verbleibende Schutzdauer:</span>
@@ -827,12 +827,12 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <div className="text-xs font-semibold text-slate-700 mb-1">Durchmesser D:</div>
-                <div className="font-bold text-shiraz text-sm font-mono">{coreDiameter} mm</div>
+                <div className="font-bold text-shiraz text-sm font-mono">{formatDeWert(coreDiameter)} mm</div>
               </div>
               <div>
                 <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                   <span>Kernhöhe L:</span>
-                  <span className="font-bold text-slate-800 font-mono">{coreLength} mm</span>
+                  <span className="font-bold text-slate-800 font-mono">{formatDeWert(coreLength)} mm</span>
                 </div>
                 <input
                   type="range"
@@ -849,7 +849,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Bruchkraft F_max in der Laborpresse:</span>
-                <span className="font-bold text-shiraz font-mono">{coreMaxForce} kN</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeWert(coreMaxForce)} kN</span>
               </div>
               <input
                 type="range"
@@ -873,7 +873,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
               <div className="text-xs text-slate-600">
-                Schlankheit L/D = {bohrkernCalc.lambda}: {Math.abs(Number(bohrkernCalc.lambda) - 1) < 0.05 ? 'entspricht etwa einem 150-mm-Würfel' : Math.abs(Number(bohrkernCalc.lambda) - 2) < 0.1 ? 'entspricht etwa einem Zylinder 150/300' : 'kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen'}
+                Schlankheit L/D = {formatDeZahl(Number(bohrkernCalc.lambda), 2)}: {Math.abs(Number(bohrkernCalc.lambda) - 1) < 0.05 ? 'entspricht etwa einem 150-mm-Würfel' : Math.abs(Number(bohrkernCalc.lambda) - 2) < 0.1 ? 'entspricht etwa einem Zylinder 150/300' : 'kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen'}
               </div>
             </div>
             <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100">
@@ -890,7 +890,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Dominante Resonanzfrequenz f_peak:</span>
-                <span className="font-bold text-shiraz font-mono">{ieFreq.toFixed(1)} kHz</span>
+                <span className="font-bold text-shiraz font-mono">{formatDeZahl(ieFreq, 1)} kHz</span>
               </div>
               <input
                 type="range"
@@ -906,7 +906,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                 <span>Soll-Bauteildicke (Plattenstärke):</span>
-                <span className="font-bold text-slate-800">{ieNominalThickness} cm</span>
+                <span className="font-bold text-slate-800">{formatDeWert(ieNominalThickness)} cm</span>
               </div>
               <input
                 type="range"

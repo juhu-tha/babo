@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   GraduationCap, HelpCircle, CheckCircle2, XCircle, AlertTriangle, 
@@ -767,7 +768,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
             <div className="flex items-center justify-between text-xs font-bold text-text-main">
               <span className="flex items-center gap-2">
                 <span className="px-2.5 py-1 bg-shiraz text-white rounded-lg text-xs font-mono">
-                  Frage {currentIndex + 1} / {activeQuestions.length}
+                  Frage {formatDeWert(currentIndex + 1)} / {activeQuestions.length}
                 </span>
                 <span className="text-text-main/60 hidden sm:inline">
                   ({answeredCount} beantwortet)
@@ -1040,7 +1041,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                     {gradeObj.text}
                   </h3>
                   <p className="text-xs sm:text-sm text-text-main/70">
-                    Sie haben <strong className="text-text-main">{score} von {total} Fragen ({percent}%)</strong> richtig beantwortet.
+                    Sie haben <strong className="text-text-main">{formatDeWert(score)} von {formatDeWert(total)} Fragen ({formatDeWert(percent)}%)</strong> richtig beantwortet.
                   </p>
                 </div>
               </div>
@@ -1080,11 +1081,11 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="bg-off-white p-4 rounded-2xl border border-home-grau/20 text-center">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/50 block">Richtig</span>
-                <span className="text-xl font-bold text-slate-900 font-mono">{score} / {total}</span>
+                <span className="text-xl font-bold text-slate-900 font-mono">{formatDeWert(score)} / {formatDeWert(total)}</span>
               </div>
               <div className="bg-off-white p-4 rounded-2xl border border-home-grau/20 text-center">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/50 block">Quote</span>
-                <span className="text-xl font-bold text-text-main font-mono">{percent}%</span>
+                <span className="text-xl font-bold text-text-main font-mono">{formatDeWert(percent)}%</span>
               </div>
               <div className="bg-off-white p-4 rounded-2xl border border-home-grau/20 text-center">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/50 block">Wissenslücken</span>
@@ -1116,7 +1117,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                     <div key={c.clusterId} className="bg-off-white p-3.5 rounded-2xl border border-home-grau/30 flex flex-col gap-2">
                       <div className="flex justify-between items-center text-xs font-bold text-text-main">
                         <span className="truncate pr-2">Cluster {c.clusterId}: {c.clusterName}</span>
-                        <span className="font-mono shrink-0">{c.correct}/{c.total} ({cPercent}%)</span>
+                        <span className="font-mono shrink-0">{formatDeWert(c.correct)}/{formatDeWert(c.total)} ({formatDeWert(cPercent)}%)</span>
                       </div>
                       <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
                         <div 

@@ -121,7 +121,7 @@ export default function Schleuderbeton() {
             quelle: 'Grübl et al. (2001)'
           },
           {
-            formel: '(w/z)_{\\text{eff}} = (w/z)_0 - \\frac{\\Delta m_w}{z} \\quad (\\approx 0.30 - 0.35)',
+            formel: '(w/z)_{\\text{eff}} = (w/z)_0 - \\frac{\\Delta m_w}{z} \\quad (\\approx 0{,}30 - 0{,}35)',
             erklaerung: 'Effektiver w/z-Wert des erhärtenden Rohrkörpers nach radialem Auspressen und Abfließen des Schlempewassers Δm_w zum Rohrinnenraum.',
             quelle: 'DIN EN 12843'
           }

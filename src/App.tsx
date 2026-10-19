@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import { Calculator, Calendar, Globe,
   Waves, 
@@ -918,8 +919,8 @@ function AppContent() {
         const len = desc ? desc.length : 0;
         let status = '✔ Optimal (100–165)';
         if (!desc) status = '✘ Fehlt';
-        else if (len < 100) status = `⚠️ Kurz (${len} Z.)`;
-        else if (len > 165) status = `ℹ Lang (${len} Z.)`;
+        else if (len < 100) status = `⚠️ Kurz (${formatDeWert(len)} Z.)`;
+        else if (len > 165) status = `ℹ Lang (${formatDeWert(len)} Z.)`;
         rows.push({
           'Tab-ID': tab.id,
           'Modul': tab.label,

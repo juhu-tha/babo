@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -9,9 +10,9 @@ function Pie({ data, options }: any) {
     <div className="text-center font-semibold text-xs text-stone-650 bg-stone-100 p-2 rounded-xl">
       Zusammensetzungsdiagramm
       <div className="flex gap-2 justify-center mt-2 text-[10px] font-normal">
-        <span className="flex items-center gap-1">🟢 Ton: {data.datasets[0].data[0].toFixed(1)}%</span>
-        <span className="flex items-center gap-1">🟡 Schluff: {data.datasets[0].data[1].toFixed(1)}%</span>
-        <span className="flex items-center gap-1">🟠 Sand/Kies: {data.datasets[0].data[2].toFixed(1)}%</span>
+        <span className="flex items-center gap-1">🟢 Ton: {formatDeZahl(data.datasets[0].data[0], 1)}%</span>
+        <span className="flex items-center gap-1">🟡 Schluff: {formatDeZahl(data.datasets[0].data[1], 1)}%</span>
+        <span className="flex items-center gap-1">🟠 Sand/Kies: {formatDeZahl(data.datasets[0].data[2], 1)}%</span>
       </div>
     </div>
   );
@@ -80,7 +81,7 @@ export default function Lehm() {
       tooltip: {
         callbacks: {
           label: function(context: any) {
-            return `${context.label}: ${context.parsed.toFixed(1)}%`;
+            return `${context.label}: ${formatDeZahl(context.parsed, 1)}%`;
           }
         }
       }
@@ -162,11 +163,11 @@ export default function Lehm() {
             <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Eigenschaften (geschätzt)</h3>
               <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Trockenrohdichte</div><div className="text-2xl font-bold">{results.rohdichte.toFixed(0)} kg/m³</div></div>
-                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Druckfestigkeit</div><div className="text-2xl font-bold">{results.druckfestigkeit.toFixed(1)} MPa</div></div>
-                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Lineares Schwindmaß</div><div className="text-2xl font-bold">{results.schwinden.toFixed(1)} %</div></div>
-                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Wärmeleitfähigkeit <FormulaText text="\lambda" /></div><div className="text-2xl font-bold">{results.lambda.toFixed(2)} W/(mK)</div></div>
-                <div className="col-span-2"><div className="text-white/70 text-sm">Sorptionsfähigkeit (Feuchtepuffer)</div><div className="text-2xl font-bold">{results.sorption.toFixed(1)} g/m²</div></div>
+                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Trockenrohdichte</div><div className="text-2xl font-bold">{formatDeZahl(results.rohdichte, 0)} kg/m³</div></div>
+                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Druckfestigkeit</div><div className="text-2xl font-bold">{formatDeZahl(results.druckfestigkeit, 1)} MPa</div></div>
+                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Lineares Schwindmaß</div><div className="text-2xl font-bold">{formatDeZahl(results.schwinden, 1)} %</div></div>
+                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Wärmeleitfähigkeit <FormulaText text="\lambda" /></div><div className="text-2xl font-bold">{formatDeZahl(results.lambda, 2)} W/(mK)</div></div>
+                <div className="col-span-2"><div className="text-white/70 text-sm">Sorptionsfähigkeit (Feuchtepuffer)</div><div className="text-2xl font-bold">{formatDeZahl(results.sorption, 1)} g/m²</div></div>
               </div>
             </div>
             

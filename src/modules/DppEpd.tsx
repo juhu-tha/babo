@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useRef, useEffect } from 'react';
 import { QrCode, Smartphone, Database, ShieldCheck, Recycle, FileText, MapPin, Factory, Leaf, Truck, Activity, BookOpen, Wrench, Clock, Scale, CheckCircle2, Camera, RefreshCw, Volume2, AlertCircle } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -11,7 +12,7 @@ const DPP_MOCK_DATA = {
     location: 'Werk Augsburg',
     batchId: 'B-2025-10-12-04',
     materials: [
-      { name: 'Normalbeton C35/45', amount: '1.2 m³', recycledContent: '15%' },
+      { name: 'Normalbeton C35/45', amount: '1,2 m³', recycledContent: '15%' },
       { name: 'Betonstahl B500B', amount: '180 kg', recycledContent: '100%' }
     ],
     carbonFootprint: '385 kg CO₂-Äqv.',
@@ -28,7 +29,7 @@ const DPP_MOCK_DATA = {
     location: 'Werk Rosenheim',
     batchId: 'H-2026-01-05-12',
     materials: [
-      { name: 'Fichtenholz (PEFC zertifiziert)', amount: '0.8 m³', recycledContent: '0%' },
+      { name: 'Fichtenholz (PEFC zertifiziert)', amount: '0,8 m³', recycledContent: '0%' },
       { name: 'Melamin-Harnstoff-Harz (MUF)', amount: '12 kg', recycledContent: '0%' }
     ],
     carbonFootprint: '-620 kg CO₂-Äqv. (inkl. biogener Kohlenstoff)',
@@ -527,7 +528,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                             <div className="absolute bottom-0 left-0 w-2 h-2 bg-shiraz"></div>
                             <div className="absolute bottom-0 right-0 w-2 h-2 bg-shiraz"></div>
                             <span className="text-[7px] text-shiraz font-bold font-mono tracking-widest absolute -bottom-4 bg-slate-950/90 px-1 py-0.5 rounded border border-shiraz/35 shadow">
-                              LOCK_{hudCoordinates.x}_{hudCoordinates.y}
+                              LOCK_{formatDeWert(hudCoordinates.x)}_{formatDeWert(hudCoordinates.y)}
                             </span>
                           </div>
 
@@ -545,7 +546,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                           </div>
 
                           <div className="absolute top-2 right-3 font-mono text-[8px] text-slate-400 p-1.5 bg-slate-950/85 rounded border border-home-grau/30 z-10 leading-none">
-                            FPS: <span className="text-emerald-500 font-bold">60.00</span>
+                            FPS: <span className="text-emerald-500 font-bold">60,00</span>
                           </div>
                         </div>
                       )}
@@ -846,40 +847,40 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                           <div className="font-bold text-slate-900">GWP <InfoTooltip text="Global Warming Potential (Treibhauspotenzial)" /></div>
                           <div className="text-xs text-slate-500">[kg CO₂-Äqv.]</div>
                         </td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a1a3.gwp.toFixed(2)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a4.gwp.toFixed(2)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.c3.gwp.toFixed(2)}</td>
-                        <td className="py-3 px-2 text-right font-mono text-green-600">{selectedEpd.phasen.d.gwp.toFixed(2)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a1a3.gwp, 2)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a4.gwp, 2)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.c3.gwp, 2)}</td>
+                        <td className="py-3 px-2 text-right font-mono text-green-600">{formatDeZahl(selectedEpd.phasen.d.gwp, 2)}</td>
                       </tr>
                       <tr className="border-b border-home-grau/30 hover:bg-slate-50">
                         <td className="py-3 px-2">
                           <div className="font-bold text-slate-900">PENRT <InfoTooltip text="Primary Energy Non-Renewable Total (Nicht-erneuerbare Primärenergie)" /></div>
                           <div className="text-xs text-slate-500">[MJ]</div>
                         </td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a1a3.penrt.toFixed(2)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a4.penrt.toFixed(2)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.c3.penrt.toFixed(2)}</td>
-                        <td className="py-3 px-2 text-right font-mono text-green-600">{selectedEpd.phasen.d.penrt.toFixed(2)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a1a3.penrt, 2)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a4.penrt, 2)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.c3.penrt, 2)}</td>
+                        <td className="py-3 px-2 text-right font-mono text-green-600">{formatDeZahl(selectedEpd.phasen.d.penrt, 2)}</td>
                       </tr>
                       <tr className="border-b border-home-grau/30 hover:bg-slate-50">
                         <td className="py-3 px-2">
                           <div className="font-bold text-slate-900">AP <InfoTooltip text="Acidification Potential (Versauerungspotenzial von Boden und Wasser)" /></div>
                           <div className="text-xs text-slate-500">[kg SO₂-Äqv.]</div>
                         </td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a1a3.ap.toFixed(3)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a4.ap.toFixed(3)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.c3.ap.toFixed(3)}</td>
-                        <td className="py-3 px-2 text-right font-mono text-green-600">{selectedEpd.phasen.d.ap.toFixed(3)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a1a3.ap, 3)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a4.ap, 3)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.c3.ap, 3)}</td>
+                        <td className="py-3 px-2 text-right font-mono text-green-600">{formatDeZahl(selectedEpd.phasen.d.ap, 3)}</td>
                       </tr>
                       <tr className="border-b border-home-grau/30 hover:bg-slate-50">
                         <td className="py-3 px-2">
                           <div className="font-bold text-slate-900">EP <InfoTooltip text="Eutrophication Potential (Eutrophierungspotenzial / Überdüngung)" /></div>
                           <div className="text-xs text-slate-500">[kg PO₄³⁻-Äqv.]</div>
                         </td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a1a3.ep.toFixed(3)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.a4.ep.toFixed(3)}</td>
-                        <td className="py-3 px-2 text-right font-mono">{selectedEpd.phasen.c3.ep.toFixed(3)}</td>
-                        <td className="py-3 px-2 text-right font-mono text-green-600">{selectedEpd.phasen.d.ep.toFixed(3)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a1a3.ep, 3)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a4.ep, 3)}</td>
+                        <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.c3.ep, 3)}</td>
+                        <td className="py-3 px-2 text-right font-mono text-green-600">{formatDeZahl(selectedEpd.phasen.d.ep, 3)}</td>
                       </tr>
                     </tbody>
                   </table>

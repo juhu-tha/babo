@@ -157,7 +157,7 @@ export function generateTransportbetonExcel(): void {
     // Zeile 33: GESAMTBILANZ A1-A5
     ['=========================================', '', '', '', '', '', '', '', ''],
     ['GESAMT-TREIBHAUSPOTENZIAL A1-A5 (GWP gesamt)', 'kg CO2-eq/m³', '', '', { f: 'E26+E29+E31' }, '', { f: 'G26+G29+G31' }, '', { f: 'I26+I29+I31' }],
-    ['CO2-Einsparung gegenüber Standardrezeptur CEM I', '%', '', '', '0.0 % (Referenz)', '', { f: '(E34-G34)/E34*100' }, '', { f: '(E34-I34)/E34*100' }],
+    ['CO2-Einsparung gegenüber Standardrezeptur CEM I', '%', '', '', '0,0 % (Referenz)', '', { f: '(E34-G34)/E34*100' }, '', { f: '(E34-I34)/E34*100' }],
     ['Spezifisches GWP pro Festigkeitsklasse (C25/30 = 30 N/mm²)', 'kg CO2/(m³·MPa)', '', '', { f: 'E34/30' }, '', { f: 'G34/30' }, '', { f: 'I34/30' }],
     ['=========================================', '', '', '', '', '', '', '', '']
   ];

@@ -4,7 +4,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Calculator, Layers } from 'lucide-react';
 import {
   Chart as ChartJS,
@@ -160,19 +160,19 @@ export default function Festigkeitsberechnungen() {
             <div className="grid grid-cols-4 gap-2 text-xs mb-6">
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1"><FormulaText text="Dichte ρ" /></div>
-                <div className="font-bold text-text-main">{mat1.rho} kg/m³</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat1.rho)} kg/m³</div>
               </div>
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1"><FormulaText text="Druck f_c" /></div>
-                <div className="font-bold text-text-main">{mat1.fc} MPa</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat1.fc)} MPa</div>
               </div>
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1"><FormulaText text="Zug f_t" /></div>
-                <div className="font-bold text-text-main">{mat1.ft} MPa</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat1.ft)} MPa</div>
               </div>
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1">E-Modul</div>
-                <div className="font-bold text-text-main">{mat1.E} MPa</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat1.E)} MPa</div>
               </div>
             </div>
 
@@ -204,19 +204,19 @@ export default function Festigkeitsberechnungen() {
             <div className="grid grid-cols-4 gap-2 text-xs mb-6">
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1"><FormulaText text="Dichte ρ" /></div>
-                <div className="font-bold text-text-main">{mat2.rho} kg/m³</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat2.rho)} kg/m³</div>
               </div>
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1"><FormulaText text="Druck f_c" /></div>
-                <div className="font-bold text-text-main">{mat2.fc} MPa</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat2.fc)} MPa</div>
               </div>
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1"><FormulaText text="Zug f_t" /></div>
-                <div className="font-bold text-text-main">{mat2.ft} MPa</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat2.ft)} MPa</div>
               </div>
               <div className="bg-white p-2 rounded border border-home-grau/30 text-center">
                 <div className="text-home-grau mb-1">E-Modul</div>
-                <div className="font-bold text-text-main">{mat2.E} MPa</div>
+                <div className="font-bold text-text-main">{formatDeWert(mat2.E)} MPa</div>
               </div>
             </div>
 
@@ -315,15 +315,15 @@ export default function Festigkeitsberechnungen() {
             <div className="bg-white p-4 rounded-lg border border-home-grau/30 text-xs">
               <div className="flex justify-between mb-1">
                 <span className="text-home-grau"><FormulaText text="Dichte ρ:" /></span>
-                <span className="font-bold">{cubeMat.rho} kg/m³</span>
+                <span className="font-bold">{formatDeWert(cubeMat.rho)} kg/m³</span>
               </div>
               <div className="flex justify-between mb-1">
                 <span className="text-home-grau">Druckfestigkeit <span className="font-mono bg-gray-100 px-1 rounded"><FormulaText text="f_c" /></span>:</span>
-                <span className="font-bold">{cubeMat.fc} MPa</span>
+                <span className="font-bold">{formatDeWert(cubeMat.fc)} MPa</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-home-grau">E-Modul <span className="font-mono bg-gray-100 px-1 rounded">E</span>:</span>
-                <span className="font-bold">{cubeMat.E} MPa</span>
+                <span className="font-bold">{formatDeWert(cubeMat.E)} MPa</span>
               </div>
             </div>
           </div>
@@ -334,7 +334,7 @@ export default function Festigkeitsberechnungen() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <div className="text-home-grau text-sm mb-1">Max. Anzahl Würfel (N)</div>
-                <div className="text-4xl font-bold text-text-main">{cubeCalc.N_max.toLocaleString()} <span className="text-lg font-normal text-home-grau">Stück</span></div>
+                <div className="text-4xl font-bold text-text-main">{formatDeWert(cubeCalc.N_max)} <span className="text-lg font-normal text-home-grau">Stück</span></div>
               </div>
               
               <div>

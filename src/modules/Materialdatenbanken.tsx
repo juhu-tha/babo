@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Database, Leaf, Search, Globe, FileText, CheckCircle2, ShieldAlert, FileSpreadsheet, Eye, Info, RefreshCw, RotateCcw, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -401,7 +402,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
                     <span className="text-[9px] text-gray-400 uppercase font-semibold block">GWP (Treibhauspotenzial)</span>
                     <strong className="text-base text-emerald-400 font-bold block mt-0.5">
-                      {activeRecord.gwp.toFixed(2)} <span className="text-[10px] text-gray-300 font-normal">kg CO₂-eq/{activeRecord.unit.split(' ').pop()}</span>
+                      {formatDeZahl(activeRecord.gwp, 2)} <span className="text-[10px] text-gray-300 font-normal">kg CO₂-eq/{activeRecord.unit.split(' ').pop()}</span>
                     </strong>
                     <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Einfluss auf die Erderwärmung.</span>
                   </div>
@@ -417,7 +418,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
                     <span className="text-[9px] text-gray-400 uppercase font-semibold block">AP (Versauerung)</span>
                     <strong className="text-base text-blue-400 font-bold block mt-0.5">
-                      {activeRecord.ap.toFixed(3)} <span className="text-[10px] text-gray-300 font-normal">kg SO₂-eq</span>
+                      {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-gray-300 font-normal">kg SO₂-eq</span>
                     </strong>
                     <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Saurer Regen Belastung.</span>
                   </div>
@@ -425,7 +426,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
                     <span className="text-[9px] text-gray-400 uppercase font-semibold block">EP (Eutrophierung)</span>
                     <strong className="text-base text-purple-400 font-bold block mt-0.5">
-                      {activeRecord.ep.toFixed(3)} <span className="text-[10px] text-gray-300 font-normal">kg PO₄-eq</span>
+                      {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-gray-300 font-normal">kg PO₄-eq</span>
                     </strong>
                     <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Nährstoffeintrag in Gewässer.</span>
                   </div>
@@ -447,7 +448,7 @@ export default function Materialdatenbanken() {
                 ))}
                 {activeRecord.recycledContent > 0 && (
                   <span className="text-[9px] font-semibold bg-gray-900 border border-gray-800 text-blue-300 px-2.5 py-0.5 rounded-lg">
-                    ♻ Post-Consumer Recycling: {activeRecord.recycledContent}%
+                    ♻ Post-Consumer Recycling: {formatDeWert(activeRecord.recycledContent)}%
                   </span>
                 )}
               </div>
@@ -524,7 +525,7 @@ export default function Materialdatenbanken() {
                           totalGwp += mat.gwp * qty;
                         }
                       });
-                      return (totalGwp / 1000).toFixed(2);
+                      return formatDeZahl(totalGwp / 1000, 2);
                     })()}
                   </span>
                   <span className="text-xs text-slate-500 font-sans font-bold">t CO₂-eq</span>
@@ -546,7 +547,7 @@ export default function Materialdatenbanken() {
                       <span className="text-[10px] text-emerald-800 block font-bold uppercase">Biogene Kohlenstoff-Senke:</span>
                       <div className="flex items-baseline gap-1 font-mono text-emerald-700">
                         <span className="text-sm font-bold">
-                          {(totalBiogenic / 1000).toFixed(2)}
+                          {formatDeZahl((totalBiogenic / 1000), 2)}
                         </span>
                         <span className="text-[10px] font-sans font-medium">t CO₂ (interne Einlagerung)</span>
                       </div>
@@ -571,7 +572,7 @@ export default function Materialdatenbanken() {
                           totalPenrt += mat.penrt * qty;
                         }
                       });
-                      return (totalPenrt / 1000).toFixed(1);
+                      return formatDeZahl(totalPenrt / 1000, 1);
                     })()}
                   </span>
                   <span className="text-xs text-blue-500 font-sans font-bold">GJ (Gigajoule)</span>
@@ -646,12 +647,12 @@ export default function Materialdatenbanken() {
                     </td>
                     <td className="p-3 text-right">
                       <span className={`font-mono font-bold ${mat.gwp < 0 ? 'text-emerald-600' : 'text-slate-800'}`}>
-                        {mat.gwp}
+                        {formatDeWert(mat.gwp)}
                       </span>
                       <span className="text-slate-400 text-[10px] ml-1">kg CO₂-eq/{mat.unit}</span>
                     </td>
                     <td className="p-3 text-right">
-                      <span className="font-mono font-medium text-slate-700">{mat.penrt}</span>
+                      <span className="font-mono font-medium text-slate-700">{formatDeWert(mat.penrt)}</span>
                       <span className="text-slate-400 text-[10px] ml-1">MJ/{mat.unit}</span>
                     </td>
                     <td className="p-3 text-right">

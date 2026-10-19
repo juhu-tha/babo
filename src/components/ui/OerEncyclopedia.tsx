@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   BookOpen, 
@@ -527,7 +528,7 @@ export function OerEncyclopedia() {
                           <Sliders className="text-indigo-600" size={13} /> Prüfkraft steigern (Zugbelastung F):
                         </label>
                         <span className="text-xs font-mono font-bold text-indigo-900 bg-indigo-50 p-1 px-1.5 rounded">
-                          {tensileForce} kN / 72 kN
+                          {formatDeWert(tensileForce)} kN / 72 kN
                         </span>
                       </div>
                       <input 
@@ -548,8 +549,8 @@ export function OerEncyclopedia() {
                           <span>{statusText}</span>
                         </div>
                         <div className="grid grid-cols-2 gap-x-4 gap-y-1 font-mono text-[11px] text-slate-700 bg-white/80 p-2 rounded-lg border border-slate-100 italic">
-                          <div>Spannung (σ): <span className="font-bold text-indigo-700">{Math.round(stress)} MPa</span></div>
-                          <div>Dehnung (ε): <span className="font-bold text-indigo-700">{strain.toFixed(3)} %</span></div>
+                          <div>Spannung (σ): <span className="font-bold text-indigo-700">{formatDeWert(Math.round(stress))} MPa</span></div>
+                          <div>Dehnung (ε): <span className="font-bold text-indigo-700">{formatDeZahl(strain, 3)} %</span></div>
                         </div>
                       </div>
                     </div>
@@ -618,7 +619,7 @@ export function OerEncyclopedia() {
                             <div className="absolute inset-0 bg-slate-400 border border-slate-500 rounded opacity-20 scale-95"></div>
                             {/* Jagged crack overlays */}
                             <span className="text-[9px] font-black text-rose-800 bg-rose-100 border border-rose-200 px-1.5 py-0.5 rounded shadow-sm relative z-10 select-none tracking-tight text-center uppercase animate-pulse">
-                              ZERSTÖRT BEI {failureForceKn} kN
+                              ZERSTÖRT BEI {formatDeWert(failureForceKn)} kN
                             </span>
                             <div className="absolute -left-2 top-2 w-4 h-8 bg-slate-350 border border-slate-400 rounded rotate-12"></div>
                             <div className="absolute -right-2 top-4 w-5 h-6 bg-slate-350 border border-slate-400 rounded -rotate-45"></div>
@@ -654,7 +655,7 @@ export function OerEncyclopedia() {
                           <Sliders className="text-emerald-600" size={13} /> Zylinder-/Würfeldruckbelastung steigern (F):
                         </label>
                         <span className="text-xs font-mono font-bold text-emerald-900 bg-emerald-50 p-1 px-1.5 rounded">
-                          {compressionForce} kN / Max {failureForceKn} kN
+                          {formatDeWert(compressionForce)} kN / Max {formatDeWert(failureForceKn)} kN
                         </span>
                       </div>
                       <input 
@@ -671,7 +672,7 @@ export function OerEncyclopedia() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-slate-600">
                         <div className="p-2.5 rounded bg-slate-50 border border-slate-200">
                           <strong>Berechnete Flächenpressung:</strong>
-                          <div className="font-mono text-emerald-950 font-bold text-xs mt-0.5">{currentPressureMpa} N/mm² (MPa)</div>
+                          <div className="font-mono text-emerald-950 font-bold text-xs mt-0.5">{formatDeWert(currentPressureMpa)} N/mm² (MPa)</div>
                         </div>
                         <div className="p-2.5 rounded bg-slate-50 border border-slate-200 shadow-xs">
                           <strong>Duktilität vs. Sprödigkeit:</strong>

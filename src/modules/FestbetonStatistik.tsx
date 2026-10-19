@@ -101,7 +101,7 @@ export default function FestbetonStatistik() {
           tension: 0.4,
         },
         {
-          label: `f_ck (${scaledFck.toFixed(1)})`,
+          label: `f_ck (${formatDeZahl(scaledFck, 1)})`,
           data: [{ x: scaledFck, y: 0 }, { x: scaledFck, y: Math.max(...yValues) }],
           borderColor: '#1e293b',
           borderWidth: 2,
@@ -143,7 +143,7 @@ export default function FestbetonStatistik() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          title: (context: any) => `Festigkeit: ${Number(context[0].parsed.x).toFixed(1)} N/mm²`,
+          title: (context: any) => `Festigkeit: ${formatDeZahl(Number(context[0].parsed.x), 1)} N/mm²`,
           label: () => '' // Simplify tooltip
         }
       }

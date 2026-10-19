@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, Split, Info } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -188,21 +189,21 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
       specimen: {
         material: `Beton ${grade}`,
         geometry: `Zylinder d=${diameter} mm, L=${length} mm`,
-        dimensions: `Ø ${diameter} mm × ${length} mm`,
+        dimensions: `Ø ${formatDeWert(diameter)} mm × ${length} mm`,
         conditioning: 'Normlagerung Wasser 20 °C (28 Tage)'
       },
       parameters: {
-        'Prüfgeschwindigkeit': `${loadingRate.toFixed(2)} MPa/s`,
+        'Prüfgeschwindigkeit': `${formatDeZahl(loadingRate, 2)} MPa/s`,
         'Hartfaserstreifen-Breite': `${stripWidth} mm`,
-        'Zylinderdurchmesser': `${diameter} mm`,
+        'Zylinderdurchmesser': `${formatDeWert(diameter)} mm`,
         'Zylinderlänge': `${length} mm`
       },
       metrics: {
-        'Spaltzugfestigkeit fct,sp (MPa)': currentStressMPa.toFixed(2),
-        'Umgerechnete Axialzugfestigkeit fct (MPa)': (currentStressMPa * 0.9).toFixed(2),
-        'Bruchlast Fmax (kN)': currentForceKN.toFixed(1),
-        'Verformung Δd (mm)': currentDeformationMm.toFixed(3),
-        'E-Modul (GPa)': (gradeProps.E / 1000).toFixed(1)
+        'Spaltzugfestigkeit fct,sp (MPa)': formatDeZahl(currentStressMPa, 2),
+        'Umgerechnete Axialzugfestigkeit fct (MPa)': formatDeZahl((currentStressMPa * 0.9), 2),
+        'Bruchlast Fmax (kN)': formatDeZahl(currentForceKN, 1),
+        'Verformung Δd (mm)': formatDeZahl(currentDeformationMm, 3),
+        'E-Modul (GPa)': formatDeZahl((gradeProps.E / 1000), 1)
       },
       status: validation.status,
       validationNotes: validation.notes,
@@ -251,10 +252,10 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
       legend: { display: false },
       tooltip: {
         callbacks: {
-          title: (items: any[]) => `Weg Δd = ${Number(items[0].parsed.x).toFixed(3)} mm`,
+          title: (items: any[]) => `Weg Δd = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
           label: (ctx: any) => chartMode === 'stress'
-            ? `Spaltzugspannung: ${Number(ctx.parsed.y).toFixed(2)} MPa`
-            : `Prüfkraft F: ${Number(ctx.parsed.y).toFixed(1)} kN`
+            ? `Spaltzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
+            : `Prüfkraft F: ${formatDeZahl(Number(ctx.parsed.y), 1)} kN`
         }
       }
     }
@@ -307,7 +308,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                   Durchmesser <InlineMath math="d" />:
                 </span>
                 <div className="flex items-center gap-1 font-mono font-bold">
-                  <span>{diameter} mm</span>
+                  <span>{formatDeWert(diameter)} mm</span>
                 </div>
               </div>
 
@@ -324,7 +325,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 <span className="flex items-center gap-1">
                   Hartfaserstreifen <InlineMath math="b" />:
                 </span>
-                <span className="font-mono font-bold">{stripWidth} × 4 mm</span>
+                <span className="font-mono font-bold">{formatDeWert(stripWidth)} × 4 mm</span>
               </div>
             </div>
 
@@ -332,7 +333,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
               <div className="flex justify-between text-xs">
                 <span className="font-bold text-text-main">Prüfgeschwindigkeit:</span>
-                <span className="font-mono font-bold text-shiraz">{loadingRate.toFixed(2)} MPa/s</span>
+                <span className="font-mono font-bold text-shiraz">{formatDeZahl(loadingRate, 2)} MPa/s</span>
               </div>
               <input
                 type="range"
@@ -398,7 +399,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 {/* Upper Pressure Platen with Force Arrow */}
                 <div className="w-full flex flex-col items-center">
                   <div className="flex items-center gap-1 text-[10px] font-mono font-bold text-red-700 dark:text-red-400 mb-1">
-                    <span>F = {currentForceKN.toFixed(1)} kN</span>
+                    <span>F = {formatDeZahl(currentForceKN, 1)} kN</span>
                   </div>
                   {/* Hydraulic Platen */}
                   <div className="w-48 h-5 bg-gradient-to-r from-slate-700 to-slate-800 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-t shadow-md border border-slate-600 dark:border-slate-700 flex items-center justify-center">
@@ -476,21 +477,21 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Spaltkraft F</span>
                     <span className="text-lg font-mono font-bold text-amber-400">
-                      {currentForceKN.toFixed(1)} <span className="text-xs text-slate-300 font-normal">kN</span>
+                      {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-300 font-normal">kN</span>
                     </span>
                   </div>
 
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Spaltzugspannung σx</span>
                     <span className="text-lg font-mono font-bold text-emerald-400">
-                      {currentStressMPa.toFixed(2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
+                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
                     </span>
                   </div>
 
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Stauchung Δd</span>
                     <span className="text-lg font-mono font-bold text-cyan-400">
-                      {currentDeformationMm.toFixed(3)} <span className="text-xs text-slate-300 font-normal">mm</span>
+                      {formatDeZahl(currentDeformationMm, 3)} <span className="text-xs text-slate-300 font-normal">mm</span>
                     </span>
                   </div>
                 </div>
@@ -570,19 +571,19 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Spaltzugfestigkeit fct,sp</span>
-                    <strong className="text-base text-shiraz font-mono">{currentStressMPa.toFixed(2)} MPa</strong>
+                    <strong className="text-base text-shiraz font-mono">{formatDeZahl(currentStressMPa, 2)} MPa</strong>
                   </div>
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Axialzugfestigkeit fct (≈ 0,9·fct,sp)</span>
-                    <strong className="text-base text-emerald-700 font-mono">{(currentStressMPa * 0.9).toFixed(2)} MPa</strong>
+                    <strong className="text-base text-emerald-700 font-mono">{formatDeZahl((currentStressMPa * 0.9), 2)} MPa</strong>
                   </div>
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Bruchlast Fmax</span>
-                    <strong className="text-base text-text-main font-mono">{currentForceKN.toFixed(1)} kN</strong>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl(currentForceKN, 1)} kN</strong>
                   </div>
                   <div>
                     <span className="text-text-main/60 uppercase text-[10px] font-bold block">Verhältnis fct,sp / fck</span>
-                    <strong className="text-base text-text-main font-mono">{((currentStressMPa / gradeProps.fck) * 100).toFixed(1)} %</strong>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl(((currentStressMPa / gradeProps.fck) * 100), 1)} %</strong>
                   </div>
                 </div>
 

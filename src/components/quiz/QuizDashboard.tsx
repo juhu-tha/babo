@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
   ResponsiveContainer,
@@ -241,7 +242,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
           </div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-2xl font-black font-mono text-text-main">
-              {summaryMetrics.totalSessions}
+              {formatDeWert(summaryMetrics.totalSessions)}
             </span>
             <span className="text-[11px] text-text-main/60">Sessions</span>
           </div>
@@ -257,7 +258,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
           </div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-2xl font-black font-mono text-text-main">
-              {summaryMetrics.avgScore}%
+              {formatDeWert(summaryMetrics.avgScore)}%
             </span>
             <span className="text-[11px] text-text-main/60">über alle Tests</span>
           </div>
@@ -275,7 +276,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
             <span className={`text-2xl font-black font-mono ${activeGaps.length > 0 ? 'text-shiraz' : 'text-slate-800'}`}>
               {activeGaps.length}
             </span>
-            <span className="text-[11px] text-text-main/60">in {summaryMetrics.criticalModules + summaryMetrics.moderateModules} Modulen</span>
+            <span className="text-[11px] text-text-main/60">in {formatDeWert(summaryMetrics.criticalModules + summaryMetrics.moderateModules)} Modulen</span>
           </div>
           <span className="text-[10px] text-shiraz mt-1 font-semibold">
             {activeGaps.length === 0 ? 'Keine aktiven Lücken!' : 'Repetitorium empfohlen'}
@@ -289,9 +290,9 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
           </div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-2xl font-black font-mono text-slate-800">
-              {summaryMetrics.solidModules}
+              {formatDeWert(summaryMetrics.solidModules)}
             </span>
-            <span className="text-[11px] text-text-main/60">von {summaryMetrics.totalModules} Modulen</span>
+            <span className="text-[11px] text-text-main/60">von {formatDeWert(summaryMetrics.totalModules)} Modulen</span>
           </div>
           <div className="w-full bg-slate-150 h-1.5 rounded-full mt-2 overflow-hidden">
             <div
@@ -621,7 +622,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
                     </h4>
 
                     <p className="text-[11px] text-text-main/70 leading-snug line-clamp-2">
-                      {mod.clusterName} • {mod.totalQuestions} Prüffragen im Katalog
+                      {mod.clusterName} • {formatDeWert(mod.totalQuestions)} Prüffragen im Katalog
                     </p>
                   </div>
 

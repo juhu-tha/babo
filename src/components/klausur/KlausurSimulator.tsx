@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { 
   Trophy, Clock, AlertTriangle, CheckCircle2, XCircle, ArrowRight, ArrowLeft, 
@@ -318,9 +319,9 @@ export const KlausurSimulator: React.FC = () => {
                   {history.map(item => (
                     <tr key={item.id} className="hover:bg-slate-50/50">
                       <td className="py-2.5 px-3 font-mono text-text-main/70">{item.date}</td>
-                      <td className="py-2.5 px-3">{item.totalQuestions} Fragen ({item.durationMinutes} Min.)</td>
-                      <td className="py-2.5 px-3 font-medium">{item.score} / {item.totalQuestions}</td>
-                      <td className="py-2.5 px-3 font-mono">{item.percent}%</td>
+                      <td className="py-2.5 px-3">{formatDeWert(item.totalQuestions)} Fragen ({formatDeWert(item.durationMinutes)} Min.)</td>
+                      <td className="py-2.5 px-3 font-medium">{formatDeWert(item.score)} / {formatDeWert(item.totalQuestions)}</td>
+                      <td className="py-2.5 px-3 font-mono">{formatDeWert(item.percent)}%</td>
                       <td className="py-2.5 px-3">
                         <span className="px-2 py-0.5 rounded font-bold bg-slate-100 border border-slate-200">
                           {item.grade}
@@ -360,7 +361,7 @@ export const KlausurSimulator: React.FC = () => {
         <div className="bg-white p-4 rounded-2xl border border-home-grau/30 shadow-sm flex flex-wrap items-center justify-between gap-4 sticky top-16 z-20">
           <div className="flex items-center gap-3">
             <span className="text-xs font-bold uppercase tracking-wider text-shiraz">
-              Klausur: Frage {currentIndex + 1} von {examQuestions.length}
+              Klausur: Frage {formatDeWert(currentIndex + 1)} von {examQuestions.length}
             </span>
             <span className="text-xs text-text-main/60">
               ({answeredCount} beantwortet, {unansweredCount} offen)
@@ -587,7 +588,7 @@ export const KlausurSimulator: React.FC = () => {
                 Leistungsbewertung Baustoffe &amp; Werkstoffe
               </h3>
               <p className="text-xs text-text-main/60 mt-1">
-                Klausurabschluss am {latestResult.date} • Bearbeitungszeit: {Math.round(latestResult.timeSpentSeconds / 60)} von {latestResult.durationMinutes} Minuten
+                Klausurabschluss am {latestResult.date} • Bearbeitungszeit: {formatDeWert(Math.round(latestResult.timeSpentSeconds / 60))} von {formatDeWert(latestResult.durationMinutes)} Minuten
               </p>
             </div>
 
@@ -602,11 +603,11 @@ export const KlausurSimulator: React.FC = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="bg-off-white/70 p-4 rounded-2xl border border-home-grau/20 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/50 block">Punkte</span>
-              <span className="text-xl font-bold text-text-main font-mono">{latestResult.score} / {latestResult.totalQuestions}</span>
+              <span className="text-xl font-bold text-text-main font-mono">{formatDeWert(latestResult.score)} / {formatDeWert(latestResult.totalQuestions)}</span>
             </div>
             <div className="bg-off-white/70 p-4 rounded-2xl border border-home-grau/20 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/50 block">Erfolgsquote</span>
-              <span className="text-xl font-bold text-text-main font-mono">{latestResult.percent}%</span>
+              <span className="text-xl font-bold text-text-main font-mono">{formatDeWert(latestResult.percent)}%</span>
             </div>
             <div className="bg-off-white/70 p-4 rounded-2xl border border-home-grau/20 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-text-main/50 block">Status</span>
@@ -637,7 +638,7 @@ export const KlausurSimulator: React.FC = () => {
                   <div key={catKey} className="bg-off-white p-3.5 rounded-xl border border-home-grau/20 flex flex-col gap-1.5">
                     <div className="flex justify-between items-center text-xs font-bold text-text-main">
                       <span>{label}</span>
-                      <span className="font-mono">{item.correct} / {item.total} ({item.percent}%)</span>
+                      <span className="font-mono">{formatDeWert(item.correct)} / {formatDeWert(item.total)} ({formatDeWert(item.percent)}%)</span>
                     </div>
                     <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
                       <div 

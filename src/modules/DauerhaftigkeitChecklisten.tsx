@@ -109,7 +109,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'ris-1',
         task: 'Grenzwert w_max festlegen',
-        description: 'Definition der maximal zulässigen Rissbreite w_max in Abhängigkeit von der Expositionsklasse (Standard: 0.3 mm für XC-Klassen, bis zu 0.2 mm für dekomprimierte XD-Klassen / WU-Richtlinie).',
+        description: 'Definition der maximal zulässigen Rissbreite w_max in Abhängigkeit von der Expositionsklasse (Standard: 0,3 mm für XC-Klassen, bis zu 0,2 mm für dekomprimierte XD-Klassen / WU-Richtlinie).',
         ref: 'DIN EN 1992-1-1 Abs. 7.3 / DafStb WU-Richtlinie',
         status: 'critical'
       },
@@ -304,7 +304,7 @@ export default function DauerhaftigkeitChecklisten() {
             quelle: 'DIN EN 1992-1-1 Abs. 4.4.1.1'
           },
           {
-            formel: 'h_w \\le 0.50 \\cdot h_t \\implies \\text{Grenzzustand für trennende Risse bei WU-Konstruktionen}',
+            formel: 'h_w \\le 0{,}50 \\cdot h_t \\implies \\text{Grenzzustand für trennende Risse bei WU-Konstruktionen}',
             erklaerung: 'Druckzonenhöhe hw im Wandquerschnitt nach WU-Richtlinie des DAfStb zur Verhinderung von durchgehenden wasserführenden Trennrissen.',
             quelle: 'DAfStb WU-Richtlinie'
           }
