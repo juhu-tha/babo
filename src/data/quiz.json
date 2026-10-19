@@ -1541,5 +1541,605 @@
       "targetModuleLabel": "Baustoffkenngrößen"
     },
     "verified": false
+  },
+  {
+    "id": "q_prob_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Probenahme nach EBV",
+    "difficulty": "Basis",
+    "normRef": "EBV § 8",
+    "question": "Nach welchem Regelwerk ist die Probenahme mineralischer Ersatzbaustoffe für die Erstprüfung nach § 8 EBV durchzuführen?",
+    "options": [
+      "DIN EN 12504-1",
+      "LAGA PN 98",
+      "DIN EN 206",
+      "DIN 4108-3"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 8 Abs. 1 EBV schreibt die LAGA-Richtlinie PN 98 vor; DIN 19698-1/-2 darf ergänzend herangezogen werden. DIN EN 12504-1 regelt Bohrkerne aus Beton im Bauwerk.",
+    "gapAnalysis": {
+      "topic": "Probenahme nach EBV",
+      "misconception": "Betonprüfnormen werden mit der abfallrechtlichen Haufwerksbeprobung verwechselt.",
+      "coreRule": "Haufwerke/Ersatzbaustoffe: LAGA PN 98 (ergänzend DIN 19698); Probenteilung DIN EN 932-2.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Probenahme nach EBV“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Bohrkerne: Schlankheit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 13791",
+    "question": "Welcher Festigkeit entspricht nach DIN EN 13791 das Prüfergebnis eines Bohrkerns mit d = 100 mm und h/d = 1?",
+    "options": [
+      "Zylinderdruckfestigkeit",
+      "Würfeldruckfestigkeit",
+      "Biegezugfestigkeit",
+      "Spaltzugfestigkeit"
+    ],
+    "correctIdx": 1,
+    "explanation": "Kurze Kerne (h/d = 1) werden durch die Endflächenreibung gestützt; ihr Ergebnis wird der In-situ-Würfeldruckfestigkeit zugeordnet. Kerne mit h/d = 2 entsprechen der Zylinderdruckfestigkeit.",
+    "gapAnalysis": {
+      "topic": "Bohrkerne: Schlankheit",
+      "misconception": "Die Querdehnungsbehinderung durch die Druckplatten wird übersehen.",
+      "coreRule": "h/d = 1 → Würfel, h/d = 2 → Zylinder; Zwischenwerte umrechnen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bohrkerne: Schlankheit“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Rückprallhammer: Schlagrichtung",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN EN 12504-2",
+    "question": "Sie prüfen mit dem Rückprallhammer senkrecht nach unten auf eine Bodenplatte. Wie ist der Rohwert gegenüber horizontaler Schlagrichtung zu korrigieren?",
+    "options": [
+      "Gar nicht – die Schlagrichtung ist ohne Einfluss",
+      "Nach unten (negative Korrektur), weil die Schwerkraft den Schlag verstärkt",
+      "Nach oben (positive Korrektur), weil der Bolzen gegen die Schwerkraft zurückprallt",
+      "Um pauschal 50 %"
+    ],
+    "correctIdx": 2,
+    "explanation": "Beim Schlag nach unten muss die Masse gegen die Schwerkraft zurückprallen – der angezeigte Wert ist zu niedrig, die Korrektur positiv. Gegen eine Decke ist es umgekehrt. Die Werte sind gerätespezifisch.",
+    "gapAnalysis": {
+      "topic": "Rückprallhammer: Schlagrichtung",
+      "misconception": "Es wird nur der Hinweg der Schlagmasse betrachtet, nicht der gemessene Rückprall.",
+      "coreRule": "Nach unten: R zu niedrig → +ΔR; nach oben: R zu hoch → −ΔR.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer: Schlagrichtung“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Rückprallhammer: Auswertung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12504-2",
+    "question": "Welcher Kennwert wird nach DIN EN 12504-2 aus den mindestens 9 Einzelschlägen einer Prüffläche gebildet?",
+    "options": [
+      "Der Maximalwert",
+      "Der arithmetische Mittelwert nach Streichen von Min. und Max.",
+      "Der Median",
+      "Der kleinste Wert"
+    ],
+    "correctIdx": 2,
+    "explanation": "Kennwert ist der Median. Weichen mehr als 20 % der Werte um mehr als 25 % vom Median ab, wird die ganze Messreihe verworfen.",
+    "gapAnalysis": {
+      "topic": "Rückprallhammer: Auswertung",
+      "misconception": "Mittelwertbildung wie bei Festigkeitsprüfungen wird übertragen.",
+      "coreRule": "≥ 9 Schläge, Abstand ≥ 25 mm, Median; Verwerfungskriterium 20 %/25 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer: Auswertung“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_prob_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "probenahme",
+    "moduleTitle": "Probenahme & Erkundung",
+    "topic": "Leichtflüchtige Schadstoffe",
+    "difficulty": "Fortgeschritten",
+    "normRef": "LAGA PN 98",
+    "question": "Bei Verdacht auf LHKW oder BTEX in einem Haufwerk – wie sind die Einzelproben zu behandeln?",
+    "options": [
+      "Intensiv mischen und vierteln wie üblich",
+      "Trocknen bei 105 °C vor dem Versand",
+      "Ohne Homogenisierung direkt gasdicht abfüllen (z. B. Septumgläser)",
+      "Mit Wasser auswaschen"
+    ],
+    "correctIdx": 2,
+    "explanation": "Leichtflüchtige Stoffe gasen beim Mischen aus; die Analyse würde zu niedrige Gehalte zeigen. Einzelproben werden daher direkt gasdicht gefasst. Die meisten PAK sind schwerflüchtig und werden über die Sammelprobe erfasst.",
+    "gapAnalysis": {
+      "topic": "Leichtflüchtige Schadstoffe",
+      "misconception": "Die Homogenisierungsregel wird auch auf flüchtige Stoffe angewendet.",
+      "coreRule": "Flüchtige Parameter: keine Homogenisierung, sofort gasdicht abfüllen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Leichtflüchtige Schadstoffe“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "targetModuleTab": "probenahme",
+      "targetModuleLabel": "Probenahme & Erkundung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Kalibrieren, Justieren, Eichen",
+    "difficulty": "Basis",
+    "normRef": "MessEG / DIN EN ISO 7500-1",
+    "question": "Ein Kalibrierlabor belastet die Betonpresse mit Referenz-Kraftaufnehmern und dokumentiert die Abweichungen, ohne etwas am Gerät zu verändern. Wie heißt dieser Vorgang?",
+    "options": [
+      "Eichen",
+      "Justieren",
+      "Kalibrieren",
+      "Verifizieren nach MessEG"
+    ],
+    "correctIdx": 2,
+    "explanation": "Kalibrieren ermittelt und dokumentiert die Abweichung gegenüber einem rückgeführten Normal – ohne Eingriff. Justieren verändert das Gerät; Eichen ist die gesetzlich geregelte Prüfung nach MessEG.",
+    "gapAnalysis": {
+      "topic": "Kalibrieren, Justieren, Eichen",
+      "misconception": "Die drei Begriffe werden synonym verwendet.",
+      "coreRule": "Kalibrieren = ermitteln; Justieren = einstellen; Eichen = gesetzlich prüfen und kennzeichnen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kalibrieren, Justieren, Eichen“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Richtigkeit und Präzision",
+    "difficulty": "Basis",
+    "normRef": "ISO 5725-1",
+    "question": "Alle Messwerte liegen eng beieinander, aber gemeinsam deutlich neben dem Referenzwert. Was beschreibt das?",
+    "options": [
+      "Hohe Richtigkeit, geringe Präzision",
+      "Hohe Präzision, geringe Richtigkeit",
+      "Hohe Genauigkeit",
+      "Rein zufällige Abweichungen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Geringe Streuung bedeutet hohe Präzision; die gemeinsame Verschiebung ist eine systematische Abweichung (geringe Richtigkeit). Mehrfachmessung hilft dagegen nicht – nur Kalibrierung.",
+    "gapAnalysis": {
+      "topic": "Richtigkeit und Präzision",
+      "misconception": "Geringe Streuung wird mit Richtigkeit gleichgesetzt.",
+      "coreRule": "Genauigkeit = Richtigkeit (systematisch) + Präzision (zufällig).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Richtigkeit und Präzision“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "GUM: Typ-B-Beitrag der Auflösung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "JCGM 100 (GUM)",
+    "question": "Eine Digitalanzeige hat die Auflösung d = 0,1 MPa. Welche Standardunsicherheit ergibt sich nach GUM unter Annahme einer Rechteckverteilung?",
+    "options": [
+      "0,1 MPa",
+      "0,05 MPa",
+      "0,029 MPa",
+      "0,2 MPa"
+    ],
+    "correctIdx": 2,
+    "explanation": "u = d/√12 = 0,1/3,46 = 0,029 MPa. Die halbe Auflösung (0,05) ist die Halbbreite a der Rechteckverteilung; u = a/√3.",
+    "gapAnalysis": {
+      "topic": "GUM: Typ-B-Beitrag der Auflösung",
+      "misconception": "Die Halbbreite der Verteilung wird direkt als Standardunsicherheit verwendet.",
+      "coreRule": "Rechteckverteilung mit Halbbreite a: u = a/√3 = d/√12.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „GUM: Typ-B-Beitrag der Auflösung“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Eignungsprüfung: z-Score",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN ISO 13528:2025-07",
+    "question": "Ihr Labor erzielt im Ringversuch z = −2,4. Wie ist das Ergebnis nach DIN ISO 13528 einzustufen?",
+    "options": [
+      "Zufriedenstellend",
+      "Fragwürdig (Warnsignal)",
+      "Nicht zufriedenstellend (Eingriffssignal)",
+      "Nicht bewertbar ohne En-Zahl"
+    ],
+    "correctIdx": 1,
+    "explanation": "|z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend. Bei −2,4 ist eine laborinterne Ursachenprüfung angezeigt.",
+    "gapAnalysis": {
+      "topic": "Eignungsprüfung: z-Score",
+      "misconception": "Jede Überschreitung von |z| = 2 wird als Nichtkonformität gewertet.",
+      "coreRule": "Grenzen 2 und 3 für |z|; |En| ≤ 1 bei der En-Zahl.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Eignungsprüfung: z-Score“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mp_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "messen_pruefen",
+    "moduleTitle": "Messen & Prüfen",
+    "topic": "Wiederhol- und Vergleichsgrenze",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ISO 5725",
+    "question": "Die Vergleichsstandardabweichung eines Prüfverfahrens beträgt σ_R = 1,5 MPa. Ab welcher Differenz zwischen den Ergebnissen zweier Labore ist der Unterschied signifikant?",
+    "options": [
+      "1,5 MPa",
+      "3,0 MPa",
+      "4,2 MPa",
+      "6,0 MPa"
+    ],
+    "correctIdx": 2,
+    "explanation": "R = 2,8 · σ_R = 2,8 · 1,5 = 4,2 MPa. Kleinere Differenzen sind mit etwa 95 % Wahrscheinlichkeit durch die normale Verfahrensstreuung erklärbar.",
+    "gapAnalysis": {
+      "topic": "Wiederhol- und Vergleichsgrenze",
+      "misconception": "Die Standardabweichung selbst wird als Grenze für Differenzen genommen.",
+      "coreRule": "r = 2,8·σ_r, R = 2,8·σ_R (2,8 ≈ 1,96·√2).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wiederhol- und Vergleichsgrenze“ im Modul Messen & Prüfen noch einmal durch.",
+      "targetModuleTab": "messen_pruefen",
+      "targetModuleLabel": "Messen & Prüfen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_an_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "analytik",
+    "moduleTitle": "Analytik & Diagnostik",
+    "topic": "XRD und amorphe Phasen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 13925-1",
+    "question": "Warum lassen sich C-S-H-Phasen mit der Röntgendiffraktometrie kaum direkt nachweisen?",
+    "options": [
+      "Sie enthalten kein Calcium",
+      "Sie sind weitgehend röntgenamorph und erzeugen keine scharfen Reflexe",
+      "Sie zersetzen sich im Röntgenstrahl",
+      "Sie liegen nur in Spuren vor"
+    ],
+    "correctIdx": 1,
+    "explanation": "XRD beruht auf Beugung an periodischen Kristallgittern. C-S-H ist nanokristallin bis amorph und liefert nur einen breiten Untergrund; der Anteil wird indirekt über Rietveld mit innerem Standard bestimmt.",
+    "gapAnalysis": {
+      "topic": "XRD und amorphe Phasen",
+      "misconception": "Mengenanteil und Kristallinität werden verwechselt.",
+      "coreRule": "XRD = kristalline Phasen; amorphe Anteile nur indirekt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „XRD und amorphe Phasen“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "targetModuleTab": "analytik",
+      "targetModuleLabel": "Analytik & Diagnostik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_an_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "analytik",
+    "moduleTitle": "Analytik & Diagnostik",
+    "topic": "Thermogravimetrie",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Stöchiometrie",
+    "question": "Eine TGA zeigt zwischen 400 und 500 °C einen Masseverlust von 3,0 %. Wie hoch ist der Portlanditgehalt der Probe?",
+    "options": [
+      "3,0 M.-%",
+      "5,4 M.-%",
+      "12,3 M.-%",
+      "22,2 M.-%"
+    ],
+    "correctIdx": 2,
+    "explanation": "Ca(OH)₂ → CaO + H₂O; w_CH = 3,0 · 74,1/18,0 = 12,3 M.-%. 5,4 % entspräche dem Faktor für die CO₂-Abgabe aus Calcit.",
+    "gapAnalysis": {
+      "topic": "Thermogravimetrie",
+      "misconception": "Der gemessene Wasserverlust wird direkt als Portlanditgehalt angegeben.",
+      "coreRule": "w_CH = Δm_H₂O · 74,1/18,0 ≈ 4,11 · Δm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Thermogravimetrie“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "targetModuleTab": "analytik",
+      "targetModuleLabel": "Analytik & Diagnostik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_an_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "analytik",
+    "moduleTitle": "Analytik & Diagnostik",
+    "topic": "Chloridgehalt",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206 / DIN EN 14629",
+    "question": "Welche Aussage zu den Chloridklassen Cl 0,40 und Cl 0,20 nach DIN EN 206 trifft zu?",
+    "options": [
+      "Sie sind Grenzwerte für die Bewertung chloridbelasteter Altbauten",
+      "Sie begrenzen den Chloridgehalt in der Zusammensetzung von Neubeton (Stahl- bzw. Spannbeton), bezogen auf den Zement",
+      "Sie beziehen sich auf die Masse des Betons",
+      "Sie gelten nur für unbewehrten Beton"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Klassen begrenzen den Chloridgehalt des Neubetons (M.-% bez. Zement). Für Bestandsbauwerke wird der kritische korrosionsauslösende Chloridgehalt objektspezifisch bewertet; Laborwerte (bez. Beton) sind über den Zementgehalt umzurechnen.",
+    "gapAnalysis": {
+      "topic": "Chloridgehalt",
+      "misconception": "Neubeton-Höchstwerte werden als Schadensgrenzwert im Bestand angewendet.",
+      "coreRule": "Cl 0,40 Stahlbeton, Cl 0,20 Spannbeton – jeweils Neubeton, bezogen auf Zement.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chloridgehalt“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "targetModuleTab": "analytik",
+      "targetModuleLabel": "Analytik & Diagnostik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_an_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "analytik",
+    "moduleTitle": "Analytik & Diagnostik",
+    "topic": "Quecksilberporosimetrie",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN ISO 15901-1",
+    "question": "Nach der Washburn-Gleichung wird der Druck in der MIP verzehnfacht. Was gilt für den kleinsten dabei gefüllten Porenradius?",
+    "options": [
+      "Er wird zehnmal größer",
+      "Er bleibt gleich",
+      "Er sinkt auf ein Zehntel",
+      "Er sinkt auf ein Hundertstel"
+    ],
+    "correctIdx": 2,
+    "explanation": "p · r = −2γ cos θ = konstant, also r ∝ 1/p. Zehnfacher Druck füllt Poren(zugänge) mit einem Zehntel des Radius.",
+    "gapAnalysis": {
+      "topic": "Quecksilberporosimetrie",
+      "misconception": "Ein quadratischer Zusammenhang wie beim Kapillarsaugen wird angenommen.",
+      "coreRule": "Washburn: r = −2γ cos θ / p; r [nm] ≈ 7 400 / p [bar].",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Quecksilberporosimetrie“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "targetModuleTab": "analytik",
+      "targetModuleLabel": "Analytik & Diagnostik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_an_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "analytik",
+    "moduleTitle": "Analytik & Diagnostik",
+    "topic": "Methodenwahl",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Mit welchem Verfahren bestimmen Sie die chemische Elementzusammensetzung (z. B. Hauptoxide CaO, SiO₂) eines Zements?",
+    "options": [
+      "XRD",
+      "RFA (Röntgenfluoreszenzanalyse)",
+      "MIP",
+      "μ-CT"
+    ],
+    "correctIdx": 1,
+    "explanation": "RFA liefert Elemente bzw. Oxidgehalte. XRD liefert kristalline Phasen (z. B. Alit, Belit), MIP die Porenverteilung, μ-CT das 3D-Gefüge.",
+    "gapAnalysis": {
+      "topic": "Methodenwahl",
+      "misconception": "Elementanalyse und Phasenanalyse werden verwechselt.",
+      "coreRule": "RFA/ICP = Elemente; XRD = Phasen; REM/μ-CT = Gefüge; MIP/NMR = Poren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Methodenwahl“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "targetModuleTab": "analytik",
+      "targetModuleLabel": "Analytik & Diagnostik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mech_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "mechanische_pruefungen",
+    "moduleTitle": "Mechanische Prüfungen",
+    "topic": "Druckfestigkeit: Belastungsgeschwindigkeit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12390-3",
+    "question": "Mit welcher Belastungsgeschwindigkeit werden Betonprobekörper nach DIN EN 12390-3 geprüft?",
+    "options": [
+      "0,05 ± 0,01 MPa/s",
+      "0,6 ± 0,2 MPa/s",
+      "2,0 ± 0,5 MPa/s",
+      "50 mm/min weggesteuert"
+    ],
+    "correctIdx": 1,
+    "explanation": "Druckprüfung: konstante Spannungsrate 0,6 ± 0,2 MPa/s. 0,04–0,06 MPa/s gilt für Biegezug und Spaltzug, 50 mm/min für den indirekten Zugversuch an Asphalt.",
+    "gapAnalysis": {
+      "topic": "Druckfestigkeit: Belastungsgeschwindigkeit",
+      "misconception": "Die Belastungsraten der verschiedenen Betonprüfungen werden verwechselt.",
+      "coreRule": "Druck 0,6 ± 0,2 MPa/s; Biegezug/Spaltzug 0,04–0,06 MPa/s.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Druckfestigkeit: Belastungsgeschwindigkeit“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "targetModuleTab": "mechanische_pruefungen",
+      "targetModuleLabel": "Mechanische Prüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mech_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "mechanische_pruefungen",
+    "moduleTitle": "Mechanische Prüfungen",
+    "topic": "Spaltzugfestigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12390-6",
+    "question": "Ein Zylinder (d = 150 mm, L = 300 mm) bricht im Spaltzugversuch bei 200 kN. Wie groß ist die Spaltzugfestigkeit?",
+    "options": [
+      "1,41 N/mm²",
+      "2,83 N/mm²",
+      "4,44 N/mm²",
+      "8,89 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_ct,sp = 2F/(π·L·d) = 2·200 000/(π·300·150) = 2,83 N/mm². Die zentrische Zugfestigkeit wäre ≈ 0,9 · 2,83 = 2,55 N/mm².",
+    "gapAnalysis": {
+      "topic": "Spaltzugfestigkeit",
+      "misconception": "Der Faktor 2 oder π wird vergessen bzw. die Fläche wie beim Druckversuch angesetzt.",
+      "coreRule": "f_ct,sp = 2F/(πLd); f_ct ≈ 0,9 f_ct,sp.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spaltzugfestigkeit“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "targetModuleTab": "mechanische_pruefungen",
+      "targetModuleLabel": "Mechanische Prüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mech_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "mechanische_pruefungen",
+    "moduleTitle": "Mechanische Prüfungen",
+    "topic": "Betonstahl-Duktilität",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN 488-1",
+    "question": "Welche Kenngrößen unterscheiden B500A von B500B nach DIN 488-1?",
+    "options": [
+      "Nur die Streckgrenze",
+      "Streckgrenzenverhältnis R_m/R_e und Gesamtdehnung bei Höchstkraft A_gt",
+      "Kerbschlagarbeit und Härte",
+      "Rippengeometrie und Durchmesser"
+    ],
+    "correctIdx": 1,
+    "explanation": "Beide haben R_e ≥ 500 N/mm². B500B (hochduktil) verlangt R_m/R_e ≥ 1,08 und A_gt ≥ 5,0 %, B500A (normalduktil) ≥ 1,05 und ≥ 2,5 %.",
+    "gapAnalysis": {
+      "topic": "Betonstahl-Duktilität",
+      "misconception": "Die Bruchdehnung nach dem Bruch wird anstelle von A_gt verwendet.",
+      "coreRule": "Duktilität = R_m/R_e und A_gt (Dehnung bei Höchstkraft).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonstahl-Duktilität“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "targetModuleTab": "mechanische_pruefungen",
+      "targetModuleLabel": "Mechanische Prüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mech_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "mechanische_pruefungen",
+    "moduleTitle": "Mechanische Prüfungen",
+    "topic": "Kerbschlagbiegeversuch",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 148-1 / DIN EN 10025-2",
+    "question": "Was bedeutet die Gütegruppe „J2“ bei S355J2?",
+    "options": [
+      "Mindest-Kerbschlagenergie 27 J bei −20 °C",
+      "Streckgrenze 355 N/mm² bei 20 °C",
+      "27 J bei +20 °C",
+      "Schweißeignung Klasse 2"
+    ],
+    "correctIdx": 0,
+    "explanation": "J = 27 J, Index 2 = Prüftemperatur −20 °C (JR: +20 °C, J0: 0 °C). Die erforderliche Gütegruppe ergibt sich nach DIN EN 1993-1-10 aus Bauteildicke und Einsatztemperatur.",
+    "gapAnalysis": {
+      "topic": "Kerbschlagbiegeversuch",
+      "misconception": "Die Gütegruppe wird mit der Festigkeitsangabe verwechselt.",
+      "coreRule": "JR +20 °C, J0 0 °C, J2 −20 °C – jeweils 27 J.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kerbschlagbiegeversuch“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "targetModuleTab": "mechanische_pruefungen",
+      "targetModuleLabel": "Mechanische Prüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mech_5",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "mechanische_pruefungen",
+    "moduleTitle": "Mechanische Prüfungen",
+    "topic": "Biegeprüfung Holz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 408",
+    "question": "Ein Kantholz b = 50 mm, h = 100 mm wird nach DIN EN 408 über L = 18·h = 1800 mm im 4-Punkt-Versuch geprüft und bricht bei F = 6,5 kN (Gesamtlast). Wie groß ist f_m?",
+    "options": [
+      "11,7 N/mm²",
+      "17,6 N/mm²",
+      "23,4 N/mm²",
+      "35,1 N/mm²"
+    ],
+    "correctIdx": 2,
+    "explanation": "a = L/3 = 600 mm; f_m = 3·F·a/(b·h²) = 3·6500·600/(50·100²) = 23,4 N/mm². 17,6 entspräche einer falschen Formel mit 0,75·F·L.",
+    "gapAnalysis": {
+      "topic": "Biegeprüfung Holz",
+      "misconception": "Formeln für 3- und 4-Punkt-Biegung bzw. Einzel- und Gesamtlast werden vermischt.",
+      "coreRule": "DIN EN 408: f_m = 3Fa/(bh²), a = 6h, Stützweite 18h.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biegeprüfung Holz“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "targetModuleTab": "mechanische_pruefungen",
+      "targetModuleLabel": "Mechanische Prüfungen"
+    },
+    "verified": false
   }
 ]
