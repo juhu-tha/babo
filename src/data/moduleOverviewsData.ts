@@ -1220,7 +1220,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Rissmorphologie liest das Kraftfeld',
-        description: 'Risse verlaufen immer rechtwinklig zur Hauptzugspannung. Horizontale Risse deuten auf Biegung, diagonale 45°-Risse auf Schub/Querkraft oder Baugrundsetzung, netzartige Risse auf Schwinden.',
+        description: 'Risse verlaufen immer rechtwinklig zur Hauptzugspannung. Biegerisse verlaufen von der Zugseite senkrecht zur Bauteilachse (bei Balken also vertikal); horizontale Risse in Wänden deuten eher auf Lagerfugenversagen, Kipp- oder Ausmittigkeitsprobleme, Längsrisse entlang der Bewehrung auf Korrosion; diagonale 45°-Risse auf Schub/Querkraft oder Baugrundsetzung, netzartige Risse auf Schwinden.',
         takeaway: 'Das Rissbild ist der Fingerabdruck der mechanischen Überlastung.'
       },
       {
@@ -1229,10 +1229,10 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         takeaway: 'Die gutachterliche Beweislast verlangt lückenlose Kausalketten.'
       }
     ],
-    systemicExplanation: 'Dieses Modul ist die gerichtsverwertbare Kriminalistik des Bauwesens. Es führt durch optische und instrumentelle Diagnoseverfahren (Risslupe, Rissmonitore, Rissbreitenmikroskope, Ultraschall, Kernbohrungen), ordnet Schadensbilder den physikalisch-chemischen Phänomenen zu und strukturiert Sachverständigengutachten nach VDI 6200.',
+    systemicExplanation: 'Dieses Modul ist die forensische Ursachenanalyse des Bauwesens. Es führt durch optische und instrumentelle Diagnoseverfahren (Risslupe, Rissmonitore, Rissbreitenmikroskope, Ultraschall, Kernbohrungen), ordnet Schadensbilder den physikalisch-chemischen Phänomenen zu und strukturiert Sachverständigengutachten nach VDI 6200.',
     zusammenhaengeText: 'Die Schadensdiagnostik schließt den Kreis aller Module: Sie deckt auf, wo Grundlagen, Betontechnologie, Bauphysik oder Ausführung versagt haben, und leitet direkt in die Instandsetzung über.',
     graphicalPipelineTitle: 'Der gutachterliche Schadensanalyse-Pfad',
-    graphicalPipelineDesc: 'Vom Schadenssymptom über instrumentelle Diagnose zur gerichtsfesten Kausalitätsprüfung:',
+    graphicalPipelineDesc: 'Vom Schadenssymptom über instrumentelle Diagnose zur nachvollziehbaren Kausalitätsprüfung:',
     steps: [
       {
         step: '1',
@@ -1261,7 +1261,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Soll-Ist-Abgleich mit Statik, Baustoffnormen und Ausführungsplänen. Identifikation des Primärauslösers.',
         iconName: 'Compass',
         keyFacts: ['Planungs- vs. Ausführungsfehler', 'Normabweichung zum Bauzeitpunkt', 'Schadensmechanismus'],
-        normOrFormula: 'VDI 6200 Schadensmatrix',
+        normOrFormula: 'BGB § 633 / a. R. d. T. zum Abnahmezeitpunkt',
         color: 'from-indigo-600 to-indigo-700'
       },
       {

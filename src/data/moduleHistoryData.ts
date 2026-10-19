@@ -705,14 +705,14 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
   schaeden: {
     groupKey: 'schaeden',
     title: 'Bauschäden & Mängel',
-    leadSummary: 'Von spektakulären Einsturzkatastrophen über die Etablierung des öffentlich bestellten Sachverständigenwesens und der WTA bis hin zu modernen forensischen Untersuchungsmethoden und rechtssicheren Mängelrügen nach BGB und VOB.',
+    leadSummary: 'Von spektakulären Einsturzkatastrophen über die Etablierung des öffentlich bestellten Sachverständigenwesens und der WTA bis hin zu modernen forensischen Untersuchungsmethoden und Mängelrügen nach BGB und VOB.',
     milestones: [
       {
         era: '1879 / 1980',
         title: 'Katastrophen als Lehrmeister: Tay-Brücke & Kongresshalle Berlin',
         category: 'Paradigmenwechsel',
-        description: 'Einstürze wie die schottische Tay-Brücke (1879, Ermüdung/Wind) oder der Teileinsturz der Kongresshalle Berlin (1980, Spannungsrisskorrosion vergüteter Spannstähle) decken gravierende Wissenslücken in Statik und Werkstoffverhalten auf.',
-        impact: 'Verbot anfälliger Baustähle, Neufassung von Sicherheitskonzepten und Einführung engmaschiger Bauwerksüberprüfungen (DIN 1076 für Brücken).',
+        description: 'Einstürze wie die schottische Tay-Brücke (1879: nach dem Untersuchungsbericht v. a. unzureichend berücksichtigte Windlast, mangelhafte Gussteile und Verbindungen sowie schlechte Bauüberwachung) oder der Teileinsturz der Kongresshalle Berlin (1980: Korrosion von Spanngliedern im Übergang Dachschale/Randbogen bei mangelhafter Verpressung und durch Zwang geöffneten Fugen) decken Wissenslücken in Statik, Konstruktion und Werkstoffverhalten auf.',
+        impact: 'Verschärfte Anforderungen an Verpressung und Inspizierbarkeit von Spanngliedern; Neubewertung älterer Spannbetonbauten. (DIN 1076 für Brücken besteht bereits seit 1930, aktuelle Ausgabe 1999-11.)',
         keyReference: 'Untersuchungsausschuss Kongresshalle Berlin'
       },
       {
@@ -725,18 +725,18 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
       },
       {
         era: '1990er Jahre',
-        title: 'Neue Schadensbilder: Schimmelpilz- und WDVS-Schäden',
+        title: 'Neue Schadensbilder: Schimmelpilz- und WDVS-Schäden (ab den 1990er Jahren)',
         category: 'Technologie',
         description: 'Der Einbau hochdichter Isolierglasfenster ohne nutzerunabhängige Lüftungskonzepte führt zu einer Explosion von Schimmelpilzschäden. Zeitgleich häufen sich Veralgungen und Risse in ersten Wärmedämmverbundsystemen (WDVS).',
-        impact: 'Einführung der Lüftungsnorm DIN 1946-6 (Lüftungskonzept) und Verschärfung der bauphysikalischen Detailausbildung an Wärmebrücken.',
+        impact: 'Lüftungskonzept nach DIN 1946-6 (Ausgabe 2009-05, Neuausgabe 2019) und Verschärfung der bauphysikalischen Detailausbildung an Wärmebrücken.',
         keyReference: 'DIN 1946-6 / Umweltbundesamt Schimmel-Leitfaden'
       },
       {
         era: '2002 / 2018',
         title: 'Reform des Schuldrechts & Neues BGB-Bauvertragsrecht 2018',
         category: 'Recht & Regularien',
-        description: 'Schuldrechtsmodernisierung 2002 führt die 5-jährige Verjährungsfrist für Bauwerksmängel im BGB (§ 634a BGB) ein. 2018 folgt die historische Reform des Bauvertragsrechts (§§ 650a ff. BGB) mit gesetzlicher Definition des Baumangels.',
-        impact: 'Rechtliche Schärfung des Mangelbegriffs: Abweichung von der vereinbarten Beschaffenheit oder den anerkannten Regeln der Technik.',
+        description: 'Die 5-jährige Verjährungsfrist für Bauwerksmängel bestand bereits nach § 638 BGB a. F.; die Schuldrechtsmodernisierung 2002 übernahm sie in § 634a Abs. 1 Nr. 2 BGB. Die Reform zum 01.01.2018 führte den Bauvertrag (§§ 650a ff. BGB), das Anordnungsrecht des Bestellers (§ 650b), die Zustandsfeststellung (§ 650g) und den Architekten- und Ingenieurvertrag (§§ 650p ff.) ein; der Mangelbegriff bleibt in § 633 BGB.',
+        impact: 'Mangel nach § 633 BGB: Abweichung von der vereinbarten Beschaffenheit, hilfsweise von der gewöhnlichen Verwendungseignung; die anerkannten Regeln der Technik gelten als stillschweigend vereinbarter Mindeststandard.',
         keyReference: 'BGB §§ 633, 650a–v / VOB/B § 13'
       },
       {

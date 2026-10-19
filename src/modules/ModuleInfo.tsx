@@ -797,7 +797,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     icon: FileWarning,
     basicsTitle: 'Wissenschaftliche Mängel- und Schadensanalyse',
     basicsDesc1: 'Planungsfehler, Ausführungsmängel oder übermäßige Nutzungs- und Umwelteinwirkungen führen zu Baumängeln und Bauschäden. Dieses Modul vermittelt die methodische Erfassung von Mängeln & Schäden von der Risskartierung bis zur zerstörungsfreien Prüfung.',
-    basicsDesc2: 'Wir behandeln baurechtliche Pflichten nach BGB und VOB/B, typische Schadens- und Mängelbilder (Schimmel, Feuchte, Trennrisse, Abplatzungen), bauaufsichtlich vorgeschriebene Überprüfungen nach VDI 6200 und gerichtsfeste Beweissicherungen.',
+    basicsDesc2: 'Wir behandeln baurechtliche Pflichten nach BGB und VOB/B, typische Schadens- und Mängelbilder (Schimmel, Feuchte, Trennrisse, Abplatzungen), Überprüfungen nach VDI 6200 (anerkannte Regel der Technik, keine Rechtsnorm; konkretisiert die Instandhaltungs- und Verkehrssicherungspflicht des Eigentümers nach § 3 MBO / Art. 3 BayBO und §§ 823, 836 BGB) sowie beweissichernde Dokumentation.',
     basicsCards: [
       { title: 'VDI 6200 Tragwerksinspektion', desc: 'Strukturierte Beurteilungsverfahren von visuellen Kontrollen bis zu messtechnischen Tiefenprüfungen zur Abwendung von Tragwerkseinstürzen.' },
       { title: 'ZfP & Sensorik-Monitoring', desc: 'Einsatz von LVDT-Rissaufnehmern, Potentialfeldmessungen, Holzbohrwiderstandsmessungen und Endoskopie.' }
@@ -806,13 +806,13 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Recht & Grundlagen', icon: FileWarning, purpose: 'Rechtliche Einordnung von Baumängeln und Bauschäden, Beweissicherungsverfahren, Mängelrügen und Gewährleistungsfristen.', standards: 'VOB/B § 13 (Mängelansprüche)', useCase: 'Durchführung einer mangelfreien Beweissicherung vor Beginn einer innerstädtischen Baugrubenspundung.' },
       { title: 'Typische Bauschäden & Mängel', icon: TrendingDown, purpose: 'Systematischer Schadens- und Mängelatlas: Aufsteigende Feuchte, Setzungsrisse, thermische Spannungsbrüche, WDVS-Schäden und Ausführungsfehler.', standards: 'Bauschadens-Kataloge', useCase: 'Ursachenermittlung bei schrägen Rissen über Fensteröffnungen.' },
       { title: 'Tragwerksmonitoring & Sensorik (SHM)', icon: Activity, purpose: 'Kontinuierliche Schwingungs- und Verformungsüberwachung (SHM) zur Vermeidung von Tragwerksversagen, Sensornetzwerke (LVDT, DMS, Piezogeber, Neigung), Schwellenwert- & Alarmierungsmatrizen nach VDI 6200, Holzdiagnostik mit Resistographen-Bohrwiderstandssimulation sowie konsolidierter ZfP-Prüfkatalog.', standards: 'VDI 6200 / DIN 1076 / DGZfP', useCase: 'Messtechnische Rissbreitenüberwachung (LVDT) und Schwingungsmessung an einer Spannbetonbrücke unter Schwerlastverkehr mit automatischer Grenzwertalarmierung.' },
-      { title: 'Zustandsbewertung (VDI 6200)', icon: ClipboardCheck, purpose: 'Standsicherheitsprüfungen bestehender Tragwerke, Ermittlung der Schädigungskategorien und Einsturzgefahr.', standards: 'VDI 6200 (Standsicherheit von Bauwerken)', useCase: 'Vorbereitung der regelmäßigen Sichtprüfung für eine weitgespannte Holzhalle.' },
+      { title: 'Zustandsbewertung (VDI 6200)', icon: ClipboardCheck, purpose: 'Überprüfung bestehender Tragwerke nach VDI 6200 (Begehung, Inspektion, eingehende Überprüfung) und Zustandsnoten nach DIN 1076 / RI-EBW-PRÜF.', standards: 'VDI 6200 / VDI 6200 Blatt 1.1 / DIN 1076', useCase: 'Vorbereitung der regelmäßigen Sichtprüfung für eine weitgespannte Holzhalle.' },
       { title: 'Große Materialschäden & Einstürze', icon: AlertTriangle, purpose: 'Forensische Fallstudien historischer Katastrophen (AKR an Betonschwellen Garmisch, Eishalle Bad Reichenhall, Ponte Morandi, Carolabrücke Dresden, Hyatt Regency, Stava, Schiersteiner Brücke, Silver Bridge, Kongresshalle, Reichsbrücke) mit Projektdaten, Historie, Materialursachen und Lehren.', standards: 'DAfStb Alkali-Richtlinie / VDI 6200 / DIN 1076 / Eurocodes', useCase: 'Analyse werkstoffbedingter Einsturzursachen wie Alkali-Kieselsäure-Reaktion, Spannungsrisskorrosion oder Leimhydrolyse für Gutachten und Lehre.' },
-      { title: 'Mängel- & Schadens-Checklisten', icon: FileText, purpose: 'Strukturierte Erfassungsbögen und Prüflisten für Begehungen, Risskataster, Mängelrügen und Gutachten.', standards: 'AHO Heft 9 / VDI 6200', useCase: 'Gerichtsfeste Dokumentation von Mängeln und Rissprotokollen bei Nachbarbebauung.' }
+      { title: 'Mängel- & Schadens-Checklisten', icon: FileText, purpose: 'Strukturierte Erfassungsbögen und Prüflisten für Begehungen, Risskataster, Mängelrügen und Gutachten.', standards: 'VDI 6200 / VOB/B § 4 Abs. 7, § 13 / DIN 4123', useCase: 'Beweissichernde Dokumentation von Mängeln und Rissprotokollen bei Nachbarbebauung.' }
     ],
     didacticCards: [
       { title: 'Schadensursache vor Schadensbehebung', desc: 'Sanierungen ohne vorherige Beseitigung der Ursache (z.B. Abdichtungsfehler) führen unausweichlich zu Folgeschäden.' },
-      { title: 'Systematische Diagnostik', desc: 'Verwendung standardisierter Prüfprotokolle zur Gewährleistung reproduzierbarer und gerichtsfester Gutachtenergebnisse.' },
+      { title: 'Systematische Diagnostik', desc: 'Verwendung standardisierter Prüfprotokolle für reproduzierbare, nachvollziehbare Gutachtenergebnisse (die Beweiswürdigung obliegt dem Gericht, § 286 ZPO).' },
       { title: 'Gefahrenabwehr & Standsicherheit', desc: 'Sofortige Identifizierung statisch kritischer Schädigungen zur Verhütung von Personenschäden.' }
     ],
     appStudents: 'Bereitet Studierende auf anspruchsvolle Tätigkeiten in Sachverständigenbüros, Bauämtern und Prüfinstituten vor.',
@@ -822,15 +822,19 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Baustatische Prüfung', url: 'https://de.wikipedia.org/wiki/Pr%C3%BCfingenieur_f%C3%BCr_Baustatik' }
     ],
     literatur: [
-      'Grobbe, G. (2018): Risse im Mauerwerk und Beton - Ursachen, Vermeidung, Sanierung (DIN Media)',
-      'Oswald, R. (2016): Aachener Bauschadensfragen (Bauverlag)'
+      'Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg (aktuelle Auflage)',
+      'Zimmermann, G. (Hrsg.): Bauschadens-Sammlung. Fraunhofer IRB Verlag (mehrbändig)',
+      'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Vieweg+Teubner',
+      'Scheer, J.: Versagen von Bauwerken. Band 1: Brücken; Band 2: Hochbauten und Sonderbauwerke. Ernst & Sohn'
     ],
     regelwerke: [
-      { title: 'VDI 6200: Standsicherheit von Bauwerken - Regelmäßige Überprüfung', url: 'https://www.dinmedia.de/' },
+      { title: 'VDI 6200:2010-02: Standsicherheit von Bauwerken – Regelmäßige Überprüfung', url: 'https://www.vdi.de/richtlinien' },
+      { title: 'VDI 6200 Blatt 1.1:2026-06: Berichtsdokumentation der Überprüfung', url: 'https://www.vdi.de/richtlinien' },
+      { title: 'DIN 1076:1999-11: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
       { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen - Teil B: Allgemeine Vertragsbedingungen', url: 'https://www.gesetze-im-internet.de/' }
     ],
     formeln: [
-      { formel: 'w = \\beta \\cdot s_{r,\\text{max}} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm})', erklaerung: 'Rissbreitenberechnung nach DIN EN 1992-1-1: Rechnerische Rissbreite w als Produkt aus Beiwert β, maximalem Rissabstand s_r,max und Dehnungsdifferenz zwischen Bewehrungsstahl und Beton.', quelle: 'DIN EN 1992-1-1' }
+      { formel: 'w_k = s_{r,\\text{max}} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm})', erklaerung: 'Rechenwert der Rissbreite als Produkt aus maximalem Rissabstand s_r,max und Dehnungsdifferenz zwischen Betonstahl und Beton (ohne zusätzlichen Beiwert). s_r,max nach Gl. 7.11 bzw. NA(DE).', quelle: 'DIN EN 1992-1-1, Gl. (7.8)' }
     ]
   },
   instandsetzung: {
@@ -1160,20 +1164,18 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   schaeden: {
     websites: [
       { name: "IFS Schadenforschung", url: "https://www.ifs-ev.de", desc: "Institut für Schadenverhütung und Schadenforschung e.V. mit Bauschadensarchiv." },
-      { name: "Bauschadensportal Sachverständige", url: "https://www.bauschadensportal.de", desc: "Umfangreiche Fachartikel und Schadenssammlungen gerichtlicher Bausachverständiger." },
-      { name: "TÜV Rheinland Bautenschutz-Verzeichnis", url: "https://www.tuv.com", desc: "Leitlinien für Bauwerksabdichtungen, Instandsetzungsplanung und Sachverständigengutachten." }
+      { name: "AIBau – Aachener Institut für Bauschadensforschung", url: "https://www.aibau.de", desc: "Bauschadensforschung; Aachener Bausachverständigentage (Tagungsbände)." },
+      { name: "BVS – Bundesverband öffentlich bestellter und vereidigter sowie qualifizierter Sachverständiger", url: "https://www.bvs-ev.de", desc: "Dachverband der Sachverständigen, Fachbereich Bau." }
     ],
     books: [
-      { title: "Bauschäden-Sammlung: Schadensanalysen für die Praxis", desc: "Frössel, Forum. Systematische Sammlung seltener und typischer Baufehler mit Sanierungsskizzen." },
-      { title: "Risse in Betonbauteilen: Ursachen, Vermeidung und Sanierung", desc: "Ruhnau, DIN Media. Fachgerechte Dehnfugenauslegung und Abdichtungen gerissener Kellerwände." }
+      { title: "Bauschadens-Sammlung", desc: "Zimmermann, G. (Hrsg.), Fraunhofer IRB Verlag. Mehrbändige Sammlung dokumentierter Schadensfälle mit Ursachen und Sanierung." },
+      { title: "Hinzunehmende Unregelmäßigkeiten bei Gebäuden", desc: "Oswald, R.; Abel, R., Springer Vieweg. Abgrenzung Mangel – hinzunehmende Unregelmäßigkeit." }
     ],
     publications: [
-      { journal: "Water Research", title: "Diagnostic approach for identification of biogenic sulfuric acid corrosion in wastewater treatment concrete tanks", desc: "Mechanismus bakteriell induzierter Gips-Treiben-Korrosion." },
-      { journal: "Bautenschutz + Bausanierung", title: "Thermografische Rissdetektion an verputzten Ziegelaußenwänden bei instationärer Erwärmung", desc: "Detektion verborgener Mauerwerksrisse mittels Aktiv-Thermografie." }
+      { journal: "Aachener Bausachverständigentage (Springer Vieweg)", title: "Tagungsbände (jährlich)", desc: "Fachbeiträge zu aktuellen Schadensbildern, Abgrenzung Mangel/Schaden und Sachverständigenpraxis." },
+      { journal: "Bautechnik / Beton- und Stahlbetonbau (Ernst & Sohn)", title: "Fachaufsätze zu Schadensfällen und Nachrechnung", desc: "Primärquellen zu Einstürzen und Schadensanalysen (z. B. Carolabrücke, Spannungsrisskorrosion)." }
     ],
     dissertations: [
-      { title: "Rissbreitenbeschränkung in massigen Betonbauteilen unter Berücksichtigung von Hydratationszwang und Kriechen", desc: "Dissertation, TU Berlin, 2020. Numerischer Spannungsnachweis frühzeitigen Zwangs in Bodenplatten." },
-      { title: "Schadensdiagnostik und Instandsetzungskonzepte für geschädigte Spannbetonbrücken", desc: "Dissertation, Universität Kassel. Tragwiderstandsuntersuchungen an Spannbetonbrücken unter Koppelfugenrissen." }
     ]
   },
   instandsetzung: {

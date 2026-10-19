@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Activity, Gauge, AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Waves, Hammer, Compass, Trees, Scale, Layers } from 'lucide-react';
@@ -161,9 +162,11 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
   // Bohrmehl / Chlorid
   const chlorideCalc = useMemo(() => {
-    const limit = isPrestressed ? 0.20 : 0.40;
-    const isExceeded = chlorideVal > limit;
-    const ratio = (chlorideVal / limit).toFixed(2);
+    // Kein Normwert: Anhaltswert ≈ 0,5 M.-% bez. Zement (Einzelfallbewertung); Spannstahl: kein gesicherter Grenzwert
+    const limit = 0.5;
+    const isExceeded = isPrestressed ? chlorideVal >= 0.2 : chlorideVal >= limit;
+    const stufe = chlorideVal < 0.2 ? 'unkritisch' : chlorideVal < 0.5 ? 'Beobachtung / Prävention' : 'Korrosion wahrscheinlich';
+    const ratio = formatDeZahl(chlorideVal / limit, 1) + ' (' + stufe + ')';
 
     return {
       limit,
@@ -230,12 +233,9 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const rawStrength = (coreMaxForce * 1000) / area; // N/mm²
 
     const lambda = coreLength / coreDiameter; // L/D
-    // DIN EN 12504-1 Korrekturfaktor auf L/D = 1.0 bzw. 2.0
-    let f_corr = rawStrength;
-    if (lambda < 0.95 || lambda > 1.05) {
-      // Norm-Formel: f_is = raw / (0.80 + 0.22 / lambda) für L/D < 2
-      f_corr = rawStrength / (0.80 + (0.22 / Math.max(0.5, lambda)));
-    }
+    // DIN EN 12504-1 enthält keine Umrechnungsfaktoren. DIN EN 13791:2020-02: Kern L/D = 1 (Ø 100 mm)
+    // ≈ 150-mm-Würfel, L/D = 2 ≈ Zylinder 150/300. Andere Schlankheiten werden nicht umgerechnet.
+    const f_corr = rawStrength;
 
     return {
       area: Math.round(area),
@@ -365,7 +365,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div className="text-[11px] text-slate-500 pt-3 border-t border-slate-100 space-y-1">
               <p>• Richtungsbereinigter Rückprallwert: <strong>{schmidtCalc.r_corr}</strong></p>
               <p>• Karbonatisierungs-Korrekturfaktor k_carb: <strong>{schmidtCalc.k_carb}</strong></p>
-              <p className="text-[10px] text-amber-700">Hinweis: Gemäß DIN EN 13791 müssen Rückprallwerte stets durch mindestens 3 bis 9 Bohrkernprüfungen kalibriert werden.</p>
+              <p className="text-[10px] text-amber-700">Hinweis: Nach DIN EN 13791 dürfen Rückprallwerte nur über eine Kalibrierung an Bohrkernen desselben Bauteils in Festigkeiten umgerechnet werden.</p>
             </div>
           </div>
         </div>
@@ -599,23 +599,23 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           }`}>
             <div className="space-y-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 block">
-                Kritischer Chloridgehalt Cl_krit (DAfStb)
+                Chloridgehalt an der Bewehrung (Anhaltswert, kein Normwert)
               </span>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-700">Normativer Grenzwert:</span>
-                <span className="font-mono font-bold text-slate-900">{chlorideCalc.limit.toFixed(2)} M.-%</span>
+                <span className="text-xs text-slate-700">Anhaltswert korrosionsauslösend:</span>
+                <span className="font-mono font-bold text-slate-900">≈ {formatDeZahl(chlorideCalc.limit, 1)} M.-% bez. Zement</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-700">Verhältnis Ist/Grenzwert:</span>
+                <span className="text-xs text-slate-700">Verhältnis Ist/Anhaltswert:</span>
                 <span className={`font-mono font-bold text-sm ${chlorideCalc.isExceeded ? 'text-rose-700' : 'text-emerald-700'}`}>
-                  {chlorideCalc.ratio} × Cl_krit
+                  {chlorideCalc.ratio}
                 </span>
               </div>
             </div>
             <div className="text-xs font-bold pt-3 border-t border-slate-200">
               {chlorideCalc.isExceeded 
-                ? '❌ Grenzwert überschritten: Lochfraßkorrosion aktiv! Vollständiger Betonabtrag bis hinter die Bewehrung erforderlich.'
-                : '✅ Unkritisch: Unterhalb des korrosionsauslösenden Schwellenwerts. Keine akute Lochfraßgefahr.'}
+                ? (isPrestressed ? '❌ Chloride am Spannglied: immer kritisch – gesonderte Beurteilung (SpRK, Lochkorrosion) erforderlich.' : '❌ Korrosionsgefahr erhöht: Instandsetzungsprinzip nach TR Instandhaltung wählen (Chloridentfernung, Beschichtung/Trocknung, KKS nach DIN EN ISO 12696).')
+                : '✅ Unterhalb des Anhaltswerts – Bewertung im Einzelfall (Feuchte, Karbonatisierung, Potentialfeld).'}
             </div>
           </div>
         </div>
@@ -656,7 +656,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                   onClick={() => setFailureType('verbund')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'verbund' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 >
-                  Verbundfuge (B)
+                  Verbundfuge (A/B)
                 </button>
                 <button
                   type="button"
@@ -866,18 +866,18 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
           <div className="md:col-span-6 bg-white p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                In-situ-Druckfestigkeit (DIN EN 12504-1; bei L/D = 1, Ø 100 mm ≈ Würfelfestigkeit 150 mm)
+                Kerndruckfestigkeit f_c,core (DIN EN 12504-1)
               </span>
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-black text-shiraz font-mono">{bohrkernCalc.f_corr}</span>
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
               <div className="text-xs text-slate-600">
-                Schlankheit L/D = {bohrkernCalc.lambda} (Rohfestigkeit: {bohrkernCalc.rawStrength} N/mm²)
+                Schlankheit L/D = {bohrkernCalc.lambda}: {Math.abs(Number(bohrkernCalc.lambda) - 1) < 0.05 ? 'entspricht etwa einem 150-mm-Würfel' : Math.abs(Number(bohrkernCalc.lambda) - 2) < 0.1 ? 'entspricht etwa einem Zylinder 150/300' : 'kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen'}
               </div>
             </div>
             <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100">
-              Anerkanntes Referenzverfahren für die statische Nachrechnung nach DIN EN 13791.
+              Referenzverfahren. Charakteristischer Wert erst aus n ≥ 8 Kernen: f_ck,is = min(f_m − k_n·s; f_lowest + M), Einstufung mit f_ck = f_ck,is / 0,85 (DIN EN 13791:2020-02).
             </div>
           </div>
         </div>

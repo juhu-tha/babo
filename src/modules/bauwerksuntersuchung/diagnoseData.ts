@@ -70,7 +70,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     conditioning: {
       titel: 'Proben- und Prüfstellenkonditionierung Holz',
       oberflaeche: 'Entfernen von losem Putz, Farbanstrichen oder Verkleidungen; plane Auflagefläche für das Führungsgehäuse des Resistographen sicherstellen.',
-      klimaUndFeuchte: 'Holzfeuchte u vorab mittels Widerstandsfeuchtemessgerät (DIN EN 13183-2) erfassen. Bei u > 20 M.-% fällt der mechanische Bohrwiderstand um bis zu 15 % ab (Feuchtekorrektur erforderlich).',
+      klimaUndFeuchte: 'Holzfeuchte u vorab mittels Widerstandsfeuchtemessgerät (DIN EN 13183-2) erfassen. Bei erhöhter Holzfeuchte sinkt der Bohrwiderstand; Profile nur bei vergleichbarer Feuchte vergleichen.',
       vorbereitungLabor: 'Nicht erforderlich (Vor-Ort-Direktverfahren). Bei Pilzverdacht Holzspan-Sicherung in sterilem Gefäß für mykologische Laboranalyse.',
       kritischeFehlerVermeidung: [
         'Bohrung nicht durch Astknoten führen (führt zu scheinbar überhöhten Festigkeiten).',
@@ -107,11 +107,11 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       grenzwerte: [
         { parameter: 'Restquerschnitt A_eff / A_0', wert: '> 85 %', einheit: '%', status: 'ok', bewertung: 'Voll tragfähig', massnahme: 'Keine statische Verstärkung; Feuchteursache beseitigen.' },
         { parameter: 'Restquerschnitt A_eff / A_0', wert: '65–85 %', einheit: '%', status: 'warn', bewertung: 'Tragfähigkeit eingeschränkt', massnahme: 'Statische Nachrechnung; ggf. seitliche Laschenverstärkung oder Stützenunterstellung.' },
-        { parameter: 'Restquerschnitt A_eff / A_0', wert: '< 65 %', einheit: '%', status: 'crit', bewertung: 'Akute Bruch- & Einsturzgefahr', massnahme: 'Sofortige Notabstützung; Gesundschnitt mind. 30–50 cm ins gesunde Holz, Einbau von Balkenschuhen/Prothesen.' }
+        { parameter: 'Restquerschnitt A_eff / A_0', wert: '< 65 %', einheit: '%', status: 'crit', bewertung: 'Orientierung: erheblicher Querschnittsverlust – statischer Nachweis erforderlich', massnahme: 'Ggf. Notabstützung; Rückschnitt und Sanierung nach DIN 68800-4 (bei Echtem Hausschwamm deutlich über den sichtbaren Befall hinaus), Prothesen/Balkenschuhe.' }
       ],
-      tragwerksAuswirkung: 'Das Widerstandsmoment sinkt mit der dritten Potenz der Bauteilhöhe: W_eff = b_eff · h_eff² / 6. Ein oberseitiger oder unterseitiger Fäulniseinbruch von nur 20 % verringert die Biegetragfähigkeit um über 36 %!',
+      tragwerksAuswirkung: 'Das Widerstandsmoment W = b·h²/6 sinkt mit dem Quadrat der Höhe, die Biegesteifigkeit (I = b·h³/12) mit der dritten Potenz. 20 % Höhenverlust → W auf 64 % (−36 %), I auf 51 %. Schwellen A_eff/A_0 nur als Orientierung, statischer Nachweis erforderlich.',
       instandsetzungsKonsequenz: 'Konstruktiver Holzschutz nach DIN 68800: Hinterlüftung des Auflagers (mind. 20 mm Luftspalt), Bitumen-Dachpappe als kapillare Trennschicht zum Mauerwerk, thermische Dämmung der Außenwandnische zur Taupunktverlagerung.',
-      praxisFallbeispiel: 'Historische Holzbalkendecke (BJ 1905): Sichtbare Risse am Auflager. Bohrwiderstandsprofil zeigt ab 35 mm Tiefe einen Abfall des Widerstands auf 5 % über eine Länge von 120 mm (verdeckter Echter Hausschwamm). Konsequenz: Sofortiger Austausch der Balkenköpfe und Mauerwerksabflämmung gem. WTA.'
+      praxisFallbeispiel: 'Historische Holzbalkendecke (BJ 1905): Sichtbare Risse am Auflager. Bohrwiderstandsprofil zeigt ab 35 mm Tiefe einen Abfall des Widerstands auf 5 % über eine Länge von 120 mm (Verdacht auf Pilzbefall; Art – z. B. Echter Hausschwamm – nur durch mykologische Laboranalyse einer Probe bestimmbar). Konsequenz: Austausch der Balkenköpfe; bei bestätigtem Echtem Hausschwamm Sanierung nach DIN 68800-4 einschließlich Mauerwerksbehandlung.'
     }
   },
 
@@ -362,14 +362,14 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     id: 'bohrmehl',
     samplingPoints: {
       titel: 'Tiefengestaffelte Bohrmehlanalyse (DIN EN 14629)',
-      normVorgabe: 'DIN EN 14629, WTA-Merkblatt 4-5-20, DIBt TR Instandhaltung',
+      normVorgabe: 'DIN EN 14629, DBV-Merkblatt Chloridbestimmung, TR Instandhaltung (DIBt)',
       mindestAnzahl: 'Mind. 3–5 Entnahmestellen je Schadensbereich / Expositionszone; mind. 5 Tiefenstufen je Messstelle.',
       rasterMass: 'Tiefenstufung: 0–5 mm, 5–10 mm, 10–15 mm, 15–20 mm, 20–30 mm, 30–40 mm; Probenmenge mind. 5 g Feinbohrmehl je Stufe.',
       auswahlKriterien: [
         'Stellen mit extrem negativen Potentialen aus der Potentialfeldmessung.',
         'Tiefe Risse und Arbeitsfugen im Fahrbahnbereich.',
         'Stützen- und Wandfüße (Tausalz-Sprüh- und Spritzwasserbereich).',
-        'Ungeschädigte Referenzstelle zur Ermittlung des Klinkereigenchloridgehalts.'
+        'Ungeschädigte Referenzstelle zur Ermittlung des Grundchloridgehalts des Betons.'
       ],
       statistischeBegruendung: 'Das Diffusionsprofil nach Fick II erlaubt die Bestimmung des Oberflächenchloridgehalts C_s und des scheinbaren Diffusionskoeffizienten D_app zur rechnerischen Restlebensdauerprognose.'
     },
@@ -402,16 +402,16 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     ],
     interpretation: {
       titel: 'Interpretation: Diffusionsprofil & Korrosionsgrenzwerte',
-      kerndiagnose: 'Liegt der Chloridgehalt an der Bewehrungslage über dem kritischen Schwellenwert C_krit, ist die Passivschicht zerstört und es droht rissfreie Lochfraßkorrosion.',
+      kerndiagnose: 'Liegt der Chloridgehalt an der Bewehrungslage über dem korrosionsauslösenden Anhaltswert (≈ 0,5 M.-% bez. Zement, objektspezifisch festzulegen), ist mit Depassivierung und Lochkorrosion ohne äußere Anzeichen zu rechnen.',
       grenzwerte: [
         { parameter: 'Chlorid an Bewehrung (Stahlbeton, Anhaltswert – objektspezifisch durch SKP)', wert: '< ≈ 0,5 M.-% bez. Zement', einheit: 'M.-%', status: 'ok', bewertung: 'Keine Depassivierung', massnahme: 'Präventiver Schutz (Oberflächenschutz nach TR Instandhaltung).' },
         { parameter: 'Chlorid an Bewehrung (Stahlbeton)', wert: '0,50–0,80 M.-%', einheit: 'M.-%', status: 'warn', bewertung: 'Kritischer Schwellenwert erreicht/überschritten', massnahme: 'Chloridabtrag oder KKS-Installation.' },
-        { parameter: 'Chlorid an Bewehrung (Stahlbeton)', wert: '> 0,80 M.-%', einheit: 'M.-%', status: 'crit', bewertung: 'Hohes Lochfraß- & Querschnittsverlustrisiko', massnahme: 'HDW-Abtrag mind. 20 mm hinter die Bewehrung.' },
+        { parameter: 'Chlorid an Bewehrung (Stahlbeton)', wert: '> 0,80 M.-%', einheit: 'M.-%', status: 'crit', bewertung: 'Hohes Lochfraß- & Querschnittsverlustrisiko', massnahme: 'Instandsetzungsprinzip nach TR Instandhaltung wählen (z. B. Chloridentfernung durch HDW-Abtrag, KKS nach DIN EN ISO 12696).' },
         { parameter: 'Chlorid an Spannstahl (Spannbeton)', wert: 'deutlich niedriger als bei Stahlbeton – gesonderte Beurteilung', einheit: 'M.-%', status: 'crit', bewertung: 'Gefahr von Spannungsrisskorrosion', massnahme: 'Sofortige statische Überprüfung, Spannglieder freilegen/ersetzen.' }
       ],
       tragwerksAuswirkung: 'Im Gegensatz zu Karbonatisierungskorrosion führt Chloridkorrosion zu lokalem Lochfraß mit Querschnittsreduktionen von > 30 % innerhalb weniger Jahre. Bei Spannbeton droht spröder Spannstahlbruch ohne Vorwarnung!',
       instandsetzungsKonsequenz: 'TR Instandhaltung (DIBt): Prinzip W (Trockenhalten), Prinzip R (chloridbelasteten Beton entfernen und reprofilieren) oder Prinzip K (Kathodischer Korrosionsschutz nach DIN EN ISO 12696).',
-      praxisFallbeispiel: 'Rampenbauwerk Parkhaus: Bohrmehlanalyse zeigt an Bewehrungstiefe (25 mm) einen Chloridgehalt von 1,42 M.-% bezogen auf Zement (Anhaltswert ≈ 0,5 M.-% bez. Zement um ein Mehrfaches überschritten). Entscheidung: HDW-Abtrag um 50 mm, neue Bewehrung einbauen, SPCC Reprofilierung und rissüberbrückendes OS 11a System.'
+      praxisFallbeispiel: 'Rampenbauwerk Parkhaus: Bohrmehlanalyse zeigt an Bewehrungstiefe (25 mm) einen Chloridgehalt von 1,42 M.-% bezogen auf Zement (Anhaltswert ≈ 0,5 M.-% bez. Zement knapp um das Dreifache – 2,8-fach – überschritten). Entscheidung: HDW-Abtrag um 50 mm, neue Bewehrung einbauen, SPCC Reprofilierung und rissüberbrückendes OS 11a System.'
     }
   },
 
@@ -529,7 +529,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         { parameter: 'f_ck,is / f_ck,plan', wert: '< 0,75', einheit: '-', status: 'crit', bewertung: 'Erhebliche Festigkeitsunterschreitung', massnahme: 'Lastbeschränkung oder Ertüchtigung mit CFK-Lamellen / Spritzbeton.' }
       ],
       tragwerksAuswirkung: 'Direkte Eingangsgröße für die statische Nachrechnung der Grenzzustände der Tragfähigkeit (GZT) und Gebrauchstauglichkeit (GZG) nach Eurocode 2.',
-      instandsetzungsKonsequenz: 'Rechtssichere Klärung von Gewährleistungs- und Bauschadensfragen bei Festigkeitsunterschreitungen auf Neubaustellen oder Bestandsgebäuden.',
+      instandsetzungsKonsequenz: 'Belastbare Klärung von Gewährleistungs- und Bauschadensfragen bei Festigkeitsunterschreitungen auf Neubaustellen oder Bestandsgebäuden.',
       praxisFallbeispiel: 'Umnutzung eines Industriegebäudes (BJ 1968) zu Archivräumen mit erhöhter Verkehrslast (5,0 kN/m²). 14 Bohrkerne (statistische Auswertung, k_n ≈ 1,80) ergeben f_ck,is = 24,8 N/mm² -> entspricht rechnerisch C25/30. Nachrechnung zeigt ausreichende Querkraft- und Biegereserven.'
     }
   },
@@ -701,7 +701,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       kerndiagnose: 'Berechnung des Feuchtegehalts: u = (m_feucht - m_trocken) / m_trocken · 100 [M.-%]. Vergleich mit Ausgleichsfeuchte und Belegreifegrenzen.',
       grenzwerte: [
         { parameter: 'Zementestrich unbeheizt (CM-Methode)', wert: '≤ 2,0 CM-%', einheit: 'CM-%', status: 'ok', bewertung: 'Belegreif für alle Beläge', massnahme: 'Freigabe für Bodenbelagsarbeiten.' },
-        { parameter: 'Zementestrich beheizt (Darr)', wert: '≤ 1,8 M.-%', einheit: 'M.-%', status: 'ok', bewertung: 'Belegreif bei Fußbodenheizung', massnahme: 'Freigabe nach Aufheizprotokoll.' },
+        { parameter: 'Zementestrich beheizt (CM-Methode)', wert: '≤ 1,8 CM-%', einheit: 'CM-%', status: 'ok', bewertung: 'Belegreif bei Fußbodenheizung', massnahme: 'Freigabe nach Aufheizprotokoll.' },
         { parameter: 'Calciumsulfatestrich (CM-Methode)', wert: '≤ 0,5 CM-% (beheizt ≤ 0,3)', einheit: 'CM-%', status: 'ok', bewertung: 'Belegreif', massnahme: 'Freigabe.' },
         { parameter: 'Beton vor Beschichtung OS 8/OS 11', wert: '> 4,0 M.-%', einheit: 'M.-%', status: 'crit', bewertung: 'Überfeuchtet für dichte Epoxidharze', massnahme: 'Osmose- & Blasenbildungsgefahr! Bautrocknung fortsetzen oder dampfdiffusionsoffene Systeme nutzen.' }
       ],

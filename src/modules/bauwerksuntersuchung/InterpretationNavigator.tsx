@@ -173,9 +173,9 @@ export default function InterpretationNavigator() {
     if (potentialVal <= -350) potentialStatus = 'aktiv';
     else if (potentialVal <= -200) potentialStatus = 'unsicher';
 
-    // 4. In-situ-Festigkeitseinstufung (Eurocode 2 Dauerlastfaktor 0.85)
+    // 4. In-situ-Festigkeitseinstufung: DIN EN 13791 – Klasse erreicht, wenn f_ck,is ≥ 0,85·f_ck (nicht α_cc aus EC2)
     const festigkeitsVerhaeltnis = fckPlanVal > 0 ? (fckIsVal / fckPlanVal) : 1;
-    const isStrengthDeficient = festigkeitsVerhaeltnis < 0.80;
+    const isStrengthDeficient = festigkeitsVerhaeltnis < 0.85; // f_ck,is < 0,85·f_ck(Plan) → Planklasse nicht erreicht
 
     // 5. Haftzugstatus
     const isHaftzugOk = haftzugVal >= 1.5 && bruchTyp === 'A';
@@ -225,7 +225,7 @@ export default function InterpretationNavigator() {
 
         <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 text-xs text-slate-750 leading-relaxed">
           <p>
-            <strong>Wichtig für Gutachter und Tragwerksplaner:</strong> Reine Messzahlen (z.B. „1,2 % Chlorid“ oder „f_ck,is = 22 MPa“) haben für sich allein genommen keinen baurechtlichen Wert. Erst ihre <em>differenzierte Korrelation</em> (z. B. Chloridgehalt im Verhältnis zur Betondeckung, Potentialfeldgradient zur Rissgeometrie, In-situ-Festigkeit zum EC2-Sicherheitsbeiwert <InlineMath math="\gamma_c" />) ermöglicht die rechtssichere Festlegung, ob ein <strong>sofortiger Höchstdruckwasserstrahl-Abtrag (HDW)</strong>, ein <strong>Kathodischer Korrosionsschutz (KKS)</strong>, eine <strong>Traglastminderung</strong> oder lediglich eine <strong>präventive Oberflächenbeschichtung (OS 4 / OS 11)</strong> erforderlich ist.
+            <strong>Wichtig für Gutachter und Tragwerksplaner:</strong> Reine Messzahlen (z.B. „1,2 % Chlorid“ oder „f_ck,is = 22 MPa“) haben für sich allein genommen keinen baurechtlichen Wert. Erst ihre <em>differenzierte Korrelation</em> (z. B. Chloridgehalt im Verhältnis zur Betondeckung, Potentialfeldgradient zur Rissgeometrie, In-situ-Festigkeit zum EC2-Sicherheitsbeiwert <InlineMath math="\gamma_c" />) ermöglicht eine belastbare Festlegung, ob ein <strong>sofortiger Höchstdruckwasserstrahl-Abtrag (HDW)</strong>, ein <strong>Kathodischer Korrosionsschutz (KKS)</strong>, eine <strong>Traglastminderung</strong> oder lediglich eine <strong>präventive Oberflächenbeschichtung (OS 4 / OS 11)</strong> erforderlich ist.
           </p>
         </div>
       </div>
@@ -503,7 +503,7 @@ export default function InterpretationNavigator() {
                   <strong>Chloridinduzierte Lochfraßgefahr:</strong>
                   <p className="text-[11px] text-slate-650">
                     {evaluation.isChlorideSevere ? (
-                      <span className="text-rose-700 font-semibold">Akute Lochfraßgefahr! Chloridgehalt liegt beim {formatDeZahl(chloridVal / 0.5, 1)}-fachen des kritischen Schwellenwerts. Gefahr spröder Stababbrüche!</span>
+                      <span className="text-rose-700 font-semibold">Erhöhte Korrosionsgefahr: Chloridgehalt liegt beim {formatDeZahl(chloridVal / 0.5, 1)}-fachen des Anhaltswerts ≈ 0,5 M.-% bez. Zement. Querschnittsverluste durch Lochkorrosion möglich – Bewehrung freilegen und messen.</span>
                     ) : evaluation.isChlorideCritical ? (
                       <span className="text-amber-700">Anhaltswert ≈ 0,5 M.-% bez. Zement überschritten – Lochfraß wahrscheinlich (Grenze objektspezifisch durch SKP festlegen).</span>
                     ) : (
@@ -694,7 +694,7 @@ export default function InterpretationNavigator() {
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex items-start gap-2.5">
             <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-slate-800">Rechtssichere Schadenskataster-Kartierung:</strong>
+              <strong className="text-slate-800">Beweissichernde Schadenskataster-Kartierung:</strong>
               <p className="text-slate-650 text-[11px] mt-0.5 leading-snug">
                 Sind Risse, Hohlstellen, Potentialfeld-Gradienten und Bohrmehl-Chloridprofile maßstäblich in CAD-Bestandspläne übertragen und mit dem Tragwerksplaner abgestimmt?
               </p>
