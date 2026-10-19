@@ -24,7 +24,7 @@ type LoadingSystem = '4punkt' | '3punkt';
 export default function BiegezugPruefung() {
   const [material, setMaterial] = useState<BeamMaterial>('beton_unbewehrt');
   const [loadingSystem, setLoadingSystem] = useState<LoadingSystem>('4punkt');
-  const [spanLength, setSpanLength] = useState<number>(500); // mm (Stützweite)
+  const [spanLength, setSpanLength] = useState<number>(450); // mm (Stützweite l = 3·d nach DIN EN 12390-5)
   const [beamHeight, setBeamHeight] = useState<number>(150); // mm
   const [beamWidth, setBeamWidth] = useState<number>(150); // mm
 
@@ -85,10 +85,12 @@ export default function BiegezugPruefung() {
       case 'beton_stahlfasern':
         return {
           name: 'Stahlfaserbeton (30 kg/m³)',
-          norm: 'DAfStb-Richtlinie Stahlfaserbeton',
+          norm: 'DIN EN 14651 / DAfStb-Richtlinie Stahlfaserbeton',
           fctfl: 4.5,
-          fR1: 3.2, // Leistungsklasse Nachrisszugfestigkeit bei 0.5 mm CMOD
-          fR3: 2.4, // Leistungsklasse bei 2.5 mm CMOD
+          // Nachrissbiegezugfestigkeiten nach DIN EN 14651 (3-Punkt-Versuch am gekerbten Balken):
+          fR1: 3.2, // f_R,1 bei CMOD = 0,5 mm
+          fR3: 2.4, // f_R,3 bei CMOD = 2,5 mm
+          // (Die DAfStb-Richtlinie Stahlfaserbeton definiert Leistungsklassen L1/L2 aus dem 4-Punkt-Versuch.)
           E: 33000,
           maxDeflection: 3.2,
           desc: 'Ausgeprägte Nachrisszugfestigkeit. Die Stahlfasern vernähen den Riss und verhindern ein schlagartiges Versagen.'
@@ -96,7 +98,7 @@ export default function BiegezugPruefung() {
       case 'beton_spannbeton':
         return {
           name: 'Spannbeton (Vorspannung mit sofortigem Verbund)',
-          norm: 'DIN EN 1992-1-1 / DIN 4227',
+          norm: 'DIN EN 1992-1-1',
           fctfl: 4.5,
           fy: 1860, // Y1860 Spannstahllitzen
           E: 36000,
@@ -107,7 +109,7 @@ export default function BiegezugPruefung() {
         return {
           name: 'Konstruktionsvollholz (Fichte C24)',
           norm: 'DIN EN 408 / DIN EN 338',
-          fctfl: 24.0, // charakteristische Biegefestigkeit fm,k
+          fctfl: 24.0, // charakteristische Biegefestigkeit f_m,k nach DIN EN 338 (Prüfmittelwerte liegen höher)
           E: 11000,
           maxDeflection: 6.8,
           desc: 'Hohe Elastizität und beträchtliche Durchbiegung vor dem Faserbruch an der Unterseite.'
@@ -119,7 +121,7 @@ export default function BiegezugPruefung() {
           fctfl: 6.5,
           E: 22000,
           maxDeflection: 0.28,
-          desc: 'Prüfung an 40×40×160 mm Prismen zur Bestimmung der Zementgüteklasse.'
+          desc: 'Normprüfung an Prismen 40×40×160 mm (3-Punkt-Biegung, Stützweite 100 mm). Die Festigkeitsklasse des Zements (32,5 / 42,5 / 52,5) wird anschließend an den Prismenhälften über die Druckfestigkeit bestimmt.'
         };
     }
   }, [material]);
@@ -355,12 +357,16 @@ export default function BiegezugPruefung() {
       timestamp: new Date().toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }),
       testTitle: `${loadingSystem === '4punkt' ? '4-Punkt' : '3-Punkt'}-Biegezugprüfung an ${matProps.name}`,
       norm: matProps.norm,
-      operator: 'Biegeprüfstand (Baustoffboard)',
+      operator: 'Biegeprüfstand (Lehrsimulation)',
       specimen: {
         material: matProps.name,
         geometry: `Prismatischer Balken ${beamWidth}×${beamHeight}×${formatDeWert(spanLength + 100)} mm`,
         dimensions: `b=${beamWidth} mm, h=${beamHeight} mm, L=${spanLength} mm`,
-        conditioning: 'Normklima (20 °C, 65 % r.F.)'
+        conditioning: material === 'holz_c24'
+          ? 'Normalklima 20 °C / 65 % r. F. (simuliert)'
+          : material === 'moertel_din196'
+            ? 'Wasserlagerung 20 ± 1 °C nach DIN EN 196-1 (simuliert)'
+            : 'Wasserlagerung 20 ± 2 °C nach DIN EN 12390-2 (simuliert)'
       },
       parameters: {
         'Lagerungsart': loadingSystem === '4punkt' ? '4-Punkt-Biegung (Querkraftfreies Mittelfeld)' : '3-Punkt-Einzellast in Feldmitte',
@@ -818,7 +824,7 @@ export default function BiegezugPruefung() {
                 <div className="flex flex-wrap items-center justify-between pt-3 border-t border-home-grau/20 gap-2">
                   <div className="flex items-center gap-1.5 text-xs text-text-main">
                     <ShieldCheck size={16} className="text-emerald-600" />
-                    <span>Biegezugprüfung nach <strong>{matProps.norm}</strong> erfolgreich validiert.</span>
+                    <span>Simulierte Biegeprüfung abgeschlossen (Prüfnorm: <strong>{matProps.norm}</strong>).</span>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -866,7 +872,7 @@ export default function BiegezugPruefung() {
             <Info size={20} className="text-shiraz" /> Das Spannbeton-Prinzip im Biegezugversuch
           </h3>
           <span className="text-xs font-mono font-bold text-slate-500 bg-off-white px-2.5 py-1 rounded-lg border border-home-grau/20">
-            DIN EN 1992-1-1 &bull; DIN 4227
+            DIN EN 1992-1-1
           </span>
         </div>
 
@@ -878,7 +884,7 @@ export default function BiegezugPruefung() {
               <span>Planmäßige Vorüberdrückung</span>
             </div>
             <p className="text-text-main/80 leading-relaxed">
-              Beton besitzt eine hohe Druckfestigkeit, jedoch nur rund ein Zehntel seiner Festigkeit auf Zug. Beim <strong>Spannbeton</strong> wird der Bauteilquerschnitt durch hochfeste Spannstahllitzen (z.&nbsp;B. Y1860 mit <InlineMath math="f_{pk} = 1860\,\text{N/mm}^2" />) vorab gezielt unter Druckspannung gesetzt (<InlineMath math="\sigma_{p0} < 0" />).
+              Beton besitzt eine hohe Druckfestigkeit, jedoch nur rund ein Zehntel seiner Festigkeit auf Zug. Beim <strong>Spannbeton</strong> werden hochfeste Spannstahllitzen (z.&nbsp;B. Y1860 mit <InlineMath math="f_{pk} = 1860\,\text{N/mm}^2" />) auf Zug vorgespannt; über den Verbund setzen sie den Betonquerschnitt unter Druck. Am Biegezugrand entsteht so eine Vordruckspannung <InlineMath math="\sigma_{c,p}" /> (Druck negativ):
             </p>
             <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 font-mono text-[11px] text-center">
               <InlineMath math="\sigma_{c,\text{unterkante}} = -\frac{P_0}{A_c} - \frac{P_0 \cdot e_p}{W_c} + \frac{M_{\text{ext}}}{W_c}" />
@@ -895,7 +901,7 @@ export default function BiegezugPruefung() {
               Wirkt ein äußeres Biegemoment <InlineMath math="M_{\text{ext}}" />, baut dieses zuerst die Druckvorspannung im Zugbereich ab. Erst wenn die Spannung Null wird, ist die <strong>Dekompression</strong> erreicht. Risse entstehen erst, wenn zusätzlich die Betonzugfestigkeit <InlineMath math="f_{ct,fl}" /> überschritten wird:
             </p>
             <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 font-mono text-[11px] text-center">
-              <InlineMath math="M_r = W_c \cdot \left(\sigma_{p0} + f_{ct,fl}\right) \gg M_{r,\text{Stahlbeton}}" />
+              <InlineMath math="M_r = W_c \cdot \left(|\sigma_{c,p}| + f_{ct,fl}\right) \gg W_c \cdot f_{ct,fl}" />
             </div>
           </div>
 
@@ -918,7 +924,7 @@ export default function BiegezugPruefung() {
         <div className="mt-2 border border-home-grau/25 rounded-xl overflow-hidden text-xs">
           <div className="bg-slate-100 p-3 font-bold text-text-main border-b border-home-grau/20 flex justify-between items-center">
             <span>Systematischer Vergleich der Versagensformen im Labor-Biegeversuch</span>
-            <span className="text-[11px] font-normal text-text-main/60">Querschnitt 150 × 150 mm</span>
+            <span className="text-[11px] font-normal text-text-main/60">Querschnitt 150 × 150 mm, Werte als rechnerische Randspannung M/W</span>
           </div>
           <div className="divide-y divide-home-grau/20 bg-white">
             <div className="p-3 grid grid-cols-1 md:grid-cols-4 gap-2">

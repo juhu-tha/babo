@@ -148,7 +148,7 @@ export default function BetonInfo() {
       title: 'Festbeton (Statistik)',
       icon: BarChart3,
       purpose: 'Statistische Qualitäts- und Konformitätsüberwachung von Prüfkörper-Serien, Normalverteilung und Ausreißertests.',
-      standards: 'DIN EN 206 / DIN ISO 12491',
+      standards: 'DIN EN 206 / ISO 12491',
       useCase: 'Konformitätsnachweis der charakteristischen Druckfestigkeit f_ck anhand laufender Werksprüfungen.'
     }
   ];

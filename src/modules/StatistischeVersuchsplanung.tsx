@@ -235,7 +235,8 @@ export default function StatistischeVersuchsplanung() {
         </div>
       </div>
     
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 4 Labor: 2^k-Versuchspläne, Haupt- und Wechselwirkungseffekte geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Statistische Versuchsplanung', url: 'https://de.wikipedia.org/wiki/Statistische_Versuchsplanung' },
           { title: 'Varianzanalyse', url: 'https://de.wikipedia.org/wiki/Varianzanalyse' },
@@ -248,12 +249,12 @@ export default function StatistischeVersuchsplanung() {
         ]}
         regelwerke={[
           { title: 'DIN ISO 3534-3 (Statistik - Begriffe und Formelzeichen - Teil 3: Versuchsplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+3534-3' },
-          { title: 'DIN ISO 5725 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+5725' }
+          { title: 'ISO 5725 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen; DIN ISO 5725 zurückgezogen)', url: 'https://www.dinmedia.de/de/suche?q=ISO+5725' }
         ]}
         formeln={[
           {
             formel: 'E_A = \\bar{y}_{A^+} - \\bar{y}_{A^-} = \\frac{1}{2^{k-1}} \\sum_{i=1}^{2^k} c_i \\cdot y_i',
-            erklaerung: 'Haupteffekt eines Faktors A in einem 2^k-Fakultätsplan: Differenz der Mittelwerte aller Versuchsläufe auf oberer (+) und unterer (-) Stufe.',
+            erklaerung: 'Haupteffekt eines Faktors A in einem 2^k-Faktorplan (vollfaktoriell): Differenz der Mittelwerte aller Versuchsläufe auf oberer (+) und unterer (-) Stufe.',
             quelle: 'DoE / Montgomery'
           },
           {

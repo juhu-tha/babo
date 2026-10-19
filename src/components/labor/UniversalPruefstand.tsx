@@ -65,16 +65,18 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           name: 'Beton (C30/37)',
           norm: testType === 'emodul' ? 'DIN EN 12390-13' : 'DIN EN 12390-3',
           density: 2400,
-          E: 33000, // MPa
-          fc: 38, // MPa (Würfeldruckfestigkeit)
-          fu: 3.2, // Zugfestigkeit
+          E: 33000, // MPa, E_cm nach DIN EN 1992-1-1, Tab. 3.1
+          // Mittelwerte nach DIN EN 1992-1-1, Tab. 3.1: f_cm = f_ck + 8 = 38 MPa (Zylinder);
+          // Würfel 150 mm: f_ck,cube + 8 = 45 MPa
+          fc: specimenShape === 'wuerfel150' ? 45 : 38,
+          fu: 2.9, // f_ctm nach DIN EN 1992-1-1, Tab. 3.1
           strainAtMax: 2.2, // ‰
           failureStrain: 3.5, // ‰
           color: '#94a3b8',
           accentColor: '#64748b',
           isAnisotropic: false,
           texture: 'concrete',
-          desc: 'Quasibröckelnder Zementsteinverbund mit Gesteinskörnung. Typischer 55°-Schubkegelbruch bei uniaxialem Druck.'
+          desc: 'Spröder Verbundwerkstoff aus Zementstein und Gesteinskörnung. Typisches Bruchbild am Würfel: Sanduhrform (zwei Pyramidenstümpfe) infolge Querdehnungsbehinderung an den Druckplatten.'
         };
       case 'stahl':
         return {
@@ -90,10 +92,11 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           accentColor: '#334155',
           isAnisotropic: false,
           texture: 'steel',
-          desc: 'Hochduktiler mikrolegierter Baustahl mit ausgeprägter Streckgrenze, Lüdersbändern, plastischem Fließplateau und Einschnürung.'
+          desc: 'Hochduktiler, warmgewalzter Betonstahl mit ausgeprägter Streckgrenze, Fließplateau (Lüdersbänder), Verfestigung und Einschnürung vor dem Bruch.'
         };
       case 'holz': {
         const rad = (woodAngle * Math.PI) / 180;
+        // Mittelwerte für fehlerfreies Fichtenholz (Lehrwerte); E-Werte wie C24 nach DIN EN 338
         const fc0 = 45; // MPa parallel
         const fc90 = 5.5; // MPa rechtwinklig
         const fu0 = 85;
@@ -107,7 +110,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
         const EAngle = (E0 * E90) / (E0 * Math.pow(Math.sin(rad), 2) + E90 * Math.pow(Math.cos(rad), 2));
 
         return {
-          name: `Nadelholz (Fichte C24, α=${woodAngle}°)`,
+          name: `Nadelholz (Fichte, fehlerfrei, α=${woodAngle}°)`,
           norm: 'DIN EN 408 / DIN EN 338',
           density: 460,
           E: EAngle,
@@ -124,7 +127,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       }
       case 'ziegel':
         return {
-          name: 'Mauerziegel (Vollziegel Mz 12)',
+          name: 'Mauerziegel (Vollziegel, Festigkeitsklasse 12)',
           norm: 'DIN EN 772-1',
           density: 1800,
           E: 10000,
@@ -140,7 +143,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
         };
       case 'eps':
         return {
-          name: 'EPS-Hartschaum (Styropor 035)',
+          name: 'EPS-Hartschaum (WLS 035, ca. 20 kg/m³)',
           norm: 'DIN EN 826',
           density: 20,
           E: 6.5,
@@ -152,7 +155,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           accentColor: '#cbd5e1',
           isAnisotropic: false,
           texture: 'eps',
-          desc: 'Geschäumtes Polystyrol. Zeigt bei Druck eine lange elastoplastische Zellkollaps-Zone und anschließende Festkörperverdichtung.'
+          desc: 'Geschäumtes Polystyrol. Unter Druck folgt auf den linearen Bereich ein langes Plateau (Zellkollaps) und schließlich Verdichtung. Kennwert nach DIN EN 826 ist die Druckspannung bei 10 % Stauchung (σ10).'
         };
       case 'aluminium':
         return {
@@ -173,11 +176,11 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       case 'glas':
         return {
           name: 'Kalk-Natron-Floatglas',
-          norm: 'DIN EN 572 / DIN 1249',
+          norm: 'DIN EN 572-1 / DIN EN 1288',
           density: 2500,
           E: 70000,
           fc: 850, // Hohe Druckfestigkeit
-          fu: 45, // Niedrige Zugfestigkeit (Griffith-Mikrorisse)
+          fu: 45, // charakteristische Biegezugfestigkeit Floatglas nach DIN EN 572-1 (Griffith-Mikrorisse)
           strainAtMax: 12.1,
           failureStrain: 12.1,
           color: '#cbd5e1',
@@ -189,7 +192,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       case 'carbon':
         return {
           name: 'Carbonlamelle (CFK unidirektional)',
-          norm: 'DIN EN 2561',
+          norm: 'DIN EN 2561 / DIN EN ISO 527-5',
           density: 1600,
           E: 165000,
           fc: 700,
@@ -235,7 +238,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           desc: ''
         };
     }
-  }, [material, testType, woodAngle]);
+  }, [material, testType, woodAngle, specimenShape]);
 
   // Specimen cross section area [mm²]
   const specimenCrossSection = useMemo(() => {
@@ -293,7 +296,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           const st = (materialProps.E * s) / 1000;
           return st > ft ? -1 : st;
         } else {
-          // Sargin-Parabel nach Eurocode 2 (DIN EN 1992-1-1)
+          // Parabel (n = 2) bis ε_c1, danach linearer Abfall – vereinfachte Arbeitslinie (vgl. DIN EN 1992-1-1, 3.1.5/3.1.7)
           const ec1 = materialProps.strainAtMax || 2.2;
           const ecu = materialProps.failureStrain || 3.5;
           const eta = s / ec1;
@@ -511,11 +514,16 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
     return mechData[mechData.length - 1].x;
   }, [mechData]);
 
-  // Elastic strain energy density U_e [kJ/m³ = kPa]
+  // Formänderungsarbeit je Volumen W = ∫σ dε (Fläche unter der σ-ε-Kurve, Trapezregel).
+  // Einheit: MPa · ‰ = 10⁶ N/m² · 10⁻³ = kJ/m³
   const elasticEnergy = useMemo(() => {
     if (mechData.length < 2) return 0;
-    return 0.5 * maxStressObserved * (finalStrainObserved / 1000) * 1000;
-  }, [maxStressObserved, finalStrainObserved, mechData]);
+    let w = 0;
+    for (let i = 1; i < mechData.length; i++) {
+      w += 0.5 * (mechData[i].y + mechData[i - 1].y) * Math.abs(mechData[i].x - mechData[i - 1].x);
+    }
+    return w;
+  }, [mechData]);
 
   // Protocol archive
   const handleArchiveProtocol = () => {
@@ -544,7 +552,11 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
         material: materialProps.name,
         geometry: shapeLabel,
         dimensions: specimenShape === 'wuerfel150' ? '150 x 150 x 150 mm' : specimenShape === 'zylinder150' ? 'Ø 150 mm, h = 300 mm' : 'A0 = 200 mm²',
-        conditioning: 'Normklima (20 °C, 65 % rel. Luftfeuchte)'
+        conditioning: material === 'beton'
+          ? 'Wasserlagerung 20 ± 2 °C nach DIN EN 12390-2 (simuliert)'
+          : material === 'holz'
+            ? 'Normalklima 20 °C / 65 % r. F. bis Massekonstanz (simuliert)'
+            : 'Raumtemperatur (simuliert)'
       },
       parameters: {
         'Prüfgeschwindigkeit': `${formatDeZahl(loadingRate, 2)} MPa/s`,
@@ -556,7 +568,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
         'Höchstspannung (MPa)': formatDeZahl(maxStressObserved, 2),
         'Höchstkraft Fmax (kN)': formatDeZahl(maxForceObserved, 1),
         'E-Modul (GPa)': formatDeZahl((materialProps.E / 1000), 2),
-        'Bruchdehnung (‰)': formatDeZahl(finalStrainObserved, 3),
+        'Enddehnung (‰)': formatDeZahl(finalStrainObserved, 3),
         'Rohdichte (kg/m³)': `${materialProps.density}`
       },
       status: validation.status,
@@ -892,7 +904,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 className="w-full accent-shiraz cursor-pointer"
               />
               <span className="text-[10px] text-text-main/60 block">
-                Normbereich Beton-Druck: 0,6 ± 0,2 MPa/s nach DIN EN 12390-3
+                Normbereich Beton-Druck: 0,6 ± 0,2 MPa/s nach DIN EN 12390-3. In der Simulation wird der Wert nur protokolliert.
               </span>
             </div>
 
@@ -1231,7 +1243,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                         <strong className="text-base text-text-main font-mono">{formatDeZahl((materialProps.E / 1000), 1)} GPa</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Verzerrungsenergie Ue</span>
+                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Formänderungsarbeit W (Fläche σ–ε)</span>
                         <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(elasticEnergy, 1)} kJ/m³</strong>
                       </div>
                     </>
@@ -1241,7 +1253,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 <div className="flex flex-wrap items-center justify-between pt-3 border-t border-home-grau/20 gap-2">
                   <div className="flex items-center gap-1.5 text-xs text-text-main">
                     <ShieldCheck size={16} className="text-emerald-600" />
-                    <span>Prüfdaten normgerecht validiert nach <strong>{materialProps.norm}</strong>.</span>
+                    <span>Simulierte Prüfdaten, plausibilisiert gegen typische Kennwerte (Prüfnorm: <strong>{materialProps.norm}</strong>).</span>
                   </div>
 
                   <div className="flex items-center gap-2">

@@ -28,7 +28,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
   const [grade, setGrade] = useState<ConcreteGrade>('C30/37');
   const [diameter, setDiameter] = useState<number>(150); // mm
   const [length, setLength] = useState<number>(300); // mm
-  const [stripWidth, setStripWidth] = useState<number>(15); // mm nach DIN EN 12390-6
+  const [stripWidth, setStripWidth] = useState<number>(15); // mm, Lehrwert – Abmessungen der Hartfaserstreifen nach DIN EN 12390-6
   const [loadingRate, setLoadingRate] = useState<number>(0.05); // MPa/s (Norm: 0,04 bis 0,06 MPa/s)
 
   // Simulation status
@@ -65,9 +65,9 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
       case 'C60/75':
         return { fck: 60, fctm: 4.4, fctsp: 4.90, E: 39000, desc: 'Hochfester Beton mit dichtem Matrixgefüge' };
       case 'C90/105':
-        return { fck: 90, fctm: 5.0, fctsp: 5.60, E: 44000, desc: 'Ultrahochfester Beton mit Microsilica, sehr sprödes Spaltversagen' };
+        return { fck: 90, fctm: 5.0, fctsp: 5.60, E: 44000, desc: 'Hochfester Beton (obere Klassen nach DIN EN 206) mit Silikastaub; sehr sprödes Spaltversagen' };
       case 'LC25/28':
-        return { fck: 25, fctm: 1.8, fctsp: 2.05, E: 19000, desc: 'Konstruktiver Leichtbeton mit Blähtonkörnung' };
+        return { fck: 25, fctm: 1.8, fctsp: 2.05, E: 19000, desc: 'Konstruktiver Leichtbeton mit Blähtonkörnung (Werte für Rohdichte ca. 1600 kg/m³ abgeschätzt)' };
       case 'Zementstein':
         return { fck: 55, fctm: 3.5, fctsp: 3.90, E: 24000, desc: 'Reine Zementsteinmatrix ohne Gesteinskörnung' };
     }
@@ -185,12 +185,12 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
       timestamp: new Date().toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }),
       testTitle: `Spaltzugversuch (Brasilianischer Test) an ${grade}`,
       norm: 'DIN EN 12390-6',
-      operator: 'Virtuelles Betonlabor (Baustoffboard)',
+      operator: 'Virtuelles Betonlabor (Lehrsimulation)',
       specimen: {
         material: `Beton ${grade}`,
         geometry: `Zylinder d=${diameter} mm, L=${length} mm`,
         dimensions: `Ø ${formatDeWert(diameter)} mm × ${length} mm`,
-        conditioning: 'Normlagerung Wasser 20 °C (28 Tage)'
+        conditioning: 'Wasserlagerung 20 ± 2 °C nach DIN EN 12390-2, 28 Tage (simuliert)'
       },
       parameters: {
         'Prüfgeschwindigkeit': `${formatDeZahl(loadingRate, 2)} MPa/s`,
@@ -200,7 +200,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
       },
       metrics: {
         'Spaltzugfestigkeit fct,sp (MPa)': formatDeZahl(currentStressMPa, 2),
-        'Umgerechnete Axialzugfestigkeit fct (MPa)': formatDeZahl((currentStressMPa * 0.9), 2),
+        'Zentrische Zugfestigkeit fct ≈ 0,9·fct,sp (MPa)': formatDeZahl((currentStressMPa * 0.9), 2),
         'Bruchlast Fmax (kN)': formatDeZahl(currentForceKN, 1),
         'Verformung Δd (mm)': formatDeZahl(currentDeformationMm, 3),
         'E-Modul (GPa)': formatDeZahl((gradeProps.E / 1000), 1)
@@ -378,7 +378,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                   <Split size={18} className="text-shiraz" /> 2. Zylinder-Spaltung &amp; Querzugspannungsfeld
                 </h3>
                 <p className="text-xs text-text-main/70">
-                  Brasilianischer Test: Ein axialer Linienlastdruck erzeugt homogenes Querzugfeld im Probekörper
+                  Brasilianischer Versuch: Die Linienlast entlang zweier gegenüberliegender Mantellinien erzeugt in der Lastebene eine nahezu gleichmäßige Querzugspannung
                 </p>
               </div>
               <span className={`text-xs font-bold px-3 py-1 rounded-full ${
@@ -464,7 +464,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 <div className="w-full flex flex-col items-center">
                   <div className="w-8 h-2 bg-amber-700 rounded-xs shadow-xs border border-amber-900"></div>
                   <div className="w-48 h-6 bg-gradient-to-r from-slate-800 to-slate-900 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-b shadow-lg border border-slate-600 dark:border-slate-700 flex items-center justify-center">
-                    <span className="text-[9px] font-mono text-slate-300">Stahl-Druckplatte DIN 12390-4</span>
+                    <span className="text-[9px] font-mono text-slate-300">Stahl-Druckplatte (DIN EN 12390-4)</span>
                   </div>
                 </div>
               </div>
@@ -574,7 +574,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                     <strong className="text-base text-shiraz font-mono">{formatDeZahl(currentStressMPa, 2)} MPa</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Axialzugfestigkeit fct (≈ 0,9·fct,sp)</span>
+                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Zentrische Zugfestigkeit fct (≈ 0,9·fct,sp)</span>
                     <strong className="text-base text-emerald-700 font-mono">{formatDeZahl((currentStressMPa * 0.9), 2)} MPa</strong>
                   </div>
                   <div>
@@ -590,7 +590,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 <div className="flex flex-wrap items-center justify-between pt-3 border-t border-home-grau/20 gap-2">
                   <div className="flex items-center gap-1.5 text-xs text-text-main">
                     <ShieldCheck size={16} className="text-emerald-600" />
-                    <span>Spaltzugversuch nach DIN EN 12390-6 erfolgreich absolviert.</span>
+                    <span>Simulierter Spaltzugversuch nach DIN EN 12390-6 abgeschlossen.</span>
                   </div>
 
                   <div className="flex items-center gap-2">
