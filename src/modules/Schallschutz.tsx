@@ -4,6 +4,8 @@ import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import {
@@ -37,8 +39,8 @@ const materialLibrary = [
   { id: 'mauerwerk_porenbeton', name: 'Porenbeton (PB)', density: 400 },
   { id: 'beton_normal', name: 'Normalbeton (Stahlbeton)', density: 2400 },
   { id: 'beton_leicht', name: 'Leichtbeton', density: 1200 },
-  { id: 'daemmung_eps', name: 'EPS (Styropor)', density: 20 },
-  { id: 'daemmung_xps', name: 'XPS (Styrodur)', density: 35 },
+  { id: 'daemmung_eps', name: 'EPS (Polystyrol-Partikelschaum)', density: 20 },
+  { id: 'daemmung_xps', name: 'XPS (Polystyrol-Extruderschaum)', density: 35 },
   { id: 'daemmung_miwo', name: 'Mineralwolle (MiWo)', density: 50 },
   { id: 'daemmung_holzfaser', name: 'Holzfaserplatte', density: 160 },
   { id: 'daemmung_pur', name: 'PUR/PIR Hartschaum', density: 30 },
@@ -148,7 +150,7 @@ export default function Schallschutz() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
           <Volume2 className="text-shiraz" /> Bauphysik (Schallschutz)
-          <InfoTooltip text="Berechnung des Schalldämm-Maßes nach dem Berger'schen Massegesetz für einschalige Bauteile." />
+          <InfoTooltip text="Berechnung des bewerteten Schalldämm-Maßes einschaliger massiver Bauteile über die empirische Massekurve nach DIN 4109-32 (physikalischer Hintergrund: Bergersches Massegesetz)." />
         </h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
@@ -224,7 +226,7 @@ export default function Schallschutz() {
                 <div>
                   <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
                     <FormulaText text="Schalldämm-Maß R_w" />
-                    <InfoTooltip text="Berechnet nach DIN 4109-32 für einschalige massive Bauteile: Rw = 30.9 · log10(m'/1) - 22,2 dB. Historisch nach DIN 4109 Bbl. 1:1989: Rw ≈ 37.5 · log10(m') - 42 dB." />
+                    <InfoTooltip text="Berechnet nach DIN 4109-32 für einschalige massive Bauteile: Rw = 30,9 · lg(m'/1 kg/m²) − 22,2 dB. Ältere Näherung (DIN EN 12354-1, informativer Anhang): Rw ≈ 37,5 · lg(m') − 42 dB für m' ≥ 150 kg/m²." />
                   </div>
                   <div className="text-3xl font-bold">{formatDeZahl(schallData.Rw, 1)} <span className="text-lg font-normal">dB</span></div>
                 </div>
@@ -238,7 +240,7 @@ export default function Schallschutz() {
 
               <div className="mt-4 bg-white/10 p-3 rounded-lg border border-white/20 text-xs space-y-1.5 leading-relaxed">
                 <p>
-                  <strong>Berechnungsgrundlage DIN 4109-32:</strong> <FormulaText text="R_w = 30.9 \cdot \log_{10}(m'/1) - 22.2 \text{ dB}" /> für einschalige massive Bauteile (Gültigkeit: 65 ≤ m' ≤ 720 kg/m²).
+                  <strong>Berechnungsgrundlage DIN 4109-32:</strong> <FormulaText text="R_w = 30{,}9 \cdot \log_{10}(m'/1) - 22{,}2 \text{ dB}" /> für einschalige massive Bauteile (Gültigkeit: 65 ≤ m' ≤ 720 kg/m²).
                 </p>
                 <p className="text-white/80">
                   <strong>Hinweis zu Dämmschichten:</strong> Dämmschichten (z. B. EPS, WDVS) dürfen bei der Ermittlung des Schalldämm-Maßes der Grundwand nicht einfach als Masse addiert werden; der akustische Einfluss von WDVS ist gesondert nach DIN 4109-34 nachzuweisen.
@@ -338,29 +340,58 @@ export default function Schallschutz() {
         </div>
       </div>
     
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Wohnungstrennwand aus Kalksandstein"
+        zielGleichung="R_w = 30{,}9 \cdot \lg\left(\frac{m'}{1\,\text{kg/m}^2}\right) - 22{,}2\,\text{dB}"
+        schritte={[
+          { titel: 'Flächenbezogene Masse', erklaerung: 'KS 17,5 cm (ρ = 2000 kg/m³) mit beidseitig 1,5 cm Gipsputz (ρ = 1000 kg/m³):', formel: "m' = 0{,}175 \\cdot 2\\,000 + 2 \\cdot 0{,}015 \\cdot 1\\,000 = 350 + 30 = 380\\,\\text{kg/m}^2" },
+          { titel: 'Schalldämm-Maß', erklaerung: 'Massekurve (gültig 65 bis 720 kg/m²):', formel: 'R_w = 30{,}9 \\cdot \\lg 380 - 22{,}2 = 30{,}9 \\cdot 2{,}580 - 22{,}2 = 57{,}5\\,\\text{dB}' },
+          { titel: 'Anforderung', erklaerung: 'Wohnungstrennwand nach DIN 4109-1: R′w ≥ 53 dB im eingebauten Zustand. Die Flankenübertragung (DIN 4109-2) mindert R_w um einige dB.', formel: "R_w = 57{,}5\\,\\text{dB} \\;\\to\\; R'_w \\approx 54\\ \\text{bis}\\ 55\\,\\text{dB} \\ge 53\\,\\text{dB}" }
+        ]}
+        ergebnisHinweis="Die Abschätzung von R′w ist nur ein Richtwert; der Nachweis erfolgt mit den flankierenden Bauteilen und Stoßstellen nach DIN 4109-2."
+        normQuelle="DIN 4109-1:2018-01; DIN 4109-32:2016-07"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Leichtes Mauerwerk und die Wirkung der Masseverdopplung"
+        zielGleichung="\Delta R_w = 30{,}9 \cdot \lg 2 = 9{,}3\,\text{dB}"
+        schritte={[
+          { titel: 'Hochlochziegel', erklaerung: 'HLZ 24 cm (ρ = 800 kg/m³) mit 1,5 cm Gipsputz innen und 2 cm Zementputz außen:', formel: "m' = 192 + 15 + 36 = 243\\,\\text{kg/m}^2 \\Rightarrow R_w = 30{,}9 \\cdot \\lg 243 - 22{,}2 = 51{,}5\\,\\text{dB}" },
+          { titel: 'Erforderliche Masse', erklaerung: 'Für R_w = 57 dB (Reserve für Flankenwege):', formel: "\\lg m' = \\frac{57 + 22{,}2}{30{,}9} = 2{,}563 \\Rightarrow m' = 366\\,\\text{kg/m}^2" },
+          { titel: 'Masseverdopplung', erklaerung: 'Nach der Massekurve bringt jede Verdopplung der Masse etwa 9 dB; das theoretische Bergersche Massegesetz liefert 6 dB.', formel: '\\Delta R_w = 30{,}9 \\cdot \\lg 2 = 9{,}3\\,\\text{dB}' }
+        ]}
+        ergebnisHinweis="Leichte Lochsteine eignen sich für Außenwände (Wärmeschutz), für Wohnungstrennwände braucht es schwere Steine, verfüllte Steine oder zweischalige Konstruktionen."
+        normQuelle="DIN 4109-32:2016-07"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="schallschutz" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Massekurve, Anforderungswerte und Normausgaben geprüft, Literatur korrigiert; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' }
         ]}
         regelwerke={[
-          { title: 'DIN 4109-1: Schallschutz im Hochbau - Mindestanforderungen', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1' },
-          { title: 'DIN 4109-32: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Massivbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-32' },
-          { title: 'DIN 4109-34: Schallschutz im Hochbau - Daten für rechnerische Nachweise (Vorsatzkonstruktionen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-34' }
+          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau – Mindestanforderungen; z. B. Wohnungstrennwände R′w ≥ 53 dB, Wohnungstrenndecken R′w ≥ 54 dB, L′n,w ≤ 50 dB)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1' },
+          { title: 'DIN 4109-2:2018-01 (Rechnerische Nachweise einschließlich Flankenübertragung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-2' },
+          { title: 'DIN 4109-32:2016-07 (Daten für die rechnerischen Nachweise – Bauteilkatalog Massivbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-32' },
+          { title: 'DIN 4109-34:2016-07 (Bauteilkatalog – Vorsatzkonstruktionen vor massiven Bauteilen, u. a. WDVS)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-34' }
         ]}
         literatur={[
-          'Willems, W. M. et al.: Lehrbuch der Bauphysik (2017)',
-          'Lutz, P. et al.: Lehrbuch der Bauphysik (2013)'
+          'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',
+          'Möser, M.: Technische Akustik. 10. Aufl., Berlin: Springer Vieweg 2015'
         ]}
         formeln={[
           {
             formel: "R_w = 30{,}9 \\cdot \\log_{10}(m'/1) - 22{,}2",
             erklaerung: "Berechnung des bewerteten Schalldämm-Maßes R_w in dB für einschalige massive Bauteile nach DIN 4109-32 (gültig für 65 ≤ m' ≤ 720 kg/m²).\nR_w: bewertetes Schalldämm-Maß [dB]\nm': flächenbezogene Masse [kg/m²]",
-            quelle: 'DIN 4109-32'
+            quelle: 'DIN 4109-32:2016-07'
           },
           {
             formel: "R_w \\approx 37{,}5 \\cdot \\log_{10}(m') - 42",
-            erklaerung: "Historische Näherungsformel für das Schalldämm-Maß einschaliger Bauteile nach DIN 4109 Bbl. 1:1989 (abgelöst durch DIN 4109-32).\nm': flächenbezogene Masse [kg/m²]",
-            quelle: 'DIN 4109 Bbl. 1:1989 (historisch)'
+            erklaerung: "Ältere empirische Näherung für einschalige Bauteile mit m' ≥ 150 kg/m² aus dem informativen Anhang der DIN EN 12354-1 (heute DIN EN ISO 12354-1); für Nachweise in Deutschland gilt DIN 4109-32.\nm': flächenbezogene Masse [kg/m²]",
+            quelle: 'DIN EN 12354-1, informativer Anhang (Zuordnung manuell prüfen)'
           }
         ]}
       />
