@@ -324,15 +324,15 @@ export default function Sicherheitskonzept() {
 
       {/* ANWENDUNG (Stufe 3 des Lehrpfads) */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
-        <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Anwendung: Vollständiger Nachweis E_d ≤ R_d</h3>
+        <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Anwendung: Vollständiger Nachweis E<sub>d</sub> ≤ R<sub>d</sub></h3>
         <FormulaDerivationBox
           title="Beispiel 1: Innenstütze im Bürogebäude (Druck, ungünstige Einwirkungen)"
           zielGleichung="N_{Ed} \le N_{Rd}"
           schritte={[
-            { titel: 'Einwirkungen', erklaerung: 'Charakteristische Normalkräfte aus Eigengewicht G_k = 800 kN und Nutzlast Büro (Kategorie B) Q_k = 300 kN; die Nutzlast ist Leiteinwirkung.', formel: 'G_k = 800\,\text{kN},\quad Q_{k,1} = 300\,\text{kN}' },
-            { titel: 'Bemessungswert der Einwirkung (Gl. 6.10)', erklaerung: 'Beide Einwirkungen wirken ungünstig:', formel: 'N_{Ed} = 1{,}35 \cdot 800 + 1{,}50 \cdot 300 = 1080 + 450 = 1530\,\text{kN}' },
-            { titel: 'Widerstand (vereinfacht, nur Beton)', erklaerung: 'Stütze 35 × 35 cm aus C30/37; Bemessungswert der Betondruckfestigkeit nach DIN EN 1992-1-1/NA mit α_cc = 0,85 und γ_C = 1,5:', formel: 'f_{cd} = \frac{0{,}85 \cdot 30}{1{,}5} = 17{,}0\,\tfrac{\text{N}}{\text{mm}^2},\quad N_{Rd} = 350^2 \cdot 17{,}0 = 2\,082\,500\,\text{N} \approx 2083\,\text{kN}' },
-            { titel: 'Nachweis', erklaerung: 'Ausnutzungsgrad η = N_Ed / N_Rd:', formel: '\eta = \frac{1530}{2083} = 0{,}73 \le 1{,}0 \quad \checkmark' }
+            { titel: 'Einwirkungen', erklaerung: 'Charakteristische Normalkräfte aus Eigengewicht G_k = 800 kN und Nutzlast Büro (Kategorie B) Q_k = 300 kN; die Nutzlast ist Leiteinwirkung.', formel: 'G_k = 800\\,\\text{kN},\\quad Q_{k,1} = 300\\,\\text{kN}' },
+            { titel: 'Bemessungswert der Einwirkung (Gl. 6.10)', erklaerung: 'Beide Einwirkungen wirken ungünstig:', formel: 'N_{Ed} = 1{,}35 \\cdot 800 + 1{,}50 \\cdot 300 = 1080 + 450 = 1530\\,\\text{kN}' },
+            { titel: 'Widerstand (vereinfacht, nur Beton)', erklaerung: 'Stütze 35 × 35 cm aus C30/37; Bemessungswert der Betondruckfestigkeit nach DIN EN 1992-1-1/NA mit α_cc = 0,85 und γ_C = 1,5:', formel: 'f_{cd} = \\frac{0{,}85 \\cdot 30}{1{,}5} = 17{,}0\\,\\tfrac{\\text{N}}{\\text{mm}^2},\\quad N_{Rd} = 350^2 \\cdot 17{,}0 = 2\\,082\\,500\\,\\text{N} \\approx 2083\\,\\text{kN}' },
+            { titel: 'Nachweis', erklaerung: 'Ausnutzungsgrad η = N_Ed / N_Rd:', formel: '\\eta = \\frac{1530}{2083} = 0{,}73 \\le 1{,}0 \\quad \\checkmark' }
           ]}
           ergebnisHinweis="Vereinfachtes Lehrbeispiel ohne Bewehrung, Mindestausmitte und Knicken – für einen vollständigen Stützennachweis siehe Modul Stahlbeton."
           normQuelle="DIN EN 1990/NA (Gl. 6.10), DIN EN 1992-1-1/NA (3.1.6, Tab. 2.1DE)"
@@ -341,9 +341,9 @@ export default function Sicherheitskonzept() {
           title="Beispiel 2: Leichtdach unter Windsog – wann das Eigengewicht günstig wirkt"
           zielGleichung="E_d = \gamma_{G,inf} \cdot G_k + \gamma_Q \cdot W_k"
           schritte={[
-            { titel: 'Einwirkungen', erklaerung: 'Trapezblechdach: Eigengewicht g_k = 0,30 kN/m² (nach unten), Windsog w_k = −1,20 kN/m² (nach oben).', formel: 'g_k = +0{,}30\,\tfrac{\text{kN}}{\text{m}^2},\quad w_k = -1{,}20\,\tfrac{\text{kN}}{\text{m}^2}' },
-            { titel: 'Falsch: γ_G = 1,35', erklaerung: 'Mit dem ungünstigen Beiwert würde das Eigengewicht die Abhebekraft künstlich verkleinern – das liegt auf der unsicheren Seite.', formel: '1{,}35 \cdot 0{,}30 - 1{,}50 \cdot 1{,}20 = -1{,}40\,\tfrac{\text{kN}}{\text{m}^2}' },
-            { titel: 'Richtig: γ_G,inf = 1,00', erklaerung: 'Das Eigengewicht wirkt der maßgebenden Einwirkung entgegen, also günstig:', formel: 'e_d = 1{,}00 \cdot 0{,}30 - 1{,}50 \cdot 1{,}20 = -1{,}50\,\tfrac{\text{kN}}{\text{m}^2}' }
+            { titel: 'Einwirkungen', erklaerung: 'Trapezblechdach: Eigengewicht g_k = 0,30 kN/m² (nach unten), Windsog w_k = −1,20 kN/m² (nach oben).', formel: 'g_k = +0{,}30\\,\\tfrac{\\text{kN}}{\\text{m}^2},\\quad w_k = -1{,}20\\,\\tfrac{\\text{kN}}{\\text{m}^2}' },
+            { titel: 'Falsch: γ_G = 1,35', erklaerung: 'Mit dem ungünstigen Beiwert würde das Eigengewicht die Abhebekraft künstlich verkleinern – das liegt auf der unsicheren Seite.', formel: '1{,}35 \\cdot 0{,}30 - 1{,}50 \\cdot 1{,}20 = -1{,}40\\,\\tfrac{\\text{kN}}{\\text{m}^2}' },
+            { titel: 'Richtig: γ_G,inf = 1,00', erklaerung: 'Das Eigengewicht wirkt der maßgebenden Einwirkung entgegen, also günstig:', formel: 'e_d = 1{,}00 \\cdot 0{,}30 - 1{,}50 \\cdot 1{,}20 = -1{,}50\\,\\tfrac{\\text{kN}}{\\text{m}^2}' }
           ]}
           ergebnisHinweis="Die Befestigung muss 1,50 kN/m² Abhebekraft aufnehmen. Stellen Sie im Rechner oben γ_G = 1,00 ein, um den Effekt nachzuvollziehen."
           normQuelle="DIN EN 1990/NA, Tab. NA.A.1.2(B); DIN EN 1991-1-4 (Wind)"

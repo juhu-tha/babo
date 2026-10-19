@@ -372,10 +372,10 @@ export default function Materialkennwerte() {
           title="Beispiel 1: Wärmedehnung einer Aluminium-Attikaabdeckung neben Stahlbeton"
           zielGleichung="\Delta L = \alpha_T \cdot L_0 \cdot \Delta T"
           schritte={[
-            { titel: 'Gegeben', erklaerung: 'Attikaabdeckung aus Aluminium, Länge L₀ = 10 m, Temperaturspanne zwischen Montage und Sommerhöchstwert ΔT = 60 K. Zum Vergleich: Stahlbeton-Attika gleicher Länge.', formel: 'L_0 = 10\,000\,\text{mm},\quad \Delta T = 60\,\text{K}' },
-            { titel: 'Aluminium', erklaerung: 'Mit α_T = 23 · 10⁻⁶ 1/K aus der Kennwerte-Tabelle:', formel: '\Delta L_{Al} = 23 \cdot 10^{-6} \cdot 10\,000 \cdot 60 = 13{,}8\,\text{mm}', einheit: 'mm' },
-            { titel: 'Stahlbeton', erklaerung: 'Mit α_T = 10 · 10⁻⁶ 1/K (DIN EN 1992-1-1, 3.1.3):', formel: '\Delta L_{StB} = 10 \cdot 10^{-6} \cdot 10\,000 \cdot 60 = 6{,}0\,\text{mm}', einheit: 'mm' },
-            { titel: 'Bewertung', erklaerung: 'Die Relativbewegung von rund 8 mm je 10 m muss über Langlöcher, Gleitbefestigungen oder Stoßfugen aufgenommen werden. Starr verschraubt entstehen Zwängungen, die Befestiger abscheren oder die Abdeckung beulen.', formel: '\Delta L_{Al} - \Delta L_{StB} = 7{,}8\,\text{mm}' }
+            { titel: 'Gegeben', erklaerung: 'Attikaabdeckung aus Aluminium, Länge L₀ = 10 m, Temperaturspanne zwischen Montage und Sommerhöchstwert ΔT = 60 K. Zum Vergleich: Stahlbeton-Attika gleicher Länge.', formel: 'L_0 = 10\\,000\\,\\text{mm},\\quad \\Delta T = 60\\,\\text{K}' },
+            { titel: 'Aluminium', erklaerung: 'Mit α_T = 23 · 10⁻⁶ 1/K aus der Kennwerte-Tabelle:', formel: '\\Delta L_{Al} = 23 \\cdot 10^{-6} \\cdot 10\\,000 \\cdot 60 = 13{,}8\\,\\text{mm}', einheit: 'mm' },
+            { titel: 'Stahlbeton', erklaerung: 'Mit α_T = 10 · 10⁻⁶ 1/K (DIN EN 1992-1-1, 3.1.3):', formel: '\\Delta L_{StB} = 10 \\cdot 10^{-6} \\cdot 10\\,000 \\cdot 60 = 6{,}0\\,\\text{mm}', einheit: 'mm' },
+            { titel: 'Bewertung', erklaerung: 'Die Relativbewegung von rund 8 mm je 10 m muss über Langlöcher, Gleitbefestigungen oder Stoßfugen aufgenommen werden. Starr verschraubt entstehen Zwängungen, die Befestiger abscheren oder die Abdeckung beulen.', formel: '\\Delta L_{Al} - \\Delta L_{StB} = 7{,}8\\,\\text{mm}' }
           ]}
           ergebnisHinweis="Aluminium dehnt sich gut doppelt so stark wie Stahlbeton – Fugen- und Befestigungsabstände richten sich nach diesem Unterschied."
           normQuelle="DIN EN 1991-1-5 (Temperatureinwirkungen); α_T-Werte: DIN EN 1992-1-1, DIN EN 1999-1-1"
@@ -384,9 +384,9 @@ export default function Materialkennwerte() {
           title="Beispiel 2: Spezifische Steifigkeit – warum Holz trotz kleinem E-Modul effizient ist"
           zielGleichung="\frac{E}{\rho}\ \text{(spezifische Steifigkeit)}"
           schritte={[
-            { titel: 'Baustahl S235', erklaerung: 'E = 210.000 MPa, ρ = 7.850 kg/m³:', formel: '\frac{E}{\rho} = \frac{210\,000}{7\,850} \approx 26{,}8\ \frac{\text{MPa}}{\text{kg/m}^3}' },
-            { titel: 'Nadelholz C24 (faserparallel)', erklaerung: 'E₀,mean = 11.000 MPa, ρ_mean = 420 kg/m³:', formel: '\frac{E}{\rho} = \frac{11\,000}{420} \approx 26{,}2\ \frac{\text{MPa}}{\text{kg/m}^3}' },
-            { titel: 'Beton C30/37', erklaerung: 'E_cm = 33.000 MPa, ρ = 2.400 kg/m³:', formel: '\frac{E}{\rho} = \frac{33\,000}{2\,400} \approx 13{,}8\ \frac{\text{MPa}}{\text{kg/m}^3}' }
+            { titel: 'Baustahl S235', erklaerung: 'E = 210.000 MPa, ρ = 7.850 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{210\\,000}{7\\,850} \\approx 26{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' },
+            { titel: 'Nadelholz C24 (faserparallel)', erklaerung: 'E₀,mean = 11.000 MPa, ρ_mean = 420 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{11\\,000}{420} \\approx 26{,}2\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' },
+            { titel: 'Beton C30/37', erklaerung: 'E_cm = 33.000 MPa, ρ = 2.400 kg/m³:', formel: '\\frac{E}{\\rho} = \\frac{33\\,000}{2\\,400} \\approx 13{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}' }
           ]}
           ergebnisHinweis="Bezogen auf das Gewicht sind Stahl und Holz (in Faserrichtung) etwa gleich steif, Beton nur halb so steif. Das Netzdiagramm zeigt absolute Werte – für den Leichtbau zählt das Verhältnis."
           normQuelle="Kennwerte: DIN EN 1993-1-1, DIN EN 338, DIN EN 1992-1-1"

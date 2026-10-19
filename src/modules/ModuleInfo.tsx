@@ -159,13 +159,13 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Materialkenndaten', desc: 'Umfassendes tabellarisches Zahlenwerk für Rohdichten, Bruchspannungen, Dehnungen und thermische Ausdehnungen.' }
     ],
     submodules: [
-      { title: 'Einheiten', icon: Scale, purpose: 'Umrechner und Erklärungen für Spannungen, Kräfte, Drücke und abgeleitete Baustoffeinheiten.', standards: 'DIN EN ISO 80000', useCase: 'Umrechnen von Pascal, bar und Newton je Quadratmillimeter.' },
+      { title: 'Einheiten', icon: Scale, purpose: 'Umrechner und Erklärungen für Spannungen, Kräfte, Drücke, Momente, Energie und Temperatur.', standards: 'DIN 1301-1, DIN EN ISO 80000-1', useCase: 'Umrechnen von Pascal, bar und Newton je Quadratmillimeter; Momente von kNm in Nmm.' },
       { title: 'Kennwerte', icon: TableIcon, purpose: 'Schnellübersicht charakteristischer Baustoffparameter verschiedenster Materialklassen.', standards: 'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024', useCase: 'Ablesen des Elastizitätsmoduls von Buchenholz oder Baustahl S235.' },
-      { title: 'Baustoffkenngrößen', icon: Layers, purpose: 'Physikalische Kennziffern wie Porosität, Dichtegrade, Feuchtegehalt und Wasseraufnahme.', standards: 'DIN EN 1990', useCase: 'Bestimmung des effektiven Porenvolumens zur Frostschutzdauerhaftigkeit.' },
-      { title: 'Bauchemie', icon: FlaskConical, purpose: 'Säure-Base-Reaktionen, Korrosionsprozesse, elektrochemische Spannungsreihen und Löslichkeit.', standards: 'Allg. Chemie-Lehrwerke', useCase: 'Berechnung des korrosionskritischen Carbonatisierungsfortschritts.' },
+      { title: 'Baustoffkenngrößen', icon: Layers, purpose: 'Physikalische Kennziffern wie Porosität, Dichtegrade, Feuchtegehalt und Wasseraufnahme.', standards: 'DIN EN ISO 10456, DIN 4108-3/-4, DIN EN ISO 12570/15148', useCase: 'Bestimmung der Porosität aus Rein- und Rohdichte; s_d- und w-Wert einer Putzschicht.' },
+      { title: 'Bauchemie', icon: FlaskConical, purpose: 'Hydratation, Zusatzmittel, chemische Angriffe, Salze, Korrosion sowie Kleb- und Dichtstoffe.', standards: 'DIN EN 206/DIN 1045-2, DIN EN 934-2, DIN EN 1504, DIN EN 15651', useCase: 'Berechnung des korrosionskritischen Carbonatisierungsfortschritts.' },
       { title: 'Eurocode', icon: ShieldAlert, purpose: 'Einführung in das semiprobabilistische Sicherheitskonzept mit Teilsicherheitsbeiwerten.', standards: 'DIN EN 1990 (Eurocode 0)', useCase: 'Ermittlung der maßgebenden Einwirkungskombination für Grundkombinationen nach Gl. 6.10.' },
       { title: 'Baustoffkunde', icon: Layers, purpose: 'Systematische Klassifikation aller Werkstoffklassen (mineralisch, metallisch, organisch, Verbundstoffe) und Gefügearten.', standards: 'DIN EN-Normengruppen / Wendehorst', useCase: 'Grundlagenorientierte Werkstoffauswahl nach Festigkeits-, Dauerhaftigkeits- und Umweltkriterien.' },
-      { title: 'Regulatives', icon: Scale, purpose: 'Übersicht über baurechtliche Regelungen, Baugesetzbuch, Landesbauordnungen und harmonisierte europäische Normen.', standards: 'Landesbauordnungen (MBO)', useCase: 'Prüfen der Notwendigkeit einer allgemeinen bauaufsichtlichen Zulassung (abZ).' }
+      { title: 'Regulatives', icon: Scale, purpose: 'Übersicht über baurechtliche Regelungen, Baugesetzbuch, Landesbauordnungen und harmonisierte europäische Normen.', standards: 'BauPVO (EU) 2024/3110, MBO/LBO, MVV TB, BGB/VOB', useCase: 'Prüfen der Notwendigkeit einer allgemeinen bauaufsichtlichen Zulassung (abZ).' }
     ],
     didacticCards: [
       { title: 'Theoretische Herleitung', desc: 'Kompakte physikalische Gesetzmäßigkeiten verständlich auf den Punkt gebracht.' },
@@ -183,7 +183,10 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
     ],
     regelwerke: [
-      { title: 'DIN EN 1990: Eurocode 0 - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' }
+      { title: 'DIN EN 1990: Eurocode 0 - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
+      { title: 'DIN 1301-1:2010-10: Einheiten – Einheitennamen, Einheitenzeichen', url: 'https://www.dinmedia.de/de/suche?q=DIN+1301-1' },
+      { title: 'DIN EN ISO 10456: Wärme- und feuchtetechnische Eigenschaften – Tabellierte Bemessungswerte', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' },
+      { title: 'Bauproduktenverordnung (EU) 2024/3110', url: 'https://eur-lex.europa.eu/eli/reg/2024/3110/oj' }
     ],
     formeln: [
       { formel: 'E_d \\leq R_d', erklaerung: 'Grundformel des semiprobabilistischen Sicherheitskonzepts. Die Bemessungswerte der Beanspruchungen E_d müssen kleiner/gleich den Bemessungswerten der Tragwiderstände R_d sein.', quelle: 'DIN EN 1990' }
@@ -942,20 +945,19 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
     websites: [
       { name: "Baulinks Portal - Baustoff-Wissen", url: "https://www.baulinks.de", desc: "Etabliertes deutsches Fachportal für Baustoffe, Materialentwicklungen und Baupraxis-News." },
       { name: "Materialarchiv Wissenschaft", url: "https://www.materialarchiv.ch", desc: "Umfangreiche wissenschaftliche Datenbank für Materialklassen und deren physikalische Auswertung." },
-      { name: "KIT Baustoffwissenschaftliches Archiv", url: "https://www.ibmb.kit.edu", desc: "Lehr- und Prüfmuster mineralischer Tragsicherheiten des Karlsruher Instituts für Technologie." }
+      { name: "VDZ – Forschungs- und Kompetenzzentrum für Zement, Beton und Umweltschutz", url: "https://www.vdz-online.de/", desc: "Zementchemie, Betontechnik und Merkblätter des Vereins Deutscher Zementwerke." },
+      { name: "DIBt – Deutsches Institut für Bautechnik", url: "https://www.dibt.de/", desc: "Bauaufsichtliche Zulassungen, Bauartgenehmigungen und Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB)." }
     ],
     books: [
-      { title: "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011", desc: "Vollenschaar et al., Springer Vieweg. Der absolute Klassiker der Materialkunde im Hoch- und Tiefbau." },
-      { title: "Werkstoffe des Bauwesens", desc: "Mende, Hans-Dieter, Springer. Physikalische Herleitungen mechanischer Kenngrößen." }
+      { title: "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011", desc: "Klassisches Lehrbuch der Baustoffkunde für Hoch- und Tiefbau." },
+      { title: "Möhring, R. (Hrsg.): Baustoffkenntnis (begr. von W. Scholz). 18. Aufl., Köln: Bundesanzeiger Verlag 2016", desc: "Praxisorientiertes Standardwerk zu Eigenschaften und Anwendung der Baustoffe." },
+      { title: "Benedix, R.: Bauchemie für das Bachelor-Studium. 3. Aufl., Wiesbaden: Springer Vieweg 2017", desc: "Chemische Grundlagen der Baustoffe für das Bachelorstudium." },
+      { title: "Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. 9. Aufl., Wiesbaden: Springer Vieweg 2022", desc: "Wärme, Feuchte, Schall, Brand – Grundlagen der bauphysikalischen Kenngrößen." }
     ],
     publications: [
-      { journal: "Bautechnik (Ernst & Sohn)", title: "Untersuchungen zur thermodynamischen Konsistenz der Teilsicherheitsbeiwerte im Bauwesen", desc: "Analyse probabilistischer Sicherheitsformeln nach Eurocode." },
-      { journal: "Cement and Concrete Research", title: "The role of chemical stoichiometry in concrete carbonation kinetics", desc: "Chemische Modellierung der Diffusion saurer Bestandteile." }
+      { journal: "Journal of the American Concrete Institute 43 (1946/47)", title: "Powers, T. C.; Brownyard, T. L.: Studies of the Physical Properties of Hardened Portland Cement Paste", desc: "Grundlagenarbeit zum Porenmodell des Zementsteins (Gel- und Kapillarporen)." }
     ],
-    dissertations: [
-      { title: "Zur probabilistischen Bewertung der Standsicherung bestehender Mauerwerksbauten", desc: "Dissertation, Universität Stuttgart, 2021. Untersuchung von Lastannahmen und Resttragfähigkeiten." },
-      { title: "Einfluss mikroskopischer Porenparameter auf makroskopische Baustoffkenngrößen mineralischer Bindemittel", desc: "Dissertation, Technische Universität Berlin (TU Berlin). Festigkeitsprognose über Porenradienverteilungen." }
-    ]
+    dissertations: []
   },
   labor: {
     websites: [
