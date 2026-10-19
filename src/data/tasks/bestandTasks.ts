@@ -21,9 +21,9 @@ export const bestandTasks: Task[] = [
     id: 't_hist_beton_umrechnung',
     difficulty: 'Schwer',
     title: 'Bauen im Bestand: Umrechnung historischer Beton B 225 nach DIN 1045 (1972)',
-    question: 'Auf Altplänen aus dem Jahr 1978 wird für eine Deckenplatte die Festigkeitsklasse "B 225" angegeben. Rechnen Sie diese Festigkeitsklasse auf die heutige Zylinderdruckfestigkeit f_{ck} sowie f_{cd} um (ohne Bohrkernprüfung vs. mit Kernbohrung f_cm,cube = 28.5 N/mm²).',
+    question: 'Auf Altplänen aus dem Jahr 1978 wird für eine Deckenplatte die Festigkeitsklasse "B 225" angegeben. Rechnen Sie diese Festigkeitsklasse auf die heutige Zylinderdruckfestigkeit f_{ck} sowie f_{cd} um (ohne Bohrkernprüfung vs. mit Kernbohrung f_cm,cube = 28,5 N/mm²).',
     moduleHint: { id: 'historisch', name: 'Historische Kennwerte' },
-    solution: 'Beim Bauen im Bestand erfolgt die Umrechnung nach der DAfStb-Richtlinie "Bauen im Bestand":\n\n1. **Ohne Bauteilprüfung (reine Aktenlage):**\n- B 225 entspricht $\\beta_{WN} = 22.5\\text{ N/mm}^2$ an $200\\text{ mm}$ Würfeln, normiert auf $150\\text{ mm}$ ca. $21.4\\text{ N/mm}^2$.\n- Charakteristischer Zylinderwert: $f_{ck,cyl} \\approx 0.8 \\times 21.4 \\approx 17.1\\text{ N/mm}^2$.\n- Abzug des pauschalen Sicherheitsabschlags für Aktenlage ($3.0\\text{ N/mm}^2$): $f_{ck,act} = 17.1 - 3.0 = 14.1\\text{ N/mm}^2$ (entspricht Klasse **C12/15**).\n- Bemessungswert: $f_{cd} = 0.85 \\times 12 / 1.5 = 6.8\\text{ N/mm}^2$.\n\n2. **Mit Bohrkernprüfung ($f_{cm,cube,150} = 28.5\\text{ N/mm}^2$):**\n- Erlaubt die sichere Einstufung in **C20/25** ($f_{ck} = 20\\text{ N/mm}^2$).\n- Neuer Bemessungswert: $f_{cd} = 0.85 \\times 20 / 1.5 = 11.33\\text{ N/mm}^2$ (+66 % Tragfähigkeit!).'
+    solution: 'Beim Bauen im Bestand erfolgt die Umrechnung nach der DAfStb-Richtlinie "Bauen im Bestand":\n\n1. **Ohne Bauteilprüfung (reine Aktenlage):**\n- B 225 entspricht $\\beta_{WN} = 22{,}5\\text{ N/mm}^2$ an $200\\text{ mm}$ Würfeln, normiert auf $150\\text{ mm}$ ca. $21{,}4\\text{ N/mm}^2$.\n- Charakteristischer Zylinderwert: $f_{ck,cyl} \\approx 0{,}8 \\times 21{,}4 \\approx 17{,}1\\text{ N/mm}^2$.\n- Abzug des pauschalen Sicherheitsabschlags für Aktenlage ($3{,}0\\text{ N/mm}^2$): $f_{ck,act} = 17{,}1 - 3{,}0 = 14{,}1\\text{ N/mm}^2$ (entspricht Klasse **C12/15**).\n- Bemessungswert: $f_{cd} = 0{,}85 \\times 12 / 1{,}5 = 6{,}8\\text{ N/mm}^2$.\n\n2. **Mit Bohrkernprüfung ($f_{cm,cube,150} = 28{,}5\\text{ N/mm}^2$):**\n- Erlaubt die sichere Einstufung in **C20/25** ($f_{ck} = 20\\text{ N/mm}^2$).\n- Neuer Bemessungswert: $f_{cd} = 0{,}85 \\times 20 / 1{,}5 = 11{,}33\\text{ N/mm}^2$ (+66 % Tragfähigkeit!).'
   },
   {
     id: 't_denkmal_kalk',
@@ -37,9 +37,9 @@ export const bestandTasks: Task[] = [
     id: 't_hist_mauerwerk_fk',
     difficulty: 'Schwer',
     title: 'Bauen im Bestand: Tragfähigkeit historisches Ziegelmauerwerk (Reichsformat)',
-    question: 'Eine Außenwand eines Altbaus (Baujahr 1905, Mauerstärke 24 cm, Reichsformat) mit Ziegeln SFK 12 und Kalkmörtel MG I (f_m = 0.5 N/mm²) soll auf Lasten überprüft werden. Berechnen Sie die Mauerwerksdruckfestigkeit f_k nach DIN EN 1996-3.',
+    question: 'Eine Außenwand eines Altbaus (Baujahr 1905, Mauerstärke 24 cm, Reichsformat) mit Ziegeln SFK 12 und Kalkmörtel MG I (f_m = 0,5 N/mm²) soll auf Lasten überprüft werden. Berechnen Sie die Mauerwerksdruckfestigkeit f_k nach DIN EN 1996-3.',
     moduleHint: { id: 'mauerwerk', name: 'Mauerwerk: Tragfähigkeit' },
-    solution: 'Berechnung nach Eurocode 6 (DIN EN 1996-3):\n$$f_k = K \\cdot f_b^{0.7} \\cdot f_m^{0.3}$$\nMit $K = 0.50$, $f_b = 12.0\\text{ N/mm}^2$ und Kalkmörtel $f_m = 0.5\\text{ N/mm}^2$:\n$$f_k = 0.50 \\times 12^{0.7} \\times 0.5^{0.3} = 0.50 \\times 5.698 \\times 0.812 \\approx **2.31\\text{ N/mm}^2$$\nMit $\\gamma_M = 1.5$ beträgt der Bemessungswert $f_d = 2.31 / 1.5 = 1.54\\text{ N/mm}^2$. Der weiche Kalkmörtel reduziert die Festigkeit drastisch, da er unter Druck quer ausweicht und Spaltzug im Ziegel induziert.'
+    solution: 'Berechnung nach Eurocode 6 (DIN EN 1996-3):\n$$f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}$$\nMit $K = 0{,}50$, $f_b = 12{,}0\\text{ N/mm}^2$ und Kalkmörtel $f_m = 0{,}5\\text{ N/mm}^2$:\n$$f_k = 0{,}50 \\times 12^{0{,}7} \\times 0{,}5^{0{,}3} = 0{,}50 \\times 5.698 \\times 0{,}812 \\approx **2{,}31\\text{ N/mm}^2$$\nMit $\\gamma_M = 1{,}5$ beträgt der Bemessungswert $f_d = 2{,}31 / 1{,}5 = 1{,}54\\text{ N/mm}^2$. Der weiche Kalkmörtel reduziert die Festigkeit drastisch, da er unter Druck quer ausweicht und Spaltzug im Ziegel induziert.'
   },
   {
     id: 't_preussische_kappe',

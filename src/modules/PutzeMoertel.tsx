@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -53,7 +54,7 @@ const MORTAR_PRODUCTS: MortarProduct[] = [
     id: 'normal_m5',
     name: 'Normalmauermörtel (NM) - Klasse M 5',
     normClass: 'DIN EN 998-2 / Typ NM',
-    strengthNmm2: '≥ 5.0 N/mm² (Klasse M 5 / alt MG IIa)',
+    strengthNmm2: '≥ 5,0 N/mm² (Klasse M 5 / alt MG IIa)',
     densityKgM3: 1850,
     lambdaWmk: 0.83,
     muValue: '15/35',
@@ -71,7 +72,7 @@ const MORTAR_PRODUCTS: MortarProduct[] = [
     id: 'leicht_m25',
     name: 'Leichtmauermörtel (LM) - Klasse M 2,5',
     normClass: 'DIN EN 998-2 / Typ LM 21',
-    strengthNmm2: '≥ 2.5 N/mm² (Klasse M 2,5 / alt MG II)',
+    strengthNmm2: '≥ 2,5 N/mm² (Klasse M 2,5 / alt MG II)',
     densityKgM3: 700,
     lambdaWmk: 0.18,
     muValue: '5/15',
@@ -89,7 +90,7 @@ const MORTAR_PRODUCTS: MortarProduct[] = [
     id: 'duennbett_m10',
     name: 'Dünnbettmörtel (DM) - Klasse M 10',
     normClass: 'DIN EN 998-2 / Typ DM',
-    strengthNmm2: '≥ 10.0 N/mm² (Klasse M 10 / alt MG III)',
+    strengthNmm2: '≥ 10,0 N/mm² (Klasse M 10 / alt MG III)',
     densityKgM3: 1520,
     lambdaWmk: 0.61,
     muValue: '15/35',
@@ -107,7 +108,7 @@ const MORTAR_PRODUCTS: MortarProduct[] = [
     id: 'trass_m15',
     name: 'Trass-Natursteinfugenmörtel - Klasse M 15',
     normClass: 'DIN EN 998-2 / Trass-Ausmauerung',
-    strengthNmm2: '≥ 15.0 N/mm² (Klasse M 15 / alt MG III)',
+    strengthNmm2: '≥ 15,0 N/mm² (Klasse M 15 / alt MG III)',
     densityKgM3: 1950,
     lambdaWmk: 1.10,
     muValue: '20/40',
@@ -125,7 +126,7 @@ const MORTAR_PRODUCTS: MortarProduct[] = [
     id: 'schamotte_of',
     name: 'Feuerfester Schamottemörtel (Tonmörtel)',
     normClass: 'Keramisch abbindend / Ofenbaurichtlinie',
-    strengthNmm2: '≥ 10.0 N/mm² (nach Sinterprozess ab 600 °C)',
+    strengthNmm2: '≥ 10,0 N/mm² (nach Sinterprozess ab 600 °C)',
     densityKgM3: 1680,
     lambdaWmk: 0.90,
     muValue: '50/100',
@@ -146,7 +147,7 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     id: 'gips_gp',
     name: 'Gipsputzmörtel (Innenputz)',
     normClass: 'DIN EN 13279-1 / B1–B7',
-    strengthCategory: 'Druckfestigkeit ≥ 2.0 N/mm²',
+    strengthCategory: 'Druckfestigkeit ≥ 2,0 N/mm²',
     composition: 'Besteht im Wesentlichen aus Calciumsulfat-Halbhydrat (CaSO₄·½H₂O), Gelöschtem Kalk (Kalkhydrat, Ca(OH)₂) als Verarbeitungsverbesserer, fein gemahlenem Gesteinsmehl (Kalksteinmehl CaCO₃) als Füllstoff sowie organischen Verzögerern (z.B. Weinsäurederivaten) zur Steuerung des Abbindewesens.',
     densityKgM3: 1000,
     lambdaWmk: 0.30,
@@ -165,7 +166,7 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     id: 'luftkalk_cs1',
     name: 'Reiner Luftkalkputz (Dekorputz)',
     normClass: 'DIN EN 998-1 / Typ GP - CS I',
-    strengthCategory: 'CS I (0.4 – 2.5 N/mm²)',
+    strengthCategory: 'CS I (0,4 – 2,5 N/mm²)',
     composition: 'Besteht ausschließlich aus gelöschtem Luftkalk (Calciumhydroxid, Ca(OH)₂) als Bindemittel, wohldefiniertem, mehrfach gewaschenem Quarzsand (SiO₂, Körnung 0–2 mm) und rein mineralischen Zuschlägen. Absolut frei von Portlandzement, Kunstharzen oder synthetischen Zusätzen.',
     densityKgM3: 1300,
     lambdaWmk: 0.45,
@@ -184,7 +185,7 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     id: 'kalkzement_cs2',
     name: 'Kalk-Zement-Leichtputz Typ II',
     normClass: 'DIN EN 998-1 / Typ LW - CS I bis CS II',
-    strengthCategory: 'CS II (1.5 – 5.0 N/mm²)',
+    strengthCategory: 'CS II (1,5 – 5,0 N/mm²)',
     composition: 'Kombiniertes Bindemittelsystem aus Portlandzement (CEM I nach DIN EN 197-1) zur hydraulischen Festigkeit und Calciumhydroxid (Kalkhydrat) zur Schmeidigkeit. Als Gesteinskörnung dienen Quarzsande sowie hohlraumreiche mineralische Leichtzuschläge wie geblähter Perlit oder Schaumglasgranulat.',
     densityKgM3: 1150,
     lambdaWmk: 0.23,
@@ -203,7 +204,7 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     id: 'zement_cs4',
     name: 'Zement-Sockelputz (Nassbereich)',
     normClass: 'DIN EN 998-1 / Typ GP - CS IV',
-    strengthCategory: 'CS IV (≥ 6.0 N/mm²)',
+    strengthCategory: 'CS IV (≥ 6,0 N/mm²)',
     composition: 'Hydraulisch hochfestes Bindemittelsystem mit dominierendem Gehalt an Portlandzement (CEM I), stufenweise abgestimmten Quarzsanden (Körnung 0–4 mm) zur Maximierung der Schüttdichte, sowie hydrophobierenden siliciumorganischen Wirkstoffen undErstarrungsbeschleunigern zur schlagartigen Wasserresistenz.',
     densityKgM3: 1750,
     lambdaWmk: 0.80,
@@ -222,8 +223,8 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     id: 'sanier_r',
     name: 'Sanierputz Typ R (WTA-Zertifiziert)',
     normClass: 'DIN EN 998-1 / Typ R nach WTA-Merkblatt 2-9',
-    strengthCategory: 'CS II (1.5 – 5.0 N/mm²)',
-    composition: 'Sulfatbeständiges, trassiertes Bindemittelsystem auf Basis von Kalkhydrat und trassiertem Portlandzement (HS-Zement). Zur chemisch-stofflichen Funktion dienen klastischer Feinsand (Körnung 0–1.2 mm), künstliche Luftporenbildner (Alkylsulfate/Tenside) zur Etablierung makroporiger Evaporationsräume sowie organische Silan- bzw. Siloxanwirkstoffe (0.2–0.5 Gew.-%) zur vollständigen Kapillarhydrophobierung der inneren Porenkanäle.',
+    strengthCategory: 'CS II (1,5 – 5,0 N/mm²)',
+    composition: 'Sulfatbeständiges, trassiertes Bindemittelsystem auf Basis von Kalkhydrat und trassiertem Portlandzement (HS-Zement). Zur chemisch-stofflichen Funktion dienen klastischer Feinsand (Körnung 0–1,2 mm), künstliche Luftporenbildner (Alkylsulfate/Tenside) zur Etablierung makroporiger Evaporationsräume sowie organische Silan- bzw. Siloxanwirkstoffe (0.2–0.5 Gew.-%) zur vollständigen Kapillarhydrophobierung der inneren Porenkanäle.',
     densityKgM3: 1200,
     lambdaWmk: 0.30,
     muValue: '12',
@@ -241,8 +242,8 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     id: 'aerogel_t',
     name: 'Wärmedämmender Aerogel-Hochleistungsputz',
     normClass: 'DIN EN 998-1 / Typ T (Dämmputzmörtel)',
-    strengthCategory: 'CS I (0.4 – 2.5 N/mm²)',
-    composition: 'Synthetisch amorphes, ultrafeines Silicagel-Aerogel-Granulat (mittlere Partikelgröße 1.2–3.5 mm, Porenvolumen > 90%, Dichte 120–150 kg/m³), gebunden in Trasskalk (Ca(OH)₂ mit vulkanischem Trassmehl) und geringen Anteilen Portlandzement. Verstärkt durch mineralische Feinstfasern zur Stabilisierung gegen Schwindrisse.',
+    strengthCategory: 'CS I (0,4 – 2,5 N/mm²)',
+    composition: 'Synthetisch amorphes, ultrafeines Silicagel-Aerogel-Granulat (mittlere Partikelgröße 1,2–3,5 mm, Porenvolumen > 90%, Dichte 120–150 kg/m³), gebunden in Trasskalk (Ca(OH)₂ mit vulkanischem Trassmehl) und geringen Anteilen Portlandzement. Verstärkt durch mineralische Feinstfasern zur Stabilisierung gegen Schwindrisse.',
     densityKgM3: 220,
     lambdaWmk: 0.028,
     muValue: '4 - 6',
@@ -267,7 +268,7 @@ const BUILDING_SYSTEMS: BuildingSystem[] = [
     layers: [
       '1. Erste Schicht: Normalmauermörtel M 10 zur präzisen horizontierten Höhenausrichtung',
       '2. Wandstein: Plangeschliffener Ziegel, Kalksandstein oder Porenbetonblock',
-      '3. Fugenbett: Dünnbettmörtel (Dicke 1.0–2.0 mm) mit Zahnkelle aufgetragen',
+      '3. Fugenbett: Dünnbettmörtel (Dicke 1,0–2,0 mm) mit Zahnkelle aufgetragen',
       '4. Stoßfugen: Knirsche, vermörtelungsfreie Nut-Feder-Verzahnung'
     ],
     normref: 'DIN EN 1996 (Eurocode 6) mit NA / DIN EN 998-2 i. V. m. DIN 20000-412 (Dünnbettmörtel)',
@@ -578,12 +579,12 @@ export default function PutzeMoertel() {
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Prüf-Rohdichte</span>
-                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{activeMortar.densityKgM3} kg/m³</span>
+                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{formatDeWert(activeMortar.densityKgM3)} kg/m³</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Wärmeleitf. λ_10</span>
-                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{activeMortar.lambdaWmk.toFixed(2)} W/mK</span>
+                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{formatDeZahl(activeMortar.lambdaWmk, 2)} W/mK</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
@@ -651,31 +652,31 @@ export default function PutzeMoertel() {
                   <tbody className="divide-y divide-slate-100 text-slate-700">
                     <tr>
                       <td className="p-2.5 font-bold font-mono text-slate-950">M 1</td>
-                      <td className="p-2.5 font-mono">≥ 1.0</td>
+                      <td className="p-2.5 font-mono">≥ 1,0</td>
                       <td className="p-2.5">Mörtelgruppe I (Luftkalk)</td>
                       <td className="p-2.5">Historisches Gurtmauerwerk, Natursteinmauerwerk</td>
                     </tr>
                     <tr>
                       <td className="p-2.5 font-bold font-mono text-slate-950">M 2,5</td>
-                      <td className="p-2.5 font-mono">≥ 2.5</td>
+                      <td className="p-2.5 font-mono">≥ 2,5</td>
                       <td className="p-2.5">Mörtelgruppe II (Kalkzement)</td>
                       <td className="p-2.5">Aussteifungsmauerwerke, hochwärmedämmende Leichtziegel</td>
                     </tr>
                     <tr>
                       <td className="p-2.5 font-bold font-mono text-slate-950">M 5</td>
-                      <td className="p-2.5 font-mono">≥ 5.0</td>
+                      <td className="p-2.5 font-mono">≥ 5,0</td>
                       <td className="p-2.5">Mörtelgruppe IIa (Kalkzement stark)</td>
                       <td className="p-2.5">Standard-Wohnungsbau tragendes Mauerwerk (Universal)</td>
                     </tr>
                     <tr>
                       <td className="p-2.5 font-bold font-mono text-slate-950">M 10</td>
-                      <td className="p-2.5 font-mono">≥ 10.0</td>
+                      <td className="p-2.5 font-mono">≥ 10,0</td>
                       <td className="p-2.5">Mörtelgruppe III (Zementmörtel)</td>
                       <td className="p-2.5">Stark beanspruchtes Mauerwerk, Kelleraußenwände, Gewölbe</td>
                     </tr>
                     <tr>
                       <td className="p-2.5 font-bold font-mono text-slate-950">M 20</td>
-                      <td className="p-2.5 font-mono">≥ 20.0</td>
+                      <td className="p-2.5 font-mono">≥ 20,0</td>
                       <td className="p-2.5">Mörtelgruppe IIIa (Zementmörtel, höhere Festigkeit)</td>
                       <td className="p-2.5">Hochleistungsklinkermauern, Ingenieurbauwerke, Fundamente</td>
                     </tr>
@@ -748,12 +749,12 @@ export default function PutzeMoertel() {
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Trockenrohdichte</span>
-                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{activePlaster.densityKgM3} kg/m³</span>
+                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{formatDeWert(activePlaster.densityKgM3)} kg/m³</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
                       <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Leitfähigkeit λ</span>
-                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{activePlaster.lambdaWmk.toFixed(3)} W/mK</span>
+                      <span className="text-xs font-mono font-black text-slate-800 block mt-1">{formatDeZahl(activePlaster.lambdaWmk, 3)} W/mK</span>
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
@@ -894,7 +895,7 @@ export default function PutzeMoertel() {
                     <div>
                       <label className="text-slate-500 block mb-1">Putzfläche (m²):</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         value={plasterArea === 0 ? '' : plasterArea}
                         onChange={(e) => setPlasterArea(Number(e.target.value))}
                         className="w-full p-2 bg-slate-50 rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-shiraz text-slate-800 font-bold"
@@ -912,7 +913,7 @@ export default function PutzeMoertel() {
                     <div>
                       <label className="text-slate-500 block mb-1">Schichtstärke d (mm):</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         value={plasterThickness === 0 ? '' : plasterThickness}
                         onChange={(e) => setPlasterThickness(Number(e.target.value))}
                         className="w-full p-2 bg-slate-50 rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-shiraz text-slate-800 font-bold"
@@ -934,12 +935,12 @@ export default function PutzeMoertel() {
                         onChange={(e) => setPlasterType(e.target.value)}
                         className="w-full p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-slate-800 font-bold focus:outline-none"
                       >
-                        <option value="gips">Gipsputz (~1.1 kg / mm / m²)</option>
-                        <option value="luftkalk">Luftkalkputz (~1.3 kg / mm / m²)</option>
-                        <option value="kalkzement">Kalk-Zement-Leichtputz (~1.25 kg / mm / m²)</option>
-                        <option value="zement">Zement-Sockelputz (~1.6 kg / mm / m²)</option>
-                        <option value="sanier">Sanierputz WTA (~1.2 kg / mm / m²)</option>
-                        <option value="aerogel">Aerogel-Dämmputz (~0.28 kg / mm / m²)</option>
+                        <option value="gips">Gipsputz (~1,1 kg / mm / m²)</option>
+                        <option value="luftkalk">Luftkalkputz (~1,3 kg / mm / m²)</option>
+                        <option value="kalkzement">Kalk-Zement-Leichtputz (~1,25 kg / mm / m²)</option>
+                        <option value="zement">Zement-Sockelputz (~1,6 kg / mm / m²)</option>
+                        <option value="sanier">Sanierputz WTA (~1,2 kg / mm / m²)</option>
+                        <option value="aerogel">Aerogel-Dämmputz (~0,28 kg / mm / m²)</option>
                       </select>
                     </div>
                   </div>
@@ -948,15 +949,15 @@ export default function PutzeMoertel() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 mt-6 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Trockenmischung:</span>
-                    <span className="text-sm font-mono font-black text-slate-900">{plasterResult.weight} kg</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(plasterResult.weight)} kg</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Anteil Säcke (25 kg):</span>
-                    <span className="text-sm font-mono font-black text-shiraz">{plasterResult.bags} Stk.</span>
+                    <span className="text-sm font-mono font-black text-shiraz">{formatDeWert(plasterResult.bags)} Stk.</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-200 pt-1.5">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Wasserbedarf ca.:</span>
-                    <span className="text-xs font-mono font-bold text-slate-700">{plasterResult.water} Liter</span>
+                    <span className="text-xs font-mono font-bold text-slate-700">{formatDeWert(plasterResult.water)} Liter</span>
                   </div>
                 </div>
               </div>
@@ -972,7 +973,7 @@ export default function PutzeMoertel() {
                     <div>
                       <label className="text-slate-500 block mb-1">Wandfläche (m²):</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         value={masonryArea === 0 ? '' : masonryArea}
                         onChange={(e) => setMasonryArea(Number(e.target.value))}
                         className="w-full p-2 bg-slate-50 rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-shiraz text-slate-800 font-bold"
@@ -1026,15 +1027,15 @@ export default function PutzeMoertel() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 mt-6 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Nass-Mörtelvolumen:</span>
-                    <span className="text-sm font-mono font-black text-slate-900">{normalfugeResult.liters} Liter</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(normalfugeResult.liters)} Liter</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Trockengewicht ca.:</span>
-                    <span className="text-sm font-mono font-black text-slate-900">{normalfugeResult.weight} kg</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(normalfugeResult.weight)} kg</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-200 pt-1.5 text-shiraz">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Säcke (25 kg):</span>
-                    <span className="text-sm font-mono font-black">{normalfugeResult.bags} Stk.</span>
+                    <span className="text-sm font-mono font-black">{formatDeWert(normalfugeResult.bags)} Stk.</span>
                   </div>
                 </div>
               </div>
@@ -1050,7 +1051,7 @@ export default function PutzeMoertel() {
                     <div>
                       <label className="text-slate-500 block mb-1">Wandfläche (m²):</label>
                       <input 
-                        type="number" 
+                        type="number" min="0" 
                         value={plansteinArea === 0 ? '' : plansteinArea}
                         onChange={(e) => setPlansteinArea(Number(e.target.value))}
                         className="w-full p-2 bg-slate-50 rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-shiraz text-slate-800 font-bold"
@@ -1094,15 +1095,15 @@ export default function PutzeMoertel() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 mt-6 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Gesamt-Trockenbedarf:</span>
-                    <span className="text-sm font-mono font-black text-slate-900">{plansteinResult.weight} kg</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(plansteinResult.weight)} kg</span>
                   </div>
                   <div className="flex justify-between items-center text-shiraz">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Anteile Säcke (25 kg):</span>
-                    <span className="text-sm font-mono font-black">{plansteinResult.bags} Stk.</span>
+                    <span className="text-sm font-mono font-black">{formatDeWert(plansteinResult.bags)} Stk.</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-200 pt-1.5">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Wasserbedarf ca.:</span>
-                    <span className="text-xs font-mono font-bold text-slate-700">{plansteinResult.water} Liter</span>
+                    <span className="text-xs font-mono font-bold text-slate-700">{formatDeWert(plansteinResult.water)} Liter</span>
                   </div>
                 </div>
               </div>
@@ -1210,7 +1211,7 @@ export default function PutzeMoertel() {
                       <BlockMath math="\sigma_k = \frac{R \cdot T}{V_m} \cdot \ln\left(\frac{C}{C_0}\right) \ge 100\,\text{MPa}" />
                     </div>
                     <p>
-                      Sanierputze lösen dieses Problem durch ein künstlich hergestelltes, massives Porenvolumen (≥ 40 Vol.-%) mit einem extrem hohen Anteil an schadfreien Makroporen (<InlineMath math="r \ge 0.1\,\mu\text{m}" />). Hier können die Salze frei wachsen und akkumulieren, ohne zerstörerische Drücke auf das Putzgefüge auszuüben.
+                      Sanierputze lösen dieses Problem durch ein künstlich hergestelltes, massives Porenvolumen (≥ 40 Vol.-%) mit einem extrem hohen Anteil an schadfreien Makroporen (<InlineMath math="r \ge 0{,}1\,\mu\text{m}" />). Hier können die Salze frei wachsen und akkumulieren, ohne zerstörerische Drücke auf das Putzgefüge auszuüben.
                     </p>
                   </div>
                   <div className="space-y-2">

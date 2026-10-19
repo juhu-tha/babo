@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
@@ -146,7 +147,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Zweigelenkrahmen-Stahlkonstruktion für Lagerzwecke. Aufgrund der geringen Belastungen und großen Bauteildicken (Korrosionsvorhalt) ist d. statische Optimierung zweitrangig.',
       location: 'Niedersachsen, Deutschland'
     },
-    carbonContent: '≤ 0.17 %',
+    carbonContent: '≤ 0,17 %',
     density: '7.850 kg/m³',
     ductility: 'Sehr hoch (Bruchdehnung A ≥ 26 %)',
     weldability: 'Hervorragend, ohne Sondermaßnahmen'
@@ -179,7 +180,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Weitgespannte, geschweißte Hohlkastenträger für d. logistischen Güterverkehr. S355 deckt hier die zyklischen Beanspruchungen im Dauerschwingbereich perfekt ab.',
       location: 'Schnega, Deutschland'
     },
-    carbonContent: '≤ 0.20 %',
+    carbonContent: '≤ 0,20 %',
     density: '7.850 kg/m³',
     ductility: 'Ausgezeichnet (Bruchdehnung A ≥ 22 %)',
     weldability: 'Gut (bei dicken Blechen wird mäßiges Vorwärmen empfohlen)'
@@ -212,7 +213,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Hochbelastete Verbundstützen im Kern des Wahrzeichens. Durch S460 wird der Stützenquerschnitt halbiert, was die vermietbare Bürofläche im Erdgeschoss massiv erhöht.',
       location: 'Frankfurt am Main, Deutschland'
     },
-    carbonContent: '≤ 0.16 %',
+    carbonContent: '≤ 0,16 %',
     density: '7.850 kg/m³',
     ductility: 'Gut (Bruchdehnung A ≥ 17 %)',
     weldability: 'Gut; verlangt qualifizierte Schweißverfahren und kontrollierte Abkühlung (t_8/5-Zeit)'
@@ -245,7 +246,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Modernste Bogenbrücke. Die am stärksten belasteten Obergurte wurden komplett aus S690QL anstelle von S355 gebaut, wodurch 120 Tonnen Eigengewicht eingespart wurden.',
       location: 'Zwolle, Niederlande'
     },
-    carbonContent: '≤ 0.20 % (Zusatz von Cr, Mo, B)',
+    carbonContent: '≤ 0,20 % (Zusatz von Cr, Mo, B)',
     density: '7.850 kg/m³',
     ductility: 'Mäßig bis Gut (Bruchdehnung A ≥ 14 %)',
     weldability: 'Anspruchsvoll; strikte Einhaltung von Vorwärmtemperaturen zur Vermeidung von Kaltrissen zwingend erforderlich'
@@ -278,7 +279,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Zentrale Verwaltungsbauten. Die prägnanten, im Tageslicht changierenden rotbraunen Sonnenschutzlamellen bestehen durchgehend aus Cortenstahl-Lamellenblech, das völlig ohne Lackierung auskommt.',
       location: 'Essen, Deutschland'
     },
-    carbonContent: '≤ 0.16 %',
+    carbonContent: '≤ 0,16 %',
     density: '7.850 kg/m³',
     ductility: 'Ausgezeichnet (Bruchdehnung A ≥ 22 %)',
     weldability: 'Gut; Schweißzusatzstoffe müssen ebenfalls witterungsbeständig sein (z.B. kupferlegiert)'
@@ -311,7 +312,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Sanierung d. Deckentragwerks mit Zugankerbolzen. Nach dem katastrophalen Einsturz des Hallenbads Uster (Soll-Bruchstelle durch Spannungsrisskorrosion bei Standard-Edelstählen) ist hier der hochlegierte Werkstoff 1.4404 Standardanforderung.',
       location: 'München, Deutschland'
     },
-    carbonContent: '≤ 0.03 % (Extrem aschearm)',
+    carbonContent: '≤ 0,03 % (Extrem aschearm)',
     density: '7.980 kg/m³',
     ductility: 'Herausragend (Bruchdehnung A ≥ 40 %)',
     weldability: 'Sehr gut schweißbar; benötigt jedoch präzises Formieren (Schutzgasflutung)'
@@ -334,7 +335,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Tunnelinnenschalen und Schutzbauwerke'
     ],
     advantages: [
-      'Garantierte Hochduktilität: Dehnung bei Höchstlast ε_uk ≥ 5.0 % sichert rechnerische Fließgelenke',
+      'Garantierte Hochduktilität: Dehnung bei Höchstlast ε_uk ≥ 5,0 % sichert rechnerische Fließgelenke',
       'Hervorragender Verbundbeiwert durch 2- oder 4-reihige Rippenstruktur',
       'Ausgezeichnete Kaltbiegbarkeit um genormte Biegerollendurchmesser',
       'Problemlose Eignung für Schweißstöße (Abbrennstumpf-, Gaspress- und Schutzgasschweißen nach DIN EN ISO 17660)'
@@ -344,9 +345,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Massive Großbohrpfähle und hochbewehrte Pfeilerkerne. B500B nimmt hier extreme zentrische Druckkräfte und seismische/dynamische Windlasten über elastoplastische Verbundwirkung auf.',
       location: 'Hamburg, Deutschland'
     },
-    carbonContent: '≤ 0.22 % (CEV ≤ 0.50 %)',
+    carbonContent: '≤ 0,22 % (CEV ≤ 0,50 %)',
     density: '7.850 kg/m³',
-    ductility: 'Hochduktil (Klasse B: Agt ≥ 5.0 %, A ≥ 12 %)',
+    ductility: 'Hochduktil (Klasse B: Agt ≥ 5,0 %, A ≥ 12 %)',
     weldability: 'Sehr gut schweißbar nach DIN EN ISO 17660'
   },
   {
@@ -367,7 +368,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Fertigteilwerke für Wand- und Deckenelemente'
     ],
     advantages: [
-      'Enorme Verlegegeschwindigkeit auf der Baustelle durch großformatige Matten (bis 6.0 x 2.3 m)',
+      'Enorme Verlegegeschwindigkeit auf der Baustelle durch großformatige Matten (bis 6.0 x 2,3 m)',
       'Hohe Maßgenauigkeit der Maschenweiten und Stababstände',
       'Geringerer Verlegeaufwand und minimierte Personalkosten gegenüber Einzelstabbewehrung',
       'Wirtschaftliche Mindestbewehrung zur Rissbreitenbegrenzung'
@@ -377,9 +378,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Fugenlose 40.000 m² Industriebodenplatte mit 2 Lagen Q335A-Mattenbewehrung zur Rissbreitenbeschränkung unter Gabelstapler- und Regalpunktlasten.',
       location: 'Duisburg, Deutschland'
     },
-    carbonContent: '≤ 0.22 % (Kaltverfestigt)',
+    carbonContent: '≤ 0,22 % (Kaltverfestigt)',
     density: '7.850 kg/m³',
-    ductility: 'Normalduktil (Klasse A: Agt ≥ 2.5 %)',
+    ductility: 'Normalduktil (Klasse A: Agt ≥ 2,5 %)',
     weldability: 'Werkseitig punktgeschweißt; Baustellenschweißen nach DIN EN ISO 17660 zulässig'
   },
   {
@@ -392,7 +393,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     norm: 'DIN EN 1992-1-1 Anh. C',
     fy: 500,
     fu: 600,
-    description: 'Spezieller mikrolegierter oder thermomechanisch behandelter Bewehrungsstahl mit höchster plastischer Dehnfähigkeit für Erdbebengebiete und dynamische Beanspruchungen. Erfüllt die strengste europäische Duktilitätsklasse C mit einem Zug-Streckgrenzenverhältnis 1.15 ≤ ft/fy ≤ 1.35 und einer Dehnung bei Höchstlast ε_uk ≥ 7.5 %.',
+    description: 'Spezieller mikrolegierter oder thermomechanisch behandelter Bewehrungsstahl mit höchster plastischer Dehnfähigkeit für Erdbebengebiete und dynamische Beanspruchungen. Erfüllt die strengste europäische Duktilitätsklasse C mit einem Zug-Streckgrenzenverhältnis 1.15 ≤ ft/fy ≤ 1.35 und einer Dehnung bei Höchstlast ε_uk ≥ 7,5 %.',
     applications: [
       'Erdbebensichere Rahmenknoten, Stützen- und Riegelanschlüsse in seismischen Zonen',
       'Schutzbauwerke, Bunker und kerntechnische Anlagen mit Explosionslastannahmen',
@@ -410,9 +411,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Schrägseilbrücke im seismisch hochaktiven Golf von Korinth. Sämtliche Pfeilerfüße und Pylon-Kerne wurden mit B500C armiert, um Erdbeben bis Magnitude 7.4 schadlos zu überstehen.',
       location: 'Patras, Griechenland'
     },
-    carbonContent: '≤ 0.22 % (CEV ≤ 0.50 %)',
+    carbonContent: '≤ 0,22 % (CEV ≤ 0,50 %)',
     density: '7.850 kg/m³',
-    ductility: 'Extrem hoch (Klasse C: Agt ≥ 7.5 %, ft/fy ≥ 1.15)',
+    ductility: 'Extrem hoch (Klasse C: Agt ≥ 7,5 %, ft/fy ≥ 1.15)',
     weldability: 'Sehr gut schweißbar nach DIN EN ISO 17660'
   },
   {
@@ -425,7 +426,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     norm: 'DIN EN 10138-3',
     fy: 1660, // Rp0.2 (fp0.1k = 1600 MPa)
     fu: 1860, // fpk
-    description: 'Patentierter, mehrfach kaltgezogener Eutektoid-Kohlenstoffstahl (ca. 0.82 % C), verseilt zu einer 7-drähtigen Litze mit thermomechanischer Reck- und Stabilisierungsglühung. Bietet die höchste Festigkeit aller Bauwerkstoffe bei extrem niedriger Spannungsrelaxation.',
+    description: 'Patentierter, mehrfach kaltgezogener Eutektoid-Kohlenstoffstahl (ca. 0,82 % C), verseilt zu einer 7-drähtigen Litze mit thermomechanischer Reck- und Stabilisierungsglühung. Bietet die höchste Festigkeit aller Bauwerkstoffe bei extrem niedriger Spannungsrelaxation.',
     applications: [
       'Interne und externe Längsvorspannung von Großbrücken (Freivorbau, Taktschiebeverfahren)',
       'Vorgespannte Fertigteil-Dachbinder und TT-Deckenplatten mit großen Spannweiten (> 30 m)',
@@ -435,7 +436,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     advantages: [
       'Nahezu 5-fache statische Zugtragfähigkeit gegenüber Normalbaustahl S355',
       'Verhindert Betonrissbildung und eliminiert Durchbiegungen durch gezielten inneren Druckspannungszustand',
-      'Extrem niedrige Relaxation: Spannkraftverlust unter Dauerlast < 2.5 % nach 1000 h bei 20 °C',
+      'Extrem niedrige Relaxation: Spannkraftverlust unter Dauerlast < 2,5 % nach 1000 h bei 20 °C',
       'Kompakter Hüllrohr-Querschnitt bei Bündelspanngliedern (z.B. 19- oder 31-Litzen-Anker)'
     ],
     exampleObject: {
@@ -443,9 +444,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Großbrückenbauwerk mit 128 m Hauptspannweite. Die Hohlkastenüberbauten wurden mit internen Y1860-Litzenspanngliedern vorgespannt, um zyklische Rissbildung und Durchbiegung dauerhaft zu verhindern.',
       location: 'Stralsund, Deutschland'
     },
-    carbonContent: '0.80 - 0.85 % (Feinstlamellarer Perlit)',
+    carbonContent: '0,80 - 0,85 % (Feinstlamellarer Perlit)',
     density: '7.850 kg/m³',
-    ductility: 'Begrenzt elastoplastisch (Agt ≥ 3.5 %)',
+    ductility: 'Begrenzt elastoplastisch (Agt ≥ 3,5 %)',
     weldability: 'Streng verboten! Jeder Lichtbogenkontakt oder Schweißwärmeeintrag zerstört das Kaltziehgefüge (Versprödung/Bruchgefahr)'
   },
   {
@@ -476,9 +477,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       description: 'Tiefe Baugrubenwand im innerstädtischen Bereich. SAS 670 Stäbe verankern die Bohrpfahlwand rückwärtig im Grundwasserhorizont gegen Einsturz.',
       location: 'Düsseldorf, Deutschland'
     },
-    carbonContent: '0.40 - 0.55 %',
+    carbonContent: '0,40 - 0,55 %',
     density: '7.850 kg/m³',
-    ductility: 'Gut (Agt ≥ 5.0 %, A ≥ 10 %)',
+    ductility: 'Gut (Agt ≥ 5,0 %, A ≥ 10 %)',
     weldability: 'Bedingt schweißbar (Sonderverfahren erforderlich); Koppelung erfolgt rein mechanisch über Gewindemuffen'
   }
 ];
@@ -529,7 +530,7 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 15.0,
     frac_stress: 260,
     yieldType: 'ausgeprägt',
-    description: 'Sehr breites Lüders-Fließplateau (bis 2.2 %), extrem gutmütig, hohe plastische Verformungsreserven.',
+    description: 'Sehr breites Lüders-Fließplateau (bis 2,2 %), extrem gutmütig, hohe plastische Verformungsreserven.',
     mechanism: 'Cottrell-Atmosphären blockieren Versetzungen bis ReH; danach freies Fließen bei ReL.'
   },
   {
@@ -629,7 +630,7 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 5.0,
     frac_stress: 480,
     yieldType: 'ausgeprägt',
-    description: 'Norm-Bewehrungsstahl (Duktilitätsklasse B) mit ft/fy ≥ 1.08 und Dehnung bei Höchstlast eps_uk ≥ 5.0 %.',
+    description: 'Norm-Bewehrungsstahl (Duktilitätsklasse B) mit ft/fy ≥ 1.08 und Dehnung bei Höchstlast eps_uk ≥ 5,0 %.',
     mechanism: 'Thermex-Verfahren: Randschichtvergütung aus der Walzhitze mit duktilem Ferrit-Perlit-Kern.'
   },
   {
@@ -669,7 +670,7 @@ export const steelCurveDefinitions: SteelCurveDefinition[] = [
     fu_strain: 2.5,
     frac_stress: 470,
     yieldType: 'stetig',
-    description: 'Kaltgezogener Betonstahl für Lagermatten. Geringeres Verfestigungsverhältnis ft/fy ≥ 1.05 und reduzierte Gleichmaßdehnung Agt ≥ 2.5 %.',
+    description: 'Kaltgezogener Betonstahl für Lagermatten. Geringeres Verfestigungsverhältnis ft/fy ≥ 1.05 und reduzierte Gleichmaßdehnung Agt ≥ 2,5 %.',
     mechanism: 'Kaltverformung durch Ziehen und Recken erzeugt hohe Versetzungsdichte ohne Fließplateau.'
   },
   {
@@ -775,14 +776,14 @@ export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: numbe
     if (eps <= eps_el) {
       return { 
         phase: '1. Elastischer Bereich', 
-        text: `Reversibel nach Hooke (E = ${steel.E.toLocaleString()} MPa)`, 
+        text: `Reversibel nach Hooke (E = ${formatDeWert(steel.E)} MPa)`, 
         color: 'text-blue-700 bg-blue-100' 
       };
     }
     if (eps <= steel.sh_strain) {
       return { 
         phase: '2. Fließplateau (Lüdersbänder)', 
-        text: `Spannung verharrt konstant bei fy = ${steel.fy} MPa`, 
+        text: `Spannung verharrt konstant bei fy = ${formatDeWert(steel.fy)} MPa`, 
         color: 'text-amber-700 bg-amber-100' 
       };
     }
@@ -794,14 +795,14 @@ export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: numbe
     if (eps <= eps_prop) {
       return { 
         phase: '1. Elastischer Bereich', 
-        text: `Reversibel nach Hooke bis Proportionalitätsgrenze (~${s_prop.toFixed(0)} MPa)`, 
+        text: `Reversibel nach Hooke bis Proportionalitätsgrenze (~${formatDeZahl(s_prop, 0)} MPa)`, 
         color: 'text-blue-700 bg-blue-100' 
       };
     }
     if (eps <= eps_p02) {
       return { 
         phase: '2. Fließübergang (Dehngrenze)', 
-        text: `Elastisch-plastischer Übergang bis Rp0,2 = ${steel.fy} MPa`, 
+        text: `Elastisch-plastischer Übergang bis Rp0,2 = ${formatDeWert(steel.fy)} MPa`, 
         color: 'text-purple-700 bg-purple-100' 
       };
     }
@@ -810,14 +811,14 @@ export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: numbe
   if (eps <= steel.fu_strain) {
     return { 
       phase: '3. Kaltverfestigung (Plastisch)', 
-      text: `Plastische Reserve durch Versetzungsaufstau bis fu = ${steel.fu} MPa`, 
+      text: `Plastische Reserve durch Versetzungsaufstau bis fu = ${formatDeWert(steel.fu)} MPa`, 
       color: 'text-emerald-700 bg-emerald-100' 
     };
   }
 
   return { 
     phase: '4. Einschnürung (Lokale Verengung)', 
-    text: `Lokale Querschnittsreduktion bis zur Bruchdehnung A = ${steel.A} %`, 
+    text: `Lokale Querschnittsreduktion bis zur Bruchdehnung A = ${formatDeWert(steel.A)} %`, 
     color: 'text-rose-700 bg-rose-100' 
   };
 };
@@ -1110,7 +1111,7 @@ export default function Stahl() {
           pointRadius: 0,
         },
         {
-          label: `Spannung bei ${temp}°C`,
+          label: `Spannung bei ${formatDeWert(temp)}°C`,
           data: sigT,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(255, 3, 80, 0.1)',
@@ -1157,7 +1158,7 @@ export default function Stahl() {
       labels: N_values,
       datasets: [
         {
-          label: `Wöhlerlinie (Kerbfall Δσ_C = ${detailCategory})`,
+          label: `Wöhlerlinie (Kerbfall Δσ_C = ${formatDeWert(detailCategory)})`,
           data: delta_sigma,
           borderColor: '#A3113E',
           borderWidth: 3,
@@ -1214,7 +1215,7 @@ export default function Stahl() {
     const datasets: any[] = activeDefs.map(def => {
       const pts = generateSteelCurveDataPoints(def);
       return {
-        label: `${def.name} (fy = ${def.fy} MPa)`,
+        label: `${def.name} (fy = ${formatDeWert(def.fy)} MPa)`,
         data: pts,
         borderColor: def.color,
         backgroundColor: `${def.color}15`,
@@ -1229,7 +1230,7 @@ export default function Stahl() {
     if (testStrain > 0) {
       const markerTop = Math.max(400, Math.ceil((maxActiveStress * 1.15) / 50) * 50);
       datasets.push({
-        label: `Prüfdehnung ε = ${testStrain.toFixed(1)} %`,
+        label: `Prüfdehnung ε = ${formatDeZahl(testStrain, 1)} %`,
         data: [
           { x: testStrain, y: 0 },
           { x: testStrain, y: markerTop }
@@ -1245,7 +1246,7 @@ export default function Stahl() {
       // Schnittpunkt-Marker für die gewählte Bezugs-Stahlsorte
       if (simStress > 0) {
         datasets.push({
-          label: `${activeSimSteel.name} @ ε = ${testStrain.toFixed(1)}% (${simStress.toFixed(0)} MPa)`,
+          label: `${activeSimSteel.name} @ ε = ${formatDeZahl(testStrain, 1)}% (${formatDeZahl(simStress, 0)} MPa)`,
           data: [{ x: testStrain, y: simStress }],
           borderColor: activeSimSteel.color,
           backgroundColor: '#ffffff',
@@ -1353,11 +1354,11 @@ export default function Stahl() {
             title: (items: any) => {
               if (!items.length) return '';
               const xVal = items[0].parsed.x;
-              return `Dehnung ε = ${xVal.toFixed(2)} % (${(xVal * 10).toFixed(1)} ‰)`;
+              return `Dehnung ε = ${formatDeZahl(xVal, 2)} % (${formatDeZahl((xVal * 10), 1)} ‰)`;
             },
             label: (context: any) => {
               const yVal = context.parsed.y;
-              return `${context.dataset.label}: ${yVal.toFixed(1)} MPa`;
+              return `${context.dataset.label}: ${formatDeZahl(yVal, 1)} MPa`;
             }
           }
         }
@@ -1473,7 +1474,7 @@ export default function Stahl() {
               </p>
             ) : (
               <p>
-                Edelstahl und Rostfreie Stähle verdanken ihre hervorragenden Korrosionseigenschaften bestimmten Legierungszusätzen wie Chrom (Cr) und Molybdän (Mo). Ein Chromgehalt von mind. 10.5 % ist Voraussetzung für die Bildung der passivierenden Schutzschicht.
+                Edelstahl und Rostfreie Stähle verdanken ihre hervorragenden Korrosionseigenschaften bestimmten Legierungszusätzen wie Chrom (Cr) und Molybdän (Mo). Ein Chromgehalt von mind. 10,5 % ist Voraussetzung für die Bildung der passivierenden Schutzschicht.
               </p>
             )}
           </div>
@@ -1493,19 +1494,19 @@ export default function Stahl() {
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Dichte <FormulaText text="\rho" />:</span>
-                    <span className="font-bold">{steelProperties.rho} kg/m³</span>
+                    <span className="font-bold">{formatDeWert(steelProperties.rho)} kg/m³</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Wärmeleitf. <FormulaText text="\lambda" />:</span>
-                    <span className="font-bold">{steelProperties.lambda} W/(mK)</span>
+                    <span className="font-bold">{formatDeWert(steelProperties.lambda)} W/(mK)</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Wärmedehnung <FormulaText text="\alpha" />:</span>
-                    <span className="font-bold">1.2·10⁻⁵ 1/K</span>
+                    <span className="font-bold">1,2·10⁻⁵ 1/K</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-main/60">E-Modul <FormulaText text="E" />:</span>
-                    <span className="font-bold">{steelProperties.E} MPa</span>
+                    <span className="font-bold">{formatDeWert(steelProperties.E)} MPa</span>
                   </div>
                 </div>
               </div>
@@ -1540,11 +1541,11 @@ export default function Stahl() {
                 <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
                   <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
                     <div className="text-home-grau mb-1"><FormulaText text="Abminderung k_{y,θ}" /></div>
-                    <div className="font-bold text-shiraz">{ky.toFixed(2)}</div>
+                    <div className="font-bold text-shiraz">{formatDeZahl(ky, 2)}</div>
                   </div>
                   <div className="bg-off-white p-3 rounded-xl border border-home-grau/30">
                     <div className="text-home-grau mb-1"><FormulaText text="Abminderung k_{E,θ}" /></div>
-                    <div className="font-bold text-shiraz">{kE.toFixed(2)}</div>
+                    <div className="font-bold text-shiraz">{formatDeZahl(kE, 2)}</div>
                   </div>
                 </div>
               </div>
@@ -1559,7 +1560,7 @@ export default function Stahl() {
                       value={detailCategory}
                       onChange={(e) => setDetailCategory(Number(e.target.value))}
                     >
-                      {[36, 45, 56, 71, 80, 90, 100, 112, 125, 140, 160].map(k => <option key={k} value={k}>{k} MPa</option>)}
+                      {[36, 45, 56, 71, 80, 90, 100, 112, 125, 140, 160].map(k => <option key={k} value={k}>{formatDeWert(k)} MPa</option>)}
                     </select>
                   </div>
                   
@@ -1630,8 +1631,8 @@ export default function Stahl() {
               
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="font-semibold text-text-main flex items-center gap-1">Chrom (Cr) <InfoTooltip text="Erhöht Korrosionsschutz. Bildet ab 10.5% eine Passivschicht." /></span>
-                  <span className="font-mono text-shiraz font-bold">{alloyCr.toFixed(1)}%</span>
+                  <span className="font-semibold text-text-main flex items-center gap-1">Chrom (Cr) <InfoTooltip text="Erhöht Korrosionsschutz. Bildet ab 10,5% eine Passivschicht." /></span>
+                  <span className="font-mono text-shiraz font-bold">{formatDeZahl(alloyCr, 1)}%</span>
                 </div>
                 <input
                   type="range"
@@ -1647,7 +1648,7 @@ export default function Stahl() {
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
                   <span className="font-semibold text-text-main flex items-center gap-1">Nickel (Ni) <InfoTooltip text="Stabilisiert Gefüge (Austenitbildner). Erhöht Zähigkeit und Verformbarkeit." /></span>
-                  <span className="font-mono text-shiraz font-bold">{alloyNi.toFixed(1)}%</span>
+                  <span className="font-mono text-shiraz font-bold">{formatDeZahl(alloyNi, 1)}%</span>
                 </div>
                 <input
                   type="range"
@@ -1663,7 +1664,7 @@ export default function Stahl() {
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
                   <span className="font-semibold text-text-main flex items-center gap-1">Molybdän (Mo) <InfoTooltip text="Verhindert Lochfraßkorrosion (Pitting) in chloridreichen Umgebungen." /></span>
-                  <span className="font-mono text-shiraz font-bold">{alloyMo.toFixed(1)}%</span>
+                  <span className="font-mono text-shiraz font-bold">{formatDeZahl(alloyMo, 1)}%</span>
                 </div>
                 <input
                   type="range"
@@ -1679,7 +1680,7 @@ export default function Stahl() {
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
                   <span className="font-semibold text-text-main flex items-center gap-1">Kohlenstoff (C) <InfoTooltip text="Bestimmt Härte und Fließgrenze. Hoher Gehalt mindert Schweißbarkeit." /></span>
-                  <span className="font-mono text-shiraz font-bold">{alloyC.toFixed(2)}%</span>
+                  <span className="font-mono text-shiraz font-bold">{formatDeZahl(alloyC, 2)}%</span>
                 </div>
                 <input
                   type="range"
@@ -1815,12 +1816,12 @@ export default function Stahl() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                   <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Druckeigenspannung (Flanschrand)</div>
-                  <div className="text-2xl font-bold text-blue-600">{walzResults.maxCompressive.toFixed(0)} MPa</div>
+                  <div className="text-2xl font-bold text-blue-600">{formatDeZahl(walzResults.maxCompressive, 0)} MPa</div>
                   <div className="text-xs text-text-main/60 mt-1">Führt zu vorzeitigem Fließen bei Druckbeanspruchung (Knicken!)</div>
                 </div>
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                   <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Zugeigenspannung (Flanschmitte)</div>
-                  <div className="text-2xl font-bold text-red-600">+{walzResults.maxTensile.toFixed(0)} MPa</div>
+                  <div className="text-2xl font-bold text-red-600">+{formatDeZahl(walzResults.maxTensile, 0)} MPa</div>
                   <div className="text-xs text-text-main/60 mt-1">Ausgleichsspannung im Querschnitt</div>
                 </div>
               </div>
@@ -1843,7 +1844,7 @@ export default function Stahl() {
                         tooltip: {
                           callbacks: {
                             label: function(context) {
-                              return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} MPa`;
+                              return `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} MPa`;
                             }
                           }
                         }
@@ -1860,12 +1861,12 @@ export default function Stahl() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                   <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Max. Zugeigenspannung (Schweißnaht)</div>
-                  <div className="text-2xl font-bold text-red-600">+{fy} MPa</div>
+                  <div className="text-2xl font-bold text-red-600">+{formatDeWert(fy)} MPa</div>
                   <div className="text-xs text-text-main/60 mt-1">Erreicht typischerweise die Fließgrenze</div>
                 </div>
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                   <div className="text-xs text-home-grau uppercase tracking-wider mb-1">Breite der Zugzone (b_t)</div>
-                  <div className="text-2xl font-bold text-orange-600">{weldResults.b_t.toFixed(1)} mm</div>
+                  <div className="text-2xl font-bold text-orange-600">{formatDeZahl(weldResults.b_t, 1)} mm</div>
                   <div className="text-xs text-text-main/60 mt-1">Abhängig von Streckenenergie und Blechdicke</div>
                 </div>
               </div>
@@ -1888,7 +1889,7 @@ export default function Stahl() {
                         tooltip: {
                           callbacks: {
                             label: function(context) {
-                              return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} MPa`;
+                              return `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} MPa`;
                             }
                           }
                         }
@@ -1914,7 +1915,7 @@ export default function Stahl() {
                 let designationMatch = 'Unlegierter Baustahl (z.B. S235, S355)';
                 let corrosionRating = 'Sehr Gering';
                 let corrosionColor = 'text-red-600 bg-red-50';
-                let microstructureDesc = 'Ferritisch-perlitische Zusammensetzung. Keine schützende Passivschicht, da der Chromgehalt unter 10.5 % liegt. Rostet unter atmosphärischen Bedingungen.';
+                let microstructureDesc = 'Ferritisch-perlitische Zusammensetzung. Keine schützende Passivschicht, da der Chromgehalt unter 10,5 % liegt. Rostet unter atmosphärischen Bedingungen.';
 
                 if (alloyCr >= 10.5) {
                   if (alloyNi >= 8) {
@@ -1962,7 +1963,7 @@ export default function Stahl() {
                       <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 space-y-2 flex flex-col justify-between">
                         <div>
                           <span className="text-[10px] text-text-main/50 font-bold uppercase tracking-wider block font-semibold">PREN-Index (Lochfraßbeständigkeit)</span>
-                          <div className="text-2xl font-mono font-black text-shiraz mt-1">{pren.toFixed(2)}</div>
+                          <div className="text-2xl font-mono font-black text-shiraz mt-1">{formatDeZahl(pren, 2)}</div>
                         </div>
                         <div className={`p-2 rounded text-xs text-center font-bold ${corrosionColor}`}>
                           Korrosionswiderstand: {corrosionRating}
@@ -2069,10 +2070,10 @@ export default function Stahl() {
 
               <div className="p-3 bg-amber-50/70 border border-amber-200/60 rounded-xl space-y-1">
                 <span className="font-bold text-amber-900 block flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-amber-600"></span> 2. Fließbeginn (<InlineMath math="f_y" /> bzw. <InlineMath math="R_{p0,2}" />)
+                  <span className="w-2 h-2 rounded-full bg-amber-600"></span> 2. Fließbeginn (<InlineMath math="f_y" /> bzw. <InlineMath math="R_{p0{,}2}" />)
                 </span>
                 <p className="text-amber-950/80 leading-relaxed">
-                  Übergang zu irreversiblen Versetzungsbewegungen. Baustähle zeigen ein horizontales Lüders-Plateau; hochfeste Stähle fließen stetig (Ersatzstreckgrenze <InlineMath math="R_{p0,2}" />).
+                  Übergang zu irreversiblen Versetzungsbewegungen. Baustähle zeigen ein horizontales Lüders-Plateau; hochfeste Stähle fließen stetig (Ersatzstreckgrenze <InlineMath math="R_{p0{,}2}" />).
                 </p>
               </div>
 
@@ -2109,7 +2110,7 @@ export default function Stahl() {
                   {strainZoom === 'auto' && (
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200">
                       <Check size={12} className="text-emerald-600" />
-                      Auto-Fit: ε ≤ {stressStrainChartOptions.scales.x.max} % | σ ≤ {stressStrainChartOptions.scales.y.max} MPa
+                      Auto-Fit: ε ≤ {formatDeWert(stressStrainChartOptions.scales.x.max)} % | σ ≤ {formatDeWert(stressStrainChartOptions.scales.y.max)} MPa
                     </span>
                   )}
                 </div>
@@ -2218,7 +2219,7 @@ export default function Stahl() {
                         <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: def.color }} />
                         <div className="overflow-hidden">
                           <div className="font-bold text-xs text-text-main truncate">{def.name}</div>
-                          <div className="text-[10px] text-slate-500 font-mono">fy={def.fy} | fu={def.fu}</div>
+                          <div className="text-[10px] text-slate-500 font-mono">fy={formatDeWert(def.fy)} | fu={formatDeWert(def.fu)}</div>
                         </div>
                       </div>
                       <span className={`text-[11px] font-bold ${isChecked ? 'text-emerald-600' : 'text-slate-400'}`}>
@@ -2263,7 +2264,7 @@ export default function Stahl() {
                   <div className="flex justify-between items-center text-xs">
                     <span className="font-bold text-text-main">Aktuelle Dehnungsbeaufschlagung <InlineMath math="\varepsilon" />:</span>
                     <span className="font-mono text-base font-black text-shiraz bg-white px-2.5 py-0.5 rounded border border-home-grau/20 shadow-xs">
-                      {testStrain.toFixed(2)} % ({(testStrain * 10).toFixed(1)} ‰)
+                      {formatDeZahl(testStrain, 2)} % ({formatDeZahl((testStrain * 10), 1)} ‰)
                     </span>
                   </div>
                   <Slider
@@ -2284,7 +2285,7 @@ export default function Stahl() {
                   <div className="bg-white p-3 rounded-xl border border-home-grau/20 flex flex-col">
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Spannung <InlineMath math="\sigma" /></span>
                     <span className="text-lg font-black text-shiraz font-mono mt-0.5">
-                      {simStress > 0 ? `${simStress.toFixed(1)} MPa` : '0 MPa'}
+                      {simStress > 0 ? `${formatDeZahl(simStress, 1)} MPa` : '0 MPa'}
                     </span>
                     <span className="text-[9px] text-slate-400 mt-0.5">N/mm² Zugspannung</span>
                   </div>
@@ -2322,7 +2323,7 @@ export default function Stahl() {
                   <Activity size={18} />
                 </div>
                 <h4 className="font-bold text-sm text-text-main">
-                  1. Ausgeprägte Streckgrenze vs. Dehngrenze <InlineMath math="R_{p0,2}" />
+                  1. Ausgeprägte Streckgrenze vs. Dehngrenze <InlineMath math="R_{p0{,}2}" />
                 </h4>
               </div>
               <div className="text-xs text-text-main/80 space-y-2 leading-relaxed">
@@ -2332,7 +2333,7 @@ export default function Stahl() {
                 </p>
                 <p>
                   <strong>Warum fließen hochfeste Stähle &amp; Spannstähle stetig?</strong><br />
-                  Durch intensive Kaltverformung (Ziehen von Spannlitzen Y1860) oder thermomechanisches Vergüten (S690/S960) ist das Gitter bereits mit Abermillionen von Versetzungen durchsetzt. Es gibt kein Cottrell-Losreißen mehr. Da der Fließbeginn kontinuierlich erfolgt, wird normativ die <strong>0,2 %-Dehngrenze <InlineMath math="R_{p0,2}" /></strong> (Spannung bei 0,2 % bleibender plastischer Restdehnung) als Streckgrenze definiert.
+                  Durch intensive Kaltverformung (Ziehen von Spannlitzen Y1860) oder thermomechanisches Vergüten (S690/S960) ist das Gitter bereits mit Abermillionen von Versetzungen durchsetzt. Es gibt kein Cottrell-Losreißen mehr. Da der Fließbeginn kontinuierlich erfolgt, wird normativ die <strong>0,2 %-Dehngrenze <InlineMath math="R_{p0{,}2}" /></strong> (Spannung bei 0,2 % bleibender plastischer Restdehnung) als Streckgrenze definiert.
                 </p>
               </div>
             </div>
@@ -2363,7 +2364,7 @@ export default function Stahl() {
                   </div>
                   <div className="flex justify-between">
                     <span>Y1860 S7 (Spannlitze):</span>
-                    <span className="font-bold text-shiraz">fpk = 1860 MPa | Agt ≥ 3.5 %</span>
+                    <span className="font-bold text-shiraz">fpk = 1860 MPa | Agt ≥ 3,5 %</span>
                   </div>
                 </div>
                 <p>
@@ -2420,7 +2421,7 @@ export default function Stahl() {
                   </div>
                   <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
                     <strong className="text-sky-800 block mb-0.5">Spannstahl (Y1860 S7 / SAS 670):</strong>
-                    Wird vorweg aktiv auf ca. 70–80 % seiner Zugfestigkeit (<InlineMath math="\approx 1400\text{ MPa}" />) gedehnt, um den Beton künstlich zu überdrücken. Verhindert Risse komplett (Zustand I). Verlangt minimale Relaxation (<InlineMath math="\le 2.5\%" />) und darf wegen Sprödbruchgefahr <strong>unter keinen Umständen geschweißt</strong> werden!
+                    Wird vorweg aktiv auf ca. 70–80 % seiner Zugfestigkeit (<InlineMath math="\approx 1400\text{ MPa}" />) gedehnt, um den Beton künstlich zu überdrücken. Verhindert Risse komplett (Zustand I). Verlangt minimale Relaxation (<InlineMath math="\le 2{,}5\%" />) und darf wegen Sprödbruchgefahr <strong>unter keinen Umständen geschweißt</strong> werden!
                   </div>
                 </div>
               </div>
@@ -2598,10 +2599,10 @@ export default function Stahl() {
                       Glatter Rundstahl besitzt fast nur Haft- und Reibungsverbund. Betonstähle nach DIN 488 besitzen daher <strong>Schrägrippen</strong> (2- oder 4-reihig), sodass der Zementstein formschlüssig in die Rippenzwischenräume greift.
                     </p>
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 font-mono text-[11px] text-center">
-                      <InlineMath math="f_{bd} = 2,25 \cdot \eta_1 \cdot \eta_2 \cdot f_{ctd}" />
+                      <InlineMath math="f_{bd} = 2{,}25 \cdot \eta_1 \cdot \eta_2 \cdot f_{ctd}" />
                     </div>
                     <p className="text-[11px] text-slate-500">
-                      <InlineMath math="\eta_1 = 1,0" /> für gute Verbundbedingungen (untere Bauteilhälfte); <InlineMath math="\eta_1 = 0,7" /> für mäßigen Verbund (oberste 25 cm wegen Wasseraufstieg/Bleeding).
+                      <InlineMath math="\eta_1 = 1{,}0" /> für gute Verbundbedingungen (untere Bauteilhälfte); <InlineMath math="\eta_1 = 0{,}7" /> für mäßigen Verbund (oberste 25 cm wegen Wasseraufstieg/Bleeding).
                     </p>
                   </div>
 
@@ -2610,7 +2611,7 @@ export default function Stahl() {
                       Das Thermex-Verfahren (Tempcore)
                     </strong>
                     <p className="text-text-main/80 leading-relaxed">
-                      Wie erreicht man hohe Festigkeit bei geringem Kohlenstoffgehalt (<InlineMath math="\le 0,22\%" /> für perfekte Schweißbarkeit)?
+                      Wie erreicht man hohe Festigkeit bei geringem Kohlenstoffgehalt (<InlineMath math="\le 0{,}22\%" /> für perfekte Schweißbarkeit)?
                     </p>
                     <p className="text-text-main/80 leading-relaxed">
                       Aus der Walzhitze (<InlineMath math="\approx 950^\circ\text{C}" />) durchläuft der Stab eine intensive Wasser-Kühlstrecke. Die äußere Randschicht kühlt schlagartig ab und wandelt sich in harten Martensit um. Der heiße Kern kühlt danach langsam an Luft ab und <strong>lässt die Randschicht von innen heraus thermisch an</strong>.
@@ -2704,13 +2705,13 @@ export default function Stahl() {
                       Spannungsrelaxation unter Dauerlast (EC2 Gl. 3.28–3.30)
                     </strong>
                     <p className="text-text-main/80 leading-relaxed">
-                      Unter hoher konstanter Vorspannung (<InlineMath math="\sigma_{p0} \approx 0,7 \dots 0,8 f_{pk}" />) wandern Versetzungen kontinuierlich weiter. Dadurch sinkt die elastische Zugspannung zeitabhängig ab – ohne dass sich die Bauteillänge ändert!
+                      Unter hoher konstanter Vorspannung (<InlineMath math="\sigma_{p0} \approx 0{,}7 \dots 0{,}8 f_{pk}" />) wandern Versetzungen kontinuierlich weiter. Dadurch sinkt die elastische Zugspannung zeitabhängig ab – ohne dass sich die Bauteillänge ändert!
                     </p>
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-center font-mono text-[11px]">
-                      <InlineMath math="\frac{\Delta\sigma_{pr}}{\sigma_{pi}} \approx 0,66 \cdot \rho_{1000} \cdot e^{9,1 \mu} \cdot \left(\frac{t}{1000}\right)^{0,75(1-\mu)}" />
+                      <InlineMath math="\frac{\Delta\sigma_{pr}}{\sigma_{pi}} \approx 0{,}66 \cdot \rho_{1000} \cdot e^{9{,}1 \mu} \cdot \left(\frac{t}{1000}\right)^{0{,}75(1-\mu)}" />
                     </div>
                     <p className="text-[11px] text-slate-500">
-                      Moderne Spannlitzen erfüllen <strong>Klasse 2 (sehr niedrige Relaxation)</strong> mit einem 1000-Stunden-Verlust von <InlineMath math="\rho_{1000} \le 2,5\%" /> bei 20 °C.
+                      Moderne Spannlitzen erfüllen <strong>Klasse 2 (sehr niedrige Relaxation)</strong> mit einem 1000-Stunden-Verlust von <InlineMath math="\rho_{1000} \le 2{,}5\%" /> bei 20 °C.
                     </p>
                   </div>
 
@@ -2858,12 +2859,12 @@ export default function Stahl() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
                   <div className="bg-white p-2.5 rounded-xl border border-slate-100 flex flex-col">
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Streckgrenze fy</span>
-                    <span className="text-base font-bold text-shiraz font-mono mt-0.5">{activeGradedData.fy} MPa</span>
+                    <span className="text-base font-bold text-shiraz font-mono mt-0.5">{formatDeWert(activeGradedData.fy)} MPa</span>
                     <span className="text-[9px] text-slate-400 mt-0.5">Mindestfließgrenze</span>
                   </div>
                   <div className="bg-white p-2.5 rounded-xl border border-slate-100 flex flex-col">
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Zugfestigkeit fu</span>
-                    <span className="text-base font-bold text-text-main font-mono mt-0.5">{activeGradedData.fu} MPa</span>
+                    <span className="text-base font-bold text-text-main font-mono mt-0.5">{formatDeWert(activeGradedData.fu)} MPa</span>
                     <span className="text-[9px] text-slate-400 mt-0.5">Bruchspannung</span>
                   </div>
                   <div className="bg-white p-2.5 rounded-xl border border-slate-100 flex flex-col">
@@ -2970,7 +2971,7 @@ export default function Stahl() {
                     >
                       <div className="font-bold">{prof.name}</div>
                       <div className={`text-[10px] mt-0.5 font-normal ${selectedProfileId === prof.id ? 'text-white/80' : 'text-slate-400'}`}>
-                        Wpl: {prof.Wpl_y} cm³, Gew: {prof.weight} kg/m
+                        Wpl: {formatDeWert(prof.Wpl_y)} cm³, Gew: {formatDeWert(prof.weight)} kg/m
                       </div>
                     </button>
                   ))}
@@ -2983,7 +2984,7 @@ export default function Stahl() {
                     2. Bemessungsbiegemoment <InlineMath math="M_{Ed}" />
                   </label>
                   <span className="text-sm font-black text-shiraz bg-white px-2.5 py-1 rounded border shadow-sm font-mono">
-                    {designMoment} kNm
+                    {formatDeWert(designMoment)} kNm
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -3042,12 +3043,12 @@ export default function Stahl() {
                               )}
                             </span>
                           </td>
-                          <td className="px-4 py-3 text-center font-mono text-slate-600">{fyValue} N/mm²</td>
+                          <td className="px-4 py-3 text-center font-mono text-slate-600">{formatDeWert(fyValue)} N/mm²</td>
                           <td className="px-4 py-3 font-mono font-bold text-shiraz">
-                            {m_pl_rd.toFixed(1)} kNm
+                            {formatDeZahl(m_pl_rd, 1)} kNm
                           </td>
                           <td className="px-4 py-3 text-slate-700 font-mono">
-                            {n_pl_rd.toFixed(0)} kN
+                            {formatDeZahl(n_pl_rd, 0)} kN
                           </td>
                           <td className="px-4 py-3 text-center font-bold">
                             {isSufficient ? (
@@ -3061,7 +3062,7 @@ export default function Stahl() {
                             )}
                           </td>
                           <td className="px-4 py-3 text-right font-mono font-bold text-teal-600">
-                            {gradeId === 'S235' ? 'Basisreferenz' : `+${relativeGain.toFixed(1)}%`}
+                            {gradeId === 'S235' ? 'Basisreferenz' : `+${formatDeZahl(relativeGain, 1)}%`}
                           </td>
                         </tr>
                       );
@@ -3077,7 +3078,7 @@ export default function Stahl() {
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
                   <Scale size={11} className="text-shiraz" /> Tragwerkseigengewicht
                 </span>
-                <span className="text-xl font-mono font-black text-text-main">{activeProfile.weight.toFixed(1)} kg/m </span>
+                <span className="text-xl font-mono font-black text-text-main">{formatDeZahl(activeProfile.weight, 1)} kg/m </span>
                 <span className="text-[11px] text-slate-500 font-normal">Trägerlänge unbeeinflusst vom Stahlwerkstoff.</span>
               </div>
 
@@ -3086,10 +3087,10 @@ export default function Stahl() {
                   <TrendingDown size={11} className="text-teal-600" /> Profilhöhen-Reduzierung (S235 vs. S690)
                 </span>
                 <span className="text-xl font-bold text-teal-600 font-mono">
-                  -33.3 %
+                  -33,3 %
                 </span>
                 <span className="text-[11px] text-slate-500 leading-normal font-normal">
-                  IPE 300 (42.2 kg) kann beansprucht wie IPE 200 (22.4 kg) in S690 ausgeführt werden!
+                  IPE 300 (42,2 kg) kann beansprucht wie IPE 200 (22,4 kg) in S690 ausgeführt werden!
                 </span>
               </div>
 
@@ -3098,10 +3099,10 @@ export default function Stahl() {
                   <Flame size={11} className="text-shiraz" /> CO₂-Emissionsvorteil bei Optimierung
                 </span>
                 <span className="text-xl font-mono font-black text-emerald-600">
-                  ~ {((activeProfile.weight * 1.8) * 0.45).toFixed(1)} kg CO₂ / m
+                  ~ {formatDeZahl(((activeProfile.weight * 1.8) * 0.45), 1)} kg CO₂ / m
                 </span>
                 <span className="text-[11px] text-slate-500 leading-normal font-normal">
-                  Vermeidete CO₂-Emissionen durch d. verringerten Vormaterialbedarf (Emissionsbasis: 1.8 kg CO₂/kg Baustahl).
+                  Vermeidete CO₂-Emissionen durch d. verringerten Vormaterialbedarf (Emissionsbasis: 1,8 kg CO₂/kg Baustahl).
                 </span>
               </div>
             </div>
@@ -3153,7 +3154,7 @@ export default function Stahl() {
             quelle: 'DIN EN 1993-1-9'
           },
           {
-            formel: '\\sigma_{\\text{res},c} \\approx -0.3 \\dots -0.5 \\cdot f_y',
+            formel: '\\sigma_{\\text{res},c} \\approx -0{,}3 \\dots -0{,}5 \\cdot f_y',
             erklaerung: 'Charakteristische Druckeigenspannungen an den Flanschaußenkanten von warmgewalzten I-Profilen durch differenzielle Abkühlung nach dem Walzgang.',
             quelle: 'Petersen: Stahlbau'
           },

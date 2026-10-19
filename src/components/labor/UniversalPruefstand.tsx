@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, ArrowRight, Gauge, Sliders, Info, Zap } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -546,16 +547,16 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
         conditioning: 'Normklima (20 °C, 65 % rel. Luftfeuchte)'
       },
       parameters: {
-        'Prüfgeschwindigkeit': `${loadingRate.toFixed(2)} MPa/s`,
+        'Prüfgeschwindigkeit': `${formatDeZahl(loadingRate, 2)} MPa/s`,
         'Versuchsart': testType === 'druck' ? 'Einaxialer Druck' : testType === 'zug' ? 'Axialer Zugversuch' : 'Zyklische Sekanten-E-Modul-Prüfung',
-        'Prüfquerschnitt A0': `${specimenCrossSection.toFixed(0)} mm²`,
-        ...(material === 'holz' ? { 'Faserwinkel α': `${woodAngle}°` } : {})
+        'Prüfquerschnitt A0': `${formatDeZahl(specimenCrossSection, 0)} mm²`,
+        ...(material === 'holz' ? { 'Faserwinkel α': `${formatDeWert(woodAngle)}°` } : {})
       },
       metrics: {
-        'Höchstspannung (MPa)': maxStressObserved.toFixed(2),
-        'Höchstkraft Fmax (kN)': maxForceObserved.toFixed(1),
-        'E-Modul (GPa)': (materialProps.E / 1000).toFixed(2),
-        'Bruchdehnung (‰)': finalStrainObserved.toFixed(3),
+        'Höchstspannung (MPa)': formatDeZahl(maxStressObserved, 2),
+        'Höchstkraft Fmax (kN)': formatDeZahl(maxForceObserved, 1),
+        'E-Modul (GPa)': formatDeZahl((materialProps.E / 1000), 2),
+        'Bruchdehnung (‰)': formatDeZahl(finalStrainObserved, 3),
         'Rohdichte (kg/m³)': `${materialProps.density}`
       },
       status: validation.status,
@@ -656,7 +657,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
 
       // 1. Sekanten-E-Modul-Ausgleichsgerade
       list.push({
-        label: `Sekante Ec = ${measuredE.toFixed(1)} GPa (Δσ/Δε)`,
+        label: `Sekante Ec = ${formatDeZahl(measuredE, 1)} GPa (Δσ/Δε)`,
         data: [pt1, pt2],
         borderColor: '#334155',
         backgroundColor: '#334155',
@@ -671,7 +672,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       const xMax = chartScales.xMax;
       const upperY = chartViewMode === 'sigma_eps' ? upperStress : (upperStress * specimenCrossSection) / 1000;
       list.push({
-        label: `Obere Spannung σa = ${upperStress.toFixed(1)} MPa`,
+        label: `Obere Spannung σa = ${formatDeZahl(upperStress, 1)} MPa`,
         data: [{ x: 0, y: upperY }, { x: xMax, y: upperY }],
         borderColor: '#475569',
         borderWidth: 1.5,
@@ -683,7 +684,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       // 3. Untere Basisspannungsgrenze
       const lowerY = chartViewMode === 'sigma_eps' ? lowerStress : (lowerStress * specimenCrossSection) / 1000;
       list.push({
-        label: `Basisspannung σb = ${lowerStress.toFixed(1)} MPa`,
+        label: `Basisspannung σb = ${formatDeZahl(lowerStress, 1)} MPa`,
         data: [{ x: 0, y: lowerY }, { x: xMax, y: lowerY }],
         borderColor: '#64748b',
         borderWidth: 1.5,
@@ -737,11 +738,11 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       tooltip: {
         callbacks: {
           title: (items: any[]) => chartViewMode === 'f_delta'
-            ? `Weg ΔL = ${Number(items[0].parsed.x).toFixed(3)} mm`
-            : `Dehnung ε = ${Number(items[0].parsed.x).toFixed(3)} ‰`,
+            ? `Weg ΔL = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`
+            : `Dehnung ε = ${formatDeZahl(Number(items[0].parsed.x), 3)} ‰`,
           label: (item: any) => chartViewMode === 'f_delta'
-            ? `Kraft F = ${Number(item.parsed.y).toFixed(1)} kN`
-            : `Spannung σ = ${Number(item.parsed.y).toFixed(2)} MPa (${((Number(item.parsed.y) * specimenCrossSection) / 1000).toFixed(1)} kN)`
+            ? `Kraft F = ${formatDeZahl(Number(item.parsed.y), 1)} kN`
+            : `Spannung σ = ${formatDeZahl(Number(item.parsed.y), 2)} MPa (${formatDeZahl(((Number(item.parsed.y) * specimenCrossSection) / 1000), 1)} kN)`
         }
       }
     }
@@ -825,7 +826,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
               <div className="bg-amber-50/80 p-3.5 rounded-xl border border-amber-200/80 space-y-2 text-xs">
                 <div className="flex justify-between font-bold text-amber-900">
                   <span>Faserwinkel α (Hankinson)</span>
-                  <span className="font-mono">{woodAngle}°</span>
+                  <span className="font-mono">{formatDeWert(woodAngle)}°</span>
                 </div>
                 <input
                   type="range"
@@ -878,7 +879,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
               <div className="flex justify-between text-xs">
                 <span className="font-bold text-text-main">Prüfgeschwindigkeit:</span>
-                <span className="font-mono font-bold text-shiraz">{loadingRate.toFixed(2)} MPa/s</span>
+                <span className="font-mono font-bold text-shiraz">{formatDeZahl(loadingRate, 2)} MPa/s</span>
               </div>
               <input
                 type="range"
@@ -1084,21 +1085,21 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner flex flex-col">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">Kraft F</span>
                     <div className="text-xl font-mono font-bold text-amber-400 mt-0.5">
-                      {currentForceKN.toFixed(1)} <span className="text-xs text-slate-300 font-normal">kN</span>
+                      {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-300 font-normal">kN</span>
                     </div>
                   </div>
 
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner flex flex-col">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">Spannung σ</span>
                     <div className="text-xl font-mono font-bold text-emerald-400 mt-0.5">
-                      {currentStressMPa.toFixed(2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
+                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
                     </div>
                   </div>
 
                   <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner flex flex-col">
                     <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">Dehnung ε</span>
                     <div className="text-xl font-mono font-bold text-cyan-400 mt-0.5">
-                      {currentStrainPermille.toFixed(2)} <span className="text-xs text-slate-300 font-normal">‰</span>
+                      {formatDeZahl(currentStrainPermille, 2)} <span className="text-xs text-slate-300 font-normal">‰</span>
                     </div>
                   </div>
                 </div>
@@ -1162,7 +1163,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                   </div>
                   {testType === 'emodul' && (
                     <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md font-bold">
-                      Ec-Sekante: {emodulReference.measuredE.toFixed(1)} GPa
+                      Ec-Sekante: {formatDeZahl(emodulReference.measuredE, 1)} GPa
                     </span>
                   )}
                 </div>
@@ -1198,16 +1199,16 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                     <>
                       <div>
                         <span className="text-text-main/60 uppercase text-[10px] font-bold block">Sekanten-E-Modul Ec</span>
-                        <strong className="text-base text-emerald-700 font-mono">{emodulReference.measuredE.toFixed(1)} GPa</strong>
+                        <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(emodulReference.measuredE, 1)} GPa</strong>
                       </div>
                       <div>
                         <span className="text-text-main/60 uppercase text-[10px] font-bold block">E-Modul (Literatur)</span>
-                        <strong className="text-base text-text-main font-mono">{(materialProps.E / 1000).toFixed(1)} GPa</strong>
+                        <strong className="text-base text-text-main font-mono">{formatDeZahl((materialProps.E / 1000), 1)} GPa</strong>
                       </div>
                       <div>
                         <span className="text-text-main/60 uppercase text-[10px] font-bold block">Prüfspannungsbereich</span>
                         <strong className="text-base text-amber-700 font-mono">
-                          {emodulReference.lowerStress.toFixed(1)} – {emodulReference.upperStress.toFixed(1)} MPa
+                          {formatDeZahl(emodulReference.lowerStress, 1)} – {formatDeZahl(emodulReference.upperStress, 1)} MPa
                         </strong>
                       </div>
                       <div>
@@ -1219,19 +1220,19 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                     <>
                       <div>
                         <span className="text-text-main/60 uppercase text-[10px] font-bold block">Höchstspannung σmax</span>
-                        <strong className="text-base text-shiraz font-mono">{maxStressObserved.toFixed(2)} MPa</strong>
+                        <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} MPa</strong>
                       </div>
                       <div>
                         <span className="text-text-main/60 uppercase text-[10px] font-bold block">Höchstkraft Fmax</span>
-                        <strong className="text-base text-text-main font-mono">{maxForceObserved.toFixed(1)} kN</strong>
+                        <strong className="text-base text-text-main font-mono">{formatDeZahl(maxForceObserved, 1)} kN</strong>
                       </div>
                       <div>
                         <span className="text-text-main/60 uppercase text-[10px] font-bold block">E-Modul (Literatur)</span>
-                        <strong className="text-base text-text-main font-mono">{(materialProps.E / 1000).toFixed(1)} GPa</strong>
+                        <strong className="text-base text-text-main font-mono">{formatDeZahl((materialProps.E / 1000), 1)} GPa</strong>
                       </div>
                       <div>
                         <span className="text-text-main/60 uppercase text-[10px] font-bold block">Verzerrungsenergie Ue</span>
-                        <strong className="text-base text-emerald-700 font-mono">{elasticEnergy.toFixed(1)} kJ/m³</strong>
+                        <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(elasticEnergy, 1)} kJ/m³</strong>
                       </div>
                     </>
                   )}

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
   Sliders,
   RotateCcw,
@@ -998,7 +998,7 @@ export default function SpannbetonDehnungsAnimation() {
                     <g key={gridVal}>
                       <line x1={gx} y1={topY} x2={gx} y2={botY} stroke="#f1f5f9" strokeWidth="1" />
                       <text x={gx} y={botY + 16} textAnchor="middle" fontSize="8" fill="#94a3b8">
-                        {gridVal > 0 ? `+${gridVal}` : gridVal} ‰
+                        {gridVal > 0 ? `+${formatDeWert(gridVal)}` : gridVal} ‰
                       </text>
                     </g>
                   );

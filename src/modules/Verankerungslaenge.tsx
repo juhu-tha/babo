@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -224,8 +225,8 @@ export default function Verankerungslaenge() {
                   onChange={(e) => setVerankerungsArt(e.target.value as 'gerade' | 'haken' | 'winkel')}
                   disabled={beanspruchung === 'druck'}
                 >
-                  <option value="gerade">Gerades Stabende (α₁ = 1.0)</option>
-                  <option value="haken">Haken / Winkel (α₁ = 0.7 bei ZUG)</option>
+                  <option value="gerade">Gerades Stabende (α₁ = 1,0)</option>
+                  <option value="haken">Haken / Winkel (α₁ = 0,7 bei ZUG)</option>
                 </select>
               </div>
 
@@ -254,9 +255,9 @@ export default function Verankerungslaenge() {
                     value={alpha6}
                     onChange={(e) => setAlpha6(Number(e.target.value))}
                   >
-                    <option value={EC2_NA_DE.alpha6_33}>&lt; 33% gestoßen (α₆ = {EC2_NA_DE.alpha6_33.toFixed(2)})</option>
-                    <option value={1.41}>&lt; 50% gestoßen (α₆ = 1.41)</option>
-                    <option value={1.5}>&gt; 50% gestoßen (α₆ = 1.50)</option>
+                    <option value={EC2_NA_DE.alpha6_33}>&lt; 33% gestoßen (α₆ = {formatDeZahl(EC2_NA_DE.alpha6_33, 2)})</option>
+                    <option value={1.41}>&lt; 50% gestoßen (α₆ = 1,41)</option>
+                    <option value={1.5}>&gt; 50% gestoßen (α₆ = 1,50)</option>
                   </select>
                 </div>
               )}
@@ -296,43 +297,43 @@ export default function Verankerungslaenge() {
                   {berechnungsArt === 'verankerung' ? 'Bemessungswert Verankerungslänge' : 'Bemessungswert Übergreifungslänge'} <FormulaText text={berechnungsArt === 'verankerung' ? "l_{bd}" : "l_0"} />
                 </div>
                 <div className="text-5xl font-bold text-shiraz">
-                  {results.lbd.toFixed(0)} <span className="text-xl font-normal">mm</span>
+                  {formatDeZahl(results.lbd, 0)} <span className="text-xl font-normal">mm</span>
                 </div>
                 <div className="text-xs text-home-grau mt-2">
-                  (entspricht {(results.lbd / phi).toFixed(1)} <FormulaText text="\varnothing" />)
+                  (entspricht {formatDeZahl((results.lbd / phi), 1)} <FormulaText text="\varnothing" />)
                 </div>
               </div>
 
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Zugfestigkeit Beton <FormulaText text="f_{ctk;0,05}" /></span>
-                  <span className="font-mono font-bold">{results.fctk005.toFixed(2)} MPa</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.fctk005, 2)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Bemessungswert Verbund <FormulaText text="f_{bd}" /></span>
-                  <span className="font-mono font-bold">{results.fbd.toFixed(2)} MPa</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.fbd, 2)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Grundwert <FormulaText text="l_{b,rqd}" /></span>
-                  <span className="font-mono font-bold">{results.lbRqd.toFixed(0)} mm</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.lbRqd, 0)} mm</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Einflussfaktoren <FormulaText text="\prod \alpha_i" /></span>
-                  <span className="font-mono font-bold">{results.totalAlpha.toFixed(2)}</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.totalAlpha, 2)}</span>
                 </div>
                 {berechnungsArt === 'uebergreifung' && (
                   <div className="flex justify-between border-b border-home-grau/10 pb-2">
                     <span className="text-text-main/70">Längsstoß-Faktor <FormulaText text="\alpha_6" /></span>
-                    <span className="font-mono font-bold">{results.a6.toFixed(2)}</span>
+                    <span className="font-mono font-bold">{formatDeZahl(results.a6, 2)}</span>
                   </div>
                 )}
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Ausnutzungsgrad <FormulaText text="A_{s,erf} / A_{s,vorh}" /></span>
-                  <span className="font-mono font-bold">{results.asRatio.toFixed(2)}</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.asRatio, 2)}</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Mindestlänge <FormulaText text={berechnungsArt === 'verankerung' ? "l_{b,min}" : "l_{0,min}"} /></span>
-                  <span className="font-mono font-bold">{results.lbMin.toFixed(0)} mm</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.lbMin, 0)} mm</span>
                 </div>
               </div>
             </div>
@@ -395,7 +396,7 @@ export default function Verankerungslaenge() {
         formeln={[
           {
             erklaerung: "Bemessungswert der Verbundspannung\nf_bd: Bemessungswert der Verbundspannung [MPa]\nη₁: Beiwert für die Verbundbedingung (1.0 für gut, 0.7 für mäßig)\nη₂: Beiwert für den Stabdurchmesser (1.0 für ≤ 32 mm)\nf_ctd: Bemessungswert der Betonzugfestigkeit [MPa]",
-            formel: "f_{bd} = 2.25 \\cdot \\eta_1 \\cdot \\eta_2 \\cdot f_{ctd}"
+            formel: "f_{bd} = 2{,}25 \\cdot \\eta_1 \\cdot \\eta_2 \\cdot f_{ctd}"
           },
           {
             erklaerung: "Grundwert der Verankerungslänge\nl_b,rqd: Grundwert der Verankerungslänge [mm]\nØ: Stabdurchmesser [mm]\nσ_sd: Bemessungswert der Stabspannung [MPa]\nf_bd: Bemessungswert der Verbundspannung [MPa]",

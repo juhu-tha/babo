@@ -5,7 +5,7 @@ import {
   TrendingDown, ArrowUpRight, Flame, Wind, Layers
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 
 export default function Energieausweis() {
@@ -424,7 +424,7 @@ export default function Energieausweis() {
                   style={getPositionStyle(currentScale.val)}
                 >
                   <div className="bg-text-main text-white px-2.5 py-1 rounded-lg font-bold text-xs shadow-md whitespace-nowrap">
-                    {currentScale.val} kWh/(m²a) [Klasse {currentScale.class}]
+                    {formatDeWert(currentScale.val)} kWh/(m²a) [Klasse {currentScale.class}]
                   </div>
                   <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-text-main mt-0.5"></div>
                 </div>
@@ -777,7 +777,7 @@ export default function Energieausweis() {
                   <div>
                     <div className="flex justify-between text-xs text-text-main mb-1">
                       <span>Gebäudenutzfläche (<InlineMath math="A_N" />):</span>
-                      <strong className="font-mono">{simArea} m²</strong>
+                      <strong className="font-mono">{formatDeWert(simArea)} m²</strong>
                     </div>
                     <input 
                       type="range" 
@@ -858,7 +858,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Fensterlüftung</strong>
-                      <span className="text-xxs opacity-80">n = 0.50 h⁻¹</span>
+                      <span className="text-xxs opacity-80">n = 0,50 h⁻¹</span>
                     </button>
                     <button
                       onClick={() => setSimVentilation('abluft')}
@@ -867,7 +867,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Abluftanlage</strong>
-                      <span className="text-xxs opacity-80">n = 0.45 h⁻¹</span>
+                      <span className="text-xxs opacity-80">n = 0,45 h⁻¹</span>
                     </button>
                     <button
                       onClick={() => setSimVentilation('kwl_wrg')}
@@ -895,7 +895,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Luft-Wasser-WP</strong>
-                      <span className="text-xxs opacity-80">JAZ ≈ 3.3 | fp = 1.8</span>
+                      <span className="text-xxs opacity-80">JAZ ≈ 3,3 | fp = 1,8</span>
                     </button>
 
                     <button
@@ -905,7 +905,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Sole-Wasser-WP</strong>
-                      <span className="text-xxs opacity-80">JAZ ≈ 4.3 | fp = 1.8</span>
+                      <span className="text-xxs opacity-80">JAZ ≈ 4,3 | fp = 1,8</span>
                     </button>
 
                     <button
@@ -915,7 +915,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Gas-Brennwert</strong>
-                      <span className="text-xxs opacity-80">η ≈ 0.96 | fp = 1.1</span>
+                      <span className="text-xxs opacity-80">η ≈ 0,96 | fp = 1,1</span>
                     </button>
 
                     <button
@@ -925,7 +925,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Holzpellets</strong>
-                      <span className="text-xxs opacity-80">η ≈ 0.88 | fp = 0.2</span>
+                      <span className="text-xxs opacity-80">η ≈ 0,88 | fp = 0,2</span>
                     </button>
 
                     <button
@@ -935,7 +935,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Fernwärme (KWK)</strong>
-                      <span className="text-xxs opacity-80">η ≈ 0.98 | fp = 0.4</span>
+                      <span className="text-xxs opacity-80">η ≈ 0,98 | fp = 0,4</span>
                     </button>
 
                     <button
@@ -945,7 +945,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Öl-Heizkessel</strong>
-                      <span className="text-xxs opacity-80">η ≈ 0.84 | fp = 1.1</span>
+                      <span className="text-xxs opacity-80">η ≈ 0,84 | fp = 1,1</span>
                     </button>
                   </div>
                 </div>
@@ -969,7 +969,7 @@ export default function Energieausweis() {
                     <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                       <span className="text-xxs text-slate-500 font-semibold uppercase block">Endenergiebedarf (QE)</span>
                       <div className="text-xl font-black text-slate-900 font-mono">
-                        {simResults.q_e} <span className="text-xs font-normal text-slate-500">kWh/(m²a)</span>
+                        {formatDeWert(simResults.q_e)} <span className="text-xs font-normal text-slate-500">kWh/(m²a)</span>
                       </div>
                       <span className="text-xxs text-slate-500">Basis für Bandtacho &amp; Kosten</span>
                     </div>
@@ -977,9 +977,9 @@ export default function Energieausweis() {
                     <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                       <span className="text-xxs text-slate-500 font-semibold uppercase block">Primärenergiebedarf (QP)</span>
                       <div className="text-xl font-black text-emerald-800 font-mono">
-                        {simResults.q_p} <span className="text-xs font-normal text-slate-500">kWh/(m²a)</span>
+                        {formatDeWert(simResults.q_p)} <span className="text-xs font-normal text-slate-500">kWh/(m²a)</span>
                       </div>
-                      <span className="text-xxs text-slate-500">GEG-Nachweisgröße (fp = {simResults.f_p})</span>
+                      <span className="text-xxs text-slate-500">GEG-Nachweisgröße (fp = {formatDeWert(simResults.f_p)})</span>
                     </div>
                   </div>
 
@@ -995,15 +995,15 @@ export default function Energieausweis() {
                     </div>
                     <div className="flex justify-between py-1 border-b border-slate-100 text-emerald-700">
                       <span>Solar- &amp; Interne Gewinne (<InlineMath math="\eta \cdot Q_g" />):</span>
-                      <strong className="font-mono">- {simResults.q_gewinne} kWh/(m²a)</strong>
+                      <strong className="font-mono">- {formatDeWert(simResults.q_gewinne)} kWh/(m²a)</strong>
                     </div>
                     <div className="flex justify-between py-1.5 font-bold bg-amber-50 px-2 rounded-lg text-amber-900">
                       <span>Nutzwärmebedarf (<InlineMath math="Q_h" />):</span>
-                      <span className="font-mono">{simResults.q_h} kWh/(m²a)</span>
+                      <span className="font-mono">{formatDeWert(simResults.q_h)} kWh/(m²a)</span>
                     </div>
                     <div className="flex justify-between py-1 text-slate-600">
                       <span>Geschätzte CO₂-Emissionen:</span>
-                      <strong className="font-mono">{simResults.co2_emissionen} kg CO₂ / (m² · a)</strong>
+                      <strong className="font-mono">{formatDeWert(simResults.co2_emissionen)} kg CO₂ / (m² · a)</strong>
                     </div>
                   </div>
 

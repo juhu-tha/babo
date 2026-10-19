@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 interface Seaeule {
   id: 'effizienz' | 'suffizienz' | 'konsistenz' | 'resilienz';
@@ -1252,12 +1252,12 @@ export default function Materialoptimierung() {
                     <div 
                       className="bg-slate-500 h-full transition-all"
                       style={{ width: `${(dafstbCalc.refConcreteGwpTotal / dafstbCalc.refTotalGwp) * 100}%` }}
-                      title={`Beton CEM I: ${Math.round((dafstbCalc.refConcreteGwpTotal / dafstbCalc.refTotalGwp) * 100)}%`}
+                      title={`Beton CEM I: ${formatDeWert(Math.round((dafstbCalc.refConcreteGwpTotal / dafstbCalc.refTotalGwp) * 100))}%`}
                     />
                     <div 
                       className="bg-rose-400 h-full transition-all"
                       style={{ width: `${(dafstbCalc.refSteelGwpTotal / dafstbCalc.refTotalGwp) * 100}%` }}
-                      title={`Bewehrungsstahl BOF: ${Math.round((dafstbCalc.refSteelGwpTotal / dafstbCalc.refTotalGwp) * 100)}%`}
+                      title={`Bewehrungsstahl BOF: ${formatDeWert(Math.round((dafstbCalc.refSteelGwpTotal / dafstbCalc.refTotalGwp) * 100))}%`}
                     />
                   </div>
                 </div>
@@ -1272,12 +1272,12 @@ export default function Materialoptimierung() {
                     <div 
                       className="bg-emerald-600 h-full transition-all"
                       style={{ width: `${(dafstbCalc.optConcreteGwpTotal / dafstbCalc.refTotalGwp) * 100}%` }}
-                      title={`Beton optimiert: ${dafstbCalc.optConcreteGwpTotal} kg`}
+                      title={`Beton optimiert: ${formatDeWert(dafstbCalc.optConcreteGwpTotal)} kg`}
                     />
                     <div 
                       className="bg-teal-500 h-full transition-all"
                       style={{ width: `${(dafstbCalc.optSteelGwpTotal / dafstbCalc.refTotalGwp) * 100}%` }}
-                      title={`Bewehrungsstahl optimiert: ${dafstbCalc.optSteelGwpTotal} kg`}
+                      title={`Bewehrungsstahl optimiert: ${formatDeWert(dafstbCalc.optSteelGwpTotal)} kg`}
                     />
                   </div>
                 </div>
@@ -1286,7 +1286,7 @@ export default function Materialoptimierung() {
               <div className="flex flex-wrap items-center gap-4 text-[11px] text-slate-500 pt-2 border-t border-slate-200/60">
                 <div className="flex items-center gap-1.5">
                   <span className="w-3 h-3 rounded bg-emerald-600"></span>
-                  <span>Beton optimiert ({dafstbCalc.optConcreteGwpPerM3} kg/m³)</span>
+                  <span>Beton optimiert ({formatDeWert(dafstbCalc.optConcreteGwpPerM3)} kg/m³)</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="w-3 h-3 rounded bg-teal-500"></span>

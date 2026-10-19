@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { 
@@ -530,22 +531,22 @@ export default function GepruefteBeispieleSection({ onLoadBenchmark }: Props) {
           <div className="bg-white p-3 rounded-lg border border-home-grau/20">
             <div className="text-xs text-text-main/60">Druckfestigkeit</div>
             <div className="text-base font-bold text-shiraz">{selected.normVorgaben.druckfestigkeit}</div>
-            <div className="text-[11px] text-text-main/60">Zement: {selected.zement} kg/m³</div>
+            <div className="text-[11px] text-text-main/60">Zement: {formatDeWert(selected.zement)} kg/m³</div>
           </div>
           <div className="bg-white p-3 rounded-lg border border-home-grau/20">
             <div className="text-xs text-text-main/60">Wasserzementwert</div>
-            <div className="text-base font-bold text-text-main">{(selected.wasser / selected.zement).toFixed(2)}</div>
-            <div className="text-[11px] text-text-main/60">Wasser: {selected.wasser} L/m³</div>
+            <div className="text-base font-bold text-text-main">{formatDeZahl((selected.wasser / selected.zement), 2)}</div>
+            <div className="text-[11px] text-text-main/60">Wasser: {formatDeWert(selected.wasser)} L/m³</div>
           </div>
           <div className="bg-white p-3 rounded-lg border border-home-grau/20">
             <div className="text-xs text-text-main/60">Luftporengehalt</div>
-            <div className="text-base font-bold text-text-main">{selected.luft.toFixed(1)} Vol.-%</div>
-            <div className="text-[11px] text-text-main/60">Volumen: {selected.stoffraum.luftVol.toFixed(1)} dm³</div>
+            <div className="text-base font-bold text-text-main">{formatDeZahl(selected.luft, 1)} Vol.-%</div>
+            <div className="text-[11px] text-text-main/60">Volumen: {formatDeZahl(selected.stoffraum.luftVol, 1)} dm³</div>
           </div>
           <div className="bg-white p-3 rounded-lg border border-home-grau/20">
             <div className="text-xs text-text-main/60">Frischbetonrohdichte</div>
-            <div className="text-base font-bold text-text-main">{selected.frischbetonDichte.toFixed(3)} kg/dm³</div>
-            <div className="text-[11px] text-text-main/60">Gestein: {selected.massenTrocken.gesteinGesamt.toFixed(1)} kg</div>
+            <div className="text-base font-bold text-text-main">{formatDeZahl(selected.frischbetonDichte, 3)} kg/dm³</div>
+            <div className="text-[11px] text-text-main/60">Gestein: {formatDeZahl(selected.massenTrocken.gesteinGesamt, 1)} kg</div>
           </div>
         </div>
 
@@ -566,56 +567,56 @@ export default function GepruefteBeispieleSection({ onLoadBenchmark }: Props) {
               <tbody>
                 <tr className="border-b border-home-grau/15 py-1">
                   <td className="py-1 text-text-main/70">Zement ({selected.zementArt}):</td>
-                  <td className="py-1 text-right font-mono">{selected.zement} kg ÷ {selected.zementArt === 'CEM I' ? '3.10' : '3.05'} =</td>
-                  <td className="py-1 text-right font-bold text-text-main font-mono">{selected.stoffraum.zementVol.toFixed(1)} dm³</td>
+                  <td className="py-1 text-right font-mono">{formatDeWert(selected.zement)} kg ÷ {selected.zementArt === 'CEM I' ? '3.10' : '3.05'} =</td>
+                  <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.stoffraum.zementVol, 1)} dm³</td>
                 </tr>
                 <tr className="border-b border-home-grau/15 py-1">
                   <td className="py-1 text-text-main/70">Wasser (wirksam):</td>
-                  <td className="py-1 text-right font-mono">{selected.wasser} kg ÷ 1.00 =</td>
-                  <td className="py-1 text-right font-bold text-text-main font-mono">{selected.stoffraum.wasserVol.toFixed(1)} dm³</td>
+                  <td className="py-1 text-right font-mono">{formatDeWert(selected.wasser)} kg ÷ 1,00 =</td>
+                  <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.stoffraum.wasserVol, 1)} dm³</td>
                 </tr>
                 <tr className="border-b border-home-grau/15 py-1">
                   <td className="py-1 text-text-main/70">Luftporen (Luftgehalt):</td>
-                  <td className="py-1 text-right font-mono">{selected.luft.toFixed(1)} Vol.-% × 10 =</td>
-                  <td className="py-1 text-right font-bold text-text-main font-mono">{selected.stoffraum.luftVol.toFixed(1)} dm³</td>
+                  <td className="py-1 text-right font-mono">{formatDeZahl(selected.luft, 1)} Vol.-% × 10 =</td>
+                  <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.stoffraum.luftVol, 1)} dm³</td>
                 </tr>
                 {selected.hues > 0 && (
                   <tr className="border-b border-home-grau/15 py-1">
                     <td className="py-1 text-text-main/70">Hüttensandmehl (HüS):</td>
-                    <td className="py-1 text-right font-mono">{selected.hues} kg ÷ 2.90 =</td>
-                    <td className="py-1 text-right font-bold text-text-main font-mono">{selected.stoffraum.zusatzstoffVol?.toFixed(1)} dm³</td>
+                    <td className="py-1 text-right font-mono">{formatDeWert(selected.hues)} kg ÷ 2,90 =</td>
+                    <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.stoffraum.zusatzstoffVol, 1)} dm³</td>
                   </tr>
                 )}
                 {selected.fa > 0 && (
                   <tr className="border-b border-home-grau/15 py-1">
                     <td className="py-1 text-text-main/70">Flugasche (FA):</td>
-                    <td className="py-1 text-right font-mono">{selected.fa} kg ÷ 2.20 =</td>
-                    <td className="py-1 text-right font-bold text-text-main font-mono">{selected.stoffraum.zusatzstoffVol?.toFixed(1)} dm³</td>
+                    <td className="py-1 text-right font-mono">{formatDeWert(selected.fa)} kg ÷ 2,20 =</td>
+                    <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.stoffraum.zusatzstoffVol, 1)} dm³</td>
                   </tr>
                 )}
                 {selected.zusatzmittel > 0 && (
                   <tr className="border-b border-home-grau/15 py-1">
                     <td className="py-1 text-text-main/70">Zusatzmittel (FM/LP):</td>
-                    <td className="py-1 text-right font-mono">{selected.zusatzmittel} kg ÷ 1.05 =</td>
-                    <td className="py-1 text-right font-bold text-text-main font-mono">{selected.stoffraum.zmVol?.toFixed(1)} dm³</td>
+                    <td className="py-1 text-right font-mono">{formatDeWert(selected.zusatzmittel)} kg ÷ 1,05 =</td>
+                    <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.stoffraum.zmVol, 1)} dm³</td>
                   </tr>
                 )}
                 {(selected.stahlfaser || 0) > 0 && (
                   <tr className="border-b border-home-grau/15 py-1">
                     <td className="py-1 text-text-main/70">Stahlfasern (SF):</td>
-                    <td className="py-1 text-right font-mono">{selected.stahlfaser} kg ÷ 7.85 =</td>
-                    <td className="py-1 text-right font-bold text-text-main font-mono">{selected.stoffraum.faserVol?.toFixed(1)} dm³</td>
+                    <td className="py-1 text-right font-mono">{formatDeWert(selected.stahlfaser)} kg ÷ 7,85 =</td>
+                    <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.stoffraum.faserVol, 1)} dm³</td>
                   </tr>
                 )}
                 <tr className="border-t-2 border-home-grau/40 bg-slate-50/70 font-bold">
                   <td className="py-1.5 text-shiraz">Gesteinskörnung (Restvolumen):</td>
                   <td className="py-1.5 text-right font-mono">1000 - Summe =</td>
-                  <td className="py-1.5 text-right text-shiraz font-mono">{selected.stoffraum.gesteinVol.toFixed(1)} dm³</td>
+                  <td className="py-1.5 text-right text-shiraz font-mono">{formatDeZahl(selected.stoffraum.gesteinVol, 1)} dm³</td>
                 </tr>
                 <tr className="bg-slate-50/70">
                   <td className="py-1 text-text-main font-semibold">Trockenmasse Gestein:</td>
-                  <td className="py-1 text-right font-mono">{selected.stoffraum.gesteinVol.toFixed(1)} × 2.65 =</td>
-                  <td className="py-1 text-right font-bold text-text-main font-mono">{selected.massenTrocken.gesteinGesamt.toFixed(1)} kg</td>
+                  <td className="py-1 text-right font-mono">{formatDeZahl(selected.stoffraum.gesteinVol, 1)} × 2,65 =</td>
+                  <td className="py-1 text-right font-bold text-text-main font-mono">{formatDeZahl(selected.massenTrocken.gesteinGesamt, 1)} kg</td>
                 </tr>
               </tbody>
             </table>
@@ -649,57 +650,57 @@ export default function GepruefteBeispieleSection({ onLoadBenchmark }: Props) {
               <tbody>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-1">Zement</td>
-                  <td className="py-1 text-right font-mono">{selected.zement.toFixed(1)} kg</td>
+                  <td className="py-1 text-right font-mono">{formatDeZahl(selected.zement, 1)} kg</td>
                   <td className="py-1 text-right text-text-main/40">-</td>
-                  <td className="py-1 text-right font-mono font-bold text-text-main">{selected.zement.toFixed(1)} kg</td>
+                  <td className="py-1 text-right font-mono font-bold text-text-main">{formatDeZahl(selected.zement, 1)} kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
-                  <td className="py-1">Sand 0/4 ({selected.f04}%)</td>
-                  <td className="py-1 text-right font-mono">{selected.massenTrocken.m04.toFixed(1)} kg</td>
-                  <td className="py-1 text-right font-mono">+{selected.feuchte04}%</td>
-                  <td className="py-1 text-right font-mono font-bold text-text-main">{selected.feuchteRechnung.m04Feucht.toFixed(1)} kg</td>
+                  <td className="py-1">Sand 0/4 ({formatDeWert(selected.f04)}%)</td>
+                  <td className="py-1 text-right font-mono">{formatDeZahl(selected.massenTrocken.m04, 1)} kg</td>
+                  <td className="py-1 text-right font-mono">+{formatDeWert(selected.feuchte04)}%</td>
+                  <td className="py-1 text-right font-mono font-bold text-text-main">{formatDeZahl(selected.feuchteRechnung.m04Feucht, 1)} kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
-                  <td className="py-1">Kies 4/8 ({selected.f48}%)</td>
-                  <td className="py-1 text-right font-mono">{selected.massenTrocken.m48.toFixed(1)} kg</td>
-                  <td className="py-1 text-right font-mono">+{selected.feuchte48}%</td>
-                  <td className="py-1 text-right font-mono font-bold text-text-main">{selected.feuchteRechnung.m48Feucht.toFixed(1)} kg</td>
+                  <td className="py-1">Kies 4/8 ({formatDeWert(selected.f48)}%)</td>
+                  <td className="py-1 text-right font-mono">{formatDeZahl(selected.massenTrocken.m48, 1)} kg</td>
+                  <td className="py-1 text-right font-mono">+{formatDeWert(selected.feuchte48)}%</td>
+                  <td className="py-1 text-right font-mono font-bold text-text-main">{formatDeZahl(selected.feuchteRechnung.m48Feucht, 1)} kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
-                  <td className="py-1">Kies 8/16 ({selected.f816}%)</td>
-                  <td className="py-1 text-right font-mono">{selected.massenTrocken.m816.toFixed(1)} kg</td>
-                  <td className="py-1 text-right font-mono">+{selected.feuchte816}%</td>
-                  <td className="py-1 text-right font-mono font-bold text-text-main">{selected.feuchteRechnung.m816Feucht.toFixed(1)} kg</td>
+                  <td className="py-1">Kies 8/16 ({formatDeWert(selected.f816)}%)</td>
+                  <td className="py-1 text-right font-mono">{formatDeZahl(selected.massenTrocken.m816, 1)} kg</td>
+                  <td className="py-1 text-right font-mono">+{formatDeWert(selected.feuchte816)}%</td>
+                  <td className="py-1 text-right font-mono font-bold text-text-main">{formatDeZahl(selected.feuchteRechnung.m816Feucht, 1)} kg</td>
                 </tr>
                 {(selected.massenTrocken.m1632 || 0) > 0 && (
                   <tr className="border-b border-home-grau/10">
-                    <td className="py-1">Kies 16/32 ({selected.f1632}%)</td>
-                    <td className="py-1 text-right font-mono">{selected.massenTrocken.m1632?.toFixed(1)} kg</td>
-                    <td className="py-1 text-right font-mono">+{selected.feuchte1632}%</td>
-                    <td className="py-1 text-right font-mono font-bold text-text-main">{selected.feuchteRechnung.m1632Feucht?.toFixed(1)} kg</td>
+                    <td className="py-1">Kies 16/32 ({formatDeWert(selected.f1632)}%)</td>
+                    <td className="py-1 text-right font-mono">{formatDeZahl(selected.massenTrocken.m1632, 1)} kg</td>
+                    <td className="py-1 text-right font-mono">+{formatDeWert(selected.feuchte1632)}%</td>
+                    <td className="py-1 text-right font-mono font-bold text-text-main">{formatDeZahl(selected.feuchteRechnung.m1632Feucht, 1)} kg</td>
                   </tr>
                 )}
                 {selected.hues > 0 && (
                   <tr className="border-b border-home-grau/10">
                     <td className="py-1">Hüttensand (HüS)</td>
-                    <td className="py-1 text-right font-mono">{selected.hues.toFixed(1)} kg</td>
+                    <td className="py-1 text-right font-mono">{formatDeZahl(selected.hues, 1)} kg</td>
                     <td className="py-1 text-right text-text-main/40">-</td>
-                    <td className="py-1 text-right font-mono font-bold text-text-main">{selected.hues.toFixed(1)} kg</td>
+                    <td className="py-1 text-right font-mono font-bold text-text-main">{formatDeZahl(selected.hues, 1)} kg</td>
                   </tr>
                 )}
                 {(selected.stahlfaser || 0) > 0 && (
                   <tr className="border-b border-home-grau/10">
                     <td className="py-1">Stahlfasern</td>
-                    <td className="py-1 text-right font-mono">{selected.stahlfaser?.toFixed(1)} kg</td>
+                    <td className="py-1 text-right font-mono">{formatDeZahl(selected.stahlfaser, 1)} kg</td>
                     <td className="py-1 text-right text-text-main/40">-</td>
-                    <td className="py-1 text-right font-mono font-bold text-text-main">{selected.stahlfaser?.toFixed(1)} kg</td>
+                    <td className="py-1 text-right font-mono font-bold text-text-main">{formatDeZahl(selected.stahlfaser, 1)} kg</td>
                   </tr>
                 )}
                 <tr className="border-t-2 border-shiraz bg-shiraz/5 font-bold">
                   <td className="py-1.5 text-shiraz">Tatsächliches Zugabewasser:</td>
-                  <td className="py-1.5 text-right font-mono">{selected.wasser.toFixed(1)} L</td>
-                  <td className="py-1.5 text-right font-mono text-red-600">-{selected.feuchteRechnung.wasserAusGestein.toFixed(1)} L</td>
-                  <td className="py-1.5 text-right font-mono text-shiraz">{selected.feuchteRechnung.zugabewasser.toFixed(1)} L</td>
+                  <td className="py-1.5 text-right font-mono">{formatDeZahl(selected.wasser, 1)} L</td>
+                  <td className="py-1.5 text-right font-mono text-red-600">-{formatDeZahl(selected.feuchteRechnung.wasserAusGestein, 1)} L</td>
+                  <td className="py-1.5 text-right font-mono text-shiraz">{formatDeZahl(selected.feuchteRechnung.zugabewasser, 1)} L</td>
                 </tr>
               </tbody>
             </table>

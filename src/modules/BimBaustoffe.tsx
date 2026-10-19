@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Monitor, Database, ArrowRight, Settings, FileCode, Layers, Eye, ShieldCheck, HelpCircle, Copy, Check, Download } from 'lucide-react';
@@ -207,7 +208,7 @@ export default function BimBaustoffe() {
                   <div>
                     <div className="flex justify-between items-center mb-1 text-xs">
                       <span className="font-semibold text-slate-900">Rohdichte (MassDensity):</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{density} kg/m³</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeWert(density)} kg/m³</span>
                     </div>
                     <input 
                       type="range" 
@@ -224,7 +225,7 @@ export default function BimBaustoffe() {
                   <div>
                     <div className="flex justify-between items-center mb-1 text-xs">
                       <span className="font-semibold text-slate-900">Wärmeleitfähigkeit (λ):</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{conductivity.toFixed(3)} W/m·K</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(conductivity, 3)} W/m·K</span>
                     </div>
                     <input 
                       type="range" 
@@ -261,7 +262,7 @@ export default function BimBaustoffe() {
                         CO₂-GWP (A1-A3):
                         <InfoTooltip text="Treibhauspotenzial des Baustoffs (Global Warming Potential) aus der EPD." />
                       </span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{gwp.toFixed(1)} kg/m³</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(gwp, 1)} kg/m³</span>
                     </div>
                     <input 
                       type="range" 
@@ -325,16 +326,16 @@ export default function BimBaustoffe() {
                 <br />
                 <div><span className="text-gray-500">/* Property-Set: Mechanische Werkstoffdaten fuer Statik */</span></div>
                 <div>#150 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialMechanical', $, (#160, #170), #110);</div>
-                <div>#160 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('MassDensity', $, <span className="text-yellow-400">IFCMASSDENSITYMEASURE</span>({density.toFixed(1)}), $);</div>
-                <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ElasticModulus', $, <span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({eModulus.toFixed(1)}), $);</div>
+                <div>#160 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('MassDensity', $, <span className="text-yellow-400">IFCMASSDENSITYMEASURE</span>({formatDeZahl(density, 1)}), $);</div>
+                <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ElasticModulus', $, <span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
                 <br />
                 <div><span className="text-gray-500">/* Property-Set: Thermische Eigenschaften fuer Energiebilanz */</span></div>
                 <div>#180 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialThermal', $, (#190), #110);</div>
-                <div>#190 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ThermalConductivity', $, <span className="text-yellow-400">IFCTHERMALCONDUCTIVITYMEASURE</span>({conductivity.toFixed(3)}), $);</div>
+                <div>#190 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ThermalConductivity', $, <span className="text-yellow-400">IFCTHERMALCONDUCTIVITYMEASURE</span>({formatDeZahl(conductivity, 3)}), $);</div>
                 <br />
                 <div><span className="text-gray-500">/* Property-Set: Umwelt-Bilanzindikatoren aus EPD */</span></div>
                 <div>#200 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialEnvironmental', $, (#210), #110);</div>
-                <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('GlobalWarmingPotential', $, <span className="text-yellow-400">IFCGLOBALWARMINGPOTENTIALMEASURE</span>({gwp.toFixed(2)}), $);</div>
+                <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('GlobalWarmingPotential', $, <span className="text-yellow-400">IFCGLOBALWARMINGPOTENTIALMEASURE</span>({formatDeZahl(gwp, 2)}), $);</div>
               </div>
 
               {/* Explanatory footer */}

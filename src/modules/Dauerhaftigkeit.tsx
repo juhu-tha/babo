@@ -3,7 +3,7 @@ import { ShieldAlert, Sun, Droplets, Bug, Box, Mountain, Maximize, Layers, Activ
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 type MaterialTab = 'prinzipien' | 'beton' | 'asphalte' | 'metalle' | 'holz' | 'kunststoffe' | 'naturstein' | 'glas' | 'unvertraeglichkeiten';
 
@@ -506,7 +506,7 @@ function BetonDauerhaftigkeitsSimulator() {
       </div>
       <p className="text-xs text-slate-600 mb-4 leading-relaxed">
         Nach dem Wurzel-Zeit-Gesetz dringt die Karbonatisierungsfront ein: s(t) = k·√t. stetig ein: <FormulaText text="$s(t) = k \cdot \sqrt{t}$" />. 
-        Sinkt der pH-Wert des Betons von anfänglich &gt; 12.5 auf unter 9.0 (Depassivierung), entfällt der Rostschutz des Stahls.
+        Sinkt der pH-Wert des Betons von anfänglich &gt; 12,5 auf unter 9.0 (Depassivierung), entfällt der Rostschutz des Stahls.
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -523,7 +523,7 @@ function BetonDauerhaftigkeitsSimulator() {
                 >
                   <span className="font-medium">{p.label}</span>
                   <span className="text-xs font-mono bg-slate-200/60 px-1.5 py-0.5 rounded text-slate-600 whitespace-nowrap">
-                    k = {p.kValue} / c = {p.cnomDefault}mm
+                    k = {formatDeWert(p.kValue)} / c = {formatDeWert(p.cnomDefault)}mm
                   </span>
                 </button>
               ))}
@@ -534,7 +534,7 @@ function BetonDauerhaftigkeitsSimulator() {
             <div>
               <div className="flex justify-between text-xs mb-1">
                 <span className="font-bold text-slate-700">Karbonatisierungsbeiwert <FormulaText text="$k$" /></span>
-                <span className="font-mono text-shiraz font-bold">{k} mm/√a</span>
+                <span className="font-mono text-shiraz font-bold">{formatDeWert(k)} mm/√a</span>
               </div>
               <input
                 type="range"
@@ -545,13 +545,13 @@ function BetonDauerhaftigkeitsSimulator() {
                 onChange={(e) => setK(parseFloat(e.target.value))}
                 className="w-full accent-shiraz"
               />
-              <span className="text-xs text-slate-400 block mt-0.5">Dichte Zemente (C35/45) weisen k ~ 1.0 auf; magere k &gt; 4.0.</span>
+              <span className="text-xs text-slate-400 block mt-0.5">Dichte Zemente (C35/45) weisen k ~ 1,0 auf; magere k &gt; 4.0.</span>
             </div>
 
             <div>
               <div className="flex justify-between text-xs mb-1">
                 <span className="font-bold text-slate-700">Betondeckung <FormulaText text="$c_{\text{nom}}$" /> (Soll)</span>
-                <span className="font-mono text-slate-900 font-bold">{cnom} mm</span>
+                <span className="font-mono text-slate-900 font-bold">{formatDeWert(cnom)} mm</span>
               </div>
               <input
                 type="range"
@@ -568,7 +568,7 @@ function BetonDauerhaftigkeitsSimulator() {
             <div>
               <div className="flex justify-between text-xs mb-1">
                 <span className="font-bold text-slate-700">Bauteilalter <FormulaText text="$t$" /></span>
-                <span className="font-mono text-slate-900 font-bold">{t} Jahre</span>
+                <span className="font-mono text-slate-900 font-bold">{formatDeWert(t)} Jahre</span>
               </div>
               <input
                 type="range"
@@ -588,8 +588,8 @@ function BetonDauerhaftigkeitsSimulator() {
           <div className="text-center bg-white p-2 text-xs rounded-lg border border-home-grau/30">
             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Rechnerische Karbonatisierungstiefe</span>
             <div className="text-sm font-bold text-slate-800 mt-1 flex justify-center items-center gap-1">
-              <span>s(t) = {k} · √{t} = </span>
-              <span className="bg-slate-100 text-slate-900 px-2 py-0.5 rounded font-mono text-lg font-black">{xCarb} mm</span>
+              <span>s(t) = {formatDeWert(k)} · √{formatDeWert(t)} = </span>
+              <span className="bg-slate-100 text-slate-900 px-2 py-0.5 rounded font-mono text-lg font-black">{formatDeWert(xCarb)} mm</span>
             </div>
           </div>
 
@@ -601,7 +601,7 @@ function BetonDauerhaftigkeitsSimulator() {
             {/* Uncarbonated Alkaline Concrete (Safe, Passive Zone pH >12.5) */}
             <div className="absolute inset-y-0 right-0 h-full bg-slate-400/20 flex items-center justify-end pr-3 select-none pointer-events-none transition-all duration-300" style={{ left: `${Math.min(100, (xCarb / 70) * 100)}%` }}>
               <span className="text-xs font-bold text-slate-600 uppercase tracking-wider block rotate-90 sm:rotate-0">
-                Alkalisch (pH &gt; 12.5)
+                Alkalisch (pH &gt; 12,5)
               </span>
             </div>
 
@@ -625,7 +625,7 @@ function BetonDauerhaftigkeitsSimulator() {
                 isDepassivated ? 'bg-red-600 border-red-800 animate-pulse text-white' : 'bg-slate-500 border-home-grau/30 text-slate-100'
               }`}>
                 <div className="absolute -top-4 font-mono text-xs font-bold text-slate-800 whitespace-nowrap">
-                  Bewehrung (c = {cnom}mm)
+                  Bewehrung (c = {formatDeWert(cnom)}mm)
                 </div>
                 <div className="text-xs font-black">Ø</div>
               </div>
@@ -655,13 +655,13 @@ function BetonDauerhaftigkeitsSimulator() {
               <p className="text-xs text-slate-700 leading-normal mt-1">
                 {isDepassivated ? (
                   <>
-                    Nach ca. <strong>{tCrit} Jahren</strong> hat die saure Front die Bewehrung erreicht. 
+                    Nach ca. <strong>{formatDeWert(tCrit)} Jahren</strong> hat die saure Front die Bewehrung erreicht. 
                     Ohne korrosions-inhibierende Alkalität droht bei Feuchtezugriff <strong>Bewehrungsrost</strong> (Rostsprengung).
                   </>
                 ) : (
                   <>
                     Die Alkalität schützt die Bewehrungsmatten verlässlich. 
-                    Rechnerisch verbleibende Restschutzdauer vor Depassivierung: <strong>{safeYearsRemaining > 200 ? '>200' : safeYearsRemaining} Jahre</strong> (Schwelle bei t = {tCrit} Jahren).
+                    Rechnerisch verbleibende Restschutzdauer vor Depassivierung: <strong>{safeYearsRemaining > 200 ? '>200' : safeYearsRemaining} Jahre</strong> (Schwelle bei t = {formatDeWert(tCrit)} Jahren).
                   </>
                 )}
               </p>
@@ -685,22 +685,22 @@ function BetonDauerhaftigkeitsSimulator() {
             </h5>
             <div className="space-y-3.5">
               <div className="space-y-1">
-                <p className="font-bold text-slate-800">Schritt 1: Bestimmung des Karbonatisierungsbeiwerts k ({k} mm/√a)</p>
+                <p className="font-bold text-slate-800">Schritt 1: Bestimmung des Karbonatisierungsbeiwerts k ({formatDeWert(k)} mm/√a)</p>
                 <p className="text-slate-600 leading-relaxed">
-                  Der Widerstand des Zementsteins gegen neutralisierendes Kohlendioxid (CO₂) hängt maßgeblich von der Betondichte (niedriger w/z-Wert) und der Erhärtungszeit ab. Ihre aktuelle Auswahl simuliert einen Beiwert von <strong className="font-mono text-xs">{k} mm/√a</strong>.
+                  Der Widerstand des Zementsteins gegen neutralisierendes Kohlendioxid (CO₂) hängt maßgeblich von der Betondichte (niedriger w/z-Wert) und der Erhärtungszeit ab. Ihre aktuelle Auswahl simuliert einen Beiwert von <strong className="font-mono text-xs">{formatDeWert(k)} mm/√a</strong>.
                 </p>
               </div>
               <div className="space-y-1">
                 <p className="font-bold text-slate-800">Schritt 2: Das quadratische Zeitgesetz</p>
                 <p className="text-slate-600 leading-relaxed">
-                  Die Gasdiffusion im Porensystem verläuft nicht-linear. Die Lage der Carbonatisierungsfront s(t) nach {t} Jahren berechnet sich aus:
+                  Die Gasdiffusion im Porensystem verläuft nicht-linear. Die Lage der Carbonatisierungsfront s(t) nach {formatDeWert(t)} Jahren berechnet sich aus:
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs">
-                  s({t}) = {formatDeZahl(k, 1)} · √{t} = {formatDeZahl(k, 1)} · {formatDeZahl(Math.sqrt(t), 3)} = {formatDeZahl(xCarb, 1)} mm
+                  s({formatDeWert(t)}) = {formatDeZahl(k, 1)} · √{formatDeWert(t)} = {formatDeZahl(k, 1)} · {formatDeZahl(Math.sqrt(t), 3)} = {formatDeZahl(xCarb, 1)} mm
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="font-bold text-slate-800">Schritt 3: Abgleich mit der installierten Betondeckung c_nom ({cnom} mm)</p>
+                <p className="font-bold text-slate-800">Schritt 3: Abgleich mit der installierten Betondeckung c_nom ({formatDeWert(cnom)} mm)</p>
                 <p className="text-slate-600 leading-relaxed">
                   Damit der Korrosionsschutz aktiv bleibt, muss die carbonatisierte Schichtdicke kleiner sein als die Deckungstiefe (s(t) &lt; c_nom).
                   {isDepassivated ? (
@@ -720,7 +720,7 @@ function BetonDauerhaftigkeitsSimulator() {
                   Der genaue Zeitpunkt, an dem die Carbonatisierungsfront exakt die Tiefe der Bewehrung berührt (s(t) = c_nom), berechnet sich durch Umstellen der Formel nach t:
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs">
-                  t_crit = (c_nom / k)² = ({cnom} / {k})² = {tCrit} Jahre
+                  t_crit = (c_nom / k)² = ({formatDeWert(cnom)} / {formatDeWert(k)})² = {formatDeWert(tCrit)} Jahre
                 </div>
                 <p className="text-xs text-slate-500 leading-relaxed mt-1">
                   Rechnerisch verbleibende Restlebensdauer vor Depassivierung: {safeYearsRemaining > 0 ? (
@@ -897,7 +897,7 @@ function MetalDurabilitySimulator() {
                 <span className="text-base font-black text-shiraz font-mono">
                   {formatDeZahl(totalSteelLoss / 1000, 3)} mm
                 </span>
-                <span className="text-xs text-slate-400 block mt-0.5 font-mono">({totalSteelLoss} μm Verlust)</span>
+                <span className="text-xs text-slate-400 block mt-0.5 font-mono">({formatDeWert(totalSteelLoss)} μm Verlust)</span>
               </div>
               <div className="bg-white p-2.5 rounded border border-home-grau/30 text-center">
                 <span className="text-xs block text-slate-500 font-semibold mb-0.5">Zinkbeschichtung</span>
@@ -1009,18 +1009,18 @@ function MetalDurabilitySimulator() {
             </h5>
             <div className="space-y-3.5">
               <div className="space-y-1">
-                <p className="font-semibold text-slate-850">Schritt 1: Rechnerischer Abtrag unlegierter Baustahl ({totalSteelLoss} μm)</p>
+                <p className="font-semibold text-slate-850">Schritt 1: Rechnerischer Abtrag unlegierter Baustahl ({formatDeWert(totalSteelLoss)} μm)</p>
                 <p className="text-slate-650 leading-relaxed">
-                  Nach DIN EN ISO 12944-2 wird der jährliche Korrosionsverlust für unlegierten Stahl als konstanter Wert angenommen. Für die ausgewählte Klasse <strong>{targetClass}</strong> beträgt dieser im ersten Jahr {chosen.steelLoss} μm/a. Über {years} Jahre rechnet man linear:
+                  Nach DIN EN ISO 12944-2 wird der jährliche Korrosionsverlust für unlegierten Stahl als konstanter Wert angenommen. Für die ausgewählte Klasse <strong>{targetClass}</strong> beträgt dieser im ersten Jahr {formatDeWert(chosen.steelLoss)} μm/a. Über {years} Jahre rechnet man linear:
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs">
-                  d_loss = {chosen.steelLoss} μm/a · {years} Jahre = {totalSteelLoss} μm ({formatDeZahl(totalSteelLoss / 1000, 3)} mm)
+                  d_loss = {formatDeWert(chosen.steelLoss)} μm/a · {years} Jahre = {formatDeWert(totalSteelLoss)} μm ({formatDeZahl(totalSteelLoss / 1000, 3)} mm)
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="font-semibold text-slate-850">Schritt 2: Rechnerischer Zinkabtrag und theoretische Schutzdauer ({totalZincLoss} μm)</p>
+                <p className="font-semibold text-slate-850">Schritt 2: Rechnerischer Zinkabtrag und theoretische Schutzdauer ({formatDeWert(totalZincLoss)} μm)</p>
                 <p className="text-slate-500 leading-relaxed">
-                  Zink besitzt eine erheblich niedrigere elektrochemische Abtragsrate von {chosen.zincLoss} μm/a. Bei einer handelsüblichen Standardfeuerverzinkung mit z.B. 80 μm (Z80) berechnet sich die rechnerische Schutzzeit bis zur vollkommenen Aufzehrung des Zinks durch:
+                  Zink besitzt eine erheblich niedrigere elektrochemische Abtragsrate von {formatDeWert(chosen.zincLoss)} μm/a. Bei einer handelsüblichen Standardfeuerverzinkung mit z.B. 80 μm (Z80) berechnet sich die rechnerische Schutzzeit bis zur vollkommenen Aufzehrung des Zinks durch:
                 </p>
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs">
                   t_Schutz = 80 μm / {formatDeZahl(chosen.zincLoss, 1)} μm/a = {formatDeZahl(80 / chosen.zincLoss, 1)} Jahre Schutzdauer
@@ -1512,7 +1512,7 @@ export default function Dauerhaftigkeit() {
                     </ul>
                     <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-1 text-xs text-gray-600">
                       <span className="font-bold text-text-main">Umsetzung (z.B. XD3):</span>
-                      <span>max. w/z = 0.45, min. f_ck = C35/45, zusätzlicher Deckschichtschutz (OS-Systeme) oft obligatorisch</span>
+                      <span>max. w/z = 0,45, min. f_ck = C35/45, zusätzlicher Deckschichtschutz (OS-Systeme) oft obligatorisch</span>
                     </div>
                   </div>
 
@@ -1532,7 +1532,7 @@ export default function Dauerhaftigkeit() {
                     </ul>
                     <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-1 text-xs text-gray-600">
                       <span className="font-bold text-text-main">Umsetzung (z.B. XS3):</span>
-                      <span>Extrem dichtes Gefüge (max. w/z = 0.45) und Umsetzung XS3: max. w/z = 0,45, Mindestbetondeckung c_min,dur = 40 mm zzgl. Vorhaltemaß Δc_dev = 15 mm (c_nom = 55 mm)..</span>
+                      <span>Extrem dichtes Gefüge (max. w/z = 0,45) und Umsetzung XS3: max. w/z = 0,45, Mindestbetondeckung c_min,dur = 40 mm zzgl. Vorhaltemaß Δc_dev = 15 mm (c_nom = 55 mm)..</span>
                     </div>
                   </div>
 
@@ -1611,7 +1611,7 @@ export default function Dauerhaftigkeit() {
                   <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
                     <li><strong>Zementstein-Kapillarität (w/z-Wert):</strong> Der Wasserzementwert beschreibt das Massenverhältnis von freiem Wasser zu Zement. Ein optimaler w/z-Wert (≤ 0,45–0,50) garantiert, dass die kapillaren Transportkanäle während der Zementhydratation weitgehend abgebunden und segmentiert werden. Dies minimiert die Diffusionsgeschwindigkeit von CO₂ und Chloriden.</li>
                     <li><strong>Betondeckung (<FormulaText text="$c_{\text{nom}}$" />):</strong> Berechnet sich aus dem Mindestwert (<FormulaText text="$c_{\text{min}}$" />) zur Gewährleistung der dauerhaften Verbundfestigkeit und des Korrosionsschutzes plus einem Sicherheits-Vorhaltemaß (<FormulaText text="$\Delta c_{\text{dev}}$" />, i.d.R. 10 mm, im Fertigteilwerk reduzierbar auf 5 mm). Sie fungiert als zeitliche physikalische Barriere gegen die Karbonatisierungsfront.</li>
-                    <li><strong>Rissbreitenbeschränkung (<FormulaText text="$w_k$" />):</strong> Durch gezielte Bewehrungsaufteilung gegen Eigen- und Formzwang wird die kalkulatorische Rissbreite unter Gebrauchslast auf <FormulaText text="$w_k \le 0,3 \text{ mm}$" /> (oder <FormulaText text="$0,2 \text{ mm}$" /> bei XC/XD-Beaufschlagung) begrenzt, um das ungehinderte Einströmen korrosionsauslösender Medien direkt auf den blanken Stahl zu unterbinden.</li>
+                    <li><strong>Rissbreitenbeschränkung (<FormulaText text="$w_k$" />):</strong> Durch gezielte Bewehrungsaufteilung gegen Eigen- und Formzwang wird die kalkulatorische Rissbreite unter Gebrauchslast auf <FormulaText text="$w_k \le 0{,}3 \text{ mm}$" /> (oder <FormulaText text="$0{,}2 \text{ mm}$" /> bei XC/XD-Beaufschlagung) begrenzt, um das ungehinderte Einströmen korrosionsauslösender Medien direkt auf den blanken Stahl zu unterbinden.</li>
                     <li><strong>Sorgfältige Nachbehandlung:</strong> Schutz des Frischbetons vor Austrocknung (z.B. durch Abdecken, Folien oder chemische Curing-Filme) sichert das Wasser für die Hydratation der oberflächennahen Randschicht. Nur so entsteht dort ein porenarmes, widerstandsfähiges Gefüge.</li>
                   </ul>
                 </div>

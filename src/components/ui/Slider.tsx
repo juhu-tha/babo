@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
 import { cn } from '@/src/lib/utils';
 import { Info } from 'lucide-react';
@@ -30,7 +31,7 @@ export function Slider({ label, value, unit, info, className, id: propId, ...pro
           )}
         </div>
         <span className="text-sm font-bold text-shiraz">
-          {value} {unit}
+          {formatDeWert(value)} {unit}
         </span>
       </div>
       <input
@@ -42,8 +43,8 @@ export function Slider({ label, value, unit, info, className, id: propId, ...pro
         {...props}
       />
       <div className="flex justify-between text-xs text-home-grau mt-1">
-        <span>{props.min}</span>
-        <span>{props.max}</span>
+        <span>{formatDeWert(props.min)}</span>
+        <span>{formatDeWert(props.max)}</span>
       </div>
     </div>
   );

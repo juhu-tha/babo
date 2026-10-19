@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import {
@@ -295,7 +296,7 @@ export default function SpannbetonDauerhaftigkeit() {
                     </div>
                     <div className="p-2 bg-white rounded border border-slate-200">
                       <strong className="text-shiraz block">3. Barriere</strong>
-                      Alkalische Verpressung (<InlineMath math="pH \ge 12.5" />)
+                      Alkalische Verpressung (<InlineMath math="pH \ge 12{,}5" />)
                     </div>
                   </div>
                 </div>
@@ -398,9 +399,9 @@ export default function SpannbetonDauerhaftigkeit() {
                       onChange={(e) => setStrandDiameter(Number(e.target.value))}
                       className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
                     >
-                      <option value={12.5}>Ø 12.5 mm (Y1860 S7-12.5)</option>
-                      <option value={15.2}>Ø 15.2 mm (Y1860 S7-15.2)</option>
-                      <option value={15.7}>Ø 15.7 mm (Y1860 S7-15.7, Standard)</option>
+                      <option value={12.5}>Ø 12,5 mm (Y1860 S7-12.5)</option>
+                      <option value={15.2}>Ø 15,2 mm (Y1860 S7-15.2)</option>
+                      <option value={15.7}>Ø 15,7 mm (Y1860 S7-15.7, Standard)</option>
                     </select>
                   </div>
                 )}
@@ -481,25 +482,25 @@ export default function SpannbetonDauerhaftigkeit() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                     <span className="text-[10px] uppercase font-bold text-slate-500 block">Verbundmaß c_min,b</span>
-                    <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{coverCalculation.c_min_b} mm</span>
+                    <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{formatDeWert(coverCalculation.c_min_b)} mm</span>
                     <span className="text-[10px] text-slate-500">Hüllrohr-Kriterium</span>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                     <span className="text-[10px] uppercase font-bold text-slate-500 block">Dauerhaftigkeit c_min,dur</span>
-                    <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{coverCalculation.c_min_dur} mm</span>
-                    <span className="text-[10px] text-slate-500">inkl. +{coverCalculation.delta_dur_gamma} mm Spannstahlschutz</span>
+                    <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{formatDeWert(coverCalculation.c_min_dur)} mm</span>
+                    <span className="text-[10px] text-slate-500">inkl. +{formatDeWert(coverCalculation.delta_dur_gamma)} mm Spannstahlschutz</span>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                     <span className="text-[10px] uppercase font-bold text-slate-500 block">Vorhaltemaß Δc_dev</span>
-                    <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">+{coverCalculation.delta_c_dev} mm</span>
+                    <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">+{formatDeWert(coverCalculation.delta_c_dev)} mm</span>
                     <span className="text-[10px] text-slate-500">{structureType === 'bruecke' ? 'ZTV-ING Brückenbau' : 'Hochbau-Toleranz'}</span>
                   </div>
 
                   <div className="p-3 bg-shiraz/10 rounded-xl border border-shiraz/30">
                     <span className="text-[10px] uppercase font-bold text-shiraz block">Nennmaß c_nom</span>
-                    <span className="text-2xl font-black text-shiraz font-mono mt-0.5 block">{coverCalculation.c_nom} mm</span>
+                    <span className="text-2xl font-black text-shiraz font-mono mt-0.5 block">{formatDeWert(coverCalculation.c_nom)} mm</span>
                     <span className="text-[10px] text-shiraz/80 font-bold">In den Plänen Verlegemaß c_v ≥ c_nom angeben</span>
                   </div>
                 </div>
@@ -509,18 +510,18 @@ export default function SpannbetonDauerhaftigkeit() {
                   <p>
                     {coverCalculation.c_min_b >= coverCalculation.c_min_dur ? (
                       <span>
-                        Das Verbundmaß <InlineMath math="c_{min,b} = \phi_{Hüllrohr} = " /> <strong>{coverCalculation.c_min_b} mm</strong> ist 
-                        maßgebend gegenüber der Umweltanforderung (<InlineMath math="c_{min,dur} = " /> {coverCalculation.c_min_dur} mm). 
-                        Mit dem Vorhaltemaß <InlineMath math="\Delta c_{dev} = " /> {coverCalculation.delta_c_dev} mm muss das Nennmaß 
-                        mindestens <strong>{coverCalculation.c_nom} mm</strong> betragen.
+                        Das Verbundmaß <InlineMath math="c_{min,b} = \phi_{Hüllrohr} = " /> <strong>{formatDeWert(coverCalculation.c_min_b)} mm</strong> ist 
+                        maßgebend gegenüber der Umweltanforderung (<InlineMath math="c_{min,dur} = " /> {formatDeWert(coverCalculation.c_min_dur)} mm). 
+                        Mit dem Vorhaltemaß <InlineMath math="\Delta c_{dev} = " /> {formatDeWert(coverCalculation.delta_c_dev)} mm muss das Nennmaß 
+                        mindestens <strong>{formatDeWert(coverCalculation.c_nom)} mm</strong> betragen.
                       </span>
                     ) : (
                       <span>
-                        Die Dauerhaftigkeitsanforderung <InlineMath math="c_{min,dur} = " /> <strong>{coverCalculation.c_min_dur} mm</strong> 
-                        (Basis {coverCalculation.baseDur} mm + {coverCalculation.delta_dur_gamma} mm Spanngliedzuschlag 
-                        {coverCalculation.delta_dur_100 > 0 ? ` + ${coverCalculation.delta_dur_100} mm für 100a Nutzungsdauer` : ''} 
-                        {coverCalculation.delta_dur_fck > 0 ? ` - ${coverCalculation.delta_dur_fck} mm Festigkeitsabzug` : ''}) ist maßgebend. 
-                        Das erforderliche Nennmaß beträgt <strong>{coverCalculation.c_nom} mm</strong>.
+                        Die Dauerhaftigkeitsanforderung <InlineMath math="c_{min,dur} = " /> <strong>{formatDeWert(coverCalculation.c_min_dur)} mm</strong> 
+                        (Basis {formatDeWert(coverCalculation.baseDur)} mm + {formatDeWert(coverCalculation.delta_dur_gamma)} mm Spanngliedzuschlag 
+                        {coverCalculation.delta_dur_100 > 0 ? ` + ${formatDeWert(coverCalculation.delta_dur_100)} mm für 100a Nutzungsdauer` : ''} 
+                        {coverCalculation.delta_dur_fck > 0 ? ` - ${formatDeWert(coverCalculation.delta_dur_fck)} mm Festigkeitsabzug` : ''}) ist maßgebend. 
+                        Das erforderliche Nennmaß beträgt <strong>{formatDeWert(coverCalculation.c_nom)} mm</strong>.
                       </span>
                     )}
                   </p>
@@ -555,7 +556,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 </p>
                 <ol className="list-decimal list-inside space-y-1 text-xs pl-1">
                   <li><strong>Mechanischer Verbund:</strong> Kraftübertragung zwischen Spannglied und Betonquerschnitt.</li>
-                  <li><strong>Dauerhafter Korrosionsschutz:</strong> Das hochalkalische Porenwasser (<InlineMath math="\text{pH} \ge 12.5" />) bildet eine mikroskopische Passivschicht auf dem Spannstahl.</li>
+                  <li><strong>Dauerhafter Korrosionsschutz:</strong> Das hochalkalische Porenwasser (<InlineMath math="\text{pH} \ge 12{,}5" />) bildet eine mikroskopische Passivschicht auf dem Spannstahl.</li>
                 </ol>
                 <div className="p-3 bg-rose-50/70 border border-rose-200 rounded-xl text-rose-950 text-xs">
                   <strong>Die Gefahr unvollständiger Verpressung:</strong> Verbleiben im Hüllrohr Lufteinschlüsse oder bildet 
@@ -584,7 +585,7 @@ export default function SpannbetonDauerhaftigkeit() {
 
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                     <strong className="text-shiraz block">Wasserabsondern (Bluten):</strong>
-                    <span className="font-mono font-bold text-sm block">≤ 0.3 % Volumen</span>
+                    <span className="font-mono font-bold text-sm block">≤ 0,3 % Volumen</span>
                     <span className="text-[11px] text-slate-500">Nach 24h kein freies Wasser an Hochpunkten!</span>
                   </div>
 
@@ -679,7 +680,7 @@ export default function SpannbetonDauerhaftigkeit() {
                   <div className="flex justify-between items-center border-b border-slate-200 pb-1.5">
                     <span className="font-bold text-amber-900">Spannbeton im Verbund (XC2–XC4):</span>
                     <span className="font-mono font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                      w_max ≤ 0.2 mm
+                      w_max ≤ 0,2 mm
                     </span>
                   </div>
                   <div className="flex justify-between items-center pt-0.5">
@@ -1043,7 +1044,7 @@ export default function SpannbetonDauerhaftigkeit() {
                           />
                           <circle cx="140" cy="48" r="5" fill="#dc2626" />
                           <text x="140" y="42" fontSize="11" fill="#dc2626" fontWeight="bold">
-                            Totalreflexion Luft (R ≈ -1.0)
+                            Totalreflexion Luft (R ≈ -1,0)
                           </text>
                           <text x="240" y="145" fontSize="10" fill="#dc2626" fontStyle="italic">
                             Akustischer Schatten (Kein Rückwandecho!)
@@ -1077,7 +1078,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 <strong>Erklärung des akustischen Phänomens (Impedanzgrenze):</strong>
                 <p>
                   Trifft die Ultraschall-Transversalwelle auf ein <strong>voll verpresstes Hüllrohr</strong>, 
-                  besitzt der Einpressmörtel eine ähnliche akustische Impedanz wie der umgebende Beton (<InlineMath math="Z \approx 8.5 \times 10^6\text{ kg/(m}^2\text{s)}" />). 
+                  besitzt der Einpressmörtel eine ähnliche akustische Impedanz wie der umgebende Beton (<InlineMath math="Z \approx 8{,}5 \times 10^6\text{ kg/(m}^2\text{s)}" />). 
                   Die Welle dringt durch das Rohr hindurch; das Rückwandecho des Bauteils bleibt klar erkennbar. 
                   Trifft sie dagegen auf einen <strong>Lufteinschluss (<InlineMath math="Z_{Luft} \approx 400" />)</strong>, 
                   wird die Schallenergie zu fast <strong>100 % reflektiert</strong>. Dahinterliegende Litzen und die 

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -175,11 +176,11 @@ export default function Ausbreitversuch() {
               <h4 className="text-sm font-bold text-shiraz mb-2">Rheologische Parameter</h4>
               <div className="flex justify-between items-center mb-1">
                 <span className="text-xs text-text-main">Fließgrenze (τ₀):</span>
-                <span className="text-sm font-bold">{params.tau0} Pa</span>
+                <span className="text-sm font-bold">{formatDeWert(params.tau0)} Pa</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-text-main">Plastische Viskosität (μ):</span>
-                <span className="text-sm font-bold">{params.mu} Pa·s</span>
+                <span className="text-sm font-bold">{formatDeWert(params.mu)} Pa·s</span>
               </div>
             </div>
 
@@ -228,8 +229,8 @@ export default function Ausbreitversuch() {
                         <g key={d}>
                           <line x1={rx} y1="0" x2={rx} y2="4" stroke="#64748b" strokeWidth="1" />
                           <line x1={-rx} y1="0" x2={-rx} y2="4" stroke="#64748b" strokeWidth="1" />
-                          <text x={rx} y="10" fontSize="6" fill="#64748b" textAnchor="middle">{d}</text>
-                          <text x={-rx} y="10" fontSize="6" fill="#64748b" textAnchor="middle">{d}</text>
+                          <text x={rx} y="10" fontSize="6" fill="#64748b" textAnchor="middle">{formatDeWert(d)}</text>
+                          <text x={-rx} y="10" fontSize="6" fill="#64748b" textAnchor="middle">{formatDeWert(d)}</text>
                         </g>
                       );
                     })}
@@ -277,7 +278,7 @@ export default function Ausbreitversuch() {
               </div>
               
               <div className="text-center space-y-2 min-w-[150px]">
-                <h4 className="text-4xl font-bold text-shiraz">{ausbreitmass.toFixed(0)} mm</h4>
+                <h4 className="text-4xl font-bold text-shiraz">{formatDeZahl(ausbreitmass, 0)} mm</h4>
                 <p className="text-sm text-home-grau font-bold uppercase">Ausbreitmaß</p>
                 {testStatus === 'finished' && (
                   <p className="text-sm text-emerald-600 font-medium mt-2">

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import { Network, Calculator, FlaskConical, ArrowRight, Table as TableIcon } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -134,7 +135,7 @@ export default function StatistischeVersuchsplanung() {
           <div className="bg-blue-50 p-4 rounded-xl border border-blue-200 mt-4 text-sm text-blue-900/80">
             <strong>Faktoren:</strong>
             <ul className="list-disc list-inside mt-2 space-y-1">
-              <li><strong>Faktor A:</strong> w/z-Wert (-1 = 0.40, +1 = 0.50)</li>
+              <li><strong>Faktor A:</strong> w/z-Wert (-1 = 0,40, +1 = 0,50)</li>
               <li><strong>Faktor B:</strong> Zementgehalt (-1 = 300 kg/m³, +1 = 350 kg/m³)</li>
               {factors === 3 && <li><strong>Faktor C:</strong> Fließmittel (-1 = 0%, +1 = 1%)</li>}
             </ul>
@@ -160,7 +161,7 @@ export default function StatistischeVersuchsplanung() {
               <tbody>
                 {currentData.map((row) => (
                   <tr key={row.run} className="border-b border-home-grau/10 last:border-0 hover:bg-off-white/50">
-                    <td className="px-4 py-2">{row.run}</td>
+                    <td className="px-4 py-2">{formatDeWert(row.run)}</td>
                     <td className="px-4 py-2 font-mono">{(row as any).A > 0 ? '+1' : '-1'}</td>
                     <td className="px-4 py-2 font-mono">{(row as any).B > 0 ? '+1' : '-1'}</td>
                     {factors === 3 && <td className="px-4 py-2 font-mono">{(row as any).C > 0 ? '+1' : '-1'}</td>}
@@ -193,14 +194,14 @@ export default function StatistischeVersuchsplanung() {
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
             <span className="text-xs font-bold text-home-grau uppercase mb-1">Effekt A (w/z)</span>
             <span className={`text-2xl font-bold ${Number(computeEffect('A')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
-              {computeEffect('A')}
+              {formatDeZahl(Number(computeEffect('A')), 2)}
             </span>
             <span className="text-xs text-text-main/60 mt-1">MPa</span>
           </div>
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
             <span className="text-xs font-bold text-home-grau uppercase mb-1">Effekt B (Zement)</span>
             <span className={`text-2xl font-bold ${Number(computeEffect('B')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
-              {computeEffect('B')}
+              {formatDeZahl(Number(computeEffect('B')), 2)}
             </span>
             <span className="text-xs text-text-main/60 mt-1">MPa</span>
           </div>
@@ -208,7 +209,7 @@ export default function StatistischeVersuchsplanung() {
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
               <span className="text-xs font-bold text-home-grau uppercase mb-1">Effekt C (Fließm.)</span>
               <span className={`text-2xl font-bold ${Number(computeEffect('C')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
-                {computeEffect('C')}
+                {formatDeZahl(Number(computeEffect('C')), 2)}
               </span>
               <span className="text-xs text-text-main/60 mt-1">MPa</span>
             </div>
@@ -216,7 +217,7 @@ export default function StatistischeVersuchsplanung() {
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col items-center text-center">
             <span className="text-xs font-bold text-home-grau uppercase mb-1">Interaktion AB</span>
             <span className={`text-2xl font-bold ${Number(computeInteraction('A', 'B')) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
-              {computeInteraction('A', 'B')}
+              {formatDeZahl(Number(computeInteraction('A', 'B')), 2)}
             </span>
             <span className="text-xs text-text-main/60 mt-1">MPa</span>
           </div>
@@ -225,7 +226,7 @@ export default function StatistischeVersuchsplanung() {
         <div className="mt-4 text-sm text-text-main/80 space-y-3">
           <p>
             <strong className="text-text-main">Interpretation der Haupteffekte:</strong>
-            <br />Ein negativer Effekt bei A (w/z-Wert) bedeutet, dass eine Erhöhung des w/z-Wertes von 0.40 auf 0.50 die Druckfestigkeit im Durchschnitt um {Math.abs(Number(computeEffect('A')))} MPa senkt. Ein positiver Effekt bei B (Zementgehalt) zeigt, dass mehr Zement die Festigkeit erhöht.
+            <br />Ein negativer Effekt bei A (w/z-Wert) bedeutet, dass eine Erhöhung des w/z-Wertes von 0,40 auf 0,50 die Druckfestigkeit im Durchschnitt um {formatDeZahl(Math.abs(Number(computeEffect('A'))), 2)} MPa senkt. Ein positiver Effekt bei B (Zementgehalt) zeigt, dass mehr Zement die Festigkeit erhöht.
           </p>
           <p>
             <strong className="text-text-main">Interaktion AB:</strong>

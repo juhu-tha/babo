@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -239,7 +240,7 @@ export default function Packungsdichte() {
             pointRadius: 0
           },
           {
-            label: `Reales Modell (simuliert für d1/d2 = ${sizeRatio.toFixed(3)})`,
+            label: `Reales Modell (simuliert für d1/d2 = ${formatDeZahl(sizeRatio, 3)})`,
             data: fractions.map(f => f.real),
             borderColor: '#475569',
             backgroundColor: 'rgba(2, 132, 199, 0.1)',
@@ -334,7 +335,7 @@ export default function Packungsdichte() {
                 <div className="pt-2 border-t border-home-grau/30">
                   <div className="flex justify-between text-sm font-medium text-text-main">
                     <span>Kies (8/16 mm) - Rest</span>
-                    <span>{results.aKies2.toFixed(0)} %</span>
+                    <span>{formatDeZahl(results.aKies2, 0)} %</span>
                   </div>
                   <div className="w-full bg-home-grau/20 h-3 rounded-full mt-2 overflow-hidden flex">
                     <div style={{ width: `${results.aZement}%` }} className="bg-slate-400 h-full" title="Zement"></div>
@@ -360,28 +361,28 @@ export default function Packungsdichte() {
               />
               <div className="mt-6 space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-600">Zement (ρ = 3.1 kg/l)</span>
-                  <span className="font-medium">{results.mZement.toFixed(0)} kg</span>
+                  <span className="text-slate-600">Zement (ρ = 3,1 kg/l)</span>
+                  <span className="font-medium">{formatDeZahl(results.mZement, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Zusatzstoff (ρ = 2.65 kg/l)</span>
-                  <span className="font-medium">{results.mZusatz.toFixed(0)} kg</span>
+                  <span className="text-slate-500">Zusatzstoff (ρ = 2,65 kg/l)</span>
+                  <span className="font-medium">{formatDeZahl(results.mZusatz, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-amber-600">Sand 0/2 (ρ = 2.65 kg/l)</span>
-                  <span className="font-medium">{results.mSand.toFixed(0)} kg</span>
+                  <span className="text-amber-600">Sand 0/2 (ρ = 2,65 kg/l)</span>
+                  <span className="font-medium">{formatDeZahl(results.mSand, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-stone-500">Kies 2/8 (ρ = 2.65 kg/l)</span>
-                  <span className="font-medium">{results.mKies1.toFixed(0)} kg</span>
+                  <span className="text-stone-500">Kies 2/8 (ρ = 2,65 kg/l)</span>
+                  <span className="font-medium">{formatDeZahl(results.mKies1, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-stone-700">Kies 8/16 (ρ = 2.65 kg/l)</span>
-                  <span className="font-medium">{results.mKies2.toFixed(0)} kg</span>
+                  <span className="text-stone-700">Kies 8/16 (ρ = 2,65 kg/l)</span>
+                  <span className="font-medium">{formatDeZahl(results.mKies2, 0)} kg</span>
                 </div>
                 <div className="flex justify-between text-sm font-bold border-t border-home-grau/30 pt-3 mt-3">
                   <span>Gesamtfeststoffmasse</span>
-                  <span>{results.mTotal.toFixed(0)} kg</span>
+                  <span>{formatDeZahl(results.mTotal, 0)} kg</span>
                 </div>
               </div>
             </div>
@@ -458,7 +459,7 @@ export default function Packungsdichte() {
                     plugins: {
                       tooltip: {
                         callbacks: {
-                          label: (context) => `${context.dataset.label}: ${context.parsed.y.toFixed(1)} %`
+                          label: (context) => `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} %`
                         }
                       }
                     }
@@ -473,19 +474,19 @@ export default function Packungsdichte() {
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30 text-center">
                   <div className="text-xs text-text-main/70 mb-1">RMSE zu A&A</div>
                   <div className={`text-xl font-bold ${results.rmseAA < 5 ? 'text-emerald-600' : results.rmseAA < 10 ? 'text-amber-500' : 'text-torch-red'}`}>
-                    {results.rmseAA.toFixed(1)}
+                    {formatDeZahl(results.rmseAA, 1)}
                   </div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30 text-center">
                   <div className="text-xs text-text-main/70 mb-1">RMSE zu Fuller</div>
                   <div className={`text-xl font-bold ${results.rmseFuller < 5 ? 'text-emerald-600' : results.rmseFuller < 10 ? 'text-amber-500' : 'text-torch-red'}`}>
-                    {results.rmseFuller.toFixed(1)}
+                    {formatDeZahl(results.rmseFuller, 1)}
                   </div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30 text-center">
                   <div className="text-xs text-text-main/70 mb-1">Est. Packungsdichte</div>
                   <div className="text-xl font-bold text-primary">
-                    {(results.estimatedPD * 100).toFixed(1)} %
+                    {formatDeZahl((results.estimatedPD * 100), 1)} %
                   </div>
                 </div>
               </div>
@@ -610,7 +611,7 @@ export default function Packungsdichte() {
               </ul>
               
               <div className="mt-4 p-4 border border-blue-200 bg-blue-50 rounded-lg text-sm text-blue-900 shadow-sm">
-                <strong>Verhältnis der Durchmesser (d₁/d₂): {(d1/d2).toFixed(3)}</strong>
+                <strong>Verhältnis der Durchmesser (d₁/d₂): {formatDeZahl((d1/d2), 3)}</strong>
                 <p className="mt-1 opacity-80">Je näher das Verhältnis an 0 ist, desto mehr nähert sich die reale Packungsdichte der idealen Theorieküste an. Je näher es an 1 ist, desto flacher verläuft die Kurve.</p>
               </div>
             </div>
@@ -640,7 +641,7 @@ export default function Packungsdichte() {
                     plugins: {
                       tooltip: {
                         callbacks: {
-                          label: (context) => `${context.dataset.label}: ${context.parsed.y.toFixed(1)} %`
+                          label: (context) => `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} %`
                         }
                       }
                     }
@@ -675,7 +676,7 @@ export default function Packungsdichte() {
             quelle: 'Andreasen & Andersen / Funk & Dinger'
           },
           {
-            formel: 'P(d) = \\left(\\frac{d}{D_{\\text{max}}}\\right)^n \\cdot 100\\,\\% \\quad (n = 0.5 \\implies \\text{Fuller-Kurve})',
+            formel: 'P(d) = \\left(\\frac{d}{D_{\\text{max}}}\\right)^n \\cdot 100\\,\\% \\quad (n = 0{,}5 \\implies \\text{Fuller-Kurve})',
             erklaerung: 'Fuller-Gleichung: Idealisierte stetige Sieblinie mit Exponent n = 0.5 für maximale Dichte und minimale Hohlraumvolumina.',
             quelle: 'DIN 1045-2 / Fuller-Thompson'
           },

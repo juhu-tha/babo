@@ -5,7 +5,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import { motion } from 'framer-motion';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -122,7 +122,7 @@ export default function Metallkorrosion() {
     return () => clearInterval(interval);
   }, [env]);
 
-  const clipPath = `polygon(0% 0%, 100% 0%, ${100 - anodeErosion / 2}% ${anodeErosion / 3}%, ${100 - anodeErosion}% 50%, 100% 100%, 0% 100%)`;
+  const clipPath = `polygon(0% 0%, 100% 0%, ${formatDeWert(100 - anodeErosion / 2)}% ${formatDeWert(anodeErosion / 3)}%, ${formatDeWert(100 - anodeErosion)}% 50%, 100% 100%, 0% 100%)`;
   const electronSpeed = env === 'salty' ? 1.0 : env === 'wet' ? 2.5 : env === 'moist' ? 5.0 : 0;
 
   const envInfo = {
@@ -374,7 +374,7 @@ export default function Metallkorrosion() {
                          {/* Interactive clean overlay inside Elektrolyt box */}
                          {env !== 'dry' && rustThickness > 12 && (
                            <div className="absolute top-1 right-1.5 flex items-center gap-1 bg-shiraz text-[8px] text-white px-1.5 py-0.5 rounded font-bold uppercase tracking-wider animate-pulse z-20 border border-shiraz/30">
-                             <span>Rost-Pegel: {Math.round(rustThickness)}%</span>
+                             <span>Rost-Pegel: {formatDeWert(Math.round(rustThickness))}%</span>
                            </div>
                          )}
 

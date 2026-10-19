@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -67,7 +68,7 @@ const PROJECTS: ProjectTemplate[] = [
     description: 'Tragwerkssanierung im historischen Bestand. Einbau von Holz-Beton-Verbunddecken mit Trass-Kalk-Mörtel im Mauerwerksbereich zur Vermeidung alkalischer Ausblühungen sowie mineralischem Fließestrich (CA-C25-F5 auf Anhydritbasis) mit Belegreife-Analysen.',
     defaultTasks: [
       'Einbringen der selbstschneidenden Schrauben für Holz-Beton-Verbund',
-      'CM-Restfeuchtemessung des frisch hergestellten Calciumsulfatestrichs (Soll < 0.5%)',
+      'CM-Restfeuchtemessung des frisch hergestellten Calciumsulfatestrichs (Soll < 0,5%)',
       ' NHL-Trassmörtelmischung am historischen Sichtmauerwerk prüfen',
       'Rissverpressung (Epoxidharz-Injektion nach DIN EN 1504) im Außenmauerwerk',
       'Auftragen der bitumenfreien Bauwerks-Reaktivabdichtung (MDS) an Sockelanschlüssen'
@@ -112,7 +113,7 @@ const SCENARIOS: Scenario[] = [
     id: 'schlechtwetter',
     name: 'Betonieren bei Frostgefahr',
     title: 'Herausforderung: Hydratation & Gefrierschutz nach DIN 1045-3',
-    description: 'Es ist November. Die Temperaturen sinken nachts auf +1.5°C ab, begleitet von starkem Wind (erhöhte Verdunstungsgefahr!). Heute wird die hochfeste Carbonbeton-Bodenplatte betoniert. Der Polier verlangt eigenmächtig Wasserzugabe am Fahrmischer bzgl. Verarbeitbarkeit. Ein fehlerhaftes Protokoll oder mangelnde Curing-Maßnahmen ruinieren die Festigkeitsklasse des Betons irreparabel.',
+    description: 'Es ist November. Die Temperaturen sinken nachts auf +1,5°C ab, begleitet von starkem Wind (erhöhte Verdunstungsgefahr!). Heute wird die hochfeste Carbonbeton-Bodenplatte betoniert. Der Polier verlangt eigenmächtig Wasserzugabe am Fahrmischer bzgl. Verarbeitbarkeit. Ein fehlerhaftes Protokoll oder mangelnde Curing-Maßnahmen ruinieren die Festigkeitsklasse des Betons irreparabel.',
     date: '15. November 2026',
     tempMin: 1.5,
     tempMax: 4.5,
@@ -120,7 +121,7 @@ const SCENARIOS: Scenario[] = [
     suggestedIncident: 'Bodenplatte gegossen. Starker Wind begünstigt Verdunstung. Polier regte unzulässige Wasserzugabe an, um Fließen zu beschleunigen. Wurde strikt untersagt. Einbau-Frischbetontemperatur gemessen.',
     objective: 'Dokumentieren Sie die kalte Witterung, untersagen Sie jegliche unkontrollierte Wasserzugabe (Vermeidung von w/z-Werterhöhung), veranlassen Sie das Auflegen von Thermomatten (Wärme-Haltevorkehrung der Hydratationswärme) und messen Sie die Frischbetontemperatur (Soll ≥ +5°C nach DIN 1045-3).',
     hints: [
-      'Geben Sie die Min-Temperatur exakt auf 1.5 °C an, um die Frost-Hydratationswarnung auszulösen.',
+      'Geben Sie die Min-Temperatur exakt auf 1,5 °C an, um die Frost-Hydratationswarnung auszulösen.',
       'Wählen Sie im Prüfverfahren-Bereich "Frischbetontemperatur gemessen" und "Ausbreitversuch durchgeführt" aus.',
       'Füge im Freitext "Auflegen von Thermoplanen (NB4-Dämmung nach DIN)" hinzu.',
       'Dokumentieren Sie das Verbot des Wasserzusatzes zur Verhinderung von Mikrorissen und Entmischung im Zementleim.'
@@ -313,7 +314,7 @@ export default function Bautagebuch() {
       checks.push({
         title: "Temperaturangaben vorhanden",
         success: true,
-        detail: `Temperaturspektrum von ${tempMin}°C bis ${tempMax}°C dokumentiert.`
+        detail: `Temperaturspektrum von ${formatDeWert(tempMin)}°C bis ${formatDeWert(tempMax)}°C dokumentiert.`
       });
     }
 
@@ -327,7 +328,7 @@ export default function Bautagebuch() {
         checks.push({
           title: "Winterbaumaßnahmen nach DIN 1045-3 bei Betonarbeiten",
           success: false,
-          detail: `Kritischer Fehler! Bei Bauteil- und Außentemperaturen unter +5°C (${tempMin}°C) darf Beton nicht unbeaufsichtigt und ungeschützt erhärten. Sie müssen explizit Frostschutzmaßnahmen (Thermodecken, Folien o.ä.) im Bautagebuch anordnen.`
+          detail: `Kritischer Fehler! Bei Bauteil- und Außentemperaturen unter +5°C (${formatDeWert(tempMin)}°C) darf Beton nicht unbeaufsichtigt und ungeschützt erhärten. Sie müssen explizit Frostschutzmaßnahmen (Thermodecken, Folien o.ä.) im Bautagebuch anordnen.`
         });
       } else {
         checks.push({
@@ -834,7 +835,7 @@ export default function Bautagebuch() {
                         <strong>Tätigkeiten:</strong> {diary.fortschritt}
                       </p>
                       <div className="flex items-center gap-4 text-xs font-medium text-slate-500">
-                        <span>Min/Max Temp: {diary.wetterTempMin}°C - {diary.wetterTempMax}°C</span>
+                        <span>Min/Max Temp: {formatDeWert(diary.wetterTempMin)}°C - {formatDeWert(diary.wetterTempMax)}°C</span>
                         {diary.behinderung && <span className="text-rose-600 font-bold">&#9888; Behinderung aktiv</span>}
                         {diary.bedenken && <span className="text-amber-600 font-bold">&#9888; Bedenken angemeldet</span>}
                       </div>
@@ -917,7 +918,7 @@ export default function Bautagebuch() {
                     <div>
                       <label className="text-xs font-bold text-slate-700 block mb-1">Berichtsnummer (Fortlaufend)</label>
                       <input 
-                        type="number"
+                        type="number" min="1"
                         id="form-bericht-nummer"
                         value={berichtNummer}
                         onChange={(e) => setBerichtNummer(Number(e.target.value))}
@@ -937,7 +938,7 @@ export default function Bautagebuch() {
                     <div>
                       <label className="text-xs font-bold text-slate-700 block mb-1">Innere Bauleitung (Mitarbeiter)</label>
                       <input 
-                        type="number"
+                        type="number" min="0"
                         id="form-eigene-arbeiter"
                         value={arbeiterEigene}
                         onChange={(e) => setArbeiterEigene(Number(e.target.value))}
@@ -969,7 +970,7 @@ export default function Bautagebuch() {
                           onChange={(e) => setTempMin(Number(e.target.value))}
                           className="w-full accent-shiraz"
                         />
-                        <span className="text-xs font-mono font-bold shrink-0 w-12 text-right">{tempMin} &deg;C</span>
+                        <span className="text-xs font-mono font-bold shrink-0 w-12 text-right">{formatDeWert(tempMin)} &deg;C</span>
                       </div>
                     </div>
                     <div>
@@ -984,7 +985,7 @@ export default function Bautagebuch() {
                           onChange={(e) => setTempMax(Number(e.target.value))}
                           className="w-full accent-shiraz"
                         />
-                        <span className="text-xs font-mono font-bold shrink-0 w-12 text-right">{tempMax} &deg;C</span>
+                        <span className="text-xs font-mono font-bold shrink-0 w-12 text-right">{formatDeWert(tempMax)} &deg;C</span>
                       </div>
                     </div>
                   </div>
@@ -1263,7 +1264,7 @@ export default function Bautagebuch() {
                         }`}>
                           {reviewResult.grade}
                         </div>
-                        <p className="text-xs font-medium text-slate-600">Soll-Akkreditierungsgrad: {reviewResult.score} / 100 Punkte</p>
+                        <p className="text-xs font-medium text-slate-600">Soll-Akkreditierungsgrad: {formatDeWert(reviewResult.score)} / 100 Punkte</p>
                       </div>
 
                       {/* Prof assessment commentary */}
@@ -1373,7 +1374,7 @@ export default function Bautagebuch() {
             quelle: 'Reifegradansatz nach Saul / DIN 1045-3'
           },
           {
-            formel: 'r_{\\text{fest}} = \\frac{f_{\\text{cm},2}}{f_{\\text{cm},28}} \\implies \\text{Festigkeitsentwicklung: schnell (} \\ge 0.50 \\text{), mittel, langsam}',
+            formel: 'r_{\\text{fest}} = \\frac{f_{\\text{cm},2}}{f_{\\text{cm},28}} \\implies \\text{Festigkeitsentwicklung: schnell (} \\ge 0{,}50 \\text{), mittel, langsam}',
             erklaerung: 'Festigkeitsentwicklungsverhältnis r nach DIN EN 206 zur Bestimmung der Mindestnachbehandlungsdauer von Betonoberflächen.',
             quelle: 'DIN EN 206 / DIN 1045-3'
           }

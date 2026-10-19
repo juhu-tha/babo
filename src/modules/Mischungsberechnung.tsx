@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
 import { Pie, Line, Radar } from 'react-chartjs-2';
@@ -209,7 +210,7 @@ function GrenzwerteSection() {
              <h3 className="font-bold text-lg mb-3">Konsistenzklassen</h3>
              <div className="text-sm text-text-main/80 mb-2">Die Konsistenz wird über Verdichtungsmaß (C) oder Ausbreitmaß (F) definiert:</div>
              <ul className="space-y-1 text-sm text-text-main/80">
-               <li><strong>C0 (V ≥ 1.46) / F1 (A ≤ 340):</strong> Sehr steif / steif</li>
+               <li><strong>C0 (V ≥ 1,46) / F1 (A ≤ 340):</strong> Sehr steif / steif</li>
                <li><strong>C1 (V 1.45-1.26) / F2 (A 350-410):</strong> Steif / plastisch</li>
                <li><strong>C2 (V 1.25-1.11) / F3 (A 420-480):</strong> Weich (Standard im Hochbau)</li>
                <li><strong>C3 (V 1.10-1.04) / F4 (A 490-550):</strong> Sehr weich</li>
@@ -238,26 +239,26 @@ function GrenzwerteSection() {
                 <tr className="border-b border-home-grau/10">
                   <td className="py-2 px-2 font-bold" rowSpan={2}>XF2 / XF3</td>
                   <td className="py-2 px-2">ohne LP</td>
-                  <td className="py-2 px-2">0.50 / 0.55</td>
+                  <td className="py-2 px-2">0,50 / 0.55</td>
                   <td className="py-2 px-2">C35/45</td>
                   <td className="py-2 px-2">320</td>
                 </tr>
                 <tr className="border-b border-home-grau/30 bg-white">
-                  <td className="py-2 px-2">mit LP (min. 4.0%)</td>
-                  <td className="py-2 px-2">0.55</td>
+                  <td className="py-2 px-2">mit LP (min. 4,0%)</td>
+                  <td className="py-2 px-2">0,55</td>
                   <td className="py-2 px-2">C25/30</td>
                   <td className="py-2 px-2">300</td>
                 </tr>
                 <tr className="border-b border-home-grau/10">
                   <td className="py-2 px-2 font-bold" rowSpan={2}>XF4</td>
                   <td className="py-2 px-2">ohne LP</td>
-                  <td className="py-2 px-2">0.45</td>
+                  <td className="py-2 px-2">0,45</td>
                   <td className="py-2 px-2">C50/60</td>
                   <td className="py-2 px-2">340</td>
                 </tr>
                 <tr className="border-b border-home-grau/30 bg-white">
-                  <td className="py-2 px-2">mit LP (min. 4.0%)</td>
-                  <td className="py-2 px-2">0.50</td>
+                  <td className="py-2 px-2">mit LP (min. 4,0%)</td>
+                  <td className="py-2 px-2">0,50</td>
                   <td className="py-2 px-2">C30/37</td>
                   <td className="py-2 px-2">320</td>
                 </tr>
@@ -350,7 +351,7 @@ function WalzKurvenSection() {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${context.parsed.y.toFixed(1)} N/mm²`
+          label: (context: any) => `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} N/mm²`
         }
       }
     }
@@ -385,7 +386,7 @@ function WalzKurvenSection() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-2"><label htmlFor="walzkurve-festigkeit" className="text-sm font-medium text-text-main">Zementfestigkeitsklasse</label><InfoTooltip text="Normfestigkeit des Zements nach 28 Tagen." /></div>
-            <InfoTooltip text="Normdruckfestigkeit des Zements nach 28 Tagen (z.B. 32.5, 42.5, 52.5 MPa)." />
+            <InfoTooltip text="Normdruckfestigkeit des Zements nach 28 Tagen (z.B. 32.5, 42.5, 52,5 MPa)." />
           </div>
           <select 
             id="walzkurve-festigkeit"
@@ -402,7 +403,7 @@ function WalzKurvenSection() {
 
         <div className="mt-4 p-4 bg-off-white rounded-xl border border-shiraz/20">
           <h3 className="text-sm font-bold text-shiraz mb-2">Erwartete mittlere Druckfestigkeit</h3>
-          <div className="text-3xl font-bold text-shiraz">{currentStrength.toFixed(1)} <span className="text-lg font-normal">MPa</span></div>
+          <div className="text-3xl font-bold text-shiraz">{formatDeZahl(currentStrength, 1)} <span className="text-lg font-normal">MPa</span></div>
           <div className="text-sm text-shiraz/80 mt-1"><FormulaText text="f_{cm} bei 28 Tagen" /></div>
         </div>
       </div>
@@ -1086,11 +1087,11 @@ export default function Mischungsberechnung() {
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 text-center">
                     <div className="bg-off-white p-2 rounded">
                       <div className="text-xs text-text-main/60">max. (w/z)eq</div>
-                      <div className="font-bold">{results.reqMaxWz.toFixed(2)}</div>
+                      <div className="font-bold">{formatDeZahl(results.reqMaxWz, 2)}</div>
                     </div>
                     <div className="bg-off-white p-2 rounded">
                       <div className="text-xs text-text-main/60">min. Zement</div>
-                      <div className="font-bold">{results.reqMinZ} kg</div>
+                      <div className="font-bold">{formatDeWert(results.reqMinZ)} kg</div>
                     </div>
                     <div className="bg-off-white p-2 rounded">
                       <div className="text-xs text-text-main/60">min. Festigkeit</div>
@@ -1098,11 +1099,11 @@ export default function Mischungsberechnung() {
                     </div>
                     <div className="bg-off-white p-2 rounded">
                       <div className="text-xs text-text-main/60">min. Deckung</div>
-                      <div className="font-bold">{results.reqMinCover > 0 ? `${results.reqMinCover} mm` : '-'}</div>
+                      <div className="font-bold">{results.reqMinCover > 0 ? `${formatDeWert(results.reqMinCover)} mm` : '-'}</div>
                     </div>
                     <div className="bg-off-white p-2 rounded">
                       <div className="text-xs text-text-main/60">max. Zement</div>
-                      <div className="font-bold">{results.reqMaxZement !== Infinity ? `${results.reqMaxZement} kg` : '-'}</div>
+                      <div className="font-bold">{results.reqMaxZement !== Infinity ? `${formatDeWert(results.reqMaxZement)} kg` : '-'}</div>
                     </div>
                   </div>
                   
@@ -1201,7 +1202,7 @@ export default function Mischungsberechnung() {
                     <div>
                       <div className="text-xs text-text-main/80 mb-1">Geschätzter Bedarf (für Dmax {groesstkorn}mm):</div>
                       <div className="flex items-center gap-3">
-                        <span className="text-lg font-bold text-blue-600">{results.estimatedWater} kg/m³</span>
+                        <span className="text-lg font-bold text-blue-600">{formatDeWert(results.estimatedWater)} kg/m³</span>
                         <button 
                           onClick={() => setWasser(results.estimatedWater)}
                           className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-medium rounded-lg transition-colors border border-blue-200"
@@ -1220,7 +1221,7 @@ export default function Mischungsberechnung() {
                   <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
                     <AlertTriangle size={16} className="mt-0.5 shrink-0" />
                     <div>
-                      <strong>Achtung:</strong> Der (w/z)eq-Wert von {results.wzEq.toFixed(2)} überschreitet den für die gewählten Expositionsklassen zulässigen Maximalwert von {results.reqMaxWz.toFixed(2)}.
+                      <strong>Achtung:</strong> Der (w/z)eq-Wert von {formatDeZahl(results.wzEq, 2)} überschreitet den für die gewählten Expositionsklassen zulässigen Maximalwert von {formatDeZahl(results.reqMaxWz, 2)}.
                     </div>
                   </div>
                 )}
@@ -1229,7 +1230,7 @@ export default function Mischungsberechnung() {
                   <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
                     <AlertTriangle size={16} className="mt-0.5 shrink-0" />
                     <div>
-                      <strong>Achtung:</strong> Der Zementgehalt von {zement} kg/m³ unterschreitet den für die gewählten Expositionsklassen geforderten Mindestwert von {results.reqMinZ} kg/m³.
+                      <strong>Achtung:</strong> Der Zementgehalt von {formatDeWert(zement)} kg/m³ unterschreitet den für die gewählten Expositionsklassen geforderten Mindestwert von {formatDeWert(results.reqMinZ)} kg/m³.
                     </div>
                   </div>
                 )}
@@ -1238,7 +1239,7 @@ export default function Mischungsberechnung() {
                   <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
                     <AlertTriangle size={16} className="mt-0.5 shrink-0" />
                     <div>
-                      <strong>Achtung:</strong> Der Zementgehalt von {zement} kg/m³ überschreitet den für die gewählte Verschleißklasse (XM) empfohlenen Maximalwert von {results.reqMaxZement} kg/m³ (Gefahr einer abriebanfälligen Zementleimschicht).
+                      <strong>Achtung:</strong> Der Zementgehalt von {formatDeWert(zement)} kg/m³ überschreitet den für die gewählte Verschleißklasse (XM) empfohlenen Maximalwert von {formatDeWert(results.reqMaxZement)} kg/m³ (Gefahr einer abriebanfälligen Zementleimschicht).
                     </div>
                   </div>
                 )}
@@ -1264,13 +1265,13 @@ export default function Mischungsberechnung() {
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-middle-blue/50 text-sm"
                   >
                     <option value="">Manuell gewählt</option>
-                    <option value="C20/25">C20/25 (w/z ≈ 0.65)</option>
-                    <option value="C25/30">C25/30 (w/z ≈ 0.60)</option>
-                    <option value="C30/37">C30/37 (w/z ≈ 0.55)</option>
-                    <option value="C35/45">C35/45 (w/z ≈ 0.50)</option>
-                    <option value="C40/50">C40/50 (w/z ≈ 0.45)</option>
-                    <option value="C45/55">C45/55 (w/z ≈ 0.40)</option>
-                    <option value="C50/60">C50/60 (w/z ≈ 0.35)</option>
+                    <option value="C20/25">C20/25 (w/z ≈ 0,65)</option>
+                    <option value="C25/30">C25/30 (w/z ≈ 0,60)</option>
+                    <option value="C30/37">C30/37 (w/z ≈ 0,55)</option>
+                    <option value="C35/45">C35/45 (w/z ≈ 0,50)</option>
+                    <option value="C40/50">C40/50 (w/z ≈ 0,45)</option>
+                    <option value="C45/55">C45/55 (w/z ≈ 0,40)</option>
+                    <option value="C50/60">C50/60 (w/z ≈ 0,35)</option>
                   </select>
                   {results.reqMinC && (
                     <div className="text-xs text-text-main/60 mt-1">
@@ -1291,7 +1292,7 @@ export default function Mischungsberechnung() {
                   <Slider label="Flugasche (FA)" info="Menge an zugegebener Flugasche." min={0} max={150} step={5} value={fa} unit="kg/m3" onChange={(e) => setFa(Number(e.target.value))} />
                   {fa > results.maxFa && (
                     <div className="text-xs text-torch-red mt-1">
-                      (Anrechenbar max. {results.maxFa.toFixed(0)} kg/m³ bei {zement} kg/m³ {zementArt})
+                      (Anrechenbar max. {formatDeZahl(results.maxFa, 0)} kg/m³ bei {formatDeWert(zement)} kg/m³ {zementArt})
                     </div>
                   )}
                 </div>
@@ -1301,9 +1302,9 @@ export default function Mischungsberechnung() {
                       <label className="text-sm font-medium text-text-main">k-Wert FA</label>
                       <InfoTooltip text="Nach Typ II: Flugasche üblicherweise 0.4 (DIN 1045-2). Für Unterwasserbeton nach DAfStb max. 0.7." />
                     </div>
-                    <span className="text-sm font-bold text-shiraz">{kFa} -</span>
+                    <span className="text-sm font-bold text-shiraz">{formatDeWert(kFa)} -</span>
                   </div>
-                  <div className="text-xs text-home-grau">Nach DIN 1045-2: k = {DIN1045_2.kFlugasche}</div>
+                  <div className="text-xs text-home-grau">Nach DIN 1045-2: k = {formatDeWert(DIN1045_2.kFlugasche)}</div>
                 </div>
               </div>
 
@@ -1313,7 +1314,7 @@ export default function Mischungsberechnung() {
                   <Slider label="Silikastaub (SF)" info="Menge an zugegebenem Silikastaub." min={0} max={50} step={1} value={sf} unit="kg/m3" onChange={(e) => setSf(Number(e.target.value))} />
                   {sf > results.maxSf && (
                     <div className="text-xs text-torch-red mt-1">
-                      (Anrechenbar max. {results.maxSf.toFixed(0)} kg/m³ bei {zement} kg/m³ Zement)
+                      (Anrechenbar max. {formatDeZahl(results.maxSf, 0)} kg/m³ bei {formatDeWert(zement)} kg/m³ Zement)
                     </div>
                   )}
                 </div>
@@ -1323,9 +1324,9 @@ export default function Mischungsberechnung() {
                       <label className="text-sm font-medium text-text-main">k-Wert SF</label>
                       <InfoTooltip text="DIN EN 206 nennt 2.0 als Empfehlung, in Deutschland gilt nach DIN 1045-2 k = 1.0" />
                     </div>
-                    <span className="text-sm font-bold text-shiraz">1.0 -</span>
+                    <span className="text-sm font-bold text-shiraz">1,0 -</span>
                   </div>
-                  <div className="text-xs text-home-grau">In Deutschland gilt nach DIN 1045-2 k = 1.0</div>
+                  <div className="text-xs text-home-grau">In Deutschland gilt nach DIN 1045-2 k = 1,0</div>
                 </div>
               </div>
 
@@ -1344,7 +1345,7 @@ export default function Mischungsberechnung() {
                   />
                   {hues > 0 && (
                     <div className="text-xs text-shiraz mt-1">
-                      (Latent-hydraulisch: Dichte 2,90 kg/dm³, V_HüS = {(hues / 2.9).toFixed(1)} dm³)
+                      (Latent-hydraulisch: Dichte 2,90 kg/dm³, V_HüS = {formatDeZahl((hues / 2.9), 1)} dm³)
                     </div>
                   )}
                 </div>
@@ -1354,7 +1355,7 @@ export default function Mischungsberechnung() {
                       <label className="text-sm font-medium text-text-main">k-Wert HüS</label>
                       <InfoTooltip text="Hüttensandmehl Typ II (DIN EN 15167-1 / DIN 1045-2). Anrechnung auf w/z-Wert und Mindestzementgehalt in Deutschland nach bauaufsichtlicher Zulassung bzw. Kombinationskonzept (typisch k = 0,4 bis 0,6)." />
                     </div>
-                    <span className="text-sm font-bold text-shiraz">{kKsm.toFixed(1)} -</span>
+                    <span className="text-sm font-bold text-shiraz">{formatDeZahl(kKsm, 1)} -</span>
                   </div>
                   <Slider 
                     label="" 
@@ -1389,7 +1390,7 @@ export default function Mischungsberechnung() {
                       <label className="text-sm font-medium text-text-main">k-Wert Biochar</label>
                       <InfoTooltip text="Pflanzenkohle (Biochar): Aktuell kein generischer k-Wert in DIN 1045-2 festgelegt. Eine Anrechnung auf Mindestzement und w/z-Wert bedarf in Deutschland einer abZ/aBG. In wissenschaftlichen Studien liegt der Wirksamkeitsfaktor k typischerweise zwischen 0,0 (inerter Füllstoff) und 0,2–0,3 (heterogene Keimbildungseffekte bei Feinstmahlung). Negative k-Werte bilden Festigkeitsverluste bei unkompensierter Zementsubstitution ab." />
                     </div>
-                    <span className="text-sm font-bold text-shiraz">{kBiochar.toFixed(1)} -</span>
+                    <span className="text-sm font-bold text-shiraz">{formatDeZahl(kBiochar, 1)} -</span>
                   </div>
                   <Slider 
                     label="" 
@@ -1484,7 +1485,7 @@ export default function Mischungsberechnung() {
                   </div>
                   {isLpActive && (
                     <div className="font-mono text-blue-800 font-medium">
-                      DIN 1045-2 Mindestluftgehalt für Dmax {groesstkorn} mm: <strong>≥ {minLpNorm.toFixed(1)} Vol.-%</strong>
+                      DIN 1045-2 Mindestluftgehalt für Dmax {groesstkorn} mm: <strong>≥ {formatDeZahl(minLpNorm, 1)} Vol.-%</strong>
                     </div>
                   )}
                 </div>
@@ -1495,7 +1496,7 @@ export default function Mischungsberechnung() {
                     <div className="flex items-start gap-2">
                       <AlertTriangle size={16} className="text-red-600 flex-shrink-0 mt-0.5" />
                       <span>
-                        <strong>Achtung:</strong> Der eingestellte Luftgehalt ({luft.toFixed(1)} Vol.-%) unterschreitet den normativen Mindestluftgehalt ({minLpNorm.toFixed(1)} Vol.-% für Dmax = {groesstkorn} mm nach DIN 1045-2 Tabelle F.2.2)!
+                        <strong>Achtung:</strong> Der eingestellte Luftgehalt ({formatDeZahl(luft, 1)} Vol.-%) unterschreitet den normativen Mindestluftgehalt ({formatDeZahl(minLpNorm, 1)} Vol.-% für Dmax = {groesstkorn} mm nach DIN 1045-2 Tabelle F.2.2)!
                       </span>
                     </div>
                     <button
@@ -1503,7 +1504,7 @@ export default function Mischungsberechnung() {
                       onClick={() => setLuft(minLpNorm)}
                       className="px-2.5 py-1 bg-red-600 text-white rounded font-bold hover:bg-red-700 transition-all text-xs whitespace-nowrap self-end sm:self-auto cursor-pointer"
                     >
-                      Auf {minLpNorm.toFixed(1)} % anpassen
+                      Auf {formatDeZahl(minLpNorm, 1)} % anpassen
                     </button>
                   </div>
                 )}
@@ -1516,14 +1517,14 @@ export default function Mischungsberechnung() {
                       <div>
                         <div className="font-bold text-xs text-text-main flex items-center justify-between">
                           <span>1. Gesteinsverdrängung</span>
-                          <span className="text-shiraz font-mono font-bold">-{deltaLuftVol.toFixed(1)} dm³</span>
+                          <span className="text-shiraz font-mono font-bold">-{formatDeZahl(deltaLuftVol, 1)} dm³</span>
                         </div>
                         <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
                           Zusätzliche Mikroluftporen verdrängen im 1000-dm³-Stoffraum direkt Gesteinskörnung:
                         </p>
                       </div>
                       <div className="mt-2 text-xs font-mono font-semibold text-text-main bg-off-white/80 p-1.5 rounded">
-                        Gesteinsmasse sinkt um <strong>-{deltaGesteinMasse.toFixed(1)} kg/m³</strong>
+                        Gesteinsmasse sinkt um <strong>-{formatDeZahl(deltaGesteinMasse, 1)} kg/m³</strong>
                       </div>
                     </div>
 
@@ -1532,7 +1533,7 @@ export default function Mischungsberechnung() {
                       <div>
                         <div className="font-bold text-xs text-text-main flex items-center justify-between">
                           <span>2. Sandanteil (Walz-Regel)</span>
-                          <span className="text-shiraz font-mono font-bold">-{empfohleneSandReduktion}% Sand</span>
+                          <span className="text-shiraz font-mono font-bold">-{formatDeWert(empfohleneSandReduktion)}% Sand</span>
                         </div>
                         <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
                           Mikroluftporen wirken wie Feinsandkugeln („Kugellagereffekt“). Ohne Korrektur wird der Beton übermörtelt.
@@ -1546,7 +1547,7 @@ export default function Mischungsberechnung() {
                           className="w-full px-2 py-1 bg-shiraz/10 hover:bg-shiraz text-shiraz hover:text-white rounded text-[11px] font-bold transition-all disabled:opacity-40 cursor-pointer flex items-center justify-center gap-1"
                         >
                           <Scale size={12} />
-                          <span>Sandreduktion anwenden (-{empfohleneSandReduktion}%)</span>
+                          <span>Sandreduktion anwenden (-{formatDeWert(empfohleneSandReduktion)}%)</span>
                         </button>
                       </div>
                     </div>
@@ -1556,14 +1557,14 @@ export default function Mischungsberechnung() {
                       <div>
                         <div className="font-bold text-xs text-text-main flex items-center justify-between">
                           <span>3. Wasseranspruch</span>
-                          <span className="text-green-700 font-mono font-bold">-{wasserEinsparungLP.toFixed(1)} L/m³</span>
+                          <span className="text-green-700 font-mono font-bold">-{formatDeZahl(wasserEinsparungLP, 1)} L/m³</span>
                         </div>
                         <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
                           Die sphärischen Luftporen verbessern die Gleitfähigkeit der Gesteinskörner und verringern das Bluten (Bleeding).
                         </p>
                       </div>
                       <div className="mt-2 text-[11px] text-green-800 bg-green-50/70 p-1.5 rounded font-medium">
-                        Wasserersparnis für Konsistenz {konsistenz}: ca. <strong>{wasserEinsparungLP.toFixed(1)} Liter/m³</strong>
+                        Wasserersparnis für Konsistenz {konsistenz}: ca. <strong>{formatDeZahl(wasserEinsparungLP, 1)} Liter/m³</strong>
                       </div>
                     </div>
 
@@ -1572,7 +1573,7 @@ export default function Mischungsberechnung() {
                       <div>
                         <div className="font-bold text-xs text-text-main flex items-center justify-between">
                           <span>4. Festigkeitseinfluss</span>
-                          <span className="text-orange-700 font-mono font-bold">-{festigkeitsVerlustLP.toFixed(0)} MPa</span>
+                          <span className="text-orange-700 font-mono font-bold">-{formatDeZahl(festigkeitsVerlustLP, 0)} MPa</span>
                         </div>
                         <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
                           Jedes Vol.-% Luftporen kostet ca. 4 MPa Festigkeit. DIN 1045-2 kompensiert dies normativ:
@@ -1596,7 +1597,7 @@ export default function Mischungsberechnung() {
                 </h3>
                 {(stahlfaser > 0 || ppFaser > 0) && (
                   <span className="text-[11px] font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full">
-                    {results.volFasernGesamt.toFixed(2)} dm³/m³ Stoffraum
+                    {formatDeZahl(results.volFasernGesamt, 2)} dm³/m³ Stoffraum
                   </span>
                 )}
               </div>
@@ -1647,12 +1648,12 @@ export default function Mischungsberechnung() {
                   <div className="text-[11px] leading-relaxed space-y-1">
                     {stahlfaser > 0 && (
                       <p>
-                        • <strong>Stahlfasern ({stahlfaser} kg/m³):</strong> Beanspruchen {results.volStahlfaser.toFixed(2)} dm³ Stoffraumvolumen (Dichte 7,85 kg/dm³). Erhöhen die Biegezug- und Nachrisszugfestigkeit nach der DAfStb-Richtlinie „Stahlfaserbeton“ (z. B. Leistungsklassen L1,2/1,2).
+                        • <strong>Stahlfasern ({formatDeWert(stahlfaser)} kg/m³):</strong> Beanspruchen {formatDeZahl(results.volStahlfaser, 2)} dm³ Stoffraumvolumen (Dichte 7,85 kg/dm³). Erhöhen die Biegezug- und Nachrisszugfestigkeit nach der DAfStb-Richtlinie „Stahlfaserbeton“ (z. B. Leistungsklassen L1,2/1,2).
                       </p>
                     )}
                     {ppFaser > 0 && (
                       <p>
-                        • <strong>PP-Fasern ({ppFaser.toFixed(1)} kg/m³):</strong> Beanspruchen {results.volPpFaser.toFixed(2)} dm³ Stoffraumvolumen (Dichte 0,91 kg/dm³). Schmelzen im Brandfall bei ~165 °C, bilden Entlastungskanäle gegen Porenwasserdampfdruck und verhindern explosionsartige Betonabplatzungen (ZTV-ING Teil 5).
+                        • <strong>PP-Fasern ({formatDeZahl(ppFaser, 1)} kg/m³):</strong> Beanspruchen {formatDeZahl(results.volPpFaser, 2)} dm³ Stoffraumvolumen (Dichte 0,91 kg/dm³). Schmelzen im Brandfall bei ~165 °C, bilden Entlastungskanäle gegen Porenwasserdampfdruck und verhindern explosionsartige Betonabplatzungen (ZTV-ING Teil 5).
                       </p>
                     )}
                   </div>
@@ -1666,7 +1667,7 @@ export default function Mischungsberechnung() {
                 Gesteinskörnung & Feuchte
                 {!isFraktionenOk && (
                   <span className="text-red-500 text-xs flex items-center gap-1 bg-red-50 px-2 py-1 rounded">
-                    <AlertTriangle size={14} /> Summe: {sumFraktionen.toFixed(1)}% (muss 100% sein)
+                    <AlertTriangle size={14} /> Summe: {formatDeZahl(sumFraktionen, 1)}% (muss 100% sein)
                   </span>
                 )}
                 {isFraktionenOk && (
@@ -1729,8 +1730,8 @@ export default function Mischungsberechnung() {
               </div>
               
               <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Slider label="Rohdichte Gestein" info="Normalbeton: ~2.65 kg/dm3. Leichtbeton: < 2.0 kg/dm3" min={0.5} max={3.0} step={0.05} value={rhoGestein} unit="kg/dm3" onChange={(e) => setRhoGestein(Number(e.target.value))} />
-                <Slider label={`Feinanteil im Sand (${sandFraktion})`} info="Sogenanntes 'Mehlkorn' (Korngröße ≤ 0.125 mm) aus der Gesteinskörnung. Erlaubte Mehlkorngehalte im Beton sind durch DIN 1045-2 begrenzt." min={0} max={15} step={0.5} value={feinanteilSand} unit="M.-%" onChange={(e) => setFeinanteilSand(Number(e.target.value))} />
+                <Slider label="Rohdichte Gestein" info="Normalbeton: ~2,65 kg/dm3. Leichtbeton: < 2,0 kg/dm3" min={0.5} max={3.0} step={0.05} value={rhoGestein} unit="kg/dm3" onChange={(e) => setRhoGestein(Number(e.target.value))} />
+                <Slider label={`Feinanteil im Sand (${sandFraktion})`} info="Sogenanntes 'Mehlkorn' (Korngröße ≤ 0,125 mm) aus der Gesteinskörnung. Erlaubte Mehlkorngehalte im Beton sind durch DIN 1045-2 begrenzt." min={0} max={15} step={0.5} value={feinanteilSand} unit="M.-%" onChange={(e) => setFeinanteilSand(Number(e.target.value))} />
               </div>
 
               <div className="grid grid-cols-2 gap-x-4 gap-y-6">
@@ -1782,14 +1783,14 @@ export default function Mischungsberechnung() {
                     {results.isWzOk ? <CheckCircle2 size={20} /> : <AlertTriangle size={20} />}
                     <div>
                       <div className="font-bold text-sm">w/z-Wert Prüfung</div>
-                      <div className="text-xs opacity-80">Ist: {results.wzEq.toFixed(2)} | Max: {results.reqMaxWz.toFixed(2)}</div>
+                      <div className="text-xs opacity-80">Ist: {formatDeZahl(results.wzEq, 2)} | Max: {formatDeZahl(results.reqMaxWz, 2)}</div>
                     </div>
                   </div>
                   <div className={`p-3 rounded flex items-center gap-3 ${results.isZOk ? 'bg-green-500/20 text-green-100' : 'bg-red-500/20 text-red-100'}`}>
                     {results.isZOk ? <CheckCircle2 size={20} /> : <AlertTriangle size={20} />}
                     <div>
                       <div className="font-bold text-sm">Zementgehalt Prüfung</div>
-                      <div className="text-xs opacity-80">Ist: {zement} kg | Min: {results.reqMinZ} kg</div>
+                      <div className="text-xs opacity-80">Ist: {formatDeWert(zement)} kg | Min: {formatDeWert(results.reqMinZ)} kg</div>
                     </div>
                   </div>
                 </div>
@@ -1805,9 +1806,9 @@ export default function Mischungsberechnung() {
                       <AlertTriangle size={20} className="text-rose-400 shrink-0" />
                     )}
                     <div>
-                      <div className="font-bold text-sm">Mehlkorngehalt Prüfung (≤ 0.125 mm)</div>
+                      <div className="font-bold text-sm">Mehlkorngehalt Prüfung (≤ 0,125 mm)</div>
                       <div className="text-xs opacity-90">
-                        Ist: {results.mehlkornGesamt.toFixed(0)} kg/m³ | Zulässig: {results.maxMehlkornText}
+                        Ist: {formatDeZahl(results.mehlkornGesamt, 0)} kg/m³ | Zulässig: {results.maxMehlkornText}
                         {!results.isMehlkornOk && ' (Grenzwert überschritten!)'}
                       </div>
                     </div>
@@ -1818,53 +1819,53 @@ export default function Mischungsberechnung() {
               <div className="grid grid-cols-2 gap-y-6 gap-x-4">
                 <div>
                   <div className="text-white/70 text-sm">Zugabewasser</div>
-                  <div className="text-2xl font-bold">{results.zugabewasser.toFixed(1)} Liter</div>
-                  <div className="text-xs text-white/50 mt-1">({results.wasserAusGestein.toFixed(1)} L aus Gestein{biochar > 0 ? `, ${results.wasserAusBiochar.toFixed(1)} L aus Biochar` : ''})</div>
+                  <div className="text-2xl font-bold">{formatDeZahl(results.zugabewasser, 1)} Liter</div>
+                  <div className="text-xs text-white/50 mt-1">({formatDeZahl(results.wasserAusGestein, 1)} L aus Gestein{biochar > 0 ? `, ${formatDeZahl(results.wasserAusBiochar, 1)} L aus Biochar` : ''})</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm">Leimvolumen</div>
-                  <div className="text-2xl font-bold"><FormulaText text={`${results.volLeim.toFixed(1)} \\text{ dm}^3`} /></div>
+                  <div className="text-2xl font-bold"><FormulaText text={`${formatDeTeX(results.volLeim, 1)} \\text{ dm}^3`} /></div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm flex items-center gap-1">
                     w/z-Wert
                   </div>
-                  <div className="text-2xl font-bold">{results.wz.toFixed(2)}</div>
+                  <div className="text-2xl font-bold">{formatDeZahl(results.wz, 2)}</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm flex items-center gap-1">
                     Äquivalenter (w/z)eq
                   </div>
-                  <div className="text-2xl font-bold">{results.wzEq.toFixed(2)}</div>
+                  <div className="text-2xl font-bold">{formatDeZahl(results.wzEq, 2)}</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm flex items-center gap-1">
                     w/b-Wert
                     <InfoTooltip text="Wasser-Bindemittel-Wert (reines Massenverhältnis ohne k-Faktoren)" />
                   </div>
-                  <div className="text-2xl font-bold">{results.wbWert.toFixed(2)}</div>
+                  <div className="text-2xl font-bold">{formatDeZahl(results.wbWert, 2)}</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm flex items-center gap-1">
                     Frischbetonrohdichte
                   </div>
-                  <div className="text-2xl font-bold"><FormulaText text={`${(results.frischbetonRohdichte * 1000).toFixed(0)} \\text{ kg/m}^3`} /></div>
+                  <div className="text-2xl font-bold"><FormulaText text={`${formatDeTeX((results.frischbetonRohdichte * 1000), 0)} \\text{ kg/m}^3`} /></div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm flex items-center gap-1">
                     Luftporenvolumen (LP)
                     <InfoTooltip text="Künstlich eingetragenes oder verbleibendes Luftporenvolumen im Beton." />
                   </div>
-                  <div className="text-2xl font-bold">{results.volLuft.toFixed(1)} dm³</div>
-                  <div className="text-xs text-white/50 mt-1">({luft.toFixed(1)} Vol.-% der Mischung)</div>
+                  <div className="text-2xl font-bold">{formatDeZahl(results.volLuft, 1)} dm³</div>
+                  <div className="text-xs text-white/50 mt-1">({formatDeZahl(luft, 1)} Vol.-% der Mischung)</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm flex items-center gap-1">
                     Gesteinsvolumen
                     <InfoTooltip text="Das rechnerische Restvolumen für die Gesteinskörnung." />
                   </div>
-                  <div className="text-2xl font-bold"><FormulaText text={`${results.volGestein.toFixed(1)} \\text{ dm}^3`} /></div>
-                  <div className="text-xs text-white/50 mt-1">({(results.volGestein / 10).toFixed(1)} Vol.-% der Mischung)</div>
+                  <div className="text-2xl font-bold"><FormulaText text={`${formatDeTeX(results.volGestein, 1)} \\text{ dm}^3`} /></div>
+                  <div className="text-xs text-white/50 mt-1">({formatDeZahl((results.volGestein / 10), 1)} Vol.-% der Mischung)</div>
                 </div>
               </div>
 
@@ -1877,31 +1878,31 @@ export default function Mischungsberechnung() {
                   </div>
                   <div className="space-y-1 text-[11px]">
                     <div className="flex justify-between">
-                      <span>V_Zement:</span> <span>{results.volZement.toFixed(1)} dm³</span>
+                      <span>V_Zement:</span> <span>{formatDeZahl(results.volZement, 1)} dm³</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>V_Wasser (trocken):</span> <span>{(results.wasserTrocken / 1.0).toFixed(1)} dm³</span>
+                      <span>V_Wasser (trocken):</span> <span>{formatDeZahl((results.wasserTrocken / 1.0), 1)} dm³</span>
                     </div>
                     {(results.volFa + results.volSf + results.volKsm + results.volBiochar) > 0 && (
                       <div className="flex justify-between">
-                        <span>V_Zusatzstoffe:</span> <span>{(results.volFa + results.volSf + results.volKsm + results.volBiochar).toFixed(1)} dm³</span>
+                        <span>V_Zusatzstoffe:</span> <span>{formatDeZahl((results.volFa + results.volSf + results.volKsm + results.volBiochar), 1)} dm³</span>
                       </div>
                     )}
                     {results.volZM > 0 && (
                       <div className="flex justify-between">
-                        <span>V_Zusatzmittel:</span> <span>{results.volZM.toFixed(1)} dm³</span>
+                        <span>V_Zusatzmittel:</span> <span>{formatDeZahl(results.volZM, 1)} dm³</span>
                       </div>
                     )}
                     {results.volFasernGesamt > 0 && (
                       <div className="flex justify-between text-yellow-200 font-semibold">
-                        <span>V_Fasern (SF: {results.volStahlfaser.toFixed(2)} dm³, PP: {results.volPpFaser.toFixed(2)} dm³):</span> <span>{results.volFasernGesamt.toFixed(2)} dm³</span>
+                        <span>V_Fasern (SF: {formatDeZahl(results.volStahlfaser, 2)} dm³, PP: {formatDeZahl(results.volPpFaser, 2)} dm³):</span> <span>{formatDeZahl(results.volFasernGesamt, 2)} dm³</span>
                       </div>
                     )}
                     <div className="flex justify-between text-yellow-300 font-semibold border-b border-white/10 pb-1">
-                      <span>V_Luftporen (Luftgehalt):</span> <span>{results.volLuft.toFixed(1)} dm³ ({luft.toFixed(1)} Vol.-%)</span>
+                      <span>V_Luftporen (Luftgehalt):</span> <span>{formatDeZahl(results.volLuft, 1)} dm³ ({formatDeZahl(luft, 1)} Vol.-%)</span>
                     </div>
                     <div className="flex justify-between pt-1 font-bold text-green-300">
-                      <span>Restvolumen V_Gestein:</span> <span>{results.volGestein.toFixed(1)} dm³</span>
+                      <span>Restvolumen V_Gestein:</span> <span>{formatDeZahl(results.volGestein, 1)} dm³</span>
                     </div>
                   </div>
                 </div>
@@ -1914,33 +1915,33 @@ export default function Mischungsberechnung() {
             {/* CO2 Box */}
             <div className="bg-green-50 border border-green-200 p-6 rounded-xl shadow-sm">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-green-800"><FormulaText text="CO_2-Fußabdruck (GWP)" /></h3>
-              <div className="text-3xl font-bold text-green-700"><FormulaText text={`${results.co2Gesamt.toFixed(0)} \\text{ kg CO}_2\\text{-Äq.}`} /></div>
+              <div className="text-3xl font-bold text-green-700"><FormulaText text={`${formatDeTeX(results.co2Gesamt, 0)} \\text{ kg CO}_2\\text{-Äq.}`} /></div>
               <div className="text-sm text-green-600 mb-4"><FormulaText text="pro m³ Beton" /></div>
               
               <div className="grid grid-cols-2 gap-2 text-sm text-green-800/80">
                 <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span>Zement ({zementArt}):</span> <span className="font-medium">{results.co2Zement.toFixed(1)} kg</span>
+                  <span>Zement ({zementArt}):</span> <span className="font-medium">{formatDeZahl(results.co2Zement, 1)} kg</span>
                 </div>
                 <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span>Gestein:</span> <span className="font-medium">{results.co2Gestein.toFixed(1)} kg</span>
+                  <span>Gestein:</span> <span className="font-medium">{formatDeZahl(results.co2Gestein, 1)} kg</span>
                 </div>
                 {(fa > 0 || sf > 0 || hues > 0 || biochar > 0) && (
                   <div className="flex justify-between border-b border-green-200/50 pb-1">
-                    <span>Zusatzstoffe:</span> <span className="font-medium">{(results.co2Fa + results.co2Sf + results.co2Ksm + results.co2Biochar).toFixed(1)} kg</span>
+                    <span>Zusatzstoffe:</span> <span className="font-medium">{formatDeZahl((results.co2Fa + results.co2Sf + results.co2Ksm + results.co2Biochar), 1)} kg</span>
                   </div>
                 )}
                 {results.co2FasernGesamt > 0 && (
                   <div className="flex justify-between border-b border-green-200/50 pb-1">
-                    <span>Fasern (SF/PP):</span> <span className="font-medium">{results.co2FasernGesamt.toFixed(1)} kg</span>
+                    <span>Fasern (SF/PP):</span> <span className="font-medium">{formatDeZahl(results.co2FasernGesamt, 1)} kg</span>
                   </div>
                 )}
                 {zusatzmittel > 0 && (
                   <div className="flex justify-between border-b border-green-200/50 pb-1">
-                    <span>Zusatzmittel:</span> <span className="font-medium">{results.co2ZM.toFixed(1)} kg</span>
+                    <span>Zusatzmittel:</span> <span className="font-medium">{formatDeZahl(results.co2ZM, 1)} kg</span>
                   </div>
                 )}
                 <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span>Wasser:</span> <span className="font-medium">{results.co2Wasser.toFixed(1)} kg</span>
+                  <span>Wasser:</span> <span className="font-medium">{formatDeZahl(results.co2Wasser, 1)} kg</span>
                 </div>
               </div>
             </div>
@@ -1958,21 +1959,21 @@ export default function Mischungsberechnung() {
                   <div 
                     style={{ width: `${(results.volGestein / 1000) * 100}%` }} 
                     className="bg-stone-400 flex items-center justify-center text-xs text-white font-medium"
-                    title={`Gestein: ${results.volGestein.toFixed(1)} dm³`}
+                    title={`Gestein: ${formatDeZahl(results.volGestein, 1)} dm³`}
                   >
                     {results.volGestein > 100 && 'Gestein'}
                   </div>
                   <div 
                     style={{ width: `${((results.volZement + results.volFa + results.volSf + results.volKsm + results.volBiochar) / 1000) * 100}%` }} 
                     className="bg-slate-400 flex items-center justify-center text-xs text-white font-medium"
-                    title={`Bindemittel: ${(results.volZement + results.volFa + results.volSf + results.volKsm + results.volBiochar).toFixed(1)} dm³`}
+                    title={`Bindemittel: ${formatDeZahl((results.volZement + results.volFa + results.volSf + results.volKsm + results.volBiochar), 1)} dm³`}
                   >
                     {(results.volZement + results.volFa + results.volSf + results.volKsm + results.volBiochar) > 100 && 'Bindemittel'}
                   </div>
                   <div 
                     style={{ width: `${(results.wasserTrocken / 1000) * 100}%` }} 
                     className="bg-blue-400 flex items-center justify-center text-xs text-white font-medium"
-                    title={`Wasser: ${results.wasserTrocken.toFixed(1)} dm³`}
+                    title={`Wasser: ${formatDeZahl(results.wasserTrocken, 1)} dm³`}
                   >
                     {results.wasserTrocken > 50 && 'Wasser'}
                   </div>
@@ -1980,7 +1981,7 @@ export default function Mischungsberechnung() {
                     <div 
                       style={{ width: `${(results.volFasernGesamt / 1000) * 100}%` }} 
                       className="bg-shiraz flex items-center justify-center text-[10px] text-white font-bold"
-                      title={`Fasern (Stahl/PP): ${results.volFasernGesamt.toFixed(2)} dm³`}
+                      title={`Fasern (Stahl/PP): ${formatDeZahl(results.volFasernGesamt, 2)} dm³`}
                     >
                       {results.volFasernGesamt > 3 && 'Fasern'}
                     </div>
@@ -1988,7 +1989,7 @@ export default function Mischungsberechnung() {
                   <div 
                     style={{ width: `${(results.volLuft / 1000) * 100}%` }} 
                     className="bg-sky-200 flex items-center justify-center text-xs text-sky-800 font-medium"
-                    title={`Luft: ${results.volLuft.toFixed(1)} dm³`}
+                    title={`Luft: ${formatDeZahl(results.volLuft, 1)} dm³`}
                   >
                     {results.volLuft > 30 && 'Luft'}
                   </div>
@@ -2055,110 +2056,110 @@ export default function Mischungsberechnung() {
                     <th className="pb-2 font-semibold text-right">Masse trocken <br/><span className="text-xs font-normal opacity-70">pro m³ (kg)</span></th>
                     <th className="pb-2 font-semibold text-right">Feuchte <br/><span className="text-xs font-normal opacity-70">(%)</span></th>
                     <th className="pb-2 font-semibold text-right">Einwaage feucht <br/><span className="text-xs font-normal opacity-70">pro m³ (kg/L)</span></th>
-                    <th className="pb-2 font-semibold text-right text-shiraz bg-off-white px-2 rounded-t-md">Einwaage feucht <br/><span className="text-xs font-normal opacity-70">für {betonMengeL} L (kg/L)</span></th>
+                    <th className="pb-2 font-semibold text-right text-shiraz bg-off-white px-2 rounded-t-md">Einwaage feucht <br/><span className="text-xs font-normal opacity-70">für {formatDeWert(betonMengeL)} L (kg/L)</span></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/10">
                   <tr>
                     <td className="py-2">Zement ({zementArt} {zementFestigkeit})</td>
-                    <td className="py-2 text-right">{zement.toFixed(1)}</td>
+                    <td className="py-2 text-right">{formatDeZahl(zement, 1)}</td>
                     <td className="py-2 text-right">-</td>
-                    <td className="py-2 text-right font-bold">{zement.toFixed(1)} kg</td>
-                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(zement * betonMengeL / 1000).toFixed(2)} kg</td>
+                    <td className="py-2 text-right font-bold">{formatDeZahl(zement, 1)} kg</td>
+                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((zement * betonMengeL / 1000), 2)} kg</td>
                   </tr>
                   {fa > 0 && (
                     <tr>
                       <td className="py-2">Flugasche</td>
-                      <td className="py-2 text-right">{fa.toFixed(1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(fa, 1)}</td>
                       <td className="py-2 text-right">-</td>
-                      <td className="py-2 text-right font-bold">{fa.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(fa * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(fa, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((fa * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   {sf > 0 && (
                     <tr>
                       <td className="py-2">Silikastaub</td>
-                      <td className="py-2 text-right">{sf.toFixed(1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(sf, 1)}</td>
                       <td className="py-2 text-right">-</td>
-                      <td className="py-2 text-right font-bold">{sf.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(sf * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(sf, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((sf * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   {hues > 0 && (
                     <tr>
                       <td className="py-2">Hüttensandmehl</td>
-                      <td className="py-2 text-right">{hues.toFixed(1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(hues, 1)}</td>
                       <td className="py-2 text-right">-</td>
-                      <td className="py-2 text-right font-bold">{hues.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(hues * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(hues, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((hues * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   {biochar > 0 && (
                     <tr>
                       <td className="py-2">Pflanzenkohle (Biochar)</td>
-                      <td className="py-2 text-right">{biochar.toFixed(1)}</td>
-                      <td className="py-2 text-right">{feuchteBiochar.toFixed(1)}</td>
-                      <td className="py-2 text-right font-bold">{results.biochar_feucht.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(results.biochar_feucht * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right">{formatDeZahl(biochar, 1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(feuchteBiochar, 1)}</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(results.biochar_feucht, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((results.biochar_feucht * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   <tr>
                     <td className="py-2">Gestein 0/4</td>
-                    <td className="py-2 text-right">{results.m04_tr.toFixed(1)}</td>
-                    <td className="py-2 text-right">{feuchte04.toFixed(1)}</td>
-                    <td className="py-2 text-right font-bold">{results.m04_feucht.toFixed(1)} kg</td>
-                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(results.m04_feucht * betonMengeL / 1000).toFixed(2)} kg</td>
+                    <td className="py-2 text-right">{formatDeZahl(results.m04_tr, 1)}</td>
+                    <td className="py-2 text-right">{formatDeZahl(feuchte04, 1)}</td>
+                    <td className="py-2 text-right font-bold">{formatDeZahl(results.m04_feucht, 1)} kg</td>
+                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((results.m04_feucht * betonMengeL / 1000), 2)} kg</td>
                   </tr>
                   <tr>
                     <td className="py-2">Gestein 4/8</td>
-                    <td className="py-2 text-right">{results.m48_tr.toFixed(1)}</td>
-                    <td className="py-2 text-right">{feuchte48.toFixed(1)}</td>
-                    <td className="py-2 text-right font-bold">{results.m48_feucht.toFixed(1)} kg</td>
-                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(results.m48_feucht * betonMengeL / 1000).toFixed(2)} kg</td>
+                    <td className="py-2 text-right">{formatDeZahl(results.m48_tr, 1)}</td>
+                    <td className="py-2 text-right">{formatDeZahl(feuchte48, 1)}</td>
+                    <td className="py-2 text-right font-bold">{formatDeZahl(results.m48_feucht, 1)} kg</td>
+                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((results.m48_feucht * betonMengeL / 1000), 2)} kg</td>
                   </tr>
                   {dmax >= 16 && (
                     <tr>
                       <td className="py-2">Gestein 8/16</td>
-                      <td className="py-2 text-right">{results.m816_tr.toFixed(1)}</td>
-                      <td className="py-2 text-right">{feuchte816.toFixed(1)}</td>
-                      <td className="py-2 text-right font-bold">{results.m816_feucht.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(results.m816_feucht * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right">{formatDeZahl(results.m816_tr, 1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(feuchte816, 1)}</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(results.m816_feucht, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((results.m816_feucht * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   {dmax >= 32 && (
                     <tr>
                       <td className="py-2">Gestein 16/32</td>
-                      <td className="py-2 text-right">{results.m1632_tr.toFixed(1)}</td>
-                      <td className="py-2 text-right">{feuchte1632.toFixed(1)}</td>
-                      <td className="py-2 text-right font-bold">{results.m1632_feucht.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(results.m1632_feucht * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right">{formatDeZahl(results.m1632_tr, 1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(feuchte1632, 1)}</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(results.m1632_feucht, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((results.m1632_feucht * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   {zusatzmittel > 0 && (
                     <tr>
                       <td className="py-2">Zusatzmittel</td>
-                      <td className="py-2 text-right">{zusatzmittel.toFixed(1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(zusatzmittel, 1)}</td>
                       <td className="py-2 text-right">-</td>
-                      <td className="py-2 text-right font-bold">{zusatzmittel.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(zusatzmittel * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(zusatzmittel, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((zusatzmittel * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   {stahlfaser > 0 && (
                     <tr>
                       <td className="py-2">Stahlfasern / Metallfasern (DIN EN 14889-1)</td>
-                      <td className="py-2 text-right">{stahlfaser.toFixed(1)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(stahlfaser, 1)}</td>
                       <td className="py-2 text-right">-</td>
-                      <td className="py-2 text-right font-bold">{stahlfaser.toFixed(1)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(stahlfaser * betonMengeL / 1000).toFixed(2)} kg</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(stahlfaser, 1)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((stahlfaser * betonMengeL / 1000), 2)} kg</td>
                     </tr>
                   )}
                   {ppFaser > 0 && (
                     <tr>
                       <td className="py-2">Polypropylenfasern (PP) (DIN EN 14889-2)</td>
-                      <td className="py-2 text-right">{ppFaser.toFixed(2)}</td>
+                      <td className="py-2 text-right">{formatDeZahl(ppFaser, 2)}</td>
                       <td className="py-2 text-right">-</td>
-                      <td className="py-2 text-right font-bold">{ppFaser.toFixed(2)} kg</td>
-                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(ppFaser * betonMengeL / 1000).toFixed(3)} kg</td>
+                      <td className="py-2 text-right font-bold">{formatDeZahl(ppFaser, 2)} kg</td>
+                      <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((ppFaser * betonMengeL / 1000), 3)} kg</td>
                     </tr>
                   )}
                   <tr>
@@ -2166,24 +2167,24 @@ export default function Mischungsberechnung() {
                       <span>Luftporen (Luftgehalt)</span>
                       <InfoTooltip text="Luftporen nehmen Raum im Stoffraumgefüge ein, weisen jedoch kein nennenswertes hydrostatisches Gewicht auf." />
                     </td>
-                    <td className="py-2 text-right text-slate-400">0.0 <span className="text-[10px] text-slate-400">(Vol: {results.volLuft.toFixed(1)} dm³)</span></td>
+                    <td className="py-2 text-right text-slate-400">0,0 <span className="text-[10px] text-slate-400">(Vol: {formatDeZahl(results.volLuft, 1)} dm³)</span></td>
                     <td className="py-2 text-right">-</td>
-                    <td className="py-2 text-right font-bold text-slate-600">{luft.toFixed(1)} Vol.-%</td>
-                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{(results.volLuft * betonMengeL / 1000).toFixed(2)} L <span className="text-[10px] font-normal text-shiraz/70">(Vol.)</span></td>
+                    <td className="py-2 text-right font-bold text-slate-600">{formatDeZahl(luft, 1)} Vol.-%</td>
+                    <td className="py-2 text-right font-bold text-shiraz bg-off-white px-2">{formatDeZahl((results.volLuft * betonMengeL / 1000), 2)} L <span className="text-[10px] font-normal text-shiraz/70">(Vol.)</span></td>
                   </tr>
                   <tr className="bg-home-grau/5">
                     <td className="py-2">Gesamtwasser</td>
-                    <td className="py-2 text-right">{results.wasserTrocken.toFixed(1)}</td>
+                    <td className="py-2 text-right">{formatDeZahl(results.wasserTrocken, 1)}</td>
                     <td className="py-2 text-right">-</td>
-                    <td className="py-2 text-right text-home-grau">davon aus Gestein: {results.wasserAusGestein.toFixed(1)} L</td>
-                    <td className="py-2 text-right text-shiraz/70 bg-off-white px-2">daraus: {(results.wasserAusGestein * betonMengeL / 1000).toFixed(2)} L</td>
+                    <td className="py-2 text-right text-home-grau">davon aus Gestein: {formatDeZahl(results.wasserAusGestein, 1)} L</td>
+                    <td className="py-2 text-right text-shiraz/70 bg-off-white px-2">daraus: {formatDeZahl((results.wasserAusGestein * betonMengeL / 1000), 2)} L</td>
                   </tr>
                   <tr className="border-t-2 border-home-grau/30 font-bold text-shiraz">
                     <td className="py-2">Zugabewasser</td>
                     <td className="py-2 text-right">-</td>
                     <td className="py-2 text-right">-</td>
-                    <td className="py-2 text-right">{results.zugabewasser.toFixed(1)} Liter</td>
-                    <td className="py-2 text-right bg-shiraz/10 px-2 rounded-b-md">{(results.zugabewasser * betonMengeL / 1000).toFixed(2)} Liter</td>
+                    <td className="py-2 text-right">{formatDeZahl(results.zugabewasser, 1)} Liter</td>
+                    <td className="py-2 text-right bg-shiraz/10 px-2 rounded-b-md">{formatDeZahl((results.zugabewasser * betonMengeL / 1000), 2)} Liter</td>
                   </tr>
                 </tbody>
               </table>

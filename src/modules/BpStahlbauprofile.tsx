@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -223,7 +224,7 @@ export default function BpStahlbauprofile() {
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-semibold text-text-main">Profil-Größe (Schieberegler)</label>
                   <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/5 px-2 py-0.5 rounded">
-                    {activeProfileIndex + 1} / {activeProfileList.length}
+                    {formatDeWert(activeProfileIndex + 1)} / {activeProfileList.length}
                   </span>
                 </div>
                 
@@ -244,7 +245,7 @@ export default function BpStahlbauprofile() {
                 >
                   {activeProfileList.map((prof, idx) => (
                     <option key={prof.name} value={idx}>
-                      {prof.name} ({prof.h}x{prof.b} mm)
+                      {prof.name} ({formatDeWert(prof.h)}x{formatDeWert(prof.b)} mm)
                     </option>
                   ))}
                 </select>
@@ -317,41 +318,41 @@ export default function BpStahlbauprofile() {
                 <div className="grid grid-cols-2 gap-3.5 text-xs">
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Fläche A</span>
-                    <span className="text-sm font-black text-text-main font-mono">{activeProfile.A.toFixed(1)} cm²</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.A, 1)} cm²</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Trägheit I_y</span>
-                    <span className="text-sm font-black text-text-main font-mono">{activeProfile.Iy.toFixed(0)} cm⁴</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Iy, 0)} cm⁴</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Widerstand W_y</span>
-                    <span className="text-sm font-black text-text-main font-mono">{activeProfile.Wy.toFixed(1)} cm³</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Wy, 1)} cm³</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Radius i_y</span>
-                    <span className="text-sm font-black text-text-main font-mono">{activeProfile.iy.toFixed(2)} cm</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.iy, 2)} cm</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Trägheit I_z</span>
-                    <span className="text-sm font-black text-text-main font-mono">{activeProfile.Iz.toFixed(0)} cm⁴</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Iz, 0)} cm⁴</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Widerstand W_z</span>
-                    <span className="text-sm font-black text-text-main font-mono">{activeProfile.Wz.toFixed(1)} cm³</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.Wz, 1)} cm³</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Radius i_z</span>
-                    <span className="text-sm font-black text-text-main font-mono">{activeProfile.iz.toFixed(2)} cm</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl(activeProfile.iz, 2)} cm</span>
                   </div>
                   <div className="p-2 bg-off-white rounded border border-home-grau/15">
                     <span className="text-[10px] text-text-main/50 block font-bold">Gewicht (G)</span>
-                    <span className="text-sm font-black text-text-main font-mono">{(activeProfile.A * 0.785).toFixed(1)} kg/m</span>
+                    <span className="text-sm font-black text-text-main font-mono">{formatDeZahl((activeProfile.A * 0.785), 1)} kg/m</span>
                   </div>
                 </div>
 
                 <div className="bg-stone-50 p-2.5 rounded border border-home-grau/15 text-[11px] text-text-main/60 leading-tight">
                   <div className="font-bold text-text-main mb-0.5">Geometrieabmessungen:</div>
-                  Höhe <strong className="text-text-main font-bold">h = {activeProfile.h} mm</strong> &bull; Breite <strong className="text-text-main font-bold">b = {activeProfile.b} mm</strong> &bull; Steg <strong className="text-text-main font-bold">t_w = {activeProfile.tw} mm</strong> &bull; Flansch <strong className="text-text-main font-bold">t_f = {activeProfile.tf} mm</strong>
+                  Höhe <strong className="text-text-main font-bold">h = {formatDeWert(activeProfile.h)} mm</strong> &bull; Breite <strong className="text-text-main font-bold">b = {formatDeWert(activeProfile.b)} mm</strong> &bull; Steg <strong className="text-text-main font-bold">t_w = {formatDeWert(activeProfile.tw)} mm</strong> &bull; Flansch <strong className="text-text-main font-bold">t_f = {formatDeWert(activeProfile.tf)} mm</strong>
                 </div>
               </div>
 
@@ -530,8 +531,8 @@ export default function BpStahlbauprofile() {
                     onChange={(e) => setSafetyFactor(Number(e.target.value))}
                     className="w-full p-2 text-sm border border-home-grau rounded-md bg-white focus:outline-none"
                   >
-                    <option value={1.0}>1.00 (Empfohlen EC3)</option>
-                    <option value={1.1}>1.10 (Nationaler Anhang)</option>
+                    <option value={1.0}>1,00 (Empfohlen EC3)</option>
+                    <option value={1.1}>1,10 (Nationaler Anhang)</option>
                   </select>
                 </div>
               </div>
@@ -544,15 +545,15 @@ export default function BpStahlbauprofile() {
                   <div className="space-y-1.5 text-xs">
                     <div className="flex justify-between font-normal text-text-main/80">
                       <span>Anteil Normalspannung (σ_N):</span>
-                      <span className="font-mono font-bold">{stressN.toFixed(1)} N/mm²</span>
+                      <span className="font-mono font-bold">{formatDeZahl(stressN, 1)} N/mm²</span>
                     </div>
                     <div className="flex justify-between font-normal text-text-main/80">
                       <span>Anteil Biegespannung (σ_My):</span>
-                      <span className="font-mono font-bold">{stressM.toFixed(1)} N/mm²</span>
+                      <span className="font-mono font-bold">{formatDeZahl(stressM, 1)} N/mm²</span>
                     </div>
                     <div className="flex justify-between text-text-main font-bold pt-1.5 border-t border-home-grau/10">
                       <span>Gesamt Randspannung (σ_Ed,max):</span>
-                      <span className="font-mono text-shiraz">{totalStress.toFixed(1)} N/mm²</span>
+                      <span className="font-mono text-shiraz">{formatDeZahl(totalStress, 1)} N/mm²</span>
                     </div>
                   </div>
 
@@ -566,7 +567,7 @@ export default function BpStahlbauprofile() {
                       <>
                         <CheckCircle className="text-emerald-600 mt-0.5" size={16} />
                         <div>
-                          <strong>Nachweis erfüllt!</strong> Die maximale Randspannung σ_Ed ({totalStress.toFixed(1)} N/mm²) liegt unter der zulässigen Festigkeit f_yd ({fyd.toFixed(0)} N/mm²).
+                          <strong>Nachweis erfüllt!</strong> Die maximale Randspannung σ_Ed ({formatDeZahl(totalStress, 1)} N/mm²) liegt unter der zulässigen Festigkeit f_yd ({formatDeZahl(fyd, 0)} N/mm²).
                         </div>
                       </>
                     ) : (
@@ -585,7 +586,7 @@ export default function BpStahlbauprofile() {
                   <div className={`text-3xl font-black font-mono mt-1 ${
                     utilization <= 100 ? 'text-emerald-600' : 'text-red-600'
                   }`}>
-                    {utilization.toFixed(1)}%
+                    {formatDeZahl(utilization, 1)}%
                   </div>
                   
                   {/* Gauge bar representation */}

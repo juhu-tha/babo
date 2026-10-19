@@ -12,7 +12,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 
 ChartJS.register(
@@ -107,7 +107,7 @@ export default function Lebensdauern() {
         callbacks: {
           label: (context: any) => {
             const data = context.raw as [number, number];
-            return `Lebensdauer: ${data[0]} - ${data[1]} Jahre`;
+            return `Lebensdauer: ${formatDeWert(data[0])} - ${formatDeWert(data[1])} Jahre`;
           }
         }
       }
@@ -198,7 +198,7 @@ export default function Lebensdauern() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="font-mono font-bold text-lg text-shiraz">
-                    {buildingLifespan} Jahre
+                    {formatDeWert(buildingLifespan)} Jahre
                   </span>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function Lebensdauern() {
                     <th className="px-4 py-3 rounded-tl-lg font-bold">Bauteilgruppe / Baustoff</th>
                     <th className="px-4 py-3 text-center font-bold">Spannweite (Min - Max)</th>
                     <th className="px-4 py-3 text-center font-bold">Ø Nutzungsdauer</th>
-                    <th className="px-4 py-3 text-center rounded-tr-lg font-bold">Austauschzyklen bei {buildingLifespan} a</th>
+                    <th className="px-4 py-3 text-center rounded-tr-lg font-bold">Austauschzyklen bei {formatDeWert(buildingLifespan)} a</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -232,8 +232,8 @@ export default function Lebensdauern() {
                     return (
                       <tr key={item.id} className={idx % 2 === 0 ? 'bg-white hover:bg-slate-50/50' : 'bg-off-white/40 hover:bg-slate-50/50'}>
                         <td className="px-4 py-2.5 font-medium text-slate-800">{item.category}</td>
-                        <td className="px-4 py-2.5 text-center font-mono text-slate-600">{item.min} – {item.max} a</td>
-                        <td className="px-4 py-2.5 text-center font-mono font-bold text-slate-900">{item.avg} a</td>
+                        <td className="px-4 py-2.5 text-center font-mono text-slate-600">{formatDeWert(item.min)} – {formatDeWert(item.max)} a</td>
+                        <td className="px-4 py-2.5 text-center font-mono font-bold text-slate-900">{formatDeWert(item.avg)} a</td>
                         <td className="px-4 py-2.5 text-center">
                           <span className={`inline-flex items-center justify-center px-2.5 py-1 rounded-full font-bold text-xs ${
                             replacements === 0 
@@ -242,7 +242,7 @@ export default function Lebensdauern() {
                               ? 'bg-amber-100 text-amber-800 border border-amber-200' 
                               : 'bg-rose-100 text-rose-800 border border-rose-200'
                           }`}>
-                            {replacements === 0 ? '0 (Dauerhaft)' : `${replacements} × Erneuerung`}
+                            {replacements === 0 ? '0 (Dauerhaft)' : `${formatDeWert(replacements)} × Erneuerung`}
                           </span>
                         </td>
                       </tr>
@@ -266,11 +266,11 @@ export default function Lebensdauern() {
                   <line x1="50" y1="110" x2="50" y2="130" stroke="#1e293b" strokeWidth="2" />
                   <text x="50" y="145" fontSize="10" fill="#1e293b" textAnchor="middle">0 a</text>
                   <line x1="350" y1="110" x2="350" y2="130" stroke="#1e293b" strokeWidth="2" />
-                  <text x="350" y="145" fontSize="10" fill="#1e293b" textAnchor="middle">{buildingLifespan} a (Gebäude)</text>
+                  <text x="350" y="145" fontSize="10" fill="#1e293b" textAnchor="middle">{formatDeWert(buildingLifespan)} a (Gebäude)</text>
                   
                   {/* Long life component */}
                   <rect x="50" y="65" width="300" height="22" fill="#cbd5e1" stroke="#64748b" rx="4" />
-                  <text x="200" y="80" fontSize="10" fill="#1e293b" textAnchor="middle">Tragwerk (Lebensdauer ≥ {buildingLifespan} a) → 0 Austausche</text>
+                  <text x="200" y="80" fontSize="10" fill="#1e293b" textAnchor="middle">Tragwerk (Lebensdauer ≥ {formatDeWert(buildingLifespan)} a) → 0 Austausche</text>
                   
                   {/* Short life component */}
                   <rect x="50" y="25" width="120" height="22" fill="#fca5a5" stroke="#ef4444" rx="4" />
@@ -352,9 +352,9 @@ export default function Lebensdauern() {
                     <tr key={d.id} className={i % 2 === 0 ? 'bg-white' : 'bg-off-white/40'}>
                       <td className="px-4 py-2.5 font-bold text-shiraz">{d.group}</td>
                       <td className="px-4 py-2.5 text-slate-800 font-medium">{d.category}</td>
-                      <td className="px-4 py-2.5 text-center font-mono text-slate-600">{d.min} a</td>
-                      <td className="px-4 py-2.5 text-center font-mono text-slate-600">{d.max} a</td>
-                      <td className="px-4 py-2.5 text-center font-mono font-bold text-slate-900">{d.avg} a</td>
+                      <td className="px-4 py-2.5 text-center font-mono text-slate-600">{formatDeWert(d.min)} a</td>
+                      <td className="px-4 py-2.5 text-center font-mono text-slate-600">{formatDeWert(d.max)} a</td>
+                      <td className="px-4 py-2.5 text-center font-mono font-bold text-slate-900">{formatDeWert(d.avg)} a</td>
                     </tr>
                   ))}
                 </tbody>

@@ -118,7 +118,7 @@ export default function Faserbeton() {
         formeln={[
           {
             formel: 'f_{R,j} = \\frac{3 \\cdot F_j \\cdot l}{2 \\cdot b \\cdot h_{\\text{sp}}^2}',
-            erklaerung: 'Residuelle Biegezugfestigkeit f_R,j nach DIN EN 14651 am gekerbten Balken bei Rissöffnungsweiten CMOD (j = 1: 0.5 mm, j = 4: 3.5 mm).',
+            erklaerung: 'Residuelle Biegezugfestigkeit f_R,j nach DIN EN 14651 am gekerbten Balken bei Rissöffnungsweiten CMOD (j = 1: 0,5 mm, j = 4: 3,5 mm).',
             quelle: 'DIN EN 14651'
           },
           {

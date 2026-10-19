@@ -136,7 +136,7 @@ export const METAL_PROFILES: MetalCorrosionProfile[] = [
     standard: 'DIN EN 10088 / DIN EN 1993-1-4',
     schichtTyp: 'undurchlaessig',
     schichtName: 'Porenfreie Chromoxid-Passivschicht',
-    formel: '\\text{Cr}_2\\text{O}_3 \\; (\\text{mind. 10,5 \\% Cr})',
+    formel: '\\text{Cr}_2\\text{O}_3 \\; (\\text{mind. 10{,}5 \\% Cr})',
     pbr: 2.07,
     pbrLabel: 'ca. 2,07 (an der Grenze, atomar dünn)',
     dicke: '1–3 nm (extrem dünn, unsichtbar)',
@@ -662,7 +662,7 @@ export function DeckschichtenVergleich() {
           <div className="flex flex-col gap-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">M_Oxid (g/mol)</label>
             <input
-              type="number"
+              type="number" min="0"
               step="0.01"
               value={molOxid}
               onChange={(e) => {
@@ -676,7 +676,7 @@ export function DeckschichtenVergleich() {
           <div className="flex flex-col gap-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">ρ_Metall (g/cm³)</label>
             <input
-              type="number"
+              type="number" min="0"
               step="0.01"
               value={dichteMetall}
               onChange={(e) => {
@@ -706,7 +706,7 @@ export function DeckschichtenVergleich() {
           <div className="flex flex-col gap-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">M_Metall (g/mol)</label>
             <input
-              type="number"
+              type="number" min="0"
               step="0.01"
               value={molMetall}
               onChange={(e) => {
@@ -720,7 +720,7 @@ export function DeckschichtenVergleich() {
           <div className="flex flex-col gap-1 col-span-2 sm:col-span-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">ρ_Oxid (g/cm³)</label>
             <input
-              type="number"
+              type="number" min="0"
               step="0.01"
               value={dichteOxid}
               onChange={(e) => {

@@ -119,8 +119,8 @@ export default function Infraleichtbeton() {
             quelle: 'TU Berlin / Schlaich (2018)'
           },
           {
-            formel: '\\lambda_{10,dry} \\approx 0.12 - 0.18\\,\\text{W/(m}\\cdot\\text{K)}',
-            erklaerung: 'Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände (U-Wert < 0.24 W/(m²K) bei Wandstärken um 40-50 cm) ohne Zusatzdämmung.',
+            formel: '\\lambda_{10,dry} \\approx 0{,}12 - 0{,}18\\,\\text{W/(m}\\cdot\\text{K)}',
+            erklaerung: 'Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände (U-Wert < 0,24 W/(m²K) bei Wandstärken um 40-50 cm) ohne Zusatzdämmung.',
             quelle: 'Schlaich & Hückler (2018)'
           }
         ]}

@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { TrendingUp, Euro, Calendar, Info, BarChart3, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -124,7 +125,7 @@ const getChartOptions = (baseYear: string) => ({
       intersect: false,
       callbacks: {
         label: function(context: any) {
-          return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} (Index)`;
+          return `${context.dataset.label}: ${formatDeZahl(context.parsed.y, 1)} (Index)`;
         }
       }
     },

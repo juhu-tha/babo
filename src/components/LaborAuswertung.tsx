@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { 
@@ -64,15 +65,15 @@ export default function LaborAuswertung() {
     if (dExzess > 10) {
       category = 'condensate';
       diagnosis = 'Tauwasser- / Kondensat-Herkunft';
-      description = `Signifikanter kinetischer Deuterium-Exzess (d = ${dExzess.toFixed(1)} ‰ > 10 ‰). Dies beweist physikalisch, dass das Wasser aus der Dampfphase kondensiert ist. Ursachen liegen meist in Wärmebrücken (kühle Betondecken) oder mangelhafter Lüftung.`;
+      description = `Signifikanter kinetischer Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰ > 10 ‰). Dies beweist physikalisch, dass das Wasser aus der Dampfphase kondensiert ist. Ursachen liegen meist in Wärmebrücken (kühle Betondecken) oder mangelhafter Lüftung.`;
     } else if (dExzess < 5) {
       category = 'evaporated';
       diagnosis = 'Verdunstetes Oberflächenwasser';
-      description = `Niedriger Deuterium-Exzess (d = ${dExzess.toFixed(1)} ‰) und Abweichung von der globalen meteorischen Wasserlinie (GMWL). Deutet auf stehendes Wasser hin, welches bereits über längere Zeit verdunstet ist. Typisch für flache Pfützen, stehendes Sickerwasser auf Decken oder Altleckagen.`;
+      description = `Niedriger Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰) und Abweichung von der globalen meteorischen Wasserlinie (GMWL). Deutet auf stehendes Wasser hin, welches bereits über längere Zeit verdunstet ist. Typisch für flache Pfützen, stehendes Sickerwasser auf Decken oder Altleckagen.`;
     } else {
       category = 'meteoric';
       diagnosis = 'Meteoriges Wasser (Leitungswasser oder Niederschlag)';
-      description = `Normaler Deuterium-Exzess (d = ${dExzess.toFixed(1)} ‰). Das Wasser liegt nahe der meteorischen Wasserlinie. Kann frischer Regenwasser-Eintrag oder ein herkömmlicher Leitungswasserschaden sein. Zur genaueren Trennung ist das Grundwassermittel heranzuziehen.`;
+      description = `Normaler Deuterium-Exzess (d = ${formatDeZahl(dExzess, 1)} ‰). Das Wasser liegt nahe der meteorischen Wasserlinie. Kann frischer Regenwasser-Eintrag oder ein herkömmlicher Leitungswasserschaden sein. Zur genaueren Trennung ist das Grundwassermittel heranzuziehen.`;
     }
 
     return {
@@ -274,7 +275,7 @@ export default function LaborAuswertung() {
             <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
               <div className="text-xs font-bold text-shiraz uppercase tracking-wider mb-2">Karbonatisierung</div>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Reaktion von Calciumhydroxid mit <InlineMath math="CO_2" /> senkt den alkalischen pH-Wert von ca. 12.5 auf unter 9, wodurch der Passivierungsschutz der Stahlbewehrung erlischt. Bestimmung erfolgt mittels Phenolphthalein-Farbumschlagsversuch an frischen Bruchflächen.
+                Reaktion von Calciumhydroxid mit <InlineMath math="CO_2" /> senkt den alkalischen pH-Wert von ca. 12,5 auf unter 9, wodurch der Passivierungsschutz der Stahlbewehrung erlischt. Bestimmung erfolgt mittels Phenolphthalein-Farbumschlagsversuch an frischen Bruchflächen.
               </p>
             </div>
             <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
@@ -586,7 +587,7 @@ export default function LaborAuswertung() {
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-medium text-slate-600 flex items-center gap-1">Sauerstoff-Isotop (<InlineMath math="\delta^{18}\text{O}" />)</span>
-                    <span className="font-mono font-bold bg-slate-100 px-1.5 rounded">{delta18O.toFixed(2)} ‰</span>
+                    <span className="font-mono font-bold bg-slate-100 px-1.5 rounded">{formatDeZahl(delta18O, 2)} ‰</span>
                   </div>
                   <input 
                     type="range" 
@@ -607,7 +608,7 @@ export default function LaborAuswertung() {
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-medium text-slate-600 flex items-center gap-1">Wasserstoff-Isotop (<InlineMath math="\delta\text{D}" />)</span>
-                    <span className="font-mono font-bold bg-slate-100 px-1.5 rounded">{deltaD.toFixed(1)} ‰</span>
+                    <span className="font-mono font-bold bg-slate-100 px-1.5 rounded">{formatDeZahl(deltaD, 1)} ‰</span>
                   </div>
                   <input 
                     type="range" 
@@ -633,10 +634,10 @@ export default function LaborAuswertung() {
                     isotopeResults.dExzess > 10 ? 'text-blue-700' :
                     isotopeResults.dExzess < 5 ? 'text-amber-700' : 'text-emerald-700'
                   }`}>
-                    {isotopeResults.dExzess.toFixed(2)} ‰
+                    {formatDeZahl(isotopeResults.dExzess, 2)} ‰
                   </span>
                   <span className="text-[10px] text-slate-400 flex items-center gap-1">
-                    (GMWL-Erwartung für dieselbe <InlineMath math="\delta^{18}\text{O}" /> wäre: {isotopeResults.expectedDeltaD_GMWL.toFixed(1)} ‰)
+                    (GMWL-Erwartung für dieselbe <InlineMath math="\delta^{18}\text{O}" /> wäre: {formatDeZahl(isotopeResults.expectedDeltaD_GMWL, 1)} ‰)
                   </span>
                 </div>
               </div>
@@ -675,19 +676,19 @@ export default function LaborAuswertung() {
                         <table style="margin:0">
                           <tr>
                             <th style="width:30%">Sauerstoff-Isotop &delta;<sup>18</sup>O:</th>
-                            <td><strong>${delta18O.toFixed(2)} &permil;</strong> (VSMOW-Standard)</td>
+                            <td><strong>${formatDeZahl(delta18O, 2)} &permil;</strong> (VSMOW-Standard)</td>
                           </tr>
                           <tr>
                             <th>Wasserstoff-Isotop &delta;D:</th>
-                            <td><strong>${deltaD.toFixed(1)} &permil;</strong></td>
+                            <td><strong>${formatDeZahl(deltaD, 1)} &permil;</strong></td>
                           </tr>
                           <tr>
                             <th>Berechneter d-Exzess:</th>
-                            <td><strong style="color:#1e293b; font-size:16px;">${isotopeResults.dExzess.toFixed(2)} &permil;</strong></td>
+                            <td><strong style="color:#1e293b; font-size:16px;">${formatDeZahl(isotopeResults.dExzess, 2)} &permil;</strong></td>
                           </tr>
                           <tr>
                             <th>GMWL-Referenz:</th>
-                            <td>${isotopeResults.expectedDeltaD_GMWL.toFixed(1)} &permil;</td>
+                            <td>${formatDeZahl(isotopeResults.expectedDeltaD_GMWL, 1)} &permil;</td>
                           </tr>
                         </table>
                       </div>
@@ -1178,7 +1179,7 @@ export default function LaborAuswertung() {
                 ) : (
                   <tr>
                     <td colSpan={4} className="py-8 text-center text-slate-400 font-medium">
-                      Keine passenden diagnostischen Verfahren gefunden. Passe die Filter an.
+                      Keine passenden diagnostischen Verfahren gefunden. Passen Sie die Filter an.
                     </td>
                   </tr>
                 )}

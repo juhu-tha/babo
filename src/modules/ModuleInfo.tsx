@@ -229,7 +229,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'DIN ISO 12491: Statistische Verfahren für die Qualitätskontrolle von Baustoffen und Bauteilen', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+12491' }
     ],
     formeln: [
-      { formel: 'f_{ck} = f_{m} - 1.64 \\cdot s', erklaerung: 'Berechnung des charakteristischen Festigkeitswertes (5%-Quantil) bei bekannter Standardabweichung s und Mittelwert f_m unter Annahme einer Normalverteilung.', quelle: 'DIN ISO 12491 / DIN EN 1990' },
+      { formel: 'f_{ck} = f_{m} - 1{,}64 \\cdot s', erklaerung: 'Berechnung des charakteristischen Festigkeitswertes (5%-Quantil) bei bekannter Standardabweichung s und Mittelwert f_m unter Annahme einer Normalverteilung.', quelle: 'DIN ISO 12491 / DIN EN 1990' },
       { formel: 's = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}', erklaerung: 'Empirische Standardabweichung s einer Stichprobe der Größe n.', quelle: 'Standardstatistik' }
     ]
   },
@@ -434,7 +434,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     basicsDesc2: 'In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), dimensionieren druckbelastete Stützen nach Theorie II. Ordnung und erfassen Durchstanzrisiken im Stützenbereich.',
     basicsCards: [
       { title: 'Interaktive Bemessung', desc: 'Echtzeitrechner für Biegezug, Rissbreitenverteilung und erforderliche Bewehrungsflächen.' },
-      { title: 'Gebrauchstauglichkeit (SLS)', desc: 'Begrenzung der charakteristischen Rissbreiten (w_max = 0.3 mm) zum Schutz vor karbonatisierungsinduzierter Korrosion.' }
+      { title: 'Gebrauchstauglichkeit (SLS)', desc: 'Begrenzung der charakteristischen Rissbreiten (w_max = 0,3 mm) zum Schutz vor karbonatisierungsinduzierter Korrosion.' }
     ],
     submodules: [
       { title: 'Rissbreite', icon: GitCommit, purpose: 'Kontrolle der rechnerischen Rissbreiten w_k im Grenzzustand der Gebrauchstauglichkeit.', standards: 'DIN EN 1992-1-1 (EC2) Kap. 7.3', useCase: 'Auslegung einer Deckenplatte bzgl. Mindestbewehrung zur Begrenzung von Rissen infolge abfließender Hydratationswärme.' },
@@ -1457,7 +1457,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                               </p>
                             </div>
                             <div className="bg-white p-1.5 border border-home-grau/10 rounded text-[9.5px] font-mono text-slate-500 mt-2 text-center">
-                              Formel Mindestvolumen: V_Probe ≥ 0.05 · d_max [Liter]
+                              Formel Mindestvolumen: V_Probe ≥ 0,05 · d_max [Liter]
                             </div>
                           </div>
                         </div>
@@ -1516,8 +1516,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                           <div className="space-y-1.5">
                             <span className="font-extrabold text-slate-900 block text-[11px] uppercase tracking-wide">Prüfungsdurchführung &amp; Fehlerminimierung:</span>
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
-                              <li><strong>Planparallelität sichern:</strong> Die Belastungsflächen von Betonwürfeln oder Zylindern dürfen max. 0.05 mm auf 100 mm Planabweichung aufweisen, da sonst unzulässige Kantenpressung die Messwerte um bis zu 30% abmindert. Planschleifen ist Pflicht!</li>
-                              <li><strong>Lasteinleitungsrate steuern:</strong> Beton verhält sich viskoelastisch. Zu schnelle Lasteinleitung (&gt; 1 MPa/s) verfälscht die Kennwerte nach oben. Normativ gelten z. B. 0.5 ± 0.2 MPa/s.</li>
+                              <li><strong>Planparallelität sichern:</strong> Die Belastungsflächen von Betonwürfeln oder Zylindern dürfen max. 0,05 mm auf 100 mm Planabweichung aufweisen, da sonst unzulässige Kantenpressung die Messwerte um bis zu 30% abmindert. Planschleifen ist Pflicht!</li>
+                              <li><strong>Lasteinleitungsrate steuern:</strong> Beton verhält sich viskoelastisch. Zu schnelle Lasteinleitung (&gt; 1 MPa/s) verfälscht die Kennwerte nach oben. Normativ gelten z. B. 0,5 ± 0,2 MPa/s.</li>
                               <li><strong>E-Modul-Zyklen:</strong> Der Elastizitätsmodul wird nicht beim Erstbruch, sondern durch wiederholte Be- und Entlastungszyklen (Hystereseeffekte) im elastischen Kernspannungsbereich ermittelt.</li>
                             </ul>
                           </div>
@@ -1566,7 +1566,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                               </p>
                             </div>
                             <div className="bg-white p-1.5 border border-emerald-100 rounded text-[9.5px] font-mono text-emerald-700 mt-2 text-center">
-                              Chloridgrenze: ≤ 0.40% (Stahlbeton); ≤ 0.20% (Spannbeton)
+                              Chloridgrenze: ≤ 0,40% (Stahlbeton); ≤ 0,20% (Spannbeton)
                             </div>
                           </div>
                         </div>
@@ -1591,7 +1591,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                             <ul className="list-disc pl-4 space-y-1 text-slate-650">
                               <li><strong>Ausreißertest nach Grubbs:</strong> Ermittelt, ob ein extrem niedriger Einzelmesswert ein unzulässiger Prüffehler (z. B. Hohlraum im Würfel) oder natürliche Streuung ist.</li>
                               <li><strong>Das 5%-Quantil (f_ck):</strong> Berechnet jene Festigkeit, die mit einer statistischen Wahrscheinlichkeit von 95% überschritten wird: f_ck = f_m - 1.645 · s.</li>
-                              <li><strong>Konformität nach EN 206:</strong> Regelt die Zulassung chargenweise (z. B. Kriterium 1: f_cm ≥ f_ck + 1.48 · σ, Einzelwert f_ci ≥ f_ck - 4 MPa).</li>
+                              <li><strong>Konformität nach EN 206:</strong> Regelt die Zulassung chargenweise (z. B. Kriterium 1: f_cm ≥ f_ck + 1,48 · σ, Einzelwert f_ci ≥ f_ck - 4 MPa).</li>
                             </ul>
                           </div>
                           <div className="p-3 bg-purple-50/50 border border-purple-100 rounded-md flex flex-col justify-between">

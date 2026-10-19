@@ -145,7 +145,7 @@ export default function Pumpbeton() {
             quelle: 'Kaplan et al. (2005)'
           },
           {
-            formel: 'm_{\\text{Mehlkorn}} \\ge 350 - 400\\,\\text{kg/m}^3 \\quad (\\le 0.125\\,\\text{mm})',
+            formel: 'm_{\\text{Mehlkorn}} \\ge 350 - 400\\,\\text{kg/m}^3 \\quad (\\le 0{,}125\\,\\text{mm})',
             erklaerung: 'Erforderlicher Mehlkorngehalt (Zement + Flugasche + Feinsandanteile) zur kontinuierlichen Ausbildung der 1-2 mm Gleitschicht an der Stahlwandung.',
             quelle: 'DBV-Merkblatt Pumpbeton'
           }

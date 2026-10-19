@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, LinearScale } from 'chart.js';
@@ -99,7 +100,7 @@ function GefuegebildungSimulator() {
     // Walz formula / Powers: fc ~ (1 - porosity)^3
     const factor = cementType === 'CEM_I' ? 1.0 : (timeStageIndex <= 2 ? 0.7 : 1.08);
     const wzPenalty = Math.pow(0.50 / wzRatio, 1.8);
-    return (currentStage.strengthMPa * factor * wzPenalty).toFixed(1);
+    return formatDeZahl(currentStage.strengthMPa * factor * wzPenalty, 1);
   }, [currentStage, cementType, wzRatio]);
 
   return (
@@ -173,7 +174,7 @@ function GefuegebildungSimulator() {
               <div className="flex justify-between items-center text-xs">
                 <span className="font-bold text-text-main">Wasserzementwert (w/z):</span>
                 <span className="font-mono font-bold text-text-main bg-slate-100 px-2 py-0.5 rounded">
-                  {wzRatio.toFixed(2)}
+                  {formatDeZahl(wzRatio, 2)}
                 </span>
               </div>
               <input
@@ -227,7 +228,7 @@ function GefuegebildungSimulator() {
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                 <span className="text-[10px] uppercase font-bold text-text-main/60 block">Hydratationsgrad α</span>
-                <span className="text-xl font-mono font-bold text-shiraz">{currentStage.alpha} %</span>
+                <span className="text-xl font-mono font-bold text-shiraz">{formatDeWert(currentStage.alpha)} %</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                 <span className="text-[10px] uppercase font-bold text-text-main/60 block">Druckfestigkeit fc</span>
@@ -235,11 +236,11 @@ function GefuegebildungSimulator() {
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                 <span className="text-[10px] uppercase font-bold text-text-main/60 block">Kapillarporosität</span>
-                <span className="text-xl font-mono font-bold text-text-main">{effectivePorosity.toFixed(1)} %</span>
+                <span className="text-xl font-mono font-bold text-text-main">{formatDeZahl(effectivePorosity, 1)} %</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                 <span className="text-[10px] uppercase font-bold text-text-main/60 block">Hydratationswärme Q</span>
-                <span className="text-xl font-mono font-bold text-amber-600">{currentStage.heatJg} J/g</span>
+                <span className="text-xl font-mono font-bold text-amber-600">{formatDeWert(currentStage.heatJg)} J/g</span>
               </div>
             </div>
 
@@ -293,7 +294,7 @@ function GefuegebildungSimulator() {
 
                 {/* Substrate Pore Space Label */}
                 <text x="250" y="30" fill="#94a3b8" fontSize="10" className="font-mono" textAnchor="middle" opacity="0.6">
-                  {timeStageIndex <= 1 ? 'Wassergefüllter Kapillarporenraum (w/z = ' + wzRatio.toFixed(2) + ')' : 'Fortschreitende Gefügeverdichtung (C-S-H Verfilzung)'}
+                  {timeStageIndex <= 1 ? 'Wassergefüllter Kapillarporenraum (w/z = ' + formatDeZahl(wzRatio, 2) + ')' : 'Fortschreitende Gefügeverdichtung (C-S-H Verfilzung)'}
                 </text>
 
                 {/* 1. Clinker Grain Left (Alit C3S dominant) */}
@@ -746,7 +747,7 @@ export default function Zementchemie() {
                   </div>
                   
                   <div className="mt-4 text-xs text-text-main/70 flex justify-between font-mono">
-                    <span>Summe der Oxide: {(cao + sio2 + al2o3 + fe2o3 + so3).toFixed(1)} %</span>
+                    <span>Summe der Oxide: {formatDeZahl((cao + sio2 + al2o3 + fe2o3 + so3), 1)} %</span>
                     {cao + sio2 + al2o3 + fe2o3 + so3 > 100 && <span className="text-red-500 font-bold">Summe &gt; 100%!</span>}
                   </div>
                 </div>
@@ -761,28 +762,28 @@ export default function Zementchemie() {
                         <span>Alit (<InlineMath math="C_3S" />)</span>
                         <InfoTooltip text="Tricalciumsilicat: Schnelle Erhärtung, hohe Frühfestigkeit, hohe Hydratationswärme." />
                       </div>
-                      <div className="text-3xl font-bold text-blue-200">{results.c3s.toFixed(1)} %</div>
+                      <div className="text-3xl font-bold text-blue-200">{formatDeZahl(results.c3s, 1)} %</div>
                     </div>
                     <div>
                       <div className="text-white/80 text-sm mb-1 flex items-center gap-1">
                         <span>Belit (<InlineMath math="C_2S" />)</span>
                         <InfoTooltip text="Dicalciumsilicat: Langsame Erhärtung, hohe Endfestigkeit, geringe Hydratationswärme." />
                       </div>
-                      <div className="text-3xl font-bold text-emerald-200">{results.c2s.toFixed(1)} %</div>
+                      <div className="text-3xl font-bold text-emerald-200">{formatDeZahl(results.c2s, 1)} %</div>
                     </div>
                     <div>
                       <div className="text-white/80 text-sm mb-1 flex items-center gap-1">
                         <span>Aluminat (<InlineMath math="C_3A" />)</span>
                         <InfoTooltip text="Tricalciumaluminat: Sehr schnelle Reaktion, Erstarrungsregelung durch Sulfat nötig. Sulfatempfindlich (Ettringittreiben)." />
                       </div>
-                      <div className="text-3xl font-bold text-amber-200">{results.c3a.toFixed(1)} %</div>
+                      <div className="text-3xl font-bold text-amber-200">{formatDeZahl(results.c3a, 1)} %</div>
                     </div>
                     <div>
                       <div className="text-white/80 text-sm mb-1 flex items-center gap-1">
                         <span>Ferrit (<InlineMath math="C_4AF" />)</span>
                         <InfoTooltip text="Tetracalciumaluminatferrit: Graue Farbe des Zements, wirkt als Flussmittel beim Brennen." />
                       </div>
-                      <div className="text-3xl font-bold text-rose-200">{results.c4af.toFixed(1)} %</div>
+                      <div className="text-3xl font-bold text-rose-200">{formatDeZahl(results.c4af, 1)} %</div>
                     </div>
                   </div>
                 </div>
@@ -875,7 +876,7 @@ export default function Zementchemie() {
         ]}
         formeln={[
           {
-            formel: 'KSt = \\frac{100 \\cdot \\text{CaO}}{2.8 \\cdot \\text{SiO}_2 + 1.1 \\cdot \\text{Al}_2\\text{O}_3 + 0.7 \\cdot \\text{Fe}_2\\text{O}_3}',
+            formel: 'KSt = \\frac{100 \\cdot \\text{CaO}}{2{,}8 \\cdot \\text{SiO}_2 + 1{,}1 \\cdot \\text{Al}_2\\text{O}_3 + 0{,}7 \\cdot \\text{Fe}_2\\text{O}_3}',
             erklaerung: 'Kalkstandard KSt (nach Kühl): Kennwert zur Beurteilung des Rohmehlversatzes beim Brennen von Klinker. Typischer Zielbereich liegt bei 90 bis 102.',
             quelle: 'DIN EN 196-2 / VDZ Zement-Taschenbuch'
           },
@@ -890,7 +891,7 @@ export default function Zementchemie() {
             quelle: 'Bogue, R. H. (1929) / DIN EN 196-2'
           },
           {
-            formel: '\\text{C}_2\\text{S} = 2.867 \\cdot \\text{SiO}_2 - 0.7544 \\cdot \\text{C}_3\\text{S}',
+            formel: '\\text{C}_2\\text{S} = 2.867 \\cdot \\text{SiO}_2 - 0{,}7544 \\cdot \\text{C}_3\\text{S}',
             erklaerung: 'Bogue-Gleichung für Dicalciumsilicat (Belit, C2S in M.-%). Verantwortlich für die kontinuierliche Nacherhärtung ab Tag 28.',
             quelle: 'Bogue, R. H. (1929)'
           },

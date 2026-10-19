@@ -6,7 +6,7 @@ import {
   Info, LineChart, Cpu, HardHat, Compass, FileText, ChevronRight
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import PruefverfahrenKatalog from './bauwerksuntersuchung/PruefverfahrenKatalog';
 
@@ -142,19 +142,19 @@ export default function Bauwerksunters_Monitoring() {
       limitCM = isHeated ? 1.8 : 2.0;
       isBelegreif = measuredCM <= limitCM;
       evalText = isBelegreif 
-        ? `Der Zementestrich ist mit ${measuredCM} CM-% belegreif (Richtwert Schnittstellenkoordination: ≤ ${limitCM} CM-%, belagsabhängig).` 
-        : `Der Zementestrich ist mit ${measuredCM} CM-% NICHT belegreif! Es drohen Verformungen oder Haftungsabrisse im Oberbelag (Richtwert: ≤ ${limitCM} CM-%, belagsabhängig).`;
+        ? `Der Zementestrich ist mit ${formatDeWert(measuredCM)} CM-% belegreif (Richtwert Schnittstellenkoordination: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).` 
+        : `Der Zementestrich ist mit ${formatDeWert(measuredCM)} CM-% NICHT belegreif! Es drohen Verformungen oder Haftungsabrisse im Oberbelag (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`;
     } else if (substrate === 'anhydrite') {
       limitCM = isHeated ? 0.3 : 0.5;
       isBelegreif = measuredCM <= limitCM;
       evalText = isBelegreif
-        ? `Der Calciumsulfatestrich (Anhydrit) ist mit ${measuredCM} CM-% belegreif (Richtwert: ≤ ${limitCM} CM-%, belagsabhängig).`
-        : `Der Calciumsulfatestrich ist mit ${measuredCM} CM-% NICHT belegreif! Ein Einbau von Belägen führt zu mineralischer Nadelbildung (Ettringit-ähnlich) und Blasen (Richtwert: ≤ ${limitCM} CM-%, belagsabhängig).`;
+        ? `Der Calciumsulfatestrich (Anhydrit) ist mit ${formatDeWert(measuredCM)} CM-% belegreif (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`
+        : `Der Calciumsulfatestrich ist mit ${formatDeWert(measuredCM)} CM-% NICHT belegreif! Ein Einbau von Belägen führt zu mineralischer Nadelbildung (Ettringit-ähnlich) und Blasen (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`;
     } else {
       // Mauerwerk: keine Belegreife-Grenze; Beurteilung über Darr-Feuchte und Durchfeuchtungsgrad
       limitCM = NaN;
       isBelegreif = false;
-      evalText = `Für Mauerwerk gibt es keinen Belegreife-Grenzwert. Gemessen: ${measuredCM} CM-%. Feuchte über Darrprüfung (DIN EN ISO 12570) und Durchfeuchtungsgrad (Bezug auf Sättigungsfeuchte) beurteilen.`;
+      evalText = `Für Mauerwerk gibt es keinen Belegreife-Grenzwert. Gemessen: ${formatDeWert(measuredCM)} CM-%. Feuchte über Darrprüfung (DIN EN ISO 12570) und Durchfeuchtungsgrad (Bezug auf Sättigungsfeuchte) beurteilen.`;
     }
 
     // HF Indicator Interpretation (approximate mapping)
@@ -342,7 +342,7 @@ export default function Bauwerksunters_Monitoring() {
 
                 <div className="pt-3 border-t border-slate-200 text-slate-500 text-[11px] leading-relaxed">
                   <span className="font-extrabold text-slate-800 uppercase block text-[9px] tracking-wider mb-1">Mess-Funktionsweise:</span>
-                  Eine rotierende Stahlnadel (<InlineMath math="\emptyset \approx 1.5\,\text{mm}" />) wird mit einer kontinuierlichen Eintriebsgeschwindigkeit ins Holz gedrückt. Der Stromverbrauch des Elektromotors korreliert mit der lokalen Rohdichte; Absolutwerte sind gerätespezifisch, ausgewertet wird relativ (Profilvergleich).
+                  Eine rotierende Stahlnadel (<InlineMath math="\emptyset \approx 1{,}5\,\text{mm}" />) wird mit einer kontinuierlichen Eintriebsgeschwindigkeit ins Holz gedrückt. Der Stromverbrauch des Elektromotors korreliert mit der lokalen Rohdichte; Absolutwerte sind gerätespezifisch, ausgewertet wird relativ (Profilvergleich).
                 </div>
               </div>
 
@@ -649,7 +649,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between text-xs font-medium text-slate-600 mb-1">
                       <span>Messergebnis Calciumcarbid-Methode:</span>
-                      <span className="font-bold text-shiraz">{measuredCM} CM-%</span>
+                      <span className="font-bold text-shiraz">{formatDeWert(measuredCM)} CM-%</span>
                     </div>
                     <input
                       type="range"
@@ -665,7 +665,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between text-xs font-medium text-slate-600 mb-1">
                       <span>Zerstörungsfreie HF-Messung (Eindringtiefe ca. 3cm):</span>
-                      <span className="font-bold text-slate-800">{measuredDigits} Digits</span>
+                      <span className="font-bold text-slate-800">{formatDeWert(measuredDigits)} Digits</span>
                     </div>
                     <input
                       type="range"
@@ -711,7 +711,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between mb-1">
                       <span>Gemessener Schlagrückprall R (Mittelwert):</span>
-                      <span className="font-bold text-slate-900">R = {reboundVal}</span>
+                      <span className="font-bold text-slate-900">R = {formatDeWert(reboundVal)}</span>
                     </div>
                     <input
                       type="range"
@@ -726,7 +726,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between mb-1">
                       <span>Mit Phenolphthalein bestimmte Karbonatisierungstiefe:</span>
-                      <span className="font-shiraz font-bold">{carbDepth} mm</span>
+                      <span className="font-shiraz font-bold">{formatDeWert(carbDepth)} mm</span>
                     </div>
                     <input
                       type="range"
@@ -741,7 +741,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div>
                     <div className="flex justify-between mb-1">
                       <span>Alter des Tragwerks:</span>
-                      <span className="font-bold text-slate-900">{concreteAge} Jahre</span>
+                      <span className="font-bold text-slate-900">{formatDeWert(concreteAge)} Jahre</span>
                     </div>
                     <input
                       type="range"

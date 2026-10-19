@@ -130,7 +130,7 @@ export default function IntegrationVerformungen() {
             quelle: 'DAfStb Heft 483 / Eurocode 2'
           },
           {
-            formel: '\\eta_{riss} = \\frac{\\sigma_{ct}(t)}{f_{ct,eff}(t)} \\le 1.0',
+            formel: '\\eta_{riss} = \\frac{\\sigma_{ct}(t)}{f_{ct,eff}(t)} \\le 1{,}0',
             erklaerung: 'Rissrisiko-Kriterium: Übersteigt die Zwangspannung die zu diesem Zeitpunkt verfügbare effektive Betonzugfestigkeit, bildet sich ein Trennriss.',
             quelle: 'DIN EN 1992-1-1'
           }

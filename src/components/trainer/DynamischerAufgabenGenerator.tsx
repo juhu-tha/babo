@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Calculator, RotateCcw, CheckCircle2, XCircle, AlertTriangle, 
@@ -40,7 +41,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { d, L, F_kN },
-        questionText: `An einem zylindrischen Betonprüfkörper (d = ${d} mm, L = ${L} mm) wird im Spaltzugversuch nach DIN EN 12390-6 eine Höchstlast von F = ${F_kN} kN gemessen. Berechnen Sie die axiale Betonzugfestigkeit f_ctm unter Ansatz des normativen Umrechnungsbeiwertes f_ctm ≈ 0,90 · f_ct,sp.`,
+        questionText: `An einem zylindrischen Betonprüfkörper (d = ${d} mm, L = ${L} mm) wird im Spaltzugversuch nach DIN EN 12390-6 eine Höchstlast von F = ${formatDeWert(F_kN)} kN gemessen. Berechnen Sie die axiale Betonzugfestigkeit f_ctm unter Ansatz des normativen Umrechnungsbeiwertes f_ctm ≈ 0,90 · f_ct,sp.`,
         correctAnswer: Number(f_ctm.toFixed(2)),
         unit: 'N/mm² (MPa)',
         tolerancePercent: 3,
@@ -62,17 +63,17 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Umrechnung der Höchstkraft in Newton',
-            math: `F = ${F_kN}\\text{ kN} = ${F_N.toLocaleString('de-DE')}\\text{ N}`,
+            math: `F = ${formatDeTeXWert(F_kN)}\\text{ kN} = ${F_N.toLocaleString('de-DE')}\\text{ N}`,
             explanation: 'Für Spannungen in N/mm² muss die Prüflast in Newton eingesetzt werden.'
           },
           {
             step: '2. Berechnung der Spaltzugfestigkeit f_ct,sp',
-            math: `f_{\\text{ct,sp}} = \\frac{2 \\cdot F}{\\pi \\cdot L \\cdot d} = \\frac{2 \\cdot ${F_N}}{\\pi \\cdot ${L} \\cdot ${d}} = ${f_ct_sp.toFixed(3)}\\text{ N/mm}^2`,
+            math: `f_{\\text{ct,sp}} = \\frac{2 \\cdot F}{\\pi \\cdot L \\cdot d} = \\frac{2 \\cdot ${F_N}}{\\pi \\cdot ${L} \\cdot ${d}} = ${formatDeTeX(f_ct_sp, 3)}\\text{ N/mm}^2`,
             explanation: 'Zweidimensionale elastizitätstheoretische Lösung nach Hertz für Linienlast auf Walze.'
           },
           {
             step: '3. Umrechnung auf axiale Betonzugfestigkeit f_ctm',
-            math: `f_{\\text{ctm}} \\approx 0{,}90 \\cdot f_{\\text{ct,sp}} = 0{,}90 \\cdot ${f_ct_sp.toFixed(3)} = \\mathbf{${f_ctm.toFixed(2)}}\\text{ N/mm}^2`,
+            math: `f_{\\text{ctm}} \\approx 0{,}90 \\cdot f_{\\text{ct,sp}} = 0{,}90 \\cdot ${formatDeTeX(f_ct_sp, 3)} = \\mathbf{${formatDeTeX(f_ctm, 2)}}\\text{ N/mm}^2`,
             explanation: 'DIN EN 1992-1-1 (EC2) Abs. 3.1.2 legt f_ctm ≈ 0,9 · f_ct,sp fest.'
           }
         ]
@@ -99,7 +100,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { L_m, I_cm4, E_MPa },
-        questionText: `Eine beidseitig gelenkig gelagerte Stahlstütze (Euler-Fall 2, Knicklängenbeiwert β = 1,0) hat eine Länge von L = ${L_m} m. Das minimale Flächenträgheitsmoment des Profils beträgt I_z = ${I_cm4} cm⁴, der Elastizitätsmodul ist E = ${E_MPa.toLocaleString()} N/mm². Berechnen Sie die ideale Knicklast F_K in kN.`,
+        questionText: `Eine beidseitig gelenkig gelagerte Stahlstütze (Euler-Fall 2, Knicklängenbeiwert β = 1,0) hat eine Länge von L = ${L_m} m. Das minimale Flächenträgheitsmoment des Profils beträgt I_z = ${I_cm4} cm⁴, der Elastizitätsmodul ist E = ${formatDeWert(E_MPa)} N/mm². Berechnen Sie die ideale Knicklast F_K in kN.`,
         correctAnswer: Number(F_K_kN.toFixed(1)),
         unit: 'kN',
         tolerancePercent: 3,
@@ -121,7 +122,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Einheiten angleichen',
-            math: `l_k = 1{,}0 \\cdot ${L_m}\\text{ m} = ${L_mm.toLocaleString('de-DE')}\\text{ mm}, \\quad I = ${I_cm4}\\text{ cm}^4 = ${I_mm4.toLocaleString('de-DE')}\\text{ mm}^4`,
+            math: `l_k = 1{,}0 \\cdot ${formatDeTeXWert(L_m)}\\text{ m} = ${L_mm.toLocaleString('de-DE')}\\text{ mm}, \\quad I = ${formatDeTeXWert(I_cm4)}\\text{ cm}^4 = ${I_mm4.toLocaleString('de-DE')}\\text{ mm}^4`,
             explanation: 'Konsistente Einheitenbasis in Newton und Millimeter.'
           },
           {
@@ -131,7 +132,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
           },
           {
             step: '3. Umrechnung in kN',
-            math: `F_K = ${F_K_N.toFixed(0)}\\text{ N} = \\mathbf{${F_K_kN.toFixed(1)}}\\text{ kN}`,
+            math: `F_K = ${formatDeTeX(F_K_N, 0)}\\text{ N} = \\mathbf{${formatDeTeX(F_K_kN, 1)}}\\text{ kN}`,
             explanation: 'Division durch 1.000 liefert die Knicklast in Kilonewton.'
           }
         ]
@@ -157,7 +158,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { sigma_c, phi, Ecm },
-        questionText: `Eine Betonstütze aus Normalbeton C30/37 (E_cm = 33.000 MPa) steht unter einer zentrischen Dauerlastspannung von σ_c = ${sigma_c} MPa. Die berechnete Endkriechzahl nach DIN EN 1992-1-1 beträgt φ(∞, t₀) = ${phi}. Berechnen Sie die reine Kriechdehnung ε_cr in Promille (‰).`,
+        questionText: `Eine Betonstütze aus Normalbeton C30/37 (E_cm = 33.000 MPa) steht unter einer zentrischen Dauerlastspannung von σ_c = ${formatDeWert(sigma_c)} MPa. Die berechnete Endkriechzahl nach DIN EN 1992-1-1 beträgt φ(∞, t₀) = ${formatDeWert(phi)}. Berechnen Sie die reine Kriechdehnung ε_cr in Promille (‰).`,
         correctAnswer: Number(eps_cr_promille.toFixed(3)),
         unit: '‰ (Promille)',
         tolerancePercent: 3,
@@ -179,12 +180,12 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Elastische Anfangsdehnung ε_el',
-            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${sigma_c}\\text{ MPa}}{33000\\text{ MPa}} = ${(eps_el * 1000).toFixed(4)}\\text{ \‰}`,
+            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${formatDeTeXWert(sigma_c)}\\text{ MPa}}{33000\\text{ MPa}} = ${formatDeTeX((eps_el * 1000), 4)}\\text{ \‰}`,
             explanation: 'Hookesches Gesetz für den elastischen Anteil zum Belastungszeitpunkt t₀.'
           },
           {
             step: '2. Zeitabhängige Kriechdehnung ε_cr',
-            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${(eps_el * 1000).toFixed(4)}\\text{ \‰} \\cdot ${phi} = \\mathbf{${eps_cr_promille.toFixed(3)}}\\text{ \‰}`,
+            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${formatDeTeX((eps_el * 1000), 4)}\\text{ \‰} \\cdot ${formatDeTeXWert(phi)} = \\mathbf{${formatDeTeX(eps_cr_promille, 3)}}\\text{ \‰}`,
             explanation: 'Multiplikation der elastischen Verzerrung mit der Kriechzahl nach EC2.'
           }
         ]
@@ -208,7 +209,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { zement, wasser, flugasche, k },
-        questionText: `Für einen Außenbauteilbeton (Expositionsklasse XC4) werden pro m³ Beton z = ${zement} kg Zement (CEM I), w = ${wasser} kg wirksames Wasser und f = ${flugasche} kg Steinkohlenflugasche dosiert. Der normative k-Wert-Anrechenbarkeitsfaktor für Flugasche beträgt k = ${k.toFixed(2)}. Berechnen Sie den äquivalenten Wasserzementwert (w/z)_eq.`,
+        questionText: `Für einen Außenbauteilbeton (Expositionsklasse XC4) werden pro m³ Beton z = ${zement} kg Zement (CEM I), w = ${wasser} kg wirksames Wasser und f = ${flugasche} kg Steinkohlenflugasche dosiert. Der normative k-Wert-Anrechenbarkeitsfaktor für Flugasche beträgt k = ${formatDeZahl(k, 2)}. Berechnen Sie den äquivalenten Wasserzementwert (w/z)_eq.`,
         correctAnswer: Number(wz_eq.toFixed(2)),
         unit: '[-]',
         tolerancePercent: 2,
@@ -229,12 +230,12 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Effektiver Zementwert (Bindemitteläquivalent)',
-            math: `z_{\\text{eq}} = z + k \\cdot f = ${zement} + ${k} \\cdot ${flugasche} = ${(zement + k * flugasche).toFixed(1)}\\text{ kg/m}^3`,
+            math: `z_{\\text{eq}} = z + k \\cdot f = ${zement} + ${k} \\cdot ${flugasche} = ${formatDeTeX((zement + k * flugasche), 1)}\\text{ kg/m}^3`,
             explanation: 'Anrechnung der Puzzolanität der Steinkohlenflugasche nach DIN 1045-2 / DIN EN 206.'
           },
           {
             step: '2. Berechnung des (w/z)_eq-Wertes',
-            math: `(w/z)_{\\text{eq}} = \\frac{w}{z + k \\cdot f} = \\frac{${wasser}}{${(zement + k * flugasche).toFixed(1)}} = \\mathbf{${wz_eq.toFixed(2)}}`,
+            math: `(w/z)_{\\text{eq}} = \\frac{w}{z + k \\cdot f} = \\frac{${wasser}}{${formatDeTeX((zement + k * flugasche), 1)}} = \\mathbf{${formatDeTeX(wz_eq, 2)}}`,
             explanation: 'Der Grenzwert für XC4 (max. 0,50) wird verglichen.'
           }
         ]
@@ -266,7 +267,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { d_daemmung_cm, lambda_daemm, d_ziegel_m, lambda_ziegel },
-        questionText: `Eine Außenwand besteht aus 24 cm Hochlochziegelmauerwerk (λ = 0,36 W/(m·K)) und einer vorgehängten Mineralwolledämmung der Dicke d = ${d_daemmung_cm} cm (λ = ${lambda_daemm} W/(m·K)). Die Wärmeübergangswiderstände betragen R_si = 0,13 m²·K/W und R_se = 0,04 m²·K/W. Putzschichten werden vernachlässigt. Berechnen Sie den Wärmedurchgangskoeffizienten U in W/(m²·K).`,
+        questionText: `Eine Außenwand besteht aus 24 cm Hochlochziegelmauerwerk (λ = 0,36 W/(m·K)) und einer vorgehängten Mineralwolledämmung der Dicke d = ${formatDeWert(d_daemmung_cm)} cm (λ = ${formatDeWert(lambda_daemm)} W/(m·K)). Die Wärmeübergangswiderstände betragen R_si = 0,13 m²·K/W und R_se = 0,04 m²·K/W. Putzschichten werden vernachlässigt. Berechnen Sie den Wärmedurchgangskoeffizienten U in W/(m²·K).`,
         correctAnswer: Number(U_wert.toFixed(2)),
         unit: 'W/(m²·K)',
         tolerancePercent: 3,
@@ -288,17 +289,17 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Wärmedurchlasswiderstände der Baustoffschichten',
-            math: `R_{\\text{Ziegel}} = \\frac{0{,}24}{0{,}36} = ${R_ziegel.toFixed(3)}\\text{ m}^2\\text{K/W}, \\quad R_{\\text{Dämm}} = \\frac{${d_daemm_m}}{${lambda_daemm}} = ${R_daemm.toFixed(3)}\\text{ m}^2\\text{K/W}`,
+            math: `R_{\\text{Ziegel}} = \\frac{0{,}24}{0{,}36} = ${formatDeTeX(R_ziegel, 3)}\\text{ m}^2\\text{K/W}, \\quad R_{\\text{Dämm}} = \\frac{${formatDeTeXWert(d_daemm_m)}}{${formatDeTeXWert(lambda_daemm)}} = ${formatDeTeX(R_daemm, 3)}\\text{ m}^2\\text{K/W}`,
             explanation: 'Dicken in Meter umrechnen (12 cm = 0,12 m).'
           },
           {
             step: '2. Gesamter Wärmedurchgangswiderstand R_T',
-            math: `R_T = 0{,}13 + ${R_ziegel.toFixed(3)} + ${R_daemm.toFixed(3)} + 0{,}04 = ${R_T.toFixed(3)}\\text{ m}^2\\text{K/W}`,
+            math: `R_T = 0{,}13 + ${formatDeTeX(R_ziegel, 3)} + ${formatDeTeX(R_daemm, 3)} + 0{,}04 = ${formatDeTeX(R_T, 3)}\\text{ m}^2\\text{K/W}`,
             explanation: 'Addition von innerem Übergangswiderstand R_si, Schichten und R_se.'
           },
           {
             step: '3. Kehrwertbildung zum U-Wert',
-            math: `U = \\frac{1}{R_T} = \\frac{1}{${R_T.toFixed(3)}} = \\mathbf{${U_wert.toFixed(2)}}\\text{ W/(m}^2\\text{K)}`,
+            math: `U = \\frac{1}{R_T} = \\frac{1}{${formatDeTeX(R_T, 3)}} = \\mathbf{${formatDeTeX(U_wert, 2)}}\\text{ W/(m}^2\\text{K)}`,
             explanation: 'Anforderung nach GModG (vormals GEG) für Außenwände: max. 0,24 W/(m²K).'
           }
         ]
@@ -418,14 +419,14 @@ export function DynamischerAufgabenGenerator() {
             <Trophy size={16} className="text-amber-500" />
             <div className="text-xs">
               <span className="text-text-main/60 block text-[10px]">Gelöst:</span>
-              <span className="font-mono font-bold text-text-main">{totalSolved}</span>
+              <span className="font-mono font-bold text-text-main">{formatDeWert(totalSolved)}</span>
             </div>
           </div>
           <div className="flex items-center gap-2 bg-shiraz/10 px-3.5 py-2 rounded-xl border border-shiraz/20">
             <Sparkles size={16} className="text-shiraz" />
             <div className="text-xs">
               <span className="text-shiraz/80 block text-[10px]">Streak:</span>
-              <span className="font-mono font-bold text-shiraz">{streak} in Folge 🔥</span>
+              <span className="font-mono font-bold text-shiraz">{formatDeWert(streak)} in Folge 🔥</span>
             </div>
           </div>
         </div>
@@ -546,7 +547,7 @@ export function DynamischerAufgabenGenerator() {
                   ) : (
                     <>
                       <XCircle className="text-rose-700" size={18} />
-                      <span>Leider nicht ganz richtig (Toleranz ±{taskInstance.tolerancePercent}%).</span>
+                      <span>Leider nicht ganz richtig (Toleranz ±{formatDeWert(taskInstance.tolerancePercent)}%).</span>
                     </>
                   )}
                 </div>
@@ -561,7 +562,7 @@ export function DynamischerAufgabenGenerator() {
 
                 <div className="mt-2.5 flex items-center justify-between text-xs">
                   <span className="text-text-main/70">
-                    Musterlösung: <strong>{taskInstance.correctAnswer} {taskInstance.unit}</strong>
+                    Musterlösung: <strong>{formatDeWert(taskInstance.correctAnswer)} {taskInstance.unit}</strong>
                   </span>
                   <button
                     type="button"

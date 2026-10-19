@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { GMODG_ANLAGE7, FX, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
@@ -547,7 +547,7 @@ export default function Modernisierung() {
                   >
                     <div className="text-xs truncate">{comp.name.split('(')[0]}</div>
                     <div className={`text-[10px] mt-0.5 ${selectedComponentId === comp.id ? 'text-white/80' : 'text-slate-500'}`}>
-                      GModG-Limit: {comp.limitU} W/m²K
+                      GModG-Limit: {formatDeWert(comp.limitU)} W/m²K
                     </div>
                   </button>
                 ))}
@@ -586,7 +586,7 @@ export default function Modernisierung() {
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
                     <span>Dämmstoff:</span>
-                    <span className="text-shiraz font-mono font-bold">WLG {activeMaterial.wlg * 1000} ({formatDeZahl(activeMaterial.wlg, 3)})</span>
+                    <span className="text-shiraz font-mono font-bold">WLG {formatDeWert(activeMaterial.wlg * 1000)} ({formatDeZahl(activeMaterial.wlg, 3)})</span>
                   </label>
                   <select
                     className="w-full p-2.5 border border-home-grau/35 rounded-xl text-xs bg-white focus:outline-none"
@@ -602,7 +602,7 @@ export default function Modernisierung() {
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
                     <span>Dämmstoffdicke (<InlineMath math="d" />):</span>
-                    <span className="text-shiraz font-mono font-bold">{thicknessMm} mm</span>
+                    <span className="text-shiraz font-mono font-bold">{formatDeWert(thicknessMm)} mm</span>
                   </label>
                   <input
                     type="range"
@@ -698,7 +698,7 @@ export default function Modernisierung() {
                 <div>
                   <h4 className="font-bold text-sm text-text-main pb-2 border-b border-home-grau/20 flex items-center justify-between">
                     <span>Berechnungsbericht &amp; Amortisation</span>
-                    <span className="text-xs font-mono text-slate-500 font-normal">G_t20/15 = {hgtVal} Kd/a · F_x = {formatDeZahl(simResults.fx, 1)} · η = {formatDeZahl(etaSys, 2)}</span>
+                    <span className="text-xs font-mono text-slate-500 font-normal">G_t20/15 = {formatDeWert(hgtVal)} Kd/a · F_x = {formatDeZahl(simResults.fx, 1)} · η = {formatDeZahl(etaSys, 2)}</span>
                   </h4>
                   
                   {/* 4 Kennwerte */}
@@ -739,7 +739,7 @@ export default function Modernisierung() {
                     <span className="text-[11px] font-bold text-slate-700 block mb-1">Physikalische Zwischenschritte (DIN EN ISO 6946):</span>
                     <div className="text-[11.5px] font-mono text-slate-700 space-y-1 overflow-x-auto py-1">
                       <div>R_Bestand = 1 / {formatDeZahl(originalU, 2)} = {formatDeZahl(simResults.R_orig, 3)} m²K/W</div>
-                      <div>R_Dämmung = {thicknessMm / 1000} m / {activeMaterial.wlg} = {formatDeZahl(simResults.R_ins, 3)} m²K/W</div>
+                      <div>R_Dämmung = {formatDeWert(thicknessMm / 1000)} m / {formatDeWert(activeMaterial.wlg)} = {formatDeZahl(simResults.R_ins, 3)} m²K/W</div>
                       <div>R_Gesamt = {formatDeZahl(simResults.R_orig, 3)} + {formatDeZahl(simResults.R_ins, 3)} = {formatDeZahl(simResults.R_tot, 3)} m²K/W</div>
                       <div className="text-shiraz font-bold">U_neu = 1 / {formatDeZahl(simResults.R_tot, 3)} = {formatDeZahl(simResults.newU, 3)} W/(m²K)</div>
                     </div>
@@ -767,7 +767,7 @@ export default function Modernisierung() {
                       <p className="text-xs mt-1 opacity-90 leading-normal">
                         {simResults.isCompliant 
                           ? `Der berechnete U-Wert von ${formatDeZahl(simResults.newU, 3)} W/(m²K) unterschreitet den gesetzlichen Grenzwert von ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K) für ${activeComponent.name}. Die Sanierung spart ca. ${formatDeZahl(simResults.annualCo2KgSaved, 0)} kg CO₂ pro Jahr ein.`
-                          : `Achtung: Der Bauteil-U-Wert von ${formatDeZahl(simResults.newU, 3)} W/(m²K) liegt über dem Höchstwert von ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K) nach § 36 GModG. Erhöhen Sie die Dämmstoffdicke um mindestens ${simResults.dReqMm} mm oder wählen Sie einen Dämmstoff mit geringerer Wärmeleitfähigkeit (z. B. WLG 032 oder 024).`
+                          : `Achtung: Der Bauteil-U-Wert von ${formatDeZahl(simResults.newU, 3)} W/(m²K) liegt über dem Höchstwert von ${formatDeZahl(activeComponent.limitU, 2)} W/(m²K) nach § 36 GModG. Erhöhen Sie die Dämmstoffdicke um mindestens ${formatDeWert(simResults.dReqMm)} mm oder wählen Sie einen Dämmstoff mit geringerer Wärmeleitfähigkeit (z. B. WLG 032 oder 024).`
                         }
                       </p>
                     </div>

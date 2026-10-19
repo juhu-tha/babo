@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
   Chart as ChartJS,
@@ -274,7 +275,7 @@ export default function Kunststoffe() {
         callbacks: {
           label: (context: any) => {
             if (context.raw === null) return '';
-            return `E-Modul: ${Number(context.raw).toFixed(1)} MPa`;
+            return `E-Modul: ${formatDeZahl(Number(context.raw), 1)} MPa`;
           }
         }
       }
@@ -376,10 +377,10 @@ export default function Kunststoffe() {
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md">
               <div className="text-sm opacity-90 mb-1">Aktueller E-Modul</div>
               <div className="text-3xl font-bold">
-                {chartData.currentE < 1 ? '< 1' : chartData.currentE.toFixed(0)} MPa
+                {chartData.currentE < 1 ? '< 1' : formatDeZahl(chartData.currentE, 0)} MPa
               </div>
               <div className="text-xs opacity-75 mt-2">
-                Bei {temperature} °C
+                Bei {formatDeWert(temperature)} °C
               </div>
             </div>
           </div>

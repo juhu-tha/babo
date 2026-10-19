@@ -103,22 +103,22 @@ export default function BetonAZ() {
                     <tr>
                       <td className="py-1 px-0 font-medium">Zement</td>
                       <td className="py-1 px-0">280 – 360 kg/m³</td>
-                      <td className="py-1 px-0 font-mono">3.00 – 3.15 kg/dm³</td>
+                      <td className="py-1 px-0 font-mono">3,00 – 3,15 kg/dm³</td>
                     </tr>
                     <tr>
                       <td className="py-1 px-0 font-medium">Flugasche</td>
                       <td className="py-1 px-0">0 – 150 kg/m³</td>
-                      <td className="py-1 px-0 font-mono">2.10 – 2.30 kg/dm³</td>
+                      <td className="py-1 px-0 font-mono">2,10 – 2,30 kg/dm³</td>
                     </tr>
                     <tr>
                       <td className="py-1 px-0 font-medium">Wasser</td>
                       <td className="py-1 px-0">140 – 190 kg/m³</td>
-                      <td className="py-1 px-0 font-mono">1.00 kg/dm³</td>
+                      <td className="py-1 px-0 font-mono">1,00 kg/dm³</td>
                     </tr>
                     <tr>
                       <td className="py-1 px-0 font-medium">Gestein</td>
                       <td className="py-1 px-0">1700 – 1950 kg/m³</td>
-                      <td className="py-1 px-0 font-mono">2.60 – 2.70 kg/dm³</td>
+                      <td className="py-1 px-0 font-mono">2,60 – 2,70 kg/dm³</td>
                     </tr>
                   </tbody>
                 </table>
@@ -126,7 +126,7 @@ export default function BetonAZ() {
               <div className="mt-4 pt-3.5 border-t border-home-grau/30">
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Zusatzstoffanrechnung:</span>
                 <span className="text-[11px] text-slate-600 block mt-1">
-                  Der äquivalente Wasserzementwert gilt nach: <FormulaText text="(w/z)_{eq} = M_w / (M_z + k \cdot M_f)" /> (Flugasche Beiwert <span className="font-mono">k = 0.4</span>).
+                  Der äquivalente Wasserzementwert gilt nach: <FormulaText text="(w/z)_{eq} = M_w / (M_z + k \cdot M_f)" /> (Flugasche Beiwert <span className="font-mono">k = 0,4</span>).
                 </span>
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function BetonAZ() {
             <div className="lg:col-span-7 flex flex-col gap-3">
               <p className="text-xs text-slate-600 leading-relaxed font-sans">
                 Eines der wichtigsten Kriterien der Materialbeständigkeit ist der <strong>Wasserzementwert (w/z-Wert)</strong>. 
-                Für die reine Hydratation (chemische und physikalische Wasserbindung) wird theoretisch nur ein w/z-Wert von ca. 0.40 benötigt 
+                Für die reine Hydratation (chemische und physikalische Wasserbindung) wird theoretisch nur ein w/z-Wert von ca. 0,40 benötigt 
                 (wasserfreies Gesteinsgel). Überschüssiges Zugabewasser verdampft im Lauf der Erhärtung und hinterlässt ein verzweigtes System aus 
                 durchgehenden <strong>Kapillarporen</strong>, welche die Festigkeit des Betongefüges senken und das Eindringen Schadstoffen drastisch erhöhen.
               </p>
@@ -160,7 +160,7 @@ export default function BetonAZ() {
               <div className="p-3 bg-red-50/45 border border-red-150 rounded-lg text-xs flex gap-2 text-red-950">
                 <Info size={16} className="text-red-700 shrink-0 mt-0.5" />
                 <p className="font-sans leading-relaxed text-[11px]">
-                  <strong>Dichtheitsgrenze (w/z ≤ 0.50):</strong> Ab einem w/z-Wert von ca. 0.50 wächst der Kapillarporengehalt überproportional an. 
+                  <strong>Dichtheitsgrenze (w/z ≤ 0,50):</strong> Ab einem w/z-Wert von ca. 0,50 wächst der Kapillarporengehalt überproportional an. 
                   Die Kapillarkanäle fangen an sich zusammenhängend zu vernetzen (Perkolation), wodurch die Diffusionsbarriere geschwächt wird.
                 </p>
               </div>
@@ -179,7 +179,7 @@ export default function BetonAZ() {
 
                 <div className="bg-white p-2.5 rounded border border-home-grau/30 flex justify-between items-center text-xs">
                   <div>
-                    <span className="font-semibold block text-slate-900">w/z = 0.45 – 0.50 (Konstruktiver Hochbau)</span>
+                    <span className="font-semibold block text-slate-900">w/z = 0,45 – 0,50 (Konstruktiver Hochbau)</span>
                     <span className="text-[10px] text-slate-500">Klassischer XC3/XC4 Außenbauteil-Standard</span>
                   </div>
                   <span className="font-mono bg-slate-50 text-slate-700 border border-home-grau/30 px-1.5 py-0.5 rounded font-bold text-[10px]">4 – 12% Kapillarporen</span>
@@ -187,7 +187,7 @@ export default function BetonAZ() {
 
                 <div className="bg-white p-2.5 rounded border border-home-grau/30 flex justify-between items-center text-xs">
                   <div>
-                    <span className="font-semibold block text-slate-950">w/z ≥ 0.60 (Geringwertige Bauteile)</span>
+                    <span className="font-semibold block text-slate-950">w/z ≥ 0,60 (Geringwertige Bauteile)</span>
                     <span className="text-[10px] text-slate-500">Unbewehrter Fundamentbeton / Sauberkeitsschicht</span>
                   </div>
                   <span className="font-mono bg-red-50 text-red-800 border border-red-200 px-1.5 py-0.5 rounded font-bold text-[10px]">&gt; 25% Kapillarporen</span>
@@ -237,7 +237,7 @@ export default function BetonAZ() {
                 <div className="bg-slate-50 border border-home-grau/30 p-2.5 rounded">
                   <span className="text-[10px] font-semibold text-slate-500 font-mono block">B: TRANSPORTHÖHE & EINBAU</span>
                   <p className="text-slate-800 font-semibold mt-0.5">Vermeidung von Entmischung</p>
-                  <p className="text-slate-500 text-[10px] leading-relaxed">Freie Fallhöhen über 1.50 m zwingend vermeiden. Spezielle Fallschläuche oder Trichtersysteme nutzen.</p>
+                  <p className="text-slate-500 text-[10px] leading-relaxed">Freie Fallhöhen über 1,50 m zwingend vermeiden. Spezielle Fallschläuche oder Trichtersysteme nutzen.</p>
                 </div>
               </div>
             </div>
@@ -340,31 +340,31 @@ export default function BetonAZ() {
                     <td className="py-1 font-bold">C12/15</td>
                     <td className="py-1">12</td>
                     <td className="py-1">15</td>
-                    <td className="py-1">1.6 MPa</td>
+                    <td className="py-1">1,6 MPa</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">C20/25</td>
                     <td className="py-1">20</td>
                     <td className="py-1">25</td>
-                    <td className="py-1">2.2 MPa</td>
+                    <td className="py-1">2,2 MPa</td>
                   </tr>
                   <tr className="text-slate-900 font-semibold bg-white/40">
                     <td className="py-1 font-sans font-bold">C25/30</td>
                     <td className="py-1">25</td>
                     <td className="py-1">30</td>
-                    <td className="py-1">2.6 MPa</td>
+                    <td className="py-1">2,6 MPa</td>
                   </tr>
                   <tr className="text-slate-900 font-semibold bg-white/40">
                     <td className="py-1 font-sans font-bold">C30/37</td>
                     <td className="py-1">30</td>
                     <td className="py-1">37</td>
-                    <td className="py-1">2.9 MPa</td>
+                    <td className="py-1">2,9 MPa</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">C45/55</td>
                     <td className="py-1">45</td>
                     <td className="py-1">55</td>
-                    <td className="py-1">3.8 MPa</td>
+                    <td className="py-1">3,8 MPa</td>
                   </tr>
                 </tbody>
               </table>
@@ -484,7 +484,7 @@ export default function BetonAZ() {
                 <ShieldAlert size={16} className="text-amber-700 shrink-0 mt-0.5" />
                 <div className="font-sans leading-relaxed text-[11px]">
                   <strong>Mindestabreißfestigkeit f_ct,sub:</strong> Die Haftzugfestigkeit des tragenden Altbetons muss vor einer Reprofilierung oder dem 
-                  Auftrag von Schutzbeschichtungen zwingend geprüft werden und einen Mindestwert von <strong>≥ 1.5 N/mm²</strong> aufweisen.
+                  Auftrag von Schutzbeschichtungen zwingend geprüft werden und einen Mindestwert von <strong>≥ 1,5 N/mm²</strong> aufweisen.
                 </div>
               </div>
             </div>
@@ -591,7 +591,7 @@ export default function BetonAZ() {
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-slate-800">Prüfung von Untergrundhaftwerten</h4>
-                  <p className="text-slate-500 text-[10.5px] mt-0.5">Bei Sanierungen die saubere, rissfreie Verbundfläche mittels Haftzugprüfungen protokollieren (Soll ≥ 1.5 N/mm²).</p>
+                  <p className="text-slate-500 text-[10.5px] mt-0.5">Bei Sanierungen die saubere, rissfreie Verbundfläche mittels Haftzugprüfungen protokollieren (Soll ≥ 1,5 N/mm²).</p>
                 </div>
               </div>
             </div>

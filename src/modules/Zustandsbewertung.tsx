@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AlertTriangle, Search, Filter, FileText, CheckCircle, XCircle, Info, Sliders, Calculator, Award, Plus, Minus, BookOpen, Wrench, Shield, Clipboard, Eye, ClipboardCheck, ShieldCheck } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 const SCHADEN_KATEGORIEN = [
@@ -221,7 +221,7 @@ export default function Zustandsbewertung() {
             <div className="space-y-3">
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-emerald-500 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">1.0 - 1.4</span>
+                  <span className="text-2xl">1,0 - 1.4</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Sehr gut</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -233,7 +233,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-lime-500 text-text-main font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">1.5 - 1.9</span>
+                  <span className="text-2xl">1,5 - 1.9</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Gut</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -245,7 +245,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-yellow-400 text-text-main font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">2.0 - 2.4</span>
+                  <span className="text-2xl">2,0 - 2.4</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Befriedigend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -257,7 +257,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-orange-400 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">2.5 - 2.9</span>
+                  <span className="text-2xl">2,5 - 2.9</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Ausreichend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -269,7 +269,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-orange-600 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">3.0 - 3.4</span>
+                  <span className="text-2xl">3,0 - 3.4</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Nicht ausreichend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -281,7 +281,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-red-600 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">3.5 - 4.0</span>
+                  <span className="text-2xl">3,5 - 4.0</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Ungenügend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -791,7 +791,7 @@ export default function Zustandsbewertung() {
                                 <p className="text-xs text-text-main/60 leading-tight">{row.desc}</p>
                               </div>
                               <span className="text-xs font-bold bg-shiraz text-white px-2 py-0.5 rounded">
-                                Wert: {row.currVal}
+                                Wert: {formatDeWert(row.currVal)}
                               </span>
                             </div>
 
@@ -807,7 +807,7 @@ export default function Zustandsbewertung() {
                                       : 'bg-white border-home-grau/25 text-text-main hover:bg-home-grau/5'
                                   }`}
                                 >
-                                  Stufe {v}
+                                  Stufe {formatDeWert(v)}
                                 </button>
                               ))}
                             </div>
@@ -923,7 +923,7 @@ export default function Zustandsbewertung() {
                         <div className="flex justify-between items-center flex-wrap gap-1">
                           <div className="text-xs font-bold uppercase text-text-main/50">Wertung:</div>
                           <div className={`text-xs px-2.5 py-0.5 rounded-full font-bold ${noteInfo.color}`}>
-                            {noteInfo.label} (Kategorie {noteInfo.grade})
+                            {noteInfo.label} (Kategorie {formatDeWert(noteInfo.grade)})
                           </div>
                         </div>
                         <div>
@@ -1117,12 +1117,12 @@ export default function Zustandsbewertung() {
         ]}
         formeln={[
           {
-            formel: 'Z_N = \\text{Basisnote} + \\sum \\Delta Z_i \\quad (1.0 \\le Z_N \\le 4.0)',
+            formel: 'Z_N = \\text{Basisnote} + \\sum \\Delta Z_i \\quad (1.0 \\le Z_N \\le 4{,}0)',
             erklaerung: 'Zustandsnotenermittlung ZN nach RI-EBW-PRÜF: Bewertung von Standsicherheit (S), Verkehrssicherheit (V) und Dauerhaftigkeit (D). Noten von 1.0 (sehr gut) bis 4.0 (ungenügend / sofortiger Handlungsbedarf).',
             quelle: 'RI-EBW-PRÜF / DIN 1076'
           },
           {
-            formel: '\\beta = \\frac{\\mu_R - \\mu_S}{\\sqrt{\\sigma_R^2 + \\sigma_S^2}} \\ge \\beta_{\\text{target}} = 3.8 \\quad (P_f = \\Phi(-\\beta))',
+            formel: '\\beta = \\frac{\\mu_R - \\mu_S}{\\sqrt{\\sigma_R^2 + \\sigma_S^2}} \\ge \\beta_{\\text{target}} = 3{,}8 \\quad (P_f = \\Phi(-\\beta))',
             erklaerung: 'Zuverlässigkeitsindex beta (ULS): Zielwert 3,8 für RC2 und 50 Jahre Bezugszeitraum (DIN EN 1990, Anhang B/C). Für bestehende Tragwerke kann die Zielzuverlässigkeit nach EN 1990-2:2026 abweichen.',
             quelle: 'DIN EN 1990 Anhang B/C; EN 1990-2:2026'
           }

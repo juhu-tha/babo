@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Activity } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -179,15 +180,15 @@ export default function EModul() {
                   onChange={(e) => setAlphaE(Number(e.target.value))}
                   className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white text-text-main focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 >
-                  <option value={1.2}>Basalt, dichte Kalksteine (α_E = 1.20)</option>
-                  <option value={1.0}>Quarzit (α_E = 1.00 - Standard)</option>
-                  <option value={0.9}>Kalkstein (α_E = 0.90)</option>
-                  <option value={0.7}>Sandstein (α_E = 0.70)</option>
+                  <option value={1.2}>Basalt, dichte Kalksteine (α_E = 1,20)</option>
+                  <option value={1.0}>Quarzit (α_E = 1,00 - Standard)</option>
+                  <option value={0.9}>Kalkstein (α_E = 0,90)</option>
+                  <option value={0.7}>Sandstein (α_E = 0,70)</option>
                 </select>
               </div>
               <div className="mt-4 p-3 bg-white rounded-lg border border-home-grau/30">
                 <div className="text-sm text-text-main/70">Mittlerer E-Modul (E_cm)</div>
-                <div className="text-2xl font-bold text-text-main">{results.ecm.toFixed(1)} GPa</div>
+                <div className="text-2xl font-bold text-text-main">{formatDeZahl(results.ecm, 1)} GPa</div>
               </div>
             </div>
 
@@ -229,19 +230,19 @@ export default function EModul() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
                   <div className="text-xs text-text-main/70 mb-1">Voigt (Parallelschaltung)</div>
-                  <div className="text-lg font-bold text-shiraz">{results.eVoigt.toFixed(1)} GPa</div>
+                  <div className="text-lg font-bold text-shiraz">{formatDeZahl(results.eVoigt, 1)} GPa</div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
                   <div className="text-xs text-text-main/70 mb-1">Reuss (Reihenschaltung)</div>
-                  <div className="text-lg font-bold text-blue-600">{results.eReuss.toFixed(1)} GPa</div>
+                  <div className="text-lg font-bold text-blue-600">{formatDeZahl(results.eReuss, 1)} GPa</div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
                   <div className="text-xs text-text-main/70 mb-1">Hashin-Shtrikman (Oben)</div>
-                  <div className="text-lg font-bold text-amber-500">{results.eHSPlus.toFixed(1)} GPa</div>
+                  <div className="text-lg font-bold text-amber-500">{formatDeZahl(results.eHSPlus, 1)} GPa</div>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/30">
                   <div className="text-xs text-text-main/70 mb-1">Hashin-Shtrikman (Unten)</div>
-                  <div className="text-lg font-bold text-emerald-500">{results.eHSMinus.toFixed(1)} GPa</div>
+                  <div className="text-lg font-bold text-emerald-500">{formatDeZahl(results.eHSMinus, 1)} GPa</div>
                 </div>
               </div>
               <div className="mt-4 text-sm text-text-main/80">
@@ -343,7 +344,7 @@ export default function EModul() {
         ]}
         formeln={[
           {
-            formel: 'E_{cm} = \\alpha_E \\cdot 22 \\cdot \\left(\\frac{f_{cm}}{10}\\right)^{0.3} \\quad [\\text{GPa}]',
+            formel: 'E_{cm} = \\alpha_E \\cdot 22 \\cdot \\left(\\frac{f_{cm}}{10}\\right)^{0{,}3} \\quad [\\text{GPa}]',
             erklaerung: 'Mittlerer Elastizitätsmodul von Normalbeton nach Eurocode 2 in Abhängigkeit von mittlerer Zylinderdruckfestigkeit fcm und Gesteinszuschlagsbeiwert αE.',
             quelle: 'DIN EN 1992-1-1 Tab. 3.1'
           },

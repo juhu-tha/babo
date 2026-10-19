@@ -19,7 +19,7 @@ import {
   Download
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { exportToPDF } from '../lib/pdfExport';
 
@@ -439,11 +439,11 @@ export default function LCC() {
               <div>
                 <span className="font-bold text-slate-950 block mb-1">Berechnungsparameter:</span>
                 <ul className="space-y-0.5 font-mono text-[11px]">
-                  <li>• Betrachtungszeitraum: <span className="font-bold text-shiraz">{analysisPeriod} Jahre</span></li>
+                  <li>• Betrachtungszeitraum: <span className="font-bold text-shiraz">{formatDeWert(analysisPeriod)} Jahre</span></li>
                   <li>• Kalkulationszinssatz (<InlineMath math="r" />): <span className="font-bold text-shiraz">{formatDeZahl(discountRate, 1)} % / a</span></li>
                   <li>• Energiepreis-Inflation (<InlineMath math="e" />): <span className="font-bold text-shiraz">{formatDeZahl(energyInflation, 1)} % / a</span></li>
                   <li>• CO₂-Schattenpreis: <span className="font-bold text-shiraz">{co2PricingEnabled ? `Aktiv (${co2BasePrice} €/t, +${co2Escalation}%)` : 'Inaktiv'}</span></li>
-                  <li>• KfW-Fördermodus: <span className="font-bold text-shiraz">{subsidyEnabled ? `Aktiv (${subsidyPercent}%)` : 'Inaktiv'}</span></li>
+                  <li>• KfW-Fördermodus: <span className="font-bold text-shiraz">{subsidyEnabled ? `Aktiv (${formatDeWert(subsidyPercent)}%)` : 'Inaktiv'}</span></li>
                 </ul>
               </div>
             </div>
@@ -488,7 +488,7 @@ export default function LCC() {
               <div>
                 <div className="flex justify-between items-center mb-1">
                   <label htmlFor="period-slider" className="text-xs font-bold text-slate-700">Betrachtungszeitraum (N)</label>
-                  <span className="text-xs font-mono font-bold text-shiraz">{analysisPeriod} Jahre</span>
+                  <span className="text-xs font-mono font-bold text-shiraz">{formatDeWert(analysisPeriod)} Jahre</span>
                 </div>
                 <input
                   id="period-slider"
@@ -591,7 +591,7 @@ export default function LCC() {
                       <div>
                         <div className="flex justify-between items-center mb-0.5">
                           <span className="text-[10px] font-medium text-slate-600">CO₂-Basispreis (Start):</span>
-                          <span className="text-xs font-mono font-bold text-shiraz">{co2BasePrice} € / t</span>
+                          <span className="text-xs font-mono font-bold text-shiraz">{formatDeWert(co2BasePrice)} € / t</span>
                         </div>
                         <input
                           type="range"
@@ -649,7 +649,7 @@ export default function LCC() {
                     <div className="pt-2 border-t border-orange-100/50 animate-in fade-in duration-200">
                       <div className="flex justify-between items-center mb-0.5">
                         <span className="text-[10px] font-medium text-slate-600">Zuschuss auf Option B:</span>
-                        <span className="text-xs font-mono font-bold text-shiraz">{subsidyPercent} %</span>
+                        <span className="text-xs font-mono font-bold text-shiraz">{formatDeWert(subsidyPercent)} %</span>
                       </div>
                       <input
                         type="range"
@@ -700,7 +700,7 @@ export default function LCC() {
                   </h4>
                   <p className="text-xs leading-relaxed mt-1">
                     {calcData.saving >= 0 
-                      ? `Trotz einer höheren Initialinvestition an Tag Null (CapEx-Aufpreis von ${(activeScenario.optionB.capex - activeScenario.optionA.capex).toLocaleString('de-DE')} €) amortisiert sich Option B über die Lebensdauer von ${analysisPeriod} Jahren durch immense OpEx-Vorteile und das Ausbleiben teurer Austauschzyklen. Ein klarer Beleg für nachhaltiges Investment!`
+                      ? `Trotz einer höheren Initialinvestition an Tag Null (CapEx-Aufpreis von ${(activeScenario.optionB.capex - activeScenario.optionA.capex).toLocaleString('de-DE')} €) amortisiert sich Option B über die Lebensdauer von ${formatDeWert(analysisPeriod)} Jahren durch immense OpEx-Vorteile und das Ausbleiben teurer Austauschzyklen. Ein klarer Beleg für nachhaltiges Investment!`
                       : `Unter den gewählten Finanzrandbedingungen (insb. hohem Zinssatz oder kurzem Nutzungszeitraum) kann der Mehrpreis für die kreislauffähige Option B auf Grund der Abzinsung nicht vollständig kompensiert werden.`
                     }
                   </p>
@@ -882,7 +882,7 @@ export default function LCC() {
                       </tr>
                       {subsidyEnabled && (
                         <tr className="bg-blue-50/40 text-blue-900 border-b border-blue-100/30">
-                          <td className="p-2.5 pl-6 font-normal text-[11px] text-blue-800 flex items-center gap-1">↳ Staatl. KfW-Zuschuss ({subsidyPercent}%)</td>
+                          <td className="p-2.5 pl-6 font-normal text-[11px] text-blue-800 flex items-center gap-1">↳ Staatl. KfW-Zuschuss ({formatDeWert(subsidyPercent)}%)</td>
                           <td className="p-2.5 text-right text-slate-400 font-mono">- 0 €</td>
                           <td className="p-2.5 text-right font-mono bg-slate-100/20 text-slate-400">- 0 €</td>
                           <td className="p-2.5 text-right font-mono text-blue-700">- {((activeScenario.optionB.capex * subsidyPercent) / 100).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>

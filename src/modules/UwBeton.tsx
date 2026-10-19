@@ -121,7 +121,7 @@ export default function UwBeton() {
             quelle: 'DBV-Merkblatt Unterwasserbeton'
           },
           {
-            formel: 'h_{\\text{Eintauch}} \\ge 1.5 - 2.0\\,\\text{m}',
+            formel: 'h_{\\text{Eintauch}} \\ge 1{,}5 - 2{,}0\\,\\text{m}',
             erklaerung: 'Mindesteintauchtiefe des Schüttrohres im frischen Betonbett, um den direkten Kontakt des frischen Zementleims mit dem umgebenden Wasser zu verhindern.',
             quelle: 'ZTV-W LB 215'
           }

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -220,8 +221,8 @@ export default function Asphalt() {
                 <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Ergebnisse</h3>
                   <div className="grid grid-cols-2 gap-4">
-                    <div><div className="text-white/70 text-sm">Raumdichte</div><div className="text-3xl font-bold">{results.raumdichte.toFixed(3)} g/cm³</div></div>
-                    <div><div className="text-white/70 text-sm">Marshall-Stabilität (geschätzt)</div><div className="text-3xl font-bold">{results.marshall.toFixed(1)} kN</div></div>
+                    <div><div className="text-white/70 text-sm">Raumdichte</div><div className="text-3xl font-bold">{formatDeZahl(results.raumdichte, 3)} g/cm³</div></div>
+                    <div><div className="text-white/70 text-sm">Marshall-Stabilität (geschätzt)</div><div className="text-3xl font-bold">{formatDeZahl(results.marshall, 1)} kN</div></div>
                   </div>
                 </div>
 
@@ -450,12 +451,12 @@ export default function Asphalt() {
           // Workability & Compactor rating
           let ratingColor = "bg-green-50 text-green-800 border-green-200";
           let ratingBadge = "Optimal verarbeitbar";
-          let ratingText = "Viskosität im idealen Bereich (0.2–1.8 Pa·s). Standard-Baurichtlinien für Walzverdichtung problemlos einhaltbar.";
+          let ratingText = "Viskosität im idealen Bereich (0,2–1,8 Pa·s). Standard-Baurichtlinien für Walzverdichtung problemlos einhaltbar.";
           
           if (viscosity > 4.5) {
             ratingColor = "bg-red-50 text-red-800 border-red-200";
             ratingBadge = "Ungenügend / Kritischer Grenzstopp";
-            ratingText = "Bindemittel ist viel zu zäh (> 4.5 Pa·s). Rascher Temperatursturz, mangelhafter Schichtenverbund, hohes Risiko von Frostschäden und Hohlstellen.";
+            ratingText = "Bindemittel ist viel zu zäh (> 4,5 Pa·s). Rascher Temperatursturz, mangelhafter Schichtenverbund, hohes Risiko von Frostschäden und Hohlstellen.";
           } else if (viscosity > 1.8) {
             ratingColor = "bg-amber-50 text-amber-800 border-amber-200";
             ratingBadge = "Erschwert verdichtbar (Grenzbereich)";
@@ -510,7 +511,7 @@ export default function Asphalt() {
                 </div>
                 <div className="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg border border-white/20 flex flex-col items-center">
                   <span className="text-[10px] uppercase font-mono tracking-wide text-stone-300">Neue Richtlinie</span>
-                  <span className="text-lg font-bold text-white font-mono">1.5 mg/m³</span>
+                  <span className="text-lg font-bold text-white font-mono">1,5 mg/m³</span>
                   <span className="text-[9px] text-stone-400">Arbeitsplatzgrenzwert (AGW)</span>
                 </div>
               </div>
@@ -634,7 +635,7 @@ export default function Asphalt() {
                     <div className="grid grid-cols-2 gap-3 mt-1.5">
                       <div className="bg-white/80 p-2.5 rounded-lg text-center border border-emerald-200">
                         <div className="text-[9px] uppercase font-mono text-emerald-900/60">Heizöleinsparung</div>
-                        <div className="text-sm font-extrabold text-emerald-950">{(fuelSavedLiters * 100).toFixed(0).toLocaleString()} L</div>
+                        <div className="text-sm font-extrabold text-emerald-950">{formatDeZahl((fuelSavedLiters * 100), 0)} L</div>
                         <div className="text-[9px] text-emerald-700 font-medium">Brennerbrennstoff</div>
                       </div>
                       <div className="bg-white/80 p-2.5 rounded-lg text-center border border-emerald-200">
@@ -663,16 +664,16 @@ export default function Asphalt() {
                         <span className="text-xs font-bold text-text-main">Viskosität des Bindemittels (Rheologie)</span>
                       </div>
                       <span className="text-xs font-mono font-bold bg-white px-2 py-0.5 rounded border border-home-grau/30 text-text-main">
-                        {viscosity.toFixed(2)} Pa·s
+                        {formatDeZahl(viscosity, 2)} Pa·s
                       </span>
                     </div>
 
                     {/* Simple Custom Color Gauge bar */}
                     <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden flex">
-                      <div className="bg-blue-400 h-full" style={{ width: '15%' }} title="Niedrigviskos (> 0.2 Pa.s)"></div>
-                      <div className="bg-green-500 h-full" style={{ width: '35%' }} title="Idealbereich (0.2–1.8 Pa.s)"></div>
-                      <div className="bg-amber-500 h-full" style={{ width: '25%' }} title="Erschwert verdichtbar (1.8–4.5 Pa.s)"></div>
-                      <div className="bg-red-500 h-full" style={{ width: '25%' }} title="Verarbeitbarkeit blockiert (> 4.5 Pa.s)"></div>
+                      <div className="bg-blue-400 h-full" style={{ width: '15%' }} title="Niedrigviskos (> 0,2 Pa.s)"></div>
+                      <div className="bg-green-500 h-full" style={{ width: '35%' }} title="Idealbereich (0,2–1,8 Pa.s)"></div>
+                      <div className="bg-amber-500 h-full" style={{ width: '25%' }} title="Erschwert verdichtbar (1,8–4,5 Pa.s)"></div>
+                      <div className="bg-red-500 h-full" style={{ width: '25%' }} title="Verarbeitbarkeit blockiert (> 4,5 Pa.s)"></div>
                     </div>
 
                     {/* Indicator pin overlay position based on viscosity */}
@@ -725,7 +726,7 @@ export default function Asphalt() {
                           ? 'bg-red-50 text-red-700 border-red-200' 
                           : 'bg-green-50 text-green-700 border-green-200'
                       }`}>
-                        {fumesValue.toFixed(2)} mg/m³
+                        {formatDeZahl(fumesValue, 2)} mg/m³
                       </span>
                     </div>
 
@@ -758,7 +759,7 @@ export default function Asphalt() {
                       </span>
                       {fumesReduction > 0 && (
                         <span className="text-xs font-extrabold text-emerald-800 shrink-0 font-mono">
-                          -{fumesReduction}% Aerosole
+                          -{formatDeWert(fumesReduction)}% Aerosole
                         </span>
                       )}
                     </div>
@@ -774,7 +775,7 @@ export default function Asphalt() {
                       </div>
                       <div>
                         <div className="text-2xl font-black text-text-main font-mono">
-                          {energyConsumed.toFixed(1)} <span className="text-xs text-text-main/50">kWh/t</span>
+                          {formatDeZahl(energyConsumed, 1)} <span className="text-xs text-text-main/50">kWh/t</span>
                         </div>
                         <div className="text-[10px] text-text-main/60">Standard: 88,0 kWh/t</div>
                       </div>
@@ -782,7 +783,7 @@ export default function Asphalt() {
                         <div className="bg-shiraz h-full" style={{ width: `${(energyConsumed / baseEnergy) * 100}%` }}></div>
                       </div>
                       <div className="text-[11px] text-emerald-800 font-extrabold flex items-center gap-1">
-                        <CheckCircle2 size={11} /> {energySavedPercent}% Energie eingespart!
+                        <CheckCircle2 size={11} /> {formatDeWert(energySavedPercent)}% Energie eingespart!
                       </div>
                     </div>
 
@@ -794,7 +795,7 @@ export default function Asphalt() {
                       </div>
                       <div>
                         <div className="text-2xl font-black text-text-main font-mono">
-                          {totalCo2.toFixed(1)} <span className="text-xs text-text-main/50">kg/t</span>
+                          {formatDeZahl(totalCo2, 1)} <span className="text-xs text-text-main/50">kg/t</span>
                         </div>
                         <div className="text-[10px] text-text-main/60">Standard: 22,0 kg/t</div>
                       </div>
@@ -802,7 +803,7 @@ export default function Asphalt() {
                         <div className="bg-emerald-600 h-full" style={{ width: `${(totalCo2 / baseCo2) * 100}%` }}></div>
                       </div>
                       <div className="text-[11px] text-emerald-800 font-extrabold flex items-center gap-1">
-                        <CheckCircle2 size={11} /> {co2SavedPercent}% Carbon Footprint gespart!
+                        <CheckCircle2 size={11} /> {formatDeWert(co2SavedPercent)}% Carbon Footprint gespart!
                       </div>
                     </div>
                   </div>
@@ -819,7 +820,7 @@ export default function Asphalt() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-2xl font-black text-amber-900 font-mono">{coolingWindow} Min.</span>
+                      <span className="text-2xl font-black text-amber-900 font-mono">{formatDeWert(coolingWindow)} Min.</span>
                       <div className="text-[9px] text-amber-700/80 uppercase font-mono tracking-wider">Compaction Window</div>
                     </div>
                   </div>
@@ -861,7 +862,7 @@ export default function Asphalt() {
                           <strong>Dosierung von Additiven:</strong> 
                           <ul className="list-circle list-inside pl-4 mt-1 space-y-1">
                             <li><em>Wachse (z.B. Sasobit):</em> Werden gravimetrisch als Granulat direkt in den Heißmischbehälter dosiert, schmelzen augenblicklich im Heißbitumen und verteilen sich hocheffizient.</li>
-                            <li><em>Eindüsung von Schaumbitumen:</em> Wasser wird dosiert mit Druckluft (5–8 bar) über Spezial-Injektordüsen in den strömenden Heißbitumenstrom eingespritzt (0.5–2.0 Gew.-% Wasseranteil). Dies führt zu schlagartiger Expansion (Faktor 15–20) und erzeugt hochporösen Feinschaum.</li>
+                            <li><em>Eindüsung von Schaumbitumen:</em> Wasser wird dosiert mit Druckluft (5–8 bar) über Spezial-Injektordüsen in den strömenden Heißbitumenstrom eingespritzt (0,5–2.0 Gew.-% Wasseranteil). Dies führt zu schlagartiger Expansion (Faktor 15–20) und erzeugt hochporösen Feinschaum.</li>
                           </ul>
                         </li>
                         <li>
@@ -955,7 +956,7 @@ export default function Asphalt() {
                           <strong>Verzögerte Anfangsstärke (Rutting-Gefahr):</strong> Verkehrsfreigabe: Auch LTA darf erst nach ausreichender Abkühlung des Belags freigegeben werden. Wachsmodifizierte Bindemittel erstarren bereits bei ca. 90–105 °C und erhöhen danach den Verformungswiderstand; bei chemischen Additiven und Schaumbitumen ist das Verformungsverhalten dagegen mit dem von Standardasphalt vergleichbar.. Wird eine Straße zu früh für den Schwerlastverkehr freigegeben, können die noch nicht vollständig formstabilen Kristallgitter verdrückt werden, was zu gravierenden Oberflächenverformungen (Spurrillen) führt.
                         </li>
                         <li>
-                          <strong>Zusatzkosten &amp; Amortisation:</strong> Organische Additive verteuern die Materialrezeptur um ca. 5.50 bis 9.00 EUR pro Tonne Asphalt. Diese Differenz muss durch die Brennstoffeinsparung im Mischwerk (Heizöl/Erdgas) und die geringeren Verschleißkosten der Gießaggregate aufgewogen werden. Treiber sind der Arbeitsplatzgrenzwert für Dämpfe und Aerosole aus Bitumen (1,5 mg/m³, TRGS 900) sowie Vorgaben öffentlicher Auftraggeber nach M TA.
+                          <strong>Zusatzkosten &amp; Amortisation:</strong> Organische Additive verteuern die Materialrezeptur um ca. 5,50 bis 9.00 EUR pro Tonne Asphalt. Diese Differenz muss durch die Brennstoffeinsparung im Mischwerk (Heizöl/Erdgas) und die geringeren Verschleißkosten der Gießaggregate aufgewogen werden. Treiber sind der Arbeitsplatzgrenzwert für Dämpfe und Aerosole aus Bitumen (1,5 mg/m³, TRGS 900) sowie Vorgaben öffentlicher Auftraggeber nach M TA.
                         </li>
                       </ul>
                     </div>
@@ -987,8 +988,8 @@ export default function Asphalt() {
                         </tr>
                         <tr>
                           <td className="py-2.5 pr-4 font-semibold text-text-main">Viskosität bei Einbau</td>
-                          <td className="py-2.5 pr-4">0.4 – 0.8 Pa·s</td>
-                          <td className="py-2.5 pr-4 text-emerald-800 font-medium">0.6 – 1.4 Pa·s (Wachsverdünnt)</td>
+                          <td className="py-2.5 pr-4">0,4 – 0,8 Pa·s</td>
+                          <td className="py-2.5 pr-4 text-emerald-800 font-medium">0,6 – 1,4 Pa·s (Wachsverdünnt)</td>
                           <td className="py-2.5">Gleichwertige Verarbeitbarkeit trotz verringerter Hitze</td>
                         </tr>
                         <tr>

@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -348,13 +349,13 @@ export default function Querkraftbemessung() {
                     onChange={(e) => setTheta(Number(e.target.value))} 
                   />
                   <div className="text-xs text-text-main/70 mt-1 flex justify-between">
-                    <span>cot θ = {results.cot_theta.toFixed(2)}</span>
-                    <span>Max. zulässig (NA DE): cot θ,max = {results.cot_theta_max.toFixed(2)}</span>
+                    <span>cot θ = {formatDeZahl(results.cot_theta, 2)}</span>
+                    <span>Max. zulässig (NA DE): cot θ,max = {formatDeZahl(results.cot_theta_max, 2)}</span>
                   </div>
                   {results.isCotThetaExceeded && (
                     <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 p-2 rounded-md mt-2">
                       In DE ist cot θ zusätzlich durch V<sub>Rd,cc</sub> begrenzt (DIN EN 1992-1-1/NA, Gl. 6.7aDE). 
-                      Für V<sub>Ed</sub> = {vEd} kN und V<sub>Rd,cc</sub> = {results.vRd_cc_kN.toFixed(1)} kN gilt cot θ,max = {results.cot_theta_max.toFixed(2)} (θ ≥ {results.theta_min_deg.toFixed(1)}°).
+                      Für V<sub>Ed</sub> = {formatDeWert(vEd)} kN und V<sub>Rd,cc</sub> = {formatDeZahl(results.vRd_cc_kN, 1)} kN gilt cot θ,max = {formatDeZahl(results.cot_theta_max, 2)} (θ ≥ {formatDeZahl(results.theta_min_deg, 1)}°).
                     </div>
                   )}
                 </div>
@@ -371,7 +372,7 @@ export default function Querkraftbemessung() {
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1">Erf. Bügelbewehrung (<FormulaText text="a_{sw}" />)</div>
-                  <div className="text-4xl font-bold">{results.asw_final.toFixed(2)} <span className="text-xl">cm²/m</span></div>
+                  <div className="text-4xl font-bold">{formatDeZahl(results.asw_final, 2)} <span className="text-xl">cm²/m</span></div>
                   {results.asw_final === results.asw_min && (
                     <div className="text-xs text-white/80 mt-1 bg-white/10 inline-block px-2 py-1 rounded">
                       Mindestbewehrung maßgebend
@@ -387,13 +388,13 @@ export default function Querkraftbemessung() {
                   <div>
                     <div className="text-white/70 text-sm mb-1">Tragf. ohne Bügel (<FormulaText text="V_{Rd,c}" />)</div>
                     <div className={`text-2xl font-bold ${results.isVRdcExceeded ? 'text-white/80' : 'text-green-300'}`}>
-                      {results.vRd_c.toFixed(0)} <span className="text-base">kN</span>
+                      {formatDeZahl(results.vRd_c, 0)} <span className="text-base">kN</span>
                     </div>
                   </div>
                   <div>
                     <div className="text-white/70 text-sm mb-1">Max. Tragfähigkeit (<FormulaText text="V_{Rd,max}" />)</div>
                     <div className={`text-2xl font-bold ${results.isVRdMaxExceeded ? 'text-red-300' : 'text-white'}`}>
-                      {results.vRd_max.toFixed(0)} <span className="text-base">kN</span>
+                      {formatDeZahl(results.vRd_max, 0)} <span className="text-base">kN</span>
                     </div>
                   </div>
                 </div>
@@ -403,14 +404,14 @@ export default function Querkraftbemessung() {
                 <div className="bg-red-500/20 border border-red-300/50 p-4 rounded-lg">
                   <div className="font-bold text-red-100 mb-1">Nachweis <FormulaText text="V_{Ed} \le V_{Rd,max}" /> nicht erfüllt!</div>
                   <div className="text-sm text-red-100/80">
-                    Die Betondruckstrebe versagt. Erhöhe den Querschnitt (<FormulaText text="b" />, <FormulaText text="h" />), die Betonfestigkeit oder den Druckstrebenwinkel <FormulaText text="\theta" />.
+                    Die Betondruckstrebe versagt. Erhöhen Sie den Querschnitt (<FormulaText text="b" />, <FormulaText text="h" />), die Betonfestigkeit oder den Druckstrebenwinkel <FormulaText text="\theta" />.
                   </div>
                 </div>
               ) : (
                 <div className="bg-green-500/20 border border-green-300/50 p-4 rounded-lg">
                   <div className="font-bold text-green-100 mb-1">Nachweis <FormulaText text="V_{Ed} \le V_{Rd,max}" /> erfüllt.</div>
                   <div className="text-sm text-green-100/80">
-                    Ausnutzung Druckstrebe: {((vEd / results.vRd_max) * 100).toFixed(1)} %
+                    Ausnutzung Druckstrebe: {formatDeZahl(((vEd / results.vRd_max) * 100), 1)} %
                     <br />
                     {results.isVRdcExceeded ? (
                       <span>Querkraftbewehrung erforderlich, da <FormulaText text="V_{Ed} > V_{Rd,c}" />.</span>
@@ -427,35 +428,35 @@ export default function Querkraftbemessung() {
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Statische Nutzhöhe (<FormulaText text="d" />)</span>
-                  <span className="font-mono font-bold">{results.d.toFixed(1)} cm</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.d, 1)} cm</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Innerer Hebelarm (<FormulaText text="z" />)</span>
-                  <span className="font-mono font-bold">{results.z.toFixed(1)} cm</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.z, 1)} cm</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Bemessungsfestigkeit Beton (<FormulaText text="f_{cd}" />)</span>
-                  <span className="font-mono font-bold">{results.fcd.toFixed(1)} MPa</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.fcd, 1)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Bemessungsfestigkeit Stahl (<FormulaText text="f_{yd}" />)</span>
-                  <span className="font-mono font-bold">{results.fyd.toFixed(1)} MPa</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.fyd, 1)} MPa</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Tragf. ohne Bügel (<FormulaText text="V_{Rd,c}" />)</span>
-                  <span className="font-mono font-bold">{results.vRd_c.toFixed(1)} kN</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.vRd_c, 1)} kN</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Rechnerisch erf. <FormulaText text="a_{sw}" /></span>
-                  <span className="font-mono font-bold">{results.asw_req.toFixed(2)} cm²/m</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.asw_req, 2)} cm²/m</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Mindestbewehrung <FormulaText text="a_{sw,min}" /></span>
-                  <span className="font-mono font-bold">{results.asw_min.toFixed(2)} cm²/m</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.asw_min, 2)} cm²/m</span>
                 </div>
                 <div className="flex justify-between border-b border-home-grau/10 pb-2">
                   <span className="text-text-main/70">Grenze <FormulaText text="\cot(\theta)_{max}" /></span>
-                  <span className="font-mono font-bold">{results.cot_theta_max.toFixed(2)}</span>
+                  <span className="font-mono font-bold">{formatDeZahl(results.cot_theta_max, 2)}</span>
                 </div>
               </div>
             </div>
@@ -478,7 +479,7 @@ export default function Querkraftbemessung() {
                 <line x1={startX + 2 * strutLength_x} y1={zTopY} x2={startX + 2 * strutLength_x} y2={zBottomY} stroke="#A3113E" strokeWidth="2" />
 
                 <path d={`M ${startX + 30} ${zBottomY} A 30 30 0 0 0 ${startX + 30 * Math.cos(theta_rad)} ${zBottomY - 30 * Math.sin(theta_rad)}`} fill="none" stroke="#475569" strokeWidth="1" />
-                <text x={startX + 35} y={zBottomY - 10} fontSize="12" fill="#475569">θ = {theta}°</text>
+                <text x={startX + 35} y={zBottomY - 10} fontSize="12" fill="#475569">θ = {formatDeWert(theta)}°</text>
 
                 <line x1={startX - 10} y1={zTopY} x2={startX - 10} y2={zBottomY} stroke="#475569" strokeWidth="1" />
                 <line x1={startX - 15} y1={zTopY} x2={startX - 5} y2={zTopY} stroke="#475569" strokeWidth="1" />

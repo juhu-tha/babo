@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Search, 
@@ -148,7 +149,7 @@ export default function RagDemonstrator() {
               <span className="w-4 h-4 rounded-full bg-shiraz text-white text-[9px] flex items-center justify-center font-mono">3</span>
               Cosine Similarity
             </span>
-            <span className="text-[10px] text-emerald-600 font-mono">Top-{topK} Chunks</span>
+            <span className="text-[10px] text-emerald-600 font-mono">Top-{formatDeWert(topK)} Chunks</span>
           </div>
           <p className="text-xxs text-text-main/70 leading-relaxed">
             Vektordatenbank findet passendste Normenabschnitte nach Cosinus-Winkel.
@@ -250,7 +251,7 @@ export default function RagDemonstrator() {
                       ? 'bg-blue-100 text-blue-800' 
                       : 'bg-slate-200 text-slate-700'
                   }`}>
-                    Score: {(chunk.vectorSim * 100).toFixed(1)} %
+                    Score: {formatDeZahl((chunk.vectorSim * 100), 1)} %
                   </span>
                 </div>
                 <h5 className="font-bold text-xs text-text-main mb-1">{chunk.title}</h5>

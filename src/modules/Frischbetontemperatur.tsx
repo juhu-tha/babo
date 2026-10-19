@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Thermometer } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -136,7 +137,7 @@ export default function Frischbetontemperatur() {
                   />
                   <div className="flex justify-between text-sm mt-2 font-medium text-text-main/80">
                     <span>Gesamtwasser (Zugabe + Eis + Eigenfeuchte):</span>
-                    <span>{(mWasser + mEis + results.mEigenfeuchte).toFixed(1)} kg/m³</span>
+                    <span>{formatDeZahl((mWasser + mEis + results.mEigenfeuchte), 1)} kg/m³</span>
                   </div>
                 </div>
               </div>
@@ -180,12 +181,12 @@ export default function Frischbetontemperatur() {
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col items-center justify-center h-48 relative overflow-hidden">
               {mEis > 0 && (
                 <div className="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-bl-lg">
-                  Eiskühlung aktiv (-{(results.kuehlleistungEis / 1000).toFixed(1)} MJ)
+                  Eiskühlung aktiv (-{formatDeZahl((results.kuehlleistungEis / 1000), 1)} MJ)
                 </div>
               )}
               <h3 className="text-sm font-bold text-text-main/70 mb-2">Erwartete Frischbetontemperatur</h3>
               <div className={`text-5xl font-bold ${results.tFrischbeton > 30 ? 'text-torch-red' : results.tFrischbeton < 5 ? 'text-blue-600' : 'text-emerald-600'}`}>
-                {results.tFrischbeton.toFixed(1)} °C
+                {formatDeZahl(results.tFrischbeton, 1)} °C
               </div>
               <p className="text-sm text-text-main/60 mt-4 text-center max-w-xs">
                 {results.tFrischbeton > 30 && 'Achtung: Temperatur > 30°C. Gefahr von zu schnellem Ansteifen und Festigkeitseinbußen.'}
@@ -205,29 +206,29 @@ export default function Frischbetontemperatur() {
                 <div 
                   style={{ width: `${results.anteilZement}%` }} 
                   className="bg-slate-400 flex items-center justify-center text-xs text-white font-medium"
-                  title={`Zement: ${results.anteilZement.toFixed(1)}%`}
+                  title={`Zement: ${formatDeZahl(results.anteilZement, 1)}%`}
                 >
                   {results.anteilZement > 10 && 'Zement'}
                 </div>
                 <div 
                   style={{ width: `${results.anteilWasser}%` }} 
                   className="bg-blue-400 flex items-center justify-center text-xs text-white font-medium"
-                  title={`Wasser (+Eis): ${results.anteilWasser.toFixed(1)}%`}
+                  title={`Wasser (+Eis): ${formatDeZahl(results.anteilWasser, 1)}%`}
                 >
                   {results.anteilWasser > 10 && 'Wasser'}
                 </div>
                 <div 
                   style={{ width: `${results.anteilGestein}%` }} 
                   className="bg-stone-500 flex items-center justify-center text-xs text-white font-medium"
-                  title={`Gestein: ${results.anteilGestein.toFixed(1)}%`}
+                  title={`Gestein: ${formatDeZahl(results.anteilGestein, 1)}%`}
                 >
                   {results.anteilGestein > 10 && 'Gestein'}
                 </div>
               </div>
               <div className="flex justify-between text-xs text-text-main/60 mt-2">
-                <span>c_z = 0.84 kJ/(kg·K)</span>
-                <span>c_w = 4.18 kJ/(kg·K)</span>
-                <span>c_g = 0.84 kJ/(kg·K)</span>
+                <span>c_z = 0,84 kJ/(kg·K)</span>
+                <span>c_w = 4,18 kJ/(kg·K)</span>
+                <span>c_g = 0,84 kJ/(kg·K)</span>
               </div>
             </div>
 
@@ -245,19 +246,19 @@ export default function Frischbetontemperatur() {
                   <path d="M 100 20 L 140 50" stroke="#A3113E" strokeWidth="3" markerEnd="url(#arrow)" />
                   <circle cx="90" cy="15" r="12" fill="#slate-400" />
                   <text x="90" y="19" fontSize="10" fill="white" textAnchor="middle">Z</text>
-                  <text x="60" y="20" fontSize="10" fill="#A3113E" textAnchor="end">{tZement}°C</text>
+                  <text x="60" y="20" fontSize="10" fill="#A3113E" textAnchor="end">{formatDeWert(tZement)}°C</text>
 
                   {/* Gestein Input */}
                   <path d="M 200 15 L 200 50" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrow)" />
                   <circle cx="200" cy="10" r="12" fill="#stone-500" />
                   <text x="200" y="14" fontSize="10" fill="white" textAnchor="middle">G</text>
-                  <text x="220" y="15" fontSize="10" fill="#64748b">{tGestein}°C</text>
+                  <text x="220" y="15" fontSize="10" fill="#64748b">{formatDeWert(tGestein)}°C</text>
 
                   {/* Wasser/Eis Input */}
                   <path d="M 300 20 L 260 50" stroke="#475569" strokeWidth="3" markerEnd="url(#arrow)" />
                   <circle cx="310" cy="15" r="12" fill="#475569" />
                   <text x="310" y="19" fontSize="10" fill="white" textAnchor="middle">W</text>
-                  <text x="330" y="20" fontSize="10" fill="#475569">{tWasser}°C</text>
+                  <text x="330" y="20" fontSize="10" fill="#475569">{formatDeWert(tWasser)}°C</text>
                   
                   {mEis > 0 && (
                     <>
@@ -270,7 +271,7 @@ export default function Frischbetontemperatur() {
 
                   {/* Output */}
                   <path d="M 200 120 L 200 150" stroke={results.tFrischbeton > 30 ? "#A3113E" : results.tFrischbeton < 5 ? "#475569" : "#475569"} strokeWidth="4" markerEnd="url(#arrow)" />
-                  <text x="220" y="145" fontSize="14" fill={results.tFrischbeton > 30 ? "#A3113E" : results.tFrischbeton < 5 ? "#475569" : "#475569"} fontWeight="bold">{results.tFrischbeton.toFixed(1)}°C</text>
+                  <text x="220" y="145" fontSize="14" fill={results.tFrischbeton > 30 ? "#A3113E" : results.tFrischbeton < 5 ? "#475569" : "#475569"} fontWeight="bold">{formatDeZahl(results.tFrischbeton, 1)}°C</text>
 
                   <defs>
                     <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">

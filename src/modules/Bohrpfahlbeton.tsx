@@ -121,7 +121,7 @@ export default function Bohrpfahlbeton() {
         ]}
         formeln={[
           {
-            formel: 'm_{\\text{Zement}} \\ge 325 - 375\\,\\text{kg/m}^3 \\quad (w/z \\le 0.60)',
+            formel: 'm_{\\text{Zement}} \\ge 325 - 375\\,\\text{kg/m}^3 \\quad (w/z \\le 0{,}60)',
             erklaerung: 'Mindestzementgehalt nach DIN EN 1536 / DIN 1045-2 in Abhängigkeit vom Größtkorn (16 bzw. 32 mm) und dem Einbauverfahren (trocken oder unter Stützflüssigkeit).',
             quelle: 'DIN EN 1536 / DIN 1045-2'
           },

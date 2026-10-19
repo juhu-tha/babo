@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -334,15 +335,15 @@ export default function Biegebemessung() {
                 <div>
                   <div className="text-home-grau text-sm mb-1">Bezogenes Moment (<FormulaText text="\mu_{Ed}" />)</div>
                   <div className={`text-3xl font-bold ${results.isPossible ? 'text-text-main' : 'text-red-600'}`}>
-                    {results.mu_Ed.toFixed(3)}
+                    {formatDeZahl(results.mu_Ed, 3)}
                   </div>
-                  <div className="text-xs text-home-grau mt-1">Grenzwert: ~0.296</div>
+                  <div className="text-xs text-home-grau mt-1">Grenzwert: ~0,296</div>
                 </div>
                 
                 <div>
                   <div className="text-home-grau text-sm mb-1">Mech. Bewehrungsgrad (<FormulaText text="\omega" />)</div>
                   <div className="text-3xl font-bold text-text-main">
-                    {results.isPossible ? results.omega.toFixed(3) : '-'}
+                    {results.isPossible ? formatDeZahl(results.omega, 3) : '-'}
                   </div>
                 </div>
               </div>
@@ -351,10 +352,10 @@ export default function Biegebemessung() {
                 <div className="text-home-grau text-sm font-bold uppercase mb-2">Maßgebende Zugbewehrung (<FormulaText text="A_{s1}" />)</div>
                 {results.isPossible ? (
                   <>
-                    <div className="text-5xl font-bold text-shiraz">{results.as_final.toFixed(2)} <span className="text-xl font-normal">cm²</span></div>
+                    <div className="text-5xl font-bold text-shiraz">{formatDeZahl(results.as_final, 2)} <span className="text-xl font-normal">cm²</span></div>
                     <div className="text-xs text-home-grau mt-2 flex items-center justify-center gap-1">
-                      <span>Rechnerisch <FormulaText text="A_{s1}" />: {results.as1_req.toFixed(2)} cm² | Min. <FormulaText text="A_{s,min}" />: {results.as_min.toFixed(2)} cm²</span>
-                      <InfoTooltip text={`Mindestbewehrung nach DIN EN 1992-1-1/NA als Robustheitsbewehrung: As,min = Mcr / (fyk * z) = ${results.as_min.toFixed(2)} cm² mit Mcr = ${results.mcr_kNm.toFixed(2)} kNm. Die Formel 0,26 * (fctm/fyk) * b * d (${results.as_min_ec.toFixed(2)} cm²) ist eine EC-Empfehlung (nicht DE).`} />
+                      <span>Rechnerisch <FormulaText text="A_{s1}" />: {formatDeZahl(results.as1_req, 2)} cm² | Min. <FormulaText text="A_{s,min}" />: {formatDeZahl(results.as_min, 2)} cm²</span>
+                      <InfoTooltip text={`Mindestbewehrung nach DIN EN 1992-1-1/NA als Robustheitsbewehrung: As,min = Mcr / (fyk * z) = ${formatDeZahl(results.as_min, 2)} cm² mit Mcr = ${formatDeZahl(results.mcr_kNm, 2)} kNm. Die Formel 0,26 * (fctm/fyk) * b * d (${formatDeZahl(results.as_min_ec, 2)} cm²) ist eine EC-Empfehlung (nicht DE).`} />
                     </div>
                   </>
                 ) : (
@@ -365,7 +366,7 @@ export default function Biegebemessung() {
               {results.as2_req > 0 && (
                 <div className="p-6 bg-white rounded-xl border border-home-grau/30 shadow-sm text-center mt-4">
                   <div className="text-home-grau text-sm font-bold uppercase mb-2">Erforderliche Druckbewehrung (<FormulaText text="A_{s2}" />)</div>
-                  <div className="text-4xl font-bold text-slate-700">{results.as2_req.toFixed(2)} <span className="text-xl font-normal">cm²</span></div>
+                  <div className="text-4xl font-bold text-slate-700">{formatDeZahl(results.as2_req, 2)} <span className="text-xl font-normal">cm²</span></div>
                   <div className="text-xs text-home-grau mt-2">
                     {results.message}
                   </div>
@@ -373,11 +374,11 @@ export default function Biegebemessung() {
               )}
 
               <div className="mt-8 grid grid-cols-2 gap-4 text-xs text-home-grau">
-                <div>Statische Nutzhöhe <FormulaText text="d" />: {results.d} cm</div>
-                <div>Rissmoment <FormulaText text="M_{cr}" />: {results.mcr_kNm.toFixed(2)} kNm</div>
-                <div>Bemessungswert Beton <FormulaText text="f_{cd}" />: {results.fcd.toFixed(1)} MPa</div>
-                <div>Bemessungswert Stahl <FormulaText text="f_{yd}" />: {results.fyd.toFixed(1)} MPa</div>
-                {results.isPossible && <div>Druckzonenhöhe <FormulaText text="x" />: {results.x.toFixed(1)} cm</div>}
+                <div>Statische Nutzhöhe <FormulaText text="d" />: {formatDeWert(results.d)} cm</div>
+                <div>Rissmoment <FormulaText text="M_{cr}" />: {formatDeZahl(results.mcr_kNm, 2)} kNm</div>
+                <div>Bemessungswert Beton <FormulaText text="f_{cd}" />: {formatDeZahl(results.fcd, 1)} MPa</div>
+                <div>Bemessungswert Stahl <FormulaText text="f_{yd}" />: {formatDeZahl(results.fyd, 1)} MPa</div>
+                {results.isPossible && <div>Druckzonenhöhe <FormulaText text="x" />: {formatDeZahl(results.x, 1)} cm</div>}
               </div>
             </div>
 

@@ -149,12 +149,12 @@ export default function QualitaetssicherungGrundlagen() {
             quelle: 'DIN EN 206 Abs. 8.2.1.2'
           },
           {
-            formel: 'f_{cm} \\ge f_{ck} + 1.48 \\cdot \\sigma \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4 \\quad [\\text{MPa}]',
+            formel: 'f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4 \\quad [\\text{MPa}]',
             erklaerung: 'Konformitätskriterien nach DIN EN 206 (Tabelle 15) für stetige Herstellung (n = 15): Mittelwert fcm muss fck + 1.48·sigma erreichen, kein Einzelwert darf unter fck - 4 MPa liegen.',
             quelle: 'DIN EN 206 Abs. 8.2.1.3'
           },
           {
-            formel: '\\sigma = \\sqrt{\\frac{\\sum_{i=1}^n (f_{ci} - f_{cm})^2}{n - 1}} \\le \\sigma_{\\text{max}} = 5.0\\,\\text{MPa}',
+            formel: '\\sigma = \\sqrt{\\frac{\\sum_{i=1}^n (f_{ci} - f_{cm})^2}{n - 1}} \\le \\sigma_{\\text{max}} = 5{,}0\\,\\text{MPa}',
             erklaerung: 'Standardabweichung der Druckfestigkeit in der stetigen Produktion (Eigenüberwachung) als Maß für die Misch- und Dosierpräzision des Transportbetonwerks.',
             quelle: 'DIN EN 206 Abs. 8.2.1'
           }

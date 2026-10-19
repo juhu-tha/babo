@@ -3,7 +3,7 @@ import { Leaf, Activity, Recycle, FileText, Factory, ShieldCheck, Scale, Award, 
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { BlockMath, InlineMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
@@ -200,7 +200,7 @@ export default function LCA() {
     const selectedMat = REFERENZEN_EPD.find(m => m.id === calcMaterialId) || REFERENZEN_EPD[0];
     
     const isVolumeBased = selectedMat.einheit.includes('m³');
-    const materialQuantityText = isVolumeBased ? `${calcQuantity} m³` : `${calcQuantity} t`;
+    const materialQuantityText = isVolumeBased ? `${formatDeWert(calcQuantity)} m³` : `${formatDeWert(calcQuantity)} t`;
     
     // Weight calculation for transport (in tonnes)
     const weightInTonnes = isVolumeBased 
@@ -311,7 +311,7 @@ export default function LCA() {
             <div className="space-y-3 pt-1">
               <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/30 text-xs">
                 <strong className="text-shiraz block mb-1">Phase I: Goal and Scope (Ziel- und Rahmenfestlegung)</strong>
-                Zentrale Definition der Rechenregeln, der <strong>Räumlichen und zeitlichen Systemgrenze</strong> (z.B. 50 Jahre Betrachtung) und der <strong>funktionellen Einheit (Functional Unit)</strong>, auf die sich das gesamte mathematische Modell bezieht (z.B. "Bereitstellung von 1 m² Tragwand, die eine Last von 150 kN trägt und U-Wert ≤ 0.20 aufweist").
+                Zentrale Definition der Rechenregeln, der <strong>Räumlichen und zeitlichen Systemgrenze</strong> (z.B. 50 Jahre Betrachtung) und der <strong>funktionellen Einheit (Functional Unit)</strong>, auf die sich das gesamte mathematische Modell bezieht (z.B. "Bereitstellung von 1 m² Tragwand, die eine Last von 150 kN trägt und U-Wert ≤ 0,20 aufweist").
               </div>
               <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/30 text-xs">
                 <strong className="text-shiraz block mb-1">Phase II: Life Cycle Inventory (Sachbilanz, LCI)</strong>
@@ -627,7 +627,7 @@ export default function LCA() {
                     </div>
                     <div className="flex justify-between items-center text-[10px] text-slate-400 font-normal">
                       <span>Dekl. Einheit: <strong>{epd.einheit}</strong></span>
-                      <span className="font-mono text-shiraz font-bold">GWP: {epd.gwp_total} kg CO₂-eq</span>
+                      <span className="font-mono text-shiraz font-bold">GWP: {formatDeWert(epd.gwp_total)} kg CO₂-eq</span>
                     </div>
                   </button>
                 ))
@@ -669,19 +669,19 @@ export default function LCA() {
                   
                   <div className="bg-slate-50 p-2.5 rounded-lg border border-home-grau/30 text-center">
                     <span className="text-[9px] text-slate-400 block font-bold uppercase tracking-wider">GWP Gesamt</span>
-                    <strong className="text-xs font-mono font-bold text-shiraz mt-1 block">{selectedEpdItem.gwp_total}</strong>
+                    <strong className="text-xs font-mono font-bold text-shiraz mt-1 block">{formatDeWert(selectedEpdItem.gwp_total)}</strong>
                     <span className="text-[9px] text-slate-400 block">kg CO₂-eq / {selectedEpdItem.einheit}</span>
                   </div>
 
                   <div className="bg-slate-50 p-2.5 rounded-lg border border-home-grau/30 text-center">
                     <span className="text-[9px] text-slate-400 block font-bold uppercase tracking-wider">Fossiles GWP</span>
-                    <strong className="text-xs font-mono font-bold text-slate-900 mt-1 block">{selectedEpdItem.gwp_fossil}</strong>
+                    <strong className="text-xs font-mono font-bold text-slate-900 mt-1 block">{formatDeWert(selectedEpdItem.gwp_fossil)}</strong>
                     <span className="text-[9px] text-slate-400 block">kg CO₂-eq / {selectedEpdItem.einheit}</span>
                   </div>
 
                   <div className="bg-slate-50 p-2.5 rounded-lg border border-home-grau/30 text-center">
                     <span className="text-[9px] text-slate-400 block font-bold uppercase tracking-wider">Primärenergie</span>
-                    <strong className="text-xs font-mono font-bold text-indigo-700 mt-1 block">{selectedEpdItem.penrt}</strong>
+                    <strong className="text-xs font-mono font-bold text-indigo-700 mt-1 block">{formatDeWert(selectedEpdItem.penrt)}</strong>
                     <span className="text-[9px] text-slate-400 block">MJ / {selectedEpdItem.einheit}</span>
                   </div>
 
@@ -709,7 +709,7 @@ export default function LCA() {
                   </div>
                   <div className="flex justify-between border-b border-stone-100 pb-1.5">
                     <span className="text-slate-500">Spezifische Rohdichte:</span>
-                    <span className="font-mono font-semibold">{selectedEpdItem.density} kg/m³</span>
+                    <span className="font-mono font-semibold">{formatDeWert(selectedEpdItem.density)} kg/m³</span>
                   </div>
                   <div className="flex justify-between pb-1.5">
                     <span className="text-slate-500">Wärmeleitfähigkeit (Wärmeleitzahl λ):</span>
@@ -1089,7 +1089,7 @@ export default function LCA() {
                   <div className="flex justify-between items-center text-[10.5px] font-bold text-slate-700">
                     <label>2. Menge:</label>
                     <span className="font-mono bg-white px-2 py-0.5 rounded border">
-                      {calcQuantity} {REFERENZEN_EPD.find(m => m.id === calcMaterialId)?.einheit.split(' ')[1] || 'Einheiten'}
+                      {formatDeWert(calcQuantity)} {REFERENZEN_EPD.find(m => m.id === calcMaterialId)?.einheit.split(' ')[1] || 'Einheiten'}
                     </span>
                   </div>
                   <input
@@ -1110,7 +1110,7 @@ export default function LCA() {
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center text-[10.5px] font-bold text-slate-700">
                     <label>3. Distanz zur Baustelle (A4):</label>
-                    <span className="font-mono bg-white px-2 py-0.5 rounded border">{calcDistance} km</span>
+                    <span className="font-mono bg-white px-2 py-0.5 rounded border">{formatDeWert(calcDistance)} km</span>
                   </div>
                   <input
                     type="range"
@@ -1132,11 +1132,11 @@ export default function LCA() {
                   <label className="text-[10.5px] font-bold text-slate-700">4. Transportmittel (A4):</label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-center text-[9.5px]">
                     {[
-                      { id: 'lkw-heavy' as const, label: 'Diesel-LKW 40t', detail: 'Euro 6 (0.020 kg/tkm)' },
-                      { id: 'lkw-light' as const, label: 'Diesel-LKW 7.5t', detail: 'Nahverkehr (0.080 kg/tkm)' },
-                      { id: 'strom-lkw' as const, label: 'Elektro-LKW (eTruck)', detail: 'Ökostrom-Laden (0.004 kg/tkm)' },
-                      { id: 'h2-lkw' as const, label: 'Wasserstoff-LKW', detail: 'H2-Brennstoffzelle (0.003 kg/tkm)' },
-                      { id: 'zug' as const, label: 'Güterzug (Bahn)', detail: 'E-Schienengüter (0.005 kg/tkm)' }
+                      { id: 'lkw-heavy' as const, label: 'Diesel-LKW 40t', detail: 'Euro 6 (0,020 kg/tkm)' },
+                      { id: 'lkw-light' as const, label: 'Diesel-LKW 7,5t', detail: 'Nahverkehr (0,080 kg/tkm)' },
+                      { id: 'strom-lkw' as const, label: 'Elektro-LKW (eTruck)', detail: 'Ökostrom-Laden (0,004 kg/tkm)' },
+                      { id: 'h2-lkw' as const, label: 'Wasserstoff-LKW', detail: 'H2-Brennstoffzelle (0,003 kg/tkm)' },
+                      { id: 'zug' as const, label: 'Güterzug (Bahn)', detail: 'E-Schienengüter (0,005 kg/tkm)' }
                     ].map((trans) => (
                       <button
                         key={trans.id}
@@ -1231,10 +1231,10 @@ export default function LCA() {
                         </div>
                         <div className="flex gap-4 justify-between text-[9px] text-slate-400 font-mono">
                           <span className="flex gap-1 items-center">
-                            <span className="w-2 h-2 rounded bg-slate-400 inline-block" /> Herstellung: {Math.round((calcResults.gwpA1A3 / calcResults.totalGwp) * 100)}%
+                            <span className="w-2 h-2 rounded bg-slate-400 inline-block" /> Herstellung: {formatDeWert(Math.round((calcResults.gwpA1A3 / calcResults.totalGwp) * 100))}%
                           </span>
                           <span className="flex gap-1 items-center">
-                            <span className="w-2 h-2 rounded bg-amber-500 inline-block" /> Transport: {Math.round((calcResults.gwpA4 / calcResults.totalGwp) * 100)}%
+                            <span className="w-2 h-2 rounded bg-amber-500 inline-block" /> Transport: {formatDeWert(Math.round((calcResults.gwpA4 / calcResults.totalGwp) * 100))}%
                           </span>
                         </div>
                       </div>
@@ -1253,13 +1253,13 @@ export default function LCA() {
                     <strong className="font-bold text-indigo-950 block">💡 Tutor-Optimierungsberatung:</strong>
                     {calcResults.isWood ? (
                       <p className="leading-relaxed">
-                        Exzellente Holzwahl! Durch die Kohlenstoffspeicherung weist Brettschichtholz eine unschlagbare A1-A3-Bilanz auf. Beachten Sie jedoch, dass bei weiten Transportwegen (z.B. {calcDistance} km) mit Kleintransportern der Transportfaktor (A4) den Umweltvorteil stark schmälert. Versuchen Sie stets, dezentrales Nadelholz aus maximal 50-100 km Umkreis zu spezifizieren.
+                        Exzellente Holzwahl! Durch die Kohlenstoffspeicherung weist Brettschichtholz eine unschlagbare A1-A3-Bilanz auf. Beachten Sie jedoch, dass bei weiten Transportwegen (z.B. {formatDeWert(calcDistance)} km) mit Kleintransportern der Transportfaktor (A4) den Umweltvorteil stark schmälert. Versuchen Sie stets, dezentrales Nadelholz aus maximal 50-100 km Umkreis zu spezifizieren.
                       </p>
                     ) : (
                       <div>
                         {calcResults.gwpA4 > (calcResults.gwpA1A3 * 0.3) ? (
                           <p className="leading-relaxed">
-                            Achtung! Die Transport-Emissionen (Modul A4) betragen über 30 % der Herstellungsfracht. Bei großen Entfernungen ({calcDistance} km) ist ein Umstieg von LKW auf die <strong>Schienen-Bahnfracht</strong> angeraten, um die Transportfracht um ca. 75 % zu minimieren, oder lerne, Baustoffwerke im Regionalradius zu bemühen.
+                            Achtung! Die Transport-Emissionen (Modul A4) betragen über 30 % der Herstellungsfracht. Bei großen Entfernungen ({formatDeWert(calcDistance)} km) ist ein Umstieg von LKW auf die <strong>Schienen-Bahnfracht</strong> angeraten, um die Transportfracht um ca. 75 % zu minimieren, oder lerne, Baustoffwerke im Regionalradius zu bemühen.
                           </p>
                         ) : (
                           <p className="leading-relaxed">

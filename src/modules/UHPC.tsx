@@ -125,7 +125,7 @@ export default function UHPC() {
             quelle: 'DAfStb-Richtlinie UHPC'
           },
           {
-            formel: 'w/z \\le 0.20 - 0.25 \\quad (w/(z + k \\cdot s) \\approx 0.18)',
+            formel: 'w/z \\le 0{,}20 - 0{,}25 \\quad (w/(z + k \\cdot s) \\approx 0{,}18)',
             erklaerung: 'Extrem niedriger Wasserzementwert; das Porenwasser reicht nicht für vollständige Hydratation aus, Zementkerne wirken als mikrofeiner Festkörperfüllstoff.',
             quelle: 'Fehling et al. (2014)'
           }

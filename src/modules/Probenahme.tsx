@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { 
   FileSearch, SplitSquareHorizontal, LayoutGrid, Scale, AlertTriangle, 
   GitMerge, ArrowRight, Hammer, Wrench, Layers, Target, Grid, Info, 
@@ -255,7 +256,7 @@ export default function Probenahme() {
                       let prepSteps = '';
                       if (elemType === 'pier') {
                         recommendPoints = 'Mindestens 4-6 Probestellen';
-                        locations = 'Bereich Spritzwasserkanal (0-1.5m über Terrain), unberegnete Unterseiten (Carbonatisierungs-Hotspot).';
+                        locations = 'Bereich Spritzwasserkanal (0-1,5m über Terrain), unberegnete Unterseiten (Carbonatisierungs-Hotspot).';
                         prepSteps = 'Bewehrungsscan mit Covermeter zwingend vorab, Entfernung von Streusalzkrusten trocken mit Drahtbürste.';
                       } else if (elemType === 'deck') {
                         recommendPoints = 'Mindestens 6-8 Probestellen pro Fahrgassenabschnitt';
@@ -394,19 +395,19 @@ export default function Probenahme() {
                             </span>
                           </div>
                           <p className="text-slate-500 text-[10px] leading-tight">
-                            Für D_max = {dMax} mm muss der Bohrdurchmesser d ≥ {tripleRequired} mm betragen. Ihr Kern hat d = {coreD} mm.
+                            Für D_max = {formatDeWert(dMax)} mm muss der Bohrdurchmesser d ≥ {formatDeWert(tripleRequired)} mm betragen. Ihr Kern hat d = {formatDeWert(coreD)} mm.
                           </p>
                           <div className="pt-1.5 border-t border-home-grau/30 grid grid-cols-2 gap-2">
                             <div>
                               <span className="text-[9px] text-slate-400 block font-bold leading-none">Schlankheit λ = h/d:</span>
-                              <strong className="font-mono text-xs block mt-1">{lambda.toFixed(2)}</strong>
+                              <strong className="font-mono text-xs block mt-1">{formatDeZahl(lambda, 2)}</strong>
                               <span className="text-[9px] text-slate-500 block leading-tight mt-0.5">
                                 ({lambda === 1.0 ? 'Würfelform' : lambda === 2.0 ? 'Zylinderform' : 'Gezerrte Geometrie'})
                               </span>
                             </div>
                             <div>
                               <span className="text-[9px] text-slate-400 block font-bold leading-none">Umrechnungsfaktor:</span>
-                              <strong className="font-mono text-xs text-indigo-700 block mt-1">{correctionFactor.toFixed(3)}</strong>
+                              <strong className="font-mono text-xs text-indigo-700 block mt-1">{formatDeZahl(correctionFactor, 3)}</strong>
                               <span className="text-[9px] text-slate-500 block leading-tight mt-0.5">nach DIN EN 12504-1</span>
                             </div>
                           </div>
@@ -462,7 +463,7 @@ export default function Probenahme() {
                     <div>
                       <div className="flex justify-between font-bold text-slate-700 mb-1">
                         <span>Bohrdurchmesser (D_b):</span>
-                        <span className="text-shiraz font-mono font-bold">{drillD} mm</span>
+                        <span className="text-shiraz font-mono font-bold">{formatDeWert(drillD)} mm</span>
                       </div>
                       <input
                         type="range" min="10" max="25" step="1"
@@ -474,7 +475,7 @@ export default function Probenahme() {
                     <div>
                       <div className="flex justify-between font-bold text-slate-700 mb-1">
                         <span>Schicht-Intervall (dz):</span>
-                        <span className="text-shiraz font-mono font-bold">{layerD} mm</span>
+                        <span className="text-shiraz font-mono font-bold">{formatDeWert(layerD)} mm</span>
                       </div>
                       <input
                         type="range" min="5" max="20" step="5"
@@ -515,11 +516,11 @@ export default function Probenahme() {
                           <div className="grid grid-cols-2 gap-2">
                             <div>
                               <span className="text-[9px] text-slate-400 block font-bold leading-none">Menge pro Loch:</span>
-                              <strong className="font-mono text-xs block mt-1">{weightPerHole.toFixed(2)} g</strong>
+                              <strong className="font-mono text-xs block mt-1">{formatDeZahl(weightPerHole, 2)} g</strong>
                             </div>
                             <div>
                               <span className="text-[9px] text-slate-400 block font-bold leading-none">Gesamtgewicht:</span>
-                              <strong className={`font-mono text-xs block mt-1 ${isValidWeight ? 'text-emerald-700' : 'text-red-650 font-bold'}`}>{totalWeight.toFixed(2)} g</strong>
+                              <strong className={`font-mono text-xs block mt-1 ${isValidWeight ? 'text-emerald-700' : 'text-red-650 font-bold'}`}>{formatDeZahl(totalWeight, 2)} g</strong>
                             </div>
                           </div>
                           {!isValidWeight && (
@@ -579,7 +580,7 @@ export default function Probenahme() {
                     <div>
                       <div className="flex justify-between font-bold text-slate-700 mb-1">
                         <span>Rohwert Rückprall (R_raw):</span>
-                        <span className="text-shiraz font-mono font-bold">{rawR} Skl.</span>
+                        <span className="text-shiraz font-mono font-bold">{formatDeWert(rawR)} Skl.</span>
                       </div>
                       <input
                         type="range" min="20" max="55" step="1"
@@ -591,7 +592,7 @@ export default function Probenahme() {
                     <div>
                       <div className="flex justify-between font-bold text-slate-700 mb-1">
                         <span>Karbonatisierungs-Tiefe (x_CO₂):</span>
-                        <span className="text-shiraz font-mono font-bold">{carbX} mm</span>
+                        <span className="text-shiraz font-mono font-bold">{formatDeWert(carbX)} mm</span>
                       </div>
                       <input
                         type="range" min="0" max="40" step="1"
@@ -641,25 +642,25 @@ export default function Probenahme() {
                           <div className="flex justify-between items-center pb-1 border-b border-home-grau/30 text-shiraz font-bold">
                             <span>Ergebnis-Klassifizierung:</span>
                             <span className="font-mono text-slate-900 font-bold text-xs">
-                              True R = {finalR.toFixed(1)}
+                              True R = {formatDeZahl(finalR, 1)}
                             </span>
                           </div>
                           <div className="space-y-1 text-slate-600 text-[10px]">
                             <div className="flex justify-between">
                               <span>Korrektur Karbonatisierung:</span>
-                              <strong className="font-semibold text-rose-800">{carbCorr.toFixed(1)} Skl.</strong>
+                              <strong className="font-semibold text-rose-800">{formatDeZahl(carbCorr, 1)} Skl.</strong>
                             </div>
                             <div className="flex justify-between">
                               <span>Korrektur Winkel (Schwerkraft):</span>
-                              <strong className="font-semibold text-indigo-800">{angleCorr > 0 ? `+${angleCorr.toFixed(1)}` : angleCorr.toFixed(1)} Skl.</strong>
+                              <strong className="font-semibold text-indigo-800">{angleCorr > 0 ? `+${formatDeZahl(angleCorr, 1)}` : formatDeZahl(angleCorr, 1)} Skl.</strong>
                             </div>
                             <div className="flex justify-between border-t border-home-grau/30 pt-1 text-[11px] text-slate-850">
                               <span className="font-bold">Scheinbare Festigkeit (Roh):</span>
-                              <span className="font-mono text-red-650 font-bold">~{rawEstStr.toFixed(0)} MPa</span>
+                              <span className="font-mono text-red-650 font-bold">~{formatDeZahl(rawEstStr, 0)} MPa</span>
                             </div>
                             <div className="flex justify-between text-[11px] text-slate-850">
                               <span className="font-bold">Tatsächliche Festigkeit (Korrigiert):</span>
-                              <span className="font-mono text-emerald-700 font-bold">~{finalEstStr.toFixed(0)} MPa</span>
+                              <span className="font-mono text-emerald-700 font-bold">~{formatDeZahl(finalEstStr, 0)} MPa</span>
                             </div>
                           </div>
                         </div>

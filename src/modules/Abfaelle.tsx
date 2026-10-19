@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, LucideIcon, Search, FileSignature, BookOpen, ArrowRight, HelpCircle, Calendar, Check, X, AlertCircle, Scale, Droplets, Leaf, ClipboardList } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 type AbfallTab = 'schema' | 'hierarchie' | 'avv' | 'ebv' | 'deponie' | 'altlasten' | 'rueckbau' | 'eanv' | 'pn98' | 'altholz' | 'checklisten';
 
@@ -1303,7 +1303,7 @@ export default function Abfaelle() {
                             <div>
                               <div className="flex items-center gap-2">
                                 <span className={`inline-block px-2 py-0.5 text-xs font-bold rounded ${cls.color} ${cls.text} border border-home-grau/30`}>{cls.label}</span>
-                                <span className="font-bold text-slate-800">C ≤ {lim} {paramInfo.unit}</span>
+                                <span className="font-bold text-slate-800">C ≤ {formatDeWert(lim)} {paramInfo.unit}</span>
                               </div>
                               <p className="text-xs text-slate-500 mt-0.5">{cls.desc}</p>
                             </div>
@@ -1562,7 +1562,7 @@ export default function Abfaelle() {
                           {
                             index: 2,
                             name: "HDPE-Kunststoffdichtungsbahn (KDB)",
-                            thickness: "≥ 2.5 mm",
+                            thickness: "≥ 2,5 mm",
                             color: "bg-slate-950 hover:bg-slate-900 border-slate-900 text-slate-100",
                             previewText: "Kunststoffdichtungsbahn (KDB - HDPE)"
                           },
@@ -1576,7 +1576,7 @@ export default function Abfaelle() {
                           {
                             index: 4,
                             name: "Geologischer Barriereuntergrund (Tonmergel)",
-                            thickness: "≥ 1.0 m",
+                            thickness: "≥ 1,0 m",
                             color: "bg-amber-200/50 hover:bg-amber-200/70 border-amber-300/50 text-amber-900",
                             previewText: "Natürlicher Baugrund (kf ≤ 1e-7 m/s)"
                           }
@@ -1584,7 +1584,7 @@ export default function Abfaelle() {
                           {
                             index: 0,
                             name: "Rekultivierungsschicht (Mutterboden)",
-                            thickness: "≥ 1.0 m",
+                            thickness: "≥ 1,0 m",
                             color: "bg-emerald-700/80 hover:bg-emerald-700/90 border-emerald-800 text-white",
                             previewText: "Mutterboden + Bepflanzung (Frostschutz)"
                           },
@@ -1598,7 +1598,7 @@ export default function Abfaelle() {
                           {
                             index: 2,
                             name: "Dichtungskomponente (KDB / Ton)",
-                            thickness: "KDB ≥ 2.5mm",
+                            thickness: "KDB ≥ 2,5mm",
                             color: "bg-slate-800 hover:bg-slate-700 border-slate-900 text-slate-200",
                             previewText: "Verbunddichtung (Polymer/Bentonit)"
                           },
@@ -1664,7 +1664,7 @@ export default function Abfaelle() {
                             },
                             2: {
                               name: "HDPE-Kunststoffdichtungsbahn (KDB)",
-                              thickness: "≥ 2.5 mm",
+                              thickness: "≥ 2,5 mm",
                               material: "PE-HD (Polyethylen hoher Dichte) mit BAM-Zulassung",
                               requirement: "Heißluft- oder Extruderschweißung, vollständige geoelektrische Lecksuchprüfung, Schutz durch schwere Geotextil-Schutzvliese (GRK 5)",
                               function: "Die primäre, absolut wasserdichte stoffliche Barriere gegen den Durchstrom und die Diffusion schadstoffbelasteter Wässer."
@@ -1678,7 +1678,7 @@ export default function Abfaelle() {
                             },
                             4: {
                               name: "Geologischer Barriereuntergrund (Natürliche Barriere)",
-                              thickness: "≥ 1.0 m",
+                              thickness: "≥ 1,0 m",
                               material: "Homogener Fest- oder Lockergesteinskörper (z.B. Tonmergel, feiner Ton)",
                               requirement: "kf ≤ 1 · 10⁻⁷ m/s (oder ersetzende gleichwertige technische Barriere)",
                               function: "Letzter massiver Schutz des lokalen Wasserspiegels durch hohes chemisch-physikalisches Schadstoff-Rückhalte- und Absorptionsvermögen geologischer Massivschichten."
@@ -1688,7 +1688,7 @@ export default function Abfaelle() {
                           const oberflaecheLayers: Record<number, { name: string; thickness: string; material: string; requirement: string; function: string }> = {
                             0: {
                               name: "Rekultivierungsschicht (Mutterboden)",
-                              thickness: "≥ 1.0 m",
+                              thickness: "≥ 1,0 m",
                               material: "Humusreicher Bodenaushub, wurzelfähiges Substrat",
                               requirement: "Vermeidung tiefwurzelnder Gehölze nach Bepflanzungsordnung (Dichtungsschutz)",
                               function: "Sichert ein stabiles Pflanzenwachstum als Erosionsschutz, schützt das Dichtungssystem vor winterlichem Frost/Dürre und speichert Regenwasser zur Verdunstung."
@@ -1702,7 +1702,7 @@ export default function Abfaelle() {
                             },
                             2: {
                               name: "Dichtungselement (KDB & Tonverbund)",
-                              thickness: "KDB ≥ 2.5 mm und/oder Tonschicht",
+                              thickness: "KDB ≥ 2,5 mm und/oder Tonschicht",
                               material: "PE-HD Folie o. geosynthetische Tonsubstratbahn (Bento)",
                               requirement: "Zulassung nach Bundesanstalt für Materialforschung (BAM)",
                               function: "Verhindert verlässlich und dauerhaft das Einsickern von Oberflächen- bzw. Regenwasser in den darunterliegenden Deponiekörper, um so die Sickerwasserbildung im Kern zu stoppen."
@@ -1730,7 +1730,7 @@ export default function Abfaelle() {
                             <div className="space-y-4">
                               <div className="flex items-center justify-between border-b border-home-grau/25 pb-2">
                                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider">
-                                  {deponieSection === 'basis' ? `Basis-Schicht ${selectedLayerIndex + 1}` : `Oberflächen-Schicht ${selectedLayerIndex + 1}`}
+                                  {deponieSection === 'basis' ? `Basis-Schicht ${formatDeWert(selectedLayerIndex + 1)}` : `Oberflächen-Schicht ${formatDeWert(selectedLayerIndex + 1)}`}
                                 </span>
                                 <span className="text-xs font-bold text-slate-500 font-mono">
                                   Dicke: {activeLayer.thickness}
@@ -1899,7 +1899,7 @@ export default function Abfaelle() {
                       {Object.entries(selectedBbod.values).map(([contaminant, value]) => (
                         <div key={contaminant} className="p-3 bg-slate-50/50 rounded-xl border border-home-grau/30 flex justify-between items-center text-xs">
                           <span className="font-semibold text-slate-700">{contaminant}</span>
-                          <span className="font-mono font-extrabold text-slate-900 bg-white border border-home-grau/30 px-2.5 py-1 rounded shadow-xs">≤ {value}</span>
+                          <span className="font-mono font-extrabold text-slate-900 bg-white border border-home-grau/30 px-2.5 py-1 rounded shadow-xs">≤ {formatDeWert(value)}</span>
                         </div>
                       ))}
                     </div>
@@ -1926,8 +1926,8 @@ export default function Abfaelle() {
                     <div className="p-4 rounded-xl bg-slate-50 space-y-2 border border-home-grau/30">
                       <h5 className="font-bold text-slate-900">1. Vermeidung von Bodenschäden (Konstruktive Maßnahmen)</h5>
                       <ul className="space-y-1.5 text-slate-600 font-medium">
-                        <li>• <strong className="text-slate-800">Bodendruck reduzieren:</strong> Verwendung von Kettenlaufwerken, Breitreifen im Niederdruckbereich (≤ 0.8 bar) oder Baggermatten aus Hartholz.</li>
-                        <li>• <strong className="text-slate-800">Hydrologische Grenzwerte einhalten:</strong> Keine Befahrung von weichen, schluffigen oder tonigen Böden im feuchten Zustand (pF-Wert ≤ 1.8 oder Saugspannung beachten).</li>
+                        <li>• <strong className="text-slate-800">Bodendruck reduzieren:</strong> Verwendung von Kettenlaufwerken, Breitreifen im Niederdruckbereich (≤ 0,8 bar) oder Baggermatten aus Hartholz.</li>
+                        <li>• <strong className="text-slate-800">Hydrologische Grenzwerte einhalten:</strong> Keine Befahrung von weichen, schluffigen oder tonigen Böden im feuchten Zustand (pF-Wert ≤ 1,8 oder Saugspannung beachten).</li>
                         <li>• <strong className="text-slate-800">Mutterbodenschutz:</strong> Abtrag des Oberbodens (Mutterboden) vor Baubeginn und sachgemäße Lagerung in Mieten (≤ 2 m Höhe, Belüftung bewahren) zur Erhaltung der Mikrobiologie.</li>
                       </ul>
                     </div>
@@ -2271,7 +2271,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Anzahl Einzelproben (EP)</span>
-                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{einzelproben}</div>
+                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{formatDeWert(einzelproben)}</div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Einzelproben müssen gleichmäßig verteilt über drei Dimensionen (oben, mitte, unten, tief im Haldenkörper) entnommen werden.
                           </p>
@@ -2282,9 +2282,9 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Labor- / Mischproben (MP)</span>
-                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{mischproben}</div>
+                          <div className="text-3xl font-extrabold text-emerald-800 mt-1">{formatDeWert(mischproben)}</div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
-                            Die EP werden zu {mischproben} repräsentativen Mischprobe(n) vereint und anschließend fachgerecht homogenisiert.
+                            Die EP werden zu {formatDeWert(mischproben)} repräsentativen Mischprobe(n) vereint und anschließend fachgerecht homogenisiert.
                           </p>
                         </div>
                       </div>
@@ -2293,7 +2293,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Mindestvolumen je Einzelprobe</span>
-                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{minVolEinzel} Liter <span className="text-xs font-semibold text-slate-500">({minVolEinzel} kg)</span></div>
+                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolEinzel)} Liter <span className="text-xs font-semibold text-slate-500">({formatDeWert(minVolEinzel)} kg)</span></div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Abhängig vom Größtkorn. Zu geringe Probemengen verletzen das Repräsentativitätsgebot der LAGA Richtlinie.
                           </p>
@@ -2304,7 +2304,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Laborproben-Sollvolumen</span>
-                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{minVolVerbund} Liter <span className="text-xs font-semibold text-slate-500">({minVolVerbund} kg)</span></div>
+                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolVerbund)} Liter <span className="text-xs font-semibold text-slate-500">({formatDeWert(minVolVerbund)} kg)</span></div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Mindestvolumen der laborbereiten Probe nach Homogenisierung (mittels Kegel- &amp; Viertelmethode oder Probenteiler).
                           </p>
@@ -2313,7 +2313,7 @@ export default function Abfaelle() {
                     </div>
 
                     <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-150 text-xs leading-relaxed text-emerald-950 font-semibold">
-                      📋 <strong className="text-emerald-900 leading-normal">Gesamtbilanz für {pnVolume} m³ ({pnMaterialState}):</strong> Es müssen mindestens <strong>{einzelproben} Einzelproben</strong> à <strong>{minVolEinzel} l</strong> gezogen werden. Das Gesamtgewicht des Beprobungsvorganges im Feld liegt somit bei mindestens <strong>{formatDeZahl(einzelproben * minVolEinzel, 1)} Litern / kg</strong> mineralischem Probengut, um daraus die <strong>{mischproben} Laborprobe(n)</strong> zu speisen.
+                      📋 <strong className="text-emerald-900 leading-normal">Gesamtbilanz für {formatDeWert(pnVolume)} m³ ({pnMaterialState}):</strong> Es müssen mindestens <strong>{formatDeWert(einzelproben)} Einzelproben</strong> à <strong>{formatDeWert(minVolEinzel)} l</strong> gezogen werden. Das Gesamtgewicht des Beprobungsvorganges im Feld liegt somit bei mindestens <strong>{formatDeZahl(einzelproben * minVolEinzel, 1)} Litern / kg</strong> mineralischem Probengut, um daraus die <strong>{formatDeWert(mischproben)} Laborprobe(n)</strong> zu speisen.
                     </div>
                   </div>
                 </div>

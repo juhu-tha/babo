@@ -15,7 +15,7 @@ import {
   Zap,
   Info
 } from 'lucide-react';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 
 interface DiagnosticScenario {
@@ -516,7 +516,7 @@ export default function InterpretationNavigator() {
                   <strong>Elektrochemische Makroelemente:</strong>
                   <p className="text-[11px] text-slate-650">
                     {evaluation.potentialStatus === 'aktiv' ? (
-                      <span className="text-rose-700 font-semibold">Stark negatives Potential ({potentialVal} mV). Aktive galvanische Elementbildung mit benachbarten Kathoden nachgewiesen.</span>
+                      <span className="text-rose-700 font-semibold">Stark negatives Potential ({formatDeWert(potentialVal)} mV). Aktive galvanische Elementbildung mit benachbarten Kathoden nachgewiesen.</span>
                     ) : (
                       <span className="text-emerald-700">Kein Hinweis auf aktive Korrosion (Potential im passiven bzw. Unsicherheitsbereich; ASTM C876: −200 bis −350 mV unsicher).</span>
                     )}

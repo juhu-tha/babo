@@ -579,7 +579,7 @@ export default function SchutzGrundlagen() {
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-600">Basisinvestition:</span>
                 <input
-                  type="number"
+                  type="number" min="0"
                   value={deSitterInitialCost}
                   onChange={(e) => setDeSitterInitialCost(Math.max(100, Number(e.target.value)))}
                   className="w-24 px-2 py-1 text-xs border border-home-grau/30 rounded font-bold text-right"
@@ -812,7 +812,7 @@ export default function SchutzGrundlagen() {
             quelle: 'De Sitter (1984)'
           },
           {
-            formel: 'E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0.5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}',
+            formel: 'E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0{,}5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}',
             erklaerung: 'KKS-Schutzkriterien (DIN EN ISO 12696): Ausschaltpotential negativer als −720 mV gegen Ag/AgCl/0,5 M KCl ODER Depolarisation ≥ 100 mV innerhalb von 24 h bis 72 h (-850 mV gegen CSE gilt für erdberührte Stähle).',
             quelle: 'DIN EN ISO 12696'
           }

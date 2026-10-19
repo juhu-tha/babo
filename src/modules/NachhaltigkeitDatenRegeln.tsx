@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 export type DatenRegelnTab = 
@@ -888,7 +888,7 @@ export default function NachhaltigkeitDatenRegeln() {
                   Interaktiver Stoffstrom-Rechner: Urban Mining Potenzial
                 </span>
                 <span className="text-xs font-mono font-bold text-emerald-800">
-                  Eingabe: {interactiveMasse} Tonnen Bauschutt
+                  Eingabe: {formatDeWert(interactiveMasse)} Tonnen Bauschutt
                 </span>
               </div>
 

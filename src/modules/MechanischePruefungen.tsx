@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Scale, 
@@ -58,7 +59,7 @@ export default function MechanischePruefungen() {
         norm: 'DIN EN 12390-3 (Druckfestigkeit von Probekörpern) & DIN EN 12504-1 (Bohrkerne)',
         material: 'Frisch- und Festbeton aller Druckfestigkeitsklassen (z. B. Normal-, Leicht- und Schwerbeton sowie UHPC) zur Bauqualitätskontrolle.',
         proben: 'Standardwürfel (Kantenlänge 150 mm), Zylinder ($d = 150\\text{ mm}$, $h = 300\\text{ mm}$) oder ausgebohrte Bauwerksbohrkerne ($d \\ge 100\\text{ mm}$). Die Stirnauflagen müssen perfekt planparallel geschliffen oder mit Schwefelleim gekappt sein.',
-        durchfuehrung: 'Lagerung der Proben in Wasserbädern bei $20 \\pm 2\\text{ }^\\circ\\text{C}$ bis zur Prüfung (meist nach 28 Tagen). Einlegen des feuchten Körpers in eine normierte Betonpresse. Spannungsgesteuerte, stoßfreie Laststeigerung mit $0.5 \\pm 0.2\\text{ MPa/s}$ ($N/\\text{mm}^2\\cdot\\text{s}$) bis zum Bruchversagen des Körpers.',
+        durchfuehrung: 'Lagerung der Proben in Wasserbädern bei $20 \\pm 2\\text{ }^\\circ\\text{C}$ bis zur Prüfung (meist nach 28 Tagen). Einlegen des feuchten Körpers in eine normierte Betonpresse. Spannungsgesteuerte, stoßfreie Laststeigerung mit $0{,}5 \\pm 0{,}2\\text{ MPa/s}$ ($N/\\text{mm}^2\\cdot\\text{s}$) bis zum Bruchversagen des Körpers.',
         ergebnisse: 'Aufzeichnung der maximalen Bruchlast $F$ in kN. Berechnung der Druckfestigkeit: $f_c = F / A_c$ in $\\text{N/mm}^2$ (MPa). Bewertung des spezifischen Bruchbildes zur Fehleranalyse (z. B. fehlerhaftes Taumelgelenk der Druckplatte oder exzentrische Krafteinleitung).',
         kennwerte: ['Druckfestigkeit $f_c$ [MPa]', 'Bruchkraft $F_{max}$ [kN]', 'In-Situ äquivalente Würfelfestigkeit']
       },
@@ -69,7 +70,7 @@ export default function MechanischePruefungen() {
         norm: 'DIN EN 12390-5 (Prüfung von Festbeton - Biegezugfestigkeit)',
         material: 'Unbewehrter Normal- und Faserbeton, d. h. Industrieböden, Betonbahnen des Straßenbaus oder Betonfertigteile.',
         proben: 'Balkenprismen mit den Maßen $100 \\times 100 \\times 500\\text{ mm}$ oder $150 \\times 150 \\times 700\\text{ mm}$. Feuchtgelagert bei $20\\text{ }^\\circ\\text{C}$.',
-        durchfuehrung: 'Lagerung im Wasserbad. Durchführung als 4-Punkt-Belastung (Zwei gleich große Lasten in den Drittelspunkten der Stützweite) oder als 3-Punkt-Belastung (eine Einzellast exakt in der Mitte). Gleichmäßige Laststeigerung mit einer Spannungsrate von $0.05 \\pm 0.02\\text{ MPa/s}$ bis zum plötzlichen Rissdurchbruch.',
+        durchfuehrung: 'Lagerung im Wasserbad. Durchführung als 4-Punkt-Belastung (Zwei gleich große Lasten in den Drittelspunkten der Stützweite) oder als 3-Punkt-Belastung (eine Einzellast exakt in der Mitte). Gleichmäßige Laststeigerung mit einer Spannungsrate von $0{,}05 \\pm 0{,}02\\text{ MPa/s}$ bis zum plötzlichen Rissdurchbruch.',
         ergebnisse: 'Bestimmung der Biegezugfestigkeit. Die Formel für 4-Punkt-Biegung lautet: $f_{cf} = \\frac{F \\cdot I}{d_1 \\cdot d_2^2}$ und für 3-Punkt-Biegung: $f_{cf} = \\frac{3 \\cdot F \\cdot I}{2 \\cdot d_1 \\cdot d_2^2}$ ($F$: Höchstlast [N], $I$: Stützweite [mm], $d_1, d_2$: Querschnittsmaße [mm]).',
         kennwerte: ['Biegezugfestigkeit $f_{cf}$ [MPa]', 'Vierpunkt- vs. Dreipunktkennwert', 'Risslinienverlauf']
       },
@@ -80,8 +81,8 @@ export default function MechanischePruefungen() {
         norm: 'DIN EN 12390-6 (Prüfung von Festbeton - Spaltzugfestigkeit)',
         material: 'Beton-Zylinder oder Würfel zur Ermittlung des Risswiderstandes unter Spaltzugspannungen.',
         proben: 'Betonzylinder mit Durchmesser $150\\text{ mm}$ und Gesamtlänge $300\\text{ mm}$. Alternativ können auch Würfel über Keilelemente linienförmig belastet werden.',
-        durchfuehrung: 'Der Zylinder wird liegend in das Belastungsgestell eingebracht. Zwischen den planen Platten der Prüfmaschine und dem Mantel des Zylinders werden dünne, dämpfende Druckzulageleisten (Kiefernholz oder Pappe) eingelegt. Belastung mit einer konstanten Spannungsrate von $0.04 \\pm 0.01\\text{ MPa/s}$ bis zur diagonalen Längsspaltung.',
-        ergebnisse: 'Bestimmung der Spaltzugfestigkeit: $f_{ct} = \\frac{2 \\cdot F}{\\pi \\cdot L \\cdot d}$ in $\\text{N/mm}^2$ ($F$: Höchstlast [N], $L$: Zylinderlänge [mm], $d$: Durchmesser [mm]). Die wahre axiale Zugfestigkeit beträgt näherungsweise $f_{ct} \\approx 0.9 \\cdot f_{ct,spalt}$.',
+        durchfuehrung: 'Der Zylinder wird liegend in das Belastungsgestell eingebracht. Zwischen den planen Platten der Prüfmaschine und dem Mantel des Zylinders werden dünne, dämpfende Druckzulageleisten (Kiefernholz oder Pappe) eingelegt. Belastung mit einer konstanten Spannungsrate von $0{,}04 \\pm 0{,}01\\text{ MPa/s}$ bis zur diagonalen Längsspaltung.',
+        ergebnisse: 'Bestimmung der Spaltzugfestigkeit: $f_{ct} = \\frac{2 \\cdot F}{\\pi \\cdot L \\cdot d}$ in $\\text{N/mm}^2$ ($F$: Höchstlast [N], $L$: Zylinderlänge [mm], $d$: Durchmesser [mm]). Die wahre axiale Zugfestigkeit beträgt näherungsweise $f_{ct} \\approx 0{,}9 \\cdot f_{ct,spalt}$.',
         kennwerte: ['Spaltzugfestigkeit $f_{ct}$ [MPa]', 'Zug-Druckfestigkeitsverhältnis (meist ca. 1:10)', 'Holzabbild-Druckmarke']
       }
     ],
@@ -103,9 +104,9 @@ export default function MechanischePruefungen() {
         subtitle: 'Volumetrische Optimierung des Heißasphalt-Mischguts',
         norm: 'DIN EN 12697-34 (Prüfverfahren für Heißasphalt - Teil 34: Marshall-Prüfung)',
         material: 'Walzasphaltmischgut für Deck- und Tragschichten zur optimalen Bestimmung des Bindemittelgehalts.',
-        proben: 'Zylindrische Asphaltproben ($d = 101.6\\text{ mm}$, $h = 63.5\\text{ mm}$), im Labor durch das normgerechte mechanische Schlag-Verdichtungsgerät (2 x 50 Schläge) kompaktiert.',
-        durchfuehrung: 'Die Probekörper verweilen exakt 30 bis 40 Minuten im temperaturgeregelten Wasserbad bei exakt $60 \\pm 1\\text{ }^\\circ\\text{C}$ (Simulation extremer sommerlicher Deckenschichten). Schnellstmögliches Einspannen in die halbrunde, vorgewärmte Marshall-Schale (Entnahme bis Lastspitze maximal 30 Sekunden). Hubgeschwindigkeit der Presse $50.8\\text{ mm/min}$ bis zum Versagen.',
-        ergebnisse: 'Hauptwerte: 1) Marshall-Stabilität $S$ (maximale gemessene Druckfestigkeit in kN). 2) Fließwert $F$ (Stauchungsverformung des Zylinders bis zur Lastspitze in $0.1\\text{ mm}$ Schritten). 3) Marshall-Quotient $Q = S/F$ in kN/mm als Kriterium des Tragwiderstandes gegen dauerhafte Verformung unter stehendem Radverkehr.',
+        proben: 'Zylindrische Asphaltproben ($d = 101{,}6\\text{ mm}$, $h = 63{,}5\\text{ mm}$), im Labor durch das normgerechte mechanische Schlag-Verdichtungsgerät (2 x 50 Schläge) kompaktiert.',
+        durchfuehrung: 'Die Probekörper verweilen exakt 30 bis 40 Minuten im temperaturgeregelten Wasserbad bei exakt $60 \\pm 1\\text{ }^\\circ\\text{C}$ (Simulation extremer sommerlicher Deckenschichten). Schnellstmögliches Einspannen in die halbrunde, vorgewärmte Marshall-Schale (Entnahme bis Lastspitze maximal 30 Sekunden). Hubgeschwindigkeit der Presse $50{,}8\\text{ mm/min}$ bis zum Versagen.',
+        ergebnisse: 'Hauptwerte: 1) Marshall-Stabilität $S$ (maximale gemessene Druckfestigkeit in kN). 2) Fließwert $F$ (Stauchungsverformung des Zylinders bis zur Lastspitze in $0{,}1\\text{ mm}$ Schritten). 3) Marshall-Quotient $Q = S/F$ in kN/mm als Kriterium des Tragwiderstandes gegen dauerhafte Verformung unter stehendem Radverkehr.',
         kennwerte: ['Marshall-Stabilität $S$ [kN]', 'Fließwert $F$ [mm]', 'Marshall-Quotient $S/F$ [kN/mm]']
       },
       {
@@ -115,7 +116,7 @@ export default function MechanischePruefungen() {
         norm: 'DIN EN 12697-22 (Prüfverfahren für Heißasphalt - Teil 22: Spurbildungstest)',
         material: 'Hochbelastetes Asphaltmischgut (z. B. Asphaltbeton AC, Splittmastixasphalt SMA) zur Absicherung des Spurrinnenwiderstandes.',
         proben: 'Flache Asphaltplatten mit den Maßen $300 \\times 300\\text{ mm}$ und Schichtdicke meist $40\\text{ bis }80\\text{ mm}$ (wahlweise Bohrkerne mit großem Durchmesser d = 300 mm). Platten werden mit Segment-Walzenverdichtern ähnlich der realen Baustellenverdichtung hergestellt.',
-        durchfuehrung: 'Klimatisierung im Umluftprüfschrank bei $50\\text{ }^\\circ\\text{C}$ oder $60\\text{ }^\\circ\\text{C}$ Lufttemperatur. Kontinuierlicher Radübergang auf der Asphaltoberfläche unter Last: Ein gummicovertes Rad übt eine Vertikal-Sollkraft von $700 \\pm 10\\text{ N}$ aus und bewegt sich im Hin- und Hergang mit $26.5\\text{ Zyklen pro Minute}$. Prüfdauer standardmäßig $10.000\\text{ Zyklen}$ (20.000 Lastüberrollungen).',
+        durchfuehrung: 'Klimatisierung im Umluftprüfschrank bei $50\\text{ }^\\circ\\text{C}$ oder $60\\text{ }^\\circ\\text{C}$ Lufttemperatur. Kontinuierlicher Radübergang auf der Asphaltoberfläche unter Last: Ein gummicovertes Rad übt eine Vertikal-Sollkraft von $700 \\pm 10\\text{ N}$ aus und bewegt sich im Hin- und Hergang mit $26{,}5\\text{ Zyklen pro Minute}$. Prüfdauer standardmäßig $10.000\\text{ Zyklen}$ (20.000 Lastüberrollungen).',
         ergebnisse: 'Aufzeichnung der kontinuierlichen Einsinktiefe des Rads über Wegaufnehmer. Berechnet werden die Spurrinnentiefe nach Abschluss des Versuchs (in mm) sowie die Spurbildungsrate (Verformungssteigung im stabilen, sekundären Bereich) $WTS_{air}$ in mm pro 1000 Belastungshübe.',
         kennwerte: ['Spurrinnentiefe nach 10.000 Zyklen [mm]', 'Spurbildungsrate $WTS_{air}$ [mm/1000 Zyklen]', 'Standardisierte visuelle Platteneindrückung']
       }
@@ -127,8 +128,8 @@ export default function MechanischePruefungen() {
         subtitle: 'Grundlegende mechanische Werkstoffprüfung zur Baustahl-Charakterisierung',
         norm: 'DIN EN ISO 6892-1 (Zugversuch an metallischen Werkstoffen) & DIN 488 (Betonstahl)',
         material: 'Betonstahl-Rippenstäbe, Baustähle (z. B. S235, S355), Gewindestangen und Spanndraht.',
-        proben: 'Unbehandelte Stahlstababschnitte im Originallieferzustand (Betonstahl) oder abgedrehte Rundproben mit definierter Anfangsmesslänge $L_0 = 5 \\cdot d_0$ (bzw. $5.65 \\sqrt{S_0}$ für Flachproben).',
-        durchfuehrung: 'Einspannen in die hydraulischen Spannbacken eines Universal-Zugprüfstands. Montage des Feindehnungsmessers (Extensometer). Kontinuierliche Dehnungserhöhung: Dehnungsrate von ca. $0.00025\\text{ s}^{-1}$ im elastischen Bereich (Streckgrenze) und ca. $0.002\\text{ s}^{-1}$ im plastischen Fließ- und Verfestigungsbereich bis zum plötzlichen Zerreißbruch.',
+        proben: 'Unbehandelte Stahlstababschnitte im Originallieferzustand (Betonstahl) oder abgedrehte Rundproben mit definierter Anfangsmesslänge $L_0 = 5 \\cdot d_0$ (bzw. $5{,}65 \\sqrt{S_0}$ für Flachproben).',
+        durchfuehrung: 'Einspannen in die hydraulischen Spannbacken eines Universal-Zugprüfstands. Montage des Feindehnungsmessers (Extensometer). Kontinuierliche Dehnungserhöhung: Dehnungsrate von ca. $0{,}00025\\text{ s}^{-1}$ im elastischen Bereich (Streckgrenze) und ca. $0{,}002\\text{ s}^{-1}$ im plastischen Fließ- und Verfestigungsbereich bis zum plötzlichen Zerreißbruch.',
         ergebnisse: 'Erfassung des gesamten Kraft-Weg-Verlaufs. Berechnete Kennwerte: \n1) Obere Streckgrenze $R_{eH}$ bzw. 0,2%-Dehngrenze $R_{p0.2}$ ($R_{e} = F_e / S_0$). \n2) Zugfestigkeit $R_m = F_{max} / S_0$. \n3) Bruchdehnung $A_5$ oder $A_{10}$ [%]. \n4) Elastizitätsmodul $E$. \n5) Streckgrenzenverhältnis $R_m/R_e$ (sehr wichtig für die Beurteilung der plastischen Verformungsreserve bei Erdbebeneinwirkungen).',
         kennwerte: ['Streckgrenze $R_e$ (bzw. $R_{p0.2}$) [MPa]', 'Zugfestigkeit $R_m$ [N/mm²]', 'Duktilitsklasse (A: Normalduktil, B: Hochduktil, C: Erdbebenduktil)', 'Bruchdehnung $A$ [%]']
       },
@@ -138,7 +139,7 @@ export default function MechanischePruefungen() {
         subtitle: 'Zähigkeitsprüfung zur Metallsprödbruchabsicherung bei Tiefsttemperaturen',
         norm: 'DIN EN ISO 148-1 (Kerbschlagbiegeversuch nach Charpy an Metallen)',
         material: 'Strukturelle Baustähle der Brückenoberbauten, Schweißverbindungen und dicke Walzprofile zur Absicherung gegen spröde Gewaltbrüche.',
-        proben: 'Rechteckprismen mit den Maßen $10 \\times 10 \\times 55\\text{ mm}$ mit mittig eingestoßener V-Kerbe (Kerbtiefe $2\\text{ mm}$, Flankenwinkel $45^\\circ$, Rundungsradius $0.25\\text{ mm}$ am Kerbgrund).',
+        proben: 'Rechteckprismen mit den Maßen $10 \\times 10 \\times 55\\text{ mm}$ mit mittig eingestoßener V-Kerbe (Kerbtiefe $2\\text{ mm}$, Flankenwinkel $45^\\circ$, Rundungsradius $0{,}25\\text{ mm}$ am Kerbgrund).',
         durchfuehrung: 'Vorkonditionierung der Probe auf Solltemperatur (z. B. $-20\\text{ }^\\circ\\text{C}$ in Kältebädern). Platzierung der eiskalten Probe auf den Auflagern des schweren Pendelschlagwerks. Auslösen des Pendelhammers: Das rotierende Messer des Hammers zerschlägt die gekerbte Seite der Stahlprobe. Der Hammer schwingt darüber hinaus; über die mechanische Schleppzeigerauslenkung wird die Restenergie bestimmt.',
         ergebnisse: 'Bestimmung der verbrauchten Schlagarbeit $K_V$ (oder $K_U$) in Joule [$J$]. Für den Tragwerksbereich wird nach Eurocode 3 typischerweise eine Mindestschlagarbeit von $27 \\text{ Joule}$ bei einer definierten Referenztemperatur (z. B. $-20\\text{ }^\\circ\\text{C}$ bei S355J2) gefordert.',
         kennwerte: ['Kerbschlagarbeit $K_v$ [J]', 'Sprödbruch-Übergangstemperatur', 'Bruchflächenanalyse (Wabenbruch / Spaltbruch)']
@@ -552,7 +553,7 @@ export default function MechanischePruefungen() {
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-750 flex justify-between">
                       <span>Proben-Durchmesser D (Bohrkern):</span>
-                      <span className="text-shiraz font-mono font-bold">{concreteDiam} mm</span>
+                      <span className="text-shiraz font-mono font-bold">{formatDeWert(concreteDiam)} mm</span>
                     </label>
                     <input 
                       type="range" min="50" max="150" step="5" value={concreteDiam}
@@ -565,7 +566,7 @@ export default function MechanischePruefungen() {
                   <div className="space-y-1 pt-1.5">
                     <label className="text-xs font-bold text-slate-750 flex justify-between">
                       <span>Proben-Höhe H (Planhöhe):</span>
-                      <span className="text-shiraz font-mono font-bold">{concreteHeight} mm</span>
+                      <span className="text-shiraz font-mono font-bold">{formatDeWert(concreteHeight)} mm</span>
                     </label>
                     <input 
                       type="range" min="50" max="300" step="5" value={concreteHeight}
@@ -574,14 +575,14 @@ export default function MechanischePruefungen() {
                     />
                     <div className="flex justify-between text-[10px] text-slate-500">
                       <span>Aspektverhältnis (Schlankheit) H/D:</span>
-                      <strong className="text-slate-700 font-mono">{(concreteHeight / concreteDiam).toFixed(2)}</strong>
+                      <strong className="text-slate-700 font-mono">{formatDeZahl((concreteHeight / concreteDiam), 2)}</strong>
                     </div>
                   </div>
 
                   <div className="space-y-1 pt-1.5">
                     <label className="text-xs font-bold text-slate-755 flex justify-between">
                       <span>Zerstörende Bruchkraft (Lastspitze) F:</span>
-                      <span className="text-emerald-700 font-mono font-bold">{concreteForce} kN</span>
+                      <span className="text-emerald-700 font-mono font-bold">{formatDeWert(concreteForce)} kN</span>
                     </label>
                     <input 
                       type="range" min="50" max="1200" step="10" value={concreteForce}
@@ -622,16 +623,16 @@ export default function MechanischePruefungen() {
                     <h5 className="text-xs font-bold text-emerald-800 uppercase tracking-widest border-b border-emerald-200 pb-1 font-mono">Messergebnisse &amp; Festbetonwert</h5>
                     <div className="grid grid-cols-2 gap-y-2 gap-x-2 text-xs font-sans">
                       <div className="text-slate-500">Zylinderquerschnitt (A0):</div>
-                      <div className="font-bold text-right text-slate-800 font-mono">{(concreteRes.area).toFixed(0)} mm²</div>
+                      <div className="font-bold text-right text-slate-800 font-mono">{formatDeZahl((concreteRes.area), 0)} mm²</div>
 
                       <div className="text-slate-500">Rohe Spannung am Kern (fc,raw):</div>
-                      <div className="font-bold text-right text-slate-800 font-mono">{concreteRes.rawStrength.toFixed(1)} MPa</div>
+                      <div className="font-bold text-right text-slate-800 font-mono">{formatDeZahl(concreteRes.rawStrength, 1)} MPa</div>
 
                       <div className="text-slate-500 font-bold text-shiraz">Äquiv. Zylinder (fc,eq,cyl):</div>
-                      <div className="font-bold text-right text-shiraz font-mono">{concreteRes.equivalentCylinder.toFixed(1)} N/mm²</div>
+                      <div className="font-bold text-right text-shiraz font-mono">{formatDeZahl(concreteRes.equivalentCylinder, 1)} N/mm²</div>
 
                       <div className="text-slate-500 font-bold text-emerald-800">Äquiv. Würfel (fc,eq,cube):</div>
-                      <div className="font-bold text-right text-emerald-800 font-mono">{concreteRes.equivalentCube.toFixed(1)} N/mm²</div>
+                      <div className="font-bold text-right text-emerald-800 font-mono">{formatDeZahl(concreteRes.equivalentCube, 1)} N/mm²</div>
                     </div>
                     
                     {concreteRes.equivalentCube >= 37 ? (
@@ -684,7 +685,7 @@ export default function MechanischePruefungen() {
                       <div className="space-y-1">
                         <label className="text-xs font-bold text-slate-750 flex justify-between">
                           <span>Bohrkern-Durchmesser d:</span>
-                          <span className="text-shiraz font-mono font-bold">{asphaltDiam} mm</span>
+                          <span className="text-shiraz font-mono font-bold">{formatDeWert(asphaltDiam)} mm</span>
                         </label>
                         <select
                           value={asphaltDiam}
@@ -699,7 +700,7 @@ export default function MechanischePruefungen() {
                       <div className="space-y-1">
                         <label className="text-xs font-bold text-slate-750 flex justify-between">
                           <span>Bohrkern-Dicke H (Schichthöhe):</span>
-                          <span className="text-shiraz font-mono font-bold">{asphaltHeight} mm</span>
+                          <span className="text-shiraz font-mono font-bold">{formatDeWert(asphaltHeight)} mm</span>
                         </label>
                         <input 
                           type="range" min="30" max="150" step="5" value={asphaltHeight}
@@ -711,7 +712,7 @@ export default function MechanischePruefungen() {
                       <div className="space-y-1">
                         <label className="text-xs font-bold text-slate-755 flex justify-between">
                           <span>Maximale Belastungskraft P:</span>
-                          <span className="text-emerald-700 font-mono font-bold">{asphaltForce} kN</span>
+                          <span className="text-emerald-700 font-mono font-bold">{formatDeWert(asphaltForce)} kN</span>
                         </label>
                         <input 
                           type="range" min="2" max="60" step="0.5" value={asphaltForce}
@@ -725,11 +726,11 @@ export default function MechanischePruefungen() {
                         <h5 className="font-bold text-emerald-800 uppercase tracking-widest border-b border-emerald-200 pb-1 font-mono">Ergebnisse Indirect Tensile</h5>
                         <div className="flex justify-between items-center">
                           <span className="text-slate-500">Dicke-Durchmesser-Verhältnis H/d:</span>
-                          <span className="font-bold font-mono text-slate-800">{(asphaltHeight / asphaltDiam).toFixed(2)}</span>
+                          <span className="font-bold font-mono text-slate-800">{formatDeZahl((asphaltHeight / asphaltDiam), 2)}</span>
                         </div>
                         <div className="flex justify-between items-center pt-1 border-t border-emerald-100">
                           <span className="text-slate-500 font-bold">Spaltzugfestigkeit (St):</span>
-                          <span className="font-bold font-mono text-shiraz text-sm">{asphaltSt.toFixed(2)} MPa</span>
+                          <span className="font-bold font-mono text-shiraz text-sm">{formatDeZahl(asphaltSt, 2)} MPa</span>
                         </div>
                         <div className="bg-slate-100 p-2 rounded text-[10px] text-slate-700 leading-normal font-semibold text-center">
                           {asphaltSt > 2.2 ? (
@@ -757,27 +758,27 @@ export default function MechanischePruefungen() {
                       <div className="space-y-1">
                         <label className="text-xs font-bold text-slate-750 flex justify-between">
                           <span>Marshall-Stabilität S (Bruchlast):</span>
-                          <span className="text-shiraz font-mono font-bold">{marshallStability} kN</span>
+                          <span className="text-shiraz font-mono font-bold">{formatDeWert(marshallStability)} kN</span>
                         </label>
                         <input 
                           type="range" min="2.0" max="25.0" step="0.5" value={marshallStability}
                           onChange={(e) => setMarshallStability(Number(e.target.value))}
                           className="w-full accent-shiraz cursor-pointer"
                         />
-                        <span className="text-[10px] text-slate-500 block">Zulässiges Minimum je nach Belastungsklasse meist &gt; 5.0 bis 9.0 kN.</span>
+                        <span className="text-[10px] text-slate-500 block">Zulässiges Minimum je nach Belastungsklasse meist &gt; 5,0 bis 9,0 kN.</span>
                       </div>
 
                       <div className="space-y-1 pt-1">
                         <label className="text-xs font-bold text-slate-755 flex justify-between">
                           <span>Prüf-Fließwert F (Stauchung):</span>
-                          <span className="text-emerald-700 font-mono font-bold">{marshallFlow} mm</span>
+                          <span className="text-emerald-700 font-mono font-bold">{formatDeWert(marshallFlow)} mm</span>
                         </label>
                         <input 
                           type="range" min="0.5" max="8.0" step="0.1" value={marshallFlow}
                           onChange={(e) => setMarshallFlow(Number(e.target.value))}
                           className="w-full accent-shiraz cursor-pointer"
                         />
-                        <span className="text-[10px] text-slate-500 block">Zulässiges Fließfenster liegt typischerweise zwischen 2.0 bis 4.0 mm.</span>
+                        <span className="text-[10px] text-slate-500 block">Zulässiges Fließfenster liegt typischerweise zwischen 2,0 bis 4,0 mm.</span>
                       </div>
 
                       {/* Calculations output Marshall */}
@@ -785,15 +786,15 @@ export default function MechanischePruefungen() {
                         <h5 className="font-bold text-shiraz uppercase tracking-widest border-b border-home-grau/20 pb-1 font-mono">Ergebnisse Marshallprüfung</h5>
                         <div className="flex justify-between items-center">
                           <span className="text-slate-500">Stabilität <InlineMath math="S" />:</span>
-                          <span className="font-bold font-mono text-slate-800">{marshallStability.toFixed(1)} kN</span>
+                          <span className="font-bold font-mono text-slate-800">{formatDeZahl(marshallStability, 1)} kN</span>
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-slate-500">Fließwert <InlineMath math="F" />:</span>
-                          <span className="font-bold font-mono text-slate-800">{marshallFlow.toFixed(1)} mm</span>
+                          <span className="font-bold font-mono text-slate-800">{formatDeZahl(marshallFlow, 1)} mm</span>
                         </div>
                         <div className="flex justify-between items-center pt-1 border-t border-home-grau/20">
                           <span className="text-slate-500 font-bold text-shiraz">Marshall-Quotient <InlineMath math="Q = S/F" />:</span>
-                          <span className="font-bold font-mono text-shiraz text-sm">{marshallQuotient.toFixed(2)} kN/mm</span>
+                          <span className="font-bold font-mono text-shiraz text-sm">{formatDeZahl(marshallQuotient, 2)} kN/mm</span>
                         </div>
                         <div className="bg-slate-100 p-2 rounded text-[10px] text-slate-700 leading-normal font-semibold text-center">
                           {marshallQuotient > 4.5 ? (
@@ -840,10 +841,10 @@ export default function MechanischePruefungen() {
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-755 flex justify-between">
                         <span>Anfangs-L0:</span>
-                        <span className="text-slate-600 font-mono font-bold">{steelLength0} mm</span>
+                        <span className="text-slate-600 font-mono font-bold">{formatDeWert(steelLength0)} mm</span>
                       </label>
                       <input 
-                        type="number"
+                        type="number" min="0"
                         value={steelLength0}
                         onChange={(e) => setSteelLength0(Math.max(10, Number(e.target.value)))}
                         className="w-full border border-home-grau/30 p-1 rounded-lg text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-shiraz text-center bg-slate-50"
@@ -854,7 +855,7 @@ export default function MechanischePruefungen() {
                   <div className="space-y-1.5 pt-1">
                     <label className="text-xs font-bold text-slate-755 flex justify-between">
                       <span>Streckgrenzenlast (Fließstart) F_e:</span>
-                      <span className="text-shiraz font-mono font-bold">{steelForceYield.toFixed(1)} kN</span>
+                      <span className="text-shiraz font-mono font-bold">{formatDeZahl(steelForceYield, 1)} kN</span>
                     </label>
                     <input 
                       type="range" min="10" max="400" step="1" value={steelForceYield}
@@ -872,7 +873,7 @@ export default function MechanischePruefungen() {
                   <div className="space-y-1.5 pt-1">
                     <label className="text-xs font-bold text-slate-755 flex justify-between">
                       <span>Zugfestigkeitskraft (Höchstlast) F_m:</span>
-                      <span className="text-emerald-700 font-mono font-bold">{steelForceUltimate.toFixed(1)} kN</span>
+                      <span className="text-emerald-700 font-mono font-bold">{formatDeZahl(steelForceUltimate, 1)} kN</span>
                     </label>
                     <input 
                       type="range" min="12" max="500" step="1" value={steelForceUltimate}
@@ -884,7 +885,7 @@ export default function MechanischePruefungen() {
                   <div className="space-y-1.5 pt-1">
                     <label className="text-xs font-bold text-slate-755 flex justify-between">
                       <span>Bruchlänge Lu (extensometer):</span>
-                      <span className="text-slate-700 font-mono font-bold">{steelLengthU} mm</span>
+                      <span className="text-slate-700 font-mono font-bold">{formatDeWert(steelLengthU)} mm</span>
                     </label>
                     <input 
                       type="range" min={steelLength0} max={steelLength0 + 40} step="0.5" value={steelLengthU}
@@ -899,24 +900,24 @@ export default function MechanischePruefungen() {
                     <div className="grid grid-cols-2 gap-y-2 gap-x-2 text-xs">
                       
                       <div className="text-slate-500">Stabquerschnitt (S0):</div>
-                      <div className="font-bold text-right text-slate-800 font-mono">{steelRes.area.toFixed(1)} mm²</div>
+                      <div className="font-bold text-right text-slate-800 font-mono">{formatDeZahl(steelRes.area, 1)} mm²</div>
 
                       <div className="text-slate-500 font-semibold text-slate-800">Streckgrenze (Re):</div>
                       <div className={`font-bold text-right font-mono ${steelRes.yieldPassed ? 'text-emerald-800' : 'text-rose-700'}`}>
-                        {steelRes.yieldStrength.toFixed(1)} MPa
+                        {formatDeZahl(steelRes.yieldStrength, 1)} MPa
                       </div>
 
                       <div className="text-slate-500 font-semibold text-slate-800">Zugfestigkeit (Rm):</div>
-                      <div className="font-bold text-right text-slate-800 font-mono font-bold">{steelRes.ultimateStrength.toFixed(1)} MPa</div>
+                      <div className="font-bold text-right text-slate-800 font-mono font-bold">{formatDeZahl(steelRes.ultimateStrength, 1)} MPa</div>
 
                       <div className="text-slate-500">Verhältnis (Rm / Re):</div>
                       <div className={`font-bold text-right font-mono ${steelRes.ratiosPassed ? 'text-emerald-800' : 'text-amber-700'}`}>
-                        {steelRes.ratio.toFixed(2)}
+                        {formatDeZahl(steelRes.ratio, 2)}
                       </div>
 
                       <div className="text-slate-500">Bruchdehnung (A5):</div>
                       <div className={`font-bold text-right font-mono ${steelRes.elongationPassed ? 'text-emerald-800' : 'text-slate-800'}`}>
-                        {steelRes.elongation.toFixed(1)} %
+                        {formatDeZahl(steelRes.elongation, 1)} %
                       </div>
                     </div>
                     
@@ -939,20 +940,20 @@ export default function MechanischePruefungen() {
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-755 flex justify-between">
                         <span>Rohdichte ρ0:</span>
-                        <span className="text-shiraz font-mono font-bold">{woodDensity.toFixed(2)} g/cm³</span>
+                        <span className="text-shiraz font-mono font-bold">{formatDeZahl(woodDensity, 2)} g/cm³</span>
                       </label>
                       <input 
                         type="range" min="0.30" max="0.85" step="0.01" value={woodDensity}
                         onChange={(e) => setWoodDensity(Number(e.target.value))}
                         className="w-full h-1 accent-shiraz cursor-pointer"
                       />
-                      <span className="text-[10px] text-slate-500 leading-none">Spruce \Fichte: ca. 0.46, Buche Hartholz: &gt;0.68.</span>
+                      <span className="text-[10px] text-slate-500 leading-none">Spruce \Fichte: ca. 0,46, Buche Hartholz: &gt;0.68.</span>
                     </div>
 
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-755 flex justify-between">
                         <span>Holzfeuchte u:</span>
-                        <span className="text-emerald-700 font-mono font-bold">{woodMoisture} %</span>
+                        <span className="text-emerald-700 font-mono font-bold">{formatDeWert(woodMoisture)} %</span>
                       </label>
                       <input 
                         type="range" min="5" max="35" step="1" value={woodMoisture}
@@ -967,7 +968,7 @@ export default function MechanischePruefungen() {
                     <div className="space-y-1">
                       <label className="text-[11px] font-bold text-slate-600">Balkenbreite w:</label>
                       <input 
-                        type="number" value={woodWidth}
+                        type="number" min="0" value={woodWidth}
                         onChange={(e) => setWoodWidth(Math.max(10, Number(e.target.value)))}
                         className="w-full border border-home-grau/30 p-1 rounded font-mono text-xs text-center"
                       />
@@ -975,7 +976,7 @@ export default function MechanischePruefungen() {
                     <div className="space-y-1">
                       <label className="text-[11px] font-bold text-slate-600">Balkenhöhe h:</label>
                       <input 
-                        type="number" value={woodHeight}
+                        type="number" min="0" value={woodHeight}
                         onChange={(e) => setWoodHeight(Math.max(10, Number(e.target.value)))}
                         className="w-full border border-home-grau/30 p-1 rounded font-mono text-xs text-center"
                       />
@@ -983,7 +984,7 @@ export default function MechanischePruefungen() {
                     <div className="space-y-1">
                       <label className="text-[11px] font-bold text-slate-600">Stützweite L:</label>
                       <input 
-                        type="number" value={woodSpan}
+                        type="number" min="0" value={woodSpan}
                         onChange={(e) => setWoodSpan(Math.max(100, Number(e.target.value)))}
                         className="w-full border border-home-grau/30 p-1 rounded font-mono text-xs text-center"
                       />
@@ -993,7 +994,7 @@ export default function MechanischePruefungen() {
                   <div className="space-y-1 pt-1.5">
                     <label className="text-xs font-bold text-slate-755 flex justify-between">
                       <span>Gemessene Bruch-Biegungslast F_bending:</span>
-                      <span className="text-emerald-700 font-mono font-bold">{woodBendingForce.toFixed(1)} kN</span>
+                      <span className="text-emerald-700 font-mono font-bold">{formatDeZahl(woodBendingForce, 1)} kN</span>
                     </label>
                     <input 
                       type="range" min="0.5" max="25" step="0.5" value={woodBendingForce}
@@ -1008,16 +1009,16 @@ export default function MechanischePruefungen() {
                     <div className="grid grid-cols-2 gap-y-2 gap-x-2 text-xs">
                       
                       <div className="text-slate-500">Druckfestigkeit (faserparallel) fc,0:</div>
-                      <div className="font-bold text-right text-slate-800 font-mono">{woodRes.fc0_actual.toFixed(1)} MPa</div>
+                      <div className="font-bold text-right text-slate-800 font-mono">{formatDeZahl(woodRes.fc0_actual, 1)} MPa</div>
 
                       <div className="text-slate-500 font-semibold text-slate-800">Progn. Biegezugfestigkeit fm:</div>
                       <div className="font-bold text-right text-shiraz font-mono font-bold">
-                        {woodRes.f_bending.toFixed(1)} N/mm²
+                        {formatDeZahl(woodRes.f_bending, 1)} N/mm²
                       </div>
 
                       <div className="text-slate-500">Biegungs-E-Modul E0,mean:</div>
                       <div className="font-bold text-right text-slate-800 font-mono">
-                        {woodRes.e_modul.toFixed(0)} MPa
+                        {formatDeZahl(woodRes.e_modul, 0)} MPa
                       </div>
 
                       <div className="text-slate-500 font-bold text-slate-850">Schätzung Holzklasse:</div>
@@ -1028,7 +1029,7 @@ export default function MechanischePruefungen() {
                     </div>
 
                     <span className="block text-[10px] text-emerald-850 italic text-center">
-                      Modifiziert für Feuchtegehalt von {woodMoisture}% (Referenz-Ausgleichsniveau der EN 338: 12%).
+                      Modifiziert für Feuchtegehalt von {formatDeWert(woodMoisture)}% (Referenz-Ausgleichsniveau der EN 338: 12%).
                     </span>
                   </div>
                 </div>

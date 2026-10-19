@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { 
@@ -227,7 +228,7 @@ export default function Kuriositaeten() {
                     </ul>
                     <div className="text-slate-850 font-bold">Effektive Strukturmasse: G_real ≈ 7.425 t</div>
                     <div className="text-emerald-700 font-bold block text-[11px] mt-1">
-                      Resultierende Massereduktion: {((10800 - 7425) / 10800 * 100).toFixed(1)}% (≈ 3.375 t Entlastung)
+                      Resultierende Massereduktion: {formatDeZahl(((10800 - 7425) / 10800 * 100), 1)}% (≈ 3.375 t Entlastung)
                     </div>
                   </div>
                   <p className="text-xs text-slate-650 italic">

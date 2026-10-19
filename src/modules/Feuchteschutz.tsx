@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Droplets, Thermometer, Wind, Beaker, Info, Plus, Trash2, 
@@ -130,10 +131,10 @@ export default function Feuchteschutz() {
 
     if (Tsi <= dewPoint) {
       level = 'danger';
-      text = `Achtung: Freies Tauwasser! Die Bauteil-Oberflächentemperatur (${Tsi.toFixed(1)}°C) liegt auf oder unter dem Taupunkt (${dewPoint.toFixed(1)}°C). Es fällt flüssiges Kondensat aus.`;
+      text = `Achtung: Freies Tauwasser! Die Bauteil-Oberflächentemperatur (${formatDeZahl(Tsi, 1)}°C) liegt auf oder unter dem Taupunkt (${formatDeZahl(dewPoint, 1)}°C). Es fällt flüssiges Kondensat aus.`;
     } else if (Tsi <= schimmelPoint || actualSurfaceRH >= 80) {
       level = 'warning';
-      text = `Erhöhte Schimmelpilzgefahr! Die relative Oberflächenfeuchte liegt bei ${actualSurfaceRH.toFixed(0)}% (Grenzwert nach DIN 4108-2 liegt bei 80%). Schimmel bildet sich bereits weit vor dem eigentlichen Tauwasserausfall!`;
+      text = `Erhöhte Schimmelpilzgefahr! Die relative Oberflächenfeuchte liegt bei ${formatDeZahl(actualSurfaceRH, 0)}% (Grenzwert nach DIN 4108-2 liegt bei 80%). Schimmel bildet sich bereits weit vor dem eigentlichen Tauwasserausfall!`;
     }
 
     return { level, text, actualSurfaceRH };
@@ -154,7 +155,7 @@ export default function Feuchteschutz() {
     }
 
     return {
-      labels: temps.map(t => `${t}°C`),
+      labels: temps.map(t => `${formatDeWert(t)}°C`),
       datasets: [
         {
           label: 'Sättigungsdampfdruck psat(T) [Pa]',
@@ -314,7 +315,7 @@ export default function Feuchteschutz() {
               <div>
                 <div className="flex justify-between items-center mb-1.5">
                   <label className="text-xs font-bold text-slate-700">Innen-Lufttemperatur (T_i):</label>
-                  <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">{Ti.toFixed(1)} °C</span>
+                  <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">{formatDeZahl(Ti, 1)} °C</span>
                 </div>
                 <input 
                   type="range" min="15" max="30" step="0.5"
@@ -327,7 +328,7 @@ export default function Feuchteschutz() {
               <div>
                 <div className="flex justify-between items-center mb-1.5">
                   <label className="text-xs font-bold text-slate-700">Rel. Raumluftfeuchte (φ_i):</label>
-                  <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">{phiI.toFixed(0)} %</span>
+                  <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">{formatDeZahl(phiI, 0)} %</span>
                 </div>
                 <input 
                   type="range" min="20" max="95" step="1"
@@ -342,7 +343,7 @@ export default function Feuchteschutz() {
                   <label className="text-xs font-black text-orange-900 flex items-center gap-1">
                     Bauteil-Oberfläche (T_si):
                   </label>
-                  <span className="text-xs font-mono font-bold text-rose-800 bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200">{Tsi.toFixed(1)} °C</span>
+                  <span className="text-xs font-mono font-bold text-rose-800 bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200">{formatDeZahl(Tsi, 1)} °C</span>
                 </div>
                 <input 
                   type="range" min="-5" max="25" step="0.5"
@@ -363,19 +364,19 @@ export default function Feuchteschutz() {
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150">
                   <span className="text-slate-400 text-[10px] block font-bold">Sättigungsdruck p_sat:</span>
-                  <span className="font-mono font-bold text-slate-800 text-[13px]">{indoorClimate.psat.toFixed(1)} Pa</span>
+                  <span className="font-mono font-bold text-slate-800 text-[13px]">{formatDeZahl(indoorClimate.psat, 1)} Pa</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150">
                   <span className="text-slate-400 text-[10px] block font-bold">Ist-Teildruck p:</span>
-                  <span className="font-mono font-bold text-slate-800 text-[13px]">{indoorClimate.p_act.toFixed(1)} Pa</span>
+                  <span className="font-mono font-bold text-slate-800 text-[13px]">{formatDeZahl(indoorClimate.p_act, 1)} Pa</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150">
                   <span className="text-slate-400 text-[10px] block font-bold">Absolute Luftfeuchte:</span>
-                  <span className="font-mono font-bold text-slate-800 text-[13px]">{indoorClimate.absHum.toFixed(2)} g/m³</span>
+                  <span className="font-mono font-bold text-slate-800 text-[13px]">{formatDeZahl(indoorClimate.absHum, 2)} g/m³</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150 focus-within:ring-2">
                   <span className="text-blue-500 text-[10px] block font-extrabold">Taupunkt T_dp (100%):</span>
-                  <span className="font-mono font-black text-blue-600 text-[13px]">{indoorClimate.dewPoint.toFixed(1)} °C</span>
+                  <span className="font-mono font-black text-blue-600 text-[13px]">{formatDeZahl(indoorClimate.dewPoint, 1)} °C</span>
                 </div>
               </div>
 
@@ -383,7 +384,7 @@ export default function Feuchteschutz() {
               <div className="p-2.5 bg-yellow-50/50 border border-yellow-100 rounded-lg text-[10.5px]">
                 <div className="flex justify-between items-center text-yellow-800 font-bold mb-1">
                   <span>Schimmelgrenze T_schimmel (80% r.f.):</span>
-                  <span className="font-mono">{indoorClimate.schimmelPoint.toFixed(1)} °C</span>
+                  <span className="font-mono">{formatDeZahl(indoorClimate.schimmelPoint, 1)} °C</span>
                 </div>
                 <p className="text-slate-500 leading-relaxed text-[9.5px]">
                   Fällt die Wandoberfläche unter diesen Wert, herrscht direkt auf der Wand eine Feuchte von &gt; 80%. Idealer Nährboden für Mikropilze!
@@ -420,7 +421,7 @@ export default function Feuchteschutz() {
                     : surfaceAuditStatus.level === 'warning' 
                       ? 'text-yellow-700 font-black' 
                       : 'text-emerald-700'
-                }>{surfaceAuditStatus.actualSurfaceRH.toFixed(0)}%</span>
+                }>{formatDeZahl(surfaceAuditStatus.actualSurfaceRH, 0)}%</span>
               </div>
             </div>
           </div>
@@ -570,13 +571,13 @@ export default function Feuchteschutz() {
 
                     {/* Mu factor (Static display) */}
                     <div className="col-span-3 bg-slate-100 rounded-lg p-1.5 flex items-center justify-center border border-slate-200 text-xs font-mono text-slate-600 font-bold">
-                      µ = {layer.mu >= 10000 ? layer.mu.toLocaleString() : layer.mu}
+                      µ = {layer.mu >= 10000 ? formatDeWert(layer.mu) : layer.mu}
                     </div>
                   </div>
 
                   {/* Individual computed value */}
                   <div className="w-24 text-right text-xs font-mono font-black text-slate-800">
-                    {layer.sd.toFixed(3)} m
+                    {formatDeZahl(layer.sd, 3)} m
                   </div>
 
                   {/* Trash button */}
@@ -612,7 +613,7 @@ export default function Feuchteschutz() {
               <div className="flex justify-between items-baseline select-all">
                 <span className="text-xs text-slate-600 font-bold">Äquivalente Gesamtluftdicke (s_d,ges):</span>
                 <span className="text-xl font-mono font-black text-slate-900 border-b border-2 border-slate-200/50">
-                  {layerCalculations.totalSd.toFixed(3)} m
+                  {formatDeZahl(layerCalculations.totalSd, 3)} m
                 </span>
               </div>
 
@@ -662,7 +663,7 @@ export default function Feuchteschutz() {
                 <div>
                   <span className="font-bold text-slate-800">2. Dampfdruck-Magnusgleichung (nach DIN EN ISO 13788):</span>
                   <div className="my-1.5 p-1 bg-white border border-slate-100 rounded text-center overflow-x-auto text-xs">
-                    <BlockMath math="p_{\text{sat}}(T) \approx 610.5 \cdot \exp\left( \frac{17.269 \cdot T}{237.3 + T} \right)" />
+                    <BlockMath math="p_{\text{sat}}(T) \approx 610{,}5 \cdot \exp\left( \frac{17.269 \cdot T}{237{,}3 + T} \right)" />
                   </div>
                 </div>
               </div>
@@ -695,7 +696,7 @@ export default function Feuchteschutz() {
             quelle: 'DIN 4108-3'
           },
           {
-            formel: 'p_{sat}(T) \\approx 610.5 \\cdot e^{\\frac{17.269 \\cdot T}{237.3 + T}}',
+            formel: 'p_{sat}(T) \\approx 610{,}5 \\cdot e^{\\frac{17.269 \\cdot T}{237{,}3 + T}}',
             erklaerung: 'Sättigungsdampfdruck [Pa] von Wasserdampf über flüssigem Wasser in Abhängigkeit von der Temperatur T in °C nach der Magnus-Formel.',
             quelle: 'DIN EN ISO 13788'
           }

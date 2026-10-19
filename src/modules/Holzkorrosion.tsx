@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Bug, Droplets, ShieldCheck, Sun, ArrowRight, BookOpen, Layers, ShieldAlert, Thermometer, Shield } from 'lucide-react';
@@ -302,7 +303,7 @@ export default function Holzkorrosion() {
                     <span className="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold">DIN 68800</span>
                   </h4>
                   <p className="text-xs text-slate-500 mt-1">
-                    Verschieben Sie den Regler oder wähle ein praktisches Szenario aus, um die biologische Gefährdung und die mikroskopischen Wasserzustände live zu erforschen:
+                    Verschieben Sie den Regler oder wählen Sie ein praktisches Szenario aus, um die biologische Gefährdung und die mikroskopischen Wasserzustände live zu erforschen:
                   </p>
                 </div>
                 
@@ -328,7 +329,7 @@ export default function Holzkorrosion() {
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Holzfeuchte (u) wählen:</span>
                   <div className="flex items-baseline gap-1 font-mono text-3xl font-black text-shiraz">
-                    <span>{woodMoisture}%</span>
+                    <span>{formatDeWert(woodMoisture)}%</span>
                     <span className="text-xs font-bold text-slate-550">(u)</span>
                   </div>
                 </div>
@@ -382,8 +383,8 @@ export default function Holzkorrosion() {
                   <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Mikroskopische Zellstrukturen (Zellwände vs. Hohlräume):</span>
                   <span className="text-xs font-mono font-bold text-slate-700">
                     {woodMoisture <= 30 
-                      ? `Nur gebundenes Zellwandwasser (${Math.round(percentOfSaturation)}%)` 
-                      : `Zellwand gesättigt + Freies Wasser im Zellhohlraum (+${Math.round(freeWaterLevel)}%)`}
+                      ? `Nur gebundenes Zellwandwasser (${formatDeWert(Math.round(percentOfSaturation))}%)` 
+                      : `Zellwand gesättigt + Freies Wasser im Zellhohlraum (+${formatDeWert(Math.round(freeWaterLevel))}%)`}
                   </span>
                 </div>
                 
@@ -448,7 +449,7 @@ export default function Holzkorrosion() {
               <div className={`p-4 rounded-xl border flex flex-col gap-3 transition-colors duration-300 ${currentRange.colorBg}`}>
                 <div className="flex items-start md:items-center justify-between gap-3 flex-col md:flex-row">
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold uppercase tracking-wider opacity-60">Gefährdungspotenzial bei u = {woodMoisture}%:</span>
+                    <span className="text-xs font-bold uppercase tracking-wider opacity-60">Gefährdungspotenzial bei u = {formatDeWert(woodMoisture)}%:</span>
                     <strong className="text-sm md:text-base font-bold leading-tight">{currentRange.label}</strong>
                   </div>
                   <span className={`px-3 py-1 text-xs font-bold rounded-full text-center ${currentRange.badgeColor} shrink-0`}>

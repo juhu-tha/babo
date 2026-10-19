@@ -388,7 +388,7 @@ export default function Aufgaben() {
         ]}
         formeln={[
           {
-            formel: '\\text{Note} = 1.0 + 3.0 \\cdot \\left(1 - \\frac{P_{\\text{erreicht}} - P_{\\text{bestehen}}}{P_{\\text{max}} - P_{\\text{bestehen}}}\\right)',
+            formel: '\\text{Note} = 1{,}0 + 3{,}0 \\cdot \\left(1 - \\frac{P_{\\text{erreicht}} - P_{\\text{bestehen}}}{P_{\\text{max}} - P_{\\text{bestehen}}}\\right)',
             erklaerung: 'Lineare Notenberechnungsskala für akademische Klausuren und Übungsaufgaben im Bauingenieurwesen mit 50 % Bestehensgrenze.',
             quelle: 'Allgemeine Prüfungsordnung'
           },

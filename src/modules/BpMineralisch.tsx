@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Layers, ShieldCheck, Eye, Sliders, Calculator, Check, AlertTriangle, RefreshCw, Layers as LayersIcon, HardHat, Star } from 'lucide-react';
@@ -50,7 +51,7 @@ const mineralDb: MineralMaterial[] = [
     waterAbs: 0,
     mohsHardness: 5.5,
     thermalCond: 0.9,
-    pros: ['Splitterbindend durch zähelastische Reißfest-PVB-Folie (0.76-1.52 mmstärke)', 'Schallschützende Eigenschaften', 'Hohe Einbruchhemmung'],
+    pros: ['Splitterbindend durch zähelastische Reißfest-PVB-Folie (0,76-1,52 mmstärke)', 'Schallschützende Eigenschaften', 'Hohe Einbruchhemmung'],
     rules: 'Zwingend vorgeschrieben für Überkopfverglasungen (Vordächer) und absturzsichernde Verglasungen (z.B. Brüstungen). Bei Glasbruch bleibt eine signifikante Resttragfähigkeit bestehen.',
     frostResistant: 'Ja'
   },
@@ -272,7 +273,7 @@ export default function BpMineralisch() {
               </div>
               <div className="bg-slate-50 border border-home-grau/15 px-3 py-1 rounded-lg text-right">
                 <span className="text-[10px] text-text-main/40 block leading-tight">Mohshärte (Kratzfest)</span>
-                <span className="text-sm font-extrabold text-slate-800 font-mono">{selectedMat.mohsHardness.toFixed(1)} / 10</span>
+                <span className="text-sm font-extrabold text-slate-800 font-mono">{formatDeZahl(selectedMat.mohsHardness, 1)} / 10</span>
               </div>
             </div>
 
@@ -280,15 +281,15 @@ export default function BpMineralisch() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Dichte (Rohdichte)</span>
-                <span className="text-sm font-extrabold font-mono text-slate-800">{selectedMat.density} kg/m³</span>
+                <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMat.density)} kg/m³</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Teilw. Wasserabs.</span>
-                <span className="text-sm font-extrabold font-mono text-slate-800">{selectedMat.waterAbs}% M.-%</span>
+                <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMat.waterAbs)}% M.-%</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Wärmeleitgefühlt λ</span>
-                <span className="text-sm font-extrabold font-mono text-slate-800">{selectedMat.thermalCond.toFixed(2)} W/(m·K)</span>
+                <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeZahl(selectedMat.thermalCond, 2)} W/(m·K)</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Frosttau-Beständig</span>
@@ -345,7 +346,7 @@ export default function BpMineralisch() {
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
                 <label className="text-text-main">Gesamtfläche des Belags A:</label>
-                <span className="text-shiraz font-mono">{calcArea} m²</span>
+                <span className="text-shiraz font-mono">{formatDeWert(calcArea)} m²</span>
               </div>
               <input 
                 type="range" 
@@ -361,7 +362,7 @@ export default function BpMineralisch() {
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
                 <label className="text-text-main">Platten- bzw. Belagsstärke (mm):</label>
-                <span className="text-shiraz font-mono">{tileThick} mm</span>
+                <span className="text-shiraz font-mono">{formatDeWert(tileThick)} mm</span>
               </div>
               <input 
                 type="range" 
@@ -387,11 +388,11 @@ export default function BpMineralisch() {
                 onChange={(e) => setTileMaterial(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
               >
-                <option value="feinsteinzeug">Feinsteinzeug Fliese (Absorption ≤ 0.2%)</option>
-                <option value="steinzeug">Spaltklinker Steinzeug (Absorption ~ 2.5%)</option>
+                <option value="feinsteinzeug">Feinsteinzeug Fliese (Absorption ≤ 0,2%)</option>
+                <option value="steinzeug">Spaltklinker Steinzeug (Absorption ~ 2,5%)</option>
                 <option value="steingut">Steingut Wandfliese (Absorption ~ 15%)</option>
-                <option value="granit">Granit Werkstein (Absorption ~ 0.3%)</option>
-                <option value="marmor">Marmor Werkstein (Absorption ~ 0.2%)</option>
+                <option value="granit">Granit Werkstein (Absorption ~ 0,3%)</option>
+                <option value="marmor">Marmor Werkstein (Absorption ~ 0,2%)</option>
               </select>
             </div>
 
@@ -408,27 +409,27 @@ export default function BpMineralisch() {
               
               <div className="flex justify-between items-center bg-white p-2 border border-home-grau/30 rounded-md">
                 <span className="font-sans font-medium">Volumen Gestein:</span>
-                <span className="font-bold text-slate-800">{volumeM3.toFixed(3)} m³</span>
+                <span className="font-bold text-slate-800">{formatDeZahl(volumeM3, 3)} m³</span>
               </div>
 
               <div className="flex justify-between items-center bg-white p-2 border border-home-grau/30 rounded-md">
                 <span className="font-sans font-medium text-slate-600">Material-Rohdichte:</span>
-                <span className="font-bold text-slate-700">{calcMat.density} kg/m³</span>
+                <span className="font-bold text-slate-700">{formatDeWert(calcMat.density)} kg/m³</span>
               </div>
 
               <div className="flex justify-between items-center bg-white p-2 border border-home-grau/30 rounded-md">
                 <span className="font-sans font-bold text-slate-800">Trocken-Eigenlast:</span>
-                <span className="font-bold text-slate-900">{dryWeightKg.toFixed(1)} kg</span>
+                <span className="font-bold text-slate-900">{formatDeZahl(dryWeightKg, 1)} kg</span>
               </div>
 
               <div className="flex justify-between items-center bg-shiraz/5 p-2 border border-shiraz/25 rounded-md">
                 <span className="font-sans font-bold text-shiraz">Nassgewicht (gesättigt):</span>
-                <span className="font-bold text-shiraz">{wetWeightKg.toFixed(1)} kg</span>
+                <span className="font-bold text-shiraz">{formatDeZahl(wetWeightKg, 1)} kg</span>
               </div>
             </div>
 
             <div className="pt-2 border-t border-home-grau/30 text-[10px] text-text-main/50 leading-relaxed font-sans mt-3">
-              * Bemessungslast trocken: {(dryWeightKg / calcArea).toFixed(1)} kg/m² (~{(dryWeightKg * 0.00981 / calcArea).toFixed(2)} kN/m²). Zusätzliches Gewicht bei Sättigung: +{waterAbsorbedKg.toFixed(1)} kg insgesamt.
+              * Bemessungslast trocken: {formatDeZahl((dryWeightKg / calcArea), 1)} kg/m² (~{formatDeZahl((dryWeightKg * 0.00981 / calcArea), 2)} kN/m²). Zusätzliches Gewicht bei Sättigung: +{formatDeZahl(waterAbsorbedKg, 1)} kg insgesamt.
             </div>
           </div>
         </div>

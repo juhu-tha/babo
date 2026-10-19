@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Microscope, Activity, Compass, Wind, Layers, Flame, MousePointerClick, Info } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -11,7 +12,7 @@ const TGAInteraction = () => {
     if (t > 100) mass -= 2; // freies Wasser
     if (t > 450) mass -= 5 * Math.min(1, (t - 450) / 50); // Ca(OH)2
     if (t > 750) mass -= 15 * Math.min(1, (t - 750) / 80); // CaCO3
-    return mass.toFixed(1);
+    return formatDeZahl(mass, 1);
   };
 
   const getPhase = (t: number) => {
@@ -27,7 +28,7 @@ const TGAInteraction = () => {
     <div className="mt-4 p-4 bg-white rounded-lg border border-home-grau/30 shadow-inner">
       <h4 className="font-bold text-sm mb-2 flex items-center gap-2"><MousePointerClick size={16}/> Interaktiv: TGA-Simulator (Betonprobe)</h4>
       <div className="mb-4">
-        <label className="block text-xs font-medium text-gray-700 mb-1">Temperatur: {temp}°C</label>
+        <label className="block text-xs font-medium text-gray-700 mb-1">Temperatur: {formatDeWert(temp)}°C</label>
         <input 
           type="range" 
           min="20" max="1000" 
@@ -54,7 +55,7 @@ const MIPInteraction = () => {
   const [pressure, setPressure] = useState(1);
   
   const getPoreRadius = (p: number) => {
-    return (7500 / p).toFixed(1);
+    return formatDeZahl(7500 / p, 1);
   };
 
   const getPoreType = (p: number) => {
@@ -68,7 +69,7 @@ const MIPInteraction = () => {
     <div className="mt-4 p-4 bg-white rounded-lg border border-home-grau/30 shadow-inner">
       <h4 className="font-bold text-sm mb-2 flex items-center gap-2"><MousePointerClick size={16}/> Interaktiv: MIP-Druck in MPa (≙ 10 bar)</h4>
       <div className="mb-4">
-        <label className="block text-xs font-medium text-gray-700 mb-1">Druck (log): 10^{pressure} bar</label>
+        <label className="block text-xs font-medium text-gray-700 mb-1">Druck (log): 10^{formatDeWert(pressure)} bar</label>
         <input 
           type="range" 
           min="0" max="3.6" step="0.1"
@@ -177,7 +178,7 @@ const XrdInteraction = () => {
                                     onClick={() => setSelectedMineral(p.mineral)}
                                 >
                                     <div className={`absolute -top-7 whitespace-nowrap px-2 py-0.5 bg-slate-800 text-white text-[10px] sm:text-xs rounded transition-opacity shadow-sm z-20 ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                                        {p.name} ({p.angle}°)
+                                        {p.name} ({formatDeWert(p.angle)}°)
                                     </div>
                                     <div className={`w-0.5 transition-all z-10 origin-bottom ${isSelected ? 'h-full bg-blue-600 scale-x-[3] scale-y-[1.05]' : 'h-full bg-blue-500 group-hover:scale-y-[1.05]'}`}></div>
                                 </div>

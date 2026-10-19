@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -502,11 +503,11 @@ export default function Mauerwerk() {
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Rohdichte <FormulaText text="\rho" />:</span>
-                    <span className="font-bold">{stoneTypes[stone].rho} kg/m³</span>
+                    <span className="font-bold">{formatDeWert(stoneTypes[stone].rho)} kg/m³</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-main/60">Wärmeleitf. <FormulaText text="\lambda" />:</span>
-                    <span className="font-bold">{stoneTypes[stone].lambda} W/(mK)</span>
+                    <span className="font-bold">{formatDeWert(stoneTypes[stone].lambda)} W/(mK)</span>
                   </div>
                 </div>
               </div>
@@ -606,7 +607,7 @@ export default function Mauerwerk() {
                   <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-text-main/60 border-t border-home-grau/10 pt-2 font-mono">
                     <div>🔊 Schallschutz: <span className="text-text-main font-semibold">Sehr gut (Masse)</span></div>
                     <div>🔥 Brandschutz: <span className="text-text-main font-semibold">Klasse A1</span></div>
-                    <div>🌡️ Leitf. λ: <span className="text-text-main font-semibold">0.47-0.73 W/mK</span></div>
+                    <div>🌡️ Leitf. λ: <span className="text-text-main font-semibold">0,47-0,73 W/mK</span></div>
                     <div>Tragfähigkeit: <span className="text-text-main font-semibold">Gering (2-5 MPa)</span></div>
                   </div>
                   <div className="mt-2 text-[10.5px] text-text-main/60 bg-off-white p-2 rounded border border-home-grau/10">
@@ -659,15 +660,15 @@ export default function Mauerwerk() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text="Charakt. Festigkeit f_k" /></div>
-                  <div className="text-3xl font-bold">{results.fk.toFixed(2)} MPa</div>
+                  <div className="text-3xl font-bold">{formatDeZahl(results.fk, 2)} MPa</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text="Bemessungswert f_d" /></div>
-                  <div className="text-3xl font-bold">{results.fd.toFixed(2)} MPa</div>
+                  <div className="text-3xl font-bold">{formatDeZahl(results.fd, 2)} MPa</div>
                 </div>
               </div>
               <div className="text-sm text-white/80 border-t border-white/20 pt-4">
-                Formel: <FormulaText text="f_k = K · f_b^{0.7} · f_m^{0.3}" /> (K = {results.K})
+                Formel: <FormulaText text="f_k = K · f_b^{0.7} · f_m^{0.3}" /> (K = {formatDeWert(results.K)})
               </div>
             </div>
 
@@ -676,7 +677,7 @@ export default function Mauerwerk() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-home-grau text-sm mb-1"><FormulaText text="Schlankheit h_{ef}/t" /></div>
-                  <div className="text-xl font-bold text-text-main">{results.slenderness.toFixed(1)}</div>
+                  <div className="text-xl font-bold text-text-main">{formatDeZahl(results.slenderness, 1)}</div>
                 </div>
                 <div>
                   <div className="text-home-grau text-sm mb-1 flex items-center gap-1">
@@ -684,13 +685,13 @@ export default function Mauerwerk() {
                     <InfoTooltip text="Vereinfachte Berechnung des Abminderungsfaktors für Knicken in der Wandmitte (Φ_m). Die tatsächliche Knicklänge h_ef hängt von den Halterungen am Wandkopf und -fuß ab." />
                   </div>
                   <div className={`text-xl font-bold ${results.phi < 0.2 ? 'text-shiraz' : 'text-text-main'}`}>
-                    {results.phi.toFixed(2)}
+                    {formatDeZahl(results.phi, 2)}
                   </div>
                 </div>
               </div>
               <div className="bg-shiraz/5 p-4 rounded-lg border border-shiraz/20">
                 <div className="text-shiraz text-sm font-bold mb-1"><FormulaText text="Max. Normalkraft N_{Rd}" /></div>
-                <div className="text-3xl font-bold text-shiraz">{results.NRd.toFixed(0)} kN/m</div>
+                <div className="text-3xl font-bold text-shiraz">{formatDeZahl(results.NRd, 0)} kN/m</div>
               </div>
             </div>
 
@@ -699,16 +700,16 @@ export default function Mauerwerk() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-home-grau text-sm mb-1"><FormulaText text="Haftscherfestigkeit f_{vk0}" /></div>
-                  <div className="text-xl font-bold text-text-main">{results.fvk0.toFixed(2)} MPa</div>
+                  <div className="text-xl font-bold text-text-main">{formatDeZahl(results.fvk0, 2)} MPa</div>
                 </div>
                 <div>
                   <div className="text-home-grau text-sm mb-1"><FormulaText text="Charakt. Schubfestigkeit f_{vk}" /></div>
-                  <div className="text-xl font-bold text-text-main">{results.fvk.toFixed(2)} MPa</div>
+                  <div className="text-xl font-bold text-text-main">{formatDeZahl(results.fvk, 2)} MPa</div>
                 </div>
               </div>
               <div className="bg-shiraz/5 p-4 rounded-lg border border-shiraz/20">
                 <div className="text-shiraz text-sm font-bold mb-1"><FormulaText text="Bemessungswert f_{vd}" /></div>
-                <div className="text-3xl font-bold text-shiraz">{results.fvd.toFixed(2)} MPa</div>
+                <div className="text-3xl font-bold text-shiraz">{formatDeZahl(results.fvd, 2)} MPa</div>
               </div>
               <div className="text-xs text-home-grau mt-4 mb-4">
                 Formel: <FormulaText text="f_{vk} = f_{vk0} + 0.4 · σ_d" /> (vereinfacht)
@@ -795,11 +796,11 @@ export default function Mauerwerk() {
               </h4>
               <div className="flex justify-between text-sm mb-1">
                 <span className="text-text-main/70">Erforderlich (min):</span>
-                <span className="font-bold">{results.minOverlap.toFixed(0)} mm</span>
+                <span className="font-bold">{formatDeZahl(results.minOverlap, 0)} mm</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-text-main/70">Vorhanden (ca.):</span>
-                <span className="font-bold">{results.actualOverlap.toFixed(0)} mm</span>
+                <span className="font-bold">{formatDeZahl(results.actualOverlap, 0)} mm</span>
               </div>
               {!results.overlapValid && (
                 <div className="text-xs text-shiraz mt-2 font-medium">

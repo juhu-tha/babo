@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Calculator, 
@@ -247,7 +248,7 @@ export function KlebstoffBerater() {
                     <option key={key} value={key}>{val.name}</option>
                   ))}
                 </select>
-                <span className="text-[10px] text-slate-400 font-mono">α: {SUBSTRATES[subA].alpha} × 10⁻⁶/K</span>
+                <span className="text-[10px] text-slate-400 font-mono">α: {formatDeWert(SUBSTRATES[subA].alpha)} × 10⁻⁶/K</span>
               </div>
 
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col gap-1.5">
@@ -261,7 +262,7 @@ export function KlebstoffBerater() {
                     <option key={key} value={key}>{val.name}</option>
                   ))}
                 </select>
-                <span className="text-[10px] text-slate-400 font-mono">α: {SUBSTRATES[subB].alpha} × 10⁻⁶/K</span>
+                <span className="text-[10px] text-slate-400 font-mono">α: {formatDeWert(SUBSTRATES[subB].alpha)} × 10⁻⁶/K</span>
               </div>
             </div>
 
@@ -269,7 +270,7 @@ export function KlebstoffBerater() {
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-2">
               <div className="flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-wider">
                 <span>Bauteillänge / Fugenabstand L</span>
-                <span className="font-mono text-xs text-shiraz">{componentLength.toFixed(1)} Meter</span>
+                <span className="font-mono text-xs text-shiraz">{formatDeZahl(componentLength, 1)} Meter</span>
               </div>
               <input
                 type="range"
@@ -287,7 +288,7 @@ export function KlebstoffBerater() {
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-2">
               <div className="flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-wider">
                 <span>Temperaturspanne ΔT</span>
-                <span className="font-mono text-xs text-shiraz">{tempDelta} K (°C)</span>
+                <span className="font-mono text-xs text-shiraz">{formatDeWert(tempDelta)} K (°C)</span>
               </div>
               <input
                 type="range"
@@ -312,7 +313,7 @@ export function KlebstoffBerater() {
                 className="w-full text-xs font-bold p-2 border border-slate-200 rounded focus:ring-1 focus:ring-shiraz text-slate-700 bg-white"
               >
                 {Object.entries(SEALANTS).map(([key, val]) => (
-                  <option key={key} value={key}>{val.name} ({val.zgv}% ZGV)</option>
+                  <option key={key} value={key}>{val.name} ({formatDeWert(val.zgv)}% ZGV)</option>
                 ))}
               </select>
               <p className="text-[11px] text-slate-500 italic leading-snug">
@@ -366,18 +367,18 @@ export function KlebstoffBerater() {
                   {/* Dichtstoff (Hundeknochen / Bogenprofil) */}
                   <div className="absolute inset-x-2 top-0 bottom-4 bg-sky-200 border-b border-sky-400 rounded-b-[40%] flex flex-col items-center justify-center z-10 opacity-90 shadow-inner">
                     <span className="text-[10px] font-black text-sky-950 leading-none">Dichtstoff</span>
-                    <span className="text-[9px] font-mono font-bold text-sky-800 mt-1">t = {calcResults.calculatedDepth} mm</span>
+                    <span className="text-[9px] font-mono font-bold text-sky-800 mt-1">t = {formatDeWert(calcResults.calculatedDepth)} mm</span>
                   </div>
 
                   {/* Hinterfüllschnur PE */}
                   <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-slate-300 border-2 border-slate-400 shadow-xs flex items-center justify-center z-0">
-                    <span className="text-[8px] font-bold text-slate-600 text-center font-mono leading-none">PE<br />Ø{calcResults.recommendedRod}</span>
+                    <span className="text-[8px] font-bold text-slate-600 text-center font-mono leading-none">PE<br />Ø{formatDeWert(calcResults.recommendedRod)}</span>
                   </div>
 
                   {/* Dimension marker */}
                   <div className="absolute inset-x-0 bottom-0 flex justify-between px-2 text-[9px] font-mono font-bold text-slate-500 border-t border-dashed border-slate-300 bg-white/40 z-20">
                     <span>Fugen-Nennbreite b =</span>
-                    <span>{calcResults.calculatedWidth} mm</span>
+                    <span>{formatDeWert(calcResults.calculatedWidth)} mm</span>
                   </div>
 
                 </div>
@@ -403,7 +404,7 @@ export function KlebstoffBerater() {
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
                 <span className="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider block">Thermisches Delta (ΔL)</span>
                 <div className="my-1.5 flex items-baseline gap-1">
-                  <span className="text-xl font-mono font-bold text-slate-800">{calcResults.deltaL.toFixed(2)}</span>
+                  <span className="text-xl font-mono font-bold text-slate-800">{formatDeZahl(calcResults.deltaL, 2)}</span>
                   <span className="text-[9.5px] text-slate-500 font-bold font-mono">mm</span>
                 </div>
                 <span className="text-[9.5px] text-slate-500 leading-tight">Rein physikalische Ausdehnung der Bauteile.</span>
@@ -412,7 +413,7 @@ export function KlebstoffBerater() {
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
                 <span className="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider block">Dehnbestimmte Breite</span>
                 <div className="my-1.5 flex items-baseline gap-1">
-                  <span className="text-xl font-mono font-bold text-shiraz">{calcResults.wFunc.toFixed(1)}</span>
+                  <span className="text-xl font-mono font-bold text-shiraz">{formatDeZahl(calcResults.wFunc, 1)}</span>
                   <span className="text-[9.5px] text-slate-500 font-bold font-mono">mm</span>
                 </div>
                 <span className="text-[9.5px] text-slate-500 leading-tight">Breite ohne Einbautoleranz. (ZGV berücksichtigt)</span>
@@ -421,7 +422,7 @@ export function KlebstoffBerater() {
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
                 <span className="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider block">Nennmaß der Fuge (b)</span>
                 <div className="my-1.5 flex items-baseline gap-0.5">
-                  <span className="text-xl font-mono font-black text-emerald-700">~{calcResults.calculatedWidth}</span>
+                  <span className="text-xl font-mono font-black text-emerald-700">~{formatDeWert(calcResults.calculatedWidth)}</span>
                   <span className="text-[9.5px] text-emerald-800 font-bold font-mono">mm</span>
                 </div>
                 <span className="text-[9.5px] text-slate-500 leading-tight">Zu planendes Nennmaß (DIN 18540, gerundet).</span>

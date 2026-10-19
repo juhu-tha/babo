@@ -1,3 +1,4 @@
+import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Mountain, Layers, AlignVerticalSpaceAround, Activity, LayoutGrid, Calculator, ThermometerSnowflake, Ruler, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -73,7 +74,7 @@ export default function Erdbau() {
       gesamtDicke: d, 
       dickeAsphalt, 
       dickeFSS: Math.max(15, dickeFSS),
-      regelausfuehrung: `Die RStO fordert hier eine frostsichere Gesamtkonstruktion von mindestens ${d} cm.`
+      regelausfuehrung: `Die RStO fordert hier eine frostsichere Gesamtkonstruktion von mindestens ${formatDeWert(d)} cm.`
     };
   }, [frostzone, bauklasse, bodengruppe, wasserverhaeltnisse]);
 
@@ -195,7 +196,7 @@ export default function Erdbau() {
                     <li><strong>Frostempfindlichkeitsklassen (F1 - F3):</strong>
                       <ul className="list-disc pl-5 mt-1">
                         <li>F1: Nicht frostempfindlich (z.B. reiner Kies/Sand)</li>
-                        <li>F2: Gering bis mittel frostempfindlich (gemischtkörnige Böden mit 5-15% Feinanteil &lt; 0.063mm)</li>
+                        <li>F2: Gering bis mittel frostempfindlich (gemischtkörnige Böden mit 5-15% Feinanteil &lt; 0,063mm)</li>
                         <li>F3: Sehr frostempfindlich (Schluff, Ton, Böden mit hohem Feinanteil &gt; 15%)</li>
                       </ul>
                     </li>
@@ -217,10 +218,10 @@ export default function Erdbau() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-off-white p-6 rounded-xl border border-home-grau/30 flex flex-col gap-5">
                 <h3 className="text-xl font-bold text-text-main flex items-center gap-2">Kornzusammensetzung</h3>
-                <Slider label="Feinanteil < 0.063 mm" min={0} max={100} step={1} value={feinanteil} unit="%" info="Entscheidet, ob der Boden rollig (< 5%), gemischtkörnig (5-15%) oder bindig (> 15-40%) is." onChange={(e) => setFeinanteil(Number(e.target.value))} />
+                <Slider label="Feinanteil < 0,063 mm" min={0} max={100} step={1} value={feinanteil} unit="%" info="Entscheidet, ob der Boden rollig (< 5%), gemischtkörnig (5-15%) oder bindig (> 15-40%) is." onChange={(e) => setFeinanteil(Number(e.target.value))} />
                 {feinanteil < 80 && (
                   <div className="bg-white p-4 rounded border border-home-grau/30 space-y-3">
-                    <div className="text-xs font-bold text-home-grau uppercase mb-2">Aufteilung Grobkorn (über 0.063 mm)</div>
+                    <div className="text-xs font-bold text-home-grau uppercase mb-2">Aufteilung Grobkorn (über 0,063 mm)</div>
                     <Slider label="Kiesanteil" min={0} max={100} step={5} value={kiesanteil} unit="" onChange={(e) => {
                       const val = Number(e.target.value);
                       setKiesanteil(val);
@@ -337,7 +338,7 @@ export default function Erdbau() {
                     style={{ height: `${(frostschutzDicke.dickeAsphalt / frostschutzDicke.gesamtDicke) * 100}%`, minHeight: '60px' }}
                   >
                     Deck- und Tragschichten (Asphalt)
-                    <div className="absolute right-4 text-xs bg-black/30 px-2 py-1 rounded">~ {frostschutzDicke.dickeAsphalt} cm</div>
+                    <div className="absolute right-4 text-xs bg-black/30 px-2 py-1 rounded">~ {formatDeWert(frostschutzDicke.dickeAsphalt)} cm</div>
                   </div>
                   
                   {/* Ungebundene FSS */}
@@ -346,7 +347,7 @@ export default function Erdbau() {
                     style={{ height: `${(frostschutzDicke.dickeFSS / frostschutzDicke.gesamtDicke) * 100}%`, minHeight: '80px' }}
                   >
                     Frostschutzschicht (ungebunden, Kies/Schotter)
-                    <div className="absolute right-4 text-xs bg-amber-900/10 px-2 py-1 rounded">{frostschutzDicke.dickeFSS} cm</div>
+                    <div className="absolute right-4 text-xs bg-amber-900/10 px-2 py-1 rounded">{formatDeWert(frostschutzDicke.dickeFSS)} cm</div>
                   </div>
 
                   {/* Planum */}
@@ -354,7 +355,7 @@ export default function Erdbau() {
                     <div className="font-bold text-shiraz flex items-center justify-center gap-2">
                       Planum (Anstehender Boden {bodengruppe})
                     </div>
-                    <div className="text-xs text-text-main/60">Gesamtdicke Frostsicherer Aufbau: {frostschutzDicke.gesamtDicke} cm</div>
+                    <div className="text-xs text-text-main/60">Gesamtdicke Frostsicherer Aufbau: {formatDeWert(frostschutzDicke.gesamtDicke)} cm</div>
                   </div>
                 </div>
                 

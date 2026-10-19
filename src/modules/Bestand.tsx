@@ -3,7 +3,7 @@ import { GMODG_ANLAGE7, FX, uRetrofit, dRequired } from '@/src/utils/bestandKern
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Slider } from '@/src/components/ui/Slider';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
 import {
@@ -639,7 +639,7 @@ export default function Bestand() {
                         ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                         : 'bg-rose-50 text-rose-800 border-rose-300'
                     }`}>
-                      {sanierungResults.gegCompliant ? '✓ GModG-konform (Anlage 7)' : `⚠ Grenzwert überschritten – ca. ${sanierungResults.dReqMm} mm mehr Dämmung`}
+                      {sanierungResults.gegCompliant ? '✓ GModG-konform (Anlage 7)' : `⚠ Grenzwert überschritten – ca. ${formatDeWert(sanierungResults.dReqMm)} mm mehr Dämmung`}
                     </span>
                   </div>
 
@@ -737,7 +737,7 @@ export default function Bestand() {
                       <BlockMath math={`R_{\\text{alt}} = \\frac{1}{U_{\\text{alt}}} = \\frac{1}{${formatDeZahl(sanierungResults.originalU, 2)}} \\approx ${formatDeZahl(1 / sanierungResults.originalU, 3)} \\text{ m}^2\\text{K/W}`} />
 
                       <p>
-                        2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = {thickness} mm = {formatDeZahl(thickness / 1000, 3)} m):
+                        2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = {formatDeWert(thickness)} mm = {formatDeZahl(thickness / 1000, 3)} m):
                       </p>
                       <BlockMath math={`R_{\\text{Dämm}} = \\frac{d}{\\lambda_D} = \\frac{${formatDeZahl(thickness / 1000, 3)}}{${formatDeZahl(lambda, 3)}} \\approx ${formatDeZahl((thickness / 1000) / lambda, 3)} \\text{ m}^2\\text{K/W}`} />
 

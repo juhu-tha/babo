@@ -1,3 +1,4 @@
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Droplets } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -71,7 +72,7 @@ export default function Nachbehandlung() {
             Die Nachbehandlung schützt den jungen Beton vor zu schnellem Austrocknen. 
             Wenn Wasser schneller von der Oberfläche verdunstet, als es aus dem Inneren nachgeliefert wird (Bluten), 
             entstehen kapillare Zugspannungen und es kommt zu <strong>Frühschwindrissen</strong> (plastisches Schwinden).
-            Eine Verdunstungsrate &gt; 1.0 kg/m²h gilt als kritisch.
+            Eine Verdunstungsrate &gt; 1,0 kg/m²h gilt als kritisch.
           </p>
         </div>
 
@@ -112,7 +113,7 @@ export default function Nachbehandlung() {
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-text-main/80">Verdunstungsrate:</span>
             <span className={`text-xl font-bold ${isCritical ? 'text-torch-red' : 'text-emerald-600'}`}>
-              {evaporationRate.toFixed(2)} kg/m²h
+              {formatDeZahl(evaporationRate, 2)} kg/m²h
             </span>
           </div>
           <p className="text-xs text-text-main/70">
@@ -140,10 +141,10 @@ export default function Nachbehandlung() {
                 value={festigkeitsEntwicklung}
                 onChange={(e) => setFestigkeitsEntwicklung(e.target.value as any)}
               >
-                <option value="schnell">Schnell (r ≥ 0.50)</option>
-                <option value="mittel">Mittel (r ≥ 0.30)</option>
-                <option value="langsam">Langsam (r ≥ 0.15)</option>
-                <option value="sehr_langsam">Sehr langsam (r &lt; 0.15)</option>
+                <option value="schnell">Schnell (r ≥ 0,50)</option>
+                <option value="mittel">Mittel (r ≥ 0,30)</option>
+                <option value="langsam">Langsam (r ≥ 0,15)</option>
+                <option value="sehr_langsam">Sehr langsam (r &lt; 0,15)</option>
               </select>
             </div>
 
@@ -207,22 +208,22 @@ export default function Nachbehandlung() {
                 </thead>
                 <tbody>
                   <tr className="border-b border-home-grau/10">
-                    <td className="py-2 pr-1">Schnell (r ≥ 0.5)</td>
+                    <td className="py-2 pr-1">Schnell (r ≥ 0,5)</td>
                     <td className="py-2 px-1 text-center">1 Tag</td>
                     <td className="py-2 pl-1 text-center font-bold text-shiraz">2 Tage</td>
                   </tr>
                   <tr className="border-b border-home-grau/10">
-                    <td className="py-2 pr-1">Mittel (r ≥ 0.3)</td>
+                    <td className="py-2 pr-1">Mittel (r ≥ 0,3)</td>
                     <td className="py-2 px-1 text-center">1 Tag</td>
                     <td className="py-2 pl-1 text-center font-bold text-shiraz">3 Tage</td>
                   </tr>
                   <tr className="border-b border-home-grau/10">
-                    <td className="py-2 pr-1">Langsam (r ≥ 0.15)</td>
+                    <td className="py-2 pr-1">Langsam (r ≥ 0,15)</td>
                     <td className="py-2 px-1 text-center">2 Tage</td>
                     <td className="py-2 pl-1 text-center font-bold text-shiraz">5 Tage</td>
                   </tr>
                   <tr>
-                    <td className="py-2 pr-1">Sehr langsam (r &lt; 0.15)</td>
+                    <td className="py-2 pr-1">Sehr langsam (r &lt; 0,15)</td>
                     <td className="py-2 px-1 text-center">3 Tage</td>
                     <td className="py-2 pl-1 text-center font-bold text-shiraz">10 Tage</td>
                   </tr>
@@ -298,8 +299,8 @@ export default function Nachbehandlung() {
           ]}
           formeln={[
             {
-              formel: 'E = 5 \\cdot \\left[ (T_c + 18)^{2.5} - r \\cdot (T_a + 18)^{2.5} \\right] \\cdot (V + 4) \\cdot 10^{-6}',
-              erklaerung: 'Verdunstungsrate E [kg/(m²·h)] nach ACI 305R: Tc = Betontemperatur [°C], Ta = Lufttemperatur [°C], r = relative Feuchte [-], V = Windgeschwindigkeit [km/h]. Bei E > 1.0 kg/(m²·h) droht akute Frühschwindrissgefahr.',
+              formel: 'E = 5 \\cdot \\left[ (T_c + 18)^{2{,}5} - r \\cdot (T_a + 18)^{2{,}5} \\right] \\cdot (V + 4) \\cdot 10^{-6}',
+              erklaerung: 'Verdunstungsrate E [kg/(m²·h)] nach ACI 305R: Tc = Betontemperatur [°C], Ta = Lufttemperatur [°C], r = relative Feuchte [-], V = Windgeschwindigkeit [km/h]. Bei E > 1,0 kg/(m²·h) droht akute Frühschwindrissgefahr.',
               quelle: 'ACI 305R-10'
             },
             {
@@ -308,7 +309,7 @@ export default function Nachbehandlung() {
               quelle: 'DIN EN 13670 Tab. 4'
             },
             {
-              formel: 'f_{ck,t} \\ge 0.50 \\cdot f_{ck}',
+              formel: 'f_{ck,t} \\ge 0{,}50 \\cdot f_{ck}',
               erklaerung: 'Ziel-Kriterium der Nachbehandlung: Die Betonrandzone muss mindestens 50 % der charakteristischen Zylinderdruckfestigkeit erreicht haben, um ausreichende Dauerhaftigkeit und Dichtigkeit zu gewährleisten.',
               quelle: 'DIN EN 13670 / DIN 1045-3'
             }

@@ -16,7 +16,7 @@ import {
   FileText
 } from 'lucide-react';
 import { SAMPLING_PRESETS, METHOD_DIAGNOSE_DETAILS } from './diagnoseData';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 
 export default function ProbenahmePlaner() {
@@ -185,7 +185,7 @@ export default function ProbenahmePlaner() {
                     {p.name.split(' (')[0]}
                   </span>
                   <span className={`text-[10px] mt-2 block font-mono ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
-                    {p.flaeche} m² • {p.bauteilTyp}
+                    {formatDeWert(p.flaeche)} m² • {p.bauteilTyp}
                   </span>
                 </button>
               );

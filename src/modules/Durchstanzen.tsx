@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -197,9 +198,9 @@ export default function Durchstanzen() {
                   value={beta}
                   onChange={(e) => setBeta(Number(e.target.value))}
                 >
-                  <option value={EC2_NA_DE.betaInnen}>Innenstütze (β = {EC2_NA_DE.betaInnen.toFixed(2)})</option>
-                  <option value={EC2_NA_DE.betaRand}>Randstütze (β = {EC2_NA_DE.betaRand.toFixed(2)})</option>
-                  <option value={EC2_NA_DE.betaEcke}>Eckstütze (β = {EC2_NA_DE.betaEcke.toFixed(2)})</option>
+                  <option value={EC2_NA_DE.betaInnen}>Innenstütze (β = {formatDeZahl(EC2_NA_DE.betaInnen, 2)})</option>
+                  <option value={EC2_NA_DE.betaRand}>Randstütze (β = {formatDeZahl(EC2_NA_DE.betaRand, 2)})</option>
+                  <option value={EC2_NA_DE.betaEcke}>Eckstütze (β = {formatDeZahl(EC2_NA_DE.betaEcke, 2)})</option>
                 </select>
               </div>
             </div>
@@ -236,13 +237,13 @@ export default function Durchstanzen() {
                 {/* Nachweis am kritischen Rundschnitt */}
                 <div className={`p-4 rounded-lg border ${results.needsReinforcement ? 'bg-amber-50 border-amber-200' : 'bg-emerald-50 border-emerald-200'}`}>
                   <h4 className="font-bold text-sm mb-2 flex items-center gap-2">
-                    1. Kritischer Rundschnitt <FormulaText text={`u_1 = ${(results.u1 / 1000).toFixed(2)}\\text{ m}`} />
+                    1. Kritischer Rundschnitt <FormulaText text={`u_1 = ${formatDeTeX((results.u1 / 1000), 2)}\\text{ m}`} />
                   </h4>
                   <div className="grid grid-cols-2 gap-2 text-sm mb-2">
                     <div>Einwirkend <FormulaText text="v_{Ed}" />:</div>
-                    <div className="font-bold">{results.vEd_stress.toFixed(3)} MPa</div>
+                    <div className="font-bold">{formatDeZahl(results.vEd_stress, 3)} MPa</div>
                     <div>Widerstand <FormulaText text="v_{Rd,c}" />:</div>
-                    <div className="font-bold">{results.vRdc.toFixed(3)} MPa</div>
+                    <div className="font-bold">{formatDeZahl(results.vRdc, 3)} MPa</div>
                   </div>
                   <div className={`text-sm font-bold mt-2 ${results.needsReinforcement ? 'text-amber-700' : 'text-emerald-700'}`}>
                     {results.needsReinforcement ? (
@@ -251,7 +252,7 @@ export default function Durchstanzen() {
                         {!results.isOverloaded && (
                           <div className="font-normal text-amber-900/80 bg-amber-100 p-2 rounded-md border border-amber-200">
                             Geschätzte erf. Bewehrungsfläche je 1. und 2. Rundschnitt:<br/> 
-                            <FormulaText text={`A_{sw,req} \\approx ${results.asw_req_ring.toFixed(0)} mm^2`} />
+                            <FormulaText text={`A_{sw,req} \\approx ${formatDeTeX(results.asw_req_ring, 0)} mm^2`} />
                           </div>
                         )}
                       </>
@@ -268,9 +269,9 @@ export default function Durchstanzen() {
                   </h4>
                   <div className="grid grid-cols-2 gap-2 text-sm mb-2">
                     <div>Einwirkend <FormulaText text="v_{Ed,u1}" />:</div>
-                    <div className="font-bold">{results.vEd_stress.toFixed(3)} MPa</div>
+                    <div className="font-bold">{formatDeZahl(results.vEd_stress, 3)} MPa</div>
                     <div>Max. Widerstand <FormulaText text="v_{Rd,max}" />:</div>
-                    <div className="font-bold">{results.vRdMax.toFixed(3)} MPa</div>
+                    <div className="font-bold">{formatDeZahl(results.vRdMax, 3)} MPa</div>
                   </div>
                   <div className={`text-sm font-bold ${results.isOverloaded ? 'text-red-700' : 'text-emerald-700'}`}>
                     {results.isOverloaded ? 

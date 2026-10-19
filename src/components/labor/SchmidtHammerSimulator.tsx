@@ -1,3 +1,4 @@
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, Target, Crosshair, AlertTriangle } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -152,17 +153,17 @@ export default function SchmidtHammerSimulator() {
         'Karbonatisierungszustand': isCarbonated ? 'Ja (Korrekturfaktor 0,85 angewandt)' : 'Nein'
       },
       metrics: {
-        'Messwert-Median': stats.median.toFixed(1),
-        'Mittelwert R': stats.mean.toFixed(1),
-        'Standardabweichung s': stats.stdDev.toFixed(2),
-        'Korrigierter Rückprallwert R_korr': stats.correctedR.toFixed(1),
-        'Geschätzte In-situ Druckfestigkeit fck,is (MPa)': stats.estFck.toFixed(1),
+        'Messwert-Median': formatDeZahl(stats.median, 1),
+        'Mittelwert R': formatDeZahl(stats.mean, 1),
+        'Standardabweichung s': formatDeZahl(stats.stdDev, 2),
+        'Korrigierter Rückprallwert R_korr': formatDeZahl(stats.correctedR, 1),
+        'Geschätzte In-situ Druckfestigkeit fck,is (MPa)': formatDeZahl(stats.estFck, 1),
         'Erkannte Ausreißer (>20%)': `${stats.outliers.length}`
       },
       status: 'Gültig',
       validationNotes: [
         `Normgerechte 9-Punkte-Messreihe nach DIN EN 12504-2.`,
-        `Geschätzte In-situ Festigkeit fck,is = ${stats.estFck.toFixed(1)} MPa korreliert mit Klasse ${targetClass}.`
+        `Geschätzte In-situ Festigkeit fck,is = ${formatDeZahl(stats.estFck, 1)} MPa korreliert mit Klasse ${targetClass}.`
       ],
       integrityHash: 'SCHMIDT-ZFP-CALIBRATED',
       dataPointsCount: stats.count
@@ -321,7 +322,7 @@ export default function SchmidtHammerSimulator() {
                         <span className="text-[10px] text-stone-400 absolute top-1 left-1.5">#{idx + 1}</span>
                         {isTested ? (
                           <>
-                            <span className="text-lg">{val}</span>
+                            <span className="text-lg">{formatDeWert(val)}</span>
                             <span className="text-[9px] uppercase font-sans">
                               {isOutlier ? 'Ausreißer' : 'R-Wert'}
                             </span>
@@ -382,19 +383,19 @@ export default function SchmidtHammerSimulator() {
                 <div className="grid grid-cols-2 gap-2 my-2 text-xs">
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-text-main/60 block text-[10px] uppercase font-bold">Median R</span>
-                    <strong className="text-base text-text-main font-mono">{stats.median.toFixed(1)}</strong>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl(stats.median, 1)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-text-main/60 block text-[10px] uppercase font-bold">Mittelwert R</span>
-                    <strong className="text-base text-shiraz font-mono">{stats.mean.toFixed(1)}</strong>
+                    <strong className="text-base text-shiraz font-mono">{formatDeZahl(stats.mean, 1)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-text-main/60 block text-[10px] uppercase font-bold">Streuung s</span>
-                    <strong className="text-base text-text-main font-mono">{stats.stdDev.toFixed(2)}</strong>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl(stats.stdDev, 2)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-text-main/60 block text-[10px] uppercase font-bold">Korrigierter Rkorr</span>
-                    <strong className="text-base text-emerald-700 font-mono">{stats.correctedR.toFixed(1)}</strong>
+                    <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(stats.correctedR, 1)}</strong>
                   </div>
                 </div>
 
@@ -403,7 +404,7 @@ export default function SchmidtHammerSimulator() {
                   <div>
                     <span className="text-[10px] uppercase font-bold text-emerald-900 block">Geschätzte Druckfestigkeit fck,is</span>
                     <span className="text-xl font-bold font-mono text-emerald-800">
-                      {stats.count >= 9 ? `${stats.estFck.toFixed(1)} MPa` : '— (9 Punkte nötig)'}
+                      {stats.count >= 9 ? `${formatDeZahl(stats.estFck, 1)} MPa` : '— (9 Punkte nötig)'}
                     </span>
                   </div>
                   <span className="text-xs font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-1 rounded-lg">

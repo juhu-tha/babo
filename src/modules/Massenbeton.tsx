@@ -112,7 +112,7 @@ export default function Massenbeton() {
         ]}
         formeln={[
           {
-            formel: '\\Delta T_{\\text{ad}} = \\frac{z \\cdot Q_{H,7d}}{c_c \\cdot \\rho_c} \\approx \\frac{z \\cdot 250\\,\\text{kJ/kg}}{1.0\\,\\text{kJ/(kg}\\cdot\\text{K)} \\cdot 2400\\,\\text{kg/m}^3}',
+            formel: '\\Delta T_{\\text{ad}} = \\frac{z \\cdot Q_{H,7d}}{c_c \\cdot \\rho_c} \\approx \\frac{z \\cdot 250\\,\\text{kJ/kg}}{1{,}0\\,\\text{kJ/(kg}\\cdot\\text{K)} \\cdot 2400\\,\\text{kg/m}^3}',
             erklaerung: 'Adiabater Temperaturanstieg ΔT_ad infolge Zementhydratation im Bauteilkern ohne äußere Wärmeabfuhr.',
             quelle: 'DAfStb-Richtlinie Massige Bauteile'
           },
