@@ -71,12 +71,12 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
     leadSummary: 'Vom destruktiven Großversuch im späten 19. Jahrhundert entwickelte sich die Baustoffprüfung über normierte Laborprüfmaschinen und statistische Güteüberwachung hin zur modernen, nanostrukturellen In-situ-Diagnostik und KI-unterstützten Sensorüberwachung.',
     milestones: [
       {
-        era: '1880–1900',
+        era: '1870–1900',
         title: 'Gründung der ersten Materialprüfungsanstalten (MPA)',
         category: 'Technologie',
-        description: 'Johann Bauschinger (München) und Adolf Martens (Berlin) begründen die systematische Baustoffprüfung. Gründung staatlicher Prüfanstalten zur Verhinderung katastrophaler Baustoffversagen bei Brücken- und Kesselexplosionen.',
+        description: 'Johann Bauschinger (München) und Adolf Martens (Berlin) begründen die systematische Baustoffprüfung. Staatliche Prüfanstalten sollen die Qualität von Eisen, Stahl und Zement sichern, nachdem Brückeneinstürze und Kesselexplosionen die Folgen unzureichender Werkstoffe gezeigt hatten.',
         impact: 'Einführung genormter Prüfkörper, standardisierter Zug- und Druckprüfmaschinen und erster einheitlicher Prüfzeugnisse.',
-        keyReference: 'MPA-Gründungserlasse / Bauschinger-Spiegelfeinzeiger'
+        keyReference: 'Bauschinger (TH München), Martens (Versuchsanstalt Berlin)'
       },
       {
         era: '1948',
@@ -91,24 +91,24 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Einzug der Mikroanalytik: REM-EDX und Röntgendiffraktometrie (XRD)',
         category: 'Paradigmenwechsel',
         description: 'Etablierung elektronenmikroskopischer und kristallographischer Analysen für zementgebundene Baustoffe. Exakte Identifikation schadensrelevanter Phasen wie Ettringit, Thaumasit, Friedelschem Salz oder Alkalikieselsäure-Gelen (AKR).',
-        impact: 'Schadensursachen werden nicht mehr nur makroskopisch vermutet, sondern auf Kristallgitterebene beweissicher bewiesen.',
+        impact: 'Schadensursachen werden nicht mehr nur makroskopisch vermutet, sondern auf Phasen- und Gefügeebene belegt.',
         keyReference: 'Forschungsinstitut der Zementindustrie (VDZ)'
       },
       {
         era: '2000er Jahre',
         title: 'Normative Verankerung statistischer Konformitätskontrollen',
         category: 'Normung',
-        description: 'Mit DIN EN 206 und DIN ISO 12491 wird die Qualitätsbeurteilung von Beton- und Baustoffserien verbindlich an Normalverteilungs-Statistik gekoppelt (5%-Quantilwert f_ck = f_cm - 1,64 · s).',
-        impact: 'Abschied von willkürlichen Mittelwerten: Statistische Ausreißertests, gleitende Standardabweichungen und Güteklassen werden Pflicht in Werks- und Baustellenlaboren.',
-        keyReference: 'DIN EN 206 / DIN ISO 12491'
+        description: 'Mit DIN EN 206-1 (2001) wird die Konformitätskontrolle der Betondruckfestigkeit europaweit einheitlich an statistische Kriterien gekoppelt (5-%-Quantil f_ck, Mittelwertkriterium mit Standardabweichung σ, Einzelwertkriterium). ISO 12491 (1997) beschreibt die zugehörigen statistischen Verfahren.',
+        impact: 'Konformitätskriterien mit Mittelwert, Standardabweichung und Einzelwerten werden fester Bestandteil der werkseigenen Produktionskontrolle.',
+        keyReference: 'DIN EN 206 / ISO 12491'
       },
       {
         era: '2020er–heute (2024–2026)',
         title: 'Faseroptik, In-situ-Sensorik & KI-gestützte Bauwerksdiagnostik',
         category: 'Technologie',
-        description: 'Einbetonierte faseroptische Sensoren (FOS) erfassen Dehnungen und Temperaturprofile kontinuierlich über Kilometerlängen. Drohnengestützte Bildverarbeitung lokalisiert Risse submillimetergenau und überführt Schadensmuster automatisiert in BIM-Modelle.',
-        impact: 'Kontinuierliches Structural Health Monitoring (SHM) ersetzt rein stichprobenartige turnusmäßige Bauwerksprüfungen.',
-        keyReference: 'RILEM TC 280-CBM / VDI 4551'
+        description: 'Einbetonierte faseroptische Sensoren erfassen Dehnungs- und Temperaturprofile verteilt über große Längen. Drohnengestützte Bildverarbeitung lokalisiert Risse und überführt Schadensbilder zunehmend in digitale Bauwerksmodelle.',
+        impact: 'Kontinuierliches Structural Health Monitoring (SHM) ergänzt die turnusmäßigen Bauwerksprüfungen (z. B. nach DIN 1076).',
+        keyReference: 'Forschungs- und Pilotanwendungen (u. a. BAM, DGZfP)'
       }
     ],
     keyTakeaway: 'Die Labor- und Prüftechnik wandelte sich von der reinen Zerstörung von Probekörpern hin zu mikroskopischer Forensik und kontinuierlicher, zerstörungsfreier Sensorüberwachung von Bauwerken im Betrieb.'
