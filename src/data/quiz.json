@@ -2141,5 +2141,155 @@
       "targetModuleLabel": "Mechanische Prüfungen"
     },
     "verified": false
+  },
+  {
+    "id": "q_lab_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "labor",
+    "moduleTitle": "Virtuelle Versuche",
+    "topic": "Haftzugprüfung: Bruchbild",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1542",
+    "question": "Bei einer Haftzugprüfung reißt der Prüfstempel in der Klebefuge ab, bevor der Anforderungswert erreicht ist. Wie ist das Ergebnis zu werten?",
+    "options": [
+      "Als gültiger Kleinstwert der Serie",
+      "Als Nachweis mangelhafter Untergrundvorbereitung",
+      "Als ungültiger Versuch, der mit neu geklebtem Stempel zu wiederholen ist",
+      "Als Kohäsionsbruch im Beton (Bruchbild A)"
+    ],
+    "correctIdx": 2,
+    "explanation": "Ein Bruch in der Klebefuge (Bruchbild Y) sagt nichts über den Verbund aus. Liegt der Wert unter der Anforderung, ist der Versuch ungültig und zu wiederholen.",
+    "gapAnalysis": {
+      "topic": "Haftzugprüfung: Bruchbild",
+      "misconception": "Jeder gemessene Wert wird als Haftzugfestigkeit des Systems interpretiert.",
+      "coreRule": "Bruchbild immer mit angeben: A = Untergrund, A/B = Verbundfuge, Y = Klebstoff.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haftzugprüfung: Bruchbild“ im Modul Virtuelle Versuche noch einmal durch.",
+      "targetModuleTab": "labor",
+      "targetModuleLabel": "Virtuelle Versuche"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lab_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "labor",
+    "moduleTitle": "Virtuelle Versuche",
+    "topic": "Konsistenzklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206 / DIN EN 12350-5",
+    "question": "Ein Ausbreitversuch ergibt 520 mm. Welcher Ausbreitmaßklasse entspricht das?",
+    "options": [
+      "F2",
+      "F3",
+      "F4",
+      "F5"
+    ],
+    "correctIdx": 2,
+    "explanation": "F4 umfasst 490 bis 550 mm (sehr weich). F3: 420–480 mm, F5: 560–620 mm.",
+    "gapAnalysis": {
+      "topic": "Konsistenzklassen",
+      "misconception": "Die Klassengrenzen von Ausbreitmaß und Setzmaß werden verwechselt.",
+      "coreRule": "F1 ≤ 340, F2 350–410, F3 420–480, F4 490–550, F5 560–620, F6 ≥ 630 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzklassen“ im Modul Virtuelle Versuche noch einmal durch.",
+      "targetModuleTab": "labor",
+      "targetModuleLabel": "Virtuelle Versuche"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lab_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "labor",
+    "moduleTitle": "Virtuelle Versuche",
+    "topic": "Sekanten-E-Modul",
+    "difficulty": "Klausur-Schwerpunkt",
+    "normRef": "DIN EN 12390-13",
+    "question": "Warum wird der E-Modul von Beton nach DIN EN 12390-13 erst nach mehreren Be- und Entlastungszyklen ausgewertet (stabilisierter Modul E_C,S)?",
+    "options": [
+      "Weil der Beton dabei nacherhärtet",
+      "Weil in der Erstbelastung bleibende Verformungen (Mikrorisse, Setzungen) auftreten, die den Modul verfälschen",
+      "Weil die Prüfmaschine sich erst einregeln muss",
+      "Weil die Norm drei Probekörper verlangt"
+    ],
+    "correctIdx": 1,
+    "explanation": "In der Erstbelastung entstehen bleibende Verformungen; nach einigen Zyklen verläuft die σ-ε-Linie zwischen σ_b und σ_a nahezu linear. Der Anfangsmodul E_C,0 wird zusätzlich ausgewiesen.",
+    "gapAnalysis": {
+      "topic": "Sekanten-E-Modul",
+      "misconception": "Die Zyklen werden als reine Gerätekalibrierung missverstanden.",
+      "coreRule": "σ_a = f_c/3; E = Δσ/Δε im stabilisierten Zyklus.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sekanten-E-Modul“ im Modul Virtuelle Versuche noch einmal durch.",
+      "targetModuleTab": "labor",
+      "targetModuleLabel": "Virtuelle Versuche"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lab_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "labor",
+    "moduleTitle": "Virtuelle Versuche",
+    "topic": "Spannbeton im Biegeversuch",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1",
+    "question": "Warum reißt ein vorgespannter Balken im Biegeversuch erst bei deutlich höherer Last als ein gleich großer Stahlbetonbalken?",
+    "options": [
+      "Weil Spannstahl einen höheren E-Modul hat",
+      "Weil die Vorspannung am Biegezugrand eine Druckspannung erzeugt, die zuerst abgebaut werden muss (Dekompression)",
+      "Weil Spannbeton immer eine höhere Betonfestigkeitsklasse hat",
+      "Weil die Bewehrung im Spannbeton dicker ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Rissmoment steigt auf M_r = W·(|σ_c,p| + f_ct,fl): Erst wird die Vordruckspannung abgebaut, dann muss zusätzlich die Biegezugfestigkeit überschritten werden.",
+    "gapAnalysis": {
+      "topic": "Spannbeton im Biegeversuch",
+      "misconception": "Die Wirkung der Vorspannung wird der Stahlsteifigkeit zugeschrieben.",
+      "coreRule": "Vorspannung = planmäßiger Vordruck in der Zugzone; Risse erst nach Dekompression + f_ct,fl.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spannbeton im Biegeversuch“ im Modul Virtuelle Versuche noch einmal durch.",
+      "targetModuleTab": "labor",
+      "targetModuleLabel": "Virtuelle Versuche"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lab_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "labor",
+    "moduleTitle": "Virtuelle Versuche",
+    "topic": "Bitumenkennwerte",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1426 / DIN EN 1427",
+    "question": "Was bedeutet die Sortenbezeichnung 50/70 bei Straßenbaubitumen?",
+    "options": [
+      "Erweichungspunkt 50 bis 70 °C",
+      "Nadelpenetration 50 bis 70 (in 0,1 mm) bei 25 °C",
+      "Viskosität 50 bis 70 Pa·s",
+      "Brechpunkt −50 bis −70 °C"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Sorte bezeichnet die Spanne der Nadelpenetration nach DIN EN 1426 (100 g, 5 s, 25 °C) in Zehntelmillimetern. Der Erweichungspunkt RuK liegt für 50/70 bei 46 bis 54 °C.",
+    "gapAnalysis": {
+      "topic": "Bitumenkennwerte",
+      "misconception": "Penetration und Erweichungspunkt werden verwechselt.",
+      "coreRule": "Sorte = Penetrationsspanne (1/10 mm); höhere Zahl = weicheres Bitumen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bitumenkennwerte“ im Modul Virtuelle Versuche noch einmal durch.",
+      "targetModuleTab": "labor",
+      "targetModuleLabel": "Virtuelle Versuche"
+    },
+    "verified": false
   }
 ]

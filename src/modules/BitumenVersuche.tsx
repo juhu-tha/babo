@@ -23,11 +23,12 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
 
   const getBitumenProps = (s: BitumenSorte) => {
     switch (s) {
+      // Typische Werte innerhalb der Spannen nach DIN EN 12591 bzw. DIN EN 14023 (PmB)
       case '160/220': return { pen: 190, ruk: 39 }; // Soft
       case '70/100': return { pen: 85, ruk: 46 };
       case '50/70': return { pen: 60, ruk: 50 };
       case '30/45': return { pen: 38, ruk: 56 };
-      case '20/30': return { pen: 25, ruk: 63 }; // Hard
+      case '20/30': return { pen: 25, ruk: 59 }; // Hard (DIN EN 12591: EP 55–63 °C)
       case 'PmB 25/55-55': return { pen: 40, ruk: 58 }; // Polymer modified
     }
   };
@@ -307,7 +308,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                        ) : (
                          <div>
                            <div className="text-3xl font-bold text-emerald-700">{formatDeZahl(currentProps.ruk, 1)} <span className="text-sm font-normal text-emerald-800">°C</span></div>
-                           <p className="text-sm text-emerald-800 mt-2">Die Bitumenprobe hat bei dieser Temperatur die vorgegebene Fließlänge (25,4 mm) erreicht.</p>
+                           <p className="text-sm text-emerald-800 mt-2">Bei dieser Badtemperatur ist die Kugel mit dem erweichten Bitumen um 25,0 mm bis zur Bodenplatte durchgesunken.</p>
                          </div>
                        )}
                      </div>
@@ -323,7 +324,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                    </div>
                  ) : (
                    <div className="text-sm text-home-grau text-center p-8">
-                     Drücke Start, um den Versuch durchzuführen.
+                     Starten Sie den Versuch mit „Start“.
                    </div>
                  )}
                </div>
@@ -339,22 +340,22 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
           wikipedia={[
             { title: 'Bitumen', url: 'https://de.wikipedia.org/wiki/Bitumen' },
             { title: 'Nadelpenetration', url: 'https://de.wikipedia.org/wiki/Nadelpenetration' },
-            { title: 'Erweichungspunkt RuK', url: 'https://de.wikipedia.org/wiki/Erweichungspunkt_Ring_und_Kugel' }
+            { title: 'Erweichungspunkt RuK', url: 'https://de.wikipedia.org/wiki/Erweichungspunkt_RuK' }
           ]}
           regelwerke={[
             { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12591' },
             { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1426' },
-            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1427' }
+            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1427' },
+            { title: 'DIN EN 14023 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifizierung von polymermodifizierten Bitumen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14023' }
           ]}
           literatur={[
-            'Radenberg, M. (2014): Asphalt im Straßenbau (Kirschbaum Verlag)',
-            'Velske, S.; Mentlein, H.; Eymann, P. (2013): Straßenbaupraxis (Bauwerk Verlag)',
+            'FGSV (Hrsg.): Technische Prüfvorschriften für Asphalt (TP Asphalt-StB). Köln: FGSV Verlag (Teile in jeweils gültiger Fassung)',
             'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
           ]}
           formeln={[
             {
               formel: 'I_P = \\frac{20 \\cdot T_{\\text{R\\&K}} + 500 \\cdot \\lg(\\text{Pen}) - 1952}{T_{\\text{R\\&K}} - 50 \\cdot \\lg(\\text{Pen}) + 120}',
-              erklaerung: 'Pfeiffer-van-Doormaal-Penetrationsindex (Ip): Kennzeichnet die Temperaturempfindlichkeit von Straßenbaubitumen (Standard: -1 bis +1; polymermodifiziert: Ip > +1).',
+              erklaerung: 'Pfeiffer-van-Doormaal-Penetrationsindex (Ip): Kennzeichnet die Temperaturempfindlichkeit von Bitumen (Straßenbaubitumen etwa −1,5 bis +1; polymermodifizierte Bitumen meist höher).',
               quelle: 'DIN EN 12591 Anhang A'
             },
             {
@@ -364,13 +365,13 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             },
             {
               formel: 'T_{\\text{R\\&K}} = T \\quad \\text{bei} \\quad \\Delta h = 25{,}0\\,\\text{mm}',
-              erklaerung: 'Erweichungspunkt Ring und Kugel nach DIN EN 1427: Badtemperatur, bei welcher die Stahlkugel das Bitumen im Ring um exakt 25 mm nach unten durchbiegt.',
+              erklaerung: 'Erweichungspunkt Ring und Kugel nach DIN EN 1427: Badtemperatur (Aufheizrate 5 K/min), bei der die Stahlkugel mit dem erweichten Bitumen aus dem Ring 25,0 mm bis zur Bodenplatte durchgesunken ist.',
               quelle: 'DIN EN 1427'
             },
             {
               formel: '\\lg(a_T) = \\frac{-C_1 \\cdot (T - T_s)}{C_2 + (T - T_s)}',
-              erklaerung: 'Williams-Landel-Ferry-Gleichung (WLF): Beschreibt die temperaturabhängige Viskositäts- und Schermodulverschiebung von Bitumen als rheologisch einfaches Material.',
-              quelle: 'Rheologie der Baustoffe'
+              erklaerung: 'Williams-Landel-Ferry-Gleichung (WLF): Beschreibt die Temperatur-Zeit-Verschiebung (Verschiebungsfaktor a_T) viskoelastischer Stoffe wie Bitumen (Annahme thermorheologisch einfachen Verhaltens).',
+              quelle: 'Williams, Landel, Ferry (1955)'
             }
           ]}
         />

@@ -125,8 +125,8 @@ export const LabProtocolManager: React.FC = () => {
     const html = `
       <div class="header-bar">
         <div>
-          <h1 class="header-title">THA Prüflaboratorium – Amtlicher Labor-Prüfbericht</h1>
-          <div class="header-sub">Fakultät für Architektur und Bauwesen • Baustoffprüfung nach DIN EN &amp; ISO</div>
+          <h1 class="header-title">Übungsprotokoll – Virtuelles Baustofflabor</h1>
+          <div class="header-sub">Lehrsimulation: Die Werte sind simuliert und nicht als Prüfbericht einer Prüfstelle verwendbar</div>
         </div>
         <div>
           <span class="badge ${statusBadgeClass}">Status: ${selectedProtocol.status}</span>
@@ -168,7 +168,7 @@ export const LabProtocolManager: React.FC = () => {
           <th>Soll-Abmessungen:</th>
           <td>${selectedProtocol.specimen.dimensions}</td>
           <th>Vorbehandlung / Lagerung:</th>
-          <td>${selectedProtocol.specimen.conditioning || 'Standard 20 °C / 65 % r.F.'}</td>
+          <td>${selectedProtocol.specimen.conditioning || 'nicht angegeben'}</td>
         </tr>
       </table>
 
@@ -191,11 +191,11 @@ export const LabProtocolManager: React.FC = () => {
 
       <div style="margin-top:24px; padding-top:16px; border-top:1px solid #cbd5e1; display:flex; justify-content:space-between; align-items:flex-end;">
         <div>
-          <div style="font-size:10px; color:#64748b; margin-bottom:4px;">Kryptografische Prüfsumme (SHA-256 Integritäts-Signatur):</div>
+          <div style="font-size:10px; color:#64748b; margin-bottom:4px;">Prüfsumme (FNV-1a, 64 bit – erkennt versehentliche Änderungen, keine kryptografische Signatur):</div>
           <span class="hash-code">${selectedProtocol.integrityHash}</span>
         </div>
         <div style="text-align:right; font-size:11px; color:#64748b;">
-          Digitale Prüfbericht-Validierung • THA Labor-Informations- und Management-System
+          Erstellt mit dem virtuellen Baustofflabor (Lehrsimulation)
         </div>
       </div>
     `;
@@ -257,7 +257,7 @@ export const LabProtocolManager: React.FC = () => {
           <Activity size={48} className="text-home-grau/40 mb-3" />
           <h4 className="text-sm font-bold text-text-main">Noch keine Labor-Protokolle aufgezeichnet</h4>
           <p className="text-xs text-text-main/70 max-w-md mt-1 mb-4">
-            Führen Sie im Tab <strong>Festbeton &amp; Mechanik</strong> einen Druckversuch, Zugversuch oder E-Modul-Test durch und klicken Sie anschließend auf <em>„Messung im Prüfprotokoll archivieren“</em>.
+            Führen Sie im Tab <strong>Universalprüfmaschine</strong> (oder in einem anderen virtuellen Versuch) eine Prüfung durch und klicken Sie anschließend auf <em>„Im Prüfprotokoll archivieren“</em>.
           </p>
           <div className="inline-flex items-center gap-1.5 text-xs text-shiraz font-bold bg-white px-3 py-1.5 rounded-lg border border-shiraz/20 shadow-xs">
             <Sparkles size={14} /> Plausibilitätsprüfungen und Prüfsummen werden automatisch generiert.
@@ -356,7 +356,7 @@ export const LabProtocolManager: React.FC = () => {
                 )}
                 <div className="text-xs flex-1">
                   <div className="font-bold mb-1">
-                    Test-Integritätsstatus: {selectedProtocol.status}
+                    Plausibilitätsstatus: {selectedProtocol.status}
                   </div>
                   <ul className="list-disc pl-4 space-y-0.5">
                     {selectedProtocol.validationNotes.map((note, i) => (
@@ -364,7 +364,7 @@ export const LabProtocolManager: React.FC = () => {
                     ))}
                   </ul>
                   <div className="mt-2 text-[10px] font-mono opacity-80">
-                    Kryptografische Signatur: <strong>{selectedProtocol.integrityHash}</strong>
+                    Prüfsumme (nicht kryptografisch): <strong>{selectedProtocol.integrityHash}</strong>
                   </div>
                 </div>
               </div>
