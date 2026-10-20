@@ -10,6 +10,8 @@ import {
   ClipboardList
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 interface ChecklistItem {
   id: string;
@@ -45,7 +47,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'exp-2',
         task: 'Abgleich des höchstzulässigen Wasserzementwerts (max. w/z)',
         description: 'Prüfung, ob der maximale w/z-Wert gemäß Expositionsklasse eingehalten wird (z. B. max. 0,45 bei XD3 / XS3, max. 0,50 bei XF4 mit Luftporen), um kapillare Transportporenpfade zu minimieren.',
-        ref: 'DIN EN 206 Abs. 5.4.2',
+        ref: 'DIN 1045-2:2023-08, Tab. F.2.1/F.2.2',
         status: 'critical'
       },
       {
@@ -109,8 +111,8 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'ris-1',
         task: 'Grenzwert w_max festlegen',
-        description: 'Definition der maximal zulässigen Rissbreite w_max in Abhängigkeit von der Expositionsklasse (Standard: 0,3 mm für XC-Klassen, bis zu 0,2 mm für dekomprimierte XD-Klassen / WU-Richtlinie).',
-        ref: 'DIN EN 1992-1-1 Abs. 7.3 / DafStb WU-Richtlinie',
+        description: 'Definition der maximal zulässigen Rissbreite w_max in Abhängigkeit von der Expositionsklasse (Stahlbeton nach NA Tab. 7.1DE: 0,4 mm bei XC1, 0,3 mm bei XC2–XC4, 0,2 mm bei XD/XS; WU-Bauteile nach WU-Richtlinie).',
+        ref: 'DIN EN 1992-1-1 + NA, 7.3 / DAfStb-WU-Richtlinie',
         status: 'critical'
       },
       {
@@ -124,7 +126,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'ris-3',
         task: 'Einsatz betontechnologischer Maßnahmen zur Wärmeminderung',
         description: 'Verwendung von Zementen mit geringer Hydratationswärmeentwicklung (LH-Zemente) sowie niedrigen Bauteilbetonierungstemperaturen zur Verhinderung von Thermo-Rissen.',
-        ref: 'DIN 1045-2 / Massenbeton-Richtlinien',
+        ref: 'DIN 1045-2 / DAfStb-Richtlinie Massige Bauteile aus Beton',
         status: 'recommended'
       }
     ]
@@ -282,30 +284,58 @@ export default function DauerhaftigkeitChecklisten() {
       </div>
 
       {/* Module Footer Links */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Maßgebende Betonanforderungen bei mehreren Expositionsklassen"
+        zielGleichung="(w/z)_{max} = \min_i (w/z)_i, \quad f_{ck} = \max_i f_{ck,i}, \quad z_{min} = \max_i z_i"
+        schritte={[
+          { titel: 'Klassen', erklaerung: 'Stützwand an einer gestreuten Straße: XC4, XD1 (Sprühnebel) und XF2 (mit Luftporen).', formel: '\\text{XC4: } 0{,}60 / \\text{C25/30} / 280 \\quad \\text{XD1: } 0{,}55 / \\text{C30/37} / 300' },
+          { titel: 'Frostklasse', erklaerung: 'XF2 mit Luftporenbildner nach DIN 1045-2:', formel: '\\text{XF2 (LP): } 0{,}55 / \\text{C25/30} / 300' },
+          { titel: 'Maßgebend', erklaerung: 'Jeweils die strengste Anforderung:', formel: 'w/z \\le 0{,}55, \\; \\text{C30/37}, \\; z \\ge 300\\,\\text{kg/m}^3, \\; \\text{LP-Beton}' }
+        ]}
+        ergebnisHinweis="Die Betondeckung richtet sich nach der Klasse mit der größten Anforderung (hier XD1: c_min,dur = 40 mm, c_nom = 55 mm). Werte nach DIN 1045-2, Tabellen F.2.1/F.2.2 – am Normtext der Ausgabe 2023-08 prüfen."
+        normQuelle="DIN 1045-2:2023-08; DIN EN 206:2021-06"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Auswertung einer Betondeckungsmessung"
+        zielGleichung="c_{0{,}05} = \bar{c} - 1{,}645 \cdot s"
+        schritte={[
+          { titel: 'Messung', erklaerung: 'Bewehrungsortung an 60 Messpunkten einer Außenwand (XD1): Mittelwert 47 mm, Standardabweichung 4,5 mm.', formel: '\\bar{c} = 47\\,\\text{mm}, \\quad s = 4{,}5\\,\\text{mm}' },
+          { titel: '5-%-Quantil', erklaerung: 'Normalverteilung angenommen:', formel: 'c_{0{,}05} = 47 - 1{,}645 \\cdot 4{,}5 = 39{,}6\\,\\text{mm}' },
+          { titel: 'Bewertung', erklaerung: 'Vergleich mit dem Mindestmaß c_min = 40 mm:', formel: '39{,}6 < 40 \\Rightarrow \\text{knapp unterschritten}' }
+        ]}
+        ergebnisHinweis="Eine knappe Unterschreitung des Mindestmaßes im 5-%-Quantil ist mit dem Tragwerksplaner zu bewerten (z. B. Oberflächenschutz, Instandhaltungsplanung). Das DBV-Merkblatt Betondeckung und Bewehrung beschreibt Mess- und Auswerteverfahren."
+        normQuelle="DBV-Merkblatt Betondeckung und Bewehrung; DIN EN 1992-1-1 + NA, 4.4.1"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="dauerhaftigkeit_checklisten" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: Expositionsanforderungen, Rissbreiten, WU-Richtlinie und Referenzen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Betondeckung', url: 'https://de.wikipedia.org/wiki/Betondeckung' },
           { title: 'Expositionsklasse', url: 'https://de.wikipedia.org/wiki/Expositionsklasse' },
           { title: 'Carbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Carbonatisierung_(Beton)' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992 (Eurocode 2): Bemessung von Betonbauteilen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992' },
-          { title: 'DAfStb-Richtlinie: Wasserundurchlässige Baukörper aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992' },
+          { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), Ausgabe 2017-12 (manuell prüfen)', url: 'https://www.dafstb.de/' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Gehlen, C.; Kapteina, G.: Dauerhaftigkeitsbemessung von Stahlbetonbauteilen (Ernst & Sohn)'
+          'DBV-Merkblatt Betondeckung und Bewehrung. Berlin: Deutscher Beton- und Bautechnik-Verein (aktuelle Fassung)'
         ]} 
         formeln={[
           {
             formel: 'c_{\\text{nom}} = \\max\\{c_{\\text{min,b}}; c_{\\text{min,dur}} + \\Delta c_{\\text{dur},\\gamma} - \\Delta c_{\\text{dur,st}} - \\Delta c_{\\text{dur,add}}; 10\\,\\text{mm}\\} + \\Delta c_{\\text{dev}}',
             erklaerung: 'Vollständige Bemessungsformel für das Nennmaß der Betondeckung cnom unter Berücksichtigung von Zusatzmaßnahmen und Vorhaltemaß.',
-            quelle: 'DIN EN 1992-1-1 Abs. 4.4.1.1'
+            quelle: 'DIN EN 1992-1-1 + NA, 4.4.1.2'
           },
           {
-            formel: 'h_w \\le 0{,}50 \\cdot h_t \\implies \\text{Grenzzustand für trennende Risse bei WU-Konstruktionen}',
-            erklaerung: 'Druckzonenhöhe hw im Wandquerschnitt nach WU-Richtlinie des DAfStb zur Verhinderung von durchgehenden wasserführenden Trennrissen.',
+            formel: 'w_k \\le w_{k,\\text{zul}}(h_w / h)',
+            erklaerung: 'Entwurfsgrundsatz Selbstheilung: Trennrisse sind zulässig, wenn die rechnerische Rissbreite den vom Druckgefälle h_w/h (Wasserdruckhöhe zu Bauteildicke) abhängigen Grenzwert der WU-Richtlinie einhält; Tabellenwerte am Originaltext prüfen.',
             quelle: 'DAfStb WU-Richtlinie'
           }
         ]}

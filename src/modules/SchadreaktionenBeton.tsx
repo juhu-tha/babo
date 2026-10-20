@@ -3,6 +3,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { AlertTriangle, CheckCircle2, Info, Droplets, Snowflake, ShieldAlert, Sparkles, Activity, Microscope, Clock, Layers, ShieldCheck } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -131,8 +133,8 @@ function AkrGefuegeSimulator() {
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <div className="flex justify-between text-[10px] text-text-main/60">
-                <span>0,40 % (NA-Zement)</span>
-                <span className="font-bold text-shiraz">Grenze: 0,60 %</span>
+                <span>0,40 %</span>
+                <span className="font-bold text-shiraz">NA-Grenze: 0,60 %</span>
                 <span>1,60 % (Sehr hoch)</span>
               </div>
             </div>
@@ -142,9 +144,9 @@ function AkrGefuegeSimulator() {
               <span className="font-bold text-text-main block">Alkaliempfindlichkeitsklasse Gestein:</span>
               <div className="grid grid-cols-3 gap-1.5">
                 {[
-                  { id: 'E1', label: 'E1 (Unbedenklich)', sub: 'Quarz/Granit' },
-                  { id: 'E2', label: 'E2 (Bedingt)', sub: 'Kies/Sand' },
-                  { id: 'E3', label: 'E3 (Empfindlich)', sub: 'Opalsandstein' },
+                  { id: 'E1', label: 'E I (unbedenklich)', sub: 'Quarz/Granit' },
+                  { id: 'E2', label: 'E II (bedenklich)', sub: 'z. B. Kies mit Flint' },
+                  { id: 'E3', label: 'E III (schädlich)', sub: 'Opalsandstein' },
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -508,16 +510,16 @@ export default function SchadreaktionenBeton() {
     } else {
       if (alkaliEintrag <= 3.0) {
         risiko = 'Mittel';
-        massnahmen = 'Alkalieintrag ≤ 3,0 kg/m³. Verwendung von NA-Zement (z.B. CEM I-NA) oder begrenzter Zementgehalt ausreichend.';
+        massnahmen = 'Alkalimenge ≤ 3,0 kg/m³ (vereinfachte Lehrgrenze nach britischem Ansatz). In Deutschland: Maßnahme nach Tabelle der Alkali-Richtlinie, z. B. NA-Zement oder begrenzter Zementgehalt.';
       } else {
         risiko = 'Hoch';
         isOk = false;
-        massnahmen = 'Alkalieintrag > 3,0 kg/m³. Maßnahmen zwingend erforderlich! (NA-Zement verwenden, Zementgehalt reduzieren oder Gesteinskörnung E1 wählen).';
+        massnahmen = 'Alkalimenge > 3,0 kg/m³ (vereinfachte Lehrgrenze). Maßnahmen nach Alkali-Richtlinie erforderlich: NA-Zement, Zementgehalt begrenzen oder Gesteinskörnung E I wählen.';
       }
       if (feuchteklasse === 'WS' && eKlasse === 'E3') {
         risiko = 'Sehr Hoch';
         isOk = false;
-        massnahmen = 'Extreme Beanspruchung (WS + E3). Strengste Vermeidung von Alkalien erforderlich. Ggf. gutachterliche Stellungnahme nötig.';
+        massnahmen = 'Feuchtigkeitsklasse WS mit E III: Gesteinskörnung austauschen oder gutachterliche Stellungnahme bzw. Performance-Prüfung erforderlich (Alkali-Richtlinie).';
       }
     }
     return { alkaliEintrag, risiko, massnahmen, isOk };
@@ -739,9 +741,9 @@ export default function SchadreaktionenBeton() {
                     value={eKlasse}
                     onChange={(e) => setEKlasse(e.target.value)}
                   >
-                    <option value="E1">E1 (Unbedenklich)</option>
-                    <option value="E2">E2 (Bedingt brauchbar)</option>
-                    <option value="E3">E3 (Bedenklich)</option>
+                    <option value="E1">E I (unbedenklich)</option>
+                    <option value="E2">E II (bedenklich)</option>
+                    <option value="E3">E III (schädlich)</option>
                   </select>
                 </div>
               </div>
@@ -952,32 +954,60 @@ export default function SchadreaktionenBeton() {
         </div>
       )}
       
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Alkaligehalt eines Betons und Vergleich mit NA-Zement"
+        zielGleichung="\mathrm{Na_2O_{eq}} = \mathrm{Na_2O} + 0{,}658 \cdot \mathrm{K_2O}, \quad A = z \cdot \mathrm{Na_2O_{eq}}"
+        schritte={[
+          { titel: 'Zementanalyse', erklaerung: 'CEM I 42,5 R: Na₂O = 0,25 M.-%, K₂O = 0,95 M.-%:', formel: '\\mathrm{Na_2O_{eq}} = 0{,}25 + 0{,}658 \\cdot 0{,}95 = 0{,}88\\,\\text{M.-\\%}' },
+          { titel: 'Alkalimenge im Beton', erklaerung: 'Zementgehalt z = 360 kg/m³:', formel: 'A = 360 \\cdot 0{,}0088 = 3{,}2\\,\\text{kg/m}^3' },
+          { titel: 'Mit NA-Zement', erklaerung: 'CEM I-NA (Na₂O-Äq. ≤ 0,60 M.-%):', formel: 'A_{NA} \\le 360 \\cdot 0{,}0060 = 2{,}2\\,\\text{kg/m}^3' }
+        ]}
+        ergebnisHinweis="In Deutschland richten sich die Maßnahmen nicht nach einem Grenzwert in kg/m³, sondern nach der Maßnahmentabelle der Alkali-Richtlinie (Alkaliempfindlichkeitsklasse E I bis E III, Feuchtigkeitsklasse WO/WF/WA/WS, Zementgehalt, NA-Zement oder Gutachten)."
+        normQuelle="DAfStb-Alkali-Richtlinie (2013-10); DIN 1164-10 (NA-Zement)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Kritischer Sättigungsgrad bei Frost"
+        zielGleichung="S_{krit} = \frac{1}{1 + \Delta V_{Eis}}"
+        schritte={[
+          { titel: 'Volumenzunahme', erklaerung: 'Wasser dehnt sich beim Gefrieren um etwa 9 % aus:', formel: '\\Delta V_{Eis} = 0{,}09' },
+          { titel: 'Grenzsättigung', erklaerung: 'Bis zu diesem Füllungsgrad findet das Eis noch Platz im Porenraum:', formel: 'S_{krit} = \\frac{1}{1{,}09} = 0{,}917 = 91{,}7\\,\\%' },
+          { titel: 'Folgerung', erklaerung: 'Künstliche Luftporen bleiben bei kapillarem Saugen weitgehend luftgefüllt und senken den Sättigungsgrad:', formel: 'S < S_{krit} \\Rightarrow \\text{kein Frostschaden}' }
+        ]}
+        ergebnisHinweis="Deshalb fordert DIN 1045-2 bei XF2 bis XF4 (bzw. alternativ sehr dichten Beton bei XF3) Luftporenbildner mit einem Abstandsfaktor der Poren unter etwa 0,20 mm."
+        normQuelle="Powers (1949); DIN 1045-2:2023-08"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="schadreaktionen_beton" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: AKR-Klassen nach Alkali-Richtlinie, Sulfat- und Frostangriff, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Alkalitreiben', url: 'https://de.wikipedia.org/wiki/Alkalitreiben' },
           { title: 'Frost-Tau-Wechsel', url: 'https://de.wikipedia.org/wiki/Frost-Tau-Wechsel' },
           { title: 'Sulfattreiben', url: 'https://de.wikipedia.org/wiki/Sulfattreiben' }
         ]}
         literatur={[
-          'Stark, J.; Wicht, B. (2013): Dauerhaftigkeit von Beton (Springer Vieweg)',
-          'Verein Deutscher Zementwerke e.V. (VDZ): Schadensmechanismen und Alkali-Richtlinie (Fachberichte)',
+          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013',
+          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (aktuelle Ausgabe)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DAfStb Alkali-Richtlinie (Vorbeugung von Schäden durch Alkali-Kieselsäure-Reaktion im Beton)', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Alkali' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Festlegung und Expositionen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 19573 (Zusätzliche Anforderungen an schadensresistente Beton- und Mörtelsysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19573' }
+          { title: 'DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Alkali' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN 19573 (Mörtel für Neubau und Sanierung von Entwässerungssystemen außerhalb von Gebäuden; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19573' }
         ]}
         formeln={[
           {
             formel: '3\\text{CaO} \\cdot \\text{Al}_2\\text{O}_3 \\cdot \\text{CaSO}_4 \\cdot 12\\text{H}_2\\text{O} + 2\\text{Ca}^{2+} + 2\\text{SO}_4^{2-} + 20\\text{H}_2\\text{O} \\rightarrow 3\\text{CaO} \\cdot \\text{Al}_2\\text{O}_3 \\cdot 3\\text{CaSO}_4 \\cdot 32\\text{H}_2\\text{O}',
-            erklaerung: 'Klassisches Sulfattreiben: Reaktion von Monosulfat (im erhärteten Hydratgefüge) mit eindringenden Sulfationen und Calciumionen zu expansivem, kristallwasserreichem Di-Ettringit (32 H2O). Die drastische Volumenvergrößerung sprengt die gehärtete Zementsteinmatrix.',
+            erklaerung: 'Klassisches Sulfattreiben: Reaktion von Monosulfat (im erhärteten Hydratgefüge) mit eindringenden Sulfationen und Calciumionen zu expansivem, kristallwasserreichem Ettringit (Trisulfat, 32 H2O). Die drastische Volumenvergrößerung sprengt die gehärtete Zementsteinmatrix.',
             quelle: 'Stark/Wicht: Dauerhaftigkeit von Beton'
           },
           {
             formel: '\\equiv\\text{Si}-\\text{O}-\\text{Si}\\equiv + \\, 2\\text{Na}^+ + 2\\text{OH}^- \\rightarrow 2(\\equiv\\text{Si}-\\text{O}^-\\text{Na}^+) + \\text{H}_2\\text{O}',
             erklaerung: 'Spaltung stabiler Neutralsiloxanbrücken des amorphen Quarzes durch hochalkalisches Porenwasser (OH-Ionen) bei der Alkali-Kieselsäure-Reaktion (AKR). Es bildet sich quellfähiges, stark wasseranziehendes Natrium-Alkali-Kieselgel, das Risse initiiert.',
-            quelle: 'VDZ-AKR-Richtlinie'
+            quelle: 'DAfStb-Alkali-Richtlinie / Stark & Wicht'
           },
           {
             formel: 'S_{\\text{crit}} = \\frac{V_w}{V_p} \\approx 91{,}7\\,\\% \\quad (\\Delta V_{\\text{Eis}} \\approx +9\\,\\%)',
