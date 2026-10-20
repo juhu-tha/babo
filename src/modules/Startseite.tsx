@@ -66,8 +66,7 @@ export default function Startseite() {
                   Das BaustoffBoard dient ausschließlich zu Lehr- und Übungszwecken. Deshalb können hier Vereinfachungen getroffen worden sein, die nicht vollumfänglich Normanforderungen und der Realität entsprechen. Das BaustoffBoard ist <strong>kein</strong> Ersatz für Lehrveranstaltungen, Lehrbücher oder Normen!
                   <br /><br />
                   Das Dashboard wird kontinuierlich erweitert und verbessert - und erhebt keinen Anspruch auf Vollständigkeit!<br />
-                  <span className="text-shiraz font-bold">ACHTUNG: Noch in Entwicklung, kann/wird noch Fehler enthalten!</span><br />
-                  Bitte Fehler sowie Verbesserungsvorschläge bei Prof. Huber melden – vielen Dank!{' '}
+                  <span className="underline font-semibold">Bitte Fehler sowie Verbesserungsvorschläge bei Prof. Huber melden – vielen Dank!</span>{' '}
                   <button
                     onClick={() => setActiveTab('feedback')}
                     className="inline-flex items-center justify-center p-1 rounded-md text-shiraz hover:bg-shiraz/10 transition-all align-middle cursor-pointer -mt-0.5"
