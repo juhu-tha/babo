@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 type TypSchadTab = 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'analysator';
@@ -850,7 +852,7 @@ export default function TypischeBauschaeden() {
                   <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 space-y-1.5">
                     <strong className="text-shiraz block">Brückenmonitoring nach DIN 1076</strong>
                     <p className="text-slate-700 leading-relaxed text-xs">
-                      Überwachung der Ingenieurbauwerke im Zuge von Straßen und Wegen nach DIN 1076: Hauptprüfung alle 6 Jahre, einfache Prüfung 3 Jahre nach der Hauptprüfung, Besichtigung jährlich (sofern keine H/E), laufende Beobachtung in der Regel zweimal jährlich, Sonderprüfung anlassbezogen.
+                      Überwachung der Ingenieurbauwerke im Zuge von Straßen und Wegen nach DIN 1076 (Ausgabe 2026-01, ersetzt 1999-11): Hauptprüfung alle 6 Jahre, einfache Prüfung 3 Jahre nach der Hauptprüfung, Besichtigung jährlich (sofern keine H/E), laufende Beobachtung in der Regel zweimal jährlich, Sonderprüfung anlassbezogen.
                     </p>
                   </div>
                 </div>
@@ -952,8 +954,35 @@ export default function TypischeBauschaeden() {
         </div>
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Rechnerische Rissbreite einer Stahlbetonwand"
+        zielGleichung="w_k = s_{r,max} \cdot (\varepsilon_{sm} - \varepsilon_{cm})"
+        schritte={[
+          { titel: 'Rissabstand', erklaerung: 'Maximaler Rissabstand aus der Bemessung:', formel: 's_{r,max} = 200\\,\\text{mm}' },
+          { titel: 'Dehnungsdifferenz', erklaerung: 'Mittlere Dehnungsdifferenz zwischen Stahl und Beton:', formel: '\\varepsilon_{sm} - \\varepsilon_{cm} = 0{,}60\\,\\text{‰}' },
+          { titel: 'Rissbreite', erklaerung: 'Einsetzen und Vergleich mit w_max = 0,3 mm (XC4):', formel: 'w_k = 200 \\cdot 0{,}0006 = 0{,}12\\,\\text{mm} \\le 0{,}3\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Gemessene Risse im Bestand sind mit dem Rechenwert nur bedingt vergleichbar; entscheidend ist die Ursache (Last, Zwang, Schwinden) und ob der Riss sich bewegt."
+        normQuelle="DIN EN 1992-1-1 + NA, 7.3.4"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Kritische Risslänge bei sprödem Versagen"
+        zielGleichung="a_c = \frac{1}{\pi}\left(\frac{K_{Ic}}{Y \cdot \sigma}\right)^2"
+        schritte={[
+          { titel: 'Spannungsintensität', erklaerung: 'Randriss a = 10 mm, σ = 150 MPa, Y = 1,12:', formel: 'K_I = 1{,}12 \\cdot 150 \\cdot \\sqrt{\\pi \\cdot 0{,}010} = 29{,}8\\,\\text{MPa}\\sqrt{\\text{m}}' },
+          { titel: 'Vergleich', erklaerung: 'Bruchzähigkeit K_Ic = 50 MPa√m:', formel: '29{,}8 < 50 \\Rightarrow \\text{stabil}' },
+          { titel: 'Kritische Risslänge', erklaerung: 'Umstellen nach a:', formel: 'a_c = \\frac{1}{\\pi}\\left(\\frac{50}{168}\\right)^2 = 0{,}028\\,\\text{m} = 28\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Bei tiefen Temperaturen sinkt K_Ic vieler Stähle stark – dann reichen schon Risse von wenigen Millimetern (vgl. Silver Bridge 1967)."
+        normQuelle="Irwin (1957); ISO 12135"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="schadensbilder" />
+
       <ModuleFooter
-        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, Rissbreiten, Bruchmechanik und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         weblinks={[
           { title: "WTA e.V. (Wissenschaftlich-Technische Arbeitsgemeinschaft)", url: "https://www.wta-gmbh.de/" },
           { title: "DIN 18533 - Bauwerksabdichtungen", url: "https://www.din.de/" },
@@ -970,14 +999,14 @@ export default function TypischeBauschaeden() {
           'Zimmermann, G. (Hrsg.): Bauschadens-Sammlung. Fraunhofer IRB Verlag',
           'Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Raupach, M.: Korrosion und Korrosionsschutz von Stahl in Beton (Bauwerk Verlag)',
-          'Oswald, R. / Abel, R.: Hahne/Aachener Bausachverständigentage: Rissbildung und Bauwerksabdichtung (Fraunhofer IRB Verlag)'
+          'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner (aktuelle Auflage)',
+          'Aachener Bausachverständigentage (Tagungsbände, AIBau). Wiesbaden: Springer Vieweg (jährlich)'
         ]} 
         regelwerke={[
           { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' },
           { title: 'DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
-          { title: 'Deutscher Ausschuss für Stahlbeton (DAfStb): Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)', url: 'https://www.dafstb.de/' },
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'Deutscher Ausschuss für Stahlbeton (DAfStb): Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10', url: 'https://www.dafstb.de/' },
           { title: 'WTA-Merkblatt 4-6: Nachträgliches Abdichten erdberührter Bauteile', url: 'https://www.wta-gmbh.de/' }
         ]} 
         formeln={[
@@ -993,7 +1022,7 @@ export default function TypischeBauschaeden() {
           },
           {
             formel: '\\text{Ca(OH)}_2 + \\text{CO}_2 \\longrightarrow \\text{CaCO}_3 \\downarrow + \\text{H}_2\\text{O} \\quad \\implies x_c(t) = k_{\\text{carb}} \\cdot \\sqrt{t}',
-            erklaerung: 'Depassivierung durch Karbonatisierung: Wurzel-t-Diffusionsgesetz der Karbonatisierungsfront und Absinken des Porenwasser-pH-Werts von > 12,6 auf unter 8,5.',
+            erklaerung: 'Depassivierung durch Karbonatisierung: Wurzel-t-Diffusionsgesetz der Karbonatisierungsfront und Absinken des Porenwasser-pH-Werts von über 12,5 auf unter 9.',
             quelle: 'DIN EN 1992-1-1 / DAfStb'
           },
           {

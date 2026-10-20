@@ -5111,5 +5111,365 @@
       "targetModuleLabel": "Checklisten"
     },
     "verified": false
+  },
+  {
+    "id": "q_ms_bs_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauschaeden",
+    "moduleTitle": "Recht & Grundlagen",
+    "topic": "Verjährung",
+    "difficulty": "Basis",
+    "normRef": "BGB § 634a; VOB/B § 13 Abs. 4",
+    "question": "Wie lange verjähren Mängelansprüche bei einem Bauwerk ohne abweichende Vereinbarung?",
+    "options": [
+      "BGB 2 Jahre, VOB/B 2 Jahre",
+      "BGB 5 Jahre, VOB/B 4 Jahre",
+      "BGB 4 Jahre, VOB/B 5 Jahre",
+      "BGB 30 Jahre, VOB/B 10 Jahre"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 634a Abs. 1 Nr. 2 BGB: fünf Jahre ab Abnahme; § 13 Abs. 4 Nr. 1 VOB/B: vier Jahre, sofern nichts anderes vereinbart.",
+    "gapAnalysis": {
+      "topic": "Verjährung",
+      "misconception": "VOB/B und BGB hätten gleiche Fristen.",
+      "coreRule": "Fristbeginn mit der Abnahme; Arglist und Hemmung beachten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verjährung“ im Modul Recht & Grundlagen noch einmal durch.",
+      "targetModuleTab": "bauschaeden",
+      "targetModuleLabel": "Recht & Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_bs_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauschaeden",
+    "moduleTitle": "Recht & Grundlagen",
+    "topic": "Beweislast",
+    "difficulty": "Fortgeschritten",
+    "normRef": "BGB § 640",
+    "question": "Was ändert sich mit der Abnahme hinsichtlich der Beweislast für Mängel?",
+    "options": [
+      "Nichts",
+      "Nach der Abnahme muss grundsätzlich der Besteller beweisen, dass ein Mangel vorliegt",
+      "Der Unternehmer muss nach der Abnahme jede Mangelfreiheit beweisen",
+      "Die Beweislast entfällt vollständig"
+    ],
+    "correctIdx": 1,
+    "explanation": "Vor der Abnahme trägt der Unternehmer die Beweislast für die Mangelfreiheit; danach der Besteller für den Mangel (Ausnahme: bei der Abnahme vorbehaltene Mängel).",
+    "gapAnalysis": {
+      "topic": "Beweislast",
+      "misconception": "Die Abnahme sei nur eine Formalie.",
+      "coreRule": "Abnahme: Gefahrübergang, Fristbeginn, Beweislastwechsel.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beweislast“ im Modul Recht & Grundlagen noch einmal durch.",
+      "targetModuleTab": "bauschaeden",
+      "targetModuleLabel": "Recht & Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_tb_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden",
+    "topic": "Rissursachen",
+    "difficulty": "Basis",
+    "normRef": "Schadensdiagnostik",
+    "question": "Warum darf ein Riss nicht ohne Weiteres kraftschlüssig verpresst werden?",
+    "options": [
+      "Weil Harz zu teuer ist",
+      "Weil ein noch aktiver Riss danach an anderer Stelle neu aufreißt – zuerst Ursache und Rissbewegung klären",
+      "Weil Verpressen nur bei Holz zulässig ist",
+      "Weil Risse immer harmlos sind"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nur ruhende Risse dürfen kraftschlüssig gefüllt werden; aktive Risse brauchen eine Bewegungsfuge oder die Beseitigung der Ursache.",
+    "gapAnalysis": {
+      "topic": "Rissursachen",
+      "misconception": "Verpressen beseitige die Ursache eines Risses.",
+      "coreRule": "Erst Ursache und Rissdynamik, dann Instandsetzungsverfahren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rissursachen“ im Modul Typische Bauschäden noch einmal durch.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_tb_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden",
+    "topic": "Sprödbruch",
+    "difficulty": "Fortgeschritten",
+    "normRef": "LEBM",
+    "question": "Wie verändert sich die kritische Risslänge a_c, wenn sich die Bruchzähigkeit K_Ic bei Kälte halbiert?",
+    "options": [
+      "Sie halbiert sich",
+      "Sie sinkt auf ein Viertel",
+      "Sie bleibt gleich",
+      "Sie verdoppelt sich"
+    ],
+    "correctIdx": 1,
+    "explanation": "a_c ∝ (K_Ic/σ)²: halbe Bruchzähigkeit, ein Viertel der kritischen Risslänge.",
+    "gapAnalysis": {
+      "topic": "Sprödbruch",
+      "misconception": "Temperatur beeinflusse die Bruchsicherheit von Stahl nicht.",
+      "coreRule": "a_c = (1/π)(K_Ic/(Yσ))².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sprödbruch“ im Modul Typische Bauschäden noch einmal durch.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_mo_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerksunters_monitoring",
+    "moduleTitle": "Tragwerksmonitoring (SHM)",
+    "topic": "Ultraschall",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12504-4",
+    "question": "Was deutet eine lokal deutlich verringerte Ultraschallgeschwindigkeit in einem Betonbauteil an?",
+    "options": [
+      "Höhere Festigkeit",
+      "Gefügestörung wie Kiesnest, Hohlraum oder Riss",
+      "Mehr Bewehrung",
+      "Trockeneren Beton"
+    ],
+    "correctIdx": 1,
+    "explanation": "Fehlstellen verlängern den Laufweg bzw. verringern die Steifigkeit – die scheinbare Geschwindigkeit sinkt.",
+    "gapAnalysis": {
+      "topic": "Ultraschall",
+      "misconception": "Ultraschall messe direkt die Druckfestigkeit.",
+      "coreRule": "Ultraschall = Homogenitätsprüfung; Festigkeit nur kalibriert an Bohrkernen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Ultraschall“ im Modul Tragwerksmonitoring (SHM) noch einmal durch.",
+      "targetModuleTab": "bauwerksunters_monitoring",
+      "targetModuleLabel": "Tragwerksmonitoring (SHM)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_mo_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerksunters_monitoring",
+    "moduleTitle": "Tragwerksmonitoring (SHM)",
+    "topic": "Monitoring und Prüfintervalle",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1076:2026-01",
+    "question": "Darf ein installiertes Dauermonitoring die Hauptprüfung nach DIN 1076 ersetzen?",
+    "options": [
+      "Ja, immer",
+      "Nein, Monitoring ergänzt die handnahe Prüfung, ersetzt sie aber nicht",
+      "Nur bei Holzbrücken",
+      "Nur wenn die Brücke jünger als 10 Jahre ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "Monitoring liefert kontinuierliche Daten zu ausgewählten Größen; die handnahe Hauptprüfung aller Bauteile bleibt erforderlich.",
+    "gapAnalysis": {
+      "topic": "Monitoring und Prüfintervalle",
+      "misconception": "Sensoren erkennen alle Schadensarten.",
+      "coreRule": "SHM ergänzt Prüfungen nach DIN 1076/VDI 6200.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Monitoring und Prüfintervalle“ im Modul Tragwerksmonitoring (SHM) noch einmal durch.",
+      "targetModuleTab": "bauwerksunters_monitoring",
+      "targetModuleLabel": "Tragwerksmonitoring (SHM)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_zb_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "vdi6200",
+    "moduleTitle": "Zustandsbewertung",
+    "topic": "DIN 1076 Prüfarten",
+    "difficulty": "Basis",
+    "normRef": "DIN 1076:2026-01",
+    "question": "Wann findet nach DIN 1076 die Einfache Prüfung statt?",
+    "options": [
+      "Jährlich",
+      "Drei Jahre nach einer Hauptprüfung",
+      "Nur nach Unfällen",
+      "Alle zwölf Jahre"
+    ],
+    "correctIdx": 1,
+    "explanation": "Einfache Prüfung drei Jahre nach der Hauptprüfung; Hauptprüfung im sechsjährlichen Turnus, Besichtigung jährlich, laufende Beobachtung im Rahmen der Streckenkontrolle.",
+    "gapAnalysis": {
+      "topic": "DIN 1076 Prüfarten",
+      "misconception": "Brücken würden nur bei sichtbaren Schäden geprüft.",
+      "coreRule": "H, E, B, laufende Beobachtung, Sonderprüfung nach DIN 1076:2026-01.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DIN 1076 Prüfarten“ im Modul Zustandsbewertung noch einmal durch.",
+      "targetModuleTab": "vdi6200",
+      "targetModuleLabel": "Zustandsbewertung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_zb_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "vdi6200",
+    "moduleTitle": "Zustandsbewertung",
+    "topic": "VDI 6200",
+    "difficulty": "Fortgeschritten",
+    "normRef": "VDI 6200:2010-02",
+    "question": "Welche rechtliche Stellung hat die VDI 6200?",
+    "options": [
+      "Bundesgesetz",
+      "Eingeführte Technische Baubestimmung",
+      "Private Richtlinie, die als anerkannte Regel der Technik die Instandhaltungspflicht des Eigentümers konkretisiert",
+      "EU-Verordnung"
+    ],
+    "correctIdx": 2,
+    "explanation": "VDI 6200 ist kein Gesetz und nicht bauaufsichtlich eingeführt; sie konkretisiert die Eigentümerpflichten (§ 3 MBO, Verkehrssicherungspflicht) und wird über Verträge verbindlich.",
+    "gapAnalysis": {
+      "topic": "VDI 6200",
+      "misconception": "VDI-Richtlinien seien unmittelbar verbindliches Recht.",
+      "coreRule": "VDI 6200 = a. R. d. T.; Intervalle nach Schadensfolgeklasse und Robustheit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „VDI 6200“ im Modul Zustandsbewertung noch einmal durch.",
+      "targetModuleTab": "vdi6200",
+      "targetModuleLabel": "Zustandsbewertung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_mg_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "material_schaeden_gross",
+    "moduleTitle": "Große Materialschäden & Einstürze",
+    "topic": "Carolabrücke",
+    "difficulty": "Basis",
+    "normRef": "Spannungsrisskorrosion",
+    "question": "Welcher Schädigungsmechanismus gilt als wesentliche Ursache des Teileinsturzes der Carolabrücke Dresden (2024)?",
+    "options": [
+      "Holzfäule",
+      "Wasserstoffinduzierte Spannungsrisskorrosion des Spannstahls",
+      "Alkali-Kieselsäure-Reaktion",
+      "Frostsprengung des Mauerwerks"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der verwendete Spannstahl war anfällig für Spannungsrisskorrosion; Brüche erfolgen ohne Vorankündigung durch sichtbare Verformung.",
+    "gapAnalysis": {
+      "topic": "Carolabrücke",
+      "misconception": "Spannbetonbrücken kündigten Versagen immer durch Risse an.",
+      "coreRule": "Spannstähle mit SpRK-Risiko erfordern gesonderte Nachrechnung (Ankündigungsverhalten).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Carolabrücke“ im Modul Große Materialschäden & Einstürze noch einmal durch.",
+      "targetModuleTab": "material_schaeden_gross",
+      "targetModuleLabel": "Große Materialschäden & Einstürze"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_mg_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "material_schaeden_gross",
+    "moduleTitle": "Große Materialschäden & Einstürze",
+    "topic": "Bad Reichenhall",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Holzbau",
+    "question": "Welche Kombination führte zum Einsturz der Eislaufhalle Bad Reichenhall 2006?",
+    "options": [
+      "Erdbeben und Brand",
+      "Ungeeigneter Harnstoffharzklebstoff, Feuchte in den Kastenträgern, Konstruktions-/Ausführungsmängel und unterlassene Instandhaltung",
+      "Überlastung durch Publikum",
+      "Korrosion der Stahlstützen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der UF-Klebstoff verlor unter Feuchte seine Festigkeit; hinzu kamen Mängel von Beginn an und fehlende Bauwerksprüfungen. 15 Menschen starben.",
+    "gapAnalysis": {
+      "topic": "Bad Reichenhall",
+      "misconception": "Allein die Schneelast habe den Einsturz verursacht.",
+      "coreRule": "Einstürze entstehen meist aus mehreren Ursachen – regelmäßige Prüfung nach VDI 6200 hätte Warnzeichen erfassen können.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bad Reichenhall“ im Modul Große Materialschäden & Einstürze noch einmal durch.",
+      "targetModuleTab": "material_schaeden_gross",
+      "targetModuleLabel": "Große Materialschäden & Einstürze"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_sc_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schaeden_checklisten",
+    "moduleTitle": "Schadensaufnahme-Checklisten",
+    "topic": "Rissmonitoring",
+    "difficulty": "Basis",
+    "normRef": "TR Instandhaltung",
+    "question": "Eine Rissmarke zeigt eine Zunahme von 0,20 auf 0,26 mm in sechs Monaten. Was folgt daraus?",
+    "options": [
+      "Riss ist ruhend, sofort verpressen",
+      "Riss ist aktiv (≈ 0,12 mm/a) – Ursache klären und über einen Jahreszyklus weiter messen",
+      "Riss ist unbedeutend",
+      "Riss wird kleiner"
+    ],
+    "correctIdx": 1,
+    "explanation": "Eine stetige Zunahme über die Temperaturschwankung hinaus deutet auf eine aktive Ursache.",
+    "gapAnalysis": {
+      "topic": "Rissmonitoring",
+      "misconception": "Eine einzelne Messung genüge zur Bewertung.",
+      "coreRule": "Rissbewegung mit Temperaturaufzeichnung über mindestens ein Jahr bewerten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rissmonitoring“ im Modul Schadensaufnahme-Checklisten noch einmal durch.",
+      "targetModuleTab": "schaeden_checklisten",
+      "targetModuleLabel": "Schadensaufnahme-Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ms_sc_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schaeden_checklisten",
+    "moduleTitle": "Schadensaufnahme-Checklisten",
+    "topic": "Durchfeuchtungsgrad",
+    "difficulty": "Fortgeschritten",
+    "normRef": "WTA-Merkblatt 4-11",
+    "question": "Warum gibt man bei Mauerwerk neben dem Feuchtegehalt den Durchfeuchtungsgrad an?",
+    "options": [
+      "Weil er immer 100 % beträgt",
+      "Weil erst der Bezug auf die maximale Wasseraufnahme verschiedene Baustoffe vergleichbar macht",
+      "Weil der Feuchtegehalt nicht messbar ist",
+      "Weil er die Salzbelastung angibt"
+    ],
+    "correctIdx": 1,
+    "explanation": "6 M.-% sind für Ziegel hoch, für Porenbeton gering – der Durchfeuchtungsgrad (u/u_max) normiert das.",
+    "gapAnalysis": {
+      "topic": "Durchfeuchtungsgrad",
+      "misconception": "Gleicher Feuchtegehalt bedeute gleiche Durchfeuchtung.",
+      "coreRule": "DFG = Feuchtegehalt / maximale Wasseraufnahme.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Durchfeuchtungsgrad“ im Modul Schadensaufnahme-Checklisten noch einmal durch.",
+      "targetModuleTab": "schaeden_checklisten",
+      "targetModuleLabel": "Schadensaufnahme-Checklisten"
+    },
+    "verified": false
   }
 ]
