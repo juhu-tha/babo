@@ -343,76 +343,273 @@ export default function Admin() {
         {/* TAB 4: GESTALTUNG DER APP (STYLEGUIDE & DESIGN SYSTEM) */}
         {activeTab === 'gestaltung' && (
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-home-grau/15">
-                <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <Palette size={18} className="text-shiraz" />
-                  Gestaltungsvorgaben &amp; Modulspezifikation (GEMINI_md)
-                </h3>
-                <span className="text-xs font-mono font-bold px-2.5 py-1 bg-shiraz/10 text-shiraz rounded-full border border-shiraz/20">
-                  Gold-Standard: Kalk.tsx
-                </span>
+            <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm space-y-5">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-home-grau/15">
+                <div>
+                  <h3 className="text-base font-bold text-text-main flex items-center gap-2">
+                    <Palette size={18} className="text-shiraz" />
+                    Gestaltungsvorgaben &amp; Modulspezifikation (GEMINI_md)
+                  </h3>
+                  <p className="text-xs text-text-main/70 mt-0.5">
+                    Verbindliches Design-System und Master-Architektur für alle Fachmodule der Baustoffkunde und Bauchemie.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono font-bold px-2.5 py-1 bg-shiraz/10 text-shiraz rounded-full border border-shiraz/20">
+                    Gold-Standard: Kalk.tsx
+                  </span>
+                  <span className="text-xs font-mono font-bold px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-full border border-emerald-200">
+                    Master-Datei: GEMINI.md
+                  </span>
+                </div>
               </div>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Das Design der Wissensplattform folgt einem einladenden, hochgradig lesbaren und akademisch anspruchsvollen Light-Design-System.
-                Dunkle, kontrastreiche Konsolenhintergründe sind im Lehrkontext unerwünscht. Alle Module kapseln ihre Inhalte über standardisierte Tabs und schließen zwingend mit dem <code className="font-mono bg-off-white px-1.5 py-0.5 rounded border border-home-grau/20">ModuleFooter</code> ab.
-              </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-                {/* Farbpalette */}
-                <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2.5">
-                  <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">1. Farbpalette &amp; Akzente</span>
-                  <div className="space-y-2 text-xs">
-                    <div className="flex items-center justify-between p-2 bg-white rounded-lg border border-home-grau/15">
-                      <span className="font-semibold text-text-main">Primärakzent: Shiraz</span>
-                      <span className="font-mono text-[11px] text-shiraz font-bold">#8b1538 / edles Weinrot</span>
+              {/* Einleitender Grundsatz */}
+              <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed space-y-2">
+                <p>
+                  Das Design der Wissensplattform folgt einem einladenden, hochgradig lesbaren und akademisch anspruchsvollen Light-Design-System.
+                  <strong> Dunkle, immersive Kontraste und schwarze Konsolenhintergründe sind im gesamten System unerwünscht.</strong>
+                  Alle Fachmodule kapseln ihre Inhalte in thematische Tabs (keine unendlichen Scroll-Seiten), führen den didaktischen 4-Stufen-Lehrpfad durch und schließen zwingend mit der standardisierten <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-home-grau/25">ModuleFooter</code>-Komponente ab.
+                </p>
+              </div>
+
+              {/* 1. Die 4 strukturellen Architekturebenen */}
+              <div className="space-y-3">
+                <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+                  <Layers size={16} className="text-shiraz" />
+                  1. Die 4 logischen Architekturebenen jedes Fachmoduls
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider block font-mono">Ebene A: Zustandsverwaltung (Tabs)</span>
+                    <p className="text-xs text-text-main/80 leading-relaxed">
+                      Keine unendlichen Scroll-Pages. Informationen werden über einen Zustandswähler (<code className="font-mono text-[11px]">activeTab</code>) in thematische Blöcke gekapselt:
+                    </p>
+                    <ul className="text-xs text-text-main/70 space-y-1 list-disc pl-4">
+                      <li><strong className="text-text-main">steckbrief:</strong> Standardisierte Stoffdatenbank (<code className="font-mono text-[11px]">BaustoffProfil</code>).</li>
+                      <li><strong className="text-text-main">grundlagen:</strong> Chemische Kreisläufe, Bindeglieder, Entstehung.</li>
+                      <li><strong className="text-text-main">festigkeit:</strong> Erhärtung, Hydratation, Gefügeaufbau.</li>
+                      <li><strong className="text-text-main">bestaendigkeit:</strong> Normen, Expositionsklassen, Schutzmaßnahmen.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider block font-mono">Ebene B: Header &amp; Teaser-Box</span>
+                    <p className="text-xs text-text-main/80 leading-relaxed">
+                      Markante Überschrift mit Icon im Shiraz-Farbton und didaktische Teaser-Box im Off-White-Ton:
+                    </p>
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-[11px] font-mono text-text-main/80 space-y-1">
+                      <div>&lt;h2 className=&quot;text-xl font-bold text-text-main flex items-center gap-2&quot;&gt;</div>
+                      <div className="pl-4">&lt;Box className=&quot;text-shiraz&quot; /&gt; Modulname</div>
+                      <div>&lt;/h2&gt;</div>
+                      <div>&lt;div className=&quot;text-sm bg-off-white p-4 rounded-xl border ...&quot;&gt;</div>
                     </div>
-                    <div className="flex items-center justify-between p-2 bg-white rounded-lg border border-home-grau/15">
-                      <span className="font-semibold text-text-main">Rahmen: Home-Grau</span>
-                      <span className="font-mono text-[11px] text-slate-600">border-home-grau/30</span>
+                  </div>
+
+                  <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider block font-mono">Ebene C: Steckbrief-Einbindung</span>
+                    <p className="text-xs text-text-main/80 leading-relaxed">
+                      Physisch-chemische Kenndaten werden über die zentrale Profilkomponente mit Kennwerttabelle gerendert:
+                    </p>
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-[11px] font-mono text-text-main/80">
+                      <div>&#123;activeTab === &apos;steckbrief&apos; &amp;&amp; (</div>
+                      <div className="pl-4">&lt;BaustoffProfil materialKey=&quot;kalk&quot; /&gt;</div>
+                      <div>)&#125;</div>
                     </div>
-                    <div className="flex items-center justify-between p-2 bg-white rounded-lg border border-home-grau/15">
-                      <span className="font-semibold text-text-main">Infoboxen: Off-White</span>
-                      <span className="font-mono text-[11px] text-slate-600">bg-off-white (#f8f9fa)</span>
-                    </div>
-                    <div className="flex items-center justify-between p-2 bg-white rounded-lg border border-home-grau/15">
-                      <span className="font-semibold text-text-main">Historisch: Pergament</span>
-                      <span className="font-mono text-[11px] text-amber-800">#fcf8f2 (weiches Pergament)</span>
+                  </div>
+
+                  <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider block font-mono">Ebene D: Standardisierter ModuleFooter</span>
+                    <p className="text-xs text-text-main/80 leading-relaxed">
+                      Führt Regelwerke, Fachliteratur, Wikipedia-Verweise, KaTeX-Formeln und rechtliche Hinweise zusammen (standardmäßig eingeklappt):
+                    </p>
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-[11px] font-mono text-text-main/80">
+                      <div>&lt;ModuleFooter</div>
+                      <div className="pl-4">wikipedia=&#123;[...]&#125; literatur=&#123;[...]&#125;</div>
+                      <div className="pl-4">regelwerke=&#123;[...]&#125; formeln=&#123;[...]&#125;</div>
+                      <div>/&gt;</div>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Typografie & Haptik */}
-                <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2.5">
-                  <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">2. Typografie &amp; Haptik</span>
-                  <div className="space-y-2 text-xs text-text-main/80">
-                    <div className="p-2 bg-white rounded-lg border border-home-grau/15">
-                      <strong>Überschriften:</strong> <code className="font-mono text-[11px]">text-text-main</code> (ermüdungsfrei, kein Hartschwarz).
+              {/* 2. Der 4-Stufen-Lehrpfad */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+                  <Sparkles size={16} className="text-shiraz" />
+                  2. Der didaktische 4-Stufen-Lehrpfad (Standard in jedem Modul)
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
+                    <span className="text-[10px] font-mono font-bold text-shiraz block uppercase">Stufe 1</span>
+                    <strong className="text-xs font-bold text-text-main block">Grundlagen &amp; Theorie</strong>
+                    <p className="text-[11px] text-text-main/70 leading-snug">Chemische Phasen, Kristallisationsvorgänge und physikalische Wirkprinzipien.</p>
+                  </div>
+                  <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
+                    <span className="text-[10px] font-mono font-bold text-shiraz block uppercase">Stufe 2</span>
+                    <strong className="text-xs font-bold text-text-main block">Labor &amp; Prüfverfahren</strong>
+                    <p className="text-[11px] text-text-main/70 leading-snug">Prüfkörperherstellung, Normenprüfungen (Druck, Biegezug, Rohdichte, Konsistenz).</p>
+                  </div>
+                  <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
+                    <span className="text-[10px] font-mono font-bold text-shiraz block uppercase">Stufe 3</span>
+                    <strong className="text-xs font-bold text-text-main block">Praxis &amp; Bemessung</strong>
+                    <p className="text-[11px] text-text-main/70 leading-snug">Rechentechnische Vertiefung via <code className="font-mono text-[10px]">FormulaDerivationBox</code> mit Schritt-für-Schritt-Herleitung.</p>
+                  </div>
+                  <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
+                    <span className="text-[10px] font-mono font-bold text-shiraz block uppercase">Stufe 4</span>
+                    <strong className="text-xs font-bold text-text-main block">Selbsttest &amp; Feedback</strong>
+                    <p className="text-[11px] text-text-main/70 leading-snug">Modulbezogener Selbsttest via <code className="font-mono text-[10px]">ModulTest</code> (standardmäßig eingeklappt, mit Sofortbegründung).</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Design-System, Farben & Striktes Verbot dunkler Boxen */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+                  <Palette size={16} className="text-shiraz" />
+                  3. Farbpalette, Elementbelegungen &amp; Strikte Verbote
+                </h4>
+
+                {/* Strikte Verbote / Anti-Slop Box */}
+                <div className="p-3.5 bg-rose-50/60 border border-rose-200 rounded-xl text-rose-950 text-xs leading-relaxed space-y-1">
+                  <strong className="text-shiraz font-bold block flex items-center gap-1.5">
+                    ⚠️ Verbindliche Layout-Verbote (Systemweiter Standard):
+                  </strong>
+                  <ul className="list-disc pl-4 space-y-0.5 text-text-main/80 text-[11px]">
+                    <li><strong>Keine schwarzen oder dunkelgrauen Boxen:</strong> Schwarze Konsolenhintergründe (<code className="font-mono text-rose-800">bg-slate-900</code>, <code className="font-mono text-rose-800">bg-black</code>) sind in Inhaltsboxen verboten.</li>
+                    <li><strong>Keine harten Ecken:</strong> Strikte Einhaltung von <code className="font-mono text-text-main">rounded-2xl</code> für Hauptkarten und <code className="font-mono text-text-main">rounded-xl</code> für Buttons/Badges.</li>
+                    <li><strong>Keine dominanten Schlagschatten:</strong> Nur dezente Schatten (<code className="font-mono text-text-main">shadow-sm</code>, <code className="font-mono text-text-main">shadow-xs</code>, <code className="font-mono text-text-main">shadow-xxs</code>).</li>
+                    <li><strong>Keine grellen Neonfarben:</strong> Gedeckte, edle Akzentfarben statt leuchtender Werbefarben.</li>
+                  </ul>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+                  <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Farbpalette (Tailwind)</span>
+                    <div className="space-y-1.5 text-xs">
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15 flex justify-between">
+                        <span className="font-semibold text-text-main">Akzent: Shiraz</span>
+                        <span className="font-mono text-[11px] text-shiraz font-bold">#8b1538</span>
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15 flex justify-between">
+                        <span className="font-semibold text-text-main">Rahmen: Home-Grau</span>
+                        <span className="font-mono text-[11px] text-slate-600">border-home-grau/30</span>
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15 flex justify-between">
+                        <span className="font-semibold text-text-main">Infoboxen: Off-White</span>
+                        <span className="font-mono text-[11px] text-slate-600">bg-off-white (#f8f9fa)</span>
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15 flex justify-between">
+                        <span className="font-semibold text-text-main">Historisch: Pergament</span>
+                        <span className="font-mono text-[11px] text-amber-800">#fcf8f2</span>
+                      </div>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-home-grau/15">
-                      <strong>Fließtext:</strong> <code className="font-mono text-[11px]">text-text-main/80</code> mit optimaler Zeilenhöhe (leading-relaxed).
+                  </div>
+
+                  <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Typografie &amp; Kontrast</span>
+                    <div className="space-y-1.5 text-xs text-text-main/80">
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15">
+                        <strong>Titel:</strong> <code className="font-mono text-[11px]">text-text-main</code> (Anthrazit, ermüdungsfrei).
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15">
+                        <strong>Fließtext:</strong> <code className="font-mono text-[11px]">text-text-main/80</code> mit <code className="font-mono text-[11px]">leading-relaxed</code>.
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15">
+                        <strong>Fußnoten:</strong> <code className="font-mono text-[11px]">text-text-main/70</code> oder <code className="font-mono text-[11px]">text-slate-500</code>.
+                      </div>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-home-grau/15">
-                      <strong>Radien &amp; Schatten:</strong> Konsequent <code className="font-mono text-[11px]">rounded-2xl</code> (Hauptkarten) &amp; <code className="font-mono text-[11px]">rounded-xl</code> (Buttons/Badges), sanfte Transitions (<code className="font-mono text-[11px]">duration-200</code>).
+                  </div>
+
+                  <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2">
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Formeln &amp; Zahlenformat</span>
+                    <div className="space-y-1.5 text-xs text-text-main/80">
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15">
+                        <strong>LaTeX:</strong> Ausnahmslos via <code className="font-mono text-[11px]">react-katex</code> (<code className="font-mono text-[11px]">InlineMath</code> &amp; <code className="font-mono text-[11px]">BlockMath</code>).
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15">
+                        <strong>DIN 1333:</strong> Deutsche Zahlenformatierung (Punkt/Komma via <code className="font-mono text-[11px]">formatDeZahl</code>).
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-home-grau/15">
+                        <strong>Reaktionspfeile:</strong> Bedingungen angeben (<code className="font-mono text-[10px]">\xrightarrow&#123;...&#125;</code>, Phasen <code className="font-mono text-[10px]">\uparrow</code>).
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Formel- & Zahlenkonvention */}
-                <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2.5">
-                  <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">3. Formeln &amp; Zahlenformat</span>
-                  <div className="space-y-2 text-xs text-text-main/80">
-                    <div className="p-2 bg-white rounded-lg border border-home-grau/15">
-                      <strong>LaTeX-Rendering:</strong> Ausnahmslos über <code className="font-mono text-[11px]">react-katex</code> (<code className="font-mono text-[11px]">InlineMath</code> &amp; <code className="font-mono text-[11px]">BlockMath</code>).
-                    </div>
-                    <div className="p-2 bg-white rounded-lg border border-home-grau/15">
-                      <strong>DIN 1333 Zahlen:</strong> Verbindliche deutsche Zahlenformatierung (Dezimal-Komma, Tausender-Punkt via <code className="font-mono text-[11px]">formatDeZahl</code>).
-                    </div>
-                    <div className="p-2 bg-white rounded-lg border border-home-grau/15">
-                      <strong>Steckbriefe:</strong> Delegation physikochemischer Stoffdaten an die zentrale <code className="font-mono text-[11px]">BaustoffProfil</code>-Komponente.
-                    </div>
-                  </div>
+              {/* 4. Muster-Template Beispielfach.tsx zum Kopieren */}
+              <div className="space-y-2 pt-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+                    <Code size={16} className="text-shiraz" />
+                    4. Standardkonforme Mustervorlage eines Moduls (<code className="font-mono text-xs">Beispielfach.tsx</code>)
+                  </h4>
+                  <span className="text-[11px] text-text-main/60 font-mono">1:1 Vorlage aus GEMINI.md</span>
                 </div>
+                <pre className="p-4 bg-off-white rounded-xl border border-home-grau/30 text-[11px] font-mono text-text-main overflow-x-auto leading-relaxed">
+{`import React, { useState } from 'react';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { Box, Layers, Activity, BookOpen } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
+import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+
+export default function Beispielfach() {
+  const [activeTab, setActiveTab] = useState<'steckbrief' | 'grundlagen' | 'praxis'>('steckbrief');
+
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
+          <Box className="text-shiraz" /> Modulname
+        </h2>
+
+        {/* Tab-Navigation */}
+        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
+          <button
+            className={\`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer \${
+              activeTab === 'steckbrief'
+                ? 'bg-shiraz text-white border-shiraz shadow-md'
+                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
+            }\`}
+            onClick={() => setActiveTab('steckbrief')}
+          >
+            <BookOpen size={16} /> Steckbrief
+          </button>
+        </div>
+
+        {/* Dynamischer Inhalt je nach activeTab */}
+        {activeTab === 'steckbrief' && (
+          <div className="animate-in fade-in duration-300">
+            <BaustoffProfil materialKey="beispiel" />
+          </div>
+        )}
+      </div>
+
+      {/* Stufe 3: Rechnerische Vertiefung */}
+      <FormulaDerivationBox
+        title="Beispiel: Stoffberechnung"
+        zielGleichung="f_c = \\alpha \\cdot \\sigma"
+        eingangsWerte={[...]}
+        herleitung={[...]}
+      />
+
+      {/* Stufe 4: Selbsttest (standardmäßig eingeklappt) */}
+      <ModulTest moduleId="beispiel" />
+
+      {/* Standardisierter Footer */}
+      <ModuleFooter
+        wikipedia={[{ title: 'Fachbereich', url: 'https://de.wikipedia.org/' }]}
+        literatur={['Wendehorst Baustoffkunde (37. Auflage, Springer Vieweg)']}
+        regelwerke={[{ title: 'DIN EN 1234', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1234' }]}
+        formeln={[]}
+      />
+    </div>
+  );
+}`}
+                </pre>
               </div>
             </div>
           </div>
