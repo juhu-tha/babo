@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, LucideIcon, Search, FileSignature, BookOpen, ArrowRight, HelpCircle, Calendar, Check, X, AlertCircle, Scale, Droplets, Leaf, ClipboardList } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 type AbfallTab = 'schema' | 'hierarchie' | 'avv' | 'ebv' | 'deponie' | 'altlasten' | 'rueckbau' | 'eanv' | 'pn98' | 'altholz' | 'checklisten';
@@ -168,7 +170,7 @@ export default function Abfaelle() {
       badgeColorClass: 'bg-slate-100 text-slate-800 border border-home-grau/30',
       labelColorClass: 'text-shiraz font-semibold',
       icon: FileSignature,
-      wann: 'Vor und während des Transports gefährlicher Abfälle (Sonderabfall ab 2 Tonnen pro Jahr).',
+      wann: 'Vor und während der Entsorgung gefährlicher Abfälle (Kleinmengen bis 2 t/a sind vom Entsorgungsnachweis befreit, § 2 Abs. 2 NachwV).',
       was: 'Gesetzlich überwachungspflichtige Abfälle (z.B. Asbest, teerhaltiger Asphalt).',
       wie: 'Vollelektronisches Verfahren: Signierung über Signaturkarten (Begleitschein, Entsorgungsnachweis).',
       wozu: 'Lückenlose, fälschungssichere und staatlich kontrollierte Überwachung des Sonderabfall-Weges.'
@@ -207,25 +209,25 @@ export default function Abfaelle() {
     let status: 'allowed' | 'restricted' | 'forbidden' = 'allowed';
     let message = '';
     const conditions: string[] = [];
-    let anzeige = 'Keine Anzeigepflicht nach § 22 EBV (Bagatellbereich oder unbelastetes BM-0 Material).';
+    let anzeige = 'Keine Anzeigepflicht nach § 22 EBV für diese Kombination (Anzeigepflicht nur für RC-3, BM-F3, BG-F3 und bestimmte Schlacken/Aschen ab Mengenschwelle sowie für Einbau in Schutzgebieten).';
 
     if (ebvVolumen === 'ab_250') {
-      if (ebvMaterial !== 'bm0' && ebvMaterial !== 'bg0') {
-        anzeige = '⚠️ MELDUNGSPFLICHTIG: Überschreitung der 250 m³ Bagatellgrenze nach § 22 EBV! Eine schriftliche Voranzeige mind. 4 Wochen vor Baubeginn sowie eine Abschlussanzeige binnen 2 Wochen nach Fertigstellung sind bei der zuständigen Unteren Umweltschutzbehörde zwingend einzureichen. Eintragung in das Ersatzbaustoffkataster erfolgt behördenseitig.';
+      if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3' || ebvMaterial === 'hmva2' || ebvMaterial === 'hmva1') {
+        anzeige = '⚠️ ANZEIGEPFLICHTIG nach § 22 EBV (Gesamtvolumen ≥ 250 m³; HMVA-1 bereits ab 50 m³): Voranzeige mindestens vier Wochen vor Beginn des Einbaus nach Muster Anlage 8 sowie Abschlussanzeige nach Fertigstellung (Ermittlung binnen zwei Wochen) bei der zuständigen Behörde. Die Behörde führt ein Kataster.';
       } else {
-        anzeige = 'Meldungsfrei, da es sich um unbelastetes Primärbodenmaterial (BM-0) handelt.';
+        anzeige = 'Keine mengenabhängige Anzeigepflicht nach § 22 Abs. 1 EBV für diese Materialklasse (Ausnahme: Einbau in Schutzgebieten, § 22 Abs. 2).';
       }
     }
 
     if (ebvSchutzgebiet === 'wsg_1_2') {
       if (ebvMaterial === 'bm0' || ebvMaterial === 'bg0') {
         status = 'restricted';
-        message = 'Einbau stark eingeschränkt.';
-        conditions.push('Auch unbelastetes Bodenmaterial (BM-0) darf in Wasserschutzgebieten der Zone I/II nur unter engsten materiellen Ausnahmen und behördlichen Einzelerlaubnissen der höheren Wasserbehörde eingebaut werden.');
+        message = 'Zone I: verboten – Zone II: zulässig.';
+        conditions.push('In Zone I ist jeder Einbau mineralischer Ersatzbaustoffe verboten; in Zone II sind nur BM-0, BG-0, GS-0 und Sand aus der Kiesgewinnung (SKG) sowie deren Gemische zulässig (§ 19 Abs. 6 EBV). Wasserrechtliche Schutzgebietsverordnungen haben Vorrang.');
       } else {
         status = 'forbidden';
         message = 'STRENGSTENS VERBOTEN!';
-        conditions.push('In Wasserschutzgebieten der Zonen I und II ist der Einbau jeglicher mineralischer Ersatzbaustoffe (MEB) abgesehen von unbedenklichem BM-0 gesetzlich untersagt (§ 21 EBV).');
+        conditions.push('In Zone I ist jeder Einbau verboten, in Zone II sind nur BM-0, BG-0, GS-0 und SKG zulässig (§ 19 Abs. 6 EBV).');
       }
     }
     else if (ebvSchutzgebiet === 'wsg_3') {
@@ -237,17 +239,17 @@ export default function Abfaelle() {
         if (ebvEinbauweise === 'offen') {
           status = 'forbidden';
           message = 'VERBOTEN: Offener unversiegelter Einbau in WSG-Zonen untersagt.';
-          conditions.push('Zur Trinkwasserreinhaltung beabsichtigt der Gesetzgeber hier dichte, versiegelte Tragschichten.');
+          conditions.push('In Zone III A/III B sind nur die in Anlage 2 EBV für Wasserschutzgebiete ausgewiesenen Einbauweisen zulässig; offene Bauweisen sind für die meisten Klassen dort nicht vorgesehen (Einbautabelle prüfen).');
         } else {
           status = 'restricted';
           message = 'Zulässig unter strengen hydrogeologischen Auflagen.';
-          conditions.push('Der Abstand zum höchsten zu erwartenden Grundwasserstand muss mindestens 1,5 Meter betragen.');
-          conditions.push('Es muss eine lückenlose, natürliche Grundwasserdeckschicht vorhanden sein (wie Ton, Lehm).');
+          conditions.push('Günstige Grundwasserdeckschicht: Sickerstrecke über dem höchsten zu erwartenden Grundwasserstand > 1 m zuzüglich 0,5 m Sicherheitsabstand (§ 19 Abs. 8 EBV).');
+          conditions.push('Die Bodenart der Deckschicht (Sand, Lehm/Schluff/Ton) bestimmt nach Anlage 2 EBV, welche Einbauweise zulässig ist.');
         }
       } else {
         status = 'forbidden';
-        message = 'STRENGSTENS VERBOTEN!';
-        conditions.push('Höher belastete Ersatzbaustoffe (> RC-1 bzw. > BM-0*) dürfen in keinem Fall in Wassersicherheitszonen verbaut werden (Schutzbereichsverbot).');
+        message = 'Weitgehend unzulässig – nur nach Einbautabelle.';
+        conditions.push('Höher belastete Klassen sind in Zone III A/III B nur in wenigen, in Anlage 2 EBV ausdrücklich zugelassenen (gebundenen bzw. abgedeckten) Einbauweisen möglich; in Karst- und stark klüftigen Gebieten sind RC-3, BM-F3, BG-F3 und GS-3 verboten (§ 19 Abs. 7). Die Lehrlogik stuft dies vereinfacht als unzulässig ein.');
       }
     }
     else {
@@ -260,11 +262,11 @@ export default function Abfaelle() {
           if (ebvGrundwasser === 'deckschicht_nein') {
             status = 'restricted';
             message = 'Zulässig unter Schutzauflagen.';
-            conditions.push('Der freie Sickerweg muss einen Mindestgrundwasserabstand von 1,5 Metern einhalten, da keine bindige Deckschicht vorliegt.');
+            conditions.push('Ohne günstige Deckschicht gelten die Spalten „ungünstig“ der Einbautabellen; für RC-1, BM-0* u. a. ist eine Sickerstrecke von mindestens 0,1 bis 1 m zuzüglich 0,5 m Sicherheitsabstand nachzuweisen (§ 19 Abs. 8 EBV).');
           } else {
             status = 'allowed';
             message = 'Zulässig.';
-            conditions.push('Die natürliche Deckschicht schützt den hydrogeologischen Pfad. Einbauhöhe über Grundwasser >= 1,0 m ausreichend.');
+            conditions.push('Günstige Grundwasserdeckschicht: Sickerstrecke > 1 m zuzüglich 0,5 m Sicherheitsabstand (§ 19 Abs. 8 EBV).');
           }
         } else {
           status = 'allowed';
@@ -275,7 +277,7 @@ export default function Abfaelle() {
         if (ebvEinbauweise === 'offen') {
           status = 'restricted';
           message = 'Eingeschränkt zulässig.';
-          conditions.push('Nur bei gesichertem Grundwasserabstand > 1,5 m zulässig.');
+          conditions.push('Nur bei günstiger Grundwasserdeckschicht (Sickerstrecke > 1 m + 0,5 m Sicherheitsabstand) in den nach Anlage 2 zulässigen Einbauweisen.');
           conditions.push('Nicht gestattet in sandigen Böden des Untergrundes ohne dämpfende Feinkornbarriere (Lehm/Schluff).');
         } else {
           status = 'allowed';
@@ -291,7 +293,7 @@ export default function Abfaelle() {
           status = 'restricted';
           message = 'Zulässig mit bautechnischem Schutz.';
           conditions.push('Der Einbau muss mit einer wasserundurchlässigen Deckschicht (Asphalt, Beton, dichte Bodenplatte) vollflächig überdeckt werden.');
-          conditions.push('Der Grundwasserabstand muss mindestens 1,0 m betragen.');
+          conditions.push('Grundwasserdeckschicht und Einbauweise nach Anlage 2 EBV prüfen (Sicherheitsabstand 0,5 m zusätzlich zur Sickerstrecke).');
         }
       } else if (ebvMaterial === 'bm_f2' || ebvMaterial === 'hmva1') {
         if (ebvEinbauweise === 'offen') {
@@ -311,9 +313,9 @@ export default function Abfaelle() {
         } else {
           status = 'restricted';
           message = 'Eingeschränkt zulässig (Umschließung).';
-          conditions.push('Ausschließlich in bautehnisch vollständig umschlossenen Erdbaukörpern (z.B. gekapselt mit Bentonit-Dichtungsbahnen) erlaubt.');
-          conditions.push('Grundwasserabstand von mindestens 1,5 m muss zwingend gewahrt bleiben.');
-          conditions.push('Das Material ist unabhängig von der Kubatur im Kataster der zuständigen Behörde zu registrieren.');
+          conditions.push('Ausschließlich in bautechnisch vollständig umschlossenen Erdbaukörpern (z.B. gekapselt mit Bentonit-Dichtungsbahnen) erlaubt.');
+          conditions.push('Günstige Grundwasserdeckschicht erforderlich; in Karst- und stark klüftigen Gebieten unzulässig (§ 19 Abs. 7 EBV).');
+          conditions.push('Ab 250 m³ Gesamtvolumen anzeigepflichtig (§ 22 Abs. 1 EBV); die Behörde führt ein Kataster.');
         }
       }
     }
@@ -827,9 +829,9 @@ export default function Abfaelle() {
                       >
                         <option value="bm0">Bodenmaterial BM-0 / Baggergut BG-0 (vollst. unbelastet)</option>
                         <option value="bm0_star">Bodenmaterial BM-0* / Baggergut BG-0* (Schadstoffvorkommen minimal)</option>
-                        <option value="rc1">Recycling-Baustoff RC-1 / Gleisschotter GS-F1 (sehr gut aufbereitet)</option>
+                        <option value="rc1">Recycling-Baustoff RC-1 / Gleisschotter GS-1 (sehr gut aufbereitet)</option>
                         <option value="bm_f1">Bodenmaterial BM-F1 / Baggergut BG-F1 (leicht belasteter Erdaushub)</option>
-                        <option value="rc2">Recycling-Baustoff RC-2 / Gleisschotter GS-F2 (mittlere Eluatbelastung)</option>
+                        <option value="rc2">Recycling-Baustoff RC-2 / Gleisschotter GS-2 (mittlere Eluatbelastung)</option>
                         <option value="bm_f2">Bodenmaterial BM-F2 / Hausmüllverbrennungsasche HMVA-1</option>
                         <option value="rc3">Recycling-Baustoff RC-3 / Bodenmaterial BM-F3 / HMVA-2</option>
                       </select>
@@ -1136,17 +1138,17 @@ export default function Abfaelle() {
           {/* Deponie */}
           {activeTab === 'deponie' && (() => {
             const deponieParams: Record<string, { name: string; unit: string; limits: number[]; isEluat: boolean }> = {
-              toc: { name: 'TOC (Gesamter organisch gebundener Kohlenstoff)', unit: 'Masse-%', limits: [1.0, 1.0, 3.0, 6.0], isEluat: false },
+              toc: { name: 'TOC (Gesamter organisch gebundener Kohlenstoff)', unit: 'Masse-% TM', limits: [1.0, 1.0, 3.0, 6.0], isEluat: false },
               loi: { name: 'Glühverlust (Anteil an brennbaren organischen Stoffen)', unit: 'Masse-%', limits: [3.0, 3.0, 5.0, 10.0], isEluat: false },
-              sulfat: { name: 'Sulfat (SO4 im Sickerwasser/Eluat)', unit: 'mg/l im Eluat', limits: [50, 1000, 4000, 5000], isEluat: true },
-              chlorid: { name: 'Chlorid (Cl im Eluat)', unit: 'mg/l im Eluat', limits: [10, 1500, 4500, 25000], isEluat: true },
+              sulfat: { name: 'Sulfat (SO4 im Sickerwasser/Eluat)', unit: 'mg/l im Eluat', limits: [100, 2000, 2000, 5000], isEluat: true },
+              chlorid: { name: 'Chlorid (Cl im Eluat)', unit: 'mg/l im Eluat', limits: [80, 1500, 1500, 2500], isEluat: true },
               pb: { name: 'Blei (Pb im Eluat)', unit: 'mg/l im Eluat', limits: [0.05, 0.2, 1.0, 5.0], isEluat: true },
-              as: { name: 'Arsen (As im Eluat)', unit: 'mg/l im Eluat', limits: [0.01, 0.2, 0.5, 2.5], isEluat: true },
-              cd: { name: 'Cadmium (Cd im Eluat)', unit: 'mg/l im Eluat', limits: [0.002, 0.05, 0.1, 0.5], isEluat: true },
-              cu: { name: 'Kupfer (Cu im Eluat)', unit: 'mg/l im Eluat', limits: [0.05, 2.0, 5.0, 10.0], isEluat: true },
-              ni: { name: 'Nickel (Ni im Eluat)', unit: 'mg/l im Eluat', limits: [0.04, 0.2, 1.0, 10.0], isEluat: true },
-              zn: { name: 'Zink (Zn im Eluat)', unit: 'mg/l im Eluat', limits: [0.1, 2.0, 5.0, 20.0], isEluat: true },
-              kw: { name: 'Kohlenwasserstoff-Index (KW)', unit: 'mg/kg TM (Feststoff)', limits: [500, 500, 1000, 50000], isEluat: false }
+              as: { name: 'Arsen (As im Eluat)', unit: 'mg/l im Eluat', limits: [0.05, 0.2, 0.2, 2.5], isEluat: true },
+              cd: { name: 'Cadmium (Cd im Eluat)', unit: 'mg/l im Eluat', limits: [0.004, 0.05, 0.1, 0.5], isEluat: true },
+              cu: { name: 'Kupfer (Cu im Eluat)', unit: 'mg/l im Eluat', limits: [0.2, 1.0, 5.0, 10.0], isEluat: true },
+              ni: { name: 'Nickel (Ni im Eluat)', unit: 'mg/l im Eluat', limits: [0.04, 0.2, 1.0, 4.0], isEluat: true },
+              zn: { name: 'Zink (Zn im Eluat)', unit: 'mg/l im Eluat', limits: [0.4, 2.0, 5.0, 20.0], isEluat: true },
+              kw: { name: 'Mineralölkohlenwasserstoffe C10–C40 (nur DK 0 begrenzt)', unit: 'mg/kg TM (Feststoff)', limits: [500, Infinity, Infinity, Infinity], isEluat: false }
             };
 
             const paramInfo = deponieParams[depVSelectedParam] || deponieParams.toc;
@@ -1291,9 +1293,9 @@ export default function Abfaelle() {
                       {paramInfo.limits.map((lim, idx) => {
                         const classes = [
                           { label: 'DK 0 (Inert)', desc: 'Unbelastete Boden- und Bauschuttfraktionen', color: 'bg-slate-100', text: 'text-slate-800' },
-                          { label: 'DK I (Sehr gering)', desc: 'Leicht mineralisch belastete Stoffe', color: 'bg-slate-100', text: 'text-slate-705' },
-                          { label: 'DK II (Mäßig)', desc: 'Regelfall für gemischte Bauabfälle', color: 'bg-slate-100', text: 'text-slate-705 font-medium' },
-                          { label: 'DK III (Sondermüll)', desc: 'Überwachungspflichtiger Gift- & Sonderabfall', color: 'bg-slate-150', text: 'text-slate-800 font-bold' }
+                          { label: 'DK I (Gering)', desc: 'Gering belastete mineralische Abfälle', color: 'bg-slate-100', text: 'text-slate-705' },
+                          { label: 'DK II (Mäßig)', desc: 'Höher belastete mineralische und vorbehandelte Siedlungsabfälle', color: 'bg-slate-100', text: 'text-slate-705 font-medium' },
+                          { label: 'DK III (Gefährlich)', desc: 'Gefährliche Abfälle, oberirdische Deponie', color: 'bg-slate-150', text: 'text-slate-800 font-bold' }
                         ];
                         const cls = classes[idx];
                         const isOk = depVInputValue <= lim;
@@ -1303,7 +1305,7 @@ export default function Abfaelle() {
                             <div>
                               <div className="flex items-center gap-2">
                                 <span className={`inline-block px-2 py-0.5 text-xs font-bold rounded ${cls.color} ${cls.text} border border-home-grau/30`}>{cls.label}</span>
-                                <span className="font-bold text-slate-800">C ≤ {formatDeWert(lim)} {paramInfo.unit}</span>
+                                <span className="font-bold text-slate-800">{Number.isFinite(lim) ? `C ≤ ${formatDeWert(lim)} ${paramInfo.unit}` : 'kein Zuordnungswert'}</span>
                               </div>
                               <p className="text-xs text-slate-500 mt-0.5">{cls.desc}</p>
                             </div>
@@ -2105,77 +2107,51 @@ export default function Abfaelle() {
           {/* Probenahme LAGA PN 98 */}
           {activeTab === 'pn98' && (() => {
             // Calculate LAGA PN 98 limits dynamically
-            let einzelproben = 4;
-            let mischproben = 1;
-
-            if (pnMaterialState === 'homogen') {
-              if (pnVolume <= 30) {
-                einzelproben = 4;
-                mischproben = 1;
-              } else if (pnVolume <= 100) {
-                einzelproben = 6;
-                mischproben = 1;
-              } else if (pnVolume <= 500) {
-                einzelproben = 12;
-                mischproben = 1;
-              } else if (pnVolume <= 1000) {
-                einzelproben = 18;
-                mischproben = 1;
-              } else {
-                const multi = Math.ceil((pnVolume - 1000) / 1000);
-                einzelproben = 18 + multi * 6;
-                mischproben = 1 + multi;
-              }
+            // LAGA PN 98 (Mitteilung 32), Tabelle 2: Mindestanzahl Einzel-, Misch- und Laborproben
+            // (gilt unabhängig von der Homogenität; Reduktion nur bei dokumentierter Vorkenntnis zulässig)
+            const pnStufen = [30, 60, 100, 150, 200, 300, 400, 500, 600];
+            let mischproben = 10;
+            let laborproben = 10;
+            if (pnVolume <= 600) {
+              const idx = pnStufen.findIndex(g => pnVolume <= g);
+              mischproben = idx + 2;
+              laborproben = idx + 2;
             } else {
-              // heterogen
-              if (pnVolume <= 30) {
-                einzelproben = 10;
-                mischproben = 1;
-              } else if (pnVolume <= 100) {
-                einzelproben = 15;
-                mischproben = 1;
-              } else if (pnVolume <= 500) {
-                einzelproben = 30;
-                mischproben = 2;
-              } else if (pnVolume <= 1000) {
-                einzelproben = 45;
-                mischproben = 3;
-              } else {
-                const multi = Math.ceil((pnVolume - 1000) / 1000);
-                einzelproben = 45 + multi * 15;
-                mischproben = 3 + multi;
-              }
+              mischproben = 10 + Math.ceil((pnVolume - 600) / 100);
+              laborproben = 10 + Math.ceil((pnVolume - 600) / 300);
+            }
+            const einzelproben = 4 * mischproben;
+            if (pnMaterialState === 'heterogen') {
+              // Heterogenes Material: Tabellenwerte sind Mindestwerte; ggf. Teilmengen bilden (keine Reduktion)
+              laborproben = mischproben;
             }
 
             // Container size constraints based on grain size
-            let minVolEinzel = 5.0;
-            let minVolVerbund = 10.0;
-            let grainLabel = 'Grobkörnig (bis 32 mm)';
+            // LAGA PN 98, Tabelle 3: Mindestvolumen Einzel-/Laborprobe nach Größtkorn
+            let minVolEinzel = 2.0;
+            let minVolVerbund = 4.0;
+            let grainLabel = 'Grobkörnig (20 < d ≤ 50 mm)';
 
             if (pnGrainSize === '2') {
               minVolEinzel = 0.5;
-              minVolVerbund = 2.0;
-              grainLabel = 'Sehr feinkörnig (≤ 2 mm)';
-            } else if (pnGrainSize === '8') {
+              minVolVerbund = 1.0;
+              grainLabel = 'Feinkörnig (d ≤ 2 mm)';
+            } else if (pnGrainSize === '8' || pnGrainSize === '16') {
               minVolEinzel = 1.0;
-              minVolVerbund = 4.0;
-              grainLabel = 'Feinkörnig (≤ 8 mm)';
-            } else if (pnGrainSize === '16') {
-              minVolEinzel = 1.5;
-              minVolVerbund = 6.0;
-              grainLabel = 'Mittelkörnig (≤ 16 mm)';
+              minVolVerbund = 2.0;
+              grainLabel = 'Mittelkörnig (2 < d ≤ 20 mm)';
             } else if (pnGrainSize === '32') {
+              minVolEinzel = 2.0;
+              minVolVerbund = 4.0;
+              grainLabel = 'Grobkörnig (20 < d ≤ 50 mm)';
+            } else if (pnGrainSize === '63') {
               minVolEinzel = 5.0;
               minVolVerbund = 10.0;
-              grainLabel = 'Grobkörnig (≤ 32 mm)';
-            } else if (pnGrainSize === '63') {
-              minVolEinzel = 10.0;
-              minVolVerbund = 20.0;
-              grainLabel = 'Sehr grobkörnig (≤ 63 mm)';
+              grainLabel = 'Sehr grobkörnig (50 < d ≤ 120 mm)';
             } else if (pnGrainSize === '120') {
-              minVolEinzel = 20.0;
-              minVolVerbund = 40.0;
-              grainLabel = 'Blockig / Stückig (> 63 mm)';
+              minVolEinzel = 5.0;
+              minVolVerbund = 10.0;
+              grainLabel = 'Stückig (d > 120 mm: Stücke einzeln als Einzelprobe)';
             }
 
             return (
@@ -2255,8 +2231,8 @@ export default function Abfaelle() {
                           <option value="8">Feinkorn / Siebschutt (d ≤ 8 mm)</option>
                           <option value="16">Splitt / mittlerer Schutt (d ≤ 16 mm)</option>
                           <option value="32">Regelfall Bauschutt-Brechergut (d ≤ 32 mm)</option>
-                          <option value="63">Grobmaterial / Bahnschotter (d ≤ 63 mm)</option>
-                          <option value="120">Blockig / Ungebrochen / Massiv (d &gt; 63 mm)</option>
+                          <option value="63">Grobmaterial / Bahnschotter (50 &lt; d ≤ 120 mm)</option>
+                          <option value="120">Stückig / Ungebrochen (d &gt; 120 mm)</option>
                         </select>
                       </div>
                     </div>
@@ -2293,7 +2269,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Mindestvolumen je Einzelprobe</span>
-                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolEinzel)} Liter <span className="text-xs font-semibold text-slate-500">({formatDeWert(minVolEinzel)} kg)</span></div>
+                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolEinzel)} Liter <span className="text-xs font-semibold text-slate-500">(≈ {formatDeZahl(minVolEinzel * 1.6, 1)} kg bei 1,6 t/m³)</span></div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Abhängig vom Größtkorn. Zu geringe Probemengen verletzen das Repräsentativitätsgebot der LAGA Richtlinie.
                           </p>
@@ -2304,7 +2280,7 @@ export default function Abfaelle() {
                       <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl flex items-center justify-between">
                         <div>
                           <span className="text-xs font-black text-slate-500 uppercase">Laborproben-Sollvolumen</span>
-                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolVerbund)} Liter <span className="text-xs font-semibold text-slate-500">({formatDeWert(minVolVerbund)} kg)</span></div>
+                          <div className="text-2xl font-extrabold text-slate-800 mt-1">{formatDeWert(minVolVerbund)} Liter <span className="text-xs font-semibold text-slate-500">(Laborprobe; {formatDeWert(laborproben)} Laborproben)</span></div>
                           <p className="text-xs text-slate-500 mt-1 leading-normal">
                             Mindestvolumen der laborbereiten Probe nach Homogenisierung (mittels Kegel- &amp; Viertelmethode oder Probenteiler).
                           </p>
@@ -2313,7 +2289,7 @@ export default function Abfaelle() {
                     </div>
 
                     <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-150 text-xs leading-relaxed text-emerald-950 font-semibold">
-                      📋 <strong className="text-emerald-900 leading-normal">Gesamtbilanz für {formatDeWert(pnVolume)} m³ ({pnMaterialState}):</strong> Es müssen mindestens <strong>{formatDeWert(einzelproben)} Einzelproben</strong> à <strong>{formatDeWert(minVolEinzel)} l</strong> gezogen werden. Das Gesamtgewicht des Beprobungsvorganges im Feld liegt somit bei mindestens <strong>{formatDeZahl(einzelproben * minVolEinzel, 1)} Litern / kg</strong> mineralischem Probengut, um daraus die <strong>{formatDeWert(mischproben)} Laborprobe(n)</strong> zu speisen.
+                      📋 <strong className="text-emerald-900 leading-normal">Gesamtbilanz für {formatDeWert(pnVolume)} m³ ({pnMaterialState}):</strong> Es müssen mindestens <strong>{formatDeWert(einzelproben)} Einzelproben</strong> à <strong>{formatDeWert(minVolEinzel)} l</strong> gezogen werden. Das Gesamtgewicht des Beprobungsvorganges im Feld liegt somit bei mindestens <strong>{formatDeZahl(einzelproben * minVolEinzel, 1)} Litern</strong> mineralischem Probengut, um daraus die <strong>{formatDeWert(mischproben)} Laborprobe(n)</strong> zu speisen.
                     </div>
                   </div>
                 </div>
@@ -2330,10 +2306,10 @@ export default function Abfaelle() {
                     </p>
                     <ul className="list-disc pl-5 mt-2 space-y-2 text-slate-600 font-semibold">
                       <li>
-                        <strong>Geltungsbereich Boden &amp; Ersatzbaustoffe (§ 14 BBodSchV):</strong> Beprobungen von anstehendem Boden, Bodenaushub und Boden-Ersatzbaustoffen (unter BBodSchV bzw. EBV) verlangen zwingend die Anwendung der <strong>DIN 19698-1</strong> (Grundregeln) und <strong>DIN 19698-2</strong> (Spezifische Parameter). Das LAGA PN 98 Regelwerk bleibt historisches Fundament, wird aber im Bodenschutzrecht formell durch DIN abgelöst.
+                        <strong>Geltungsbereich Boden &amp; Ersatzbaustoffe (BBodSchV Anlage 3, EBV; Zuordnung manuell prüfen):</strong> Beprobungen von anstehendem Boden, Bodenaushub und Boden-Ersatzbaustoffen (unter BBodSchV bzw. EBV) verweisen für Haufwerke auf <strong>DIN 19698-1</strong> (Grundregeln) und <strong>DIN 19698-2</strong> (Spezifische Parameter). Die LAGA PN 98 bleibt im Abfallvollzug maßgeblich; DIN 19698 übernimmt im Bodenschutzrecht deren Grundsätze.
                       </li>
                       <li>
-                        <strong>Geltungsbereich Bauschutt &amp; Deponien (§ 6 DepV):</strong> Bauschuttfraktionen und Zuordnungsanalysen mineralischer Abfälle zur Deponierung stützen sich nach wie vor auf den Vollzug der <strong>LAGA PN 98</strong> in Kombination mit landsspezifischen Richtlinien des Landesamtes für Umwelt (z.B. Bayern, Thüringen, Hessen).
+                        <strong>Geltungsbereich Bauschutt &amp; Deponien (DepV § 8, Anhang 4):</strong> Bauschuttfraktionen und Zuordnungsanalysen mineralischer Abfälle zur Deponierung stützen sich nach wie vor auf den Vollzug der <strong>LAGA PN 98</strong> in Kombination mit landsspezifischen Richtlinien des Landesamtes für Umwelt (z.B. Bayern, Thüringen, Hessen).
                       </li>
                       <li>
                         <strong>Die Probenahmestrategie:</strong> Beide Normen fordern für Haufwerke das systematische Abtragen oder Durchstechen mittels Baggerschaufeln und weisen oberflächliche Entnahmen (Randbeprobungen) scharf zurück.
@@ -2351,13 +2327,13 @@ export default function Abfaelle() {
                     </p>
                     <ul className="list-disc pl-5 mt-2 space-y-2 text-slate-600 font-semibold">
                       <li>
-                        <strong>Bayerisches Landesamt für Umwelt (LfU Bayern):</strong> Erbaushubhaufen von Kleinstbauvorhaben im privaten Bereich können bei Volumina <strong>&lt; 50 m³</strong> oft vereinfacht mit 2 bis 3 Mischproben ohne vollumfängliches PN 98 Raster deklariert werden, sofern kein Altlastverdacht (Vornutzung) besteht.
+                        <strong>Bayerisches Landesamt für Umwelt (LfU Bayern):</strong> Die Arbeitshilfe „Umgang mit Bodenmaterial“ (Stand Oktober 2025) sieht für kleine Baumaßnahmen bis <strong>500 m³</strong> ohne Kontaminationsverdacht Ausnahmen von der Untersuchungspflicht vor und begrenzt Haufwerke in Zwischenlägern auf 3.000 m³ je Untersuchung (Voraussetzungen im Original prüfen).
                       </li>
                       <li>
                         <strong>Das "Vierteln &amp; Schaufeln"-Verfahren:</strong> Zur Verkleinerung und Homogenisierung wird der Haufwerks-Gesamtauszug kegelförmig aufgeschüttet, in vier Quadranten geteilt, wovon zwei gegenüberliegende Viertel verworfen werden. Dieser Vorgang wird wiederholt, bis das Sollvolumen der Laborflaschen erreicht ist.
                       </li>
                       <li>
-                        <strong>Gefahrenquelle Falschbeprobung:</strong> Gerichtlich anerkannte Beweissicherungsverfahren scheitern fast ausnahmslos an Fehlern beim Beprobungsprotokoll oder fehlenden Sachkundenachweisen der Probenehmer.
+                        <strong>Gefahrenquelle Falschbeprobung:</strong> Häufige Ursache für nicht verwertbare Ergebnisse sind Fehler im Probenahmeprotokoll oder fehlende Fachkunde der Probenehmer.
                       </li>
                     </ul>
                   </div>
@@ -2582,7 +2558,7 @@ export default function Abfaelle() {
                           step: 1,
                           title: 'Historische Recherche des Baukörpers',
                           desc: 'Werten Sie alte Pläne, statische Nachweise und das Baulastenverzeichnis aus. Klären Sie das Baujahr (Verdacht auf asbest- und teerhaltige Baustoffe bei Objekten mit Errichtung vor 1993, KMF-Fasern vor 2000). Analysiere die gewerbliche Vornutzung (Reinigung, Galvanik, Tankstelle).',
-                          ref: 'VDI 6202 Blatt 1 Abs. 5.1'
+                          ref: 'VDI 6202 Blatt 1:2013-10; § 5a GefStoffV'
                         },
                         {
                           step: 2,
@@ -2592,15 +2568,15 @@ export default function Abfaelle() {
                         },
                         {
                           step: 3,
-                          title: 'Probenahme- und Analytikplan (VDI 3866 / 3876)',
+                          title: 'Probenahme- und Analytikplan (VDI 6202 Blatt 3, VDI 3866 Blatt 5)',
                           desc: 'Legen Sie ein systematisches Raster zur Probenentnahme fest. Führen Sie gezielte Laboranalysen an Putzen, Klebern und Spachtelmassen (REM-EDX Analysen auf Asbest nach VDI 3866 Blatt 5) sowie nasschemische Aufschlüsse für PAK, CPS, PCP und Schwermetalle durch.',
-                          ref: 'VDI 3866 / DIN EN ISO 16000-9'
+                          ref: 'VDI 6202 Blatt 3:2021-09 / VDI 3866 Blatt 5'
                         },
                         {
                           step: 4,
                           title: 'Erstellung des Schadstoff- &amp; Bauteilkatasters',
-                          desc: 'Zusammenfassung aller Fundorte, Schadstoffqualitäten sowie Mengenschätzungen in einem fälschungssicheren Gutachten. Formulieren Sie spezifische Entsorgungs- und Rückbauvorgaben für die ausführenden Unternehmen und lege Entsorgungswege fest.',
-                          ref: 'VDI 6202 Blatt 1 Abs. 6'
+                          desc: 'Zusammenfassung aller Fundorte, Schadstoffqualitäten sowie Mengenschätzungen in einem fälschungssicheren Gutachten. Formulieren Sie spezifische Entsorgungs- und Rückbauvorgaben für die ausführenden Unternehmen und legen Sie Entsorgungswege fest.',
+                          ref: 'VDI 6202 Blatt 1:2013-10; DIN SPEC 91484:2023-09'
                         },
                         {
                           step: 5,
@@ -2735,20 +2711,20 @@ export default function Abfaelle() {
                         {
                           step: 2,
                           title: 'Haufwerksvolumen schätzen &amp; Beprobungszahl ermitteln',
-                          desc: 'Schätzen Sie das Volumen (V) des zu prüfenden Haufwerks ein. Ermitteln Sie die Zahl der erforderlichen Einzelproben (EP) und Mischproben (MP). (Z.B. bis 30 m³: 4 EP, 1 MP; bis 100 m³: 6 EP, 1 MP; bis 500 m³: 10 EP, 2 MP gemäß LAGA Tabelle 2).',
+                          desc: 'Schätzen Sie das Volumen (V) des zu prüfenden Haufwerks ein. Ermitteln Sie die Zahl der erforderlichen Einzelproben (EP) und Mischproben (MP). (LAGA PN 98 Tabelle 2: bis 30 m³ 8 EP / 2 MP / 2 LP; bis 100 m³ 16 EP / 4 MP / 4 LP; bis 600 m³ 40 EP / 10 MP / 10 LP; darüber je angefangene 100 m³ eine weitere MP).',
                           ref: 'LAGA PN 98 Tabelle 2'
                         },
                         {
                           step: 3,
                           title: 'Sachkundeprüfung &amp; Probenahmeausrüstung',
-                          desc: 'Beauftragen Sie ausschließlich Fachpersonal mit zertifiziertem Sachkundenachweis nach LAGA PN 98 / DIN ISO. Stelle kontaminationsfreies Werkzeug (Spaten, Schaufeln aus Edelstahl) sowie sterile Probenbehälter (Weithals-Glasflaschen für Organik, PE-Beutel für Schwermetalle) bereit.',
+                          desc: 'Beauftragen Sie ausschließlich Fachpersonal mit zertifiziertem Sachkundenachweis nach LAGA PN 98 / DIN ISO. Stellen Sie kontaminationsfreies Werkzeug (Spaten, Schaufeln aus Edelstahl) sowie sterile Probenbehälter (Weithals-Glasflaschen für Organik, PE-Beutel für Schwermetalle) bereit.',
                           ref: 'DGUV-Regel 101-004 / LAGA'
                         },
                         {
                           step: 4,
                           title: 'Einzelproben (EP) im Feld entnehmen',
                           desc: 'Entnehmen Sie die Einzelproben gleichmäßig über das gesamte Haufwerksvolumen verteilt (oben, mitte, unten, tief im Haldenkörper). Verwenden Sie ggf. einen Minibagger, um tiefe Schichten aufzuschließen. Kratzen Sie oberflächlich verwitterte Außenzonen (ca. 10 cm Tiefe) ab und verwerfen Sie diese.',
-                          ref: 'DIN 19698-1 Abs. 7.4'
+                          ref: 'DIN 19698-1:2014-05'
                         },
                         {
                           step: 5,
@@ -2760,7 +2736,7 @@ export default function Abfaelle() {
                           step: 6,
                           title: 'Protokollierung &amp; gekühlter Transport',
                           desc: 'Dokumentieren Sie jeden Probenahmeschritt detailliert in einem schriftlichen, fälschungssicheren Feldprotokoll (inkl. Halden-Skizzen, Höhenangaben, Probenahmedatum, Fotos und GPS-Koordinaten). Sichern Sie die Kühlung der Proben während des Transports zum akkreditierten Umweltlabor.',
-                          ref: 'DIN 19698-1 Abs. 8'
+                          ref: 'DIN 19698-1:2014-05'
                         }
                       ].map((item) => (
                         <div key={item.step} className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 hover:border-shiraz/20 transition-all flex flex-col justify-between">
@@ -2867,7 +2843,35 @@ export default function Abfaelle() {
       </div>
     
       {/* Central ModuleFooter rendered dynamically based on activeTab */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Deponieklasse für einen Bauschutt aus der Zuordnungsanalyse"
+        zielGleichung="DK = \min\{k \mid c_j \le Z_{j,k} \;\forall j\}"
+        schritte={[
+          { titel: 'Analysenwerte', erklaerung: 'Eluat: Sulfat 1 450 mg/l, Chlorid 120 mg/l, Blei 0,08 mg/l; Feststoff: TOC 0,6 M.-%, Glühverlust 2,4 M.-%.', formel: '\\text{SO}_4^{2-} = 1\\,450\\,\\text{mg/l}' },
+          { titel: 'Vergleich DK 0', erklaerung: 'Sulfat 1 450 > 100 mg/l, Chlorid 120 > 80 mg/l, Blei 0,08 > 0,05 mg/l:', formel: '\\text{DK 0 nicht eingehalten}' },
+          { titel: 'Vergleich DK I', erklaerung: 'Sulfat ≤ 2 000, Chlorid ≤ 1 500, Blei ≤ 0,2 mg/l, TOC ≤ 1, Glühverlust ≤ 3 M.-%:', formel: '\\Rightarrow \\text{Deponieklasse I}' }
+        ]}
+        ergebnisHinweis="Maßgebend ist der ungünstigste Parameter. Die Fußnoten zu Anhang 3 Tabelle 2 (z. B. Sulfat bei DK 0) und Einzelfallregelungen nach Nr. 2 sind zu beachten. Vor der Deponierung ist die Verwertung nach EBV zu prüfen."
+        normQuelle="DepV Anhang 3 Nr. 2, Tabelle 2"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Anzeigepflicht nach § 22 EBV für RC-3 im Straßenunterbau"
+        zielGleichung="V_{ges} = A \cdot d \ge 250\,\text{m}^3 \Rightarrow \text{Voranzeige}"
+        schritte={[
+          { titel: 'Volumen', erklaerung: 'Tragschicht unter Asphalt, Fläche 1 200 m², Dicke 0,25 m, Material RC-3:', formel: 'V_{ges} = 1\\,200 \\cdot 0{,}25 = 300\\,\\text{m}^3' },
+          { titel: 'Schwellenwert', erklaerung: 'Für RC-3, BM-F3 und BG-F3 sowie bestimmte Schlacken gilt die Anzeigepflicht ab 250 m³:', formel: '300 \\ge 250 \\Rightarrow \\text{anzeigepflichtig}' },
+          { titel: 'Fristen', erklaerung: 'Voranzeige vier Wochen vor Beginn, Abschlussanzeige nach Fertigstellung:', formel: 't_{Vor} = -4\\,\\text{Wochen}, \\; t_{Abschl} \\le +2\\,\\text{Wochen}' }
+        ]}
+        ergebnisHinweis="Unabhängig von der Menge ist in Wasser- und Heilquellenschutzgebieten eine Voranzeige erforderlich (§ 22 Abs. 2). Die Zulässigkeit der Einbauweise selbst ergibt sich aus Anlage 2 EBV und der Grundwasserdeckschicht (§ 19)."
+        normQuelle="ErsatzbaustoffV §§ 19, 20, 22"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="abfaelle" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 9 Rückbau & Schadstoffe: DepV-Zuordnungswerte, EBV §§ 19/22, LAGA PN 98 Tabelle 2, KrWG § 14 geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={
           activeTab === 'altholz'
             ? [{ title: 'Altholzverordnung', url: 'https://de.wikipedia.org/wiki/Altholzverordnung' }]
@@ -2894,30 +2898,30 @@ export default function Abfaelle() {
         }
         regelwerke={[
           { title: 'Kreislaufwirtschaftsgesetz (KrWG § 14 Quoten)', url: 'https://www.gesetze-im-internet.de/krwg/' },
-          { title: 'Ersatzbaustoffverordnung (ErsatzbaustoffV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
+          { title: 'Ersatzbaustoffverordnung (ErsatzbaustoffV), in Kraft seit 01.08.2023; Novelle im Referentenentwurf 08/2026', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Deponieverordnung (DepV)', url: 'https://www.gesetze-im-internet.de/depv_2009/' },
           { title: 'Gewerbeabfallverordnung (GewAbfV)', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },
           { title: 'LAGA PN 98 (Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen)', url: 'https://www.laga-online.de/' }
         ]}
         literatur={[
-          'Kranert, M.; Cord-Landwehr, K. (2017): Einführung in die Abfallwirtschaft (Springer Vieweg)',
+          'Kranert, M. (Hrsg.): Einführung in die Kreislaufwirtschaft. 5. Aufl., Wiesbaden: Springer Vieweg 2017',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'LAGA: Mitteilungen der Bund/Länder-Arbeitsgemeinschaft Abfall'
         ]}
         formeln={[
           {
-            formel: 'Q_{\\text{Verwertung}} = \\frac{m_{\\text{Recycling}} + m_{\\text{Verfüllung}}}{m_{\\text{mineralischer Bauabfall gesamt}}} \\ge 70\\%',
-            erklaerung: 'Gesetzliche Verwertungsquote für mineralische Bau- und Abbruchabfälle nach § 14 Abs. 3 KrWG.',
+            formel: 'Q_{\\text{Verwertung}} = \\frac{m_{\\text{Wiederverwendung}} + m_{\\text{Recycling}} + m_{\\text{Verfüllung}}}{m_{\\text{Bau- und Abbruchabfall}}} \\ge 70\\,\\%',
+            erklaerung: 'Nationales Ziel nach § 14 Abs. 3 KrWG für nicht gefährliche Bau- und Abbruchabfälle ohne natürlich vorkommende Materialien (AVV 17 05 04); Verfüllung zählt mit. Keine projektbezogene Pflichtquote.',
             quelle: 'KrWG § 14 Abs. 3'
           },
           {
-            formel: 'n = 2 \\cdot \\sqrt[3]{V} \\implies \\text{Mindestanzahl der Einzelproben nach LAGA PN 98}',
-            erklaerung: 'Stichprobengröße bei der Haufwerksbeprobung nach LAGA PN 98 in Abhängigkeit vom Haufwerksvolumen V [m³] zur repräsentativen Schadstoffanalytik.',
-            quelle: 'LAGA PN 98'
+            formel: 'n_{MP} = 10 + \\left\\lceil \\frac{V - 600}{100} \\right\\rceil, \\quad n_{EP} = 4 \\cdot n_{MP} \\quad (V > 600\\,\\text{m}^3)',
+            erklaerung: 'Mindestanzahl der Misch- und Einzelproben nach LAGA PN 98 Tabelle 2 für Haufwerke über 600 m³ (bis 600 m³ tabelliert: 2 bis 10 Mischproben).',
+            quelle: 'LAGA PN 98, Tabelle 2'
           },
           {
             formel: 'c_{\\text{Eluat}} \\le \\text{Grenzwert}_{\\text{DK 0 / DK I / DK II}} \\quad [\\text{mg/l}]',
-            erklaerung: 'Zuordnungswerte für Deponieklassen (DK 0 Inertabfall, DK I/II Hausmüll/Gewerbeabfall, DK III Sondermüll) nach DepV Anhang 3.',
+            erklaerung: 'Zuordnungswerte für Deponieklassen nach DepV Anhang 3 Tabelle 2 (DK 0 Inertabfall, DK I gering belastete mineralische Abfälle, DK II höher belastete bzw. vorbehandelte Abfälle, DK III gefährliche Abfälle; DK IV Untertagedeponie).',
             quelle: 'DepV Anhang 3'
           }
         ]}

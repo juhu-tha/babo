@@ -4331,5 +4331,365 @@
       "targetModuleLabel": "Checklisten"
     },
     "verified": false
+  },
+  {
+    "id": "q_rb_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau",
+    "moduleTitle": "Rückbau & Material",
+    "topic": "Getrennthaltung von Bauabfällen",
+    "difficulty": "Basis",
+    "normRef": "GewAbfV § 8",
+    "question": "Wie viele Fraktionen von Bau- und Abbruchabfällen sind nach § 8 GewAbfV grundsätzlich getrennt zu halten?",
+    "options": [
+      "Drei (mineralisch, Holz, Rest)",
+      "Zehn (u. a. Glas, Kunststoff, Metalle, Holz, Dämmmaterial, Bitumengemische, Gips, Beton, Ziegel, Fliesen/Keramik)",
+      "Fünf, nur bei Bauvorhaben über 100 m³",
+      "Keine – Getrennthaltung ist freiwillig"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 8 GewAbfV nennt zehn Fraktionen. Ausnahmen gelten bei technischer Unmöglichkeit oder wirtschaftlicher Unzumutbarkeit; die Dokumentationspflicht entfällt bis 10 m³ Abfall.",
+    "gapAnalysis": {
+      "topic": "Getrennthaltung von Bauabfällen",
+      "misconception": "Die GewAbfV schreibe eine feste 90-%-Quote für Bauabfälle vor.",
+      "coreRule": "Zehn Fraktionen getrennt halten; Ausnahmen begründen und ab 10 m³ dokumentieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Getrennthaltung von Bauabfällen“ im Modul Rückbau & Material noch einmal durch.",
+      "targetModuleTab": "rueckbau",
+      "targetModuleLabel": "Rückbau & Material"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_rb_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau",
+    "moduleTitle": "Rückbau & Material",
+    "topic": "Pre-Demolition Audit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN SPEC 91484:2023-09",
+    "question": "Was regelt die DIN SPEC 91484?",
+    "options": [
+      "Die Bemessung von Abbruchgeräten",
+      "Die Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten als Grundlage für die Bewertung ihres Anschlussnutzungspotenzials (Pre-Demolition Audit)",
+      "Grenzwerte für Asbestfasern",
+      "Die Deponieklassen"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN SPEC 91484 beschreibt ein Verfahren zur Bauteil- und Produkterfassung vor dem Rückbau; die DIN SPEC 91525 (2026) ergänzt ein Anschlussnutzungskonzept.",
+    "gapAnalysis": {
+      "topic": "Pre-Demolition Audit",
+      "misconception": "Das Pre-Demolition Audit sei nur eine Schadstofferkundung.",
+      "coreRule": "Vor dem Abbruch: Bauteilinventar (DIN SPEC 91484) plus Schadstofferkundung (VDI 6202).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Pre-Demolition Audit“ im Modul Rückbau & Material noch einmal durch.",
+      "targetModuleTab": "rueckbau",
+      "targetModuleLabel": "Rückbau & Material"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bm_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "boden_materialaufbereitung",
+    "moduleTitle": "Boden- & Materialaufbereitung",
+    "topic": "Probenanzahl nach LAGA PN 98",
+    "difficulty": "Basis",
+    "normRef": "LAGA PN 98, Tabelle 2",
+    "question": "Wie viele Mischproben verlangt die LAGA PN 98 mindestens für ein Haufwerk von 100 m³?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "10"
+    ],
+    "correctIdx": 2,
+    "explanation": "Tabelle 2: bis 100 m³ 16 Einzelproben, 4 Mischproben und 4 Laborproben.",
+    "gapAnalysis": {
+      "topic": "Probenanzahl nach LAGA PN 98",
+      "misconception": "Eine einzige Mischprobe genügt für jedes Haufwerk.",
+      "coreRule": "PN 98 Tabelle 2: 2 MP bis 30 m³, steigend bis 10 MP bei 600 m³, darüber +1 MP je angefangene 100 m³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Probenanzahl nach LAGA PN 98“ im Modul Boden- & Materialaufbereitung noch einmal durch.",
+      "targetModuleTab": "boden_materialaufbereitung",
+      "targetModuleLabel": "Boden- & Materialaufbereitung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bm_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "boden_materialaufbereitung",
+    "moduleTitle": "Boden- & Materialaufbereitung",
+    "topic": "Probenvolumen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "LAGA PN 98, Tabelle 3",
+    "question": "Welches Mindestvolumen muss eine Einzelprobe bei einem Größtkorn von 32 mm nach LAGA PN 98 haben?",
+    "options": [
+      "0,5 l",
+      "1 l",
+      "2 l",
+      "10 l"
+    ],
+    "correctIdx": 2,
+    "explanation": "Für Größtkorn über 20 bis 50 mm beträgt das Mindestvolumen der Einzelprobe 2 l, das der Laborprobe 4 l.",
+    "gapAnalysis": {
+      "topic": "Probenvolumen",
+      "misconception": "Das Probenvolumen ist unabhängig von der Korngröße.",
+      "coreRule": "≤ 2 mm: 0,5 l; ≤ 20 mm: 1 l; ≤ 50 mm: 2 l; ≤ 120 mm: 5 l; größere Stücke einzeln.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Probenvolumen“ im Modul Boden- & Materialaufbereitung noch einmal durch.",
+      "targetModuleTab": "boden_materialaufbereitung",
+      "targetModuleLabel": "Boden- & Materialaufbereitung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ab_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "Deponieklasse",
+    "difficulty": "Basis",
+    "normRef": "DepV Anhang 3 Tabelle 2",
+    "question": "Ein Bauschutt hält alle DK-0-Werte ein, nur Sulfat im Eluat liegt bei 1 450 mg/l. Welche Deponieklasse ist mindestens erforderlich (ohne Sonderregeln)?",
+    "options": [
+      "DK 0",
+      "DK I",
+      "DK II",
+      "DK III"
+    ],
+    "correctIdx": 1,
+    "explanation": "Sulfat: DK 0 ≤ 100 mg/l (mit Fußnotenregelung bis 600), DK I ≤ 2 000 mg/l. Maßgebend ist der ungünstigste Parameter.",
+    "gapAnalysis": {
+      "topic": "Deponieklasse",
+      "misconception": "Ein einzelner überschrittener Parameter sei unerheblich.",
+      "coreRule": "Jeder Parameter muss die Zuordnungswerte der Klasse einhalten; der ungünstigste entscheidet.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Deponieklasse“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ab_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "EBV-Anzeigepflicht",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ErsatzbaustoffV § 22",
+    "question": "Wann ist der Einbau von RC-3 nach § 22 EBV anzuzeigen?",
+    "options": [
+      "Nie",
+      "Ab einem Gesamtvolumen von 250 m³ mit Voranzeige vier Wochen vor Beginn und Abschlussanzeige",
+      "Nur bei Einbau über 10 000 m³",
+      "Erst nach Fertigstellung"
+    ],
+    "correctIdx": 1,
+    "explanation": "RC-3, BM-F3, BG-F3 sowie bestimmte Schlacken und Aschen sind ab den Mengenschwellen anzuzeigen; in Schutzgebieten gilt eine Voranzeigepflicht unabhängig von der Menge.",
+    "gapAnalysis": {
+      "topic": "EBV-Anzeigepflicht",
+      "misconception": "Jeder Einbau eines Ersatzbaustoffs außer BM-0 sei ab 250 m³ meldepflichtig.",
+      "coreRule": "§ 22 EBV: Voranzeige 4 Wochen vorher, Abschlussanzeige nach Fertigstellung, zuständige Behörde.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EBV-Anzeigepflicht“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sch_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadstoffe",
+    "moduleTitle": "Schad- und Gefahrstoffe",
+    "topic": "Veranlasserpflichten GefStoffV",
+    "difficulty": "Basis",
+    "normRef": "GefStoffV § 5a",
+    "question": "Was muss der Veranlasser (Bauherr) nach § 5a GefStoffV vor Arbeiten an einem Gebäude mit Baujahr 1994 mindestens mitteilen?",
+    "options": [
+      "Nichts, die Pflicht gilt nur vor 1993",
+      "Den Baubeginn, da das Baujahr zwischen 1993 und 1996 liegt",
+      "Ein vollständiges Schadstoffgutachten",
+      "Nur die Wohnfläche"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei Objekten zwischen 1993 und 1996 ist der Baubeginn mitzuteilen; sonst genügt das Baujahr. Zusätzlich sind alle vorliegenden Informationen zu vermuteten Gefahrstoffen weiterzugeben.",
+    "gapAnalysis": {
+      "topic": "Veranlasserpflichten GefStoffV",
+      "misconception": "Die GefStoffV verpflichte jeden Bauherrn zu einer Asbestbeprobung.",
+      "coreRule": "§ 5a: Informations- und Mitwirkungspflicht, keine generelle Erkundungspflicht.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Veranlasserpflichten GefStoffV“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "targetModuleTab": "schadstoffe",
+      "targetModuleLabel": "Schad- und Gefahrstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sch_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadstoffe",
+    "moduleTitle": "Schad- und Gefahrstoffe",
+    "topic": "Risikokonzept Asbest",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TRGS 910; TRGS 519",
+    "question": "Welche Faserkonzentrationen begrenzen den Bereich mittleren Risikos bei Asbest?",
+    "options": [
+      "1 000 bis 10 000 F/m³",
+      "10 000 (Akzeptanz) bis 100 000 F/m³ (Toleranz)",
+      "100 000 bis 1 000 000 F/m³",
+      "Es gibt keine Konzentrationsgrenzen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Akzeptanzkonzentration 10 000 F/m³ (Risiko 4:10 000), Toleranzkonzentration 100 000 F/m³ (4:1 000). Darüber: hohes Risiko, zulassungspflichtige Tätigkeiten.",
+    "gapAnalysis": {
+      "topic": "Risikokonzept Asbest",
+      "misconception": "Unterhalb einer Wirkschwelle sei Asbest unbedenklich.",
+      "coreRule": "Niedrig < 10 000, mittel 10 000–100 000, hoch > 100 000 F/m³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Risikokonzept Asbest“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "targetModuleTab": "schadstoffe",
+      "targetModuleLabel": "Schad- und Gefahrstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_re_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourceneffizienz",
+    "moduleTitle": "Ressourceneffizienz",
+    "topic": "Material Circularity Indicator",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Ellen MacArthur Foundation, MCI",
+    "question": "Wie verändert sich der MCI eines Produkts mit LFI = 0,5, wenn sich seine Nutzungsdauer gegenüber dem Durchschnitt verdoppelt (F(X) = 0,9/X)?",
+    "options": [
+      "Er sinkt von 0,55 auf 0,10",
+      "Er steigt von 0,55 auf etwa 0,78",
+      "Er bleibt bei 0,55",
+      "Er wird negativ"
+    ],
+    "correctIdx": 1,
+    "explanation": "MCI = 1 − LFI · F(X): X = 1 → 1 − 0,45 = 0,55; X = 2 → 1 − 0,5 · 0,45 = 0,775.",
+    "gapAnalysis": {
+      "topic": "Material Circularity Indicator",
+      "misconception": "Der MCI hänge nur vom Rezyklatanteil ab.",
+      "coreRule": "Langlebigkeit (X) wirkt im MCI ebenso wie Rezyklateinsatz und Verwertung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Material Circularity Indicator“ im Modul Ressourceneffizienz noch einmal durch.",
+      "targetModuleTab": "ressourceneffizienz",
+      "targetModuleLabel": "Ressourceneffizienz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_re_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourceneffizienz",
+    "moduleTitle": "Ressourceneffizienz",
+    "topic": "KrWG-Zielquote",
+    "difficulty": "Basis",
+    "normRef": "KrWG § 14 Abs. 3",
+    "question": "Was besagt § 14 Abs. 3 KrWG für nicht gefährliche Bau- und Abbruchabfälle?",
+    "options": [
+      "Eine projektbezogene Pflichtquote von 90 %",
+      "Ein nationales Ziel von mindestens 70 Gew.-% Vorbereitung zur Wiederverwendung, Recycling und sonstiger stofflicher Verwertung (einschließlich Verfüllung)",
+      "Ein Deponieverbot für Bauschutt",
+      "Eine Pflicht zu RC-Beton im Hochbau"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die 70-%-Vorgabe ist ein Ziel für Deutschland insgesamt, ohne natürlich vorkommendes Material (AVV 17 05 04) – keine Pflichtquote für das einzelne Bauvorhaben.",
+    "gapAnalysis": {
+      "topic": "KrWG-Zielquote",
+      "misconception": "Jede Baustelle müsse 70 % Recycling nachweisen.",
+      "coreRule": "KrWG § 14 Abs. 3: nationales Ziel, keine Projektpflicht.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „KrWG-Zielquote“ im Modul Ressourceneffizienz noch einmal durch.",
+      "targetModuleTab": "ressourceneffizienz",
+      "targetModuleLabel": "Ressourceneffizienz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_rc_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Anzeige von Asbestarbeiten",
+    "difficulty": "Basis",
+    "normRef": "GefStoffV § 11a",
+    "question": "Mit welchem Vorlauf sind Tätigkeiten mit Asbest der zuständigen Behörde anzuzeigen?",
+    "options": [
+      "Gar nicht",
+      "Mindestens eine Woche vor Beginn",
+      "Am Tag der Arbeiten",
+      "Erst nach Abschluss"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 11a GefStoffV verlangt die Anzeige mindestens eine Woche vor Beginn; Abbrucharbeiten im niedrigen und mittleren Risikobereich bedürfen einer Genehmigung, Tätigkeiten mit hohem Risiko einer Zulassung des Unternehmens.",
+    "gapAnalysis": {
+      "topic": "Anzeige von Asbestarbeiten",
+      "misconception": "Fest gebundener Asbestzement könne ohne Anzeige entfernt werden.",
+      "coreRule": "Anzeige ≥ 1 Woche vorher; hohes Risiko nur mit Zulassung (max. 6 Jahre).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anzeige von Asbestarbeiten“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_rc_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Mobile Brechanlage",
+    "difficulty": "Fortgeschritten",
+    "normRef": "4. BImSchV",
+    "question": "Ab wann ist eine mobile Brechanlage am selben Standort nach BImSchG genehmigungsbedürftig?",
+    "options": [
+      "Ab dem ersten Tag",
+      "Wenn sie länger als zwölf Monate am selben Ort betrieben wird",
+      "Nur bei mehr als 100 t Durchsatz pro Jahr",
+      "Nie, mobile Anlagen sind ausgenommen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach der 4. BImSchV sind Anlagen genehmigungsbedürftig, wenn sie länger als zwölf Monate am selben Ort betrieben werden sollen (Nr. 2.2 bzw. 8.11.2.4 des Anhangs 1).",
+    "gapAnalysis": {
+      "topic": "Mobile Brechanlage",
+      "misconception": "Mobile Anlagen benötigen nie eine Genehmigung.",
+      "coreRule": "Zwölf-Monats-Regel der 4. BImSchV beachten; Lärm- und Staubschutz unabhängig davon.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mobile Brechanlage“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
   }
 ]

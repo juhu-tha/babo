@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { AlertTriangle, Wind, Droplets, Flame, Bug, Shield, Search, ExternalLink, Globe, Recycle, CheckCircle2, ChevronRight, HelpCircle, AlertCircle, FileText, Sliders, Activity, Settings, Info } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 
 const SCHADSTOFFE_DATA = [
@@ -14,12 +16,12 @@ const SCHADSTOFFE_DATA = [
     vorkommen: [
       'Fest gebunden: Faserzement-Platten (z. B. Wellplatten, Flachdachplatten, Fassadenbekleidungen), Rohre, Formteile.',
       'Schwach gebunden: Spritzasbest (Brandschutz auf Stahlträgern, Deckenisolierung), Leichtbauplatten, Dichtungsschnüre, Ofenpappen.',
-      'Verdeckte Vorkommen (hochrelevant): Fliesenkleber (Dünnbettkleber), Wand- und Deckenspachtelmassen, Putze, Ausgleichs- und Nivelliermassen (oft erst nach 2015 baurechtlich systematisch thematisiert).',
-      'Einsatz bis Verbot: Hauptsächlich 1950er bis 1980er Jahre. Das generelle Inverkehrbringungs- und Verwendungsverbot in Deutschland trat am 31. Oktober 1993 in Kraft.'
+      'Verdeckte Vorkommen (hochrelevant): Fliesenkleber (Dünnbettkleber), Wand- und Deckenspachtelmassen, Putze, Ausgleichs- und Nivelliermassen (systematisch erst seit dem Nationalen Asbestdialog ab etwa 2015 thematisiert).',
+      'Einsatz bis Verbot: Hauptsächlich 1950er bis 1980er Jahre. Das generelle Herstellungs- und Verwendungsverbot in Deutschland gilt seit dem 31. Oktober 1993; EU-weit gilt das Verbot seit 2005 (heute REACH Anhang XVII Nr. 6).'
     ],
     gefahren: [
       'Gesundheitsgefahr: Das Einatmen freigesetzter Asbestfasern ist hochgradig krebserzeugend. Die lungengängigen Fasern (Sondermessungen: Länge > 5 µm, Durchmesser < 3 µm) dringen tief in die Lungenalveolen ein und können Asbestose, Lungenkrebs sowie tödliche Mesotheliome (Brust- und Rippenfellkrebs) verursachen. Latenzzeit liegt oft bei 20 bis 40 Jahren.',
-      'Sanierung: Nur durch fachkundige Unternehmen gemäß TRGS 519 unter strengen Schutzvorkehrungen (Schwarz-Weiß-Trennung, 3-Kammer-Schleusen, kontrollierter Unterdruck im Arbeitsbereich).',
+      'Sanierung: Nur durch fachkundige Unternehmen gemäß TRGS 519 unter strengen Schutzvorkehrungen (Schwarz-Weiß-Trennung, Mehrkammer-Personenschleusen, kontrollierter Unterdruck im Arbeitsbereich).',
       'Entsorgung: Gefährlicher Abfall. Deponierung erfolgt staubdicht verpackt in speziell gekennzeichneten Gewebesäcken (Big-Bags) auf dafür zugelassenen Deponien.'
     ],
     entsorgung: [
@@ -83,11 +85,11 @@ const SCHADSTOFFE_DATA = [
     vorkommen: [
       'Dämmstoffe: Glas- und Steinwolle zur thermischen und akustischen Dämmung von Dächern, Trockenbauwänden, Rohrleitungen und Fassaden.',
       'Das Problem "Alte Mineralwolle": Vor dem Jahr 2000 hergestellte Mineralfasern weisen eine hohe Biopersistenz (schwere Löslichkeit im Lungengewebe) auf. Sie neigen beim Brechen dazu, lungengängige, asbestähnliche Nadeln zu bilden.',
-      'Stichtag / RAL-Gütezeichen: Seit Juni 2000 (bzw. ab 1996) sind in DE nur noch biolösliche "neue" KMF zugelassen, kenntlich am RAL-Gütezeichen. Alte KMF dürfen im Rahmen von Instandhaltungsarbeiten nicht wieder eingebaut werden; beim Rückbau gelten strenge Sicherheitsvorschriften.'
+      'Stichtag / RAL-Gütezeichen: Seit dem 1. Juni 2000 dürfen in DE nur noch biolösliche "neue" KMF verwendet werden (GefStoffV Anhang II Nr. 5); die Hersteller stellten ab etwa 1996 um, das RAL-Gütezeichen (RAL-GZ 388) gibt es seit 1998. Alte KMF dürfen im Rahmen von Instandhaltungsarbeiten nicht wieder eingebaut werden; beim Rückbau gelten strenge Sicherheitsvorschriften.'
     ],
     gefahren: [
       'Gesundheitsgefahr: "Alte" biopersistente KMF sind als krebserzeugend (Kategorie 1B) eingestuft. Sie verursachen bei Kontakt zudem heftigen mechanischen Juckreiz auf der Haut und Schleimhautreizungen.',
-      'Kanzerogenitätsindex (KI-Wert): Die Bewertung erfolgt im Labor anhand der chemischen Zusammensetzung. KI = Summe Oxide (Na, K, Ca, Mg, Ba, B) minus 2x Aluminiumoxid. Ist der KI >= 40, gilt das Material als unbedenklich (biolöslich). Ist der KI <= 30, ist es zwingend als krebserzeugend einzustufen. Liegt der Wert im Graubereich (30 < KI < 40), besteht ein begründeter Krebsverdacht; es wird in der Baupraxis standardmäßig wie altes KMF behandelt, außer es wird per In-vivo-Test nach Anhang II Nr. 5 GefStoffV eine ausreichende Biolöslichkeit nachgewiesen.',
+      'Kanzerogenitätsindex (KI-Wert): Die Bewertung erfolgt im Labor anhand der chemischen Zusammensetzung. KI = Summe Oxide (Na, K, Ca, Mg, Ba, B) minus 2x Aluminiumoxid. Ist der KI ≥ 40, erfolgt keine Einstufung als krebserzeugend. Ist der KI ≤ 30, ist das Material als krebserzeugend Kategorie 1B einzustufen. Liegt der Wert dazwischen (30 < KI < 40), gilt Kategorie 2 (Verdacht); es wird in der Baupraxis standardmäßig wie altes KMF behandelt, außer es wird per In-vivo-Test nach Anhang II Nr. 5 GefStoffV eine ausreichende Biolöslichkeit nachgewiesen.',
       'Sanierung (TRGS 521): Staubminderung durch Befeuchtung/Faserbindung, zerstörungsfreier Rückbau (kein Werfen, Reißen oder Schreddern), luftdichte Verpackung direkt am Entstehungsort in eigens deklarierten KMF-Big-Bags.'
     ],
     entsorgung: [
@@ -229,7 +231,7 @@ const TREATMENT_OPTIONS = {
         'Transport unter lückenloser eANV-Nachweisüberwachung.',
         'Endlagerung in Monozellen auf zugelassenen Deponien ohne mechanische Nachbearbeitung.'
       ],
-      rules: 'TRGS 519 / DepV: Ein Recycling von asbesthaltigen Böden oder Bauschuttgemischen ist ausnahmslos ILLEGAL. Es gilt ein striktes Wiederverwendungsverbot für asbesthaltige Materialien in ganz Europa.'
+      rules: 'GefStoffV § 11 / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert.'
     },
     gips_sulfat: {
       method: 'Nassklassierung & Flotation',
@@ -355,7 +357,7 @@ const TREATMENT_OPTIONS = {
         'Doppelte Verpackung in zertifizierte Asbest-Big-Bags.',
         'Direkter Transport zur zugelassenen Deponie.'
       ],
-      rules: 'GefStoffV / TRGS 519: Verstöße gegen das Wiederverwendungsverbot für asbesthaltigen Bauschutt stellen einen Straftatbestand dar. Aufbereitungsanlagen weisen Lkw mit Asbestverdacht strikt ab.'
+      rules: 'GefStoffV / TRGS 519: Verstöße gegen das Verwendungsverbot für asbesthaltigen Bauschutt sind Ordnungswidrigkeiten oder Straftaten (u. a. ChemG, § 326 StGB). Aufbereitungsanlagen weisen Lkw mit Asbestverdacht ab.'
     },
     gips_sulfat: {
       method: 'Trockenmechanische Sortierung (NIR-Sensorik)',
@@ -782,7 +784,7 @@ export default function Schadstoffe() {
                           return (
                             <div className="p-3 bg-red-50 rounded-lg border border-red-200 text-xs text-red-950 flex flex-col gap-1">
                               <span className="font-bold flex items-center gap-1 text-red-800">🚨 TRGS 521 Pflichtig - Krebserzeugend (KI = {formatDeZahl(kiVal, 2)} ≤ 30)</span>
-                              <span>Die Faser gilt als bio-persistent und hochgradig krebserzeugend (alte Mineralwolle vor 1996). Arbeiten unterliegen vollumfänglich der <strong>TRGS 521</strong>. Schutzstufe II oder III erforderlich (Atemschutz FFP3, Einweg-Schutzanzug Typ 5/6, staubdichte Abschottung, H-Sauger).</span>
+                              <span>Die Faser gilt als bio-persistent und hochgradig krebserzeugend (typisch für vor etwa 1996 hergestellte Mineralwolle). Arbeiten unterliegen vollumfänglich der <strong>TRGS 521</strong>. Schutzstufe II oder III erforderlich (Atemschutz FFP3, Einweg-Schutzanzug Typ 5/6, staubdichte Abschottung, H-Sauger).</span>
                             </div>
                           );
                         } else {
@@ -953,7 +955,7 @@ export default function Schadstoffe() {
                     <ul className="list-disc pl-5 space-y-2 text-sm text-slate-700 relative z-10">
                       <li><strong>Was:</strong> Verdächtige asbesthaltige Materialien (Spritzasbest, Floor-Flex-Platten, Kleber, Putze, Fassadenplatten).</li>
                       <li><strong>Warum:</strong> Asbestfasern sind hochgradig karzinogen. Die TRGS 519 regelt den strengen Schutz von Arbeitern, Nutzern und Umwelt bei Abbruch-, Sanierungs- oder Instandhaltungsarbeiten (ASI-Arbeiten).</li>
-                      <li><strong>Wer darf beproben:</strong> Nur Gutachter/Spezialisten mit <strong>Sachkundenachweis nach TRGS 519 (Asbestkoordinator)</strong>. Labore dürfen nur Proben analysieren, die gefahrlos und normgerecht luftdicht verpackt wurden.</li>
+                      <li><strong>Wer darf beproben:</strong> Nur Gutachter/Spezialisten mit <strong>Sachkunde nach TRGS 519 bzw. Fachkunde für die Erkundung nach VDI 6202 Blatt 3:2021-09</strong>. Labore dürfen nur Proben analysieren, die gefahrlos und normgerecht luftdicht verpackt wurden.</li>
                       <li><strong>Wie:</strong> Staubdicht verpackt! Die Probe (z. B. Bohrkern oder Materialstück) muss i. d. R. feucht entnommen (Staubbindung) und doppelt in reißfeste Säcke oder Proberöhrchen verpackt werden, ggf. unter Schleusen/Zelt-Einsatz. Die Raumluft darf keinesfalls belastet werden.</li>
                     </ul>
                   </div>
@@ -988,8 +990,8 @@ export default function Schadstoffe() {
                     <h4 className="font-bold text-base mb-3 text-shiraz border-b border-home-grau/30 pb-2">Gefahrstoffverordnung (GefStoffV)</h4>
                     <ul className="list-disc pl-5 space-y-2 text-sm text-slate-700 relative z-10">
                       <li><strong>Was:</strong> Die nationale Umsetzung des europäischen Chemikalienrechts, die den Schutz von Beschäftigten und Umwelt vor Gefährdungen durch Gefahrstoffe regelt.</li>
-                      <li><strong>Anforderungen (aktueller Stand):</strong> Die aktuelle Fassung (bzw. die fortlaufend angepassten Novellierungen zur Mitwirkungspflicht) stärkt den Schutz bei Bau- und Abbrucharbeiten erheblich. Bauherren und Veranlasser sind in der Pflicht, vor Beginn der Arbeiten Auskunft über gefährliche Stoffe im Gebäude zu geben.</li>
-                      <li><strong>Erkundungspflicht:</strong> Bevor ein Gebäude umgebaut, saniert oder abgerissen wird, muss eine detaillierte Gefahrstofferkundung (z. B. Schadstoffkataster) durchgeführt werden, falls Gefahrstoffe vermutet werden können.</li>
+                      <li><strong>Anforderungen (aktueller Stand):</strong> Die Novelle (in Kraft seit 5. Dezember 2024) regelt in § 5a die Mitwirkungs- und Informationspflichten des Veranlassers: Er gibt dem ausführenden Unternehmen vor Beginn alle ihm vorliegenden Informationen zu Bau- und Nutzungsgeschichte und vermuteten Gefahrstoffen; Tätigkeiten mit Asbest regelt § 11a mit Anhang I Nr. 2.</li>
+                      <li><strong>Erkundung:</strong> Eine generelle Erkundungspflicht des Bauherrn sieht die GefStoffV nicht vor (der Asbest-Generalverdacht aus dem Entwurf 2022 entfiel). Die Ermittlung erfolgt im Rahmen der Gefährdungsbeurteilung des Arbeitgebers (§ 6); bei Abbruch und größeren Sanierungen ist ein Schadstoffkataster nach VDI 6202 dennoch fachlich geboten und bei öffentlichen Auftraggebern üblich.</li>
                       <li><strong>Warum:</strong> Nur durch diese Vorab-Erkundung können die ausführenden Unternehmen (Auftragnehmer) eine angemessene Gefährdungsbeurteilung erstellen und die richtigen Arbeitsschutzmaßnahmen (PSA, technischer Schutz) einplanen und kalkulieren.</li>
                     </ul>
                   </div>
@@ -1154,28 +1156,28 @@ export default function Schadstoffe() {
                     <h3 className="text-xl font-bold text-text-main flex items-center gap-2">Aktuelle Gefahrstoffverordnung (GefStoffV)</h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Erkundungspflichten, Veranlasserhaftung des Bauherrn und das Expositions-Risiko-Modell
+            Informationspflichten des Veranlassers (§ 5a), Tätigkeiten mit Asbest (§ 11a) und das risikobasierte Maßnahmenkonzept
           </p>
         </div>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 leading-relaxed text-sm text-slate-705">
                     <div className="space-y-3">
-                      <h4 className="font-bold text-slate-900 text-base">GefStoffV-Novelle (Pflichten des Veranlassers bei Baujahr vor 31.10.1993)</h4>
+                      <h4 className="font-bold text-slate-900 text-base">GefStoffV-Novelle 2024 (Pflichten des Veranlassers, § 5a)</h4>
                       <p>
-                        Mit der Novellierung der <strong>Gefahrstoffverordnung (GefStoffV)</strong> werden die Pflichten des Veranlassers (Bauherrn) bei Bauarbeiten im Gebäudebestand verbindlich geregelt (Errichtungsdatum vor dem 31.10.1993).
+                        Mit der Novellierung der <strong>Gefahrstoffverordnung (GefStoffV)</strong> (in Kraft seit 5. Dezember 2024) werden die Mitwirkungs- und Informationspflichten des Veranlassers (Bauherrn) bei Tätigkeiten an baulichen oder technischen Anlagen geregelt.
                       </p>
                       <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-600">
-                        <li><strong>Historische Erkundung:</strong> Vor Beginn von Bau- und Sanierungsarbeiten an Gebäuden vor dem 31. Oktober 1993 (Asbestverbot) muss der Veranlasser ermitteln, ob asbesthaltige Baustoffe (z. B. auch Putze, Spachtelmassen und Fliesenkleber) vorhanden sind.</li>
-                        <li><strong>Informationspflicht:</strong> Die Ergebnisse der Vorerkundung müssen unaufgefordert an alle ausführenden Unternehmen vor Auftragsvergabe übergeben werden.</li>
-                        <li><strong>Schutzmaßnahmen:</strong> Liegen keine Nachweise vor, ist vom Asbestverdacht auszugehen und nach den Schutzstufen der TRGS 519 zu verfahren.</li>
+                        <li><strong>Information:</strong> Der Veranlasser übergibt alle ihm vorliegenden Informationen zur Bau- und Nutzungsgeschichte und zu vorhandenen oder vermuteten Gefahrstoffen (z. B. Putze, Spachtelmassen, Fliesenkleber) und sichtet zumutbar verfügbare Unterlagen.</li>
+                        <li><strong>Baujahr:</strong> Bei Baujahr vor 1993 oder nach 1996 genügt die Angabe des Baujahrs; bei Errichtung zwischen 1993 und 1996 ist der Baubeginn mitzuteilen (§ 5a Abs. 2). Die Pflichten gelten auch für Privathaushalte.</li>
+                        <li><strong>Schutzmaßnahmen:</strong> Das ausführende Unternehmen ermittelt im Rahmen der Gefährdungsbeurteilung, ob Asbestfasern freigesetzt werden können, und ordnet die Tätigkeit dem niedrigen, mittleren oder hohen Risiko zu (§ 11a; TRGS 519, Fassung 2014 mit Änderung vom 28.01.2025).</li>
                       </ul>
                     </div>
 
                     <div className="space-y-4">
                       <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                         <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider text-slate-500 mb-2">Interaktiver Asbest-Baujahr-Check</h4>
-                        <p className="text-xs text-slate-600 mb-3">Verschieben Sie den Regler auf das Baujahr Ihres Altbauprojekts, um die gesetzliche Erkundungspflicht zu bewerten.</p>
+                        <p className="text-xs text-slate-600 mb-3">Verschieben Sie den Regler auf das Baujahr Ihres Altbauprojekts, um die Informationspflichten nach § 5a GefStoffV und den Asbestverdacht einzuschätzen.</p>
                         
                         <div className="space-y-2">
                           <input 
@@ -1195,11 +1197,15 @@ export default function Schadstoffe() {
 
                         {asbestBaujahr < 1993 ? (
                           <div className="mt-3 p-3 rounded-lg bg-red-50 text-red-900 border border-red-200 text-xs font-semibold leading-relaxed animate-pulse">
-                            🚨 ASBESTVERDACHT! Baujahr liegt vor dem Verbot (31.10.1993). Gesetzliche historische Erkundung durch den Bauherrn zwingend erforderlich! Bei Missachtung drohen Baustopps und Bußgelder.
+                            🚨 ASBESTVERDACHT! Baujahr vor dem Verbot (31.10.1993). Der Veranlasser teilt das Baujahr und alle vorliegenden Informationen mit (§ 5a GefStoffV); das ausführende Unternehmen muss in der Gefährdungsbeurteilung von möglichem Asbest ausgehen oder durch Erkundung (VDI 6202 Blatt 3) ausschließen.
+                          </div>
+                        ) : asbestBaujahr <= 1996 ? (
+                          <div className="mt-3 p-3 rounded-lg bg-amber-50 text-amber-900 border border-amber-200 text-xs font-semibold leading-relaxed">
+                            ⚠️ ÜBERGANGSZEIT 1993–1996: Der Veranlasser muss den Baubeginn mitteilen (§ 5a Abs. 2 GefStoffV), da vor dem Verbot beschaffte asbesthaltige Produkte noch verbaut worden sein können.
                           </div>
                         ) : (
                           <div className="mt-3 p-3 rounded-lg bg-green-50 text-green-900 border border-green-200 text-xs font-semibold leading-relaxed">
-                            ✅ BAUJAHR NACH DICHTSTAG! Keine asbestspezifische historische Pflicht gem. GefStoffV (Verbot greift ab 1993). Dennoch ist Achtsamkeit bei Re-Imports geboten.
+                            ✅ BAUJAHR NACH 1996: Die Angabe des Baujahrs genügt (§ 5a Abs. 2 GefStoffV). Asbest ist nicht zu erwarten; andere Gefahrstoffe (z. B. KMF vor 2000, PAK, Holzschutzmittel) bleiben zu prüfen.
                           </div>
                         )}
                       </div>
@@ -1214,7 +1220,7 @@ export default function Schadstoffe() {
                     Expositions-Risiko-Stufenmodell für krebserzeugende Stoffe
                   </h4>
                   <p className="text-xs text-slate-500 mb-4">
-                    Die Intensität des Arbeitsschutzes bei Asbest und anderen Feinstäuben richtet sich nach den exakten Faserkonzentrationen in der Atemluft (F/m³). Klicken Sie eine Konzentration an:
+                    Die Intensität des Arbeitsschutzes bei Asbest und anderen Feinstäuben richtet sich nach der zu erwartenden Faserkonzentration in der Atemluft (F/m³); die Grenzen des risikobasierten Konzepts sind die Akzeptanzkonzentration 10.000 F/m³ und die Toleranzkonzentration 100.000 F/m³ (TRGS 910, TRGS 519). Klicken Sie eine Konzentration an:
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -1222,8 +1228,8 @@ export default function Schadstoffe() {
                       onClick={() => setSelectedRiskLevel(10000)}
                       className={`p-4 rounded-xl border text-left transition-all ${selectedRiskLevel === 10000 ? 'border-green-500 bg-green-50/50 shadow-sm font-bold' : 'bg-white border-home-grau/30 hover:bg-slate-50'}`}
                     >
-                      <div className="text-xs font-bold text-green-700 uppercase">1. Akzeptanzgrenze</div>
-                      <div className="text-lg font-black text-slate-900 mt-1">10.000 F/m³</div>
+                      <div className="text-xs font-bold text-green-700 uppercase">1. Niedriges Risiko</div>
+                      <div className="text-lg font-black text-slate-900 mt-1">&lt; 10.000 F/m³</div>
                       <div className="text-xs text-slate-500 font-medium mt-1">Fasern pro Kubikmeter Atemluft</div>
                     </button>
 
@@ -1231,18 +1237,18 @@ export default function Schadstoffe() {
                       onClick={() => setSelectedRiskLevel(50000)}
                       className={`p-4 rounded-xl border text-left transition-all ${selectedRiskLevel === 50000 ? 'border-orange-500 bg-orange-50/50 shadow-sm font-bold' : 'bg-white border-home-grau/30 hover:bg-slate-50'}`}
                     >
-                      <div className="text-xs font-bold text-orange-700 uppercase">2. Übergangsbereich</div>
-                      <div className="text-lg font-black text-slate-900 mt-1">50.000 F/m³</div>
-                      <div className="text-xs text-slate-500 font-medium mt-1">Erhöhtes Risiko</div>
+                      <div className="text-xs font-bold text-orange-700 uppercase">2. Mittleres Risiko</div>
+                      <div className="text-lg font-black text-slate-900 mt-1">10.000–100.000 F/m³</div>
+                      <div className="text-xs text-slate-500 font-medium mt-1">zwischen Akzeptanz- und Toleranzkonzentration</div>
                     </button>
 
                     <button 
                       onClick={() => setSelectedRiskLevel(100000)}
                       className={`p-4 rounded-xl border text-left transition-all ${selectedRiskLevel === 100000 ? 'border-red-500 bg-red-50/50 shadow-sm font-bold' : 'bg-white border-home-grau/30 hover:bg-slate-50'}`}
                     >
-                      <div className="text-xs font-bold text-red-700 uppercase">3. Toleranzgrenze</div>
-                      <div className="text-lg font-black text-slate-900 mt-1">100.000 F/m³</div>
-                      <div className="text-xs text-slate-500 font-medium mt-1">Inakzeptables Risiko</div>
+                      <div className="text-xs font-bold text-red-700 uppercase">3. Hohes Risiko</div>
+                      <div className="text-lg font-black text-slate-900 mt-1">&gt; 100.000 F/m³</div>
+                      <div className="text-xs text-slate-500 font-medium mt-1">oberhalb der Toleranzkonzentration</div>
                     </button>
                   </div>
 
@@ -1251,21 +1257,21 @@ export default function Schadstoffe() {
                     {selectedRiskLevel === 10000 && (
                       <div className="space-y-1.5">
                         <strong className="text-green-700 block">Akzeptabler Schutzbereich (Geringe Gefährdung):</strong>
-                        <p className="text-slate-700 leading-normal">Faserkonzentration verbleibt sicher unterhalb der biologischen Wirkschwelle. Keine aufwändigen Schleusen-Einbauten. Atemschutzmaske FFP2/FFP3 für Handwerker als Prävention ausreichend.</p>
+                        <p className="text-slate-700 leading-normal">Unterhalb der Akzeptanzkonzentration ist das Restrisiko niedrig – eine Wirkschwelle gibt es bei krebserzeugenden Fasern nicht. Typisch sind emissionsarme Verfahren (BT-Verfahren) mit Absaugung; Schutzmaßnahmen nach TRGS 519 (z. B. FFP3 nach Verfahrensbeschreibung) bleiben erforderlich.</p>
                         <p className="text-xs text-slate-500 italic mt-1">Einsatzgebiete: Bohrverfahren mit zugelassener Filtertechnik (BT-Verfahren), Arbeiten im Freien.</p>
                       </div>
                     )}
                     {selectedRiskLevel === 50000 && (
                       <div className="space-y-1.5">
                         <strong className="text-orange-700 block">Erhöhte Gefährdungsstufe (ASI-Maßnahmen zwingend):</strong>
-                        <p className="text-slate-700 leading-normal">Der S-T-O-P Arbeitsschutz greift voll. Die Gefährdungsbeurteilung muss tagesaktuell angepasst werden. Einsatz staubmindernder Absauganlagen Staubklasse H ist Pflicht. Meldepflicht nach TRGS 519 bei der Berufsgenossenschaft.</p>
+                        <p className="text-slate-700 leading-normal">Der S-T-O-P Arbeitsschutz greift voll. Die Gefährdungsbeurteilung muss tagesaktuell angepasst werden. Einsatz staubmindernder Absauganlagen Staubklasse H ist Pflicht. Anzeige der Tätigkeit mindestens eine Woche vor Beginn bei der zuständigen Behörde (§ 11a GefStoffV); Abbrucharbeiten bedürfen einer Genehmigung.</p>
                         <p className="text-xs text-orange-950 bg-orange-50 p-1.5 border border-orange-200 rounded mt-1 font-semibold">Schutzmaßnahmen: Gebläseunterstützte Filtergeräte TM3/FFP3, partikeldichte Schutzanzüge Typ 5, Absperrung des Arbeitsbereichs.</p>
                       </div>
                     )}
                     {selectedRiskLevel === 100000 && (
                       <div className="space-y-1.5">
-                        <strong className="text-red-700 block">Toleranzgrenzen-Überschreitung (Maximale Gefährdung):</strong>
-                        <p className="text-slate-700 leading-normal">Stopp der standardisierten Arbeiten! Vollständige Abschottung (Schwarz-Weiß-Bereich) mit 3-Kammer-Umluftschleusensystem und Unterdruckerzeuger mit HEPA-Filteranlage. Strikte medizinische Vorsorge für Arbeiter.</p>
+                        <strong className="text-red-700 block">Hohes Risiko (oberhalb der Toleranzkonzentration):</strong>
+                        <p className="text-slate-700 leading-normal">Nur durch Unternehmen mit behördlicher Zulassung (§ 11a GefStoffV, max. sechs Jahre). Vollständige Abschottung (Schwarz-Weiß-Bereich) mit Mehrkammer-Personenschleuse und Unterdruckerzeuger mit HEPA-Filteranlage. Strikte medizinische Vorsorge für Arbeiter.</p>
                         <p className="text-xs text-red-950 bg-red-50 p-1.5 border border-red-200 rounded mt-1 font-semibold">Schutzmaßnahmen: Umluftunabhängiger Atemschutz (Druckluftschlauchgeräte) oder fremdbelüftete Schutzhauben zwingend vorgeschrieben.</p>
                       </div>
                     )}
@@ -1302,7 +1308,35 @@ export default function Schadstoffe() {
         </div>
       </div>
     
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Kanzerogenitätsindex einer Glaswolle aus einem Dach von 1985"
+        zielGleichung="KI = \sum (\mathrm{Na_2O}, \mathrm{K_2O}, \mathrm{CaO}, \mathrm{MgO}, \mathrm{BaO}, \mathrm{B_2O_3}) - 2 \cdot \mathrm{Al_2O_3}"
+        schritte={[
+          { titel: 'Analyse (M.-%)', erklaerung: 'Röntgenfluoreszenzanalyse: Na₂O 15,5; K₂O 0,8; CaO 7,5; MgO 3,0; BaO 0; B₂O₃ 5,0; Al₂O₃ 2,0.', formel: '\\sum = 15{,}5 + 0{,}8 + 7{,}5 + 3{,}0 + 0 + 5{,}0 = 31{,}8' },
+          { titel: 'Index', erklaerung: 'Abzug des doppelten Aluminiumoxidgehalts:', formel: 'KI = 31{,}8 - 2 \\cdot 2{,}0 = 27{,}8' },
+          { titel: 'Einstufung', erklaerung: 'KI ≤ 30: als krebserzeugend Kategorie 1B einzustufen.', formel: '27{,}8 \\le 30 \\Rightarrow \\text{alte Mineralwolle, TRGS 521}' }
+        ]}
+        ergebnisHinweis="Für 30 < KI < 40 gilt Kategorie 2 (Verdacht), ab KI ≥ 40 keine Einstufung. Ohne Analyse sind vor dem 1. Juni 2000 eingebaute Mineralwollen wie alte Mineralwolle zu behandeln."
+        normQuelle="GefStoffV Anhang II Nr. 5; TRGS 905; TRGS 521"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Schichtmittelwert und Bewertungsindex für A-Staub beim Stemmen"
+        zielGleichung="I = \frac{\sum c_i \cdot t_i}{\text{AGW} \cdot 8\,\text{h}}"
+        schritte={[
+          { titel: 'Messung', erklaerung: 'Stemmarbeiten 3 h bei 4,0 mg/m³ A-Staub, übrige 5 h bei 0,5 mg/m³:', formel: '\\sum c_i t_i = 4{,}0 \\cdot 3 + 0{,}5 \\cdot 5 = 14{,}5\\,\\text{mg h/m}^3' },
+          { titel: 'Schichtmittelwert', erklaerung: 'Bezug auf 8 Stunden:', formel: '\\bar{c} = \\frac{14{,}5}{8} = 1{,}81\\,\\text{mg/m}^3' },
+          { titel: 'Bewertung', erklaerung: 'Allgemeiner Staubgrenzwert A-Fraktion 1,25 mg/m³:', formel: 'I = \\frac{1{,}81}{1{,}25} = 1{,}45 > 1 \\Rightarrow \\text{Maßnahmen erforderlich}' }
+        ]}
+        ergebnisHinweis="Technische Maßnahmen gehen vor (STOP): Absaugung an der Maschine mit Entstauber Staubklasse H, Befeuchtung, dann Atemschutz. Für Asbest gilt statt des AGW das risikobasierte Maßnahmenkonzept (Akzeptanz- und Toleranzkonzentration)."
+        normQuelle="TRGS 402; TRGS 900; TRGS 910"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="schadstoffe" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 9 Rückbau & Schadstoffe: GefStoffV 2024 §§ 5a/11a, TRGS 519/521/524-Fassungen, KMF-Einstufung geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Schadstoff', url: 'https://de.wikipedia.org/wiki/Schadstoff' },
           { title: 'Asbest', url: 'https://de.wikipedia.org/wiki/Asbest' },
@@ -1310,15 +1344,16 @@ export default function Schadstoffe() {
           { title: 'Polyzyklische aromatische Kohlenwasserstoffe', url: 'https://de.wikipedia.org/wiki/Polyzyklische_aromatische_Kohlenwasserstoffe' }
         ]}
         literatur={[
-          'Hentschel, P. (2018): Schadstoffe in Gebäuden: Asbest, KMF, PCB, PCP, PAK, Schimmelpilze (Rudolf Müller Verlag)',
-          'Fraunhofer IRB: Schadstoffatlas - Erkennen, Bewerten und Sanieren von Schadstoffen in Gebäuden',
+          'Fachliteratur zu Gebäudeschadstoffen (z. B. Handbücher zu Asbest, KMF, PCB, PAK; konkrete Ausgabe manuell prüfen)',
+          
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
           { title: 'Gefahrstoffverordnung (GefStoffV)', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
-          { title: 'TRGS 519 (Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' },
-          { title: 'TRGS 521 (Abbruch-, Sanierungs- und Instandhaltungsarbeiten mit alter Mineralwolle)', url: 'https://www.baua.de/' },
-          { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe)', url: 'https://www.dibt.de/' }
+          { title: 'TRGS 519 (Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten), Fassung 2014, zuletzt geändert 28.01.2025', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' },
+          { title: 'TRGS 521 (Tätigkeiten mit alter Mineralwolle; Neufassung 2026, ersetzt Ausgabe 2008 – Fundstelle manuell prüfen)', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-521' },
+          { title: 'VDI 6202 Blatt 3:2021-09 (Asbest – Erkundung und Bewertung)', url: 'https://www.dinmedia.de/de/suche?q=VDI+6202+Blatt+3' },
+          { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe und Bauteile in Gebäuden; Landesfassung manuell prüfen)', url: 'https://www.dibt.de/' }
         ]}
         formeln={[
           {

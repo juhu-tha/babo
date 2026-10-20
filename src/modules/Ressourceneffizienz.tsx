@@ -22,6 +22,8 @@ import {
   FileText 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 // Define the tabs representing the 4 concepts of REZ Bayern
 type RezTab = 'informieren' | 'handeln' | 'nutzen' | 'staerken';
@@ -338,7 +340,7 @@ export default function Ressourceneffizienz() {
     const fundingBonus = recyclingUsage >= 25 ? (projectSize * 8.5) : 0;
 
     const totalAnnualBenefits = disposalSavings + materialCostSavings + co2TaxSavings + fundingBonus;
-    const certificationBonus = recyclingUsage >= 30 ? 'Auszeichnung Gold-Standard möglich (DGNB/QNG)' : 'Basis-Standard';
+    const certificationBonus = recyclingUsage >= 30 ? 'Positiver Beitrag zu Zertifizierungskriterien (z. B. DGNB Ressourcen)' : 'Basis-Standard';
 
     return {
       wasteBaseline: formatDeZahl(standardConstructionWasteTons, 1),
@@ -538,7 +540,7 @@ export default function Ressourceneffizienz() {
                     <div className="space-y-1">
                       <span className="font-bold text-slate-900 dark:text-white text-xs">Schon gewusst? (Prof. Hubers Faktencheck)</span>
                       <p className="text-xs text-slate-600 dark:text-slate-350 leading-relaxed">
-                        In Bayern fallen jährlich rund 28 Millionen Tonnen mineralische Bauabfälle (Bauschutt, Straßenaufbruch, Bodenaushub) an. Sie machen über 60 % des gesamten bayerischen Abfallaufkommens aus! Eine Verwertungsquote von über 90 % wird zwar statistisch erreicht, jedoch fließt ein Großteil in den niederwertigen Straßenunterbau (Downcycling). Echtes Hochbautec-Recycling (RC-Beton) schont bayerischen Kiesabbaugebiete und Waldlandschaften langfristig.
+                        Mineralische Bau- und Abbruchabfälle (Bauschutt, Straßenaufbruch, Bodenaushub) sind in Bayern wie bundesweit der mit Abstand größte Abfallstrom (Größenordnung mehrere zehn Millionen Tonnen jährlich; aktuelle Zahlen in der Abfallbilanz des LfU bzw. im Monitoringbericht Kreislaufwirtschaft Bau). Eine hohe Verwertungsquote wird zwar statistisch erreicht, jedoch fließt ein Großteil in den niederwertigen Straßenunterbau (Downcycling). Echtes Hochbau-Recycling (RC-Beton) schont bayerischen Kiesabbaugebiete und Waldlandschaften langfristig.
                       </p>
                     </div>
                   </div>
@@ -593,7 +595,7 @@ export default function Ressourceneffizienz() {
                       </div>
                       <div className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-shiraz shrink-0"></span>
-                        <span>Ziel der Bayerischen Ressourcenstrategie 2030: Verdopplung des RC-Betoneinsatzes im staatlichen Hochbau.</span>
+                        <span>Politisches Ziel: mehr RC-Beton im öffentlichen Hochbau (konkrete Zielwerte der bayerischen Strategie manuell prüfen).</span>
                       </div>
                     </div>
                   </div>
@@ -1007,7 +1009,7 @@ export default function Ressourceneffizienz() {
                             : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-305 border-slate-205 dark:border-slate-705 hover:bg-slate-50 dark:hover:bg-slate-700/80'
                         }`}
                       >
-                        RC-Beton (Gestein RC1)
+                        RC-Beton (rezykl. Gesteinskörnung)
                       </button>
                     </div>
                   </div>
@@ -1063,7 +1065,7 @@ export default function Ressourceneffizienz() {
                         />
                         <div className="flex flex-col text-xs">
                           <span className="font-bold text-slate-800 dark:text-slate-200">Bauwerksintegrierte Optimierung</span>
-                          <span className="text-slate-500 dark:text-slate-400 text-xs">Sparsame Elementstärken &amp; Hohlkörperdecken sparren 15% Gesamtvolumen.</span>
+                          <span className="text-slate-500 dark:text-slate-400 text-xs">Sparsame Elementstärken &amp; Hohlkörperdecken sparen ca. 15 % Gesamtvolumen.</span>
                         </div>
                       </label>
 
@@ -1244,22 +1246,22 @@ export default function Ressourceneffizienz() {
                     <div className="bg-white dark:bg-slate-850 p-4 rounded-xl border border-slate-150 dark:border-slate-800 space-y-1">
                       <div className="flex items-center gap-1.5 text-slate-650 dark:text-slate-300 text-xs font-bold uppercase">
                         <TrendingUp size={14} className="text-shiraz dark:text-rose-450" />
-                        CO₂-Abgaben-Einsparung
+                        CO₂-Kosten (Schattenpreis)
                       </div>
                       <span className="font-mono text-xl font-bold text-slate-900 dark:text-white">+{costResult.co2TaxSavings} €</span>
                       <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal">
-                        Geringerer fossiler Anteil durch Hüttensand/RC-Zusatz bewahrt das Bauvorhaben vor zukünftigen Grenzwertexzedenz-Abgaben.
+                        Kalkulatorischer CO₂-Preis von 65 €/t (Obergrenze des BEHG-Preiskorridors 2026) als Schattenpreis; eine direkte CO₂-Abgabe auf Baustoffe gibt es für das Bauvorhaben nicht.
                       </p>
                     </div>
 
                     <div className="bg-white dark:bg-slate-850 p-4 rounded-xl border border-slate-150 dark:border-slate-800 space-y-1">
                       <div className="flex items-center gap-1.5 text-slate-650 dark:text-slate-305 text-xs font-bold uppercase">
                         <Sparkles size={14} className="text-shiraz dark:text-rose-450" />
-                        Bay-Klimabonus &amp; Förderung
+                        Förderbonus (fiktiver Lehrwert)
                       </div>
                       <span className="font-mono text-xl font-bold text-shiraz dark:text-rose-400">+{costResult.fundingBonus} €</span>
                       <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal">
-                        Staatliche bayerische Zuschläge / Kreditsubventionen bei Erreichen von mindestens 25 % sekundärem Substitutions-Volumen.
+                        Modellannahme ohne reales Förderprogramm: Bonus ab 25 % Substitution. Prüfen Sie aktuelle Programme (z. B. KfW/QNG-Förderung) im Einzelfall.
                       </p>
                     </div>
 
@@ -1393,7 +1395,35 @@ export default function Ressourceneffizienz() {
       </div>
 
       {/* Module standard footer */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Material Circularity Indicator eines Betonbauteils"
+        zielGleichung="MCI = \max\left(0;\; 1 - LFI \cdot F(X)\right), \quad F(X) = \frac{0{,}9}{X}"
+        schritte={[
+          { titel: 'Lineare Flussrate', erklaerung: 'Rezyklatanteil der Gesteinskörnung 30 %, stoffliche Verwertung am Lebensende 70 % (davon Recycling-Effizienz berücksichtigt), vereinfachter Ansatz:', formel: 'LFI = \\frac{V + W}{2M} = \\frac{0{,}70 + 0{,}30}{2} = 0{,}50' },
+          { titel: 'Nutzungsfaktor', erklaerung: 'Nutzungsdauer gleich dem Branchendurchschnitt:', formel: 'X = 1 \\Rightarrow F(X) = 0{,}9' },
+          { titel: 'Ergebnis', erklaerung: 'Einsetzen:', formel: 'MCI = 1 - 0{,}50 \\cdot 0{,}9 = 0{,}55' }
+        ]}
+        ergebnisHinweis="V = Anteil Primärmaterial, W = nicht verwerteter Abfallanteil (beide bezogen auf die Masse M). Eine längere Nutzungsdauer (X = 2) senkt F(X) auf 0,45 und hebt den MCI auf 0,78 – Langlebigkeit wirkt so stark wie Rezyklateinsatz."
+        normQuelle="Ellen MacArthur Foundation / Granta Design: Circularity Indicators, Methodology (2015/2019)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Rezyklatanteil und Primärkieseinsparung im Hochbau"
+        zielGleichung="m_{RC} = V_{Beton} \cdot m_{GK} \cdot a_{RC}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Bürogebäude mit 2 500 m³ Beton, Gesteinskörnung 1 850 kg/m³, Austauschanteil grober Körnung 35 % (Lehrwert; zulässige Anteile nach DAfStb-Richtlinie je Expositionsklasse prüfen):', formel: 'm_{RC} = 2\\,500 \\cdot 1{,}85 \\cdot 0{,}35 = 1\\,619\\,\\text{t}' },
+          { titel: 'Lkw-Fahrten', erklaerung: 'Bei 25 t Nutzlast:', formel: 'n = \\frac{1\\,619}{25} = 65\\,\\text{Fahrten Primärkies weniger}' },
+          { titel: 'Massenbezogene Quote', erklaerung: 'Bezogen auf die gesamte Gesteinskörnung:', formel: 'RER = \\frac{1\\,619}{2\\,500 \\cdot 1{,}85} = 0{,}35 = 35\\,\\%' }
+        ]}
+        ergebnisHinweis="Rezyklierte Gesteinskörnung ersetzt Primärkies, senkt die CO₂-Bilanz des Betons aber nur wenig – der Zementgehalt dominiert. Der größere Hebel liegt bei klinkerarmen Zementen und schlanker Bemessung."
+        normQuelle="DIN EN 12620; DAfStb-Richtlinie Beton mit rezyklierter Gesteinskörnung (Ausgabe manuell prüfen)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ressourceneffizienz" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 9 Rückbau & Schadstoffe: Statistik- und Förderangaben als Lehrwerte gekennzeichnet, MCI und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Ressourceneffizienz', url: 'https://de.wikipedia.org/wiki/Ressourceneffizienz' },
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
@@ -1401,25 +1431,25 @@ export default function Ressourceneffizienz() {
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' }
         ]}
         literatur={[
-          'Ressourceneffizienz-Zentrum Bayern (REZ / LfU): Leitfaden Ressourceneffizientes Bauen in Bayern',
+          'Ressourceneffizienz-Zentrum Bayern (REZ) am LfU: Informationsangebote zum ressourceneffizienten Bauen (www.umweltpakt.bayern.de/rez; Titel manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Sobek, W. (2022): non nobis – über das Bauen in der Zukunft (av edition)'
         ]}
         regelwerke={[
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
-          { title: 'Kreislaufwirtschaftsgesetz (KrWG § 14 Stoffliche Verwertung)', url: 'https://www.gesetze-im-internet.de/krwg/' },
-          { title: 'VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien', url: 'https://www.vdi.de/' },
+          { title: 'Kreislaufwirtschaftsgesetz (KrWG § 14 Abs. 3: Ziel 70 % für Bau- und Abbruchabfälle)', url: 'https://www.gesetze-im-internet.de/krwg/' },
+          { title: 'VDI 4800 Blatt 1:2016-02 (Ressourceneffizienz – Methodische Grundlagen, Prinzipien und Strategien)', url: 'https://www.dinmedia.de/de/suche?q=VDI+4800' },
           { title: 'DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' }
         ]}
         formeln={[
           {
             formel: 'RER = \\frac{m_{\\text{recycelt}} + m_{\\text{sekundär}}}{m_{\\text{gesamt}}} \\cdot 100\\% \\quad (\\text{Recycling-Einsatz-Quote})',
-            erklaerung: 'Massenbezogene Recycling-Einsatzquote (Recycled Content Rate) für mineralische Baustoffe gemäß DGNB und QNG zur Schonung von Primärrohstoffen.',
+            erklaerung: 'Massenbezogene Recycling-Einsatzquote (Recycled Content Rate) für mineralische Baustoffe, wie sie in Zertifizierungssystemen (z. B. DGNB) bewertet wird.',
             quelle: 'VDI 4800 / DGNB'
           },
           {
             formel: 'MCI = 1 - LFI \\cdot F(X) \\in [0; 1]',
-            erklaerung: 'Material Circularity Index: Quantitative Kennzahl zur geschlossenen Kreislaufführung unter Einbezug von linearer Flussrate LFI und Nutzungsfaktor F(X).',
+            erklaerung: 'Material Circularity Indicator: MCI = max(0; 1 − LFI · F(X)) mit linearer Flussrate LFI und Nutzungsfaktor F(X) = 0,9/X.',
             quelle: 'Ellen MacArthur Foundation'
           }
         ]}

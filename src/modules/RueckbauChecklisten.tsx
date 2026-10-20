@@ -8,6 +8,8 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 // Define structures for checklists
 interface ChecklistItem {
@@ -30,7 +32,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
   rueckbau: {
     id: 'rueckbau',
     title: '1. Rückbau, Abbruch & Urban Mining',
-    description: 'Systematische Planung und Umsetzung eines selektiven Rückbaus gemäß VDI 6202 Blatt 1 zur sortenreinen Stoffstromtrennung.',
+    description: 'Systematische Planung und Umsetzung eines selektiven Rückbaus nach VDI 6210 Blatt 1 und VDI 6202 Blatt 1 zur sortenreinen Stoffstromtrennung.',
     icon: Building,
     items: [
       {
@@ -44,7 +46,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'rb-2',
         task: 'Schadstoff- und Bauteilkataster erstellen',
         description: 'Lückenloses Verzeichnis aller verbauten Materialien, Massenabschätzungen, Gefahrstoffe (Asbest, KMF, PCB etc.) inkl. lokaler Lage und Entsorgungswege.',
-        ref: 'VDI 6202 Blatt 1 Abs. 6',
+        ref: 'VDI 6202 Blatt 1; DIN SPEC 91484',
         status: 'critical'
       },
       {
@@ -86,8 +88,8 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'ap-1',
         task: 'Anzeigepflicht & Genehmigung für mobile Aufbereitungsanlagen (BImSchG)',
-        description: 'Anmeldung der mobilen Brech- und Siebanlage bei der Landesbehörde. Bei einer Betriebsdauer über 12 Monaten ist eine förmliche Genehmigung nach BImSchG erforderlich.',
-        ref: 'BImSchG / BImSchG / 4. BImSchV Anhang 1 Nr. 8.11.2.4 (Behandlung nicht gefährlicher Abfälle) bzw. Nr. 2.2 (Brechen von Gestein)',
+        description: 'Abstimmung des Einsatzes der mobilen Brech- und Siebanlage mit der zuständigen Behörde. Wird die Anlage länger als zwölf Monate am selben Ort betrieben, ist sie nach BImSchG genehmigungsbedürftig.',
+        ref: 'BImSchG / 4. BImSchV Anhang 1 Nr. 8.11.2.4 (Behandlung nicht gefährlicher Abfälle) bzw. Nr. 2.2 (Brechen von Gestein)',
         status: 'critical'
       },
       {
@@ -108,7 +110,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'ap-4',
         task: 'Güteüberwachung & werkseigene Produktionskontrolle (WPK) absichern',
         description: 'Verpflichtende Erstprüfung und regelmäßige Fremdüberwachung der aufbereiteten Recyclingbaustoffe durch ein anerkanntes Prüfinstitut zur Erlangung des Gütezeichens (z.B. QUBA, QRB).',
-        ref: 'Ersatzbaustoffverordnung (EBV) § 4 - § 11',
+        ref: 'Ersatzbaustoffverordnung (EBV), Abschnitt Güteüberwachung',
         status: 'mandatory'
       },
       {
@@ -158,7 +160,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'ar-4',
         task: 'Elektronisches Abfallnachweisverfahren (eANV) nutzen',
         description: 'Einholen von behördlichen Erzeugernummern, Abschluss von Entsorgungsnachweisen mitsamt elektronischen Begleit- und Übernahmescheinen vor Abtransport gefährlicher Stoffe.',
-        ref: 'Nachweisverordnung (NachwV) § 4',
+        ref: 'Nachweisverordnung (NachwV)',
         status: 'critical'
       },
       {
@@ -186,15 +188,15 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
       {
         id: 'gs-1',
         task: 'Umgang mit Asbest: Sachkunde und Arbeitsanzeige sicherstellen',
-        description: 'Arbeiten an Asbest dürfen nur durch Firmen mit Sachkunde nach TRGS 519 durchgeführt werden. Gefährdungsbeurteilung und Gefährdungsbeurteilung und Anzeige an die zuständige Behörde spätestens 7 Tage vor Beginn der Tätigkeiten.',
+        description: 'Arbeiten an Asbest dürfen nur durch Firmen mit Sachkunde nach TRGS 519 durchgeführt werden. Gefährdungsbeurteilung und Anzeige an die zuständige Behörde mindestens eine Woche vor Beginn der Tätigkeiten (§ 11a GefStoffV); Tätigkeiten mit hohem Risiko nur mit behördlicher Zulassung.',
         ref: 'Gefahrstoffverordnung (GefStoffV) / TRGS 519',
         status: 'critical'
       },
       {
         id: 'gs-2',
         task: 'Künstliche Mineralfasern (KMF) bewerten (Staubarmes Arbeiten)',
-        description: 'Prüfung, ob die KMF der Alt-KMF-Regelung unterliegen (krebserzeugend). Einhaltung der TRGS 521. Befeuchtung, staubdichter Ausbau, Verbot von Reiß- und Schredderverfahren ohne Absaugung.',
-        ref: 'TRGS 521',
+        description: 'Prüfung, ob alte (vor dem 1. Juni 2000 eingebaute, biopersistente) Mineralwolle vorliegt. Einhaltung der TRGS 521. Befeuchtung, staubdichter Ausbau, Verbot von Reiß- und Schredderverfahren ohne Absaugung.',
+        ref: 'TRGS 521 (Neufassung 2026)',
         status: 'mandatory'
       },
       {
@@ -222,7 +224,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'gs-6',
         task: 'Staubdichte Verpackung und Kennzeichnung gefährlicher Abfälle',
         description: 'Asbestzementplatten und Faserstäube sind unmittelbar am Entstehungsort in staubdichte Big-Bags oder Platten-Bags mit offiziellem Asbest-Warnhinweis ("a"-Symbol) abzufüllen.',
-        ref: 'TRGS 519 Abs. 14 / GefStoffV',
+        ref: 'TRGS 519 (Abfallentsorgung) / GefStoffV',
         status: 'critical'
       }
     ]
@@ -389,7 +391,35 @@ export default function RueckbauChecklisten() {
       </div>
 
       {/* Module Footer Links */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Probenanzahl für ein Haufwerk von 850 m³ nach LAGA PN 98"
+        zielGleichung="n_{MP} = 10 + \left\lceil \frac{V - 600}{100} \right\rceil, \quad n_{EP} = 4 \cdot n_{MP}, \quad n_{LP} = 10 + \left\lceil \frac{V - 600}{300} \right\rceil"
+        schritte={[
+          { titel: 'Mischproben', erklaerung: 'Oberhalb von 600 m³ je angefangene 100 m³ eine weitere Mischprobe:', formel: 'n_{MP} = 10 + \\lceil 2{,}5 \\rceil = 13' },
+          { titel: 'Einzelproben', erklaerung: 'Eine Mischprobe besteht in der Regel aus vier Einzelproben:', formel: 'n_{EP} = 4 \\cdot 13 = 52' },
+          { titel: 'Laborproben', erklaerung: 'Je angefangene 300 m³ oberhalb 600 m³ eine weitere Laborprobe:', formel: 'n_{LP} = 10 + \\lceil 0{,}83 \\rceil = 11' }
+        ]}
+        ergebnisHinweis="Die Werte entsprechen Tabelle 2 der LAGA PN 98 (bis 900 m³: 52 EP, 13 MP, 11 LP). Ab 700 m³ dürfen bei gleichbleibender Beschaffenheit je drei Mischproben zu einer Sammelprobe vereinigt werden."
+        normQuelle="LAGA PN 98 (Mitteilung 32), Tabelle 2"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Verpackung von Asbestzement-Wellplatten"
+        zielGleichung="n_{Bag} = \left\lceil \frac{A \cdot g}{m_{Bag}} \right\rceil"
+        schritte={[
+          { titel: 'Masse', erklaerung: 'Dachfläche 450 m², flächenbezogene Masse der Wellplatten ca. 18 kg/m² (Lehrwert):', formel: 'm = 450 \\cdot 18 = 8\\,100\\,\\text{kg}' },
+          { titel: 'Verpackung', erklaerung: 'Platten-Bags mit zulässiger Nutzlast 1,5 t:', formel: 'n_{Bag} = \\lceil 8\\,100 / 1\\,500 \\rceil = \\lceil 5{,}4 \\rceil = 6' },
+          { titel: 'Entsorgung', erklaerung: 'Abfallschlüssel und Nachweis:', formel: '17\\,06\\,05^{*} \\Rightarrow \\text{gefährlicher Abfall, eANV}' }
+        ]}
+        ergebnisHinweis="Platten unzerstört aufnehmen, nicht brechen oder werfen, staubdicht verpacken und mit dem Asbest-Kennzeichen versehen. Die Arbeiten sind mindestens eine Woche vorher anzuzeigen."
+        normQuelle="GefStoffV § 11a; TRGS 519; AVV"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="rueckbau_checklisten" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 9 Rückbau & Schadstoffe: Checklisten-Referenzen, GefStoffV § 11a, BImSchV und PN 98 geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Abbruch (Bauwesen)', url: 'https://de.wikipedia.org/wiki/Abbruch_(Bauwesen)' },
           { title: 'Asbestsanierung', url: 'https://de.wikipedia.org/wiki/Asbestsanierung' },
@@ -400,7 +430,8 @@ export default function RueckbauChecklisten() {
           { title: 'Ersatzbaustoffverordnung (ErsatzbaustoffV 2023)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Kreislaufwirtschaftsgesetz (KrWG § 14 Quoten)', url: 'https://www.gesetze-im-internet.de/krwg/' },
           { title: 'Gefahrstoffverordnung (GefStoffV)', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
-          { title: 'TRGS 519 (Asbest)', url: 'https://www.baua.de/' }
+          { title: 'TRGS 519 (Asbest), zuletzt geändert 28.01.2025', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' },
+          { title: 'Gewerbeabfallverordnung (GewAbfV), §§ 8, 9', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' }
         ]}
         literatur={[
           'Deutscher Abbruchverband e.V. (DA): Leitfaden Schadstoffsanierung und selektiver Rückbau',

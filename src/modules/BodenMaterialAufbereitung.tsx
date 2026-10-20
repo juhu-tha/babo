@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Recycle, Sliders, Activity, CheckCircle2, Info, AlertTriangle, AlertCircle, FileText, SlidersHorizontal, BookOpen, Layers, ClipboardCheck, Scale, Printer } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
@@ -286,42 +288,22 @@ export default function BodenMaterialAufbereitung() {
   // Math & Logic based on LAGA PN 98 & LfU standards
   const tonnage = Math.round(heapVolume * heapDensity);
 
-  // Investigation unit constraints (Max 500 m³ or 1000 t per unit in Bavaria/LAGA)
-  const maxUnitVol = 500;
-  const maxUnitTonnage = 1000;
+  // Obergrenze je Untersuchung: LfU-Arbeitshilfe "Umgang mit Bodenmaterial" (Stand 10/2025) – max. 3.000 m³ je Haufwerk im Zwischenlager
+  const maxUnitVol = 3000;
+  const maxUnitTonnage = Infinity;
   const numInvestigationUnits = Math.max(1, Math.ceil(Math.max(heapVolume / maxUnitVol, tonnage / maxUnitTonnage)));
 
   // LAGA PN 98 Sampling Table per investigation unit
   const calculateRequirements = (vol: number) => {
-    let mpCount = 1;
-    let epCount = 10;
-    
-    if (vol <= 30) {
-      mpCount = 1;
-      epCount = 10;
-    } else if (vol <= 100) {
-      mpCount = 1;
-      epCount = 20;
-    } else if (vol <= 250) {
-      mpCount = 2;
-      epCount = 20; // 10 increments per composite sample
-    } else if (vol <= 500) {
-      mpCount = 3;
-      epCount = 30; // 10 increments per composite sample
-    } else if (vol <= 1000) {
-      mpCount = 4;
-      epCount = 40;
-    } else if (vol <= 1500) {
-      mpCount = 5;
-      epCount = 50;
-    } else if (vol <= 2000) {
-      mpCount = 6;
-      epCount = 60;
+    // LAGA PN 98 (Mitteilung 32), Tabelle 2: Mischproben (MP) und Einzelproben (EP = 4 je MP)
+    const stufen = [30, 60, 100, 150, 200, 300, 400, 500, 600];
+    let mpCount = 10;
+    if (vol <= 600) {
+      mpCount = stufen.findIndex(g => vol <= g) + 2;
     } else {
-      const surplus = Math.ceil((vol - 2000) / 500);
-      mpCount = 6 + surplus;
-      epCount = (6 + surplus) * 10;
+      mpCount = 10 + Math.ceil((vol - 600) / 100);
     }
+    const epCount = 4 * mpCount;
 
     return { mp: mpCount, ep: epCount };
   };
@@ -330,21 +312,22 @@ export default function BodenMaterialAufbereitung() {
 
   // Minimum single increment specification according to LAGA PN 98 / max grain size (d_max in mm)
   const getIncrementSpecs = (maxGrain: number) => {
+    // LAGA PN 98, Tabelle 3: Mindestvolumen der Einzelprobe nach Größtkorn (Masse bei ca. 1,6 t/m³)
     switch (maxGrain) {
       case 2:
-        return { vol: 0.1, mass: 0.2, name: 'Feinsand / Schluff (d_max ≤ 2 mm)' };
+        return { vol: 0.5, mass: 0.8, name: 'Feinsand / Schluff (d_max ≤ 2 mm)' };
       case 8:
-        return { vol: 0.5, mass: 1.0, name: 'Sande / Kiese (d_max ≤ 8 mm)' };
+        return { vol: 1.0, mass: 1.6, name: 'Sande / Feinkies (d_max ≤ 8 mm)' };
       case 16:
-        return { vol: 1.0, mass: 2.0, name: 'Mittelkies / Grobsand (d_max ≤ 16 mm)' };
+        return { vol: 1.0, mass: 1.6, name: 'Mittelkies / Grobsand (d_max ≤ 16 mm)' };
       case 32:
-        return { vol: 2.0, mass: 4.0, name: 'Grobe Kiese / Splitt (d_max ≤ 32 mm)' };
+        return { vol: 2.0, mass: 3.2, name: 'Grobe Kiese / Splitt (d_max ≤ 32 mm)' };
       case 63:
         return { vol: 5.0, mass: 8.0, name: 'Grobsteinchen / Schroppen (d_max ≤ 63 mm)' };
       case 125:
-        return { vol: 10.0, mass: 16.0, name: 'Mittelgroßer Bauschutt (d_max ≤ 125 mm)' };
+        return { vol: 5.0, mass: 8.0, name: 'Grober Bauschutt (d_max ≤ 120 mm; größere Stücke einzeln)' };
       default:
-        return { vol: 25.0, mass: 40.0, name: 'Grobes Haufwerk / Blockschutt (d_max > 125 mm)' };
+        return { vol: 5.0, mass: 8.0, name: 'Blockschutt (d_max > 120 mm: jedes Stück als Einzelprobe)' };
     }
   };
 
@@ -356,7 +339,7 @@ export default function BodenMaterialAufbereitung() {
   // LfU Bayern: Counter samples (Rückstellproben) - min 3 replicates:
   // 1x Analytical Lab Sample, 1x Authority Retained Sample, 1x Counter-Proof Retained Sample
   const numReplicates = 3;
-  const totalMinLabSampleMass = Math.max(2, Math.round(specs.mass * 2)); // min. 2 kg per lab sample according to LfU-Infoblatt
+  const totalMinLabSampleMass = Math.max(2, Math.round(specs.mass * 2)); // Laborprobe = 2 x Einzelprobe (LAGA PN 98 Tabelle 3); Rückstellproben als Praxisempfehlung
   const totalFieldMassRequired = totalMinLabSampleMass * numReplicates;
 
   return (
@@ -371,7 +354,7 @@ export default function BodenMaterialAufbereitung() {
           </h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
             <p className="leading-relaxed">
-              Dieses dedizierte Modul fokussiert sich tiefgehend auf die mechanischen, biologischen und thermischen Aufbereitungsverfahren kontaminierter Böden und mineralischer Baustoffe. Erfahre mehr über den simulatorischen Bau-Stoffkreislauf, Richtlinien und die gesetzliche Qualitätssicherungsschleife.
+              Dieses dedizierte Modul fokussiert sich tiefgehend auf die mechanischen, biologischen und thermischen Aufbereitungsverfahren kontaminierter Böden und mineralischer Baustoffe. Sie erfahren mehr über den simulatorischen Bau-Stoffkreislauf, Richtlinien und die gesetzliche Qualitätssicherungsschleife.
             </p>
           </div>
         </div>
@@ -857,7 +840,7 @@ export default function BodenMaterialAufbereitung() {
                     <div className="flex justify-between items-center pb-2.5 border-b border-slate-100">
                       <div>
                         <span className="text-xs font-bold text-slate-800">Mindestanzahl Mischproben:</span>
-                        <span className="text-xs text-slate-400 block mt-0.5 font-mono">1 Mischprobe pro Untersuchungseinheit</span>
+                        <span className="text-xs text-slate-400 block mt-0.5 font-mono">LAGA PN 98 Tabelle 2</span>
                       </div>
                       <span className="text-sm font-black text-shiraz bg-shiraz/5 border border-shiraz/20 px-3 py-1 rounded">
                         {formatDeWert(samplingReq.mp)} MP
@@ -886,7 +869,7 @@ export default function BodenMaterialAufbereitung() {
 
                     <div className="flex justify-between items-center">
                       <div>
-                        <span className="text-xs font-bold text-slate-800">Labor-Mindestmenge &amp; Replikate (LfU):</span>
+                        <span className="text-xs font-bold text-slate-800">Labor-Mindestmenge &amp; Rückstellproben (Praxisempfehlung):</span>
                         <span className="text-xs text-slate-400 block mt-0.5 font-mono">Analysenprobe + Behördenprobe + Beweissicherung</span>
                       </div>
                       <span className="text-xs font-mono font-extrabold text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded">
@@ -903,8 +886,8 @@ export default function BodenMaterialAufbereitung() {
                       <div className="bg-rose-50 border border-rose-200 text-rose-800 text-xs p-3 rounded-lg flex gap-2 items-start animate-pulse">
                         <AlertTriangle size={15} className="text-rose-600 flex-shrink-0 mt-0.5" />
                         <div>
-                          <strong className="block mb-0.5 font-extrabold">Rechtlicher Mangel nach LfU-Regelwerk:</strong>
-                          Ohne Sachkundenachweis nach LAGA PN 98 ist die Probenahme rechtlich ungültig. Analysenergebnisse werden von den bayerischen Abfallbehörden zur EBV-Einstufung grundsätzlich NICHT anerkannt!
+                          <strong className="block mb-0.5 font-extrabold">Qualitätsmangel:</strong>
+                          LAGA PN 98 verlangt fachkundiges Probenahmepersonal; ohne nachgewiesene Fachkunde riskieren Sie, dass Behörde oder Annahmestelle die Ergebnisse nicht anerkennen.
                         </div>
                       </div>
                     )}
@@ -926,7 +909,7 @@ export default function BodenMaterialAufbereitung() {
                         <Info size={15} className="text-sky-600 flex-shrink-0 mt-0.5" />
                         <div>
                           <strong className="block mb-0.5 font-extrabold">Hinweis zur Probenahmestrategie:</strong>
-                          Inhomogene oder geschichtete Haufwerke sind laut LfU Bayern vorab durch einen Hydraulikbagger mechanisch zu homogenisieren, um repräsentative Stichproben zu garantieren, oder es müssen separate Untersuchungs-Teileinheiten gebildet werden.
+                          Inhomogene oder geschichtete Haufwerke sind nicht zur Verdünnung zu vermischen; erkennbar unterschiedliche Teilmengen sind getrennt zu beproben (separate Untersuchungseinheiten).
                         </div>
                       </div>
                     )}
@@ -937,7 +920,7 @@ export default function BodenMaterialAufbereitung() {
                         <Layers size={15} className="text-blue-600 flex-shrink-0 mt-0.5" />
                         <div>
                           <strong className="block mb-0.5 font-extrabold">Erforderliche Aufteilung in {numInvestigationUnits} Sektoren:</strong>
-                          Da das Haufwerk die bayerische Obergrenze von 500 m³ bzw. 1000 t übersteigt, schreibt das LfU die physische Aufteilung des Haufwerks in {numInvestigationUnits} eigenständige Untersuchungseinheiten (UE) vor. Sektorbeprobung erforderlich!
+                          Das Haufwerk übersteigt 3.000 m³. Nach der LfU-Arbeitshilfe „Umgang mit Bodenmaterial“ (Stand 10/2025) darf Material aus Zwischenlägern auf Grundlage einer Untersuchung bis höchstens 3.000 m³ in Verkehr gebracht werden – daher {numInvestigationUnits} getrennte Untersuchungseinheiten (UE) bilden.
                         </div>
                       </div>
                     )}
@@ -945,7 +928,7 @@ export default function BodenMaterialAufbereitung() {
                 </div>
 
                 <div className="text-xs text-slate-500 italic mt-3 pt-3 border-t border-home-grau/20">
-                  Formel zur Probenanzahl: Für das Volumen <FormulaText text="V_u" /> gilt ab 30 m³ die Formel <FormulaText text="n_{MP} = \lceil \frac{V_u - 2000}{500} \rceil + 6" /> mit jeweils mindestens <FormulaText text="10" /> Einzelproben je Mischprobe.
+                  Formel zur Probenanzahl (LAGA PN 98 Tabelle 2): bis 600 m³ tabelliert (2 bis 10 Mischproben); darüber <FormulaText text="n_{MP} = 10 + \lceil \frac{V_u - 600}{100} \rceil" /> mit in der Regel <FormulaText text="4" /> Einzelproben je Mischprobe.
                 </div>
               </div>
             </div>
@@ -957,7 +940,7 @@ export default function BodenMaterialAufbereitung() {
                 Interaktiver Probenahmeprotokoll-Generator
               </h5>
               <p className="text-xs text-slate-600 leading-normal mb-4">
-                Nutzen Sie dieses interaktive Formular, um ein normgerechtes Probenahmeprotokoll nach PN 98 zur Vorlage beim Chemielabor und der Abfallbehörde zu entwerfen. Ergänze die Projektmetadaten.
+                Nutzen Sie dieses interaktive Formular, um ein normgerechtes Probenahmeprotokoll nach PN 98 zur Vorlage beim Chemielabor und der Abfallbehörde zu entwerfen. Ergänzen Sie die Projektmetadaten.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -1110,7 +1093,7 @@ export default function BodenMaterialAufbereitung() {
                       </tr>
                       <tr>
                         <td className="border border-slate-300 p-1">Untersuchungseinheiten (UE)</td>
-                        <td className="border border-slate-300 p-1 font-mono">{numInvestigationUnits} UE (max. 500 m³)</td>
+                        <td className="border border-slate-300 p-1 font-mono">{numInvestigationUnits} UE (max. 3.000 m³)</td>
                         <td className="border border-slate-300 p-1 font-semibold">{numInvestigationUnits} UE gebildet</td>
                       </tr>
                       <tr>
@@ -1205,26 +1188,54 @@ export default function BodenMaterialAufbereitung() {
         </div>
       </div>
     
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Beprobung eines Bodenaushub-Haufwerks von 120 m³"
+        zielGleichung="m = V \cdot \rho, \quad n_{EP} = 4 \cdot n_{MP}"
+        schritte={[
+          { titel: 'Masse', erklaerung: 'Volumen 120 m³, Schüttdichte 1,6 t/m³:', formel: 'm = 120 \\cdot 1{,}6 = 192\\,\\text{t}' },
+          { titel: 'Probenanzahl', erklaerung: 'LAGA PN 98 Tabelle 2, Stufe „bis 150 m³“:', formel: 'n_{MP} = 5, \\; n_{EP} = 20, \\; n_{LP} = 5' },
+          { titel: 'Probenmenge', erklaerung: 'Größtkorn 32 mm (Stufe 20 bis 50 mm): Einzelprobe mindestens 2 l:', formel: 'V_{EP,ges} = 20 \\cdot 2 = 40\\,\\text{l}, \\; V_{MP} = 4 \\cdot 2 = 8\\,\\text{l}' }
+        ]}
+        ergebnisHinweis="Die Mischproben werden vor Ort homogenisiert und durch Vierteln auf das Laborprobenvolumen (mindestens 4 l) reduziert. Bei leichtflüchtigen Stoffen keine Mischproben bilden."
+        normQuelle="LAGA PN 98, Tabellen 2 und 3; DIN 19698-1:2014-05"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Wassergehalt und Trockenmasse einer Bodenprobe"
+        zielGleichung="w = \frac{m_f - m_d}{m_d}"
+        schritte={[
+          { titel: 'Wägung', erklaerung: 'Feuchte Probe 2 450 g, nach Trocknung bei 105 °C 2 130 g:', formel: 'w = \\frac{2\\,450 - 2\\,130}{2\\,130} = 0{,}150 = 15{,}0\\,\\%' },
+          { titel: 'Trockenmassebezug', erklaerung: 'Ein im Labor gemessener Gehalt von 18 mg/kg Originalsubstanz wird auf TM umgerechnet:', formel: 'c_{TM} = \\frac{18}{m_d / m_f} = \\frac{18}{0{,}869} = 20{,}7\\,\\text{mg/kg TM}' },
+          { titel: 'Bedeutung', erklaerung: 'Feststoffwerte der EBV und BBodSchV beziehen sich auf die Trockenmasse.', formel: 'c_{TM} > c_{OS}' }
+        ]}
+        ergebnisHinweis="Ein falscher Bezug (Originalsubstanz statt Trockenmasse) unterschätzt die Belastung und kann zu einer falschen Materialklasse führen."
+        normQuelle="DIN EN ISO 17892-1; BBodSchV Anlage 3"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="boden_materialaufbereitung" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 9 Rückbau & Schadstoffe: Probenahmerechner auf LAGA PN 98 Tabellen 2/3 umgestellt, LfU-Arbeitshilfe 10/2025 eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Bodenschutz', url: 'https://de.wikipedia.org/wiki/Bodenschutz' },
           { title: 'Kreislaufwirtschaftsgesetz', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaftsgesetz' }
         ]}
         literatur={[
-          'Bayerisches Landesamt für Umwelt (LfU) Infoblatt lfu_abfall_00266 - Anforderungen an die Probennahme von Abfällen und Haufwerken (LAGA PN 98)'
+          'Bayerisches Landesamt für Umwelt (LfU): Umgang mit Bodenmaterial (lfu_abfall_00266), Stand Oktober 2025'
         ]}
         weblinks={[
-          { title: 'Bayerisches LfU Infoblatt lfu_abfall_00266 (PDF-Download)', url: 'https://www.bestellen.bayern.de/med/801504b0-b4a5-11f0-81ee-c3fc7d0a3316/4b0e6a70-1059-11d9-4c85-9d915831e9eb/0/lfu_abfall_00266.pdf' }
+          { title: 'LfU Bayern: Umgang mit Bodenmaterial, Stand 10/2025 (PDF-Download)', url: 'https://www.bestellen.bayern.de/med/801504b0-b4a5-11f0-81ee-c3fc7d0a3316/4b0e6a70-1059-11d9-4c85-9d915831e9eb/0/lfu_abfall_00266.pdf' }
         ]}
         regelwerke={[
-          { title: 'Ersatzbaustoffverordnung (EBV) - Richtlinien zur rechtlich belastbaren Verwertung von mineralischen Ersatzbaustoffen', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
-          { title: 'Bundes-Bodenschutz- und Altlastenverordnung (BBodSchV) - Regelungen zum vorsorgenden und sanierenden Bodenschutz', url: 'https://de.wikipedia.org/wiki/Bodenschutz' },
+          { title: 'Ersatzbaustoffverordnung (EBV), in Kraft seit 01.08.2023', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
+          { title: 'Bundes-Bodenschutz- und Altlastenverordnung (BBodSchV 2021, in Kraft seit 01.08.2023)', url: 'https://www.gesetze-im-internet.de/bbodschv_2023/' },
           { title: 'LAGA PN 98 - Richtlinie für das Vorgehen bei physikalischen, chemischen und biologischen Untersuchungen im Zusammenhang mit der Verwertung/Beseitigung von Abfällen', url: 'https://www.laga-online.de/' }
         ]}
         formeln={[
-          { formel: 'n_{MP} = 6 + \\lceil \\frac{V_{Haufwerk} - 2000}{500} \\rceil \\quad \\text{mit} \\quad n_{EP} = n_{MP} \\times 10', erklaerung: 'Mischprobenbestimmung nach LAGA PN 98 (>2000m³)' },
-          { formel: 'V_{EP, min} = f(d_{max}) \\in [0{,}1, 25{,}0]\\ \\text{Liter}', erklaerung: 'Mindesteinzelprobenvolumen nach Größtkorn' }
+          { formel: 'n_{MP} = 10 + \\lceil \\frac{V_{Haufwerk} - 600}{100} \\rceil \\quad \\text{mit} \\quad n_{EP} = 4 \\cdot n_{MP}', erklaerung: 'Mischprobenanzahl nach LAGA PN 98 Tabelle 2 für Haufwerke über 600 m³', quelle: 'LAGA PN 98' },
+          { formel: 'V_{EP, min} = f(d_{max}) \\in [0{,}5;\\ 5{,}0]\\ \\text{Liter}', erklaerung: 'Mindestvolumen der Einzelprobe nach Größtkorn (≤ 2 mm: 0,5 l; ≤ 20 mm: 1 l; ≤ 50 mm: 2 l; ≤ 120 mm: 5 l)', quelle: 'LAGA PN 98 Tabelle 3' }
         ]}
       />
     </div>
