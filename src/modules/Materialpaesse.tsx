@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { FileText, RefreshCw, Layers, Sparkles, AlertCircle, TrendingUp, CheckCircle, Scale, DollarSign, HelpCircle, HardHat, Award } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 interface BuildingArchetype {
@@ -155,7 +157,7 @@ export default function Materialpaesse() {
               <li><strong>Ressourcentransparenz:</strong> Lückenlose Dokumentation der Bauteile (Bill of Material, BOM).</li>
               <li><strong>Zirkuläres Potenzial:</strong> Genaue Angabe, ob Werkstoffe geklebt oder zerstörungsfrei demontierbar sind.</li>
               <li><strong>Gebäude-Restwert:</strong> Ermittlung des ökonomischen Werts der Rohstoffe für den Tag des Rückbaus.</li>
-              <li><strong>Klimaschutznachweis:</strong> Unverzichtbare Basis für DGNB-Zertifizierungen und den Bundes-Gebäuderessourcenpass.</li>
+              <li><strong>Klimaschutznachweis:</strong> Basis für DGNB-Zertifizierungen und den im Koalitionsvertrag 2021 angekündigten digitalen Gebäuderessourcenpass (bislang nicht gesetzlich eingeführt; Stand 10/2026, manuell prüfen).</li>
             </ul>
           </div>
           
@@ -634,7 +636,7 @@ export default function Materialpaesse() {
                 <div className="pt-3 border-t border-home-grau/30 flex items-start gap-2 text-[9.5px] text-slate-400 font-normal leading-normal">
                   <CheckCircle size={14} className="text-purple-600 shrink-0 mt-0.5" />
                   <span>
-                    Die Berechnungen dieses Ressourcenpasses stützen sich auf die standardisierte Kriterienmatrix <strong>DGNB Kriterium TEC 1.6</strong> sowie auf die Madaster-Kreislaufberechnungsformeln der EnEV/GEG. /* TODO: GModG Umnummerierung */ Erfüllt Anforderungen des Gebäudemodernisierungsgesetzes (GModG, in Kraft seit 29.07.2026, vormals GEG § 15) zur Pflichteinreichung digitaler Gebäudepässe.
+                    Die Berechnungen dieses Ressourcenpasses stützen sich auf die standardisierte Kriterienmatrix <strong>DGNB Kriterium TEC 1.6</strong> sowie auf den Material Circularity Indicator (Ellen MacArthur Foundation, z. B. in Madaster). Eine gesetzliche Pflicht zu Material- oder Gebäuderessourcenpässen besteht derzeit nicht; das Gebäudemodernisierungsgesetz (GModG) regelt energetische Anforderungen, keine Materialpässe.
                   </span>
                 </div>
 
@@ -662,7 +664,35 @@ export default function Materialpaesse() {
         </div>
       )}
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Massenbezogene Recyclingquote eines Gebäudes"
+        zielGleichung="R_{rec} = \frac{\sum m_i \cdot r_i}{\sum m_i}"
+        schritte={[
+          { titel: 'Massen und Quoten', erklaerung: 'Beton 300 t (r = 0,90), Stahl 20 t (0,95), Gips 5 t (0,60), Verbundbauteile 2 t (0):', formel: '\\sum m_i r_i = 270 + 19 + 3 + 0 = 292\\,\\text{t}' },
+          { titel: 'Gesamtmasse', erklaerung: 'Summe:', formel: '\\sum m_i = 327\\,\\text{t}' },
+          { titel: 'Quote', erklaerung: 'Einsetzen:', formel: 'R_{rec} = \\frac{292}{327} = 0{,}893 = 89{,}3\\,\\%' }
+        ]}
+        ergebnisHinweis="Die hohe Quote wird vom Beton dominiert, der meist zu Gesteinskörnung recycelt wird (Downcycling). Für die Bewertung der Kreislauffähigkeit zählen deshalb auch Wiederverwendbarkeit und Lösbarkeit der Verbindungen."
+        normQuelle="DGNB-Kriterium TEC 1.6; ISO 20887"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Material Circularity Indicator für ein Bauteil"
+        zielGleichung="MCI = 1 - LFI \cdot F(X), \quad LFI = \frac{V + W}{2M}"
+        schritte={[
+          { titel: 'Linearer Fluss', erklaerung: 'Rezyklatanteil 30 %, Verwertung am Lebensende 70 %:', formel: 'LFI = \\frac{0{,}70 + 0{,}30}{2} = 0{,}50' },
+          { titel: 'Nutzungsfaktor', erklaerung: 'Nutzungsdauer gleich Branchendurchschnitt:', formel: 'F(X) = \\frac{0{,}9}{1} = 0{,}9' },
+          { titel: 'Ergebnis', erklaerung: 'Einsetzen:', formel: 'MCI = 1 - 0{,}50 \\cdot 0{,}9 = 0{,}55' }
+        ]}
+        ergebnisHinweis="Der MCI ist ein Indikator der Ellen MacArthur Foundation, den Plattformen wie Madaster verwenden; er ist keine gesetzliche Kenngröße."
+        normQuelle="Ellen MacArthur Foundation: Circularity Indicators (2015/2019)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="materialpaesse" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 13 Digitales: falsche GModG-Pflichtaussage und Platzhaltertext entfernt, MCI/UMI-Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Gebäuderessourcenpass', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4uderessourcenpass' },
           { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' },
@@ -672,13 +702,13 @@ export default function Materialpaesse() {
         regelwerke={[
           { title: 'DGNB Kriterium TEC 1.6 (Rückbaufreundlichkeit und Kreislaufwirtschaft)', url: 'https://www.dgnb.de/' },
           { title: 'DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
-          { title: 'ISO 20887 (Sustainability in buildings - Design for disassembly and adaptability)', url: 'https://www.iso.org/' },
-          { title: 'EU-Taxonomie-Verordnung (Kriterien für Zirkulärwirtschaft / Circular Economy)', url: 'https://finance.ec.europa.eu/' }
+          { title: 'ISO 20887:2020 (Design for disassembly and adaptability)', url: 'https://www.iso.org/' },
+          { title: 'EU-Taxonomie, Delegierte Verordnung (EU) 2021/2139, Tätigkeit 7.1/7.2 (Kreislaufkriterien bei Neubau und Renovierung)', url: 'https://finance.ec.europa.eu/' }
         ]}
         literatur={[
           'DGNB e.V.: Gebäuderessourcenpass – Leitfaden zur Erstellung und Kriterienkatalog (2023)',
-          'Madaster Germany: Material Circularity Index (MCI) Dokumentation und Berechnungsleitfaden',
-          'Hillebrandt, A. et al.: Atlas Recycling – Gebäude als Materialressource (Edition Detail, München)',
+          'Ellen MacArthur Foundation; Granta Design: Circularity Indicators – Methodology (2015, aktualisiert 2019)',
+          'Hillebrandt, A.; Riegler-Floors, P.; Rosen, A.; Seggewies, J.-K.: Atlas Recycling – Gebäude als Materialressource. München: Detail 2018',
           'Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR): Zirkuläres Bauen im Bestand'
         ]}
         formeln={[
@@ -695,7 +725,7 @@ export default function Materialpaesse() {
           {
             formel: '\\text{UMI} = \\frac{\\sum (m_{i,\\text{rück}} \\cdot c_{\\text{lös},i})}{\\sum m_{i,\\text{gesamt}}} \\cdot 100\\,\\%',
             erklaerung: 'Urban Mining Index (UMI): Prozentualer Anteil der qualitativ kreislauffähig rückgewinnbaren Baustoffe unter Bewertung des Lösbarkeitskoeffizienten.',
-            quelle: 'Hillebrandt et al., Bergische Universität Wuppertal'
+            quelle: 'Rosen, A.: Urban Mining Index (Dissertation, Bergische Universität Wuppertal 2020)'
           }
         ]}
       />

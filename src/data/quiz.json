@@ -5771,5 +5771,305 @@
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
     "verified": false
+  },
+  {
+    "id": "q_dg_bim_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bim_baustoffe",
+    "moduleTitle": "BIM für Baustoffe",
+    "topic": "IFC-Norm",
+    "difficulty": "Basis",
+    "normRef": "ISO 16739-1:2024",
+    "question": "Welche Norm beschreibt das offene Datenformat IFC in der Version 4.3?",
+    "options": [
+      "DIN EN ISO 19650-1",
+      "ISO 16739-1:2024",
+      "DIN EN 15804",
+      "ISO 14025"
+    ],
+    "correctIdx": 1,
+    "explanation": "IFC 4.3 ist als ISO 16739-1:2024 genormt; ISO 19650 regelt das Informationsmanagement, nicht das Datenschema.",
+    "gapAnalysis": {
+      "topic": "IFC-Norm",
+      "misconception": "ISO 19650 definiere das IFC-Format.",
+      "coreRule": "IFC = ISO 16739-1; Prozesse = ISO 19650.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „IFC-Norm“ im Modul BIM für Baustoffe noch einmal durch.",
+      "targetModuleTab": "bim_baustoffe",
+      "targetModuleLabel": "BIM für Baustoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_bim_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bim_baustoffe",
+    "moduleTitle": "BIM für Baustoffe",
+    "topic": "Property-Sets",
+    "difficulty": "Fortgeschritten",
+    "normRef": "IFC 4",
+    "question": "Wie sollten projektspezifische Eigenschaften, die es in IFC nicht als Standard-Pset gibt, benannt werden?",
+    "options": [
+      "Mit dem Präfix Pset_",
+      "In einem eigenen Property-Set ohne das reservierte Präfix Pset_ (z. B. CPset_Umweltdaten)",
+      "Gar nicht, sie sind unzulässig",
+      "Nur als Kommentar in der Datei"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Präfix Pset_ ist den von buildingSMART definierten Sets vorbehalten; eigene Sets erhalten einen anderen Namen.",
+    "gapAnalysis": {
+      "topic": "Property-Sets",
+      "misconception": "Jede Eigenschaft könne frei als Pset_ benannt werden.",
+      "coreRule": "Standard-Psets nutzen, eigene Sets eindeutig ohne Pset_-Präfix benennen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Property-Sets“ im Modul BIM für Baustoffe noch einmal durch.",
+      "targetModuleTab": "bim_baustoffe",
+      "targetModuleLabel": "BIM für Baustoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_db_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialdatenbanken",
+    "moduleTitle": "Materialdatenbanken",
+    "topic": "Funktionale Einheit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Eine EPD nennt 1,20 kg CO₂e/kg für Mineralwolle (30 kg/m³). Wie groß ist das GWP von 16 cm Dämmung je m²?",
+    "options": [
+      "0,19 kg",
+      "1,92 kg",
+      "5,76 kg",
+      "36 kg"
+    ],
+    "correctIdx": 2,
+    "explanation": "0,16 m · 30 kg/m³ · 1,20 kg CO₂e/kg = 5,76 kg CO₂e/m².",
+    "gapAnalysis": {
+      "topic": "Funktionale Einheit",
+      "misconception": "Massebezogene EPD-Werte könnten direkt pro m² verwendet werden.",
+      "coreRule": "Umrechnung über Dicke und Rohdichte auf die funktionale Einheit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Funktionale Einheit“ im Modul Materialdatenbanken noch einmal durch.",
+      "targetModuleTab": "materialdatenbanken",
+      "targetModuleLabel": "Materialdatenbanken"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_db_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialdatenbanken",
+    "moduleTitle": "Materialdatenbanken",
+    "topic": "Dämmstoffvergleich",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Warum dürfen Dämmstoffe nicht pro m³ allein nach ihrem GWP verglichen werden?",
+    "options": [
+      "Weil m³ keine SI-Einheit ist",
+      "Weil unterschiedliche Wärmeleitfähigkeiten unterschiedliche Dicken für den gleichen R-Wert erfordern",
+      "Weil Dämmstoffe kein GWP haben",
+      "Weil die ÖKOBAUDAT nur Massen kennt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Vergleichsbasis ist eine gleiche funktionale Einheit, z. B. 1 m² mit R = 5 m²K/W.",
+    "gapAnalysis": {
+      "topic": "Dämmstoffvergleich",
+      "misconception": "Der Stoff mit dem kleinsten GWP pro m³ sei immer am besten.",
+      "coreRule": "Ökobilanzvergleich nur bei gleicher Funktion.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dämmstoffvergleich“ im Modul Materialdatenbanken noch einmal durch.",
+      "targetModuleTab": "materialdatenbanken",
+      "targetModuleLabel": "Materialdatenbanken"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_mp_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialpaesse",
+    "moduleTitle": "Materialpässe",
+    "topic": "Rechtsstatus",
+    "difficulty": "Basis",
+    "normRef": "GModG; DGNB",
+    "question": "Besteht in Deutschland (Stand 10/2026) eine gesetzliche Pflicht zum Gebäuderessourcenpass?",
+    "options": [
+      "Ja, nach § 15 GModG",
+      "Nein; Ressourcenpässe sind freiwillig (z. B. DGNB, Madaster), ein staatlicher Pass wurde angekündigt, aber nicht eingeführt",
+      "Ja, nach der Ersatzbaustoffverordnung",
+      "Ja, nach VOB/B"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das GModG regelt energetische Anforderungen. Der Gebäuderessourcenpass wurde politisch angekündigt, ist aber nicht gesetzlich vorgeschrieben.",
+    "gapAnalysis": {
+      "topic": "Rechtsstatus",
+      "misconception": "Energiegesetze verlangten bereits Materialpässe.",
+      "coreRule": "Materialpässe sind derzeit freiwillige Instrumente von Zertifizierung und Plattformen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstatus“ im Modul Materialpässe noch einmal durch.",
+      "targetModuleTab": "materialpaesse",
+      "targetModuleLabel": "Materialpässe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_mp_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialpaesse",
+    "moduleTitle": "Materialpässe",
+    "topic": "Recyclingquote",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DGNB TEC 1.6",
+    "question": "Warum sagt eine hohe massenbezogene Recyclingquote allein wenig über die Kreislauffähigkeit eines Gebäudes aus?",
+    "options": [
+      "Weil sie immer 100 % beträgt",
+      "Weil schwere mineralische Massen dominieren, die oft nur zu niederwertiger Gesteinskörnung recycelt werden",
+      "Weil Recycling verboten ist",
+      "Weil Stahl nicht recycelt wird"
+    ],
+    "correctIdx": 1,
+    "explanation": "Beton bestimmt die Masse; die Qualität der Verwertung, Wiederverwendbarkeit und Lösbarkeit bleiben unberücksichtigt.",
+    "gapAnalysis": {
+      "topic": "Recyclingquote",
+      "misconception": "Massenquote = Kreislaufqualität.",
+      "coreRule": "Ergänzend Lösbarkeit, Wiederverwendung und Verwertungsqualität bewerten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Recyclingquote“ im Modul Materialpässe noch einmal durch.",
+      "targetModuleTab": "materialpaesse",
+      "targetModuleLabel": "Materialpässe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_dpp_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "dpp",
+    "moduleTitle": "Digitaler Produktpass (DPP)",
+    "topic": "BauPVO",
+    "difficulty": "Basis",
+    "normRef": "Verordnung (EU) 2024/3110",
+    "question": "Seit wann ist die neue Bauprodukteverordnung (EU) 2024/3110 anwendbar?",
+    "options": [
+      "Seit 01.01.2024",
+      "Seit 08.01.2026",
+      "Ab 2030",
+      "Sie ist noch nicht beschlossen"
+    ],
+    "correctIdx": 1,
+    "explanation": "In Kraft seit 07.01.2025, anwendbar seit 08.01.2026; der DPP wird je Produktfamilie über delegierte Rechtsakte verpflichtend.",
+    "gapAnalysis": {
+      "topic": "BauPVO",
+      "misconception": "Der DPP sei für alle Bauprodukte seit 2024 Pflicht.",
+      "coreRule": "BauPVO 2024/3110: anwendbar ab 08.01.2026, DPP schrittweise.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „BauPVO“ im Modul Digitaler Produktpass (DPP) noch einmal durch.",
+      "targetModuleTab": "dpp",
+      "targetModuleLabel": "Digitaler Produktpass (DPP)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_dpp_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "dpp",
+    "moduleTitle": "Digitaler Produktpass (DPP)",
+    "topic": "Modul D",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Wie wird Modul D in einer EPD nach EN 15804+A2 behandelt?",
+    "options": [
+      "Es wird von A1–A3 abgezogen",
+      "Es wird getrennt ausgewiesen und nicht mit A–C saldiert",
+      "Es entfällt",
+      "Es wird mit C4 addiert"
+    ],
+    "correctIdx": 1,
+    "explanation": "Modul D beschreibt Gutschriften und Lasten außerhalb der Systemgrenze und steht neben den Modulen A–C.",
+    "gapAnalysis": {
+      "topic": "Modul D",
+      "misconception": "Recyclinggutschriften verringerten direkt das Herstellungs-GWP.",
+      "coreRule": "A–C summieren, D separat angeben.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Modul D“ im Modul Digitaler Produktpass (DPP) noch einmal durch.",
+      "targetModuleTab": "dpp",
+      "targetModuleLabel": "Digitaler Produktpass (DPP)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_ot_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "online_tools",
+    "moduleTitle": "Online-Tools & Rechner",
+    "topic": "Plausibilitätskontrolle",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1990",
+    "question": "Welches Biegemoment hat ein Einfeldträger mit L = 5,0 m und q_Ed = 5,0 kN/m?",
+    "options": [
+      "6,3 kNm",
+      "12,5 kNm",
+      "15,6 kNm",
+      "25,0 kNm"
+    ],
+    "correctIdx": 2,
+    "explanation": "M = q L²/8 = 5,0 · 25/8 = 15,6 kNm – eine Handrechnung zur Kontrolle jedes Online-Ergebnisses.",
+    "gapAnalysis": {
+      "topic": "Plausibilitätskontrolle",
+      "misconception": "Software-Ergebnisse bräuchten keine Kontrolle.",
+      "coreRule": "Ergebnisse von Online-Tools stets mit einfacher Handrechnung prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Plausibilitätskontrolle“ im Modul Online-Tools & Rechner noch einmal durch.",
+      "targetModuleTab": "online_tools",
+      "targetModuleLabel": "Online-Tools & Rechner"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dg_ot_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "online_tools",
+    "moduleTitle": "Online-Tools & Rechner",
+    "topic": "Lastkombination",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1990 mit NA",
+    "question": "Was passiert, wenn man in ein Tool, das die Kombination selbst bildet, bereits Bemessungslasten eingibt?",
+    "options": [
+      "Nichts",
+      "Die Teilsicherheitsbeiwerte werden doppelt angesetzt – das Ergebnis liegt deutlich zu hoch",
+      "Das Ergebnis wird unsicher zu niedrig",
+      "Das Tool rechnet automatisch zurück"
+    ],
+    "correctIdx": 1,
+    "explanation": "γ_G = 1,35 und γ_Q = 1,5 würden zweimal angewendet; deshalb ist zu klären, ob charakteristische Werte erwartet werden.",
+    "gapAnalysis": {
+      "topic": "Lastkombination",
+      "misconception": "Alle Online-Rechner erwarten Bemessungswerte.",
+      "coreRule": "Eingabekonvention (charakteristisch oder Bemessung) vor der Nutzung prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lastkombination“ im Modul Online-Tools & Rechner noch einmal durch.",
+      "targetModuleTab": "online_tools",
+      "targetModuleLabel": "Online-Tools & Rechner"
+    },
+    "verified": false
   }
 ]

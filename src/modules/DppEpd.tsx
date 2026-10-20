@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useRef, useEffect } from 'react';
 import { QrCode, Smartphone, Database, ShieldCheck, Recycle, FileText, MapPin, Factory, Leaf, Truck, Activity, BookOpen, Wrench, Clock, Scale, CheckCircle2, Camera, RefreshCw, Volume2, AlertCircle } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 const DPP_MOCK_DATA = {
@@ -315,16 +317,16 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                       <div className="bg-shiraz/5 border border-shiraz/10 p-4 rounded-xl space-y-2">
                         <span className="text-xs font-bold text-shiraz block uppercase tracking-wide">Gültigkeit &amp; Rechtlicher Rahmen</span>
                         <p className="text-xs text-slate-800 leading-relaxed font-normal">
-                          Der Digitale Produktpass (DPP) entfaltet seine rechtliche Bindung im Baubereich in direkter Abstimmung mit der europäischen <strong>Bauprodukteverordnung (BauPVO / CPR)</strong>. Die Verpflichtung betrifft systematisch:
+                          Im Baubereich wird der Digitale Produktpass über die neue <strong>Bauprodukteverordnung (EU) 2024/3110</strong> eingeführt (in Kraft seit 07.01.2025, anwendbar seit 08.01.2026). Er wird verpflichtend, sobald dies für die jeweilige Produktfamilie festgelegt ist, und betrifft:
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-normal">
                           <div className="bg-white p-2.5 rounded-lg border border-home-grau/30">
                             <strong className="text-shiraz block mb-0.5 font-bold">Harmonisierte Normen (hEN)</strong>
-                            <span>Produkte, die unter europäisch harmonisierte Normen fallen, müssen die DPP-Kriterien zur Zulassung im Binnenmarkt vollumfänglich erfüllen.</span>
+                            <span>Produkte mit harmonisierter technischer Spezifikation, sobald diese und ein delegierter Rechtsakt den DPP vorsehen; er begleitet die Leistungs- und Konformitätserklärung.</span>
                           </div>
                           <div className="bg-white p-2.5 rounded-lg border border-home-grau/30">
                             <strong className="text-shiraz block mb-0.5 font-bold">Techn. Bewertungen (ETA)</strong>
-                            <span>Auch für innovative Bauprodukte mit einer Europäischen Technischen Bewertung (ETA) gilt die DPP-Erfordernis als integraler Konformitätsnachweis.</span>
+                            <span>Auch Produkte mit Europäischer Technischer Bewertung (ETA) können einbezogen werden; der DPP ersetzt die Konformitätsbewertung nicht, sondern stellt deren Informationen digital bereit.</span>
                           </div>
                         </div>
                       </div>
@@ -414,23 +416,23 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                       <div className="relative pl-6 border-l-2 border-shiraz/35 space-y-4 pt-1 font-normal">
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-shiraz border-2 border-white" />
-                          <div className="text-xs font-bold text-shiraz">Juni 2024 (Inkrafttreten)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed">Offizieller Beschluss und Inkrafttreten der EU-Ökodesign-Verordnung (ESPR).</div>
+                          <div className="text-xs font-bold text-shiraz">18.07.2024 (Inkrafttreten)</div>
+                          <div className="text-xs text-slate-705 leading-relaxed">Inkrafttreten der Ökodesign-Verordnung (EU) 2024/1781 (ESPR, erlassen am 13.06.2024). Konkrete DPP-Pflichten folgen erst über produktgruppenspezifische delegierte Rechtsakte.</div>
                         </div>
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-shiraz border-2 border-white" />
-                          <div className="text-xs font-bold text-shiraz">2026-2027 (Erste Phase)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed font-normal">Verpflichtender Produktpass für Batterien, Textilien und erste zirkulär kritische Metalle.</div>
+                          <div className="text-xs font-bold text-shiraz">2025 bis 2027 (Arbeitsplan und Grundlagen)</div>
+                          <div className="text-xs text-slate-705 leading-relaxed font-normal">ESPR-Arbeitsplan 2025–2030 (16.04.2025) mit Prioritäten u. a. Eisen/Stahl, Aluminium, Textilien, Möbel, Reifen, Matratzen; DPP-Register (Durchführungsverordnung 2026); Batteriepass nach Verordnung (EU) 2023/1542 ab 18.02.2027.</div>
                         </div>
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-shiraz border-2 border-white" />
-                          <div className="text-xs font-bold text-shiraz">2027-2028 (Baustoff-Pflicht)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed font-normal">Erste verbindliche Einführung für strategische Bauprodukte wie <strong>Baustahl, Aluminium, Zement und Dämmstoffe</strong>.</div>
+                          <div className="text-xs font-bold text-shiraz">Ab 08.01.2026 (neue BauPVO)</div>
+                          <div className="text-xs text-slate-705 leading-relaxed font-normal">Die Bauprodukteverordnung (EU) 2024/3110 gilt seit 08.01.2026. Ein DPP für Bauprodukte wird je Produktfamilie über delegierte Rechtsakte und neue harmonisierte technische Spezifikationen verpflichtend; feste Termine stehen noch nicht fest.</div>
                         </div>
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-gray-600 border-2 border-white" />
-                          <div className="text-xs font-bold text-gray-600">Ab 2030 (Vollständige Abdeckung)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed">Flächendeckende gesetzlich zwingende Verpflichtung für nahezu alle Bauprodukte im EU-Binnenmarkt.</div>
+                          <div className="text-xs font-bold text-gray-600">Bis etwa 2040 (Übergang)</div>
+                          <div className="text-xs text-slate-705 leading-relaxed">Schrittweiser Übergang aller Produktfamilien in das neue System; bis dahin gelten für bestehende harmonisierte Normen Übergangsregeln (Einzelheiten und Fristen manuell prüfen).</div>
                         </div>
                       </div>
                     </div>
@@ -914,26 +916,55 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
         )}
       </div>
 
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Deklarierte Module einer EPD richtig zusammenfassen"
+        zielGleichung="GWP_{A\text{–}C} = GWP_{A1\text{–}A3} + GWP_{C3} + GWP_{C4}, \quad D \text{ getrennt}"
+        schritte={[
+          { titel: 'Herstellung', erklaerung: 'EPD eines Betonfertigteils je m³:', formel: 'GWP_{A1\\text{–}A3} = 250\\,\\text{kg CO}_2\\text{e}' },
+          { titel: 'Entsorgung', erklaerung: 'Abfallbehandlung C3 = 5, Beseitigung C4 = 2:', formel: 'GWP_{A\\text{–}C} = 250 + 5 + 2 = 257\\,\\text{kg CO}_2\\text{e}' },
+          { titel: 'Modul D', erklaerung: 'Gutschrift für Recycling außerhalb der Systemgrenze:', formel: 'D = -30\\,\\text{kg CO}_2\\text{e (separat ausweisen)}' }
+        ]}
+        ergebnisHinweis="Nach EN 15804+A2 sind die Module C1–C4 und D bei den meisten Produkten zu deklarieren; Modul D wird nicht mit A–C saldiert, sondern daneben angegeben."
+        normQuelle="DIN EN 15804:2022-03"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Primärenergie – energetisch und stofflich"
+        zielGleichung="PENRT = PENRE + PENRM"
+        schritte={[
+          { titel: 'Energetisch', erklaerung: 'Nicht erneuerbare Primärenergie als Energieträger:', formel: 'PENRE = 1\\,800\\,\\text{MJ}' },
+          { titel: 'Stofflich', erklaerung: 'Im Produkt gebundene nicht erneuerbare Rohstoffe (z. B. Erdöl in Kunststoff):', formel: 'PENRM = 200\\,\\text{MJ}' },
+          { titel: 'Summe', erklaerung: 'Gesamter nicht erneuerbarer Primärenergieeinsatz:', formel: 'PENRT = 2\\,000\\,\\text{MJ}' }
+        ]}
+        ergebnisHinweis="Bei der Verbrennung am Lebensende wird PENRM als Energie frei – deshalb wird der stoffliche Anteil getrennt ausgewiesen."
+        normQuelle="DIN EN 15804:2022-03"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="dpp" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 13 Digitales: ESPR 2024/1781, BauPVO 2024/3110, DPP-Zeitplan, EN 15804+A2 geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Umweltproduktdeklaration', url: 'https://de.wikipedia.org/wiki/Environmental_Product_Declaration' },
           { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' },
           { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' }
         ]}
         literatur={[
-          'Graubner, C.-A.; Pelzeter, A. (2020): Nachhaltigkeit im Bauwesen: Ökobilanzierung und Lebenszyklusanalyse (Springer Vieweg)',
+          'König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Detail 2009',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'IBU (Institut Bauen und Umwelt e.V.): Allgemeine Programmanleitung für EPDs'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen - Grundregeln für die Produktkategorie Bauprodukte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln für die Produktkategorie Bauprodukte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
           { title: 'DIN EN ISO 14040 / 14044 (Umweltmanagement - Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14040' },
+          { title: 'Verordnung (EU) 2024/1781 (Ökodesign, ESPR) und Verordnung (EU) 2024/3110 (Bauprodukteverordnung)', url: 'https://eur-lex.europa.eu/' },
           { title: 'DIN EN ISO 14025 (Umweltkennzeichnungen und -deklarationen - Typ III Umweltdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14025' }
         ]}
         formeln={[
           {
             formel: '\\text{GWP}_{100} = \\sum_{i} m_i \\cdot \\text{GWP}_{i} \\quad [\\text{kg CO}_2\\text{-Äquiv.}]',
-            erklaerung: 'Global Warming Potential (Treibhauspotenzial): Summe der emittierten Massen mi multipliziert mit ihrem jeweiligen Treibhausfaktor bezogen auf CO2 über einen Betrachtungshorizont von 100 Jahren (z.B. CH4 = 28, N2O = 265).',
+            erklaerung: 'Global Warming Potential (Treibhauspotenzial): Summe der emittierten Massen mi multipliziert mit ihrem jeweiligen Treibhausfaktor bezogen auf CO2 über einen Betrachtungshorizont von 100 Jahren (z. B. nach IPCC AR5 ohne Klima-Kohlenstoff-Rückkopplung CH4 = 28, N2O = 265; die nach EN 15804+A2 verwendeten EF-Faktoren weichen davon ab – Werte am EF-Referenzpaket prüfen).',
             quelle: 'DIN EN 15804 / IPCC'
           },
           {
