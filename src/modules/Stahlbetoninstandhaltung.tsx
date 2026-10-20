@@ -21,6 +21,8 @@ import {
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
@@ -1964,7 +1966,35 @@ export function Stahlbetoninstandhaltung() {
       </div>
     
       <CalculatorDisclaimerBanner className="my-2" />
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Schutzstrombedarf einer KKS-Anlage"
+        zielGleichung="I = A_s \cdot i_{Schutz}"
+        schritte={[
+          { titel: 'Stahloberfläche', erklaerung: 'Parkdeck 600 m², Bewehrungsoberfläche je m² Bauteilfläche ca. 0,7 m²:', formel: 'A_s = 600 \\cdot 0{,}7 = 420\\,\\text{m}^2' },
+          { titel: 'Schutzstromdichte', erklaerung: 'Für chloridbelasteten Beton ist ein Bereich von etwa 2 bis 20 mA/m² Stahloberfläche üblich; gewählt 10 mA/m²:', formel: 'i_{Schutz} = 10\\,\\text{mA/m}^2' },
+          { titel: 'Gesamtstrom', erklaerung: 'Auslegung der Gleichrichter:', formel: 'I = 420 \\cdot 0{,}010 = 4{,}2\\,\\text{A}' }
+        ]}
+        ergebnisHinweis="Der tatsächliche Strom wird über die Schutzkriterien eingestellt (Ausschaltpotential bzw. Depolarisation ≥ 100 mV in 24 h). Planung und Inbetriebnahme durch KKS-Fachpersonal nach DIN EN ISO 12696:2022-09."
+        normQuelle="DIN EN ISO 12696:2022-09"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Füllgutbedarf für eine Rissinjektion"
+        zielGleichung="V = L \cdot w \cdot t \cdot f_V"
+        schritte={[
+          { titel: 'Rissgeometrie', erklaerung: 'Trennriss in einer 250 mm dicken Wand, Länge 4,0 m, mittlere Breite 0,30 mm:', formel: 'V_{Riss} = 4{,}0 \\cdot 0{,}00030 \\cdot 0{,}25 = 0{,}30 \\cdot 10^{-3}\\,\\text{m}^3' },
+          { titel: 'Zuschlag', erklaerung: 'Füllgutverluste in Packern, Schläuchen und Hohlräumen (Faktor 1,5):', formel: 'V = 0{,}30\\,\\text{l} \\cdot 1{,}5 = 0{,}45\\,\\text{l}' },
+          { titel: 'Füllgutwahl', erklaerung: 'Trockener, ruhender Riss mit kraftschlüssiger Anforderung:', formel: '\\text{EP-Injektion (DIN EN 1504-5)}' }
+        ]}
+        ergebnisHinweis="Bei wasserführenden Rissen oder Rissbewegung sind PUR- bzw. dehnfähige Füllgüter und ggf. eine Fuge erforderlich; der sachkundige Planer legt das Füllgut nach TR Instandhaltung fest."
+        normQuelle="DIN EN 1504-5; TR Instandhaltung (DIBt)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="instandhaltung" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: TR Instandhaltung, OS-Systeme, KKS und Rissfüllung geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         weblinks={[
           { title: 'Beton.wiki: Instandhaltung von Betonbauwerken', url: 'https://beton.wiki/index.php?title=Instandsetzung' },
           { title: 'Deutscher Beton- und Bautechnik-Verein (DBV): Instandhaltungsleitfäden', url: 'https://www.betonverein.de/' },
@@ -1977,17 +2007,17 @@ export function Stahlbetoninstandhaltung() {
           { title: 'Rissinjektion', url: 'https://de.wikipedia.org/wiki/Rissinjektion' }
         ]}
         regelwerke={[
-          { title: 'DIBt Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung Teile 1 bis 3)', url: 'https://www.dibt.de/' },
+          { title: 'DIBt Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung Teile 1 und 2; Teil 1 Stand Mai 2020)', url: 'https://www.dibt.de/' },
           { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teile 1 bis 10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' },
-          { title: 'DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
+          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
           { title: 'ZTV-ING Teil 3: Massivbau (Bundesanstalt für Straßenwesen / BMVI)', url: 'https://www.bast.de/' },
           { title: 'DIN EN 1504-5 (Füllen von Rissen, Hohlräumen und Fehlstellen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-5' }
         ]}
         literatur={[
-          'Raupach, M.; Orlowsky, J. (2018): Schutz und Instandsetzung von Stahlbetonbauten (Ernst & Sohn)',
+          'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Zilch, K.; Diederichs, C. J. et al.: Handbuch für Bauingenieure (Springer Vieweg)',
-          'Gieler, R.; Schulz, R. R.: Rissinjektion im Betonbau: Grundlagen, Werkstoffe, Ausführung (Fraunhofer IRB Verlag)'
+          'Gieler, R. P.; Dimmig-Osburg, A.: Kunststoffe für den Bautenschutz und die Betoninstandsetzung. Basel: Birkhäuser 2006'
         ]}
         formeln={[
           {

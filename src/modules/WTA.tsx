@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { 
@@ -55,7 +57,7 @@ const evaluateKombination = (
   if (regenClass === 'group3') {
     score -= 25;
     criticalAlarms.push("Extremer Schlagregeneintrag an der Sichtfassade führt zu permanent feuchtem Mauergefüge. Die Dämmebene kann im Sommer nicht austrocknen.");
-    recommendations.push("Bringe außen eine siliziumorganische Fassaden-Hydrophobierung nach WTA-Merkblatt 1-5 auf, um ständigen Regeneintrag wirksam zu sperren.");
+    recommendations.push("Bringen Sie außen eine siliziumorganische Fassaden-Hydrophobierung nach WTA-Merkblatt 3-17-10/D (Hydrophobierende Imprägnierung) auf, um ständigen Regeneintrag wirksam zu sperren.");
   } else if (regenClass === 'group2') {
     recommendations.push("Eventuell vorhandene Putzrisse an der Außenwand fachgerecht instandsetzen (Spritzwasserschutz optimieren).");
   }
@@ -1120,7 +1122,7 @@ export default function WTA() {
                 Nachträgliche Bauwerksabdichtung erdberührter Bauteile
               </h3>
             </div>
-            <span className="text-xs text-home-grau font-mono">Stand: WTA 4-6 / DIN 18533:2017+2024</span>
+            <span className="text-xs text-home-grau font-mono">Stand: WTA 4-6-24/D / DIN 18533:2017-07 + A1:2024</span>
           </div>
 
           <p className="text-xs text-text-main/80 leading-relaxed">
@@ -1174,7 +1176,35 @@ export default function WTA() {
       )}
 
       {/* Module Footer (Wikipedia, Regelwerke, Literatur) aligned with WTA */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Durchfeuchtungsgrad vor einer Horizontalsperre"
+        zielGleichung="DFG = \frac{u_m}{u_{max}}"
+        schritte={[
+          { titel: 'Feuchtegehalt', erklaerung: 'Bohrmehlprobe aus 40 cm Höhe, Darrmethode:', formel: 'u_m = 9{,}0\\,\\text{M.-\\%}' },
+          { titel: 'Maximale Wasseraufnahme', erklaerung: 'Unter Vakuum bzw. Druck bestimmt:', formel: 'u_{max} = 18{,}0\\,\\text{M.-\\%}' },
+          { titel: 'Durchfeuchtungsgrad', erklaerung: 'Verhältnis:', formel: 'DFG = \\frac{9{,}0}{18{,}0} = 50\\,\\%' }
+        ]}
+        ergebnisHinweis="Injektionsstoffe sind nach WTA-Merkblatt 4-10 für bestimmte Durchfeuchtungsgrade zertifiziert; das Produkt muss für den gemessenen DFG geprüft sein. Bei hohem DFG ist ggf. vorab zu trocknen."
+        normQuelle="WTA-Merkblatt 4-10; WTA-Merkblatt 4-11"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Injektionsmittelbedarf je laufendem Meter Wand"
+        zielGleichung="V_{m} = \frac{100}{a} \cdot V_{Bohr} \cdot F_S"
+        schritte={[
+          { titel: 'Bohrraster', erklaerung: 'Bohrlochabstand a = 12,5 cm:', formel: 'n = \\frac{100}{12{,}5} = 8\\,\\text{Bohrlöcher je m}' },
+          { titel: 'Füllmenge', erklaerung: 'Füllmenge je Bohrloch laut Produktzulassung für 51 cm Wanddicke (Lehrwert):', formel: 'V_{Bohr} = 1{,}0\\,\\text{l}' },
+          { titel: 'Bedarf', erklaerung: 'Zuschlagfaktor für Hohlräume F_S = 1,1:', formel: 'V_m = 8 \\cdot 1{,}0 \\cdot 1{,}1 = 8{,}8\\,\\text{l/m}' }
+        ]}
+        ergebnisHinweis="Bohrlochabstand, Neigung und Füllmenge richten sich nach dem Prüfzeugnis des Injektionsstoffs; die Werte im Beispiel sind nur zur Veranschaulichung."
+        normQuelle="WTA-Merkblatt 4-10"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="wta" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: WTA-Ausgaben 2-9-20/D, 4-6-24/D, 6-5-14/D geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         weblinks={[
           { title: "Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.", url: "https://www.wta-gmbh.de/" },
           { title: "WTA-Merkblätter-Shop", url: "https://www.wta-fachverlag.de/" }
@@ -1185,15 +1215,15 @@ export default function WTA() {
           { title: "Tränken (Bauwesen)", url: "https://de.wikipedia.org/wiki/Tr%C3%A4nken_(Bauwesen)" }
         ]} 
         literatur={[
-          'WTA-Almanach: Praktische Sanierung nach WTA-Merkblättern (Detail)',
-          'Frössel, F. (2019): Handbuch Bauwerksabdichtung und Innendämmung (Fraunhofer IRB)'
+          'WTA (Hrsg.): WTA-Merkblätter und Schriftenreihe. Stuttgart: Fraunhofer IRB / WTA Publications',
+          'Frössel, F.: Mauerwerkstrockenlegung und Kellersanierung. Stuttgart: Fraunhofer IRB (aktuelle Auflage)'
         ]} 
         regelwerke={[
-          { title: "WTA-Merkblatt 2-9 (Ausgabe 2020): Sanierputzsysteme (konsolidiert 2-9-04 & 2-10)", url: "https://www.wta-gmbh.de" },
-          { title: "WTA-Merkblatt 4-6 (Ausgabe 2021): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
+          { title: "WTA-Merkblatt 2-9-20/D (Ausgabe 2020-03): Sanierputzsysteme", url: "https://www.wta-gmbh.de" },
+          { title: "WTA-Merkblatt 4-6-24/D (Ausgabe 2024-12): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
           { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de/de/suche?q=DIN+18533" },
-          { title: "WTA-Merkblatt 4-10: Injektionsverfahren mit zertifizierten Wirkstoffen", url: "https://www.wta-gmbh.de" },
-          { title: "WTA-Merkblatt 6-5: Feuchtetechnische Bewertung von Innendämmungen", url: "https://www.wta-gmbh.de" }
+          { title: "WTA-Merkblatt 4-10: Injektionsverfahren mit zertifizierten Injektionsstoffen gegen kapillaren Feuchtetransport (Ausgabe manuell prüfen)", url: "https://www.wta-gmbh.de" },
+          { title: "WTA-Merkblatt 6-5-14/D (Ausgabe 2014-04): Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
         ]} 
         formeln={[
           { formel: "V_{meter} = \\frac{100}{a} \\cdot V_{bore} \\cdot F_S", erklaerung: "Mathematische Wirkstoffbedarfsschätzung für chemische Mauerwerkinjektionen.", quelle: "WTA-Merkblatt 4-10" }

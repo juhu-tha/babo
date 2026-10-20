@@ -776,7 +776,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2004–2009',
         title: 'Europäische Normenreihe DIN EN 1504 (Teile 1–10)',
         category: 'Normung',
-        description: 'Europaweite Harmonisierung von Produkten und Systemen für den Schutz und die Instandsetzung von Betontragwerken. Definition der 11 grundlegenden Instandsetzungsprinzipien (Prinzip 1 Schutz gegen Eindringen bis Prinzip 11 Kathodischer Schutz).',
+        description: 'Europaweite Harmonisierung von Produkten und Systemen für den Schutz und die Instandsetzung von Betontragwerken. Definition der 11 grundlegenden Instandsetzungsprinzipien (Prinzip 1 Schutz gegen Eindringen bis Prinzip 10 Kathodischer Schutz und Prinzip 11 Kontrolle anodischer Bereiche).',
         impact: 'CE-Kennzeichnung für Betonersatzmörtel, Rissinjektionsmittel und Schutzbeschichtungen im gesamten Binnenmarkt.',
         keyReference: 'DIN EN 1504-1 bis 1504-10'
       },
