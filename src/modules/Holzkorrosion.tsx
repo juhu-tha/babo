@@ -1,6 +1,8 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Bug, Droplets, ShieldCheck, Sun, ArrowRight, BookOpen, Layers, ShieldAlert, Thermometer, Shield } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { motion } from 'framer-motion';
@@ -675,7 +677,7 @@ export default function Holzkorrosion() {
             <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xxs space-y-3">
               <h4 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider">Abfallrechtliche Entsorgung von schutzbehandeltem Altholz (F 58)</h4>
               <p className="text-xs text-slate-600 leading-normal">
-                Abgebautes Holz, das mit Holzschutzmitteln oder halogenorganischen Verbindungen behandelt wurde, gilt als besonders überwachungspflichtiger Abfall. Gemäß der deutschen <strong>Altholzverordnung (AltholzV)</strong> sind vier Altholzkategorien definiert, deren Entsorgungs- und Recyclingwege intensiv reglementiert sind:
+                Abgebautes Holz, das mit Holzschutzmitteln oder halogenorganischen Verbindungen behandelt wurde, kann gefährlicher Abfall sein (Altholz A IV: AVV 17 02 04*). Gemäß der deutschen <strong>Altholzverordnung (AltholzV, Novelle in Vorbereitung)</strong> sind vier Altholzkategorien definiert, deren Entsorgungs- und Recyclingwege intensiv reglementiert sind:
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs text-slate-600">
@@ -704,7 +706,7 @@ export default function Holzkorrosion() {
                   <strong className="text-red-700 block mb-0.5">Kategorie A IV</strong>
                   <span className="text-xs text-red-500 block mb-1 leading-none font-semibold font-mono flex items-center gap-1">⚠️ Gefährlicher Abfall</span>
                   <p className="leading-relaxed text-slate-500 text-xs">
-                    <strong>Imprägniertes Abbruchholz:</strong> Enthält nachweislich oder mutmaßlich HSM (z.B. Leitungsmasten, Bahnschwellen, Zäune). Stoffliche Verwertung verboten! <strong>Ausschließlich energetische Verwertung</strong> in dafür zugelassenen Biomasseheizkraftwerken mit hochwertiger Abgasreinigung zulässig.
+                    <strong>Imprägniertes Abbruchholz:</strong> Enthält nachweislich oder mutmaßlich HSM (z.B. Leitungsmasten, Bahnschwellen, Zäune). Stoffliche Verwertung nur sehr eingeschränkt (z. B. Herstellung von Aktivkohle/Industrieholzkohle); in der Regel <strong>energetische Verwertung</strong> in nach 17. BImSchV zugelassenen Anlagen mit Abgasreinigung.
                   </p>
                 </div>
               </div>
@@ -723,7 +725,7 @@ export default function Holzkorrosion() {
                 <span>Primat des baulichen Holzschutzes &amp; Gebrauchsklassen (DIN 68800-1 u. -2)</span>
               </h3>
               <p className="text-text-main/70 mt-2">
-                Die europäisch harmonisierte Normenreihe <strong>DIN 68800</strong> verbietet den pauschalen Einsatz von Bioziden. Das primäre Entwurfsziel des Tragwerksplaners lautet: <strong>Fernhalten von Feuchtigkeit durch konstruktiven Holzschutz</strong>. Nur wenn bauliche Maßnahmen nachweislich nicht ausreichen, darf chemischer Holzschutz in Erwägung gezogen werden.
+                Die nationale Normenreihe <strong>DIN 68800</strong> (Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12) gibt baulichen Maßnahmen ausdrücklich Vorrang vor Bioziden. Das primäre Entwurfsziel des Tragwerksplaners lautet: <strong>Fernhalten von Feuchtigkeit durch konstruktiven Holzschutz</strong>. Nur wenn bauliche Maßnahmen nachweislich nicht ausreichen, darf chemischer Holzschutz in Erwägung gezogen werden.
               </p>
             </div>
 
@@ -747,10 +749,10 @@ export default function Holzkorrosion() {
                   Ausschreibung natürlicher Dauerhaftigkeit
                 </h4>
                 <p className="text-xs text-slate-600 leading-normal">
-                  Einsatz von Splintholz-freiem Kernholz natürlich resistenter Holzarten nach <strong>DIN EN 350-2</strong>. Dadurch lässt sich oft eine risikofreie Einstufung erzielen:
+                  Einsatz von Splintholz-freiem Kernholz natürlich dauerhafter Holzarten nach <strong>DIN EN 350:2016-12</strong>. Dadurch lässt sich oft eine risikofreie Einstufung erzielen:
                 </p>
                 <ul className="list-disc list-inside text-xs text-slate-500 space-y-0.5 pl-1">
-                  <li><strong>Eiche (Klasse 2):</strong> Sehr dauerhaft, optimal für tragende Fachwerkstrukturen im Außenbereich.</li>
+                  <li><strong>Eiche (Klasse 2 bis 4 nach EN 350:2016):</strong> Dauerhaft bis wenig dauerhaft; Kernholz bewährt für Fachwerk mit konstruktivem Schutz.</li>
                   <li><strong>Lärche / Douglasie (Klasse 3-4):</strong> Mäßig dauerhaft, geeignet für Außen-Fassadenverschalungen ohne Erdkontakt.</li>
                   <li><strong>Fichte / Tanne (Klasse 4):</strong> Wenig dauerhaft, ungeschützt im Außenbereich nicht standsicher einsetzbar.</li>
                 </ul>
@@ -793,15 +795,15 @@ export default function Holzkorrosion() {
                   <tbody className="divide-y divide-slate-100 text-slate-650">
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-2 font-bold text-slate-800">GK 0</td>
-                      <td className="p-2">Innenräume, dauerhaft trocken (<span className="font-semibold">u &lt; 15 %</span>), allseitig mechanisch abgedeckt.</td>
+                      <td className="p-2">Innenräume, dauerhaft trocken (<span className="font-semibold">u ≤ 20 %</span>), allseitig mechanisch abgedeckt.</td>
                       <td className="p-2">Keine (Inaktivität aller holzabbauenden Schädlinge).</td>
-                      <td className="p-2 text-slate-700 font-semibold bg-emerald-50/30">Einsatz von trockenem Holz (u ≤ 15 %). Chemischer Holzschutz ist strikt unzulässig / verboten!</td>
+                      <td className="p-2 text-slate-700 font-semibold bg-emerald-50/30">Einsatz von trockenem Holz (u ≤ 20 %). Chemischer Holzschutz ist weder erforderlich noch vorgesehen.</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-2 font-bold text-slate-800">GK 1</td>
-                      <td className="p-2">Innenräume, dauerhaft trocken (<span className="font-semibold">u &lt; 15 %</span>), nicht bewittert, Splintholz liegend.</td>
+                      <td className="p-2">Innenräume, dauerhaft trocken (<span className="font-semibold">u ≤ 20 %</span>), nicht bewittert, Splintholz liegend.</td>
                       <td className="p-2">Holzzerstörende Insekten (Hausbock, Gewöhnlicher Nagekäfer).</td>
-                      <td className="p-2 text-slate-700">Trockenes Holz einbauen. Bei Splintholzhaitigkeit vorbeugender Insektenschutz (Prüfprädikat Iv) falls unzugänglich.</td>
+                      <td className="p-2 text-slate-700">Trockenes Holz einbauen. Bei Splintholzanteilen vorbeugender Insektenschutz (Prüfprädikat Iv) falls unzugänglich.</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-2 font-bold text-slate-800">GK 2</td>
@@ -825,7 +827,7 @@ export default function Holzkorrosion() {
                       <td className="p-2 font-bold text-slate-800">GK 4</td>
                       <td className="p-2">Ständiger Erdkontakt und/oder permanenter Süßwasserkontakt (z.B. Pfähle).</td>
                       <td className="p-2">Moderfäule (Soft Rot), holzzerstörende Braun- und Weißfäulepilze.</td>
-                      <td className="p-2 text-slate-700 font-semibold text-shiraz">Tiefenimprägnierung im Kesseldruckverfahren zwingend vorgeschrieben. Prüfprädikat E (besonders auswaschbeständig).</td>
+                      <td className="p-2 text-slate-700 font-semibold text-shiraz">Kernholz der Dauerhaftigkeitsklasse 1 oder Kesseldrucktränkung mit Mittel mit Prüfprädikat E (Erdkontakt) erforderlich.</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-2 font-bold text-slate-800">GK 5</td>
@@ -965,7 +967,35 @@ export default function Holzkorrosion() {
       
       <WoodThematicLinks current="dauerhaftigkeit" />
       
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Holzfeuchte einer Balkenkopfprobe nach dem Darrverfahren"
+        zielGleichung="u = \frac{m_u - m_0}{m_0} \cdot 100\,\%"
+        schritte={[
+          { titel: 'Wägung', erklaerung: 'Bohrkernprobe aus dem Auflager im Außenmauerwerk: feucht 512 g, nach Darrtrocknung bei 103 °C bis zur Massekonstanz 418 g.', formel: 'm_u = 512\\,\\text{g}, \\quad m_0 = 418\\,\\text{g}' },
+          { titel: 'Holzfeuchte', erklaerung: 'Bezug auf die Darrmasse:', formel: 'u = \\frac{512 - 418}{418} \\cdot 100 = 22{,}5\\,\\%' },
+          { titel: 'Bewertung', erklaerung: 'Oberhalb von etwa 20 % ist Pilzbefall möglich; das Bauteil entspricht mindestens Gebrauchsklasse 2.', formel: '22{,}5\\,\\% > 20\\,\\% \\Rightarrow \\text{Feuchtequelle beseitigen}' }
+        ]}
+        ergebnisHinweis="Elektrische Widerstandsmessgeräte (DIN EN 13183-2) eignen sich für die Kartierung; das Darrverfahren (DIN EN 13183-1) ist das Referenzverfahren. Bei Hausschwammverdacht ist die Sanierung nach DIN 68800-4 zu planen."
+        normQuelle="DIN EN 13183-1; DIN 68800-1:2019-06; DIN 68800-4:2020-12"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Wirkstoffaufnahme bei einer Kesseldrucktränkung"
+        zielGleichung="R = \frac{m_{Lsg} \cdot c}{V_{Holz}}"
+        schritte={[
+          { titel: 'Charge', erklaerung: 'Kiefernsplintholz 0,80 m³; Lösungsaufnahme aus der Wägung vor und nach der Tränkung 280 kg; Konzentration der Tränklösung 3,0 %.', formel: 'm_{WS} = 280 \\cdot 0{,}030 = 8{,}4\\,\\text{kg}' },
+          { titel: 'Einbringmenge', erklaerung: 'Bezogen auf das Holzvolumen:', formel: 'R = \\frac{8{,}4}{0{,}80} = 10{,}5\\,\\text{kg/m}^3' },
+          { titel: 'Vergleich', erklaerung: 'Erforderliche Einbringmenge laut Zulassung des Holzschutzmittels für die Gebrauchsklasse (hier angenommen 9,0 kg/m³):', formel: '10{,}5 \\ge 9{,}0 \\Rightarrow \\text{Aufnahme ausreichend}' }
+        ]}
+        ergebnisHinweis="Neben der Aufnahme (Retention) ist die Eindringtiefe nach DIN EN 351-1:2023-07 (Penetrationsklassen NP1 bis NP6) nachzuweisen. Fichte ist schwer tränkbar; Kiefernsplint lässt sich dagegen gut volltränken."
+        normQuelle="DIN EN 351-1:2023-07; DIN 68800-3:2020-03"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="holzkorrosion" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: DIN 68800-Ausgaben, Gebrauchsklassen, DIN EN 350:2016 und 351-1:2023, AltholzV geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: "Holzschädlingsbekämpfung", url: "https://de.wikipedia.org/wiki/Holzsch%C3%A4dlingsbek%C3%A4mpfung" },
           { title: "Holzschutz", url: "https://de.wikipedia.org/wiki/Holzschutz" },
@@ -973,26 +1003,26 @@ export default function Holzkorrosion() {
           { title: "Hausbock", url: "https://de.wikipedia.org/wiki/Hausbock" }
         ]} 
         literatur={[
-          'Huckfeldt, T.; Schmidt, O. (2015): Hausfäule- und Bauholzpilze - Diagnose und Sanierung (Rudolf Müller Verlag)',
-          'Dietrich, R. et al. (2020): Holzschutz im Hochbau (Fraunhofer IRB Verlag)',
+          'Huckfeldt, T.; Schmidt, O.: Hausfäule- und Bauholzpilze – Diagnose und Sanierung. Köln: Rudolf Müller (aktuelle Auflage)',
+          'DIN e. V. (Hrsg.): Holzschutz – Praxiskommentar zu DIN 68800 Teile 1 bis 4. Berlin: DIN Media (aktuelle Auflage; Angaben manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[
-          { title: "DIN 68800-1 (Holzschutz - Teil 1: Allgemeines)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-1" },
-          { title: "DIN 68800-2 (Holzschutz - Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-2" },
-          { title: "DIN 68800-3 (Holzschutz - Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-3" },
-          { title: "DIN 68800-4 (Holzschutz - Teil 4: Bekämpfungs- und Sanierungsmaßnahmen gegen Holz zerstörende Pilze und Insekten)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-4" }
+          { title: "DIN 68800-1:2019-06 (Holzschutz – Teil 1: Allgemeines)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-1" },
+          { title: "DIN 68800-2:2022-02 (Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-2" },
+          { title: "DIN 68800-3:2020-03 (Holzschutz – Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-3" },
+          { title: "DIN 68800-4:2020-12 (Holzschutz – Teil 4: Bekämpfungsmaßnahmen gegen Holz zerstörende Pilze und Insekten und Sanierungsmaßnahmen)", url: "https://www.dinmedia.de/de/suche?q=DIN+68800-4" }
         ]} 
         formeln={[
           {
             formel: 'u = \\frac{m_w - m_0}{m_0} \\cdot 100\\,\\%',
-            erklaerung: 'Holzfeuchte u [%] bezogen auf die Trockenmasse m0 (Darrgewicht). Ab u > 20 % besteht bei Normaltemperaturen akute Gefahr von holzzerstörendem Pilzbefall (Braunfäule, Weißfäule).',
+            erklaerung: 'Holzfeuchte u [%] bezogen auf die Trockenmasse m0 (Darrgewicht). Oberhalb von etwa u = 20 % ist bei üblichen Temperaturen Befall durch holzzerstörende Pilze möglich (Braun-, Weiß-, Moderfäule).',
             quelle: 'DIN EN 13183-1'
           },
           {
-            formel: 'u_{\\text{Gebrauch}} \\le 20\\,\\% \\implies \\text{GK 0 / GK 1 (kein chemischer Holzschutz erforderlich)}',
-            erklaerung: 'Konstruktiver Grundsatz nach DIN 68800-2: Durch bauliche Maßnahmen dauerhaft unter u <= 20% gehaltenes Holz benötigt keine chemischen Holzschutzmittel.',
-            quelle: 'DIN 68800-2'
+            formel: 'u_{\\text{Gebrauch}} \\le 20\\,\\% \\implies \\text{GK 0 oder GK 1}',
+            erklaerung: 'Grundsatz nach DIN 68800-1/-2: Dauerhaft auf u ≤ 20 % gehaltenes Holz ist vor Pilzen geschützt (GK 0/1). In GK 1 kann ein Insektenrisiko bestehen, das durch bauliche Maßnahmen (z. B. Kontrollierbarkeit, technisch getrocknetes Holz) auf GK 0 reduziert wird.',
+            quelle: 'DIN 68800-1/-2'
           }
         ]} 
       />

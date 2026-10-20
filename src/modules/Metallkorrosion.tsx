@@ -1,5 +1,7 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ShieldAlert, Droplets, ShieldCheck, Zap, ArrowRight, BookOpen, Layers, CheckCircle2, XCircle, AlertTriangle, Sparkles, Clock, Scale, Info } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { motion } from 'framer-motion';
@@ -705,9 +707,9 @@ export default function Metallkorrosion() {
                     <strong className="block mb-1 text-xs text-slate-805 uppercase tracking-wide">Pitting Resistance Equivalent Number (PREN-Index)</strong>
                     <span>Bestimmt die Widerstandskraft hochlegierter Edelstähle gegen Lochfraß:</span>
                     <div className="bg-slate-50 p-2 text-center text-xs font-mono rounded border border-home-grau/30 my-1 font-bold overflow-x-auto">
-                      <BlockMath math="\mathrm{PREN} = \%\,\mathrm{Cr} + 3{,}3 \cdot (\%\,\mathrm{Mo} + 1{,}5 \cdot \%\,\mathrm{W}) + 16 \cdot \%\,\mathrm{N}" />
+                      <BlockMath math="\mathrm{PREN} = \%\,\mathrm{Cr} + 3{,}3 \cdot (\%\,\mathrm{Mo} + 0{,}5 \cdot \%\,\mathrm{W}) + 16 \cdot \%\,\mathrm{N}" />
                     </div>
-                    <span className="text-xs text-slate-500 italic font-medium block">Ein PREN-Wert &gt; 35 charakterisiert einen Werkstoff als voll meerwasser- und chloridbeständig (z. B. Superduplex-Stähle).</span>
+                    <span className="text-xs text-slate-500 italic font-medium block">Als Faustregel gelten PREN-Werte ab etwa 40 als meerwasserbeständig (z. B. Superduplex 1.4410); 1.4404 erreicht nur etwa 24.</span>
                   </div>
                 </div>
 
@@ -912,7 +914,35 @@ export default function Metallkorrosion() {
 
       <MetalThematicLinks current="dauerhaftigkeit" />
       
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Schutzdauer einer Feuerverzinkung in Korrosivitätskategorie C3"
+        zielGleichung="t_{Schutz} \approx \frac{s_{Zn}}{r_{corr,Zn}}"
+        schritte={[
+          { titel: 'Schichtdicke', erklaerung: 'Stückverzinkter Stahlträger, mittlere Zinkschichtdicke 85 µm (Bauteildicke über 6 mm).', formel: 's_{Zn} = 85\\,\\mu\\text{m}' },
+          { titel: 'Abtragsrate', erklaerung: 'C3 nach DIN EN ISO 9223: Zinkabtrag 0,7 bis 2,1 µm/a; gewählt wird der obere Wert:', formel: 'r_{corr,Zn} = 2{,}1\\,\\mu\\text{m/a}' },
+          { titel: 'Schutzdauer', erklaerung: 'Bis zum Verbrauch der Zinkschicht:', formel: 't_{Schutz} \\approx \\frac{85}{2{,}1} = 40\\,\\text{a}' }
+        ]}
+        ergebnisHinweis="Mit einer zusätzlichen Beschichtung (Duplex-System) verlängert sich die Schutzdauer deutlich über die Summe beider Einzelschutzdauern hinaus. Für C5 (Zink 4,2 bis 8,4 µm/a) reichen 85 µm nur etwa 10 bis 20 Jahre."
+        normQuelle="DIN EN ISO 9223:2012-05; DIN EN ISO 14713-1; DIN EN ISO 1461"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Lochfraßbeständigkeit nichtrostender Stähle (PREN)"
+        zielGleichung="\mathrm{PREN} = \%\mathrm{Cr} + 3{,}3 \cdot \%\mathrm{Mo} + 16 \cdot \%\mathrm{N}"
+        schritte={[
+          { titel: '1.4404 (316L)', erklaerung: 'Cr 17,0 %, Mo 2,0 %, N 0,05 %:', formel: '\\mathrm{PREN} = 17{,}0 + 6{,}6 + 0{,}8 = 24{,}4' },
+          { titel: '1.4462 (Duplex 2205)', erklaerung: 'Cr 22,0 %, Mo 3,0 %, N 0,17 %:', formel: '\\mathrm{PREN} = 22{,}0 + 9{,}9 + 2{,}7 = 34{,}6' },
+          { titel: 'Vergleich', erklaerung: 'Höherer PREN bedeutet höheren Widerstand gegen chloridinduzierten Lochfraß:', formel: '34{,}6 > 24{,}4' }
+        ]}
+        ergebnisHinweis="Für Schwimmhallen und Meerwasserbereiche reichen Mo-haltige austenitische Stähle oft nicht; die Werkstoffwahl erfolgt bauaufsichtlich über die Korrosionsbeständigkeitsklassen (CRC) nach DIN EN 1993-1-4 bzw. abZ Z-30.3-6."
+        normQuelle="DIN EN 1993-1-4 mit NA; abZ Z-30.3-6 (DIBt)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="metallkorrosion" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: PREN-Formel korrigiert, Korrosivitätskategorien und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: "Korrosion", url: "https://de.wikipedia.org/wiki/Korrosion" },
           { title: "Pilling-Bedworth-Verhältnis", url: "https://de.wikipedia.org/wiki/Pilling-Bedworth-Verh%C3%A4ltnis" },
@@ -924,17 +954,17 @@ export default function Metallkorrosion() {
         ]} 
         literatur={[
           'Pilling, N. B.; Bedworth, R. E. (1923): The Oxidation of Metals at High Temperatures (J. Inst. Met. 29, S. 529–591)',
-          'Schütze, M. et al. (2018): Korrosion und Korrosionsschutz (Wiley-VCH)',
-          'Bargel, H.-J.; Schulze, G. (2018): Werkstoffkunde: Korrosionserscheinungen (Springer Vieweg)',
+          'Kaesche, H.: Die Korrosion der Metalle. 3. Aufl., Berlin: Springer 1990',
+          'Bargel, H.-J.; Schulze, G. (Hrsg.): Werkstoffkunde. 12. Aufl., Berlin: Springer Vieweg 2018',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[
-          { title: "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme - Teile 1 bis 9)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944" },
+          { title: "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teile 1 bis 9; Teil 2:2018-04)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944" },
           { title: "DIN EN 10025-5 (Warmgewalzte Erzeugnisse aus Baustählen - Teil 5: Wetterfeste Baustähle)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-5" },
           { title: "DIN EN 1172 (Kupfer und Kupferlegierungen - Bleche und Bänder für das Bauwesen)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1172" },
           { title: "DIN EN 485 / DIN EN 573 (Aluminium und Aluminiumlegierungen für das Bauwesen)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+485" },
           { title: "DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+8044" },
-          { title: "DIN EN ISO 9223 (Korrosion von Metallen – Korrosivitätskategorien C1 bis CX)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9223" }
+          { title: "DIN EN ISO 9223:2012-05 (Korrosion von Metallen – Korrosivität von Atmosphären)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9223" }
         ]} 
         formeln={[
           {
@@ -944,7 +974,7 @@ export default function Metallkorrosion() {
           },
           {
             formel: '\\mathrm{PBR} = \\frac{V_{\\text{Oxid}}}{V_{\\text{Metall}}} = \\frac{M_{\\text{Oxid}} \\cdot \\rho_{\\text{Metall}}}{n \\cdot M_{\\text{Metall}} \\cdot \\rho_{\\text{Oxid}}}',
-            erklaerung: 'Pilling-Bedworth-Verhältnis: Kriterium für Deckschichten. 1,0 <= PBR <= 2,0 kennzeichnet dichte, passivierende Schutzschichten (z. B. Aluminium 1,28, Kupfer 1,68, Corten 1,75). PBR > 2,0 erzeugt schuppiges Abblättern (Eisen/Rost ca. 2,1 bis 3,3).',
+            erklaerung: 'Pilling-Bedworth-Verhältnis: Kriterium für Deckschichten. 1,0 <= PBR <= 2,0 kennzeichnet dichte, passivierende Schutzschichten (z. B. Aluminium 1,28, Kupfer/Cu₂O 1,68). PBR > 2,0 erzeugt schuppiges Abblättern (Eisen/Fe₂O₃ ca. 2,1). Wetterfeste Stähle schützen nicht über den PBR, sondern über die Legierungselemente Cu, Cr, Ni, P in der Rostschicht.',
             quelle: 'Pilling & Bedworth (1923)'
           },
           {

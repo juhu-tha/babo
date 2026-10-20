@@ -1147,7 +1147,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Die Schutzfunktion der Betondeckung c_nom',
-        description: 'Die Betondeckung c_nom = c_min + Δc_dev ist die primäre Barriere. Da Diffusionsprozesse dem 2. Fick\'schen Gesetz folgen (Eindringtiefe proportional zur Quadratwurzel der Zeit: x ~ √(D·t)), verdoppelt eine Verdoppelung der Betondeckung die Schutzdauer um das Vierfache!',
+        description: 'Die Betondeckung c_nom = c_min + Δc_dev ist die primäre Barriere. Da Diffusionsprozesse dem 2. Fick\'schen Gesetz folgen (Eindringtiefe proportional zur Quadratwurzel der Zeit: x ~ √(D·t)), vervierfacht eine Verdoppelung der Betondeckung die Zeit bis zur Depassivierung.',
         takeaway: '1 cm mehr Betondeckung schützt ein Bauteil besser als nachträgliche Beschichtungen.'
       }
     ],
@@ -1159,10 +1159,10 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       {
         step: '1',
         title: 'Passiviert',
-        subtitle: 'pH > 12.5 Neubau',
+        subtitle: 'pH > 12,5 Neubau',
         desc: 'Intakte Eisenoxid-Passivschicht durch Calciumhydroxid im Porenwasser. Keine Korrosion.',
         iconName: 'ShieldCheck',
-        keyFacts: ['pH 12.5–13.5', 'Ca(OH)2 Puffer', 'Fe-Passivschicht'],
+        keyFacts: ['pH 12,5–13,5', 'Ca(OH)2 Puffer', 'Fe-Passivschicht'],
         normOrFormula: 'pH \\ge 12{,}5',
         color: 'from-emerald-500 to-emerald-600'
       },
@@ -1182,7 +1182,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Kritischer Grenzwert',
         desc: 'Carbonatisierungsfront oder kritischer Chloridgehalt erreicht die Bewehrungsoberfläche.',
         iconName: 'AlertTriangle',
-        keyFacts: ['pH < 9.0', 'Cl- > 0,4–0,5% m/z', 'Lochfraßgefahr'],
+        keyFacts: ['pH < 9', 'Cl⁻ ≈ 0,4–0,5 M.-% v. z. (Orientierung)', 'Lochfraßgefahr'],
         normOrFormula: 'c_{crit} \\text{ erreicht}',
         color: 'from-amber-500 to-amber-600'
       },
@@ -1198,7 +1198,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       }
     ],
     interconnections: [
-      { from: 'Passiviert', to: 'Initiierung', relation: 'Transportkinetik', causeEffect: 'Dichte Zemente (CEM III) und niedrige w/z-Werte senken den Diffusionskoeffizienten D und verlängern die Initiierungsphase von 20 auf 100 Jahre.' },
+      { from: 'Passiviert', to: 'Initiierung', relation: 'Transportkinetik', causeEffect: 'Dichte Zemente (CEM III) und niedrige w/z-Werte senken den Diffusionskoeffizienten D und verlängern die Initiierungsphase deutlich (Größenordnung: von Jahrzehnten auf über 100 Jahre).' },
       { from: 'Initiierung', to: 'Depassivierung', relation: 'Schadensschwelle', causeEffect: 'Tausalzeintrag an Parkhausstützen depassiviert den Stahl ohne Carbonatisierung und führt zu verdecktem Lochfraß.' },
       { from: 'Depassivierung', to: 'Propagation', relation: 'Reaktionsantrieb', causeEffect: 'Sobald Feuchte und Sauerstoff Zutritt haben, treibt die elektrochemische Zelle Rost auf und sprengt die Betondeckung ab.' }
     ],

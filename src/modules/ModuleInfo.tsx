@@ -762,10 +762,10 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     submodules: [
       { title: 'Prinzipien & Konzepte', icon: ShieldAlert, purpose: 'Werkstoffübergreifende Säulen (Konstruktiver Schutz, Materialanpassung, Barriere- & Opfersysteme) sowie fundamentale Triebkräfte der Diffusionsvorgänge.', standards: 'DIN EN 1990 / Eurocode-Reihe', useCase: 'Planung von dauerhaft durchlüfteten Holzfassaden oder Gefälleausführungen zur schadensfreien Wasserableitung.' },
-      { title: 'Stahlbeton-Karbonatisierung', icon: ShieldAlert, purpose: 'Quadratisches Zeitgesetz des CO₂-Eindringens unter Zerstörung des alkalischen pH-Puffers. Lebensdauersimulation vor Depassivierung.', standards: 'DIN EN 206 / DIN 1045-2 / DIN 1045:2023', useCase: 'Soll-Ist-Abgleich der Betondeckung (c_min) zur Sicherstellung von 50 oder 100 Jahren karbonatisierungsfreier Nutzungsdauer.' },
-      { title: 'Betonkorrosive Schadensbilder', icon: ShieldAlert, purpose: 'Innere und äußere Treibprozesse: Alkali-Kieselsäure-Reaktion (AKR), Ettringit-Sulfattreiben, chloridinduzierter Lochfraß und Frost-Tau-Abplatzungen (XF/XA/XM).', standards: 'DAfStb Alkali-Richtlinie / DBV-Merkblätter', useCase: 'Auswahl eines sehr dichten LP-Betons für Autobahndecken oder sulfatbeständiger SR-Zemente für Kanalisationsrohre.' },
-      { title: 'Korrosion der Metalle', icon: ShieldAlert, purpose: 'Anodische und kathodische Redoxvorgänge, saurer/neutraler Elektrolytfluss, galvanische Verträglichkeiten der elektrochemischen Spannungsreihe.', standards: 'DIN EN ISO 12944 (Teile 1-9) / DIN EN ISO 14713', useCase: 'Bimetall-Verträglichkeitsbewertung von Verbindungsschrauben (Edelstahl A4 vs. Baustahl verzinkt in Nassbereichen).' },
-      { title: 'Holzbiologischer Abbau', icon: ShieldAlert, purpose: 'Physiologischer Befall durch holzzerstörende Pilze (Weiß-, Braun-, Moderfäule) und Insektenlarven bei u >= 20% Holzfeuchte.', standards: 'DIN 68800 (Teile 1-4) / DIN EN 350-2', useCase: 'Bestimmung der passenden Kernholzart (z.B. Robinie Klasse 1 oder Eiche Klasse 2) für voll bewitterte Strukturen der Gebrauchsklasse (GK) 3 oder 4.' },
+      { title: 'Stahlbeton-Karbonatisierung', icon: ShieldAlert, purpose: 'Quadratisches Zeitgesetz des CO₂-Eindringens unter Zerstörung des alkalischen pH-Puffers. Lebensdauersimulation vor Depassivierung.', standards: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 / DIN EN 1992-1-1 + NA', useCase: 'Soll-Ist-Abgleich der Betondeckung (c_min) zur Sicherstellung von 50 oder 100 Jahren karbonatisierungsfreier Nutzungsdauer.' },
+      { title: 'Betonkorrosive Schadensbilder', icon: ShieldAlert, purpose: 'Innere und äußere Treibprozesse: Alkali-Kieselsäure-Reaktion (AKR), Ettringit-Sulfattreiben, chloridinduzierter Lochfraß und Frost-Tau-Abplatzungen (XF/XA/XM).', standards: 'DAfStb-Alkali-Richtlinie (2013-10) / DIN 1045-2 (XA, XF) / DBV-Merkblätter', useCase: 'Auswahl eines sehr dichten LP-Betons für Autobahndecken oder sulfatbeständiger SR-Zemente für Kanalisationsrohre.' },
+      { title: 'Korrosion der Metalle', icon: ShieldAlert, purpose: 'Anodische und kathodische Redoxvorgänge, saurer/neutraler Elektrolytfluss, galvanische Verträglichkeiten der elektrochemischen Spannungsreihe.', standards: 'DIN EN ISO 12944 (Teile 1–9) / DIN EN ISO 9223:2012-05 / DIN EN ISO 14713', useCase: 'Bimetall-Verträglichkeitsbewertung von Verbindungsschrauben (Edelstahl A4 vs. Baustahl verzinkt in Nassbereichen).' },
+      { title: 'Holzbiologischer Abbau', icon: ShieldAlert, purpose: 'Physiologischer Befall durch holzzerstörende Pilze (Weiß-, Braun-, Moderfäule) und Insektenlarven bei u >= 20% Holzfeuchte.', standards: 'DIN 68800-1 bis -4 (2019–2022) / DIN EN 350:2016-12 / DIN EN 351-1:2023-07', useCase: 'Bestimmung der passenden Kernholzart (z.B. Robinie Klasse 1 oder Eiche Klasse 2) für voll bewitterte Strukturen der Gebrauchsklasse (GK) 3 oder 4.' },
       { title: 'Asphalt-Viskoelastizität', icon: ShieldAlert, purpose: 'Oxidative Alterungsprozesse (Asphaltene-Erhöhung), Tieftemperatur-Querrisse und plastische Spurrinnenbildung (Hitze-Verformung).', standards: 'ZTV Asphalt-StB / TL Asphalt-StB / AL Sp-Asphalt', useCase: 'Einsatz polymer-modifizierter Elastomerbitumine (PmB) und rheometrische Validierung im Scherrheometer (DSR).' },
       { title: 'Spannungsrisse in Polymeren', icon: ShieldAlert, purpose: 'Physikalische und chemische Alterung von Bau-Kunststoffen, UV-Zersetzung, Weichmacher-Migration und tensidinduzierte ESC-Risse.', standards: 'ISO Randspezifikationen / DVS Richtlinien (Kunststoffrohre)', useCase: 'Auslegung und konstruktive Trennung von Weich-PVC-Abdichtungsbahnen und unverträglichen Polystyrol-Dämmmatten.' },
       { title: 'Naturstein- & Mauerwerkserhalt', icon: ShieldAlert, purpose: 'Kryptofloreszenz (Salzkristallisation unter Druck), saurer Gips-Krustenabbau kalkiger Gesteine und Frostsprengungen.', standards: 'WTA-Merkblätter (Wissenschaftlich-Technische Arbeitsgemeinschaft)', useCase: 'Konzeption von makroporösen Sanierputzsystemen nach WTA 2-9 zur schadensfreien Salzaufnahme an feuchten Altbausockeln.' },
@@ -787,19 +787,20 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     literatur: [
       'Stark, J.; Wicht, B. (2013): Dauerhaftigkeit von Beton (Springer Vieweg)',
-      'Barth, J. (2017): Handbuch Holzschutz: Recht, Biologie, Technik (Hanser Verlag)',
-      'Wendehorst (2024): Baustoffkunde (Springer Vieweg - Aktuelle Auflage)'
+      'DIN e. V. (Hrsg.): Holzschutz – Praxiskommentar zu DIN 68800 Teile 1 bis 4. Berlin: DIN Media (aktuelle Auflage)',
+      'Bertolini, L.; Elsener, B.; Pedeferri, P.; Redaelli, E.; Polder, R.: Corrosion of Steel in Concrete. 2. Aufl., Weinheim: Wiley-VCH 2013',
+      'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
-      { title: 'DIN 68800: Holzschutz im Hochbau (Teile 1-4)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+      { title: 'DIN 68800: Holzschutz (Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
       { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten durch Beschichtungssysteme', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
-      { title: 'DIN 1045-2: Tragwerke aus Beton, Stahlbeton und Spannbeton - Nationale Festlegungen', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+      { title: 'DIN 1045-2:2023-08: Tragwerke aus Beton, Stahlbeton und Spannbeton – Beton (Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
       { title: 'WTA-Merkblatt 2-9: Sanierputzsysteme - Kriterien für Planung und Ausführung', url: 'https://www.wta-gmbh.de/' },
       { title: 'DIN EN 14179: Heißgelagertes thermisch vorgespanntes Einscheiben-Sicherheitsglas (HST)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14179' }
     ],
     formeln: [
-      { formel: 's(t) = k \\cdot \\sqrt{t}', erklaerung: 'Quadratisches Zeitgesetz der Carbonatisierungstiefe s(t) in Abhängigkeit vom Carbonatisierungsbeiwert k [mm/√a] und Bauteilalter t [Jahre]. Mit k-Sollwerten nach DIN EN 206.', quelle: 'Stark/Wicht: Dauerhaftigkeit von Beton' },
-      { formel: '\\text{w/z} = \\frac{W}{Z} \\le \\text{w/z}_{\\text{max}}', erklaerung: 'Wasserzementwert: Massenverhaltnis von wirksamem Wassergehalt W [kg/m³] zu Zementgehalt Z [kg/m³]. Bestimmt direkt die Porenradienverteilung und Porensegnentierung.', quelle: 'DIN EN 206' },
+      { formel: 's(t) = k \\cdot \\sqrt{t}', erklaerung: 'Quadratisches Zeitgesetz der Carbonatisierungstiefe s(t) in Abhängigkeit vom Carbonatisierungsbeiwert k [mm/√a] und Bauteilalter t [Jahre]. Die Norm gibt keine k-Werte vor; Anhaltswerte liefern Messungen oder Modelle nach fib Bulletin 34.', quelle: 'Stark/Wicht: Dauerhaftigkeit von Beton' },
+      { formel: '\\text{w/z} = \\frac{W}{Z} \\le \\text{w/z}_{\\text{max}}', erklaerung: 'Wasserzementwert: Massenverhaltnis von wirksamem Wassergehalt W [kg/m³] zu Zementgehalt Z [kg/m³]. Bestimmt direkt die Porenradienverteilung und Porenstruktur.', quelle: 'DIN EN 206' },
       { formel: '\\Delta d_{\\text{loss}} = r_{\\text{corr}} \\cdot t', erklaerung: 'Linearer Korrosionsabtrag von Baustählen und metallischen Zinkbeschichtungen über die Zeit t auf Basis konstanter lufthygienischer Abtragsgeschwindigkeiten r_corr [μm/Jahr] nach DIN EN ISO 12944-2 (Klassen C1 bis CX).', quelle: 'DIN EN ISO 12944-2' },
       { formel: 'J = -D_p \\cdot \\frac{\\partial C}{\\partial x}', erklaerung: '1. Ficksches Gesetz zur Beschreibung des eindringenden diffusiven Schadstoffionen-Massenflusses (z.B. Chloride Cl⁻ oder Sulfate SO₄²⁻) durch das kapillare Zementsteinporennetzwerk.', quelle: 'Ficksches Diffusionsgesetz' }
     ]
@@ -1151,21 +1152,20 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   dauerhaftigkeit: {
     websites: [
-      { name: "Korrosions- und Bautenschutzverband (KBB)", url: "https://www.kbb-korrosion.de", desc: "Elektrochemischer Bautenschutz, Instandshaltungen, kathodischer Korrosionsschutz (KKS)." },
-      { name: "VDZ Dauerhaftigkeits-Netzwerk", url: "https://www.vdz-online.de", desc: "Forschungsstelle für Carbonatisierungsfortschritt und Frost-Tausalz-Widerstand." },
+      { name: "Deutscher Ausschuss für Stahlbeton (DAfStb)", url: "https://www.dafstb.de", desc: "Richtlinien (u. a. Alkali-Richtlinie, WU-Richtlinie) und Schriftenreihe zu Betonbau und Dauerhaftigkeit." },
+      { name: "VDZ – Verein Deutscher Zementwerke", url: "https://www.vdz-online.de", desc: "Forschungsinstitut der Zementindustrie u. a. zu Karbonatisierung, Frost-Tausalz-Widerstand und AKR." },
       { name: "BASt Ingenieurbau-Datenbank", url: "https://www.bast.de", desc: "Bundesanstalt für Straßenwesen. Regeluntersuchungen zur AKR-Schadensentwicklung an Brückenkappen." }
     ],
     books: [
-      { title: "Dauerhaftigkeit von Beton: Korrosionsprozesse, Schadensbilder", desc: "Stark, Wicht, Springer. Chemischer Tiefgang zur Alkali-Kieselsäure-Reaktion und Sulfattreiben." },
-      { title: "Korrosion und Korrosionsschutz von Stahl im Beton", desc: "Raupach, Elsener, Ernst & Sohn. Detektion und Schutz kritischer Chlorid-Korrosionsschwellen." }
+      { title: "Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013", desc: "Schadensmechanismen von Beton, u. a. AKR, Sulfat- und Frostangriff." },
+      { title: "Bertolini, L.; Elsener, B.; Pedeferri, P.; Redaelli, E.; Polder, R.: Corrosion of Steel in Concrete. 2. Aufl., Weinheim: Wiley-VCH 2013", desc: "Karbonatisierung, Chloridkorrosion, Diagnose und Instandsetzung." }
     ],
     publications: [
-      { journal: "Cement and Concrete Research", title: "Chloride diffusion through unsaturated concrete structures: Modeling kinetics and field testing comparison", desc: "Kapillarer Transport von Tausalzen im mathematischen Diffusionsmodell." },
-      { journal: "Materials and Structures (RILEM)", title: "Alkali-silica reaction (ASR) mechanism: Gel mineralogy and expansive pressure generation within hydrated cement paste", desc: "Druckbeiwert-Analysen quellender Quarzgelstrukturen." }
+      { journal: "CBI Research 5:82, Stockholm 1982", title: "Tuutti, K.: Corrosion of Steel in Concrete", desc: "Ursprung des Zweiphasenmodells (Einleitungs- und Schädigungsphase)." },
+      { journal: "Proceedings Highway Research Board 29 (1949)", title: "Powers, T. C.: The Air Requirement of Frost-Resistant Concrete", desc: "Grundlage des Luftporen-Abstandsfaktors." }
     ],
     dissertations: [
-      { title: "Prognosemodelle für das Karbonatisierungsverhalten klinkerreduzierter Zemente unter anwendungsnahen Expositionsbedingungen", desc: "Dissertation, TU Braunschweig, 2018. CO2-Eindringtiefen bei CEM II- und CEM III-Bindemitteln." },
-      { title: "Zur Quantifizierung des Rissinitiierungspotentials infolge innerer Schadreaktionen des erhärteten Zementsteins", desc: "Dissertation, RWTH Aachen. Verformungsspannungsmessungen im Ultraschallmikroskop." }
+      { title: "Gehlen, C.: Probabilistische Lebensdauerbemessung von Stahlbetonbauwerken", desc: "Dissertation, RWTH Aachen 2000; DAfStb-Heft 510. Grundlage der probabilistischen Dauerhaftigkeitsbemessung." }
     ]
   },
   schaeden: {

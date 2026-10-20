@@ -4691,5 +4691,425 @@
       "targetModuleLabel": "Checklisten"
     },
     "verified": false
+  },
+  {
+    "id": "q_dh_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "dauerhaftigkeit",
+    "moduleTitle": "Prinzipien & Übersicht",
+    "topic": "Betondeckung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1 + NA, 4.4.1",
+    "question": "Welches Nennmaß der Betondeckung ergibt sich für XD3 bei Stabdurchmesser 16 mm?",
+    "options": [
+      "25 mm",
+      "40 mm",
+      "55 mm",
+      "70 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "c_min = max(16; 40; 10) = 40 mm, Vorhaltemaß nach NA 15 mm → c_nom = 55 mm.",
+    "gapAnalysis": {
+      "topic": "Betondeckung",
+      "misconception": "Das Vorhaltemaß betrage immer 10 mm.",
+      "coreRule": "c_nom = max(c_min,b; c_min,dur; 10 mm) + Δc_dev; Δc_dev = 15 mm für XC2 bis XS3.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Prinzipien & Übersicht noch einmal durch.",
+      "targetModuleTab": "dauerhaftigkeit",
+      "targetModuleLabel": "Prinzipien & Übersicht"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dh_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "dauerhaftigkeit",
+    "moduleTitle": "Prinzipien & Übersicht",
+    "topic": "Chemischer Angriff",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206; DIN 1045-2",
+    "question": "Ein Grundwasser enthält 1 500 mg/l Sulfat. Welche Expositionsklasse liegt vor und was folgt daraus?",
+    "options": [
+      "XA1, keine besonderen Maßnahmen",
+      "XA2, Zement mit hohem Sulfatwiderstand (SR) erforderlich",
+      "XA3, nur Beschichtung erforderlich",
+      "XD2, Chloridschutz"
+    ],
+    "correctIdx": 1,
+    "explanation": "Sulfat über 600 bis 3 000 mg/l entspricht XA2; ab 600 mg/l ist nach DIN 1045-2 ein SR-Zement zu verwenden.",
+    "gapAnalysis": {
+      "topic": "Chemischer Angriff",
+      "misconception": "Sulfat sei über die Expositionsklasse XD geregelt.",
+      "coreRule": "Sulfat: XA1 200–600, XA2 > 600–3 000, XA3 > 3 000–6 000 mg/l.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chemischer Angriff“ im Modul Prinzipien & Übersicht noch einmal durch.",
+      "targetModuleTab": "dauerhaftigkeit",
+      "targetModuleLabel": "Prinzipien & Übersicht"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ko_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "korrosion",
+    "moduleTitle": "Bewehrungskorrosion",
+    "topic": "Wurzel-Zeit-Gesetz",
+    "difficulty": "Basis",
+    "normRef": "fib Bulletin 34",
+    "question": "Wie verändert sich die Zeit bis zur Depassivierung, wenn die Betondeckung halbiert wird (x = k · √t)?",
+    "options": [
+      "Sie halbiert sich",
+      "Sie sinkt auf ein Viertel",
+      "Sie bleibt gleich",
+      "Sie verdoppelt sich"
+    ],
+    "correctIdx": 1,
+    "explanation": "t = (c/k)²: Bei halber Deckung bleibt ein Viertel der Zeit.",
+    "gapAnalysis": {
+      "topic": "Wurzel-Zeit-Gesetz",
+      "misconception": "Zeit und Deckung hingen linear zusammen.",
+      "coreRule": "Deckung wirkt quadratisch auf die Einleitungsphase.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wurzel-Zeit-Gesetz“ im Modul Bewehrungskorrosion noch einmal durch.",
+      "targetModuleTab": "korrosion",
+      "targetModuleLabel": "Bewehrungskorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ko_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "korrosion",
+    "moduleTitle": "Bewehrungskorrosion",
+    "topic": "Faraday-Abtrag",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Faradaysches Gesetz",
+    "question": "Welcher gleichmäßige Stahlabtrag entspricht etwa einer Korrosionsstromdichte von 1 µA/cm²?",
+    "options": [
+      "0,1 µm/a",
+      "1,2 µm/a",
+      "11,6 µm/a",
+      "116 µm/a"
+    ],
+    "correctIdx": 2,
+    "explanation": "Mit M = 55,85 g/mol, z = 2, ρ = 7,87 g/cm³ ergibt Faraday rund 11,6 µm/a.",
+    "gapAnalysis": {
+      "topic": "Faraday-Abtrag",
+      "misconception": "Korrosionsströme im µA-Bereich seien unbedeutend.",
+      "coreRule": "1 µA/cm² ≈ 11,6 µm/a Eisenabtrag; Lochfraß lokal mehrfach höher.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Faraday-Abtrag“ im Modul Bewehrungskorrosion noch einmal durch.",
+      "targetModuleTab": "korrosion",
+      "targetModuleLabel": "Bewehrungskorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sb_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadreaktionen_beton",
+    "moduleTitle": "Betonkorrosion",
+    "topic": "AKR-Voraussetzungen",
+    "difficulty": "Basis",
+    "normRef": "DAfStb-Alkali-Richtlinie (2013-10)",
+    "question": "Welche drei Bedingungen müssen für eine schädigende AKR zusammenkommen?",
+    "options": [
+      "Sulfat, Frost, Chlorid",
+      "Alkaliempfindliche Gesteinskörnung, hoher Alkaligehalt der Porenlösung, Feuchte",
+      "Karbonatisierung, CO₂, Wärme",
+      "Hoher w/z-Wert, Luftporen, Taumittel"
+    ],
+    "correctIdx": 1,
+    "explanation": "Reaktive Kieselsäure, Alkalien und ausreichend Feuchte; fehlt eine Bedingung, bleibt die Reaktion unschädlich.",
+    "gapAnalysis": {
+      "topic": "AKR-Voraussetzungen",
+      "misconception": "AKR entstehe allein durch Taumittel.",
+      "coreRule": "Vorbeugung über Gesteinskörnung (E I), NA-Zement/Zementgehalt oder Feuchteschutz.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR-Voraussetzungen“ im Modul Betonkorrosion noch einmal durch.",
+      "targetModuleTab": "schadreaktionen_beton",
+      "targetModuleLabel": "Betonkorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sb_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadreaktionen_beton",
+    "moduleTitle": "Betonkorrosion",
+    "topic": "Na2O-Äquivalent",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1164-10",
+    "question": "Ein Zement hat 0,25 M.-% Na₂O und 0,95 M.-% K₂O. Wie groß ist das Na₂O-Äquivalent und gilt er als NA-Zement?",
+    "options": [
+      "0,88 M.-%, kein NA-Zement",
+      "1,20 M.-%, NA-Zement",
+      "0,55 M.-%, NA-Zement",
+      "0,25 M.-%, NA-Zement"
+    ],
+    "correctIdx": 0,
+    "explanation": "Na₂O-Äq. = 0,25 + 0,658 · 0,95 = 0,88 M.-% > 0,60 M.-% (Grenze für CEM I-NA).",
+    "gapAnalysis": {
+      "topic": "Na2O-Äquivalent",
+      "misconception": "Nur Na₂O zähle zum Alkaligehalt.",
+      "coreRule": "Na₂O-Äq. = Na₂O + 0,658 · K₂O.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Na2O-Äquivalent“ im Modul Betonkorrosion noch einmal durch.",
+      "targetModuleTab": "schadreaktionen_beton",
+      "targetModuleLabel": "Betonkorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ho_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "holzkorrosion",
+    "moduleTitle": "Holzkorrosion",
+    "topic": "Gebrauchsklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN 68800-1:2019-06",
+    "question": "Welche Gebrauchsklasse gilt für einen Holzpfahl mit ständigem Erdkontakt?",
+    "options": [
+      "GK 1",
+      "GK 2",
+      "GK 3.2",
+      "GK 4"
+    ],
+    "correctIdx": 3,
+    "explanation": "GK 4: ständiger Erd- oder Süßwasserkontakt; Gefährdung u. a. durch Moderfäule.",
+    "gapAnalysis": {
+      "topic": "Gebrauchsklassen",
+      "misconception": "Bewitterung ohne Erdkontakt sei bereits GK 4.",
+      "coreRule": "GK 0/1 trocken (u ≤ 20 %), GK 2 gelegentlich feucht, GK 3.1/3.2 bewittert, GK 4 Erdkontakt, GK 5 Meerwasser.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gebrauchsklassen“ im Modul Holzkorrosion noch einmal durch.",
+      "targetModuleTab": "holzkorrosion",
+      "targetModuleLabel": "Holzkorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ho_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "holzkorrosion",
+    "moduleTitle": "Holzkorrosion",
+    "topic": "Holzfeuchte",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 13183-1",
+    "question": "Eine Holzprobe wiegt feucht 512 g und gedarrt 418 g. Wie hoch ist die Holzfeuchte?",
+    "options": [
+      "18,4 %",
+      "22,5 %",
+      "29,4 %",
+      "81,6 %"
+    ],
+    "correctIdx": 1,
+    "explanation": "u = (512 − 418)/418 · 100 = 22,5 % – bezogen auf die Darrmasse, nicht auf die Feuchtmasse.",
+    "gapAnalysis": {
+      "topic": "Holzfeuchte",
+      "misconception": "Die Holzfeuchte werde auf die feuchte Masse bezogen.",
+      "coreRule": "u = (m_u − m_0)/m_0; Pilzgefahr oberhalb etwa 20 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzfeuchte“ im Modul Holzkorrosion noch einmal durch.",
+      "targetModuleTab": "holzkorrosion",
+      "targetModuleLabel": "Holzkorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_me_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "metallkorrosion",
+    "moduleTitle": "Metallkorrosion",
+    "topic": "PREN",
+    "difficulty": "Basis",
+    "normRef": "PREN-Formel",
+    "question": "Welcher PREN ergibt sich für 1.4404 mit 17 % Cr, 2,0 % Mo und 0,05 % N?",
+    "options": [
+      "17,0",
+      "19,0",
+      "24,4",
+      "34,6"
+    ],
+    "correctIdx": 2,
+    "explanation": "PREN = 17 + 3,3 · 2,0 + 16 · 0,05 = 24,4.",
+    "gapAnalysis": {
+      "topic": "PREN",
+      "misconception": "Molybdän trage zum Lochfraßwiderstand nicht bei.",
+      "coreRule": "PREN = %Cr + 3,3 · %Mo + 16 · %N.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PREN“ im Modul Metallkorrosion noch einmal durch.",
+      "targetModuleTab": "metallkorrosion",
+      "targetModuleLabel": "Metallkorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_me_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "metallkorrosion",
+    "moduleTitle": "Metallkorrosion",
+    "topic": "Feuerverzinkung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN ISO 9223:2012-05",
+    "question": "Wie lange schützt eine Zinkschicht von 85 µm etwa in Korrosivitätskategorie C3 (Zinkabtrag bis 2,1 µm/a)?",
+    "options": [
+      "etwa 4 Jahre",
+      "etwa 10 Jahre",
+      "etwa 40 Jahre",
+      "über 200 Jahre"
+    ],
+    "correctIdx": 2,
+    "explanation": "85/2,1 ≈ 40 Jahre; in C5 (bis 8,4 µm/a) nur etwa 10 Jahre.",
+    "gapAnalysis": {
+      "topic": "Feuerverzinkung",
+      "misconception": "Feuerverzinkung schütze unabhängig von der Atmosphäre dauerhaft.",
+      "coreRule": "Schutzdauer ≈ Schichtdicke / Abtragsrate nach Korrosivitätskategorie.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuerverzinkung“ im Modul Metallkorrosion noch einmal durch.",
+      "targetModuleTab": "metallkorrosion",
+      "targetModuleLabel": "Metallkorrosion"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_wo_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "weitere_organik",
+    "moduleTitle": "Weitere Organik",
+    "topic": "RGT-Regel",
+    "difficulty": "Basis",
+    "normRef": "Arrhenius",
+    "question": "Um welchen Faktor beschleunigt sich eine Alterungsreaktion mit E_A = 80 kJ/mol, wenn die Temperatur von 20 auf 30 °C steigt?",
+    "options": [
+      "etwa 1,1",
+      "etwa 1,5",
+      "etwa 3",
+      "etwa 10"
+    ],
+    "correctIdx": 2,
+    "explanation": "exp[E_A/R · (1/293,15 − 1/303,15)] = e^1,08 ≈ 2,95.",
+    "gapAnalysis": {
+      "topic": "RGT-Regel",
+      "misconception": "10 K Temperaturerhöhung seien für die Alterung bedeutungslos.",
+      "coreRule": "RGT-Regel: Faktor 2 bis 3 je 10 K.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „RGT-Regel“ im Modul Weitere Organik noch einmal durch.",
+      "targetModuleTab": "weitere_organik",
+      "targetModuleLabel": "Weitere Organik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_wo_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "weitere_organik",
+    "moduleTitle": "Weitere Organik",
+    "topic": "Faktorenmethode",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ISO 15686-1",
+    "question": "Wofür steht die Faktorenmethode nach ISO 15686-1?",
+    "options": [
+      "Bemessung von Dachbahnen auf Windsog",
+      "Abschätzung der Nutzungsdauer: ESL = RSL · A · B · C · D · E · F · G",
+      "Ermittlung der Rohdichte von Kunststoffen",
+      "Berechnung des Glasübergangs"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Referenznutzungsdauer wird mit Faktoren für Material-, Planungs-, Ausführungsqualität, Umgebung, Nutzung und Instandhaltung angepasst.",
+    "gapAnalysis": {
+      "topic": "Faktorenmethode",
+      "misconception": "Herstellerangaben zur Nutzungsdauer gälten unabhängig vom Einbauort.",
+      "coreRule": "ESL = RSL · Faktoren A bis G, projektspezifisch begründet.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Faktorenmethode“ im Modul Weitere Organik noch einmal durch.",
+      "targetModuleTab": "weitere_organik",
+      "targetModuleLabel": "Weitere Organik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dc_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "dauerhaftigkeit_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Mehrere Expositionsklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-2:2023-08",
+    "question": "Ein Bauteil ist XC4, XD1 und XF2 (LP) zugeordnet. Welcher maximale w/z-Wert ist maßgebend?",
+    "options": [
+      "0,60",
+      "0,55",
+      "0,50",
+      "0,45"
+    ],
+    "correctIdx": 1,
+    "explanation": "Jeweils die strengste Anforderung gilt: XC4 0,60, XD1 0,55, XF2 (LP) 0,55 → 0,55.",
+    "gapAnalysis": {
+      "topic": "Mehrere Expositionsklassen",
+      "misconception": "Es genüge, die Hauptklasse zu berücksichtigen.",
+      "coreRule": "Bei mehreren Klassen gelten jeweils die strengsten Grenzwerte.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mehrere Expositionsklassen“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "dauerhaftigkeit_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dc_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "dauerhaftigkeit_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Rissbreiten",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA Tab. 7.1DE",
+    "question": "Welcher Rechenwert der Rissbreite gilt nach deutschem NA für Stahlbeton in XD- und XS-Klassen?",
+    "options": [
+      "0,4 mm",
+      "0,3 mm",
+      "0,2 mm",
+      "0,1 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "Für Stahlbeton: XC1 0,4 mm, XC2–XC4 0,3 mm, XD/XS 0,2 mm (quasi-ständige Kombination).",
+    "gapAnalysis": {
+      "topic": "Rissbreiten",
+      "misconception": "Für alle Expositionsklassen gelte 0,3 mm.",
+      "coreRule": "w_max nach Tab. 7.1DE abhängig von der Expositionsklasse.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rissbreiten“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "dauerhaftigkeit_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
   }
 ]

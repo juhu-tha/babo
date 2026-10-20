@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ShieldAlert, Sun, Droplets, Bug, Box, Mountain, Maximize, Layers, Activity, Zap, LucideIcon, Snowflake, Wind, Waves, FlaskConical, Hammer, AlertTriangle, BookOpen, ArrowRight, Check, X, AlertCircle } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
@@ -479,10 +481,10 @@ function BetonDauerhaftigkeitsSimulator() {
   const [showPath, setShowPath] = useState<boolean>(false);
   
   const presets = [
-    { label: 'XC1 (Innenraum trocken, z.B. C20/25)', kValue: 4.5, cnomDefault: 15 },
-    { label: 'XC2 (nass, selten trocken): c_nom = 35 mm', kValue: 1.0, cnomDefault: 25 },
-    { label: 'XC3 (Mäßig feucht, z.B. C25/30)', kValue: 2.5, cnomDefault: 25 },
-    { label: 'XC4 (Feucht/Trocken-Wechsel, z.B. C30/37)', kValue: 1.5, cnomDefault: 35 },
+    { label: 'XC1 (trocken, z. B. Innenraum): c_nom = 20 mm', kValue: 4.5, cnomDefault: 20 },
+    { label: 'XC2 (nass, selten trocken): c_nom = 35 mm', kValue: 1.0, cnomDefault: 35 },
+    { label: 'XC3 (mäßig feucht): c_nom = 35 mm', kValue: 2.5, cnomDefault: 35 },
+    { label: 'XC4 (Wechsel nass/trocken): c_nom = 40 mm', kValue: 1.5, cnomDefault: 40 },
   ];
 
   const handlePreset = (pK: number, pC: number) => {
@@ -733,7 +735,7 @@ function BetonDauerhaftigkeitsSimulator() {
               <div className="space-y-1">
                 <p className="font-bold text-slate-800">Schritt 5: Konstruktive und betontechnologische Stellschrauben</p>
                 <ul className="list-disc pl-5 space-y-1 text-slate-600 text-xs">
-                  <li><strong>Geringerer w/z-Wert (Zementleimdiag):</strong> Reduziert das kapillare Porenvolumen und senkt den k-Wert drastisch (z.B. von 4.5 auf 1.5).</li>
+                  <li><strong>Geringerer w/z-Wert (dichterer Zementstein):</strong> Reduziert das kapillare Porenvolumen und senkt den k-Wert drastisch (z. B. von 4,5 auf 1,5 mm/√a).</li>
                   <li><strong>Erhöhter Vorhaltemaß dc:</strong> Ein Erhöhen der Schalungspräzision ermöglicht dickere Bauteildeckungen (z.B. 35mm anstelle von 15mm), was die t_crit-Schutzdauer quadratisch vergrößert.</li>
                 </ul>
               </div>
@@ -760,8 +762,8 @@ function MetalDurabilitySimulator() {
     C1: { label: 'C1 (Kleinstes Risiko / Innen beheizt)', steelLoss: 0.1, zincLoss: 0.02, desc: 'Trockene Büros, Schulen, geringe Kondensation.' },
     C2: { label: 'C2 (Gering / Unbeheizte Depots, ländlich)', steelLoss: 10, zincLoss: 0.5, desc: 'Geringe Verschmutzung, offene Garagen.' },
     C3: { label: 'C3 (Mäßig / Stadtgase, mäßige Küste)', steelLoss: 35, zincLoss: 1.2, desc: 'Urbane u. industrielle Bereiche, mäßiges Chlorid.' },
-    C4: { label: 'C4 (Stark / Chemieparks, Küstenregion)', steelLoss: 65, zincLoss: 2.8, desc: 'Industrieanlagen, Chemiebetriebe, Schiffsrümpfe.' },
-    C5: { label: 'C5 (Sehr stark / Extremkondensation)', steelLoss: 140, zincLoss: 5.5, desc: 'Aggressive Offshore-Plattformen, Hafenkräne.' },
+    C4: { label: 'C4 (Stark / Chemieparks, Küstenregion)', steelLoss: 65, zincLoss: 2.8, desc: 'Chemieanlagen, Schwimmbäder, Küstenbereiche mit mäßiger Salzbelastung.' },
+    C5: { label: 'C5 (Sehr stark / Industrie, Küste)', steelLoss: 140, zincLoss: 5.5, desc: 'Industrie mit hoher Feuchte und aggressiver Atmosphäre, Küste mit hoher Salzbelastung (Offshore: CX).' },
     CX: { label: 'CX (Extrem / Tropische u. marine Bereiche)', steelLoss: 450, zincLoss: 15, desc: 'Extreme Salzbelastung und andauernd hohe Luftfeuchte.' },
   };
 
@@ -1269,18 +1271,18 @@ function TimberDurabilitySimulator() {
                 <p className="font-semibold text-slate-800">Schritt 2: Klassifizierung der Gebrauchsklasse (GK)</p>
                 <p className="text-slate-600 leading-relaxed font-normal">
                   Ihre gewählten Parameter klassifizieren das Tragwerk in die Klasse <strong className="font-mono bg-slate-250 px-1.5 py-0.5 rounded text-slate-850 text-xs">{gkInfo.gk}</strong> ({gkInfo.name}). 
-                  Dies bestimmt rechtlich bindend das maximale Schutzspektrum (Insektengefahr ab GK 1, Pilzgefahr ab GK 2, Moderfäulerisiko ab GK 4).
+                  Dies bestimmt nach DIN 68800-1:2019-06 die erforderlichen Schutzmaßnahmen (Insektengefahr ab GK 1, Pilzgefahr ab GK 2, Moderfäulerisiko ab GK 4).
                 </p>
               </div>
               <div className="space-y-1">
-                <p className="font-semibold text-slate-800">Schritt 3: Abgleich der natürliche Dauerhaftigkeit (Resistenzklasse nach DIN EN 350-2)</p>
+                <p className="font-semibold text-slate-800">Schritt 3: Abgleich der natürlichen Dauerhaftigkeit (Dauerhaftigkeitsklasse nach DIN EN 350:2016-12)</p>
                 <p className="text-slate-600 leading-relaxed font-normal">
                   Hölzer lagern in ihren inneren Kernzellen schützende Tannine, Terpene oder Harze ein. Je niedriger die Dauerhaftigkeitsklasse (1 = sehr dauerhaft bis 5 = nicht dauerhaft), desto widerstandsfähiger ist das Holz:
                 </p>
                 <ul className="text-slate-600 list-disc pl-5 space-y-1 text-xs">
-                  <li><strong>Klasse 1-2 (Robinie, Eiche):</strong> Dürfen ohne zusätzliche chemische Imprägnierung im bewitterten Außenbereich oder direktem Erdkontakt (GK 3.2 oder GK 4) eingesetzt werden.</li>
+                  <li><strong>Klasse 1 bis 2 (Robinie, Eiche):</strong> Splintfreies Kernholz der Klasse 1 (Robinie) ist ohne chemischen Schutz auch in GK 4 verwendbar; Klasse 2 bis GK 3.2. Eiche wird nach DIN EN 350 mit 2 bis 4 eingestuft.</li>
                   <li><strong>Klasse 3-4 (Douglasie, Lärche):</strong> Nur baulich optimal geschützt (ohne Staunässe, freier Ablauf) einsatzfähig.</li>
-                  <li><strong>Klasse 4-5 (Fichte, Tanne):</strong> Absolut ungeeignet für feuchte Bewitterungsklassen, es sei denn, sie erfährt eine massive Kesseldruckimprägnierung (KDI).</li>
+                  <li><strong>Klasse 4-5 (Fichte, Tanne):</strong> Ohne Schutzmaßnahmen nicht für bewitterte Gebrauchsklassen geeignet; Fichte ist zudem schlecht tränkbar, sodass auch eine Kesseldruckimprägnierung (KDI) nur begrenzt eindringt.</li>
                 </ul>
               </div>
               <div className="space-y-1">
@@ -1289,7 +1291,7 @@ function TimberDurabilitySimulator() {
                   Baulich-konstruktive Vorsorge hat ausnahmslos Vorrang vor chemischem Holzschutz!
                 </p>
                 <p className="text-slate-500 leading-relaxed mt-1">
-                  Chemische Holzschutzmittel dürfen im Wohnbereich wegen gesundheitlicher Restrisiken nur in begründeten, gesetzlich geregelten Ausnahmen eingesetzt werden. In GK 0 ist jeglicher chemische Holzschutz gesetzlich verboten.
+                  Nach DIN 68800 sind bauliche Maßnahmen vorrangig; in GK 0 sind keine vorbeugenden chemischen Maßnahmen vorgesehen, und in Aufenthaltsräumen soll chemischer Holzschutz vermieden werden. Holzschutzmittel sind Biozidprodukte (Verordnung (EU) Nr. 528/2012).
                 </p>
               </div>
             </div>
@@ -1435,14 +1437,14 @@ export default function Dauerhaftigkeit() {
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
                   <Box className="w-5 h-5 text-gray-500" />
-                  Beton & Stahlbeton (DIN 1045:2023 & Expositionsklassen)
+                  Beton & Stahlbeton (DIN 1045-Reihe 2023 & Expositionsklassen)
                 </h3>
                 <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-2">
                   <p>
                     Die Dauerhaftigkeit von Stahlbeton basiert auf dem Zusammenwirken von dichtem Zementstein (erzeugt durch niedrige w/z-Werte) und dem stark alkalischen Milieu des Porenwassers (pH &gt; 12,5), welches den Bewehrungsstahl passiviert. Das klassische System nach <strong>DIN EN 206 / DIN 1045-2</strong> gliedert Umwelteinflüsse in Expositionsklassen.
                   </p>
                   <p className="border-t border-home-grau/25 pt-2 text-xs text-slate-700">
-                    <strong>Normen-Update (DIN 1045:2023):</strong> Die Neuausgabe der DIN 1045-Reihe (Teile 1 bis 1000) reformiert die Planung nachhaltiger, dauerhafter Tragwerke. Neben der klassischen, präskriptiven Einteilung in Expositionsklassen wird der Übergang zu performance-basierten Bemessungsansätzen (z.B. nachfolgende Betonbauqualitätsklassen (BBQ N, E, S)) und die Freigabe CO₂-reduzierter Mehrstoffzemente (wie CEM II/C und CEM III) forciert, um ökologischen Fußabdruck und mechanische Langlebigkeit baustofflich in Einklang zu bringen.
+                    <strong>Normen-Update (DIN 1045-Reihe, Ausgabe 2023-08):</strong> Die neue Reihe umfasst u. a. DIN 1045-1000 (Grundlagen mit Betonbauqualitätsklassen BBQ-N, BBQ-E, BBQ-S), DIN 1045-2 (Beton), DIN 1045-3 (Bauausführung) und DIN 1045-40 (Fertigteile). Sie ist über die MVV TB 2024/1 in den meisten Ländern eingeführt; die BBQ-Klassen sind baurechtlich nicht verbindlich. Die Expositionsklassen nach DIN EN 206 bleiben die Grundlage; die Anwendungsregeln für klinkereffiziente Zemente und rezyklierte Gesteinskörnungen wurden erweitert.
                   </p>
                 </div>
               </div>
@@ -1471,7 +1473,7 @@ export default function Dauerhaftigkeit() {
                     </ul>
                     <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-1 text-xs text-gray-600">
                       <span className="font-bold text-text-main">Anforderungen:</span>
-                      <span>Anforderungen: Mindestdruckfestigkeitsklasse C8/10 nach DIN 1045-2; keine Begrenzung von w/z-Wert und Zementgehalt. X0 gilt nur für Beton ohne Bewehrung oder eingebettetes Metall. oder w/z-Grenzen aus Dauerhaftigkeitsgründen.</span>
+                      <span>Anforderungen: Mindestdruckfestigkeitsklasse C8/10 nach DIN 1045-2; keine Begrenzung von w/z-Wert und Zementgehalt. X0 gilt nur für Beton ohne Bewehrung oder eingebettetes Metall.</span>
                     </div>
                   </div>
 
@@ -1551,13 +1553,13 @@ export default function Dauerhaftigkeit() {
                     </div>
                     <ul className="text-xs space-y-1 text-gray-700">
                       <li><span className="font-semibold">XF1:</span> Mäßige Wassersättigung ohne Taumittel (Außenbauteile)</li>
-                      <li><span className="font-semibold">XF2:</span> Mäßige Wassersättigung mit Taumittel (Kläranlagenbereiche)</li>
+                      <li><span className="font-semibold">XF2:</span> Mäßige Wassersättigung mit Taumittel (Sprühnebelbereich von Verkehrsflächen)</li>
                       <li><span className="font-semibold">XF3:</span> Hohe Wassersättigung ohne Taumittel (Stützwände, Becken)</li>
                       <li><span className="font-semibold">XF4:</span> Hohe Wassersättigung mit Taumittel (Straßenoberflächen)</li>
                     </ul>
                     <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-1 text-xs text-gray-600">
                       <span className="font-bold text-text-main">Umsetzung (z.B. XF4):</span>
-                      <span>Künstliche Mikroluftporen (LP-Beton) zur Druckentlastung (Soll-Gehalt &gt; 4,0–5,0 Vol.-%) oder sehr niedrige w/z-Werte.</span>
+                      <span>Bei XF4 ist Luftporenbeton erforderlich (mittlerer LP-Gehalt je nach Größtkorn ≥ 4,0 bis 5,5 Vol.-%, max. w/z = 0,50, C30/37) plus Gesteinskörnung mit hohem Frost-Tausalz-Widerstand.</span>
                     </div>
                   </div>
 
@@ -1571,13 +1573,13 @@ export default function Dauerhaftigkeit() {
                       </div>
                     </div>
                     <ul className="text-xs space-y-1 text-gray-700">
-                      <li><span className="font-semibold">XA1:</span> Schwach aggressiv (pH-Wert 6,5–5,5; CO₂-lösend 15–40 mg/l)</li>
-                      <li><span className="font-semibold">XA2:</span> Mäßig aggressiv (pH-Wert 5,5–4,5; Sulfat 200–600 mg/l)</li>
-                      <li><span className="font-semibold">XA3:</span> Stark aggressiv (pH-Wert 4,5–4,0; Sulfat 600–3000 mg/l)</li>
+                      <li><span className="font-semibold">XA1:</span> Schwach angreifend (pH 6,5–5,5; kalklösendes CO₂ 15–40 mg/l; Sulfat 200–600 mg/l)</li>
+                      <li><span className="font-semibold">XA2:</span> Mäßig angreifend (pH 5,5–4,5; Sulfat &gt; 600–3.000 mg/l)</li>
+                      <li><span className="font-semibold">XA3:</span> Stark angreifend (pH 4,5–4,0; Sulfat &gt; 3.000–6.000 mg/l)</li>
                     </ul>
                     <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-1 text-xs text-gray-600">
                       <span className="font-bold text-text-main">Umsetzung:</span>
-                      <span>Bei aggressivem Sulfatangriff: Verwendung sulfatbeständiger Spezialzemente (SR-Zemente). Bei XA3 ist eine dichte Schutzbarriere (Beschichtung) Pflicht.</span>
+                      <span>Bei aggressivem Sulfatangriff: Verwendung sulfatbeständiger Spezialzemente (SR-Zemente). Ab Sulfat &gt; 600 mg/l ist SR-Zement erforderlich; bei XA3 sind zusätzliche Schutzmaßnahmen (z. B. Schutzschicht) oder ein Gutachten vorzusehen.</span>
                     </div>
                   </div>
 
@@ -1597,7 +1599,7 @@ export default function Dauerhaftigkeit() {
                     </ul>
                     <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-1 text-xs text-gray-600">
                       <span className="font-bold text-text-main">Umsetzung (z.B. XM2):</span>
-                      <span>Hartstoffeinstreuungen (z.B. Siliciumcarbid, Quarz), Oberflächenveredelungen, Vakuumbetonierung, max. w/z = 0.45.</span>
+                      <span>Hartstoffeinstreuungen (z.B. Siliciumcarbid, Quarz), Oberflächenveredelungen, Vakuumbehandlung; XM3: max. w/z = 0,45, C35/45.</span>
                     </div>
                   </div>
 
@@ -1927,20 +1929,48 @@ export default function Dauerhaftigkeit() {
         </div>
       </div>
     
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Nennmaß der Betondeckung für eine Parkhausdecke (XD3, XC3)"
+        zielGleichung="c_{nom} = c_{min} + \Delta c_{dev}, \quad c_{min} = \max\{c_{min,b};\; c_{min,dur};\; 10\,\text{mm}\}"
+        schritte={[
+          { titel: 'Verbund', erklaerung: 'Stabdurchmesser der Längsbewehrung 16 mm:', formel: 'c_{min,b} = \\varnothing = 16\\,\\text{mm}' },
+          { titel: 'Dauerhaftigkeit', erklaerung: 'Maßgebend ist die Klasse mit der größten Anforderung: XD3 verlangt c_min,dur = 40 mm (XC3 nur 20 mm).', formel: 'c_{min} = \\max\\{16;\\; 40;\\; 10\\} = 40\\,\\text{mm}' },
+          { titel: 'Vorhaltemaß', erklaerung: 'Nach NA für XC2 bis XS3: Δc_dev = 15 mm.', formel: 'c_{nom} = 40 + 15 = 55\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Zusätzlich gilt für XD3 nach DIN 1045-2: max. w/z = 0,45, Mindestfestigkeitsklasse C35/45, Mindestzementgehalt 320 kg/m³. Bei befahrenen Parkdecks ist ein rissüberbrückendes Oberflächenschutzsystem vorzusehen."
+        normQuelle="DIN EN 1992-1-1:2011-01 + NA, 4.4.1; DIN 1045-2:2023-08"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Wie wichtig ist das Vorhaltemaß? Karbonatisierung einer Außenwand (XC4)"
+        zielGleichung="t_{krit} = \left(\frac{c}{k}\right)^2"
+        schritte={[
+          { titel: 'Annahmen', erklaerung: 'Karbonatisierungsbeiwert k = 4,0 mm/√a (Lehrwert für eine Außenwand), Nennmaß c_nom = 40 mm, Mindestmaß c_min = 25 mm.', formel: 'x_c(t) = 4{,}0 \\cdot \\sqrt{t}' },
+          { titel: 'Planmäßige Deckung', erklaerung: 'Mit dem Nennmaß:', formel: 't_{krit} = (40 / 4{,}0)^2 = 100\\,\\text{a}' },
+          { titel: 'Ungünstig verlegte Bewehrung', erklaerung: 'Nur das Mindestmaß erreicht:', formel: 't_{krit} = (25 / 4{,}0)^2 = 39\\,\\text{a}' }
+        ]}
+        ergebnisHinweis="Die Zeit bis zur Depassivierung steigt mit dem Quadrat der Betondeckung: 15 mm weniger Deckung verkürzen sie hier um rund 60 %. Deshalb sind Abstandhalter und Kontrolle der Deckung vor dem Betonieren entscheidend."
+        normQuelle="√t-Gesetz; fib Bulletin 34 (2006)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="dauerhaftigkeit" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: Expositionsklassen nach DIN 1045-2:2023-08, Betondeckung, XA-Grenzen, Korrosivitätskategorien und Holzschutz geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Dauerhaftigkeit', url: 'https://de.wikipedia.org/wiki/Dauerhaftigkeit' },
           { title: 'Expositionsklasse', url: 'https://de.wikipedia.org/wiki/Expositionsklasse' },
           { title: 'Betondeckung', url: 'https://de.wikipedia.org/wiki/Betondeckung' }
         ]}
         literatur={[
-          'Gehlen, C.; Kapteina, G. (2012): Dauerhaftigkeitsbemessung von Stahlbetonbauteilen (Ernst & Sohn)',
+          'Gehlen, C.: Probabilistische Lebensdauerbemessung von Stahlbetonbauwerken. DAfStb-Heft 510, Berlin: Beuth 2000',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'fib Bulletin 34: Model Code for Service Life Design (International Federation for Structural Concrete)'
+          'fib Bulletin 34: Model Code for Service Life Design. Lausanne: fib 2006'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation EN 1992-1-1:2023 (DIN-Ausgabe und Einführung manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
           { title: 'DAfStb Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         formeln={[
@@ -1950,9 +1980,9 @@ export default function Dauerhaftigkeit() {
             quelle: 'fib Model Code / DAfStb'
           },
           {
-            formel: 'c_{\\text{nom}} = c_{\\text{min}} + \\Delta c_{\\text{dev}} \\ge \\max\\{c_{\\text{min,b}}; c_{\\text{min,dur}}; 10\\,\\text{mm}\\} + 10\\,\\text{mm}',
-            erklaerung: 'Nennmaß der Betondeckung cnom nach EC2: Summe aus Mindestbetondeckung cmin (Verbund cmin,b + Dauerhaftigkeit cmin,dur) und Vorhaltemaß Δcdev (in der Regel 10 mm bzw. 15 mm bei erhöhten Toleranzen).',
-            quelle: 'DIN EN 1992-1-1 Abs. 4.4.1'
+            formel: 'c_{\\text{nom}} = c_{\\text{min}} + \\Delta c_{\\text{dev}}, \\quad c_{\\text{min}} = \\max\\{c_{\\text{min,b}}; c_{\\text{min,dur}}; 10\\,\\text{mm}\\}',
+            erklaerung: 'Nennmaß der Betondeckung cnom nach EC2: Summe aus Mindestbetondeckung cmin (Verbund cmin,b + Dauerhaftigkeit cmin,dur) und Vorhaltemaß Δcdev (nach NA: 10 mm für XC1, 15 mm für XC2 bis XS3).',
+            quelle: 'DIN EN 1992-1-1 + NA, 4.4.1'
           }
         ]}
       />

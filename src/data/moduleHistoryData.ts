@@ -686,15 +686,15 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2001',
         title: 'Einführung normativer Expositionsklassen & Mindestbetondeckung',
         category: 'Normung',
-        description: 'DIN EN 206 und DIN EN 1992-1-1 kodifizieren das Expositionsklassen-System für Korrosionsrisiken: XC (Carbonatisierung), XD (Taumittel), XS (Meerwasser). Festlegung des Nennmaßes der Betondeckung c_nom = c_min + Δc_dev.',
+        description: 'Mit DIN EN 206-1 und DIN 1045-1/-2 (Ausgaben 2001-07) wird in Deutschland das Expositionsklassen-System eingeführt: XC (Karbonatisierung), XD (Chloride außer Meerwasser), XS (Meerwasser), XF, XA, XM. Das Nennmaß der Betondeckung c_nom = c_min + Δc_dev übernimmt 2011 DIN EN 1992-1-1 mit NA.',
         impact: 'Dauerhaftigkeit wird zu einem gleichberechtigten statischen Bemessungskriterium wie Biege- oder Querkraftwiderstand.',
-        keyReference: 'DIN EN 1992-1-1 / DIN 1045-1'
+        keyReference: 'DIN EN 206-1:2001 / DIN 1045-1:2001 / DIN EN 1992-1-1:2011'
       },
       {
         era: '2020er–heute (2024–2026)',
         title: 'Probabilistische Lebensdauerbemessung & Performance-Konzepte',
         category: 'Sicherheit',
-        description: 'Ablösung rein starrer Deskriptivregeln durch vollprobabilistische Lebensdauermodelle nach fib Model Code for Service Life Design (Bulletin 34). Berechnung von Depassivierungswahrscheinlichkeiten p_dep ≤ 10 % nach 50 oder 100 Jahren.',
+        description: 'Ergänzung der deskriptiven Regeln durch probabilistische Lebensdauermodelle nach fib Bulletin 34 (2006) und ISO 16204 (2012): Nachweis einer Depassivierungswahrscheinlichkeit von etwa 10 % (β ≈ 1,3) nach 50 oder 100 Jahren. In Deutschland führt die DIN 1045-Reihe 2023-08 Betonbauqualitätsklassen ein; die neue Eurocode-Generation (EN 1992-1-1:2023) nimmt Expositionswiderstandsklassen (ERC) auf.',
         impact: 'Planung von Mega-Infrastrukturprojekten (Tunnel, Brücken, Offshore) mit garantierten Lebensdauern von 100 bis 120 Jahren.',
         keyReference: 'fib Model Code / ISO 16204'
       }

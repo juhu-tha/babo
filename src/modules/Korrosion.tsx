@@ -16,6 +16,8 @@ import { Slider } from "@/src/components/ui/Slider";
 import { erf } from "@/src/lib/math";
 import { FormulaText } from "@/src/components/ui/FormulaText";
 import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from "react-katex";
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
@@ -233,7 +235,7 @@ function LokalelementSimulator() {
               <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${
                 isDepassivated ? 'bg-red-100 text-red-800 border-red-300' : 'bg-emerald-100 text-emerald-800 border-emerald-300'
               }`}>
-                {isDepassivated ? 'Depassiviert' : 'Passiviert (pH > 12.5)'}
+                {isDepassivated ? 'Depassiviert' : 'Passiviert (pH > 12,5)'}
               </span>
             </div>
 
@@ -814,7 +816,7 @@ export default function Korrosion() {
               step={0.05}
               value={a}
               unit=""
-              info="Beschreibt die Abnahme des Diffusionskoeffizienten über die Zeit durch fortschreitende Hydratation. CEM I: ~0.3, CEM III (Hüttensand): ~0.6."
+              info="Beschreibt die Abnahme des Diffusionskoeffizienten über die Zeit durch fortschreitende Hydratation. Richtwerte nach fib Bulletin 34: Portlandzement ≈ 0,30, mit Flugasche ≈ 0,60, Hochofenzement ≈ 0,45."
               onChange={(e) => setA(Number(e.target.value))}
             />
           </div>
@@ -1038,8 +1040,8 @@ export default function Korrosion() {
                   <p className="text-xs mt-1">
                     erf(): Gaußsche Fehlerfunktion
                     <br />
-                    <FormulaText text="C_{crit} \approx 0.5" /> Gew.-%
-                    (Kritischer Chloridgehalt zur Depassivierung)
+                    <FormulaText text="C_{crit} \approx 0{,}5" /> M.-% bezogen auf den Zement
+                    (Orientierungswert; objektspezifisch durch den sachkundigen Planer festzulegen)
                   </p>
                 </div>
                 <div>
@@ -1212,7 +1214,35 @@ export default function Korrosion() {
       )}
 
       {/* Global ModuleFooter */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Chloridgehalt an der Bewehrung nach 50 Jahren (2. Ficksches Gesetz)"
+        zielGleichung="C(x,t) = C_s \cdot \left[1 - \mathrm{erf}\left(\frac{x}{2\sqrt{D_{app} \cdot t}}\right)\right]"
+        schritte={[
+          { titel: 'Eingangswerte', erklaerung: 'Oberflächenchloridgehalt C_s = 3,0 M.-% v. z., Diffusionskoeffizient D_app = 0,3 · 10⁻¹² m²/s (konstant angesetzt), Betondeckung x = 45 mm, t = 50 a:', formel: 'D_{app} = 0{,}3 \\cdot 10^{-12}\\,\\tfrac{\\text{m}^2}{\\text{s}} = 9{,}47\\,\\tfrac{\\text{mm}^2}{\\text{a}}' },
+          { titel: 'Argument der Fehlerfunktion', erklaerung: 'Einsetzen:', formel: 'z = \\frac{45}{2\\sqrt{9{,}47 \\cdot 50}} = \\frac{45}{43{,}5} = 1{,}03 \\Rightarrow \\mathrm{erf}(z) = 0{,}856' },
+          { titel: 'Chloridgehalt', erklaerung: 'Vergleich mit dem kritischen Gehalt (Orientierungswert 0,5 M.-% v. z.):', formel: 'C = 3{,}0 \\cdot (1 - 0{,}856) = 0{,}43 < 0{,}5 \\Rightarrow \\text{noch passiv}' }
+        ]}
+        ergebnisHinweis="Mit 35 mm Deckung ergäbe sich bereits 0,77 M.-% v. z. – die Deckung wirkt quadratisch auf die Zeit. Zeitabhängiges D_app (Alterungsexponent) und probabilistische Ansätze nach fib Bulletin 34 verfeinern die Prognose."
+        normQuelle="fib Bulletin 34 (2006); fib Model Code 2010"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Querschnittsverlust eines Bewehrungsstabes aus der Korrosionsstromdichte"
+        zielGleichung="v_{corr} = \frac{M \cdot i_{corr}}{z \cdot F \cdot \rho}"
+        schritte={[
+          { titel: 'Abtragsrate', erklaerung: 'Eisen: M = 55,85 g/mol, z = 2, ρ = 7,87 g/cm³, i_corr = 1 µA/cm²:', formel: 'v_{corr} = 11{,}6\\,\\mu\\text{m/a}' },
+          { titel: 'Radiusabnahme', erklaerung: 'Gleichmäßiger Abtrag über 10 Jahre an einem Stab Ø 12 mm:', formel: 'd = 12 - 2 \\cdot 0{,}116 = 11{,}77\\,\\text{mm}' },
+          { titel: 'Querschnittsverlust', erklaerung: 'Bezogen auf den Ausgangsquerschnitt:', formel: '\\Delta A / A = 1 - (11{,}77/12)^2 = 3{,}8\\,\\%' }
+        ]}
+        ergebnisHinweis="Bei chloridinduziertem Lochfraß ist der lokale Abtrag 4- bis 8-mal größer als der Mittelwert (Lochfraßfaktor) – der Querschnittsverlust kann lokal ein Vielfaches betragen, ohne dass Abplatzungen vorwarnen."
+        normQuelle="Faradaysches Gesetz; DIN EN ISO 8044"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="korrosion" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: Chlorid- und Karbonatisierungsmodelle, Alterungsexponenten, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Bewehrungskorrosion', url: 'https://de.wikipedia.org/wiki/Bewehrungskorrosion' },
           { title: 'Karbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
@@ -1220,19 +1250,20 @@ export default function Korrosion() {
         ]}
         literatur={[
           'fib Model Code for Concrete Structures 2010 (International Federation for Structural Concrete)',
-          'DAfStb-Heft 600: Erläuterungen zu den Normen DIN EN 206 und DIN 1045-2 (Beuth Verlag)',
+          'DAfStb-Heft 526: Erläuterungen zu den Normen DIN EN 206-1, DIN 1045-2, DIN 1045-3, DIN 1045-4 und DIN EN 12620. Berlin: Beuth 2011 (Neuausgabe zur DIN 1045:2023 manuell prüfen)',
+          'fib Bulletin 34: Model Code for Service Life Design. Lausanne: fib 2006',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 12390-12 (Beschleunigte Karbonatisierung von Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-12' },
-          { title: 'DIN EN 12390-10 (Karbonatisierungswiderstand bei atmosphärischer CO2-Konzentration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-10' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Betondeckung cnom und Expositionsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 12390-12:2020-04 (Bestimmung des Karbonatisierungswiderstandes – beschleunigtes Verfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-12' },
+          { title: 'DIN EN 12390-10:2019-02 (Karbonatisierungswiderstand bei atmosphärischer CO₂-Konzentration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-10' },
+          { title: 'DIN EN 1992-1-1:2011-01 + NA (Eurocode 2: Betondeckung cnom und Expositionsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
         formeln={[
           {
             formel: 'C(x,t) = C_0 + (C_s - C_0) \\cdot \\left[1 - \\text{erf}\\left(\\frac{x}{2 \\cdot \\sqrt{D_{\\text{app}} \\cdot t}}\\right)\\right]',
             erklaerung: '2. Fick\'sches Diffusionsgesetz zur Modellierung des instationären Chlorideindringens in das poröse Zementsteingefüge.',
-            quelle: 'fib Model Code 2010'
+            quelle: 'fib Bulletin 34 / fib Model Code 2010'
           },
           {
             formel: 'x_c(t) = K_{\\text{karb}} \\cdot \\sqrt{t} \\quad [\\text{mm}], \\quad K_{\\text{nat}} \\approx K_{\\text{schnell}} \\cdot \\sqrt{\\frac{\\text{CO}_{2,\\text{nat}}}{\\text{CO}_{2,\\text{schnell}}}}',
