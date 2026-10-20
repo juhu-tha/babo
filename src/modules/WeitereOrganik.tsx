@@ -1,6 +1,8 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '../components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   Leaf, 
   Droplets, 
@@ -349,7 +351,7 @@ function DynamicInteractiveDegradationCalculator() {
 
               {/* Formula 3: Sedlbauer Biological Deterioration */}
               <div className="bg-slate-900/60 p-3 sm:p-4 rounded-lg border border-slate-800/80">
-                <p className="font-semibold text-emerald-400 text-xs uppercase mb-1">3. Biologischer Abbau von NaWaRo (Isoplethen-Modell nach Sedlbauer)</p>
+                <p className="font-semibold text-emerald-400 text-xs uppercase mb-1">3. Biologischer Abbau von NaWaRo (vereinfachter Lehransatz in Anlehnung an das Isoplethenmodell nach Sedlbauer 2001)</p>
                 <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-slate-950/80 my-2 rounded-lg border border-slate-900">
                   <div className="text-base sm:text-lg font-mono font-bold text-white tracking-wide border-b md:border-b-0 md:border-r border-slate-800 pb-2 md:pb-0 md:pr-4">
                     v<sub>Bio</sub> = M<sub>crit</sub> &middot; [&phi;<sub>Wood</sub> &minus; &phi;<sub>crit</sub>(T)] &middot; f<sub>pH</sub>
@@ -708,7 +710,35 @@ export default function WeitereOrganik() {
       <OrganicThematicLinks current="dauerhaftigkeit" />
 
       {/* Footer metadata */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Beschleunigung der thermischen Alterung einer Dachbahn (Arrhenius)"
+        zielGleichung="\frac{k(T_2)}{k(T_1)} = \exp\left[\frac{E_A}{R}\left(\frac{1}{T_1} - \frac{1}{T_2}\right)\right]"
+        schritte={[
+          { titel: 'Eingangswerte', erklaerung: 'Aktivierungsenergie der Oxidation E_A = 80 kJ/mol (Lehrwert), Temperaturerhöhung der Bahnoberfläche von 20 °C auf 30 °C:', formel: 'T_1 = 293{,}15\\,\\text{K}, \\quad T_2 = 303{,}15\\,\\text{K}' },
+          { titel: 'Exponent', erklaerung: 'Mit R = 8,314 J/(mol·K):', formel: '\\frac{80\\,000}{8{,}314}\\left(\\frac{1}{293{,}15} - \\frac{1}{303{,}15}\\right) = 1{,}083' },
+          { titel: 'Faktor', erklaerung: 'Die Reaktionsgeschwindigkeit steigt um:', formel: 'e^{1{,}083} = 2{,}95' }
+        ]}
+        ergebnisHinweis="Das bestätigt die RGT-Regel (Faktor 2 bis 3 je 10 K). Dunkle, unbekieste Dachbahnen erreichen im Sommer über 70 °C – helle Oberflächen, Bekiesung oder Begrünung verlängern die Nutzungsdauer deutlich."
+        normQuelle="Arrhenius (1889); ISO 15686-2 (beschleunigte Prüfung)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Faktorenmethode für die Nutzungsdauer einer Kunststoff-Dichtungsbahn"
+        zielGleichung="ESL = RSL \cdot A \cdot B \cdot C \cdot D \cdot E \cdot F \cdot G"
+        schritte={[
+          { titel: 'Referenznutzungsdauer', erklaerung: 'Herstellerangabe unter Referenzbedingungen:', formel: 'RSL = 25\\,\\text{a}' },
+          { titel: 'Faktoren', erklaerung: 'Außenklima mit hoher UV-Belastung (E = 0,8), sorgfältige Ausführung mit Schutzlage (C = 1,2), übrige Faktoren 1,0:', formel: '\\prod = 1{,}0^5 \\cdot 0{,}8 \\cdot 1{,}2 = 0{,}96' },
+          { titel: 'Geschätzte Nutzungsdauer', erklaerung: 'Einsetzen:', formel: 'ESL = 25 \\cdot 0{,}96 = 24\\,\\text{a}' }
+        ]}
+        ergebnisHinweis="Die Faktoren A bis G stehen für Material-, Planungs-, Ausführungs-, Innen- und Außenumgebungs-, Nutzungs- und Instandhaltungsqualität. Die Werte sind projektspezifisch und begründet festzulegen."
+        normQuelle="ISO 15686-1 (Faktorenmethode)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="weitere_organik" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: Alterungskinetik, Faktorenmethode und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Organische Chemie', url: 'https://de.wikipedia.org/wiki/Organische_Chemie' },
           { title: 'Polymer', url: 'https://de.wikipedia.org/wiki/Polymer' },
@@ -716,11 +746,12 @@ export default function WeitereOrganik() {
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 12944 (Korrosionsschutz durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
-          { title: 'DIN 68800 (Holzschutz: Vorbeugender Schutz im Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+          { title: 'DIN 68800-1 bis -4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
           { title: 'DIN 18531 (Abdichtung von Dächern und Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18531' }
         ]}
         literatur={[
-          'Schunck, E. et al.: Dachatlas: Geneigte Dächer und Flachdächer (Edition Detail)'
+          'Schunck, E.; Oster, H. J.; Barthel, R.; Kießl, K.: Dach Atlas – Geneigte Dächer. München: Edition Detail (aktuelle Auflage)',
+          'Sedlbauer, K.: Vorhersage von Schimmelpilzbildung auf und in Bauteilen. Dissertation, Universität Stuttgart 2001'
         ]}
         formeln={[
           {
@@ -731,7 +762,7 @@ export default function WeitereOrganik() {
           {
             formel: 't_{\\text{Life}} = t_0 \\cdot \\prod f_i \\quad [\\text{Jahre}]',
             erklaerung: 'Prognostizierte Nutzungsdauer organischer Werkstoffe unter Berücksichtigung von Reduktionsfaktoren für UV-Strahlung, Feuchte, Temperaturzyklen und Additive.',
-            quelle: 'ISO 15686-1'
+            quelle: 'ISO 15686-1 (Faktorenmethode)'
           }
         ]}
       />
