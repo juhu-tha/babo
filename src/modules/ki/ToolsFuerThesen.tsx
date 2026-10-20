@@ -1051,7 +1051,7 @@ Richte die Dezimalzahlen mit dem siunitx-Paket S-Spalten am Komma aus. Keine ver
 | Connected Papers | connectedpapers.com | Kap. 2 (Literaturrecherche) | Visualisierung von Zitationsbeziehungen und Ursprungswerken |
 | DeepL Write | deepl.com | Gesamtes Dokument | Stilistische Glättung und Beseitigung von Grammatikfehlern |
 | Overleaf Writefull | overleaf.com | Gesamtes Dokument | Akademische Formulierungskontrolle im LaTeX-Quellcode |
-| Cursor (Claude 5 Sonnet) | cursor.com | Kap. 4 (Auswertung) | Erstellung eines Python-Skripts zum Einlesen der Prüfmaschinen-CSV-Daten |
+| Cursor (z. B. mit Claude) | cursor.com | Kap. 4 (Auswertung) | Erstellung eines Python-Skripts zum Einlesen der Prüfmaschinen-CSV-Daten |
 | Google NotebookLM | notebooklm.google.com | Kap. 2 & 5 (Diskussion) | Quellenbasierter Abgleich mit hochgeladenen DIN-Normen |`, 'matrix')}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer shrink-0 ${
                   copiedId === 'matrix'
@@ -1101,7 +1101,7 @@ Richte die Dezimalzahlen mit dem siunitx-Paket S-Spalten am Komma aus. Keine ver
                     <td className="p-3">Stilistischer Feinschliff, Eliminierung von Schachtelsätzen im deutschen Fließtext</td>
                   </tr>
                   <tr className="hover:bg-off-white/50">
-                    <td className="p-3 font-bold text-shiraz">Cursor (Claude 5)</td>
+                    <td className="p-3 font-bold text-shiraz">Cursor (z. B. mit Claude)</td>
                     <td className="p-3 font-mono text-[11px]">Anysphere / Anthropic</td>
                     <td className="p-3">Kap. 4 (Versuchsauswertung)</td>
                     <td className="p-3">Generierung des Python-Matplotlib-Skripts zum Plotten der Prüfmaschinen-CSV-Rohdaten</td>

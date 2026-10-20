@@ -407,7 +407,7 @@ export default function FehlerRechtEthik() {
 
               <div className="space-y-3 text-xs text-text-main/80 leading-relaxed">
                 <p>
-                  Die am 1. August 2024 in Kraft getretene europäische KI-Verordnung stuft KI-Systeme in vier Risikoklassen ein. Für das Bauwesen ergeben sich gravierende Pflichten:
+                  Die am 1. August 2024 in Kraft getretene europäische KI-Verordnung (KI-VO) verfolgt einen risikobasierten Ansatz (verbotene Praktiken, Hochrisiko-Systeme, Transparenzpflichten, minimales Risiko). Sie gilt gestaffelt: Verbote und KI-Kompetenz (Art. 4) seit 02.02.2025, Pflichten für KI-Modelle mit allgemeinem Verwendungszweck seit 02.08.2025, Art. 50 ab 02.08.2026. Mit dem Digital Omnibus zur KI-VO (im Juni 2026 von Parlament und Rat angenommen; Fundstelle im Amtsblatt manuell prüfen) gelten die Hochrisiko-Pflichten für Anhang III ab 02.12.2027 und für Anhang I ab 02.08.2028. In der nationalen Aufsicht ist die Bundesnetzagentur vorgesehen. Für das Bauwesen heißt das:
                 </p>
 
                 <div className="p-3.5 bg-red-50/70 border border-red-200 rounded-xl space-y-1">
@@ -416,7 +416,7 @@ export default function FehlerRechtEthik() {
                     <span className="text-xxs px-2 py-0.5 bg-red-200 text-red-800 rounded-md font-bold">Anhang III</span>
                   </div>
                   <p className="text-xxs text-red-950/80 leading-relaxed">
-                    KI-Systeme, die als <strong>Sicherheitsbauteile für kritische Infrastrukturen</strong> eingesetzt werden (z. B. autonome Risserkennung an Brücken, Betrieb kritischer Infrastruktur (z. B. Überwachung und Steuerung von Straßentunneln), Tunnelüberwachung), fallen unter strenge Konformitätsbewertungsverfahren, Risikomanagement- und CE-Kennzeichnungspflichten.
+                    Nach Anhang III Nr. 2 sind KI-Systeme hochriskant, die als <strong>Sicherheitsbauteile im Management und Betrieb kritischer Infrastruktur</strong> (u. a. Straßenverkehr, Wasser-, Gas-, Wärme- und Stromversorgung) bestimmt sind – z. B. eine KI, die eine Tunnelsperrung oder Verkehrsführung selbsttätig steuert. Ein Assistenzwerkzeug, das Rissfotos für den Brückenprüfer vorsortiert, fällt nicht automatisch darunter; die Einstufung hängt von der Zweckbestimmung ab (Art. 6). Für Hochrisiko-Systeme gelten Risikomanagement, Datenqualität, technische Dokumentation, Konformitätsbewertung und CE-Kennzeichnung – nach Digital Omnibus ab 02.12.2027.
                   </p>
                 </div>
 
@@ -426,7 +426,7 @@ export default function FehlerRechtEthik() {
                     <span className="text-xxs px-2 py-0.5 bg-amber-200 text-amber-800 rounded-md font-bold">Verbindlich</span>
                   </div>
                   <p className="text-xxs text-amber-950/80 leading-relaxed">
-                    Nutzer müssen transparent darüber informiert werden, wenn Inhalte (Pläne, Gutachten, Textdokumente) von KI generiert oder wesentlich modifiziert wurden. In wissenschaftlichen Arbeiten (Bachelor/Master) ist dies Prüfungsbestandteil.
+                    Ab 02.08.2026: Anbieter müssen KI-generierte Inhalte maschinenlesbar kennzeichnen (Abs. 2; Übergangsfristen manuell prüfen), Betreiber müssen Deepfakes sowie KI-Texte offenlegen, die zur Information der Öffentlichkeit veröffentlicht werden – außer bei menschlicher Prüfung und redaktioneller Verantwortung (Abs. 4). Eine allgemeine KI-Kennzeichnungspflicht für Pläne oder Gutachten folgt daraus nicht; sie kann sich aber aus Vertrag, Berufsrecht oder – bei Bachelor- und Masterarbeiten – aus der Prüfungsordnung ergeben.
                   </p>
                 </div>
 
@@ -436,7 +436,7 @@ export default function FehlerRechtEthik() {
                     <span className="text-xxs px-2 py-0.5 bg-slate-200 text-slate-800 rounded-md font-bold">Art. 14</span>
                   </div>
                   <p className="text-xxs text-text-main/70 leading-relaxed">
-                    Ein Bauingenieur muss technisch in der Lage sein, die Ausgaben des KI-Systems zu verstehen, kritisch zu bewerten und jederzeit eigenständig zu überstimmen oder abzuschalten. Eine vollübertragene automatische Freigabe von Bauanträgen ist gesetzwidrig.
+                    Art. 14 verlangt für Hochrisiko-Systeme eine wirksame menschliche Aufsicht: Die beaufsichtigende Person muss Ausgaben verstehen, kritisch bewerten, übersteuern und das System anhalten können; Betreiber müssen dafür kompetentes Personal einsetzen (Art. 26). Unabhängig davon ist ein vollständig automatisierter Verwaltungsakt – etwa eine Baugenehmigung – nach § 35a VwVfG bzw. Landesrecht nur zulässig, wenn eine Rechtsvorschrift dies erlaubt und weder Ermessen noch Beurteilungsspielraum besteht.
                   </p>
                 </div>
               </div>
@@ -491,7 +491,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                 Bauherrennamen, Adressen, Grundbuchauszüge oder private Grundrisse von Einfamilienhäusern sind personenbezogene Daten nach Art. 4 DSGVO.
               </p>
               <div className="p-3 bg-red-50/50 rounded-xl border border-red-150 text-xxs text-red-900 leading-snug">
-                <strong>Verstoß:</strong> Wer Pläne mit Namen der Bauherren in ungesicherte Public-Cloud-LLMs hochlädt, begeht einen meldepflichtigen Datenschutzverstoß (Art. 33 DSGVO). Bußgelder bis zu 20 Mio. € drohen.
+                <strong>Verstoß:</strong> Wer Pläne mit Namen der Bauherren ohne Rechtsgrundlage (Art. 6 DSGVO), ohne Auftragsverarbeitungsvertrag (Art. 28) oder mit unzulässiger Drittlandübermittlung (Art. 44 ff.) in Public-Cloud-LLMs hochlädt, verarbeitet Daten rechtswidrig. Liegt eine Verletzung des Schutzes personenbezogener Daten vor, ist sie ggf. binnen 72 Stunden zu melden (Art. 33). Bußgelder bis 20 Mio. € oder 4 % des weltweiten Jahresumsatzes (Art. 83 Abs. 5).
               </div>
             </div>
 
@@ -504,7 +504,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                 Eigene UHPC-Mischungsrezepturen, geheime Zusatzmittelkombinationen, firmeninterne Einheitspreise und Kalkulationszuschläge sind geschützte Geschäftsgeheimnisse.
               </p>
               <div className="p-3 bg-amber-50/50 rounded-xl border border-amber-150 text-xxs text-amber-900 leading-snug">
-                <strong>Gefahr:</strong> Werden Daten in Standard-Accounts von Cloud-Tools eingegeben, können diese zum Nachtrainieren verwendet werden. Mitbewerber könnten die Rezeptur über Chat-Prompts abfragen!
+                <strong>Gefahr:</strong> Je nach Tarif und Einstellungen können Eingaben in Cloud-Tools gespeichert und zum Training genutzt werden. Wer Rezepturen ungeschützt eingibt, gefährdet die nach § 2 Nr. 1 b GeschGehG erforderlichen angemessenen Geheimhaltungsmaßnahmen – und damit den rechtlichen Schutz als Geschäftsgeheimnis.
               </div>
             </div>
 
@@ -517,7 +517,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                 Nach deutschem Urheberrecht (§ 2 Abs. 2 UrhG) sind nur <em>persönliche geistige Schöpfungen eines Menschen</em> urheberrechtlich geschützt.
               </p>
               <div className="p-3 bg-blue-50/50 rounded-xl border border-blue-150 text-xxs text-blue-900 leading-snug">
-                <strong>Rechtsfolge:</strong> Rein von einer KI generierte CAD-Skizzen, Texte oder Statik-Reports genießen keinen Urheberrechtsschutz. Sie sind gemeinfrei und können von Mitbewerbern legal kopiert werden.
+                <strong>Rechtsfolge:</strong> Rein von einer KI generierte CAD-Skizzen, Texte oder Statik-Reports genießen grundsätzlich keinen Urheberrechtsschutz. Schutz entsteht erst durch eine eigene schöpferische Bearbeitung oder Auswahl; daneben können Vertrags-, Wettbewerbs- oder Geschäftsgeheimnisschutz greifen.
               </div>
             </div>
 
@@ -596,7 +596,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                     <Flame size={14} className="text-red-600" /> Ressourcenverbrauch von Cloud-LLMs
                   </div>
                   <p className="text-xxs text-red-900/80 leading-relaxed">
-                    Eine einzige komplexe Frontier-Reasoning-Anfrage (z. B. o4-mini, Claude 5 Extended Thinking oder Gemini 3.8 Flash Thinking) verbraucht schätzungsweise das 10- bis 30-fache an elektrischer Energie im Vergleich zu einer Standard-Suche, zuzüglich Hunderten Millilitern Kühlwasser in Hyperscale-Rechenzentren. Unüberlegtes "Dauerspammen" von Prompts hat messbare CO₂-Folgen.
+                    Eine einzige komplexe Frontier-Reasoning-Anfrage (Reasoning-Modi aktueller Cloud-Modelle) verbraucht schätzungsweise das 10- bis 30-fache an elektrischer Energie im Vergleich zu einer Standard-Suche, zuzüglich Hunderten Millilitern Kühlwasser in Hyperscale-Rechenzentren. Unüberlegtes "Dauerspammen" von Prompts hat messbare CO₂-Folgen.
                   </p>
                 </div>
 
@@ -640,7 +640,7 @@ Die in diesem Bericht/Gutachten enthaltenen Vorrecherchen und Textentwürfe wurd
                 <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/20 space-y-1.5">
                   <strong className="text-text-main block">3. Urheberrechtliche Ausbeutung von Fachliteratur:</strong>
                   <p className="text-xxs text-text-main/70 leading-relaxed">
-                    Modelle basieren auf teuren Fachbüchern (Wendehorst, Schneider Bautabellen), ohne dass Autoren oder Verlage angemessen vergütet werden. Als Studierende und Ingenieure bleibt der Kauf und das Studium von Originalnormen Pflicht.
+                    Trainingsdaten können urheberrechtlich geschützte Fachliteratur enthalten. Text und Data Mining ist nach § 44b UrhG erlaubt, solange der Rechteinhaber keinen maschinenlesbaren Nutzungsvorbehalt erklärt hat; für die Forschung gilt § 60d UrhG (vgl. OLG Hamburg, Urt. v. 10.12.2025 – 5 U 104/24, Revision zugelassen). KI-Antworten ersetzen nicht die Arbeit mit Originalnormen und Fachbüchern – nur diese sind zitier- und prüffähig.
                   </p>
                 </div>
               </div>

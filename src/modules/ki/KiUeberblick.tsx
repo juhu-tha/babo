@@ -35,6 +35,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function KiUeberblick() {
   const [activeTab, setActiveTab] = useState<'kernbegriffe' | 'historie' | 'stand' | 'ausblick' | 'pipeline' | 'vergleich'>('kernbegriffe');
@@ -177,7 +179,7 @@ export default function KiUeberblick() {
       pitfalls: {
         mainRisk: 'Fehlende Nachvollziehbarkeit bei rein probabilistischen Heuristiken; Risiko systematischer Fehleinschätzungen bei atypischen Randbedingungen.',
         engineerDuty: 'Der Entwurfsverfasser und bauvorlageberechtigte Ingenieur haftet persönlich gemäß BGB § 634 und Landesbauordnung. KI-Systeme entbinden nicht von der Pflicht zur unabhängigen statisch-konstruktiven Plausibilitätsprüfung.',
-        standards: 'EU AI Act (Einstufung als Hochrisiko-System bei tragwerksrelevanten Sicherheitsentscheidungen), DIN SPEC 92001, HOAI'
+        standards: 'KI-VO (EU) 2024/1689 (Hochrisiko nur bei Zweckbestimmung nach Art. 6 / Anhang I oder III), DIN SPEC 92001, HOAI'
       }
     },
 
@@ -698,7 +700,7 @@ export default function KiUeberblick() {
       pitfalls: {
         mainRisk: 'Autonome Fehlerausbreitung (Cascading Errors): Ein unbeabsichtigter Parameterfehler in einem vorgeschalteten Werkzeugaufruf kann von nachgelagerten Agenten unbemerkt zu fehlerhaften Tragwerksauslegungen führen.',
         engineerDuty: '"Human-in-the-Loop"-Prinzip: Sicherheitsrelevante Schnittstellen (z. B. Freigabe von Bewehrungsplänen, Genehmigungsstatiken oder vertraglichen Fristsetzungen) erfordern ausnahmslos die persönliche Freigabe durch den verantwortlichen Ingenieur.',
-        standards: 'EU AI Act (Art. 14 Menschliche Aufsicht), VDI-Statusbericht KI im Bauwesen, HOAI § 634 BGB'
+        standards: 'KI-VO (EU) 2024/1689 (Art. 14 Menschliche Aufsicht), VDI-Statusreport KI im Bauwesen, BGB § 634, HOAI'
       }
     }
   };
@@ -1594,7 +1596,7 @@ export default function KiUeberblick() {
                 Enterprise RAG: Der 6-Stufen-Weg von Firmen-Dateien zum internen KI-Tool
               </h3>
               <span className="text-[11px] font-mono bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full font-bold">
-                100% DSGVO & IP-Sicherheit
+                Datenschutz & IP-Schutz by Design
               </span>
             </div>
             <p className="text-xs text-text-main/80 leading-relaxed">
@@ -2039,8 +2041,36 @@ export default function KiUeberblick() {
         </div>
       )}
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Kennzahlen einer KI-Risserkennung"
+        zielGleichung="P = \frac{TP}{TP+FP},\ R = \frac{TP}{TP+FN},\ F_1 = \frac{2PR}{P+R}"
+        schritte={[
+          { titel: 'Konfusionsmatrix', erklaerung: '200 Bildausschnitte: 45 richtig erkannte Risse, 5 Fehlalarme, 15 übersehene Risse, 135 richtig als rissfrei erkannt:', formel: 'TP = 45,\\ FP = 5,\\ FN = 15,\\ TN = 135' },
+          { titel: 'Precision und Recall', erklaerung: 'Anteil zutreffender Meldungen und Anteil erkannter Risse:', formel: 'P = \\frac{45}{50} = 0{,}90,\\quad R = \\frac{45}{60} = 0{,}75' },
+          { titel: 'F1 und Genauigkeit', erklaerung: 'Die Genauigkeit wirkt gut, verdeckt aber die übersehenen Risse:', formel: 'F_1 = \\frac{2 \\cdot 0{,}90 \\cdot 0{,}75}{1{,}65} = 0{,}82,\\quad Acc = \\frac{180}{200} = 0{,}90' }
+        ]}
+        ergebnisHinweis="Jeder vierte Riss wird übersehen. Für die Bauwerksprüfung ist der Recall maßgeblich; die KI kann die handnahe Prüfung nach DIN 1076 unterstützen, nicht ersetzen."
+        normQuelle="DIN 1076:2026-01; ISO/IEC 22989:2022"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Erforderliche Bildauflösung für Haarrisse"
+        zielGleichung="GSD = \frac{B}{n_{px}}"
+        schritte={[
+          { titel: 'Ist-Auflösung', erklaerung: 'Bildbreite 1,20 m auf 4 000 Pixel:', formel: 'GSD = \\frac{1\\,200\\ \\text{mm}}{4\\,000} = 0{,}30\\ \\text{mm/px}' },
+          { titel: 'Anforderung', erklaerung: 'Ein Riss von 0,2 mm sollte mindestens 2 Pixel überdecken:', formel: 'GSD_{erf} \\le \\frac{0{,}2}{2} = 0{,}10\\ \\text{mm/px}' },
+          { titel: 'Folge', erklaerung: 'Bei 4 000 Pixeln darf die Bildbreite höchstens betragen:', formel: 'B_{max} = 4\\,000 \\cdot 0{,}10 = 400\\ \\text{mm}' }
+        ]}
+        ergebnisHinweis="Mit zu grober Auflösung kann kein Algorithmus feine Risse zuverlässig finden – die Datenerfassung bestimmt die Grenze der KI-Auswertung."
+        normQuelle="Lehrbeispiel; Bildverarbeitung"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_ueberblick" />
+
       {/* 7. ModuleFooter nach Styleguide */}
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 14 KI: KI-VO-Fristen inkl. Digital Omnibus, Art. 50/14, DSGVO-Artikel, UrhG § 44b, Modellangaben auf reale Modellfamilien zurückgeführt; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Künstliche Intelligenz', url: 'https://de.wikipedia.org/wiki/K%C3%BCnstliche_Intelligenz' },
           { title: 'Maschinelles Lernen', url: 'https://de.wikipedia.org/wiki/Maschinelles_Lernen' },
@@ -2055,7 +2085,7 @@ export default function KiUeberblick() {
           'Karniadakis, G. E. et al.: Physics-informed machine learning (Nature Reviews Physics 3, 2021)'
         ]}
         regelwerke={[
-          { title: 'Verordnung (EU) 2024/1689 (EU AI Act – Europäisches KI-Gesetz)', url: 'https://eur-lex.europa.eu/' },
+          { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – in Kraft 01.08.2024, gestaffelte Anwendung; Änderung durch Digital Omnibus (Fundstelle manuell prüfen)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
           { title: 'ISO/IEC 22989:2022 (Information technology — Artificial intelligence concepts and terminology)', url: 'https://www.iso.org/' },
           { title: 'DIN SPEC 92001 (Künstliche Intelligenz – Qualitätsanforderungen an KI-Module)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+92001' },
           { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken / BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' }

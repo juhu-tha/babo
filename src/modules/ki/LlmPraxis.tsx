@@ -258,11 +258,11 @@ ${normGuidelines[genNorm]}
                     <h3 className="text-lg font-bold text-text-main">Claude (Anthropic)</h3>
                   </div>
                   <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-                    Claude 5 Sonnet / Opus
+                    Claude Sonnet / Opus (aktuelle Generation)
                   </span>
                 </div>
                 <p className="text-xs text-text-main/70">
-                  Der Spitzenreiter für präzise technische Dokumentenanalyse, Code-Erstellung, strikte Formatierung und ausgedehnten Reasoning-Modus.
+                  Stark bei präziser technischer Dokumentenanalyse, Code-Erstellung, strikte Formatierung und ausgedehnten Reasoning-Modus.
                 </p>
 
                 <div className="space-y-2.5 pt-2">
@@ -310,11 +310,11 @@ ${normGuidelines[genNorm]}
                     <h3 className="text-lg font-bold text-text-main">ChatGPT (OpenAI)</h3>
                   </div>
                   <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-                    GPT-6 / o4 / o4-mini
+                    GPT (aktuelle Generation inkl. Reasoning)
                   </span>
                 </div>
                 <p className="text-xs text-text-main/70">
-                  Der Marktführer für numerische Datenanalysen in Sandboxes, kollaboratives Text-Editing und multimodale Sprach-/Bildinteraktion.
+                  Verbreitet für numerische Datenanalysen in Sandboxes, kollaboratives Text-Editing und multimodale Sprach-/Bildinteraktion.
                 </p>
 
                 <div className="space-y-2.5 pt-2">
@@ -373,37 +373,37 @@ ${normGuidelines[genNorm]}
                 <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium">Baugrundgutachten (150 Seiten PDF) zusammenfassen</td>
-                    <td className="p-3 text-amber-700 font-bold">Claude 5 Sonnet</td>
+                    <td className="p-3 text-amber-700 font-bold">Claude Sonnet</td>
                     <td className="p-3">Claude Project + 200k Window</td>
                     <td className="p-3">Höchste Schärfe beim Auffinden einzelner Schichtdicken im tiefen Fließtext ("Needle in a Haystack Benchmark").</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium">Zugversuchs-Rohdaten (CSV mit 50.000 Messpunkten)</td>
-                    <td className="p-3 text-emerald-700 font-bold">ChatGPT Plus / Pro (GPT-6 / o4)</td>
+                    <td className="p-3 text-emerald-700 font-bold">ChatGPT Plus / Pro</td>
                     <td className="p-3">Advanced Data Analysis (Python)</td>
                     <td className="p-3">Rechnet mit echten Pandas-Bibliotheken im Sandbox-Container; kein Token-Verbrauch für reine Zahlenkolonnen.</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium">Prüfbericht für Bauschaden schreiben &amp; iterieren</td>
-                    <td className="p-3 text-emerald-700 font-bold">ChatGPT (GPT-6 Canvas)</td>
+                    <td className="p-3 text-emerald-700 font-bold">ChatGPT (Canvas)</td>
                     <td className="p-3">Canvas Inline-Editing</td>
                     <td className="p-3">Präzise Korrekturen an einzelnen Absätzen (z. B. Ursachennachweis), ohne dass die Formatierung zerbricht.</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium">Erstellung eines Bauphysik-Rechners (U-Wert / Glaser)</td>
-                    <td className="p-3 text-amber-700 font-bold">Claude 5 Sonnet</td>
+                    <td className="p-3 text-amber-700 font-bold">Claude Sonnet</td>
                     <td className="p-3">Artifacts (React / HTML)</td>
                     <td className="p-3">Sofort bedienbare, interaktive Oberfläche im Browserfenster zum Testen und Weiterentwickeln.</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium">Rechtssichere VOB-Mängelrüge (§ 4 Abs. 7 VOB/B)</td>
-                    <td className="p-3 text-amber-700 font-bold">Claude 5 Sonnet</td>
+                    <td className="p-3 text-amber-700 font-bold">Claude Sonnet</td>
                     <td className="p-3">Markdown-Striktheit</td>
                     <td className="p-3">Formuliert formell nüchtern, präzise nach Baurecht, ohne blumige Füllwörter oder typische AI-Klischees.</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium">Recherche zu DIBt-Zulassungen &amp; neuen Normen</td>
-                    <td className="p-3 text-blue-700 font-bold">Perplexity / ChatGPT Search (GPT-6)</td>
+                    <td className="p-3 text-blue-700 font-bold">Perplexity / ChatGPT Search</td>
                     <td className="p-3">Web-Grounding + Zitate</td>
                     <td className="p-3">Live-Websuche mit direkten Quellenlinks verhindert Normen-Halluzinationen bei veralteten Ständen.</td>
                   </tr>
@@ -1270,7 +1270,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                   <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <strong>4. Zwei-Modell-Validierung (Cross-Checking):</strong>
-                    <p className="text-text-main/70">Lassen Sie einen statischen Nachweis von Claude 5 formulieren und übergeben Sie die Lösung an ChatGPT (GPT-6 / o4-mini) mit dem Prompt: <em>"Finde den Rechenfehler in diesem statischen Nachweis."</em></p>
+                    <p className="text-text-main/70">Lassen Sie einen statischen Nachweis von Claude formulieren und übergeben Sie die Lösung an ChatGPT (Reasoning-Modus) mit dem Prompt: <em>"Finde den Rechenfehler in diesem statischen Nachweis."</em></p>
                   </div>
                 </div>
               </div>

@@ -24,6 +24,8 @@ import {
   Trees
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 
 interface ToolItem {
@@ -1102,19 +1104,47 @@ export default function OnlineTools() {
       </div>
 
       {/* Standardisierter Footer */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Kontrollrechnung für ein Online-Stabwerkprogramm"
+        zielGleichung="M_{Ed} = \frac{q_{Ed} L^2}{8}, \quad w = \frac{5 q L^4}{384 E I}"
+        schritte={[
+          { titel: 'Moment', erklaerung: 'Holzbalken C24, b/h = 120/240 mm, L = 5,0 m, q_Ed = 5,0 kN/m:', formel: 'M_{Ed} = \\frac{5{,}0 \\cdot 5{,}0^2}{8} = 15{,}6\\,\\text{kNm}' },
+          { titel: 'Steifigkeit', erklaerung: 'E_0,mean = 11 000 N/mm², I = 120 · 240³/12:', formel: 'I = 1{,}382 \\cdot 10^8\\,\\text{mm}^4' },
+          { titel: 'Durchbiegung', erklaerung: 'Quasi-ständige Last 3,0 kN/m (ohne Kriechen):', formel: 'w = \\frac{5 \\cdot 3{,}0 \\cdot 5\\,000^4}{384 \\cdot 11\\,000 \\cdot 1{,}382 \\cdot 10^8} = 16{,}1\\,\\text{mm} \\le \\frac{L}{250} = 20\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Liefert das Programm stark abweichende Werte, liegen oft Einheitenfehler (kN/m gegenüber N/mm) oder falsche Lagerbedingungen vor. Die Kriechverformung (k_def) ist für den Endzustand zusätzlich zu berücksichtigen."
+        normQuelle="DIN EN 1995-1-1:2010-12 mit NA; DIN EN 1990"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Bemessungslast einer Decke als Eingabe für Online-Tools"
+        zielGleichung="q_{Ed} = 1{,}35 \cdot g_k + 1{,}5 \cdot q_k"
+        schritte={[
+          { titel: 'Ständige Lasten', erklaerung: 'Stahlbetondecke 20 cm (25 kN/m³) plus Ausbau 1,5 kN/m²:', formel: 'g_k = 0{,}20 \\cdot 25 + 1{,}5 = 6{,}5\\,\\text{kN/m}^2' },
+          { titel: 'Nutzlast', erklaerung: 'Wohnräume (Kategorie A2):', formel: 'q_k = 1{,}5\\,\\text{kN/m}^2 \\text{ (ggf. Trennwandzuschlag)}' },
+          { titel: 'Bemessungswert', erklaerung: 'Grundkombination:', formel: 'q_{Ed} = 1{,}35 \\cdot 6{,}5 + 1{,}5 \\cdot 1{,}5 = 11{,}0\\,\\text{kN/m}^2' }
+        ]}
+        ergebnisHinweis="Online-Rechner verlangen oft charakteristische Lasten und bilden die Kombination selbst – vorher klären, sonst werden Teilsicherheitsbeiwerte doppelt angesetzt."
+        normQuelle="DIN EN 1990 mit NA; DIN EN 1991-1-1 mit NA"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="online_tools" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 13 Digitales: Literatur, Normausgaben und Kontrollrechnungen geprüft; externe Links ohne Gewähr auf Erreichbarkeit; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Bausoftware', url: 'https://de.wikipedia.org/wiki/Bausoftware' },
           { title: 'Building Information Modeling', url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
           { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
         ]}
         literatur={[
-          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (Springer Vieweg)',
-          'Borrmann, A. et al.: Handbuch Building Information Modeling (Springer Vieweg)',
-          'Barth, C.; Rustler, W.: Praxis der Finite-Elemente-Methode im Bauwesen (Bauwerk Verlag)'
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021',
+          'Barth, C.; Rustler, W.: Finite Elemente in der Baustatik-Praxis. Berlin: Beuth/Bauwerk (aktuelle Auflage)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650 (BIM-Informationsmanagement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
+          { title: 'DIN EN ISO 19650-1/-2:2019-08 (BIM-Informationsmanagement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
           { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
           { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
           { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
@@ -1124,7 +1154,7 @@ export default function OnlineTools() {
           { title: 'Ubakus.de – Interaktiver U-Wert- & Glaser-Rechner', url: 'https://www.ubakus.de/' },
           { title: 'Dlubal Geo-Zone Tool – Schnee-, Wind- & Erdbebenzonen', url: 'https://www.dlubal.com/de/lastzonen-schnee-wind-erdbeben/' },
           { title: 'Fraunhofer IBP WUFI – Instationäre Feuchte- und Wärmesimulation', url: 'https://wufi.de/' },
-          { title: 'ÖKOBAUDAT Plattform – BMWSB EPD-Datenbank', url: 'https://www.oekobaudat.de/' },
+          { title: 'ÖKOBAUDAT – Ökobilanz-Datenbank des BMWSB (BBSR)', url: 'https://www.oekobaudat.de/' },
           { title: 'WECOBIS – Ökologisches Baustoffportal des Bundes', url: 'https://www.wecobis.de/' },
           { title: 'Madaster Germany – Material- und Zirkularitätskataster', url: 'https://madaster.de/' },
           { title: 'Concular – Zirkulärer Marktplatz für Sekundärbaustoffe', url: 'https://concular.de/' },

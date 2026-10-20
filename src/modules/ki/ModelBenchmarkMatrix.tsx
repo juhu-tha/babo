@@ -22,7 +22,7 @@ interface ModelComparison {
   normAccuracy: number; // 1-5 Sterne
   mathConsistency: number; // 1-5
   costPer1kPages: string;
-  dataPrivacyLevel: 'Hoch (100% DSGVO)' | 'Mittel (US-Cloud, EU-SCC)' | 'Niedrig (Training aktiv)';
+  dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)' | 'Mittel (US-Cloud, EU-SCC)' | 'Niedrig (Training aktiv)';
   vramOrSetup: string;
   idealUseInCivilEng: string;
   ratingNotes: string;
@@ -30,7 +30,7 @@ interface ModelComparison {
 
 const COMPARISON_DATA: ModelComparison[] = [
   {
-    name: 'Claude 5 Sonnet (Hybrid Thinking)',
+    name: 'Anthropic Claude (Sonnet/Opus, Extended Thinking)',
     type: 'cloud',
     providerOrWeights: 'Anthropic Cloud API',
     normAccuracy: 5,
@@ -39,10 +39,10 @@ const COMPARISON_DATA: ModelComparison[] = [
     dataPrivacyLevel: 'Mittel (US-Cloud, EU-SCC)',
     vramOrSetup: 'Reiner API-Key / Web-Interface',
     idealUseInCivilEng: 'Komplexe Baugutachten, statische Begründungsketten, Prüfingenieur-Ebene & autonome Tool-Orchestrierung.',
-    ratingNotes: 'Weltweiter Spitzenreiter bei technischer Dokumentation, Code und agentischen Workflows. Bietet umschaltbares adaptives Denken (Extended Reasoning) für tiefgründige statische Plausibilisierungen.'
+    ratingNotes: 'Stark bei technischer Dokumentation, Code und agentischen Workflows (eigene Tests empfohlen). Bietet umschaltbares adaptives Denken (Extended Reasoning) für tiefgründige statische Plausibilisierungen.'
   },
   {
-    name: 'OpenAI GPT-6 & o4-mini',
+    name: 'OpenAI GPT (inkl. Reasoning-Varianten)',
     type: 'cloud',
     providerOrWeights: 'OpenAI Cloud API',
     normAccuracy: 5,
@@ -50,11 +50,11 @@ const COMPARISON_DATA: ModelComparison[] = [
     costPer1kPages: 'ca. 1,60 € bis 3,20 €',
     dataPrivacyLevel: 'Mittel (US-Cloud, EU-SCC)',
     vramOrSetup: 'Reiner API-Key / Web-Interface',
-    idealUseInCivilEng: 'o4-mini für mathematisch-statische Herleitungen & Python-Code; GPT-6 als multimodaler Allrounder für 3D-Scans, Pläne und Schadensfotos.',
-    ratingNotes: 'GPT-6 verbindet universelle Multimodalität mit integriertem Deep Reasoning und nativer Python-Sandbox (Advanced Data Analysis) zur fehlerfreien Versuchsauswertung.'
+    idealUseInCivilEng: 'Reasoning-Varianten für mathematisch-statische Herleitungen & Python-Code; Hauptmodell als multimodaler Allrounder für 3D-Scans, Pläne und Schadensfotos.',
+    ratingNotes: 'Verbindet Multimodalität mit integriertem Deep Reasoning und nativer Python-Sandbox (Advanced Data Analysis) zur nachvollziehbaren Versuchsauswertung (Code prüfen).'
   },
   {
-    name: 'Gemini 3.8 Flash & 4.0 Pro (Thinking)',
+    name: 'Google Gemini (Flash/Pro, Thinking)',
     type: 'cloud',
     providerOrWeights: 'Google Cloud / Vertex AI',
     normAccuracy: 5,
@@ -62,55 +62,55 @@ const COMPARISON_DATA: ModelComparison[] = [
     costPer1kPages: 'ca. 0,50 € bis 2,00 €',
     dataPrivacyLevel: 'Mittel (US-Cloud, EU-SCC)',
     vramOrSetup: 'API-Key / Vertex AI Frankfurt',
-    idealUseInCivilEng: 'Riesiges 2+ Mio. Token Kontextfenster für vollständige Normensammlungen, hunderte Bauakten, Punktwolken & Live-CAD.',
-    ratingNotes: 'Aktueller Standard: Ultra-schnelle Latenz, nativer Multimodal-Core für CAD/Punktwolken und integriertes adaptives Denken mit unschlagbarem Preis-Leistungs-Verhältnis.'
+    idealUseInCivilEng: 'Sehr großes Kontextfenster (Größenordnung 10⁶ Token; Stand prüfen) für vollständige Normensammlungen, hunderte Bauakten, Punktwolken & Live-CAD.',
+    ratingNotes: 'Schnelle Latenz, nativer Multimodal-Core für CAD/Punktwolken und integriertes adaptives Denken mit günstigem Preis-Leistungs-Verhältnis.'
   },
   {
-    name: 'DeepSeek R2 (Open Reasoning)',
+    name: 'DeepSeek-R1 (offene Gewichte, Reasoning)',
     type: 'local',
     providerOrWeights: 'DeepSeek / Open Weights (GGUF)',
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: '0,00 € (Lokaler Strom)',
-    dataPrivacyLevel: 'Hoch (100% DSGVO)',
+    dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
     vramOrSetup: '10–24 GB VRAM (Qwen-Distill 14B/32B)',
     idealUseInCivilEng: 'Offene, transparente Nachweis-Plausibilisierung (zeigt den gesamten internen Denkprozess <think>).',
-    ratingNotes: 'Open-Source-Spitzenreiter im mathematischen Reasoning. Reflektiert, widerlegt und verifiziert eigene Rechenschritte vor der endgültigen Ausgabe.'
+    ratingNotes: 'Offenes Reasoning-Modell mit sichtbarer Denkkette. Reflektiert, widerlegt und verifiziert eigene Rechenschritte vor der endgültigen Ausgabe.'
   },
   {
-    name: 'Qwen 3.8 Coder 32B Instruct',
+    name: 'Qwen2.5-Coder 32B Instruct',
     type: 'local',
     providerOrWeights: 'Open Source (GGUF Q4_K_M)',
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: '0,00 € (Lokaler Strom)',
-    dataPrivacyLevel: 'Hoch (100% DSGVO)',
+    dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
     vramOrSetup: '20–24 GB VRAM (RTX 3090/4090/5090)',
     idealUseInCivilEng: 'Automatisierung, Python-Prüfmaschinenauswertung, IFC-Datenfilterung, FEM- & Statik-Skripte.',
-    ratingNotes: 'Spitzenklasse beim fehlerfreien Generieren symbolischer Berechnungs-Skripte. Übertrifft viele proprietäre Cloud-Modelle im ingenieurtechnischen Coding.'
+    ratingNotes: 'Stark beim Generieren von Berechnungs-Skripten; Ergebnisse stets mit Testfällen prüfen.'
   },
   {
-    name: 'Llama 4 70B Instruct',
+    name: 'Llama 3.3 70B Instruct',
     type: 'local',
     providerOrWeights: 'Meta AI (GGUF Q4_K_M)',
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: '0,00 € (Lokaler Strom)',
-    dataPrivacyLevel: 'Hoch (100% DSGVO)',
+    dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
     vramOrSetup: '40–48 GB VRAM (2x RTX 3090/4090 oder Mac Studio 64GB)',
     idealUseInCivilEng: 'Gerichtliche Baugutachten, vertrauliche Schiedsgerichts-Akten, KRITIS-Infrastrukturbauten.',
-    ratingNotes: 'Parität mit Spitzen-Cloud-Modellen bei vollständiger Offline-Garantie und 100 % DSGVO-Datensouveränität.'
+    ratingNotes: 'Leistungsfähiges Offline-Modell; Daten verlassen den Rechner nicht (DSGVO-Pflichten wie Zweckbindung und Löschung bleiben bestehen).'
   },
   {
-    name: 'Qwen 3.8 14B Instruct',
+    name: 'Qwen3 14B',
     type: 'local',
     providerOrWeights: 'Open Source (Alibaba/Qwen GGUF)',
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: '0,00 € (Lokaler Strom)',
-    dataPrivacyLevel: 'Hoch (100% DSGVO)',
+    dataPrivacyLevel: 'Hoch (lokal, keine Datenübermittlung)',
     vramOrSetup: '10–12 GB VRAM (RTX 3060/4060/5060)',
-    idealUseInCivilEng: 'Der Sweet-Spot für jedes deutsche Ingenieurbüro. 100% datenschutzkonform auf Büro-PCs.',
+    idealUseInCivilEng: 'Guter Kompromiss für Büro-PCs; Verarbeitung lokal ohne Drittlandübermittlung.',
     ratingNotes: 'Herausragendes deutsches Normenverständnis (DIN, EC2, DAfStb) und zuverlässige mechanische Gleichungen bei moderatem Hardware-Bedarf.'
   }
 ];
@@ -251,10 +251,10 @@ export default function ModelBenchmarkMatrix() {
         <div className="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1.5">
           <h5 className="font-bold text-emerald-900 flex items-center gap-1.5">
             <Server size={14} className="text-emerald-700" />
-            Wann ist die Lokale KI zwingend vorgeschrieben?
+            Wann ist lokale KI besonders zu empfehlen?
           </h5>
           <p className="text-xxs text-emerald-950 leading-relaxed">
-            Bei patentierten Rezepturen, internen Kalkulationen, KRITIS-Infrastrukturprojekten, gerichtlichen Schadensgutachten und auf Baustellen ohne stabile Internetverbindung. Qwen 3.8 14B liefert hier maximale Sicherheit bei 0 € Folgekosten.
+            Bei patentierten Rezepturen, internen Kalkulationen, KRITIS-Infrastrukturprojekten, gerichtlichen Schadensgutachten und auf Baustellen ohne stabile Internetverbindung. Ein lokales 14B-Modell (z. B. Qwen3 14B) vermeidet Datenübermittlung bei geringen Folgekosten. Modellangaben: Stand 10/2026, Versionen ändern sich schnell – manuell prüfen.
           </p>
         </div>
       </div>
