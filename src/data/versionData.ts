@@ -8,6 +8,17 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.22.0',
+    date: '19.10.2026',
+    title: '4-Stufen-Lehrpfad-Rollout, ModulTest-System & physikalisch-normative Schärfung (Bauphysik, Brandschutz, GModG 2026)',
+    badge: 'minor',
+    changes: [
+      'Didaktischer 4-Stufen-Lehrpfad & ModulTests: Flächendeckende Verankerung interaktiver Wissensüberprüfungen (ModulTest) und rechentechnischer Vertiefungsbeispiele (FormulaDerivationBox) über alle Module für lückenlose Lehr- und Lernkontrolle.',
+      'Bauphysik & Brandschutz (DIN 4108-3, DIN 18041, DIN EN 1995-1-2): Differenzierung der Magnus-Dampfdruckkurve (über Eis vs. Wasser), Glaser-Verdunstungsbilanz, raumakustische Toleranzbänder nach DIN 18041 sowie Eurocode-5-Abbrandraten (β_n = 0,7 mm/min).',
+      'Rechtsstand 2026 (GModG / GEG) & Aufgabenpool: Normativ-juristische Harmonisierung der Aufgabenstellungen und Modulhistorie auf das Gebäudemodernisierungsgesetz (GModG 2026) sowie massive Erweiterung des interaktiven Quiz- und Klausurpools in quiz.json.'
+    ]
+  },
+  {
     version: 'v3.21.0',
     date: '19.10.2026',
     title: 'Analytik-Erweiterung, Prüfungs- & Quizsystem 2.0 sowie Skalen-Harmonisierung',
