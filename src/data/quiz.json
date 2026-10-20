@@ -6071,5 +6071,605 @@
       "targetModuleLabel": "Online-Tools & Rechner"
     },
     "verified": false
+  },
+  {
+    "id": "q_ki_ub_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_ueberblick",
+    "moduleTitle": "KI: Überblick & Grundlagen",
+    "topic": "Recall",
+    "difficulty": "Basis",
+    "normRef": "ISO/IEC 22989:2022",
+    "question": "Eine Risserkennung findet 45 von 60 vorhandenen Rissen. Wie groß ist der Recall?",
+    "options": [
+      "0,45",
+      "0,60",
+      "0,75",
+      "0,90"
+    ],
+    "correctIdx": 2,
+    "explanation": "Recall = TP/(TP+FN) = 45/60 = 0,75 – jeder vierte Riss wird übersehen.",
+    "gapAnalysis": {
+      "topic": "Recall",
+      "misconception": "Eine hohe Genauigkeit (Accuracy) bedeute, dass kaum Risse übersehen werden.",
+      "coreRule": "Bei Sicherheitsprüfungen ist der Recall die maßgebliche Kennzahl.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Recall“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
+      "targetModuleTab": "ki_ueberblick",
+      "targetModuleLabel": "KI: Überblick & Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_ub_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_ueberblick",
+    "moduleTitle": "KI: Überblick & Grundlagen",
+    "topic": "Bildauflösung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Bildverarbeitung",
+    "question": "Ein Foto bildet 1,20 m auf 4 000 Pixel ab. Kann eine KI darauf zuverlässig 0,2-mm-Risse erkennen?",
+    "options": [
+      "Ja, jede KI erkennt das",
+      "Nein: 0,30 mm/px ist gröber als die Rissbreite; erforderlich wären etwa 0,10 mm/px",
+      "Ja, wenn das Bild komprimiert wird",
+      "Nur bei Farbbildern"
+    ],
+    "correctIdx": 1,
+    "explanation": "1 200 mm / 4 000 px = 0,30 mm/px; ein 0,2-mm-Riss sollte mindestens zwei Pixel überdecken.",
+    "gapAnalysis": {
+      "topic": "Bildauflösung",
+      "misconception": "Algorithmen könnten fehlende Bildinformation ersetzen.",
+      "coreRule": "Die Datenerfassung begrenzt die Leistungsfähigkeit der KI.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bildauflösung“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
+      "targetModuleTab": "ki_ueberblick",
+      "targetModuleLabel": "KI: Überblick & Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_sy_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_system",
+    "moduleTitle": "KI: Systemarchitektur",
+    "topic": "RAG",
+    "difficulty": "Basis",
+    "normRef": "Information Retrieval",
+    "question": "Was bewirkt Retrieval-Augmented Generation (RAG)?",
+    "options": [
+      "Das Modell wird neu trainiert",
+      "Passende Textabschnitte werden per Ähnlichkeitssuche gefunden und dem Modell als Kontext mitgegeben",
+      "Die Antwort wird automatisch normgeprüft",
+      "Es ersetzt die Quellenprüfung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Abschnitte mit der höchsten Kosinus-Ähnlichkeit zur Frage werden in den Prompt eingefügt; das Modell selbst bleibt unverändert.",
+    "gapAnalysis": {
+      "topic": "RAG",
+      "misconception": "RAG garantiere richtige Antworten.",
+      "coreRule": "RAG ist nur so gut wie die Aktualität und Qualität der hinterlegten Dokumente.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „RAG“ im Modul KI: Systemarchitektur noch einmal durch.",
+      "targetModuleTab": "ki_system",
+      "targetModuleLabel": "KI: Systemarchitektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_sy_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_system",
+    "moduleTitle": "KI: Systemarchitektur",
+    "topic": "Neuron",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Deep Learning",
+    "question": "Ein Neuron hat z = 0,86. Welcher Ausgabewert ergibt sich mit der Sigmoid-Funktion?",
+    "options": [
+      "0,30",
+      "0,50",
+      "0,70",
+      "0,86"
+    ],
+    "correctIdx": 2,
+    "explanation": "σ(0,86) = 1/(1 + e^−0,86) = 1/1,423 ≈ 0,70.",
+    "gapAnalysis": {
+      "topic": "Neuron",
+      "misconception": "Die Ausgabe sei gleich der gewichteten Summe.",
+      "coreRule": "Aktivierungsfunktionen bilden die Summe nichtlinear auf einen Wertebereich ab.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Neuron“ im Modul KI: Systemarchitektur noch einmal durch.",
+      "targetModuleTab": "ki_system",
+      "targetModuleLabel": "KI: Systemarchitektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_pr_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_prompting",
+    "moduleTitle": "KI: Prompting-Praxis",
+    "topic": "Kontextfenster",
+    "difficulty": "Basis",
+    "normRef": "Lehrbeispiel",
+    "question": "Warum steigen die Kosten in einem langen Chatverlauf mit jeder Rückfrage?",
+    "options": [
+      "Weil Anbieter Strafgebühren erheben",
+      "Weil der bisherige Verlauf bei jeder Anfrage erneut als Eingabe-Token verarbeitet wird",
+      "Weil Antworten immer länger werden müssen",
+      "Sie steigen nicht"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Modell ist zustandslos; der gesamte Kontext wird bei jeder Anfrage erneut übergeben und abgerechnet.",
+    "gapAnalysis": {
+      "topic": "Kontextfenster",
+      "misconception": "Ein Chat merke sich Inhalte kostenlos.",
+      "coreRule": "Für neue Themen einen neuen Chat beginnen und nur relevante Unterlagen anhängen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kontextfenster“ im Modul KI: Prompting-Praxis noch einmal durch.",
+      "targetModuleTab": "ki_prompting",
+      "targetModuleLabel": "KI: Prompting-Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_pr_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_prompting",
+    "moduleTitle": "KI: Prompting-Praxis",
+    "topic": "Tokenbudget",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Lehrbeispiel",
+    "question": "Ein Kontext von 128 000 Token, 2 000 Token Systemprompt und 8 000 Token Antwortreserve: Wie viele Seiten à 750 Token passen etwa hinein?",
+    "options": [
+      "etwa 50",
+      "etwa 157",
+      "etwa 170",
+      "etwa 300"
+    ],
+    "correctIdx": 1,
+    "explanation": "(128 000 − 2 000 − 8 000)/750 = 118 000/750 ≈ 157 Seiten.",
+    "gapAnalysis": {
+      "topic": "Tokenbudget",
+      "misconception": "Das gesamte Kontextfenster stehe für Dokumente zur Verfügung.",
+      "coreRule": "Systemprompt und Antwort verbrauchen ebenfalls Kontext.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Tokenbudget“ im Modul KI: Prompting-Praxis noch einmal durch.",
+      "targetModuleTab": "ki_prompting",
+      "targetModuleLabel": "KI: Prompting-Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_lp_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_llmpraxis",
+    "moduleTitle": "KI: LLM-Praxis",
+    "topic": "Zitatprüfung",
+    "difficulty": "Basis",
+    "normRef": "BGB § 633",
+    "question": "In einer Stichprobe sind 6 von 50 KI-gelieferten Normzitaten falsch. Was folgt für einen Bericht mit 200 Zitaten?",
+    "options": [
+      "Stichprobe genügt, der Rest ist korrekt",
+      "Rund 24 Fehler sind zu erwarten; alle Zitate müssen an der Originalquelle geprüft werden",
+      "Nur die ersten 50 prüfen",
+      "Fehler sind rechtlich unerheblich"
+    ],
+    "correctIdx": 1,
+    "explanation": "Fehlerquote 0,12 · 200 = 24. Für die Mangelfreiheit des Werks haftet der Ingenieur.",
+    "gapAnalysis": {
+      "topic": "Zitatprüfung",
+      "misconception": "Eine Stichprobe ersetze die Einzelprüfung.",
+      "coreRule": "Jede KI-Quellenangabe wird an der Originalquelle verifiziert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zitatprüfung“ im Modul KI: LLM-Praxis noch einmal durch.",
+      "targetModuleTab": "ki_llmpraxis",
+      "targetModuleLabel": "KI: LLM-Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_lp_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_llmpraxis",
+    "moduleTitle": "KI: LLM-Praxis",
+    "topic": "Mehrfachabfrage",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Binomialverteilung",
+    "question": "Warum erhöht ein Mehrheitsentscheid aus drei Abfragen desselben Modells die Zuverlässigkeit oft weniger als berechnet?",
+    "options": [
+      "Weil drei Abfragen zu teuer sind",
+      "Weil Fehler desselben Modells häufig systematisch und damit nicht unabhängig sind",
+      "Weil die Binomialverteilung nicht gilt",
+      "Weil Modelle zufällig antworten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Rechnerisch 0,896 statt 0,8 – aber nur bei unabhängigen Fehlern. Systematische Fehler wiederholen sich.",
+    "gapAnalysis": {
+      "topic": "Mehrfachabfrage",
+      "misconception": "Mehrfaches Fragen beseitige jeden Fehler.",
+      "coreRule": "Unabhängige Kontrolle: Handrechnung oder geprüfte Software.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mehrfachabfrage“ im Modul KI: LLM-Praxis noch einmal durch.",
+      "targetModuleTab": "ki_llmpraxis",
+      "targetModuleLabel": "KI: LLM-Praxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_th_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_thesen",
+    "moduleTitle": "KI: Tools für Thesen",
+    "topic": "Literatursuche",
+    "difficulty": "Basis",
+    "normRef": "Lehrbeispiel",
+    "question": "Ein KI-Tool findet 22 von 30 relevanten Artikeln. Was bedeutet der Recall von 0,73 für die Abschlussarbeit?",
+    "options": [
+      "Die Recherche ist vollständig",
+      "Gut ein Viertel der relevanten Literatur fehlt – ergänzende Suche in Fachdatenbanken ist nötig",
+      "Die Treffer sind alle falsch",
+      "Recall ist für Literatur unbedeutend"
+    ],
+    "correctIdx": 1,
+    "explanation": "22/30 = 0,73; 8 relevante Arbeiten wurden nicht gefunden.",
+    "gapAnalysis": {
+      "topic": "Literatursuche",
+      "misconception": "KI-Recherche liefere den vollständigen Stand der Forschung.",
+      "coreRule": "KI-Suche ergänzt die systematische Datenbankrecherche.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Literatursuche“ im Modul KI: Tools für Thesen noch einmal durch.",
+      "targetModuleTab": "ki_thesen",
+      "targetModuleLabel": "KI: Tools für Thesen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_th_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_thesen",
+    "moduleTitle": "KI: Tools für Thesen",
+    "topic": "Deklaration",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Prüfungsordnung",
+    "question": "Woraus ergibt sich die Pflicht, KI-Einsatz in einer Bachelorarbeit offenzulegen?",
+    "options": [
+      "Aus Art. 50 KI-VO",
+      "Aus der Prüfungsordnung bzw. Eigenständigkeitserklärung der Hochschule",
+      "Aus der DSGVO",
+      "Es gibt keine Pflicht"
+    ],
+    "correctIdx": 1,
+    "explanation": "Art. 50 KI-VO regelt Anbieter- und Betreiberpflichten (z. B. Deepfakes, Veröffentlichungen für die Öffentlichkeit), nicht Prüfungsleistungen.",
+    "gapAnalysis": {
+      "topic": "Deklaration",
+      "misconception": "Die KI-Verordnung verlange eine Kennzeichnung jeder Hausarbeit.",
+      "coreRule": "Prüfungsrecht der Hochschule beachten; Werkzeug, Version und Zweck angeben.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Deklaration“ im Modul KI: Tools für Thesen noch einmal durch.",
+      "targetModuleTab": "ki_thesen",
+      "targetModuleLabel": "KI: Tools für Thesen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_re_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_recht_ethik",
+    "moduleTitle": "KI: Fehler, Recht & Ethik",
+    "topic": "KI-VO Fristen",
+    "difficulty": "Basis",
+    "normRef": "Verordnung (EU) 2024/1689",
+    "question": "Ab wann gelten nach dem Digital Omnibus die Pflichten für Hochrisiko-KI-Systeme nach Anhang III?",
+    "options": [
+      "Seit 01.08.2024",
+      "Ab 02.08.2026",
+      "Ab 02.12.2027",
+      "Ab 2035"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der Digital Omnibus verschiebt Anhang III auf den 02.12.2027 und Anhang I auf den 02.08.2028; Art. 50 gilt ab 02.08.2026.",
+    "gapAnalysis": {
+      "topic": "KI-VO Fristen",
+      "misconception": "Alle Pflichten der KI-VO gälten seit Inkrafttreten.",
+      "coreRule": "Die KI-VO gilt gestaffelt; Fristen und Fundstelle des Omnibus prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „KI-VO Fristen“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
+      "targetModuleTab": "ki_recht_ethik",
+      "targetModuleLabel": "KI: Fehler, Recht & Ethik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_re_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_recht_ethik",
+    "moduleTitle": "KI: Fehler, Recht & Ethik",
+    "topic": "DSGVO",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DSGVO Art. 6, 28, 44 ff.",
+    "question": "Ein Büro lädt Pläne mit Bauherrennamen in einen US-Cloud-Chat ohne Vertrag hoch. Welche DSGVO-Vorschriften sind vor allem berührt?",
+    "options": [
+      "Nur Art. 33 (Meldepflicht)",
+      "Rechtsgrundlage (Art. 6), Auftragsverarbeitung (Art. 28) und Drittlandübermittlung (Art. 44 ff.)",
+      "Keine, Pläne sind keine personenbezogenen Daten",
+      "Nur das Urheberrecht"
+    ],
+    "correctIdx": 1,
+    "explanation": "Namen und Adressen sind personenbezogene Daten. Art. 33 betrifft erst die Meldung einer Datenschutzverletzung.",
+    "gapAnalysis": {
+      "topic": "DSGVO",
+      "misconception": "Datenschutz sei nur eine Frage der Meldepflicht.",
+      "coreRule": "Vor KI-Nutzung Rechtsgrundlage, AV-Vertrag und Übermittlungsweg klären oder Daten anonymisieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DSGVO“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
+      "targetModuleTab": "ki_recht_ethik",
+      "targetModuleLabel": "KI: Fehler, Recht & Ethik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_lk_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_lokal",
+    "moduleTitle": "KI: Lokale KI (LM Studio)",
+    "topic": "Quantisierung",
+    "difficulty": "Basis",
+    "normRef": "GGUF",
+    "question": "Wie viel Speicher belegen die Gewichte eines 14B-Modells in Q4_K_M (rund 4,85 bit je Gewicht) etwa?",
+    "options": [
+      "etwa 1,8 GB",
+      "etwa 8,5 GB",
+      "etwa 28 GB",
+      "etwa 56 GB"
+    ],
+    "correctIdx": 1,
+    "explanation": "14 · 10⁹ · 4,85/8 ≈ 8,5 · 10⁹ Byte; dazu kommt der Kontext-Cache.",
+    "gapAnalysis": {
+      "topic": "Quantisierung",
+      "misconception": "Parameterzahl in Milliarden = Gigabyte.",
+      "coreRule": "Speicher ≈ Parameter · Bit je Gewicht / 8 plus Kontext-Cache.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Quantisierung“ im Modul KI: Lokale KI (LM Studio) noch einmal durch.",
+      "targetModuleTab": "ki_lokal",
+      "targetModuleLabel": "KI: Lokale KI (LM Studio)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_lk_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_lokal",
+    "moduleTitle": "KI: Lokale KI (LM Studio)",
+    "topic": "Datenschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DSGVO",
+    "question": "Ist ein lokal betriebenes Sprachmodell automatisch DSGVO-konform?",
+    "options": [
+      "Ja, immer",
+      "Nein: Die Drittlandübermittlung entfällt, aber Zweckbindung, Löschkonzept und Zugriffsschutz bleiben Pflicht",
+      "Nur bei Open-Source-Lizenz",
+      "Nur ohne Internetanschluss"
+    ],
+    "correctIdx": 1,
+    "explanation": "Lokale Verarbeitung vermeidet die Übermittlung an Dritte, ersetzt aber nicht die übrigen Pflichten der DSGVO.",
+    "gapAnalysis": {
+      "topic": "Datenschutz",
+      "misconception": "Offline bedeute rechtlich unbedenklich.",
+      "coreRule": "Lokale KI erleichtert Datenschutz, ersetzt die Prüfung nicht.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Datenschutz“ im Modul KI: Lokale KI (LM Studio) noch einmal durch.",
+      "targetModuleTab": "ki_lokal",
+      "targetModuleLabel": "KI: Lokale KI (LM Studio)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_rs_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_ressourcen",
+    "moduleTitle": "KI: Unabhängige KI-Seiten",
+    "topic": "Benchmarks",
+    "difficulty": "Basis",
+    "normRef": "Statistik",
+    "question": "Modell A erreicht 78 %, Modell B 74 % bei 200 Aufgaben. Ist A sicher besser?",
+    "options": [
+      "Ja, eindeutig",
+      "Nicht belastbar: Das 95-%-Intervall beträgt etwa ±5,7 Prozentpunkte",
+      "Nein, B ist besser",
+      "Nur bei mehr als 1 000 Aufgaben ist A schlechter"
+    ],
+    "correctIdx": 1,
+    "explanation": "1,96 · √(0,78 · 0,22/200) ≈ 0,057 > 0,04.",
+    "gapAnalysis": {
+      "topic": "Benchmarks",
+      "misconception": "Jeder Ranglistenplatz sei ein echter Leistungsunterschied.",
+      "coreRule": "Benchmark-Abstände stets mit ihrer Unsicherheit bewerten und eigene Fachtests durchführen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Benchmarks“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
+      "targetModuleTab": "ki_ressourcen",
+      "targetModuleLabel": "KI: Unabhängige KI-Seiten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_rs_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_ressourcen",
+    "moduleTitle": "KI: Unabhängige KI-Seiten",
+    "topic": "Energie",
+    "difficulty": "Fortgeschritten",
+    "normRef": "UBA Strommix",
+    "question": "Eine Grafikkarte mit 350 W rechnet 30 min. Wie viel Energie wird verbraucht?",
+    "options": [
+      "0,0175 kWh",
+      "0,175 kWh",
+      "1,75 kWh",
+      "175 kWh"
+    ],
+    "correctIdx": 1,
+    "explanation": "E = 0,35 kW · 0,5 h = 0,175 kWh; mit 0,36 kg CO₂/kWh rund 0,063 kg CO₂.",
+    "gapAnalysis": {
+      "topic": "Energie",
+      "misconception": "Watt und Wattstunden seien dasselbe.",
+      "coreRule": "Energie = Leistung · Zeit; Herstellung der Hardware zusätzlich berücksichtigen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Energie“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
+      "targetModuleTab": "ki_ressourcen",
+      "targetModuleLabel": "KI: Unabhängige KI-Seiten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_ok_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_onlinekurse",
+    "moduleTitle": "KI: Onlinekurse",
+    "topic": "Gradientenabstieg",
+    "difficulty": "Basis",
+    "normRef": "Deep Learning",
+    "question": "L(w) = (w − 1)², w = 2,0, Lernrate 0,1. Welchen Wert hat w nach einem Gradientenschritt?",
+    "options": [
+      "1,0",
+      "1,8",
+      "2,2",
+      "0,2"
+    ],
+    "correctIdx": 1,
+    "explanation": "∂L/∂w = 2(w − 1) = 2,0; w_neu = 2,0 − 0,1 · 2,0 = 1,8.",
+    "gapAnalysis": {
+      "topic": "Gradientenabstieg",
+      "misconception": "Man gehe in Richtung des Gradienten.",
+      "coreRule": "Gradientenabstieg geht entgegen der Steigung, Schrittweite = Lernrate · Gradient.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gradientenabstieg“ im Modul KI: Onlinekurse noch einmal durch.",
+      "targetModuleTab": "ki_onlinekurse",
+      "targetModuleLabel": "KI: Onlinekurse"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_ok_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_onlinekurse",
+    "moduleTitle": "KI: Onlinekurse",
+    "topic": "Lernrate",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Deep Learning",
+    "question": "Was passiert typischerweise bei einer zu großen Lernrate?",
+    "options": [
+      "Das Training wird nur langsamer",
+      "Das Verfahren springt über das Minimum hinaus und kann divergieren",
+      "Das Modell wird genauer",
+      "Nichts"
+    ],
+    "correctIdx": 1,
+    "explanation": "Zu große Schritte überschießen das Minimum; zu kleine machen das Training sehr langsam.",
+    "gapAnalysis": {
+      "topic": "Lernrate",
+      "misconception": "Größere Lernraten seien stets besser.",
+      "coreRule": "Lernrate über Validierungskurven abstimmen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lernrate“ im Modul KI: Onlinekurse noch einmal durch.",
+      "targetModuleTab": "ki_onlinekurse",
+      "targetModuleLabel": "KI: Onlinekurse"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_bs_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_baustoffe",
+    "moduleTitle": "KI in der Baustoffkunde",
+    "topic": "Modellgrenzen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206; DIN 1045-2:2023-08",
+    "question": "Ein ML-Modell wurde mit w/z = 0,40 bis 0,65 trainiert. Wie belastbar ist eine Prognose für w/z = 0,30?",
+    "options": [
+      "Genauso belastbar",
+      "Nicht belastbar: Extrapolation außerhalb des Trainingsbereichs; Erstprüfung erforderlich",
+      "Belastbarer, da niedriger w/z",
+      "Nur bei CEM I belastbar"
+    ],
+    "correctIdx": 1,
+    "explanation": "Außerhalb der Trainingsdaten kann das Modell grob falsch liegen; Konformität wird durch Prüfungen nachgewiesen.",
+    "gapAnalysis": {
+      "topic": "Modellgrenzen",
+      "misconception": "KI-Modelle seien allgemeingültige Materialgesetze.",
+      "coreRule": "Prognosen nur im Datenbereich nutzen und experimentell bestätigen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Modellgrenzen“ im Modul KI in der Baustoffkunde noch einmal durch.",
+      "targetModuleTab": "ki_baustoffe",
+      "targetModuleLabel": "KI in der Baustoffkunde"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ki_bs_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ki_baustoffe",
+    "moduleTitle": "KI in der Baustoffkunde",
+    "topic": "Modellgüte",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Statistik",
+    "question": "Abweichungen von 3, −2, 4 und −1 N/mm². Wie groß ist der RMSE?",
+    "options": [
+      "2,50 N/mm²",
+      "2,74 N/mm²",
+      "1,00 N/mm²",
+      "7,50 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "√((9 + 4 + 16 + 1)/4) = √7,5 ≈ 2,74 N/mm²; der MAE beträgt 2,50 N/mm².",
+    "gapAnalysis": {
+      "topic": "Modellgüte",
+      "misconception": "RMSE und MAE seien identisch.",
+      "coreRule": "RMSE gewichtet große Abweichungen stärker als der MAE.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Modellgüte“ im Modul KI in der Baustoffkunde noch einmal durch.",
+      "targetModuleTab": "ki_baustoffe",
+      "targetModuleLabel": "KI in der Baustoffkunde"
+    },
+    "verified": false
   }
 ]

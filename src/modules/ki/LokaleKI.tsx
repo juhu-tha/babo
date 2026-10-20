@@ -43,53 +43,53 @@ interface RecommendedModel {
 
 const LOCAL_MODELS: RecommendedModel[] = [
   {
-    name: 'Qwen 3.8 14B Instruct',
+    name: 'Qwen3 14B',
     creator: 'Alibaba Cloud / Qwen',
     sizeParam: '14,8 Milliarden Parameter',
     minVram: '10–12 GB VRAM (oder 16 GB Unified Memory)',
     quantization: 'Q5_K_M oder Q4_K_M',
     engineeringStrength: 'Herausragendes deutsches Sprachverständnis, exzellente Mathematik- und Normeninterpretation (DIN/EC), robust in technischen Tabellen.',
-    huggingFaceSearch: 'bartowski/Qwen3.8-14B-Instruct-GGUF',
+    huggingFaceSearch: 'Qwen/Qwen3-14B-GGUF',
     recommendedRole: 'Der ideale Allrounder für mittelgroße Ingenieurbüros (Baugutachten, Textanalysen, Normenvergleiche).'
   },
   {
-    name: 'Qwen 3.8 Coder 32B Instruct',
+    name: 'Qwen2.5-Coder 32B Instruct',
     creator: 'Alibaba Cloud / Qwen',
     sizeParam: '32,8 Milliarden Parameter',
     minVram: '20–24 GB VRAM (z. B. RTX 3090/4090/5090) oder 36+ GB Mac',
     quantization: 'Q4_K_M',
     engineeringStrength: 'Spitzenklasse bei Python, MATLAB, Pandas, IFC-BIM-Parsing und Automatisierungsskripten im Bauwesen.',
-    huggingFaceSearch: 'bartowski/Qwen3.8-Coder-32B-Instruct-GGUF',
+    huggingFaceSearch: 'bartowski/Qwen2.5-Coder-32B-Instruct-GGUF',
     recommendedRole: 'Fokus Vibe Coding & Automatisierung (Prüfmaschinen-Auswertungen, Grasshopper/Rhino-Skripte).'
   },
   {
-    name: 'Llama 4 70B Instruct',
+    name: 'Llama 3.3 70B Instruct',
     creator: 'Meta AI',
-    sizeParam: '70,5 Milliarden Parameter',
+    sizeParam: 'ca. 70 Milliarden Parameter',
     minVram: '40–48 GB VRAM (2x RTX 3090/4090 oder 64+ GB Mac Studio)',
     quantization: 'Q4_K_M',
-    engineeringStrength: 'Ebenbürtig mit GPT-6 / Claude 5 Sonnet bei komplexer juristischer Argumentation, logischen Kettenschlüssen und anspruchsvollen Gutachten.',
-    huggingFaceSearch: 'bartowski/Llama-4-70B-Instruct-GGUF',
+    engineeringStrength: 'Stark bei längeren Argumentationsketten und Gutachtentexten; erreicht in Benchmarks nicht durchgängig das Niveau aktueller Cloud-Spitzenmodelle.',
+    huggingFaceSearch: 'bartowski/Llama-3.3-70B-Instruct-GGUF',
     recommendedRole: 'High-End-Workstation für gerichtliche Baugutachter und anspruchsvolle Forschungsgruppen.'
   },
   {
-    name: 'DeepSeek R2 Distill Qwen 14B',
+    name: 'DeepSeek-R1-Distill-Qwen-14B',
     creator: 'DeepSeek / Open Source',
     sizeParam: '14 Milliarden Parameter',
     minVram: '10–12 GB VRAM',
     quantization: 'Q4_K_M',
     engineeringStrength: 'Explizite Denkketten (<think>-Blöcke) vor der Antwort. Ideal für logische Plausibilitätsprüfungen mechanischer Gleichungen.',
-    huggingFaceSearch: 'bartowski/DeepSeek-R2-Distill-Qwen-14B-GGUF',
+    huggingFaceSearch: 'bartowski/DeepSeek-R1-Distill-Qwen-14B-GGUF',
     recommendedRole: 'Analytische Prüfung statischer Konzepte und formaler Nachweisketten.'
   },
   {
-    name: 'Llama 4 8B Instruct',
+    name: 'Llama 3.1 8B Instruct',
     creator: 'Meta AI',
-    sizeParam: '8,2 Milliarden Parameter',
+    sizeParam: 'ca. 8 Milliarden Parameter',
     minVram: '6–8 GB VRAM (läuft auf fast jedem modernen Ingenieur-Laptop)',
     quantization: 'Q4_K_M oder Q5_K_M',
     engineeringStrength: 'Extrem schnell (45-65 Tokens/s), minimaler Ressourcenverbrauch, gut für Baustellennotizen, Rechtschreibung und Zusammenfassungen.',
-    huggingFaceSearch: 'bartowski/Meta-Llama-4-8B-Instruct-GGUF',
+    huggingFaceSearch: 'bartowski/Meta-Llama-3.1-8B-Instruct-GGUF',
     recommendedRole: 'Mobile Baustellenbegleitung auf dem Laptop im Baucontainer ohne Internet.'
   }
 ];
@@ -118,11 +118,11 @@ export default function LokaleKI() {
               <Server className="text-shiraz" /> Lokale KI &amp; LM Studio im Ingenieurbüro
             </h3>
             <p className="text-xs text-text-main/70 mt-1">
-              100 % Datensouveränität, DSGVO-konform ohne Cloud, offlinefähig auf der Baustelle – Schritt-für-Schritt-Praxisanleitung für LM Studio.
+              Hohe Datensouveränität ohne Cloud-Übermittlung (DSGVO-Pflichten bleiben bestehen), offlinefähig auf der Baustelle – Schritt-für-Schritt-Praxisanleitung für LM Studio.
             </p>
           </div>
           <span className="self-start sm:self-center px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xxs font-extrabold uppercase rounded-full tracking-wider flex items-center gap-1.5">
-            <Lock size={13} className="text-emerald-600" /> 100% Offline &amp; DSGVO-Sicher
+            <Lock size={13} className="text-emerald-600" /> Offline &amp; datensparsam
           </span>
         </div>
 
@@ -380,7 +380,7 @@ Kennzeichne Schätzungen klar als solche. Erfinde niemals Normenabsätze oder Si
                   </tr>
                   <tr>
                     <td className="p-3 font-bold text-text-main">Laufende Kosten</td>
-                    <td className="p-3 text-text-main/70">20–200 €/Monat pro Nutzer bzw. API-Token-Kosten</td>
+                    <td className="p-3 text-text-main/70">ca. 20–200 €/Monat pro Nutzer bzw. API-Token-Kosten (Stand 10/2026, Tarife prüfen)</td>
                     <td className="p-3 text-emerald-700 font-bold">0 € Lizenzkosten (nur Bürostrom)</td>
                   </tr>
                 </tbody>
@@ -660,7 +660,7 @@ print(response.choices[0].message.content)`}</pre>
 
             {selectedHardware === 'laptop_8gb' && (
               <div className="space-y-2 text-xs text-text-main/80">
-                <p><strong>Maximale Modellklasse:</strong> 7B bis 8B Parameter (z. B. <em>Llama 4 8B Q4_K_M</em> oder <em>Qwen 3.8 8B Q5_K_M</em>).</p>
+                <p><strong>Maximale Modellklasse:</strong> 7B bis 8B Parameter (z. B. <em>Llama 3.1 8B Q4_K_M</em> oder <em>Qwen3 8B Q5_K_M</em>).</p>
                 <p><strong>Geschwindigkeit:</strong> Sehr schnell (40–60 Tokens/s auf GPU).</p>
                 <p><strong>Eignung für Bauaufgaben:</strong> Sehr gut für Textzusammenfassungen, Protokolle, Baustellen-Notizen und einfache Skripte. Für komplexe Tragwerksüberprüfungen oder tiefgehende statische Ableitungen sind größere Modelle empfohlen.</p>
               </div>
@@ -668,7 +668,7 @@ print(response.choices[0].message.content)`}</pre>
 
             {selectedHardware === 'desktop_16gb' && (
               <div className="space-y-2 text-xs text-text-main/80">
-                <p><strong>Maximale Modellklasse:</strong> 14B Parameter (z. B. <em>Qwen 3.8 14B Q5_K_M</em> oder <em>DeepSeek R2 Distill 14B Q4_K_M</em>).</p>
+                <p><strong>Maximale Modellklasse:</strong> 14B Parameter (z. B. <em>Qwen3 14B Q5_K_M</em> oder <em>DeepSeek-R1-Distill 14B Q4_K_M</em>).</p>
                 <p><strong>Geschwindigkeit:</strong> Flüssig (25–40 Tokens/s).</p>
                 <p><strong>Eignung für Bauaufgaben:</strong> <strong>Der "Sweet Spot" für Ingenieurbüros!</strong> Exzellentes Verständnis von DIN-Normen, meistert Baugutachten, komplexe bauphysikalische Zusammenhänge und mehrstufige Auswertungen.</p>
               </div>
@@ -676,7 +676,7 @@ print(response.choices[0].message.content)`}</pre>
 
             {selectedHardware === 'workstation_24gb' && (
               <div className="space-y-2 text-xs text-text-main/80">
-                <p><strong>Maximale Modellklasse:</strong> 32B Parameter (z. B. <em>Qwen 3.8 Coder 32B Q4_K_M</em>).</p>
+                <p><strong>Maximale Modellklasse:</strong> 32B Parameter (z. B. <em>Qwen2.5-Coder 32B Q4_K_M</em>).</p>
                 <p><strong>Geschwindigkeit:</strong> Hoch (30–45 Tokens/s auf RTX 4090/5090).</p>
                 <p><strong>Eignung für Bauaufgaben:</strong> Spitzenklasse bei Python-Skripten, Automatisierung von Laborprüfmaschinen, IFC-BIM-Datenverarbeitung und formelmäßigen Herleitungen.</p>
               </div>
@@ -684,9 +684,9 @@ print(response.choices[0].message.content)`}</pre>
 
             {selectedHardware === 'mac_studio_64gb' && (
               <div className="space-y-2 text-xs text-text-main/80">
-                <p><strong>Maximale Modellklasse:</strong> 70B Parameter (z. B. <em>Llama 4 70B Q4_K_M</em> oder <em>Qwen 3.8 72B</em>).</p>
+                <p><strong>Maximale Modellklasse:</strong> 70B Parameter (z. B. <em>Llama 3.3 70B Q4_K_M</em> oder <em>Qwen2.5 72B</em>).</p>
                 <p><strong>Geschwindigkeit:</strong> Angenehmes Lesetempo (15–22 Tokens/s).</p>
-                <p><strong>Eignung für Bauaufgaben:</strong> <strong>Frontier-Level auf dem Schreibtisch.</strong> Argumentationskraft auf dem Niveau von GPT-6 / Claude 5 Sonnet, ideal für Schiedsgutachten, wissenschaftliche Publikationen und anspruchsvollste juristisch-technische Analysen ohne Cloud.</p>
+                <p><strong>Eignung für Bauaufgaben:</strong> <strong>Leistungsstarke Modelle auf dem Schreibtisch.</strong> Hohe Argumentationskraft (Abstand zu Cloud-Spitzenmodellen im Einzelfall testen), geeignet für Schiedsgutachten, wissenschaftliche Publikationen und anspruchsvollste juristisch-technische Analysen ohne Cloud.</p>
               </div>
             )}
           </div>

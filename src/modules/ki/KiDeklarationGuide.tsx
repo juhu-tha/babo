@@ -152,7 +152,7 @@ Unterschrift Verfasser/in`;
         <div>
           <label className="text-xxs font-bold text-text-main/70 block mb-1.5">Eingesetzte KI-Tools auswählen:</label>
           <div className="flex flex-wrap gap-2">
-            {['NotebookLM', 'ChatGPT / GPT-6', 'Claude 5', 'DeepL', 'Elicit / Consensus', 'Python / Cursor', 'LM Studio (lokal)'].map(t => (
+            {['NotebookLM', 'ChatGPT', 'Claude', 'DeepL', 'Elicit / Consensus', 'Python / Cursor', 'LM Studio (lokal)'].map(t => (
               <button
                 key={t}
                 onClick={() => toggleTool(t)}
