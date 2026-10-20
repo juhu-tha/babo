@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function SchutzGrundlagen() {
   const [activeTab, setActiveTab] = useState<'prinzipien' | 'mechanismen' | 'lebensdauer' | 'verfahrenswahl'>('prinzipien');
@@ -683,10 +685,10 @@ export default function SchutzGrundlagen() {
                   </div>
                   <ul className="space-y-2 text-slate-700">
                     <li>
-                      <strong>Prinzip 3 (CR) / DAfStb Prinzip R:</strong> Vollständiger Abtrag des carbonatisierten Betons bis 15 mm hinter die Bewehrung. Reprofilierung mit hochalkalischem PCC- oder SPCC-Mörtel zur Repassivierung.
+                      <strong>Prinzip 7 (RP) mit Betonersatz nach Prinzip 3 (CR) / Rili-SIB Prinzip R:</strong> Vollständiger Abtrag des carbonatisierten Betons bis 15 mm hinter die Bewehrung. Reprofilierung mit hochalkalischem PCC- oder SPCC-Mörtel zur Repassivierung.
                     </li>
                     <li>
-                      <strong>Prinzip 1 (PI) + Prinzip 2 (MC) / DAfStb Prinzip W:</strong> Bei noch intaktem Beton oder beginnender Carbonatisierung: Aufbringen einer carbonatisierungsbremsenden Beschichtung (<InlineMath math="s_{d,\text{CO}_2} \ge 50\text{ m}" />) zur Austrocknung.
+                      <strong>Prinzip 1 (PI) bzw. bei bereits depassivierter Bewehrung Prinzip 8 (IR) / Rili-SIB Prinzip W:</strong> Bei noch intaktem Beton oder beginnender Carbonatisierung: Aufbringen einer carbonatisierungsbremsenden Beschichtung (<InlineMath math="s_{d,\text{CO}_2} \ge 50\text{ m}" />) zur Austrocknung.
                     </li>
                     <li>
                       <strong>Prinzip 7 (RP):</strong> Elektrochemische Realkalisierung (ER) bei denkmalgeschützten Sichtbetonflächen ohne Substanzverlust.
@@ -776,11 +778,39 @@ export default function SchutzGrundlagen() {
       )}
 
       {/* ModuleFooter */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Kostenfolge nach der Fünferregel (de Sitter)"
+        zielGleichung="K_n = K_0 \cdot 5^n"
+        schritte={[
+          { titel: 'Planung', erklaerung: 'Erhöhung der Betondeckung und bessere Nachbehandlung kosten im Entwurf (n = 0):', formel: 'K_0 = 2\\,000\\,\\text{€}' },
+          { titel: 'Vor Schadensbeginn', erklaerung: 'Vorbeugende Oberflächenschutzmaßnahme (n = 1):', formel: 'K_1 = 2\\,000 \\cdot 5 = 10\\,000\\,\\text{€}' },
+          { titel: 'Umfassende Instandsetzung', erklaerung: 'Nach Schadensausbreitung (n = 3):', formel: 'K_3 = 2\\,000 \\cdot 125 = 250\\,000\\,\\text{€}' }
+        ]}
+        ergebnisHinweis="Die Fünferregel ist eine Faustregel zur Größenordnung, kein Rechenmodell. Sie begründet frühzeitige Inspektion und vorbeugende Instandhaltung."
+        normQuelle="de Sitter (1984); DIN 31051:2019-06"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: CO₂-Sperrwirkung einer Beschichtung (Klopfer-Kriterium)"
+        zielGleichung="s_{d,CO_2} = \mu_{CO_2} \cdot d \ge 50\,\text{m}"
+        schritte={[
+          { titel: 'Kennwert', erklaerung: 'Acrylat-Dispersionsbeschichtung, CO₂-Diffusionswiderstandszahl μ = 4 · 10⁵ (Herstellerangabe):', formel: '\\mu_{CO_2} = 400\\,000' },
+          { titel: 'Trockenschichtdicke', erklaerung: 'Zwei Arbeitsgänge, zusammen 0,25 mm:', formel: 'd = 0{,}25 \\cdot 10^{-3}\\,\\text{m}' },
+          { titel: 'Nachweis', erklaerung: 'Diffusionsäquivalente Luftschichtdicke:', formel: 's_{d,CO_2} = 400\\,000 \\cdot 0{,}00025 = 100\\,\\text{m} \\ge 50\\,\\text{m}' }
+        ]}
+        ergebnisHinweis="Gleichzeitig muss die Beschichtung wasserdampfdurchlässig bleiben (s_d,H2O klein), damit Feuchte aus dem Beton entweichen kann."
+        normQuelle="Klopfer (1978); DIN EN 1504-2"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="schutz_grundlagen" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: EN-1504-9-Prinzipien und Rili-SIB-Zuordnung, TR Instandhaltung, DIN EN 14038 geprüft; fachliche Freigabe durch den Autor ausstehend)"
         weblinks={[
           { title: "DIBt - Deutsches Institut für Bautechnik (TR Instandhaltung)", url: "https://www.dibt.de" },
           { title: "DAfStb - Deutscher Ausschuss für Stahlbeton", url: "https://www.dafstb.de" },
-          { title: "Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V.", url: "https://www.betoninstandsetzer.de" }
+          { title: "Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V. (BÜV)", url: "https://www.buev.de" }
         ]}
         wikipedia={[
           { title: "Betoninstandsetzung", url: "https://de.wikipedia.org/wiki/Betoninstandsetzung" },
@@ -788,22 +818,22 @@ export default function SchutzGrundlagen() {
           { title: "Oberflächenschutzsystem", url: "https://de.wikipedia.org/wiki/Oberfl%C3%A4chenschutzsystem" }
         ]}
         literatur={[
-          'Raupach, M.; Orlowsky, J. (2015): Schutz und Instandsetzung von Stahlbetonbauten (Bauwerk Verlag)',
+          'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Tuutti, K. (1982): Corrosion of steel in concrete. Swedish Cement and Concrete Research Institute'
+          'Tuutti, K.: Corrosion of Steel in Concrete. CBI Research 5:82, Stockholm: Swedish Cement and Concrete Research Institute 1982'
         ]}
         regelwerke={[
           { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-9' },
-          { title: 'TR Instandhaltung:2020-05 (DIBt: Technische Regel Instandhaltung von Betonbauwerken)', url: 'https://www.dibt.de/' },
+          { title: 'TR Instandhaltung (DIBt, Teil 1 Stand Mai 2020, Teil 2; über die MVV TB eingeführt)', url: 'https://www.dibt.de/' },
           { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+31051' },
           { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
-          { title: 'DIN EN 14038-1:2021-03 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 1: Chloridextraktion)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-1' },
-          { title: 'DIN EN 14038-2:2020-09 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton - Teil 2: Realkalisierung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-2' }
+          { title: 'DIN EN 14038-1 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 1: Realkalisierung; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-1' },
+          { title: 'DIN EN 14038-2 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 2: Chloridextraktion; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-2' }
         ]}
         formeln={[
           {
             formel: 't_{\\text{service}} = t_0 + t_1 = \\left(\\frac{c}{k}\\right)^2 + \\frac{\\Delta d_{\\text{krit}}}{v_{\\text{korr}}}',
-            erklaerung: 'Tuutti-Degradationsmodell der Lebensdauer: Summe aus Initiierungszeit t₀ (Diffusionsdauer bis zum Erreichen der kritischen Depassivierungstiefe bei Betondeckung c und Diffusionskoeffizient k) und Propagationszeit t₁ (aktive Korrosionsphase bis zum kritischen Querschnittsverlust).',
+            erklaerung: 'Tuutti-Degradationsmodell der Lebensdauer: Summe aus Initiierungszeit t₀ (Dauer bis zum Erreichen der Depassivierung bei Betondeckung c und Karbonatisierungsbeiwert k) und Propagationszeit t₁ (aktive Korrosionsphase bis zum kritischen Querschnittsverlust).',
             quelle: 'Tuutti (1982) / Dauerhaftigkeitsbemessung'
           },
           {

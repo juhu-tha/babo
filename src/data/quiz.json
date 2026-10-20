@@ -5471,5 +5471,305 @@
       "targetModuleLabel": "Schadensaufnahme-Checklisten"
     },
     "verified": false
+  },
+  {
+    "id": "q_is_sg_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schutz_grundlagen",
+    "moduleTitle": "Schutz- & Instands.-Grundlagen",
+    "topic": "EN-1504-9-Prinzipien",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1504-9",
+    "question": "Welches Prinzip nach DIN EN 1504-9 beschreibt den kathodischen Korrosionsschutz?",
+    "options": [
+      "Prinzip 1",
+      "Prinzip 7",
+      "Prinzip 10",
+      "Prinzip 11"
+    ],
+    "correctIdx": 2,
+    "explanation": "Prinzip 10 (CP) = kathodischer Schutz; Prinzip 11 (CA) = Kontrolle anodischer Bereiche; Prinzip 7 (RP) = Erhalt bzw. Wiederherstellung der Passivität.",
+    "gapAnalysis": {
+      "topic": "EN-1504-9-Prinzipien",
+      "misconception": "Prinzip 11 sei der kathodische Schutz.",
+      "coreRule": "Prinzipien 1–6 betreffen den Beton, 7–11 die Bewehrungskorrosion.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EN-1504-9-Prinzipien“ im Modul Schutz- & Instands.-Grundlagen noch einmal durch.",
+      "targetModuleTab": "schutz_grundlagen",
+      "targetModuleLabel": "Schutz- & Instands.-Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_sg_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schutz_grundlagen",
+    "moduleTitle": "Schutz- & Instands.-Grundlagen",
+    "topic": "Klopfer-Kriterium",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1504-2",
+    "question": "Welche CO₂-diffusionsäquivalente Luftschichtdicke gilt als Anforderung an eine karbonatisierungsbremsende Beschichtung?",
+    "options": [
+      "s_d,CO₂ ≥ 0,5 m",
+      "s_d,CO₂ ≥ 5 m",
+      "s_d,CO₂ ≥ 50 m",
+      "s_d,CO₂ ≥ 5 000 m"
+    ],
+    "correctIdx": 2,
+    "explanation": "Klopfer-Kriterium s_d,CO₂ ≥ 50 m; gleichzeitig soll die Beschichtung wasserdampfdurchlässig bleiben.",
+    "gapAnalysis": {
+      "topic": "Klopfer-Kriterium",
+      "misconception": "Jede Farbe bremse die Karbonatisierung ausreichend.",
+      "coreRule": "s_d = μ · d; CO₂-dicht, aber dampfoffen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Klopfer-Kriterium“ im Modul Schutz- & Instands.-Grundlagen noch einmal durch.",
+      "targetModuleTab": "schutz_grundlagen",
+      "targetModuleLabel": "Schutz- & Instands.-Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_sb_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "instandhaltung",
+    "moduleTitle": "Stahlbetoninstandhaltung",
+    "topic": "TR Instandhaltung",
+    "difficulty": "Basis",
+    "normRef": "TR Instandhaltung (DIBt)",
+    "question": "Wer plant nach TR Instandhaltung Instandsetzungsmaßnahmen an Betonbauwerken?",
+    "options": [
+      "Der Bauherr selbst",
+      "Der sachkundige Planer (SKP)",
+      "Der Produkthersteller",
+      "Die Bauaufsicht"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die TR Instandhaltung setzt voraus, dass jede Instandhaltungsmaßnahme von einem sachkundigen Planer geplant und die Ausführung von ihm begleitet wird.",
+    "gapAnalysis": {
+      "topic": "TR Instandhaltung",
+      "misconception": "Instandsetzung könne ohne Planung direkt vom Verarbeiter ausgeführt werden.",
+      "coreRule": "SKP erstellt den Instandhaltungsplan.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „TR Instandhaltung“ im Modul Stahlbetoninstandhaltung noch einmal durch.",
+      "targetModuleTab": "instandhaltung",
+      "targetModuleLabel": "Stahlbetoninstandhaltung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_sb_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "instandhaltung",
+    "moduleTitle": "Stahlbetoninstandhaltung",
+    "topic": "Oberflächenschutzsysteme",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TR Instandhaltung / DIN V 18026",
+    "question": "Welches Oberflächenschutzsystem eignet sich für eine befahrene Parkdeckfläche mit Trennrissen?",
+    "options": [
+      "OS 1 (Hydrophobierung)",
+      "OS 8 (starre Beschichtung)",
+      "OS 11 (rissüberbrückende befahrbare Beschichtung)",
+      "OS 2 (Fassadenbeschichtung)"
+    ],
+    "correctIdx": 2,
+    "explanation": "OS 8 ist starr und nicht rissüberbrückend; für gerissene befahrene Flächen ist ein dynamisch rissüberbrückendes System wie OS 11 erforderlich.",
+    "gapAnalysis": {
+      "topic": "Oberflächenschutzsysteme",
+      "misconception": "OS 8 sei rissüberbrückend.",
+      "coreRule": "Rissverhalten der Fläche bestimmt die OS-Wahl.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächenschutzsysteme“ im Modul Stahlbetoninstandhaltung noch einmal durch.",
+      "targetModuleTab": "instandhaltung",
+      "targetModuleLabel": "Stahlbetoninstandhaltung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_im_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "instandsetzung_materialien",
+    "moduleTitle": "Instandsetzung nach Material",
+    "topic": "Duplex-System",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 14713-1",
+    "question": "Warum hält ein Duplex-System (Verzinkung + Beschichtung) länger als die Summe der Einzelschutzdauern?",
+    "options": [
+      "Weil Zink die Beschichtung härtet",
+      "Weil sich beide Schichten gegenseitig schützen (Synergiefaktor etwa 1,2 bis 2,5)",
+      "Weil Beschichtungen nie altern",
+      "Weil das Zink verdampft"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Beschichtung bremst den Zinkabtrag, das Zink verhindert Unterrostung an Fehlstellen.",
+    "gapAnalysis": {
+      "topic": "Duplex-System",
+      "misconception": "Duplex sei nur die Addition zweier Schutzdauern.",
+      "coreRule": "t_Duplex = S · (t_Zn + t_Lack).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Duplex-System“ im Modul Instandsetzung nach Material noch einmal durch.",
+      "targetModuleTab": "instandsetzung_materialien",
+      "targetModuleLabel": "Instandsetzung nach Material"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_im_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "instandsetzung_materialien",
+    "moduleTitle": "Instandsetzung nach Material",
+    "topic": "Holzquerschnitt",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 68800-4",
+    "question": "Ein Balken 160/220 mm verliert seitlich je 30 mm und unten 30 mm durch Fäule. Welcher Anteil des Widerstandsmoments bleibt?",
+    "options": [
+      "etwa 85 %",
+      "etwa 70 %",
+      "etwa 47 %",
+      "etwa 20 %"
+    ],
+    "correctIdx": 2,
+    "explanation": "W_Rest/W_0 = (100 · 190²)/(160 · 220²) = 0,47.",
+    "gapAnalysis": {
+      "topic": "Holzquerschnitt",
+      "misconception": "Wenige Zentimeter Fäule seien statisch unbedeutend.",
+      "coreRule": "W ∝ b · h²; Querschnittsverluste wirken überproportional.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzquerschnitt“ im Modul Instandsetzung nach Material noch einmal durch.",
+      "targetModuleTab": "instandsetzung_materialien",
+      "targetModuleLabel": "Instandsetzung nach Material"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_wta_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "wta",
+    "moduleTitle": "WTA-Merkblätter",
+    "topic": "Sanierputz",
+    "difficulty": "Basis",
+    "normRef": "WTA-Merkblatt 2-9-20/D",
+    "question": "Welche Aufgabe hat ein Sanierputzsystem nach WTA 2-9?",
+    "options": [
+      "Feuchte dauerhaft im Mauerwerk einschließen",
+      "Salze im Putzgefüge einlagern und Feuchte als Dampf abgeben, sodass die Oberfläche trocken und salzfrei bleibt",
+      "Das Mauerwerk statisch verstärken",
+      "Die Horizontalsperre ersetzen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Hohe Porosität und Hydrophobie ermöglichen Salzeinlagerung und Verdunstung im Putz; die Feuchteursache muss trotzdem beseitigt werden.",
+    "gapAnalysis": {
+      "topic": "Sanierputz",
+      "misconception": "Sanierputz trockne das Mauerwerk selbst aus.",
+      "coreRule": "Sanierputz ersetzt keine Abdichtung oder Horizontalsperre.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sanierputz“ im Modul WTA-Merkblätter noch einmal durch.",
+      "targetModuleTab": "wta",
+      "targetModuleLabel": "WTA-Merkblätter"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_wta_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "wta",
+    "moduleTitle": "WTA-Merkblätter",
+    "topic": "Innendämmung Nachweis",
+    "difficulty": "Fortgeschritten",
+    "normRef": "WTA-Merkblatt 6-5-14/D",
+    "question": "Welches Nachweisverfahren beschreibt WTA-Merkblatt 6-5 für Innendämmungen?",
+    "options": [
+      "Glaser-Verfahren nach DIN 4108-3",
+      "Numerische hygrothermische Simulation",
+      "Nur Erfahrungswerte",
+      "Die U-Wert-Berechnung"
+    ],
+    "correctIdx": 1,
+    "explanation": "WTA 6-5 (Innendämmung nach WTA II) regelt den Nachweis mittels numerischer Berechnungsverfahren, die kapillaren Transport und Feuchtespeicherung erfassen.",
+    "gapAnalysis": {
+      "topic": "Innendämmung Nachweis",
+      "misconception": "Glaser genüge für kapillaraktive Innendämmung.",
+      "coreRule": "Innendämmung im Bestand: instationäre Simulation nach DIN EN 15026 / WTA 6-5.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Innendämmung Nachweis“ im Modul WTA-Merkblätter noch einmal durch.",
+      "targetModuleTab": "wta",
+      "targetModuleLabel": "WTA-Merkblätter"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_cl_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "instandsetzung_checklisten",
+    "moduleTitle": "Instandsetzungs-Checklisten",
+    "topic": "Taupunktabstand",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 12944-7",
+    "question": "Welcher Mindestabstand zwischen Oberflächen- und Taupunkttemperatur gilt üblicherweise vor Beschichtungsarbeiten?",
+    "options": [
+      "0 K",
+      "1 K",
+      "3 K",
+      "10 K"
+    ],
+    "correctIdx": 2,
+    "explanation": "Die Oberfläche muss mindestens 3 K wärmer als der Taupunkt sein, damit kein Kondensat die Haftung stört.",
+    "gapAnalysis": {
+      "topic": "Taupunktabstand",
+      "misconception": "Es genüge, wenn es nicht regnet.",
+      "coreRule": "θ_Oberfläche ≥ θ_Taupunkt + 3 K.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Taupunktabstand“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
+      "targetModuleTab": "instandsetzung_checklisten",
+      "targetModuleLabel": "Instandsetzungs-Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_is_cl_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "instandsetzung_checklisten",
+    "moduleTitle": "Instandsetzungs-Checklisten",
+    "topic": "Haftbrücke",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TR Instandhaltung",
+    "question": "Warum muss der Instandsetzungsmörtel frisch in frisch auf die Haftbrücke aufgetragen werden?",
+    "options": [
+      "Wegen der Farbe",
+      "Weil eine angetrocknete Haftbrücke eine Trennschicht bildet und der Verbund versagt",
+      "Weil der Mörtel sonst zu schnell erhärtet",
+      "Das ist nicht erforderlich"
+    ],
+    "correctIdx": 1,
+    "explanation": "Eine angetrocknete Haftbrücke wirkt als glatte Trennebene; Hohlstellen und Ablösungen folgen.",
+    "gapAnalysis": {
+      "topic": "Haftbrücke",
+      "misconception": "Die Haftbrücke funktioniere auch nach dem Antrocknen.",
+      "coreRule": "Haftbrücke kapillar einmassieren und frisch in frisch überarbeiten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haftbrücke“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
+      "targetModuleTab": "instandsetzung_checklisten",
+      "targetModuleLabel": "Instandsetzungs-Checklisten"
+    },
+    "verified": false
   }
 ]
