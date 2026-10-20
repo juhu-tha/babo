@@ -6671,5 +6671,305 @@
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
     "verified": false
+  },
+  {
+    "id": "q_px_pl_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_planung",
+    "moduleTitle": "Planung & Ausschreibung",
+    "topic": "Betondeckung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1/NA",
+    "question": "Welches Nennmaß c_nom ergibt sich für XC4 (c_min,dur = 25 mm), Ø 12 mm und Δc_dev = 15 mm?",
+    "options": [
+      "25 mm",
+      "27 mm",
+      "40 mm",
+      "55 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "c_min = max(12; 25; 10) = 25 mm; c_nom = 25 + 15 = 40 mm.",
+    "gapAnalysis": {
+      "topic": "Betondeckung",
+      "misconception": "Das Vorhaltemaß sei bereits in c_min enthalten.",
+      "coreRule": "c_nom = c_min + Δc_dev; c_min ist das Maximum aus Verbund, Dauerhaftigkeit und 10 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "targetModuleTab": "px_planung",
+      "targetModuleLabel": "Planung & Ausschreibung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_pl_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_planung",
+    "moduleTitle": "Planung & Ausschreibung",
+    "topic": "Leitprodukt",
+    "difficulty": "Fortgeschritten",
+    "normRef": "§ 7 Abs. 2 VOB/A",
+    "question": "Was ist bei der Nennung eines Leitprodukts in einer öffentlichen Ausschreibung zu beachten?",
+    "options": [
+      "Leitprodukte sind immer verboten",
+      "Nur ausnahmsweise zulässig, mit dem Zusatz 'oder gleichwertig' und eindeutigen Gleichwertigkeitskriterien",
+      "Der Bieter muss genau dieses Produkt liefern",
+      "Es genügt der Herstellername"
+    ],
+    "correctIdx": 1,
+    "explanation": "Produktvorgaben sind nur zulässig, wenn der Gegenstand sonst nicht hinreichend beschreibbar ist, und müssen mit 'oder gleichwertig' versehen werden.",
+    "gapAnalysis": {
+      "topic": "Leitprodukt",
+      "misconception": "Ein Leitprodukt binde den Bieter.",
+      "coreRule": "Leistungsmerkmale (z. B. λ, R_w) festlegen, an denen Gleichwertigkeit gemessen wird.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Leitprodukt“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "targetModuleTab": "px_planung",
+      "targetModuleLabel": "Planung & Ausschreibung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_bl_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_bauleitung",
+    "moduleTitle": "Bauleitung & Baustelle",
+    "topic": "Wasserzugabe",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206",
+    "question": "Ein Beton mit z = 300 kg/m³ und w/z = 0,55 erhält 10 l Wasser je m³ zusätzlich. Welcher w/z-Wert ergibt sich?",
+    "options": [
+      "0,55",
+      "0,56",
+      "0,58",
+      "0,65"
+    ],
+    "correctIdx": 2,
+    "explanation": "(165 + 10)/300 = 0,583 ≈ 0,58.",
+    "gapAnalysis": {
+      "topic": "Wasserzugabe",
+      "misconception": "Wenige Liter Wasser seien unbedeutend.",
+      "coreRule": "Konsistenz nur mit Fließmittel nach Vorgabe des Lieferwerks anpassen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe“ im Modul Bauleitung & Baustelle noch einmal durch.",
+      "targetModuleTab": "px_bauleitung",
+      "targetModuleLabel": "Bauleitung & Baustelle"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_bl_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_bauleitung",
+    "moduleTitle": "Bauleitung & Baustelle",
+    "topic": "Bedenkenanmeldung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "VOB/B § 4 Abs. 3, § 13 Abs. 3",
+    "question": "Welche Wirkung hat eine ordnungsgemäße schriftliche Bedenkenanmeldung des Auftragnehmers?",
+    "options": [
+      "Keine",
+      "Er wird von der Mängelhaftung frei, soweit der Mangel auf die beanstandete Vorgabe zurückgeht",
+      "Der Vertrag ist automatisch gekündigt",
+      "Der Auftraggeber muss sofort zahlen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach § 13 Abs. 3 VOB/B haftet der Auftragnehmer nicht für Mängel aus Vorgaben des Auftraggebers, wenn er die Mitteilung nach § 4 Abs. 3 gemacht hat.",
+    "gapAnalysis": {
+      "topic": "Bedenkenanmeldung",
+      "misconception": "Mündliche Hinweise genügten.",
+      "coreRule": "Bedenken unverzüglich, möglichst vor Beginn der Arbeiten, schriftlich und begründet mitteilen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bedenkenanmeldung“ im Modul Bauleitung & Baustelle noch einmal durch.",
+      "targetModuleTab": "px_bauleitung",
+      "targetModuleLabel": "Bauleitung & Baustelle"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_pr_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_produktion",
+    "moduleTitle": "Produktherstellung & QS",
+    "topic": "Feuchtekorrektur",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206",
+    "question": "1 000 kg Sand (trocken) haben 4 % Oberflächenfeuchte. Wie viel Wasser ist von 165 kg Sollwasser abzuziehen?",
+    "options": [
+      "4 kg",
+      "40 kg",
+      "125 kg",
+      "0 kg"
+    ],
+    "correctIdx": 1,
+    "explanation": "0,04 · 1 000 kg = 40 kg; zugegeben werden 125 kg, die Sandeinwaage beträgt 1 040 kg.",
+    "gapAnalysis": {
+      "topic": "Feuchtekorrektur",
+      "misconception": "Die Sandfeuchte sei für den w/z-Wert unerheblich.",
+      "coreRule": "Oberflächenfeuchte bezogen auf die Trockenmasse kompensieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchtekorrektur“ im Modul Produktherstellung & QS noch einmal durch.",
+      "targetModuleTab": "px_produktion",
+      "targetModuleLabel": "Produktherstellung & QS"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_pr_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_produktion",
+    "moduleTitle": "Produktherstellung & QS",
+    "topic": "Konformität",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206",
+    "question": "Erstherstellung C30/37, drei Würfel: 41, 39, 43 N/mm². Sind die Konformitätskriterien erfüllt?",
+    "options": [
+      "Nein, Mittelwert zu klein",
+      "Ja: f_cm = 41 ≥ 37 + 4 und f_ci,min = 39 ≥ 37 − 4",
+      "Nein, ein Wert liegt unter 41",
+      "Nur mit 15 Proben bewertbar"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei Erstherstellung (n = 3) gilt f_cm ≥ f_ck + 4 und jeder Einzelwert ≥ f_ck − 4 (Würfelfestigkeit 37 N/mm²).",
+    "gapAnalysis": {
+      "topic": "Konformität",
+      "misconception": "Jeder Einzelwert müsse über f_ck + 4 liegen.",
+      "coreRule": "Mittelwert- und Einzelwertkriterium getrennt prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität“ im Modul Produktherstellung & QS noch einmal durch.",
+      "targetModuleTab": "px_produktion",
+      "targetModuleLabel": "Produktherstellung & QS"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_ka_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_karriere",
+    "moduleTitle": "Karrierestart & Soft Skills",
+    "topic": "Qualifikation",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-3",
+    "question": "Wofür wird der E-Schein (erweiterte betontechnologische Kenntnisse) nach DIN 1045-3 benötigt?",
+    "options": [
+      "Für jeden Bauleiter",
+      "Für die Leitung der ständigen Betonprüfstelle bei Beton der Überwachungsklassen 2 und 3",
+      "Für die Aufnahme in die Ingenieurkammer",
+      "Für Asphaltarbeiten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Überwachung von Beton der ÜK 2 und 3 erfolgt durch eine ständige Betonprüfstelle, die von einer Person mit E-Schein geleitet wird.",
+    "gapAnalysis": {
+      "topic": "Qualifikation",
+      "misconception": "Der E-Schein sei für jede Bauleitung Pflicht.",
+      "coreRule": "Qualifikationsanforderungen hängen von der Überwachungsklasse ab.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Qualifikation“ im Modul Karrierestart & Soft Skills noch einmal durch.",
+      "targetModuleTab": "px_karriere",
+      "targetModuleLabel": "Karrierestart & Soft Skills"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_ka_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_karriere",
+    "moduleTitle": "Karrierestart & Soft Skills",
+    "topic": "Kalkulation",
+    "difficulty": "Fortgeschritten",
+    "normRef": "KLR Bau",
+    "question": "Herstellkosten 100 000 €, AGK 9 %, Wagnis und Gewinn 5 %. Wie hoch ist der Angebotspreis nach K = (S + AGK)(1 + W_G)?",
+    "options": [
+      "105 000 €",
+      "109 000 €",
+      "114 000 €",
+      "114 450 €"
+    ],
+    "correctIdx": 3,
+    "explanation": "109 000 € · 1,05 = 114 450 €.",
+    "gapAnalysis": {
+      "topic": "Kalkulation",
+      "misconception": "Zuschläge würden einfach addiert (14 %).",
+      "coreRule": "Zuschlagsbasis und Reihenfolge der Kalkulation beachten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kalkulation“ im Modul Karrierestart & Soft Skills noch einmal durch.",
+      "targetModuleTab": "px_karriere",
+      "targetModuleLabel": "Karrierestart & Soft Skills"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_bt_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_bautagebuch",
+    "moduleTitle": "Bautagebuch",
+    "topic": "Behinderungsanzeige",
+    "difficulty": "Basis",
+    "normRef": "VOB/B § 6 Abs. 1",
+    "question": "Was gilt, wenn der Auftragnehmer eine Behinderung nicht schriftlich anzeigt?",
+    "options": [
+      "Die Behinderung wird immer berücksichtigt",
+      "Sie wird nur berücksichtigt, wenn dem Auftraggeber Tatsache und hindernde Wirkung offenkundig bekannt waren",
+      "Der Vertrag wird nichtig",
+      "Der Auftraggeber zahlt eine Strafe"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 6 Abs. 1 VOB/B verlangt die schriftliche Anzeige; ohne sie hilft nur Offenkundigkeit.",
+    "gapAnalysis": {
+      "topic": "Behinderungsanzeige",
+      "misconception": "Eine Erwähnung im Jour fixe genüge.",
+      "coreRule": "Behinderungen unverzüglich schriftlich anzeigen und im Bautagebuch dokumentieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Behinderungsanzeige“ im Modul Bautagebuch noch einmal durch.",
+      "targetModuleTab": "px_bautagebuch",
+      "targetModuleLabel": "Bautagebuch"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_px_bt_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "px_bautagebuch",
+    "moduleTitle": "Bautagebuch",
+    "topic": "Ausschalfrist",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Reifegrad nach Saul",
+    "question": "Eine Ausschalfrist von 3 Tagen bei 20 °C soll auf 5 °C mittlere Betontemperatur angepasst werden (f_T = 30/(T + 10)). Welche Frist ergibt sich?",
+    "options": [
+      "3 Tage",
+      "4,5 Tage",
+      "6 Tage",
+      "9 Tage"
+    ],
+    "correctIdx": 2,
+    "explanation": "f_T = 30/15 = 2,0; 3 d · 2,0 = 6 d.",
+    "gapAnalysis": {
+      "topic": "Ausschalfrist",
+      "misconception": "Die Temperatur beeinflusse die Erhärtung kaum.",
+      "coreRule": "Temperaturen im Bautagebuch begründen Ausschal- und Nachbehandlungsfristen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Ausschalfrist“ im Modul Bautagebuch noch einmal durch.",
+      "targetModuleTab": "px_bautagebuch",
+      "targetModuleLabel": "Bautagebuch"
+    },
+    "verified": false
   }
 ]
