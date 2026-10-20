@@ -402,11 +402,11 @@ export default function Systemarchitektur() {
     edge: {
       id: 'edge',
       title: 'Lokale Edge-KI & On-Premise-Systeme',
-      subtitle: '100% Datensouveränität und netzunabhängige Ausführung im Baustellenbüro',
+      subtitle: 'Volle Datenhoheit und netzunabhängige Ausführung im Baustellenbüro',
       icon: Server,
       color: 'text-slate-800 bg-slate-100 border-slate-300',
       badge: 'Quantisierung & Offline Datensicherheit',
-      oneLiner: 'Lokale KI betreibt quelloffene Spitzenmodelle (Qwen, Llama, DeepSeek) auf eigener Büro- und Baustellenhardware – vollkommen offline, ohne Cloud-Zwang und konform zu DSGVO und Geheimschutz.',
+      oneLiner: 'Lokale KI betreibt quelloffene Spitzenmodelle (Qwen, Llama, DeepSeek) auf eigener Büro- und Baustellenhardware – offline und ohne Cloud-Übermittlung; das erleichtert Datenschutz und Geheimschutz, ersetzt aber keine DSGVO-Prüfung.',
       mechanismus: {
         intro: 'Durch moderne Modellkompression (Quantisierung) schrumpft der Speicherbedarf von KI-Modellen um bis zu 75%, sodass modernste Sprach- und Vision-Modelle auf normalen Workstations laufen.',
         steps: [

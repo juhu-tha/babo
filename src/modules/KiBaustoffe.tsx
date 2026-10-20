@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
 import ReactMarkdown from 'react-markdown';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -325,8 +327,8 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
     title = "Fehler, Anwendungsgrenzen, Recht & Ethik";
     description = "Sicherheits- und Haftungsrisiken von KI im Bauwesen: BGB-Werkvertragsrecht, HOAI-Sorgfaltspflichten, EU AI Act, Vermeidung von Normen-Halluzinationen und Rechenfehlern.";
   } else if (activeTab === 'lokal') {
-    title = "Lokale KI & LM Studio (100% Datensouveränität)";
-    description = "Betreiben Sie leistungsstarke Open-Source-LLMs (Qwen 3.8, Llama 4, DeepSeek R2) vollkommen offline auf Ihrer büroeigenen Hardware – datenschutzkonform nach DSGVO ohne Cloud-Zwang.";
+    title = "Lokale KI & LM Studio (Datensouveränität)";
+    description = "Betreiben Sie leistungsstarke Open-Source-LLMs (z. B. Qwen, Llama, DeepSeek) offline auf Ihrer büroeigenen Hardware – ohne Cloud-Übermittlung (DSGVO-Pflichten bleiben bestehen).";
   } else if (activeTab === 'ressourcen') {
     title = "Unabhängige KI-Ressourcen & Verzeichnisse";
     description = "Eine kuratierte Sammlung unabhängiger Suchdatenbanken, Forschungsplattformen und Repositories für weitreichende Recherchen im Bauwesen.";
@@ -634,7 +636,7 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
                           </span>
                         ) : apiMode === 'live' ? (
                           <span className="bg-emerald-950 text-emerald-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-emerald-800">
-                            ● Live-API (Gemini 3.5)
+                            ● Live-API (Gemini)
                           </span>
                         ) : (
                           <span className="bg-amber-950 text-amber-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-amber-800">
@@ -849,18 +851,275 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
         ]}
       />
 
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      {activeTab === 'system' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Kosinus-Ähnlichkeit im RAG-Retrieval"
+        zielGleichung="\cos\theta = \frac{\vec a \cdot \vec b}{|\vec a|\,|\vec b|}"
+        schritte={[
+          { titel: 'Vektoren', erklaerung: 'Frage-Embedding a und zwei Textabschnitte b (Expositionsklassen) und c (Schalung), vereinfacht dreidimensional:', formel: '\\vec a = (0{,}8;\\ 0{,}6;\\ 0),\\ \\vec b = (0{,}6;\\ 0{,}8;\\ 0),\\ \\vec c = (0;\\ 0{,}6;\\ 0{,}8)' },
+          { titel: 'Skalarprodukte', erklaerung: 'Alle Vektoren haben die Länge 1, daher entspricht das Skalarprodukt direkt dem Kosinus:', formel: '\\vec a\\cdot\\vec b = 0{,}48 + 0{,}48 = 0{,}96;\\quad \\vec a\\cdot\\vec c = 0 + 0{,}36 + 0 = 0{,}36' },
+          { titel: 'Ranking', erklaerung: 'Der Retriever übergibt Abschnitt b an das Sprachmodell:', formel: '\\cos\\theta_{ab} = 0{,}96 > \\cos\\theta_{ac} = 0{,}36' }
+        ]}
+        ergebnisHinweis="Hohe Ähnlichkeit heißt nur thematische Nähe, nicht fachliche Richtigkeit: Der gefundene Abschnitt muss aus der aktuellen Normausgabe stammen, sonst zitiert das System veraltete Werte."
+        normQuelle="Grundlagen Information Retrieval; ISO/IEC 22989:2022"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Ausgabe eines einzelnen Neurons"
+        zielGleichung="y = \sigma(z) = \frac{1}{1 + e^{-z}},\quad z = \sum w_i x_i + b"
+        schritte={[
+          { titel: 'Gewichtete Summe', erklaerung: 'Zwei normierte Eingänge x = (1,2; 0,4), Gewichte w = (0,8; −0,5), Bias b = 0,1:', formel: 'z = 0{,}8 \\cdot 1{,}2 - 0{,}5 \\cdot 0{,}4 + 0{,}1 = 0{,}86' },
+          { titel: 'Aktivierung', erklaerung: 'Sigmoid-Funktion:', formel: 'y = \\frac{1}{1 + e^{-0{,}86}} = \\frac{1}{1 + 0{,}423} = 0{,}70' },
+          { titel: 'Deutung', erklaerung: 'Bei einem Klassifikator für Riss ja/nein entspricht y einem Score, nicht einer kalibrierten Wahrscheinlichkeit:', formel: 'y = 0{,}70 > 0{,}5 \\Rightarrow \\text{Klasse Riss}' }
+        ]}
+        ergebnisHinweis="Ein Netz besteht aus Millionen bis Milliarden solcher Gewichte; die Schwelle 0,5 ist eine Festlegung und muss an Fehlerkosten (übersehener Riss vs. Fehlalarm) angepasst werden."
+        normQuelle="Goodfellow/Bengio/Courville: Deep Learning (2016)"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_system" />
+        </>
+      )}
+      {activeTab === 'prompting' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Token- und Kostenabschätzung für eine Normenanalyse"
+        zielGleichung="K = \frac{n_{in}}{10^6} \cdot p_{in} + \frac{n_{out}}{10^6} \cdot p_{out}"
+        schritte={[
+          { titel: 'Eingabe', erklaerung: '40 Seiten mit je 500 Wörtern; für deutsche Fachtexte etwa 1,5 Token pro Wort (Lehrannahme):', formel: 'n_{in} = 40 \\cdot 500 \\cdot 1{,}5 = 30\\,000\\ \\text{Token}' },
+          { titel: 'Preise', erklaerung: 'Lehrwerte: 3 € je Million Eingabe-Token, 15 € je Million Ausgabe-Token; Ausgabe 2 000 Token:', formel: 'K = 0{,}03 \\cdot 3 + 0{,}002 \\cdot 15 = 0{,}09 + 0{,}03' },
+          { titel: 'Ergebnis', erklaerung: 'Kosten je Anfrage:', formel: 'K = 0{,}12\\ \\text{€}' }
+        ]}
+        ergebnisHinweis="Tarife ändern sich häufig (Stand 10/2026 manuell prüfen). Bei wiederholten Rückfragen wird der gesamte Verlauf erneut als Eingabe berechnet – die Kosten wachsen mit jeder Runde."
+        normQuelle="Anbieter-Preislisten (manuell prüfen)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Kontextfenster-Budget"
+        zielGleichung="n_{frei} = n_{ctx} - n_{sys} - n_{res}"
+        schritte={[
+          { titel: 'Bilanz', erklaerung: 'Kontext 128 000 Token, Systemprompt 2 000, Reserve für die Antwort 8 000:', formel: 'n_{frei} = 128\\,000 - 2\\,000 - 8\\,000 = 118\\,000' },
+          { titel: 'Seiten', erklaerung: 'Mit 750 Token pro Seite (500 Wörter × 1,5):', formel: 'n_S = \\frac{118\\,000}{750} = 157\\ \\text{Seiten}' },
+          { titel: 'Konsequenz', erklaerung: 'Ein 300-seitiges Baugrundgutachten passt nicht vollständig hinein:', formel: '300 > 157 \\Rightarrow \\text{RAG oder Kapitelweise}' }
+        ]}
+        ergebnisHinweis="Auch wenn ein Dokument formal hineinpasst, sinkt die Trefferquote für Details in der Mitte langer Kontexte – wichtige Abschnitte gezielt zitieren lassen."
+        normQuelle="Lehrbeispiel"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_prompting" />
+        </>
+      )}
+      {activeTab === 'llmpraxis' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Fehlerquote aus einer Stichprobenprüfung"
+        zielGleichung="\hat p = \frac{k}{n}"
+        schritte={[
+          { titel: 'Stichprobe', erklaerung: 'Von 50 KI-gelieferten Normzitaten erweisen sich 6 als falsch oder veraltet:', formel: '\\hat p = \\frac{6}{50} = 0{,}12' },
+          { titel: 'Hochrechnung', erklaerung: 'Erwartete Fehler in einem Bericht mit 200 Zitaten:', formel: 'E = 200 \\cdot 0{,}12 = 24' },
+          { titel: 'Konsequenz', erklaerung: 'Jedes Zitat ist gegen die Originalquelle zu prüfen:', formel: 'E > 0 \\Rightarrow \\text{Vollprüfung}' }
+        ]}
+        ergebnisHinweis="Schon eine kleine Fehlerquote ist bei sicherheitsrelevanten Dokumenten nicht hinnehmbar. Die Stichprobe zeigt nur die Größenordnung, sie ersetzt keine Einzelprüfung."
+        normQuelle="Lehrbeispiel; Prüfpflicht nach BGB § 633"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Mehrheitsentscheid aus drei Abfragen"
+        zielGleichung="P_{Mehrheit} = p^3 + 3p^2(1-p)"
+        schritte={[
+          { titel: 'Annahme', erklaerung: 'Jede Abfrage liefert mit p = 0,8 das richtige Ergebnis, die Abfragen seien unabhängig:', formel: 'p = 0{,}8' },
+          { titel: 'Rechnung', erklaerung: 'Mindestens zwei von drei richtig:', formel: 'P = 0{,}512 + 3 \\cdot 0{,}64 \\cdot 0{,}2 = 0{,}512 + 0{,}384 = 0{,}896' },
+          { titel: 'Grenze', erklaerung: 'Bei systematischen Fehlern (gleiche falsche Trainingsquelle) sind die Abfragen nicht unabhängig:', formel: 'P \\to p = 0{,}8' }
+        ]}
+        ergebnisHinweis="Mehrfachabfragen erhöhen die Zuverlässigkeit nur bei zufälligen Fehlern. Gegen systematische Fehler hilft nur ein unabhängiger Rechenweg, z. B. Handrechnung oder geprüfte Software."
+        normQuelle="Lehrbeispiel (Binomialverteilung)"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_llmpraxis" />
+        </>
+      )}
+      {activeTab === 'thesen' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Precision und Recall einer KI-Literatursuche"
+        zielGleichung="P = \frac{TP}{TP + FP},\quad R = \frac{TP}{TP + FN}"
+        schritte={[
+          { titel: 'Treffer', erklaerung: 'Das Tool liefert 40 Artikel, davon 22 relevant; bekannt sind 30 relevante Artikel:', formel: 'TP = 22,\\ FP = 18,\\ FN = 8' },
+          { titel: 'Precision', erklaerung: 'Anteil relevanter Treffer:', formel: 'P = \\frac{22}{40} = 0{,}55' },
+          { titel: 'Recall', erklaerung: 'Anteil gefundener relevanter Artikel:', formel: 'R = \\frac{22}{30} = 0{,}73' }
+        ]}
+        ergebnisHinweis="Ein Viertel der relevanten Literatur fehlt. KI-Recherche ergänzt die systematische Suche in Fachdatenbanken und Bibliothekskatalogen, ersetzt sie aber nicht."
+        normQuelle="Lehrbeispiel"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Bestimmtheitsmaß eines KI-generierten Auswerteskripts nachrechnen"
+        zielGleichung="R^2 = 1 - \frac{SS_{res}}{SS_{tot}}"
+        schritte={[
+          { titel: 'Kennwerte', erklaerung: 'Das Skript gibt für eine Regression Festigkeit über w/z-Wert an:', formel: 'SS_{res} = 12,\\quad SS_{tot} = 150' },
+          { titel: 'Rechnung', erklaerung: 'Handkontrolle:', formel: 'R^2 = 1 - \\frac{12}{150} = 1 - 0{,}08 = 0{,}92' },
+          { titel: 'Abgleich', erklaerung: 'Weicht der vom Skript ausgegebene Wert ab, liegt ein Fehler im Code oder in den Daten vor:', formel: 'R^2_{Skript} \\overset{!}{=} 0{,}92' }
+        ]}
+        ergebnisHinweis="In der Abschlussarbeit sind Werkzeug, Version und Zweck des KI-Einsatzes zu deklarieren; die Verantwortung für die Auswertung liegt bei der Verfasserin oder dem Verfasser."
+        normQuelle="Prüfungsordnung der Hochschule; Lehrbeispiel"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_thesen" />
+        </>
+      )}
+      {activeTab === 'recht_ethik' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Fristen der KI-Verordnung"
+        zielGleichung="\Delta t = t_{Anwendung} - t_{heute}"
+        schritte={[
+          { titel: 'Gestaffelte Anwendung', erklaerung: 'In Kraft 1. August 2024; Verbote und KI-Kompetenz seit 2. Februar 2025; Modelle mit allgemeinem Verwendungszweck seit 2. August 2025; Art. 50 ab 2. August 2026:', formel: 't_0 = \\text{1. August 2024}' },
+          { titel: 'Hochrisiko nach Digital Omnibus', erklaerung: 'Anhang III ab 2. Dezember 2027, Anhang I ab 2. August 2028:', formel: 't_{III} = \\text{2. Dezember 2027}' },
+          { titel: 'Restzeit', erklaerung: 'Vom 20. Oktober 2026 bis zum 2. Dezember 2027:', formel: '\\Delta t = 365 + 31 + 12 = 408\\ \\text{Tage} \\approx 13{,}4\\ \\text{Monate}' }
+        ]}
+        ergebnisHinweis="Die Verschiebung betrifft nur die Hochrisiko-Pflichten. Die Fundstelle des Digital Omnibus im Amtsblatt ist manuell zu prüfen; bis zur Veröffentlichung gelten die ursprünglichen Fristen."
+        normQuelle="Verordnung (EU) 2024/1689 Art. 113; Digital Omnibus zur KI-VO"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Bußgeldrahmen nach DSGVO"
+        zielGleichung="B_{max} = \max\left(20\ \text{Mio. €};\ 0{,}04 \cdot U\right)"
+        schritte={[
+          { titel: 'Großunternehmen', erklaerung: 'Weltweiter Jahresumsatz U = 800 Mio. €:', formel: '0{,}04 \\cdot 800 = 32\\ \\text{Mio. €} > 20\\ \\text{Mio. €}' },
+          { titel: 'Ingenieurbüro', erklaerung: 'Jahresumsatz U = 5 Mio. €:', formel: '0{,}04 \\cdot 5 = 0{,}2\\ \\text{Mio. €} < 20\\ \\text{Mio. €}' },
+          { titel: 'Obergrenzen', erklaerung: 'Es gilt jeweils der höhere Betrag:', formel: 'B_{max} = 32\\ \\text{Mio. €}\\ \\text{bzw.}\\ 20\\ \\text{Mio. €}' }
+        ]}
+        ergebnisHinweis="Das sind Obergrenzen für schwere Verstöße (Art. 83 Abs. 5). Die tatsächliche Höhe richtet sich nach Art, Schwere, Dauer, Vorsatz und Mitwirkung (Art. 83 Abs. 2)."
+        normQuelle="Verordnung (EU) 2016/679 Art. 83"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_recht_ethik" />
+        </>
+      )}
+      {activeTab === 'lokal' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Speicherbedarf eines quantisierten 14B-Modells"
+        zielGleichung="M \approx \frac{N \cdot b}{8} + M_{KV}"
+        schritte={[
+          { titel: 'Gewichte', erklaerung: 'N = 14 · 10⁹ Parameter, Q4_K_M mit rund 4,85 bit je Gewicht:', formel: '\\frac{14 \\cdot 10^9 \\cdot 4{,}85}{8} = 8{,}5 \\cdot 10^9\\ \\text{Byte} \\approx 8{,}5\\ \\text{GB}' },
+          { titel: 'Kontext-Cache', erklaerung: 'Für mittlere Kontextlängen rund 1,5 GB (Lehrannahme):', formel: 'M \\approx 8{,}5 + 1{,}5 = 10\\ \\text{GB}' },
+          { titel: 'Hardware', erklaerung: 'Passt auf eine Grafikkarte mit 12 GB:', formel: '10\\ \\text{GB} < 12\\ \\text{GB}' }
+        ]}
+        ergebnisHinweis="Der Kontext-Cache wächst mit der Kontextlänge; sehr lange Dokumente benötigen deutlich mehr Speicher oder werden auf CPU/RAM ausgelagert und dann langsam."
+        normQuelle="GGUF/llama.cpp-Dokumentation (manuell prüfen)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Wirkung der Quantisierung bei einem 70B-Modell"
+        zielGleichung="\frac{M_{Q4}}{M_{FP16}} = \frac{4{,}85}{16}"
+        schritte={[
+          { titel: 'FP16', erklaerung: '16 bit je Gewicht:', formel: 'M_{FP16} = \\frac{70 \\cdot 10^9 \\cdot 16}{8} = 140\\ \\text{GB}' },
+          { titel: 'Q4_K_M', erklaerung: 'Rund 4,85 bit je Gewicht:', formel: 'M_{Q4} = \\frac{70 \\cdot 10^9 \\cdot 4{,}85}{8} = 42\\ \\text{GB}' },
+          { titel: 'Verhältnis', erklaerung: 'Speichereinsparung:', formel: '\\frac{42}{140} = 0{,}30 \\Rightarrow -70\\ \\%' }
+        ]}
+        ergebnisHinweis="Quantisierung kostet etwas Genauigkeit, besonders bei Rechenaufgaben. 42 GB Gewichte erfordern 48 GB Grafikspeicher oder einen Rechner mit 64 GB gemeinsamem Speicher."
+        normQuelle="Lehrbeispiel"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_lokal" />
+        </>
+      )}
+      {activeTab === 'ressourcen' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Unsicherheit eines Benchmark-Ergebnisses"
+        zielGleichung="u = 1{,}96 \cdot \sqrt{\frac{p(1-p)}{n}}"
+        schritte={[
+          { titel: 'Messung', erklaerung: 'Modell A löst 78 % von n = 200 Aufgaben, Modell B 74 %:', formel: 'p_A = 0{,}78,\\quad p_B = 0{,}74' },
+          { titel: '95-%-Intervall A', erklaerung: 'Normalapproximation:', formel: 'u = 1{,}96 \\cdot \\sqrt{\\frac{0{,}78 \\cdot 0{,}22}{200}} = 1{,}96 \\cdot 0{,}029 = 0{,}057' },
+          { titel: 'Vergleich', erklaerung: 'Der Unterschied von 4 Prozentpunkten liegt innerhalb der Unsicherheit:', formel: '0{,}04 < 0{,}057' }
+        ]}
+        ergebnisHinweis="Ranglisten unabhängiger KI-Seiten sind Momentaufnahmen. Kleine Abstände sind statistisch oft nicht belastbar; maßgeblich ist ein eigener Test mit fachtypischen Aufgaben."
+        normQuelle="Lehrbeispiel (Binomialverteilung)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Strombedarf und Emissionen einer lokalen Auswertung"
+        zielGleichung="E = P \cdot t,\quad CO_2 = E \cdot f"
+        schritte={[
+          { titel: 'Energie', erklaerung: 'Grafikkarte 350 W, Rechenzeit 30 min:', formel: 'E = 0{,}35\\ \\text{kW} \\cdot 0{,}5\\ \\text{h} = 0{,}175\\ \\text{kWh}' },
+          { titel: 'Emissionen', erklaerung: 'Emissionsfaktor des Strommixes als Lehrwert 0,36 kg CO₂/kWh (aktuellen UBA-Wert prüfen):', formel: 'CO_2 = 0{,}175 \\cdot 0{,}36 = 0{,}063\\ \\text{kg}' },
+          { titel: 'Kosten', erklaerung: 'Strompreis 0,35 €/kWh (Lehrwert):', formel: 'K = 0{,}175 \\cdot 0{,}35 = 0{,}061\\ \\text{€}' }
+        ]}
+        ergebnisHinweis="Die Rechnung erfasst nur den Betrieb. Herstellung der Hardware und – bei Cloud-Diensten – Rechenzentrum und Kühlung kommen hinzu und sind schwer zu beziffern."
+        normQuelle="Umweltbundesamt: CO₂-Emissionsfaktoren für den Strommix (manuell prüfen)"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_ressourcen" />
+        </>
+      )}
+      {activeTab === 'onlinekurse' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Ein Schritt des Gradientenabstiegs"
+        zielGleichung="w_{neu} = w - \eta \cdot \frac{\partial L}{\partial w}"
+        schritte={[
+          { titel: 'Verlustfunktion', erklaerung: 'L(w) = (w − 1)², Startwert w = 2,0:', formel: 'L(2{,}0) = 1{,}0,\\quad \\frac{\\partial L}{\\partial w} = 2(w-1) = 2{,}0' },
+          { titel: 'Schritt', erklaerung: 'Lernrate η = 0,1:', formel: 'w_{neu} = 2{,}0 - 0{,}1 \\cdot 2{,}0 = 1{,}8' },
+          { titel: 'Kontrolle', erklaerung: 'Der Verlust sinkt:', formel: 'L(1{,}8) = 0{,}8^2 = 0{,}64 < 1{,}0' }
+        ]}
+        ergebnisHinweis="Zu große Lernraten lassen das Verfahren über das Minimum hinausspringen, zu kleine machen es langsam – ein Kernthema fast aller Einführungskurse in maschinelles Lernen."
+        normQuelle="Goodfellow/Bengio/Courville: Deep Learning (2016), Kap. 4"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Lernzeit für einen Onlinekurs planen"
+        zielGleichung="t_{ges} = t_{Video} \cdot f_{\text{Ü}}"
+        schritte={[
+          { titel: 'Aufwand', erklaerung: '24 h Videomaterial, Faktor 1,5 für Übungen und Nacharbeit (Erfahrungswert):', formel: 't_{ges} = 24 \\cdot 1{,}5 = 36\\ \\text{h}' },
+          { titel: 'Wochenplan', erklaerung: '6 h je Woche verfügbar:', formel: 'n = \\frac{36}{6} = 6\\ \\text{Wochen}' },
+          { titel: 'Leistungspunkte', erklaerung: 'Bei 30 h je ECTS-Punkt entspricht das etwa:', formel: '\\frac{36}{30} = 1{,}2\\ \\text{ECTS}' }
+        ]}
+        ergebnisHinweis="Ohne eigene Programmierübungen bleibt Videowissen oberflächlich; Lernziele vorab festlegen und mit einem kleinen eigenen Projekt abschließen."
+        normQuelle="Lehrbeispiel; ECTS-Leitfaden"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_onlinekurse" />
+        </>
+      )}
+      {activeTab === 'anwendungen' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Festigkeitsprognose mit einem linearen Lehrmodell"
+        zielGleichung="f_{c,pred} = a - b \cdot (w/z)"
+        schritte={[
+          { titel: 'Modell', erklaerung: 'Aus Laborreihen angepasst (Lehrwerte): a = 105 N/mm², b = 110 N/mm²:', formel: 'f_{c,pred} = 105 - 110 \\cdot (w/z)' },
+          { titel: 'Prognose', erklaerung: 'Rezeptur mit w/z = 0,50:', formel: 'f_{c,pred} = 105 - 55 = 50\\ \\text{N/mm}^2' },
+          { titel: 'Gültigkeit', erklaerung: 'Nur innerhalb des Trainingsbereichs (hier w/z 0,40 bis 0,65) belastbar:', formel: '0{,}40 \\le w/z \\le 0{,}65' }
+        ]}
+        ergebnisHinweis="Ein Prognosemodell ersetzt keine Erstprüfung und keinen Konformitätsnachweis. Außerhalb des Datenbereichs (andere Zemente, Zusatzstoffe) kann es grob falsch liegen."
+        normQuelle="DIN EN 206 / DIN 1045-2:2023-08 (Erstprüfung)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Modellgüte mit MAE und RMSE"
+        zielGleichung="MAE = \frac{1}{n}\sum |e_i|,\quad RMSE = \sqrt{\frac{1}{n}\sum e_i^2}"
+        schritte={[
+          { titel: 'Fehler', erklaerung: 'Vier Validierungswürfel, Abweichung Prognose minus Messung in N/mm²:', formel: 'e = (3;\\ -2;\\ 4;\\ -1)' },
+          { titel: 'MAE', erklaerung: 'Mittlerer absoluter Fehler:', formel: 'MAE = \\frac{3 + 2 + 4 + 1}{4} = 2{,}5\\ \\text{N/mm}^2' },
+          { titel: 'RMSE', erklaerung: 'Wurzel des mittleren quadratischen Fehlers:', formel: 'RMSE = \\sqrt{\\frac{9 + 4 + 16 + 1}{4}} = \\sqrt{7{,}5} = 2{,}74\\ \\text{N/mm}^2' }
+        ]}
+        ergebnisHinweis="Der RMSE gewichtet große Ausreißer stärker. Validierungsdaten dürfen nicht zum Training verwendet worden sein, sonst wird die Güte überschätzt."
+        normQuelle="Lehrbeispiel"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="ki_baustoffe" />
+        </>
+      )}
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 14 KI: KI-VO-Fristen inkl. Digital Omnibus, Art. 50/14, DSGVO-Artikel, UrhG § 44b, Modellangaben auf reale Modellfamilien zurückgeführt; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Künstliche Intelligenz', url: 'https://de.wikipedia.org/wiki/K%C3%BCnstliche_Intelligenz' },
           { title: 'Maschinelles Lernen', url: 'https://de.wikipedia.org/wiki/Maschinelles_Lernen' }
         ]} 
         literatur={[ 
-          'Russel, S. et al.: Artificial Intelligence - A Modern Approach.',
-          'Sacks, R. et al.: BIM and AI in Civil Engineering.' 
+          'Russell, S.; Norvig, P.: Artificial Intelligence – A Modern Approach. 4. Aufl., Hoboken: Pearson 2021',
+          'Goodfellow, I.; Bengio, Y.; Courville, A.: Deep Learning. Cambridge (MA): MIT Press 2016' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltdeklarationen für Produkte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
-          { title: 'DIN 1045-2 (Beton, Stahlbeton und Spannbeton - Teil 2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' }
+          { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – gestaffelte Anwendung, geändert durch Digital Omnibus (Fundstelle manuell prüfen)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+          { title: 'Verordnung (EU) 2016/679 (DSGVO)', url: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
+          { title: 'UrhG § 44b (Text und Data Mining) und § 60d (wissenschaftliche Forschung)', url: 'https://www.gesetze-im-internet.de/urhg/__44b.html' },
+          { title: 'ISO/IEC 42001:2023 (KI-Managementsysteme)', url: 'https://www.dinmedia.de/de/suche?q=ISO%2FIEC+42001' }
         ]} 
         formeln={[
           { formel: 'f_{ck, simul} = \\phi_{AI}(w/z, Z_{kg}, PCE_{\\%}, d_{max}) \\quad \\text{[N/mm²]}', erklaerung: 'Prädiktive Druckfestigkeitsschätzung im KI-Modell' },
