@@ -28,17 +28,17 @@ export function FormulaDerivationBox({
   defaultExpanded = false
 }: FormulaDerivationBoxProps) {
   const { formulaDerivationMode } = useTabContext();
-  const [localExpanded, setLocalExpanded] = useState<boolean>(defaultExpanded);
+  const [localExpanded, setLocalExpanded] = useState<boolean | null>(null);
 
-  // Ist global aktiviert oder lokal aufgeklappt
-  const isExpanded = formulaDerivationMode || localExpanded;
+  // Systemweit standardmäßig eingeklappt; per Mausklick lokal auf- und zuklappbar
+  const isExpanded = localExpanded !== null ? localExpanded : (defaultExpanded || formulaDerivationMode);
 
   return (
     <div className="bg-white rounded-2xl border border-home-grau/30 shadow-xs overflow-hidden transition-all my-3">
       {/* Header mit Aufklapp-Trigger */}
       <button
         type="button"
-        onClick={() => setLocalExpanded(!localExpanded)}
+        onClick={() => setLocalExpanded(!isExpanded)}
         className="w-full p-4 text-left flex items-center justify-between gap-3 bg-off-white hover:bg-slate-100/70 transition-colors cursor-pointer"
         aria-expanded={isExpanded}
       >

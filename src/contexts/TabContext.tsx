@@ -426,13 +426,13 @@ export function TabProvider({ children }: { children: ReactNode }) {
   };
   const toggleGlossaryTooltipMode = () => setGlossaryTooltipMode(!glossaryTooltipMode);
 
-  // Formel-Herleitungs-Modus (Schritt-für-Schritt Rechenwege, systemweit standardmäßig aktiv)
+  // Formel-Herleitungs-Modus (Schritt-für-Schritt Rechenwege, systemweit standardmäßig eingeklappt, per Klick aufklappbar)
   const [formulaDerivationMode, setFormulaDerivationModeState] = useState<boolean>(() => {
     try {
       const saved = localStorage.getItem('baustoffboard_derivation_mode');
-      return saved !== null ? saved === 'true' : true; // Standard: automatisch aktiv in allen Modulen und Reitern
+      return saved !== null ? saved === 'true' : false; // Standard: eingeklappt in allen Modulen und Reitern
     } catch {
-      return true;
+      return false;
     }
   });
   const setFormulaDerivationMode = (enabled: boolean) => {

@@ -852,19 +852,10 @@ function AppContent() {
   });
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
-      const initialized = localStorage.getItem('baustoffboard_favs_initialized');
-      if (!initialized) {
-        localStorage.setItem('baustoffboard_favs_initialized', 'true');
-        localStorage.setItem('baustoffboard_favorites', JSON.stringify(['mischungsberechnung']));
-        return ['mischungsberechnung'];
-      }
-      const saved = localStorage.getItem('baustoffboard_favorites');
-      if (saved !== null) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) return parsed;
-      }
+      // Als Start immer(!) nur Feedback-Modul in den Favoriten
+      localStorage.setItem('baustoffboard_favorites', JSON.stringify(['feedback']));
     } catch {}
-    return ['mischungsberechnung'];
+    return ['feedback'];
   });
   const [recentTabs, setRecentTabs] = useState<string[]>(() => {
     try {
@@ -1975,40 +1966,8 @@ function AppContent() {
           </div>
 
           {/* Global Footer */}
-          <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 flex flex-col sm:flex-row items-center justify-between gap-3 px-2">
-            <div className="flex items-center gap-2">
-              <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · Fakultät für Architektur und Bauwesen</span>
-            </div>
-            <div className="flex items-center gap-3 font-medium">
-              <button
-                onClick={() => setActiveTab('datenschutz')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80"
-              >
-                Datenschutz
-              </button>
-              <span>·</span>
-              <button
-                onClick={() => setActiveTab('impressum')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80"
-              >
-                Impressum
-              </button>
-              <span>·</span>
-              <button
-                onClick={() => setActiveTab('feedback')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80"
-              >
-                Feedback
-              </button>
-              <span>·</span>
-              <button
-                onClick={() => setActiveTab('admin')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80 flex items-center gap-1"
-                title="Administrator-Bereich & Audit-Dashboard (THA)"
-              >
-                <ShieldCheck size={12} className="text-shiraz" /> Admin
-              </button>
-            </div>
+          <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 text-center px-2">
+            <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg</span>
           </footer>
         </div>
       </main>
