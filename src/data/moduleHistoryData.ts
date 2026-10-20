@@ -637,17 +637,17 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '01. August 2023',
         title: 'Inkrafttreten der Bundes-Ersatzbaustoffverordnung (EBV)',
         category: 'Recht & Regularien',
-        description: 'Historischer Meilenstein nach über 15 Jahren Verhandlung: Die EBV löst den uneinheitlichen Flickenteppich der Landesregelungen (wie LAGA M20) bundesweit ab. Einführung bundeseinheitlicher Materialwerte (MEB 1 bis MEB 3) und Güteüberwachungen.',
-        impact: 'Erstmals vollkommene Rechts- und Planungssicherheit beim Einbau von RC-Baustoffen in technischen Bauwerken ohne wasserrechtliche Einzelgenehmigung.',
+        description: 'Historischer Meilenstein nach über 15 Jahren Verhandlung: Die EBV löst den uneinheitlichen Flickenteppich der Landesregelungen (wie LAGA M20) bundesweit ab. Einführung bundeseinheitlicher Materialklassen und Materialwerte (z. B. RC-1 bis RC-3, BM-0 bis BM-F3) und einer verbindlichen Güteüberwachung.',
+        impact: 'Bundesweit einheitliche Regeln für den Einbau von RC-Baustoffen in technischen Bauwerken nach Einbautabellen; eine wasserrechtliche Einzelerlaubnis ist in den zugelassenen Einbauweisen nicht erforderlich.',
         keyReference: 'EBV (BGBl. 2021 I S. 2598) / MantelV'
       },
       {
-        era: '2024–2026',
-        title: 'Urban Mining, R-Beton & Kreislaufwirtschaft 2.0',
+        era: '2024 bis 2026',
+        title: 'Urban Mining, R-Beton, GefStoffV-Novelle & Kreislaufwirtschaft 2.0',
         category: 'Werkstoffwende',
-        description: 'Verstärkter Einsatz von rezyklierten Gesteinskörnungen (Typ 1 und Typ 2 nach DIN EN 12620) im Hochbau für R-Betone nach DIN 1045-2. Verpflichtung zu Rückbau- und Verwertungskonzepten vor Beginn von Abbrucharbeiten.',
+        description: 'Verstärkter Einsatz rezyklierter Gesteinskörnungen (Typ 1 und Typ 2 nach DIN EN 12620) für R-Beton. Die GefStoffV-Novelle (in Kraft 05.12.2024) regelt Informationspflichten des Veranlassers (§ 5a) und Asbesttätigkeiten (§ 11a); neue Regeln wie DIN SPEC 91484 (2023), VDI 6210 Blatt 1 (2025), DIN SPEC 91525 (2026) sowie die Neufassungen von TRGS 521 und TRGS 524 (2026) folgen. Eine EBV-Novelle liegt seit August 2026 als Referentenentwurf vor.',
         impact: 'Schließung des mineralischen Stoffkreislaufs im Hochbau bei gleichzeitiger Schonung natürlicher Kies- und Sandvorkommen.',
-        keyReference: 'DIN EN 12620 / GewAbfV'
+        keyReference: 'DIN EN 12620 / GefStoffV 2024 / DIN SPEC 91484'
       }
     ],
     keyTakeaway: 'Der Rückbau wandelte sich vom brachialen Abriss zu einem hochgradig qualitätsgesicherten Rohstoffgewinnungsverfahren, geregelt durch die bundesweite EBV für echtes zirkuläres Bauen.'

@@ -1063,14 +1063,14 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         takeaway: 'Sortenreinheit auf der Baustelle entscheidet über hochwertiges Recycling oder teure Deponierung.'
       },
       {
-        title: 'Schadstofferkundung ist gesetzliche Pflicht',
-        description: 'Bauten vor 1993 enthalten fast ausnahmslos Asbest (Spachtelmassen, Fliesenkleber, Putze, Rohre), Bauten vor 1975 oft PCB in Fugen und PAK in Teerklebern. Sanierung erfolgt streng nach TRGS 519 (Asbest) und TRGS 521 (KMF).',
-        takeaway: 'Schadstoffüberraschungen während des Abbruchs führen zum sofortigen Baustopp durch die Gewerbeaufsicht.'
+        title: 'Schadstofferkundung vor jedem Rückbau',
+        description: 'In Bauten vor 1993 ist mit Asbest zu rechnen (Spachtelmassen, Fliesenkleber, Putze, Rohre), in Bauten bis etwa 1975 mit PCB in Fugen und PAK in Teerklebern. Der Veranlasser muss vorhandene Informationen weitergeben (§ 5a GefStoffV); das ausführende Unternehmen ermittelt in der Gefährdungsbeurteilung, fachlich durch ein Schadstoffkataster nach VDI 6202. Sanierung nach TRGS 519 (Asbest) und TRGS 521 (KMF).',
+        takeaway: 'Schadstofffunde während des Abbruchs bedeuten Arbeitsunterbrechung, neue Gefährdungsbeurteilung und Nachträge.'
       },
       {
         title: 'Die Ersatzbaustoffverordnung (EBV)',
-        description: 'Seit August 2023 regelt die EBV bundeseinheitlich das Ende der Abfalleigenschaft mineralischer Ersatzbaustoffe (MEB) für den Einbau in technischen Bauwerken (Straßenunterbau, Dämme, Lärmschutzwände).',
-        takeaway: 'Geprüfter Recyclingschotter ist ein vollwertiger Bauproduktbaustein, kein Abfall.'
+        description: 'Seit August 2023 regelt die EBV bundeseinheitlich Herstellung, Güteüberwachung und Einbau mineralischer Ersatzbaustoffe (MEB) in technischen Bauwerken (Straßenunterbau, Dämme, Lärmschutzwälle). Das Ende der Abfalleigenschaft richtet sich nach § 5 KrWG.',
+        takeaway: 'Güteüberwachter Recyclingbaustoff ist technisch gleichwertig – rechtlich bleibt er bis zum Abfallende Abfall.'
       }
     ],
     systemicExplanation: 'Dieses Modul deckt das Lebensende (End of Life) von Bauwerken ab. Es vermittelt Schadstoffkataster nach VDI 6202, Abbruchstatik, Arbeits- und Immissionsschutz sowie die Aufbereitung zu normgerechten RC-Gesteinskörnungen nach DIN EN 12620.',
@@ -1085,7 +1085,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Historische Erfassung, Probenahme auf Asbest, KMF, PCB, PAK, Schwermetalle.',
         iconName: 'AlertTriangle',
         keyFacts: ['TRGS 519 (Asbest)', 'TRGS 521 (KMF)', 'Schadstoffkataster'],
-        normOrFormula: 'VDI 6202 Blatt 1/2',
+        normOrFormula: 'VDI 6202 Blatt 1 / Blatt 3',
         color: 'from-rose-600 to-rose-700'
       },
       {

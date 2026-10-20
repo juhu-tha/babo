@@ -714,12 +714,12 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Deponieklassierung', desc: 'Einstufungsrichtwerte von unbelastetem Erdaushub (DK 0) bis zu gefährlichen Sonderabfällen (DK III).' }
     ],
     submodules: [
-      { title: 'Rückbau & Material', icon: Recycle, purpose: 'Rückbaukonzepte, Vorerkundung der Abbruchsubstanz, selektiver Rückbau als Voraussetzung für hochwertigen RC-Beton.', standards: 'DIN SPEC 91436', useCase: 'Ausarbeitung eines Rückbau- und Verwertungskonzepts einer Industrieanlage.' },
-      { title: 'Boden- & Materialaufbereitung', icon: Recycle, purpose: 'Bodenwaschanlagen, Brecher- und Siebtechnik, Bauschuttaufbereitung und Sekundärbaustoffe.', standards: 'ErsatzbaustoffV / DIN 18196', useCase: 'Konzeption einer mobilen Brecheranlage auf einer Großbaustelle zur Kantenbruch-Erzeugung.' },
-      { title: 'Abfälle & Altlasten', icon: Trash2, purpose: 'Zuordnung nach Abfallverzeichnis-Verordnung (AVV), Bestimmung der Deponieklassen DK 0 bis DK III.', standards: 'Ersatzbaustoffverordnung (EBV) / Deponieverordnung (DepV) / LAGA M20', useCase: 'Klassifizierung teerhaltigen Straßenaufbruchs zur schadstofffreien Entsorgung.' },
-      { title: 'Schad- und Gefahrstoffe', icon: AlertTriangle, purpose: 'Erkennung und Sanierungswege von Asbest, KMF (künstliche Mineralfasern), PCB, Holzschutzmittel-Altlasten.', standards: 'TRGS 519 (Asbest), TRGS 521 (KMF)', useCase: 'Planung von Schutzmaßnahmen beim Absaugen asbesthaltiger Spachtelmassen.' },
-      { title: 'Ressourceneffizienz', icon: LeafIcon, purpose: 'Urban Mining, Materialkataster, Zirkularitätsnachweise und Recyclingquoten im Hoch- und Tiefbau.', standards: 'Kreislaufwirtschaftsgesetz (KrWG)', useCase: 'Berechnung der Massenbilanz und Recyclingquote eines rückzubauenden Gewerbekomplexes.' },
-      { title: 'Rückbau-Checklisten', icon: ClipboardCheck, purpose: 'Prüflisten für Schadstofferkundung, Entsorgungsnachweise, Abbruchanträge und Arbeitssicherheit.', standards: 'BG BAU / TRGS 519 / VDI 6210', useCase: 'Freigabeprotokoll vor Abbruchbeginn mit Schwarz-Weiß-Bereichskontrolle.' }
+      { title: 'Rückbau & Material', icon: Recycle, purpose: 'Rückbaukonzepte, Vorerkundung der Abbruchsubstanz, selektiver Rückbau als Voraussetzung für hochwertigen RC-Beton.', standards: 'DIN SPEC 91484:2023-09 / DIN SPEC 91525:2026-02 / VDI 6210 Blatt 1:2025-10 / DIN 18007:2022-09', useCase: 'Ausarbeitung eines Rückbau- und Verwertungskonzepts einer Industrieanlage.' },
+      { title: 'Boden- & Materialaufbereitung', icon: Recycle, purpose: 'Bodenwaschanlagen, Brecher- und Siebtechnik, Bauschuttaufbereitung und Sekundärbaustoffe.', standards: 'ErsatzbaustoffV / LAGA PN 98 / DIN 19698-1 / DIN 18196', useCase: 'Konzeption einer mobilen Brecheranlage auf einer Großbaustelle zur Kantenbruch-Erzeugung.' },
+      { title: 'Abfälle & Altlasten', icon: Trash2, purpose: 'Zuordnung nach Abfallverzeichnis-Verordnung (AVV), Bestimmung der Deponieklassen DK 0 bis DK III.', standards: 'Ersatzbaustoffverordnung (EBV) / Deponieverordnung (DepV) / AVV (LAGA M20 nur noch historisch)', useCase: 'Klassifizierung teerhaltigen Straßenaufbruchs zur schadstofffreien Entsorgung.' },
+      { title: 'Schad- und Gefahrstoffe', icon: AlertTriangle, purpose: 'Erkennung und Sanierungswege von Asbest, KMF (künstliche Mineralfasern), PCB, Holzschutzmittel-Altlasten.', standards: 'GefStoffV §§ 5a, 11a / TRGS 519 (Asbest) / TRGS 521 (KMF, Neufassung 2026) / TRGS 524 (2026) / VDI 6202', useCase: 'Planung von Schutzmaßnahmen beim Absaugen asbesthaltiger Spachtelmassen.' },
+      { title: 'Ressourceneffizienz', icon: LeafIcon, purpose: 'Urban Mining, Materialkataster, Zirkularitätsnachweise und Recyclingquoten im Hoch- und Tiefbau.', standards: 'Kreislaufwirtschaftsgesetz (KrWG § 14) / VDI 4800 Blatt 1', useCase: 'Berechnung der Massenbilanz und Recyclingquote eines rückzubauenden Gewerbekomplexes.' },
+      { title: 'Rückbau-Checklisten', icon: ClipboardCheck, purpose: 'Prüflisten für Schadstofferkundung, Entsorgungsnachweise, Abbruchanträge und Arbeitssicherheit.', standards: 'GewAbfV § 8 / TRGS 519 / VDI 6210 Blatt 1 / LAGA PN 98', useCase: 'Freigabeprotokoll vor Abbruchbeginn mit Schwarz-Weiß-Bereichskontrolle.' }
     ],
     didacticCards: [
       { title: 'Lückenlose Dokumentation', desc: 'Die Wichtigkeit schadstofffreier "Zutatenlisten" für das Gebäude der Zukunft.' },
@@ -733,16 +733,18 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Asbestsanierung', url: 'https://de.wikipedia.org/wiki/Asbestsanierung' }
     ],
     literatur: [
-      'Gilles, G. (2018): Handbuch Abbruch und Rückbau im Hochbau (Werner Verlag)',
-      'Ersatzbaustoffverordnung (EBV 2023) und LAGA-Regelwerke zur Verwertung mineralischer Reststoffe'
+      'Müller, A.: Baustoffrecycling – Entstehung, Aufbereitung, Verwertung. Wiesbaden: Springer Vieweg 2018',
+      'Kranert, M. (Hrsg.): Einführung in die Kreislaufwirtschaft. 5. Aufl., Wiesbaden: Springer Vieweg 2017'
     ],
     regelwerke: [
-      { title: 'Ersatzbaustoffverordnung (EBV) 2023 - Bundesgesetzblatt', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
-      { title: 'TRGS 519: Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Rekonstruktions- oder Instandhaltungsarbeiten', url: 'https://www.baua.de/' },
-      { title: 'Deponieverordnung (DepV) - Grenzwerte für Eluate und Feststoff', url: 'https://www.gesetze-im-internet.de/' }
+      { title: 'Ersatzbaustoffverordnung (EBV), Art. 1 der Mantelverordnung vom 9.7.2021 (BGBl. I S. 2598), in Kraft seit 01.08.2023', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
+      { title: 'Gefahrstoffverordnung (GefStoffV) – § 5a Veranlasser, § 11a Asbest (Fassung seit 05.12.2024)', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
+      { title: 'Gewerbeabfallverordnung (GewAbfV) – §§ 8, 9 Bau- und Abbruchabfälle', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },
+      { title: 'TRGS 519: Asbest – Abbruch-, Sanierungs- oder Instandhaltungsarbeiten (Fassung 2014, zuletzt geändert 28.01.2025)', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' },
+      { title: 'Deponieverordnung (DepV) – Anhang 3 Zuordnungswerte', url: 'https://www.gesetze-im-internet.de/depv_2009/' }
     ],
     formeln: [
-      { formel: '\\text{LAGA/EBV-Index} = \\sum C_{Eluat,i} / S_i', erklaerung: 'Summenformel zur Bewertung der Schadstoffkonzentrationen in Eluaten im Vergleich zu den zulässigen LAGA-Schwellenwerten S_i bzw. EBV-Materialwerten.', quelle: 'Ersatzbaustoffverordnung (EBV) / LAGA M20' }
+      { formel: '\\max_i \\frac{c_i}{MW_{i,k}} \\le 1 \\Rightarrow \\text{Materialklasse } k', erklaerung: 'Einstufung in eine Materialklasse: Jeder Parameter i muss den Materialwert MW der Klasse k einhalten; maßgebend ist der ungünstigste Quotient (keine Summenbildung).', quelle: 'Ersatzbaustoffverordnung (EBV), Anlage 1' }
     ]
   },
   dauerhaftigkeit: {
@@ -1133,20 +1135,18 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   rueckbau: {
     websites: [
       { name: "Deutscher Abbruchverband e.V.", url: "https://www.deutscher-abbruchverband.de", desc: "Fachverband für Rückbautechnik, Schadstoffsanierung und technische Abbruchrichtlinien." },
-      { name: "Madaster Deutschland - Circularity", url: "https://www.madaster.de", desc: "Onlineregister für Gebäude-Materialkataster zur Bewertung der Weiternutzung beim Rückbau (Urban Mining)." },
-      { name: "Ressourceneffizienz-Zentrum Bayern (REZ)", url: "https://www.rez.bayern.de", desc: "Staatliche bayerische Plattform für Kreislaufwirtschaft und ressourcensparendes Bauen." }
+      { name: "Kreislaufwirtschaft Bau", url: "https://kreislaufwirtschaft-bau.de", desc: "Initiative der Bauwirtschaft; Monitoringberichte zu Aufkommen und Verbleib mineralischer Bauabfälle." },
+      { name: "Ressourceneffizienz-Zentrum Bayern (REZ)", url: "https://www.umweltpakt.bayern.de/rez/", desc: "Bayerische Plattform des LfU zu Ressourceneffizienz, auch im Bauwesen." }
     ],
     books: [
-      { title: "Rückbau- und Recycling-Handbuch für Hochbauten", desc: "Karg, Fraunhofer-IRB Verlag. Handbuch für selektiven Abbruch, Schadstofferkennung und Aufbereitung mineralischer Zuschläge." },
-      { title: "Urban Mining: Ressourcenströme im anthropogenen Lager", desc: "DIN Media. Statistische Bestandserhebungen städtischer Baustoffressourcen für zukünftige Baustoffrückgewinnungen." }
+      { title: "Müller, A.: Baustoffrecycling – Entstehung, Aufbereitung, Verwertung. Wiesbaden: Springer Vieweg 2018", desc: "Aufbereitungstechnik, Eigenschaften und Verwertung mineralischer Recyclingbaustoffe." },
+      { title: "Hillebrandt, A.; Riegler-Floors, P.; Rosen, A.; Seggewies, J.-K.: Atlas Recycling – Gebäude als Materialressource. München: Detail 2018", desc: "Konstruktionen und Materialien für rückbau- und recyclinggerechtes Bauen." }
     ],
     publications: [
-      { journal: "Resources, Conservation and Recycling", title: "Design for Deconstruction (DfD): High-grade recycling potential of precast concrete elements utilizing modular dry connections", desc: "Rückbauoptimiertes Konstruieren im modernen Modulbau." },
-      { journal: "GAIA - Ecological Perspectives", title: "Stoffstromanalyse deutscher Wohngebäude: Schadstoffentfrachtung und Recycling-Prognosen", desc: "Massenbilanzierungen mineralischer Hochbaurecyclingpotenziale." }
+      { journal: "Kreislaufwirtschaft Bau (Hrsg.), zweijährlich", title: "Mineralische Bauabfälle – Monitoring: Bericht zum Aufkommen und zum Verbleib mineralischer Bauabfälle", desc: "Amtlich gestützte Statistik zu Aufkommen, Recycling und Verfüllung; aktuelle Ausgabe beim Herausgeber." }
     ],
     dissertations: [
-      { title: "Ressourcen- und kreislaufgerechte Konstruktion im Massivbau zur Minderung anthropogener Stoffströme", desc: "Dissertation, KIT, 2021. CO2-Reduktionspotenziale hochreiner RC-Gesteinskörnungen." },
-      { title: "Schadstoff-Screening und robotergestützter selektiver Rückbau von mineralischen Wandbauteilen vor Ort", desc: "Dissertation, Technische Universität Darmstadt. Digitale Sensorklassifikation im automatisierten Gebäudeabbruch." }
+      
     ]
   },
   dauerhaftigkeit: {
