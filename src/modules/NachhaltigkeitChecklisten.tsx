@@ -350,8 +350,8 @@ export default function NachhaltigkeitChecklisten() {
           },
           {
             formel: 'Q_P = \\left(Q_h + Q_{tw}\\right) \\cdot f_p \\le Q_{P,\\text{zul}} \\quad [\\text{kWh/(m}^2\\cdot\\text{a)}]',
-            /* TODO: GModG Umnummerierung */ erklaerung: 'Jahres-Primärenergiebedarf eines Gebäudes nach dem Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG § 15) aus Heizwärme- und Warmwasserbedarf mit Primärenergiefaktor fp.',
-            /* TODO: GModG Umnummerierung */ quelle: 'GModG (vormals GEG § 15) / DIN V 18599'
+            erklaerung: 'Jahres-Primärenergiebedarf eines Gebäudes nach § 15 Gebäudemodernisierungsgesetz (GModG, vormals GEG; Nummerierung unverändert, in Kraft gestaffelt ab 29.07.2026) aus Heizwärme- und Warmwasserbedarf mit Primärenergiefaktor fp.',
+            quelle: 'GModG § 15 / DIN V 18599:2018-09'
           }
         ]}
       />

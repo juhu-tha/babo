@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Database, Leaf, Search, Globe, FileText, CheckCircle2, ShieldAlert, FileSpreadsheet, Eye, Info, RefreshCw, RotateCcw, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 const DATABASES = [
   {
@@ -794,17 +796,45 @@ export default function Materialdatenbanken() {
         </div>
       </div>
 
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Flächenbezogenes Treibhauspotenzial einer Außenwand"
+        zielGleichung="GWP_{A} = \sum_k d_k \cdot \rho_k \cdot gwp_{m,k}"
+        schritte={[
+          { titel: 'Kalksandstein', erklaerung: 'd = 0,175 m, ρ = 1 800 kg/m³, gwp = 0,13 kg CO₂e/kg (Lehrwert):', formel: '0{,}175 \\cdot 1\\,800 \\cdot 0{,}13 = 40{,}95\\,\\text{kg CO}_2\\text{e/m}^2' },
+          { titel: 'EPS-Dämmung', erklaerung: 'd = 0,14 m, ρ = 20 kg/m³, gwp = 3,3 kg CO₂e/kg (Lehrwert):', formel: '0{,}14 \\cdot 20 \\cdot 3{,}3 = 9{,}24\\,\\text{kg CO}_2\\text{e/m}^2' },
+          { titel: 'Summe A1–A3', erklaerung: 'Ohne Putz und Befestigung:', formel: 'GWP_A = 50{,}2\\,\\text{kg CO}_2\\text{e/m}^2' }
+        ]}
+        ergebnisHinweis="Werte stets mit Datensatz-ID, Version und Modul (A1–A3, C, D) aus der aktuellen ÖKOBAUDAT übernehmen. Massebezogene und volumenbezogene Deklarationen nicht verwechseln."
+        normQuelle="DIN EN 15804+A2; ÖKOBAUDAT (BMWSB/BBSR)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Umrechnung einer massebezogenen EPD auf die funktionale Einheit"
+        zielGleichung="GWP_{m^2} = d \cdot \rho \cdot gwp_m"
+        schritte={[
+          { titel: 'EPD-Angabe', erklaerung: 'Mineralwolle: 1,20 kg CO₂e je kg (A1–A3), Rohdichte 30 kg/m³:', formel: 'gwp_m = 1{,}20\\,\\text{kg CO}_2\\text{e/kg}' },
+          { titel: 'Dicke', erklaerung: 'Für U ≈ 0,20 W/(m²K) gewählt:', formel: 'd = 0{,}16\\,\\text{m}' },
+          { titel: 'Ergebnis', erklaerung: 'Flächenbezogen:', formel: 'GWP = 0{,}16 \\cdot 30 \\cdot 1{,}20 = 5{,}76\\,\\text{kg CO}_2\\text{e/m}^2' }
+        ]}
+        ergebnisHinweis="Dämmstoffe nur bei gleicher Wärmeschutzwirkung (gleicher R-Wert) vergleichen – ein besser dämmender Stoff braucht weniger Dicke."
+        normQuelle="DIN EN 15804+A2; DIN EN ISO 6946"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="materialdatenbanken" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 13 Digitales: EN 15804+A2, ÖKOBAUDAT-Nutzung und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Materialdatenbanken', url: 'https://de.wikipedia.org/wiki/Werkstoffdatenbank' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
           { title: 'BNB-Kriterium 1.1.1 (Treibhausgaspotenzial und Primärenergiebedarf)', url: 'https://www.bnb-nachhaltigesbauen.de/' }
         ]}
         literatur={[
-          'BBSR: Handbuch für die ÖKOBAUDAT',
-          'IBU: Leitfaden zur Erstellung von EPDs'
+          'BBSR/BMWSB: ÖKOBAUDAT – Informationsportal und Dokumentation (www.oekobaudat.de)',
+          'IBU (Institut Bauen und Umwelt e. V.): Allgemeine EPD-Programmanleitung (aktuelle Fassung)'
         ]}
         formeln={[
           {

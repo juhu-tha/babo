@@ -622,16 +622,16 @@ const MODULES_DATA: Record<string, GroupData> = {
     icon: Monitor,
     basicsTitle: 'Der Digitale Zwilling als Datenrückgrat',
     basicsDesc1: 'Digitalisierung strukturiert das unübersichtliche Bauwesen. Im Zentrum steht der Digitale Zwilling (Digital Twin) - ein geometrisches und semantisches Datenmodell, das den gesamten Lebenszyklus eines Bauwerks digital begleitet.',
-    basicsDesc2: 'Wir erfassen BIM-Klassen (IFC), binden Materialdatenbanken automatisch an CAD-Systeme an und erstellen fälschungssichere Baustoff- und Ressourcenpässe (DPP), um die Wiederverwertbarkeit von Sekundärbaustoffen abzusichern.',
+    basicsDesc2: 'Wir erfassen BIM-Klassen (IFC), binden Materialdatenbanken automatisch an CAD-Systeme an und behandeln Material- und Ressourcenpässe sowie den Digitalen Produktpass (DPP), um die Wiederverwertbarkeit von Sekundärbaustoffen abzusichern.',
     basicsCards: [
       { title: 'BIM-Eigenschaften', desc: 'Ausstattung dreidimensionaler CAD-Objekte mit baustofflichen Attributen (Dichte, Brandschutz, GWP-Werte).' },
       { title: 'Digitale Baustoffpässe', desc: 'Transparenter Nachweis aller verbauten Inhalts- und Schadstoffe zur sortenreinen Trennung beim späteren Rückbau.' }
     ],
     submodules: [
-      { title: 'BIM für Baustoffe', icon: Monitor, purpose: 'Semantische Datenanreicherung in CAD-Modellen, IFC-Klassen (IfcMaterial), Schnittstellen.', standards: 'DIN EN ISO 16739 (IFC-Standard)', useCase: 'Zuweisung einer brandschutzrelevanten Rohdichte an eine IFC-Stahlbetonwand.' },
-      { title: 'Materialdatenbanken', icon: Search, purpose: 'Anbindung externer Stoffdatenquellen wie ÖKOBAUDAT, MAWEG, WECOBIS in den BIM-Prozess.', standards: 'Datenbankschnittstellen (API)', useCase: 'Automatischer Import der Wärmeleitfähigkeit aus einer Weblink-Stoffdatenbank.' },
-      { title: 'Materialpässe', icon: FileText, purpose: 'Ressourcenpässe nach Madaster-Standard zur Quantifizierung der zirkulären Gebäudeeffizienz.', standards: 'Madaster Circularity-Index', useCase: 'Berechnung des Zirkularitäts-Index für ein neu geplantes Parkhaus.' },
-      { title: 'Digitaler Produktpass (DPP)', icon: QrCodeIcon, purpose: 'EU-weit vorgeschriebene stoffliche Pässe für lückenlose Herkunftsnachweise elektronisch abrufbar.', standards: 'EU-Ökodesign-Verordnung (ESPR)', useCase: 'Scannen eines Baustoff-QR-Codes auf der Baustelle zum lückenlosen Abruf der Leistungserklärung.' },
+      { title: 'BIM für Baustoffe', icon: Monitor, purpose: 'Semantische Datenanreicherung in CAD-Modellen, IFC-Klassen (IfcMaterial), Schnittstellen.', standards: 'ISO 16739-1:2024 (IFC 4.3) / DIN EN ISO 19650 / bSDD', useCase: 'Zuweisung einer brandschutzrelevanten Rohdichte an eine IFC-Stahlbetonwand.' },
+      { title: 'Materialdatenbanken', icon: Search, purpose: 'Anbindung externer Stoffdatenquellen wie ÖKOBAUDAT, MAWEG, WECOBIS in den BIM-Prozess.', standards: 'ÖKOBAUDAT (EN 15804+A2), WECOBIS, Datenbankschnittstellen (API)', useCase: 'Automatischer Import der Wärmeleitfähigkeit aus einer Weblink-Stoffdatenbank.' },
+      { title: 'Materialpässe', icon: FileText, purpose: 'Material- und Gebäuderessourcenpässe (z. B. Madaster, DGNB-Gebäuderessourcenpass) zur Quantifizierung der Kreislauffähigkeit; derzeit keine gesetzliche Pflicht.', standards: 'MCI (Ellen MacArthur Foundation) / DGNB TEC 1.6 / ISO 20887', useCase: 'Berechnung des Zirkularitäts-Index für ein neu geplantes Parkhaus.' },
+      { title: 'Digitaler Produktpass (DPP)', icon: QrCodeIcon, purpose: 'Digitaler Produktpass, der schrittweise per delegierten Rechtsakten für einzelne Produktgruppen verpflichtend wird.', standards: 'Verordnung (EU) 2024/1781 (ESPR) / Verordnung (EU) 2024/3110 (BauPVO)', useCase: 'Scannen eines Baustoff-QR-Codes auf der Baustelle zum lückenlosen Abruf der Leistungserklärung.' },
       { title: 'LLM-Praxis (Claude & ChatGPT)', icon: Terminal, purpose: 'Effizienter Einsatz von Claude & ChatGPT: Skills, MCP-Konnektoren, Markdown-Standardisierung, kuratierte Projektordner (CLAUDE.md) und quellenbasiertes Web-Grounding.', standards: 'Anthropic MCP, EU AI Act, VOB/B', useCase: 'Automatisierte Erstellung prüfsicherer VOB-Bedenkenhinweise und statischer Prüfprotokolle mit 70% Token-Ersparnis.' }
     ],
     didacticCards: [
@@ -646,15 +646,15 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Industrie Foundation Classes', url: 'https://de.wikipedia.org/wiki/Industry_Foundation_Classes' }
     ],
     literatur: [
-      'Borrmann, A. et al. (2015): Building Information Modeling - Technologische Grundlagen und industrielle Praxis (Springer Vieweg)',
+      'Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021',
       'Hausknecht, K. (2018): BIM Einstieg kompakt (DIN Media)'
     ],
     regelwerke: [
-      { title: 'DIN EN ISO 19650 (Organisation und Digitalisierung von Informationen über Bauwerke und BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
+      { title: 'DIN EN ISO 19650-1/-2:2019-08 (Organisation und Digitalisierung von Informationen über Bauwerke – BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
       { title: 'VDI 2552 (BIM-Richtlinienreihe)', url: 'https://www.dinmedia.de/de/suche?q=VDI+2552' }
     ],
     formeln: [
-      { formel: 'CI = w_m \\cdot CI_M + w_r \\cdot CI_R', erklaerung: 'Circularity Index (CI). Gewichteter Mittelwert des Kreislauf-Index der Materialien (CI_M) und des Tragwerksrückbaus (CI_R) zur Beurteilung der Zirkularität.', quelle: 'Madaster Standards / Ellen MacArthur Foundation' }
+      { formel: 'MCI = \\max\\left(0;\\; 1 - LFI \\cdot F(X)\\right), \\quad F(X) = \\frac{0{,}9}{X}', erklaerung: 'Material Circularity Indicator mit linearer Flussrate LFI und Nutzungsfaktor F(X); Grundlage u. a. der Zirkularitätsbewertung in Madaster.', quelle: 'Ellen MacArthur Foundation: Circularity Indicators (2015/2019)' }
     ]
   },
   bestand: {
@@ -1103,20 +1103,19 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   digitales: {
     websites: [
       { name: "buildingSMART Deutschland", url: "https://www.buildingsmart.de", desc: "Die offizielle Vertretung für herstellerneutrales openBIM, IFC-Schemata und BIM-Leitfäden." },
-      { name: "BIM-Portal des Bundes", url: "https://www.bimdeutschland.de", desc: "Nationale Plattform für standardisierte Attributkataloge und digitale Auftraggeber-Informationsanforderungen (AIA)." },
+      { name: "BIM Deutschland – Zentrum für die Digitalisierung des Bauwesens", url: "https://www.bimdeutschland.de", desc: "Nationales BIM-Kompetenzzentrum des Bundes; Betreiber des BIM-Portals (bim-portal.de) mit Merkmalskatalogen und AIA-Mustern." },
       { name: "planen-bauen 4.0", url: "https://www.planen-bauen40.de", desc: "Kooperationen zur Etablierung des Digitalen Zwillings und BIM-basiertem Bauantrag." }
     ],
     books: [
-      { title: "BIM-Handbuch: Leitfaden für die Digitalisierung im Bauwesen", desc: "Borrmann, König, Springer Vieweg. Umfassendes technologisches Standardwerk für Entwickler und Anwender." },
-      { title: "Digitaler Zwilling im Bauwesen", desc: "Ernst & Sohn, DIN Media. Integration von Sensordaten der Qualitätsüberwachung in BIM-CAD-Strukturen." }
+      { title: "Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling. 2. Aufl., Springer Vieweg 2021", desc: "Technologische Grundlagen (IFC, Datenmodelle, Prozesse) und industrielle Praxis." },
+      { title: "Hausknecht, K.; Liebich, T.: BIM-Kompendium. Stuttgart: Fraunhofer IRB (aktuelle Auflage)", desc: "Einführung in Methode, Rollen und openBIM-Formate." }
     ],
     publications: [
-      { journal: "Automation in Construction", title: "IFC-based semantic integration of concrete manufacturing process data with multi-LOD BIM models", desc: "Verknüpfung von Betonrezepturen im automatisierten Datenaustausch." },
-      { journal: "Advanced Engineering Informatics", title: "Automated structural analysis checks utilizing OpenBIM specifications and rule engines", desc: "Digitale Regelüberprüfung von Tragsicherheitsabgleichen direkt im Modell." }
+      { journal: "BMVI (2015)", title: "Stufenplan Digitales Planen und Bauen", desc: "Fahrplan zur Einführung von BIM im Infrastrukturbau des Bundes." },
+      { journal: "BMI (2021)", title: "Masterplan BIM für Bundesbauten", desc: "Einführungsstrategie für BIM im Bundeshochbau." }
     ],
     dissertations: [
-      { title: "Zur Repräsentation multi-skalarer geometrischer und topologischer Unschärfe in digitalen Bauwerksmodellen", desc: "Dissertation, Technische Universität München (TUM), 2021. Toleranzmodellierungen in IFC-Modellen." },
-      { title: "Automatisierte Generierung bauteilspezifischer EPD-Daten aus CAD-Modellen mittels semantischer Graph-Datenstrukturen", desc: "Dissertation, Ruhr-Universität Bochum, 2022. Ökobilanz-Generator auf Basis intelligenter BIM-Bauteile." }
+      
     ]
   },
   bestand: {

@@ -914,7 +914,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       {
         title: 'Computer Vision & KI-Bauwerksdiagnostik',
         description: 'Drohnenaufnahmen, Photogrammetrie und LiDAR-Punktwolken werden per Convolutional Neural Networks (CNN) und Segmentierung auf Rissmuster, Abplatzungen und Feuchteflecken analysiert.',
-        takeaway: 'KI ersetzt nicht den Ingenieur, automatisiert aber die mühsame Risskartierung um den Faktor 100.'
+        takeaway: 'KI ersetzt nicht den Ingenieur, kann aber die mühsame Risskartierung erheblich beschleunigen – die Bewertung bleibt fachliche Aufgabe.'
       }
     ],
     systemicExplanation: 'Die Digitalisierung transformiert die Bauwirtschaft von einer handwerklichen Silo-Branche zu einer vernetzten Industrie. Dieses Modul spannt den Bogen von IFC-Datenstrukturen (DIN EN ISO 16739) über BIM-Anwendungsfälle (BAP, AIA) bis hin zu parametrischer Geometrie und KI-Bilderkennung für Schadensanalysen.',

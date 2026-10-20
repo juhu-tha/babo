@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Monitor, Database, ArrowRight, Settings, FileCode, Layers, Eye, ShieldCheck, HelpCircle, Copy, Check, Download } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
@@ -87,17 +89,18 @@ export default function BimBaustoffe() {
 #140 = IFCRELASSOCIATESMATERIAL('3J7y$', #15, 'Material_Assoc', $, (#100), #120);
 
 /* Property-Set: Mechanische Werkstoffdaten fuer Statik */
-#150 = IFCMATERIALPROPERTIES('Pset_MaterialMechanical', $, (#160, #170), #110);
+#150 = IFCMATERIALPROPERTIES('Pset_MaterialCommon', $, (#160), #110);
 #160 = IFCPROPERTYSINGLEVALUE('MassDensity', $, IFCMASSDENSITYMEASURE(${density.toFixed(1)}), $);
-#170 = IFCPROPERTYSINGLEVALUE('ElasticModulus', $, IFCMODULUSOFELASTICITYMEASURE(${eModulus.toFixed(1)}), $);
+#155 = IFCMATERIALPROPERTIES('Pset_MaterialMechanical', $, (#170), #110);
+#170 = IFCPROPERTYSINGLEVALUE('YoungModulus', $, IFCMODULUSOFELASTICITYMEASURE(${eModulus.toFixed(1)}), $);
 
 /* Property-Set: Thermische Eigenschaften fuer Energiebilanz */
 #180 = IFCMATERIALPROPERTIES('Pset_MaterialThermal', $, (#190), #110);
 #190 = IFCPROPERTYSINGLEVALUE('ThermalConductivity', $, IFCTHERMALCONDUCTIVITYMEASURE(${conductivity.toFixed(3)}), $);
 
-/* Property-Set: Umwelt-Bilanzindikatoren aus EPD */
-#200 = IFCMATERIALPROPERTIES('Pset_MaterialEnvironmental', $, (#210), #110);
-#210 = IFCPROPERTYSINGLEVALUE('GlobalWarmingPotential', $, IFCGLOBALWARMINGPOTENTIALMEASURE(${gwp.toFixed(2)}), $);`;
+/* Projektspezifisches Property-Set (kein IFC-Standard-Pset): Umweltindikatoren aus EPD */
+#200 = IFCMATERIALPROPERTIES('CPset_Umweltdaten', $, (#210), #110);
+#210 = IFCPROPERTYSINGLEVALUE('GWP_A1_A3', $, IFCREAL(${gwp.toFixed(2)}), $);`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedIfcString);
@@ -167,7 +170,7 @@ export default function BimBaustoffe() {
           <div className="bg-slate-100 p-4 border-b border-home-grau/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
                 <FileCode className="text-shiraz" size={18} />
-                Interaktiver OpenBIM-Attributgenerator (IFC 4)
+                Interaktiver OpenBIM-Attributgenerator (IFC 4 / 4.3)
               </h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
@@ -325,17 +328,18 @@ export default function BimBaustoffe() {
                 <div>#140 = <span className="text-emerald-400 font-bold">IFCRELASSOCIATESMATERIAL</span>('3J7y$', #15, 'Material_Assoc', $, (#100), #120);</div>
                 <br />
                 <div><span className="text-gray-500">/* Property-Set: Mechanische Werkstoffdaten fuer Statik */</span></div>
-                <div>#150 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialMechanical', $, (#160, #170), #110);</div>
+                <div>#150 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialCommon', $, (#160), #110);</div>
+                <div>#155 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialMechanical', $, (#170), #110);</div>
                 <div>#160 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('MassDensity', $, <span className="text-yellow-400">IFCMASSDENSITYMEASURE</span>({formatDeZahl(density, 1)}), $);</div>
-                <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ElasticModulus', $, <span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
+                <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('YoungModulus', $, <span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
                 <br />
                 <div><span className="text-gray-500">/* Property-Set: Thermische Eigenschaften fuer Energiebilanz */</span></div>
                 <div>#180 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialThermal', $, (#190), #110);</div>
                 <div>#190 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('ThermalConductivity', $, <span className="text-yellow-400">IFCTHERMALCONDUCTIVITYMEASURE</span>({formatDeZahl(conductivity, 3)}), $);</div>
                 <br />
-                <div><span className="text-gray-500">/* Property-Set: Umwelt-Bilanzindikatoren aus EPD */</span></div>
-                <div>#200 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('Pset_MaterialEnvironmental', $, (#210), #110);</div>
-                <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('GlobalWarmingPotential', $, <span className="text-yellow-400">IFCGLOBALWARMINGPOTENTIALMEASURE</span>({formatDeZahl(gwp, 2)}), $);</div>
+                <div><span className="text-gray-500">/* Projektspezifisches Property-Set (kein IFC-Standard-Pset): Umweltindikatoren aus EPD */</span></div>
+                <div>#200 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span>('CPset_Umweltdaten', $, (#210), #110);</div>
+                <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span>('GWP_A1_A3', $, <span className="text-yellow-400">IFCREAL</span>({formatDeZahl(gwp, 2)}), $);</div>
               </div>
 
               {/* Explanatory footer */}
@@ -383,19 +387,47 @@ export default function BimBaustoffe() {
 
       </div>
       
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Treibhauspotenzial einer Wand aus dem BIM-Mengengerüst"
+        zielGleichung="GWP = V \cdot gwp_{V}"
+        schritte={[
+          { titel: 'Menge aus dem Modell', erklaerung: 'IfcWall 12,0 m × 3,0 m × 0,24 m, Material Stahlbeton:', formel: 'V = 12{,}0 \\cdot 3{,}0 \\cdot 0{,}24 = 8{,}64\\,\\text{m}^3' },
+          { titel: 'EPD-Kennwert', erklaerung: 'Volumenbezogener GWP-Wert der Module A1–A3 aus einer verknüpften EPD (Lehrwert):', formel: 'gwp_V = 280\\,\\text{kg CO}_2\\text{e/m}^3' },
+          { titel: 'Ergebnis', erklaerung: 'Herstellungsphase der Wand:', formel: 'GWP_{A1\\text{–}A3} = 8{,}64 \\cdot 280 = 2\\,419\\,\\text{kg CO}_2\\text{e}' }
+        ]}
+        ergebnisHinweis="Die Rechnung ist nur so gut wie die Verknüpfung: Modelle müssen Netto-Volumen (ohne Öffnungen, ohne Doppelzählung an Wandanschlüssen) und eindeutige Material-IDs liefern. Bewehrung wird getrennt bilanziert."
+        normQuelle="DIN EN 15804+A2; ISO 16739-1:2024 (IFC 4.3)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: U-Wert eines mehrschichtigen Bauteils aus den Materialattributen"
+        zielGleichung="U = \frac{1}{R_{si} + \sum d_j/\lambda_j + R_{se}}"
+        schritte={[
+          { titel: 'Schichten', erklaerung: 'Innenputz 15 mm (λ = 0,70), Stahlbeton 200 mm (λ = 2,3), Mineralwolle 160 mm (λ = 0,035) W/(mK):', formel: '\\sum \\frac{d}{\\lambda} = 0{,}021 + 0{,}087 + 4{,}571 = 4{,}680' },
+          { titel: 'Übergangswiderstände', erklaerung: 'Horizontaler Wärmestrom:', formel: 'R_T = 0{,}13 + 4{,}680 + 0{,}04 = 4{,}85\\,\\text{m}^2\\text{K/W}' },
+          { titel: 'U-Wert', erklaerung: 'Kehrwert:', formel: 'U = \\frac{1}{4{,}85} = 0{,}21\\,\\text{W/(m}^2\\text{K)}' }
+        ]}
+        ergebnisHinweis="λ gehört als Bemessungswert in die Material-Property ThermalConductivity (Pset_MaterialThermal); ohne gepflegte Attribute ist eine automatische Auswertung nicht möglich."
+        normQuelle="DIN EN ISO 6946:2018-03; IFC 4.3"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bim_baustoffe" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 13 Digitales: IFC-Property-Sets (Pset_MaterialCommon, YoungModulus, keine Fantasie-Psets), Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Building Information Modeling', url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
           { title: 'Industry Foundation Classes', url: 'https://de.wikipedia.org/wiki/Industry_Foundation_Classes' }
         ]}
         literatur={[
-          'Borrmann, A. et al.: Building Information Modeling: Technologische Grundlagen und industrielle Praxis (Springer Vieweg)',
+          'Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021',
           'buildingSMART International: IFC4.3 Spezifikationen und Pset-Definitionen'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650 (Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
-          { title: 'ISO 16739-1 (Industry Foundation Classes (IFC) für Datenfreigabe)', url: 'https://www.iso.org/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
+          { title: 'DIN EN ISO 19650-1/-2:2019-08 (Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
+          { title: 'ISO 16739-1:2024 (Industry Foundation Classes, IFC 4.3)', url: 'https://www.iso.org/' },
+          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
         ]}
         weblinks={[
           { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' },

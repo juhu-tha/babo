@@ -547,9 +547,9 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2024–2026',
         title: 'Digitale Zwillinge (Digital Twins), Punktwolken & KI-Planungsautomatisierung',
         category: 'Technologie',
-        description: 'Echtzeit-Synchronisation zwischen physischem Bauwerk und digitalem Modell via IoT-Sensoren. Laserscan-Drohnen erzeugen fotorealistische 3D-Punktwolken (Scan-to-BIM), während generative KI Grundrissoptimierungen und automatische Kollisionsprüfungen vornimmt.',
+        description: 'Echtzeit-Synchronisation zwischen physischem Bauwerk und digitalem Modell via IoT-Sensoren. Laserscan-Drohnen erzeugen fotorealistische 3D-Punktwolken (Scan-to-BIM), während KI-Werkzeuge Planungsvarianten und Prüfungen unterstützen. Mit ISO 16739-1:2024 wird IFC 4.3 (inkl. Infrastruktur) internationale Norm; der Digitale Produktpass kommt über die Ökodesign-Verordnung (EU) 2024/1781 und die Bauprodukteverordnung (EU) 2024/3110 (anwendbar seit 08.01.2026).',
         impact: 'Nahtloser Übergang von der Planung in den Betrieb (CAFM) mit prädiktiver Wartung und reduzierten Baukosten.',
-        keyReference: 'buildingSMART BCF / ISO 23386'
+        keyReference: 'ISO 16739-1:2024 / ISO 23386 / (EU) 2024/3110'
       }
     ],
     keyTakeaway: 'Digitales Bauen wandelte sich vom rechnergestützten Zeichnen von Linien hin zu einer vernetzten Datenökosystem-Methode mit intelligenten Bauwerksobjekten und lebenszyklusweiten Digitalen Zwillingen.'
