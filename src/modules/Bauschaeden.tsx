@@ -26,6 +26,8 @@ import {
   Layers as LayersIcon
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 type SchadTab = 'recht' | 'schriftverkehr' | 'normen' | 'gutachter' | 'haftung' | 'kleb_dicht';
 
@@ -403,7 +405,7 @@ ${senderName}`;
                       🏗️ Gebäudetyp E: "Einfaches Bauen" (Gesetzgebungsstand 2026)
                     </span>
                     <p className="text-xs text-slate-850 leading-relaxed">
-                      Die bayerische Initiative (Pilotprojekte, Abweichungen nach Art. 63 BayBO) und der Bundesgesetzentwurf zum <strong>Gebäudetyp E</strong> (E wie "Einfach" oder "Experimentell") zielen darauf ab, das Bauen bezahlbarer zu machen. Der Kabinettsentwurf vom 06.11.2024 entfiel mit dem Ende der 20. Wahlperiode; ein neuer Gesetzentwurf liegt dem Bundestag seit Juni 2026 vor (Stand 08/2026, noch nicht verabschiedet). 
+                      Die bayerische Initiative (Pilotprojekte, Abweichungen nach Art. 63 BayBO) und der Bundesgesetzentwurf zum <strong>Gebäudetyp E</strong> (E wie "Einfach" oder "Experimentell") zielen darauf ab, das Bauen bezahlbarer zu machen. Der Kabinettsentwurf vom 06.11.2024 entfiel mit dem Ende der 20. Wahlperiode; am 20.11.2025 legten BMJV und BMWSB Eckpunkte für einen neuen Anlauf vor; ein Gesetz ist bislang nicht in Kraft (Stand 10/2026; Verfahrensstand manuell prüfen). 
                     </p>
                     <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded border border-slate-150 leading-relaxed">
                       <strong>Rechtlicher Hintergrund:</strong> Bislang wird standardmäßig verlangt, dass Wohngebäude allen Komfort-DIN-Normen vollumfänglich entsprechen (z.B. Schallschutz, Steckdosenanzahl, etc.), da diese als "Anerkannte Regeln der Technik" gelten. Eine nicht vereinbarte Abweichung ist daher ein Mangel, auch ohne Schaden.
@@ -1277,8 +1279,35 @@ ${senderName}`;
         </div>
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Verjährung von Mängelansprüchen beim BGB- und beim VOB/B-Vertrag"
+        zielGleichung="t_{Ende} = t_{Abnahme} + T"
+        schritte={[
+          { titel: 'BGB-Bauvertrag', erklaerung: 'Abnahme am 15. März 2021; Bauwerk: fünf Jahre (§ 634a Abs. 1 Nr. 2 BGB).', formel: 't_{Ende} = \\text{15. März 2026}' },
+          { titel: 'VOB/B-Vertrag', erklaerung: 'Regelfrist für Bauwerke vier Jahre (§ 13 Abs. 4 Nr. 1 VOB/B):', formel: 't_{Ende} = \\text{15. März 2025}' },
+          { titel: 'Schriftliche Mängelrüge', erklaerung: 'Zugang des schriftlichen Mängelbeseitigungsverlangens am 10. Januar 2025: Für diesen Mangel läuft eine neue Frist von zwei Jahren, nicht vor Ablauf der Regelfrist (§ 13 Abs. 5 Nr. 1 VOB/B).', formel: 't_{Ende,Mangel} = \\text{10. Januar 2027}' }
+        ]}
+        ergebnisHinweis="Die Fristen gelten, soweit nichts anderes vereinbart ist; Hemmung (z. B. selbständiges Beweisverfahren, § 204 Abs. 1 Nr. 7 BGB) und Arglist (§ 634a Abs. 3 BGB) verlängern sie. Keine Rechtsberatung – Einzelfälle juristisch prüfen."
+        normQuelle="BGB §§ 634a, 204; VOB/B (Fassung 2016) § 13"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Mindestbreite einer elastischen Fassadenfuge"
+        zielGleichung="b_{erf} = \frac{L \cdot \alpha_T \cdot \Delta T}{ZGV}"
+        schritte={[
+          { titel: 'Längenänderung', erklaerung: 'Betonfertigteil L = 6,0 m, α_T = 10 · 10⁻⁶ 1/K, Temperaturspanne der Bauteiloberfläche ΔT = 80 K:', formel: '\\Delta L = 6\\,000 \\cdot 10 \\cdot 10^{-6} \\cdot 80 = 4{,}8\\,\\text{mm}' },
+          { titel: 'Dichtstoffklasse', erklaerung: 'Zulässige Gesamtverformung eines Dichtstoffs der Klasse 25LM:', formel: 'ZGV = 25\\,\\%' },
+          { titel: 'Fugenbreite', erklaerung: 'Erforderliche Breite:', formel: 'b_{erf} = \\frac{4{,}8}{0{,}25} = 19{,}2\\,\\text{mm} \\Rightarrow 20\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Zu schmale Fugen überdehnen den Dichtstoff und reißen ab – ein häufiger Bauschaden an Fassaden. Fugentiefe und Hinterfüllung nach DIN 18540 festlegen."
+        normQuelle="DIN 18540; DIN EN 15651-1"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bauschaeden" />
+
       <ModuleFooter
-        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: BGB-/VOB/B-Fristen (VOB/B 2016 weiterhin gültig), Normausgaben geprüft; keine Rechtsberatung; fachliche Freigabe durch den Autor ausstehend)"
         weblinks={[
           { title: "BGB - Bürgerliches Gesetzbuch (Werkvertragsrecht)", url: "https://www.gesetze-im-internet.de/bgb/BJNR001950896.html#BJNR001950896BJNG005802377" },
           { title: "WTA e.V. - Wissenschaftlich-Technische Arbeitsgemeinschaft", url: "https://www.wta-gmbh.de" },
@@ -1322,7 +1351,7 @@ ${senderName}`;
           {
             formel: 'q_w = k_f \\cdot i = k_f \\cdot \\frac{\\Delta h}{L}',
             erklaerung: 'Darcysches Filtergesetz für Durchfeuchtungsvorgänge im Erdreich/Porengefüge: Filtergeschwindigkeit q_w aus Durchlässigkeitsbeiwert k_f und hydraulischem Gefälle i.',
-            quelle: 'DIN 18130 / Bauphysik'
+            quelle: 'DIN EN ISO 17892-11 (früher DIN 18130-1) / Bauphysik'
           }
         ]} 
       />

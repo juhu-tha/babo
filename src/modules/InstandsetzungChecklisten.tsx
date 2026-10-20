@@ -21,6 +21,8 @@ import {
   Info
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 interface ChecklistItem {
   id: string;
@@ -90,7 +92,7 @@ const INSTANDSETZUNG_CHECKLISTS: Record<string, ChecklistSection> = {
       },
       {
         id: 'plan-6',
-        task: 'Instandsetzungsprinzip festlegen (W, C, R, K)',
+        task: 'Instandsetzungsprinzip festlegen (DIN EN 1504-9; früher Rili-SIB W, C, R, K)',
         description: 'Eindeutige Zuordnung des Konzepts zu den Prinzipien der DIN EN 1504-9 bzw. TR Instandhaltung (z.B. Prinzip R bei Carbonatisierung, Prinzip K/KKS bei Chloriden).',
         ref: 'DIN EN 1504-9 / TR Instandhaltung',
         tolerance: 'Eindeutige Dokumentation im Instandsetzungsplan',
@@ -683,10 +685,38 @@ export default function InstandsetzungChecklisten() {
       </div>
 
       {/* Footer */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Taupunktprüfung vor Beschichtungsarbeiten"
+        zielGleichung="\theta_d = \frac{b \cdot \gamma}{a - \gamma}, \quad \gamma = \ln\varphi + \frac{a \cdot \theta}{b + \theta}"
+        schritte={[
+          { titel: 'Klima', erklaerung: 'Lufttemperatur 15 °C, relative Luftfeuchte 80 %; Magnus-Konstanten a = 17,62, b = 243,12 °C:', formel: '\\gamma = \\ln 0{,}80 + \\frac{17{,}62 \\cdot 15}{258{,}12} = 0{,}801' },
+          { titel: 'Taupunkt', erklaerung: 'Einsetzen:', formel: '\\theta_d = \\frac{243{,}12 \\cdot 0{,}801}{17{,}62 - 0{,}801} = 11{,}6\\,\\text{°C}' },
+          { titel: 'Freigabe', erklaerung: 'Oberflächentemperatur 13 °C; gefordert mindestens Taupunkt + 3 K:', formel: '13 < 11{,}6 + 3 = 14{,}6 \\Rightarrow \\text{nicht beschichten}' }
+        ]}
+        ergebnisHinweis="Messung und Dokumentation von Luft-, Oberflächentemperatur und Feuchte gehören in das Bautagebuch; bei Unterschreitung ist zu temperieren oder die Arbeit zu verschieben."
+        normQuelle="DIN EN ISO 12944-7; TR Instandhaltung"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Auswertung von Haftzugprüfungen am Untergrund"
+        zielGleichung="\bar{f} = \frac{1}{n}\sum f_i, \quad f_{min}"
+        schritte={[
+          { titel: 'Messwerte', erklaerung: 'Fünf Abreißversuche nach DIN EN 1542 in N/mm²: 1,8; 1,6; 1,2; 1,9; 1,7.', formel: '\\sum f_i = 8{,}2' },
+          { titel: 'Mittelwert', erklaerung: 'Einsetzen:', formel: '\\bar{f} = 8{,}2 / 5 = 1{,}64\\,\\text{N/mm}^2 \\ge 1{,}5' },
+          { titel: 'Kleinstwert', erklaerung: 'Vergleich mit dem Einzelwert:', formel: 'f_{min} = 1{,}2\\,\\text{N/mm}^2 \\ge 1{,}0 \\Rightarrow \\text{Untergrund geeignet}' }
+        ]}
+        ergebnisHinweis="Die erforderlichen Werte hängen vom Instandsetzungsprodukt und dessen Anwendungsbereich ab (Instandhaltungsplan des sachkundigen Planers, TR Instandhaltung Teil 2) – die Werte 1,5/1,0 N/mm² sind übliche Anhaltswerte."
+        normQuelle="DIN EN 1542; TR Instandhaltung (DIBt)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="instandsetzung_checklisten" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: Ausführungs- und Prüfkriterien, Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         weblinks={[
           { title: "DIBt - Technische Regel Instandhaltung von Betonbauwerken", url: "https://www.dibt.de" },
-          { title: "Gütegemeinschaft Betoninstandsetzung e.V. (GUEP)", url: "https://www.guep.de" },
+          { title: "Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V. (BÜV)", url: "https://www.buev.de" },
           { title: "Deutscher Beton- und Bautechnik-Verein (DBV) - SIVV-Schein", url: "https://www.betonverein.de" }
         ]}
         wikipedia={[
@@ -695,7 +725,7 @@ export default function InstandsetzungChecklisten() {
           { title: "Instandhaltung", url: "https://de.wikipedia.org/wiki/Instandhaltung" }
         ]}
         literatur={[
-          'Raupach, M.; Orlowsky, J. (2018): Schutz und Instandsetzung von Stahlbetonbauten (Bauwerk / Ernst & Sohn)',
+          'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau (Springer Vieweg)'
         ]}
@@ -708,8 +738,8 @@ export default function InstandsetzungChecklisten() {
         formeln={[
           {
             formel: '\\beta_{hz} \\ge 1{,}5\\,\\text{N/mm}^2 \\quad (\\text{Einzelwert} \\ge 1{,}0\\,\\text{N/mm}^2)',
-            erklaerung: 'Mindest-Abreißfestigkeit des Betonuntergrundes nach DIN EN 1542 vor der Mörtelapplikation bzw. Beschichtung.',
-            quelle: 'DIN EN 1504-10 / TR Instandhaltung'
+            erklaerung: 'Übliche Anhaltswerte der Abreißfestigkeit des Betonuntergrundes (Prüfung nach DIN EN 1542) vor dem Auftrag von Mörteln bzw. Beschichtungen; maßgebend sind die Anforderungen im Instandhaltungsplan nach TR Instandhaltung.',
+            quelle: 'DIN EN 1542 / TR Instandhaltung'
           },
           {
             formel: 'T_{\\text{Oberfläche}} \\ge T_{\\text{Taupunkt}} + 3\\,\\text{K}',

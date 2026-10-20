@@ -1298,12 +1298,12 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Untergrundvorbereitung ist 80 % des Erfolgs',
-        description: 'Jeder Instandsetzungsmörtel hält nur so gut wie der Altbeton. Schadstellen müssen bis zum ungeschädigten Kern freigestemmt, Bewehrung entrostet (Sa 2½) und die Betonoberfläche aufgeraut werden (Hochdruckwasserstrahlen HDW mit 1000–2500 bar). Mindesthaftzugfestigkeit ≥ 1,5 N/mm².',
+        description: 'Jeder Instandsetzungsmörtel hält nur so gut wie der Altbeton. Schadstellen müssen bis zum ungeschädigten Kern freigestemmt, Bewehrung entrostet (Sa 2½) und die Betonoberfläche aufgeraut werden (Hochdruckwasserstrahlen HDW mit 1000–2500 bar). Abreißfestigkeit des Untergrunds als Anhaltswert ≥ 1,5 N/mm² (maßgebend: Instandhaltungsplan nach TR Instandhaltung).',
         takeaway: 'Schlechte Untergrundvorbereitung führt unweigerlich zu Hohlstellen und Abplatzungen.'
       },
       {
         title: 'Schichtenverbund & Oberflächenschutzsysteme (OS)',
-        description: 'Nach der Reprofilierung schützen abgestimmte Oberflächenschutzsysteme (OS 1 bis OS 11) vor erneutem Chlorid- und CO2-Eintrag. Für rissgefährdete Flächen (z. B. Parkhäuser) sind rissüberbrückende Systeme (OS 8 / OS 11) zwingend.',
+        description: 'Nach der Reprofilierung schützen abgestimmte Oberflächenschutzsysteme (OS 1 bis OS 11) vor erneutem Chlorid- und CO2-Eintrag. Für rissgefährdete befahrene Flächen (z. B. Parkhäuser) sind rissüberbrückende Systeme wie OS 11 erforderlich; OS 8 ist eine starre, nicht rissüberbrückende Beschichtung für ungerissene Flächen.',
         takeaway: 'Reprofilieren heilt alte Schäden – das OS-System verhindert künftige.'
       }
     ],
@@ -1356,7 +1356,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         step: '5',
         title: 'Oberflächenschutz',
         subtitle: 'OS-System 1 bis 11',
-        desc: 'Applikation von Imprägnierung (OS 1/2), Beschichtung (OS 4/5) oder rissüberbrückender Parkhausbeschichtung (OS 8/11).',
+        desc: 'Applikation von Imprägnierung (OS 1/2), Beschichtung (OS 4/5), starrer befahrbarer Beschichtung (OS 8) oder rissüberbrückender Parkhausbeschichtung (OS 11).',
         iconName: 'Award',
         keyFacts: ['Rissüberbrückung dynamisch', 'Chlorsperre', 'Rutschhemmung R11/R12'],
         normOrFormula: 'DAfStb SIB / DIN EN 1504-2',

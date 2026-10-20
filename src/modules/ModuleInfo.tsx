@@ -844,8 +844,8 @@ const MODULES_DATA: Record<string, GroupData> = {
     regelwerke: [
       { title: 'VDI 6200:2010-02: Standsicherheit von Bauwerken – Regelmäßige Überprüfung', url: 'https://www.vdi.de/richtlinien' },
       { title: 'VDI 6200 Blatt 1.1:2026-06: Berichtsdokumentation der Überprüfung', url: 'https://www.vdi.de/richtlinien' },
-      { title: 'DIN 1076:1999-11: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
-      { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen - Teil B: Allgemeine Vertragsbedingungen', url: 'https://www.gesetze-im-internet.de/' }
+      { title: 'DIN 1076:2026-01: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung (ersetzt 1999-11)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+      { title: 'VOB/B (Fassung 2016, weiterhin gültig): Vergabe- und Vertragsordnung für Bauleistungen – Teil B', url: 'https://www.bauprofessor.de/vob/' }
     ],
     formeln: [
       { formel: 'w_k = s_{r,\\text{max}} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm})', erklaerung: 'Rechenwert der Rissbreite als Produkt aus maximalem Rissabstand s_r,max und Dehnungsdifferenz zwischen Betonstahl und Beton (ohne zusätzlichen Beiwert). s_r,max nach Gl. 7.11 bzw. NA(DE).', quelle: 'DIN EN 1992-1-1, Gl. (7.8)' }
@@ -865,13 +865,13 @@ const MODULES_DATA: Record<string, GroupData> = {
     submodules: [
       { title: 'Schutz- & Instands.-Grundlagen', icon: Layers, purpose: 'Europäische Instandsetzungsprinzipien, passive vs. aktive Schutzkonzepte, Tuutti-Lebensdauermodell und De-Sitter-Regel.', standards: 'DIN EN 1504-9 / TR Instandhaltung', useCase: 'Festlegung des Sanierungsprinzips W vs. C für ein chloridbelastetes Parkhausdeck.' },
       { title: 'Instandsetzung nach Material', icon: Trees, purpose: 'Werkstoffspezifischer Schutz und Reparatur: Holz (DIN 68800), Stahl (ISO 12944), Kunststoffe (DVS), Asphalt (ZTV BEA-StB), Mauerwerk (WTA).', standards: 'DIN 68800 / ISO 12944 / ZTV BEA-StB', useCase: 'Planung von Holzprothesen an morschen Balkenköpfen und Duplex-Beschichtung auf Altstahl.' },
-      { title: 'Stahlbetoninstandhaltung', icon: Wrench, purpose: 'Instandsetzungskonzepte, Untergrundvorbereitung mit HDW, Reprofilierung (PCC/SPCC), OS-Systeme und Rissinjektion.', standards: 'TR Instandhaltung / DAfStb-Richtlinie SIB', useCase: 'Ausschreibung von PCC-Mörtel und OS 11b-Beschichtung auf befahrbaren Parkdeckflächen.' },
-      { title: 'Bauwerksabdichtung & Injektion', icon: Droplets, purpose: 'Nachträgliche Bauwerksabdichtung erdberührter Bauteile, Schleierinjektion und Rissverpressung mit EP/PU.', standards: 'DIN 18533 / DIN EN 1504-5 / WTA 4-4', useCase: 'Sanierung einer feuchten Tiefgaragen-Bodenplatte mit kraftschlüssiger Rissinjektion.' },
-      { title: 'WTA-Merkblätter', icon: FileText, purpose: 'Richtlinien zur Mauerwerksinstandsetzung, salzresistenten Sanierputzen und nachträglichen Horizontalsperren.', standards: 'WTA-Richtliniensammlung', useCase: 'Vorgabe der Horizontalsperrendosierung nach WTA-Merkblatt 4-4.' },
+      { title: 'Stahlbetoninstandhaltung', icon: Wrench, purpose: 'Instandsetzungskonzepte, Untergrundvorbereitung mit HDW, Reprofilierung (PCC/SPCC), OS-Systeme und Rissinjektion.', standards: 'TR Instandhaltung (DIBt; Nachfolgerin der Rili-SIB) / DIN EN 1504', useCase: 'Ausschreibung von PCC-Mörtel und OS 11b-Beschichtung auf befahrbaren Parkdeckflächen.' },
+      { title: 'Bauwerksabdichtung & Injektion', icon: Droplets, purpose: 'Nachträgliche Bauwerksabdichtung erdberührter Bauteile, Schleierinjektion und Rissverpressung mit EP/PU.', standards: 'DIN 18533 / DIN EN 1504-5 / WTA 4-6-24/D / WTA 4-10', useCase: 'Sanierung einer feuchten Tiefgaragen-Bodenplatte mit kraftschlüssiger Rissinjektion.' },
+      { title: 'WTA-Merkblätter', icon: FileText, purpose: 'Richtlinien zur Mauerwerksinstandsetzung, salzresistenten Sanierputzen und nachträglichen Horizontalsperren.', standards: 'WTA-Merkblätter 2-9-20/D, 4-6-24/D, 4-10, 6-5-14/D', useCase: 'Vorgabe der Horizontalsperrendosierung nach WTA-Merkblatt 4-4.' },
       { title: 'Instandsetzungs-Checklisten', icon: ClipboardCheck, purpose: 'Prüfformulare für Sachkundige Planer (SKP), HDW-Untergrundvorbereitung, Haftzugprüfung und QS-Dokumentation.', standards: 'TR Instandhaltung / DIN EN 1504-10', useCase: 'Überprüfung der Mattfeuchte und Abreißfestigkeit vor dem Auftrag von Instandsetzungsmörtel.' }
     ],
     didacticCards: [
-      { title: 'De-Sitter: Gesetz der Fünf', desc: 'Jeder aufgeschobene Euro in der Instandhaltungsphase vervünffacht die Sanierungskosten in der nächsten Phase.' },
+      { title: 'De-Sitter: Gesetz der Fünf', desc: 'Jeder aufgeschobene Euro in der Instandhaltungsphase verfünffacht näherungsweise die Sanierungskosten in der nächsten Phase.' },
       { title: 'Systemverträglichkeit & Nachbehandlung', desc: 'Instandsetzungsmörtel müssen bezüglich E-Modul und thermischer Dehnung mit dem Altbeton kompatibel sein.' },
       { title: 'Substanzschonung vor Totalersatz', desc: 'Präzise Teilerneuerung durch Holzprothesen, Reparaturschweißungen und Dünnschichtasphalte spart Ressourcen.' }
     ],
@@ -883,18 +883,18 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Holzschutz', url: 'https://de.wikipedia.org/wiki/Holzschutz' }
     ],
     literatur: [
-      'Raupach, M.; Orlowsky, J. (2015): Schutz und Instandsetzung von Stahlbetonbauten (Bauwerk Verlag)',
+      'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008',
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
       { title: 'DIN EN 1504: Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken (Teile 1 bis 10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' },
-      { title: 'TR Instandhaltung: DIBt Technische Regel Instandhaltung von Betonbauwerken', url: 'https://www.dibt.de/' },
-      { title: 'DIN 68800: Holzschutz', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+      { title: 'TR Instandhaltung: DIBt Technische Regel Instandhaltung von Betonbauwerken (Teil 1 Stand Mai 2020, Teil 2; über die MVV TB eingeführt)', url: 'https://www.dibt.de/' },
+      { title: 'DIN 68800: Holzschutz (Teil 4:2020-12 Bekämpfung und Sanierung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
       { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' }
     ],
     formeln: [
-      { formel: 'K_n = K_0 \\cdot 5^n', erklaerung: 'De-Sitter-Regel (Law of Fives): Der finanzielle Instandsetzungsaufwand K_n vervünffacht sich näherungsweise in jeder aufeinanderfolgenden Lebenszyklusphase n bei unterlassener Vorsorge.', quelle: 'De Sitter (1984)' },
-      { formel: 'f_{\\text{ct,req}} \\ge 1{,}5\\text{ N/mm}^2', erklaerung: 'Erforderliche Abreißfestigkeit des Betonuntergrunds nach DIN EN 1542 vor dem Auftrag von Instandsetzungsmörteln (Einzelwert mindestens 1,0 N/mm²).', quelle: 'DIN EN 1504-10 / TR Instandhaltung' }
+      { formel: 'K_n = K_0 \\cdot 5^n', erklaerung: 'De-Sitter-Regel (Law of Fives): Der finanzielle Instandsetzungsaufwand K_n verfünffacht sich näherungsweise in jeder aufeinanderfolgenden Lebenszyklusphase n bei unterlassener Vorsorge.', quelle: 'De Sitter (1984)' },
+      { formel: 'f_{\\text{ct,req}} \\ge 1{,}5\\text{ N/mm}^2', erklaerung: 'Üblicher Anhaltswert der Abreißfestigkeit des Betonuntergrunds (Prüfung nach DIN EN 1542) vor dem Auftrag von Instandsetzungsmörteln (Einzelwert mindestens 1,0 N/mm²); maßgebend ist der Instandhaltungsplan.', quelle: 'DIN EN 1542 / TR Instandhaltung' }
     ]
   },
   praxiswissen: {
@@ -1192,16 +1192,13 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
       { name: "Deutscher Beton- und Bautechnik-Verein (DBV)", url: "https://www.betonverein.de", desc: "Merkblätter zu Parkhäusern, Rissüberbrückung (OS-Systeme), Reprofilierung und Instandhaltungskonzepten." }
     ],
     books: [
-      { title: "Schutz und Instandsetzung von Stahlbetonbauten", desc: "Raupach, Orlowsky, Bauwerk Verlag. Das maßgebende Standardwerk zur Betoninstandsetzung nach DIN EN 1504 und TR Instandhaltung." },
-      { title: "Bauwerksabdichtung in der Praxis: DIN 18533 sicher anwenden", desc: "Westermann, DIN Media. Kompendium für erdberührte Abdichtungen, Rissinjektion und Fugenabdichtungssysteme." }
+      { title: "Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008", desc: "Baustoffliche Grundlagen, Diagnose und Instandsetzung von Betonbauwerken." },
+      { title: "Gieler, R. P.; Dimmig-Osburg, A.: Kunststoffe für den Bautenschutz und die Betoninstandsetzung. Basel: Birkhäuser 2006", desc: "Beschichtungen, Injektionsstoffe und PCC-Systeme." }
     ],
     publications: [
-      { journal: "Construction and Building Materials", title: "Bond strength and durability of polymer-modified cementitious repair mortars (PCC/SPCC) under dynamic loading", desc: "Haftzugfestigkeit und Schubtragfähigkeit von Instandsetzungsmörteln auf gefrästen und HDW-gestrahlten Betonuntergründen." },
-      { journal: "Materials and Structures (RILEM)", title: "Cathodic protection and electrochemical chloride extraction in reinforced concrete: Long-term performance evaluation", desc: "Wirkungsgrad und Nebenwirkungen elektrochemischer Entchlorung und kathodischen Korrosionsschutzes (KKS)." }
+      { journal: "Beton- und Stahlbetonbau (Ernst & Sohn)", title: "Fachaufsätze zur TR Instandhaltung und zum sachkundigen Planer", desc: "Primärquellen zur Einführung der TR Instandhaltung und zu Instandsetzungsverfahren." }
     ],
     dissertations: [
-      { title: "Untersuchungen zum Verbundverhalten mineralischer und polymermodifizierter Instandsetzungssysteme unter mehraxialer Ermüdungsbeanspruchung", desc: "Dissertation, RWTH Aachen, 2021. Modellierung der Grenzflächenscherfestigkeit zwischen Altbeton und Reprofilierungsmörtel." },
-      { title: "Zuverlässigkeitsbasierte Lebensdauerprognose instandgesetzter Stahlbetonbauteile unter kombinierter Chlorideinwirkung und Rissbildung", desc: "Dissertation, Technische Universität München (TUM), 2022. Probabilistische Modellierung der Wirksamkeit von Oberflächenschutzsystemen OS 8 und OS 11b." }
     ]
   },
   praxiswissen: {

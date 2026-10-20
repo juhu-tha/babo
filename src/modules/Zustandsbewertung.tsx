@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { AlertTriangle, Search, Filter, FileText, CheckCircle, XCircle, Info, Sliders, Calculator, Award, Plus, Minus, BookOpen, Wrench, Shield, Clipboard, Eye, ClipboardCheck, ShieldCheck } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
@@ -145,7 +147,7 @@ export default function Zustandsbewertung() {
               <h2 className="text-2xl font-bold text-text-main">Überwachung & Prüfung nach DIN 1076</h2>
             </div>
             <p className="text-text-main/80 mb-6 text-sm leading-relaxed">
-              Die deutsche Norm <strong>DIN 1076</strong> "Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung" regelt die systematische Überprüfung der Verkehrssicherheit, Standsicherheit und Dauerhaftigkeit von Ingenieurbauwerken wie Brücken, Tunneln, Trogbauwerken, Stützwänden und Lärmschutzwänden im öffentlichen Straßennetz. Sie bildet das Fundament der staatlichen Brückenüberwachung in Deutschland.
+              Die deutsche Norm <strong>DIN 1076</strong> "Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung" (Ausgabe 2026-01; ersetzt 1999-11, Einführung durch die Baulastträger schrittweise) regelt die systematische Überprüfung der Verkehrssicherheit, Standsicherheit und Dauerhaftigkeit von Ingenieurbauwerken wie Brücken, Tunneln, Trogbauwerken, Stützwänden und Lärmschutzwänden im öffentlichen Straßennetz. Sie bildet das Fundament der staatlichen Brückenüberwachung in Deutschland.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1096,14 +1098,41 @@ export default function Zustandsbewertung() {
         </div>
       )}
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Prüfplan einer Brücke nach DIN 1076"
+        zielGleichung="H_{n+1} = H_n + 6\,\text{a}, \quad E = H + 3\,\text{a}"
+        schritte={[
+          { titel: 'Hauptprüfung', erklaerung: 'Letzte Hauptprüfung 2026:', formel: 'H = 2026 \\Rightarrow H_{n+1} = 2032' },
+          { titel: 'Einfache Prüfung', erklaerung: 'Drei Jahre nach der Hauptprüfung:', formel: 'E = 2029' },
+          { titel: 'Besichtigung', erklaerung: 'In den übrigen Jahren jährlich; laufende Beobachtung im Rahmen der Streckenkontrolle:', formel: 'B = 2027,\\; 2028,\\; 2030,\\; 2031' }
+        ]}
+        ergebnisHinweis="Nach DIN 1076:2026-01 kommen u. a. Anforderungen an die Qualifikation des Prüfpersonals, das Bauwerksbuch und Sonderprüfungen hinzu; anlassbezogene Prüfungen (Unfall, Hochwasser) bleiben unabhängig vom Turnus."
+        normQuelle="DIN 1076:2026-01; RI-EBW-PRÜF"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Zuverlässigkeitsindex eines bestehenden Bauteils"
+        zielGleichung="\beta = \frac{\mu_R - \mu_S}{\sqrt{\sigma_R^2 + \sigma_S^2}}"
+        schritte={[
+          { titel: 'Kennwerte', erklaerung: 'Widerstand μ_R = 500 kN, σ_R = 50 kN; Einwirkung μ_S = 300 kN, σ_S = 30 kN (normalverteilt):', formel: '\\mu_R - \\mu_S = 200\\,\\text{kN}' },
+          { titel: 'Index', erklaerung: 'Einsetzen:', formel: '\\beta = \\frac{200}{\\sqrt{2\\,500 + 900}} = \\frac{200}{58{,}3} = 3{,}43' },
+          { titel: 'Versagenswahrscheinlichkeit', erklaerung: 'Vergleich mit dem Zielwert 3,8 (RC2, 50 Jahre):', formel: 'P_f = \\Phi(-3{,}43) = 3{,}0 \\cdot 10^{-4}; \\; 3{,}43 < 3{,}8' }
+        ]}
+        ergebnisHinweis="Für bestehende Tragwerke dürfen nach EN 1990-2:2026 abweichende Zielwerte begründet werden (z. B. Restnutzungsdauer, Kosten der Ertüchtigung). Die Berechnung zeigt das Prinzip – reale Nachweise berücksichtigen Verteilungstypen und Modellunsicherheiten."
+        normQuelle="DIN EN 1990, Anhang C; EN 1990-2:2026"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="vdi6200" />
+
       <ModuleFooter
-        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, VDI 6200 Blatt 1.1:2026-06, Zuverlässigkeit geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Bauwerksüberwachung', url: 'https://de.wikipedia.org/wiki/Bauwerks%C3%BCberwachung' },
           { title: 'Standsicherheit', url: 'https://de.wikipedia.org/wiki/Standsicherheit' }
         ]}
         regelwerke={[
-          { title: 'DIN 1076:1999-11 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung; ersetzt 1999-11)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
           { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
           { title: 'VDI 6200 Blatt 1.1:2026-06 (Berichtsdokumentation der Überprüfung)', url: 'https://www.vdi.de/' },
           { title: 'ARGEBAU: Hinweise für die Überprüfung der Standsicherheit von baulichen Anlagen durch den Eigentümer/Verfügungsberechtigten (09/2006)', url: 'https://www.is-argebau.de/' },
@@ -1117,8 +1146,8 @@ export default function Zustandsbewertung() {
         ]}
         formeln={[
           {
-            formel: 'Z_N = \\text{Basisnote} + \\sum \\Delta Z_i \\quad (1.0 \\le Z_N \\le 4{,}0)',
-            erklaerung: 'Zustandsnotenermittlung ZN nach RI-EBW-PRÜF: Bewertung von Standsicherheit (S), Verkehrssicherheit (V) und Dauerhaftigkeit (D). Noten von 1.0 (sehr gut) bis 4.0 (ungenügend / sofortiger Handlungsbedarf).',
+            formel: 'Z_N = \\text{Basisnote} + \\sum \\Delta Z_i \\quad (1{,}0 \\le Z_N \\le 4{,}0)',
+            erklaerung: 'Zustandsnotenermittlung ZN nach RI-EBW-PRÜF: Bewertung von Standsicherheit (S), Verkehrssicherheit (V) und Dauerhaftigkeit (D). Noten von 1,0 (sehr gut) bis 4,0 (ungenügend / sofortiger Handlungsbedarf).',
             quelle: 'RI-EBW-PRÜF / DIN 1076'
           },
           {

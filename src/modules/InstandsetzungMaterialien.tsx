@@ -20,6 +20,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 interface InstandsetzungMaterialienProps {
   initialMaterial?: 'holz' | 'metalle' | 'kunststoffe' | 'asphalt' | 'mauerwerk';
@@ -820,7 +822,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 space-y-2">
                   <strong className="text-slate-900 flex items-center gap-1.5">
-                    <Droplets size={14} className="text-shiraz" /> Nachträgliche Horizontalsperren (WTA 4-4)
+                    <Droplets size={14} className="text-shiraz" /> Nachträgliche Horizontalsperren (WTA 4-10)
                   </strong>
                   <p className="text-slate-700 leading-relaxed">
                     Bohrlöcher (<InlineMath math="\varnothing 12\text{ bis }16\text{ mm}" /> im Abstand von 10–12 cm) in die Lagerfuge einbringen. Injektion von:
@@ -865,7 +867,35 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
       )}
 
       {/* ModuleFooter */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Schutzdauer eines Duplex-Systems"
+        zielGleichung="t_{Duplex} = S \cdot (t_{Zn} + t_{Lack})"
+        schritte={[
+          { titel: 'Zinkschicht', erklaerung: '85 µm Feuerverzinkung in C4 (Zinkabtrag bis 4,2 µm/a):', formel: 't_{Zn} = 85 / 4{,}2 \\approx 20\\,\\text{a}' },
+          { titel: 'Beschichtung', erklaerung: 'Erwartete Schutzdauer der Beschichtung allein (Lehrwert):', formel: 't_{Lack} = 10\\,\\text{a}' },
+          { titel: 'Synergie', erklaerung: 'Synergiefaktor nach Literatur 1,2 bis 2,5; gewählt 1,5:', formel: 't_{Duplex} = 1{,}5 \\cdot (20 + 10) = 45\\,\\text{a}' }
+        ]}
+        ergebnisHinweis="Der Synergieeffekt entsteht, weil die Beschichtung die Zinkkorrosion bremst und das Zink Unterrostung an Fehlstellen verhindert."
+        normQuelle="DIN EN ISO 9223:2012-05; DIN EN ISO 14713-1; DIN EN ISO 12944-5"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Resttragfähigkeit eines angefaulten Holzbalkens"
+        zielGleichung="\frac{W_{Rest}}{W_0} = \frac{b_r \cdot h_r^2}{b \cdot h^2}"
+        schritte={[
+          { titel: 'Ausgangsquerschnitt', erklaerung: 'Balken b/h = 160/220 mm:', formel: 'W_0 = \\frac{160 \\cdot 220^2}{6} = 1\\,290\\,667\\,\\text{mm}^3' },
+          { titel: 'Restquerschnitt', erklaerung: 'Braunfäule seitlich je 30 mm und unten 30 mm abgetragen: b_r = 100 mm, h_r = 190 mm.', formel: 'W_{Rest} = \\frac{100 \\cdot 190^2}{6} = 601\\,667\\,\\text{mm}^3' },
+          { titel: 'Verhältnis', erklaerung: 'Verbleibende Biegetragfähigkeit:', formel: '\\frac{601\\,667}{1\\,290\\,667} = 0{,}47 = 47\\,\\%' }
+        ]}
+        ergebnisHinweis="Schon 3 cm Fäule ringsum halbieren die Biegetragfähigkeit. Vor der Sanierung nach DIN 68800-4 Feuchteursache beseitigen und den gesunden Restquerschnitt durch Bohrwiderstandsmessung bestimmen."
+        normQuelle="DIN 68800-4:2020-12; DIN EN 1995-1-1"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="instandsetzung_materialien" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: Holz-, Metall- und Mauerwerksinstandsetzung, Normausgaben und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         weblinks={[
           { title: "WTA e.V. - Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung", url: "https://www.wta-international.org" },
           { title: "DVS - Deutscher Verband für Schweißen und verwandte Verfahren", url: "https://www.dvs-home.de" },
@@ -879,21 +909,21 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Gross, D.; Seelig, T. (2018): Bruchmechanik mit Einführung in die Mikromechanik (Springer Vieweg)',
-          'Müller, K. (2019): Bautenschutz und Instandsetzung: Leitfaden für Studium und Baupraxis (Fraunhofer IRB Verlag)'
+          'Gross, D.; Seelig, T.: Bruchmechanik – Mit einer Einführung in die Mikromechanik. Berlin: Springer Vieweg (aktuelle Auflage)',
+          'Stahr, M. (Hrsg.): Bausanierung – Erkennen und Beheben von Bauschäden. Wiesbaden: Springer Vieweg (aktuelle Auflage)'
         ]}
         regelwerke={[
-          { title: 'DIN 68800 (Holzschutz - Teile 1 bis 4)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
+          { title: 'DIN 68800 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
           { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
           { title: 'DVS 2207 / DVS 2208 (Schweißen von thermoplastischen Kunststoffen)', url: 'https://www.dvs-regelwerk.de/' },
           { title: 'ZTV BEA-StB (Zusätzliche Technische Vertragsbedingungen für die Erhaltung von Asphaltbefestigungen)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'WTA-Merkblatt 2-9 (Sanierputzsysteme) & 4-4 (Horizontalsperren)', url: 'https://www.wta-international.org/' }
+          { title: 'WTA-Merkblatt 2-9-20/D (Sanierputzsysteme) & 4-10 (Injektionsverfahren gegen kapillaren Feuchtetransport)', url: 'https://www.wta-international.org/' }
         ]}
         formeln={[
           {
             formel: 'S = \\frac{t_{\\text{Duplex}}}{t_{\\text{Zink}} + t_{\\text{Lack}}} = 1{,}2 \\text{ bis } 2{,}5',
-            erklaerung: 'Synergiefaktor S von Duplex-Systemen (Feuerverzinkung + Beschichtung) nach DIN EN ISO 12944-5: Die Gesamtschutzdauer übersteigt die algebraische Summe der Einzelschutzdauern durch gegenseitigen Schutz vor Weißrost und Unterrostung.',
-            quelle: 'DIN EN ISO 12944-5'
+            erklaerung: 'Synergiefaktor S von Duplex-Systemen (Feuerverzinkung + Beschichtung; Literaturwerte, vgl. DIN EN ISO 14713-1 und DIN EN ISO 12944-5): Die Gesamtschutzdauer übersteigt die algebraische Summe der Einzelschutzdauern durch gegenseitigen Schutz vor Weißrost und Unterrostung.',
+            quelle: 'DIN EN ISO 14713-1 / DIN EN ISO 12944-5'
           },
           {
             formel: 'u = \\frac{m_w - m_0}{m_0} \\cdot 100\\% \\le 20\\%',
