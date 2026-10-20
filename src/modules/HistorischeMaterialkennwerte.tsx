@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Line } from 'react-chartjs-2';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -1609,7 +1611,35 @@ export default function HistorischeMaterialkennwerte() {
       </div>
     </div>
     
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Bemessungswert der Betonfestigkeit aus Bestandsprüfungen (lognormal)"
+        zielGleichung="f_d = f_m \cdot \exp\left(-\alpha_R \cdot \beta \cdot V - 0{,}5 \cdot V^2\right)"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Mittelwert aus Bohrkernen f_m = 25,0 N/mm², Variationskoeffizient V = 0,15; α_R = 0,8, β = 3,8 (Referenzzeitraum 50 Jahre, RC2):', formel: '\\alpha_R \\cdot \\beta \\cdot V = 0{,}8 \\cdot 3{,}8 \\cdot 0{,}15 = 0{,}456' },
+          { titel: 'Exponent', erklaerung: 'Mit Lognormal-Korrekturterm:', formel: '-0{,}456 - 0{,}5 \\cdot 0{,}15^2 = -0{,}467 \\Rightarrow e^{-0{,}467} = 0{,}627' },
+          { titel: 'Bemessungswert', erklaerung: 'Direkter Bemessungswert ohne Teilsicherheitsbeiwert:', formel: 'f_d = 25{,}0 \\cdot 0{,}627 = 15{,}7\\,\\text{N/mm}^2' }
+        ]}
+        ergebnisHinweis="Zum Vergleich: Klassisch mit f_ck = 20 N/mm² und γ_c = 1,5 ergäbe sich 13,3 N/mm² (ohne α_cc). Gemessene, geringe Streuung kann im Bestand Reserven aufdecken – Modelleunsicherheit und Umrechnungsfaktoren sind zusätzlich zu berücksichtigen."
+        normQuelle="DIN EN 1990, Anhang C/D; EN 1990-2:2026 (DIN-Ausgabe manuell prüfen)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Zugversuch an einem historischen Flussstahl"
+        zielGleichung="R_{eH} = \frac{F_{eH}}{A_0}, \quad R_m = \frac{F_m}{A_0}"
+        schritte={[
+          { titel: 'Probe', erklaerung: 'Rundprobe aus einem Unterzug um 1910, Ausgangsdurchmesser 20 mm:', formel: 'A_0 = \\frac{\\pi \\cdot 20^2}{4} = 314{,}2\\,\\text{mm}^2' },
+          { titel: 'Streckgrenze', erklaerung: 'Obere Streckgrenzkraft 70 kN:', formel: 'R_{eH} = \\frac{70\\,000}{314{,}2} = 223\\,\\text{N/mm}^2' },
+          { titel: 'Zugfestigkeit', erklaerung: 'Höchstkraft 113 kN:', formel: 'R_m = \\frac{113\\,000}{314{,}2} = 360\\,\\text{N/mm}^2, \\quad \\frac{R_m}{R_{eH}} = 1{,}61' }
+        ]}
+        ergebnisHinweis="Die Werte liegen im Bereich heutiger S235-Stähle. Vor einer Schweißung sind Schweißeignung (chemische Analyse, P- und S-Gehalt, Alterung) und Sprödbruchneigung zu prüfen; Flussstahl vor etwa 1900 kann auch Puddeleisen sein."
+        normQuelle="DIN EN ISO 6892-1"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="historisch" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Baustoffprüfung', url: 'https://de.wikipedia.org/wiki/Baustoffpr%C3%BCfung' },
           { title: 'Bohrkern', url: 'https://de.wikipedia.org/wiki/Bohrkern' },
@@ -1618,35 +1648,35 @@ export default function HistorischeMaterialkennwerte() {
         ]}
         regelwerke={[
           { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'EN 1990-2:2026 (Eurocode: Bewertung bestehender Tragwerke - Existing Structures)', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' },
+          { title: 'EN 1990-2:2026 (Eurocode – Grundlagen der Bewertung und Ertüchtigung bestehender Tragwerke; ersetzt CEN/TS 17440:2020; DIN-Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' },
           { title: 'DBV-Merkblatt: Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte', url: 'https://www.betonverein.de/' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Betontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 13791 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
-          { title: 'DIN EN 12504-1 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkerne)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation 2025-09', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
+          { title: 'DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken – Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
           { title: 'DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-1-1' },
           { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' }
         ]}
         literatur={[
           'DBV (Deutscher Beton- und Bautechnik-Verein): Merkblatt Modifizierte Teilsicherheitsbeiwerte',
-          'Wicke, M. et al.: Historische Baukonstruktion und Sanierung',
-          'Ahnert, R., Krause, K. H.: Typische Baukonstruktionen von 1860 bis 1960',
+          
+          'Ahnert, R.; Krause, K. H.: Typische Baukonstruktionen von 1860 bis 1960, Bände 1–3. Berlin: Huss-Medien (aktuelle Auflage)',
           'DBV-Merkblätter „Bauen im Bestand“ (Beton und Betonstahl; Modifizierte Teilsicherheitsbeiwerte)',
           'Fischer, A.: Bestimmung modifizierter Teilsicherheitsbeiwerte zur Beurteilung von Bestandsbauten (Dissertation)'
         ]}
         formeln={[
           {
             formel: 'f_d = f_m \\cdot \\exp\\left(-\\alpha_R \\cdot \\beta \\cdot V_f - 0{,}5 \\cdot V_f^2\\right)',
-            erklaerung: 'Probabilistischer Bemessungswert nach EN 1990-2:2026 zur Bewertung von Bestandsbauten unter Berücksichtigung von Mittelwert f_m, Sensitivitätsfaktor alpha_R (0.8), Zuverlässigkeitsindex beta und Variationskoeffizient V_f.',
+            erklaerung: 'Probabilistischer Bemessungswert nach EN 1990-2:2026 zur Bewertung von Bestandsbauten unter Berücksichtigung von Mittelwert f_m, Sensitivitätsfaktor alpha_R (0,8), Zuverlässigkeitsindex beta und Variationskoeffizient V_f.',
             quelle: 'EN 1990-2:2026'
           },
           {
             formel: 'f_{is,cyl} = f_{c,core} \\cdot k_{ratio} \\cdot k_{moist} \\cdot k_{rebar} \\cdot k_{dia}',
-            erklaerung: 'Sorgfältige aggressive Umrechnung der in-situ Bohrkern-Festigkeit auf standardisierte Zylinder-Größe (DIN EN 13791).\n\nParameter:\n• f_{is,cyl}: Äquivalente in-situ Zylinderdruckfestigkeit [N/mm²]\n• f_{c,core}: Experimentell gemessene Bohrkerndruckfestigkeit [N/mm²]\n• k_{ratio} (oder k_{ratioToCylinder}): Schlankheits-Formbeiwert bezogen auf Höhe/Durchmesser-Verhältnis (h/d)\n• k_{moist}: Korrekturbeiwert für den Feuchtezustand (nass = 1.09, raumklimatrocken = 1.00, ofentrocken = 0.92)\n• k_{rebar}: Minderungskoeffizient für getroffene Bewehrung im Kern (ohne = 1.00, 1 Stab = 1.04, 2 Stäbe = 1.10)\n• k_{dia}: Maßstabsfaktor für den Kernmaßstab (Ø50 = 0.85, Ø80 = 0.95, Ø100 = 1.00, Ø150 = 1.02)',
+            erklaerung: 'Umrechnung der In-situ-Bohrkernfestigkeit auf standardisierte Zylinder-Größe (DIN EN 13791).\n\nParameter:\n• f_{is,cyl}: Äquivalente in-situ Zylinderdruckfestigkeit [N/mm²]\n• f_{c,core}: Experimentell gemessene Bohrkerndruckfestigkeit [N/mm²]\n• k_{ratio} (oder k_{ratioToCylinder}): Schlankheits-Formbeiwert bezogen auf Höhe/Durchmesser-Verhältnis (h/d)\n• k_{moist}: Korrekturbeiwert für den Feuchtezustand (nass = 1.09, raumklimatrocken = 1.00, ofentrocken = 0.92)\n• k_{rebar}: Minderungskoeffizient für getroffene Bewehrung im Kern (ohne = 1.00, 1 Stab = 1.04, 2 Stäbe = 1.10)\n• k_{dia}: Maßstabsfaktor für den Kernmaßstab (Ø50 = 0.85, Ø80 = 0.95, Ø100 = 1.00, Ø150 = 1.02)',
             quelle: 'DIN EN 13791'
           },
           {
             formel: 'f_k = K \\cdot f_b^{\\alpha} \\cdot f_m^{\\beta}',
-            erklaerung: 'Charakteristische Druckfestigkeit des Mauerwerks nach Eurocode 6.\n\nParameter:\n• f_k: Charakteristische Tragfähigkeit der Mauerwerkswand [N/mm²]\n• K: Systembeiwert der Stein-Mörtel-Paarung (standardisiert K = 0.55 für Steingruppe 1 mit Normalmörtel)\n• f_b: Normierte Steindruckfestigkeit (inklusive Formbeiwert d) [N/mm²]\n• f_m: Festigkeit des Mauermörtels [N/mm²]\n• \\alpha: Exponentielle Einwirkmacht der Steinqualität (Eurocode-Wert = 0.7)\n• \\beta: Exponentielle Einwirkmacht der Mörtelqualität (Eurocode-Wert = 0.3)',
+            erklaerung: 'Charakteristische Druckfestigkeit des Mauerwerks nach Eurocode 6.\n\nParameter:\n• f_k: Charakteristische Tragfähigkeit der Mauerwerkswand [N/mm²]\n• K: Systembeiwert der Stein-Mörtel-Paarung (empfohlener Wert K = 0,55 für Mauerziegel Gruppe 1 mit Normalmauermörtel; der deutsche NA verwendet abweichende Tabellenwerte)\n• f_b: Normierte Steindruckfestigkeit (inklusive Formbeiwert d) [N/mm²]\n• f_m: Festigkeit des Mauermörtels [N/mm²]\n• \\alpha: Exponentielle Einwirkmacht der Steinqualität (Eurocode-Wert = 0.7)\n• \\beta: Exponentielle Einwirkmacht der Mörtelqualität (Eurocode-Wert = 0.3)',
             quelle: 'DIN EN 1996-1-1'
           },
           {

@@ -367,8 +367,8 @@ export default function LCA() {
                 <strong className="text-emerald-900 block font-bold mb-1">Qualitätssiegel Nachhaltiges Gebäude (QNG – Stand 2026)</strong>
                 Zentrales staatliches Gütesiegel des BMWSB für die KfW-Förderung (Klimafreundlicher Neubau KFN). Das QNG fordert den quantitativen Nachweis der Lebenszyklus-Treibhausgasemissionen (Module A1–C4) und des Primärenergieaufwands (PENRT) über 50 Jahre:
                 <ul className="list-disc pl-5 mt-2 space-y-1">
-                  <li><strong>Wohngebäude (WG):</strong> QNG-Plus &le; 28,0 kg CO₂-Äq./(m² BGF·a) · QNG-Premium &le; 24,0 kg CO₂-Äq./(m² BGF·a).</li>
-                  <li><strong>Nichtwohngebäude (NWG):</strong> QNG-Plus &le; 32,0 kg CO₂-Äq./(m² BGF·a) · QNG-Premium &le; 26,0 kg CO₂-Äq./(m² BGF·a).</li>
+                  <li><strong>Wohngebäude (WG23, ab 01.01.2023):</strong> QNG-Plus &le; 24 kg CO₂-Äq./(m² NRF·a) und PENRT &le; 96 kWh/(m² NRF·a) · QNG-Premium &le; 20 kg CO₂-Äq./(m² NRF·a) und PENRT &le; 64 kWh/(m² NRF·a).</li>
+                  <li><strong>Nichtwohngebäude (NW23):</strong> projektspezifischer Anforderungswert nach dem QNG-Anhangdokument „LCA-Anforderungswert Nichtwohngebäude“ (abhängig von Nutzung und Gebäudetyp).</li>
                   <li><strong>Wichtig:</strong> Gutschriften aus Modul D (Recyclingpotenziale) dürfen nicht mit den Lasten der Phasen A–C verrechnet werden, sondern müssen als gesonderter Informationswert deklariert werden!</li>
                 </ul>
               </div>
@@ -874,7 +874,7 @@ export default function LCA() {
                       <div className="space-y-1">
                         <strong className="text-xs text-slate-950 block font-bold">Gebäudedaten &amp; Bezugshorizont festlegen (NRF / BGF)</strong>
                         <p className="text-[11.5px] text-slate-600 leading-relaxed font-sans">
-                          Der Bezugsmaßstab für Hochbauten ist die Netto-Raumfläche (NRF) nach DIN 277 oder die Brutto-Grundfläche (BGF). Der standardisierte Betrachtungszeitraum für die Lebenszyklussimulation beträgt im deutschen QNG-System ausnahmslos <strong>50 Jahre</strong>.
+                          Der Bezugsmaßstab für Hochbauten im QNG ist die Netto-Raumfläche NRF (R) nach DIN 277:2021-08; andere Systeme verwenden teils die Brutto-Grundfläche (BGF). Der standardisierte Betrachtungszeitraum für die Lebenszyklussimulation beträgt im deutschen QNG-System ausnahmslos <strong>50 Jahre</strong>.
                         </p>
                       </div>
                     </div>

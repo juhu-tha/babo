@@ -326,7 +326,7 @@ const tabGroups = [
       { id: 'bestand', label: 'Altbauatlas', icon: Building2 },
       { id: 'bauwerkserfassung', label: 'Bauwerkserfassung', icon: Compass },
       { id: 'denkmalpflege', label: 'Denkmalpflege', icon: Landmark },
-      { id: 'modernisierung', label: 'Modernisierung & GEG', icon: RefreshCw },
+      { id: 'modernisierung', label: 'Modernisierung & GModG', icon: RefreshCw },
       { id: 'bauwerksuntersuchung', label: 'Bauwerksdiagnose & ZfP', icon: Search },
       { id: 'historisch', label: 'Historische Kennwerte', icon: History },
       { id: 'historische_bauweisen', label: 'Hist. Bauweisen', icon: BookOpen },

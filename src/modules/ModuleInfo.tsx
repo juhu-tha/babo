@@ -582,18 +582,19 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Zertifizierungssysteme', desc: 'Bedeutung der Nachhaltigkeitssysteme DGNB, BNB und QNG zur Absicherung zukunftssicherer Investitionen.' }
     ],
     submodules: [
-      { title: 'Materialoptimierung', icon: LeafIcon, purpose: 'Wege zur CO2-Reduzierung im Hochbau, klinkereffiziente Betone, rezyklierte Komponenten.', standards: 'CO2-Protokolle', useCase: 'Reduzierung des Carbon-Fußabdrucks durch Substitution von Portlandzement durch Hüttensand.' },
-      { title: 'Ökobilanzierung (LCA)', icon: LeafIcon, purpose: 'Berechnung des Treibhausgaspotenzials GWP in kg CO2-Äq sowie Versauerungspotenzial (AP).', standards: 'DIN EN ISO 14040, DIN EN 15804', useCase: 'Erstellung einer detaillierten Ökobilanz für eine Geschossdecke.' },
-      { title: 'Zertifizierung & Deklarationen', icon: Award, purpose: 'Aufbau von Umweltproduktdeklarationen (EPDs) für Herstellerbaustoffe und Gebäudezertifizierungen.', standards: 'ISO 14025 (Typ III Deklaration)', useCase: 'Heraussuchen der Primärenergie-Zahlen aus einer typischen Gipskartonplatten-EPD.' },
-      { title: 'Kreislaufwirtschaft', icon: RefreshCw, purpose: 'Zirkuläres Bauen, Langlebigkeit, sortenreiner Rückbau und rezyklierbare Werkstoffe im Hochbau.', standards: 'Klartext Kreislaufwirtschaftsgesetz', useCase: 'Entwurf einer schraubbaren, demontierbaren Fassade.' },
-      { title: 'Ressourcen & Umwelt', icon: Factory, purpose: 'Analyse stofflicher globaler Ressourcenentscheidungen, NaWaRo (Holz, Hanf, Schafwolle).', standards: 'Ökobilanzdatenbanken (ÖKOBAUDAT)', useCase: 'Erfassung des PENRT-Verbrauchs von Steinwolle im Vergleich zu Holzfaserplatten.' },
-      { title: 'Lebenszyklus & Kosten', icon: TrendingUp, purpose: 'Barwertmethode (LCC), künftige Ersatzinvestitionen und Instandhaltungskosten über 50 Jahre simulieren.', standards: 'ISO 15686-5', useCase: 'Berechnung des Lebenszyklus-Barwertvorteils eines Schieferdachs gegenüber Ziegeldeckung.' },
+      { title: 'Daten & Regeln', icon: Globe, purpose: 'Globale Kennzahlen, Rechtsrahmen (EPBD, EU-Taxonomie, GModG, EBV, QNG) und Dekarbonisierungspfade (CRREM).', standards: 'EPBD (EU) 2024/1275; VO (EU) 2020/852; GModG', useCase: 'Prüfung, ob ein Neubau die Taxonomie-Kriterien für Klimaschutz erfüllt.' },
+      { title: 'Materialoptimierung', icon: LeafIcon, purpose: 'Wege zur CO2-Reduzierung im Hochbau, klinkereffiziente Betone, rezyklierte Komponenten.', standards: 'DIN EN 15804+A2; DIN EN 206 / DIN 1045-2', useCase: 'Reduzierung des Carbon-Fußabdrucks durch Substitution von Portlandzement durch Hüttensand.' },
+      { title: 'Ökobilanzierung (LCA)', icon: LeafIcon, purpose: 'Berechnung des Treibhausgaspotenzials GWP in kg CO2-Äq sowie Versauerungspotenzial (AP).', standards: 'DIN EN ISO 14040/14044; DIN EN 15804+A2; DIN EN 15978:2026-09; DIN EN 17472', useCase: 'Erstellung einer Ökobilanz für eine Geschossdecke und QNG-Nachweis eines Wohngebäudes.' },
+      { title: 'Zertifizierung & Deklarationen', icon: Award, purpose: 'Aufbau von Umweltproduktdeklarationen (EPDs) für Herstellerbaustoffe und Gebäudezertifizierungen.', standards: 'ISO 14024/14025; DGNB, BNB, QNG', useCase: 'Heraussuchen der Primärenergie-Zahlen aus einer typischen Gipskartonplatten-EPD.' },
+      { title: 'Kreislaufwirtschaft', icon: RefreshCw, purpose: 'Zirkuläres Bauen, Langlebigkeit, sortenreiner Rückbau und rezyklierbare Werkstoffe im Hochbau.', standards: 'KrWG; EBV; ESPR (EU) 2024/1781', useCase: 'Entwurf einer schraubbaren, demontierbaren Fassade.' },
+      { title: 'Ressourcen & Umwelt', icon: Factory, purpose: 'Analyse stofflicher globaler Ressourcenentscheidungen, NaWaRo (Holz, Hanf, Schafwolle).', standards: 'ÖKOBAUDAT; DIN EN 16449', useCase: 'Erfassung des PENRT-Verbrauchs von Steinwolle im Vergleich zu Holzfaserplatten.' },
+      { title: 'Lebenszyklus & Kosten', icon: TrendingUp, purpose: 'Barwertmethode (LCC), künftige Ersatzinvestitionen und Instandhaltungskosten über 50 Jahre simulieren.', standards: 'ISO 15686-5:2017; DIN EN 16627; DIN 18960', useCase: 'Berechnung des Lebenszyklus-Barwertvorteils eines Schieferdachs gegenüber Ziegeldeckung.' },
       { title: 'Nachhaltigkeits-Checklisten', icon: ClipboardCheck, purpose: 'Strukturierte Prüffragen zu DGNB-, BNB- und QNG-Kriterien, Baustoffauswahl und Zirkularitätsnachweisen.', standards: 'DGNB / QNG Handbücher', useCase: 'Audit-Vorbereitung für die Zertifizierung eines nachhaltigen Bürogebäudes.' }
     ],
     didacticCards: [
       { title: 'Lebenszyklusphasen verstehen', desc: 'Sichere Differenzierung der Module A1-A3 (Herstellung), B1-B7 (Nutzung), C1-C4 (Entsorgung) und D (Gutschriften).' },
       { title: 'Transparente Bewertung', desc: 'Nutzung realer ÖKOBAUDAT-Referenzdaten als wissenschaftliche Berechnungsgrundlage.' },
-      { title: 'Finanzieller Nebenerhalt', desc: 'Darstellung der untrennbaren Verknüpfung von Ökologie (LCA) und Ökonomie (LCC).' }
+      { title: 'Ökologie und Ökonomie verbinden', desc: 'Gemeinsame Betrachtung von Ökobilanz (LCA) und Lebenszykluskosten (LCC) über denselben Betrachtungszeitraum.' }
     ],
     appStudents: 'Zentraler Wegweiser zur Durchführung integrierter Entwurfskonzepte sowie zur Anfertigung bauökologischer Abschlussarbeiten.',
     appProfessionals: 'Zielsicheres Unterstützungstool für DGNB-Consultants, Auditoren und Architekten, um das begehrte QNG-Siegel nachzuweisen.',
@@ -602,12 +603,13 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
     ],
     literatur: [
-      'König, H. (2012): Lebenszyklusanalyse von Gebäuden (Detail Green Books)',
-      'Bauer, M. et al. (2013): Green Building - Leitfaden für nachhaltiges Bauen (Springer)'
+      'König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009',
+      'Bauer, M.; Mösle, P.; Schwarz, M.: Green Building – Leitfaden für nachhaltiges Bauen. 2. Aufl., Berlin: Springer Vieweg 2013'
     ],
     regelwerke: [
-      { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - Umweltdeklarationen für Produkte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
-      { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG) - Anforderungen', url: 'https://www.qng.info/' }
+      { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen; EN 15804+A2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+      { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
+      { title: 'QNG-Handbuch, Anlage 3 (v1.4, 19.07.2024): WG23 PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)', url: 'https://www.qng.info/' }
     ],
     formeln: [
       { formel: '\\text{GWP}_{\\text{Gesamt}} = \\sum a_i \\cdot GWP_{\\text{Ref},i}', erklaerung: 'Ökologische Bilanzierungsformel. Das Gesamt-Treibhausgaspotenzial errechnet sich aus den Massen/Volumina a_i der Baustoffe multipliziert mit den spezifischen GWP-Emissionswerten laut EPD / ÖKOBAUDAT.', quelle: 'DIN EN 15978' },
@@ -657,21 +659,21 @@ const MODULES_DATA: Record<string, GroupData> = {
   },
   bestand: {
     title: 'Bauen im Bestand & Denkmalpflege',
-    tagline: 'Altbausanierung, Denkmalpflegepraxis, GEG-Anpassungen und historische Werkstoffkennwerte',
+    tagline: 'Altbausanierung, Denkmalpflegepraxis, GModG-Anforderungen und historische Werkstoffkennwerte',
     icon: Building2Icon,
     basicsTitle: 'Erhalt grauer Energie durch nachhaltiges Sanieren',
     basicsDesc1: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Die historische Bausubstanz enthält viel graue Energie. Ihr Erhalt erfordert tiefgreifendes Wissen über historische Herstellungsverfahren und Tragwerkseigenschaften.',
-    basicsDesc2: 'Wir stellen den Altbauatlas vor, erarbeiten Erfassungsmethoden vom Handaufmaß bis zum 3D-Laserscan, diskutieren Vorgaben des GEG für Sanierungen und greifen auf authentische Festigkeiten historischer Ziegel, Gusseisen und Trassmörtel zurück.',
+    basicsDesc2: 'Wir stellen den Altbauatlas vor, erarbeiten Erfassungsmethoden vom Handaufmaß bis zum 3D-Laserscan, diskutieren Vorgaben des Gebäudemodernisierungsgesetzes (GModG, vormals GEG) für Sanierungen und greifen auf authentische Festigkeiten historischer Ziegel, Gusseisen und Trassmörtel zurück.',
     basicsCards: [
       { title: 'Historische Kennwerte', desc: 'Verlässliches Datenarchiv für Ziegelmauerwerk, Naturstein, frühe Betone und Profile aus der Zeit von 1850 bis 1960.' },
       { title: 'Bauwerksdiagnostik', desc: 'Verwendung moderner zerstörungsfreier Prüfverfahren (ZfP) zur Aufspürung innerer Fehlstellen.' }
     ],
     submodules: [
-      { title: 'Altbauatlas', icon: Building2Icon, purpose: 'Klassifizierung typischer Schadensmechanismen in Abhängigkeit von Gebäudeepoche und Bauweise.', standards: 'Forschungsberichte Denkmalschutz', useCase: 'Sanierung feuchter Kellerdecken aus der Gründerzeit (Kappendecken).' },
+      { title: 'Altbauatlas', icon: Building2Icon, purpose: 'Klassifizierung typischer Schadensmechanismen in Abhängigkeit von Gebäudeepoche und Bauweise.', standards: 'Bekanntmachung der Regeln zur Datenaufnahme im Wohngebäudebestand (2020); WTA', useCase: 'Sanierung feuchter Kellerdecken aus der Gründerzeit (Kappendecken).' },
       { title: 'Bauwerkserfassung', icon: Compass, purpose: 'Zusammenstellung von Handaufmaß, 3D-Verformungsaufmaß, Photogrammetrie und TLS (Laserscan).', standards: 'Eckstein: Empfehlungen für Baudokumentationen (LDA Baden-Württemberg)', useCase: 'Erstellung einer zentimetergenauen Punktwolke einer Kirchdachstruktur.' },
       { title: 'Denkmalpflege', icon: Landmark, purpose: 'Denkmalschutzgesetzliche Vorgaben, reversible Sanierungsverfahren, historische Putze und Baustoffe.', standards: 'Charta von Venedig / WTA', useCase: 'Rekonstruktion eines barocken Luftkalk-Außenputzes.' },
-      { title: 'Modernisierung & GEG', icon: RefreshCw, purpose: 'Vorgaben des Gebäudeenergiegesetzes bei Änderungen an der Gebäudehülle, Erleichterungen für Baudenkmäler.', standards: '§ 105 GModG, vormals GEG (Ausnahmen Denkmale)', useCase: 'Nachweis der Wirtschaftlichkeit von dämmenden Maßnahmen im denkmalgeschützten Einzelhof.' },
-      { title: 'Bauwerksdiagnose & ZfP-Katalog', icon: Search, purpose: 'Systematische Vor-Ort-Zustandserfassung im Bestand: 4-Phasen-Diagnostik (Vorerkundung, ZfP, Labor, Tragfähigkeitsnachweis) und konsolidierter Katalog aller 14 Prüfverfahren (Rückprallhammer, Ultraschall, Potentialfeld, Georadar, Karsten, Karbonatisierung, Bohrkern etc.) mit interaktiven Rechnern.', standards: 'DGZfP Richtlinien B1–B4, DBV-Merkblätter, DIN EN 12504, DIN EN 13791', useCase: 'Zustandserfassung einer Tiefgarage und Brückenkappe: Betondeckungs-Konformität (DBV), Karbonatisierungsfortschritt und Rissweitenbestimmung.' },
+      { title: 'Modernisierung & GModG', icon: RefreshCw, purpose: 'Vorgaben des Gebäudemodernisierungsgesetzes (vormals GEG) bei Nachrüstung und Änderung der Gebäudehülle, Bio-Treppe beim Heizungstausch, Erleichterungen für Baudenkmäler.', standards: 'GModG §§ 35–37, Anlage 7, § 105', useCase: 'Nachweis der Wirtschaftlichkeit von dämmenden Maßnahmen im denkmalgeschützten Einzelhof.' },
+      { title: 'Bauwerksdiagnose & ZfP-Katalog', icon: Search, purpose: 'Systematische Vor-Ort-Zustandserfassung im Bestand: 4-Phasen-Diagnostik (Vorerkundung, ZfP, Labor, Tragfähigkeitsnachweis) und konsolidierter Katalog aller 14 Prüfverfahren (Rückprallhammer, Ultraschall, Potentialfeld, Georadar, Karsten, Karbonatisierung, Bohrkern etc.) mit interaktiven Rechnern.', standards: 'DGZfP-Merkblätter (Reihe B), DBV-Merkblätter, DIN EN 12504, DIN EN 13791', useCase: 'Zustandserfassung einer Tiefgarage und Brückenkappe: Betondeckungs-Konformität (DBV), Karbonatisierungsfortschritt und Rissweitenbestimmung.' },
       { title: 'Historische Kennwerte', icon: History, purpose: 'Materialkennwerte alter Baustoffe wie Schweißeisen, Gussstahl und historisches Ziegelmauerwerk.', standards: 'DBV-Merkblätter Bauen im Bestand, historische Normen (DIN 1045, DIN 1050, DIN 4074)', useCase: 'Tragfähigkeitsnachweis einer Industriehalle von 1910.' },
       { title: 'Historische Bauweisen', icon: BookOpen, purpose: 'Epochenspezifische Tragsysteme wie Holzbalkendecken, Kappendecken, Monier-Gewölbe, Rabitzwände und Fachwerk.', standards: 'WTA-Merkblätter / Denkmalbau-Archive', useCase: 'Ertüchtigung und statische Begutachtung einer preußischen Kappendecke.' },
       { title: 'Historische Bauprodukte', icon: Layers, purpose: 'Rezepturen, Brandgrade und Schadensanfälligkeiten historischer Bindemittel, Ziegel, Zemente und Schmiedemetalle.', standards: 'Historische DIN-Normenarchive', useCase: 'Identifikation von Romanzement und hydraulischen Kalken in Gründerzeitfassaden.' },
@@ -692,7 +694,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       'WTA-Merkblattreihe (Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.)'
     ],
     regelwerke: [
-      { title: 'Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 36 und Anlage 7: Anforderungen bei Änderung bestehender Gebäude', url: 'https://lxgesetze.de/gmodg/AL-7' },
+      { title: 'Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 35 Nachrüstung, § 36 Änderung, § 37 U-Wert, Anlage 7, § 105 Baudenkmäler', url: 'https://www.gesetze-im-internet.de/geg/' },
       { title: 'EN 1990-2:2026 (Bewertung bestehender Tragwerke; ersetzt CEN/TS 17440:2020) – nationale Fassung/NA prüfen', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' },
       { title: 'DIN EN 13791:2020-02 + DIN EN 13791/A20 (Bewertung der Druckfestigkeit von Beton im Bauwerk)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' }
     ],
@@ -712,12 +714,12 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Deponieklassierung', desc: 'Einstufungsrichtwerte von unbelastetem Erdaushub (DK 0) bis zu gefährlichen Sonderabfällen (DK III).' }
     ],
     submodules: [
-      { title: 'Rückbau & Material', icon: Recycle, purpose: 'Rückbaukonzepte, Vorerkundung der Abbruchsubstanz, selektiver Rückbau als Voraussetzung für hochwertigen RC-Beton.', standards: 'DIN SPEC 91436', useCase: 'Ausarbeitung eines Rückbau- und Verwertungskonzepts einer Industrieanlage.' },
-      { title: 'Boden- & Materialaufbereitung', icon: Recycle, purpose: 'Bodenwaschanlagen, Brecher- und Siebtechnik, Bauschuttaufbereitung und Sekundärbaustoffe.', standards: 'ErsatzbaustoffV / DIN 18196', useCase: 'Konzeption einer mobilen Brecheranlage auf einer Großbaustelle zur Kantenbruch-Erzeugung.' },
-      { title: 'Abfälle & Altlasten', icon: Trash2, purpose: 'Zuordnung nach Abfallverzeichnis-Verordnung (AVV), Bestimmung der Deponieklassen DK 0 bis DK III.', standards: 'Ersatzbaustoffverordnung (EBV) / Deponieverordnung (DepV) / LAGA M20', useCase: 'Klassifizierung teerhaltigen Straßenaufbruchs zur schadstofffreien Entsorgung.' },
-      { title: 'Schad- und Gefahrstoffe', icon: AlertTriangle, purpose: 'Erkennung und Sanierungswege von Asbest, KMF (künstliche Mineralfasern), PCB, Holzschutzmittel-Altlasten.', standards: 'TRGS 519 (Asbest), TRGS 521 (KMF)', useCase: 'Planung von Schutzmaßnahmen beim Absaugen asbesthaltiger Spachtelmassen.' },
-      { title: 'Ressourceneffizienz', icon: LeafIcon, purpose: 'Urban Mining, Materialkataster, Zirkularitätsnachweise und Recyclingquoten im Hoch- und Tiefbau.', standards: 'Kreislaufwirtschaftsgesetz (KrWG)', useCase: 'Berechnung der Massenbilanz und Recyclingquote eines rückzubauenden Gewerbekomplexes.' },
-      { title: 'Rückbau-Checklisten', icon: ClipboardCheck, purpose: 'Prüflisten für Schadstofferkundung, Entsorgungsnachweise, Abbruchanträge und Arbeitssicherheit.', standards: 'BG BAU / TRGS 519 / VDI 6210', useCase: 'Freigabeprotokoll vor Abbruchbeginn mit Schwarz-Weiß-Bereichskontrolle.' }
+      { title: 'Rückbau & Material', icon: Recycle, purpose: 'Rückbaukonzepte, Vorerkundung der Abbruchsubstanz, selektiver Rückbau als Voraussetzung für hochwertigen RC-Beton.', standards: 'DIN SPEC 91484:2023-09 / DIN SPEC 91525:2026-02 / VDI 6210 Blatt 1:2025-10 / DIN 18007:2022-09', useCase: 'Ausarbeitung eines Rückbau- und Verwertungskonzepts einer Industrieanlage.' },
+      { title: 'Boden- & Materialaufbereitung', icon: Recycle, purpose: 'Bodenwaschanlagen, Brecher- und Siebtechnik, Bauschuttaufbereitung und Sekundärbaustoffe.', standards: 'ErsatzbaustoffV / LAGA PN 98 / DIN 19698-1 / DIN 18196', useCase: 'Konzeption einer mobilen Brecheranlage auf einer Großbaustelle zur Kantenbruch-Erzeugung.' },
+      { title: 'Abfälle & Altlasten', icon: Trash2, purpose: 'Zuordnung nach Abfallverzeichnis-Verordnung (AVV), Bestimmung der Deponieklassen DK 0 bis DK III.', standards: 'Ersatzbaustoffverordnung (EBV) / Deponieverordnung (DepV) / AVV (LAGA M20 nur noch historisch)', useCase: 'Klassifizierung teerhaltigen Straßenaufbruchs zur schadstofffreien Entsorgung.' },
+      { title: 'Schad- und Gefahrstoffe', icon: AlertTriangle, purpose: 'Erkennung und Sanierungswege von Asbest, KMF (künstliche Mineralfasern), PCB, Holzschutzmittel-Altlasten.', standards: 'GefStoffV §§ 5a, 11a / TRGS 519 (Asbest) / TRGS 521 (KMF, Neufassung 2026) / TRGS 524 (2026) / VDI 6202', useCase: 'Planung von Schutzmaßnahmen beim Absaugen asbesthaltiger Spachtelmassen.' },
+      { title: 'Ressourceneffizienz', icon: LeafIcon, purpose: 'Urban Mining, Materialkataster, Zirkularitätsnachweise und Recyclingquoten im Hoch- und Tiefbau.', standards: 'Kreislaufwirtschaftsgesetz (KrWG § 14) / VDI 4800 Blatt 1', useCase: 'Berechnung der Massenbilanz und Recyclingquote eines rückzubauenden Gewerbekomplexes.' },
+      { title: 'Rückbau-Checklisten', icon: ClipboardCheck, purpose: 'Prüflisten für Schadstofferkundung, Entsorgungsnachweise, Abbruchanträge und Arbeitssicherheit.', standards: 'GewAbfV § 8 / TRGS 519 / VDI 6210 Blatt 1 / LAGA PN 98', useCase: 'Freigabeprotokoll vor Abbruchbeginn mit Schwarz-Weiß-Bereichskontrolle.' }
     ],
     didacticCards: [
       { title: 'Lückenlose Dokumentation', desc: 'Die Wichtigkeit schadstofffreier "Zutatenlisten" für das Gebäude der Zukunft.' },
@@ -731,16 +733,18 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Asbestsanierung', url: 'https://de.wikipedia.org/wiki/Asbestsanierung' }
     ],
     literatur: [
-      'Gilles, G. (2018): Handbuch Abbruch und Rückbau im Hochbau (Werner Verlag)',
-      'Ersatzbaustoffverordnung (EBV 2023) und LAGA-Regelwerke zur Verwertung mineralischer Reststoffe'
+      'Müller, A.: Baustoffrecycling – Entstehung, Aufbereitung, Verwertung. Wiesbaden: Springer Vieweg 2018',
+      'Kranert, M. (Hrsg.): Einführung in die Kreislaufwirtschaft. 5. Aufl., Wiesbaden: Springer Vieweg 2017'
     ],
     regelwerke: [
-      { title: 'Ersatzbaustoffverordnung (EBV) 2023 - Bundesgesetzblatt', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
-      { title: 'TRGS 519: Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Rekonstruktions- oder Instandhaltungsarbeiten', url: 'https://www.baua.de/' },
-      { title: 'Deponieverordnung (DepV) - Grenzwerte für Eluate und Feststoff', url: 'https://www.gesetze-im-internet.de/' }
+      { title: 'Ersatzbaustoffverordnung (EBV), Art. 1 der Mantelverordnung vom 9.7.2021 (BGBl. I S. 2598), in Kraft seit 01.08.2023', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
+      { title: 'Gefahrstoffverordnung (GefStoffV) – § 5a Veranlasser, § 11a Asbest (Fassung seit 05.12.2024)', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
+      { title: 'Gewerbeabfallverordnung (GewAbfV) – §§ 8, 9 Bau- und Abbruchabfälle', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },
+      { title: 'TRGS 519: Asbest – Abbruch-, Sanierungs- oder Instandhaltungsarbeiten (Fassung 2014, zuletzt geändert 28.01.2025)', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' },
+      { title: 'Deponieverordnung (DepV) – Anhang 3 Zuordnungswerte', url: 'https://www.gesetze-im-internet.de/depv_2009/' }
     ],
     formeln: [
-      { formel: '\\text{LAGA/EBV-Index} = \\sum C_{Eluat,i} / S_i', erklaerung: 'Summenformel zur Bewertung der Schadstoffkonzentrationen in Eluaten im Vergleich zu den zulässigen LAGA-Schwellenwerten S_i bzw. EBV-Materialwerten.', quelle: 'Ersatzbaustoffverordnung (EBV) / LAGA M20' }
+      { formel: '\\max_i \\frac{c_i}{MW_{i,k}} \\le 1 \\Rightarrow \\text{Materialklasse } k', erklaerung: 'Einstufung in eine Materialklasse: Jeder Parameter i muss den Materialwert MW der Klasse k einhalten; maßgebend ist der ungünstigste Quotient (keine Summenbildung).', quelle: 'Ersatzbaustoffverordnung (EBV), Anlage 1' }
     ]
   },
   dauerhaftigkeit: {
@@ -1131,20 +1135,18 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   rueckbau: {
     websites: [
       { name: "Deutscher Abbruchverband e.V.", url: "https://www.deutscher-abbruchverband.de", desc: "Fachverband für Rückbautechnik, Schadstoffsanierung und technische Abbruchrichtlinien." },
-      { name: "Madaster Deutschland - Circularity", url: "https://www.madaster.de", desc: "Onlineregister für Gebäude-Materialkataster zur Bewertung der Weiternutzung beim Rückbau (Urban Mining)." },
-      { name: "Ressourceneffizienz-Zentrum Bayern (REZ)", url: "https://www.rez.bayern.de", desc: "Staatliche bayerische Plattform für Kreislaufwirtschaft und ressourcensparendes Bauen." }
+      { name: "Kreislaufwirtschaft Bau", url: "https://kreislaufwirtschaft-bau.de", desc: "Initiative der Bauwirtschaft; Monitoringberichte zu Aufkommen und Verbleib mineralischer Bauabfälle." },
+      { name: "Ressourceneffizienz-Zentrum Bayern (REZ)", url: "https://www.umweltpakt.bayern.de/rez/", desc: "Bayerische Plattform des LfU zu Ressourceneffizienz, auch im Bauwesen." }
     ],
     books: [
-      { title: "Rückbau- und Recycling-Handbuch für Hochbauten", desc: "Karg, Fraunhofer-IRB Verlag. Handbuch für selektiven Abbruch, Schadstofferkennung und Aufbereitung mineralischer Zuschläge." },
-      { title: "Urban Mining: Ressourcenströme im anthropogenen Lager", desc: "DIN Media. Statistische Bestandserhebungen städtischer Baustoffressourcen für zukünftige Baustoffrückgewinnungen." }
+      { title: "Müller, A.: Baustoffrecycling – Entstehung, Aufbereitung, Verwertung. Wiesbaden: Springer Vieweg 2018", desc: "Aufbereitungstechnik, Eigenschaften und Verwertung mineralischer Recyclingbaustoffe." },
+      { title: "Hillebrandt, A.; Riegler-Floors, P.; Rosen, A.; Seggewies, J.-K.: Atlas Recycling – Gebäude als Materialressource. München: Detail 2018", desc: "Konstruktionen und Materialien für rückbau- und recyclinggerechtes Bauen." }
     ],
     publications: [
-      { journal: "Resources, Conservation and Recycling", title: "Design for Deconstruction (DfD): High-grade recycling potential of precast concrete elements utilizing modular dry connections", desc: "Rückbauoptimiertes Konstruieren im modernen Modulbau." },
-      { journal: "GAIA - Ecological Perspectives", title: "Stoffstromanalyse deutscher Wohngebäude: Schadstoffentfrachtung und Recycling-Prognosen", desc: "Massenbilanzierungen mineralischer Hochbaurecyclingpotenziale." }
+      { journal: "Kreislaufwirtschaft Bau (Hrsg.), zweijährlich", title: "Mineralische Bauabfälle – Monitoring: Bericht zum Aufkommen und zum Verbleib mineralischer Bauabfälle", desc: "Amtlich gestützte Statistik zu Aufkommen, Recycling und Verfüllung; aktuelle Ausgabe beim Herausgeber." }
     ],
     dissertations: [
-      { title: "Ressourcen- und kreislaufgerechte Konstruktion im Massivbau zur Minderung anthropogener Stoffströme", desc: "Dissertation, KIT, 2021. CO2-Reduktionspotenziale hochreiner RC-Gesteinskörnungen." },
-      { title: "Schadstoff-Screening und robotergestützter selektiver Rückbau von mineralischen Wandbauteilen vor Ort", desc: "Dissertation, Technische Universität Darmstadt. Digitale Sensorklassifikation im automatisierten Gebäudeabbruch." }
+      
     ]
   },
   dauerhaftigkeit: {

@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { 
@@ -875,7 +877,35 @@ export default function HistorischeBauprodukte() {
       )}
 
       {/* standard module footer conforming to styleguide */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: PCB-Raumluftmessung bewerten"
+        zielGleichung="c_{PCB} \;\text{vs.}\; 300 \;\text{bzw.}\; 3\,000\,\text{ng/m}^3"
+        schritte={[
+          { titel: 'Messwert', erklaerung: 'Schule aus den 1970er Jahren, dauerelastische Fugenmassen; Gesamt-PCB in der Raumluft:', formel: 'c_{PCB} = 1\\,400\\,\\text{ng/m}^3' },
+          { titel: 'Bewertung', erklaerung: 'PCB-Richtlinie: unter 300 ng/m³ langfristig tolerabel (Zielwert), über 3 000 ng/m³ unverzüglich Maßnahmen:', formel: '300 < 1\\,400 < 3\\,000\\,\\text{ng/m}^3' },
+          { titel: 'Folgerung', erklaerung: 'Quellen ermitteln, mittelfristig sanieren, bis dahin regelmäßig lüften und Kontrollmessungen durchführen.', formel: '\\text{Sanierung mittelfristig}' }
+        ]}
+        ergebnisHinweis="Für dioxinähnliche PCB und die Gesamtbewertung gelten zusätzliche Kriterien der Länder; die Richtlinie ist bauaufsichtlich über die Länder eingeführt."
+        normQuelle="PCB-Richtlinie (Fassung manuell prüfen)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Bleiwerte im Trinkwasser eines Altbaus"
+        zielGleichung="c_{Pb} \le 10\,\mu\text{g/l}"
+        schritte={[
+          { titel: 'Messung', erklaerung: 'Gestaffelte Stagnationsprobe in einem Gründerzeithaus mit Bleileitungen:', formel: 'c_{Pb} = 25\\,\\mu\\text{g/l}' },
+          { titel: 'Grenzwert', erklaerung: 'Trinkwasserverordnung 2023:', formel: '25 > 10\\,\\mu\\text{g/l} \\Rightarrow \\text{Überschreitung}' },
+          { titel: 'Maßnahme', erklaerung: 'Bleileitungen waren bis 12.01.2026 zu entfernen oder stillzulegen; der Betreiber muss Nutzer informieren.', formel: '\\text{Austausch der Leitungen}' }
+        ]}
+        ergebnisHinweis="Ab 2028 sinkt der Grenzwert nach EU-Trinkwasserrichtlinie auf 5 µg/l. Bleileitungen finden sich vor allem in Altbauten; ihre Verbreitung ist regional sehr unterschiedlich."
+        normQuelle="TrinkwV 2023 (Paragrafen manuell prüfen)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="historische_bauprodukte" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: Schadstoff-Richtwerte und Regelwerke geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: 'Bimsbeton', url: 'https://de.wikipedia.org/wiki/Bims' },
           { title: 'Porenbeton', url: 'https://de.wikipedia.org/wiki/Porenbeton' },
@@ -890,7 +920,7 @@ export default function HistorischeBauprodukte() {
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Praxishandbuch Allg. Bauchemie & Baustofftechnologie (A. Huber, TH Augsburg, Lehrbeilage)',
+          'Praxishandbuch Allgemeine Bauchemie und Baustofftechnologie (TH Augsburg, Lehrbeilage; Angaben manuell prüfen)',
           'Bauwerkserhaltung im Denkmal- und Altbaubestand (WTA-Wissenschaftlich-Technische Arbeitsgemeinschaft)'
         ]}
         regelwerke={[
@@ -900,7 +930,7 @@ export default function HistorischeBauprodukte() {
           { title: 'GefStoffV (Novelle 12/2024): Erkundungspflicht des Veranlassers bei Gebäuden mit Baubeginn vor 31.10.1993', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
           { title: 'TRGS 519 (Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' },
           { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.vdi.de/' },
-          { title: 'TrinkwV 2023 § 17 (Bleileitungen)', url: 'https://www.gesetze-im-internet.de/trinkwv_2023/' },
+          { title: 'Trinkwasserverordnung 2023 (Bleileitungen: Austausch bzw. Stilllegung bis 12.01.2026; Paragraf manuell prüfen)', url: 'https://www.gesetze-im-internet.de/trinkwv_2023/' },
           { title: 'TRGS 521 (Abbruch, Sanierung und Instandhaltung mit alten Mineralfasern)', url: 'https://www.baua.de/' },
           { title: 'PCP-Richtlinie (Richtlinie für die Bewertung und Sanierung Pentachlorphenol-belasteter Baustoffe)', url: 'https://www.isb.bund.de/' },
           { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe)', url: 'https://www.isb.bund.de/' }

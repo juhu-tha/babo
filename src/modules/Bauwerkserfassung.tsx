@@ -5,6 +5,8 @@ import {
   Settings, Zap, ShieldCheck, HelpCircle, LayoutGrid
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 export default function Bauwerkserfassung() {
@@ -681,20 +683,48 @@ export default function Bauwerkserfassung() {
       )}
 
       {/* --- Module Footer --- */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Biegeausnutzung eines aufgemessenen Sparrens (C24)"
+        zielGleichung="\eta = \frac{\sigma_{m,d}}{f_{m,d}} = \frac{M_d / W}{k_{mod} \cdot f_{m,k} / \gamma_M}"
+        schritte={[
+          { titel: 'Querschnitt aus dem Aufmaß', erklaerung: 'b/h = 100/140 mm, Stützweite 4,0 m:', formel: 'A = 14\\,000\\,\\text{mm}^2, \\quad W = \\frac{100 \\cdot 140^2}{6} = 326\\,667\\,\\text{mm}^3' },
+          { titel: 'Moment', erklaerung: 'Bemessungslast q_d = 2,0 kN/m:', formel: 'M_d = \\frac{2{,}0 \\cdot 4{,}0^2}{8} = 4{,}0\\,\\text{kNm} \\Rightarrow \\sigma_{m,d} = 12{,}2\\,\\text{N/mm}^2' },
+          { titel: 'Festigkeit', erklaerung: 'C24, k_mod = 0,9 (kurze Lasteinwirkung, NKL 1/2), γ_M = 1,3:', formel: 'f_{m,d} = \\frac{0{,}9 \\cdot 24}{1{,}3} = 16{,}6\\,\\text{N/mm}^2 \\Rightarrow \\eta = 0{,}74' }
+        ]}
+        ergebnisHinweis="Der tatsächliche Querschnitt aus dem verformungsgetreuen Aufmaß (Fehlquerschnitte, Fäulnis, Schwächungen) ist maßgebend – nicht die Planzeichnung."
+        normQuelle="DIN EN 1995-1-1:2010-12 mit NA, 6.1.6"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Gemessene Vorverformung als Zusatzmoment"
+        zielGleichung="\left(\frac{\sigma_{c,0,d}}{f_{c,0,d}}\right)^2 + \frac{\sigma_{m,d}}{f_{m,d}} \le 1"
+        schritte={[
+          { titel: 'Normalkraft und Ausmitte', erklaerung: 'N_d = 20 kN; im Aufmaß gemessene Durchbiegung e₀ = 45 mm:', formel: 'M_{e,d} = 20 \\cdot 0{,}045 = 0{,}9\\,\\text{kNm} \\Rightarrow \\Delta\\sigma_{m,d} = 2{,}8\\,\\text{N/mm}^2' },
+          { titel: 'Spannungen', erklaerung: 'f_c,0,d = 0,9 · 21/1,3 = 14,5 N/mm²:', formel: '\\sigma_{c,0,d} = \\frac{20\\,000}{14\\,000} = 1{,}43, \\quad \\sigma_{m,d} = 12{,}2 + 2{,}8 = 15{,}0\\,\\text{N/mm}^2' },
+          { titel: 'Interaktion', erklaerung: 'Querschnittsnachweis Druck und Biegung:', formel: '\\left(\\frac{1{,}43}{14{,}5}\\right)^2 + \\frac{15{,}0}{16{,}6} = 0{,}01 + 0{,}90 = 0{,}91 \\le 1' }
+        ]}
+        ergebnisHinweis="Die gemessene Verformung erhöht die Ausnutzung um rund 17 Prozentpunkte. Der Stabilitätsnachweis (Knicken, Kippen) nach DIN EN 1995-1-1, 6.3 ist zusätzlich zu führen."
+        normQuelle="DIN EN 1995-1-1:2010-12, Gl. (6.19)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bauwerkserfassung" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: Holznachweise und Quellen geprüft; Genauigkeitsstufen nach Eckstein manuell abgleichen; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: "Laserscanning", url: "https://de.wikipedia.org/wiki/Laserscanning" },
           { title: "Fotogrammetrie", url: "https://de.wikipedia.org/wiki/Fotogrammetrie" },
           { title: "Eurocode 5 (Holzbau)", url: "https://de.wikipedia.org/wiki/Eurocode_5" }
         ]}
         literatur={[
-          "Neuhaus, H.: Ingenieurholzbau: Grundlagen - Bemessung - Nachweise nach Eurocode 5.",
+          "Neuhaus, H.: Ingenieurholzbau – Grundlagen, Bemessung, Nachweise, Beispiele. Wiesbaden: Springer Vieweg (aktuelle Auflage)",
           "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
         ]}
         regelwerke={[
-          { title: "DIN 18710-1 (Ingenieurvermessung - Teil 1: Allgemeine Anforderungen)", url: "https://www.dinmedia.de/de/suche?q=DIN+18710-1" },
-          { title: "DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1" },
-          { title: "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg)", url: "https://www.denkmalpflege-bw.de/" }
+          { title: "DIN 18710-1 (Ingenieurvermessung – Teil 1: Allgemeine Anforderungen; Ausgabe manuell prüfen)", url: "https://www.dinmedia.de/de/suche?q=DIN+18710-1" },
+          { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1" },
+          { title: "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg; Toleranzangaben im Modul als Richtwerte, manuell abgleichen)", url: "https://www.denkmalpflege-bw.de/" }
         ]}
         formeln={[
           {
@@ -709,7 +739,7 @@ export default function Bauwerkserfassung() {
           },
           {
             formel: "M_d = \\frac{q_d \\cdot L^2}{8} + N_d \\cdot e_0",
-            erklaerung: "Kombiniertes Biegemoment aus Gleichlast (q_d) und exzentrischem Kraftangriff infolge Imperfektion (e_0).",
+            erklaerung: "Kombiniertes Biegemoment aus Gleichlast (q_d) und exzentrischem Kraftangriff infolge gemessener Vorverformung (e_0); Vergrößerung nach Theorie II. Ordnung hier nicht berücksichtigt.",
             quelle: "Eurocode 5"
           }
         ]}

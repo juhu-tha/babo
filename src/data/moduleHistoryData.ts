@@ -449,7 +449,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2020 / 2024 / 2026',
         title: 'Vom Gebäudeenergiegesetz (GEG) zum Gebäudemodernisierungsgesetz (GModG)',
         category: 'Recht & Regularien',
-        description: 'Zusammenführung von EnEV, EEWärmeG und EnEG im Gebäudeenergiegesetz (GEG 2020) und Novellierung 2024 („Heizungsgesetz“) mit Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungsanlagen. Mit dem am 28.07.2026 verkündeten Gebäudemodernisierungsgesetz entfällt diese Vorgabe zugunsten einer „Bio-Treppe“ für neue Gas- und Ölheizungen; die Anforderungen an Neubau und Energieausweis bleiben in den bisherigen Paragrafen erhalten.',
+        description: 'Zusammenführung von EnEV, EEWärmeG und EnEG im Gebäudeenergiegesetz (GEG 2020) und Novellierung 2024 („Heizungsgesetz“) mit Pflicht zu mindestens 65 % erneuerbarer Energie bei neuen Heizungsanlagen. Mit dem am 28.07.2026 verkündeten Gebäudemodernisierungsgesetz entfällt diese Vorgabe zugunsten einer „Bio-Treppe“ für neue Gas- und Ölheizungen; die Anforderungen an Neubau (§§ 15, 16) und Energieausweis (§§ 79–88) bleiben unter denselben Nummern, die Bestandsanforderungen stehen jetzt in §§ 35–37.',
         impact: 'Koppelung von hochgedämmter Gebäudehülle (Niedrigstenergiegebäude) mit Wärmepumpen, PV-Eigenstrom und kommunaler Wärmeplanung.',
         keyReference: 'GEG 2020/2024; GModG 2026; EU-Gebäuderichtlinie EPBD'
       }
@@ -495,12 +495,12 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'DIN EN 15804+A2 / IBU'
       },
       {
-        era: '2020er–heute (2024–2026)',
-        title: 'EU-Taxonomie, Zirkularität & Materialpässe (Madaster)',
+        era: '2020 bis 2026',
+        title: 'EU-Taxonomie, EPBD-Neufassung, Zirkularität & Materialpässe',
         category: 'Werkstoffwende',
-        description: 'Einführung der EU-Taxonomie-Verordnung für nachhaltige Finanzierung. Fokus verschiebt sich von der Betriebsenergie zur „grauen Energie“ (Embodied Carbon) und Zirkularität nach dem Cradle-to-Cradle-Prinzip mit Gebäudematrizen und Materialpässen.',
+        description: 'Einführung der EU-Taxonomie-Verordnung für nachhaltige Finanzierung. Fokus verschiebt sich von der Betriebsenergie zur „grauen Energie“ (Embodied Carbon) und Zirkularität mit Materialpässen. 2024 folgen die EPBD-Neufassung (EU) 2024/1275 mit Lebenszyklus-GWP-Pflicht ab 2028/2030, die Ökodesign-Verordnung (EU) 2024/1781 (Digitaler Produktpass) und die neue Bauproduktenverordnung (EU) 2024/3110; 2026 erscheint EN 15978:2026.',
         impact: 'Gebäude werden als Rohstofflager der Zukunft (Urban Mining) geplant; zirkuläre Rückbaubarkeit wird zu einer harten Finanzierungsbedingung.',
-        keyReference: 'EU-Taxonomie VO 2020/852 / Madaster'
+        keyReference: 'VO (EU) 2020/852; Richtlinie (EU) 2024/1275; VO (EU) 2024/1781; VO (EU) 2024/3110'
       }
     ],
     keyTakeaway: 'Nachhaltigkeit wandelte sich vom idealistischen Zusatzaspekt zum zentralen Steuerungsfaktor der Bauwirtschaft mit harten Vorgaben für graue Emissionen, Lebenszykluskosten und Materialzirkularität.'
@@ -593,12 +593,12 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'BMVI Nachrechnungsrichtlinie'
       },
       {
-        era: '2020er–heute (2024–2026)',
+        era: '2020 bis 2026',
         title: 'Paradigmenwechsel: Bestandserhalt als primärer Klimaschutz',
         category: 'Paradigmenwechsel',
-        description: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen heute auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Umbauordnung der Architektenkammern und Gebäudetyp-e-Initiativen fordern Erleichterungen für das Bauen im Bestand, um Abriss und Neubauemissionen zu stoppen.',
+        description: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen heute auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Initiativen für eine Umbauordnung und das Gebäudetyp-E-Vorhaben (Gesetzentwurf 2024, neuer Anlauf mit Eckpunkten 2025) zielen auf Erleichterungen für das Bauen im Bestand. 2026 erscheint mit EN 1990-2 erstmals eine europäische Norm zur Bewertung und Ertüchtigung bestehender Tragwerke.',
         impact: 'Der Bestand wird als unverzichtbarer CO2-Speicher begriffen; Sanierung und Umnutzung genießen Vorrang vor Neubau.',
-        keyReference: 'Bundesstiftung Baukultur / Gebäudetyp e'
+        keyReference: 'Bundesstiftung Baukultur; Gebäudetyp-E-Vorhaben; EN 1990-2:2026'
       }
     ],
     keyTakeaway: 'Bauen im Bestand wandelte sich von einer nostalgischen Nischendisziplin zum unbestrittenen Hauptvolumen des Bauens und dem effektivsten Hebel zur Vermeidung grauer Emissionen.'
@@ -637,17 +637,17 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '01. August 2023',
         title: 'Inkrafttreten der Bundes-Ersatzbaustoffverordnung (EBV)',
         category: 'Recht & Regularien',
-        description: 'Historischer Meilenstein nach über 15 Jahren Verhandlung: Die EBV löst den uneinheitlichen Flickenteppich der Landesregelungen (wie LAGA M20) bundesweit ab. Einführung bundeseinheitlicher Materialwerte (MEB 1 bis MEB 3) und Güteüberwachungen.',
-        impact: 'Erstmals vollkommene Rechts- und Planungssicherheit beim Einbau von RC-Baustoffen in technischen Bauwerken ohne wasserrechtliche Einzelgenehmigung.',
+        description: 'Historischer Meilenstein nach über 15 Jahren Verhandlung: Die EBV löst den uneinheitlichen Flickenteppich der Landesregelungen (wie LAGA M20) bundesweit ab. Einführung bundeseinheitlicher Materialklassen und Materialwerte (z. B. RC-1 bis RC-3, BM-0 bis BM-F3) und einer verbindlichen Güteüberwachung.',
+        impact: 'Bundesweit einheitliche Regeln für den Einbau von RC-Baustoffen in technischen Bauwerken nach Einbautabellen; eine wasserrechtliche Einzelerlaubnis ist in den zugelassenen Einbauweisen nicht erforderlich.',
         keyReference: 'EBV (BGBl. 2021 I S. 2598) / MantelV'
       },
       {
-        era: '2024–2026',
-        title: 'Urban Mining, R-Beton & Kreislaufwirtschaft 2.0',
+        era: '2024 bis 2026',
+        title: 'Urban Mining, R-Beton, GefStoffV-Novelle & Kreislaufwirtschaft 2.0',
         category: 'Werkstoffwende',
-        description: 'Verstärkter Einsatz von rezyklierten Gesteinskörnungen (Typ 1 und Typ 2 nach DIN EN 12620) im Hochbau für R-Betone nach DIN 1045-2. Verpflichtung zu Rückbau- und Verwertungskonzepten vor Beginn von Abbrucharbeiten.',
+        description: 'Verstärkter Einsatz rezyklierter Gesteinskörnungen (Typ 1 und Typ 2 nach DIN EN 12620) für R-Beton. Die GefStoffV-Novelle (in Kraft 05.12.2024) regelt Informationspflichten des Veranlassers (§ 5a) und Asbesttätigkeiten (§ 11a); neue Regeln wie DIN SPEC 91484 (2023), VDI 6210 Blatt 1 (2025), DIN SPEC 91525 (2026) sowie die Neufassungen von TRGS 521 und TRGS 524 (2026) folgen. Eine EBV-Novelle liegt seit August 2026 als Referentenentwurf vor.',
         impact: 'Schließung des mineralischen Stoffkreislaufs im Hochbau bei gleichzeitiger Schonung natürlicher Kies- und Sandvorkommen.',
-        keyReference: 'DIN EN 12620 / GewAbfV'
+        keyReference: 'DIN EN 12620 / GefStoffV 2024 / DIN SPEC 91484'
       }
     ],
     keyTakeaway: 'Der Rückbau wandelte sich vom brachialen Abriss zu einem hochgradig qualitätsgesicherten Rohstoffgewinnungsverfahren, geregelt durch die bundesweite EBV für echtes zirkuläres Bauen.'

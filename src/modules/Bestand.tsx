@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { GMODG_ANLAGE7, FX, uRetrofit, dRequired } from '@/src/utils/bestandKern';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Slider } from '@/src/components/ui/Slider';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
@@ -840,7 +842,35 @@ export default function Bestand() {
       </div>
 
       {/* ModuleFooter following GEMINI_md */}
-      <ModuleFooter 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Innendämmung einer Gründerzeitwand mit Calciumsilikat"
+        zielGleichung="U_{neu} = \frac{1}{1/U_{alt} + d/\lambda}"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: 'Vollziegelwand U_alt = 1,50 W/(m²K); 6 cm Calciumsilikatplatte (λ = 0,060 W/(mK)), kapillaraktiv.', formel: 'R_{D} = \\frac{0{,}06}{0{,}060} = 1{,}00\\,\\text{m}^2\\text{K/W}' },
+          { titel: 'Neuer U-Wert', erklaerung: 'Gesamtwiderstand alt plus Dämmschicht:', formel: 'U_{neu} = \\frac{1}{0{,}667 + 1{,}00} = 0{,}60\\,\\text{W/(m}^2\\text{K)}' },
+          { titel: 'Oberflächentemperatur', erklaerung: 'θ_i = 20 °C, θ_e = −5 °C, R_si = 0,13:', formel: '\\theta_{si,alt} = 20 - 0{,}13 \\cdot 1{,}50 \\cdot 25 = 15{,}1\\,^\\circ\\text{C}, \\quad \\theta_{si,neu} = 20 - 0{,}13 \\cdot 0{,}60 \\cdot 25 = 18{,}1\\,^\\circ\\text{C}' }
+        ]}
+        ergebnisHinweis="Moderate Innendämmung verbessert Behaglichkeit und Schimmelschutz deutlich; die Grenzschicht wird aber kälter. Feuchtenachweis nach WTA-Merkblatt 6-5 bzw. DIN 4108-3 und Schlagregenschutz der Fassade sind Voraussetzung."
+        normQuelle="DIN EN ISO 6946:2018-03; WTA-Merkblätter 6-4/6-5"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Transmissionswärmeverlust vor und nach der Innendämmung"
+        zielGleichung="\Delta Q = \Delta U \cdot A \cdot HGT \cdot 24 / 1000"
+        schritte={[
+          { titel: 'Gegeben', erklaerung: '100 m² Außenwand, Heizgradtage 3 500 Kd/a:', formel: '\\Delta U = 1{,}50 - 0{,}60 = 0{,}90\\,\\text{W/(m}^2\\text{K)}' },
+          { titel: 'Einsparung Nutzwärme', erklaerung: 'Umrechnung von Kd in kWh:', formel: '\\Delta Q = 0{,}90 \\cdot 100 \\cdot 3\\,500 \\cdot 24 / 1\\,000 = 7\\,560\\,\\text{kWh/a}' },
+          { titel: 'Einordnung', erklaerung: 'Bei Gas (≈ 0,24 kg CO₂-Äq./kWh) entspricht das rund 1,8 t CO₂-Äq. pro Jahr.', formel: '7\\,560 \\cdot 0{,}24 = 1\\,814\\,\\text{kg CO}_2\\text{-Äq./a}' }
+        ]}
+        ergebnisHinweis="Wärmebrücken an einbindenden Innenwänden und Decken mindern die Einsparung; bei Holzbalkendecken ist die Balkenkopfzone besonders zu prüfen."
+        normQuelle="VDI 2067 / VDI 4710 (Gradtagzahlverfahren)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bestand" />
+
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: GModG-Bestandsanforderungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         wikipedia={[
           { title: "Altbau", url: "https://de.wikipedia.org/wiki/Altbau" },
           { title: "Wärmedurchgangskoeffizient", url: "https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient" },
@@ -848,15 +878,15 @@ export default function Bestand() {
         ]}
         literatur={[
           "BMWi/BMI (2020): Bekanntmachung der Regeln zur Datenaufnahme und Datenverwendung im Wohngebäudebestand (pauschale U-Werte nach Baualtersklassen).",
-          "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011",
-          "Klopfer, H.: Feuchtetransport in Baustoffen – Mechanismen und Sanierungsmethoden."
+          "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+          "Klopfer, H.: Wassertransport durch Diffusion in Feststoffen. Wiesbaden: Bauverlag 1974"
         ]}
         regelwerke={[
-          { title: "Gebäudemodernisierungsgesetz (GModG / GEG) - Sanierungsanforderungen für bestehende Gebäude", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN 4108-3:2018-10 (Klimabedingter Feuchteschutz; Vermeidung von Tauwasser und Schimmel)", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-3" },
+          { title: "Gebäudemodernisierungsgesetz (GModG, vormals GEG) – §§ 35–37 und Anlage 7 (bestehende Gebäude)", url: "https://www.gesetze-im-internet.de/geg/" },
+          { title: "DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz; ersetzt 2018-10)", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-3" },
           { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
-          { title: "WTA-Merkblatt 6-4: Innendämmung nach WTA I – Planungsleitfaden", url: "https://www.wta-gmbh.de" },
-          { title: "WTA-Merkblatt 6-5: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
+          { title: "WTA-Merkblatt 6-4: Innendämmung nach WTA I – Planungsleitfaden (Ausgabe manuell prüfen)", url: "https://www.wta-gmbh.de" },
+          { title: "WTA-Merkblatt 6-5: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren (Ausgabe manuell prüfen)", url: "https://www.wta-gmbh.de" }
         ]}
         formeln={[
           {

@@ -3356,7 +3356,7 @@
     "question": "Was gilt seit dem 29. Juli 2026 für das Gebäudeenergiegesetz (GEG)?",
     "options": [
       "Es wurde ersatzlos aufgehoben",
-      "Es heißt nun Gebäudemodernisierungsgesetz (GModG); Neubauanforderungen und Energieausweis-Regeln bleiben in den bisherigen Paragrafen",
+      "Es heißt nun Gebäudemodernisierungsgesetz (GModG); Neubauanforderungen (§§ 15, 16) und Energieausweis-Regeln (§§ 79–88) bleiben unter denselben Nummern; Bestandsanforderungen wurden teils neu nummeriert",
       "Es gilt unverändert weiter, einschließlich der 65-%-Regel",
       "Es wurde durch die EnEV 2014 ersetzt"
     ],
@@ -3365,10 +3365,1330 @@
     "gapAnalysis": {
       "topic": "Rechtsstand 2026",
       "misconception": "Die Gesetzesreform wird als Abschaffung aller energetischen Anforderungen verstanden.",
-      "coreRule": "GEG → GModG (2026): Paragrafennummern weitgehend unverändert.",
+      "coreRule": "GEG → GModG (2026): §§ 15, 16, 79–88 unverändert; Bestand: § 35 Nachrüstung, § 36 Änderung (vormals §§ 47, 48); § 72 (Betriebsverbot) weggefallen.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand 2026“ im Modul Energieausweis noch einmal durch.",
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ndr_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "EPBD Lebenszyklus-GWP",
+    "difficulty": "Basis",
+    "normRef": "Richtlinie (EU) 2024/1275, Art. 7",
+    "question": "Ab wann muss nach der EPBD-Neufassung das Lebenszyklus-GWP für alle neuen Gebäude berechnet und offengelegt werden?",
+    "options": [
+      "ab 2025",
+      "ab 2028 für alle Neubauten",
+      "ab 2030 für alle Neubauten (ab 2028 bereits für Gebäude über 1 000 m²)",
+      "erst ab 2050"
+    ],
+    "correctIdx": 2,
+    "explanation": "Art. 7 EPBD: ab 1.1.2028 für neue Gebäude mit mehr als 1 000 m² Nutzfläche, ab 1.1.2030 für alle neuen Gebäude; Betrachtungszeitraum 50 Jahre.",
+    "gapAnalysis": {
+      "topic": "EPBD Lebenszyklus-GWP",
+      "misconception": "Die gestufte Einführung wird übersehen.",
+      "coreRule": "GWP-Offenlegung: 2028 (> 1 000 m²), 2030 (alle Neubauten).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EPBD Lebenszyklus-GWP“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ndr_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "nachhaltigkeit_daten_regeln",
+    "moduleTitle": "Daten & Regeln",
+    "topic": "Rechtsstand Gebäudetyp E",
+    "difficulty": "Fortgeschritten",
+    "normRef": "BT-Drs. 20/13959",
+    "question": "Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?",
+    "options": [
+      "Seit 2025 als § 650o BGB in Kraft",
+      "Der Regierungsentwurf von 2024 ist mit der 20. Wahlperiode erledigt; seit November 2025 liegen Eckpunkte für einen neuen Entwurf vor",
+      "Er ist Teil der Musterbauordnung",
+      "Er wurde durch die EU-Bauproduktenverordnung eingeführt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Entwurf (u. a. § 650a Abs. 3/4 und § 650o BGB-E) wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. BMJ und BMWSB haben im November 2025 Eckpunkte vorgelegt; ein neues Gesetz steht aus.",
+    "gapAnalysis": {
+      "topic": "Rechtsstand Gebäudetyp E",
+      "misconception": "Ein Gesetzentwurf wird für geltendes Recht gehalten.",
+      "coreRule": "Entwurf ≠ Gesetz: Rechtsstand immer am Gesetzgebungsverfahren prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand Gebäudetyp E“ im Modul Daten & Regeln noch einmal durch.",
+      "targetModuleTab": "nachhaltigkeit_daten_regeln",
+      "targetModuleLabel": "Daten & Regeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mo_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialoptimierung",
+    "moduleTitle": "Materialoptimierung",
+    "topic": "Zementart und GWP",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Welche Maßnahme senkt das GWP (A1–A3) von Transportbeton meist am stärksten?",
+    "options": [
+      "Kürzere Transportwege der Gesteinskörnung",
+      "Verringerung des Klinkeranteils, z. B. CEM III/A statt CEM I",
+      "Mehr Fließmittel",
+      "Höhere Frischbetontemperatur"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Zement verursacht 80 bis 90 % des Beton-GWP; im Lehrbeispiel sinkt das GWP mit CEM III/A von 286 auf 174 kg CO₂-Äq./m³ (−39 %).",
+    "gapAnalysis": {
+      "topic": "Zementart und GWP",
+      "misconception": "Transport wird als Haupttreiber des Beton-GWP angesehen.",
+      "coreRule": "Beton-GWP ≈ Zementgehalt × Klinkeranteil × spezifisches GWP.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zementart und GWP“ im Modul Materialoptimierung noch einmal durch.",
+      "targetModuleTab": "materialoptimierung",
+      "targetModuleLabel": "Materialoptimierung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mo_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "materialoptimierung",
+    "moduleTitle": "Materialoptimierung",
+    "topic": "k-Wert-Ansatz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Wie groß ist (w/z)_eq bei w = 165, z = 280 und f = 60 kg/m³ Flugasche (k = 0,4)?",
+    "options": [
+      "0,49",
+      "0,54",
+      "0,59",
+      "0,62"
+    ],
+    "correctIdx": 1,
+    "explanation": "(w/z)_eq = 165/(280 + 0,4 · 60) = 165/304 = 0,54.",
+    "gapAnalysis": {
+      "topic": "k-Wert-Ansatz",
+      "misconception": "Flugasche wird voll (k = 1) angerechnet.",
+      "coreRule": "(w/z)_eq = w/(z + k · f) mit k_f = 0,4.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „k-Wert-Ansatz“ im Modul Materialoptimierung noch einmal durch.",
+      "targetModuleTab": "materialoptimierung",
+      "targetModuleLabel": "Materialoptimierung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_oe_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "oekobilanz_lca",
+    "moduleTitle": "Ökobilanzierung (LCA)",
+    "topic": "QNG-Anforderungswerte",
+    "difficulty": "Basis",
+    "normRef": "QNG-Handbuch Anlage 3 (v1.4)",
+    "question": "Welche GWP-Anforderungswerte gelten für Wohngebäude nach QNG (WG23)?",
+    "options": [
+      "PLUS ≤ 28, PREMIUM ≤ 24 kg CO₂-Äq./(m² BGF·a)",
+      "PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)",
+      "PLUS ≤ 24, PREMIUM ≤ 16 kg CO₂-Äq./(m² NRF·a)",
+      "PLUS ≤ 32, PREMIUM ≤ 26 kg CO₂-Äq./(m² NRF·a)"
+    ],
+    "correctIdx": 1,
+    "explanation": "Seit 01.01.2023 (WG23): PLUS ≤ 24 und PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a), dazu PENRT ≤ 96 bzw. 64 kWh/(m² NRF·a); Bezug NRF nach DIN 277, 50 Jahre.",
+    "gapAnalysis": {
+      "topic": "QNG-Anforderungswerte",
+      "misconception": "Veraltete (bis 2022: PLUS 28) oder erfundene Werte und falsche Bezugsfläche.",
+      "coreRule": "QNG WG23: 24/20 kg CO₂-Äq. und 96/64 kWh je m² NRF und Jahr.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG-Anforderungswerte“ im Modul Ökobilanzierung (LCA) noch einmal durch.",
+      "targetModuleTab": "oekobilanz_lca",
+      "targetModuleLabel": "Ökobilanzierung (LCA)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_oe_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "oekobilanz_lca",
+    "moduleTitle": "Ökobilanzierung (LCA)",
+    "topic": "Modul D",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 15804+A2 / DIN EN 15978",
+    "question": "Wie werden Recycling-Gutschriften (Modul D) in einer Gebäude-Ökobilanz behandelt?",
+    "options": [
+      "Sie werden von A–C abgezogen",
+      "Sie werden getrennt als Information ausgewiesen und nicht mit A–C verrechnet",
+      "Sie ersetzen Modul B6",
+      "Sie werden nur bei Holzbauten berücksichtigt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Modul D liegt außerhalb der Systemgrenze; eine Saldierung würde Entlastungen doppelt zählen, die erst im Folgesystem wirken.",
+    "gapAnalysis": {
+      "topic": "Modul D",
+      "misconception": "Modul D wird als Bestandteil des Gebäude-GWP verstanden.",
+      "coreRule": "A1–C4 bilden das Ergebnis; D wird getrennt berichtet.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Modul D“ im Modul Ökobilanzierung (LCA) noch einmal durch.",
+      "targetModuleTab": "oekobilanz_lca",
+      "targetModuleLabel": "Ökobilanzierung (LCA)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_zs_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "DGNB-Auszeichnung",
+    "difficulty": "Basis",
+    "normRef": "DGNB System",
+    "question": "Ein Projekt erreicht einen Gesamterfüllungsgrad von 77 %. Welche DGNB-Auszeichnung ist möglich (bei erfüllten Mindestgraden)?",
+    "options": [
+      "Platin",
+      "Gold",
+      "Silber",
+      "Bronze"
+    ],
+    "correctIdx": 1,
+    "explanation": "Platin ab 80 %, Gold ab 65 %, Silber ab 50 %; zusätzlich gelten Mindesterfüllungsgrade je Themenfeld.",
+    "gapAnalysis": {
+      "topic": "DGNB-Auszeichnung",
+      "misconception": "Die Stufengrenzen werden verwechselt.",
+      "coreRule": "DGNB: Platin ≥ 80 %, Gold ≥ 65 %, Silber ≥ 50 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DGNB-Auszeichnung“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_zs_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "zertifizierung_siegel",
+    "moduleTitle": "Zertifizierung & Deklarationen",
+    "topic": "Typen von Umweltkennzeichnungen",
+    "difficulty": "Basis",
+    "normRef": "ISO 14024 / ISO 14025",
+    "question": "Was ist eine Umweltproduktdeklaration (EPD) nach DIN EN 15804?",
+    "options": [
+      "Ein Typ-I-Umweltzeichen mit Bestanden/Nicht-bestanden-Urteil (z. B. Blauer Engel)",
+      "Eine Typ-II-Herstellerselbsterklärung ohne Prüfung",
+      "Eine Typ-III-Deklaration mit quantifizierten, extern verifizierten Ökobilanzdaten ohne Bewertung",
+      "Ein Gebäudezertifikat"
+    ],
+    "correctIdx": 2,
+    "explanation": "EPD sind Typ-III-Deklarationen (ISO 14025): Sie liefern Indikatorwerte (GWP, PENRT …) für die Gebäudebilanz, bewerten aber nicht.",
+    "gapAnalysis": {
+      "topic": "Typen von Umweltkennzeichnungen",
+      "misconception": "EPD wird als Gütesiegel missverstanden.",
+      "coreRule": "Typ I = Label, Typ II = Selbsterklärung, Typ III = EPD.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Typen von Umweltkennzeichnungen“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "targetModuleTab": "zertifizierung_siegel",
+      "targetModuleLabel": "Zertifizierung & Deklarationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kw_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "kreislauf_dpp",
+    "moduleTitle": "Kreislaufwirtschaft",
+    "topic": "Material Circularity Indicator",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Ellen MacArthur Foundation",
+    "question": "LFI = 0,40, Nutzungsfaktor X = 2,0. Wie groß ist der MCI = 1 − LFI · 0,9/X?",
+    "options": [
+      "0,64",
+      "0,73",
+      "0,82",
+      "0,96"
+    ],
+    "correctIdx": 2,
+    "explanation": "F(X) = 0,9/2 = 0,45; MCI = 1 − 0,40 · 0,45 = 0,82. Bei X = 1 ergäbe sich 0,64.",
+    "gapAnalysis": {
+      "topic": "Material Circularity Indicator",
+      "misconception": "Der Einfluss der Nutzungsdauer wird vernachlässigt.",
+      "coreRule": "MCI = 1 − LFI · 0,9/X.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Material Circularity Indicator“ im Modul Kreislaufwirtschaft noch einmal durch.",
+      "targetModuleTab": "kreislauf_dpp",
+      "targetModuleLabel": "Kreislaufwirtschaft"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kw_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "kreislauf_dpp",
+    "moduleTitle": "Kreislaufwirtschaft",
+    "topic": "Verwertungsquote Bau- und Abbruchabfälle",
+    "difficulty": "Basis",
+    "normRef": "KrWG § 14 / 2008/98/EG",
+    "question": "Welche Mindestquote für die stoffliche Verwertung nicht gefährlicher Bau- und Abbruchabfälle gilt nach KrWG und EU-Abfallrahmenrichtlinie?",
+    "options": [
+      "50 Gew.-%",
+      "60 Gew.-%",
+      "70 Gew.-%",
+      "90 Gew.-%"
+    ],
+    "correctIdx": 2,
+    "explanation": "Vorbereitung zur Wiederverwendung, Recycling und sonstige stoffliche Verwertung (einschließlich Verfüllung) sollen mindestens 70 Gew.-% erreichen; energetische Verwertung zählt nicht.",
+    "gapAnalysis": {
+      "topic": "Verwertungsquote Bau- und Abbruchabfälle",
+      "misconception": "Energetische Verwertung wird in die Quote eingerechnet.",
+      "coreRule": "Bau- und Abbruchabfälle: ≥ 70 Gew.-% stoffliche Verwertung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verwertungsquote Bau- und Abbruchabfälle“ im Modul Kreislaufwirtschaft noch einmal durch.",
+      "targetModuleTab": "kreislauf_dpp",
+      "targetModuleLabel": "Kreislaufwirtschaft"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ru_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourcen_umwelt",
+    "moduleTitle": "Ressourcen & Umwelt",
+    "topic": "Biogener Kohlenstoff",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 16449",
+    "question": "Wie viel CO₂ ist in 1 m³ Nadelholz (ρ = 500 kg/m³ bei u = 12 %) gespeichert?",
+    "options": [
+      "etwa 410 kg",
+      "etwa 620 kg",
+      "etwa 820 kg",
+      "etwa 920 kg"
+    ],
+    "correctIdx": 2,
+    "explanation": "m_atro = 500/1,12 = 446 kg; Kohlenstoff 50 % = 223 kg; CO₂ = 223 · 44/12 = 818 kg.",
+    "gapAnalysis": {
+      "topic": "Biogener Kohlenstoff",
+      "misconception": "Die Holzfeuchte wird nicht herausgerechnet oder der C-Anteil wird mit der Gesamtmasse angesetzt.",
+      "coreRule": "m_CO₂ = 44/12 · 0,5 · ρ_u/(1 + u/100) · V.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biogener Kohlenstoff“ im Modul Ressourcen & Umwelt noch einmal durch.",
+      "targetModuleTab": "ressourcen_umwelt",
+      "targetModuleLabel": "Ressourcen & Umwelt"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ru_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourcen_umwelt",
+    "moduleTitle": "Ressourcen & Umwelt",
+    "topic": "PENRT",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Woraus setzt sich der Indikator PENRT zusammen?",
+    "options": [
+      "Erneuerbare Primärenergie energetisch und stofflich",
+      "Nicht erneuerbare Primärenergie zur energetischen Nutzung (PENRE) plus stofflich genutzte (PENRM)",
+      "Nur Strombedarf der Herstellung",
+      "Endenergie im Gebäudebetrieb"
+    ],
+    "correctIdx": 1,
+    "explanation": "PENRT = PENRE + PENRM; entsprechend PERT = PERE + PERM für erneuerbare Energie.",
+    "gapAnalysis": {
+      "topic": "PENRT",
+      "misconception": "PENRT wird mit Endenergie gleichgesetzt.",
+      "coreRule": "T = total = energetisch (E) + stofflich (M).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PENRT“ im Modul Ressourcen & Umwelt noch einmal durch.",
+      "targetModuleTab": "ressourcen_umwelt",
+      "targetModuleLabel": "Ressourcen & Umwelt"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lk_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "lebenszyklus_kosten",
+    "moduleTitle": "Lebenszyklus & Kosten",
+    "topic": "Rentenbarwert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ISO 15686-5",
+    "question": "Barwert von 2 000 €/a über 30 Jahre bei r = 2 %?",
+    "options": [
+      "60 000 €",
+      "44 800 €",
+      "38 800 €",
+      "22 400 €"
+    ],
+    "correctIdx": 1,
+    "explanation": "Rentenbarwertfaktor (1 − 1,02⁻³⁰)/0,02 = 22,40; 2 000 · 22,40 = 44 800 €.",
+    "gapAnalysis": {
+      "topic": "Rentenbarwert",
+      "misconception": "Die Zahlungen werden nicht abgezinst (60 000 €).",
+      "coreRule": "BW = C · (1 − (1 + r)^−T)/r.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rentenbarwert“ im Modul Lebenszyklus & Kosten noch einmal durch.",
+      "targetModuleTab": "lebenszyklus_kosten",
+      "targetModuleLabel": "Lebenszyklus & Kosten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_lk_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "lebenszyklus_kosten",
+    "moduleTitle": "Lebenszyklus & Kosten",
+    "topic": "Einfluss des Zinssatzes",
+    "difficulty": "Basis",
+    "normRef": "ISO 15686-5",
+    "question": "Wie wirkt ein höherer Kalkulationszins auf den Variantenvergleich „teure, langlebige Lösung“ gegen „billige Lösung mit hohen Folgekosten“?",
+    "options": [
+      "Er begünstigt die langlebige Lösung",
+      "Er begünstigt die billige Lösung, weil künftige Kosten stärker abgezinst werden",
+      "Er hat keinen Einfluss",
+      "Er erhöht alle Barwerte gleichmäßig"
+    ],
+    "correctIdx": 1,
+    "explanation": "Je höher r, desto kleiner der Barwert künftiger Zahlungen; Investitionen heute gewinnen relativ an Gewicht.",
+    "gapAnalysis": {
+      "topic": "Einfluss des Zinssatzes",
+      "misconception": "Der Zinssatz wird als neutral betrachtet.",
+      "coreRule": "Hoher Zins → Gegenwartskosten dominieren; Sensitivitätsanalyse durchführen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Einfluss des Zinssatzes“ im Modul Lebenszyklus & Kosten noch einmal durch.",
+      "targetModuleTab": "lebenszyklus_kosten",
+      "targetModuleLabel": "Lebenszyklus & Kosten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bst_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "Innendämmung und Tauwasser",
+    "difficulty": "Basis",
+    "normRef": "DIN 4108-3:2024-03",
+    "question": "Warum steigt bei einer Innendämmung das Risiko von Tauwasser an der Grenzschicht zur Bestandswand?",
+    "options": [
+      "Weil die Bestandswand nach der Dämmung kälter wird und die Raumluftfeuchte bis zu ihr diffundieren kann",
+      "Weil der U-Wert der Wand steigt",
+      "Weil die Raumlufttemperatur sinkt",
+      "Weil die Außenwand stärker beregnet wird"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Dämmebene liegt warmseitig; das Mauerwerk dahinter kühlt aus. Ohne Dampfbremse oder kapillaraktives System kann an der kalten Grenzschicht Tauwasser ausfallen.",
+    "gapAnalysis": {
+      "topic": "Innendämmung und Tauwasser",
+      "misconception": "Innendämmung verhält sich bauphysikalisch wie Außendämmung.",
+      "coreRule": "Innendämmung immer mit Feuchtenachweis (Glaser nur eingeschränkt, besser hygrothermische Simulation) planen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Innendämmung und Tauwasser“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bst_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand",
+    "moduleTitle": "Altbauatlas",
+    "topic": "Anforderungen bei Änderung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "GModG § 36, Anlage 7",
+    "question": "Ab welchem Umfang greifen die Höchstwerte nach Anlage 7 GModG bei der Änderung eines Außenbauteils?",
+    "options": [
+      "Bei jeder Reparatur",
+      "Wenn mehr als 10 % der gesamten jeweiligen Bauteilfläche geändert werden",
+      "Erst ab 50 % der Gebäudehüllfläche",
+      "Nur bei Nutzungsänderung"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 36 GModG (vormals § 48 GEG) knüpft die Anforderungen an Änderungen von mehr als 10 % der jeweiligen Bauteilfläche des Gebäudes.",
+    "gapAnalysis": {
+      "topic": "Anforderungen bei Änderung",
+      "misconception": "Jede Putzausbesserung löst Dämmpflichten aus.",
+      "coreRule": "Bagatellgrenze 10 % je Bauteilgruppe; dann U-Höchstwerte nach Anlage 7 (z. B. Außenwand 0,24 W/(m²K)).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anforderungen bei Änderung“ im Modul Altbauatlas noch einmal durch.",
+      "targetModuleTab": "bestand",
+      "targetModuleLabel": "Altbauatlas"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwe_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerkserfassung",
+    "moduleTitle": "Bauwerkserfassung",
+    "topic": "Verformungsgetreues Aufmaß",
+    "difficulty": "Basis",
+    "normRef": "Eckstein, Genauigkeitsstufen",
+    "question": "Wofür ist ein verformungsgetreues Aufmaß bei einem historischen Dachstuhl besonders wichtig?",
+    "options": [
+      "Für die Kostenschätzung der Dachdeckung",
+      "Um tatsächliche Querschnitte, Schiefstellungen und Vorverformungen für die Nachrechnung zu erfassen",
+      "Nur für die Denkmalliste",
+      "Es ersetzt die Holzfeuchtemessung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Gemessene Restquerschnitte und Vorverformungen gehen direkt in die Nachweise ein (z. B. Zusatzmoment N · e₀).",
+    "gapAnalysis": {
+      "topic": "Verformungsgetreues Aufmaß",
+      "misconception": "Planzeichnungen genügen als Grundlage der Nachrechnung.",
+      "coreRule": "Maßgebend ist der Ist-Zustand: Querschnitt, Schäden und Verformung aus dem Aufmaß.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verformungsgetreues Aufmaß“ im Modul Bauwerkserfassung noch einmal durch.",
+      "targetModuleTab": "bauwerkserfassung",
+      "targetModuleLabel": "Bauwerkserfassung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwe_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerkserfassung",
+    "moduleTitle": "Bauwerkserfassung",
+    "topic": "Druck und Biegung im Holz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1:2010-12, Gl. (6.19)",
+    "question": "Wie geht die Druckspannung in den Querschnittsnachweis für Druck und Biegung nach Eurocode 5 ein?",
+    "options": [
+      "Linear",
+      "Quadratisch, (σ_c,0,d / f_c,0,d)²",
+      "Gar nicht",
+      "Mit dem Exponenten 0,5"
+    ],
+    "correctIdx": 1,
+    "explanation": "Gl. (6.19): (σ_c,0,d/f_c,0,d)² + σ_m,d/f_m,d ≤ 1 – der Druckanteil wirkt quadratisch, weil Holz unter Druck plastisch reagiert.",
+    "gapAnalysis": {
+      "topic": "Druck und Biegung im Holz",
+      "misconception": "Druck- und Biegeanteil werden immer linear addiert.",
+      "coreRule": "Querschnittsnachweis EC5: Druckterm quadratisch; Stabilität (6.3) separat nachweisen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Druck und Biegung im Holz“ im Modul Bauwerkserfassung noch einmal durch.",
+      "targetModuleTab": "bauwerkserfassung",
+      "targetModuleLabel": "Bauwerkserfassung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dp_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "denkmalpflege",
+    "moduleTitle": "Denkmalpflege",
+    "topic": "Mörtelverträglichkeit",
+    "difficulty": "Basis",
+    "normRef": "WTA-Merkblätter (Auswahl manuell prüfen)",
+    "question": "Welche Eigenschaft sollte ein Fugenmörtel für historisches Mauerwerk im Verhältnis zum Stein haben?",
+    "options": [
+      "Höhere Festigkeit und Dichtheit als der Stein",
+      "Geringere Festigkeit und höhere Porosität als der Stein (Opfermörtel)",
+      "Gleiche Festigkeit wie moderner Zementmörtel M10",
+      "Er sollte wasserabweisend und dampfdicht sein"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Mörtel soll das schwächere Glied sein: Feuchte und Salze verdunsten über die Fuge, Spannungen werden dort abgebaut, nicht im Stein.",
+    "gapAnalysis": {
+      "topic": "Mörtelverträglichkeit",
+      "misconception": "Je fester der Mörtel, desto dauerhafter die Mauer.",
+      "coreRule": "Mörtel weicher und offenporiger als der Stein; Kalk oder NHL statt Zement.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mörtelverträglichkeit“ im Modul Denkmalpflege noch einmal durch.",
+      "targetModuleTab": "denkmalpflege",
+      "targetModuleLabel": "Denkmalpflege"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dp_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "denkmalpflege",
+    "moduleTitle": "Denkmalpflege",
+    "topic": "Energieanforderungen am Baudenkmal",
+    "difficulty": "Fortgeschritten",
+    "normRef": "GModG § 105",
+    "question": "Was regelt § 105 GModG für Baudenkmäler?",
+    "options": [
+      "Eine Pflicht zur Außendämmung",
+      "Abweichungen von den Anforderungen, soweit deren Erfüllung die Substanz oder das Erscheinungsbild beeinträchtigen würde",
+      "Ein generelles Verbot jeder Dämmung",
+      "Eine Befreiung nur für Kirchen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei Baudenkmälern und sonstiger besonders erhaltenswerter Bausubstanz kann von den Anforderungen abgewichen werden; die Denkmalbehörde ist einzubinden.",
+    "gapAnalysis": {
+      "topic": "Energieanforderungen am Baudenkmal",
+      "misconception": "Denkmäler sind von energetischen Fragen völlig ausgenommen.",
+      "coreRule": "§ 105 erlaubt Abweichungen – energetische Verbesserung bleibt Ziel, wo substanzverträglich.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Energieanforderungen am Baudenkmal“ im Modul Denkmalpflege noch einmal durch.",
+      "targetModuleTab": "denkmalpflege",
+      "targetModuleLabel": "Denkmalpflege"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mod_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "modernisierung",
+    "moduleTitle": "Modernisierung & GModG",
+    "topic": "Erforderliche Dämmdicke",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 6946:2018-03",
+    "question": "Eine Wand mit U = 1,40 W/(m²K) soll mit EPS (λ = 0,032 W/(mK)) auf U ≤ 0,24 W/(m²K) gedämmt werden. Welche Dämmdicke ist mindestens erforderlich?",
+    "options": [
+      "ca. 4 cm",
+      "ca. 7 cm",
+      "ca. 11 cm",
+      "ca. 20 cm"
+    ],
+    "correctIdx": 2,
+    "explanation": "d = λ · (1/U_soll − 1/U_alt) = 0,032 · (4,17 − 0,71) = 0,111 m ≈ 11 cm; gewählt wird die nächste Handelsdicke.",
+    "gapAnalysis": {
+      "topic": "Erforderliche Dämmdicke",
+      "misconception": "Die Dämmdicke wird aus dem Neubau-Referenzwert ohne Bestandswiderstand berechnet.",
+      "coreRule": "Vorhandenen Wärmedurchlasswiderstand anrechnen: d = λ (1/U_soll − 1/U_alt).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Erforderliche Dämmdicke“ im Modul Modernisierung & GModG noch einmal durch.",
+      "targetModuleTab": "modernisierung",
+      "targetModuleLabel": "Modernisierung & GModG"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mod_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "modernisierung",
+    "moduleTitle": "Modernisierung & GModG",
+    "topic": "Nachrüstpflicht oberste Geschossdecke",
+    "difficulty": "Fortgeschritten",
+    "normRef": "GModG § 35",
+    "question": "Welche Regelung trifft das GModG für ungedämmte oberste Geschossdecken beheizter Räume?",
+    "options": [
+      "Nachrüstung so, dass U ≤ 0,24 W/(m²K) eingehalten wird (§ 35, vormals § 47 GEG)",
+      "Keine Anforderung mehr",
+      "Nur Empfehlung im Energieausweis",
+      "U ≤ 0,50 W/(m²K) bei jedem Eigentümerwechsel"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Nachrüstpflicht für oberste Geschossdecken ist im GModG in § 35 geregelt; Höchstwert 0,24 W/(m²K), alternativ Dämmung des darüberliegenden Dachs.",
+    "gapAnalysis": {
+      "topic": "Nachrüstpflicht oberste Geschossdecke",
+      "misconception": "Mit dem GModG sind alle Nachrüstpflichten entfallen.",
+      "coreRule": "Bestand: Nachrüstung § 35, Änderung § 36, Berechnung § 37 GModG.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachrüstpflicht oberste Geschossdecke“ im Modul Modernisierung & GModG noch einmal durch.",
+      "targetModuleTab": "modernisierung",
+      "targetModuleLabel": "Modernisierung & GModG"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwu_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerksuntersuchung",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Karbonatisierungsprognose",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 14630:2007-01",
+    "question": "Nach 36 Jahren beträgt die Karbonatisierungstiefe 15 mm. Wann erreicht die Front nach dem √t-Gesetz eine Betondeckung von 25 mm?",
+    "options": [
+      "nach ca. 60 Jahren",
+      "nach ca. 100 Jahren",
+      "nach ca. 150 Jahren",
+      "nie"
+    ],
+    "correctIdx": 1,
+    "explanation": "k = 15/√36 = 2,5 mm/√a; t = (25/2,5)² = 100 a, also rund 64 Jahre Restzeit.",
+    "gapAnalysis": {
+      "topic": "Karbonatisierungsprognose",
+      "misconception": "Die Karbonatisierung schreitet linear mit der Zeit fort.",
+      "coreRule": "x = k · √t; Prognose nur bei gleichbleibenden Feuchtebedingungen belastbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Karbonatisierungsprognose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "targetModuleTab": "bauwerksuntersuchung",
+      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bwu_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bauwerksuntersuchung",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Rückprallhammer",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12504-2:2021-10; DIN EN 13791",
+    "question": "Warum darf der Rückprallwert allein nicht zur Festigkeitseinstufung eines Bestandsbetons verwendet werden?",
+    "options": [
+      "Weil er nur die Oberflächenhärte misst, die z. B. durch Karbonatisierung erhöht ist; eine Kalibrierung an Bohrkernen ist erforderlich",
+      "Weil der Hammer nur an Stahl funktioniert",
+      "Weil der Rückprallwert mit der Festigkeit nicht korreliert",
+      "Weil er nur bei Frischbeton zulässig ist"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Härte der karbonatisierten Randzone überschätzt die Festigkeit; DIN EN 13791 verlangt die Verknüpfung indirekter Verfahren mit Bohrkernen.",
+    "gapAnalysis": {
+      "topic": "Rückprallhammer",
+      "misconception": "Die Herstellerkurve liefert direkt die charakteristische Festigkeit.",
+      "coreRule": "Indirekte Prüfverfahren immer an Bohrkernen kalibrieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "targetModuleTab": "bauwerksuntersuchung",
+      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hk_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Alter Betonstahl",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045 (historische Ausgaben)",
+    "question": "Welche Streckgrenze ist für \"Betonstahl III\" (BSt 420/500) in der Nachrechnung anzusetzen?",
+    "options": [
+      "220 N/mm²",
+      "420 N/mm²",
+      "500 N/mm²",
+      "550 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die erste Zahl der Bezeichnung BSt 420/500 ist die Streckgrenze, die zweite die Zugfestigkeit; B500 ist nicht gleichwertig.",
+    "gapAnalysis": {
+      "topic": "Alter Betonstahl",
+      "misconception": "Alter Betonstahl III entspricht B500.",
+      "coreRule": "Historische Stahlbezeichnung = Streckgrenze/Zugfestigkeit; f_yk aus der Bezeichnung oder aus Proben ansetzen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Alter Betonstahl“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hk_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Streuung im Bestand",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1990, Anhang D; EN 1990-2:2026",
+    "question": "Wie wirkt sich ein kleiner gemessener Variationskoeffizient der Betonfestigkeit auf den Bemessungswert aus?",
+    "options": [
+      "Er senkt den Bemessungswert",
+      "Er erhöht den Bemessungswert, weil der Abstand zum Mittelwert kleiner wird",
+      "Er hat keinen Einfluss",
+      "Er macht Teilsicherheitsbeiwerte überflüssig"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_d = f_m · exp(−α_R β V − 0,5 V²): kleineres V führt zu einem größeren Bemessungswert – so lassen sich im Bestand Reserven aufdecken.",
+    "gapAnalysis": {
+      "topic": "Streuung im Bestand",
+      "misconception": "Mehr Proben verschlechtern immer das Ergebnis.",
+      "coreRule": "Gemessene Streuung ersetzt Annahmen; Modellunsicherheiten bleiben zu berücksichtigen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Streuung im Bestand“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hb_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauweisen",
+    "moduleTitle": "Hist. Bauweisen",
+    "topic": "Preußische Kappendecke",
+    "difficulty": "Basis",
+    "normRef": "Breymann, Baukonstruktionslehre",
+    "question": "Welche Kraft muss bei einer preußischen Kappendecke an den Randfeldern zusätzlich aufgenommen werden?",
+    "options": [
+      "Der horizontale Gewölbeschub",
+      "Eine abhebende Windlast",
+      "Nur die Eigenlast der Träger",
+      "Torsion der Träger"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Segmentbögen erzeugen Horizontalschub; innen heben sich die Schübe benachbarter Kappen auf, am Rand übernehmen Zuganker oder die Außenwand.",
+    "gapAnalysis": {
+      "topic": "Preußische Kappendecke",
+      "misconception": "Kappen tragen wie einachsige Platten ohne Horizontalkraft.",
+      "coreRule": "Gewölbe = Druck + Horizontalschub; Zuganker und Auflager prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Preußische Kappendecke“ im Modul Hist. Bauweisen noch einmal durch.",
+      "targetModuleTab": "historische_bauweisen",
+      "targetModuleLabel": "Hist. Bauweisen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hb_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauweisen",
+    "moduleTitle": "Hist. Bauweisen",
+    "topic": "Holzschwinden",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1:2010-12",
+    "question": "Warum ist das Schwindmaß von Holz bei der Sanierung von Holzbalkendecken relevant?",
+    "options": [
+      "Weil Holz in Faserrichtung stark schwindet",
+      "Weil Austrocknung nach Feuchteschäden Querschnittsmaße und Verbindungen verändert (radial/tangential deutlich mehr als längs)",
+      "Weil Schwinden die Festigkeit halbiert",
+      "Es ist nicht relevant"
+    ],
+    "correctIdx": 1,
+    "explanation": "Quer zur Faser schwindet Holz um ein Vielfaches stärker als längs; trocknet ein durchfeuchteter Balken aus, öffnen sich Fugen und Anschlüsse lockern sich.",
+    "gapAnalysis": {
+      "topic": "Holzschwinden",
+      "misconception": "Holz schwindet in allen Richtungen gleich.",
+      "coreRule": "Schwinden quer ≫ längs; Einbaufeuchte und Nutzungsfeuchte abgleichen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzschwinden“ im Modul Hist. Bauweisen noch einmal durch.",
+      "targetModuleTab": "historische_bauweisen",
+      "targetModuleLabel": "Hist. Bauweisen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hp_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauprodukte",
+    "moduleTitle": "Hist. Bauprodukte",
+    "topic": "PCB-Raumluft",
+    "difficulty": "Basis",
+    "normRef": "PCB-Richtlinie (Fassung manuell prüfen)",
+    "question": "Eine Raumluftmessung ergibt 1 400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?",
+    "options": [
+      "Unbedenklich (< 300 ng/m³)",
+      "Zwischen Vorsorge- und Eingreifwert (300–3 000 ng/m³): Quelle suchen, mittelfristig sanieren",
+      "Über dem Eingreifwert: sofortige Maßnahmen",
+      "Die Richtlinie kennt keine Werte"
+    ],
+    "correctIdx": 1,
+    "explanation": "300 ng/m³ ist der Vorsorgewert, 3 000 ng/m³ der Eingreifwert; dazwischen sind Quellensuche und mittelfristige Sanierung angezeigt.",
+    "gapAnalysis": {
+      "topic": "PCB-Raumluft",
+      "misconception": "Jeder PCB-Nachweis erfordert sofortige Räumung.",
+      "coreRule": "PCB-Raumluft: < 300 langfristig tolerierbar, 300–3 000 mittelfristig sanieren, > 3 000 sofort handeln.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PCB-Raumluft“ im Modul Hist. Bauprodukte noch einmal durch.",
+      "targetModuleTab": "historische_bauprodukte",
+      "targetModuleLabel": "Hist. Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hp_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "historische_bauprodukte",
+    "moduleTitle": "Hist. Bauprodukte",
+    "topic": "Bleileitungen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TrinkwV 2023",
+    "question": "Was gilt nach der Trinkwasserverordnung 2023 für Trinkwasserleitungen aus Blei?",
+    "options": [
+      "Sie dürfen unbefristet weiterbetrieben werden",
+      "Sie waren bis 12.01.2026 zu entfernen oder stillzulegen",
+      "Sie müssen nur gekennzeichnet werden",
+      "Sie sind nur in Schulen verboten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die TrinkwV 2023 verlangte den Austausch oder die Stilllegung von Bleileitungen bis 12.01.2026; der Grenzwert für Blei sinkt ab 12.01.2028 von 10 auf 5 µg/l.",
+    "gapAnalysis": {
+      "topic": "Bleileitungen",
+      "misconception": "Bleileitungen sind nur bei Grenzwertüberschreitung zu ersetzen.",
+      "coreRule": "Bleileitungen raus; Grenzwert 10 µg/l, ab 2028 5 µg/l.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bleileitungen“ im Modul Hist. Bauprodukte noch einmal durch.",
+      "targetModuleTab": "historische_bauprodukte",
+      "targetModuleLabel": "Hist. Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_cl_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Regelmäßige Bauwerksprüfung",
+    "difficulty": "Basis",
+    "normRef": "VDI 6200:2010-02",
+    "question": "Wozu dient die Richtlinie VDI 6200?",
+    "options": [
+      "Bemessung von Stahlbetonbauteilen",
+      "Regelmäßige Überprüfung der Standsicherheit von Bauwerken (Begehung, Inspektion, eingehende Überprüfung)",
+      "Brandschutzplanung",
+      "Schallschutznachweis"
+    ],
+    "correctIdx": 1,
+    "explanation": "VDI 6200 empfiehlt gestufte Prüfungen und Intervalle je nach Schadensfolgeklasse und Robustheitsklasse.",
+    "gapAnalysis": {
+      "topic": "Regelmäßige Bauwerksprüfung",
+      "misconception": "Für Hochbauten gibt es keine Empfehlung zu Prüfintervallen.",
+      "coreRule": "Hochbau: VDI 6200; Brücken und Ingenieurbauwerke: DIN 1076.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Regelmäßige Bauwerksprüfung“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_cl_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "bestand_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Chloridgehalt",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TR Instandhaltung (DIBt); DAfStb",
+    "question": "Wie wird der korrosionsauslösende Chloridgehalt im Rahmen einer Instandsetzungsplanung festgelegt?",
+    "options": [
+      "Immer pauschal 0,1 M.-% bezogen auf den Beton",
+      "Objektspezifisch durch den sachkundigen Planer, häufig mit 0,5 M.-% bezogen auf den Zement als Orientierungswert",
+      "Gar nicht, Chloride sind unschädlich",
+      "Nur durch Sichtprüfung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die TR Instandhaltung überlässt die Festlegung dem sachkundigen Planer; 0,5 M.-% v. z. ist ein üblicher Orientierungswert, der objektspezifisch zu bewerten ist.",
+    "gapAnalysis": {
+      "topic": "Chloridgehalt",
+      "misconception": "Es gibt einen festen gesetzlichen Chloridgrenzwert.",
+      "coreRule": "Chloridprofil in Tiefenstufen messen; Grenzwert objektspezifisch festlegen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chloridgehalt“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "bestand_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_rb_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau",
+    "moduleTitle": "Rückbau & Material",
+    "topic": "Getrennthaltung von Bauabfällen",
+    "difficulty": "Basis",
+    "normRef": "GewAbfV § 8",
+    "question": "Wie viele Fraktionen von Bau- und Abbruchabfällen sind nach § 8 GewAbfV grundsätzlich getrennt zu halten?",
+    "options": [
+      "Drei (mineralisch, Holz, Rest)",
+      "Zehn (u. a. Glas, Kunststoff, Metalle, Holz, Dämmmaterial, Bitumengemische, Gips, Beton, Ziegel, Fliesen/Keramik)",
+      "Fünf, nur bei Bauvorhaben über 100 m³",
+      "Keine – Getrennthaltung ist freiwillig"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 8 GewAbfV nennt zehn Fraktionen. Ausnahmen gelten bei technischer Unmöglichkeit oder wirtschaftlicher Unzumutbarkeit; die Dokumentationspflicht entfällt bis 10 m³ Abfall.",
+    "gapAnalysis": {
+      "topic": "Getrennthaltung von Bauabfällen",
+      "misconception": "Die GewAbfV schreibe eine feste 90-%-Quote für Bauabfälle vor.",
+      "coreRule": "Zehn Fraktionen getrennt halten; Ausnahmen begründen und ab 10 m³ dokumentieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Getrennthaltung von Bauabfällen“ im Modul Rückbau & Material noch einmal durch.",
+      "targetModuleTab": "rueckbau",
+      "targetModuleLabel": "Rückbau & Material"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_rb_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau",
+    "moduleTitle": "Rückbau & Material",
+    "topic": "Pre-Demolition Audit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN SPEC 91484:2023-09",
+    "question": "Was regelt die DIN SPEC 91484?",
+    "options": [
+      "Die Bemessung von Abbruchgeräten",
+      "Die Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten als Grundlage für die Bewertung ihres Anschlussnutzungspotenzials (Pre-Demolition Audit)",
+      "Grenzwerte für Asbestfasern",
+      "Die Deponieklassen"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN SPEC 91484 beschreibt ein Verfahren zur Bauteil- und Produkterfassung vor dem Rückbau; die DIN SPEC 91525 (2026) ergänzt ein Anschlussnutzungskonzept.",
+    "gapAnalysis": {
+      "topic": "Pre-Demolition Audit",
+      "misconception": "Das Pre-Demolition Audit sei nur eine Schadstofferkundung.",
+      "coreRule": "Vor dem Abbruch: Bauteilinventar (DIN SPEC 91484) plus Schadstofferkundung (VDI 6202).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Pre-Demolition Audit“ im Modul Rückbau & Material noch einmal durch.",
+      "targetModuleTab": "rueckbau",
+      "targetModuleLabel": "Rückbau & Material"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bm_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "boden_materialaufbereitung",
+    "moduleTitle": "Boden- & Materialaufbereitung",
+    "topic": "Probenanzahl nach LAGA PN 98",
+    "difficulty": "Basis",
+    "normRef": "LAGA PN 98, Tabelle 2",
+    "question": "Wie viele Mischproben verlangt die LAGA PN 98 mindestens für ein Haufwerk von 100 m³?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "10"
+    ],
+    "correctIdx": 2,
+    "explanation": "Tabelle 2: bis 100 m³ 16 Einzelproben, 4 Mischproben und 4 Laborproben.",
+    "gapAnalysis": {
+      "topic": "Probenanzahl nach LAGA PN 98",
+      "misconception": "Eine einzige Mischprobe genügt für jedes Haufwerk.",
+      "coreRule": "PN 98 Tabelle 2: 2 MP bis 30 m³, steigend bis 10 MP bei 600 m³, darüber +1 MP je angefangene 100 m³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Probenanzahl nach LAGA PN 98“ im Modul Boden- & Materialaufbereitung noch einmal durch.",
+      "targetModuleTab": "boden_materialaufbereitung",
+      "targetModuleLabel": "Boden- & Materialaufbereitung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bm_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "boden_materialaufbereitung",
+    "moduleTitle": "Boden- & Materialaufbereitung",
+    "topic": "Probenvolumen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "LAGA PN 98, Tabelle 3",
+    "question": "Welches Mindestvolumen muss eine Einzelprobe bei einem Größtkorn von 32 mm nach LAGA PN 98 haben?",
+    "options": [
+      "0,5 l",
+      "1 l",
+      "2 l",
+      "10 l"
+    ],
+    "correctIdx": 2,
+    "explanation": "Für Größtkorn über 20 bis 50 mm beträgt das Mindestvolumen der Einzelprobe 2 l, das der Laborprobe 4 l.",
+    "gapAnalysis": {
+      "topic": "Probenvolumen",
+      "misconception": "Das Probenvolumen ist unabhängig von der Korngröße.",
+      "coreRule": "≤ 2 mm: 0,5 l; ≤ 20 mm: 1 l; ≤ 50 mm: 2 l; ≤ 120 mm: 5 l; größere Stücke einzeln.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Probenvolumen“ im Modul Boden- & Materialaufbereitung noch einmal durch.",
+      "targetModuleTab": "boden_materialaufbereitung",
+      "targetModuleLabel": "Boden- & Materialaufbereitung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ab_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "Deponieklasse",
+    "difficulty": "Basis",
+    "normRef": "DepV Anhang 3 Tabelle 2",
+    "question": "Ein Bauschutt hält alle DK-0-Werte ein, nur Sulfat im Eluat liegt bei 1 450 mg/l. Welche Deponieklasse ist mindestens erforderlich (ohne Sonderregeln)?",
+    "options": [
+      "DK 0",
+      "DK I",
+      "DK II",
+      "DK III"
+    ],
+    "correctIdx": 1,
+    "explanation": "Sulfat: DK 0 ≤ 100 mg/l (mit Fußnotenregelung bis 600), DK I ≤ 2 000 mg/l. Maßgebend ist der ungünstigste Parameter.",
+    "gapAnalysis": {
+      "topic": "Deponieklasse",
+      "misconception": "Ein einzelner überschrittener Parameter sei unerheblich.",
+      "coreRule": "Jeder Parameter muss die Zuordnungswerte der Klasse einhalten; der ungünstigste entscheidet.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Deponieklasse“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ab_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "abfaelle",
+    "moduleTitle": "Abfälle & Altlasten",
+    "topic": "EBV-Anzeigepflicht",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ErsatzbaustoffV § 22",
+    "question": "Wann ist der Einbau von RC-3 nach § 22 EBV anzuzeigen?",
+    "options": [
+      "Nie",
+      "Ab einem Gesamtvolumen von 250 m³ mit Voranzeige vier Wochen vor Beginn und Abschlussanzeige",
+      "Nur bei Einbau über 10 000 m³",
+      "Erst nach Fertigstellung"
+    ],
+    "correctIdx": 1,
+    "explanation": "RC-3, BM-F3, BG-F3 sowie bestimmte Schlacken und Aschen sind ab den Mengenschwellen anzuzeigen; in Schutzgebieten gilt eine Voranzeigepflicht unabhängig von der Menge.",
+    "gapAnalysis": {
+      "topic": "EBV-Anzeigepflicht",
+      "misconception": "Jeder Einbau eines Ersatzbaustoffs außer BM-0 sei ab 250 m³ meldepflichtig.",
+      "coreRule": "§ 22 EBV: Voranzeige 4 Wochen vorher, Abschlussanzeige nach Fertigstellung, zuständige Behörde.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EBV-Anzeigepflicht“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "targetModuleTab": "abfaelle",
+      "targetModuleLabel": "Abfälle & Altlasten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sch_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadstoffe",
+    "moduleTitle": "Schad- und Gefahrstoffe",
+    "topic": "Veranlasserpflichten GefStoffV",
+    "difficulty": "Basis",
+    "normRef": "GefStoffV § 5a",
+    "question": "Was muss der Veranlasser (Bauherr) nach § 5a GefStoffV vor Arbeiten an einem Gebäude mit Baujahr 1994 mindestens mitteilen?",
+    "options": [
+      "Nichts, die Pflicht gilt nur vor 1993",
+      "Den Baubeginn, da das Baujahr zwischen 1993 und 1996 liegt",
+      "Ein vollständiges Schadstoffgutachten",
+      "Nur die Wohnfläche"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei Objekten zwischen 1993 und 1996 ist der Baubeginn mitzuteilen; sonst genügt das Baujahr. Zusätzlich sind alle vorliegenden Informationen zu vermuteten Gefahrstoffen weiterzugeben.",
+    "gapAnalysis": {
+      "topic": "Veranlasserpflichten GefStoffV",
+      "misconception": "Die GefStoffV verpflichte jeden Bauherrn zu einer Asbestbeprobung.",
+      "coreRule": "§ 5a: Informations- und Mitwirkungspflicht, keine generelle Erkundungspflicht.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Veranlasserpflichten GefStoffV“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "targetModuleTab": "schadstoffe",
+      "targetModuleLabel": "Schad- und Gefahrstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sch_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "schadstoffe",
+    "moduleTitle": "Schad- und Gefahrstoffe",
+    "topic": "Risikokonzept Asbest",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TRGS 910; TRGS 519",
+    "question": "Welche Faserkonzentrationen begrenzen den Bereich mittleren Risikos bei Asbest?",
+    "options": [
+      "1 000 bis 10 000 F/m³",
+      "10 000 (Akzeptanz) bis 100 000 F/m³ (Toleranz)",
+      "100 000 bis 1 000 000 F/m³",
+      "Es gibt keine Konzentrationsgrenzen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Akzeptanzkonzentration 10 000 F/m³ (Risiko 4:10 000), Toleranzkonzentration 100 000 F/m³ (4:1 000). Darüber: hohes Risiko, zulassungspflichtige Tätigkeiten.",
+    "gapAnalysis": {
+      "topic": "Risikokonzept Asbest",
+      "misconception": "Unterhalb einer Wirkschwelle sei Asbest unbedenklich.",
+      "coreRule": "Niedrig < 10 000, mittel 10 000–100 000, hoch > 100 000 F/m³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Risikokonzept Asbest“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "targetModuleTab": "schadstoffe",
+      "targetModuleLabel": "Schad- und Gefahrstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_re_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourceneffizienz",
+    "moduleTitle": "Ressourceneffizienz",
+    "topic": "Material Circularity Indicator",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Ellen MacArthur Foundation, MCI",
+    "question": "Wie verändert sich der MCI eines Produkts mit LFI = 0,5, wenn sich seine Nutzungsdauer gegenüber dem Durchschnitt verdoppelt (F(X) = 0,9/X)?",
+    "options": [
+      "Er sinkt von 0,55 auf 0,10",
+      "Er steigt von 0,55 auf etwa 0,78",
+      "Er bleibt bei 0,55",
+      "Er wird negativ"
+    ],
+    "correctIdx": 1,
+    "explanation": "MCI = 1 − LFI · F(X): X = 1 → 1 − 0,45 = 0,55; X = 2 → 1 − 0,5 · 0,45 = 0,775.",
+    "gapAnalysis": {
+      "topic": "Material Circularity Indicator",
+      "misconception": "Der MCI hänge nur vom Rezyklatanteil ab.",
+      "coreRule": "Langlebigkeit (X) wirkt im MCI ebenso wie Rezyklateinsatz und Verwertung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Material Circularity Indicator“ im Modul Ressourceneffizienz noch einmal durch.",
+      "targetModuleTab": "ressourceneffizienz",
+      "targetModuleLabel": "Ressourceneffizienz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_re_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "ressourceneffizienz",
+    "moduleTitle": "Ressourceneffizienz",
+    "topic": "KrWG-Zielquote",
+    "difficulty": "Basis",
+    "normRef": "KrWG § 14 Abs. 3",
+    "question": "Was besagt § 14 Abs. 3 KrWG für nicht gefährliche Bau- und Abbruchabfälle?",
+    "options": [
+      "Eine projektbezogene Pflichtquote von 90 %",
+      "Ein nationales Ziel von mindestens 70 Gew.-% Vorbereitung zur Wiederverwendung, Recycling und sonstiger stofflicher Verwertung (einschließlich Verfüllung)",
+      "Ein Deponieverbot für Bauschutt",
+      "Eine Pflicht zu RC-Beton im Hochbau"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die 70-%-Vorgabe ist ein Ziel für Deutschland insgesamt, ohne natürlich vorkommendes Material (AVV 17 05 04) – keine Pflichtquote für das einzelne Bauvorhaben.",
+    "gapAnalysis": {
+      "topic": "KrWG-Zielquote",
+      "misconception": "Jede Baustelle müsse 70 % Recycling nachweisen.",
+      "coreRule": "KrWG § 14 Abs. 3: nationales Ziel, keine Projektpflicht.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „KrWG-Zielquote“ im Modul Ressourceneffizienz noch einmal durch.",
+      "targetModuleTab": "ressourceneffizienz",
+      "targetModuleLabel": "Ressourceneffizienz"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_rc_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Anzeige von Asbestarbeiten",
+    "difficulty": "Basis",
+    "normRef": "GefStoffV § 11a",
+    "question": "Mit welchem Vorlauf sind Tätigkeiten mit Asbest der zuständigen Behörde anzuzeigen?",
+    "options": [
+      "Gar nicht",
+      "Mindestens eine Woche vor Beginn",
+      "Am Tag der Arbeiten",
+      "Erst nach Abschluss"
+    ],
+    "correctIdx": 1,
+    "explanation": "§ 11a GefStoffV verlangt die Anzeige mindestens eine Woche vor Beginn; Abbrucharbeiten im niedrigen und mittleren Risikobereich bedürfen einer Genehmigung, Tätigkeiten mit hohem Risiko einer Zulassung des Unternehmens.",
+    "gapAnalysis": {
+      "topic": "Anzeige von Asbestarbeiten",
+      "misconception": "Fest gebundener Asbestzement könne ohne Anzeige entfernt werden.",
+      "coreRule": "Anzeige ≥ 1 Woche vorher; hohes Risiko nur mit Zulassung (max. 6 Jahre).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anzeige von Asbestarbeiten“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Checklisten"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_rc_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "rueckbau_checklisten",
+    "moduleTitle": "Checklisten",
+    "topic": "Mobile Brechanlage",
+    "difficulty": "Fortgeschritten",
+    "normRef": "4. BImSchV",
+    "question": "Ab wann ist eine mobile Brechanlage am selben Standort nach BImSchG genehmigungsbedürftig?",
+    "options": [
+      "Ab dem ersten Tag",
+      "Wenn sie länger als zwölf Monate am selben Ort betrieben wird",
+      "Nur bei mehr als 100 t Durchsatz pro Jahr",
+      "Nie, mobile Anlagen sind ausgenommen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach der 4. BImSchV sind Anlagen genehmigungsbedürftig, wenn sie länger als zwölf Monate am selben Ort betrieben werden sollen (Nr. 2.2 bzw. 8.11.2.4 des Anhangs 1).",
+    "gapAnalysis": {
+      "topic": "Mobile Brechanlage",
+      "misconception": "Mobile Anlagen benötigen nie eine Genehmigung.",
+      "coreRule": "Zwölf-Monats-Regel der 4. BImSchV beachten; Lärm- und Staubschutz unabhängig davon.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mobile Brechanlage“ im Modul Checklisten noch einmal durch.",
+      "targetModuleTab": "rueckbau_checklisten",
+      "targetModuleLabel": "Checklisten"
     },
     "verified": false
   }

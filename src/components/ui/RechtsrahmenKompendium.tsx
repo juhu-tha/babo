@@ -479,17 +479,17 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
   {
     id: 'eu_ets_2',
     shortName: 'EU-ETS II (Gebäude & Brennstoffe)',
-    fullName: 'Europäisches Emissionshandelssystem II – Gebäude und Straßenverkehr ab 2027',
+    fullName: 'Europäisches Emissionshandelssystem II – Gebäude und Straßenverkehr (Start auf 2028 verschoben)',
     norm: 'Richtlinie (EU) 2023/959',
     level: 'ebene_4_bepreisung',
     levelLabel: 'Ebene 4: Emissionshandel & Bepreisung',
     legalType: 'EU-Richtlinie (national umzusetzen)',
     audiences: ['bestand', 'finanzen', 'planer'],
     primaryTarget: 'Brennstoffhändler (Gas, Öl, Kohle), Immobilieneigentümer, Vermieter',
-    leadQuote: 'Das europaweite Preissignal ab 2027: Fossile Heizenergie im Gebäudebestand wird marktgetrieben verteuert.',
-    coreSummary: 'Ab 2027 startet das EU-ETS II als eigenständiges Handelssystem für Brennstoffe, die in Gebäuden verbrannt werden. Inverkehrbringer fossiler Brennstoffe müssen Zertifikate erwerben. Die Kosten werden auf die Heizkosten umgelegt. Es gibt keine starre Preisgrenze mehr, sondern eine marktwirtschaftliche Verknappung, was unsanierte Bestandsgebäude extrem unrentabel macht.',
+    leadQuote: 'Das europaweite Preissignal ab 2028: Fossile Heizenergie im Gebäudebestand wird marktgetrieben verteuert.',
+    coreSummary: 'Ursprünglich für 2027 geplant, nach Beschluss von Ende 2025 auf 2028 verschoben (Stand manuell prüfen): Dann startet das EU-ETS II als eigenständiges Handelssystem für Brennstoffe, die in Gebäuden verbrannt werden. Inverkehrbringer fossiler Brennstoffe müssen Zertifikate erwerben. Die Kosten werden auf die Heizkosten umgelegt. Ein Marktstabilitätsmechanismus soll Preisspitzen dämpfen (Richtwert 45 € je Tonne in Preisen von 2020); die schrittweise Mengenverknappung verteuert den Betrieb unsanierter Bestandsgebäude dennoch deutlich.',
     keyDuties: [
-      'Brennstoffhändler müssen ab 2027 für jedes Kilogramm verbranntes Gas/Öl Zertifikate abführen.',
+      'Inverkehrbringer von Brennstoffen müssen ab Start des ETS II für die mit Gas und Öl verbundenen Emissionen Zertifikate abgeben; bis dahin gilt in Deutschland das BEHG.',
       'Strikte jährliche Reduktion der Zertifikatemenge um über 5 % pro Jahr.',
       'Mechanismus zur Preisdämpfung (Freigabe zusätzlicher Zertifikate bei Überschreiten von ca. 45 €/t vor 2030).',
       'Einnahmen fließen direkt in den EU-Klima-Sozialfonds (Social Climate Fund) zur Förderung von Sanierungen.'

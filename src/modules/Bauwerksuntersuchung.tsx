@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Search, Eye, Activity, Hammer, Building2, ArrowRight, BookOpen, ClipboardCheck, FlaskConical, LifeBuoy, FileSpreadsheet, Layers } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import PruefverfahrenKatalog from './bauwerksuntersuchung/PruefverfahrenKatalog';
 import ProbenahmePlaner from './bauwerksuntersuchung/ProbenahmePlaner';
@@ -59,7 +61,7 @@ export default function Bauwerksuntersuchung() {
       standards: [
         "DIN 1076 (\"Bauwerksprüfung Handbereich\")",
         "DBV-Merkblatt \"Risse im Beton (Untersuchung & Bewertung)\"",
-        "WTA-Merkblatt 2-9 (\"Mauerwerksinstandsetzung - Schadensanalyse\")"
+        "WTA-Merkblatt 4-5 (\"Beurteilung von Mauerwerk – Mauerwerksdiagnostik\")"
       ],
       linkText: "Klassische Bauschadensbilder analysieren",
       linkTab: "bauschaeden"
@@ -384,7 +386,35 @@ export default function Bauwerksuntersuchung() {
       )}
 
       {/* Standardisierter ModuleFooter für Bauwerksuntersuchung */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Restnutzungsdauer bis zur Depassivierung der Bewehrung"
+        zielGleichung="t_{krit} = \left(\frac{c_{0{,}05}}{k_{carb}}\right)^2"
+        schritte={[
+          { titel: 'Messung', erklaerung: 'Parkhausdecke, Alter 36 Jahre, mittlere Karbonatisierungstiefe (Phenolphthalein) 15 mm:', formel: 'k_{carb} = \\frac{15}{\\sqrt{36}} = 2{,}5\\,\\text{mm}/\\sqrt{\\text{a}}' },
+          { titel: 'Betondeckung', erklaerung: '5-%-Quantil der gemessenen Deckung (Bewehrungsortung): 25 mm.', formel: 'c_{0{,}05} = 25\\,\\text{mm}' },
+          { titel: 'Zeitpunkt der Depassivierung', erklaerung: 'Karbonatisierungsfront erreicht die Bewehrung bei:', formel: 't_{krit} = \\left(\\frac{25}{2{,}5}\\right)^2 = 100\\,\\text{a} \\Rightarrow \\text{Reserve} \\approx 64\\,\\text{a}' }
+        ]}
+        ergebnisHinweis="Das √t-Gesetz gilt nur bei gleichbleibender Feuchte; in Spritzwasserzonen ist zusätzlich der Chloridgehalt in Tiefenstufen zu bestimmen."
+        normQuelle="DIN EN 14630:2007-01; DBV-Merkblatt Betondeckung und Bewehrung"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Charakteristische In-situ-Druckfestigkeit aus Bohrkernen"
+        zielGleichung="f_{ck,is} = \min\left(f_{m,is} - k_n \cdot s;\; f_{is,lowest} + M\right)"
+        schritte={[
+          { titel: 'Prüfergebnisse', erklaerung: '8 Bohrkerne (h/d = 1), Mittelwert 31,0 N/mm², Standardabweichung 2,5 N/mm² (≥ Mindestwert bei V = 8 %), kleinster Wert 28,0 N/mm².', formel: 'f_{m,is} = 31{,}0,\\; s = 2{,}5,\\; f_{is,lowest} = 28{,}0\\,\\text{N/mm}^2' },
+          { titel: 'Charakteristischer Wert', erklaerung: 'Mit k_n = 1,48 und M = 4 N/mm² (Ansatz des Moduls):', formel: 'f_{ck,is} = \\min(31{,}0 - 1{,}48 \\cdot 2{,}5;\\; 28{,}0 + 4) = \\min(27{,}3;\\; 32{,}0) = 27{,}3\\,\\text{N/mm}^2' },
+          { titel: 'Einstufung', erklaerung: 'Umrechnung auf die Druckfestigkeitsklasse (Faktor 0,85):', formel: 'f_{ck} = \\frac{27{,}3}{0{,}85} = 32{,}1\\,\\text{N/mm}^2 \\ge 30 \\Rightarrow \\text{C30/37}' }
+        ]}
+        ergebnisHinweis="Für die Nachrechnung wird die In-situ-Festigkeit direkt verwendet; Probenanzahl, Bohrkernlage und Bewehrungsfreiheit bestimmen die Aussagekraft. Faktoren und Mindeststandardabweichung nach DIN EN 13791 sind am Normtext zu prüfen."
+        normQuelle="DIN EN 13791:2020-02 + A20:2022-04; DIN EN 12504-1:2021-02"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bauwerksuntersuchung" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 8 Bestand: ZfP-Normausgaben, WTA-Zuordnung, Karbonatisierungs- und Bohrkernauswertung geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Bauwerksdiagnostik', url: 'https://de.wikipedia.org/wiki/Bauwerksdiagnostik' },
           { title: 'Zerstörungsfreie Werkstoffprüfung', url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Werkstoffpr%C3%BCfung' },
@@ -396,16 +426,16 @@ export default function Bauwerksuntersuchung() {
           'Rinn, F.: Bohrwiderstandsmessung an Holz (Resistograph) – Originalpatent/Quelle prüfen'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
-          { title: 'DIN EN 12504-1:2019-09 (Bohrkernproben - Herstellung, Untersuchung und Prüfung der Druckfestigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
-          { title: 'DIN EN 12504-2:2021-08 (Bestimmung der Rückprallzahl mit dem Schmidt-Hammer)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
-          { title: 'DIN EN 12504-4:2021-08 (Bestimmung der Ultraschallimpulsgeschwindigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-4' },
+          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
+          { title: 'DIN EN 12504-1:2021-02 (Bohrkernproben – Herstellung, Untersuchung und Prüfung der Druckfestigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
+          { title: 'DIN EN 12504-2:2021-10 (Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
+          { title: 'DIN EN 12504-4 (Bestimmung der Ultraschallimpulsgeschwindigkeit; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-4' },
           { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehaltes in Festbeton - Säureaufschluss und Titration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629' },
           { title: 'DIN EN 14630:2007-01 (Bestimmung der Karbonatisierungstiefe im Festbeton mit Phenolphthalein)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14630' },
           { title: 'DIN EN 1542:1999-07 (Messung der Haftfestigkeit im Abreißversuch mit Prüfstempel Ø 50 mm)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1542' },
           { title: 'DBV-Merkblatt Betondeckung und Bewehrung (2015-12, statistisches 5 %-Quantil)', url: 'https://www.betonverein.de/' },
           { title: 'DGZfP-Merkblätter B 02 (Betondeckung), B 03 (Potentialmessung, 2025), B 04 (Ultraschall), B 10 (Radar), B 11 (Impakt-Echo, 2022)', url: 'https://publikationen.dgzfp.de/' },
-          { title: 'TR Instandhaltung von Betonbauwerken (DIBt) – korrosionsauslösender Chloridgehalt objektspezifisch durch den sachkundigen Planer', url: 'https://www.dibt.de/' },
+          { title: 'TR Instandhaltung von Betonbauwerken (DIBt, Teile 1 und 2; über die MVV TB eingeführt, Fassung manuell prüfen) – korrosionsauslösender Chloridgehalt objektspezifisch durch den sachkundigen Planer', url: 'https://www.dibt.de/' },
           { title: 'DIN 68800-2 / -4 (Holzschutz; bekämpfende Maßnahmen) – Bohrwiderstandsmessung selbst ist nicht genormt', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-4' },
           { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' }
         ]}

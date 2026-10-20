@@ -202,7 +202,8 @@ export default function Bauphysik() {
         }
       });
 
-      // Calculate Winter Condensation flux according to DIN 4108-3 Glaser algorithm      // Wasserdampf-Diffusionsleitkoeffizient ruhender Luft nach DIN 4108-3:
+      // Calculate Winter Condensation flux according to DIN 4108-3 Glaser algorithm
+      // Wasserdampf-Diffusionsleitkoeffizient ruhender Luft nach DIN 4108-3:
       // delta_0 = 2,0 · 10^-10 kg/(m·s·Pa) = 7,2 · 10^-7 kg/(m·h·Pa)
       const delta_a = 7.2e-7; // kg/(m·h·Pa)
       const sd_before = sd_C;
@@ -211,7 +212,9 @@ export default function Bauphysik() {
       const flow_in = (pi - psat_C) / (sd_before > 0 ? sd_before : 0.01);
       const flow_out = (psat_C - pe) / (sd_after > 0 ? sd_after : 0.01);
       
-      condMassFlowWinter = Math.max(0, delta_a * (flow_in - flow_out) * 1000); // g/(m²·h)      // Verdunstungsperiode vereinfacht: innen und außen 12 °C / 70 % r. F., Tauwasserebene 12 °C
+      condMassFlowWinter = Math.max(0, delta_a * (flow_in - flow_out) * 1000); // g/(m²·h)
+
+      // Verdunstungsperiode vereinfacht: innen und außen 12 °C / 70 % r. F., Tauwasserebene 12 °C
       // (klassisches Glaser-Klima; Randbedingungen der DIN 4108-3:2024-03 abweichend – manuell prüfen)
       const T_summer = 12;
       const psat_summer_total = calcPsat(T_summer); // 1402 Pa
@@ -401,7 +404,7 @@ export default function Bauphysik() {
     // Sabine's Formula: T = 0.163 * V / A
     const T = equivalentAbsorptionArea > 0.05 ? (0.163 * volume) / equivalentAbsorptionArea : 9.99;
 
-    // DIN 18041 requirements (Target Hall time)    // DIN 18041:2016-03, Gruppe A: T_soll abhängig vom Raumvolumen; Toleranz 0,8 bis 1,2 · T_soll (250–2000 Hz)
+    // DIN 18041:2016-03, Gruppe A: T_soll abhängig vom Raumvolumen; Toleranz 0,8 bis 1,2 · T_soll (250–2000 Hz)
     const lgV = Math.log10(Math.max(volume, 30));
     let T_target = Math.max(0.3, 0.32 * lgV - 0.17); // A3 Unterricht/Kommunikation
     let roomLabel = 'Schul- / Unterrichtsraum (Nutzungsart A3)';
@@ -487,7 +490,9 @@ export default function Bauphysik() {
       return A > 0.05 ? (0.163 * volume) / A : 9.99;
     });
 
-    const baseTarget = acousticsResults.T_target;    // Toleranzbereich nach DIN 18041 (Gruppe A), vereinfacht: 250–2000 Hz 0,8–1,2 · T_soll;
+    const baseTarget = acousticsResults.T_target;
+
+    // Toleranzbereich nach DIN 18041 (Gruppe A), vereinfacht: 250–2000 Hz 0,8–1,2 · T_soll;
     // 125 Hz bis 1,45 · T_soll nach oben und 0,65 nach unten, 4000 Hz 0,65–1,2 (Eckwerte manuell prüfen)
     const targetMin = frequencies.map((f) => baseTarget * (f === 125 || f === 4000 ? 0.65 : 0.8));
 
@@ -1024,7 +1029,8 @@ export default function Bauphysik() {
                 })()}
 
                 {/* DIN 4108-2 Surface factor f_RSi mold-prevention card */}
-                {(() => {                  // DIN 4108-2: f_Rsi mit R_si = 0,25 m²K/W (erhöhter Übergangswiderstand für Schimmelnachweis)
+                {(() => {
+                  // DIN 4108-2: f_Rsi mit R_si = 0,25 m²K/W (erhöhter Übergangswiderstand für Schimmelnachweis)
                   const f_RSi = 1 - 0.25 * glaserData.U;
                   const t_si = Te + f_RSi * (Ti - Te);
                   const is_f_RSi_compliant = f_RSi >= 0.70;

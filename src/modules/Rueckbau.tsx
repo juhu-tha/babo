@@ -22,6 +22,8 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 
 // Define TS Types for the components
@@ -1256,8 +1258,8 @@ export default function Rueckbau() {
                   </div>
                   
                   <div className="bg-indigo-50/50 p-3 rounded border border-indigo-100 space-y-2">
-                    <span className="font-bold text-indigo-900 block text-xs uppercase">Mindest-Sortierquote:</span>
-                    Erreicht eine Abbruchstelle die gesetzlich geforderte Sortierquote von <strong>mindestens 90%</strong> nicht, muss der gemischte Bauschutt nachweislich in einer zugelassenen Vorbehandlungsanlage nachsortiert werden.
+                    <span className="font-bold text-indigo-900 block text-xs uppercase">Gemische (§ 9 GewAbfV):</span>
+                    Eine feste Getrenntsammlungsquote für Bauabfälle kennt die GewAbfV nicht. Ist die Getrennthaltung technisch nicht möglich oder wirtschaftlich unzumutbar, gehen Gemische mit überwiegend Kunststoff, Metall oder Holz in eine Vorbehandlungsanlage (Sortierquote der Anlage <strong>mindestens 85 %</strong>), mineralische Gemische in eine Aufbereitungsanlage (§ 9 GewAbfV).
                   </div>
 
                   <div className="bg-white rounded border border-amber-300 p-2.5 text-xs text-amber-800">
@@ -1332,18 +1334,18 @@ export default function Rueckbau() {
                     <span className="font-mono text-xs font-bold px-2 py-0.5 bg-shiraz text-white rounded">
                       DIN SPEC 91525
                     </span>
-                    <span className="text-[11px] text-slate-500 font-medium">Digitaler Gebäuderessourcenpass</span>
+                    <span className="text-[11px] text-slate-500 font-medium">Anschlussnutzungskonzept (2026-02)</span>
                   </div>
                   <h5 className="font-bold text-sm text-text-main">
-                    Standardisierte Erfassung für den zirkulären Rückbau
+                    Anschlussnutzungskonzept für Bauprodukte aus Bestandsgebäuden
                   </h5>
                   <p className="text-xs text-text-main/80 leading-relaxed">
-                    Definiert die Datenstruktur und Mindestanforderungen an digitale Material- und Gebäudepässe. Bildet das Bindeglied zwischen BIM-Bestandsmodellen, Schadstoffkatastern und der Bilanzierung recyclingfähiger Bauteile vor dem Abbruch.
+                    Beschreibt ein Konzept (Post-Use Concept), wie ausgebaute Bauprodukte aus Bestandsgebäuden einer Anschlussnutzung – Wiederverwendung oder hochwertigem Recycling – zugeführt werden. Baut auf der Erfassung nach DIN SPEC 91484 auf.
                   </p>
                 </div>
                 <div className="mt-3 pt-2.5 border-t border-home-grau/15 flex items-center justify-between text-[11px] text-text-main/70">
-                  <span>Fokus: Zirkularitäts-Index, Materialidentität</span>
-                  <span className="font-mono font-bold text-shiraz">DIN SPEC 91525-1</span>
+                  <span>Fokus: Wiederverwendung, Anschlussnutzung</span>
+                  <span className="font-mono font-bold text-shiraz">DIN SPEC 91525:2026-02</span>
                 </div>
               </div>
 
@@ -1357,15 +1359,15 @@ export default function Rueckbau() {
                     <span className="text-[11px] text-slate-500 font-medium">Pre-Demolition Audit</span>
                   </div>
                   <h5 className="font-bold text-sm text-text-main">
-                    Verfahren für das Rückbau-Audit vor Abbrucharbeiten
+                    Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten
                   </h5>
                   <p className="text-xs text-text-main/80 leading-relaxed">
-                    Normiertes Verfahren für die qualifizierte Bestandserfassung und Schadstofferkundung (Pre-Demolition Audit) vor dem Abbruch baulicher Anlagen. Klassifiziert Baustofffraktionen nach Verwertbarkeit und schadstofffreier Separierbarkeit.
+                    Verfahren zur Erfassung von Bauprodukten als Grundlage für die Bewertung ihres Anschlussnutzungspotenzials vor Abbruch- und Renovierungsarbeiten (Pre-Demolition Audit). Die Schadstofferkundung erfolgt ergänzend nach VDI 6202.
                   </p>
                 </div>
                 <div className="mt-3 pt-2.5 border-t border-home-grau/15 flex items-center justify-between text-[11px] text-text-main/70">
-                  <span>Fokus: Schadstofffreie Selektion, Verwertungsquoten</span>
-                  <span className="font-mono font-bold text-shiraz">DIN SPEC 91484</span>
+                  <span>Fokus: Bauteilinventar, Wiederverwendungspotenzial</span>
+                  <span className="font-mono font-bold text-shiraz">DIN SPEC 91484:2023-09</span>
                 </div>
               </div>
 
@@ -1374,20 +1376,20 @@ export default function Rueckbau() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs font-bold px-2 py-0.5 bg-slate-800 text-white rounded">
-                      VDI 6210 Blatt 1 &amp; 2
+                      VDI 6210 Blatt 1
                     </span>
                     <span className="text-[11px] text-slate-500 font-medium">Abbruch &amp; Schadstoffsanierung</span>
                   </div>
                   <h5 className="font-bold text-sm text-text-main">
-                    Rückbau baulicher und technischer Anlagen
+                    Abbruch von baulichen und technischen Anlagen
                   </h5>
                   <p className="text-xs text-text-main/80 leading-relaxed">
-                    Regelt die technische Durchführung, Arbeitsschutz-, Standsicherheits- und Umweltaspekte beim Abbruch von Bauwerken und Industrieanlagen. Ergänzt VDI 6202 (Erkundung) um konkrete Rückbau- und Abbruchverfahren.
+                    Regelt die technische Durchführung, Arbeitsschutz-, Standsicherheits- und Umweltaspekte beim Abbruch von Bauwerken und Industrieanlagen. Ergänzt VDI 6202 (schadstoffbelastete Anlagen) um konkrete Rückbau- und Abbruchverfahren. Aktuelle Ausgabe 2025-10 (ersetzt 2016-02).
                   </p>
                 </div>
                 <div className="mt-3 pt-2.5 border-t border-home-grau/15 flex items-center justify-between text-[11px] text-text-main/70">
                   <span>Fokus: Abbruchstatik, Entkernung, Emissionsschutz</span>
-                  <span className="font-mono font-bold text-slate-800">VDI 6210</span>
+                  <span className="font-mono font-bold text-slate-800">VDI 6210 Blatt 1:2025-10</span>
                 </div>
               </div>
 
@@ -1401,15 +1403,15 @@ export default function Rueckbau() {
                     <span className="text-[11px] text-slate-500 font-medium">Abbrucharbeiten - Begriffe &amp; Verfahren</span>
                   </div>
                   <h5 className="font-bold text-sm text-text-main">
-                    Abbruch- und Rückbauarbeiten – Begriffe, Verfahren, Arbeitssicherheit
+                    Abbrucharbeiten – Begriffe, Verfahren, Anwendungsbereiche
                   </h5>
                   <p className="text-xs text-text-main/80 leading-relaxed">
-                    Die übergeordnete nationale Grundnorm für Abbrucharbeiten. Definiert einheitliche Begrifflichkeiten, technische Abbruchverfahren (Demontage, Einsturzverfahren, Abtragen, Sprengen) und fundamentale Schutzvorschriften.
+                    Die übergeordnete nationale Grundnorm für Abbrucharbeiten. Definiert einheitliche Begriffe, Abbruchverfahren (z. B. Demontieren, Abtragen, Einreißen, Sprengen) und deren Anwendungsbereiche.
                   </p>
                 </div>
                 <div className="mt-3 pt-2.5 border-t border-home-grau/15 flex items-center justify-between text-[11px] text-text-main/70">
                   <span>Fokus: Abbruchverfahren, Begriffsdefinitionen</span>
-                  <span className="font-mono font-bold text-slate-800">DIN 18007</span>
+                  <span className="font-mono font-bold text-slate-800">DIN 18007:2022-09</span>
                 </div>
               </div>
             </div>
@@ -1436,15 +1438,15 @@ export default function Rueckbau() {
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/15">
                   <strong className="text-shiraz block mb-1">Recycling-Baustoffe (RC-1, RC-2, RC-3):</strong>
                   <ul className="list-disc list-inside space-y-0.5 text-text-main/80 text-[11px]">
-                    <li><strong>RC-1:</strong> Höchste Güteklasse (geringste Eluatwerte). Einbau ohne technische Sicherungsmaßnahmen auch im ungebundenen Straßenoberbau und Wegebau zulässig.</li>
-                    <li><strong>RC-2:</strong> Mittlere Belastung. Einbau in definierten Einbauweisen (z. B. unter wasserundurchlässiger Deckschicht wie Asphalt oder Pflaster mit mineralischer Abdichtung).</li>
-                    <li><strong>RC-3:</strong> Eingeschränkter Einbau nur mit strikter bautechnischer Sicherung und behördlicher Anzeige bei der unteren Abfallwirtschaftsbehörde.</li>
+                    <li><strong>RC-1:</strong> Höchste Güteklasse (geringste Eluatwerte). Breiteste Verwendbarkeit, u. a. in ungebundenen Tragschichten; Grenzen ergeben sich aus Grundwasserdeckschicht und Schutzgebieten (§ 19 EBV).</li>
+                    <li><strong>RC-2:</strong> Mittlere Belastung. Einbau nur in den nach Anlage 2 EBV zulässigen Einbauweisen (überwiegend gebunden oder unter wasserundurchlässiger Deckschicht).</li>
+                    <li><strong>RC-3:</strong> Stark eingeschränkter Einbau mit bautechnischer Sicherung; ab 250 m³ Voranzeige vier Wochen vor Beginn und Abschlussanzeige bei der zuständigen Behörde (§ 22 EBV).</li>
                   </ul>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/15">
                   <strong className="text-slate-800 block mb-1">Bodenmaterial (BM) &amp; Gleisschotter (GS):</strong>
                   <p className="text-[11px] text-text-main/80 leading-relaxed">
-                    Klassen BM-0 (unbelasteter Oberboden/Boden), BM-F1 bis BM-F3 sowie GS-0 bis GS-3. Mindestabstand zum höchsten zu erwartenden Grundwasserstand (HGW) beträgt in der Regel ≥ 1,0 m (in Karst- oder kiesigen Gebieten strengere Auflagen).
+                    Klassen BM-0 (unbelasteter Oberboden/Boden), BM-F1 bis BM-F3 sowie GS-0 bis GS-3. Maßgebend ist die Grundwasserdeckschicht über dem höchsten zu erwartenden Grundwasserstand: günstig bei mehr als 1 m Sickerstrecke zuzüglich 0,5 m Sicherheitsabstand (§ 19 Abs. 8 EBV); in Karst- oder stark klüftigen Gebieten sind RC-3, BM-F3, BG-F3 und GS-3 unzulässig (§ 19 Abs. 7).
                   </p>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-[11px] text-slate-700 font-mono">
@@ -1461,34 +1463,34 @@ export default function Rueckbau() {
                   GefStoffV-Novelle &amp; TRGS 519 – Bauherrenpflicht &amp; Ampelmodell
                 </h4>
                 <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-red-50 text-red-800 rounded border border-red-200">
-                  Stand 2024 / 2026
+                  GefStoffV seit 05.12.2024
                 </span>
               </div>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Die novellierte Gefahrstoffverordnung (GefStoffV) verankert erstmals eine gesetzliche 
-                <strong>Mitwirkungs- und Informationspflicht des Bauherrn/Veranlassers</strong> zur Schadstofferkundung im Bestand:
+                Die novellierte Gefahrstoffverordnung (GefStoffV) verankert in § 5a eine 
+                <strong>Mitwirkungs- und Informationspflicht des Bauherrn/Veranlassers</strong> – eine generelle Erkundungspflicht wurde nicht eingeführt:
               </p>
               <div className="space-y-2 text-xs">
                 <div className="p-3 bg-red-50/40 rounded-lg border border-red-200 space-y-1">
-                  <strong className="text-red-900 block text-xs">Gesetzliche Erkundungspflicht für Bauten vor dem 31.10.1993:</strong>
+                  <strong className="text-red-900 block text-xs">Informationspflicht des Veranlassers (§ 5a GefStoffV):</strong>
                   <p className="text-[11px] text-red-950/80 leading-relaxed">
-                    Vor Beginn von Abbruch-, Umbau- oder Instandhaltungsarbeiten muss der Veranlasser das Gebäude auf Asbest und verdeckte Gefahrstoffe (insb. asbesthaltige Spachtelmassen, Fliesenkleber, Putze nach VDI 6202 Bl. 3) durch eine sachkundige Person erkunden lassen und den Ausführenden schriftlich mitteilen.
+                    Vor Beginn der Arbeiten übergibt der Veranlasser alle ihm vorliegenden Informationen zur Bau- und Nutzungsgeschichte und zu vermuteten Gefahrstoffen, mindestens das Baujahr (bei 1993–1996 den Baubeginn). Ob Asbest (z. B. in Spachtelmassen, Fliesenklebern, Putzen) vorhanden ist, klärt das ausführende Unternehmen in der Gefährdungsbeurteilung – fachlich empfohlen durch Erkundung nach VDI 6202 Blatt 3:2021-09.
                   </p>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/15 space-y-1.5">
-                  <strong className="text-text-main block text-xs">Risikobasiertes Ampelmodell der TRGS 519:</strong>
+                  <strong className="text-text-main block text-xs">Risikobasiertes Maßnahmenkonzept (GefStoffV Anhang I Nr. 2, TRGS 519):</strong>
                   <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-bold">
                     <div className="p-2 rounded bg-emerald-100 text-emerald-900 border border-emerald-300">
                       Grün: &lt; 10.000 F/m³
-                      <span className="font-normal block text-[9.5px] mt-0.5 text-emerald-800">Geringe Exposition (BT-Verfahren)</span>
+                      <span className="font-normal block text-[9.5px] mt-0.5 text-emerald-800">Niedriges Risiko (z. B. BT-Verfahren)</span>
                     </div>
                     <div className="p-2 rounded bg-amber-100 text-amber-900 border border-amber-300">
                       Gelb: 10.000–100.000 F/m³
-                      <span className="font-normal block text-[9.5px] mt-0.5 text-amber-800">Mittlere Exposition (Erweiterter Schutz)</span>
+                      <span className="font-normal block text-[9.5px] mt-0.5 text-amber-800">Mittleres Risiko (Genehmigung bei Abbruch)</span>
                     </div>
                     <div className="p-2 rounded bg-red-100 text-red-900 border border-red-300">
                       Rot: &gt; 100.000 F/m³
-                      <span className="font-normal block text-[9.5px] mt-0.5 text-red-800">Hohe Exposition (Schwarz-Weiß / 4-Kammer)</span>
+                      <span className="font-normal block text-[9.5px] mt-0.5 text-red-800">Hohes Risiko (Zulassung, Schwarz-Weiß-Anlage)</span>
                     </div>
                   </div>
                   <p className="text-[11px] text-text-main/70 leading-relaxed pt-1">
@@ -1517,7 +1519,7 @@ export default function Rueckbau() {
               <div className="relative">
                 <span className="absolute -left-6 bg-shiraz text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold">1</span>
                 <span className="text-xs font-bold text-text-main block">Gemeinde / Bauordnungsamt</span>
-                <p className="text-xs text-text-main/70">Anzeige des Abbruchs nach BayBO (Art. 57 Abs. 5 Gesetzlicher Verfahrensfreie Vorhaben).
+                <p className="text-xs text-text-main/70">Beseitigung baulicher Anlagen nach BayBO Art. 57 Abs. 5 (verfahrensfrei, je nach Anlage mit Anzeige vorab; Fristen im Gesetzestext prüfen).
           </p>
         </div>
               <div className="relative">
@@ -1528,7 +1530,7 @@ export default function Rueckbau() {
               <div className="relative">
                 <span className="absolute -left-6 bg-shiraz text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold">3</span>
                 <span className="text-xs font-bold text-text-main block">Gewerbeaufsichtsamt (GAA)</span>
-                <p className="text-xs text-text-main/70">Anzeige der Schadstoffarbeiten nach TRGS 519 (Asbest) mind. 7 Tage vor Arbeitsbeginn.</p>
+                <p className="text-xs text-text-main/70">Anzeige der Asbesttätigkeiten mindestens eine Woche vor Beginn (§ 11a GefStoffV, TRGS 519).</p>
               </div>
               <div className="relative">
                 <span className="absolute -left-6 bg-shiraz text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold">4</span>
@@ -1587,7 +1589,35 @@ export default function Rueckbau() {
       )}
 
       {/* Footer references */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Massenbilanz für den Rückbau eines Bürogebäudes"
+        zielGleichung="m_i = V_i \cdot \rho_i, \quad Q_{min} = \frac{\sum m_{min}}{\sum m_i}"
+        schritte={[
+          { titel: 'Mengen aus dem Rückbaukonzept', erklaerung: 'Beton 1 200 m³ (ρ = 2,4 t/m³), Mauerwerk 300 m³ (1,6 t/m³), Holz 60 m³ (0,5 t/m³), Metalle 40 t:', formel: 'm_B = 2\\,880\\,\\text{t}, \\; m_Z = 480\\,\\text{t}, \\; m_H = 30\\,\\text{t}, \\; m_M = 40\\,\\text{t}' },
+          { titel: 'Gesamtmasse', erklaerung: 'Summe der Hauptfraktionen:', formel: '\\sum m_i = 2\\,880 + 480 + 30 + 40 = 3\\,430\\,\\text{t}' },
+          { titel: 'Mineralischer Anteil', erklaerung: 'Beton und Mauerwerk:', formel: 'Q_{min} = \\frac{3\\,360}{3\\,430} = 0{,}98 = 98\\,\\%' }
+        ]}
+        ergebnisHinweis="Die mineralischen Fraktionen bestimmen Logistik und Verwertung. Nach § 8 GewAbfV sind Beton (17 01 01) und Ziegel (17 01 02) getrennt zu halten, soweit technisch möglich und wirtschaftlich zumutbar; ab 10 m³ Abfall ist die Getrennthaltung zu dokumentieren."
+        normQuelle="GewAbfV § 8; DIN SPEC 91484:2023-09"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Kostenvergleich selektiver Rückbau gegen Gemischentsorgung"
+        zielGleichung="\Delta K = m \cdot (p_{Gemisch} - p_{getrennt}) - K_{Sortierung}"
+        schritte={[
+          { titel: 'Ansatz', erklaerung: 'Mauerwerks- und Betonabbruch 3 360 t; Annahmepreis RC-Anlage sortenrein 12 €/t, Bauschuttgemisch mit Störstoffen 35 €/t (Lehrwerte):', formel: 'p_{Gemisch} - p_{getrennt} = 23\\,\\text{€/t}' },
+          { titel: 'Mehrkosten Entkernung', erklaerung: 'Zusätzlicher Personal- und Geräteeinsatz für die Entkernung: 40 000 €.', formel: 'K_{Sortierung} = 40\\,000\\,\\text{€}' },
+          { titel: 'Ergebnis', erklaerung: 'Einsparung durch selektiven Rückbau:', formel: '\\Delta K = 3\\,360 \\cdot 23 - 40\\,000 = 37\\,280\\,\\text{€}' }
+        ]}
+        ergebnisHinweis="Regionale Annahmepreise schwanken stark; die Rechnung zeigt das Prinzip. Bei Schadstofffunden (z. B. asbesthaltiger Putz) kann die gesamte Charge als gefährlicher Abfall gelten – deshalb Schadstofferkundung vor dem Abbruch."
+        normQuelle="GewAbfV §§ 8, 9; VDI 6210 Blatt 1:2025-10"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="rueckbau" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 9 Rückbau & Schadstoffe: GewAbfV §§ 8/9, EBV §§ 19/22, GefStoffV § 5a, Normausgaben DIN 18007, VDI 6210, DIN SPEC 91484/91525 geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Rückbau (Bauwesen)', url: 'https://de.wikipedia.org/wiki/R%C3%BCckbau' },
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
@@ -1598,20 +1628,20 @@ export default function Rueckbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18007 (Abbruch- und Rückbauarbeiten - Begriffe, Verfahren, Arbeitssicherheit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18007' },
-          { title: 'VDI 6210 Blatt 1 & Blatt 2 (Rückbau baulicher und technischer Anlagen)', url: 'https://www.vdi.de/' },
-          { title: 'DIN SPEC 91484 (Verfahren für das Rückbau-Audit vor Abbrucharbeiten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91484' },
-          { title: 'DIN SPEC 91525-1 (Digitaler Gebäuderessourcenpass für den zirkulären Rückbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91525-1' },
-          { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche Anlagen - Erkundung und Bewertung)', url: 'https://www.vdi.de/' },
+          { title: 'DIN 18007:2022-09 (Abbrucharbeiten – Begriffe, Verfahren, Anwendungsbereiche)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18007' },
+          { title: 'VDI 6210 Blatt 1:2025-10 (Abbruch von baulichen und technischen Anlagen)', url: 'https://www.dinmedia.de/de/suche?q=VDI+6210' },
+          { title: 'DIN SPEC 91484:2023-09 (Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten, Pre-Demolition Audit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91484' },
+          { title: 'DIN SPEC 91525:2026-02 (Anschlussnutzungskonzept für Bauprodukte aus Bestandsgebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91525' },
+          { title: 'VDI/GVSS 6202 Blatt 1:2013-10 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.dinmedia.de/de/suche?q=VDI+6202' },
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Gewerbeabfallverordnung (GewAbfV)', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },
-          { title: 'TRGS 519 (Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' }
+          { title: 'TRGS 519 (Asbest), Fassung 2014, zuletzt geändert 28.01.2025', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' }
         ]}
         formeln={[
           {
-            formel: 'M_{\\text{Sortenrein}} = \\frac{\\sum m_{\\text{getrennt}}}{\\sum m_{\\text{gesamt}}} \\ge 0{,}90 \\quad (90\\%\\text{-Getrenntsammlungsquote})',
-            erklaerung: 'Gesetzlich geforderte Getrenntsammlungsquote der Gewerbeabfallverordnung (GewAbfV § 8) für mineralische und nicht-mineralische Bau- und Abbruchabfälle.',
-            quelle: 'GewAbfV § 8 Abs. 1'
+            formel: 'Q_{\\text{getrennt}} = \\frac{\\sum m_{\\text{getrennt}}}{\\sum m_{\\text{gesamt}}}',
+            erklaerung: 'Getrenntsammlungsquote als Kennzahl zur Dokumentation der Getrennthaltung der zehn Fraktionen nach § 8 GewAbfV. Eine feste Mindestquote gibt es für Bauabfälle nicht; die 90-%-Quote des § 4 Abs. 3 betrifft gewerbliche Siedlungsabfälle.',
+            quelle: 'GewAbfV §§ 4, 8'
           },
           {
             formel: 'C_{\\text{Eluat}} \\le C_{\\text{MEW}} \\quad [\\mu\\text{g/l bzw. mg/l}]',
