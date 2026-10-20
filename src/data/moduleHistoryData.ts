@@ -712,7 +712,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Katastrophen als Lehrmeister: Tay-Brücke & Kongresshalle Berlin',
         category: 'Paradigmenwechsel',
         description: 'Einstürze wie die schottische Tay-Brücke (1879: nach dem Untersuchungsbericht v. a. unzureichend berücksichtigte Windlast, mangelhafte Gussteile und Verbindungen sowie schlechte Bauüberwachung) oder der Teileinsturz der Kongresshalle Berlin (1980: Korrosion von Spanngliedern im Übergang Dachschale/Randbogen bei mangelhafter Verpressung und durch Zwang geöffneten Fugen) decken Wissenslücken in Statik, Konstruktion und Werkstoffverhalten auf.',
-        impact: 'Verschärfte Anforderungen an Verpressung und Inspizierbarkeit von Spanngliedern; Neubewertung älterer Spannbetonbauten. (DIN 1076 für Brücken besteht bereits seit 1930, aktuelle Ausgabe 1999-11.)',
+        impact: 'Verschärfte Anforderungen an Verpressung und Inspizierbarkeit von Spanngliedern; Neubewertung älterer Spannbetonbauten. (DIN 1076 für Brücken besteht bereits seit 1930; aktuelle Ausgabe 2026-01, ersetzt 1999-11.)',
         keyReference: 'Untersuchungsausschuss Kongresshalle Berlin'
       },
       {

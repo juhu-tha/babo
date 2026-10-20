@@ -1,5 +1,5 @@
 // schadensKern.ts — Rechenkern für das BaustoffBoard-Modul „Mängel & Schäden"
-// Normbezug: DIN EN 1992-1-1, 7.3.4 (Rissbreite, NA(DE) beachten); DIN 1076:1999-11 + RI-EBW-PRÜF;
+// Normbezug: DIN EN 1992-1-1, 7.3.4 (Rissbreite, NA(DE) beachten); DIN 1076:2026-01 (ersetzt 1999-11) + RI-EBW-PRÜF;
 // VDI 6200:2010-02 (Tab. Überprüfungsintervalle); DIN EN 12504-1/-4; DIN EN 13791:2020-02 (EN 13791:2019);
 // DIN EN 1542; DIN EN ISO 12570; DIN EN 14629; RILEM TC 154-EMC (Wenner).
 // Alle Funktionen: SI-nahe Baupraxiseinheiten (mm, N/mm², kN, K), in den Kommentaren angegeben.

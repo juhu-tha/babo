@@ -853,9 +853,9 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
     },
     standards: [
       {
-        code: 'DIN 1076:1999-11',
+        code: 'DIN 1076:2026-01',
         title: 'Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung',
-        date: '1999-11',
+        date: '2026-01',
         url: 'https://www.dinmedia.de/de/suche?q=DIN+1076',
         scope: 'Prüfvorschrift für nicht begehbare Hohlräume in Brücken.'
       },

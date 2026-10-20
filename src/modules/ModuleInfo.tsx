@@ -844,8 +844,8 @@ const MODULES_DATA: Record<string, GroupData> = {
     regelwerke: [
       { title: 'VDI 6200:2010-02: Standsicherheit von Bauwerken – Regelmäßige Überprüfung', url: 'https://www.vdi.de/richtlinien' },
       { title: 'VDI 6200 Blatt 1.1:2026-06: Berichtsdokumentation der Überprüfung', url: 'https://www.vdi.de/richtlinien' },
-      { title: 'DIN 1076:1999-11: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
-      { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen - Teil B: Allgemeine Vertragsbedingungen', url: 'https://www.gesetze-im-internet.de/' }
+      { title: 'DIN 1076:2026-01: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung (ersetzt 1999-11)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+      { title: 'VOB/B (Fassung 2016, weiterhin gültig): Vergabe- und Vertragsordnung für Bauleistungen – Teil B', url: 'https://www.bauprofessor.de/vob/' }
     ],
     formeln: [
       { formel: 'w_k = s_{r,\\text{max}} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm})', erklaerung: 'Rechenwert der Rissbreite als Produkt aus maximalem Rissabstand s_r,max und Dehnungsdifferenz zwischen Betonstahl und Beton (ohne zusätzlichen Beiwert). s_r,max nach Gl. 7.11 bzw. NA(DE).', quelle: 'DIN EN 1992-1-1, Gl. (7.8)' }

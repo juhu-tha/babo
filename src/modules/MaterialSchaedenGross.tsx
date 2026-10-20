@@ -27,6 +27,8 @@ import {
 import { InlineMath, BlockMath } from 'react-katex';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export interface DamageCaseStudy {
   id: string;
@@ -274,7 +276,7 @@ export const DAMAGE_CASES: DamageCaseStudy[] = [
       {
         bereich: 'Brückeninspektion & Monitoring',
         auswirkung: 'Verschärfung der Brückenprüfungen in ganz Europa (in Deutschland DIN 1076). Ausbau von Monitoring- und Prüfprogrammen; in Italien neue Leitlinien zur Risikoklassifizierung bestehender Brücken (Linee Guida 2020).',
-        normativeKonsequenz: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)'
+        normativeKonsequenz: 'DIN 1076 (Neuausgabe 2026-01 mit Sonderprüfung, Bauwerksbuch und Qualifikationsanforderungen)'
       },
       {
         bereich: 'Infrastrukturpolitik',
@@ -1503,8 +1505,35 @@ export default function MaterialSchaedenGross() {
       </div>
 
       {/* Standardisierter ModuleFooter nach Styleguide */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Kritische Rissgröße in einem Stahlbauteil bei Kälte"
+        zielGleichung="a_c = \frac{1}{\pi}\left(\frac{K_{Ic}}{Y \cdot \sigma}\right)^2"
+        schritte={[
+          { titel: 'Werkstoff', erklaerung: 'Älterer Baustahl bei Frost mit geringer Bruchzähigkeit (Lehrwert):', formel: 'K_{Ic} = 30\\,\\text{MPa}\\sqrt{\\text{m}}' },
+          { titel: 'Beanspruchung', erklaerung: 'Nennspannung im Bauteil 300 MPa, Randriss (Y = 1,12):', formel: 'Y \\cdot \\sigma = 336\\,\\text{MPa}' },
+          { titel: 'Kritischer Riss', erklaerung: 'Einsetzen:', formel: 'a_c = \\frac{1}{\\pi}\\left(\\frac{30}{336}\\right)^2 = 0{,}0025\\,\\text{m} = 2{,}5\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Ein Riss von wenigen Millimetern genügt – visuell kaum auffindbar. Ohne Redundanz (Silver Bridge 1967) führt das Versagen eines Glieds zum Gesamteinsturz."
+        normQuelle="Irwin (1957); NTSB-Bericht Silver Bridge (1970)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Lastverdopplung durch geänderte Anschlussausbildung (Hyatt Regency 1981)"
+        zielGleichung="F_{Mutter,ist} = 2 \cdot F_{Mutter,plan}"
+        schritte={[
+          { titel: 'Planung', erklaerung: 'Durchlaufende Hängestange: Jede Mutter unter einem Steg trägt nur dessen Last P.', formel: 'F_{plan} = P' },
+          { titel: 'Ausführung', erklaerung: 'Zwei versetzte Stangen: Die Mutter am oberen Steg trägt dessen Last und die des unteren Stegs.', formel: 'F_{ist} = P + P = 2P' },
+          { titel: 'Folge', erklaerung: 'Bei P = 90 kN (Lehrwert):', formel: 'F_{ist} = 180\\,\\text{kN} \\text{ statt } 90\\,\\text{kN}' }
+        ]}
+        ergebnisHinweis="Die unscheinbare Detailänderung verdoppelte die Beanspruchung des Kastenträgeranschlusses; schon die ursprüngliche Planung erfüllte die Anforderungen der Bauordnung nach dem NBS-Bericht nicht vollständig."
+        normQuelle="NBS BSS 143 (1982)"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="material_schaeden_gross" />
+
       <ModuleFooter
-        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: Fallchronologien, Opferzahlen und Quellen geprüft; nicht verifizierbare Gutachtenangaben neutralisiert; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Alkali-Kieselsäure-Reaktion', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' },
           { title: 'Eisenbahnunfall von Burgrain (Garmisch-Partenkirchen)', url: 'https://de.wikipedia.org/wiki/Eisenbahnunfall_von_Burgrain' },
@@ -1520,17 +1549,17 @@ export default function MaterialSchaedenGross() {
         ]}
         literatur={[
           'Bundesstelle für Eisenbahnunfalluntersuchung (BEU): Untersuchungsbericht zum Zugunglück bei Burgrain 2022 (AKR an Spannbetonschwellen)',
-          'Deutscher Ausschuss für Stahlbeton (DAfStb): Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie 2023)',
+          'Deutscher Ausschuss für Stahlbeton (DAfStb): Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'National Bureau of Standards (NBS): Investigation of the Kansas City Hyatt Regency Walkways Collapse (1982)',
-          'Schlaich, J. et al. (1980): Schadensuntersuchung über den Einsturz des Südbogens der Kongresshalle Berlin (Gutachtenbericht)',
-          'Wörner, J.-D. et al. (2006): Gutachten zum Einsturz der Eislaufhalle Bad Reichenhall (TU Darmstadt / LGA Bayern)',
+          'National Bureau of Standards (NBS): Investigation of the Kansas City Hyatt Regency Walkways Collapse. NBS Building Science Series 143, 1982',
+          'Gutachten zum Teileinsturz der Kongresshalle Berlin (1980), u. a. veröffentlicht in Beton- und Stahlbetonbau (Autoren und Fundstelle manuell prüfen)',
+          'Gutachten im Strafverfahren zum Einsturz der Eislaufhalle Bad Reichenhall (LG Traunstein; Fundstellen manuell prüfen)',
           'Petroski, H. (1994): Design Paradigms: Case Histories of Error and Judgment in Engineering (Cambridge University Press)'
         ]}
         regelwerke={[
-          { title: 'DAfStb Alkali-Richtlinie (Alkalireaktion im Beton)', url: 'https://www.dafstb.de/' },
+          { title: 'DAfStb-Alkali-Richtlinie (Alkalireaktion im Beton), Ausgabe 2013-10', url: 'https://www.dafstb.de/' },
           { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung' },
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
           { title: 'DIN EN 12620 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },
           { title: 'DIN EN 1995-1-1 / Eurocode 5 (Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
           { title: 'DIN EN 1992-2 / Eurocode 2 (Betonbrücken - Bemessungs- und Konstruktionsregeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-2' }

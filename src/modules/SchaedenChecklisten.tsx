@@ -14,6 +14,8 @@ import {
   FileWarning
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 interface ChecklistItem {
   id: string;
@@ -77,7 +79,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'auf-2',
         task: 'Hohlstellen- und Abplatzungsortung',
         description: 'Abklopfen der Betonoberfläche mit einem leichten Hammer zur Identifizierung verdeckter Delaminationen infolge korrodierender Bewehrung.',
-        ref: 'TR Instandhaltung / DIN 1076',
+        ref: 'TR Instandhaltung / DIN 1076:2026-01',
         status: 'mandatory'
       },
       {
@@ -317,8 +319,35 @@ export default function SchaedenChecklisten() {
       </div>
 
       {/* Footer */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Ist der Riss aktiv? Auswertung einer Rissmarke"
+        zielGleichung="\dot{w} = \frac{w_2 - w_1}{\Delta t}"
+        schritte={[
+          { titel: 'Messung', erklaerung: 'Rissbreite bei Setzen der Marke 0,20 mm, nach sechs Monaten 0,26 mm:', formel: '\\Delta w = 0{,}06\\,\\text{mm}' },
+          { titel: 'Rate', erklaerung: 'Bezogen auf ein Jahr:', formel: '\\dot{w} = \\frac{0{,}06}{0{,}5} = 0{,}12\\,\\text{mm/a}' },
+          { titel: 'Bewertung', erklaerung: 'Bewegung über die jahreszeitliche Schwankung hinaus deutet auf eine aktive Ursache:', formel: '\\dot{w} > 0 \\Rightarrow \\text{Ursache klären, vor Verpressen}' }
+        ]}
+        ergebnisHinweis="Messungen über mindestens einen Jahreszyklus mit Temperaturaufzeichnung auswerten; nur ruhende Risse dürfen kraftschlüssig verpresst werden (TR Instandhaltung)."
+        normQuelle="TR Instandhaltung (DIBt); DBV-Merkblatt Begrenzung der Rissbildung"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Feuchtegehalt einer Mauerwerksprobe (Darrmethode)"
+        zielGleichung="u_m = \frac{m_f - m_d}{m_d} \cdot 100\,\%"
+        schritte={[
+          { titel: 'Wägung', erklaerung: 'Bohrmehlprobe feucht 85,0 g, nach Trocknung bei 105 °C 80,2 g:', formel: 'm_f = 85{,}0\\,\\text{g}, \\; m_d = 80{,}2\\,\\text{g}' },
+          { titel: 'Feuchtegehalt', erklaerung: 'Massebezogen:', formel: 'u_m = \\frac{85{,}0 - 80{,}2}{80{,}2} \\cdot 100 = 6{,}0\\,\\%' },
+          { titel: 'Durchfeuchtungsgrad', erklaerung: 'Bei einer maximalen Wasseraufnahme von 15,0 M.-%:', formel: 'DFG = \\frac{6{,}0}{15{,}0} = 40\\,\\%' }
+        ]}
+        ergebnisHinweis="Erst der Durchfeuchtungsgrad erlaubt den Vergleich verschiedener Baustoffe. Gips- oder salzhaltige Proben können bei 105 °C Kristallwasser verlieren – dann bei 40 °C trocknen."
+        normQuelle="WTA-Merkblatt 4-11"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="schaeden_checklisten" />
+
       <ModuleFooter
-        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: Referenzen VOB/B 2016, BGB, DIN 1076:2026-01, VDI 6200 geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: "Bauschaden", url: "https://de.wikipedia.org/wiki/Bauschaden" },
           { title: "Zerstörungsfreie Prüfung im Bauwesen", url: "https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Pr%C3%BCfung_im_Bauwesen" }
@@ -329,9 +358,10 @@ export default function SchaedenChecklisten() {
           'Lohmeyer, G.; Ebeling, K.: Weiße Wannen einfach und sicher. Verlag Bau+Technik'
         ]}
         regelwerke={[
-          { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
+          { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung); Blatt 1.1:2026-06', url: 'https://www.vdi.de/' },
           { title: 'DGZfP-Merkblätter (Zerstörungsfreie Prüfungen im Bauwesen)', url: 'https://www.dgzfp.de/' },
-          { title: 'VOB/B § 13 (Mängelansprüche)', url: 'https://www.gesetze-im-internet.de/' }
+          { title: 'VOB/B (Fassung 2016, weiterhin gültig) § 13 Mängelansprüche', url: 'https://www.bauprofessor.de/vob/' },
+          { title: 'BGB §§ 633–634a (Mängelrechte und Verjährung beim Werkvertrag)', url: 'https://www.gesetze-im-internet.de/bgb/__634a.html' }
         ]}
         formeln={[]}
       />

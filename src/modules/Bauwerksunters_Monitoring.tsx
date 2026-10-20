@@ -6,6 +6,8 @@ import {
   Info, LineChart, Cpu, HardHat, Compass, FileText, ChevronRight
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import PruefverfahrenKatalog from './bauwerksuntersuchung/PruefverfahrenKatalog';
@@ -816,8 +818,35 @@ export default function Bauwerksunters_Monitoring() {
       </div>
 
       {/* 5. Standardized Module Footer */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Dynamischer E-Modul aus der Ultraschalllaufzeit"
+        zielGleichung="E_{dyn} = v_L^2 \cdot \rho \cdot \frac{(1+\nu)(1-2\nu)}{1-\nu}"
+        schritte={[
+          { titel: 'Messung', erklaerung: 'Durchschallung einer 300 mm dicken Wand, Laufzeit 71,4 µs:', formel: 'v_L = \\frac{0{,}300}{71{,}4 \\cdot 10^{-6}} = 4\\,200\\,\\text{m/s}' },
+          { titel: 'Kennwerte', erklaerung: 'ρ = 2 400 kg/m³, ν = 0,2:', formel: '\\frac{1{,}2 \\cdot 0{,}6}{0{,}8} = 0{,}90' },
+          { titel: 'E-Modul', erklaerung: 'Einsetzen:', formel: 'E_{dyn} = 4\\,200^2 \\cdot 2\\,400 \\cdot 0{,}90 = 38{,}1\\,\\text{GPa}' }
+        ]}
+        ergebnisHinweis="Der dynamische E-Modul liegt über dem statischen. Deutlich geringere Laufzeiten-Geschwindigkeiten in Teilbereichen weisen auf Gefügestörungen, Kiesnester oder Risse hin."
+        normQuelle="DIN EN 12504-4"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Elektrolytischer Betonwiderstand nach dem Wenner-Verfahren"
+        zielGleichung="\rho = 2\pi \cdot a \cdot \frac{U}{I}"
+        schritte={[
+          { titel: 'Messanordnung', erklaerung: 'Elektrodenabstand a = 50 mm; gemessene Spannung 0,40 V bei 1,0 mA:', formel: '\\frac{U}{I} = \\frac{0{,}40}{0{,}001} = 400\\,\\Omega' },
+          { titel: 'Widerstand', erklaerung: 'Einsetzen:', formel: '\\rho = 2\\pi \\cdot 0{,}05 \\cdot 400 = 126\\,\\Omega\\text{m}' },
+          { titel: 'Einordnung', erklaerung: 'Orientierungswerte: hoher Widerstand bedeutet geringe Korrosionsgeschwindigkeit.', formel: '\\rho > 100\\,\\Omega\\text{m} \\Rightarrow \\text{eher geringes Risiko}' }
+        ]}
+        ergebnisHinweis="Die Grenzwerte hängen von Zementart, Feuchte und Temperatur ab; der Widerstand wird mit Potentialfeldmessung und Chloridanalytik kombiniert. Bewehrung nahe der Messstrecke verfälscht das Ergebnis."
+        normQuelle="RILEM TC 154-EMC; DGZfP-Merkblatt B 03"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="bauwerksunters_monitoring" />
+
       <ModuleFooter
-        lastReviewed="Oktober 2026 (Korrekturpaket Mängel & Schäden eingearbeitet; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed="Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, ZfP-Kennwerte und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Bauwerksdiagnostik', url: 'https://de.wikipedia.org/wiki/Bauwerksdiagnostik' },
           { title: 'Zerstörungsfreie Werkstoffprüfung', url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Werkstoffpr%C3%BCfung' },
@@ -830,8 +859,8 @@ export default function Bauwerksunters_Monitoring() {
           'DIN 68800-4: Holzschutz – Bekämpfungs- und Sanierungsmaßnahmen gegen Holz zerstörende Pilze und Insekten.'
         ]}
         regelwerke={[
-          { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
-          { title: 'DIN 1076 (Ingenieurbauwerke im Zuge von Straßen und Wegen - Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung); Blatt 1.1:2026-06', url: 'https://www.vdi.de/' },
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
           { title: 'DIN 18560-1 (Estriche im Bauwesen – Allgemeine Anforderungen, Prüfung und Ausführung); Belegreife nach Schnittstellenkoordination (BVF/ZDB) bzw. DIN 18356/18365', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1' },
           { title: 'RILEM TC 154-EMC: Test methods for on-site measurement of resistivity of concrete (Polder, Materials and Structures 33, 2000)', url: 'https://www.rilem.net/' }
         ]}
