@@ -8,6 +8,17 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.23.2',
+    date: '20.10.2026',
+    title: 'PDF-Export & Drucksystem mit akademischer Kopf- und Fußzeile',
+    badge: 'patch',
+    changes: [
+      'PDF-Export-Kopfzeile: Automatische Einbindung des Hinweises „Ausschließlich für akademische Lehrzwecke!“ auf jeder einzelnen generierten Druck- und PDF-Seite.',
+      'PDF-Export-Fußzeile: Durchgängiges Druckband mit „BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · [DATUM] · [VERSION]“ unter Angabe des tagesaktuellen Druckdatums und der Revisionsnummer.',
+      'Drucksystem-Harmonisierung: Gleichzeitige Verankerung in der programmgesteuerten PDF-Engine (jsPDF) sowie im CSS-Paged-Media-Drucklayout (@media print).'
+    ]
+  },
+  {
     version: 'v3.23.1',
     date: '20.10.2026',
     title: 'Favoriten-Fokus auf Feedback-Modul & Vereinheitlichung der Fußnote',

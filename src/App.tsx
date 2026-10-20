@@ -103,6 +103,7 @@ import { HelpCircle } from 'lucide-react';
 import { MetadataAuditModal } from './components/seo/MetadataAuditModal';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import StudentPollVoteView from './components/polls/StudentPollVoteView';
+import { CURRENT_VERSION } from './data/versionData';
 
 const tabGroups = [
   {
@@ -1654,6 +1655,20 @@ function AppContent() {
         >
           <LanguageBanner />
           <div id="module-content" className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-8 relative flex-1">
+            {/* Running Header auf jeder Druckseite */}
+            <div className="hidden print:block fixed top-0 left-0 right-0 text-center text-[10px] text-gray-500 py-1 bg-white border-b border-gray-300 font-sans z-50">
+              Ausschließlich für akademische Lehrzwecke!
+            </div>
+            {/* Running Footer auf jeder Druckseite */}
+            <div className="hidden print:block fixed bottom-0 left-0 right-0 text-center text-[10px] text-gray-500 py-1 bg-white border-t border-gray-300 font-sans z-50">
+              BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · {(() => {
+                const now = new Date();
+                const d = String(now.getDate()).padStart(2, '0');
+                const m = String(now.getMonth() + 1).padStart(2, '0');
+                return `${d}.${m}.${now.getFullYear()}`;
+              })()} · {CURRENT_VERSION.version}
+            </div>
+
             <div className="hidden pdf-header mb-8 pb-4 border-b-2 border-shiraz">
               <div className="flex justify-between items-start">
                 <div>

@@ -5,13 +5,11 @@ import {
   Lock, 
   KeyRound, 
   CheckCircle2, 
-  BarChart3, 
   FileText, 
   Copy, 
   Check, 
   Layers, 
   SlidersHorizontal, 
-  TrendingUp, 
   Sparkles,
   BookOpen,
   ArrowRight,
@@ -28,155 +26,6 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl } from '@/src/utils/numberFormat';
-
-
-interface ApRow {
-  id: string;
-  titel: string;
-  cluster: string;
-  status: 'erledigt' | 'offen';
-  vollstaendigkeitNotiz: string;
-  module: string[];
-}
-
-const ALL_AP_DATA: ApRow[] = [
-  {
-    id: 'AP 01',
-    titel: 'Grundlagen, Bauchemie & Normen',
-    cluster: 'Cluster I (Grundlagen & Labor)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige Abdeckung der thermodynamischen Grundlagen, Bindemittelchemie, Einheiten & Sicherheitskonzepte; EPBD 2024/1275 und GEG 2024 harmonisiert.',
-    module: ['Baustoffkunde', 'Einheiten', 'Materialkennwerte', 'Baustoffkenngrößen', 'Bauchemie', 'Sicherheitskonzept', 'Regularien']
-  },
-  {
-    id: 'AP 02',
-    titel: 'Labor, Prüftechnik, Diagnostik & Auswertung',
-    cluster: 'Cluster I (Grundlagen & Labor)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Lückenlose Prüfketten von GUM-Messunsicherheit und Ringversuchen (ISO 13528) über UTM-Prüfstand bis Mikroanalytik (XRD, MIP, FTIR, DTA-TG, NMR) und Konformitätskontrolle (DIN EN 206).',
-    module: ['Probenahme', 'Messen & Prüfen', 'Analytik', 'Mechanische Prüfungen', 'Labor (Virtuell)', 'Statistik', 'Festbeton (Statistik)']
-  },
-  {
-    id: 'AP 03',
-    titel: 'Mineralische Baustoffe & Erdbau',
-    cluster: 'Cluster II (Materialien & Produkte)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige Integration mineralischer Stoffkreisläufe (Kalk.tsx Gold-Standard), Mauerwerksbemessung nach EC6 (DIN EN 1996-1-1:2024-03), Putz-/Mörtelsysteme (DIN 18550) und RStO 12 (Fassung 2024).',
-    module: ['Gesteine', 'Mauerwerk', 'Putze & Mörtel', 'Kalk', 'Gips', 'Lehm', 'Erdbau']
-  },
-  {
-    id: 'AP 04',
-    titel: 'Metalle, Holz, NaWaRo, Asphalt & Kunststoffe',
-    cluster: 'Cluster II (Materialien & Produkte)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Differenzierte Korrosionskinetik (durchlässige vs. undurchlässige Schichten, Pilling-Bedworth-Verhältnis mit Live-Rechner), Holzwerkstoffe nach EC5 (DIN EN 1995-1-1:2024-03) und Bitumen-/Polymereigenschaften.',
-    module: ['Metalle', 'Holzwerkstoffe', 'Kunststoffe', 'Asphalt', 'Faserverbund', 'Sonstiges']
-  },
-  {
-    id: 'AP 05',
-    titel: 'Bauprodukte, CE & Konformität',
-    cluster: 'Cluster II (Materialien & Produkte)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige Rechtsgrundlagen der neuen BauPVO (EU) 2024/3110, AVCP-Systeme 1+ bis 4, MVV TB 2024/1 und Produktnormen für Fertigteile, Betonwaren, Abdichtung und Wärmedämmung.',
-    module: ['BpMineralisch', 'BpMauerwerk', 'BpPutzEstrich', 'BpBetonwaren', 'BpBetonfertigteile', 'BpGlaeser', 'BpDachFassade', 'BpDaemmung', 'BpAbdichtung', 'BpVerkehrswegebau', 'BpRechtliches']
-  },
-  {
-    id: 'AP 06',
-    titel: 'Betontechnologie & Ausgangsstoffe',
-    cluster: 'Cluster III (Entwurf & Bemessung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige Harmonisierung auf die Normengeneration 2023/2024: DIN 1045-2/3:2023-08, DIN 1045-1000 (Betonbauqualitätsklassen BBQ-N/E/S/U), Mehlkornprüfung und DAfStb-Richtlinien für SVB, Stahlfaser-, Massen- und R-Beton.',
-    module: ['Beton A–Z', 'Bindemittel', 'Mischungsberechnung', 'Frischbeton', 'Hydratation', 'Nachbehandlung', 'Festbeton', 'Sichtbeton', 'Sonderbetone', 'Betonpraxis', 'Betonbauklassen']
-  },
-  {
-    id: 'AP 07',
-    titel: 'Massivbau, Tragwerke & Bemessung',
-    cluster: 'Cluster III (Entwurf & Bemessung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Umfassende Neukonzeption von WUBauwerke (5 Tabs nach GEMINI_md inkl. hydrostatisches Druckgefälle I = hw/h, Wannen-Typen, Selbstheilung) und Harmonisierung aller EC2-Bemessungsmodule (DIN EN 1992-1-1:2023-08) mit formatDeZahl.',
-    module: ['Stahlbetonbemessung', 'Biegebemessung', 'Querkraftbemessung', 'Stuetzenbemessung', 'Durchstanzen', 'Verankerungslaenge', 'Rissbreite', 'Spannbeton', 'Carbonbeton', 'WU-Bauwerke']
-  },
-  {
-    id: 'AP 08',
-    titel: 'Holzbau & Innenausbau',
-    cluster: 'Cluster III (Entwurf & Bemessung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige EC5-Algorithmen (Biegeknicken, Querpressung, Johansen-Seileffekt, Brandbemessung beta_0, Deckenschwingung f1 >= 8 Hz) und Innenausbau-Grenzwerte (Q1–Q4, CM-Restfeuchte nach DIN 18560).',
-    module: ['Holzbau (Beta)', 'Innenausbau', 'BpTrockenbau']
-  },
-  {
-    id: 'AP 09',
-    titel: 'Mechanik, Statik & Werkstoffmodelle',
-    cluster: 'Cluster IV (Mechanik & Bauphysik)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige bruchmechanische Kennwerte (Griffith/Irwin, K_Ic, G_F, SENB/CT-Prüfung) und kontinuumsmechanische Elastizitätsgrenzen (Voigt/Reuss/Hashin-Shtrikman-Schranken, EC2-Normalbeton).',
-    module: ['Mechanische Kenngrößen', 'Formänderungen', 'Materialmodelle', 'E-Modul', 'Festigkeit', 'Baustatik', 'Knicken', 'Bruchmechanik', 'Bodenmechanik']
-  },
-  {
-    id: 'AP 10',
-    titel: 'Bauphysik (Wärme, Feuchte, Schall & Brand)',
-    cluster: 'Cluster IV (Mechanik & Bauphysik)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Umfassende thermophysikalische Bilanzierung (a/b/C_vol, U-Wert, GEG 2024), hygrothermische Schimmelkriterien (f_Rsi >= 0,70, Glaser-Verfahren) und normative Schallschutzanalysen (DIN 4109-32, Sabine).',
-    module: ['Bauphysik', 'Wärmeeigenschaften', 'Feuchteschutz', 'Dämmung Vergleich', 'Schallschutz', 'Brandschutz', 'Energieausweis']
-  },
-  {
-    id: 'AP 11',
-    titel: 'Nachhaltigkeit, Ökobilanz & Zirkularität',
-    cluster: 'Cluster V (Nachhaltigkeit & Zirkularität)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige Klinkersubstitution (LC3, DAfStb-Richtlinie Treibhausgasreduzierte Betone), Zirkularitätsmetriken (UMI- und MCI-Indizes) sowie harmonisierte LCA/LCC-Rechner nach DIN EN 15804+A2.',
-    module: ['Nachhaltigkeit (Daten & Regeln)', 'Materialoptimierung', 'Ökobilanzierung (LCA)', 'Zertifizierung & Siegel', 'Kreislauf & DPP', 'Ressourcen & Umwelt', 'Lebenszyklus-Kosten']
-  },
-  {
-    id: 'AP 12',
-    titel: 'Bauen im Bestand & Denkmalpflege',
-    cluster: 'Cluster VI (Bestand & Instandsetzung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Lückenlose historische Baustoffkenndaten im Altbauatlas (Bestand.tsx, 4 Tabs nach GEMINI_md), Modernisierungsbilanzierung nach GModG/GEG, Sanierungs-WTA-Vorgaben und Verformungsberechnungen.',
-    module: ['Altbauatlas (Bestand)', 'Bauwerkserfassung', 'Denkmalpflege', 'Modernisierung', 'Historische Bauweisen', 'Historische Bauprodukte', 'Bestand Checklisten']
-  },
-  {
-    id: 'AP 13',
-    titel: 'Rückbau, Recycling & Schadstoffe',
-    cluster: 'Cluster V (Nachhaltigkeit & Zirkularität)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Normgerechte Haufwerksbeprobung nach LAGA PN 98 (Abfaelle.tsx), TRGS 521 KMF-Kanzerogenitätsindex (Schadstoffe.tsx), Ersatzbaustoffverordnung (EBV) und RC-Gesteinskörnungen nach DIN EN 12620.',
-    module: ['Rückbau & Material', 'Boden- & Materialaufbereitung', 'Abfälle & Altlasten', 'Schadstoffe', 'Ressourceneffizienz', 'Rückbau Checklisten']
-  },
-  {
-    id: 'AP 14',
-    titel: 'Dauerhaftigkeit, Korrosion & Lebensdauer',
-    cluster: 'Cluster VI (Bestand & Instandsetzung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige ISO 15686 Faktorenmethode (Lebensdauern.tsx, 4 Tabs nach GEMINI_md), Ficksche Chloriddiffusionsmodelle, Karbonatisierungs-Fortschritt (Wurzel-Zeit-Gesetz), AKR- und Sulfattreiben.',
-    module: ['Prinzipien & Übersicht', 'Bewehrungskorrosion', 'Betonkorrosion', 'Holzkorrosion', 'Metallkorrosion', 'Weitere Organik', 'Dauerhaftigkeit Checklisten']
-  },
-  {
-    id: 'AP 15',
-    titel: 'Mängel, Schäden & Bauforensik',
-    cluster: 'Cluster VI (Bestand & Instandsetzung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Harmonisierung von SHM-Tragwerksmonitoring nach DIN EN 13791, systematische Schadensbewertung nach DIN 1076 / VDI 6200 sowie Mängelkataster nach BGB/VOB.',
-    module: ['Recht & Grundlagen (Bauschäden)', 'Typische Bauschäden', 'Tragwerksmonitoring (SHM)', 'Zustandsbewertung (VDI 6200)', 'Schadensfälle Groß', 'Schäden Checklisten']
-  },
-  {
-    id: 'AP 16',
-    titel: 'Schutz & Instandsetzung von Tragwerken',
-    cluster: 'Cluster VI (Bestand & Instandsetzung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Bereinigung aller Instandsetzungsprinzipien der TR Instandhaltung / DIN EN 1504 (W, C, R, KKS) und WTA-Injektionsbedarfsrechner nach Merkblatt 4-10 auf normkonforme Kommaschreibweise.',
-    module: ['Schutz- & Instands.-Grundlagen', 'Instandsetzung nach Material', 'Stahlbetoninstandhaltung', 'WTA-Merkblätter', 'Instandsetzung Checklisten']
-  },
-  {
-    id: 'AP 17',
-    titel: 'Bauwerksdiagnose, NDT & Probenahme',
-    cluster: 'Cluster VI (Bestand & Instandsetzung)',
-    status: 'erledigt',
-    vollstaendigkeitNotiz: 'Normative Mindeststichproben-Kalkulation nach DIN EN 13791 (Verfahren A/B), DBV-Quantilberechnung (c_act,0.05), Probenkonditionierung (DIN EN 12504-1, Stirnflächenplanheit <= 0,05 mm) und Schadensinterpretation mit Handlungsableitung.',
-    module: ['Bauwerksdiagnose (Diagnose-Phasen)', 'Prüfumfang & Konditionierung', 'Interpretation & Anwendung', 'Prüfkatalog (14 Verf.)', 'DGZfP & ZfP-Ausbildung']
-  }
-];;
 
 const FULL_AUDIT_PROMPT = `================================================================================
 VERBINDLICHER GESAMT-AUDITPROMPT DER WISSENSPLATTFORM BAUSTOFFBOARD (THA)
@@ -249,7 +98,7 @@ export default function Admin() {
       active = false;
     };
   }, []);
-  const [activeTab, setActiveTab] = useState<'uebersicht' | 'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang'>('uebersicht');
+  const [activeTab, setActiveTab] = useState<'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang'>('pruefraster');
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -331,10 +180,6 @@ export default function Admin() {
     );
   }
 
-  // Gesamterfüllung AP 01 bis 08
-  const erledigtCount = ALL_AP_DATA.filter(ap => ap.status === 'erledigt').length;
-  const gesamtProzent = Math.round((erledigtCount / ALL_AP_DATA.length) * 100);
-
   return (
     <div className="flex flex-col gap-8 animate-in fade-in duration-300">
       {/* Header Container nach GEMINI_md */}
@@ -359,23 +204,13 @@ export default function Admin() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6 leading-relaxed">
           <p>
             Zentrale Kontrollinstanz für die didaktische und fachliche Qualitätssicherung der Wissensplattform BaustoffBoard (THA). 
-            Überwacht den <strong>Umsetzungsgrad aller Arbeitspakete</strong>, die Einhaltung der <strong>6 Prüfdimensionen</strong> (mit universeller Durchsetzung von 
+            Überwacht die Einhaltung der <strong>6 Prüfdimensionen</strong> (mit universeller Durchsetzung von 
             <strong> Prüfdimension 3: Thematische Vollständigkeit</strong>) sowie den verbindlichen System-Auditprompt.
           </p>
         </div>
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'uebersicht'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('uebersicht')}
-          >
-            <BarChart3 size={16} /> Audit-Dashboard &amp; AP 01–17 Tabelle
-          </button>
           <button
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'pruefraster'
@@ -428,145 +263,7 @@ export default function Admin() {
           </button>
         </div>
 
-        {/* TAB 1: ÜBERSICHT MIT FORTSCHRITTSBALKEN & GEFORDERTER TABELLE */}
-        {activeTab === 'uebersicht' && (
-          <div className="space-y-6">
-            {/* Metrik-Karten */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Erfüllungsgrad AP 01–17</span>
-                <span className="text-2xl font-mono font-bold text-shiraz block">
-                  {formatDeZahl(gesamtProzent, 0)} %
-                </span>
-                <span className="text-[10px] text-emerald-700 font-semibold">
-                  Alle 17 Pakete vollständig auditiert
-                </span>
-              </div>
-
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Status Arbeitspakete</span>
-                <span className="text-2xl font-mono font-bold text-emerald-700 block">
-                  {erledigtCount} / {ALL_AP_DATA.length}
-                </span>
-                <span className="text-[10px] text-text-main/60">
-                  Status: 100 % erledigt
-                </span>
-              </div>
-
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Prüfdimension 3 (Vollständigkeit)</span>
-                <span className="text-2xl font-mono font-bold text-text-main block">
-                  Erfüllt
-                </span>
-                <span className="text-[10px] text-text-main/60">
-                  Lückenlose thematische Tiefe
-                </span>
-              </div>
-
-              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Normengeneration</span>
-                <span className="text-2xl font-mono font-bold text-text-main block">
-                  2023 / 2024
-                </span>
-                <span className="text-[10px] text-text-main/60">
-                  DIN Media / EC2 / EC3 / EC5 / EC6
-                </span>
-              </div>
-            </div>
-
-            {/* Der zentrale Fortschrittsbalken */}
-            <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-2">
-              <div className="flex justify-between items-center text-xs">
-                <span className="font-bold text-text-main flex items-center gap-2">
-                  <TrendingUp size={16} className="text-shiraz" /> Gesamt-Auditfortschritt (AP 01 bis AP 17)
-                </span>
-                <span className="font-mono font-extrabold text-shiraz text-sm">
-                  {formatDeZahl(gesamtProzent, 0)} % (8 von 8 erledigt)
-                </span>
-              </div>
-
-              <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden shadow-inner">
-                <div
-                  className="h-3 rounded-full bg-gradient-to-r from-shiraz via-rose-600 to-emerald-600 transition-all duration-700"
-                  style={{ width: `${gesamtProzent}%` }}
-                />
-              </div>
-
-              <div className="flex justify-between text-[10px] text-text-main/60 pt-1 font-mono">
-                <span>AP 01 (Grundlagen)</span>
-                <span>AP 04 (Metalle/Holz)</span>
-                <span>AP 08 (Holz-/Innenausbau)</span>
-              </div>
-            </div>
-
-            {/* DIE GEFORDERTE TABELLE DIREKT UNTER DEM FORTSCHRITTSBALKEN */}
-            <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-3">
-              <div className="flex flex-wrap justify-between items-center gap-2 pb-2 border-b border-home-grau/20">
-                <h3 className="font-bold text-sm text-text-main flex items-center gap-2">
-                  <BookOpen size={16} className="text-shiraz" /> Arbeitspakete AP 01 bis AP 17: Status &amp; Vollständigkeit (Prüfdimension 3)
-                </h3>
-                <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
-                  8 / 8 Erledigt
-                </span>
-              </div>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-xs text-left border-collapse">
-                  <thead className="bg-off-white text-text-main border-b border-home-grau/30">
-                    <tr>
-                      <th className="p-3 font-bold w-16">AP</th>
-                      <th className="p-3 font-bold w-52">Titel &amp; Cluster</th>
-                      <th className="p-3 font-bold w-28 text-center">Status</th>
-                      <th className="p-3 font-bold">Prüfdimension 3: Vollständigkeit (Kurze Notiz)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-home-grau/20">
-                    {ALL_AP_DATA.map((row) => (
-                      <tr key={row.id} className="hover:bg-off-white/50 transition-colors">
-                        <td className="p-3 font-mono font-black text-shiraz align-top">
-                          {row.id}
-                        </td>
-                        <td className="p-3 align-top">
-                          <div className="font-bold text-text-main">{row.titel}</div>
-                          <div className="text-[10px] text-text-main/60 mt-0.5">{row.cluster}</div>
-                          <div className="text-[10px] text-slate-500 font-mono mt-1">
-                            {row.module.join(' • ')}
-                          </div>
-                        </td>
-                        <td className="p-3 text-center align-top">
-                          <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold border ${
-                            row.status === 'erledigt'
-                              ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                              : 'bg-amber-50 text-amber-800 border-amber-300'
-                          }`}>
-                            {row.status === 'erledigt' && <CheckCircle2 size={12} className="text-emerald-600" />}
-                            {row.status}
-                          </span>
-                        </td>
-                        <td className="p-3 text-text-main/80 leading-relaxed align-top">
-                          <div className="bg-off-white p-2.5 rounded-lg border border-home-grau/20">
-                            {row.vollstaendigkeitNotiz}
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="text-[11px] text-text-main/60 bg-off-white p-3 rounded-xl border border-home-grau/20 flex items-center justify-between">
-                <span>
-                  <strong>Definition Prüfdimension 3 (Vollständigkeit):</strong> „Ist das Modul in sich thematisch umfassend und vollständig? (dies ist die einzige Bedingung)“
-                </span>
-                <span className="font-mono font-bold text-shiraz">
-                  Stand: 10.10.2026
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 2: PRÜFRASTER */}
+        {/* TAB 1: PRÜFRASTER */}
         {activeTab === 'pruefraster' && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

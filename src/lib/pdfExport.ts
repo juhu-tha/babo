@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf';
 import * as htmlToImage from 'html-to-image';
+import { CURRENT_VERSION } from '@/src/data/versionData';
 
 export const exportToPDF = async (elementId: string, filename: string) => {
   const element = document.getElementById(elementId);
@@ -113,6 +114,43 @@ export const exportToPDF = async (elementId: string, filename: string) => {
       pdf.addPage();
       pdf.addImage(dataUrl, 'JPEG', 0, position, pdfWidth, canvasToPdfHeight);
       heightLeft -= pdfHeight;
+    }
+
+    // Kopf- und Fußzeile auf jeder Druckseite nach Benutzervorgabe
+    const totalPages = pdf.getNumberOfPages();
+    const now = new Date();
+    const tag = String(now.getDate()).padStart(2, '0');
+    const monat = String(now.getMonth() + 1).padStart(2, '0');
+    const jahr = now.getFullYear();
+    const datumStr = `${tag}.${monat}.${jahr}`;
+    const versionStr = CURRENT_VERSION.version;
+    const headerText = 'Ausschließlich für akademische Lehrzwecke!';
+    const footerText = `BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · ${datumStr} · ${versionStr}`;
+
+    for (let i = 1; i <= totalPages; i++) {
+      pdf.setPage(i);
+
+      // Kopfzeilen-Band
+      pdf.setFillColor(255, 255, 255);
+      pdf.rect(0, 0, pdfWidth, 9, 'F');
+      pdf.setDrawColor(210, 215, 220);
+      pdf.setLineWidth(0.2);
+      pdf.line(10, 8, pdfWidth - 10, 8);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(8);
+      pdf.setTextColor(110, 110, 110);
+      pdf.text(headerText, pdfWidth / 2, 6, { align: 'center' });
+
+      // Fußzeilen-Band
+      pdf.setFillColor(255, 255, 255);
+      pdf.rect(0, pdfHeight - 9, pdfWidth, 9, 'F');
+      pdf.setDrawColor(210, 215, 220);
+      pdf.setLineWidth(0.2);
+      pdf.line(10, pdfHeight - 8, pdfWidth - 10, pdfHeight - 8);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(8);
+      pdf.setTextColor(110, 110, 110);
+      pdf.text(footerText, pdfWidth / 2, pdfHeight - 4, { align: 'center' });
     }
 
     try {
