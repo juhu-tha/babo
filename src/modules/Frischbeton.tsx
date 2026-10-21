@@ -71,10 +71,10 @@ export default function Frischbeton() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 12350-1 bis 12350-7:2019-09 (Prüfung von Frischbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12350-1' },
-          { title: 'DIN 18218:2010-01 (Frischbetondruck auf vertikale Schalungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18218' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' }
+          { title: 'DIN EN 12350-1 bis 12350-7:2019-09 (Prüfung von Frischbeton)' },
+          { title: 'DIN 18218:2010-01 (Frischbetondruck auf vertikale Schalungen)' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)' }
         ]}
         formeln={[
           {

@@ -1018,9 +1018,9 @@ export default function Modernisierung() {
         ]} 
         regelwerke={[
           { title: "Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026, vormals GEG; BGBl.-Fundstelle manuell prüfen) – Nachrüstung § 35, Änderung § 36, U-Wert-Berechnung § 37, Anlage 7", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
-          { title: "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-2" },
-          { title: "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG referenziert, Nachfolge DIN/TS 18599 seit 2025-10)", url: "https://www.dinmedia.de/de/suche?q=DIN+V+18599" }
+          { title: "DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)" },
+          { title: "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)" },
+          { title: "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG referenziert, Nachfolge DIN/TS 18599 seit 2025-10)" }
         ]} 
         formeln={[
           {

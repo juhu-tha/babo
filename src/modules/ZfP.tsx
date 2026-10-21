@@ -2003,8 +2003,8 @@ export default function ZfP() {
           'DGZfP-Merkblatt B 04: Ultraschallverfahren zur Zerstörungsfreien Prüfung im Bauwesen.'
         ]}
         regelwerke={[
-          { title: 'DIN EN 12504-2 (Prüfung von Beton - Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
-          { title: 'DIN EN 12504-4 (Prüfung von Beton - Bestimmung der Ultraschalllaufzeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-4' },
+          { title: 'DIN EN 12504-2 (Prüfung von Beton - Bestimmung der Rückprallzahl)' },
+          { title: 'DIN EN 12504-4 (Prüfung von Beton - Bestimmung der Ultraschalllaufzeit)' },
           { title: 'DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen)', url: 'https://publikationen.dgzfp.de/' }
         ]}
         formeln={[

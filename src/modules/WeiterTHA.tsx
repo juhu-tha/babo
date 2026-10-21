@@ -537,9 +537,9 @@ export default function WeiterTHA() {
         ]}
         regelwerke={[
           { title: 'AHO-Heft Nr. 9 (Projektmanagementleistungen in der Bau- und Immobilienwirtschaft)', url: 'https://www.aho.de/' },
-          { title: 'VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)', url: 'https://www.dinmedia.de/de/suche?q=VOB%2FB' },
-          { title: 'DIN 68800 (Holzschutz im Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
-          { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18516' }
+          { title: 'VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)' },
+          { title: 'DIN 68800 (Holzschutz im Hochbau)' },
+          { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)' }
         ]}
         weblinks={[
           { title: 'ibi Augsburg - Institut für Bau und Immobilien', url: 'https://www.tha.de/ibi' },

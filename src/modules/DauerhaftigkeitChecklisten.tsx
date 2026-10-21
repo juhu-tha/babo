@@ -319,9 +319,9 @@ export default function DauerhaftigkeitChecklisten() {
           { title: 'Carbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Carbonatisierung_(Beton)' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2)' },
           { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), Ausgabe 2017-12 (manuell prüfen)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung und Konformität)' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',

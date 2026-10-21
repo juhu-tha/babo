@@ -580,10 +580,10 @@ export default function Analytik() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 14629:2007-06 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Bestimmung des Chloridgehaltes von Festbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629' },
-          { title: 'DIN EN 206 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Chloridgehaltsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN ISO 15901-1:2019-03 (Porengrößenverteilung und Porosität von Feststoffen – Teil 1: Quecksilberporosimetrie)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+15901-1' },
-          { title: 'DIN EN 13925-1:2003-07 (Zerstörungsfreie Prüfung - Röntgendiffraktometrie von polykristallinen und amorphen Materialien – Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13925-1' }
+          { title: 'DIN EN 14629:2007-06 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Bestimmung des Chloridgehaltes von Festbeton)' },
+          { title: 'DIN EN 206 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Chloridgehaltsklassen)' },
+          { title: 'DIN ISO 15901-1:2019-03 (Porengrößenverteilung und Porosität von Feststoffen – Teil 1: Quecksilberporosimetrie)' },
+          { title: 'DIN EN 13925-1:2003-07 (Zerstörungsfreie Prüfung - Röntgendiffraktometrie von polykristallinen und amorphen Materialien – Allgemeine Grundlagen)' }
         ]}
         formeln={[
           {

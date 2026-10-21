@@ -1329,13 +1329,13 @@ ${senderName}`;
           'IVD-Merkblatt Nr. 3: Konstruktive Ausführung und Abdichtung von Fugen im Sanitärbereich'
         ]} 
         regelwerke={[
-          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18540' },
-          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15651' },
-          { title: 'DIN 52460 (Fugen- und Glasabdichtung - Begriffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+52460' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' },
-          { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18195' },
+          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)' },
+          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)' },
+          { title: 'DIN 52460 (Fugen- und Glasabdichtung - Begriffe)' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)' },
+          { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)' },
           { title: 'WTA-Merkblatt 4-6 (Nachträgliches Abdichten erdberührter Bauteile)', url: 'https://www.wta-gmbh.de/' },
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0,2 bis 0,4 mm)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0,2 bis 0,4 mm)' }
         ]} 
         formeln={[
           {

@@ -48,13 +48,20 @@ export function ModuleFooter({
   // Resolve all norms (both from normIds and regelwerke items)
   const resolvedRegelwerke: { title: string; url?: string; code?: string; status?: NormRecord['status'] }[] = [];
 
+  // Helper to ensure DIN norms never have a hyperlink, retaining full text and designation
+  const isDinNorm = (title?: string, code?: string, url?: string): boolean => {
+    const textToCheck = `${title || ''} ${code || ''}`.toUpperCase();
+    return textToCheck.includes('DIN') || (url ? (url.includes('dinmedia.de') || url.includes('din.de')) : false);
+  };
+
   // First process direct normIds
   normIds.forEach(id => {
     const record = getNormById(id);
     if (record) {
+      const isDin = isDinNorm(record.title, record.code, record.url);
       resolvedRegelwerke.push({
         title: `${record.code} (${record.title})`,
-        url: record.url,
+        url: isDin ? undefined : record.url,
         code: record.code,
         status: record.status
       });
@@ -68,9 +75,10 @@ export function ModuleFooter({
     if (typeof item === 'string') {
       const record = getNormById(item);
       if (record) {
+        const isDin = isDinNorm(record.title, record.code, record.url);
         resolvedRegelwerke.push({
           title: `${record.code} (${record.title})`,
-          url: record.url,
+          url: isDin ? undefined : record.url,
           code: record.code,
           status: record.status
         });
@@ -78,7 +86,11 @@ export function ModuleFooter({
         resolvedRegelwerke.push({ title: item });
       }
     } else {
-      resolvedRegelwerke.push(item);
+      const isDin = isDinNorm(item.title, undefined, item.url);
+      resolvedRegelwerke.push({
+        ...item,
+        url: isDin ? undefined : item.url
+      });
     }
   });
 

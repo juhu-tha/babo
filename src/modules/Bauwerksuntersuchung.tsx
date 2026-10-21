@@ -426,17 +426,17 @@ export default function Bauwerksuntersuchung() {
           'Rinn, F.: Bohrwiderstandsmessung an Holz (Resistograph) – Originalpatent/Quelle prüfen'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
-          { title: 'DIN EN 12504-1:2021-02 (Bohrkernproben – Herstellung, Untersuchung und Prüfung der Druckfestigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
-          { title: 'DIN EN 12504-2:2021-10 (Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2' },
-          { title: 'DIN EN 12504-4 (Bestimmung der Ultraschallimpulsgeschwindigkeit; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-4' },
-          { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehaltes in Festbeton - Säureaufschluss und Titration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629' },
-          { title: 'DIN EN 14630:2007-01 (Bestimmung der Karbonatisierungstiefe im Festbeton mit Phenolphthalein)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14630' },
-          { title: 'DIN EN 1542:1999-07 (Messung der Haftfestigkeit im Abreißversuch mit Prüfstempel Ø 50 mm)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1542' },
+          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)' },
+          { title: 'DIN EN 12504-1:2021-02 (Bohrkernproben – Herstellung, Untersuchung und Prüfung der Druckfestigkeit)' },
+          { title: 'DIN EN 12504-2:2021-10 (Bestimmung der Rückprallzahl)' },
+          { title: 'DIN EN 12504-4 (Bestimmung der Ultraschallimpulsgeschwindigkeit; Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehaltes in Festbeton - Säureaufschluss und Titration)' },
+          { title: 'DIN EN 14630:2007-01 (Bestimmung der Karbonatisierungstiefe im Festbeton mit Phenolphthalein)' },
+          { title: 'DIN EN 1542:1999-07 (Messung der Haftfestigkeit im Abreißversuch mit Prüfstempel Ø 50 mm)' },
           { title: 'DBV-Merkblatt Betondeckung und Bewehrung (2015-12, statistisches 5 %-Quantil)', url: 'https://www.betonverein.de/' },
           { title: 'DGZfP-Merkblätter B 02 (Betondeckung), B 03 (Potentialmessung, 2025), B 04 (Ultraschall), B 10 (Radar), B 11 (Impakt-Echo, 2022)', url: 'https://publikationen.dgzfp.de/' },
           { title: 'TR Instandhaltung von Betonbauwerken (DIBt, Teile 1 und 2; über die MVV TB eingeführt, Fassung manuell prüfen) – korrosionsauslösender Chloridgehalt objektspezifisch durch den sachkundigen Planer', url: 'https://www.dibt.de/' },
-          { title: 'DIN 68800-2 / -4 (Holzschutz; bekämpfende Maßnahmen) – Bohrwiderstandsmessung selbst ist nicht genormt', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-4' },
+          { title: 'DIN 68800-2 / -4 (Holzschutz; bekämpfende Maßnahmen) – Bohrwiderstandsmessung selbst ist nicht genormt' },
           { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' }
         ]}
         formeln={[

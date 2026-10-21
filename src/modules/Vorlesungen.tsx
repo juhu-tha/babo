@@ -488,8 +488,8 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         ]}
         regelwerke={[
           { title: 'Rahmenprüfungsordnung der Technischen Hochschule Augsburg (THA)', url: 'https://www.tha.de/' },
-          { title: 'DIN EN 1990: Eurocode - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'EN 1990-2:2026: Eurocode - Bewertung bestehender Tragwerke', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' }
+          { title: 'DIN EN 1990: Eurocode - Grundlagen der Tragwerksplanung' },
+          { title: 'EN 1990-2:2026: Eurocode - Bewertung bestehender Tragwerke' }
         ]}
         formeln={[]}
       />

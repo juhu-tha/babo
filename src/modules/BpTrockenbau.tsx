@@ -965,12 +965,12 @@ export default function BpTrockenbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[ 
-          { title: 'DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18181' }, 
-          { title: 'DIN 18180 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18180' },
-          { title: 'DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+520' },
-          { title: 'DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14195' },
-          { title: 'DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109' },
-          { title: 'DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-4' }
+          { title: 'DIN 18181 (Gipsplatten im Hochbau - Verarbeitung)' }, 
+          { title: 'DIN 18180 (Gipsplatten - Arten und Anforderungen)' },
+          { title: 'DIN EN 520 (Gipsplatten - Definitionen, Anforderungen und Prüfverfahren)' },
+          { title: 'DIN EN 14195 (Metallprofile für Unterkonstruktionen von Gipsplattensystemen)' },
+          { title: 'DIN 4109 (Schallschutz im Hochbau - Mindestanforderungen und Berechnungsverfahren)' },
+          { title: 'DIN 4102-4 (Brandverhalten von Baustoffen und Bauteilen - Katalog normativer Bauteile)' }
         ]} 
         formeln={[
           {

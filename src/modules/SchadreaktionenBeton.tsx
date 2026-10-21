@@ -994,9 +994,9 @@ export default function SchadreaktionenBeton() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Alkali' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 19573 (Mörtel für Neubau und Sanierung von Entwässerungssystemen außerhalb von Gebäuden; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+19573' }
+          { title: 'DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN 19573 (Mörtel für Neubau und Sanierung von Entwässerungssystemen außerhalb von Gebäuden; Ausgabe manuell prüfen)' }
         ]}
         formeln={[
           {

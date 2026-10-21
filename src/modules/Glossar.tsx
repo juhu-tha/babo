@@ -354,14 +354,14 @@ export default function Glossar() {
           'Scholz, W.; Hiese, W.: Baustoffkenntnis (19. Auflage, Werner Verlag / Wolters Kluwer)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 80000-1 (Größen und Einheiten - Teil 1: Allgemeines)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+80000-1' },
-          { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' }
+          { title: 'DIN EN ISO 80000-1 (Größen und Einheiten - Teil 1: Allgemeines)' },
+          { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)' },
+          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)' }
         ]}
         weblinks={[
-          { title: 'DIN Media (ehem. Beuth Verlag) – Offizielle Normendatenbank', url: 'https://www.dinmedia.de/de/suche?q=DIN+Media' },
+          { title: 'DIN Media (ehem. Beuth Verlag) – Offizielle Normendatenbank' },
           { title: 'InformationsZentrum Beton – Betontechnologische Fachbegriffe & Merkblätter', url: 'https://www.beton.org/' },
           { title: 'Informationsdienst Holz – Holzbaufachbegriffe & Bauteilkatalog', url: 'https://informationsdienst-holz.de/' },
           { title: 'ift Rosenheim – Fachbegriffe & Prüfungen für Fenster, Türen & Fassaden', url: 'https://www.ift-rosenheim.de/' },

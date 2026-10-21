@@ -639,9 +639,9 @@ export default function HydratationPruefverfahren() {
           'Zementchemie: Reaktionsmechanismen der Hydratationsphasen, Prof. Dr. Stark, Bauhaus-Universität Weimar'
         ]}
         regelwerke={[
-          { title: 'DIN EN 196-9 (Bestimmung der Hydratationswärme - Teil-adiabatisches Verfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-9' },
-          { title: 'DIN EN 196-11 (Bestimmung der Hydratationswärme - Isothermes Konduktionskalorimeter-Verfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-11' },
-          { title: 'DIN EN 196-8 (Bestimmung der Hydratationswärme - Lösungswärmeverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-8' },
+          { title: 'DIN EN 196-9 (Bestimmung der Hydratationswärme - Teil-adiabatisches Verfahren)' },
+          { title: 'DIN EN 196-11 (Bestimmung der Hydratationswärme - Isothermes Konduktionskalorimeter-Verfahren)' },
+          { title: 'DIN EN 196-8 (Bestimmung der Hydratationswärme - Lösungswärmeverfahren)' },
           { title: 'WTA-Merkblatt 8-10 (Schwinden von Beton - Messverfahren)', url: 'https://www.wta-gmbh.de/' },
           { title: 'RILEM TC 119-TCE / 195-ATG (Testing conditions for Cracking Frames)', url: 'https://www.rilem.net/' },
           { title: 'DAfStb-Richtlinie „Massige Bauteile aus Beton“', url: 'https://www.dafstb.de/' }

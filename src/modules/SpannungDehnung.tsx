@@ -304,10 +304,10 @@ export default function SpannungDehnung() {
           { title: 'Spannungs-Dehnungs-Diagramm', url: 'https://de.wikipedia.org/wiki/Spannungs-Dehnungs-Diagramm' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Allgemeine Regeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.5 (Parabel-Rechteck-Diagramm für Querschnittsbemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.4 (Nichtlineare Spannungs-Dehnungs-Beziehung des Betons)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN 488-1:2009-08 / DIN EN 1992-1-1:2023-08 Abschnitt 5.2 (Betonstahl - Eigenschaften und Kennwerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+488-1' }
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Allgemeine Regeln)' },
+          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.5 (Parabel-Rechteck-Diagramm für Querschnittsbemessung)' },
+          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.4 (Nichtlineare Spannungs-Dehnungs-Beziehung des Betons)' },
+          { title: 'DIN 488-1:2009-08 / DIN EN 1992-1-1:2023-08 Abschnitt 5.2 (Betonstahl - Eigenschaften und Kennwerte)' }
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G. (2010): Bemessung im Konstruktiven Betonbau (Springer-Verlag)',

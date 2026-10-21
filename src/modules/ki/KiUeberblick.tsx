@@ -2087,8 +2087,8 @@ export default function KiUeberblick() {
         regelwerke={[
           { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – in Kraft 01.08.2024, gestaffelte Anwendung; Änderung durch Digital Omnibus (Fundstelle manuell prüfen)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
           { title: 'ISO/IEC 22989:2022 (Information technology — Artificial intelligence concepts and terminology)', url: 'https://www.iso.org/' },
-          { title: 'DIN SPEC 92001 (Künstliche Intelligenz – Qualitätsanforderungen an KI-Module)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+92001' },
-          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken / BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' }
+          { title: 'DIN SPEC 92001 (Künstliche Intelligenz – Qualitätsanforderungen an KI-Module)' },
+          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken / BIM)' }
         ]}
         formeln={
           activeTab === 'kernbegriffe'

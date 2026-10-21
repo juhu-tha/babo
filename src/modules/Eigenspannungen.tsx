@@ -334,7 +334,7 @@ export default function Eigenspannungen() {
           'Breitenbücher, R.: Zwangsspannungen infolge Hydratationswärme in massigen Betonbauteilen (Bauverlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Rissbreitenbegrenzung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Rissbreitenbegrenzung)' },
           { title: 'DAfStb-Heft 520 (Frühe Rissbildung von massigen Betonbauteilen)', url: 'https://www.dafstb.de/' },
           { title: 'DAfStb-Richtlinie Wasserundurchlässige Baukörper aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' }
         ]}

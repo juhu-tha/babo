@@ -880,9 +880,9 @@ export default function Praxiswissen() {
           'Deutscher Beton- und Bautechnik-Verein E.V. (DBV): DBV-Sammelmappe Merkblätter und Leitfäden'
         ]}
         regelwerke={[
-          { title: 'DIN 1045-3 (Beton, Stahlbeton und Spannbeton - Bauausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' },
+          { title: 'DIN 1045-3 (Beton, Stahlbeton und Spannbeton - Bauausführung)' },
           { title: 'DAfStb-Richtlinie Wasserundurchlässige Baukörper aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' }
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)' }
         ]}
         formeln={[
           {

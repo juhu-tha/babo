@@ -959,12 +959,12 @@ export default function Metallkorrosion() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[
-          { title: "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teile 1 bis 9; Teil 2:2018-04)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944" },
-          { title: "DIN EN 10025-5 (Warmgewalzte Erzeugnisse aus Baustählen - Teil 5: Wetterfeste Baustähle)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+10025-5" },
-          { title: "DIN EN 1172 (Kupfer und Kupferlegierungen - Bleche und Bänder für das Bauwesen)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1172" },
-          { title: "DIN EN 485 / DIN EN 573 (Aluminium und Aluminiumlegierungen für das Bauwesen)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+485" },
-          { title: "DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+8044" },
-          { title: "DIN EN ISO 9223:2012-05 (Korrosion von Metallen – Korrosivität von Atmosphären)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9223" }
+          { title: "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teile 1 bis 9; Teil 2:2018-04)" },
+          { title: "DIN EN 10025-5 (Warmgewalzte Erzeugnisse aus Baustählen - Teil 5: Wetterfeste Baustähle)" },
+          { title: "DIN EN 1172 (Kupfer und Kupferlegierungen - Bleche und Bänder für das Bauwesen)" },
+          { title: "DIN EN 485 / DIN EN 573 (Aluminium und Aluminiumlegierungen für das Bauwesen)" },
+          { title: "DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)" },
+          { title: "DIN EN ISO 9223:2012-05 (Korrosion von Metallen – Korrosivität von Atmosphären)" }
         ]} 
         formeln={[
           {

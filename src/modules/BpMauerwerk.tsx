@@ -670,10 +670,10 @@ export default function BpMauerwerk() {
           'Wendehorst Bautechnische Zahlentafeln, 38. Auflage, Springer Vieweg 2026' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 1996-1-1 / NA (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-1-1' }, 
-          { title: 'DIN EN 771-Reihe (Festlegungen für Mauersteine: Ziegel, Kalksandstein, Beton- und Porenbetonsteine)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771' },
-          { title: 'DIN EN 998-2 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-2' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' }
+          { title: 'DIN EN 1996-1-1 / NA (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)' }, 
+          { title: 'DIN EN 771-Reihe (Festlegungen für Mauersteine: Ziegel, Kalksandstein, Beton- und Porenbetonsteine)' },
+          { title: 'DIN EN 998-2 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)' }
         ]} 
         formeln={[
           { 

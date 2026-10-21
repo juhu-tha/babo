@@ -1655,10 +1655,10 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           { title: 'Nachbehandlung' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
-          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-1000' },
-          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)' },
+          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)' },
+          { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)' },
           { title: 'DBV-Merkblätter: Sichtbeton (2015), Industrieböden, Betondeckung (Deutscher Beton- und Bautechnik-Verein E.V.)', url: 'https://www.betonverein.de/' }
         ]}
         literatur={[

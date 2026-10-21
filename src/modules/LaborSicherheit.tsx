@@ -821,8 +821,8 @@ export default function LaborSicherheit() {
         regelwerke={[
           { title: 'DGUV Information 213-850 (Sicheres Arbeiten in Laboratorien)', url: 'https://publikationen.dguv.de/' },
           { title: 'TRGS 559 (Quarzhaltiger Staub)', url: 'https://www.baua.de/DE/Angebote/Rechtstexte-und-Technische-Regeln/Regelwerk/TRGS/TRGS-559.html' },
-          { title: 'DIN EN 166 (Persönlicher Augenschutz – Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+166' },
-          { title: 'DIN EN ISO 20345 (Sicherheitsschuhe – Kategorie S3)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+20345' },
+          { title: 'DIN EN 166 (Persönlicher Augenschutz – Anforderungen)' },
+          { title: 'DIN EN ISO 20345 (Sicherheitsschuhe – Kategorie S3)' },
           { title: 'DGUV Regel 109-009 (Fahrzeuginstandhaltung / Hebebühnen und Krane)', url: 'https://publikationen.dguv.de/' }
         ]}
         formeln={[

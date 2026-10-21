@@ -823,12 +823,12 @@ export default function SchutzGrundlagen() {
           'Tuutti, K.: Corrosion of Steel in Concrete. CBI Research 5:82, Stockholm: Swedish Cement and Concrete Research Institute 1982'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-9' },
+          { title: 'DIN EN 1504-9:2008-11 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Allgemeine Grundsätze für die Anwendung von Produkten und Systemen)' },
           { title: 'TR Instandhaltung (DIBt, Teil 1 Stand Mai 2020, Teil 2; über die MVV TB eingeführt)', url: 'https://www.dibt.de/' },
-          { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+31051' },
-          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
-          { title: 'DIN EN 14038-1 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 1: Realkalisierung; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-1' },
-          { title: 'DIN EN 14038-2 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 2: Chloridextraktion; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14038-2' }
+          { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)' },
+          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)' },
+          { title: 'DIN EN 14038-1 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 1: Realkalisierung; Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 14038-2 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 2: Chloridextraktion; Ausgabe manuell prüfen)' }
         ]}
         formeln={[
           {

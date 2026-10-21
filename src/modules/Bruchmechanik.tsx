@@ -283,7 +283,7 @@ export default function Bruchmechanik() {
         regelwerke={[
           { title: 'fib Model Code for Concrete Structures 2010 (Bruchenergie G_F, Zugentfestigung)', url: 'https://www.fib-international.org/' },
           { title: 'RILEM TC 50-FMC (1985): Bestimmung der Bruchenergie von Mörtel und Beton am gekerbten Balken', url: 'https://www.rilem.net/' },
-          { title: 'ISO 12737 (Metallische Werkstoffe – Bestimmung der Bruchzähigkeit bei ebener Dehnung K_Ic)', url: 'https://www.dinmedia.de/de/suche?q=ISO+12737' }
+          { title: 'ISO 12737 (Metallische Werkstoffe – Bestimmung der Bruchzähigkeit bei ebener Dehnung K_Ic)' }
         ]}
         literatur={[
           'Gross, D.; Seelig, T.: Bruchmechanik – Mit einer Einführung in die Mikromechanik. 6. Aufl., Berlin: Springer Vieweg 2016',

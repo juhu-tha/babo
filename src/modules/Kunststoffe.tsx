@@ -649,11 +649,11 @@ export default function Kunststoffe() {
           { title: 'Ethylen-Tetrafluorethylen (ETFE)', url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 527-1:2019-12 (Kunststoffe - Bestimmung der Zugeigenschaften - Teil 1: Allgemeine Grundsätze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+527-1' },
-          { title: 'DIN EN ISO 6721-1:2019-09 (Kunststoffe - Bestimmung dynamisch-mechanischer Eigenschaften - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6721-1' },
-          { title: 'DIN EN ISO 11357-1:2023-08 (Kunststoffe - Dynamische Differenz-Thermoanalyse (DSC) - Teil 1: Allgemeine Grundlagen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+11357-1' },
-          { title: 'DIN EN ISO 11359-2:2022-03 (Kunststoffe - Thermomechanische Analyse (TMA) - Teil 2: Bestimmung des linearen thermischen Längenausdehnungskoeffizienten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+11359-2' },
-          { title: 'DIN EN ISO 178:2019-08 (Kunststoffe - Bestimmung der Biegeeigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+178' }
+          { title: 'DIN EN ISO 527-1:2019-12 (Kunststoffe - Bestimmung der Zugeigenschaften - Teil 1: Allgemeine Grundsätze)' },
+          { title: 'DIN EN ISO 6721-1:2019-09 (Kunststoffe - Bestimmung dynamisch-mechanischer Eigenschaften - Teil 1: Allgemeine Grundlagen)' },
+          { title: 'DIN EN ISO 11357-1:2023-08 (Kunststoffe - Dynamische Differenz-Thermoanalyse (DSC) - Teil 1: Allgemeine Grundlagen)' },
+          { title: 'DIN EN ISO 11359-2:2022-03 (Kunststoffe - Thermomechanische Analyse (TMA) - Teil 2: Bestimmung des linearen thermischen Längenausdehnungskoeffizienten)' },
+          { title: 'DIN EN ISO 178:2019-08 (Kunststoffe - Bestimmung der Biegeeigenschaften)' }
         ]}
         literatur={[
           'Domininghaus, H. (2012): Die Kunststoffe und ihre Eigenschaften (Springer Vieweg)',

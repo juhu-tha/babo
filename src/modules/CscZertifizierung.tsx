@@ -351,7 +351,7 @@ export default function CscZertifizierung() {
         ]} 
         regelwerke={[
           { title: 'CSC Certification System Version 2.1', url: 'https://www.concretesustainabilitycouncil.com/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken)' }
         ]} 
         formeln={[
           {

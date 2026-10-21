@@ -371,9 +371,9 @@ export default function Faserverbund() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 14125 (Faserverstärkte Kunststoffe - Bestimmung der Biegeeigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14125' },
-          { title: 'DIN EN ISO 527-4 (Kunststoffe - Bestimmung der Zugeigenschaften von isotropen und anisotropen faserverstärkten Kunststoffverbundwerkstoffen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+527-4' },
-          { title: 'VDI 2014 Blatt 3 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)', url: 'https://www.dinmedia.de/de/suche?q=VDI+2014+Blatt+3' }
+          { title: 'DIN EN ISO 14125 (Faserverstärkte Kunststoffe - Bestimmung der Biegeeigenschaften)' },
+          { title: 'DIN EN ISO 527-4 (Kunststoffe - Bestimmung der Zugeigenschaften von isotropen und anisotropen faserverstärkten Kunststoffverbundwerkstoffen)' },
+          { title: 'VDI 2014 Blatt 3 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)' }
         ]}
         formeln={[
           {

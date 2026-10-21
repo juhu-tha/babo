@@ -745,9 +745,9 @@ export default function WeitereOrganik() {
           { title: 'Dämmstoff', url: 'https://de.wikipedia.org/wiki/D%C3%A4mmstoff' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 12944 (Korrosionsschutz durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
-          { title: 'DIN 68800-1 bis -4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
-          { title: 'DIN 18531 (Abdichtung von Dächern und Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18531' }
+          { title: 'DIN EN ISO 12944 (Korrosionsschutz durch Beschichtungssysteme)' },
+          { title: 'DIN 68800-1 bis -4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02)' },
+          { title: 'DIN 18531 (Abdichtung von Dächern und Bauwerken)' }
         ]}
         literatur={[
           'Schunck, E.; Oster, H. J.; Barthel, R.; Kießl, K.: Dach Atlas – Geneigte Dächer. München: Edition Detail (aktuelle Auflage)',

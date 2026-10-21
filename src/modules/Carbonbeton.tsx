@@ -389,7 +389,7 @@ export default function Carbonbeton() {
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Betonbauteile mit nichtmetallischer Bewehrung (Ausgabe 2023-11)', url: 'https://www.dafstb.de/' },
           { title: 'DIBt: Grundsätze für allgemeine Bauartgenehmigungen (aBG) für Carbonbeton (2022-09)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN 1045-1000:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 1992-1-1:2023-08 / DIN 1045-1000:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)' }
         ]}
         literatur={[
           'Curbach, M.; Jesse, D. et al. (2023): Carbonbeton - Das Handbuch (Ernst & Sohn Verlag)',

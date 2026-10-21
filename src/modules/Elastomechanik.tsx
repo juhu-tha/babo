@@ -724,8 +724,8 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
             'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
           ]}
           regelwerke={[
-            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-            { title: 'DIN EN 12390-13 (Prüfung von Festbeton - Teil 13: Bestimmung des Elastizitätsmoduls unter Druckbelastung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-13' }
+            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbeton- und Spannbetontragwerken)' },
+            { title: 'DIN EN 12390-13 (Prüfung von Festbeton - Teil 13: Bestimmung des Elastizitätsmoduls unter Druckbelastung)' }
           ]}
           formeln={[
             {

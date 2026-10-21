@@ -701,7 +701,7 @@ export default function Materialpaesse() {
         ]}
         regelwerke={[
           { title: 'DGNB Kriterium TEC 1.6 (Rückbaufreundlichkeit und Kreislaufwirtschaft)', url: 'https://www.dgnb.de/' },
-          { title: 'DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' },
+          { title: 'DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)' },
           { title: 'ISO 20887:2020 (Design for disassembly and adaptability)', url: 'https://www.iso.org/' },
           { title: 'EU-Taxonomie, Delegierte Verordnung (EU) 2021/2139, Tätigkeit 7.1/7.2 (Kreislaufkriterien bei Neubau und Renovierung)', url: 'https://finance.ec.europa.eu/' }
         ]}

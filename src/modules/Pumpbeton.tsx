@@ -130,8 +130,8 @@ export default function Pumpbeton() {
         ]}
         regelwerke={[
           { title: 'DBV-Merkblatt: Pumpbeton (Technologische Grundlagen und Anforderungen)', url: 'https://www.betonverein.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Mindestmehlkorngehalt für pumpbare Betone)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 24200 (Betonpumpen und Verteilermaste - Sicherheitstechnische Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+24200' }
+          { title: 'DIN EN 206 / DIN 1045-2 (Mindestmehlkorngehalt für pumpbare Betone)' },
+          { title: 'DIN 24200 (Betonpumpen und Verteilermaste - Sicherheitstechnische Anforderungen)' }
         ]}
         literatur={[
           'Kaplan, D.; de Larrard, F.; Sedran, T. (2005): Design of Concrete Pumping Pipes and Rheology (ACI Materials Journal)',

@@ -195,7 +195,7 @@ export default function DaemmungVergleich() {
           'Künzel, H. M.: Verfahren zur ein- und zweidimensionalen Berechnung des gekoppelten Wärme- und Feuchtetransports in Bauteilen mit einfachen Kennwerten. Dissertation, Universität Stuttgart 1994'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt 2018-10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
+          { title: 'DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt 2018-10)' },
           { title: 'WTA-Merkblatt 6-4 (Innendämmung nach WTA I: Planungsleitfaden; Ausgabestand manuell prüfen)', url: 'https://www.wta-international.org/' },
           { title: 'WTA-Merkblatt 6-5 (Innendämmung nach WTA II: Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren; Ausgabestand manuell prüfen)', url: 'https://www.wta-international.org/' }
         ]}

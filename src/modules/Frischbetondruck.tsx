@@ -301,9 +301,9 @@ export default function Frischbetondruck() {
         { title: 'Frischbetondruck', url: 'https://de.wikipedia.org/wiki/Frischbetondruck' }
       ]}
       regelwerke={[
-        { title: 'DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18218' },
-        { title: 'DIN 18216 (Schalungsanker für Betonschalungen - Anforderungen, Prüfung, Verwendung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18216' },
-        { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen und Frischbetoneigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
+        { title: 'DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)' },
+        { title: 'DIN 18216 (Schalungsanker für Betonschalungen - Anforderungen, Prüfung, Verwendung)' },
+        { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen und Frischbetoneigenschaften)' }
       ]}
       literatur={[
         'Graubner, C.-A.; Proske, T. (2010): Frischbetondruck auf lotrechte Schalungen. Beton- und Stahlbetonbau 105(1), S. 12-23',

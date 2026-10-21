@@ -284,7 +284,7 @@ export default function BpBaustoffindustrie() {
         regelwerke={[
           { title: 'Bundesberggesetz (BBergG: Gewinnung von Bodenschätzen)', url: 'https://www.gesetze-im-internet.de/bbergg/' },
           { title: 'Bundes-Immissionsschutzgesetz (BImSchG)', url: 'https://www.gesetze-im-internet.de/bimschg/' },
-          { title: 'DIN EN 197-1 (Zement: Zusammensetzung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' }
+          { title: 'DIN EN 197-1 (Zement: Zusammensetzung und Konformität)' }
         ]}
         formeln={[
           {

@@ -138,9 +138,9 @@ export default function QualitaetssicherungGrundlagen() {
           'VDZ: Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)'
         ]} 
         regelwerke={[
-          { title: "DIN EN 13670 (Ausführung von Tragwerken aus Beton)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+13670" },
-          { title: "DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 3: Bauausführung)", url: "https://www.dinmedia.de/de/suche?q=DIN+1045-3" },
-          { title: "DIN EN 206 / DIN 1045-2 (Konformitätskriterien für Druckfestigkeit)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+206" }
+          { title: "DIN EN 13670 (Ausführung von Tragwerken aus Beton)" },
+          { title: "DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 3: Bauausführung)" },
+          { title: "DIN EN 206 / DIN 1045-2 (Konformitätskriterien für Druckfestigkeit)" }
         ]} 
         formeln={[
           {

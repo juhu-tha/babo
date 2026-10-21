@@ -913,8 +913,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           'Stahr, M. (Hrsg.): Bausanierung – Erkennen und Beheben von Bauschäden. Wiesbaden: Springer Vieweg (aktuelle Auflage)'
         ]}
         regelwerke={[
-          { title: 'DIN 68800 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800' },
-          { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944' },
+          { title: 'DIN 68800 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)' },
+          { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)' },
           { title: 'DVS 2207 / DVS 2208 (Schweißen von thermoplastischen Kunststoffen)', url: 'https://www.dvs-regelwerk.de/' },
           { title: 'ZTV BEA-StB (Zusätzliche Technische Vertragsbedingungen für die Erhaltung von Asphaltbefestigungen)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'WTA-Merkblatt 2-9-20/D (Sanierputzsysteme) & 4-10 (Injektionsverfahren gegen kapillaren Feuchtetransport)', url: 'https://www.wta-international.org/' }

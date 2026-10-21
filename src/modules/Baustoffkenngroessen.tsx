@@ -2105,14 +2105,14 @@ export default function Baustoffkenngroessen() {
           'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin/Heidelberg: Springer Vieweg 2013'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
-          { title: 'DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
-          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10456' },
-          { title: 'DIN 4108-4 (Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-4' },
-          { title: 'DIN EN ISO 12570 (Bestimmung des Feuchtegehaltes durch Trocknen bei erhöhter Temperatur)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12570' },
-          { title: 'DIN EN ISO 12572 (Bestimmung der Wasserdampfdurchlässigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12572' },
-          { title: 'DIN EN ISO 15148 (Bestimmung des Wasseraufnahmekoeffizienten bei teilweisem Eintauchen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+15148' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2) – Kriechen und Schwinden (3.1.4, Anhang B)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)' },
+          { title: 'DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },
+          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)' },
+          { title: 'DIN 4108-4 (Wärme- und feuchteschutztechnische Bemessungswerte)' },
+          { title: 'DIN EN ISO 12570 (Bestimmung des Feuchtegehaltes durch Trocknen bei erhöhter Temperatur)' },
+          { title: 'DIN EN ISO 12572 (Bestimmung der Wasserdampfdurchlässigkeit)' },
+          { title: 'DIN EN ISO 15148 (Bestimmung des Wasseraufnahmekoeffizienten bei teilweisem Eintauchen)' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2) – Kriechen und Schwinden (3.1.4, Anhang B)' }
         ]}
         formeln={[
           {

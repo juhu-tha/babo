@@ -1080,9 +1080,9 @@ export default function BpBetonzusatzmittel() {
           'Basisvortrag Betonzusatzmittel für E-Schein-Lehrgänge, Deutsche Bauchemie e.V., Düsseldorf.'
         ]}
         regelwerke={[
-          { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+934-2' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN EN 480-Reihe (Prüfverfahren für Betonzusatzmittel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+480' }
+          { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 480-Reihe (Prüfverfahren für Betonzusatzmittel)' }
         ]}
         formeln={[
           { 

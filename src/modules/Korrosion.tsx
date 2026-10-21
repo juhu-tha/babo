@@ -1255,9 +1255,9 @@ export default function Korrosion() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 12390-12:2020-04 (Bestimmung des Karbonatisierungswiderstandes – beschleunigtes Verfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-12' },
-          { title: 'DIN EN 12390-10:2019-02 (Karbonatisierungswiderstand bei atmosphärischer CO₂-Konzentration)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-10' },
-          { title: 'DIN EN 1992-1-1:2011-01 + NA (Eurocode 2: Betondeckung cnom und Expositionsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 12390-12:2020-04 (Bestimmung des Karbonatisierungswiderstandes – beschleunigtes Verfahren)' },
+          { title: 'DIN EN 12390-10:2019-02 (Karbonatisierungswiderstand bei atmosphärischer CO₂-Konzentration)' },
+          { title: 'DIN EN 1992-1-1:2011-01 + NA (Eurocode 2: Betondeckung cnom und Expositionsklassen)' }
         ]}
         formeln={[
           {

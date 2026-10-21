@@ -1250,12 +1250,12 @@ export default function PutzeMoertel() {
           'Künzel, H.: Bauphysikalische Forschungsergebnisse zum Wetterschutz von Außenwänden.'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 998-1:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-1' },
-          { title: 'DIN EN 998-2:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-2' },
-          { title: 'DIN 18550-1:2024-01 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Festlegungen zu DIN EN 13914-1 für Außenputze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18550-1' },
-          { title: 'DIN 18550-2:2018-01 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 2: Ergänzende Festlegungen zu DIN EN 13914-2 für Innenputze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18550-2' },
-          { title: 'DIN EN 13914-1:2016-09 (Planung, Zubereitung und Ausführung von Außenputzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13914-1' },
-          { title: 'DIN EN 13914-2:2016-09 (Planung, Zubereitung und Ausführung von Innenputzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13914-2' },
+          { title: 'DIN EN 998-1:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)' },
+          { title: 'DIN EN 998-2:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)' },
+          { title: 'DIN 18550-1:2024-01 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Festlegungen zu DIN EN 13914-1 für Außenputze)' },
+          { title: 'DIN 18550-2:2018-01 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 2: Ergänzende Festlegungen zu DIN EN 13914-2 für Innenputze)' },
+          { title: 'DIN EN 13914-1:2016-09 (Planung, Zubereitung und Ausführung von Außenputzen)' },
+          { title: 'DIN EN 13914-2:2016-09 (Planung, Zubereitung und Ausführung von Innenputzen)' },
           { title: 'WTA-Merkblatt 2-9-20/D (Sanierputzsysteme - Prüf- und Verarbeitungskriterien)', url: 'https://www.wta-gmbh.de/' }
         ]} 
         formeln={[

@@ -414,11 +414,11 @@ export default function Brandschutz() {
           'Hosser, D. (Hrsg.): Leitfaden Ingenieurmethoden des Brandschutzes. vfdb-Technischer Bericht TB 04-01, 3. Aufl. 2013'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten – Euroklassen A1 bis F)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13501-1' },
-          { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen – Zusammenstellung klassifizierter Baustoffe, Bauteile und Sonderbauteile)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-4' },
-          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Tragwerksbemessung für den Brandfall; bauaufsichtlich eingeführt); neue Generation DIN EN 1995-1-2:2026-10', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-2' },
+          { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten – Euroklassen A1 bis F)' },
+          { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen – Zusammenstellung klassifizierter Baustoffe, Bauteile und Sonderbauteile)' },
+          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Tragwerksbemessung für den Brandfall; bauaufsichtlich eingeführt); neue Generation DIN EN 1995-1-2:2026-10' },
           { title: 'Musterbauordnung (MBO, Fassung 2002 mit späteren Änderungen; Gebäudeklassen 1 bis 5, §§ 26–32) – aktuellen Stand manuell prüfen', url: 'https://www.bauministerkonferenz.de/' },
-          { title: 'DIN EN 13501-2 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I) – Ausgabe manuell prüfen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13501-2' }
+          { title: 'DIN EN 13501-2 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I) – Ausgabe manuell prüfen' }
         ]}
         formeln={[
           {

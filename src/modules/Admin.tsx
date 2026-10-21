@@ -603,7 +603,7 @@ export default function Beispielfach() {
       <ModuleFooter
         wikipedia={[{ title: 'Fachbereich', url: 'https://de.wikipedia.org/' }]}
         literatur={['Wendehorst Baustoffkunde (37. Auflage, Springer Vieweg)']}
-        regelwerke={[{ title: 'DIN EN 1234', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1234' }]}
+        regelwerke={[{ title: 'DIN EN 1234' }]}
         formeln={[]}
       />
     </div>
@@ -768,8 +768,8 @@ export default function Beispielfach() {
           { title: 'Audit', url: 'https://de.wikipedia.org/wiki/Audit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 9001:2015-11 (Qualitätsmanagementsysteme - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9001' },
-          { title: 'DIN EN ISO 19011:2018-10 (Leitfaden zur Auditierung von Managementsystemen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19011' }
+          { title: 'DIN EN ISO 9001:2015-11 (Qualitätsmanagementsysteme - Anforderungen)' },
+          { title: 'DIN EN ISO 19011:2018-10 (Leitfaden zur Auditierung von Managementsystemen)' }
         ]}
         literatur={[
           'Brunner, F. J. (2020): Qualitätsmanagement: Leitfaden für Studium und Praxis (Hanser Verlag)',

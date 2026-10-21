@@ -1247,11 +1247,11 @@ export default function Holz() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für den Hochbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+338' },
-          { title: 'DIN 68800-1..4:2019-06 (Holzschutz - Teile 1 bis 4: Vorbeugender baulicher und chemischer Holzschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-1..4' },
-          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14080' },
-          { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14081-1' }
+          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für den Hochbau)' },
+          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)' },
+          { title: 'DIN 68800-1..4:2019-06 (Holzschutz - Teile 1 bis 4: Vorbeugender baulicher und chemischer Holzschutz)' },
+          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)' },
+          { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)' }
         ]}
         weblinks={[
           { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },

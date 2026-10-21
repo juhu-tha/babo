@@ -1007,8 +1007,8 @@ export default function Systemarchitektur() {
           'Wendehorst Baustoffkunde: Werkstoffe, Prüfung und Dauerhaftigkeit (37. Auflage, Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
           { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen – Teil B' },
           { title: 'EU Artificial Intelligence Act (Verordnung (EU) 2024/1689 des Europäischen Parlaments)', url: 'https://eur-lex.europa.eu/' }
         ]}

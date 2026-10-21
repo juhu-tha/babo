@@ -369,8 +369,8 @@ export default function EModul() {
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2, Abschn. 3.1.3 und Tab. 3.1)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 12390-13:2021-09 (Prüfung von Festbeton – Bestimmung des Elastizitätsmoduls unter Druckbelastung (Sekantenmodul))', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-13' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2, Abschn. 3.1.3 und Tab. 3.1)' },
+          { title: 'DIN EN 12390-13:2021-09 (Prüfung von Festbeton – Bestimmung des Elastizitätsmoduls unter Druckbelastung (Sekantenmodul))' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',

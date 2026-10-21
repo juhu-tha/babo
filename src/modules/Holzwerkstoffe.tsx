@@ -238,11 +238,11 @@ export default function Holzwerkstoffe() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13986:2015-06 (Holzwerkstoffe zur Verwendung im Bauwesen - Eigenschaften, Bewertung der Konformität und Kennzeichnung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13986' },
-          { title: 'DIN EN 300:2024-03 (Platten aus langen, flachen, ausgerichteten Spänen (OSB) - Definitionen, Klassifizierung und Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+300' },
-          { title: 'DIN EN 312:2010-12 (Spanplatten - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+312' },
-          { title: 'DIN EN 636:2015-05 (Sperrholz - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+636' },
-          { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz (CLT) - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16351' }
+          { title: 'DIN EN 13986:2015-06 (Holzwerkstoffe zur Verwendung im Bauwesen - Eigenschaften, Bewertung der Konformität und Kennzeichnung)' },
+          { title: 'DIN EN 300:2024-03 (Platten aus langen, flachen, ausgerichteten Spänen (OSB) - Definitionen, Klassifizierung und Anforderungen)' },
+          { title: 'DIN EN 312:2010-12 (Spanplatten - Anforderungen)' },
+          { title: 'DIN EN 636:2015-05 (Sperrholz - Anforderungen)' },
+          { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz (CLT) - Anforderungen)' }
         ]}
         formeln={[
           {

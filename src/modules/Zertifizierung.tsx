@@ -1093,7 +1093,7 @@ export default function Zertifizierung() {
         regelwerke={[
           { title: 'DGNB System Kriterienkatalog Gebäude Neubau', url: 'https://www.dgnb.de/' },
           { title: 'QNG Handbuch: Qualitätssiegel Nachhaltiges Gebäude', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken - Bewertung der Nachhaltigkeit von Gebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15643' }
+          { title: 'DIN EN 15643 (Nachhaltigkeit von Bauwerken - Bewertung der Nachhaltigkeit von Gebäuden)' }
         ]}
         formeln={[
           {
