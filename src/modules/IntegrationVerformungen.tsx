@@ -110,7 +110,7 @@ export default function IntegrationVerformungen() {
         wikipedia={[
           { title: 'Hydratation (Zement)', url: 'https://de.wikipedia.org/wiki/Hydratation' },
           { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' },
-          { title: 'Kriechen und Schwinden von Beton', url: 'https://de.wikipedia.org/wiki/Kriechen_und_Schwinden_von_Beton' }
+          { title: 'Kriechen und Schwinden von Beton' }
         ]}
         regelwerke={[
           { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Rissbegrenzung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },

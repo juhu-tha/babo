@@ -165,7 +165,6 @@ const SCHADSTOFFE_DATA = [
   {
     id: 'biogefahren',
     name: 'Biologische Gefahrstoffe',
-    gestisUrl: 'https://gestis-biostoffe.dguv.de',
     icon: <Bug size={24} className="text-emerald-700" />,
     color: 'bg-emerald-50 border-emerald-200',
     textColor: 'text-emerald-800',

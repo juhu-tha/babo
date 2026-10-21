@@ -861,7 +861,7 @@ export default function Zementchemie() {
         wikipedia={[
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' },
           { title: 'Portlandzementklinker', url: 'https://de.wikipedia.org/wiki/Portlandzementklinker' },
-          { title: 'Bogue-Berechnung', url: 'https://de.wikipedia.org/wiki/Bogue-Berechnung' }
+          { title: 'Bogue-Berechnung' }
         ]}
         regelwerke={[
           { title: 'DIN EN 197-1 (Zement - Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },

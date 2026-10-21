@@ -1254,9 +1254,9 @@ export default function Holz() {
           { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14081-1' }
         ]}
         weblinks={[
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5', url: 'https://www.schneider-holz.com/service/statiksoftware.html' },
+          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
           { title: 'dataholz.eu – Akkreditierte Holzbauteil- & EPD-Datenbank', url: 'https://www.dataholz.eu/' },
-          { title: 'STRIAN – Online 2D-Stabwerk- & Rahmenberechnung', url: 'https://strian.designer.io/' },
+          { title: 'STRIAN – Online 2D-Stabwerk- & Rahmenberechnung' },
           { title: 'Informationsdienst Holz – Fachwissen & Handbücher', url: 'https://informationsdienst-holz.de/' }
         ]}
         formeln={[

@@ -337,11 +337,11 @@ export default function CscZertifizierung() {
       <ModuleFooter 
         weblinks={[
           { title: "CSC - Concrete Sustainability Council (Offizielle Website)", url: "https://www.concretesustainabilitycouncil.com/" },
-          { title: "CSC in Deutschland (BTB)", url: "https://www.transportbeton.org/nachhaltigkeit/csc-zertifizierung" },
+          { title: "CSC in Deutschland (BTB)" },
           { title: "DGNB Anrechenbarkeit von CSC-Zertifikaten", url: "https://www.dgnb.de/" }
         ]} 
         wikipedia={[
-          { title: "Concrete Sustainability Council", url: "https://de.wikipedia.org/wiki/Concrete_Sustainability_Council" },
+          { title: "Concrete Sustainability Council" },
           { title: "Nachhaltiges Bauen", url: "https://de.wikipedia.org/wiki/Nachhaltiges_Bauen" }
         ]} 
         literatur={[

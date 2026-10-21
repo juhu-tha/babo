@@ -122,7 +122,7 @@ export default function HydratationFolgen() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Hydratation (Zement)', url: 'https://de.wikipedia.org/wiki/Hydratation_(Zement)' },
+          { title: 'Hydratation (Zement)' },
           { title: 'Schwinden', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' },
           { title: 'Kriechen', url: 'https://de.wikipedia.org/wiki/Kriechen' }
         ]}

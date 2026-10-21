@@ -386,7 +386,7 @@ export default function Bindemittel() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Bindemittel (Baustoff)', url: 'https://de.wikipedia.org/wiki/Bindemittel_(Baustoff)' },
+          { title: 'Bindemittel (Baustoff)' },
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' },
           { title: 'Betonzusatzstoff', url: 'https://de.wikipedia.org/wiki/Betonzusatzstoff' }
         ]}

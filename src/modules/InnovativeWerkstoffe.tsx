@@ -1420,7 +1420,7 @@ export default function InnovativeWerkstoffe() {
       {/* Module Footer */}
       <ModuleFooter 
         wikipedia={[
-          { title: "3D-Betondruck", url: "https://de.wikipedia.org/wiki/3D-Betondruck" },
+          { title: "3D-Betondruck" },
           { title: "Carbonbeton", url: "https://de.wikipedia.org/wiki/Carbonbeton" },
           { title: "Ultrahochfester Beton", url: "https://de.wikipedia.org/wiki/Ultrahochfester_Beton" }
         ]}

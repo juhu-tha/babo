@@ -105,7 +105,7 @@ export default function MassigeBauteile() {
       <ModuleFooter
         wikipedia={[
           { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydratationsw%C3%A4rme' },
-          { title: 'Massenbeton', url: 'https://de.wikipedia.org/wiki/Massenbeton' },
+          { title: 'Massenbeton' },
           { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwang' }
         ]}
         literatur={[

@@ -851,7 +851,7 @@ export default function Bauwerksunters_Monitoring() {
           { title: 'Bauwerksdiagnostik', url: 'https://de.wikipedia.org/wiki/Bauwerksdiagnostik' },
           { title: 'Zerstörungsfreie Werkstoffprüfung', url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Werkstoffpr%C3%BCfung' },
           { title: 'Bohrwiderstandsmessung', url: 'https://de.wikipedia.org/wiki/Bohrwiderstandsmessung' },
-          { title: 'Structural-Health-Monitoring', url: 'https://de.wikipedia.org/wiki/Struktur%C3%BCberwachung' }
+          { title: 'Structural-Health-Monitoring' }
         ]}
         literatur={[
           'DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen); DIN 1076 und RI-EBW-PRÜF: Zustandserfassung, Analyse und Bauwerksdiagnostik im Bestand.',

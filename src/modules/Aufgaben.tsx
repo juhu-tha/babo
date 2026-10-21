@@ -377,7 +377,7 @@ export default function Aufgaben() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Übungsaufgabe', url: 'https://de.wikipedia.org/wiki/Aufgabe_(Schule)' },
+          { title: 'Übungsaufgabe' },
           { title: 'Klausur', url: 'https://de.wikipedia.org/wiki/Klausur_(Pr%C3%BCfung)' }
         ]}
         literatur={[

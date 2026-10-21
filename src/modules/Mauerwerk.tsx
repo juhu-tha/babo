@@ -958,7 +958,7 @@ export default function Mauerwerk() {
         { title: 'Mauerwerk', url: 'https://de.wikipedia.org/wiki/Mauerwerk' },
         { title: 'Mauerwerksverband', url: 'https://de.wikipedia.org/wiki/Mauerwerksverband' },
         { title: 'Mauerziegel', url: 'https://de.wikipedia.org/wiki/Mauerziegel' },
-        { title: 'Ziegel-Lexikon (Bundesverband der Deutschen Ziegelindustrie e. V.)', url: 'https://www.ziegel.de/lexikon' }
+        { title: 'Ziegel-Lexikon (Bundesverband der Deutschen Ziegelindustrie e. V.)' }
       ]}
         literatur={[
           'Schubert, P. (2019): Mauerwerk - Baustoffe, Bemessung und Ausführung (Ernst & Sohn)',

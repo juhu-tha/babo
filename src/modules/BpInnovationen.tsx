@@ -913,7 +913,7 @@ export default function BpInnovationen() {
           { title: 'Geopolymer', url: 'https://de.wikipedia.org/wiki/Geopolymer' },
           { title: 'Deutsches Institut für Bautechnik (DIBt)', url: 'https://de.wikipedia.org/wiki/Deutsches_Institut_f%C3%BCr_Bautechnik' },
           { title: 'Bauprodukteverordnung', url: 'https://de.wikipedia.org/wiki/Bauprodukteverordnung' },
-          { title: 'Zukunft Bau', url: 'https://de.wikipedia.org/wiki/Zukunft_Bau' }
+          { title: 'Zukunft Bau' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Springer Vieweg 2011',

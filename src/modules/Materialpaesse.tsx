@@ -694,7 +694,7 @@ export default function Materialpaesse() {
       <ModuleFooter
         lastReviewed="Oktober 2026 (AP 13 Digitales: falsche GModG-Pflichtaussage und Platzhaltertext entfernt, MCI/UMI-Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
-          { title: 'Gebäuderessourcenpass', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4uderessourcenpass' },
+          { title: 'Gebäuderessourcenpass' },
           { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' },
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
           { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }

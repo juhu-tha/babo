@@ -2212,7 +2212,7 @@ export default function Mischungsberechnung() {
         ]} 
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: 'Stoffraumrechnung', url: 'https://de.wikipedia.org/wiki/Stoffraumrechnung' }
+          { title: 'Stoffraumrechnung' }
         ]}
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',

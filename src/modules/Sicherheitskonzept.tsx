@@ -358,7 +358,7 @@ export default function Sicherheitskonzept() {
         wikipedia={[
           { title: 'Eurocode', url: 'https://de.wikipedia.org/wiki/Eurocode' },
           { title: 'Teilsicherheitskonzept', url: 'https://de.wikipedia.org/wiki/Teilsicherheitskonzept' },
-          { title: 'Grenzzustand', url: 'https://de.wikipedia.org/wiki/Grenzzustand' }
+          { title: 'Grenzzustand' }
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin: Springer 2010',

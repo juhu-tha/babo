@@ -327,7 +327,7 @@ export default function NachhaltigkeitChecklisten() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Nachhaltiges Bauen', url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
-          { title: 'Gebäudeenergiegesetz', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4deenergiegesetz' },
+          { title: 'Gebäudeenergiegesetz' },
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
           { title: 'Graue Energie', url: 'https://de.wikipedia.org/wiki/Graue_Energie' }
         ]}

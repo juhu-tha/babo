@@ -1322,9 +1322,9 @@ export default function BpAbdichtung() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Bauwerksabdichtung', url: 'https://de.wikipedia.org/wiki/Bauwerksabdichtung' },
-          { title: 'Rissinjektion', url: 'https://de.wikipedia.org/wiki/Rissinjektion' },
+          { title: 'Rissinjektion' },
           { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' },
-          { title: 'Bitumen-Dickbeschichtung', url: 'https://de.wikipedia.org/wiki/Kunststoffmodifizierte_Bitumendickbeschichtung' }
+          { title: 'Bitumen-Dickbeschichtung' }
         ]} 
         literatur={[ 
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',

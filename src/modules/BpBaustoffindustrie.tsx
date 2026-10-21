@@ -258,14 +258,9 @@ export default function BpBaustoffindustrie() {
                   Betrieben durch die ZBW (Leibniz-Informationszentrum Wirtschaft). Hervorragende Recherchequelle für wissenschaftliche Literatur, Dissertationen und Fachmonografien im Bereich der Energiewende in Baustoffbranchen.
                 </p>
               </div>
-              <a 
-                href="https://www.zbw.eu/de/befrachtung/econis" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="mt-4 inline-flex items-center text-xs font-bold text-shiraz hover:underline"
-              >
-                Zur ZBW ECONIS-Suche ↗
-              </a>
+              <span className="mt-4 inline-flex items-center text-xs font-medium text-slate-500">
+                ZBW ECONIS-Suche (Fachdatenbank / Universitätsbibliothek)
+              </span>
             </div>
           </div>
         </div>

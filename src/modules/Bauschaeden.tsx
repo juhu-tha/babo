@@ -1318,7 +1318,7 @@ ${senderName}`;
           { title: "Anerkannte Regeln der Technik", url: "https://de.wikipedia.org/wiki/Anerkannte_Regeln_der_Technik" },
           { title: "Dichtstoff", url: "https://de.wikipedia.org/wiki/Dichtstoff" },
           { title: "Klebstoff", url: "https://de.wikipedia.org/wiki/Klebstoff" },
-          { title: "Rissbreite", url: "https://de.wikipedia.org/wiki/Rissbreite" }
+          { title: "Rissbreite" }
         ]} 
         literatur={[
           'Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg',

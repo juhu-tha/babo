@@ -1207,12 +1207,12 @@ export default function WTA() {
         lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: WTA-Ausgaben 2-9-20/D, 4-6-24/D, 6-5-14/D geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         weblinks={[
           { title: "Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.", url: "https://www.wta-gmbh.de/" },
-          { title: "WTA-Merkblätter-Shop", url: "https://www.wta-fachverlag.de/" }
+          { title: "WTA-Merkblätter-Shop" }
         ]} 
         wikipedia={[
           { title: "Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege", url: "https://de.wikipedia.org/wiki/Wissenschaftlich-Technische_Arbeitsgemeinschaft_f%C3%BCr_Bauwerkserhaltung_und_Denkmalpflege" },
           { title: "Sanierputz", url: "https://de.wikipedia.org/wiki/Sanierputz" },
-          { title: "Tränken (Bauwesen)", url: "https://de.wikipedia.org/wiki/Tr%C3%A4nken_(Bauwesen)" }
+          { title: "Tränken (Bauwesen)" }
         ]} 
         literatur={[
           'WTA (Hrsg.): WTA-Merkblätter und Schriftenreihe. Stuttgart: Fraunhofer IRB / WTA Publications',

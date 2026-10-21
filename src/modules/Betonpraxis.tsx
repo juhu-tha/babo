@@ -1652,7 +1652,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
           { title: 'Expositionsklasse', url: 'https://de.wikipedia.org/wiki/Expositionsklasse' },
-          { title: 'Nachbehandlung', url: 'https://de.wikipedia.org/wiki/Nachbehandlung_(Beton)' }
+          { title: 'Nachbehandlung' }
         ]}
         regelwerke={[
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },

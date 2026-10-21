@@ -300,7 +300,7 @@ export default function Produktsiegel() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Umweltdeklaration', url: 'https://de.wikipedia.org/wiki/Umweltdeklaration' },
+          { title: 'Umweltdeklaration' },
           { title: 'Blauer Engel', url: 'https://de.wikipedia.org/wiki/Blauer_Engel' },
           { title: 'FSC', url: 'https://de.wikipedia.org/wiki/Forest_Stewardship_Council' }
         ]}

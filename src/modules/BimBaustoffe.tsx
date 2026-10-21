@@ -431,7 +431,7 @@ export default function BimBaustoffe() {
         ]}
         weblinks={[
           { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' },
-          { title: 'BIM-Portal des Bundes – Standardisierte Merkmalskataloge', url: 'https://www.bim-portal.de/' },
+          { title: 'BIM-Portal des Bundes – Standardisierte Merkmalskataloge' },
           { title: 'Geoportal.de – Amtliche Geodaten & Geländemodelle', url: 'https://www.geoportal.de/' },
           { title: 'Calcpad – Parametrische Eurocode-Berechnungen', url: 'https://calcpad.eu/' }
         ]}

@@ -3139,7 +3139,7 @@ export default function Stahl() {
         ]}
         weblinks={[
           { title: 'Dlubal Querschnittswerte – Online-Profilrechner für Walzprofile', url: 'https://www.dlubal.com/de/querschnittswerte/' },
-          { title: 'STRIAN – Online-Stabwerksberechnung für Rahmen & Fachwerke', url: 'https://strian.designer.io/' },
+          { title: 'STRIAN – Online-Stabwerksberechnung für Rahmen & Fachwerke' },
           { title: 'SkyCiv Free Beam Calculator – Momenten- & Querkraftverläufe', url: 'https://skyciv.com/free-beam-calculator/' }
         ]}
         formeln={[

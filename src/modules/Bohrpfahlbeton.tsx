@@ -102,7 +102,7 @@ export default function Bohrpfahlbeton() {
       </div>
       <ModuleFooter
         weblinks={[
-          { title: 'Beton.wiki: Bohrpfähle', url: 'https://beton.wiki/index.php?title=Bohrpf%C3%A4hle_und_Schlitzw%C3%A4nde' },
+          { title: 'Beton.wiki: Bohrpfähle' },
           { title: "Zement-Taschenbuch (VDZ)", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
         ]}
         wikipedia={[

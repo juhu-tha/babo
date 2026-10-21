@@ -945,7 +945,7 @@ const MODULES_DATA: Record<string, GroupData> = {
 };
 
 interface FurtherResource {
-  websites: { name: string; url: string; desc: string }[];
+  websites: { name: string; url?: string; desc: string }[];
   books: { title: string; desc: string }[];
   publications: { journal: string; title: string; desc: string }[];
   dissertations: { title: string; desc: string }[];
@@ -1008,7 +1008,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   bauprodukte: {
     websites: [
       { name: "DIBt - Zulassungsdatenbank", url: "https://www.dibt.de", desc: "Deutsches Institut für Bautechnik. Offizielles Register für abZ, ETA und baurechtliche Verordnungen." },
-      { name: "Deutsches Bautechnikportal", url: "https://www.bautechnikportal.de", desc: "Normierungsabgleiche, Verwendbarkeitsnachweise und EU-Konformitätsgesetze." },
+      { name: "Deutsches Bautechnikportal", desc: "Normierungsabgleiche, Verwendbarkeitsnachweise und EU-Konformitätsgesetze." },
       { name: "TÜV SÜD Bauzertifikate", url: "https://www.tuvsud.com", desc: "Schnittstellen zu Baumusterprüfung und werkseigener Produktionskontrolle (WPK)." }
     ],
     books: [
@@ -1045,8 +1045,8 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   mechanik: {
     websites: [
-      { name: "Mechanik Online-Portal", url: "https://www.mechanik-portal.de", desc: "Unabhängiges Portal zur Festkörpermechanik und numerischen Kontinuumsmechanik." },
-      { name: "Statik-Lernportal", url: "https://www.statik-lernen.de", desc: "Übungs- und Rechenplattform des Instituts für Statik der TU Braunschweig." },
+      { name: "Mechanik Online-Portal", desc: "Unabhängiges Portal zur Festkörpermechanik und numerischen Kontinuumsmechanik." },
+      { name: "Statik-Lernportal", desc: "Übungs- und Rechenplattform des Instituts für Statik der TU Braunschweig." },
       { name: "DGM (Materialwissenschaft)", url: "https://www.dgm.de", desc: "Deutsche Gesellschaft für Materialkunde mit Fokus auf elasto-plastisches Materialverhalten." }
     ],
     books: [
@@ -1066,7 +1066,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
     websites: [
       { name: "FIW München", url: "https://www.fiw-muenchen.de", desc: "Forschungsinstitut für Wärmeschutz e.V. mit baupraktischen Dämmstoffstudien." },
       { name: "Fraunhofer-Institut für Bauphysik (IBP)", url: "https://www.ibp.fraunhofer.de", desc: "Entwickler von WUFI (hygrothermische Simulation) mit Datenbanken zu Schall und Wärme." },
-      { name: "Bundesverband Bauphysik e.V.", url: "https://www.bv-bauphysik.de", desc: "Fachpublikationen und Leitfäden zur Bauakustik und energetischen Altbausanierung." }
+      { name: "Bundesverband Bauphysik e.V.", desc: "Fachpublikationen und Leitfäden zur Bauakustik und energetischen Altbausanierung." }
     ],
     books: [
       { title: "Lehrbuch der Bauphysik: Schall - Wärme - Feuchte - Licht - Brandschutz", desc: "Lohmeyer, Post, Springer. Didaktisch hervorragend aufbereitetes All-in-One Lehrbuch." },
@@ -1768,9 +1768,15 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                     <ul className="space-y-2.5">
                       {resources.websites.map((web, idx) => (
                         <li key={idx} className="text-xs">
-                          <a href={web.url} target="_blank" rel="noopener noreferrer" className="font-bold text-shiraz hover:underline flex items-center gap-1">
-                            {web.name} <span className="text-[10px]">↗</span>
-                          </a>
+                          {web.url ? (
+                            <a href={web.url} target="_blank" rel="noopener noreferrer" className="font-bold text-shiraz hover:underline flex items-center gap-1">
+                              {web.name} <span className="text-[10px]">↗</span>
+                            </a>
+                          ) : (
+                            <span className="font-bold text-text-main flex items-center gap-1">
+                              {web.name}
+                            </span>
+                          )}
                           <span className="text-text-main/70 block mt-0.5">{web.desc}</span>
                         </li>
                       ))}

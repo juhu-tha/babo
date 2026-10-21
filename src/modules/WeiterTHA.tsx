@@ -20,7 +20,7 @@ interface Program {
   badgeBgColor: string;
   badgeTextColor: string;
   btnBg: string;
-  link: string;
+  link?: string;
   degree: string;
   duration: string;
   format: string;
@@ -258,7 +258,6 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-shiraz/5',
     badgeTextColor: 'text-shiraz',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
-    link: 'https://www.tha.de/Elektrotechnik/Applied-Research-Master.page',
     degree: 'Master of Science (M.Sc.)',
     duration: '3 Semester (Vollzeit)',
     format: 'Vollzeit-Forschungsstudium',
@@ -333,15 +332,12 @@ export default function WeiterTHA() {
               <ExternalLink size={12} className="text-shiraz" />
               <span>TTZ Aichach</span>
             </a>
-            <a 
-              href="https://www.tha.de/Elektrotechnik/Applied-Research-Master.page" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 border border-home-grau/20 rounded-xl text-xs font-semibold text-text-main transition-all shadow-xs"
+            <span 
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-home-grau/20 rounded-xl text-xs font-semibold text-text-main/80 shadow-xs"
             >
-              <ExternalLink size={12} className="text-shiraz" />
+              <GraduationCap size={12} className="text-shiraz" />
               <span>MAPR (Applied Research)</span>
-            </a>
+            </span>
           </div>
         </div>
       </div>
@@ -426,15 +422,21 @@ export default function WeiterTHA() {
                     <span className="text-xs text-text-main/60">{program.subtitle}</span>
                   </div>
                 </div>
-                <a 
-                  href={program.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={`flex items-center gap-2 px-4 py-2 ${program.btnBg} text-white font-medium text-xs rounded-xl transition-all shadow-sm shrink-0`}
-                >
-                  <span>Zur Webseite</span>
-                  <ExternalLink size={14} />
-                </a>
+                {program.link ? (
+                  <a 
+                    href={program.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-4 py-2 ${program.btnBg} text-white font-medium text-xs rounded-xl transition-all shadow-sm shrink-0`}
+                  >
+                    <span>Zur Webseite</span>
+                    <ExternalLink size={14} />
+                  </a>
+                ) : (
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-500 font-medium text-xs rounded-xl border border-slate-200 shrink-0">
+                    Bewerbung / Information an der THA
+                  </span>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -541,9 +543,9 @@ export default function WeiterTHA() {
         ]}
         weblinks={[
           { title: 'ibi Augsburg - Institut für Bau und Immobilien', url: 'https://www.tha.de/ibi' },
-          { title: 'Bachelor Bauingenieurwesen - THA', url: 'https://www.tha.de/Architektur-und-Bauwesen/Bauingenieurwesen.html' },
+          { title: 'Bachelor Bauingenieurwesen - THA' },
           { title: 'TTZ Aichach - Technologietransferzentrum', url: 'https://www.tha.de/TTZ-Aichach.html' },
-          { title: 'MAPR - Applied Research Master', url: 'https://www.tha.de/Elektrotechnik/Applied-Research-Master.page' }
+          { title: 'MAPR - Applied Research Master' }
         ]}
         hideFormeln={true}
       />

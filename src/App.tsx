@@ -938,7 +938,7 @@ function AppContent() {
         nextState[c.id] = false;
       });
       setOpenClusters(nextState);
-      setOpenDropdown(null);
+      setOpenDropdown('CLOSED_ALLGEMEIN');
       return;
     }
     setRecentTabs(prev => {
@@ -972,10 +972,10 @@ function AppContent() {
     });
   };
 
-  // Exklusives Aufklappen: Wenn ein Hauptmenüpunkt (I-VII) aufgeklappt wird, klappen alle anderen automatisch zu
+  // Exklusives Aufklappen: Wenn ein Hauptmenüpunkt (I-VII) aufgeklappt wird, klappen alle anderen sowie das Start-Menü automatisch zu
   const toggleCluster = (clusterId: string) => {
+    const willBeOpen = !openClusters[clusterId];
     setOpenClusters(prev => {
-      const willBeOpen = !prev[clusterId];
       if (willBeOpen) {
         const nextState: Record<string, boolean> = {};
         META_CLUSTERS.forEach(c => {
@@ -988,15 +988,19 @@ function AppContent() {
       }
     });
 
-    // Untermenüs anderer Hauptmenüpunkte ebenfalls schließen
-    setOpenDropdown(prev => {
-      if (!prev) return null;
-      const targetCluster = META_CLUSTERS.find(c => c.id === clusterId);
-      if (targetCluster && targetCluster.groupNames.includes(prev)) {
-        return prev;
-      }
-      return null;
-    });
+    // Start-Menü sowie Untermenüs anderer Hauptmenüpunkte schließen
+    if (willBeOpen) {
+      setOpenDropdown('CLOSED_ALLGEMEIN');
+    } else {
+      setOpenDropdown(prev => {
+        if (!prev) return null;
+        const targetCluster = META_CLUSTERS.find(c => c.id === clusterId);
+        if (targetCluster && targetCluster.groupNames.includes(prev)) {
+          return prev;
+        }
+        return null;
+      });
+    }
   };
 
   const checkSEOStatus = (tabToCheck?: string) => {
@@ -1172,7 +1176,10 @@ function AppContent() {
         {(() => {
           const allgemeinGroup = tabGroups[0]; // Allgemein
           const isAllgemeinChildActive = ['admin', 'anleitung', 'modulstruktur', 'feedback', 'versionen', 'impressum', 'datenschutz'].includes(activeTab);
-          const isAllgemeinOpen = openDropdown === 'Allgemein' || (openDropdown !== 'CLOSED_ALLGEMEIN' && isAllgemeinChildActive) || (searchQuery !== '');
+          const isAnyClusterOpen = Object.values(openClusters).some(Boolean);
+          const isAllgemeinOpen = searchQuery !== '' 
+            ? true 
+            : (!isAnyClusterOpen && (openDropdown === 'Allgemein' || (openDropdown !== 'CLOSED_ALLGEMEIN' && isAllgemeinChildActive)));
 
           const matchingAllgemeinTabs = allgemeinGroup.tabs.filter((t: any) => {
             if (!searchQuery) return true;
@@ -1199,7 +1206,7 @@ function AppContent() {
                       nextState[c.id] = false;
                     });
                     setOpenClusters(nextState);
-                    setOpenDropdown(null);
+                    setOpenDropdown('CLOSED_ALLGEMEIN');
                   }}
                   className={"flex-1 flex items-center gap-2.5 px-3 py-2 text-sm font-semibold rounded-xl transition-all cursor-pointer " + 
                     (activeTab === 'start' 
@@ -1210,7 +1217,19 @@ function AppContent() {
                   <span className="flex-1 text-left font-bold">{language === 'en' ? 'Home' : 'Start'}</span>
                 </button>
                 <button
-                  onClick={() => setOpenDropdown(isAllgemeinOpen ? 'CLOSED_ALLGEMEIN' : 'Allgemein')}
+                  onClick={() => {
+                    if (isAllgemeinOpen) {
+                      setOpenDropdown('CLOSED_ALLGEMEIN');
+                    } else {
+                      // Beim Aufklappen von Start alle Cluster (I-VI/VII) einklappen
+                      const nextState: Record<string, boolean> = {};
+                      META_CLUSTERS.forEach(c => {
+                        nextState[c.id] = false;
+                      });
+                      setOpenClusters(nextState);
+                      setOpenDropdown('Allgemein');
+                    }
+                  }}
                   className={`p-2 rounded-xl border transition-colors cursor-pointer ${
                     isAllgemeinOpen
                       ? "bg-slate-100 dark:bg-slate-800 border-shiraz dark:border-rose-500 text-shiraz dark:text-rose-400"

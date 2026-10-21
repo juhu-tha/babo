@@ -2860,10 +2860,10 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           { title: 'U-Wert', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
           { title: 'Eurocode 2 (Betonbau)', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
           { title: 'Eurocode 5 (Holzbau)', url: 'https://de.wikipedia.org/wiki/Eurocode_5' },
-          { title: 'Eurocode 6 (Mauerwerk)', url: 'https://de.wikipedia.org/wiki/Eurocode_6' },
+          { title: 'Eurocode 6 (Mauerwerk)' },
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' },
           { title: 'Brandschutz', url: 'https://de.wikipedia.org/wiki/Brandschutz' },
-          { title: 'Karbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
+          { title: 'Karbonatisierung (Beton)' },
           { title: 'Treibhauspotential (GWP)', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' }
         ]}
         literatur={[

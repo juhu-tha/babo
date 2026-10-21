@@ -934,7 +934,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
           wikipedia={[
             { title: "Bauproduktenverordnung", url: "https://de.wikipedia.org/wiki/Bauproduktenverordnung" },
             { title: "CE-Kennzeichnung", url: "https://de.wikipedia.org/wiki/CE-Kennzeichnung" },
-            { title: "Akkreditierung (Recht)", url: "https://de.wikipedia.org/wiki/Akkreditierung_(Recht)" },
+            { title: "Akkreditierung (Recht)" },
             { title: "Europäische Technische Bewertung (ETA)", url: "https://de.wikipedia.org/wiki/Europ%C3%A4ische_Technische_Bewertung" }
           ]} 
           literatur={[

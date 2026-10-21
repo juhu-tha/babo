@@ -632,7 +632,7 @@ export default function HydratationPruefverfahren() {
       <ModuleFooter
         wikipedia={[
           { title: 'Betontechnologie', url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydratations%C3%A4rme' }
+          { title: 'Hydratationswärme' }
         ]}
         literatur={[
           'Beton-Laborpraxis: Frisch- und Festbetonprüfung, Bindemittelprüfungen (11. Auflage, Verlag Bau+Technik)',

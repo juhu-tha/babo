@@ -734,7 +734,7 @@ export default function BpBetonwaren() {
       <ModuleFooter
         wikipedia={[
           { title: 'Pflaster (Bodenbelag)', url: 'https://de.wikipedia.org/wiki/Pflaster_(Bodenbelag)' },
-          { title: 'Dachstein (Baustoff)', url: 'https://de.wikipedia.org/wiki/Dachstein_(Baustoff)' },
+          { title: 'Dachstein (Baustoff)' },
           { title: 'Kanalisation', url: 'https://de.wikipedia.org/wiki/Kanalisation' }
         ]}
         literatur={[

@@ -17,8 +17,8 @@ interface ModuleFooterProps {
   normIds?: string[];
   literatur?: string[];
   formeln?: { formel: string; erklaerung: string; quelle?: string }[];
-  wikipedia?: { title: string; url: string }[];
-  weblinks?: { title: string; url: string }[];
+  wikipedia?: { title: string; url?: string }[];
+  weblinks?: { title: string; url?: string }[];
   /**
    * Revision date according to P22 requirement 4. Default: "nicht geprüft"
    */
@@ -243,10 +243,17 @@ export function ModuleFooter({
                     ))}
                     {weblinks.map((item, idx) => (
                       <li key={`weblink-${idx}`}>
-                        <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium">
-                          <Globe size={14} className="opacity-70" />
-                          {item.title}
-                        </a>
+                        {item.url ? (
+                          <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium">
+                            <Globe size={14} className="opacity-70" />
+                            {item.title}
+                          </a>
+                        ) : (
+                          <span className="text-text-main/80 inline-flex items-center gap-1 font-medium">
+                            <Globe size={14} className="opacity-70" />
+                            {item.title}
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -261,15 +268,21 @@ export function ModuleFooter({
                     <ul className="space-y-1 text-xs text-text-main/80">
                       {limitedWikipedia.map((item, idx) => (
                         <li key={`wiki-${idx}`}>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium"
-                          >
-                            <ArrowUpRight size={11} className="opacity-70" />
-                            Wikipedia: {item.title}
-                          </a>
+                          {item.url ? (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium"
+                            >
+                              <ArrowUpRight size={11} className="opacity-70" />
+                              Wikipedia: {item.title}
+                            </a>
+                          ) : (
+                            <span className="text-text-main/80 inline-flex items-center gap-1 font-medium">
+                              Wikipedia: {item.title}
+                            </span>
+                          )}
                         </li>
                       ))}
                     </ul>

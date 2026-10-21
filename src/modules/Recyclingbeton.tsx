@@ -339,7 +339,7 @@ export default function Recyclingbeton() {
       </div>
       <ModuleFooter
         weblinks={[
-          { title: 'Beton.wiki: RC-Beton', url: 'https://beton.wiki/index.php?title=Recyclingbeton' },
+          { title: 'Beton.wiki: RC-Beton' },
           { title: "Zement-Merkblatt B33: Recyclingbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
         ]}
         wikipedia={[

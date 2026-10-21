@@ -1244,8 +1244,8 @@ export default function Korrosion() {
       <ModuleFooter
         lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: Chlorid- und Karbonatisierungsmodelle, Alterungsexponenten, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
-          { title: 'Bewehrungskorrosion', url: 'https://de.wikipedia.org/wiki/Bewehrungskorrosion' },
-          { title: 'Karbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
+          { title: 'Bewehrungskorrosion' },
+          { title: 'Karbonatisierung (Beton)' },
           { title: 'Lochfraßkorrosion', url: 'https://de.wikipedia.org/wiki/Lochfra%C3%9Fkorrosion' }
         ]}
         literatur={[

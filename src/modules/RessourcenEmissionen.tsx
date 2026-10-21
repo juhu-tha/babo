@@ -127,7 +127,7 @@ export default function RessourcenEmissionen() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Kohlendioxid-Emission', url: 'https://de.wikipedia.org/wiki/Kohlendioxid-Emission' },
+          { title: 'Kohlendioxid-Emission' },
           { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' },
           { title: 'Ressourceneffizienz', url: 'https://de.wikipedia.org/wiki/Ressourceneffizienz' }
         ]}

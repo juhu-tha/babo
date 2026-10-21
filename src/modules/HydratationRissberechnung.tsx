@@ -579,7 +579,7 @@ export default function HydratationRissberechnung() {
 
       <ModuleFooter
         wikipedia={[
-          { title: 'Rissbreitenbegrenzung', url: 'https://de.wikipedia.org/wiki/Rissbreitenbegrenzung' },
+          { title: 'Rissbreitenbegrenzung' },
           { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' }
         ]}
         literatur={[

@@ -1134,7 +1134,7 @@ export default function Fortbildungen() {
           { title: "FKKS e.V. - Kathodischer Korrosionsschutz Ausbildung", url: "https://www.fkks.de/" }
         ]} 
         wikipedia={[
-          { title: "Betontechnologe", url: "https://de.wikipedia.org/wiki/Betontechnologe" },
+          { title: "Betontechnologe" },
           { title: "Hausschwamm", url: "https://de.wikipedia.org/wiki/Echter_Hausschwamm" },
           { title: "Kathodischer Korrosionsschutz", url: "https://de.wikipedia.org/wiki/Kathodischer_Korrosionsschutz" }
         ]} 
@@ -1144,7 +1144,7 @@ export default function Fortbildungen() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[
-          { title: 'Ausbildungsbeirat Sachkundiger Planer für Betonerhaltung (ABB-SKP)', url: 'https://www.ausbildungsbeirat-skp.de/' },
+          { title: 'Ausbildungsbeirat Sachkundiger Planer für Betonerhaltung (ABB-SKP)' },
           { title: 'DVS / EWF Richtlinien für Schweiß- und Verbindungstechnik', url: 'https://www.dvs-home.de/' },
           { title: 'dena Regelheft Energieeffizienz-Expertenliste', url: 'https://www.energie-effizienz-experten.de/' }
         ]} 

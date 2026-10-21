@@ -351,7 +351,7 @@ export default function Sonstiges() {
         { title: 'Phasenwechselmaterial', url: 'https://de.wikipedia.org/wiki/Latentw%C3%A4rmespeicher' },
         { title: 'Leichtzuschlag (Beton)', url: 'https://de.wikipedia.org/wiki/Leichtbeton' },
         { title: 'Aerogel', url: 'https://de.wikipedia.org/wiki/Aerogel' },
-        { title: 'Selbstheilender Beton', url: 'https://de.wikipedia.org/wiki/Selbstheilender_Beton' },
+        { title: 'Selbstheilender Beton' },
         { title: 'Photokatalyse', url: 'https://de.wikipedia.org/wiki/Photokatalyse' },
         { title: 'Vakuumisolationspaneel', url: 'https://de.wikipedia.org/wiki/Vakuumisolationspaneel' }
       ]}

@@ -180,8 +180,7 @@ export const DAMAGE_CASES: DamageCaseStudy[] = [
       {
         title: 'Eishalle Bad Reichenhall (Übersicht mit Nachweisen zu Gutachten und Strafverfahren)',
         institutionOrAuthor: 'Wikipedia',
-        details: 'Sekundärquelle; die Gutachten selbst sind nicht öffentlich.',
-        url: 'https://de.wikipedia.org/wiki/Eishalle_Bad_Reichenhall'
+        details: 'Sekundärquelle; die Gutachten selbst sind nicht öffentlich.'
       },
       {
         title: 'BGH, Urteil vom 12.01.2010 – 1 StR 272/09',
@@ -907,8 +906,7 @@ export const DAMAGE_CASES: DamageCaseStudy[] = [
       {
         title: 'Investigation of the Kansas City Hyatt Regency Walkways Collapse',
         institutionOrAuthor: 'National Bureau of Standards (NBS Building Science Series 143, heute NIST)',
-        details: 'Umfassender technischer Untersuchungsbericht des NBS zur rechnerischen und experimentellen Analyse des Trägerversagens, 1982.',
-        url: 'https://de.wikipedia.org/wiki/Hyatt-Regency-Einsturz'
+        details: 'Umfassender technischer Untersuchungsbericht des NBS zur rechnerischen und experimentellen Analyse des Trägerversagens, 1982.'
       },
       {
         title: 'AISC Code of Standard Practice for Steel Buildings and Bridges',
@@ -1537,10 +1535,10 @@ export default function MaterialSchaedenGross() {
         wikipedia={[
           { title: 'Alkali-Kieselsäure-Reaktion', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' },
           { title: 'Eisenbahnunfall von Burgrain (Garmisch-Partenkirchen)', url: 'https://de.wikipedia.org/wiki/Eisenbahnunfall_von_Burgrain' },
-          { title: 'Hyatt-Regency-Einsturz (Kansas City)', url: 'https://de.wikipedia.org/wiki/Hyatt-Regency-Einsturz' },
-          { title: 'Katastrophe von Stava (Dammbruch)', url: 'https://de.wikipedia.org/wiki/Katastrophe_von_Stava' },
+          { title: 'Hyatt-Regency-Einsturz (Kansas City)' },
+          { title: 'Katastrophe von Stava (Dammbruch)' },
           { title: 'Schiersteiner Brücke (Havarie)', url: 'https://de.wikipedia.org/wiki/Schiersteiner_Br%C3%BCcke' },
-          { title: 'Einsturz der Eishalle Bad Reichenhall', url: 'https://de.wikipedia.org/wiki/Eishalle_Bad_Reichenhall' },
+          { title: 'Einsturz der Eishalle Bad Reichenhall' },
           { title: 'Polcevera-Viadukt (Ponte Morandi)', url: 'https://de.wikipedia.org/wiki/Polcevera-Viadukt' },
           { title: 'Carolabrücke (Dresden)', url: 'https://de.wikipedia.org/wiki/Carolabr%C3%BCcke_(Dresden)' },
           { title: 'Silver Bridge', url: 'https://de.wikipedia.org/wiki/Silver_Bridge' },

@@ -894,7 +894,7 @@ export default function WUBauwerke() {
         wikipedia={[
           { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' },
           { title: 'Schwarze Wanne', url: 'https://de.wikipedia.org/wiki/Schwarze_Wanne' },
-          { title: 'Frischbetonverbundsystem', url: 'https://de.wikipedia.org/wiki/Frischbetonverbundsystem' }
+          { title: 'Frischbetonverbundsystem' }
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie:2017-12)', url: 'https://www.dafstb.de/' },

@@ -1350,7 +1350,7 @@ export default function Spannbeton() {
         ]}
         wikipedia={[
           { title: 'Spannbeton', url: 'https://de.wikipedia.org/wiki/Spannbeton' },
-          { title: 'Kriechen und Schwinden von Beton', url: 'https://de.wikipedia.org/wiki/Kriechen_und_Schwinden_von_Beton' },
+          { title: 'Kriechen und Schwinden von Beton' },
           { title: 'Spannstahl', url: 'https://de.wikipedia.org/wiki/Spannstahl' }
         ]}
         regelwerke={[

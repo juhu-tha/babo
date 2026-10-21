@@ -1364,7 +1364,7 @@ export default function Bautagebuch() {
         ]}
         regelwerke={[
           { title: 'VOB/B § 4 Abs. 1 & § 6 (Ausführung und Behinderung)', url: 'https://www.gesetze-im-internet.de/' },
-          { title: 'HOAI Honorarordnung (Leistungsphase 8: Bauüberwachung)', url: 'https://www.gesetze-im-internet.de/hoai_2021/' },
+          { title: 'HOAI Honorarordnung (Leistungsphase 8: Bauüberwachung)' },
           { title: 'DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Bauausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' }
         ]}
         formeln={[

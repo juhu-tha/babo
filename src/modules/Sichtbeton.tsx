@@ -169,7 +169,7 @@ export default function Sichtbeton() {
         ]}
         wikipedia={[
           { title: 'Sichtbeton', url: 'https://de.wikipedia.org/wiki/Sichtbeton' },
-          { title: 'Schalung (Betonbau)', url: 'https://de.wikipedia.org/wiki/Schalung_(Betonbau)' }
+          { title: 'Schalung (Betonbau)' }
         ]}
         regelwerke={[
           { title: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung 2015/2023 - Klassen SB1 bis SB4)', url: 'https://www.betonverein.de/' },

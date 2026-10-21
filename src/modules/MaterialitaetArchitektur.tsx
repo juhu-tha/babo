@@ -534,7 +534,7 @@ export default function MaterialitaetArchitektur() {
 
       <ModuleFooter
         wikipedia={[
-          { title: 'Materialität (Architektur)', url: 'https://de.wikipedia.org/wiki/Materialit%C3%A4t' },
+          { title: 'Materialität (Architektur)' },
           { title: 'Sichtbeton', url: 'https://de.wikipedia.org/wiki/Sichtbeton' },
           { title: 'Patina', url: 'https://de.wikipedia.org/wiki/Patina' },
           { title: 'Klinker', url: 'https://de.wikipedia.org/wiki/Klinker' }

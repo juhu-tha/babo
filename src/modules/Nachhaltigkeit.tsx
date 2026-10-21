@@ -3623,7 +3623,7 @@ export default function Nachhaltigkeit() {
           { title: 'Passivhaus', url: 'https://de.wikipedia.org/wiki/Passivhaus' },
           { title: 'U-Wert', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
           { title: 'Graue Energie', url: 'https://de.wikipedia.org/wiki/Graue_Energie' },
-          { title: 'Bauprodukte-Verordnung', url: 'https://de.wikipedia.org/wiki/Bauprodukte-Verordnung' },
+          { title: 'Bauprodukte-Verordnung' },
           { title: 'European Green Deal', url: 'https://de.wikipedia.org/wiki/European_Green_Deal' },
           { title: 'Europäischer Emissionshandel', url: 'https://de.wikipedia.org/wiki/EU-Emissionshandel' },
           { title: 'CO2-Grenzausgleichssystem', url: 'https://de.wikipedia.org/wiki/CO2-Grenzausgleichssystem' },

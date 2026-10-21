@@ -2004,7 +2004,7 @@ export function Stahlbetoninstandhaltung() {
           { title: 'Betoninstandsetzung', url: 'https://de.wikipedia.org/wiki/Betoninstandsetzung' },
           { title: 'Oberflächenschutzsystem', url: 'https://de.wikipedia.org/wiki/Oberfl%C3%A4chenschutzsystem' },
           { title: 'Kathodischer Korrosionsschutz', url: 'https://de.wikipedia.org/wiki/Kathodischer_Korrosionsschutz' },
-          { title: 'Rissinjektion', url: 'https://de.wikipedia.org/wiki/Rissinjektion' }
+          { title: 'Rissinjektion' }
         ]}
         regelwerke={[
           { title: 'DIBt Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung Teile 1 und 2; Teil 1 Stand Mai 2020)', url: 'https://www.dibt.de/' },

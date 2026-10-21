@@ -2218,7 +2218,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         weblinks={[
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5', url: 'https://www.schneider-holz.com/service/statiksoftware.html' },
+          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
           { title: 'dataholz.eu - Geprüfte Holzbauteile', url: 'https://www.dataholz.eu' },
           { title: 'Informationsdienst Holz', url: 'https://informationsdienst-holz.de/' },
           { title: 'Institut für Holzbau - Wissen Kompakt', url: 'https://www.institut-holzbau.de/' }

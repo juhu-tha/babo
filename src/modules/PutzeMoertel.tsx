@@ -1241,7 +1241,7 @@ export default function PutzeMoertel() {
           { title: 'Mörtel', url: 'https://de.wikipedia.org/wiki/M%C3%B6rtel' },
           { title: 'Putz (Baustoff)', url: 'https://de.wikipedia.org/wiki/Putz_(Baustoff)' },
           { title: 'Kalkstein', url: 'https://de.wikipedia.org/wiki/Kalkstein' },
-          { title: 'Karbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' }
+          { title: 'Karbonatisierung (Beton)' }
         ]} 
         literatur={[ 
           'Bundesverband der Gipsindustrie e.V.: Handbuch Trockenbau, Kapitel Gipsputze.',

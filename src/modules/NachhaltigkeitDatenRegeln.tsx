@@ -1482,8 +1482,8 @@ export default function NachhaltigkeitDatenRegeln() {
         wikipedia={[
           { title: 'Ziele für nachhaltige Entwicklung (SDGs)', url: 'https://de.wikipedia.org/wiki/Ziele_f%C3%BCr_nachhaltige_Entwicklung' },
           { title: 'EU-Taxonomie', url: 'https://de.wikipedia.org/wiki/EU-Taxonomie' },
-          { title: 'Richtlinie über die Gesamtenergieeffizienz von Gebäuden (EPBD)', url: 'https://de.wikipedia.org/wiki/Richtlinie_%C3%BCber_die_Gesamtenergieeffizienz_von_Geb%C3%A4uden' },
-          { title: 'Umweltproduktdeklaration (EPD)', url: 'https://de.wikipedia.org/wiki/Umweltproduktdeklaration' },
+          { title: 'Richtlinie über die Gesamtenergieeffizienz von Gebäuden (EPBD)' },
+          { title: 'Umweltproduktdeklaration (EPD)' },
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' }
         ]}
         literatur={[

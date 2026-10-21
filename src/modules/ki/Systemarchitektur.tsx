@@ -1009,7 +1009,7 @@ export default function Systemarchitektur() {
         regelwerke={[
           { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
           { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen – Teil B', url: 'https://www.gesetze-im-internet.de/vob_b/' },
+          { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen – Teil B' },
           { title: 'EU Artificial Intelligence Act (Verordnung (EU) 2024/1689 des Europäischen Parlaments)', url: 'https://eur-lex.europa.eu/' }
         ]}
         formeln={[

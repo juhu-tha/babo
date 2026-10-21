@@ -86,7 +86,7 @@ export default function Qualitaetssicherung() {
           { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
           { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
           { title: 'DBV-Merkblatt Betonbauqualitätsklassen (BBQ)', url: 'https://www.betonverein.de/' },
-          { title: 'CSC Technical Manual (Concrete Sustainability Council)', url: 'https://www.csc-germany.de/' }
+          { title: 'CSC Technical Manual (Concrete Sustainability Council)' }
         ]}
         formeln={[
           {

@@ -252,7 +252,7 @@ export function ZwangCalculator() {
         wikipedia={[
           { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' },
           { title: 'Eigenspannung', url: 'https://de.wikipedia.org/wiki/Eigenspannung' },
-          { title: 'Rissbildung', url: 'https://de.wikipedia.org/wiki/Riss_(Werkstoff)' }
+          { title: 'Rissbildung' }
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G. (2010): Bemessung im konstruktiven Betonbau (2. Auflage, Springer-Verlag)',

@@ -808,7 +808,7 @@ export default function LaborSicherheit() {
       {/* Module Footer with standard DIN/DGUV references */}
       <ModuleFooter
         wikipedia={[
-          { title: 'Laborsicherheit', url: 'https://de.wikipedia.org/wiki/Laborsicherheit' },
+          { title: 'Laborsicherheit' },
           { title: 'Persönliche Schutzausrüstung', url: 'https://de.wikipedia.org/wiki/Pers%C3%B6nliche_Schutzausr%C3%BCstung' },
           { title: 'Durchgangsarzt', url: 'https://de.wikipedia.org/wiki/Durchgangsarzt' }
         ]}

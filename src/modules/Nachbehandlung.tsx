@@ -283,7 +283,7 @@ export default function Nachbehandlung() {
             { title: "Zement-Merkblatt B8: Nachbehandlung von Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
           ]} 
           wikipedia={[
-            { title: 'Nachbehandlung (Beton)', url: 'https://de.wikipedia.org/wiki/Nachbehandlung' },
+            { title: 'Nachbehandlung (Beton)' },
             { title: 'Frühschwinden', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
           ]}
           regelwerke={[

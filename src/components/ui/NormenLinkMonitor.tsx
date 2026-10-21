@@ -21,7 +21,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 interface LinkCheckItem {
   id: string;
   name: string;
-  url: string;
+  url?: string;
   sourceModule: string;
   category: string;
   lastChecked: string;
@@ -36,7 +36,7 @@ const LIVE_LINK_AUDIT: LinkCheckItem[] = [
   { id: '4', name: 'VDZ (Verein Deutscher Zementwerke)', url: 'https://www.vdz-online.de/', sourceModule: 'Zementchemie & LCA', category: 'Industrie', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
   { id: '5', name: 'DBV (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/', sourceModule: 'Betonpraxis & Merkblätter', category: 'Praxis', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
   { id: '6', name: 'LfU Bayern (Schadstoffratgeber Gebäuderückbau)', url: 'https://www.lfu.bayern.de/', sourceModule: 'Informationsquellen', category: 'Umwelt', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
-  { id: '7', name: 'WINGISonline (BG BAU)', url: 'https://www.wingis-online.de/', sourceModule: 'Informationsquellen & Arbeitsschutz', category: 'Arbeitsschutz', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
+  { id: '7', name: 'WINGISonline (BG BAU)', sourceModule: 'Informationsquellen & Arbeitsschutz', category: 'Arbeitsschutz', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
   { id: '8', name: 'DGNB Navigator (Deutsche Gesellschaft für Nachhaltiges Bauen)', url: 'https://www.dgnb-navigator.de/', sourceModule: 'Nachhaltigkeit & EPD', category: 'Zertifizierung', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
   { id: '9', name: 'ÖKOBAUDAT (Bundesministerium BMWSB)', url: 'https://www.oekobaudat.de/', sourceModule: 'LCA & Nachhaltigkeit', category: 'Ökobilanz', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
   { id: '10', name: 'Technische Hochschule Augsburg (THA) Portal app.tha.de', url: 'https://app.tha.de/', sourceModule: 'Studium THA', category: 'Hochschule', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' }
@@ -303,14 +303,20 @@ export function NormenLinkMonitor() {
                   <tr key={item.id} className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-3.5">
                       <div className="font-bold text-slate-900">{item.name}</div>
-                      <a 
-                        href={item.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-shiraz hover:underline font-mono text-[11px] flex items-center gap-1 mt-0.5"
-                      >
-                        {item.url} <ExternalLink size={10} />
-                      </a>
+                      {item.url ? (
+                        <a 
+                          href={item.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-shiraz hover:underline font-mono text-[11px] flex items-center gap-1 mt-0.5"
+                        >
+                          {item.url} <ExternalLink size={10} />
+                        </a>
+                      ) : (
+                        <span className="text-slate-400 font-mono text-[11px] flex items-center gap-1 mt-0.5">
+                          Offline / Fachrecherche vor Ort
+                        </span>
+                      )}
                     </td>
                     <td className="p-3.5 text-text-main/80 font-medium">{item.category}</td>
                     <td className="p-3.5 text-text-main/70">{item.sourceModule}</td>

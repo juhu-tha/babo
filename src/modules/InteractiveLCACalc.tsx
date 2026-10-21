@@ -1539,7 +1539,7 @@ export default function InteractiveLCACalc() {
         wikipedia={[
           { title: "Ökobilanz", url: "https://de.wikipedia.org/wiki/%C3%96kobilanz" },
           { title: "Treibhauspotenzial", url: "https://de.wikipedia.org/wiki/Treibhauspotenzial" },
-          { title: "Umweltproduktdeklaration", url: "https://de.wikipedia.org/wiki/Umweltproduktdeklaration" }
+          { title: "Umweltproduktdeklaration" }
         ]}
         literatur={[
           "König, H. et al. (2012): Lebenszyklusanalyse von Gebäuden (Detail Green Books)",

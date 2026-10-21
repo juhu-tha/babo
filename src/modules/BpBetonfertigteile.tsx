@@ -827,7 +827,7 @@ export default function BpBetonfertigteile() {
         wikipedia={[
           { title: 'Betonfertigteil', url: 'https://de.wikipedia.org/wiki/Betonfertigteil' },
           { title: 'Spannbeton', url: 'https://de.wikipedia.org/wiki/Spannbeton' },
-          { title: 'Hohlplatte', url: 'https://de.wikipedia.org/wiki/Spannbeton-Hohlplatte' },
+          { title: 'Hohlplatte' },
           { title: 'Filigrandecke', url: 'https://de.wikipedia.org/wiki/Filigrandecke' }
         ]}
         literatur={[

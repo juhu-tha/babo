@@ -125,7 +125,7 @@ export default function Sonderbetone() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Sonderbeton', url: 'https://de.wikipedia.org/wiki/Sonderbeton' },
+          { title: 'Sonderbeton' },
           { title: 'Leichtbeton', url: 'https://de.wikipedia.org/wiki/Leichtbeton' },
           { title: 'Selbstverdichtender Beton', url: 'https://de.wikipedia.org/wiki/Selbstverdichtender_Beton' },
           { title: 'Faserbeton', url: 'https://de.wikipedia.org/wiki/Faserbeton' }

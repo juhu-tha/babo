@@ -526,7 +526,7 @@ export default function Rissbreite() {
         <CalculatorDisclaimerBanner className="my-2" />
       <ModuleFooter 
           wikipedia={[
-            { title: 'Rissbreitenbeschränkung', url: 'https://de.wikipedia.org/wiki/Rissbreitenbeschr%C3%A4nkung' },
+            { title: 'Rissbreitenbeschränkung' },
             { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
             { title: 'Betonstahl', url: 'https://de.wikipedia.org/wiki/Betonstahl' }
           ]}

@@ -97,7 +97,7 @@ export default function Massenbeton() {
           { title: "Zement-Merkblatt B11: Massige Bauteile aus Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
         ]}
         wikipedia={[
-          { title: 'Massiger Beton', url: 'https://de.wikipedia.org/wiki/Massenbeton' },
+          { title: 'Massiger Beton' },
           { title: 'Walzbeton', url: 'https://de.wikipedia.org/wiki/Walzbeton' }
         ]}
         regelwerke={[
