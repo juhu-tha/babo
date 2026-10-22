@@ -161,9 +161,9 @@ export default function Daemmstoffe() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 4108-10 (Wärmeschutz und Energie-Einsparung in Gebäuden - Teil 10: Anwendungsbezogene Anforderungen an Wärmedämmstoffe)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-10' },
+          { title: 'DIN 4108-10 (Wärmeschutz und Energie-Einsparung in Gebäuden - Teil 10: Anwendungsbezogene Anforderungen an Wärmedämmstoffe)' },
           { title: 'GModG (Gebäudemodernisierungsgesetz (GModG), bis 28.07.2026 Gebäudeenergiegesetz (GEG) - Anforderungen an den Wärmeschutz von Bauteilen)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'DIN EN 13162 (Wärmedämmstoffe für Gebäude - Werkmäßig hergestellte Produkte aus Mineralwolle (MW))', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13162' }
+          { title: 'DIN EN 13162 (Wärmedämmstoffe für Gebäude - Werkmäßig hergestellte Produkte aus Mineralwolle (MW))' }
         ]}
         weblinks={[
           { title: 'Ubakus.de – U-Wert- & Glaser-Tauwassernachweis', url: 'https://www.ubakus.de/' },

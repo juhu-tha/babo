@@ -1027,9 +1027,9 @@ export default function Statistik() {
             'DIN EN 1990:2021-10: Eurocode – Grundlagen der Tragwerksplanung, Anhang D: Versuchsgestützte Bemessung'
           ]}
           regelwerke={[
-            { title: 'DIN EN 1990:2021-10 mit NA, Anhang D (Versuchsgestützte Bemessung); Nachfolger DIN EN 1990 (EN 1990:2023) angekündigt', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
+            { title: 'DIN EN 1990:2021-10 mit NA, Anhang D (Versuchsgestützte Bemessung); Nachfolger DIN EN 1990 (EN 1990:2023) angekündigt' },
             { title: 'ISO 2394:2015 (General principles on reliability for structures)', url: 'https://www.iso.org/' },
-            { title: 'ISO 12491:1997-05 (Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=ISO+12491' }
+            { title: 'ISO 12491:1997-05 (Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen)' }
           ]}
           formeln={[
             {
@@ -1296,8 +1296,8 @@ export default function Statistik() {
           'Hedderich, J.; Sachs, L.: Angewandte Statistik – Methodensammlung mit R. 16. Aufl., Berlin: Springer Spektrum 2018',
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
-          { title: 'DIN ISO 2859-1 (Annahmestichprobenprüfung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+ISO+2859-1' }
+          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)' },
+          { title: 'DIN ISO 2859-1 (Annahmestichprobenprüfung)' }
         ]}
         formeln={[
           {

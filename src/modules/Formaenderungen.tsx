@@ -419,8 +419,8 @@ export default function Formaenderungen() {
           'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (3.1.4 und Anhang B: Kriechen und Schwinden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 12390-16 (EN 12390-16:2019; Prüfung von Festbeton – Bestimmung des Schwindens von Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12390-16' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (3.1.4 und Anhang B: Kriechen und Schwinden)' },
+          { title: 'DIN EN 12390-16 (EN 12390-16:2019; Prüfung von Festbeton – Bestimmung des Schwindens von Beton)' }
         ]}
         formeln={[
           {

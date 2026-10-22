@@ -925,4 +925,28 @@ input[type=range]:focus {
   }
 }
 
+/* ==========================================================================
+   BILDSCHIRMBREITE & FLUID-LAYOUT: Standard (1152px), Breit (1536px) & 100% Vollbild
+   ========================================================================== */
+[data-fluid="true"] #module-content > div,
+[data-fluid="true"] #module-content > div > div:first-child,
+[data-fluid="true"] .container,
+[data-width="full"] #module-content > div,
+[data-width="full"] #module-content > div > div:first-child,
+[data-width="full"] .container {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+[data-width="wide"] #module-content > div,
+[data-width="wide"] #module-content > div > div:first-child {
+  max-width: 1536px !important;
+}
+
+[data-width="standard"] #module-content > div,
+[data-width="standard"] #module-content > div > div:first-child {
+  max-width: 1152px !important;
+}
+
+
 

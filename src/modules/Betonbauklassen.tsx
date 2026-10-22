@@ -670,10 +670,10 @@ export default function Betonbauklassen() {
           'DAfStb-Heft 600: Erläuterungen zu den Normen DIN EN 1992-1-1 und DIN 1045'
         ]}
         regelwerke={[
-          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-1000' },
-          { title: 'DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
-          { title: 'DIN EN 13670 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' },
-          { title: 'DIN EN 1992-1-1: Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' }
+          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)' },
+          { title: 'DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 13670 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)' },
+          { title: 'DIN EN 1992-1-1: Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' }
         ]}
         formeln={[
           {

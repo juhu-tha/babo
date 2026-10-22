@@ -848,9 +848,9 @@ export default function Baustoffkunde() {
           'Powers, T. C.; Brownyard, T. L.: Studies of the Physical Properties of Hardened Portland Cement Paste. Journal of the American Concrete Institute 43 (1946/47)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
-          { title: 'DIN EN 197-1 (Zement – Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1' },
-          { title: 'DIN EN 196-3 (Prüfverfahren für Zement – Erstarrungszeiten und Raumbeständigkeit)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+196-3' }
+          { title: 'DIN EN 1990 (Eurocode: Grundlagen der Tragwerksplanung)' },
+          { title: 'DIN EN 197-1 (Zement – Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)' },
+          { title: 'DIN EN 196-3 (Prüfverfahren für Zement – Erstarrungszeiten und Raumbeständigkeit)' }
         ]}
         formeln={[
           {

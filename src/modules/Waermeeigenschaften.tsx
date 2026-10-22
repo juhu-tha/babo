@@ -379,9 +379,9 @@ export default function Waermeeigenschaften() {
           { title: 'Temperaturleitfähigkeit', url: 'https://de.wikipedia.org/wiki/Temperaturleitf%C3%A4higkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 10456:2010-05 (Baustoffe und Bauprodukte – Wärme- und feuchtetechnische Eigenschaften, tabellierte Bemessungswerte)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+10456' },
-          { title: 'DIN 4108-4:2020-11 (Wärmeschutz und Energie-Einsparung in Gebäuden – Wärme- und feuchteschutztechnische Bemessungswerte)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-4' },
-          { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient – Berechnungsverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6946' },
+          { title: 'DIN EN ISO 10456:2010-05 (Baustoffe und Bauprodukte – Wärme- und feuchtetechnische Eigenschaften, tabellierte Bemessungswerte)' },
+          { title: 'DIN 4108-4:2020-11 (Wärmeschutz und Energie-Einsparung in Gebäuden – Wärme- und feuchteschutztechnische Bemessungswerte)' },
+          { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient – Berechnungsverfahren)' },
           { title: 'Gebäudemodernisierungsgesetz (GModG, bis 28.07.2026 Gebäudeenergiegesetz GEG) – Anlage 7: Höchstwerte der U-Werte bei Änderung', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[

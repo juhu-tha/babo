@@ -169,13 +169,13 @@ export default function Sichtbeton() {
         ]}
         wikipedia={[
           { title: 'Sichtbeton', url: 'https://de.wikipedia.org/wiki/Sichtbeton' },
-          { title: 'Schalung (Betonbau)', url: 'https://de.wikipedia.org/wiki/Schalung_(Betonbau)' }
+          { title: 'Schalung (Betonbau)' }
         ]}
         regelwerke={[
           { title: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung 2015/2023 - Klassen SB1 bis SB4)', url: 'https://www.betonverein.de/' },
-          { title: 'DIN 18217 (Betonflächen und Schalungshaut)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18217' },
-          { title: 'DIN 18218 (Frischbetondruck auf Schalungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18218' },
-          { title: 'DIN EN 13670 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' }
+          { title: 'DIN 18217 (Betonflächen und Schalungshaut)' },
+          { title: 'DIN 18218 (Frischbetondruck auf Schalungen)' },
+          { title: 'DIN EN 13670 (Ausführung von Tragwerken aus Beton)' }
         ]}
         literatur={[
           'Peck, M. (Hrsg.): Sichtbeton - Planung und Ausführung (Detail Praxis, Birkhäuser)',

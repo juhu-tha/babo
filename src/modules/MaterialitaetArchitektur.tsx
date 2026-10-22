@@ -218,7 +218,7 @@ export default function MaterialitaetArchitektur() {
   };
 
   return (
-    <div className="flex flex-col gap-6 max-w-6xl mx-auto">
+    <div className="flex flex-col gap-6 w-full">
       {/* Header Banner */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-6 mb-6">
@@ -534,7 +534,7 @@ export default function MaterialitaetArchitektur() {
 
       <ModuleFooter
         wikipedia={[
-          { title: 'Materialität (Architektur)', url: 'https://de.wikipedia.org/wiki/Materialit%C3%A4t' },
+          { title: 'Materialität (Architektur)' },
           { title: 'Sichtbeton', url: 'https://de.wikipedia.org/wiki/Sichtbeton' },
           { title: 'Patina', url: 'https://de.wikipedia.org/wiki/Patina' },
           { title: 'Klinker', url: 'https://de.wikipedia.org/wiki/Klinker' }
@@ -547,8 +547,8 @@ export default function MaterialitaetArchitektur() {
         ]}
         regelwerke={[
           { title: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015)', url: 'https://www.beton.org/' },
-          { title: 'DIN EN 13914-1/-2 mit DIN 18550-1/-2 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13914-1' },
-          { title: 'DIN 18330 (VOB/C: Mauerarbeiten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18330' }
+          { title: 'DIN EN 13914-1/-2 mit DIN 18550-1/-2 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)' },
+          { title: 'DIN 18330 (VOB/C: Mauerarbeiten)' }
         ]}
         formeln={[
           {

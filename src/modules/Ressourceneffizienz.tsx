@@ -1438,8 +1438,8 @@ export default function Ressourceneffizienz() {
         regelwerke={[
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Kreislaufwirtschaftsgesetz (KrWG § 14 Abs. 3: Ziel 70 % für Bau- und Abbruchabfälle)', url: 'https://www.gesetze-im-internet.de/krwg/' },
-          { title: 'VDI 4800 Blatt 1:2016-02 (Ressourceneffizienz – Methodische Grundlagen, Prinzipien und Strategien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VDI+4800' },
-          { title: 'DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12620' }
+          { title: 'VDI 4800 Blatt 1:2016-02 (Ressourceneffizienz – Methodische Grundlagen, Prinzipien und Strategien)' },
+          { title: 'DIN EN 12620 / DIN EN 13242 (Gesteinskörnungen für Beton und Tiefbau)' }
         ]}
         formeln={[
           {

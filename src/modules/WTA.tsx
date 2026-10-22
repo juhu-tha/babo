@@ -1207,12 +1207,12 @@ export default function WTA() {
         lastReviewed="Oktober 2026 (AP 12 Schutz & Instandsetzung: WTA-Ausgaben 2-9-20/D, 4-6-24/D, 6-5-14/D geprüft; fachliche Freigabe durch den Autor ausstehend)" 
         weblinks={[
           { title: "Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege e.V.", url: "https://www.wta-gmbh.de/" },
-          { title: "WTA-Merkblätter-Shop", url: "https://www.wta-fachverlag.de/" }
+          { title: "WTA-Merkblätter-Shop" }
         ]} 
         wikipedia={[
           { title: "Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege", url: "https://de.wikipedia.org/wiki/Wissenschaftlich-Technische_Arbeitsgemeinschaft_f%C3%BCr_Bauwerkserhaltung_und_Denkmalpflege" },
           { title: "Sanierputz", url: "https://de.wikipedia.org/wiki/Sanierputz" },
-          { title: "Tränken (Bauwesen)", url: "https://de.wikipedia.org/wiki/Tr%C3%A4nken_(Bauwesen)" }
+          { title: "Tränken (Bauwesen)" }
         ]} 
         literatur={[
           'WTA (Hrsg.): WTA-Merkblätter und Schriftenreihe. Stuttgart: Fraunhofer IRB / WTA Publications',
@@ -1221,7 +1221,7 @@ export default function WTA() {
         regelwerke={[
           { title: "WTA-Merkblatt 2-9-20/D (Ausgabe 2020-03): Sanierputzsysteme", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 4-6-24/D (Ausgabe 2024-12): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533" },
+          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)" },
           { title: "WTA-Merkblatt 4-10: Injektionsverfahren mit zertifizierten Injektionsstoffen gegen kapillaren Feuchtetransport (Ausgabe manuell prüfen)", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5-14/D (Ausgabe 2014-04): Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
         ]} 

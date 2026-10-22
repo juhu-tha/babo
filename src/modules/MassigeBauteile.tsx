@@ -105,7 +105,7 @@ export default function MassigeBauteile() {
       <ModuleFooter
         wikipedia={[
           { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydratationsw%C3%A4rme' },
-          { title: 'Massenbeton', url: 'https://de.wikipedia.org/wiki/Massenbeton' },
+          { title: 'Massenbeton' },
           { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwang' }
         ]}
         literatur={[
@@ -115,8 +115,8 @@ export default function MassigeBauteile() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN 1045-2:2023-08 / DIN EN 206 (Anforderungen an LH- und VLH-Zemente)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
-          { title: 'DIN EN 197-1 (Zement mit niedriger Hydratationswärme LH)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1' }
+          { title: 'DIN 1045-2:2023-08 / DIN EN 206 (Anforderungen an LH- und VLH-Zemente)' },
+          { title: 'DIN EN 197-1 (Zement mit niedriger Hydratationswärme LH)' }
         ]}
         formeln={[
           {

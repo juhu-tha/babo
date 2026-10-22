@@ -8,7 +8,6 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
-import { NormenLinkMonitor } from '@/src/components/ui/NormenLinkMonitor';
 import { getNormsByCategory } from '@/src/data/centralNormenRegistry';
 
 const REGELUNGS_HIERARCHIE_DATA = [
@@ -264,7 +263,7 @@ const levelIcons: Record<string, React.ComponentType<any>> = {
 };
 
 export default function Regularien() {
-  const [activeTab, setActiveTab] = useState<'hierarchie' | 'katalog' | 'normen' | 'monitor'>('hierarchie');
+  const [activeTab, setActiveTab] = useState<'hierarchie' | 'katalog' | 'normen'>('hierarchie');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [hierarchySearchTerm, setHierarchySearchTerm] = useState('');
@@ -355,14 +354,6 @@ export default function Regularien() {
             onClick={() => setActiveTab('normen')}
           >
             <ClipboardCheck size={16} /> Technische Normen (Katalog)
-          </button>
-          <button
-            className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'monitor' ? 'border-shiraz text-shiraz bg-shiraz/5' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('monitor')}
-          >
-            <ShieldCheck size={16} /> Normen- &amp; Link-Aktualitätsmonitor
           </button>
         </div>
 
@@ -1274,13 +1265,6 @@ export default function Regularien() {
           </div>
         )}
 
-        {/* Tab 3: Normen- & Link-Aktualitätsmonitor */}
-        {activeTab === 'monitor' && (
-          <div className="animate-in fade-in duration-300">
-            <NormenLinkMonitor />
-          </div>
-        )}
-
       </div>
 
       <ModulTest moduleId="regularien" />
@@ -1296,7 +1280,7 @@ export default function Regularien() {
           { title: 'Gebäudemodernisierungsgesetz (GModG; bis 28.07.2026 Gebäudeenergiegesetz GEG) – Infoportal des BBSR', url: 'https://www.gmodg.bund.de/' },
           { title: 'Bauproduktenverordnung (BauPVO) – Verordnung (EU) 2024/3110 (übergangsweise VO (EU) 305/2011)', url: 'https://eur-lex.europa.eu/eli/reg/2024/3110/oj' },
           { title: 'Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB)', url: 'https://www.dibt.de/' },
-          { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB Teile A, B, C)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VOB+2019' },
+          { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB Teile A, B, C)' },
           { title: 'Ersatzbaustoffverordnung (ErsatzbaustoffV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
         ]}
         literatur={[

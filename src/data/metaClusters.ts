@@ -9,7 +9,8 @@ import {
   Scale,
   Mountain,
   Recycle,
-  Monitor
+  Monitor,
+  HardHat
 } from 'lucide-react';
 
 export interface MetaCluster {
@@ -109,36 +110,25 @@ export const META_CLUSTERS: MetaCluster[] = [
   {
     id: 'studium',
     number: 'VI',
-    name: 'Studium',
-    shortDesc: 'Studienorganisation THA, Weiter@THA, Thesen & Projekte, Übungsaufgaben, Wissenscheck & Rechnungen',
+    name: 'Studium & Lehre',
+    shortDesc: 'Studienorganisation THA, Vorlesungsportal, Baustofflabor (Gebäude G2), Thesen & Projekte, Weiter@THA, Übungsaufgaben & Beispielrechnungen',
     icon: GraduationCap,
     accentColor: 'text-shiraz dark:text-rose-400',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
     badgeText: 'text-slate-800 dark:text-slate-200',
     groupNames: [
       'Studium THA',
-      'Weiter@THA',
-      'Thesen & Projekte',
-      'Übungsaufgaben',
-      'Beispielrechnungen'
-    ]
-  },
-  {
-    id: 'vorlesungen',
-    number: 'VII',
-    name: 'Vorlesungen',
-    shortDesc: 'Passwortgeschütztes Vorlesungsportal THA: Vorlesungsunterlagen, Skripte, Semesterpläne & Downloads',
-    icon: GraduationCap,
-    accentColor: 'text-shiraz dark:text-rose-400',
-    badgeBg: 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
-    badgeText: 'text-slate-800 dark:text-slate-200',
-    groupNames: [
+      'Baustofflabor',
       'Übersicht & Zugang',
       'Bauen im Bestand (VL)',
       'Nachhaltiges Bauen (VL)',
       'Bauschäden (VL)',
       'Baustoffkunde (VL)',
-      'Instandhaltung (VL)'
+      'Instandhaltung (VL)',
+      'Weiter@THA',
+      'Thesen & Projekte',
+      'Übungsaufgaben',
+      'Beispielrechnungen'
     ]
   }
 ];

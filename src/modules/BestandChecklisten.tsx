@@ -196,7 +196,7 @@ export default function BestandChecklisten() {
   const currentSection = INITIAL_CHECKLISTS[activeSubTab];
 
   return (
-    <div className="space-y-4 container mx-auto px-4 max-w-7xl animate-in fade-in duration-300">
+    <div className="space-y-4 w-full animate-in fade-in duration-300">
       
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">
@@ -377,7 +377,7 @@ export default function BestandChecklisten() {
         regelwerke={[
           { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
           { title: 'WTA-Merkblatt 4-5-99/D: Beurteilung von Mauerwerk – Mauerwerksdiagnostik', url: 'https://www.wta-gmbh.de/' },
-          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung; ersetzt 1999-11)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1076' }
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung; ersetzt 1999-11)' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'

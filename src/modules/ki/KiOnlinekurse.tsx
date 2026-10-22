@@ -660,7 +660,7 @@ plt.show()`;
         regelwerke={[
           { title: 'EU AI Act (Verordnung (EU) 2024/1689 über künstliche Intelligenz)', url: 'https://eur-lex.europa.eu/' },
           { title: 'VDI 2221 (Methodik für die Entwicklung von technischen Produkten und Systemen)', url: 'https://www.vdi.de/' },
-          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken - Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+19650' }
+          { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken - Informationsmanagement mit BIM)' }
         ]}
         weblinks={[
           { title: 'KI-Campus – Offizielle deutsche Lernplattform für KI', url: 'https://ki-campus.org/' },

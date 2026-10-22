@@ -371,16 +371,22 @@ export default function PruefverfahrenKatalog() {
                       <h6 className="text-[11px] font-semibold text-slate-800 mt-1 leading-snug">{std.title}</h6>
                       <p className="text-[10px] text-slate-500 mt-1 leading-normal">{std.scope}</p>
                     </div>
-                    <div className="pt-2 border-t border-slate-100 mt-2">
-                      <a 
-                        href={std.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-[11px] text-shiraz hover:underline inline-flex items-center gap-1 font-bold"
-                      >
-                        Regelwerk öffnen <ExternalLink size={11} />
-                      </a>
-                    </div>
+                    {std.url ? (
+                      <div className="pt-2 border-t border-slate-100 mt-2">
+                        <a 
+                          href={std.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[11px] text-shiraz hover:underline inline-flex items-center gap-1 font-bold"
+                        >
+                          Regelwerk öffnen <ExternalLink size={11} />
+                        </a>
+                      </div>
+                    ) : (
+                      <div className="pt-2 border-t border-slate-100 mt-2">
+                        <span className="text-[10px] text-slate-500 font-mono">DIN-Normenbezug</span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

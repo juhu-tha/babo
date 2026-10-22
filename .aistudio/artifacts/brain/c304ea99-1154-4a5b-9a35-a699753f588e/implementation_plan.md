@@ -1,130 +1,127 @@
-# Intensivprüfung & Erweiterung: Ökobilanzierung (LCA) im Bauwesen
+# Abgleich & Aktualisierung: Betontechnologie-Module mit betontechnische-daten.de
 
-Ganzheitliche fachliche und normative Intensivprüfung des Moduls Ökobilanzierung (LCA) für die Technische Hochschule Augsburg. Dieser Plan führt ein tiefgehendes Audit nach DIN EN 15804+A2, DIN EN 15978 und QNG (Stand 2026) durch, erweitert den interaktiven CO₂-/LCA-Rechner um Zirkularitäts- und Modul-D-Metriken sowie moderne ÖKOBAUDAT-Datensätze und bettet einen wissenschaftlichen Auditbericht direkt in die Anwendung ein.
+Systematischer Abgleich aller betontechnologischen Fachmodule der Anwendung mit dem Standard-Nachschlagewerk *Betontechnische Daten* (Heidelberg Materials / InformationsZentrum Beton, Stand 2022) unter strikter Einhaltung der aktuellen Normengeneration (DIN 1045-2:2023-08, DIN EN 206:2021-06, DIN EN 197-1/5, DIN EN 13670).
 
 ---
 
 ## User Review & Critical Decisions
 
 > [!IMPORTANT]
-> Auf Basis der interaktiven Vorabstimmung wurden folgende Kernfestlegungen getroffen:
-
-- **Confirmed Decision 1 (Prüfungsumfang):** Ganzheitlicher Audit aller Teilbereiche des LCA-Moduls (Normen, Lebenszyklusphasen A1–D, Indikatoren, EPD-Logik, Rechner und Didaktik).
-- **Confirmed Decision 2 (Funktionale Rechner-Erweiterungen):** Umsetzung aller drei Schlüssel-Erweiterungen:
-  1. *Modul-D-Gutschriften & Zirkularitätsmetriken* (Urban Mining Index, Sekundärrohstoff-Potenziale, Netto- vs. Brutto-GWP).
-  2. *QNG-Konformitätsvergleich (Stand 2026)* mit exakten Benchmarks für Wohngebäude (WG) und Nichtwohngebäude (NWG) für die Siegelstufen QNG-PLUS und QNG-PREMIUM.
-  3. *ÖKOBAUDAT-Stammdaten-Erweiterung* um moderne, zukunftsorientierte Baustoffe (klinkereffiziente CEM II/C-M- und CEM III-Betone, Recyclingbeton RC-C25/30, Holz-Beton-Verbund, Lehmbaustoffe, Hanfkalk und biobasierte Dämmstoffe).
-- **Confirmed Decision 3 (Ergebnisdarstellung):** Bereitstellung eines detaillierten Fachprüfberichts aus Professoren- und Studierendensicht (integriert als dezidierter Audit-Tab im Modul) bei gleichzeitiger direkter Optimierung aller betroffenen Rechner- und Wissenskomponenten.
+> **Bestätigte Weichenstellungen aus Phase 1:**
+> - **Umfang:** Vollständiger Abgleich aller betontechnologischen Kernmodule der Anwendung (nicht nur Teilausschnitte).
+> - **Normativer Vorrang:** Die aktuelle Normengeneration (2023/2024 sowie verifizierte Neuausgaben bis 2026) hat kompromisslosen Vorrang vor dem Stand 2022 von *betontechnische-daten.de*. Abweichungen zum Stand 2022 werden in den Modulen als informative Synopse/Hinweis kenntlich gemacht.
+> - **Integrationsform:** Bestehende Fachmodule werden direkt im Kern aktualisiert, um Kennwerte, Formeln, Prüfverfahren und normative Referenzen ergänzt, ohne das bewährte Layout zu verändern.
 
 ---
 
 ## 1. Overview & Core Concept
 
-- **What It Does**: Das erweiterte Ökobilanzierungs-Modul bietet eine lückenlose Verknüpfung aus normativer Theorie (DIN EN 15804+A2, DIN EN 15978, CPR-Novelle 2024/3110 mit Digitalem Produktpass DPP) und baupraktischer Anwendung. Studierende und Ingenieure können über interaktive Parameterstudien die Treibhausgaswirkung (GWP-total, GWP-fossil, GWP-biogenic, GWP-luluc) und Primärenergiebedarfe (PENRT, PERT) ganzer Bauteilaufbauten simulieren, den Einfluss von Rückbau- und Recyclingpfaden (Modul D) analysieren und die Einhaltung staatlicher QNG-Grenzwerte prüfen.
-- **Target Audience / Persona**:
-  - *Bauingenieur-Studierende (Bachelor/Master)* im Fach Baustoffkunde & Nachhaltiges Bauen zur Klausur- und Projektarbeitsvorbereitung.
-  - *Lehrende und wissenschaftliche Mitarbeiter* für Vorlesungsdemonstrationen und Laborübungen.
-  - *Praxispartner & Tragwerksplaner* zur schnellen Abschätzung von Materialsubstitutions-Effekten.
-- **Key Value**: Didaktisch transparente Entmystifizierung der Lebenszyklusanalyse nach dem "Cradle-to-Cradle"- bzw. "Cradle-to-Grave"-Prinzip ohne intransparente Black-Box-Rechnungen.
+Das Standardwerk *Betontechnische Daten* dient der deutschen Baupraxis als kompaktes Nachschlagewerk für Zemente, Gesteinskörnungen, Betonzusammensetzung, Konformitätsnachweise, Nachbehandlung und Betonanwendungen. Durch den Abgleich mit unserer App werden veraltete Richtwerte eliminiert und die Module auf den forensisch exakten, aktuellen Normenstand gebracht.
+
+### Zielgruppen & Mehrwert
+- **Studierende & Lehrende:** Didaktisch geschlossener Übergang von den handwerklichen Grundlagen zu aktuellen Grenzwerttabellen und Prüfverfahren.
+- **Tragwerksplaner & Betontechnologen:** Verlässliche Hüllwerte, Konformitätskriterien nach DIN EN 206/DIN 1045-2 und exakte Nachbehandlungsfristen nach DIN EN 13670.
+- **Prüfstellen & Bauleiter:** Klare Kriterien für Frisch- und Festbetonprüfungen auf der Baustelle.
 
 ---
 
-## 2. User Experience & Visual Design
-
-### Key User Flows
-1. **Theorie & Normativer Rahmen (Tab 1: Grundlagen)**: Schneller Einstieg in DIN EN 15804+A2 und DIN EN 15978 mit klarer Gegenüberstellung der 17 Module A1–A5, B1–B7, C1–C4 und Modul D.
-2. **Interaktiver CO₂- & LCA-Rechner (Tab 2: Berechnungs-Sandbox)**:
-   - Auswahl des Gebäudetyps (Wohngebäude WG vs. Nichtwohngebäude NWG).
-   - Dynamisches Hinzufügen/Entfernen von Bauteilschichten aus der erweiterten ÖKOBAUDAT-Bibliothek.
-   - Echtzeit-Berechnung von GWP ($A1\text{--}A3$), Rückbau ($C3/C4$) und Recyclinggutschriften ($Modul\ D$).
-   - Direkte Visualisierung der QNG-Erfüllung (Standard, QNG-PLUS, QNG-PREMIUM) anhand von dynamischen Benchmark-Balken mit Norm-Grenzlinien.
-   - Vergleichsansicht: Konventionelle Massivbauweise vs. Zirkuläre / Holz-Hybrid-Bauweise.
-3. **Didaktische Excel- & Laborübung (Tab 3: Praxis-Transfer)**: Anleitung zur Erstellung eigener Transportbeton-Ökobilanzen mit Excel-Export.
-4. **Wissenschaftlicher Prüfbericht (Neuer Tab 4: Audit & Evaluation)**: Strukturierte Würdigung des Moduls mit Bewertungsmatrix, Stärkenprofil, didaktischen Hinweisen und Normen-Audit Stand 2026.
-
-### Visual Identity & Theme (Adhering to GEMINI.md & Frontend Design)
-- **Aesthetic Direction**: Hochschuladäquate, akademisch-technische Fachanwendung mit klarer Informationsdichte und visueller Ruhe (Anti-Slop, keine bunten Pillenanhäufungen, keine immersiven Konsolenhintergründe).
-- **Color Budget (60-30-10)**:
-  - *60% Dominanter Canvas*: Helles, augenfreundliches Weiß / Off-White (`bg-white`, `bg-slate-50/50`).
-  - *30% Strukturelle Flächen*: Feine Begrenzungen (`border-home-grau/30`), sanfte Karten-Hintergründe (`bg-off-white` / Pergamentweiß).
-  - *10% Akzentfarbe*: Modulspezifisches Edel-Weinrot (`shiraz` / `#8B1538`) für aktive Tab-Indikatoren, Formel-Highlights und primäre Aktionen, ergänzt durch semantische Signalmarker (Smaragdgrün für QNG-Zielerreichung, Korallenrot für Schwellenwertüberschreitungen).
-- **Typography & Formatting**:
-  - LaTeX-Formelblöcke via `react-katex` (`\text{GWP}_{\text{total}} = \text{GWP}_{\text{fossil}} + \text{GWP}_{\text{biogenic}} + \text{GWP}_{\text{luluc}}`).
-  - Tabellarische Zahlen (`font-mono tabular-nums`) für alle CO₂- und Primärenergie-Werte zur optimalen visuellen Vergleichbarkeit.
-  - Klare typografische Trennung von Fließtext (`text-text-main/80`) und Kernkennwerten (`font-bold text-text-main`).
-
----
-
-## 3. Key Product Decisions & Trade-Offs
-
-- **Decision 1: Trennung von Herstellung (A1–A3), End-of-Life (C) und Modul D**:
-  - *Chosen Approach*: Das Netto-GWP wird transparent aufgeschlüsselt. Nach DIN EN 15978 darf Modul D nicht unkommentiert in die Gesamt-GWP-Summe der Phasen A–C eingerechnet werden, sondern muss als separate Informationssäule ("Potenziale außerhalb der Systemgrenze") ausgewiesen werden.
-  - *Why*: Entspricht exakt den Vorgaben des QNG und der DGNB. Ein einfaches Abziehen von Modul D würde den Blick auf die real in die Atmosphäre emittierte CO₂-Menge bei der Baustofferrichtung verschleiern (Greenwashing-Gefahr).
-- **Decision 2: Erweiterung der ÖKOBAUDAT-Materialdatenbank im Client**:
-  - *Chosen Approach*: Vollständig typisierte clientseitige Datenstruktur mit echten EPD-Mittelwerten für klinkereffiziente Betone, Recyclingmaterialien und biobasierte Verbundstoffe ohne Latenz und ohne externe Serverabhängigkeit.
-  - *Why*: Garantiert maximale Rechengeschwindigkeit, Offline-Fähigkeit und fehlerfreie Simulation im Hörsaal.
-- **Decision 3: Fester QNG-Benchmark-Vergleich nach Wohn-/Nichtwohngebäuden**:
-  - *Chosen Approach*: Differenzierte Grenzwerte:
-    - *Wohngebäude (WG)*: QNG-PLUS $\le 28{,}0\,\text{kg CO}_2\text{-Äq.}/(\text{m}^2\cdot\text{a})$, QNG-PREMIUM $\le 24{,}0\,\text{kg CO}_2\text{-Äq.}/(\text{m}^2\cdot\text{a})$.
-    - *Nichtwohngebäude (NWG)*: Differenzierung nach Nutzungsprofilen (Büro / Unterricht) mit Bezug auf NGF bzw. BGF.
-  - *Why*: Ermöglicht Studierenden reale Entwurfsbeurteilungen für die KfW-Förderung (KFN-Kreditprogramm).
-
----
-
-## 4. Technical Architecture & Data Strategy
-
-### System & Component Flow
+## 2. Strukturierter Abgleich & Arbeitspakete (AP 1 – AP 4)
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        OekobilanzLCA (Host-Modul)                      │
-│   ┌──────────────┬──────────────────┬─────────────────┬────────────┐   │
-│   │ Tab: Theorie │ Tab: LCA-Rechner │ Tab: Excel-Uebg │ Tab: Audit │   │
-│   └──────┬───────┴─────────┬────────┴────────┬────────┴─────┬──────┘   │
-└──────────┼─────────────────┼─────────────────┼──────────────┼──────────┘
-           │                 │                 │              │
-           ▼                 ▼                 ▼              ▼
-    ┌─────────────┐   ┌─────────────┐   ┌────────────┐  ┌────────────┐
-    │   LCA.tsx   │   │ Interactive │   │ Transport- │  │  LcaAudit  │
-    │  (Normen &  │   │  LCACalc    │   │ beton-LCA  │  │   Report   │
-    │  Phasen)    │   │ (Sandbox)   │   │ (Excel)    │  │ (Prof/Stud)│
-    └─────────────┘   └──────┬──────┘   └────────────┘  └────────────┘
-                             │
-            ┌────────────────┴────────────────┐
-            ▼                                 ▼
-   ┌───────────────────┐             ┌──────────────────┐
-   │ Extended Material │             │ QNG 2026 Engine  │
-   │ Database (ÖKOBAU) │             │ (WG/NWG Benchm.) │
-   │ - CEM II/C-M & III│             │ - Modul D Credit │
-   │ - RC-Beton C25/30 │             │ - UMI Zirkulär   │
-   │ - Holz-Hybrid/CLT │             │ - GWP-Indikator  │
-   │ - Hanfkalk/Lehm   │             │ - PENRT & PERT   │
-   └───────────────────┘             └──────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                   BETONTECHNISCHE DATEN (STAND 2022 / 2024)                 │
+└──────────────────────────────────────┬──────────────────────────────────────┘
+                                       │
+       ┌───────────────────────────────┼───────────────────────────────┐
+       ▼                               ▼                               ▼
+┌──────────────┐               ┌──────────────┐               ┌──────────────┐
+│  AP 1: Binde- │               │  AP 2: Frisch-│               │  AP 3: Fest- │
+│  mittel & Zement             │  beton & Prüf.│               │  beton & Konf│
+│  (DIN EN 197) │               │  (DIN EN 1235)│               │  (DIN EN 206)│
+└──────┬───────┘               └──────┬───────┘               └──────┬───────┘
+       │                              │                              │
+       └──────────────────────────────┼──────────────────────────────┘
+                                      ▼
+                        ┌──────────────────────────────┐
+                        │  AP 4: Nachbehandlung &      │
+                        │  Sonderbetone (WU, SVB, ...) │
+                        │  (DIN EN 13670 / DAfStb)     │
+                        └──────────────────────────────┘
 ```
 
-### Data Model & State Mapping
-- `MaterialDefinition`:
-  - `id`, `name`, `category`, `unit` (`m³` | `t`).
-  - `densityKg`: Rohdichte zur Massenermittlung.
-  - `gwpA1A3`: Spezifisches Treibhauspotenzial Herstellung.
-  - `gwpC`: End-of-Life-Emissionen (Rückbau/Verbrennung).
-  - `gwpD`: Gutschriften für stoffliches/thermisches Recycling (negativer Wert).
-  - `biogenicContent`: Gebundener biogener Kohlenstoff ($-\text{kg CO}_2\text{-Äq.}$).
-  - `umiScore`: Urban Mining Index / Recyclinganteil (0–100%).
-  - `penrt`: Primärenergieaufwand nicht erneuerbar ($\text{MJ}/\text{Einheit}$).
-- `LcaCalculationState`:
-  - `buildingType`: `'wohnbau'` | `'nichtwohnbau'`.
-  - `grossFloorArea`: $BGF$ in $\text{m}^2$.
-  - `referenceStudyPeriod`: Betrachtungszeitraum $50\,\text{Jahre}$ (Normvorgabe).
-  - `selectedMaterials`: Array mit `materialId` und `quantity`.
-- `ComputedResults`:
-  - $GWP_{\text{A1-A3}}$, $GWP_{\text{C}}$, $GWP_{\text{D}}$, $GWP_{\text{Netto}}$ und $GWP_{\text{m}^2\cdot\text{a}}$.
-  - `qngStatus`: Bewertung (`Standard`, `QNG-PLUS`, `QNG-PREMIUM`).
-  - `zirkularitaetsIndex`: Gewichteter Zirkularitätswert des Tragwerks/Aufbaus.
+### Arbeitspaket 1: Bindemittel, Zemente & Betonzusatzstoffe
+*Betroffene Module:* `src/modules/Bindemittel.tsx`, `src/modules/Zementchemie.tsx`, `src/modules/Mischungsberechnung.tsx`
+- **Recherche-Abgleich:**
+  - 27 Normalzemente nach DIN EN 197-1 (CEM I bis CEM V).
+  - **Neuerung gegenüber 2022:** Vollständige Integration von DIN EN 197-5 (klinkereffiziente Zemente CEM II/C-M mit 50–64 M.-% Klinker sowie CEM VI mit 35–49 M.-% Klinker) und deren nationale Anwendungsregeln nach DIN 1045-2:2023-08.
+  - Zemente mit besonderen Eigenschaften: LH (Low Heat), SR (hoher Sulfatwiderstand nach DIN EN 197-1, Pflicht ab $600\,\text{mg/l}\,\text{SO}_4^{2-}$), NA (niedriger wirksamer Alkaligehalt nach DIN 1164-10 für Feuchteklasse WA/WS).
+  - Betonzusatzstoffe Typ I (Gesteinsmehle, Pigmente) und Typ II (Flugasche nach DIN EN 450-1 mit $k = 0{,}40$, Silikastaub nach DIN EN 13263-1 mit $k = 1{,}0$ bzw. $2{,}0$).
 
-### Implementation Checklist
-1. **Auditbericht integrieren**: Erstellung eines strukturierten Prüfberichts aus Dozenten- und Studierendensicht mit detaillierten Fachbewertungen und Normen-Abgleich.
-2. **ÖKOBAUDAT-Materialstamm erweitern**: Einpflegen von CEM II/C-M, Geopolymer, RC-Beton, Hanfkalk, Lehmbauplatte und modernen Dämmstoffen in `InteractiveLCACalc.tsx`.
-3. **Modul-D- & Zirkularitäts-Rechner ausbauen**: Saubere Gegenüberstellung von $A1\text{--}C$ vs. $Modul\ D$, inkl. Urban-Mining-Index-Berechnung.
-4. **QNG 2026 Benchmarks schärfen**: Differenzierung nach Wohn- und Nichtwohngebäuden mit interaktiven Grenzlinien im Diagramm.
-5. **Verifikation & Test**: Durchführung von `npm run lint` und `compile_applet` zur Bestätigung fehlerfreier Funktion.
+### Arbeitspaket 2: Frischbetoneigenschaften & Prüfverfahren
+*Betroffene Module:* `src/modules/Frischbeton.tsx`, `src/modules/Ausbreitversuch.tsx`, `src/modules/Frischbetontemperatur.tsx`, `src/modules/Frischbetondruck.tsx`
+- **Recherche-Abgleich:**
+  - Konsistenzbereiche und Grenzabweichungen nach DIN EN 206 Tab. 11/12 & DIN 1045-2:
+    - Ausbreitmaßklassen F1 ($\le 340\,\text{mm}$) bis F6 ($\ge 630\,\text{mm}$) nach DIN EN 12350-5.
+    - Verdichtungsmaßklassen C0 ($\ge 1{,}46$) bis C3 ($1{,}10 - 1{,}04$) nach DIN EN 12350-4.
+    - Setzmaßklassen S1 ($10-40\,\text{mm}$) bis S5 ($\ge 220\,\text{mm}$) nach DIN EN 12350-2.
+    - Setzfließmaßklassen SF1 ($550-650\,\text{mm}$) bis SF3 ($760-850\,\text{mm}$) für SVB nach DIN EN 12350-8.
+  - Frischbetontemperatur nach DIN 1045-3 / ZTV-ING: Mindesttemperatur $+5\,{^\circ}\text{C}$ (bei $T_{\text{Luft}} \ge -3\,{^\circ}\text{C}$) bzw. $+10\,{^\circ}\text{C}$ (bei $T_{\text{Luft}} < -3\,{^\circ}\text{C}$); Höchsttemperatur $+30\,{^\circ}\text{C}$ (Massenbeton $\le +25\,{^\circ}\text{C}$).
+  - Frischbetonrohdichte und Luftporengehalt (Druckausgleichsverfahren nach DIN EN 12350-7).
+
+### Arbeitspaket 3: Festbetoneigenschaften, Konformitätskontrolle & Statistik
+*Betroffene Module:* `src/modules/Festbeton.tsx`, `src/modules/FestbetonStatistik.tsx`, `src/modules/Konformitaetskontrolle.tsx`
+- **Recherche-Abgleich:**
+  - Druckfestigkeitsklassen von Normal- und Schwerbeton (C8/10 bis C100/115) sowie Leichtbeton (LC8/9 bis LC80/88) mit charakteristischer Zylinder- und Würfeldruckfestigkeit.
+  - **Konformitätsnachweis nach DIN EN 206 / DIN 1045-2:**
+    - **Kriterium 1 (Mittelwert $f_{cm}$):**
+      - Erstherstellung ($n < 35$): $f_{cm} \ge f_{ck} + 4\,\text{MPa}$ (bei Hochleistungsbeton $+5\,\text{MPa}$).
+      - Stetige Herstellung ($n \ge 35$): $f_{cm} \ge f_{ck} + 1{,}48 \cdot \sigma$ mit $\sigma \ge 3\,\text{MPa}$.
+    - **Kriterium 2 (Einzelwert $f_{ci}$):**
+      - Erstherstellung & stetige Herstellung: $f_{ci} \ge f_{ck} - 4\,\text{MPa}$ (bei Hochleistungsbeton $\ge f_{ck} - 5\,\text{MPa}$ bzw. $\ge 0{,}90 \cdot f_{ck}$).
+  - Konformitätskriterien für Spaltzugfestigkeit, Biegezugfestigkeit und Luftporenkennwerte.
+
+### Arbeitspaket 4: Nachbehandlung & Sonderbetonanwendungen
+*Betroffene Module:* `src/modules/Nachbehandlung.tsx`, `src/modules/WUBauwerke.tsx`, `src/modules/SVB.tsx`, `src/modules/Leichtbeton.tsx`, `src/modules/Massenbeton.tsx`
+- **Recherche-Abgleich:**
+  - **Nachbehandlung nach DIN EN 13670 / DIN 1045-3:**
+    - Festigkeitsentwicklungsrate $r = f_{cm,2} / f_{cm,28}$ (schnell: $r \ge 0{,}50$; mittel: $0{,}30 \le r < 0{,}50$; langsam: $0{,}15 \le r < 0{,}30$; sehr langsam: $r < 0{,}15$).
+    - Mindestnachbehandlungsdauer in Tagen abhängig von Oberflächentemperatur ($T \ge 25\,{^\circ}\text{C}$, $15-25\,{^\circ}\text{C}$, $10-15\,{^\circ}\text{C}$, $5-10\,{^\circ}\text{C}$) und gefordertem Erhärtungsgrad (50 % $f_{ck}$ bei Normalbeton, 70 % $f_{ck}$ bei Expositionsklasse XM).
+  - **WU-Beton nach DAfStb WU-Richtlinie:**
+    - Beanspruchungsklasse 1 (drückendes/aufstauendes Wasser) vs. Beanspruchungsklasse 2 (Bodenfeuchte).
+    - Mindestbauteildicken (z. B. $h \ge 250\,\text{mm}$ für Wände, $300\,\text{mm}$ für Ortbetonsohlen bei Beanspruchungsklasse 1).
+    - Maximaler Wasserzementwert $w/z \le 0{,}55$ (bzw. $0{,}60$ bei Bauteildicken $\ge 400\,\text{mm}$).
+  - **SVB nach DAfStb-Richtlinie SVB / DIN EN 206:**
+    - Viskositätsklassen $t_{500}$ (VS1 $\le 2{,}0\,\text{s}$, VS2 $> 2{,}0\,\text{s}$).
+    - Blockierneigung über L-Kasten und J-Ring.
+
+---
+
+## 3. User Experience & Visual Design
+
+- **Strikter Layout-Freeze:** Volle Bewahrung des etablierten 4-Stufen-Lehrpfads (`1. Grundlagen`, `2. Labor & Baustelle`, `3. Rechner & Bemessung`, `4. Wissenstest`), des Shiraz-Edelrot-Farbkonzepts und des `ModuleFooter`-Standards.
+- **Interaktive Formeln & Tabellen:** Einbindung exakter LaTeX-Formeln (`react-katex`) und Berechnungsrechner mit `formatDeZahl`.
+- **Transparente Normenkennzeichnung:** Sichtbare Ausweisung der Normengeneration (z. B. DIN 1045-2:2023-08) mit Vermerk über Aktualisierungen gegenüber dem Stand 2022 von *betontechnische-daten.de*.
+
+---
+
+## 4. Technische Architektur & Datenkonsistenz
+
+```
+┌───────────────────────────────────────────────────────────────────────────┐
+│                           APP-ROUTER & NAVIGATION                         │
+└─────────────────────────────────────┬─────────────────────────────────────┘
+                                      │
+            ┌─────────────────────────┴─────────────────────────┐
+            ▼                                                   ▼
+┌───────────────────────────────┐               ┌───────────────────────────────┐
+│      BETON-TECHNOLOGIE        │               │     BETONPRÜFUNGEN & LABOR    │
+│  • Zementchemie.tsx           │               │  • Frischbeton.tsx            │
+│  • Bindemittel.tsx            │               │  • Ausbreitversuch.tsx        │
+│  • Expositionsklassen.tsx (OK)│               │  • Festbeton.tsx              │
+│  • Betonkennwerte.tsx (OK)    │               │  • Konformitaetskontrolle.tsx │
+│  • Nachbehandlung.tsx         │               │  • FestbetonStatistik.tsx     │
+└───────────────────────────────┘               └───────────────────────────────┘
+```
+
+- **Verifikations-Pipeline:** Vor jedem Teilabschnitt wird die Dimensionsreinheit aller Formeln sowie die Lauffähigkeit via `lint_applet` (`tsc --noEmit`) und `compile_applet` (`npm run build`) sichergestellt.
+- **Null-Halluzinations-Gebot:** Keine geratenen URLs oder Fantasie-Gleichungen. Verlinkungen folgen stets dem verifizierten DIN-Media-Suchschema.

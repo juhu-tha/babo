@@ -103,6 +103,7 @@ import { HelpCircle } from 'lucide-react';
 import { MetadataAuditModal } from './components/seo/MetadataAuditModal';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import StudentPollVoteView from './components/polls/StudentPollVoteView';
+import { CURRENT_VERSION } from './data/versionData';
 
 const tabGroups = [
   {
@@ -243,6 +244,7 @@ const tabGroups = [
       { id: 'hydratation_folgen', label: 'Hydratation & Folgen', icon: Network },
       { id: 'nachbehandlung', label: 'Nachbehandlung', icon: Droplets },
       { id: 'festbeton', label: 'Festbeton', icon: Box },
+      { id: 'betonkennwerte', label: 'Betonkennwerte (EC2)', icon: Sliders },
       { id: 'sichtbeton', label: 'Sichtbeton (SB 1–4)', icon: Eye },
       { id: 'sonderbetone', label: 'Sonderbetone', icon: Layers },
       { id: 'innovative_werkstoffe', label: 'Entwicklungen', icon: Layers },
@@ -495,39 +497,19 @@ const tabGroups = [
     ]
   },
   {
-    name: 'Übersicht & Zugang',
+    name: 'Vorlesungen',
     tabs: [
-      { id: 'vl_ueberblick', label: 'Übersicht & Zugang', icon: GraduationCap },
+      { id: 'vl_bauen_im_bestand', label: 'Bauen im Bestand (VL)', icon: Building2 },
+      { id: 'vl_nachhaltiges_bauen', label: 'Nachhaltiges Bauen (VL)', icon: Leaf },
+      { id: 'vl_bauschaeden', label: 'Bauschäden (VL)', icon: AlertTriangle },
+      { id: 'vl_baustoffkunde', label: 'Baustoffkunde (VL)', icon: Layers },
+      { id: 'vl_instandhaltung', label: 'Instandhaltung (VL)', icon: Wrench },
     ]
   },
   {
-    name: 'Bauen im Bestand (VL)',
+    name: 'Baustofflabor',
     tabs: [
-      { id: 'vl_bauen_im_bestand', label: 'Bauen im Bestand (1/2 SWS)', icon: Building2 },
-    ]
-  },
-  {
-    name: 'Nachhaltiges Bauen (VL)',
-    tabs: [
-      { id: 'vl_nachhaltiges_bauen', label: 'Nachhaltiges Bauen (2 SWS)', icon: Leaf },
-    ]
-  },
-  {
-    name: 'Bauschäden (VL)',
-    tabs: [
-      { id: 'vl_bauschaeden', label: 'Bauschäden (1/2 SWS)', icon: AlertTriangle },
-    ]
-  },
-  {
-    name: 'Baustoffkunde (VL)',
-    tabs: [
-      { id: 'vl_baustoffkunde', label: 'Baustoffkunde (2-4 SWS)', icon: Layers },
-    ]
-  },
-  {
-    name: 'Instandhaltung (VL)',
-    tabs: [
-      { id: 'vl_instandhaltung', label: 'Instandhaltung (4 SWS)', icon: Wrench },
+      { id: 'labor_sicherheit', label: 'Laborsicherheit', icon: ShieldAlert },
     ]
   }
 ] as const;
@@ -553,6 +535,7 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   regularien: ['normen', 'din', 'en', 'iso', 'regelwerke', 'gesetze', 'vob', 'bauordnung', 'richtlinien', 'abz', 'dibt'],
 
   // Labor
+  labor_sicherheit: ['sicherheit', 'labor', 'baustofflabor', 'psa', 'schutzbrille', 'sicherheitsschuhe', 'notfall', 'ersthelfer', 'hubervorlesung', 'gefahrstoffe', 'lechner', 'sedlmeier', 'g2', 'brandschutz', 'not-aus', 'betriebsanweisung'],
   labor_info: ['prüftechnik', 'prüfstand', 'labor', 'untersuchung', 'verfahren', 'prüflabor'],
   probenahme: ['bohrkern', 'probekörper', 'erkundung', 'aufmaß', 'entnahme', 'prüfung', 'probenahme', 'kernbohrung'],
   messen_pruefen: ['messtechnik', 'prüfung', 'sensoren', 'dms', 'dehnungsmessstreifen', 'laser', 'sensorik', 'messgeräte'],
@@ -646,6 +629,7 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   hydratation_folgen: ['hydratationswärme', 'erwärmung', 'tga', 'phasenneubildung', 'aluminat', 'schwinden', 'erstarren', 'rissrisiko'],
   nachbehandlung: ['verdunstungsschutz', 'folie', 'wassernebel', 'sprühen', 'reifezeit', 'curing', 'nachbehandlungsmittel'],
   festbeton: ['druckspannung', 'e-modul', 'spaltzugfestigkeit', 'rohdichte', 'porenstruktur', 'biegezugfestigkeit', 'zerstörungsfreie prüfung'],
+  betonkennwerte: ['betonkennwerte', 'ec2', 'eurocode 2', 'schwinden', 'kriechen', 'e-modul', 'fck', 'fcm', 'fctm', 'fcd', 'druckfestigkeit', 'zugfestigkeit', 'kriechzahl', 'wirksame bauteildicke', 'trocknungsschwinden', 'autogenes schwinden', 'zeitentwicklung'],
   sonderbetone: ['uhpc', 'leichtbeton', 'svb', 'scc', 'faserbeton', 'inkjetbeton', 'schwerbeton', 'hochfest', 'ultrahochfest', 'spritzbeton'],
   innovative_werkstoffe: ['geopolymere', 'carbonbeton', 'selbstheilender beton', 'bakterien', 'nachhaltig', 'innovativ', '3d-druck', 'inkjet'],
   qualitaetssicherung: ['werkseigene produktionskontrolle', 'überwachung', 'lieferscheine', 'baustellenprüfung', 'konformitätskontrolle', 'prüfkörper'],
@@ -799,7 +783,7 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   rechnung_bestand: ['bauen im bestand', 'historische kennwerte', 'beton b225', 'bst 220', 'altbau', 'ziegelmauerwerk', 'reichsformat', 'beispielrechnung'],
 
   // Vorlesungen
-  vl_ueberblick: ['vorlesungen', 'vorlesung', 'lehrveranstaltungen', 'tha', 'semester', 'passwort', 'zugang', 'tha_ws26'],
+  vl_ueberblick: ['vorlesungen', 'vorlesung', 'lehrveranstaltungen', 'tha', 'semester', 'passwort', 'zugang'],
   vl_bauen_im_bestand: ['vorlesung bauen im bestand', 'bestand', 'altbau', 'denkmalpflege', 'koldewey', 'pren 1990-2'],
   vl_nachhaltiges_bauen: ['vorlesung nachhaltiges bauen', 'lca', 'ökobilanz', 'thg', 'stoffströme', 'epd', 'dpp', 'taxonomie'],
   vl_bauschaeden: ['vorlesung bauschäden', 'schadensanalyse', 'risse', 'feuchteschäden', 'gutachten', 'vdi 6200'],
@@ -871,19 +855,10 @@ function AppContent() {
   });
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
-      const initialized = localStorage.getItem('baustoffboard_favs_initialized');
-      if (!initialized) {
-        localStorage.setItem('baustoffboard_favs_initialized', 'true');
-        localStorage.setItem('baustoffboard_favorites', JSON.stringify(['mischungsberechnung']));
-        return ['mischungsberechnung'];
-      }
-      const saved = localStorage.getItem('baustoffboard_favorites');
-      if (saved !== null) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) return parsed;
-      }
+      // Als Start immer(!) nur Feedback-Modul in den Favoriten
+      localStorage.setItem('baustoffboard_favorites', JSON.stringify(['feedback']));
     } catch {}
-    return ['mischungsberechnung'];
+    return ['feedback'];
   });
   const [recentTabs, setRecentTabs] = useState<string[]>(() => {
     try {
@@ -895,14 +870,29 @@ function AppContent() {
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [fluidWidth, setFluidWidth] = useState<boolean>(() => {
+  const [screenWidth, setScreenWidth] = useState<'standard' | 'wide' | 'full'>(() => {
     try {
-      const saved = localStorage.getItem('baustoffboard_fluid_width');
-      return saved !== null ? saved === 'true' : true;
+      const saved = localStorage.getItem('baustoffboard_screen_width');
+      if (saved === 'standard' || saved === 'wide' || saved === 'full') return saved;
+      const legacyFluid = localStorage.getItem('baustoffboard_fluid_width');
+      if (legacyFluid !== null) return legacyFluid === 'true' ? 'full' : 'standard';
+      return 'wide';
     } catch {
-      return true;
+      return 'wide';
     }
   });
+  const fluidWidth = screenWidth === 'full';
+
+  useEffect(() => {
+    const handleWidthChange = (e: Event) => {
+      const custom = e as CustomEvent<'standard' | 'wide' | 'full'>;
+      if (custom.detail && (custom.detail === 'standard' || custom.detail === 'wide' || custom.detail === 'full')) {
+        setScreenWidth(custom.detail);
+      }
+    };
+    window.addEventListener('baustoffboard_width_change', handleWidthChange);
+    return () => window.removeEventListener('baustoffboard_width_change', handleWidthChange);
+  }, []);
 
   const [seoLogs, setSeoLogs] = React.useState<string[]>([]);
   const [showMetadataModal, setShowMetadataModal] = useState(false);
@@ -950,7 +940,7 @@ function AppContent() {
         nextState[c.id] = false;
       });
       setOpenClusters(nextState);
-      setOpenDropdown(null);
+      setOpenDropdown('CLOSED_ALLGEMEIN');
       return;
     }
     setRecentTabs(prev => {
@@ -984,10 +974,10 @@ function AppContent() {
     });
   };
 
-  // Exklusives Aufklappen: Wenn ein Hauptmenüpunkt (I-VII) aufgeklappt wird, klappen alle anderen automatisch zu
+  // Exklusives Aufklappen: Wenn ein Hauptmenüpunkt (I-VII) aufgeklappt wird, klappen alle anderen sowie das Start-Menü automatisch zu
   const toggleCluster = (clusterId: string) => {
+    const willBeOpen = !openClusters[clusterId];
     setOpenClusters(prev => {
-      const willBeOpen = !prev[clusterId];
       if (willBeOpen) {
         const nextState: Record<string, boolean> = {};
         META_CLUSTERS.forEach(c => {
@@ -1000,15 +990,19 @@ function AppContent() {
       }
     });
 
-    // Untermenüs anderer Hauptmenüpunkte ebenfalls schließen
-    setOpenDropdown(prev => {
-      if (!prev) return null;
-      const targetCluster = META_CLUSTERS.find(c => c.id === clusterId);
-      if (targetCluster && targetCluster.groupNames.includes(prev)) {
-        return prev;
-      }
-      return null;
-    });
+    // Start-Menü sowie Untermenüs anderer Hauptmenüpunkte schließen
+    if (willBeOpen) {
+      setOpenDropdown('CLOSED_ALLGEMEIN');
+    } else {
+      setOpenDropdown(prev => {
+        if (!prev) return null;
+        const targetCluster = META_CLUSTERS.find(c => c.id === clusterId);
+        if (targetCluster && targetCluster.groupNames.includes(prev)) {
+          return prev;
+        }
+        return null;
+      });
+    }
   };
 
   const checkSEOStatus = (tabToCheck?: string) => {
@@ -1184,7 +1178,10 @@ function AppContent() {
         {(() => {
           const allgemeinGroup = tabGroups[0]; // Allgemein
           const isAllgemeinChildActive = ['admin', 'anleitung', 'modulstruktur', 'feedback', 'versionen', 'impressum', 'datenschutz'].includes(activeTab);
-          const isAllgemeinOpen = openDropdown === 'Allgemein' || (openDropdown !== 'CLOSED_ALLGEMEIN' && isAllgemeinChildActive) || (searchQuery !== '');
+          const isAnyClusterOpen = Object.values(openClusters).some(Boolean);
+          const isAllgemeinOpen = searchQuery !== '' 
+            ? true 
+            : (!isAnyClusterOpen && (openDropdown === 'Allgemein' || (openDropdown !== 'CLOSED_ALLGEMEIN' && isAllgemeinChildActive)));
 
           const matchingAllgemeinTabs = allgemeinGroup.tabs.filter((t: any) => {
             if (!searchQuery) return true;
@@ -1211,7 +1208,7 @@ function AppContent() {
                       nextState[c.id] = false;
                     });
                     setOpenClusters(nextState);
-                    setOpenDropdown(null);
+                    setOpenDropdown('CLOSED_ALLGEMEIN');
                   }}
                   className={"flex-1 flex items-center gap-2.5 px-3 py-2 text-sm font-semibold rounded-xl transition-all cursor-pointer " + 
                     (activeTab === 'start' 
@@ -1222,7 +1219,19 @@ function AppContent() {
                   <span className="flex-1 text-left font-bold">{language === 'en' ? 'Home' : 'Start'}</span>
                 </button>
                 <button
-                  onClick={() => setOpenDropdown(isAllgemeinOpen ? 'CLOSED_ALLGEMEIN' : 'Allgemein')}
+                  onClick={() => {
+                    if (isAllgemeinOpen) {
+                      setOpenDropdown('CLOSED_ALLGEMEIN');
+                    } else {
+                      // Beim Aufklappen von Start alle Cluster (I-VI/VII) einklappen
+                      const nextState: Record<string, boolean> = {};
+                      META_CLUSTERS.forEach(c => {
+                        nextState[c.id] = false;
+                      });
+                      setOpenClusters(nextState);
+                      setOpenDropdown('Allgemein');
+                    }
+                  }}
                   className={`p-2 rounded-xl border transition-colors cursor-pointer ${
                     isAllgemeinOpen
                       ? "bg-slate-100 dark:bg-slate-800 border-shiraz dark:border-rose-500 text-shiraz dark:text-rose-400"
@@ -1597,26 +1606,43 @@ function AppContent() {
               <AccessibilityToolbar />
               <button 
                 onClick={() => {
-                  setFluidWidth(prev => {
-                    const next = !prev;
-                    try { localStorage.setItem('baustoffboard_fluid_width', String(next)); } catch {}
-                    return next;
-                  });
+                  const next: 'standard' | 'wide' | 'full' = screenWidth === 'standard' ? 'wide' : screenWidth === 'wide' ? 'full' : 'standard';
+                  setScreenWidth(next);
+                  try {
+                    localStorage.setItem('baustoffboard_screen_width', next);
+                    localStorage.setItem('baustoffboard_fluid_width', next === 'full' ? 'true' : 'false');
+                    window.dispatchEvent(new CustomEvent('baustoffboard_width_change', { detail: next }));
+                  } catch {}
                 }}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-text-main dark:text-white transition-colors border cursor-pointer ${
-                  fluidWidth 
-                    ? 'bg-shiraz/10 border-shiraz/40 text-shiraz dark:text-rose-300 font-semibold' 
+                className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-text-main dark:text-white transition-colors border cursor-pointer ${
+                  screenWidth === 'full' 
+                    ? 'bg-shiraz text-white border-shiraz shadow-xs font-semibold' 
+                    : screenWidth === 'wide'
+                    ? 'bg-shiraz/10 border-shiraz/40 text-shiraz dark:text-rose-300 font-semibold'
                     : 'bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-700 border-home-grau/20 dark:border-slate-700'
                 }`}
-                title={fluidWidth 
-                  ? (language === 'en' ? "Width: Automatic 100% (Click to switch to standard 1152px)" : "Breite: Automatisch an Bildschirm angepasst (Klicken für 1152px Standard)") 
-                  : (language === 'en' ? "Width: Standard 1152px (Click for automatic full screen width)" : "Breite: Standard 1152px (Klicken für automatische volle Bildschirmbreite)")}
+                title={
+                  screenWidth === 'standard'
+                    ? (language === 'en' ? "Width: Standard 1152px (Click for Wide 1536px)" : "Bildschirmbreite: Standard 1152px (Klicken für Breit 1536px)")
+                    : screenWidth === 'wide'
+                    ? (language === 'en' ? "Width: Wide 1536px (Click for Full Width 100%)" : "Bildschirmbreite: Breit 1536px (Klicken für 100% Vollbild)")
+                    : (language === 'en' ? "Width: Full 100% (Click for Standard 1152px)" : "Bildschirmbreite: 100% Vollbild (Klicken für Standard 1152px)")
+                }
+                aria-label="Bildschirmbreite anpassen"
               >
-                {fluidWidth ? <Minimize2 size={14} className="text-shiraz dark:text-rose-400" /> : <Maximize2 size={14} />}
+                {screenWidth === 'full' ? (
+                  <Maximize2 size={14} className="text-white" />
+                ) : screenWidth === 'wide' ? (
+                  <LayoutGrid size={14} className="text-shiraz dark:text-rose-400" />
+                ) : (
+                  <Columns size={14} />
+                )}
                 <span className="text-xs font-medium leading-none select-none hidden lg:inline">
-                  {fluidWidth 
-                    ? (language === 'en' ? 'Full Width' : '100% Breite') 
-                    : (language === 'en' ? 'Standard' : 'Standard')}
+                  {screenWidth === 'standard' 
+                    ? (language === 'en' ? 'Standard' : 'Standard (1152px)') 
+                    : screenWidth === 'wide'
+                    ? (language === 'en' ? 'Wide' : 'Breit (1536px)')
+                    : (language === 'en' ? '100% Full' : '100% Vollbild')}
                 </span>
               </button>
               <button 
@@ -1637,9 +1663,33 @@ function AppContent() {
         </div>
       </header>
       <main className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-6 lg:px-8 py-6 custom-scrollbar" id="scroll-container">
-        <div className={`mx-auto flex flex-col min-h-full transition-all duration-200 ${fluidWidth ? 'w-full max-w-none' : 'w-full max-w-6xl'}`}>
+        <div 
+          data-fluid={screenWidth === 'full' ? "true" : "false"}
+          data-width={screenWidth}
+          className={`mx-auto flex flex-col min-h-full transition-all duration-200 ${
+            screenWidth === 'full'
+              ? 'w-full max-w-none'
+              : screenWidth === 'wide'
+              ? 'w-full max-w-[1536px]'
+              : 'w-full max-w-6xl'
+          }`}
+        >
           <LanguageBanner />
           <div id="module-content" className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-8 relative flex-1">
+            {/* Running Header auf jeder Druckseite */}
+            <div className="hidden print:block fixed top-0 left-0 right-0 text-center text-[10px] text-gray-500 py-1 bg-white border-b border-gray-300 font-sans z-50">
+              Ausschließlich für akademische Lehrzwecke!
+            </div>
+            {/* Running Footer auf jeder Druckseite */}
+            <div className="hidden print:block fixed bottom-0 left-0 right-0 text-center text-[10px] text-gray-500 py-1 bg-white border-t border-gray-300 font-sans z-50">
+              BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · {(() => {
+                const now = new Date();
+                const d = String(now.getDate()).padStart(2, '0');
+                const m = String(now.getMonth() + 1).padStart(2, '0');
+                return `${d}.${m}.${now.getFullYear()}`;
+              })()} · {CURRENT_VERSION.version}
+            </div>
+
             <div className="hidden pdf-header mb-8 pb-4 border-b-2 border-shiraz">
               <div className="flex justify-between items-start">
                 <div>
@@ -1730,6 +1780,7 @@ function AppContent() {
           {activeTab === 'hydratation_folgen' && <HydratationFolgen />}
           {activeTab === 'nachbehandlung' && <Nachbehandlung />}
           {activeTab === 'festbeton' && <Festbeton />}
+          {activeTab === 'betonkennwerte' && <Betonkennwerte />}
           {activeTab === 'sichtbeton' && <Sichtbeton />}
           {activeTab === 'festbeton_statistik' && <FestbetonStatistik />}
           {activeTab === 'sicherheitskonzept' && <Sicherheitskonzept />}
@@ -1737,7 +1788,7 @@ function AppContent() {
           {activeTab === 'innovative_werkstoffe' && <InnovativeWerkstoffe />}
           {activeTab === 'qualitaetssicherung' && <Qualitaetssicherung />}
           {activeTab === 'betonpraxis' && <Betonpraxis />}
-          {activeTab === 'expositionsklassen' && <Betonpraxis initialSubTab="krell_tabelle" />}
+          {activeTab === 'expositionsklassen' && <Expositionsklassen />}
           {activeTab === 'korrosion' && <Korrosion />}
           {activeTab === 'schadreaktionen_beton' && <SchadreaktionenBeton />}
           {activeTab === 'zwang' && <ZwangCalculator />}
@@ -1932,9 +1983,7 @@ function AppContent() {
           {(activeTab === 'vl_ueberblick' || activeTab === 'vl_bauen_im_bestand' || activeTab === 'vl_nachhaltiges_bauen' || activeTab === 'vl_bauschaeden' || activeTab === 'vl_baustoffkunde' || activeTab === 'vl_instandhaltung') && (
             <Vorlesungen
               forceTab={
-                activeTab === 'vl_bauen_im_bestand'
-                  ? 'bauen_im_bestand'
-                  : activeTab === 'vl_nachhaltiges_bauen'
+                activeTab === 'vl_nachhaltiges_bauen'
                   ? 'nachhaltiges_bauen'
                   : activeTab === 'vl_bauschaeden'
                   ? 'bauschaeden'
@@ -1942,51 +1991,20 @@ function AppContent() {
                   ? 'baustoffkunde'
                   : activeTab === 'vl_instandhaltung'
                   ? 'instandhaltung'
-                  : 'ueberblick'
+                  : 'bauen_im_bestand'
               }
             />
           )}
           {activeTab === 'studium_tha' && <StudiumTHA />}
           {activeTab === 'thesen_projekte' && <ThesenProjekte />}
           {activeTab === 'kuriositaeten' && <Kuriositaeten />}
+          {activeTab === 'labor_sicherheit' && <LaborSicherheit />}
           </React.Suspense>
           </div>
 
           {/* Global Footer */}
-          <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 flex flex-col sm:flex-row items-center justify-between gap-3 px-2">
-            <div className="flex items-center gap-2">
-              <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · Fakultät für Architektur und Bauwesen</span>
-            </div>
-            <div className="flex items-center gap-3 font-medium">
-              <button
-                onClick={() => setActiveTab('datenschutz')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80"
-              >
-                Datenschutz
-              </button>
-              <span>·</span>
-              <button
-                onClick={() => setActiveTab('impressum')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80"
-              >
-                Impressum
-              </button>
-              <span>·</span>
-              <button
-                onClick={() => setActiveTab('feedback')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80"
-              >
-                Feedback
-              </button>
-              <span>·</span>
-              <button
-                onClick={() => setActiveTab('admin')}
-                className="hover:text-shiraz transition-colors cursor-pointer text-text-main/80 flex items-center gap-1"
-                title="Administrator-Bereich & Audit-Dashboard (THA)"
-              >
-                <ShieldCheck size={12} className="text-shiraz" /> Admin
-              </button>
-            </div>
+          <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 text-center px-2">
+            <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg</span>
           </footer>
         </div>
       </main>
@@ -2063,6 +2081,7 @@ const FestbetonStatistik = React.lazy(() => import('./modules/FestbetonStatistik
 const Sicherheitskonzept = React.lazy(() => import('./modules/Sicherheitskonzept'));
 const Qualitaetssicherung = React.lazy(() => import('./modules/Qualitaetssicherung'));
 const Betonpraxis = React.lazy(() => import('./modules/Betonpraxis'));
+const Expositionsklassen = React.lazy(() => import('./modules/Expositionsklassen'));
 const Korrosion = React.lazy(() => import('./modules/Korrosion'));
 const SpannungDehnung = React.lazy(() => import('./modules/SpannungDehnung'));
 const Holz = React.lazy(() => import('./modules/Holz'));
@@ -2072,6 +2091,7 @@ const KriechenSchwinden = React.lazy(() => import('./modules/KriechenSchwinden')
 const Rissbreite = React.lazy(() => import('./modules/Rissbreite'));
 const Nachbehandlung = React.lazy(() => import('./modules/Nachbehandlung'));
 const Festbeton = React.lazy(() => import('./modules/Festbeton'));
+const Betonkennwerte = React.lazy(() => import('./modules/Betonkennwerte'));
 const Materialkennwerte = React.lazy(() => import('./modules/Materialkennwerte'));
 const Regularien = React.lazy(() => import('./modules/Regularien'));
 const Festigkeitsberechnungen = React.lazy(() => import('./modules/Festigkeitsberechnungen'));
@@ -2217,6 +2237,7 @@ const HolzbauBeta = React.lazy(() => import('./modules/HolzbauBeta'));
 const ThesenProjekte = React.lazy(() => import('./modules/ThesenProjekte'));
 const Kuriositaeten = React.lazy(() => import('./modules/Kuriositaeten'));
 const Datenschutz = React.lazy(() => import('./modules/Datenschutz'));
+const LaborSicherheit = React.lazy(() => import('./modules/LaborSicherheit'));
 
 export default function App() {
   return (

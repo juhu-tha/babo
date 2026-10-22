@@ -858,9 +858,9 @@ export default function Baustatik() {
           'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
-          { title: 'DIN EN 1991-1-1:2010-12 mit NA (Eurocode 1: Einwirkungen auf Tragwerke – Wichten, Eigengewicht, Nutzlasten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1991-1-1' },
-          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, bauaufsichtlich eingeführt); neue Generation DIN EN 1993-1-1:2025-04', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1-1' }
+          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)' },
+          { title: 'DIN EN 1991-1-1:2010-12 mit NA (Eurocode 1: Einwirkungen auf Tragwerke – Wichten, Eigengewicht, Nutzlasten)' },
+          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, bauaufsichtlich eingeführt); neue Generation DIN EN 1993-1-1:2025-04' }
         ]}
         formeln={[
           {

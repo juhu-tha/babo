@@ -579,7 +579,7 @@ export default function HydratationRissberechnung() {
 
       <ModuleFooter
         wikipedia={[
-          { title: 'Rissbreitenbegrenzung', url: 'https://de.wikipedia.org/wiki/Rissbreitenbegrenzung' },
+          { title: 'Rissbreitenbegrenzung' },
           { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' }
         ]}
         literatur={[
@@ -587,8 +587,8 @@ export default function HydratationRissberechnung() {
           'Heft 600 DAfStb: Erläuterungen zu DIN EN 1992-1-1 (Eurocode 2)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DAfStb+Massige+Bauteile+aus+Beton' }
+          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)' },
+          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton' }
         ]}
         formeln={[
           {

@@ -3623,7 +3623,7 @@ export default function Nachhaltigkeit() {
           { title: 'Passivhaus', url: 'https://de.wikipedia.org/wiki/Passivhaus' },
           { title: 'U-Wert', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
           { title: 'Graue Energie', url: 'https://de.wikipedia.org/wiki/Graue_Energie' },
-          { title: 'Bauprodukte-Verordnung', url: 'https://de.wikipedia.org/wiki/Bauprodukte-Verordnung' },
+          { title: 'Bauprodukte-Verordnung' },
           { title: 'European Green Deal', url: 'https://de.wikipedia.org/wiki/European_Green_Deal' },
           { title: 'Europäischer Emissionshandel', url: 'https://de.wikipedia.org/wiki/EU-Emissionshandel' },
           { title: 'CO2-Grenzausgleichssystem', url: 'https://de.wikipedia.org/wiki/CO2-Grenzausgleichssystem' },
@@ -3650,7 +3650,7 @@ export default function Nachhaltigkeit() {
           { title: 'Bundes-Klimaschutzgesetz (KSG – Treibhausgasneutralität 2045)', url: 'https://www.gesetze-im-internet.de/ksg/' },
           { title: 'Ersatzbaustoffverordnung (EBV – Mineralische Sekundärbaustoffe)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG Kriterienkatalog)', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15978' }
+          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)' }
         ]}
         formeln={[
           {

@@ -651,12 +651,12 @@ export default function BpDaemmung() {
           'Minke, G.: Handbuch Naturbaustoffe - Ökologische Dämmung.' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz von Gebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-2' }, 
-          { title: 'DIN 4108-3 (Klimabedingter Feuchteschutz - Tauwasservermeidung nach Glaser)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-3' },
+          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz von Gebäuden)' }, 
+          { title: 'DIN 4108-3 (Klimabedingter Feuchteschutz - Tauwasservermeidung nach Glaser)' },
           { title: 'GEG (Gebäudeenergiegesetz - Anforderungen an baulichen Wärmeschutz)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'DIN EN 13162 (Dämmstoffe für Gebäude - Werkmäßig hergestellte Mineralwolle MW)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13162' },
-          { title: 'DIN EN 13164 (Dämmstoffe für Gebäude - Extrudierte Polystyrolschaumstoffe XPS)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13164' },
-          { title: 'DIN EN 13171 (Dämmstoffe für Gebäude - Werkmäßig hergestellte Holzfaserstoffe WF)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13171' }
+          { title: 'DIN EN 13162 (Dämmstoffe für Gebäude - Werkmäßig hergestellte Mineralwolle MW)' },
+          { title: 'DIN EN 13164 (Dämmstoffe für Gebäude - Extrudierte Polystyrolschaumstoffe XPS)' },
+          { title: 'DIN EN 13171 (Dämmstoffe für Gebäude - Werkmäßig hergestellte Holzfaserstoffe WF)' }
         ]} 
         formeln={[
           { 

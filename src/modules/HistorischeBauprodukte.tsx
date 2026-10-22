@@ -924,16 +924,16 @@ export default function HistorischeBauprodukte() {
           'Bauwerkserhaltung im Denkmal- und Altbaubestand (WTA-Wissenschaftlich-Technische Arbeitsgemeinschaft)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 771-4 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+771-4' },
-          { title: 'DIN EN 771-2 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+771-2' },
-          { title: 'DIN EN 12467 (Faserzement-Flachplatten - Produktspezifikation und Prüfverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12467' },
+          { title: 'DIN EN 771-4 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)' },
+          { title: 'DIN EN 771-2 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)' },
+          { title: 'DIN EN 12467 (Faserzement-Flachplatten - Produktspezifikation und Prüfverfahren)' },
           { title: 'GefStoffV (Novelle 12/2024): Erkundungspflicht des Veranlassers bei Gebäuden mit Baubeginn vor 31.10.1993', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
           { title: 'TRGS 519 (Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' },
           { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.vdi.de/' },
           { title: 'Trinkwasserverordnung 2023 (Bleileitungen: Austausch bzw. Stilllegung bis 12.01.2026; Paragraf manuell prüfen)', url: 'https://www.gesetze-im-internet.de/trinkwv_2023/' },
           { title: 'TRGS 521 (Abbruch, Sanierung und Instandhaltung mit alten Mineralfasern)', url: 'https://www.baua.de/' },
-          { title: 'PCP-Richtlinie (Richtlinie für die Bewertung und Sanierung Pentachlorphenol-belasteter Baustoffe)', url: 'https://www.isb.bund.de/' },
-          { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe)', url: 'https://www.isb.bund.de/' }
+          { title: 'PCP-Richtlinie (Richtlinie für die Bewertung und Sanierung Pentachlorphenol-belasteter Baustoffe)' },
+          { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe)' }
         ]}
         formeln={[
           {

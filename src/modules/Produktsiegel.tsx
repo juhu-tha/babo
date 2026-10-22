@@ -300,7 +300,7 @@ export default function Produktsiegel() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Umweltdeklaration', url: 'https://de.wikipedia.org/wiki/Umweltdeklaration' },
+          { title: 'Umweltdeklaration' },
           { title: 'Blauer Engel', url: 'https://de.wikipedia.org/wiki/Blauer_Engel' },
           { title: 'FSC', url: 'https://de.wikipedia.org/wiki/Forest_Stewardship_Council' }
         ]}
@@ -309,9 +309,9 @@ export default function Produktsiegel() {
           'Umweltbundesamt (UBA): Praxis-Leitfaden zur umweltfreundlichen öffentlichen Beschaffung von Bauprodukten.'
         ]}
         regelwerke={[
-          { title: 'ISO 14020:2022 (Umweltkennzeichnungen und -programme – Allgemeine Grundsätze; DIN-Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=ISO+14020' },
-          { title: 'ISO 14024:2018 (Umweltkennzeichnungen Typ I – Grundsätze und Verfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=ISO+14024' },
-          { title: 'DIN EN ISO 14025:2011-10 (Umweltkennzeichnungen Typ III – Grundsätze und Verfahren; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+14025' }
+          { title: 'ISO 14020:2022 (Umweltkennzeichnungen und -programme – Allgemeine Grundsätze; DIN-Ausgabe manuell prüfen)' },
+          { title: 'ISO 14024:2018 (Umweltkennzeichnungen Typ I – Grundsätze und Verfahren)' },
+          { title: 'DIN EN ISO 14025:2011-10 (Umweltkennzeichnungen Typ III – Grundsätze und Verfahren; Ausgabe manuell prüfen)' }
         ]}
         formeln={[
           {

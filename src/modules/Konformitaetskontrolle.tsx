@@ -27,6 +27,7 @@ interface ConcreteClass {
 }
 
 const CONCRETE_CLASSES: ConcreteClass[] = [
+  { name: 'C8/10', fck_cyl: 8, fck_cube: 10 },
   { name: 'C12/15', fck_cyl: 12, fck_cube: 15 },
   { name: 'C16/20', fck_cyl: 16, fck_cube: 20 },
   { name: 'C20/25', fck_cyl: 20, fck_cube: 25 },
@@ -40,6 +41,8 @@ const CONCRETE_CLASSES: ConcreteClass[] = [
   { name: 'C60/75', fck_cyl: 60, fck_cube: 75 },
   { name: 'C70/85', fck_cyl: 70, fck_cube: 85 },
   { name: 'C80/95', fck_cyl: 80, fck_cube: 95 },
+  { name: 'C90/105', fck_cyl: 90, fck_cube: 105 },
+  { name: 'C100/115', fck_cyl: 100, fck_cube: 115 },
 ];
 
 export default function Konformitaetskontrolle() {
@@ -1118,9 +1121,9 @@ export default function Konformitaetskontrolle() {
           { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-          { title: 'DIN 1045-2:2023-08 (Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
-          { title: 'DIN EN 12390-3 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12390-3' }
+          { title: 'DIN EN 206:2021-06 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton - Teil 2: Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' }
         ]}
         literatur={[
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)',

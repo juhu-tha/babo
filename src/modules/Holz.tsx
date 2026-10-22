@@ -1247,16 +1247,16 @@ export default function Holz() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für den Hochbau)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+338' },
-          { title: 'DIN 68800-1..4:2019-06 (Holzschutz - Teile 1 bis 4: Vorbeugender baulicher und chemischer Holzschutz)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800-1..4' },
-          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14080' },
-          { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14081-1' }
+          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für den Hochbau)' },
+          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)' },
+          { title: 'DIN 68800-1..4:2019-06 (Holzschutz - Teile 1 bis 4: Vorbeugender baulicher und chemischer Holzschutz)' },
+          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)' },
+          { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)' }
         ]}
         weblinks={[
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5', url: 'https://www.schneider-holz.com/service/statiksoftware.html' },
+          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
           { title: 'dataholz.eu – Akkreditierte Holzbauteil- & EPD-Datenbank', url: 'https://www.dataholz.eu/' },
-          { title: 'STRIAN – Online 2D-Stabwerk- & Rahmenberechnung', url: 'https://strian.designer.io/' },
+          { title: 'STRIAN – Online 2D-Stabwerk- & Rahmenberechnung' },
           { title: 'Informationsdienst Holz – Fachwissen & Handbücher', url: 'https://informationsdienst-holz.de/' }
         ]}
         formeln={[

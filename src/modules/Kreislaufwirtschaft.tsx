@@ -1442,7 +1442,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
           { title: 'Kreislaufwirtschaftsgesetz (KrWG), u. a. § 14 (70 % Verwertung von Bau- und Abbruchabfällen)', url: 'https://www.gesetze-im-internet.de/krwg/' },
           { title: 'Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023; Novelle in Vorbereitung)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Ökodesign-Verordnung (EU) 2024/1781 (ESPR, Digitaler Produktpass) und Bauproduktenverordnung (EU) 2024/3110', url: 'https://eur-lex.europa.eu/' },
-          { title: 'Gütegemeinschaft Kreislaufwirtschaft im Hochbau e.V.', url: 'https://www.gkh-ev.de' }
+          { title: 'Gütegemeinschaft Kreislaufwirtschaft im Hochbau e.V.' }
         ]}
         literatur={[
           'Hebel, D. E.; Wisniewska, M. H.; Heisel, F.: Building from Waste – Recovered Materials in Architecture and Construction. Basel: Birkhäuser 2014',

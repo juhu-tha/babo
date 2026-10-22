@@ -309,7 +309,7 @@ export default function Praxisbeispiele() {
       
       <ZwangCalculator />
       
-      <ModuleFooter weblinks={[{ title: "Beton.wiki: Zwang", url: "https://beton.wiki/index.php?title=Zwang" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Risse", url: "https://beton.wiki/index.php?title=Risse" }]} 
+      <ModuleFooter weblinks={[{ title: "Beton.wiki: Zwang" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Risse", url: "https://beton.wiki/index.php?title=Risse" }]} 
         wikipedia={[
                 
                 { title: 'Zwang', url: 'https://de.wikipedia.org/wiki/Zwang' }

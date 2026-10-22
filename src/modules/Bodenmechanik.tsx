@@ -744,12 +744,12 @@ export default function Bodenmechanik() {
           'Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7, bauaufsichtlich eingeführt); neue Generation auf Basis EN 1997-1:2024 – Ausgabe der deutschen Fassung manuell prüfen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1997-1' },
-          { title: 'DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1054' },
-          { title: 'DIN EN ISO 17892-12:2022-08 (Laborversuche an Bodenproben – Teil 12: Bestimmung der Fließ- und Ausrollgrenzen; ersetzt DIN 18122-1)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+17892-12' },
-          { title: 'DIN 18196:2023-02 (Erd- und Grundbau – Bodenklassifikation für bautechnische Zwecke)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18196' },
-          { title: 'DIN 4019:2015-05 (Baugrund – Setzungsberechnungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4019' },
-          { title: 'DIN 4085:2017-08 (Baugrund – Berechnung des Erddrucks)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4085' }
+          { title: 'DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7, bauaufsichtlich eingeführt); neue Generation auf Basis EN 1997-1:2024 – Ausgabe der deutschen Fassung manuell prüfen' },
+          { title: 'DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)' },
+          { title: 'DIN EN ISO 17892-12:2022-08 (Laborversuche an Bodenproben – Teil 12: Bestimmung der Fließ- und Ausrollgrenzen; ersetzt DIN 18122-1)' },
+          { title: 'DIN 18196:2023-02 (Erd- und Grundbau – Bodenklassifikation für bautechnische Zwecke)' },
+          { title: 'DIN 4019:2015-05 (Baugrund – Setzungsberechnungen)' },
+          { title: 'DIN 4085:2017-08 (Baugrund – Berechnung des Erddrucks)' }
         ]}
         formeln={[
           {

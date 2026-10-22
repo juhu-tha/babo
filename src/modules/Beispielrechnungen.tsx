@@ -2860,10 +2860,10 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           { title: 'U-Wert', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
           { title: 'Eurocode 2 (Betonbau)', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
           { title: 'Eurocode 5 (Holzbau)', url: 'https://de.wikipedia.org/wiki/Eurocode_5' },
-          { title: 'Eurocode 6 (Mauerwerk)', url: 'https://de.wikipedia.org/wiki/Eurocode_6' },
+          { title: 'Eurocode 6 (Mauerwerk)' },
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' },
           { title: 'Brandschutz', url: 'https://de.wikipedia.org/wiki/Brandschutz' },
-          { title: 'Karbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
+          { title: 'Karbonatisierung (Beton)' },
           { title: 'Treibhauspotential (GWP)', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' }
         ]}
         literatur={[
@@ -2874,13 +2874,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           'Klingsch, W. et al.: Brandschutz im Bauwesen. Berlin: Springer 2018'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6946' },
-          { title: 'DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
-          { title: 'DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1996-3' },
-          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4109-1' },
-          { title: 'DAfStb-Richtlinie: Bauen im Bestand (März 2017)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DAfStb+Bauen+im+Bestand' }
+          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },
+          { title: 'DIN 1045-2 / DIN EN 206 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Betonfestlegung)' },
+          { title: 'DIN EN 1992-1-1 & DIN EN 1992-1-2 (Eurocode 2: Stahlbetontragwerke - Allgemeine Regeln & Brandschutz)' },
+          { title: 'DIN EN 1995-1-1 & DIN EN 1995-1-2 (Eurocode 5: Holzbauten - Allgemeine Regeln & Brandschutz)' },
+          { title: 'DIN EN 1996-3 (Eurocode 6: Vereinfachte Berechnungsmethoden für Mauerwerksbauten)' },
+          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau - Mindestanforderungen)' },
+          { title: 'DAfStb-Richtlinie: Bauen im Bestand (März 2017)' }
         ]}
         formeln={[
           {

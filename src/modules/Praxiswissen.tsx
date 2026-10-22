@@ -997,11 +997,11 @@ export default function Praxiswissen() {
           'Deutscher Beton- und Bautechnik-Verein E.V. (DBV): DBV-Sammelmappe Merkblätter und Leitfäden'
         ]}
         regelwerke={[
-          { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton – Bauausführung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-3' },
-          { title: 'DIN EN 206:2021-06 und DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
-          { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12', url: 'https://www.dinmedia.de/de/technische-regel/dafstb-wasserundurchlaessige-bauwerke/283927896' },
-          { title: 'VOB/B 2016 (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VOB%2FB' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533' }
+          { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton – Bauausführung)' },
+          { title: 'DIN EN 206:2021-06 und DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung)' },
+          { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12' },
+          { title: 'VOB/B 2016 (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)' }
         ]}
         formeln={[
           {

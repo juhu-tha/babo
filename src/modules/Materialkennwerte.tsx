@@ -404,14 +404,14 @@ export default function Materialkennwerte() {
           { title: 'Wärmeleitfähigkeit', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeleitf%C3%A4higkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
-          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1991' },
-          { title: 'DIN EN 1992 (Eurocode 2: Bemessung von Betonbauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992' },
-          { title: 'DIN EN 1993 (Eurocode 3: Bemessung von Stahlbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993' },
-          { title: 'DIN EN 1995 (Eurocode 5: Bemessung von Holzbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995' },
-          { title: 'DIN EN 338 (Bauholz für tragende Zwecke – Festigkeitsklassen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+338' },
-          { title: 'DIN EN 14080 (Brettschichtholz und Balkenschichtholz)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14080' },
-          { title: 'DIN EN ISO 10456 (Wärmetechnische Eigenschaften – Tabellierte Bemessungswerte)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+10456' }
+          { title: 'DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)' },
+          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke)' },
+          { title: 'DIN EN 1992 (Eurocode 2: Bemessung von Betonbauteilen)' },
+          { title: 'DIN EN 1993 (Eurocode 3: Bemessung von Stahlbauten)' },
+          { title: 'DIN EN 1995 (Eurocode 5: Bemessung von Holzbauten)' },
+          { title: 'DIN EN 338 (Bauholz für tragende Zwecke – Festigkeitsklassen)' },
+          { title: 'DIN EN 14080 (Brettschichtholz und Balkenschichtholz)' },
+          { title: 'DIN EN ISO 10456 (Wärmetechnische Eigenschaften – Tabellierte Bemessungswerte)' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',

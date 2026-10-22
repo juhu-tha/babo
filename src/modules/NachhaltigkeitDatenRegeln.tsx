@@ -1482,7 +1482,8 @@ export default function NachhaltigkeitDatenRegeln() {
         wikipedia={[
           { title: 'Ziele für nachhaltige Entwicklung (SDGs)', url: 'https://de.wikipedia.org/wiki/Ziele_f%C3%BCr_nachhaltige_Entwicklung' },
           { title: 'EU-Taxonomie', url: 'https://de.wikipedia.org/wiki/EU-Taxonomie' },
-          { title: 'Richtlinie über die Gesamtenergieeffizienz von Gebäuden (EPBD)', url: 'https://de.wikipedia.org/wiki/Richtlinie_%C3%BCber_die_Gesamtenergieeffizienz_von_Geb%C3%A4uden' },
+          { title: 'Richtlinie über die Gesamtenergieeffizienz von Gebäuden (EPBD)' },
+          { title: 'Umweltproduktdeklaration (EPD)' },
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' }
         ]}
         literatur={[
@@ -1493,12 +1494,12 @@ export default function NachhaltigkeitDatenRegeln() {
           'Nagler, F. et al.: Forschungsprojekt „Einfach Bauen“, Forschungshäuser Bad Aibling, TU München (Veröffentlichung manuell prüfen)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen zur Bewertung von Gebäuden und Ingenieurbauwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15643' },
-          { title: 'DIN EN ISO 15392 (Nachhaltigkeit von Bauwerken – Allgemeine Grundsätze; Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+15392' },
+          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen zur Bewertung von Gebäuden und Ingenieurbauwerken)' },
+          { title: 'DIN EN ISO 15392 (Nachhaltigkeit von Bauwerken – Allgemeine Grundsätze; Ausgabe manuell prüfen)' },
           { title: 'EPBD – Richtlinie (EU) 2024/1275 (Neufassung; Nullemissionsgebäude ab 2028/2030, Lebenszyklus-GWP Art. 7)', url: 'https://eur-lex.europa.eu/' },
           { title: 'EU-Taxonomie-Verordnung (EU) 2020/852 mit Delegierter VO (EU) 2021/2139 (Klimaschutz-Kriterien)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
-          { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden; ersetzt 2012-10)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15978' },
+          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)' },
+          { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden; ersetzt 2012-10)' },
           { title: 'Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
           { title: 'Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023; Novelle in Vorbereitung)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
         ]}

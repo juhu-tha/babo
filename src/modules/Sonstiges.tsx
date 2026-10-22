@@ -362,8 +362,8 @@ export default function Sonstiges() {
         ]}
         regelwerke={[
           { title: 'DIBt: Allgemeine bauaufsichtliche Zulassungen (abZ / aBG) für Vakuum-Isolations-Paneele (VIP)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 13055:2016-11 (Leichte Gesteinskörnungen für Beton, Mörtel und Einpressmörtel)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13055' },
-          { title: 'DIN EN 17140:2021-02 (Wärmedämmstoffe für das Bauwesen - Werkmäßig hergestellte Produkte aus Vakuum-Isolations-Paneelen (VIP))', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+17140' },
+          { title: 'DIN EN 13055:2016-11 (Leichte Gesteinskörnungen für Beton, Mörtel und Einpressmörtel)' },
+          { title: 'DIN EN 17140:2021-02 (Wärmedämmstoffe für das Bauwesen - Werkmäßig hergestellte Produkte aus Vakuum-Isolations-Paneelen (VIP))' },
           { title: 'RAL-Gütezeichen RAL-GZ 896 (Phasenwechselmaterialien - PCM Quality Association)', url: 'https://www.pcm-ral.de/' }
         ]}
         formeln={[

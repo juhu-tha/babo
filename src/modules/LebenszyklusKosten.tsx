@@ -102,9 +102,9 @@ export default function LebenszyklusKosten() {
           'König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15643' },
+          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen)' },
           { title: 'ISO 15686-5:2017 (Buildings and constructed assets – Service life planning – Part 5: Life-cycle costing)', url: 'https://www.iso.org/' },
-          { title: 'DIN EN 16627:2015-09 (Bewertung der ökonomischen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+16627' },
+          { title: 'DIN EN 16627:2015-09 (Bewertung der ökonomischen Qualität von Gebäuden)' },
           { title: 'BNB Leitfaden Nachhaltiges Bauen (Anlage 1: Nutzungsdauern von Bauteilen)', url: 'https://www.nachhaltigesbauen.de/' }
         ]}
         formeln={[

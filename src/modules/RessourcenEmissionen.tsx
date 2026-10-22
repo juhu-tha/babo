@@ -127,7 +127,7 @@ export default function RessourcenEmissionen() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Kohlendioxid-Emission', url: 'https://de.wikipedia.org/wiki/Kohlendioxid-Emission' },
+          { title: 'Kohlendioxid-Emission' },
           { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' },
           { title: 'Ressourceneffizienz', url: 'https://de.wikipedia.org/wiki/Ressourceneffizienz' }
         ]}
@@ -137,8 +137,8 @@ export default function RessourcenEmissionen() {
           'Umweltbundesamt (UBA): ÖKOBAUDAT Leitfaden - Datenbasis für die Ökobilanzierung von Bauwerken.'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 14040:2021-02 / DIN EN ISO 14044:2021-02 (Umweltmanagement – Ökobilanz)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+14040' },
-          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln; EN 15804+A2)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' }
+          { title: 'DIN EN ISO 14040:2021-02 / DIN EN ISO 14044:2021-02 (Umweltmanagement – Ökobilanz)' },
+          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln; EN 15804+A2)' }
         ]}
         formeln={[
           {

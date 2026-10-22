@@ -1420,7 +1420,7 @@ export default function InnovativeWerkstoffe() {
       {/* Module Footer */}
       <ModuleFooter 
         wikipedia={[
-          { title: "3D-Betondruck", url: "https://de.wikipedia.org/wiki/3D-Betondruck" },
+          { title: "3D-Betondruck" },
           { title: "Carbonbeton", url: "https://de.wikipedia.org/wiki/Carbonbeton" },
           { title: "Ultrahochfester Beton", url: "https://de.wikipedia.org/wiki/Ultrahochfester_Beton" }
         ]}
@@ -1432,7 +1432,7 @@ export default function InnovativeWerkstoffe() {
         regelwerke={[
           { title: "DAfStb-Richtlinie Ultrahochfester Beton (UHPC)", url: "https://www.dafstb.de/" },
           { title: "Allgemeine Bauartgenehmigungen (aBG) für Carbonbetonsysteme - DIBt", url: "https://www.dibt.de/" },
-          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauteilen)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1" }
+          { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauteilen)" }
         ]}
         formeln={[
           {

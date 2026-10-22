@@ -315,7 +315,7 @@ export default function Innenausbau() {
   }, [tools, selectedCategory, searchQuery]);
 
   return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto">
+    <div className="flex flex-col gap-6 w-full">
       {/* Header Container */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-4">
@@ -942,11 +942,11 @@ export default function Innenausbau() {
           'BEB-Merkblätter: Bundesverband Estrich und Belag e.V. (Schnittstellenkoordination FBH)'
         ]}
         regelwerke={[
-          { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18181' },
-          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+520' },
-          { title: 'DIN 18560-1..7:2021-02 (Estriche im Bauwesen - Teile 1 bis 7: Anforderungen, Prüfung und Ausführung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18560-1..7' },
-          { title: 'DIN 18534-1..6:2017-07 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18534-1..6' },
-          { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4103-1' }
+          { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)' },
+          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)' },
+          { title: 'DIN 18560-1..7:2021-02 (Estriche im Bauwesen - Teile 1 bis 7: Anforderungen, Prüfung und Ausführung)' },
+          { title: 'DIN 18534-1..6:2017-07 (Abdichtung von Innenräumen)' },
+          { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)' }
         ]}
         formeln={[
           {

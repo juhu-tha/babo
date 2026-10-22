@@ -422,7 +422,7 @@ export default function InstandsetzungChecklisten() {
   };
 
   return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto px-4 py-4 animate-in fade-in duration-300">
+    <div className="flex flex-col gap-6 w-full py-4 animate-in fade-in duration-300">
       
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">
@@ -731,9 +731,9 @@ export default function InstandsetzungChecklisten() {
         ]}
         regelwerke={[
           { title: 'TR Instandhaltung (DIBt Technische Regel Instandhaltung von Betonbauwerken Teil 1 und 2)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 1504-10 (Anwendung von Produkten und Systemen auf der Baustelle und Qualitätsüberwachung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1504-10' },
+          { title: 'DIN EN 1504-10 (Anwendung von Produkten und Systemen auf der Baustelle und Qualitätsüberwachung)' },
           { title: 'ZTV-ING Teil 3: Massivbau, Betoninstandsetzung (BASt)', url: 'https://www.bast.de/' },
-          { title: 'DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12696' }
+          { title: 'DIN EN ISO 12696 (Kathodischer Korrosionsschutz von Stahl in Beton)' }
         ]}
         formeln={[
           {

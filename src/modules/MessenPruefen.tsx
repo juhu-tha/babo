@@ -204,7 +204,7 @@ export default function MessenPruefen() {
   }, [accuracy, precision]);
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto text-slate-800 animate-fade-in">
+    <div className="flex flex-col gap-6 w-full text-slate-800 animate-fade-in">
       
       {/* --- Unified Header: Clean Cockpit Theme --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm">
@@ -1455,13 +1455,13 @@ export default function MessenPruefen() {
           { title: 'Ringversuch', url: 'https://de.wikipedia.org/wiki/Ringversuch' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO%2FIEC+17025' },
-          { title: 'DIN EN ISO/IEC 17043:2023-10 + A11:2024-09 (Konformitätsbewertung – Anforderungen an Anbieter von Eignungsprüfungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO%2FIEC+17043' },
-          { title: 'DIN ISO 13528:2025-07 (Statistische Verfahren für Eignungsprüfungen durch Vergleiche zwischen Laboratorien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+ISO+13528' },
-          { title: 'ISO 5725-1:2023-07 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen – Teil 1); DIN ISO 5725-1:1997-11 zurückgezogen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=ISO+5725-1' },
-          { title: 'DIN EN ISO 7500-1:2018-06 (Kalibrierung und Überprüfung von Zug- und Druckprüfmaschinen – Kraftmesssystem)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+7500-1' },
-          { title: 'DIN EN ISO 13385-1:2020-03 (Messschieber; ersetzt DIN 862:2015-03)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+13385-1' },
-          { title: 'DIN ISO 17123-2:2023-12 (Feldprüfverfahren geodätischer Instrumente – Nivelliere)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+ISO+17123-2' },
+          { title: 'DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)' },
+          { title: 'DIN EN ISO/IEC 17043:2023-10 + A11:2024-09 (Konformitätsbewertung – Anforderungen an Anbieter von Eignungsprüfungen)' },
+          { title: 'DIN ISO 13528:2025-07 (Statistische Verfahren für Eignungsprüfungen durch Vergleiche zwischen Laboratorien)' },
+          { title: 'ISO 5725-1:2023-07 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen – Teil 1); DIN ISO 5725-1:1997-11 zurückgezogen' },
+          { title: 'DIN EN ISO 7500-1:2018-06 (Kalibrierung und Überprüfung von Zug- und Druckprüfmaschinen – Kraftmesssystem)' },
+          { title: 'DIN EN ISO 13385-1:2020-03 (Messschieber; ersetzt DIN 862:2015-03)' },
+          { title: 'DIN ISO 17123-2:2023-12 (Feldprüfverfahren geodätischer Instrumente – Nivelliere)' },
           { title: 'Mess- und Eichgesetz (MessEG) und Mess- und Eichverordnung (MessEV)', url: 'https://www.gesetze-im-internet.de/messeg/' },
           { title: 'JCGM 100:2008 (Guide to the expression of uncertainty in measurement - GUM)', url: 'https://www.bipm.org/en/committees/jc/jcgm/publications' }
         ]}

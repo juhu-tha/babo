@@ -1318,7 +1318,7 @@ ${senderName}`;
           { title: "Anerkannte Regeln der Technik", url: "https://de.wikipedia.org/wiki/Anerkannte_Regeln_der_Technik" },
           { title: "Dichtstoff", url: "https://de.wikipedia.org/wiki/Dichtstoff" },
           { title: "Klebstoff", url: "https://de.wikipedia.org/wiki/Klebstoff" },
-          { title: "Rissbreite", url: "https://de.wikipedia.org/wiki/Rissbreite" }
+          { title: "Rissbreite" }
         ]} 
         literatur={[
           'Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg',
@@ -1329,13 +1329,13 @@ ${senderName}`;
           'IVD-Merkblatt Nr. 3: Konstruktive Ausführung und Abdichtung von Fugen im Sanitärbereich'
         ]} 
         regelwerke={[
-          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18540' },
-          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15651' },
-          { title: 'DIN 52460 (Fugen- und Glasabdichtung - Begriffe)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+52460' },
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533' },
-          { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18195' },
+          { title: 'DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)' },
+          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)' },
+          { title: 'DIN 52460 (Fugen- und Glasabdichtung - Begriffe)' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)' },
+          { title: 'DIN 18195 (Abdichtung von Bauwerken - Begriffe / Grundlagen)' },
           { title: 'WTA-Merkblatt 4-6 (Nachträgliches Abdichten erdberührter Bauteile)', url: 'https://www.wta-gmbh.de/' },
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0,2 bis 0,4 mm)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Anforderung w_max = 0,2 bis 0,4 mm)' }
         ]} 
         formeln={[
           {

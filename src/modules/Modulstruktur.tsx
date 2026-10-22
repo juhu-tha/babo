@@ -28,7 +28,8 @@ import {
   Map,
   BookOpen,
   Filter,
-  Check
+  Check,
+  HardHat
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -122,27 +123,18 @@ export const THEMATIC_CLUSTERS: ThematicCluster[] = [
     badgeColor: 'bg-slate-100 text-slate-700 border border-slate-200/60',
     accentColor: 'text-shiraz',
     glowColor: 'border-slate-300 text-slate-400 ring-slate-400/10'
-  },
-  {
-    id: 'vorlesungen',
-    name: 'Vorlesungen',
-    description: 'Passwortgeschütztes Vorlesungsportal (THA): Unterlagen, Skripte, Semesterpläne & Vorlesungseinheiten',
-    icon: GraduationCap,
-    baseColor: 'border-slate-200 bg-white hover:bg-slate-50',
-    badgeColor: 'bg-slate-100 text-slate-700 border border-slate-200/60',
-    accentColor: 'text-shiraz',
-    glowColor: 'border-slate-300 text-slate-400 ring-slate-400/10'
   }
 ];
 
 export const GROUP_CLUSTER_MAPPING: Record<string, string> = {
-  'Vorlesungen': 'vorlesungen',
-  'Übersicht & Zugang': 'vorlesungen',
-  'Bauen im Bestand (VL)': 'vorlesungen',
-  'Nachhaltiges Bauen (VL)': 'vorlesungen',
-  'Bauschäden (VL)': 'vorlesungen',
-  'Baustoffkunde (VL)': 'vorlesungen',
-  'Instandhaltung (VL)': 'vorlesungen',
+  'Baustofflabor': 'studium',
+  'Vorlesungen': 'studium',
+  'Übersicht & Zugang': 'studium',
+  'Bauen im Bestand (VL)': 'studium',
+  'Nachhaltiges Bauen (VL)': 'studium',
+  'Bauschäden (VL)': 'studium',
+  'Baustoffkunde (VL)': 'studium',
+  'Instandhaltung (VL)': 'studium',
   'Allgemein': 'studium',
   'Weiter@THA': 'studium',
   'Thesen & Projekte': 'studium',
@@ -391,12 +383,13 @@ export default function Modulstruktur() {
         { id: 'kriechen', label: 'Kriechen & Schwinden', type: 'calculator', description: 'Zeitabhängige viskoelastische Verformung nach EC2.' },
         { id: 'nachbehandlung', label: 'Curing / Nachbehandlung', type: 'standard' },
         { id: 'festbeton', label: 'Festbetoneigenschaften', type: 'standard' },
+        { id: 'betonkennwerte', label: 'Betonkennwerte (EC2)', type: 'calculator', description: 'Druck-, Zugfestigkeit, E-Modul, Schwinden & Kriechen nach DIN EN 1992-1-1.' },
         { id: 'sonderbetone', label: 'UHPC, SVB & Leichtbeton', type: 'standard' },
         { id: 'innovative_werkstoffe', label: '3D-Druck & Carbonbeton', type: 'standard' },
         { id: 'qualitaetssicherung', label: 'QS im Betonwerk', type: 'standard' },
         { id: 'eigenspannungen', label: 'Thermische Eigenspannungen', type: 'calculator', description: 'Simuliert Temperaturgradienten im frühen Alter.' },
         { id: 'zwang', label: 'Zwangspannungen & Rissbildung', type: 'calculator', description: 'Behinderte Längenänderung durch Abkühlung & Schwinden.' },
-        { id: 'expositionsklassen', label: 'Expositionsklassen & Folgen', type: 'calculator', description: 'Krell-Tabelle, DIN 1045-2 / EN 206, max. w/z, Min.-Festigkeit & Betondeckung.' },
+        { id: 'expositionsklassen', label: 'Expositionsklassen (DIN EN 206 / DIN 1045-2)', type: 'calculator', description: 'DIN 1045-2 / DIN EN 206 (Tab. F.2.1/F.2.2): max. w/z, Min.-Festigkeit & Betondeckung.' },
         { id: 'betonpraxis', label: 'Baufehler & Schadensvermeidung', type: 'standard' }
       ]
     },
@@ -613,7 +606,7 @@ export default function Modulstruktur() {
       glowColor: 'border-slate-300 text-slate-400 ring-slate-400/10',
       icon: <GraduationCap size={16} className="text-shiraz" />,
       nodes: [
-        { id: 'vl_ueberblick', label: 'Übersicht & Zugang', type: 'info', description: 'Geschützter Bereich mit Passwort tha_ws26.' }
+        { id: 'vl_ueberblick', label: 'Übersicht & Zugang', type: 'info', description: 'Geschützter Bereich für Studierende der TH Augsburg.' }
       ]
     },
     {

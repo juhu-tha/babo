@@ -36,7 +36,7 @@ interface ToolItem {
   language: 'DT' | 'ENG' | 'DT / ENG';
   accessType: 'Direkt im Web' | 'Kostenlose Cloud' | 'Freeware / Open Source' | 'Offizielle Behörde / API';
   recommendationBadge?: 'Standard im Büro' | 'Didaktisch wertvoll' | 'Forschung & Master' | 'Offizieller Standard';
-  url: string;
+  url?: string;
   shortDesc: string;
   detailedFeatures: string[];
   standards: string;
@@ -72,7 +72,6 @@ const ONLINE_TOOLS: ToolItem[] = [
     language: 'ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Didaktisch wertvoll',
-    url: 'https://strian.designer.io/',
     shortDesc: 'Interaktiver 2D-Stabwerk-Web-Rechner für Fachwerke, Durchlaufträger und Rahmen mit Gelenken, Einflusslinien und Echtzeit-Schnittgrößen.',
     detailedFeatures: [
       'Schnelle grafische Eingabe von Knoten, Stäben, Auflagern und Momentengelenken im Raster',
@@ -129,7 +128,6 @@ const ONLINE_TOOLS: ToolItem[] = [
     language: 'DT / ENG',
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
-    url: 'https://www.dlubal.com/de/lastzonen-schnee-wind-erdbeben/',
     shortDesc: 'Standortbezogene digitale Abfrage von Schneelast-, Windlast- und Erdbebenzonen nach Eurocode 1 (DIN EN 1991) via Adress- und Kartensuche.',
     detailedFeatures: [
       'Genaue Ermittlung der charakteristischen Schneelast s_k und Windzonen 1 bis 4 nach DIN EN 1991-1-3 / DIN EN 1991-1-4',
@@ -266,7 +264,6 @@ const ONLINE_TOOLS: ToolItem[] = [
     language: 'DT',
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Standard im Büro',
-    url: 'https://www.schneider-holz.com/service/statiksoftware.html',
     shortDesc: 'Kostenlose vollwertige Holzbau-Statiksoftware für Einfeld-/Mehrfeldträger, Sparren, Pfetten, Stützen und Holzverbindungen nach Eurocode 5.',
     detailedFeatures: [
       'Vollständige Nachweise im Grenzzustand der Tragfähigkeit (GZT) und Gebrauchstauglichkeit (GZG)',
@@ -441,7 +438,6 @@ const ONLINE_TOOLS: ToolItem[] = [
     language: 'DT',
     accessType: 'Offizielle Behörde / API',
     recommendationBadge: 'Offizieller Standard',
-    url: 'https://www.bim-portal.de/',
     shortDesc: 'Zentrale Plattform der Bundesrepublik Deutschland für standardisierte Bauteil-Merkmalskataloge und AIA/BAP-Leitfäden.',
     detailedFeatures: [
       'Einheitliche Merkmalskataloge zur Attribuierung digitaler Baustoffe und Bauteile',
@@ -958,15 +954,21 @@ export default function OnlineTools() {
                     <span className="block text-[11px]">Herausgeber: {tool.institutionOrAuthor}</span>
                   </div>
 
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-shiraz hover:bg-shiraz/90 text-white text-xs font-bold rounded-xl shadow-sm transition-all hover:scale-[1.02] cursor-pointer"
-                  >
-                    <span>Tool öffnen</span>
-                    <ExternalLink size={13} />
-                  </a>
+                  {tool.url ? (
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-shiraz hover:bg-shiraz/90 text-white text-xs font-bold rounded-xl shadow-sm transition-all hover:scale-[1.02] cursor-pointer"
+                    >
+                      <span>Tool öffnen</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-600 text-xs font-medium rounded-xl border border-slate-200">
+                      Fachinformation / Offline
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -1144,22 +1146,22 @@ export default function OnlineTools() {
           'Barth, C.; Rustler, W.: Finite Elemente in der Baustatik-Praxis. Berlin: Beuth/Bauwerk (aktuelle Auflage)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650-1/-2:2019-08 (BIM-Informationsmanagement)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+19650' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6946' },
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15026' }
+          { title: 'DIN EN ISO 19650-1/-2:2019-08 (BIM-Informationsmanagement)' },
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)' },
+          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)' },
+          { title: 'DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)' }
         ]}
         weblinks={[
           { title: 'Ubakus.de – Interaktiver U-Wert- & Glaser-Rechner', url: 'https://www.ubakus.de/' },
-          { title: 'Dlubal Geo-Zone Tool – Schnee-, Wind- & Erdbebenzonen', url: 'https://www.dlubal.com/de/lastzonen-schnee-wind-erdbeben/' },
+          { title: 'Dlubal Geo-Zone Tool – Schnee-, Wind- & Erdbebenzonen' },
           { title: 'Fraunhofer IBP WUFI – Instationäre Feuchte- und Wärmesimulation', url: 'https://wufi.de/' },
           { title: 'ÖKOBAUDAT – Ökobilanz-Datenbank des BMWSB (BBSR)', url: 'https://www.oekobaudat.de/' },
           { title: 'WECOBIS – Ökologisches Baustoffportal des Bundes', url: 'https://www.wecobis.de/' },
           { title: 'Madaster Germany – Material- und Zirkularitätskataster', url: 'https://madaster.de/' },
           { title: 'Concular – Zirkulärer Marktplatz für Sekundärbaustoffe', url: 'https://concular.de/' },
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5', url: 'https://www.schneider-holz.com/service/statiksoftware.html' },
-          { title: 'STRIAN – Online 2D-Stabwerkberechnung', url: 'https://strian.designer.io/' },
+          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
+          { title: 'STRIAN – Online 2D-Stabwerkberechnung' },
           { title: 'Calcpad – Parametrische Ingenieurberechnungen', url: 'https://calcpad.eu/' },
           { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' }
         ]}

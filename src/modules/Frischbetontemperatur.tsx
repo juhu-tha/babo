@@ -295,8 +295,8 @@ export default function Frischbetontemperatur() {
           { title: 'Richmannsche Mischungsregel', url: 'https://de.wikipedia.org/wiki/Richmannsche_Mischungsregel' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität: Grenztemperaturen +5°C bis +30°C)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Betonieren bei kühler und heißer Witterung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität: Grenztemperaturen +5°C bis +30°C)' },
+          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Betonieren bei kühler und heißer Witterung)' },
           { title: 'ZTV-ING (Grenztemperaturen für Ingenieurbauwerke)', url: 'https://www.bast.de/' }
         ]}
         literatur={[

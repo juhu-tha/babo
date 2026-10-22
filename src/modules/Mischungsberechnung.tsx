@@ -84,8 +84,8 @@ const BAUTEILE = [
 ];
 
 const EXPOSITIONSKLASSEN: Record<string, { name: string, desc: string, wZ: number, minFestigkeit: string, minZement: number, minFestigkeitNum: number, cMin?: number, maxZement?: number }> = {
-  'XC1': { name: 'Karbonatisierung: Trocken oder ständig nass', desc: 'Innenräume mit üblicher Luftfeuchte, oder ständig unter Wasser.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 10 },
-  'XC2': { name: 'Karbonatisierung: Nass, selten trocken', desc: 'Teile von Wasserbehältern, Gründungsbauteile.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 20 },
+  'XC1': { name: 'Karbonatisierung: Trocken oder ständig nass', desc: 'Innenräume mit üblicher Luftfeuchte, oder ständig unter Wasser.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 15 },
+  'XC2': { name: 'Karbonatisierung: Nass, selten trocken', desc: 'Teile von Wasserbehältern, Gründungsbauteile im feuchten Erdreich.', wZ: 0.65, minFestigkeit: 'C20/25', minZement: 240, minFestigkeitNum: 20, cMin: 25 },
   'XC3': { name: 'Karbonatisierung: Mäßige Feuchte', desc: 'Innenräume mit hoher Luftfeuchte, offene Hallen.', wZ: 0.65, minFestigkeit: 'C20/25', minZement: 260, minFestigkeitNum: 20, cMin: 20 },
   'XC4': { name: 'Karbonatisierung: Wechselnd nass und trocken', desc: 'Außenbauteile mit direkter Beregnung.', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25, cMin: 25 },
   
@@ -100,7 +100,7 @@ const EXPOSITIONSKLASSEN: Record<string, { name: string, desc: string, wZ: numbe
   'XF1': { name: 'Frost: Mäßige Wassersättigung, ohne Taumittel', desc: 'Außenbauteile (Fassaden).', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25 },
   'XF2': { name: 'Frost: Mäßige Wassersättigung, mit Taumittel', desc: 'Bauteile im Sprühnebelbereich von tausalzbehandelten Straßen.', wZ: 0.50, minFestigkeit: 'C35/45 (oder C25/30 mit LP)', minZement: 320, minFestigkeitNum: 35 },
   'XF3': { name: 'Frost: Hohe Wassersättigung, ohne Taumittel', desc: 'Offene Wasserbehälter, Bauteile in der Wasserwechselzone (Süßwasser).', wZ: 0.55, minFestigkeit: 'C35/45 (oder C25/30 mit LP)', minZement: 320, minFestigkeitNum: 35 },
-  'XF4': { name: 'Frost: Hohe Wassersättigung, mit Taumittel', desc: 'Straßendecken, Brückenkappen, Räumflächen.', wZ: 0.50, minFestigkeit: 'C30/37 (mit LP)', minZement: 340, minFestigkeitNum: 30 },
+  'XF4': { name: 'Frost: Hohe Wassersättigung, mit Taumittel', desc: 'Straßendecken, Brückenkappen, Räumflächen.', wZ: 0.50, minFestigkeit: 'C30/37 (mit LP)', minZement: 320, minFestigkeitNum: 30 },
   
   'XA1': { name: 'Chem. Angriff: Schwach', desc: 'Behälter für schwach angreifende Wässer/Böden.', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25 },
   'XA2': { name: 'Chem. Angriff: Mäßig', desc: 'Kläranlagen, Güllebehälter.', wZ: 0.50, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35 },
@@ -2212,7 +2212,7 @@ export default function Mischungsberechnung() {
         ]} 
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: 'Stoffraumrechnung', url: 'https://de.wikipedia.org/wiki/Stoffraumrechnung' }
+          { title: 'Stoffraumrechnung' }
         ]}
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
@@ -2220,11 +2220,11 @@ export default function Mischungsberechnung() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-          { title: 'DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14889-1' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)' },
           { title: 'DAfStb-Richtlinie: Stahlfaserbeton:2021-06', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 197-1:2014-07 (Zement: Zusammensetzung, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1' },
-          { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12620' },
+          { title: 'DIN EN 197-1:2014-07 & DIN EN 197-5:2021-05 (Zement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197' },
+          { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },
           { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton:2010-04', url: 'https://www.dafstb.de/' }
         ]}
         formeln={[

@@ -700,10 +700,10 @@ export default function BpHolzprodukte() {
           'Kaufmann, H. et al.: Building with Timber.' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' }, 
-          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14080' },
-          { title: 'DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15497' },
-          { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+16351' }
+          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)' }, 
+          { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)' },
+          { title: 'DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)' },
+          { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz - Anforderungen)' }
         ]} 
         formeln={[
           { 

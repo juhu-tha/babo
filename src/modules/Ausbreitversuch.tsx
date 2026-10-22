@@ -304,8 +304,8 @@ export default function Ausbreitversuch() {
           { title: 'Bingham-Fluid', url: 'https://de.wikipedia.org/wiki/Bingham-Fluid' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 12350-5 (Prüfung von Frischbeton - Teil 5: Ausbreitmaß)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12350-5' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen F1 bis F6 und SVB)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
+          { title: 'DIN EN 12350-5 (Prüfung von Frischbeton - Teil 5: Ausbreitmaß)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen F1 bis F6 und SVB)' },
           { title: 'DAfStb-Richtlinie: Selbstverdichtender Beton (SVB)', url: 'https://www.dafstb.de/' }
         ]}
         literatur={[

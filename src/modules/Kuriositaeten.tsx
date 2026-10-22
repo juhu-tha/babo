@@ -892,8 +892,8 @@ export default function Kuriositaeten() {
           'Marie Jackson et al.: Phillipsite and Al-Tobermorite crystallization in ancient Roman harbor concrete — American Mineralogist'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 206 / DIN 1045-2' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauwerken)' },
           { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dafstb.de' },
           { title: 'ÖBV-Richtlinie Spritzbeton (Österreichische Bautechnik Vereinigung)', url: 'https://www.bautechnik.pro' }
         ]}

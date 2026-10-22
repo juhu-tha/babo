@@ -1322,9 +1322,9 @@ export default function BpAbdichtung() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Bauwerksabdichtung', url: 'https://de.wikipedia.org/wiki/Bauwerksabdichtung' },
-          { title: 'Rissinjektion', url: 'https://de.wikipedia.org/wiki/Rissinjektion' },
+          { title: 'Rissinjektion' },
           { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' },
-          { title: 'Bitumen-Dickbeschichtung', url: 'https://de.wikipedia.org/wiki/Kunststoffmodifizierte_Bitumendickbeschichtung' }
+          { title: 'Bitumen-Dickbeschichtung' }
         ]} 
         literatur={[ 
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
@@ -1332,9 +1332,9 @@ export default function BpAbdichtung() {
           'Weber, H. (2020): Mauerwerksabdichtung und Kellersanierung (Expert Verlag)' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen - Teile 1 bis 3)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533' }, 
-          { title: 'DIN 18534 (Abdichtung von Innenräumen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18534' },
-          { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Rissinjektion)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1504-5' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen - Teile 1 bis 3)' }, 
+          { title: 'DIN 18534 (Abdichtung von Innenräumen)' },
+          { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Rissinjektion)' },
           { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' }
         ]} 
         formeln={[

@@ -435,12 +435,12 @@ export default function Metalle() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 8044:2020-08 (Korrosion von Metallen und Legierungen - Grundbegriffe)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+8044' },
-          { title: 'DIN EN 1993-1-4:2021-02 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-4: Nichtrostende Stähle)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1-4' },
-          { title: 'DIN EN 1999-1-1:2023-11 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken - Allgemeine Bemessungsregeln)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1999-1-1' },
-          { title: 'DIN EN ISO 12944-1..9:2018-06 (Beschichtungsstoffe - Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12944-1..9' },
-          { title: 'DIN EN 10025-5:2019-10 (Warmgewalzte Erzeugnisse aus wetterfesten Baustählen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+10025-5' },
-          { title: 'DIN EN 988:1996-08 (Zink und Zinklegierungen - Festlegungen für gewalzte Flacherzeugnisse für das Bauwesen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+988' }
+          { title: 'DIN EN ISO 8044:2020-08 (Korrosion von Metallen und Legierungen - Grundbegriffe)' },
+          { title: 'DIN EN 1993-1-4:2021-02 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-4: Nichtrostende Stähle)' },
+          { title: 'DIN EN 1999-1-1:2023-11 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken - Allgemeine Bemessungsregeln)' },
+          { title: 'DIN EN ISO 12944-1..9:2018-06 (Beschichtungsstoffe - Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)' },
+          { title: 'DIN EN 10025-5:2019-10 (Warmgewalzte Erzeugnisse aus wetterfesten Baustählen)' },
+          { title: 'DIN EN 988:1996-08 (Zink und Zinklegierungen - Festlegungen für gewalzte Flacherzeugnisse für das Bauwesen)' }
         ]}
         formeln={[
           {

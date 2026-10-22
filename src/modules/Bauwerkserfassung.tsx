@@ -101,7 +101,7 @@ export default function Bauwerkserfassung() {
   }, [rafterWidth, rafterHeight, spanLength, axialForce, bendingLoad, initialDeformation, woodParams]);
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto text-slate-800 animate-fade-in">
+    <div className="flex flex-col gap-6 w-full text-slate-800 animate-fade-in">
       
       {/* --- Unified Header: Modern Cockpit Theme --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm flex flex-col gap-6">
@@ -722,8 +722,8 @@ export default function Bauwerkserfassung() {
           "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
         ]}
         regelwerke={[
-          { title: "DIN 18710-1 (Ingenieurvermessung – Teil 1: Allgemeine Anforderungen; Ausgabe manuell prüfen)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18710-1" },
-          { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1" },
+          { title: "DIN 18710-1 (Ingenieurvermessung – Teil 1: Allgemeine Anforderungen; Ausgabe manuell prüfen)" },
+          { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)" },
           { title: "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg; Toleranzangaben im Modul als Richtwerte, manuell abgleichen)", url: "https://www.denkmalpflege-bw.de/" }
         ]}
         formeln={[

@@ -101,7 +101,9 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
 
   useEffect(() => {
     fetchServerVotes();
-    const interval = setInterval(fetchServerVotes, 3000);
+    const interval = setInterval(() => {
+      if (typeof document === 'undefined' || !document.hidden) fetchServerVotes();
+    }, 3000);
     return () => clearInterval(interval);
   }, [fetchServerVotes]);
 
@@ -145,12 +147,37 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
 
   const handleConfirmReset = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (resetPasswordInput !== 'admin') {
-      setResetError('Ungültiges Passwort! Zurücksetzen ist nur für Dozierende mit dem Passwort "admin" gestattet.');
+    if (!resetPasswordInput) {
+      setResetError('Bitte das Kennwort für Dozierende eingeben.');
       return;
     }
 
-    if (resetScope === 'current' && currentQ) {
+    // Kennwort wird ausschließlich auf dem Server geprüft (Secret ADMIN_PASSWORD bzw. POLL_ADMIN_PASSWORD).
+    const scopeCurrent = resetScope === 'current' && currentQ;
+    let res: Response;
+    try {
+      res = await fetch(`/api/polls/${lectureId}/reset`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(
+          scopeCurrent
+            ? { questionId: currentQ.id, password: resetPasswordInput }
+            : { password: resetPasswordInput }
+        )
+      });
+    } catch {
+      setResetError('Server nicht erreichbar. Bitte später erneut versuchen.');
+      return;
+    }
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setResetError(data.error || 'Zurücksetzen fehlgeschlagen.');
+      setResetPasswordInput('');
+      return;
+    }
+
+    if (scopeCurrent) {
       setVotesState(prev => ({
         ...prev,
         [currentQ.id]: [0, 0, 0, 0]
@@ -160,34 +187,13 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
         delete copy[currentQ.id];
         return copy;
       });
-
-      try {
-        await fetch(`/api/polls/${lectureId}/reset`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ questionId: currentQ.id, password: 'admin' })
-        });
-      } catch {
-        // Ignore
-      }
     } else {
-      // Reset all questions in lecture
       const resetAll: Record<string, number[]> = {};
       questions.forEach(q => {
         resetAll[q.id] = [0, 0, 0, 0];
       });
       setVotesState(resetAll);
       setHasVotedForQuestion({});
-
-      try {
-        await fetch(`/api/polls/${lectureId}/reset`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ password: 'admin' })
-        });
-      } catch {
-        // Ignore
-      }
     }
 
     setShowResetModal(false);
@@ -429,7 +435,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                 type="button"
                 onClick={handleOpenResetModal}
                 className="py-2 px-3 rounded-xl font-semibold text-slate-600 hover:text-rose-700 hover:bg-rose-50 transition-colors flex items-center gap-1.5 border border-slate-200 cursor-pointer"
-                title="Stimmen mit Dozenten-Passwort 'admin' auf 0 zurücksetzen"
+                title="Stimmen auf 0 zurücksetzen (Kennwort für Dozierende erforderlich)"
               >
                 <Lock size={13} className="text-slate-400" />
                 <RotateCcw size={13} />
@@ -667,7 +673,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
 
               <div>
                 <label className="text-xs font-bold text-slate-700 block mb-1">
-                  Admin-Passwort eingeben:
+                  Kennwort für Dozierende:
                 </label>
                 <div className="relative">
                   <input
@@ -684,7 +690,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                   <KeyRound size={14} className="absolute left-2.5 top-3 text-slate-400" />
                 </div>
                 <span className="text-[10px] text-slate-400 block mt-1">
-                  Passwort-Hinweis: Dozierenden-Freigabe (<code>admin</code>)
+                  Kennwort für Dozierende (wird auf dem Server geprüft)
                 </span>
               </div>
 

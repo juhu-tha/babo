@@ -1,8 +1,7 @@
 {
-  "name": "BaustoffBoard (beta)",
-  "description": "Interaktive Lern- und Wissensplattform f\u00fcr Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen & Co.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
+  "name": "BaustoffBoard",
+  "description": "Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen & Co an der TH Augsburg.",
+  "capabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
   ]
 }

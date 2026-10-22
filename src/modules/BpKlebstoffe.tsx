@@ -334,9 +334,9 @@ export default function BpKlebstoffe() {
           'Zinn, K.: Bauaufsichtliche Zulassungen von Verklebungsschichten.' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 12004 (Mörtel und Klebstoffe für Fliesen und Platten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12004' },
-          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15651' },
-          { title: 'DIN EN 204 (Beurteilung von Klebstoffen für nicht tragende Bauteile zur Holzverbindung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+204' }
+          { title: 'DIN EN 12004 (Mörtel und Klebstoffe für Fliesen und Platten)' },
+          { title: 'DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)' },
+          { title: 'DIN EN 204 (Beurteilung von Klebstoffen für nicht tragende Bauteile zur Holzverbindung)' }
         ]} 
         formeln={[
           { formel: '\\sigma_{ad} = \\frac{F}{A_G} \\quad \\text{[N/mm²]}', erklaerung: 'Scherfestigkeit der Verklebungsfuge' },

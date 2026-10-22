@@ -339,7 +339,7 @@ export default function Recyclingbeton() {
       </div>
       <ModuleFooter
         weblinks={[
-          { title: 'Beton.wiki: RC-Beton', url: 'https://beton.wiki/index.php?title=Recyclingbeton' },
+          { title: 'Beton.wiki: RC-Beton' },
           { title: "Zement-Merkblatt B33: Recyclingbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
         ]}
         wikipedia={[
@@ -348,8 +348,8 @@ export default function Recyclingbeton() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Beton nach DIN EN 206 und DIN 1045-2 mit rezyklierten Gesteinskörnungen:2010-09', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12620' },
-          { title: 'DIN 1045-2:2023-08 (R-Beton Typ A und Typ B)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' }
+          { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)' },
+          { title: 'DIN 1045-2:2023-08 (R-Beton Typ A und Typ B)' }
         ]}
         literatur={[
           'DAfStb Heft 580 & Heft 600: Bemessung und Konstruktion bei Verwendung von rezyklierten Gesteinskörnungen',

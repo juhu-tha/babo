@@ -106,7 +106,7 @@ export default function Versionen() {
         ]}
         regelwerke={[
           { title: 'SemVer 2.0.0 (Semantic Versioning Specification)', url: 'https://semver.org/' },
-          { title: 'DIN EN ISO 9001 (Qualitätsmanagementsysteme - Dokumentierte Information)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+9001' }
+          { title: 'DIN EN ISO 9001 (Qualitätsmanagementsysteme - Dokumentierte Information)' }
         ]}
         hideFormeln={true}
       />

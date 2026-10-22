@@ -20,7 +20,9 @@ import {
   ShieldAlert,
   Activity,
   BarChart3,
-  History
+  History,
+  Sliders,
+  Grid
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import ModuleHistoryView from '@/src/components/ui/ModuleHistoryView';
@@ -103,6 +105,13 @@ export default function BetonInfo() {
       useCase: 'Berechnung des zeitlichen Festigkeitszuwachses von Festbeton zur Tragfähigkeitsbewertung nach dem Ausschalungszeitpunkt.'
     },
     {
+      title: 'Betonkennwerte (EC2)',
+      icon: Sliders,
+      purpose: 'Vollständige Berechnung aller Betonkennwerte nach Eurocode 2 (DIN EN 1992-1-1 / DIN EN 1992-1-1:2025-09): Druck- und Zugfestigkeiten, E-Modul, Spannungs-Dehnungs-Linien, Schwinden und Kriechen.',
+      standards: 'DIN EN 1992-1-1 (EC2), Tab. 3.1 & Anhang B',
+      useCase: 'Ermittlung von Endkriechzahl phi_infinity, Trocknungs- und autogenem Schwindmaß eps_cs sowie E_cm und f_ctm für Tragwerksplanung und Schadensanalysen.'
+    },
+    {
       title: 'Sonderbetone',
       icon: Layers,
       purpose: 'Kompakte Darstellungen von Spezialbaustoffen wie Leichtbeton, UHPC, Spritzbeton, Sichtbeton, Faserbeton und Recyclingbeton.',
@@ -122,6 +131,13 @@ export default function BetonInfo() {
       purpose: 'Konformitätsbewertungen, Übereinstimmungsnachweise, Annahmekriterien und normgerechte Dokumentation aller Prüfergebnisse.',
       standards: 'DIN EN 206 (Konformitätskontrolle), DIN 1045-2',
       useCase: 'Festlegung von Prüfbeauftragten, Probenanzahlen und Auswertungsergebnissen zur Erfüllung von Konformitätskriterien.'
+    },
+    {
+      title: 'Expositionsklassen (DIN EN 206 / DIN 1045-2)',
+      icon: Grid,
+      purpose: 'Normative Grenzwerte für alle Umweltbeanspruchungen (X0, XC, XD, XS, XF, XA, XM sowie Feuchtigkeitsklassen WO–WS): max. (w/z)_eq, Mindestdruckfestigkeit, Mindestzementgehalt und Betondeckung.',
+      standards: 'DIN EN 206, DIN 1045-2 (Tab. F.2.1/F.2.2), DAfStb Alkali-Richtlinie',
+      useCase: 'Sichere Dauerhaftigkeitsbemessung, Hüllwertbildung bei Mehrfachbeanspruchung und k-Wert-Anrechnung von Zusatzstoffen.'
     },
     {
       title: 'Betonpraxis',
@@ -584,10 +600,10 @@ export default function BetonInfo() {
           'Verein Deutscher Zementwerke e.V. (VDZ): Zement-Taschenbuch (63. Ausgabe)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Nationale Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
-          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' },
-          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-1000' }
+          { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Nationale Anwendungsregeln zu DIN EN 206)' },
+          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)' },
+          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)' }
         ]}
         formeln={[
           {

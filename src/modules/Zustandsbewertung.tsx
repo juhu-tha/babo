@@ -1132,7 +1132,7 @@ export default function Zustandsbewertung() {
           { title: 'Standsicherheit', url: 'https://de.wikipedia.org/wiki/Standsicherheit' }
         ]}
         regelwerke={[
-          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung; ersetzt 1999-11)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1076' },
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung; ersetzt 1999-11)' },
           { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/' },
           { title: 'VDI 6200 Blatt 1.1:2026-06 (Berichtsdokumentation der Überprüfung)', url: 'https://www.vdi.de/' },
           { title: 'ARGEBAU: Hinweise für die Überprüfung der Standsicherheit von baulichen Anlagen durch den Eigentümer/Verfügungsberechtigten (09/2006)', url: 'https://www.is-argebau.de/' },

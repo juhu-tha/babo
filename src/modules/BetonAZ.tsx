@@ -21,7 +21,7 @@ export default function BetonAZ() {
   const { setActiveTab } = useTabContext();
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto animate-fade-in text-slate-800">
+    <div className="flex flex-col gap-6 w-full animate-fade-in text-slate-800">
       
       {/* --- Unified Header: Clean Cockpit Theme --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm flex flex-col gap-6">

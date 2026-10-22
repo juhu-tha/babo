@@ -140,9 +140,9 @@ interface GroupData {
   didacticCards: { title: string; desc: string }[];
   appStudents: string;
   appProfessionals: string;
-  wikipedia: { title: string; url: string }[];
+  wikipedia: { title: string; url?: string }[];
   literatur: string[];
-  regelwerke: { title: string; url: string }[];
+  regelwerke: { title: string; url?: string }[];
   formeln: { formel: string; erklaerung: string; quelle: string }[];
 }
 
@@ -183,9 +183,9 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
     ],
     regelwerke: [
-      { title: 'DIN EN 1990: Eurocode 0 - Grundlagen der Tragwerksplanung', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
-      { title: 'DIN 1301-1:2010-10: Einheiten – Einheitennamen, Einheitenzeichen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1301-1' },
-      { title: 'DIN EN ISO 10456: Wärme- und feuchtetechnische Eigenschaften – Tabellierte Bemessungswerte', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+10456' },
+      { title: 'DIN EN 1990: Eurocode 0 - Grundlagen der Tragwerksplanung' },
+      { title: 'DIN 1301-1:2010-10: Einheiten – Einheitennamen, Einheitenzeichen' },
+      { title: 'DIN EN ISO 10456: Wärme- und feuchtetechnische Eigenschaften – Tabellierte Bemessungswerte' },
       { title: 'Bauproduktenverordnung (EU) 2024/3110', url: 'https://eur-lex.europa.eu/eli/reg/2024/3110/oj' }
     ],
     formeln: [
@@ -229,10 +229,10 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Scrivener, K.; Snellings, R.; Lothenbach, B. (Hrsg.): A Practical Guide to Microstructural Analysis of Cementitious Materials. Boca Raton: CRC Press 2016'
     ],
     regelwerke: [
-      { title: 'DIN EN 12504-1: Prüfung von Beton im Bauwerk - Teil 1: Bohrkernproben', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504-1' },
-      { title: 'ISO 12491:1997-05: Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=ISO+12491' },
-      { title: 'DIN EN 206:2021-06: Beton – Festlegung, Eigenschaften, Herstellung und Konformität', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-      { title: 'DIN EN 13791:2020-02: Bewertung der Druckfestigkeit von Beton in Bauwerken', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13791' }
+      { title: 'DIN EN 12504-1: Prüfung von Beton im Bauwerk - Teil 1: Bohrkernproben' },
+      { title: 'ISO 12491:1997-05: Statistische Verfahren für die Güteüberwachung von Bauprodukten und Bauteilen' },
+      { title: 'DIN EN 206:2021-06: Beton – Festlegung, Eigenschaften, Herstellung und Konformität' },
+      { title: 'DIN EN 13791:2020-02: Bewertung der Druckfestigkeit von Beton in Bauwerken' }
     ],
     formeln: [
       { formel: 'f_{ck} = f_{m} - 1{,}64 \\cdot s', erklaerung: 'Charakteristischer Festigkeitswert (5-%-Quantil) bei bekannter Standardabweichung und Normalverteilung; bei aus wenigen Proben geschätzter Streuung ist 1,64 durch k_n nach DIN EN 1990, Anhang D zu ersetzen.', quelle: 'DIN EN 1990, Anhang D; ISO 12491' },
@@ -286,8 +286,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
-      { title: 'DIN EN 1996: Eurocode 6 - Bemessung und Konstruktion von Mauerwerksbauten', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1996' },
-      { title: 'DIN 18008: Glas im Bauwesen - Bemessungs- und Konstruktionsregeln', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18008' }
+      { title: 'DIN EN 1996: Eurocode 6 - Bemessung und Konstruktion von Mauerwerksbauten' },
+      { title: 'DIN 18008: Glas im Bauwesen - Bemessungs- und Konstruktionsregeln' }
     ],
     formeln: [
       { formel: '\\sigma = E \\cdot \\epsilon', erklaerung: 'Hookesches Gesetz für linear-elastisches Werkstoffverhalten. Bestimmt die proportionale Verknüpfung von Normalspannung und elastischer Dehnung.', quelle: 'Physikalische Grundlagen' },
@@ -383,8 +383,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Verein Deutscher Zementwerke e.V. (VDZ): Zement-Taschenbuch'
     ],
     regelwerke: [
-      { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-      { title: 'DIN 1045-2 (Nationale Anwendungsregeln zur DIN EN 206)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' }
+      { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
+      { title: 'DIN 1045-2 (Nationale Anwendungsregeln zur DIN EN 206)' }
     ],
     formeln: [
       { formel: 'V = \\frac{m_z}{\\rho_z} + \\frac{m_w}{\\rho_w} + \\sum \\frac{m_{g,i}}{\\rho_{g,i}} + V_l = 1000\\,\\text{dm}^3', erklaerung: 'Stoffraumgleichung für 1 m³ verdichteten Frischbeton.', quelle: 'DIN EN 206 / DIN 1045-2' }
@@ -424,8 +424,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'dataholz.eu: Bauteilkatalog der Holzforschung Austria'
     ],
     regelwerke: [
-      { title: 'DIN EN 1995-1-1: Eurocode 5 - Bemessung und Konstruktion von Holzbauten', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
-      { title: 'DIN EN 1995-1-2: Eurocode 5 - Tragwerksbemessung für den Brandfall', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-2' }
+      { title: 'DIN EN 1995-1-1: Eurocode 5 - Bemessung und Konstruktion von Holzbauten' },
+      { title: 'DIN EN 1995-1-2: Eurocode 5 - Tragwerksbemessung für den Brandfall' }
     ],
     formeln: [
       { formel: 'f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}', erklaerung: 'Grundformel für den Bemessungswert einer Festigkeitseigenschaft im Holzbau unter Berücksichtigung von Nutzungsklasse und Lasteinwirkungsdauer.', quelle: 'DIN EN 1995-1-1 Gl. 2.1' }
@@ -470,8 +470,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Goris, A. (2021): Stahlbetonbau kompakt nach Eurocode 2 (Werner Verlag)'
     ],
     regelwerke: [
-      { title: 'DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
-      { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DAfStb+Wasserundurchl%C3%A4ssige+Bauwerke+aus+Beton' }
+      { title: 'DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken' },
+      { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)' }
     ],
     formeln: [
       { formel: 'a_s = \\frac{M_{Ed}}{z \\cdot f_{yd}}', erklaerung: 'Näherungsweise Berechnung der erforderlichen Zugbewehrungsfläche a_s eines biegebeanspruchten Querschnitts bei geschätztem inneren Hebelarm z (ca. 0.9·d).', quelle: 'DIN EN 1992-1-1' },
@@ -516,8 +516,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Meschede, D. (2015): Gerthsen Physik (Springer)'
     ],
     regelwerke: [
-      { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3 – Bemessung und Konstruktion von Stahlbauten); neue Generation DIN EN 1993-1-1:2025-04', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1-1' },
-      { title: 'DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7 – Entwurf, Berechnung und Bemessung in der Geotechnik)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1997-1' }
+      { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3 – Bemessung und Konstruktion von Stahlbauten); neue Generation DIN EN 1993-1-1:2025-04' },
+      { title: 'DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7 – Entwurf, Berechnung und Bemessung in der Geotechnik)' }
     ],
     formeln: [
       { formel: 'w\'\'(x) = -\\frac{M(x)}{E \\cdot I}', erklaerung: 'Differentialgleichung der elastischen Biegelinie. Verknüpft die Krümmung w\'\'(x) des Balkens mit dem Biegemoment M(x), dem Elastizitätsmodul E und dem Flächenträgheitsmoment I.', quelle: 'Technische Mechanik / Elastostatik' },
@@ -560,9 +560,9 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Lohmeyer, G.; Post, M.: Praktische Bauphysik – Eine Einführung mit Berechnungsbeispielen. Wiesbaden: Springer Vieweg (aktuelle Auflage)'
     ],
     regelwerke: [
-      { title: 'DIN 4108 (Wärmeschutz und Energie-Einsparung in Gebäuden): Teil 2 2026-05, Teil 3 2024-03, Teil 4 2020-11', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108' },
-      { title: 'DIN 4109-1/-2:2018-01 (Schallschutz im Hochbau – Mindestanforderungen und rechnerische Nachweise)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4109' },
-      { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18041' },
+      { title: 'DIN 4108 (Wärmeschutz und Energie-Einsparung in Gebäuden): Teil 2 2026-05, Teil 3 2024-03, Teil 4 2020-11' },
+      { title: 'DIN 4109-1/-2:2018-01 (Schallschutz im Hochbau – Mindestanforderungen und rechnerische Nachweise)' },
+      { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen)' },
       { title: 'Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG)', url: 'https://www.gesetze-im-internet.de/geg/' }
     ],
     formeln: [
@@ -607,8 +607,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Bauer, M.; Mösle, P.; Schwarz, M.: Green Building – Leitfaden für nachhaltiges Bauen. 2. Aufl., Berlin: Springer Vieweg 2013'
     ],
     regelwerke: [
-      { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen; EN 15804+A2)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
-      { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15978' },
+      { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen; EN 15804+A2)' },
+      { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden)' },
       { title: 'QNG-Handbuch, Anlage 3 (v1.4, 19.07.2024): WG23 PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)', url: 'https://www.qng.info/' }
     ],
     formeln: [
@@ -650,8 +650,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Hausknecht, K. (2018): BIM Einstieg kompakt (DIN Media)'
     ],
     regelwerke: [
-      { title: 'DIN EN ISO 19650-1/-2:2019-08 (Organisation und Digitalisierung von Informationen über Bauwerke – BIM)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+19650' },
-      { title: 'VDI 2552 (BIM-Richtlinienreihe)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VDI+2552' }
+      { title: 'DIN EN ISO 19650-1/-2:2019-08 (Organisation und Digitalisierung von Informationen über Bauwerke – BIM)' },
+      { title: 'VDI 2552 (BIM-Richtlinienreihe)' }
     ],
     formeln: [
       { formel: 'MCI = \\max\\left(0;\\; 1 - LFI \\cdot F(X)\\right), \\quad F(X) = \\frac{0{,}9}{X}', erklaerung: 'Material Circularity Indicator mit linearer Flussrate LFI und Nutzungsfaktor F(X); Grundlage u. a. der Zirkularitätsbewertung in Madaster.', quelle: 'Ellen MacArthur Foundation: Circularity Indicators (2015/2019)' }
@@ -695,8 +695,8 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     regelwerke: [
       { title: 'Gebäudemodernisierungsgesetz (GModG, vormals GEG) – § 35 Nachrüstung, § 36 Änderung, § 37 U-Wert, Anlage 7, § 105 Baudenkmäler', url: 'https://www.gesetze-im-internet.de/geg/' },
-      { title: 'EN 1990-2:2026 (Bewertung bestehender Tragwerke; ersetzt CEN/TS 17440:2020) – nationale Fassung/NA prüfen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=EN+1990-2' },
-      { title: 'DIN EN 13791:2020-02 + DIN EN 13791/A20 (Bewertung der Druckfestigkeit von Beton im Bauwerk)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13791' }
+      { title: 'EN 1990-2:2026 (Bewertung bestehender Tragwerke; ersetzt CEN/TS 17440:2020) – nationale Fassung/NA prüfen' },
+      { title: 'DIN EN 13791:2020-02 + DIN EN 13791/A20 (Bewertung der Druckfestigkeit von Beton im Bauwerk)' }
     ],
     formeln: [
       { formel: 'X_k = \\exp\\left(m_y - k_n \\cdot s_y\\right)', erklaerung: 'Charakteristischer Wert (5-%-Fraktile) aus n Prüfwerten bei log-normaler Verteilung; m_y, s_y = Mittelwert und Standardabweichung der logarithmierten Werte, k_n nach Tab. D.1.', quelle: 'DIN EN 1990, Anhang D.7.2' }
@@ -792,11 +792,11 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
-      { title: 'DIN 68800: Holzschutz (Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800' },
-      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten durch Beschichtungssysteme', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12944' },
-      { title: 'DIN 1045-2:2023-08: Tragwerke aus Beton, Stahlbeton und Spannbeton – Beton (Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
+      { title: 'DIN 68800: Holzschutz (Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)' },
+      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten durch Beschichtungssysteme' },
+      { title: 'DIN 1045-2:2023-08: Tragwerke aus Beton, Stahlbeton und Spannbeton – Beton (Anwendungsregeln zu DIN EN 206)' },
       { title: 'WTA-Merkblatt 2-9: Sanierputzsysteme - Kriterien für Planung und Ausführung', url: 'https://www.wta-gmbh.de/' },
-      { title: 'DIN EN 14179: Heißgelagertes thermisch vorgespanntes Einscheiben-Sicherheitsglas (HST)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14179' }
+      { title: 'DIN EN 14179: Heißgelagertes thermisch vorgespanntes Einscheiben-Sicherheitsglas (HST)' }
     ],
     formeln: [
       { formel: 's(t) = k \\cdot \\sqrt{t}', erklaerung: 'Quadratisches Zeitgesetz der Carbonatisierungstiefe s(t) in Abhängigkeit vom Carbonatisierungsbeiwert k [mm/√a] und Bauteilalter t [Jahre]. Die Norm gibt keine k-Werte vor; Anhaltswerte liefern Messungen oder Modelle nach fib Bulletin 34.', quelle: 'Stark/Wicht: Dauerhaftigkeit von Beton' },
@@ -844,7 +844,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     regelwerke: [
       { title: 'VDI 6200:2010-02: Standsicherheit von Bauwerken – Regelmäßige Überprüfung', url: 'https://www.vdi.de/richtlinien' },
       { title: 'VDI 6200 Blatt 1.1:2026-06: Berichtsdokumentation der Überprüfung', url: 'https://www.vdi.de/richtlinien' },
-      { title: 'DIN 1076:2026-01: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung (ersetzt 1999-11)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1076' },
+      { title: 'DIN 1076:2026-01: Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung (ersetzt 1999-11)' },
       { title: 'VOB/B (Fassung 2016, weiterhin gültig): Vergabe- und Vertragsordnung für Bauleistungen – Teil B', url: 'https://www.bauprofessor.de/vob/' }
     ],
     formeln: [
@@ -887,10 +887,10 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
-      { title: 'DIN EN 1504: Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken (Teile 1 bis 10)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1504' },
+      { title: 'DIN EN 1504: Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken (Teile 1 bis 10)' },
       { title: 'TR Instandhaltung: DIBt Technische Regel Instandhaltung von Betonbauwerken (Teil 1 Stand Mai 2020, Teil 2; über die MVV TB eingeführt)', url: 'https://www.dibt.de/' },
-      { title: 'DIN 68800: Holzschutz (Teil 4:2020-12 Bekämpfung und Sanierung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800' },
-      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12944' }
+      { title: 'DIN 68800: Holzschutz (Teil 4:2020-12 Bekämpfung und Sanierung)' },
+      { title: 'DIN EN ISO 12944: Korrosionsschutz von Stahlbauten' }
     ],
     formeln: [
       { formel: 'K_n = K_0 \\cdot 5^n', erklaerung: 'De-Sitter-Regel (Law of Fives): Der finanzielle Instandsetzungsaufwand K_n verfünffacht sich näherungsweise in jeder aufeinanderfolgenden Lebenszyklusphase n bei unterlassener Vorsorge.', quelle: 'De Sitter (1984)' },
@@ -935,7 +935,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       'Ingenstau, H.; Korbion, H.: VOB Teile A und B – Kommentar. Köln: Werner (aktuelle Auflage)'
     ],
     regelwerke: [
-      { title: 'VOB Teil A (2019), Teil B (2016), Teil C (aktuelle Ausgabe)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VOB' },
+      { title: 'VOB Teil A (2019), Teil B (2016), Teil C (aktuelle Ausgabe)' },
       { title: 'HOAI 2021 – Honorarordnung für Architekten und Ingenieure', url: 'https://www.gesetze-im-internet.de/hoai_2021/' },
       { title: 'BGB §§ 650a–650v (Bauvertragsrecht, seit 01.01.2018)', url: 'https://www.gesetze-im-internet.de/bgb/__650a.html' }
     ],
@@ -946,7 +946,7 @@ const MODULES_DATA: Record<string, GroupData> = {
 };
 
 interface FurtherResource {
-  websites: { name: string; url: string; desc: string }[];
+  websites: { name: string; url?: string; desc: string }[];
   books: { title: string; desc: string }[];
   publications: { journal: string; title: string; desc: string }[];
   dissertations: { title: string; desc: string }[];
@@ -1009,7 +1009,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   bauprodukte: {
     websites: [
       { name: "DIBt - Zulassungsdatenbank", url: "https://www.dibt.de", desc: "Deutsches Institut für Bautechnik. Offizielles Register für abZ, ETA und baurechtliche Verordnungen." },
-      { name: "Deutsches Bautechnikportal", url: "https://www.bautechnikportal.de", desc: "Normierungsabgleiche, Verwendbarkeitsnachweise und EU-Konformitätsgesetze." },
+      { name: "Deutsches Bautechnikportal", desc: "Normierungsabgleiche, Verwendbarkeitsnachweise und EU-Konformitätsgesetze." },
       { name: "TÜV SÜD Bauzertifikate", url: "https://www.tuvsud.com", desc: "Schnittstellen zu Baumusterprüfung und werkseigener Produktionskontrolle (WPK)." }
     ],
     books: [
@@ -1046,8 +1046,8 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   mechanik: {
     websites: [
-      { name: "Mechanik Online-Portal", url: "https://www.mechanik-portal.de", desc: "Unabhängiges Portal zur Festkörpermechanik und numerischen Kontinuumsmechanik." },
-      { name: "Statik-Lernportal", url: "https://www.statik-lernen.de", desc: "Übungs- und Rechenplattform des Instituts für Statik der TU Braunschweig." },
+      { name: "Mechanik Online-Portal", desc: "Unabhängiges Portal zur Festkörpermechanik und numerischen Kontinuumsmechanik." },
+      { name: "Statik-Lernportal", desc: "Übungs- und Rechenplattform des Instituts für Statik der TU Braunschweig." },
       { name: "DGM (Materialwissenschaft)", url: "https://www.dgm.de", desc: "Deutsche Gesellschaft für Materialkunde mit Fokus auf elasto-plastisches Materialverhalten." }
     ],
     books: [
@@ -1067,7 +1067,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
     websites: [
       { name: "FIW München", url: "https://www.fiw-muenchen.de", desc: "Forschungsinstitut für Wärmeschutz e.V. mit baupraktischen Dämmstoffstudien." },
       { name: "Fraunhofer-Institut für Bauphysik (IBP)", url: "https://www.ibp.fraunhofer.de", desc: "Entwickler von WUFI (hygrothermische Simulation) mit Datenbanken zu Schall und Wärme." },
-      { name: "Bundesverband Bauphysik e.V.", url: "https://www.bv-bauphysik.de", desc: "Fachpublikationen und Leitfäden zur Bauakustik und energetischen Altbausanierung." }
+      { name: "Bundesverband Bauphysik e.V.", desc: "Fachpublikationen und Leitfäden zur Bauakustik und energetischen Altbausanierung." }
     ],
     books: [
       { title: "Lehrbuch der Bauphysik: Schall - Wärme - Feuchte - Licht - Brandschutz", desc: "Lohmeyer, Post, Springer. Didaktisch hervorragend aufbereitetes All-in-One Lehrbuch." },
@@ -1768,9 +1768,15 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                     <ul className="space-y-2.5">
                       {resources.websites.map((web, idx) => (
                         <li key={idx} className="text-xs">
-                          <a href={web.url} target="_blank" rel="noopener noreferrer" className="font-bold text-shiraz hover:underline flex items-center gap-1">
-                            {web.name} <span className="text-[10px]">↗</span>
-                          </a>
+                          {web.url ? (
+                            <a href={web.url} target="_blank" rel="noopener noreferrer" className="font-bold text-shiraz hover:underline flex items-center gap-1">
+                              {web.name} <span className="text-[10px]">↗</span>
+                            </a>
+                          ) : (
+                            <span className="font-bold text-text-main flex items-center gap-1">
+                              {web.name}
+                            </span>
+                          )}
                           <span className="text-text-main/70 block mt-0.5">{web.desc}</span>
                         </li>
                       ))}

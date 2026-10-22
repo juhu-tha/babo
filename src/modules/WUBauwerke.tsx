@@ -894,15 +894,15 @@ export default function WUBauwerke() {
         wikipedia={[
           { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' },
           { title: 'Schwarze Wanne', url: 'https://de.wikipedia.org/wiki/Schwarze_Wanne' },
-          { title: 'Frischbetonverbundsystem', url: 'https://de.wikipedia.org/wiki/Frischbetonverbundsystem' }
+          { title: 'Frischbetonverbundsystem' }
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie:2017-12)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Allgemeine Bemessungsregeln)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-          { title: 'DIN 18197:2018-01 (Abdichten von Fugen in Beton mit Fugenbändern)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18197' },
-          { title: 'DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533-1' },
-          { title: 'DIN EN 1504-5:2013-05 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teil 5: Injektion von Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1504-5' }
+          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Allgemeine Bemessungsregeln)' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN 18197:2018-01 (Abdichten von Fugen in Beton mit Fugenbändern)' },
+          { title: 'DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)' },
+          { title: 'DIN EN 1504-5:2013-05 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teil 5: Injektion von Beton)' }
         ]}
         literatur={[
           'Lohmeyer, G.; Ebeling, K.: Weiße Wannen - Einfach und sicher. Konstruktion und Ausführung wasserundurchlässiger Bauwerke aus Beton. 11. Aufl., Köln: Werner Verlag 2018',

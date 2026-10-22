@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Layers, Flame, Factory, FlaskConical } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { Layers, Flame, Factory, FlaskConical, BookOpen, ShieldCheck, Check, Filter, AlertTriangle, Info, CheckCircle2 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import Zementchemie from './Zementchemie';
 import {
@@ -25,8 +25,263 @@ ChartJS.register(
   Legend
 );
 
+// ============================================================================
+// DATENBANK DER NORMZEMENTE (DIN EN 197-1 / DIN EN 197-5 / DIN 1045-2:2023-08)
+// Abgleich mit "Betontechnische Daten" (Heidelberg Materials / IZB, Stand 2022)
+// und Neuausgabe der aktuellen Normengeneration (DIN 1045-2:2023-08 / DIN EN 197-5)
+// ============================================================================
+
+export interface NormCement {
+  code: string;
+  family: 'CEM I' | 'CEM II' | 'CEM II/C-M & CEM VI' | 'CEM III' | 'CEM IV & V';
+  name: string;
+  klinkerMin: number;
+  klinkerMax: number;
+  components: string;
+  co2Reduction: string;
+  anwendungDin1045: string;
+  frostSuitability: string;
+  normReference: string;
+  isNewStandard?: boolean; // Kennzeichnung neuer klinkereffizienter Zemente nach 2022
+}
+
+export const NORM_CEMENTS: NormCement[] = [
+  // CEM I
+  {
+    code: 'CEM I',
+    family: 'CEM I',
+    name: 'Portlandzement',
+    klinkerMin: 95,
+    klinkerMax: 100,
+    components: 'Nur Klinker (K) + bis zu 5 % Nebenbestandteile.',
+    co2Reduction: 'Referenz (0 % CO₂-Minderung)',
+    anwendungDin1045: 'Uneingeschränkt für alle Expositionsklassen zulässig.',
+    frostSuitability: 'Sehr gut (hohe Frost- und Frost-Tausalz-Beständigkeit XF1–XF4).',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2:2023-08'
+  },
+
+  // CEM II
+  {
+    code: 'CEM II/A-S',
+    family: 'CEM II',
+    name: 'Portlandhüttenzement (Typ A)',
+    klinkerMin: 80,
+    klinkerMax: 94,
+    components: 'Hüttensand (S): 6–20 %.',
+    co2Reduction: 'ca. 10–18 % Minderung',
+    anwendungDin1045: 'Uneingeschränkt für alle Expositionsklassen zulässig.',
+    frostSuitability: 'Sehr gut; hohe Dichtigkeit.',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+  {
+    code: 'CEM II/B-S',
+    family: 'CEM II',
+    name: 'Portlandhüttenzement (Typ B)',
+    klinkerMin: 65,
+    klinkerMax: 79,
+    components: 'Hüttensand (S): 21–35 %.',
+    co2Reduction: 'ca. 25–32 % Minderung',
+    anwendungDin1045: 'Zulässig für alle Expositionsklassen. Bei XF2/XF4 mit LP-Beton.',
+    frostSuitability: 'Gut; langsamere Frühfestigkeit, dichte Endstruktur.',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+  {
+    code: 'CEM II/A-LL',
+    family: 'CEM II',
+    name: 'Portlandkalksteinzement (Typ A)',
+    klinkerMin: 80,
+    klinkerMax: 94,
+    components: 'Kalkstein (LL, TOC ≤ 0,20 M.-%): 6–20 %.',
+    co2Reduction: 'ca. 10–18 % Minderung',
+    anwendungDin1045: 'Zulässig für Innen- und Außenbauteile (XC1–XC4, XF1, XA1). Bei XF4 nur mit Nachweis.',
+    frostSuitability: 'Gut bis mäßig (Füllereffekt, feine Porenstruktur).',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+  {
+    code: 'CEM II/B-LL',
+    family: 'CEM II',
+    name: 'Portlandkalksteinzement (Typ B)',
+    klinkerMin: 65,
+    klinkerMax: 79,
+    components: 'Kalkstein (LL): 21–35 %.',
+    co2Reduction: 'ca. 25–32 % Minderung',
+    anwendungDin1045: 'Bevorzugt für XC1–XC3 und mäßige Bewitterung. Einschränkungen bei hoher Tausalzbeaufschlagung.',
+    frostSuitability: 'Mäßig (nicht für XF4 empfohlen).',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+  {
+    code: 'CEM II/A-V',
+    family: 'CEM II',
+    name: 'Portlandflugaschezement (Typ A)',
+    klinkerMin: 80,
+    klinkerMax: 94,
+    components: 'Kieselsäurereiche Flugasche (V): 6–20 %.',
+    co2Reduction: 'ca. 12–20 % Minderung',
+    anwendungDin1045: 'Zulässig für XC1–XC4, XD1–XD3, XA1–XA2. Puzzolanische Nacherhärtung.',
+    frostSuitability: 'Gut; dichtet das Porengefüge gegen Chloride ab.',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+  {
+    code: 'CEM II/A-M & B-M',
+    family: 'CEM II',
+    name: 'Portlandkompositzement',
+    klinkerMin: 65,
+    klinkerMax: 94,
+    components: 'Mehrere Hauptbestandteile (z. B. S-LL, S-V, V-LL): 6–35 % Zumahlung.',
+    co2Reduction: 'ca. 15–35 % Minderung',
+    anwendungDin1045: 'Standardzement im modernen Hoch- und Tiefbau.',
+    frostSuitability: 'Gut (Kombinationseffekt aus Reaktivität und Füllerdichte).',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+
+  // NEUE KLINKEREFFIZIENTE ZEMENTE (DIN EN 197-5 / DIN 1045-2:2023-08)
+  {
+    code: 'CEM II/C-M',
+    family: 'CEM II/C-M & CEM VI',
+    name: 'Portland-Kompositzement (Klinkereffizient)',
+    klinkerMin: 50,
+    klinkerMax: 64,
+    components: 'Klinkersparend: 36–50 % mineralische Zumahlstoffe (z. B. Hüttensand S + Kalkstein LL).',
+    co2Reduction: 'ca. 38–50 % Minderung (Öko-Zement)',
+    anwendungDin1045: 'Zulässig nach DIN 1045-2:2023-08 für definierte Expositionsklassen (XC1–XC4, XF1, WF). Bei XF2/XF4/XD3 nur mit Anwendungsnachweis.',
+    frostSuitability: 'Sorgfältige Nachbehandlung zwingend; gute Gefügedichtigkeit.',
+    normReference: 'DIN EN 197-5:2021-05 & DIN 1045-2:2023-08',
+    isNewStandard: true
+  },
+  {
+    code: 'CEM VI',
+    family: 'CEM II/C-M & CEM VI',
+    name: 'Kompositzement (Hochklinkersparend)',
+    klinkerMin: 35,
+    klinkerMax: 49,
+    components: 'Hüttensand (S): 31–59 % + Kalkstein (LL): 6–20 %.',
+    co2Reduction: 'bis zu 60 % Minderung',
+    anwendungDin1045: 'Neu genormt in DIN EN 197-5; Einsatz nach nationalem Anwendungsdokument DIN 1045-2 für CO₂-optimierte Bauteile.',
+    frostSuitability: 'Langsame Erhärtung, niedrige Hydratationswärme (ideal für massige Bauteile ohne Frost).',
+    normReference: 'DIN EN 197-5:2021-05 & DIN 1045-2:2023-08',
+    isNewStandard: true
+  },
+
+  // CEM III
+  {
+    code: 'CEM III/A',
+    family: 'CEM III',
+    name: 'Hochofenzement (Typ A)',
+    klinkerMin: 35,
+    klinkerMax: 64,
+    components: 'Hüttensand (S): 36–65 %.',
+    co2Reduction: 'ca. 40–55 % Minderung',
+    anwendungDin1045: 'Sehr breites Anwendungsspektrum. Hoher Chloridwiderstand (XD/XS), niedrige Wärme (LH).',
+    frostSuitability: 'Gut (bei XF4 mit speziellem LP-Nachweis).',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+  {
+    code: 'CEM III/B',
+    family: 'CEM III',
+    name: 'Hochofenzement (Typ B)',
+    klinkerMin: 20,
+    klinkerMax: 34,
+    components: 'Hüttensand (S): 66–80 %.',
+    co2Reduction: 'ca. 60–75 % Minderung',
+    anwendungDin1045: 'Hoher Sulfatwiderstand (gilt naturgemäß als SR-Zement). Ideal für Massenbeton und Wasserbau.',
+    frostSuitability: 'Langsame Festigkeitsentwicklung; längere Nachbehandlung obligatorisch.',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+  {
+    code: 'CEM III/C',
+    family: 'CEM III',
+    name: 'Hochofenzement (Typ C)',
+    klinkerMin: 5,
+    klinkerMax: 19,
+    components: 'Hüttensand (S): 81–95 %.',
+    co2Reduction: 'bis zu 85 % Minderung',
+    anwendungDin1045: 'Extrem niedrige Hydratationswärme (VLH), hoher chemischer Widerstand.',
+    frostSuitability: 'Nur für frostfreie Spezialanwendungen (Deponiebau, Schlitzwände).',
+    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+  },
+
+  // CEM IV & V
+  {
+    code: 'CEM IV/A & IV/B',
+    family: 'CEM IV & V',
+    name: 'Puzzolanzement',
+    klinkerMin: 45,
+    klinkerMax: 89,
+    components: 'Puzzolanische Stoffe (Flugasche, Trass): 11–55 %.',
+    co2Reduction: 'ca. 30–50 % Minderung',
+    anwendungDin1045: 'Wasserbau, Massenbeton, chemischer Angriff.',
+    frostSuitability: 'Mäßig (in Deutschland seltener verwendet als CEM III).',
+    normReference: 'DIN EN 197-1:2011-11'
+  },
+  {
+    code: 'CEM V/A & V/B',
+    family: 'CEM IV & V',
+    name: 'Kompositzement',
+    klinkerMin: 20,
+    klinkerMax: 64,
+    components: 'Hüttensand (18–49 %) + Puzzolane/Flugasche (18–49 %).',
+    co2Reduction: 'ca. 50–70 % Minderung',
+    anwendungDin1045: 'Spezialanwendungen mit geringer Wärmeentwicklung.',
+    frostSuitability: 'Langsame Erhärtung.',
+    normReference: 'DIN EN 197-1:2011-11'
+  }
+];
+
+// Festigkeitsklassen nach DIN EN 197-1 Tabelle 7
+export const STRENGTH_CLASSES_TABLE = [
+  {
+    klasse: '32,5 N',
+    earlyDays: '7 Tage',
+    earlyStrength: '≥ 16,0 MPa',
+    normStrength: '32,5 – 52,5 MPa',
+    initialSettingMin: '≥ 75 min',
+    soundnessMax: '≤ 10 mm'
+  },
+  {
+    klasse: '32,5 R',
+    earlyDays: '2 Tage',
+    earlyStrength: '≥ 10,0 MPa',
+    normStrength: '32,5 – 52,5 MPa',
+    initialSettingMin: '≥ 75 min',
+    soundnessMax: '≤ 10 mm'
+  },
+  {
+    klasse: '42,5 N',
+    earlyDays: '2 Tage',
+    earlyStrength: '≥ 10,0 MPa',
+    normStrength: '42,5 – 62,5 MPa',
+    initialSettingMin: '≥ 60 min',
+    soundnessMax: '≤ 10 mm'
+  },
+  {
+    klasse: '42,5 R',
+    earlyDays: '2 Tage',
+    earlyStrength: '≥ 20,0 MPa',
+    normStrength: '42,5 – 62,5 MPa',
+    initialSettingMin: '≥ 60 min',
+    soundnessMax: '≤ 10 mm'
+  },
+  {
+    klasse: '52,5 N',
+    earlyDays: '2 Tage',
+    earlyStrength: '≥ 20,0 MPa',
+    normStrength: '≥ 52,5 MPa',
+    initialSettingMin: '≥ 45 min',
+    soundnessMax: '≤ 10 mm'
+  },
+  {
+    klasse: '52,5 R',
+    earlyDays: '2 Tage',
+    earlyStrength: '≥ 30,0 MPa',
+    normStrength: '≥ 52,5 MPa',
+    initialSettingMin: '≥ 45 min',
+    soundnessMax: '≤ 10 mm'
+  }
+];
+
 export default function Bindemittel() {
-  const [activeTab, setActiveTab] = useState<'herstellung' | 'zement' | 'zementchemie_bogue' | 'zusatzstoffe'>('herstellung');
+  const [activeTab, setActiveTab] = useState<'herstellung' | 'zement' | 'normzemente' | 'zementchemie_bogue' | 'zusatzstoffe'>('normzemente');
+  const [cementFilter, setCementFilter] = useState<string>('ALLE');
 
   const hydratationData = {
     labels: [0, 1, 3, 7, 14, 28],
@@ -92,6 +347,16 @@ export default function Bindemittel() {
             onClick={() => setActiveTab('zement')}
           >
             <Layers size={16} /> Zement &amp; Hydratation
+          </button>
+          <button
+            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
+              activeTab === 'normzemente' 
+                ? 'bg-shiraz text-white border-shiraz shadow-md' 
+                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
+            }`}
+            onClick={() => setActiveTab('normzemente')}
+          >
+            <BookOpen size={16} /> Normzemente (DIN EN 197 / DIN 1045-2)
           </button>
           <button
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -198,6 +463,242 @@ export default function Bindemittel() {
               <li><strong>Monosulfat (AFm-Phase):</strong> Entsteht später, wenn das Sulfat aufgebraucht ist, durch Umwandlung von Ettringit. Bei erneutem Sulfatangriff von außen kann sich wieder Ettringit bilden (sekundäre Ettringitbildung), was zu Treiberscheinungen führt.</li>
             </ul>
           </div>
+        </div>
+      )}
+
+      {activeTab === 'normzemente' && (
+        <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          
+          {/* SYNOPSE & AKTUALITÄTSHINWEIS */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-home-grau/20">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-shiraz/10 text-shiraz rounded-xl">
+                  <BookOpen size={20} />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-text-main">
+                    Normzemente nach DIN EN 197-1 / DIN EN 197-5 &amp; DIN 1045-2:2023-08
+                  </h3>
+                  <p className="text-xs text-text-main/70">
+                    Gegenüberstellung: Stand <em>Betontechnische Daten (Ausgabe 2022)</em> vs. Neuausgabe der aktuellen Normengeneration
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs font-mono font-bold px-3 py-1 bg-off-white text-shiraz border border-home-grau/20 rounded-lg self-start sm:self-auto">
+                DIN 1045-2:2023-08
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div className="p-3.5 bg-slate-50 rounded-xl border border-home-grau/20 space-y-1.5">
+                <span className="font-bold text-slate-700 block flex items-center gap-1.5">
+                  <Info size={14} className="text-slate-500" />
+                  Stand „Betontechnische Daten“ (Heidelberg Materials / IZB, 2022):
+                </span>
+                <p className="text-text-main/75 leading-relaxed">
+                  Basierte auf der 27-Normalzement-Klassifikation nach DIN EN 197-1:2011 (CEM I bis CEM V). Zemente mit stark abgesenktem Klinkergehalt (wie CEM II/C-M) waren damals nur über allgemeine bauaufsichtliche Zulassungen (abZ) oder Vorab-Entwürfe anwendbar.
+                </p>
+              </div>
+
+              <div className="p-3.5 bg-shiraz/5 rounded-xl border border-shiraz/20 space-y-1.5">
+                <span className="font-bold text-shiraz block flex items-center gap-1.5">
+                  <CheckCircle2 size={14} className="text-shiraz" />
+                  Gültiger aktueller Normenstand (DIN 1045-2:2023-08 &amp; DIN EN 197-5:2021):
+                </span>
+                <p className="text-text-main/85 leading-relaxed">
+                  Vollständige bauaufsichtliche Aufnahme der klinkereffizienten Öko-Zemente <strong>CEM II/C-M</strong> (nur 50–64 % Klinker) und <strong>CEM VI</strong> (35–49 % Klinker) in das deutsche Regelwerk DIN 1045-2 zur Reduzierung des CO₂-Fußabdrucks im Betonbau.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* FILTERBAR & NORMZEMENT-KATALOG */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-3 border-b border-home-grau/20">
+              <div>
+                <h4 className="text-base font-bold text-text-main flex items-center gap-2">
+                  <Filter size={18} className="text-shiraz" />
+                  Zementarten &amp; Zusammensetzung nach DIN EN 197-1 und DIN EN 197-5
+                </h4>
+                <p className="text-xs text-text-main/70">Wählen Sie eine Zementfamilie zur selektiven Ansicht:</p>
+              </div>
+
+              <div className="flex flex-wrap gap-1 p-1 bg-off-white rounded-xl border border-home-grau/20 text-xs">
+                {['ALLE', 'CEM I', 'CEM II', 'CEM II/C-M & CEM VI', 'CEM III', 'CEM IV & V'].map(f => (
+                  <button
+                    key={f}
+                    type="button"
+                    onClick={() => setCementFilter(f)}
+                    className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                      cementFilter === f
+                        ? 'bg-shiraz text-white shadow-xs'
+                        : 'text-text-main/70 hover:text-text-main hover:bg-white'
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* ZEMENT-KARTEN */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {NORM_CEMENTS
+                .filter(c => cementFilter === 'ALLE' || c.family === cementFilter)
+                .map(cement => (
+                  <div 
+                    key={cement.code}
+                    className={`p-4 rounded-xl border transition-all flex flex-col justify-between space-y-3 ${
+                      cement.isNewStandard 
+                        ? 'bg-shiraz/5 border-shiraz/30 shadow-xs' 
+                        : 'bg-off-white border-home-grau/25 hover:border-home-grau/40'
+                    }`}
+                  >
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono font-bold text-sm text-shiraz px-2 py-0.5 rounded bg-white border border-home-grau/20">
+                          {cement.code}
+                        </span>
+                        {cement.isNewStandard && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-shiraz text-white">
+                            Neu: DIN EN 197-5
+                          </span>
+                        )}
+                        <span className="text-[11px] text-text-main/60 font-mono">
+                          {cement.normReference.split('/')[0].trim()}
+                        </span>
+                      </div>
+                      
+                      <h5 className="font-bold text-sm text-text-main">
+                        {cement.name}
+                      </h5>
+
+                      {/* Klinkeranteils-Balken */}
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[11px] text-text-main/70">
+                          <span>Klinkergehalt:</span>
+                          <span className="font-bold text-text-main">{cement.klinkerMin} – {cement.klinkerMax} M.-%</span>
+                        </div>
+                        <div className="w-full h-2 rounded-full bg-home-grau/20 overflow-hidden">
+                          <div 
+                            className="h-full bg-shiraz rounded-full"
+                            style={{ width: `${cement.klinkerMax}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="text-xs text-text-main/80 space-y-1 pt-1 border-t border-home-grau/15">
+                        <p><strong>Hauptbestandteile:</strong> {cement.components}</p>
+                        <p><strong>CO₂-Potenzial:</strong> <span className="text-emerald-800 font-bold">{cement.co2Reduction}</span></p>
+                        <p><strong>Frost-Eignung:</strong> {cement.frostSuitability}</p>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-home-grau/20 text-[11px] text-text-main/75 bg-white p-2.5 rounded-lg border border-home-grau/15">
+                      <strong className="text-text-main block mb-0.5">Anwendung nach DIN 1045-2:</strong>
+                      {cement.anwendungDin1045}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* FESTIGKEITSKLASSEN NACH DIN EN 197-1 TABELLE 7 */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
+            <h4 className="text-base font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
+              <ShieldCheck className="text-shiraz" size={18} />
+              Genormte Festigkeitsklassen nach DIN EN 197-1 (Tabelle 7)
+            </h4>
+
+            <p className="text-xs text-text-main/75 leading-relaxed">
+              Die Festigkeitsklassen von Zement werden an genormtem Mörtel nach DIN EN 196-1 geprüft. Der Buchstabe <strong>N</strong> steht für normale Anfangsfestigkeit (Standard), <strong>R</strong> für hohe Anfangsfestigkeit (Rapid):
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs text-left border-collapse">
+                <thead>
+                  <tr className="bg-off-white text-text-main font-bold border-b border-home-grau/25">
+                    <th className="p-3">Festigkeitsklasse</th>
+                    <th className="p-3">Prüfalter Frühfestigkeit</th>
+                    <th className="p-3">Mindest-Frühfestigkeit</th>
+                    <th className="p-3">Normfestigkeit (28 Tage)</th>
+                    <th className="p-3">Erstarrungsbeginn</th>
+                    <th className="p-3">Raumbeständigkeit</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-home-grau/15">
+                  {STRENGTH_CLASSES_TABLE.map((row, idx) => (
+                    <tr key={row.klasse} className={idx % 2 === 0 ? 'bg-white' : 'bg-off-white/40'}>
+                      <td className="p-3 font-mono font-bold text-shiraz">{row.klasse}</td>
+                      <td className="p-3 text-text-main/80">{row.earlyDays}</td>
+                      <td className="p-3 font-bold text-text-main">{row.earlyStrength}</td>
+                      <td className="p-3 font-mono font-bold text-emerald-800">{row.normStrength}</td>
+                      <td className="p-3 text-text-main/80">{row.initialSettingMin}</td>
+                      <td className="p-3 text-text-main/80">{row.soundnessMax}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* SONDERZEMENTE & ZUSATZBEZEICHNUNGEN */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
+            <h4 className="text-base font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
+              <AlertTriangle className="text-amber-800" size={18} />
+              Besondere Eigenschaften &amp; normative Zusatzbezeichnungen (DIN EN 197-1 &amp; DIN 1164-10)
+            </h4>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              
+              {/* SR-Zement */}
+              <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
+                <span className="font-bold text-shiraz uppercase tracking-wider block text-[11px]">Sulfatwiderstand (SR)</span>
+                <h5 className="font-bold text-sm text-text-main">SR 0, SR 3, SR 5 &amp; CEM III</h5>
+                <p className="text-text-main/80 leading-relaxed">
+                  Begrenzung des reaktiven Tricalciumaluminats (<InlineMath math="C_3A" />) im Klinker zur Verhinderung von zerstörendem Sulfattreiben (Ettringitbildung).
+                </p>
+                <div className="p-2.5 bg-white rounded-lg border border-home-grau/15 text-[11px] text-text-main/75 space-y-1">
+                  <p>• <strong>SR 0:</strong> <InlineMath math="C_3A = 0\,\%" /></p>
+                  <p>• <strong>SR 3:</strong> <InlineMath math="C_3A \le 3\,\%" /></p>
+                  <p>• <strong>SR 5:</strong> <InlineMath math="C_3A \le 5\,\%" /></p>
+                  <p>• <strong>Normative Pflicht:</strong> Ab <InlineMath math="\text{SO}_4^{2-} > 600\text{ mg/l}" /> im Wasser (Klasse XA2/XA3 nach DIN 1045-2).</p>
+                </div>
+              </div>
+
+              {/* LH-Zement */}
+              <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
+                <span className="font-bold text-cyan-800 uppercase tracking-wider block text-[11px]">Hydratationswärme (LH / VLH)</span>
+                <h5 className="font-bold text-sm text-text-main">Low Heat &amp; Very Low Heat</h5>
+                <p className="text-text-main/80 leading-relaxed">
+                  Reduziert die Temperaturspitzen und Temperaturgradienten in massigen Betonbauteilen (z. B. Sohlplatten &gt; 1 m, Talsperren, Wehrbauten) zur Rissvermeidung.
+                </p>
+                <div className="p-2.5 bg-white rounded-lg border border-home-grau/15 text-[11px] text-text-main/75 space-y-1">
+                  <p>• <strong>LH (Low Heat):</strong> <InlineMath math="\le 270\text{ J/g}" /> nach 7 Tagen</p>
+                  <p>• <strong>VLH (Very Low Heat):</strong> <InlineMath math="\le 220\text{ J/g}" /> nach 7 Tagen</p>
+                  <p>• <strong>Zementbasis:</strong> Typischerweise hüttensandreich (CEM III/A oder CEM III/B).</p>
+                </div>
+              </div>
+
+              {/* NA-Zement */}
+              <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
+                <span className="font-bold text-emerald-800 uppercase tracking-wider block text-[11px]">Alkaligehalt (NA)</span>
+                <h5 className="font-bold text-sm text-text-main">DIN 1164-10 (AKR-Schutz)</h5>
+                <p className="text-text-main/80 leading-relaxed">
+                  Zement mit niedrigem wirksamen Alkaligehalt (<InlineMath math="\text{Na}_2\text{O}_{\text{eq}}" />) zur Unterbindung der schädigenden Alkali-Kieselsäure-Reaktion (Betonkrebs).
+                </p>
+                <div className="p-2.5 bg-white rounded-lg border border-home-grau/15 text-[11px] text-text-main/75 space-y-1">
+                  <p>• <strong>CEM I:</strong> <InlineMath math="\text{Na}_2\text{O}_{\text{eq}} \le 0{,}60\text{ M.-\%}" /></p>
+                  <p>• <strong>CEM II/A-S:</strong> <InlineMath math="\le 0{,}70\text{ M.-\%}" /></p>
+                  <p>• <strong>CEM III/A:</strong> <InlineMath math="\le 0{,}90\text{ M.-\%}" /> (bei &gt;50 % S)</p>
+                  <p>• <strong>Zwingend bei Feuchteklasse:</strong> WA und WS nach Alkali-Richtlinie.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       )}
 
@@ -386,35 +887,40 @@ export default function Bindemittel() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Bindemittel (Baustoff)', url: 'https://de.wikipedia.org/wiki/Bindemittel_(Baustoff)' },
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' },
-          { title: 'Betonzusatzstoff', url: 'https://de.wikipedia.org/wiki/Betonzusatzstoff' }
+          { title: 'Bindemittel (Baustoff)', url: 'https://de.wikipedia.org/wiki/Bindemittel' },
+          { title: 'Betonzusatzstoff', url: 'https://de.wikipedia.org/wiki/Betonzusatzstoff' },
+          { title: 'Alkali-Kieselsäure-Reaktion', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' }
         ]}
         literatur={[
+          'Heidelberg Materials / InformationsZentrum Beton (IZB): Betontechnische Daten (Ausgabe 2022 / Folgeauflagen)',
           'Stark, J.; Wicht, B. (2013): Zement und Schnellzemente - Chemie, Hydratation und Anwendung (Springer Vieweg)',
           'Locher, F. W. (2000): Zement - Herstellung und Eigenschaften (Verlag Bau+Technik)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
+          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 197-1 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1' },
-          { title: 'DIN EN 450-1 (Flugasche für Beton - Teil 1: Definitionen, Anforderungen und Qualitätskontrolle)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+450-1' },
-          { title: 'DIN EN 13263-1 (Silikastaub für Beton - Teil 1: Definitionen, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13263-1' }
+          { title: 'DIN EN 197-1:2011-11 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },
+          { title: 'DIN EN 197-5:2021-05 (Zement - Teil 5: Portland-Kompositzement CEM II/C-M und Kompositzement CEM VI)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-5' },
+          { title: 'DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität - Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN 1164-10:2013-05 (Zement mit besonderen Eigenschaften - Teil 10: Zement mit niedrigem wirksamen Alkaligehalt NA)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1164-10' },
+          { title: 'DIN EN 450-1:2012-10 (Flugasche für Beton - Teil 1: Definitionen, Anforderungen und Qualitätskontrolle)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+450-1' },
+          { title: 'DIN EN 13263-1:2009-07 (Silikastaub für Beton - Teil 1: Definitionen, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13263-1' }
         ]}
         formeln={[
           {
-            formel: '\\left(\\frac{w}{c}\\right)_{\\text{eq}} = \\frac{w}{c + k \\cdot f}',
-            erklaerung: 'Das äquivalente Wasserzementwert-Konzept (w/z-Wert) nach DIN EN 206. Erlaubt die anteilige Anrechnung aktiver Zusatzstoffe (f = Flugasche mit k = 0.4 oder Silikastaub mit k = 2.0) auf den Zementgehalt c bei festgelegtem wirksamen Wassergehalt w.',
-            quelle: 'DIN EN 206'
+            formel: '\\left(\\frac{w}{c}\\right)_{\\text{eq}} = \\frac{w}{c + k_F \\cdot f + k_S \\cdot s}',
+            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Anrechnung von Steinkohlenflugasche (k_F = 0,40 bei CEM I) und Silikastaub (k_S = 1,0 bzw. 2,0) auf den Zementgehalt c.',
+            quelle: 'DIN EN 206 Tab. 15 / DIN 1045-2'
           },
           {
             formel: '2(3\\text{CaO} \\cdot \\text{SiO}_2) + 6\\text{H}_2\\text{O} \\rightarrow 3\\text{CaO} \\cdot 2\\text{SiO}_2 \\cdot 3\\text{H}_2\\text{O} + 3\\text{Ca(OH)}_2',
-            erklaerung: 'Shorthand: 2 C3S + 6 H -> C-S-H + 3 CH. Hauptreaktion der Alit-Hydratation. Es entstehen festigkeitsbildende C-S-H-Phasen und Calciumhydroxid (Portlandit), welches die Porenwasser-Alkalität (pH ≈ 12.5-13.5) sichert.',
+            erklaerung: 'Alit-Hydratation (2 C3S + 6 H -> C-S-H + 3 CH): Bildung von festigkeitsbildendem C-S-H-Gel und basischem Portlandit (pH-Puffer).',
             quelle: 'Stark/Wicht: Zementchemie'
           },
           {
-            formel: '\\text{SiO}_2 + \\text{Ca(OH)}_2 + \\text{H}_2\\text{O} \\rightarrow \\text{C-S-H} \\quad (x\\text{CaO} \\cdot y\\text{SiO}_2 \\cdot z\\text{H}_2\\text{O})',
-            erklaerung: 'Puzzolanische Reaktion: Reaktive amorphe Kieselsäure (z.B. aus Flugasche oder Silikastaub) bindet wasserlösliches Calciumhydroxid und bildet zusätzliches, gefügeverdichtendes C-S-H-Gel.',
-            quelle: 'DIN EN 450-1'
+            formel: '\\text{Na}_2\\text{O}_{\\text{eq}} = \\%\\text{Na}_2\\text{O} + 0{,}658 \\cdot \\%\\text{K}_2\\text{O}',
+            erklaerung: 'Äquivalenter Alkaligehalt nach DIN 1164-10: Maßgeblich für NA-Zemente zum Schutz vor schädigender Alkali-Kieselsäure-Reaktion (AKR) in den Feuchteklassen WA und WS.',
+            quelle: 'DIN 1164-10 / DAfStb Alkali-Richtlinie'
           }
         ]}
       />

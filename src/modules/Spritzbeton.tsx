@@ -155,9 +155,9 @@ export default function Spritzbeton() {
           { title: 'Neue Österreichische Tunnelbaumethode', url: 'https://de.wikipedia.org/wiki/Neue_%C3%96sterreichische_Tunnelbaumethode' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14487-1' },
-          { title: 'DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18551' },
-          { title: 'DIN 18314 (VOB/C: Spritzbetonarbeiten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18314' },
+          { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)' },
+          { title: 'DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)' },
+          { title: 'DIN 18314 (VOB/C: Spritzbetonarbeiten)' },
           { title: 'ÖBV-Richtlinie Spritzbeton (Klassen J1, J2, J3 zur Frühfestigkeit)', url: 'https://www.bautechnik.pro/' }
         ]}
         literatur={[

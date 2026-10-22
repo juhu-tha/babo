@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTabContext } from '@/src/contexts/TabContext';
-import { ShieldAlert, Scale, X } from 'lucide-react';
-import { BookOpen, FileText, Calculator, Globe, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { ShieldAlert, Scale, X, BookOpen, FileText, Calculator, Globe, ShieldCheck, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { FormulaText } from './FormulaText';
 import { BlockMath } from 'react-katex';
 import { getNormById, NormRecord } from '@/src/data/centralNormenRegistry';
@@ -18,8 +17,8 @@ interface ModuleFooterProps {
   normIds?: string[];
   literatur?: string[];
   formeln?: { formel: string; erklaerung: string; quelle?: string }[];
-  wikipedia?: { title: string; url: string }[];
-  weblinks?: { title: string; url: string }[];
+  wikipedia?: { title: string; url?: string }[];
+  weblinks?: { title: string; url?: string }[];
   /**
    * Revision date according to P22 requirement 4. Default: "nicht geprüft"
    */
@@ -42,16 +41,27 @@ export function ModuleFooter({
 }: ModuleFooterProps) {
   const { setActiveTab } = useTabContext();
   const [showDisclaimerModal, setShowDisclaimerModal] = useState(false);
+  const [openRegelwerke, setOpenRegelwerke] = useState(false);
+  const [openLiteratur, setOpenLiteratur] = useState(false);
+  const [openFormeln, setOpenFormeln] = useState(false);
+
   // Resolve all norms (both from normIds and regelwerke items)
   const resolvedRegelwerke: { title: string; url?: string; code?: string; status?: NormRecord['status'] }[] = [];
+
+  // Helper to ensure DIN norms never have a hyperlink, retaining full text and designation
+  const isDinNorm = (title?: string, code?: string, url?: string): boolean => {
+    const textToCheck = `${title || ''} ${code || ''}`.toUpperCase();
+    return textToCheck.includes('DIN') || (url ? (url.includes('dinmedia.de') || url.includes('din.de')) : false);
+  };
 
   // First process direct normIds
   normIds.forEach(id => {
     const record = getNormById(id);
     if (record) {
+      const isDin = isDinNorm(record.title, record.code, record.url);
       resolvedRegelwerke.push({
         title: `${record.code} (${record.title})`,
-        url: record.url,
+        url: isDin ? undefined : record.url,
         code: record.code,
         status: record.status
       });
@@ -65,9 +75,10 @@ export function ModuleFooter({
     if (typeof item === 'string') {
       const record = getNormById(item);
       if (record) {
+        const isDin = isDinNorm(record.title, record.code, record.url);
         resolvedRegelwerke.push({
           title: `${record.code} (${record.title})`,
-          url: record.url,
+          url: isDin ? undefined : record.url,
           code: record.code,
           status: record.status
         });
@@ -75,7 +86,11 @@ export function ModuleFooter({
         resolvedRegelwerke.push({ title: item });
       }
     } else {
-      resolvedRegelwerke.push(item);
+      const isDin = isDinNorm(item.title, undefined, item.url);
+      resolvedRegelwerke.push({
+        ...item,
+        url: isDin ? undefined : item.url
+      });
     }
   });
 
@@ -103,119 +118,248 @@ export function ModuleFooter({
     return null;
   }
 
-  return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col mt-8 gap-6">
-      {(hasRegelwerke || hasLiteratur || hasWikipedia) && (
-        <div className={`grid grid-cols-1 ${hasRegelwerke && (hasLiteratur || hasWikipedia) ? 'md:grid-cols-2' : ''} gap-8`}>
-          {hasRegelwerke && (
-            <div>
-              <h3 className="text-lg font-bold text-text-main mb-3 flex items-center gap-2">
-                <FileText size={20} className="text-shiraz" />
-                Regelwerke &amp; Normen
-              </h3>
-              <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1.5">
-                {resolvedRegelwerke.map((item, idx) => (
-                  <li key={idx} className="leading-snug">
-                    {item.url ? (
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium"
-                      >
-                        <FormulaText text={item.title} />
-                        <ArrowUpRight size={12} className="opacity-70 shrink-0" />
-                      </a>
-                    ) : (
-                      <FormulaText text={item.title} />
-                    )}
-                    {item.status === 'in_ueberarbeitung' && (
-                      <span className="ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded bg-shiraz/10 text-shiraz border border-shiraz/20">
-                        In Überarbeitung
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+  const sectionCount = (hasRegelwerke ? 1 : 0) + ((hasLiteratur || hasWikipedia) ? 1 : 0) + (hasFormeln ? 1 : 0);
+  const allOpen = (!hasRegelwerke || openRegelwerke) && (!(hasLiteratur || hasWikipedia) || openLiteratur) && (!hasFormeln || openFormeln);
 
-          {(hasLiteratur || hasWikipedia) && (
-            <div className="flex flex-col gap-5">
-              {hasLiteratur && (
-                <div>
-                  <h3 className="text-lg font-bold text-text-main mb-3 flex items-center gap-2">
-                    <BookOpen size={20} className="text-shiraz" />
-                    Literatur &amp; Vertiefung
-                  </h3>
-                  <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
+  const toggleAll = () => {
+    const next = !allOpen;
+    if (hasRegelwerke) setOpenRegelwerke(next);
+    if (hasLiteratur || hasWikipedia) setOpenLiteratur(next);
+    if (hasFormeln) setOpenFormeln(next);
+  };
+
+  return (
+    <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col mt-8 gap-5">
+      {/* Schnellauswahl / Header bar if multiple sections exist */}
+      {sectionCount > 1 && (
+        <div className="flex items-center justify-between pb-2 border-b border-home-grau/20">
+          <span className="text-xs font-bold uppercase tracking-wider text-text-main/60">
+            Regelwerke, Literatur &amp; Formeln
+          </span>
+          <button
+            type="button"
+            onClick={toggleAll}
+            className="text-xs font-bold text-shiraz hover:underline cursor-pointer flex items-center gap-1"
+          >
+            {allOpen ? 'Alle einklappen' : 'Alle ausklappen'}
+          </button>
+        </div>
+      )}
+
+      {/* Die 3 einklappbaren Sektionen */}
+      <div className="flex flex-col gap-3">
+        {/* 1. Regelwerke & Normen */}
+        {hasRegelwerke && (
+          <div className="border border-home-grau/30 rounded-xl overflow-hidden bg-white shadow-xxs transition-all">
+            <button
+              type="button"
+              onClick={() => setOpenRegelwerke(prev => !prev)}
+              aria-expanded={openRegelwerke}
+              className="w-full flex items-center justify-between p-3.5 sm:p-4 text-left hover:bg-off-white/60 transition-colors cursor-pointer group"
+            >
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <div className="w-8 h-8 rounded-lg bg-shiraz/10 text-shiraz flex items-center justify-center shrink-0 border border-shiraz/15">
+                  <FileText size={18} />
+                </div>
+                <span className="text-sm sm:text-base font-bold text-text-main group-hover:text-shiraz transition-colors">
+                  Regelwerke &amp; Normen
+                </span>
+                <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-off-white text-text-main/70 border border-home-grau/30">
+                  {resolvedRegelwerke.length} {resolvedRegelwerke.length === 1 ? 'Eintrag' : 'Einträge'}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0 text-xs font-bold text-shiraz">
+                <span className="hidden sm:inline">
+                  {openRegelwerke ? 'Einklappen' : 'Ausklappen'}
+                </span>
+                <div className="w-7 h-7 rounded-lg bg-off-white border border-home-grau/30 flex items-center justify-center text-text-main/70 group-hover:text-shiraz group-hover:border-shiraz/30 transition-all">
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-200 ${openRegelwerke ? 'rotate-180' : ''}`}
+                  />
+                </div>
+              </div>
+            </button>
+
+            {openRegelwerke && (
+              <div className="p-4 pt-3 border-t border-home-grau/20 bg-off-white/30 animate-in fade-in duration-200">
+                <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1.5">
+                  {resolvedRegelwerke.map((item, idx) => (
+                    <li key={idx} className="leading-snug">
+                      {item.url ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium"
+                        >
+                          <FormulaText text={item.title} />
+                          <ArrowUpRight size={12} className="opacity-70 shrink-0" />
+                        </a>
+                      ) : (
+                        <FormulaText text={item.title} />
+                      )}
+                      {item.status === 'in_ueberarbeitung' && (
+                        <span className="ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded bg-shiraz/10 text-shiraz border border-shiraz/20">
+                          In Überarbeitung
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* 2. Literatur & Vertiefung */}
+        {(hasLiteratur || hasWikipedia) && (
+          <div className="border border-home-grau/30 rounded-xl overflow-hidden bg-white shadow-xxs transition-all">
+            <button
+              type="button"
+              onClick={() => setOpenLiteratur(prev => !prev)}
+              aria-expanded={openLiteratur}
+              className="w-full flex items-center justify-between p-3.5 sm:p-4 text-left hover:bg-off-white/60 transition-colors cursor-pointer group"
+            >
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <div className="w-8 h-8 rounded-lg bg-shiraz/10 text-shiraz flex items-center justify-center shrink-0 border border-shiraz/15">
+                  <BookOpen size={18} />
+                </div>
+                <span className="text-sm sm:text-base font-bold text-text-main group-hover:text-shiraz transition-colors">
+                  Literatur &amp; Vertiefung
+                </span>
+                <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-off-white text-text-main/70 border border-home-grau/30">
+                  {verifiedLiteratur.length + (weblinks ? weblinks.length : 0) + (hasWikipedia ? limitedWikipedia.length : 0)}{' '}
+                  {verifiedLiteratur.length + (weblinks ? weblinks.length : 0) + (hasWikipedia ? limitedWikipedia.length : 0) === 1 ? 'Quelle' : 'Quellen'}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0 text-xs font-bold text-shiraz">
+                <span className="hidden sm:inline">
+                  {openLiteratur ? 'Einklappen' : 'Ausklappen'}
+                </span>
+                <div className="w-7 h-7 rounded-lg bg-off-white border border-home-grau/30 flex items-center justify-center text-text-main/70 group-hover:text-shiraz group-hover:border-shiraz/30 transition-all">
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-200 ${openLiteratur ? 'rotate-180' : ''}`}
+                  />
+                </div>
+              </div>
+            </button>
+
+            {openLiteratur && (
+              <div className="p-4 pt-3 border-t border-home-grau/20 bg-off-white/30 animate-in fade-in duration-200 flex flex-col gap-4">
+                {hasLiteratur && (
+                  <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1.5">
                     {verifiedLiteratur.map((item, idx) => (
                       <li key={idx}><FormulaText text={item} /></li>
                     ))}
                     {weblinks.map((item, idx) => (
                       <li key={`weblink-${idx}`}>
-                        <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1">
-                          <Globe size={14} className="opacity-70" />
-                          {item.title}
-                        </a>
+                        {item.url ? (
+                          <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium">
+                            <Globe size={14} className="opacity-70" />
+                            {item.title}
+                          </a>
+                        ) : (
+                          <span className="text-text-main/80 inline-flex items-center gap-1 font-medium">
+                            <Globe size={14} className="opacity-70" />
+                            {item.title}
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
-                </div>
-              )}
+                )}
 
-              {/* Wikipedia-Links in eigenem Block: Zum Einstieg (nicht zitierfähig), max. 2 (P21) */}
-              {hasWikipedia && (
-                <div className="bg-off-white/80 p-3.5 rounded-xl border border-home-grau/20">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-text-main/70 mb-2 flex items-center gap-1.5">
-                    <Globe size={13} className="text-shiraz" />
-                    Zum Einstieg (nicht zitierfähig)
-                  </h4>
-                  <ul className="space-y-1 text-xs text-text-main/80">
-                    {limitedWikipedia.map((item, idx) => (
-                      <li key={`wiki-${idx}`}>
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-shiraz hover:underline inline-flex items-center gap-1"
-                        >
-                          <ArrowUpRight size={11} className="opacity-70" />
-                          Wikipedia: {item.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-      
-      {hasFormeln && (
-        <div className={`mt-2 ${hasRegelwerke || hasLiteratur || hasWikipedia ? 'pt-6 border-t border-home-grau/20' : ''}`}>
-          <h3 className="text-lg font-bold text-text-main mb-3 flex items-center gap-2">
-            <Calculator size={20} className="text-shiraz" />
-            Verwendete Formeln &amp; Parameter
-          </h3>
-          <div className="grid grid-cols-1 gap-4">
-            {formeln.map((item, idx) => (
-              <div key={idx} className="bg-off-white p-4 rounded-lg border border-home-grau/20">
-                <div className="text-shiraz mb-2 overflow-x-auto">
-                  <BlockMath math={item.formel} />
-                </div>
-                <FormulaText text={item.erklaerung} className="text-sm text-text-main/80 whitespace-pre-line block" />
-                {item.quelle && (
-                  <div className="mt-2 text-xs text-text-main/60 italic border-t border-home-grau/10 pt-2">
-                    Quelle: <FormulaText text={item.quelle} />
+                {hasWikipedia && (
+                  <div className="bg-white p-3.5 rounded-xl border border-home-grau/20">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-text-main/70 mb-2 flex items-center gap-1.5">
+                      <Globe size={13} className="text-shiraz" />
+                      Zum Einstieg (nicht zitierfähig)
+                    </h4>
+                    <ul className="space-y-1 text-xs text-text-main/80">
+                      {limitedWikipedia.map((item, idx) => (
+                        <li key={`wiki-${idx}`}>
+                          {item.url ? (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-shiraz hover:underline inline-flex items-center gap-1 font-medium"
+                            >
+                              <ArrowUpRight size={11} className="opacity-70" />
+                              Wikipedia: {item.title}
+                            </a>
+                          ) : (
+                            <span className="text-text-main/80 inline-flex items-center gap-1 font-medium">
+                              Wikipedia: {item.title}
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </div>
-            ))}
+            )}
           </div>
-        </div>
-      )}
+        )}
+
+        {/* 3. Verwendete Formeln & Parameter */}
+        {hasFormeln && (
+          <div className="border border-home-grau/30 rounded-xl overflow-hidden bg-white shadow-xxs transition-all">
+            <button
+              type="button"
+              onClick={() => setOpenFormeln(prev => !prev)}
+              aria-expanded={openFormeln}
+              className="w-full flex items-center justify-between p-3.5 sm:p-4 text-left hover:bg-off-white/60 transition-colors cursor-pointer group"
+            >
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <div className="w-8 h-8 rounded-lg bg-shiraz/10 text-shiraz flex items-center justify-center shrink-0 border border-shiraz/15">
+                  <Calculator size={18} />
+                </div>
+                <span className="text-sm sm:text-base font-bold text-text-main group-hover:text-shiraz transition-colors">
+                  Verwendete Formeln &amp; Parameter
+                </span>
+                <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-off-white text-text-main/70 border border-home-grau/30">
+                  {formeln.length} {formeln.length === 1 ? 'Formel' : 'Formeln'}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0 text-xs font-bold text-shiraz">
+                <span className="hidden sm:inline">
+                  {openFormeln ? 'Einklappen' : 'Ausklappen'}
+                </span>
+                <div className="w-7 h-7 rounded-lg bg-off-white border border-home-grau/30 flex items-center justify-center text-text-main/70 group-hover:text-shiraz group-hover:border-shiraz/30 transition-all">
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-200 ${openFormeln ? 'rotate-180' : ''}`}
+                  />
+                </div>
+              </div>
+            </button>
+
+            {openFormeln && (
+              <div className="p-4 pt-3 border-t border-home-grau/20 bg-off-white/30 animate-in fade-in duration-200">
+                <div className="grid grid-cols-1 gap-4">
+                  {formeln.map((item, idx) => (
+                    <div key={idx} className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xxs">
+                      <div className="text-shiraz mb-2 overflow-x-auto">
+                        <BlockMath math={item.formel} />
+                      </div>
+                      <FormulaText text={item.erklaerung} className="text-sm text-text-main/80 whitespace-pre-line block" />
+                      {item.quelle && (
+                        <div className="mt-2 text-xs text-text-main/60 italic border-t border-home-grau/10 pt-2">
+                          Quelle: <FormulaText text={item.quelle} />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Aktualitäts- & Revisions-Leiste nach P22 Anforderung 4 */}
       {/* Permanenter Ingenieur-Disclaimer & Rechtliche Pflichtangaben (DDG / DSGVO / BayBO / MVV TB) */}

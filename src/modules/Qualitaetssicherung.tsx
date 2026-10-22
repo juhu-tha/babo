@@ -83,10 +83,10 @@ export default function Qualitaetssicherung() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
-          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)' },
           { title: 'DBV-Merkblatt Betonbauqualitätsklassen (BBQ)', url: 'https://www.betonverein.de/' },
-          { title: 'CSC Technical Manual (Concrete Sustainability Council)', url: 'https://www.csc-germany.de/' }
+          { title: 'CSC Technical Manual (Concrete Sustainability Council)' }
         ]}
         formeln={[
           {

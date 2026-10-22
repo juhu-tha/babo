@@ -1008,10 +1008,10 @@ export default function Holzkorrosion() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[
-          { title: "DIN 68800-1:2019-06 (Holzschutz – Teil 1: Allgemeines)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800-1" },
-          { title: "DIN 68800-2:2022-02 (Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800-2" },
-          { title: "DIN 68800-3:2020-03 (Holzschutz – Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800-3" },
-          { title: "DIN 68800-4:2020-12 (Holzschutz – Teil 4: Bekämpfungsmaßnahmen gegen Holz zerstörende Pilze und Insekten und Sanierungsmaßnahmen)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800-4" }
+          { title: "DIN 68800-1:2019-06 (Holzschutz – Teil 1: Allgemeines)" },
+          { title: "DIN 68800-2:2022-02 (Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau)" },
+          { title: "DIN 68800-3:2020-03 (Holzschutz – Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln)" },
+          { title: "DIN 68800-4:2020-12 (Holzschutz – Teil 4: Bekämpfungsmaßnahmen gegen Holz zerstörende Pilze und Insekten und Sanierungsmaßnahmen)" }
         ]} 
         formeln={[
           {

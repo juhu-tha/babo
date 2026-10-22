@@ -920,8 +920,8 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
             "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011"
           ]} 
           regelwerke={[
-            { title: "DIN 820-1 (Normungsarbeit - Grundsätze)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+820-1" },
-            { title: "DIN EN 45020 (Normung und damit zusammenhängende Tätigkeiten - Allgemeine Begriffe)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+45020" },
+            { title: "DIN 820-1 (Normungsarbeit - Grundsätze)" },
+            { title: "DIN EN 45020 (Normung und damit zusammenhängende Tätigkeiten - Allgemeine Begriffe)" },
             { title: "Wiener Vereinbarung ISO/CEN", url: "https://www.iso.org/vienna-agreement.html" },
             { title: "Verordnung (EU) 2024/3110 (neue BauPVO; löst VO (EU) Nr. 305/2011 schrittweise ab)", url: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R3110" }
           ]} 
@@ -934,7 +934,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
           wikipedia={[
             { title: "Bauproduktenverordnung", url: "https://de.wikipedia.org/wiki/Bauproduktenverordnung" },
             { title: "CE-Kennzeichnung", url: "https://de.wikipedia.org/wiki/CE-Kennzeichnung" },
-            { title: "Akkreditierung (Recht)", url: "https://de.wikipedia.org/wiki/Akkreditierung_(Recht)" },
+            { title: "Akkreditierung (Recht)" },
             { title: "Europäische Technische Bewertung (ETA)", url: "https://de.wikipedia.org/wiki/Europ%C3%A4ische_Technische_Bewertung" }
           ]} 
           literatur={[

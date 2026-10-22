@@ -1610,8 +1610,8 @@ Berechnungen:
         ]}
         regelwerke={[
           { title: 'EU AI Act (Verordnung (EU) 2024/1689 zur Regulierung Künstlicher Intelligenz)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN ISO 19650: Organisation und Digitalisierung von Informationen zu Bauwerken und Ingenieurleistungen (BIM)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+19650' },
-          { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen - Teil B: Allgemeine Vertragsbedingungen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VOB%2FB' }
+          { title: 'DIN EN ISO 19650: Organisation und Digitalisierung von Informationen zu Bauwerken und Ingenieurleistungen (BIM)' },
+          { title: 'VOB/B: Vergabe- und Vertragsordnung für Bauleistungen - Teil B: Allgemeine Vertragsbedingungen' }
         ]}
         formeln={[
           {

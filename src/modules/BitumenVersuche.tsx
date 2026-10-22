@@ -343,10 +343,10 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             { title: 'Erweichungspunkt RuK', url: 'https://de.wikipedia.org/wiki/Erweichungspunkt_RuK' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12591' },
-            { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1426' },
-            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1427' },
-            { title: 'DIN EN 14023 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifizierung von polymermodifizierten Bitumen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14023' }
+            { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel - Spezifikationen für Straßenbaubitumen)' },
+            { title: 'DIN EN 1426 (Bitumen und bitumenhaltige Bindemittel - Bestimmung der Nadelpenetration)' },
+            { title: 'DIN EN 1427 (Bitumen und bitumenhaltige Bindemittel - Bestimmung des Erweichungspunktes Ring und Kugel)' },
+            { title: 'DIN EN 14023 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifizierung von polymermodifizierten Bitumen)' }
           ]}
           literatur={[
             'FGSV (Hrsg.): Technische Prüfvorschriften für Asphalt (TP Asphalt-StB). Köln: FGSV Verlag (Teile in jeweils gültiger Fassung)',

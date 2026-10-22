@@ -764,14 +764,14 @@ export default function Probenahme() {
         regelwerke={[
           { title: 'Ersatzbaustoffverordnung (EBV) – § 8 Probenahme und Probenaufbereitung', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/__8.html' },
           { title: 'LAGA PN 98 (Beprobung von Haufwerken - Richtlinie für das Vorgehen)', url: 'https://www.laga-online.de/' },
-          { title: 'DIN 19698-1:2014-05 / DIN 19698-2:2016-12 (Probenahme von festen und stichfesten Materialien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+19698-1' },
-          { title: 'DIN 19747:2009-07 (Probenvorbehandlung, -vorbereitung und -aufarbeitung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+19747' },
-          { title: 'DIN EN 932-1:1996-11 / DIN EN 932-2:1999-03 (Gesteinskörnungen – Probenahme; Einengen von Laboratoriumsproben)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+932-2' },
-          { title: 'DIN 19528:2009-01 (Elution von Feststoffen – Perkolationsverfahren) / DIN 19529:2015-12 (Schüttelverfahren W/F = 2 l/kg)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+19528' },
-          { title: 'DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504-1' },
-          { title: 'DIN EN 12504-2:2021-10 (Prüfung von Beton in Bauwerken - Teil 2: Bestimmung der Rückprallzahl)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504-2' },
-          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der Druckfestigkeit von Beton in Bauwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13791' },
-          { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehalts in Festbeton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14629' }
+          { title: 'DIN 19698-1:2014-05 / DIN 19698-2:2016-12 (Probenahme von festen und stichfesten Materialien)' },
+          { title: 'DIN 19747:2009-07 (Probenvorbehandlung, -vorbereitung und -aufarbeitung)' },
+          { title: 'DIN EN 932-1:1996-11 / DIN EN 932-2:1999-03 (Gesteinskörnungen – Probenahme; Einengen von Laboratoriumsproben)' },
+          { title: 'DIN 19528:2009-01 (Elution von Feststoffen – Perkolationsverfahren) / DIN 19529:2015-12 (Schüttelverfahren W/F = 2 l/kg)' },
+          { title: 'DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben)' },
+          { title: 'DIN EN 12504-2:2021-10 (Prüfung von Beton in Bauwerken - Teil 2: Bestimmung der Rückprallzahl)' },
+          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der Druckfestigkeit von Beton in Bauwerken)' },
+          { title: 'DIN EN 14629:2007-06 (Bestimmung des Chloridgehalts in Festbeton)' }
         ]}
         formeln={[
           {

@@ -480,7 +480,7 @@ export default function ClusterContentRouter({ activeTab }: ClusterContentRouter
             ? 'baustoffkunde'
             : activeTab === 'vl_instandhaltung'
             ? 'instandhaltung'
-            : 'ueberblick'
+            : 'bauen_im_bestand'
         }
       />
     );

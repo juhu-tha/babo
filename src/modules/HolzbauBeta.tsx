@@ -2208,9 +2208,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Tragwerksbemessung für den Brandfall)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-2' },
-          { title: 'DIN EN 16351 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+16351' }
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines)' },
+          { title: 'DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Tragwerksbemessung für den Brandfall)' },
+          { title: 'DIN EN 16351 (Holzbauwerke - Brettsperrholz - Anforderungen)' }
         ]}
         literatur={[
           'Informationsdienst Holz - Holzbau Handbuch Reihe 1 bis 5',
@@ -2218,7 +2218,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         weblinks={[
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5', url: 'https://www.schneider-holz.com/service/statiksoftware.html' },
+          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
           { title: 'dataholz.eu - Geprüfte Holzbauteile', url: 'https://www.dataholz.eu' },
           { title: 'Informationsdienst Holz', url: 'https://informationsdienst-holz.de/' },
           { title: 'Institut für Holzbau - Wissen Kompakt', url: 'https://www.institut-holzbau.de/' }

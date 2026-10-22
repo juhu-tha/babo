@@ -237,11 +237,11 @@ export default function Gips() {
           'Bundesverband der Gipsindustrie e. V.: GIPS-Datenbuch'
         ]}
         regelwerke={[
-          { title: 'DIN EN 13279-1:2008-11 (Gipsbinder und Gips-Trockenmörtel - Teil 1: Begriffe und Anforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13279-1' },
-          { title: 'DIN EN 13279-2:2014-03 (Gipsbinder und Gips-Trockenmörtel - Teil 2: Prüfverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13279-2' },
-          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+520' },
-          { title: 'DIN 18180:2014-09 (Gipsplatten - Arten und Anforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18180' },
-          { title: 'DIN 18181:2019-03 (Gipsplatten im Hochbau - Verarbeitung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18181' }
+          { title: 'DIN EN 13279-1:2008-11 (Gipsbinder und Gips-Trockenmörtel - Teil 1: Begriffe und Anforderungen)' },
+          { title: 'DIN EN 13279-2:2014-03 (Gipsbinder und Gips-Trockenmörtel - Teil 2: Prüfverfahren)' },
+          { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)' },
+          { title: 'DIN 18180:2014-09 (Gipsplatten - Arten und Anforderungen)' },
+          { title: 'DIN 18181:2019-03 (Gipsplatten im Hochbau - Verarbeitung)' }
         ]}
         formeln={[
           {

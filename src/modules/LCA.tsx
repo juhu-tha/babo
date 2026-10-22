@@ -1334,10 +1334,10 @@ export default function LCA() {
         ]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
         regelwerke={[
-          { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+14040' },
-          { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
-          { title: 'DIN EN 15978:2012-10 (Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15978' },
-          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+17472' },
+          { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Ökobilanz - Grundsätze und Rahmenbedingungen)' },
+          { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD)' },
+          { title: 'DIN EN 15978:2012-10 (Bewertung der umweltbezogenen Qualität von Gebäuden)' },
+          { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)' },
           { title: 'QNG Handbuch: Bilanzierungsregeln für Gebäude-Ökobilanzen', url: 'https://www.qng.info/' }
         ]}
         weblinks={[

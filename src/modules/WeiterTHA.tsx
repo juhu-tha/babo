@@ -20,7 +20,7 @@ interface Program {
   badgeBgColor: string;
   badgeTextColor: string;
   btnBg: string;
-  link: string;
+  link?: string;
   degree: string;
   duration: string;
   format: string;
@@ -332,15 +332,12 @@ export default function WeiterTHA() {
               <ExternalLink size={12} className="text-shiraz" />
               <span>TTZ Aichach</span>
             </a>
-            <a 
-              href="https://www.tha.de/Elektrotechnik/Applied-Research-Master.page" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 border border-home-grau/20 rounded-xl text-xs font-semibold text-text-main transition-all shadow-xs"
+            <span 
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-home-grau/20 rounded-xl text-xs font-semibold text-text-main/80 shadow-xs"
             >
-              <ExternalLink size={12} className="text-shiraz" />
+              <GraduationCap size={12} className="text-shiraz" />
               <span>MAPR (Applied Research)</span>
-            </a>
+            </span>
           </div>
         </div>
       </div>
@@ -425,15 +422,21 @@ export default function WeiterTHA() {
                     <span className="text-xs text-text-main/60">{program.subtitle}</span>
                   </div>
                 </div>
-                <a 
-                  href={program.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={`flex items-center gap-2 px-4 py-2 ${program.btnBg} text-white font-medium text-xs rounded-xl transition-all shadow-sm shrink-0`}
-                >
-                  <span>Zur Webseite</span>
-                  <ExternalLink size={14} />
-                </a>
+                {program.link ? (
+                  <a 
+                    href={program.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-4 py-2 ${program.btnBg} text-white font-medium text-xs rounded-xl transition-all shadow-sm shrink-0`}
+                  >
+                    <span>Zur Webseite</span>
+                    <ExternalLink size={14} />
+                  </a>
+                ) : (
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-500 font-medium text-xs rounded-xl border border-slate-200 shrink-0">
+                    Bewerbung / Information an der THA
+                  </span>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -535,9 +538,9 @@ export default function WeiterTHA() {
         ]}
         regelwerke={[
           { title: 'AHO-Heft Nr. 9 (Projektmanagementleistungen in der Bau- und Immobilienwirtschaft)', url: 'https://www.aho.de/' },
-          { title: 'VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VOB%2FB' },
-          { title: 'DIN 68800 (Holzschutz im Hochbau)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800' },
-          { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18516' }
+          { title: 'VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)' },
+          { title: 'DIN 68800 (Holzschutz im Hochbau)' },
+          { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)' }
         ]}
         weblinks={[
           { title: 'THA_ibi – Institut für Bau und Immobilie', url: 'https://www.tha.de/ibi' },

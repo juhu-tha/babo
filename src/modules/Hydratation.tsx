@@ -954,8 +954,8 @@ export default function Hydratation() {
             { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydratationsw%C3%A4rme' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
-            { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Erhärtungsnachweis)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' },
+            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
+            { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Erhärtungsnachweis)' },
             { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton (Temperatur- und Rissgrenzwerte)', url: 'https://www.dafstb.de/' },
             { title: 'fib Model Code 2010 (Model Code for Concrete Structures)', url: 'https://www.fib-international.org/' },
             { title: 'ZTV-ING: Zusätzliche Technische Vertragsbedingungen und Richtlinien für Ingenieurbauten', url: 'https://www.bast.de/' }

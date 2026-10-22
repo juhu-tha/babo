@@ -165,7 +165,6 @@ const SCHADSTOFFE_DATA = [
   {
     id: 'biogefahren',
     name: 'Biologische Gefahrstoffe',
-    gestisUrl: 'https://gestis-biostoffe.dguv.de',
     icon: <Bug size={24} className="text-emerald-700" />,
     color: 'bg-emerald-50 border-emerald-200',
     textColor: 'text-emerald-800',
@@ -1352,7 +1351,7 @@ export default function Schadstoffe() {
           { title: 'Gefahrstoffverordnung (GefStoffV)', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
           { title: 'TRGS 519 (Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten), Fassung 2014, zuletzt geändert 28.01.2025', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' },
           { title: 'TRGS 521 (Tätigkeiten mit alter Mineralwolle; Neufassung 2026, ersetzt Ausgabe 2008 – Fundstelle manuell prüfen)', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-521' },
-          { title: 'VDI 6202 Blatt 3:2021-09 (Asbest – Erkundung und Bewertung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VDI+6202+Blatt+3' },
+          { title: 'VDI 6202 Blatt 3:2021-09 (Asbest – Erkundung und Bewertung)' },
           { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe und Bauteile in Gebäuden; Landesfassung manuell prüfen)', url: 'https://www.dibt.de/' }
         ]}
         formeln={[

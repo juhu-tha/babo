@@ -365,7 +365,7 @@ export default function MechanischePruefungen() {
 
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto text-slate-800 animate-fade-in font-sans">
+    <div className="flex flex-col gap-6 w-full text-slate-800 animate-fade-in font-sans">
       
       {/* --- Unified Header: Modern Laboratory Setup --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm">
@@ -1120,16 +1120,16 @@ export default function MechanischePruefungen() {
           { title: 'Asphalt', url: 'https://de.wikipedia.org/wiki/Asphalt' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12390-3' },
-          { title: 'DIN EN 12390-5 (Deutsche Fassung EN 12390-5:2019; Biegezugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12390-5' },
-          { title: 'DIN EN 12390-6:2024-05 (Prüfung von Festbeton - Teil 6: Spaltzugfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12390-6' },
-          { title: 'DIN EN 12697-22 / -23 / -34 (Asphalt – Spurbildungstest, indirekte Zugfestigkeit, Marshall-Prüfung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12697-23' },
-          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe - Zugversuch - Teil 1: Prüfverfahren bei Raumtemperatur)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6892-1' },
-          { title: 'DIN EN ISO 15630-1 (Stähle für die Bewehrung von Beton – Prüfverfahren) / DIN 488-1 (Betonstahl – Sorten, Eigenschaften)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+488-1' },
-          { title: 'DIN EN ISO 148-1 (Metallische Werkstoffe – Kerbschlagbiegeversuch nach Charpy)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+148-1' },
-          { title: 'DIN EN 408:2012-10 (Holzbauwerke - Bauholz für tragende Zwecke: Bestimmung mechanischer Eigenschaften)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+408' },
-          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen) / DIN EN 384 (charakteristische Werte)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+338' },
-          { title: 'DIN EN 302-1 / DIN EN 301 (Klebstoffe für tragende Holzbauteile – Prüfverfahren, Anforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+302-1' }
+          { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)' },
+          { title: 'DIN EN 12390-5 (Deutsche Fassung EN 12390-5:2019; Biegezugfestigkeit von Probekörpern)' },
+          { title: 'DIN EN 12390-6:2024-05 (Prüfung von Festbeton - Teil 6: Spaltzugfestigkeit von Probekörpern)' },
+          { title: 'DIN EN 12697-22 / -23 / -34 (Asphalt – Spurbildungstest, indirekte Zugfestigkeit, Marshall-Prüfung)' },
+          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe - Zugversuch - Teil 1: Prüfverfahren bei Raumtemperatur)' },
+          { title: 'DIN EN ISO 15630-1 (Stähle für die Bewehrung von Beton – Prüfverfahren) / DIN 488-1 (Betonstahl – Sorten, Eigenschaften)' },
+          { title: 'DIN EN ISO 148-1 (Metallische Werkstoffe – Kerbschlagbiegeversuch nach Charpy)' },
+          { title: 'DIN EN 408:2012-10 (Holzbauwerke - Bauholz für tragende Zwecke: Bestimmung mechanischer Eigenschaften)' },
+          { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen) / DIN EN 384 (charakteristische Werte)' },
+          { title: 'DIN EN 302-1 / DIN EN 301 (Klebstoffe für tragende Holzbauteile – Prüfverfahren, Anforderungen)' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',

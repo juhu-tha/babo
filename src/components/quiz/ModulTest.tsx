@@ -1,6 +1,6 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useMemo, useState } from 'react';
-import { GraduationCap, CheckCircle2, XCircle, AlertTriangle, ExternalLink, RotateCcw } from 'lucide-react';
+import { GraduationCap, CheckCircle2, XCircle, AlertTriangle, ExternalLink, RotateCcw, ChevronDown, ChevronUp } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
 import { QUIZ_QUESTIONS } from '@/src/data/quizData';
 
@@ -10,16 +10,20 @@ import { QUIZ_QUESTIONS } from '@/src/data/quizData';
  * Fragen stammen aus dem zentralen Fragenpool (src/data/quiz.json) und erscheinen
  * damit zugleich im Prüfungsmodus der Übungsaufgaben. Markup und Klassen entsprechen
  * der Fragendarstellung in InteractiveQuizSystem (Sofort-Feedback).
+ *
+ * Systemweit standardmäßig zum Start eingeklappt, per Klick auf die Kopfzeile ausklappbar.
  */
 export interface ModulTestProps {
   moduleId: string;
   title?: string;
+  defaultOpen?: boolean;
 }
 
-export function ModulTest({ moduleId, title }: ModulTestProps) {
+export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestProps) {
   const { setActiveTab } = useTabContext();
   const questions = useMemo(() => QUIZ_QUESTIONS.filter(q => q.moduleId === moduleId), [moduleId]);
   const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   if (questions.length === 0) return null;
 
@@ -27,34 +31,78 @@ export function ModulTest({ moduleId, title }: ModulTestProps) {
   const correct = answered.filter(q => answers[q.id] === q.correctIdx).length;
 
   return (
-    <div className="bg-white p-6 sm:p-8 rounded-3xl border border-home-grau/30 shadow-sm flex flex-col gap-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-          <GraduationCap className="text-shiraz" size={20} />
-          {title ?? 'Selbsttest: Haben Sie es verstanden?'}
-        </h3>
-        <div className="flex items-center gap-2 text-xs font-bold text-text-main">
-          <span className="px-2.5 py-1 bg-shiraz text-white rounded-lg text-xs font-mono">
-            {formatDeWert(correct)} / {questions.length} richtig
-          </span>
-          {answered.length > 0 && (
-            <button
-              type="button"
-              onClick={() => setAnswers({})}
-              className="px-3 py-2 rounded-xl text-xs font-bold text-text-main/60 hover:text-text-main bg-off-white border border-home-grau/30 transition-all cursor-pointer flex items-center gap-1.5"
-            >
-              <RotateCcw size={14} /> Zurücksetzen
-            </button>
-          )}
+    <div className="bg-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-home-grau/30 shadow-sm flex flex-col gap-4 transition-all">
+      {/* Header Button: Klickbar zum Ein- und Ausklappen */}
+      <button
+        type="button"
+        onClick={() => setIsOpen(prev => !prev)}
+        aria-expanded={isOpen}
+        className="w-full flex items-center justify-between text-left cursor-pointer group gap-3"
+      >
+        <div className="flex items-center gap-3 flex-wrap">
+          <div className="w-9 h-9 rounded-xl bg-shiraz/10 text-shiraz flex items-center justify-center shrink-0 border border-shiraz/15 shadow-xxs">
+            <GraduationCap size={20} />
+          </div>
+          <div>
+            <h3 className="text-base sm:text-lg font-bold text-text-main group-hover:text-shiraz transition-colors flex items-center gap-2">
+              {title ?? 'Selbsttest: Haben Sie es verstanden?'}
+            </h3>
+            <p className="text-xs text-text-main/60">
+              Stufe 4 des Lehrpfads: Überprüfen Sie Ihr Fach- und Bemessungswissen mit Sofort-Feedback
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5 ml-0 sm:ml-2">
+            <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-off-white text-text-main/70 border border-home-grau/30">
+              {questions.length} {questions.length === 1 ? 'Frage' : 'Fragen'}
+            </span>
+            {answered.length > 0 && (
+              <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-shiraz text-white">
+                {formatDeWert(correct)} / {questions.length} richtig
+              </span>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-shiraz rounded-full transition-all duration-300"
-          style={{ width: `${(answered.length / questions.length) * 100}%` }}
-        />
-      </div>
+        <div className="flex items-center gap-2 shrink-0 text-xs font-bold text-shiraz">
+          <span className="hidden sm:inline">
+            {isOpen ? 'Einklappen' : 'Selbsttest aufklappen'}
+          </span>
+          <div className="w-8 h-8 rounded-xl bg-off-white border border-home-grau/30 flex items-center justify-center text-text-main/70 group-hover:text-shiraz group-hover:border-shiraz/30 transition-all shadow-xxs">
+            <ChevronDown
+              size={18}
+              className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+            />
+          </div>
+        </div>
+      </button>
+
+      {/* Ausklappbarer Inhalt */}
+      {isOpen && (
+        <div className="pt-4 border-t border-home-grau/20 flex flex-col gap-6 animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-off-white/60 p-4 rounded-2xl border border-home-grau/20">
+            <div className="text-xs font-medium text-text-main/80">
+              Fortschritt: <strong className="text-text-main font-mono">{formatDeWert(answered.length)}</strong> von <span className="font-mono">{questions.length}</span> beantwortet 
+              {answered.length > 0 && (
+                <span className="ml-2 font-bold text-shiraz font-mono">({formatDeWert(correct)} korrekt)</span>
+              )}
+            </div>
+            {answered.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setAnswers({})}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold text-text-main/70 hover:text-shiraz bg-white border border-home-grau/30 transition-all cursor-pointer flex items-center gap-1.5 shadow-xxs w-fit"
+              >
+                <RotateCcw size={13} /> Antworten zurücksetzen
+              </button>
+            )}
+          </div>
+
+          <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-shiraz rounded-full transition-all duration-300"
+              style={{ width: `${(answered.length / questions.length) * 100}%` }}
+            />
+          </div>
 
       {questions.map((q, qIdx) => {
         const selected = answers[q.id];
@@ -180,6 +228,18 @@ export function ModulTest({ moduleId, title }: ModulTestProps) {
           </div>
         );
       })}
+
+          <div className="flex justify-end pt-2 border-t border-home-grau/15">
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="text-xs text-text-main/60 hover:text-shiraz font-medium flex items-center gap-1 cursor-pointer transition-colors"
+            >
+              <ChevronUp size={14} /> Selbsttest wieder einklappen
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

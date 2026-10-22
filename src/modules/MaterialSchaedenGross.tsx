@@ -180,8 +180,7 @@ export const DAMAGE_CASES: DamageCaseStudy[] = [
       {
         title: 'Eishalle Bad Reichenhall (Übersicht mit Nachweisen zu Gutachten und Strafverfahren)',
         institutionOrAuthor: 'Wikipedia',
-        details: 'Sekundärquelle; die Gutachten selbst sind nicht öffentlich.',
-        url: 'https://de.wikipedia.org/wiki/Eishalle_Bad_Reichenhall'
+        details: 'Sekundärquelle; die Gutachten selbst sind nicht öffentlich.'
       },
       {
         title: 'BGH, Urteil vom 12.01.2010 – 1 StR 272/09',
@@ -907,8 +906,7 @@ export const DAMAGE_CASES: DamageCaseStudy[] = [
       {
         title: 'Investigation of the Kansas City Hyatt Regency Walkways Collapse',
         institutionOrAuthor: 'National Bureau of Standards (NBS Building Science Series 143, heute NIST)',
-        details: 'Umfassender technischer Untersuchungsbericht des NBS zur rechnerischen und experimentellen Analyse des Trägerversagens, 1982.',
-        url: 'https://de.wikipedia.org/wiki/Hyatt-Regency-Einsturz'
+        details: 'Umfassender technischer Untersuchungsbericht des NBS zur rechnerischen und experimentellen Analyse des Trägerversagens, 1982.'
       },
       {
         title: 'AISC Code of Standard Practice for Steel Buildings and Bridges',
@@ -1133,7 +1131,7 @@ export default function MaterialSchaedenGross() {
   });
 
   return (
-    <div className="flex flex-col gap-8 max-w-6xl mx-auto">
+    <div className="flex flex-col gap-8 w-full">
       {/* Header Container */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-5 mb-5">
@@ -1537,10 +1535,10 @@ export default function MaterialSchaedenGross() {
         wikipedia={[
           { title: 'Alkali-Kieselsäure-Reaktion', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' },
           { title: 'Eisenbahnunfall von Burgrain (Garmisch-Partenkirchen)', url: 'https://de.wikipedia.org/wiki/Eisenbahnunfall_von_Burgrain' },
-          { title: 'Hyatt-Regency-Einsturz (Kansas City)', url: 'https://de.wikipedia.org/wiki/Hyatt-Regency-Einsturz' },
-          { title: 'Katastrophe von Stava (Dammbruch)', url: 'https://de.wikipedia.org/wiki/Katastrophe_von_Stava' },
+          { title: 'Hyatt-Regency-Einsturz (Kansas City)' },
+          { title: 'Katastrophe von Stava (Dammbruch)' },
           { title: 'Schiersteiner Brücke (Havarie)', url: 'https://de.wikipedia.org/wiki/Schiersteiner_Br%C3%BCcke' },
-          { title: 'Einsturz der Eishalle Bad Reichenhall', url: 'https://de.wikipedia.org/wiki/Eishalle_Bad_Reichenhall' },
+          { title: 'Einsturz der Eishalle Bad Reichenhall' },
           { title: 'Polcevera-Viadukt (Ponte Morandi)', url: 'https://de.wikipedia.org/wiki/Polcevera-Viadukt' },
           { title: 'Carolabrücke (Dresden)', url: 'https://de.wikipedia.org/wiki/Carolabr%C3%BCcke_(Dresden)' },
           { title: 'Silver Bridge', url: 'https://de.wikipedia.org/wiki/Silver_Bridge' },
@@ -1559,10 +1557,10 @@ export default function MaterialSchaedenGross() {
         regelwerke={[
           { title: 'DAfStb-Alkali-Richtlinie (Alkalireaktion im Beton), Ausgabe 2013-10', url: 'https://www.dafstb.de/' },
           { title: 'VDI 6200 (Standsicherheit von Bauwerken - Regelmäßige Überprüfung)', url: 'https://www.vdi.de/richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung' },
-          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1076' },
-          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12620' },
-          { title: 'DIN EN 1995-1-1 / Eurocode 5 (Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 1992-2 / Eurocode 2 (Betonbrücken - Bemessungs- und Konstruktionsregeln)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-2' }
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)' },
+          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton)' },
+          { title: 'DIN EN 1995-1-1 / Eurocode 5 (Bemessung und Konstruktion von Holzbauten)' },
+          { title: 'DIN EN 1992-2 / Eurocode 2 (Betonbrücken - Bemessungs- und Konstruktionsregeln)' }
         ]}
         formeln={[
           {

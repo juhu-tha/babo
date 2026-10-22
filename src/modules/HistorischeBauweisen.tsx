@@ -919,10 +919,10 @@ export default function HistorischeBauweisen() {
           "WTA-Merkblatt 8-1: Fachwerkinstandsetzung nach WTA I – Bauphysikalische Anforderungen an Fachwerkgebäude (Ausgabe manuell prüfen)."
         ]}
         regelwerke={[
-          { title: "DIN 1053-1:1996-11 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1053-1" },
+          { title: "DIN 1053-1:1996-11 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)" },
           { title: "WTA-Merkblätter Reihe 8 (Fachwerkinstandsetzung, u. a. Ausfachungen)", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 68100:2010-07 (Toleranzsystem für Holzbe- und -verarbeitung – Schwind- und Quellmaße)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68100" },
-          { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1" }
+          { title: "DIN 68100:2010-07 (Toleranzsystem für Holzbe- und -verarbeitung – Schwind- und Quellmaße)" },
+          { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)" }
         ]}
         formeln={[
           {

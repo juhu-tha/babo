@@ -5,6 +5,7 @@ export type TabId =
   | 'admin'
  
   | 'start'
+  | 'labor_sicherheit'
   | 'modulstruktur'
   | 'beton_info'
   | 'grundlagen_info'
@@ -41,6 +42,7 @@ export type TabId =
   | 'mechanische_pruefungen'
   | 'biegezugversuch'
   | 'mischungsberechnung'
+  | 'betonkennwerte'
   | 'frischbeton'
   | 'frischbetontemperatur' 
     | 'hydratation' 
@@ -362,8 +364,9 @@ export const TAB_ALIASES: Record<string, TabId> = {
   'bauteilbemessung': 'stahlbeton_bemessung',
   'bauprodukte': 'bauprodukte_info',
   'sonderbeton': 'sonderbetone',
-  'vorlesungen': 'vl_ueberblick',
-  'vorlesung': 'vl_ueberblick',
+  'vorlesungen': 'vl_bauen_im_bestand',
+  'vorlesung': 'vl_bauen_im_bestand',
+  'vl_ueberblick': 'vl_bauen_im_bestand',
   'vl_bestand': 'vl_bauen_im_bestand',
   'vl_nachhaltigkeit': 'vl_nachhaltiges_bauen',
   'vl_schaeden': 'vl_bauschaeden',
@@ -385,6 +388,15 @@ export function isKnownTab(tab: string): boolean {
 }
 
 function getInitialTab(): TabId {
+  // Direktlinks (z. B. baustoffboard.de/#spannbeton) beim ersten Laden berücksichtigen
+  try {
+    if (typeof window !== 'undefined') {
+      const hash = decodeURIComponent(window.location.hash.substring(1)).trim();
+      if (hash && isKnownTab(hash)) return resolveTabId(hash.toLowerCase());
+    }
+  } catch {
+    /* ungültiger Hash → Startseite */
+  }
   return 'start';
 }
 
@@ -415,13 +427,13 @@ export function TabProvider({ children }: { children: ReactNode }) {
   };
   const toggleGlossaryTooltipMode = () => setGlossaryTooltipMode(!glossaryTooltipMode);
 
-  // Formel-Herleitungs-Modus (Schritt-für-Schritt Rechenwege, systemweit standardmäßig aktiv)
+  // Formel-Herleitungs-Modus (Schritt-für-Schritt Rechenwege, systemweit standardmäßig eingeklappt, per Klick aufklappbar)
   const [formulaDerivationMode, setFormulaDerivationModeState] = useState<boolean>(() => {
     try {
       const saved = localStorage.getItem('baustoffboard_derivation_mode');
-      return saved !== null ? saved === 'true' : true; // Standard: automatisch aktiv in allen Modulen und Reitern
+      return saved !== null ? saved === 'true' : false; // Standard: eingeklappt in allen Modulen und Reitern
     } catch {
-      return true;
+      return false;
     }
   });
   const setFormulaDerivationMode = (enabled: boolean) => {

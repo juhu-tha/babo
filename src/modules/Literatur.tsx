@@ -627,12 +627,12 @@ export default function Literatur() {
           'Hillebrandt, A. et al.: Atlas Recycling – Gebäude als Materialressource (Edition Detail)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 690: Richtlinien für Titelangaben und Zitate von Informationsressourcen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+690' },
-          { title: 'DIN 1505-2: Zitierregeln für wissenschaftliche Veröffentlichungen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1505-2' },
-          { title: 'DIN EN 1990: Eurocode: Grundlagen der Tragwerksplanung (Statistische Auswertung von Werkstoffkennwerten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' }
+          { title: 'DIN EN ISO 690: Richtlinien für Titelangaben und Zitate von Informationsressourcen' },
+          { title: 'DIN 1505-2: Zitierregeln für wissenschaftliche Veröffentlichungen' },
+          { title: 'DIN EN 1990: Eurocode: Grundlagen der Tragwerksplanung (Statistische Auswertung von Werkstoffkennwerten)' }
         ]}
         weblinks={[
-          { title: 'DIN Media (ehemals Beuth Verlag) – Zentrales Normenportal', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+Media' },
+          { title: 'DIN Media (ehemals Beuth Verlag) – Zentrales Normenportal' },
           { title: 'SpringerLink – Bautechnische Fachbücher & Journale', url: 'https://link.springer.com/' },
           { title: 'Wiley Online Library – Beton- und Stahlbetonbau', url: 'https://onlinelibrary.wiley.com/' },
           { title: 'ScienceDirect – Cement and Concrete Research', url: 'https://www.sciencedirect.com/journal/cement-and-concrete-research' },

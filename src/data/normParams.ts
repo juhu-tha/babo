@@ -57,3 +57,7 @@ export const DIN1045_3_NACHBEHANDLUNG = {
   },
   x0_xc1_tage: 0.5,
 };
+
+// Re-Export aller detaillierten Normen-Stammdaten aus dem zentralen standards/-Register
+export * from './standards';
+

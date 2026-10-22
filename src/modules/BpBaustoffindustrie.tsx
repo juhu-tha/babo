@@ -258,14 +258,9 @@ export default function BpBaustoffindustrie() {
                   Betrieben durch die ZBW (Leibniz-Informationszentrum Wirtschaft). Hervorragende Recherchequelle für wissenschaftliche Literatur, Dissertationen und Fachmonografien im Bereich der Energiewende in Baustoffbranchen.
                 </p>
               </div>
-              <a 
-                href="https://www.zbw.eu/de/befrachtung/econis" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="mt-4 inline-flex items-center text-xs font-bold text-shiraz hover:underline"
-              >
-                Zur ZBW ECONIS-Suche ↗
-              </a>
+              <span className="mt-4 inline-flex items-center text-xs font-medium text-slate-500">
+                ZBW ECONIS-Suche (Fachdatenbank / Universitätsbibliothek)
+              </span>
             </div>
           </div>
         </div>
@@ -289,7 +284,7 @@ export default function BpBaustoffindustrie() {
         regelwerke={[
           { title: 'Bundesberggesetz (BBergG: Gewinnung von Bodenschätzen)', url: 'https://www.gesetze-im-internet.de/bbergg/' },
           { title: 'Bundes-Immissionsschutzgesetz (BImSchG)', url: 'https://www.gesetze-im-internet.de/bimschg/' },
-          { title: 'DIN EN 197-1 (Zement: Zusammensetzung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1' }
+          { title: 'DIN EN 197-1 (Zement: Zusammensetzung und Konformität)' }
         ]}
         formeln={[
           {

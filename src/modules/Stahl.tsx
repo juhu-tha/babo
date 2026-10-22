@@ -3130,16 +3130,16 @@ export default function Stahl() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1993-1-1:2024-03 / NA:2021-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1-1' },
-          { title: 'DIN EN 1993-1-2:2021-09 (Eurocode 3 - Teil 1-2: Tragwerksbemessung für den Brandfall)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1-2' },
-          { title: 'DIN EN 1993-1-9:2024-03 (Eurocode 3 - Teil 1-9: Ermüdung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1-9' },
-          { title: 'DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus unlegierten Baustählen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+10025-2' },
-          { title: 'DIN EN 1090-2:2018-09 (Ausführung von Stahltragwerken und Aluminiumtragwerken - Technische Regeln für Stahltragwerke)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1090-2' },
-          { title: 'DIN EN 10080:2005-08 (Betonstähle - Schweißgeeigneter Betonstahl)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+10080' }
+          { title: 'DIN EN 1993-1-1:2024-03 / NA:2021-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau)' },
+          { title: 'DIN EN 1993-1-2:2021-09 (Eurocode 3 - Teil 1-2: Tragwerksbemessung für den Brandfall)' },
+          { title: 'DIN EN 1993-1-9:2024-03 (Eurocode 3 - Teil 1-9: Ermüdung)' },
+          { title: 'DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus unlegierten Baustählen)' },
+          { title: 'DIN EN 1090-2:2018-09 (Ausführung von Stahltragwerken und Aluminiumtragwerken - Technische Regeln für Stahltragwerke)' },
+          { title: 'DIN EN 10080:2005-08 (Betonstähle - Schweißgeeigneter Betonstahl)' }
         ]}
         weblinks={[
           { title: 'Dlubal Querschnittswerte – Online-Profilrechner für Walzprofile', url: 'https://www.dlubal.com/de/querschnittswerte/' },
-          { title: 'STRIAN – Online-Stabwerksberechnung für Rahmen & Fachwerke', url: 'https://strian.designer.io/' },
+          { title: 'STRIAN – Online-Stabwerksberechnung für Rahmen & Fachwerke' },
           { title: 'SkyCiv Free Beam Calculator – Momenten- & Querkraftverläufe', url: 'https://skyciv.com/free-beam-calculator/' }
         ]}
         formeln={[

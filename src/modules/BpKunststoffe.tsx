@@ -1243,9 +1243,9 @@ export default function BpKunststoffe() {
           'Puntigam, W.: Die Flachdach-Richtlinien (Fachregel für Abdichtungen).' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+1043-1' },
-          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18531' },
-          { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13956' }
+          { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)' },
+          { title: 'DIN 18531 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen)' },
+          { title: 'DIN EN 13956 (Abdichtungsbahnen - Kunststoff- und Elastomerbahnen für Dachabdichtungen)' }
         ]} 
         formeln={[
           { 

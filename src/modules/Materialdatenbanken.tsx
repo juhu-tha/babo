@@ -829,7 +829,7 @@ export default function Materialdatenbanken() {
           { title: 'Materialdatenbanken', url: 'https://de.wikipedia.org/wiki/Werkstoffdatenbank' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
+          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)' },
           { title: 'BNB-Kriterium 1.1.1 (Treibhausgaspotenzial und Primärenergiebedarf)', url: 'https://www.bnb-nachhaltigesbauen.de/' }
         ]}
         literatur={[

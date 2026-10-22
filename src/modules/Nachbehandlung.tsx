@@ -61,7 +61,7 @@ export default function Nachbehandlung() {
             <Droplets className="text-shiraz" /> Nachbehandlung &amp; Verdunstung
           </h2>
           <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300">
-            Berechnet nach DIN EN 1992-1-1 + NA (DE)
+            Berechnet nach DIN EN 13670 / DIN 1045-3:2023-08
           </span>
         </div>
       
@@ -283,12 +283,13 @@ export default function Nachbehandlung() {
             { title: "Zement-Merkblatt B8: Nachbehandlung von Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
           ]} 
           wikipedia={[
-            { title: 'Nachbehandlung (Beton)', url: 'https://de.wikipedia.org/wiki/Nachbehandlung' },
+            { title: 'Nachbehandlung (Beton)' },
             { title: 'Frühschwinden', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Nachbehandlungsklassen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' },
-            { title: 'DIN EN 206 / DIN 1045-2 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
+            { title: 'DIN EN 13670:2010-06 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
+            { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton - Teil 3: Bauausführung - Anwendungsregeln zu DIN EN 13670)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' },
+            { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
             { title: 'ACI 305R: Guide to Hot Weather Concreting (Verdunstungsnomogramm)', url: 'https://www.concrete.org/' },
             { title: 'DBV-Merkblatt: Nachbehandlung von Beton (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/' }
           ]}

@@ -337,11 +337,11 @@ export default function CscZertifizierung() {
       <ModuleFooter 
         weblinks={[
           { title: "CSC - Concrete Sustainability Council (Offizielle Website)", url: "https://www.concretesustainabilitycouncil.com/" },
-          { title: "CSC in Deutschland (BTB)", url: "https://www.transportbeton.org/nachhaltigkeit/csc-zertifizierung" },
+          { title: "CSC in Deutschland (BTB)" },
           { title: "DGNB Anrechenbarkeit von CSC-Zertifikaten", url: "https://www.dgnb.de/" }
         ]} 
         wikipedia={[
-          { title: "Concrete Sustainability Council", url: "https://de.wikipedia.org/wiki/Concrete_Sustainability_Council" },
+          { title: "Concrete Sustainability Council" },
           { title: "Nachhaltiges Bauen", url: "https://de.wikipedia.org/wiki/Nachhaltiges_Bauen" }
         ]} 
         literatur={[
@@ -351,7 +351,7 @@ export default function CscZertifizierung() {
         ]} 
         regelwerke={[
           { title: 'CSC Certification System Version 2.1', url: 'https://www.concretesustainabilitycouncil.com/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' }
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken)' }
         ]} 
         formeln={[
           {

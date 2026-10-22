@@ -694,14 +694,14 @@ export default function Materialpaesse() {
       <ModuleFooter
         lastReviewed="Oktober 2026 (AP 13 Digitales: falsche GModG-Pflichtaussage und Platzhaltertext entfernt, MCI/UMI-Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
-          { title: 'Gebäuderessourcenpass', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4uderessourcenpass' },
+          { title: 'Gebäuderessourcenpass' },
           { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' },
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
           { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
         ]}
         regelwerke={[
           { title: 'DGNB Kriterium TEC 1.6 (Rückbaufreundlichkeit und Kreislaufwirtschaft)', url: 'https://www.dgnb.de/' },
-          { title: 'DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15978' },
+          { title: 'DIN EN 15978 (Nachhaltigkeit von Bauwerken - Bewertung der umweltbezogenen Qualität von Gebäuden)' },
           { title: 'ISO 20887:2020 (Design for disassembly and adaptability)', url: 'https://www.iso.org/' },
           { title: 'EU-Taxonomie, Delegierte Verordnung (EU) 2021/2139, Tätigkeit 7.1/7.2 (Kreislaufkriterien bei Neubau und Renovierung)', url: 'https://finance.ec.europa.eu/' }
         ]}

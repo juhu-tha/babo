@@ -22,7 +22,7 @@ interface DBRecord {
   discipline: string;
   publisher: string;
   accessibility: string;
-  url: string;
+  url?: string;
   isBeta?: boolean;
   standards: string[];
   evaluation: string;
@@ -57,7 +57,6 @@ const FREE_DATABASES: DBRecord[] = [
     discipline: 'PRAXISWISSEN',
     publisher: 'Berufsgenossenschaft der Bauwirtschaft (BG BAU)',
     accessibility: 'Frei zugänglich, anmeldefrei online',
-    url: 'https://www.wingis-online.de/',
     standards: ['TRGS 500', 'GefStoffV', 'ArbSchG'],
     evaluation: 'Das führende Gefahrstoff-Informationssystem der BG Bau konzentriert sich auf den baustellengerechten Gesundheitsschutz. Es übersetzt gefahrstoffrechtliche Kennzeichnungen in rechtlich belastbare, leicht verständliche Betriebsanweisungen direkt für den Polier und Handwerker.',
     benefits: [
@@ -565,14 +564,20 @@ export default function Informationsquellen() {
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-200/50 p-1 px-1.5 rounded text-center">
                       {db.accessibility}
                     </span>
-                    <a 
-                      href={db.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 py-1.5 px-3 bg-white border border-home-grau/30 hover:border-shiraz/50 rounded-lg text-[11px] font-bold text-slate-800 hover:text-shiraz transition-all shadow-sm"
-                    >
-                      Datenbank öffnen <ExternalLink size={12} />
-                    </a>
+                    {db.url ? (
+                      <a 
+                        href={db.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 py-1.5 px-3 bg-white border border-home-grau/30 hover:border-shiraz/50 rounded-lg text-[11px] font-bold text-slate-800 hover:text-shiraz transition-all shadow-sm"
+                      >
+                        Datenbank öffnen <ExternalLink size={12} />
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 py-1.5 px-3 bg-slate-50 border border-home-grau/20 rounded-lg text-[11px] font-medium text-slate-500">
+                        Information / Fachliteratur
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -640,6 +645,7 @@ export default function Informationsquellen() {
       {/* Footer list */}
       <ModuleFooter 
         wikipedia={[
+          { title: 'Umweltproduktdeklaration (EPD)' },
           { title: 'Gefahrstoffverordnung (GefStoffV)', url: 'https://de.wikipedia.org/wiki/Gefahrstoffverordnung' },
           { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' }
         ]}
@@ -648,7 +654,7 @@ export default function Informationsquellen() {
           { title: 'Leitfaden Nachhaltiges Bauen (BMWSB) - Standard für Bundesbauten', url: 'https://www.nachhaltigesbauen.de/' },
           { title: 'VDI 6202 Blatt 1: Schadstofferkundung von Gebäuden und baulichen Anlagen', url: 'https://www.vdi.de/' },
           { title: 'TRGS 519 / 521 / 524: Technische Regeln für Gefahrstoffe', url: 'https://www.baua.de/' },
-          { title: 'DIN SPEC 91484: Verfahren zur Erfassung von Bauprodukten vor Abbruch- und Umbaumaßnahmen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+SPEC+91484' }
+          { title: 'DIN SPEC 91484: Verfahren zur Erfassung von Bauprodukten vor Abbruch- und Umbaumaßnahmen' }
         ]}
         literatur={[
           'BMWSB: Bewertungssystem Nachhaltiges Bauen (BNB) Kriteriensteckbriefe',
@@ -662,7 +668,7 @@ export default function Informationsquellen() {
           { title: 'Madaster Germany – Material- und Gebäudekataster', url: 'https://madaster.de/' },
           { title: 'Concular – Zirkulärer Marktplatz für Baustoffe', url: 'https://concular.de/' },
           { title: 'DGNB Navigator – Bauprodukte-Plattform', url: 'https://www.dgnb-navigator.de/' },
-          { title: 'WINGISonline – Gefahrstoffsystem der BG BAU', url: 'https://www.wingis-online.de/' },
+          { title: 'WINGISonline – Gefahrstoffsystem der BG BAU' },
           { title: 'Fraunhofer IRB – Baufachinformation', url: 'https://www.baufachinformation.de/' },
           { title: 'ift Rosenheim – Institut für Fenstertechnik & Bauteile', url: 'https://www.ift-rosenheim.de/' },
           { title: 'Bundesverband Flachglas (BF) – Technische Richtlinien', url: 'https://www.bundesverband-flachglas.de/' },

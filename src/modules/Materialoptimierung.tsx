@@ -474,7 +474,7 @@ export default function Materialoptimierung() {
   }, [dafstbBauteil, dafstbBauweise, dafstbZement, dafstbPruefalter, dafstbStahlRoute]);
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto text-slate-800 animate-fade-in">
+    <div className="flex flex-col gap-6 w-full text-slate-800 animate-fade-in">
       
       {/* --- Header Panel --- */}
       <div className="bg-white border border-home-grau/30 rounded-2xl p-6 shadow-sm">
@@ -1544,10 +1544,10 @@ export default function Materialoptimierung() {
         ]}
         regelwerke={[
           { title: "DAfStb-Veröffentlichungen zur Treibhausgasreduktion im Betonbau (Titel und Status manuell prüfen)", url: "https://www.dafstb.de/" },
-          { title: "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1" },
-          { title: "DIN EN 206 / DIN 1045-2 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Ausgaben manuell prüfen)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206" },
-          { title: "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670" },
-          { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VDI+4800+Blatt+1" }
+          { title: "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09" },
+          { title: "DIN EN 206 / DIN 1045-2 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Ausgaben manuell prüfen)" },
+          { title: "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)" },
+          { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien" }
         ]}
         formeln={[
           {

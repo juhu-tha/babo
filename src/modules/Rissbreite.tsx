@@ -526,12 +526,12 @@ export default function Rissbreite() {
         <CalculatorDisclaimerBanner className="my-2" />
       <ModuleFooter 
           wikipedia={[
-            { title: 'Rissbreitenbeschränkung', url: 'https://de.wikipedia.org/wiki/Rissbreitenbeschr%C3%A4nkung' },
+            { title: 'Rissbreitenbeschränkung' },
             { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
             { title: 'Betonstahl', url: 'https://de.wikipedia.org/wiki/Betonstahl' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken – Abschnitt 7.3: Rissbreitenbegrenzung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' }
+            { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken – Abschnitt 7.3: Rissbreitenbegrenzung)' }
           ]}
           literatur={[
             'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)',

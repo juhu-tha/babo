@@ -1,81 +1,178 @@
 import React from 'react';
-import { BookOpen, Sliders, LineChart, BrainCircuit, Lightbulb, Info, Compass, Box, TreePine, Scale, Layers, Activity, GraduationCap, CheckCircle2 } from 'lucide-react';
-import { InlineMath } from 'react-katex';
+import { 
+  BookOpen, 
+  Sliders, 
+  Calculator, 
+  Lightbulb, 
+  Info, 
+  Layers, 
+  Activity, 
+  GraduationCap, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Database, 
+  Binary, 
+  Search, 
+  FileCheck2, 
+  Check, 
+  Scale 
+} from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export default function Anleitung() {
   return (
-    <div className="flex flex-col gap-8 max-w-4xl mx-auto mt-4">
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-8">
+    <div className="flex flex-col gap-8 w-full mt-4">
+      <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-8">
         
+        {/* HEADER */}
         <div className="flex items-center gap-4 border-b border-home-grau/20 pb-6">
           <div className="w-16 h-16 bg-shiraz/10 rounded-2xl flex items-center justify-center text-shiraz shrink-0">
             <BookOpen size={32} />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-text-main">Anleitung &amp; Konzept</h2>
-            <p className="text-lg text-text-main/70 mt-1">
-              Wie Sie diese Plattform optimal für Ihr Studium nutzen.
+            <h2 className="text-2xl sm:text-3xl font-bold text-text-main">Anleitung &amp; Konzept</h2>
+            <p className="text-base sm:text-lg text-text-main/70 mt-1">
+              Kompakte, aktuelle Informationsquelle und interaktive Anwendung normgerechter Berechnungen
             </p>
           </div>
         </div>
 
-        <div className="bg-shiraz/5 border border-shiraz/20 p-6 rounded-xl text-left w-full">
-          <div className="flex items-start gap-4">
-            <Lightbulb className="text-shiraz shrink-0 mt-1" size={28} />
+        {/* INTRO-BOX: DIE ZWEI LEITMÖGLICHKEITEN DES BAUSTOFFBOARDS */}
+        <div className="bg-shiraz/5 border border-shiraz/20 p-6 rounded-xl text-left w-full space-y-3">
+          <div className="flex items-start gap-3.5">
+            <Lightbulb className="text-shiraz shrink-0 mt-1" size={26} />
             <div>
-              <h3 className="text-xl font-bold text-shiraz mb-2">Das Kernziel: "Ein Gefühl bekommen"</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-shiraz mb-1.5">
+                Das Leitkonzept: Fundierte Wissensbasis &amp; reaktive Ingenieurberechnungen
+              </h3>
               <p className="text-text-main/80 leading-relaxed text-sm">
-                Diese Module sind nicht primär als exakte Taschenrechner für die Baupraxis gedacht. 
-                Vielmehr ist das Ziel, dass Sie durch das interaktive Verändern von Parametern ein 
-                <strong> intuitives Gefühl für die zugrundeliegenden Formeln, physikalischen Zusammenhänge und Größenordnungen der Ergebnisse</strong> entwickelst.
+                Das <strong>BaustoffBoard</strong> vereint zwei zentrale Aufgabenbereiche für Studium, Labor, Gutachterwesen und Tragwerksplanung: 
+                Es fungiert als <strong>kompakte, verlässliche und stets aktuelle Informationsquelle</strong> zu allen baustoffkundlichen und bauchemischen Fragestellungen 
+                (unter strikter Einhaltung der aktuellen Normengeneration wie DIN 1045-2:2023-08, DIN EN 197-1/5, Eurocode 2) und bietet gleichzeitig die 
+                <strong> unmittelbare interaktive Anwendung dimensionsreiner ingenieurtechnischer Berechnungen</strong>.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-          <div className="bg-off-white p-6 rounded-xl border border-home-grau/30 flex flex-col items-center text-center gap-4">
-            <div className="w-12 h-12 bg-shiraz/10 text-shiraz rounded-full flex items-center justify-center">
-              <Sliders size={24} />
+        {/* DIE 2 SÄULEN DER PLATTFORM */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          {/* Säule 1 */}
+          <div className="p-6 rounded-2xl border border-home-grau/30 bg-off-white flex flex-col justify-between space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2.5 text-shiraz font-bold text-base">
+                <Database size={20} />
+                <span>1. Kompakte &amp; aktuelle Informationsquelle</span>
+              </div>
+              <p className="text-xs sm:text-sm text-text-main/80 leading-relaxed">
+                Schluss mit unübersichtlichen Normenstapeln und veralteten Näherungswerten. Das BaustoffBoard fasst alle relevanten werkstofflichen Kennwerte 
+                strukturiert und forensisch verifiziert zusammen:
+              </p>
+              <ul className="space-y-2 text-xs text-text-main/75 pl-1">
+                <li className="flex items-start gap-2">
+                  <Check size={14} className="text-shiraz shrink-0 mt-0.5" />
+                  <span><strong>Neueste Normengeneration:</strong> Expositionsklassen nach DIN 1045-2:2023-08, Zementarten inkl. CEM II/C-M &amp; CEM VI nach DIN EN 197-5, Eurocode 2 &amp; Nachbehandlung DIN EN 13670.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check size={14} className="text-shiraz shrink-0 mt-0.5" />
+                  <span><strong>Ganzheitliche Werkstoffkunde:</strong> Von metallischen Legierungen, Holzarten und Mauerwerksziegeln über Bitumen/Asphalt bis hin zu Polymeren und Rezyklatbaustoffen.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check size={14} className="text-shiraz shrink-0 mt-0.5" />
+                  <span><strong>Bauchemische Präzision:</strong> Kristalline Phasenumwandlungen, Bogue-Klinkerzusammensetzung, Hydratationswärmen, pH-Werte und Porenraumstrukturen mit exakten Reaktionsgleichungen.</span>
+                </li>
+              </ul>
             </div>
-            <h4 className="font-bold text-text-main">1. Parameter variieren</h4>
-            <p className="text-sm text-text-main/70">
-              Nutzen Sie die Schieberegler, um Eingabewerte (z. B. Temperatur, w/z-Wert, Zeit) zu verändern. Beobachten Sie, welche Parameter den größten Einfluss haben.
-            </p>
+            <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-[11px] text-text-main/70">
+              <strong>Einsatz:</strong> Schnelles Nachschlagen von Grenzwerten, Zementanforderungen, Feuchteklassen und Normenzitaten während Entwurf, Planung und Vorlesung.
+            </div>
           </div>
 
-          <div className="bg-off-white p-6 rounded-xl border border-home-grau/30 flex flex-col items-center text-center gap-4">
-            <div className="w-12 h-12 bg-shiraz/10 text-shiraz rounded-full flex items-center justify-center">
-              <LineChart size={24} />
+          {/* Säule 2 */}
+          <div className="p-6 rounded-2xl border border-home-grau/30 bg-off-white flex flex-col justify-between space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2.5 text-emerald-800 font-bold text-base">
+                <Calculator size={20} />
+                <span>2. Interaktive Anwendung von Berechnungen</span>
+              </div>
+              <p className="text-xs sm:text-sm text-text-main/80 leading-relaxed">
+                Keine statischen PDF-Formulare, sondern live reagierende Rechenkerne. Verändern Sie Bauteilabmessungen, Umweltparameter oder Lasten und verfolgen Sie die Bemessungsergebnisse in Echtzeit:
+              </p>
+              <ul className="space-y-2 text-xs text-text-main/75 pl-1">
+                <li className="flex items-start gap-2">
+                  <Check size={14} className="text-emerald-700 shrink-0 mt-0.5" />
+                  <span><strong>Expositionsklassen-Hüllwerte:</strong> Mehrfachselektion von Umweltbeanspruchungen ermittelt automatisch die strengsten Grenzwerte für <InlineMath math="(w/z)_{\text{eq}}" />, <InlineMath math="f_{ck}" />, Mindestzement und Betondeckung <InlineMath math="c_{\text{nom}}" />.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check size={14} className="text-emerald-700 shrink-0 mt-0.5" />
+                  <span><strong>Betonkennwerte nach EC2:</strong> Zeitabhängige Kriechbeiwerte <InlineMath math="\varphi(t,t_0)" />, Trocknungs- und autogenes Schwinden <InlineMath math="\varepsilon_{cs}" /> sowie Spannungs-Dehnungs-Linien nach DIN EN 1992-1-1.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check size={14} className="text-emerald-700 shrink-0 mt-0.5" />
+                  <span><strong>Labor- &amp; Bauphysiksimulation:</strong> Mischungsberechnung nach Stoffraumrechnung, Bogue-Klinkermineralien, U-Wert-Wandaufbauten und Schadstoffabbau.</span>
+                </li>
+              </ul>
             </div>
-            <h4 className="font-bold text-text-main">2. Zusammenhänge erkennen</h4>
-            <p className="text-sm text-text-main/70">
-              Die dynamischen Diagramme zeigen Ihnen sofort, ob ein Zusammenhang linear, exponentiell oder logarithmisch ist. Suchen Sie nach Grenzwerten und Extremata.
-            </p>
+            <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-[11px] text-text-main/70">
+              <strong>Zahlenformat:</strong> Alle Rechner nutzen strikte deutsche Formatierung (Tausendertrennung mit Punkt, Dezimalkomma via <code>formatDeZahl</code>).
+            </div>
           </div>
 
-          <div className="bg-off-white p-6 rounded-xl border border-home-grau/30 flex flex-col items-center text-center gap-4">
-            <div className="w-12 h-12 bg-shiraz/10 text-shiraz rounded-full flex items-center justify-center">
-              <BrainCircuit size={24} />
+        </div>
+
+        {/* 3-SCHRITTE-WORKFLOW */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
+            <Activity className="text-shiraz" size={20} />
+            Der 3-Schritte-Workflow im Studien- und Planungsalltag
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-5 rounded-xl border border-home-grau/25 bg-white shadow-xs space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-shiraz/10 text-shiraz font-bold flex items-center justify-center text-sm">
+                1
+              </div>
+              <h4 className="font-bold text-sm text-text-main">Recherchieren &amp; Erkunden</h4>
+              <p className="text-xs text-text-main/75 leading-relaxed">
+                Wählen Sie im Menü das passende Fachmodul. Verschaffen Sie sich im <strong>Steckbrief</strong> und im <strong>Klassenkatalog</strong> einen kompakten Überblick über Normen, Werkstoffkennwerte und Einsatzgrenzen.
+              </p>
             </div>
-            <h4 className="font-bold text-text-main">3. Formeln verstehen</h4>
-            <p className="text-sm text-text-main/70">
-              Am Ende jedes Moduls finden Sie die verwendeten Formeln und Normen. Verknüpfen Sie das visuelle Feedback der Diagramme mit der mathematischen Theorie.
-            </p>
+
+            <div className="p-5 rounded-xl border border-home-grau/25 bg-white shadow-xs space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-emerald-700/10 text-emerald-800 font-bold flex items-center justify-center text-sm">
+                2
+              </div>
+              <h4 className="font-bold text-sm text-text-main">Interaktiv Berechnen</h4>
+              <p className="text-xs text-text-main/75 leading-relaxed">
+                Öffnen Sie den interaktiven Rechner. Passen Sie Umwelteinflüsse, Geometrien oder Rezepturen an. Die dynamischen Vektorskizzen und Diagramme visualisieren das Trag- und Verformungsverhalten sofort.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-xl border border-home-grau/25 bg-white shadow-xs space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-cyan-700/10 text-cyan-800 font-bold flex items-center justify-center text-sm">
+                3
+              </div>
+              <h4 className="font-bold text-sm text-text-main">Verifizieren &amp; Anwenden</h4>
+              <p className="text-xs text-text-main/75 leading-relaxed">
+                Nutzen Sie die Formelsammlung im Footer für Ihre statische Berechnung oder Studienarbeit. Überprüfen Sie Ihr Fachwissen in den interaktiven Wissenstests mit begründetem Richtig-/Falsch-Feedback.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Methodischer Pfeiler: Baustoffe vs. Bauprodukte */}
+        {/* METHODISCHE TRENNUNG: BAUSTOFFE VS. BAUPRODUKTE */}
         <div className="bg-slate-50/50 border border-slate-200/80 p-6 rounded-xl text-left w-full space-y-4">
           <div className="flex items-start gap-4">
             <Layers className="text-slate-500 shrink-0 mt-1" size={24} />
             <div className="space-y-1">
               <h3 className="text-lg font-bold text-slate-900 font-sans">
-                Methodische Trennung: Baustoffkunde vs. Bauprodukte
+                Methodische Trennung: Baustoffe (Stoffebene) vs. Bauprodukte (Erzeugnisebene)
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Dieses Lernportal trennt systematisch zwischen der <strong>Stoffebene (Baustoffe)</strong> und der <strong>Anwendungsebene (Bauprodukte)</strong>. Dies vermeidet Informationsdoppelungen und sorgt für eine klare didaktische Struktur:
+                Um Informationsdopplungen zu vermeiden und den roten Faden des Bauingenieurstudiums zu wahren, trennt das BaustoffBoard systematisch zwischen 
+                der <strong>Stoffebene (Roh- und Werkstoffkunde)</strong> und der <strong>Erzeugnisebene (Bauprodukte &amp; Bauteile)</strong>:
               </p>
             </div>
           </div>
@@ -89,25 +186,25 @@ export default function Anleitung() {
                   Baustoff-Ebene (Stoffeigenschaften)
                 </span>
                 <p className="text-xs text-slate-700 leading-relaxed mb-4">
-                  Hier stehen die physikalischen, chemischen, metallurgischen und mikrostrukturellen Eigenschaften des Rohmaterials im Vordergrund. Du lernst das grundlegende Materialverhalten kennen – unabhängig vom finalen Produktformat:
+                  Untersucht die atomare, kristalline, metallurgische und chemische Zusammensetzung des Werkstoffs losgelöst vom Bauteil:
                 </p>
                 <ul className="space-y-2 text-[11px] text-slate-600 pl-1">
                   <li className="flex items-start gap-1.5">
                     <span className="text-slate-400 font-bold">•</span>
-                    <span><strong>Kristallin &amp; Chemisch:</strong> Hydratation von Zement, Gips-/Kalk-Phasenumwandlung, Polymerstrukturen von Kunststoffen.</span>
+                    <span><strong>Hydratation &amp; Phasen:</strong> Bogue-Berechnung von Alit (<InlineMath math="C_3S" />), Belit (<InlineMath math="C_2S" />), C-S-H-Gefügewachstum und Ettringit.</span>
                   </li>
                   <li className="flex items-start gap-1.5">
                     <span className="text-slate-400 font-bold">•</span>
-                    <span><strong>Anisotropie &amp; Physik:</strong> Richtungsabhängige Quell- und Schwindkoeffizienten (<InlineMath math="q_r, q_t, q_l" />) bei Feuchteaufbau im 3D-Holzmodell.</span>
+                    <span><strong>Anisotropie:</strong> Richtungsabhängige Quell-/Schwindmaße im 3D-Holzkörper, Faserorientierung bei Faserbeton und CFK.</span>
                   </li>
                   <li className="flex items-start gap-1.5">
                     <span className="text-slate-400 font-bold">•</span>
-                    <span><strong>Werkstoffmechanik:</strong> Plastische Gittergleitungen im Stahl, Elastizitätsmoduln, Kriech- und Schwindprozesse des Verbundwerkstoffes Beton.</span>
+                    <span><strong>Werkstoffmechanik:</strong> Spannungs-Dehnungs-Gesetze, Bruchmechanik, E-Modul und Kriechen.</span>
                   </li>
                 </ul>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 text-[10px] text-slate-400 italic">
-                Module: Holz, Kunststoffe, Metalle/Stahl, Bindemittel, Zementchemie, Bruchmechanik
+                Cluster: Baustoffe &bull; Betontechnologie &bull; Mechanik &bull; Bauchemie
               </div>
             </div>
 
@@ -115,182 +212,131 @@ export default function Anleitung() {
             <div className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-xs flex flex-col justify-between">
               <div>
                 <span className="inline-block px-2.5 py-0.5 text-[9.5px] font-semibold text-slate-700 bg-slate-100 border border-slate-200 rounded-full mb-3 uppercase tracking-wider">
-                  Bauprodukt-Ebene (Konkrete Anwendung)
+                  Bauprodukt-Ebene (Konstruktion &amp; Recht)
                 </span>
                 <p className="text-xs text-slate-700 leading-relaxed mb-4">
-                  Hier geht es um die anwendungsfertige Form, standardisierte Bauprodukte, genormte Zulassungen und das Tragverhalten bzw. bauphysikalische Funktion im Gesamtsystem (z.B. Wandaufbau):
+                  Fokussiert das in Verkehr gebrachte, genormte Erzeugnis, den Verwendungsnachweis und die konstruktive Leistungsfähigkeit im Bauwerk:
                 </p>
                 <ul className="space-y-2 text-[11px] text-slate-600 pl-1">
                   <li className="flex items-start gap-1.5">
                     <span className="text-slate-400 font-bold">•</span>
-                    <span><strong>Handelsübliche Geometrien:</strong> Holzprodukte (KVH mit definierter Trockenfeuchte <InlineMath math="15\% \pm 3\%" />, CLT, BSH), normierte IPE- und HEB-Stahlprofile.</span>
+                    <span><strong>Bauproduktenverordnung (BauPVO):</strong> CE-Kennzeichnung, Leistungserklärung (DoP), Ü-Zeichen, MVV TB und AVCP-Konformitätssysteme.</span>
                   </li>
                   <li className="flex items-start gap-1.5">
                     <span className="text-slate-400 font-bold">•</span>
-                    <span><strong>Tiefbau &amp; Infrastruktur:</strong> Gussasphalt- und Walzasphaltdeckschichten, Drainbeton zur Versickerung, Bohrpfahlbetone für Gründungselemente und Geogitter zur Bodenstabilisierung.</span>
+                    <span><strong>Bauteilgeometrie &amp; Sorten:</strong> CLT-Brettsperrholz, Fertigteilträger, Mauerziegel, Walzasphalt-Deckschichten nach RStO 12/24.</span>
                   </li>
                   <li className="flex items-start gap-1.5">
                     <span className="text-slate-400 font-bold">•</span>
-                    <span><strong>Funktionale Leistungsfähigkeit:</strong> Konkrete Schichtsysteme (z.B. U-Wert-Wandbemessungen), mechanische Absicherungen (Querkraft- und Biegebemessung, Knickwiderstand).</span>
-                  </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-slate-400 font-bold">•</span>
-                    <span><strong>Inverkehrbringen &amp; Siegel:</strong> Technische Bewertung nach BauPVO, CE-Kennzeichnung samt DoP, nationale Verwendbarkeitsnachweise (Ü-Zeichen, MVV TB, AVCP-Klassen).</span>
+                    <span><strong>Funktionale Einheit &amp; Ökobilanz:</strong> Vergleichbare U-Werte, Tragfähigkeiten und EPD-Umweltkennwerte nach EN 15804.</span>
                   </li>
                 </ul>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 text-[10px] text-slate-400 italic">
-                Bauprodukt-Module: Holzprodukte, Mauerwerk, Stahlbauprofile, Dämmsysteme, Trockenbau, Putz &amp; Estrich, Asphalt, Dränbeton, Bohrpfahlbeton
+                Cluster: Bauprodukte &bull; Massivbau &bull; Holzbau &bull; Bauphysik &bull; Nachhaltigkeit
               </div>
             </div>
 
           </div>
-
-          <div className="p-4 bg-slate-100/50 border border-slate-200/80 border-l-4 border-l-slate-400 rounded-r-xl text-[11px] text-slate-700 leading-relaxed">
-            <strong>⚠️ Methodischer Grundsatz für Vergleiche:</strong> Wenn Sie Baustoffe oder Bauteile ökologisch (LCA) oder ökonomisch (LCC) vergleichst, beziehen sich diese Vergleiche im Modul immer auf eine <strong>funktionelle Einheit</strong> mit <strong>identischer technischer Leistungsfähigkeit (funktionale Äquivalenz)</strong>. Ein unreflektierter Masse- oder Volumenvergleich von z.B. 1 m³ Brettschichtholz vs. 1 m³ Normalbeton ist unzulässig, da die Wandaufbauten völlig unterschiedliche tragende Dicken und zusätzliche Dämmschichten benötigen, um denselben U-Wert zu realisieren.
-          </div>
         </div>
 
-        {/* Didaktischer Leitfaden & Die 6 Prüfdimensionen der Qualitätssicherung */}
-        <div className="bg-slate-50/60 p-6 rounded-2xl border border-slate-200/80 flex flex-col gap-5 text-left">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-shiraz/10 text-shiraz rounded-xl border border-shiraz/20">
-              <GraduationCap size={24} />
+        {/* QUALITÄTSSTANDARD D1-D6 */}
+        <div className="bg-slate-50/60 p-6 rounded-2xl border border-slate-200/80 flex flex-col gap-4 text-left">
+          <div className="flex items-center gap-3 pb-2 border-b border-home-grau/20">
+            <div className="p-2 bg-shiraz/10 text-shiraz rounded-xl">
+              <ShieldCheck size={22} />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900 leading-tight">
-                Didaktischer Leitfaden &amp; Die 6 Prüfdimensionen der Qualitätssicherung
+              <h3 className="text-base sm:text-lg font-bold text-text-main">
+                Die 6 Qualitätsdimensionen aller Fachmodule (D1–D6)
               </h3>
-              <p className="text-xs text-slate-500 mt-0.5 font-medium">
-                Jedes Modul der Wissensplattform unterliegt einem verbindlichen 6-dimensionalen Prüfraster zur Sicherung wissenschaftlicher Exzellenz und didaktischer Konsistenz:
+              <p className="text-xs text-text-main/70">
+                Verbindlicher Standard für Richtigkeit, Normenkonformität und didaktische Tiefe
               </p>
             </div>
           </div>
 
-          {/* 6 Prüfdimensionen Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-            <div className="p-4 rounded-xl border border-home-grau/20 bg-white flex flex-col gap-1.5 shadow-2xs">
-              <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                1. Richtigkeit &amp; Normenkonformität
-              </span>
-              <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                Sind alle physikochemischen Gleichungen, Bemessungsverfahren, Grenzwerte und Normenbezüge (DIN, EN, ISO, WTA, DAfStb) fachlich einwandfrei und mit der <strong>aktuellsten Ausgabe (inkl. Jahr und Monat)</strong> versehen?
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-1">
+            <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
+              <span className="font-bold text-xs text-shiraz block">D1 – Richtigkeit &amp; Normen</span>
+              <p className="text-[11px] text-text-main/75 leading-relaxed">
+                Strikte Normengeneration (DIN 1045-2:2023, EC2, DIN EN 197). Vollständige Dimensionsreinheit und verifizierte Quellennachweise.
               </p>
             </div>
-
-            <div className="p-4 rounded-xl border border-home-grau/20 bg-white flex flex-col gap-1.5 shadow-2xs">
-              <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                2. Didaktik &amp; Verständlichkeit
-              </span>
-              <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                Ist die Wissensvermittlung curricular logisch aufbereitet, adressatengerecht für Studierende und Fachkräfte strukturiert und durch prägnante Begriffsauszeichnungen und schrittweise Erklärungen gestützt?
+            <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
+              <span className="font-bold text-xs text-shiraz block">D2 – Didaktik &amp; 4-Stufen-Lehrpfad</span>
+              <p className="text-[11px] text-text-main/75 leading-relaxed">
+                Logische Abfolge von theoretischen Grundlagen über Laborversuche und reaktive Berechnungen bis zum Wissenstest mit Feedback.
               </p>
             </div>
-
-            <div className="p-4 rounded-xl border border-shiraz/40 bg-rose-50/30 flex flex-col gap-1.5 shadow-2xs">
-              <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                3. Vollständigkeit
-              </span>
-              <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                <strong>Ist das Modul in sich thematisch umfassend und vollständig? (dies ist die einzige Bedingung)</strong> Ein Modul erfüllt diesen Qualitätsmaßstab nur dann, wenn das behandelte Fachthema in seiner gesamten thematischen Tiefe und Breite lückenlos, fundiert und ohne inhaltliche Aussparungen eigenständig vermittelt wird.
+            <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
+              <span className="font-bold text-xs text-shiraz block">D3 – Thematische Vollständigkeit</span>
+              <p className="text-[11px] text-text-main/75 leading-relaxed">
+                Keine fachlichen Lücken oder Auslassungen: Jedes Modul behandelt sein Stoffgebiet in sich geschlossen und umfassend.
               </p>
             </div>
-
-            <div className="p-4 rounded-xl border border-home-grau/20 bg-white flex flex-col gap-1.5 shadow-2xs">
-              <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                4. Praxisrelevanz &amp; Handlungskompetenz
-              </span>
-              <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                Vermittelt das Modul handlungsfähiges Baupraxis- und Prüfwissen für Baustelle, Labor, Tragwerksplanung und Gutachterwesen (inkl. Schadensprävention, Fallstudien und realer Praxisbeispiele)?
+            <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
+              <span className="font-bold text-xs text-shiraz block">D4 – Praxisrelevanz &amp; Forensik</span>
+              <p className="text-[11px] text-text-main/75 leading-relaxed">
+                Direkte Handlungskompetenz für Baustelle, Prüflabor, Tragwerksplanung und Gutachterwesen inkl. Schadensprävention.
               </p>
             </div>
-
-            <div className="p-4 rounded-xl border border-shiraz/30 bg-rose-50/20 flex flex-col gap-1.5 shadow-2xs">
-              <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                5. Konsistenz
-              </span>
-              <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                <strong>Ist das Modul in sich logisch aufgebaut? Sind alle notwendigen Informationen zum Verständnis in anderen Modulen vorhanden?</strong> Greifen die Module nahtlos ineinander, existieren klare Querverweise im Material-Lehrpfad und sind alle referenzierten Grundlagen verlässlich vernetzt?
+            <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
+              <span className="font-bold text-xs text-shiraz block">D5 – Konsistenz &amp; Vernetzung</span>
+              <p className="text-[11px] text-text-main/75 leading-relaxed">
+                Einheitliche Nomenklatur, durchgängiges Shiraz-Farbkonzept, Querverlinkungen und Vermeidung von redundanten Textdopplungen.
               </p>
             </div>
-
-            <div className="p-4 rounded-xl border border-home-grau/20 bg-white flex flex-col gap-1.5 shadow-2xs">
-              <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                6. Interaktivität &amp; Verifikation
-              </span>
-              <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                Bietet das Modul aktive Lernelemente (Simulatoren, Parameterrechner mit normgerechter deutscher Zahlenformatierung: <strong>Tausendertrennung mit Punkt, Nachkommastellen mit Komma</strong>, Selbsttests) zur unmittelbaren messtechnischen Überprüfung?
+            <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
+              <span className="font-bold text-xs text-shiraz block">D6 – Interaktivität &amp; Verifikation</span>
+              <p className="text-[11px] text-text-main/75 leading-relaxed">
+                Dynamische Rechner mit deutscher Zahlenformatierung (<code>formatDeZahl</code>), KaTeX-Formeln und Schutz vor Fehleingaben.
               </p>
             </div>
-          </div>
-
-          {/* 4 Schritte Leitfaden */}
-          <div className="pt-3 border-t border-slate-200/60">
-            <span className="text-xs font-bold text-slate-800 block mb-2">Didaktische Umsetzung im Studienalltag (4-Stufen-Lehrpfad):</span>
-            <ol className="list-decimal list-inside text-xs text-slate-650 space-y-1.5 leading-relaxed">
-              <li>
-                <strong>Grundlagen &amp; Werkstoffe pflegen:</strong> Nutzen Sie die Kennwerte-Tabellen und Bauchemie-Module, um die thermodynamischen und chemischen Eigenschaften grundlegend zu verstehen.
-              </li>
-              <li>
-                <strong>Virtuelle Experimente ausprobieren:</strong> Im Labor können Sie z. B. den Ausbreitversuch, die Festbetonprüfung und den Sieblinien-Editor interaktiv simulieren.
-              </li>
-              <li>
-                <strong>Rechnergestützte Bauteilbemessung:</strong> Die Module im <em>Massivbau</em> und in der <em>Mechanik</em> führen Sie Schritt für Schritt durch normative Nachweise nach Eurocode 2 und 3.
-              </li>
-              <li>
-                <strong>Lerneffekte überprüfen:</strong> Verwenden Sie zum Abschluss die themenspezifischen Übungsklausuren mit direktem Feedback.
-              </li>
-            </ol>
           </div>
         </div>
 
-        <div className="mt-2 p-6 bg-home-grau/10 rounded-xl border border-home-grau/20 text-left">
-          <h3 className="text-lg font-bold text-text-main mb-3">Tipps für die Nutzung</h3>
-          <ul className="list-disc list-inside space-y-2 text-text-main/80 text-sm">
-            <li><strong>Extreme testen:</strong> Stellen Sie die Regler bewusst auf die minimalen und maximalen Werte, um das Systemverhalten an den Rändern zu prüfen.</li>
-            <li><strong>PDF-Export:</strong> Nutzen Sie den "PDF Export"-Button oben rechts, um sich interessante Parameterkonstellationen oder Diagramme für Ihre Unterlagen abzuspeichern.</li>
-            <li><strong>Hintergrundwissen:</strong> Die Info-Icons (<span className="inline-block w-4 h-4 bg-home-grau/30 rounded-full text-center text-[10px] font-bold leading-4 mx-1">i</span>) neben den Parametern liefern Ihnen wertvolle Kontextinformationen zu typischen Wertebereichen.</li>
+        {/* PRAXISTIPPS FÜR DIE NUTZUNG */}
+        <div className="p-5 bg-off-white rounded-xl border border-home-grau/25 space-y-3 text-left">
+          <h4 className="font-bold text-sm text-text-main">Effektive Nutzung im Studien- und Planungsalltag:</h4>
+          <ul className="list-disc list-inside space-y-1.5 text-xs text-text-main/80 leading-relaxed">
+            <li><strong>Parameter an Grenzen testen:</strong> Variieren Sie Eingaben bis zu den Grenzwerten (z. B. minimaler Zementgehalt oder maximaler w/z-Wert), um bauphysikalische Reaktionen und normative Warnhinweise direkt zu erkennen.</li>
+            <li><strong>PDF-Export:</strong> Nutzen Sie die Export-Funktion, um berechnete Kennwerte, Diagramme und Prüfberichte für Übungsblätter oder statische Vorbemessungen abzuspeichern.</li>
+            <li><strong>Vektorskizzen nutzen:</strong> Die interaktiven Querschnitte (wie bei den Expositionsklassen oder Betonkennwerten) passen sich live an gewählte Parameter an und veranschaulichen Maßketten direkt am Bauteil.</li>
           </ul>
-        </div>
-
-        <div className="bg-shiraz/5 border border-shiraz/20 p-6 rounded-xl text-left w-full">
-          <div className="flex items-start gap-4">
-            <Info className="text-shiraz shrink-0 mt-1" size={28} />
-            <div>
-              <h3 className="text-xl font-bold text-shiraz mb-2">Informationen zu speziellen Themen</h3>
-              <p className="text-text-main/80 leading-relaxed text-sm">
-                Nicht alle Module sind rein interaktiv. Einige Bausteine dienen bewusst der strukturierten Vermittlung von Übersichtswissen. 
-                Sie finden hier unter anderem gebündelte Informationen zu speziellen Unterthemen (wie z. B. Typische Bau-Schadstoffe, Zertifizierungssysteme oder historische Kennwerte). Nutzen Sie diese als stark verdichtetes Nachschlagewerk für Ihr Grundlagenwissen.
-              </p>
-            </div>
-          </div>
         </div>
 
       </div>
 
       <ModuleFooter
         wikipedia={[
-          { title: 'E-Learning', url: 'https://de.wikipedia.org/wiki/E-Learning' },
           { title: 'Bauingenieurwesen', url: 'https://de.wikipedia.org/wiki/Bauingenieurwesen' },
-          { title: 'Sensitivitätsanalyse', url: 'https://de.wikipedia.org/wiki/Sensitivit%C3%A4tsanalyse' }
+          { title: 'Baustoffkunde', url: 'https://de.wikipedia.org/wiki/Baustoff' },
+          { title: 'Eurocode', url: 'https://de.wikipedia.org/wiki/Eurocode' }
         ]}
         literatur={[
-          'Kerres, M. (2018): Mediendidaktik - Konzeption und Entwicklung digitaler Lernangebote (5. Auflage, De Gruyter Oldenbourg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
+          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)',
+          'Heidelberg Materials / InformationsZentrum Beton (IZB): Betontechnische Daten (Ausgabe 2022 / Folgeauflagen)',
+          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure (26. Auflage, Reguvis 2024)',
+          'Stark, J.; Wicht, B.: Zement und Schnellzemente - Chemie, Hydratation und Anwendung (Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'Hochschulrektorenkonferenz (HRK): Leitlinien für digital gestütztes Lehren und Lernen in den Ingenieurwissenschaften', url: 'https://www.hrk.de/' },
-          { title: 'DIN EN ISO 9241-110:2020-10 (Ergonomie der Mensch-System-Interaktion - Teil 110: Interaktionsprinzipien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+9241-110' },
-          { title: 'DIN EN 1990:2021-10 (Eurocode: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' }
+          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton - Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 197-1:2011-11 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },
+          { title: 'DIN EN 1992-1-1:2011-01 / NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
         ]}
-        hideFormeln={true}
+        formeln={[
+          {
+            formel: 'c_{\\text{nom}} = c_{\\min} + \\Delta c_{\\text{dev}}',
+            erklaerung: 'Nennmaß der Betondeckung nach DIN EN 1992-1-1: Sicherstellung des dauerhaften Bewehrungsschutzes (c_min,dur) zzgl. Vorhaltemaß.',
+            quelle: 'DIN EN 1992-1-1 / NA'
+          },
+          {
+            formel: '\\left(\\frac{w}{c}\\right)_{\\text{eq}} = \\frac{w}{c + k_F \\cdot f + k_S \\cdot s}',
+            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Verbindliche Höchstgrenzen zum Schutz vor Karbonatisierung, Frost und chemischem Angriff.',
+            quelle: 'DIN 1045-2 Tab. F.2.1/F.2.2'
+          }
+        ]}
       />
     </div>
   );

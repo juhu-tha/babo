@@ -178,7 +178,7 @@ export default function NachhaltigkeitChecklisten() {
   const currentSection = INITIAL_CHECKLISTS[activeSubTab];
 
   return (
-    <div className="space-y-4 container mx-auto px-4 max-w-7xl animate-in fade-in duration-300">
+    <div className="space-y-4 w-full animate-in fade-in duration-300">
       
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">
@@ -327,7 +327,7 @@ export default function NachhaltigkeitChecklisten() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Nachhaltiges Bauen', url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
-          { title: 'Gebäudeenergiegesetz', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4deenergiegesetz' },
+          { title: 'Gebäudeenergiegesetz' },
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
           { title: 'Graue Energie', url: 'https://de.wikipedia.org/wiki/Graue_Energie' }
         ]}

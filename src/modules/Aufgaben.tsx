@@ -377,14 +377,14 @@ export default function Aufgaben() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Übungsaufgabe', url: 'https://de.wikipedia.org/wiki/Aufgabe_(Schule)' },
+          { title: 'Übungsaufgabe' },
           { title: 'Klausur', url: 'https://de.wikipedia.org/wiki/Klausur_(Pr%C3%BCfung)' }
         ]}
         literatur={[
         ]}
         regelwerke={[
           { title: 'Rahmenprüfungsordnung für Ingenieurstudiengänge (APO)', url: 'https://www.tha.de/' },
-          { title: 'DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+Normenreihe+Baustoffe+und+Konstruktiver' }
+          { title: 'DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau' }
         ]}
         formeln={[
           {

@@ -102,7 +102,7 @@ export default function Bohrpfahlbeton() {
       </div>
       <ModuleFooter
         weblinks={[
-          { title: 'Beton.wiki: Bohrpfähle', url: 'https://beton.wiki/index.php?title=Bohrpf%C3%A4hle_und_Schlitzw%C3%A4nde' },
+          { title: 'Beton.wiki: Bohrpfähle' },
           { title: "Zement-Taschenbuch (VDZ)", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
         ]}
         wikipedia={[
@@ -110,8 +110,8 @@ export default function Bohrpfahlbeton() {
           { title: 'Spezialtiefbau', url: 'https://de.wikipedia.org/wiki/Spezialtiefbau' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1536:2015-10 (Ausführung von Arbeiten im Spezialtiefbau - Bohrpfähle)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1536' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Anforderungen an Beton für Geotechnische Bauteile / Bohrpfähle)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
+          { title: 'DIN EN 1536:2015-10 (Ausführung von Arbeiten im Spezialtiefbau - Bohrpfähle)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Anforderungen an Beton für Geotechnische Bauteile / Bohrpfähle)' },
           { title: 'Empfehlungen des Arbeitskreises Pfähle (EA-Pfähle, DGGT)', url: 'https://www.dggt.de/' }
         ]}
         literatur={[

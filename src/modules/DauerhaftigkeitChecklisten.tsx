@@ -138,7 +138,7 @@ export default function DauerhaftigkeitChecklisten() {
   const currentSection = INITIAL_CHECKLISTS[activeSubTab];
 
   return (
-    <div className="space-y-4 container mx-auto px-4 max-w-7xl animate-in fade-in duration-300">
+    <div className="space-y-4 w-full animate-in fade-in duration-300">
       
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">
@@ -319,9 +319,9 @@ export default function DauerhaftigkeitChecklisten() {
           { title: 'Carbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Carbonatisierung_(Beton)' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2)' },
           { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), Ausgabe 2017-12 (manuell prüfen)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' }
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung und Konformität)' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
