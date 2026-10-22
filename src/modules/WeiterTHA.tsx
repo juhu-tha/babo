@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
-  GraduationCap, BookOpen, ExternalLink, Calendar, Clock, 
-  MapPin, Award, ArrowRight, CheckCircle2, ChevronRight,
+  GraduationCap, BookOpen, ExternalLink, Calendar, Clock, Award, CheckCircle2, ChevronRight,
   LayoutGrid, Trees, Sparkles, SlidersHorizontal, Layers
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -47,32 +46,35 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-shiraz/5',
     badgeTextColor: 'text-shiraz',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
-    link: 'https://www.tha.de/Architektur-und-Bauwesen/Bauingenieurwesen-Master.html',
+    link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/bauingenieurwesen-meng/',
     degree: 'Master of Engineering (M.Eng.)',
-    duration: '3 Sem. (auch Teilzeit)',
-    format: 'Präsenzstudium (Vollzeit & Teilzeit möglich)',
+    duration: '3 Semester (Vollzeit) / 5 Semester (Teilzeit)',
+    format: 'Vollzeit, Teilzeit oder Studium mit vertiefter Praxis; Beginn jedes Semester',
     summary: 'Der forschungs- und praxisorientierte Masterstudiengang vertieft und erweitert das im Bachelor erworbene ingenieurwissenschaftliche Fachwissen. Er befähigt Sie zur eigenständigen Lösung komplexer Aufgabenstellungen des modernen Bauwesens, vom Konstruktiven Ingenieurbau über Digitales Bauen (BIM) bis hin zu Infrastruktur und Umwelttechnik. Das Studium ist flexibel gestaltbar und auch in Teilzeit möglich.',
     description: 'Bereiten Sie sich auf anspruchsvolle Entwicklungs-, Planungs- und Führungsaufgaben vor. Absolventen übernehmen hochqualifizierte Positionen in renommierten Ingenieurbüros, führenden Bauunternehmungen, staatlichen Baubehörden sowie Prüfämtern.',
     modulesTitle: 'Studienschwerpunkte & Fächer',
     modules: [
-      'Numerische Berechnungsmethoden (FEM/BIM)',
-      'Spezialtiefbau, konstruktiver Wasserbau & Geotechnik',
-      'Konstruktiver Ingenieurbau (Verbundbau, Brückenbau)',
-      'Nachhaltiges Bauen & ökologische Baustoffberatung',
-      'Forschungs- und Entwicklungsprojekte (auch berufsbegleitend / in Teilzeit)',
+      'Infrastrukturbau und Verkehrsinfrastruktur',
+      'Konstruktiver Ingenieurbau',
+      'Geotechnik und Spezialtiefbau',
+      'Wasserwirtschaft und Wasserbau',
+      'Digitales Planen und Bauen',
+      'Nachhaltiges Bauen und Klimaschutz',
+      'Vertiefte Statik und numerische Methoden',
+      'Interdisziplinäre Projektarbeit'
     ],
     benefitsTitle: 'Berufsfelder & Karriere',
     benefitsIntro: 'Absolventen übernehmen hochqualifizierte Fach- und Führungsaufgaben in Ingenieurbüros, Bauunternehmungen, Prüfämtern und der öffentlichen Bauverwaltung:',
     benefits: [
-      'Berechtigung zur uneingeschränkten Bauvorlage',
-      'Aufstieg in den höheren Dienst im öffentlichen Sektor',
-      'Basis für eine anschließende Promotion (Promotionseignung, Voll- und Teilzeitmodelle)'
+      'Fach- und Führungsaufgaben in Ingenieurbüros, Bauunternehmen und Bauverwaltung',
+      'Zugang zum höheren technischen Dienst (Laufbahnvoraussetzungen des Dienstherrn beachten)',
+      'Grundlage für eine Promotion; die Bauvorlageberechtigung richtet sich nach Landesrecht (z. B. Kammereintragung und Berufserfahrung)'
     ]
   },
   {
     id: 'pm',
-    title: 'Projektmanagement (Master - Bau & Immobilie)',
-    subtitle: 'ibi - Institut für Bau und Immobilien (Weiterbildungsstudiengang)',
+    title: 'Projektmanagement Bau (Master)',
+    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitender Weiterbildungsmaster)',
     icon: BookOpen,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
@@ -82,22 +84,21 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
-    link: 'https://www.tha.de/Architektur-und-Bauwesen/ibi/Master-Projektmanagement.html',
+    link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/projektmanagement-bau-meng/',
     degree: 'Master of Engineering (M.Eng.)',
     duration: '5 Semester (berufsbegleitend)',
-    format: 'Mischung aus Präsenz- & Onlinephasen',
-    summary: 'Dieser renommierte, berufsbegleitende Weiterbildungsstudiengang ist interdisziplinär angelegt und richtet sich an Architekten, Bauingenieure, Wirtschaftsingenieure und Absolventen verwandter Studiengänge mit erster Berufserfahrung. Er verknüpft technisches Know-how mit juristischer Kompetenz, Projektsteuerung, BIM-Management und Teamführung.',
+    format: 'Freitag/Samstag-Präsenz plus 1–2 Blockseminare je Semester; Gebühren 5 × 2.800 € (Stand 10/2026)',
+    summary: 'Dieser berufsbegleitende Weiterbildungsstudiengang ist interdisziplinär angelegt und richtet sich an Architekten, Bauingenieure, Wirtschaftsingenieure und Absolventen verwandter Studiengänge mit erster Berufserfahrung. Er verknüpft technisches Know-how mit juristischer Kompetenz, Projektsteuerung, BIM-Management und Teamführung.',
     description: 'Der Masterstudiengang qualifiziert Sie für Führungsrollen in der Bau- und Immobilienwirtschaft. Der Schwerpunkt liegt auf ganzheitlicher Projektleitung und -steuerung im Einklang mit wirtschaftlichen, ökologischen und rechtlichen Parametern.',
     modulesTitle: 'Kerninhalte der PM-Module',
     modules: [
-      'Projektsteuerung & Projektentwicklung (HOAI / AHO-Schriftenreihe)',
-      'Privates Baurecht (VOB/B, Vergaberecht, Architekten- & Ingenieurrecht)',
-      'Immobilien-Projektfinanzierung, Investitions- & Wirtschaftlichkeitsanalysen',
-      'BIM-Projektorganisation, Agile Methoden & Lean Construction',
-      'Managementlehre, Verhandlungsführung, Personalschulung'
+      'Master Basis: Schlüsselkompetenzen, Baurecht, International Project Management',
+      'Vertiefung Bau und Immobilie: Methoden des Projektmanagements, Projektentwicklung, Nachhaltiges Bauen und Zertifizierung, Baubetrieb und KLR',
+      'Alternativ Vertiefung Ausbau und Bestand, Fassade oder Holzbau (entspricht den Zertifikatsstudiengängen)',
+      'Master Final: Masterseminar und Masterarbeit'
     ],
     benefitsTitle: 'Nutzen für Ihre Praxis',
-    benefitsIntro: 'Die enge Verknüpfung mit erfahrenen Dozierenden direkt aus renommierten Kanzleien, Baukonzernen und Steuerberatungsgesellschaften bietet wertvolles Praxis-Networking:',
+    benefitsIntro: 'Die enge Verknüpfung mit erfahrenen Dozierenden aus Planung, Bauwirtschaft, Recht und Immobilienwirtschaft bietet wertvolles Praxis-Networking:',
     benefits: [
       'Karrieresprung zum Projektleiter, PM-Director oder Niederlassungsleiter',
       'Umfassendes Verständnis von immobilienwirtschaftlichen Zusammenhängen',
@@ -106,8 +107,8 @@ const PROGRAMS: Program[] = [
   },
   {
     id: 'ausbau',
-    title: 'Fachingenieur Ausbau (Zertifikatslehrgang)',
-    subtitle: 'ibi - Institut für Bau und Immobilien (Weiterbildungskurs)',
+    title: 'Ausbau und Bestand (Zertifikat)',
+    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)',
     icon: Award,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
@@ -117,22 +118,21 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
-    link: 'https://www.tha.de/Architektur-und-Bauwesen/ibi/Fachingenieur-Ausbau.html',
-    degree: 'Fachingenieur / Fachplaner Ausbau (Zertifikat)',
+    link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/ausbau-und-bestand-zertifikat/',
+    degree: 'Zertifikat Fachingenieur:in / Fachplaner:in Ausbau und Bestand (30 ECTS)',
     duration: '2 Semester (berufsbegleitend)',
-    format: 'Teilzeit-Zertifikatsstudium',
-    summary: 'Der Ausbau macht oft den kapitalintensivsten und schadensanfälligsten Teil eines Gebäudes aus. Dieser gezielte Zertifikatslehrgang vermittelt Spezialwissen über Trockenbau, Schallschutz, vorbeugenden Brandschutz, Bauphysik und Schnittstellenmanagement im komplexen Innenausbau. Er bereitet Sie optimal auf eine fehlerfreie Planung und Ausführung im Neubau und Bestand vor.',
+    format: 'Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau',
+    summary: 'Berufsbegleitendes Zertifikatsstudium für Ausbau und Bauen im Bestand. Schwerpunkte sind Nachhaltigkeit, Schadstoffe, Kreislaufwirtschaft und Projektmanagement sowie aktuelle Systeme des Aus- und Leichtbaus; Projektarbeiten und Fallstudien in interdisziplinären Gruppen.',
     description: 'Bauen im Bestand und anspruchsvolle Innenausbauten erfordern lückenlose technische Detailkompetenz. Gewinnen Sie Vertrauen bei komplexesten Schnittstellenkoordinationen am Bau.',
     modulesTitle: 'Lehrplanthemen',
     modules: [
-      'Bauschnittstellen, Toleranzen & Baustellenkoordination',
-      'Gezielte Ausbaustandards & Qualitätsprüfungen vor Ort',
-      'Konstruktiver Trockenbau & Deckenkonstruktionen',
-      'Schallschutz, Raumakustik & technischer Schallschutz im Ausbau',
-      'Bauphysikalische Fallstudien (Wärme, Feuchte, Abdichtung), Schimmelvermeidung'
+      'A 1: Projektmodul Ausbau und Bestand',
+      'A 2: Konzeption und Konstruktion im Ausbau und Bestand',
+      'A 3: Bauphysik und TGA im Ausbau und Bestand',
+      'Schwerpunkte: Nachhaltigkeit, Schadstoffe, Kreislaufwirtschaft, Projektmanagement, Aus- und Leichtbausysteme'
     ],
     benefitsTitle: 'Wer profitiert am meisten?',
-    benefitsIntro: 'Die praxisrelevante Ausbildung schließt stofflich und rechtlich die klaffende Lücke zwischen Planung und handwerklicher Ausführung:',
+    benefitsIntro: 'Die praxisnahe Weiterbildung verbindet Planung und Ausführung:',
     benefits: [
       'Planenden Architekten und Bauingenieure zur Erstellung haftungssicherer Details',
       'Bauleiter, Bauherrenbeauftragte & Gutachter zur Früherkennung von Ausbaufehlern',
@@ -141,8 +141,8 @@ const PROGRAMS: Program[] = [
   },
   {
     id: 'fassade',
-    title: 'Fachingenieur Fassade (Zertifikatslehrgang)',
-    subtitle: 'ibi - Institut für Bau und Immobilien (Weiterbildungskurs / NEU)',
+    title: 'Fassade (Zertifikat)',
+    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)',
     icon: LayoutGrid,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
@@ -152,19 +152,18 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
-    link: 'https://www.tha.de/Architektur-und-Bauwesen/ibi/Fachingenieur-Fassade.html',
-    degree: 'Fachingenieur / Fachplaner Fassade (Zertifikat)',
+    link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/fassade-zertifikat/',
+    degree: 'Zertifikat Fachingenieur:in / Fachplaner:in Fassade (30 ECTS)',
     duration: '2 Semester (berufsbegleitend)',
-    format: 'Teilzeit-Zertifikatsstudium',
+    format: 'Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau',
     summary: 'Die Gebäudehülle bzw. Vorhangfassade stellt als Schnittstelle zwischen Tragwerk, Bauphysik und architektonischem Ausdruck eines der komplexesten Bauteile dar. Dieser praxisnahe Zertifikatslehrgang vertieft Konstruktionsdetails von Glas-, Metall- und Elementfassaden, thermische Bauphysik sowie brandschutztechnische Anforderungen im modernen Fassadenbau.',
-    description: 'Effizientes Planen moderner System- und Elementfassaden setzt herstellerunabhängiges, vertieftes technisches Spezialwissen voraus, insbesondere bei der Vernehmung von thermischen Effekten, Strömungsverhalten und Tragstruktur-Anschlüssen.',
+    description: 'Effizientes Planen moderner System- und Elementfassaden setzt herstellerunabhängiges, vertieftes technisches Spezialwissen voraus, insbesondere bei der Bewertung thermischer Effekte, Strömungsverhalten und Tragstruktur-Anschlüssen.',
     modulesTitle: 'Lehrplanthemen / Module',
     modules: [
-      'Fassadenkonstruktion & Materialität (Sicherheitsglas, Metall, Dichtungssysteme, Membranen)',
-      'Ganzheitliche Bauphysik (U-Wert-Minimierung, thermische Längenänderung, sommerlicher Wärmeschutz)',
-      'Schnittstellendetails & Anschlüsse zum Tragwerk (Skelettbau, WDVS-Integration)',
-      'Befestigungstechnik, Winderprobung & zerstörungsfreie Prüfszenarien',
-      'Haftungsrecht in der Fassadenplanung, Abnahme & gutachterliche Schadensermittlung'
+      'F 1: Projektmodul Fassade',
+      'F 2: Konzeption und Konstruktion in der Fassade',
+      'F 3: Bauphysik und TGA in der Fassade',
+      'F 4: Bauabwicklung in der Fassade (Kosten und Abwicklung; Regelwerke, Prüfmethoden, Schäden)'
     ],
     benefitsTitle: 'Wer profitiert am meisten?',
     benefitsIntro: 'Die Fortbildung bringt Sie auf Augenhöhe mit spezialisierten Systemherstellern und schützt Sie vor kostspieligen Haftungsfällen:',
@@ -176,8 +175,8 @@ const PROGRAMS: Program[] = [
   },
   {
     id: 'holzbau',
-    title: 'Fachingenieur Holzbau (Zertifikatslehrgang)',
-    subtitle: 'ibi - Institut für Bau und Immobilien (Weiterbildungskurs / NEU)',
+    title: 'Holzbau (Zertifikat)',
+    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)',
     icon: Trees,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
@@ -187,32 +186,31 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
-    link: 'https://www.tha.de/Architektur-und-Bauwesen/ibi/Fachingenieur-Holzbau.html',
-    degree: 'Fachingenieur / Fachplaner Holzbau & Holzkonstruktionen (Zertifikat)',
+    link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/holzbau-zertifikat/',
+    degree: 'Zertifikat Fachingenieur:in / Fachplaner:in Holzbau (30 ECTS)',
     duration: '2 Semester (berufsbegleitend)',
-    format: 'Teilzeit-Zertifikatsstudium',
+    format: 'Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau',
     summary: 'Der moderne Holzbau und mehrgeschossige Holz-Hybridbau boomen im Zuge des nachhaltigen Bauens. Dieser Zertifikatslehrgang bereitet Sie auf die anspruchsvolle Detailplanung vor, von Tragfähigkeit und Bemessung, Feuchtelast- und Schwingungsschutz bis hin zu Schallschutz und Brandschutz nach anspruchsvollen Landesbauordnungen.',
     description: 'Nachhaltiges, schnelles und präzises zirkuläres Bauen gelingt am besten im Holzbau. Das interdisziplinäre Planen mehrgeschossiger Holzbauten verlangt jedoch höchste Fachkunde bezüglich Verformungen, Schallbrücken und Fluchtwegevorsorge.',
     modulesTitle: 'Lehrplanthemen / Module',
     modules: [
-      'Tragfähigkeit & Bemessungsverfahren nach Eurocode 5 (Stabwerke, Platten, CLT)',
-      'Konstruktiver & chemischer Holzschutz (DIN 68800) sowie feuchtetechnische Bauteilsicherheit',
-      'Schall- und Brandschutz im mehrgeschossigen Holz- und Hybridbau',
-      'Vorfertigung, Modulbauweisen, Digitaler Holzbau (CAD/CAM) & logistische Montagekoordination',
-      'Schnittstellenplanung im Hybridbau (Stahlverbindungen, Betonsockel, Massivbauteile)'
+      'H 1: Projektmodul Integrale Planung',
+      'H 2: Bauen mit Holz',
+      'H 3: Schutzmaßnahmen',
+      'Schwerpunkte: Ökonomie, Ökologie, Kreislauffähigkeit, Feuchteschutz, digitale Planung, Bauen im Bestand mit Holz'
     ],
     benefitsTitle: 'Wer profitiert am meisten?',
     benefitsIntro: 'Rüsten Sie sich für die Bauwende durch echtes Holz-Tragwerks- und Ausführungswissen:',
     benefits: [
       'Tragwerksplaner & Statiker zur Erweiterung auf komplexe und klimafreundliche Holz-Tragstrukturen',
       'Zimmerermeister, Holzbautechniker, Bauleiter & Planer im modernen Zimmereihandwerk',
-      'Architekten für ressourcen-, kreislaufbewusstes, modulares und klimapositivtes Entwerfen'
+      'Architekten für ressourcen-, kreislaufbewusstes, modulares und klimabewusstes Entwerfen'
     ]
   },
   {
     id: 'ttz',
     title: 'TTZ Aichach (Technologietransferzentrum)',
-    subtitle: 'Technologietransferzentrum für digitalisierten Holzbau und nachhaltige Entwicklung',
+    subtitle: 'Technologietransferzentrum für Digitales Planen und Fertigen im Bauwesen (gegründet 2023)',
     icon: Sparkles,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
@@ -222,33 +220,33 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-shiraz/5',
     badgeTextColor: 'text-shiraz',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
-    link: 'https://www.tha.de/TTZ-Aichach.html',
+    link: 'https://www.tha.de/forschung/technologietransfer/technologietransferzentren/ttz-aichach/',
     degree: 'Forschung, Transfer & Innovation',
-    duration: 'Promotion direkt möglich',
-    format: 'Forschung, Kooperation & Promotionsrecht',
-    summary: 'Das Technologietransferzentrum (TTZ) Aichach der Technischen Hochschule Augsburg (THA) widmet sich dem digitalen Holzbau und der nachhaltigen Entwicklung. Es bildet eine Brücke zwischen akademischer Spitzenforschung und der baulichen Praxis im regionalen Handwerk und Mittelstand. Anbindung an das Promotionszentrum ermöglicht direkte Promotionen vor Ort.',
+    duration: 'Forschung & Transfer',
+    format: 'Kooperationsprojekte mit Bauwirtschaft und Handwerk',
+    summary: 'Das Technologietransferzentrum (TTZ) Aichach der Technischen Hochschule Augsburg (THA) ist auf Digitales Planen und Fertigen im Bauwesen spezialisiert (Fachbereiche Massivbau und Digitaler Holzbau). Es verbindet angewandte Forschung mit der Praxis von Bauwirtschaft und Handwerk in der Region.',
     description: 'In Kooperation mit Unternehmen werden praxisorientierte Lösungen für moderne Fertigungstechniken im Holzbau, Automatisierung, CO2-neutrale Baumaterialien und kreislaufgerechtes Konstruieren erprobt. Ein forschen-fokussiertes Umfeld bietet exzellente Bedingungen für Doktoranden.',
     modulesTitle: 'Forschungs- & Fokusthemen',
     modules: [
-      'Digitalisierte Fertigung & Robotik im Holzbau und Vorfertigung',
-      'Kreislaufgerechtes Konstruieren & Recycling im Holzbau (Cradle to Cradle)',
-      'Ressourceneffizienz, Ökobilanzierung & CO2-Senken im ländlichen Bauen',
-      'Bauteilprüfung & zerstörungsfreie Prüfverfahren (ZfP)',
-      'Wissenstransfer in regionale Handwerks- & Industriezweige'
+      'Fachbereiche Massivbau und Digitaler Holzbau',
+      'Ressourcenschonende Baumaterialien',
+      'Additive und digitale Produktionsmethoden, automatisierte Fertigung',
+      'Digitale Planungstools',
+      'Aus- und Weiterbildung von Fachkräften'
     ],
     benefitsTitle: 'Zusammenarbeit & Transfer',
     benefitsIntro: 'Das TTZ bietet ein lebendiges Innovationsökosystem für Studierende, Forschende und Partnerunternehmen:',
     benefits: [
-      'Direkte Promotionsmöglichkeiten über das eigene Promotionszentrum der Hochschule (Promotion direkt am TTZ möglich)',
-      'Praxisnahe Masterthesen & Projektarbeiten direkt an modernster technischer Ausstattung',
-      'Gemeinsame drittmittelgeförderte Forschungs- und Entwicklungsprojekte (F&E)',
-      'Netzwerkbildung für Fachkräfte der Zukunft im Bereich des nachhaltigen Bauens'
+      'Abschlussarbeiten und Projektarbeiten mit Praxispartnern',
+      'Gemeinsame drittmittelgeförderte Forschungs- und Entwicklungsprojekte',
+      'Promotion in Kooperation (Voraussetzungen und Formate bei der THA prüfen)',
+      'Gefördert im Rahmen der Hightech Agenda Bayern sowie von Landkreis Aichach-Friedberg und Stadt Aichach'
     ]
   },
   {
     id: 'mapr',
-    title: 'MAPR (Applied Research Master)',
-    subtitle: 'Interdisziplinärer Masterstudiengang Angewandte Forschung und Entwicklung',
+    title: 'Master of Applied Research (MAPR)',
+    subtitle: 'Forschungsorientierter Master der Fakultät Elektrotechnik (fakultätsübergreifend)',
     icon: GraduationCap,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
@@ -258,9 +256,10 @@ const PROGRAMS: Program[] = [
     badgeBgColor: 'bg-shiraz/5',
     badgeTextColor: 'text-shiraz',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
+    link: 'https://www.tha.de/hochschule/fakultaet/elektrotechnik/studienangebot/master-applied-research/',
     degree: 'Master of Science (M.Sc.)',
     duration: '3 Semester (Vollzeit)',
-    format: 'Vollzeit-Forschungsstudium',
+    format: 'Vollzeit; Beginn jedes Semester',
     summary: 'Der interdisziplinäre Masterstudiengang Angewandte Forschung und Entwicklung wendet sich an überdurchschnittlich qualifizierte Absolventen technischer Studiengänge. Sie bearbeiten ab dem ersten Tag ein konkretes Forschungs- und Entwicklungsprojekt und erlangen tiefes wissenschaftliches Know-how.',
     description: 'Dieser Studiengang kombiniert anspruchsvolle angewandte Forschungsprojekte in enger Zusammenarbeit mit Instituten oder Industriepartnern mit einem flexibel gestaltbaren technologisch-wissenschaftlichen Curriculum.',
     modulesTitle: 'Studien- & Forschungsstruktur',
@@ -272,7 +271,7 @@ const PROGRAMS: Program[] = [
       'Interdisziplinäres Forschungsseminar der bayerischen Hochschulen'
     ],
     benefitsTitle: 'Herausragende Perspektiven',
-    benefitsIntro: 'Bereite Sie zielgerichtet auf forschungsintensive Führungsrollen oder eine anschließende Promotion vor:',
+    benefitsIntro: 'Bereitet Sie zielgerichtet auf forschungsintensive Aufgaben oder eine anschließende Promotion vor:',
     benefits: [
       'Direkte Anbindung an modernste Forschungsaktivitäten und exzellente Labore der THA',
       'Hervorragende Vorbereitung auf F&E-Leitungsfunktionen in der High-Tech-Industrie',
@@ -320,7 +319,7 @@ export default function WeiterTHA() {
             Weiterführende Studienangebote (THA &amp; ibi)
           </h2>
           <p className="text-sm md:text-base text-text-main/70 leading-relaxed font-light">
-            Bereiten Sie sich auf Führungsaufgaben vor! Die Technische Hochschule Augsburg (THA) bietet Absolventinnen und Absolventen herausragende Masterstudiengänge sowie maßgeschneiderte berufsbegleitende Weiterbildungen über das <strong>ibi - Institut für Bau und Immobilien</strong> an.
+            Bereiten Sie sich auf Führungsaufgaben vor! Die Technische Hochschule Augsburg (THA) bietet Absolventinnen und Absolventen herausragende Masterstudiengänge sowie maßgeschneiderte berufsbegleitende Weiterbildungen über das <strong>ibi - Institut für Bau und Immobilie</strong> an.
           </p>
           <div className="flex flex-wrap gap-2.5 mt-2">
             <a 
@@ -526,7 +525,8 @@ export default function WeiterTHA() {
         })}
       </div>
 
-      <ModuleFooter 
+      <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 17: Studiendaten, Gebühren, Module und Links mit tha.de abgeglichen, Stand 22.10.2026; Angaben können sich ändern)"
         wikipedia={[
           { title: 'Technische Hochschule Augsburg', url: 'https://de.wikipedia.org/wiki/Technische_Hochschule_Augsburg' },
           { title: 'Bauingenieurwesen', url: 'https://de.wikipedia.org/wiki/Bauingenieurwesen' }
@@ -542,10 +542,10 @@ export default function WeiterTHA() {
           { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)' }
         ]}
         weblinks={[
-          { title: 'ibi Augsburg - Institut für Bau und Immobilien', url: 'https://www.tha.de/ibi' },
-          { title: 'Bachelor Bauingenieurwesen - THA' },
-          { title: 'TTZ Aichach - Technologietransferzentrum', url: 'https://www.tha.de/TTZ-Aichach.html' },
-          { title: 'MAPR - Applied Research Master' }
+          { title: 'THA_ibi – Institut für Bau und Immobilie', url: 'https://www.tha.de/ibi' },
+          { title: 'Bachelor Bauingenieurwesen - THA', url: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/bauingenieurwesen-beng/' },
+          { title: 'TTZ Aichach - Technologietransferzentrum', url: 'https://www.tha.de/forschung/technologietransfer/technologietransferzentren/ttz-aichach/' },
+          { title: 'MAPR - Master of Applied Research', url: 'https://www.tha.de/hochschule/fakultaet/elektrotechnik/studienangebot/master-applied-research/' }
         ]}
         hideFormeln={true}
       />

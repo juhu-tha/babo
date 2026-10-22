@@ -8,25 +8,16 @@ import {
   Lock, 
   CheckCircle2, 
   XCircle, 
-  HelpCircle, 
-  BookOpen, 
   Copy, 
-  ExternalLink, 
-  Sparkles, 
-  Layers, 
   Cpu, 
   FileText, 
   Flame, 
   Leaf, 
-  ShieldCheck, 
-  ChevronRight,
-  Info,
-  RefreshCw,
+  ShieldCheck,
   Sliders,
-  Database,
   GraduationCap
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import KiDeklarationGuide from '@/src/modules/ki/KiDeklarationGuide';
 
 interface LimitationCase {

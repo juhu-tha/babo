@@ -19,19 +19,15 @@ import {
   Droplets,
   Zap,
   Activity,
-  ArrowRight,
   ShieldAlert,
   CheckCircle2,
   BookOpen,
   Layers,
   Info,
-  RefreshCw,
   Scale,
   Thermometer,
   Compass,
-  FileText,
   Calculator,
-  PieChart,
   Building,
   Check,
   ShieldCheck,
@@ -1356,7 +1352,7 @@ export default function SpannbetonKennwerte() {
                   <label className="text-xs font-semibold text-text-main block">
                     Bindemittel (DIN EN 197-1):
                   </label>
-                  <select
+                  <select aria-label="Bindemittel (DIN EN 197-1)"
                     value={groutCementType}
                     onChange={(e) => setGroutCementType(e.target.value)}
                     className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium outline-none focus:border-shiraz"
@@ -2624,7 +2620,7 @@ export default function SpannbetonKennwerte() {
                 {/* 1. Betonfestigkeitsklasse */}
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Betonklasse:</label>
-                  <select
+                  <select aria-label="Betonklasse"
                     value={exConcreteClass}
                     onChange={(e) => setExConcreteClass(e.target.value as any)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
@@ -2638,7 +2634,7 @@ export default function SpannbetonKennwerte() {
                 {/* 2. Spannalter t_0 */}
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Spannalter t₀ (Tage):</label>
-                  <select
+                  <select aria-label="Spannalter t₀ (Tage)"
                     value={exSpanT0}
                     onChange={(e) => setExSpanT0(Number(e.target.value))}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
@@ -2653,7 +2649,7 @@ export default function SpannbetonKennwerte() {
                 {/* 3. Umgebungsfeuchte RH */}
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Relative Luftfeuchte (RH):</label>
-                  <select
+                  <select aria-label="Relative Luftfeuchte (RH)"
                     value={exSpanRH}
                     onChange={(e) => setExSpanRH(Number(e.target.value))}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
@@ -2667,7 +2663,7 @@ export default function SpannbetonKennwerte() {
                 {/* 4. Nenn-Vorspannkraft P_0 */}
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Nennkraft P₀ an Presse:</label>
-                  <select
+                  <select aria-label="Nennkraft P₀ an Presse"
                     value={exP0}
                     onChange={(e) => setExP0(Number(e.target.value))}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"

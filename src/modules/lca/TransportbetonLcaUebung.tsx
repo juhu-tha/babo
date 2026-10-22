@@ -3,23 +3,14 @@ import React, { useState } from 'react';
 import { 
   FileSpreadsheet, 
   Download, 
-  Leaf, 
   Truck, 
-  Factory, 
   Building2, 
   CheckCircle2, 
-  RotateCcw, 
   Layers, 
-  Sparkles, 
-  HelpCircle, 
   Sliders, 
   ArrowRight,
-  Calculator,
-  ShieldCheck,
-  TrendingDown,
   Info
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
 import { generateTransportbetonExcel, LCA_BENCHMARKS } from './TransportbetonExcelExport';
 
 interface ConcretePreset {
@@ -412,7 +403,7 @@ export default function TransportbetonLcaUebung() {
               <div className="bg-white p-2.5 rounded-lg border border-home-grau/25">
                 <span className="block text-slate-500">Zementwerk ➔ Betonwerk (A2):</span>
                 <div className="flex items-center gap-2 mt-1">
-                  <input 
+                  <input aria-label="Zementwerk ➔ Betonwerk (A2)" 
                     type="number" min="0" value={distA2Cement} onChange={e => setDistA2Cement(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
@@ -422,7 +413,7 @@ export default function TransportbetonLcaUebung() {
               <div className="bg-white p-2.5 rounded-lg border border-home-grau/25">
                 <span className="block text-slate-500">Kieswerk ➔ Betonwerk (A2):</span>
                 <div className="flex items-center gap-2 mt-1">
-                  <input 
+                  <input aria-label="Kieswerk ➔ Betonwerk (A2)" 
                     type="number" min="0" value={distA2Aggregates} onChange={e => setDistA2Aggregates(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
@@ -432,7 +423,7 @@ export default function TransportbetonLcaUebung() {
               <div className="bg-white p-2.5 rounded-lg border border-home-grau/25">
                 <span className="block text-slate-500">Betonwerk ➔ Baustelle (A4):</span>
                 <div className="flex items-center gap-2 mt-1">
-                  <input 
+                  <input aria-label="Betonwerk ➔ Baustelle (A4)" 
                     type="number" min="0" value={distA4Jobsite} onChange={e => setDistA4Jobsite(Number(e.target.value))}
                     className="w-16 p-1 text-xs border rounded font-mono"
                   />
@@ -551,7 +542,7 @@ export default function TransportbetonLcaUebung() {
                 <Building2 size={13} /> Hochrechnung Gesamtbauwerk:
               </span>
               <div className="flex items-center gap-1">
-                <input 
+                <input aria-label="Hochrechnung Gesamtbauwerk" 
                   type="number" min="0" 
                   value={projectVolumeM3} 
                   onChange={e => setProjectVolumeM3(Number(e.target.value))}

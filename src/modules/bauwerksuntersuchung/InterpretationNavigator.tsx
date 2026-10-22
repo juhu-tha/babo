@@ -4,19 +4,11 @@ import {
   AlertTriangle, 
   ShieldAlert, 
   Activity, 
-  TrendingDown, 
-  Wrench, 
   Scale, 
-  Building2, 
-  FileCheck, 
-  Lightbulb, 
-  Layers,
-  ArrowRight,
-  Zap,
-  Info
+  FileCheck
 } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
 interface DiagnosticScenario {
   id: string;

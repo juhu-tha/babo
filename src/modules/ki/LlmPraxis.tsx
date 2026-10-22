@@ -6,19 +6,15 @@ import {
   FolderTree, 
   FileCode, 
   Globe, 
-  Cpu, 
   Copy, 
   Check, 
-  Layers, 
   BookOpen, 
   Sliders, 
   Code, 
   AlertTriangle, 
-  ArrowRight, 
   Database, 
   Bot, 
-  CheckCircle2, 
-  Share2,
+  CheckCircle2,
   FileText,
   Search,
   Zap,
@@ -28,17 +24,9 @@ import {
   Workflow,
   Laptop,
   CheckSquare,
-  FileSpreadsheet,
-  Download,
-  ExternalLink,
-  Shield,
-  HelpCircle,
-  Clock,
-  Compass,
-  FileCheck2,
-  Scale
+  FileCheck2
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface LlmPraxisProps {
@@ -1095,7 +1083,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
 ## 1. Projektkontext & Rolle
 - Projekt: Neubau Mehrfamilienhaus Augsburg (KfW 40)
 - Rolle: Prüfingenieur für Tragwerksplanung & Bauphysik
-- Geltende Normen: Eurocode 2 (DIN EN 1992-1-1), DIN 1045-2, GEG 2024, VOB/B
+- Geltende Normen: Eurocode 2 (DIN EN 1992-1-1), DIN 1045-2, GModG (vormals GEG), VOB/B
 
 ## 2. Mathematische & Normative Vorgaben
 - Alle Berechnungen mit nachvollziehbaren Formeln in LaTeX: $M_{Ed} = \\frac{q \\cdot L^2}{8}$
@@ -1297,7 +1285,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-off-white rounded-xl border border-home-grau/20 text-xs">
               <div>
                 <label className="font-bold text-text-main block mb-1.5">1. Ingenieur-Rolle / Fachdisziplin:</label>
-                <select 
+                <select aria-label="1. Ingenieur-Rolle / Fachdisziplin" 
                   value={genRole} 
                   onChange={(e) => setGenRole(e.target.value as any)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
@@ -1312,7 +1300,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
 
               <div>
                 <label className="font-bold text-text-main block mb-1.5">2. Leitendes Regelwerk:</label>
-                <select 
+                <select aria-label="2. Leitendes Regelwerk" 
                   value={genNorm} 
                   onChange={(e) => setGenNorm(e.target.value as any)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
@@ -1321,13 +1309,13 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                   <option value="vob_b">VOB/B §§ 4, 13, 15 (Bauvertragsrecht)</option>
                   <option value="din18533">DIN 18533 (Bauwerksabdichtung)</option>
                   <option value="din_en_206">DIN EN 206 (Konformitätskontrolle)</option>
-                  <option value="geg_dgnb">GEG 2024 &amp; DGNB (Bauphysik &amp; Öko)</option>
+                  <option value="geg_dgnb">GModG &amp; DGNB (Bauphysik &amp; Öko)</option>
                 </select>
               </div>
 
               <div>
                 <label className="font-bold text-text-main block mb-1.5">3. Ziel-Formatierung:</label>
-                <select 
+                <select aria-label="3. Ziel-Formatierung" 
                   value={genFormat} 
                   onChange={(e) => setGenFormat(e.target.value as any)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"

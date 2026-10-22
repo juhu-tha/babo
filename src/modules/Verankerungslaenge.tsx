@@ -136,7 +136,7 @@ export default function Verankerungslaenge() {
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="text-sm font-medium text-text-main mb-1 block">Betonfestigkeit</label>
-                  <select 
+                  <select aria-label="Betonfestigkeit" 
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={fck}
                     onChange={(e) => setFck(Number(e.target.value))}
@@ -151,7 +151,7 @@ export default function Verankerungslaenge() {
                 </div>
                 <div>
                   <label className="text-sm font-medium text-text-main mb-1 block">Stahlfestigkeit</label>
-                  <select 
+                  <select aria-label="Stahlfestigkeit" 
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={fyk}
                     onChange={(e) => setFyk(Number(e.target.value))}
@@ -174,7 +174,7 @@ export default function Verankerungslaenge() {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div>
                   <label className="text-sm font-medium text-text-main mb-1 block">Verbundbedingungen</label>
-                  <select 
+                  <select aria-label="Verbundbedingungen" 
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={verbundBedingung}
                     onChange={(e) => setVerbundBedingung(e.target.value as 'gut' | 'maessig')}
@@ -185,7 +185,7 @@ export default function Verankerungslaenge() {
                 </div>
                 <div>
                   <label className="text-sm font-medium text-text-main mb-1 block">Art der Berechnung</label>
-                  <select 
+                  <select aria-label="Art der Berechnung" 
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={berechnungsArt}
                     onChange={(e) => setBerechnungsArt(e.target.value as 'verankerung' | 'uebergreifung')}
@@ -219,7 +219,7 @@ export default function Verankerungslaenge() {
               
               <div className="mb-4">
                 <label className="text-sm font-medium text-text-main mb-1 block">Formgebung (<FormulaText text="\alpha_1" />)</label>
-                <select 
+                <select aria-label="Formgebung ()" 
                   className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz disabled:bg-gray-100 disabled:text-gray-500"
                   value={verankerungsArt}
                   onChange={(e) => setVerankerungsArt(e.target.value as 'gerade' | 'haken' | 'winkel')}
@@ -234,15 +234,15 @@ export default function Verankerungslaenge() {
                 <div className="grid grid-cols-3 gap-2 mb-4">
                   <div>
                     <label className="text-xs font-medium text-text-main mb-1 block">Betondeckung (<FormulaText text="\alpha_2" />)</label>
-                    <input type="number" step="0.05" min="0.7" max="1.0" value={alpha2} onChange={e => setAlpha2(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
+                    <input aria-label="Betondeckung ()" type="number" step="0.05" min="0.7" max="1.0" value={alpha2} onChange={e => setAlpha2(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
                   </div>
                   <div>
                     <label className="text-xs font-medium text-text-main mb-1 block">Querbewehrung (<FormulaText text="\alpha_3" />)</label>
-                    <input type="number" step="0.05" min="0.7" max="1.0" value={alpha3} onChange={e => setAlpha3(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
+                    <input aria-label="Querbewehrung ()" type="number" step="0.05" min="0.7" max="1.0" value={alpha3} onChange={e => setAlpha3(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
                   </div>
                   <div>
                     <label className="text-xs font-medium text-text-main mb-1 block">Querdruck (<FormulaText text="\alpha_5" />)</label>
-                    <input type="number" step="0.05" min="0.7" max="1.0" value={alpha5} onChange={e => setAlpha5(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
+                    <input aria-label="Querdruck ()" type="number" step="0.05" min="0.7" max="1.0" value={alpha5} onChange={e => setAlpha5(Number(e.target.value))} className="w-full p-1.5 text-sm border rounded" />
                   </div>
                 </div>
               )}
@@ -250,7 +250,7 @@ export default function Verankerungslaenge() {
               {berechnungsArt === 'uebergreifung' && (
                 <div className="mb-4">
                   <label className="text-sm font-medium text-text-main mb-1 block">Stoßanteil / Abstand (<FormulaText text="\alpha_6" />)</label>
-                  <select 
+                  <select aria-label="Stoßanteil / Abstand ()" 
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={alpha6}
                     onChange={(e) => setAlpha6(Number(e.target.value))}

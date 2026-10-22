@@ -6,7 +6,6 @@ import {
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
-  AlertTriangle,
   Lightbulb,
   BookOpen,
   Activity,
