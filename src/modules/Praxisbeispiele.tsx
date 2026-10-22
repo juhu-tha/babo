@@ -1,8 +1,8 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { AlertTriangle, CheckCircle2, Layers, Info } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
@@ -207,7 +207,7 @@ export default function Praxisbeispiele() {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Betonrezeptur</h3>
               <div className="flex items-center gap-2"><label className="text-xs font-bold text-home-grau uppercase tracking-wider mb-1 block">Zementart</label><InfoTooltip text="Art des verwendeten Zements (z.B. CEM I, CEM II)." /></div>
-              <select 
+              <select aria-label="Zementart" 
                 value={cementType}
                 onChange={(e) => setCementType(e.target.value)}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white mb-4"
@@ -309,40 +309,6 @@ export default function Praxisbeispiele() {
       
       <ZwangCalculator />
       
-      <ModuleFooter weblinks={[{ title: "Beton.wiki: Zwang" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Risse", url: "https://beton.wiki/index.php?title=Risse" }]} 
-        wikipedia={[
-                
-                { title: 'Zwang', url: 'https://de.wikipedia.org/wiki/Zwang' }
-              ]}
-              regelwerke={[
-          'DAfStb-Richtlinie: Massige Bauteile aus Beton', 
-          'DIN EN 1992-1-1 (Eurocode 2)',
-          'DAfStb-Heft 466: Zur Rissbreitenbeschränkung im Stahlbetonbau'
-        ]}
-        literatur={['Lohmeyer, G.: Weiße Wannen - Einfach und sicher (2018)', 'Litzner, H.-U.: Grundlagen der Bemessung nach Eurocode 2']}
-        formeln={[
-          {
-              formel: '\\Delta T_{ad} \\approx  c \\cdot  Q_{max} / (c_p \\cdot  \\rho )',
-              erklaerung: 'Adiabatischer Temperaturanstieg. c: Zementgehalt, Q_{max}: Hydratationswärme.',
-              quelle: 'Lohmeyer, G.: Weiße Wannen - Einfach und sicher (2...'
-            },
-          {
-              formel: '\\sigma_{z}(t) = \\alpha _T \\cdot  E_{c,eff}(t) \\cdot  R \\cdot  (T_{max} - T(t))',
-              erklaerung: 'Zwangspannung in der Abkühlphase. α_T: Wärmedehnzahl, E_{c,eff}: Effektiver E-Modul, R: Behinderungsgrad.',
-              quelle: 'Lohmeyer, G.: Weiße Wannen - Einfach und sicher (2...'
-            },
-          {
-              formel: '\\varepsilon _{frei} = \\alpha _T \\cdot  \\Delta T + \\varepsilon _{cs}',
-              erklaerung: 'Freie (ungehinderte) Dehnung. α_T: Wärmeausdehnungskoeffizient.',
-              quelle: 'Lohmeyer, G.: Weiße Wannen - Einfach und sicher (2...'
-            },
-          {
-              formel: '\\sigma_{z} = \\varepsilon _{frei} \\cdot  E_{c} \\cdot  R',
-              erklaerung: 'Zwangspannung',
-              quelle: 'Lohmeyer, G.: Weiße Wannen - Einfach und sicher (2...'
-            }
-        ]}
-      />
     </div>
   );
 }

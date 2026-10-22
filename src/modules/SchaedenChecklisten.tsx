@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import { 
-  Search, 
-  Layers, 
-  FileText,
-  BookOpen,
+import {
   TrendingDown,
-  ExternalLink,
   ShieldAlert,
-  ClipboardList,
-  AlertTriangle,
   Camera,
   Activity,
   FileWarning
