@@ -10,17 +10,10 @@ import {
   AlertTriangle, 
   Layers, 
   Wrench, 
-  BookOpen, 
   FileText, 
   Download, 
   Calendar, 
-  Clock, 
-  CheckCircle2, 
-  ArrowRight, 
-  Info, 
-  ShieldCheck, 
-  Sparkles,
-  ExternalLink,
+  ArrowRight,
   Search
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

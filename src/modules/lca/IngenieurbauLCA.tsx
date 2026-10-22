@@ -3,23 +3,13 @@ import {
   Milestone, 
   Scale, 
   Activity, 
-  Recycle, 
-  Clock, 
   Car, 
   CheckCircle2, 
-  AlertTriangle, 
   Info, 
-  HelpCircle, 
-  ArrowRight, 
-  Layers, 
-  Wrench, 
-  Factory, 
-  TrendingDown,
-  FileCheck
+  Layers
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 export default function IngenieurbauLCA() {
   // Simulator State

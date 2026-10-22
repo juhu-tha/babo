@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath, BlockMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import RagDemonstrator from '@/src/modules/ki/RagDemonstrator';
 import {
   Cpu,
@@ -12,16 +12,11 @@ import {
   Server,
   CheckCircle2,
   ArrowRight,
-  Shield,
-  Activity,
   FileText,
-  Terminal,
   Zap,
-  BookOpen,
   Boxes,
   Scale,
   Network,
-  Check,
   Code2,
   HardDrive,
   Workflow,
@@ -800,7 +795,7 @@ export default function Systemarchitektur() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-                {currentTech.mechanismus.steps.map((st, idx) => (
+                {currentTech.mechanismus.steps.map((st: { step: string; desc: string; formula?: string }, idx) => (
                   <div key={idx} className="p-3 bg-white rounded-xl border border-slate-200/80 space-y-1.5">
                     <span className="text-xs font-bold text-slate-800 block">{st.step}</span>
                     <p className="text-[11px] text-text-main/70 leading-relaxed">{st.desc}</p>

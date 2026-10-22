@@ -3,17 +3,11 @@ import { InlineMath, BlockMath } from 'react-katex';
 import {
   Scale,
   Clock,
-  Droplets,
-  Zap,
-  Layers,
-  Compass,
   AlertTriangle,
   CheckCircle2,
-  HelpCircle,
   TrendingDown,
   Info,
-  ChevronRight,
-  Filter
+  ChevronRight
 } from 'lucide-react';
 
 interface BeiwerterDetail {

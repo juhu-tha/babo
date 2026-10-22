@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Waves, Layers, Settings, Activity, Map, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Waves, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function UwBeton() {
   return (

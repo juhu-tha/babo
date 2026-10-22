@@ -4,21 +4,11 @@ import {
   Search, 
   Database, 
   Layers, 
-  FileText, 
-  CheckCircle2, 
-  AlertTriangle, 
-  ArrowRight, 
-  Cpu, 
-  Sparkles, 
-  Copy, 
-  BookOpen, 
-  Sliders,
+  AlertTriangle,
   ShieldCheck,
-  RefreshCw,
-  Terminal,
-  ExternalLink
+  Terminal
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
 interface NormChunk {
   id: string;
@@ -216,7 +206,7 @@ export default function RagDemonstrator() {
           </span>
           <div className="flex items-center gap-2 text-xxs">
             <span className="text-slate-500">Retrieval-Tiefe Top-K:</span>
-            <select
+            <select aria-label="Retrieval-Tiefe Top-K"
               value={topK}
               onChange={(e) => setTopK(Number(e.target.value))}
               className="bg-slate-100 border border-slate-300 rounded px-2 py-0.5 text-xs font-bold text-slate-700"
