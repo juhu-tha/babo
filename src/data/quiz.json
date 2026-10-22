@@ -7391,5 +7391,65 @@
       "targetModuleLabel": "Hydratation & Folgen"
     },
     "verified": false
+  },
+  {
+    "id": "q_nbh_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "nachbehandlung",
+    "moduleTitle": "Nachbehandlung",
+    "topic": "Mindestdauer",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-3",
+    "question": "XD1-Bauteil, Festigkeitsentwicklung mittel (r = 0,35), Oberflächentemperatur 8 °C. Wie lange ist mindestens nachzubehandeln?",
+    "options": [
+      "2 Tage",
+      "4 Tage",
+      "6 Tage",
+      "10 Tage"
+    ],
+    "correctIdx": 2,
+    "explanation": "Zeile 5 ≤ T < 10 °C, Spalte r ≥ 0,30: 6 Tage.",
+    "gapAnalysis": {
+      "topic": "Mindestdauer",
+      "misconception": "Die Nachbehandlungsdauer sei unabhängig von der Temperatur.",
+      "coreRule": "Kälte und langsame Festigkeitsentwicklung verlängern die Nachbehandlung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mindestdauer“ im Modul Nachbehandlung noch einmal durch.",
+      "targetModuleTab": "nachbehandlung",
+      "targetModuleLabel": "Nachbehandlung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_nbh_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "nachbehandlung",
+    "moduleTitle": "Nachbehandlung",
+    "topic": "Verdunstungsrate",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ACI 305R",
+    "question": "Welche Änderung erhöht die Verdunstungsrate einer frischen Betonfläche am stärksten?",
+    "options": [
+      "Höhere Luftfeuchte",
+      "Stärkerer Wind bei trockener Luft",
+      "Niedrigere Betontemperatur",
+      "Windstille"
+    ],
+    "correctIdx": 1,
+    "explanation": "E wächst linear mit (V + 4) und mit dem Feuchtedefizit (1 − r); Wind und trockene Luft wirken zusammen.",
+    "gapAnalysis": {
+      "topic": "Verdunstungsrate",
+      "misconception": "Nur die Sonne verursache Frühschwindrisse.",
+      "coreRule": "Ab etwa 1,0 kg/(m²·h) sofort Schutzmaßnahmen ergreifen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verdunstungsrate“ im Modul Nachbehandlung noch einmal durch.",
+      "targetModuleTab": "nachbehandlung",
+      "targetModuleLabel": "Nachbehandlung"
+    },
+    "verified": false
   }
 ]
