@@ -510,7 +510,7 @@ export default function BpHolzprodukte() {
             
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-text-main">Verwendete Holzgüte:</label>
-              <select
+              <select aria-label="Verwendete Holzgüte"
                 value={woodClass}
                 onChange={(e) => setWoodClass(e.target.value)}
                 className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"

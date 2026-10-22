@@ -1299,7 +1299,7 @@ export default function BpGlaeser() {
                   {/* Abstandhalter / Warme Kante */}
                   <div>
                     <label className="text-xs font-bold block mb-1">Glasrandverbund (Abstandhalter):</label>
-                    <select
+                    <select aria-label="Glasrandverbund (Abstandhalter)"
                       value={abstandhalterTyp}
                       onChange={(e) => setAbstandhalterTyp(e.target.value as any)}
                       className="w-full p-2 bg-white border border-home-grau/30 rounded-xl text-xs font-medium focus:ring-1 focus:ring-shiraz outline-none"

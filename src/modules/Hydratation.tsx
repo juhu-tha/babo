@@ -607,7 +607,7 @@ export default function Hydratation() {
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementart</label><InfoTooltip text="Art des verwendeten Zements (z.B. CEM I, CEM II)." /></div>
-            <select 
+            <select aria-label="Zementart" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={zementArt}
               onChange={(e) => setZementArt(e.target.value)}
@@ -619,7 +619,7 @@ export default function Hydratation() {
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Festigkeitsklasse</label><InfoTooltip text="Normfestigkeit des Materials." /></div>
-            <select 
+            <select aria-label="Festigkeitsklasse" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={festigkeitsklasse}
               onChange={(e) => setFestigkeitsklasse(e.target.value)}
@@ -634,7 +634,7 @@ export default function Hydratation() {
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Erhärtung</label><InfoTooltip text="Geschwindigkeit der Festigkeitsentwicklung." /></div>
-            <select 
+            <select aria-label="Erhärtung" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={erhaertungsgeschwindigkeit}
               onChange={(e) => setErhaertungsgeschwindigkeit(e.target.value)}
@@ -647,7 +647,7 @@ export default function Hydratation() {
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zusatzstoff</label><InfoTooltip text="Art des verwendeten Betonzusatzstoffs." /></div>
             <div className="flex gap-2">
-              <select 
+              <select aria-label="Zusatzstoff" 
                 className="flex-1 p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
                 value={zusatzstoff}
                 onChange={(e) => {
@@ -715,7 +715,7 @@ export default function Hydratation() {
 
         <div className="flex flex-col gap-2 mt-2">
           <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Reifeverfahren</label><InfoTooltip text="Berechnungsmodell für das Äquivalentalter." /></div>
-          <select 
+          <select aria-label="Reifeverfahren" 
             className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue text-sm"
             value={reifeVerfahren}
             onChange={(e) => setReifeVerfahren(e.target.value)}

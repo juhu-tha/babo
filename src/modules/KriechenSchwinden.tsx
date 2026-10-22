@@ -204,7 +204,7 @@ export default function KriechenSchwinden() {
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementklasse</label><InfoTooltip text="Klassifizierung der Festigkeitsentwicklung des Zements." /></div>
                 <InfoTooltip text="S: langsam erhärtend, N: normal erhärtend, R: schnell erhärtend." />
               </div>
-              <select 
+              <select aria-label="Zementklasse" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={zementArt}
                 onChange={(e) => setZementArt(e.target.value)}
@@ -507,7 +507,7 @@ export default function KriechenSchwinden() {
 
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Spannstahlklasse (Relaxationsverhalten)</label><InfoTooltip text="Klassifizierung des Spannstahls nach seinem Spannungsverlust." /></div>
-              <select 
+              <select aria-label="Spannstahlklasse (Relaxationsverhalten)" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={stahlKlasse}
                 onChange={(e) => setStahlKlasse(e.target.value)}

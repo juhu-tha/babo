@@ -156,7 +156,7 @@ export default function Ausbreitversuch() {
             
             <div className="space-y-3">
               <label className="text-sm font-bold text-text-main">Konsistenzklasse wählen</label>
-              <select
+              <select aria-label="Konsistenzklasse wählen"
                 value={consistency}
                 onChange={(e) => setConsistency(e.target.value as ConsistencyClass)}
                 disabled={testStatus === 'running'}

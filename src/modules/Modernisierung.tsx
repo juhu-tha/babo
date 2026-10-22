@@ -619,7 +619,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Bauteilfläche (<InlineMath math="A" />):</label>
                     <div className="flex items-center gap-1.5">
-                      <input
+                      <input aria-label="Bauteilfläche ()"
                         type="number"
                         min="20"
                         max="1000"
@@ -634,7 +634,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Energiepreis:</label>
                     <div className="flex items-center gap-1.5">
-                      <input
+                      <input aria-label="Energiepreis"
                         type="number"
                         step="0.01"
                         min="0.05"
@@ -652,7 +652,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Gradtagzahl <InlineMath math="G_{t20/15}" />:</label>
                     <div className="flex items-center gap-1.5">
-                      <input
+                      <input aria-label="Gradtagzahl "
                         type="number"
                         min="2000"
                         max="5500"
@@ -667,7 +667,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Anlagennutzungsgrad <InlineMath math="\eta_{sys}" />:</label>
                     <div className="flex items-center gap-1.5">
-                      <input
+                      <input aria-label="Anlagennutzungsgrad "
                         type="number"
                         min="0.5"
                         max="4"

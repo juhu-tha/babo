@@ -864,7 +864,7 @@ function MetalDurabilitySimulator() {
           <div className="space-y-3.5">
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Luftreinheits-Klasse (ISO 12944)</span>
-              <select
+              <select aria-label="Luftreinheits-Klasse (ISO 12944)"
                 value={targetClass}
                 onChange={(e) => setTargetClass(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -935,7 +935,7 @@ function MetalDurabilitySimulator() {
           <div className="space-y-3">
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Großteil (z.B. Blech/Fassade)</span>
-              <select
+              <select aria-label="Großteil (z.B. Blech/Fassade)"
                 value={metalA}
                 onChange={(e) => setMetalA(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -950,7 +950,7 @@ function MetalDurabilitySimulator() {
 
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Verbindungsmittel (Schraube/Niet)</span>
-              <select
+              <select aria-label="Verbindungsmittel (Schraube/Niet)"
                 value={metalB}
                 onChange={(e) => setMetalB(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -965,7 +965,7 @@ function MetalDurabilitySimulator() {
 
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Feuchtigkeit / Umgebung</span>
-              <select
+              <select aria-label="Feuchtigkeit / Umgebung"
                 value={environment}
                 onChange={(e) => setEnvironment(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"

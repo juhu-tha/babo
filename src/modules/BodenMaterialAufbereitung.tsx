@@ -688,7 +688,7 @@ export default function BodenMaterialAufbereitung() {
                   <div className="flex justify-between items-center">
                     <label className="text-xs font-semibold text-slate-800">Haufwerksvolumen (<InlineMath math="V" />):</label>
                     <div className="flex items-center gap-1">
-                      <input 
+                      <input aria-label="Haufwerksvolumen ()" 
                         type="number" min="0" 
                         value={heapVolume} 
                         onChange={(e) => setHeapVolume(Math.max(1, parseInt(e.target.value) || 0))}
@@ -698,7 +698,7 @@ export default function BodenMaterialAufbereitung() {
                       <span className="text-xs text-slate-500 font-serif">m³</span>
                     </div>
                   </div>
-                  <input 
+                  <input aria-label="Haufwerksvolumen (): m³" 
                     type="range" 
                     min="5" 
                     max="3000" 
@@ -947,7 +947,7 @@ export default function BodenMaterialAufbereitung() {
                 <div className="space-y-3">
                   <div>
                     <label className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Projektbezeichnung:</label>
-                    <input 
+                    <input aria-label="Projektbezeichnung" 
                       type="text" 
                       value={pProject}
                       onChange={(e) => setPProject(e.target.value)}
@@ -957,7 +957,7 @@ export default function BodenMaterialAufbereitung() {
                   </div>
                   <div>
                     <label className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Zertifizierter Probennehmer Name:</label>
-                    <input 
+                    <input aria-label="Zertifizierter Probennehmer Name" 
                       type="text" 
                       value={pSampler}
                       onChange={(e) => setPSampler(e.target.value)}
@@ -967,7 +967,7 @@ export default function BodenMaterialAufbereitung() {
                   </div>
                   <div>
                     <label className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Datum der Probenahme:</label>
-                    <input 
+                    <input aria-label="Datum der Probenahme" 
                       type="text" 
                       value={pDate}
                       onChange={(e) => setPDate(e.target.value)}
@@ -980,7 +980,7 @@ export default function BodenMaterialAufbereitung() {
                 <div className="space-y-3">
                   <div>
                     <label className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Entnahmeort / GPS-Koordinaten:</label>
-                    <input 
+                    <input aria-label="Entnahmeort / GPS-Koordinaten" 
                       type="text" 
                       value={pLocation}
                       onChange={(e) => setPLocation(e.target.value)}
@@ -990,7 +990,7 @@ export default function BodenMaterialAufbereitung() {
                   </div>
                   <div>
                     <label className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Witterungsverhältnisse:</label>
-                    <input 
+                    <input aria-label="Witterungsverhältnisse" 
                       type="text" 
                       value={pWeather}
                       onChange={(e) => setPWeather(e.target.value)}
@@ -1000,7 +1000,7 @@ export default function BodenMaterialAufbereitung() {
                   </div>
                   <div>
                     <label className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Behördenzeuge / Vertretung Bauherr:</label>
-                    <input 
+                    <input aria-label="Behördenzeuge / Vertretung Bauherr" 
                       type="text" 
                       value={pWitness}
                       onChange={(e) => setPWitness(e.target.value)}
@@ -1013,7 +1013,7 @@ export default function BodenMaterialAufbereitung() {
 
               <div className="mb-6">
                 <label className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">Besondere Bemerkungen &amp; Vor-Ort-Sensorik (Geruch, Färbung):</label>
-                <textarea 
+                <textarea aria-label="Besondere Bemerkungen &amp; Vor-Ort-Sensorik (Geruch, Färbung)" 
                   value={pNotes}
                   onChange={(e) => setPNotes(e.target.value)}
                   disabled={isFinalized}

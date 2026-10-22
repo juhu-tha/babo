@@ -383,7 +383,7 @@ export default function BpMineralisch() {
             
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-text-main">Verlegter Werkstoff:</label>
-              <select
+              <select aria-label="Verlegter Werkstoff"
                 value={tileMaterial}
                 onChange={(e) => setTileMaterial(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"

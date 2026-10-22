@@ -956,7 +956,7 @@ export default function Bautagebuch() {
                     <div>
                       <label className="text-xs font-bold text-slate-700 block mb-1">Temperatur Min (&deg;C)</label>
                       <div className="flex items-center gap-2">
-                        <input 
+                        <input aria-label="Temperatur Min (&deg;C)" 
                           type="range" 
                           min="-10" 
                           max="45" 
@@ -971,7 +971,7 @@ export default function Bautagebuch() {
                     <div>
                       <label className="text-xs font-bold text-slate-700 block mb-1">Temperatur Max (&deg;C)</label>
                       <div className="flex items-center gap-2">
-                        <input 
+                        <input aria-label="Temperatur Max (&deg;C)" 
                           type="range" 
                           min="-10" 
                           max="45" 

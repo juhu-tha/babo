@@ -883,11 +883,11 @@ export default function WTA() {
                 </div>
                 <div>
                   <span className="block text-home-grau font-semibold mb-0.5">Injektions-Wirkstoff:</span>
-                  <input type="text" defaultValue="Silan-Creme (80% Wirkstoff)" className="w-full bg-white border border-home-grau/30 rounded p-1 text-shiraz font-semibold" />
+                  <input aria-label="Injektions-Wirkstoff" type="text" defaultValue="Silan-Creme (80% Wirkstoff)" className="w-full bg-white border border-home-grau/30 rounded p-1 text-shiraz font-semibold" />
                 </div>
                 <div>
                   <span className="block text-home-grau font-semibold mb-0.5">Packerdruck (Max Bar):</span>
-                  <input type="number" min="0" defaultValue={5} className="w-full bg-white border border-home-grau/30 rounded p-1 font-mono font-bold" />
+                  <input aria-label="Packerdruck (Max Bar)" type="number" min="0" defaultValue={5} className="w-full bg-white border border-home-grau/30 rounded p-1 font-mono font-bold" />
                 </div>
               </div>
               <p className="text-xs text-home-grau leading-tight italic">
@@ -925,7 +925,7 @@ export default function WTA() {
               {/* 1. Innendämmsystem */}
               <div className="space-y-1.5 text-xs">
                 <label className="font-bold text-text-main block">Innendämm-System:</label>
-                <select 
+                <select aria-label="Innendämm-System" 
                   value={kombiDaemm} 
                   onChange={(e) => setKombiDaemm(e.target.value as any)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
@@ -940,7 +940,7 @@ export default function WTA() {
               {/* 2. Zustand Horizontalsperre */}
               <div className="space-y-1.5 text-xs">
                 <label className="font-bold text-text-main block">Vorschalt-Horizontalsperre (WTA 4-10):</label>
-                <select 
+                <select aria-label="Vorschalt-Horizontalsperre (WTA 4-10)" 
                   value={kombiSperre} 
                   onChange={(e) => setKombiSperre(e.target.value as any)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
@@ -954,7 +954,7 @@ export default function WTA() {
               {/* 3. Mauerwerks-Salzbelastung */}
               <div className="space-y-1.5 text-xs">
                 <label className="font-bold text-text-main block">Mauerwerks-Salzbelastung (WTA 2-9):</label>
-                <select 
+                <select aria-label="Mauerwerks-Salzbelastung (WTA 2-9)" 
                   value={kombiSalz} 
                   onChange={(e) => setKombiSalz(e.target.value as any)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"
@@ -968,7 +968,7 @@ export default function WTA() {
               {/* 4. Schlagregenschutz der Fassade */}
               <div className="space-y-1.5 text-xs">
                 <label className="font-bold text-text-main block">Schlagregenbelastung der Fassade:</label>
-                <select 
+                <select aria-label="Schlagregenbelastung der Fassade" 
                   value={kombiRegen} 
                   onChange={(e) => setKombiRegen(e.target.value as any)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-semibold"

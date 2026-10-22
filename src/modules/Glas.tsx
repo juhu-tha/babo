@@ -171,7 +171,7 @@ export default function Glas() {
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Glasart & Eigenschaften</h3>
               <div className="flex flex-col gap-2 mb-4">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Glasart</label><InfoTooltip text="Art des verwendeten Glases (z.B. Floatglas, ESG)." /></div>
-                <select 
+                <select aria-label="Glasart" 
                   className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                   value={glassType}
                   onChange={(e) => {
@@ -255,7 +255,7 @@ export default function Glas() {
               
               <div className="flex flex-col gap-2 mb-4">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Lasteinwirkungsdauer</label><InfoTooltip text="Dauer, über die die Last auf das Bauteil einwirkt." /></div>
-                <select 
+                <select aria-label="Lasteinwirkungsdauer" 
                   className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                   value={duration}
                   onChange={(e) => setDuration(e.target.value as any)}

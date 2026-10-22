@@ -578,7 +578,7 @@ export default function Bestand() {
                     <label className="text-xs font-semibold text-slate-700 block mb-1">
                       Wärmeleitfähigkeit λ_D [W/(mK)]:
                     </label>
-                    <select
+                    <select aria-label="Wärmeleitfähigkeit λ_D [W/(mK)]"
                       value={lambda}
                       onChange={(e) => setLambda(parseFloat(e.target.value))}
                       className="w-full text-xs p-2.5 rounded-lg border border-home-grau/30 bg-white"
@@ -605,7 +605,7 @@ export default function Bestand() {
                     <label className="text-xs font-semibold text-slate-700 block mb-1">
                       Bestehendes Heizsystem:
                     </label>
-                    <select
+                    <select aria-label="Bestehendes Heizsystem"
                       value={heatingSource}
                       onChange={(e) => setHeatingSource(e.target.value)}
                       className="w-full text-xs p-2.5 rounded-lg border border-home-grau/30 bg-white"

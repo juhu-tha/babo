@@ -193,7 +193,7 @@ export default function HydratationPruefverfahren() {
                 {/* Zementauswahl */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-bold text-home-grau uppercase tracking-wider">Zementcharakteristik</label>
-                  <select
+                  <select aria-label="Zementcharakteristik"
                     value={selectedCement}
                     onChange={(e) => setSelectedCement(e.target.value)}
                     className="p-2 text-sm border border-home-grau/30 rounded-lg bg-white text-text-main focus:outline-none focus:border-shiraz"

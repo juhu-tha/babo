@@ -528,7 +528,7 @@ export default function Holz() {
             <label className="text-sm font-medium text-text-main">Holzart / Werkstoff</label>
             <InfoTooltip text="Auswahl der Holzart oder des Holzwerkstoffs. Dies beeinflusst Rohdichte, Schwindmaße und Festigkeiten." />
           </div>
-          <select 
+          <select aria-label="Holzart / Werkstoff" 
             className="w-full p-3 border border-home-grau/30 rounded-xl focus:outline-none focus:border-shiraz bg-off-white"
             value={holz} 
           onChange={(e) => setHolz(e.target.value as keyof typeof holzArten)}
@@ -653,7 +653,7 @@ export default function Holz() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Holzprodukt / Holzart</label><InfoTooltip text="Art des verwendeten Holzes oder Holzwerkstoffs." /></div>
-            <select 
+            <select aria-label="Holzprodukt / Holzart" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={holz}
               onChange={(e) => setHolz(e.target.value as keyof typeof holzArten)}
@@ -681,7 +681,7 @@ export default function Holz() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Querschnitt</label><InfoTooltip text="Abmessungen des Bauteilquerschnitts." /></div>
-            <select 
+            <select aria-label="Querschnitt" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={querschnitt}
               onChange={(e) => setQuerschnitt(e.target.value)}
@@ -870,7 +870,7 @@ export default function Holz() {
           
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Sortierklasse / Festigkeitsklasse</label><InfoTooltip text="Klassifizierung des Holzes nach seiner Tragfähigkeit." /></div>
-            <select 
+            <select aria-label="Sortierklasse / Festigkeitsklasse" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={festigkeitsklasse}
               onChange={(e) => setFestigkeitsklasse(e.target.value as keyof typeof festigkeitsklassen)}
@@ -881,7 +881,7 @@ export default function Holz() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Nutzungsklasse (NKL)</label><InfoTooltip text="Einteilung nach den klimatischen Umgebungsbedingungen." /></div>
-            <select 
+            <select aria-label="Nutzungsklasse (NKL)" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={nkl}
               onChange={(e) => setNkl(e.target.value as keyof typeof kmodTable)}
@@ -894,7 +894,7 @@ export default function Holz() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Klasse der Lasteinwirkungsdauer (KLED)</label><InfoTooltip text="Einteilung der Lasten nach ihrer Einwirkungsdauer." /></div>
-            <select 
+            <select aria-label="Klasse der Lasteinwirkungsdauer (KLED)" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={kled}
               onChange={(e) => setKled(e.target.value)}
@@ -909,7 +909,7 @@ export default function Holz() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Auflagerbedingung (k_c,90)</label><InfoTooltip text="Beiwert zur Berücksichtigung der Auflagerart bei Querdruck." /></div>
-            <select 
+            <select aria-label="Auflagerbedingung (k_c,90)" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={kc90}
               onChange={(e) => setKc90(Number(e.target.value))}
@@ -1091,7 +1091,7 @@ export default function Holz() {
               <label className="text-sm font-semibold text-text-main">Holzart / Werkstoff</label>
               <InfoTooltip text="Auswahl der Holzart oder des Holzwerkstoffs. Dies beeinflusst k_def sowie die Quell- und Schwindbeiwerte." />
             </div>
-            <select 
+            <select aria-label="Holzart / Werkstoff" 
               className="w-full p-2.5 border border-home-grau/30 rounded-xl bg-off-white text-text-main focus:outline-none focus:border-shiraz"
               value={holz} 
               onChange={(e) => setHolz(e.target.value as keyof typeof holzArten)}
@@ -1105,7 +1105,7 @@ export default function Holz() {
               <label className="text-sm font-semibold text-text-main">Nutzungsklasse (NKL)</label>
               <InfoTooltip text="Einfluss der Dauerfeuchte der Umgebung auf das Kriechen." />
             </div>
-            <select 
+            <select aria-label="Nutzungsklasse (NKL)" 
               className="w-full p-2.5 border border-home-grau/30 rounded-xl bg-off-white text-text-main focus:outline-none focus:border-shiraz"
               value={nkl} 
               onChange={(e) => setNkl(e.target.value as keyof typeof kmodTable)}

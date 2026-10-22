@@ -351,7 +351,7 @@ export default function Kunststoffe() {
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Kunststoff-Struktur</label><InfoTooltip text="Molekularer Aufbau des Kunststoffs (z.B. amorph, teilkristallin)." /></div>
                 <InfoTooltip text="Wählen Sie die molekulare Struktur des Kunststoffs." />
               </div>
-              <select 
+              <select aria-label="Kunststoff-Struktur" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={plasticType}
                 onChange={(e) => setPlasticType(e.target.value as any)}

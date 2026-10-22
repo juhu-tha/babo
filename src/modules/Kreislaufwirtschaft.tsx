@@ -756,7 +756,7 @@ export default function Kreislaufwirtschaft() {
                           {/* Lifecycle/Recycling channel */}
                           <div className="col-span-6 md:col-span-2">
                             <label className="block md:hidden text-[9px] font-bold text-slate-400 uppercase mb-0.5 font-mono">Materielles Zielverfahren</label>
-                            <select
+                            <select aria-label="Materielles Zielverfahren"
                               disabled={isHazardous}
                               value={comp.targetChannel}
                               onChange={(e) => updateAuditComponent(comp.id, 'targetChannel', e.target.value)}
@@ -771,7 +771,7 @@ export default function Kreislaufwirtschaft() {
                           {/* Connection separability (Dry-joint / modularity assessment) */}
                           <div className="col-span-6 md:col-span-2">
                             <label className="block md:hidden text-[9px] font-bold text-slate-400 uppercase mb-0.5 font-mono">Verbindungsklasse</label>
-                            <select
+                            <select aria-label="Verbindungsklasse"
                               value={comp.connectionType}
                               onChange={(e) => updateAuditComponent(comp.id, 'connectionType', e.target.value)}
                               className="w-full text-xs font-semibold p-1 border border-home-grau/30 rounded-md bg-white text-slate-800"
@@ -786,7 +786,7 @@ export default function Kreislaufwirtschaft() {
                           {/* Pre-scrutinized hazards */}
                           <div className="col-span-6 md:col-span-2">
                             <label className="block md:hidden text-[9px] font-bold text-slate-400 uppercase mb-0.5 font-mono">Schadstoffe</label>
-                            <select
+                            <select aria-label="Schadstoffe"
                               value={comp.hazardousSubstance}
                               onChange={(e) => updateAuditComponent(comp.id, 'hazardousSubstance', e.target.value)}
                               className={`w-full text-xs font-bold p-1 border rounded-md bg-white ${
@@ -844,7 +844,7 @@ export default function Kreislaufwirtschaft() {
 
                       <div className="lg:col-span-2">
                         <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Kategorie</label>
-                        <select
+                        <select aria-label="Kategorie"
                           value={newCompCat}
                           onChange={(e) => setNewCompCat(e.target.value as any)}
                           className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-905 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -859,7 +859,7 @@ export default function Kreislaufwirtschaft() {
 
                       <div className="lg:col-span-2">
                         <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Fügungsart</label>
-                        <select
+                        <select aria-label="Fügungsart"
                           value={newCompConn}
                           onChange={(e) => setNewCompConn(e.target.value as any)}
                           className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-905 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -873,7 +873,7 @@ export default function Kreislaufwirtschaft() {
 
                       <div className="lg:col-span-1">
                         <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Menge</label>
-                        <input
+                        <input aria-label="Menge"
                           type="number"
                           min="1"
                           value={newCompQty}
@@ -884,7 +884,7 @@ export default function Kreislaufwirtschaft() {
 
                       <div className="lg:col-span-1">
                         <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Einheit</label>
-                        <select
+                        <select aria-label="Einheit"
                           value={newCompUnit}
                           onChange={(e) => setNewCompUnit(e.target.value as any)}
                           className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg bg-white text-slate-905 focus:outline-none"
@@ -1326,7 +1326,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <label className="block text-[11px] font-semibold text-text-main mb-1">Gebäude-Lebensdauer</label>
                       <div className="flex items-center gap-1.5">
-                        <input 
+                        <input aria-label="Gebäude-Lebensdauer" 
                           type="number" min="0" 
                           value={lifespan} 
                           onChange={(e) => setLifespan(Number(e.target.value))}
@@ -1338,7 +1338,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Ø Branchen-Schnitt</label>
                       <div className="flex items-center gap-1.5">
-                        <input 
+                        <input aria-label="Ø Branchen-Schnitt" 
                           type="number" min="0" 
                           value={avgLifespan} 
                           onChange={(e) => setAvgLifespan(Number(e.target.value))}
@@ -1351,7 +1351,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                   <div className="grid grid-cols-2 gap-4 mt-2">
                     <div>
                       <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Nutzungshäufigkeit</label>
-                      <input 
+                      <input aria-label="Nutzungshäufigkeit" 
                         type="number" min="0" 
                         step="0.1"
                         value={intensity} 
@@ -1361,7 +1361,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     </div>
                     <div>
                       <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Ø Branchen-Intensität</label>
-                      <input 
+                      <input aria-label="Ø Branchen-Intensität" 
                         type="number" min="0" 
                         step="0.1"
                         value={avgIntensity} 

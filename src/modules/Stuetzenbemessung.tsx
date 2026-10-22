@@ -294,7 +294,7 @@ export default function Stuetzenbemessung() {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div>
                   <label className="text-xs font-bold text-text-main mb-2 block">Beton fck</label>
-                  <select className="w-full p-2 border rounded-md" value={fck} onChange={(e) => setFck(Number(e.target.value))}>
+                  <select aria-label="Beton fck" className="w-full p-2 border rounded-md" value={fck} onChange={(e) => setFck(Number(e.target.value))}>
                     <option value={20}>C20/25</option>
                     <option value={25}>C25/30</option>
                     <option value={30}>C30/37</option>
@@ -305,7 +305,7 @@ export default function Stuetzenbemessung() {
                 </div>
                 <div>
                   <label className="text-xs font-bold text-text-main mb-2 block">Stahl fyk</label>
-                  <select className="w-full p-2 border rounded-md" value={fyk} onChange={(e) => setFyk(Number(e.target.value))}>
+                  <select aria-label="Stahl fyk" className="w-full p-2 border rounded-md" value={fyk} onChange={(e) => setFyk(Number(e.target.value))}>
                     <option value={500}>B500 (500 MPa)</option>
                   </select>
                 </div>

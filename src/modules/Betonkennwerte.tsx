@@ -902,7 +902,7 @@ export default function Betonkennwerte() {
               {/* Betonklasse */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Betonfestigkeitsklasse</label>
-                <select 
+                <select aria-label="Betonfestigkeitsklasse" 
                   className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-shiraz focus:ring-1 focus:ring-shiraz"
                   value={selectedClassIdx}
                   onChange={(e) => setSelectedClassIdx(Number(e.target.value))}
@@ -921,7 +921,7 @@ export default function Betonkennwerte() {
               {/* Zementklasse */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Zementbeiwert s (Abschnitt 1)</label>
-                <select 
+                <select aria-label="Zementbeiwert s (Abschnitt 1)" 
                   className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-slate-800 focus:ring-1 focus:ring-shiraz"
                   value={cementClass}
                   onChange={(e) => setCementClass(e.target.value as any)}
@@ -936,7 +936,7 @@ export default function Betonkennwerte() {
               {/* Gesteinskörnung */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Gesteinskörnung α_E (Abschnitt 3)</label>
-                <select 
+                <select aria-label="Gesteinskörnung α_E (Abschnitt 3)" 
                   className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-slate-800 focus:ring-1 focus:ring-shiraz"
                   value={aggregateType}
                   onChange={(e) => setAggregateType(e.target.value as any)}
@@ -970,7 +970,7 @@ export default function Betonkennwerte() {
               {/* Querschnittsfläche Ac */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Querschnittsfläche A_c [m²]</label>
-                <input 
+                <input aria-label="Querschnittsfläche A_c [m²]" 
                   type="number" 
                   step="0.05"
                   min="0.01"
@@ -985,7 +985,7 @@ export default function Betonkennwerte() {
               {/* Trocknender Umfang u */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Umfang u (Austrocknung) [m]</label>
-                <input 
+                <input aria-label="Umfang u (Austrocknung) [m]" 
                   type="number" 
                   step="0.1"
                   min="0.1"
@@ -1028,7 +1028,7 @@ export default function Betonkennwerte() {
               {/* Einwirkende Dauerspannung σ_c */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Dauerspannung σ_c [MPa]</label>
-                <input 
+                <input aria-label="Dauerspannung σ_c [MPa]" 
                   type="number" 
                   step="0.5"
                   min="0"
@@ -1049,7 +1049,7 @@ export default function Betonkennwerte() {
               <div className="flex items-center justify-between bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs">
                 <span className="text-slate-700 font-medium">Bauteildicke h (Biegezug f_ctm,fl):</span>
                 <div className="flex items-center gap-1.5">
-                  <input 
+                  <input aria-label="Bauteildicke h (Biegezug f_ctm,fl)" 
                     type="number" 
                     min="50" 
                     max="3000" 
@@ -1065,7 +1065,7 @@ export default function Betonkennwerte() {
               <div className="flex items-center justify-between bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs">
                 <span className="text-slate-700 font-medium">Umgebungstemperatur T (Anhang B.3):</span>
                 <div className="flex items-center gap-1.5">
-                  <input 
+                  <input aria-label="Umgebungstemperatur T (Anhang B.3)" 
                     type="number" 
                     min="-10" 
                     max="60" 
@@ -1081,7 +1081,7 @@ export default function Betonkennwerte() {
               <div className="flex items-center justify-between bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs">
                 <span className="text-slate-700 font-medium">Bauteillänge L (Längenverkürzung):</span>
                 <div className="flex items-center gap-1.5">
-                  <input 
+                  <input aria-label="Bauteillänge L (Längenverkürzung)" 
                     type="number" 
                     min="1" 
                     max="100" 

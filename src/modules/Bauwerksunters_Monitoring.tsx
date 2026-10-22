@@ -621,7 +621,7 @@ export default function Bauwerksunters_Monitoring() {
                 <div className="space-y-3">
                   <div>
                     <label className="text-xs font-semibold text-slate-600 block mb-1">Estrich / Baustoff-Klassifizierung</label>
-                    <select
+                    <select aria-label="Estrich / Baustoff-Klassifizierung"
                       value={substrate}
                       onChange={(e) => setSubstrate(e.target.value as any)}
                       className="w-full p-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-shiraz"

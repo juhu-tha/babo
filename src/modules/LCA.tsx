@@ -1070,7 +1070,7 @@ export default function LCA() {
                 {/* Input 1: Material selector */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10.5px] font-bold text-slate-700">1. Baustoff-Datensatz (EPD):</label>
-                  <select
+                  <select aria-label="1. Baustoff-Datensatz (EPD)"
                     value={calcMaterialId}
                     onChange={(e) => setCalcMaterialId(e.target.value)}
                     className="w-full text-xs p-2 border border-home-grau/30 bg-white rounded-lg focus:ring-1 focus:ring-shiraz focus:outline-none"

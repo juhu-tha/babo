@@ -183,7 +183,7 @@ export default function EModul() {
                 <label className="block text-sm font-medium text-text-main mb-1">
                   Gesteinsart (Beiwert <FormulaText text="\alpha_E" />)
                 </label>
-                <select
+                <select aria-label="Gesteinsart (Beiwert )"
                   value={alphaE}
                   onChange={(e) => setAlphaE(Number(e.target.value))}
                   className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white text-text-main focus:outline-none focus:ring-2 focus:ring-brand-blue"

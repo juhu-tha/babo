@@ -715,7 +715,7 @@ export default function Schadstoffe() {
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">Na₂O + K₂O (Gew.-%)</label>
-                          <input 
+                          <input aria-label="Na₂O + K₂O (Gew.-%)" 
                             type="number" 
                             min="0" 
                             max="30" 
@@ -727,7 +727,7 @@ export default function Schadstoffe() {
                         </div>
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">CaO + MgO (Gew.-%)</label>
-                          <input 
+                          <input aria-label="CaO + MgO (Gew.-%)" 
                             type="number" 
                             min="0" 
                             max="40" 
@@ -739,7 +739,7 @@ export default function Schadstoffe() {
                         </div>
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">BaO + B₂O₃ (Gew.-%)</label>
-                          <input 
+                          <input aria-label="BaO + B₂O₃ (Gew.-%)" 
                             type="number" 
                             min="0" 
                             max="15" 
@@ -751,7 +751,7 @@ export default function Schadstoffe() {
                         </div>
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">Al₂O₃ (Gew.-%)</label>
-                          <input 
+                          <input aria-label="Al₂O₃ (Gew.-%)" 
                             type="number" 
                             min="0" 
                             max="30" 

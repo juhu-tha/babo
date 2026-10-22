@@ -858,7 +858,7 @@ export default function BpAbdichtung() {
 
                 <div className="bg-white p-3.5 rounded-lg border border-zinc-200 space-y-2">
                   <span className="font-bold text-[11px] text-shiraz uppercase tracking-wider block">Injektionsmedium</span>
-                  <select 
+                  <select aria-label="Injektionsmedium" 
                     value={isMedium}
                     onChange={(e) => setIsMedium(e.target.value as any)}
                     className="w-full text-xs p-1.5 border rounded-md mt-1 focus:outline-none focus:ring-1 focus:ring-shiraz"

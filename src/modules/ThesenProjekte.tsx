@@ -327,7 +327,7 @@ export default function ThesenProjekte() {
  
                 <div className="flex flex-col gap-1">
                   <label className="text-xs uppercase font-bold text-home-grau">Studiengang</label>
-                  <select 
+                  <select aria-label="Studiengang" 
                     value={formData.program}
                     onChange={(e) => setFormData({...formData, program: e.target.value})}
                     className="w-full text-xs p-2.5 border border-home-grau/25 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-shiraz/40 bg-white text-text-main"
@@ -342,7 +342,7 @@ export default function ThesenProjekte() {
  
                 <div className="flex flex-col gap-1">
                   <label className="text-xs uppercase font-bold text-home-grau">Fachdisziplin / Forschungsschwerpunkt</label>
-                  <select 
+                  <select aria-label="Fachdisziplin / Forschungsschwerpunkt" 
                     value={formData.area}
                     onChange={(e) => setFormData({...formData, area: e.target.value})}
                     className="w-full text-xs p-2.5 border border-home-grau/25 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-shiraz/40 bg-white text-text-main"

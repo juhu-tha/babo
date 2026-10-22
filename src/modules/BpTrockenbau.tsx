@@ -817,7 +817,7 @@ export default function BpTrockenbau() {
                   <label className="block text-xs font-bold text-text-main mb-1">
                     Beplankung (je Wandseite):
                   </label>
-                  <select
+                  <select aria-label="Beplankung (je Wandseite)"
                     value={layerCount}
                     onChange={(e) => setLayerCount(parseInt(e.target.value) as 1 | 2)}
                     className="w-full bg-white border border-home-grau/30 rounded-lg p-2.5 text-sm text-text-main focus:ring-1 focus:ring-shiraz focus:outline-none"
@@ -832,7 +832,7 @@ export default function BpTrockenbau() {
                   <label className="block text-xs font-bold text-text-main mb-1">
                     Ständerachsabstand (cm):
                   </label>
-                  <select
+                  <select aria-label="Ständerachsabstand (cm)"
                     value={profileSpacing}
                     onChange={(e) => setProfileSpacing(parseFloat(e.target.value) as 62.5 | 31.25)}
                     className="w-full bg-white border border-home-grau/30 rounded-lg p-2.5 text-sm text-text-main focus:ring-1 focus:ring-shiraz focus:outline-none"

@@ -1097,7 +1097,7 @@ export default function BpKunststoffe() {
             <div className="md:col-span-5 space-y-4">
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-text-main">Vergleichs-Plastik aus Liste:</label>
-                <select
+                <select aria-label="Vergleichs-Plastik aus Liste"
                   value={comparativePlastic}
                   onChange={(e) => setComparativePlastic(e.target.value)}
                   className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800 focus:outline-none focus:border-shiraz"

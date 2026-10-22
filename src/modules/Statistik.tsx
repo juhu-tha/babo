@@ -1088,7 +1088,7 @@ export default function Statistik() {
 
               <div className="space-y-3">
                 <label className="text-sm font-bold text-text-main">Anzahl der Prüfwerte (n)</label>
-                <select
+                <select aria-label="Anzahl der Prüfwerte (n)"
                   value={numberOfSamples}
                   onChange={(e) => setNumberOfSamples(Number(e.target.value))}
                   disabled={testStatus === 'running'}
@@ -1105,7 +1105,7 @@ export default function Statistik() {
 
               <div className="space-y-3">
                 <label className="text-sm font-bold text-text-main">Ausreißertest</label>
-                <select
+                <select aria-label="Ausreißertest"
                   value={outlierMethod}
                   onChange={(e) => setOutlierMethod(e.target.value as OutlierMethod)}
                   disabled={testStatus === 'running'}

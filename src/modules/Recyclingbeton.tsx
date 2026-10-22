@@ -174,7 +174,7 @@ export default function Recyclingbeton() {
               
               <div className="flex flex-col gap-2 mb-6">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Art der RC-Körnung</label><InfoTooltip text="Herkunft der rezyklierten Gesteinskörnung (z.B. Betonbrechsand)." /></div>
-                <select 
+                <select aria-label="Art der RC-Körnung" 
                   className="p-2 border border-home-grau/40 rounded-xl bg-white text-sm"
                   value={rcTyp}
                   onChange={(e) => setRcTyp(e.target.value)}
@@ -189,7 +189,7 @@ export default function Recyclingbeton() {
 
               <div className="flex flex-col gap-2 mb-6">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Expositionsklassen (maßgebend)</label><InfoTooltip text="Je nach Umgebungsbedingungen sind unterschiedliche maximale Austauschraten erlaubt." /></div>
-                <select 
+                <select aria-label="Expositionsklassen (maßgebend)" 
                   className="p-2 border border-home-grau/40 rounded-xl bg-white text-sm"
                   value={expositionsklasse}
                   onChange={(e) => setExpositionsklasse(e.target.value)}

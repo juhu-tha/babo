@@ -855,7 +855,7 @@ export default function Bauphysik() {
                         </div>
                         <div>
                           <label className="font-bold block mb-0.5">λ [W/mK]</label>
-                          <input 
+                          <input aria-label="λ [W/mK]" 
                             type="number" step="0.005" min="0.001"
                             className="w-full text-[10px] p-1 border border-slate-200 bg-white rounded font-mono text-slate-800 text-center"
                             value={layer.customLambda !== undefined ? layer.customLambda : 0.08}
@@ -864,7 +864,7 @@ export default function Bauphysik() {
                         </div>
                         <div>
                           <label className="font-bold block mb-0.5">μ [-]</label>
-                          <input 
+                          <input aria-label="μ [-]" 
                             type="number" step="1" min="1"
                             className="w-full text-[10px] p-1 border border-slate-200 bg-white rounded font-mono text-slate-800 text-center"
                             value={layer.customMu !== undefined ? layer.customMu : 10}
@@ -873,7 +873,7 @@ export default function Bauphysik() {
                         </div>
                         <div>
                           <label className="font-bold block mb-0.5">ρ [kg/m³]</label>
-                          <input 
+                          <input aria-label="ρ [kg/m³]" 
                             type="number" step="50" min="10"
                             className="w-full text-[10px] p-1 border border-slate-200 bg-white rounded font-mono text-slate-800 text-center"
                             value={layer.customDensity !== undefined ? layer.customDensity : 300}
@@ -1378,7 +1378,7 @@ export default function Bauphysik() {
                 {/* Target context selection */}
                 <div className="pt-2 border-t border-slate-100">
                   <label className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block mb-2">Raumtyp &amp; Sollvorgaben nach DIN:</label>
-                  <select 
+                  <select aria-label="Raumtyp &amp; Sollvorgaben nach DIN" 
                     value={roomType}
                     onChange={(e) => setRoomType(e.target.value as any)}
                     className="w-full text-xs p-2 border border-slate-200 bg-white rounded-lg font-bold text-slate-800"
@@ -1402,7 +1402,7 @@ export default function Bauphysik() {
                 <div className="grid grid-cols-12 items-center gap-2">
                   <span className="col-span-4 text-[11px] font-bold text-slate-600">Decke:</span>
                   <div className="col-span-8">
-                    <select
+                    <select aria-label="Decke"
                       value={selectedCeiling}
                       onChange={(e) => setSelectedCeiling(e.target.value)}
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
@@ -1418,7 +1418,7 @@ export default function Bauphysik() {
                 <div className="grid grid-cols-12 items-center gap-2">
                   <span className="col-span-4 text-[11px] font-bold text-slate-600">Boden:</span>
                   <div className="col-span-8">
-                    <select
+                    <select aria-label="Boden"
                       value={selectedFloor}
                       onChange={(e) => setSelectedFloor(e.target.value)}
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
@@ -1434,7 +1434,7 @@ export default function Bauphysik() {
                 <div className="grid grid-cols-12 items-center gap-2">
                   <span className="col-span-4 text-[11px] font-bold text-slate-600">Stirnwand:</span>
                   <div className="col-span-8">
-                    <select
+                    <select aria-label="Stirnwand"
                       value={selectedFrontWall}
                       onChange={(e) => setSelectedFrontWall(e.target.value)}
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
@@ -1450,7 +1450,7 @@ export default function Bauphysik() {
                 <div className="grid grid-cols-12 items-center gap-2">
                   <span className="col-span-4 text-[11px] font-bold text-slate-600">Rückwand:</span>
                   <div className="col-span-8">
-                    <select
+                    <select aria-label="Rückwand"
                       value={selectedBackWall}
                       onChange={(e) => setSelectedBackWall(e.target.value)}
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
@@ -1466,7 +1466,7 @@ export default function Bauphysik() {
                 <div className="grid grid-cols-12 items-center gap-2">
                   <span className="col-span-4 text-[11px] font-bold text-slate-600">Linke Wand:</span>
                   <div className="col-span-8">
-                    <select
+                    <select aria-label="Linke Wand"
                       value={selectedLeftWall}
                       onChange={(e) => setSelectedLeftWall(e.target.value)}
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"
@@ -1482,7 +1482,7 @@ export default function Bauphysik() {
                 <div className="grid grid-cols-12 items-center gap-2">
                   <span className="col-span-4 text-[11px] font-bold text-slate-600">Rechte Wand:</span>
                   <div className="col-span-8">
-                    <select
+                    <select aria-label="Rechte Wand"
                       value={selectedRightWall}
                       onChange={(e) => setSelectedRightWall(e.target.value)}
                       className="w-full text-xs p-1.5 border border-slate-200 bg-white rounded-lg font-medium"

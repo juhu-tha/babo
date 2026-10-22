@@ -193,7 +193,7 @@ export default function ProbenahmePlaner() {
           <div className="md:col-span-4 space-y-4">
             <div>
               <label className="text-xs font-bold text-slate-700 block mb-1">Bauteilart / Struktur</label>
-              <select
+              <select aria-label="Bauteilart / Struktur"
                 value={customBauteil}
                 onChange={(e) => setCustomBauteil(e.target.value as any)}
                 className="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz font-medium"
@@ -228,7 +228,7 @@ export default function ProbenahmePlaner() {
 
             <div>
               <label className="text-xs font-bold text-slate-700 block mb-1">Primäres Diagnoseziel</label>
-              <select
+              <select aria-label="Primäres Diagnoseziel"
                 value={primaryGoal}
                 onChange={(e) => setPrimaryGoal(e.target.value as any)}
                 className="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz font-medium"

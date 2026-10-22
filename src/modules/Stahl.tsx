@@ -1482,7 +1482,7 @@ export default function Stahl() {
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Stahlsorte</label><InfoTooltip text="Güteklasse des verwendeten Stahls." /></div>
-            <select 
+            <select aria-label="Stahlsorte" 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
               value={grade}
               onChange={(e) => setGrade(e.target.value as keyof typeof steelGrades)}
@@ -1520,7 +1520,7 @@ export default function Stahl() {
                 <h3 className="text-sm font-bold text-text-main mb-4">Korrosionsschutz (DIN EN ISO 12944)</h3>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Korrosivitätskategorie</label><InfoTooltip text="Einteilung der Umgebungsbedingungen hinsichtlich der Korrosionsbelastung." /></div>
-                  <select 
+                  <select aria-label="Korrosivitätskategorie" 
                     className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                     value={corrosion}
                     onChange={(e) => setCorrosion(e.target.value as keyof typeof corrosionClasses)}
@@ -1573,7 +1573,7 @@ export default function Stahl() {
 
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Neigung m (N ≤ 5·10^6)</label><InfoTooltip text="Neigung der Wöhlerlinie für die Ermüdungsfestigkeit." /></div>
-                    <select 
+                    <select aria-label="Neigung m (N ≤ 5·10^6)" 
                       className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                       value={m1}
                       onChange={(e) => setM1(Number(e.target.value))}
@@ -1599,7 +1599,7 @@ export default function Stahl() {
             <div className="border-t border-home-grau/30 pt-4">
               <h3 className="text-sm font-bold text-text-main mb-4">Profilgeometrie</h3>
               <div className="flex items-center gap-2"><label className="text-xs font-bold text-home-grau uppercase tracking-wider mb-1 block">Profiltyp</label><InfoTooltip text="Art des Stahlprofils (z.B. I-Profil, Hohlprofil)." /></div>
-              <select 
+              <select aria-label="Profiltyp" 
                 value={profileType}
                 onChange={(e) => setProfileType(e.target.value as 'h' | 'i')}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
@@ -2248,7 +2248,7 @@ export default function Stahl() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-semibold text-slate-500">Prüfwerkstoff:</span>
-                  <select
+                  <select aria-label="Prüfwerkstoff"
                     value={simGradeId}
                     onChange={(e) => setSimGradeId(e.target.value)}
                     className="p-1.5 text-xs font-bold border border-home-grau/30 rounded-lg bg-white focus:outline-none focus:border-shiraz"

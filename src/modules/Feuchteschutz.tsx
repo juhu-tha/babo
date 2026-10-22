@@ -536,6 +536,7 @@ export default function Feuchteschutz() {
                       onClick={() => moveLayer(index, 'up')} 
                       disabled={index === 0}
                       className="hover:text-orange-800 disabled:opacity-25 cursor-pointer"
+                      aria-label="Schicht nach oben verschieben"
                     >
                       <ArrowUp size={13} />
                     </button>
@@ -543,6 +544,7 @@ export default function Feuchteschutz() {
                       onClick={() => moveLayer(index, 'down')} 
                       disabled={index === layers.length - 1}
                       className="hover:text-orange-800 disabled:opacity-25 cursor-pointer"
+                      aria-label="Schicht nach unten verschieben"
                     >
                       <ArrowDown size={13} />
                     </button>
@@ -589,6 +591,7 @@ export default function Feuchteschutz() {
                   <button 
                     onClick={() => removeLayer(index)}
                     className="text-slate-450 hover:text-red-500 cursor-pointer p-1"
+                    aria-label="Schicht entfernen"
                   >
                     <Trash2 size={14} />
                   </button>

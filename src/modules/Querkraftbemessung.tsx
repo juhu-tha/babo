@@ -304,7 +304,7 @@ export default function Querkraftbemessung() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2"><label className="block text-xs font-bold text-text-main">Bewehrungsart</label><InfoTooltip text="Wahl zwischen herkömmlichem Betonstahl oder Faserverbundwerkstoffen." /></div>
-                    <select 
+                    <select aria-label="Bewehrungsart" 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={bewehrungsArt}
                       onChange={(e) => setBewehrungsArt(e.target.value as any)}
@@ -320,7 +320,7 @@ export default function Querkraftbemessung() {
                 {bewehrungsArt === 'Stahl' ? (
                   <div className="mt-2">
                     <label className="block text-xs font-bold text-text-main mb-2">Streckgrenze Stahl <FormulaText text="f_{yk}" /></label>
-                    <select 
+                    <select aria-label="Streckgrenze Stahl" 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={fyk}
                       onChange={(e) => setFyk(Number(e.target.value))}

@@ -200,7 +200,7 @@ export default function Frischbetondruck() {
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Konsistenzklasse</label><InfoTooltip text="Maß für die Verarbeitbarkeit des Frischbetons." /></div>
             <InfoTooltip text="Beschreibt die Fließfähigkeit des Frischbetons. F1 ist steif, F5/F6/SVB ist sehr fließfähig (selbstverdichtend) und erzeugt den höchsten Druck." />
           </div>
-          <select 
+          <select aria-label="Konsistenzklasse" 
             className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
             value={klasse}
             onChange={(e) => setKlasse(e.target.value)}

@@ -550,7 +550,7 @@ ${senderName}`;
                     <div className="grid grid-cols-1 gap-3 text-xs">
                       <div className="flex flex-col gap-1">
                         <label className="font-bold text-text-main/70">Bauvorhaben / Projektname:</label>
-                        <input 
+                        <input aria-label="Bauvorhaben / Projektname" 
                           type="text" 
                           value={projectName}
                           onChange={(e) => setProjectName(e.target.value)}
@@ -561,7 +561,7 @@ ${senderName}`;
                       <div className="grid grid-cols-2 gap-2">
                         <div className="flex flex-col gap-1">
                           <label className="font-bold text-text-main/70">Aussteller / Absender:</label>
-                          <input 
+                          <input aria-label="Aussteller / Absender" 
                             type="text" 
                             value={senderName}
                             onChange={(e) => setSenderName(e.target.value)}
@@ -570,7 +570,7 @@ ${senderName}`;
                         </div>
                         <div className="flex flex-col gap-1">
                           <label className="font-bold text-text-main/70">Empfänger / Gegner:</label>
-                          <input 
+                          <input aria-label="Empfänger / Gegner" 
                             type="text" 
                             value={recipientName}
                             onChange={(e) => setRecipientName(e.target.value)}
@@ -581,7 +581,7 @@ ${senderName}`;
 
                       <div className="flex flex-col gap-1">
                         <label className="font-bold text-text-main/70">Gegenstand / Betroffenes Gewerk:</label>
-                        <input 
+                        <input aria-label="Gegenstand / Betroffenes Gewerk" 
                           type="text" 
                           value={affectedTrade}
                           onChange={(e) => setAffectedTrade(e.target.value)}

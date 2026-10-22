@@ -951,7 +951,7 @@ export default function Nachhaltigkeit() {
               <div className="mt-4 pt-4 border-t border-home-grau/30 flex flex-col md:flex-row items-end gap-3 bg-slate-50/50 p-4 rounded-xl border border-home-grau/30">
                 <div className="w-full md:flex-1">
                   <label className="block text-[10px] uppercase font-bold text-slate-900 mb-1 tracking-wider">Werkstoff auswählen</label>
-                  <select
+                  <select aria-label="Werkstoff auswählen"
                     value={selectedAddMaterial}
                     onChange={(e) => setSelectedAddMaterial(e.target.value)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg text-xs bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -964,7 +964,7 @@ export default function Nachhaltigkeit() {
 
                 <div className="w-24 shrink-0">
                   <label className="block text-[10px] uppercase font-bold text-slate-900 mb-1 tracking-wider">Stärke (cm)</label>
-                  <input
+                  <input aria-label="Stärke (cm)"
                     type="number"
                     min="1"
                     max="50"

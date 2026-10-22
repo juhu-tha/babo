@@ -723,7 +723,7 @@ export default function SchadreaktionenBeton() {
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Feuchtigkeitsklasse</label></div>
-                  <select 
+                  <select aria-label="Feuchtigkeitsklasse" 
                     className="p-2 border border-home-grau rounded-md bg-white"
                     value={feuchteklasse}
                     onChange={(e) => setFeuchteklasse(e.target.value)}
@@ -736,7 +736,7 @@ export default function SchadreaktionenBeton() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Alkaliempfindlichkeit</label></div>
-                  <select 
+                  <select aria-label="Alkaliempfindlichkeit" 
                     className="p-2 border border-home-grau rounded-md bg-white"
                     value={eKlasse}
                     onChange={(e) => setEKlasse(e.target.value)}
@@ -865,7 +865,7 @@ export default function SchadreaktionenBeton() {
               
               <div className="flex flex-col gap-2 mb-6">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementart</label></div>
-                <select 
+                <select aria-label="Zementart" 
                   className="p-2 border border-home-grau rounded-md bg-white"
                   value={zementArt}
                   onChange={(e) => setZementArt(e.target.value)}

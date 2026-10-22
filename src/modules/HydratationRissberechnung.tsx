@@ -176,7 +176,7 @@ export default function HydratationRissberechnung() {
             {/* Betonklasse */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-home-grau uppercase tracking-wider">Betonfestigkeitsklasse</label>
-              <select
+              <select aria-label="Betonfestigkeitsklasse"
                 value={concreteGrade}
                 onChange={(e) => setConcreteGrade(e.target.value)}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
@@ -276,7 +276,7 @@ export default function HydratationRissberechnung() {
             {/* Zulässige Rissbreite w_k */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-home-grau uppercase tracking-wider">Zulässige Rissbreite (w_k)</label>
-              <select
+              <select aria-label="Zulässige Rissbreite (w_k)"
                 value={allowableCrackWidth}
                 onChange={(e) => setAllowableCrackWidth(Number(e.target.value))}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
@@ -290,7 +290,7 @@ export default function HydratationRissberechnung() {
             {/* Stabdurchmesser phi */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-home-grau uppercase tracking-wider">Gewählter Stabdurchmesser (Ø_s)</label>
-              <select
+              <select aria-label="Gewählter Stabdurchmesser (Ø_s)"
                 value={barDiameter}
                 onChange={(e) => setBarDiameter(Number(e.target.value))}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"

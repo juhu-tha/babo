@@ -1123,7 +1123,7 @@ export default function InnovativeWerkstoffe() {
               <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 space-y-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5">1. Haupt-Bauziel / Anforderung</label>
-                  <select
+                  <select aria-label="1. Haupt-Bauziel / Anforderung"
                     value={reqProperty}
                     onChange={(e) => setReqProperty(e.target.value)}
                     className="w-full text-xs bg-white border border-home-grau/30 p-2.5 rounded-lg font-semibold text-slate-700 outline-none focus:border-indigo-500"
@@ -1162,7 +1162,7 @@ export default function InnovativeWerkstoffe() {
 
                 <div>
                   <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5">3. Exposition / Chemische Beanspruchung</label>
-                  <select
+                  <select aria-label="3. Exposition / Chemische Beanspruchung"
                     value={exposure}
                     onChange={(e) => setExposure(e.target.value)}
                     className="w-full text-xs bg-white border border-home-grau/30 p-2.5 rounded-lg font-semibold text-slate-700 outline-none focus:border-indigo-500"

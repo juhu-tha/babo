@@ -545,7 +545,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                   <span className="text-xxs font-bold text-slate-400 uppercase tracking-wide block">Schicht 1: Normalbeton</span>
                   <label className="text-xs text-text-main/80 block font-normal">Dicke <InlineMath math="d_1" /> (cm):</label>
-                  <input 
+                  <input aria-label="Dicke (cm)" 
                     type="range" min="10" max="40" step="5"
                     value={uConcreteThick}
                     onChange={(e) => setUConcreteThick(Number(e.target.value))}
@@ -561,7 +561,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                   <span className="text-xxs font-bold text-slate-400 uppercase tracking-wide block">Schicht 2: EPS-Dämmung</span>
                   <label className="text-xs text-text-main/80 block font-normal">Dicke <InlineMath math="d_2" /> (cm):</label>
-                  <input 
+                  <input aria-label="Dicke (cm)" 
                     type="range" min="0" max="30" step="2"
                     value={uInsuThick}
                     onChange={(e) => setUInsuThick(Number(e.target.value))}
@@ -577,7 +577,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                   <span className="text-xxs font-bold text-slate-400 uppercase tracking-wide block">Schicht 3: Kalkgipsputz</span>
                   <label className="text-xs text-text-main/80 block font-normal">Dicke <InlineMath math="d_3" /> (cm):</label>
-                  <input 
+                  <input aria-label="Dicke (cm)" 
                     type="range" min="0.5" max="3.0" step="0.5"
                     value={uPlasterThick}
                     onChange={(e) => setUPlasterThick(Number(e.target.value))}
@@ -747,7 +747,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
                       <label className="font-bold text-slate-700 block">Expositionsklasse:</label>
                       <p className="text-[10px] text-text-main/70 mb-2">Bestimmt max. w/z-Wert &amp; Mindestzementgehalt</p>
-                      <select 
+                      <select aria-label="Bestimmt max. w/z-Wert &amp; Mindestzementgehalt" 
                         value={targetExposure} 
                         onChange={(e) => setTargetExposure(e.target.value as 'XC4' | 'XD3')}
                         className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -761,7 +761,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
                       <label className="font-bold text-slate-700 block">Konsistenzklasse:</label>
                       <p className="text-[10px] text-text-main/70 mb-2">Bestimmt den Richtwert für Wasseranspruch</p>
-                      <select 
+                      <select aria-label="Bestimmt den Richtwert für Wasseranspruch" 
                         value={consClass} 
                         onChange={(e) => setConsClass(e.target.value as 'F2' | 'F3' | 'F4')}
                         className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -911,7 +911,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Additive Type */}
                     <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
                       <label className="font-bold text-slate-700 block">Zusatzstoff Typ II:</label>
-                      <select 
+                      <select aria-label="Zusatzstoff Typ II" 
                         value={kAddType} 
                         onChange={(e) => {
                           const type = e.target.value as 'flugasche' | 'silikastaub';
@@ -928,7 +928,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Cement content */}
                     <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Zementgehalt <InlineMath math="c" /> (kg/m³):</label>
-                      <input 
+                      <input aria-label="Zementgehalt (kg/m³)" 
                         type="range" min="200" max="450" step="10"
                         value={kCement}
                         onChange={(e) => setKCement(Number(e.target.value))}
@@ -940,7 +940,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Addition content */}
                     <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Zusatzstoffmenge <InlineMath math="f" /> (kg/m³):</label>
-                      <input 
+                      <input aria-label="Zusatzstoffmenge (kg/m³)" 
                         type="range" min="0" max="150" step="5"
                         value={kAddition}
                         onChange={(e) => setKAddition(Number(e.target.value))}
@@ -952,7 +952,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Water content */}
                     <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Wassergehalt <InlineMath math="w" /> (l/m³):</label>
-                      <input 
+                      <input aria-label="Wassergehalt (l/m³)" 
                         type="range" min="120" max="220" step="5"
                         value={kWater}
                         onChange={(e) => setKWater(Number(e.target.value))}
@@ -1028,7 +1028,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Aggregate Temp */}
                     <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Gesteinskörnung <InlineMath math="T_A" /> (°C):</label>
-                      <input 
+                      <input aria-label="Gesteinskörnung (°C)" 
                         type="range" min="-10" max="35" step="1"
                         value={tempAggregate}
                         onChange={(e) => setTempAggregate(Number(e.target.value))}
@@ -1043,7 +1043,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Cement Temp */}
                     <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Zement <InlineMath math="T_C" /> (°C):</label>
-                      <input 
+                      <input aria-label="Zement (°C)" 
                         type="range" min="0" max="60" step="2"
                         value={tempCement}
                         onChange={(e) => setTempCement(Number(e.target.value))}
@@ -1058,7 +1058,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Water Temp */}
                     <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Anmachwasser <InlineMath math="T_W" /> (°C):</label>
-                      <input 
+                      <input aria-label="Anmachwasser (°C)" 
                         type="range" min="2" max="80" step="2"
                         value={tempWater}
                         onChange={(e) => setTempWater(Number(e.target.value))}
@@ -1076,7 +1076,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <label className="text-xs text-text-main/80 block font-bold">Schuppeneis <InlineMath math="m_{Eis}" /> (kg):</label>
                         <span className="text-[10px] text-slate-400 font-bold">Ersetzt Wasser</span>
                       </div>
-                      <input 
+                      <input aria-label="Schuppeneis (kg): Ersetzt Wasser" 
                         type="range" min="0" max="50" step="5"
                         value={mIceInput}
                         onChange={(e) => setMIceInput(Math.min(e.target.value as any, mWaterInput))}
@@ -1168,7 +1168,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Concrete class */}
                     <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
                       <label className="font-bold text-slate-700 block">Festigkeitsklasse f_ck (28d):</label>
-                      <select 
+                      <select aria-label="Festigkeitsklasse f_ck (28d)" 
                         value={strengthClassFck} 
                         onChange={(e) => setStrengthClassFck(Number(e.target.value))}
                         className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -1185,7 +1185,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Cement type rapidness */}
                     <div className="space-y-1 bg-white p-3 rounded-xl border border-slate-200 text-xs">
                       <label className="font-bold text-slate-700 block">Zementerhärtungsklasse (s-Wert):</label>
-                      <select 
+                      <select aria-label="Zementerhärtungsklasse (s-Wert)" 
                         value={strengthCementType} 
                         onChange={(e) => setStrengthCementType(e.target.value as 'S' | 'N' | 'R')}
                         className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
@@ -1199,7 +1199,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Curing Temperature */}
                     <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Mittlere Bauteiltemperatur (°C):</label>
-                      <input 
+                      <input aria-label="Mittlere Bauteiltemperatur (°C)" 
                         type="range" min="2" max="40" step="1"
                         value={strengthCureTemp}
                         onChange={(e) => setStrengthCureTemp(Number(e.target.value))}
@@ -1211,7 +1211,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Age in days */}
                     <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
                       <label className="text-xs text-text-main/80 block font-bold">Aktuelles Alter <InlineMath math="t" /> (Tage):</label>
-                      <input 
+                      <input aria-label="Aktuelles Alter (Tage)" 
                         type="range" min="1" max="90" step="1"
                         value={strengthCureAge}
                         onChange={(e) => setStrengthCureAge(Number(e.target.value))}
@@ -1305,7 +1305,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Bending Moment */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Bemessungsmoment <InlineMath math="M_{Ed}" /> (kNm):</label>
-                  <input 
+                  <input aria-label="Bemessungsmoment (kNm)" 
                     type="range" min="50" max="300" step="10"
                     value={mEd}
                     onChange={(e) => setMEd(Number(e.target.value))}
@@ -1317,7 +1317,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Concrete Class */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Betongüte:</label>
-                  <select 
+                  <select aria-label="Betongüte" 
                     value={concreteClass} 
                     onChange={(e) => setConcreteClass(e.target.value as 'C20/25' | 'C25/30' | 'C30/37')}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
@@ -1334,7 +1334,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <div className="grid grid-cols-2 gap-4 mt-1">
                     <div>
                       <span className="text-[10px] text-slate-400 block font-normal">Breite b:</span>
-                      <input 
+                      <input aria-label="Breite b" 
                         type="number" min="15" max="60"
                         value={bWidth}
                         onChange={(e) => setBWidth(Number(e.target.value))}
@@ -1343,7 +1343,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-400 block font-normal">Höhe h:</span>
-                      <input 
+                      <input aria-label="Höhe h" 
                         type="number" min="30" max="100"
                         value={hHeight}
                         onChange={(e) => setHHeight(Number(e.target.value))}
@@ -1486,7 +1486,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Column Length */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Knicklänge <InlineMath math="s_k = L" /> (m):</label>
-                  <input 
+                  <input aria-label="Knicklänge (m)" 
                     type="range" min="1.5" max="6.0" step="0.5"
                     value={colLength}
                     onChange={(e) => setColLength(Number(e.target.value))}
@@ -1498,7 +1498,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Section b x h */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Querschnitt <InlineMath math="b = h" /> (cm):</label>
-                  <input 
+                  <input aria-label="Querschnitt (cm)" 
                     type="range" min="8" max="24" step="2"
                     value={colHeight}
                     onChange={(e) => {
@@ -1513,7 +1513,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Axial Force */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Normalkraft <InlineMath math="N_d" /> (kN):</label>
-                  <input 
+                  <input aria-label="Normalkraft (kN)" 
                     type="range" min="10" max="150" step="5"
                     value={designForce}
                     onChange={(e) => setDesignForce(Number(e.target.value))}
@@ -1525,7 +1525,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Timber Grade */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Holzart:</label>
-                  <select 
+                  <select aria-label="Holzart" 
                     value={timberGrade} 
                     onChange={(e) => setTimberGrade(e.target.value as 'C24' | 'C30')}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
@@ -1648,7 +1648,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Wall Height */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Wandhöhe <InlineMath math="h" /> (m):</label>
-                  <input 
+                  <input aria-label="Wandhöhe (m)" 
                     type="range" min="2.50" max="3.50" step="0.25"
                     value={wallHeight}
                     onChange={(e) => setWallHeight(Number(e.target.value))}
@@ -1660,7 +1660,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Wall Thickness */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Dicke <InlineMath math="t" /> (cm):</label>
-                  <select 
+                  <select aria-label="Dicke (cm)" 
                     value={wallThick} 
                     onChange={(e) => setWallThick(Number(e.target.value))}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
@@ -1675,7 +1675,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Vertical Load */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Druckkraft <InlineMath math="N_{Ed}" /> (kN/m):</label>
-                  <input 
+                  <input aria-label="Druckkraft (kN/m)" 
                     type="range" min="30" max="250" step="10"
                     value={verticalLoad}
                     onChange={(e) => setVerticalLoad(Number(e.target.value))}
@@ -1687,7 +1687,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Masonry Compressive strength */}
                 <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200 text-xs">
                   <label className="font-bold text-slate-700 block">Steinfestigkeit / Art:</label>
-                  <select 
+                  <select aria-label="Steinfestigkeit / Art" 
                     value={masonryType} 
                     onChange={(e) => setMasonryType(e.target.value as 'KS' | 'HLZ')}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
@@ -2148,7 +2148,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Betonklasse Selector */}
                     <div className="space-y-2 text-xs">
                       <label className="font-bold text-slate-700 block">Historische Festigkeitsklasse (DIN 1045:1972):</label>
-                      <select 
+                      <select aria-label="Historische Festigkeitsklasse (DIN 1045:1972)" 
                         value={histBetonKlasse} 
                         onChange={(e) => setHistBetonKlasse(e.target.value as any)}
                         className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
@@ -2283,7 +2283,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     {/* Stahlklasse Selector */}
                     <div className="space-y-2 text-xs">
                       <label className="font-bold text-slate-700 block">Historische Betonstahl-Art:</label>
-                      <select 
+                      <select aria-label="Historische Betonstahl-Art" 
                         value={histStahlKlasse} 
                         onChange={(e) => setHistStahlKlasse(e.target.value as any)}
                         className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
@@ -2488,7 +2488,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Flankensituation */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700 block">Flankenübertragung (K_F):</label>
-                  <select 
+                  <select aria-label="Flankenübertragung (K_F)" 
                     value={schallFlanke}
                     onChange={(e) => setSchallFlanke(e.target.value as any)}
                     className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
@@ -2502,7 +2502,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                 {/* Schutzziel */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700 block">Gefordertes Schutzziel (DIN 4109-1):</label>
-                  <select 
+                  <select aria-label="Gefordertes Schutzziel (DIN 4109-1)" 
                     value={schallSollTyp}
                     onChange={(e) => setSchallSollTyp(e.target.value as any)}
                     className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
@@ -2635,7 +2635,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   {/* Holzart */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700 block">Holzart &amp; Festigkeit:</label>
-                    <select
+                    <select aria-label="Holzart &amp; Festigkeit"
                       value={holzArtBrand}
                       onChange={(e) => setHolzArtBrand(e.target.value as any)}
                       className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
@@ -2650,7 +2650,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-700 block">Breite b [cm]:</label>
-                      <input 
+                      <input aria-label="Breite b [cm]" 
                         type="number" min="0" 
                         value={holzBreite}
                         onChange={(e) => setHolzBreite(Math.max(8, parseFloat(e.target.value) || 8))}
@@ -2659,7 +2659,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     </div>
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-700 block">Höhe h [cm]:</label>
-                      <input 
+                      <input aria-label="Höhe h [cm]" 
                         type="number" min="0" 
                         value={holzHoehe}
                         onChange={(e) => setHolzHoehe(Math.max(12, parseFloat(e.target.value) || 12))}

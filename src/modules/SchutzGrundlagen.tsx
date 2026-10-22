@@ -573,7 +573,7 @@ export default function SchutzGrundlagen() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-600">Basisinvestition:</span>
-                <input
+                <input aria-label="Basisinvestition"
                   type="number" min="0"
                   value={deSitterInitialCost}
                   onChange={(e) => setDeSitterInitialCost(Math.max(100, Number(e.target.value)))}

@@ -2052,7 +2052,7 @@ export default function Expositionsklassen() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-off-white rounded-xl border border-home-grau/20">
               <div className="space-y-1">
                 <label className="text-xs font-bold text-text-main">Zementgehalt z (kg/m³):</label>
-                <input
+                <input aria-label="Zementgehalt z (kg/m³)"
                   type="number"
                   min={150}
                   max={550}
@@ -2065,7 +2065,7 @@ export default function Expositionsklassen() {
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-text-main">Wassergehalt w (kg/m³):</label>
-                <input
+                <input aria-label="Wassergehalt w (kg/m³)"
                   type="number"
                   min={100}
                   max={250}
@@ -2078,7 +2078,7 @@ export default function Expositionsklassen() {
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-text-main">Flugasche f (kg/m³):</label>
-                <input
+                <input aria-label="Flugasche f (kg/m³)"
                   type="number"
                   min={0}
                   max={150}
@@ -2092,7 +2092,7 @@ export default function Expositionsklassen() {
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-text-main">Silikastaub s (kg/m³):</label>
-                <input
+                <input aria-label="Silikastaub s (kg/m³)"
                   type="number"
                   min={0}
                   max={50}

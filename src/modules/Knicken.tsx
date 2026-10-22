@@ -216,7 +216,7 @@ export default function Knicken() {
                 {/* Euler Fall Selection */}
                 <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
                   <label className="text-xs font-bold text-text-main block">Lagerungsbedingung (Euler-Fall):</label>
-                  <select
+                  <select aria-label="Lagerungsbedingung (Euler-Fall)"
                     value={eulerFall}
                     onChange={(e) => setEulerFall(Number(e.target.value))}
                     className="w-full p-2.5 border border-home-grau/30 rounded-xl bg-off-white text-xs font-medium focus:ring-2 focus:ring-shiraz outline-none cursor-pointer"

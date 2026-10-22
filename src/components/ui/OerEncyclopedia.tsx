@@ -284,7 +284,7 @@ export function OerEncyclopedia() {
                   <div className="bg-white p-3 rounded-lg border border-slate-200 space-y-2">
                     <span className="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">Interaktive Semantische Suche (Muster):</span>
                     <div className="flex gap-2">
-                      <input 
+                      <input aria-label="Interaktive Semantische Suche (Muster)" 
                         type="text" 
                         readOnly 
                         value="Hydratationswärme" 
@@ -578,7 +578,7 @@ export function OerEncyclopedia() {
                     <div className="grid grid-cols-2 gap-4 bg-slate-50 p-3 rounded-xl border border-slate-200">
                       <div>
                         <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Beton-Festigkeitsklasse</label>
-                        <select 
+                        <select aria-label="Beton-Festigkeitsklasse" 
                           disabled={compressionForce > 0}
                           value={concreteClass} 
                           onChange={(e) => setConcreteClass(e.target.value as any)}
@@ -590,7 +590,7 @@ export function OerEncyclopedia() {
                       </div>
                       <div>
                         <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Geometrie des Körpers</label>
-                        <select 
+                        <select aria-label="Geometrie des Körpers" 
                           disabled={compressionForce > 0}
                           value={probeType} 
                           onChange={(e) => setProbeType(e.target.value as any)}

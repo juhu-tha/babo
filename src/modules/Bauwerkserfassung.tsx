@@ -511,7 +511,7 @@ export default function Bauwerkserfassung() {
                   {/* Wood Selection */}
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Holzkennwertklasse (NH):</label>
-                    <select
+                    <select aria-label="Holzkennwertklasse (NH)"
                       className="w-full bg-slate-50 border border-home-grau/30 rounded p-1.5 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono font-bold"
                       value={woodClass}
                       onChange={(e) => setWoodClass(e.target.value as any)}
@@ -527,7 +527,7 @@ export default function Bauwerkserfassung() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5">Breite b (mm):</label>
-                      <input
+                      <input aria-label="Breite b (mm)"
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterWidth}
@@ -536,7 +536,7 @@ export default function Bauwerkserfassung() {
                     </div>
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5">Höhe h (mm):</label>
-                      <input
+                      <input aria-label="Höhe h (mm)"
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterHeight}
@@ -547,7 +547,7 @@ export default function Bauwerkserfassung() {
 
                   <div>
                     <label className="block font-semibold text-slate-700 mb-0.5">Sparrenlänge L (mm):</label>
-                    <input
+                    <input aria-label="Sparrenlänge L (mm)"
                       type="number" min="0"
                       className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                       value={spanLength}
@@ -559,7 +559,7 @@ export default function Bauwerkserfassung() {
                   <div className="grid grid-cols-2 gap-3 pt-2 border-t border-home-grau/30">
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5 text-xs">Axialdruck N_d (kN):</label>
-                      <input
+                      <input aria-label="Axialdruck N_d (kN)"
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={axialForce}
@@ -568,7 +568,7 @@ export default function Bauwerkserfassung() {
                     </div>
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5 text-xs">Biegelast q_d (kN/m):</label>
-                      <input
+                      <input aria-label="Biegelast q_d (kN/m)"
                         type="number" min="0"
                         step="0.1"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"

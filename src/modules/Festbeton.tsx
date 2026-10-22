@@ -388,7 +388,7 @@ export default function Festbeton() {
                     <div className="grid grid-cols-2 gap-2 text-[11px]">
                       <div>
                         <label className="text-text-main/70 block">Beiwert α_cc:</label>
-                        <input 
+                        <input aria-label="Beiwert α_cc" 
                           type="number" 
                           step="0.05" 
                           min="0.80" 
@@ -400,7 +400,7 @@ export default function Festbeton() {
                       </div>
                       <div>
                         <label className="text-text-main/70 block">Teilsicherheit γ_c:</label>
-                        <input 
+                        <input aria-label="Teilsicherheit γ_c" 
                           type="number" 
                           step="0.1" 
                           min="1.2" 
@@ -474,7 +474,7 @@ export default function Festbeton() {
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div>
                       <label className="font-bold text-text-main block mb-1">Zementklasse (EC2):</label>
-                      <select 
+                      <select aria-label="Zementklasse (EC2)" 
                         value={zementArt}
                         onChange={(e) => setZementArt(e.target.value as 'R' | 'N' | 'S')}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
@@ -487,7 +487,7 @@ export default function Festbeton() {
 
                     <div>
                       <label className="font-bold text-text-main block mb-1">Prüfgeometrie:</label>
-                      <select 
+                      <select aria-label="Prüfgeometrie" 
                         value={geometrie}
                         onChange={(e) => setGeometrie(e.target.value as any)}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
@@ -502,7 +502,7 @@ export default function Festbeton() {
 
                   <div className="text-xs">
                     <label className="font-bold text-text-main block mb-1">Lagerungsbedingung:</label>
-                    <select 
+                    <select aria-label="Lagerungsbedingung" 
                       value={lagerung}
                       onChange={(e) => setLagerung(e.target.value as any)}
                       className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
@@ -780,7 +780,7 @@ export default function Festbeton() {
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div>
                       <label className="font-bold text-text-main block mb-1">Betonklasse:</label>
-                      <select 
+                      <select aria-label="Betonklasse" 
                         value={konfKlasse}
                         onChange={(e) => setKonfKlasse(e.target.value)}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-bold"
@@ -793,7 +793,7 @@ export default function Festbeton() {
 
                     <div>
                       <label className="font-bold text-text-main block mb-1">Prüfregime:</label>
-                      <select 
+                      <select aria-label="Prüfregime" 
                         value={konfModus}
                         onChange={(e) => {
                           const m = e.target.value as 'erst' | 'stetig';
@@ -816,7 +816,7 @@ export default function Festbeton() {
                     <label className="font-bold text-text-main block mb-1">
                       Gemessene Festigkeiten [N/mm²] (Komma-separiert):
                     </label>
-                    <input 
+                    <input aria-label="Gemessene Festigkeiten [N/mm²] (Komma-separiert)" 
                       type="text" 
                       value={konfWerteStr} 
                       onChange={(e) => setKonfWerteStr(e.target.value)}

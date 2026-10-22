@@ -656,7 +656,7 @@ export default function Bodenmechanik() {
                   
                   <div className="flex flex-col gap-2 mt-2">
                     <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Entwässerung</label><InfoTooltip text="Art der Wasserableitung vom Bauteil." /></div>
-                    <select 
+                    <select aria-label="Entwässerung" 
                       className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                       value={drainage}
                       onChange={(e) => setDrainage(e.target.value as 'einseitig' | 'zweiseitig')}

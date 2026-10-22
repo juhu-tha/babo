@@ -96,7 +96,7 @@ Unterschrift Verfasser/in`;
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
           <div>
             <label className="text-xxs font-bold text-text-main/70 block mb-1">Name der/des Studierenden:</label>
-            <input 
+            <input aria-label="Name der/des Studierenden" 
               type="text" 
               value={studentName} 
               onChange={e => setStudentName(e.target.value)}
@@ -105,7 +105,7 @@ Unterschrift Verfasser/in`;
           </div>
           <div>
             <label className="text-xxs font-bold text-text-main/70 block mb-1">Matrikelnummer:</label>
-            <input 
+            <input aria-label="Matrikelnummer" 
               type="text" 
               value={matrikelNr} 
               onChange={e => setMatrikelNr(e.target.value)}
@@ -114,7 +114,7 @@ Unterschrift Verfasser/in`;
           </div>
           <div>
             <label className="text-xxs font-bold text-text-main/70 block mb-1">Studiengang:</label>
-            <input 
+            <input aria-label="Studiengang" 
               type="text" 
               value={degreeProgram} 
               onChange={e => setDegreeProgram(e.target.value)}
@@ -123,7 +123,7 @@ Unterschrift Verfasser/in`;
           </div>
           <div className="sm:col-span-2">
             <label className="text-xxs font-bold text-text-main/70 block mb-1">Thema / Titel der Abschlussarbeit:</label>
-            <input 
+            <input aria-label="Thema / Titel der Abschlussarbeit" 
               type="text" 
               value={thesisTitle} 
               onChange={e => setThesisTitle(e.target.value)}
@@ -132,7 +132,7 @@ Unterschrift Verfasser/in`;
           </div>
           <div>
             <label className="text-xxs font-bold text-text-main/70 block mb-1">Erstprüfer / Professor:</label>
-            <input 
+            <input aria-label="Erstprüfer / Professor" 
               type="text" 
               value={advisorName} 
               onChange={e => setAdvisorName(e.target.value)}

@@ -759,7 +759,7 @@ export default function MessenPruefen() {
                 {/* Input 1: Raw values string */}
                 <div className="space-y-1.5 font-sans">
                   <label className="text-xs font-bold text-slate-700 block">Messwerte in MPa (durch Semikolon getrennt, Dezimalkomma):</label>
-                  <input
+                  <input aria-label="Messwerte in MPa (durch Semikolon getrennt, Dezimalkomma)"
                     type="text"
                     value={measurements}
                     onChange={(e) => setMeasurements(e.target.value)}
@@ -1103,7 +1103,7 @@ export default function MessenPruefen() {
                       <FormulaText text="U_{\text{lab}}" /> (k=2):
                     </label>
                     <div className="flex items-center gap-1">
-                      <input
+                      <input aria-label="(k=2)"
                         type="number"
                         min="0.2"
                         max="5.0"
@@ -1122,7 +1122,7 @@ export default function MessenPruefen() {
                       <FormulaText text="U_{\text{ref}}" /> (k=2):
                     </label>
                     <div className="flex items-center gap-1">
-                      <input
+                      <input aria-label="(k=2)"
                         type="number"
                         min="0.1"
                         max="3.0"

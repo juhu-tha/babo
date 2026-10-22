@@ -587,7 +587,7 @@ export default function BpMetallisch() {
             
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-text-main text-shiraz">1. Metall (Meist das Verbindungsmittel/Schraube/Clip - Anode):</label>
-              <select
+              <select aria-label="1. Metall (Meist das Verbindungsmittel/Schraube/Clip - Anode)"
                 value={metalAnode}
                 onChange={(e) => setMetalAnode(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
@@ -602,7 +602,7 @@ export default function BpMetallisch() {
 
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-text-main text-slate-700">2. Metall (Profilblech, Abdeckung oder Schiene - Kathode):</label>
-              <select
+              <select aria-label="2. Metall (Profilblech, Abdeckung oder Schiene - Kathode)"
                 value={metalCathode}
                 onChange={(e) => setMetalCathode(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
@@ -667,7 +667,7 @@ export default function BpMetallisch() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
             <label className="text-xs font-bold text-text-main block mb-1">Werkstoff:</label>
-            <select
+            <select aria-label="Werkstoff"
               value={calcMetalId}
               onChange={(e) => setCalcMetalId(e.target.value)}
               className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
@@ -680,7 +680,7 @@ export default function BpMetallisch() {
 
           <div>
             <label className="text-xs font-bold text-text-main block mb-1">Blechdicke (mm):</label>
-            <input
+            <input aria-label="Blechdicke (mm)"
               type="number"
               step="0.1"
               min="0.4"
@@ -693,7 +693,7 @@ export default function BpMetallisch() {
 
           <div>
             <label className="text-xs font-bold text-text-main block mb-1">Blechbreite (m):</label>
-            <input
+            <input aria-label="Blechbreite (m)"
               type="number"
               step="0.05"
               min="0.1"
@@ -706,7 +706,7 @@ export default function BpMetallisch() {
 
           <div>
             <label className="text-xs font-bold text-text-main block mb-1">Blechlänge (m):</label>
-            <input
+            <input aria-label="Blechlänge (m)"
               type="number"
               step="0.1"
               min="0.1"

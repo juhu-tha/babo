@@ -746,7 +746,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div className="grid grid-cols-3 gap-3">
                       <div>
                         <label className="block text-xs font-bold text-home-grau uppercase mb-1">Breite (w)</label>
-                        <input
+                        <input aria-label="Breite (w)"
                           type="number" min="0"
                           value={brickWidth}
                           onChange={(e) => setBrickWidth(Math.max(1, Number(e.target.value)))}
@@ -755,7 +755,7 @@ export default function HistorischeMaterialkennwerte() {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-home-grau uppercase mb-1">Länge (l)</label>
-                        <input
+                        <input aria-label="Länge (l)"
                           type="number" min="0"
                           value={brickLength}
                           onChange={(e) => setBrickLength(Math.max(1, Number(e.target.value)))}
@@ -764,7 +764,7 @@ export default function HistorischeMaterialkennwerte() {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-home-grau uppercase mb-1">Höhe (h)</label>
-                        <input
+                        <input aria-label="Höhe (h)"
                           type="number" min="0"
                           value={brickHeight}
                           onChange={(e) => setBrickHeight(Math.max(1, Number(e.target.value)))}
@@ -869,7 +869,7 @@ export default function HistorischeMaterialkennwerte() {
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="block text-xs font-bold text-home-grau uppercase mb-1">Breite w (mm)</label>
-                          <input
+                          <input aria-label="Breite w (mm)"
                             type="number"
                             min="1"
                             max="60"
@@ -880,7 +880,7 @@ export default function HistorischeMaterialkennwerte() {
                         </div>
                         <div>
                           <label className="block text-xs font-bold text-home-grau uppercase mb-1">Dicke t (mm)</label>
-                          <input
+                          <input aria-label="Dicke t (mm)"
                             type="number"
                             min="1"
                             max="30"
