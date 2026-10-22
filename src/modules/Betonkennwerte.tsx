@@ -22,7 +22,7 @@ import {
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 // ----------------------------------------------------------------------
 // EC2 TABELLE 3.1: FESTIGKEITS- UND VERFORMUNGSEIGENSCHAFTEN FÜR BETON
@@ -228,8 +228,8 @@ function Ec2ParameterSkizze({
               <path d="M 270,170 Q 286,166 298,172" fill="none" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#arrow-blue)" />
               <path d="M 266,205 Q 282,201 294,207" fill="none" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#arrow-blue)" />
               
-              <text x="35" y="160" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">RH = {relativeHumidity}%</text>
-              <text x="35" y="174" textAnchor="middle" fill="#0369a1" fontSize="9">T = {ambientTempT}°C</text>
+              <text x="35" y="160" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">RH = {formatDeWert(relativeHumidity)}%</text>
+              <text x="35" y="174" textAnchor="middle" fill="#0369a1" fontSize="9">T = {formatDeWert(ambientTempT)}°C</text>
 
               <text x="305" y="160" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">H₂O-Diffusion</text>
               <text x="305" y="174" textAnchor="middle" fill="#0369a1" fontSize="9">Trocknung</text>
@@ -306,7 +306,7 @@ function Ec2ParameterSkizze({
             <g transform="translate(130, 130)">
               <circle cx="0" cy="0" r="5" fill="#0284c7" />
               <line x1="0" y1="-8" x2="0" y2="8" stroke="#0284c7" strokeWidth="2" />
-              <text x="0" y="24" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="bold">ts = {curingDaysTs} d</text>
+              <text x="0" y="24" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="bold">ts = {formatDeWert(curingDaysTs)} d</text>
               <text x="0" y="37" textAnchor="middle" fill="#64748b" fontSize="9">Ausschalung</text>
 
               {/* Notiz oben: Trocknungsschwinden beginnt */}
@@ -320,7 +320,7 @@ function Ec2ParameterSkizze({
             <g transform="translate(250, 130)">
               <circle cx="0" cy="0" r="6" fill="#8c1d40" stroke="#ffffff" strokeWidth="1.5" />
               <line x1="0" y1="-12" x2="0" y2="12" stroke="#8c1d40" strokeWidth="2" />
-              <text x="0" y="24" textAnchor="middle" fill="#8c1d40" fontSize="11" fontWeight="bold">t₀ = {loadingAgeT0} d</text>
+              <text x="0" y="24" textAnchor="middle" fill="#8c1d40" fontSize="11" fontWeight="bold">t₀ = {formatDeWert(loadingAgeT0)} d</text>
               <text x="0" y="37" textAnchor="middle" fill="#64748b" fontSize="9">Erstbelastung</text>
 
               {/* Notiz oben: Kriechen beginnt */}
@@ -340,7 +340,7 @@ function Ec2ParameterSkizze({
               {/* Notiz oben: 28d Nennwerte */}
               <rect x="-42" y="-72" width="84" height="52" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" />
               <text x="0" y="-55" textAnchor="middle" fill="#334155" fontSize="9" fontWeight="bold">Abschnitt 1–3</text>
-              <text x="0" y="-42" textAnchor="middle" fill="#0f172a" fontSize="8.5">fck = {baseConcrete.fck} MPa</text>
+              <text x="0" y="-42" textAnchor="middle" fill="#0f172a" fontSize="8.5">fck = {formatDeWert(baseConcrete.fck)} MPa</text>
               <text x="0" y="-28" textAnchor="middle" fill="#64748b" fontSize="8">Ecm = {formatDeZahl(calcResults.Ecm, 0)} MPa</text>
             </g>
 
@@ -348,7 +348,7 @@ function Ec2ParameterSkizze({
             <g transform="translate(470, 130)">
               <circle cx="0" cy="0" r="5" fill="#059669" />
               <line x1="0" y1="-8" x2="0" y2="8" stroke="#059669" strokeWidth="2" />
-              <text x="0" y="24" textAnchor="middle" fill="#059669" fontSize="11" fontWeight="bold">t = {targetAgeT >= 365 ? `${Math.round(targetAgeT/365)} a` : `${targetAgeT} d`}</text>
+              <text x="0" y="24" textAnchor="middle" fill="#059669" fontSize="11" fontWeight="bold">t = {targetAgeT >= 365 ? `${formatDeWert(Math.round(targetAgeT/365))} a` : `${formatDeWert(targetAgeT)} d`}</text>
               <text x="0" y="37" textAnchor="middle" fill="#64748b" fontSize="9">Endzustand</text>
 
               {/* Notiz oben: Endwerte */}
@@ -392,7 +392,7 @@ function Ec2ParameterSkizze({
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mt-3 pt-3 border-t border-home-grau/20 text-xs">
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
           <span className="text-[10px] text-shiraz font-bold block">① Druckfestigkeit</span>
-          <span className="font-mono font-bold text-text-main dark:text-slate-100">{baseConcrete.fck} / {baseConcrete.fcm} MPa</span>
+          <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeWert(baseConcrete.fck)} / {formatDeWert(baseConcrete.fcm)} MPa</span>
           <span className="text-[10px] text-text-main/60 block">s = {cementClass === 'R' ? '0,20' : cementClass === 'S' ? '0,38' : '0,25'}</span>
         </div>
 
@@ -410,8 +410,8 @@ function Ec2ParameterSkizze({
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
           <span className="text-[10px] text-shiraz font-bold block">④ Dehnungen σ-ε</span>
-          <span className="font-mono font-bold text-text-main dark:text-slate-100">{baseConcrete.epsC1} / {baseConcrete.epsCu1} ‰</span>
-          <span className="text-[10px] text-text-main/60 block">εc2 = {baseConcrete.epsC2} ‰</span>
+          <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeWert(baseConcrete.epsC1)} / {formatDeWert(baseConcrete.epsCu1)} ‰</span>
+          <span className="text-[10px] text-text-main/60 block">εc2 = {formatDeWert(baseConcrete.epsC2)} ‰</span>
         </div>
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
@@ -911,7 +911,7 @@ export default function Betonkennwerte() {
                 >
                   {EC2_CONCRETE_CLASSES.map((c, idx) => (
                     <option key={c.name} value={idx}>
-                      {c.name} (f_ck = {c.fck} MPa, Würfel = {c.fckCube} MPa)
+                      {c.name} (f_ck = {formatDeWert(c.fck)} MPa, Würfel = {formatDeWert(c.fckCube)} MPa)
                     </option>
                   ))}
                 </select>
@@ -955,7 +955,7 @@ export default function Betonkennwerte() {
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-bold text-slate-700">Luftfeuchte RH (Abschnitt 5 &amp; 6)</label>
-                  <span className="font-mono text-xs font-bold text-shiraz">{relativeHumidity} %</span>
+                  <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(relativeHumidity)} %</span>
                 </div>
                 <input 
                   type="range" 
@@ -1024,7 +1024,7 @@ export default function Betonkennwerte() {
                     title="Ende der Nachbehandlung ts in Tagen"
                   />
                 </div>
-                <span className="text-[10px] text-slate-500">t₀ = {loadingAgeT0} d (Last), ts = {curingDaysTs} d (Curing)</span>
+                <span className="text-[10px] text-slate-500">t₀ = {formatDeWert(loadingAgeT0)} d (Last), ts = {formatDeWert(curingDaysTs)} d (Curing)</span>
               </div>
 
               {/* Einwirkende Dauerspannung σ_c */}
@@ -1133,15 +1133,15 @@ export default function Betonkennwerte() {
                 <div className="space-y-1.5 text-xs">
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
                     <span className="text-slate-600">Zylinder <InlineMath math="f_{ck}" /> (28 d):</span>
-                    <strong className="font-mono text-slate-900">{calcResults.fck} MPa</strong>
+                    <strong className="font-mono text-slate-900">{formatDeWert(calcResults.fck)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
                     <span className="text-slate-600">Würfel <InlineMath math="f_{ck,\text{cube}}" />:</span>
-                    <strong className="font-mono text-slate-900">{baseConcrete.fckCube} MPa</strong>
+                    <strong className="font-mono text-slate-900">{formatDeWert(baseConcrete.fckCube)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
                     <span className="text-slate-600">Mittelwert <InlineMath math="f_{cm} = f_{ck} + 8" />:</span>
-                    <strong className="font-mono text-slate-900">{calcResults.fcm} MPa</strong>
+                    <strong className="font-mono text-slate-900">{formatDeWert(calcResults.fcm)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100 bg-emerald-50/60 px-1 rounded">
                     <span className="text-emerald-950 font-bold">Bemessung <InlineMath math="f_{cd} = \frac{\alpha_{cc} f_{ck}}{\gamma_c}" />:</span>
@@ -1193,7 +1193,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-blue-900">{formatDeZahl(calcResults.fctd, 2)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
-                    <span className="text-slate-600">Biegezug <InlineMath math="f_{ctm,fl}" /> ({elementHeightH} mm):</span>
+                    <span className="text-slate-600">Biegezug <InlineMath math="f_{ctm,fl}" /> ({formatDeWert(elementHeightH)} mm):</span>
                     <strong className="font-mono text-slate-900">{formatDeZahl(calcResults.fctmFl, 2)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
@@ -1287,7 +1287,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-amber-900 font-bold">{formatDeZahl(calcResults.phiFinal, 2)}</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
-                    <span className="text-slate-600">Verkürzung ({elementLengthL} m gesamt):</span>
+                    <span className="text-slate-600">Verkürzung ({formatDeWert(elementLengthL)} m gesamt):</span>
                     <strong className="font-mono text-slate-900">ΔL = -{formatDeZahl(calcResults.deltaLShrinkMm + calcResults.deltaLCreepMm, 2)} mm</strong>
                   </div>
                 </div>
@@ -1394,13 +1394,13 @@ export default function Betonkennwerte() {
                             </span>
                           )}
                         </td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-800">{c.fck}</td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-600">{c.fckCube}</td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-800">{c.fcm}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-800">{formatDeWert(c.fck)}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeWert(c.fckCube)}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-800">{formatDeWert(c.fcm)}</td>
                         <td className="py-2 px-3 font-mono text-right text-emerald-800 font-bold">{formatDeZahl(fcdVal, 1)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-800">{formatDeZahl(c.fctm, 1)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.fctk005, 1)}</td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-900 font-bold">{c.Ecm}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-900 font-bold">{formatDeWert(c.Ecm)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.epsC1, 2)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.epsCu1, 1)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.epsC2, 2)}</td>
@@ -1680,7 +1680,7 @@ export default function Betonkennwerte() {
                 return (
                   <div key={qIdx} className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-3">
                     <h4 className="font-bold text-xs sm:text-sm text-slate-900 leading-snug">
-                      Frage {qIdx + 1}: {item.q}
+                      Frage {formatDeWert(qIdx + 1)}: {item.q}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-2">

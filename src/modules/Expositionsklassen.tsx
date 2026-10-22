@@ -25,7 +25,7 @@ import {
   Eye
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 // ============================================================================
 // NORMATIVE DATENBANK: DIN EN 206:2021-06 & DIN 1045-2:2023-08 (Tab. F.2.1/F.2.2)
@@ -979,19 +979,19 @@ export function ExpositionsklassenSkizze({
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-[11px] text-text-main/60 block">Min. Zement (d16)</span>
                 <span className="text-sm font-bold font-mono text-text-main">
-                  &ge; {currentZone.minCement} kg/m&sup3;
+                  &ge; {formatDeWert(currentZone.minCement)} kg/m&sup3;
                 </span>
               </div>
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-[11px] text-text-main/60 block">c_min,dur (EC2)</span>
                 <span className="text-sm font-bold font-mono text-text-main">
-                  {currentZone.cMinDur} mm
+                  {formatDeWert(currentZone.cMinDur)} mm
                 </span>
               </div>
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-center col-span-2 sm:col-span-1">
                 <span className="text-[11px] text-text-main/60 block">Nennmaß c_nom</span>
                 <span className="text-sm font-bold font-mono text-emerald-800">
-                  {currentZone.cNom} mm
+                  {formatDeWert(currentZone.cNom)} mm
                 </span>
               </div>
             </div>
@@ -1177,7 +1177,7 @@ export function ExpositionsklassenSkizze({
                     <line x1="160" y1="295" x2="160" y2="315" stroke="#9b111e" strokeWidth="1.5" />
                     <line x1={stirrupOuterX} y1="295" x2={stirrupOuterX} y2="315" stroke="#9b111e" strokeWidth="1.5" />
                     <text x={(160 + stirrupOuterX) / 2} y="325" textAnchor="middle" fill="#9b111e" fontSize="12" fontWeight="bold">
-                      cnom = {cNomVal} mm
+                      cnom = {formatDeWert(cNomVal)} mm
                     </text>
 
                     {/* 2. c_min,dur Teilmaßkette */}
@@ -1185,7 +1185,7 @@ export function ExpositionsklassenSkizze({
                     <line x1="160" y1="264" x2="160" y2="276" stroke="#0369a1" strokeWidth="1.2" />
                     <line x1={160 + cMinVal * scalePxPerMm} y1="264" x2={160 + cMinVal * scalePxPerMm} y2="276" stroke="#0369a1" strokeWidth="1.2" />
                     <text x={(160 + 160 + cMinVal * scalePxPerMm) / 2} y="262" textAnchor="middle" fill="#0369a1" fontSize="10" fontWeight="bold">
-                      cmin,dur = {cMinVal} mm
+                      cmin,dur = {formatDeWert(cMinVal)} mm
                     </text>
 
                     {/* 3. delta_c_dev Teilmaßkette */}
@@ -1699,15 +1699,15 @@ export default function Expositionsklassen() {
                           {c.minStrengthClass}
                         </td>
                         <td className="p-3 text-center font-mono text-text-main/80 whitespace-nowrap">
-                          {c.minCement ? `${c.minCement.dmax16} / ${c.minCement.dmax32}` : '—'}
+                          {c.minCement ? `${formatDeWert(c.minCement.dmax16)} / ${formatDeWert(c.minCement.dmax32)}` : '—'}
                         </td>
                         <td className="p-3 text-center font-mono font-bold text-shiraz whitespace-nowrap">
-                          {c.minCoverDurMm} mm
+                          {formatDeWert(c.minCoverDurMm)} mm
                         </td>
                         <td className="p-3 text-[11px] text-text-main/80">
                           {c.requiresAirEntrainment && (
                             <span className="inline-block px-1.5 py-0.5 rounded bg-cyan-50 text-cyan-800 border border-cyan-200 font-semibold mr-1 mb-1">
-                              LP-Beton: &ge; {c.minAirContent?.dmax16}% (16 mm)
+                              LP-Beton: &ge; {formatDeWert(c.minAirContent?.dmax16)}% (16 mm)
                             </span>
                           )}
                           {c.specialNotes || 'Standard-Betonzusammensetzung'}
@@ -1938,7 +1938,7 @@ export default function Expositionsklassen() {
                           : 'bg-white text-text-main border-home-grau/30 hover:bg-slate-50'
                       }`}
                     >
-                      {d} mm
+                      {formatDeWert(d)} mm
                     </button>
                   ))}
                 </div>
@@ -2016,9 +2016,9 @@ export default function Expositionsklassen() {
                   <div className="p-3 bg-white rounded-xl border border-home-grau/30 shadow-xs text-center col-span-2 md:col-span-1">
                     <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Nennmaß Betondeckung</span>
                     <span className="text-lg font-mono font-black text-emerald-800">
-                      {calculatedEnvelopes.cNom} mm
+                      {formatDeWert(calculatedEnvelopes.cNom)} mm
                     </span>
-                    <span className="text-[10px] text-text-main/60 block mt-0.5">c_min = {calculatedEnvelopes.maxCoverDur} + Δc = {deltaCdev} mm</span>
+                    <span className="text-[10px] text-text-main/60 block mt-0.5">c_min = {formatDeWert(calculatedEnvelopes.maxCoverDur)} + Δc = {formatDeWert(deltaCdev)} mm</span>
                   </div>
                 </div>
 
@@ -2123,7 +2123,7 @@ export default function Expositionsklassen() {
                   {formatDeZahl(kValueCalc.beq, 1)} kg/m³
                 </span>
                 <span className="text-[10px] text-text-main/60 block mt-0.5">
-                  z ({zementGehalt}) + 0,4·{formatDeZahl(kValueCalc.effectiveF, 0)} + {formatDeZahl(kValueCalc.kS, 1)}·{formatDeZahl(kValueCalc.effectiveS, 0)}
+                  z ({formatDeWert(zementGehalt)}) + 0,4·{formatDeZahl(kValueCalc.effectiveF, 0)} + {formatDeZahl(kValueCalc.kS, 1)}·{formatDeZahl(kValueCalc.effectiveS, 0)}
                 </span>
               </div>
 
@@ -2189,7 +2189,7 @@ export default function Expositionsklassen() {
             </div>
             {quizSubmitted && (
               <div className="px-3 py-1.5 rounded-xl bg-shiraz text-white font-bold text-sm">
-                Ergebnis: {calculateScore()} / {quizQuestions.length} Punkte
+                Ergebnis: {formatDeWert(calculateScore())} / {quizQuestions.length} Punkte
               </div>
             )}
           </div>
@@ -2202,7 +2202,7 @@ export default function Expositionsklassen() {
               return (
                 <div key={qIdx} className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-3">
                   <div className="font-bold text-sm text-text-main">
-                    Frage {qIdx + 1}: {q.question}
+                    Frage {formatDeWert(qIdx + 1)}: {q.question}
                   </div>
 
                   <div className="grid grid-cols-1 gap-2">

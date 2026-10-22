@@ -517,11 +517,11 @@ export default function Festbeton() {
                   {/* Ergebnisbox */}
                   <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/20 flex flex-col gap-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs text-text-main/80 font-medium">Entwicklungsbeiwert β_cc({alter} d):</span>
+                      <span className="text-xs text-text-main/80 font-medium">Entwicklungsbeiwert β_cc({formatDeWert(alter)} d):</span>
                       <span className="font-mono font-bold text-shiraz text-base">{formatDeZahl(beta_cc, 3)}</span>
                     </div>
                     <div className="flex justify-between items-center border-t border-shiraz/10 pt-2">
-                      <span className="text-xs text-text-main font-bold">Erwartete Festigkeit f_cm({alter} d):</span>
+                      <span className="text-xs text-text-main font-bold">Erwartete Festigkeit f_cm({formatDeWert(alter)} d):</span>
                       <span className="font-mono font-bold text-shiraz text-lg">{formatDeZahl(fcm_t_eff, 1)} N/mm²</span>
                     </div>
                     <span className="text-[10px] text-text-main/60">
@@ -786,7 +786,7 @@ export default function Festbeton() {
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-bold"
                       >
                         {NORM_KLASSEN.map(cls => (
-                          <option key={cls.name} value={cls.name}>{cls.name} (Würfel f_ck = {cls.fck_cube} MPa)</option>
+                          <option key={cls.name} value={cls.name}>{cls.name} (Würfel f_ck = {formatDeWert(cls.fck_cube)} MPa)</option>
                         ))}
                       </select>
                     </div>
