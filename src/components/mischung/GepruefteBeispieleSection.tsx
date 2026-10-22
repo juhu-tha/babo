@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { 
   CheckCircle2, BookOpen, ArrowRight, ShieldCheck, 
-  Layers, Droplets, Info, Sparkles, Scale, AlertTriangle 
+  Layers, Info, Sparkles, Scale 
 } from 'lucide-react';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 export interface BenchmarkData {
   id: string;

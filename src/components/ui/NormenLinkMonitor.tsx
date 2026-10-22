@@ -8,14 +8,9 @@ import {
   Search, 
   Filter, 
   Clock, 
-  FileCheck, 
-  Send, 
-  HelpCircle,
-  Sparkles,
-  Layers,
-  ArrowRight
+  Send
 } from 'lucide-react';
-import { CENTRAL_NORMEN_REGISTRY, NormRecord } from '@/src/data/centralNormenRegistry';
+import { CENTRAL_NORMEN_REGISTRY } from '@/src/data/centralNormenRegistry';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 interface LinkCheckItem {
