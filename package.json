@@ -1,7 +1,7 @@
 {
   "name": "baustoffboard",
   "private": true,
-  "version": "0.0.0",
+  "version": "3.24.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
