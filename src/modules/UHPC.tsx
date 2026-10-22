@@ -40,7 +40,7 @@ export default function UHPC() {
             Eigenschaften
           </h3>
           <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Extrem hohe Druckfestigkeit (&gt; 150 bis über 200 MPa), sehr hohe Dichtigkeit, nahezu keine Kapillarporen. Sehr sprödes Versagen, weshalb oft Fasern (Hochleistungsstahlfasern oder Carbon) zugegeben werden.
+            Extrem hohe Druckfestigkeit (in der Literatur meist ab etwa 150 N/mm², teils über 200 N/mm²; genormte Klassen gibt es nicht – eine DAfStb-Richtlinie ist in Vorbereitung), sehr hohe Dichtigkeit, nahezu keine Kapillarporen. Sehr sprödes Versagen, weshalb oft Fasern (Hochleistungsstahlfasern oder Carbon) zugegeben werden.
           </p>
         </div>
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">

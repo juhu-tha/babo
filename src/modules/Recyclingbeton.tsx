@@ -61,9 +61,9 @@ export default function Recyclingbeton() {
 
     if (rcAnteil > maxAnteil) {
       isOk = false;
-      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% überschreitet den nach DAfStb-Richtlinie zulässigen Maximalwert von ${formatDeWert(maxAnteil)}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% überschreitet den nach DAfStb-Richtlinie (2010) zulässigen Maximalwert von ${formatDeWert(maxAnteil)}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
     } else {
-      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% liegt innerhalb der normativen Grenzen (max. ${formatDeWert(maxAnteil)}%).`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% liegt innerhalb der Grenzen der DAfStb-Richtlinie (max. ${formatDeWert(maxAnteil)}%; Übernahme in DIN 1045-2:2023-08 manuell prüfen).`;
     }
 
     // Wasseraufnahme (Kernfeuchte)

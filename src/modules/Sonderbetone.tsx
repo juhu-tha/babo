@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Layers, Droplets, Droplet, Recycle, ShieldAlert, Waves, Box, Target, Zap, Circle, Weight, Package, Construction, MoveDown } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import Leichtbeton from './Leichtbeton';
 import Sichtbeton from './Sichtbeton';
 import Spritzbeton from './Spritzbeton';
@@ -38,6 +40,14 @@ export default function Sonderbetone() {
     { value: 'Bohrpfahlbeton', label: 'Bohrpfahlbeton', icon: Construction }
   ];
 
+  const GRUPPEN = [
+    { titel: 'Rohdichte', werte: ['Leichtbeton', 'Infraleichtbeton', 'Schwerbeton'] },
+    { titel: 'Verarbeitung', werte: ['SVB', 'Pumpbeton', 'Spritzbeton', 'UwBeton', 'Schleuderbeton'] },
+    { titel: 'Leistungsbeton', werte: ['UHPC', 'Faserbeton'] },
+    { titel: 'Bauteile', werte: ['Massenbeton', 'Bohrpfahlbeton', 'Draenbeton'] },
+    { titel: 'Nachhaltigkeit & Optik', werte: ['Recyclingbeton', 'Sichtbeton'] },
+  ];
+
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
@@ -53,8 +63,11 @@ export default function Sonderbetone() {
         <h3 className="block text-xs font-bold text-text-main/70 mb-3 uppercase tracking-wider">
           Sonderbeton-Verfahren auswählen
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {options.map((opt) => {
+        {GRUPPEN.map(g => (
+          <div key={g.titel} className="mb-3">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-text-main/60 mb-1.5">{g.titel}</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            {options.filter(o => g.werte.includes(o.value)).map((opt) => {
             const Icon = (opt as any).icon;
             const isActive = activeTab === opt.value;
             return (
@@ -71,8 +84,10 @@ export default function Sonderbetone() {
                 <span className="font-semibold leading-tight">{opt.label}</span>
               </button>
             );
-          })}
-        </div>
+            })}
+            </div>
+          </div>
+        ))}
       </div>
 
       <div>
@@ -122,6 +137,32 @@ export default function Sonderbetone() {
         <Bohrpfahlbeton />
       )}
       </div>
+
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: E-Modul von Leichtbeton"
+        zielGleichung="E_{lcm} = \eta_E \cdot E_{cm}, \quad \eta_E = (\rho / 2200)^2"
+        normQuelle="DIN EN 1992-1-1, Abschnitt 11.3.2"
+        schritte={[
+          { titel: '1. Gegeben', formel: '\\rho = 1\\,600\\,\\text{kg/m}^3', erklaerung: 'Konstruktionsleichtbeton mit Blähton.' },
+          { titel: '2. Abminderungsbeiwert', formel: '\\eta_E = (1\\,600 / 2\\,200)^2 = 0{,}727^2 = 0{,}53', erklaerung: 'Die weiche Gesteinskörnung senkt die Steifigkeit.' },
+          { titel: '3. Bedeutung', formel: 'E_{lcm} \\approx 0{,}53 \\cdot E_{cm}', erklaerung: 'Bei gleicher Festigkeitsklasse nur rund halb so steif wie Normalbeton – größere Verformungen.' },
+        ]}
+        ergebnisHinweis="η_E = 0,53: E-Modul rund 47 % geringer als bei Normalbeton."
+      />
+
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Mehrwasser bei RC-Gesteinskörnung"
+        zielGleichung="\Delta w = a_{RC} \cdot m_g \cdot WA_{24}"
+        normQuelle="Lehrwerte; zulässige Anteile nach DAfStb-Richtlinie (2010) – Übernahme in DIN 1045-2:2023-08 manuell prüfen"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'a_{RC} = 25\\,\\%,\\; m_g = 1\\,800\\,\\text{kg/m}^3,\\; WA_{24} = 5\\,\\%', erklaerung: 'Typ 1 (Betonsplitt) mit 24-h-Wasseraufnahme 5 M.-%.' },
+          { titel: '2. Mehrwasser', formel: '\\Delta w = 0{,}25 \\cdot 1\\,800 \\cdot 0{,}05 = 22{,}5\\,\\text{kg/m}^3', erklaerung: 'Wird von der porösen Körnung aufgesogen und steht nicht für die Verarbeitbarkeit zur Verfügung.' },
+          { titel: '3. Folge', formel: '\\Rightarrow \\text{Vornässen oder Zugabewasser erhöhen (ohne den wirksamen w/z zu ändern)}', erklaerung: 'Wirksamer Wassergehalt bleibt maßgebend für w/z.' },
+        ]}
+        ergebnisHinweis="Rund 22,5 kg/m³ zusätzliches Wasser für die Kernfeuchte der RC-Körnung."
+      />
+
+      <ModulTest moduleId="sonderbetone" />
 
       <ModuleFooter
         weblinks={[

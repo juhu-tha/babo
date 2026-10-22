@@ -1,9 +1,7 @@
-import { formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState } from 'react';
+import React from 'react';
 import { Waves, Zap } from 'lucide-react';
 
 export default function Spritzbeton() {
-  const [schichtdicke, setSchichtdicke] = useState(5);
 
   return (
     <div className="flex flex-col gap-8">
@@ -62,7 +60,7 @@ export default function Spritzbeton() {
 
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
            <div className="relative z-10 w-full">
-            <h3 className="text-lg font-bold text-text-main mb-6 text-center">Applikations-Visualisierung</h3>
+            <h3 className="text-lg font-bold text-text-main mb-6 text-center">Schema: Auftrag einer Spritzbetonlage</h3>
             
             <div className="flex justify-center mb-10">
               <div className="relative w-48 h-48">
@@ -72,7 +70,7 @@ export default function Spritzbeton() {
                 {/* Sprayed Layer */}
                 <div 
                   className="absolute inset-y-0 right-8 bg-slate-500 rounded-l-md transition-all duration-300 border-y border-l border-home-grau/30"
-                  style={{ width: `${schichtdicke * 4}px` }}
+                  style={{ width: '20px' }}
                 >
                    {/* Texture dots representing aggregates */}
                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
@@ -92,19 +90,9 @@ export default function Spritzbeton() {
             </div>
 
             <div className="px-4">
-              <label className="text-sm font-medium text-text-main flex justify-between mb-2">
-                <span>Dicke pro Lage</span>
-                <span className="text-shiraz font-bold">{formatDeWert(schichtdicke)} cm</span>
-              </label>
-              <input 
-                type="range" min="1" max="15" step="1"
-                value={schichtdicke}
-                onChange={(e) => setSchichtdicke(Number(e.target.value))}
-                className="w-full accent-shiraz cursor-pointer"
-              />
               <p className="text-xs text-home-grau text-center mt-3">
                 Übliche Schichtdicken pro Spritzgang liegen zwischen 3 und 10 cm. 
-                Größere Dicken erfordern Erstarrungsbeschleuniger und Bewehrung.
+                Größere Dicken erfordern Erstarrungsbeschleuniger und Bewehrung (Erfahrungswerte).
               </p>
             </div>
            </div>

@@ -1,10 +1,14 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Eye, Layers, Grid, Droplets } from 'lucide-react';
 
 export default function Sichtbeton() {
+  // Eingebettet in Sonderbetone: Quellenblock dort zentral
+  const { activeTab: aktiverReiter } = useTabContext();
+  const eingebettet = aktiverReiter === 'sonderbetone';
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
@@ -191,6 +195,7 @@ export default function Sichtbeton() {
 
       <ModulTest moduleId="sichtbeton" />
 
+      {!eingebettet && (
       <ModuleFooter
         weblinks={[
           { title: 'Beton.wiki: Sichtbeton', url: 'https://beton.wiki/index.php?title=Sichtbeton' },
@@ -224,6 +229,7 @@ export default function Sichtbeton() {
           }
         ]}
       />
+      )}
     </div>
   );
 }
