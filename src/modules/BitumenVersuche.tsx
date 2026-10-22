@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, Thermometer, ArrowDownToLine, Flame, BookOpen, Activity, Box } from 'lucide-react';
+import { Play, RotateCcw, Thermometer, ArrowDownToLine, BookOpen, Activity, Box } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 

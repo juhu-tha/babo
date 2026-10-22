@@ -1,13 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { AlertTriangle, CheckCircle2, Info, Droplets, Snowflake, ShieldAlert, Sparkles, Activity, Microscope, Clock, Layers, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, Info, Droplets, Snowflake, ShieldAlert, Sparkles, Microscope } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
   Chart as ChartJS,

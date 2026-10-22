@@ -3,16 +3,12 @@ import {
   FileText, 
   Download, 
   Printer, 
-  ShieldCheck, 
   Trash2, 
   CheckCircle2, 
   AlertTriangle, 
-  ChevronRight, 
   Table, 
   FileJson,
-  Calendar,
   Building,
-  Hash,
   Activity,
   Layers,
   Sparkles,
@@ -29,8 +25,7 @@ import {
 } from '@/src/utils/labExportUtils';
 import { 
   getStoredLabProtocols, 
-  clearStoredLabProtocols, 
-  saveStoredLabProtocol 
+  clearStoredLabProtocols 
 } from '@/src/utils/studyStorage';
 
 export const LabProtocolManager: React.FC = () => {

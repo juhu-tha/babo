@@ -6,7 +6,6 @@ import {
   Flame, 
   Info, 
   Layers, 
-  BookOpen, 
   Volume2, 
   ShieldAlert, 
   Scale, 
@@ -15,15 +14,12 @@ import {
   Droplets, 
   CheckCircle2, 
   AlertTriangle,
-  FileText,
-  TrendingUp,
   Table,
   Wrench,
-  HelpCircle,
   History
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { BlockMath, InlineMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import ModuleHistoryView from '@/src/components/ui/ModuleHistoryView';
 import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';

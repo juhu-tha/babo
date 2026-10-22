@@ -1,23 +1,15 @@
 import React from 'react';
 import { 
   BookOpen, 
-  Sliders, 
   Calculator, 
   Lightbulb, 
-  Info, 
   Layers, 
   Activity, 
-  GraduationCap, 
-  CheckCircle2, 
   ShieldCheck, 
   Database, 
-  Binary, 
-  Search, 
-  FileCheck2, 
-  Check, 
-  Scale 
+  Check 
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export default function Anleitung() {

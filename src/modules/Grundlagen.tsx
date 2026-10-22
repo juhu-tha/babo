@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, ShieldAlert, Thermometer, Droplets, Box, Table, Sparkles, Flame, Microscope } from 'lucide-react';
+import { Layers, Sparkles, Flame, Microscope } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import Regularien from './Regularien';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

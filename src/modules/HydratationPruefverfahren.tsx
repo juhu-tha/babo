@@ -1,9 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Activity, Thermometer, Layers, AlertOctagon, HelpCircle, CheckCircle, Flame, RefreshCw, BarChart2 } from 'lucide-react';
+import { Activity, Thermometer, Layers, AlertOctagon, HelpCircle, CheckCircle, Flame, BarChart2 } from 'lucide-react';
 
 interface CementProfile {
   name: string;

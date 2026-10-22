@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
-import { Layers, BookOpen, Calculator, Route, HelpCircle, FileText, CheckCircle2, TrendingUp, AlertTriangle, Milestone, Train, HardHat, Droplets } from 'lucide-react';
+import { Layers, BookOpen, Calculator, Route, FileText, CheckCircle2, TrendingUp, AlertTriangle, Milestone, Train, HardHat, Droplets } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 // Standardized RStO 12/24 Profiles for different Belastungsklassen (Bk)

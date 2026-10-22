@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Box, Layers, Activity, TrendingUp, CheckCircle2, AlertTriangle, ArrowRight, Scale, Sliders, Calendar, ShieldCheck, BookOpen } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { Box, Layers, TrendingUp, CheckCircle2, AlertTriangle, ArrowRight, Scale, Sliders, Calendar, ShieldCheck } from 'lucide-react';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Slider } from '@/src/components/ui/Slider';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { normalPDF } from '@/src/lib/math';
 import { useTabContext } from '@/src/contexts/TabContext';

@@ -3,30 +3,23 @@ import {
   RefreshCw, 
   Leaf, 
   Target, 
-  ThermometerSun, 
   Zap, 
-  BookOpen, 
   Layers, 
   Settings, 
-  ChevronRight, 
   Calculator, 
   AlertTriangle, 
   Info, 
   Scale, 
   CheckCircle2, 
-  ArrowRight, 
   FileText, 
-  Home, 
   Coins 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { Slider } from '@/src/components/ui/Slider';
-import { FormulaText } from '@/src/components/ui/FormulaText';
-import { GMODG_ANLAGE7, FX, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
+import { GMODG_ANLAGE7, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
 

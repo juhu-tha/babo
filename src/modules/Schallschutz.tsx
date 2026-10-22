@@ -2,7 +2,6 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Volume2 } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, BookOpen, Layers, CheckCircle2 } from 'lucide-react';
+import { HelpCircle, BookOpen, CheckCircle2 } from 'lucide-react';
 import { GLOSSARY_TERMS, GlossaryTerm } from '@/src/data/glossaryTerms';
 import { InlineMath } from 'react-katex';
 import { useTabContext } from '@/src/contexts/TabContext';

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { 
-  ShieldCheck, 
-  ShieldAlert, 
   AlertTriangle, 
   CheckCircle2, 
   XCircle, 
@@ -10,8 +8,7 @@ import {
   Scale, 
   Sparkles, 
   Info,
-  Clock,
-  ArrowRight
+  Clock
 } from 'lucide-react';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 

@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Paintbrush, Calculator, ShieldCheck, HelpCircle, Info, Sparkles, Droplets, Trash2, Check, AlertTriangle, FlaskConical, Workflow, Atom, Layers } from 'lucide-react';
+import { Paintbrush, Calculator, ShieldCheck, Info, Check, AlertTriangle, FlaskConical, Atom, Layers } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 
 interface BinderType {

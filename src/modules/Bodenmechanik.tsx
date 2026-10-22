@@ -4,7 +4,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { Mountain, Droplets, Activity, MoveHorizontal, Clock, Scissors, ArrowDownToLine, Timer } from 'lucide-react';
+import { Mountain, Droplets, Clock, Scissors, ArrowDownToLine, Timer } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,

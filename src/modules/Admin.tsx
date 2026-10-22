@@ -9,23 +9,14 @@ import {
   Copy, 
   Check, 
   Layers, 
-  SlidersHorizontal, 
   Sparkles,
-  BookOpen,
-  ArrowRight,
   Code,
   Cpu,
   Boxes,
   Palette,
-  Terminal,
-  Server,
-  Zap,
-  Globe,
-  Database
+  Server
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { BlockMath, InlineMath } from 'react-katex';
-import { formatDeZahl } from '@/src/utils/numberFormat';
 
 const FULL_AUDIT_PROMPT = `================================================================================
 VERBINDLICHER GESAMT-AUDITPROMPT DER WISSENSPLATTFORM BAUSTOFFBOARD (THA)

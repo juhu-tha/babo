@@ -5,7 +5,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
 import { Line } from 'react-chartjs-2';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import SpannbetonKennwerte from './spannbeton/SpannbetonKennwerte';
 import SpannbetonDauerhaftigkeit from './spannbeton/SpannbetonDauerhaftigkeit';
 import SpannbetonPrinzipien from './spannbeton/SpannbetonPrinzipien';
@@ -14,7 +14,6 @@ import { fckT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CO
 import {
   Settings,
   Activity,
-  Sparkles,
   Clock,
   Gauge,
   Thermometer,
@@ -22,10 +21,8 @@ import {
   ShieldCheck,
   Database,
   Layers,
-  ArrowBigRight,
   Info,
   BookOpen,
-  CheckCircle2,
   ArrowRight,
   Compass,
   GraduationCap

@@ -4,21 +4,11 @@ import {
   Search, 
   Database, 
   Layers, 
-  FileText, 
-  CheckCircle2, 
-  AlertTriangle, 
-  ArrowRight, 
-  Cpu, 
-  Sparkles, 
-  Copy, 
-  BookOpen, 
-  Sliders,
+  AlertTriangle,
   ShieldCheck,
-  RefreshCw,
-  Terminal,
-  ExternalLink
+  Terminal
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
 interface NormChunk {
   id: string;

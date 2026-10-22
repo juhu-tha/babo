@@ -4,7 +4,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
 import { 
   Layers, Droplets, Hammer, BookOpen, Calculator, Sparkles, 
-  ChevronRight, Info, AlertTriangle, ShieldCheck, HelpCircle, ArrowRight
+  ChevronRight, Info, ShieldCheck
 } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 

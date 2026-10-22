@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import { Activity, AlertTriangle, Sliders, Timer, FlaskConical } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
-import { formatDeZahl } from '@/src/utils/numberFormat';
 import { simulate, T_RAMP, type Control, type LoadKey, type ModelKey } from '@/src/utils/rheologySim';
 
 // ---------------------------------------------------------------------------

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  ShieldAlert, 
   BookOpen, 
   AlertCircle, 
   ShieldCheck, 
@@ -9,10 +8,7 @@ import {
   Users, 
   Gavel, 
   Scale, 
-  Search, 
-  TrendingDown, 
-  ChevronRight, 
-  HelpCircle,
+  Search,
   FileText,
   AlertTriangle,
   Lightbulb,
@@ -22,8 +18,7 @@ import {
   FileSignature,
   Paperclip,
   CheckCircle2,
-  XCircle,
-  Layers as LayersIcon
+  XCircle
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

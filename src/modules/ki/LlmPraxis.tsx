@@ -6,19 +6,15 @@ import {
   FolderTree, 
   FileCode, 
   Globe, 
-  Cpu, 
   Copy, 
   Check, 
-  Layers, 
   BookOpen, 
   Sliders, 
   Code, 
   AlertTriangle, 
-  ArrowRight, 
   Database, 
   Bot, 
-  CheckCircle2, 
-  Share2,
+  CheckCircle2,
   FileText,
   Search,
   Zap,
@@ -28,17 +24,9 @@ import {
   Workflow,
   Laptop,
   CheckSquare,
-  FileSpreadsheet,
-  Download,
-  ExternalLink,
-  Shield,
-  HelpCircle,
-  Clock,
-  Compass,
-  FileCheck2,
-  Scale
+  FileCheck2
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface LlmPraxisProps {

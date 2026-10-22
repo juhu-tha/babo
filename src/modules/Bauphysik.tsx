@@ -20,13 +20,10 @@ import {
   Volume2, 
   Sun, 
   Thermometer, 
-  CloudRain, 
-  Check, 
-  HelpCircle,
+  CloudRain,
   Sparkles,
   Award
 } from 'lucide-react';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
 // Detailed material library with density, lambda, moisture resistance factor (mu) and specific heat capacity (c in J/kgK)
@@ -181,7 +178,7 @@ export default function Bauphysik() {
     }
 
     let p_profile = [...p_profile_raw];
-    let isCondensing = maxViolation > 0.05 && condensationIndex > 0 && condensationIndex < p_profile_raw.length - 1;
+    const isCondensing = maxViolation > 0.05 && condensationIndex > 0 && condensationIndex < p_profile_raw.length - 1;
     let condMassFlowWinter = 0; // g/(m²·h)
     let evapMassFlowSummer = 0; // g/(m²·h)
 

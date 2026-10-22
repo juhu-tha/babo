@@ -1,9 +1,8 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Trophy, Clock, AlertTriangle, CheckCircle2, XCircle, ArrowRight, ArrowLeft, 
-  RotateCcw, Bookmark, BookmarkCheck, BarChart3, HelpCircle, Award, 
-  GraduationCap, BookOpen, ShieldAlert, FileText, Check, ListChecks
+  RotateCcw, Bookmark, BarChart3, BookOpen, FileText, Check, ListChecks
 } from 'lucide-react';
 import { QUIZ_QUESTIONS, QUIZ_CATEGORIES, QuizQuestion, QuizCategory } from '@/src/data/quizData';
 import { KlausurResult, saveKlausurResult, getKlausurHistory } from '@/src/utils/studyStorage';

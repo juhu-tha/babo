@@ -4,21 +4,16 @@ import {
   Leaf, 
   Trees, 
   Droplets, 
-  Box, 
-  ArrowRight, 
   Scale, 
   Activity, 
   Layers, 
-  BarChart3, 
   Search, 
-  Filter, 
   Zap, 
   Calculator, 
   Sparkles, 
   CheckCircle2, 
   AlertCircle, 
-  BookOpen, 
-  FileText 
+  BookOpen 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 

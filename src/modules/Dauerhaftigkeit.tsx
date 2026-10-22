@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldAlert, Sun, Droplets, Bug, Box, Mountain, Maximize, Layers, Activity, Zap, LucideIcon, Snowflake, Wind, Waves, FlaskConical, Hammer, AlertTriangle, BookOpen, ArrowRight, Check, X, AlertCircle } from 'lucide-react';
+import { ShieldAlert, Sun, Bug, Box, Mountain, Maximize, Layers, Activity, Zap, LucideIcon, Snowflake, Wind, Waves, FlaskConical, Hammer, AlertTriangle, BookOpen, ArrowRight, Check, AlertCircle } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

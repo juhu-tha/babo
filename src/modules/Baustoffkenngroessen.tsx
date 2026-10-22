@@ -1,8 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { Scale, Activity, Droplets, Flame, ArrowRight, Clock, Layers, Timer, Calculator, GraduationCap, BookOpen } from 'lucide-react';
+import { Scale, Activity, Droplets, Flame, Clock, Layers, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
@@ -183,7 +182,7 @@ export default function Baustoffkenngroessen() {
       setSaeulenE(210000);
       setSaeulenFy(235);
       setSaeulenA(50);
-    saeulenF > 1000 ? setSaeulenF(800) : null;
+    if (saeulenF > 1000) setSaeulenF(800);
     } else if (mat === 'alu') {
       setSaeulenE(70000);
       setSaeulenFy(160);

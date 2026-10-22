@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { ChevronDown, ChevronUp, HelpCircle, Lightbulb, BookOpen, Search, Tags, GraduationCap, CheckCircle2, XCircle, RefreshCw, Trophy, ClipboardCheck, Sparkles, ArrowRight, Calculator } from 'lucide-react';
+import { ChevronDown, ChevronUp, HelpCircle, Lightbulb, BookOpen, Search, Tags, GraduationCap, Trophy, ClipboardCheck, ArrowRight, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { useTabContext } from '@/src/contexts/TabContext';
@@ -8,7 +8,7 @@ import { KlausurSimulator } from '@/src/components/klausur/KlausurSimulator';
 import { InteractiveQuizSystem } from '@/src/components/quiz/InteractiveQuizSystem';
 import { DynamischerAufgabenGenerator } from '@/src/components/trainer/DynamischerAufgabenGenerator';
 import { SchadensforensikSimulator } from '@/src/components/forensik/SchadensforensikSimulator';
-import { Task, taskCategories } from '../data/aufgabenData';
+import { taskCategories } from '../data/aufgabenData';
 
 const TAB_TO_QUIZ_CONFIG: Record<string, { cluster: 'I' | 'II' | 'III' | 'IV' | 'V'; moduleId?: string; label: string }> = {
   aufgaben_beton: { cluster: 'III', moduleId: 'beton', label: 'Betontechnologie' },
@@ -62,7 +62,7 @@ export default function Aufgaben() {
 
   const expandAll = () => {
     const allIds = filteredCategories.flatMap(c => c.tasks.map(t => t.id));
-    const newOpenState = {};
+    const newOpenState: Record<string, boolean> = {};
     allIds.forEach(id => { newOpenState[id] = true; });
     setOpenTasks(newOpenState);
   };

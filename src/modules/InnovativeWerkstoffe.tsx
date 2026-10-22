@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Layers, Lightbulb, Box, Sparkles, Cpu, Check, Zap, TrendingUp, Coins, Leaf, Scale, Settings, Activity, ChevronRight, AlertCircle, Info, HelpCircle, ArrowRight, Wrench, CheckCircle2 } from 'lucide-react';
+import { Layers, Lightbulb, Box, Sparkles, Cpu, Check, Zap, Coins, Leaf, Scale, Settings, Activity, ChevronRight, AlertCircle, Info, HelpCircle, Wrench, CheckCircle2 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 
 interface MaterialProfile {
@@ -186,7 +186,7 @@ export default function InnovativeWerkstoffe() {
 
   // Material evaluation logic
   function calculateBestMaterial() {
-    let scores: Record<string, number> = {
+    const scores: Record<string, number> = {
       '3dcp': 50,
       'carbon': 50,
       'uhpc': 50,
@@ -262,9 +262,9 @@ export default function InnovativeWerkstoffe() {
     }
 
     // Normalize out of 5 stars
-    let normalizedRatings: Record<string, number> = {};
+    const normalizedRatings: Record<string, number> = {};
     Object.entries(scores).forEach(([id, score]) => {
-      let stars = Math.min(5, Math.max(1, Math.round((score / 130) * 5 * 10) / 10));
+      const stars = Math.min(5, Math.max(1, Math.round((score / 130) * 5 * 10) / 10));
       normalizedRatings[id] = stars;
     });
 
@@ -705,9 +705,9 @@ export default function InnovativeWerkstoffe() {
               const sfBucklingVal = H_critical_buckling / targetHeight;
               
               // Overall State evaluation
-              let isStable = sfPlasticVal >= 1.3 && sfBucklingVal >= 1.3;
-              let isCritical = (sfPlasticVal >= 1.0 && sfPlasticVal < 1.3) || (sfBucklingVal >= 1.0 && sfBucklingVal < 1.3);
-              let isFailed = sfPlasticVal < 1.0 || sfBucklingVal < 1.0;
+              const isStable = sfPlasticVal >= 1.3 && sfBucklingVal >= 1.3;
+              const isCritical = (sfPlasticVal >= 1.0 && sfPlasticVal < 1.3) || (sfBucklingVal >= 1.0 && sfBucklingVal < 1.3);
+              const isFailed = sfPlasticVal < 1.0 || sfBucklingVal < 1.0;
 
               return (
                 <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-8 animate-in duration-300">

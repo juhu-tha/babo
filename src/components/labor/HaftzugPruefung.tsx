@@ -4,21 +4,14 @@ import {
   Play,
   RotateCcw,
   Activity,
-  ShieldCheck,
   Check,
   Download,
   FileText,
-  Layers,
   Info,
   ArrowUpFromLine,
-  AlertTriangle,
-  CheckCircle2,
-  XCircle,
-  Disc,
-  Wrench,
-  Sparkles
+  Disc
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import {
   Chart as ChartJS,
   CategoryScale,

@@ -12,24 +12,17 @@ import {
   Search, 
   CheckCircle2, 
   Calculator, 
-  Thermometer, 
-  ExternalLink, 
-  FileText,
-  Sparkles,
+  Thermometer,
   Volume2,
   Droplets,
   HardHat,
   Filter,
   AlertTriangle,
-  AlertCircle,
-  Info,
-  Check,
-  RefreshCw,
-  Scale
+  AlertCircle
 } from 'lucide-react';
 import { useTabContext, TabType } from '../contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
 interface AusbauToolItem {
   id: string;

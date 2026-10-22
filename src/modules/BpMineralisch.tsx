@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Layers, ShieldCheck, Eye, Sliders, Calculator, Check, AlertTriangle, RefreshCw, Layers as LayersIcon, HardHat, Star } from 'lucide-react';
+import { ShieldCheck, Calculator, Check, AlertTriangle, Layers as LayersIcon, HardHat, Star } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 
 interface MineralMaterial {

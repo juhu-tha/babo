@@ -1,11 +1,10 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { 
   FileSearch, SplitSquareHorizontal, LayoutGrid, Scale, AlertTriangle, 
-  GitMerge, ArrowRight, Hammer, Wrench, Layers, Target, Grid, Info, 
+  GitMerge, ArrowRight, Wrench, Layers, Target, Info, 
   Disc, Sliders, CheckCircle2, MapPin, Gauge 
 } from 'lucide-react';
 import React, { useState } from 'react';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

@@ -1,9 +1,8 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { Mountain, Layers, AlignVerticalSpaceAround, Activity, LayoutGrid, Calculator, ThermometerSnowflake, Ruler, BookOpen } from 'lucide-react';
+import { Mountain, Layers, AlignVerticalSpaceAround, Activity, LayoutGrid, Calculator, ThermometerSnowflake, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Slider } from '@/src/components/ui/Slider';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
 type Tab = 'grundlagen' | 'klassifikation' | 'frostschutz' | 'steckbrief';

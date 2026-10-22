@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { 
   Sliders, 
   Calculator, 
-  Layers, 
   BookOpen, 
   Activity, 
   ShieldCheck, 
@@ -12,7 +11,6 @@ import {
   CheckCircle2, 
   XCircle, 
   AlertTriangle, 
-  Info, 
   RefreshCw,
   Scale,
   Compass,

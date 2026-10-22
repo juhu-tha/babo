@@ -4,16 +4,9 @@ import {
   TrendingUp, 
   Timer, 
   GitCommit, 
-  RotateCw, 
-  Sliders, 
-  CheckCircle2, 
-  AlertTriangle, 
-  Layers, 
-  Info, 
-  Sparkles, 
-  BookOpen 
+  RotateCw 
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

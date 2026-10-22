@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Box, Layers, Activity, ArrowRight, ArrowDown, ArrowLeft, ArrowUp, BookOpen } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { Box, Layers, Activity, BookOpen } from 'lucide-react';
+import { BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { ConceptTooltip } from '@/src/components/ui/ConceptTooltip';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

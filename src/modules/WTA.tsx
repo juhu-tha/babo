@@ -12,11 +12,8 @@ import {
   ShieldCheck, 
   Sliders, 
   Calculator, 
-  ArrowRight, 
   AlertTriangle, 
-  Lightbulb, 
-  Check, 
-  Clipboard,
+  Lightbulb,
   Info,
   Compass
 } from 'lucide-react';
@@ -161,7 +158,7 @@ export default function WTA() {
   let recommendedPlasterSystem = '';
   let recommendedPlasterSpecs = '';
   let plasterThickness = '';
-  let spritzbewurfCover = 'Warzenförmiger Spritzbewurf (Deckungsgrad max. 50%) zur Gewährleistung der Haftungsbrücke ohne Blockierung der Diffusionswege.';
+  const spritzbewurfCover = 'Warzenförmiger Spritzbewurf (Deckungsgrad max. 50%) zur Gewährleistung der Haftungsbrücke ohne Blockierung der Diffusionswege.';
   
   if (saltLoad === 'low') {
     recommendedPlasterSystem = 'WTA-Sanierputz, einlagig';

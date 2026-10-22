@@ -8,14 +8,8 @@ import {
   Trees, 
   BookOpen, 
   Calculator, 
-  Activity, 
   Info, 
-  CheckCircle2, 
-  RefreshCw, 
-  TrendingUp, 
-  ShieldAlert, 
-  FileText,
-  Boxes
+  ShieldAlert
 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

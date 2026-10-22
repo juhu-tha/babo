@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { ShieldAlert, ArrowRight, AlertTriangle, CheckCircle2, Calculator, Shield, Activity, BarChart2 } from 'lucide-react';
+import { ShieldAlert, ArrowRight, AlertTriangle, CheckCircle2, Calculator, Shield, Activity } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

@@ -1,11 +1,11 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
-  Droplets, Thermometer, Wind, Beaker, Info, Plus, Trash2, 
+  Droplets, Thermometer, Wind, Beaker, Plus, Trash2, 
   ArrowUp, ArrowDown, ShieldAlert, Sparkles, AlertTriangle, CheckCircle, HelpCircle 
 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { BlockMath, InlineMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

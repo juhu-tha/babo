@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, LucideIcon, Search, FileSignature, BookOpen, ArrowRight, HelpCircle, Calendar, Check, X, AlertCircle, Scale, Droplets, Leaf, ClipboardList } from 'lucide-react';
+import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, LucideIcon, Search, FileSignature, BookOpen, ArrowRight, HelpCircle, Check, X, AlertCircle, Scale, Droplets, Leaf, ClipboardList } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

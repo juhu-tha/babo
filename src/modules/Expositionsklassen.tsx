@@ -14,9 +14,7 @@ import {
   Waves, 
   Layers, 
   CheckCircle2, 
-  AlertTriangle, 
-  Info, 
-  ArrowRight,
+  AlertTriangle,
   Filter,
   Check,
   Scale,
@@ -24,7 +22,7 @@ import {
   Compass,
   Eye
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 // ============================================================================

@@ -3,8 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Award, AlertTriangle, CheckCircle2, Shield, Info, FileText, ChevronRight, Settings } from 'lucide-react';
+import { Award, AlertTriangle, CheckCircle2, Shield, Info, FileText, Settings } from 'lucide-react';
 
 export default function HydratationRissberechnung() {
   // Input parameters

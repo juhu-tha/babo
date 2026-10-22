@@ -1,16 +1,10 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { 
   Calendar, 
-  CloudSun, 
-  Users, 
-  Wrench, 
   ClipboardList, 
   AlertTriangle, 
   CheckCircle, 
-  FileText, 
-  Download, 
   Plus, 
   Trash2, 
   Bookmark, 
@@ -19,7 +13,6 @@ import {
   ChevronRight, 
   Printer, 
   Info,
-  Layers,
   ThermometerSnowflake,
   ShieldCheck,
   RotateCcw

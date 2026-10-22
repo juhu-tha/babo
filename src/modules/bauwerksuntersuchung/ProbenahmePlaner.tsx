@@ -1,23 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import { 
   ClipboardList, 
-  Layers, 
   Sliders, 
-  CheckCircle2, 
-  AlertTriangle, 
   Scale, 
   ExternalLink, 
   Beaker, 
   Thermometer, 
-  Hammer, 
   Info,
-  Calendar,
   Grid,
   FileText
 } from 'lucide-react';
-import { SAMPLING_PRESETS, METHOD_DIAGNOSE_DETAILS } from './diagnoseData';
+import { SAMPLING_PRESETS } from './diagnoseData';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
 export default function ProbenahmePlaner() {
   const [selectedPresetId, setSelectedPresetId] = useState<string>('tiefgarage');

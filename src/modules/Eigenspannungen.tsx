@@ -5,7 +5,6 @@ import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Box, Info } from 'lucide-react';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import {
   Chart as ChartJS,
   CategoryScale,

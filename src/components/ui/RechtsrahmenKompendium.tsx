@@ -1,11 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Scale, Building, Layers, ShieldCheck, FileText, ArrowRight,
-  Search, Sliders, Calendar, Globe, AlertTriangle, CheckCircle2,
-  TrendingDown, TrendingUp, Info, ExternalLink, ChevronDown, ChevronUp,
-  Award, HardHat, Factory, RefreshCw, Zap, Landmark, Leaf, Sparkles
+  Scale, Layers, ShieldCheck, FileText, ArrowRight,
+  Search, Calendar, Globe, Info, ChevronDown, ChevronUp, HardHat, Sparkles
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 
 export type HierarchyLevel = 
   | 'all'

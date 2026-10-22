@@ -1,6 +1,6 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState, useMemo } from 'react';
-import { Layers, Flame, Factory, FlaskConical, BookOpen, ShieldCheck, Check, Filter, AlertTriangle, Info, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Layers, Flame, Factory, FlaskConical, BookOpen, ShieldCheck, Filter, AlertTriangle, Info, CheckCircle2 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import Zementchemie from './Zementchemie';
 import {

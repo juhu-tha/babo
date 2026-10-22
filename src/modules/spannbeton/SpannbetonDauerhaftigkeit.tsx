@@ -9,17 +9,14 @@ import {
   Layers,
   Droplets,
   Zap,
-  Info,
   BookOpen,
   Scale,
   Search,
-  Check,
   Building,
   Flame,
   FileText,
   Activity,
-  Radio,
-  Eye
+  Radio
 } from 'lucide-react';
 
 export default function SpannbetonDauerhaftigkeit() {
@@ -73,11 +70,11 @@ export default function SpannbetonDauerhaftigkeit() {
     if (chlorideClass === 'XD3') baseDur = Math.max(baseDur, 45);
 
     // Zuschlag für 100 Jahre Entwurfslebensdauer bei Brücken (DIN EN 1992-2 / ZTV-ING):
-    let delta_dur_100 = structureType === 'bruecke' ? 5 : 0;
+    const delta_dur_100 = structureType === 'bruecke' ? 5 : 0;
 
     // Normativer Erhöhungszuschlag für Spannstahl nach DIN EN 1992-1-1 Abs. 4.4.1.2(5):
     // Bei Spanngliedern im Verbund: Delta c_dur,gamma = +10 mm
-    let delta_dur_gamma = prestressSystem === 'unbonded' ? 0 : 10;
+    const delta_dur_gamma = prestressSystem === 'unbonded' ? 0 : 10;
 
     // Abminderung bei hochfestem Beton (Mindestdruckfestigkeitsklassen-Vorteil nach EC2 Tab. 4.3ND)
     let delta_dur_fck = 0;

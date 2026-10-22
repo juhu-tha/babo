@@ -14,8 +14,8 @@ import { Line } from 'react-chartjs-2';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath, BlockMath } from 'react-katex';
-import { Activity, Search, Magnet, Zap, Thermometer, Battery, Waves, Radiation, Hammer, Radio, Layers, Trees, Droplets, Wrench, ClipboardList, Eye, CheckCircle2, AlertTriangle, Shield, Award, BookOpen } from 'lucide-react';
+import { InlineMath } from 'react-katex';
+import { Activity, Search, Magnet, Zap, Thermometer, Battery, Waves, Radiation, Hammer, Radio, Trees, Droplets, Wrench, ClipboardList, CheckCircle2, AlertTriangle, Award, BookOpen } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 ChartJS.register(

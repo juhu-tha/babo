@@ -6,10 +6,7 @@ import {
   ShieldCheck, 
   Sparkles, 
   Zap, 
-  Flame, 
   Thermometer, 
-  Volume2, 
-  Euro, 
   CheckCircle2, 
   AlertTriangle, 
   Info, 
@@ -17,12 +14,11 @@ import {
   Compass, 
   Building2, 
   Sliders, 
-  Check, 
   ChevronRight, 
   FileText 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
 // Types and Interfaces
 interface GlassProduct {

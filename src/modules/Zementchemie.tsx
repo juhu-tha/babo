@@ -6,7 +6,7 @@ import { Pie } from 'react-chartjs-2';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Box, BookOpen, Calculator, Sparkles, Layers, Microscope, Clock, Play, RotateCcw, Activity } from 'lucide-react';
+import { Box, BookOpen, Calculator, Sparkles, Microscope, Clock } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 

@@ -1,27 +1,20 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
-  Layers, 
   Droplet, 
   BookOpen, 
   CheckCircle2, 
   Lightbulb, 
-  ClipboardList, 
-  Info, 
   ShieldAlert, 
   Sparkles, 
   AlertTriangle, 
-  HelpCircle, 
   Activity, 
   ChevronRight, 
   Scale, 
-  Percent, 
   FileText, 
   Atom, 
   Gauge, 
-  Check, 
-  X, 
-  Settings 
+  Check 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath } from 'react-katex';

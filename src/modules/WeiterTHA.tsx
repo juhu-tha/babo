@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
-  GraduationCap, BookOpen, ExternalLink, Calendar, Clock, 
-  MapPin, Award, ArrowRight, CheckCircle2, ChevronRight,
+  GraduationCap, BookOpen, ExternalLink, Calendar, Clock, Award, CheckCircle2, ChevronRight,
   LayoutGrid, Trees, Sparkles, SlidersHorizontal, Layers
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

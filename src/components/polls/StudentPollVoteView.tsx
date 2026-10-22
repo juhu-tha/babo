@@ -2,14 +2,9 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   CheckCircle2, 
-  Radio, 
-  HelpCircle, 
-  Award, 
-  Smartphone, 
   ChevronRight, 
   ChevronLeft,
   ArrowRight,
-  ExternalLink,
   ShieldCheck,
   Check
 } from 'lucide-react';

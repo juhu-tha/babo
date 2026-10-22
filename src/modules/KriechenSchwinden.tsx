@@ -16,8 +16,8 @@ import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Timer, Activity, Layers, Clock, ArrowDown, Scale, Play, CheckCircle2, Sliders } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { Timer, Activity, Layers, Clock, Sliders } from 'lucide-react';
+import { InlineMath } from 'react-katex';
 
 ChartJS.register(
   CategoryScale,

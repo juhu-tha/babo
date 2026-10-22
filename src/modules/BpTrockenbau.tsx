@@ -4,8 +4,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath } from 'react-katex';
 import { 
   Layers, BookOpen, CheckCircle2, Lightbulb, Calculator, Percent, Sparkles, 
-  AlertCircle, FileText, CheckCircle, Flame, Volume2, Shield, Activity, 
-  Compass, ChevronRight, Droplets, Wrench, Info
+  AlertCircle, FileText, CheckCircle, Flame, Volume2, 
+  Compass, ChevronRight, Wrench, Info
 } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 

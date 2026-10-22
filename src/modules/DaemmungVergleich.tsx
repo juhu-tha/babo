@@ -1,5 +1,5 @@
 import React from 'react';
-import { Thermometer, Home, ArrowRight, AlertTriangle, CheckCircle2, XCircle } from 'lucide-react';
+import { Thermometer, Home, AlertTriangle, CheckCircle2, XCircle } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

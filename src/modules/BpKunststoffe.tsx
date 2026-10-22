@@ -1,14 +1,10 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath } from 'react-katex';
 import { 
   Layers, 
-  Droplet, 
-  Sun, 
-  Home, 
   Box, 
-  Calculator, 
   AlertTriangle, 
   CheckCircle2, 
   Info, 
@@ -20,9 +16,7 @@ import {
   Lightbulb, 
   Activity, 
   Settings, 
-  Wrench, 
-  Compass, 
-  Flame 
+  Wrench 
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';

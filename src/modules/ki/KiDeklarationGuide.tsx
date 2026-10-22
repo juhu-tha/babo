@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import { 
   GraduationCap, 
-  FileCheck, 
-  Download, 
   Copy, 
   CheckCircle2, 
   AlertTriangle, 
-  FileText, 
-  HelpCircle, 
-  Scale, 
-  ShieldCheck, 
-  Layers,
-  Printer
+  Scale
 } from 'lucide-react';
 
 export default function KiDeklarationGuide() {

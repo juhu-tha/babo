@@ -6,14 +6,9 @@ import {
   GraduationCap, 
   Send, 
   Mail, 
-  User, 
-  Calendar, 
-  Clock, 
-  AlertCircle,
+  User,
   CheckCircle,
-  HelpCircle,
-  ClipboardList,
-  MessageSquare
+  ClipboardList
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 

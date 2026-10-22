@@ -2,8 +2,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Layers, Calculator, Play, Info, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Layers, Calculator, Info, CheckCircle, AlertTriangle } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 
 interface ProfileData {

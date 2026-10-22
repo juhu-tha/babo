@@ -76,7 +76,7 @@ export default function Glas() {
 
     // Interpolate G based on temp
     const getG = (t: number, dur: 'short' | 'medium' | 'long') => {
-      const vals = G_values[dur];
+      const vals = G_values[dur] as Record<number, number>;
       if (t <= 0) return vals[0];
       if (t >= 60) return vals[60];
       const keys = [0, 20, 40, 60];

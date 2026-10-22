@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Building2, Layers, Search, Monitor, Calculator, Compass, Info, 
-  ArrowRight, CheckCircle2, FileText, Activity, AlertTriangle, 
-  Settings, Zap, ShieldCheck, HelpCircle, LayoutGrid
+  Building2, Monitor, Calculator, Compass, Info, AlertTriangle, 
+  Settings, LayoutGrid
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

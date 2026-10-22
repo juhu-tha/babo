@@ -3,10 +3,9 @@ import { GMODG_ANLAGE7, FX, uRetrofit, dRequired } from '@/src/utils/bestandKern
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Slider } from '@/src/components/ui/Slider';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { InlineMath, BlockMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -23,18 +22,10 @@ import {
   Layers, 
   Construction, 
   Calendar, 
-  Flame, 
   ArrowRight, 
-  Sparkles, 
   TrendingUp, 
-  Coins, 
-  ShieldCheck, 
-  FileText, 
-  Activity,
+  ShieldCheck,
   Calculator,
-  Compass,
-  Zap,
-  Leaf,
   BarChart3,
   BookOpen,
   AlertTriangle,

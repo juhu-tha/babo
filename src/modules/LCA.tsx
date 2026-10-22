@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Leaf, Activity, Recycle, FileText, Factory, ShieldCheck, Scale, Award, Info, Search, BookOpen, GraduationCap, ArrowRight, Truck, Calculator, HelpCircle, Milestone } from 'lucide-react';
+import { Leaf, Activity, Recycle, FileText, ShieldCheck, Scale, Award, Info, Search, GraduationCap, Calculator, HelpCircle, Milestone } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';

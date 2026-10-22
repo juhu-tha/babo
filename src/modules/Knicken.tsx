@@ -1,12 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { Activity, Layers, Play, RotateCcw, AlertTriangle, CheckCircle2, ShieldAlert, Sliders, Box, BookOpen } from 'lucide-react';
+import { Activity, Sliders, BookOpen } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
   Chart as ChartJS,

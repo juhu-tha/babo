@@ -18,7 +18,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Layers, Ruler, ShieldCheck, Calculator, BookOpen, ArrowRight, ShieldAlert } from 'lucide-react';
+import { Layers, Ruler, Calculator, BookOpen, ArrowRight, ShieldAlert } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 

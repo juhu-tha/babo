@@ -1,7 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Play, RotateCcw, CircleDashed } from 'lucide-react';
 import {
   Chart as ChartJS,
@@ -54,7 +53,7 @@ export default function Ausbreitversuch() {
     setProgress(0);
     setAusbreitmass(200);
 
-    let targetMass = params.targetMass + (Math.random() * 20 - 10);
+    const targetMass = params.targetMass + (Math.random() * 20 - 10);
 
     let currentStep = 0;
     const steps = 40;

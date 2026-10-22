@@ -13,16 +13,13 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { 
-  Leaf, Factory, Truck, Recycle, ArrowRight, Activity, 
+  Leaf, Factory, Recycle, ArrowRight, 
   Trash2, Plus, ArrowUp, ArrowDown, Settings, AlertTriangle, 
-  CheckCircle, Zap, Building, Percent, Sparkles, ClipboardCheck,
-  Share2, Globe, FileSpreadsheet, HelpCircle, ExternalLink,
+  CheckCircle, Zap, Building, Percent, Sparkles, ClipboardCheck, Globe, FileSpreadsheet, HelpCircle, ExternalLink,
   BookOpen, Compass, Layers, ShieldCheck,
-  TrendingDown, TrendingUp, Sliders, Scale, FileText, CheckCircle2,
-  Award, Landmark, HardHat, RefreshCw, AlertCircle, ArrowUpRight, Home
+  TrendingDown, Sliders, Scale, FileText, CheckCircle2, Landmark, HardHat, AlertCircle, Home
 } from 'lucide-react';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { RechtsrahmenKompendium } from '@/src/components/ui/RechtsrahmenKompendium';
 
 ChartJS.register(
@@ -3669,7 +3666,7 @@ export default function Nachhaltigkeit() {
             quelle: 'EPBD (EU 2024/1275) / DIN EN 15978'
           },
           {
-            formel: '\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{\€}]',
+            formel: '\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{€}]',
             erklaerung: 'CO2-Grenzausgleichsabgabe für importierte emissionsintensive Baustoffe (Zement, Stahl, Aluminium) zur Vermeidung von Carbon Leakage.',
             quelle: 'VO (EU) 2023/956 (CBAM) Art. 21'
           },

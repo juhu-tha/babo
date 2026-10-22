@@ -2,29 +2,17 @@ import React, { useState } from 'react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { 
   Building2, 
-  AlertTriangle, 
   ShieldAlert, 
   Layers, 
-  Activity, 
   BookOpen, 
   Search, 
-  Scale, 
-  FileText, 
-  Calendar, 
-  MapPin, 
-  Flame, 
-  Droplets, 
-  Info,
+  Scale,
   Clock,
-  HelpCircle,
-  TrendingDown,
-  Wrench,
   CheckCircle2,
-  AlertCircle,
   ExternalLink,
   ChevronRight
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

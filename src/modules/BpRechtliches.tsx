@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { 
   Scale, FileCheck, ShieldCheck, Factory, FileSignature, Leaf, 
-  Award, HelpCircle, CheckCircle2, ClipboardCheck, ArrowUpRight, Check, Globe, ArrowLeft,
-  BookOpen, Users, Layers, ArrowRight, Activity, FileText
+  Award, HelpCircle, CheckCircle2, ClipboardCheck, Check, Globe,
+  BookOpen, Users, Layers, Activity, FileText
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 

@@ -5,19 +5,15 @@ import {
   AlertTriangle, 
   Calculator, 
   Plus, 
-  Trash2, 
   RefreshCw, 
   Sparkles, 
-  TrendingUp, 
   Printer, 
   Info, 
-  Check, 
   X,
   FileText,
   ClipboardCheck,
   BookOpen
 } from 'lucide-react';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface ConcreteClass {

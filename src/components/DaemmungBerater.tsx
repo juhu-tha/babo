@@ -6,10 +6,6 @@ import {
   AlertTriangle, 
   Check, 
   ShieldAlert, 
-  Flame, 
-  Droplet, 
-  ArrowRight, 
-  Sliders, 
   BookmarkCheck,
   Zap
 } from 'lucide-react';

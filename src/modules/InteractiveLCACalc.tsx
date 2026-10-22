@@ -10,22 +10,12 @@ import {
   Trash2, 
   Info, 
   Building2, 
-  Leaf, 
   Truck, 
   Activity, 
-  ArrowRight,
-  Sparkles, 
+  ArrowRight, 
   Recycle,
-  Scale,
-  Award,
-  Zap,
-  CheckCircle2,
   SlidersHorizontal,
-  Milestone,
-  Layers,
-  FileCheck2,
-  RefreshCw,
-  TrendingDown
+  Layers
 } from "lucide-react";
 
 export interface MaterialDefinition {

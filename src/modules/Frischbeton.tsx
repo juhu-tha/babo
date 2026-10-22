@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Waves, Gauge, Thermometer, Layers, CheckCircle2, AlertTriangle, Scale, Wind } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import Ausbreitversuch from './Ausbreitversuch';
 import Frischbetondruck from './Frischbetondruck';
 import Frischbetontemperatur from './Frischbetontemperatur';

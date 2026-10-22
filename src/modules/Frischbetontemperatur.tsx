@@ -2,7 +2,6 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Thermometer } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export default function Frischbetontemperatur() {

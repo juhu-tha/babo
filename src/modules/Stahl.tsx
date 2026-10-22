@@ -18,8 +18,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Flame, Minimize2, Maximize2, Activity, Sparkles, Info, Layers, BookOpen, CheckCircle2, Shield, TrendingDown, Scale, Check } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { Flame, Minimize2, Maximize2, Activity, Sparkles, Info, Layers, BookOpen, Shield, TrendingDown, Scale, Check } from 'lucide-react';
+import { InlineMath } from 'react-katex';
 
 ChartJS.register(
   CategoryScale,

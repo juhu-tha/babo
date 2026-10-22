@@ -1,5 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { Flame, Activity, TrendingUp, Gauge, Info, Layers } from 'lucide-react';
+import { Flame, Activity, Info } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { InlineMath } from 'react-katex';
 import {

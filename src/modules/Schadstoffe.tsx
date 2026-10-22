@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Wind, Droplets, Flame, Bug, Shield, Search, ExternalLink, Globe, Recycle, CheckCircle2, ChevronRight, HelpCircle, AlertCircle, FileText, Sliders, Activity, Settings, Info } from 'lucide-react';
+import { AlertTriangle, Wind, Droplets, Flame, Bug, Shield, Search, Globe, Activity } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -458,7 +458,7 @@ export default function Schadstoffe() {
   const selectedSchadstoff = SCHADSTOFFE_DATA.find(s => s.id === activeSchadstoff) || SCHADSTOFFE_DATA[0];
 
   function checkRisks(zeitraum: string, bauteil: string) {
-    let risks: { stoff: string, level: 'hoch' | 'mittel' | 'gering', detail: string }[] = [];
+    const risks: { stoff: string, level: 'hoch' | 'mittel' | 'gering', detail: string }[] = [];
     
     if (bauteil === 'decken-waende') {
       if (zeitraum === 'vor-1970' || zeitraum === '1970-1989') {

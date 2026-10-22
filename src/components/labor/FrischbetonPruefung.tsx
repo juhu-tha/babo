@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, Waves, Droplet, ArrowDown, Info } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import React, { useState, useEffect } from 'react';
+import { Play, RotateCcw, Check, FileText, Waves, Droplet, ArrowDown } from 'lucide-react';
+import { InlineMath } from 'react-katex';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,7 +13,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
+import { LabProtocolRecord, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);

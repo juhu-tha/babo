@@ -3,23 +3,14 @@ import React, { useState } from 'react';
 import { 
   FileSpreadsheet, 
   Download, 
-  Leaf, 
   Truck, 
-  Factory, 
   Building2, 
   CheckCircle2, 
-  RotateCcw, 
   Layers, 
-  Sparkles, 
-  HelpCircle, 
   Sliders, 
   ArrowRight,
-  Calculator,
-  ShieldCheck,
-  TrendingDown,
   Info
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
 import { generateTransportbetonExcel, LCA_BENCHMARKS } from './TransportbetonExcelExport';
 
 interface ConcretePreset {

@@ -5,11 +5,9 @@ import {
   Target, 
   Calculator, 
   Layers, 
-  HelpCircle, 
   Info, 
   Settings, 
   CheckCircle2, 
-  FileText, 
   TrendingUp, 
   RefreshCw,
   Award,
@@ -1430,7 +1428,7 @@ export default function MessenPruefen() {
           zielGleichung="z = \frac{x_{lab} - X}{\sigma_{pt}},\qquad E_n = \frac{x_{lab} - X}{\sqrt{U_{lab}^2 + U_{ref}^2}}"
           schritte={[
             { titel: 'Gegeben', erklaerung: 'Eigenes Ergebnis 46,0 MPa, zugewiesener Wert X = 50,0 MPa, σ_pt = 1,8 MPa, U_lab = 1,4 MPa, U_ref = 0,6 MPa (jeweils k = 2).', formel: 'x_{lab} - X = -4{,}0\\,\\text{MPa}' },
-            { titel: 'z-Score', erklaerung: 'Nach DIN ISO 13528: |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.', formel: 'z = \\frac{-4{,}0}{1{,}8} = -2{,}22 \;\\Rightarrow\; \\text{Warnsignal}' },
+            { titel: 'z-Score', erklaerung: 'Nach DIN ISO 13528: |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.', formel: 'z = \\frac{-4{,}0}{1{,}8} = -2{,}22 \\;\\Rightarrow\\; \\text{Warnsignal}' },
             { titel: 'En-Zahl', erklaerung: 'Bezieht die angegebenen Messunsicherheiten ein; |En| ≤ 1 ist zufriedenstellend.', formel: 'E_n = \\frac{-4{,}0}{\\sqrt{1{,}4^2 + 0{,}6^2}} = \\frac{-4{,}0}{1{,}52} = -2{,}63' }
           ]}
           ergebnisHinweis="Beide Kennzahlen zeigen eine zu niedrige Festigkeit. |En| > 1 bedeutet zusätzlich, dass die angegebene Laborunsicherheit die Abweichung nicht erklärt – Kalibrierung der Presse und Probenvorbereitung prüfen."

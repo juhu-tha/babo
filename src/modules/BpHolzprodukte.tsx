@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Layers, Calculator, Info, Trees, HelpCircle, ArrowRight, CheckCircle2, AlertTriangle, Play, RefreshCw, Star, Info as FactIcon, BookOpen, ShieldAlert } from 'lucide-react';
+import { Layers, Calculator, Info, Trees, ArrowRight, CheckCircle2, AlertTriangle, Star, BookOpen, ShieldAlert } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 

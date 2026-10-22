@@ -1,10 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Leaf, Beaker, Layers, Sparkles, TrendingDown, Trash2, 
-  Settings, HelpCircle, CheckCircle2, ChevronRight, Calculator,
-  Zap, Info, AlertTriangle, ShieldCheck, Recycle, Factory, Trees,
-  ChevronDown, ChevronUp, Activity, Flame, BookOpen, AlertCircle,
-  Scale, Award, ArrowRight, Building2, Sliders, Check, FileText
+  Leaf, Beaker, Layers, Sparkles, Trash2, 
+  Settings, CheckCircle2, ChevronRight, Calculator, AlertTriangle, Recycle, Trees,
+  ChevronDown, ChevronUp, Activity, BookOpen,
+  Scale, Award, Building2, Sliders
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

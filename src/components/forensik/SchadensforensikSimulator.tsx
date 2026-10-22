@@ -1,11 +1,9 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
-  Search, ShieldAlert, AlertTriangle, CheckCircle2, XCircle, RotateCcw, 
-  Sparkles, FileText, Microscope, Coins, Clock, ArrowRight, Activity, 
-  HelpCircle, ChevronRight, Layers, Eye, Award, Info
+  Search, AlertTriangle, CheckCircle2, RotateCcw, 
+  Sparkles, FileText, Microscope, Coins, Clock, Eye, Award, Info
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
 
 interface DiagnosticMethod {
   id: string;

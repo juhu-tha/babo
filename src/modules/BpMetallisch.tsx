@@ -8,17 +8,10 @@ import {
   ShieldCheck, 
   AlertTriangle, 
   Info, 
-  Check, 
-  RefreshCw, 
-  Star, 
-  Scale, 
-  Info as FactIcon, 
   ArrowRight, 
   BookOpen, 
   ShieldAlert,
-  Sparkles,
-  Award,
-  CheckCircle2
+  Sparkles
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';

@@ -13,7 +13,6 @@ import {
   CheckCircle, 
   ChevronDown, 
   ChevronRight, 
-  HelpCircle as HelpIcon, 
   Globe,
   Compass,
   LayoutGrid,
@@ -26,10 +25,7 @@ import {
   AlertTriangle,
   Wrench,
   Map,
-  BookOpen,
-  Filter,
-  Check,
-  HardHat
+  BookOpen
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

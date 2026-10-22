@@ -1,20 +1,17 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
-  GraduationCap, HelpCircle, CheckCircle2, XCircle, AlertTriangle, 
+  GraduationCap, CheckCircle2, XCircle, AlertTriangle, 
   ArrowRight, ArrowLeft, RotateCcw, BookOpen, Layers, Award, 
   Sparkles, Filter, ChevronRight, BarChart3, RefreshCw, Bookmark, 
-  BookmarkCheck, ExternalLink, ShieldCheck, Flame, Compass, Brain,
-  ChevronDown, ChevronUp, Check, Info, FileText, CheckCircle,
+  BookmarkCheck, ExternalLink, Compass, Brain,
+  ChevronDown, ChevronUp, Info, FileText,
   Download, Upload
 } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
 import { 
   QUIZ_QUESTIONS, 
-  QUIZ_CATEGORIES, 
-  QuizQuestion, 
-  QuizCategory,
-  KnowledgeGapInfo,
+  QuizQuestion,
   questionsToCsv,
   parseCsvToQuestions
 } from '@/src/data/quizData';
@@ -23,7 +20,6 @@ import {
   getQuizSessionHistory, 
   getStoredKnowledgeGaps, 
   removeStoredKnowledgeGap,
-  clearStoredKnowledgeGaps,
   QuizGapItem,
   QuizSessionResult
 } from '@/src/utils/studyStorage';

@@ -6,7 +6,6 @@ import SpannbetonDehnungsAnimation from './SpannbetonDehnungsAnimation';
 import {
   Info,
   Layers,
-  ArrowRight,
   Activity,
   Compass,
   Scale,
@@ -19,14 +18,9 @@ import {
   Sparkles,
   GitBranch,
   Building,
-  RotateCcw,
   Zap,
-  Clock,
-  Gauge,
   Factory,
   Wrench,
-  Check,
-  X,
   GitCommit
 } from 'lucide-react';
 

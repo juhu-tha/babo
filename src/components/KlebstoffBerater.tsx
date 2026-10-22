@@ -3,21 +3,11 @@ import React, { useState, useMemo } from 'react';
 import { 
   Calculator, 
   Layers, 
-  Check, 
   Info, 
   AlertTriangle, 
-  Building2, 
-  Hammer, 
   Sliders, 
-  Ruler, 
-  Sparkles, 
-  ShieldAlert, 
-  ArrowRight, 
-  HelpCircle,
-  FileCheck,
-  CheckCircle2,
-  BookmarkCheck,
-  ChevronRight
+  Sparkles,
+  BookmarkCheck
 } from 'lucide-react';
 
 // Joint calculation parameters

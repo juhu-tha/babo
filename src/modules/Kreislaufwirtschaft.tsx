@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Recycle, RotateCcw, Box, ArrowRight, ArrowDown, RefreshCw, 
+  Recycle, RotateCcw, Box, ArrowRight, ArrowDown, 
   Calculator, Building2, AlertTriangle, Layers, ClipboardCheck, 
-  Building, Globe, FileSpreadsheet, Plus, Trash2, Activity,
-  HelpCircle, ExternalLink, Share2 
+  Building, Globe, FileSpreadsheet, Plus, Trash2, Activity 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -241,7 +240,7 @@ export default function Kreislaufwirtschaft() {
 
         estimatedRevenueEur += comp.quantity * estimatedValuePerUnit * connectionRatingFactor;
       } else if (!isHazardous && comp.targetChannel === 'recycle') {
-        let recycleCarbonFactor = comp.category === 'Metall' ? 1.0 : 0.08;
+        const recycleCarbonFactor = comp.category === 'Metall' ? 1.0 : 0.08;
         totalAvoidedCo2Kg += weightKg * recycleCarbonFactor;
         estimatedRevenueEur += comp.quantity * 1.5;
       } else if (isHazardous) {

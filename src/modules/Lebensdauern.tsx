@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Clock, RefreshCw, Info, BarChart3, Calculator, Table, BookOpen, Layers, CheckCircle2 } from 'lucide-react';
+import { Clock, RefreshCw, BarChart3, Calculator, Table, BookOpen, Layers, CheckCircle2 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import {
   Chart as ChartJS,
@@ -11,8 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 
 ChartJS.register(
