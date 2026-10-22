@@ -29,6 +29,7 @@ export default function Bohrpfahlbeton() {
             <li>Hoher Mehlkorngehalt für optimales Zusammenhaltungsvermögen (Kohäsion).</li>
             <li>Sicheres und vollständiges Umschließen der Bewehrungskörbe.</li>
             <li>Kein Entmischen oder Blockieren (Stopfer) während des Einbaus.</li>
+              <li>Mindestzementgehalt, höchster w/z-Wert und Mindestfeinanteil sind in DIN EN 1536 geregelt (Werte manuell prüfen).</li>
           </ul>
         </div>
 
@@ -69,7 +70,7 @@ export default function Bohrpfahlbeton() {
       </div>
             
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³)</h3>
+        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>

@@ -12,7 +12,7 @@ export default function Schwerbeton() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
           <p>
             Schwerbeton ist definiert als Beton mit einer Trockenrohdichte von mehr als <strong>2.600 kg/m³</strong> (bzw. &gt; 2,6 kg/dm³).
-            Durch den Einsatz spezieller Gesteinskörnungen mit hoher Eigenmasse lassen sich spezielle physikalische Eigenschaften wie erhöhter Strahlenschutz oder hohes Gewichts- zu Volumengewicht generieren.
+            Durch den Einsatz spezieller Gesteinskörnungen mit hoher Eigenmasse lassen sich spezielle physikalische Eigenschaften wie erhöhter Strahlenschutz oder eine hohe Masse je Volumen erzielen.
           </p>
         </div>
       </div>
@@ -52,14 +52,14 @@ export default function Schwerbeton() {
         <div>
           <h4 className="font-bold text-text-main mb-2">Strahlenschutzbeton</h4>
           <p className="text-sm text-text-main/80 leading-relaxed">
-            Eine primäre Anwendung von Schwerbeton ist der Abschirmungsbau (Krankenhäuser mit Röntgengeräten, Strahlentherapie, Kernkraftwerke oder Castor-Behälter). 
+            Eine primäre Anwendung von Schwerbeton ist der Abschirmungsbau (Krankenhäuser mit Röntgengeräten, Strahlentherapie, Kernkraftwerke). 
             Die hohe Massendichte schwächt Gammastrahlung ab, während oft noch zusätzlich Wasserstoffhaltige Bestandteile (wie Kristallwasser im Zuschlag oder viel Zementleim) eingebracht werden, um Neutronenstrahlung effektiv abzubremsen.
           </p>
         </div>
       </div>
 
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³)</h3>
+        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>

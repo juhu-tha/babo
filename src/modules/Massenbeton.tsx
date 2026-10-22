@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { ThermometerSun, Cuboid, Flame, ArrowDownToLine } from 'lucide-react';
 
 export default function Massenbeton() {
+  const { setActiveTab } = useTabContext();
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
@@ -16,6 +18,12 @@ export default function Massenbeton() {
           </p>
         </div>
       </div>
+
+      <p className="text-sm text-text-main/80 flex flex-wrap items-center gap-1 -mt-4">
+        Temperaturverlauf, Rechenbeispiel zur adiabatischen Erwärmung und Simulation:
+        <button onClick={() => setActiveTab('hydratation_folgen')} className="underline decoration-dotted hover:text-shiraz cursor-pointer font-semibold">Hydratation &amp; Folgen → Massige Bauteile</button>
+        (Mindestabmessung nach DAfStb-Richtlinie Massige Bauteile: 0,80 m)
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
@@ -40,7 +48,7 @@ export default function Massenbeton() {
             Um Schäden in massigen Bauteilen entgegenzuwirken, muss die Wärmeentwicklung begrenzt werden:
           </p>
           <ul className="list-disc list-inside text-sm text-text-main/80 space-y-2">
-            <li>Nutzung von <strong>Zementen mit niedriger Wärmeentwicklung</strong> (Zusatz LH: "Low Heat"). Flugaschereiche Zemente (z.B. CEM III).</li>
+            <li>Nutzung von <strong>Zementen mit niedriger Wärmeentwicklung</strong> (Zusatz LH: "Low Heat"). Hüttensandreiche (CEM III) oder flugaschehaltige Zemente.</li>
             <li>Zementgehalt minimieren, dafür Einsatz von ungebrochener Gesteinskörnung & Fließmitteln.</li>
             <li>Aktive Kühlung durch <strong>Kühlrohrsysteme</strong> im Kern (flüssigkeitsbasiert).</li>
             <li>Vorkühlen der Ausgangsstoffe (Kühlmittel, Scherbeneis).</li>
@@ -59,7 +67,7 @@ export default function Massenbeton() {
       </div>
             
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³)</h3>
+        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -78,7 +86,7 @@ export default function Massenbeton() {
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 80 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Wasser (w/b ~0,50 - 0,60)</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium">Wasser (w/z ≈ 0,58)</td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 150 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">

@@ -7691,5 +7691,65 @@
       "targetModuleLabel": "Sonderbetone"
     },
     "verified": false
+  },
+  {
+    "id": "q_sob_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "Schwerbeton",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206",
+    "question": "Ab welcher Trockenrohdichte spricht man nach DIN EN 206 von Schwerbeton?",
+    "options": [
+      "über 2 000 kg/m³",
+      "über 2 400 kg/m³",
+      "über 2 600 kg/m³",
+      "über 3 000 kg/m³"
+    ],
+    "correctIdx": 2,
+    "explanation": "Normalbeton liegt zwischen 2 000 und 2 600 kg/m³, Schwerbeton darüber; Leichtbeton bei 800–2 000 kg/m³.",
+    "gapAnalysis": {
+      "topic": "Schwerbeton",
+      "misconception": "Jeder Beton mit Stahlfasern sei Schwerbeton.",
+      "coreRule": "Leichtbeton < 2 000, Normalbeton 2 000–2 600, Schwerbeton > 2 600 kg/m³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schwerbeton“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "Massige Bauteile",
+    "difficulty": "Basis",
+    "normRef": "DAfStb-Richtlinie Massige Bauteile aus Beton",
+    "question": "Ab welcher kleinsten Bauteilabmessung gilt ein Betonbauteil nach DAfStb-Richtlinie als massig?",
+    "options": [
+      "0,30 m",
+      "0,50 m",
+      "0,80 m",
+      "2,00 m"
+    ],
+    "correctIdx": 2,
+    "explanation": "Massige Bauteile haben eine kleinste Abmessung von mindestens 0,80 m; die Hydratationswärme kann dann nur langsam abfließen.",
+    "gapAnalysis": {
+      "topic": "Massige Bauteile",
+      "misconception": "Massig sei nur, was als Talsperre gebaut wird.",
+      "coreRule": "Ab 0,80 m Temperatur- und Zwangsbeanspruchung gezielt begrenzen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Massige Bauteile“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
   }
 ]

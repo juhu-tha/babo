@@ -186,6 +186,18 @@ export default function Sonderbetone() {
         ergebnisHinweis="(w/z)eq = 0,40."
       />
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Ist es Schwerbeton?"
+        zielGleichung="\rho = \frac{m_z + m_w + m_g}{V} > 2\,600\,\text{kg/m}^3"
+        normQuelle="DIN EN 206 (Schwerbeton: Trockenrohdichte > 2 600 kg/m³)"
+        schritte={[
+          { titel: '1. Gegeben (Lehrwerte)', formel: 'm_z = 350,\\; m_w = 160,\\; m_g = 2\\,800\\,\\text{kg je m}^3 \\;(\\text{Baryt})', erklaerung: 'Strahlenschutzbeton mit Baryt-Gesteinskörnung.' },
+          { titel: '2. Frischbetonrohdichte', formel: '\\rho = 350 + 160 + 2\\,800 = 3\\,310\\,\\text{kg/m}^3', erklaerung: 'Die Trockenrohdichte liegt um den verdunstbaren Wasseranteil darunter.' },
+          { titel: '3. Einstufung', formel: '3\\,310 > 2\\,600 \\Rightarrow \\text{Schwerbeton}', erklaerung: 'Auch nach Abzug des Wassers deutlich über der Grenze.' },
+        ]}
+        ergebnisHinweis="Rund 3 300 kg/m³ – Schwerbeton."
+      />
+
       <ModulTest moduleId="sonderbetone" />
 
       <ModuleFooter
