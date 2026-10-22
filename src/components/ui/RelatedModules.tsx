@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, BookOpen, Layers, Calculator, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { useTabContext, TabId } from '@/src/contexts/TabContext';
 
 export interface RelatedModuleLink {

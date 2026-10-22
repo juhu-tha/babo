@@ -1,11 +1,11 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Trophy, Clock, AlertTriangle, CheckCircle2, XCircle, ArrowRight, ArrowLeft, 
-  RotateCcw, Bookmark, BookmarkCheck, BarChart3, HelpCircle, Award, 
-  GraduationCap, BookOpen, ShieldAlert, FileText, Check, ListChecks
+  RotateCcw, Bookmark, BarChart3, BookOpen, FileText, Check, ListChecks
 } from 'lucide-react';
 import { QUIZ_QUESTIONS, QUIZ_CATEGORIES, QuizQuestion, QuizCategory } from '@/src/data/quizData';
+import { mischeAntworten } from '@/src/utils/mischeAntworten';
 import { KlausurResult, saveKlausurResult, getKlausurHistory } from '@/src/utils/studyStorage';
 
 type ExamConfig = {
@@ -92,7 +92,7 @@ export const KlausurSimulator: React.FC = () => {
     const shuffled = [...pool].sort(() => Math.random() - 0.5);
     const selected = shuffled.slice(0, Math.min(config.questionCount, shuffled.length));
 
-    setExamQuestions(selected);
+    setExamQuestions(selected.map(q => mischeAntworten(q)));
     setCurrentIndex(0);
     setAnswers({});
     setBookmarked({});
@@ -260,7 +260,7 @@ export const KlausurSimulator: React.FC = () => {
               <label className="text-xs font-bold uppercase tracking-wider text-text-main/70 flex items-center gap-1.5">
                 <BookOpen size={15} className="text-shiraz" /> 3. Themenschwerpunkt
               </label>
-              <select
+              <select aria-label="3. Themenschwerpunkt"
                 value={config.selectedCategory}
                 onChange={(e) => setConfig(prev => ({ ...prev, selectedCategory: e.target.value as any }))}
                 className="p-3 bg-white border border-home-grau/30 rounded-xl text-sm font-medium focus:outline-none focus:border-shiraz focus:ring-1 focus:ring-shiraz"

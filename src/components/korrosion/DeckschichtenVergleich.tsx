@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { 
-  ShieldCheck, 
-  ShieldAlert, 
   AlertTriangle, 
   CheckCircle2, 
   XCircle, 
@@ -10,8 +8,7 @@ import {
   Scale, 
   Sparkles, 
   Info,
-  Clock,
-  ArrowRight
+  Clock
 } from 'lucide-react';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 
@@ -661,7 +658,7 @@ export function DeckschichtenVergleich() {
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs">
           <div className="flex flex-col gap-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">M_Oxid (g/mol)</label>
-            <input
+            <input aria-label="M_Oxid (g/mol)"
               type="number" min="0"
               step="0.01"
               value={molOxid}
@@ -675,7 +672,7 @@ export function DeckschichtenVergleich() {
 
           <div className="flex flex-col gap-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">ρ_Metall (g/cm³)</label>
-            <input
+            <input aria-label="ρ_Metall (g/cm³)"
               type="number" min="0"
               step="0.01"
               value={dichteMetall}
@@ -689,7 +686,7 @@ export function DeckschichtenVergleich() {
 
           <div className="flex flex-col gap-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">Stoichiometrie n</label>
-            <input
+            <input aria-label="Stoichiometrie n"
               type="number"
               step="1"
               min="1"
@@ -705,7 +702,7 @@ export function DeckschichtenVergleich() {
 
           <div className="flex flex-col gap-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">M_Metall (g/mol)</label>
-            <input
+            <input aria-label="M_Metall (g/mol)"
               type="number" min="0"
               step="0.01"
               value={molMetall}
@@ -719,7 +716,7 @@ export function DeckschichtenVergleich() {
 
           <div className="flex flex-col gap-1 col-span-2 sm:col-span-1">
             <label className="text-[10px] font-bold text-slate-600 uppercase">ρ_Oxid (g/cm³)</label>
-            <input
+            <input aria-label="ρ_Oxid (g/cm³)"
               type="number" min="0"
               step="0.01"
               value={dichteOxid}
