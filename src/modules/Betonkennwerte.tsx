@@ -54,12 +54,12 @@ export const EC2_CONCRETE_CLASSES: ConcreteClassData[] = [
   { name: 'C40/50', fck: 40, fckCube: 50, fcm: 48, fctm: 3.5, fctk005: 2.5, fctk095: 4.6, Ecm: 35, epsC1: 2.3, epsCu1: 3.5, epsC2: 2.0, epsCu2: 3.5, n: 2.0, epsC3: 1.75, epsCu3: 3.5 },
   { name: 'C45/55', fck: 45, fckCube: 55, fcm: 53, fctm: 3.8, fctk005: 2.7, fctk095: 4.9, Ecm: 36, epsC1: 2.4, epsCu1: 3.5, epsC2: 2.0, epsCu2: 3.5, n: 2.0, epsC3: 1.75, epsCu3: 3.5 },
   { name: 'C50/60', fck: 50, fckCube: 60, fcm: 58, fctm: 4.1, fctk005: 2.9, fctk095: 5.3, Ecm: 37, epsC1: 2.45, epsCu1: 3.5, epsC2: 2.0, epsCu2: 3.5, n: 2.0, epsC3: 1.75, epsCu3: 3.5 },
-  { name: 'C55/67', fck: 55, fckCube: 67, fcm: 63, fctm: 4.2, fctk005: 3.0, fctk095: 5.5, Ecm: 38, epsC1: 2.5, epsCu1: 3.1, epsC2: 2.2, epsCu2: 3.1, n: 1.75, epsC3: 1.8, epsCu3: 3.1 },
-  { name: 'C60/75', fck: 60, fckCube: 75, fcm: 68, fctm: 4.4, fctk005: 3.1, fctk095: 5.7, Ecm: 39, epsC1: 2.6, epsCu1: 2.9, epsC2: 2.3, epsCu2: 2.9, n: 1.6, epsC3: 1.9, epsCu3: 2.9 },
-  { name: 'C70/85', fck: 70, fckCube: 85, fcm: 78, fctm: 4.6, fctk005: 3.2, fctk095: 6.0, Ecm: 41, epsC1: 2.7, epsCu1: 2.7, epsC2: 2.4, epsCu2: 2.7, n: 1.45, epsC3: 2.0, epsCu3: 2.7 },
-  { name: 'C80/95', fck: 80, fckCube: 95, fcm: 88, fctm: 4.8, fctk005: 3.4, fctk095: 6.3, Ecm: 42, epsC1: 2.8, epsCu1: 2.6, epsC2: 2.5, epsCu2: 2.6, n: 1.4, epsC3: 2.2, epsCu3: 2.6 },
-  { name: 'C90/105', fck: 90, fckCube: 105, fcm: 98, fctm: 5.0, fctk005: 3.5, fctk095: 6.6, Ecm: 44, epsC1: 2.8, epsCu1: 2.6, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 },
-  { name: 'C100/115', fck: 100, fckCube: 115, fcm: 108, fctm: 5.2, fctk005: 3.6, fctk095: 6.8, Ecm: 45, epsC1: 2.8, epsCu1: 2.6, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 }
+  { name: 'C55/67', fck: 55, fckCube: 67, fcm: 63, fctm: 4.2, fctk005: 3.0, fctk095: 5.5, Ecm: 38, epsC1: 2.5, epsCu1: 3.2, epsC2: 2.2, epsCu2: 3.1, n: 1.75, epsC3: 1.8, epsCu3: 3.1 },
+  { name: 'C60/75', fck: 60, fckCube: 75, fcm: 68, fctm: 4.4, fctk005: 3.1, fctk095: 5.7, Ecm: 39, epsC1: 2.6, epsCu1: 3.0, epsC2: 2.3, epsCu2: 2.9, n: 1.6, epsC3: 1.9, epsCu3: 2.9 },
+  { name: 'C70/85', fck: 70, fckCube: 85, fcm: 78, fctm: 4.6, fctk005: 3.2, fctk095: 6.0, Ecm: 41, epsC1: 2.7, epsCu1: 2.8, epsC2: 2.4, epsCu2: 2.7, n: 1.45, epsC3: 2.0, epsCu3: 2.7 },
+  { name: 'C80/95', fck: 80, fckCube: 95, fcm: 88, fctm: 4.8, fctk005: 3.4, fctk095: 6.3, Ecm: 42, epsC1: 2.8, epsCu1: 2.8, epsC2: 2.5, epsCu2: 2.6, n: 1.4, epsC3: 2.2, epsCu3: 2.6 },
+  { name: 'C90/105', fck: 90, fckCube: 105, fcm: 98, fctm: 5.0, fctk005: 3.5, fctk095: 6.6, Ecm: 44, epsC1: 2.8, epsCu1: 2.8, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 },
+  { name: 'C100/115', fck: 100, fckCube: 115, fcm: 108, fctm: 5.2, fctk005: 3.6, fctk095: 6.8, Ecm: 45, epsC1: 2.8, epsCu1: 2.8, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 }
 ];
 
 interface Ec2ParameterSkizzeProps {
@@ -723,11 +723,11 @@ export default function Betonkennwerte() {
       q: 'Aus welcher einzigen primären Eingangsgröße leitet Eurocode 2 (DIN EN 1992-1-1) sämtliche mechanischen Kennwerte für Normalbeton ab?',
       options: [
         'Aus dem Zementgehalt in kg/m³.',
-        'Aus der 28-Tage-Zylinderdruckfestigkeit fck (in MPa bzw. N/mm²).',
+        'Aus dem statischen Elastizitätsmodul Ecm.',
         'Aus der Frischbetonkonsistenz (Ausbreitmaß).',
-        'Aus dem statischen Elastizitätsmodul Ecm.'
+        'Aus der 28-Tage-Zylinderdruckfestigkeit fck (in MPa bzw. N/mm²).'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Vollkommen richtig! Wie in Abschnitt 1 der Norm und Formelsammlung definiert, basieren alle Kennwerte (fcm, fcd, fctm, Ecm, Dehnungen, Kriech- und Schwindbeiwerte) auf der 28-Tage-Zylinderdruckfestigkeit fck.'
     },
     {
@@ -742,25 +742,25 @@ export default function Betonkennwerte() {
       feedback: 'Exakt! Nach EC2 Abschnitt 3.1.4(4) und Gl. (3.7) führt eine hohe Beanspruchung zu Gefügemikrorissen, die die Kriechzahl über die Exponentialfunktion exp[1,5·(k_sigma - 0,45)] vergrößern.'
     },
     {
-      q: 'Welcher Gesteinsbeiwert αE ist nach Tabelle 3.1 für quarzitische Gesteinskörnung bzw. für Sandstein anzusetzen?',
+      q: 'Welcher Gesteinsbeiwert αE ist nach Abschnitt 3.1.3(2) für quarzitische Gesteinskörnung bzw. für Sandstein anzusetzen?',
       options: [
-        'Quarzit: αE = 1,2 ; Sandstein: αE = 1,0',
         'Quarzit: αE = 1,0 ; Sandstein: αE = 0,7 (-30 % Steifigkeit)',
+        'Quarzit: αE = 1,2 ; Sandstein: αE = 1,0',
         'Quarzit: αE = 0,9 ; Sandstein: αE = 1,2 (+20 % Steifigkeit)',
         'Alle Gesteinsarten haben nach Eurocode 2 denselben E-Modul (αE = 1,0).'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Richtig! Quarzit bildet den Standardwert mit αE = 1,0. Sandstein weist infolge hoher Kornporosität eine um 30 % geringere Steifigkeit auf (αE = 0,7), während Basalt den E-Modul um ca. +20 % steigert (αE = 1,2).'
     },
     {
       q: 'Wie berechnet sich der effektive Elastizitätsmodul für Langzeitverformungen nach EC2 Abs. 7.4.3 (Gl. 7.20)?',
       options: [
         'Ec,eff = Ecm · (1 - φ)',
-        'Ec,eff = Ecm / (1 + φ(t, t0))',
         'Ec,eff = Ecm · φ(t, t0)',
+        'Ec,eff = Ecm / (1 + φ(t, t0))',
         'Ec,eff = 1,05 · Ecm / (1 + 2·φ)'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Richtig! Durch das Kriechen nimmt die elastische Ersatzsteifigkeit um den Faktor (1 + φ) ab: Ec,eff = Ecm / (1 + φ(t, t0)). Für Schwindzwang kann mit dem Relaxationsbeiwert ρ ≈ 0,8 gerechnet werden.'
     }
   ];
@@ -1322,6 +1322,18 @@ export default function Betonkennwerte() {
             ]}
           />
 
+          <FormulaDerivationBox
+            title="Anwendungsbeispiel: Kennwerte für C30/37 aus f_ck"
+            zielGleichung="f_{cd} = \alpha_{cc} \frac{f_{ck}}{\gamma_c}, \quad f_{ctm} = 0{,}30\, f_{ck}^{2/3}, \quad E_{cm} = 22\,(f_{cm}/10)^{0{,}3}"
+            normQuelle="DIN EN 1992-1-1 mit NA, Tab. 3.1 und Abschn. 3.1.6 (α_cc = 0,85; γ_c = 1,5)"
+            schritte={[
+              { titel: '1. Bemessungswert der Druckfestigkeit', formel: 'f_{cd} = 0{,}85 \\cdot \\frac{30}{1{,}5} = 17{,}0\\,\\text{N/mm}^2', erklaerung: 'In Deutschland α_cc = 0,85.' },
+              { titel: '2. Mittlere Zugfestigkeit', formel: 'f_{ctm} = 0{,}30 \\cdot 30^{2/3} = 0{,}30 \\cdot 9{,}65 = 2{,}9\\,\\text{N/mm}^2', erklaerung: 'Gilt bis C50/60.' },
+              { titel: '3. Elastizitätsmodul', formel: 'E_{cm} = 22 \\cdot (38/10)^{0{,}3} = 22 \\cdot 1{,}49 = 32{,}8\\,\\text{GPa}', erklaerung: 'f_cm = f_ck + 8 = 38 N/mm²; Tab. 3.1 rundet auf 33 GPa (Quarzit).' },
+            ]}
+            ergebnisHinweis="f_cd = 17,0 N/mm², f_ctm = 2,9 N/mm², E_cm ≈ 33 GPa."
+          />
+
         </div>
       )}
 
@@ -1745,12 +1757,9 @@ export default function Betonkennwerte() {
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau nach DIN 1045-1 und EN 1992-1-1. 2. Aufl., Berlin: Springer 2010',
-          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung. 37. Aufl., Springer Vieweg 2024',
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'DAfStb-Heft 525: Erläuterungen zu DIN 1045-1 (Deutscher Ausschuss für Stahlbeton)',
           'FIB Model Code for Concrete Structures 2010 (fib Bulletin 65/66)'
-        ]}
-        weblinks={[
-          { title: 'InformationsZentrum Beton (IZB) – Technische Tabellen', url: 'https://www.beton.org/' }
         ]}
         formeln={
           activeTab === 'rechner' || activeTab === 'zeit_theorie'

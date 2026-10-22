@@ -940,6 +940,7 @@ export default function Festbeton() {
           { title: 'DIN EN 206:2021-06 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton - Teil 2: Anwendungsregeln zu DIN EN 206)' },
           { title: 'DIN EN 1992-1-1:2011-01 mit DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
+          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2, 2. Generation; Deutsche Fassung EN 1992-1-1:2023 – bauaufsichtliche Einführung manuell prüfen)' },
           { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)' }
         ]}
         formeln={[
