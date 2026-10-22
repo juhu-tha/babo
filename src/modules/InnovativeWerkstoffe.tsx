@@ -1,5 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Layers, Lightbulb, Box, Sparkles, Cpu, Check, Zap, Coins, Leaf, Scale, Settings, Activity, ChevronRight, AlertCircle, Info, HelpCircle, Wrench, CheckCircle2 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -9,7 +11,7 @@ interface MaterialProfile {
   name: string;
   category: string;
   shortDesc: string;
-  co2Index: number; // 1-100 (lower is better, relative to standard concrete = 100)
+  co2Index: number; // relativer Lehrindex (Schätzung), Normalbeton = 100
   costIndex: number; // 100-500 (relative to standard concrete = 100)
   strength: string; // Compressive/Tensile description
   advantages: string[];
@@ -54,12 +56,12 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
     shortDesc: 'Ersatz von korrosionsanfälligem Baustahl durch hochfeste, korrosionsfreie Gitterstrukturen aus Carbonfasern oder Glasfasern.',
     co2Index: 35, // Thick steel covers aren't needed. Saved concrete saves massive CO2.
     costIndex: 250, // Carbon is expensive but requires a fraction of concrete weight
-    strength: 'Extreme Zugfestigkeit der Carbonfasern (Fasern bis ca. 3.000–5.000 N/mm²).000 MPa, ca. 6-mal stärker als Betonstahl).',
+    strength: 'Sehr hohe Zugfestigkeit der Carbonfasern (Einzelfaser etwa 3.000–5.000 N/mm², im Textil bzw. Stab geringer) – ein Vielfaches von Betonstahl B500 (500 N/mm²).',
     advantages: [
       'Vollkommene Korrosionsfreiheit: Die dünne Beton-Erhaltungsschicht von 3-4 cm (zum Rostschutz von Stahl) entfällt komplett',
       'Filigrane Bauteilgeometrien: Bauteildicken können von 20 cm auf unter 5 cm reduziert werden (Gewichtsersparnis bis zu 75%)',
       'Instandsetzungs-Meilenstein: Perfekt zur flächigen Tragwerksverstärkung im Denkmalschutz oder bei Brückensanierungen',
-      'Enorme Langlebigkeit: Gebrauchsdauern von über 100 Jahren ohne wesentliche Betonkorrosion'
+      'Hohe erwartete Dauerhaftigkeit: keine Korrosion der Bewehrung (Langzeiterfahrungen über 100 Jahre liegen noch nicht vor)'
     ],
     disadvantages: [
       'Hohe Materialkosten bei der Anschaffung des Carbongeleges im Vergleich zu standardmäßigem Baustahl',
@@ -79,7 +81,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
     id: 'uhpc',
     name: 'Ultra-High Performance Concrete (UHPC)',
     category: 'Gefügeoptimierte Betone',
-    shortDesc: 'Ultrahochfester Beton mit einem extrem dichten, porenfreien Gefüge und Druckfestigkeiten, Ultrahochfester Beton mit extrem dichtem, porenarmem Gefüge und Druckfestigkeiten von ca. 150–250 MPa..',
+    shortDesc: 'Ultrahochfester Beton mit extrem dichtem, porenarmem Gefüge und Druckfestigkeiten von etwa 150–250 N/mm² (Literaturwerte; keine genormten Klassen).',
     co2Index: 50, // Very strong, so you need much less volume. Net CO2 is low.
     costIndex: 280, // Requires dense packing additives and high amount of binders
     strength: 'Extreme Druckfestigkeit von 150 bis über 250 MPa. Enorme Abriebs- und Verschleißresistenz.',
@@ -100,7 +102,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
       'Stahlfaser-Bewehrung': '1 bis 3 Vol.-% hochfeste Mikrostahlfasern',
       'Frost-Tausalz-Resistenz': 'Absolut unempfindlich, kein nennenswerter Abtrag'
     },
-    details: 'Die bahnbrechenden Festigkeiten von UHPC beruhen auf einer strengen Optimierung der Packungsdichte. Durch die Zugabe von lungengängigen aber hydratisierbaren ultrafeinen Silikastaub-Partikeln werden alle mikro- und makroskopischen Zwischenräume zwischen den Sandkörnern gefüllt. Das Resultat ist eine nahezu vollständige Abwesenheit freier Kapillarporen. UHPC wird im Verbund mit Stahlfasern duktil und kann extreme Kräfte aufnehmen.'
+    details: 'Die bahnbrechenden Festigkeiten von UHPC beruhen auf einer strengen Optimierung der Packungsdichte. Durch ultrafeinen Silikastaub, der puzzolanisch mit Calciumhydroxid reagiert (selbst nicht hydraulisch), werden alle mikro- und makroskopischen Zwischenräume zwischen den Sandkörnern gefüllt. Das Resultat ist ein sehr geringer Kapillarporenanteil. UHPC wird im Verbund mit Stahlfasern duktil und kann extreme Kräfte aufnehmen.'
   },
   {
     id: 'ilb',
@@ -124,7 +126,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
     specs: {
       'Trockenrohdichte': '650 bis 800 kg/m³ (Normalbeton = 2.400 kg/m³)',
       'Wärmeleitfähigkeit (λ)': '0,15 bis 0,18 W/(m·K)',
-      'Druckfestigkeitsklasse': 'LC 8/9 bis LC 12/13',
+      'Druckfestigkeitsklasse': 'unterhalb der Rohdichten nach DIN EN 206 – Verwendung nur mit Zulassung/Bauartgenehmigung oder Zustimmung im Einzelfall (Klassen manuell prüfen)',
       'Zuschläge': 'Blähmaterialien, Blähglas (recyceltes Altglas), Blähton',
       'Bewehrung': 'Stahlbewehrung mit Korrosionsschutzbeschichtung oder GFK-Bewehrung'
     },
@@ -153,7 +155,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
       'Zusammensetzung LC³': 'Klinkeranteil halbiert, Rest: Calcinierter Ton (Tonmergel) & Kalksteinmehl',
       'Zementfreier Geopolymer': 'Alkalisch aktivierte Flugasche (Fly ash) oder Hüttensand (Slag)',
       'Hydratationswärme': 'Sehr gering, exzellent geeignet für massige Bauteile',
-      'Zulassung': 'Sukzessive Aufnahme in die DIN EN 197-1 (z. B. als CEM VI)'
+      'Normung': 'LC³-artige Zemente als CEM II/C-M (Q-LL) nach DIN EN 197-5:2021-07; Geopolymere nicht in DIN EN 197 genormt (Zulassung/Bauartgenehmigung erforderlich)'
     },
     details: 'Der LC³-Zement (Limestone Calcined Clay Cement) nutzt einen synergistischen Effekt: Durch das gemeinsame Vermahlen von calciniertem (bei ca. 800°C erhitztem) Ton mit feinem Kalksteinmehl entsteht ein hochreaktives Bindemittel, das den Zementklinkerbedarf drastisch senkt. Geopolymere verzichten kpl. auf Portlandklinker; hier formen kovalente Alumosilicat-Netzwerke den künstlichen Stein.'
   }
@@ -567,7 +569,7 @@ export default function InnovativeWerkstoffe() {
                       </p>
                       <div className="bg-white p-3 rounded-lg border border-slate-200 mt-2 font-mono text-xs">
                         <div className="font-bold text-slate-800 mb-1">Kritische Höhe nach Greenhill (Self-weight buckling):</div>
-                        <BlockMath math="H_{cr} = \left( \frac{7.837 \cdot E(t) \cdot I(b)}{\rho \cdot g \cdot A} \right)^{1/3}" />
+                        <BlockMath math="H_{cr} = \left( \frac{7{,}837 \cdot E(t) \cdot I(b)}{\rho \cdot g \cdot A} \right)^{1/3}" />
                         <span className="text-[10px] text-slate-500 block mt-1">
                           Die geometrische Trägheit wird optimiert durch Krümmungen, Faltungen oder kreisförmige Querschnittspfaden, welche das Gesamthebelarmlager verbreitern.
                         </span>
@@ -1023,8 +1025,8 @@ export default function InnovativeWerkstoffe() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                     <div className="flex justify-between items-center mb-1 text-xs">
-                      <span className="font-bold text-slate-700 flex items-center gap-1"><Leaf className="w-4 h-4 text-emerald-600" /> CO₂-Druckminderung</span>
-                      <span className="font-bold font-mono text-emerald-800">-{formatDeWert(100 - selectedMaterialData.co2Index)}% (Sehr Gut)</span>
+                      <span className="font-bold text-slate-700 flex items-center gap-1"><Leaf className="w-4 h-4 text-emerald-600" /> CO₂-Minderung (Lehrindex)</span>
+                      <span className="font-bold font-mono text-emerald-800">-{formatDeWert(100 - selectedMaterialData.co2Index)}% (Schätzung)</span>
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                       <div className="bg-emerald-500 h-2 rounded-full" style={{ width: `${100 - selectedMaterialData.co2Index}%` }}></div>
@@ -1418,6 +1420,20 @@ export default function InnovativeWerkstoffe() {
       </div>
 
       {/* Module Footer */}
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Erforderliche Fließgrenze beim 3D-Betondruck"
+        zielGleichung="\tau_{req} = \frac{\rho \cdot g \cdot H}{\sqrt{3}}"
+        normQuelle="Roussel (2018), Fließkriterium nach von Mises"
+        schritte={[
+          { titel: '1. Gegeben', formel: '\\rho = 2\\,100\\,\\text{kg/m}^3,\\; H = 2{,}0\\,\\text{m}', erklaerung: 'Gedruckte Wand, Endhöhe 2 m (Standardwerte des Simulators).' },
+          { titel: '2. Spannung in der untersten Schicht', formel: '\\rho g H = 2\\,100 \\cdot 9{,}81 \\cdot 2{,}0 = 41\\,202\\,\\text{Pa}', erklaerung: 'Eigengewicht aller darüberliegenden Schichten.' },
+          { titel: '3. Erforderliche Fließgrenze', formel: '\\tau_{req} = 41\\,202 / \\sqrt{3} = 23\\,788\\,\\text{Pa} \\approx 23{,}8\\,\\text{kPa}', erklaerung: 'Die unterste Schicht muss bis zum Ende des Drucks durch Thixotropie und Erstarren diese Fließgrenze erreichen.' },
+        ]}
+        ergebnisHinweis="τ_req ≈ 23,8 kPa – sonst fließt die unterste Schicht plastisch weg."
+      />
+
+      <ModulTest moduleId="innovative_werkstoffe" />
+
       <ModuleFooter 
         wikipedia={[
           { title: "3D-Betondruck" },
@@ -1425,25 +1441,29 @@ export default function InnovativeWerkstoffe() {
           { title: "Ultrahochfester Beton", url: "https://de.wikipedia.org/wiki/Ultrahochfester_Beton" }
         ]}
         literatur={[
-          'Mechtcherine, V. et al.: 3D-Betondruck - Vom Labor in die Praxis',
-          'Schmidt, M., Fehling, E.: Ultra-High Performance Concrete (UHPC)',
+          'Mechtcherine, V. u. a.: 3D-Betondruck – Vom Labor in die Praxis (Angaben manuell prüfen)',
+          'Fehling, E.; Schmidt, M.; Walraven, J. u. a.: Ultra-High Performance Concrete UHPC. Berlin: Ernst & Sohn 2014',
+          'Roussel, N.: Rheological requirements for printable concretes. Cement and Concrete Research 112 (2018)',
+          'Suiker, A. S. J.: Mechanical performance of wall structures in 3D printing processes. International Journal of Mechanical Sciences 137 (2018)',
           'C³ - Carbon Concrete Composite e.V.: Carbonbeton im Neubau und Instandsetzung'
         ]}
         regelwerke={[
-          { title: "DAfStb-Richtlinie Ultrahochfester Beton (UHPC)", url: "https://www.dafstb.de/" },
-          { title: "Allgemeine Bauartgenehmigungen (aBG) für Carbonbetonsysteme - DIBt", url: "https://www.dibt.de/" },
+          { title: "DAfStb-Richtlinie Ultrahochfester Beton – in Vorbereitung (Sachstand: DAfStb-Heft 561, 2008)" },
+          { title: "DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (2024-01)", url: "https://www.dinmedia.de/en/technical-rule/dafstb-betonbauteile-nichtmetallische-bewehrung/377433845" },
+          { title: "DIN EN 197-5:2021-07 (Portlandkompositzement CEM II/C-M und Kompositzement CEM VI)" },
+          { title: "Allgemeine Bauartgenehmigungen (aBG) für Carbonbetonsysteme – DIBt" },
           { title: "DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauteilen)" }
         ]}
         formeln={[
           {
             formel: '\\tau_{0,\\text{base}}(t) \\ge \\tau_{\\text{req}} = \\frac{\\rho \\cdot g \\cdot H}{\\sqrt{3}}',
             erklaerung: 'Standsicherheitskriterium gegen plastisches Fließversagen (von-Mises-Kriterium) beim 3D-Betondruck in Abhängigkeit von Rohdichte, Erdbeschleunigung und Bauwerkshöhe.',
-            quelle: 'Roussel (2018) / Rheology of 3D concrete printing'
+            quelle: 'Roussel, N.: Rheological requirements for printable concretes. Cement and Concrete Research 112 (2018)'
           },
           {
-            formel: 'H_{\\text{cr}} = \\left( \\frac{7.837 \\cdot E(t) \\cdot I}{\\rho \\cdot g \\cdot A} \\right)^{1/3}',
+            formel: 'H_{\\text{cr}} = \\left( \\frac{7{,}837 \\cdot E(t) \\cdot I}{\\rho \\cdot g \\cdot A} \\right)^{1/3}',
             erklaerung: 'Kritische Knickhöhe Hcr beim additiven Betondruck unter Eigengewicht (Greenhill-Kriterium) mit zeitabhängigem Elastizitätsmodul E(t).',
-            quelle: 'Suiker (2018) / Structural stability in 3D printing'
+            quelle: 'Suiker, A. S. J.: Mechanical performance of wall structures in 3D printing processes. International Journal of Mechanical Sciences 137 (2018)'
           }
         ]}
       />

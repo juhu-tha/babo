@@ -7751,5 +7751,65 @@
       "targetModuleLabel": "Sonderbetone"
     },
     "verified": false
+  },
+  {
+    "id": "q_inw_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "innovative_werkstoffe",
+    "moduleTitle": "Entwicklungen",
+    "topic": "3D-Betondruck",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Roussel (2018)",
+    "question": "Eine gedruckte Wand (ρ = 2 200 kg/m³) soll 1,5 m hoch werden. Welche Fließgrenze muss die unterste Schicht mindestens erreichen (τ = ρ·g·H/√3)?",
+    "options": [
+      "rund 7 kPa",
+      "rund 19 kPa",
+      "rund 32 kPa",
+      "rund 56 kPa"
+    ],
+    "correctIdx": 1,
+    "explanation": "2 200 · 9,81 · 1,5 = 32 373 Pa; / √3 = 18 691 Pa ≈ 19 kPa.",
+    "gapAnalysis": {
+      "topic": "3D-Betondruck",
+      "misconception": "Die Druckgeschwindigkeit spiele für die Standsicherheit keine Rolle.",
+      "coreRule": "Die Fließgrenze muss schneller wachsen als die Auflast aus den folgenden Schichten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „3D-Betondruck“ im Modul Entwicklungen noch einmal durch.",
+      "targetModuleTab": "innovative_werkstoffe",
+      "targetModuleLabel": "Entwicklungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_inw_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "innovative_werkstoffe",
+    "moduleTitle": "Entwicklungen",
+    "topic": "Normung neuer Bindemittel",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 197-5:2021-07",
+    "question": "Wo sind die klinkerarmen Zemente CEM II/C-M und CEM VI genormt?",
+    "options": [
+      "DIN EN 197-1",
+      "DIN EN 197-5",
+      "DIN 1164-10",
+      "Gar nicht – nur mit Zulassung"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN EN 197-5 (2021) regelt Portlandkompositzement CEM II/C-M und Kompositzement CEM VI. Geopolymere sind dagegen nicht in DIN EN 197 genormt.",
+    "gapAnalysis": {
+      "topic": "Normung neuer Bindemittel",
+      "misconception": "Alle CO₂-armen Bindemittel bräuchten eine Einzelzulassung.",
+      "coreRule": "Klinkerarme Normzemente nach DIN EN 197-5; alkaliaktivierte Bindemittel über Zulassung/Bauartgenehmigung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Normung neuer Bindemittel“ im Modul Entwicklungen noch einmal durch.",
+      "targetModuleTab": "innovative_werkstoffe",
+      "targetModuleLabel": "Entwicklungen"
+    },
+    "verified": false
   }
 ]
