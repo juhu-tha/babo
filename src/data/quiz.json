@@ -7451,5 +7451,65 @@
       "targetModuleLabel": "Nachbehandlung"
     },
     "verified": false
+  },
+  {
+    "id": "q_feb_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "festbeton",
+    "moduleTitle": "Festbeton",
+    "topic": "Charakteristische Festigkeit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206",
+    "question": "Eine Produktion liefert f_cm = 38 N/mm² (Zylinder) bei σ = 3,5 N/mm². Welche charakteristische Festigkeit (5-%-Quantil) ergibt sich?",
+    "options": [
+      "30,0 N/mm²",
+      "32,2 N/mm²",
+      "34,5 N/mm²",
+      "38,0 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_ck = f_cm − 1,645 · σ = 38 − 5,76 = 32,2 N/mm².",
+    "gapAnalysis": {
+      "topic": "Charakteristische Festigkeit",
+      "misconception": "Der Mittelwert sei die charakteristische Festigkeit.",
+      "coreRule": "Nur 5 % der Ergebnisse dürfen unter f_ck liegen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeit“ im Modul Festbeton noch einmal durch.",
+      "targetModuleTab": "festbeton",
+      "targetModuleLabel": "Festbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_feb_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "festbeton",
+    "moduleTitle": "Festbeton",
+    "topic": "Festigkeitsentwicklung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, Gl. (3.2)",
+    "question": "Welcher Zement liefert nach EC2 bei gleicher 28-Tage-Festigkeit die höchste 7-Tage-Festigkeit?",
+    "options": [
+      "Klasse S (s = 0,38)",
+      "Klasse N (s = 0,25)",
+      "Klasse R (s = 0,20)",
+      "Alle gleich"
+    ],
+    "correctIdx": 2,
+    "explanation": "β_cc(7) = e^(s·(1 − 2)) = e^(−s): R 0,82; N 0,78; S 0,68.",
+    "gapAnalysis": {
+      "topic": "Festigkeitsentwicklung",
+      "misconception": "Ein größeres s bedeute schnellere Erhärtung.",
+      "coreRule": "Kleines s = schnelle Festigkeitsentwicklung (z. B. CEM I 42,5 R).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Festigkeitsentwicklung“ im Modul Festbeton noch einmal durch.",
+      "targetModuleTab": "festbeton",
+      "targetModuleLabel": "Festbeton"
+    },
+    "verified": false
   }
 ]

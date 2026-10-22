@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { Box, Layers, TrendingUp, CheckCircle2, AlertTriangle, ArrowRight, Scale, Sliders, Calendar, ShieldCheck } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Slider } from '@/src/components/ui/Slider';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { normalPDF } from '@/src/lib/math';
@@ -59,10 +61,10 @@ const NORM_KLASSEN: FestigkeitsKlasse[] = [
   { name: 'C50/60', fck_cyl: 50, fck_cube: 60, fcm: 58, fctm: 4.1, fctk_005: 2.9, fctk_095: 5.3, Ecm: 37, eps_c1: 2.45, eps_cu1: 3.5, eps_c2: 2.0, eps_cu2: 3.5 },
   { name: 'C55/67', fck_cyl: 55, fck_cube: 67, fcm: 63, fctm: 4.2, fctk_005: 3.0, fctk_095: 5.5, Ecm: 38, eps_c1: 2.5, eps_cu1: 3.2, eps_c2: 2.2, eps_cu2: 3.1 },
   { name: 'C60/75', fck_cyl: 60, fck_cube: 75, fcm: 68, fctm: 4.4, fctk_005: 3.1, fctk_095: 5.7, Ecm: 39, eps_c1: 2.6, eps_cu1: 3.0, eps_c2: 2.3, eps_cu2: 2.9 },
-  { name: 'C70/85', fck_cyl: 70, fck_cube: 85, fcm: 78, fctm: 4.6, fctk_005: 3.2, fctk_095: 6.0, Ecm: 41, eps_c1: 2.7, eps_cu1: 2.7, eps_c2: 2.4, eps_cu2: 2.7 },
-  { name: 'C80/95', fck_cyl: 80, fck_cube: 95, fcm: 88, fctm: 4.8, fctk_005: 3.4, fctk_095: 6.3, Ecm: 42, eps_c1: 2.8, eps_cu1: 2.6, eps_c2: 2.5, eps_cu2: 2.6 },
-  { name: 'C90/105', fck_cyl: 90, fck_cube: 105, fcm: 98, fctm: 5.0, fctk_005: 3.5, fctk_095: 6.5, Ecm: 44, eps_c1: 2.8, eps_cu1: 2.6, eps_c2: 2.6, eps_cu2: 2.6 },
-  { name: 'C100/115', fck_cyl: 100, fck_cube: 115, fcm: 108, fctm: 5.2, fctk_005: 3.6, fctk_095: 6.8, Ecm: 45, eps_c1: 2.8, eps_cu1: 2.6, eps_c2: 2.6, eps_cu2: 2.6 },
+  { name: 'C70/85', fck_cyl: 70, fck_cube: 85, fcm: 78, fctm: 4.6, fctk_005: 3.2, fctk_095: 6.0, Ecm: 41, eps_c1: 2.7, eps_cu1: 2.8, eps_c2: 2.4, eps_cu2: 2.7 },
+  { name: 'C80/95', fck_cyl: 80, fck_cube: 95, fcm: 88, fctm: 4.8, fctk_005: 3.4, fctk_095: 6.3, Ecm: 42, eps_c1: 2.8, eps_cu1: 2.8, eps_c2: 2.5, eps_cu2: 2.6 },
+  { name: 'C90/105', fck_cyl: 90, fck_cube: 105, fcm: 98, fctm: 5.0, fctk_005: 3.5, fctk_095: 6.6, Ecm: 44, eps_c1: 2.8, eps_cu1: 2.8, eps_c2: 2.6, eps_cu2: 2.6 },
+  { name: 'C100/115', fck_cyl: 100, fck_cube: 115, fcm: 108, fctm: 5.2, fctk_005: 3.6, fctk_095: 6.8, Ecm: 45, eps_c1: 2.8, eps_cu1: 2.8, eps_c2: 2.6, eps_cu2: 2.6 },
 ];
 
 export default function Festbeton() {
@@ -194,11 +196,12 @@ export default function Festbeton() {
   // Tab 4: Schnellevaluator Konformität (DIN EN 206 Abs. 8 / DIN 1045-2)
   const [konfKlasse, setKonfKlasse] = useState<string>('C25/30');
   const [konfModus, setKonfModus] = useState<'erst' | 'stetig'>('erst');
-  const [konfWerteStr, setKonfWerteStr] = useState<string>('34.5, 33.2, 35.8');
+  const [konfWerteStr, setKonfWerteStr] = useState<string>('34,5; 33,2; 35,8');
 
   const konfFck = (NORM_KLASSEN.find(k => k.name === konfKlasse) || NORM_KLASSEN[4]).fck_cube;
+  // Trennung an Semikolon oder Leerzeichen; Komma ist Dezimalzeichen
   const konfWerte = konfWerteStr
-    .split(/[,;\s]+/)
+    .split(/[;\s]+/)
     .map(v => parseFloat(v.replace(',', '.')))
     .filter(v => !isNaN(v) && v > 0);
 
@@ -228,6 +231,18 @@ export default function Festbeton() {
             Vollständige Übersicht der Betondruckfestigkeitsklassen nach <strong>DIN EN 206:2021-06</strong> und <strong>DIN 1045-2:2023-08</strong>, 
             mechanische Kenngrößen nach <strong>Eurocode 2 (DIN EN 1992-1-1)</strong>, zeitliche Festigkeitsentwicklung <InlineMath math="\beta_{cc}(t)" />, Probekörpergeometrie 
             (Reibungskegel Zylinder vs. Würfel) sowie statistischer Konformitätsnachweis nach Kriterien 1 und 2.
+          </p>
+          <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
+            <strong className="mr-1">Lernpfad:</strong>
+            {([
+              ['druckfestigkeitsklassen', 'Klassen & Kennwerte'], ['festigkeitsentwicklung', 'Festigkeitsentwicklung'],
+              ['statistik', 'Statistik (f_ck aus f_cm)'], ['konformitaet', 'Konformität'],
+            ] as const).map(([id, label], i) => (
+              <React.Fragment key={id}>
+                {i > 0 && <span className="text-text-main/40">→</span>}
+                <button onClick={() => setActiveTab(id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">{i + 1}. {label}</button>
+              </React.Fragment>
+            ))}
           </p>
         </div>
 
@@ -357,6 +372,9 @@ export default function Festbeton() {
                     <span className="text-xs text-text-main/70">
                       Zylinder f_ck = {formatDeWert(selectedKlasse.fck_cyl)} MPa / Würfel f_ck,cube = {formatDeWert(selectedKlasse.fck_cube)} MPa
                     </span>
+                    {selectedKlasse.name === 'C8/10' && (
+                      <span className="block text-[11px] text-torch-red mt-1">C8/10 ist in DIN EN 1992-1-1 Tab. 3.1 nicht enthalten – Kennwerte sind Lehrwerte.</span>
+                    )}
                   </div>
 
                   <div className="space-y-3 text-xs">
@@ -512,6 +530,7 @@ export default function Festbeton() {
                       <option value="luft">Trockene Baustellenluft 65 % r.F. (Faktor 0,90)</option>
                       <option value="heiss">Heißhärtung / Wärmebehandlung (Faktor 0,85)</option>
                     </select>
+                    <p className="text-[11px] text-text-main/60 mt-1">Faktoren für Würfel 100/200 mm und Lagerung sind Lehrwerte. Für die Prüfkörperlagerung gilt nach DIN 1045-2 f<sub>c,cube</sub> = 0,92 · f<sub>c,dry</sub> (bis C50/60; manuell prüfen).</p>
                   </div>
 
                   {/* Ergebnisbox */}
@@ -814,9 +833,9 @@ export default function Festbeton() {
 
                   <div className="text-xs">
                     <label className="font-bold text-text-main block mb-1">
-                      Gemessene Festigkeiten [N/mm²] (Komma-separiert):
+                      Gemessene Festigkeiten [N/mm²] (mit Semikolon getrennt):
                     </label>
-                    <input aria-label="Gemessene Festigkeiten [N/mm²] (Komma-separiert)" 
+                    <input aria-label="Gemessene Festigkeiten [N/mm²] (mit Semikolon getrennt)" 
                       type="text" 
                       value={konfWerteStr} 
                       onChange={(e) => setKonfWerteStr(e.target.value)}
@@ -878,6 +897,33 @@ export default function Festbeton() {
 
       </div>
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Festigkeit nach 7 Tagen"
+        zielGleichung="f_{cm}(t) = \beta_{cc}(t) \cdot f_{cm}, \quad \beta_{cc}(t) = e^{\,s\,(1 - \sqrt{28/t})}"
+        normQuelle="DIN EN 1992-1-1, Gl. (3.1) und (3.2)"
+        schritte={[
+          { titel: '1. Gegeben', formel: '\\text{C30/37: } f_{cm} = 30 + 8 = 38\\,\\text{N/mm}^2,\\; s = 0{,}25\\;(\\text{Klasse N}),\\; t = 7\\,\\text{d}', erklaerung: 'Zement der Klasse N, z. B. CEM I 42,5 N.' },
+          { titel: '2. Entwicklungsbeiwert', formel: '\\beta_{cc}(7) = e^{0{,}25 \\cdot (1 - \\sqrt{4})} = e^{-0{,}25} = 0{,}78', erklaerung: '√(28/7) = 2.' },
+          { titel: '3. Mittlere Festigkeit', formel: 'f_{cm}(7) = 0{,}78 \\cdot 38 = 29{,}6\\,\\text{N/mm}^2', erklaerung: 'Nach 7 Tagen sind rund 78 % der 28-Tage-Festigkeit erreicht.' },
+        ]}
+        ergebnisHinweis="f_cm(7 d) ≈ 29,6 N/mm² (Zylinder, Mittelwert)."
+      />
+
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Konformität bei stetiger Herstellung"
+        zielGleichung="f_{cm} \ge f_{ck} + 1{,}48\,\sigma, \quad f_{ci} \ge f_{ck} - 4"
+        normQuelle="DIN EN 206 (Konformitätskriterien Druckfestigkeit); σ ≥ 3,0 N/mm²"
+        schritte={[
+          { titel: '1. Gegeben', formel: '\\text{C25/30: } f_{ck,cube} = 30,\\; n = 15,\\; f_{cm} = 36{,}0,\\; s = 2{,}6,\\; f_{ci,min} = 27{,}5\\,\\text{N/mm}^2', erklaerung: 'Würfelergebnisse aus der laufenden Produktion.' },
+          { titel: '2. Standardabweichung', formel: '\\sigma = \\max(2{,}6;\\; 3{,}0) = 3{,}0', erklaerung: 'Der Rechenwert darf 3,0 N/mm² nicht unterschreiten.' },
+          { titel: '3. Mittelwertkriterium', formel: '30 + 1{,}48 \\cdot 3{,}0 = 34{,}4 \\le 36{,}0', erklaerung: 'Erfüllt.' },
+          { titel: '4. Einzelwertkriterium', formel: '27{,}5 \\ge 30 - 4 = 26{,}0', erklaerung: 'Erfüllt.' },
+        ]}
+        ergebnisHinweis="Beide Kriterien erfüllt – die Produktion ist konform."
+      />
+
+      <ModulTest moduleId="festbeton" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
@@ -886,15 +932,15 @@ export default function Festbeton() {
         ]}
         literatur={[
           'Heidelberg Materials / InformationsZentrum Beton: Betontechnische Daten (Stand 2022 / aktualisiert nach DIN 1045-2:2023-08)',
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
+          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
           'Zilch, K.; Zehetmaier, G. (2010): Bemessung im konstruktiven Betonbau (Springer Vieweg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner'
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton - Teil 2: Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' }
+          { title: 'DIN EN 206:2021-06 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton - Teil 2: Anwendungsregeln zu DIN EN 206)' },
+          { title: 'DIN EN 1992-1-1:2011-01 mit DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
+          { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)' }
         ]}
         formeln={[
           {
