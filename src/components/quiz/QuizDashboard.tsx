@@ -17,11 +17,16 @@ import {
   TrendingUp,
   BarChart3,
   Calendar,
+  Award,
   AlertTriangle,
   CheckCircle2,
+  BookOpen,
+  ArrowRight,
   RefreshCw,
+  Sparkles,
   Layers,
-  ChevronRight
+  ChevronRight,
+  GraduationCap
 } from 'lucide-react';
 import { QuizSessionResult, QuizGapItem } from '@/src/utils/studyStorage';
 import { QUIZ_QUESTIONS } from '@/src/data/quizData';

@@ -3,13 +3,20 @@ import {
   Shield, 
   ShieldCheck, 
   Layers, 
+  Activity, 
+  AlertTriangle, 
   CheckCircle2, 
+  HelpCircle, 
   Zap, 
+  Droplets, 
   TrendingUp, 
+  ArrowRight, 
   FileText, 
-  Compass
+  Settings, 
+  Compass, 
+  Scale
 } from 'lucide-react';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -573,7 +580,7 @@ export default function SchutzGrundlagen() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-600">Basisinvestition:</span>
-                <input aria-label="Basisinvestition"
+                <input
                   type="number" min="0"
                   value={deSitterInitialCost}
                   onChange={(e) => setDeSitterInitialCost(Math.max(100, Number(e.target.value)))}

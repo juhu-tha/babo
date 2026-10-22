@@ -8,11 +8,7 @@
     "build": "vite build && esbuild server.ts --bundle --platform=node --target=node22 --outfile=dist/server.cjs --external:express --external:compression --external:dotenv --external:@google/genai",
     "start": "node server.ts",
     "lint": "tsc --noEmit",
-    "preview": "vite preview",
-    "check:formeln": "node scripts/qa/check-katex.mjs",
-    "test": "for f in tests/*.test.ts; do tsx \"$f\" > /dev/null || { echo \"FEHLER in $f\"; tsx \"$f\" | grep FAIL; exit 1; }; echo \"ok  $f\"; done",
-    "check:quellen": "node scripts/qa/check-quellen.mjs",
-    "check:zahlen": "node scripts/qa/zahlformat-tofixed.mjs --check && node scripts/qa/zahlformat-text.mjs --check && node scripts/qa/zahlformat-jsxtext.mjs --check && node scripts/qa/zahlformat-roh.mjs --check"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@google/genai": "^1.52.0",

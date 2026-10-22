@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Sparkles, 
+  HelpCircle, 
   ArrowRight, 
   CheckCircle2, 
   Layers, 
@@ -9,6 +10,7 @@ import {
   Lightbulb, 
   FileText, 
   ShieldCheck, 
+  GitMerge, 
   Network,
   Scale,
   FlaskConical,

@@ -4,6 +4,8 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { 
   Microscope, 
   Droplets, 
+  FileText, 
+  HelpCircle, 
   Search, 
   Filter, 
   Activity, 
@@ -16,6 +18,7 @@ import {
   Clock, 
   Calculator, 
   BookOpen,
+  Download,
   Table,
   FileJson,
   Printer

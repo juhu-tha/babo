@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Layers, BookOpen, ShieldAlert, ArrowRight, CheckCircle2, Lightbulb, Settings, Settings as ToolIcon, Sparkles, AlertTriangle } from 'lucide-react';
+import { Layers, BookOpen, ShieldAlert, ArrowRight, CheckCircle2, Lightbulb, Settings, Settings as ToolIcon, Compass, Sparkles, AlertTriangle } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 

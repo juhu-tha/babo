@@ -7,12 +7,18 @@ import {
   TrendingUp, 
   Wrench, 
   AlertTriangle, 
+  CheckCircle2, 
+  HelpCircle, 
+  FileText, 
   Flame, 
+  Zap, 
   Droplets, 
+  Scissors, 
   Hammer, 
-  RefreshCw
+  RefreshCw,
+  Search
 } from 'lucide-react';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

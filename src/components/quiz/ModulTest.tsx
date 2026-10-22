@@ -3,7 +3,6 @@ import React, { useMemo, useState } from 'react';
 import { GraduationCap, CheckCircle2, XCircle, AlertTriangle, ExternalLink, RotateCcw, ChevronDown, ChevronUp } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
 import { QUIZ_QUESTIONS } from '@/src/data/quizData';
-import { mischeAntworten } from '@/src/utils/mischeAntworten';
 
 /**
  * Stufe 4 des Lehrpfads (Grundlagen → Labor → Bemessung → Test):
@@ -22,7 +21,7 @@ export interface ModulTestProps {
 
 export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestProps) {
   const { setActiveTab } = useTabContext();
-  const questions = useMemo(() => QUIZ_QUESTIONS.filter(q => q.moduleId === moduleId).map(q => mischeAntworten(q)), [moduleId]);
+  const questions = useMemo(() => QUIZ_QUESTIONS.filter(q => q.moduleId === moduleId), [moduleId]);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [isOpen, setIsOpen] = useState(defaultOpen);
 

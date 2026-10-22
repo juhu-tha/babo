@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTabContext } from '@/src/contexts/TabContext';
-import { ShieldAlert, X, BookOpen, FileText, Calculator, Globe, ShieldCheck, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ShieldAlert, Scale, X, BookOpen, FileText, Calculator, Globe, ShieldCheck, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { FormulaText } from './FormulaText';
 import { BlockMath } from 'react-katex';
 import { getNormById, NormRecord } from '@/src/data/centralNormenRegistry';

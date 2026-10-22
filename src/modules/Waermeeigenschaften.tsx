@@ -7,7 +7,6 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Bar } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -182,7 +181,7 @@ export default function Waermeeigenschaften() {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/20">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-semibold text-text-main">Materialparameter</h3>
-                <select aria-label="Materialparameter" 
+                <select 
                   value={selectedPreset}
                   onChange={(e) => setSelectedPreset(e.target.value)}
                   className="p-1.5 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"

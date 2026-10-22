@@ -6,6 +6,7 @@ import {
   Flame, 
   Info, 
   Layers, 
+  BookOpen, 
   Volume2, 
   ShieldAlert, 
   Scale, 
@@ -14,12 +15,15 @@ import {
   Droplets, 
   CheckCircle2, 
   AlertTriangle,
+  FileText,
+  TrendingUp,
   Table,
   Wrench,
+  HelpCircle,
   History
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath } from 'react-katex';
+import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import ModuleHistoryView from '@/src/components/ui/ModuleHistoryView';
 import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';
@@ -928,7 +932,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 {/* Species Select */}
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Hölzer / Holzart</label>
-                  <select aria-label="Hölzer / Holzart"
+                  <select
                     value={shreWoodType}
                     onChange={(e) => setShreWoodType(e.target.value)}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -945,7 +949,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Anfangsfeuchte u₁ (%)</label>
-                    <input aria-label="Anfangsfeuchte u₁ (%)"
+                    <input
                       type="number"
                       min="0"
                       max="40"
@@ -956,7 +960,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Ziel-Endfeuchte u₂ (%)</label>
-                    <input aria-label="Ziel-Endfeuchte u₂ (%)"
+                    <input
                       type="number"
                       min="0"
                       max="40"
@@ -971,7 +975,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Breite b (mm)</label>
-                    <input aria-label="Breite b (mm)"
+                    <input
                       type="number" min="0"
                       value={shreB}
                       onChange={(e) => setShreB(Math.max(1, parseInt(e.target.value) || 0))}
@@ -980,7 +984,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Höhe h (mm)</label>
-                    <input aria-label="Höhe h (mm)"
+                    <input
                       type="number" min="0"
                       value={shreH}
                       onChange={(e) => setShreH(Math.max(1, parseInt(e.target.value) || 0))}
@@ -993,7 +997,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Ringausricht. Breite</label>
-                    <select aria-label="Ringausricht. Breite"
+                    <select
                       value={shreBDir}
                       onChange={(e) => setShreBDir(e.target.value)}
                       className="border border-home-grau/30 bg-white text-xs p-1.5 rounded-lg text-text-main"
@@ -1004,7 +1008,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Ringausricht. Höhe</label>
-                    <select aria-label="Ringausricht. Höhe"
+                    <select
                       value={shreHDir}
                       onChange={(e) => setShreHDir(e.target.value)}
                       className="border border-home-grau/30 bg-white text-xs p-1.5 rounded-lg text-text-main"
@@ -1208,7 +1212,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               {/* Parameter Row 1: Wood class */}
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-bold text-text-main">Holzart / Festigkeitsklasse</label>
-                <select aria-label="Holzart / Festigkeitsklasse" 
+                <select 
                   value={woodClass} 
                   onChange={(e) => setWoodClass(e.target.value)}
                   className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
@@ -1226,7 +1230,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Nutzungsklasse (NKL)</label>
-                  <select aria-label="Nutzungsklasse (NKL)" 
+                  <select 
                     value={serviceClass} 
                     onChange={(e) => setServiceClass(parseInt(e.target.value))}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-medium"
@@ -1239,7 +1243,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">KLED (Lastdauer)</label>
-                  <select aria-label="KLED (Lastdauer)" 
+                  <select 
                     value={loadDuration} 
                     onChange={(e) => setLoadDuration(e.target.value)}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-medium"
@@ -1257,7 +1261,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Stützenbreite b (mm)</label>
-                  <input aria-label="Stützenbreite b (mm)" 
+                  <input 
                     type="number" min="0" 
                     value={colB} 
                     onChange={(e) => setColB(Math.max(60, parseInt(e.target.value) || 60))}
@@ -1267,7 +1271,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Stützenhöhe h (mm)</label>
-                  <input aria-label="Stützenhöhe h (mm)" 
+                  <input 
                     type="number" min="0" 
                     value={colH} 
                     onChange={(e) => setColH(Math.max(60, parseInt(e.target.value) || 60))}
@@ -1280,7 +1284,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Stützenlänge L (m)</label>
-                  <input aria-label="Stützenlänge L (m)" 
+                  <input 
                     type="number" min="0" 
                     step="0.1"
                     value={colLen} 
@@ -1291,7 +1295,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Lagerung (Euler)</label>
-                  <select aria-label="Lagerung (Euler)" 
+                  <select 
                     value={eulerCase} 
                     onChange={(e) => setEulerCase(parseInt(e.target.value))}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-medium"
@@ -1308,7 +1312,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-bold text-text-main text-emerald-800">Einwirkende Druckkraft N_Ed (kN)</label>
                 <div className="relative">
-                  <input aria-label="Einwirkende Druckkraft N_Ed (kN)" 
+                  <input 
                     type="number" min="0" 
                     value={designLoad} 
                     onChange={(e) => setDesignLoad(Math.max(0, parseFloat(e.target.value) || 0))}
@@ -1412,7 +1416,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 {/* Configuration */}
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Auflagertyp &amp; Beanspruchungsart</label>
-                  <select aria-label="Auflagertyp &amp; Beanspruchungsart"
+                  <select
                     value={qpConfig}
                     onChange={(e) => setQpConfig(e.target.value)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
@@ -1428,7 +1432,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Auflagerbreite b (mm)</label>
-                    <input aria-label="Auflagerbreite b (mm)"
+                    <input
                       type="number" min="0"
                       value={qpB}
                       onChange={(e) => setQpB(Math.max(40, parseInt(e.target.value) || 40))}
@@ -1437,7 +1441,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Auflagerlänge l (mm)</label>
-                    <input aria-label="Auflagerlänge l (mm)"
+                    <input
                       type="number" min="0"
                       value={qpL}
                       onChange={(e) => setQpL(Math.max(40, parseInt(e.target.value) || 40))}
@@ -1466,7 +1470,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="flex flex-col gap-1 border-t border-home-grau/10 pt-2.5">
                   <label className="text-xs font-bold text-emerald-800">Querpressende Einwirkung F_c,90,d (kN)</label>
                   <div className="relative">
-                    <input aria-label="Querpressende Einwirkung F_c,90,d (kN)"
+                    <input
                       type="number" min="0"
                       value={qpForce}
                       onChange={(e) => setQpForce(Math.max(0, parseFloat(e.target.value) || 0))}
@@ -1641,7 +1645,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 {/* Wood density selector */}
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Gegenholz-Materialklasse (Dichte)</label>
-                  <select aria-label="Gegenholz-Materialklasse (Dichte)"
+                  <select
                     value={connWoodClass}
                     onChange={(e) => setConnWoodClass(e.target.value)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
@@ -1659,7 +1663,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Schrauben-Durchm. d (mm)</label>
-                    <select aria-label="Schrauben-Durchm. d (mm)"
+                    <select
                       value={connD}
                       onChange={(e) => setConnD(parseInt(e.target.value) || 8)}
                       className="border border-home-grau/30 bg-white text-xs p-1.5 rounded-lg text-text-main font-semibold"
@@ -1672,7 +1676,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Gewindelänge l_ef (mm)</label>
-                    <input aria-label="Gewindelänge l_ef (mm)"
+                    <input
                       type="number"
                       min="40"
                       max="300"
@@ -1686,7 +1690,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Eindrehwinkel α</label>
-                    <select aria-label="Eindrehwinkel α"
+                    <select
                       value={connAngle}
                       onChange={(e) => setConnAngle(parseInt(e.target.value) || 90)}
                       className="border border-home-grau/30 bg-white text-xs p-1.5 rounded-lg text-text-main"
@@ -1697,7 +1701,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Schraubenanzahl n</label>
-                    <input aria-label="Schraubenanzahl n"
+                    <input
                       type="number"
                       min="1"
                       max="48"
@@ -1712,7 +1716,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="flex flex-col gap-1 border-t border-home-grau/10 pt-2.5">
                   <label className="text-xs font-bold text-rose-800">Bemessungseinwirkung V_Ed (kN)</label>
                   <div className="relative">
-                    <input aria-label="Bemessungseinwirkung V_Ed (kN)"
+                    <input
                       type="number" min="0"
                       value={connForce}
                       onChange={(e) => setConnForce(Math.max(0, parseFloat(e.target.value) || 0))}
@@ -1905,7 +1909,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 {/* Fire wood type */}
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Materialtyp &amp; Standard-Abbrandrate (β₀)</label>
-                  <select aria-label="Materialtyp &amp; Standard-Abbrandrate (β₀)"
+                  <select
                     value={fireType}
                     onChange={(e) => setFireType(e.target.value)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
@@ -1920,7 +1924,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Brandbeanspruchung (min)</label>
-                    <select aria-label="Brandbeanspruchung (min)"
+                    <select
                       value={fireTime}
                       onChange={(e) => setFireTime(parseInt(e.target.value) || 30)}
                       className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
@@ -1965,7 +1969,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Balkenbreite b (mm)</label>
-                    <input aria-label="Balkenbreite b (mm)"
+                    <input
                       type="number" min="0"
                       value={fireB}
                       onChange={(e) => setFireB(Math.max(60, parseInt(e.target.value) || 60))}
@@ -1974,7 +1978,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold text-text-main">Balkenhöhe h (mm)</label>
-                    <input aria-label="Balkenhöhe h (mm)"
+                    <input
                       type="number" min="0"
                       value={fireH}
                       onChange={(e) => setFireH(Math.max(60, parseInt(e.target.value) || 60))}
@@ -2105,7 +2109,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 {/* CLT Thickness */}
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-bold text-text-main">Brettsperrholz-Plattenstärke t (mm)</label>
-                  <select aria-label="Brettsperrholz-Plattenstärke t (mm)"
+                  <select
                     value={vibCltThick}
                     onChange={(e) => setVibCltThick(parseInt(e.target.value) || 120)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
@@ -2121,7 +2125,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 {/* Extra Mass */}
                 <div className="flex flex-col gap-1 border-t border-home-grau/10 pt-2.5">
                   <label className="text-xs font-bold text-text-main">Zusatzmasse (Estrich + Dämmung + Schüttung) (kg/m²)</label>
-                  <input aria-label="Zusatzmasse (Estrich + Dämmung + Schüttung) (kg/m²)"
+                  <input
                     type="number"
                     min="10"
                     max="300"

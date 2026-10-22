@@ -9,14 +9,23 @@ import {
   Copy, 
   Check, 
   Layers, 
+  SlidersHorizontal, 
   Sparkles,
+  BookOpen,
+  ArrowRight,
   Code,
   Cpu,
   Boxes,
   Palette,
-  Server
+  Terminal,
+  Server,
+  Zap,
+  Globe,
+  Database
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { BlockMath, InlineMath } from 'react-katex';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 
 const FULL_AUDIT_PROMPT = `================================================================================
 VERBINDLICHER GESAMT-AUDITPROMPT DER WISSENSPLATTFORM BAUSTOFFBOARD (THA)
@@ -159,7 +168,7 @@ export default function Admin() {
               disabled={isChecking}
               className="w-full py-3 bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Lock size={16} /> {isChecking ? 'Kennwort wird geprüft …' : <>Entsperren &amp; Fortfahren</>}
+              <Lock size={16} /> {isChecking ? 'Prüfe Kennwort …' : <>Entsperren &amp; Fortfahren</>}
             </button>
           </form>
 

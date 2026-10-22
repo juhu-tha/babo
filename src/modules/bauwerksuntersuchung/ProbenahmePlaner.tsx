@@ -1,18 +1,23 @@
 import React, { useState, useMemo } from 'react';
 import { 
   ClipboardList, 
+  Layers, 
   Sliders, 
+  CheckCircle2, 
+  AlertTriangle, 
   Scale, 
   ExternalLink, 
   Beaker, 
   Thermometer, 
+  Hammer, 
   Info,
+  Calendar,
   Grid,
   FileText
 } from 'lucide-react';
-import { SAMPLING_PRESETS } from './diagnoseData';
+import { SAMPLING_PRESETS, METHOD_DIAGNOSE_DETAILS } from './diagnoseData';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 
 export default function ProbenahmePlaner() {
   const [selectedPresetId, setSelectedPresetId] = useState<string>('tiefgarage');
@@ -193,7 +198,7 @@ export default function ProbenahmePlaner() {
           <div className="md:col-span-4 space-y-4">
             <div>
               <label className="text-xs font-bold text-slate-700 block mb-1">Bauteilart / Struktur</label>
-              <select aria-label="Bauteilart / Struktur"
+              <select
                 value={customBauteil}
                 onChange={(e) => setCustomBauteil(e.target.value as any)}
                 className="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz font-medium"
@@ -228,7 +233,7 @@ export default function ProbenahmePlaner() {
 
             <div>
               <label className="text-xs font-bold text-slate-700 block mb-1">Primäres Diagnoseziel</label>
-              <select aria-label="Primäres Diagnoseziel"
+              <select
                 value={primaryGoal}
                 onChange={(e) => setPrimaryGoal(e.target.value as any)}
                 className="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz font-medium"

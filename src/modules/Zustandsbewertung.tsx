@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Search, FileText, Info, Sliders, Calculator, Award, Plus, Minus, BookOpen, ClipboardCheck, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, Search, Filter, FileText, CheckCircle, XCircle, Info, Sliders, Calculator, Award, Plus, Minus, BookOpen, Wrench, Shield, Clipboard, Eye, ClipboardCheck, ShieldCheck } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 const SCHADEN_KATEGORIEN = [
   { id: 'all', label: 'Alle Kategorien' },

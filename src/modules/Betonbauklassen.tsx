@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import { 
   ShieldAlert, 
   Layers, 
+  Info, 
+  CheckCircle2, 
+  RefreshCw, 
   Users, 
   ClipboardList, 
-  Settings,
+  ChevronRight, 
+  Settings, 
+  CheckCircle,
   HelpCircle,
   FileCheck
 } from 'lucide-react';
+import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface BauteilTemplate {

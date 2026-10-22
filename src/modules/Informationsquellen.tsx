@@ -146,7 +146,6 @@ const FREE_DATABASES: DBRecord[] = [
     discipline: 'GRUNDLAGEN',
     publisher: 'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)',
     accessibility: 'Kostenlose Kriterien-Steckbriefe',
-    url: 'https://www.bnb-nachhaltigesbauen.de/',
     standards: ['BNB-Zertifizierungssystem'],
     evaluation: 'Das BNB ist ein ganzheitliches, national zertifiziertes Bewertungssystem für Bundesgebäude. Es übersetzt abstrakte ökologische Prinzipien in konkrete, mess- und überprüfbare Kriteriensteckbriefe über den Lebenszyklus (Ökologie, Ökonomie, Soziales, Technik).',
     benefits: [
@@ -182,7 +181,6 @@ const FREE_DATABASES: DBRecord[] = [
     discipline: 'STAHLBETONBAU',
     publisher: 'InformationsZentrum Beton GmbH & Bund Deutscher Architektinnen und Architekten (BDA)',
     accessibility: 'Freie Projektdatenbank',
-    url: 'https://www.architekturpreis-beton.de/',
     standards: ['Tragwerksentwurf', 'Statische Detailplanung'],
     evaluation: 'Dokumentiert bautechnisch herausragende, mit dem renommierten Architekturpreis ausgezeichnete Massivbauten. Zeigt exzellente Tragwerkslösungen, anspruchsvolle Sichtbetonschalungen, historisch gewachsene Verbund-Fügungen und nachhaltige Tragwerkseinsparungen.',
     benefits: [
@@ -218,7 +216,6 @@ const FREE_DATABASES: DBRecord[] = [
     discipline: 'NACHHALTIGKEIT & DIGITALES',
     publisher: 'BMWSB (eLCA) / Umweltbundesamt (PRTR / thru.de)',
     accessibility: 'Kostenlose Webanwendungen der Bundesrepublik',
-    url: 'https://www.bauteileditor.de/',
     standards: ['DIN EN 15978', 'PRTR-Verordnung'],
     evaluation: 'Ein aufeinander abgestimmtes digitales Duo. eLCA ermöglicht die interaktive, BIM-nahe Modellierung der Umweltwirkungen von Gebäuden direkt über den Webbrowser auf Basis der ÖKOBAUDAT. thru.de (PRTR-Register des UBA) schafft Transparenz über gewerbliche Emissionen und Schadstoffströme der herstellenden Industrie.',
     benefits: [

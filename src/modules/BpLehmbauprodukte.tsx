@@ -3,16 +3,22 @@ import React, { useState } from 'react';
 import { 
   Layers, 
   BookOpen, 
+  Activity, 
   Droplets, 
   ShieldCheck, 
+  HelpCircle, 
+  ArrowRight, 
   CheckCircle2, 
+  ChevronRight, 
+  Scale, 
   HardHat, 
   Calculator, 
   AlertTriangle, 
-  Sparkles
+  Sparkles,
+  Info
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { BlockMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
 interface LoamStandardInfo {

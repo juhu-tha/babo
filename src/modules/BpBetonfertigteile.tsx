@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Cuboid, Building2, BookOpen, CheckCircle2, Lightbulb, Info, Target, ShieldAlert, Sparkles } from 'lucide-react';
+import { Layers, Cuboid, Building2, Wrench, BookOpen, CheckCircle2, Lightbulb, Info, Target, ArrowRight, ShieldAlert, Sparkles } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 

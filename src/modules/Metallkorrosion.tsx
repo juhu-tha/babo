@@ -2,12 +2,12 @@ import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { ShieldAlert, Droplets, ShieldCheck, Zap, ArrowRight, BookOpen, Layers } from 'lucide-react';
+import { ShieldAlert, Droplets, ShieldCheck, Zap, ArrowRight, BookOpen, Layers, CheckCircle2, XCircle, AlertTriangle, Sparkles, Clock, Scale, Info } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { motion } from 'framer-motion';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();

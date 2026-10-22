@@ -2,6 +2,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Layers, ThermometerSun } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export default function MassigeBauteile() {
   const [zementGehalt, setZementGehalt] = useState(350);
@@ -101,6 +102,35 @@ export default function MassigeBauteile() {
         </div>
       </div>
 
+      <ModuleFooter
+        wikipedia={[
+          { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydratationsw%C3%A4rme' },
+          { title: 'Massenbeton' },
+          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwang' }
+        ]}
+        literatur={[
+          'DAfStb-Richtlinie Massige Bauteile aus Beton (Deutscher Ausschuss für Stahlbeton)',
+          'Breitenbücher, R.: Zwangsspannungen und Rissbildung im jungen Beton (Bauwerk Verlag)',
+          'Springenschmid, R.: Vermeidung von Rissen in jungen Massenbetonbauteilen (Ernst & Sohn)'
+        ]}
+        regelwerke={[
+          { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
+          { title: 'DIN 1045-2:2023-08 / DIN EN 206 (Anforderungen an LH- und VLH-Zemente)' },
+          { title: 'DIN EN 197-1 (Zement mit niedriger Hydratationswärme LH)' }
+        ]}
+        formeln={[
+          {
+            formel: '\\Delta T_{ad} = \\frac{z \\cdot Q_h}{c_p \\cdot \\rho}',
+            erklaerung: 'Maximal möglicher adiabatischer Temperaturanstieg im Kern massiger Bauteile ohne Wärmeabfuhr (z: Zementgehalt in kg/m³, Q_h: Hydratationswärme in J/kg, c_p: spezifische Wärmekapazität ~ 1,0 kJ/(kg·K), ρ: Betondichte ~ 2400 kg/m³).',
+            quelle: 'DAfStb-Richtlinie Massige Bauteile'
+          },
+          {
+            formel: '\\Delta T_{\\text{Kern-Rand}} \\le 15\\,\\text{K} \\dots 20\\,\\text{K}',
+            erklaerung: 'Kritischer Grenzwert des Temperaturunterschieds zwischen heißem Kern und abkühlendem Rand zur Vermeidung oberflächennaher Trenn- und Schalenrisse durch Eigenspannungen.',
+            quelle: 'DAfStb / DBV-Merkblatt'
+          }
+        ]}
+      />
     </div>
   );
 }

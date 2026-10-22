@@ -9,6 +9,7 @@ import {
   Microscope,
   FileText,
   TestTube2,
+  BookOpen,
   ArrowUpFromLine
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

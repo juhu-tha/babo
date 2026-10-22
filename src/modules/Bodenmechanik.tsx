@@ -4,7 +4,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { Mountain, Droplets, Clock, Scissors, ArrowDownToLine, Timer } from 'lucide-react';
+import { Mountain, Droplets, Activity, MoveHorizontal, Clock, Scissors, ArrowDownToLine, Timer } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,7 +16,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 
@@ -656,7 +655,7 @@ export default function Bodenmechanik() {
                   
                   <div className="flex flex-col gap-2 mt-2">
                     <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Entwässerung</label><InfoTooltip text="Art der Wasserableitung vom Bauteil." /></div>
-                    <select aria-label="Entwässerung" 
+                    <select 
                       className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                       value={drainage}
                       onChange={(e) => setDrainage(e.target.value as 'einseitig' | 'zweiseitig')}

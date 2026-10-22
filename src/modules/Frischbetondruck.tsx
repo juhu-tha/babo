@@ -12,8 +12,8 @@ import {
   Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 ChartJS.register(
@@ -175,7 +175,6 @@ export default function Frischbetondruck() {
             <span className="font-medium text-text-main">Effektive Erstarrungszeit t<sub>E</sub>: <strong>{formatDeZahl(tE_eff, 1)} h</strong></span>
             <span>Berücksichtigt den Temperatureinfluss nach Abs. 5.3 der DIN 18218.</span>
             <span className="font-medium text-text-main mt-1">Beiwert K<sub>1</sub>: <strong>{formatDeZahl(K1, 3)}</strong></span>
-            <span className="text-[11px] text-text-main/60">Näherung: K<sub>1</sub>-Ansatz (F3) für alle Klassen und Beiwert für F5 manuell an DIN 18218 prüfen.</span>
           </div>
         </div>
 
@@ -200,7 +199,7 @@ export default function Frischbetondruck() {
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Konsistenzklasse</label><InfoTooltip text="Maß für die Verarbeitbarkeit des Frischbetons." /></div>
             <InfoTooltip text="Beschreibt die Fließfähigkeit des Frischbetons. F1 ist steif, F5/F6/SVB ist sehr fließfähig (selbstverdichtend) und erzeugt den höchsten Druck." />
           </div>
-          <select aria-label="Konsistenzklasse" 
+          <select 
             className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
             value={klasse}
             onChange={(e) => setKlasse(e.target.value)}
@@ -210,7 +209,7 @@ export default function Frischbetondruck() {
             <option value="F3">F3 (weicher Beton)</option>
             <option value="F4">F4 (sehr weich)</option>
             <option value="F5">F5 (fließfähig)</option>
-            <option value="SVB">SVB (hydrostatisch; F6 manuell prüfen)</option>
+            <option value="SVB">F6 / SVB (selbstverdichtend)</option>
           </select>
         </div>
 
@@ -293,6 +292,47 @@ export default function Frischbetondruck() {
       </div>
     </div>
     
+    <ModuleFooter 
+      weblinks={[
+        { title: "Beton.wiki: Frischbetondruck", url: "https://beton.wiki/index.php?title=Frischbetondruck" }, 
+        { title: "Zement-Merkblätter Beton.org", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
+      ]} 
+      wikipedia={[
+        { title: 'Frischbetondruck', url: 'https://de.wikipedia.org/wiki/Frischbetondruck' }
+      ]}
+      regelwerke={[
+        { title: 'DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)' },
+        { title: 'DIN 18216 (Schalungsanker für Betonschalungen - Anforderungen, Prüfung, Verwendung)' },
+        { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen und Frischbetoneigenschaften)' }
+      ]}
+      literatur={[
+        'Graubner, C.-A.; Proske, T. (2010): Frischbetondruck auf lotrechte Schalungen. Beton- und Stahlbetonbau 105(1), S. 12-23',
+        'Proske, T.; Graubner, C.-A. (2008): Formwork pressure of highly workable concrete (Darmstadt Concrete, Vol. 23)',
+        'Schmitt, A. (2001): Schalungstechnik - Systeme, Einsatz und Bemessung (Ernst & Sohn)'
+      ]}
+      formeln={[
+        {
+          formel: '\\sigma_{hk,max} = (C_1 \\cdot v + C_2) \\cdot K_1 \\cdot \\frac{\\gamma_c}{25}',
+          erklaerung: 'Bemessungsgleichung für den maximalen horizontalen Frischbetondruck σ_hk,max nach DIN 18218 (Abschnitt 5) unter Berücksichtigung von Steiggeschwindigkeit v, Konsistenzbeiwerten (C1, C2) und Erstarrungsbeiwert K1.',
+          quelle: 'DIN 18218:2010-01'
+        },
+        {
+          formel: 't_E(T_c) = t_{E,ref} \\cdot 2^{\\frac{15 - T_c}{10}}',
+          erklaerung: 'Effektive Erstarrungszeit nach DIN 18218 Abs. 5.3 in Abhängigkeit von der Betontemperatur Tc (Referenzwert tE,ref bei 15 °C).',
+          quelle: 'DIN 18218:2010-01'
+        },
+        {
+          formel: 'h_s = \\frac{\\sigma_{hk,max}}{\\gamma_c}',
+          erklaerung: 'Hydrostatische Übergangstiefe hs: Unterhalb dieser Tiefe stagniert der Druck infolge einsetzenden Thixotropie- und Erstarrungsaufbaus.',
+          quelle: 'DIN 18218:2010-01'
+        },
+        {
+          formel: '\\sigma_{hk}(z) = \\min\\left( \\gamma_c \\cdot z;\\; \\sigma_{hk,max} \\right)',
+          erklaerung: 'Bilateraler Druckverlauf über die Schalungshöhe z von oben nach unten (anfangs hydrostatisch linear ansteigend, dann gedeckelt auf σ_hk,max).',
+          quelle: 'DIN 18218:2010-01'
+        }
+      ]}
+    />
   </div>
   );
 }

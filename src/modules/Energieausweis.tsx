@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Zap, Info, FileCheck, Home, Calculator, Sliders, Scale,
+  Zap, Info, FileCheck, Home, Calculator, Sliders, 
+  HelpCircle, Scale, ShieldAlert, CheckCircle2, ChevronRight,
   TrendingDown, ArrowUpRight, Flame, Wind, Layers
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

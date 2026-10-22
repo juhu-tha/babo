@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Milestone, Calendar, HardDrive } from 'lucide-react';
+import { Clock, GitPullRequest, Milestone, ListChecks, Calendar, Tag, HardDrive } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { VERSION_HISTORY, CURRENT_VERSION } from '@/src/data/versionData';
 

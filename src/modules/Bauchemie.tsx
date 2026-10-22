@@ -1,12 +1,12 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { FlaskConical, Droplets, ShieldAlert, Activity, Paintbrush, Shield, Snowflake, ArrowRight, AlertTriangle, Sliders, Sparkles, Paperclip } from 'lucide-react';
+import { FlaskConical, Droplets, ShieldAlert, Layers, Activity, Paintbrush, Shield, Snowflake, ArrowRight, Flame, AlertTriangle, Sliders, Sparkles, Paperclip } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Slider } from '@/src/components/ui/Slider';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { BlockMath, InlineMath } from 'react-katex';
 import {
   Chart as ChartJS,

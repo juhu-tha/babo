@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { 
+  ShieldAlert, 
+  BookOpen, 
+  AlertCircle, 
+  ShieldCheck, 
   FileWarning, 
   ChevronRight, 
   HelpCircle,
@@ -8,7 +12,9 @@ import {
   Droplets,
   Activity,
   Layers,
-  Wrench
+  Wrench,
+  Flame,
+  Binary
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

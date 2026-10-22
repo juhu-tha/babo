@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { 
+  Cpu, 
   Cloud, 
   Server, 
-  Gauge 
+  ShieldCheck, 
+  AlertTriangle, 
+  CheckCircle2, 
+  XCircle, 
+  Zap, 
+  Coins, 
+  Layers, 
+  Lock, 
+  Gauge, 
+  FileText 
 } from 'lucide-react';
 
 interface ModelComparison {

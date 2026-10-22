@@ -1,6 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Layers, ShieldAlert, Sparkles, ArrowRight, BookOpen } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';

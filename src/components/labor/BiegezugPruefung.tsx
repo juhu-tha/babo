@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Play, RotateCcw, ShieldCheck, Check, Download, FileText, Layers, Info } from 'lucide-react';
-import { InlineMath } from 'react-katex';
+import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, Layers, Info } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,7 +13,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 
@@ -166,7 +165,7 @@ export default function BiegezugPruefung() {
     // Precalculate force-deflection curve
     for (let i = 0; i <= steps; i++) {
       const frac = i / steps;
-      const deflection = frac * matProps.maxDeflection;
+      let deflection = frac * matProps.maxDeflection;
       let stress = 0;
 
       if (material === 'beton_unbewehrt') {

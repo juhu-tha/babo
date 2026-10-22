@@ -5,7 +5,6 @@ import { AlertTriangle, CheckCircle2, Leaf, Droplets } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import {
   Chart as ChartJS,
@@ -174,7 +173,7 @@ export default function Recyclingbeton() {
               
               <div className="flex flex-col gap-2 mb-6">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Art der RC-Körnung</label><InfoTooltip text="Herkunft der rezyklierten Gesteinskörnung (z.B. Betonbrechsand)." /></div>
-                <select aria-label="Art der RC-Körnung" 
+                <select 
                   className="p-2 border border-home-grau/40 rounded-xl bg-white text-sm"
                   value={rcTyp}
                   onChange={(e) => setRcTyp(e.target.value)}
@@ -189,7 +188,7 @@ export default function Recyclingbeton() {
 
               <div className="flex flex-col gap-2 mb-6">
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Expositionsklassen (maßgebend)</label><InfoTooltip text="Je nach Umgebungsbedingungen sind unterschiedliche maximale Austauschraten erlaubt." /></div>
-                <select aria-label="Expositionsklassen (maßgebend)" 
+                <select 
                   className="p-2 border border-home-grau/40 rounded-xl bg-white text-sm"
                   value={expositionsklasse}
                   onChange={(e) => setExpositionsklasse(e.target.value)}

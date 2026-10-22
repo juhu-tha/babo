@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -152,7 +151,7 @@ export default function Festigkeitsberechnungen() {
           {/* Material 1 */}
           <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
             <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Material 1</h3>
-            <select aria-label="Material 1"
+            <select
               value={mat1Key}
               onChange={(e) => setMat1Key(e.target.value)}
               className="w-full p-2 mb-4 border border-home-grau/30 rounded-lg focus:ring-2 focus:ring-shiraz focus:border-shiraz outline-none"
@@ -196,7 +195,7 @@ export default function Festigkeitsberechnungen() {
           {/* Material 2 */}
           <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
             <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Material 2</h3>
-            <select aria-label="Material 2"
+            <select
               value={mat2Key}
               onChange={(e) => setMat2Key(e.target.value)}
               className="w-full p-2 mb-4 border border-home-grau/30 rounded-lg focus:ring-2 focus:ring-shiraz focus:border-shiraz outline-none"
@@ -294,7 +293,7 @@ export default function Festigkeitsberechnungen() {
             
             <div className="mb-6">
               <div className="flex items-center gap-2"><label className="text-xs text-home-grau block mb-1">Material</label><InfoTooltip text="Auswahl des zu untersuchenden Werkstoffs." /></div>
-              <select aria-label="Material"
+              <select
                 value={cubeMatKey}
                 onChange={(e) => setCubeMatKey(e.target.value)}
                 className="w-full p-2 border border-home-grau/30 rounded-lg focus:ring-2 focus:ring-shiraz focus:border-shiraz outline-none"

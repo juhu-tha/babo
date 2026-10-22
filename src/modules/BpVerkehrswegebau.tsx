@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
-import { Layers, BookOpen, Calculator, Route, FileText, CheckCircle2, TrendingUp, AlertTriangle, Milestone, Train, HardHat, Droplets } from 'lucide-react';
+import { Layers, BookOpen, Calculator, Route, HelpCircle, FileText, CheckCircle2, TrendingUp, AlertTriangle, Milestone, Train, HardHat, Droplets } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 // Standardized RStO 12/24 Profiles for different Belastungsklassen (Bk)
@@ -347,7 +347,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                 {/* Belastungsklasse Selector */}
                 <div className="flex flex-col gap-1.5">
                   <span className="text-xs font-bold text-text-main/70">2. Belastungsklasse (<InlineMath math="B_k" />)</span>
-                  <select aria-label="2. Belastungsklasse ()"
+                  <select
                     value={belastungsKlasse}
                     onChange={(e) => setBelastungsKlasse(e.target.value)}
                     className="p-2 text-xs border border-zinc-300 rounded-md bg-white text-text-main font-semibold"
@@ -1261,7 +1261,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   {/* Bettungstyp */}
                   <div className="space-y-1.5">
                     <label className="block text-xs font-semibold text-text-main">Oberbaubettung & Querverschiebewiderstand (Q_vw):</label>
-                    <select aria-label="Oberbaubettung & Querverschiebewiderstand (Q_vw)" 
+                    <select 
                       value={bettungstyp}
                       onChange={(e) => setBettungstyp(e.target.value as any)}
                       className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white"
@@ -1424,7 +1424,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                       <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(gebirgsdruck, 2)} MPa</span>
                     </div>
                     <div className="text-[10px] text-zinc-500 mb-1">Hinweis: 0,10 MPa ≈ 10 t/m² vertikale Auflast.</div>
-                    <input aria-label="Hinweis: 0,10 MPa ≈ 10 t/m² vertikale Auflast." 
+                    <input 
                       type="range" 
                       min="0.05" 
                       max="0.50" 
@@ -1455,7 +1455,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   {/* Betonfestigkeitsklasse */}
                   <div className="space-y-1.5">
                     <label className="block text-xs font-semibold text-text-main">Betonfestigkeitsklasse (Spritzbeton):</label>
-                    <select aria-label="Betonfestigkeitsklasse (Spritzbeton)" 
+                    <select 
                       value={betonKlasse}
                       onChange={(e) => setBetonKlasse(e.target.value as any)}
                       className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white"
@@ -1713,7 +1713,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-semibold text-text-main mb-1">Maximales Größtkorn:</label>
-                        <select aria-label="Maximales Größtkorn" 
+                        <select 
                           value={betonMaxAggregateSize}
                           onChange={(e) => setBetonMaxAggregateSize(parseInt(e.target.value) as any)}
                           className="w-full text-xs p-2 rounded-lg border border-zinc-200 font-sans"
@@ -1726,7 +1726,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                       <div>
                         <label className="block text-xs font-semibold text-text-main mb-1">Gemessener Luftporenhintergrund:</label>
                         <div className="flex items-center gap-2">
-                          <input aria-label="Gemessener Luftporenhintergrund" 
+                          <input 
                             type="number" 
                             step="0.1"
                             min="2"
@@ -1866,7 +1866,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       <div>
                         <label className="block text-[11px] font-bold text-text-main mb-1">Gesteinszuschlag (Edelsplitt):</label>
-                        <select aria-label="Gesteinszuschlag (Edelsplitt)" 
+                        <select 
                           value={betonAggregate}
                           onChange={(e) => setBetonAggregate(e.target.value as any)}
                           className="w-full text-xs p-2 rounded border border-zinc-200 bg-white"
@@ -1879,7 +1879,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
 
                       <div>
                         <label className="block text-[11px] font-bold text-text-main mb-1">Alkaligehalt des Zements:</label>
-                        <select aria-label="Alkaligehalt des Zements" 
+                        <select 
                           value={betonCementAlkali}
                           onChange={(e) => setBetonCementAlkali(e.target.value as any)}
                           className="w-full text-xs p-1.5 rounded border border-zinc-200 bg-white"

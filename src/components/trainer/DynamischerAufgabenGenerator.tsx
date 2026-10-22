@@ -1,11 +1,11 @@
 import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Calculator, RotateCcw, CheckCircle2, XCircle, AlertTriangle, 
-  Lightbulb, Sparkles, BookOpen, 
-  HelpCircle, Trophy
+  Lightbulb, Sparkles, ArrowRight, BookOpen, Layers, Award, 
+  HelpCircle, Sliders, Trophy, ChevronRight
 } from 'lucide-react';
-import { BlockMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 
 interface GeneratorTask {
   id: string;
@@ -100,7 +100,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { L_m, I_cm4, E_MPa },
-        questionText: `Eine beidseitig gelenkig gelagerte Stahlstütze (Euler-Fall 2, Knicklängenbeiwert β = 1,0) hat eine Länge von L = ${formatDeWert(L_m)} m. Das minimale Flächenträgheitsmoment des Profils beträgt I_z = ${I_cm4} cm⁴, der Elastizitätsmodul ist E = ${formatDeWert(E_MPa)} N/mm². Berechnen Sie die ideale Knicklast F_K in kN.`,
+        questionText: `Eine beidseitig gelenkig gelagerte Stahlstütze (Euler-Fall 2, Knicklängenbeiwert β = 1,0) hat eine Länge von L = ${L_m} m. Das minimale Flächenträgheitsmoment des Profils beträgt I_z = ${I_cm4} cm⁴, der Elastizitätsmodul ist E = ${formatDeWert(E_MPa)} N/mm². Berechnen Sie die ideale Knicklast F_K in kN.`,
         correctAnswer: Number(F_K_kN.toFixed(1)),
         unit: 'kN',
         tolerancePercent: 3,
@@ -180,13 +180,13 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Elastische Anfangsdehnung ε_el',
-            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${formatDeTeXWert(sigma_c)}\\text{ MPa}}{33000\\text{ MPa}} = ${formatDeTeX((eps_el * 1000), 4)}\\text{ ‰}`,
+            math: `\\varepsilon_{\\text{el}} = \\frac{\\sigma_c}{E_{\\text{cm}}} = \\frac{${formatDeTeXWert(sigma_c)}\\text{ MPa}}{33000\\text{ MPa}} = ${formatDeTeX((eps_el * 1000), 4)}\\text{ \‰}`,
             explanation: 'Hookesches Gesetz für den elastischen Anteil zum Belastungszeitpunkt t₀.'
           },
           {
             step: '2. Zeitabhängige Kriechdehnung ε_cr',
-            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${formatDeTeX((eps_el * 1000), 4)}\\text{ ‰} \\cdot ${formatDeTeXWert(phi)} = \\mathbf{${formatDeTeX(eps_cr_promille, 3)}}\\text{ ‰}`,
-            explanation: 'Multiplikation der elastischen Dehnung mit der Kriechzahl. DIN EN 1992-1-1, 3.1.4(3), bezieht auf E_c = 1,05 · E_cm; hier vereinfachend E_cm (Lehrannahme).'
+            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${formatDeTeX((eps_el * 1000), 4)}\\text{ \‰} \\cdot ${formatDeTeXWert(phi)} = \\mathbf{${formatDeTeX(eps_cr_promille, 3)}}\\text{ \‰}`,
+            explanation: 'Multiplikation der elastischen Verzerrung mit der Kriechzahl nach EC2.'
           }
         ]
       };
@@ -215,7 +215,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         tolerancePercent: 2,
         hints: [
           'Formel: (w/z)_eq = w / (z + k · f)',
-          'Flugasche darf nach DIN EN 206 / DIN 1045-2 mit dem k-Wert 0,40 auf den Zementgehalt angerechnet werden.'
+          'Flugasche darf nach DIN EN 206 mit dem Faktor k = 0,40 wie Zement auf das Bindemittelvolumen angerechnet werden.'
         ],
         commonMistakes: [
           {
@@ -230,13 +230,13 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Effektiver Zementwert (Bindemitteläquivalent)',
-            math: `z_{\\text{eq}} = z + k \\cdot f = ${zement} + 0{,}40 \\cdot ${flugasche} = ${formatDeTeX((zement + k * flugasche), 1)}\\text{ kg/m}^3`,
+            math: `z_{\\text{eq}} = z + k \\cdot f = ${zement} + ${k} \\cdot ${flugasche} = ${formatDeTeX((zement + k * flugasche), 1)}\\text{ kg/m}^3`,
             explanation: 'Anrechnung der Puzzolanität der Steinkohlenflugasche nach DIN 1045-2 / DIN EN 206.'
           },
           {
             step: '2. Berechnung des (w/z)_eq-Wertes',
             math: `(w/z)_{\\text{eq}} = \\frac{w}{z + k \\cdot f} = \\frac{${wasser}}{${formatDeTeX((zement + k * flugasche), 1)}} = \\mathbf{${formatDeTeX(wz_eq, 2)}}`,
-            explanation: 'Vergleich mit dem Grenzwert für XC4 nach DIN 1045-2 (höchstzulässiger (w/z)_eq = 0,60); die anrechenbare Flugaschemenge ist begrenzt (f ≤ 0,33 · z bei CEM I).'
+            explanation: 'Der Grenzwert für XC4 (max. 0,50) wird verglichen.'
           }
         ]
       };
@@ -267,7 +267,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { d_daemmung_cm, lambda_daemm, d_ziegel_m, lambda_ziegel },
-        questionText: `Eine Außenwand besteht aus 24 cm Hochlochziegelmauerwerk (λ = 0,36 W/(m·K)) und einer außenliegenden Mineralwolledämmung (WDVS) der Dicke d = ${formatDeWert(d_daemmung_cm)} cm (λ = ${formatDeWert(lambda_daemm)} W/(m·K)). Die Wärmeübergangswiderstände betragen R_si = 0,13 m²·K/W und R_se = 0,04 m²·K/W. Putzschichten werden vernachlässigt. Berechnen Sie den Wärmedurchgangskoeffizienten U in W/(m²·K).`,
+        questionText: `Eine Außenwand besteht aus 24 cm Hochlochziegelmauerwerk (λ = 0,36 W/(m·K)) und einer vorgehängten Mineralwolledämmung der Dicke d = ${formatDeWert(d_daemmung_cm)} cm (λ = ${formatDeWert(lambda_daemm)} W/(m·K)). Die Wärmeübergangswiderstände betragen R_si = 0,13 m²·K/W und R_se = 0,04 m²·K/W. Putzschichten werden vernachlässigt. Berechnen Sie den Wärmedurchgangskoeffizienten U in W/(m²·K).`,
         correctAnswer: Number(U_wert.toFixed(2)),
         unit: 'W/(m²·K)',
         tolerancePercent: 3,
@@ -300,7 +300,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
           {
             step: '3. Kehrwertbildung zum U-Wert',
             math: `U = \\frac{1}{R_T} = \\frac{1}{${formatDeTeX(R_T, 3)}} = \\mathbf{${formatDeTeX(U_wert, 2)}}\\text{ W/(m}^2\\text{K)}`,
-            explanation: 'Vergleich: Höchstwert für Außenwände bei Änderungen im Bestand nach GEG/GModG, Anlage 7: 0,24 W/(m²K).'
+            explanation: 'Anforderung nach GModG (vormals GEG) für Außenwände: max. 0,24 W/(m²K).'
           }
         ]
       };

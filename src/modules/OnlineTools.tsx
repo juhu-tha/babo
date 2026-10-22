@@ -1,19 +1,27 @@
 import React, { useState, useMemo } from 'react';
 import { 
+  Wrench, 
   ExternalLink, 
   Search, 
   Layers, 
   Activity, 
   Leaf, 
   Box, 
+  Database, 
   Globe, 
   ShieldCheck, 
-  Sparkles,
+  Sparkles, 
+  Compass,
+  FileCheck,
   CheckCircle2,
   Terminal,
+  Cpu,
   Copy,
   Check,
-  Code
+  Code,
+  BookOpen,
+  Calculator,
+  Trees
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

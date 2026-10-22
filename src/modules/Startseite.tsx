@@ -4,9 +4,17 @@ import {
   GraduationCap, 
   BookOpen, 
   Lightbulb, 
+  Calculator, 
+  Thermometer, 
+  Activity, 
   ArrowRight, 
+  Mail, 
   Info, 
   ShieldAlert,
+  Recycle,
+  Database,
+  CheckCircle2,
+  FlaskConical,
   Clock,
   Tag
 } from 'lucide-react';

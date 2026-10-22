@@ -1,16 +1,23 @@
 import { formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
+  Trash2, 
   Recycle, 
   AlertTriangle, 
   CheckCircle2, 
+  Layers, 
   FileCheck, 
   BookOpen, 
+  ArrowRight, 
+  HelpCircle, 
   Info, 
   Clock, 
   Hammer, 
-  FileText,
+  FileText, 
+  Building,
+  RotateCcw,
   ShieldCheck,
+  TrendingDown,
   ChevronRight,
   ShieldAlert
 } from 'lucide-react';

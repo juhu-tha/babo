@@ -3,11 +3,10 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, LinearScale } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Box, BookOpen, Calculator, Sparkles, Microscope, Clock } from 'lucide-react';
+import { Box, BookOpen, Calculator, Sparkles, Layers, Microscope, Clock, Play, RotateCcw, Activity } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -91,10 +90,10 @@ function GefuegebildungSimulator() {
   const currentStage = stages[timeStageIndex];
 
   // Adjust values based on w/z-Wert and cement type
-  // Kapillarporosität nach Powers (Volumenanteil im Zementstein): p = (w/z − 0,36·α) / (w/z + 0,32)
   const effectivePorosity = useMemo(() => {
-    const a = currentStage.alpha / 100;
-    return Math.max(0, (wzRatio - 0.36 * a) / (wzRatio + 0.32)) * 100;
+    // higher w/z -> higher residual porosity
+    const wzFactor = (wzRatio - 0.40) * 35;
+    return Math.max(5, Math.min(75, currentStage.porosityPercent + wzFactor));
   }, [currentStage, wzRatio]);
 
   const effectiveStrength = useMemo(() => {
@@ -243,10 +242,6 @@ function GefuegebildungSimulator() {
                 <span className="text-[10px] uppercase font-bold text-text-main/60 block">Hydratationswärme Q</span>
                 <span className="text-xl font-mono font-bold text-amber-600">{formatDeWert(currentStage.heatJg)} J/g</span>
               </div>
-            </div>
-            <div className="text-[11px] text-text-main/70 bg-off-white p-2.5 rounded-xl border border-home-grau/20 space-y-1">
-              <p><strong>Kapillarporosität nach Powers:</strong> <InlineMath math={`p = \\frac{w/z - 0{,}36\\,\\alpha}{w/z + 0{,}32} = \\frac{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} - 0{,}36 \\cdot ${formatDeZahl(currentStage.alpha / 100, 2).replace(',', '{,}')}}{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} + 0{,}32} = ${formatDeZahl(effectivePorosity, 1).replace(',', '{,}')}\\,\\%`} /> (Volumenanteil im Zementstein)</p>
-              <p>Qualitative Lehrsimulation: Hydratationsgrad, Festigkeit und Wärme sind Lehrwerte.</p>
             </div>
 
           </div>
@@ -846,20 +841,6 @@ export default function Zementchemie() {
                 </div>
               </div>
             </div>
-            <FormulaDerivationBox
-              title="Rechenweg Bogue mit den eingestellten Werten"
-              zielGleichung="\text{C}_3\text{S} = 4{,}071\,\text{CaO} - 7{,}600\,\text{SiO}_2 - 6{,}718\,\text{Al}_2\text{O}_3 - 1{,}430\,\text{Fe}_2\text{O}_3 - 2{,}852\,\text{SO}_3"
-              normQuelle="Bogue (1929); Formeln für Al₂O₃/Fe₂O₃ ≥ 0,64"
-              schritte={results.afRatio >= 0.64 ? [
-                { titel: '1. Modul A/F', formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(al2o3, 1).replace(',', '{,}')}/${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} \\ge 0{,}64`, erklaerung: 'Damit gelten die Standardgleichungen.' },
-                { titel: '2. Alit', formel: `\\text{C}_3\\text{S} = 4{,}071 \\cdot ${formatDeZahl(cao, 1).replace(',', '{,}')} - 7{,}600 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 6{,}718 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}430 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} - 2{,}852 \\cdot ${formatDeZahl(so3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: 'Eingesetzt sind die Oxidgehalte in M.-%.' },
-                { titel: '3. Belit', formel: `\\text{C}_2\\text{S} = 2{,}867 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 0{,}7544 \\cdot ${formatDeZahl(results.c3s, 1).replace(',', '{,}')} = ${formatDeZahl(results.c2s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: 'SiO₂, das nicht im Alit gebunden ist.' },
-                { titel: '4. Aluminat und Ferrit', formel: `\\text{C}_3\\text{A} = 2{,}650 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}692 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3a, 1).replace(',', '{,}')}\\,\\%; \\quad \\text{C}_4\\text{AF} = 3{,}043 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c4af, 1).replace(',', '{,}')}\\,\\%`, erklaerung: 'Negative Ergebnisse werden im Rechner auf 0 gesetzt.' },
-              ] : [
-                { titel: '1. Modul A/F', formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} < 0{,}64`, erklaerung: 'Es bildet sich kein C₃A; Ferrit liegt als Mischkristall vor. Der Rechner verwendet die Sondergleichungen.' },
-              ]}
-              ergebnisHinweis="Bogue liefert potenzielle Phasengehalte; die tatsächlichen Gehalte (z. B. Röntgenanalyse) weichen ab."
-            />
           </div>
         )}
 
@@ -876,6 +857,66 @@ export default function Zementchemie() {
         )}
       </div>
       
+      <ModuleFooter 
+        wikipedia={[
+          { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' },
+          { title: 'Portlandzementklinker', url: 'https://de.wikipedia.org/wiki/Portlandzementklinker' },
+          { title: 'Bogue-Berechnung' }
+        ]}
+        regelwerke={[
+          { title: 'DIN EN 197-1 (Zement - Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)' },
+          { title: 'DIN EN 197-5 (Portland-Kompositzement CEM II/C-M und Kompositzement CEM VI)' },
+          { title: 'DIN EN 196-2 (Prüfverfahren für Zement - Chemische Analyse von Zement)' }
+        ]}
+        literatur={[
+          'Bogue, R. H. (1929): Calculation of the compounds in Portland cement. Industrial & Engineering Chemistry, 1(4), S. 192-197',
+          'Taylor, H. F. W. (1997): Cement Chemistry (2. Auflage, Thomas Telford Publishing)',
+          'Stark, J.; Wicht, B. (2013): Zement und Schnellzemente - Chemie, Hydratation und Anwendung (Springer Vieweg)',
+          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)'
+        ]}
+        formeln={[
+          {
+            formel: 'KSt = \\frac{100 \\cdot \\text{CaO}}{2{,}8 \\cdot \\text{SiO}_2 + 1{,}1 \\cdot \\text{Al}_2\\text{O}_3 + 0{,}7 \\cdot \\text{Fe}_2\\text{O}_3}',
+            erklaerung: 'Kalkstandard KSt (nach Kühl): Kennwert zur Beurteilung des Rohmehlversatzes beim Brennen von Klinker. Typischer Zielbereich liegt bei 90 bis 102.',
+            quelle: 'DIN EN 196-2 / VDZ Zement-Taschenbuch'
+          },
+          {
+            formel: 'w/z = \\frac{m_w}{m_z}',
+            erklaerung: 'Wasser-Zement-Wert: Verhältnis aus wirksamer Wassermasse zu Zementmasse. Bestimmt maßgeblich Kapillarporosität und Endfestigkeit nach Walz.',
+            quelle: 'DIN EN 206 / DIN 1045-2'
+          },
+          {
+            formel: '\\text{C}_3\\text{S} = 4.071 \\cdot \\text{CaO} - 7.600 \\cdot \\text{SiO}_2 - 6.718 \\cdot \\text{Al}_2\\text{O}_3 - 1.430 \\cdot \\text{Fe}_2\\text{O}_3 - 2.852 \\cdot \\text{SO}_3',
+            erklaerung: 'Bogue-Gleichung für Tricalciumsilicat (Alit, C3S in M.-%) bei einem Al2O3/Fe2O3-Verhältnis >= 0.64. Maßgebend für die Frühfestigkeit.',
+            quelle: 'Bogue, R. H. (1929) / DIN EN 196-2'
+          },
+          {
+            formel: '\\text{C}_2\\text{S} = 2.867 \\cdot \\text{SiO}_2 - 0{,}7544 \\cdot \\text{C}_3\\text{S}',
+            erklaerung: 'Bogue-Gleichung für Dicalciumsilicat (Belit, C2S in M.-%). Verantwortlich für die kontinuierliche Nacherhärtung ab Tag 28.',
+            quelle: 'Bogue, R. H. (1929)'
+          },
+          {
+            formel: '\\text{C}_3\\text{A} = 2.650 \\cdot \\text{Al}_2\\text{O}_3 - 1.692 \\cdot \\text{Fe}_2\\text{O}_3',
+            erklaerung: 'Bogue-Gleichung für Tricalciumaluminat (C3A in M.-%). Schnelle Hydratationswärmeentwicklung, primäre Angriffsstelle für Sulfattreiben (Ettringitbildung).',
+            quelle: 'Bogue, R. H. (1929)'
+          },
+          {
+            formel: '\\text{C}_4\\text{AF} = 3.043 \\cdot \\text{Fe}_2\\text{O}_3',
+            erklaerung: 'Bogue-Gleichung für Tetracalciumaluminatferrit (Brownmillerit, C4AF in M.-%). Verleiht Zement die typische Graufärbung und wirkt als Schmelzphase beim Sintern.',
+            quelle: 'Bogue, R. H. (1929)'
+          },
+          {
+            formel: 'SiO_2 + Ca(OH)_2 + H_2O \\rightarrow C-S-H',
+            erklaerung: 'Puzzolanische Sekundärreaktion: Reaktives Siliciumdioxid aus Zusatzstoffen (z. B. Flugasche, Silikastaub, Metakaolin) reagiert mit freigesetztem Portlandit zu festigkeitsbildendem C-S-H-Gel.',
+            quelle: 'Taylor: Cement Chemistry'
+          },
+          {
+            formel: 'w/(z + k \\cdot f) \\le (w/z)_{\\text{max}}',
+            erklaerung: 'k-Wert-Konzept nach DIN EN 206 / DIN 1045-2: Rechnerische Anrechnung von Flugasche oder Silikastaub auf den Mindestzementgehalt und den maximalen äquivalenten Wasser-Bindemittel-Wert.',
+            quelle: 'DIN EN 206'
+          }
+        ]}
+      />
     </div>
   );
 }

@@ -331,7 +331,7 @@ export default function Einheiten() {
           <div className="flex flex-col gap-4 max-w-2xl mx-auto w-full">
             <div className="flex flex-col gap-2">
               <label className="text-sm font-bold text-text-main">Kategorie</label>
-              <select aria-label="Kategorie" 
+              <select 
                 value={category}
                 onChange={(e) => handleCategoryChange(e.target.value as UnitCategory)}
                 className="p-3 border border-home-grau/30 rounded-lg bg-off-white focus:outline-none focus:border-shiraz"
@@ -346,7 +346,7 @@ export default function Einheiten() {
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-bold text-text-main">Von</label>
                 <div className="flex flex-col gap-2">
-                  <input aria-label="Von" 
+                  <input 
                     type="number" 
                     value={inputValue}
                     onChange={(e) => setInputValue(Number(e.target.value))}

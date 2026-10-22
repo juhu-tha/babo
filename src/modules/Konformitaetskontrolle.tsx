@@ -5,15 +5,19 @@ import {
   AlertTriangle, 
   Calculator, 
   Plus, 
+  Trash2, 
   RefreshCw, 
   Sparkles, 
+  TrendingUp, 
   Printer, 
   Info, 
+  Check, 
   X,
   FileText,
   ClipboardCheck,
   BookOpen
 } from 'lucide-react';
+import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface ConcreteClass {
@@ -443,7 +447,7 @@ export default function Konformitaetskontrolle() {
               {/* Festigkeitsklasse */}
               <div className="space-y-1.5 text-xs">
                 <label className="font-bold text-text-main block">Druckfestigkeitsklasse:</label>
-                <select aria-label="Druckfestigkeitsklasse" 
+                <select 
                   value={selectedClassNav}
                   onChange={(e) => setSelectedClassNav(e.target.value)}
                   className="w-full bg-white border border-home-grau/30 rounded-lg p-2 font-mono font-bold text-slate-800"
@@ -1055,7 +1059,7 @@ export default function Konformitaetskontrolle() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] bg-white p-3.5 rounded-xl border border-home-grau/15">
                     <div className="space-y-1">
                       <span className="block text-home-grau font-semibold">Bauvorhaben / Bauwerksabschnitt:</span>
-                      <input aria-label="Bauvorhaben / Bauwerksabschnitt" 
+                      <input 
                         type="text" 
                         value={protocolMeta.project}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, project: e.target.value })}
@@ -1064,7 +1068,7 @@ export default function Konformitaetskontrolle() {
                     </div>
                     <div className="space-y-1">
                       <span className="block text-home-grau font-semibold">Ausführende Unternehmung (Bauleitung):</span>
-                      <input aria-label="Ausführende Unternehmung (Bauleitung)" 
+                      <input 
                         type="text" 
                         value={protocolMeta.contractor}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, contractor: e.target.value })}
@@ -1073,7 +1077,7 @@ export default function Konformitaetskontrolle() {
                     </div>
                     <div className="space-y-1">
                       <span className="block text-home-grau font-semibold">Konformitätsbeauftragter / Prüfer:</span>
-                      <input aria-label="Konformitätsbeauftragter / Prüfer" 
+                      <input 
                         type="text" 
                         value={protocolMeta.inspector}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, inspector: e.target.value })}
@@ -1082,7 +1086,7 @@ export default function Konformitaetskontrolle() {
                     </div>
                     <div className="space-y-1">
                       <span className="block text-home-grau font-semibold">Prüfdatum (Festigkeits-Abnahme):</span>
-                      <input aria-label="Prüfdatum (Festigkeits-Abnahme)" 
+                      <input 
                         type="date" 
                         value={protocolMeta.date}
                         onChange={(e) => setProtocolMeta({ ...protocolMeta, date: e.target.value })}

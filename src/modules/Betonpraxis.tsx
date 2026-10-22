@@ -6,6 +6,7 @@ import {
   ClipboardCheck, 
   Droplets, 
   AlertTriangle, 
+  TrendingDown, 
   Beaker, 
   Compass, 
   Activity, 
@@ -17,6 +18,7 @@ import {
   Flame,
   Wrench,
   Sparkles,
+  RefreshCw,
   Calendar,
   Grid,
   ShieldAlert,
@@ -657,7 +659,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
               {/* Formel-Herleitungs-Box für das Zusammenhaltevermögen */}
               <FormulaDerivationBox
                 title="Herleitung: Zusammenhaltevermögen k-Wert & Mehlkornbedarf"
-                zielGleichung="k = \frac{w - 70}{mk} \le 0{,}30"
+                zielGleichung="k = \\frac{w - 70}{mk} \\le 0{,}30"
                 normQuelle="DBV-Merkblatt Frischbeton & Walz-Zusammenhaltekriterium"
                 ergebnisHinweis={`Aktueller Rechenwert: k = ${formatDeZahl(kValue, 3)} bei w = ${calcW} l/m³ und mk = ${calcMK} kg/m³`}
                 schritte={[
@@ -1034,7 +1036,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   {/* 2. Festigkeitsentwicklung */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-text-main block">2. Festigkeitsentwicklung (r-Wert)</label>
-                    <select aria-label="2. Festigkeitsentwicklung (r-Wert)"
+                    <select
                       value={curingStrength}
                       onChange={(e) => setCuringStrength(e.target.value as any)}
                       className="w-full text-xs p-2 border border-home-grau/30 rounded"
@@ -1050,7 +1052,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   {/* 3. Witterung/Temperatur */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-text-main block">3. Bauteiloberflächentemperaturen</label>
-                    <select aria-label="3. Bauteiloberflächentemperaturen"
+                    <select
                       value={curingTemp}
                       onChange={(e) => setCuringTemp(e.target.value as any)}
                       className="w-full text-xs p-2 border border-home-grau/30 rounded"
@@ -1276,7 +1278,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       <div className="space-y-3 bg-off-white p-3 rounded-lg border border-home-grau/15">
                         <div className="space-y-1">
                           <label className="text-xs font-bold text-text-main/80 block">Stabdurchmesser (Eisen):</label>
-                          <select aria-label="Stabdurchmesser (Eisen)"
+                          <select
                             value={rebarDiameter}
                             onChange={(e) => setRebarDiameter(e.target.value)}
                             className="w-full text-xs p-1.5 bg-white border border-home-grau/30 rounded"
@@ -1511,7 +1513,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-text-main block">Nominale Festigkeit f_ck</label>
-                  <select aria-label="Nominale Festigkeit f_ck" 
+                  <select 
                     value={fck} 
                     onChange={(e) => setFck(Number(e.target.value))} 
                     className="w-full text-xs p-2 border border-home-grau/30 rounded"
@@ -1529,7 +1531,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-text-main block">Betonvolumen (Baustelle)</label>
                   <div className="relative">
-                    <input aria-label="Betonvolumen (Baustelle)" 
+                    <input 
                       type="number" min="0" 
                       value={concreteVol} 
                       onChange={(e) => setConcreteVol(Number(e.target.value))} 
@@ -1541,7 +1543,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
 
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-text-main block">Kerne insgesamt</label>
-                  <select aria-label="Kerne insgesamt" 
+                  <select 
                     value={coresTested} 
                     onChange={(e) => setCoresTested(Number(e.target.value))} 
                     className="w-full text-xs p-2 border border-home-grau/30 rounded"

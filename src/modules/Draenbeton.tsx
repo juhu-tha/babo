@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Droplets, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
+import { Droplets, Layers, Settings, Activity, Map, ShieldCheck, ChevronRight } from 'lucide-react';
 
 export default function Draenbeton() {
   return (

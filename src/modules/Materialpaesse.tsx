@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { FileText, RefreshCw, Layers, Sparkles, AlertCircle, TrendingUp, CheckCircle, DollarSign, Award } from 'lucide-react';
+import { FileText, RefreshCw, Layers, Sparkles, AlertCircle, TrendingUp, CheckCircle, Scale, DollarSign, HelpCircle, HardHat, Award } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

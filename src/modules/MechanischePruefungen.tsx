@@ -8,8 +8,14 @@ import {
   Trees, 
   BookOpen, 
   Calculator, 
+  Activity, 
   Info, 
-  ShieldAlert
+  CheckCircle2, 
+  RefreshCw, 
+  TrendingUp, 
+  ShieldAlert, 
+  FileText,
+  Boxes
 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -602,7 +608,7 @@ export default function MechanischePruefungen() {
                   <div className="grid grid-cols-2 gap-3 pt-2">
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-750 font-sans">Bewehrungsstörungen:</label>
-                      <select aria-label="Bewehrungsstörungen" 
+                      <select 
                         value={concreteRebars}
                         onChange={(e) => setConcreteRebars(Number(e.target.value))}
                         className="w-full border border-home-grau/30 p-2 rounded-lg text-xs bg-slate-50 font-bold focus:outline-none"
@@ -615,7 +621,7 @@ export default function MechanischePruefungen() {
 
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-750 font-sans">Bohrrichtung:</label>
-                      <select aria-label="Bohrrichtung" 
+                      <select 
                         value={boreDirection}
                         onChange={(e) => setBoreDirection(e.target.value as 'vertikal' | 'horizontal')}
                         className="w-full border border-home-grau/30 p-2 rounded-lg text-xs bg-slate-50 font-bold focus:outline-none"
@@ -834,7 +840,7 @@ export default function MechanischePruefungen() {
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-750 font-sans">Nenn-Durchmesser d:</label>
-                      <select aria-label="Nenn-Durchmesser d" 
+                      <select 
                         value={steelDiam}
                         onChange={(e) => setSteelDiam(Number(e.target.value))}
                         className="w-full border border-home-grau/30 p-2 rounded-lg text-xs bg-slate-50 font-bold focus:outline-none"
@@ -980,7 +986,7 @@ export default function MechanischePruefungen() {
                   <div className="grid grid-cols-3 gap-2 border-t border-home-grau/30 pt-3">
                     <div className="space-y-1">
                       <label className="text-[11px] font-bold text-slate-600">Balkenbreite b (mm):</label>
-                      <input aria-label="Balkenbreite b (mm)" 
+                      <input 
                         type="number" min="0" value={woodWidth}
                         onChange={(e) => setWoodWidth(Math.max(10, Number(e.target.value)))}
                         className="w-full border border-home-grau/30 p-1 rounded font-mono text-xs text-center"
@@ -988,7 +994,7 @@ export default function MechanischePruefungen() {
                     </div>
                     <div className="space-y-1">
                       <label className="text-[11px] font-bold text-slate-600">Balkenhöhe h (mm):</label>
-                      <input aria-label="Balkenhöhe h (mm)" 
+                      <input 
                         type="number" min="0" value={woodHeight}
                         onChange={(e) => setWoodHeight(Math.max(10, Number(e.target.value)))}
                         className="w-full border border-home-grau/30 p-1 rounded font-mono text-xs text-center"
@@ -996,7 +1002,7 @@ export default function MechanischePruefungen() {
                     </div>
                     <div className="space-y-1">
                       <label className="text-[11px] font-bold text-slate-600">Stützweite L (mm, Norm: 18·h):</label>
-                      <input aria-label="Stützweite L (mm, Norm: 18·h)" 
+                      <input 
                         type="number" min="0" value={woodSpan}
                         onChange={(e) => setWoodSpan(Math.max(100, Number(e.target.value)))}
                         className="w-full border border-home-grau/30 p-1 rounded font-mono text-xs text-center"

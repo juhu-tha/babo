@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { Monitor, Database, Settings, FileCode, Layers, ShieldCheck, Copy, Check, Download } from 'lucide-react';
+import { Monitor, Database, ArrowRight, Settings, FileCode, Layers, Eye, ShieldCheck, HelpCircle, Copy, Check, Download } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 interface MaterialArchetype {

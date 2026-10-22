@@ -5,13 +5,18 @@ import {
   Sun, 
   Clock, 
   Sparkles, 
+  Layers, 
   Building2, 
   Compass, 
-  Search,
-  Sliders
+  Search, 
+  Volume2, 
+  Info,
+  CheckCircle2,
+  Sliders,
+  Maximize2
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { ARCHITEKTUR_MATERIALITAET } from '@/src/data/architekturMaterialitaet';
+import { ARCHITEKTUR_MATERIALITAET, MaterialitaetInfo } from '@/src/data/architekturMaterialitaet';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 interface MaterialVisualSpec {

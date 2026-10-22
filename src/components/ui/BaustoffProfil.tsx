@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { 
   Pickaxe, 
@@ -12,8 +12,12 @@ import {
   RefreshCw, 
   AlertTriangle, 
   Sparkles,
+  ChevronDown,
+  ChevronUp,
   History,
+  ArrowUpRight,
   Volume2,
+  Eye,
   Palette,
   Calculator,
   ArrowRight

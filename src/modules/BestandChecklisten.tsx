@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { 
   Building2, 
   Search, 
-  History,
+  History, 
+  FileText,
+  BookOpen,
   Compass,
   ExternalLink,
-  ShieldAlert
+  ShieldAlert,
+  ClipboardList
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

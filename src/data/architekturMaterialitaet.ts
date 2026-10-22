@@ -1,3 +1,4 @@
+import React from 'react';
 
 export interface MaterialitaetInfo {
   optikTextur: string;

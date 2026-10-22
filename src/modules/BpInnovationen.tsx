@@ -1,6 +1,7 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { InlineMath, BlockMath } from 'react-katex';
 import {
   Sparkles,
   Rocket,
@@ -9,12 +10,16 @@ import {
   FlaskConical,
   Award,
   Layers,
+  ShieldAlert,
   ArrowRight,
   TrendingUp,
+  Cpu,
+  Leaf,
   Building2,
   CheckCircle2,
   AlertTriangle,
   Lightbulb,
+  ExternalLink,
   Target,
   BarChart3,
   Scale

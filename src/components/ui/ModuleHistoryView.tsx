@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { History, Compass, Filter, CheckCircle2 } from 'lucide-react';
-import { GroupHistory } from '@/src/data/moduleHistoryData';
+import { History, Milestone, Compass, BookOpen, Scale, ShieldCheck, Sparkles, Filter, CheckCircle2 } from 'lucide-react';
+import { GroupHistory, HistoryMilestone } from '@/src/data/moduleHistoryData';
 
 interface ModuleHistoryViewProps {
   history: GroupHistory;

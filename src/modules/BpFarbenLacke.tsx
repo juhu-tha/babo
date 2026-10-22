@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Paintbrush, Calculator, ShieldCheck, Info, Check, AlertTriangle, FlaskConical, Atom, Layers } from 'lucide-react';
+import { Paintbrush, Calculator, ShieldCheck, HelpCircle, Info, Sparkles, Droplets, Trash2, Check, AlertTriangle, FlaskConical, Workflow, Atom, Layers } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 
 interface BinderType {
@@ -1076,7 +1076,7 @@ export default function BpFarbenLacke() {
                     <div className="grid grid-cols-2 gap-4 pt-2 border-t border-home-grau/10">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold text-text-main/50 uppercase">Fläche (m²)</label>
-                        <input aria-label="Fläche (m²)"
+                        <input
                           type="number"
                           value={areaSquareMeters}
                           min="1"
@@ -1086,7 +1086,7 @@ export default function BpFarbenLacke() {
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold text-text-main/50 uppercase">Anzahl Arbeitsgänge</label>
-                        <select aria-label="Anzahl Arbeitsgänge"
+                        <select
                           value={numCoats}
                           onChange={(e) => setNumCoats(Number(e.target.value))}
                           className="w-full p-2 text-xs border border-home-grau rounded-md bg-white font-bold"
@@ -1439,7 +1439,7 @@ export default function BpFarbenLacke() {
                   <div className="lg:col-span-4 bg-stone-50 rounded-xl border border-home-grau/20 p-4 space-y-4 text-xs">
                     <div className="space-y-1">
                       <label className="font-bold text-text-main">1. Projektfläche (m²)</label>
-                      <input aria-label="1. Projektfläche (m²)" 
+                      <input 
                         type="number"
                         min="5"
                         max="50000"
@@ -1452,7 +1452,7 @@ export default function BpFarbenLacke() {
 
                     <div className="space-y-1">
                       <label className="font-bold text-text-main">2. Einsatzbereich / Bauteil</label>
-                      <select aria-label="2. Einsatzbereich / Bauteil" 
+                      <select 
                         value={osEinsatzbereich} 
                         onChange={(e) => setOsEinsatzbereich(e.target.value)}
                         className="w-full bg-white border border-home-grau/30 rounded-lg p-2 text-xs text-text-main outline-none focus:border-shiraz transition-all font-medium"
@@ -1468,7 +1468,7 @@ export default function BpFarbenLacke() {
 
                     <div className="space-y-1">
                       <label className="font-bold text-text-main">3. Bruch- bzw. Rissrisiko</label>
-                      <select aria-label="3. Bruch- bzw. Rissrisiko" 
+                      <select 
                         value={osCrackBridging} 
                         onChange={(e) => setOsCrackBridging(e.target.value)}
                         className="w-full bg-white border border-home-grau/30 rounded-lg p-2 text-xs text-text-main outline-none focus:border-shiraz transition-all font-medium"
@@ -1481,7 +1481,7 @@ export default function BpFarbenLacke() {
 
                     <div className="space-y-1">
                       <label className="font-bold text-text-main">4. Mechanische Rollbeanspruchung</label>
-                      <select aria-label="4. Mechanische Rollbeanspruchung" 
+                      <select 
                         value={osBelastung} 
                         onChange={(e) => setOsBelastung(e.target.value)}
                         className="w-full bg-white border border-home-grau/30 rounded-lg p-2 text-xs text-text-main outline-none focus:border-shiraz transition-all font-medium"

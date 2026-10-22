@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  GraduationCap, ExternalLink, Globe, Sparkles, Link2
+  GraduationCap, ExternalLink, Globe, Sparkles, Link2, Download
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
@@ -57,7 +57,7 @@ const THA_PORTALS: Portal[] = [
   {
     tag: 'Career Service',
     name: 'Karriere, Praktika & Jobs',
-    desc: 'Der Career Service der THA: Unterstützung bei Praktika, Werkstudierendentätigkeiten, Einstiegsjobs und Firmenkontaktmessen.',
+    desc: 'Der Career Service der THA: Vermittlung von Praktikumsplätzen im 5. Semester, Werkstudierendentätigkeiten, Einstiegsjobs und Firmenkontaktmessen.',
     url: 'https://www.tha.de/studium/berufseinstieg-und-alumni/studium-beruf/career-service/',
     colorClass: 'text-rose-600',
     badgeBg: 'bg-rose-50 text-rose-700'
