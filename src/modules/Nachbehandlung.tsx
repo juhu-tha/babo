@@ -3,6 +3,9 @@ import { Droplets } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { DIN1045_3_NACHBEHANDLUNG } from '@/src/data/normParams';
 
 export default function Nachbehandlung() {
   const [tempAir, setTempAir] = useState(25); // °C
@@ -12,8 +15,8 @@ export default function Nachbehandlung() {
 
   // States für Nachbehandlungsdauer
   const [festigkeitsEntwicklung, setFestigkeitsEntwicklung] = useState<'schnell'|'mittel'|'langsam'|'sehr_langsam'>('mittel');
-  const [expositionsklasse, setExpositionsklasse] = useState<'x0_xc1'|'andere'>('andere');
-  const [oberflaechentemp, setOberflaechentemp] = useState<'>=10'|'5-10'|'<5'>('>=10');
+  const [expositionsklasse, setExpositionsklasse] = useState<'x0_xc1'|'andere'|'xm'>('andere');
+  const [oberflaechentemp, setOberflaechentemp] = useState<'ge25'|'15_25'|'10_15'|'5_10'|'<5'>('10_15');
 
   // Evaporation rate formula (ACI 305R metric)
   // E = 5 * ([Tc + 18]^2.5 - r * [Ta + 18]^2.5) * (V + 4) * 10^-6
@@ -32,24 +35,12 @@ export default function Nachbehandlung() {
 
   const isCritical = evaporationRate > 1.0;
 
+  // Mindestdauer nach DIN 1045-3 (Tabelle Mindestdauer der Nachbehandlung; Ausgabe 2023 manuell prüfen)
   const curingTime = useMemo(() => {
     if (oberflaechentemp === '<5') return -1; // Sondermaßnahmen erforderlich
-
-    let baseTime = 0;
-    if (festigkeitsEntwicklung === 'schnell') {
-      baseTime = expositionsklasse === 'x0_xc1' ? 1 : 2;
-    } else if (festigkeitsEntwicklung === 'mittel') {
-      baseTime = expositionsklasse === 'x0_xc1' ? 1 : 3;
-    } else if (festigkeitsEntwicklung === 'langsam') {
-      baseTime = expositionsklasse === 'x0_xc1' ? 2 : 5;
-    } else if (festigkeitsEntwicklung === 'sehr_langsam') {
-      baseTime = expositionsklasse === 'x0_xc1' ? 3 : 10;
-    }
-
-    if (oberflaechentemp === '5-10') {
-      return baseTime * 2;
-    }
-    return baseTime;
+    if (expositionsklasse === 'x0_xc1') return DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage;
+    const tage = DIN1045_3_NACHBEHANDLUNG.mindestdauerTage[oberflaechentemp][festigkeitsEntwicklung];
+    return expositionsklasse === 'xm' ? tage * 2 : tage;
   }, [festigkeitsEntwicklung, expositionsklasse, oberflaechentemp]);
 
   return (
@@ -72,7 +63,8 @@ export default function Nachbehandlung() {
             Wenn Wasser schneller von der Oberfläche verdunstet, als es aus dem Inneren nachgeliefert wird (Bluten), 
             entstehen kapillare Zugspannungen und es kommt zu <strong>Frühschwindrissen</strong> (plastisches Schwinden).
             Eine Verdunstungsrate &gt; 1,0 kg/m²h gilt als kritisch.
-          </p>
+            </p>
+            <p className="mt-2 text-xs"><strong>Lernpfad:</strong> 1. Verdunstung abschätzen → 2. Mindestdauer festlegen → 3. Maßnahmen wählen (Folie, Nachbehandlungsmittel, Wasserzufuhr, Schalung belassen). Grundlagen der Erhärtung: Reiter Hydratation &amp; Folgen.</p>
         </div>
 
         <Slider
@@ -155,7 +147,8 @@ export default function Nachbehandlung() {
                 onChange={(e) => setExpositionsklasse(e.target.value as any)}
               >
                 <option value="x0_xc1">X0, XC1</option>
-                <option value="andere">Andere (XC2-XC4, XD, XS, XF, XA)</option>
+                <option value="andere">Andere (XC2–XC4, XD, XS, XF, XA)</option>
+                <option value="xm">XM (Verschleiß: doppelte Dauer)</option>
               </select>
             </div>
 
@@ -166,8 +159,10 @@ export default function Nachbehandlung() {
                 value={oberflaechentemp}
                 onChange={(e) => setOberflaechentemp(e.target.value as any)}
               >
-                <option value=">=10">T ≥ 10 °C</option>
-                <option value="5-10">5 °C ≤ T &lt; 10 °C</option>
+                <option value="ge25">T ≥ 25 °C</option>
+                <option value="15_25">15 °C ≤ T &lt; 25 °C</option>
+                <option value="10_15">10 °C ≤ T &lt; 15 °C</option>
+                <option value="5_10">5 °C ≤ T &lt; 10 °C</option>
                 <option value="<5">T &lt; 5 °C (Winterbau)</option>
               </select>
             </div>
@@ -178,56 +173,47 @@ export default function Nachbehandlung() {
             <div className="flex justify-between items-center mb-1">
               <span className="text-sm text-text-main/80">Erforderliche Mindestdauer:</span>
               <span className={`text-xl font-bold ${curingTime === -1 ? 'text-torch-red' : 'text-shiraz'}`}>
-                {curingTime === -1 ? 'Sondermaßnahmen!' : `${curingTime} ${curingTime === 1 ? 'Tag' : 'Tage'}`}
+                {curingTime === -1 ? 'Sondermaßnahmen!' : `${formatDeZahl(curingTime, curingTime % 1 ? 1 : 0)} ${curingTime === 1 ? 'Tag' : 'Tage'}`}
               </span>
             </div>
             {curingTime === -1 ? (
               <p className="text-xs text-torch-red mt-2 leading-relaxed">
                 Bei Oberflächentemperaturen unter 5°C kommt die Festigkeitsentwicklung nahezu zum Erliegen. Beton darf nicht gefrieren! Es sind <strong>Winterbaumaßnahmen</strong> (Wärmedämmung, Beheizung) erforderlich.
               </p>
-            ) : oberflaechentemp === '5-10' ? (
+            ) : expositionsklasse === 'x0_xc1' ? (
               <p className="text-xs text-text-main/70 mt-2 leading-relaxed">
-                Aufgrund der niedrigen Oberflächentemperatur (5-10 °C) wurde die Nachbehandlungsdauer gemäß Norm <strong>verdoppelt</strong>.
+                X0 und XC1: 0,5 Tage (12 Stunden), sofern die Verarbeitbarkeitszeit unter 5 Stunden liegt und die Oberflächentemperatur mindestens 5 °C beträgt.
               </p>
             ) : null}
           </div>
 
           <details className="mt-2 group cursor-pointer border border-home-grau/30 rounded-lg bg-off-white">
             <summary className="p-3 font-semibold text-sm text-text-main">
-              Normtabelle anzeigen (T ≥ 10 °C)
+              Normtabelle anzeigen (DIN 1045-3, Mindestdauer in Tagen; X0/XC1: 0,5 Tage; XM: doppelte Werte)
             </summary>
             <div className="p-3 pt-0 overflow-x-auto">
               <table className="w-full text-sm text-left border-collapse">
                 <thead>
                   <tr className="border-b border-home-grau/30">
-                    <th className="py-2 pr-1 font-bold text-text-main">Entwicklung</th>
-                    <th className="py-2 px-1 font-bold text-text-main text-center">X0, XC1</th>
-                    <th className="py-2 pl-1 font-bold text-text-main text-center">Andere Klassen</th>
+                    <th className="py-2 px-2">Oberflächentemperatur</th>
+                    <th className="py-2 px-2">r ≥ 0,50</th>
+                    <th className="py-2 px-2">r ≥ 0,30</th>
+                    <th className="py-2 px-2">r ≥ 0,15</th>
+                    <th className="py-2 px-2">r &lt; 0,15</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 pr-1">Schnell (r ≥ 0,5)</td>
-                    <td className="py-2 px-1 text-center">1 Tag</td>
-                    <td className="py-2 pl-1 text-center font-bold text-shiraz">2 Tage</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 pr-1">Mittel (r ≥ 0,3)</td>
-                    <td className="py-2 px-1 text-center">1 Tag</td>
-                    <td className="py-2 pl-1 text-center font-bold text-shiraz">3 Tage</td>
-                  </tr>
-                  <tr className="border-b border-home-grau/10">
-                    <td className="py-2 pr-1">Langsam (r ≥ 0,15)</td>
-                    <td className="py-2 px-1 text-center">2 Tage</td>
-                    <td className="py-2 pl-1 text-center font-bold text-shiraz">5 Tage</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 pr-1">Sehr langsam (r &lt; 0,15)</td>
-                    <td className="py-2 px-1 text-center">3 Tage</td>
-                    <td className="py-2 pl-1 text-center font-bold text-shiraz">10 Tage</td>
-                  </tr>
+                  {([['ge25', 'T ≥ 25 °C'], ['15_25', '15 ≤ T < 25 °C'], ['10_15', '10 ≤ T < 15 °C'], ['5_10', '5 ≤ T < 10 °C']] as const).map(([k, label]) => (
+                    <tr key={k} className="border-b border-home-grau/10">
+                      <td className="py-2 px-2">{label}</td>
+                      {(['schnell', 'mittel', 'langsam', 'sehr_langsam'] as const).map(e => (
+                        <td key={e} className="py-2 px-2 font-mono">{formatDeZahl(DIN1045_3_NACHBEHANDLUNG.mindestdauerTage[k][e], 0)}</td>
+                      ))}
+                    </tr>
+                  ))}
                 </tbody>
               </table>
+              <p className="text-[11px] text-text-main/60 mt-2">Werte nach DIN 1045-3; Übereinstimmung mit der Ausgabe 2023-08 manuell prüfen.</p>
             </div>
           </details>
         </div>
@@ -276,26 +262,52 @@ export default function Nachbehandlung() {
           </div>
         </div>
 
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Verdunstungsrate an einem Sommertag"
+          zielGleichung="E = 5 \cdot \left[(T_c + 18)^{2{,}5} - r\,(T_a + 18)^{2{,}5}\right] \cdot (V + 4) \cdot 10^{-6}"
+          normQuelle="ACI 305R (Verdunstungsformel, metrisch)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'T_a = T_c = 25\\,^{\\circ}\\text{C},\\; r = 0{,}30,\\; V = 25\\,\\text{km/h}', erklaerung: 'Trockene, windige Witterung.' },
+            { titel: '2. Klammerausdruck', formel: '43^{2{,}5} \\cdot (1 - 0{,}30) = 12\\,124 \\cdot 0{,}70 = 8\\,487', erklaerung: 'Bei gleicher Beton- und Lufttemperatur vereinfacht sich der Ausdruck.' },
+            { titel: '3. Verdunstungsrate', formel: 'E = 5 \\cdot 8\\,487 \\cdot 29 \\cdot 10^{-6} = 1{,}23\\,\\text{kg/(m}^2\\text{h)}', erklaerung: 'Wind erhöht den Wert linear über (V + 4).' },
+            { titel: '4. Bewertung', formel: '1{,}23 > 1{,}0\\,\\text{kg/(m}^2\\text{h)}', erklaerung: 'Gefahr von Frühschwindrissen: sofort abdecken oder Nachbehandlungsmittel aufsprühen.' },
+          ]}
+          ergebnisHinweis="E ≈ 1,23 kg/(m²·h) – kritisch, Schutzmaßnahmen sofort nach dem Abziehen."
+        />
+
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Mindestdauer der Nachbehandlung"
+          zielGleichung="t_{NB} = f(r,\; T_{Oberfläche},\; \text{Expositionsklasse})"
+          normQuelle="DIN 1045-3 (Mindestdauer der Nachbehandlung; Ausgabe 2023 manuell prüfen)"
+          schritte={[
+            { titel: '1. Festigkeitsentwicklung', formel: 'r = f_{cm,2} / f_{cm,28} = 0{,}25 \\Rightarrow \\text{langsam}', erklaerung: 'Angabe des Betonwerks, z. B. Beton mit CEM III/A.' },
+            { titel: '2. Randbedingungen', formel: '\\text{XC4},\\; T_{Oberfläche} = 12\\,^{\\circ}\\text{C}', erklaerung: 'Spalte „andere Expositionsklassen“, Zeile 10 ≤ T < 15 °C.' },
+            { titel: '3. Ablesen', formel: 't_{NB} = 7\\,\\text{Tage}', erklaerung: 'Bei XM wären es 14 Tage.' },
+          ]}
+          ergebnisHinweis="7 Tage Nachbehandlung."
+        />
+
+        <ModulTest moduleId="nachbehandlung" />
+
         <ModuleFooter 
           weblinks={[
             { title: "Beton.wiki: Nachbehandlung", url: "https://beton.wiki/index.php?title=Nachbehandlung" }, 
-            { title: "Zement-Merkblatt B8: Nachbehandlung von Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
+            { title: "Zement-Merkblatt B 8: Nachbehandlung und Schutz des jungen Betons (BauNetz Wissen)", url: "https://www.baunetzwissen.de/beton/tipps/planungshilfen/b--8--nachbehandlung-und-schutz-des-jungen-betons-1588977" }
           ]} 
           wikipedia={[
-            { title: 'Nachbehandlung (Beton)' },
             { title: 'Frühschwinden', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 13670:2010-06 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' },
-            { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton - Teil 3: Bauausführung - Anwendungsregeln zu DIN EN 13670)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' },
-            { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-            { title: 'ACI 305R: Guide to Hot Weather Concreting (Verdunstungsnomogramm)', url: 'https://www.concrete.org/' },
-            { title: 'DBV-Merkblatt: Nachbehandlung von Beton (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/' }
+            { title: 'DIN EN 13670:2010-06 (Ausführung von Tragwerken aus Beton)' },
+            { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton - Teil 3: Bauausführung - Anwendungsregeln zu DIN EN 13670)' },
+            { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
+            { title: 'ACI 305R: Guide to Hot Weather Concreting (Verdunstungsnomogramm)' },
+            { title: 'DBV-Merkblatt: Nachbehandlung von Beton (Deutscher Beton- und Bautechnik-Verein)' }
           ]}
           literatur={[
             'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
             'Neville, A. M. (2011): Properties of Concrete (5. Auflage, Pearson Education)',
-            'Springenschmid, R. (1998): Vermeidung von Rissen in jungen Betonbauteilen (Bauverlag)'
+            'Springenschmid, R.: Vermeidung von Rissen in jungen Betonbauteilen (Angaben manuell prüfen)'
           ]}
           formeln={[
             {
@@ -305,13 +317,13 @@ export default function Nachbehandlung() {
             },
             {
               formel: 'r = \\frac{f_{cm,2}}{f_{cm,28}}',
-              erklaerung: 'Festigkeitsentwicklungsverhältnis r nach DIN EN 13670: schnell (r >= 0.50), mittel (0.30 <= r < 0.50), langsam (0.15 <= r < 0.30), sehr langsam (r < 0.15).',
-              quelle: 'DIN EN 13670 Tab. 4'
+              erklaerung: 'Festigkeitsentwicklungsverhältnis r nach DIN EN 13670: schnell (r ≥ 0,50), mittel (0,30 ≤ r < 0,50), langsam (0,15 ≤ r < 0,30), sehr langsam (r < 0,15).',
+              quelle: 'DIN EN 13670 / DIN 1045-3'
             },
             {
               formel: 'f_{ck,t} \\ge 0{,}50 \\cdot f_{ck}',
               erklaerung: 'Ziel-Kriterium der Nachbehandlung: Die Betonrandzone muss mindestens 50 % der charakteristischen Zylinderdruckfestigkeit erreicht haben, um ausreichende Dauerhaftigkeit und Dichtigkeit zu gewährleisten.',
-              quelle: 'DIN EN 13670 / DIN 1045-3'
+              quelle: 'DIN 1045-3 (manuell prüfen)'
             }
           ]}
         />

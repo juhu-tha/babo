@@ -2,7 +2,6 @@ import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Award, AlertTriangle, CheckCircle2, Shield, Info, FileText, Settings } from 'lucide-react';
 
 export default function HydratationRissberechnung() {
@@ -576,27 +575,6 @@ export default function HydratationRissberechnung() {
 
       </div>
 
-      <ModuleFooter
-        wikipedia={[
-          { title: 'Rissbreitenbegrenzung' },
-          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' }
-        ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Heft 600 DAfStb: Erläuterungen zu DIN EN 1992-1-1 (Eurocode 2)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)' },
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton' }
-        ]}
-        formeln={[
-          {
-            formel: 'A_{s,min} = k_c \\cdot k \\cdot f_{ct,eff} \\cdot A_{ct} / \\sigma_s',
-            erklaerung: 'Mindestbewehrungsformel zur Rissbreitenbegrenzung gemäß DIN EN 1992-1-1 Abschnitt 7.3.2.',
-            quelle: 'DIN EN 1992-1-1'
-          }
-        ]}
-      />
 
     </div>
   );

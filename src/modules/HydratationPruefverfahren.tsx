@@ -1,7 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { InlineMath } from 'react-katex';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Activity, Thermometer, Layers, AlertOctagon, HelpCircle, CheckCircle, Flame, BarChart2 } from 'lucide-react';
 
 interface CementProfile {
@@ -532,9 +531,9 @@ export default function HydratationPruefverfahren() {
 
                   <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-900 space-y-2 flex flex-col">
                     <div>
-                      <span className="font-bold text-blue-950 block">Normativer Bezug (WTA &amp; DBV):</span>
+                      <span className="font-bold text-blue-950 block">Prüfgrundlagen:</span>
                       <p className="leading-relaxed">
-                        In Deutschland regelt das <strong>WTA-Merkblatt 8-10</strong> sowie der zugehörige DBV-Sachstandsbericht den Versuchsablauf. Die Schwindmessrinne liefert den präzisen Dehnungsverlauf <InlineMath math="\varepsilon_{cs}(t)" /> für thermo-mechanische Finite-Elemente-Analysen (FE-Simulationen).
+                        Prüfgrundlagen sind z. B. DIN EN 12617-4 (Schwinden) und ASTM C1581 (Ringversuch); Versuchsdetails manuell prüfen. Die Schwindmessrinne liefert den präzisen Dehnungsverlauf <InlineMath math="\varepsilon_{cs}(t)" /> für thermo-mechanische Finite-Elemente-Analysen (FE-Simulationen).
                       </p>
                     </div>
                     <div className="border-t border-blue-100 pt-2 text-blue-950/90">
@@ -628,31 +627,6 @@ export default function HydratationPruefverfahren() {
 
       </div>
 
-      <ModuleFooter
-        wikipedia={[
-          { title: 'Betontechnologie', url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: 'Hydratationswärme' }
-        ]}
-        literatur={[
-          'Beton-Laborpraxis: Frisch- und Festbetonprüfung, Bindemittelprüfungen (11. Auflage, Verlag Bau+Technik)',
-          'Zementchemie: Reaktionsmechanismen der Hydratationsphasen, Prof. Dr. Stark, Bauhaus-Universität Weimar'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 196-9 (Bestimmung der Hydratationswärme - Teil-adiabatisches Verfahren)' },
-          { title: 'DIN EN 196-11 (Bestimmung der Hydratationswärme - Isothermes Konduktionskalorimeter-Verfahren)' },
-          { title: 'DIN EN 196-8 (Bestimmung der Hydratationswärme - Lösungswärmeverfahren)' },
-          { title: 'WTA-Merkblatt 8-10 (Schwinden von Beton - Messverfahren)', url: 'https://www.wta-gmbh.de/' },
-          { title: 'RILEM TC 119-TCE / 195-ATG (Testing conditions for Cracking Frames)', url: 'https://www.rilem.net/' },
-          { title: 'DAfStb-Richtlinie „Massige Bauteile aus Beton“', url: 'https://www.dafstb.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'q(t) = \\frac{dQ(t)}{dt}',
-            erklaerung: 'Spezifischer Wärmefluss (Entwicklungswärmestrom) der Hydratationsdauer.',
-            quelle: 'Zementchemie'
-          }
-        ]}
-      />
 
     </div>
   );
