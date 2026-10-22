@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { Activity, Ruler, Weight, ShieldAlert, Award, ArrowRight, Zap, RefreshCw, Sparkles } from 'lucide-react';
+import { Activity, Ruler, Weight, ArrowRight, Sparkles } from 'lucide-react';
 import { BlockMath, InlineMath } from 'react-katex';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

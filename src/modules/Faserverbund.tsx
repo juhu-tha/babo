@@ -15,6 +15,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 
@@ -206,7 +207,7 @@ export default function Faserverbund() {
               <div className="flex flex-col gap-4 mb-6">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Faserart</label><InfoTooltip text="Art der verwendeten Verstärkungsfasern." /></div>
-                  <select 
+                  <select aria-label="Faserart" 
                     className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={fiberType}
                     onChange={(e) => setFiberType(e.target.value as keyof typeof fibers)}
@@ -216,7 +217,7 @@ export default function Faserverbund() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Matrixart</label><InfoTooltip text="Art des verwendeten Matrixmaterials (Kunstharz)." /></div>
-                  <select 
+                  <select aria-label="Matrixart" 
                     className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={matrixType}
                     onChange={(e) => setMatrixType(e.target.value as keyof typeof matrices)}

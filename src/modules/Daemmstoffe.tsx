@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, ArrowRight, Layers, BookOpen } from 'lucide-react';
+import { Box, Layers, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 

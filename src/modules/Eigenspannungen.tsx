@@ -1,11 +1,12 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Box, Info } from 'lucide-react';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -30,6 +31,9 @@ ChartJS.register(
 );
 
 export default function Eigenspannungen() {
+  // Eingebettet in Hydratation & Folgen: Quellenblock dort zentral
+  const { activeTab: aktiverReiter } = useTabContext();
+  const eingebettet = aktiverReiter === 'hydratation_folgen';
   const [activeTab, setActiveTab] = useState<'beton'>('beton');
   
   // Beton State
@@ -324,7 +328,8 @@ export default function Eigenspannungen() {
           </div>
       </div>
       
-      <ModuleFooter weblinks={[{ title: "Beton.wiki: Eigenspannungen", url: "https://beton.wiki/index.php?title=Eigenspannungen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }]} 
+      {!eingebettet && (
+<ModuleFooter weblinks={[{ title: "Beton.wiki: Eigenspannungen", url: "https://beton.wiki/index.php?title=Eigenspannungen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }]} 
         wikipedia={[
         { title: 'Eigenspannung', url: 'https://de.wikipedia.org/wiki/Eigenspannung' }
       ]}
@@ -351,6 +356,7 @@ export default function Eigenspannungen() {
           }
         ]}
       />
+)}
     </div>
   );
 }

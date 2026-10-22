@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Activity, Layers, Settings, Map, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Activity, Layers, Settings, Map, ShieldCheck } from 'lucide-react';
 
 export default function Faserbeton() {
   return (
