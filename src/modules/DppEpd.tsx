@@ -956,10 +956,10 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
           'IBU (Institut Bauen und Umwelt e.V.): Allgemeine Programmanleitung für EPDs'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln für die Produktkategorie Bauprodukte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
-          { title: 'DIN EN ISO 14040 / 14044 (Umweltmanagement - Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14040' },
+          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln für die Produktkategorie Bauprodukte)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
+          { title: 'DIN EN ISO 14040 / 14044 (Umweltmanagement - Ökobilanz - Grundsätze und Rahmenbedingungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+14040' },
           { title: 'Verordnung (EU) 2024/1781 (Ökodesign, ESPR) und Verordnung (EU) 2024/3110 (Bauprodukteverordnung)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN ISO 14025 (Umweltkennzeichnungen und -deklarationen - Typ III Umweltdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+14025' }
+          { title: 'DIN EN ISO 14025 (Umweltkennzeichnungen und -deklarationen - Typ III Umweltdeklarationen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+14025' }
         ]}
         formeln={[
           {

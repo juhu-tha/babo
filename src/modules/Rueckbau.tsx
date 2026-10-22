@@ -1628,11 +1628,11 @@ export default function Rueckbau() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18007:2022-09 (Abbrucharbeiten – Begriffe, Verfahren, Anwendungsbereiche)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18007' },
-          { title: 'VDI 6210 Blatt 1:2025-10 (Abbruch von baulichen und technischen Anlagen)', url: 'https://www.dinmedia.de/de/suche?q=VDI+6210' },
-          { title: 'DIN SPEC 91484:2023-09 (Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten, Pre-Demolition Audit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91484' },
-          { title: 'DIN SPEC 91525:2026-02 (Anschlussnutzungskonzept für Bauprodukte aus Bestandsgebäuden)', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91525' },
-          { title: 'VDI/GVSS 6202 Blatt 1:2013-10 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.dinmedia.de/de/suche?q=VDI+6202' },
+          { title: 'DIN 18007:2022-09 (Abbrucharbeiten – Begriffe, Verfahren, Anwendungsbereiche)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18007' },
+          { title: 'VDI 6210 Blatt 1:2025-10 (Abbruch von baulichen und technischen Anlagen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VDI+6210' },
+          { title: 'DIN SPEC 91484:2023-09 (Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten, Pre-Demolition Audit)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+SPEC+91484' },
+          { title: 'DIN SPEC 91525:2026-02 (Anschlussnutzungskonzept für Bauprodukte aus Bestandsgebäuden)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+SPEC+91525' },
+          { title: 'VDI/GVSS 6202 Blatt 1:2013-10 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VDI+6202' },
           { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Gewerbeabfallverordnung (GewAbfV)', url: 'https://www.gesetze-im-internet.de/gewabfv_2017/' },
           { title: 'TRGS 519 (Asbest), Fassung 2014, zuletzt geändert 28.01.2025', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' }

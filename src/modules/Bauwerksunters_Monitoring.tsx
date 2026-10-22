@@ -860,8 +860,8 @@ export default function Bauwerksunters_Monitoring() {
         ]}
         regelwerke={[
           { title: 'VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung); Blatt 1.1:2026-06', url: 'https://www.vdi.de/' },
-          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
-          { title: 'DIN 18560-1 (Estriche im Bauwesen – Allgemeine Anforderungen, Prüfung und Ausführung); Belegreife nach Schnittstellenkoordination (BVF/ZDB) bzw. DIN 18356/18365', url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1' },
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1076' },
+          { title: 'DIN 18560-1 (Estriche im Bauwesen – Allgemeine Anforderungen, Prüfung und Ausführung); Belegreife nach Schnittstellenkoordination (BVF/ZDB) bzw. DIN 18356/18365', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18560-1' },
           { title: 'RILEM TC 154-EMC: Test methods for on-site measurement of resistivity of concrete (Polder, Materials and Structures 33, 2000)', url: 'https://www.rilem.net/' }
         ]}
         formeln={[

@@ -810,11 +810,11 @@ export default function BpMetallisch() {
           'Deutsches Kupferinstitut: Kupfer im Hochbau - Planung und Ausführung'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+10025' }, 
-          { title: 'DIN EN 1090 (Ausführung von Stahltragwerken und Aluminiumtragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1090' }, 
-          { title: 'DIN EN ISO 1461 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+1461' },
-          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1-1' },
-          { title: 'DIN EN 1999-1-1 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1999-1-1' }
+          { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+10025' }, 
+          { title: 'DIN EN 1090 (Ausführung von Stahltragwerken und Aluminiumtragwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1090' }, 
+          { title: 'DIN EN ISO 1461 (Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+1461' },
+          { title: 'DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1-1' },
+          { title: 'DIN EN 1999-1-1 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1999-1-1' }
         ]} 
         weblinks={[
           { title: 'bauforumstahl e.V. – Bemessungshilfen & Nachhaltigkeitsdaten', url: 'https://www.bauforumstahl.de/' },

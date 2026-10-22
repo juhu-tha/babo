@@ -113,10 +113,10 @@ export default function IntegrationVerformungen() {
           { title: 'Kriechen und Schwinden von Beton', url: 'https://de.wikipedia.org/wiki/Kriechen_und_Schwinden_von_Beton' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Rissbegrenzung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Rissbegrenzung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
           { title: 'DAfStb-Heft 600: Erläuterungen zu Eurocode 2 (Kap. 7: Gebrauchstauglichkeit)', url: 'https://www.dafstb.de/' },
           { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670' }
+          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670' }
         ]}
         literatur={[
           'Rostásy, F. S.; Krauß, M.; Budelmann, H.: Planungshilfen zur Beherrschung von Zwang in massigen Bauteilen (Heft 483 DAfStb, Beuth Verlag)',

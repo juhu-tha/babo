@@ -920,8 +920,8 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
             "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011"
           ]} 
           regelwerke={[
-            { title: "DIN 820-1 (Normungsarbeit - Grundsätze)", url: "https://www.dinmedia.de/de/suche?q=DIN+820-1" },
-            { title: "DIN EN 45020 (Normung und damit zusammenhängende Tätigkeiten - Allgemeine Begriffe)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+45020" },
+            { title: "DIN 820-1 (Normungsarbeit - Grundsätze)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+820-1" },
+            { title: "DIN EN 45020 (Normung und damit zusammenhängende Tätigkeiten - Allgemeine Begriffe)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+45020" },
             { title: "Wiener Vereinbarung ISO/CEN", url: "https://www.iso.org/vienna-agreement.html" },
             { title: "Verordnung (EU) 2024/3110 (neue BauPVO; löst VO (EU) Nr. 305/2011 schrittweise ab)", url: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R3110" }
           ]} 

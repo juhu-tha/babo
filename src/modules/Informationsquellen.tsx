@@ -147,7 +147,7 @@ const FREE_DATABASES: DBRecord[] = [
     discipline: 'GRUNDLAGEN',
     publisher: 'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)',
     accessibility: 'Kostenlose Kriterien-Steckbriefe',
-    url: 'https://www.bnb-nachhaltigkeit.de/',
+    url: 'https://www.bnb-nachhaltigesbauen.de/',
     standards: ['BNB-Zertifizierungssystem'],
     evaluation: 'Das BNB ist ein ganzheitliches, national zertifiziertes Bewertungssystem für Bundesgebäude. Es übersetzt abstrakte ökologische Prinzipien in konkrete, mess- und überprüfbare Kriteriensteckbriefe über den Lebenszyklus (Ökologie, Ökonomie, Soziales, Technik).',
     benefits: [
@@ -183,7 +183,7 @@ const FREE_DATABASES: DBRecord[] = [
     discipline: 'STAHLBETONBAU',
     publisher: 'InformationsZentrum Beton GmbH & Bund Deutscher Architektinnen und Architekten (BDA)',
     accessibility: 'Freie Projektdatenbank',
-    url: 'https://www.beton.org/architektur/architekturpreis-beton/',
+    url: 'https://www.architekturpreis-beton.de/',
     standards: ['Tragwerksentwurf', 'Statische Detailplanung'],
     evaluation: 'Dokumentiert bautechnisch herausragende, mit dem renommierten Architekturpreis ausgezeichnete Massivbauten. Zeigt exzellente Tragwerkslösungen, anspruchsvolle Sichtbetonschalungen, historisch gewachsene Verbund-Fügungen und nachhaltige Tragwerkseinsparungen.',
     benefits: [
@@ -219,7 +219,7 @@ const FREE_DATABASES: DBRecord[] = [
     discipline: 'NACHHALTIGKEIT & DIGITALES',
     publisher: 'BMWSB (eLCA) / Umweltbundesamt (PRTR / thru.de)',
     accessibility: 'Kostenlose Webanwendungen der Bundesrepublik',
-    url: 'https://www.bausoftware-elca.de/',
+    url: 'https://www.bauteileditor.de/',
     standards: ['DIN EN 15978', 'PRTR-Verordnung'],
     evaluation: 'Ein aufeinander abgestimmtes digitales Duo. eLCA ermöglicht die interaktive, BIM-nahe Modellierung der Umweltwirkungen von Gebäuden direkt über den Webbrowser auf Basis der ÖKOBAUDAT. thru.de (PRTR-Register des UBA) schafft Transparenz über gewerbliche Emissionen und Schadstoffströme der herstellenden Industrie.',
     benefits: [
@@ -640,7 +640,6 @@ export default function Informationsquellen() {
       {/* Footer list */}
       <ModuleFooter 
         wikipedia={[
-          { title: 'Umweltproduktdeklaration (EPD)', url: 'https://de.wikipedia.org/wiki/Umweltproduktdeklaration' },
           { title: 'Gefahrstoffverordnung (GefStoffV)', url: 'https://de.wikipedia.org/wiki/Gefahrstoffverordnung' },
           { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' }
         ]}
@@ -649,7 +648,7 @@ export default function Informationsquellen() {
           { title: 'Leitfaden Nachhaltiges Bauen (BMWSB) - Standard für Bundesbauten', url: 'https://www.nachhaltigesbauen.de/' },
           { title: 'VDI 6202 Blatt 1: Schadstofferkundung von Gebäuden und baulichen Anlagen', url: 'https://www.vdi.de/' },
           { title: 'TRGS 519 / 521 / 524: Technische Regeln für Gefahrstoffe', url: 'https://www.baua.de/' },
-          { title: 'DIN SPEC 91484: Verfahren zur Erfassung von Bauprodukten vor Abbruch- und Umbaumaßnahmen', url: 'https://www.dinmedia.de/de/suche?q=DIN+SPEC+91484' }
+          { title: 'DIN SPEC 91484: Verfahren zur Erfassung von Bauprodukten vor Abbruch- und Umbaumaßnahmen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+SPEC+91484' }
         ]}
         literatur={[
           'BMWSB: Bewertungssystem Nachhaltiges Bauen (BNB) Kriteriensteckbriefe',

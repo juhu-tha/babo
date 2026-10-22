@@ -218,8 +218,8 @@ export default function BpBeton() {
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch.'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 1045-3 / DIN EN 13670 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
+          { title: 'DIN 1045-3 / DIN EN 13670 (Ausführung von Tragwerken aus Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-3' },
           { title: 'Deutscher Ausschuss für Stahlbeton (DAfStb): Richtlinien und Regelwerke', url: 'https://www.dafstb.de/' }
         ]}
         formeln={[

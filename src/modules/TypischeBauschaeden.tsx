@@ -1003,9 +1003,9 @@ export default function TypischeBauschaeden() {
           'Aachener Bausachverständigentage (Tagungsbände, AIBau). Wiesbaden: Springer Vieweg (jährlich)'
         ]} 
         regelwerke={[
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18533' },
-          { title: 'DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1076' },
+          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533' },
+          { title: 'DIN EN 1992-1-1 / Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
+          { title: 'DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1076' },
           { title: 'Deutscher Ausschuss für Stahlbeton (DAfStb): Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10', url: 'https://www.dafstb.de/' },
           { title: 'WTA-Merkblatt 4-6: Nachträgliches Abdichten erdberührter Bauteile', url: 'https://www.wta-gmbh.de/' }
         ]} 

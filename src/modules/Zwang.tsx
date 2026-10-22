@@ -260,9 +260,9 @@ export function ZwangCalculator() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Rissbreitenbegrenzung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DAfStb Heft 466: Bemessungshilfen zu Eurocode 2 (Beuth Verlag)', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Heft+466' },
-          { title: 'DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dinmedia.de/de/suche?q=DAfStb+Heft+555' }
+          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Rissbreitenbegrenzung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
+          { title: 'DAfStb Heft 466: Bemessungshilfen zu Eurocode 2 (Beuth Verlag)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DAfStb+Heft+466' },
+          { title: 'DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DAfStb+Heft+555' }
         ]}
         formeln={[
           {

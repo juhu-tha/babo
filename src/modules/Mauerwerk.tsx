@@ -966,15 +966,15 @@ export default function Mauerwerk() {
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1996-1-1:2024-03 / DIN EN 1996-1-1/NA:2019-12 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten - Teil 1-1: Allgemeine Regeln)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-1-1' },
-          { title: 'DIN EN 1996-3:2024-03 / DIN EN 1996-3/NA:2019-12 (Eurocode 6 - Teil 3: Vereinfachte Berechnungsmethoden für unbewehrte Mauerwerksbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-3' },
-          { title: 'DIN EN 771-1:2015-11 (Festlegungen für Mauersteine - Teil 1: Mauerziegel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-1' },
-          { title: 'DIN EN 771-2:2015-11 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-2' },
-          { title: 'DIN EN 771-3:2015-11 (Festlegungen für Mauersteine - Teil 3: Betonmauersteine)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-3' },
-          { title: 'DIN EN 771-4:2015-11 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-4' },
-          { title: 'DIN EN 998-2:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-2' },
-          { title: 'DIN 20000-401:2017-01 (Anwendung von Mauerziegeln nach DIN EN 771-1)', url: 'https://www.dinmedia.de/de/suche?q=DIN+20000-401' },
-          { title: 'DIN 20000-412:2019-06 (Anwendung von Mauermörtel nach DIN EN 998-2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+20000-412' }
+          { title: 'DIN EN 1996-1-1:2024-03 / DIN EN 1996-1-1/NA:2019-12 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten - Teil 1-1: Allgemeine Regeln)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1996-1-1' },
+          { title: 'DIN EN 1996-3:2024-03 / DIN EN 1996-3/NA:2019-12 (Eurocode 6 - Teil 3: Vereinfachte Berechnungsmethoden für unbewehrte Mauerwerksbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1996-3' },
+          { title: 'DIN EN 771-1:2015-11 (Festlegungen für Mauersteine - Teil 1: Mauerziegel)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+771-1' },
+          { title: 'DIN EN 771-2:2015-11 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+771-2' },
+          { title: 'DIN EN 771-3:2015-11 (Festlegungen für Mauersteine - Teil 3: Betonmauersteine)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+771-3' },
+          { title: 'DIN EN 771-4:2015-11 (Festlegungen für Mauersteine - Teil 4: Porenbetonsteine)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+771-4' },
+          { title: 'DIN EN 998-2:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+998-2' },
+          { title: 'DIN 20000-401:2017-01 (Anwendung von Mauerziegeln nach DIN EN 771-1)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+20000-401' },
+          { title: 'DIN 20000-412:2019-06 (Anwendung von Mauermörtel nach DIN EN 998-2)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+20000-412' }
         ]}
         formeln={[
           {

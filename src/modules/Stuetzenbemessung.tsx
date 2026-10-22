@@ -396,7 +396,7 @@ export default function Stuetzenbemessung() {
           { title: 'Interaktionsdiagramm', url: 'https://de.wikipedia.org/wiki/Interaktionsdiagramm' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitte 5.8 und 9.5)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitte 5.8 und 9.5)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' }
         ]}
         literatur={['Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)']}
         formeln={[

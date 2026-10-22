@@ -966,7 +966,7 @@ export default function KriechenSchwinden() {
             { title: 'Kelvin-Voigt-Modell', url: 'https://de.wikipedia.org/wiki/Kelvin-Voigt-Modell' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
             { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
           ]}
           literatur={[

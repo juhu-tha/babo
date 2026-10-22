@@ -131,9 +131,9 @@ export default function HydratationFolgen() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbetonbauteilen - Anhang B)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbetonbauteilen - Anhang B)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
           { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 196-8 / DIN EN 196-9 (Prüfverfahren für Zement - Hydratationswärme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+196-8' }
+          { title: 'DIN EN 196-8 / DIN EN 196-9 (Prüfverfahren für Zement - Hydratationswärme)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+196-8' }
         ]}
         formeln={[
           {

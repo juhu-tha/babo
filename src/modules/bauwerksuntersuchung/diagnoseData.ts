@@ -83,21 +83,21 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN 68800-4:2020-12',
         title: 'Holzschutz – Bekämpfende Maßnahmen (Bohrwiderstandsmessung selbst ist nicht genormt)',
         date: '2020-12',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-4',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800-4',
         scope: 'Bewertung und Bekämpfung von Pilz- und Insektenbefall; Gerätehinweise des Herstellers beachten.'
       },
       {
         code: 'DIN EN 338:2016-07',
         title: 'Bauholz für tragende Zwecke – Festigkeitsklassen',
         date: '2016-07',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+338',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+338',
         scope: 'Zuordnung von Rohdichte, Biegefestigkeit und E-Modul zu Festigkeitsklassen C24, D30 etc.'
       },
       {
         code: 'DIN 68800-4:2020-12',
         title: 'Holzschutz – Teil 4: Bekämpfende Maßnahmen gegen holzzerstörende Pilze und Insekten',
         date: '2020-12',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+68800-4',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+68800-4',
         scope: 'Regelwerk für Schadensbegrenzung und chemische/konstruktive Sanierung.'
       }
     ],
@@ -147,7 +147,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 1992-1-1:2011-01',
         title: 'Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken',
         date: '2011-01',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1',
         scope: 'Definition von c_min und Vorhaltemaß Delta c_dev für alle Expositionsklassen.'
       },
       {
@@ -210,14 +210,14 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 12504-2:2021-08',
         title: 'Prüfung von Beton in Bauwerken – Teil 2: Bestimmung der Rückprallzahl',
         date: '2021-08',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-2',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504-2',
         scope: 'Prüfvorschrift für Rückprallhämmer vom Typ N (Standard) und Typ L (dünnwandige Elemente).'
       },
       {
         code: 'DIN EN 13791:2020-02',
         title: 'Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen',
         date: '2020-02',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13791',
         scope: 'Normative Umrechnung von Rückprallwerten in charakteristische Druckfestigkeit f_ck,is via Basiskurven.'
       }
     ],
@@ -267,7 +267,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 12504-4:2021-08',
         title: 'Prüfung von Beton in Bauwerken – Teil 4: Bestimmung der Ultraschallimpulsgeschwindigkeit',
         date: '2021-08',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-4',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504-4',
         scope: 'Verfahren zur direkten, halb-direkten und indirekten Schalleinspeisung.'
       },
       {
@@ -338,7 +338,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN ISO 12696:2022-09',
         title: 'Kathodischer Korrosionsschutz von Stahl in Beton',
         date: '2022-09',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12696',
         scope: 'Regelwerk für Messungen vor und während des Betriebs von KKS-Anlagen.'
       }
     ],
@@ -389,7 +389,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 14629:2007-06',
         title: 'Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Prüfverfahren: Bestimmung des Chloridgehaltes in Festbeton',
         date: '2007-06',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14629',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14629',
         scope: 'Genormtes Laborprüfverfahren für Säureaufschluss und Titration.'
       },
       {
@@ -446,14 +446,14 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 14630:2007-01',
         title: 'Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Prüfverfahren: Bestimmung der Karbonatisierungstiefe im Festbeton mit der Phenolphthalein-Prüfung',
         date: '2007-01',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14630',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14630',
         scope: 'Verbindliche Prüfvorschrift in ganz Europa.'
       },
       {
         code: 'DIN EN 206-1:2021-06',
         title: 'Beton – Teil 1: Festlegung, Eigenschaften, Herstellung und Konformität',
         date: '2021-06',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206-1',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206-1',
         scope: 'Definition der Expositionsklassen XC1 bis XC4.'
       }
     ],
@@ -502,21 +502,21 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 12504-1:2019-09',
         title: 'Prüfung von Beton in Bauwerken – Teil 1: Bohrkernproben – Herstellung, Untersuchung und Prüfung der Druckfestigkeit',
         date: '2019-09',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504-1',
         scope: 'Entnahme und Probenaufbereitung.'
       },
       {
         code: 'DIN EN 13791:2020-02',
         title: 'Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen',
         date: '2020-02',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13791',
         scope: 'Bestimmung der charakteristischen In-situ-Druckfestigkeit f_ck,is aus Bohrkernen und indirekten Verfahren (mit Kalibrierung).'
       },
       {
         code: 'DIN EN 12390-3:2019-10',
         title: 'Prüfung von Festbeton – Teil 3: Druckfestigkeit von Probekörpern',
         date: '2019-10',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12390-3',
         scope: 'Durchführung der Druckprüfung auf kalibrierter Prüfmaschine.'
       }
     ],
@@ -565,7 +565,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 1542:1999-07',
         title: 'Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Prüfverfahren: Messung der Haftfestigkeit im Abreißversuch',
         date: '1999-07',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1542',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1542',
         scope: 'Genormte Prüfvorschrift für Untergrund und Instandsetzungsschichten.'
       },
       {
@@ -622,7 +622,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN 16302:2013-05',
         title: 'Erhaltung des kulturellen Erbes – Prüfverfahren – Messung der Wasseraufnahme mit dem Karstenschen Prüfröhrchen',
         date: '2013-05',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16302',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+16302',
         scope: 'Offizielle europäische Norm für die Karsten-Prüfung.'
       },
       {
@@ -678,14 +678,14 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN EN ISO 12570:2000-04',
         title: 'Wärme- und feuchtetechnisches Verhalten von Baustoffen – Bestimmung des Feuchtegehaltes durch Trocknen bei erhöhter Temperatur',
         date: '2000-04',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12570',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12570',
         scope: 'Internationales Referenzverfahren für alle festen Baustoffe.'
       },
       {
         code: 'DIN 18560-1:2021-02',
         title: 'Estriche im Bauwesen – Teil 1: Allgemeine Anforderungen, Prüfung und Ausführung',
         date: '2021-02',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18560-1',
         scope: 'Definition der Belegreife-Grenzwerte.'
       },
       {
@@ -856,7 +856,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         code: 'DIN 1076:2026-01',
         title: 'Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung',
         date: '2026-01',
-        url: 'https://www.dinmedia.de/de/suche?q=DIN+1076',
+        url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1076',
         scope: 'Prüfvorschrift für nicht begehbare Hohlräume in Brücken.'
       },
       {

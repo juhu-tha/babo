@@ -248,8 +248,8 @@ export default function StatistischeVersuchsplanung() {
           'Kleppmann, W. (2020): Taschenbuch Versuchsplanung (10. Auflage, Hanser Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN ISO 3534-3 (Statistik - Begriffe und Formelzeichen - Teil 3: Versuchsplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+ISO+3534-3' },
-          { title: 'ISO 5725 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen; DIN ISO 5725 zurückgezogen)', url: 'https://www.dinmedia.de/de/suche?q=ISO+5725' }
+          { title: 'DIN ISO 3534-3 (Statistik - Begriffe und Formelzeichen - Teil 3: Versuchsplanung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+ISO+3534-3' },
+          { title: 'ISO 5725 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen; DIN ISO 5725 zurückgezogen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=ISO+5725' }
         ]}
         formeln={[
           {

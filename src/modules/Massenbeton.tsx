@@ -102,8 +102,8 @@ export default function Massenbeton() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 197-1 (Zemente mit niedriger Hydratationswärme LH / sehr niedriger Hydratationswärme VLH)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },
-          { title: 'DIN EN 1992-1-1 / DIN EN 1992-3 (Rissbreitenbegrenzung infolge früher Zwangskräfte)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' }
+          { title: 'DIN EN 197-1 (Zemente mit niedriger Hydratationswärme LH / sehr niedriger Hydratationswärme VLH)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1' },
+          { title: 'DIN EN 1992-1-1 / DIN EN 1992-3 (Rissbreitenbegrenzung infolge früher Zwangskräfte)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' }
         ]}
         literatur={[
           'DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton (Beuth Verlag)',

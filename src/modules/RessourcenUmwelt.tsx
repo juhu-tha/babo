@@ -99,10 +99,10 @@ export default function RessourcenUmwelt() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln; EN 15804+A2)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
+          { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln; EN 15804+A2)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
           { title: 'ÖKOBAUDAT Plattform (Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen)', url: 'https://www.oekobaudat.de/' },
           { title: 'QNG-Handbuch, Anlage 3 (v1.4, 19.07.2024)', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 16449:2014-07 (Holz und Holzprodukte – Berechnung des biogenen Kohlenstoffgehalts)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16449' }
+          { title: 'DIN EN 16449:2014-07 (Holz und Holzprodukte – Berechnung des biogenen Kohlenstoffgehalts)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+16449' }
         ]}
         formeln={[
           {

@@ -1669,10 +1669,10 @@ wikipedia={[
           { title: 'Nachhallzeit', url: 'https://de.wikipedia.org/wiki/Nachhallzeit' }
         ]}
         regelwerke={[
-          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02 – Änderungen manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2' },
-          { title: 'DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Periodenbilanzverfahren; ersetzt 2018-10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
-          { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen – Anforderungen, Empfehlungen und Hinweise für die Planung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18041' },
-          { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
+          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02 – Änderungen manuell prüfen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-2' },
+          { title: 'DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Periodenbilanzverfahren; ersetzt 2018-10)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-3' },
+          { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen – Anforderungen, Empfehlungen und Hinweise für die Planung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18041' },
+          { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6946' },
           { title: 'Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG) – Anlage 7', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[

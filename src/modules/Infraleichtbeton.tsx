@@ -105,7 +105,7 @@ export default function Infraleichtbeton() {
         ]}
         regelwerke={[
           { title: 'DIBt: Vorhabenbezogene Bauartgenehmigung (vBG) / Zustimmung im Einzelfall (ZiE)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Rohdichteklassen D0.8 und D1.0)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Rohdichteklassen D0.8 und D1.0)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
           { title: 'DAfStb-Richtlinie: Beton mit rezykliertem oder leichtem Zuschlag', url: 'https://www.dafstb.de/' }
         ]}
         literatur={[

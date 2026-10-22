@@ -493,9 +493,9 @@ export default function BpMineralisch() {
           'Weller, B.: Glasbau: Grundlagen, Berechnung, Konstruktion.'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 12150 (Glas im Bauwesen - Thermisch vorgespanntes Einscheibensicherheitsglas)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12150' }, 
-          { title: 'DIN EN 14411 (Keramische Fliesen und Platten - Definitionen, Klassifizierung, Eigenschaften)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14411' },
-          { title: 'DIN 18516-3 (Außenwandbekleidungen, hinterlüftet - Naturwerkstein)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18516-3' }
+          { title: 'DIN EN 12150 (Glas im Bauwesen - Thermisch vorgespanntes Einscheibensicherheitsglas)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12150' }, 
+          { title: 'DIN EN 14411 (Keramische Fliesen und Platten - Definitionen, Klassifizierung, Eigenschaften)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14411' },
+          { title: 'DIN 18516-3 (Außenwandbekleidungen, hinterlüftet - Naturwerkstein)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18516-3' }
         ]} 
         formeln={[
           { formel: 'V_{mat} = A \\cdot \\frac{t_{mm}}{1000}', erklaerung: 'Volumenberechnung mineralischer Plattenwerkstoffe' },

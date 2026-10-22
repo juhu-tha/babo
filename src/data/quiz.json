@@ -6971,5 +6971,65 @@
       "targetModuleLabel": "Bautagebuch"
     },
     "verified": false
+  },
+  {
+    "id": "q_ku_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "kuriositaeten",
+    "moduleTitle": "Kuriositäten & Rekorde",
+    "topic": "Massenbeton",
+    "difficulty": "Basis",
+    "normRef": "DAfStb-Richtlinie Massige Bauteile aus Beton",
+    "question": "Wie groß ist der adiabatische Temperaturanstieg bei 260 kg/m³ Zement mit 350 kJ/kg, c = 1,0 kJ/(kg·K) und ρ = 2 400 kg/m³?",
+    "options": [
+      "etwa 15 K",
+      "etwa 38 K",
+      "etwa 91 K",
+      "etwa 260 K"
+    ],
+    "correctIdx": 1,
+    "explanation": "ΔT = 260 · 350 / (1,0 · 2 400) ≈ 37,9 K – ohne Kühlung steigt die Kerntemperatur entsprechend.",
+    "gapAnalysis": {
+      "topic": "Massenbeton",
+      "misconception": "Hydratationswärme sei bei großen Bauteilen vernachlässigbar.",
+      "coreRule": "Massige Bauteile: Wärmeentwicklung über Bindemittel, Kühlung und Betonierlagen steuern.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Massenbeton“ im Modul Kuriositäten & Rekorde noch einmal durch.",
+      "targetModuleTab": "kuriositaeten",
+      "targetModuleLabel": "Kuriositäten & Rekorde"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ku_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "kuriositaeten",
+    "moduleTitle": "Kuriositäten & Rekorde",
+    "topic": "Römischer Beton",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Jackson et al. 2017; Seymour et al. 2023",
+    "question": "Was erklärt nach neueren Studien die Dauerhaftigkeit römischen Hafenbetons?",
+    "options": [
+      "Stahlbewehrung",
+      "Nachträglich im Meerwasser gewachsene Minerale wie Al-Tobermorit und Phillipsit sowie reaktive Kalkklasten",
+      "Ein hoher Portlandzementanteil",
+      "Kunststoffzusätze"
+    ],
+    "correctIdx": 1,
+    "explanation": "Meerwasser löste Bestandteile der Vulkanasche; neue Kristalle verzahnen das Gefüge. Kalkklasten aus dem Heißmischen können Risse wieder verschließen.",
+    "gapAnalysis": {
+      "topic": "Römischer Beton",
+      "misconception": "Römischer Beton sei einfach fester als moderner Beton.",
+      "coreRule": "Dauerhaftigkeit ist eine Frage der Chemie im Einsatzmilieu, nicht nur der Festigkeit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Römischer Beton“ im Modul Kuriositäten & Rekorde noch einmal durch.",
+      "targetModuleTab": "kuriositaeten",
+      "targetModuleLabel": "Kuriositäten & Rekorde"
+    },
+    "verified": false
   }
 ]

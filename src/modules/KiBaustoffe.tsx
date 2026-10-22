@@ -1119,7 +1119,7 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
           { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – gestaffelte Anwendung, geändert durch Digital Omnibus (Fundstelle manuell prüfen)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
           { title: 'Verordnung (EU) 2016/679 (DSGVO)', url: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
           { title: 'UrhG § 44b (Text und Data Mining) und § 60d (wissenschaftliche Forschung)', url: 'https://www.gesetze-im-internet.de/urhg/__44b.html' },
-          { title: 'ISO/IEC 42001:2023 (KI-Managementsysteme)', url: 'https://www.dinmedia.de/de/suche?q=ISO%2FIEC+42001' }
+          { title: 'ISO/IEC 42001:2023 (KI-Managementsysteme)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=ISO%2FIEC+42001' }
         ]} 
         formeln={[
           { formel: 'f_{ck, simul} = \\phi_{AI}(w/z, Z_{kg}, PCE_{\\%}, d_{max}) \\quad \\text{[N/mm²]}', erklaerung: 'Prädiktive Druckfestigkeitsschätzung im KI-Modell' },

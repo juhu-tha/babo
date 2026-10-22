@@ -1221,7 +1221,7 @@ export default function WTA() {
         regelwerke={[
           { title: "WTA-Merkblatt 2-9-20/D (Ausgabe 2020-03): Sanierputzsysteme", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 4-6-24/D (Ausgabe 2024-12): Nachträgliches Abdichten erdberührter Bauteile", url: "https://www.wta-gmbh.de" },
-          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de/de/suche?q=DIN+18533" },
+          { title: "DIN 18533:2017-07 / A1:2024 (Abdichtung von erdberührten Bauteilen - W1-E bis W4-E)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533" },
           { title: "WTA-Merkblatt 4-10: Injektionsverfahren mit zertifizierten Injektionsstoffen gegen kapillaren Feuchtetransport (Ausgabe manuell prüfen)", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5-14/D (Ausgabe 2014-04): Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren", url: "https://www.wta-gmbh.de" }
         ]} 

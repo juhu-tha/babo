@@ -883,8 +883,8 @@ export default function Bestand() {
         ]}
         regelwerke={[
           { title: "Gebäudemodernisierungsgesetz (GModG, vormals GEG) – §§ 35–37 und Anlage 7 (bestehende Gebäude)", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz; ersetzt 2018-10)", url: "https://www.dinmedia.de/de/suche?q=DIN+4108-3" },
-          { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946" },
+          { title: "DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz; ersetzt 2018-10)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-3" },
+          { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6946" },
           { title: "WTA-Merkblatt 6-4: Innendämmung nach WTA I – Planungsleitfaden (Ausgabe manuell prüfen)", url: "https://www.wta-gmbh.de" },
           { title: "WTA-Merkblatt 6-5: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren (Ausgabe manuell prüfen)", url: "https://www.wta-gmbh.de" }
         ]}

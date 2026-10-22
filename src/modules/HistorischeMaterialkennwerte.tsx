@@ -1647,14 +1647,14 @@ export default function HistorischeMaterialkennwerte() {
           { title: 'Mauerwerk', url: 'https://de.wikipedia.org/wiki/Mauerwerk' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'EN 1990-2:2026 (Eurocode – Grundlagen der Bewertung und Ertüchtigung bestehender Tragwerke; ersetzt CEN/TS 17440:2020; DIN-Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/de/suche?q=EN+1990-2' },
+          { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
+          { title: 'EN 1990-2:2026 (Eurocode – Grundlagen der Bewertung und Ertüchtigung bestehender Tragwerke; ersetzt CEN/TS 17440:2020; DIN-Ausgabe manuell prüfen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=EN+1990-2' },
           { title: 'DBV-Merkblatt: Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte', url: 'https://www.betonverein.de/' },
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation 2025-09', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13791' },
-          { title: 'DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken – Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12504-1' },
-          { title: 'DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-1-1' },
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6892-1' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation 2025-09', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13791' },
+          { title: 'DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken – Teil 1: Bohrkernproben)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504-1' },
+          { title: 'DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1996-1-1' },
+          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe - Zugversuch)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6892-1' }
         ]}
         literatur={[
           'DBV (Deutscher Beton- und Bautechnik-Verein): Merkblatt Modifizierte Teilsicherheitsbeiwerte',

@@ -309,7 +309,7 @@ export default function BpBefestigung() {
           'Wendehorst Bautechnische Zahlentafeln, 38. Auflage, Springer Vieweg 2026' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 1992-4 (Eurocode 2 - Bemessung der Verankerung von Befestigungen in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-4' }, 
+          { title: 'DIN EN 1992-4 (Eurocode 2 - Bemessung der Verankerung von Befestigungen in Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-4' }, 
           { title: 'EAD 330499 (Post-installed Fasteners in Concrete - Europäische Bewertungsdokumente EOTA)', url: 'https://www.eota.eu/' },
           { title: 'EOTA TR 069 (Design Method for Anchorages with Post-installed Fasteners)', url: 'https://www.eota.eu/' }
         ]} 
