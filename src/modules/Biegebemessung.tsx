@@ -16,6 +16,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
@@ -285,7 +286,7 @@ export default function Biegebemessung() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-2"><label className="text-xs text-home-grau block">Bewehrungsart</label><InfoTooltip text="Art der verwendeten Bewehrung (z.B. Betonstahl, Carbon)." /></div>
-                  <select
+                  <select aria-label="Bewehrungsart"
                     value={bewehrungsArt}
                     onChange={(e) => setBewehrungsArt(e.target.value as 'Stahl' | 'Carbon' | 'GFK' | 'Basalt')}
                     className="w-full p-2 border border-home-grau/30 rounded-lg focus:ring-2 focus:ring-shiraz focus:border-shiraz outline-none text-sm bg-white"

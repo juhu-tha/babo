@@ -5,19 +5,10 @@ import {
   ShieldCheck, 
   Globe, 
   MapPin, 
-  Search, 
-  Coins, 
-  RotateCcw, 
-  Building2, 
-  Flame, 
   FileText, 
-  Layers, 
-  HelpCircle,
+  Layers,
   TrendingDown,
-  Info,
-  Database,
-  Leaf,
-  Calculator
+  Database
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 

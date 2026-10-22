@@ -1,7 +1,6 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Play, RotateCcw, Activity } from 'lucide-react';
 import {
   Chart as ChartJS,
@@ -14,6 +13,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -72,7 +72,7 @@ export default function Biegezugversuch() {
     const maxStrain = props.failureStrain;
 
     for (let i = 0; i <= steps; i++) {
-      let strain = (i / steps) * maxStrain;
+      const strain = (i / steps) * maxStrain;
       let stress = 0;
       let hasFailed = false;
 

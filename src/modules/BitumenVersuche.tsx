@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, Thermometer, ArrowDownToLine, Flame, BookOpen, Activity, Box } from 'lucide-react';
+import { Play, RotateCcw, Thermometer, ArrowDownToLine, BookOpen, Activity, Box } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -126,7 +126,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             
             <div className="space-y-3">
               <label className="text-sm font-bold text-text-main">Bitumensorte wählen</label>
-              <select 
+              <select aria-label="Bitumensorte wählen" 
                 className="w-full p-2 border border-home-grau rounded-md bg-off-white text-sm focus:outline-none focus:border-shiraz"
                 value={sorte}
                 onChange={(e) => setSorte(e.target.value as BitumenSorte)}

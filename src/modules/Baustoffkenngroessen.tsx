@@ -1,12 +1,12 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { Scale, Activity, Droplets, Flame, ArrowRight, Clock, Layers, Timer, Calculator, GraduationCap, BookOpen } from 'lucide-react';
+import { Scale, Activity, Droplets, Flame, Clock, Layers, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import Elastomechanik from './Elastomechanik';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 
@@ -183,7 +183,7 @@ export default function Baustoffkenngroessen() {
       setSaeulenE(210000);
       setSaeulenFy(235);
       setSaeulenA(50);
-    saeulenF > 1000 ? setSaeulenF(800) : null;
+    if (saeulenF > 1000) setSaeulenF(800);
     } else if (mat === 'alu') {
       setSaeulenE(70000);
       setSaeulenFy(160);
@@ -1135,7 +1135,7 @@ export default function Baustoffkenngroessen() {
               
               <div className="flex flex-col gap-2">
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Material Preset</label>
-                <select 
+                <select aria-label="Material Preset" 
                   className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz text-xs font-semibold"
                   value={saeulenMaterial}
                   onChange={(e) => handleSaeulenMaterialChange(e.target.value as any)}
@@ -1394,7 +1394,7 @@ export default function Baustoffkenngroessen() {
               
               <div className="flex flex-col gap-2">
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Werkstoff-Gefügetyp</label>
-                <select 
+                <select aria-label="Werkstoff-Gefügetyp" 
                   className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz text-xs font-semibold"
                   value={selectedDichtePreset}
                   onChange={(e) => handleDichtePresetChange(e.target.value as any)}
@@ -1946,7 +1946,7 @@ export default function Baustoffkenngroessen() {
               <div className="space-y-4">
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Werkstoff-Ausdehnungskoeffizient (α_T)</label>
-                  <select 
+                  <select aria-label="Werkstoff-Ausdehnungskoeffizient (α_T)" 
                     className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz text-xs font-semibold"
                     value={alphaT}
                     onChange={(e) => setAlphaT(Number(e.target.value))}
@@ -1991,7 +1991,7 @@ export default function Baustoffkenngroessen() {
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 mb-4 space-y-3">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                   <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Dynamisches Materialpreset:</span>
-                  <select 
+                  <select aria-label="Dynamisches Materialpreset" 
                     value={thermischPreset}
                     onChange={(e) => handleThermischPresetChange(e.target.value as any)}
                     className="p-1.5 border border-home-grau/30 rounded bg-white text-xs font-bold focus:outline-none focus:border-shiraz"
