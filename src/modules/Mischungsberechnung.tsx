@@ -2,11 +2,14 @@ import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberForma
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
 import { Pie, Line, Radar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Calculator, Layers, Activity, BookOpen, Wind, Sparkles, Scale, RefreshCw, Thermometer } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Calculator, Layers, Activity, BookOpen, Wind, Scale } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { DIN1045_2 } from '@/src/data/normParams';
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, LogarithmicScale, PointElement, LineElement, RadialLinearScale, Filler);
@@ -84,31 +87,31 @@ const BAUTEILE = [
 ];
 
 const EXPOSITIONSKLASSEN: Record<string, { name: string, desc: string, wZ: number, minFestigkeit: string, minZement: number, minFestigkeitNum: number, cMin?: number, maxZement?: number }> = {
-  'XC1': { name: 'Karbonatisierung: Trocken oder ständig nass', desc: 'Innenräume mit üblicher Luftfeuchte, oder ständig unter Wasser.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 15 },
-  'XC2': { name: 'Karbonatisierung: Nass, selten trocken', desc: 'Teile von Wasserbehältern, Gründungsbauteile im feuchten Erdreich.', wZ: 0.65, minFestigkeit: 'C20/25', minZement: 240, minFestigkeitNum: 20, cMin: 25 },
+  'XC1': { name: 'Karbonatisierung: Trocken oder ständig nass', desc: 'Innenräume mit üblicher Luftfeuchte, oder ständig unter Wasser.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 10 },
+  'XC2': { name: 'Karbonatisierung: Nass, selten trocken', desc: 'Teile von Wasserbehältern, Gründungsbauteile im feuchten Erdreich.', wZ: 0.75, minFestigkeit: 'C16/20', minZement: 240, minFestigkeitNum: 16, cMin: 20 },
   'XC3': { name: 'Karbonatisierung: Mäßige Feuchte', desc: 'Innenräume mit hoher Luftfeuchte, offene Hallen.', wZ: 0.65, minFestigkeit: 'C20/25', minZement: 260, minFestigkeitNum: 20, cMin: 20 },
   'XC4': { name: 'Karbonatisierung: Wechselnd nass und trocken', desc: 'Außenbauteile mit direkter Beregnung.', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25, cMin: 25 },
   
-  'XD1': { name: 'Chloride: Mäßige Feuchte', desc: 'Bauteile im Sprühnebelbereich von Verkehrsflächen.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, cMin: 30 },
+  'XD1': { name: 'Chloride: Mäßige Feuchte', desc: 'Bauteile im Sprühnebelbereich von Verkehrsflächen.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, cMin: 40 },
   'XD2': { name: 'Chloride: Nass, selten trocken', desc: 'Solebäder, Bauteile, die chloridhaltigen Wässern ausgesetzt sind.', wZ: 0.50, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
   'XD3': { name: 'Chloride: Wechselnd nass und trocken', desc: 'Parkdecks, Brückenkappen, Spritzwasserbereiche.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
   
-  'XS1': { name: 'Meerwasser: Salzhaltige Luft', desc: 'Außenbauteile in Küstennähe.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, cMin: 30 },
+  'XS1': { name: 'Meerwasser: Salzhaltige Luft', desc: 'Außenbauteile in Küstennähe.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, cMin: 40 },
   'XS2': { name: 'Meerwasser: Unter Wasser', desc: 'Bauteile in Hafenanlagen, die ständig unter Wasser liegen.', wZ: 0.50, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
   'XS3': { name: 'Meerwasser: Tidebereiche', desc: 'Bauteile in der Spritzwasser- oder Wechselzone von Meerwasser.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, cMin: 40 },
   
   'XF1': { name: 'Frost: Mäßige Wassersättigung, ohne Taumittel', desc: 'Außenbauteile (Fassaden).', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25 },
   'XF2': { name: 'Frost: Mäßige Wassersättigung, mit Taumittel', desc: 'Bauteile im Sprühnebelbereich von tausalzbehandelten Straßen.', wZ: 0.50, minFestigkeit: 'C35/45 (oder C25/30 mit LP)', minZement: 320, minFestigkeitNum: 35 },
-  'XF3': { name: 'Frost: Hohe Wassersättigung, ohne Taumittel', desc: 'Offene Wasserbehälter, Bauteile in der Wasserwechselzone (Süßwasser).', wZ: 0.55, minFestigkeit: 'C35/45 (oder C25/30 mit LP)', minZement: 320, minFestigkeitNum: 35 },
+  'XF3': { name: 'Frost: Hohe Wassersättigung, ohne Taumittel', desc: 'Offene Wasserbehälter, Bauteile in der Wasserwechselzone (Süßwasser).', wZ: 0.50, minFestigkeit: 'C35/45 (oder C25/30 mit LP)', minZement: 320, minFestigkeitNum: 35 },
   'XF4': { name: 'Frost: Hohe Wassersättigung, mit Taumittel', desc: 'Straßendecken, Brückenkappen, Räumflächen.', wZ: 0.50, minFestigkeit: 'C30/37 (mit LP)', minZement: 320, minFestigkeitNum: 30 },
   
   'XA1': { name: 'Chem. Angriff: Schwach', desc: 'Behälter für schwach angreifende Wässer/Böden.', wZ: 0.60, minFestigkeit: 'C25/30', minZement: 280, minFestigkeitNum: 25 },
   'XA2': { name: 'Chem. Angriff: Mäßig', desc: 'Kläranlagen, Güllebehälter.', wZ: 0.50, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35 },
   'XA3': { name: 'Chem. Angriff: Stark', desc: 'Industrieanlagen mit starkem chemischen Angriff.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35 },
   
-  'XM1': { name: 'Verschleiß: Mäßig', desc: 'Böden in Wohn- und Bürogebäuden.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, maxZement: 360 },
-  'XM2': { name: 'Verschleiß: Stark', desc: 'Industrieböden mit Staplerverkehr.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, maxZement: 360 },
-  'XM3': { name: 'Verschleiß: Sehr stark', desc: 'Böden mit Kettenfahrzeugen.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, maxZement: 360 },
+  'XM1': { name: 'Verschleiß: Mäßig', desc: 'Böden in Wohn- und Bürogebäuden.', wZ: 0.55, minFestigkeit: 'C30/37', minZement: 300, minFestigkeitNum: 30, maxZement: 380 },
+  'XM2': { name: 'Verschleiß: Stark', desc: 'Industrieböden mit Staplerverkehr.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, maxZement: 380 },
+  'XM3': { name: 'Verschleiß: Sehr stark', desc: 'Böden mit Kettenfahrzeugen.', wZ: 0.45, minFestigkeit: 'C35/45', minZement: 320, minFestigkeitNum: 35, maxZement: 380 },
 };
 
 const allExpClasses = Object.keys(EXPOSITIONSKLASSEN);
@@ -239,7 +242,7 @@ function GrenzwerteSection() {
                 <tr className="border-b border-home-grau/10">
                   <td className="py-2 px-2 font-bold" rowSpan={2}>XF2 / XF3</td>
                   <td className="py-2 px-2">ohne LP</td>
-                  <td className="py-2 px-2">0,50 / 0.55</td>
+                  <td className="py-2 px-2">0,50</td>
                   <td className="py-2 px-2">C35/45</td>
                   <td className="py-2 px-2">320</td>
                 </tr>
@@ -252,9 +255,9 @@ function GrenzwerteSection() {
                 <tr className="border-b border-home-grau/10">
                   <td className="py-2 px-2 font-bold" rowSpan={2}>XF4</td>
                   <td className="py-2 px-2">ohne LP</td>
-                  <td className="py-2 px-2">0,45</td>
-                  <td className="py-2 px-2">C50/60</td>
-                  <td className="py-2 px-2">340</td>
+                  <td className="py-2 px-2">–</td>
+                  <td className="py-2 px-2">nicht geregelt (nur LP-Beton)</td>
+                  <td className="py-2 px-2">–</td>
                 </tr>
                 <tr className="border-b border-home-grau/30 bg-white">
                   <td className="py-2 px-2">mit LP (min. 4,0%)</td>
@@ -293,10 +296,10 @@ function WalzKurvenSection() {
     };
 
     return {
-      labels: wzValues.map(v => v.toFixed(2)),
+      labels: wzValues.map(v => formatDeZahl(v, 2)),
       datasets: [
         {
-          label: 'CEM 32.5',
+          label: 'CEM 32,5',
           data: wzValues.map(wz => calcStrength(wz, 32.5)),
           borderColor: zementKlasse === 32.5 ? '#A3113E' : '#cbd5e1',
           borderWidth: zementKlasse === 32.5 ? 3 : 2,
@@ -305,7 +308,7 @@ function WalzKurvenSection() {
           pointRadius: zementKlasse === 32.5 ? 4 : 0,
         },
         {
-          label: 'CEM 42.5',
+          label: 'CEM 42,5',
           data: wzValues.map(wz => calcStrength(wz, 42.5)),
           borderColor: zementKlasse === 42.5 ? '#A3113E' : '#cbd5e1',
           borderWidth: zementKlasse === 42.5 ? 3 : 2,
@@ -314,7 +317,7 @@ function WalzKurvenSection() {
           pointRadius: zementKlasse === 42.5 ? 4 : 0,
         },
         {
-          label: 'CEM 52.5',
+          label: 'CEM 52,5',
           data: wzValues.map(wz => calcStrength(wz, 52.5)),
           borderColor: zementKlasse === 52.5 ? '#A3113E' : '#cbd5e1',
           borderWidth: zementKlasse === 52.5 ? 3 : 2,
@@ -333,7 +336,7 @@ function WalzKurvenSection() {
       y: {
         title: {
           display: true,
-          text: 'Druckfestigkeit f_cm (N/mm²)',
+          text: 'Mittlere Würfeldruckfestigkeit 28 d (N/mm², Näherung)',
           font: { family: 'Work Sans', weight: 'bold' as const }
         },
         min: 10,
@@ -410,6 +413,7 @@ function WalzKurvenSection() {
 
       <div className="lg:col-span-8 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[500px]">
         <h2 className="text-xl font-bold text-text-main mb-2">Abhängigkeit der Festigkeit vom w/z-Wert</h2>
+        <p className="text-xs text-text-main/60 mb-2">Näherung nach dem Abrams-Ansatz f = A / 5<sup>w/z</sup> (A = 100/120/140 N/mm² für 32,5/42,5/52,5; Lehrwerte). Maßgebend sind Erstprüfungen.</p>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
             <FormulaText text="Darstellung nach dem Gesetz von Abrams: f_c = A / B^{w/z}. Die hervorgehobene Kurve entspricht der gewählten Zementklasse." />
@@ -444,8 +448,8 @@ export default function Mischungsberechnung() {
   
   // k-Werte aus zentraler Registry (DIN 1045-2)
   const [kFa, setKFa] = useState(DIN1045_2.kFlugasche);
-  const [kSf, setKSf] = useState(DIN1045_2.kSilikastaub);
-  const [kKsm, setKKsm] = useState(0.4); // Typisch für HüS nach abZ / DAfStb (DIN 1045-2)
+  const [kSf, setKSf] = useState(0); // DIN 1045-2:2023-08: Anrechnung nur für Flugasche
+  const [kKsm, setKKsm] = useState(0.4); // Lehrannahme: in DE nur mit allgemeiner bauaufsichtlicher Zulassung
   const [kBiochar, setKBiochar] = useState(0.0); // Aktuell kein normativer k-Wert für Biochar
 
   // Fasern (DIN EN 14889-1 & DIN EN 14889-2)
@@ -723,8 +727,9 @@ export default function Mischungsberechnung() {
     // Mehlkornprüfung nur bei XF oder XM relevant nach DIN 1045-2 (Tabelle 13: Höchstzulässiger Mehlkorngehalt)
     const hasXFoderXM = expClasses.some(c => c.startsWith('XF') || c.startsWith('XM'));
     // Grenzwerte DIN 1045-2: d_g = 8 mm -> 500 kg/m³, d_g = 16 mm -> 450 kg/m³, d_g = 32 mm -> 400 kg/m³ (bei Zementgehalt ≤ 400 kg/m³)
-    const maxMehlkornWert = groesstkorn <= 8 ? 500 : groesstkorn <= 16 ? 450 : 400;
-    const maxMehlkornText = `${maxMehlkornWert} kg/m³ (DIN 1045-2 Tab. 13)`;
+    // DIN 1045-2 Tab. F.4.1 (bis C50/60, XF/XM): z ≤ 300 → 400, z ≥ 350 → 450 kg/m³, dazwischen linear
+    const maxMehlkornWert = zement <= 300 ? 400 : zement >= 350 ? 450 : 400 + (zement - 300);
+    const maxMehlkornText = `${formatDeWert(maxMehlkornWert)} kg/m³ (DIN 1045-2, Tab. F.4.1; Ausgabe 2023 manuell prüfen)`;
     const isMehlkornOk = mehlkornGesamt <= maxMehlkornWert;
 
     // CO2 Berechnung (Detailliert)
@@ -753,8 +758,9 @@ export default function Mischungsberechnung() {
     let reqMinCover = 0;
     let reqMaxZement = Infinity;
 
-    let scores = { XC: 0, XD_XS: 0, XF: 0, XA: 0, XM: 0 };
+    const scores = { XC: 0, XD_XS: 0, XF: 0, XA: 0, XM: 0 };
 
+    let xf4OhneLp = false;
     expClasses.forEach(cls => {
       const data = EXPOSITIONSKLASSEN[cls];
       if (data) {
@@ -783,23 +789,21 @@ export default function Mischungsberechnung() {
             clsMinC = 'C35/45';
             clsMinFestNum = 35;
           } else if (cls === 'XF3') {
-            clsWz = 0.55;
+            clsWz = 0.50;
             clsMinZ = 320;
             clsMinC = 'C35/45';
             clsMinFestNum = 35;
           } else if (cls === 'XF4') {
-            clsWz = 0.45;
-            clsMinZ = 340;
-            clsMinC = 'C50/60 (ohne LP)';
-            clsMinFestNum = 50;
+            // DIN 1045-2:2023-08 regelt XF4 nur als LP-Beton – ohne LP kein Nachweis möglich
+            xf4OhneLp = true;
+            clsWz = 0.50;
+            clsMinZ = 320;
+            clsMinC = 'C30/37 (nur mit LP zulässig)';
+            clsMinFestNum = 30;
           }
         }
 
-        // Größtkornkorrektur des Mindestzementgehalts nach DIN 1045-2:
-        // Bei Dmax = 16 mm: +20 kg/m³
-        // Bei Dmax = 8 mm: +40 kg/m³
-        if (groesstkorn === 16) clsMinZ += 20;
-        else if (groesstkorn === 8) clsMinZ += 40;
+        // DIN 1045-2 sieht keinen Zuschlag für Größtkorn 8/16 mm vor (nur −30 kg/m³ bei 63 mm, hier nicht wählbar).
 
         if (clsWz < reqMaxWz) reqMaxWz = clsWz;
         if (clsMinZ > reqMinZ) reqMinZ = clsMinZ;
@@ -821,7 +825,7 @@ export default function Mischungsberechnung() {
       }
     });
 
-    const isWzOk = wzEq <= reqMaxWz;
+    const isWzOk = wzEq <= reqMaxWz && !xf4OhneLp;
     const isZOk = zement >= reqMinZ;
     const isMaxZOk = reqMaxZement === Infinity || zement <= reqMaxZement;
 
@@ -850,7 +854,7 @@ export default function Mischungsberechnung() {
       frischbetonRohdichte, wz, wzEq, wbWert, volLeim,
       co2Zement, co2Fa, co2Sf, co2Ksm, co2Biochar, co2Gestein, co2Wasser, co2ZM,
       co2Stahlfaser, co2PpFaser, co2FasernGesamt, co2Gesamt,
-      reqMaxWz, reqMinZ, reqMinC, reqMinCover, reqMaxZement, isWzOk, isZOk, isMaxZOk, radarChartData, estimatedWater,
+      reqMaxWz, reqMinZ, reqMinC, reqMinCover, reqMaxZement, isWzOk, xf4OhneLp, isZOk, isMaxZOk, radarChartData, estimatedWater,
       maxFa, anrechenbarFa, maxSf, anrechenbarSf,
       mehlkornAusSand, mehlkornGesamt, maxMehlkornText, isMehlkornOk, hasXFoderXM,
       lpWaterReduction, isLpActive
@@ -1217,7 +1221,16 @@ export default function Mischungsberechnung() {
                   </p>
                 </div>
 
-                {!results.isWzOk && (
+                {results.xf4OhneLp && (
+                  <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
+                    <AlertTriangle size={16} className="mt-0.5 shrink-0" />
+                    <div>
+                      <strong>Achtung:</strong> XF4 ist nach DIN 1045-2:2023-08 nur als Luftporenbeton (LP) geregelt. Bitte LP-Beton wählen.
+                    </div>
+                  </div>
+                )}
+
+                {!results.isWzOk && !results.xf4OhneLp && (
                   <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
                     <AlertTriangle size={16} className="mt-0.5 shrink-0" />
                     <div>
@@ -1322,11 +1335,11 @@ export default function Mischungsberechnung() {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <label className="text-sm font-medium text-text-main">k-Wert SF</label>
-                      <InfoTooltip text="DIN EN 206 nennt 2.0 als Empfehlung, in Deutschland gilt nach DIN 1045-2 k = 1.0" />
+                      <InfoTooltip text="DIN EN 206 nennt k = 1,0 bzw. 2,0. Nach DIN 1045-2:2023-08 ist die Anrechnung auf w/z und Mindestzementgehalt nur für Flugasche vorgesehen; Silikastaub wird daher ohne Anrechnung (k = 0) gerechnet." />
                     </div>
-                    <span className="text-sm font-bold text-shiraz">1,0 -</span>
+                    <span className="text-sm font-bold text-shiraz">{formatDeZahl(kSf, 1)} -</span>
                   </div>
-                  <div className="text-xs text-home-grau">In Deutschland gilt nach DIN 1045-2 k = 1,0</div>
+                  <div className="text-xs text-home-grau">DIN 1045-2:2023-08: keine Anrechnung von Silikastaub (manuell prüfen)</div>
                 </div>
               </div>
 
@@ -1353,7 +1366,7 @@ export default function Mischungsberechnung() {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <label className="text-sm font-medium text-text-main">k-Wert HüS</label>
-                      <InfoTooltip text="Hüttensandmehl Typ II (DIN EN 15167-1 / DIN 1045-2). Anrechnung auf w/z-Wert und Mindestzementgehalt in Deutschland nach bauaufsichtlicher Zulassung bzw. Kombinationskonzept (typisch k = 0,4 bis 0,6)." />
+                      <InfoTooltip text="Hüttensandmehl Typ II (DIN EN 15167-1 / DIN 1045-2). In Deutschland nach DIN 1045-2 nicht über den k-Wert anrechenbar; Anrechnung nur mit allgemeiner bauaufsichtlicher Zulassung. Der voreingestellte Wert 0,4 ist eine Lehrannahme." />
                     </div>
                     <span className="text-sm font-bold text-shiraz">{formatDeZahl(kKsm, 1)} -</span>
                   </div>
@@ -1580,7 +1593,7 @@ export default function Mischungsberechnung() {
                         </p>
                       </div>
                       <div className="mt-2 text-[11px] text-orange-900 bg-orange-50/70 p-1.5 rounded font-medium">
-                        XF2/XF3: <strong>C25/30</strong> statt C35/45; XF4: <strong>C30/37</strong> statt C50/60
+                        XF2/XF3: <strong>C25/30</strong> statt C35/45; XF4 ist nur als LP-Beton geregelt (C30/37)
                       </div>
                     </div>
                   </div>
@@ -2192,6 +2205,21 @@ export default function Mischungsberechnung() {
           </div>
         </div>
 
+        <FormulaDerivationBox
+          title="Rechenweg: Nachweis der Grenzwerte für die gewählte Mischung"
+          zielGleichung="(w/z)_{eq} = \frac{w}{z + k_{FA} \cdot f + k_{SF} \cdot s + k_{HS} \cdot h + k_{PK} \cdot b} \le (w/z)_{max}"
+          normQuelle="DIN 1045-2:2023-08 (Grenzwerte je Expositionsklasse); k-Werte siehe Eingabe"
+          schritte={(() => {
+            const t = (x: number, d = 2) => formatDeZahl(x, d).replace(',', '{,}');
+            return [
+              { titel: '1. Wasserzementwert', formel: `w/z = ${t(results.wasserTrocken, 0)} / ${t(zement, 0)} = ${t(results.wz)}`, erklaerung: 'Wirksamer Wassergehalt bezogen auf den Zementgehalt.' },
+              { titel: '2. Äquivalenter Wasserzementwert', formel: `(w/z)_{eq} = \\frac{${t(results.wasserTrocken, 0)}}{${t(zement, 0)} + ${t(kFa, 1)} \\cdot ${t(results.anrechenbarFa, 0)} + ${t(kSf, 1)} \\cdot ${t(results.anrechenbarSf, 0)} + ${t(kKsm, 1)} \\cdot ${t(hues, 0)} + ${t(kBiochar, 1)} \\cdot ${t(biochar, 0)}} = ${t(results.wzEq)}`, erklaerung: 'Angerechnet werden nur die zulässigen Mengen der Zusatzstoffe (Flugasche f/z ≤ 0,33).' },
+              { titel: '3. Maßgebende Anforderungen', formel: `(w/z)_{max} = ${t(results.reqMaxWz)};\\; z_{min} = ${t(results.reqMinZ, 0)}\\,\\text{kg/m}^3;\\; \\text{${results.reqMinC || '–'}}`, erklaerung: `Strengster Wert aus den gewählten Expositionsklassen (${expClasses.join(', ') || '–'}).` },
+              { titel: '4. Nachweis', formel: `${t(results.wzEq)} ${results.wzEq <= results.reqMaxWz ? '\\le' : '>'} ${t(results.reqMaxWz)};\\quad ${t(zement, 0)} ${zement >= results.reqMinZ ? '\\ge' : '<'} ${t(results.reqMinZ, 0)}\\,\\text{kg/m}^3`, erklaerung: results.isWzOk && results.isZOk ? 'Beide Anforderungen sind erfüllt.' : 'Mindestens eine Anforderung ist nicht erfüllt – Rezeptur anpassen.' },
+            ];
+          })()}
+          ergebnisHinweis="Der Rechenweg folgt den aktuellen Eingaben des Rechners."
+        />
       </div>
       )}
 
@@ -2203,6 +2231,8 @@ export default function Mischungsberechnung() {
       )}
     
       <CalculatorDisclaimerBanner className="my-2" />
+      <ModulTest moduleId="mischungsberechnung" />
+
       <ModuleFooter 
         weblinks={[
           { title: "Beton.wiki: Mischungsberechnung", url: "https://beton.wiki/index.php?title=Mischungsberechnung" }, 
@@ -2220,8 +2250,8 @@ export default function Mischungsberechnung() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-          { title: 'DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14889' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)' },
           { title: 'DAfStb-Richtlinie: Stahlfaserbeton:2021-06', url: 'https://www.dafstb.de/' },
           { title: 'DIN EN 197-1:2014-07 & DIN EN 197-5:2021-05 (Zement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197' },
           { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },

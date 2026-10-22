@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Sunset, Layers, Settings, Activity, Map, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Sunset, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function Infraleichtbeton() {
   return (

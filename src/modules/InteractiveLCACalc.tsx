@@ -10,22 +10,12 @@ import {
   Trash2, 
   Info, 
   Building2, 
-  Leaf, 
   Truck, 
   Activity, 
-  ArrowRight,
-  Sparkles, 
+  ArrowRight, 
   Recycle,
-  Scale,
-  Award,
-  Zap,
-  CheckCircle2,
   SlidersHorizontal,
-  Milestone,
-  Layers,
-  FileCheck2,
-  RefreshCw,
-  TrendingDown
+  Layers
 } from "lucide-react";
 
 export interface MaterialDefinition {
@@ -1394,7 +1384,7 @@ export default function InteractiveLCACalc() {
                       {/* 3. Verwertungskaskade / Pfad */}
                       <div className="bg-white p-3 rounded-lg border border-slate-200/80 space-y-1.5">
                         <span className="font-bold text-slate-700 block">Verwertungskaskade:</span>
-                        <select
+                        <select aria-label="Verwertungskaskade"
                           value={detail.recoveryType}
                           onChange={(e) => updateRow(detail.rowId, { recoveryType: e.target.value as any })}
                           className="w-full text-xs font-semibold p-1.5 bg-white border border-slate-300 rounded-md focus:ring-1 focus:ring-teal-600 focus:outline-none cursor-pointer"

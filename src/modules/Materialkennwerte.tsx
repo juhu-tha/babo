@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

@@ -1,7 +1,6 @@
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React from 'react';
 import { ThermometerSun, Cuboid, Flame, ArrowDownToLine } from 'lucide-react';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 
 export default function Massenbeton() {
   return (
