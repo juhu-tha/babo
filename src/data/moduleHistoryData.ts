@@ -817,16 +817,16 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '1926',
         title: 'Geburtsstunde der VOB (Vergabe- und Vertragsordnung für Bauleistungen)',
         category: 'Recht & Regularien',
-        description: 'Gründung des Deutschen Vergabe- und Vertragsausschusses für Bauleistungen (DVA). Veröffentlichung der ersten VOB als ausgewogene Vertragsordnung für die Vergabe und Abwicklung von Bauverträgen der öffentlichen Hand.',
-        impact: 'Bis heute die unbestrittene Leitwährung des deutschen Baurechts (VOB/A Vergabe, VOB/B Vertrag, VOB/C Allgemeine Technische Vertragsbedingungen).',
-        keyReference: 'VOB 1926 / DVA'
+        description: 'Der 1921 gegründete Reichsverdingungsausschuss veröffentlicht 1926 die erste Verdingungsordnung für Bauleistungen (VOB) für Vergabe und Abwicklung öffentlicher Bauaufträge. Heute verantwortet der Deutsche Vergabe- und Vertragsausschuss für Bauleistungen (DVA) die seit 2002 so benannte Vergabe- und Vertragsordnung.',
+        impact: 'Bis heute zentrales Regelwerk des Bauwesens (VOB/A Vergabe, VOB/B Vertrag – nur bei Vereinbarung, VOB/C Allgemeine Technische Vertragsbedingungen).',
+        keyReference: 'VOB 1926 / Reichsverdingungsausschuss / DVA'
       },
       {
         era: '1998',
         title: 'Baustellenverordnung (BaustellV) & SiGe-Koordination',
         category: 'Sicherheit',
-        description: 'Umsetzung der europäischen Baustellenrichtlinie 92/57/EWG im deutschen Recht. Gesetzliche Pflicht des Bauherrn zur Bestellung eines Sicherheits- und Gesundheitsschutzkoordinators (SiGeKo) bei Gewerkeüberschneidung.',
-        impact: 'Drastischer Rückgang tödlicher Arbeitsunfälle durch Vorankündigung, SiGe-Pläne und Unterlagen für spätere Arbeiten am Bauwerk.',
+        description: 'Umsetzung der europäischen Baustellenrichtlinie 92/57/EWG im deutschen Recht. Pflicht des Bauherrn zur Bestellung eines Sicherheits- und Gesundheitsschutzkoordinators (SiGeKo), wenn Beschäftigte mehrerer Arbeitgeber auf der Baustelle tätig werden.',
+        impact: 'Systematische Sicherheitsplanung durch Vorankündigung, SiGe-Plan und Unterlage für spätere Arbeiten am Bauwerk.',
         keyReference: 'BaustellV 1998 / RAB 30'
       },
       {
@@ -842,7 +842,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Lean Construction (Last Planner), Tablet-Baudokumentation & BIMtoField',
         category: 'Technologie',
         description: 'Ablösung chaotischer Baustellenkoordination durch Taktplanung und Taktsteuerung (Last Planner System). Digitale Bauleitung via Tablets (Capmo, PlanRadar) mit GPS-Verortung von Mängeln direkt im 3D-BIM-Modell.',
-        impact: 'Minimierung von Bauzeitüberschreitungen, lückenlose Beweissicherung in Echtzeit und drastische Reduktion von Mängelbeseitigungskosten.',
+        impact: 'Ziel sind stabilere Bauabläufe, zeitnahe Dokumentation und weniger Mängel; der Nutzen hängt von konsequenter Anwendung ab.',
         keyReference: 'GLCI (German Lean Construction Institute)'
       }
     ],

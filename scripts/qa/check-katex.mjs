@@ -11,7 +11,7 @@ const ROOT = path.resolve('src');
 const args = process.argv.slice(2);
 const asJson = args.includes('--json');
 const filter = args.find(a => !a.startsWith('--'));
-const MATH_PROPS = new Set(['math', 'formel', 'formula', 'latex', 'tex', 'katex', 'equation', 'gleichung']);
+const MATH_PROPS = new Set(['math', 'formel', 'formula', 'latex', 'tex', 'katex', 'equation', 'gleichung', 'zielGleichung']);
 const LOST = /(^|[^\\a-zA-Z])(cdot|frac|sqrt|text\{|mathrm|varepsilon|epsilon|sigma|alpha|beta|gamma|delta|Delta|lambda|approx|times|leq?|geq?|infty|sum|int|rightarrow|Rightarrow|quad|left[(\[|]|right[)\]|]|circ|mu|rho|phi|varphi|tau|eta|theta|pi|partial|nabla|ldots|dots|cdots|underbrace|overline|mathbf|boldsymbol|xrightarrow|uparrow|downarrow)(?![a-zA-Z])/;
 const CTRL = /[\t\f\v\b\r]/;
 
