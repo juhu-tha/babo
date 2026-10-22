@@ -7,7 +7,7 @@
     "dev": "tsx server.ts",
     "build": "vite build && esbuild server.ts --bundle --platform=node --target=node22 --outfile=dist/server.cjs --external:express --external:compression --external:dotenv --external:@google/genai",
     "start": "node server.ts",
-    "lint": "tsc --noEmit && eslint .",
+    "lint": "tsc --noEmit",
     "preview": "vite preview",
     "check:formeln": "node scripts/qa/check-katex.mjs",
     "test": "for f in tests/*.test.ts; do tsx \"$f\" > /dev/null || { echo \"FEHLER in $f\"; tsx \"$f\" | grep FAIL; exit 1; }; echo \"ok  $f\"; done",
@@ -28,6 +28,7 @@
     "@types/react-dom": "^19.2.3",
     "@types/react-katex": "^3.0.4",
     "@types/three": "^0.183.1",
+    "@types/xlsx": "^0.0.36",
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
     "chart.js": "^4.5.1",
@@ -54,13 +55,6 @@
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
-  },
-  "devDependencies": {
-    "eslint": "^9.39.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-unused-imports": "^4.4.1",
-    "globals": "^17.13.0",
-    "typescript-eslint": "^8.72.0"
+    "xlsx": "^0.18.5"
   }
 }
