@@ -3,11 +3,21 @@ import React, { useState, useMemo } from 'react';
 import { 
   Calculator, 
   Layers, 
+  Check, 
   Info, 
   AlertTriangle, 
+  Building2, 
+  Hammer, 
   Sliders, 
-  Sparkles,
-  BookmarkCheck
+  Ruler, 
+  Sparkles, 
+  ShieldAlert, 
+  ArrowRight, 
+  HelpCircle,
+  FileCheck,
+  CheckCircle2,
+  BookmarkCheck,
+  ChevronRight
 } from 'lucide-react';
 
 // Joint calculation parameters
@@ -229,7 +239,7 @@ export function KlebstoffBerater() {
             <div className="grid grid-cols-2 gap-3">
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col gap-1.5">
                 <label className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">Bauteil A Material</label>
-                <select aria-label="Bauteil A Material"
+                <select
                   value={subA}
                   onChange={(e) => setSubA(e.target.value)}
                   className="w-full text-xs font-bold p-1 border border-slate-200 rounded focus:ring-1 focus:ring-shiraz text-slate-700 bg-white"
@@ -243,7 +253,7 @@ export function KlebstoffBerater() {
 
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col gap-1.5">
                 <label className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">Bauteil B Material</label>
-                <select aria-label="Bauteil B Material"
+                <select
                   value={subB}
                   onChange={(e) => setSubB(e.target.value)}
                   className="w-full text-xs font-bold p-1 border border-slate-200 rounded focus:ring-1 focus:ring-shiraz text-slate-700 bg-white"
@@ -297,7 +307,7 @@ export function KlebstoffBerater() {
             {/* Sealant material selection */}
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Fugendichtstoffklasse &amp; Flexibilität</label>
-              <select aria-label="Fugendichtstoffklasse &amp; Flexibilität"
+              <select
                 value={selectedSealant}
                 onChange={(e) => setSelectedSealant(e.target.value)}
                 className="w-full text-xs font-bold p-2 border border-slate-200 rounded focus:ring-1 focus:ring-shiraz text-slate-700 bg-white"
@@ -314,7 +324,7 @@ export function KlebstoffBerater() {
             {/* Mounting Tolerance */}
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Einbautoleranz (Handwerkliche Abweichung)</label>
-              <select aria-label="Einbautoleranz (Handwerkliche Abweichung)"
+              <select
                 value={mountingTolerance}
                 onChange={(e) => setMountingTolerance(parseInt(e.target.value))}
                 className="w-full text-xs font-bold p-2 border border-slate-200 rounded focus:ring-1 focus:ring-shiraz text-slate-700 bg-white"

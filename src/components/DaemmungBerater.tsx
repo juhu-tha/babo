@@ -6,6 +6,10 @@ import {
   AlertTriangle, 
   Check, 
   ShieldAlert, 
+  Flame, 
+  Droplet, 
+  ArrowRight, 
+  Sliders, 
   BookmarkCheck,
   Zap
 } from 'lucide-react';
@@ -193,7 +197,7 @@ export function DaemmungBerater() {
             <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block">
               1. Bauteil / Anwendungsbereich auswählen
             </label>
-            <select aria-label="1. Bauteil / Anwendungsbereich auswählen"
+            <select
               value={selectedApp}
               onChange={(e) => {
                 setSelectedApp(e.target.value);
@@ -217,7 +221,7 @@ export function DaemmungBerater() {
             <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block">
               2. Vorhandener Bauteil-Altbestand
             </label>
-            <select aria-label="2. Vorhandener Bauteil-Altbestand"
+            <select
               value={selectedExisting}
               onChange={(e) => setSelectedExisting(e.target.value)}
               className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"

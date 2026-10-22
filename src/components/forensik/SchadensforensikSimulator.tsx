@@ -1,9 +1,11 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
-  Search, AlertTriangle, CheckCircle2, RotateCcw, 
-  Sparkles, FileText, Microscope, Coins, Clock, Eye, Award, Info
+  Search, ShieldAlert, AlertTriangle, CheckCircle2, XCircle, RotateCcw, 
+  Sparkles, FileText, Microscope, Coins, Clock, ArrowRight, Activity, 
+  HelpCircle, ChevronRight, Layers, Eye, Award, Info
 } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
 
 interface DiagnosticMethod {
   id: string;
@@ -79,7 +81,7 @@ const CASE_STUDIES: CaseStudy[] = [
         category: 'zfp',
         cost: 600,
         duration: '2 Stunden',
-        shortDesc: 'Zerstörungsfreie Ortung der Bewehrungslage und Messung der vorhandenen Betondeckung (Wirbelstromverfahren, z. B. nach DGZfP-Merkblatt B 2).',
+        shortDesc: 'Zerstörungsfreie Ortung der Bewehrungslage und Messung der Betondeckung c_nom nach DIN EN ISO 4012.',
         findingTitle: 'Prüfbericht: Betondeckungsmessung',
         findingText: 'Die gemessene Betondeckung an den Stützenfüßen schwankt zwischen 28 mm und 35 mm (Mittelwert c = 31 mm). Keine gravierende Unterschreitung des damaligen Baustandards.',
         keyValues: [
@@ -118,7 +120,7 @@ const CASE_STUDIES: CaseStudy[] = [
           { label: 'Gemessenes Potential E_corr', value: '-480 mV (CSE)', isAnomaly: true },
           { label: 'Korrosionswahrscheinlichkeit', value: '> 90 % (aktive Makroelemente)', isAnomaly: true }
         ],
-        didacticHint: 'Nach ASTM C876 deuten Potentiale negativer als −350 mV (CSE) auf eine hohe Korrosionswahrscheinlichkeit hin; nach DGZfP B 3 werden vor allem Potentialgradienten bewertet und durch Sondieröffnungen bestätigt.'
+        didacticHint: 'Potentiale negativer als -350 mV (CSE) zeigen mit über 90%iger Sicherheit aktive Entpassivierung und elektrochemischen Eisenabtrag an.'
       },
       {
         id: 'duennschliff_akr',
@@ -168,7 +170,7 @@ const CASE_STUDIES: CaseStudy[] = [
         title: 'Prinzip R (Reprofilierung): Chloridverseuchten Beton vollständig abtragen, Bewehrung entrosten, PCC-Mörtel & OS-Beschichtung',
         standard: 'TR Instandhaltung (DIBt) / DIN EN 1504-9',
         isCorrect: true,
-        explanation: 'Exakt richtig! Der chloridkontaminierte Beton muss bis hinter die Bewehrung abgetragen werden. Anschließend Reprofilierung mit Instandsetzungsmörtel (PCC/SPCC) und Oberflächenschutzsystem, auf befahrenen Flächen z. B. rissüberbrückendes OS 11.'
+        explanation: 'Exakt richtig! Der chloridkontaminierte Beton muss bis hinter die Bewehrung abgetragen werden. Anschließend Reprofilierung mit Instandsetzungsmörtel (PCC/SPCC) und rissüberbrückendes Oberflächenschutzsystem (OS 8 / OS 11a).'
       },
       {
         id: 'p_kosmetik',
@@ -205,7 +207,7 @@ const CASE_STUDIES: CaseStudy[] = [
         category: 'labor',
         cost: 1500,
         duration: '4 Tage',
-        shortDesc: 'Polarisations- und Fluoreszenzmikroskopie an Dünnschliffen (fluoreszierend getränkt) zur Erfassung von Reaktionssäumen und Gel.',
+        shortDesc: 'Präparation polierter Dünnschliffe mit Uranylacetat/Fluoreszenz zur optischen Erfassung von Reaktionshöfen.',
         findingTitle: 'Prüfbericht: Polarisationsmikroskopie',
         findingText: 'Deutliche Reaktionshöfe um Gesteinskörner aus Opalsandstein und Grauwacke. In den Poren und Mikrorissen findet sich reichlich isotropes Alkalisilicat-Gel.',
         keyValues: [
@@ -213,7 +215,7 @@ const CASE_STUDIES: CaseStudy[] = [
           { label: 'Alkali-Kieselsäure-Gel', value: 'Massiv in Rissen und Poren vorhanden', isAnomaly: true },
           { label: 'Gefügespannung', value: 'Drei-Sterne-Radialrisse um Körner', isAnomaly: true }
         ],
-        didacticHint: 'Eindeutiger Nachweis: Das Gel quillt unter Wasseraufnahme; die Quelldrücke übersteigen die Zugfestigkeit des Betons und erzeugen Risse.'
+        didacticHint: 'Eindeutiger Nachweis: Das Gel quillt unter Wasseraufnahme, erzeugt Sprengdrücke von über 8 MPa und sprengt den Zementstein auf.'
       },
       {
         id: 'alkali_analyse',

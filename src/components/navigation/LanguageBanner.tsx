@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, X, Sparkles, Check } from 'lucide-react';
+import { Globe, X, Sparkles, Check, ArrowRight, RefreshCw } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export const LanguageBanner: React.FC = () => {
