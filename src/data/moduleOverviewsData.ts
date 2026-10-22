@@ -340,7 +340,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Herstellung unter werkseigener Produktionskontrolle (WPK), Erstprüfung der Typmuster.',
         iconName: 'Package',
         keyFacts: ['WPK-Handbuch', 'Notifizierte Prüfstelle', 'AVCP-System 1+ bis 4'],
-        normOrFormula: 'EU-BauPVO Nr. 305/2011',
+        normOrFormula: 'BauPVO (EU) 2024/3110 (305/2011 im Übergang)',
         color: 'from-blue-600 to-blue-700'
       },
       {

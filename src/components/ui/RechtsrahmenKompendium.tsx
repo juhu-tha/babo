@@ -334,8 +334,8 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2024', text: 'Finale Verabschiedung der revidierten Verordnung im EU-Parlament/Rat.' },
       { year: '2025', text: 'Start der Überarbeitung harmonisierter europäischer Produktnormen (hEN).' },
-      { year: '2027', text: 'Verpflichtender Start des Digitalen Bauproduktpasses für prioritäre Produktfamilien.' },
-      { year: '2030', text: 'Vollständige Ablösung der alten BauPVO 305/2011.' }
+      { year: 'ab 2027', text: 'Schrittweise Einführung des Digitalen Produktpasses je Produktfamilie über delegierte Rechtsakte (Zeitplan manuell prüfen).' },
+      { year: '2040', text: 'Spätestes Ende der schrittweisen Aufhebung der VO (EU) 305/2011 (2026 bis 2040); bis dahin gelten für Produkte unter alten harmonisierten Normen Übergangsregeln.' }
     ]
   },
   {
