@@ -3,7 +3,6 @@ import express, { type Request, type Response, type NextFunction } from "express
 import compression from "compression";
 import crypto from "crypto";
 import path from "path";
-import { createServer as createViteServer } from "vite";
 import fs from "fs";
 
 // ---------------------------------------------------------------------------
@@ -410,6 +409,9 @@ ${prompt}
 
   // --- Vite Middleware for Development ---
   if (process.env.NODE_ENV !== "production") {
+    // Vite nur in der Entwicklung laden: Ein statischer Import würde im Produktions-Bundle
+    // (dist/server.cjs) mitgebündelt und beim Start mit "Invalid URL" abbrechen.
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       root: process.cwd(),
       server: { middlewareMode: true, hmr: false },
