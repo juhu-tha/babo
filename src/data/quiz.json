@@ -99,10 +99,10 @@
     "id": "q_zement_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "zement",
-    "moduleTitle": "Zementchemie (DIN EN 197-1)",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "bindemittel",
+    "moduleTitle": "Bindemittel",
     "topic": "Klinkerphasen & Hydratationsprodukte",
     "difficulty": "Klausur-Schwerpunkt",
     "normRef": "DIN EN 197-1",
@@ -7089,6 +7089,66 @@
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Äquivalenter w/z-Wert“ im Modul Beton – Grundlagen noch einmal durch.",
       "targetModuleTab": "grundlagen",
       "targetModuleLabel": "Beton – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdm_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "bindemittel",
+    "moduleTitle": "Bindemittel",
+    "topic": "NA-Zement",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1164-10:2023-02",
+    "question": "Ein CEM III/A mit 55 % Hüttensand hat ein Na₂O-Äquivalent von 0,95 M.-%. Darf er als NA-Zement bezeichnet werden?",
+    "options": [
+      "Nein, die Grenze liegt für alle Zemente bei 0,60 M.-%",
+      "Ja, für CEM III/A mit 50–65 % Hüttensand gilt ≤ 1,10 M.-%",
+      "Nein, CEM III/A kann nie NA-Zement sein",
+      "Ja, für CEM III gibt es keine Grenze"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN 1164-10 staffelt die Grenzwerte nach Hüttensandgehalt: CEM III/A mit 36–49 % S ≤ 0,95, mit 50–65 % S ≤ 1,10 M.-%.",
+    "gapAnalysis": {
+      "topic": "NA-Zement",
+      "misconception": "Der Grenzwert 0,60 M.-% gelte für jeden Zement.",
+      "coreRule": "Je höher der Hüttensandanteil, desto höher der zulässige Gesamtalkaligehalt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „NA-Zement“ im Modul Bindemittel noch einmal durch.",
+      "targetModuleTab": "bindemittel",
+      "targetModuleLabel": "Bindemittel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdm_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "bindemittel",
+    "moduleTitle": "Bindemittel",
+    "topic": "Bogue-Rechnung",
+    "difficulty": "Basis",
+    "normRef": "Bogue (1929)",
+    "question": "Klinker mit Al₂O₃ = 6,0 % und Fe₂O₃ = 3,0 %. Wie hoch ist der C₃A-Gehalt nach Bogue (C₃A = 2,650·Al₂O₃ − 1,692·Fe₂O₃)?",
+    "options": [
+      "5,1 %",
+      "10,8 %",
+      "15,9 %",
+      "21,0 %"
+    ],
+    "correctIdx": 1,
+    "explanation": "2,650 · 6,0 − 1,692 · 3,0 = 15,90 − 5,08 = 10,8 %. Für einen SR-3-Zement wäre das zu viel.",
+    "gapAnalysis": {
+      "topic": "Bogue-Rechnung",
+      "misconception": "Der Eisenanteil werde nicht abgezogen.",
+      "coreRule": "Der C₃A-Gehalt bestimmt den Sulfatwiderstand (SR 0/3/5).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bogue-Rechnung“ im Modul Bindemittel noch einmal durch.",
+      "targetModuleTab": "bindemittel",
+      "targetModuleLabel": "Bindemittel"
     },
     "verified": false
   }
