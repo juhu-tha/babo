@@ -7151,5 +7151,65 @@
       "targetModuleLabel": "Bindemittel"
     },
     "verified": false
+  },
+  {
+    "id": "q_mib_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "mischungsberechnung",
+    "moduleTitle": "Mischungsberechnung",
+    "topic": "Stoffraumrechnung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "1 m³ Beton: z = 300 kg (ρ = 3,1 kg/dm³), w = 165 kg, Luft 2 Vol.-%. Wie viel trockene Gesteinskörnung (ρ = 2,65 kg/dm³) wird benötigt?",
+    "options": [
+      "rund 1 750 kg",
+      "rund 1 903 kg",
+      "rund 2 040 kg",
+      "rund 2 650 kg"
+    ],
+    "correctIdx": 1,
+    "explanation": "V_g = 1 000 − 300/3,1 − 165 − 20 = 718,2 dm³; m_g = 718,2 · 2,65 ≈ 1 903 kg.",
+    "gapAnalysis": {
+      "topic": "Stoffraumrechnung",
+      "misconception": "Luftporen und Zementvolumen würden vernachlässigt.",
+      "coreRule": "Die Volumina aller Bestandteile ergeben zusammen 1 000 dm³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Stoffraumrechnung“ im Modul Mischungsberechnung noch einmal durch.",
+      "targetModuleTab": "mischungsberechnung",
+      "targetModuleLabel": "Mischungsberechnung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mib_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "mischungsberechnung",
+    "moduleTitle": "Mischungsberechnung",
+    "topic": "Maßgebende Expositionsklasse",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2:2023-08",
+    "question": "Ein Bauteil ist XC4, XD1 und XA2 zugeordnet. Welcher höchstzulässige w/z-Wert ist maßgebend?",
+    "options": [
+      "0,60",
+      "0,55",
+      "0,50",
+      "0,45"
+    ],
+    "correctIdx": 2,
+    "explanation": "XC4 0,60, XD1 0,55, XA2 0,50 – maßgebend ist der kleinste Wert, also 0,50 (mit C35/45 und z ≥ 320 kg/m³).",
+    "gapAnalysis": {
+      "topic": "Maßgebende Expositionsklasse",
+      "misconception": "Maßgebend sei die zuerst genannte Klasse.",
+      "coreRule": "Bei mehreren Expositionsklassen gilt jeweils der strengste Grenzwert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Maßgebende Expositionsklasse“ im Modul Mischungsberechnung noch einmal durch.",
+      "targetModuleTab": "mischungsberechnung",
+      "targetModuleLabel": "Mischungsberechnung"
+    },
+    "verified": false
   }
 ]

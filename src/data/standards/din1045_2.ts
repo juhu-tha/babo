@@ -16,7 +16,6 @@ export interface ExpositionsklassenAnforderung {
   minZementgehalt: number; // kg/m³
   minLuftporengehalt?: number; // % bei Dmax = 32mm
   anmerkung?: string;
-  dinMediaSuchUrl: string;
 }
 
 export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnforderung> = {
@@ -28,8 +27,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Fundamente unbewehrt, Innenwände unbewehrt.',
     maxWz: null,
     minDruckfestigkeit: 'C8/10',
-    minZementgehalt: 180,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 0, // keine Anforderung (DIN 1045-2:2023-08)
   },
 
   // Bewehrungskorrosion ausgelöst durch Karbonatisierung
@@ -40,19 +38,17 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Innenbauteile von Wohn- und Bürobereichen; Gründungsbauteile unterhalb des Grundwasserspiegels.',
     maxWz: 0.75,
     minDruckfestigkeit: 'C16/20',
-    minZementgehalt: 240,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 240
   },
   'XC2': {
     code: 'XC2',
     name: 'Nass, selten trocken',
     beschreibung: 'Teile von Wasserbehältern; Gründungsbauteile bei hohem Wasserstand.',
     beispiele: 'Wand- und Bodenplatten in Gründungen, Schächte, Kläranlagenbereiche ständig im Wasser.',
-    maxWz: 0.65,
-    minDruckfestigkeit: 'C20/25',
-    minZementgehalt: 260,
-    anmerkung: 'Nach DIN 1045-2:2023-08 Tab. F.2.1: max w/z = 0,65, C20/25, Z >= 260 kg/m³.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    maxWz: 0.75,
+    minDruckfestigkeit: 'C16/20',
+    minZementgehalt: 240,
+    anmerkung: 'Nach DIN 1045-2:2023-08: Anforderungen wie XC1 (max w/z = 0,75, C16/20, z ≥ 240 kg/m³).'
   },
   'XC3': {
     code: 'XC3',
@@ -61,8 +57,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Offene Hallen, Küchen, Brauereien, Viehställe, überdachte Parkdecks.',
     maxWz: 0.65,
     minDruckfestigkeit: 'C20/25',
-    minZementgehalt: 260,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 260
   },
   'XC4': {
     code: 'XC4',
@@ -71,8 +66,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Fassaden, unüberdachte Außenstützen, Balkonplatten, Klärbeckenaußenwände.',
     maxWz: 0.60,
     minDruckfestigkeit: 'C25/30',
-    minZementgehalt: 280,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 280
   },
 
   // Bewehrungskorrosion durch Chloride (außer Meerwasser)
@@ -83,8 +77,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Garagenwände, Brückenpfeiler und Widerlager in mehr als 10 m Abstand zur Fahrbahn.',
     maxWz: 0.55,
     minDruckfestigkeit: 'C30/37',
-    minZementgehalt: 300,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 300
   },
   'XD2': {
     code: 'XD2',
@@ -94,8 +87,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     maxWz: 0.50,
     minDruckfestigkeit: 'C35/45',
     minZementgehalt: 320,
-    anmerkung: 'Mit Luftporen (>= 4,0 %) max w/z = 0,55 und C30/37 zulässig.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    anmerkung: 'Mit Luftporen (>= 4,0 %) max w/z = 0,55 und C30/37 zulässig.'
   },
   'XD3': {
     code: 'XD3',
@@ -104,8 +96,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Fahrbahnbeläge, Parkhaus-Zwischendecken ohne Abdichtung, Spritzwasserbereiche bis 10 m neben Straßen.',
     maxWz: 0.45,
     minDruckfestigkeit: 'C35/45',
-    minZementgehalt: 320,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 320
   },
 
   // Bewehrungskorrosion durch Meerwasser
@@ -116,8 +107,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Küstengebäude, Uferpromenadenbauwerke in Meeresnähe.',
     maxWz: 0.55,
     minDruckfestigkeit: 'C30/37',
-    minZementgehalt: 300,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 300
   },
   'XS2': {
     code: 'XS2',
@@ -126,8 +116,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Kaimauern unterhalb Niedrigwasser, Fundamente von Offshore-Windkraftanlagen.',
     maxWz: 0.50,
     minDruckfestigkeit: 'C35/45',
-    minZementgehalt: 320,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 320
   },
   'XS3': {
     code: 'XS3',
@@ -136,8 +125,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Wellenbrecher, Hafenmolen, Buhnen, Pfeiler im Tidengebiet.',
     maxWz: 0.45,
     minDruckfestigkeit: 'C35/45',
-    minZementgehalt: 320,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 320
   },
 
   // Frost- und Frost-Taumittel-Angriff
@@ -148,8 +136,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Außenwände von Gebäuden, Stützmauern ohne Taumitteleinfluss.',
     maxWz: 0.60,
     minDruckfestigkeit: 'C25/30',
-    minZementgehalt: 280,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 280
   },
   'XF2': {
     code: 'XF2',
@@ -160,8 +147,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     minDruckfestigkeit: 'C25/30',
     minZementgehalt: 300,
     minLuftporengehalt: 4.0,
-    anmerkung: 'Alternativ ohne Luftporen: max w/z = 0,50, C35/45, Z >= 320 kg/m³.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    anmerkung: 'Alternativ ohne Luftporen: max w/z = 0,50, C35/45, Z >= 320 kg/m³.'
   },
   'XF3': {
     code: 'XF3',
@@ -172,8 +158,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     minDruckfestigkeit: 'C25/30',
     minZementgehalt: 300,
     minLuftporengehalt: 4.0,
-    anmerkung: 'Alternativ ohne Luftporen: max w/z = 0,50, C35/45, Z >= 320 kg/m³.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    anmerkung: 'Alternativ ohne Luftporen: max w/z = 0,50, C35/45, Z >= 320 kg/m³.'
   },
   'XF4': {
     code: 'XF4',
@@ -184,8 +169,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     minDruckfestigkeit: 'C30/37',
     minZementgehalt: 320,
     minLuftporengehalt: 4.0,
-    anmerkung: 'Nach DIN 1045-2:2023-08 Tab. F.2.2 zwingend Luftporenbeton: min. 4,0 % LP bei Dmax = 32 mm, Z >= 320 kg/m³.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    anmerkung: 'Nach DIN 1045-2:2023-08 Tab. F.2.2 zwingend Luftporenbeton: min. 4,0 % LP bei Dmax = 32 mm, Z >= 320 kg/m³.'
   },
 
   // Chemischer Angriff
@@ -196,8 +180,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Fundamente in schwach sauren Böden (pH 5,5 bis 6,5) oder Grundwasser mit 200 bis 600 mg/l Sulfat.',
     maxWz: 0.60,
     minDruckfestigkeit: 'C25/30',
-    minZementgehalt: 280,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 280
   },
   'XA2': {
     code: 'XA2',
@@ -207,8 +190,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     maxWz: 0.50,
     minDruckfestigkeit: 'C35/45',
     minZementgehalt: 320,
-    anmerkung: 'Bei Sulfatgehalt > 600 mg/l Zement mit hohem Sulfatwiderstand (SR-Zement) zwingend.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    anmerkung: 'Bei Sulfatgehalt > 600 mg/l Zement mit hohem Sulfatwiderstand (SR-Zement) zwingend.'
   },
   'XA3': {
     code: 'XA3',
@@ -218,8 +200,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     maxWz: 0.45,
     minDruckfestigkeit: 'C35/45',
     minZementgehalt: 320,
-    anmerkung: 'SR-Zement erforderlich; zusätzlich ggf. Schutzanstriche oder Auskleidungen nötig.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    anmerkung: 'SR-Zement erforderlich; zusätzlich ggf. Schutzanstriche oder Auskleidungen nötig.'
   },
 
   // Mechanischer Verschleiß
@@ -230,8 +211,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Industriefußböden mit gelegentlichem Staplerverkehr (Luftbereifung).',
     maxWz: 0.55,
     minDruckfestigkeit: 'C30/37',
-    minZementgehalt: 300,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 300
   },
   'XM2': {
     code: 'XM2',
@@ -240,8 +220,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Industriehallen mit intensivem Gabelstaplerverkehr, Umschlaghallen.',
     maxWz: 0.45,
     minDruckfestigkeit: 'C35/45',
-    minZementgehalt: 320,
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    minZementgehalt: 320
   },
   'XM3': {
     code: 'XM3',
@@ -251,8 +230,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     maxWz: 0.45,
     minDruckfestigkeit: 'C35/45',
     minZementgehalt: 320,
-    anmerkung: 'Zusätzliche Hartstoffeinstreuung nach DIN 1100 erforderlich.',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2:2023-08'
+    anmerkung: 'Zusätzliche Hartstoffeinstreuung nach DIN 1100 erforderlich.'
   }
 };
 
@@ -267,7 +245,7 @@ export const DIN1045_2_K_WERTE = {
     normQuelle: 'DIN EN 450-1'
   },
   silikastaub: {
-    k: 1.00,
+    k: 1.00, // DIN EN 206; nach DIN 1045-2:2023-08 ist die Anrechnung nur für Flugasche vorgesehen (manuell prüfen)
     maxAnrechnungVerhaeltnis: 0.11, // s / z <= 0,11
     normQuelle: 'DIN EN 13263-1'
   },
