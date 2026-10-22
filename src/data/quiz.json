@@ -7211,5 +7211,65 @@
       "targetModuleLabel": "Mischungsberechnung"
     },
     "verified": false
+  },
+  {
+    "id": "q_hee_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "herstellung_einbau",
+    "moduleTitle": "Herstellung & Einbau",
+    "topic": "Transportzeit",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-2, 7.6",
+    "question": "Bis wann soll ein Fahrmischer nach der ersten Wasserzugabe vollständig entladen sein?",
+    "options": [
+      "30 Minuten",
+      "45 Minuten",
+      "90 Minuten",
+      "180 Minuten"
+    ],
+    "correctIdx": 2,
+    "explanation": "Fahrmischer und Fahrzeuge mit Rührwerk: 90 min; Fahrzeuge ohne Rührwerk (steifer Beton): 45 min.",
+    "gapAnalysis": {
+      "topic": "Transportzeit",
+      "misconception": "Die Frist beginne erst bei Ankunft auf der Baustelle.",
+      "coreRule": "Die Frist beginnt mit der ersten Wasserzugabe zum Zement.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Transportzeit“ im Modul Herstellung & Einbau noch einmal durch.",
+      "targetModuleTab": "herstellung_einbau",
+      "targetModuleLabel": "Herstellung & Einbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hee_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "herstellung_einbau",
+    "moduleTitle": "Herstellung & Einbau",
+    "topic": "Wasserzugabe bei Lieferung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2, 7.5",
+    "question": "Der Beton ist bei Ankunft zu steif. Was ist zulässig?",
+    "options": [
+      "Der Polier gibt Wasser zu, bis die Konsistenz passt",
+      "Nur in besonderen Fällen Anpassung unter Verantwortung des Herstellers innerhalb der Grenzen, mit Vermerk auf dem Lieferschein",
+      "Beliebig Fließmittel zugeben, solange es dokumentiert wird",
+      "Der Beton muss immer zurückgeschickt werden"
+    ],
+    "correctIdx": 1,
+    "explanation": "Wasser- oder Zusatzmittelzugabe bei Lieferung ist im Allgemeinen verboten; Ausnahmen nur unter Verantwortung des Herstellers innerhalb der festgelegten Grenzen, mit Vermerk auf dem Lieferschein.",
+    "gapAnalysis": {
+      "topic": "Wasserzugabe bei Lieferung",
+      "misconception": "Etwas Wasser schade nicht.",
+      "coreRule": "Konsistenz nur nach Vorgabe des Herstellers anpassen und dokumentieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe bei Lieferung“ im Modul Herstellung & Einbau noch einmal durch.",
+      "targetModuleTab": "herstellung_einbau",
+      "targetModuleLabel": "Herstellung & Einbau"
+    },
+    "verified": false
   }
 ]

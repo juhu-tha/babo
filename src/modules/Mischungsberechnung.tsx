@@ -727,8 +727,9 @@ export default function Mischungsberechnung() {
     // Mehlkornprüfung nur bei XF oder XM relevant nach DIN 1045-2 (Tabelle 13: Höchstzulässiger Mehlkorngehalt)
     const hasXFoderXM = expClasses.some(c => c.startsWith('XF') || c.startsWith('XM'));
     // Grenzwerte DIN 1045-2: d_g = 8 mm -> 500 kg/m³, d_g = 16 mm -> 450 kg/m³, d_g = 32 mm -> 400 kg/m³ (bei Zementgehalt ≤ 400 kg/m³)
-    const maxMehlkornWert = groesstkorn <= 8 ? 500 : groesstkorn <= 16 ? 450 : 400;
-    const maxMehlkornText = `${maxMehlkornWert} kg/m³ (DIN 1045-2 Tab. 13)`;
+    // DIN 1045-2 Tab. F.4.1 (bis C50/60, XF/XM): z ≤ 300 → 400, z ≥ 350 → 450 kg/m³, dazwischen linear
+    const maxMehlkornWert = zement <= 300 ? 400 : zement >= 350 ? 450 : 400 + (zement - 300);
+    const maxMehlkornText = `${formatDeWert(maxMehlkornWert)} kg/m³ (DIN 1045-2, Tab. F.4.1; Ausgabe 2023 manuell prüfen)`;
     const isMehlkornOk = mehlkornGesamt <= maxMehlkornWert;
 
     // CO2 Berechnung (Detailliert)
