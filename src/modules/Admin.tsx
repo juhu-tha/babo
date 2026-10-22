@@ -159,7 +159,7 @@ export default function Admin() {
               disabled={isChecking}
               className="w-full py-3 bg-shiraz text-white font-bold text-sm rounded-xl shadow-md hover:bg-shiraz/90 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Lock size={16} /> {isChecking ? 'Prüfe Kennwort …' : <>Entsperren &amp; Fortfahren</>}
+              <Lock size={16} /> {isChecking ? 'Kennwort wird geprüft …' : <>Entsperren &amp; Fortfahren</>}
             </button>
           </form>
 
