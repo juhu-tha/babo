@@ -7511,5 +7511,65 @@
       "targetModuleLabel": "Festbeton"
     },
     "verified": false
+  },
+  {
+    "id": "q_sbt_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sichtbeton",
+    "moduleTitle": "Sichtbeton",
+    "topic": "Schalungshaut",
+    "difficulty": "Basis",
+    "normRef": "DBV/VDZ-Merkblatt Sichtbeton (2015)",
+    "question": "Welche Wirkung hat eine saugende Schalung (z. B. sägeraues Holz) im Vergleich zu einer nicht saugenden?",
+    "options": [
+      "Hellere Oberfläche mit mehr Poren",
+      "Dunklere, porenärmere Oberfläche mit Holzstruktur",
+      "Keine erkennbare Wirkung",
+      "Mehr Kiesnester"
+    ],
+    "correctIdx": 1,
+    "explanation": "Saugende Schalung entzieht der Randzone Wasser und Luft: dunklere, porenärmere Oberfläche; nicht saugende Schalung ergibt glatte, hellere Flächen mit höherer Lunkerneigung.",
+    "gapAnalysis": {
+      "topic": "Schalungshaut",
+      "misconception": "Die Schalung beeinflusse nur die Textur, nicht den Farbton.",
+      "coreRule": "Schalhaut und Trennmittel bestimmen Farbton und Porigkeit wesentlich mit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schalungshaut“ im Modul Sichtbeton noch einmal durch.",
+      "targetModuleTab": "sichtbeton",
+      "targetModuleLabel": "Sichtbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sbt_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sichtbeton",
+    "moduleTitle": "Sichtbeton",
+    "topic": "Marmorierung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DBV/VDZ-Merkblatt Sichtbeton (2015)",
+    "question": "Was ist eine typische Ursache für Marmorierungen (Wolkenbildung) auf Sichtbetonflächen?",
+    "options": [
+      "Zu große Betondeckung",
+      "Örtlich unterschiedliche w/z-Werte an der Oberfläche, z. B. durch Trennmittelpfützen oder ungleichmäßiges Saugen",
+      "Zu niedrige Lufttemperatur beim Ausschalen",
+      "Verwendung von CEM I"
+    ],
+    "correctIdx": 1,
+    "explanation": "Unterschiedliche Wasserzementwerte in der Randzone führen zu Helligkeitsunterschieden.",
+    "gapAnalysis": {
+      "topic": "Marmorierung",
+      "misconception": "Marmorierungen seien reine Verschmutzung.",
+      "coreRule": "Trennmittel dünn und gleichmäßig auftragen, Schalhaut einheitlich vorbehandeln.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Marmorierung“ im Modul Sichtbeton noch einmal durch.",
+      "targetModuleTab": "sichtbeton",
+      "targetModuleLabel": "Sichtbeton"
+    },
+    "verified": false
   }
 ]
