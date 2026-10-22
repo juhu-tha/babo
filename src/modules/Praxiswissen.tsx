@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -9,20 +9,8 @@ import {
   Factory, 
   GraduationCap, 
   AlertOctagon, 
-  FileText, 
-  Scale, 
-  HelpCircle, 
-  Check, 
-  Download, 
-  RefreshCw, 
-  ChevronDown, 
-  ChevronUp, 
   BookOpen, 
-  FileCheck, 
-  HardHat, 
-  MessageCircle, 
   Award,
-  AlertTriangle,
   Info
 } from 'lucide-react';
 

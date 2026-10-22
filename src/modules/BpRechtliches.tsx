@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { 
   Scale, FileCheck, ShieldCheck, Factory, FileSignature, Leaf, 
-  Award, HelpCircle, CheckCircle2, ClipboardCheck, ArrowUpRight, Check, Globe, ArrowLeft,
-  BookOpen, Users, Layers, ArrowRight, Activity, FileText
+  Award, HelpCircle, CheckCircle2, ClipboardCheck, Check, Globe,
+  BookOpen, Users, Layers, Activity, FileText
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 
@@ -382,7 +382,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                           <li>Bestimmung des Produkttyps (Erstprüfung)</li>
                           <li>Erstinspektion des Werkes und der WPK</li>
                           <li>Laufende Überwachung, Bewertung und Evaluierung der WPK</li>
-                          <span className="text-home-grau text-[10px] block font-medium">(Kein Audit-Testing der Chargen vor Auslieferung)</span>
+                          <li className="list-none text-home-grau text-[10px] block font-medium">(Kein Audit-Testing der Chargen vor Auslieferung)</li>
                         </ul>
                       </td>
                       <td className="p-3 italic">Rauchwarnmelder, Feuerschutzabschlüsse, tragende Holzbauteile</td>
@@ -403,7 +403,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                         <ul className="list-disc pl-3 space-y-1">
                           <li className="font-semibold text-indigo-900">Erstinspektion des Werkes und der WPK</li>
                           <li className="font-semibold text-indigo-900">Laufende Überwachung der WPK (Auditierung)</li>
-                          <span className="text-xs text-emerald-800 font-semibold">Stelle zertifiziert ausschließlich die WPK!</span>
+                          <li className="list-none text-xs text-emerald-800 font-semibold">Stelle zertifiziert ausschließlich die WPK!</li>
                         </ul>
                       </td>
                       <td className="p-3 italic">Betonstahl, Transportbeton, Mauersteine (Kat. I), Brettschichtholz</td>
@@ -421,7 +421,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                       <td className="p-3 text-slate-700">
                         <ul className="list-disc pl-3 space-y-1">
                           <li className="font-semibold text-indigo-900">Bestimmung des Produkttyps (Erstprüfung) durch ein notifiziertes Prüflabor</li>
-                          <span className="text-home-grau text-[10px] block">(Keine Inspektion des Werks oder laufende Fremdüberwachung)</span>
+                          <li className="list-none text-home-grau text-[10px] block">(Keine Inspektion des Werks oder laufende Fremdüberwachung)</li>
                         </ul>
                       </td>
                       <td className="p-3 italic">Wärmedämmstoffe, Gipsplatten, Innenputze, Dacheindeckungen</td>
@@ -443,7 +443,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                       <td className="p-3 text-slate-700">
                         <ul className="list-disc pl-3 space-y-1">
                           <li className="font-semibold text-emerald-900">Bewertung der Umwelt- und Nachhaltigkeitsangaben durch notifizierte Stelle</li>
-                          <span className="text-home-grau text-[10px] block">(Überprüfung der Umweltmerkmale in der DoP)</span>
+                          <li className="list-none text-home-grau text-[10px] block">(Überprüfung der Umweltmerkmale in der DoP)</li>
                         </ul>
                       </td>
                       <td className="p-3 italic">Umweltmerkmale (GWP, Ökobilanz) in der Leistungserklärung nach neuer BauPVO</td>

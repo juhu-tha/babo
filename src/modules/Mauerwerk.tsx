@@ -17,8 +17,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Layers, Ruler, ShieldCheck, Calculator, BookOpen, ArrowRight, ShieldAlert } from 'lucide-react';
+import { Layers, Ruler, Calculator, BookOpen, ArrowRight, ShieldAlert } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -467,7 +468,7 @@ export default function Mauerwerk() {
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Steinart</label><InfoTooltip text="Art des Mauersteins." /></div>
-                  <select 
+                  <select aria-label="Steinart" 
                     className="p-2 border border-home-grau rounded-md bg-white"
                     value={stone}
                     onChange={(e) => {
@@ -486,7 +487,7 @@ export default function Mauerwerk() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Mörtelart</label><InfoTooltip text="Art des verwendeten Mauermörtels." /></div>
-                  <select 
+                  <select aria-label="Mörtelart" 
                     className="p-2 border border-home-grau rounded-md bg-white"
                     value={mortar}
                     onChange={(e) => setMortar(e.target.value as any)}
@@ -778,7 +779,7 @@ export default function Mauerwerk() {
             
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Verbandsart</label><InfoTooltip text="Art des Mauerwerksverbands." /></div>
-              <select 
+              <select aria-label="Verbandsart" 
                 className="p-2 border border-home-grau rounded-md bg-white"
                 value={bond}
                 onChange={(e) => setBond(e.target.value)}

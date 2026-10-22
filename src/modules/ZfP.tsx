@@ -11,11 +11,12 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath, BlockMath } from 'react-katex';
-import { Activity, Search, Magnet, Zap, Thermometer, Battery, Waves, Radiation, Hammer, Radio, Layers, Trees, Droplets, Wrench, ClipboardList, Eye, CheckCircle2, AlertTriangle, Shield, Award, BookOpen } from 'lucide-react';
+import { InlineMath } from 'react-katex';
+import { Activity, Search, Magnet, Zap, Thermometer, Battery, Waves, Radiation, Hammer, Radio, Trees, Droplets, Wrench, ClipboardList, CheckCircle2, AlertTriangle, Award, BookOpen } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 ChartJS.register(
@@ -222,7 +223,7 @@ function DGZfPSection() {
 
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">2. Gewünschte Prüfmethode</label>
-              <select 
+              <select aria-label="2. Gewünschte Prüfmethode" 
                 value={method} 
                 onChange={(e) => setMethod(e.target.value as any)}
                 className="w-full p-2.5 bg-white border border-home-grau/30 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-shiraz font-medium"
@@ -1274,7 +1275,7 @@ export default function ZfP() {
                     <label className="text-sm font-medium text-slate-900">Prüfrichtung (Winkel)</label>
                     <InfoTooltip text="Die Schwerkraft beeinflusst die Masse im Hammer. Messungen rechtwinklig nach unten liefern höhere Werte als Messungen senkrecht nach oben." />
                   </div>
-                  <select 
+                  <select aria-label="Prüfrichtung (Winkel)" 
                     className="p-2 border border-home-grau/30 rounded-md bg-slate-50 focus:outline-none focus:border-shiraz text-sm"
                     value={angle}
                     onChange={(e) => setAngle(e.target.value as any)}

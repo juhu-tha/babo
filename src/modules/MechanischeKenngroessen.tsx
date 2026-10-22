@@ -1,15 +1,14 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
-  Activity, Scale, Sliders, BookOpen, Layers, ArrowRight, 
-  TrendingUp, CheckCircle2, AlertTriangle, ShieldAlert, Sparkles, RefreshCw,
+  Activity, Scale, Sliders, BookOpen, Layers, 
+  TrendingUp, CheckCircle2, Sparkles,
   Clock, Timer, Compass, MoveHorizontal
 } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
 
 interface MaterialData {

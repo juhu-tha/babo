@@ -1,9 +1,8 @@
 import { carbonationK } from '@/src/utils/schadensKern';
 import React, { useState, useMemo } from 'react';
-import { 
-  Search, Activity, Layers, Hammer, Droplets, Ruler, ClipboardCheck, 
-  Trees, Eye, Sparkles, HelpCircle, ArrowRight, ShieldAlert, Zap, 
-  Info, LineChart, Cpu, HardHat, Compass, FileText, ChevronRight
+import { Activity, Layers, Hammer, Droplets, Ruler, ClipboardCheck, 
+  Trees, 
+  Info, LineChart, Compass
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -87,7 +86,7 @@ export default function Bauwerksunters_Monitoring() {
     
     for (let d = 0; d <= 120; d++) {
       // Base resistance + sine-like oscillations for annual rings
-      let base = config.baseResistance;
+      const base = config.baseResistance;
       // Oscillations representing earlywood vs latewood density changes
       const ringOscillation = Math.sin(d * 0.4) * 8 + Math.cos(d * 1.1) * 3;
       
@@ -622,7 +621,7 @@ export default function Bauwerksunters_Monitoring() {
                 <div className="space-y-3">
                   <div>
                     <label className="text-xs font-semibold text-slate-600 block mb-1">Estrich / Baustoff-Klassifizierung</label>
-                    <select
+                    <select aria-label="Estrich / Baustoff-Klassifizierung"
                       value={substrate}
                       onChange={(e) => setSubstrate(e.target.value as any)}
                       className="w-full p-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-shiraz"

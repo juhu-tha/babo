@@ -4,13 +4,8 @@ import {
   Layers, 
   Droplets, 
   Compass, 
-  CheckCircle2, 
   GraduationCap,
-  Scale,
-  Mountain,
-  Recycle,
-  Monitor,
-  HardHat
+  Monitor
 } from 'lucide-react';
 
 export interface MetaCluster {

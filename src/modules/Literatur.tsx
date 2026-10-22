@@ -1,19 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Book, 
   BookOpen, 
   Library, 
-  FileText, 
   ExternalLink, 
   Search, 
-  Tag, 
-  Filter, 
   Sparkles, 
   GraduationCap, 
-  Bookmark, 
   CheckCircle2, 
-  Layers, 
-  Globe 
+  Layers 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 

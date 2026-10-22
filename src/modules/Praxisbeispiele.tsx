@@ -1,6 +1,7 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -207,7 +208,7 @@ export default function Praxisbeispiele() {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Betonrezeptur</h3>
               <div className="flex items-center gap-2"><label className="text-xs font-bold text-home-grau uppercase tracking-wider mb-1 block">Zementart</label><InfoTooltip text="Art des verwendeten Zements (z.B. CEM I, CEM II)." /></div>
-              <select 
+              <select aria-label="Zementart" 
                 value={cementType}
                 onChange={(e) => setCementType(e.target.value)}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white mb-4"

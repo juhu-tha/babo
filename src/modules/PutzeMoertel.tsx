@@ -4,7 +4,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath, BlockMath } from 'react-katex';
 import { 
   Layers, Droplets, Hammer, BookOpen, Calculator, Sparkles, 
-  ChevronRight, Info, AlertTriangle, ShieldCheck, HelpCircle, ArrowRight
+  ChevronRight, Info, ShieldCheck
 } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -894,7 +894,7 @@ export default function PutzeMoertel() {
                   <div className="space-y-4 text-xs font-medium">
                     <div>
                       <label className="text-slate-500 block mb-1">Putzfläche (m²):</label>
-                      <input 
+                      <input aria-label="Putzfläche (m²)" 
                         type="number" min="0" 
                         value={plasterArea === 0 ? '' : plasterArea}
                         onChange={(e) => setPlasterArea(Number(e.target.value))}
@@ -912,7 +912,7 @@ export default function PutzeMoertel() {
 
                     <div>
                       <label className="text-slate-500 block mb-1">Schichtstärke d (mm):</label>
-                      <input 
+                      <input aria-label="Schichtstärke d (mm)" 
                         type="number" min="0" 
                         value={plasterThickness === 0 ? '' : plasterThickness}
                         onChange={(e) => setPlasterThickness(Number(e.target.value))}
@@ -930,7 +930,7 @@ export default function PutzeMoertel() {
 
                     <div>
                       <label className="text-slate-500 block mb-1">Putzmörtel-Art:</label>
-                      <select 
+                      <select aria-label="Putzmörtel-Art" 
                         value={plasterType}
                         onChange={(e) => setPlasterType(e.target.value)}
                         className="w-full p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-slate-800 font-bold focus:outline-none"
@@ -972,7 +972,7 @@ export default function PutzeMoertel() {
                   <div className="space-y-4 text-xs font-medium">
                     <div>
                       <label className="text-slate-500 block mb-1">Wandfläche (m²):</label>
-                      <input 
+                      <input aria-label="Wandfläche (m²)" 
                         type="number" min="0" 
                         value={masonryArea === 0 ? '' : masonryArea}
                         onChange={(e) => setMasonryArea(Number(e.target.value))}
@@ -1010,7 +1010,7 @@ export default function PutzeMoertel() {
 
                     <div>
                       <label className="text-slate-500 block mb-1">Ziegel / Steinformat (NF):</label>
-                      <select 
+                      <select aria-label="Ziegel / Steinformat (NF)" 
                         value={brickFormat}
                         onChange={(e) => setBrickFormat(e.target.value)}
                         className="w-full p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-slate-800 font-bold focus:outline-none"
@@ -1050,7 +1050,7 @@ export default function PutzeMoertel() {
                   <div className="space-y-4 text-xs font-medium">
                     <div>
                       <label className="text-slate-500 block mb-1">Wandfläche (m²):</label>
-                      <input 
+                      <input aria-label="Wandfläche (m²)" 
                         type="number" min="0" 
                         value={plansteinArea === 0 ? '' : plansteinArea}
                         onChange={(e) => setPlansteinArea(Number(e.target.value))}

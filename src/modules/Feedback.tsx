@@ -1,6 +1,6 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { MessageSquare, Send, AlertCircle, Lightbulb, ThumbsUp, ClipboardCheck, Star } from 'lucide-react';
+import { MessageSquare, Send, AlertCircle, Lightbulb, ThumbsUp, Star } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 

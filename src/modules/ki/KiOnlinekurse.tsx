@@ -3,32 +3,24 @@ import {
   Video, 
   Play, 
   ExternalLink, 
-  BookOpen, 
-  GraduationCap, 
   Code, 
   Cpu, 
   Database, 
   CheckCircle2, 
   Search, 
-  Filter, 
   Sparkles, 
   Terminal, 
   Clock, 
-  Star, 
-  ArrowRight, 
-  Laptop, 
   Award, 
   Info, 
   Copy, 
   Check,
   Server,
   Layers,
-  HelpCircle,
   Lightbulb,
   Youtube
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath, BlockMath } from 'react-katex';
 
 interface OnlineCourse {
   id: string;

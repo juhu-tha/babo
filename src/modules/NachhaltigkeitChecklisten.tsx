@@ -5,8 +5,7 @@ import {
   Zap, 
   RefreshCw, 
   ExternalLink,
-  ShieldAlert,
-  ClipboardList
+  ShieldAlert
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 

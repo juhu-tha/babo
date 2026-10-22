@@ -1,10 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Leaf, Beaker, Layers, Sparkles, TrendingDown, Trash2, 
-  Settings, HelpCircle, CheckCircle2, ChevronRight, Calculator,
-  Zap, Info, AlertTriangle, ShieldCheck, Recycle, Factory, Trees,
-  ChevronDown, ChevronUp, Activity, Flame, BookOpen, AlertCircle,
-  Scale, Award, ArrowRight, Building2, Sliders, Check, FileText
+  Leaf, Beaker, Layers, Sparkles, Trash2, 
+  Settings, CheckCircle2, ChevronRight, Calculator, AlertTriangle, Recycle, Trees,
+  ChevronDown, ChevronUp, Activity, BookOpen,
+  Scale, Award, Building2, Sliders
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -1043,7 +1042,7 @@ export default function Materialoptimierung() {
                 <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono">
                   1. Bauteiltyp
                 </label>
-                <select
+                <select aria-label="1. Bauteiltyp"
                   value={dafstbBauteil}
                   onChange={(e) => {
                     const b = e.target.value as any;
@@ -1068,7 +1067,7 @@ export default function Materialoptimierung() {
                 <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono">
                   2. Geometrie &amp; Bauweise
                 </label>
-                <select
+                <select aria-label="2. Geometrie &amp; Bauweise"
                   value={dafstbBauweise}
                   onChange={(e) => setDafstbBauweise(e.target.value)}
                   className="w-full text-xs font-bold p-2.5 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -1107,7 +1106,7 @@ export default function Materialoptimierung() {
                 <label className="text-[11px] font-bold text-slate-700 block uppercase tracking-wider font-mono">
                   3. Zement- &amp; Bindemittelart
                 </label>
-                <select
+                <select aria-label="3. Zement- &amp; Bindemittelart"
                   value={dafstbZement}
                   onChange={(e) => setDafstbZement(e.target.value as any)}
                   className="w-full text-xs font-bold p-2.5 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -1127,7 +1126,7 @@ export default function Materialoptimierung() {
                   4. Prüfalter &amp; Stahlroute
                 </label>
                 <div className="flex gap-2">
-                  <select
+                  <select aria-label="4. Prüfalter &amp; Stahlroute"
                     value={dafstbPruefalter}
                     onChange={(e) => setDafstbPruefalter(Number(e.target.value) as any)}
                     className="w-1/2 text-xs font-bold p-2 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"

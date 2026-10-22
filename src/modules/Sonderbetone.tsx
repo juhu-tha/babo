@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Droplets, Droplet, Recycle, ShieldAlert, Waves, Box, Target, Zap, Circle, Weight, Package, ArrowDown, Construction, MoveDown } from 'lucide-react';
+import { Layers, Droplets, Droplet, Recycle, ShieldAlert, Waves, Box, Target, Zap, Circle, Weight, Package, Construction, MoveDown } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import Leichtbeton from './Leichtbeton';
 import Sichtbeton from './Sichtbeton';

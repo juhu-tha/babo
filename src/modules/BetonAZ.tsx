@@ -10,8 +10,7 @@ import {
   FileText,
   ArrowRight,
   Sliders,
-  Info,
-  ExternalLink
+  Info
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

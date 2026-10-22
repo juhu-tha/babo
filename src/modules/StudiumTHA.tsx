@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  GraduationCap, ExternalLink, Globe, Sparkles, Link2, Download
+  GraduationCap, ExternalLink, Globe, Sparkles, Link2
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BookOpen, Search, Filter, X, Hash, Layers } from 'lucide-react';
+import { BookOpen, Search, X, Hash } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export interface GlossaryEntry {

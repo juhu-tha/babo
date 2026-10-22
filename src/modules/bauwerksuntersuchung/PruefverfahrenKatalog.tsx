@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { InlineMath, BlockMath } from 'react-katex';
-import { PRUEFVERFAHREN_LIST, PruefverfahrenDetail } from './pruefverfahrenData';
+import { BlockMath } from 'react-katex';
+import { PRUEFVERFAHREN_LIST } from './pruefverfahrenData';
 import { PruefverfahrenSimulator } from './PruefverfahrenSimulatoren';
-import { Search, Info, Check, ShieldCheck, AlertTriangle, Layers, Activity, Hammer, Compass, BookOpen, Sliders, ExternalLink, Scale, Wrench, Lightbulb } from 'lucide-react';
+import { Search, Info, Check, ShieldCheck, AlertTriangle, Layers, Activity, Sliders, ExternalLink, Scale, Wrench, Lightbulb } from 'lucide-react';
 import { METHOD_DIAGNOSE_DETAILS } from './diagnoseData';
 
 export default function PruefverfahrenKatalog() {

@@ -10,19 +10,13 @@ import {
   Sparkles, 
   ArrowRight, 
   BookOpen, 
-  Layers, 
   ShieldAlert, 
   Thermometer, 
-  Flame, 
-  Percent, 
   Activity, 
-  Clock, 
-  Lightbulb, 
   Beaker 
 } from 'lucide-react';
 import { useTabContext } from '../contexts/TabContext';
 import { motion } from 'motion/react';
-import { FormulaText } from '../components/ui/FormulaText';
 
 function DynamicInteractiveDegradationCalculator() {
   const [material, setMaterial] = useState<'bitumen' | 'pvc' | 'hemp' | 'cork'>('bitumen');
@@ -44,14 +38,14 @@ function DynamicInteractiveDegradationCalculator() {
 
   const calculateDegradation = () => {
     // Factors weight
-    let uvWeight = material === 'bitumen' ? 2.5 : material === 'pvc' ? 3.0 : material === 'hemp' ? 1.5 : 1.0;
-    let moistureWeight = material === 'hemp' ? 3.5 : material === 'bitumen' ? 1.5 : material === 'cork' ? 1.8 : 1.0;
-    let tempWeight = material === 'bitumen' ? 2.0 : material === 'pvc' ? 1.5 : material === 'hemp' ? 1.0 : 1.0;
-    let chemWeight = material === 'pvc' ? 2.0 : material === 'bitumen' ? 1.8 : material === 'hemp' ? 2.5 : 1.5;
+    const uvWeight = material === 'bitumen' ? 2.5 : material === 'pvc' ? 3.0 : material === 'hemp' ? 1.5 : 1.0;
+    const moistureWeight = material === 'hemp' ? 3.5 : material === 'bitumen' ? 1.5 : material === 'cork' ? 1.8 : 1.0;
+    const tempWeight = material === 'bitumen' ? 2.0 : material === 'pvc' ? 1.5 : material === 'hemp' ? 1.0 : 1.0;
+    const chemWeight = material === 'pvc' ? 2.0 : material === 'bitumen' ? 1.8 : material === 'hemp' ? 2.5 : 1.5;
 
     // Apply modifiers
-    let uvEff = uvExposure * (hasUvStabilizer ? 0.4 : 1.0);
-    let moistEff = moisture * (hasHydrophobicSeal ? 0.35 : 1.0);
+    const uvEff = uvExposure * (hasUvStabilizer ? 0.4 : 1.0);
+    const moistEff = moisture * (hasHydrophobicSeal ? 0.35 : 1.0);
 
     const degradationScore = (
       (uvEff * uvWeight) + 

@@ -6,19 +6,15 @@ import {
   FolderTree, 
   FileCode, 
   Globe, 
-  Cpu, 
   Copy, 
   Check, 
-  Layers, 
   BookOpen, 
   Sliders, 
   Code, 
   AlertTriangle, 
-  ArrowRight, 
   Database, 
   Bot, 
-  CheckCircle2, 
-  Share2,
+  CheckCircle2,
   FileText,
   Search,
   Zap,
@@ -28,17 +24,9 @@ import {
   Workflow,
   Laptop,
   CheckSquare,
-  FileSpreadsheet,
-  Download,
-  ExternalLink,
-  Shield,
-  HelpCircle,
-  Clock,
-  Compass,
-  FileCheck2,
-  Scale
+  FileCheck2
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface LlmPraxisProps {
@@ -1297,7 +1285,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-off-white rounded-xl border border-home-grau/20 text-xs">
               <div>
                 <label className="font-bold text-text-main block mb-1.5">1. Ingenieur-Rolle / Fachdisziplin:</label>
-                <select 
+                <select aria-label="1. Ingenieur-Rolle / Fachdisziplin" 
                   value={genRole} 
                   onChange={(e) => setGenRole(e.target.value as any)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
@@ -1312,7 +1300,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
 
               <div>
                 <label className="font-bold text-text-main block mb-1.5">2. Leitendes Regelwerk:</label>
-                <select 
+                <select aria-label="2. Leitendes Regelwerk" 
                   value={genNorm} 
                   onChange={(e) => setGenNorm(e.target.value as any)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
@@ -1327,7 +1315,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
 
               <div>
                 <label className="font-bold text-text-main block mb-1.5">3. Ziel-Formatierung:</label>
-                <select 
+                <select aria-label="3. Ziel-Formatierung" 
                   value={genFormat} 
                   onChange={(e) => setGenFormat(e.target.value as any)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"

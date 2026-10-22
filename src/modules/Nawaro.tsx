@@ -4,21 +4,16 @@ import {
   Leaf, 
   Trees, 
   Droplets, 
-  Box, 
-  ArrowRight, 
   Scale, 
   Activity, 
   Layers, 
-  BarChart3, 
   Search, 
-  Filter, 
   Zap, 
   Calculator, 
   Sparkles, 
   CheckCircle2, 
   AlertCircle, 
-  BookOpen, 
-  FileText 
+  BookOpen 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
@@ -812,7 +807,7 @@ export default function Nawaro() {
                 {/* Wall/Building Component */}
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold text-text-main uppercase tracking-wider">Dämmendes Bauteil</label>
-                  <select
+                  <select aria-label="Dämmendes Bauteil"
                     value={navWallType}
                     onChange={(e) => setNavWallType(e.target.value as any)}
                     className="w-full border border-home-grau/30 rounded-lg p-2 text-xs text-text-main font-semibold bg-white"

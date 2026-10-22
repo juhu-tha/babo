@@ -14,9 +14,7 @@ import {
   Zap, 
   Sliders, 
   Calculator, 
-  GitCommit, 
-  Compass, 
-  Sparkles
+  GitCommit
 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BlockMath } from 'react-katex';
@@ -123,7 +121,7 @@ export function Stahlbetoninstandhaltung() {
     let harzKlasse = '';
     let detailVerfahren = '';
     let maxPressureBar = 0;
-    let packerSpacingMm = Math.round(bauteilDicke / 2);
+    const packerSpacingMm = Math.round(bauteilDicke / 2);
 
     // Max zulässiger Verpressdruck nach ZTV-ING (Faustregel: p_max <= 0.5 * fctm * 10 bar, ca. 15-30 bar)
     // Bei dünnen Bauteilen oder oberflächennahen Rissen Begrenzung auf 10-20 bar zur Vermeidung von Betonabplatzungen

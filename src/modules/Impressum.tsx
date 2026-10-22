@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Mail, MapPin, Building2, User, Link as LinkIcon, ShieldAlert, FileText, Globe } from 'lucide-react';
+import { Mail, MapPin, Building2, User, Link as LinkIcon, FileText, Globe } from 'lucide-react';
 
 export default function Impressum() {
   return (

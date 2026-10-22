@@ -3,7 +3,6 @@ import { Droplets } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { DIN1045_3_NACHBEHANDLUNG } from '@/src/data/normParams';
 
 export default function Nachbehandlung() {
   const [tempAir, setTempAir] = useState(25); // °C
@@ -26,7 +25,7 @@ export default function Nachbehandlung() {
     
     const term1 = Math.pow(Tc + 18, 2.5);
     const term2 = r * Math.pow(Ta + 18, 2.5);
-    let E = 5 * (term1 - term2) * (V + 4) * Math.pow(10, -6);
+    const E = 5 * (term1 - term2) * (V + 4) * Math.pow(10, -6);
     
     return Math.max(0, E);
   }, [tempAir, tempConcrete, rh, windSpeed]);
@@ -136,7 +135,7 @@ export default function Nachbehandlung() {
           <div className="grid grid-cols-1 gap-4 mt-2">
             <div>
               <label className="block text-sm font-semibold text-text-main mb-1">Festigkeitsentwicklung (r)</label>
-              <select 
+              <select aria-label="Festigkeitsentwicklung (r)" 
                 className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-off-white focus:outline-none focus:ring-1 focus:ring-middle-blue/50"
                 value={festigkeitsEntwicklung}
                 onChange={(e) => setFestigkeitsEntwicklung(e.target.value as any)}
@@ -150,7 +149,7 @@ export default function Nachbehandlung() {
 
             <div>
               <label className="block text-sm font-semibold text-text-main mb-1">Expositionsklasse</label>
-              <select 
+              <select aria-label="Expositionsklasse" 
                 className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-off-white focus:outline-none focus:ring-1 focus:ring-middle-blue/50"
                 value={expositionsklasse}
                 onChange={(e) => setExpositionsklasse(e.target.value as any)}
@@ -162,7 +161,7 @@ export default function Nachbehandlung() {
 
             <div>
               <label className="block text-sm font-semibold text-text-main mb-1">Oberflächentemperatur</label>
-              <select 
+              <select aria-label="Oberflächentemperatur" 
                 className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-off-white focus:outline-none focus:ring-1 focus:ring-middle-blue/50"
                 value={oberflaechentemp}
                 onChange={(e) => setOberflaechentemp(e.target.value as any)}

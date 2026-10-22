@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import { Layers, Flame, Factory, FlaskConical, BookOpen, ShieldCheck, Check, Filter, AlertTriangle, Info, CheckCircle2 } from 'lucide-react';
+import { formatDeWert } from '@/src/utils/numberFormat';
+import React, { useState } from 'react';
+import { Layers, Flame, Factory, FlaskConical, BookOpen, ShieldCheck, Filter, AlertTriangle, Info, CheckCircle2 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import Zementchemie from './Zementchemie';
 import {
@@ -13,6 +14,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { BlockMath, InlineMath } from 'react-katex';
 
 ChartJS.register(
@@ -578,7 +580,7 @@ export default function Bindemittel() {
                       <div className="space-y-1">
                         <div className="flex justify-between text-[11px] text-text-main/70">
                           <span>Klinkergehalt:</span>
-                          <span className="font-bold text-text-main">{cement.klinkerMin} – {cement.klinkerMax} M.-%</span>
+                          <span className="font-bold text-text-main">{formatDeWert(cement.klinkerMin)} – {formatDeWert(cement.klinkerMax)} M.-%</span>
                         </div>
                         <div className="w-full h-2 rounded-full bg-home-grau/20 overflow-hidden">
                           <div 

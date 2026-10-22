@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Leaf, Activity, Recycle, FileText, Factory, ShieldCheck, Scale, Award, Info, Search, BookOpen, GraduationCap, ArrowRight, Truck, Calculator, HelpCircle, Milestone } from 'lucide-react';
+import { Leaf, Activity, Recycle, FileText, ShieldCheck, Scale, Award, Info, Search, GraduationCap, Calculator, HelpCircle, Milestone } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';
@@ -1071,7 +1070,7 @@ export default function LCA() {
                 {/* Input 1: Material selector */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10.5px] font-bold text-slate-700">1. Baustoff-Datensatz (EPD):</label>
-                  <select
+                  <select aria-label="1. Baustoff-Datensatz (EPD)"
                     value={calcMaterialId}
                     onChange={(e) => setCalcMaterialId(e.target.value)}
                     className="w-full text-xs p-2 border border-home-grau/30 bg-white rounded-lg focus:ring-1 focus:ring-shiraz focus:outline-none"

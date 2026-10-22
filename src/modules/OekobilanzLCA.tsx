@@ -4,7 +4,7 @@ import Nachhaltigkeit from './Nachhaltigkeit';
 import InteractiveLCACalc from './InteractiveLCACalc';
 import TransportbetonLcaUebung from './lca/TransportbetonLcaUebung';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';
-import { Leaf, BookOpen, Calculator, LayoutGrid, FileSpreadsheet, Milestone } from 'lucide-react';
+import { Leaf, BookOpen, Calculator, FileSpreadsheet, Milestone } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

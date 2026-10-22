@@ -2,19 +2,14 @@ import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { 
   Layers, 
   BookOpen, 
-  AlertTriangle, 
   Info, 
   Calendar,
-  Sparkles,
   Search,
   CheckCircle,
-  HelpCircle,
-  Clock,
   ShieldAlert
 } from 'lucide-react';
 

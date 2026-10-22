@@ -3,8 +3,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
-  Building2, Landmark, Layers, HelpCircle, ArrowRight, Activity, 
-  Info, AlertTriangle, BookOpen, PenTool, Flame, RefreshCw, Hammer
+  Building2, Landmark, Layers, AlertTriangle, PenTool, Hammer
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
@@ -508,7 +507,7 @@ export default function HistorischeBauweisen() {
                 <div className="space-y-4">
                   <div>
                     <label className="text-xs font-semibold text-slate-800 block mb-1">Holzart:</label>
-                    <select 
+                    <select aria-label="Holzart" 
                       value={woodType} 
                       onChange={(e) => setWoodType(e.target.value as any)}
                       className="w-full text-xs p-2 rounded-lg border border-home-grau/30 bg-white"
@@ -521,7 +520,7 @@ export default function HistorischeBauweisen() {
 
                   <div>
                     <label className="text-xs font-semibold text-slate-800 block mb-1">Ausrichtungsrichtung des Holzquerschnitts:</label>
-                    <select 
+                    <select aria-label="Ausrichtungsrichtung des Holzquerschnitts" 
                       value={grainDirection} 
                       onChange={(e) => setGrainDirection(e.target.value as any)}
                       className="w-full text-xs p-2 rounded-lg border border-home-grau/30 bg-white"

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Waves, Gauge, Thermometer, Layers, CheckCircle2, AlertTriangle, Scale, Wind } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import Ausbreitversuch from './Ausbreitversuch';
 import Frischbetondruck from './Frischbetondruck';
 import Frischbetontemperatur from './Frischbetontemperatur';
@@ -290,7 +289,7 @@ export default function Frischbeton() {
                   <div className="space-y-3">
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">Prüfverfahren wählen</label>
-                      <select 
+                      <select aria-label="Prüfverfahren wählen" 
                         value={verfahren}
                         onChange={(e) => {
                           const v = e.target.value as TestVerfahren;
@@ -433,7 +432,7 @@ export default function Frischbeton() {
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Expositionsklasse</label>
-                        <select
+                        <select aria-label="Expositionsklasse"
                           value={expKlasse}
                           onChange={(e) => setExpKlasse(e.target.value as 'XF2' | 'XF4' | 'X0_XF1_XF3')}
                           className="w-full p-2.5 bg-off-white border border-home-grau/30 rounded-xl text-xs font-semibold"
@@ -446,7 +445,7 @@ export default function Frischbeton() {
 
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Größtkorn D_max [mm]</label>
-                        <select
+                        <select aria-label="Größtkorn D_max [mm]"
                           value={dMax}
                           onChange={(e) => setDMax(parseInt(e.target.value) as 8 | 16 | 32 | 63)}
                           className="w-full p-2.5 bg-off-white border border-home-grau/30 rounded-xl text-xs font-semibold"
@@ -462,7 +461,7 @@ export default function Frischbeton() {
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Ablesung Manometer L_abg [%]</label>
-                        <input 
+                        <input aria-label="Ablesung Manometer L_abg [%]" 
                           type="number"
                           step="0.1"
                           min="0"
@@ -474,7 +473,7 @@ export default function Frischbeton() {
                       </div>
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Gesteinskorrektur G [%]</label>
-                        <input 
+                        <input aria-label="Gesteinskorrektur G [%]" 
                           type="number"
                           step="0.1"
                           min="0"
@@ -543,7 +542,7 @@ export default function Frischbeton() {
                   <div className="grid grid-cols-3 gap-3">
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">m1 Topf leer [kg]</label>
-                      <input 
+                      <input aria-label="m1 Topf leer [kg]" 
                         type="number"
                         step="0.1"
                         value={m1}
@@ -553,7 +552,7 @@ export default function Frischbeton() {
                     </div>
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">m2 Topf voll [kg]</label>
-                      <input 
+                      <input aria-label="m2 Topf voll [kg]" 
                         type="number"
                         step="0.1"
                         value={m2}
@@ -563,7 +562,7 @@ export default function Frischbeton() {
                     </div>
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">Volumen [Liter]</label>
-                      <input 
+                      <input aria-label="Volumen [Liter]" 
                         type="number"
                         step="0.1"
                         value={volumenL}

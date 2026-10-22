@@ -5,7 +5,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
 import { Line } from 'react-chartjs-2';
-import { InlineMath, BlockMath } from 'react-katex';
+import '@/src/lib/chartSetup';
+import { InlineMath } from 'react-katex';
 import SpannbetonKennwerte from './spannbeton/SpannbetonKennwerte';
 import SpannbetonDauerhaftigkeit from './spannbeton/SpannbetonDauerhaftigkeit';
 import SpannbetonPrinzipien from './spannbeton/SpannbetonPrinzipien';
@@ -14,7 +15,6 @@ import { fckT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CO
 import {
   Settings,
   Activity,
-  Sparkles,
   Clock,
   Gauge,
   Thermometer,
@@ -22,10 +22,8 @@ import {
   ShieldCheck,
   Database,
   Layers,
-  ArrowBigRight,
   Info,
   BookOpen,
-  CheckCircle2,
   ArrowRight,
   Compass,
   GraduationCap
@@ -567,7 +565,7 @@ export default function Spannbeton() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[10px] font-semibold text-text-main/70 mb-1">Zementklasse</label>
-                  <select
+                  <select aria-label="Zementklasse"
                     value={cementType}
                     onChange={(e) => setCementType(e.target.value as any)}
                     className="w-full text-xs bg-white border border-home-grau/30 rounded p-1 outline-none text-text-main font-medium focus:ring-1 focus:ring-shiraz"
@@ -702,7 +700,7 @@ export default function Spannbeton() {
             {/* Relaxation Class */}
             <div>
               <label className="block text-xs font-semibold text-text-main/75 mb-1.5">Stahlrelaxationsklasse</label>
-              <select
+              <select aria-label="Stahlrelaxationsklasse"
                 value={relaxationClass}
                 onChange={(e) => setRelaxationClass(Number(e.target.value))}
                 className="w-full text-xs bg-off-white border border-home-grau/30 rounded-lg p-2.5 outline-none font-medium"
@@ -726,7 +724,7 @@ export default function Spannbeton() {
               <label className="block text-xs font-semibold text-text-main/75 mb-1.5 flex justify-between border-slate-100">
                 <span>Spannglied-Verbundart</span>
               </label>
-              <select
+              <select aria-label="Spannglied-Verbundart"
                 value={tendonSystem}
                 onChange={(e) => setTendonSystem(e.target.value as any)}
                 className="w-full text-xs bg-off-white border border-home-grau/30 rounded-lg p-2.5 outline-none font-medium text-text-main"

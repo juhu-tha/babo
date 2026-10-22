@@ -1,37 +1,5 @@
-import React from 'react';
-import { 
-  Scale, 
-  Layers, 
-  FlaskConical, 
-  Microscope, 
-  Mountain, 
-  Package, 
-  Droplets, 
-  ShieldCheck, 
-  Trees, 
-  Calculator, 
-  Thermometer, 
-  Leaf, 
-  Monitor, 
-  Building2, 
-  Trash2, 
-  Activity, 
-  AlertTriangle, 
-  Wrench, 
-  HardHat,
-  Network,
-  Cpu,
-  Flame,
-  Volume2,
-  CheckCircle2,
-  ArrowRight,
-  TrendingDown,
-  Sparkles,
-  Award,
-  Box,
-  Compass,
-  FileText
-} from 'lucide-react';
+
+
 
 export interface OverviewStep {
   step: string;

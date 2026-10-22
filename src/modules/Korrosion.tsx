@@ -11,14 +11,15 @@ import {
   Filler,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { ShieldAlert, Droplets, Cloud, Timer, Zap, AlertTriangle, CheckCircle2, ShieldCheck, Activity, Layers, ArrowRight } from "lucide-react";
+import '@/src/lib/chartSetup';
+import { ShieldAlert, Droplets, Cloud, Timer, Zap, Activity } from "lucide-react";
 import { Slider } from "@/src/components/ui/Slider";
 import { erf } from "@/src/lib/math";
 import { FormulaText } from "@/src/components/ui/FormulaText";
 import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InlineMath, BlockMath } from "react-katex";
+import { InlineMath } from "react-katex";
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 ChartJS.register(
@@ -835,7 +836,7 @@ export default function Korrosion() {
               )}
 
               <div className="flex-1 relative w-full h-full">
-                <Line data={chloridChartData} options={chloridOptions} />
+                <Line data={chloridChartData as any} options={chloridOptions} />
               </div>
             </div>
 
@@ -1119,7 +1120,7 @@ export default function Korrosion() {
 
               <div className="flex-1 relative w-full h-full">
                 <Line
-                  data={karbonatisierungChartData}
+                  data={karbonatisierungChartData as any}
                   options={karbonatisierungOptions}
                 />
               </div>

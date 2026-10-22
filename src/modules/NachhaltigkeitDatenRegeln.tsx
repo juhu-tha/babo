@@ -3,36 +3,21 @@ import {
   Scale, 
   BarChart3, 
   Globe, 
-  FileText, 
-  Award, 
   ShieldCheck, 
   Building2, 
-  Trash2, 
-  Leaf, 
-  Zap, 
-  TrendingDown, 
   Layers, 
   QrCode, 
-  CheckCircle2, 
-  AlertTriangle, 
-  ExternalLink, 
-  HelpCircle, 
-  Compass, 
   RefreshCw,
-  HardHat,
-  Info,
   BookOpen,
   Library,
   Target,
-  Sparkles,
-  CheckCircle,
   Clock,
   ArrowRight
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { useTabContext } from '@/src/contexts/TabContext';
 

@@ -1,7 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Play, RotateCcw, CircleDashed } from 'lucide-react';
 import {
   Chart as ChartJS,
@@ -14,6 +13,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -54,7 +54,7 @@ export default function Ausbreitversuch() {
     setProgress(0);
     setAusbreitmass(200);
 
-    let targetMass = params.targetMass + (Math.random() * 20 - 10);
+    const targetMass = params.targetMass + (Math.random() * 20 - 10);
 
     let currentStep = 0;
     const steps = 40;
@@ -156,7 +156,7 @@ export default function Ausbreitversuch() {
             
             <div className="space-y-3">
               <label className="text-sm font-bold text-text-main">Konsistenzklasse wählen</label>
-              <select
+              <select aria-label="Konsistenzklasse wählen"
                 value={consistency}
                 onChange={(e) => setConsistency(e.target.value as ConsistencyClass)}
                 disabled={testStatus === 'running'}

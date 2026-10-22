@@ -2,9 +2,10 @@ import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberForma
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
 import { Pie, Line, Radar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Calculator, Layers, Activity, BookOpen, Wind, Sparkles, Scale, RefreshCw, Thermometer } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Calculator, Layers, Activity, BookOpen, Wind, Scale } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { DIN1045_2 } from '@/src/data/normParams';
@@ -753,7 +754,7 @@ export default function Mischungsberechnung() {
     let reqMinCover = 0;
     let reqMaxZement = Infinity;
 
-    let scores = { XC: 0, XD_XS: 0, XF: 0, XA: 0, XM: 0 };
+    const scores = { XC: 0, XD_XS: 0, XF: 0, XA: 0, XM: 0 };
 
     expClasses.forEach(cls => {
       const data = EXPOSITIONSKLASSEN[cls];

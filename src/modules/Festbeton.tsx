@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Box, Layers, Activity, TrendingUp, CheckCircle2, AlertTriangle, ArrowRight, Scale, Sliders, Calendar, ShieldCheck, BookOpen } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { Box, Layers, TrendingUp, CheckCircle2, AlertTriangle, ArrowRight, Scale, Sliders, Calendar, ShieldCheck } from 'lucide-react';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Slider } from '@/src/components/ui/Slider';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { normalPDF } from '@/src/lib/math';
 import { useTabContext } from '@/src/contexts/TabContext';
@@ -19,6 +18,7 @@ import {
   Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 
 ChartJS.register(
   CategoryScale,
@@ -388,7 +388,7 @@ export default function Festbeton() {
                     <div className="grid grid-cols-2 gap-2 text-[11px]">
                       <div>
                         <label className="text-text-main/70 block">Beiwert α_cc:</label>
-                        <input 
+                        <input aria-label="Beiwert α_cc" 
                           type="number" 
                           step="0.05" 
                           min="0.80" 
@@ -400,7 +400,7 @@ export default function Festbeton() {
                       </div>
                       <div>
                         <label className="text-text-main/70 block">Teilsicherheit γ_c:</label>
-                        <input 
+                        <input aria-label="Teilsicherheit γ_c" 
                           type="number" 
                           step="0.1" 
                           min="1.2" 
@@ -474,7 +474,7 @@ export default function Festbeton() {
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div>
                       <label className="font-bold text-text-main block mb-1">Zementklasse (EC2):</label>
-                      <select 
+                      <select aria-label="Zementklasse (EC2)" 
                         value={zementArt}
                         onChange={(e) => setZementArt(e.target.value as 'R' | 'N' | 'S')}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
@@ -487,7 +487,7 @@ export default function Festbeton() {
 
                     <div>
                       <label className="font-bold text-text-main block mb-1">Prüfgeometrie:</label>
-                      <select 
+                      <select aria-label="Prüfgeometrie" 
                         value={geometrie}
                         onChange={(e) => setGeometrie(e.target.value as any)}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
@@ -502,7 +502,7 @@ export default function Festbeton() {
 
                   <div className="text-xs">
                     <label className="font-bold text-text-main block mb-1">Lagerungsbedingung:</label>
-                    <select 
+                    <select aria-label="Lagerungsbedingung" 
                       value={lagerung}
                       onChange={(e) => setLagerung(e.target.value as any)}
                       className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
@@ -517,11 +517,11 @@ export default function Festbeton() {
                   {/* Ergebnisbox */}
                   <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/20 flex flex-col gap-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs text-text-main/80 font-medium">Entwicklungsbeiwert β_cc({alter} d):</span>
+                      <span className="text-xs text-text-main/80 font-medium">Entwicklungsbeiwert β_cc({formatDeWert(alter)} d):</span>
                       <span className="font-mono font-bold text-shiraz text-base">{formatDeZahl(beta_cc, 3)}</span>
                     </div>
                     <div className="flex justify-between items-center border-t border-shiraz/10 pt-2">
-                      <span className="text-xs text-text-main font-bold">Erwartete Festigkeit f_cm({alter} d):</span>
+                      <span className="text-xs text-text-main font-bold">Erwartete Festigkeit f_cm({formatDeWert(alter)} d):</span>
                       <span className="font-mono font-bold text-shiraz text-lg">{formatDeZahl(fcm_t_eff, 1)} N/mm²</span>
                     </div>
                     <span className="text-[10px] text-text-main/60">
@@ -780,20 +780,20 @@ export default function Festbeton() {
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div>
                       <label className="font-bold text-text-main block mb-1">Betonklasse:</label>
-                      <select 
+                      <select aria-label="Betonklasse" 
                         value={konfKlasse}
                         onChange={(e) => setKonfKlasse(e.target.value)}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-bold"
                       >
                         {NORM_KLASSEN.map(cls => (
-                          <option key={cls.name} value={cls.name}>{cls.name} (Würfel f_ck = {cls.fck_cube} MPa)</option>
+                          <option key={cls.name} value={cls.name}>{cls.name} (Würfel f_ck = {formatDeWert(cls.fck_cube)} MPa)</option>
                         ))}
                       </select>
                     </div>
 
                     <div>
                       <label className="font-bold text-text-main block mb-1">Prüfregime:</label>
-                      <select 
+                      <select aria-label="Prüfregime" 
                         value={konfModus}
                         onChange={(e) => {
                           const m = e.target.value as 'erst' | 'stetig';
@@ -816,7 +816,7 @@ export default function Festbeton() {
                     <label className="font-bold text-text-main block mb-1">
                       Gemessene Festigkeiten [N/mm²] (Komma-separiert):
                     </label>
-                    <input 
+                    <input aria-label="Gemessene Festigkeiten [N/mm²] (Komma-separiert)" 
                       type="text" 
                       value={konfWerteStr} 
                       onChange={(e) => setKonfWerteStr(e.target.value)}
