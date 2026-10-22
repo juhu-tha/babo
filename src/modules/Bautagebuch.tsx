@@ -1393,9 +1393,9 @@ export default function Bautagebuch() {
           'Kochendörfer, B.; Liebchen, J. H.; Viering, M. G. (2018): Bau-Projekt-Management (Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'VOB/B 2016 § 4 Abs. 3 & § 6 (Bedenken und Behinderung)', url: 'https://www.dinmedia.de/de/suche?q=VOB%2FB' },
+          { title: 'VOB/B 2016 § 4 Abs. 3 & § 6 (Bedenken und Behinderung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VOB%2FB' },
           { title: 'HOAI 2021, Anlage 10 Lph 8 (Objektüberwachung: Dokumentation des Bauablaufs)', url: 'https://www.gesetze-im-internet.de/hoai_2021/' },
-          { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Bauausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' }
+          { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Bauausführung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-3' }
         ]}
         formeln={[
           {

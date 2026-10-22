@@ -105,9 +105,9 @@ export default function Schleuderbeton() {
           { title: 'Zentrifugalkraft', url: 'https://de.wikipedia.org/wiki/Zentrifugalkraft' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 12843 (Betonfertigteile - Maste)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12843' },
-          { title: 'DIN EN 1916 / DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1916' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' }
+          { title: 'DIN EN 12843 (Betonfertigteile - Maste)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12843' },
+          { title: 'DIN EN 1916 / DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1916' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' }
         ]}
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',

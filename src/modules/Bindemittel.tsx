@@ -396,9 +396,9 @@ export default function Bindemittel() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 197-1 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },
-          { title: 'DIN EN 450-1 (Flugasche für Beton - Teil 1: Definitionen, Anforderungen und Qualitätskontrolle)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+450-1' },
-          { title: 'DIN EN 13263-1 (Silikastaub für Beton - Teil 1: Definitionen, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13263-1' }
+          { title: 'DIN EN 197-1 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1' },
+          { title: 'DIN EN 450-1 (Flugasche für Beton - Teil 1: Definitionen, Anforderungen und Qualitätskontrolle)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+450-1' },
+          { title: 'DIN EN 13263-1 (Silikastaub für Beton - Teil 1: Definitionen, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13263-1' }
         ]}
         formeln={[
           {

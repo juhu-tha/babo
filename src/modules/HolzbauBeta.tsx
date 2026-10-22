@@ -2208,9 +2208,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Tragwerksbemessung für den Brandfall)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-2' },
-          { title: 'DIN EN 16351 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+16351' }
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Tragwerksbemessung für den Brandfall)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-2' },
+          { title: 'DIN EN 16351 (Holzbauwerke - Brettsperrholz - Anforderungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+16351' }
         ]}
         literatur={[
           'Informationsdienst Holz - Holzbau Handbuch Reihe 1 bis 5',

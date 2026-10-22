@@ -2008,10 +2008,10 @@ export function Stahlbetoninstandhaltung() {
         ]}
         regelwerke={[
           { title: 'DIBt Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung Teile 1 und 2; Teil 1 Stand Mai 2020)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teile 1 bis 10)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504' },
-          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12696' },
+          { title: 'DIN EN 1504 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teile 1 bis 10)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1504' },
+          { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12696' },
           { title: 'ZTV-ING Teil 3: Massivbau (Bundesanstalt für Straßenwesen / BMVI)', url: 'https://www.bast.de/' },
-          { title: 'DIN EN 1504-5 (Füllen von Rissen, Hohlräumen und Fehlstellen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-5' }
+          { title: 'DIN EN 1504-5 (Füllen von Rissen, Hohlräumen und Fehlstellen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1504-5' }
         ]}
         literatur={[
           'Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008',

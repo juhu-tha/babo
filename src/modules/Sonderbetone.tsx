@@ -135,7 +135,7 @@ export default function Sonderbetone() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
           { title: 'DAfStb-Richtlinie Selbstverdichtender Beton (SVB):2012-11', url: 'https://www.dafstb.de/' },
           { title: 'DAfStb-Richtlinie Stahlfaserbeton:2021-06', url: 'https://www.dafstb.de/' },
           { title: 'DBV-Merkblatt Sichtbeton:2015-06', url: 'https://www.betonverein.de/' }

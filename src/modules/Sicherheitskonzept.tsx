@@ -365,9 +365,9 @@ export default function Sicherheitskonzept() {
           'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1990:2010-12 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' },
-          { title: 'DIN EN 1990/NA:2010-12 und DIN EN 1990/NA/A1:2012-08 (Nationaler Anhang)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990%2FNA' },
-          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke) mit Nationalen Anhängen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1991' }
+          { title: 'DIN EN 1990:2010-12 (Eurocode 0: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' },
+          { title: 'DIN EN 1990/NA:2010-12 und DIN EN 1990/NA/A1:2012-08 (Nationaler Anhang)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990%2FNA' },
+          { title: 'DIN EN 1991 (Eurocode 1: Einwirkungen auf Tragwerke) mit Nationalen Anhängen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1991' }
         ]}
         formeln={[
           {

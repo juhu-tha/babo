@@ -166,8 +166,8 @@ export default function HerstellungEinbau() {
           { title: 'Betonmischer', url: 'https://de.wikipedia.org/wiki/Betonmischer' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 1045-3 (Tragwerke aus Beton - Bauausführung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
+          { title: 'DIN 1045-3 (Tragwerke aus Beton - Bauausführung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-3' },
           { title: 'DBV-Merkblatt Pumpbeton', url: 'https://www.betonverein.de/' }
         ]}
         literatur={[

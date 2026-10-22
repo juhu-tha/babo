@@ -510,7 +510,7 @@ export default function ProbenahmePlaner() {
                 <td className="py-2 px-3 font-medium">In-situ-Druckfestigkeit von Beton in Bauwerken</td>
                 <td className="py-2 px-3 text-slate-650">n ≥ 8 Kerne: f_ck,is = min(f_m − k_n·s; f_lowest + M); f_ck = f_ck,is/0,85</td>
                 <td className="py-2 px-3 text-right">
-                  <a href="https://www.dinmedia.de/de/suche?q=DIN+EN+13791" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
+                  <a href="https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13791" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
                     DIN Media <ExternalLink size={11} />
                   </a>
                 </td>
@@ -521,7 +521,7 @@ export default function ProbenahmePlaner() {
                 <td className="py-2 px-3 font-medium">Prüfung von Beton in Bauwerken (Kerne, Rückprall, US)</td>
                 <td className="py-2 px-3 text-slate-650">Konditionierung h/d, Planparallelität, R-Wert-Median, Ultraschall</td>
                 <td className="py-2 px-3 text-right">
-                  <a href="https://www.dinmedia.de/de/suche?q=DIN+EN+12504" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
+                  <a href="https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12504" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
                     DIN Media <ExternalLink size={11} />
                   </a>
                 </td>
@@ -532,7 +532,7 @@ export default function ProbenahmePlaner() {
                 <td className="py-2 px-3 font-medium">Bestimmung des Chloridgehalts im Festbeton</td>
                 <td className="py-2 px-3 text-slate-650">Trockenbohrmehl, Tiefenstufung 5 mm, HNO3-Aufschluss, Titration</td>
                 <td className="py-2 px-3 text-right">
-                  <a href="https://www.dinmedia.de/de/suche?q=DIN+EN+14629" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
+                  <a href="https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14629" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
                     DIN Media <ExternalLink size={11} />
                   </a>
                 </td>
@@ -543,7 +543,7 @@ export default function ProbenahmePlaner() {
                 <td className="py-2 px-3 font-medium">Karbonatisierungstiefe mit Phenolphthalein</td>
                 <td className="py-2 px-3 text-slate-650">Bruchfrische Spaltfläche, 0,1 % Indikator, Ablesung in 30–60 s</td>
                 <td className="py-2 px-3 text-right">
-                  <a href="https://www.dinmedia.de/de/suche?q=DIN+EN+14630" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
+                  <a href="https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14630" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
                     DIN Media <ExternalLink size={11} />
                   </a>
                 </td>
@@ -554,7 +554,7 @@ export default function ProbenahmePlaner() {
                 <td className="py-2 px-3 font-medium">Haftfestigkeit im Abreißversuch</td>
                 <td className="py-2 px-3 text-slate-650">Ø 50 mm Kernbohrung 15 mm in Altbeton, 2K-Epoxidkleber, 0,05 MPa/s</td>
                 <td className="py-2 px-3 text-right">
-                  <a href="https://www.dinmedia.de/de/suche?q=DIN+EN+1542" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
+                  <a href="https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1542" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline inline-flex items-center gap-1 font-bold">
                     DIN Media <ExternalLink size={11} />
                   </a>
                 </td>

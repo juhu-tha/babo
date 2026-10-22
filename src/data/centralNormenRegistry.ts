@@ -22,7 +22,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2023-08',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206',
     beschreibung: 'Zentrales Regelwerk für Expositionsklassen (XC, XD, XS, XF, XA, XM), w/z-Werte, Mindestdruckfestigkeiten und Konformitätskriterien im DACH-Raum.',
     relevanteModule: ['beton_a_z', 'mischungsberechnung', 'dauerhaftigkeit', 'labor', 'sonderbetone']
   },
@@ -33,7 +33,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2023-08',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-3',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-3',
     beschreibung: 'Regelt Schalung, Bewehrungsverlegung, Betoneinbau, Verdichtung und die maßgebenden Nachbehandlungsfristen.',
     relevanteModule: ['nachbehandlung', 'betonpraxis', 'herstellung_einbau']
   },
@@ -44,7 +44,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2011-03',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13670',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670',
     beschreibung: 'Die europäische Ausführungsnorm regelt Schalen, Bewehren, den Einbau des Frischbetons sowie die vier Nachbehandlungsklassen (N1 bis N4) zum Schutz vor frühzeitigem Austrocknen des Betons.',
     relevanteModule: ['nachbehandlung', 'betonpraxis', 'herstellung_einbau']
   },
@@ -66,7 +66,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2021-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+197-1',
     beschreibung: 'Klassifiziert CEM I bis CEM VI sowie moderne klinkerreduzierte CEM II/C-M Kompositzemente zur CO2-Minderung.',
     relevanteModule: ['zementchemie', 'bindemittel', 'hydratation', 'lca']
   },
@@ -77,7 +77,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2012-10',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+450-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+450-1',
     beschreibung: 'Regelt die Zulassung und Qualität von Steinkohlenflugasche als puzzolanischer Zusatzstoff zur Anrechnung auf den Mindestzementgehalt (k-Wert-Ansatz).',
     relevanteModule: ['bindemittel', 'mischungsberechnung', 'sonderbetone']
   },
@@ -88,7 +88,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2008-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12620',
     beschreibung: 'Anforderungen an Sande, Kiese und Splitte bezüglich Kornform, Sieblinie, Frostbeständigkeit und schädlicher Bestandteile.',
     relevanteModule: ['mischungsberechnung', 'gesteinskoernung', 'labor']
   },
@@ -99,7 +99,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2012-08',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+934-2',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+934-2',
     beschreibung: 'Regelt Zusatzmittel wie Fließmittel (FM), Luftporenbildner (LP), Verzögerer (VZ) und Beschleuniger (BE).',
     relevanteModule: ['mischungsberechnung', 'frischbeton', 'betonpraxis']
   },
@@ -110,7 +110,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2025-09',
     status: 'in_ueberarbeitung',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1',
     beschreibung: 'Tragwerksnorm für Biegung, Querkraft, Durchstanzen und Rissbreitennachweis. Die deutsche Fassung der 2. Generation (DIN EN 1992-1-1:2025-09, EN 1992-1-1:2023) ist erschienen; bauaufsichtlich maßgebend bleibt bis zur Einführung in die MVV TB die Fassung 2011-01 + A1:2015-03 mit Nationalem Anhang.',
     relevanteModule: ['biegebemessung', 'querkraft', 'durchstanzen', 'rissbreite', 'verankerungslaenge']
   },
@@ -121,7 +121,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2015-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+459-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+459-1',
     beschreibung: 'Klassifizierung von Luftkalken (CL) und hydraulischen Kalken (NHL, HL) für historische und denkmalgerechte Mörtel.',
     relevanteModule: ['kalk', 'putze_moertel', 'denkmalpflege']
   },
@@ -136,7 +136,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'mauerwerk',
     ausgabeStand: '2013-02',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1996-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1996-1',
     beschreibung: 'Regelt die Standsicherheit, Knicksicherheit, und konstruktive Ausbildung von tragendem und nichttragendem Mauerwerk.',
     relevanteModule: ['mauerwerk', 'bp_mauerwerk', 'bestand']
   },
@@ -147,7 +147,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'mauerwerk',
     ausgabeStand: '2015-11',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+771-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+771-1',
     beschreibung: 'Europaweit harmonisierte Qualitätsanforderungen für Mauerziegel, Kalksandsteine, Betonwerksteine und Porenbetonsteine.',
     relevanteModule: ['mauerwerk', 'kalk', 'bp_mauerwerk']
   },
@@ -158,7 +158,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'mauerwerk',
     ausgabeStand: '2017-02',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+998-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+998-1',
     beschreibung: 'Spezifikationen für Mauermörtel (Normal-, Dünnbett-, Leichtmörtel) und Putzmörtel zur Einhaltung der Verbundfestigkeiten.',
     relevanteModule: ['mauerwerk', 'kalk', 'ausbau']
   },
@@ -173,7 +173,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'holz',
     ausgabeStand: '2010-12',
     status: 'in_ueberarbeitung',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1',
     beschreibung: 'Planung, Bemessung und Detailkonstruktionen von Holzkonstruktionen und Ingenieurholzbau-Systemen.',
     relevanteModule: ['holz', 'holzwerkstoffe', 'holzbau_beta', 'knicken']
   },
@@ -185,7 +185,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     ausgabeStand: '2008-12',
     status: 'ersetzt',
     ersetztDurch: 'DIN EN 1995-1-1 mit NA und DIN 1052-10:2012-05',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+1052',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1052',
     beschreibung: 'Frühere nationale Holzbau-Bemessungsnorm (zurückgezogen); seit Einführung von Eurocode 5 nur noch für die Beurteilung von Bestandsstatiken relevant. Ausführungsregeln: DIN 1052-10.',
     relevanteModule: ['holz', 'holzwerkstoffe']
   },
@@ -196,7 +196,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'holz',
     ausgabeStand: '2016-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+338',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+338',
     beschreibung: 'Klassifiziert Nadelholz (C14-C50) und Laubholz (D18-D70) nach charakteristischen Biege-, Zug-, Druckfestigkeiten und E-Modul.',
     relevanteModule: ['holz', 'materialkennwerte']
   },
@@ -207,7 +207,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'holz',
     ausgabeStand: '2006-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+300',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+300',
     beschreibung: 'Anforderungen an OSB/1 bis OSB/4 bezüglich Tragfähigkeit und Feuchtebeständigkeit.',
     relevanteModule: ['holzwerkstoffe', 'holz']
   },
@@ -218,7 +218,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'holz',
     ausgabeStand: '2015-05',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+636',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+636',
     beschreibung: 'Regelt Sperrholzqualitäten für tragende und nichttragende Zwecke im Trocken-, Feucht- oder Außenbereich.',
     relevanteModule: ['holzwerkstoffe']
   },
@@ -233,7 +233,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'metall',
     ausgabeStand: '2025-04',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1993-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1993-1',
     beschreibung: 'Globale Bemessungsnorm für Stahltragwerke (Hallen, Brücken, Hochhäuser) im Grenzzustand der Tragfähigkeit.',
     relevanteModule: ['stahl', 'metalle', 'metallkorrosion', 'bp_stahlbauprofile']
   },
@@ -244,7 +244,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'metall',
     ausgabeStand: '2019-10',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+10025-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+10025-1',
     beschreibung: 'Materialspezifikation für Baustähle wie S235, S355 inklusive Schweißeignung und Kerbschlagarbeit.',
     relevanteModule: ['metalle', 'stahl', 'bp_stahlbauprofile']
   },
@@ -255,7 +255,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'metall',
     ausgabeStand: '2018-06',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+12944-1',
     beschreibung: 'Definiert die Korrosivitätskategorien (C1 bis C5-M) und beschreibt geeignete Beschichtungen zum langfristigen Stahlschutz.',
     relevanteModule: ['metallkorrosion', 'korrosion', 'instandsetzung_materialien']
   },
@@ -266,7 +266,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2020-05',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18008-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18008-1',
     beschreibung: 'Die maßgebende deutsche Norm für tragendes Glas, absturzsichernde Verglasung, begehbares Glas und Linienlagerungen.',
     relevanteModule: ['glas_fenster', 'bauphysik']
   },
@@ -277,7 +277,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2016-06',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+572-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+572-1',
     beschreibung: 'Definiert Basiserzeugnisse wie Floatglas, poliertes Drahtglas und Ornamentglas.',
     relevanteModule: ['glas_fenster']
   },
@@ -292,7 +292,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2018-10',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-2',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4108-2',
     beschreibung: 'Regelt Mindest-Wärmedurchlasswiderstände, f_Rsi-Faktor (>=0,70 Schimmelschutz) und das Glaser-Verfahren nach DIN 4108-3.',
     relevanteModule: ['bauphysik', 'daemmstoffe', 'feuchteschutz', 'rechnung_u_wert']
   },
@@ -303,7 +303,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2018-01',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4109-1',
     beschreibung: 'Bauordnungsrechtlich geschuldete Mindestanforderungen an Luft- und Trittschalldämmung (R\'w, L\'n,w).',
     relevanteModule: ['schallschutz', 'bauphysik', 'ausbau']
   },
@@ -314,7 +314,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2016-05',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+4102-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4102-1',
     beschreibung: 'Nationale Baustoffklassen (A1, A2, B1, B2, B3) und Feuerwiderstandsklassen (F30 bis F120) von Bauteilen im Hochbau.',
     relevanteModule: ['brandschutz', 'daemmstoffe']
   },
@@ -325,7 +325,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2019-05',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13501-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13501-1',
     beschreibung: 'Euroklassen A1 bis F, Rauchentwicklungsklassen (s1, s2, s3) und brennendes Abtropfen (d0, d1, d2).',
     relevanteModule: ['brandschutz', 'daemmstoffe', 'kunststoffe', 'holz']
   },
@@ -336,7 +336,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2017-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18531',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18531',
     beschreibung: 'Regelt Planung, Stoffauswahl, Bemessung und Ausführung von flachen und geneigten Dach- sowie Balkonabdichtungen.',
     relevanteModule: ['feuchteschutz', 'bauphysik', 'ausbau']
   },
@@ -347,7 +347,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2017-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18533-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18533-1',
     beschreibung: 'Wassereinwirkungsklassen W1.1-E bis W4-E, Rissüberbrückungsklassen und Abdichtungsstoffe für Keller und Bodenplatten.',
     relevanteModule: ['feuchteschutz', 'bauphysik', 'wu_bauwerke', 'instandsetzung_materialien']
   },
@@ -358,7 +358,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2017-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18534-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18534-1',
     beschreibung: 'Regelt Abdichtungskonzepte für Nassbereiche im Hochbau wie gewerbliche Küchen, Schwimmbeckenränder und häusliche Badezimmer.',
     relevanteModule: ['feuchteschutz', 'ausbau']
   },
@@ -369,7 +369,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2017-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18535',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18535',
     beschreibung: 'Normierung der Abdichtung für flüssigkeitsbeaufschlagte Bauteile und Tanks im Bauwesen.',
     relevanteModule: ['feuchteschutz', 'wu_bauwerke']
   },
@@ -380,7 +380,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2017-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18195',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18195',
     beschreibung: 'Die traditionsreiche Grundlagennorm zur Definition aller zentralen Abkürzungen und verfahrenstechnischen Begriffe im Feuchteschutz.',
     relevanteModule: ['feuchteschutz', 'bauphysik']
   },
@@ -395,7 +395,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'geotechnik',
     ausgabeStand: '2014-03',
     status: 'in_ueberarbeitung',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1997-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1997-1',
     beschreibung: 'Regelt statische Erddruckberechnungen, Fundamentbemessungen, Böschungsstabilitäten und Baugrunduntersuchungen.',
     relevanteModule: ['geotechnik', 'bodenmechanik', 'grundbau']
   },
@@ -406,7 +406,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'geotechnik',
     ausgabeStand: '2011-05',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18196',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18196',
     beschreibung: 'Einteilung von Böden in Bodengruppen (GE, GW, TL, UA etc.) zur Bewertung der Frostempfindlichkeit, Tragfähigkeit und Verdichtbarkeit.',
     relevanteModule: ['geotechnik', 'bodenmechanik']
   },
@@ -417,7 +417,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'geotechnik',
     ausgabeStand: '2019-09',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18300',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18300',
     beschreibung: 'Verbindliche Ausführungsregeln für das Lösen, Laden, Fördern und Einbauen von Erdmassen inklusive Homogenklassen-Einteilung.',
     relevanteModule: ['geotechnik', 'vob', 'bauleitung']
   },
@@ -428,7 +428,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'geotechnik',
     ausgabeStand: '2016-12',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13108-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13108-1',
     beschreibung: 'Eigenschaften für Asphaltbeton (AC), Gussasphalt (MA) und Offenporigen Asphalt (PA) im Verkehrswegebau.',
     relevanteModule: ['strassenbau', 'bitumen']
   },
@@ -443,7 +443,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2019-09',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18181',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18181',
     beschreibung: 'Spezifiziert Montage, Schraubenabstände, Achsabstände der Unterkonstruktion, Fugenversatz und Spachtelbedingungen.',
     relevanteModule: ['trockenbau', 'ausbau']
   },
@@ -454,7 +454,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2014-09',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18180',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18180',
     beschreibung: 'Besondere Anforderungen an Gipskarton- und Feuerschutzbauplatten im Hochbau.',
     relevanteModule: ['trockenbau', 'ausbau']
   },
@@ -465,7 +465,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2009-12',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+520',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+520',
     beschreibung: 'Europäische Produktnorm mit Typenklassifizierung (Typ A, H, F, D etc.) bezogen auf Schall- und Feuchteeigenschaften.',
     relevanteModule: ['trockenbau']
   },
@@ -476,7 +476,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2016-09',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13914-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13914-1',
     beschreibung: 'Regelt Mörtelgruppenauswahl, Verputzregeln bei mineralischen Untergründen und Mindestschichtdicken.',
     relevanteModule: ['putze_moertel', 'kalk', 'ausbau']
   },
@@ -487,7 +487,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2021-02',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18560-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18560-1',
     beschreibung: 'Technische Spezifikationen für schwimmende Estriche, Verbundestriche, Heizestriche, Einbaudicken und Formänderungsverhalten.',
     relevanteModule: ['estriche', 'ausbau']
   },
@@ -502,7 +502,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'nachhaltigkeit',
     ausgabeStand: '2022-03',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804',
     beschreibung: 'Standard für Ökobilanzen von Bauprodukten, GWP-total, Module A1-A3, B1-B7, C1-C4 und D.',
     relevanteModule: ['nachhaltigkeit', 'dpp_epd', 'lca', 'interactive_lca']
   },
@@ -513,7 +513,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'nachhaltigkeit',
     ausgabeStand: '2026-09',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15978',
     beschreibung: 'Methodik zur Bewertung der Umweltqualität von Gebäuden über alle Lebenszyklusphasen (A1–C4, Modul D getrennt); der Betrachtungszeitraum wird vom Bewertungssystem festgelegt (QNG/BNB/DGNB: 50 Jahre). Übergangsregeln in den Bewertungssystemen manuell prüfen.',
     relevanteModule: ['nachhaltigkeit', 'lca', 'interactive_lca']
   },
@@ -524,7 +524,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'nachhaltigkeit',
     ausgabeStand: '2022-09',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+17472',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+17472',
     beschreibung: 'Europäische Norm zur Nachhaltigkeits- und Ökobilanzierung von Ingenieurbauwerken (Brücken, Tunnel, Straßen, Bahntrassen) über 80-100 Jahre Betrachtungszeitraum inkl. Baustellen-Stauemissionen (Modul B8).',
     relevanteModule: ['nachhaltigkeit', 'lca', 'interactive_lca']
   },
@@ -535,7 +535,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'nachhaltigkeit',
     ausgabeStand: '2024-03',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18945',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18945',
     beschreibung: 'Die weltweit ersten Produktnormen für industrielle Lehmprodukte im Hochbau.',
     relevanteModule: ['nachhaltigkeit', 'kalk', 'ausbau']
   },
@@ -550,7 +550,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'qualitaet',
     ausgabeStand: '2019-07',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18202',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18202',
     beschreibung: 'Grenzabweichungen, Winkel- und Ebenheitstoleranzen für alle Rohbau- und Ausbaugewerke.',
     relevanteModule: ['regularien', 'qualitaetssicherung', 'betonpraxis', 'ausbau']
   },
@@ -561,7 +561,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'qualitaet',
     ausgabeStand: '2014-08',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18203-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18203-1',
     beschreibung: 'Regelt Detailtoleranzen für Beton- (Teil 1), Stahl- (Teil 2) und Holzkonstruktionen (Teil 3) zur montagegerechten Passbarkeit.',
     relevanteModule: ['qualitaetssicherung', 'betonpraxis']
   },
@@ -572,7 +572,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2014-12',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18040-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18040-1',
     beschreibung: 'Regelt bauaufsichtliche Anforderungen an schwellenfreie, rollstuhlgerechte Erschließung von Wegen, öffentlichen Räumen und Wohnungen.',
     relevanteModule: ['regularien', 'ausbau']
   },
@@ -583,7 +583,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'ausbau',
     ausgabeStand: '2020-05',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+18015-1',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18015-1',
     beschreibung: 'Definiert Installationszonen an Decken/Wänden (Schutzbereiche für Bohrarbeiten) sowie die Mindestausstattung der Stromkreise.',
     relevanteModule: ['regularien', 'ausbau']
   },
@@ -594,7 +594,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2019-12',
     status: 'gueltig',
-    url: 'https://www.dinmedia.de/de/suche?q=DIN+1946-6',
+    url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1946-6',
     beschreibung: 'Verpflichtet Planer bei Neubauten und größeren energetischen Sanierungen, den Außenluftwechsel zur Vermeidung von Feuchteschäden rein physikalisch nachzuweisen.',
     relevanteModule: ['bauphysik', 'feuchteschutz']
   },

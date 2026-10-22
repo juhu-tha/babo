@@ -105,7 +105,7 @@ export default function UwBeton() {
           { title: 'Hydrostatischer Druck', url: 'https://de.wikipedia.org/wiki/Hydrostatischer_Druck' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Abschnitt Unterwasserbeton, Mindestzementgehalt 350-380 kg/m³)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Abschnitt Unterwasserbeton, Mindestzementgehalt 350-380 kg/m³)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206' },
           { title: 'ZTV-W LB 215 (Zusätzliche Technische Vertragsbedingungen im Wasserbau - Wasserbauwerke aus Beton)', url: 'https://izw.baw.de/' },
           { title: 'DBV-Merkblatt: Unterwasserbeton (Schütt- und Pumprohrverfahren / Contractor)', url: 'https://www.betonverein.de/' }
         ]}

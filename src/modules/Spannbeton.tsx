@@ -1354,13 +1354,13 @@ export default function Spannbeton() {
           { title: 'Spannstahl', url: 'https://de.wikipedia.org/wiki/Spannstahl' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit DIN EN 1992-1-1/NA:2013-04 + NA/A1:2015-12 (Eurocode 2, bauaufsichtlich eingeführt über MVV TB)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1992-2:2010-12 mit DIN EN 1992-2/NA:2013-04 (Betonbrücken) sowie ZTV-ING Teil 3', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-2' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit DIN EN 1992-1-1/NA:2013-04 + NA/A1:2015-12 (Eurocode 2, bauaufsichtlich eingeführt über MVV TB)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1' },
+          { title: 'DIN EN 1992-2:2010-12 mit DIN EN 1992-2/NA:2013-04 (Betonbrücken) sowie ZTV-ING Teil 3', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-2' },
           { title: 'DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023, 2. Generation; ersetzt formal DIN EN 1992-1-1:2011-01, DIN EN 1992-2 und DIN EN 1992-3 – bauaufsichtlich noch nicht eingeführt)', url: 'https://www.dinmedia.de/de/norm/din-en-1992-1-1/374296420' },
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1045-2' },
           { title: 'Spannstahl: allgemeine bauaufsichtliche Zulassungen (abZ) des DIBt; EN 10138 nur als Entwurf (prEN 10138-1 bis -4), nicht harmonisiert', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 445 / 446 / 447 (Einpressmörtel für Spannglieder: Prüfverfahren, Einpressverfahren, Anforderungen) – Ausgaben manuell prüfen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+447' },
-          { title: 'DIN EN 523 (Hüllrohre aus Bandstahl für Spannglieder) – Ausgabe manuell prüfen', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+523' },
+          { title: 'DIN EN 445 / 446 / 447 (Einpressmörtel für Spannglieder: Prüfverfahren, Einpressverfahren, Anforderungen) – Ausgaben manuell prüfen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+447' },
+          { title: 'DIN EN 523 (Hüllrohre aus Bandstahl für Spannglieder) – Ausgabe manuell prüfen', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+523' },
           { title: 'fib Bulletin 75 (2014): Polymer-duct systems for internal bonded post-tensioning', url: 'https://www.fib-international.org/' },
           { title: 'Spannverfahren: Europäische Technische Bewertungen (ETA) bzw. abZ des jeweiligen Systems', url: 'https://www.dibt.de/' },
           { title: 'BMVI: Handlungsanweisung Spannungsrisskorrosion (Ankündigungsverhalten) und Nachrechnungsrichtlinie für Straßenbrücken im Bestand', url: 'https://www.bast.de/' },

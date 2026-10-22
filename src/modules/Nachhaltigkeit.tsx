@@ -3650,7 +3650,7 @@ export default function Nachhaltigkeit() {
           { title: 'Bundes-Klimaschutzgesetz (KSG – Treibhausgasneutralität 2045)', url: 'https://www.gesetze-im-internet.de/ksg/' },
           { title: 'Ersatzbaustoffverordnung (EBV – Mineralische Sekundärbaustoffe)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
           { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG Kriterienkatalog)', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15978' }
+          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15978' }
         ]}
         formeln={[
           {

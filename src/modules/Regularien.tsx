@@ -1296,7 +1296,7 @@ export default function Regularien() {
           { title: 'Gebäudemodernisierungsgesetz (GModG; bis 28.07.2026 Gebäudeenergiegesetz GEG) – Infoportal des BBSR', url: 'https://www.gmodg.bund.de/' },
           { title: 'Bauproduktenverordnung (BauPVO) – Verordnung (EU) 2024/3110 (übergangsweise VO (EU) 305/2011)', url: 'https://eur-lex.europa.eu/eli/reg/2024/3110/oj' },
           { title: 'Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB)', url: 'https://www.dibt.de/' },
-          { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB Teile A, B, C)', url: 'https://www.dinmedia.de/de/suche?q=VOB+2019' },
+          { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB Teile A, B, C)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VOB+2019' },
           { title: 'Ersatzbaustoffverordnung (ErsatzbaustoffV)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
         ]}
         literatur={[

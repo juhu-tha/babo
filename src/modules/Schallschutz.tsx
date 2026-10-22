@@ -373,10 +373,10 @@ export default function Schallschutz() {
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' }
         ]}
         regelwerke={[
-          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau – Mindestanforderungen; z. B. Wohnungstrennwände R′w ≥ 53 dB, Wohnungstrenndecken R′w ≥ 54 dB, L′n,w ≤ 50 dB)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-1' },
-          { title: 'DIN 4109-2:2018-01 (Rechnerische Nachweise einschließlich Flankenübertragung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-2' },
-          { title: 'DIN 4109-32:2016-07 (Daten für die rechnerischen Nachweise – Bauteilkatalog Massivbau)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-32' },
-          { title: 'DIN 4109-34:2016-07 (Bauteilkatalog – Vorsatzkonstruktionen vor massiven Bauteilen, u. a. WDVS)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4109-34' }
+          { title: 'DIN 4109-1:2018-01 (Schallschutz im Hochbau – Mindestanforderungen; z. B. Wohnungstrennwände R′w ≥ 53 dB, Wohnungstrenndecken R′w ≥ 54 dB, L′n,w ≤ 50 dB)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4109-1' },
+          { title: 'DIN 4109-2:2018-01 (Rechnerische Nachweise einschließlich Flankenübertragung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4109-2' },
+          { title: 'DIN 4109-32:2016-07 (Daten für die rechnerischen Nachweise – Bauteilkatalog Massivbau)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4109-32' },
+          { title: 'DIN 4109-34:2016-07 (Bauteilkatalog – Vorsatzkonstruktionen vor massiven Bauteilen, u. a. WDVS)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+4109-34' }
         ]}
         literatur={[
           'Willems, W. (Hrsg.): Lehrbuch der Bauphysik. 8. Aufl., Wiesbaden: Springer Vieweg 2017',

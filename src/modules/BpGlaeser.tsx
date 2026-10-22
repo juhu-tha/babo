@@ -1520,10 +1520,10 @@ export default function BpGlaeser() {
           { title: 'Fenster', url: 'https://de.wikipedia.org/wiki/Fenster' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 14351-1: Fenster und Außentüren – Produktnorm, Leistungseigenschaften', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14351-1' },
-          { title: 'DIN EN 1279-1 bis 6: Glas im Bauwesen – Mehrscheiben-Isolierglas', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1279-1' },
-          { title: 'DIN 18008-1 bis 5: Glas im Bauwesen – Bemessungs- und Konstruktionsregeln', url: 'https://www.dinmedia.de/de/suche?q=DIN+18008-1' },
-          { title: 'DIN EN ISO 10077-1: Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen – Berechnung des Wärmedurchgangskoeffizienten', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+10077-1' },
+          { title: 'DIN EN 14351-1: Fenster und Außentüren – Produktnorm, Leistungseigenschaften', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14351-1' },
+          { title: 'DIN EN 1279-1 bis 6: Glas im Bauwesen – Mehrscheiben-Isolierglas', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1279-1' },
+          { title: 'DIN 18008-1 bis 5: Glas im Bauwesen – Bemessungs- und Konstruktionsregeln', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18008-1' },
+          { title: 'DIN EN ISO 10077-1: Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen – Berechnung des Wärmedurchgangskoeffizienten', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+10077-1' },
           { title: 'Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG): Anforderungen an den sommerlichen und winterlichen Wärmeschutz von Fenstern', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         literatur={[

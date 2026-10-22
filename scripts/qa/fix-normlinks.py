@@ -1,5 +1,5 @@
 """Einmal-Skript (AP 1): generische DIN-Media-/Beuth-Links durch stabile Suchlinks ersetzen.
-Aus dem Titel wird die Normbezeichnung (ohne Ausgabedatum) extrahiert; Suche: https://www.dinmedia.de/de/suche?q=…"""
+Aus dem Titel wird die Normbezeichnung (ohne Ausgabedatum) extrahiert; Suche: https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=…"""
 import re, sys, pathlib, urllib.parse, json
 ROOT = pathlib.Path(__file__).resolve().parents[2] / 'src'
 GEN = r"https?://(?:www\.)?(?:dinmedia\.de|beuth\.de)/?"
@@ -13,7 +13,7 @@ def query(title):
     t = re.sub(r"\(.*?\)", "", title)
     t = re.sub(r"[:–\-].*$", "", t).strip()
     return ' '.join(t.split()[:6]), False
-def url_for(q): return "https://www.dinmedia.de/de/suche?q=" + urllib.parse.quote_plus(q)
+def url_for(q): return "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=" + urllib.parse.quote_plus(q)
 stats = {'norm':0,'titel':0,'ohne_titel':[]}
 # Objekte { title: '...', url: '<generisch>' } (Reihenfolge title→url, auch name/label)
 OBJ = re.compile(r"((?:title|name|label)\s*:\s*(['\"])((?:(?!\2).)*)\2\s*,\s*url\s*:\s*)(['\"])" + GEN + r"\4")

@@ -384,7 +384,7 @@ export default function Aufgaben() {
         ]}
         regelwerke={[
           { title: 'Rahmenprüfungsordnung für Ingenieurstudiengänge (APO)', url: 'https://www.tha.de/' },
-          { title: 'DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+Normenreihe+Baustoffe+und+Konstruktiver' }
+          { title: 'DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+Normenreihe+Baustoffe+und+Konstruktiver' }
         ]}
         formeln={[
           {

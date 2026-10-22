@@ -106,9 +106,9 @@ export default function Faserbeton() {
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie Stahlfaserbeton (Leistungsklassen L0.9/0.6 bis L3.0/2.4)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 14889-1 (Fasern für Beton - Teil 1: Stahlfasern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14889-1' },
-          { title: 'DIN EN 14889-2 (Fasern für Beton - Teil 2: Polymerfasern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14889-2' },
-          { title: 'DIN EN 14651 (Prüfverfahren für Beton mit metallischen Fasern - Biegezugfestigkeit)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14651' }
+          { title: 'DIN EN 14889-1 (Fasern für Beton - Teil 1: Stahlfasern)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14889-1' },
+          { title: 'DIN EN 14889-2 (Fasern für Beton - Teil 2: Polymerfasern)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14889-2' },
+          { title: 'DIN EN 14651 (Prüfverfahren für Beton mit metallischen Fasern - Biegezugfestigkeit)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+14651' }
         ]}
         literatur={[
           'König, G.; Kützing, L.; Dahlhaus, F. (2008): Grundlagen des Faserbetons (Teubner)',

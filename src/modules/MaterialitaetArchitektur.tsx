@@ -547,8 +547,8 @@ export default function MaterialitaetArchitektur() {
         ]}
         regelwerke={[
           { title: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015)', url: 'https://www.beton.org/' },
-          { title: 'DIN EN 13914-1/-2 mit DIN 18550-1/-2 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13914-1' },
-          { title: 'DIN 18330 (VOB/C: Mauerarbeiten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18330' }
+          { title: 'DIN EN 13914-1/-2 mit DIN 18550-1/-2 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13914-1' },
+          { title: 'DIN 18330 (VOB/C: Mauerarbeiten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18330' }
         ]}
         formeln={[
           {

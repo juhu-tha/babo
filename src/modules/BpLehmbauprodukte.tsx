@@ -563,11 +563,11 @@ export default function BpLehmbauprodukte() {
           'Ziegert, Chr.: Instandsetzung historischer Lehmbauten (DIN Media)'
         ]}
         regelwerke={[
-          { title: 'DIN 18940:2023-04: Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion', url: 'https://www.dinmedia.de/de/suche?q=DIN+18940' },
-          { title: 'DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18945' },
-          { title: 'DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18946' },
-          { title: 'DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18947' },
-          { title: 'DIN 18948:2024-03: Lehmplatten - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/de/suche?q=DIN+18948' }
+          { title: 'DIN 18940:2023-04: Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18940' },
+          { title: 'DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18945' },
+          { title: 'DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18946' },
+          { title: 'DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18947' },
+          { title: 'DIN 18948:2024-03: Lehmplatten - Anforderungen, Prüfung und Kennzeichnung', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+18948' }
         ]}
         formeln={[
           {

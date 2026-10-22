@@ -1144,11 +1144,11 @@ export default function OnlineTools() {
           'Barth, C.; Rustler, W.: Finite Elemente in der Baustatik-Praxis. Berlin: Beuth/Bauwerk (aktuelle Auflage)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650-1/-2:2019-08 (BIM-Informationsmanagement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' },
-          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1995-1-1' },
-          { title: 'DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15026' }
+          { title: 'DIN EN ISO 19650-1/-2:2019-08 (BIM-Informationsmanagement)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+19650' },
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken - EPDs)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' },
+          { title: 'DIN EN ISO 6946 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+6946' },
+          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1995-1-1' },
+          { title: 'DIN EN 15026 (Wärme- und feuchtetechnisches Verhalten von Bauteilen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15026' }
         ]}
         weblinks={[
           { title: 'Ubakus.de – Interaktiver U-Wert- & Glaser-Rechner', url: 'https://www.ubakus.de/' },

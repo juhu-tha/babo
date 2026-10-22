@@ -442,9 +442,9 @@ export default function Einheiten() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 1301-1:2010-10 (Einheiten – Einheitennamen, Einheitenzeichen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1301-1' },
-          { title: 'DIN 1301-2:1978-02 (Einheiten – Allgemein angewendete Teile und Vielfache)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1301-2' },
-          { title: 'DIN EN ISO 80000-1 (Größen und Einheiten – Teil 1: Allgemeines; Deutsche Fassung EN ISO 80000-1:2022)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+80000-1' },
+          { title: 'DIN 1301-1:2010-10 (Einheiten – Einheitennamen, Einheitenzeichen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1301-1' },
+          { title: 'DIN 1301-2:1978-02 (Einheiten – Allgemein angewendete Teile und Vielfache)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+1301-2' },
+          { title: 'DIN EN ISO 80000-1 (Größen und Einheiten – Teil 1: Allgemeines; Deutsche Fassung EN ISO 80000-1:2022)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+80000-1' },
           { title: 'Einheiten- und Zeitgesetz (EinhZeitG) und Einheitenverordnung (EinhV)', url: 'https://www.gesetze-im-internet.de/einhv/' }
         ]}
         formeln={[

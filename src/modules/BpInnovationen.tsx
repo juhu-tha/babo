@@ -923,10 +923,10 @@ export default function BpInnovationen() {
           'BBSR (Hrsg.): Zukunft Bau – Forschungsförderung für die Baupraxis. Berichte Band 45, Bonn 2024'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 16290 (Raumfahrtsysteme – Definition der Technology Readiness Levels (TRL) und Beurteilungskriterien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+16290' },
+          { title: 'DIN EN ISO 16290 (Raumfahrtsysteme – Definition der Technology Readiness Levels (TRL) und Beurteilungskriterien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+16290' },
           { title: 'Musterbauordnung (MBO) § 17 bis 25 (Verwendbarkeitsnachweise, abZ, aBG und Ü-Zeichen)', url: 'https://www.bauministerkonferenz.de/' },
           { title: 'EU-Verordnung 2024/1100 (Bauprodukteverordnung CPR Revision zur Kreislaufwirtschaft)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken – Umweltproduktdeklarationen EPD)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
+          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken – Umweltproduktdeklarationen EPD)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' }
         ]}
         formeln={[
           {

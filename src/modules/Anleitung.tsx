@@ -287,8 +287,8 @@ export default function Anleitung() {
         ]}
         regelwerke={[
           { title: 'Hochschulrektorenkonferenz (HRK): Leitlinien für digital gestütztes Lehren und Lernen in den Ingenieurwissenschaften', url: 'https://www.hrk.de/' },
-          { title: 'DIN EN ISO 9241-110:2020-10 (Ergonomie der Mensch-System-Interaktion - Teil 110: Interaktionsprinzipien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+9241-110' },
-          { title: 'DIN EN 1990:2021-10 (Eurocode: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1990' }
+          { title: 'DIN EN ISO 9241-110:2020-10 (Ergonomie der Mensch-System-Interaktion - Teil 110: Interaktionsprinzipien)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+9241-110' },
+          { title: 'DIN EN 1990:2021-10 (Eurocode: Grundlagen der Tragwerksplanung)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1990' }
         ]}
         hideFormeln={true}
       />

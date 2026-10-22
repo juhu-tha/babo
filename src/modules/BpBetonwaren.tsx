@@ -743,11 +743,11 @@ export default function BpBetonwaren() {
           'ZTV Wegebau: Zusätzliche Technische Vertragsbedingungen für den Wegebau.'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1338' },
-          { title: 'DIN EN 1339 (Platten aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1339' },
-          { title: 'DIN EN 1340 (Bordsteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1340' },
-          { title: 'DIN EN 1916 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1916' },
-          { title: 'DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton für Abwasserleitungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+V+1201' }
+          { title: 'DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1338' },
+          { title: 'DIN EN 1339 (Platten aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1339' },
+          { title: 'DIN EN 1340 (Bordsteine aus Beton - Anforderungen und Prüfverfahren)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1340' },
+          { title: 'DIN EN 1916 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1916' },
+          { title: 'DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton für Abwasserleitungen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+V+1201' }
         ]}
         formeln={[
           {

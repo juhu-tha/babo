@@ -1544,10 +1544,10 @@ export default function Materialoptimierung() {
         ]}
         regelwerke={[
           { title: "DAfStb-Veröffentlichungen zur Treibhausgasreduktion im Betonbau (Titel und Status manuell prüfen)", url: "https://www.dafstb.de/" },
-          { title: "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1" },
-          { title: "DIN EN 206 / DIN 1045-2 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Ausgaben manuell prüfen)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+206" },
-          { title: "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)", url: "https://www.dinmedia.de/de/suche?q=DIN+EN+13670" },
-          { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien", url: "https://www.dinmedia.de/de/suche?q=VDI+4800+Blatt+1" }
+          { title: "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+1992-1-1" },
+          { title: "DIN EN 206 / DIN 1045-2 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Ausgaben manuell prüfen)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+206" },
+          { title: "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+13670" },
+          { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien", url: "https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=VDI+4800+Blatt+1" }
         ]}
         formeln={[
           {

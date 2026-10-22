@@ -425,9 +425,9 @@ export default function BimBaustoffe() {
           'buildingSMART International: IFC4.3 Spezifikationen und Pset-Definitionen'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 19650-1/-2:2019-08 (Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+19650' },
+          { title: 'DIN EN ISO 19650-1/-2:2019-08 (Informationsmanagement mit BIM)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+ISO+19650' },
           { title: 'ISO 16739-1:2024 (Industry Foundation Classes, IFC 4.3)', url: 'https://www.iso.org/' },
-          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+15804' }
+          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+15804' }
         ]}
         weblinks={[
           { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' },

@@ -108,7 +108,7 @@ export default function Draenbeton() {
           { title: 'FGSV-Merkblatt für Versickerungsfähige Verkehrsflächen (M Vv)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'FGSV: Merkblatt für Dränbetontragschichten (DBT)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'ZTV Wegebau (Zusätzliche Technische Vertragsbedingungen für den Bau von Wegen und Plätzen)', url: 'https://www.fll.de/' },
-          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton - Anforderungen an eng gestufte Korngruppen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' }
+          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton - Anforderungen an eng gestufte Korngruppen)', url: 'https://www.dinmedia.de/dynamic/dinmedia-de/erweiterte-suche-smf/1270466!algolia-search?searchAreaId=1&query=DIN+EN+12620' }
         ]}
         literatur={[
           'Forschungsgesellschaft für Straßen- und Verkehrswesen (FGSV): Leitfaden für Dränbeton im Straßenbau',
