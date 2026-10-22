@@ -657,7 +657,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
               {/* Formel-Herleitungs-Box für das Zusammenhaltevermögen */}
               <FormulaDerivationBox
                 title="Herleitung: Zusammenhaltevermögen k-Wert & Mehlkornbedarf"
-                zielGleichung="k = \\frac{w - 70}{mk} \\le 0{,}30"
+                zielGleichung="k = \frac{w - 70}{mk} \le 0{,}30"
                 normQuelle="DBV-Merkblatt Frischbeton & Walz-Zusammenhaltekriterium"
                 ergebnisHinweis={`Aktueller Rechenwert: k = ${formatDeZahl(kValue, 3)} bei w = ${calcW} l/m³ und mk = ${calcMK} kg/m³`}
                 schritte={[

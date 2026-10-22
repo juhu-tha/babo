@@ -7031,5 +7031,65 @@
       "targetModuleLabel": "Kuriositäten & Rekorde"
     },
     "verified": false
+  },
+  {
+    "id": "q_bgl_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "grundlagen",
+    "moduleTitle": "Beton – Grundlagen",
+    "topic": "Konsistenzklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Ein Frischbeton hat ein Ausbreitmaß von 450 mm. Welche Konsistenzklasse und -beschreibung liegt vor?",
+    "options": [
+      "F2 – plastisch",
+      "F3 – weich",
+      "F4 – sehr weich",
+      "F5 – fließfähig"
+    ],
+    "correctIdx": 1,
+    "explanation": "F3 umfasst 420–480 mm und wird als „weich“ bezeichnet; F2 (350–410 mm) ist plastisch, F4 (490–550 mm) sehr weich.",
+    "gapAnalysis": {
+      "topic": "Konsistenzklassen",
+      "misconception": "Ausbreitmaß- und Verdichtungsmaßklassen gleicher Nummer seien gleichwertig.",
+      "coreRule": "F1 steif, F2 plastisch, F3 weich, F4 sehr weich, F5 fließfähig, F6 sehr fließfähig.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzklassen“ im Modul Beton – Grundlagen noch einmal durch.",
+      "targetModuleTab": "grundlagen",
+      "targetModuleLabel": "Beton – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bgl_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "grundlagen",
+    "moduleTitle": "Beton – Grundlagen",
+    "topic": "Äquivalenter w/z-Wert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2",
+    "question": "z = 280 kg/m³, Flugasche f = 80 kg/m³ (k = 0,4), w = 160 kg/m³. Wie groß ist (w/z)eq?",
+    "options": [
+      "0,44",
+      "0,51",
+      "0,57",
+      "0,64"
+    ],
+    "correctIdx": 1,
+    "explanation": "f/z = 0,29 ≤ 0,33, die Flugasche ist voll anrechenbar: 160/(280 + 0,4 · 80) = 160/312 = 0,51.",
+    "gapAnalysis": {
+      "topic": "Äquivalenter w/z-Wert",
+      "misconception": "Flugasche werde wie Zement voll (k = 1) angerechnet.",
+      "coreRule": "(w/z)eq = w/(z + k · f); anrechenbare Flugaschemenge begrenzt (f/z ≤ 0,33).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Äquivalenter w/z-Wert“ im Modul Beton – Grundlagen noch einmal durch.",
+      "targetModuleTab": "grundlagen",
+      "targetModuleLabel": "Beton – Grundlagen"
+    },
+    "verified": false
   }
 ]
