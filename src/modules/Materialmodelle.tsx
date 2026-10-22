@@ -4,20 +4,14 @@ import {
   TrendingUp, 
   Timer, 
   GitCommit, 
-  RotateCw, 
-  Sliders, 
-  CheckCircle2, 
-  AlertTriangle, 
-  Layers, 
-  Info, 
-  Sparkles, 
-  BookOpen 
+  RotateCw 
 } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';

@@ -5,7 +5,6 @@ import {
   Layers, 
   ClipboardCheck, 
   BookOpen, 
-  UserCheck, 
   FileText, 
   Globe, 
   Scale, 
@@ -22,7 +21,6 @@ import {
   Maximize, 
   Award, 
   Zap, 
-  Coins, 
   TrendingUp, 
   Monitor, 
   Search, 
@@ -34,8 +32,7 @@ import {
   Recycle, 
   AlertTriangle, 
   Volume2, 
-  Thermometer, 
-  MapPin,
+  Thermometer,
   CheckCircle,
   Activity,
   Box,
@@ -911,9 +908,9 @@ const MODULES_DATA: Record<string, GroupData> = {
     submodules: [
       { title: 'Planung & Ausschreibung', icon: ClipboardCheck, purpose: 'Erstellung von Leistungsverzeichnissen (LV), Bieterverfahren und Vertragsgestaltung.', standards: 'VOB/A (Ausschreibungsordnung)', useCase: 'Verfassen einer fehlerfreien VOB-Funktionalbeschreibung für Erdbauleistungen.' },
       { title: 'Bauleitung & Baustelle', icon: Wrench, purpose: 'Bautagebuch führen, Bauablaufsteuerung, Abnahmeverfahren, Baustellenkoordination und Sicherheitsbelehrung.', standards: 'VOB/B (Ausführung) / ArbSchG', useCase: 'Durchführung einer förmlichen Mängelrüge wegen fehlerhaft verlegter Trittschalldämmung.' },
-      { title: 'Bautagebuch', icon: ClipboardCheck, purpose: 'Rechtlich belastbare baubetriebliche Dokumentation und Beweissicherung von Baustellenprojekten unter Witterungseinflüssen.', standards: 'VOB/B § 15 / BGB § 650', useCase: 'Dokumentation von Schlechtwetterereignissen (Bohrpfahlbeton, Frostbetonieren) und Mängelrügen im Baustellenprojekt.' },
-      { title: 'Produktherstellung & QS', icon: Factory, purpose: 'Abläufe in Zement-, Beton- und Fertigteilwerken, Prozessüberwachung vom Rohstoff bis zur Auslieferung.', standards: 'DIN EN ISO 9001', useCase: 'Optimierung des Verdichtungszyklus in einer automatischen Hohldielen-Schalungsbahn.' },
-      { title: 'Karrierestart & Soft Skills', icon: GraduationCap, purpose: 'Tipps zum Berufseinstieg in Bauleitung oder Tragwerksplanung, Bauprojektmanagement, Kommunikation im Bauteam.', standards: 'Kammerregelungen', useCase: 'Vorbereitung auf die Aufnahme in die bayerische Ingenieurkammer-Bau.' },
+      { title: 'Bautagebuch', icon: ClipboardCheck, purpose: 'Rechtlich belastbare baubetriebliche Dokumentation und Beweissicherung von Baustellenprojekten unter Witterungseinflüssen.', standards: 'HOAI 2021 Anlage 10 Lph 8 / VOB/B § 4 Abs. 3, § 6', useCase: 'Dokumentation von Schlechtwetterereignissen (Bohrpfahlbeton, Frostbetonieren) und Mängelrügen im Baustellenprojekt.' },
+      { title: 'Produktherstellung & QS', icon: Factory, purpose: 'Abläufe in Zement-, Beton- und Fertigteilwerken, Prozessüberwachung vom Rohstoff bis zur Auslieferung.', standards: 'DIN EN 206 / DIN 1045-2 / BauPVO (WPK)', useCase: 'Optimierung des Verdichtungszyklus in einer automatischen Hohldielen-Schalungsbahn.' },
+      { title: 'Karrierestart & Soft Skills', icon: GraduationCap, purpose: 'Tipps zum Berufseinstieg in Bauleitung oder Tragwerksplanung, Bauprojektmanagement, Kommunikation im Bauteam.', standards: 'BauKaG Bayern / Fortbildungsordnung der Kammer', useCase: 'Vorbereitung auf die Aufnahme in die Bayerische Ingenieurekammer-Bau.' },
       { title: 'Weiterbildung an der THA', icon: Award, purpose: 'Master- und Zertifikatsprogramme an der Technischen Hochschule Augsburg (THA) für Bauingenieure und Architekten.', standards: 'Akkreditierungsrat / DQR Stufe 7', useCase: 'Berufsbegleitende Weiterbildung im Projektmanagement oder der Fassadentechnologie.' },
       { title: 'Studium an der THA', icon: GraduationCap, purpose: 'Studiengänge Bauingenieurwesen, Energieeffizientes Planen und Bauen (E2D) sowie Architektur an der THA.', standards: 'Modulhandbücher THA', useCase: 'Orientierung für Studieninteressierte und Vertiefungswahl im Hauptstudium.' },
       { title: 'Thesen & Forschungsprojekte', icon: BookOpen, purpose: 'Themenkataloge für Bachelor- und Masterarbeiten, aktuelle Forschungsprojekte im Labor für Baustoffe.', standards: 'Wissenschaftliche Richtlinien', useCase: 'Findung eines praxisrelevanten Themas für die Abschlussarbeit mit Industriepartnern.' },
@@ -931,12 +928,13 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Bauleitung', url: 'https://de.wikipedia.org/wiki/Bauleitung' }
     ],
     literatur: [
-      'Pfarr, A. (2018): Handbuch für die Bauleitung (Werner Verlag)',
-      'Bauer, H. (2016): Baubetrieb (Springer Vieweg)'
+      'Kochendörfer, B.; Liebchen, J. H.; Viering, M. G.: Bau-Projekt-Management. 5. Aufl., Wiesbaden: Springer Vieweg 2018',
+      'Ingenstau, H.; Korbion, H.: VOB Teile A und B – Kommentar. Köln: Werner (aktuelle Auflage)'
     ],
     regelwerke: [
-      { title: 'Vergabe- und Vertragsordnung für Bauleistungen (VOB) Teil A/B/C' },
-      { title: 'HOAI - Honorarordnung für Architekten und Ingenieure', url: 'https://www.hoai.de/' }
+      { title: 'VOB Teil A (2019), Teil B (2016), Teil C (aktuelle Ausgabe)' },
+      { title: 'HOAI 2021 – Honorarordnung für Architekten und Ingenieure', url: 'https://www.gesetze-im-internet.de/hoai_2021/' },
+      { title: 'BGB §§ 650a–650v (Bauvertragsrecht, seit 01.01.2018)', url: 'https://www.gesetze-im-internet.de/bgb/__650a.html' }
     ],
     formeln: [
       { formel: 'K_{Angebot} = (S_{Herstell} + FG_{Zuschlag}) \\cdot (1 + W_G)', erklaerung: 'Kalkulatorische Angebotsbestimmung. Ermittlung des Angebotspreises aus den direkten Herstellkosten plus prozentualem Firmen-Gemeinkostenzuschlag (FG) und Wagnis & Gewinn (W_G).', quelle: 'Baubetriebliche Kalkulation' }
@@ -1202,21 +1200,20 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   praxiswissen: {
     websites: [
-      { name: "VOB-Online Informationsdienst", url: "https://www.vob-online.de", desc: "Direktabrechnungen, Ausschreibungsregelungen und VOB-Erläuterungen." },
-      { name: "HOAI Honorarrechner", url: "https://www.hoai.de", desc: "Offizielles Portal zur HOAI-Kostenkalkulation und Leistungsphasenvereinbarung." },
+      { name: "HOAI 2021 (Verordnungstext)", url: "https://www.gesetze-im-internet.de/hoai_2021/", desc: "Amtlicher Text der Honorarordnung mit Leistungsbildern (Anlagen 10 ff.)." },
+      { name: "BGB – Bauvertragsrecht", url: "https://www.gesetze-im-internet.de/bgb/__650a.html", desc: "Amtlicher Text der §§ 650a ff. BGB (Bauvertrag, Architekten- und Ingenieurvertrag)." },
       { name: "Bauforum24 Marktportal", url: "https://www.bauforum24.biz", desc: "Etabliertes Diskussionsforum zu Baubetrieb, Großmaschinen, Leistungsbeschreibungen und Baupraxis." }
     ],
     books: [
-      { title: "VOB/B im Bild: Praxisnahe Erläuterung der Vertragsordnung", desc: "Kues, DIN Media. Zeichnerische Übersichten für vertragskonforme Mängelanzeigen und Abrechnungen." },
-      { title: "Handbuch für den Bausachverständigen: Gutachten professionell erstellen", desc: "Schumacher, Werner Verlag. Leitlinien zur juristisch sicheren Gutachtenstruktur." }
+      { title: "Ingenstau/Korbion: VOB Teile A und B – Kommentar (aktuelle Auflage)", desc: "Standardkommentar zu Vergabe- und Vertragsrecht der VOB." },
+      { title: "Kapellmann/Schiffers/Markus: Vergütung, Nachträge und Behinderungsfolgen beim Bauvertrag (aktuelle Auflage)", desc: "Standardwerk zu Nachträgen und Behinderungsfolgen." }
     ],
     publications: [
-      { journal: "International Journal of Project Management", title: "Claim Management in large infrastructure projects: Statistical analysis of causes and resolution strategies", desc: "Statistische Hauptursachen für Nachtragsforderungen im Großbaubetrieb." },
-      { journal: "Baurecht (Werner-Verlag)", title: "Ausschreibungsvorgaben nach GWP-Grenzbereichen: Vergaberechtliche Integration ökologischer Nachhaltigkeit", desc: "Rechtsgutachten zur Vereinbarkeit von EPD-GWP-Grenzen im VOB/A Vergabeverfahren." }
+      { journal: "DBV-Merkblätter", title: "Abstandhalter; Unterstützungen; Sichtbeton (mit VDZ)", desc: "Praxisregeln für Bewehrungsabnahme und Sichtbetonausschreibung." },
+      { journal: "DAfStb", title: "Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12", desc: "Grundlage für Planung und Ausführung Weißer Wannen." }
     ],
     dissertations: [
-      { title: "Zur Optimierung der Leistungsbeschreibung mit Leistungsprogramm bei komplexen Infrastrukturprojekten", desc: "Dissertation, Universität Stuttgart, 2022. Strukturierte Funktionalbeschreibungen im schlüsselfertigen Hochbau." },
-      { title: "Kollaboratives Änderungsmanagement im Hochbau unter Verwendung intelligenter BIM-Informationsstrukturen", desc: "Dissertation, Technische Universität Graz. Echtzeit-Nachtragstracking bei digitalen Bauwerksmodellen." }
+      
     ]
   },
   beton: {

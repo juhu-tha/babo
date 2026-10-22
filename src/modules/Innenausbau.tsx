@@ -12,24 +12,17 @@ import {
   Search, 
   CheckCircle2, 
   Calculator, 
-  Thermometer, 
-  ExternalLink, 
-  FileText,
-  Sparkles,
+  Thermometer,
   Volume2,
   Droplets,
   HardHat,
   Filter,
   AlertTriangle,
-  AlertCircle,
-  Info,
-  Check,
-  RefreshCw,
-  Scale
+  AlertCircle
 } from 'lucide-react';
 import { useTabContext, TabType } from '../contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
 interface AusbauToolItem {
   id: string;
@@ -840,7 +833,7 @@ export default function Innenausbau() {
 
                 <div>
                   <label className="text-xs font-bold text-text-main block mb-1.5">Geplanter Oberbodenbelag:</label>
-                  <select
+                  <select aria-label="Geplanter Oberbodenbelag"
                     value={belagArt}
                     onChange={(e) => setBelagArt(e.target.value as any)}
                     className="w-full p-2.5 rounded-xl border border-home-grau/30 bg-white text-xs font-medium text-text-main focus:border-shiraz focus:outline-hidden"

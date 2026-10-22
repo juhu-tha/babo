@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Box, Layers, Activity, ArrowRight, ArrowDown, ArrowLeft, ArrowUp, BookOpen } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { Box, Layers, Activity, BookOpen } from 'lucide-react';
+import { BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { ConceptTooltip } from '@/src/components/ui/ConceptTooltip';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -116,7 +116,7 @@ export default function Kalk() {
               <div className="mt-6">
                 <FormulaDerivationBox
                   title="Thermodynamische Herleitung: Energie- &amp; Enthalpiebilanz des Kalkkreislaufs"
-                  zielGleichung="\\Delta H_R^0 = +178{,}2\\text{ kJ/mol} \\quad (\\text{Brennen}) \\;\\longleftrightarrow\\; \\Delta H_R^0 = -65{,}2\\text{ kJ/mol} \\quad (\\text{Löschen})"
+                  zielGleichung="\Delta H_R^0 = +178{,}2\text{ kJ/mol} \quad (\text{Brennen}) \;\longleftrightarrow\; \Delta H_R^0 = -65{,}2\text{ kJ/mol} \quad (\text{Löschen})"
                   normQuelle="DIN EN 459-1 (Baukalk) &amp; DIN 1333"
                   ergebnisHinweis="Vollständiger chemisch-energetischer Zyklus: Kalzinieren ist stark endotherm; Löschen ist stark exotherm mit Volumenzunahme."
                   schritte={[

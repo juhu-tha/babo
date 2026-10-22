@@ -12,12 +12,14 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Timer, Activity, Layers, Clock, ArrowDown, Scale, Play, CheckCircle2, Sliders } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
+import { Timer, Activity, Layers, Clock, Sliders } from 'lucide-react';
+import { InlineMath } from 'react-katex';
 
 ChartJS.register(
   CategoryScale,
@@ -31,6 +33,9 @@ ChartJS.register(
 );
 
 export default function KriechenSchwinden() {
+  // Eingebettet in Hydratation & Folgen: Quellenblock dort zentral
+  const { activeTab: aktiverReiter } = useTabContext();
+  const eingebettet = aktiverReiter === 'hydratation_folgen';
   const [material, setMaterial] = useState<'beton' | 'stahl' | 'rheologie'>('beton');
 
   // Beton States
@@ -203,7 +208,7 @@ export default function KriechenSchwinden() {
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementklasse</label><InfoTooltip text="Klassifizierung der Festigkeitsentwicklung des Zements." /></div>
                 <InfoTooltip text="S: langsam erhärtend, N: normal erhärtend, R: schnell erhärtend." />
               </div>
-              <select 
+              <select aria-label="Zementklasse" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={zementArt}
                 onChange={(e) => setZementArt(e.target.value)}
@@ -453,7 +458,8 @@ export default function KriechenSchwinden() {
           </div>
         </div>
         
-        <ModuleFooter weblinks={[{ title: "Beton.wiki: Kriechen", url: "https://beton.wiki/index.php?title=Kriechen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Schwinden", url: "https://beton.wiki/index.php?title=Schwinden" }]} 
+        {!eingebettet && (
+<ModuleFooter weblinks={[{ title: "Beton.wiki: Kriechen", url: "https://beton.wiki/index.php?title=Kriechen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Schwinden", url: "https://beton.wiki/index.php?title=Schwinden" }]} 
           wikipedia={[
                 { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
                 { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
@@ -484,6 +490,7 @@ export default function KriechenSchwinden() {
             }
           ]}
         />
+)}
       </>
     );
   };
@@ -506,7 +513,7 @@ export default function KriechenSchwinden() {
 
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Spannstahlklasse (Relaxationsverhalten)</label><InfoTooltip text="Klassifizierung des Spannstahls nach seinem Spannungsverlust." /></div>
-              <select 
+              <select aria-label="Spannstahlklasse (Relaxationsverhalten)" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={stahlKlasse}
                 onChange={(e) => setStahlKlasse(e.target.value)}
@@ -564,7 +571,8 @@ export default function KriechenSchwinden() {
           </div>
         </div>
 
-        <ModuleFooter 
+        {!eingebettet && (
+<ModuleFooter 
           wikipedia={[
                 { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
                 { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
@@ -583,6 +591,7 @@ export default function KriechenSchwinden() {
             }
           ]}
         />
+)}
       </>
     );
   };
@@ -959,7 +968,8 @@ export default function KriechenSchwinden() {
           </div>
         </div>
 
-        <ModuleFooter 
+        {!eingebettet && (
+<ModuleFooter 
           wikipedia={[
             { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
             { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' },
@@ -981,6 +991,7 @@ export default function KriechenSchwinden() {
             }
           ]}
         />
+)}
       </div>
     );
   };
