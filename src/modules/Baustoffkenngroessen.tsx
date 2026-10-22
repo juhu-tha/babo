@@ -6,6 +6,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import Elastomechanik from './Elastomechanik';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 

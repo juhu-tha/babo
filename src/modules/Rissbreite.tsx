@@ -18,6 +18,7 @@ import {
   LineController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
 ChartJS.register(

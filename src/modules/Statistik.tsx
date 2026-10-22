@@ -16,6 +16,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Scatter, Bar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

@@ -5,6 +5,7 @@ import { AlertTriangle, CheckCircle2, Leaf, Droplets } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import {
   Chart as ChartJS,

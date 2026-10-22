@@ -5,6 +5,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InlineMath } from 'react-katex';
 import SpannbetonKennwerte from './spannbeton/SpannbetonKennwerte';
 import SpannbetonDauerhaftigkeit from './spannbeton/SpannbetonDauerhaftigkeit';

@@ -20,6 +20,7 @@ import {
   RadarController,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Activity, Droplets, Timer, Info, ShieldAlert, ArrowRight, BookOpen, Layers } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';

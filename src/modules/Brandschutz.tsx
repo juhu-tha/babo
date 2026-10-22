@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';

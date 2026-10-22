@@ -7,6 +7,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Bar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,

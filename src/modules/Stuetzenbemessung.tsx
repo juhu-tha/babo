@@ -6,6 +6,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { EC2_NA_DE } from '@/src/data/normParams';
 import { AlertTriangle, Layers } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,

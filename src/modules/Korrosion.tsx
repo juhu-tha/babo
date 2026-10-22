@@ -11,6 +11,7 @@ import {
   Filler,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import '@/src/lib/chartSetup';
 import { ShieldAlert, Droplets, Cloud, Timer, Zap, Activity } from "lucide-react";
 import { Slider } from "@/src/components/ui/Slider";
 import { erf } from "@/src/lib/math";

@@ -3,6 +3,7 @@ import { Droplets, ShieldCheck, Layers, Cpu, Compass, BookOpen, AlertCircle, Che
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl } from '@/src/utils/numberFormat';

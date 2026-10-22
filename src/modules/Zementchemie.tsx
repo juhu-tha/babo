@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, LinearScale } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';

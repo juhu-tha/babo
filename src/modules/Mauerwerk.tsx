@@ -17,6 +17,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Layers, Ruler, Calculator, BookOpen, ArrowRight, ShieldAlert } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';

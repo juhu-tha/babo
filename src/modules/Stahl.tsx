@@ -1,6 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,

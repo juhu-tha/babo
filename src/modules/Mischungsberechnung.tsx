@@ -2,6 +2,7 @@ import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberForma
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
 import { Pie, Line, Radar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Calculator, Layers, Activity, BookOpen, Wind, Scale } from 'lucide-react';

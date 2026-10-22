@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Award, CheckCircle2, Leaf, Building, Users, Zap, Settings, ShieldCheck, Calculator, Building2, Activity } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Bar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,

@@ -81,7 +81,6 @@ import { Calculator, Globe,
   Video
 } from 'lucide-react';
 
-import { exportToPDF } from './lib/pdfExport';
 import { TabProvider, useTabContext } from './contexts/TabContext';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/navigation/LanguageSwitcher';
@@ -1046,6 +1045,7 @@ function AppContent() {
 
   const handleExport = async () => {
     setIsExporting(true);
+    const { exportToPDF } = await import('./lib/pdfExport');
     await exportToPDF('module-content', `THA_Baustoffkunde_${activeTab}`);
     setIsExporting(false);
   };

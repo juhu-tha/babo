@@ -7,6 +7,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { BlockMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,

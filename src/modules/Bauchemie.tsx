@@ -6,6 +6,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Slider } from '@/src/components/ui/Slider';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { BlockMath, InlineMath } from 'react-katex';
 import {
   Chart as ChartJS,
