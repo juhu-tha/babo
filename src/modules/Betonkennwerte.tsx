@@ -405,7 +405,7 @@ function Ec2ParameterSkizze({
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
           <span className="text-[10px] text-shiraz font-bold block">③ E-Modul &amp; G</span>
           <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeZahl(calcResults.Ecm / 1000, 1)} GPa</span>
-          <span className="text-[10px] text-text-main/60 block">αE = {calcResults.alphaE.toFixed(2)} ({aggregateType})</span>
+          <span className="text-[10px] text-text-main/60 block">αE = {formatDeZahl(calcResults.alphaE, 2)} ({aggregateType})</span>
         </div>
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
@@ -1136,7 +1136,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-slate-900">{calcResults.fck} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
-                    <span className="text-slate-600">Würfel <InlineMath math="f_{ck,\\text{cube}}" />:</span>
+                    <span className="text-slate-600">Würfel <InlineMath math="f_{ck,\text{cube}}" />:</span>
                     <strong className="font-mono text-slate-900">{baseConcrete.fckCube} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
@@ -1144,7 +1144,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-slate-900">{calcResults.fcm} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100 bg-emerald-50/60 px-1 rounded">
-                    <span className="text-emerald-950 font-bold">Bemessung <InlineMath math="f_{cd} = \\frac{\\alpha_{cc} f_{ck}}{\\gamma_c}" />:</span>
+                    <span className="text-emerald-950 font-bold">Bemessung <InlineMath math="f_{cd} = \frac{\alpha_{cc} f_{ck}}{\gamma_c}" />:</span>
                     <strong className="font-mono text-emerald-800">{formatDeZahl(calcResults.fcd, 2)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
@@ -1238,7 +1238,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-slate-900">{formatDeZahl(calcResults.Gcm, 0)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100 bg-indigo-50/60 px-1 rounded">
-                    <span className="text-indigo-950 font-bold">Eff. Kriechmodul <InlineMath math="E_{c,\\text{eff}}" />:</span>
+                    <span className="text-indigo-950 font-bold">Eff. Kriechmodul <InlineMath math="E_{c,\text{eff}}" />:</span>
                     <strong className="font-mono text-indigo-900 font-bold">{formatDeZahl(calcResults.EcEff, 0)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
@@ -1355,7 +1355,7 @@ export default function Betonkennwerte() {
                   <tr className="bg-slate-100 text-slate-700 border-b border-slate-300">
                     <th className="py-2.5 px-3 font-bold">Klasse</th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ck}" /> [MPa]</th>
-                    <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ck,\\text{cube}}" /></th>
+                    <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ck,\text{cube}}" /></th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{cm}" /></th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{cd}" /> (DE)</th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ctm}" /></th>
@@ -1462,7 +1462,7 @@ export default function Betonkennwerte() {
                   Für die Querschnittsbemessung im Grenzzustand der Tragfähigkeit (GZT) stellt EC2 das <strong>Parabel-Rechteck-Diagramm</strong> bereit (Gl. 3.17 – 3.20):
                 </p>
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 text-center my-2 overflow-x-auto">
-                  <BlockMath math="\sigma_c = \begin{cases} f_{cd} \cdot \left[ 1 - \left(1 - \frac{\varepsilon_c}{\varepsilon_{c2}}\right)^n \right] & \text{für } 0 \le \varepsilon_c \le \varepsilon_{c2} \\ f_{cd} & \text{für } \varepsilon_{c2} \le \varepsilon_c \le \varepsilon_{cu2} \end{cases}" />
+                  <BlockMath math="\sigma_c = \begin{cases} f_{cd} \cdot \left[ 1 - \left(1 - \frac{\varepsilon_c}{\varepsilon_{c2}}\right)^n \right] & \text{für } 0 \le \varepsilon_c \le \varepsilon_{c2} \ f_{cd} & \text{für } \varepsilon_{c2} \le \varepsilon_c \le \varepsilon_{cu2} \end{cases}" />
                 </div>
                 <div className="text-xs text-slate-700 mt-2">
                   Für Normalbeton gilt: <InlineMath math="\varepsilon_{c2} = 2{,}0\,\text{‰}" />, <InlineMath math="\varepsilon_{cu2} = 3{,}5\,\text{‰}" />, <InlineMath math="n = 2{,}0" /> (reine quadratische Parabel).
@@ -1536,10 +1536,10 @@ export default function Betonkennwerte() {
                     Langzeitverformungen von Decken und Trägern werden durch das Kriechen um den Faktor <InlineMath math="(1 + \varphi)" /> vergrößert. Die Berechnung erfolgt über den effektiven Kriechmodul:
                   </p>
                   <div className="my-2 p-2 bg-white rounded border border-slate-200 text-center font-mono">
-                    <InlineMath math="E_{c,\\text{eff}} = \frac{E_{cm}}{1 + \varphi(t, t_0)}" />
+                    <InlineMath math="E_{c,\text{eff}} = \frac{E_{cm}}{1 + \varphi(t, t_0)}" />
                   </div>
                   <p className="text-[11px] text-slate-500">
-                    Bei Schwindzwang: <InlineMath math="E_{c,\\text{eff,Zwang}} = \frac{E_{cm}}{1 + 0{,}8 \cdot \varphi}" />
+                    Bei Schwindzwang: <InlineMath math="E_{c,\text{eff,Zwang}} = \frac{E_{cm}}{1 + 0{,}8 \cdot \varphi}" />
                   </p>
                 </div>
                 <span className="text-[10px] text-slate-500 block pt-2 border-t border-slate-200">
@@ -1554,7 +1554,7 @@ export default function Betonkennwerte() {
                     Zur Begrenzung der Rissbreite infolge abfließender Hydratationswärme oder Schwindzwang muss die Mindestbewehrung die Zugkraft bei Erstrissbildung aufnehmen:
                   </p>
                   <div className="my-2 p-2 bg-white rounded border border-slate-200 text-center font-mono">
-                    <InlineMath math="A_{s,\\text{min}} \cdot \sigma_s = k_c \cdot k \cdot f_{ct,\\text{eff}} \cdot A_{ct}" />
+                    <InlineMath math="A_{s,\text{min}} \cdot \sigma_s = k_c \cdot k \cdot f_{ct,\text{eff}} \cdot A_{ct}" />
                   </div>
                 </div>
                 <span className="text-[10px] text-slate-500 block pt-2 border-t border-slate-200">
@@ -1566,10 +1566,10 @@ export default function Betonkennwerte() {
                 <div>
                   <strong className="text-slate-900 font-bold block mb-1 text-sm">3. Bauwerksdiagnose nach DIN EN 13791</strong>
                   <p className="text-slate-600 leading-relaxed">
-                    Die In-situ-Druckfestigkeit <InlineMath math="f_{ck,\\text{is}}" /> aus Bohrkernen ist bauartbedingt ca. 15 % geringer als die Standard-Zylinderfestigkeit aus dem Labor (Probekörperlagerung unter Wasser):
+                    Die In-situ-Druckfestigkeit <InlineMath math="f_{ck,\text{is}}" /> aus Bohrkernen ist bauartbedingt ca. 15 % geringer als die Standard-Zylinderfestigkeit aus dem Labor (Probekörperlagerung unter Wasser):
                   </p>
                   <div className="my-2 p-2 bg-white rounded border border-slate-200 text-center font-mono">
-                    <InlineMath math="f_{ck,\\text{is}} = 0{,}85 \cdot f_{ck}" />
+                    <InlineMath math="f_{ck,\text{is}} = 0{,}85 \cdot f_{ck}" />
                   </div>
                 </div>
                 <span className="text-[10px] text-slate-500 block pt-2 border-t border-slate-200">

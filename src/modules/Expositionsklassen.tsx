@@ -2103,7 +2103,7 @@ export default function Expositionsklassen() {
                   onChange={(e) => setSilikaGehalt(Number(e.target.value))}
                   className="w-full p-2 bg-white rounded-lg border border-home-grau/30 font-mono text-sm"
                 />
-                <span className="text-[10px] text-text-main/60 block">k = {kValueCalc.kS.toFixed(1)} (max. s/z = 0,11)</span>
+                <span className="text-[10px] text-text-main/60 block">k = {formatDeZahl(kValueCalc.kS, 1)} (max. s/z = 0,11)</span>
               </div>
             </div>
 
@@ -2123,7 +2123,7 @@ export default function Expositionsklassen() {
                   {formatDeZahl(kValueCalc.beq, 1)} kg/m³
                 </span>
                 <span className="text-[10px] text-text-main/60 block mt-0.5">
-                  z ({zementGehalt}) + 0,4·{formatDeZahl(kValueCalc.effectiveF, 0)} + {kValueCalc.kS.toFixed(1)}·{formatDeZahl(kValueCalc.effectiveS, 0)}
+                  z ({zementGehalt}) + 0,4·{formatDeZahl(kValueCalc.effectiveF, 0)} + {formatDeZahl(kValueCalc.kS, 1)}·{formatDeZahl(kValueCalc.effectiveS, 0)}
                 </span>
               </div>
 
