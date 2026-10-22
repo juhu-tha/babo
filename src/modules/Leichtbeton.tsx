@@ -1,5 +1,4 @@
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React, { useState } from 'react';
 import { Layers, Mountain } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -119,44 +118,6 @@ export default function Leichtbeton() {
         </div>
       </div>
     
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Leichtbeton', url: 'https://beton.wiki/index.php?title=Leichtbeton' },
-          { title: "Zement-Merkblatt B14: Leichtbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Leichtbeton', url: 'https://de.wikipedia.org/wiki/Leichtbeton' },
-          { title: 'Porenbeton', url: 'https://de.wikipedia.org/wiki/Porenbeton' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Leichtbetonklassen LC8/9 bis LC80/88, Rohdichteklassen D1.0 bis D2.0)' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2 - Abschnitt 11: Leichtbeton)' },
-          { title: 'DIN EN 13055:2016-11 (Leichte Gesteinskörnungen)' },
-          { title: 'DBV-Merkblatt: Konstruktionsleichtbeton:2017-09', url: 'https://www.betonverein.de/' }
-        ]}
-        literatur={[
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Faust, R. (2003): Konstruktiver Leichtbeton (Bauverlag)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: '\\eta_E = \\left( \\frac{\\rho}{2200} \\right)^2',
-            erklaerung: 'Modifikationsbeiwert η_E nach DIN EN 1992-1-1 Abschnitt 11 für den Elastizitätsmodul von Leichtbeton: E_{lcm} = \\eta_E \\cdot E_{cm}.',
-            quelle: 'DIN EN 1992-1-1 Abs. 11.3.2'
-          },
-          {
-            formel: '\\eta_1 = 0{,}40 + 0{,}60 \\cdot \\frac{\\rho}{2200}',
-            erklaerung: 'Abminderungsfaktor η_1 für Zugfestigkeiten von Leichtbeton infolge der reduzierten Kornfestigkeit des porigen Gefüges.',
-            quelle: 'DIN EN 1992-1-1 Abs. 11.3.1'
-          },
-          {
-            formel: 'f_{lctm} = \\eta_1 \\cdot f_{ctm}',
-            erklaerung: 'Mittlere axiale Zugfestigkeit von Leichtbeton bezogen auf die Festigkeit eines Normalbetons gleicher Druckfestigkeitsklasse.',
-            quelle: 'DIN EN 1992-1-1 Tab. 11.3.1'
-          }
-        ]}
-      />
 </div>
   );
 }

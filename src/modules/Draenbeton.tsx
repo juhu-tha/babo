@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Droplets, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function Draenbeton() {
@@ -95,39 +94,6 @@ export default function Draenbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Dränbeton', url: 'https://beton.wiki/index.php?title=Dr%C3%A4nbeton' },
-          { title: "Zement-Merkblatt B13: Dränbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Dränbeton', url: 'https://de.wikipedia.org/wiki/Dr%C3%A4nbeton' },
-          { title: 'Versickerung', url: 'https://de.wikipedia.org/wiki/Versickerung' }
-        ]}
-        regelwerke={[
-          { title: 'FGSV-Merkblatt für Versickerungsfähige Verkehrsflächen (M Vv)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'FGSV: Merkblatt für Dränbetontragschichten (DBT)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'ZTV Wegebau (Zusätzliche Technische Vertragsbedingungen für den Bau von Wegen und Plätzen)', url: 'https://www.fll.de/' },
-          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton - Anforderungen an eng gestufte Korngruppen)' }
-        ]}
-        literatur={[
-          'Forschungsgesellschaft für Straßen- und Verkehrswesen (FGSV): Leitfaden für Dränbeton im Straßenbau',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Grübl, P.; Weigler, H.; Karl, S.: Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)'
-        ]}
-        formeln={[
-          {
-            formel: 'k_w \\ge 10^{-4} - 10^{-3}\\,\\text{m/s}',
-            erklaerung: 'Geforderter Wasserdurchlässigkeitsbeiwert (Permeabilität) für Dränbetontragschichten nach FGSV zur sicheren Niederschlagsversickerung.',
-            quelle: 'FGSV M Vv'
-          },
-          {
-            formel: 'v_{\\text{Hohlraum}} = \\left( 1 - \\frac{\\rho_{\\text{Fest}}}{\\rho_{\\text{Realisierung}}} \\right) \\cdot 100\\,\\% \\approx 15 - 25\\,\\%',
-            erklaerung: 'Zusammenhängender Haufwerkshohlraumgehalt des Einkorngefüges, der die Wasserabführung ohne Staudruck gewährleistet.',
-            quelle: 'Zement-Merkblatt B13'
-          }
-        ]}
-      />
     </div>
   );
 }

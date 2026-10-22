@@ -1,4 +1,3 @@
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React from 'react';
 import { ThermometerSun, Cuboid, Flame, ArrowDownToLine } from 'lucide-react';
 
@@ -90,38 +89,6 @@ export default function Massenbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Massige Bauteile', url: 'https://beton.wiki/index.php?title=Massige_Bauteile' },
-          { title: "Zement-Merkblatt B11: Massige Bauteile aus Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Massiger Beton' },
-          { title: 'Walzbeton', url: 'https://de.wikipedia.org/wiki/Walzbeton' }
-        ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 197-1 (Zemente mit niedriger Hydratationswärme LH / sehr niedriger Hydratationswärme VLH)' },
-          { title: 'DIN EN 1992-1-1 / DIN EN 1992-3 (Rissbreitenbegrenzung infolge früher Zwangskräfte)' }
-        ]}
-        literatur={[
-          'DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton (Beuth Verlag)',
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: '\\Delta T_{\\text{ad}} = \\frac{z \\cdot Q_{H,7d}}{c_c \\cdot \\rho_c} \\approx \\frac{z \\cdot 250\\,\\text{kJ/kg}}{1{,}0\\,\\text{kJ/(kg}\\cdot\\text{K)} \\cdot 2400\\,\\text{kg/m}^3}',
-            erklaerung: 'Adiabater Temperaturanstieg ΔT_ad infolge Zementhydratation im Bauteilkern ohne äußere Wärmeabfuhr.',
-            quelle: 'DAfStb-Richtlinie Massige Bauteile'
-          },
-          {
-            formel: '\\Delta T_{\\text{Kern-Rand}} \\le 15 - 20\\,\\text{K}',
-            erklaerung: 'Kritische Begrenzung der Temperaturdifferenz zwischen Bauteilkern und Oberfläche zur Vermeidung von Trennrissen durch Eigenspannungen.',
-            quelle: 'DAfStb Heft 555'
-          }
-        ]}
-      />
     </div>
   );
 }

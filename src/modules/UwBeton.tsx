@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Waves, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function UwBeton() {
@@ -95,38 +94,6 @@ export default function UwBeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Unterwasserbeton', url: 'https://beton.wiki/index.php?title=Unterwasserbeton' },
-          { title: "Zement-Merkblatt B10: Unterwasserbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Unterwasserbeton', url: 'https://de.wikipedia.org/wiki/Unterwasserbeton' },
-          { title: 'Hydrostatischer Druck', url: 'https://de.wikipedia.org/wiki/Hydrostatischer_Druck' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Abschnitt Unterwasserbeton, Mindestzementgehalt 350-380 kg/m³)' },
-          { title: 'ZTV-W LB 215 (Zusätzliche Technische Vertragsbedingungen im Wasserbau - Wasserbauwerke aus Beton)', url: 'https://izw.baw.de/' },
-          { title: 'DBV-Merkblatt: Unterwasserbeton (Schütt- und Pumprohrverfahren / Contractor)', url: 'https://www.betonverein.de/' }
-        ]}
-        literatur={[
-          'Bundesanstalt für Wasserbau (BAW): Richtlinie Unterwasserbeton für Trog- und Sohlenbauwerke',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Grübl, P.; Weigler, H.; Karl, S.: Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)'
-        ]}
-        formeln={[
-          {
-            formel: 'p_{\\text{Beton}} = \\rho_c \\cdot g \\cdot h_c > p_{\\text{Wasser}} = \\rho_w \\cdot g \\cdot h_w',
-            erklaerung: 'Hydrostatisches Druckgleichgewicht beim Contractor-Verfahren: Das Betongewicht im Schüttrohr muss den äußeren Wasserdruck überwinden, um kontinuierlichen Austritt sicherzustellen.',
-            quelle: 'DBV-Merkblatt Unterwasserbeton'
-          },
-          {
-            formel: 'h_{\\text{Eintauch}} \\ge 1{,}5 - 2{,}0\\,\\text{m}',
-            erklaerung: 'Mindesteintauchtiefe des Schüttrohres im frischen Betonbett, um den direkten Kontakt des frischen Zementleims mit dem umgebenden Wasser zu verhindern.',
-            quelle: 'ZTV-W LB 215'
-          }
-        ]}
-      />
     </div>
   );
 }

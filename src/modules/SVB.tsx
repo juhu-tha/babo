@@ -1,4 +1,3 @@
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React from 'react';
 import { Layers, Droplets, ArrowDownToLine, MoveHorizontal } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -96,39 +95,6 @@ export default function SVB() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: SVB', url: 'https://beton.wiki/index.php?title=Selbstverdichtender_Beton' },
-          { title: "Zement-Merkblatt B16: Selbstverdichtender Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Selbstverdichtender Beton', url: 'https://de.wikipedia.org/wiki/Selbstverdichtender_Beton' },
-          { title: 'Rheologie', url: 'https://de.wikipedia.org/wiki/Rheologie' }
-        ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie Selbstverdichtender Beton (SVB-Richtlinie)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 12350-8 (Prüfung von Frischbeton - Teil 8: Selbstverdichtender Beton - Setzfließversuch)' },
-          { title: 'DIN EN 12350-9 / -10 / -12 (V-Trichter-Versuch, L-Kasten-Versuch, Blockierring-Versuch)' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen SF1 bis SF3, Viskositätsklassen VS1/VS2)' }
-        ]}
-        literatur={[
-          'DAfStb Heft 560: Sachstandsbericht Selbstverdichtender Beton (SVB) (Beuth Verlag)',
-          'Dehn, F.; Holschemacher, K.: Selbstverdichtender Beton - Stand der Technik und Praxisberichte (Bauwerk Verlag)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'SF = \\frac{d_1 + d_2}{2} \\quad (\\text{Setzfließmaß}, \\text{Klassen SF1: } 550-650\\,\\text{mm},\\, \\text{SF2: } 660-750\\,\\text{mm},\\, \\text{SF3: } 760-850\\,\\text{mm})',
-            erklaerung: 'Prüfkriterium nach DIN EN 12350-8 zur Einstufung des Fließvermögens von SVB ohne Erschütterung.',
-            quelle: 'DIN EN 12350-8'
-          },
-          {
-            formel: 't_{500} \\le 2\\,\\text{s} \\quad (\\text{Viskosität VS1}) \\quad \\text{bzw.} \\quad t_{500} > 2\\,\\text{s} \\quad (\\text{Viskosität VS2})',
-            erklaerung: 'Zeitdauer bis zum Erreichen eines Fließkreisdurchmessers von 500 mm zur Beurteilung der plastischen Viskosität.',
-            quelle: 'DIN EN 206'
-          }
-        ]}
-      />
     </div>
   );
 }

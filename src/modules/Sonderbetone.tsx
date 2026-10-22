@@ -123,24 +123,266 @@ export default function Sonderbetone() {
       )}
       </div>
 
-      <ModuleFooter 
-        wikipedia={[
-          { title: 'Sonderbeton' },
-          { title: 'Leichtbeton', url: 'https://de.wikipedia.org/wiki/Leichtbeton' },
-          { title: 'Selbstverdichtender Beton', url: 'https://de.wikipedia.org/wiki/Selbstverdichtender_Beton' },
-          { title: 'Faserbeton', url: 'https://de.wikipedia.org/wiki/Faserbeton' }
+      <ModuleFooter
+        weblinks={[
+          { title: 'Beton.wiki: Leichtbeton', url: 'https://beton.wiki/index.php?title=Leichtbeton' },
+          { title: 'Beton.wiki: Infraleichtbeton', url: 'https://beton.wiki/index.php?title=Infraleichtbeton' },
+          { title: 'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch', url: 'https://www.vdz-online.de/publikationen/zement-taschenbuch' },
+          { title: 'Beton.wiki: Spritzbeton', url: 'https://beton.wiki/index.php?title=Spritzbeton' },
+          { title: 'Beton.wiki: UHPC', url: 'https://beton.wiki/index.php?title=UHPC' },
+          { title: 'Beton.wiki: Dränbeton', url: 'https://beton.wiki/index.php?title=Dr%C3%A4nbeton' },
+          { title: 'Beton.wiki: Faserbeton', url: 'https://beton.wiki/index.php?title=Faserbeton' },
+          { title: 'Beton.wiki: Schleuderbeton', url: 'https://beton.wiki/index.php?title=Schleuderbeton' },
+          { title: 'Beton.wiki: Unterwasserbeton', url: 'https://beton.wiki/index.php?title=Unterwasserbeton' },
+          { title: 'Beton.wiki: SVB', url: 'https://beton.wiki/index.php?title=Selbstverdichtender_Beton' },
+          { title: 'Beton.wiki: Schwerbeton', url: 'https://beton.wiki/index.php?title=Schwerbeton' },
+          { title: 'Beton.wiki: Massige Bauteile', url: 'https://beton.wiki/index.php?title=Massige_Bauteile' },
+          { title: 'Beton.wiki: Pumpbeton', url: 'https://beton.wiki/index.php?title=Pumpbeton' }
         ]}
-        literatur={[
-          'Grübl, P.; Weigler, H.; Siebel, E.: Beton: Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
+        wikipedia={[
+          { title: 'Leichtbeton', url: 'https://de.wikipedia.org/wiki/Leichtbeton' },
+          { title: 'Porenbeton', url: 'https://de.wikipedia.org/wiki/Porenbeton' },
+          { title: 'Spritzbeton', url: 'https://de.wikipedia.org/wiki/Spritzbeton' },
+          { title: 'Neue Österreichische Tunnelbaumethode', url: 'https://de.wikipedia.org/wiki/Neue_%C3%96sterreichische_Tunnelbaumethode' },
+          { title: 'Recyclingbeton', url: 'https://de.wikipedia.org/wiki/Recyclingbeton' },
+          { title: 'Bauschutt', url: 'https://de.wikipedia.org/wiki/Bauschutt' },
+          { title: 'Ultrahochfester Beton', url: 'https://de.wikipedia.org/wiki/Ultrahochfester_Beton' },
+          { title: 'Silikastaub', url: 'https://de.wikipedia.org/wiki/Silikastaub' },
+          { title: 'Dränbeton', url: 'https://de.wikipedia.org/wiki/Dr%C3%A4nbeton' },
+          { title: 'Versickerung', url: 'https://de.wikipedia.org/wiki/Versickerung' },
+          { title: 'Faserbeton', url: 'https://de.wikipedia.org/wiki/Faserbeton' },
+          { title: 'Stahlfaserbeton', url: 'https://de.wikipedia.org/wiki/Stahlfaserbeton' },
+          { title: 'Schleuderbeton', url: 'https://de.wikipedia.org/wiki/Schleuderbeton' },
+          { title: 'Zentrifugalkraft', url: 'https://de.wikipedia.org/wiki/Zentrifugalkraft' },
+          { title: 'Unterwasserbeton', url: 'https://de.wikipedia.org/wiki/Unterwasserbeton' },
+          { title: 'Hydrostatischer Druck', url: 'https://de.wikipedia.org/wiki/Hydrostatischer_Druck' },
+          { title: 'Selbstverdichtender Beton', url: 'https://de.wikipedia.org/wiki/Selbstverdichtender_Beton' },
+          { title: 'Rheologie', url: 'https://de.wikipedia.org/wiki/Rheologie' },
+          { title: 'Schwerbeton', url: 'https://de.wikipedia.org/wiki/Schwerbeton' },
+          { title: 'Strahlenschutz', url: 'https://de.wikipedia.org/wiki/Strahlenschutz' },
+          { title: 'Walzbeton', url: 'https://de.wikipedia.org/wiki/Walzbeton' },
+          { title: 'Betonpumpe', url: 'https://de.wikipedia.org/wiki/Betonpumpe' },
+          { title: 'Hagen-Poiseuille-Gesetz', url: 'https://de.wikipedia.org/wiki/Gesetz_von_Hagen-Poiseuille' },
+          { title: 'Bohrpfahl', url: 'https://de.wikipedia.org/wiki/Bohrpfahl' },
+          { title: 'Spezialtiefbau', url: 'https://de.wikipedia.org/wiki/Spezialtiefbau' }
         ]}
         regelwerke={[
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Leichtbetonklassen LC8/9 bis LC80/88, Rohdichteklassen D1.0 bis D2.0)' },
+          { title: 'DIN EN 1992-1-1:2011-01 mit NA:2013-04, Abschnitt 11 (Leichtbeton); Neuausgabe DIN EN 1992-1-1:2025-09' },
+          { title: 'DIN EN 13055:2016-11 (Leichte Gesteinskörnungen)' },
+          { title: 'DBV-Merkblatt Konstruktionsleichtbeton (Ausgabe manuell prüfen)' },
+          { title: 'DIBt: Vorhabenbezogene Bauartgenehmigung (vBG) / Zustimmung im Einzelfall (ZiE)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Rohdichteklassen D0.8 und D1.0)' },
+          { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)' },
+          { title: 'DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)' },
+          { title: 'DIN 18314 (VOB/C: Spritzbetonarbeiten)' },
+          { title: 'ÖBV-Richtlinie Spritzbeton (Klassen J1, J2, J3 zur Frühfestigkeit)' },
+          { title: 'DAfStb-Richtlinie Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen nach DIN EN 12620 (2010-09)' },
+          { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)' },
+          { title: 'DIN 1045-2:2023-08 (Beton mit rezyklierter Gesteinskörnung; Bezeichnungen manuell prüfen)' },
+          { title: 'DAfStb-Richtlinie Ultrahochfester Beton – in Vorbereitung; Sachstand: DAfStb-Heft 561 (2008)' },
+          { title: 'NF P 18-470 (Bétons fibrés à ultra-hautes performances - Spécification, performance, production et conformité)' },
+          { title: 'FGSV-Merkblatt für Versickerungsfähige Verkehrsflächen (M Vv)' },
+          { title: 'FGSV: Merkblatt für Dränbetontragschichten (DBT)' },
+          { title: 'ZTV Wegebau (Zusätzliche Technische Vertragsbedingungen für den Bau von Wegen und Plätzen)' },
+          { title: 'DIN EN 12620 (Gesteinskörnungen für Beton - Anforderungen an eng gestufte Korngruppen)' },
+          { title: 'DAfStb-Richtlinie Stahlfaserbeton (2012-11; Leistungsklassen L0,9/0,6 bis L3,0/2,4)' },
+          { title: 'DIN EN 14889-1 (Fasern für Beton - Teil 1: Stahlfasern)' },
+          { title: 'DIN EN 14889-2 (Fasern für Beton - Teil 2: Polymerfasern)' },
+          { title: 'DIN EN 14651 (Prüfverfahren für Beton mit metallischen Fasern - Biegezugfestigkeit)' },
+          { title: 'DIN EN 12843 (Betonfertigteile - Maste)' },
+          { title: 'DIN EN 1916 / DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Unterwasserbeton; Mindestzementgehalt manuell prüfen)' },
+          { title: 'ZTV-W LB 215 (Zusätzliche Technische Vertragsbedingungen im Wasserbau - Wasserbauwerke aus Beton)' },
+          { title: 'DBV-Merkblatt Unterwasserbeton (manuell prüfen)' },
+          { title: 'DAfStb-Richtlinie Selbstverdichtender Beton (SVB-Richtlinie, 2012-09)' },
+          { title: 'DIN EN 12350-8 (Prüfung von Frischbeton - Teil 8: Selbstverdichtender Beton - Setzfließversuch)' },
+          { title: 'DIN EN 12350-9 / -10 / -12 (V-Trichter-Versuch, L-Kasten-Versuch, Blockierring-Versuch)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen SF1 bis SF3, Viskositätsklassen VS1/VS2)' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Schwerbeton mit Trockenrohdichte > 2600 kg/m³)' },
+          { title: 'DIN 25413-1:1995-10 (Strahlenschutzbeton - Teil 1: Baustoffe für Strahlenschutzbeton)' },
+          { title: 'DIN 6847-2:2008-03 (Medizinische Elektronenbeschleuniger-Anlagen - Baulicher Strahlenschutz)' },
+          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton' },
+          { title: 'DIN EN 197-1 (Zemente mit niedriger Hydratationswärme LH / sehr niedriger Hydratationswärme VLH)' },
+          { title: 'DIN EN 1992-1-1 / DIN EN 1992-3 (Rissbreitenbegrenzung infolge früher Zwangskräfte)' },
+          { title: 'DBV-Merkblatt Pumpbeton (manuell prüfen)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Mindestmehlkorngehalt für pumpbare Betone)' },
+          { title: 'DIN 24200 (Betonpumpen und Verteilermaste - Sicherheitstechnische Anforderungen)' },
+          { title: 'DIN EN 1536:2015-10 (Ausführung von Arbeiten im Spezialtiefbau - Bohrpfähle)' },
+          { title: 'DIN EN 206 / DIN 1045-2 (Anforderungen an Beton für Geotechnische Bauteile / Bohrpfähle)' },
+          { title: 'Empfehlungen des Arbeitskreises Pfähle (EA-Pfähle, DGGT)' },
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DAfStb-Richtlinie Selbstverdichtender Beton (SVB):2012-11', url: 'https://www.dafstb.de/' },
-          { title: 'DAfStb-Richtlinie Stahlfaserbeton:2021-06', url: 'https://www.dafstb.de/' },
-          { title: 'DBV-Merkblatt Sichtbeton:2015-06', url: 'https://www.betonverein.de/' }
+          { title: 'DBV/VDZ-Merkblatt Sichtbeton (2015)' }
+        ]}
+        literatur={[
+          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
+          'Faust, T.: Leichtbeton im konstruktiven Ingenieurbau (Angaben manuell prüfen)',
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Lösch, C.; Rieseberg, P.; Hückler, A.: Infraleichtbeton – Entwurf, Konstruktion, Bau (2025)',
+          'Maidl, B.: Handbuch für Spritzbeton. Berlin: Ernst & Sohn 1992',
+          'Kusterle, W. et al.: Spritzbetontechnologie (Ernst & Sohn, Beton-Kalender) (Angaben manuell prüfen)',
+          'DAfStb-Hefte zu rezyklierten Gesteinskörnungen (Heftnummern manuell prüfen)',
+          'Müller, A.: Baustoffrecycling – Entstehung, Aufbereitung, Verwertung. Wiesbaden: Springer Vieweg 2018',
+          'DAfStb-Heft 561: Sachstandsbericht Ultrahochfester Beton (2008)',
+          'Fehling, E.; Schmidt, M.; Walraven, J. et al. (2014): Ultra-High Performance Concrete UHPC (Ernst & Sohn)',
+          'Forschungsgesellschaft für Straßen- und Verkehrswesen (FGSV): Leitfaden für Dränbeton im Straßenbau (Angaben manuell prüfen)',
+          'König, G.; Kützing, L.: Grundlagen des Faserbetons (Angaben manuell prüfen)',
+          'DAfStb-Heft 614: Erläuterungen zur DAfStb-Richtlinie Stahlfaserbeton (2015)',
+          'Beton-Kalender: Fertigteile und Spannbetonmaste (Ernst & Sohn) (Angaben manuell prüfen)',
+          'Bundesanstalt für Wasserbau (BAW): Richtlinie Unterwasserbeton für Trog- und Sohlenbauwerke (Angaben manuell prüfen)',
+          'DAfStb-Heft 560: Sachstandsbericht Selbstverdichtender Beton (Angaben manuell prüfen)',
+          'Dehn, F.; Holschemacher, K.: Selbstverdichtender Beton (Angaben manuell prüfen)',
+          'Schultze, N.: Strahlenschutz im Hochbau (Bauverlag) (Angaben manuell prüfen)',
+          'Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton (Heftnummer manuell prüfen; Heft 555 betrifft WU-Bauwerke)',
+          'Kaplan, D.; de Larrard, F.; Sedran, T. (2005): Design of Concrete Pumping Pipes and Rheology (ACI Materials Journal) (Angaben manuell prüfen)',
+          'Kempfert, H.-G.; Lüking, J.: Geotechnik nach Eurocode, Band 2: Grundbau (2020)'
         ]}
         formeln={[
+          {
+            formel: '\\eta_E = \\left( \\frac{\\rho}{2200} \\right)^2',
+            erklaerung: 'Modifikationsbeiwert η_E nach DIN EN 1992-1-1 Abschnitt 11 für den Elastizitätsmodul von Leichtbeton: E_{lcm} = \\eta_E \\cdot E_{cm}.',
+            quelle: 'DIN EN 1992-1-1 Abs. 11.3.2'
+          },
+          {
+            formel: '\\eta_1 = 0{,}40 + 0{,}60 \\cdot \\frac{\\rho}{2200}',
+            erklaerung: 'Abminderungsfaktor η_1 für Zugfestigkeiten von Leichtbeton infolge der reduzierten Kornfestigkeit des porigen Gefüges.',
+            quelle: 'DIN EN 1992-1-1 Abs. 11.3.1'
+          },
+          {
+            formel: 'f_{lctm} = \\eta_1 \\cdot f_{ctm}',
+            erklaerung: 'Mittlere axiale Zugfestigkeit von Leichtbeton bezogen auf die Festigkeit eines Normalbetons gleicher Druckfestigkeitsklasse.',
+            quelle: 'DIN EN 1992-1-1 Tab. 11.3.1'
+          },
+          {
+            formel: '\\rho_{dry} < 800\\,\\text{kg/m}^3',
+            erklaerung: 'Trockenrohdichtekriterium für Infraleichtbeton (ILB), welcher unterhalb der genormten Leichtbeton-Dichteklassen der DIN EN 206 (D1.0 bis D2.0) liegt.',
+            quelle: 'TU Berlin / Schlaich (2018)'
+          },
+          {
+            formel: '\\lambda_{10,dry} \\approx 0{,}12 - 0{,}18\\,\\text{W/(m}\\cdot\\text{K)}',
+            erklaerung: 'Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände (U-Wert < 0,24 W/(m²K) bei Wandstärken um 40-50 cm) ohne Zusatzdämmung.',
+            quelle: 'Schlaich & Hückler (2018)'
+          },
+          {
+            formel: 'R = \\frac{m_{\\text{Rückprall}}}{m_{\\text{Gesamtförderung}}} \\cdot 100\\,\\%',
+            erklaerung: 'Rückprallquote R: Anteil des von der Wand oder Decke abprallenden Materials (Trockenspritzen ca. 15-30 %, Nassspritzen ca. 5-15 %).',
+            quelle: 'Erfahrungswerte (DIN EN 14487 regelt das Verfahren)'
+          },
+          {
+            formel: 'E_{\\text{kin}} = \\frac{1}{2} m \\cdot v^2 \\quad (v \\approx 20 - 30\\,\\text{m/s})',
+            erklaerung: 'Kinetische Aufprallenergie an der Spritzdüse, die zur selbsttätigen Gefügeverdichtung des Frischbetons an der Schalungs-/Felswand führt.',
+            quelle: 'ÖBV-Richtlinie Spritzbeton'
+          },
+          {
+            formel: 'w_{\\text{korr}} = w_{\\text{eff}} + \\sum \\left( m_{\\text{RC},i} \\cdot \\frac{\\text{WA}_{24,i} - h_i}{100} \\right)',
+            erklaerung: 'Korrektur des Zugabewassers für RC-Beton: Berücksichtigung der 24-Stunden-Wasseraufnahme WA_24 der porösen Altmörtelanteile im Vergleich zur Eigenfeuchte h.',
+            quelle: 'DAfStb-Richtlinie R-Beton'
+          },
+          {
+            formel: 'E_{\\text{cm,RC}} = E_{\\text{cm}} \\cdot \\left( 1 - \\alpha_{\\text{RC}} \\cdot \\frac{\\text{RC\\%}}{100} \\right)',
+            erklaerung: 'Abminderung des statischen E-Moduls infolge des geringeren E-Moduls der Altmörtel- und Ziegelphasen (α_RC ≈ 0.25 bis 0.40 je nach Typ 1 oder 2).',
+            quelle: 'DAfStb Heft 600'
+          },
+          {
+            formel: 'f_{ck} \\ge 150\\,\\text{N/mm}^2 \\quad (f_{cm} > 165 - 200\\,\\text{N/mm}^2)',
+            erklaerung: 'Festigkeitskriterium für ultrahochfesten Beton (in der Literatur ab etwa 150 N/mm²; keine genormten Klassen) bei extrem dichter Packungsdichte.',
+            quelle: 'Literatur (Fehling u. a. 2014); keine genormten Klassen'
+          },
+          {
+            formel: 'w/z \\le 0{,}20 - 0{,}25 \\quad (w/(z + k \\cdot s) \\approx 0{,}18)',
+            erklaerung: 'Extrem niedriger Wasserzementwert; das Porenwasser reicht nicht für vollständige Hydratation aus, Zementkerne wirken als mikrofeiner Festkörperfüllstoff.',
+            quelle: 'Fehling et al. (2014)'
+          },
+          {
+            formel: 'k_w \\ge 10^{-4} - 10^{-3}\\,\\text{m/s}',
+            erklaerung: 'Geforderter Wasserdurchlässigkeitsbeiwert (Permeabilität) für Dränbetontragschichten nach FGSV zur sicheren Niederschlagsversickerung.',
+            quelle: 'FGSV M Vv'
+          },
+          {
+            formel: 'v_{\\text{Hohlraum}} = \\left( 1 - \\frac{\\rho_{\\text{Fest}}}{\\rho_{\\text{Realisierung}}} \\right) \\cdot 100\\,\\% \\approx 15 - 25\\,\\%',
+            erklaerung: 'Zusammenhängender Haufwerkshohlraumgehalt des Einkorngefüges, der die Wasserabführung ohne Staudruck gewährleistet.',
+            quelle: 'Zement-Merkblatt B13'
+          },
+          {
+            formel: 'f_{R,j} = \\frac{3 \\cdot F_j \\cdot l}{2 \\cdot b \\cdot h_{\\text{sp}}^2}',
+            erklaerung: 'Residuelle Biegezugfestigkeit f_R,j nach DIN EN 14651 am gekerbten Balken bei Rissöffnungsweiten CMOD (j = 1: 0,5 mm, j = 4: 3,5 mm).',
+            quelle: 'DIN EN 14651'
+          },
+          {
+            formel: '\\lambda = \\frac{l_f}{d_f} \\quad (\\text{Schlankheitsgrad der Faser})',
+            erklaerung: 'Verhältnis von Faserlänge zu Faserdurchmesser: Bestimmt die Verankerungs- und Rissüberbrückungsfähigkeit im Zementstein.',
+            quelle: 'DAfStb-Richtlinie Stahlfaserbeton'
+          },
+          {
+            formel: 'a_z = \\omega^2 \\cdot r = (2 \\pi \\cdot n)^2 \\cdot r \\quad (\\approx 20 - 50\\,g)',
+            erklaerung: 'Zentrifugalbeschleunigung während der Schleuderphase bei Drehzahl n und Radius r zur mechanischen Wasserabpressung und Entlüftung.',
+            quelle: 'Grübl et al. (2001)'
+          },
+          {
+            formel: '(w/z)_{\\text{eff}} = (w/z)_0 - \\frac{\\Delta m_w}{z} \\quad (\\approx 0{,}30 - 0{,}35)',
+            erklaerung: 'Effektiver w/z-Wert des erhärtenden Rohrkörpers nach radialem Auspressen und Abfließen des Schlempewassers Δm_w zum Rohrinnenraum.',
+            quelle: 'DIN EN 12843'
+          },
+          {
+            formel: 'p_{\\text{Beton}} = \\rho_c \\cdot g \\cdot h_c > p_{\\text{Wasser}} = \\rho_w \\cdot g \\cdot h_w',
+            erklaerung: 'Hydrostatisches Druckgleichgewicht beim Contractor-Verfahren: Das Betongewicht im Schüttrohr muss den äußeren Wasserdruck überwinden, um kontinuierlichen Austritt sicherzustellen.',
+            quelle: 'DBV-Merkblatt Unterwasserbeton'
+          },
+          {
+            formel: 'h_{\\text{Eintauch}} \\ge 1{,}5 - 2{,}0\\,\\text{m}',
+            erklaerung: 'Mindesteintauchtiefe des Schüttrohres im frischen Betonbett, um den direkten Kontakt des frischen Zementleims mit dem umgebenden Wasser zu verhindern.',
+            quelle: 'ZTV-W LB 215'
+          },
+          {
+            formel: 'SF = \\frac{d_1 + d_2}{2} \\quad (\\text{Setzfließmaß}, \\text{Klassen SF1: } 550-650\\,\\text{mm},\\, \\text{SF2: } 660-750\\,\\text{mm},\\, \\text{SF3: } 760-850\\,\\text{mm})',
+            erklaerung: 'Prüfkriterium nach DIN EN 12350-8 zur Einstufung des Fließvermögens von SVB ohne Erschütterung.',
+            quelle: 'DIN EN 12350-8'
+          },
+          {
+            formel: 't_{500} \\le 2\\,\\text{s} \\quad (\\text{Viskosität VS1}) \\quad \\text{bzw.} \\quad t_{500} > 2\\,\\text{s} \\quad (\\text{Viskosität VS2})',
+            erklaerung: 'Zeitdauer bis zum Erreichen eines Fließkreisdurchmessers von 500 mm zur Beurteilung der plastischen Viskosität.',
+            quelle: 'DIN EN 206'
+          },
+          {
+            formel: 'I(x) = I_0 \\cdot e^{-\\mu \\cdot x} = I_0 \\cdot 2^{-x / d_{1/2}}',
+            erklaerung: 'Lambert-Beersches Schwächungsgesetz für Gammastrahlung: Je höher der lineare Schwächungskoeffizient μ (proportional zur Materialdichte ρ), desto geringer die erforderliche Halbwertsdicke d_1/2.',
+            quelle: 'DIN 25413-1'
+          },
+          {
+            formel: '\\rho_{\\text{dry}} > 2600\\,\\text{kg/m}^3 \\quad (\\text{typisch } 3200 - 4500\\,\\text{kg/m}^3)',
+            erklaerung: 'Normative Definition von Schwerbeton nach DIN EN 206 unter Verwendung hochdichter Gesteinskörnungen (Baryt, Magnetit, Hämatit).',
+            quelle: 'DIN EN 206'
+          },
+          {
+            formel: '\\Delta T_{\\text{ad}} = \\frac{z \\cdot Q_{H,7d}}{c_c \\cdot \\rho_c} \\approx \\frac{z \\cdot 250\\,\\text{kJ/kg}}{1{,}0\\,\\text{kJ/(kg}\\cdot\\text{K)} \\cdot 2400\\,\\text{kg/m}^3}',
+            erklaerung: 'Adiabater Temperaturanstieg ΔT_ad infolge Zementhydratation im Bauteilkern ohne äußere Wärmeabfuhr.',
+            quelle: 'DAfStb-Richtlinie Massige Bauteile'
+          },
+          {
+            formel: '\\Delta T_{\\text{Kern-Rand}} \\le 15 - 20\\,\\text{K}',
+            erklaerung: 'Kritische Begrenzung der Temperaturdifferenz zwischen Bauteilkern und Oberfläche zur Vermeidung von Trennrissen durch Eigenspannungen.',
+            quelle: 'DAfStb Heft 555'
+          },
+          {
+            formel: '\\Delta p = \\frac{2 \\cdot \\tau_0 \\cdot L}{R} + \\frac{4 \\cdot \\mu \\cdot Q \\cdot L}{\\pi \\cdot R^4}',
+            erklaerung: 'Druckverlust Δp bei der Rohrströmung (Bingham-Fluid / Buckingham-Reiner-Beziehung) über Rohrlänge L, Innenradius R, Fließgrenze τ_0 und plastische Viskosität μ.',
+            quelle: 'Kaplan et al. (2005)'
+          },
+          {
+            formel: 'm_{\\text{Mehlkorn}} \\ge 350 - 400\\,\\text{kg/m}^3 \\quad (\\le 0{,}125\\,\\text{mm})',
+            erklaerung: 'Erforderlicher Mehlkorngehalt (Zement + Flugasche + Feinsandanteile) zur kontinuierlichen Ausbildung der 1-2 mm Gleitschicht an der Stahlwandung.',
+            quelle: 'DBV-Merkblatt Pumpbeton'
+          },
+          {
+            formel: 'm_{\\text{Zement}} \\ge 325 - 375\\,\\text{kg/m}^3 \\quad (w/z \\le 0{,}60)',
+            erklaerung: 'Mindestzementgehalt nach DIN EN 1536 / DIN 1045-2 in Abhängigkeit vom Größtkorn (16 bzw. 32 mm) und dem Einbauverfahren (trocken oder unter Stützflüssigkeit).',
+            quelle: 'DIN EN 1536 / DIN 1045-2'
+          },
+          {
+            formel: 't_{\\text{Verarbeitbarkeit}} \\ge t_{\\text{Förderung}} + t_{\\text{Einbau}} + 2\\,\\text{h}',
+            erklaerung: 'Mindestdauer der Konsistenzhaltung (oft 4 bis 6 Stunden) zur Vermeidung von Abreißern des Betonstrangs beim Ziehen der Verrohrung.',
+            quelle: 'EA-Pfähle'
+          },
           {
             formel: '\\rho_{\\text{dry}} = \\frac{m_{\\text{dry}}}{V} \\le 2000 \\quad [\\text{kg/m}^3] \\quad (\\text{Leichtbeton})',
             erklaerung: 'Trockenrohdichtekriterium für Leichtbeton nach DIN EN 206 (Rohdichteklassen D1,0 bis D2,0) unter Verwendung poröser Gesteinskörnungen (Blähton, Bims).',

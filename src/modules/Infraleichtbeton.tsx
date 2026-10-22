@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Sunset, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function Infraleichtbeton() {
@@ -95,36 +94,6 @@ export default function Infraleichtbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Infraleichtbeton', url: 'https://beton.wiki/index.php?title=Infraleichtbeton' },
-          { title: "Zement-Taschenbuch (VDZ)", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
-        wikipedia={[
-          { title: 'Leichtbeton', url: 'https://de.wikipedia.org/wiki/Leichtbeton' }
-        ]}
-        regelwerke={[
-          { title: 'DIBt: Vorhabenbezogene Bauartgenehmigung (vBG) / Zustimmung im Einzelfall (ZiE)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Rohdichteklassen D0.8 und D1.0)' },
-          { title: 'DAfStb-Richtlinie: Beton mit rezykliertem oder leichtem Zuschlag', url: 'https://www.dafstb.de/' }
-        ]}
-        literatur={[
-          'Schlaich, M.; Hückler, A. (2018): Infraleichtbeton - Tragend, dämmend, monolithisch (Ernst & Sohn, Beton-Kalender 2018)',
-          'Hückler, A. (2016): Trag- und Verformungsverhalten von Infraleichtbeton (Dissertation, TU Berlin)'
-        ]}
-        formeln={[
-          {
-            formel: '\\rho_{dry} < 800\\,\\text{kg/m}^3',
-            erklaerung: 'Trockenrohdichtekriterium für Infraleichtbeton (ILB), welcher unterhalb der genormten Leichtbeton-Dichteklassen der DIN EN 206 (D1.0 bis D2.0) liegt.',
-            quelle: 'TU Berlin / Schlaich (2018)'
-          },
-          {
-            formel: '\\lambda_{10,dry} \\approx 0{,}12 - 0{,}18\\,\\text{W/(m}\\cdot\\text{K)}',
-            erklaerung: 'Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände (U-Wert < 0,24 W/(m²K) bei Wandstärken um 40-50 cm) ohne Zusatzdämmung.',
-            quelle: 'Schlaich & Hückler (2018)'
-          }
-        ]}
-      />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Settings, Layers, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function UHPC() {
@@ -99,38 +98,6 @@ export default function UHPC() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: UHPC', url: 'https://beton.wiki/index.php?title=UHPC' },
-          { title: "Zement-Taschenbuch (VDZ)", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
-        wikipedia={[
-          { title: 'Ultrahochfester Beton', url: 'https://de.wikipedia.org/wiki/Ultrahochfester_Beton' },
-          { title: 'Silikastaub', url: 'https://de.wikipedia.org/wiki/Silikastaub' }
-        ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie Ultrahochfester Beton (UHPC)', url: 'https://www.dafstb.de/' },
-          { title: 'NF P 18-470 (Bétons fibrés à ultra-hautes performances - Spécification, performance, production et conformité)', url: 'https://www.afnor.org/' },
-          { title: 'DIBt: Grundsätze für Zulassungen von UHPC-Bauteilen', url: 'https://www.dibt.de/' }
-        ]}
-        literatur={[
-          'DAfStb Heft 561 & 592: Ultrahochfester Beton (UHPC) - Grundlagen und Bemessung (Beuth Verlag)',
-          'Fehling, E.; Schmidt, M.; Walraven, J. et al. (2014): Ultra-High Performance Concrete UHPC (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'f_{ck} \\ge 150\\,\\text{N/mm}^2 \\quad (f_{cm} > 165 - 200\\,\\text{N/mm}^2)',
-            erklaerung: 'Festigkeitskriterium für ultrahochfesten Beton (Druckfestigkeitsklassen bis C175/190 oder UHPFRC) bei extrem dichter Packungsdichte.',
-            quelle: 'DAfStb-Richtlinie UHPC'
-          },
-          {
-            formel: 'w/z \\le 0{,}20 - 0{,}25 \\quad (w/(z + k \\cdot s) \\approx 0{,}18)',
-            erklaerung: 'Extrem niedriger Wasserzementwert; das Porenwasser reicht nicht für vollständige Hydratation aus, Zementkerne wirken als mikrofeiner Festkörperfüllstoff.',
-            quelle: 'Fehling et al. (2014)'
-          }
-        ]}
-      />
     </div>
   );
 }

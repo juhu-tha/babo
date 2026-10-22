@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Waves, ArrowRight, AlertTriangle, Settings } from 'lucide-react';
 
 export default function Pumpbeton() {
@@ -118,39 +117,6 @@ export default function Pumpbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Pumpbeton', url: 'https://beton.wiki/index.php?title=Pumpbeton' },
-          { title: "Zement-Merkblatt B7: Bereiten und Verarbeiten von Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" },
-          { title: "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
-        wikipedia={[
-          { title: 'Betonpumpe', url: 'https://de.wikipedia.org/wiki/Betonpumpe' },
-          { title: 'Hagen-Poiseuille-Gesetz', url: 'https://de.wikipedia.org/wiki/Gesetz_von_Hagen-Poiseuille' }
-        ]}
-        regelwerke={[
-          { title: 'DBV-Merkblatt: Pumpbeton (Technologische Grundlagen und Anforderungen)', url: 'https://www.betonverein.de/' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Mindestmehlkorngehalt für pumpbare Betone)' },
-          { title: 'DIN 24200 (Betonpumpen und Verteilermaste - Sicherheitstechnische Anforderungen)' }
-        ]}
-        literatur={[
-          'Kaplan, D.; de Larrard, F.; Sedran, T. (2005): Design of Concrete Pumping Pipes and Rheology (ACI Materials Journal)',
-          'Grübl, P.; Weigler, H.; Karl, S.: Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: '\\Delta p = \\frac{2 \\cdot \\tau_0 \\cdot L}{R} + \\frac{4 \\cdot \\mu \\cdot Q \\cdot L}{\\pi \\cdot R^4}',
-            erklaerung: 'Druckverlust Δp bei der Rohrströmung (Bingham-Fluid / Buckingham-Reiner-Beziehung) über Rohrlänge L, Innenradius R, Fließgrenze τ_0 und plastische Viskosität μ.',
-            quelle: 'Kaplan et al. (2005)'
-          },
-          {
-            formel: 'm_{\\text{Mehlkorn}} \\ge 350 - 400\\,\\text{kg/m}^3 \\quad (\\le 0{,}125\\,\\text{mm})',
-            erklaerung: 'Erforderlicher Mehlkorngehalt (Zement + Flugasche + Feinsandanteile) zur kontinuierlichen Ausbildung der 1-2 mm Gleitschicht an der Stahlwandung.',
-            quelle: 'DBV-Merkblatt Pumpbeton'
-          }
-        ]}
-      />
     </div>
   );
 }

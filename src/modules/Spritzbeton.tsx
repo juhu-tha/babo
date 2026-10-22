@@ -1,5 +1,4 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React, { useState } from 'react';
 import { Waves, Zap } from 'lucide-react';
 
@@ -144,39 +143,6 @@ export default function Spritzbeton() {
         </div>
       </div>
     
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Spritzbeton', url: 'https://beton.wiki/index.php?title=Spritzbeton' },
-          { title: "Zement-Merkblatt B19: Spritzbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Spritzbeton', url: 'https://de.wikipedia.org/wiki/Spritzbeton' },
-          { title: 'Neue Österreichische Tunnelbaumethode', url: 'https://de.wikipedia.org/wiki/Neue_%C3%96sterreichische_Tunnelbaumethode' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)' },
-          { title: 'DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)' },
-          { title: 'DIN 18314 (VOB/C: Spritzbetonarbeiten)' },
-          { title: 'ÖBV-Richtlinie Spritzbeton (Klassen J1, J2, J3 zur Frühfestigkeit)', url: 'https://www.bautechnik.pro/' }
-        ]}
-        literatur={[
-          'Maidl, B. (2014): Tunnelbau im Spreng- und Spritzbetonvortrieb (Springer Vieweg)',
-          'Kusterle, W. et al.: Spritzbetontechnologie (Ernst & Sohn, Beton-Kalender)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'R = \\frac{m_{\\text{Rückprall}}}{m_{\\text{Gesamtförderung}}} \\cdot 100\\,\\%',
-            erklaerung: 'Rückprallquote R: Anteil des von der Wand oder Decke abprallenden Materials (Trockenspritzen ca. 15-30 %, Nassspritzen ca. 5-15 %).',
-            quelle: 'DIN EN 14487-2'
-          },
-          {
-            formel: 'E_{\\text{kin}} = \\frac{1}{2} m \\cdot v^2 \\quad (v \\approx 20 - 30\\,\\text{m/s})',
-            erklaerung: 'Kinetische Aufprallenergie an der Spritzdüse, die zur selbsttätigen Gefügeverdichtung des Frischbetons an der Schalungs-/Felswand führt.',
-            quelle: 'ÖBV-Richtlinie Spritzbeton'
-          }
-        ]}
-      />
 </div>
   );
 }

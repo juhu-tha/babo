@@ -1,4 +1,3 @@
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React from 'react';
 import { Anchor, ShieldAlert, Weight, Scale } from 'lucide-react';
 
@@ -90,38 +89,6 @@ export default function Schwerbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Schwerbeton', url: 'https://beton.wiki/index.php?title=Schwerbeton' },
-          { title: "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
-        wikipedia={[
-          { title: 'Schwerbeton', url: 'https://de.wikipedia.org/wiki/Schwerbeton' },
-          { title: 'Strahlenschutz', url: 'https://de.wikipedia.org/wiki/Strahlenschutz' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Schwerbeton mit Trockenrohdichte > 2600 kg/m³)' },
-          { title: 'DIN 25413-1:1995-10 (Strahlenschutzbeton - Teil 1: Baustoffe für Strahlenschutzbeton)' },
-          { title: 'DIN 6847-2:2008-03 (Medizinische Elektronenbeschleuniger-Anlagen - Baulicher Strahlenschutz)' }
-        ]}
-        literatur={[
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Schultze, N.: Strahlenschutz im Hochbau (Bauverlag)'
-        ]}
-        formeln={[
-          {
-            formel: 'I(x) = I_0 \\cdot e^{-\\mu \\cdot x} = I_0 \\cdot 2^{-x / d_{1/2}}',
-            erklaerung: 'Lambert-Beersches Schwächungsgesetz für Gammastrahlung: Je höher der lineare Schwächungskoeffizient μ (proportional zur Materialdichte ρ), desto geringer die erforderliche Halbwertsdicke d_1/2.',
-            quelle: 'DIN 25413-1'
-          },
-          {
-            formel: '\\rho_{\\text{dry}} > 2600\\,\\text{kg/m}^3 \\quad (\\text{typisch } 3200 - 4500\\,\\text{kg/m}^3)',
-            erklaerung: 'Normative Definition von Schwerbeton nach DIN EN 206 unter Verwendung hochdichter Gesteinskörnungen (Baryt, Magnetit, Hämatit).',
-            quelle: 'DIN EN 206'
-          }
-        ]}
-      />
     </div>
   );
 }
