@@ -7271,5 +7271,65 @@
       "targetModuleLabel": "Herstellung & Einbau"
     },
     "verified": false
+  },
+  {
+    "id": "q_frb_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "frischbeton",
+    "moduleTitle": "Frischbeton",
+    "topic": "Luftgehalt",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-2; DIN EN 12350-7",
+    "question": "XF4-Beton, Größtkorn 16 mm: Ablesung 4,4 %, Gesteinskorrektur 0,3 %. Ist der Einzelwert zulässig?",
+    "options": [
+      "Nein, 4,1 % < 4,5 %",
+      "Ja, 4,1 % ≥ 4,5 − 0,5 = 4,0 %",
+      "Ja, weil die Ablesung 4,4 % beträgt",
+      "Nein, XF4 verlangt immer 5,5 %"
+    ],
+    "correctIdx": 1,
+    "explanation": "L = 4,4 − 0,3 = 4,1 %. Für 16 mm gilt im Mittel ≥ 4,5 %, Einzelwerte dürfen um höchstens 0,5 % unterschreiten → ≥ 4,0 %.",
+    "gapAnalysis": {
+      "topic": "Luftgehalt",
+      "misconception": "Die Manometerablesung sei bereits der Luftgehalt.",
+      "coreRule": "Gesteinskorrektur abziehen; Mittelwert- und Einzelwertkriterium getrennt prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Luftgehalt“ im Modul Frischbeton noch einmal durch.",
+      "targetModuleTab": "frischbeton",
+      "targetModuleLabel": "Frischbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_frb_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "frischbeton",
+    "moduleTitle": "Frischbeton",
+    "topic": "Frischbetondruck",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18218:2010-01",
+    "question": "Wandschalung, Beton F3, Steiggeschwindigkeit 1 m/h, K₁ = 1,0. Wie groß ist σ_hk,max nach DIN 18218?",
+    "options": [
+      "18 kN/m²",
+      "25 kN/m²",
+      "32 kN/m²",
+      "75 kN/m²"
+    ],
+    "correctIdx": 2,
+    "explanation": "(14 · 1 + 18) · 1,0 = 32 kN/m² ≥ 25 kN/m² (Mindestwert).",
+    "gapAnalysis": {
+      "topic": "Frischbetondruck",
+      "misconception": "Der Frischbetondruck sei immer voll hydrostatisch.",
+      "coreRule": "Steiggeschwindigkeit und Konsistenz bestimmen den Maximaldruck.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Frischbetondruck“ im Modul Frischbeton noch einmal durch.",
+      "targetModuleTab": "frischbeton",
+      "targetModuleLabel": "Frischbeton"
+    },
+    "verified": false
   }
 ]
