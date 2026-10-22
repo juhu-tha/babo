@@ -8,7 +8,6 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
-import { NormenLinkMonitor } from '@/src/components/ui/NormenLinkMonitor';
 import { getNormsByCategory } from '@/src/data/centralNormenRegistry';
 
 const REGELUNGS_HIERARCHIE_DATA = [
@@ -264,7 +263,7 @@ const levelIcons: Record<string, React.ComponentType<any>> = {
 };
 
 export default function Regularien() {
-  const [activeTab, setActiveTab] = useState<'hierarchie' | 'katalog' | 'normen' | 'monitor'>('hierarchie');
+  const [activeTab, setActiveTab] = useState<'hierarchie' | 'katalog' | 'normen'>('hierarchie');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [hierarchySearchTerm, setHierarchySearchTerm] = useState('');
@@ -355,14 +354,6 @@ export default function Regularien() {
             onClick={() => setActiveTab('normen')}
           >
             <ClipboardCheck size={16} /> Technische Normen (Katalog)
-          </button>
-          <button
-            className={`px-5 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'monitor' ? 'border-shiraz text-shiraz bg-shiraz/5' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('monitor')}
-          >
-            <ShieldCheck size={16} /> Normen- &amp; Link-Aktualitätsmonitor
           </button>
         </div>
 
@@ -1271,13 +1262,6 @@ export default function Regularien() {
                 ))}
               </div>
             )}
-          </div>
-        )}
-
-        {/* Tab 3: Normen- & Link-Aktualitätsmonitor */}
-        {activeTab === 'monitor' && (
-          <div className="animate-in fade-in duration-300">
-            <NormenLinkMonitor />
           </div>
         )}
 

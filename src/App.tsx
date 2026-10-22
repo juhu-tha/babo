@@ -244,6 +244,7 @@ const tabGroups = [
       { id: 'hydratation_folgen', label: 'Hydratation & Folgen', icon: Network },
       { id: 'nachbehandlung', label: 'Nachbehandlung', icon: Droplets },
       { id: 'festbeton', label: 'Festbeton', icon: Box },
+      { id: 'betonkennwerte', label: 'Betonkennwerte (EC2)', icon: Sliders },
       { id: 'sichtbeton', label: 'Sichtbeton (SB 1–4)', icon: Eye },
       { id: 'sonderbetone', label: 'Sonderbetone', icon: Layers },
       { id: 'innovative_werkstoffe', label: 'Entwicklungen', icon: Layers },
@@ -628,6 +629,7 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   hydratation_folgen: ['hydratationswärme', 'erwärmung', 'tga', 'phasenneubildung', 'aluminat', 'schwinden', 'erstarren', 'rissrisiko'],
   nachbehandlung: ['verdunstungsschutz', 'folie', 'wassernebel', 'sprühen', 'reifezeit', 'curing', 'nachbehandlungsmittel'],
   festbeton: ['druckspannung', 'e-modul', 'spaltzugfestigkeit', 'rohdichte', 'porenstruktur', 'biegezugfestigkeit', 'zerstörungsfreie prüfung'],
+  betonkennwerte: ['betonkennwerte', 'ec2', 'eurocode 2', 'schwinden', 'kriechen', 'e-modul', 'fck', 'fcm', 'fctm', 'fcd', 'druckfestigkeit', 'zugfestigkeit', 'kriechzahl', 'wirksame bauteildicke', 'trocknungsschwinden', 'autogenes schwinden', 'zeitentwicklung'],
   sonderbetone: ['uhpc', 'leichtbeton', 'svb', 'scc', 'faserbeton', 'inkjetbeton', 'schwerbeton', 'hochfest', 'ultrahochfest', 'spritzbeton'],
   innovative_werkstoffe: ['geopolymere', 'carbonbeton', 'selbstheilender beton', 'bakterien', 'nachhaltig', 'innovativ', '3d-druck', 'inkjet'],
   qualitaetssicherung: ['werkseigene produktionskontrolle', 'überwachung', 'lieferscheine', 'baustellenprüfung', 'konformitätskontrolle', 'prüfkörper'],
@@ -1778,6 +1780,7 @@ function AppContent() {
           {activeTab === 'hydratation_folgen' && <HydratationFolgen />}
           {activeTab === 'nachbehandlung' && <Nachbehandlung />}
           {activeTab === 'festbeton' && <Festbeton />}
+          {activeTab === 'betonkennwerte' && <Betonkennwerte />}
           {activeTab === 'sichtbeton' && <Sichtbeton />}
           {activeTab === 'festbeton_statistik' && <FestbetonStatistik />}
           {activeTab === 'sicherheitskonzept' && <Sicherheitskonzept />}
@@ -1785,7 +1788,7 @@ function AppContent() {
           {activeTab === 'innovative_werkstoffe' && <InnovativeWerkstoffe />}
           {activeTab === 'qualitaetssicherung' && <Qualitaetssicherung />}
           {activeTab === 'betonpraxis' && <Betonpraxis />}
-          {activeTab === 'expositionsklassen' && <Betonpraxis initialSubTab="krell_tabelle" />}
+          {activeTab === 'expositionsklassen' && <Expositionsklassen />}
           {activeTab === 'korrosion' && <Korrosion />}
           {activeTab === 'schadreaktionen_beton' && <SchadreaktionenBeton />}
           {activeTab === 'zwang' && <ZwangCalculator />}
@@ -2078,6 +2081,7 @@ const FestbetonStatistik = React.lazy(() => import('./modules/FestbetonStatistik
 const Sicherheitskonzept = React.lazy(() => import('./modules/Sicherheitskonzept'));
 const Qualitaetssicherung = React.lazy(() => import('./modules/Qualitaetssicherung'));
 const Betonpraxis = React.lazy(() => import('./modules/Betonpraxis'));
+const Expositionsklassen = React.lazy(() => import('./modules/Expositionsklassen'));
 const Korrosion = React.lazy(() => import('./modules/Korrosion'));
 const SpannungDehnung = React.lazy(() => import('./modules/SpannungDehnung'));
 const Holz = React.lazy(() => import('./modules/Holz'));
@@ -2087,6 +2091,7 @@ const KriechenSchwinden = React.lazy(() => import('./modules/KriechenSchwinden')
 const Rissbreite = React.lazy(() => import('./modules/Rissbreite'));
 const Nachbehandlung = React.lazy(() => import('./modules/Nachbehandlung'));
 const Festbeton = React.lazy(() => import('./modules/Festbeton'));
+const Betonkennwerte = React.lazy(() => import('./modules/Betonkennwerte'));
 const Materialkennwerte = React.lazy(() => import('./modules/Materialkennwerte'));
 const Regularien = React.lazy(() => import('./modules/Regularien'));
 const Festigkeitsberechnungen = React.lazy(() => import('./modules/Festigkeitsberechnungen'));

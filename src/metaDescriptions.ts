@@ -118,11 +118,12 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
   hydratation_folgen: "Simulation des Temperaturanstiegs im Betonbauteil infolge Hydratationswärme zur Vermeidung von Temperaturrissen.",
   nachbehandlung: "Feuchtigkeitsschutz und Verdunstungsschutz für junges Bauteilgefüge nach DIN 1045: Curing und reifebasierte Nachbehandlung.",
   festbeton: "Mechanische und physikalische Festbetonkennwerte: Druckfestigkeit, Zugfestigkeit, E-Modul, Spannungsberechnungen und Porosität.",
+  betonkennwerte: "Berechnung aller Betonkennwerte nach Eurocode 2 (DIN EN 1992-1-1): Druck- und Zugfestigkeiten, E-Modul, Schwinden (Trocknungs- & autogenes Schwinden) und Kriechen.",
   sichtbeton: "Sichtbeton nach DBV/VDZ-Merkblatt: Anforderungsklassen SB 1 bis SB 4, Schalungshaut, Porigkeit, Trennmittel und Gestaltungsmerkmale.",
   sonderbetone: "Spezialbetone im konstruktiven Ingenieurbau: Ultrahochfester Beton (UHPC), Leichtbeton, Selbstverdichtender Beton (SVB) und Faserbeton.",
   innovative_werkstoffe: "Zukunftsweisende Baustoffe: Geopolymere, CO2-neutraler Beton, 3D-Betondruckverfahren und selbstheilende Werkstoffe.",
   qualitaetssicherung: "Systematische Werkseigene Produktionskontrolle (WPK), Konformitätskriterien nach DIN EN 206 und Baustellenprüfungen.",
-  expositionsklassen: "Expositionsklassen nach DIN 1045-2 und DIN EN 206: Interaktive Krell-Tabelle mit Grenzwerten für max. w/z-Wert, Mindestdruckfestigkeit, Betondeckung und Umweltfolgen.",
+  expositionsklassen: "Normative Expositionsklassen nach DIN EN 206 und DIN 1045-2 (Tab. F.2.1/F.2.2): Grenzwerte für max. (w/z)eq, Mindestdruckfestigkeit, Mindestzementgehalt, Luftporen und Betondeckung nach EC2.",
   betonpraxis: "Analyse typischer Betonierfehler auf der Baustelle: Kiesnester, Abplatzungen, fehlerhafte Bewehrungsüberdeckung und Lösungswege.",
 
   // Massivbau

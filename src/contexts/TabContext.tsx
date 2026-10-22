@@ -42,6 +42,7 @@ export type TabId =
   | 'mechanische_pruefungen'
   | 'biegezugversuch'
   | 'mischungsberechnung'
+  | 'betonkennwerte'
   | 'frischbeton'
   | 'frischbetontemperatur' 
     | 'hydratation' 

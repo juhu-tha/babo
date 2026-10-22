@@ -383,12 +383,13 @@ export default function Modulstruktur() {
         { id: 'kriechen', label: 'Kriechen & Schwinden', type: 'calculator', description: 'Zeitabhängige viskoelastische Verformung nach EC2.' },
         { id: 'nachbehandlung', label: 'Curing / Nachbehandlung', type: 'standard' },
         { id: 'festbeton', label: 'Festbetoneigenschaften', type: 'standard' },
+        { id: 'betonkennwerte', label: 'Betonkennwerte (EC2)', type: 'calculator', description: 'Druck-, Zugfestigkeit, E-Modul, Schwinden & Kriechen nach DIN EN 1992-1-1.' },
         { id: 'sonderbetone', label: 'UHPC, SVB & Leichtbeton', type: 'standard' },
         { id: 'innovative_werkstoffe', label: '3D-Druck & Carbonbeton', type: 'standard' },
         { id: 'qualitaetssicherung', label: 'QS im Betonwerk', type: 'standard' },
         { id: 'eigenspannungen', label: 'Thermische Eigenspannungen', type: 'calculator', description: 'Simuliert Temperaturgradienten im frühen Alter.' },
         { id: 'zwang', label: 'Zwangspannungen & Rissbildung', type: 'calculator', description: 'Behinderte Längenänderung durch Abkühlung & Schwinden.' },
-        { id: 'expositionsklassen', label: 'Expositionsklassen & Folgen', type: 'calculator', description: 'Krell-Tabelle, DIN 1045-2 / EN 206, max. w/z, Min.-Festigkeit & Betondeckung.' },
+        { id: 'expositionsklassen', label: 'Expositionsklassen (DIN EN 206 / DIN 1045-2)', type: 'calculator', description: 'DIN 1045-2 / DIN EN 206 (Tab. F.2.1/F.2.2): max. w/z, Min.-Festigkeit & Betondeckung.' },
         { id: 'betonpraxis', label: 'Baufehler & Schadensvermeidung', type: 'standard' }
       ]
     },
