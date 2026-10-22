@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { 
   ClipboardCheck, 
@@ -7,20 +9,8 @@ import {
   Factory, 
   GraduationCap, 
   AlertOctagon, 
-  FileText, 
-  Scale, 
-  HelpCircle, 
-  Check, 
-  Download, 
-  RefreshCw, 
-  ChevronDown, 
-  ChevronUp, 
   BookOpen, 
-  FileCheck, 
-  HardHat, 
-  MessageCircle, 
   Award,
-  AlertTriangle,
   Info
 } from 'lucide-react';
 
@@ -68,29 +58,29 @@ const DATA_PLANUNG: TabContent = {
           title: "Schnittstellenprüfung Statik vs. Architektur",
           description: "Abgleich der Tragwerksplanung mit der Ausführungsplanung der Architektur. Passen Deckendurchbrüche, Schachtabmessungen und Stützenpositionen exakt zusammen?",
           important: true,
-          tip: "Kollisionsprüfung im BIM-Modell oder 2D/3D-Plangegenüberstellung durchführen. Schachtmindestmaße zwingend um min. 5 cm Toleranz vergrößern für gedämmte Rohrleitungen nach DIN 1988-200. Schlitze und TGA-Durchbrüche rechtzeitig vom Statiker im Schalplan freigeben lassen!"
+          tip: "Kollisionsprüfung im BIM-Modell oder 2D/3D-Plangegenüberstellung durchführen. Bei Schachtmaßen die Dämmdicken der Rohrleitungen (z. B. nach GEG bzw. DIN 1988-200) und Montagetoleranzen von Anfang an einplanen. Schlitze und TGA-Durchbrüche rechtzeitig vom Statiker im Schalplan freigeben lassen!"
         },
         {
           id: "pl_hoai_2",
           title: "Wassereinwirkungsklasse nach DIN 18533 festlegen",
-          description: "Prüfung des Bodengutachtens auf den Bemessungswasserstand (HGW - Höchster Grundwasserstand). Ist mit drückendem Wasser (W2.1-E) oder mäßiger Feuchte (W1.1-E) zu kalkulieren?",
+          description: "Prüfung des Bodengutachtens auf den Bemessungswasserstand (HGW - Höchster Grundwasserstand). Ist mit Bodenfeuchte und nicht drückendem Wasser (W1-E) oder mit drückendem Wasser (W2.1-E: mäßige Einwirkung, Eintauchtiefe ≤ 3 m) zu rechnen?",
           standard: "DIN 18533-1",
           important: true,
-          tip: "Anforderungshöhe von 15 cm über Geländeoberkante (GOK) für barrierefreie Schwellen darf auf 5 cm reduziert werden, sofern durch Gitterroste und zusätzliche Entwässerungsrinnen nach DIN 18533-1 Abs. 5.1.1.2 ein rückstaufreies Abfließen gesichert ist."
+          tip: "Die Abdichtung wird in der Regel mindestens 15 cm über die Geländeoberfläche geführt. An barrierefreien Übergängen sind geringere Anschlusshöhen nur mit Sondermaßnahmen möglich (z. B. Entwässerungsrinne mit Gitterrost, Gefälle, Überdachung). Details mit DIN 18533-1 bzw. DIN 18531 und der Flachdachrichtlinie abstimmen (Fundstelle manuell prüfen)."
         },
         {
           id: "pl_hoai_3",
           title: "Fugenplanung und WU-Richtlinie abstimmen",
           description: "Planung von Arbeits- und Sollrissfugen bei WU-Betonkonstruktionen (Weiße Wanne). Festlegung der Fugenbänder, Quelldichtungen oder Injektionsschläuche im Plan.",
-          standard: "WU-Richtlinie des DAfStb",
-          tip: "Ausführung nach DBV-Merkblatt 'Fugen'. Bei Arbeitsfugenbändern ist eine allseitige Einbautiefe von min. 5 cm zur nächsten Bewehrungslage zu fordern, um Fehlstellen beim Verdichten zu verhindern."
+          standard: "DAfStb-WU-Richtlinie (2017-12)",
+          tip: "Fugenabdichtungen nach Herstellerangaben bzw. abP einbauen und lagesicher befestigen. Zwischen Fugenband und Bewehrung so viel Platz lassen, dass der Beton einwandfrei verdichtet werden kann; Einbindetiefen nach Systemnachweis."
         },
         {
           id: "pl_hoai_4",
           title: "Normenkonforme Brandschutzanforderungen (DIN EN 13501-2)",
           description: "Festlegung der Feuerwiderstandsklassen von tragenden Bauteilen (z.B. R90, REI120) und Abstimmung mit der geforderten Mindestbauteildicke sowie Betondeckung.",
           standard: "DIN EN 1992-1-2 / DIN 4102-4",
-          tip: "Für R90-Bauteile (Stahlbetonstützen) ist das Mindestachsmaß 'a' nach Tabelle 5.2a der DIN EN 1992-1-2 bei vierseitiger Brandbeanspruchung auf min. 35 mm (mit Mindeststützenbreite b = 300 mm) auszulegen."
+          tip: "Für R90-Stützen hängt das Mindestachsmaß a nach DIN EN 1992-1-2, Tabelle 5.2a, vom Ausnutzungsgrad μ_fi ab: z. B. bei μ_fi = 0,5 und mehrseitiger Brandbeanspruchung b/a = 300/45 mm oder 400/38 mm. Werte stets im Normtext mit NA prüfen."
         }
       ]
     },
@@ -105,14 +95,14 @@ const DATA_PLANUNG: TabContent = {
           description: "Bei Produktvorgaben im öffentlichen Bau muss zwingend der Zusatz 'oder gleichwertig' beigefügt werden. Kriterien für Gleichwertigkeit müssen eindeutig im LV benannt sein.",
           standard: "§ 7 Abs. 2 VOB/A",
           important: true,
-          tip: "Definiere exakte funktionale Parameter (z.B. Bemessungswert der Wärmeleitfähigkeit λ ≤ 0,035 W/(m·K) nach DIN 4108-4, Schalldämm-Maß Rw ≥ 52 dB), an denen eine Gleichwertigkeit gemessen wird."
+          tip: "Definieren Sie exakte funktionale Parameter (z.B. Bemessungswert der Wärmeleitfähigkeit λ ≤ 0,035 W/(m·K) nach DIN 4108-4, Schalldämm-Maß Rw ≥ 52 dB), an denen eine Gleichwertigkeit gemessen wird."
         },
         {
           id: "pl_lv_2",
           title: "Expositionsklassen von Beton exakt ausschreiben",
           description: "Spezifizierung aller relevanten Expositionsklassen (z.B. XC4, XD3, XF4) anstelle von pauschalen Festigkeitsvorgaben. Keine unnötig hohen Klassen wählen, das treibt Zementgehalt und Rissrisiko hoch.",
           standard: "DIN 1045-2 / DIN EN 206",
-          tip: "Für normale erdberührte Gründungskörper ohne betonaggressive Wässer ist XC2 / XF1 ausreichend (Mindestklasse C25/30, max. w/z = 0,60). Ein Ausschreiben von XF4 ohne Tausalzkontakt zieht unnötige Luftporenbildner nach sich."
+          tip: "Für erdberührte Gründungsbauteile ohne betonangreifendes Grundwasser genügt meist XC2 (nach DIN 1045-2:2008 min. C16/20, w/z ≤ 0,75); nur bei Frostbeanspruchung kommt XF1 hinzu (C25/30, w/z ≤ 0,60). Maßgebend ist die strengste Klasse; Werte der Ausgabe 2023-08 prüfen. Ein Ausschreiben von XF4 ohne Tausalzkontakt zieht unnötige Luftporenbildner nach sich."
         },
         {
           id: "pl_lv_3",
@@ -120,13 +110,13 @@ const DATA_PLANUNG: TabContent = {
           description: "Ausschreibung der erforderlichen Nachbehandlungsdauer oder Nachbehandlungsklasse (z.B. NB2, NB3 oder NB4). Dies verhindert Streitigkeiten über die Kosten für Abdeckfolien oder Curing-Mittel.",
           standard: "DIN EN 13670 / DIN 1045-3",
           important: false,
-          tip: "Durchschnittliche Festigkeitsentwicklung beschreiben (z.B. 'mittlere Festigkeitsentwicklung' bei mäßigem Hydratationsgrad). NB2 fordert ein Absichern des Betons vor Austrocknung, bis dieser 35 % der charakteristischen 28-Tage-Druckfestigkeit erreicht hat."
+          tip: "Festigkeitsentwicklung (schnell, mittel, langsam) im LV angeben. Nachbehandlungsklasse 2 nach DIN EN 13670 verlangt einen Schutz vor Austrocknung, bis 35 % der charakteristischen Druckfestigkeit erreicht sind (Klasse 3: 50 %, Klasse 4: 70 %)."
         },
         {
           id: "pl_lv_4",
           title: "Verträglichkeit von Kontaktschichten (z.B. Bitumen & XPS)",
           description: "Sicherstellung, dass sich berührende Materialien chemisch verträglich sind. Lösungsmittelhaltige Bitumenvoranstriche greifen extrudierten Polystyrolschaum (XPS) an!",
-          tip: "Vorschreiben von zweikomponentiger, kunststoffmodifizierter Bitumendickbeschichtung (PMBC - früher KMB) nach DIN 18533 oder einkomponentigen Polyurenthan-Reaktivabdichtungen (FPD), die absolut lösemittelfrei eingestellt sind."
+          tip: "Vorschreiben von zweikomponentiger, kunststoffmodifizierter Bitumendickbeschichtung (PMBC - früher KMB) nach DIN 18533 oder flexiblen polymermodifizierten Dickbeschichtungen (FPD) vor, die lösemittelfrei sind. Verträglichkeit mit XPS durch Herstellerangaben bestätigen lassen."
         }
       ]
     },
@@ -141,21 +131,21 @@ const DATA_PLANUNG: TabContent = {
           description: "Prüfung innovativer Baustoffe (z.B. Carbonbeton, Recycling-Kunststoffe oder neuartige Dämmstoffe) auf baurechtliche Verwendbarkeit. Liegt eine abZ oder ETA (Europäische Technische Bewertung) vor?",
           standard: "LBO / DIBt",
           important: true,
-          tip: "Gibt es für ein Tragwerksprodukt weder abZ noch ETA, muss der Antrag auf vorhabenbezogene Bauartgenehmigung (vBG) min. 6 Monate vor geplantem Verbau bei der Obersten Bauaufsichtsbehörde der Bundeslandes eingereicht werden."
+          tip: "Für Bauprodukte ohne abZ, abP oder ETA ist eine Zustimmung im Einzelfall (ZiE), für nicht geregelte Bauarten eine vorhabenbezogene Bauartgenehmigung (vBG) bei der obersten Bauaufsichtsbehörde des Landes (bzw. der von ihr bestimmten Stelle) zu beantragen. Mehrere Monate Vorlauf und Versuche einplanen."
         },
         {
           id: "pl_bst_2",
           title: "Sichtbetonklasse (SB 1 bis SB 4) festlegen",
           description: "Eindeutige Spezifikation der Sichtbetonklasse nach DBV/VDZ-Sichtbetonmerkblatt. Angabe von Textur, Fugenschnitt, Schalhautklasse, Schalhautalterung und Farbtongleichmäßigkeit im Entwurf.",
-          standard: "DBV/VDZ-Sichtbetonmerkblatt 2015",
-          tip: "SB3 (hohe Anforderungen) und SB4 (besonders hohe Anforderungen) erfordern eine gesonderte Leistungsbeschreibung für Schalungshaut (z.B. sägerau, glatte saugende/nicht-saugende Platten) und zwingend eine ca. 2x2m große Vorab-Erprobungsfläche vor Ort."
+          standard: "DBV/VDZ-Merkblatt Sichtbeton (Ausgabe manuell prüfen)",
+          tip: "SB3 (hohe Anforderungen) und SB4 (besonders hohe Anforderungen) erfordern eine gesonderte Leistungsbeschreibung für Schalungshaut (z.B. sägerau, glatte saugende/nicht-saugende Platten) und eine vertraglich vereinbarte Erprobungsfläche, die Schalung, Einbau und Abmessungen des späteren Bauteils abbildet."
         },
         {
           id: "pl_bst_3",
           title: "Nachhaltigkeitsanforderungen (GWP / LCA) im LV forcieren",
           description: "Vorgabe von CO₂-Grenzwerten (GWP-Wert in kg CO₂-eq/m³) für Tragwerksbetone und Primärbauteile. Spezifikation der EPD-Nachweise.",
           standard: "DGNB / QNG-Schnittstelle / EPD",
-          tip: "Schreiben Sie für massige Innenbauteile CEM III/A-Zemente (Hüttensandzement mit min. 35-65 % Hüttensandgehalt) oder CO₂-reduzierte Zemente (CEM II/B-M oder CEM II-C) vor. Das senkt den Hydratationsgipfel und verringert das GWP um über 40 %."
+          tip: "Für massige Innenbauteile CEM III/A (36–65 % Hüttensand nach DIN EN 197-1) oder klinkerreduzierte Zemente (z. B. CEM II/B-M, CEM II/C-M nach DIN EN 197-5) zulassen. Das senkt die Hydratationswärme und je nach Klinkeranteil das GWP des Zements deutlich; Werte über EPD nachweisen lassen."
         },
         {
           id: "pl_bst_4",
@@ -163,7 +153,7 @@ const DATA_PLANUNG: TabContent = {
           description: "Sicherstellung der Materialverträglichkeit zur Verhinderung von Kontaktkorrosion. Keine ungeschützten Stahlelemente in Verbindung mit gipshaltigen Putzen oder gerbstoffreichen Hölzern (z.B. Eiche).",
           standard: "DIN EN ISO 14713 / DIN 68800",
           important: true,
-          tip: "Stahlbauteile im feuchtigkeitsbelasteten Verbund mit Eichenholz müssen aus Edelstahl A4 (Werkstoff-Nr. 1.4401/1.4404) bestehen. Gerbsäure zerstört normalen feuerverzinkten Stahl (Zinkschichtdicke ≤ 50 µm) innerhalb kürzester Zeit."
+          tip: "Stahlbauteile im feuchtigkeitsbelasteten Verbund mit Eichenholz müssen aus Edelstahl A4 (Werkstoff-Nr. 1.4401/1.4404) bestehen. Gerbsäure und der niedrige pH-Wert von Eiche beschleunigen den Abtrag von Zinküberzügen erheblich."
         }
       ]
     }
@@ -172,15 +162,15 @@ const DATA_PLANUNG: TabContent = {
     {
       title: "Fehlender Hinweis auf Mindestfestigkeit bei Untergründen",
       consequence: "Der Estrichleger bringt den Fließestrich auf einen zu weichen Betonuntergrund auf. Es kommt zu massiven Schalenrissen und Hohlstellen.",
-      avoid: "Immer die geforderte Untergrund-Abreißfestigkeit (z.B. min. 1,5 N/mm² für Industrieböden) im LV festlegen und vor Verlegung prüfen lassen."
+      avoid: "Immer die geforderte Untergrund-Abreißfestigkeit (z. B. Mittelwert ≥ 1,5 N/mm² für Beschichtungen) im LV festlegen und vor Verlegung prüfen lassen."
     },
     {
       title: "Veraltete Normbezüge im LV",
       consequence: "Bieter bieten veraltete Baustoffe oder unzulässige Konstruktionen an. Das LV ist rechtlich angreifbar.",
-      avoid: "Prüfen Sie regelmäßig Ihre Standardleistungsbücher (STLB-Bau) und vermeide das ungeprüfte Kopieren alter Projekt-LVs."
+      avoid: "Prüfen Sie regelmäßig Ihre Standardleistungsbücher (STLB-Bau) und vermeiden Sie das ungeprüfte Kopieren alter Projekt-LVs."
     }
   ],
-  professionalTip: "Erstellen Sie am Ende von Phase 3 eine exakte Schnittstellen-Matrix aller beteiligten Planer (Tragwerk, TGA, Bauphysik, Brandschutz) und lassen Sie diese schriftlich vom Bauherrn freigeben. Nachträgliche geometrische Änderungen an Rohbauteilen kosten im Schnitt das Fünffache der ursprünglichen Planungskosten!"
+  professionalTip: "Erstellen Sie am Ende von Phase 3 eine exakte Schnittstellen-Matrix aller beteiligten Planer (Tragwerk, TGA, Bauphysik, Brandschutz) und lassen Sie diese schriftlich vom Bauherrn freigeben. Nachträgliche geometrische Änderungen an Rohbauteilen kosten ein Vielfaches einer rechtzeitigen Planungskorrektur."
 };
 
 const DATA_BAULEITUNG: TabContent = {
@@ -198,7 +188,7 @@ const DATA_BAULEITUNG: TabContent = {
         {
           id: "bl_bet_1",
           title: "Lieferscheinkontrolle auf Vollständigkeit",
-          description: "Prüfung: Entspricht der gelieferte Beton exakt der statischen Vorgabe (C-Klasse, Expositionsklassen, Größtkorn, Konsistenz)? Verarbeitungszeit prüfen (max. 90-120 Min ab Abfahrt Werk).",
+          description: "Prüfung: Entspricht der gelieferte Beton exakt der statischen Vorgabe (C-Klasse, Expositionsklassen, Größtkorn, Konsistenz)? Zeitpunkt der ersten Wasserzugabe prüfen: Fahrmischerbeton in der Regel spätestens 90 Min danach entladen (abweichende Vereinbarungen, z. B. mit Verzögerer, beachten).",
           standard: "DIN EN 206 / DIN 1045-2",
           important: true,
           tip: "Lieferscheine lückenlos sammeln und mit Bauteilzuordnung (z.B. 'Decke über 1.OG, Takt 2') im Archiv ablegen. Wichtig für die spätere Konformitätskontrolle!"
@@ -208,14 +198,14 @@ const DATA_BAULEITUNG: TabContent = {
           title: "Nachträgliches Baustellenwasser unterbinden",
           description: "Das illegale Hinzufügen von Wasser zur Verbesserung der Fließfähigkeit erhöht den Wasser-Zement-Wert (w/z) dramatisch und beschädigt Festigkeit, Frostbeständigkeit und Karbonatisierungswiderstand.",
           important: true,
-          tip: "Jeder Liter unberechtigt zugegebenes Wasser erhöht den w/z-Wert der Mischung um ca. 0,02, was die 28-Tage-Zylinderdruckfestigkeit um rund 3 bis 5 N/mm² mindert. Konsistenzänderungen dürfen nur durch zertifizierte Zugabe von Fließmittel (FM) erfolgen."
+          tip: "Bei 300 kg/m³ Zement erhöhen 10 l Wasser je m³ den w/z-Wert um rund 0,03 – das kann die Druckfestigkeit um grob 3 bis 5 N/mm² mindern. Konsistenzanpassungen nur mit Fließmittel nach Vorgabe des Lieferwerks und Dokumentation auf dem Lieferschein."
         },
         {
           id: "bl_bet_3",
           title: "Konsistenzprüfung (Ausbreitversuch)",
           description: "Regelmäßige Durchführung des Ausbreitmaß-Versuchs bei großen Betonagen oder begründetem Verdacht auf geänderte Konsistenz.",
           standard: "DIN EN 12350-5",
-          tip: "Führen Sie den Ausbreitversuch bei der ersten Lieferung eines Bauteils und danach bei jeder 50 m³ Charge durch. Ein Sollwert von F3 entspricht einem Ausbreitmaß von 420 bis 480 mm. Weicht der Ist-Wert um mehr als 30 mm ab, ist der Mischer abzuweisen."
+          tip: "Prüfhäufigkeit nach DIN 1045-3 (Überwachungsklasse): Augenschein bei jeder Lieferung, Prüfung beim ersten Einbringen und in Zweifelsfällen. Klasse F3 entspricht 420 bis 480 mm Ausbreitmaß; liegt der Wert außerhalb der Klasse (Grenzabweichungen nach DIN EN 206), Beton nicht einbauen und Lieferwerk informieren."
         },
         {
           id: "bl_bet_4",
@@ -223,7 +213,7 @@ const DATA_BAULEITUNG: TabContent = {
           description: "Sicherstellung, dass der Beton unmittelbar nach dem Abziehen vor Austrocknung, Wind, Sonne und Frost geschützt wird (Folie, Curing-Lack oder Feuchthalten).",
           standard: "DIN EN 13670 / DIN 1045-3",
           important: true,
-          tip: "Nachbehandlung nach Klasse NB2 (Dauer min. 2 bis 4 Tage je nach Festigkeitsentwicklung des Betons und Außentemperatur) veranlassen. Bei Bauteilkern-Temperaturen unter +5 °C ist die Hydratation gehemmt, hier sind zwingend Thermomatten vorzuschreiben."
+          tip: "Mindestdauer der Nachbehandlung nach DIN 1045-3 abhängig von Festigkeitsentwicklung und Oberflächentemperatur festlegen. Unter +5 °C verlangsamt sich die Hydratation stark – Wärmeschutz (Thermomatten, Einhausung) vorsehen und die Nachbehandlung entsprechend verlängern."
         },
         {
           id: "bl_bet_5",
@@ -231,7 +221,7 @@ const DATA_BAULEITUNG: TabContent = {
           description: "Messung der Betontemperatur (Soll: min. +5 °C, bei Kälte min. +10 °C, max. +30 °C im Sommer) und Überprüfung des Luftporengehalts bei LP-Betonen (Expositionsklassen XF2 / XF4).",
           standard: "DIN EN 12350-7",
           important: true,
-          tip: "Bei Beton mit künstlichen Luftporen (z. B. für Verkehrsflächen oder Brückenkappen) muss der Luftporengehalt sofort am Mischer mit dem 8-Liter-Druckausgleichstopf gemessen werden. Sollwert meist 4,0 bis 6,0 Vol.-%. Unterschreitung führt zu irreparablen Frost-Tausalz-Schäden!"
+          tip: "Bei Beton mit künstlichen Luftporen (z. B. für Verkehrsflächen oder Brückenkappen) muss der Luftporengehalt sofort am Mischer mit dem 8-Liter-Druckausgleichstopf gemessen werden. Der Mindestmittelwert hängt vom Größtkorn ab (z. B. 4,5 Vol.-% bei 16 mm nach DIN 1045-2). Unterschreitung führt zu irreparablen Frost-Tausalz-Schäden!"
         },
         {
           id: "bl_bet_6",
@@ -239,7 +229,7 @@ const DATA_BAULEITUNG: TabContent = {
           description: "Herstellung von Prüfkörpern (Würfel 150 mm oder Zylinder 150/300 mm) zur Festigkeitsüberprüfung im Alter von 28 Tagen (DIN EN 12390-1 und -2).",
           standard: "DIN EN 12390-2",
           important: true,
-          tip: "Gefahr von Scheinergebnissen: Die Würfel müssen nach 2-lagigem Einfüllen und Rütteln/Stochern für die ersten 24 bis 48 Stunden auf der Baustelle geschützt vor Erschütterung und Kälte bei 20 ± 5 °C gelagert werden. Danach sofortiger Transport ins Labor zur feuchten Wasserbadlagerung (20 ± 2 °C)."
+          tip: "Gefahr von Scheinergebnissen: Die Würfel lagern nach dem lagenweisen Verdichten mindestens 16 Stunden, höchstens 3 Tage erschütterungsfrei und geschützt bei 20 ± 5 °C in der Form. Danach Transport ins Labor und Lagerung nach DIN EN 12390-2 (Wasserlagerung 20 ± 2 °C oder Verfahren nach nationalem Anhang)."
         }
       ]
     },
@@ -251,10 +241,10 @@ const DATA_BAULEITUNG: TabContent = {
         {
           id: "bl_bew_1",
           title: "Abstandshalter & Mindestbetondeckung",
-          description: "Kontrolle der verlegten Abstandshalter (Spacers) für die untere, obere und seitliche Bewehrung. Richtige Anzahl (Richtwert: min. 4 Stk/m² bei Decken) und Materialstärke.",
-          standard: "DBV-Merkblatt 'Unterstützungen' / Eurocode 2",
+          description: "Kontrolle der verlegten Abstandshalter (Spacers) für die untere, obere und seitliche Bewehrung. Anzahl und Abstand nach DBV-Merkblatt (abhängig vom Stabdurchmesser) und passende Höhe.",
+          standard: "DBV-Merkblätter 'Abstandhalter' und 'Unterstützungen' / DIN EN 1992-1-1",
           important: true,
-          tip: "Für Sichtbeton oder WU-Bauteile ausschließlich Faserzement- oder Kunststoff-Einzelabstandshalter einsetzen. Die Betondeckung c_nom (meist c_min + 10 mm Toleranz) muss am nackten Stahl mit der Prüflehre nachgemessen und dokumentiert werden!"
+          tip: "Für Sichtbeton oder WU-Bauteile ausschließlich Faserzement- oder Kunststoff-Einzelabstandshalter einsetzen. Die Betondeckung c_nom = c_min + Δc_dev (in Deutschland i. d. R. Δc_dev = 15 mm, bei XC1 10 mm) muss am verlegten Stahl mit der Prüflehre nachgemessen und dokumentiert werden!"
         },
         {
           id: "bl_bew_2",
@@ -269,13 +259,13 @@ const DATA_BAULEITUNG: TabContent = {
           description: "Prüfung der Stoßbereiche der Bewehrungsmatten und -stäbe. Sind genügend Übergreifungslängen nach Statik-Bewehrungsplan vorhanden (z.B. min. 40-50d)?",
           standard: "DIN EN 1992-1-1 (Eurocode 2)",
           important: true,
-          tip: "Die Mindestübergreifungslänge l_0 ist abhängig vom Stabdurchmesser Ø und der Betonfestigkeitsklasse. Bei einem Stabdurchmesser von 12 mm und gutem Verbundbereich (z.B. Decke unten) liegt l_0 in der Regel bei min. 45 bis 55 cm."
+          tip: "Die Übergreifungslänge l_0 hängt von Ø, Betonfestigkeit, Verbundbedingung, Ausnutzung und Stoßanteil ab. Beispiel Ø 12, C25/30, guter Verbund, volle Ausnutzung: l_b,rqd ≈ 48 cm; mit α_6 = 1,4 bis 1,5 ergibt sich l_0 ≈ 68 bis 72 cm. Maßgebend ist der Bewehrungsplan."
         },
         {
           id: "bl_bew_4",
           title: "Einbauteile (Einbautöpfe, Ankerschienen) sichern",
           description: "Kontrolle, ob alle Ankerschienen, Blitzschutzdrähte und TGA-Rohre lagestabil befestigt sind, damit sie beim Rütteln des Betons nicht verrutschen.",
-          tip: "Potentialausgleich und Fundamenterder nach DIN 18015: Der Durchgangswiderstand muss vor dem Betonieren vom Elektrofachbetrieb gemessen und mit einem Prüfprotokoll (Widerstand R < 0,2 Ohm) übergeben werden."
+          tip: "Fundamenterder bzw. Funktionspotentialausgleichsleiter nach DIN 18014: Der Durchgangswiderstand muss vor dem Betonieren vom Elektrofachbetrieb gemessen und mit einem Prüfprotokoll (Widerstand R < 0,2 Ohm) übergeben werden."
         }
       ]
     },
@@ -288,7 +278,7 @@ const DATA_BAULEITUNG: TabContent = {
           id: "bl_rec_1",
           title: "Lückenloses Bautagebuch führen",
           description: "Tägliche Erfassung von: Wetter (Temperatur min/max zur Beurteilung von Frost/Hitzeeinfluss), Mannschaftsstärke, eingesetzten Geräten, Baufortschritt und empfangenen Anweisungen.",
-          standard: "HOAI Leistungsbild Lph 8 / DIN 18550",
+          standard: "HOAI 2021 Anlage 10, Lph 8 (Dokumentation des Bauablaufs)",
           important: true,
           tip: "Fotodokumentation mit Datum, Uhrzeit und Bauteilverortung anlegen. Machen Sie Detailfotos von verdeckten Bauteilen (z.B. Fußbodenheizungsrohre, Grundleitungsverlegungen) stets vor dem Verfüllen oder Betonieren."
         },
@@ -298,15 +288,15 @@ const DATA_BAULEITUNG: TabContent = {
           description: "Sobald Vorleistungen anderer Gewerke fehlen oder Pläne unvollständig sind, muss dem Bauherrn unverzüglich eine schriftliche Behinderungsanzeige zugehen.",
           standard: "§ 6 Abs. 1 VOB/B",
           important: true,
-          tip: "Vergiss mündliche Absprachen beim Jour Fixe! Eine Behinderungsanzeige muss zwingend schriftlich ergehen (z.B. per Einschreiben oder Boten). Benennen Sie exakt das betroffene Gewerk und verzögerte Kalendertage im Bauzeitenplan."
+          tip: "Verlassen Sie sich nicht auf mündliche Absprachen beim Jour fixe! Die Behinderungsanzeige muss schriftlich erfolgen und nachweisbar zugehen; ohne Anzeige werden Behinderungen nur berücksichtigt, wenn sie offenkundig sind. Benennen Sie exakt das betroffene Gewerk und verzögerte Kalendertage im Bauzeitenplan."
         },
         {
           id: "bl_rec_3",
           title: "Bedenkenanmeldung (Hinweispflicht)",
-          description: "Wenn Sie als ausführendes Unternehmen bemerken, dass die geplante Konstruktion oder der Untergrund der Bauherrschaft fehlerhaft ist, müssen Sie zwingend schriftlich Bedenken anmelden.",
+          description: "Hat das ausführende Unternehmen Bedenken gegen die vorgesehene Art der Ausführung, gegen gelieferte Stoffe oder Bauteile oder gegen Leistungen anderer Unternehmer, muss es diese dem Auftraggeber unverzüglich, möglichst vor Beginn der Arbeiten, schriftlich mitteilen.",
           standard: "§ 4 Abs. 3 VOB/B",
           important: true,
-          tip: "Die Bedenkenanmeldung muss vor Ausführung der Arbeiten detailliert und für den Bauherrn (auch als Laien) verständlich begründet werden. Wird die Anmeldung unterlassen, haftet der Auftragnehmer vollständig für Folgeschäden."
+          tip: "Die Bedenkenanmeldung muss vor Ausführung der Arbeiten detailliert und für den Bauherrn (auch als Laien) verständlich begründet werden. Wird die Anmeldung unterlassen, haftet der Auftragnehmer für daraus folgende Mängel; mit ordnungsgemäßer Mitteilung wird er nach § 13 Abs. 3 VOB/B frei."
         }
       ]
     },
@@ -318,10 +308,10 @@ const DATA_BAULEITUNG: TabContent = {
         {
           id: "bl_bsp_1",
           title: "Bodenfeuchtemessung (CM-Messung) für Belegreife",
-          description: "Zerstörende Prüfung des Estrichs mittels Calciumcarbid-Methode (CM) vor dem Verlegen von feuchteempfindlichen Bodenbelägen (Parkett, PVC). Die bloße elektronische Widerstandsmessung ist nicht gerichtsverwertbar!",
-          standard: "DIN 18560-1",
+          description: "Zerstörende Prüfung des Estrichs mittels Calciumcarbid-Methode (CM) vor dem Verlegen von feuchteempfindlichen Bodenbelägen (Parkett, PVC). Elektronische Messgeräte liefern nur Orientierungswerte und ersetzen die CM-Messung als Nachweis nicht.",
+          standard: "VOB/C DIN 18365 / DIN 18356; Herstellerangaben",
           important: true,
-          tip: "Belegreife-Grenzwerte bei Zementestrich unbeheizt: ≤ 2,0 CM-%, beheizt: ≤ 1,8 CM-%. Bei Calciumsulfatestrich (Anhydrit) unbeheizt und beheizt: ≤ 0,5 CM-% bzw. ≤ 0,3 CM-%. Die Einwaage beträgt je nach Typ exakt 50 g oder 100 g."
+          tip: "Übliche Belegreife-Grenzwerte bei Zementestrich unbeheizt: ≤ 2,0 CM-%, beheizt: ≤ 1,8 CM-%. Bei Calciumsulfatestrich (Anhydrit) unbeheizt und beheizt: ≤ 0,5 CM-% bzw. ≤ 0,3 CM-%. Die Einwaage beträgt je nach Typ exakt 50 g oder 100 g."
         },
         {
           id: "bl_bsp_2",
@@ -334,15 +324,15 @@ const DATA_BAULEITUNG: TabContent = {
           id: "bl_bsp_3",
           title: "Holzfeuchtemessung bei tragenden Holzbauteilen",
           description: "Messung der Holzfeuchtigkeit mittels Einstech-Widerstandsmessgerät vor dem Einbau oder dem Beplanken mit Dampfbremsen.",
-          standard: "DIN 1052 / DIN EN 1995-1-1",
-          tip: "Die Einbaufeuchte tragender Hölzer im Hochbau darf im Mittel maximal 20 % betragen (optimal < 15 % im beheizten Innenbereich). Zu feuchtes Holz schwindet im Trocknungsprozess unkontrolliert und begünstigt holzzerstörende Pilze."
+          standard: "DIN EN 1995-1-1/NA / DIN 68800-2 / DIN EN 13183-2",
+          tip: "Tragende Hölzer werden mit höchstens 20 % Holzfeuchte eingebaut; für beheizte Innenräume ist eine Einbaufeuchte nahe der späteren Ausgleichsfeuchte (etwa 9–15 %) anzustreben. Zu feuchtes Holz schwindet im Trocknungsprozess unkontrolliert und begünstigt holzzerstörende Pilze."
         },
         {
           id: "bl_bsp_4",
           title: "Lagerungskontrolle empfindlicher Baustoffe",
           description: "Trockene und frostfreie Lagerung im Baustellenlager. Zementsäcke auf Paletten lagern, nicht direkt auf dem feuchten Betonboden. Haltbarkeitsdatum prüfen (Chromatarmut!). Dichtstoffe temperiert lagern.",
           important: true,
-          tip: "Zementfreie Putze und Dispersionskleber weisen Frostempfindlichkeit auf. Trockensackware altert durch Luftfeuchte, die Wirksamkeit der Chromatreduzierer verfällt meist nach 6 Monaten trockener Lagerung (EG-Richtlinie 2003/53/EG)."
+          tip: "Zementfreie Putze und Dispersionskleber weisen Frostempfindlichkeit auf. Trockensackware altert durch Luftfeuchte, die Wirksamkeit des Chromatreduzierers ist nur bis zum auf dem Sack angegebenen Datum gewährleistet (REACH, Anhang XVII Nr. 47)."
         }
       ]
     }
@@ -380,22 +370,22 @@ const DATA_PRODUKTION: TabContent = {
           description: "Überprüfung der Bindemittel-Zertifikate, Feuchtemessung der Gesteinskörnungen (Kompensation des Eigenfeuchte-Wasseranteils in der Dosieranlage), Sieblinienanalyse der Zuschläge.",
           standard: "DIN EN 12620 / DIN 1045-2",
           important: true,
-          tip: "Die Sandfeuchte schwankt witterungsbedingt stark. Bei z. B. 4 % Eigenfeuchtigkeit im 0/2-Sand müssen bei einer Soll-Dosierung von 1000 kg Sand exakt 40 kg freie Feuchte vom Soll-Anmachwasser abgezogen und der Sand-Einwaage zugeschlagen werden (Kompensationsrechner)."
+          tip: "Die Sandfeuchte schwankt witterungsbedingt stark. Bei z. B. 4 % Oberflächenfeuchte (bezogen auf die Trockenmasse) im 0/2-Sand müssen bei einer Soll-Dosierung von 1000 kg Sand exakt 40 kg freie Feuchte vom Soll-Anmachwasser abgezogen und der Sand-Einwaage zugeschlagen werden (Kompensationsrechner)."
         },
         {
           id: "pr_wpk_2",
           title: "Waagen- und Dosierkalibrierung",
-          description: "Regelmäßige Überprüfung und Eichung der Zement-, Wasser- und Zusatzmittelwaagen zur Vermeidung von Fehlmischungen.",
-          standard: "DIN EN ISO 9001 / DIN EN 206 Abs. 9.7",
+          description: "Regelmäßige Überprüfung und Kalibrierung der Zement-, Wasser- und Zusatzmittelwaagen zur Vermeidung von Fehlmischungen.",
+          standard: "DIN EN 206 (Dosiergenauigkeit) / DIN 1045-2",
           important: true,
-          tip: "Die zulässigen Dosiertoleranzen bei Beton herstellen liegen laut DIN EN 206 bei maximal ±3 % für Gesteinskörnungen und Zusatzstoffe sowie maximal ±2 % für gesetzlich überwachte Mengen an Zement, Wasser und Zusatzmitteln (FM, BV)."
+          tip: "Nach DIN EN 206 (Tabelle zur Dosiergenauigkeit) gelten ±3 % für Zement, Wasser, die Gesamtmenge der Gesteinskörnung und Zusatzstoffe über 5 % des Zementgehalts sowie ±5 % für Zusatzmittel und Zusatzstoffe bis 5 % (Werte am Normtext prüfen)."
         },
         {
           id: "pr_wpk_3",
           title: "Probekörper-Herstellung & Prüfung",
           description: "Tägliches Herstellen von Würfeln (150 mm) oder Zylindern, ordnungsgemäße Lagerung im Wasserbad bei (20 ± 2) °C oder in der Feuchtkammer bei ≥ 95 % r. F. (DIN EN 12390-2) und Prüfung nach 28 Tagen.",
           standard: "DIN EN 12390-2",
-          tip: "Die Probekörper müssen für die ersten 20 bis 24 Stunden bei +20 ±5 °C erschütterungsfrei im Werk lagern. Danach werden die Probekörper ausgeschalt, es folgt lückenlose Wasserbad-Lagerung bei exakt +20 ±2 °C bis zum Erreichen des 28. Prüftages."
+          tip: "Die Probekörper lagern mindestens 16 Stunden, höchstens 3 Tage erschütterungsfrei bei 20 ± 5 °C in der Form. Danach Ausschalen und Lagerung bei 20 ± 2 °C im Wasser bzw. nach dem im nationalen Anhang zugelassenen Verfahren bis zur Prüfung."
         }
       ]
     },
@@ -410,7 +400,7 @@ const DATA_PRODUKTION: TabContent = {
           description: "Der Hersteller muss für jedes harmonisierte Bauprodukt eine DoP erstellen, in der die wesentlichen Leistungsmerkmale (z.B. Druckfestigkeit, Wärmeleitfähigkeit) deklariert sind.",
           standard: "BauPVO (EU) 2024/3110 (anwendbar seit 08.01.2026); für bestehende hEN gilt übergangsweise noch VO (EU) 305/2011",
           important: true,
-          tip: "Die Leistungserklärung (DoP) ist dem Abnehmer zwingend elektronisch oder in gedruckter Form bereitzustellen und muss für einen Zeitraum von mindestens 10 Jahren ab dem Zeitpunkt des Inverkehrbringens archiviert werden."
+          tip: "Die Leistungserklärung (nach neuer BauPVO: Leistungs- und Konformitätserklärung) ist dem Abnehmer elektronisch oder auf Papier bereitzustellen; Erklärung und technische Dokumentation sind nach VO (EU) 305/2011 mindestens 10 Jahre aufzubewahren."
         },
         {
           id: "pr_ce_2",
@@ -424,7 +414,7 @@ const DATA_PRODUKTION: TabContent = {
           title: "System-Konformitätsbewertung",
           description: "Kenntnis über das geforderte System der Bewertung und Überprüfung der Leistungsbeständigkeit (System 1+, 1, 2+, 3, 4). Wann ist ein externer Zertifizierer zwingend erforderlich?",
           standard: "Anhang V der BauPVO",
-          tip: "Bei tragenden Bauteilen (z.B. Deckenplatten im System 2+) führt eine notifizierte Stelle (Überwachungsstelle) die Erstinspektion des Werkes sowie die laufende WPK-Drittüberwachung (meist 2x jährlich) durch und stellt das Konformitätszertifikat aus."
+          tip: "Bei tragenden Bauteilen (z.B. Deckenplatten im System 2+) führt eine notifizierte Stelle (Überwachungsstelle) die Erstinspektion des Werkes sowie die laufende Überwachung der WPK (Häufigkeit nach hEN, häufig 1- bis 2-mal jährlich) durch und stellt das Konformitätszertifikat aus."
         }
       ]
     },
@@ -438,13 +428,13 @@ const DATA_PRODUKTION: TabContent = {
           title: "Lunker- und Porenvermeidung",
           description: "Optimierung der Schalungsreinigung und des Schalölauftrags (hauchdünn!). Anpassung der Rüttelenergie und Schütthöhe zur Verhinderung von Luftblasen an der Schalwand.",
           important: false,
-          tip: "Ein exzessiver Auftrag von Trennmittel führt zur Bildung von 'Öltaschen'. Dies verursacht dunkle, mehlige Verfärbungen und unregelmäßige Poren am erhärteten Sichtbeton. Solltrennmittelauftrag: hauchdünne 10 bis 20 ml/m²."
+          tip: "Ein exzessiver Auftrag von Trennmittel führt zur Bildung von 'Öltaschen'. Dies verursacht dunkle, mehlige Verfärbungen und unregelmäßige Poren am erhärteten Sichtbeton. Trennmittel dünn nach Herstellerangabe auftragen (Größenordnung 10 bis 20 ml/m²)."
         },
         {
           id: "pr_ff_2",
           title: "Prävention von Delayed Ettringite Formation (DEF)",
           description: "Bei Wärmebehandlung / Dampfhärtung von Fertigteilen darf die Bauteiltemperatur an keiner Stelle 60-65°C überschreiten, um eine spätere, zerstörende Ettringitbildung im erhärteten Beton bei Feuchtigkeitszutritt zu verhindern.",
-          standard: "DAfStb-Richtlinie Wärmebehandlung",
+          standard: "DAfStb-Richtlinie Wärmebehandlung von Beton",
           important: true,
           tip: "Übersteigt die Kerntemperatur während der Schnellhärtung +60 °C bis +65 °C, zersetzt sich das primäre Ettringit. Unter Feuchtebelastung im Außenbereich dehnt sich dieses später als Sekundärettringit im dichten Betongefüge aus und sprengt dieses (Spättreibschaden)."
         }
@@ -474,8 +464,8 @@ const DATA_PRODUKTION: TabContent = {
           id: "pr_bta_3",
           title: "Substitutionsraten von Recycling-Baustoffen (RC-Splitt)",
           description: "Strikte Einhaltung der maximal zulässigen Substitutionsraten bei der Zumischung von rezyklierten Gesteinskörnungen (Typ 1 und Typ 2 nach DAfStb-Richtlinie) zur Einhaltung der Betoneigenschaften.",
-          standard: "DAfStb-Richtlinie RC-Beton 2010",
-          tip: "Bei Typ 1 (rc-Betonsplitt) sind im Anwendungsbereich der trockenen Innenbauteile (XC1, XC2) bis zu 35 Vol.-% Substitution der groben Gesteinskörnung (>2 mm) ohne vertiefte Eignungsprüfung statisch unbedenklich."
+          standard: "DAfStb-Richtlinie (2010) / DIN 1045-2:2023-08",
+          tip: "Die zulässigen Anteile rezyklierter Gesteinskörnung > 2 mm hängen von Typ, Expositions- und Feuchtigkeitsklasse ab (nach DAfStb-Richtlinie für Typ 1 etwa 25 bis 45 Vol.-%, für Typ 2 etwa 25 bis 35 Vol.-%). Die maßgebende Tabelle der geltenden Regel prüfen; die Erstprüfung bleibt erforderlich."
         },
         {
           id: "pr_bta_4",
@@ -483,7 +473,7 @@ const DATA_PRODUKTION: TabContent = {
           description: "Überwachung der Erhitzungstemperaturen zur Verhinderung einer Alterung (Oxidationsverhärtung) des Bitumens im Lagertank und während des Mischens.",
           standard: "TL Asphalt-StB / DIN EN 12591",
           important: true,
-          tip: "Die Mischtemperatur für Straßenbaubitumen liegt je nach Typ (z.B. 50/70 oder 70/100) exakt bei +140 °C bis +180 °C. Eine thermische Überhitzung von >190 °C führt zur vorzeitigen thermo-oxidativen Alterung und Versprödung des Asphalts."
+          tip: "Die Mischguttemperaturen liegen je nach Bitumensorte (z. B. 70/100, 50/70) etwa zwischen 140 °C und 190 °C; die Höchstwerte nach TL Asphalt-StB sind einzuhalten. Überhitzung beschleunigt die thermo-oxidative Alterung und Versprödung."
         }
       ]
     }
@@ -492,7 +482,7 @@ const DATA_PRODUKTION: TabContent = {
     {
       title: "Mangelhafte Feuchtemessung der Gesteinskörnung",
       consequence: "An regnerischen Tagen wird deutlich zu viel Wasser dosiert. Der w/z-Wert schnellt in die Höhe, die 28-Tage-Druckfestigkeit der Baureihe bricht ein.",
-      avoid: "Sichern Sie die tägliche Kalibrierung der Mikrowellensonden in den Sandbunkern und führe regelmäßige CM-Gegenmessungen durch."
+      avoid: "Sichern Sie die tägliche Kalibrierung der Mikrowellensonden in den Sandbunkern und führen Sie regelmäßig Darrproben (Ofentrocknung) zur Kontrolle durch."
     },
     {
       title: "Ausbleiben der Fremdüberwachung",
@@ -520,7 +510,7 @@ const DATA_KARRIERE: TabContent = {
           title: "Schriftlichkeitsgebot konsequent umsetzen",
           description: "Wichtige Zusagen, Freigaben, Leistungsänderungen oder Mängelabsprachen immer per Mail oder Protokoll schriftlich bestätigen. 'Wer schreibt, der bleibt!'",
           important: true,
-          tip: "Sende nach jedem Telefonat oder Vor-Ort-Gespräch sofort eine kurze Bestätigungs-E-Mail: 'Dokumentation des Gesprächs vom [Datum] um [Uhrzeit]: Zur Absicherung unserer Absprache halte ich fest, dass...'."
+          tip: "Senden Sie nach jedem Telefonat oder Vor-Ort-Gespräch sofort eine kurze Bestätigungs-E-Mail: 'Dokumentation des Gesprächs vom [Datum] um [Uhrzeit]: Zur Absicherung unserer Absprache halte ich fest, dass...'."
         },
         {
           id: "ka_kom_3",
@@ -541,7 +531,7 @@ const DATA_KARRIERE: TabContent = {
           title: "Vollständige PSA (Persönliche Schutzausrüstung)",
           description: "Betreten Sie eine Baustelle niemals ohne: Sicherheitsschuhe S3 (durchtrittsicher), Schutzhelm, Warnweste. Je nach Tätigkeit Schutzbrille, Gehörschutz oder Handschuhe.",
           important: true,
-          tip: "Schnittstelle Baustellenverordnung (BaustellV): Als Bauleiter haften Sie mit für die Einhaltung der Unfallverhütungsvorschriften (UVV). Legen Sie sich für unangemeldete Begehungen immer ein ungenutztes Reserve-Set PSA in den PKW."
+          tip: "Arbeitsschutz: ArbSchG, BaustellV (Pflichten des Bauherrn, SiGeKo) und DGUV Vorschrift 38 'Bauarbeiten'. Als Aufsichtführende/r tragen Sie Verantwortung für die Einhaltung der Unfallverhütungsvorschriften. Legen Sie sich für unangemeldete Begehungen immer ein ungenutztes Reserve-Set PSA in den PKW."
         },
         {
           id: "ka_sec_2",
@@ -555,8 +545,8 @@ const DATA_KARRIERE: TabContent = {
           id: "ka_sec_3",
           title: "Fortbildungspflicht im Blick behalten",
           description: "Planen Sie frühzeitig Ihre fachliche Weiterbildung, um Ihre Karrierechancen zu steigern.",
-          standard: "Ingenieurkammergesetz (BauKaG / LBO)",
-          tip: "Als eingetragener Bauvorlageberechtigter oder Tragwerksplaner sind Sie per Gesetz (z.B. § 3 BauKaG NRW) verpflichtet, jährlich mindestens 8 bis 16 Unterrichtsstunden an staatlich anerkannten Fachfortbildungen nachzuweisen."
+          standard: "Baukammerngesetze der Länder (z. B. BauKaG Bayern)",
+          tip: "Kammermitglieder sind nach den Baukammerngesetzen zur beruflichen Fortbildung verpflichtet; Umfang und Nachweis regeln die Fort- und Weiterbildungsordnungen der jeweiligen Kammer (z. B. Bayerische Ingenieurekammer-Bau). Für Listen wie Tragwerksplaner oder Prüfsachverständige gelten zusätzliche Anforderungen."
         }
       ]
     },
@@ -568,25 +558,25 @@ const DATA_KARRIERE: TabContent = {
         {
           id: "ka_qua_1",
           title: "Der Betontechnologe (Erweiterte betontechnologische Kenntnisse / E-Schein)",
-          description: "Zertifikatslehrgang nach DIN 1045-2 / DBV für die Überwachungsklassen 2 und 3 (ÜK2 / ÜK3). Zwingend vorgeschrieben für Bauleiter bei anspruchsvollen Betonagen (Brücken, Hochhäuser, WU-Konstruktionen, Spannbeton).",
-          standard: "DIN 1045-2 / DBV",
+          description: "Nachweis erweiterter betontechnologischer Kenntnisse. Nach DIN 1045-3 muss bei Beton der Überwachungsklassen 2 und 3 die ständige Betonprüfstelle von einer entsprechend qualifizierten Person (E-Schein) geleitet werden.",
+          standard: "DIN 1045-3 / Ausbildungsbeirat beim DBV",
           important: true,
-          tip: "Voraussetzung: Abgeschlossenes Bauingenieur-Studium oder Baustoffprüfer-Prüfung + 1 Jahr Baustellenerfahrung. Der 2-wöchige Lehrgang an der Ausbildungsbeirat-Stelle (z. B. VDZ / TU München) berechtigt zur betontechnologischen Eigenüberwachung."
+          tip: "Lehrgänge mit Prüfung bieten vom Ausbildungsbeirat anerkannte Bildungsträger an (z. B. Bauindustrie- und Betonverbände, VDZ-Akademie). Zulassungsvoraussetzungen und Dauer beim jeweiligen Träger prüfen."
         },
         {
           id: "ka_qua_2",
           title: "SIVV-Schein (Schützen, Instandsetzen, Verbinden und Verstärken von Beton)",
           description: "Der Goldstandard für Bauleiter und Poliere in der Betoninstandhaltung von Ingenieurbauwerken (ZTV-ING), Parkhäusern und Tiefgaragen.",
-          standard: "DAfStb-Instandsetzungsrichtlinie",
+          standard: "TR Instandhaltung / DAfStb-Instandhaltungs-Richtlinie / ZTV-ING",
           important: true,
-          tip: "Jeder ausführende Fachbetrieb bei der Sanierung von Brücken oder Parkhäusern muss auf der Baustelle zwingend eine Fachkraft mit gültigem SIVV-Schein nachweisen. Der Schein muss alle 3 Jahre durch Fortbildungslehrgänge verlängert werden."
+          tip: "Jeder ausführende Fachbetrieb bei der Sanierung von Brücken oder Parkhäusern muss nach den einschlägigen Regelwerken qualifiziertes Führungspersonal mit SIVV-Schein (Ausbildungsbeirat 'Schutz und Instandsetzung im Betonbau' beim DBV) einsetzen. Zugelassen werden u. a. Bauingenieurinnen und -ingenieure mit mindestens einem Jahr einschlägiger Praxis. Regeln zur Auffrischung beim Ausbildungsbeirat prüfen."
         },
         {
           id: "ka_qua_3",
           title: "Fachingenieur Bauwerkserhaltung & Bauschadensgutachter",
-          description: "Vertiefte Qualifikation im Schnittbereich von ZfP (zerstörungsfreie Prüfung), Bauchemie, Bauphysik und juristischer Beweissicherung (z. B. nach IFS / TÜV / ibi an der THA).",
+          description: "Vertiefte Qualifikation im Schnittbereich von ZfP (zerstörungsfreie Prüfung), Bauchemie, Bauphysik und juristischer Beweissicherung (z. B. Lehrgänge von Kammern, IFS, TÜV oder Hochschulen wie das Zertifikatsprogramm 'Ausbau und Bestand' der THA).",
           standard: "VDI 6200 / WTA",
-          tip: "Experten für Schadensanalytik (z. B. Chloridinduzierte Lochfraßkorrosion, AKR, Holzschwamm) sind bundesweit extrem gefragt und erzielen als Sachverständige und Sonderfachleute Spitzenhonorare."
+          tip: "Experten für Schadensanalytik (z. B. Chloridinduzierte Lochfraßkorrosion, AKR, Holzschwamm) sind bundesweit gefragt, etwa als Sachverständige oder Sonderfachleute."
         }
       ]
     }
@@ -600,7 +590,7 @@ const DATA_KARRIERE: TabContent = {
     {
       title: "Ignorieren von Sicherheitsverstößen auf der Baustelle",
       consequence: "Ein Arbeiter stürzt auf Ihrer Baustelle ohne Absturzsicherung ab. Als verantwortlicher Bauleiter geraten Sie ins Visier der Staatsanwaltschaft.",
-      avoid: "Schaue bei Sicherheitsmängeln niemals weg! Sprechen Sie den Polier oder Sicherheitsbeauftragten (SiGeKo) sofort an und dokumentiere den Vorfall."
+      avoid: "Schauen Sie bei Sicherheitsmängeln niemals weg! Stellen Sie die Gefahr ab, sprechen Sie Polier und – falls bestellt – den SiGeKo sofort an und dokumentieren Sie den Vorfall."
     }
   ],
   professionalTip: "Legen Sie sich in den ersten Wochen ein persönliches Notizbuch (analog oder digital) an. Notieren Sie sich täglich Abkürzungen, Fachbegriffe und Namen von Zulieferern. Das zeigt Initiative, Lernbereitschaft und strukturiertes Arbeiten."
@@ -777,7 +767,7 @@ export default function Praxiswissen() {
                       <strong>Die Folge:</strong> {trap.consequence}
                     </p>
                     <p className="text-sm text-slate-705 leading-relaxed pl-3 border-l-2 border-home-grau/30">
-                      <strong>So vermeide es:</strong> {trap.avoid}
+                      <strong>So vermeiden Sie es:</strong> {trap.avoid}
                     </p>
                   </div>
                 ))}
@@ -803,7 +793,7 @@ export default function Praxiswissen() {
               <div className="space-y-2 text-sm text-slate-800 font-medium">
                 <div className="flex items-start gap-1.5">
                   <span className="text-shiraz font-mono font-bold">•</span>
-                  <span><strong>VOB Teile A, B &amp; C:</strong> Fundament aller Bauverträge in Deutschland.</span>
+                  <span><strong>VOB Teile A, B &amp; C:</strong> Vergabe bei öffentlichen Aufträgen; VOB/B gilt nur bei Vereinbarung.</span>
                 </div>
                 <div className="flex items-start gap-1.5">
                   <span className="text-shiraz font-mono font-bold">•</span>
@@ -811,7 +801,7 @@ export default function Praxiswissen() {
                 </div>
                 <div className="flex items-start gap-1.5">
                   <span className="text-shiraz font-mono font-bold">•</span>
-                  <span><strong>DIN 1045 &amp; EN 206:</strong> Das absolute Regel-Duo der Betonkonstruktion.</span>
+                  <span><strong>DIN EN 206 &amp; DIN 1045-2/-3:</strong> Festlegung, Herstellung und Ausführung von Beton.</span>
                 </div>
               </div>
             </div>
@@ -866,7 +856,122 @@ export default function Praxiswissen() {
 
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      {activeTab === 'planung' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Nennmaß der Betondeckung für ein Außenbauteil"
+        zielGleichung="c_{nom} = c_{min} + \Delta c_{dev},\quad c_{min} = \max(c_{min,b};\ c_{min,dur};\ 10\,\text{mm})"
+        schritte={[
+          { titel: 'Dauerhaftigkeit', erklaerung: 'Außenwand, Expositionsklasse XC4, nach DIN EN 1992-1-1/NA:', formel: 'c_{min,dur} = 25\\,\\text{mm}' },
+          { titel: 'Verbund', erklaerung: 'Stabdurchmesser 12 mm:', formel: 'c_{min} = \\max(12;\\ 25;\\ 10) = 25\\,\\text{mm}' },
+          { titel: 'Vorhaltemaß', erklaerung: 'In Deutschland in der Regel 15 mm:', formel: 'c_{nom} = 25 + 15 = 40\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="c_nom gehört in Ausschreibung und Bewehrungsplan; die Abstandhalter werden nach c_nom bestellt. Bei XD- oder XS-Klassen und Brandschutzanforderungen kann ein größerer Wert maßgebend werden."
+        normQuelle="DIN EN 1992-1-1 mit NA, Abschnitt 4.4"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Gleichwertigkeit eines Dämmstoffs im LV prüfen"
+        zielGleichung="R = \frac{d}{\lambda},\quad d_{erf} = R_{soll} \cdot \lambda_{alt}"
+        schritte={[
+          { titel: 'Leitprodukt', erklaerung: 'Ausgeschrieben: 160 mm Dämmung mit λ = 0,035 W/(mK):', formel: 'R_{soll} = \\frac{0{,}160}{0{,}035} = 4{,}57\\,\\text{m}^2\\text{K/W}' },
+          { titel: 'Alternativangebot', erklaerung: 'Angeboten wird ein Produkt mit λ = 0,040 W/(mK):', formel: 'd_{erf} = 4{,}57 \\cdot 0{,}040 = 0{,}183\\,\\text{m}' },
+          { titel: 'Bewertung', erklaerung: 'Gleichwertig nur mit rund 18 cm Dicke – Folgen für Anschlüsse und Fensterlaibung prüfen:', formel: 'd_{erf} \\approx 18\\,\\text{cm} > 16\\,\\text{cm}' }
+        ]}
+        ergebnisHinweis="Gleichwertigkeit wird an den im LV festgelegten Leistungsmerkmalen gemessen (hier Wärmedurchlasswiderstand mit Bemessungswert λ), nicht am Produktnamen."
+        normQuelle="§ 7 Abs. 2 VOB/A; DIN 4108-4"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="px_planung" />
+        </>
+      )}
+      {activeTab === 'bauleitung' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Wirkung unzulässiger Wasserzugabe am Fahrmischer"
+        zielGleichung="(w/z)_{neu} = \frac{w + \Delta w}{z}"
+        schritte={[
+          { titel: 'Soll-Rezeptur', erklaerung: 'z = 300 kg/m³, w = 165 kg/m³:', formel: 'w/z = \\frac{165}{300} = 0{,}55' },
+          { titel: 'Zugabe', erklaerung: 'Der Fahrer gibt 10 l Wasser je m³ zu:', formel: '(w/z)_{neu} = \\frac{175}{300} = 0{,}58' },
+          { titel: 'Bewertung', erklaerung: 'Für XC4 gilt nach DIN 1045-2:2008 ein Höchstwert von 0,60; die Reserve ist fast aufgebraucht:', formel: '0{,}58 \\to 0{,}60' }
+        ]}
+        ergebnisHinweis="Schon kleine Wassermengen verbrauchen die Rezepturreserve und mindern Festigkeit und Dauerhaftigkeit. Konsistenz nur mit Fließmittel nach Vorgabe des Lieferwerks anpassen und dokumentieren."
+        normQuelle="DIN EN 206; DIN 1045-2"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Grundwert der Verankerungslänge bei der Bewehrungsabnahme"
+        zielGleichung="l_{b,rqd} = \frac{\varnothing}{4} \cdot \frac{\sigma_{sd}}{f_{bd}}"
+        schritte={[
+          { titel: 'Verbundspannung', erklaerung: 'C25/30, guter Verbund: f_ctd = 1,8/1,5 = 1,2 N/mm²:', formel: 'f_{bd} = 2{,}25 \\cdot 1{,}0 \\cdot 1{,}0 \\cdot 1{,}2 = 2{,}7\\,\\text{N/mm}^2' },
+          { titel: 'Grundwert', erklaerung: 'Ø 12 mm, volle Ausnutzung σ_sd = 435 N/mm²:', formel: 'l_{b,rqd} = \\frac{12}{4} \\cdot \\frac{435}{2{,}7} = 483\\,\\text{mm}' },
+          { titel: 'Übergreifung', erklaerung: 'Stoßanteil über 50 %, α_6 = 1,5 (übrige Beiwerte 1,0):', formel: 'l_0 = 1{,}5 \\cdot 483 = 725\\,\\text{mm}' }
+        ]}
+        ergebnisHinweis="Bei der Abnahme wird die im Bewehrungsplan angegebene Länge kontrolliert; die Handrechnung dient zur Plausibilisierung. Mäßiger Verbund (obere Lage dicker Decken) erhöht den Wert deutlich."
+        normQuelle="DIN EN 1992-1-1 mit NA, Abschnitte 8.4 und 8.7"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="px_bauleitung" />
+        </>
+      )}
+      {activeTab === 'produktion' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Feuchtekorrektur bei der Sanddosierung"
+        zielGleichung="m_{feucht} = m_{tr}(1 + u),\quad w_{Zugabe} = w_{soll} - u \cdot m_{tr}"
+        schritte={[
+          { titel: 'Feuchte Einwaage', erklaerung: 'Sollmenge trocken 1 000 kg, Oberflächenfeuchte u = 4 %:', formel: 'm_{feucht} = 1\\,000 \\cdot 1{,}04 = 1\\,040\\,\\text{kg}' },
+          { titel: 'Wasser', erklaerung: 'Sollwasser 165 kg; mit dem Sand kommen 40 kg Wasser:', formel: 'w_{Zugabe} = 165 - 40 = 125\\,\\text{kg}' },
+          { titel: 'Fehler ohne Korrektur', erklaerung: 'Würde die Feuchte ignoriert, stiege der w/z-Wert bei z = 300 kg:', formel: '\\frac{165 + 40}{300} = 0{,}68 \\text{ statt } 0{,}55' }
+        ]}
+        ergebnisHinweis="Die Oberflächenfeuchte muss auf die Trockenmasse bezogen und von der Kernfeuchte (Wasseraufnahme) unterschieden werden. Feuchtesonden regelmäßig mit Darrproben kalibrieren."
+        normQuelle="DIN EN 206; DIN EN 1097-5"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Konformitätsnachweis der Druckfestigkeit bei Erstherstellung"
+        zielGleichung="f_{cm} \ge f_{ck} + 4,\quad f_{ci} \ge f_{ck} - 4"
+        schritte={[
+          { titel: 'Ergebnisse', erklaerung: 'C30/37, drei Würfel nach 28 Tagen in N/mm²:', formel: 'f_{c1} = 41,\\ f_{c2} = 39,\\ f_{c3} = 43' },
+          { titel: 'Kriterium 1', erklaerung: 'Mittelwert:', formel: 'f_{cm} = 41{,}0 \\ge 37 + 4 = 41\\ \\checkmark' },
+          { titel: 'Kriterium 2', erklaerung: 'Kleinster Einzelwert:', formel: 'f_{ci,min} = 39 \\ge 37 - 4 = 33\\ \\checkmark' }
+        ]}
+        ergebnisHinweis="Beide Kriterien sind erfüllt, Kriterium 1 aber ohne Reserve. Bei stetiger Herstellung (n ≥ 15) gilt stattdessen f_cm ≥ f_ck + 1,48 σ."
+        normQuelle="DIN EN 206, Konformitätskriterien für die Druckfestigkeit"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="px_produktion" />
+        </>
+      )}
+      {activeTab === 'karriere' && (
+        <>
+      <FormulaDerivationBox
+        title="Beispiel 1: Angebotspreis aus Herstellkosten"
+        zielGleichung="K_{Angebot} = (S_{Herstell} + AGK) \cdot (1 + W_G)"
+        schritte={[
+          { titel: 'Herstellkosten', erklaerung: 'Einzelkosten der Teilleistungen und Baustellengemeinkosten:', formel: 'S_{Herstell} = 100\\,000\\ \\text{€}' },
+          { titel: 'Allgemeine Geschäftskosten', erklaerung: 'Zuschlag 9 %:', formel: 'AGK = 0{,}09 \\cdot 100\\,000 = 9\\,000\\ \\text{€}' },
+          { titel: 'Wagnis und Gewinn', erklaerung: 'Zuschlag 5 %:', formel: 'K = 109\\,000 \\cdot 1{,}05 = 114\\,450\\ \\text{€}' }
+        ]}
+        ergebnisHinweis="Zuschlagssätze sind unternehmensspezifisch und hier Lehrwerte. Wer Nachträge beurteilt, muss die Urkalkulation lesen können."
+        normQuelle="Baubetriebliche Kalkulation (KLR Bau)"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Lohnkosten einer Mauerwerksleistung"
+        zielGleichung="K_L = A \cdot AW \cdot ML"
+        schritte={[
+          { titel: 'Menge', erklaerung: '250 m² Mauerwerk:', formel: 'A = 250\\,\\text{m}^2' },
+          { titel: 'Aufwandswert', erklaerung: '0,8 h/m² (Lehrwert):', formel: 't = 250 \\cdot 0{,}8 = 200\\,\\text{h}' },
+          { titel: 'Mittellohn', erklaerung: '30 €/h (Lehrwert):', formel: 'K_L = 200 \\cdot 30 = 6\\,000\\ \\text{€}' }
+        ]}
+        ergebnisHinweis="Aufwandswerte und Mittellohn stammen aus eigenen Nachkalkulationen; der Vergleich von Soll- und Ist-Stunden im Bautagebuch zeigt früh, ob ein Los aus dem Ruder läuft."
+        normQuelle="Baubetriebliche Kalkulation; Lehrbeispiel"
+      />
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="px_karriere" />
+        </>
+      )}
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 15 Praxiswissen: Normbezüge (DIN 1045-2/-3:2023-08, DIN EN 206, EN 12390-2, DIN 18014, HOAI 2021, VOB/B 2016), Bauvertragsrecht und Qualifikationen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Leistungsbild HOAI', url: 'https://de.wikipedia.org/wiki/Honorarordnung_f%C3%BCr_Architekten_und_Ingenieure#Leistungsbild' },
           { title: 'VOB/B - Vergabe- und Vertragsordnung', url: 'https://de.wikipedia.org/wiki/Vergabe-_und_Vertragsordnung_f%C3%BCr_Bauleistungen' },
@@ -874,20 +979,22 @@ export default function Praxiswissen() {
           { title: 'Betonieren', url: 'https://de.wikipedia.org/wiki/Betonieren' }
         ]}
         literatur={[
-          'Kochendörfer, R.; Liebchen, J. H.; Viering, M. G. (2018): Bau-Projekt-Management: Grundlagen und Vorgehensweisen (5. Auflage, Springer Vieweg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Kochendörfer, B.; Liebchen, J. H.; Viering, M. G. (2018): Bau-Projekt-Management: Grundlagen und Vorgehensweisen (5. Auflage, Springer Vieweg)',
+          'Wendehorst Baustoffkunde. Wiesbaden: Springer Vieweg (aktuelle Auflage)',
           'Schach, R.; Schubert, H. (2019): Baustelleneinrichtung: Handbuch für Planung und Ausführung (Springer Vieweg)',
           'Deutscher Beton- und Bautechnik-Verein E.V. (DBV): DBV-Sammelmappe Merkblätter und Leitfäden'
         ]}
         regelwerke={[
-          { title: 'DIN 1045-3 (Beton, Stahlbeton und Spannbeton - Bauausführung)' },
-          { title: 'DAfStb-Richtlinie Wasserundurchlässige Baukörper aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' },
+          { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton – Bauausführung)' },
+          { title: 'DIN EN 206:2021-06 und DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung)' },
+          { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12' },
+          { title: 'VOB/B 2016 (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)' },
           { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen)' }
         ]}
         formeln={[
           {
-            formel: 't_{\\text{offen}} = t_{\\text{Erstarrungsbeginn}} - t_{\\text{Mischen}} \\ge 90\\,\\text{min}',
-            erklaerung: 'Verarbeitbarkeitsdauer von Frischbeton nach Zugabe des Anmachwassers: Richtwert für Transport- und Einbauzeit bis zum Rüttelvorgang zur Vermeidung von Kaltfugen.',
+            formel: 't_{\\text{Entladen}} - t_{\\text{Wasserzugabe}} \\le 90\\,\\text{min}',
+            erklaerung: 'Übliche Höchstdauer zwischen erster Wasserzugabe und Entladen bei Fahrmischerbeton; Abweichungen (z. B. mit Verzögerer) müssen vereinbart werden.',
             quelle: 'DIN EN 206 / DIN 1045-3'
           },
           {

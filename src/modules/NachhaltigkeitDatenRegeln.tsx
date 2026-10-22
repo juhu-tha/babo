@@ -3,36 +3,21 @@ import {
   Scale, 
   BarChart3, 
   Globe, 
-  FileText, 
-  Award, 
   ShieldCheck, 
   Building2, 
-  Trash2, 
-  Leaf, 
-  Zap, 
-  TrendingDown, 
   Layers, 
   QrCode, 
-  CheckCircle2, 
-  AlertTriangle, 
-  ExternalLink, 
-  HelpCircle, 
-  Compass, 
   RefreshCw,
-  HardHat,
-  Info,
   BookOpen,
   Library,
   Target,
-  Sparkles,
-  CheckCircle,
   Clock,
   ArrowRight
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { useTabContext } from '@/src/contexts/TabContext';
 
@@ -1361,7 +1346,7 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <strong className="text-xs font-bold text-slate-900">1. Gebäudeenergiegesetz (GEG 2024)</strong>
+                    <strong className="text-xs font-bold text-slate-900">1. Gebäudemodernisierungsgesetz (GModG, vormals GEG 2024)</strong>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">Energie</span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">

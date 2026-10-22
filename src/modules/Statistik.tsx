@@ -16,6 +16,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Scatter, Bar } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -27,7 +28,7 @@ function randomNormal(mean: number, stdDev: number) {
   let u = 0, v = 0;
   while(u === 0) u = Math.random();
   while(v === 0) v = Math.random();
-  let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+  const num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
   return num * stdDev + mean;
 }
 
@@ -1006,7 +1007,7 @@ export default function Statistik() {
           schritte={[
             { titel: 'Gegeben', erklaerung: 'n = 10 Würfelergebnisse, Mittelwert 37,6 N/mm², s = 3,4 N/mm², verdächtiger Höchstwert 46,9 N/mm².', formel: 'x_{ext} = 46{,}9\\,\\text{N/mm}^2' },
             { titel: 'Prüfgröße', erklaerung: 'Abstand des Extremwerts in Vielfachen der Standardabweichung:', formel: 'G = \\frac{46{,}9 - 37{,}6}{3{,}4} = 2{,}74' },
-            { titel: 'Vergleich', erklaerung: 'Kritischer Wert (einseitig, α = 5 %) für n = 10:', formel: 'G = 2{,}74 > G_{krit} = 2{,}18 \;\\Rightarrow\; \\text{auffällig}' }
+            { titel: 'Vergleich', erklaerung: 'Kritischer Wert (einseitig, α = 5 %) für n = 10:', formel: 'G = 2{,}74 > G_{krit} = 2{,}18 \\;\\Rightarrow\\; \\text{auffällig}' }
           ]}
           ergebnisHinweis="Der Test zeigt nur statistische Auffälligkeit. Gestrichen werden darf der Wert erst, wenn eine technische Ursache belegt ist (z. B. Prüffehler, falsch gekennzeichneter Probekörper) – sonst verfälscht das Streichen die Streuung nach unten."
           normQuelle="Grubbs-Test, kritische Werte z. B. nach ISO 5725-2"
@@ -1087,7 +1088,7 @@ export default function Statistik() {
 
               <div className="space-y-3">
                 <label className="text-sm font-bold text-text-main">Anzahl der Prüfwerte (n)</label>
-                <select
+                <select aria-label="Anzahl der Prüfwerte (n)"
                   value={numberOfSamples}
                   onChange={(e) => setNumberOfSamples(Number(e.target.value))}
                   disabled={testStatus === 'running'}
@@ -1104,7 +1105,7 @@ export default function Statistik() {
 
               <div className="space-y-3">
                 <label className="text-sm font-bold text-text-main">Ausreißertest</label>
-                <select
+                <select aria-label="Ausreißertest"
                   value={outlierMethod}
                   onChange={(e) => setOutlierMethod(e.target.value as OutlierMethod)}
                   disabled={testStatus === 'running'}

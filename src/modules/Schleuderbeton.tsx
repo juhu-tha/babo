@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { RefreshCcw, Layers, Settings, Activity, Map, ShieldCheck, ChevronRight } from 'lucide-react';
+import { RefreshCcw, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function Schleuderbeton() {
   return (

@@ -18,6 +18,7 @@ import {
   LineController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
 ChartJS.register(
@@ -307,7 +308,7 @@ export default function Rissbreite() {
             <label className="text-sm font-medium text-text-main">Betonfestigkeitsklasse</label>
             <InfoTooltip text="Auswahl der Standard-Festigkeitsklasse nach EC2. Aktualisiert f_ct,eff und den Elastizitätsmodul E_cm." />
           </div>
-          <select 
+          <select aria-label="Betonfestigkeitsklasse" 
             className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz text-sm"
             value={concreteClass}
             onChange={(e) => handleConcreteChange(e.target.value)}
@@ -336,7 +337,7 @@ export default function Rissbreite() {
               <label className="text-sm font-medium text-text-main">Beanspruchungsart</label>
               <InfoTooltip text="Für Biegung gilt kc = 0,4 mit Act = 0,5 * b * h. Für reinen Zug gilt kc = 1,0 mit Act = b * h." />
             </div>
-            <select 
+            <select aria-label="Beanspruchungsart" 
               className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz text-sm"
               value={beanspruchung}
               onChange={(e) => setBeanspruchung(e.target.value as 'biegung' | 'zug')}

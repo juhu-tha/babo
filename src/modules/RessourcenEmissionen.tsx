@@ -1,5 +1,5 @@
 import React from 'react';
-import { Leaf, Factory, Droplets, Zap, Activity } from 'lucide-react';
+import { Factory, Droplets, Zap, Activity } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export default function RessourcenEmissionen() {
