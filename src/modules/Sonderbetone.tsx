@@ -162,6 +162,30 @@ export default function Sonderbetone() {
         ergebnisHinweis="Rund 22,5 kg/m³ zusätzliches Wasser für die Kernfeuchte der RC-Körnung."
       />
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Hohlraumgehalt von Dränbeton"
+        zielGleichung="V_{Hohlraum} = 1000 - \frac{z}{\rho_z} - \frac{w}{\rho_w} - \frac{g}{\rho_g}"
+        normQuelle="Stoffraumrechnung (Lehrwerte)"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'z = 250,\\; w = 95,\\; g_{4/8} = 1\\,550\\,\\text{kg/m}^3;\\; \\rho_z = 3{,}1,\\; \\rho_g = 2{,}65\\,\\text{kg/dm}^3', erklaerung: 'Einkornbeton ohne Sand, w/z = 0,38.' },
+          { titel: '2. Feststoffvolumen', formel: '80{,}6 + 95{,}0 + 584{,}9 = 760{,}5\\,\\text{dm}^3', erklaerung: 'Zement, Wasser und Gesteinskörnung.' },
+          { titel: '3. Hohlraum', formel: 'V_{Hohlraum} = 1000 - 760{,}5 = 239{,}5\\,\\text{dm}^3 \\approx 24\\,\\%', erklaerung: 'Innerhalb des üblichen Bereichs von 15–25 %.' },
+        ]}
+        ergebnisHinweis="Rund 24 % Hohlraum – Voraussetzung für die Wasserdurchlässigkeit."
+      />
+
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: SVB mit Flugasche – äquivalenter w/z-Wert"
+        zielGleichung="(w/z)_{eq} = \frac{w}{z + 0{,}4 \cdot f_{anr}}, \quad f_{anr} \le 0{,}33 \cdot z"
+        normQuelle="DIN 1045-2 (Anrechnung von Flugasche)"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'z = 380,\\; f = 180,\\; w = 170\\,\\text{kg/m}^3', erklaerung: 'Mehlkornreicher SVB.' },
+          { titel: '2. Anrechenbare Flugasche', formel: 'f_{anr} = \\min(180;\\; 0{,}33 \\cdot 380) = 125\\,\\text{kg/m}^3', erklaerung: 'Der Rest wirkt nur als Füller.' },
+          { titel: '3. Äquivalenter w/z-Wert', formel: '(w/z)_{eq} = \\frac{170}{380 + 0{,}4 \\cdot 125} = \\frac{170}{430} = 0{,}40', erklaerung: 'Ohne Anrechnung: 170/380 = 0,45.' },
+        ]}
+        ergebnisHinweis="(w/z)eq = 0,40."
+      />
+
       <ModulTest moduleId="sonderbetone" />
 
       <ModuleFooter

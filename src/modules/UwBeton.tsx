@@ -31,7 +31,7 @@ export default function UwBeton() {
             Herstellung
           </h3>
           <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Einbau über Contractor-Verfahren (Pumprohr zwingend ständig im frischen Beton eingetaucht lassen), um das Risiko von Entmischung und dem Auswaschen der Zementleim-Paste durch Strömungen zu verhindern.
+            Einbau im Contractor-Verfahren: Das Schüttrohr bleibt ständig in den Frischbeton eingetaucht, damit der Beton nicht durch das Wasser fällt und der Zementleim nicht ausgewaschen wird. Alternativ wird mit eingetauchter Pumpleitung gearbeitet. Mindestzementgehalt nach DIN 1045-2 manuell prüfen.
           </p>
         </div>
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">
@@ -64,7 +64,7 @@ export default function UwBeton() {
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h3 className="font-bold text-text-main text-lg mb-4">Beispielrezeptur (Richtwerte)</h3>
+        <h3 className="font-bold text-text-main text-lg mb-4">Beispielrezeptur (Richtwerte, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>

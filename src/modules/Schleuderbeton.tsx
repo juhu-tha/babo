@@ -64,7 +64,7 @@ export default function Schleuderbeton() {
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h3 className="font-bold text-text-main text-lg mb-4">Beispielrezeptur (Richtwerte)</h3>
+        <h3 className="font-bold text-text-main text-lg mb-4">Beispielrezeptur (Richtwerte, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>

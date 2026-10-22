@@ -42,9 +42,9 @@ export default function SVB() {
             Anstelle des Ausbreitmaßes für Normalbeton, werden spezielle Methoden genutzt, um das Fließverhalten und die Blockierneigung zu prüfen:
           </p>
           <ul className="list-disc list-inside text-sm text-text-main/80 space-y-2">
-            <li><strong>Setzfließmaß (Slump-Flow):</strong> Größer 700 mm. Misst die fließeigenschaften ohne Hindernisze.</li>
-            <li><strong>V-Trichter-Test:</strong> Misst die Auslaufzeit, indiziert Viskosität.</li>
-            <li><strong>J-Ring-Test / L-Kasten:</strong> Prüft die Blockierneigung beim Fließen durch enge Bewehrung.</li>
+            <li><strong>Setzfließmaß (DIN EN 12350-8):</strong> Klassen nach DIN EN 206: SF1 550–650 mm, SF2 660–750 mm, SF3 760–850 mm. Misst die Fließfähigkeit ohne Hindernisse.</li>
+            <li><strong>V-Trichter-Versuch (DIN EN 12350-9):</strong> Misst die Auslaufzeit und kennzeichnet die Viskosität.</li>
+            <li><strong>Blockierring / L-Kasten (DIN EN 12350-12 / -10):</strong> Prüfen die Blockierneigung beim Fließen durch enge Bewehrung.</li>
           </ul>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function SVB() {
 
             
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³)</h3>
+        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -80,7 +80,7 @@ export default function SVB() {
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 180 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Wasser (w/b ~0,40 - 0,45)</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium">Wasser (w/z ≈ 0,45; Wasser/Bindemittel ≈ 0,30)</td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 170 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">

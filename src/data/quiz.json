@@ -7631,5 +7631,65 @@
       "targetModuleLabel": "Sonderbetone"
     },
     "verified": false
+  },
+  {
+    "id": "q_sob_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "SVB",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206; DIN EN 12350-8",
+    "question": "Ein SVB erreicht im Setzfließversuch 720 mm. Welche Klasse liegt vor?",
+    "options": [
+      "SF1",
+      "SF2",
+      "SF3",
+      "F6"
+    ],
+    "correctIdx": 1,
+    "explanation": "SF2 umfasst 660–750 mm (SF1 550–650, SF3 760–850 mm).",
+    "gapAnalysis": {
+      "topic": "SVB",
+      "misconception": "SVB werde mit dem Ausbreittisch (F-Klassen) eingestuft.",
+      "coreRule": "SVB wird über das Setzfließmaß (SF-Klassen) klassifiziert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „SVB“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "Unterwasserbeton",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Contractor-Verfahren",
+    "question": "Worauf kommt es beim Contractor-Verfahren für Unterwasserbeton an?",
+    "options": [
+      "Der Beton wird frei durch das Wasser geschüttet",
+      "Das Schüttrohr bleibt ständig in den Frischbeton eingetaucht",
+      "Der Beton wird nachträglich mit Tauchrüttlern verdichtet",
+      "Es wird nur Beton mit w/z > 0,70 verwendet"
+    ],
+    "correctIdx": 1,
+    "explanation": "Durch das eingetauchte Rohr fällt der Beton nicht durch das Wasser; Entmischung und Auswaschen des Zementleims werden vermieden.",
+    "gapAnalysis": {
+      "topic": "Unterwasserbeton",
+      "misconception": "Unterwasserbeton könne wie Normalbeton eingebracht werden.",
+      "coreRule": "Kein freier Fall durch Wasser; kohäsive Mischung mit Stabilisierer.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Unterwasserbeton“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
   }
 ]
