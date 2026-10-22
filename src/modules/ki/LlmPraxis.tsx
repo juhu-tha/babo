@@ -1095,7 +1095,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
 ## 1. Projektkontext & Rolle
 - Projekt: Neubau Mehrfamilienhaus Augsburg (KfW 40)
 - Rolle: Prüfingenieur für Tragwerksplanung & Bauphysik
-- Geltende Normen: Eurocode 2 (DIN EN 1992-1-1), DIN 1045-2, GEG 2024, VOB/B
+- Geltende Normen: Eurocode 2 (DIN EN 1992-1-1), DIN 1045-2, GModG (vormals GEG), VOB/B
 
 ## 2. Mathematische & Normative Vorgaben
 - Alle Berechnungen mit nachvollziehbaren Formeln in LaTeX: $M_{Ed} = \\frac{q \\cdot L^2}{8}$
@@ -1321,7 +1321,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                   <option value="vob_b">VOB/B §§ 4, 13, 15 (Bauvertragsrecht)</option>
                   <option value="din18533">DIN 18533 (Bauwerksabdichtung)</option>
                   <option value="din_en_206">DIN EN 206 (Konformitätskontrolle)</option>
-                  <option value="geg_dgnb">GEG 2024 &amp; DGNB (Bauphysik &amp; Öko)</option>
+                  <option value="geg_dgnb">GModG &amp; DGNB (Bauphysik &amp; Öko)</option>
                 </select>
               </div>
 

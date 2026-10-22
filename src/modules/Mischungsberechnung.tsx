@@ -2220,8 +2220,8 @@ export default function Mischungsberechnung() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-          { title: 'DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14889' },
+          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)' },
           { title: 'DAfStb-Richtlinie: Stahlfaserbeton:2021-06', url: 'https://www.dafstb.de/' },
           { title: 'DIN EN 197-1:2014-07 & DIN EN 197-5:2021-05 (Zement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197' },
           { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },

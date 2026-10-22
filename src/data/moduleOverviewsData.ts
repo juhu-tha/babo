@@ -340,7 +340,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Herstellung unter werkseigener Produktionskontrolle (WPK), Erstprüfung der Typmuster.',
         iconName: 'Package',
         keyFacts: ['WPK-Handbuch', 'Notifizierte Prüfstelle', 'AVCP-System 1+ bis 4'],
-        normOrFormula: 'EU-BauPVO Nr. 305/2011',
+        normOrFormula: 'BauPVO (EU) 2024/3110 (305/2011 im Übergang)',
         color: 'from-blue-600 to-blue-700'
       },
       {
@@ -1382,16 +1382,16 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       {
         title: 'Die VOB als Spielregel des Bauens',
         description: 'VOB/A regelt die Vergabe, VOB/B das Bauvertragsrecht und VOB/C die Allgemeinen Technischen Vertragsbedingungen (ATV). Bedenkenanmeldungen (§ 4 Abs. 3 VOB/B), Behinderungsanzeigen (§ 6 VOB/B) und Abnahme (§ 12 VOB/B) entscheiden über Millionenrisiken.',
-        takeaway: 'Wer als Bauleiter Fristen versäumt oder Bedenken nicht schriftlich anmeldet, haftet persönlich.'
+        takeaway: 'Wer Fristen versäumt oder Bedenken nicht schriftlich anmeldet, gefährdet Ansprüche und trägt das Mängelrisiko.'
       },
       {
         title: 'Das Bautagebuch als beweissichere Urkunde',
         description: 'Tägliche lückenlose Dokumentation von Wetter (Temperatur, Niederschlag), Personalstärke je Gewerk, Geräteeinsatz, angelieferten Materialien (inkl. Lieferscheinnummern) und Baubehinderungen.',
-        takeaway: 'Was nicht im Bautagebuch steht, hat juristisch auf der Baustelle nie stattgefunden.'
+        takeaway: 'Was nicht dokumentiert ist, lässt sich im Streitfall kaum beweisen.'
       },
       {
         title: 'Schnittstellenkoordination vor Ort',
-        description: 'Bauschäden entstehen fast nie innerhalb eines Gewerks, sondern immer an den Schnittstellen: Rohbauer zu Fensterbauer (Kompriband/Dichtigkeit), Estrichleger zu Fliesenleger (Belegreife/CM-Messung).',
+        description: 'Bauschäden entstehen besonders häufig an den Schnittstellen der Gewerke: Rohbauer zu Fensterbauer (Kompriband/Dichtigkeit), Estrichleger zu Fliesenleger (Belegreife/CM-Messung).',
         takeaway: 'Qualitätsüberwachung bedeutet Schnittstellenüberwachung.'
       }
     ],
@@ -1442,13 +1442,13 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       }
     ],
     interconnections: [
-      { from: 'Vorbereitung', to: 'Überwachung', relation: 'Planfreigabe', causeEffect: 'Ein rechtzeitiger Bedenkenhinweis entlastet den Bauleiter von der Haftung für Planungsfehler des Architekten.' },
+      { from: 'Vorbereitung', to: 'Überwachung', relation: 'Planfreigabe', causeEffect: 'Ein rechtzeitiger schriftlicher Bedenkenhinweis befreit das ausführende Unternehmen von der Mängelhaftung für Planungsfehler (§ 13 Abs. 3 VOB/B).' },
       { from: 'Überwachung', to: 'Dokumentation', relation: 'Beweissicherung', causeEffect: 'Fehlende Abstandhalter müssen vor dem Betonieren fotodokumentiert und korrigiert werden; im Festbeton ist der Fehler irreversibel.' },
       { from: 'Dokumentation', to: 'Abnahme', relation: 'Mängelausschluss', causeEffect: 'Lückenlose Bautagebücher schützen vor unberechtigten Vertragsstrafen bei witterungsbedingtem Bauverzug.' }
     ],
     practicalInsight: {
       title: 'Die Beweislast-Wende der Abnahme',
-      desc: 'Vor der förmlichen Abnahme muss der Unternehmer beweisen, dass sein Werk mangelfrei ist. Nach der Abnahme dreht sich die Beweislast um 180 Grad: Nun muss der Bauherr beweisen, dass ein Mangel vorliegt! Daher niemals voreilig abnehmen.'
+      desc: 'Vor der förmlichen Abnahme muss der Unternehmer beweisen, dass sein Werk mangelfrei ist. Nach der Abnahme dreht sich die Beweislast um 180 Grad: Nun muss der Bauherr beweisen, dass ein Mangel vorliegt (Ausnahme: bei der Abnahme vorbehaltene Mängel). Daher niemals voreilig und ohne Vorbehalt bekannter Mängel abnehmen.'
     }
   }
 };

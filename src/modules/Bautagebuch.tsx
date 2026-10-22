@@ -25,6 +25,8 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 // Define the construction projects
 interface ProjectTemplate {
@@ -123,21 +125,21 @@ const SCENARIOS: Scenario[] = [
     hints: [
       'Geben Sie die Min-Temperatur exakt auf 1,5 °C an, um die Frost-Hydratationswarnung auszulösen.',
       'Wählen Sie im Prüfverfahren-Bereich "Frischbetontemperatur gemessen" und "Ausbreitversuch durchgeführt" aus.',
-      'Füge im Freitext "Auflegen von Thermoplanen (NB4-Dämmung nach DIN)" hinzu.',
-      'Dokumentieren Sie das Verbot des Wasserzusatzes zur Verhinderung von Mikrorissen und Entmischung im Zementleim.'
+      'Ergänzen Sie im Freitext "Auflegen von Thermomatten (Wärmeschutz und Nachbehandlung nach DIN 1045-3)".',
+      'Dokumentieren Sie das Verbot des Wasserzusatzes: Er erhöht den w/z-Wert und mindert Festigkeit und Dauerhaftigkeit.'
     ]
   },
   {
     id: 'claim_conflict',
     name: 'Feuchtigkeitsschutz & Baurecht',
-    title: 'Herausforderung: Stornierung der Reaktivabdichtung (MDS)',
-    description: 'Bei der denkmalgeschützten Mensa-Sanierung fordert der Projektleiter mündlich den Verzicht auf die rissüberbrückende mineralische Dichtungsschlämme (MDS) am feuchtebeanspruchten Sockelbereich wg. Budgetkürzungen. Dies verstößt grob gegen die Abdichtungsnorm DIN 18533.',
+    title: 'Herausforderung: Weglassen der Sockelabdichtung (MDS)',
+    description: 'Bei der denkmalgeschützten Mensa-Sanierung fordert der Projektleiter mündlich den Verzicht auf die rissüberbrückende mineralische Dichtungsschlämme (MDS) am feuchtebeanspruchten Sockelbereich wg. Budgetkürzungen. Das widerspricht den Anforderungen der Abdichtungsnorm DIN 18533 und dem vereinbarten Leistungssoll.',
     date: '28. Juni 2026',
     tempMin: 19.0,
     tempMax: 26.5,
     weatherConditions: ['Sunny'],
     suggestedIncident: 'Mündliche Anweisung von Herrn Schmidt, auf das Abdichtungssystem am Fundamentanschluss zu verzichten bzw. dieses wegzulassen.',
-    objective: 'Tragen Sie die gefahrvolle baustoffliche Abweichung ein. Aktivieren Sie die formale Bedenkenanmeldung gemäß VOB/B § 4 Abs. 3 und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).',
+    objective: 'Tragen Sie die gefahrvolle baustoffliche Abweichung ein. Melden Sie als ausführendes Unternehmen schriftlich Bedenken nach VOB/B § 4 Abs. 3 an und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).',
     hints: [
       'Wer schreibt, der bleibt! Notieren Sie den Namen des Projektleiters Schmidt und die unsachgemäße Anordnung.',
       'Setzen Sie den Haken bei "Bedenkenanmeldung erheben" auf AKTIV.',
@@ -154,11 +156,11 @@ const SCENARIOS: Scenario[] = [
     tempMax: 17.5,
     weatherConditions: ['Cloudy'],
     suggestedIncident: 'Subunternehmer meldet Verzug bei Spezial-Quellvergussmörtel. Labor-Festigkeitsattest steht noch aus. Kranmontage Takt 2 blockiert.',
-    objective: 'Protokollieren Sie die Baustörung. Aktivieren Sie die "Behinderungsanzeige" nach VOB/B § 6, um Verzugsstrafen abzuwenden und fordern Sie das bauaufsichtliche Prüfzeugnis des quellfähigen Zementmörtels an.',
+    objective: 'Protokollieren Sie die Baustörung. Aktivieren Sie die "Behinderungsanzeige" nach VOB/B § 6, um Verzugsstrafen abzuwenden und fordern Sie den Festigkeitsnachweis (Prüfbericht) sowie den Verwendbarkeitsnachweis des Vergussmörtels an.',
     hints: [
       'Grenzfälle im Fertigteilbau sind sicherheitskritisch: Markieren Sie die Behinderungsanzeige auf JA.',
-      'Erfasse im Störungsfeld die genaue Ursache: Ausstehendes Prüfzeugnis für den Quellvergussmörtel.',
-      'Weisen Sie darauf hin, dass ohne Erreichen der Fugen-Druckfestigkeit (70% von C50/60) keine Weiterbelastung erfolgen darf.'
+      'Erfassen Sie im Störungsfeld die genaue Ursache: ausstehender Festigkeitsnachweis für den Vergussmörtel.',
+      'Weisen Sie darauf hin, dass erst nach Erreichen der von der Tragwerksplanung geforderten Fugenfestigkeit (z. B. 70 % von f_ck) weiter belastet werden darf.'
     ]
   }
 ];
@@ -334,7 +336,7 @@ export default function Bautagebuch() {
         checks.push({
           title: "Winterbaumaßnahmen nach DIN 1045-3 bei Betonarbeiten",
           success: true,
-          detail: "Hervorragend! Sie haben trotz Temperaturen unter 5°C adäquate Wärmedämmmaßnahmen und Nachbehandlungsschritte (NB4) dokumentiert."
+          detail: "Hervorragend! Sie haben trotz Temperaturen unter 5 °C angemessene Wärmeschutz- und Nachbehandlungsmaßnahmen nach DIN 1045-3 dokumentiert."
         });
       }
 
@@ -345,7 +347,7 @@ export default function Bautagebuch() {
         checks.push({
           title: "Frischbetontemperatur-Messkontrolle",
           success: false,
-          detail: "Zementhydratation verlangt bei Frischbeton einen Mindesteinbauwert von +5°C. Bei Frostgefahr muss die Zirkeltemperatur gemessen und im Prüfprotokoll eingetragen werden."
+          detail: "Zementhydratation verlangt bei Frischbeton einen Mindesteinbauwert von +5°C. Bei Frostgefahr muss die Frischbetontemperatur gemessen und im Prüfprotokoll eingetragen werden."
         });
       } else {
         checks.push({
@@ -380,9 +382,9 @@ export default function Bautagebuch() {
       if (!bedenken) {
         score -= 30;
         checks.push({
-          title: "Szenario-Ziel: Haftungsausschluss gemäß VOB/B § 4 Abs. 3",
+          title: "Szenario-Ziel: Bedenkenanmeldung nach VOB/B § 4 Abs. 3",
           success: false,
-          detail: "Baurechtliches Risiko! Eine mündliche Weisung des Bauherrn zum Weglassen von Kernabdichtungen MUSS eine sofortige schriftliche 'Bedenkenanmeldung' nach sich ziehen, da Ihr Büro sonst für den entstehenden Feuchtigkeitsschaden voll haftbar gemacht wird."
+          detail: "Baurechtliches Risiko! Eine mündliche Weisung des Bauherrn zum Weglassen von Kernabdichtungen erfordert eine unverzügliche schriftliche Bedenkenanmeldung; ohne sie haftet das ausführende Unternehmen für den entstehenden Mangel (§ 13 Abs. 3 VOB/B)."
         });
       } else if (!bedenkenDetails || bedenkenDetails.trim().length < 15) {
         score -= 15;
@@ -393,7 +395,7 @@ export default function Bautagebuch() {
         });
       } else {
         checks.push({
-          title: "Szenario-Ziel: Haftungsausschluss gemäß VOB/B § 4 Abs. 3",
+          title: "Szenario-Ziel: Bedenkenanmeldung nach VOB/B § 4 Abs. 3",
           success: true,
           detail: "Exzellent abgefangen! Die formale schriftliche Anmeldung von Bedenken schützt Ihr Büro und den Auftraggeber vor kostspieligen Überraschungen und Schimmelbildung."
         });
@@ -419,7 +421,7 @@ export default function Bautagebuch() {
         checks.push({
           title: "Szenario-Ziel: Behinderungsanzeige (VOB/B § 6)",
           success: true,
-          detail: "Sehr klug reagiert. Mit der angemeldeten Behinderungsanzeige schütze das ausführende Gewerk vor Vertragsstrafen wegen unverschuldeter Verzögerung."
+          detail: "Sehr klug reagiert. Die Behinderungsanzeige sichert dem ausführenden Unternehmen die Verlängerung der Ausführungsfristen (§ 6 Abs. 2 VOB/B) und schützt vor Vertragsstrafen wegen nicht zu vertretender Verzögerung."
         });
       }
     }
@@ -431,13 +433,13 @@ export default function Bautagebuch() {
       if (!ranCMTest) {
         score -= 15;
         checks.push({
-          title: "Belegreifebestimmung nach DIN 18560-1",
+          title: "Belegreifeprüfung (CM-Methode, VOB/C DIN 18365/18356)",
           success: false,
           detail: "Achtung! Vor der Belegung eines Estrichs mit feuchteempfindlichen Belägen (Holz/Vinyl) muss eine Calciumcarbid-Messung (CM) zur Restfeuchtebestimmung stattfinden und protokolliert werden."
         });
       } else {
         checks.push({
-          title: "Belegreifebestimmung nach DIN 18560-1",
+          title: "Belegreifeprüfung (CM-Methode, VOB/C DIN 18365/18356)",
           success: true,
           detail: "Klassenbeste Entscheidung: CM-Protokoll erhoben, damit der Parkettleger die Haftung wegen aufsteigender Feuchtigkeit nicht abwälzen kann."
         });
@@ -450,7 +452,7 @@ export default function Bautagebuch() {
       checks.push({
         title: "Dokumentation am Bau - Personalstärke",
         success: false,
-        detail: "Moll-Berichterstattung! Für die Dokumentation der Leistungsfähigkeit und Streitigkeiten müssen alle tätigen Mitarbeiter der Fremdfirmen sowie deren Gewerke täglich namentlich oder nach Qualifikation gezählt werden."
+        detail: "Unvollständige Berichterstattung! Für die Dokumentation der Leistungsfähigkeit und Streitigkeiten müssen alle tätigen Mitarbeiter der Fremdfirmen sowie deren Gewerke täglich namentlich oder nach Qualifikation gezählt werden."
       });
     } else {
       checks.push({
@@ -468,7 +470,7 @@ export default function Bautagebuch() {
     let summaryText = '';
     if (score >= 95) {
       grade = '1.0';
-      summaryText = 'Herausragende Leistung! Ihr Bautagebuch entspricht vollumfänglich den rechtlichen Ansprüchen nach VOB/B, der HOAI Leistungsphase 8 sowie den einschlägigen technischen DIN-Normen. Perfekter Schutz vor Gewährleistungsmängeln.';
+      summaryText = 'Herausragende Leistung! Ihr Bautagebuch entspricht vollumfänglich den rechtlichen Ansprüchen nach VOB/B, der HOAI Leistungsphase 8 sowie den einschlägigen technischen DIN-Normen. Damit ist der Bauablauf beweissicher dokumentiert.';
     } else if (score >= 88) {
       grade = '1.7';
       summaryText = 'Sehr gute Ausarbeitung. Alle sicherheitsrelevanten Witterungsverhältnisse und wesentlichen Bauabschnitte wurden erfasst. Kleinste formale Lücken.';
@@ -722,12 +724,12 @@ export default function Bautagebuch() {
                   </h4>
                   <div className="space-y-3 font-medium text-xs sm:text-sm text-slate-800">
                     <div>
-                      <span className="text-shiraz font-bold">1. Beweislastumkehr im Gewährleistungsprozess:</span>
-                      <p className="text-xs text-slate-700 mt-1">Kann der Bauüberwacher im Streitfall keine Temperaturaufzeichnungen vorlegen, haftet er vollumfänglich für spätere Frostaufbrüche oder Feuchtigkeitsschäden.</p>
+                      <span className="text-shiraz font-bold">1. Beweisnot im Streitfall:</span>
+                      <p className="text-xs text-slate-700 mt-1">Kann die Bauüberwachung keine Temperaturaufzeichnungen vorlegen, fehlt der Nachweis ordnungsgemäßer Überwachung – die Abwehr von Ansprüchen wegen Frost- oder Feuchteschäden wird erheblich erschwert.</p>
                     </div>
                     <div>
                       <span className="text-shiraz font-bold">2. Verlust von Verzugs-Ansprüchen (§ 6 VOB/B):</span>
-                      <p className="text-xs text-slate-700 mt-1">Ohne tagesaktuelle, formelle Behinderungsanzeige verliert der Hauptauftragnehmer jeden Anspruch auf Bauzeitenverlängerung oder Schadensersatz.</p>
+                      <p className="text-xs text-slate-700 mt-1">Ohne schriftliche Behinderungsanzeige werden Behinderungen nur berücksichtigt, wenn sie dem Auftraggeber offenkundig bekannt waren (§ 6 Abs. 1 VOB/B) – Ansprüche auf Bauzeitverlängerung und Ersatz sind dann gefährdet.</p>
                     </div>
                   </div>
                 </div>
@@ -1351,27 +1353,55 @@ export default function Bautagebuch() {
 
       </div>
 
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      <FormulaDerivationBox
+        title="Beispiel 1: Ausschalfrist bei kühler Witterung abschätzen"
+        zielGleichung="t_{Ausschal} \ge t_{min} \cdot f_T,\quad f_T = \frac{30}{\bar T + 10}"
+        schritte={[
+          { titel: 'Bezugswert', erklaerung: 'Planerische Ausschalfrist bei 20 °C (Lehrwert):', formel: 't_{min} = 3\\,\\text{d}' },
+          { titel: 'Temperaturfaktor', erklaerung: 'Mittlere Betontemperatur aus dem Bautagebuch 5 °C:', formel: 'f_T = \\frac{30}{5 + 10} = 2{,}0' },
+          { titel: 'Ausschalfrist', erklaerung: 'Verlängerte Frist:', formel: 't_{Ausschal} \\ge 3 \\cdot 2{,}0 = 6\\,\\text{d}' }
+        ]}
+        ergebnisHinweis="Ohne dokumentierte Temperaturen ist die Verlängerung nicht begründbar. Verbindlich sind die Vorgaben der Tragwerksplanung; im Zweifel die Festigkeit am Bauwerk oder an mitgelagerten Probekörpern prüfen."
+        normQuelle="Reifegradansatz nach Saul; DIN 1045-3:2023-08"
+      />
+      <FormulaDerivationBox
+        title="Beispiel 2: Festigkeitsentwicklung aus dem Lieferschein einordnen"
+        zielGleichung="r = \frac{f_{cm,2}}{f_{cm,28}}"
+        schritte={[
+          { titel: 'Angaben', erklaerung: 'Lieferwerk: mittlere Festigkeit nach 2 Tagen 18 N/mm², nach 28 Tagen 40 N/mm²:', formel: 'r = \\frac{18}{40} = 0{,}45' },
+          { titel: 'Einordnung', erklaerung: 'Grenzen: schnell ≥ 0,50, mittel ≥ 0,30, langsam ≥ 0,15:', formel: '0{,}30 \\le 0{,}45 < 0{,}50 \\Rightarrow \\text{mittel}' },
+          { titel: 'Folge', erklaerung: 'Die Mindestdauer der Nachbehandlung wird mit der Klasse mittel und der Oberflächentemperatur aus der Tabelle der DIN 1045-3 bestimmt:', formel: '\\text{mittel} + \\bar T \\to t_{NB}' }
+        ]}
+        ergebnisHinweis="Festigkeitsentwicklung und Temperatur gehören deshalb in jedes Betonier-Protokoll; sie begründen Nachbehandlungs- und Ausschalfristen."
+        normQuelle="DIN EN 206 / DIN 1045-2; DIN 1045-3:2023-08"
+      />
+
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="px_bautagebuch" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 15 Praxiswissen: Normbezüge (DIN 1045-2/-3:2023-08, DIN EN 206, EN 12390-2, DIN 18014, HOAI 2021, VOB/B 2016), Bauvertragsrecht und Qualifikationen geprüft; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Bautagebuch', url: 'https://de.wikipedia.org/wiki/Bautagebuch' },
           { title: 'Objektüberwachung', url: 'https://de.wikipedia.org/wiki/Objekt%C3%BCberwachung' },
           { title: 'Behinderungsanzeige', url: 'https://de.wikipedia.org/wiki/Behinderungsanzeige' }
         ]}
         literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Wendehorst Baustoffkunde. Wiesbaden: Springer Vieweg (aktuelle Auflage)',
           'Bauleiter-Handbuch: Ausführung, Dokumentation und Abnahme (Werner Verlag)',
-          'Kochendörfer, R.; Liebchen, J. H.; Viering, M. G. (2018): Bau-Projekt-Management (Springer Vieweg)'
+          'Kochendörfer, B.; Liebchen, J. H.; Viering, M. G. (2018): Bau-Projekt-Management (Springer Vieweg)'
         ]}
         regelwerke={[
-          { title: 'VOB/B § 4 Abs. 1 & § 6 (Ausführung und Behinderung)', url: 'https://www.gesetze-im-internet.de/' },
-          { title: 'HOAI Honorarordnung (Leistungsphase 8: Bauüberwachung)' },
-          { title: 'DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Bauausführung)' }
+          { title: 'VOB/B 2016 § 4 Abs. 3 & § 6 (Bedenken und Behinderung)' },
+          { title: 'HOAI 2021, Anlage 10 Lph 8 (Objektüberwachung: Dokumentation des Bauablaufs)', url: 'https://www.gesetze-im-internet.de/hoai_2021/' },
+          { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Bauausführung)' }
         ]}
         formeln={[
           {
             formel: 't_{\\text{Ausschal}} \\ge t_{\\text{min}} \\cdot f_T \\quad \\text{mit} \\quad f_T = \\frac{30}{\\bar{T} + 10}',
-            erklaerung: 'Ausschalfrist in Abhängigkeit von der durchschnittlichen Erhärtungstemperatur des Betons nach DIN 1045-3 zur Vermeidung von Frühverformungen.',
-            quelle: 'Reifegradansatz nach Saul / DIN 1045-3'
+            erklaerung: 'Näherung für die Verlängerung von Ausschalfristen bei niedriger mittlerer Betontemperatur (Bezug 20 °C); verbindlich sind die Vorgaben der Tragwerksplanung und die Festigkeitskontrolle.',
+            quelle: 'Reifegradansatz nach Saul (Näherung)'
           },
           {
             formel: 'r_{\\text{fest}} = \\frac{f_{\\text{cm},2}}{f_{\\text{cm},28}} \\implies \\text{Festigkeitsentwicklung: schnell (} \\ge 0{,}50 \\text{), mittel, langsam}',

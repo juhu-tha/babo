@@ -31,7 +31,7 @@ export default function Software() {
               <span className="text-sm text-text-main/70">Leistungsstarkes parametrisches 3D-CAD-System (Open Source). Eignet sich für Konstruktion und Architektur.</span>
             </li>
             <li>
-              <a href="https://blenderbim.org/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline font-bold block">BlenderBIM</a>
+              <a href="https://bonsaibim.org/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline font-bold block">Bonsai (ehem. BlenderBIM)</a>
               <span className="text-sm text-text-main/70">Add-on für Blender zur Erstellung, Bearbeitung und Analyse von IFC-Modellen (OpenBIM).</span>
             </li>
             <li>
@@ -172,7 +172,7 @@ export default function Software() {
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 19650 (Organisation und Digitalisierung von Informationen zu Bauwerken)' },
-          { title: 'VDI 2552 (Building Information Modeling - Grundlagen)', url: 'https://www.vdi.de/' }
+          { title: 'VDI 2552 Blatt 1 (Building Information Modeling – Grundlagen)', url: 'https://www.vdi.de/richtlinien' }
         ]}
         formeln={[
           {

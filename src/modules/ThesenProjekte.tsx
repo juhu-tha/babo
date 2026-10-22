@@ -85,7 +85,7 @@ export default function ThesenProjekte() {
               Thesen &amp; Semesterprojekte
             </h2>
             <p className="text-home-grau text-sm leading-relaxed font-normal">
-              Hier finden Sie Informationen zu Abschlussarbeiten (Bachelor/Master) sowie semesterbegleitenden Projektarbeiten am Institut für Bau und Immobilien (ibi) der THA unter der Betreuung von Prof. Huber.
+              Hier finden Sie Informationen zu Abschlussarbeiten (Bachelor/Master) sowie semesterbegleitenden Projektarbeiten am Institut für Bau und Immobilie (ibi) der THA unter der Betreuung von Prof. Huber.
             </p>
           </div>
           <div className="hidden lg:flex w-16 h-16 bg-off-white border border-home-grau/10 rounded-xl items-center justify-center text-text-main shrink-0">
@@ -224,7 +224,7 @@ export default function ThesenProjekte() {
                 <div>
                   <h4 className="text-sm font-bold text-text-main">Anmeldung &amp; Betreuungsvereinbarung</h4>
                   <p className="text-xs text-home-grau mt-1 leading-relaxed">
-                    Formaler Start durch Anmeldung beim Prüfungsamt der THA. Festlegung des Erst- und Zweitprüfers (z.B. Prof. Huber und ein Praxispartner).
+                    Formaler Start durch Anmeldung beim Prüfungsamt der THA. Festlegung von Erst- und Zweitprüfer:in nach Prüfungsordnung (z. B. Prof. Huber); Praxispartner können die fachliche Betreuung übernehmen.
                   </p>
                 </div>
               </div>
@@ -442,8 +442,8 @@ export default function ThesenProjekte() {
 
       <ModuleFooter 
         weblinks={[
-          { title: 'ibi Augsburg - Institut für Bau und Immobilien (THA)', url: 'https://www.tha.de/ibi' },
-          { title: 'Fakultät für Architektur und Bauwesen - Technische Hochschule Augsburg', url: 'https://www.tha.de/Architektur-und-Bauwesen.html' }
+          { title: 'THA_ibi – Institut für Bau und Immobilie', url: 'https://www.tha.de/ibi' },
+          { title: 'Fakultät für Architektur und Bauwesen - Technische Hochschule Augsburg', url: 'https://www.tha.de/hochschule/fakultaet/ab/' }
         ]}
         wikipedia={[
           { title: 'Wissenschaftliche Arbeit', url: 'https://de.wikipedia.org/wiki/Wissenschaftliche_Arbeit' },
@@ -456,7 +456,7 @@ export default function ThesenProjekte() {
         ]}
         regelwerke={[
           { title: 'Leitfaden zur Anfertigung wissenschaftlicher Abschlussarbeiten der THA', url: 'https://www.tha.de/' },
-          { title: 'Gute wissenschaftliche Praxis (DFG-Leitlinien)', url: 'https://www.dfg.de/' }
+          { title: 'Gute wissenschaftliche Praxis (DFG-Kodex)', url: 'https://www.dfg.de/de/grundlagen-themen/grundlagen-und-prinzipien-der-foerderung/gwp' }
         ]}
         formeln={[
           {

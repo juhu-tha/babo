@@ -1,6 +1,7 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   History, 
   Sparkles, 
@@ -207,16 +208,16 @@ export default function Kuriositaeten() {
                     <BookOpen size={14} className="text-shiraz" /> Rechnerische Abschätzung der Eigenlastentlastung
                   </span>
                   <p className="text-xs text-slate-650">
-                    Die baustatische Bedeutung der stufenweisen Dichtereduction lässt sich durch eine vergleichende Massenermittlung quantifizieren:
+                    Lehrmodell mit vereinfachten Annahmen (Volumen und Dichten gerundet, keine Bauwerksmessung): Wie stark senkt die nach oben leichter werdende Zuschlagstufung die Eigenlast?
                   </p>
                   
                   <div className="bg-white p-4 rounded-lg border border-slate-100 space-y-2 font-mono text-xs">
                     <div className="text-shiraz font-bold">1. REF-MODELL: HOMOGENE DICHTE (BASALT):</div>
-                    <div className="text-slate-600">Gesamtvolumen der Kuppel: V ≈ 4.500 m³</div>
+                    <div className="text-slate-600">Angenommenes Kuppelvolumen: V ≈ 4.500 m³</div>
                     <div className="text-slate-600">Referenzdichte (Basaltbeton): ρ = 2.400 kg/m³</div>
                     <div className="text-slate-800 font-bold">Gesamteigenlast: G = V × ρ = 10.800 t</div>
                     <div className="text-red-650 text-[11px] leading-tight mt-1">
-                      Kritischer mechanischer Belastungszustand: Diese homogene Eigenlast induziert rechnerisch Ringzugspannungen von ca. 1,12 MPa am Schalenfuß. Da die Zugfestigkeit des unbewehrten Opus Caementicium auf f_ctk ≈ 0,80 MPa begrenzt ist, kommt es zum strukturellen Versagen (Bruch).
+                      Mechanischer Hintergrund: In einer Kuppelschale entstehen im unteren Bereich Ringzugkräfte, die der unbewehrte römische Beton kaum aufnehmen kann. Je geringer die Eigenlast im Scheitelbereich, desto kleiner diese Zugkräfte.
                     </div>
 
                     <div className="border-t border-slate-200 my-2 pt-2 text-emerald-800 font-bold">2. IST-MODELL: UNIFORME GRADIENTENSTUFUNG:</div>
@@ -232,7 +233,7 @@ export default function Kuriositaeten() {
                     </div>
                   </div>
                   <p className="text-xs text-slate-650 italic">
-                    Infolge der Gewichtsminimierung im oberen Gewölbebereich reduziert sich die maximale Ringzugspannung auf ein statisch zulässiges Spannungsniveau von &sigma;_θ ≈ 0,56 MPa, wodurch der Zustand der Standsicherheit dauerhaft gewahrt bleibt.
+                    Die Kuppel weist tatsächlich meridionale Risse auf; sie trägt seitdem im Wesentlichen als Folge von Druckbögen auf den massiven Ring. Die leichte Scheitelzone und die Stufenringe am Fuß sind entscheidend dafür, dass sie seit rund 1.900 Jahren steht.
                   </p>
                 </div>
               </div>
@@ -250,7 +251,7 @@ export default function Kuriositaeten() {
                   Rheologische Optimierung zur Hochdruck-Frischbetonförderung am Burj Khalifa
                 </h3>
                 <p className="text-xs text-slate-550 font-mono">
-                  Errichtung: 2008 | Maximale vertikale Pumphöhe: 606 m | Konstruktionswerkstoff: Selbstverdichtender Hochleistungsbeton C80/95
+                  Pumprekord: 2008 | Vertikale Förderhöhe: 606 m (Putzmeister BSA 14000 SHP-D) | Werkstoff: hochfester Pumpbeton
                 </p>
               </div>
             </div>
@@ -269,8 +270,8 @@ export default function Kuriositaeten() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
                   <p><strong>Eingesetzte verfahrens- und werkstofftechnologische Maßnahmen:</strong></p>
                   <ul className="list-disc pl-4 space-y-1 text-slate-650 [list-style-type:square]">
-                    <li><strong>Thermodynamische Steuerung mittels Schuppeneis:</strong> Substitution eines definierten Teiles des Zugabewassers durch kryogenes Schuppeneis, um die Frischbetontemperatur am Austritt des Mischers auf unter 15 °C einzustellen.</li>
-                    <li><strong>Fließmitteloptimierung (Polycarboxylatether, PCE):</strong> Der Einsatz spezieller Fließmittel (ViscoCrete) induziert sterische und elektrostatische Abstoßungskräfte zwischen den Binderpartikeln, was die Fließgrenze minimiert.</li>
+                    <li><strong>Thermodynamische Steuerung mittels Schuppeneis:</strong> Substitution eines definierten Teiles des Zugabewassers durch kryogenes Schuppeneis, um die Frischbetontemperatur trotz hoher Lufttemperaturen deutlich abzusenken; betoniert wurde zudem bevorzugt nachts.</li>
+                    <li><strong>Fließmitteloptimierung (Polycarboxylatether, PCE):</strong> Der Einsatz spezieller PCE-Fließmittel induziert sterische und elektrostatische Abstoßungskräfte zwischen den Binderpartikeln, was die Fließgrenze minimiert.</li>
                   </ul>
                 </div>
               </div>
@@ -281,7 +282,7 @@ export default function Kuriositaeten() {
                     <BookOpen size={14} className="text-shiraz" /> Ermittlung des Arbeitsförderdrucks am Fuss der Steigleitung
                   </span>
                   <p className="text-xs text-slate-650">
-                    Der nominale Gesamtförderdruck setzt sich additiv aus den hydrostatischen und hydrodynamischen Druckverlustanteilen zusammen:
+                    Lehrrechnung (der Reibungsbeiwert ist eine Annahme): Der Förderdruck setzt sich aus hydrostatischem Anteil und Rohrreibung zusammen:
                   </p>
                   
                   <div className="bg-white p-4 rounded-lg border border-slate-100 space-y-2 font-mono text-xs">
@@ -294,7 +295,7 @@ export default function Kuriositaeten() {
                     </div>
                     <div className="text-slate-700 font-bold mt-2">2. Hydrodynamischer Reibungsdruckverlust P_reibung:</div>
                     <div className="text-slate-600">
-                      Reibungsverlustwert der modifizierten Betonmischung im Stahllaufrohr (spez. Δp ≈ 0,11 bar/m):
+                      Angenommener spezifischer Reibungsverlust im Förderrohr (Δp ≈ 0,11 bar/m):
                     </div>
                     <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3">
                       P_reibung ≈ 606 m × 0,11 bar/m = 66,7 bar
@@ -305,7 +306,7 @@ export default function Kuriositaeten() {
                     </div>
                   </div>
                   <p className="text-xs text-slate-650 italic leading-snug">
-                    Die dauerhafte Bewältigung dieses enormen Betriebsspannungszustands erforderte nahtlos gezogene Hochdruck-Stahlleitungen geringster Toleranz sowie die Einhaltung eines engen rheologischen Korridors im Frischbeton (Fließgrenze τ_0 ≈ 100 Pa).
+                    Drücke dieser Größenordnung erfordern Hochdruck-Förderleitungen und eine Betonrezeptur, die über die gesamte Förderzeit pumpbar bleibt.
                   </p>
                 </div>
               </div>
@@ -360,20 +361,20 @@ export default function Kuriositaeten() {
                     <div className="text-shiraz font-bold">THEORETISCHER MASSENVERLUST (UNGESCHÜTZT):</div>
                     <div className="text-slate-650">Eisenfachwerkmasse: m_0 ≈ 7.300 t</div>
                     <div className="text-slate-650">Exponierte Außenfläche: A_exp ≈ 250.000 m²</div>
-                    <div className="text-slate-650">Atmosphärische Korrosionsrate (C3-Klassifizierung): v ≈ 0,12 mm/a</div>
+                    <div className="text-slate-650">Abtragsrate unlegierter Stahl, Kategorie C3 (DIN EN ISO 9223, erstes Jahr): bis ca. 0,05 mm/a</div>
                     
                     <div className="text-slate-700 font-bold border-t pt-2">Schadensausmaß nach 135 Jahren ohne Instandhaltung:</div>
                     <div className="text-red-650 leading-snug">
-                      Kumulierter Abtrag einer Außenwandstärke: Δd = 135 a × 0,12 mm/a = 16,2 mm Abminderung.
-                      Da weite Teile der Gitterträger Flanschstärken von lediglich 8 bis 12 mm aufweisen, wäre eine ungeschützte Struktur bereits rechnerisch eingestürzt.
+                      Lineare Hochrechnung als obere Abschätzung: Δd = 135 a × 0,05 mm/a ≈ 6,8 mm je Oberfläche (tatsächlich nimmt die Rate mit der Zeit ab).
+                      Bei den dünnwandigen Profilen des Fachwerks wäre ein solcher Querschnittsverlust tragwerksrelevant.
                     </div>
 
                     <div className="text-emerald-800 font-bold border-t pt-2">Einfluss zyklischer Oberflächenbeschichtungen:</div>
                     <div className="text-slate-650 leading-snug">
-                      Der Korrosionsschutz wird in einem Zyklus von 7 Jahren manuell erneuert. Die Farbaufträge drosseln im Verbund mit dem Schlackegefüge des Schweißeisens den realen Materialabtrag ab.
+                      Der Anstrich wird etwa alle 7 Jahre von Hand erneuert. Er ist – zusammen mit dem Schlackegefüge des Schweißeisens – der Hauptgrund für die lange Lebensdauer.
                     </div>
                     <div className="text-emerald-700 font-bold text-[11px] leading-tight mt-1">
-                      Effektive reale Korrosionsschwindung: v_eff &lt; 0,001 mm/a!
+                      Fazit: Regelmäßige Instandhaltung des Korrosionsschutzes ist wirksamer als jede Werkstoffreserve.
                     </div>
                   </div>
                 </div>
@@ -392,7 +393,7 @@ export default function Kuriositaeten() {
                   Tragwerksverhalten und Formfindung weitgespannter Seilnetztragwerke am Olympiadach München
                 </h3>
                 <p className="text-xs text-slate-550 font-mono">
-                  Baujahr: 1972 | Architekt: Frei Otto | Tragwerkstraining: Antiklastisch gekrümmtes Seilnetzsystem
+                  Baujahr: 1972 | Entwurf: Behnisch &amp; Partner mit Frei Otto; Tragwerksplanung: Leonhardt und Andrä | Tragsystem: antiklastisch gekrümmtes Seilnetz
                 </p>
               </div>
             </div>
@@ -435,14 +436,14 @@ export default function Kuriositaeten() {
                     </div>
                     <div className="text-slate-750 font-bold mt-2">2. Einwirkende Linienlast F_sog an kritischen Randsektionen:</div>
                     <div className="text-slate-600">
-                      Die großflächige Umlenkung der Luftmassen generiert vertikale Windsogspannungen. An den Einflussflächen führt dies zu folgenden berechneten Lastspitzen pro Randmeter:
+                      Lehrrechnung mit angenommener Einflussbreite von 38,5 m (ohne Druckbeiwerte):
                     </div>
                     <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       F_sog ≈ q × L_einfluß = 0,69 kN/m² × 38,5 m = 26,6 kN/m
                     </div>
                   </div>
                   <p className="text-xs text-slate-650 italic leading-snug">
-                    Die dauerhafte Schwingungsdämpfung dieser aerodynamischen Hubkräfte wird über eine permanente Seilnetz-Betriebsvorspannung von ca. 120 kN pro Strang sichergestellt. Dies schützt die flächigen Acrylglaselemente wirksam vor Zerstörung durch unzulässige Biegeverformungen an den Festpunkten.
+                    Die Vorspannung des Seilnetzes verhindert, dass Seile unter Windsog schlaff werden, und begrenzt Verformungen und Schwingungen – wichtig für die punktgehaltenen Acrylglasplatten der Eindeckung.
                   </p>
                 </div>
               </div>
@@ -479,7 +480,7 @@ export default function Kuriositaeten() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
                   <p><strong>Rissüberbrückungsverhalten mittels Mikrostahlfaser-Dispersionsbewehrung:</strong></p>
                   <p className="text-[11px] text-slate-650 leading-relaxed font-sans">
-                    Da UHPC infolge des dichten Werkstoffgefüges ein ausgeprägtes sprödes Versagensverhalten aufweist, ist die Zugabe einer dispersen Faserbewehrung (ca. 2,0 bis 3,5 Vol.-% hochzugfeste Mikrostahlfasern) zur Duktilitätssteigerung erforderlich. Bei Rissentstehung aktivieren sich die Reibungs- und Verankerungskräfte der Fasern an den Bruchflanken, wodurch ein quasiduktiles Nachrisszugsverhalten erzielt wird.
+                    Da UHPC infolge des dichten Werkstoffgefüges ein ausgeprägtes sprödes Versagensverhalten aufweist, ist die Zugabe einer dispersen Faserbewehrung (üblich etwa 1 bis 3 Vol.-% hochfeste Mikrostahlfasern) zur Duktilitätssteigerung erforderlich. Bei Rissentstehung aktivieren sich die Reibungs- und Verankerungskräfte der Fasern an den Bruchflanken, wodurch ein quasiduktiles Nachrisszugsverhalten erzielt wird.
                   </p>
                 </div>
               </div>
@@ -490,28 +491,28 @@ export default function Kuriositaeten() {
                     <BookOpen size={14} className="text-shiraz" /> Komparative statische Querschnittsbemessung
                   </span>
                   <p className="text-xs text-slate-650">
-                    Mechanische Ermittlung des Traglastverhaltens an einer axial beanspruchten Druckstütze unter einer äußeren Bemessungslast von N_Ed = 5.000 kN:
+                    Vereinfachter Lehrvergleich (nur Betonquerschnitt, ohne Bewehrung und Stabilität) für eine zentrisch gedrückte Stütze mit N_Ed = 5.000 kN:
                   </p>
                   
                   <div className="bg-white p-4 rounded-lg border border-slate-100 space-y-2 font-mono text-xs">
                     <div className="text-shiraz font-bold">1. REF-MODELL: CO-DESIGN NORMALBETON (C30/37):</div>
-                    <div className="text-slate-650">Bemessungswert f_cd ≈ 20,0 MPa (&gamma;_c = 1,50)</div>
+                    <div className="text-slate-650">Bemessungswert f_cd = 0,85 × 30 / 1,5 = 17,0 MPa (DIN EN 1992-1-1/NA)</div>
                     <div className="text-slate-650">Erforderliche geometrische Querschnittsfläche A_req:</div>
                     <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
-                      A = N_Ed / f_cd = 5.000.000 N / 20 N/mm² = 250.000 mm²
+                      A = N_Ed / f_cd = 5.000.000 N / 17 N/mm² ≈ 294.000 mm²
                     </div>
-                    <div className="text-slate-800 font-bold">Erforderlicher Kreisdurchmesser: d_0 ≈ 56 cm</div>
+                    <div className="text-slate-800 font-bold">Erforderlicher Kreisdurchmesser: d_0 ≈ 61 cm</div>
 
-                    <div className="text-emerald-800 font-bold border-t pt-2">2. IST-MODELL: UHPC-EINSATZ (f_ck = 220 MPa):</div>
-                    <div className="text-slate-650">Bemessungswert f_cd ≈ 140,0 MPa (&gamma;_c = 1,15 / erhöhtes QA-Niveau)</div>
+                    <div className="text-emerald-800 font-bold border-t pt-2">2. VERGLEICH: UHPC (f_ck = 150 MPa):</div>
+                    <div className="text-slate-650">Bemessungswert f_cd = 0,85 × 150 / 1,5 = 85,0 MPa (gleiche Beiwerte angenommen; maßgebend ist die DAfStb-Richtlinie für UHFB)</div>
                     <div className="text-slate-650">Erforderliche geometrische Querschnittsfläche A_uhpc:</div>
                     <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
-                      A_uhpc = 5.000.000 N / 140 N/mm² ≈ 35.714 mm²
+                      A_uhpc = 5.000.000 N / 85 N/mm² ≈ 58.800 mm²
                     </div>
-                    <div className="text-emerald-700 font-bold">Erforderlicher Kreisdurchmesser: d_uhpc ≈ 21 cm!</div>
+                    <div className="text-emerald-700 font-bold">Erforderlicher Kreisdurchmesser: d_uhpc ≈ 27 cm</div>
                   </div>
                   <p className="text-xs text-slate-650 italic">
-                    Der Einsatz von UHPC induziert eine Volumenreduktion der lastabtragenden Querschnitte von ca. 85,7%. Das ermöglicht hochpräzise, schlanke Geometrien im Hochbau, erfordert jedoch eine detaillierte Nachweisführung hinsichtlich der elastischen Stabilität (Knickversagen).
+                    Die erforderliche Querschnittsfläche sinkt um rund 80 %. Das ermöglicht hochpräzise, schlanke Geometrien im Hochbau, erfordert jedoch eine detaillierte Nachweisführung hinsichtlich der elastischen Stabilität (Knickversagen).
                   </p>
                 </div>
               </div>
@@ -542,7 +543,7 @@ export default function Kuriositaeten() {
                 <div>
                   <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Verfahrenstechnisches Prinzip des "Heißmischens" (Hot Mixing)</h4>
                   <p className="text-xs text-slate-650">
-                    Die Entstehung dieser reaktiven Gefügemorphologie gründet auf das direkte Einmischen von hochreaktivem ungelöschtem Branntkalk (Caliciumoxid, CaO) in Kombination mit vulkanischem Puzzolanstaub unter stark exothermen Hydratationsbedingungen (Heißmischprozess). Dies verhindert das vollständige Hydratisieren des Kalks während der Erstansteifung und sichert die Einbettung von Calciumdepots.
+                    Die Entstehung dieser reaktiven Gefügemorphologie gründet auf das direkte Einmischen von hochreaktivem ungelöschtem Branntkalk (Calciumoxid, CaO) in Kombination mit vulkanischem Puzzolanstaub unter stark exothermen Hydratationsbedingungen (Heißmischprozess). Dies verhindert das vollständige Hydratisieren des Kalks während der Erstansteifung und sichert die Einbettung von Calciumdepots.
                   </p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
@@ -567,7 +568,7 @@ export default function Kuriositaeten() {
                     <div>
                       <span className="text-slate-700 font-bold block">1. Auflösungsphase am feuchten Rissgrund:</span>
                       <code className="text-[11px] block bg-slate-50 p-1 border rounded text-slate-800 my-1">
-                        CaO + H_2O → Ca(OH)_2 (aq) [Calciumhydroxid-Dissoziation]
+                        CaO + H_2O → Ca(OH)_2 (aq) [Löschen des Kalks]
                       </code>
                     </div>
                     <div>
@@ -579,10 +580,10 @@ export default function Kuriositaeten() {
                     <div className="border-t pt-2 space-y-1">
                       <div className="text-slate-650 font-bold">Wirksamkeitsspektrum der Gefügeselbstheilung:</div>
                       <div className="text-emerald-800 text-[11px]">
-                        Rissbreiten bis zu einer Dimension von <strong>w = 0,5 mm</strong> werden innerhalb eines Expositionszeitraums von 21 bis 28 Tagen wasserdurchmischter Hydratation vollständig mineralisiert.
+                        Im Versuch von Seymour et al. (Science Advances, 2023) waren Risse in heiß gemischten Proben mit Kalkklasten nach etwa <strong>zwei Wochen</strong> wasserdicht verheilt; Vergleichsproben ohne Branntkalk heilten nicht.
                       </div>
                       <div className="text-slate-600 text-[10px] italic leading-tight mt-1">
-                        Zum Vergleich: Die autogene Verschlussgrenze modifizierter Portlandzemente liegt bei maximal w ≈ 0,1 mm, bevor lokale Stofftransportprozesse kollabieren.
+                        Zum Vergleich: Bei üblichem Portlandzementbeton ist eine autogene Selbstheilung nur für sehr feine Risse (Größenordnung 0,1 bis 0,2 mm) und unter Wasserzutritt zu erwarten.
                       </div>
                     </div>
                   </div>
@@ -663,7 +664,7 @@ export default function Kuriositaeten() {
                   Thermisches Beanspruchungsverhalten und Hydratationssteuerung im Massenbeton der Drei-Schluchten-Talsperre
                 </h3>
                 <p className="text-xs text-slate-550 font-mono">
-                  Fertigstellung: 2012 | Gesamtvolumen Massenbeton: 27,2 Mio. m³ | Phänomen: Exotherme Hydratation &amp; aktive Rohrkühlung
+                  Fertigstellung: Staumauer 2006, Gesamtanlage 2012 | Betonvolumen: rund 28 Mio. m³ (manuell prüfen) | Phänomen: Exotherme Hydratation &amp; aktive Rohrkühlung
                 </p>
               </div>
             </div>
@@ -676,14 +677,14 @@ export default function Kuriositaeten() {
                 <div>
                   <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Entstehung kritischer thermischer Kern-Rand-Gradienten</h4>
                   <p className="text-xs text-slate-650">
-                    Überschreitet die Temperaturdifferenz ΔT zwischen dem adiabaten Bauteilkern (oftmals Peaks von über 75 °C) und den kälteren Bauteilrändern den Grenzwert von ΔT_crit ≈ 20 K, kommt es infolge behinderter thermischer Verformungen zur Entstehung von inneren Zwangsspannungen. Diese überschreiten die junge Zugfestigkeit des Betons und rufen tiefe Risse hervor, welche die Dichtigkeit und mechanische Tragfähigkeit der Gewichtsstaumauer gefährden.
+                    Überschreitet die Temperaturdifferenz ΔT zwischen dem adiabaten Bauteilkern (ohne Kühlung deutlich über 60 °C möglich) und den kälteren Bauteilrändern den häufig verwendeten Richtwert von ΔT ≈ 20 K, kommt es infolge behinderter thermischer Verformungen zur Entstehung von inneren Zwangsspannungen. Diese überschreiten die junge Zugfestigkeit des Betons und rufen tiefe Risse hervor, welche die Dichtigkeit und mechanische Tragfähigkeit der Gewichtsstaumauer gefährden.
                   </p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
                   <p><strong>Verfahrenstechnologische Steuerungsmaßnahmen zur Temperaturreduktion:</strong></p>
                   <ul className="list-disc pl-4 space-y-1 text-slate-650 [list-style-type:circle]">
-                    <li><strong>Klinkerreduzierte Bindemittelrezepturen:</strong> Substitution von bis zu 50% des Portlandzementklinkers durch Flugasche und Hüttensand zur Dämpfung der Hydratationsgeschwindigkeit und Kumulativwärmeemissionsrate.</li>
-                    <li><strong>Aktive Bauteilinnenkühlung (Rohrkühlung):</strong> Integration dünnwandiger Kühlschlangen direkt im Bewehrungskorb zur gezielten Wärmeabfuhr während der Hydratationsfrühphase.</li>
+                    <li><strong>Klinkerreduzierte Bindemittelrezepturen:</strong> Ersatz eines großen Teils des Portlandzements durch Flugasche zur Dämpfung der Hydratationsgeschwindigkeit und Kumulativwärmeemissionsrate.</li>
+                    <li><strong>Aktive Bauteilinnenkühlung (Rohrkühlung):</strong> In die Betonierlagen eingelegte Kühlrohre zur gezielten Wärmeabfuhr während der Hydratationsfrühphase.</li>
                   </ul>
                 </div>
               </div>
@@ -718,7 +719,7 @@ export default function Kuriositaeten() {
                     </div>
                   </div>
                   <p className="text-xs text-slate-650 italic">
-                    Die Einspeisung gekühlten Flusswassers in das Verrohrungssystem drosselt diesen adiabatischen Wärmescheitelpunkt um circa 12 bis 15 Kelvin, wodurch der kritische Schwellenwert der Rissbildung sicher unterschritten wird.
+                    Rohrkühlung, gekühlte Ausgangsstoffe und klinkerarme Bindemittel senken die Spitzentemperatur; wie stark, hängt von Lagenhöhe, Rohrabstand und Kühlwassertemperatur ab.
                   </p>
                 </div>
               </div>
@@ -736,7 +737,7 @@ export default function Kuriositaeten() {
                   Geomechanische Spannungszustände und Spritzbetonsicherung im Gotthard-Basistunnel
                 </h3>
                 <p className="text-xs text-slate-550 font-mono">
-                  Eröffnung: 2016 | Gebirgsüberlagerung: bis zu 2.300 m | Geomechanischer Befund: Hohler Felsdruck &amp; Konvergenzabsicherung
+                  Eröffnung: 2016 | Gebirgsüberlagerung: bis zu 2.300 m | Geomechanik: druckhaftes Gebirge &amp; Konvergenzen
                 </p>
               </div>
             </div>
@@ -755,7 +756,7 @@ export default function Kuriositaeten() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
                   <p><strong>Chemische Wirkungsunterschiede modifizierter Beschleunigersysteme:</strong></p>
                   <p className="text-[11px] text-slate-650 leading-relaxed font-sans">
-                    Historisch weit verbreitete, alkalireiche Wasserglas- oder Natriumaluminat-Beschleuniger überführten das Material zwar binnen Sekunden in feste Phasen, drosselten jedoch die langfristige Hydratphasen-Ausbildung (Hydratationsgrad) und somit die 28-Tage-Druckfestigkeit um bis zu 40%. Im Gotthard-Tunnel kamen daher modernere <strong>alkalifreie Erstarrungsbeschleuniger (Sulfate auf Aluminiumbasis AfB)</strong> zum Einsatz. Diese induzieren eine beschleunigte Ettringitbildung im Zementleim, wahren jedoch die langfristige Gefügefestigkeit.
+                    Historisch weit verbreitete, alkalireiche Wasserglas- oder Natriumaluminat-Beschleuniger überführten das Material zwar binnen Sekunden in feste Phasen, drosselten jedoch die langfristige Hydratphasen-Ausbildung (Hydratationsgrad) und somit die Endfestigkeit deutlich; zudem belasten sie Mineure und Grundwasser. Im Gotthard-Tunnel kamen daher modernere <strong>alkalifreie Erstarrungsbeschleuniger (auf Aluminiumsulfatbasis)</strong> zum Einsatz. Diese induzieren eine beschleunigte Ettringitbildung im Zementleim, wahren jedoch die langfristige Gefügefestigkeit.
                   </p>
                 </div>
               </div>
@@ -779,14 +780,14 @@ export default function Kuriositaeten() {
                     </div>
                     <div className="text-slate-700 font-bold mt-2">2. Rechnerisch erforderlicher radialer Stützdruck p_rad:</div>
                     <div className="text-slate-600">
-                      Unter Ansatz des Gewölbeeffekts im umgebenden Gesteinsmassiv muss die Spritzbetonaussteifung circa 5% des primären Spannungszustandes abfangen:
+                      Lehrannahme: Durch die Gewölbewirkung des Gebirges muss der Ausbau nur einen kleinen Bruchteil, hier angenommen 5 %, der Primärspannung aufnehmen:
                     </div>
                     <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       p_rad = 0,05 × 54 MPa = 2,7 MPa
                     </div>
                   </div>
                   <p className="text-xs text-slate-650 italic leading-snug">
-                    Die dauerhafte Bereitstellung dieses Radialstützdrucks erfordert eine ungeschwächte Ausstufung der Betonmatrix. Durch alkalifreie Katalysatoren bleibt das Nadelgerüst des C-S-H-Phasengels intakt, wodurch die Mindestdruckfestigkeiten des verfestigten Bogens (C30/37) gewahrt werden.
+                    Der tatsächliche Ausbauwiderstand ergibt sich aus Gebirgs-Ausbau-Interaktion (Kennlinienverfahren); alkalifreie Beschleuniger helfen, die geplante Spritzbetonfestigkeit zu erreichen.
                   </p>
                 </div>
               </div>
@@ -817,13 +818,13 @@ export default function Kuriositaeten() {
                 <div>
                   <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Puzzolanische Reaktionsinduktion durch hydrothermale Seewassermischung</h4>
                   <p className="text-xs text-slate-650">
-                    Die historische Mischung beruht auf vulkanischer Puzzolanasche in Verbindung mit ungelöschtem Kalkstein. Dringt salzhaltiges Meerwasser kapillar in das Porensystem ein, bewirkt die schwach alkalische Umgebung die chemische Auflösung und Mobilisierung der amorphen silikatischen Vulkanglasphasen.
+                    Die historische Mischung beruht auf vulkanischer Puzzolanasche in Verbindung mit Kalk. Dringt salzhaltiges Meerwasser kapillar in das Porensystem ein, bewirkt die schwach alkalische Umgebung die chemische Auflösung und Mobilisierung der amorphen silikatischen Vulkanglasphasen.
                   </p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
                   <p><strong>Kristallgitterbildung und Porenverriegelung mittels Aluminaten:</strong></p>
                   <p className="text-[11px] text-slate-650 leading-relaxed font-sans">
-                    Der Infiltrationsprozess fördert das thermodynamische Wachstum einer raumfüllenden faserartigen Mineralkomponente: <strong>Aluminium-Tobermorit</strong> (Ca_5Si_5Al(O,OH)_18 · 5H_2O). Dieses nadelförmige Kristallgitter wächst selektiv in bestehende Porenräume ein, dichtet diese schrittweise gegen stofftransportgestützte Infiltrationen ab und steigert die innere Tragstruktur im Verlaufe jahrhundertelanger Alterungsbedingungen.
+                    Der Infiltrationsprozess fördert das thermodynamische Wachstum einer raumfüllenden faserartigen Mineralkomponente: <strong>Aluminium-Tobermorit</strong> und das Zeolithmineral Phillipsit (Jackson et al., American Mineralogist, 2017). Dieses nadelförmige Kristallgitter wächst selektiv in bestehende Porenräume ein, dichtet diese schrittweise gegen stofftransportgestützte Infiltrationen ab und steigert die innere Tragstruktur im Verlaufe jahrhundertelanger Alterungsbedingungen.
                   </p>
                 </div>
               </div>
@@ -834,27 +835,27 @@ export default function Kuriositaeten() {
                     <BookOpen size={14} className="text-shiraz" /> Komparative Degradations- und Verwitterungsanalyse
                   </span>
                   <p className="text-xs text-slate-650 leading-tight">
-                    Vergleich des wirksamen Gefügeabtrags und des Eindringverhaltens im Langfristhorizont unter mariner Wechselzonenexposition (XS3):
+                    Qualitativer Vergleich unter Meerwassereinwirkung (für belastbare Abtragsraten fehlen vergleichbare Langzeitdaten):
                   </p>
                   
                   <div className="bg-white p-4 rounded-lg border border-slate-100 space-y-3 font-mono text-xs">
                     <div>
                       <span className="text-red-650 font-bold block border-b pb-1">1. MODERNES PORTLANDBETONSYS (CEM I):</span>
                       <div className="text-[11px] text-slate-600 leading-normal mt-1">
-                        Aufgrund von Auswaschungsreaktionen des Calciumhydroxids [Ca(OH)_2] und ettringitbedingtem Porensprengdruck liegt die mittlere Verschleißrate bei ca. <strong>0,04 mm/a</strong>.
+                        Auslaugung von Calciumhydroxid [Ca(OH)_2], Sulfatangriff und Chlorideintrag schädigen Beton und Bewehrung; dagegen helfen Expositionsklassen XS, dichter Beton und ausreichende Betondeckung.
                       </div>
                       <div className="text-red-700 font-bold text-[11px] mt-1">
-                        Projizierter Zerstörungsquerschnitt nach 1.000 Jahren Seewasserkontakt: ≈ 40,0 mm
+                        Moderne Bauwerke werden üblicherweise für 50 bis 100 Jahre Nutzungsdauer bemessen.
                       </div>
                     </div>
                     
                     <div className="border-t pt-2">
                       <span className="text-emerald-800 font-bold block border-b pb-1">2. ANTIKES OPUS CAEMENTICIUM (POZZOLAN-KLINKER):</span>
                       <div className="text-[11px] text-slate-600 leading-normal mt-1">
-                        Das Al-Tobermorit-Kompaktgitter verschließt die Infiltrationswege vollständig. Ein stofflicher Gefügeabbau stoppt nach Ausbildung der Oberflächencarbonatisierungsfront.
+                        Die nachträglich gewachsenen Kristalle verzahnen das Gefüge und füllen Poren; der unbewehrte Beton kennt zudem keine Bewehrungskorrosion.
                       </div>
                       <div className="text-emerald-700 font-bold text-[11px] mt-1">
-                        Effektive Verschleißtiefe nach 2.000 Jahren realer mariner Lagerung: &lt; 2,5 mm!
+                        Ergebnis: Hafenbauten sind seit rund 2.000 Jahren erhalten.
                       </div>
                     </div>
                   </div>
@@ -867,14 +868,18 @@ export default function Kuriositaeten() {
       </div>
 
       {/* FOOTER & REFERENCES */}
+      {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <ModulTest moduleId="kuriositaeten" />
+
       <ModuleFooter
+        lastReviewed="Oktober 2026 (AP 16: Fakten und Lehrrechnungen geprüft und als Lehrannahmen gekennzeichnet, Quellen ergänzt; fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
-          { title: 'Pantheon (Baustilkunde)', url: 'https://de.wikipedia.org/wiki/Pantheon_(Rom)' },
-          { title: 'Burj Khalifa Hochleistungsförderung', url: 'https://www.putzmeister.com' },
+          { title: 'Pantheon (Rom)', url: 'https://de.wikipedia.org/wiki/Pantheon_(Rom)' },
+          { title: 'Burj Khalifa', url: 'https://de.wikipedia.org/wiki/Burj_Khalifa' },
           { title: 'Eiffelturm und Puddelstahl-Technik', url: 'https://de.wikipedia.org/wiki/Eiffelturm' },
           { title: 'Olympiastadion München (Zeltdachkonstruktion)', url: 'https://de.wikipedia.org/wiki/Olympiastadion_M%C3%BCnchen#Zeltdachkonstruktion' },
-          { title: 'Ultra-Hochfester Beton (UHPC)' },
-          { title: 'Selbstheilender Beton' },
+          { title: 'Ultrahochfester Beton (UHPC)', url: 'https://de.wikipedia.org/wiki/Ultrahochfester_Beton' },
+          { title: 'Opus caementicium (römischer Beton)', url: 'https://de.wikipedia.org/wiki/Opus_caementicium' },
           { title: 'Stahlbeton (Joseph Monier)', url: 'https://de.wikipedia.org/wiki/Stahlbeton' },
           { title: 'Drei-Schluchten-Talsperre', url: 'https://de.wikipedia.org/wiki/Drei-Schluchten-Talsperre' },
           { title: 'Gotthard-Basistunnel', url: 'https://de.wikipedia.org/wiki/Gotthard-Basistunnel' },
@@ -889,14 +894,14 @@ export default function Kuriositaeten() {
         regelwerke={[
           { title: 'DIN EN 206 / DIN 1045-2' },
           { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Betonbauwerken)' },
-          { title: 'DAfStb-Richtlinie "Massenbauteile aus Beton" (Massenbeton-Wärmeentwicklung)', url: 'https://www.dafstb.de' },
-          { title: 'ÖVBB-Richtlinie "Spritzbeton" (Tunnelbau-Regelwerk)', url: 'https://www.bautechnik.co.at' }
+          { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton', url: 'https://www.dafstb.de' },
+          { title: 'ÖBV-Richtlinie Spritzbeton (Österreichische Bautechnik Vereinigung)', url: 'https://www.bautechnik.pro' }
         ]}
         formeln={[
           {
-            formel: "f = f_0 \\cdot e^{k \\cdot (p_{ideal} - p)}",
-            erklaerung: "Exponentialgleichung zur Korrelation der Beton-Druckfestigkeit in Abhängigkeit von Füllstoffen und Restporendurchmessern.",
-            quelle: "Gefüge-Optimierung im UHPC"
+            formel: "f = f_0 \\cdot e^{-k \\cdot p}",
+            erklaerung: "Festigkeit in Abhängigkeit von der Porosität p (f_0: Festigkeit ohne Poren, k: Materialkonstante) – erklärt den Festigkeitsgewinn durch dichte Packung im UHPC.",
+            quelle: "Porositäts-Festigkeits-Beziehung nach Ryshkewitch"
           },
           {
             formel: "Ca^{2+} + CO_3^{2-} \\rightarrow CaCO_3 \\downarrow",
@@ -909,14 +914,14 @@ export default function Kuriositaeten() {
             quelle: "Thermodynamik massiger Bauteile"
           },
           {
-            formel: "R_{\\text{capacity}} = \\frac{2 \\cdot f_{ck} \\cdot t}{100 \\cdot R}",
-            erklaerung: "Radiale Stützkapazität eines kreisförmigen Spritzbetonbogens der Wandstärke t im Tunnelradius R.",
-            quelle: "Tunnelmechanik und NÖT"
+            formel: "p_R = \\frac{f_{cd} \\cdot t}{R}",
+            erklaerung: "Radialer Widerstand eines dünnen, gleichmäßig gedrückten Spritzbetonrings (Kesselformel; ohne Biegung und Gebirgsinteraktion).",
+            quelle: "Tunnelbau-Grundlagen (Kesselformel)"
           },
           {
-            formel: "Ca_5Si_5Al(O,OH)_{18} \\cdot 5H_2O",
-            erklaerung: "Chemische Strukturformel von Aluminium-Tobermorit, der kristallinen Verriegelungsfaser antiker Seekai-Pozzolane.",
-            quelle: "Stoichiometrie antiker Meeresgefüge"
+            formel: "\\sigma_v = \\gamma \\cdot H",
+            erklaerung: "Vertikale Primärspannung im Gebirge aus Wichte und Überlagerungshöhe.",
+            quelle: "Felsmechanik (Grundlagen)"
           }
         ]}
       />
