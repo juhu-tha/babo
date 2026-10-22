@@ -8,3 +8,8 @@ coverage/
 
 # Build-Ausgabe
 dist/
+
+# Laufzeitdaten / Python
+analytics.json
+__pycache__/
+*.pyc
