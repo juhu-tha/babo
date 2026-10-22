@@ -3,10 +3,9 @@ import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { Bug, Droplets, ShieldCheck, Sun, ArrowRight, BookOpen, Layers, ShieldAlert, Thermometer, Shield } from 'lucide-react';
+import { Bug, Droplets, ShieldCheck, Sun, ArrowRight, BookOpen, Layers, ShieldAlert } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { motion } from 'framer-motion';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
 
 function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {

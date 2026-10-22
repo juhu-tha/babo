@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { ShieldCheck, Server, Database, Cookie, Mail, Lock, UserCheck, AlertTriangle } from 'lucide-react';
+import { ShieldCheck, Server, Database, Cookie, Mail, Lock, UserCheck } from 'lucide-react';
 
 export default function Datenschutz() {
   return (

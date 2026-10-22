@@ -88,10 +88,10 @@ export default function Fortbildungen() {
       abbreviation: 'E-Schein (Betontechnologe)',
       authority: 'Deutscher Beton- und Bautechnik-Verein e.V. (DBV)',
       scope: 'Nachweis fortgeschrittener betontechnologischer Fachkenntnis für die Herstellung, Überwachung und den Einbau von Beton.',
-      legalBase: 'DIN EN 206 / DIN 1045-2 (zwingend für Überwachungsklassen ÜK 2 und ÜK 3 der Baustellenüberwachung).',
+      legalBase: 'DIN 1045-3:2023-08 (Leitung der ständigen Betonprüfstelle bei Überwachungsklasse 2 und 3); Ausbildungsbeirat beim DBV.',
       targetGroup: 'Architekten, Planer, Bauingenieure, Bauleiter, Techniker, Betonwerksmeister, Betonlaborleiter.',
-      duration: 'Mindestens 170 Unterrichtseinheiten (ca. 4-Wochen-Vollzeitkurs) inklusive schriftlicher und mündlicher Abschlussprüfung.',
-      validity: 'Unbefristet (regelmäßige freiwillige Weiterbildung wird von Betrieben und dem DBV gefordert, aber keine feste Ablauffrist).',
+      duration: 'Mehrwöchiger Lehrgang mit schriftlicher und mündlicher Prüfung (Umfang beim jeweiligen Bildungsträger prüfen).',
+      validity: 'Regelungen zu Gültigkeit und Fortbildung beim Ausbildungsbeirat prüfen.',
       difficulty: 'Hoch',
       prerequisites: [
         'Bauingenieur-/Architekturstudium (Diplom, B.Sc., M.Sc.)',
@@ -119,8 +119,8 @@ export default function Fortbildungen() {
       scope: 'Nachweis der praktischen und theoretischen Sachkunde für bauausführende Handwerker bei der Betoninstandhaltung.',
       legalBase: 'Instandhaltungs-Richtlinie des DAfStb bzw. neue TR Instandhaltung (DIBt), ZTV-ING, VOB/C DIN 18349.',
       targetGroup: 'Vorarbeiter, Poliere, Kolonnenführer, anwendende Facharbeiter auf Instandsetzungsbaustellen.',
-      duration: '10 Tage praxisintensiver Lehrgang (80 Stunden) einschließlich einer theoretischen und harten praktischen Abschlussprüfung.',
-      validity: '3 Jahre. Verfällt zwingend, sofern nicht rechtzeitig ein anerkannter zweitägiger SIVV-Rezertifizierungs-Kurzlehrgang absolviert wird.',
+      duration: 'Lehrgang mit theoretischer und praktischer Prüfung nach Prüfungsordnung des Ausbildungsbeirats (Fassung Juli 2022); Umfang beim Ausbildungszentrum prüfen.',
+      validity: 'Regelungen zu Gültigkeit und Auffrischung beim Ausbildungsbeirat Schutz und Instandsetzung im Betonbau (DBV) prüfen.',
       difficulty: 'Mittel',
       prerequisites: [
         'Erfolgreich abgeschlossene gewerblich-technische Berufsausbildung im Bauwesen (z.B. Maurer, Betonbauer, Gipser, Maler)',
@@ -148,7 +148,7 @@ export default function Fortbildungen() {
       legalBase: 'TR Instandhaltung des Deutschen Instituts für Bautechnik (DIBt) und DAfStb-Instandsetzungsrichtlinie.',
       targetGroup: 'Freischaffende und angestellte Tragwerksplaner, Bauingenieure, Werkstoffprüfer, erfahrene Bauzustand-Gutachter.',
       duration: 'Ausbildungslehrgang in mehreren zeitlichen Blöcken (ca. 100-120 Stunden) plus komplexe Projektarbeit und mündliche Kolloquiums-Prüfung.',
-      validity: 'Unbefristet, wobei Pflichtweiterbildungsregelungen der Bundesingenieurkammern für eingetragene Listen zwingend greifen.',
+      validity: 'Unbefristet, wobei Fortbildungspflichten der Ingenieurkammern der Länder für eingetragene Listen zwingend greifen.',
       difficulty: 'Sehr Hoch',
       prerequisites: [
         'Abschluss eines Studiums des Bauingenieurwesens (Universität / Fachhochschule)',
@@ -175,8 +175,8 @@ export default function Fortbildungen() {
       scope: 'Spezialausbildung zur Planung, Errichtung und Überwachung elektrochemischer Korrosionsschutzsysteme an Stahlbetonbauwerken.',
       legalBase: 'DIN EN ISO 15257 (Anforderungsprofil an KKS-Personal), DIN EN ISO 12696 (KKS im Beton).',
       targetGroup: 'Elektrochemiker, Werkstoffwissenschaftler, Bauingenieure im Bereich Dauerhaftigkeit, Fachplaner für Parkhaus-Instandsetzung.',
-      duration: 'Aufgeteilt in Stufen (Level 1 bis Level 4). Jedes Level nimmt 1-2 Wochen dichten Unterricht ein, inklusive anspruchsvoller praktischer Prüfung.',
-      validity: '5 Jahre. Rezertifizierung durch Nachweis aktiver KKS-Berufsausübung und Fortbildungspunkten.',
+      duration: 'Gestuft nach Kompetenzstufen der DIN EN ISO 15257; je Stufe Lehrgang mit Prüfung (Umfang beim Zertifizierer prüfen).',
+      validity: 'Befristet; Rezertifizierung nach den Regeln des Zertifizierers (manuell prüfen).',
       difficulty: 'Sehr Hoch',
       prerequisites: [
         'Ingenieurtechnische Ausbildung oder elektrotechnische Meisterausbildung',
@@ -228,8 +228,8 @@ export default function Fortbildungen() {
       scope: 'Gesetzlich vorgeschriebene Sachkunde zum Umgang mit asbesthaltigen Baustoffen beim Bauen im Bestand.',
       legalBase: 'Gefahrstoffverordnung (GefStoffV), Technische Regel für Gefahrstoffe TRGS 519 (Anlage 3 o. 4).',
       targetGroup: 'Objektplaner, Baustoffprüfer, Denkmalschützer, Sanierungsunternehmer, Bauleiter, Abbruchpoliere.',
-      duration: '4 Tage für den "großen Sachkundenachweis" (Anlage 3 für alle asbesthaltigen Produkte) inklusive schriftlicher Prüfung unter staatlicher Aufsicht.',
-      validity: '6 Jahre. Muss vor Ablauf dieser Frist durch die Teilnahme an einem eintägigen staatlich anerkannten Fortbildungslehrgang um weitere 6 Jahre verlängert werden.',
+      duration: 'Mehrtägiger behördlich anerkannter Lehrgang nach TRGS 519 Anlage 3 (große Sachkunde) bzw. Anlage 4 (kleine Sachkunde) mit Prüfung.',
+      validity: '6 Jahre. Muss vor Ablauf dieser Frist durch einen behördlich anerkannten Fortbildungslehrgang um weitere 6 Jahre verlängert werden.',
       difficulty: 'Mittel',
       prerequisites: [
         'Keine akademischen Voraussetzungen. Mindestalter 18 Jahre',
@@ -281,7 +281,7 @@ export default function Fortbildungen() {
       legalBase: 'TRGS 521 (Mineralfasern), Gefahrstoffverordnung (GefStoffV).',
       targetGroup: 'Bauleiter, Architekten, Energieberater, Trockenbaubetriebe, Entsorgungsbeauftragte, Zimmerer.',
       duration: '1 Tag Kompaktlehrgang inklusive schriftlicher Sachkundeprüfung.',
-      validity: 'Unbefristet (Auffrischungen bezüglich aktueller Gefahrgutverordnung und PSA werden im 5-Jahres-Turnus angeraten).',
+      validity: 'Unbefristet (Auffrischungen bezüglich Gefahrstoffverordnung und PSA werden im 5-Jahres-Turnus angeraten).',
       difficulty: 'Mittel',
       prerequisites: [
         'Mindestalter 18 Jahre',
@@ -354,10 +354,10 @@ export default function Fortbildungen() {
       abbreviation: 'Fachplaner Mauerwerk (WTA)',
       authority: 'WTA e.V. (Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung)',
       scope: 'Höchste herstellerneutrale Weiterbildung im Altbaubereich für ingenieurtechnische Mauerwerksdiagnostik und Sanierungsentwürfe.',
-      legalBase: 'WTA-Richtlinien Serie 2 (Instandsetzung von Mauerwerken), DIN EN 1996 mit NA (Mauerwerksbemessung).',
+      legalBase: 'WTA-Merkblätter (Referat Mauerwerk), DIN EN 1996 mit NA (Mauerwerksbemessung).',
       targetGroup: 'Tragwerksplaner, Gutachter für Bauwerksschäden, Restauratoren im Handwerk, Denkmalschutz-Ingenieure.',
       duration: 'Modulares Aufbaustudium (ca. 45-60 Stunden) mit Projektarbeit und Fachkolloquium beim Wissenschaftsausschuss.',
-      validity: 'Gelisteter Facheintrag im WTA-Zentralregister; setzt zweitjährliche facheinschlägige Weiterbildungen voraus.',
+      validity: 'Gültigkeit und Fortbildungspflichten nach den Zertifizierungsregeln der WTA (manuell prüfen).',
       difficulty: 'Hoch',
       prerequisites: [
         'Studienabschluss im Bauingenieurwesen, Bauphysik oder der Architektur',
@@ -380,7 +380,7 @@ export default function Fortbildungen() {
       abbreviation: 'Schimmel-Sachkunde (TÜV / WTA)',
       authority: 'Verband der TÜV e.V. / WTA-Akademie (anerkannt nach UBA)',
       scope: 'Nachweis der fachtechnischen und gesundheitsbezogenen Eignung zur Beseitigung von mikrobiellen Schäden im Bestand.',
-      legalBase: 'Schimmelpilz-Leitfaden des Umweltbundesamtes (UBA), Biostoffverordnung (BioStoffV), GESTIS-Gefahrstoffdatenbank, TRBA 462.',
+      legalBase: 'Schimmelpilz-Leitfaden des Umweltbundesamtes (UBA), Biostoffverordnung (BioStoffV), DGUV Information 201-028 (Biostoffe bei der Schimmelpilzsanierung).',
       targetGroup: 'Bauleiter, Schadensgutachter, Malermeister, Trockenbauer, Verwerter von Feuchtigkeitsschäden.',
       duration: '3 bis 5 Tage Kompaktkurs inklusive mündlicher und schriftlicher Sachkundeprüfung nach staatlichem Prüfstandard.',
       validity: 'Unbefristet (regelmäßige eintägige Refresher-Seminare werden aufgrund neuer Regelungen des UBA dringend empfohlen).',
@@ -406,7 +406,7 @@ export default function Fortbildungen() {
       abbreviation: 'Energieberater Denkmal (dena / WTA)',
       authority: 'dena (Deutsche Energie-Agentur) / WTA-Akademie',
       scope: 'Zertifizierter Sachverständiger zur thermisch-energetischen Effizienzsteigerung denkmalgeschützter Bauwerke ohne baustoffliche Gefährdung.',
-      legalBase: 'Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG) - Befreiungsklauseln für Denkmale, KfW-Förderprogramme für Baudenkmale.',
+      legalBase: 'Gebäudemodernisierungsgesetz (GModG; geändertes GEG, Art. 1 in Kraft seit 29.07.2026, weitere Teile ab 01.01.2027) – Ausnahmen für Baudenkmale, KfW-Förderung Effizienzhaus Denkmal.',
       targetGroup: 'Architekten, Bauphysiker, Tragwerksplaner, gelistete Energieeffizienz-Experten.',
       duration: 'Spezifisches Aufbaustudium (ca. 160 Unterrichtsstunden) inklusive einer komplexen Fach-Projektarbeit zur Modernisierung eines Denkmals.',
       validity: '3 Jahre. Verlängerung durch dena-Punkteprüfung und den Nachweis aktiver Denkmal-Modernisierungsplanungen im Register.',
@@ -434,7 +434,7 @@ export default function Fortbildungen() {
       scope: 'Zulassung zur gesetzlich vorgeschriebenen Arbeitsschutzkoordinierung auf Baustellen mit mehreren Gewerken.',
       legalBase: 'Verordnung über Sicherheit und Gesundheitsschutz auf Baustellen (Baustellenverordnung - BaustellV), Regeln für den Arbeitsschutz auf Baustellen (RAB 30).',
       targetGroup: 'Bauleiter, Projektsteuerer, Architekten, Bauingenieure, Poliere mit Baustellenerfahrung.',
-      duration: 'Spannungsfeldkurse Modul A, B und C (jeweils ca. 24-32 Stunden) mit separaten Fachprüfungen.',
+      duration: 'Lehrgänge zu arbeitsschutzfachlichen und koordinatorenspezifischen Kenntnissen nach RAB 30 (Anlagen B und C) mit Prüfungen.',
       validity: 'Unbefristet (fortlaufende informelle Aktualisierungsseminare bezüglich Arbeitsschutzregelungen dringend empfohlen).',
       difficulty: 'Mittel',
       prerequisites: [
@@ -460,8 +460,8 @@ export default function Fortbildungen() {
       scope: 'Zertifizierter Nachweis zur fachgerechten handwerklichen Ausführung von Füll- und Verpressarbeiten im Zuge der Bauwerkssanierung.',
       legalBase: 'TR Instandhaltung des DIBt (Teil 2), DAfStb-Instandsetzungsrichtlinie, DIN EN 1504-5 (Injektionsstoffe für Betoninstandhaltung).',
       targetGroup: 'Sanierungshandwerker, Poliere, Kolonnenführer im Hoch-, Tief- und Kanalbau, bauüberwachende Sachkundige.',
-      duration: '3-tägiger, extrem praxisorientierter Speziallehrgang mit anspruchsvoller handwerklicher Applikationsprüfung (Verpresskammern).',
-      validity: '3 Jahre (fortlaufend zu erneuern über anerkannte Mörtel- und Injektionsweiterbildungen oder Auffrischungskurse).',
+      duration: 'Praxisorientierter Lehrgang mit Applikationsprüfung (Umfang beim Ausbildungszentrum prüfen).',
+      validity: 'Regelungen zu Gültigkeit und Auffrischung beim Ausbildungsbeirat prüfen.',
       difficulty: 'Mittel',
       prerequisites: [
         'Erfolgreich absolvierter SIVV-Schein (bevorzugt)',
@@ -538,7 +538,7 @@ export default function Fortbildungen() {
       legalBase: 'EU-Verordnung 2019/947 (Betrieb von unbemannten Luftfahrzeugen), Luftverkehrsgesetz (LuftVG).',
       targetGroup: 'Gebäudediagnostiker, Brückenprüfingenieure nach DIN 1076, Schadensgutachter, Vermesser.',
       duration: '3-4 Tage Theorie- und Praxisausbildung inkl. anspruchsvoller Fachprüfung bei einer zertifizierten Prüfstelle des LBA.',
-      validity: '5 Jahre. Verlängerung durch vereinfachte Online-Auffrischungsprüfung beim Luftfahrt-Bundesamt.',
+      validity: '5 Jahre; Verlängerung nach den Vorgaben des Luftfahrt-Bundesamts.',
       difficulty: 'Mittel',
       prerequisites: [
         'Vorgeschalteter EU-Kompetenznachweis A1/A3 (kleiner Drohnenführerschein) obligatorisch',
@@ -561,10 +561,10 @@ export default function Fortbildungen() {
       abbreviation: 'Bauschadens-Gutachter (IHK / ISO 17024)',
       authority: 'IHK / Personenzertifizierungsstellen nach DIN EN ISO/IEC 17024',
       scope: 'Höchststufe der bautechnischen Zertifizierung zur unabhängigen, beweissicheren Bewertung, Ursachenforschung und Schadensbewertung an Konstruktionen.',
-      legalBase: 'Landesbauordnungen (LBO), Zivilprozessordnung (ZPO) für gerichtliche Gutachten, BGB/VOB Werkvertragsrecht.',
+      legalBase: '§ 36 GewO (öffentliche Bestellung), §§ 402 ff. ZPO (gerichtliche Gutachten), DIN EN ISO/IEC 17024 (Personenzertifizierung), BGB/VOB Werkvertragsrecht.',
       targetGroup: 'Freiberufliche Bausachverständige, planende Ingenieure, Tragwerksprüfer, Versicherungsingenieure.',
       duration: 'Modulares Studium über ca. 1-2 Jahre (ca. 180-240 Stunden) inkl. Fachgutachten-Hausarbeiten und Abschlusskolloquium.',
-      validity: '5 Jahre. Jährlich nachzuprüfende Fachweiterbildung und Einreichung von Prüfgutachten zur Rezertifizierung.',
+      validity: 'Personenzertifikate nach DIN EN ISO/IEC 17024 meist 5 Jahre; öffentliche Bestellung befristet; Fortbildung nachzuweisen.',
       difficulty: 'Sehr Hoch',
       prerequisites: [
         'Abgeschlossenes Ingenieur- oder Architekturstudium mit mindestens 5 Jahren fundierter Berufserfahrung',
@@ -1129,7 +1129,7 @@ export default function Fortbildungen() {
       <ModuleFooter 
         weblinks={[
           { title: "Deutscher Beton- und Bautechnik-Verein e.V. (DBV)", url: "https://www.betonverein.de/" },
-          { title: "WTA e.V. - Wissenschaftlich-Technische Arbeitsgemeinschaft", url: "https://www.wta-gmbh.de/" },
+          { title: "WTA Publications (WTA GmbH) – Merkblätter der WTA e.V.", url: "https://www.wta-gmbh.de/" },
           { title: "dena - Deutsche Energie-Agentur Expertenliste", url: "https://www.energie-effizienz-experten.de/" },
           { title: "FKKS e.V. - Kathodischer Korrosionsschutz Ausbildung", url: "https://www.fkks.de/" }
         ]} 

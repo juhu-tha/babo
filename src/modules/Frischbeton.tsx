@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Waves, Gauge, Thermometer, Layers, CheckCircle2, AlertTriangle, Scale, Wind } from 'lucide-react';
-import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import Ausbreitversuch from './Ausbreitversuch';
 import Frischbetondruck from './Frischbetondruck';
 import Frischbetontemperatur from './Frischbetontemperatur';
@@ -44,7 +45,7 @@ export default function Frischbeton() {
         if (target <= 150) return 30;
         return 40;
       case 'setzfliessmass':
-        return 40; // Für alle Zielwerte bei SVB
+        return 50; // Setzfließmaß: ± 50 mm
     }
   };
 
@@ -70,7 +71,7 @@ export default function Frischbeton() {
   };
 
   const minLpGefordert = getMinLp(dMax, expKlasse);
-  // Einzelwertkriterium nach DIN EN 206 Tab. 21: Höchstens 0,5 Vol.-% unter dem Sollwert
+  // Einzelwertkriterium nach DIN 1045-2 (Fußnote zur Grenzwerttabelle): höchstens 0,5 Vol.-% unter dem Mindestwert
   const minLpEinzelwert = Math.max(0, minLpGefordert - 0.5);
   // Maximal empfohlener Luftgehalt zur Vermeidung übermäßiger Druckfestigkeitseinbußen (~4% über Sollwert)
   const maxLpSinnvoll = minLpGefordert > 0 ? minLpGefordert + 4.0 : 4.0;
@@ -89,6 +90,18 @@ export default function Frischbeton() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
           <p>
             Vollständige Prüfung, Konsistenzklassifizierung, Toleranzabgleich nach <strong>DIN EN 206:2021-06</strong> und <strong>DIN 1045-2:2023-08</strong>, Luftporen- und Rohdichtebestimmung nach <strong>DIN EN 12350-7/-6</strong> sowie Schalungsdruckberechnung (DIN 18218) und Frischbetontemperaturprognosen.
+          </p>
+          <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
+            <strong className="mr-1">Lernpfad:</strong>
+            {([
+              ['konsistenz', 'Konsistenz & Toleranzen'], ['ausbreitversuch', 'Ausbreitversuch'], ['luftporen', 'Luftgehalt & Rohdichte'],
+              ['frischbetontemperatur', 'Frischbetontemperatur'], ['frischbetondruck', 'Frischbetondruck'],
+            ] as const).map(([id, label], i) => (
+              <React.Fragment key={id}>
+                {i > 0 && <span className="text-text-main/40">→</span>}
+                <button onClick={() => setActiveTab(id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">{i + 1}. {label}</button>
+              </React.Fragment>
+            ))}
           </p>
         </div>
 
@@ -243,7 +256,8 @@ export default function Frischbeton() {
 
                 {/* Normative Grenzwerte-Tabelle */}
                 <div className="bg-off-white p-5 rounded-2xl border border-home-grau/30 text-xs">
-                  <h4 className="font-bold text-text-main mb-2">Zulässige Grenzabmaße für Zielwerte (DIN EN 206 Tab. 21 / DIN 1045-2:2023-08)</h4>
+                  <h4 className="font-bold text-text-main mb-2">Zulässige Grenzabmaße für Zielwerte (DIN EN 206 / DIN 1045-2:2023-08)</h4>
+                  <p className="text-[11px] text-text-main/60 mb-2">Werte für Ausbreit- und Setzmaß manuell am Normtext prüfen.</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-text-main/80">
                     <div className="bg-white p-3 rounded-xl border border-home-grau/20">
                       <span className="font-bold text-shiraz">Ausbreitmaß:</span>
@@ -273,7 +287,7 @@ export default function Frischbeton() {
                     <div className="bg-white p-3 rounded-xl border border-home-grau/20">
                       <span className="font-bold text-shiraz">Setzfließmaß (SVB):</span>
                       <ul className="mt-1 space-y-0.5 list-disc list-inside">
-                        <li>Alle Zielwerte (SF1–SF3): ± 40 mm</li>
+                        <li>Alle Zielwerte (SF1–SF3): ± 50 mm</li>
                       </ul>
                     </div>
                   </div>
@@ -290,7 +304,7 @@ export default function Frischbeton() {
                   <div className="space-y-3">
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">Prüfverfahren wählen</label>
-                      <select 
+                      <select aria-label="Prüfverfahren wählen" 
                         value={verfahren}
                         onChange={(e) => {
                           const v = e.target.value as TestVerfahren;
@@ -401,7 +415,7 @@ export default function Frischbeton() {
                 <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 text-xs leading-relaxed text-text-main/80">
                   <h4 className="font-bold text-shiraz mb-1">Normativer Hinweis zur Probenahme (DIN EN 12350-1)</h4>
                   <p>
-                    Die Probenahme aus dem Fahrmischer darf erst nach Entladen des ersten Drittels (mindestens 0,2 m³) und vor Entladen des letzten Drittels erfolgen, um repräsentative Messwerte sicherzustellen.
+                    Die Probenahme aus dem Fahrmischer darf erst nach Entladen des ersten Drittels (mindestens 0,2 m³) und vor Entladen des letzten Drittels erfolgen, um repräsentative Messwerte sicherzustellen. (Werte manuell am Normtext prüfen.)
                   </p>
                 </div>
               </div>
@@ -433,7 +447,7 @@ export default function Frischbeton() {
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Expositionsklasse</label>
-                        <select
+                        <select aria-label="Expositionsklasse"
                           value={expKlasse}
                           onChange={(e) => setExpKlasse(e.target.value as 'XF2' | 'XF4' | 'X0_XF1_XF3')}
                           className="w-full p-2.5 bg-off-white border border-home-grau/30 rounded-xl text-xs font-semibold"
@@ -446,7 +460,7 @@ export default function Frischbeton() {
 
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Größtkorn D_max [mm]</label>
-                        <select
+                        <select aria-label="Größtkorn D_max [mm]"
                           value={dMax}
                           onChange={(e) => setDMax(parseInt(e.target.value) as 8 | 16 | 32 | 63)}
                           className="w-full p-2.5 bg-off-white border border-home-grau/30 rounded-xl text-xs font-semibold"
@@ -462,7 +476,7 @@ export default function Frischbeton() {
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Ablesung Manometer L_abg [%]</label>
-                        <input 
+                        <input aria-label="Ablesung Manometer L_abg [%]" 
                           type="number"
                           step="0.1"
                           min="0"
@@ -474,7 +488,7 @@ export default function Frischbeton() {
                       </div>
                       <div>
                         <label className="text-xs font-bold text-text-main block mb-1">Gesteinskorrektur G [%]</label>
-                        <input 
+                        <input aria-label="Gesteinskorrektur G [%]" 
                           type="number"
                           step="0.1"
                           min="0"
@@ -516,7 +530,7 @@ export default function Frischbeton() {
                           <span className="font-mono font-bold">≥ {formatDeZahl(minLpGefordert, 1)} Vol.-%</span>
                         </div>
                         <div>
-                          <span className="text-text-main/70 block">Zulässiger Einzelwert (Tab. 21):</span>
+                          <span className="text-text-main/70 block">Zulässiger Einzelwert (DIN 1045-2):</span>
                           <span className="font-mono font-bold">≥ {formatDeZahl(minLpEinzelwert, 1)} Vol.-%</span>
                         </div>
                       </div>
@@ -543,7 +557,7 @@ export default function Frischbeton() {
                   <div className="grid grid-cols-3 gap-3">
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">m1 Topf leer [kg]</label>
-                      <input 
+                      <input aria-label="m1 Topf leer [kg]" 
                         type="number"
                         step="0.1"
                         value={m1}
@@ -553,7 +567,7 @@ export default function Frischbeton() {
                     </div>
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">m2 Topf voll [kg]</label>
-                      <input 
+                      <input aria-label="m2 Topf voll [kg]" 
                         type="number"
                         step="0.1"
                         value={m2}
@@ -563,7 +577,7 @@ export default function Frischbeton() {
                     </div>
                     <div>
                       <label className="text-xs font-bold text-text-main block mb-1">Volumen [Liter]</label>
-                      <input 
+                      <input aria-label="Volumen [Liter]" 
                         type="number"
                         step="0.1"
                         value={volumenL}
@@ -640,9 +654,9 @@ export default function Frischbeton() {
                   </div>
 
                   <div className="bg-off-white p-3 rounded-xl border border-home-grau/20 text-[11px] text-text-main/80">
-                    <h4 className="font-bold text-shiraz mb-1">Abstandsfaktor L nach DIN EN 480-11</h4>
+                    <h4 className="font-bold text-shiraz mb-1">Abstandsfaktor L (Prüfung nach DIN EN 480-11)</h4>
                     <p>
-                      Für die Frostbeständigkeit ist nicht der Gesamtluftgehalt allein entscheidend, sondern die Verteilung im Zementstein. Der am Festbeton mikroskopisch bestimmte <strong>Abstandsfaktor L</strong> muss für XF4 im Mittel <strong>≤ 0,20 mm</strong> betragen.
+                      Für die Frostbeständigkeit ist nicht der Gesamtluftgehalt allein entscheidend, sondern die Verteilung im Zementstein. Der am Festbeton mikroskopisch bestimmte <strong>Abstandsfaktor L</strong> sollte als Richtwert <strong>≤ 0,20 mm</strong> betragen (z. B. bei der Prüfung von LP-Bildnern nach DIN EN 934-2); ein Abnahmekriterium nach DIN 1045-2 ist er nicht.
                     </p>
                   </div>
                 </div>
@@ -667,48 +681,97 @@ export default function Frischbeton() {
         )}
       </div>
 
-      <ModuleFooter 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Luftgehalt bei XF4 prüfen"
+        zielGleichung="L = L_{abg} - G \ge L_{min} - 0{,}5\,\%"
+        normQuelle="DIN EN 12350-7; DIN 1045-2 (Mindestluftgehalt, Einzelwert)"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'L_{abg} = 4{,}8\\,\\%,\\; G = 0{,}2\\,\\%,\\; D_{max} = 32\\,\\text{mm}', erklaerung: 'Messung mit dem Luftgehaltsprüfer (8-l-Topf).' },
+          { titel: '2. Luftgehalt', formel: 'L = 4{,}8 - 0{,}2 = 4{,}6\\,\\%', erklaerung: 'Gesteinskorrektur abziehen.' },
+          { titel: '3. Anforderung', formel: 'L_{min} = 4{,}0\\,\\%;\\; \\text{Einzelwert} \\ge 3{,}5\\,\\%', erklaerung: 'Mittlerer Mindestwert für Größtkorn 32 mm.' },
+          { titel: '4. Nachweis', formel: '4{,}6\\,\\% \\ge 4{,}0\\,\\% \\;\\text{und}\\; 4{,}6\\,\\% \\le 4{,}0 + 4{,}0 = 8{,}0\\,\\%', erklaerung: 'Mindestwert erfüllt, Obergrenze (Mindestwert + 4 %) eingehalten.' },
+        ]}
+        ergebnisHinweis="4,6 % Luftgehalt – Anforderung für XF4 erfüllt."
+      />
+
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Frischbetondruck auf eine Wandschalung"
+        zielGleichung="\sigma_{hk,max} = (14\,v + 18) \cdot K_1 \ge 25\,\text{kN/m}^2"
+        normQuelle="DIN 18218:2010-01 (Konsistenz F3)"
+        schritte={[
+          { titel: '1. Gegeben', formel: '\\text{F3},\\; v = 2\\,\\text{m/h},\\; t_E = 5\\,\\text{h} \\Rightarrow K_1 = 1{,}0,\\; H = 3\\,\\text{m},\\; \\gamma_c = 25\\,\\text{kN/m}^3', erklaerung: 'Wand mit 3 m Höhe, Normalbeton.' },
+          { titel: '2. Maximaldruck', formel: '\\sigma_{hk,max} = (14 \\cdot 2 + 18) \\cdot 1{,}0 = 46\\,\\text{kN/m}^2', erklaerung: 'Mindestwert 25 kN/m² ist überschritten.' },
+          { titel: '3. Hydrostatische Grenze', formel: '\\gamma_c \\cdot H = 25 \\cdot 3 = 75\\,\\text{kN/m}^2 > 46', erklaerung: 'Der Druck wird durch σ_hk,max begrenzt.' },
+          { titel: '4. Übergangstiefe', formel: 'h_s = 46 / 25 = 1{,}84\\,\\text{m}', erklaerung: 'Bis 1,84 m Tiefe hydrostatisch, darunter konstant 46 kN/m².' },
+        ]}
+        ergebnisHinweis="Bemessungsdruck für die Schalung: 46 kN/m² ab 1,84 m Tiefe."
+      />
+
+      <ModulTest moduleId="frischbeton" />
+
+      <ModuleFooter
+        weblinks={[
+          { title: 'Beton.wiki: Frischbetondruck', url: 'https://beton.wiki/index.php?title=Frischbetondruck' },
+          { title: 'Beton.wiki: Frischbetontemperatur', url: 'https://beton.wiki/index.php?title=Frischbetontemperatur' }
+        ]}
         wikipedia={[
           { title: 'Frischbeton', url: 'https://de.wikipedia.org/wiki/Frischbeton' },
           { title: 'Konsistenz (Beton)', url: 'https://de.wikipedia.org/wiki/Konsistenz_(Beton)' },
+          { title: 'Ausbreitmaß', url: 'https://de.wikipedia.org/wiki/Ausbreitma%C3%9F' },
+          { title: 'Bingham-Fluid', url: 'https://de.wikipedia.org/wiki/Bingham-Fluid' },
           { title: 'Luftporenbildner', url: 'https://de.wikipedia.org/wiki/Luftporenbildner' },
+          { title: 'Richmannsche Mischungsregel', url: 'https://de.wikipedia.org/wiki/Richmannsche_Mischungsregel' },
+          { title: 'Frischbetondruck', url: 'https://de.wikipedia.org/wiki/Frischbetondruck' },
           { title: 'Schalung (Beton)', url: 'https://de.wikipedia.org/wiki/Schalung_(Beton)' }
         ]}
         literatur={[
           'Heidelberg Materials / InformationsZentrum Beton: Betontechnische Daten (Stand 2022 / aktualisiert nach DIN 1045-2:2023-08)',
-          'Grübl, P.; Weigler, H.; Siebel, E.: Beton: Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner'
+          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Tattersall, G. H.; Banfill, P. F. G.: The Rheology of Fresh Concrete. London: Pitman 1983',
+          'Schmitt, R.: Die Schalungstechnik – Systeme, Einsatz und Logistik. Berlin: Ernst & Sohn 2001',
+          'Graubner, C.-A.; Proske, T.: Frischbetondruck auf lotrechte Schalungen. Beton- und Stahlbetonbau 105 (2010) 1 (Angaben manuell prüfen)',
+          'Springenschmid, R.: Betonieren bei extremer Witterung (Angaben manuell prüfen)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 206:2021-06 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton - Teil 2: Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-          { title: 'DIN EN 12350-1 bis 12350-8:2019-09 (Prüfung von Frischbeton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12350' },
-          { title: 'DIN 18218:2010-01 (Frischbetondruck auf vertikale Schalungen)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18218' }
+          { title: 'DIN EN 206:2021-06 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },
+          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Teil 2: Beton)' },
+          { title: 'DIN 1045-3 / DIN EN 13670 (Bauausführung; Betonieren bei kühler und heißer Witterung)' },
+          { title: 'DIN EN 12350-1 bis -8 (Prüfung von Frischbeton)' },
+          { title: 'DIN 18218:2010-01 (Frischbetondruck auf lotrechte Schalungen)' },
+          { title: 'DIN 18216 (Schalungsanker für Betonschalungen)' },
+          { title: 'DAfStb-Richtlinie Selbstverdichtender Beton (SVB-Richtlinie)' },
+          { title: 'ZTV-ING (Grenztemperaturen für Ingenieurbauwerke)' }
         ]}
         formeln={[
           {
             formel: 'L = L_{\\text{abg}} - G \\quad [\\%]',
-            erklaerung: 'Tatsächlicher Luftgehalt L im Frischbeton nach Druckausgleichsverfahren (DIN EN 12350-7) aus der Manometerablesung Labg abzüglich des Gesteinskorrekturfaktors G.',
-            quelle: 'DIN EN 12350-7:2019-09'
+            erklaerung: 'Luftgehalt L im Frischbeton nach dem Druckausgleichsverfahren (DIN EN 12350-7): Manometerablesung L_abg abzüglich Gesteinskorrekturfaktor G.',
+            quelle: 'DIN EN 12350-7'
           },
           {
             formel: 'D = \\frac{m_2 - m_1}{V} \\quad [\\text{kg/m}^3]',
-            erklaerung: 'Frischbetonrohdichte D nach DIN EN 12350-6: m1 = Leermasse Behälter, m2 = Masse gefüllter/verdichteter Behälter, V = Behältervolumen (typ. 8 Liter = 0,008 m³).',
-            quelle: 'DIN EN 12350-6:2019-09'
+            erklaerung: 'Frischbetonrohdichte D nach DIN EN 12350-6: m1 = Leermasse Behälter, m2 = Masse mit verdichtetem Beton, V = Behältervolumen (z. B. 8 l).',
+            quelle: 'DIN EN 12350-6'
           },
           {
             formel: 'f = \\frac{d_1 + d_2}{2} \\quad [\\text{mm}]',
-            erklaerung: 'Ausbreitmaß f nach DIN EN 12350-5: Arithmetischer Mittelwert aus zwei kreuzweise gemessenen Durchmessern des Betonkuchens nach 15 Hubschlägen auf dem Ausbreittisch.',
-            quelle: 'DIN EN 12350-5:2019-09'
+            erklaerung: 'Ausbreitmaß f nach DIN EN 12350-5: Mittelwert zweier rechtwinklig gemessener Durchmesser nach 15 Hubschlägen.',
+            quelle: 'DIN EN 12350-5'
           },
           {
-            formel: 'T_{\\text{Misch}} = \\frac{\\sum (m_i \\cdot c_i \\cdot T_i)}{\\sum (m_i \\cdot c_i)} \\quad [^{\\circ}\\text{C}]',
-            erklaerung: 'Frischbetonmischungstemperatur aus den spezifischen Wärmekapazitäten ci, Massen mi und Ausgangstemperaturen Ti der Ausgangsstoffe.',
-            quelle: 'DIN EN 206 / DBV-Merkblatt'
+            formel: '\\tau = \\tau_0 + \\mu_p \\cdot \\dot{\\gamma}',
+            erklaerung: 'Bingham-Modell: Fließgrenze τ0 (bestimmt Ausbreit- und Setzmaß) und plastische Viskosität μp (bestimmt Fließgeschwindigkeit und Pumpbarkeit).',
+            quelle: 'Tattersall/Banfill (1983)'
           },
           {
-            formel: '\\sigma_{hk,\\text{max}} = \\min\\left(\\gamma_c \\cdot h_s, \\; \\alpha_k \\cdot (v \\cdot t_E + d_s)\\right) \\quad [\\text{kN/m}^2]',
-            erklaerung: 'Charakteristischer horizontaler Frischbetondruck nach DIN 18218.',
+            formel: 'T_{FB} = \\frac{\\sum m_i \\, c_i \\, T_i - m_{eis} \\, L_{eis}}{\\sum m_i \\, c_i}',
+            erklaerung: 'Frischbetontemperatur nach der Mischungsregel (Richmann), ggf. mit Scherbeneis (L_eis = 334 kJ/kg). Grenzen: mindestens +5 °C, höchstens +30 °C ohne besondere Maßnahmen.',
+            quelle: 'Mischungsregel; Grenzwerte DIN 1045-3 / DIN EN 206'
+          },
+          {
+            formel: '\\sigma_{hk,max} = (C_1 \\cdot v + C_2) \\cdot K_1 \\cdot \\frac{\\gamma_c}{25}, \\quad h_s = \\frac{\\sigma_{hk,max}}{\\gamma_c}',
+            erklaerung: 'Maximaler horizontaler Frischbetondruck für F1–F4 nach DIN 18218 (z. B. F3: C1 = 14, C2 = 18; v in m/h, Mindestwert 25 kN/m²); bis zur Tiefe h_s hydrostatisch.',
             quelle: 'DIN 18218:2010-01'
           }
         ]}

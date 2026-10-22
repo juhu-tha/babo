@@ -2,9 +2,7 @@ import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/
 import React, { useState, useMemo } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Award, AlertTriangle, CheckCircle2, Shield, Info, FileText, ChevronRight, Settings } from 'lucide-react';
+import { Award, AlertTriangle, CheckCircle2, Shield, Info, FileText, Settings } from 'lucide-react';
 
 export default function HydratationRissberechnung() {
   // Input parameters
@@ -177,7 +175,7 @@ export default function HydratationRissberechnung() {
             {/* Betonklasse */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-home-grau uppercase tracking-wider">Betonfestigkeitsklasse</label>
-              <select
+              <select aria-label="Betonfestigkeitsklasse"
                 value={concreteGrade}
                 onChange={(e) => setConcreteGrade(e.target.value)}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
@@ -277,7 +275,7 @@ export default function HydratationRissberechnung() {
             {/* Zulässige Rissbreite w_k */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-home-grau uppercase tracking-wider">Zulässige Rissbreite (w_k)</label>
-              <select
+              <select aria-label="Zulässige Rissbreite (w_k)"
                 value={allowableCrackWidth}
                 onChange={(e) => setAllowableCrackWidth(Number(e.target.value))}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
@@ -291,7 +289,7 @@ export default function HydratationRissberechnung() {
             {/* Stabdurchmesser phi */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-home-grau uppercase tracking-wider">Gewählter Stabdurchmesser (Ø_s)</label>
-              <select
+              <select aria-label="Gewählter Stabdurchmesser (Ø_s)"
                 value={barDiameter}
                 onChange={(e) => setBarDiameter(Number(e.target.value))}
                 className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-white"
@@ -577,27 +575,6 @@ export default function HydratationRissberechnung() {
 
       </div>
 
-      <ModuleFooter
-        wikipedia={[
-          { title: 'Rissbreitenbegrenzung' },
-          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' }
-        ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Heft 600 DAfStb: Erläuterungen zu DIN EN 1992-1-1 (Eurocode 2)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Bemessung und Konstruktion von Stahlbetontragwerken)' },
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton' }
-        ]}
-        formeln={[
-          {
-            formel: 'A_{s,min} = k_c \\cdot k \\cdot f_{ct,eff} \\cdot A_{ct} / \\sigma_s',
-            erklaerung: 'Mindestbewehrungsformel zur Rissbreitenbegrenzung gemäß DIN EN 1992-1-1 Abschnitt 7.3.2.',
-            quelle: 'DIN EN 1992-1-1'
-          }
-        ]}
-      />
 
     </div>
   );

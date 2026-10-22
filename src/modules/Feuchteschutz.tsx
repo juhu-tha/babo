@@ -1,15 +1,16 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
-  Droplets, Thermometer, Wind, Beaker, Info, Plus, Trash2, 
+  Droplets, Thermometer, Wind, Beaker, Plus, Trash2, 
   ArrowUp, ArrowDown, ShieldAlert, Sparkles, AlertTriangle, CheckCircle, HelpCircle 
 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { BlockMath, InlineMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { 
   Chart as ChartJS, 
   CategoryScale, 
@@ -535,6 +536,7 @@ export default function Feuchteschutz() {
                       onClick={() => moveLayer(index, 'up')} 
                       disabled={index === 0}
                       className="hover:text-orange-800 disabled:opacity-25 cursor-pointer"
+                      aria-label="Schicht nach oben verschieben"
                     >
                       <ArrowUp size={13} />
                     </button>
@@ -542,6 +544,7 @@ export default function Feuchteschutz() {
                       onClick={() => moveLayer(index, 'down')} 
                       disabled={index === layers.length - 1}
                       className="hover:text-orange-800 disabled:opacity-25 cursor-pointer"
+                      aria-label="Schicht nach unten verschieben"
                     >
                       <ArrowDown size={13} />
                     </button>
@@ -588,6 +591,7 @@ export default function Feuchteschutz() {
                   <button 
                     onClick={() => removeLayer(index)}
                     className="text-slate-450 hover:text-red-500 cursor-pointer p-1"
+                    aria-label="Schicht entfernen"
                   >
                     <Trash2 size={14} />
                   </button>

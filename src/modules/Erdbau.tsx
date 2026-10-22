@@ -1,9 +1,8 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { Mountain, Layers, AlignVerticalSpaceAround, Activity, LayoutGrid, Calculator, ThermometerSnowflake, Ruler, BookOpen } from 'lucide-react';
+import { Mountain, Layers, AlignVerticalSpaceAround, Activity, LayoutGrid, Calculator, ThermometerSnowflake, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Slider } from '@/src/components/ui/Slider';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
 type Tab = 'grundlagen' | 'klassifikation' | 'frostschutz' | 'steckbrief';
@@ -238,7 +237,7 @@ export default function Erdbau() {
                 <h3 className="font-bold border-b border-home-grau/30 pb-2 mt-2">Weitere Eigenschaften</h3>
                 <div className="space-y-2">
                   <label className="text-sm font-bold block">Plastizität der Feinanteile</label>
-                  <select className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={plastizitaet} onChange={(e) => setPlastizitaet(e.target.value as any)}>
+                  <select aria-label="Plastizität der Feinanteile" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={plastizitaet} onChange={(e) => setPlastizitaet(e.target.value as any)}>
                     <option value="nicht">Nicht bis schwach plastisch</option>
                     <option value="mittel">Lediglich leicht plastisch</option>
                     <option value="ausgeprägt">Ausgeprägt plastisch (tonig)</option>
@@ -246,7 +245,7 @@ export default function Erdbau() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold block">Organische Beimengungen</label>
-                  <select className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={organik} onChange={(e) => setOrganik(e.target.value as any)}>
+                  <select aria-label="Organische Beimengungen" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={organik} onChange={(e) => setOrganik(e.target.value as any)}>
                     <option value="none">Keine / gering (mineralischer Boden)</option>
                     <option value="stark">Stark (Torf, Humus)</option>
                   </select>
@@ -290,7 +289,7 @@ export default function Erdbau() {
                 <div className="space-y-4">
                   <div>
                     <label className="text-sm font-bold block mb-1">Belastungsklasse (RStO)</label>
-                    <select className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bauklasse} onChange={(e) => setBauklasse(e.target.value as any)}>
+                    <select aria-label="Belastungsklasse (RStO)" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bauklasse} onChange={(e) => setBauklasse(e.target.value as any)}>
                       <option value="Bk100">Bk100 (z.B. hochbelastete Autobahn)</option>
                       <option value="Bk32">Bk32 (z.B. Bundesstraße, sehr viel Schwerverkehr)</option>
                       <option value="Bk10">Bk10 (z.B. Hauptverkehrsstraße städtisch)</option>
@@ -302,7 +301,7 @@ export default function Erdbau() {
 
                   <div>
                     <label className="text-sm font-bold block mb-1">Frostzone (Klimaregion in DE)</label>
-                    <select className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={frostzone} onChange={(e) => setFrostzone(Number(e.target.value))}>
+                    <select aria-label="Frostzone (Klimaregion in DE)" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={frostzone} onChange={(e) => setFrostzone(Number(e.target.value))}>
                       <option value={1}>Frostzone I (mild, z.B. Niederrhein)</option>
                       <option value={2}>Frostzone II (mittel, z.B. weite Teile DE)</option>
                       <option value={3}>Frostzone III (strenge Winter, z.B. Mittelgebirge/Alpen)</option>
@@ -311,7 +310,7 @@ export default function Erdbau() {
 
                   <div>
                     <label className="text-sm font-bold block mb-1">Bodenklasse des anstehenden Planums</label>
-                    <select className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bodengruppe} onChange={(e) => setBodengruppe(e.target.value as any)}>
+                    <select aria-label="Bodenklasse des anstehenden Planums" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={bodengruppe} onChange={(e) => setBodengruppe(e.target.value as any)}>
                       <option value="F2">F2 (Gering bis mittel frostempfindlich)</option>
                       <option value="F3">F3 (Sehr frostempfindlich, Schluff/Ton)</option>
                     </select>
@@ -320,7 +319,7 @@ export default function Erdbau() {
 
                   <div>
                     <label className="text-sm font-bold block mb-1">Gestaltung / Wasserverhältnisse</label>
-                    <select className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={wasserverhaeltnisse} onChange={(e) => setWasserverhaeltnisse(e.target.value as any)}>
+                    <select aria-label="Gestaltung / Wasserverhältnisse" className="w-full p-2 border border-home-grau/30 rounded focus:border-shiraz outline-none" value={wasserverhaeltnisse} onChange={(e) => setWasserverhaeltnisse(e.target.value as any)}>
                       <option value="guenstig">Günstig (Gute Entwässerung, tiefer Grundwasserstand)</option>
                       <option value="unguenstig">Ungünstig (Hoher Grundwasserstand, muldenförmig)</option>
                     </select>

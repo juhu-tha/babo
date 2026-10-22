@@ -193,7 +193,7 @@ export default function Durchstanzen() {
                   <label className="font-medium text-text-main">Stützenposition (Lasterhöhungsfaktor β nach NA DE)</label>
                   <InfoTooltip text="Berücksichtigt die ungleiche Schubspannungsverteilung: 1,10 für Innenstützen, 1,40 für Randstützen, 1,50 für Eckstützen nach DIN EN 1992-1-1/NA." />
                 </div>
-                <select 
+                <select aria-label="Stützenposition (Lasterhöhungsfaktor β nach NA DE)" 
                   className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                   value={beta}
                   onChange={(e) => setBeta(Number(e.target.value))}

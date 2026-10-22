@@ -1,8 +1,12 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { Factory, Truck, Waves, ArrowRight, AlertTriangle, Settings, Combine } from 'lucide-react';
 
 export default function HerstellungEinbau() {
+  const { setActiveTab } = useTabContext();
   return (
     <div className="flex flex-col gap-8">
       {/* 1. Herstellung & Transport */}
@@ -19,7 +23,14 @@ export default function HerstellungEinbau() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
             Beton wird meist als <strong>Transportbeton</strong> in stationären Mischanlagen industriell hergestellt und durch Fahrmischer (Trommelmischer) zur Baustelle transportiert. Seltener wird <strong>Baustellenbeton</strong> direkt vor Ort gemischt. 
-            Während des Transports wird die Mischtrommel langsam gedreht (Agitieren), um ein Entmischen zu verhindern. Eine Zugabe von Wasser auf der Baustelle ist grundsätzlich untersagt, da dies den w/z-Wert und somit die Festigkeit und Dauerhaftigkeit zerstört. Lediglich Fließmittel darf unter strengen Vorgaben vom Fahrpersonal nachdosiert werden.
+            Während des Transports wird die Mischtrommel langsam gedreht (Agitieren), um ein Entmischen zu verhindern. Die Zugabe von Wasser oder Zusatzmitteln bei Lieferung ist im Allgemeinen verboten, weil sie den w/z-Wert und damit Festigkeit und Dauerhaftigkeit verschlechtert. Nur in besonderen Fällen darf die Konsistenz unter Verantwortung des Herstellers innerhalb der festgelegten Grenzen angepasst werden; die Mengen sind auf dem Lieferschein zu vermerken (DIN 1045-2, 7.5).
+          </p>
+          <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
+            <strong className="mr-1">Lernpfad:</strong> 1. Mischen <span className="text-text-main/40">→</span> 2. Transport <span className="text-text-main/40">→</span> 3. Pumpen <span className="text-text-main/40">→</span> 4. Verdichten
+            <span className="text-text-main/40 mx-1">|</span> weiter:
+            <button onClick={() => setActiveTab('frischbeton')} className="underline decoration-dotted hover:text-shiraz cursor-pointer">Frischbeton (Konsistenz)</button>
+            <span className="text-text-main/40">·</span>
+            <button onClick={() => setActiveTab('nachbehandlung')} className="underline decoration-dotted hover:text-shiraz cursor-pointer">Nachbehandlung</button>
           </p>
         </div>
 
@@ -28,7 +39,7 @@ export default function HerstellungEinbau() {
              <h3 className="font-bold text-text-main flex items-center gap-2 mb-2"><Truck size={18} className="text-shiraz"/> Transport & Fahrmischer</h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Regelmäßige maximale Transportzeit von der Wasserzugabe im Werk bis zum vollständigen Einbau: <strong>90 Minuten</strong>.
+            Fahrmischer und Fahrzeuge mit Rührwerk sollen spätestens <strong>90 Minuten</strong> nach der ersten Wasserzugabe vollständig entladen sein, Fahrzeuge ohne Rührwerk (nur steifer Beton) nach <strong>45 Minuten</strong> (DIN 1045-2, 7.6).
           </p>
         </div>
              <p className="text-sm text-text-main/70"><strong>Mischwirkung im Fahrmischer:</strong> Fortwährendes Mischen oder längere Standzeiten (Agitieren) wirken sich auf den Beton aus. So kann beispielsweise der künstliche Luftporengehalt bei LP-Beton durch das stetige Mischen und die Reibung (Herausschlagen der Poren) stark absinken.</p>
@@ -154,9 +165,36 @@ export default function HerstellungEinbau() {
         </div>
       </div>
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Förderdruck einer Betonpumpe"
+        zielGleichung="p = \frac{2\,\tau_0\,L}{R} + \frac{8\,\mu_p\,v\,L}{R^2} + \rho\,g\,H"
+        normQuelle="Bingham-Ansatz für Rohrströmung, vereinfacht (Lehrmodell; Gleitschicht vernachlässigt)"
+        schritte={[
+          { titel: '1. Gegeben (Lehrwerte)', formel: '\\tau_0 = 200\\,\\text{Pa},\\; \\mu_p = 20\\,\\text{Pa s},\\; R = 0{,}0625\\,\\text{m},\\; L = 50\\,\\text{m},\\; H = 20\\,\\text{m},\\; Q = 30\\,\\text{m}^3/\\text{h}', erklaerung: 'Förderleitung DN 125, Frischbetonrohdichte 2 400 kg/m³.' },
+          { titel: '2. Fließgeschwindigkeit', formel: 'v = \\frac{Q}{\\pi R^2} = \\frac{0{,}00833}{0{,}01227} = 0{,}68\\,\\text{m/s}', erklaerung: '30 m³/h = 0,00833 m³/s.' },
+          { titel: '3. Druckanteile', formel: '\\frac{2 \\cdot 200 \\cdot 50}{0{,}0625} = 3{,}2\\,\\text{bar};\\; \\frac{8 \\cdot 20 \\cdot 0{,}68 \\cdot 50}{0{,}0625^2} = 13{,}9\\,\\text{bar};\\; 2400 \\cdot 9{,}81 \\cdot 20 = 4{,}7\\,\\text{bar}', erklaerung: 'Fließgrenze, Viskosität und Förderhöhe.' },
+          { titel: '4. Ergebnis', formel: 'p \\approx 3{,}2 + 13{,}9 + 4{,}7 \\approx 22\\,\\text{bar}', erklaerung: 'Der Viskositätsanteil überwiegt: Ein zäher Beton (hohes μ_p, z. B. HPC) erhöht den Pumpdruck stark.' },
+        ]}
+        ergebnisHinweis="Erforderlicher Förderdruck rund 22 bar (Lehrwerte)."
+      />
+
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Zulässige Transportzeit"
+        zielGleichung="t_{\text{Entladen}} - t_{\text{Wasserzugabe}} \le 90\,\text{min}"
+        normQuelle="DIN 1045-2, 7.6"
+        schritte={[
+          { titel: '1. Lieferschein', formel: 't_{\\text{Wasserzugabe}} = 8{:}10\\,\\text{Uhr};\\; t_{\\text{Entladen}} = 9{:}50\\,\\text{Uhr}', erklaerung: 'Fahrmischer mit Stau auf der Anfahrt.' },
+          { titel: '2. Zeitdifferenz', formel: '\\Delta t = 100\\,\\text{min} > 90\\,\\text{min}', erklaerung: 'Die Sollzeit ist überschritten.' },
+          { titel: '3. Bewertung', formel: '\\Rightarrow \\text{Rücksprache mit dem Betonwerk}', erklaerung: 'Ansteifen und Temperatur prüfen; bei zu steifem Beton nicht einbauen. Keine eigenmächtige Wasserzugabe.' },
+        ]}
+        ergebnisHinweis="100 min > 90 min – Beton nur nach Freigabe durch das Betonwerk verwenden."
+      />
+
+      <ModulTest moduleId="herstellung_einbau" />
+
       <ModuleFooter weblinks={[
           { title: "Beton.wiki: Betonherstellung", url: "https://beton.wiki/index.php?title=Betonherstellung" }, 
-          { title: "Zement-Merkblatt B7: Bereiten und Verarbeiten von Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, 
+          { title: "Zement-Merkblatt B 7: Bereiten und Verarbeiten von Beton (BauNetz Wissen)", url: "https://www.baunetzwissen.de/beton/tipps/planungshilfen/b--7--bereiten-und-verarbeiten-von-beton-151304" }, 
           { title: "Beton.wiki: Betonieren", url: "https://beton.wiki/index.php?title=Betonieren" },
           { title: "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
         ]} 
@@ -168,22 +206,22 @@ export default function HerstellungEinbau() {
         regelwerke={[
           { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 1045-3 (Tragwerke aus Beton - Bauausführung)' },
-          { title: 'DBV-Merkblatt Pumpbeton', url: 'https://www.betonverein.de/' }
+          { title: 'DBV-Merkblatt Pumpbeton' }
         ]}
         literatur={[
-          'Lohmeyer, G.; Ebeling, K. (2019): Betonböden für Hallen und Freiflächen (Werner Verlag)',
+          'Lohmeyer, G.; Ebeling, K.: Betonböden für Produktions- und Lagerhallen. Erkrath: Verlag Bau+Technik 2019',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         formeln={[
           {
             formel: 'p_{\\text{Förder}} = \\frac{2 \\cdot \\tau_0 \\cdot L}{R} + \\frac{8 \\cdot \\mu_p \\cdot v \\cdot L}{R^2} + \\rho \\cdot g \\cdot H',
             erklaerung: 'Förderdruckbedarf für Betonpumpen nach Bingham-Modell: Abhängig von Fließgrenze tau_0, plastischer Viskosität mu_p, Rohrleitungsradius R, Länge L und Förderhöhe H.',
-            quelle: 'DBV-Merkblatt Pumpbeton'
+            quelle: 'Bingham-Ansatz für Rohrströmung, vereinfacht (Lehrmodell)'
           },
           {
-            formel: 'w/z = \\frac{m_w}{m_z + k \\cdot m_z\'} \\le (w/z)_{\\text{max}}',
-            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 unter Berücksichtigung von Zusatzstoffen des Typs II (Flugasche k = 0.40, Silikastaub k = 1.0/2.0).',
-            quelle: 'DIN EN 206 Abs. 5.2.5.2'
+            formel: '(w/z)_{eq} = \\frac{w}{z + 0{,}4 \\cdot f} \\le (w/z)_{max}',
+            erklaerung: 'Äquivalenter Wasserzementwert mit Anrechnung von Flugasche (k = 0,4; f/z ≤ 0,33). Nach DIN 1045-2:2023-08 ist nur Flugasche anrechenbar; Herleitung im Reiter Grundlagen.',
+            quelle: 'DIN 1045-2:2023-08'
           }
         ]}
       />

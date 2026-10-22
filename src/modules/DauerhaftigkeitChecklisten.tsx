@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import { 
   ShieldAlert, 
   Search, 
-  Layers, 
-  FileText,
-  BookOpen,
-  Anchor,
-  ExternalLink,
-  ClipboardList
+  Layers,
+  ExternalLink
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
