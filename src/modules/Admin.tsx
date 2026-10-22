@@ -45,7 +45,7 @@ const ALL_AP_DATA: ApRow[] = [
     titel: 'Grundlagen, Bauchemie & Normen',
     cluster: 'Cluster I (Grundlagen & Labor)',
     status: 'erledigt',
-    vollstaendigkeitNotiz: 'Vollständige Abdeckung der thermodynamischen Grundlagen, Bindemittelchemie, Einheiten & Sicherheitskonzepte; EPBD 2024/1275 und GEG 2024 harmonisiert.',
+    vollstaendigkeitNotiz: 'Vollständige Abdeckung der thermodynamischen Grundlagen, Bindemittelchemie, Einheiten & Sicherheitskonzepte; EPBD 2024/1275 und GModG (vormals GEG 2024) harmonisiert.',
     module: ['Baustoffkunde', 'Einheiten', 'Materialkennwerte', 'Baustoffkenngrößen', 'Bauchemie', 'Sicherheitskonzept', 'Regularien']
   },
   {
@@ -117,7 +117,7 @@ const ALL_AP_DATA: ApRow[] = [
     titel: 'Bauphysik (Wärme, Feuchte, Schall & Brand)',
     cluster: 'Cluster IV (Mechanik & Bauphysik)',
     status: 'erledigt',
-    vollstaendigkeitNotiz: 'Umfassende thermophysikalische Bilanzierung (a/b/C_vol, U-Wert, GEG 2024), hygrothermische Schimmelkriterien (f_Rsi >= 0,70, Glaser-Verfahren) und normative Schallschutzanalysen (DIN 4109-32, Sabine).',
+    vollstaendigkeitNotiz: 'Umfassende thermophysikalische Bilanzierung (a/b/C_vol, U-Wert, GModG), hygrothermische Schimmelkriterien (f_Rsi >= 0,70, Glaser-Verfahren) und normative Schallschutzanalysen (DIN 4109-32, Sabine).',
     module: ['Bauphysik', 'Wärmeeigenschaften', 'Feuchteschutz', 'Dämmung Vergleich', 'Schallschutz', 'Brandschutz', 'Energieausweis']
   },
   {
