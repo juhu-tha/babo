@@ -15,6 +15,7 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Timer, Activity, Layers, Clock, Sliders } from 'lucide-react';
@@ -32,6 +33,9 @@ ChartJS.register(
 );
 
 export default function KriechenSchwinden() {
+  // Eingebettet in Hydratation & Folgen: Quellenblock dort zentral
+  const { activeTab: aktiverReiter } = useTabContext();
+  const eingebettet = aktiverReiter === 'hydratation_folgen';
   const [material, setMaterial] = useState<'beton' | 'stahl' | 'rheologie'>('beton');
 
   // Beton States
@@ -454,7 +458,8 @@ export default function KriechenSchwinden() {
           </div>
         </div>
         
-        <ModuleFooter weblinks={[{ title: "Beton.wiki: Kriechen", url: "https://beton.wiki/index.php?title=Kriechen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Schwinden", url: "https://beton.wiki/index.php?title=Schwinden" }]} 
+        {!eingebettet && (
+<ModuleFooter weblinks={[{ title: "Beton.wiki: Kriechen", url: "https://beton.wiki/index.php?title=Kriechen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Schwinden", url: "https://beton.wiki/index.php?title=Schwinden" }]} 
           wikipedia={[
                 { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
                 { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
@@ -485,6 +490,7 @@ export default function KriechenSchwinden() {
             }
           ]}
         />
+)}
       </>
     );
   };
@@ -565,7 +571,8 @@ export default function KriechenSchwinden() {
           </div>
         </div>
 
-        <ModuleFooter 
+        {!eingebettet && (
+<ModuleFooter 
           wikipedia={[
                 { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
                 { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
@@ -584,6 +591,7 @@ export default function KriechenSchwinden() {
             }
           ]}
         />
+)}
       </>
     );
   };
@@ -960,7 +968,8 @@ export default function KriechenSchwinden() {
           </div>
         </div>
 
-        <ModuleFooter 
+        {!eingebettet && (
+<ModuleFooter 
           wikipedia={[
             { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
             { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' },
@@ -982,6 +991,7 @@ export default function KriechenSchwinden() {
             }
           ]}
         />
+)}
       </div>
     );
   };

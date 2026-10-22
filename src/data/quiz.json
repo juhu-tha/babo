@@ -7331,5 +7331,65 @@
       "targetModuleLabel": "Frischbeton"
     },
     "verified": false
+  },
+  {
+    "id": "q_hyf_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "hydratation_folgen",
+    "moduleTitle": "Hydratation & Folgen",
+    "topic": "Reifegrad",
+    "difficulty": "Basis",
+    "normRef": "Saul (1951)",
+    "question": "Beton liegt 72 h bei 5 °C. Welchem Alter bei 20 °C entspricht das nach Saul (T₀ = −10 °C)?",
+    "options": [
+      "18 h",
+      "36 h",
+      "54 h",
+      "72 h"
+    ],
+    "correctIdx": 1,
+    "explanation": "M = (5 + 10) · 72 = 1 080 °C·h; t₂₀ = 1 080 / 30 = 36 h.",
+    "gapAnalysis": {
+      "topic": "Reifegrad",
+      "misconception": "Die Erhärtung hänge nur von der Zeit ab.",
+      "coreRule": "Niedrige Temperaturen verlängern Ausschal- und Nachbehandlungsfristen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Reifegrad“ im Modul Hydratation & Folgen noch einmal durch.",
+      "targetModuleTab": "hydratation_folgen",
+      "targetModuleLabel": "Hydratation & Folgen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hyf_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "hydratation_folgen",
+    "moduleTitle": "Hydratation & Folgen",
+    "topic": "Adiabatische Temperaturerhöhung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Wärmebilanz",
+    "question": "z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2 500 kJ/(m³·K). Wie groß ist ΔT_ad?",
+    "options": [
+      "rund 11 K",
+      "rund 28 K",
+      "rund 45 K",
+      "rund 70 K"
+    ],
+    "correctIdx": 1,
+    "explanation": "280 · 250 = 70 000 kJ/m³; 70 000 / 2 500 = 28 K.",
+    "gapAnalysis": {
+      "topic": "Adiabatische Temperaturerhöhung",
+      "misconception": "Die Zementmenge sei für die Erwärmung unerheblich.",
+      "coreRule": "ΔT_ad steigt proportional mit Zementgehalt und Hydratationswärme.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Adiabatische Temperaturerhöhung“ im Modul Hydratation & Folgen noch einmal durch.",
+      "targetModuleTab": "hydratation_folgen",
+      "targetModuleLabel": "Hydratation & Folgen"
+    },
+    "verified": false
   }
 ]
