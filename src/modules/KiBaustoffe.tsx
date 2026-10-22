@@ -4,9 +4,11 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
 import ReactMarkdown from 'react-markdown';
+import { InlineMath, BlockMath } from 'react-katex';
 import ToolsFuerThesen from '@/src/modules/ki/ToolsFuerThesen';
 import FehlerRechtEthik from '@/src/modules/ki/FehlerRechtEthik';
 import LokaleKI from '@/src/modules/ki/LokaleKI';
+import RagDemonstrator from '@/src/modules/ki/RagDemonstrator';
 import LlmPraxis from '@/src/modules/ki/LlmPraxis';
 import KiOnlinekurse from '@/src/modules/ki/KiOnlinekurse';
 import KiGlossar from '@/src/modules/ki/KiGlossar';
@@ -17,16 +19,32 @@ import {
   Cpu, 
   BookOpen, 
   Terminal, 
+  Users, 
   Compass, 
   MessageSquare, 
   Copy, 
+  CheckCircle2, 
+  ArrowRight, 
   Lightbulb, 
   ExternalLink,
   ChevronRight,
+  Code,
+  Zap,
+  Play,
+  RotateCcw,
   Target,
   Loader2,
+  Sliders,
+  Scale,
+  Gauge,
+  Leaf,
+  Shield,
   ShieldAlert,
   Server,
+  Hourglass,
+  HelpCircle,
+  GraduationCap,
+  Briefcase,
   Video
 } from 'lucide-react';
 
@@ -178,10 +196,6 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
   if (forceTab === 'ueberblick') {
     return <KiUeberblick />;
   }
-  return <KiBaustoffeInhalt forceTab={forceTab} />;
-}
-
-function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
 
   const [localActiveTab, setLocalActiveTab] = useState<'system' | 'prompting' | 'llmpraxis' | 'ressourcen' | 'thesen' | 'recht_ethik' | 'lokal' | 'onlinekurse'>('system');
   const activeTab = forceTab || localActiveTab;

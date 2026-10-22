@@ -1,5 +1,5 @@
 import React from 'react';
-import { Languages } from 'lucide-react';
+import { Languages, Globe, Check } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export const LanguageSwitcher: React.FC<{ compact?: boolean }> = ({ compact = false }) => {

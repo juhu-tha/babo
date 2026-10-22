@@ -1,6 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { Gauge, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
+import { Activity, Gauge, AlertTriangle, CheckCircle2, ShieldAlert, Droplets, Waves, Hammer, Compass, Trees, Scale, Layers } from 'lucide-react';
 import { PruefverfahrenDetail } from './pruefverfahrenData';
 
 interface SimulatorProps {

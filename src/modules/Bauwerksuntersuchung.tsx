@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Eye, Activity, Hammer, ArrowRight, BookOpen, ClipboardCheck, Layers } from 'lucide-react';
+import { Search, Eye, Activity, Hammer, Building2, ArrowRight, BookOpen, ClipboardCheck, FlaskConical, LifeBuoy, FileSpreadsheet, Layers } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

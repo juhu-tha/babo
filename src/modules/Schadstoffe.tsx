@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Wind, Droplets, Flame, Bug, Shield, Search, Globe, Activity } from 'lucide-react';
+import { AlertTriangle, Wind, Droplets, Flame, Bug, Shield, Search, ExternalLink, Globe, Recycle, CheckCircle2, ChevronRight, HelpCircle, AlertCircle, FileText, Sliders, Activity, Settings, Info } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -458,7 +458,7 @@ export default function Schadstoffe() {
   const selectedSchadstoff = SCHADSTOFFE_DATA.find(s => s.id === activeSchadstoff) || SCHADSTOFFE_DATA[0];
 
   function checkRisks(zeitraum: string, bauteil: string) {
-    const risks: { stoff: string, level: 'hoch' | 'mittel' | 'gering', detail: string }[] = [];
+    let risks: { stoff: string, level: 'hoch' | 'mittel' | 'gering', detail: string }[] = [];
     
     if (bauteil === 'decken-waende') {
       if (zeitraum === 'vor-1970' || zeitraum === '1970-1989') {
@@ -715,7 +715,7 @@ export default function Schadstoffe() {
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">Na₂O + K₂O (Gew.-%)</label>
-                          <input aria-label="Na₂O + K₂O (Gew.-%)" 
+                          <input 
                             type="number" 
                             min="0" 
                             max="30" 
@@ -727,7 +727,7 @@ export default function Schadstoffe() {
                         </div>
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">CaO + MgO (Gew.-%)</label>
-                          <input aria-label="CaO + MgO (Gew.-%)" 
+                          <input 
                             type="number" 
                             min="0" 
                             max="40" 
@@ -739,7 +739,7 @@ export default function Schadstoffe() {
                         </div>
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">BaO + B₂O₃ (Gew.-%)</label>
-                          <input aria-label="BaO + B₂O₃ (Gew.-%)" 
+                          <input 
                             type="number" 
                             min="0" 
                             max="15" 
@@ -751,7 +751,7 @@ export default function Schadstoffe() {
                         </div>
                         <div>
                           <label className="text-xs font-bold text-slate-700 block mb-1">Al₂O₃ (Gew.-%)</label>
-                          <input aria-label="Al₂O₃ (Gew.-%)" 
+                          <input 
                             type="number" 
                             min="0" 
                             max="30" 

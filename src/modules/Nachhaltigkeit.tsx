@@ -1,7 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,13 +13,16 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { 
-  Leaf, Factory, Recycle, ArrowRight, 
+  Leaf, Factory, Truck, Recycle, ArrowRight, Activity, 
   Trash2, Plus, ArrowUp, ArrowDown, Settings, AlertTriangle, 
-  CheckCircle, Zap, Building, Percent, Sparkles, ClipboardCheck, Globe, FileSpreadsheet, HelpCircle, ExternalLink,
+  CheckCircle, Zap, Building, Percent, Sparkles, ClipboardCheck,
+  Share2, Globe, FileSpreadsheet, HelpCircle, ExternalLink,
   BookOpen, Compass, Layers, ShieldCheck,
-  TrendingDown, Sliders, Scale, FileText, CheckCircle2, Landmark, HardHat, AlertCircle, Home
+  TrendingDown, TrendingUp, Sliders, Scale, FileText, CheckCircle2,
+  Award, Landmark, HardHat, RefreshCw, AlertCircle, ArrowUpRight, Home
 } from 'lucide-react';
-import { InlineMath } from 'react-katex';
+import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import { InlineMath, BlockMath } from 'react-katex';
 import { RechtsrahmenKompendium } from '@/src/components/ui/RechtsrahmenKompendium';
 
 ChartJS.register(
@@ -951,7 +953,7 @@ export default function Nachhaltigkeit() {
               <div className="mt-4 pt-4 border-t border-home-grau/30 flex flex-col md:flex-row items-end gap-3 bg-slate-50/50 p-4 rounded-xl border border-home-grau/30">
                 <div className="w-full md:flex-1">
                   <label className="block text-[10px] uppercase font-bold text-slate-900 mb-1 tracking-wider">Werkstoff auswählen</label>
-                  <select aria-label="Werkstoff auswählen"
+                  <select
                     value={selectedAddMaterial}
                     onChange={(e) => setSelectedAddMaterial(e.target.value)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg text-xs bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -964,7 +966,7 @@ export default function Nachhaltigkeit() {
 
                 <div className="w-24 shrink-0">
                   <label className="block text-[10px] uppercase font-bold text-slate-900 mb-1 tracking-wider">Stärke (cm)</label>
-                  <input aria-label="Stärke (cm)"
+                  <input
                     type="number"
                     min="1"
                     max="50"
@@ -3667,7 +3669,7 @@ export default function Nachhaltigkeit() {
             quelle: 'EPBD (EU 2024/1275) / DIN EN 15978'
           },
           {
-            formel: '\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{€}]',
+            formel: '\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{\€}]',
             erklaerung: 'CO2-Grenzausgleichsabgabe für importierte emissionsintensive Baustoffe (Zement, Stahl, Aluminium) zur Vermeidung von Carbon Leakage.',
             quelle: 'VO (EU) 2023/956 (CBAM) Art. 21'
           },

@@ -1,12 +1,20 @@
 import React, { useState, useMemo } from 'react';
 import { 
+  TrendingUp, 
+  Clock, 
+  DollarSign, 
   BarChart3, 
+  Info, 
   Scale, 
+  ArrowRight, 
+  HelpCircle, 
+  Check, 
   AlertCircle, 
   Sparkles, 
   RefreshCw, 
   Layers, 
-  Coins,
+  Coins, 
+  Wrench,
   CheckCircle2,
   Download
 } from 'lucide-react';

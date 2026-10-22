@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Leaf, Award, ShieldCheck, Factory, Flame, Star, Percent, BookOpen } from 'lucide-react';
+import { Leaf, Award, ShieldCheck, Factory, HelpCircle, CheckCircle, Flame, Star, Percent, BookOpen } from 'lucide-react';
 
 export default function CscZertifizierung() {
   // State for Interactive CSC Estimator

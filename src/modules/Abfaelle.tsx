@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, LucideIcon, Search, FileSignature, BookOpen, ArrowRight, HelpCircle, Check, X, AlertCircle, Scale, Droplets, Leaf, ClipboardList } from 'lucide-react';
+import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, LucideIcon, Search, FileSignature, BookOpen, ArrowRight, HelpCircle, Calendar, Check, X, AlertCircle, Scale, Droplets, Leaf, ClipboardList } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -822,7 +822,7 @@ export default function Abfaelle() {
                     {/* Materialauswahl */}
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">1. Material & Güteklasse (MEB)</label>
-                      <select aria-label="1. Material & Güteklasse (MEB)" 
+                      <select 
                         value={ebvMaterial} 
                         onChange={(e) => setEbvMaterial(e.target.value)} 
                         className="w-full bg-white text-slate-800 border border-home-grau/30 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 font-medium"
@@ -1249,7 +1249,7 @@ export default function Abfaelle() {
                     <div className="space-y-3">
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 mb-1">Parameter / Schadstoff:</label>
-                        <select aria-label="Parameter / Schadstoff"
+                        <select
                           className="w-full text-xs font-mono bg-slate-50 border border-home-grau/30 rounded-lg p-2 outline-none focus:border-home-grau/30"
                           value={depVSelectedParam}
                           onChange={(e) => {
@@ -1871,7 +1871,7 @@ export default function Abfaelle() {
                     <div className="space-y-3">
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 mb-1">Szenario / Nutzungspfad:</label>
-                        <select aria-label="Szenario / Nutzungspfad"
+                        <select
                           className="w-full text-xs font-mono bg-slate-50 border border-home-grau/30 rounded-lg p-2.5 outline-none focus:border-home-grau/30"
                           value={bbodNutzungsart}
                           onChange={(e) => setBbodNutzungsart(e.target.value)}
@@ -2180,7 +2180,7 @@ export default function Abfaelle() {
                     <div className="space-y-3">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">1. Haufwerksvolumen (m³):</label>
-                        <input aria-label="1. Haufwerksvolumen (m³)"
+                        <input
                           type="number"
                           min="1"
                           max="20000"
@@ -2222,7 +2222,7 @@ export default function Abfaelle() {
 
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">3. Größtkorn d (mm):</label>
-                        <select aria-label="3. Größtkorn d (mm)"
+                        <select
                           className="w-full text-xs bg-slate-50 border border-home-grau/30 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-slate-800"
                           value={pnGrainSize}
                           onChange={(e) => setPnGrainSize(e.target.value)}

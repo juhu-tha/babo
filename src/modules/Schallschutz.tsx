@@ -2,7 +2,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Volume2 } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
+import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -187,7 +187,7 @@ export default function Schallschutz() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
                         <div className="flex items-center gap-2"><label className="text-xs text-home-grau block mb-1">Material</label><InfoTooltip text="Auswahl des zu untersuchenden Werkstoffs." /></div>
-                        <select aria-label="Material" 
+                        <select 
                           value={layer.matId}
                           onChange={(e) => updateLayer(layer.id, 'matId', e.target.value)}
                           className="w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:ring-2 focus:ring-orange-800 outline-none"
@@ -199,7 +199,7 @@ export default function Schallschutz() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2"><label className="text-xs text-home-grau block mb-1">Dicke d (m)</label><InfoTooltip text="Dicke der Bauteilschicht in Metern." /></div>
-                        <input aria-label="Dicke d (m)" 
+                        <input 
                           type="number" 
                           min="0.001" max="2.0" step="0.005"
                           value={layer.d}

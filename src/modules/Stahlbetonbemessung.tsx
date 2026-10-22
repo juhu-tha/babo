@@ -7,6 +7,7 @@ import {
   CircleDashed, 
   GitCommit,
   Layers,
+  BookOpen,
   Activity,
   Sparkles,
   GraduationCap

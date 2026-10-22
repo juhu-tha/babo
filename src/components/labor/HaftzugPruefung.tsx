@@ -4,14 +4,21 @@ import {
   Play,
   RotateCcw,
   Activity,
+  ShieldCheck,
   Check,
   Download,
   FileText,
+  Layers,
   Info,
   ArrowUpFromLine,
-  Disc
+  AlertTriangle,
+  CheckCircle2,
+  XCircle,
+  Disc,
+  Wrench,
+  Sparkles
 } from 'lucide-react';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,7 +30,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 

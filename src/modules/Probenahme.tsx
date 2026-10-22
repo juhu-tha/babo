@@ -1,10 +1,11 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { 
   FileSearch, SplitSquareHorizontal, LayoutGrid, Scale, AlertTriangle, 
-  GitMerge, ArrowRight, Wrench, Layers, Target, Info, 
+  GitMerge, ArrowRight, Hammer, Wrench, Layers, Target, Grid, Info, 
   Disc, Sliders, CheckCircle2, MapPin, Gauge 
 } from 'lucide-react';
 import React, { useState } from 'react';
+import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -338,7 +339,7 @@ export default function Probenahme() {
                   <div className="space-y-3.5 text-xs">
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Maximales Gesteinskorn (D_max):</label>
-                      <select aria-label="Maximales Gesteinskorn (D_max)" 
+                      <select 
                         className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-805 text-xs"
                         value={dMax} 
                         onChange={(e) => setDMax(Number(e.target.value))}
@@ -352,7 +353,7 @@ export default function Probenahme() {
 
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Geplanter Bohrkern-Durchmesser (d):</label>
-                      <select aria-label="Geplanter Bohrkern-Durchmesser (d)" 
+                      <select 
                         className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-805 text-xs"
                         value={coreD} 
                         onChange={(e) => setCoreD(Number(e.target.value))}
@@ -366,7 +367,7 @@ export default function Probenahme() {
 
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Gewonnene Prüf-Höhe (h):</label>
-                      <select aria-label="Gewonnene Prüf-Höhe (h)" 
+                      <select 
                         className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-805 text-xs"
                         value={coreH} 
                         onChange={(e) => setCoreH(Number(e.target.value))}

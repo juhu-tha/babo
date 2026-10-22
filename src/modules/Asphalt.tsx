@@ -2,6 +2,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaText } from '@/src/components/ui/FormulaText';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { 
   Layers, 
@@ -12,7 +13,8 @@ import {
   TrendingDown, 
   Wind, 
   Flame, 
-  Trash2,
+  Trash2, 
+  Info,
   CheckCircle2, 
   AlertTriangle,
   FileText,
@@ -31,7 +33,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 
 ChartJS.register(
   CategoryScale,

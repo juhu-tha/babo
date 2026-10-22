@@ -9,14 +9,17 @@ import {
   Layers,
   Droplets,
   Zap,
+  Info,
   BookOpen,
   Scale,
   Search,
+  Check,
   Building,
   Flame,
   FileText,
   Activity,
-  Radio
+  Radio,
+  Eye
 } from 'lucide-react';
 
 export default function SpannbetonDauerhaftigkeit() {
@@ -70,11 +73,11 @@ export default function SpannbetonDauerhaftigkeit() {
     if (chlorideClass === 'XD3') baseDur = Math.max(baseDur, 45);
 
     // Zuschlag für 100 Jahre Entwurfslebensdauer bei Brücken (DIN EN 1992-2 / ZTV-ING):
-    const delta_dur_100 = structureType === 'bruecke' ? 5 : 0;
+    let delta_dur_100 = structureType === 'bruecke' ? 5 : 0;
 
     // Normativer Erhöhungszuschlag für Spannstahl nach DIN EN 1992-1-1 Abs. 4.4.1.2(5):
     // Bei Spanngliedern im Verbund: Delta c_dur,gamma = +10 mm
-    const delta_dur_gamma = prestressSystem === 'unbonded' ? 0 : 10;
+    let delta_dur_gamma = prestressSystem === 'unbonded' ? 0 : 10;
 
     // Abminderung bei hochfestem Beton (Mindestdruckfestigkeitsklassen-Vorteil nach EC2 Tab. 4.3ND)
     let delta_dur_fck = 0;
@@ -348,7 +351,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 {/* 1. Bauwerksart */}
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Bauwerksart &amp; Regelwerk:</label>
-                  <select aria-label="Bauwerksart &amp; Regelwerk"
+                  <select
                     value={structureType}
                     onChange={(e) => setStructureType(e.target.value as any)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -361,7 +364,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 {/* 2. Vorspannsystem */}
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Vorspannsystem:</label>
-                  <select aria-label="Vorspannsystem"
+                  <select
                     value={prestressSystem}
                     onChange={(e) => setPrestressSystem(e.target.value as any)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -376,7 +379,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 {prestressSystem === 'post_tensioned' ? (
                   <div className="space-y-1.5">
                     <label className="font-bold text-slate-700 block">Hüllrohr-Außendurchmesser:</label>
-                    <select aria-label="Hüllrohr-Außendurchmesser"
+                    <select
                       value={ductDiameter}
                       onChange={(e) => setDuctDiameter(Number(e.target.value))}
                       className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
@@ -391,7 +394,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 ) : (
                   <div className="space-y-1.5">
                     <label className="font-bold text-slate-700 block">Litzendurchmesser:</label>
-                    <select aria-label="Litzendurchmesser"
+                    <select
                       value={strandDiameter}
                       onChange={(e) => setStrandDiameter(Number(e.target.value))}
                       className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
@@ -406,7 +409,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 {/* 4. Betonklasse */}
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Betonklasse:</label>
-                  <select aria-label="Betonklasse"
+                  <select
                     value={concreteGrade}
                     onChange={(e) => setConcreteGrade(e.target.value)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
@@ -423,7 +426,7 @@ export default function SpannbetonDauerhaftigkeit() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-1 border-t border-home-grau/15">
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Karbonatisierung (XC):</label>
-                  <select aria-label="Karbonatisierung (XC)"
+                  <select
                     value={carbonationClass}
                     onChange={(e) => setCarbonationClass(e.target.value as any)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -437,7 +440,7 @@ export default function SpannbetonDauerhaftigkeit() {
 
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Chloride aus Taumitteln (XD):</label>
-                  <select aria-label="Chloride aus Taumitteln (XD)"
+                  <select
                     value={chlorideClass}
                     onChange={(e) => setChlorideClass(e.target.value as any)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -451,7 +454,7 @@ export default function SpannbetonDauerhaftigkeit() {
 
                 <div className="space-y-1.5">
                   <label className="font-bold text-slate-700 block">Frost-Tau-Angriff (XF):</label>
-                  <select aria-label="Frost-Tau-Angriff (XF)"
+                  <select
                     value={frostClass}
                     onChange={(e) => setFrostClass(e.target.value as any)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"

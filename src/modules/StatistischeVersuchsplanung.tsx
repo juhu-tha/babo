@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import React, { useState } from 'react';
-import { Network, Calculator, FlaskConical, Table as TableIcon } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Network, Calculator, FlaskConical, ArrowRight, Table as TableIcon } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface RunData {

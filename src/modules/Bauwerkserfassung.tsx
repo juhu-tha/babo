@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Building2, Monitor, Calculator, Compass, Info, AlertTriangle, 
-  Settings, LayoutGrid
+  Building2, Layers, Search, Monitor, Calculator, Compass, Info, 
+  ArrowRight, CheckCircle2, FileText, Activity, AlertTriangle, 
+  Settings, Zap, ShieldCheck, HelpCircle, LayoutGrid
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -511,7 +512,7 @@ export default function Bauwerkserfassung() {
                   {/* Wood Selection */}
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Holzkennwertklasse (NH):</label>
-                    <select aria-label="Holzkennwertklasse (NH)"
+                    <select
                       className="w-full bg-slate-50 border border-home-grau/30 rounded p-1.5 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono font-bold"
                       value={woodClass}
                       onChange={(e) => setWoodClass(e.target.value as any)}
@@ -527,7 +528,7 @@ export default function Bauwerkserfassung() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5">Breite b (mm):</label>
-                      <input aria-label="Breite b (mm)"
+                      <input
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterWidth}
@@ -536,7 +537,7 @@ export default function Bauwerkserfassung() {
                     </div>
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5">Höhe h (mm):</label>
-                      <input aria-label="Höhe h (mm)"
+                      <input
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={rafterHeight}
@@ -547,7 +548,7 @@ export default function Bauwerkserfassung() {
 
                   <div>
                     <label className="block font-semibold text-slate-700 mb-0.5">Sparrenlänge L (mm):</label>
-                    <input aria-label="Sparrenlänge L (mm)"
+                    <input
                       type="number" min="0"
                       className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                       value={spanLength}
@@ -559,7 +560,7 @@ export default function Bauwerkserfassung() {
                   <div className="grid grid-cols-2 gap-3 pt-2 border-t border-home-grau/30">
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5 text-xs">Axialdruck N_d (kN):</label>
-                      <input aria-label="Axialdruck N_d (kN)"
+                      <input
                         type="number" min="0"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"
                         value={axialForce}
@@ -568,7 +569,7 @@ export default function Bauwerkserfassung() {
                     </div>
                     <div>
                       <label className="block font-semibold text-slate-700 mb-0.5 text-xs">Biegelast q_d (kN/m):</label>
-                      <input aria-label="Biegelast q_d (kN/m)"
+                      <input
                         type="number" min="0"
                         step="0.1"
                         className="w-full bg-slate-50 border border-home-grau/30 rounded p-1 font-mono font-bold text-right"

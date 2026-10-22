@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { 
   BookOpen, 
+  HelpCircle, 
   Sparkles, 
+  Cpu, 
   Code, 
   Server, 
   Terminal, 
@@ -11,8 +13,10 @@ import {
   ChevronRight, 
   ChevronDown, 
   ArrowRight,
+  ExternalLink,
   Lightbulb,
-  CheckCircle2
+  CheckCircle2,
+  Workflow
 } from 'lucide-react';
 import { useTabContext, TabId } from '@/src/contexts/TabContext';
 

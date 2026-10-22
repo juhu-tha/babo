@@ -1,15 +1,25 @@
 import React, { useState, useMemo } from 'react';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
+  Sliders,
   RotateCcw,
   Activity,
   Compass,
   Layers,
+  Info,
+  CheckCircle2,
+  AlertTriangle,
+  ArrowRight,
   ArrowUp,
   ArrowDown,
   Gauge,
+  ShieldCheck,
+  ShieldAlert,
   Sparkles,
+  Scale,
+  Minus,
+  Plus,
   GitCommit,
   Check
 } from 'lucide-react';

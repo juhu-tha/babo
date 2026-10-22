@@ -12,7 +12,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -165,14 +164,14 @@ export default function Kunststoffe() {
         Tg = -40;
         const E_glass = 3000;
         const E_rubber = 3;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.2 * (T - Tg)));
+        let E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.2 * (T - Tg)));
         E = Math.max(0.1, E_val);
       }
       else if (plasticType === 'duroplast') {
         Tg = 150;
         const E_glass = 4000;
         const E_rubber = 800;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.1 * (T - Tg)));
+        let E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.1 * (T - Tg)));
         E = Math.max(0.1, E_val);
       }
 
@@ -180,7 +179,7 @@ export default function Kunststoffe() {
     }
 
     let currentE = 0.1;
-    const T = temperature;
+    let T = temperature;
     if (plasticType === 'amorphous') {
         Tg = 100;
         Tf = 150;
@@ -203,14 +202,14 @@ export default function Kunststoffe() {
         Tg = -40;
         const E_glass = 3000;
         const E_rubber = 3;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.2 * (T - Tg)));
+        let E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.2 * (T - Tg)));
         currentE = Math.max(0.1, E_val);
     }
     else if (plasticType === 'duroplast') {
         Tg = 150;
         const E_glass = 4000;
         const E_rubber = 800;
-        const E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.1 * (T - Tg)));
+        let E_val = E_rubber + (E_glass - E_rubber) / (1 + Math.exp(0.1 * (T - Tg)));
         currentE = Math.max(0.1, E_val);
     }
 
@@ -265,7 +264,7 @@ export default function Kunststoffe() {
       x: {
         title: { display: true, text: 'Temperatur [°C]' },
         ticks: {
-          callback: function(this: any, val: any, index: number) {
+          callback: function(val: any, index: number) {
             return index % 10 === 0 ? this.getLabelForValue(val) : '';
           }
         }
@@ -351,7 +350,7 @@ export default function Kunststoffe() {
                 <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Kunststoff-Struktur</label><InfoTooltip text="Molekularer Aufbau des Kunststoffs (z.B. amorph, teilkristallin)." /></div>
                 <InfoTooltip text="Wählen Sie die molekulare Struktur des Kunststoffs." />
               </div>
-              <select aria-label="Kunststoff-Struktur" 
+              <select 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
                 value={plasticType}
                 onChange={(e) => setPlasticType(e.target.value as any)}

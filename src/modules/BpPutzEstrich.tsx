@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Layers, BookOpen, CheckCircle2, Lightbulb, ClipboardList, Flame, Settings, ShieldAlert, Sparkles, FileText } from 'lucide-react';
+import { Layers, BookOpen, CheckCircle2, Lightbulb, ClipboardList, Info, Flame, Settings, ArrowRight, ShieldAlert, Sparkles, FileText } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';

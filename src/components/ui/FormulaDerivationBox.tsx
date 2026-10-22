@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Calculator, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, Calculator, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { useTabContext } from '@/src/contexts/TabContext';
 

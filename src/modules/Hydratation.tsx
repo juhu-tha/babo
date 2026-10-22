@@ -1,5 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { Flame, Activity, Info } from 'lucide-react';
+import { Flame, Activity, TrendingUp, Gauge, Info, Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { InlineMath } from 'react-katex';
 import {
@@ -14,8 +14,8 @@ import {
   Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 ChartJS.register(
@@ -606,7 +606,7 @@ export default function Hydratation() {
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementart</label><InfoTooltip text="Art des verwendeten Zements (z.B. CEM I, CEM II)." /></div>
-            <select aria-label="Zementart" 
+            <select 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={zementArt}
               onChange={(e) => setZementArt(e.target.value)}
@@ -618,7 +618,7 @@ export default function Hydratation() {
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Festigkeitsklasse</label><InfoTooltip text="Normfestigkeit des Materials." /></div>
-            <select aria-label="Festigkeitsklasse" 
+            <select 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={festigkeitsklasse}
               onChange={(e) => setFestigkeitsklasse(e.target.value)}
@@ -633,7 +633,7 @@ export default function Hydratation() {
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Erhärtung</label><InfoTooltip text="Geschwindigkeit der Festigkeitsentwicklung." /></div>
-            <select aria-label="Erhärtung" 
+            <select 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
               value={erhaertungsgeschwindigkeit}
               onChange={(e) => setErhaertungsgeschwindigkeit(e.target.value)}
@@ -646,7 +646,7 @@ export default function Hydratation() {
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zusatzstoff</label><InfoTooltip text="Art des verwendeten Betonzusatzstoffs." /></div>
             <div className="flex gap-2">
-              <select aria-label="Zusatzstoff" 
+              <select 
                 className="flex-1 p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue"
                 value={zusatzstoff}
                 onChange={(e) => {
@@ -714,7 +714,7 @@ export default function Hydratation() {
 
         <div className="flex flex-col gap-2 mt-2">
           <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Reifeverfahren</label><InfoTooltip text="Berechnungsmodell für das Äquivalentalter." /></div>
-          <select aria-label="Reifeverfahren" 
+          <select 
             className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-middle-blue text-sm"
             value={reifeVerfahren}
             onChange={(e) => setReifeVerfahren(e.target.value)}
@@ -944,6 +944,76 @@ export default function Hydratation() {
           </div>
         </div>
 
+        <ModuleFooter 
+          weblinks={[
+            { title: "Beton.wiki: Hydratation", url: "https://beton.wiki/index.php?title=Hydratation" }, 
+            { title: "Zement-Merkblätter Beton.org", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
+          ]} 
+          wikipedia={[
+            { title: 'Hydratation (Zement)', url: 'https://de.wikipedia.org/wiki/Hydratation' },
+            { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydratationsw%C3%A4rme' }
+          ]}
+          regelwerke={[
+            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
+            { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Erhärtungsnachweis)' },
+            { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton (Temperatur- und Rissgrenzwerte)', url: 'https://www.dafstb.de/' },
+            { title: 'fib Model Code 2010 (Model Code for Concrete Structures)', url: 'https://www.fib-international.org/' },
+            { title: 'ZTV-ING: Zusätzliche Technische Vertragsbedingungen und Richtlinien für Ingenieurbauten', url: 'https://www.bast.de/' }
+          ]}
+          literatur={[
+            'Stark, J.; Wicht, B. (2013): Dauerhaftigkeit von Beton (Springer Vieweg)',
+            'Locher, F. W. (2000): Zement – Grundlagen der Herstellung und Verwendung (Verlag Bau+Technik)',
+            'Freiesleben Hansen, P.; Pedersen, J. (1977): Maturity computer for controlled curing and hardening of concrete. Nordisk Betong 1, S. 19-34',
+            'Rastrup, E. (1954): Heat of hydration in concrete. Magazine of Concrete Research 6(17), S. 79-92'
+          ]}
+          formeln={[
+            {
+              formel: 'M = \\sum \\Delta t \\cdot (T_c + 10)',
+              erklaerung: 'Reifegrad nach Saul (Nurse-Saul-Funktion): M [°C·d] oder [°C·h] aus Zeitintervallen Δt und Betontemperatur Tc (Basis -10 °C).',
+              quelle: 'Nurse (1949) / Saul (1951)'
+            },
+            {
+              formel: 't_e = \\sum \\Delta t \\cdot 2^{\\frac{T_c - 20}{10}}',
+              erklaerung: 'Äquivalentalter nach DIN 1045-3 / DIN EN 13670 (Rastrup-Formel): Verdopplung der Erhärtungsrate je 10 K Temperaturanstieg.',
+              quelle: 'Rastrup (1954) / DIN EN 13670'
+            },
+            {
+              formel: 't_e = \\sum \\Delta t \\cdot 10^{C \\cdot \\frac{T_c - 20}{10}}',
+              erklaerung: 'Äquivalentalter nach de Vree (Temperaturbeiwert meist C = 0.30 bis 0.35 für Normalbeton).',
+              quelle: 'de Vree (1976)'
+            },
+            {
+              formel: 't_e = \\sum \\Delta t \\cdot \\exp\\left( \\frac{E_a}{R} \\cdot \\left(\\frac{1}{293{,}15} - \\frac{1}{T_c + 273{,}15}\\right) \\right)',
+              erklaerung: 'Äquivalentalter nach Arrhenius (C-Wert-Methode nach Freiesleben Hansen & Pedersen): Berücksichtigt die Aktivierungsenergie Ea (typisch 30–50 kJ/mol).',
+              quelle: 'Freiesleben Hansen & Pedersen (1977)'
+            },
+            {
+              formel: 't_e = \\sum \\Delta t \\cdot \\exp\\left( 4000 \\cdot \\left(\\frac{1}{293{,}15} - \\frac{1}{T_c + 273{,}15}\\right) \\right)',
+              erklaerung: 'Vereinfachte Arrhenius-Gleichung nach fib Model Code 2010 mit pauschaler Konstante 4000 K (Ea/R).',
+              quelle: 'fib Model Code 2010'
+            },
+            {
+              formel: 'f_{cm}(t) = \\beta_{cc}(t) \\cdot f_{cm} = \\exp\\left(s \\cdot \\left(1 - \\sqrt{\\frac{28}{t_e}}\\right)\\right) \\cdot f_{cm}',
+              erklaerung: 'Druckfestigkeitsentwicklung nach Eurocode 2 (DIN EN 1992-1-1 Cl. 3.1.2 Gl. 3.1 & 3.2) in Abhängigkeit vom Reifealter te und dem Zement-Beiwert s.',
+              quelle: 'DIN EN 1992-1-1 Gl. 3.1 / 3.2'
+            },
+            {
+              formel: 'f_{ctm}(t) = [\\beta_{cc}(t)]^{\\alpha} \\cdot f_{ctm} \\quad (\\alpha = 1{,}0 \\text{ für } t < 28\\,\\text{d};\\; \\alpha = 2/3 \\text{ für } t \\ge 28\\,\\text{d})',
+              erklaerung: 'Entwicklung der zentrischen Zugfestigkeit junger Betone nach Eurocode 2 (DIN EN 1992-1-1 Cl. 3.1.2 Gl. 3.4). Eilt im Frühbereich der Druckfestigkeit voraus.',
+              quelle: 'DIN EN 1992-1-1 Gl. 3.4'
+            },
+            {
+              formel: 'E_{cm}(t) = \\left(\\frac{f_{cm}(t)}{f_{cm}}\\right)^{0{,}3} \\cdot E_{cm} = [\\beta_{cc}(t)]^{0{,}3} \\cdot E_{cm}',
+              erklaerung: 'Zeitliche Entwicklung des Elastizitätsmoduls nach Eurocode 2 (DIN EN 1992-1-1 Cl. 3.1.3 Gl. 3.5). Durch die 0.3-Potenzierung wird der E-Modul sehr früh (ca. 70–80 % nach 2 Tagen) aufgebaut.',
+              quelle: 'DIN EN 1992-1-1 Gl. 3.5'
+            },
+            {
+              formel: '\\Delta T_{ad} = \\frac{z \\cdot H_z}{c_p \\cdot \\rho}',
+              erklaerung: 'Adiabatischer Temperaturanstieg: z = Zementgehalt [kg/m³], Hz = Hydratationswärme [kJ/kg], cp = spez. Wärmekapazität [ca. 1,0 kJ/(kg·K)], ρ = Betondichte [ca. 2400 kg/m³].',
+              quelle: 'DAfStb Massige Bauteile'
+            }
+          ]}
+        />
       </div>
     </div>
   );

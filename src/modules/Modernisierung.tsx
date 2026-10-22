@@ -3,23 +3,30 @@ import {
   RefreshCw, 
   Leaf, 
   Target, 
+  ThermometerSun, 
   Zap, 
+  BookOpen, 
   Layers, 
   Settings, 
+  ChevronRight, 
   Calculator, 
   AlertTriangle, 
   Info, 
   Scale, 
   CheckCircle2, 
+  ArrowRight, 
   FileText, 
+  Home, 
   Coins 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { GMODG_ANLAGE7, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
+import { Slider } from '@/src/components/ui/Slider';
+import { FormulaText } from '@/src/components/ui/FormulaText';
+import { GMODG_ANLAGE7, FX, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
 
@@ -619,7 +626,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Bauteilfläche (<InlineMath math="A" />):</label>
                     <div className="flex items-center gap-1.5">
-                      <input aria-label="Bauteilfläche ()"
+                      <input
                         type="number"
                         min="20"
                         max="1000"
@@ -634,7 +641,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Energiepreis:</label>
                     <div className="flex items-center gap-1.5">
-                      <input aria-label="Energiepreis"
+                      <input
                         type="number"
                         step="0.01"
                         min="0.05"
@@ -652,7 +659,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Gradtagzahl <InlineMath math="G_{t20/15}" />:</label>
                     <div className="flex items-center gap-1.5">
-                      <input aria-label="Gradtagzahl "
+                      <input
                         type="number"
                         min="2000"
                         max="5500"
@@ -667,7 +674,7 @@ export default function Modernisierung() {
                   <div className="space-y-1">
                     <label className="text-[11px] font-bold text-text-main/80 block">Anlagennutzungsgrad <InlineMath math="\eta_{sys}" />:</label>
                     <div className="flex items-center gap-1.5">
-                      <input aria-label="Anlagennutzungsgrad "
+                      <input
                         type="number"
                         min="0.5"
                         max="4"

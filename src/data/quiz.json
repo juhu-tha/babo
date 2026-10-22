@@ -45,11 +45,11 @@
     "question": "Wie verändert sich die Wärmeleitfähigkeit (λ) eines Mauerwerksteines bei zunehmendem Feuchtegehalt?",
     "options": [
       "Sie sinkt ab, da das ruhende Wasser in den Poren als exzellente Wärmebarriere wirkt.",
-      "Sie bleibt vollkommen unverändert, da die mineralische Struktur des Porenskeletts den Transport dominiert.",
       "Sie steigt drastisch an, da Wasser eine rund 25-fach höhere Wärmeleitfähigkeit aufweist als ruhende Luft (0,6 W/(m·K) vs. 0,026 W/(m·K)).",
+      "Sie bleibt vollkommen unverändert, da die mineralische Struktur des Porenskeletts den Transport dominiert.",
       "Sie fällt exponentiell ab, weil Feuchtigkeit die Wärmestrahlung im Porenraum vollständig absorbiert."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Wasser leitet Wärme deutlich besser als unbewegte Luft. Dringen Feuchtigkeit und Kondensat in die Poren eines Dämm- oder Mauersteins ein, verdrängt Wasser die Luft, wodurch der λ-Wert klettert. Das Bauteil verliert seine dämmende Schutzfunktion.",
     "gapAnalysis": {
       "topic": "Wärme- und Feuchtetransport in porösen Medien",
@@ -99,28 +99,28 @@
     "id": "q_zement_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "bindemittel",
-    "moduleTitle": "Bindemittel",
+    "clusterId": "I",
+    "clusterName": "Grundlagen & Labor",
+    "moduleId": "zement",
+    "moduleTitle": "Zementchemie (DIN EN 197-1)",
     "topic": "Klinkerphasen & Hydratationsprodukte",
     "difficulty": "Klausur-Schwerpunkt",
     "normRef": "DIN EN 197-1",
     "question": "Welche Klinkerphase ist für die hohe Anfangsfestigkeit (nach 1 bis 7 Tagen) im Portlandzement verantwortlich?",
     "options": [
       "Belit (C2S, Dicalciumsilicat) mit langsamer Nacherhärtung über Monate.",
-      "Calciumsulfat-Dihydrat (Gips).",
+      "Alit (C3S, Tricalciumsilicat) mit schneller exothermer Hydratation zu C-S-H-Phasen und Portlandit.",
       "Tetracalciumaluminatferrit (C4AF, Braunmillerit) als reines Flussmittel.",
-      "Alit (C3S, Tricalciumsilicat) mit schneller exothermer Hydratation zu C-S-H-Phasen und Portlandit."
+      "Calciumsulfat-Dihydrat (Gips)."
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Tricalciumsilicat (C3S, Alit, ca. 50-70% des Klinkers) reagiert rasch mit Wasser und bildet das primäre Traggerüst aus Calciumsilikathydrat (C-S-H-Phasen). Belit (C2S) hydratisiert viel langsamer und liefert die Festigkeitszunahme im höheren Bauteilalter.",
     "gapAnalysis": {
       "topic": "Zementklinker-Mineralogie & Reaktionskinetik",
       "misconception": "Fehlende Differenzierung zwischen Alit (C3S, Frühfestigkeit) und Belit (C2S, Spätfestigkeit).",
       "coreRule": "Alit (C3S) = schnelle Hydratation & Frühfestigkeit; Belit (C2S) = langsame Hydratation, geringe Wärme, hohe Endfestigkeit.",
       "actionableAdvice": "Öffnen Sie das Modul Zement und studiere die 4 Klinkerhauptphasen sowie die Bogue-Zusammensetzung.",
-      "targetModuleTab": "bindemittel",
+      "targetModuleTab": "zement",
       "targetModuleLabel": "Zement"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -141,11 +141,11 @@
     "question": "Welche physikalische Kenngröße misst der Schmidt-Rückprallhammer an einer Betonoberfläche primär?",
     "options": [
       "Die exakte einaxiale Zylinderdruckfestigkeit des Kernbetons über die gesamte Querschnittstiefe.",
-      "Den dynamischen E-Modul über eine akustische Laufzeitmessung.",
+      "Die elastische Oberflächenhärte (Rückprallwert R) der randnahen Zementstein- und Gefügezone (ca. 20-30 mm Tiefe).",
       "Die Restkorrosionsrate des innenliegenden Bewehrungsstahls.",
-      "Die elastische Oberflächenhärte (Rückprallwert R) der randnahen Zementstein- und Gefügezone (ca. 20-30 mm Tiefe)."
+      "Den dynamischen E-Modul über eine akustische Laufzeitmessung."
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Der Rückprallhammer misst lediglich das Rückprallverhalten eines federgetriebenen Schlagbolzens an der Bauteiloberfläche. Karbonatisierung, Feuchte und Gesteinskörnung an der Oberfläche beeinflussen den R-Wert massiv; zur Ermittlung der tatsächlichen Druckfestigkeit ist zwingend eine Kalibrierkurve mit Bohrkernen erforderlich.",
     "gapAnalysis": {
       "topic": "Grenzen zerstörungsfreier Prüfverfahren",
@@ -172,12 +172,12 @@
     "normRef": "DIN 18008 / DIN EN 12150",
     "question": "Welches Glas zerfällt bei Bruch in stumpfkantige, kleine Krümel und weist eine hohe Temperaturwechselbeständigkeit (~200 K) auf?",
     "options": [
-      "Einscheiben-Sicherheitsglas (ESG) durch thermische Vorspannung",
       "Normales Floatglas (Spiegelglas)",
+      "Einscheiben-Sicherheitsglas (ESG) durch thermische Vorspannung",
       "Teilvorgespanntes Glas (TVG)",
       "Mehrscheiben-Isolierglas (MIG) mit unveredelten Floatglasscheiben"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "ESG wird durch Erhitzen auf > 600 °C und schlagartiges Abblasen mit Kaltluft vorgespannt (Druckspannung an den Oberflächen, Zugspannung im Kern). Bei Bruch entlädt sich das Spannungsfeld schlagartig in ein feinmaschiges Krümelbruchbild zur Minimierung von Schnittverletzungen.",
     "gapAnalysis": {
       "topic": "Sicherheitsgläser & Vorspannmechanik",
@@ -205,11 +205,11 @@
     "question": "Warum führt eine Vergrößerung des Scheibenzwischenraums (SZR) von 16 mm auf über 24 mm bei Isolierglas NICHT zu einer besseren Wärmedämmung?",
     "options": [
       "Weil bei größerem Abstand die Infrarotstrahlung ungehindert durch das Glas hindurchgeht.",
-      "Weil Argon bei größeren Volumina chemisch zu dissoziieren beginnt.",
+      "Weil ab ca. 16–18 mm Abstand freie innere Konvektionswalzen des Füllgases entstehen, die Wärme aktiv von der warmen zur kalten Scheibe transportieren.",
       "Weil dickere Randverbünde die mechanische Durchbiegung der Scheiben behindern.",
-      "Weil ab ca. 16–18 mm Abstand freie innere Konvektionswalzen des Füllgases entstehen, die Wärme aktiv von der warmen zur kalten Scheibe transportieren."
+      "Weil Argon bei größeren Volumina chemisch zu dissoziieren beginnt."
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "In dünnen Gasschichten (< 16 mm) ruht das Gas weitgehend und isoliert rein über seine geringe Wärmeleitfähigkeit. Übersteigt der Abstand das Optimum, setzt freie thermische Konvektion ein: Warmes Gas steigt an der Innenscheibe auf, kühlt an der Außenscheibe ab und fällt nach unten - der Ug-Wert verschlechtert sich wieder.",
     "gapAnalysis": {
       "topic": "Gasmechanik im Scheibenzwischenraum (SZR)",
@@ -236,12 +236,12 @@
     "normRef": "DIN EN 10027-1",
     "question": "Was bedeutet die Bezeichnung 'S355J2+N' für einen unlegierten Baustahl?",
     "options": [
-      "Baustahl (S) mit Mindeststreckgrenze ReH = 355 MPa bei Nenndicke, Kerbschlagarbeit min. 27 J bei -20 °C (J2), normalisierend gewalzt (+N).",
       "Spannstahl mit 355 MPa Zugfestigkeit, nicht schweißbar.",
+      "Baustahl (S) mit Mindeststreckgrenze ReH = 355 MPa bei Nenndicke, Kerbschlagarbeit min. 27 J bei -20 °C (J2), normalisierend gewalzt (+N).",
       "Edelstahl mit 35% Chromanteil für maritime Anwendungen.",
       "Schraubenwerkstoff der Festigkeitsklasse 3.5 nach ISO 898."
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "S = Structural Steel (Baustahl); 355 = Mindeststreckgrenze in N/mm² für t <= 16 mm; J2 = Kerbschlagarbeit min. 27 J bei Prüftemperatur -20 °C (wichtig zur Vermeidung von Sprödbruch); +N = Lieferzustand normalisierend gewalzt.",
     "gapAnalysis": {
       "topic": "Normbezeichnung von Baustählen",
@@ -269,11 +269,11 @@
     "question": "Welcher Dämmstoff eignet sich aufgrund seiner geschlossenzelligen Struktur und minimalen Wasseraufnahme besonders für die erdberührte Perimeterdämmung und das Umkehrdach?",
     "options": [
       "Expandiertes Polystyrol (EPS)",
-      "Holzfaserdämmplatten (WF)",
+      "Extrudiertes Polystyrol (XPS)",
       "Steinwolle (MW)",
-      "Extrudiertes Polystyrol (XPS)"
+      "Holzfaserdämmplatten (WF)"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "XPS besitzt durch das Extrusionsverfahren ein homogen geschlossenzelliges Gefüge. Es nimmt auch unter dauerhaftem hydrostatischem Druck und Frost-Tau-Wechseln praktisch kein Wasser auf (Diffusionsaufnahme < 1,5 Vol.-%) und behält seine Dämmwirkung im Erdreich.",
     "gapAnalysis": {
       "topic": "Einsatzgebiete von Dämmstoffen & Feuchteschutz",
@@ -300,12 +300,12 @@
     "normRef": "DIN EN ISO 1043",
     "question": "Welches Merkmal kennzeichnet Duroplaste (z. B. Epoxidharze, Polyurethane) im Vergleich zu Thermoplasten?",
     "options": [
-      "du bist engmaschig räumlich kovalent vernetzt, schmelzen bei Erwärmung nicht, sondern zersetzen sich thermisch bei Überhitzung.",
       "Sie lassen sich durch Wiedererwärmen beliebig oft aufschmelzen und verformen.",
+      "du bist engmaschig räumlich kovalent vernetzt, schmelzen bei Erwärmung nicht, sondern zersetzen sich thermisch bei Überhitzung.",
       "Sie besitzen keine mechanische Druckfestigkeit und sind rein flüssig.",
       "Sie bestehen ausschließlich aus biobasierten Zellulosefasern."
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Duroplaste bilden bei der Aushärtung ein unauflösliches, räumlich weitmaschig oder engmaschig kovalentes 3D-Netzwerk aus. du bist thermisch nicht umformbar und unlöslich (z. B. Harzinjektionen, GFK-Profile, 2K-Klebstoffe). Thermoplaste hingegen bestehen aus unvernetzten Polymerketten und schmelzen reversibel.",
     "gapAnalysis": {
       "topic": "Polymerstrukturen & Verarbeitbarkeit",
@@ -332,12 +332,12 @@
     "normRef": "RStO 12/24 (ARS 02/2024)",
     "question": "Welche Eingangsgröße bestimmt in den Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen (RStO 12/24) maßgeblich die Belastungsklasse (Bk100 bis Bk0,3)?",
     "options": [
-      "Die bemessungsrelevante Beanspruchung B in Form gewichteter äquivalenter 10-Tonnen-Achsübergänge des Schwerverkehrs über den Nutzungszeitraum.",
       "Die jährliche Niederschlagsmenge im Einzugsgebiet.",
+      "Die bemessungsrelevante Beanspruchung B in Form gewichteter äquivalenter 10-Tonnen-Achsübergänge des Schwerverkehrs über den Nutzungszeitraum.",
       "Die zulässige Höchstgeschwindigkeit für Personenkraftwagen.",
       "Der Anteil von Fahrrädern am Gesamtverkehr."
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "PKW-Verkehr verursacht wegen der geringen Achslasten vernachlässigbare Oberbauschäden (vierte Potenz der Achslast nach AASHO-Road-Test). Maßgeblich für die RStO-Belastungsklasse ist daher ausschließlich die akkumulierte Zahl gewichteter 10-Tonnen-Standardachslasten des Schwerverkehrs (LKW, Busse).",
     "gapAnalysis": {
       "topic": "Straßenbau-Dimensionierung nach RStO 12/24",
@@ -365,18 +365,18 @@
     "question": "Welche Auswirkung hat eine Erhöhung des Wasserzementwerts (w/z-Wert) von 0,45 auf 0,65 auf das Festbetongefüge?",
     "options": [
       "Die Druckfestigkeit steigt an, da mehr Reaktionswasser für die C-S-H-Phasenbildung bereitsteht.",
-      "Die Hydratationswärme verdoppelt sich, was zu massiven Temperaturrissen führt.",
       "Das Kapillarporenvolumen steigt drastisch an, die Druckfestigkeit sinkt stark und die Dauerhaftigkeit gegen Schadstoffeintrag nimmt ab.",
+      "Die Hydratationswärme verdoppelt sich, was zu massiven Temperaturrissen führt.",
       "Die Dichte des Zementsteins erhöht sich durch die bessere Benetzung der Gesteinskörner."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Für die vollständige chemische Hydratation von Portlandzement werden stöchiometrisch nur ca. w/z = 0,25 bis 0,40 benötigt. Überschüssiges Wasser erzeugt nach dem Verdunsten weite, verbundene Kapillarporen (> 50 nm). Die Festigkeit sinkt nach der Walz-Formel und aggressive Ionen (Chloride, CO₂) können ungehindert eindringen.",
     "gapAnalysis": {
       "topic": "Wasserzementwert & Dauerhaftigkeit",
       "misconception": "Die Annahme, mehr Wasser verbessere die Hydratation oder Festigkeit.",
       "coreRule": "Jeder Liter Wasser über dem chemischen Bedarf (w/z ≈ 0,38) hinterlässt nach dem Verdunsten Hohlräume (Kapillarporen).",
       "actionableAdvice": "Studiere im Modul Betontechnologie die Walz-Formel und das Kapillarporendiagramm nach Powers.",
-      "targetModuleTab": "beton_info",
+      "targetModuleTab": "beton",
       "targetModuleLabel": "Betontechnologie"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -408,7 +408,7 @@
       "misconception": "Verwechslung von Karbonatisierung (XC), Frost (XF), chemischem Angriff (XA) und Tausalzen (XD).",
       "coreRule": "XC = Carbonation; XD = De-icing salt; XS = Sea water; XF = Freeze-thaw; XA = Chemical attack; XM = Mechanical abrasion.",
       "actionableAdvice": "Gehe im Modul Betontechnologie die Expositionsklassentabelle und die geforderten Mindestbetongüten (z.B. C35/45, w/z <= 0,45 bei XD3) durch.",
-      "targetModuleTab": "beton_info",
+      "targetModuleTab": "beton",
       "targetModuleLabel": "Betontechnologie"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -428,19 +428,19 @@
     "normRef": "DIN EN 1992-1-1 (EC2)",
     "question": "Wie setzt sich das Nennmaß der Betondeckung c_nom nach Eurocode 2 rechnerisch zusammen?",
     "options": [
-      "c_nom entspricht immer dem Stabdurchmesser ds ohne Toleranzaufschlag",
-      "c_nom = c_min · 1,50 (Reiner Teilsicherheitsfaktor auf die Betondeckung)",
       "c_nom = c_min + Δc_dev (Mindestbetondeckung plus Vorhaltemaß für baustellenbedingte Ausführungstoleranzen)",
+      "c_nom = c_min · 1,50 (Reiner Teilsicherheitsfaktor auf die Betondeckung)",
+      "c_nom entspricht immer dem Stabdurchmesser ds ohne Toleranzaufschlag",
       "c_nom = 20 mm für sämtliche Bauteile und Umweltklassen pauschal"
     ],
-    "correctIdx": 2,
+    "correctIdx": 0,
     "explanation": "Nach EC2 gilt c_nom = c_min + Δc_dev. Die Mindestdeckung c_min sichert den Korrosionsschutz (Dauerhaftigkeit c_min,dur) und den Verbund (c_min,b). Das Vorhaltemaß Δc_dev beträgt im Hochbau in der Regel 10 mm (bei besonderer Qualitätskontrolle reduzierbar auf 5 mm).",
     "gapAnalysis": {
       "topic": "Betondeckungsermittlung nach Eurocode 2",
       "misconception": "Vergessen des Vorhaltemaßes Δc_dev oder Verwechslung von c_min und c_nom.",
       "coreRule": "c_nom = c_min + Δc_dev. c_min = max { c_min,b ; c_min,dur ; 10 mm }. Ohne Vorhaltemaß droht Unterdeckung und Korrosion.",
       "actionableAdvice": "Schlage im Modul Massivbau das Nachweisverfahren für c_nom auf und berechne das Vorhaltemaß.",
-      "targetModuleTab": "stahlbeton_info",
+      "targetModuleTab": "massivbau",
       "targetModuleLabel": "Massivbau"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -461,18 +461,18 @@
     "question": "Was versteht man in der Holzphysik unter dem 'Fasersättigungsbereich' (FSB)?",
     "options": [
       "Den Feuchtegehalt, bei dem das Holz unter Wasser vollständig verrottet.",
-      "Die maximale Feuchteaufnahme von verleimtem Brettschichtholz.",
       "Den Feuchtepunkt (ca. 28-32% Holzfeuchte u), bei dem die Zellwände maximal mit gebundenem Wasser gesättigt sind, die Zellhohlräume (Lumina) aber noch frei von flüssigem Wasser sind.",
+      "Die maximale Feuchteaufnahme von verleimtem Brettschichtholz.",
       "Den Grenzwert, ab dem Schimmelpilzbefall physikalisch unmöglich wird."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Unterhalb des FSB führt jede Feuchteänderung zum Schwinden oder Quellen des Holzes, da Wasser aus den Zellwänden entweicht oder eingelagert wird. Oberhalb des FSB füllen sich lediglich die Zellhohlräume mit freiem Wasser; Dimensionsänderungen finden kaum noch statt, aber das Risiko für holzzerstörende Pilze steigt drastisch.",
     "gapAnalysis": {
       "topic": "Holzfeuchtegleichgewicht & Fasersättigung",
       "misconception": "Annahme, Holz schwinde auch oberhalb von 30% Holzfeuchte weiter.",
       "coreRule": "Schwinden und Quellen findet AUSSCHLIESSLICH unterhalb des Fasersättigungsbereichs (u ≈ 28-32%) durch Abgabe/Aufnahme von Zellwandwasser statt.",
       "actionableAdvice": "Lies im Modul Holzbau die Sorptionsisotherme und die Richtwerte für Holzfeuchte nach Einbau.",
-      "targetModuleTab": "holzbau_info",
+      "targetModuleTab": "holzbau",
       "targetModuleLabel": "Holzbau"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -504,7 +504,7 @@
       "misconception": "Vernachlässigung der Querzugschwäche von Vollholz und Brettschichtholz.",
       "coreRule": "Querzugfestigkeit ft,90,k beträgt nur ca. 0,4–0,5 N/mm². Bauteile spalten bei Querzug schlagartig und spröde!",
       "actionableAdvice": "Schlage im Modul Holzbau die Festigkeitskennwerte von C24 vs. GL24h und Verstärkungsmaßnahmen auf.",
-      "targetModuleTab": "holzbau_info",
+      "targetModuleTab": "holzbau",
       "targetModuleLabel": "Holzbau"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -525,11 +525,11 @@
     "question": "Welcher chemische Prozess führt zur sogenannten Karbonatisierung von Stahlbeton und zur Depassivierung der Bewehrung?",
     "options": [
       "Saurer Regen löst den Zementstein vollständig in Gips auf.",
-      "Reines Wasser spaltet Calciumoxid in elementares Calcium und Sauerstoffgas.",
       "Atmosphärisches CO2 diffundiert in das Porensystem ein und reagiert mit Calciumhydroxid: Ca(OH)2 + CO2 -> CaCO3 + H2O. Der pH-Wert sinkt unter ca. 9, wodurch die schützende Passivschicht zerstört wird.",
+      "Reines Wasser spaltet Calciumoxid in elementares Calcium und Sauerstoffgas.",
       "Bakterielle Sulfatreduktion oxidiert den Zementklinker zu Calciumsulfat."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Karbonatisierung verbraucht das alkalische Reservoir (Ca(OH)2) im Zementstein. Fällt der pH-Wert von über 12,5 auf unter ca. 9 ab und erreicht die Karbonatisierungsfront die Bewehrungsoberfläche, wird die Passivschicht zerstört. Liegen gleichzeitig Feuchtigkeit und Sauerstoff vor, setzt Rostbildung (Flächenkorrosion) ein.",
     "gapAnalysis": {
       "topic": "Karbonatisierungsmechanismus & Bewehrungskorrosion",
@@ -567,7 +567,7 @@
       "misconception": "Glaube, schwere Korrosionsschäden kündigten sich immer durch sichtbare Betonabplatzungen und Rostfahnen an.",
       "coreRule": "Lochfraßkorrosion durch Chloride verläuft ohne nennenswerte Volumensprengung im Beton – Einsturzgefahr ohne optische Vorwarnung!",
       "actionableAdvice": "Schlage im Modul Typische Bauschäden die Potenzialfeldmessung und die kritischen Chloridgehalte (0,4-0,5 M.-% bezogen auf Zement) nach.",
-      "targetModuleTab": "schadensbilder",
+      "targetModuleTab": "typische_bauschaeden",
       "targetModuleLabel": "Typische Bauschäden"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -599,7 +599,7 @@
       "misconception": "Unkenntnis der gesetzlichen Betreiberverantwortung und Inspektionsstufen bei bestehenden Tragwerken.",
       "coreRule": "CC1 = geringe Folgen; CC2 = mittlere Folgen; CC3 = hohe Folgen (Versammlungsstätten, Hallen > 12m Spannweite). Prüfungstiefen: Stufe 1 bis 3.",
       "actionableAdvice": "Lies im Modul Zustandsbewertung die Matrix der Prüfungsintervalle (1, 3 und 6 Jahre) nach VDI 6200.",
-      "targetModuleTab": "vdi6200",
+      "targetModuleTab": "zustandsbewertung",
       "targetModuleLabel": "Zustandsbewertung"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -619,12 +619,12 @@
     "normRef": "TRGS 519 / GefStoffV",
     "question": "Warum birgt schwach gebundener Asbest (z. B. Spritzasbest, Leichtbauplatten) ein ungleich höheres Gefährdungspotenzial als fest gebundener Asbestzement (z. B. Eternit-Dachwellplatten)?",
     "options": [
-      "Weil schwach gebundener Asbest explosiv brennbar ist.",
       "Weil schwach gebundener Asbest bei Erschütterung oder Alterung spontan lungengängige Feinstfasern in die Raumluft freisetzt (Rohdichte < 1000 kg/m³, Fasergehalt oft > 60%).",
+      "Weil schwach gebundener Asbest explosiv brennbar ist.",
       "Weil fest gebundener Asbest keine Asbestfasern enthält.",
       "Weil schwach gebundener Asbest radioaktive Strahlung abgibt."
     ],
-    "correctIdx": 1,
+    "correctIdx": 0,
     "explanation": "Schwach gebundener Asbest weist eine Rohdichte < 1.000 kg/m³ auf und kann schon durch minimale Luftströmungen oder Erschütterungen krebserregende Fasern freisetzen. Fest gebundener Asbestzement (Rohdichte > 1.400 kg/m³, Fasergehalt ca. 10-15%) setzt Fasern hingegen fast nur bei mechanischer Zerstörung (Brechen, Schleifen, Hochdruckreinigen) frei.",
     "gapAnalysis": {
       "topic": "Asbestklassifizierung & Schutzstufen nach TRGS 519",
@@ -652,18 +652,18 @@
     "question": "Warum deklarieren Umweltproduktdeklarationen (EPDs) nachwachsender Rohstoffe wie Holz oder Stroh in Phase A1-A3 oft negative GWP-Werte?",
     "options": [
       "Weil Holz wesentlich weniger transportintensiv ist als Konstruktionsstahl.",
-      "Weil biologische Dämmstoffe beim Abbruch rückstandslos verdampfen und keine Emissionen hinterlassen.",
       "Weil Bäume während des Wachstums CO2 via Photosynthese absorbieren und als biogenen Kohlenstoff physisch im Bauteil speichern (temporäre Kohlenstoffsenke).",
+      "Weil biologische Dämmstoffe beim Abbruch rückstandslos verdampfen und keine Emissionen hinterlassen.",
       "Weil der Energieaufwand in Sägewerken rechnerisch mit Null angesetzt wird."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Nachwachsende Rohstoffe absorbieren während ihres biologischen Wachstums CO₂ aus der Atmosphäre. Dies wird nach DIN EN 15804 als negativer Treibhausbeitrag (GWP-biogen) in den Herstellungsphasen A1-A3 bilanziert. Am Lebensende (Modul C3/C4) wird dieses CO₂ bei thermischer Verwertung wieder freigesetzt.",
     "gapAnalysis": {
       "topic": "Biogener Kohlenstoffspeicher in Ökobilanzen",
       "misconception": "Verwechslung von fossilen Emissionen mit dem bilanziellen Kohlenstoffspeichereffekt nachwachsender Rohstoffe.",
       "coreRule": "Photosynthese entzieht der Luft CO2. 1 m³ Fichtenholz bindet ca. 800-900 kg CO2-Äquivalente temporär als Kohlenstoffsenke.",
       "actionableAdvice": "Gehe im Modul Ökobilanzierung (LCA) die Modulstruktur nach DIN EN 15804 (A1 bis D) durch.",
-      "targetModuleTab": "oekobilanz_lca",
+      "targetModuleTab": "lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -695,7 +695,7 @@
       "misconception": "Zuschlagen von Recyclinggutschriften direkt in die Herstellungsphase A1 oder Missverstehen der Systemgrenze.",
       "coreRule": "Modul D liegt ausserhalb des eigentlichen Gebäudelebenszyklus und weist die Netto-Vorteile für die nachfolgende Generation aus.",
       "actionableAdvice": "Öffnen Sie im Modul Ökobilanzierung den Lebenszyklus-Phasenschlüssel und prüfe die Berechnung von Modul D.",
-      "targetModuleTab": "oekobilanz_lca",
+      "targetModuleTab": "lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -726,7 +726,7 @@
       "misconception": "Vernachlässigung des Rückbau- und Trennungsaufwands bei der Werkstoffwahl.",
       "coreRule": "Nicht trennbare Stoffverbunde (z.B. Kleber auf Dämmung) verhindern echtes Recycling im geschlossenen Kreislauf (Closed Loop).",
       "actionableAdvice": "Lies im Modul Kreislaufwirtschaft die Kriterien für zirkuläre Fügedetails und Schichtentrennung.",
-      "targetModuleTab": "kreislauf_dpp",
+      "targetModuleTab": "kreislaufwirtschaft",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -747,11 +747,11 @@
     "question": "Wann ist ein Bauunternehmen nach VOB/B § 4 Abs. 3 verpflichtet, eine schriftliche Bedenkenanmeldung abzugeben?",
     "options": [
       "Nur wenn der Bauherr die Baustelle länger als 4 Wochen nicht persönlich besichtigt hat.",
-      "Nur wenn ein gerichtliches Gutachten die Unbrauchbarkeit der Planung bestätigt.",
+      "Wenn es Bedenken gegen die vorgesehene Art der Ausführung, die Güte der vom Auftraggeber gelieferten Stoffe oder gegen die Vorleistungen anderer Unternehmer hat.",
       "Ausschließlich bei Überschreitung der behördlichen Baugenehmigungsfristen.",
-      "Wenn es Bedenken gegen die vorgesehene Art der Ausführung, die Güte der vom Auftraggeber gelieferten Stoffe oder gegen die Vorleistungen anderer Unternehmer hat."
+      "Nur wenn ein gerichtliches Gutachten die Unbrauchbarkeit der Planung bestätigt."
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "VOB/B § 4 Abs. 3 verpflichtet den Auftragnehmer zur unverzüglichen, schriftlichen Bedenkenanzeige, wenn Vorleistungen Dritter mangelhaft sind, Baustoffe ungeeignet erscheinen oder die Planung planerische Mängel aufweist. Unterlässt er dies, haftet er vollumfänglich für spätere Mängel!",
     "gapAnalysis": {
       "topic": "Prüf- und Rügepflichten des Auftragnehmers",
@@ -779,18 +779,18 @@
     "question": "Was bescheinigt die CE-Kennzeichnung auf einem Bauprodukt rechtlich verbindlich nach der EU-Bauproduktenverordnung (CPR)?",
     "options": [
       "Dass das Bauprodukt ein deutsches Qualitäts- und Gütesiegel wie 'RAL' besitzt.",
-      "Dass das Produkt zu 100% schadstofffrei und biologisch abbaubar ist.",
+      "Dass der Hersteller die Verantwortung für die Konformität mit der erklärten Leistung (Declaration of Performance, DoP) und harmonisierten Normen (hEN) übernimmt.",
       "Dass das Produkt in jedem Bundesland ohne weitere statische Prüfung verbaut werden darf.",
-      "Dass der Hersteller die Verantwortung für die Konformität mit der erklärten Leistung (Declaration of Performance, DoP) und harmonisierten Normen (hEN) übernimmt."
+      "Dass das Produkt zu 100% schadstofffrei und biologisch abbaubar ist."
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Das CE-Zeichen ist kein Qualitätssiegel, sondern ein europäischer 'Reisepass' für den freien Warenverkehr. Der Hersteller erklärt damit in der Leistungserklärung (DoP), dass das Produkt die deklarierten Leistungswerte nach harmonisierter europäischer Norm (hEN) oder EAD erfüllt.",
     "gapAnalysis": {
       "topic": "Rechtliche Bedeutung der CE-Kennzeichnung",
       "misconception": "Fehlglaube, CE sei ein Qualitätszertifikat oder garantiere universelle baurechtliche Verwendbarkeit.",
       "coreRule": "CE = Herstellergarantie für erklärte Werte (DoP) nach hEN. Die nationale bauaufsichtliche Verwendbarkeit muss gesondert geprüft werden.",
       "actionableAdvice": "Prüfe im Modul CE-Kennzeichnung den Unterschied zwischen DoP, CE-Zeichen und allgemeiner Bauartgenehmigung (aBG).",
-      "targetModuleTab": "bauprodukte_info",
+      "targetModuleTab": "ce_kennzeichnung",
       "targetModuleLabel": "CE-Kennzeichnung"
     },
     "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
@@ -873,11 +873,11 @@
     "question": "Wie viele Newtonmillimeter entsprechen einem Biegemoment von 45 kNm?",
     "options": [
       "45 · 10³ Nmm",
-      "45 · 10⁶ Nmm",
       "45 · 10⁴ Nmm",
+      "45 · 10⁶ Nmm",
       "45 · 10⁹ Nmm"
     ],
-    "correctIdx": 1,
+    "correctIdx": 2,
     "explanation": "1 kNm = 1000 N · 1000 mm = 10⁶ Nmm, also 45 kNm = 45 · 10⁶ Nmm. Erst damit ergibt σ = M / W mit W in mm³ eine Spannung in N/mm².",
     "gapAnalysis": {
       "topic": "Momenteinheiten",
@@ -902,12 +902,12 @@
     "normRef": "DIN EN 1991-1-1",
     "question": "Eine Nutzlast von 5 kN/m² entspricht welchem Druck?",
     "options": [
-      "0,005 N/mm² (= 5 kPa)",
+      "5 N/mm²",
       "0,5 N/mm²",
       "0,05 N/mm²",
-      "5 N/mm²"
+      "0,005 N/mm² (= 5 kPa)"
     ],
-    "correctIdx": 0,
+    "correctIdx": 3,
     "explanation": "1 kN/m² = 10³ N / 10⁶ mm² = 10⁻³ N/mm² = 1 kPa. 5 kN/m² sind also 0,005 N/mm². Deshalb werden Lasten in kN/m², Materialspannungen in N/mm² angegeben.",
     "gapAnalysis": {
       "topic": "Flächenlasten",
@@ -933,11 +933,11 @@
     "question": "Warum steht in der Einheit der Wärmedehnzahl α_T (1/K) und des U-Werts (W/(m²·K)) das Kelvin und nicht °C?",
     "options": [
       "Weil Kelvin die einzige zulässige Einheit für Temperaturen über 0 °C ist.",
-      "Weil °C im Bauwesen seit 2019 nicht mehr verwendet werden darf.",
+      "Weil Temperaturdifferenzen in K und °C zahlengleich sind und das Kelvin die SI-Basiseinheit ist.",
       "Weil der Zahlenwert in °C um 273,15 größer wäre.",
-      "Weil Temperaturdifferenzen in K und °C zahlengleich sind und das Kelvin die SI-Basiseinheit ist."
+      "Weil °C im Bauwesen seit 2019 nicht mehr verwendet werden darf."
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Das Kelvin ist SI-Basiseinheit. Eine Differenz von 10 K ist dieselbe wie 10 °C – nur absolute Temperaturen unterscheiden sich um 273,15. Bei Größen, die auf Temperatur*differenzen* bezogen sind, ist K daher die korrekte Einheit.",
     "gapAnalysis": {
       "topic": "Temperatur und Temperaturdifferenz",
@@ -992,12 +992,12 @@
     "normRef": "DIN EN 1991-1-5",
     "question": "Eine 10 m lange Aluminium-Attikaabdeckung (α_T = 23 · 10⁻⁶ 1/K) erwärmt sich um 60 K. Wie groß ist die Längenänderung?",
     "options": [
-      "13,8 mm",
-      "6,0 mm",
       "1,38 mm",
+      "6,0 mm",
+      "13,8 mm",
       "138 mm"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "ΔL = α_T · L₀ · ΔT = 23 · 10⁻⁶ · 10 000 mm · 60 K = 13,8 mm. Stahlbeton (α_T = 10 · 10⁻⁶ 1/K) dehnt sich unter gleichen Bedingungen nur um 6,0 mm – die Differenz muss die Befestigung aufnehmen.",
     "gapAnalysis": {
       "topic": "Wärmedehnung im Vergleich",
@@ -1022,11 +1022,11 @@
     "question": "Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?",
     "options": [
       "Stahl ist auch gewichtsbezogen rund 20-mal steifer als Holz.",
-      "Holz ist gewichtsbezogen 20-mal steifer als Stahl.",
       "Stahl und Holz (faserparallel) sind gewichtsbezogen etwa gleich steif.",
+      "Holz ist gewichtsbezogen 20-mal steifer als Stahl.",
       "E/ρ ist für Baustoffe nicht aussagekräftig."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "E/ρ: Stahl 210 000 / 7850 ≈ 26,8; Holz 11 000 / 420 ≈ 26,2 (jeweils MPa je kg/m³). Bezogen auf das Gewicht sind beide nahezu gleich steif – ein Grund für die Effizienz des Holzbaus. Quer zur Faser gilt das nicht.",
     "gapAnalysis": {
       "topic": "Spezifische Steifigkeit",
@@ -1053,10 +1053,10 @@
     "options": [
       "1100 kN",
       "1380 kN",
-      "1650 kN",
-      "1530 kN"
+      "1530 kN",
+      "1650 kN"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "N_Ed = 1,35 · 800 + 1,50 · 300 = 1080 + 450 = 1530 kN. Beide Einwirkungen wirken ungünstig, die Nutzlast ist Leiteinwirkung und wird nicht mit ψ₀ abgemindert.",
     "gapAnalysis": {
       "topic": "Grundkombination Gl. (6.10)",
@@ -1082,11 +1082,11 @@
     "question": "Für ein Leichtdach unter Windsog (Abheben) wird die Verankerung bemessen. Welcher Teilsicherheitsbeiwert gilt für das Eigengewicht?",
     "options": [
       "γ_G = 1,35, weil ständige Lasten immer erhöht werden",
-      "γ_G,inf = 1,00, weil das Eigengewicht hier günstig wirkt",
       "γ_G = 1,50 wie für veränderliche Einwirkungen",
+      "γ_G,inf = 1,00, weil das Eigengewicht hier günstig wirkt",
       "γ_G = 0, weil Eigengewicht beim Abheben vernachlässigt wird"
     ],
-    "correctIdx": 1,
+    "correctIdx": 2,
     "explanation": "Wirkt eine ständige Einwirkung der maßgebenden Beanspruchung entgegen, ist sie günstig und wird mit γ_G,inf = 1,00 angesetzt. Mit 1,35 würde man die stabilisierende Wirkung überschätzen und läge auf der unsicheren Seite.",
     "gapAnalysis": {
       "topic": "Günstig wirkende ständige Einwirkung",
@@ -1111,12 +1111,12 @@
     "normRef": "DIN EN 1990/NA, Tab. NA.A.1.1",
     "question": "Welcher Kombinationsbeiwert ψ₀ gilt in Deutschland für Schnee an Orten bis NN + 1000 m?",
     "options": [
-      "0,7",
-      "0,6",
       "0,5",
+      "0,6",
+      "0,7",
       "1,0"
     ],
-    "correctIdx": 2,
+    "correctIdx": 0,
     "explanation": "Nach DIN EN 1990/NA, Tab. NA.A.1.1 gilt für Schnee bis NN + 1000 m ψ₀ = 0,5, darüber 0,7. Wind und Temperatur haben ψ₀ = 0,6, Nutzlasten der Kategorien A–D 0,7, Lagerflächen (E) 1,0.",
     "gapAnalysis": {
       "topic": "Kombinationsbeiwerte ψ₀",
@@ -1141,12 +1141,12 @@
     "normRef": "DIN EN 1992-1-1/NA",
     "question": "Wie groß ist der Bemessungswert der Betondruckfestigkeit f_cd für C30/37 (α_cc = 0,85, γ_C = 1,5)?",
     "options": [
-      "20,0 N/mm²",
       "17,0 N/mm²",
+      "20,0 N/mm²",
       "25,5 N/mm²",
       "30,0 N/mm²"
     ],
-    "correctIdx": 1,
+    "correctIdx": 0,
     "explanation": "f_cd = α_cc · f_ck / γ_C = 0,85 · 30 / 1,5 = 17,0 N/mm². α_cc berücksichtigt Langzeiteinflüsse, γ_C Streuungen und Modellunsicherheiten.",
     "gapAnalysis": {
       "topic": "Bemessungswert der Betonfestigkeit",
@@ -1200,11 +1200,11 @@
     "question": "Welche Kombination von Eigenschaften macht Stahl und Beton zu einem funktionierenden Verbundbaustoff?",
     "options": [
       "Gleiche Festigkeit und gleiche Dichte",
-      "Beide sind duktil und zugfest",
       "Ähnliche Wärmedehnzahlen, guter Verbund und Korrosionsschutz des Stahls durch das alkalische Milieu",
+      "Beide sind duktil und zugfest",
       "Der Stahl liegt in der neutralen Faser und erhöht so die Druckfestigkeit"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Beton (α_T ≈ 1,0 · 10⁻⁵ 1/K) und Stahl (≈ 1,2 · 10⁻⁵ 1/K) dehnen sich nahezu gleich, der Verbund überträgt Kräfte und die Alkalität (pH > 12,5) passiviert den Stahl. Die Bewehrung gehört in die Zugzone – nicht in die neutrale Faser.",
     "gapAnalysis": {
       "topic": "Verbundprinzip Stahlbeton",
@@ -1260,10 +1260,10 @@
     "options": [
       "10 Jahre",
       "40 Jahre",
-      "160 Jahre",
-      "100 Jahre"
+      "100 Jahre",
+      "160 Jahre"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "t = (c/K)² = (40/4)² = 100 Jahre. Wird die Deckung nur 30 mm, sind es (30/4)² ≈ 56 Jahre – das Wurzel-t-Gesetz macht die Deckung zur wichtigsten Dauerhaftigkeitsgröße.",
     "gapAnalysis": {
       "topic": "Karbonatisierung und Betondeckung",
@@ -1289,11 +1289,11 @@
     "question": "Wie verflüssigen Polycarboxylatether-Fließmittel (PCE) den Zementleim?",
     "options": [
       "Durch Erhöhung des Wassergehalts",
-      "Durch Beschleunigung der C₃S-Hydratation",
       "Durch sterische Hinderung: Seitenketten halten die Zementpartikel auf Abstand",
+      "Durch Beschleunigung der C₃S-Hydratation",
       "Durch Einführung von Luftporen"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "PCE adsorbieren mit der Hauptkette an den Zementkörnern; die langen Seitenketten ragen in die Porenlösung und verhindern das Agglomerieren (sterische Hinderung). Ligninsulfonate (BV) und Melamin- bzw. Naphthalinsulfonate wirken überwiegend elektrostatisch.",
     "gapAnalysis": {
       "topic": "Wirkung von Fließmitteln",
@@ -1408,11 +1408,11 @@
     "question": "Was bestätigt die CE-Kennzeichnung eines Bauprodukts?",
     "options": [
       "Dass das Produkt für jedes Bauwerk in Deutschland verwendet werden darf.",
-      "Dass ein deutsches Prüfamt die Qualität geprüft hat.",
       "Dass der Hersteller die Leistung nach einer harmonisierten technischen Spezifikation (hEN oder EAD) erklärt hat.",
+      "Dass ein deutsches Prüfamt die Qualität geprüft hat.",
       "Dass das Produkt besonders umweltfreundlich ist."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "CE bestätigt, dass der Hersteller eine Leistungserklärung nach hEN bzw. ETA/EAD erstellt hat – es ist der „Reisepass“ für den Binnenmarkt, kein Qualitätssiegel. Ob die erklärte Leistung für ein konkretes Bauwerk genügt, entscheidet der Planer anhand der Bauwerksanforderungen (MVV TB).",
     "gapAnalysis": {
       "topic": "CE-Kennzeichnung",
@@ -1437,11 +1437,11 @@
     "question": "Welche Aussage zum Rechtscharakter von DIN-Normen ist zutreffend?",
     "options": [
       "DIN-Normen sind Bundesgesetze.",
-      "DIN-Normen gelten nur, wenn ein Gericht sie bestätigt.",
       "DIN-Normen sind private Regelwerke; verbindlich werden sie durch Einführung als Technische Baubestimmung oder durch Vertrag, und es besteht die widerlegbare Vermutung, dass sie die anerkannten Regeln der Technik wiedergeben.",
+      "DIN-Normen gelten nur, wenn ein Gericht sie bestätigt.",
       "DIN-Normen sind nach Einführung der Eurocodes ungültig."
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "DIN-Normen entstehen im Konsensverfahren und haben keinen Gesetzesrang. Bauaufsichtlich verbindlich werden sie über die MVV TB/VV TB, vertraglich durch Vereinbarung. Für die anerkannten Regeln der Technik spricht eine widerlegbare Vermutung.",
     "gapAnalysis": {
       "topic": "Rechtscharakter von DIN-Normen",
@@ -1496,12 +1496,12 @@
     "normRef": "DIN 4108-3",
     "question": "Welche Anforderungen stellt DIN 4108-3 an einen wasserabweisenden Außenputz?",
     "options": [
-      "w ≤ 0,5 kg/(m²·h^0,5), s_d ≤ 2,0 m und w · s_d ≤ 0,2 kg/(m·h^0,5)",
       "w ≤ 2,0 kg/(m²·h^0,5)",
+      "w ≤ 0,5 kg/(m²·h^0,5), s_d ≤ 2,0 m und w · s_d ≤ 0,2 kg/(m·h^0,5)",
       "s_d ≥ 1500 m",
       "w = 0, damit kein Wasser eindringt"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Wasserabweisend heißt nach DIN 4108-3: w ≤ 0,5, s_d ≤ 2,0 m und w · s_d ≤ 0,2. Die Kombination begrenzt die Wasseraufnahme und sichert zugleich die Austrocknung nach außen.",
     "gapAnalysis": {
       "topic": "Wasserabweisende Putze",
@@ -1525,12 +1525,12 @@
     "difficulty": "Basis",
     "question": "Ein Ziegelscherben hat die Rohdichte ρ = 1800 kg/m³ und die Reindichte ρ_R = 2650 kg/m³. Wie groß ist die Porosität?",
     "options": [
-      "ca. 32 %",
       "ca. 15 %",
+      "ca. 32 %",
       "ca. 47 %",
       "ca. 68 %"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "P = 1 − ρ/ρ_R = 1 − 1800/2650 = 0,321 → rund 32 %. Die Porosität ist der Volumenanteil der Poren am Hüllvolumen.",
     "gapAnalysis": {
       "topic": "Porosität",
@@ -1556,11 +1556,11 @@
     "question": "Nach welchem Regelwerk ist die Probenahme mineralischer Ersatzbaustoffe für die Erstprüfung nach § 8 EBV durchzuführen?",
     "options": [
       "DIN EN 12504-1",
-      "DIN 4108-3",
+      "LAGA PN 98",
       "DIN EN 206",
-      "LAGA PN 98"
+      "DIN 4108-3"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "§ 8 Abs. 1 EBV schreibt die LAGA-Richtlinie PN 98 vor; DIN 19698-1/-2 darf ergänzend herangezogen werden. DIN EN 12504-1 regelt Bohrkerne aus Beton im Bauwerk.",
     "gapAnalysis": {
       "topic": "Probenahme nach EBV",
@@ -1615,12 +1615,12 @@
     "normRef": "DIN EN 12504-2",
     "question": "Sie prüfen mit dem Rückprallhammer senkrecht nach unten auf eine Bodenplatte. Wie ist der Rohwert gegenüber horizontaler Schlagrichtung zu korrigieren?",
     "options": [
-      "Nach oben (positive Korrektur), weil der Bolzen gegen die Schwerkraft zurückprallt",
-      "Nach unten (negative Korrektur), weil die Schwerkraft den Schlag verstärkt",
       "Gar nicht – die Schlagrichtung ist ohne Einfluss",
+      "Nach unten (negative Korrektur), weil die Schwerkraft den Schlag verstärkt",
+      "Nach oben (positive Korrektur), weil der Bolzen gegen die Schwerkraft zurückprallt",
       "Um pauschal 50 %"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "Beim Schlag nach unten muss die Masse gegen die Schwerkraft zurückprallen – der angezeigte Wert ist zu niedrig, die Korrektur positiv. Gegen eine Decke ist es umgekehrt. Die Werte sind gerätespezifisch.",
     "gapAnalysis": {
       "topic": "Rückprallhammer: Schlagrichtung",
@@ -1677,10 +1677,10 @@
     "options": [
       "Intensiv mischen und vierteln wie üblich",
       "Trocknen bei 105 °C vor dem Versand",
-      "Mit Wasser auswaschen",
-      "Ohne Homogenisierung direkt gasdicht abfüllen (z. B. Septumgläser)"
+      "Ohne Homogenisierung direkt gasdicht abfüllen (z. B. Septumgläser)",
+      "Mit Wasser auswaschen"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "Leichtflüchtige Stoffe gasen beim Mischen aus; die Analyse würde zu niedrige Gehalte zeigen. Einzelproben werden daher direkt gasdicht gefasst. Die meisten PAK sind schwerflüchtig und werden über die Sammelprobe erfasst.",
     "gapAnalysis": {
       "topic": "Leichtflüchtige Schadstoffe",
@@ -1707,10 +1707,10 @@
     "options": [
       "Eichen",
       "Justieren",
-      "Verifizieren nach MessEG",
-      "Kalibrieren"
+      "Kalibrieren",
+      "Verifizieren nach MessEG"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "Kalibrieren ermittelt und dokumentiert die Abweichung gegenüber einem rückgeführten Normal – ohne Eingriff. Justieren verändert das Gerät; Eichen ist die gesetzlich geregelte Prüfung nach MessEG.",
     "gapAnalysis": {
       "topic": "Kalibrieren, Justieren, Eichen",
@@ -1736,11 +1736,11 @@
     "question": "Alle Messwerte liegen eng beieinander, aber gemeinsam deutlich neben dem Referenzwert. Was beschreibt das?",
     "options": [
       "Hohe Richtigkeit, geringe Präzision",
-      "Hohe Genauigkeit",
       "Hohe Präzision, geringe Richtigkeit",
+      "Hohe Genauigkeit",
       "Rein zufällige Abweichungen"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Geringe Streuung bedeutet hohe Präzision; die gemeinsame Verschiebung ist eine systematische Abweichung (geringe Richtigkeit). Mehrfachmessung hilft dagegen nicht – nur Kalibrierung.",
     "gapAnalysis": {
       "topic": "Richtigkeit und Präzision",
@@ -1765,12 +1765,12 @@
     "normRef": "JCGM 100 (GUM)",
     "question": "Eine Digitalanzeige hat die Auflösung d = 0,1 MPa. Welche Standardunsicherheit ergibt sich nach GUM unter Annahme einer Rechteckverteilung?",
     "options": [
-      "0,029 MPa",
-      "0,05 MPa",
       "0,1 MPa",
+      "0,05 MPa",
+      "0,029 MPa",
       "0,2 MPa"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "u = d/√12 = 0,1/3,46 = 0,029 MPa. Die halbe Auflösung (0,05) ist die Halbbreite a der Rechteckverteilung; u = a/√3.",
     "gapAnalysis": {
       "topic": "GUM: Typ-B-Beitrag der Auflösung",
@@ -1795,12 +1795,12 @@
     "normRef": "DIN ISO 13528:2025-07",
     "question": "Ihr Labor erzielt im Ringversuch z = −2,4. Wie ist das Ergebnis nach DIN ISO 13528 einzustufen?",
     "options": [
-      "Fragwürdig (Warnsignal)",
       "Zufriedenstellend",
+      "Fragwürdig (Warnsignal)",
       "Nicht zufriedenstellend (Eingriffssignal)",
       "Nicht bewertbar ohne En-Zahl"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "|z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend. Bei −2,4 ist eine laborinterne Ursachenprüfung angezeigt.",
     "gapAnalysis": {
       "topic": "Eignungsprüfung: z-Score",
@@ -1825,12 +1825,12 @@
     "normRef": "ISO 5725",
     "question": "Die Vergleichsstandardabweichung eines Prüfverfahrens beträgt σ_R = 1,5 MPa. Ab welcher Differenz zwischen den Ergebnissen zweier Labore ist der Unterschied signifikant?",
     "options": [
-      "4,2 MPa",
-      "3,0 MPa",
       "1,5 MPa",
+      "3,0 MPa",
+      "4,2 MPa",
       "6,0 MPa"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "R = 2,8 · σ_R = 2,8 · 1,5 = 4,2 MPa. Kleinere Differenzen sind mit etwa 95 % Wahrscheinlichkeit durch die normale Verfahrensstreuung erklärbar.",
     "gapAnalysis": {
       "topic": "Wiederhol- und Vergleichsgrenze",
@@ -1916,11 +1916,11 @@
     "question": "Welche Aussage zu den Chloridklassen Cl 0,40 und Cl 0,20 nach DIN EN 206 trifft zu?",
     "options": [
       "Sie sind Grenzwerte für die Bewertung chloridbelasteter Altbauten",
-      "Sie beziehen sich auf die Masse des Betons",
       "Sie begrenzen den Chloridgehalt in der Zusammensetzung von Neubeton (Stahl- bzw. Spannbeton), bezogen auf den Zement",
+      "Sie beziehen sich auf die Masse des Betons",
       "Sie gelten nur für unbewehrten Beton"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Die Klassen begrenzen den Chloridgehalt des Neubetons (M.-% bez. Zement). Für Bestandsbauwerke wird der kritische korrosionsauslösende Chloridgehalt objektspezifisch bewertet; Laborwerte (bez. Beton) sind über den Zementgehalt umzurechnen.",
     "gapAnalysis": {
       "topic": "Chloridgehalt",
@@ -1947,10 +1947,10 @@
     "options": [
       "Er wird zehnmal größer",
       "Er bleibt gleich",
-      "Er sinkt auf ein Hundertstel",
-      "Er sinkt auf ein Zehntel"
+      "Er sinkt auf ein Zehntel",
+      "Er sinkt auf ein Hundertstel"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "p · r = −2γ cos θ = konstant, also r ∝ 1/p. Zehnfacher Druck füllt Poren(zugänge) mit einem Zehntel des Radius.",
     "gapAnalysis": {
       "topic": "Quecksilberporosimetrie",
@@ -1975,12 +1975,12 @@
     "normRef": "",
     "question": "Mit welchem Verfahren bestimmen Sie die chemische Elementzusammensetzung (z. B. Hauptoxide CaO, SiO₂) eines Zements?",
     "options": [
-      "RFA (Röntgenfluoreszenzanalyse)",
       "XRD",
+      "RFA (Röntgenfluoreszenzanalyse)",
       "MIP",
       "μ-CT"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "RFA liefert Elemente bzw. Oxidgehalte. XRD liefert kristalline Phasen (z. B. Alit, Belit), MIP die Porenverteilung, μ-CT das 3D-Gefüge.",
     "gapAnalysis": {
       "topic": "Methodenwahl",
@@ -2005,12 +2005,12 @@
     "normRef": "DIN EN 12390-3",
     "question": "Mit welcher Belastungsgeschwindigkeit werden Betonprobekörper nach DIN EN 12390-3 geprüft?",
     "options": [
-      "0,6 ± 0,2 MPa/s",
       "0,05 ± 0,01 MPa/s",
+      "0,6 ± 0,2 MPa/s",
       "2,0 ± 0,5 MPa/s",
       "50 mm/min weggesteuert"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Druckprüfung: konstante Spannungsrate 0,6 ± 0,2 MPa/s. 0,04–0,06 MPa/s gilt für Biegezug und Spaltzug, 50 mm/min für den indirekten Zugversuch an Asphalt.",
     "gapAnalysis": {
       "topic": "Druckfestigkeit: Belastungsgeschwindigkeit",
@@ -2035,12 +2035,12 @@
     "normRef": "DIN EN 12390-6",
     "question": "Ein Zylinder (d = 150 mm, L = 300 mm) bricht im Spaltzugversuch bei 200 kN. Wie groß ist die Spaltzugfestigkeit?",
     "options": [
-      "2,83 N/mm²",
       "1,41 N/mm²",
+      "2,83 N/mm²",
       "4,44 N/mm²",
       "8,89 N/mm²"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "f_ct,sp = 2F/(π·L·d) = 2·200 000/(π·300·150) = 2,83 N/mm². Die zentrische Zugfestigkeit wäre ≈ 0,9 · 2,83 = 2,55 N/mm².",
     "gapAnalysis": {
       "topic": "Spaltzugfestigkeit",
@@ -2066,11 +2066,11 @@
     "question": "Welche Kenngrößen unterscheiden B500A von B500B nach DIN 488-1?",
     "options": [
       "Nur die Streckgrenze",
-      "Kerbschlagarbeit und Härte",
       "Streckgrenzenverhältnis R_m/R_e und Gesamtdehnung bei Höchstkraft A_gt",
+      "Kerbschlagarbeit und Härte",
       "Rippengeometrie und Durchmesser"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Beide haben R_e ≥ 500 N/mm². B500B (hochduktil) verlangt R_m/R_e ≥ 1,08 und A_gt ≥ 5,0 %, B500A (normalduktil) ≥ 1,05 und ≥ 2,5 %.",
     "gapAnalysis": {
       "topic": "Betonstahl-Duktilität",
@@ -2095,12 +2095,12 @@
     "normRef": "DIN EN ISO 148-1 / DIN EN 10025-2",
     "question": "Was bedeutet die Gütegruppe „J2“ bei S355J2?",
     "options": [
-      "Streckgrenze 355 N/mm² bei 20 °C",
       "Mindest-Kerbschlagenergie 27 J bei −20 °C",
+      "Streckgrenze 355 N/mm² bei 20 °C",
       "27 J bei +20 °C",
       "Schweißeignung Klasse 2"
     ],
-    "correctIdx": 1,
+    "correctIdx": 0,
     "explanation": "J = 27 J, Index 2 = Prüftemperatur −20 °C (JR: +20 °C, J0: 0 °C). Die erforderliche Gütegruppe ergibt sich nach DIN EN 1993-1-10 aus Bauteildicke und Einsatztemperatur.",
     "gapAnalysis": {
       "topic": "Kerbschlagbiegeversuch",
@@ -2155,12 +2155,12 @@
     "normRef": "DIN EN 1542",
     "question": "Bei einer Haftzugprüfung reißt der Prüfstempel in der Klebefuge ab, bevor der Anforderungswert erreicht ist. Wie ist das Ergebnis zu werten?",
     "options": [
-      "Als ungültiger Versuch, der mit neu geklebtem Stempel zu wiederholen ist",
-      "Als Nachweis mangelhafter Untergrundvorbereitung",
       "Als gültiger Kleinstwert der Serie",
+      "Als Nachweis mangelhafter Untergrundvorbereitung",
+      "Als ungültiger Versuch, der mit neu geklebtem Stempel zu wiederholen ist",
       "Als Kohäsionsbruch im Beton (Bruchbild A)"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "Ein Bruch in der Klebefuge (Bruchbild Y) sagt nichts über den Verbund aus. Liegt der Wert unter der Anforderung, ist der Versuch ungültig und zu wiederholen.",
     "gapAnalysis": {
       "topic": "Haftzugprüfung: Bruchbild",
@@ -2185,12 +2185,12 @@
     "normRef": "DIN EN 206 / DIN EN 12350-5",
     "question": "Ein Ausbreitversuch ergibt 520 mm. Welcher Ausbreitmaßklasse entspricht das?",
     "options": [
-      "F4",
-      "F3",
       "F2",
+      "F3",
+      "F4",
       "F5"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "F4 umfasst 490 bis 550 mm (sehr weich). F3: 420–480 mm, F5: 560–620 mm.",
     "gapAnalysis": {
       "topic": "Konsistenzklassen",
@@ -2215,12 +2215,12 @@
     "normRef": "DIN EN 12390-13",
     "question": "Warum wird der E-Modul von Beton nach DIN EN 12390-13 erst nach mehreren Be- und Entlastungszyklen ausgewertet (stabilisierter Modul E_C,S)?",
     "options": [
-      "Weil in der Erstbelastung bleibende Verformungen (Mikrorisse, Setzungen) auftreten, die den Modul verfälschen",
       "Weil der Beton dabei nacherhärtet",
+      "Weil in der Erstbelastung bleibende Verformungen (Mikrorisse, Setzungen) auftreten, die den Modul verfälschen",
       "Weil die Prüfmaschine sich erst einregeln muss",
       "Weil die Norm drei Probekörper verlangt"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "In der Erstbelastung entstehen bleibende Verformungen; nach einigen Zyklen verläuft die σ-ε-Linie zwischen σ_b und σ_a nahezu linear. Der Anfangsmodul E_C,0 wird zusätzlich ausgewiesen.",
     "gapAnalysis": {
       "topic": "Sekanten-E-Modul",
@@ -2246,11 +2246,11 @@
     "question": "Warum reißt ein vorgespannter Balken im Biegeversuch erst bei deutlich höherer Last als ein gleich großer Stahlbetonbalken?",
     "options": [
       "Weil Spannstahl einen höheren E-Modul hat",
-      "Weil Spannbeton immer eine höhere Betonfestigkeitsklasse hat",
       "Weil die Vorspannung am Biegezugrand eine Druckspannung erzeugt, die zuerst abgebaut werden muss (Dekompression)",
+      "Weil Spannbeton immer eine höhere Betonfestigkeitsklasse hat",
       "Weil die Bewehrung im Spannbeton dicker ist"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Das Rissmoment steigt auf M_r = W·(|σ_c,p| + f_ct,fl): Erst wird die Vordruckspannung abgebaut, dann muss zusätzlich die Biegezugfestigkeit überschritten werden.",
     "gapAnalysis": {
       "topic": "Spannbeton im Biegeversuch",
@@ -2275,12 +2275,12 @@
     "normRef": "DIN EN 1426 / DIN EN 1427",
     "question": "Was bedeutet die Sortenbezeichnung 50/70 bei Straßenbaubitumen?",
     "options": [
-      "Nadelpenetration 50 bis 70 (in 0,1 mm) bei 25 °C",
       "Erweichungspunkt 50 bis 70 °C",
+      "Nadelpenetration 50 bis 70 (in 0,1 mm) bei 25 °C",
       "Viskosität 50 bis 70 Pa·s",
       "Brechpunkt −50 bis −70 °C"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Die Sorte bezeichnet die Spanne der Nadelpenetration nach DIN EN 1426 (100 g, 5 s, 25 °C) in Zehntelmillimetern. Der Erweichungspunkt RuK liegt für 50/70 bei 46 bis 54 °C.",
     "gapAnalysis": {
       "topic": "Bitumenkennwerte",
@@ -2305,12 +2305,12 @@
     "normRef": "DIN EN 1990, Anhang D",
     "question": "Warum ist der Fraktilfaktor k_n bei 3 Prüfwerten (3,37) deutlich größer als bei unendlich vielen (1,64)?",
     "options": [
-      "Weil Mittelwert und Standardabweichung aus wenigen Werten unsicher geschätzt sind und dafür ein Sicherheitszuschlag nötig ist",
       "Weil kleine Stichproben systematisch zu hohe Mittelwerte liefern",
+      "Weil Mittelwert und Standardabweichung aus wenigen Werten unsicher geschätzt sind und dafür ein Sicherheitszuschlag nötig ist",
       "Weil die Norm kleine Serien bestrafen will",
       "Weil bei kleinen n keine Normalverteilung vorliegt"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Bei kleinem n sind x̄ und s selbst unsicher. Der größere k_n sichert ab, dass das ermittelte X_k mit ausreichender Aussagewahrscheinlichkeit unter dem wahren 5-%-Quantil liegt.",
     "gapAnalysis": {
       "topic": "Fraktilfaktor k_n",
@@ -2395,12 +2395,12 @@
     "normRef": "DIN EN 206, Tab. 14",
     "question": "Für C25/30 (Würfel: f_ck,cube = 30 N/mm²) liegen bei Erstherstellung drei Ergebnisse vor: 33,5 / 34,8 / 32,9 N/mm². Ist die Gruppe konform?",
     "options": [
-      "Nein, Kriterium 1 (Mittelwert ≥ 34) verfehlt",
       "Ja, beide Kriterien erfüllt",
+      "Nein, Kriterium 1 (Mittelwert ≥ 34) verfehlt",
       "Nein, Kriterium 2 (Einzelwert ≥ 26) verfehlt",
       "Nicht beurteilbar ohne Standardabweichung"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Mittelwert = 33,7 N/mm² < 30 + 4 = 34 N/mm² → Kriterium 1 verfehlt. Der kleinste Einzelwert 32,9 ≥ 26 erfüllt Kriterium 2.",
     "gapAnalysis": {
       "topic": "Konformität Erstherstellung",
@@ -2426,11 +2426,11 @@
     "question": "Welcher Bemessungswert der Druckfestigkeit ergibt sich für C30/37 nach DIN EN 1992-1-1/NA (α_cc = 0,85; γ_c = 1,5)?",
     "options": [
       "20,0 N/mm²",
-      "25,5 N/mm²",
+      "17,0 N/mm²",
       "21,0 N/mm²",
-      "17,0 N/mm²"
+      "25,5 N/mm²"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "f_cd = 0,85 · 30/1,5 = 17,0 N/mm². Maßgebend ist die Zylinderfestigkeit f_ck = 30, nicht der Würfelwert 37.",
     "gapAnalysis": {
       "topic": "Bemessungswert f_cd",
@@ -2457,10 +2457,10 @@
     "options": [
       "Spannungsabhängig, sofort, elastisch",
       "Spannungsabhängig, zeitabhängig (Kriechen)",
-      "Plastische Verformung",
-      "Spannungsunabhängig (Feuchtedehnung bzw. chemisch)"
+      "Spannungsunabhängig (Feuchtedehnung bzw. chemisch)",
+      "Plastische Verformung"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "Schwinden tritt ohne äußere Last auf: Trocknungsschwinden ist eine Feuchtedehnung, autogenes Schwinden eine chemisch bedingte Dehnung. Kriechen ist dagegen lastabhängig.",
     "gapAnalysis": {
       "topic": "Systematik der Formänderungen",
@@ -2486,11 +2486,11 @@
     "question": "Eine 20 m lange Stahlbetonwand erwärmt sich um 30 K (α_T = 10·10⁻⁶ 1/K). Wie groß ist die freie Längenänderung?",
     "options": [
       "0,6 mm",
-      "0,06 mm",
+      "6 mm",
       "60 mm",
-      "6 mm"
+      "0,06 mm"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Δl = α_T·ΔT·l = 10·10⁻⁶ · 30 · 20 000 mm = 6 mm.",
     "gapAnalysis": {
       "topic": "Wärmedehnung",
@@ -2516,11 +2516,11 @@
     "question": "Eine Stütze wird mit σ_c = 12 N/mm² belastet (E_c = 34 650 N/mm²). Wie groß ist die Kriechdehnung bei einer Endkriechzahl φ = 2,5?",
     "options": [
       "0,35 ‰",
-      "1,22 ‰",
       "0,87 ‰",
+      "1,22 ‰",
       "2,50 ‰"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "ε_el = 12/34 650 = 0,346 ‰; ε_cc = φ · ε_el = 2,5 · 0,346 = 0,87 ‰. Die Gesamtstauchung beträgt rund 1,21 ‰.",
     "gapAnalysis": {
       "topic": "Kriechzahl",
@@ -2545,12 +2545,12 @@
     "normRef": "DIN EN 1992-1-1, 3.1.3",
     "question": "Wie ändert sich der rechnerische E-Modul eines Betons, wenn statt quarzitischer eine Sandstein-Gesteinskörnung verwendet wird?",
     "options": [
-      "−30 %",
+      "+20 %",
       "unverändert",
       "−10 %",
-      "+20 %"
+      "−30 %"
     ],
-    "correctIdx": 0,
+    "correctIdx": 3,
     "explanation": "Nach DIN EN 1992-1-1, 3.1.3(2) gilt für Sandstein ein Abminderungsfaktor von 0,7, für Kalkstein 0,9, für Basalt 1,2.",
     "gapAnalysis": {
       "topic": "E-Modul nach Eurocode 2",
@@ -2636,11 +2636,11 @@
     "question": "Wie verändert sich die kritische Bruchspannung eines spröden Bauteils, wenn sich die Risslänge vervierfacht?",
     "options": [
       "Sie bleibt gleich",
-      "Sie verdoppelt sich",
+      "Sie halbiert sich",
       "Sie sinkt auf ein Viertel",
-      "Sie halbiert sich"
+      "Sie verdoppelt sich"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "σ_c = K_Ic/(Y·√(πa)) ∝ 1/√a. Vierfache Risslänge → √4 = 2 → halbe Bruchspannung.",
     "gapAnalysis": {
       "topic": "Spannungsintensitätsfaktor",
@@ -2695,12 +2695,12 @@
     "normRef": "DIN EN 1993-1-1, 6.3",
     "question": "Eine beidseitig gelenkig gelagerte Stütze hat die Euler-Knicklast F_K. Wie groß ist die Knicklast derselben Stütze als Kragstütze (unten eingespannt, oben frei)?",
     "options": [
-      "F_K / 2",
       "F_K / 4",
+      "F_K / 2",
       "2 · F_K",
       "4 · F_K"
     ],
-    "correctIdx": 1,
+    "correctIdx": 0,
     "explanation": "Kragstütze: Knicklänge l_cr = 2 · l. Da F_K ∝ 1/l_cr², sinkt die Knicklast auf ein Viertel.",
     "gapAnalysis": {
       "topic": "Euler-Fälle: Knicklänge",
@@ -2726,11 +2726,11 @@
     "question": "Warum darf eine reale Stahlstütze nicht bis zur idealen Euler-Knicklast F_K belastet werden?",
     "options": [
       "Weil der E-Modul unter Druck abnimmt",
-      "Weil Stahl unter Druck spröde bricht",
+      "Weil Imperfektionen und Eigenspannungen die Ausbiegung schon unterhalb F_K stark vergrößern und der Querschnitt vorher fließt",
       "Weil F_K nur für Holz gilt",
-      "Weil Imperfektionen und Eigenspannungen die Ausbiegung schon unterhalb F_K stark vergrößern und der Querschnitt vorher fließt"
+      "Weil Stahl unter Druck spröde bricht"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Vorkrümmung w₀ wird mit 1/(1 − N/F_K) vergrößert; das Zusatzmoment N · w führt zum Fließen vor Erreichen von F_K. Der Eurocode erfasst das über Knickspannungslinien und den Abminderungsbeiwert χ.",
     "gapAnalysis": {
       "topic": "Theorie II. Ordnung",
@@ -2756,11 +2756,11 @@
     "question": "Ein Einfeldträger (l = 6 m) trägt q = 10 kN/m. Wie groß ist das maximale Feldmoment?",
     "options": [
       "30 kNm",
-      "90 kNm",
+      "45 kNm",
       "60 kNm",
-      "45 kNm"
+      "90 kNm"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "M_max = q · l²/8 = 10 · 36/8 = 45 kNm. 90 kNm wäre q·l²/4, 180 kNm das Einspannmoment eines Kragarms q·l²/2.",
     "gapAnalysis": {
       "topic": "Einfeldträger: Feldmoment",
@@ -2785,12 +2785,12 @@
     "normRef": "Dreimomentengleichung (Clapeyron)",
     "question": "Ein symmetrischer Zweifeldträger (zwei Felder je l, EI konstant) trägt die Gleichlast q. Welche Kraft erhält das Mittelauflager?",
     "options": [
-      "1,25 · q · l",
-      "1,5 · q · l",
       "q · l",
+      "1,5 · q · l",
+      "1,25 · q · l",
       "2,0 · q · l"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "Stützmoment M_B = −ql²/8; damit A = C = 0,375 ql und B = 1,25 ql. Die Durchlaufwirkung lädt das Mittelauflager um 25 % mehr als zwei getrennte Einfeldträger.",
     "gapAnalysis": {
       "topic": "Zweifeldträger: Mittelauflager",
@@ -2815,12 +2815,12 @@
     "normRef": "DIN EN ISO 17892-12",
     "question": "Ein Ton hat w = 25 %, w_L = 45 % und w_P = 20 %. Welche Zustandsform liegt vor?",
     "options": [
-      "steif (I_C = 0,80)",
-      "weich (I_C = 0,60)",
       "breiig (I_C = 0,40)",
+      "weich (I_C = 0,60)",
+      "steif (I_C = 0,80)",
       "halbfest (I_C = 1,20)"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "I_C = (w_L − w)/(w_L − w_P) = 20/25 = 0,80; 0,75 ≤ I_C < 1,00 entspricht steif.",
     "gapAnalysis": {
       "topic": "Konsistenzzahl",
@@ -2846,11 +2846,11 @@
     "question": "Eine Tonschicht wird statt zweiseitig nur einseitig entwässert. Wie ändert sich die Zeit bis 90 % Konsolidation?",
     "options": [
       "Sie halbiert sich",
-      "Sie vervierfacht sich",
+      "Sie bleibt gleich",
       "Sie verdoppelt sich",
-      "Sie bleibt gleich"
+      "Sie vervierfacht sich"
     ],
-    "correctIdx": 1,
+    "correctIdx": 3,
     "explanation": "t = T_v · d²/c_v; bei einseitiger Entwässerung verdoppelt sich der Entwässerungsweg d, die Zeit wächst mit d² um den Faktor 4. Die Endsetzung bleibt unverändert.",
     "gapAnalysis": {
       "topic": "Konsolidation",
@@ -2875,12 +2875,12 @@
     "normRef": "DIN EN 1992-1-1, 3.1.4 / 3.3.2",
     "question": "Was beschreibt die Relaxation eines Spannstahls?",
     "options": [
-      "Abnahme der Spannung bei konstant gehaltener Dehnung",
       "Zunahme der Dehnung bei konstanter Spannung",
+      "Abnahme der Spannung bei konstant gehaltener Dehnung",
       "Rückfederung nach Entlastung",
       "Abnahme des E-Moduls durch Korrosion"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Relaxation: Spannungsabbau bei konstanter Dehnung (Maxwell-Verhalten). Kriechen ist der umgekehrte Fall: Dehnungszunahme bei konstanter Spannung.",
     "gapAnalysis": {
       "topic": "Kriechen vs. Relaxation",
@@ -2906,11 +2906,11 @@
     "question": "Frischbeton (τ₀ = 500 Pa, μ_p = 50 Pa·s) wird mit 800 Pa geschert. Welche Scherrate stellt sich ein?",
     "options": [
       "0 s⁻¹",
-      "16 s⁻¹",
+      "6 s⁻¹",
       "10 s⁻¹",
-      "6 s⁻¹"
+      "16 s⁻¹"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "γ̇ = (τ − τ₀)/μ_p = 300/50 = 6 s⁻¹. Unterhalb von τ₀ fließt der Beton nicht (γ̇ = 0); 16 s⁻¹ ergibt sich, wenn τ₀ vergessen wird.",
     "gapAnalysis": {
       "topic": "Bingham-Fluid",
@@ -2936,11 +2936,11 @@
     "question": "Ein Rundstab S235 (d = 30 mm, L = 4 m, E = 210 000 MPa) wird mit 120 kN gezogen. Wie groß ist die Verlängerung?",
     "options": [
       "0,32 mm",
-      "32,3 mm",
+      "3,23 mm",
       "8,08 mm",
-      "3,23 mm"
+      "32,3 mm"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "A = 706,9 mm², EA = 148 440 kN; ΔL = F · L/EA = 120 · 4000/148 440 = 3,23 mm.",
     "gapAnalysis": {
       "topic": "Dehnsteifigkeit",
@@ -2966,11 +2966,11 @@
     "question": "Eine Betonstütze staucht sich unter Dauerlast sofort um 0,80 mm. Wie groß ist die Endstauchung bei der Kriechzahl φ = 2,0?",
     "options": [
       "1,60 mm",
-      "3,20 mm",
       "2,40 mm",
+      "3,20 mm",
       "0,27 mm"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "ε_∞ = ε_el · (1 + φ) bzw. E_c,eff = E_cm/(1 + φ): 0,80 · 3 = 2,40 mm. Der reine Kriechanteil beträgt 1,60 mm.",
     "gapAnalysis": {
       "topic": "Kriechzahl",
@@ -2995,12 +2995,12 @@
     "normRef": "DIN EN ISO 6946",
     "question": "Eine Außenwand hat R_T = 4,37 m²K/W (einschließlich R_si und R_se). Wie groß ist der U-Wert, und hält er den Höchstwert 0,24 W/(m²K) nach Anlage 7 GModG/GEG ein?",
     "options": [
-      "0,17 W/(m²K) – eingehalten",
+      "0,229 W/(m²K) – eingehalten",
       "0,437 W/(m²K) – nicht eingehalten",
       "4,37 W/(m²K) – nicht eingehalten",
-      "0,229 W/(m²K) – eingehalten"
+      "0,17 W/(m²K) – eingehalten"
     ],
-    "correctIdx": 3,
+    "correctIdx": 0,
     "explanation": "U = 1/R_T = 1/4,37 = 0,229 W/(m²K) ≤ 0,24. Der U-Wert ist der Kehrwert des Gesamtwiderstands, nicht der Widerstand selbst.",
     "gapAnalysis": {
       "topic": "U-Wert",
@@ -3025,12 +3025,12 @@
     "normRef": "DIN 18041",
     "question": "Ein Klassenraum (V = 189 m³) hat eine äquivalente Absorptionsfläche von A = 64,7 m². Wie groß ist die Nachhallzeit nach Sabine?",
     "options": [
-      "0,48 s",
       "0,16 s",
+      "0,48 s",
       "2,78 s",
       "4,8 s"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "T = 0,163 · V/A = 0,163 · 189/64,7 = 0,48 s. Der Sollwert für Nutzungsart A3 beträgt 0,32 · lg 189 − 0,17 = 0,56 s; 0,48 s liegt im Toleranzbereich 0,8 bis 1,2 · T_soll.",
     "gapAnalysis": {
       "topic": "Nachhallzeit nach Sabine",
@@ -3056,11 +3056,11 @@
     "question": "Warum fühlt sich ein 20 °C warmer Betonboden kälter an als ein 20 °C warmer Holzboden?",
     "options": [
       "Beton hat eine niedrigere Oberflächentemperatur",
-      "Beton hat die kleinere spezifische Wärmekapazität",
+      "Beton hat die größere Wärmeeindringfähigkeit b = √(λ·ρ·c) und entzieht der Haut schneller Wärme",
       "Holz hat die größere Wärmeleitfähigkeit",
-      "Beton hat die größere Wärmeeindringfähigkeit b = √(λ·ρ·c) und entzieht der Haut schneller Wärme"
+      "Beton hat die kleinere spezifische Wärmekapazität"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "b_Beton ≈ 2190, b_Fichte ≈ 320 J/(m²K√s). Die Kontakttemperatur liegt bei Beton bei etwa 24 °C, bei Holz bei etwa 30 °C. Beide Oberflächen haben 20 °C.",
     "gapAnalysis": {
       "topic": "Wärmeeindringfähigkeit",
@@ -3085,12 +3085,12 @@
     "normRef": "DIN 4108-2 / DIN EN ISO 13788",
     "question": "Raumklima 20 °C / 50 % r. F.: Ab welcher Oberflächentemperatur droht nach dem 80-%-Kriterium Schimmel?",
     "options": [
-      "unter 12,6 °C",
       "unter 9,3 °C",
+      "unter 12,6 °C",
       "unter 15,0 °C",
       "unter 0 °C"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Der Taupunkt liegt bei 9,3 °C. Schimmel droht bereits, wenn die Oberflächenfeuchte 80 % überschreitet: p_sat(θ) = 1169/0,8 = 1461 Pa, also θ = 12,6 °C. Daraus folgt f_Rsi = (12,6 + 5)/25 = 0,70.",
     "gapAnalysis": {
       "topic": "Taupunkt und Schimmelgrenze",
@@ -3117,10 +3117,10 @@
     "options": [
       "0,32 m",
       "3,1 m",
-      "80 m",
-      "8,0 m"
+      "8,0 m",
+      "80 m"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "s_d = µ · d = 50 · 0,16 m = 8,0 m.",
     "gapAnalysis": {
       "topic": "s_d-Wert",
@@ -3146,11 +3146,11 @@
     "question": "Bei gleicher Dämmdicke: Wo liegt die Grenzschicht Dämmung/Mauerwerk bei Innendämmung im Vergleich zur Außendämmung (20 °C innen, −5 °C außen)?",
     "options": [
       "Bei beiden etwa gleich warm",
-      "Bei Außendämmung unter dem Gefrierpunkt",
+      "Bei Innendämmung deutlich kälter (etwa 1,5 °C statt 12,4 °C im Beispiel)",
       "Bei Innendämmung wärmer, weil die Dämmung die Raumwärme speichert",
-      "Bei Innendämmung deutlich kälter (etwa 1,5 °C statt 12,4 °C im Beispiel)"
+      "Bei Außendämmung unter dem Gefrierpunkt"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Die Dämmschicht nimmt den Großteil des Temperaturabfalls auf. Liegt sie innen, kühlt die Grenzschicht dahinter stark ab und liegt unter dem Taupunkt der Raumluft (9,3 °C); deshalb braucht eine Innendämmung eine Dampfbremse oder ein kapillaraktives System.",
     "gapAnalysis": {
       "topic": "Temperatur der Grenzschicht",
@@ -3235,12 +3235,12 @@
     "normRef": "DIN 4109-1:2018-01",
     "question": "Welche Mindestanforderung stellt DIN 4109-1 an Wohnungstrennwände?",
     "options": [
-      "R′w ≥ 53 dB",
       "R′w ≥ 47 dB",
+      "R′w ≥ 53 dB",
       "R′w ≥ 60 dB",
       "L′n,w ≤ 53 dB"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Wohnungstrennwände: R′w ≥ 53 dB; Wohnungstrenndecken: R′w ≥ 54 dB und L′n,w ≤ 50 dB. Der Strich kennzeichnet Werte im eingebauten Zustand einschließlich Flankenübertragung.",
     "gapAnalysis": {
       "topic": "Anforderung Wohnungstrennwand",
@@ -3296,11 +3296,11 @@
     "question": "Ein BSH-Balken (β_n = 0,7 mm/min) wird 60 min dreiseitig beflammt. Wie groß ist die effektive Abbrandtiefe nach der Methode mit reduziertem Querschnitt?",
     "options": [
       "42 mm",
-      "70 mm",
+      "49 mm",
       "35 mm",
-      "49 mm"
+      "70 mm"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "d_ef = β_n · t + k_0 · d_0 = 0,7 · 60 + 1,0 · 7 = 49 mm. Die Schicht ohne Festigkeit (7 mm) kommt zur Abbrandtiefe hinzu.",
     "gapAnalysis": {
       "topic": "Holzabbrand",
@@ -3326,11 +3326,11 @@
     "question": "Welche Größe bestimmt bei Wohngebäuden die Energieeffizienzklasse (A+ bis H) im Energieausweis?",
     "options": [
       "Der Primärenergiebedarf",
-      "Die CO₂-Emissionen",
+      "Der Endenergiebedarf bzw. -verbrauch",
       "Der Transmissionswärmeverlust H′T",
-      "Der Endenergiebedarf bzw. -verbrauch"
+      "Die CO₂-Emissionen"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Anlage 10 ordnet die Klassen nach dem Endenergiekennwert in kWh/(m²·a) zu (A+ ≤ 30, A ≤ 50, B ≤ 75, C ≤ 100 …). Der Primärenergiebedarf ist die Nachweisgröße nach § 15 für Neubauten.",
     "gapAnalysis": {
       "topic": "Effizienzklasse",
@@ -3356,11 +3356,11 @@
     "question": "Was gilt seit dem 29. Juli 2026 für das Gebäudeenergiegesetz (GEG)?",
     "options": [
       "Es wurde ersatzlos aufgehoben",
-      "Es wurde durch die EnEV 2014 ersetzt",
+      "Es heißt nun Gebäudemodernisierungsgesetz (GModG); Neubauanforderungen (§§ 15, 16) und Energieausweis-Regeln (§§ 79–88) bleiben unter denselben Nummern; Bestandsanforderungen wurden teils neu nummeriert",
       "Es gilt unverändert weiter, einschließlich der 65-%-Regel",
-      "Es heißt nun Gebäudemodernisierungsgesetz (GModG); Neubauanforderungen (§§ 15, 16) und Energieausweis-Regeln (§§ 79–88) bleiben unter denselben Nummern; Bestandsanforderungen wurden teils neu nummeriert"
+      "Es wurde durch die EnEV 2014 ersetzt"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Das GModG wurde am 28.07.2026 verkündet und tritt gestaffelt in Kraft. Die 65-%-Vorgabe für neue Heizungen entfällt (Bio-Treppe für Gas- und Ölheizungen); §§ 15, 16 und 79 bis 88 bleiben inhaltlich bestehen.",
     "gapAnalysis": {
       "topic": "Rechtsstand 2026",
@@ -3387,10 +3387,10 @@
     "options": [
       "ab 2025",
       "ab 2028 für alle Neubauten",
-      "erst ab 2050",
-      "ab 2030 für alle Neubauten (ab 2028 bereits für Gebäude über 1 000 m²)"
+      "ab 2030 für alle Neubauten (ab 2028 bereits für Gebäude über 1 000 m²)",
+      "erst ab 2050"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "Art. 7 EPBD: ab 1.1.2028 für neue Gebäude mit mehr als 1 000 m² Nutzfläche, ab 1.1.2030 für alle neuen Gebäude; Betrachtungszeitraum 50 Jahre.",
     "gapAnalysis": {
       "topic": "EPBD Lebenszyklus-GWP",
@@ -3416,11 +3416,11 @@
     "question": "Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?",
     "options": [
       "Seit 2025 als § 650o BGB in Kraft",
-      "Er wurde durch die EU-Bauproduktenverordnung eingeführt",
+      "Der Regierungsentwurf von 2024 ist mit der 20. Wahlperiode erledigt; seit November 2025 liegen Eckpunkte für einen neuen Entwurf vor",
       "Er ist Teil der Musterbauordnung",
-      "Der Regierungsentwurf von 2024 ist mit der 20. Wahlperiode erledigt; seit November 2025 liegen Eckpunkte für einen neuen Entwurf vor"
+      "Er wurde durch die EU-Bauproduktenverordnung eingeführt"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Der Entwurf (u. a. § 650a Abs. 3/4 und § 650o BGB-E) wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. BMJ und BMWSB haben im November 2025 Eckpunkte vorgelegt; ein neues Gesetz steht aus.",
     "gapAnalysis": {
       "topic": "Rechtsstand Gebäudetyp E",
@@ -3446,11 +3446,11 @@
     "question": "Welche Maßnahme senkt das GWP (A1–A3) von Transportbeton meist am stärksten?",
     "options": [
       "Kürzere Transportwege der Gesteinskörnung",
-      "Mehr Fließmittel",
       "Verringerung des Klinkeranteils, z. B. CEM III/A statt CEM I",
+      "Mehr Fließmittel",
       "Höhere Frischbetontemperatur"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Der Zement verursacht 80 bis 90 % des Beton-GWP; im Lehrbeispiel sinkt das GWP mit CEM III/A von 286 auf 174 kg CO₂-Äq./m³ (−39 %).",
     "gapAnalysis": {
       "topic": "Zementart und GWP",
@@ -3506,11 +3506,11 @@
     "question": "Welche GWP-Anforderungswerte gelten für Wohngebäude nach QNG (WG23)?",
     "options": [
       "PLUS ≤ 28, PREMIUM ≤ 24 kg CO₂-Äq./(m² BGF·a)",
-      "PLUS ≤ 32, PREMIUM ≤ 26 kg CO₂-Äq./(m² NRF·a)",
+      "PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)",
       "PLUS ≤ 24, PREMIUM ≤ 16 kg CO₂-Äq./(m² NRF·a)",
-      "PLUS ≤ 24, PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a)"
+      "PLUS ≤ 32, PREMIUM ≤ 26 kg CO₂-Äq./(m² NRF·a)"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Seit 01.01.2023 (WG23): PLUS ≤ 24 und PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a), dazu PENRT ≤ 96 bzw. 64 kWh/(m² NRF·a); Bezug NRF nach DIN 277, 50 Jahre.",
     "gapAnalysis": {
       "topic": "QNG-Anforderungswerte",
@@ -3597,10 +3597,10 @@
     "options": [
       "Ein Typ-I-Umweltzeichen mit Bestanden/Nicht-bestanden-Urteil (z. B. Blauer Engel)",
       "Eine Typ-II-Herstellerselbsterklärung ohne Prüfung",
-      "Ein Gebäudezertifikat",
-      "Eine Typ-III-Deklaration mit quantifizierten, extern verifizierten Ökobilanzdaten ohne Bewertung"
+      "Eine Typ-III-Deklaration mit quantifizierten, extern verifizierten Ökobilanzdaten ohne Bewertung",
+      "Ein Gebäudezertifikat"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "EPD sind Typ-III-Deklarationen (ISO 14025): Sie liefern Indikatorwerte (GWP, PENRT …) für die Gebäudebilanz, bewerten aber nicht.",
     "gapAnalysis": {
       "topic": "Typen von Umweltkennzeichnungen",
@@ -3627,10 +3627,10 @@
     "options": [
       "0,64",
       "0,73",
-      "0,96",
-      "0,82"
+      "0,82",
+      "0,96"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "F(X) = 0,9/2 = 0,45; MCI = 1 − 0,40 · 0,45 = 0,82. Bei X = 1 ergäbe sich 0,64.",
     "gapAnalysis": {
       "topic": "Material Circularity Indicator",
@@ -3655,12 +3655,12 @@
     "normRef": "KrWG § 14 / 2008/98/EG",
     "question": "Welche Mindestquote für die stoffliche Verwertung nicht gefährlicher Bau- und Abbruchabfälle gilt nach KrWG und EU-Abfallrahmenrichtlinie?",
     "options": [
-      "70 Gew.-%",
-      "60 Gew.-%",
       "50 Gew.-%",
+      "60 Gew.-%",
+      "70 Gew.-%",
       "90 Gew.-%"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "Vorbereitung zur Wiederverwendung, Recycling und sonstige stoffliche Verwertung (einschließlich Verfüllung) sollen mindestens 70 Gew.-% erreichen; energetische Verwertung zählt nicht.",
     "gapAnalysis": {
       "topic": "Verwertungsquote Bau- und Abbruchabfälle",
@@ -3687,10 +3687,10 @@
     "options": [
       "etwa 410 kg",
       "etwa 620 kg",
-      "etwa 920 kg",
-      "etwa 820 kg"
+      "etwa 820 kg",
+      "etwa 920 kg"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "m_atro = 500/1,12 = 446 kg; Kohlenstoff 50 % = 223 kg; CO₂ = 223 · 44/12 = 818 kg.",
     "gapAnalysis": {
       "topic": "Biogener Kohlenstoff",
@@ -3746,11 +3746,11 @@
     "question": "Barwert von 2 000 €/a über 30 Jahre bei r = 2 %?",
     "options": [
       "60 000 €",
-      "22 400 €",
+      "44 800 €",
       "38 800 €",
-      "44 800 €"
+      "22 400 €"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Rentenbarwertfaktor (1 − 1,02⁻³⁰)/0,02 = 22,40; 2 000 · 22,40 = 44 800 €.",
     "gapAnalysis": {
       "topic": "Rentenbarwert",
@@ -3776,11 +3776,11 @@
     "question": "Wie wirkt ein höherer Kalkulationszins auf den Variantenvergleich „teure, langlebige Lösung“ gegen „billige Lösung mit hohen Folgekosten“?",
     "options": [
       "Er begünstigt die langlebige Lösung",
-      "Er hat keinen Einfluss",
       "Er begünstigt die billige Lösung, weil künftige Kosten stärker abgezinst werden",
+      "Er hat keinen Einfluss",
       "Er erhöht alle Barwerte gleichmäßig"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Je höher r, desto kleiner der Barwert künftiger Zahlungen; Investitionen heute gewinnen relativ an Gewicht.",
     "gapAnalysis": {
       "topic": "Einfluss des Zinssatzes",
@@ -3805,12 +3805,12 @@
     "normRef": "DIN 4108-3:2024-03",
     "question": "Warum steigt bei einer Innendämmung das Risiko von Tauwasser an der Grenzschicht zur Bestandswand?",
     "options": [
-      "Weil die Außenwand stärker beregnet wird",
+      "Weil die Bestandswand nach der Dämmung kälter wird und die Raumluftfeuchte bis zu ihr diffundieren kann",
       "Weil der U-Wert der Wand steigt",
       "Weil die Raumlufttemperatur sinkt",
-      "Weil die Bestandswand nach der Dämmung kälter wird und die Raumluftfeuchte bis zu ihr diffundieren kann"
+      "Weil die Außenwand stärker beregnet wird"
     ],
-    "correctIdx": 3,
+    "correctIdx": 0,
     "explanation": "Die Dämmebene liegt warmseitig; das Mauerwerk dahinter kühlt aus. Ohne Dampfbremse oder kapillaraktives System kann an der kalten Grenzschicht Tauwasser ausfallen.",
     "gapAnalysis": {
       "topic": "Innendämmung und Tauwasser",
@@ -3836,11 +3836,11 @@
     "question": "Ab welchem Umfang greifen die Höchstwerte nach Anlage 7 GModG bei der Änderung eines Außenbauteils?",
     "options": [
       "Bei jeder Reparatur",
-      "Nur bei Nutzungsänderung",
+      "Wenn mehr als 10 % der gesamten jeweiligen Bauteilfläche geändert werden",
       "Erst ab 50 % der Gebäudehüllfläche",
-      "Wenn mehr als 10 % der gesamten jeweiligen Bauteilfläche geändert werden"
+      "Nur bei Nutzungsänderung"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "§ 36 GModG (vormals § 48 GEG) knüpft die Anforderungen an Änderungen von mehr als 10 % der jeweiligen Bauteilfläche des Gebäudes.",
     "gapAnalysis": {
       "topic": "Anforderungen bei Änderung",
@@ -3866,11 +3866,11 @@
     "question": "Wofür ist ein verformungsgetreues Aufmaß bei einem historischen Dachstuhl besonders wichtig?",
     "options": [
       "Für die Kostenschätzung der Dachdeckung",
-      "Nur für die Denkmalliste",
       "Um tatsächliche Querschnitte, Schiefstellungen und Vorverformungen für die Nachrechnung zu erfassen",
+      "Nur für die Denkmalliste",
       "Es ersetzt die Holzfeuchtemessung"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Gemessene Restquerschnitte und Vorverformungen gehen direkt in die Nachweise ein (z. B. Zusatzmoment N · e₀).",
     "gapAnalysis": {
       "topic": "Verformungsgetreues Aufmaß",
@@ -3895,12 +3895,12 @@
     "normRef": "DIN EN 1995-1-1:2010-12, Gl. (6.19)",
     "question": "Wie geht die Druckspannung in den Querschnittsnachweis für Druck und Biegung nach Eurocode 5 ein?",
     "options": [
-      "Quadratisch, (σ_c,0,d / f_c,0,d)²",
       "Linear",
+      "Quadratisch, (σ_c,0,d / f_c,0,d)²",
       "Gar nicht",
       "Mit dem Exponenten 0,5"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Gl. (6.19): (σ_c,0,d/f_c,0,d)² + σ_m,d/f_m,d ≤ 1 – der Druckanteil wirkt quadratisch, weil Holz unter Druck plastisch reagiert.",
     "gapAnalysis": {
       "topic": "Druck und Biegung im Holz",
@@ -3926,11 +3926,11 @@
     "question": "Welche Eigenschaft sollte ein Fugenmörtel für historisches Mauerwerk im Verhältnis zum Stein haben?",
     "options": [
       "Höhere Festigkeit und Dichtheit als der Stein",
-      "Gleiche Festigkeit wie moderner Zementmörtel M10",
       "Geringere Festigkeit und höhere Porosität als der Stein (Opfermörtel)",
+      "Gleiche Festigkeit wie moderner Zementmörtel M10",
       "Er sollte wasserabweisend und dampfdicht sein"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Der Mörtel soll das schwächere Glied sein: Feuchte und Salze verdunsten über die Fuge, Spannungen werden dort abgebaut, nicht im Stein.",
     "gapAnalysis": {
       "topic": "Mörtelverträglichkeit",
@@ -3956,11 +3956,11 @@
     "question": "Was regelt § 105 GModG für Baudenkmäler?",
     "options": [
       "Eine Pflicht zur Außendämmung",
-      "Eine Befreiung nur für Kirchen",
+      "Abweichungen von den Anforderungen, soweit deren Erfüllung die Substanz oder das Erscheinungsbild beeinträchtigen würde",
       "Ein generelles Verbot jeder Dämmung",
-      "Abweichungen von den Anforderungen, soweit deren Erfüllung die Substanz oder das Erscheinungsbild beeinträchtigen würde"
+      "Eine Befreiung nur für Kirchen"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Bei Baudenkmälern und sonstiger besonders erhaltenswerter Bausubstanz kann von den Anforderungen abgewichen werden; die Denkmalbehörde ist einzubinden.",
     "gapAnalysis": {
       "topic": "Energieanforderungen am Baudenkmal",
@@ -3987,10 +3987,10 @@
     "options": [
       "ca. 4 cm",
       "ca. 7 cm",
-      "ca. 20 cm",
-      "ca. 11 cm"
+      "ca. 11 cm",
+      "ca. 20 cm"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "d = λ · (1/U_soll − 1/U_alt) = 0,032 · (4,17 − 0,71) = 0,111 m ≈ 11 cm; gewählt wird die nächste Handelsdicke.",
     "gapAnalysis": {
       "topic": "Erforderliche Dämmdicke",
@@ -4015,12 +4015,12 @@
     "normRef": "GModG § 35",
     "question": "Welche Regelung trifft das GModG für ungedämmte oberste Geschossdecken beheizter Räume?",
     "options": [
-      "Keine Anforderung mehr",
       "Nachrüstung so, dass U ≤ 0,24 W/(m²K) eingehalten wird (§ 35, vormals § 47 GEG)",
+      "Keine Anforderung mehr",
       "Nur Empfehlung im Energieausweis",
       "U ≤ 0,50 W/(m²K) bei jedem Eigentümerwechsel"
     ],
-    "correctIdx": 1,
+    "correctIdx": 0,
     "explanation": "Die Nachrüstpflicht für oberste Geschossdecken ist im GModG in § 35 geregelt; Höchstwert 0,24 W/(m²K), alternativ Dämmung des darüberliegenden Dachs.",
     "gapAnalysis": {
       "topic": "Nachrüstpflicht oberste Geschossdecke",
@@ -4046,11 +4046,11 @@
     "question": "Nach 36 Jahren beträgt die Karbonatisierungstiefe 15 mm. Wann erreicht die Front nach dem √t-Gesetz eine Betondeckung von 25 mm?",
     "options": [
       "nach ca. 60 Jahren",
-      "nach ca. 150 Jahren",
       "nach ca. 100 Jahren",
+      "nach ca. 150 Jahren",
       "nie"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "k = 15/√36 = 2,5 mm/√a; t = (25/2,5)² = 100 a, also rund 64 Jahre Restzeit.",
     "gapAnalysis": {
       "topic": "Karbonatisierungsprognose",
@@ -4135,12 +4135,12 @@
     "normRef": "DIN EN 1990, Anhang D; EN 1990-2:2026",
     "question": "Wie wirkt sich ein kleiner gemessener Variationskoeffizient der Betonfestigkeit auf den Bemessungswert aus?",
     "options": [
-      "Er erhöht den Bemessungswert, weil der Abstand zum Mittelwert kleiner wird",
       "Er senkt den Bemessungswert",
+      "Er erhöht den Bemessungswert, weil der Abstand zum Mittelwert kleiner wird",
       "Er hat keinen Einfluss",
       "Er macht Teilsicherheitsbeiwerte überflüssig"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "f_d = f_m · exp(−α_R β V − 0,5 V²): kleineres V führt zu einem größeren Bemessungswert – so lassen sich im Bestand Reserven aufdecken.",
     "gapAnalysis": {
       "topic": "Streuung im Bestand",
@@ -4256,11 +4256,11 @@
     "question": "Was gilt nach der Trinkwasserverordnung 2023 für Trinkwasserleitungen aus Blei?",
     "options": [
       "Sie dürfen unbefristet weiterbetrieben werden",
-      "Sie sind nur in Schulen verboten",
+      "Sie waren bis 12.01.2026 zu entfernen oder stillzulegen",
       "Sie müssen nur gekennzeichnet werden",
-      "Sie waren bis 12.01.2026 zu entfernen oder stillzulegen"
+      "Sie sind nur in Schulen verboten"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Die TrinkwV 2023 verlangte den Austausch oder die Stilllegung von Bleileitungen bis 12.01.2026; der Grenzwert für Blei sinkt ab 12.01.2028 von 10 auf 5 µg/l.",
     "gapAnalysis": {
       "topic": "Bleileitungen",
@@ -4286,11 +4286,11 @@
     "question": "Wozu dient die Richtlinie VDI 6200?",
     "options": [
       "Bemessung von Stahlbetonbauteilen",
-      "Brandschutzplanung",
       "Regelmäßige Überprüfung der Standsicherheit von Bauwerken (Begehung, Inspektion, eingehende Überprüfung)",
+      "Brandschutzplanung",
       "Schallschutznachweis"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "VDI 6200 empfiehlt gestufte Prüfungen und Intervalle je nach Schadensfolgeklasse und Robustheitsklasse.",
     "gapAnalysis": {
       "topic": "Regelmäßige Bauwerksprüfung",
@@ -4345,12 +4345,12 @@
     "normRef": "GewAbfV § 8",
     "question": "Wie viele Fraktionen von Bau- und Abbruchabfällen sind nach § 8 GewAbfV grundsätzlich getrennt zu halten?",
     "options": [
-      "Zehn (u. a. Glas, Kunststoff, Metalle, Holz, Dämmmaterial, Bitumengemische, Gips, Beton, Ziegel, Fliesen/Keramik)",
       "Drei (mineralisch, Holz, Rest)",
+      "Zehn (u. a. Glas, Kunststoff, Metalle, Holz, Dämmmaterial, Bitumengemische, Gips, Beton, Ziegel, Fliesen/Keramik)",
       "Fünf, nur bei Bauvorhaben über 100 m³",
       "Keine – Getrennthaltung ist freiwillig"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "§ 8 GewAbfV nennt zehn Fraktionen. Ausnahmen gelten bei technischer Unmöglichkeit oder wirtschaftlicher Unzumutbarkeit; die Dokumentationspflicht entfällt bis 10 m³ Abfall.",
     "gapAnalysis": {
       "topic": "Getrennthaltung von Bauabfällen",
@@ -4376,11 +4376,11 @@
     "question": "Was regelt die DIN SPEC 91484?",
     "options": [
       "Die Bemessung von Abbruchgeräten",
-      "Grenzwerte für Asbestfasern",
       "Die Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten als Grundlage für die Bewertung ihres Anschlussnutzungspotenzials (Pre-Demolition Audit)",
+      "Grenzwerte für Asbestfasern",
       "Die Deponieklassen"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "DIN SPEC 91484 beschreibt ein Verfahren zur Bauteil- und Produkterfassung vor dem Rückbau; die DIN SPEC 91525 (2026) ergänzt ein Anschlussnutzungskonzept.",
     "gapAnalysis": {
       "topic": "Pre-Demolition Audit",
@@ -4405,12 +4405,12 @@
     "normRef": "LAGA PN 98, Tabelle 2",
     "question": "Wie viele Mischproben verlangt die LAGA PN 98 mindestens für ein Haufwerk von 100 m³?",
     "options": [
-      "4",
-      "2",
       "1",
+      "2",
+      "4",
       "10"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "Tabelle 2: bis 100 m³ 16 Einzelproben, 4 Mischproben und 4 Laborproben.",
     "gapAnalysis": {
       "topic": "Probenanzahl nach LAGA PN 98",
@@ -4496,11 +4496,11 @@
     "question": "Wann ist der Einbau von RC-3 nach § 22 EBV anzuzeigen?",
     "options": [
       "Nie",
-      "Erst nach Fertigstellung",
+      "Ab einem Gesamtvolumen von 250 m³ mit Voranzeige vier Wochen vor Beginn und Abschlussanzeige",
       "Nur bei Einbau über 10 000 m³",
-      "Ab einem Gesamtvolumen von 250 m³ mit Voranzeige vier Wochen vor Beginn und Abschlussanzeige"
+      "Erst nach Fertigstellung"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "RC-3, BM-F3, BG-F3 sowie bestimmte Schlacken und Aschen sind ab den Mengenschwellen anzuzeigen; in Schutzgebieten gilt eine Voranzeigepflicht unabhängig von der Menge.",
     "gapAnalysis": {
       "topic": "EBV-Anzeigepflicht",
@@ -4525,12 +4525,12 @@
     "normRef": "GefStoffV § 5a",
     "question": "Was muss der Veranlasser (Bauherr) nach § 5a GefStoffV vor Arbeiten an einem Gebäude mit Baujahr 1994 mindestens mitteilen?",
     "options": [
-      "Den Baubeginn, da das Baujahr zwischen 1993 und 1996 liegt",
       "Nichts, die Pflicht gilt nur vor 1993",
+      "Den Baubeginn, da das Baujahr zwischen 1993 und 1996 liegt",
       "Ein vollständiges Schadstoffgutachten",
       "Nur die Wohnfläche"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Bei Objekten zwischen 1993 und 1996 ist der Baubeginn mitzuteilen; sonst genügt das Baujahr. Zusätzlich sind alle vorliegenden Informationen zu vermuteten Gefahrstoffen weiterzugeben.",
     "gapAnalysis": {
       "topic": "Veranlasserpflichten GefStoffV",
@@ -4555,12 +4555,12 @@
     "normRef": "TRGS 910; TRGS 519",
     "question": "Welche Faserkonzentrationen begrenzen den Bereich mittleren Risikos bei Asbest?",
     "options": [
-      "10 000 (Akzeptanz) bis 100 000 F/m³ (Toleranz)",
       "1 000 bis 10 000 F/m³",
+      "10 000 (Akzeptanz) bis 100 000 F/m³ (Toleranz)",
       "100 000 bis 1 000 000 F/m³",
       "Es gibt keine Konzentrationsgrenzen"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Akzeptanzkonzentration 10 000 F/m³ (Risiko 4:10 000), Toleranzkonzentration 100 000 F/m³ (4:1 000). Darüber: hohes Risiko, zulassungspflichtige Tätigkeiten.",
     "gapAnalysis": {
       "topic": "Risikokonzept Asbest",
@@ -4586,11 +4586,11 @@
     "question": "Wie verändert sich der MCI eines Produkts mit LFI = 0,5, wenn sich seine Nutzungsdauer gegenüber dem Durchschnitt verdoppelt (F(X) = 0,9/X)?",
     "options": [
       "Er sinkt von 0,55 auf 0,10",
-      "Er bleibt bei 0,55",
       "Er steigt von 0,55 auf etwa 0,78",
+      "Er bleibt bei 0,55",
       "Er wird negativ"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "MCI = 1 − LFI · F(X): X = 1 → 1 − 0,45 = 0,55; X = 2 → 1 − 0,5 · 0,45 = 0,775.",
     "gapAnalysis": {
       "topic": "Material Circularity Indicator",
@@ -4615,12 +4615,12 @@
     "normRef": "KrWG § 14 Abs. 3",
     "question": "Was besagt § 14 Abs. 3 KrWG für nicht gefährliche Bau- und Abbruchabfälle?",
     "options": [
-      "Ein nationales Ziel von mindestens 70 Gew.-% Vorbereitung zur Wiederverwendung, Recycling und sonstiger stofflicher Verwertung (einschließlich Verfüllung)",
       "Eine projektbezogene Pflichtquote von 90 %",
+      "Ein nationales Ziel von mindestens 70 Gew.-% Vorbereitung zur Wiederverwendung, Recycling und sonstiger stofflicher Verwertung (einschließlich Verfüllung)",
       "Ein Deponieverbot für Bauschutt",
       "Eine Pflicht zu RC-Beton im Hochbau"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Die 70-%-Vorgabe ist ein Ziel für Deutschland insgesamt, ohne natürlich vorkommendes Material (AVV 17 05 04) – keine Pflichtquote für das einzelne Bauvorhaben.",
     "gapAnalysis": {
       "topic": "KrWG-Zielquote",
@@ -4675,12 +4675,12 @@
     "normRef": "4. BImSchV",
     "question": "Ab wann ist eine mobile Brechanlage am selben Standort nach BImSchG genehmigungsbedürftig?",
     "options": [
-      "Wenn sie länger als zwölf Monate am selben Ort betrieben wird",
       "Ab dem ersten Tag",
+      "Wenn sie länger als zwölf Monate am selben Ort betrieben wird",
       "Nur bei mehr als 100 t Durchsatz pro Jahr",
       "Nie, mobile Anlagen sind ausgenommen"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Nach der 4. BImSchV sind Anlagen genehmigungsbedürftig, wenn sie länger als zwölf Monate am selben Ort betrieben werden sollen (Nr. 2.2 bzw. 8.11.2.4 des Anhangs 1).",
     "gapAnalysis": {
       "topic": "Mobile Brechanlage",
@@ -4707,10 +4707,10 @@
     "options": [
       "25 mm",
       "40 mm",
-      "70 mm",
-      "55 mm"
+      "55 mm",
+      "70 mm"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "c_min = max(16; 40; 10) = 40 mm, Vorhaltemaß nach NA 15 mm → c_nom = 55 mm.",
     "gapAnalysis": {
       "topic": "Betondeckung",
@@ -4736,11 +4736,11 @@
     "question": "Ein Grundwasser enthält 1 500 mg/l Sulfat. Welche Expositionsklasse liegt vor und was folgt daraus?",
     "options": [
       "XA1, keine besonderen Maßnahmen",
-      "XD2, Chloridschutz",
+      "XA2, Zement mit hohem Sulfatwiderstand (SR) erforderlich",
       "XA3, nur Beschichtung erforderlich",
-      "XA2, Zement mit hohem Sulfatwiderstand (SR) erforderlich"
+      "XD2, Chloridschutz"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Sulfat über 600 bis 3 000 mg/l entspricht XA2; ab 600 mg/l ist nach DIN 1045-2 ein SR-Zement zu verwenden.",
     "gapAnalysis": {
       "topic": "Chemischer Angriff",
@@ -4826,11 +4826,11 @@
     "question": "Welche drei Bedingungen müssen für eine schädigende AKR zusammenkommen?",
     "options": [
       "Sulfat, Frost, Chlorid",
-      "Karbonatisierung, CO₂, Wärme",
       "Alkaliempfindliche Gesteinskörnung, hoher Alkaligehalt der Porenlösung, Feuchte",
+      "Karbonatisierung, CO₂, Wärme",
       "Hoher w/z-Wert, Luftporen, Taumittel"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Reaktive Kieselsäure, Alkalien und ausreichend Feuchte; fehlt eine Bedingung, bleibt die Reaktion unschädlich.",
     "gapAnalysis": {
       "topic": "AKR-Voraussetzungen",
@@ -4855,12 +4855,12 @@
     "normRef": "DIN 1164-10",
     "question": "Ein Zement hat 0,25 M.-% Na₂O und 0,95 M.-% K₂O. Wie groß ist das Na₂O-Äquivalent und gilt er als NA-Zement?",
     "options": [
-      "1,20 M.-%, NA-Zement",
       "0,88 M.-%, kein NA-Zement",
+      "1,20 M.-%, NA-Zement",
       "0,55 M.-%, NA-Zement",
       "0,25 M.-%, NA-Zement"
     ],
-    "correctIdx": 1,
+    "correctIdx": 0,
     "explanation": "Na₂O-Äq. = 0,25 + 0,658 · 0,95 = 0,88 M.-% > 0,60 M.-% (Grenze für CEM I-NA).",
     "gapAnalysis": {
       "topic": "Na2O-Äquivalent",
@@ -4885,12 +4885,12 @@
     "normRef": "DIN 68800-1:2019-06",
     "question": "Welche Gebrauchsklasse gilt für einen Holzpfahl mit ständigem Erdkontakt?",
     "options": [
-      "GK 4",
+      "GK 1",
       "GK 2",
       "GK 3.2",
-      "GK 1"
+      "GK 4"
     ],
-    "correctIdx": 0,
+    "correctIdx": 3,
     "explanation": "GK 4: ständiger Erd- oder Süßwasserkontakt; Gefährdung u. a. durch Moderfäule.",
     "gapAnalysis": {
       "topic": "Gebrauchsklassen",
@@ -4916,11 +4916,11 @@
     "question": "Eine Holzprobe wiegt feucht 512 g und gedarrt 418 g. Wie hoch ist die Holzfeuchte?",
     "options": [
       "18,4 %",
-      "29,4 %",
       "22,5 %",
+      "29,4 %",
       "81,6 %"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "u = (512 − 418)/418 · 100 = 22,5 % – bezogen auf die Darrmasse, nicht auf die Feuchtmasse.",
     "gapAnalysis": {
       "topic": "Holzfeuchte",
@@ -4947,10 +4947,10 @@
     "options": [
       "17,0",
       "19,0",
-      "34,6",
-      "24,4"
+      "24,4",
+      "34,6"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "PREN = 17 + 3,3 · 2,0 + 16 · 0,05 = 24,4.",
     "gapAnalysis": {
       "topic": "PREN",
@@ -5066,11 +5066,11 @@
     "question": "Ein Bauteil ist XC4, XD1 und XF2 (LP) zugeordnet. Welcher maximale w/z-Wert ist maßgebend?",
     "options": [
       "0,60",
-      "0,45",
+      "0,55",
       "0,50",
-      "0,55"
+      "0,45"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Jeweils die strengste Anforderung gilt: XC4 0,60, XD1 0,55, XF2 (LP) 0,55 → 0,55.",
     "gapAnalysis": {
       "topic": "Mehrere Expositionsklassen",
@@ -5125,12 +5125,12 @@
     "normRef": "BGB § 634a; VOB/B § 13 Abs. 4",
     "question": "Wie lange verjähren Mängelansprüche bei einem Bauwerk ohne abweichende Vereinbarung?",
     "options": [
-      "BGB 5 Jahre, VOB/B 4 Jahre",
       "BGB 2 Jahre, VOB/B 2 Jahre",
+      "BGB 5 Jahre, VOB/B 4 Jahre",
       "BGB 4 Jahre, VOB/B 5 Jahre",
       "BGB 30 Jahre, VOB/B 10 Jahre"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "§ 634a Abs. 1 Nr. 2 BGB: fünf Jahre ab Abnahme; § 13 Abs. 4 Nr. 1 VOB/B: vier Jahre, sofern nichts anderes vereinbart.",
     "gapAnalysis": {
       "topic": "Verjährung",
@@ -5156,11 +5156,11 @@
     "question": "Was ändert sich mit der Abnahme hinsichtlich der Beweislast für Mängel?",
     "options": [
       "Nichts",
-      "Die Beweislast entfällt vollständig",
+      "Nach der Abnahme muss grundsätzlich der Besteller beweisen, dass ein Mangel vorliegt",
       "Der Unternehmer muss nach der Abnahme jede Mangelfreiheit beweisen",
-      "Nach der Abnahme muss grundsätzlich der Besteller beweisen, dass ein Mangel vorliegt"
+      "Die Beweislast entfällt vollständig"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Vor der Abnahme trägt der Unternehmer die Beweislast für die Mangelfreiheit; danach der Besteller für den Mangel (Ausnahme: bei der Abnahme vorbehaltene Mängel).",
     "gapAnalysis": {
       "topic": "Beweislast",
@@ -5185,12 +5185,12 @@
     "normRef": "Schadensdiagnostik",
     "question": "Warum darf ein Riss nicht ohne Weiteres kraftschlüssig verpresst werden?",
     "options": [
-      "Weil ein noch aktiver Riss danach an anderer Stelle neu aufreißt – zuerst Ursache und Rissbewegung klären",
       "Weil Harz zu teuer ist",
+      "Weil ein noch aktiver Riss danach an anderer Stelle neu aufreißt – zuerst Ursache und Rissbewegung klären",
       "Weil Verpressen nur bei Holz zulässig ist",
       "Weil Risse immer harmlos sind"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Nur ruhende Risse dürfen kraftschlüssig gefüllt werden; aktive Risse brauchen eine Bewegungsfuge oder die Beseitigung der Ursache.",
     "gapAnalysis": {
       "topic": "Rissursachen",
@@ -5246,11 +5246,11 @@
     "question": "Was deutet eine lokal deutlich verringerte Ultraschallgeschwindigkeit in einem Betonbauteil an?",
     "options": [
       "Höhere Festigkeit",
-      "Mehr Bewehrung",
       "Gefügestörung wie Kiesnest, Hohlraum oder Riss",
+      "Mehr Bewehrung",
       "Trockeneren Beton"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Fehlstellen verlängern den Laufweg bzw. verringern die Steifigkeit – die scheinbare Geschwindigkeit sinkt.",
     "gapAnalysis": {
       "topic": "Ultraschall",
@@ -5276,11 +5276,11 @@
     "question": "Darf ein installiertes Dauermonitoring die Hauptprüfung nach DIN 1076 ersetzen?",
     "options": [
       "Ja, immer",
-      "Nur bei Holzbrücken",
       "Nein, Monitoring ergänzt die handnahe Prüfung, ersetzt sie aber nicht",
+      "Nur bei Holzbrücken",
       "Nur wenn die Brücke jünger als 10 Jahre ist"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Monitoring liefert kontinuierliche Daten zu ausgewählten Größen; die handnahe Hauptprüfung aller Bauteile bleibt erforderlich.",
     "gapAnalysis": {
       "topic": "Monitoring und Prüfintervalle",
@@ -5337,10 +5337,10 @@
     "options": [
       "Bundesgesetz",
       "Eingeführte Technische Baubestimmung",
-      "EU-Verordnung",
-      "Private Richtlinie, die als anerkannte Regel der Technik die Instandhaltungspflicht des Eigentümers konkretisiert"
+      "Private Richtlinie, die als anerkannte Regel der Technik die Instandhaltungspflicht des Eigentümers konkretisiert",
+      "EU-Verordnung"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "VDI 6200 ist kein Gesetz und nicht bauaufsichtlich eingeführt; sie konkretisiert die Eigentümerpflichten (§ 3 MBO, Verkehrssicherungspflicht) und wird über Verträge verbindlich.",
     "gapAnalysis": {
       "topic": "VDI 6200",
@@ -5395,12 +5395,12 @@
     "normRef": "Holzbau",
     "question": "Welche Kombination führte zum Einsturz der Eislaufhalle Bad Reichenhall 2006?",
     "options": [
-      "Ungeeigneter Harnstoffharzklebstoff, Feuchte in den Kastenträgern, Konstruktions-/Ausführungsmängel und unterlassene Instandhaltung",
       "Erdbeben und Brand",
+      "Ungeeigneter Harnstoffharzklebstoff, Feuchte in den Kastenträgern, Konstruktions-/Ausführungsmängel und unterlassene Instandhaltung",
       "Überlastung durch Publikum",
       "Korrosion der Stahlstützen"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Der UF-Klebstoff verlor unter Feuchte seine Festigkeit; hinzu kamen Mängel von Beginn an und fehlende Bauwerksprüfungen. 15 Menschen starben.",
     "gapAnalysis": {
       "topic": "Bad Reichenhall",
@@ -5487,10 +5487,10 @@
     "options": [
       "Prinzip 1",
       "Prinzip 7",
-      "Prinzip 11",
-      "Prinzip 10"
+      "Prinzip 10",
+      "Prinzip 11"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "Prinzip 10 (CP) = kathodischer Schutz; Prinzip 11 (CA) = Kontrolle anodischer Bereiche; Prinzip 7 (RP) = Erhalt bzw. Wiederherstellung der Passivität.",
     "gapAnalysis": {
       "topic": "EN-1504-9-Prinzipien",
@@ -5516,11 +5516,11 @@
     "question": "Welche CO₂-diffusionsäquivalente Luftschichtdicke gilt als Anforderung an eine karbonatisierungsbremsende Beschichtung?",
     "options": [
       "s_d,CO₂ ≥ 0,5 m",
-      "s_d,CO₂ ≥ 50 m",
       "s_d,CO₂ ≥ 5 m",
+      "s_d,CO₂ ≥ 50 m",
       "s_d,CO₂ ≥ 5 000 m"
     ],
-    "correctIdx": 1,
+    "correctIdx": 2,
     "explanation": "Klopfer-Kriterium s_d,CO₂ ≥ 50 m; gleichzeitig soll die Beschichtung wasserdampfdurchlässig bleiben.",
     "gapAnalysis": {
       "topic": "Klopfer-Kriterium",
@@ -5545,12 +5545,12 @@
     "normRef": "TR Instandhaltung (DIBt)",
     "question": "Wer plant nach TR Instandhaltung Instandsetzungsmaßnahmen an Betonbauwerken?",
     "options": [
-      "Der sachkundige Planer (SKP)",
       "Der Bauherr selbst",
+      "Der sachkundige Planer (SKP)",
       "Der Produkthersteller",
       "Die Bauaufsicht"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Die TR Instandhaltung setzt voraus, dass jede Instandhaltungsmaßnahme von einem sachkundigen Planer geplant und die Ausführung von ihm begleitet wird.",
     "gapAnalysis": {
       "topic": "TR Instandhaltung",
@@ -5575,12 +5575,12 @@
     "normRef": "TR Instandhaltung / DIN V 18026",
     "question": "Welches Oberflächenschutzsystem eignet sich für eine befahrene Parkdeckfläche mit Trennrissen?",
     "options": [
-      "OS 11 (rissüberbrückende befahrbare Beschichtung)",
-      "OS 8 (starre Beschichtung)",
       "OS 1 (Hydrophobierung)",
+      "OS 8 (starre Beschichtung)",
+      "OS 11 (rissüberbrückende befahrbare Beschichtung)",
       "OS 2 (Fassadenbeschichtung)"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "OS 8 ist starr und nicht rissüberbrückend; für gerissene befahrene Flächen ist ein dynamisch rissüberbrückendes System wie OS 11 erforderlich.",
     "gapAnalysis": {
       "topic": "Oberflächenschutzsysteme",
@@ -5605,12 +5605,12 @@
     "normRef": "DIN EN ISO 14713-1",
     "question": "Warum hält ein Duplex-System (Verzinkung + Beschichtung) länger als die Summe der Einzelschutzdauern?",
     "options": [
-      "Weil sich beide Schichten gegenseitig schützen (Synergiefaktor etwa 1,2 bis 2,5)",
       "Weil Zink die Beschichtung härtet",
+      "Weil sich beide Schichten gegenseitig schützen (Synergiefaktor etwa 1,2 bis 2,5)",
       "Weil Beschichtungen nie altern",
       "Weil das Zink verdampft"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Die Beschichtung bremst den Zinkabtrag, das Zink verhindert Unterrostung an Fehlstellen.",
     "gapAnalysis": {
       "topic": "Duplex-System",
@@ -5636,11 +5636,11 @@
     "question": "Ein Balken 160/220 mm verliert seitlich je 30 mm und unten 30 mm durch Fäule. Welcher Anteil des Widerstandsmoments bleibt?",
     "options": [
       "etwa 85 %",
-      "etwa 47 %",
       "etwa 70 %",
+      "etwa 47 %",
       "etwa 20 %"
     ],
-    "correctIdx": 1,
+    "correctIdx": 2,
     "explanation": "W_Rest/W_0 = (100 · 190²)/(160 · 220²) = 0,47.",
     "gapAnalysis": {
       "topic": "Holzquerschnitt",
@@ -5665,12 +5665,12 @@
     "normRef": "WTA-Merkblatt 2-9-20/D",
     "question": "Welche Aufgabe hat ein Sanierputzsystem nach WTA 2-9?",
     "options": [
-      "Salze im Putzgefüge einlagern und Feuchte als Dampf abgeben, sodass die Oberfläche trocken und salzfrei bleibt",
       "Feuchte dauerhaft im Mauerwerk einschließen",
+      "Salze im Putzgefüge einlagern und Feuchte als Dampf abgeben, sodass die Oberfläche trocken und salzfrei bleibt",
       "Das Mauerwerk statisch verstärken",
       "Die Horizontalsperre ersetzen"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Hohe Porosität und Hydrophobie ermöglichen Salzeinlagerung und Verdunstung im Putz; die Feuchteursache muss trotzdem beseitigt werden.",
     "gapAnalysis": {
       "topic": "Sanierputz",
@@ -5725,12 +5725,12 @@
     "normRef": "DIN EN ISO 12944-7",
     "question": "Welcher Mindestabstand zwischen Oberflächen- und Taupunkttemperatur gilt üblicherweise vor Beschichtungsarbeiten?",
     "options": [
-      "3 K",
-      "1 K",
       "0 K",
+      "1 K",
+      "3 K",
       "10 K"
     ],
-    "correctIdx": 0,
+    "correctIdx": 2,
     "explanation": "Die Oberfläche muss mindestens 3 K wärmer als der Taupunkt sein, damit kein Kondensat die Haftung stört.",
     "gapAnalysis": {
       "topic": "Taupunktabstand",
@@ -5756,11 +5756,11 @@
     "question": "Warum muss der Instandsetzungsmörtel frisch in frisch auf die Haftbrücke aufgetragen werden?",
     "options": [
       "Wegen der Farbe",
-      "Weil der Mörtel sonst zu schnell erhärtet",
       "Weil eine angetrocknete Haftbrücke eine Trennschicht bildet und der Verbund versagt",
+      "Weil der Mörtel sonst zu schnell erhärtet",
       "Das ist nicht erforderlich"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Eine angetrocknete Haftbrücke wirkt als glatte Trennebene; Hohlstellen und Ablösungen folgen.",
     "gapAnalysis": {
       "topic": "Haftbrücke",
@@ -5846,11 +5846,11 @@
     "question": "Eine EPD nennt 1,20 kg CO₂e/kg für Mineralwolle (30 kg/m³). Wie groß ist das GWP von 16 cm Dämmung je m²?",
     "options": [
       "0,19 kg",
-      "5,76 kg",
       "1,92 kg",
+      "5,76 kg",
       "36 kg"
     ],
-    "correctIdx": 1,
+    "correctIdx": 2,
     "explanation": "0,16 m · 30 kg/m³ · 1,20 kg CO₂e/kg = 5,76 kg CO₂e/m².",
     "gapAnalysis": {
       "topic": "Funktionale Einheit",
@@ -5875,12 +5875,12 @@
     "normRef": "DIN EN 15804+A2",
     "question": "Warum dürfen Dämmstoffe nicht pro m³ allein nach ihrem GWP verglichen werden?",
     "options": [
-      "Weil unterschiedliche Wärmeleitfähigkeiten unterschiedliche Dicken für den gleichen R-Wert erfordern",
       "Weil m³ keine SI-Einheit ist",
+      "Weil unterschiedliche Wärmeleitfähigkeiten unterschiedliche Dicken für den gleichen R-Wert erfordern",
       "Weil Dämmstoffe kein GWP haben",
       "Weil die ÖKOBAUDAT nur Massen kennt"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Vergleichsbasis ist eine gleiche funktionale Einheit, z. B. 1 m² mit R = 5 m²K/W.",
     "gapAnalysis": {
       "topic": "Dämmstoffvergleich",
@@ -5906,11 +5906,11 @@
     "question": "Besteht in Deutschland (Stand 10/2026) eine gesetzliche Pflicht zum Gebäuderessourcenpass?",
     "options": [
       "Ja, nach § 15 GModG",
-      "Ja, nach der Ersatzbaustoffverordnung",
       "Nein; Ressourcenpässe sind freiwillig (z. B. DGNB, Madaster), ein staatlicher Pass wurde angekündigt, aber nicht eingeführt",
+      "Ja, nach der Ersatzbaustoffverordnung",
       "Ja, nach VOB/B"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Das GModG regelt energetische Anforderungen. Der Gebäuderessourcenpass wurde politisch angekündigt, ist aber nicht gesetzlich vorgeschrieben.",
     "gapAnalysis": {
       "topic": "Rechtsstatus",
@@ -5936,11 +5936,11 @@
     "question": "Warum sagt eine hohe massenbezogene Recyclingquote allein wenig über die Kreislauffähigkeit eines Gebäudes aus?",
     "options": [
       "Weil sie immer 100 % beträgt",
-      "Weil Recycling verboten ist",
       "Weil schwere mineralische Massen dominieren, die oft nur zu niederwertiger Gesteinskörnung recycelt werden",
+      "Weil Recycling verboten ist",
       "Weil Stahl nicht recycelt wird"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Beton bestimmt die Masse; die Qualität der Verwertung, Wiederverwendbarkeit und Lösbarkeit bleiben unberücksichtigt.",
     "gapAnalysis": {
       "topic": "Recyclingquote",
@@ -5966,11 +5966,11 @@
     "question": "Seit wann ist die neue Bauprodukteverordnung (EU) 2024/3110 anwendbar?",
     "options": [
       "Seit 01.01.2024",
-      "Ab 2030",
       "Seit 08.01.2026",
+      "Ab 2030",
       "Sie ist noch nicht beschlossen"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "In Kraft seit 07.01.2025, anwendbar seit 08.01.2026; der DPP wird je Produktfamilie über delegierte Rechtsakte verpflichtend.",
     "gapAnalysis": {
       "topic": "BauPVO",
@@ -6027,10 +6027,10 @@
     "options": [
       "6,3 kNm",
       "12,5 kNm",
-      "25,0 kNm",
-      "15,6 kNm"
+      "15,6 kNm",
+      "25,0 kNm"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "M = q L²/8 = 5,0 · 25/8 = 15,6 kNm – eine Handrechnung zur Kontrolle jedes Online-Ergebnisses.",
     "gapAnalysis": {
       "topic": "Plausibilitätskontrolle",
@@ -6056,11 +6056,11 @@
     "question": "Was passiert, wenn man in ein Tool, das die Kombination selbst bildet, bereits Bemessungslasten eingibt?",
     "options": [
       "Nichts",
-      "Das Tool rechnet automatisch zurück",
+      "Die Teilsicherheitsbeiwerte werden doppelt angesetzt – das Ergebnis liegt deutlich zu hoch",
       "Das Ergebnis wird unsicher zu niedrig",
-      "Die Teilsicherheitsbeiwerte werden doppelt angesetzt – das Ergebnis liegt deutlich zu hoch"
+      "Das Tool rechnet automatisch zurück"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "γ_G = 1,35 und γ_Q = 1,5 würden zweimal angewendet; deshalb ist zu klären, ob charakteristische Werte erwartet werden.",
     "gapAnalysis": {
       "topic": "Lastkombination",
@@ -6087,10 +6087,10 @@
     "options": [
       "0,45",
       "0,60",
-      "0,90",
-      "0,75"
+      "0,75",
+      "0,90"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "Recall = TP/(TP+FN) = 45/60 = 0,75 – jeder vierte Riss wird übersehen.",
     "gapAnalysis": {
       "topic": "Recall",
@@ -6146,11 +6146,11 @@
     "question": "Was bewirkt Retrieval-Augmented Generation (RAG)?",
     "options": [
       "Das Modell wird neu trainiert",
-      "Die Antwort wird automatisch normgeprüft",
       "Passende Textabschnitte werden per Ähnlichkeitssuche gefunden und dem Modell als Kontext mitgegeben",
+      "Die Antwort wird automatisch normgeprüft",
       "Es ersetzt die Quellenprüfung"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "Die Abschnitte mit der höchsten Kosinus-Ähnlichkeit zur Frage werden in den Prompt eingefügt; das Modell selbst bleibt unverändert.",
     "gapAnalysis": {
       "topic": "RAG",
@@ -6236,11 +6236,11 @@
     "question": "Ein Kontext von 128 000 Token, 2 000 Token Systemprompt und 8 000 Token Antwortreserve: Wie viele Seiten à 750 Token passen etwa hinein?",
     "options": [
       "etwa 50",
-      "etwa 170",
       "etwa 157",
+      "etwa 170",
       "etwa 300"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "(128 000 − 2 000 − 8 000)/750 = 118 000/750 ≈ 157 Seiten.",
     "gapAnalysis": {
       "topic": "Tokenbudget",
@@ -6296,11 +6296,11 @@
     "question": "Warum erhöht ein Mehrheitsentscheid aus drei Abfragen desselben Modells die Zuverlässigkeit oft weniger als berechnet?",
     "options": [
       "Weil drei Abfragen zu teuer sind",
-      "Weil Modelle zufällig antworten",
+      "Weil Fehler desselben Modells häufig systematisch und damit nicht unabhängig sind",
       "Weil die Binomialverteilung nicht gilt",
-      "Weil Fehler desselben Modells häufig systematisch und damit nicht unabhängig sind"
+      "Weil Modelle zufällig antworten"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Rechnerisch 0,896 statt 0,8 – aber nur bei unabhängigen Fehlern. Systematische Fehler wiederholen sich.",
     "gapAnalysis": {
       "topic": "Mehrfachabfrage",
@@ -6326,11 +6326,11 @@
     "question": "Ein KI-Tool findet 22 von 30 relevanten Artikeln. Was bedeutet der Recall von 0,73 für die Abschlussarbeit?",
     "options": [
       "Die Recherche ist vollständig",
-      "Recall ist für Literatur unbedeutend",
+      "Gut ein Viertel der relevanten Literatur fehlt – ergänzende Suche in Fachdatenbanken ist nötig",
       "Die Treffer sind alle falsch",
-      "Gut ein Viertel der relevanten Literatur fehlt – ergänzende Suche in Fachdatenbanken ist nötig"
+      "Recall ist für Literatur unbedeutend"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "22/30 = 0,73; 8 relevante Arbeiten wurden nicht gefunden.",
     "gapAnalysis": {
       "topic": "Literatursuche",
@@ -6355,12 +6355,12 @@
     "normRef": "Prüfungsordnung",
     "question": "Woraus ergibt sich die Pflicht, KI-Einsatz in einer Bachelorarbeit offenzulegen?",
     "options": [
-      "Aus der Prüfungsordnung bzw. Eigenständigkeitserklärung der Hochschule",
       "Aus Art. 50 KI-VO",
+      "Aus der Prüfungsordnung bzw. Eigenständigkeitserklärung der Hochschule",
       "Aus der DSGVO",
       "Es gibt keine Pflicht"
     ],
-    "correctIdx": 0,
+    "correctIdx": 1,
     "explanation": "Art. 50 KI-VO regelt Anbieter- und Betreiberpflichten (z. B. Deepfakes, Veröffentlichungen für die Öffentlichkeit), nicht Prüfungsleistungen.",
     "gapAnalysis": {
       "topic": "Deklaration",
@@ -6387,10 +6387,10 @@
     "options": [
       "Seit 01.08.2024",
       "Ab 02.08.2026",
-      "Ab 2035",
-      "Ab 02.12.2027"
+      "Ab 02.12.2027",
+      "Ab 2035"
     ],
-    "correctIdx": 3,
+    "correctIdx": 2,
     "explanation": "Der Digital Omnibus verschiebt Anhang III auf den 02.12.2027 und Anhang I auf den 02.08.2028; Art. 50 gilt ab 02.08.2026.",
     "gapAnalysis": {
       "topic": "KI-VO Fristen",
@@ -6416,11 +6416,11 @@
     "question": "Ein Büro lädt Pläne mit Bauherrennamen in einen US-Cloud-Chat ohne Vertrag hoch. Welche DSGVO-Vorschriften sind vor allem berührt?",
     "options": [
       "Nur Art. 33 (Meldepflicht)",
-      "Nur das Urheberrecht",
+      "Rechtsgrundlage (Art. 6), Auftragsverarbeitung (Art. 28) und Drittlandübermittlung (Art. 44 ff.)",
       "Keine, Pläne sind keine personenbezogenen Daten",
-      "Rechtsgrundlage (Art. 6), Auftragsverarbeitung (Art. 28) und Drittlandübermittlung (Art. 44 ff.)"
+      "Nur das Urheberrecht"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Namen und Adressen sind personenbezogene Daten. Art. 33 betrifft erst die Meldung einer Datenschutzverletzung.",
     "gapAnalysis": {
       "topic": "DSGVO",
@@ -6446,11 +6446,11 @@
     "question": "Wie viel Speicher belegen die Gewichte eines 14B-Modells in Q4_K_M (rund 4,85 bit je Gewicht) etwa?",
     "options": [
       "etwa 1,8 GB",
-      "etwa 28 GB",
       "etwa 8,5 GB",
+      "etwa 28 GB",
       "etwa 56 GB"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "14 · 10⁹ · 4,85/8 ≈ 8,5 · 10⁹ Byte; dazu kommt der Kontext-Cache.",
     "gapAnalysis": {
       "topic": "Quantisierung",
@@ -6506,11 +6506,11 @@
     "question": "Modell A erreicht 78 %, Modell B 74 % bei 200 Aufgaben. Ist A sicher besser?",
     "options": [
       "Ja, eindeutig",
-      "Nein, B ist besser",
       "Nicht belastbar: Das 95-%-Intervall beträgt etwa ±5,7 Prozentpunkte",
+      "Nein, B ist besser",
       "Nur bei mehr als 1 000 Aufgaben ist A schlechter"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "1,96 · √(0,78 · 0,22/200) ≈ 0,057 > 0,04.",
     "gapAnalysis": {
       "topic": "Benchmarks",
@@ -6536,11 +6536,11 @@
     "question": "Eine Grafikkarte mit 350 W rechnet 30 min. Wie viel Energie wird verbraucht?",
     "options": [
       "0,0175 kWh",
-      "175 kWh",
+      "0,175 kWh",
       "1,75 kWh",
-      "0,175 kWh"
+      "175 kWh"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "E = 0,35 kW · 0,5 h = 0,175 kWh; mit 0,36 kg CO₂/kWh rund 0,063 kg CO₂.",
     "gapAnalysis": {
       "topic": "Energie",
@@ -6596,11 +6596,11 @@
     "question": "Was passiert typischerweise bei einer zu großen Lernrate?",
     "options": [
       "Das Training wird nur langsamer",
-      "Nichts",
+      "Das Verfahren springt über das Minimum hinaus und kann divergieren",
       "Das Modell wird genauer",
-      "Das Verfahren springt über das Minimum hinaus und kann divergieren"
+      "Nichts"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Zu große Schritte überschießen das Minimum; zu kleine machen das Training sehr langsam.",
     "gapAnalysis": {
       "topic": "Lernrate",
@@ -6626,11 +6626,11 @@
     "question": "Ein ML-Modell wurde mit w/z = 0,40 bis 0,65 trainiert. Wie belastbar ist eine Prognose für w/z = 0,30?",
     "options": [
       "Genauso belastbar",
-      "Nur bei CEM I belastbar",
+      "Nicht belastbar: Extrapolation außerhalb des Trainingsbereichs; Erstprüfung erforderlich",
       "Belastbarer, da niedriger w/z",
-      "Nicht belastbar: Extrapolation außerhalb des Trainingsbereichs; Erstprüfung erforderlich"
+      "Nur bei CEM I belastbar"
     ],
-    "correctIdx": 3,
+    "correctIdx": 1,
     "explanation": "Außerhalb der Trainingsdaten kann das Modell grob falsch liegen; Konformität wird durch Prüfungen nachgewiesen.",
     "gapAnalysis": {
       "topic": "Modellgrenzen",
@@ -6656,11 +6656,11 @@
     "question": "Abweichungen von 3, −2, 4 und −1 N/mm². Wie groß ist der RMSE?",
     "options": [
       "2,50 N/mm²",
-      "1,00 N/mm²",
       "2,74 N/mm²",
+      "1,00 N/mm²",
       "7,50 N/mm²"
     ],
-    "correctIdx": 2,
+    "correctIdx": 1,
     "explanation": "√((9 + 4 + 16 + 1)/4) = √7,5 ≈ 2,74 N/mm²; der MAE beträgt 2,50 N/mm².",
     "gapAnalysis": {
       "topic": "Modellgüte",
@@ -6669,846 +6669,6 @@
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Modellgüte“ im Modul KI in der Baustoffkunde noch einmal durch.",
       "targetModuleTab": "ki_baustoffe",
       "targetModuleLabel": "KI in der Baustoffkunde"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_pl_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_planung",
-    "moduleTitle": "Planung & Ausschreibung",
-    "topic": "Betondeckung",
-    "difficulty": "Basis",
-    "normRef": "DIN EN 1992-1-1/NA",
-    "question": "Welches Nennmaß c_nom ergibt sich für XC4 (c_min,dur = 25 mm), Ø 12 mm und Δc_dev = 15 mm?",
-    "options": [
-      "40 mm",
-      "27 mm",
-      "25 mm",
-      "55 mm"
-    ],
-    "correctIdx": 0,
-    "explanation": "c_min = max(12; 25; 10) = 25 mm; c_nom = 25 + 15 = 40 mm.",
-    "gapAnalysis": {
-      "topic": "Betondeckung",
-      "misconception": "Das Vorhaltemaß sei bereits in c_min enthalten.",
-      "coreRule": "c_nom = c_min + Δc_dev; c_min ist das Maximum aus Verbund, Dauerhaftigkeit und 10 mm.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Planung & Ausschreibung noch einmal durch.",
-      "targetModuleTab": "px_planung",
-      "targetModuleLabel": "Planung & Ausschreibung"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_pl_2",
-    "category": "baurecht_normung",
-    "categoryLabel": "Baurecht & Normenwesen",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_planung",
-    "moduleTitle": "Planung & Ausschreibung",
-    "topic": "Leitprodukt",
-    "difficulty": "Fortgeschritten",
-    "normRef": "§ 7 Abs. 2 VOB/A",
-    "question": "Was ist bei der Nennung eines Leitprodukts in einer öffentlichen Ausschreibung zu beachten?",
-    "options": [
-      "Nur ausnahmsweise zulässig, mit dem Zusatz 'oder gleichwertig' und eindeutigen Gleichwertigkeitskriterien",
-      "Leitprodukte sind immer verboten",
-      "Der Bieter muss genau dieses Produkt liefern",
-      "Es genügt der Herstellername"
-    ],
-    "correctIdx": 0,
-    "explanation": "Produktvorgaben sind nur zulässig, wenn der Gegenstand sonst nicht hinreichend beschreibbar ist, und müssen mit 'oder gleichwertig' versehen werden.",
-    "gapAnalysis": {
-      "topic": "Leitprodukt",
-      "misconception": "Ein Leitprodukt binde den Bieter.",
-      "coreRule": "Leistungsmerkmale (z. B. λ, R_w) festlegen, an denen Gleichwertigkeit gemessen wird.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Leitprodukt“ im Modul Planung & Ausschreibung noch einmal durch.",
-      "targetModuleTab": "px_planung",
-      "targetModuleLabel": "Planung & Ausschreibung"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_bl_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_bauleitung",
-    "moduleTitle": "Bauleitung & Baustelle",
-    "topic": "Wasserzugabe",
-    "difficulty": "Basis",
-    "normRef": "DIN EN 206",
-    "question": "Ein Beton mit z = 300 kg/m³ und w/z = 0,55 erhält 10 l Wasser je m³ zusätzlich. Welcher w/z-Wert ergibt sich?",
-    "options": [
-      "0,55",
-      "0,56",
-      "0,58",
-      "0,65"
-    ],
-    "correctIdx": 2,
-    "explanation": "(165 + 10)/300 = 0,583 ≈ 0,58.",
-    "gapAnalysis": {
-      "topic": "Wasserzugabe",
-      "misconception": "Wenige Liter Wasser seien unbedeutend.",
-      "coreRule": "Konsistenz nur mit Fließmittel nach Vorgabe des Lieferwerks anpassen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe“ im Modul Bauleitung & Baustelle noch einmal durch.",
-      "targetModuleTab": "px_bauleitung",
-      "targetModuleLabel": "Bauleitung & Baustelle"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_bl_2",
-    "category": "baurecht_normung",
-    "categoryLabel": "Baurecht & Normenwesen",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_bauleitung",
-    "moduleTitle": "Bauleitung & Baustelle",
-    "topic": "Bedenkenanmeldung",
-    "difficulty": "Fortgeschritten",
-    "normRef": "VOB/B § 4 Abs. 3, § 13 Abs. 3",
-    "question": "Welche Wirkung hat eine ordnungsgemäße schriftliche Bedenkenanmeldung des Auftragnehmers?",
-    "options": [
-      "Keine",
-      "Er wird von der Mängelhaftung frei, soweit der Mangel auf die beanstandete Vorgabe zurückgeht",
-      "Der Vertrag ist automatisch gekündigt",
-      "Der Auftraggeber muss sofort zahlen"
-    ],
-    "correctIdx": 1,
-    "explanation": "Nach § 13 Abs. 3 VOB/B haftet der Auftragnehmer nicht für Mängel aus Vorgaben des Auftraggebers, wenn er die Mitteilung nach § 4 Abs. 3 gemacht hat.",
-    "gapAnalysis": {
-      "topic": "Bedenkenanmeldung",
-      "misconception": "Mündliche Hinweise genügten.",
-      "coreRule": "Bedenken unverzüglich, möglichst vor Beginn der Arbeiten, schriftlich und begründet mitteilen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bedenkenanmeldung“ im Modul Bauleitung & Baustelle noch einmal durch.",
-      "targetModuleTab": "px_bauleitung",
-      "targetModuleLabel": "Bauleitung & Baustelle"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_pr_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_produktion",
-    "moduleTitle": "Produktherstellung & QS",
-    "topic": "Feuchtekorrektur",
-    "difficulty": "Basis",
-    "normRef": "DIN EN 206",
-    "question": "1 000 kg Sand (trocken) haben 4 % Oberflächenfeuchte. Wie viel Wasser ist von 165 kg Sollwasser abzuziehen?",
-    "options": [
-      "4 kg",
-      "125 kg",
-      "40 kg",
-      "0 kg"
-    ],
-    "correctIdx": 2,
-    "explanation": "0,04 · 1 000 kg = 40 kg; zugegeben werden 125 kg, die Sandeinwaage beträgt 1 040 kg.",
-    "gapAnalysis": {
-      "topic": "Feuchtekorrektur",
-      "misconception": "Die Sandfeuchte sei für den w/z-Wert unerheblich.",
-      "coreRule": "Oberflächenfeuchte bezogen auf die Trockenmasse kompensieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchtekorrektur“ im Modul Produktherstellung & QS noch einmal durch.",
-      "targetModuleTab": "px_produktion",
-      "targetModuleLabel": "Produktherstellung & QS"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_pr_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_produktion",
-    "moduleTitle": "Produktherstellung & QS",
-    "topic": "Konformität",
-    "difficulty": "Fortgeschritten",
-    "normRef": "DIN EN 206",
-    "question": "Erstherstellung C30/37, drei Würfel: 41, 39, 43 N/mm². Sind die Konformitätskriterien erfüllt?",
-    "options": [
-      "Ja: f_cm = 41 ≥ 37 + 4 und f_ci,min = 39 ≥ 37 − 4",
-      "Nein, Mittelwert zu klein",
-      "Nein, ein Wert liegt unter 41",
-      "Nur mit 15 Proben bewertbar"
-    ],
-    "correctIdx": 0,
-    "explanation": "Bei Erstherstellung (n = 3) gilt f_cm ≥ f_ck + 4 und jeder Einzelwert ≥ f_ck − 4 (Würfelfestigkeit 37 N/mm²).",
-    "gapAnalysis": {
-      "topic": "Konformität",
-      "misconception": "Jeder Einzelwert müsse über f_ck + 4 liegen.",
-      "coreRule": "Mittelwert- und Einzelwertkriterium getrennt prüfen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität“ im Modul Produktherstellung & QS noch einmal durch.",
-      "targetModuleTab": "px_produktion",
-      "targetModuleLabel": "Produktherstellung & QS"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_ka_1",
-    "category": "baurecht_normung",
-    "categoryLabel": "Baurecht & Normenwesen",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_karriere",
-    "moduleTitle": "Karrierestart & Soft Skills",
-    "topic": "Qualifikation",
-    "difficulty": "Basis",
-    "normRef": "DIN 1045-3",
-    "question": "Wofür wird der E-Schein (erweiterte betontechnologische Kenntnisse) nach DIN 1045-3 benötigt?",
-    "options": [
-      "Für die Leitung der ständigen Betonprüfstelle bei Beton der Überwachungsklassen 2 und 3",
-      "Für jeden Bauleiter",
-      "Für die Aufnahme in die Ingenieurkammer",
-      "Für Asphaltarbeiten"
-    ],
-    "correctIdx": 0,
-    "explanation": "Die Überwachung von Beton der ÜK 2 und 3 erfolgt durch eine ständige Betonprüfstelle, die von einer Person mit E-Schein geleitet wird.",
-    "gapAnalysis": {
-      "topic": "Qualifikation",
-      "misconception": "Der E-Schein sei für jede Bauleitung Pflicht.",
-      "coreRule": "Qualifikationsanforderungen hängen von der Überwachungsklasse ab.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Qualifikation“ im Modul Karrierestart & Soft Skills noch einmal durch.",
-      "targetModuleTab": "px_karriere",
-      "targetModuleLabel": "Karrierestart & Soft Skills"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_ka_2",
-    "category": "baurecht_normung",
-    "categoryLabel": "Baurecht & Normenwesen",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_karriere",
-    "moduleTitle": "Karrierestart & Soft Skills",
-    "topic": "Kalkulation",
-    "difficulty": "Fortgeschritten",
-    "normRef": "KLR Bau",
-    "question": "Herstellkosten 100 000 €, AGK 9 %, Wagnis und Gewinn 5 %. Wie hoch ist der Angebotspreis nach K = (S + AGK)(1 + W_G)?",
-    "options": [
-      "105 000 €",
-      "109 000 €",
-      "114 450 €",
-      "114 000 €"
-    ],
-    "correctIdx": 2,
-    "explanation": "109 000 € · 1,05 = 114 450 €.",
-    "gapAnalysis": {
-      "topic": "Kalkulation",
-      "misconception": "Zuschläge würden einfach addiert (14 %).",
-      "coreRule": "Zuschlagsbasis und Reihenfolge der Kalkulation beachten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kalkulation“ im Modul Karrierestart & Soft Skills noch einmal durch.",
-      "targetModuleTab": "px_karriere",
-      "targetModuleLabel": "Karrierestart & Soft Skills"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_bt_1",
-    "category": "baurecht_normung",
-    "categoryLabel": "Baurecht & Normenwesen",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_bautagebuch",
-    "moduleTitle": "Bautagebuch",
-    "topic": "Behinderungsanzeige",
-    "difficulty": "Basis",
-    "normRef": "VOB/B § 6 Abs. 1",
-    "question": "Was gilt, wenn der Auftragnehmer eine Behinderung nicht schriftlich anzeigt?",
-    "options": [
-      "Sie wird nur berücksichtigt, wenn dem Auftraggeber Tatsache und hindernde Wirkung offenkundig bekannt waren",
-      "Die Behinderung wird immer berücksichtigt",
-      "Der Vertrag wird nichtig",
-      "Der Auftraggeber zahlt eine Strafe"
-    ],
-    "correctIdx": 0,
-    "explanation": "§ 6 Abs. 1 VOB/B verlangt die schriftliche Anzeige; ohne sie hilft nur Offenkundigkeit.",
-    "gapAnalysis": {
-      "topic": "Behinderungsanzeige",
-      "misconception": "Eine Erwähnung im Jour fixe genüge.",
-      "coreRule": "Behinderungen unverzüglich schriftlich anzeigen und im Bautagebuch dokumentieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Behinderungsanzeige“ im Modul Bautagebuch noch einmal durch.",
-      "targetModuleTab": "px_bautagebuch",
-      "targetModuleLabel": "Bautagebuch"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_px_bt_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "px_bautagebuch",
-    "moduleTitle": "Bautagebuch",
-    "topic": "Ausschalfrist",
-    "difficulty": "Fortgeschritten",
-    "normRef": "Reifegrad nach Saul",
-    "question": "Eine Ausschalfrist von 3 Tagen bei 20 °C soll auf 5 °C mittlere Betontemperatur angepasst werden (f_T = 30/(T + 10)). Welche Frist ergibt sich?",
-    "options": [
-      "6 Tage",
-      "4,5 Tage",
-      "3 Tage",
-      "9 Tage"
-    ],
-    "correctIdx": 0,
-    "explanation": "f_T = 30/15 = 2,0; 3 d · 2,0 = 6 d.",
-    "gapAnalysis": {
-      "topic": "Ausschalfrist",
-      "misconception": "Die Temperatur beeinflusse die Erhärtung kaum.",
-      "coreRule": "Temperaturen im Bautagebuch begründen Ausschal- und Nachbehandlungsfristen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Ausschalfrist“ im Modul Bautagebuch noch einmal durch.",
-      "targetModuleTab": "px_bautagebuch",
-      "targetModuleLabel": "Bautagebuch"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_ku_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "kuriositaeten",
-    "moduleTitle": "Kuriositäten & Rekorde",
-    "topic": "Massenbeton",
-    "difficulty": "Basis",
-    "normRef": "DAfStb-Richtlinie Massige Bauteile aus Beton",
-    "question": "Wie groß ist der adiabatische Temperaturanstieg bei 260 kg/m³ Zement mit 350 kJ/kg, c = 1,0 kJ/(kg·K) und ρ = 2 400 kg/m³?",
-    "options": [
-      "etwa 15 K",
-      "etwa 91 K",
-      "etwa 38 K",
-      "etwa 260 K"
-    ],
-    "correctIdx": 2,
-    "explanation": "ΔT = 260 · 350 / (1,0 · 2 400) ≈ 37,9 K – ohne Kühlung steigt die Kerntemperatur entsprechend.",
-    "gapAnalysis": {
-      "topic": "Massenbeton",
-      "misconception": "Hydratationswärme sei bei großen Bauteilen vernachlässigbar.",
-      "coreRule": "Massige Bauteile: Wärmeentwicklung über Bindemittel, Kühlung und Betonierlagen steuern.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Massenbeton“ im Modul Kuriositäten & Rekorde noch einmal durch.",
-      "targetModuleTab": "kuriositaeten",
-      "targetModuleLabel": "Kuriositäten & Rekorde"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_ku_2",
-    "category": "baustoffkunde",
-    "categoryLabel": "Werkstoffmechanik & Physik",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "kuriositaeten",
-    "moduleTitle": "Kuriositäten & Rekorde",
-    "topic": "Römischer Beton",
-    "difficulty": "Fortgeschritten",
-    "normRef": "Jackson et al. 2017; Seymour et al. 2023",
-    "question": "Was erklärt nach neueren Studien die Dauerhaftigkeit römischen Hafenbetons?",
-    "options": [
-      "Stahlbewehrung",
-      "Ein hoher Portlandzementanteil",
-      "Nachträglich im Meerwasser gewachsene Minerale wie Al-Tobermorit und Phillipsit sowie reaktive Kalkklasten",
-      "Kunststoffzusätze"
-    ],
-    "correctIdx": 2,
-    "explanation": "Meerwasser löste Bestandteile der Vulkanasche; neue Kristalle verzahnen das Gefüge. Kalkklasten aus dem Heißmischen können Risse wieder verschließen.",
-    "gapAnalysis": {
-      "topic": "Römischer Beton",
-      "misconception": "Römischer Beton sei einfach fester als moderner Beton.",
-      "coreRule": "Dauerhaftigkeit ist eine Frage der Chemie im Einsatzmilieu, nicht nur der Festigkeit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Römischer Beton“ im Modul Kuriositäten & Rekorde noch einmal durch.",
-      "targetModuleTab": "kuriositaeten",
-      "targetModuleLabel": "Kuriositäten & Rekorde"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_bgl_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "grundlagen",
-    "moduleTitle": "Beton – Grundlagen",
-    "topic": "Konsistenzklassen",
-    "difficulty": "Basis",
-    "normRef": "DIN EN 206 / DIN 1045-2",
-    "question": "Ein Frischbeton hat ein Ausbreitmaß von 450 mm. Welche Konsistenzklasse und -beschreibung liegt vor?",
-    "options": [
-      "F2 – plastisch",
-      "F3 – weich",
-      "F4 – sehr weich",
-      "F5 – fließfähig"
-    ],
-    "correctIdx": 1,
-    "explanation": "F3 umfasst 420–480 mm und wird als „weich“ bezeichnet; F2 (350–410 mm) ist plastisch, F4 (490–550 mm) sehr weich.",
-    "gapAnalysis": {
-      "topic": "Konsistenzklassen",
-      "misconception": "Ausbreitmaß- und Verdichtungsmaßklassen gleicher Nummer seien gleichwertig.",
-      "coreRule": "F1 steif, F2 plastisch, F3 weich, F4 sehr weich, F5 fließfähig, F6 sehr fließfähig.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzklassen“ im Modul Beton – Grundlagen noch einmal durch.",
-      "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Beton – Grundlagen"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_bgl_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "grundlagen",
-    "moduleTitle": "Beton – Grundlagen",
-    "topic": "Äquivalenter w/z-Wert",
-    "difficulty": "Fortgeschritten",
-    "normRef": "DIN 1045-2",
-    "question": "z = 280 kg/m³, Flugasche f = 80 kg/m³ (k = 0,4), w = 160 kg/m³. Wie groß ist (w/z)eq?",
-    "options": [
-      "0,44",
-      "0,51",
-      "0,57",
-      "0,64"
-    ],
-    "correctIdx": 1,
-    "explanation": "f/z = 0,29 ≤ 0,33, die Flugasche ist voll anrechenbar: 160/(280 + 0,4 · 80) = 160/312 = 0,51.",
-    "gapAnalysis": {
-      "topic": "Äquivalenter w/z-Wert",
-      "misconception": "Flugasche werde wie Zement voll (k = 1) angerechnet.",
-      "coreRule": "(w/z)eq = w/(z + k · f); anrechenbare Flugaschemenge begrenzt (f/z ≤ 0,33).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Äquivalenter w/z-Wert“ im Modul Beton – Grundlagen noch einmal durch.",
-      "targetModuleTab": "grundlagen",
-      "targetModuleLabel": "Beton – Grundlagen"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_bdm_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "bindemittel",
-    "moduleTitle": "Bindemittel",
-    "topic": "NA-Zement",
-    "difficulty": "Fortgeschritten",
-    "normRef": "DIN 1164-10:2023-02",
-    "question": "Ein CEM III/A mit 55 % Hüttensand hat ein Na₂O-Äquivalent von 0,95 M.-%. Darf er als NA-Zement bezeichnet werden?",
-    "options": [
-      "Nein, die Grenze liegt für alle Zemente bei 0,60 M.-%",
-      "Ja, für CEM III/A mit 50–65 % Hüttensand gilt ≤ 1,10 M.-%",
-      "Nein, CEM III/A kann nie NA-Zement sein",
-      "Ja, für CEM III gibt es keine Grenze"
-    ],
-    "correctIdx": 1,
-    "explanation": "DIN 1164-10 staffelt die Grenzwerte nach Hüttensandgehalt: CEM III/A mit 36–49 % S ≤ 0,95, mit 50–65 % S ≤ 1,10 M.-%.",
-    "gapAnalysis": {
-      "topic": "NA-Zement",
-      "misconception": "Der Grenzwert 0,60 M.-% gelte für jeden Zement.",
-      "coreRule": "Je höher der Hüttensandanteil, desto höher der zulässige Gesamtalkaligehalt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „NA-Zement“ im Modul Bindemittel noch einmal durch.",
-      "targetModuleTab": "bindemittel",
-      "targetModuleLabel": "Bindemittel"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_bdm_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "bindemittel",
-    "moduleTitle": "Bindemittel",
-    "topic": "Bogue-Rechnung",
-    "difficulty": "Basis",
-    "normRef": "Bogue (1929)",
-    "question": "Klinker mit Al₂O₃ = 6,0 % und Fe₂O₃ = 3,0 %. Wie hoch ist der C₃A-Gehalt nach Bogue (C₃A = 2,650·Al₂O₃ − 1,692·Fe₂O₃)?",
-    "options": [
-      "5,1 %",
-      "10,8 %",
-      "15,9 %",
-      "21,0 %"
-    ],
-    "correctIdx": 1,
-    "explanation": "2,650 · 6,0 − 1,692 · 3,0 = 15,90 − 5,08 = 10,8 %. Für einen SR-3-Zement wäre das zu viel.",
-    "gapAnalysis": {
-      "topic": "Bogue-Rechnung",
-      "misconception": "Der Eisenanteil werde nicht abgezogen.",
-      "coreRule": "Der C₃A-Gehalt bestimmt den Sulfatwiderstand (SR 0/3/5).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bogue-Rechnung“ im Modul Bindemittel noch einmal durch.",
-      "targetModuleTab": "bindemittel",
-      "targetModuleLabel": "Bindemittel"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_mib_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "mischungsberechnung",
-    "moduleTitle": "Mischungsberechnung",
-    "topic": "Stoffraumrechnung",
-    "difficulty": "Basis",
-    "normRef": "DIN EN 206 / DIN 1045-2",
-    "question": "1 m³ Beton: z = 300 kg (ρ = 3,1 kg/dm³), w = 165 kg, Luft 2 Vol.-%. Wie viel trockene Gesteinskörnung (ρ = 2,65 kg/dm³) wird benötigt?",
-    "options": [
-      "rund 1 750 kg",
-      "rund 1 903 kg",
-      "rund 2 040 kg",
-      "rund 2 650 kg"
-    ],
-    "correctIdx": 1,
-    "explanation": "V_g = 1 000 − 300/3,1 − 165 − 20 = 718,2 dm³; m_g = 718,2 · 2,65 ≈ 1 903 kg.",
-    "gapAnalysis": {
-      "topic": "Stoffraumrechnung",
-      "misconception": "Luftporen und Zementvolumen würden vernachlässigt.",
-      "coreRule": "Die Volumina aller Bestandteile ergeben zusammen 1 000 dm³.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Stoffraumrechnung“ im Modul Mischungsberechnung noch einmal durch.",
-      "targetModuleTab": "mischungsberechnung",
-      "targetModuleLabel": "Mischungsberechnung"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_mib_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "mischungsberechnung",
-    "moduleTitle": "Mischungsberechnung",
-    "topic": "Maßgebende Expositionsklasse",
-    "difficulty": "Fortgeschritten",
-    "normRef": "DIN 1045-2:2023-08",
-    "question": "Ein Bauteil ist XC4, XD1 und XA2 zugeordnet. Welcher höchstzulässige w/z-Wert ist maßgebend?",
-    "options": [
-      "0,60",
-      "0,55",
-      "0,50",
-      "0,45"
-    ],
-    "correctIdx": 2,
-    "explanation": "XC4 0,60, XD1 0,55, XA2 0,50 – maßgebend ist der kleinste Wert, also 0,50 (mit C35/45 und z ≥ 320 kg/m³).",
-    "gapAnalysis": {
-      "topic": "Maßgebende Expositionsklasse",
-      "misconception": "Maßgebend sei die zuerst genannte Klasse.",
-      "coreRule": "Bei mehreren Expositionsklassen gilt jeweils der strengste Grenzwert.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Maßgebende Expositionsklasse“ im Modul Mischungsberechnung noch einmal durch.",
-      "targetModuleTab": "mischungsberechnung",
-      "targetModuleLabel": "Mischungsberechnung"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_hee_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "herstellung_einbau",
-    "moduleTitle": "Herstellung & Einbau",
-    "topic": "Transportzeit",
-    "difficulty": "Basis",
-    "normRef": "DIN 1045-2, 7.6",
-    "question": "Bis wann soll ein Fahrmischer nach der ersten Wasserzugabe vollständig entladen sein?",
-    "options": [
-      "30 Minuten",
-      "45 Minuten",
-      "90 Minuten",
-      "180 Minuten"
-    ],
-    "correctIdx": 2,
-    "explanation": "Fahrmischer und Fahrzeuge mit Rührwerk: 90 min; Fahrzeuge ohne Rührwerk (steifer Beton): 45 min.",
-    "gapAnalysis": {
-      "topic": "Transportzeit",
-      "misconception": "Die Frist beginne erst bei Ankunft auf der Baustelle.",
-      "coreRule": "Die Frist beginnt mit der ersten Wasserzugabe zum Zement.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Transportzeit“ im Modul Herstellung & Einbau noch einmal durch.",
-      "targetModuleTab": "herstellung_einbau",
-      "targetModuleLabel": "Herstellung & Einbau"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_hee_2",
-    "category": "baurecht_normung",
-    "categoryLabel": "Baurecht & Normenwesen",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "herstellung_einbau",
-    "moduleTitle": "Herstellung & Einbau",
-    "topic": "Wasserzugabe bei Lieferung",
-    "difficulty": "Fortgeschritten",
-    "normRef": "DIN 1045-2, 7.5",
-    "question": "Der Beton ist bei Ankunft zu steif. Was ist zulässig?",
-    "options": [
-      "Der Polier gibt Wasser zu, bis die Konsistenz passt",
-      "Nur in besonderen Fällen Anpassung unter Verantwortung des Herstellers innerhalb der Grenzen, mit Vermerk auf dem Lieferschein",
-      "Beliebig Fließmittel zugeben, solange es dokumentiert wird",
-      "Der Beton muss immer zurückgeschickt werden"
-    ],
-    "correctIdx": 1,
-    "explanation": "Wasser- oder Zusatzmittelzugabe bei Lieferung ist im Allgemeinen verboten; Ausnahmen nur unter Verantwortung des Herstellers innerhalb der festgelegten Grenzen, mit Vermerk auf dem Lieferschein.",
-    "gapAnalysis": {
-      "topic": "Wasserzugabe bei Lieferung",
-      "misconception": "Etwas Wasser schade nicht.",
-      "coreRule": "Konsistenz nur nach Vorgabe des Herstellers anpassen und dokumentieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe bei Lieferung“ im Modul Herstellung & Einbau noch einmal durch.",
-      "targetModuleTab": "herstellung_einbau",
-      "targetModuleLabel": "Herstellung & Einbau"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_frb_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "frischbeton",
-    "moduleTitle": "Frischbeton",
-    "topic": "Luftgehalt",
-    "difficulty": "Basis",
-    "normRef": "DIN 1045-2; DIN EN 12350-7",
-    "question": "XF4-Beton, Größtkorn 16 mm: Ablesung 4,4 %, Gesteinskorrektur 0,3 %. Ist der Einzelwert zulässig?",
-    "options": [
-      "Nein, 4,1 % < 4,5 %",
-      "Ja, 4,1 % ≥ 4,5 − 0,5 = 4,0 %",
-      "Ja, weil die Ablesung 4,4 % beträgt",
-      "Nein, XF4 verlangt immer 5,5 %"
-    ],
-    "correctIdx": 1,
-    "explanation": "L = 4,4 − 0,3 = 4,1 %. Für 16 mm gilt im Mittel ≥ 4,5 %, Einzelwerte dürfen um höchstens 0,5 % unterschreiten → ≥ 4,0 %.",
-    "gapAnalysis": {
-      "topic": "Luftgehalt",
-      "misconception": "Die Manometerablesung sei bereits der Luftgehalt.",
-      "coreRule": "Gesteinskorrektur abziehen; Mittelwert- und Einzelwertkriterium getrennt prüfen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Luftgehalt“ im Modul Frischbeton noch einmal durch.",
-      "targetModuleTab": "frischbeton",
-      "targetModuleLabel": "Frischbeton"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_frb_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "frischbeton",
-    "moduleTitle": "Frischbeton",
-    "topic": "Frischbetondruck",
-    "difficulty": "Fortgeschritten",
-    "normRef": "DIN 18218:2010-01",
-    "question": "Wandschalung, Beton F3, Steiggeschwindigkeit 1 m/h, K₁ = 1,0. Wie groß ist σ_hk,max nach DIN 18218?",
-    "options": [
-      "18 kN/m²",
-      "25 kN/m²",
-      "32 kN/m²",
-      "75 kN/m²"
-    ],
-    "correctIdx": 2,
-    "explanation": "(14 · 1 + 18) · 1,0 = 32 kN/m² ≥ 25 kN/m² (Mindestwert).",
-    "gapAnalysis": {
-      "topic": "Frischbetondruck",
-      "misconception": "Der Frischbetondruck sei immer voll hydrostatisch.",
-      "coreRule": "Steiggeschwindigkeit und Konsistenz bestimmen den Maximaldruck.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Frischbetondruck“ im Modul Frischbeton noch einmal durch.",
-      "targetModuleTab": "frischbeton",
-      "targetModuleLabel": "Frischbeton"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_hyf_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "hydratation_folgen",
-    "moduleTitle": "Hydratation & Folgen",
-    "topic": "Reifegrad",
-    "difficulty": "Basis",
-    "normRef": "Saul (1951)",
-    "question": "Beton liegt 72 h bei 5 °C. Welchem Alter bei 20 °C entspricht das nach Saul (T₀ = −10 °C)?",
-    "options": [
-      "18 h",
-      "36 h",
-      "54 h",
-      "72 h"
-    ],
-    "correctIdx": 1,
-    "explanation": "M = (5 + 10) · 72 = 1 080 °C·h; t₂₀ = 1 080 / 30 = 36 h.",
-    "gapAnalysis": {
-      "topic": "Reifegrad",
-      "misconception": "Die Erhärtung hänge nur von der Zeit ab.",
-      "coreRule": "Niedrige Temperaturen verlängern Ausschal- und Nachbehandlungsfristen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Reifegrad“ im Modul Hydratation & Folgen noch einmal durch.",
-      "targetModuleTab": "hydratation_folgen",
-      "targetModuleLabel": "Hydratation & Folgen"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_hyf_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "hydratation_folgen",
-    "moduleTitle": "Hydratation & Folgen",
-    "topic": "Adiabatische Temperaturerhöhung",
-    "difficulty": "Fortgeschritten",
-    "normRef": "Wärmebilanz",
-    "question": "z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2 500 kJ/(m³·K). Wie groß ist ΔT_ad?",
-    "options": [
-      "rund 11 K",
-      "rund 28 K",
-      "rund 45 K",
-      "rund 70 K"
-    ],
-    "correctIdx": 1,
-    "explanation": "280 · 250 = 70 000 kJ/m³; 70 000 / 2 500 = 28 K.",
-    "gapAnalysis": {
-      "topic": "Adiabatische Temperaturerhöhung",
-      "misconception": "Die Zementmenge sei für die Erwärmung unerheblich.",
-      "coreRule": "ΔT_ad steigt proportional mit Zementgehalt und Hydratationswärme.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Adiabatische Temperaturerhöhung“ im Modul Hydratation & Folgen noch einmal durch.",
-      "targetModuleTab": "hydratation_folgen",
-      "targetModuleLabel": "Hydratation & Folgen"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_nbh_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "nachbehandlung",
-    "moduleTitle": "Nachbehandlung",
-    "topic": "Mindestdauer",
-    "difficulty": "Basis",
-    "normRef": "DIN 1045-3",
-    "question": "XD1-Bauteil, Festigkeitsentwicklung mittel (r = 0,35), Oberflächentemperatur 8 °C. Wie lange ist mindestens nachzubehandeln?",
-    "options": [
-      "2 Tage",
-      "4 Tage",
-      "6 Tage",
-      "10 Tage"
-    ],
-    "correctIdx": 2,
-    "explanation": "Zeile 5 ≤ T < 10 °C, Spalte r ≥ 0,30: 6 Tage.",
-    "gapAnalysis": {
-      "topic": "Mindestdauer",
-      "misconception": "Die Nachbehandlungsdauer sei unabhängig von der Temperatur.",
-      "coreRule": "Kälte und langsame Festigkeitsentwicklung verlängern die Nachbehandlung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mindestdauer“ im Modul Nachbehandlung noch einmal durch.",
-      "targetModuleTab": "nachbehandlung",
-      "targetModuleLabel": "Nachbehandlung"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_nbh_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "nachbehandlung",
-    "moduleTitle": "Nachbehandlung",
-    "topic": "Verdunstungsrate",
-    "difficulty": "Fortgeschritten",
-    "normRef": "ACI 305R",
-    "question": "Welche Änderung erhöht die Verdunstungsrate einer frischen Betonfläche am stärksten?",
-    "options": [
-      "Höhere Luftfeuchte",
-      "Stärkerer Wind bei trockener Luft",
-      "Niedrigere Betontemperatur",
-      "Windstille"
-    ],
-    "correctIdx": 1,
-    "explanation": "E wächst linear mit (V + 4) und mit dem Feuchtedefizit (1 − r); Wind und trockene Luft wirken zusammen.",
-    "gapAnalysis": {
-      "topic": "Verdunstungsrate",
-      "misconception": "Nur die Sonne verursache Frühschwindrisse.",
-      "coreRule": "Ab etwa 1,0 kg/(m²·h) sofort Schutzmaßnahmen ergreifen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verdunstungsrate“ im Modul Nachbehandlung noch einmal durch.",
-      "targetModuleTab": "nachbehandlung",
-      "targetModuleLabel": "Nachbehandlung"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_feb_1",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "festbeton",
-    "moduleTitle": "Festbeton",
-    "topic": "Charakteristische Festigkeit",
-    "difficulty": "Basis",
-    "normRef": "DIN EN 206",
-    "question": "Eine Produktion liefert f_cm = 38 N/mm² (Zylinder) bei σ = 3,5 N/mm². Welche charakteristische Festigkeit (5-%-Quantil) ergibt sich?",
-    "options": [
-      "30,0 N/mm²",
-      "32,2 N/mm²",
-      "34,5 N/mm²",
-      "38,0 N/mm²"
-    ],
-    "correctIdx": 1,
-    "explanation": "f_ck = f_cm − 1,645 · σ = 38 − 5,76 = 32,2 N/mm².",
-    "gapAnalysis": {
-      "topic": "Charakteristische Festigkeit",
-      "misconception": "Der Mittelwert sei die charakteristische Festigkeit.",
-      "coreRule": "Nur 5 % der Ergebnisse dürfen unter f_ck liegen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeit“ im Modul Festbeton noch einmal durch.",
-      "targetModuleTab": "festbeton",
-      "targetModuleLabel": "Festbeton"
-    },
-    "verified": false
-  },
-  {
-    "id": "q_feb_2",
-    "category": "bindemittel_beton",
-    "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "III",
-    "clusterName": "Entwurf & Bemessung",
-    "moduleId": "festbeton",
-    "moduleTitle": "Festbeton",
-    "topic": "Festigkeitsentwicklung",
-    "difficulty": "Fortgeschritten",
-    "normRef": "DIN EN 1992-1-1, Gl. (3.2)",
-    "question": "Welcher Zement liefert nach EC2 bei gleicher 28-Tage-Festigkeit die höchste 7-Tage-Festigkeit?",
-    "options": [
-      "Klasse S (s = 0,38)",
-      "Klasse N (s = 0,25)",
-      "Klasse R (s = 0,20)",
-      "Alle gleich"
-    ],
-    "correctIdx": 2,
-    "explanation": "β_cc(7) = e^(s·(1 − 2)) = e^(−s): R 0,82; N 0,78; S 0,68.",
-    "gapAnalysis": {
-      "topic": "Festigkeitsentwicklung",
-      "misconception": "Ein größeres s bedeute schnellere Erhärtung.",
-      "coreRule": "Kleines s = schnelle Festigkeitsentwicklung (z. B. CEM I 42,5 R).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Festigkeitsentwicklung“ im Modul Festbeton noch einmal durch.",
-      "targetModuleTab": "festbeton",
-      "targetModuleLabel": "Festbeton"
     },
     "verified": false
   }

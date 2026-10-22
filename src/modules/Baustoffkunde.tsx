@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { 
   GraduationCap, BookOpen, Clock, Layers, AlertCircle, 
   ArrowRight, Landmark, Zap, ShieldCheck, TreePine, Construction, Hammer,
-  User, Users
+  User, Users, CheckCircle, Box
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';

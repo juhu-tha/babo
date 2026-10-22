@@ -3,7 +3,6 @@ import { Droplets, ShieldCheck, Layers, Cpu, Compass, BookOpen, AlertCircle, Che
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl } from '@/src/utils/numberFormat';
@@ -241,7 +240,7 @@ export default function WUBauwerke() {
                         <label className="text-sm font-semibold text-text-main">Beanspruchungsklasse (BK)</label>
                         <InfoTooltip text="BK 1: Drückendes und aufstauendes Sickerwasser (Grundwasser, Hochwasser). BK 2: Bodenfeuchte und nichtstauendes Sickerwasser." />
                       </div>
-                      <select aria-label="Beanspruchungsklasse (BK)"
+                      <select
                         className="p-2.5 border border-home-grau/40 rounded-xl bg-white text-sm focus:outline-none focus:border-shiraz"
                         value={bk}
                         onChange={(e) => setBk(e.target.value as '1' | '2')}
@@ -256,7 +255,7 @@ export default function WUBauwerke() {
                         <label className="text-sm font-semibold text-text-main">Nutzungsklasse (NK)</label>
                         <InfoTooltip text="NK A: Standard (Wohnräume, Archive, Technikzentralen). Feuchtetransport über den Querschnitt nicht zulässig. NK B: Tiefgaragen, Lagerräume einfacher Art. Feuchtstellen an Fugen/Rissen zulässig." />
                       </div>
-                      <select aria-label="Nutzungsklasse (NK)"
+                      <select
                         className="p-2.5 border border-home-grau/40 rounded-xl bg-white text-sm focus:outline-none focus:border-shiraz"
                         value={nk}
                         onChange={(e) => setNk(e.target.value as 'A' | 'B')}
@@ -269,7 +268,7 @@ export default function WUBauwerke() {
                     <div className="grid grid-cols-2 gap-3">
                       <div className="flex flex-col gap-2">
                         <label className="text-sm font-semibold text-text-main">Bauteilart</label>
-                        <select aria-label="Bauteilart"
+                        <select
                           className="p-2.5 border border-home-grau/40 rounded-xl bg-white text-sm focus:outline-none focus:border-shiraz"
                           value={bauteil}
                           onChange={(e) => setBauteil(e.target.value as 'Wand' | 'Bodenplatte')}
@@ -281,7 +280,7 @@ export default function WUBauwerke() {
 
                       <div className="flex flex-col gap-2">
                         <label className="text-sm font-semibold text-text-main">Ausführungsart</label>
-                        <select aria-label="Ausführungsart"
+                        <select
                           className="p-2.5 border border-home-grau/40 rounded-xl bg-white text-sm focus:outline-none focus:border-shiraz"
                           value={bauart}
                           onChange={(e) => setBauart(e.target.value as 'ortbeton' | 'elementwand')}

@@ -1,20 +1,27 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
+  Layers, 
   Droplet, 
   BookOpen, 
   CheckCircle2, 
   Lightbulb, 
+  ClipboardList, 
+  Info, 
   ShieldAlert, 
   Sparkles, 
   AlertTriangle, 
+  HelpCircle, 
   Activity, 
   ChevronRight, 
   Scale, 
+  Percent, 
   FileText, 
   Atom, 
   Gauge, 
-  Check 
+  Check, 
+  X, 
+  Settings 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath } from 'react-katex';
@@ -763,7 +770,7 @@ export default function BpBetonzusatzmittel() {
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-700 block">Zementgehalt (<InlineMath math="Z" />):</label>
                   <div className="relative">
-                    <input aria-label="Zementgehalt ()"
+                    <input
                       type="number"
                       step="5"
                       min="100"
@@ -780,7 +787,7 @@ export default function BpBetonzusatzmittel() {
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-705 block">Zusatzmittel Menge:</label>
                     <div className="relative">
-                      <input aria-label="Zusatzmittel Menge"
+                      <input
                         type="number"
                         step="0.1"
                         min="0"
@@ -796,7 +803,7 @@ export default function BpBetonzusatzmittel() {
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-705 block">Zusatzmittel Dichte (<InlineMath math="\rho" />):</label>
                     <div className="relative">
-                      <input aria-label="Zusatzmittel Dichte ()"
+                      <input
                         type="number"
                         step="0.01"
                         min="0.9"
@@ -814,7 +821,7 @@ export default function BpBetonzusatzmittel() {
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-700 block">Wassergehalt im Additiv:</label>
                     <div className="relative">
-                      <input aria-label="Wassergehalt im Additiv"
+                      <input
                         type="number"
                         step="1"
                         min="20"
@@ -829,7 +836,7 @@ export default function BpBetonzusatzmittel() {
 
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-700 block">Gewünschter Ziel-w/z:</label>
-                    <input aria-label="Gewünschter Ziel-w/z"
+                    <input
                       type="number"
                       step="0.01"
                       min="0.30"
@@ -844,7 +851,7 @@ export default function BpBetonzusatzmittel() {
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-700 block">Abgemessene Frischwasser-Zugabe:</label>
                   <div className="relative">
-                    <input aria-label="Abgemessene Frischwasser-Zugabe"
+                    <input
                       type="number"
                       step="5"
                       min="50"
@@ -895,7 +902,7 @@ export default function BpBetonzusatzmittel() {
                   <div className="space-y-1">
                     <label className="text-xxs font-bold text-slate-600 block">Chloridgehalt im Additiv (<InlineMath math="\text{Cl}^-" />):</label>
                     <div className="relative">
-                      <input aria-label="Chloridgehalt im Additiv ()"
+                      <input
                         type="number"
                         step="0.01"
                         min="0"

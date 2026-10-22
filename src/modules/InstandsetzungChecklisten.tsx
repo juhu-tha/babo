@@ -5,14 +5,20 @@ import {
   Layers, 
   ShieldCheck, 
   CheckCircle2, 
+  AlertTriangle, 
   ClipboardList, 
-  Shield,
+  Trees, 
+  Shield, 
+  TrendingUp, 
+  FileText,
   Search,
   Filter,
   RotateCcw,
   CheckCheck,
   Zap,
-  Printer
+  Printer,
+  Sparkles,
+  Info
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';

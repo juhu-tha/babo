@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import {
   GraduationCap,
   ArrowRight,
@@ -9,14 +9,17 @@ import {
   BookOpen,
   Activity,
   Layers,
+  Compass,
   Sparkles,
   HelpCircle,
   Scale,
+  Zap,
   Box,
   Scissors,
   Columns,
   CircleDashed,
-  GitCommit
+  GitCommit,
+  Info
 } from 'lucide-react';
 import type { BemessungSubTab } from '../Stahlbetonbemessung';
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InlineMath } from 'react-katex';
-import { Layers, BookOpen, CheckCircle2, Lightbulb, BadgeCheck, AlertTriangle, ShieldCheck, Settings, Compass, Calculator } from 'lucide-react';
+import { Layers, BookOpen, CheckCircle2, Lightbulb, BadgeCheck, AlertTriangle, ShieldCheck, Settings, Droplet, Flame, Compass, Calculator } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import { DaemmungBerater } from '@/src/components/DaemmungBerater';
 

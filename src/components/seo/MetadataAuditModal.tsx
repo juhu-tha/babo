@@ -3,11 +3,14 @@ import React, { useState, useMemo } from 'react';
 import { 
   Search, 
   X, 
+  Download, 
   CheckCircle2, 
   AlertTriangle, 
   AlertCircle, 
   ExternalLink, 
-  FileSpreadsheet,
+  Filter, 
+  FileSpreadsheet, 
+  Layers,
   Copy,
   Check,
   Globe

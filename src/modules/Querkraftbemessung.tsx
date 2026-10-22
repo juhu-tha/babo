@@ -5,7 +5,6 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Layers, Scissors } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
 import {
@@ -304,7 +303,7 @@ export default function Querkraftbemessung() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2"><label className="block text-xs font-bold text-text-main">Bewehrungsart</label><InfoTooltip text="Wahl zwischen herkömmlichem Betonstahl oder Faserverbundwerkstoffen." /></div>
-                    <select aria-label="Bewehrungsart" 
+                    <select 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={bewehrungsArt}
                       onChange={(e) => setBewehrungsArt(e.target.value as any)}
@@ -320,7 +319,7 @@ export default function Querkraftbemessung() {
                 {bewehrungsArt === 'Stahl' ? (
                   <div className="mt-2">
                     <label className="block text-xs font-bold text-text-main mb-2">Streckgrenze Stahl <FormulaText text="f_{yk}" /></label>
-                    <select aria-label="Streckgrenze Stahl" 
+                    <select 
                       className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white"
                       value={fyk}
                       onChange={(e) => setFyk(Number(e.target.value))}

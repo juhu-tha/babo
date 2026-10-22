@@ -6,9 +6,14 @@ import {
   GraduationCap, 
   Send, 
   Mail, 
-  User,
+  User, 
+  Calendar, 
+  Clock, 
+  AlertCircle,
   CheckCircle,
-  ClipboardList
+  HelpCircle,
+  ClipboardList,
+  MessageSquare
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
@@ -80,7 +85,7 @@ export default function ThesenProjekte() {
               Thesen &amp; Semesterprojekte
             </h2>
             <p className="text-home-grau text-sm leading-relaxed font-normal">
-              Hier finden Sie Informationen zu Abschlussarbeiten (Bachelor/Master) sowie semesterbegleitenden Projektarbeiten am Institut für Bau und Immobilie (ibi) der THA unter der Betreuung von Prof. Huber.
+              Hier finden Sie Informationen zu Abschlussarbeiten (Bachelor/Master) sowie semesterbegleitenden Projektarbeiten am Institut für Bau und Immobilien (ibi) der THA unter der Betreuung von Prof. Huber.
             </p>
           </div>
           <div className="hidden lg:flex w-16 h-16 bg-off-white border border-home-grau/10 rounded-xl items-center justify-center text-text-main shrink-0">
@@ -219,7 +224,7 @@ export default function ThesenProjekte() {
                 <div>
                   <h4 className="text-sm font-bold text-text-main">Anmeldung &amp; Betreuungsvereinbarung</h4>
                   <p className="text-xs text-home-grau mt-1 leading-relaxed">
-                    Formaler Start durch Anmeldung beim Prüfungsamt der THA. Festlegung von Erst- und Zweitprüfer:in nach Prüfungsordnung (z. B. Prof. Huber); Praxispartner können die fachliche Betreuung übernehmen.
+                    Formaler Start durch Anmeldung beim Prüfungsamt der THA. Festlegung des Erst- und Zweitprüfers (z.B. Prof. Huber und ein Praxispartner).
                   </p>
                 </div>
               </div>
@@ -327,7 +332,7 @@ export default function ThesenProjekte() {
  
                 <div className="flex flex-col gap-1">
                   <label className="text-xs uppercase font-bold text-home-grau">Studiengang</label>
-                  <select aria-label="Studiengang" 
+                  <select 
                     value={formData.program}
                     onChange={(e) => setFormData({...formData, program: e.target.value})}
                     className="w-full text-xs p-2.5 border border-home-grau/25 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-shiraz/40 bg-white text-text-main"
@@ -342,7 +347,7 @@ export default function ThesenProjekte() {
  
                 <div className="flex flex-col gap-1">
                   <label className="text-xs uppercase font-bold text-home-grau">Fachdisziplin / Forschungsschwerpunkt</label>
-                  <select aria-label="Fachdisziplin / Forschungsschwerpunkt" 
+                  <select 
                     value={formData.area}
                     onChange={(e) => setFormData({...formData, area: e.target.value})}
                     className="w-full text-xs p-2.5 border border-home-grau/25 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-shiraz/40 bg-white text-text-main"
@@ -437,8 +442,8 @@ export default function ThesenProjekte() {
 
       <ModuleFooter 
         weblinks={[
-          { title: 'THA_ibi – Institut für Bau und Immobilie', url: 'https://www.tha.de/ibi' },
-          { title: 'Fakultät für Architektur und Bauwesen - Technische Hochschule Augsburg', url: 'https://www.tha.de/hochschule/fakultaet/ab/' }
+          { title: 'ibi Augsburg - Institut für Bau und Immobilien (THA)', url: 'https://www.tha.de/ibi' },
+          { title: 'Fakultät für Architektur und Bauwesen - Technische Hochschule Augsburg', url: 'https://www.tha.de/Architektur-und-Bauwesen.html' }
         ]}
         wikipedia={[
           { title: 'Wissenschaftliche Arbeit', url: 'https://de.wikipedia.org/wiki/Wissenschaftliche_Arbeit' },
@@ -451,7 +456,7 @@ export default function ThesenProjekte() {
         ]}
         regelwerke={[
           { title: 'Leitfaden zur Anfertigung wissenschaftlicher Abschlussarbeiten der THA', url: 'https://www.tha.de/' },
-          { title: 'Gute wissenschaftliche Praxis (DFG-Kodex)', url: 'https://www.dfg.de/de/grundlagen-themen/grundlagen-und-prinzipien-der-foerderung/gwp' }
+          { title: 'Gute wissenschaftliche Praxis (DFG-Leitlinien)', url: 'https://www.dfg.de/' }
         ]}
         formeln={[
           {

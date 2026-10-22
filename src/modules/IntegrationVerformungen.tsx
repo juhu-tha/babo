@@ -1,4 +1,5 @@
 import React from 'react';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Network, ThermometerSun, Layers, Activity, Timer, ArrowRight, AlertTriangle } from 'lucide-react';
 
 export default function IntegrationVerformungen() {
@@ -105,6 +106,36 @@ export default function IntegrationVerformungen() {
         </div>
       </div>
       
+      <ModuleFooter 
+        wikipedia={[
+          { title: 'Hydratation (Zement)', url: 'https://de.wikipedia.org/wiki/Hydratation' },
+          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' },
+          { title: 'Kriechen und Schwinden von Beton' }
+        ]}
+        regelwerke={[
+          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Rissbegrenzung)' },
+          { title: 'DAfStb-Heft 600: Erläuterungen zu Eurocode 2 (Kap. 7: Gebrauchstauglichkeit)', url: 'https://www.dafstb.de/' },
+          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
+          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)' }
+        ]}
+        literatur={[
+          'Rostásy, F. S.; Krauß, M.; Budelmann, H.: Planungshilfen zur Beherrschung von Zwang in massigen Bauteilen (Heft 483 DAfStb, Beuth Verlag)',
+          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton (Springer Vieweg)',
+          'Breitenbücher, R.: Zwangsspannungen und Rissbildung im jungen Beton (Beton- und Stahlbetonbau)'
+        ]}
+        formeln={[
+          {
+            formel: '\\sigma_{ct}(t) = E_{cm}(t) \\cdot \\left[ \\alpha_T \\cdot \\Delta T(t) + \\epsilon_{cs}(t) \\right] \\cdot R \\cdot k_{relax}(t)',
+            erklaerung: 'Integraler Spannungsaufbau im jungen Beton unter Berücksichtigung von thermischer Dehnung, Schwinden, Festhaltungsgrad R und viskoelastischer Kriech-Relaxation.',
+            quelle: 'DAfStb Heft 483 / Eurocode 2'
+          },
+          {
+            formel: '\\eta_{riss} = \\frac{\\sigma_{ct}(t)}{f_{ct,eff}(t)} \\le 1{,}0',
+            erklaerung: 'Rissrisiko-Kriterium: Übersteigt die Zwangspannung die zu diesem Zeitpunkt verfügbare effektive Betonzugfestigkeit, bildet sich ein Trennriss.',
+            quelle: 'DIN EN 1992-1-1'
+          }
+        ]}
+      />
     </div>
   );
 }

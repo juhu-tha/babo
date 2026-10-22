@@ -12,12 +12,12 @@ import {
   Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { normalPDF } from '@/src/lib/math';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { BarChart3 } from 'lucide-react';
+import { BarChart3, ShieldAlert } from 'lucide-react';
+import Sicherheitskonzept from './Sicherheitskonzept';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -68,8 +68,8 @@ export default function FestbetonStatistik() {
     const yValues = xValues.map(x => normalPDF(x, scaledFcm, scaledSigma));
     
     // Create a dataset for the red shaded area (x <= fck)
-    const redAreaX: number[] = [];
-    const redAreaY: number[] = [];
+    const redAreaX = [];
+    const redAreaY = [];
     
     xValues.forEach(x => {
       if (x <= scaledFck) {
@@ -444,8 +444,8 @@ export default function FestbetonStatistik() {
           zielGleichung="f_{cm} \ge f_{ck} + 4,\qquad f_{ci} \ge f_{ck} - 4"
           schritte={[
             { titel: 'Gegeben', erklaerung: 'Drei Würfelergebnisse einer neuen Betonsorte C30/37 (f_ck,cube = 37 N/mm²): 41,0 / 39,5 / 43,2 N/mm².', formel: 'f_{ck,cube} = 37\\,\\text{N/mm}^2' },
-            { titel: 'Kriterium 1 (Mittelwert)', erklaerung: 'Mittelwert der Gruppe:', formel: 'f_{cm} = \\frac{41{,}0 + 39{,}5 + 43{,}2}{3} = 41{,}2 \\geq 37 + 4 = 41{,}0 \\;\\checkmark' },
-            { titel: 'Kriterium 2 (Einzelwert)', erklaerung: 'Kleinster Einzelwert:', formel: 'f_{ci,min} = 39{,}5 \\geq 37 - 4 = 33{,}0 \\;\\checkmark' }
+            { titel: 'Kriterium 1 (Mittelwert)', erklaerung: 'Mittelwert der Gruppe:', formel: 'f_{cm} = \\frac{41{,}0 + 39{,}5 + 43{,}2}{3} = 41{,}2 \\geq 37 + 4 = 41{,}0 \;\\checkmark' },
+            { titel: 'Kriterium 2 (Einzelwert)', erklaerung: 'Kleinster Einzelwert:', formel: 'f_{ci,min} = 39{,}5 \\geq 37 - 4 = 33{,}0 \;\\checkmark' }
           ]}
           ergebnisHinweis="Beide Kriterien sind erfüllt – die Gruppe ist konform. Ein Mittelwert von nur 40,9 N/mm² hätte Kriterium 1 knapp verfehlt."
           normQuelle="DIN EN 206:2021-06, 8.2.1, Tab. 14"
@@ -455,8 +455,8 @@ export default function FestbetonStatistik() {
           zielGleichung="f_{cm} \ge f_{ck} + 1{,}48\,\sigma,\qquad f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c}"
           schritte={[
             { titel: 'Gegeben', erklaerung: 'C30/37, n = 15 Würfelergebnisse, Mittelwert 44,5 N/mm², kleinster Einzelwert 34,1 N/mm², Standardabweichung aus 35 Vorwerten σ = 4,0 N/mm².', formel: '\\sigma = 4{,}0 \\geq 3{,}0\\,\\text{N/mm}^2' },
-            { titel: 'Mittelwertkriterium', erklaerung: 'Erforderlicher Mittelwert:', formel: '37 + 1{,}48 \\cdot 4{,}0 = 42{,}9 \\leq 44{,}5 \\;\\checkmark' },
-            { titel: 'Einzelwertkriterium', erklaerung: 'Kleinster Einzelwert:', formel: '34{,}1 \\geq 37 - 4 = 33{,}0 \\;\\checkmark' },
+            { titel: 'Mittelwertkriterium', erklaerung: 'Erforderlicher Mittelwert:', formel: '37 + 1{,}48 \\cdot 4{,}0 = 42{,}9 \\leq 44{,}5 \;\\checkmark' },
+            { titel: 'Einzelwertkriterium', erklaerung: 'Kleinster Einzelwert:', formel: '34{,}1 \\geq 37 - 4 = 33{,}0 \;\\checkmark' },
             { titel: 'Bemessungswert', erklaerung: 'Der Statiker rechnet mit der Zylinderfestigkeit f_ck = 30 N/mm² (α_cc = 0,85; γ_c = 1,5):', formel: 'f_{cd} = 0{,}85 \\cdot \\frac{30}{1{,}5} = 17{,}0\\,\\text{N/mm}^2' }
           ]}
           ergebnisHinweis="Die Konformität wird im Format der Prüfkörper (hier Würfel) nachgewiesen, die Bemessung erfolgt immer mit der Zylinderfestigkeit."

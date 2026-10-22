@@ -17,7 +17,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 
 ChartJS.register(
   CategoryScale,

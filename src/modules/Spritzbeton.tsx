@@ -2,6 +2,7 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React, { useState } from 'react';
 import { Waves, Zap } from 'lucide-react';
+import { FormulaText } from '@/src/components/ui/FormulaText';
 
 export default function Spritzbeton() {
   const [schichtdicke, setSchichtdicke] = useState(5);

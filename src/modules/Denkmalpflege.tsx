@@ -3,8 +3,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
-  Landmark, Hammer, Scale, Coins, 
-  ShieldAlert, Check, TrendingUp, AlertTriangle, BookOpen, Info
+  Landmark, FileSignature, Paintbrush, Hammer, Scale, Coins, 
+  ShieldAlert, Check, TrendingUp, AlertTriangle, FileText, BookOpen, Info, ArrowRight, ClipboardCheck
 } from 'lucide-react';
 
 export default function Denkmalpflege() {

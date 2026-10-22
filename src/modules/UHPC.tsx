@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Settings, Layers, Activity, Map, ShieldCheck } from 'lucide-react';
+import { Settings, Layers, Activity, Map, ShieldCheck, ChevronRight } from 'lucide-react';
 
 export default function UHPC() {
   return (

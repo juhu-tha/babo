@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, ArrowRight, Gauge, Sliders, Zap } from 'lucide-react';
-import { InlineMath } from 'react-katex';
+import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, ArrowRight, Gauge, Sliders, Info, Zap } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,7 +13,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 
@@ -285,7 +284,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       maxStrain = Math.max((sUpper + 0.05) * 1.35, 0.4);
     } else if (testType === 'zug') {
       if (['beton', 'ziegel', 'glas', 'gusseisen', 'carbon', 'holz'].includes(material)) {
-        const ft = materialProps.fu || materialProps.fc! * 0.1;
+        const ft = materialProps.fu || materialProps.fc * 0.1;
         maxStrain = (ft / (materialProps.E / 1000)) * 1.35;
       }
     }
@@ -293,7 +292,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
     const calcStressAtStrain = (s: number, tType: TestType): number => {
       if (material === 'beton' || material === 'ziegel' || material === 'gusseisen') {
         if (tType === 'zug') {
-          const ft = materialProps.fu || materialProps.fc! * 0.1;
+          const ft = materialProps.fu || materialProps.fc * 0.1;
           const st = (materialProps.E * s) / 1000;
           return st > ft ? -1 : st;
         } else {
@@ -301,7 +300,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           const ec1 = materialProps.strainAtMax || 2.2;
           const ecu = materialProps.failureStrain || 3.5;
           const eta = s / ec1;
-          const fc = materialProps.fc!;
+          const fc = materialProps.fc;
 
           if (s <= ec1) {
             return fc * (2 * eta - eta * eta);
@@ -345,14 +344,14 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           const st = (materialProps.E * s) / 1000;
           return st > materialProps.fu ? -1 : st;
         } else {
-          const sElastic = (materialProps.fc! * 0.7) / (materialProps.E / 1000);
+          const sElastic = (materialProps.fc * 0.7) / (materialProps.E / 1000);
           if (s <= sElastic) {
             return (materialProps.E * s) / 1000;
-          } else if (s <= materialProps.strainAtMax!) {
-            const r = (s - sElastic) / (materialProps.strainAtMax! - sElastic);
-            return materialProps.fc! * 0.7 + (materialProps.fc! * 0.3) * Math.sin((r * Math.PI) / 2);
+          } else if (s <= materialProps.strainAtMax) {
+            const r = (s - sElastic) / (materialProps.strainAtMax - sElastic);
+            return materialProps.fc * 0.7 + (materialProps.fc * 0.3) * Math.sin((r * Math.PI) / 2);
           } else {
-            return materialProps.fc! * (1 - 0.15 * ((s - materialProps.strainAtMax!) / (materialProps.failureStrain - materialProps.strainAtMax!)));
+            return materialProps.fc * (1 - 0.15 * ((s - materialProps.strainAtMax) / (materialProps.failureStrain - materialProps.strainAtMax)));
           }
         }
       } else if (material === 'eps') {
@@ -360,10 +359,10 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           const st = (materialProps.E * s) / 1000;
           return st > materialProps.fu ? -1 : st;
         } else {
-          if (s <= materialProps.strainAtMax!) {
+          if (s <= materialProps.strainAtMax) {
             return (materialProps.E * s) / 1000;
           } else {
-            let st = materialProps.fc!;
+            let st = materialProps.fc;
             if (s > 400) {
               st += 0.00008 * Math.pow(s - 400, 2); // Verdichtung
             }
@@ -374,7 +373,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
         // Glas, Carbon
         const st = (materialProps.E * s) / 1000;
         const limit = tType === 'zug' ? materialProps.fu : materialProps.fc;
-        return st > limit! ? -1 : st;
+        return st > limit ? -1 : st;
       }
     };
 

@@ -1,15 +1,18 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
-import { Calculator, Globe,
+import { Calculator, Calendar, Globe,
   Waves, 
   ShieldAlert, 
   BarChart3,
   GraduationCap,
   Activity,
   Trees,
+  ThermometerSun,
   Download,
+  Timer,
   GitCommit,
   Layers,
+  Database,
   Droplets,
   Box,
   Scale,
@@ -21,6 +24,7 @@ import { Calculator, Globe,
   Grid,
   Maximize,
   Maximize2,
+  Minimize2,
   Thermometer,
   Leaf,
   Snowflake,
@@ -38,7 +42,10 @@ import { Calculator, Globe,
   AlertTriangle,
   Trash2,
   Eye,
+  MapPin,
   Beaker,
+  CircleDashed,
+  CheckCircle2,
   Hammer,
   AppWindow,
   Package,
@@ -73,20 +80,26 @@ import { Calculator, Globe,
   Sun,
   Moon,
   Cpu,
+  Code,
+  Users,
   Sliders,
   Settings,
   Terminal,
   ChevronRight,
   Star,
+  ArrowRight,
+  CornerDownRight,
   Video
 } from 'lucide-react';
 
-import { TabProvider, useTabContext } from './contexts/TabContext';
-import { useLanguage } from './contexts/LanguageContext';
+import { exportToPDF } from './lib/pdfExport';
+import { TabProvider, useTabContext, TabId } from './contexts/TabContext';
+import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/navigation/LanguageSwitcher';
 import { LanguageBanner } from './components/navigation/LanguageBanner';
 import { TAB_DESCRIPTIONS } from './metaDescriptions';
 import { AccessibilityToolbar } from './components/a11y/AccessibilityToolbar';
+import { HelpCircle } from 'lucide-react';
 import { MetadataAuditModal } from './components/seo/MetadataAuditModal';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import StudentPollVoteView from './components/polls/StudentPollVoteView';
@@ -1045,7 +1058,6 @@ function AppContent() {
 
   const handleExport = async () => {
     setIsExporting(true);
-    const { exportToPDF } = await import('./lib/pdfExport');
     await exportToPDF('module-content', `THA_Baustoffkunde_${activeTab}`);
     setIsExporting(false);
   };

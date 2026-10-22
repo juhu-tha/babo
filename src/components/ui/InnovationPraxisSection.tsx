@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lightbulb, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
+import { Lightbulb, CheckCircle2, AlertCircle, Sparkles, HelpCircle } from 'lucide-react';
 import { FormulaText } from './FormulaText';
 
 interface Entry {

@@ -2,7 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { Layers, Calculator, Info, CheckCircle, AlertTriangle } from 'lucide-react';
+import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import { Layers, Calculator, Play, Info, CheckCircle, AlertTriangle } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 
 interface ProfileData {
@@ -469,7 +470,7 @@ export default function BpStahlbauprofile() {
                     <label className="text-[11px] font-bold text-text-main/60 block uppercase">Normalkraft N_Ed</label>
                   </div>
                   <div className="relative">
-                    <input aria-label="Normalkraft N_Ed"
+                    <input
                       type="number"
                       value={ned}
                       onChange={(e) => setNed(Number(e.target.value))}
@@ -477,7 +478,7 @@ export default function BpStahlbauprofile() {
                     />
                     <span className="absolute right-2 top-2.5 text-xs text-text-main/30 font-bold">kN</span>
                   </div>
-                  <input aria-label="kN"
+                  <input
                     type="range"
                     min="0"
                     max="2000"
@@ -493,7 +494,7 @@ export default function BpStahlbauprofile() {
                     <label className="text-[11px] font-bold text-text-main/60 block uppercase">Biegung M_y,Ed</label>
                   </div>
                   <div className="relative">
-                    <input aria-label="Biegung M_y,Ed"
+                    <input
                       type="number"
                       value={myed}
                       onChange={(e) => setMyed(Number(e.target.value))}
@@ -501,7 +502,7 @@ export default function BpStahlbauprofile() {
                     />
                     <span className="absolute right-2 top-2.5 text-xs text-text-main/30 font-bold">kNm</span>
                   </div>
-                  <input aria-label="kNm"
+                  <input
                     type="range"
                     min="0"
                     max="500"
@@ -514,7 +515,7 @@ export default function BpStahlbauprofile() {
 
                 <div className="space-y-2">
                   <label className="text-[11px] font-bold text-text-main/60 block uppercase">Stahlsorte</label>
-                  <select aria-label="Stahlsorte"
+                  <select
                     value={selectedGrade}
                     onChange={(e) => setSelectedGrade(e.target.value as keyof typeof steelGrades)}
                     className="w-full p-2 text-sm border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz font-medium"
@@ -525,7 +526,7 @@ export default function BpStahlbauprofile() {
 
                 <div className="space-y-1">
                   <label className="text-[11px] font-bold text-text-main/60 block uppercase">Beiwert γ_M0</label>
-                  <select aria-label="Beiwert γ_M0"
+                  <select
                     value={safetyFactor}
                     onChange={(e) => setSafetyFactor(Number(e.target.value))}
                     className="w-full p-2 text-sm border border-home-grau rounded-md bg-white focus:outline-none"

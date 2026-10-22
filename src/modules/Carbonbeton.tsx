@@ -5,7 +5,6 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,

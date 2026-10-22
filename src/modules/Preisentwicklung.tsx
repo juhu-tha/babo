@@ -1,6 +1,6 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { TrendingUp, Euro, Calendar, Info, BarChart3 } from 'lucide-react';
+import { TrendingUp, Euro, Calendar, Info, BarChart3, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import {
   Chart as ChartJS,
@@ -13,7 +13,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 
 ChartJS.register(

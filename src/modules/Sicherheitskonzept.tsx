@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { ShieldAlert, ArrowRight, AlertTriangle, CheckCircle2, Calculator, Shield, Activity } from 'lucide-react';
+import { ShieldAlert, ArrowRight, AlertTriangle, CheckCircle2, Calculator, Shield, Activity, BarChart2 } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -262,7 +262,7 @@ export default function Sicherheitskonzept() {
               <div className="flex gap-4">
                 <div className="flex flex-col gap-2 flex-1">
                   <label className="text-xs font-bold text-text-main">γ_G (ständige Einwirkung)</label>
-                  <select aria-label="γ_G (ständige Einwirkung)" 
+                  <select 
                     className="p-2 border border-home-grau rounded-md bg-off-white text-sm focus:outline-none focus:border-shiraz"
                     value={gammaG}
                     onChange={(e) => setGammaG(Number(e.target.value))}
@@ -273,7 +273,7 @@ export default function Sicherheitskonzept() {
                 </div>
                 <div className="flex flex-col gap-2 flex-1">
                   <label className="text-xs font-bold text-text-main">ψ₀ Beiwert (für Q_k,2)</label>
-                  <select aria-label="ψ₀ Beiwert (für Q_k,2)" 
+                  <select 
                     className="p-2 border border-home-grau rounded-md bg-off-white text-sm focus:outline-none focus:border-shiraz"
                     value={psi0_2}
                     onChange={(e) => setPsi0_2(Number(e.target.value))}

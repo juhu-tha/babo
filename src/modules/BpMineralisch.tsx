@@ -1,7 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { ShieldCheck, Calculator, Check, AlertTriangle, Layers as LayersIcon, HardHat, Star } from 'lucide-react';
+import { Layers, ShieldCheck, Eye, Sliders, Calculator, Check, AlertTriangle, RefreshCw, Layers as LayersIcon, HardHat, Star } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 
 interface MineralMaterial {
@@ -383,7 +383,7 @@ export default function BpMineralisch() {
             
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-text-main">Verlegter Werkstoff:</label>
-              <select aria-label="Verlegter Werkstoff"
+              <select
                 value={tileMaterial}
                 onChange={(e) => setTileMaterial(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"

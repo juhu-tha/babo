@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { 
   Sliders, 
   Calculator, 
+  Layers, 
   BookOpen, 
   Activity, 
   ShieldCheck, 
@@ -11,6 +12,7 @@ import {
   CheckCircle2, 
   XCircle, 
   AlertTriangle, 
+  Info, 
   RefreshCw,
   Scale,
   Compass,
@@ -20,7 +22,7 @@ import {
 import { InlineMath, BlockMath } from 'react-katex';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 
 // ----------------------------------------------------------------------
 // EC2 TABELLE 3.1: FESTIGKEITS- UND VERFORMUNGSEIGENSCHAFTEN FÜR BETON
@@ -54,12 +56,12 @@ export const EC2_CONCRETE_CLASSES: ConcreteClassData[] = [
   { name: 'C40/50', fck: 40, fckCube: 50, fcm: 48, fctm: 3.5, fctk005: 2.5, fctk095: 4.6, Ecm: 35, epsC1: 2.3, epsCu1: 3.5, epsC2: 2.0, epsCu2: 3.5, n: 2.0, epsC3: 1.75, epsCu3: 3.5 },
   { name: 'C45/55', fck: 45, fckCube: 55, fcm: 53, fctm: 3.8, fctk005: 2.7, fctk095: 4.9, Ecm: 36, epsC1: 2.4, epsCu1: 3.5, epsC2: 2.0, epsCu2: 3.5, n: 2.0, epsC3: 1.75, epsCu3: 3.5 },
   { name: 'C50/60', fck: 50, fckCube: 60, fcm: 58, fctm: 4.1, fctk005: 2.9, fctk095: 5.3, Ecm: 37, epsC1: 2.45, epsCu1: 3.5, epsC2: 2.0, epsCu2: 3.5, n: 2.0, epsC3: 1.75, epsCu3: 3.5 },
-  { name: 'C55/67', fck: 55, fckCube: 67, fcm: 63, fctm: 4.2, fctk005: 3.0, fctk095: 5.5, Ecm: 38, epsC1: 2.5, epsCu1: 3.2, epsC2: 2.2, epsCu2: 3.1, n: 1.75, epsC3: 1.8, epsCu3: 3.1 },
-  { name: 'C60/75', fck: 60, fckCube: 75, fcm: 68, fctm: 4.4, fctk005: 3.1, fctk095: 5.7, Ecm: 39, epsC1: 2.6, epsCu1: 3.0, epsC2: 2.3, epsCu2: 2.9, n: 1.6, epsC3: 1.9, epsCu3: 2.9 },
-  { name: 'C70/85', fck: 70, fckCube: 85, fcm: 78, fctm: 4.6, fctk005: 3.2, fctk095: 6.0, Ecm: 41, epsC1: 2.7, epsCu1: 2.8, epsC2: 2.4, epsCu2: 2.7, n: 1.45, epsC3: 2.0, epsCu3: 2.7 },
-  { name: 'C80/95', fck: 80, fckCube: 95, fcm: 88, fctm: 4.8, fctk005: 3.4, fctk095: 6.3, Ecm: 42, epsC1: 2.8, epsCu1: 2.8, epsC2: 2.5, epsCu2: 2.6, n: 1.4, epsC3: 2.2, epsCu3: 2.6 },
-  { name: 'C90/105', fck: 90, fckCube: 105, fcm: 98, fctm: 5.0, fctk005: 3.5, fctk095: 6.6, Ecm: 44, epsC1: 2.8, epsCu1: 2.8, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 },
-  { name: 'C100/115', fck: 100, fckCube: 115, fcm: 108, fctm: 5.2, fctk005: 3.6, fctk095: 6.8, Ecm: 45, epsC1: 2.8, epsCu1: 2.8, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 }
+  { name: 'C55/67', fck: 55, fckCube: 67, fcm: 63, fctm: 4.2, fctk005: 3.0, fctk095: 5.5, Ecm: 38, epsC1: 2.5, epsCu1: 3.1, epsC2: 2.2, epsCu2: 3.1, n: 1.75, epsC3: 1.8, epsCu3: 3.1 },
+  { name: 'C60/75', fck: 60, fckCube: 75, fcm: 68, fctm: 4.4, fctk005: 3.1, fctk095: 5.7, Ecm: 39, epsC1: 2.6, epsCu1: 2.9, epsC2: 2.3, epsCu2: 2.9, n: 1.6, epsC3: 1.9, epsCu3: 2.9 },
+  { name: 'C70/85', fck: 70, fckCube: 85, fcm: 78, fctm: 4.6, fctk005: 3.2, fctk095: 6.0, Ecm: 41, epsC1: 2.7, epsCu1: 2.7, epsC2: 2.4, epsCu2: 2.7, n: 1.45, epsC3: 2.0, epsCu3: 2.7 },
+  { name: 'C80/95', fck: 80, fckCube: 95, fcm: 88, fctm: 4.8, fctk005: 3.4, fctk095: 6.3, Ecm: 42, epsC1: 2.8, epsCu1: 2.6, epsC2: 2.5, epsCu2: 2.6, n: 1.4, epsC3: 2.2, epsCu3: 2.6 },
+  { name: 'C90/105', fck: 90, fckCube: 105, fcm: 98, fctm: 5.0, fctk005: 3.5, fctk095: 6.6, Ecm: 44, epsC1: 2.8, epsCu1: 2.6, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 },
+  { name: 'C100/115', fck: 100, fckCube: 115, fcm: 108, fctm: 5.2, fctk005: 3.6, fctk095: 6.8, Ecm: 45, epsC1: 2.8, epsCu1: 2.6, epsC2: 2.6, epsCu2: 2.6, n: 1.4, epsC3: 2.3, epsCu3: 2.6 }
 ];
 
 interface Ec2ParameterSkizzeProps {
@@ -226,8 +228,8 @@ function Ec2ParameterSkizze({
               <path d="M 270,170 Q 286,166 298,172" fill="none" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#arrow-blue)" />
               <path d="M 266,205 Q 282,201 294,207" fill="none" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#arrow-blue)" />
               
-              <text x="35" y="160" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">RH = {formatDeWert(relativeHumidity)}%</text>
-              <text x="35" y="174" textAnchor="middle" fill="#0369a1" fontSize="9">T = {formatDeWert(ambientTempT)}°C</text>
+              <text x="35" y="160" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">RH = {relativeHumidity}%</text>
+              <text x="35" y="174" textAnchor="middle" fill="#0369a1" fontSize="9">T = {ambientTempT}°C</text>
 
               <text x="305" y="160" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">H₂O-Diffusion</text>
               <text x="305" y="174" textAnchor="middle" fill="#0369a1" fontSize="9">Trocknung</text>
@@ -304,7 +306,7 @@ function Ec2ParameterSkizze({
             <g transform="translate(130, 130)">
               <circle cx="0" cy="0" r="5" fill="#0284c7" />
               <line x1="0" y1="-8" x2="0" y2="8" stroke="#0284c7" strokeWidth="2" />
-              <text x="0" y="24" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="bold">ts = {formatDeWert(curingDaysTs)} d</text>
+              <text x="0" y="24" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="bold">ts = {curingDaysTs} d</text>
               <text x="0" y="37" textAnchor="middle" fill="#64748b" fontSize="9">Ausschalung</text>
 
               {/* Notiz oben: Trocknungsschwinden beginnt */}
@@ -318,7 +320,7 @@ function Ec2ParameterSkizze({
             <g transform="translate(250, 130)">
               <circle cx="0" cy="0" r="6" fill="#8c1d40" stroke="#ffffff" strokeWidth="1.5" />
               <line x1="0" y1="-12" x2="0" y2="12" stroke="#8c1d40" strokeWidth="2" />
-              <text x="0" y="24" textAnchor="middle" fill="#8c1d40" fontSize="11" fontWeight="bold">t₀ = {formatDeWert(loadingAgeT0)} d</text>
+              <text x="0" y="24" textAnchor="middle" fill="#8c1d40" fontSize="11" fontWeight="bold">t₀ = {loadingAgeT0} d</text>
               <text x="0" y="37" textAnchor="middle" fill="#64748b" fontSize="9">Erstbelastung</text>
 
               {/* Notiz oben: Kriechen beginnt */}
@@ -338,7 +340,7 @@ function Ec2ParameterSkizze({
               {/* Notiz oben: 28d Nennwerte */}
               <rect x="-42" y="-72" width="84" height="52" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" />
               <text x="0" y="-55" textAnchor="middle" fill="#334155" fontSize="9" fontWeight="bold">Abschnitt 1–3</text>
-              <text x="0" y="-42" textAnchor="middle" fill="#0f172a" fontSize="8.5">fck = {formatDeWert(baseConcrete.fck)} MPa</text>
+              <text x="0" y="-42" textAnchor="middle" fill="#0f172a" fontSize="8.5">fck = {baseConcrete.fck} MPa</text>
               <text x="0" y="-28" textAnchor="middle" fill="#64748b" fontSize="8">Ecm = {formatDeZahl(calcResults.Ecm, 0)} MPa</text>
             </g>
 
@@ -346,7 +348,7 @@ function Ec2ParameterSkizze({
             <g transform="translate(470, 130)">
               <circle cx="0" cy="0" r="5" fill="#059669" />
               <line x1="0" y1="-8" x2="0" y2="8" stroke="#059669" strokeWidth="2" />
-              <text x="0" y="24" textAnchor="middle" fill="#059669" fontSize="11" fontWeight="bold">t = {targetAgeT >= 365 ? `${formatDeWert(Math.round(targetAgeT/365))} a` : `${formatDeWert(targetAgeT)} d`}</text>
+              <text x="0" y="24" textAnchor="middle" fill="#059669" fontSize="11" fontWeight="bold">t = {targetAgeT >= 365 ? `${Math.round(targetAgeT/365)} a` : `${targetAgeT} d`}</text>
               <text x="0" y="37" textAnchor="middle" fill="#64748b" fontSize="9">Endzustand</text>
 
               {/* Notiz oben: Endwerte */}
@@ -390,7 +392,7 @@ function Ec2ParameterSkizze({
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mt-3 pt-3 border-t border-home-grau/20 text-xs">
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
           <span className="text-[10px] text-shiraz font-bold block">① Druckfestigkeit</span>
-          <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeWert(baseConcrete.fck)} / {formatDeWert(baseConcrete.fcm)} MPa</span>
+          <span className="font-mono font-bold text-text-main dark:text-slate-100">{baseConcrete.fck} / {baseConcrete.fcm} MPa</span>
           <span className="text-[10px] text-text-main/60 block">s = {cementClass === 'R' ? '0,20' : cementClass === 'S' ? '0,38' : '0,25'}</span>
         </div>
 
@@ -403,13 +405,13 @@ function Ec2ParameterSkizze({
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
           <span className="text-[10px] text-shiraz font-bold block">③ E-Modul &amp; G</span>
           <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeZahl(calcResults.Ecm / 1000, 1)} GPa</span>
-          <span className="text-[10px] text-text-main/60 block">αE = {formatDeZahl(calcResults.alphaE, 2)} ({aggregateType})</span>
+          <span className="text-[10px] text-text-main/60 block">αE = {calcResults.alphaE.toFixed(2)} ({aggregateType})</span>
         </div>
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
           <span className="text-[10px] text-shiraz font-bold block">④ Dehnungen σ-ε</span>
-          <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeWert(baseConcrete.epsC1)} / {formatDeWert(baseConcrete.epsCu1)} ‰</span>
-          <span className="text-[10px] text-text-main/60 block">εc2 = {formatDeWert(baseConcrete.epsC2)} ‰</span>
+          <span className="font-mono font-bold text-text-main dark:text-slate-100">{baseConcrete.epsC1} / {baseConcrete.epsCu1} ‰</span>
+          <span className="text-[10px] text-text-main/60 block">εc2 = {baseConcrete.epsC2} ‰</span>
         </div>
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
@@ -723,11 +725,11 @@ export default function Betonkennwerte() {
       q: 'Aus welcher einzigen primären Eingangsgröße leitet Eurocode 2 (DIN EN 1992-1-1) sämtliche mechanischen Kennwerte für Normalbeton ab?',
       options: [
         'Aus dem Zementgehalt in kg/m³.',
-        'Aus dem statischen Elastizitätsmodul Ecm.',
+        'Aus der 28-Tage-Zylinderdruckfestigkeit fck (in MPa bzw. N/mm²).',
         'Aus der Frischbetonkonsistenz (Ausbreitmaß).',
-        'Aus der 28-Tage-Zylinderdruckfestigkeit fck (in MPa bzw. N/mm²).'
+        'Aus dem statischen Elastizitätsmodul Ecm.'
       ],
-      correct: 3,
+      correct: 1,
       feedback: 'Vollkommen richtig! Wie in Abschnitt 1 der Norm und Formelsammlung definiert, basieren alle Kennwerte (fcm, fcd, fctm, Ecm, Dehnungen, Kriech- und Schwindbeiwerte) auf der 28-Tage-Zylinderdruckfestigkeit fck.'
     },
     {
@@ -742,25 +744,25 @@ export default function Betonkennwerte() {
       feedback: 'Exakt! Nach EC2 Abschnitt 3.1.4(4) und Gl. (3.7) führt eine hohe Beanspruchung zu Gefügemikrorissen, die die Kriechzahl über die Exponentialfunktion exp[1,5·(k_sigma - 0,45)] vergrößern.'
     },
     {
-      q: 'Welcher Gesteinsbeiwert αE ist nach Abschnitt 3.1.3(2) für quarzitische Gesteinskörnung bzw. für Sandstein anzusetzen?',
+      q: 'Welcher Gesteinsbeiwert αE ist nach Tabelle 3.1 für quarzitische Gesteinskörnung bzw. für Sandstein anzusetzen?',
       options: [
-        'Quarzit: αE = 1,0 ; Sandstein: αE = 0,7 (-30 % Steifigkeit)',
         'Quarzit: αE = 1,2 ; Sandstein: αE = 1,0',
+        'Quarzit: αE = 1,0 ; Sandstein: αE = 0,7 (-30 % Steifigkeit)',
         'Quarzit: αE = 0,9 ; Sandstein: αE = 1,2 (+20 % Steifigkeit)',
         'Alle Gesteinsarten haben nach Eurocode 2 denselben E-Modul (αE = 1,0).'
       ],
-      correct: 0,
+      correct: 1,
       feedback: 'Richtig! Quarzit bildet den Standardwert mit αE = 1,0. Sandstein weist infolge hoher Kornporosität eine um 30 % geringere Steifigkeit auf (αE = 0,7), während Basalt den E-Modul um ca. +20 % steigert (αE = 1,2).'
     },
     {
       q: 'Wie berechnet sich der effektive Elastizitätsmodul für Langzeitverformungen nach EC2 Abs. 7.4.3 (Gl. 7.20)?',
       options: [
         'Ec,eff = Ecm · (1 - φ)',
-        'Ec,eff = Ecm · φ(t, t0)',
         'Ec,eff = Ecm / (1 + φ(t, t0))',
+        'Ec,eff = Ecm · φ(t, t0)',
         'Ec,eff = 1,05 · Ecm / (1 + 2·φ)'
       ],
-      correct: 2,
+      correct: 1,
       feedback: 'Richtig! Durch das Kriechen nimmt die elastische Ersatzsteifigkeit um den Faktor (1 + φ) ab: Ec,eff = Ecm / (1 + φ(t, t0)). Für Schwindzwang kann mit dem Relaxationsbeiwert ρ ≈ 0,8 gerechnet werden.'
     }
   ];
@@ -902,14 +904,14 @@ export default function Betonkennwerte() {
               {/* Betonklasse */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Betonfestigkeitsklasse</label>
-                <select aria-label="Betonfestigkeitsklasse" 
+                <select 
                   className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-shiraz focus:ring-1 focus:ring-shiraz"
                   value={selectedClassIdx}
                   onChange={(e) => setSelectedClassIdx(Number(e.target.value))}
                 >
                   {EC2_CONCRETE_CLASSES.map((c, idx) => (
                     <option key={c.name} value={idx}>
-                      {c.name} (f_ck = {formatDeWert(c.fck)} MPa, Würfel = {formatDeWert(c.fckCube)} MPa)
+                      {c.name} (f_ck = {c.fck} MPa, Würfel = {c.fckCube} MPa)
                     </option>
                   ))}
                 </select>
@@ -921,7 +923,7 @@ export default function Betonkennwerte() {
               {/* Zementklasse */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Zementbeiwert s (Abschnitt 1)</label>
-                <select aria-label="Zementbeiwert s (Abschnitt 1)" 
+                <select 
                   className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-slate-800 focus:ring-1 focus:ring-shiraz"
                   value={cementClass}
                   onChange={(e) => setCementClass(e.target.value as any)}
@@ -936,7 +938,7 @@ export default function Betonkennwerte() {
               {/* Gesteinskörnung */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Gesteinskörnung α_E (Abschnitt 3)</label>
-                <select aria-label="Gesteinskörnung α_E (Abschnitt 3)" 
+                <select 
                   className="bg-white border border-home-grau/40 rounded-lg p-2 text-xs font-bold text-slate-800 focus:ring-1 focus:ring-shiraz"
                   value={aggregateType}
                   onChange={(e) => setAggregateType(e.target.value as any)}
@@ -953,7 +955,7 @@ export default function Betonkennwerte() {
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-bold text-slate-700">Luftfeuchte RH (Abschnitt 5 &amp; 6)</label>
-                  <span className="font-mono text-xs font-bold text-shiraz">{formatDeWert(relativeHumidity)} %</span>
+                  <span className="font-mono text-xs font-bold text-shiraz">{relativeHumidity} %</span>
                 </div>
                 <input 
                   type="range" 
@@ -970,7 +972,7 @@ export default function Betonkennwerte() {
               {/* Querschnittsfläche Ac */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Querschnittsfläche A_c [m²]</label>
-                <input aria-label="Querschnittsfläche A_c [m²]" 
+                <input 
                   type="number" 
                   step="0.05"
                   min="0.01"
@@ -985,7 +987,7 @@ export default function Betonkennwerte() {
               {/* Trocknender Umfang u */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Umfang u (Austrocknung) [m]</label>
-                <input aria-label="Umfang u (Austrocknung) [m]" 
+                <input 
                   type="number" 
                   step="0.1"
                   min="0.1"
@@ -1022,13 +1024,13 @@ export default function Betonkennwerte() {
                     title="Ende der Nachbehandlung ts in Tagen"
                   />
                 </div>
-                <span className="text-[10px] text-slate-500">t₀ = {formatDeWert(loadingAgeT0)} d (Last), ts = {formatDeWert(curingDaysTs)} d (Curing)</span>
+                <span className="text-[10px] text-slate-500">t₀ = {loadingAgeT0} d (Last), ts = {curingDaysTs} d (Curing)</span>
               </div>
 
               {/* Einwirkende Dauerspannung σ_c */}
               <div className="flex flex-col gap-1.5 bg-off-white p-3.5 rounded-xl border border-home-grau/25">
                 <label className="text-xs font-bold text-slate-700">Dauerspannung σ_c [MPa]</label>
-                <input aria-label="Dauerspannung σ_c [MPa]" 
+                <input 
                   type="number" 
                   step="0.5"
                   min="0"
@@ -1049,7 +1051,7 @@ export default function Betonkennwerte() {
               <div className="flex items-center justify-between bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs">
                 <span className="text-slate-700 font-medium">Bauteildicke h (Biegezug f_ctm,fl):</span>
                 <div className="flex items-center gap-1.5">
-                  <input aria-label="Bauteildicke h (Biegezug f_ctm,fl)" 
+                  <input 
                     type="number" 
                     min="50" 
                     max="3000" 
@@ -1065,7 +1067,7 @@ export default function Betonkennwerte() {
               <div className="flex items-center justify-between bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs">
                 <span className="text-slate-700 font-medium">Umgebungstemperatur T (Anhang B.3):</span>
                 <div className="flex items-center gap-1.5">
-                  <input aria-label="Umgebungstemperatur T (Anhang B.3)" 
+                  <input 
                     type="number" 
                     min="-10" 
                     max="60" 
@@ -1081,7 +1083,7 @@ export default function Betonkennwerte() {
               <div className="flex items-center justify-between bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs">
                 <span className="text-slate-700 font-medium">Bauteillänge L (Längenverkürzung):</span>
                 <div className="flex items-center gap-1.5">
-                  <input aria-label="Bauteillänge L (Längenverkürzung)" 
+                  <input 
                     type="number" 
                     min="1" 
                     max="100" 
@@ -1131,18 +1133,18 @@ export default function Betonkennwerte() {
                 <div className="space-y-1.5 text-xs">
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
                     <span className="text-slate-600">Zylinder <InlineMath math="f_{ck}" /> (28 d):</span>
-                    <strong className="font-mono text-slate-900">{formatDeWert(calcResults.fck)} MPa</strong>
+                    <strong className="font-mono text-slate-900">{calcResults.fck} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
-                    <span className="text-slate-600">Würfel <InlineMath math="f_{ck,\text{cube}}" />:</span>
-                    <strong className="font-mono text-slate-900">{formatDeWert(baseConcrete.fckCube)} MPa</strong>
+                    <span className="text-slate-600">Würfel <InlineMath math="f_{ck,\\text{cube}}" />:</span>
+                    <strong className="font-mono text-slate-900">{baseConcrete.fckCube} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
                     <span className="text-slate-600">Mittelwert <InlineMath math="f_{cm} = f_{ck} + 8" />:</span>
-                    <strong className="font-mono text-slate-900">{formatDeWert(calcResults.fcm)} MPa</strong>
+                    <strong className="font-mono text-slate-900">{calcResults.fcm} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100 bg-emerald-50/60 px-1 rounded">
-                    <span className="text-emerald-950 font-bold">Bemessung <InlineMath math="f_{cd} = \frac{\alpha_{cc} f_{ck}}{\gamma_c}" />:</span>
+                    <span className="text-emerald-950 font-bold">Bemessung <InlineMath math="f_{cd} = \\frac{\\alpha_{cc} f_{ck}}{\\gamma_c}" />:</span>
                     <strong className="font-mono text-emerald-800">{formatDeZahl(calcResults.fcd, 2)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
@@ -1191,7 +1193,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-blue-900">{formatDeZahl(calcResults.fctd, 2)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
-                    <span className="text-slate-600">Biegezug <InlineMath math="f_{ctm,fl}" /> ({formatDeWert(elementHeightH)} mm):</span>
+                    <span className="text-slate-600">Biegezug <InlineMath math="f_{ctm,fl}" /> ({elementHeightH} mm):</span>
                     <strong className="font-mono text-slate-900">{formatDeZahl(calcResults.fctmFl, 2)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
@@ -1236,7 +1238,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-slate-900">{formatDeZahl(calcResults.Gcm, 0)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100 bg-indigo-50/60 px-1 rounded">
-                    <span className="text-indigo-950 font-bold">Eff. Kriechmodul <InlineMath math="E_{c,\text{eff}}" />:</span>
+                    <span className="text-indigo-950 font-bold">Eff. Kriechmodul <InlineMath math="E_{c,\\text{eff}}" />:</span>
                     <strong className="font-mono text-indigo-900 font-bold">{formatDeZahl(calcResults.EcEff, 0)} MPa</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
@@ -1285,7 +1287,7 @@ export default function Betonkennwerte() {
                     <strong className="font-mono text-amber-900 font-bold">{formatDeZahl(calcResults.phiFinal, 2)}</strong>
                   </div>
                   <div className="flex justify-between py-0.5 border-b border-slate-100">
-                    <span className="text-slate-600">Verkürzung ({formatDeWert(elementLengthL)} m gesamt):</span>
+                    <span className="text-slate-600">Verkürzung ({elementLengthL} m gesamt):</span>
                     <strong className="font-mono text-slate-900">ΔL = -{formatDeZahl(calcResults.deltaLShrinkMm + calcResults.deltaLCreepMm, 2)} mm</strong>
                   </div>
                 </div>
@@ -1322,18 +1324,6 @@ export default function Betonkennwerte() {
             ]}
           />
 
-          <FormulaDerivationBox
-            title="Anwendungsbeispiel: Kennwerte für C30/37 aus f_ck"
-            zielGleichung="f_{cd} = \alpha_{cc} \frac{f_{ck}}{\gamma_c}, \quad f_{ctm} = 0{,}30\, f_{ck}^{2/3}, \quad E_{cm} = 22\,(f_{cm}/10)^{0{,}3}"
-            normQuelle="DIN EN 1992-1-1 mit NA, Tab. 3.1 und Abschn. 3.1.6 (α_cc = 0,85; γ_c = 1,5)"
-            schritte={[
-              { titel: '1. Bemessungswert der Druckfestigkeit', formel: 'f_{cd} = 0{,}85 \\cdot \\frac{30}{1{,}5} = 17{,}0\\,\\text{N/mm}^2', erklaerung: 'In Deutschland α_cc = 0,85.' },
-              { titel: '2. Mittlere Zugfestigkeit', formel: 'f_{ctm} = 0{,}30 \\cdot 30^{2/3} = 0{,}30 \\cdot 9{,}65 = 2{,}9\\,\\text{N/mm}^2', erklaerung: 'Gilt bis C50/60.' },
-              { titel: '3. Elastizitätsmodul', formel: 'E_{cm} = 22 \\cdot (38/10)^{0{,}3} = 22 \\cdot 1{,}49 = 32{,}8\\,\\text{GPa}', erklaerung: 'f_cm = f_ck + 8 = 38 N/mm²; Tab. 3.1 rundet auf 33 GPa (Quarzit).' },
-            ]}
-            ergebnisHinweis="f_cd = 17,0 N/mm², f_ctm = 2,9 N/mm², E_cm ≈ 33 GPa."
-          />
-
         </div>
       )}
 
@@ -1365,7 +1355,7 @@ export default function Betonkennwerte() {
                   <tr className="bg-slate-100 text-slate-700 border-b border-slate-300">
                     <th className="py-2.5 px-3 font-bold">Klasse</th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ck}" /> [MPa]</th>
-                    <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ck,\text{cube}}" /></th>
+                    <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ck,\\text{cube}}" /></th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{cm}" /></th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{cd}" /> (DE)</th>
                     <th className="py-2.5 px-3 font-bold text-right"><InlineMath math="f_{ctm}" /></th>
@@ -1404,13 +1394,13 @@ export default function Betonkennwerte() {
                             </span>
                           )}
                         </td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-800">{formatDeWert(c.fck)}</td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeWert(c.fckCube)}</td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-800">{formatDeWert(c.fcm)}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-800">{c.fck}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-600">{c.fckCube}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-800">{c.fcm}</td>
                         <td className="py-2 px-3 font-mono text-right text-emerald-800 font-bold">{formatDeZahl(fcdVal, 1)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-800">{formatDeZahl(c.fctm, 1)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.fctk005, 1)}</td>
-                        <td className="py-2 px-3 font-mono text-right text-slate-900 font-bold">{formatDeWert(c.Ecm)}</td>
+                        <td className="py-2 px-3 font-mono text-right text-slate-900 font-bold">{c.Ecm}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.epsC1, 2)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.epsCu1, 1)}</td>
                         <td className="py-2 px-3 font-mono text-right text-slate-600">{formatDeZahl(c.epsC2, 2)}</td>
@@ -1472,7 +1462,7 @@ export default function Betonkennwerte() {
                   Für die Querschnittsbemessung im Grenzzustand der Tragfähigkeit (GZT) stellt EC2 das <strong>Parabel-Rechteck-Diagramm</strong> bereit (Gl. 3.17 – 3.20):
                 </p>
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 text-center my-2 overflow-x-auto">
-                  <BlockMath math="\sigma_c = \begin{cases} f_{cd} \cdot \left[ 1 - \left(1 - \frac{\varepsilon_c}{\varepsilon_{c2}}\right)^n \right] & \text{für } 0 \le \varepsilon_c \le \varepsilon_{c2} \ f_{cd} & \text{für } \varepsilon_{c2} \le \varepsilon_c \le \varepsilon_{cu2} \end{cases}" />
+                  <BlockMath math="\sigma_c = \begin{cases} f_{cd} \cdot \left[ 1 - \left(1 - \frac{\varepsilon_c}{\varepsilon_{c2}}\right)^n \right] & \text{für } 0 \le \varepsilon_c \le \varepsilon_{c2} \\ f_{cd} & \text{für } \varepsilon_{c2} \le \varepsilon_c \le \varepsilon_{cu2} \end{cases}" />
                 </div>
                 <div className="text-xs text-slate-700 mt-2">
                   Für Normalbeton gilt: <InlineMath math="\varepsilon_{c2} = 2{,}0\,\text{‰}" />, <InlineMath math="\varepsilon_{cu2} = 3{,}5\,\text{‰}" />, <InlineMath math="n = 2{,}0" /> (reine quadratische Parabel).
@@ -1546,10 +1536,10 @@ export default function Betonkennwerte() {
                     Langzeitverformungen von Decken und Trägern werden durch das Kriechen um den Faktor <InlineMath math="(1 + \varphi)" /> vergrößert. Die Berechnung erfolgt über den effektiven Kriechmodul:
                   </p>
                   <div className="my-2 p-2 bg-white rounded border border-slate-200 text-center font-mono">
-                    <InlineMath math="E_{c,\text{eff}} = \frac{E_{cm}}{1 + \varphi(t, t_0)}" />
+                    <InlineMath math="E_{c,\\text{eff}} = \frac{E_{cm}}{1 + \varphi(t, t_0)}" />
                   </div>
                   <p className="text-[11px] text-slate-500">
-                    Bei Schwindzwang: <InlineMath math="E_{c,\text{eff,Zwang}} = \frac{E_{cm}}{1 + 0{,}8 \cdot \varphi}" />
+                    Bei Schwindzwang: <InlineMath math="E_{c,\\text{eff,Zwang}} = \frac{E_{cm}}{1 + 0{,}8 \cdot \varphi}" />
                   </p>
                 </div>
                 <span className="text-[10px] text-slate-500 block pt-2 border-t border-slate-200">
@@ -1564,7 +1554,7 @@ export default function Betonkennwerte() {
                     Zur Begrenzung der Rissbreite infolge abfließender Hydratationswärme oder Schwindzwang muss die Mindestbewehrung die Zugkraft bei Erstrissbildung aufnehmen:
                   </p>
                   <div className="my-2 p-2 bg-white rounded border border-slate-200 text-center font-mono">
-                    <InlineMath math="A_{s,\text{min}} \cdot \sigma_s = k_c \cdot k \cdot f_{ct,\text{eff}} \cdot A_{ct}" />
+                    <InlineMath math="A_{s,\\text{min}} \cdot \sigma_s = k_c \cdot k \cdot f_{ct,\\text{eff}} \cdot A_{ct}" />
                   </div>
                 </div>
                 <span className="text-[10px] text-slate-500 block pt-2 border-t border-slate-200">
@@ -1576,10 +1566,10 @@ export default function Betonkennwerte() {
                 <div>
                   <strong className="text-slate-900 font-bold block mb-1 text-sm">3. Bauwerksdiagnose nach DIN EN 13791</strong>
                   <p className="text-slate-600 leading-relaxed">
-                    Die In-situ-Druckfestigkeit <InlineMath math="f_{ck,\text{is}}" /> aus Bohrkernen ist bauartbedingt ca. 15 % geringer als die Standard-Zylinderfestigkeit aus dem Labor (Probekörperlagerung unter Wasser):
+                    Die In-situ-Druckfestigkeit <InlineMath math="f_{ck,\\text{is}}" /> aus Bohrkernen ist bauartbedingt ca. 15 % geringer als die Standard-Zylinderfestigkeit aus dem Labor (Probekörperlagerung unter Wasser):
                   </p>
                   <div className="my-2 p-2 bg-white rounded border border-slate-200 text-center font-mono">
-                    <InlineMath math="f_{ck,\text{is}} = 0{,}85 \cdot f_{ck}" />
+                    <InlineMath math="f_{ck,\\text{is}} = 0{,}85 \cdot f_{ck}" />
                   </div>
                 </div>
                 <span className="text-[10px] text-slate-500 block pt-2 border-t border-slate-200">
@@ -1690,7 +1680,7 @@ export default function Betonkennwerte() {
                 return (
                   <div key={qIdx} className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-3">
                     <h4 className="font-bold text-xs sm:text-sm text-slate-900 leading-snug">
-                      Frage {formatDeWert(qIdx + 1)}: {item.q}
+                      Frage {qIdx + 1}: {item.q}
                     </h4>
 
                     <div className="grid grid-cols-1 gap-2">
@@ -1757,9 +1747,12 @@ export default function Betonkennwerte() {
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau nach DIN 1045-1 und EN 1992-1-1. 2. Aufl., Berlin: Springer 2010',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung. 37. Aufl., Springer Vieweg 2024',
           'DAfStb-Heft 525: Erläuterungen zu DIN 1045-1 (Deutscher Ausschuss für Stahlbeton)',
           'FIB Model Code for Concrete Structures 2010 (fib Bulletin 65/66)'
+        ]}
+        weblinks={[
+          { title: 'InformationsZentrum Beton (IZB) – Technische Tabellen', url: 'https://www.beton.org/' }
         ]}
         formeln={
           activeTab === 'rechner' || activeTab === 'zeit_theorie'

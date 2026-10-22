@@ -1,26 +1,29 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
-  GraduationCap, CheckCircle2, XCircle, AlertTriangle, 
+  GraduationCap, HelpCircle, CheckCircle2, XCircle, AlertTriangle, 
   ArrowRight, ArrowLeft, RotateCcw, BookOpen, Layers, Award, 
   Sparkles, Filter, ChevronRight, BarChart3, RefreshCw, Bookmark, 
-  BookmarkCheck, ExternalLink, Compass, Brain,
-  ChevronDown, ChevronUp, Info, FileText,
+  BookmarkCheck, ExternalLink, ShieldCheck, Flame, Compass, Brain,
+  ChevronDown, ChevronUp, Check, Info, FileText, CheckCircle,
   Download, Upload
 } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
 import { 
   QUIZ_QUESTIONS, 
-  QuizQuestion,
+  QUIZ_CATEGORIES, 
+  QuizQuestion, 
+  QuizCategory,
+  KnowledgeGapInfo,
   questionsToCsv,
   parseCsvToQuestions
 } from '@/src/data/quizData';
-import { mischeAntworten } from '@/src/utils/mischeAntworten';
 import { 
   saveQuizSessionResult, 
   getQuizSessionHistory, 
   getStoredKnowledgeGaps, 
   removeStoredKnowledgeGap,
+  clearStoredKnowledgeGaps,
   QuizGapItem,
   QuizSessionResult
 } from '@/src/utils/studyStorage';
@@ -188,7 +191,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
       pool = [...allQuestions].slice(0, 10);
     }
 
-    setActiveQuestions(pool.map(q => mischeAntworten(q)));
+    setActiveQuestions(pool);
     setCurrentIndex(0);
     setAnswers({});
     setBookmarked({});
@@ -639,7 +642,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               <label className="text-xs font-bold text-text-main uppercase tracking-wider block">
                 Spezifisches Fachmodul auswählen:
               </label>
-              <select aria-label="Spezifisches Fachmodul auswählen"
+              <select
                 value={selectedModuleId}
                 onChange={(e) => setSelectedModuleId(e.target.value)}
                 className="w-full p-3 bg-white border border-home-grau/30 rounded-xl text-sm font-semibold text-text-main focus:outline-none focus:border-shiraz"

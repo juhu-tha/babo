@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldAlert, Sun, Bug, Box, Mountain, Maximize, Layers, Activity, Zap, LucideIcon, Snowflake, Wind, Waves, FlaskConical, Hammer, AlertTriangle, BookOpen, ArrowRight, Check, AlertCircle } from 'lucide-react';
+import { ShieldAlert, Sun, Droplets, Bug, Box, Mountain, Maximize, Layers, Activity, Zap, LucideIcon, Snowflake, Wind, Waves, FlaskConical, Hammer, AlertTriangle, BookOpen, ArrowRight, Check, X, AlertCircle } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -864,7 +864,7 @@ function MetalDurabilitySimulator() {
           <div className="space-y-3.5">
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Luftreinheits-Klasse (ISO 12944)</span>
-              <select aria-label="Luftreinheits-Klasse (ISO 12944)"
+              <select
                 value={targetClass}
                 onChange={(e) => setTargetClass(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -935,7 +935,7 @@ function MetalDurabilitySimulator() {
           <div className="space-y-3">
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Großteil (z.B. Blech/Fassade)</span>
-              <select aria-label="Großteil (z.B. Blech/Fassade)"
+              <select
                 value={metalA}
                 onChange={(e) => setMetalA(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -950,7 +950,7 @@ function MetalDurabilitySimulator() {
 
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Verbindungsmittel (Schraube/Niet)</span>
-              <select aria-label="Verbindungsmittel (Schraube/Niet)"
+              <select
                 value={metalB}
                 onChange={(e) => setMetalB(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"
@@ -965,7 +965,7 @@ function MetalDurabilitySimulator() {
 
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1 uppercase tracking-wider">Feuchtigkeit / Umgebung</span>
-              <select aria-label="Feuchtigkeit / Umgebung"
+              <select
                 value={environment}
                 onChange={(e) => setEnvironment(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 border border-home-grau/30 rounded-lg text-slate-800"

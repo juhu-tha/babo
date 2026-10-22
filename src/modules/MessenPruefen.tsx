@@ -5,9 +5,11 @@ import {
   Target, 
   Calculator, 
   Layers, 
+  HelpCircle, 
   Info, 
   Settings, 
   CheckCircle2, 
+  FileText, 
   TrendingUp, 
   RefreshCw,
   Award,
@@ -759,7 +761,7 @@ export default function MessenPruefen() {
                 {/* Input 1: Raw values string */}
                 <div className="space-y-1.5 font-sans">
                   <label className="text-xs font-bold text-slate-700 block">Messwerte in MPa (durch Semikolon getrennt, Dezimalkomma):</label>
-                  <input aria-label="Messwerte in MPa (durch Semikolon getrennt, Dezimalkomma)"
+                  <input
                     type="text"
                     value={measurements}
                     onChange={(e) => setMeasurements(e.target.value)}
@@ -1103,7 +1105,7 @@ export default function MessenPruefen() {
                       <FormulaText text="U_{\text{lab}}" /> (k=2):
                     </label>
                     <div className="flex items-center gap-1">
-                      <input aria-label="(k=2)"
+                      <input
                         type="number"
                         min="0.2"
                         max="5.0"
@@ -1122,7 +1124,7 @@ export default function MessenPruefen() {
                       <FormulaText text="U_{\text{ref}}" /> (k=2):
                     </label>
                     <div className="flex items-center gap-1">
-                      <input aria-label="(k=2)"
+                      <input
                         type="number"
                         min="0.1"
                         max="3.0"
@@ -1428,7 +1430,7 @@ export default function MessenPruefen() {
           zielGleichung="z = \frac{x_{lab} - X}{\sigma_{pt}},\qquad E_n = \frac{x_{lab} - X}{\sqrt{U_{lab}^2 + U_{ref}^2}}"
           schritte={[
             { titel: 'Gegeben', erklaerung: 'Eigenes Ergebnis 46,0 MPa, zugewiesener Wert X = 50,0 MPa, σ_pt = 1,8 MPa, U_lab = 1,4 MPa, U_ref = 0,6 MPa (jeweils k = 2).', formel: 'x_{lab} - X = -4{,}0\\,\\text{MPa}' },
-            { titel: 'z-Score', erklaerung: 'Nach DIN ISO 13528: |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.', formel: 'z = \\frac{-4{,}0}{1{,}8} = -2{,}22 \\;\\Rightarrow\\; \\text{Warnsignal}' },
+            { titel: 'z-Score', erklaerung: 'Nach DIN ISO 13528: |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.', formel: 'z = \\frac{-4{,}0}{1{,}8} = -2{,}22 \;\\Rightarrow\; \\text{Warnsignal}' },
             { titel: 'En-Zahl', erklaerung: 'Bezieht die angegebenen Messunsicherheiten ein; |En| ≤ 1 ist zufriedenstellend.', formel: 'E_n = \\frac{-4{,}0}{\\sqrt{1{,}4^2 + 0{,}6^2}} = \\frac{-4{,}0}{1{,}52} = -2{,}63' }
           ]}
           ergebnisHinweis="Beide Kennzahlen zeigen eine zu niedrige Festigkeit. |En| > 1 bedeutet zusätzlich, dass die angegebene Laborunsicherheit die Abweichung nicht erklärt – Kalibrierung der Presse und Probenvorbereitung prüfen."
