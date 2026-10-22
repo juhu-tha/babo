@@ -7811,5 +7811,155 @@
       "targetModuleLabel": "Entwicklungen"
     },
     "verified": false
+  },
+  {
+    "id": "q_qsi_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Konformität stetige Herstellung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206, 8.2.1; DIN 1045-2",
+    "question": "Stetige Herstellung C30/37 (Würfel), 15 Ergebnisse, s = 2,2 N/mm². Welcher Mittelwert ist mindestens erforderlich?",
+    "options": [
+      "37,0 N/mm²",
+      "40,3 N/mm²",
+      "41,4 N/mm²",
+      "41,0 N/mm²"
+    ],
+    "correctIdx": 2,
+    "explanation": "σ = max(2,2; 3,0) = 3,0 N/mm²; f_cm ≥ 37 + 1,48 · 3,0 = 41,4 N/mm².",
+    "gapAnalysis": {
+      "topic": "Konformität stetige Herstellung",
+      "misconception": "Die gemessene Standardabweichung dürfe auch unter 3 N/mm² angesetzt werden.",
+      "coreRule": "Rechenwert σ ≥ 3 N/mm²; f_cm ≥ f_ck + 1,48·σ.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität stetige Herstellung“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Konformität Erstherstellung",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 206, 8.2.1",
+    "question": "Erstherstellung C25/30 (Zylinder): Welches Kriterienpaar gilt für 3 Ergebnisse?",
+    "options": [
+      "f_cm ≥ 25 und f_ci ≥ 25",
+      "f_cm ≥ 29 und f_ci ≥ 21",
+      "f_cm ≥ 30 und f_ci ≥ 26",
+      "f_cm ≥ 27 und f_ci ≥ 23"
+    ],
+    "correctIdx": 1,
+    "explanation": "Erstherstellung: f_cm ≥ f_ck + 4 = 29 N/mm² und jedes Einzelergebnis f_ci ≥ f_ck − 4 = 21 N/mm².",
+    "gapAnalysis": {
+      "topic": "Konformität Erstherstellung",
+      "misconception": "Jedes Einzelergebnis müsse f_ck erreichen.",
+      "coreRule": "Erstherstellung: f_cm ≥ f_ck + 4; f_ci ≥ f_ck − 4.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität Erstherstellung“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Identitätsprüfung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206, Anhang B",
+    "question": "Identitätsprüfung mit 3 Probekörpern, C30/37 (Würfel). Welche Mittelwertanforderung gilt?",
+    "options": [
+      "f_cm ≥ 37",
+      "f_cm ≥ 38",
+      "f_cm ≥ 39",
+      "f_cm ≥ 41"
+    ],
+    "correctIdx": 1,
+    "explanation": "Für n = 2 bis 4 gilt f_cm ≥ f_ck + 1 = 38 N/mm², zusätzlich f_ci ≥ 33 N/mm².",
+    "gapAnalysis": {
+      "topic": "Identitätsprüfung",
+      "misconception": "Für die Identitätsprüfung gälten dieselben Kriterien wie für die Erstherstellung.",
+      "coreRule": "Identitätsprüfung: n = 2–4 → f_ck + 1; n = 5–6 → f_ck + 2.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Identitätsprüfung“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Betonbauqualitätsklassen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-1000:2023-08",
+    "question": "Welche Betonbauqualitätsklassen kennt DIN 1045-1000?",
+    "options": [
+      "BBQ-1 bis BBQ-4",
+      "BBQ-N, BBQ-E und BBQ-S",
+      "BBQ-N, BBQ-E, BBQ-S und BBQ-U",
+      "ÜK 1 bis ÜK 3"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN 1045-1000 definiert drei Klassen: N (normal), E (erhöht), S (speziell). ÜK 1–3 sind die Überwachungsklassen nach DIN 1045-3.",
+    "gapAnalysis": {
+      "topic": "Betonbauqualitätsklassen",
+      "misconception": "BBQ- und Überwachungsklassen seien dasselbe.",
+      "coreRule": "BBQ-N/E/S nach DIN 1045-1000; ÜK 1–3 nach DIN 1045-3.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonbauqualitätsklassen“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Lieferscheinkontrolle",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-2",
+    "question": "Bis wann muss ein Fahrmischer ohne besondere Vereinbarung entladen sein?",
+    "options": [
+      "60 min nach Abfahrt im Werk",
+      "90 min nach der ersten Wasserzugabe",
+      "90 min nach Ankunft auf der Baustelle",
+      "120 min nach Mischbeginn"
+    ],
+    "correctIdx": 1,
+    "explanation": "Maßgebend ist die erste Wasserzugabe; das Entladen soll spätestens nach 90 min abgeschlossen sein (Verlängerung nur mit Verzögerer und Vereinbarung).",
+    "gapAnalysis": {
+      "topic": "Lieferscheinkontrolle",
+      "misconception": "Die Frist beginne erst mit der Ankunft auf der Baustelle.",
+      "coreRule": "Entladen spätestens 90 min nach der ersten Wasserzugabe.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lieferscheinkontrolle“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
   }
 ]

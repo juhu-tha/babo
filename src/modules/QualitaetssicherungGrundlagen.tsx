@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ClipboardCheck, FileText, Beaker, Truck, ShieldCheck, UserCheck, Eye } from 'lucide-react';
 
 export default function QualitaetssicherungGrundlagen() {
@@ -29,7 +28,7 @@ export default function QualitaetssicherungGrundlagen() {
                 <li>Stimmen die <strong>Expositionsklassen</strong> auf dem Lieferschein mit den Vorgaben des Tragwerksplaners überein?</li>
                 <li>Ist die korrekte <strong>Druckfestigkeitsklasse</strong> geliefert worden (z.B. C25/30)?</li>
                 <li>Entsprechen <strong>Konsistenzklasse</strong> (z.B. F3, F4) und <strong>Größtkorn</strong> (z.B. 16 mm, 32 mm) der Bestellung?</li>
-                <li>Liegt die Ankunftszeit im zulässigen Rahmen (oft max. 90 Minuten nach dem Mischen im Werk)?</li>
+                <li>Kann der Fahrmischer spätestens <strong>90 Minuten nach der ersten Wasserzugabe</strong> entladen werden (DIN 1045-2; abweichende Vereinbarung nur mit Verzögerer)?</li>
               </ul>
             </div>
           </section>
@@ -70,7 +69,7 @@ export default function QualitaetssicherungGrundlagen() {
             
             <div className="bg-emerald-50/40 p-5 rounded-xl border border-emerald-500/20 text-sm text-emerald-950 mb-6 leading-relaxed">
               <p className="mb-2">
-                Während die <strong>Eigenüberwachung (Selbstkontrolle)</strong> kontinuierlich bei jedem Betoniergang durch das ausführende Bauunternehmen (Polier, Bauleiter) durchgeführt wird, fordert der deutsche Gesetzgeber ab der <strong>Überwachungsklasse ÜK 2 und ÜK 3</strong> nach DIN 1045-3 zwingend eine unabhängige <strong>Fremdüberwachung</strong>.
+                Während die <strong>Eigenüberwachung (Selbstkontrolle)</strong> kontinuierlich bei jedem Betoniergang durch das ausführende Bauunternehmen (Polier, Bauleiter) durchgeführt wird, fordert DIN 1045-3 (bauaufsichtlich eingeführt) für die <strong>Überwachungsklassen ÜK 2 und ÜK 3</strong> zusätzlich eine unabhängige <strong>Fremdüberwachung</strong>.
               </p>
               <p className="text-xs text-opacity-90">
                 Diese anerkannte Fremdüberwachungsstelle (z. B. akkreditierte Prüfinstitute, Güteschutzgemeinschaften oder der BÜV) entlastet Bauherren und Behörden.
@@ -126,40 +125,7 @@ export default function QualitaetssicherungGrundlagen() {
           </section>
         </div>
       </div>
-      
-      <ModuleFooter weblinks={[{ title: "Beton.wiki: Qualitätskontrolle", url: "https://beton.wiki/index.php?title=Qualit%C3%A4tskontrolle" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Eigenüberwachung", url: "https://beton.wiki/index.php?title=Eigen%C3%BCberwachung" }, { title: "Beton.wiki: Güteüberwachung", url: "https://beton.wiki/index.php?title=G%C3%BCte%C3%BCberwachung" }]} 
-        wikipedia={[
-          { title: "Qualitätssicherung im Bauwesen", url: "https://de.wikipedia.org/wiki/Qualit%C3%A4tssicherung" },
-          { title: "Konformitätsbewertung", url: "https://de.wikipedia.org/wiki/Konformit%C3%A4tsbewertung" }
-        ]} 
-        literatur={[
-          'Lohmeyer, G.; Ebeling, K. (2019): Weiße Wannen - Praktische Hinweise und Qualitätssicherung (11. Auflage, Werner Verlag)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'VDZ: Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)'
-        ]} 
-        regelwerke={[
-          { title: "DIN EN 13670 (Ausführung von Tragwerken aus Beton)" },
-          { title: "DIN 1045-3 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 3: Bauausführung)" },
-          { title: "DIN EN 206 / DIN 1045-2 (Konformitätskriterien für Druckfestigkeit)" }
-        ]} 
-        formeln={[
-          {
-            formel: 'f_{cm} \\ge f_{ck} + 4 \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4 \\quad [\\text{MPa}]',
-            erklaerung: 'Kriterien 1 und 2 nach DIN EN 206 (Tabelle 14) bei Erstherstellung (Kriterien 1 und 2 für n = 3): Mittelwert fcm muss die charakteristische Festigkeit um 4 MPa übertreffen, kein Einzelwert darf unter fck - 4 MPa liegen.',
-            quelle: 'DIN EN 206 Abs. 8.2.1.2'
-          },
-          {
-            formel: 'f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4 \\quad [\\text{MPa}]',
-            erklaerung: 'Konformitätskriterien nach DIN EN 206 (Tabelle 15) für stetige Herstellung (n = 15): Mittelwert fcm muss fck + 1.48·sigma erreichen, kein Einzelwert darf unter fck - 4 MPa liegen.',
-            quelle: 'DIN EN 206 Abs. 8.2.1.3'
-          },
-          {
-            formel: '\\sigma = \\sqrt{\\frac{\\sum_{i=1}^n (f_{ci} - f_{cm})^2}{n - 1}} \\le \\sigma_{\\text{max}} = 5{,}0\\,\\text{MPa}',
-            erklaerung: 'Standardabweichung der Druckfestigkeit in der stetigen Produktion (Eigenüberwachung) als Maß für die Misch- und Dosierpräzision des Transportbetonwerks.',
-            quelle: 'DIN EN 206 Abs. 8.2.1'
-          }
-        ]} 
-      />
+
     </div>
   );
 }

@@ -8,12 +8,11 @@ import {
   HelpCircle,
   FileCheck
 } from 'lucide-react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface BauteilTemplate {
   id: string;
   name: string;
-  bbqClass: 'BBQ-N' | 'BBQ-E' | 'BBQ-S' | 'BBQ-U';
+  bbqClass: 'BBQ-N' | 'BBQ-E' | 'BBQ-S';
   ueberwachungsklasse: 'ÜK 1' | 'ÜK 2' | 'ÜK 3';
   description: string;
   dangerLevel: string;
@@ -63,7 +62,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
       planning: {
         action: 'Festlegung von BBQ-E im Standsicherheitsnachweis. Vorgabe der Expositionsklassen (XC2, XF1, WF) sowie des rechnerischen Grenzwerts der Rissbreite w_max ≤ 0,2 mm zur Erfüllung der Dichtigkeit.',
         responsible: 'Tragwerksplaner (Statiker)',
-        normDetail: 'Nach DIN 1045-1000 muss BBQ-E bei WU-Bauteilen von vornherein im Entwurfsprüfbogen ausgewiesen werden.',
+        normDetail: 'Die BBQ-Klasse wird nach DIN 1045-1000 in der Planung festgelegt und an Betonhersteller und Bauausführende weitergegeben.',
         tip: 'Vermeiden Sie widersprüchliche Angaben im LV bezüglich Festigkeitsklassen und w/z-Wert-Limits.'
       },
       concept: {
@@ -103,7 +102,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
       planning: {
         action: 'Detailplanung mit exaktem Fugen- und Ankerbild der Schalhaut. Ausschluss von saugenden Schalungsmaterialien zur Unterbindung von unregelmäßigen Verfärbungen.',
         responsible: 'Tragwerksplaner & Architekt',
-        normDetail: 'DBV-Merkblatt "Sichtbeton" fordert BBQ-S bei der Klasse SB4, um Prozessfehler an den Einbauschnittstellen auszuschließen.',
+        normDetail: 'Zuordnung SB4 → BBQ-S ist eine Lehrannahme: Das Merkblatt Sichtbeton (2015) ist älter als das BBQ-Konzept (2023).',
         tip: 'Schreiben Sie eine Probe-Betonierfläche zur Genehmigung durch den Bauherrn verbindlich im LV vor.'
       },
       concept: {
@@ -143,13 +142,13 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
       planning: {
         action: 'Exakte Berechnung der Vorspannkräfte und Kriechbeiwerte. Festlegung von statisch hochsensibler Rissbegrenzung und dichter Bewehrungsführung zur Aufnahme der Spaltzugkräfte.',
         responsible: 'Fachingenieur für Tragwerksplanung',
-        normDetail: 'Eurocode 2 (DIN EN 1992-1-1) i. V. m. DIN 1045-1000 regelt Spannbetonkonstruktionen als bauordnungsrechtlich überwachungsbedürftige Bauteile (ÜK 3).',
+        normDetail: 'ÜK 3 folgt hier aus der Festigkeitsklasse C55/67 (DIN 1045-3); die BBQ-Einstufung als BBQ-S ist ein Lehrbeispiel.',
         tip: 'Zeichnen Sie ein dreidimensionales CAD-Modell für den Knotenpunkt über dem Auflager, um Kollisionen der Spannglieder aufzudecken.'
       },
       concept: {
         action: 'Sonderrezeptur für hochfesten Beton mit Mikrosilica und Hochleistungs-Fließmitteln (PCE) zur Realisierung extrem dichter Zementsteinstrukturen. E-Modul-Nachweis erforderlich.',
         responsible: 'Zentrallabor des Herstellers',
-        normDetail: 'Prüfung der Gesteinsfestigkeit und der Elastizitätseigenschaften gemäß EN 12390-13 vor Erstlieferung.',
+        normDetail: 'Prüfung des Elastizitätsmoduls des Betons nach DIN EN 12390-13 vor Erstlieferung (Lehrannahme).',
         tip: 'Die Verwendung von lokalem Granit oder Quarzit anstelle von weicherem Kalkstein maximiert den Elastizitätsmodul des Betons.'
       },
       kooperation: {
@@ -161,7 +160,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
       execution: {
         action: 'Überwachung aller Pressenwege und Spannkräfte während des hydraulischen Spannens. Lückenlose Führung des Spannprotokolls. ÜK3 Selbstüberwachung vor Ort.',
         responsible: 'Zertifizierter Spann-Techniker',
-        normDetail: 'Spannarbeiten unterliegen der bauaufsichtlichen Zulassung der jeweiligen Spannsysteme.',
+        normDetail: 'Spannverfahren benötigen eine allgemeine bauaufsichtliche Zulassung bzw. eine Europäische Technische Bewertung (ETA).',
         tip: 'Kalibrieren Sie die hydraulischen Manometer der Spannpressen unmittelbar vor Baustelleneinsatz.'
       },
       curing: {
@@ -175,16 +174,16 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
   {
     id: 'garagen_fundament',
     name: 'Sauberkeitsschicht / Fundamentstreifen',
-    bbqClass: 'BBQ-U',
+    bbqClass: 'BBQ-N',
     ueberwachungsklasse: 'ÜK 1',
     description: 'Unbewehrter Fundamentstreifen für eine einfache Garage oder untergeordnete Sauberkeitsschichten im Erdreich.',
     dangerLevel: 'Sehr gering (Geringfügige Belastungen)',
     phases: {
       planning: {
-        action: 'Festlegung von BBQ-U. Mindestbetonfestigkeit C12/15 der Expositionsklasse X0. Reine Flachgründung ohne anspruchsvolle Standsicherheitsvorgaben.',
+        action: 'Festlegung von BBQ-N. Mindestbetonfestigkeit C12/15 der Expositionsklasse X0. Reine Flachgründung ohne anspruchsvolle Standsicherheitsvorgaben.',
         responsible: 'Entwurfsverfasser / Bauingenieur',
-        normDetail: 'Nach DIN 1045-1000 für statisch nicht relevante oder untergeordnete Bauteile empfohlen.',
-        tip: 'Nutzen Sie die BBQ-U Klasse, um die administrative Dokumentation auf der Baustelle wirtschaftlich zu entlasten.'
+        normDetail: 'BBQ-N ist die Regelklasse nach DIN 1045-1000; die Einstufung trifft der Planer im Einzelfall (Lehrbeispiel).',
+        tip: 'Für einfache Bauteile genügt in der Regel BBQ-N mit üblicher Eigenüberwachung.'
       },
       concept: {
         action: 'Lieferung einer normkonformen Standard-Rezeptur der Festigkeitsklasse C12/15 oder C20/25. Keine Sonderanforderungen bezüglich Hydratationswärme oder Chemiebestand.',
@@ -193,9 +192,9 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
         tip: 'Standardrezepturen des Typs "Sortenverzeichnis" sind hierfür am einfachsten und günstigsten bereitzustellen.'
       },
       kooperation: {
-        action: 'Kein separates formelles Abstimmungsgespräch gesetzlich gefordert. Einfacher bilateraler Telefonkontakt zur Disposition der Liefermenge und -zeit reicht aus.',
+        action: 'Kein gesondertes Kooperationsgespräch vorgesehen (Lehrannahme). Einfacher bilateraler Telefonkontakt zur Disposition der Liefermenge und -zeit reicht aus.',
         responsible: 'Bauleiter, Werkdisponent',
-        normDetail: 'DIN 1045-1000 befreit BBQ-U ausdrücklich von den rigiden Kooperationspflichten des modernen Modells.',
+        normDetail: 'Bei BBQ-N sind die Abstimmungspflichten geringer als bei BBQ-E/BBQ-S (Umfang nach DIN 1045-1000 – manuell prüfen).',
         tip: 'Klären Sie dennoch die Befahrbarkeit des Geländes durch die schweren LKW-Mischer im Voraus ab.'
       },
       execution: {
@@ -256,7 +255,7 @@ export default function Betonbauklassen() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-3">
           <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/25 hover:border-shiraz/20 transition-colors">
             <h3 className="font-bold text-base mb-2 text-text-main flex items-center justify-between">
               <span>BBQ-N (Normal)</span>
@@ -280,7 +279,7 @@ export default function Betonbauklassen() {
               Erhöhte Betonbauqualität. Greift bei Bauteilen mit gesteigerten Qualitäts-, Sicht-, oder Dichtigkeitsansprüchen (z.B. standardmäßiger WU-Beton).
             </p>
             <ul className="list-disc list-inside mt-3 text-[11px] text-text-main/70 space-y-1">
-              <li>Z.B. Sichtbetonklassen SB3, Standard-WU-Anbauten, Spannbeton</li>
+              <li>Z.B. Sichtbetonklasse SB3, WU-Bauteile (Lehrbeispiele)</li>
               <li>Erhöhte Dokumentations- und Qualitätssicherungspflicht</li>
             </ul>
           </div>
@@ -299,20 +298,8 @@ export default function Betonbauklassen() {
             </ul>
           </div>
           
-          <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/25 hover:border-shiraz/20 transition-colors">
-            <h3 className="font-bold text-base mb-2 text-text-main flex items-center justify-between">
-              <span>BBQ-U (Untergeordnet)</span>
-              <span className="text-[10px] font-bold text-slate-400 bg-slate-50 px-2 py-0.5 rounded">Gering</span>
-            </h3>
-            <p className="text-xs text-text-main/80 leading-relaxed">
-              Untergeordnete Betonbauqualität für Bauteile mit minimalen statischen und nahezu keinen dauerhaftigkeitsrelevanten Ansprüchen.
-            </p>
-            <ul className="list-disc list-inside mt-3 text-[11px] text-text-main/70 space-y-1">
-              <li>Z.B. Sauberkeitsschichten, unbewehrte Ausfüllungen</li>
-              <li>Sparsamer, reduzierter Eigenüberwachungsumfang</li>
-            </ul>
-          </div>
         </div>
+        <p className="text-[11px] text-text-main/60 mb-8">DIN 1045-1000:2023-08 kennt drei Klassen: BBQ-N, BBQ-E und BBQ-S. Die genannten Bauteilbeispiele sind Lehrbeispiele – die Einstufung trifft der Planer im Einzelfall.</p>
 
         {/* Detailed BBQ consequences & task profiles according to DIN 1045-1000 */}
         <section className="mt-4 mb-8 bg-white p-6 rounded-2xl border border-home-grau/25 shadow-3xs">
@@ -412,27 +399,6 @@ export default function Betonbauklassen() {
               </div>
             </div>
 
-            {/* BBQ-U underground */}
-            <div className="border-l-4 border-stone-300 pl-4 py-1">
-              <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-                <span className="bg-stone-50 text-stone-500 text-xs px-2 py-0.5 rounded-md font-mono">BBQ-U</span>
-                Untergeordnete Vereinfachung ohne Bürokratie
-              </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3 text-[11px] text-text-main/80">
-                <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-stone-500 text-[11px] mb-1">📐 Tragwerksplaner (Statik)</strong>
-                  Kein Aufwand. Keine Erwähnung im Entwurfsbogen erforderlich. Einfache Übernahme der Mindestfestigkeit C12/15 im Gründungsentwurf.
-                </div>
-                <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-stone-500 text-[11px] mb-1">🏭 Hersteller (Betonwerk)</strong>
-                  Lieferung von Standard-Rezepturen ohne jegliche Verpflichtung zur Logistik-Abstimmung oder thermischen Gutachten.
-                </div>
-                <div className="bg-stone-50 p-2.5 rounded border border-home-grau/10">
-                  <strong className="block text-stone-500 text-[11px] mb-1">🏗️ Bauunternehmen (Ausführung)</strong>
-                  Minimaler Dokumentationsaufwand. Einfaches Einbauen und grobe Sichtkontrolle der Standfestigkeit vor Ort.
-                </div>
-              </div>
-            </div>
 
           </div>
         </section>
@@ -641,47 +607,14 @@ export default function Betonbauklassen() {
             Die Betonbauqualitätsklassen (BBQ) stehen in enger Verbindung mit den Überwachungsklassen (ÜK) zur Baustellenselbst- und Fremdüberwachung nach DIN 1045-3:
           </p>
           <ul className="list-disc list-inside text-xs text-text-main/80 space-y-2 leading-relaxed">
-            <li><strong>ÜK 1 (Überwachungsklasse 1):</strong> Für Festigkeitsklassen ≤ C25/30 und grundlegende Expositionsklassen (z.B. X0, XC1, XC2). Die Überwachung erfolgt rein eigenverantwortlich durch das Bauunternehmen.</li>
-            <li><strong>ÜK 2 (Überwachungsklasse 2):</strong> Ab C30/37 oder höhere Expositionsklassen (z.B. Feuchte WA, XD, XS, XF, XM). Erfordert zusätzlich zur werkseigenen Produktionskontrolle eine anerkannte externe Überwachungsstelle (Fremdüberwachung).</li>
-            <li><strong>ÜK 3 (Überwachungsklasse 3):</strong> Für hochfeste Betone (ab C55/67) oder komplexe Sonderverfahren. Nochmals verschärfte Fremdüberwachungsstruktur auf der Baustelle.</li>
+            <li><strong>ÜK 1:</strong> Festigkeitsklassen bis C25/30 ohne besondere Betoneigenschaften. Eigenüberwachung durch das Bauunternehmen.</li>
+            <li><strong>ÜK 2:</strong> C30/37 bis C50/60 sowie Betone mit besonderen Eigenschaften (z. B. WU-Beton, Unterwasserbeton). Zusätzlich Fremdüberwachung durch eine anerkannte Überwachungsstelle.</li>
+            <li><strong>ÜK 3:</strong> Ab C55/67 (hochfester Beton). Erweiterte Eigen- und Fremdüberwachung.</li>
           </ul>
+          <p className="text-[11px] text-text-main/60 mt-3">Vollständige Zuordnung: DIN 1045-3:2023-08, Überwachungsklassen – manuell prüfen.</p>
         </div>
       </div>
-    
-      <ModuleFooter 
-        weblinks={[
-          { title: "Beton.wiki: BetonBauQualität", url: "https://beton.wiki/index.php?title=BetonBauQualit%C3%A4t" }, 
-          { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, 
-          { title: "Beton.wiki: BBQ-Konzept", url: "https://beton.wiki/index.php?title=BBQ-Konzept" }
-        ]} 
-        wikipedia={[
-          { title: 'Betonbauqualität', url: 'https://de.wikipedia.org/wiki/Betonbau' },
-          { title: 'WU-Richtlinie', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' }
-        ]}
-        literatur={[
-          'DBV-Heft 43: Betonbauqualität (BBQ) – Kriterien und Einstufungshilfen (Deutscher Beton- und Bautechnik-Verein E.V.)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'DAfStb-Heft 600: Erläuterungen zu den Normen DIN EN 1992-1-1 und DIN 1045'
-        ]}
-        regelwerke={[
-          { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)' },
-          { title: 'DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN EN 13670 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)' },
-          { title: 'DIN EN 1992-1-1: Eurocode 2 (Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' }
-        ]}
-        formeln={[
-          {
-            formel: '\\text{BBQ} \\in \\{\\text{BBQ-N (Normal)},\\, \\text{BBQ-E (Erhöht)},\\, \\text{BBQ-S (Speziell)},\\, \\text{BBQ-U (Undefiniert)}\\}',
-            erklaerung: 'Klassifizierung der Betonbauqualität nach DIN 1045-1000 zur verbindlichen Festlegung von Kommunikations- und Prüfpflichten zwischen Planer, Transportbetonwerk und Bauausführung.',
-            quelle: 'DIN 1045-1000:2023-08'
-          },
-          {
-            formel: '\\text{ÜK} \\in \\{\\text{ÜK 1 (Eigenüberwachung)},\\, \\text{ÜK 2 (Fremdüberwachung)},\\, \\text{ÜK 3 (Verschärfte Fremdüberwachung)}\\}',
-            erklaerung: 'Baustellenüberwachungsklassen nach DIN 1045-3 in Abhängigkeit von Druckfestigkeit (ÜK 2 ab C30/37) und Expositionsbeanspruchung.',
-            quelle: 'DIN 1045-3'
-          }
-        ]}
-      />
+
     </div>
   );
 }

@@ -14,7 +14,6 @@ import {
   ClipboardCheck,
   BookOpen
 } from 'lucide-react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 interface ConcreteClass {
   name: string;
@@ -58,9 +57,9 @@ export default function Konformitaetskontrolle() {
 
   // QA Protocol Mock state 
   const [protocolMeta, setProtocolMeta] = useState({
-    project: 'Ersatzneubau Brücke B12, Pfeiler Achse 2',
-    contractor: 'Max Bögl Stiftung & Co. KG',
-    inspector: 'Dipl.-Ing. Sarah Müller (Güteschutz Beton)',
+    project: 'Beispielprojekt, Bauteil Stütze A1',
+    contractor: 'Musterbau GmbH',
+    inspector: 'N. N. (Überwachungsstelle)',
     date: '2026-06-10'
   });
 
@@ -230,7 +229,7 @@ export default function Konformitaetskontrolle() {
         meanPassed = mean >= requiredMean;
       }
       if (n > 6) {
-        limitMessage = `Dienstliche Notiz: Identitätsprüfungen werden vor Ort üblicherweise an kleinen Chargen (n = 1 bis n = 6) vorgenommen.`;
+        limitMessage = `Hinweis: Identitätsprüfungen werden vor Ort üblicherweise an kleinen Chargen (n = 1 bis n = 6) vorgenommen.`;
       }
     }
 
@@ -1105,40 +1104,6 @@ export default function Konformitaetskontrolle() {
         </div>
       </section>
 
-      <ModuleFooter 
-        weblinks={[
-          { title: 'Beton.wiki: Konformität', url: 'https://beton.wiki/index.php?title=Konformit%C3%A4t' },
-          { title: 'Zement-Merkblätter Übersicht', url: 'https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/' },
-          { title: 'Beton.wiki: Eigenüberwachung', url: 'https://beton.wiki/index.php?title=Eigen%C3%BCberwachung' }
-        ]} 
-        wikipedia={[
-          { title: 'Konformitätsbewertung', url: 'https://de.wikipedia.org/wiki/Konformit%C3%A4tsbewertung' },
-          { title: 'Qualitätssicherung', url: 'https://de.wikipedia.org/wiki/Qualit%C3%A4tssicherung' },
-          { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206:2021-06 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+206' },
-          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton - Teil 2: Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-          { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12390-3' }
-        ]}
-        literatur={[
-          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)'
-        ]}
-        formeln={[
-          {
-            formel: 'f_{cm} = \\frac{1}{n} \\sum_{i=1}^n f_{ci} \\ge f_{ck} + k_1 \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - k_2',
-            erklaerung: 'Allgemeines Konformitätskriterium nach DIN EN 206 Tabelle 14 (Erstprüfung: n=3, k1=4, k2=4 N/mm²) bzw. Tabelle 15 (Stetige Herstellung: n>=15, k1=1.48·s, k2=4 N/mm²).',
-            quelle: 'DIN EN 206'
-          },
-          {
-            formel: 's = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^n (f_{ci} - f_{cm})^2} \\quad (s \\ge 2{,}0\\,\\text{N/mm}^2)',
-            erklaerung: 'Empirische Standardabweichung der Prüfserie zur Beurteilung der Produktionshomogenität.',
-            quelle: 'DIN EN 206'
-          }
-        ]}
-      />
     </div>
   );
 }

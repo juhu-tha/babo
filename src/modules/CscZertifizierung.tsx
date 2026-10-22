@@ -1,6 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Leaf, Award, ShieldCheck, Factory, Flame, Star, Percent, BookOpen } from 'lucide-react';
 
 export default function CscZertifizierung() {
@@ -21,7 +20,7 @@ export default function CscZertifizierung() {
     (supplyChainScore * 0.30)
   );
 
-  // Criteria according to official CSC manuals
+  // Lehrannahme: Gewichtung und Schwellen vereinfacht – nicht aus dem CSC Technical Manual übernommen
   let achievedLevel = 'Keine Zertifizierung';
   let levelColor = 'bg-stone-100 text-stone-500 border-stone-200';
   let badgeColor = 'bg-stone-300';
@@ -54,10 +53,10 @@ export default function CscZertifizierung() {
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
           <p className="mb-3">
-            Das <strong>Concrete Sustainability Council (CSC)</strong> hat ein weltweit führendes, renommiertes Zertifizierungssystem für Beton, Zement und Gesteinskörnungen etabliert. Es bewertet lückenlos alle Dimensionen der CSR (Corporate Social Responsibility) entlang der gesamten Wertschöpfungskette.
+            Das <strong>Concrete Sustainability Council (CSC)</strong> hat ein internationales Zertifizierungssystem für Beton, Zement und Gesteinskörnungen etabliert. Es bewertet die Dimensionen der CSR (Corporate Social Responsibility) entlang der gesamten Wertschöpfungskette.
           </p>
           <p>
-            In modernen Ausschreibungen ist die CSC-Zertifizierung oft der Schlüssel, um die strengen Auflagen des <strong>Gebäude-Ökobilanzierungstargets (z.B. DGNB, LEED, BREEAM, QNG)</strong> einzuhalten und maximale Nachhaltigkeitspunkte zu sichern.
+            In modernen Ausschreibungen ist die CSC-Zertifizierung oft der Schlüssel, um Nachweise in Gebäudezertifizierungen (z. B. <strong>DGNB, BREEAM</strong>) zu erbringen.
           </p>
         </div>
 
@@ -67,10 +66,10 @@ export default function CscZertifizierung() {
               <Factory className="w-4 h-4 text-stone-600" /> Systemgrenzen: Wer wird zertifiziert?
             </h3>
             <ul className="list-disc pl-5 space-y-2 text-xs text-text-main/80 leading-normal">
-              <li><strong>Transportbetonwerke:</strong> Das eigentliche Endproduktbett am lokalen Einsatzort.</li>
-              <li><strong>Zementwerke / Bindemittelwerke:</strong> Extrem wichtig wegen des hohen thermophysikalischen CO₂-Fußabdrucks beim Klinkerbrand.</li>
+              <li><strong>Transportbetonwerke:</strong> Herstellung des Endprodukts nahe am Einsatzort.</li>
+              <li><strong>Zementwerke / Bindemittelwerke:</strong> Wichtig wegen der hohen CO₂-Emissionen beim Klinkerbrand.</li>
               <li><strong>Gesteinskörnungen (Aggregates):</strong> Kies-, Sand- und Gesteinschotterwerke bezüglich lokaler Biodiversität und Abbaurichtlinien.</li>
-              <li><strong>Wichtig:</strong> Zertifiziert wird immer die <strong>Produktionsstätte</strong> als Ganzes (inklusive Logistikradius), nicht das singuläre Bauteil selbst.</li>
+              <li><strong>Wichtig:</strong> Zertifiziert wird immer die <strong>Produktionsstätte</strong> als Ganzes, nicht das singuläre Bauteil selbst.</li>
             </ul>
           </section>
 
@@ -79,11 +78,11 @@ export default function CscZertifizierung() {
               <ShieldCheck className="w-4 h-4 text-stone-600" /> Die Fünf Bewertungskategorien
             </h3>
             <ul className="list-disc pl-5 space-y-2 text-xs text-text-main/80 leading-normal">
-              <li><strong>Management (Gewichtung 10%):</strong> Qualitätsmanagementsysteme, Compliance-Sicherheit, Ethikrichtlinie gegen Bestechung.</li>
-              <li><strong>Umwelt (Gewichtung 35%):</strong> CO₂-Minderungsziele, gezieltes Energie- und Wasserkreislauf-Management, Renaturierung von Abbauflächen.</li>
-              <li><strong>Soziales (Gewichtung 15%):</strong> Arbeitssicherheitsvorgaben (OHSAS), fairer Lohn, aktive Einbindung der Nachbarschaft am Produktionsstandort.</li>
-              <li><strong>Ökonomie (Gewichtung 10%):</strong> Korruptionsprävention, regionales Wirtschaften, finanzielle Zukunftssicherung.</li>
-              <li><strong>Lieferkette (Gewichtung 30%):</strong> Zertifizierung der Klinker-, Gips- und Zuschlagslieferwerke.</li>
+              <li><strong>Management (Gewichtung 10 % – Lehrannahme):</strong> Qualitätsmanagementsysteme, Compliance-Sicherheit, Ethikrichtlinie gegen Bestechung.</li>
+              <li><strong>Umwelt (Gewichtung 35 % – Lehrannahme):</strong> CO₂-Minderungsziele, gezieltes Energie- und Wasserkreislauf-Management, Renaturierung von Abbauflächen.</li>
+              <li><strong>Soziales (Gewichtung 15 % – Lehrannahme):</strong> Arbeitssicherheit (z. B. ISO 45001), fairer Lohn, aktive Einbindung der Nachbarschaft am Produktionsstandort.</li>
+              <li><strong>Ökonomie (Gewichtung 10 % – Lehrannahme):</strong> Korruptionsprävention, regionales Wirtschaften, finanzielle Zukunftssicherung.</li>
+              <li><strong>Lieferkette (Gewichtung 30 % – Lehrannahme):</strong> Zertifizierung der Klinker-, Gips- und Zuschlagslieferwerke.</li>
             </ul>
           </section>
         </div>
@@ -92,10 +91,10 @@ export default function CscZertifizierung() {
       {/* Interactive CSC Estimator & Score Calculator */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h3 className="text-xl font-bold text-text-main mb-2 flex items-center gap-2">
-          <Percent className="text-shiraz w-5 h-5" /> Interaktiver CSC-Stufen-Rechner (Schätzung)
+          <Percent className="text-shiraz w-5 h-5" /> CSC-Stufen-Rechner (Lehrmodell)
         </h3>
         <p className="text-xs text-text-main/60 mb-6 leading-relaxed">
-          Nutzen Sie diese interaktive Simulation, um nachzuvollziehen, wie die CSC-Kriterien gewichtet werden und welche Anforderungen an die Lieferkette (Supply Chain) gestellt werden, um höhere Zertifikate wie Gold oder Platin zu erreichen.
+          Nutzen Sie diese interaktive Simulation, um nachzuvollziehen, wie die CSC-Kriterien gewichtet werden und welche Anforderungen an die Lieferkette (Supply Chain) gestellt werden, um höhere Zertifikate wie Gold oder Platin zu erreichen. <strong>Gewichtung und Schwellen sind Lehrannahmen</strong>; maßgebend ist das CSC Technical Manual. Belegt sind die Stufen Bronze bis Platin und die Anteile der Credits: Betonwerk 60 %, Zementwerk 25 %, Gesteinskörnung 15 % (Baunetz Wissen).
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -109,7 +108,7 @@ export default function CscZertifizierung() {
             {/* slider 1 */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
-                <span>1. Management-Systeme (Gewichtung 10%)</span>
+                <span>1. Management-Systeme (Gewichtung 10 % – Lehrannahme)</span>
                 <span className="font-mono text-shiraz">{formatDeWert(managementScore)}%</span>
               </div>
               <input 
@@ -123,7 +122,7 @@ export default function CscZertifizierung() {
             {/* slider 2 */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
-                <span>2. Umwelt &amp; CO₂ (Gewichtung 35%)</span>
+                <span>2. Umwelt &amp; CO₂ (Gewichtung 35 % – Lehrannahme)</span>
                 <span className="font-mono text-shiraz">{formatDeWert(umweltScore)}%</span>
               </div>
               <input 
@@ -137,7 +136,7 @@ export default function CscZertifizierung() {
             {/* slider 3 */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
-                <span>3. Soziale Standards (Gewichtung 15%)</span>
+                <span>3. Soziale Standards (Gewichtung 15 % – Lehrannahme)</span>
                 <span className="font-mono text-shiraz">{formatDeWert(sozialesScore)}%</span>
               </div>
               <input 
@@ -151,7 +150,7 @@ export default function CscZertifizierung() {
             {/* slider 4 */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
-                <span>4. Regionale Ökonomie (Gewichtung 10%)</span>
+                <span>4. Regionale Ökonomie (Gewichtung 10 % – Lehrannahme)</span>
                 <span className="font-mono text-shiraz">{formatDeWert(oekonomieScore)}%</span>
               </div>
               <input 
@@ -165,7 +164,7 @@ export default function CscZertifizierung() {
             {/* slider 5 */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold text-text-main">
-                <span>5. Nachhaltige Lieferkette / Sourcing (Gewichtung 30%)</span>
+                <span>5. Nachhaltige Lieferkette / Sourcing (Gewichtung 30 % – Lehrannahme)</span>
                 <span className="font-mono text-shiraz">{formatDeWert(supplyChainScore)}%</span>
               </div>
               <input 
@@ -207,13 +206,13 @@ export default function CscZertifizierung() {
 
               {/* Graphical Medal Output */}
               <div className={`p-4 rounded-xl border-2 border-dashed flex flex-col items-center justify-center text-center ${levelColor}`}>
-                <Award size={36} className="text-shiraz mb-2 animate-bounce" />
+                <Award size={36} className="text-shiraz mb-2" />
                 <span className="text-[10px] uppercase font-bold tracking-widest text-text-main/40">Erreichtes CSC-Zertifikat</span>
                 <span className="text-sm font-extrabold mt-1">{achievedLevel}</span>
               </div>
 
               <div className="text-[10px] text-text-main/60 bg-white p-3 rounded-lg border border-home-grau/15 leading-relaxed">
-                ℹ️ <strong>System-Regeln:</strong><br />
+                ℹ️ <strong>Lehrannahme:</strong><br />
                 • Bronze ab 35% • Silber ab 50% (Lieferkette ≥ 40%)<br />
                 • Gold ab 60% (Lieferkette ≥ 50%) • Platin ab 80% (Lieferkette ≥ 60%)
               </div>
@@ -226,66 +225,26 @@ export default function CscZertifizierung() {
       {/* R-Modul & CO2-Modul Sonderzertifikate */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <section className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
-          <div>
-            <h3 className="text-lg font-bold text-text-main mb-3 flex items-center gap-2">
-              <Star className="text-shiraz w-5 h-5" /> Das CSC R-Modul (Recycling-Label)
-            </h3>
-            <p className="text-xs text-text-main/75 leading-relaxed mb-4">
-              Als Spezialergänzung hat das CSC ein <strong>Recycling-Modul (R-Modul)</strong> eingeführt. Es fördert 
-              die Kreislaufwirtschaft im Massivbau, indem es den lückenlosen stofflichen Rückfluss von Betonschutt bewertet:
-            </p>
-            <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/20 text-xs space-y-2">
-              <div className="flex justify-between border-b pb-1">
-                <span className="font-bold">Einteilungsstufe 1 (R1):</span>
-                <span className="font-mono">Mind. 10 Masse-% RC-Gesteinskörnung</span>
-              </div>
-              <div className="flex justify-between border-b pb-1">
-                <span className="font-bold">Einteilungsstufe 2 (R2):</span>
-                <span className="font-mono">Mind. 20 Masse-% RC-Gesteinskörnung</span>
-              </div>
-              <div className="flex justify-between border-b pb-1">
-                <span className="font-bold">Einteilungsstufe 3 (R3):</span>
-                <span className="font-mono">Mind. 30 Masse-% RC-Gesteinskörnung</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-bold">Einteilungsstufe 4 (R4):</span>
-                <span className="font-mono">Mind. 40 Masse-% RC-Gesteinskörnung</span>
-              </div>
-            </div>
-          </div>
-          <div className="text-[10px] text-text-main/60 bg-off-white p-2.5 rounded-lg border mt-4">
-            💡 <strong>Hinweis für Planer:</strong> Das R-Label stellt sicher, dass die RC-Körnung nachweislich qualitätsüberwacht ist und aus regionalen Aufbereitungsanlagen stammt (kurze Transportwege).
-          </div>
+        <section className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+          <h3 className="text-lg font-bold text-text-main mb-3 flex items-center gap-2">
+            <Star className="text-shiraz w-5 h-5" /> CSC R-Modul (Recyclingbeton)
+          </h3>
+          <ul className="list-disc pl-5 space-y-2 text-xs text-text-main/80 leading-relaxed">
+            <li>Eingeführt im Juni 2020 für Beton mit rezyklierter Gesteinskörnung.</li>
+            <li>Voraussetzung: RC-Gesteinskörnung <strong>ab 10 %</strong> (weitere Abstufungen manuell prüfen).</li>
+            <li>DGNB: Anrechnung im Kriterium ENV1.3, Qualitätsstufe 2.2 (zertifizierte Sekundärrohstoffe), Stand 2021.</li>
+          </ul>
         </section>
 
-        <section className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
-          <div>
-            <h3 className="text-lg font-bold text-text-main mb-3 flex items-center gap-2">
-              <Flame className="text-shiraz w-5 h-5" /> Das CSC CO₂-Modul (CO₂-Sonderlabel)
-            </h3>
-            <p className="text-xs text-text-main/75 leading-relaxed mb-4">
-              Zusätzlich zur normalen Werkszertifizierung bewertet das <strong>CO₂-Modul</strong> (oft durch Vergabe von CO₂-Sternen visualisiert) 
-              die konkrete Reduktion der Treibhausgasemissionen bei der Beton- und Zementherstellung:
-            </p>
-            <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/20 text-xs space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-shiraz/5 text-shiraz font-bold flex items-center justify-center text-[10px]">★</span>
-                <span><strong>1 Stern:</strong> Mindestens 30% Treibhausgaseinsparung gegenüber dem länderspezifischen Referenzwert.</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-shiraz/5 text-shiraz font-bold flex items-center justify-center text-[10px]">★★</span>
-                <span><strong>2 Sterne:</strong> Mindestens 40% CO₂-Einsparung durch Substitution von Klinkeranteilen (z.B. CEM III oder CEM IV).</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-shiraz/5 text-shiraz font-bold flex items-center justify-center text-[10px]">★★★</span>
-                <span><strong>3 Sterne:</strong> Mindestens 50% CO₂-Einsparung (Erreicht nur durch technologische High-End-Anlagen oder CCUS).</span>
-              </div>
-            </div>
-          </div>
-          <div className="text-[10px] text-text-main/60 bg-off-white p-2.5 rounded-lg border mt-4">
-            📝 <strong>QNG-Konformität:</strong> Die Sterne-Zertifizierung wird in Deutschland direkt für das Qualitätssiegel Nachhaltiges Gebäude (QNG) und KfW-Fördergelder herangezogen.
-          </div>
+        <section className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+          <h3 className="text-lg font-bold text-text-main mb-3 flex items-center gap-2">
+            <Flame className="text-shiraz w-5 h-5" /> CSC CO₂-Modul
+          </h3>
+          <ul className="list-disc pl-5 space-y-2 text-xs text-text-main/80 leading-relaxed">
+            <li>Vier Klassen: <strong>30 / 40 / 50 / 60 %</strong> weniger Treibhausgasemissionen (kg CO₂e je m³ Beton) gegenüber einem regionalen Referenzwert.</li>
+            <li>Voraussetzungen: Werk mindestens CSC Silber, mindestens 75 % CSC-zertifizierter Zement in der Lieferkette, Monitoring der Emissionen, dokumentierte WPK.</li>
+            <li>Anrechnung in QNG/KfW-Förderung: manuell prüfen.</li>
+          </ul>
         </section>
 
       </div>
@@ -293,79 +252,15 @@ export default function CscZertifizierung() {
       {/* Value in Green Building systems (DGNB, LEED, BREEAM) */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h3 className="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
-          <BookOpen className="text-shiraz w-5 h-5" /> Relevanz in Green-Building-Zertifikaten (DGNB, LEED, BREEAM)
+          <BookOpen className="text-shiraz w-5 h-5" /> Relevanz in Gebäudezertifizierungen
         </h3>
-        <p className="text-xs text-text-main/80 mb-5 leading-relaxed">
-          Das CSC-Zertifikat ist von den führenden nationalen und internationalen Zertifizierungsorganisationen offiziell anerkannt. 
-          Wenn Sie Beton aus CSC-zertifizierten Lieferketten beziehen, profitieren Sie direkt von erleichterten Nachweisführungen und zusätzlichen Bonuspunkten:
-        </p>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs border-collapse">
-            <thead>
-              <tr className="border-b border-home-grau/20 text-text-main/60">
-                <th className="py-2.5 font-bold uppercase tracking-wide">System</th>
-                <th className="py-2.5 font-bold uppercase tracking-wide">CSC Zertifikat Silber</th>
-                <th className="py-2.5 font-bold uppercase tracking-wide">CSC Zertifikat Gold / Platin</th>
-                <th className="py-2.5 font-bold uppercase tracking-wide">CSC R-Modul Option</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-home-grau/10 text-text-main/80">
-              <tr>
-                <td className="py-3 font-bold text-shiraz">DGNB (Deutschland)</td>
-                <td className="py-3">Anerkannt im Kriterium ENV1.1 % ENV1.2 als "Qualitätsstufe 1.2" (vereinfachter Herkunftsnachweis).</td>
-                <td className="py-3">Maximaler anerkannter Nachweis (Qualitätsstufe 1.3 / Premiumstufe). Führt zu Bestnoten im Ökobilanz-Score.</td>
-                <td className="py-3">Direkte Extrapunkte im Kreislaufwirtschafts-Zertifikat ("Zirkuläres Bauen").</td>
-              </tr>
-              <tr>
-                <td className="py-3 font-bold text-shiraz">LEED (International)</td>
-                <td className="py-3">Zählt im Standard "MR Credit: Sourcing of Raw Materials" als akkreditiertes Nachweissystem.</td>
-                <td className="py-3">Volle Punktzahl ("Exemplary Performance Option") durch lückenlose Herkunftstransparenz.</td>
-                <td className="py-3">Fördert den Erhalt des Credits "MR Credit: Construction and Demolition Waste Management".</td>
-              </tr>
-              <tr>
-                <td className="py-3 font-bold text-shiraz">BREEAM (UK / Int.)</td>
-                <td className="py-3">Zertifiziert nach "Tier 3" (Responsible Sourcing), was den Baustellennachweis entlastet.</td>
-                <td className="py-3">Zertifiziert nach "Tier 2" oder "Tier 1" - liefert den maximalen Multiplikationsfaktor für Materialcredits.</td>
-                <td className="py-3">Anrechenbar als Beitrag zur Rückbau- und Recyclingoptimierung vor Ort.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <ul className="list-disc pl-5 space-y-2 text-xs text-text-main/80 leading-relaxed">
+          <li><strong>DGNB:</strong> CSC Silber und Gold werden im Kriterium „Verantwortungsbewusste Ressourcengewinnung“ (ENV1.3) in Qualitätsstufe 1.2 anerkannt (Stand 2018); das R-Modul in Qualitätsstufe 2.2 (Stand 2021).</li>
+          <li><strong>BREEAM:</strong> CSC ist seit 2018 als Responsible-Sourcing-System anerkannt.</li>
+          <li><strong>LEED:</strong> Anerkennung war 2018 noch offen – aktuellen Stand manuell prüfen.</li>
+        </ul>
       </div>
 
-      <ModuleFooter 
-        weblinks={[
-          { title: "CSC - Concrete Sustainability Council (Offizielle Website)", url: "https://www.concretesustainabilitycouncil.com/" },
-          { title: "CSC in Deutschland (BTB)" },
-          { title: "DGNB Anrechenbarkeit von CSC-Zertifikaten", url: "https://www.dgnb.de/" }
-        ]} 
-        wikipedia={[
-          { title: "Concrete Sustainability Council" },
-          { title: "Nachhaltiges Bauen", url: "https://de.wikipedia.org/wiki/Nachhaltiges_Bauen" }
-        ]} 
-        literatur={[
-          'Concrete Sustainability Council (CSC): Technical Manual - The CSC Certification System for Concrete, Cement and Aggregates',
-          'Bundesverband Transportbeton (BTB): Leitfaden Nachhaltiges Bauen mit Transportbeton',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]} 
-        regelwerke={[
-          { title: 'CSC Certification System Version 2.1', url: 'https://www.concretesustainabilitycouncil.com/' },
-          { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken)' }
-        ]} 
-        formeln={[
-          {
-            formel: '\\text{Score}_{\\text{CSC}} = \\sum_{k=1}^4 w_k \\cdot S_k \\ge 80\\% \\implies \\text{Level: Platin}',
-            erklaerung: 'Gesamtscore des CSC-Zertifizierungssystems: Gewichtete Erfüllungsgrade in den 4 Kernkategorien Management (M), Umwelt (E), Soziales (S) und Wirtschaft (Econ). Stufen: Bronze (35%), Silber (50%), Gold (65%), Platin (80%).',
-            quelle: 'CSC Technical Manual'
-          },
-          {
-            formel: 'R_{\\text{Supply Chain}} = 0{,}40 \\cdot S_{\\text{Zement}} + 0{,}15 \\cdot S_{\\text{Gestein}}',
-            erklaerung: 'CSC R-Modul für rezyklierte Gesteinskörnungen und nachhaltige Lieferkettengewichtung zur DGNB-Anrechnung.',
-            quelle: 'CSC / DGNB Kriterium ENV1.3'
-          }
-        ]} 
-      />
     </div>
   );
 }
