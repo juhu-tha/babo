@@ -1,6 +1,6 @@
 {
-  "summary": "Detaillierter Implementierungsplan für die Überarbeitung der Startseite (Startseite.tsx) mit interaktiver Meta-Cluster-Übersicht, 4-Stufen-Lehrpfad-Visualisierung, Beibehaltung des Zitats und aktualisierten Plattform-Kennzahlen.",
-  "updatedAt": "2026-10-20T11:24:08.520709191Z",
-  "requestFeedback": true,
-  "userFacing": true
+  "summary":  "Systematischer Abgleich der App-Module mit den Daten von 'Betontechnische Daten' (Heidelberg Materials / IZB, Stand 2022) unter kompromissloser Priorisierung der aktuellen Normengeneration (DIN 1045-2:2023-08, DIN EN 206:2021-06, DIN EN 197-5:2021, DIN EN 13670 / DIN 1045-3). Der Plan strukturiert die Aktualisierung der bestehenden Betontechnologie-Module in 4 logische Arbeitspakete (Zemente & Bindemittel, Frischbeton & Konsistenz, Festbeton & Konformitätskontrolle, Nachbehandlung & Sonderbetone) mit exakter Quellenverifikation.",
+  "updatedAt":  "2026-10-22T08:51:13.161013878Z",
+  "requestFeedback":  true,
+  "userFacing":  true
 }

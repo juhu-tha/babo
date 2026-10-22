@@ -63,10 +63,23 @@ export default function Startseite() {
               <div>
                 <h3 className="text-lg font-bold text-shiraz mb-2">Hinweise zur Nutzung</h3>
                 <p className="text-text-main/80 leading-relaxed">
-                  Das BaustoffBoard dient ausschließlich zu Lehr- und Übungszwecken. Deshalb können hier Vereinfachungen getroffen worden sein, die nicht vollumfänglich Normanforderungen und der Realität entsprechen. Das BaustoffBoard ist <strong>kein</strong> Ersatz für Lehrveranstaltungen, Lehrbücher oder Normen!
+                  Das BaustoffBoard dient ausschließlich zu Lehr- und Übungszwecken. Deshalb können hier Vereinfachungen getroffen worden sein, die nicht vollumfänglich Normanforderungen und der Realität entsprechen. Das BaustoffBoard ist <strong>kein</strong> Ersatz für Lehrveranstaltungen, Lehrbücher oder Normen! - es wird keinerlei Haftung für Ergebnisse übernommen!{' '}
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('engineering-disclaimer');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="inline-flex items-center justify-center p-1 rounded-md text-shiraz hover:bg-shiraz/10 transition-all align-middle cursor-pointer -mt-0.5"
+                    title="Zum Haftungsausschluss (Engineering Disclaimer)"
+                    aria-label="Zum Haftungsausschluss (Engineering Disclaimer)"
+                  >
+                    <ArrowRight size={16} className="transition-transform hover:translate-x-0.5" />
+                  </button>
                   <br /><br />
                   Das Dashboard wird kontinuierlich erweitert und verbessert - und erhebt keinen Anspruch auf Vollständigkeit!<br />
-                  <span className="underline font-semibold">Bitte Fehler sowie Verbesserungsvorschläge bei Prof. Huber melden – vielen Dank!</span>{' '}
+                  <span>Bitte Fehler sowie Verbesserungsvorschläge bei Prof. Huber melden – vielen Dank!</span>{' '}
                   <button
                     onClick={() => setActiveTab('feedback')}
                     className="inline-flex items-center justify-center p-1 rounded-md text-shiraz hover:bg-shiraz/10 transition-all align-middle cursor-pointer -mt-0.5"
@@ -114,17 +127,21 @@ export default function Startseite() {
           </div>
         </div>
         <div 
-          onClick={() => setActiveTab('admin')}
+          onClick={() => setActiveTab('anleitung')}
           className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-home-grau/30 dark:border-slate-800 hover:border-shiraz/40 transition-all cursor-pointer flex items-start gap-4 group"
         >
           <div className="p-3 bg-shiraz/10 rounded-lg text-shiraz group-hover:bg-shiraz group-hover:text-white transition-colors">
-            <ShieldAlert size={24} />
+            <BookOpen size={24} />
           </div>
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <h3 className="font-bold text-text-main dark:text-slate-100 group-hover:text-shiraz transition-colors">Admin & Audit</h3>
+              <h3 className="font-bold text-text-main dark:text-slate-100 group-hover:text-shiraz transition-colors">
+                Kompakte &amp; aktuelle Informationsquelle
+              </h3>
             </div>
-            <p className="text-sm text-text-main/70 dark:text-slate-400">Auditprompt, Gestaltungs-Guidelines, Code-Umfang (244 Module, ~218k Zeilen) & Tech-Stack.</p>
+            <p className="text-sm text-text-main/70 dark:text-slate-400">
+              Kompakte und aktuelle Informationsquelle zu baustoffkundlichen Themen, Bauteilen und bauchemischen Grundlagen nach neuester Normengeneration.
+            </p>
           </div>
         </div>
       </div>
@@ -139,6 +156,17 @@ export default function Startseite() {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Wichtiger Hinweis zur Haftung (Engineering Disclaimer) */}
+      <div id="engineering-disclaimer" className="p-5 bg-amber-50/70 border border-amber-200/90 rounded-2xl space-y-2 text-left shadow-xs scroll-mt-8">
+        <h4 className="font-bold text-sm text-amber-950 flex items-center gap-2">
+          <ShieldAlert size={18} className="text-amber-700 shrink-0" />
+          Wichtiger Hinweis zur Haftung (Engineering Disclaimer)
+        </h4>
+        <p className="text-xs text-amber-950 leading-relaxed font-medium">
+          &bdquo;Wichtiger Hinweis zur Haftung: Alle auf dem BaustoffBoard bereitgestellten Informationen, Richtwerte, Datenbanken, Checklisten und interaktiven Berechnungsmodule (insb. zu Tragwerksplanung, Betontechnologie, Bauphysik, Chloriddiffusion und Instandsetzung) dienen ausschließlich akademischen Lehr-, Forschungs- und unverbindlichen Vorbemessungszwecken. Sie ersetzen in keinem Fall eine projektbezogene Baugrund-, Baustoff- oder Schadstoffuntersuchung, eine bauaufsichtlich geprüfte statische Berechnung, einen bauphysikalischen Nachweis oder eine Fachplanung durch einen Sachkundigen Planer (SKP) im Sinne der jeweiligen Landesbauordnung (BayBO / MBO) und der Technischen Baubestimmungen (MVV TB). Jegliche Haftung für unmittelbare oder mittelbare Schäden aus der Anwendung der Tools im Bau- oder Planungsbetrieb ist ausgeschlossen.&ldquo;
+        </p>
       </div>
 
       <div className="mt-8 text-sm text-text-main/60 flex flex-col items-center gap-1.5">

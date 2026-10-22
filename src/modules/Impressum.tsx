@@ -112,16 +112,6 @@ export default function Impressum() {
 
             {/* Legal Evaluation and Sufficiency Check / Haftungsausschluss */}
             <div className="mt-8 pt-6 border-t border-home-grau/20 space-y-4 text-xs text-text-main/70">
-              <div className="p-4 bg-amber-50/60 border border-amber-200/90 rounded-2xl space-y-2">
-                <h4 className="font-bold text-sm text-amber-950 flex items-center gap-2">
-                  <ShieldAlert size={18} className="text-amber-700 shrink-0" />
-                  Wichtiger Hinweis zur Haftung (Engineering Disclaimer)
-                </h4>
-                <p className="text-xs text-amber-950 leading-relaxed font-medium">
-                  &bdquo;Wichtiger Hinweis zur Haftung: Alle auf dem BaustoffBoard bereitgestellten Informationen, Richtwerte, Datenbanken, Checklisten und interaktiven Berechnungsmodule (insb. zu Tragwerksplanung, Betontechnologie, Bauphysik, Chloriddiffusion und Instandsetzung) dienen ausschließlich akademischen Lehr-, Forschungs- und unverbindlichen Vorbemessungszwecken. Sie ersetzen in keinem Fall eine projektbezogene Baugrund-, Baustoff- oder Schadstoffuntersuchung, eine bauaufsichtlich geprüfte statische Berechnung, einen bauphysikalischen Nachweis oder eine Fachplanung durch einen Sachkundigen Planer (SKP) im Sinne der jeweiligen Landesbauordnung (BayBO / MBO) und der Technischen Baubestimmungen (MVV TB). Jegliche Haftung für unmittelbare oder mittelbare Schäden aus der Anwendung der Tools im Bau- oder Planungsbetrieb ist ausgeschlossen.&ldquo;
-                </p>
-              </div>
-
               <h4 className="font-bold text-sm text-text-main flex items-center gap-1.5 pt-2">
                 <FileText size={16} className="text-shiraz" />
                 Rechtliche Hinweise &amp; Angaben gemäß § 5 DDG / § 18 MStV
