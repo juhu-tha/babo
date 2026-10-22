@@ -2,7 +2,6 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Thermometer } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 
 export default function Frischbetontemperatur() {
   // Massen in kg/m³
@@ -284,33 +283,6 @@ export default function Frischbetontemperatur() {
         </div>
       </div>
 
-      <ModuleFooter 
-        weblinks={[
-          { title: "Beton.wiki: Frischbetontemperatur", url: "https://beton.wiki/index.php?title=Frischbetontemperatur" }, 
-          { title: "Zement-Merkblätter Beton.org", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Frischbeton', url: 'https://de.wikipedia.org/wiki/Frischbeton' },
-          { title: 'Richmannsche Mischungsregel', url: 'https://de.wikipedia.org/wiki/Richmannsche_Mischungsregel' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität: Grenztemperaturen +5°C bis +30°C)' },
-          { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton - Betonieren bei kühler und heißer Witterung)' },
-          { title: 'ZTV-ING (Grenztemperaturen für Ingenieurbauwerke)', url: 'https://www.bast.de/' }
-        ]}
-        literatur={[
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Ausgabe, Verlag Bau+Technik)',
-          'Springenschmid, R. (1998): Betonieren bei extremer Witterung (Bauverlag)'
-        ]}
-        formeln={[
-          {
-            formel: 'T_{FB} = \\frac{c_z m_z T_z + c_w m_w T_w + c_g m_g T_g + c_w m_{feuchte} T_g - m_{eis} \\cdot L_{eis}}{c_z m_z + c_w (m_w + m_{feuchte} + m_{eis}) + c_g m_g}',
-            erklaerung: 'Erweiterte Richmannsche Mischungsregel unter Einbeziehung der Gesteinseigenfeuchte und der Schmelzenthalpie von Scherbeneis (Leis = 334 kJ/kg). Normative Richtgrenzen: mind. +5 °C (Winter) bis max. +30 °C (Sommer).',
-            quelle: 'DIN EN 206 / VDZ-Zement-Taschenbuch'
-          }
-        ]}
-      />
     </div>
   );
 }

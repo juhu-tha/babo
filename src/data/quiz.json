@@ -99,10 +99,10 @@
     "id": "q_zement_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "clusterId": "I",
-    "clusterName": "Grundlagen & Labor",
-    "moduleId": "zement",
-    "moduleTitle": "Zementchemie (DIN EN 197-1)",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "bindemittel",
+    "moduleTitle": "Bindemittel",
     "topic": "Klinkerphasen & Hydratationsprodukte",
     "difficulty": "Klausur-Schwerpunkt",
     "normRef": "DIN EN 197-1",
@@ -7029,6 +7029,306 @@
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Römischer Beton“ im Modul Kuriositäten & Rekorde noch einmal durch.",
       "targetModuleTab": "kuriositaeten",
       "targetModuleLabel": "Kuriositäten & Rekorde"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bgl_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "grundlagen",
+    "moduleTitle": "Beton – Grundlagen",
+    "topic": "Konsistenzklassen",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Ein Frischbeton hat ein Ausbreitmaß von 450 mm. Welche Konsistenzklasse und -beschreibung liegt vor?",
+    "options": [
+      "F2 – plastisch",
+      "F3 – weich",
+      "F4 – sehr weich",
+      "F5 – fließfähig"
+    ],
+    "correctIdx": 1,
+    "explanation": "F3 umfasst 420–480 mm und wird als „weich“ bezeichnet; F2 (350–410 mm) ist plastisch, F4 (490–550 mm) sehr weich.",
+    "gapAnalysis": {
+      "topic": "Konsistenzklassen",
+      "misconception": "Ausbreitmaß- und Verdichtungsmaßklassen gleicher Nummer seien gleichwertig.",
+      "coreRule": "F1 steif, F2 plastisch, F3 weich, F4 sehr weich, F5 fließfähig, F6 sehr fließfähig.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzklassen“ im Modul Beton – Grundlagen noch einmal durch.",
+      "targetModuleTab": "grundlagen",
+      "targetModuleLabel": "Beton – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bgl_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "grundlagen",
+    "moduleTitle": "Beton – Grundlagen",
+    "topic": "Äquivalenter w/z-Wert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2",
+    "question": "z = 280 kg/m³, Flugasche f = 80 kg/m³ (k = 0,4), w = 160 kg/m³. Wie groß ist (w/z)eq?",
+    "options": [
+      "0,44",
+      "0,51",
+      "0,57",
+      "0,64"
+    ],
+    "correctIdx": 1,
+    "explanation": "f/z = 0,29 ≤ 0,33, die Flugasche ist voll anrechenbar: 160/(280 + 0,4 · 80) = 160/312 = 0,51.",
+    "gapAnalysis": {
+      "topic": "Äquivalenter w/z-Wert",
+      "misconception": "Flugasche werde wie Zement voll (k = 1) angerechnet.",
+      "coreRule": "(w/z)eq = w/(z + k · f); anrechenbare Flugaschemenge begrenzt (f/z ≤ 0,33).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Äquivalenter w/z-Wert“ im Modul Beton – Grundlagen noch einmal durch.",
+      "targetModuleTab": "grundlagen",
+      "targetModuleLabel": "Beton – Grundlagen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdm_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "bindemittel",
+    "moduleTitle": "Bindemittel",
+    "topic": "NA-Zement",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1164-10:2023-02",
+    "question": "Ein CEM III/A mit 55 % Hüttensand hat ein Na₂O-Äquivalent von 0,95 M.-%. Darf er als NA-Zement bezeichnet werden?",
+    "options": [
+      "Nein, die Grenze liegt für alle Zemente bei 0,60 M.-%",
+      "Ja, für CEM III/A mit 50–65 % Hüttensand gilt ≤ 1,10 M.-%",
+      "Nein, CEM III/A kann nie NA-Zement sein",
+      "Ja, für CEM III gibt es keine Grenze"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN 1164-10 staffelt die Grenzwerte nach Hüttensandgehalt: CEM III/A mit 36–49 % S ≤ 0,95, mit 50–65 % S ≤ 1,10 M.-%.",
+    "gapAnalysis": {
+      "topic": "NA-Zement",
+      "misconception": "Der Grenzwert 0,60 M.-% gelte für jeden Zement.",
+      "coreRule": "Je höher der Hüttensandanteil, desto höher der zulässige Gesamtalkaligehalt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „NA-Zement“ im Modul Bindemittel noch einmal durch.",
+      "targetModuleTab": "bindemittel",
+      "targetModuleLabel": "Bindemittel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdm_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "bindemittel",
+    "moduleTitle": "Bindemittel",
+    "topic": "Bogue-Rechnung",
+    "difficulty": "Basis",
+    "normRef": "Bogue (1929)",
+    "question": "Klinker mit Al₂O₃ = 6,0 % und Fe₂O₃ = 3,0 %. Wie hoch ist der C₃A-Gehalt nach Bogue (C₃A = 2,650·Al₂O₃ − 1,692·Fe₂O₃)?",
+    "options": [
+      "5,1 %",
+      "10,8 %",
+      "15,9 %",
+      "21,0 %"
+    ],
+    "correctIdx": 1,
+    "explanation": "2,650 · 6,0 − 1,692 · 3,0 = 15,90 − 5,08 = 10,8 %. Für einen SR-3-Zement wäre das zu viel.",
+    "gapAnalysis": {
+      "topic": "Bogue-Rechnung",
+      "misconception": "Der Eisenanteil werde nicht abgezogen.",
+      "coreRule": "Der C₃A-Gehalt bestimmt den Sulfatwiderstand (SR 0/3/5).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bogue-Rechnung“ im Modul Bindemittel noch einmal durch.",
+      "targetModuleTab": "bindemittel",
+      "targetModuleLabel": "Bindemittel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mib_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "mischungsberechnung",
+    "moduleTitle": "Mischungsberechnung",
+    "topic": "Stoffraumrechnung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "1 m³ Beton: z = 300 kg (ρ = 3,1 kg/dm³), w = 165 kg, Luft 2 Vol.-%. Wie viel trockene Gesteinskörnung (ρ = 2,65 kg/dm³) wird benötigt?",
+    "options": [
+      "rund 1 750 kg",
+      "rund 1 903 kg",
+      "rund 2 040 kg",
+      "rund 2 650 kg"
+    ],
+    "correctIdx": 1,
+    "explanation": "V_g = 1 000 − 300/3,1 − 165 − 20 = 718,2 dm³; m_g = 718,2 · 2,65 ≈ 1 903 kg.",
+    "gapAnalysis": {
+      "topic": "Stoffraumrechnung",
+      "misconception": "Luftporen und Zementvolumen würden vernachlässigt.",
+      "coreRule": "Die Volumina aller Bestandteile ergeben zusammen 1 000 dm³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Stoffraumrechnung“ im Modul Mischungsberechnung noch einmal durch.",
+      "targetModuleTab": "mischungsberechnung",
+      "targetModuleLabel": "Mischungsberechnung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mib_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "mischungsberechnung",
+    "moduleTitle": "Mischungsberechnung",
+    "topic": "Maßgebende Expositionsklasse",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2:2023-08",
+    "question": "Ein Bauteil ist XC4, XD1 und XA2 zugeordnet. Welcher höchstzulässige w/z-Wert ist maßgebend?",
+    "options": [
+      "0,60",
+      "0,55",
+      "0,50",
+      "0,45"
+    ],
+    "correctIdx": 2,
+    "explanation": "XC4 0,60, XD1 0,55, XA2 0,50 – maßgebend ist der kleinste Wert, also 0,50 (mit C35/45 und z ≥ 320 kg/m³).",
+    "gapAnalysis": {
+      "topic": "Maßgebende Expositionsklasse",
+      "misconception": "Maßgebend sei die zuerst genannte Klasse.",
+      "coreRule": "Bei mehreren Expositionsklassen gilt jeweils der strengste Grenzwert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Maßgebende Expositionsklasse“ im Modul Mischungsberechnung noch einmal durch.",
+      "targetModuleTab": "mischungsberechnung",
+      "targetModuleLabel": "Mischungsberechnung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hee_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "herstellung_einbau",
+    "moduleTitle": "Herstellung & Einbau",
+    "topic": "Transportzeit",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-2, 7.6",
+    "question": "Bis wann soll ein Fahrmischer nach der ersten Wasserzugabe vollständig entladen sein?",
+    "options": [
+      "30 Minuten",
+      "45 Minuten",
+      "90 Minuten",
+      "180 Minuten"
+    ],
+    "correctIdx": 2,
+    "explanation": "Fahrmischer und Fahrzeuge mit Rührwerk: 90 min; Fahrzeuge ohne Rührwerk (steifer Beton): 45 min.",
+    "gapAnalysis": {
+      "topic": "Transportzeit",
+      "misconception": "Die Frist beginne erst bei Ankunft auf der Baustelle.",
+      "coreRule": "Die Frist beginnt mit der ersten Wasserzugabe zum Zement.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Transportzeit“ im Modul Herstellung & Einbau noch einmal durch.",
+      "targetModuleTab": "herstellung_einbau",
+      "targetModuleLabel": "Herstellung & Einbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hee_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "herstellung_einbau",
+    "moduleTitle": "Herstellung & Einbau",
+    "topic": "Wasserzugabe bei Lieferung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2, 7.5",
+    "question": "Der Beton ist bei Ankunft zu steif. Was ist zulässig?",
+    "options": [
+      "Der Polier gibt Wasser zu, bis die Konsistenz passt",
+      "Nur in besonderen Fällen Anpassung unter Verantwortung des Herstellers innerhalb der Grenzen, mit Vermerk auf dem Lieferschein",
+      "Beliebig Fließmittel zugeben, solange es dokumentiert wird",
+      "Der Beton muss immer zurückgeschickt werden"
+    ],
+    "correctIdx": 1,
+    "explanation": "Wasser- oder Zusatzmittelzugabe bei Lieferung ist im Allgemeinen verboten; Ausnahmen nur unter Verantwortung des Herstellers innerhalb der festgelegten Grenzen, mit Vermerk auf dem Lieferschein.",
+    "gapAnalysis": {
+      "topic": "Wasserzugabe bei Lieferung",
+      "misconception": "Etwas Wasser schade nicht.",
+      "coreRule": "Konsistenz nur nach Vorgabe des Herstellers anpassen und dokumentieren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe bei Lieferung“ im Modul Herstellung & Einbau noch einmal durch.",
+      "targetModuleTab": "herstellung_einbau",
+      "targetModuleLabel": "Herstellung & Einbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_frb_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "frischbeton",
+    "moduleTitle": "Frischbeton",
+    "topic": "Luftgehalt",
+    "difficulty": "Basis",
+    "normRef": "DIN 1045-2; DIN EN 12350-7",
+    "question": "XF4-Beton, Größtkorn 16 mm: Ablesung 4,4 %, Gesteinskorrektur 0,3 %. Ist der Einzelwert zulässig?",
+    "options": [
+      "Nein, 4,1 % < 4,5 %",
+      "Ja, 4,1 % ≥ 4,5 − 0,5 = 4,0 %",
+      "Ja, weil die Ablesung 4,4 % beträgt",
+      "Nein, XF4 verlangt immer 5,5 %"
+    ],
+    "correctIdx": 1,
+    "explanation": "L = 4,4 − 0,3 = 4,1 %. Für 16 mm gilt im Mittel ≥ 4,5 %, Einzelwerte dürfen um höchstens 0,5 % unterschreiten → ≥ 4,0 %.",
+    "gapAnalysis": {
+      "topic": "Luftgehalt",
+      "misconception": "Die Manometerablesung sei bereits der Luftgehalt.",
+      "coreRule": "Gesteinskorrektur abziehen; Mittelwert- und Einzelwertkriterium getrennt prüfen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Luftgehalt“ im Modul Frischbeton noch einmal durch.",
+      "targetModuleTab": "frischbeton",
+      "targetModuleLabel": "Frischbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_frb_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "frischbeton",
+    "moduleTitle": "Frischbeton",
+    "topic": "Frischbetondruck",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18218:2010-01",
+    "question": "Wandschalung, Beton F3, Steiggeschwindigkeit 1 m/h, K₁ = 1,0. Wie groß ist σ_hk,max nach DIN 18218?",
+    "options": [
+      "18 kN/m²",
+      "25 kN/m²",
+      "32 kN/m²",
+      "75 kN/m²"
+    ],
+    "correctIdx": 2,
+    "explanation": "(14 · 1 + 18) · 1,0 = 32 kN/m² ≥ 25 kN/m² (Mindestwert).",
+    "gapAnalysis": {
+      "topic": "Frischbetondruck",
+      "misconception": "Der Frischbetondruck sei immer voll hydrostatisch.",
+      "coreRule": "Steiggeschwindigkeit und Konsistenz bestimmen den Maximaldruck.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Frischbetondruck“ im Modul Frischbeton noch einmal durch.",
+      "targetModuleTab": "frischbeton",
+      "targetModuleLabel": "Frischbeton"
     },
     "verified": false
   }

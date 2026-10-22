@@ -2,6 +2,8 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Layers, Flame, Factory, FlaskConical, BookOpen, ShieldCheck, Filter, AlertTriangle, Info, CheckCircle2 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import Zementchemie from './Zementchemie';
 import {
   Chart as ChartJS,
@@ -147,7 +149,7 @@ export const NORM_CEMENTS: NormCement[] = [
     co2Reduction: 'ca. 38–50 % Minderung (Öko-Zement)',
     anwendungDin1045: 'Zulässig nach DIN 1045-2:2023-08 für definierte Expositionsklassen (XC1–XC4, XF1, WF). Bei XF2/XF4/XD3 nur mit Anwendungsnachweis.',
     frostSuitability: 'Sorgfältige Nachbehandlung zwingend; gute Gefügedichtigkeit.',
-    normReference: 'DIN EN 197-5:2021-05 & DIN 1045-2:2023-08',
+    normReference: 'DIN EN 197-5:2021-07 & DIN 1045-2:2023-08',
     isNewStandard: true
   },
   {
@@ -160,7 +162,7 @@ export const NORM_CEMENTS: NormCement[] = [
     co2Reduction: 'bis zu 60 % Minderung',
     anwendungDin1045: 'Neu genormt in DIN EN 197-5; Einsatz nach nationalem Anwendungsdokument DIN 1045-2 für CO₂-optimierte Bauteile.',
     frostSuitability: 'Langsame Erhärtung, niedrige Hydratationswärme (ideal für massige Bauteile ohne Frost).',
-    normReference: 'DIN EN 197-5:2021-05 & DIN 1045-2:2023-08',
+    normReference: 'DIN EN 197-5:2021-07 & DIN 1045-2:2023-08',
     isNewStandard: true
   },
 
@@ -327,6 +329,19 @@ export default function Bindemittel() {
             Bindemittel wie Zement sind hydraulisch erhärtende Baustoffe, die zusammen mit Wasser ein festes Gestein (Zementstein) bilden. 
             Durch die Zugabe von Betonzusatzstoffen lassen sich die Eigenschaften im Frisch- und Festbeton gezielt steuern und optimieren.
           </p>
+          <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
+            <strong className="mr-1">Lernpfad:</strong>
+            {([
+              ['herstellung', 'Herstellung'], ['zement', 'Klinkerphasen & Hydratation'], ['zementchemie_bogue', 'Zementchemie (Bogue, Gefüge)'],
+              ['normzemente', 'Normzemente'], ['zusatzstoffe', 'Zusatzstoffe'],
+            ] as const).map(([id, label], i) => (
+              <React.Fragment key={id}>
+                {i > 0 && <span className="text-text-main/40">→</span>}
+                <button onClick={() => setActiveTab(id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">{i + 1}. {label}</button>
+              </React.Fragment>
+            ))}
+            <span className="text-text-main/60 ml-1">Die Zementherstellung ist im Reiter Grundlagen ausführlicher beschrieben.</span>
+          </p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -428,7 +443,7 @@ export default function Bindemittel() {
             </ul>
 
             <div className="mt-4 border border-home-grau/30 rounded-xl p-4 bg-off-white">
-              <h4 className="font-bold text-sm text-text-main mb-2">Wärmeentwicklung der Klinkerphasen</h4>
+              <h4 className="font-bold text-sm text-text-main mb-2">Wärmeentwicklung der Klinkerphasen (schematische Lehrkurve)</h4>
               <div className="h-48 w-full">
                 <Line 
                   id="hydratation-chart"
@@ -592,13 +607,13 @@ export default function Bindemittel() {
 
                       <div className="text-xs text-text-main/80 space-y-1 pt-1 border-t border-home-grau/15">
                         <p><strong>Hauptbestandteile:</strong> {cement.components}</p>
-                        <p><strong>CO₂-Potenzial:</strong> <span className="text-emerald-800 font-bold">{cement.co2Reduction}</span></p>
+                        <p><strong>CO₂-Potenzial (Richtwert):</strong> <span className="text-emerald-800 font-bold">{cement.co2Reduction}</span></p>
                         <p><strong>Frost-Eignung:</strong> {cement.frostSuitability}</p>
                       </div>
                     </div>
 
                     <div className="pt-2 border-t border-home-grau/20 text-[11px] text-text-main/75 bg-white p-2.5 rounded-lg border border-home-grau/15">
-                      <strong className="text-text-main block mb-0.5">Anwendung nach DIN 1045-2:</strong>
+                      <strong className="text-text-main block mb-0.5">Anwendung (Kurzfassung; maßgebend sind die Anwendungstabellen der DIN 1045-2:2023-08 – manuell prüfen):</strong>
                       {cement.anwendungDin1045}
                     </div>
                   </div>
@@ -610,7 +625,7 @@ export default function Bindemittel() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h4 className="text-base font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
               <ShieldCheck className="text-shiraz" size={18} />
-              Genormte Festigkeitsklassen nach DIN EN 197-1 (Tabelle 7)
+              Genormte Festigkeitsklassen nach DIN EN 197-1
             </h4>
 
             <p className="text-xs text-text-main/75 leading-relaxed">
@@ -691,16 +706,29 @@ export default function Bindemittel() {
                   Zement mit niedrigem wirksamen Alkaligehalt (<InlineMath math="\text{Na}_2\text{O}_{\text{eq}}" />) zur Unterbindung der schädigenden Alkali-Kieselsäure-Reaktion (Betonkrebs).
                 </p>
                 <div className="p-2.5 bg-white rounded-lg border border-home-grau/15 text-[11px] text-text-main/75 space-y-1">
-                  <p>• <strong>CEM I:</strong> <InlineMath math="\text{Na}_2\text{O}_{\text{eq}} \le 0{,}60\text{ M.-\%}" /></p>
-                  <p>• <strong>CEM II/A-S:</strong> <InlineMath math="\le 0{,}70\text{ M.-\%}" /></p>
-                  <p>• <strong>CEM III/A:</strong> <InlineMath math="\le 0{,}90\text{ M.-\%}" /> (bei &gt;50 % S)</p>
-                  <p>• <strong>Zwingend bei Feuchteklasse:</strong> WA und WS nach Alkali-Richtlinie.</p>
+                  <p>• <strong>CEM I, CEM II (außer CEM II/B-S), CEM IV, CEM V:</strong> <InlineMath math="\text{Na}_2\text{O}_{\text{eq}} \le 0{,}60\text{ M.-\%}" /></p>
+                  <p>• <strong>CEM II/B-S</strong> (21–35 % S): <InlineMath math="\le 0{,}70\text{ M.-\%}" /></p>
+                  <p>• <strong>CEM III/A</strong> (36–49 % S): <InlineMath math="\le 0{,}95\text{ M.-\%}" />; (50–65 % S): <InlineMath math="\le 1{,}10\text{ M.-\%}" /></p>
+                  <p>• <strong>CEM III/B, CEM III/C:</strong> <InlineMath math="\le 2{,}00\text{ M.-\%}" /></p>
+                  <p>• <strong>Erforderlich:</strong> je nach Alkaliempfindlichkeitsklasse der Gesteinskörnung (E II, E III) und Feuchtigkeitsklasse nach Alkali-Richtlinie.</p>
                 </div>
               </div>
 
             </div>
           </div>
 
+          <FormulaDerivationBox
+            title="Anwendungsbeispiel: Ist der Zement ein NA-Zement?"
+            zielGleichung="\text{Na}_2\text{O}_{eq} = \text{Na}_2\text{O} + 0{,}658 \cdot \text{K}_2\text{O}"
+            normQuelle="DIN 1164-10:2023-02"
+            schritte={[
+              { titel: '1. Gegeben (Lehrwerte)', formel: '\\text{Na}_2\\text{O} = 0{,}25\\,\\%,\\; \\text{K}_2\\text{O} = 0{,}80\\,\\%', erklaerung: 'Chemische Analyse des Zements in M.-%.' },
+              { titel: '2. Na₂O-Äquivalent', formel: '\\text{Na}_2\\text{O}_{eq} = 0{,}25 + 0{,}658 \\cdot 0{,}80 = 0{,}78\\,\\%', erklaerung: 'Kalium wird über das Molmassenverhältnis in Natrium umgerechnet.' },
+              { titel: '3. Als CEM I', formel: '0{,}78\\,\\% > 0{,}60\\,\\%', erklaerung: 'Kein NA-Zement.' },
+              { titel: '4. Als CEM III/A mit 50–65 % Hüttensand', formel: '0{,}78\\,\\% \\le 1{,}10\\,\\%', erklaerung: 'NA-Anforderung erfüllt: Hüttensand bindet Alkalien und senkt die Porenlösungsalkalität.' },
+            ]}
+            ergebnisHinweis="Derselbe Alkaligehalt ist beim Portlandzement unzulässig, beim Hochofenzement CEM III/A (50–65 % S) zulässig."
+          />
         </div>
       )}
 
@@ -878,7 +906,7 @@ export default function Bindemittel() {
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/15 space-y-2">
                 <strong className="text-sm text-text-main font-bold block text-shiraz">4. k-Wert Konzept</strong>
                 <p className="text-xs text-text-main/70 leading-relaxed">
-                  Nach DIN EN 206 darf Flugasche mit einem Anrechnungsfaktor von <InlineMath math="k = 0{,}4" /> (bei CEM I) und Silikastaub mit <InlineMath math="k = 2{,}0" /> direkt auf den Mindestzementgehalt angerechnet werden, was die CO₂-Bilanz optimiert.
+                  Flugasche darf mit dem Anrechnungsfaktor <InlineMath math="k = 0{,}4" /> auf Mindestzementgehalt und w/z-Wert angerechnet werden. DIN EN 206 nennt für Silikastaub <InlineMath math="k = 2{,}0" /> (nur unter Bedingungen); in Deutschland gelten die Anrechnungsregeln der DIN 1045-2 (manuell prüfen). Die Anrechnung spart Zement und verbessert die CO₂-Bilanz.
                 </p>
               </div>
             </div>
@@ -886,6 +914,8 @@ export default function Bindemittel() {
         </div>
       )}
       </div>
+
+      <ModulTest moduleId="bindemittel" />
 
       <ModuleFooter 
         wikipedia={[
@@ -896,22 +926,24 @@ export default function Bindemittel() {
         ]}
         literatur={[
           'Heidelberg Materials / InformationsZentrum Beton (IZB): Betontechnische Daten (Ausgabe 2022 / Folgeauflagen)',
-          'Stark, J.; Wicht, B. (2013): Zement und Schnellzemente - Chemie, Hydratation und Anwendung (Springer Vieweg)',
-          'Locher, F. W. (2000): Zement - Herstellung und Eigenschaften (Verlag Bau+Technik)',
-          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)'
+          'Stark, J.; Wicht, B.: Zement und Kalk – Der Baustoff als Werkstoff. Basel: Birkhäuser 2000',
+          'Locher, F. W.: Zement – Grundlagen der Herstellung und Verwendung. Düsseldorf: Verlag Bau+Technik 2000',
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Bogue, R. H.: Calculation of the Compounds in Portland Cement. Industrial & Engineering Chemistry, Analytical Edition 1 (1929) 4, S. 192–197',
+          'Taylor, H. F. W.: Cement Chemistry. 2. Aufl., London: Thomas Telford 1997'
         ]}
         regelwerke={[
-          { title: 'DIN EN 197-1:2011-11 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-1' },
-          { title: 'DIN EN 197-5:2021-05 (Zement - Teil 5: Portland-Kompositzement CEM II/C-M und Kompositzement CEM VI)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-5' },
-          { title: 'DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität - Anwendungsregeln zu DIN EN 206)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1045-2' },
-          { title: 'DIN 1164-10:2013-05 (Zement mit besonderen Eigenschaften - Teil 10: Zement mit niedrigem wirksamen Alkaligehalt NA)', url: 'https://www.dinmedia.de/de/suche?q=DIN+1164-10' },
-          { title: 'DIN EN 450-1:2012-10 (Flugasche für Beton - Teil 1: Definitionen, Anforderungen und Qualitätskontrolle)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+450-1' },
-          { title: 'DIN EN 13263-1:2009-07 (Silikastaub für Beton - Teil 1: Definitionen, Anforderungen und Konformitätskriterien)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+13263-1' }
+          { title: 'DIN EN 197-1:2011-11 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)' },
+          { title: 'DIN EN 197-5:2021-07 (Zement - Teil 5: Portland-Kompositzement CEM II/C-M und Kompositzement CEM VI)' },
+          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)' },
+          { title: 'DIN 1164-10:2023-02 (Zement mit besonderen Eigenschaften - Teil 10: Zement mit niedrigem wirksamen Alkaligehalt NA)' },
+          { title: 'DIN EN 450-1:2012-10 (Flugasche für Beton - Teil 1: Definitionen, Anforderungen und Qualitätskontrolle)' },
+          { title: 'DIN EN 13263-1:2009-07 (Silikastaub für Beton - Teil 1: Definitionen, Anforderungen und Konformitätskriterien)' }
         ]}
         formeln={[
           {
             formel: '\\left(\\frac{w}{c}\\right)_{\\text{eq}} = \\frac{w}{c + k_F \\cdot f + k_S \\cdot s}',
-            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Anrechnung von Steinkohlenflugasche (k_F = 0,40 bei CEM I) und Silikastaub (k_S = 1,0 bzw. 2,0) auf den Zementgehalt c.',
+            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Anrechnung von Steinkohlenflugasche (k_F = 0,40 bei CEM I) und Silikastaub (k_S nach DIN 1045-2 bzw. DIN EN 206; manuell prüfen) auf den Zementgehalt c.',
             quelle: 'DIN EN 206 Tab. 15 / DIN 1045-2'
           },
           {

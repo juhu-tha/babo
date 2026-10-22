@@ -116,7 +116,7 @@ export default function Kalk() {
               <div className="mt-6">
                 <FormulaDerivationBox
                   title="Thermodynamische Herleitung: Energie- &amp; Enthalpiebilanz des Kalkkreislaufs"
-                  zielGleichung="\\Delta H_R^0 = +178{,}2\\text{ kJ/mol} \\quad (\\text{Brennen}) \\;\\longleftrightarrow\\; \\Delta H_R^0 = -65{,}2\\text{ kJ/mol} \\quad (\\text{Löschen})"
+                  zielGleichung="\Delta H_R^0 = +178{,}2\text{ kJ/mol} \quad (\text{Brennen}) \;\longleftrightarrow\; \Delta H_R^0 = -65{,}2\text{ kJ/mol} \quad (\text{Löschen})"
                   normQuelle="DIN EN 459-1 (Baukalk) &amp; DIN 1333"
                   ergebnisHinweis="Vollständiger chemisch-energetischer Zyklus: Kalzinieren ist stark endotherm; Löschen ist stark exotherm mit Volumenzunahme."
                   schritte={[

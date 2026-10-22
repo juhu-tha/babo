@@ -3,6 +3,8 @@ import { Layers, Sparkles, Flame, Microscope } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import Regularien from './Regularien';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 export default function Grundlagen() {
   const [activeTab, setActiveTab] = useState<'druckfestigkeit' | 'expositionsklassen' | 'konsistenz' | 'zement' | 'herstellung' | 'gesteinskoernung' | 'mehlkorn' | 'zusatzstoffe' | 'regulatives'>('druckfestigkeit');
@@ -15,7 +17,20 @@ export default function Grundlagen() {
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Zusammenfassung der wichtigsten betontechnologischen Datenwerte nach DIN EN 206 / DIN 1045-2 (in Anlehnung an bewährte betontechnologische Richtlinien und Normenhandbücher).
+            Beton besteht aus Zement, Wasser und Gesteinskörnung, ergänzt um Zusatzstoffe und Zusatzmittel. Festlegung, Eigenschaften und Konformität regeln DIN EN 206 und DIN 1045-2. Dieser Reiter fasst die Kennwerte zusammen, die Sie für Festlegung und Mischungsentwurf brauchen.
+          </p>
+          <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
+            <strong className="mr-1">Lernpfad:</strong>
+            {([
+              ['herstellung', 'Zementherstellung'], ['zement', 'Zementarten'], ['gesteinskoernung', 'Gesteinskörnung'],
+              ['zusatzstoffe', 'Zusatzstoffe'], ['mehlkorn', 'Mehlkorn'], ['konsistenz', 'Konsistenz'],
+              ['druckfestigkeit', 'Festigkeit'], ['expositionsklassen', 'Exposition'],
+            ] as const).map(([id, label], i) => (
+              <React.Fragment key={id}>
+                {i > 0 && <span className="text-text-main/40">→</span>}
+                <button onClick={() => setActiveTab(id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">{i + 1}. {label}</button>
+              </React.Fragment>
+            ))}
           </p>
         </div>
 
@@ -100,8 +115,8 @@ export default function Grundlagen() {
                     ['C35/45', '35', '45', 'Frost-Tausalz-Beanspruchung (XF2, XF3)'],
                     ['C40/50', '40', '50', 'Vorgespannte Bauteile'],
                     ['C45/55', '45', '55', 'Ingenieurbau'],
-                    ['C50/60', '50', '60', 'Unterer Hochfester Beton'],
-                    ['C55/67 - C100/115', '55 - 100', '67 - 115', 'Hochfester Beton (HPC)'],
+                    ['C50/60', '50', '60', 'Höchste Klasse des normalfesten Betons'],
+                    ['C55/67 - C100/115', '55 - 100', '67 - 115', 'Hochfester Beton (ab C55/67, DIN EN 206)'],
                   ].map((row, i) => (
                     <tr key={i} className="border-b border-home-grau/10 hover:bg-off-white/50">
                       <td className="py-2 px-4 font-bold text-shiraz">{row[0]}</td>
@@ -203,7 +218,7 @@ export default function Grundlagen() {
           <div className="flex flex-col gap-6 animate-fade-in">
             <h3 className="text-lg font-bold">Konsistenzklassen (Verarbeitbarkeit)</h3>
             <p className="text-sm text-text-main/80">
-              Die Einstufung erfolgt typischerweise über das Ausbreitmaß (F) oder das Verdichtungsmaß (C). Für normales Betonieren im Hochbau wird meist F3 / C2 verwendet.
+              Die Einstufung erfolgt typischerweise über das Ausbreitmaß (F) oder das Verdichtungsmaß (C). Im Hochbau ist F3 (weich) üblich. Ausbreitmaß- und Verdichtungsmaßklassen sind nicht direkt vergleichbar; die Beschreibungen (steif, plastisch, weich) gelten je Klasse.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm border-collapse">
@@ -219,40 +234,46 @@ export default function Grundlagen() {
                   <tr className="border-b border-home-grau/10">
                     <td className="py-2 px-4">Sehr steif</td>
                     <td className="py-2 px-4 font-mono">C0 (≥ 1,46)</td>
-                    <td className="py-2 px-4 font-mono">F1 (≤ 340 mm)</td>
+                    <td className="py-2 px-4 font-mono">–</td>
                     <td className="py-2 px-4">Walzbeton, Pflastersteine</td>
                   </tr>
                   <tr className="border-b border-home-grau/10">
                     <td className="py-2 px-4">Steif</td>
                     <td className="py-2 px-4 font-mono">C1 (1,45 - 1,26)</td>
-                    <td className="py-2 px-4 font-mono">F2 (350 - 410 mm)</td>
+                    <td className="py-2 px-4 font-mono">F1 (≤ 340 mm)</td>
                     <td className="py-2 px-4">Bordsteinfundamente, Rüttelbeton</td>
                   </tr>
                   <tr className="border-b border-home-grau/10">
                     <td className="py-2 px-4">Plastisch</td>
                     <td className="py-2 px-4 font-mono">C2 (1,25 - 1,11)</td>
-                    <td className="py-2 px-4 font-mono">F3 (420 - 480 mm)</td>
-                    <td className="py-2 px-4">Gefällebeton, Standardhochbau</td>
+                    <td className="py-2 px-4 font-mono">F2 (350 - 410 mm)</td>
+                    <td className="py-2 px-4">Gefällebeton</td>
                   </tr>
-                  <tr className="border-b border-home-grau/10 hover:bg-shiraz/5 transition-colors">
-                    <td className="py-2 px-4 font-bold">Weich (Standard)</td>
+                  <tr className="border-b border-home-grau/10">
+                    <td className="py-2 px-4">Weich (Standard)</td>
                     <td className="py-2 px-4 font-mono">C3 (1,10 - 1,04)</td>
-                    <td className="py-2 px-4 font-mono font-bold text-shiraz">F4 (490 - 550 mm)</td>
-                    <td className="py-2 px-4 font-bold">Bewehrt. Hochbauteile, Pumpbeton</td>
+                    <td className="py-2 px-4 font-mono">F3 (420 - 480 mm)</td>
+                    <td className="py-2 px-4">Standardhochbau, bewehrte Bauteile</td>
                   </tr>
                   <tr className="border-b border-home-grau/10">
                     <td className="py-2 px-4">Sehr weich</td>
-                    <td className="py-2 px-4 font-mono">-</td>
-                    <td className="py-2 px-4 font-mono">F5 (560 - 620 mm)</td>
-                    <td className="py-2 px-4">Feingliedrige Bauteile</td>
+                    <td className="py-2 px-4 font-mono">–</td>
+                    <td className="py-2 px-4 font-mono">F4 (490 - 550 mm)</td>
+                    <td className="py-2 px-4">Pumpbeton, feingliedrige Bauteile</td>
                   </tr>
                   <tr className="border-b border-home-grau/10">
                     <td className="py-2 px-4">Fließfähig</td>
-                    <td className="py-2 px-4 font-mono">-</td>
-                    <td className="py-2 px-4 font-mono">F6 (≥ 630 mm)</td>
-                    <td className="py-2 px-4">SCC, hochbewehrte Bereiche</td>
+                    <td className="py-2 px-4 font-mono">–</td>
+                    <td className="py-2 px-4 font-mono">F5 (560 - 620 mm)</td>
+                    <td className="py-2 px-4">Hochbewehrte Bereiche</td>
                   </tr>
-                </tbody>
+                  <tr className="border-b border-home-grau/10">
+                    <td className="py-2 px-4">Sehr fließfähig</td>
+                    <td className="py-2 px-4 font-mono">–</td>
+                    <td className="py-2 px-4 font-mono">F6 (≥ 630 mm)</td>
+                    <td className="py-2 px-4">Sehr dicht bewehrte Bauteile; SVB wird über das Setzfließmaß (SF) eingestuft</td>
+                  </tr>
+                  </tbody>
               </table>
             </div>
           </div>
@@ -282,8 +303,8 @@ export default function Grundlagen() {
                 </p>
                 <div className="text-xs bg-off-white p-2 rounded">
                   <strong>Vorbeugende Maßnahmen nach DAfStb-Richtlinie:</strong> <br/>
-                  - Gesteinskörnungen meiden (E1-Klasse nutzen statt EIII)<br/>
-                  - Na-Zemente (Zement mit niedrigem wirksamen Alkaligehalt) verwenden<br/>
+                  - Unbedenkliche Gesteinskörnung verwenden (Alkaliempfindlichkeitsklasse E I statt E III)<br/>
+                  - NA-Zemente (niedriger wirksamer Alkaligehalt, DIN 1164-10) verwenden<br/>
                   - Alkalieintrag von außen unterbinden (z.B. hydrophobieren)<br/>
                   - Nutzung von Hüttensand (CEM III)
                 </div>
@@ -307,7 +328,7 @@ export default function Grundlagen() {
                   <div>
                     <h5 className="font-bold mb-1">Rezyklierte Körnungen</h5>
                     <p className="text-xs">
-                      Dürfen gemäß DAfStb (Typ 1 oder Typ 2) begrenzt beigemischt werden (z.B. 25-45% in trockenen Umgebungen). Problematisch ist oft der höhere Wasseranspruch.
+                      Dürfen gemäß DAfStb (Typ 1 oder Typ 2) begrenzt beigemischt werden (zulässige Anteile je Expositionsklasse nach DIN 1045-2:2023-08; manuell prüfen). Problematisch ist oft der höhere Wasseranspruch.
                     </p>
                   </div>
                 </div>
@@ -336,7 +357,7 @@ export default function Grundlagen() {
                 <div className="bg-white px-3 py-1 rounded-lg border font-bold text-shiraz">2</div>
                 <div>
                   <h4 className="font-bold mb-1">Zyklonvorwärmer & Kalzinator</h4>
-                  <p className="text-sm text-gray-700">Das Rohmehl wird auf 800-900 °C erhitzt. Dabei findet die <strong>Entsäuerung (Kalzinierung)</strong> statt: Kalkstein (CaCO₃) spaltet CO₂ ab und wird zu Branntkalk (CaO). Diese Prozess-Emissionen machen ca. 60% der CO₂-Emissionen aus.</p>
+                  <p className="text-sm text-gray-700">Das Rohmehl wird auf 800-900 °C erhitzt. Dabei findet die <strong>Entsäuerung (Kalzinierung)</strong> statt: Kalkstein (CaCO₃) spaltet CO₂ ab und wird zu Branntkalk (CaO). Diese rohstoffbedingten Emissionen machen rund zwei Drittel der CO₂-Emissionen der Klinkerherstellung aus (Umweltbundesamt).</p>
                 </div>
               </div>
 
@@ -383,7 +404,7 @@ export default function Grundlagen() {
                  { typ: 'CEM III', name: 'Hochofenzement', desc: 'Viel Hüttensand (36 - 95%). Geringe Wärmeentwicklung, hoher Widerstand gegen chemischen Angriff, sehr gut für Massenbeton.' },
                  { typ: 'CEM IV', name: 'Puzzolanzement', desc: 'Enthält Puzzolane oder Flugasche. Eher selten in DACH, genutzt für spezielle chemische Beständigkeiten.' },
                  { typ: 'CEM V', name: 'Kompositzement', desc: 'Klinker + Flugasche + Hüttensand. Umweltfreundlich, niedrige Hydratationswärme.' },
-                 { typ: 'CEM VI', name: 'Zusammengesetzter Zement', desc: 'Neuer Standard (EN 197-5) mit weiter reduziertem Klinkeranteil (hoher Anteil Hüttensand und Kalkstein) für minimalen CO2-Fußabdruck.' },
+                 { typ: 'CEM VI', name: 'Kompositzement (DIN EN 197-5)', desc: 'Seit 2021 genormt (DIN EN 197-5) mit weiter reduziertem Klinkeranteil (hoher Anteil Hüttensand und Kalkstein) für minimalen CO2-Fußabdruck.' },
                ].map((c, i) => (
                  <div key={i} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col">
                    <div className="text-lg font-bold text-shiraz mb-1">{c.typ}</div>
@@ -402,7 +423,7 @@ export default function Grundlagen() {
                 <li><strong>N (Normal):</strong> Normale Anfangsfestigkeit</li>
                 <li><strong>R (Rapid):</strong> Hohe Anfangsfestigkeit</li>
               </ul>
-              <div className="mt-3 text-xs text-text-main/50 font-mono bg-white p-2 border rounded">Beispiel: CEM II/A-LL 42,5 R (Portlandkalksteinzement, Festigkeitsklasse 42.5 Mpa, schnelle Anfangsfestigkeit)</div>
+              <div className="mt-3 text-xs text-text-main/50 font-mono bg-white p-2 border rounded">Beispiel: CEM II/A-LL 42,5 R (Portlandkalksteinzement, Normfestigkeit 42,5 N/mm², hohe Anfangsfestigkeit)</div>
             </div>
           </div>
         )}
@@ -416,44 +437,61 @@ export default function Grundlagen() {
              </p>
 
              <div className="bg-white rounded-xl border border-home-grau/30 shadow-sm p-5">
-               <h4 className="font-bold mb-4">Grenzwerte d. zulässigen Mehlkorngehalts (Richtwerte nach DIN 1045-2)</h4>
+               <h4 className="font-bold mb-4">Höchstzulässiger Mehlkorngehalt (DIN 1045-2, Tab. F.4.1 / F.4.2; Größtkorn 16–63 mm)</h4>
                <div className="overflow-x-auto">
                  <table className="w-full text-left text-sm border-collapse">
                    <thead>
                      <tr className="border-b-2 border-home-grau/30">
-                       <th className="py-2 px-2">Expositionsklasse</th>
-                       <th className="py-2 px-2">Anforderung</th>
+                       <th className="py-2 px-2">Anwendungsbereich</th>
+                       <th className="py-2 px-2">Zementgehalt</th>
                        <th className="py-2 px-2">Max. Mehlkorngehalt [kg/m³]</th>
                      </tr>
                    </thead>
                    <tbody>
                      <tr className="border-b border-home-grau/10">
-                       <td className="py-2 px-2">Ohne spezielle Klassen</td>
-                       <td className="py-2 px-2">Allgemein Hochbau, Dmax = 16..32 mm</td>
-                       <td className="py-2 px-2 font-mono">~ 400 - 450</td>
+                       <td className="py-2 px-2">XF, XM; bis C50/60 bzw. LC50/55</td>
+                       <td className="py-2 px-2">≤ 300 kg/m³</td>
+                       <td className="py-2 px-2 font-mono">400</td>
                      </tr>
                      <tr className="border-b border-home-grau/10">
-                       <td className="py-2 px-2">XF1, XF2, XF3, XF4</td>
-                       <td className="py-2 px-2">Dmax = 16 mm</td>
+                       <td className="py-2 px-2">XF, XM; bis C50/60 bzw. LC50/55</td>
+                       <td className="py-2 px-2">≥ 350 kg/m³</td>
                        <td className="py-2 px-2 font-mono">450</td>
                      </tr>
                      <tr className="border-b border-home-grau/10">
-                       <td className="py-2 px-2">XF1, XF2, XF3, XF4</td>
-                       <td className="py-2 px-2">Dmax = 32 mm</td>
-                       <td className="py-2 px-2 font-mono">400</td>
+                       <td className="py-2 px-2">Alle Expositionsklassen; ab C55/67 bzw. LC55/60</td>
+                       <td className="py-2 px-2">≤ 400 kg/m³</td>
+                       <td className="py-2 px-2 font-mono">500</td>
                      </tr>
                      <tr className="border-b border-home-grau/10">
-                       <td className="py-2 px-2">XM1, XM2, XM3</td>
-                       <td className="py-2 px-2">Verschleißwiderstand, Dmax = 32 mm</td>
-                       <td className="py-2 px-2 font-mono">400</td>
+                       <td className="py-2 px-2">Alle Expositionsklassen; ab C55/67 bzw. LC55/60</td>
+                       <td className="py-2 px-2">450 kg/m³</td>
+                       <td className="py-2 px-2 font-mono">550</td>
+                     </tr>
+                     <tr className="border-b border-home-grau/10">
+                       <td className="py-2 px-2">Alle Expositionsklassen; ab C55/67 bzw. LC55/60</td>
+                       <td className="py-2 px-2">≥ 500 kg/m³</td>
+                       <td className="py-2 px-2 font-mono">600</td>
                      </tr>
                    </tbody>
                  </table>
                </div>
                <p className="text-xs text-text-main/60 mt-3 text-justify">
-                 Hinweise: Wird Zement mit hohem Zusatzstoffanteil (z.B. CEM III oder CEM II/B) verwendet oder Zusatzstoffe (FA, SF) zugegeben, verschiebt sich die Leimgemischzusammensetzung. Um Klebrigkeit oder Rissneigung zu vermeiden, darf das Mehlkorn in Abhängigkeit der Gesteinsgrößen nicht beliebig überschritten werden. Bei Sichtbeton, hochgepumptem Beton oder selbstverdichtendem Beton (SCC) können Werte bis 600 kg/m³ gezielt eingesetzt werden.
+                 Zwischenwerte werden linear interpoliert. Die Werte entsprechen DIN 1045-2:2008-08; die Übernahme in DIN 1045-2:2023-08 ist manuell zu prüfen. Hinweise: Wird Zement mit hohem Zusatzstoffanteil (z.B. CEM III oder CEM II/B) verwendet oder Zusatzstoffe (FA, SF) zugegeben, verschiebt sich die Leimgemischzusammensetzung. Um Klebrigkeit oder Rissneigung zu vermeiden, darf das Mehlkorn in Abhängigkeit der Gesteinsgrößen nicht beliebig überschritten werden. Bei Sichtbeton, hochgepumptem Beton oder selbstverdichtendem Beton (SCC) können Werte bis 600 kg/m³ gezielt eingesetzt werden.
                </p>
              </div>
+            <FormulaDerivationBox
+              title="Anwendungsbeispiel: Mehlkorngehalt prüfen"
+              zielGleichung="m_{Mk} = m_z + m_{ST} + m_{Gk \le 0{,}125\,\text{mm}} \le m_{Mk,max}"
+              normQuelle="DIN 1045-2, Tab. F.4.1 (Ausgabe 2008; Übertrag auf 2023-08 manuell prüfen)"
+              schritte={[
+                { titel: '1. Gegeben (Lehrwerte)', formel: '\\text{C30/37, XF1},\\; D_{max} = 16\\,\\text{mm},\\; z = 320\\,\\text{kg/m}^3', erklaerung: 'Zusätzlich 40 kg/m³ Kalksteinmehl; Sand 0/2 mit 700 kg/m³ und 3 % Anteil ≤ 0,125 mm.' },
+                { titel: '2. Grenzwert interpolieren', formel: 'm_{Mk,max} = 400 + \\frac{320 - 300}{350 - 300} \\cdot 50 = 420\\,\\text{kg/m}^3', erklaerung: 'Zwischen 300 kg/m³ (400) und 350 kg/m³ (450) Zementgehalt linear interpoliert.' },
+                { titel: '3. Ist-Wert', formel: 'm_{Mk} = 320 + 40 + 0{,}03 \\cdot 700 = 381\\,\\text{kg/m}^3', erklaerung: 'Zement, Zusatzstoff und Feinstanteil der Gesteinskörnung zählen zum Mehlkorn.' },
+                { titel: '4. Nachweis', formel: '381 \\le 420\\,\\text{kg/m}^3', erklaerung: 'Anforderung erfüllt.' },
+              ]}
+              ergebnisHinweis="381 kg/m³ ≤ 420 kg/m³ – Mehlkorngehalt zulässig."
+            />
           </div>
         )}
 
@@ -511,18 +549,18 @@ export default function Grundlagen() {
                        <span>1. Hydratationswärme &amp; Massenbeton</span>
                      </div>
                      <p className="text-[11px] leading-relaxed text-text-main/80 mb-2">
-                       <strong>Problemstellung:</strong> Die Klinkerbestandteile (<FormulaText text="C_3S, C_3A" />) reagieren stark exotherm (Wärmefreisetzung bis ca. 500 J/g). In massigen Bauteilen (z.&nbsp;B. dicke Sohlplatten, Brückenpfeiler, Talsperren) staut sich die Reaktionswärme infolge der geringen Temperaturleitfähigkeit des Betons im Kern (oft 60–80&nbsp;°C), während die Randzonen abkühlen. Übersteigt die Temperaturdifferenz <FormulaText text="\Delta T > 15	ext{–}20	ext{ K}" />, entstehen massive thermische Zwangspannungen und klaffende Trennrisse.
+                       <strong>Problemstellung:</strong> Die Klinkerbestandteile (<FormulaText text="C_3S, C_3A" />) reagieren stark exotherm (Wärmefreisetzung bis ca. 500 J/g). In massigen Bauteilen (z.&nbsp;B. dicke Sohlplatten, Brückenpfeiler, Talsperren) staut sich die Reaktionswärme infolge der geringen Temperaturleitfähigkeit des Betons im Kern (oft 60–80&nbsp;°C), während die Randzonen abkühlen. Übersteigt die Temperaturdifferenz <FormulaText text="\Delta T > 15\text{–}20\text{ K}" />, entstehen massive thermische Zwangspannungen und klaffende Trennrisse.
                      </p>
                      <p className="text-[11px] leading-relaxed text-text-main/80">
                        <strong>Einfluss der Zusatzstoffe:</strong>
                      </p>
                      <ul className="list-disc list-inside text-[11px] space-y-1 text-text-main/75 mt-1 ml-1">
-                       <li><strong>Flugasche (FA) &amp; Hüttensandmehl (HüS):</strong> Reagieren puzzolanisch bzw. latent-hydraulisch mit deutlicher Verzögerung (Tage bis Wochen). Die adiabatische Temperaturspitze sinkt um <strong>30–50&nbsp;%</strong>. Die Wärme kann schadlos entweichen (Grundlage für LH-/VLH-Betone nach DIN 1045-2).</li>
+                       <li><strong>Flugasche (FA) &amp; Hüttensandmehl (HüS):</strong> Reagieren puzzolanisch bzw. latent-hydraulisch mit deutlicher Verzögerung (Tage bis Wochen). Die adiabatische Temperaturspitze sinkt deutlich (Lehrwert: 30–50&nbsp;%, abhängig von der Austauschrate). Die Wärme kann schadlos entweichen (Grundlage für LH-Zemente nach DIN EN 197-1 und VLH-Zemente nach DIN EN 14216).</li>
                        <li><strong>Silikastaub (SF):</strong> Beschleunigt durch extreme Keimbildungsflächen die Frühhydratation in den ersten 24–48&nbsp;h (erfordert sorgfältige frühe Nachbehandlung gegen Schwindrisse).</li>
                      </ul>
                    </div>
                    <div className="mt-3 pt-2 border-t border-home-grau/15 text-[10px] text-slate-500 font-mono">
-                     Praxisregel: Max. Kerntemperatur &lt; 65–70 °C | Gradient &Delta;T &le; 15–20 K
+                     Richtwerte (Praxis): Max. Kerntemperatur &lt; 65–70 °C | Gradient &Delta;T &le; 15–20 K
                    </div>
                  </div>
 
@@ -537,13 +575,13 @@ export default function Grundlagen() {
                        <strong>Was ist die ITZ?</strong> Die Kontakt- bzw. Übergangszone (ca. 10–50&nbsp;&mu;m um jedes Gesteinskorn) ist naturgemäß die <em>Sollbruchstelle („Achillesferse“)</em> des Betons. Durch den sogenannten <strong>„Wandeffekt“ (Wall Effect)</strong> können sich die relativ großen Zementkörner (10–50&nbsp;&mu;m) nicht dicht an die feste Kornoberfläche anlagern.
                      </p>
                      <p className="text-[11px] leading-relaxed text-text-main/80 mb-2">
-                       <strong>Schwachstelle ohne Zusatzstoffe:</strong> An der Kornoberfläche sammelt sich freies Wasser (lokal stark überhöhter w/z-Wert). Es bilden sich großkristalliner, weicher Portlandit (<FormulaText text="	ext{Ca(OH)}_2" />) und Ettringit. Die Folge: hohe Kapillarporosität, geringe Verbundfestigkeit und durchgängige Kanäle für Chloride, Frost und Säuren.
+                       <strong>Schwachstelle ohne Zusatzstoffe:</strong> An der Kornoberfläche sammelt sich freies Wasser (lokal stark überhöhter w/z-Wert). Es bilden sich großkristalliner, weicher Portlandit (<FormulaText text="\text{Ca(OH)}_2" />) und Ettringit. Die Folge: hohe Kapillarporosität, geringe Verbundfestigkeit und durchgängige Kanäle für Chloride, Frost und Säuren.
                      </p>
                      <p className="text-[11px] leading-relaxed text-text-main/80">
                        <strong>Optimierung durch Zusatzstoffe:</strong>
                      </p>
                      <ul className="list-disc list-inside text-[11px] space-y-1 text-text-main/75 mt-1 ml-1">
-                       <li><strong>Mikro-Füllereffekt:</strong> Nanofeiner Silikastaub (&Oslash; ca. 0,1&nbsp;&mu;m = 100-mal kleiner als Zement), Feinstflugasche und Biochar dringen direkt in die Kornzwischenräume ein und verdrängen den Wasserfilm.</li>
+                       <li><strong>Mikro-Füllereffekt:</strong> Nanofeiner Silikastaub (&Oslash; ca. 0,1&nbsp;&mu;m = 100-mal kleiner als Zement), Feinstflugasche dringen direkt in die Kornzwischenräume ein und verdrängen den Wasserfilm.</li>
                        <li><strong>Puzzolanische Phasenumwandlung:</strong> Sie wandeln den löslichen Portlandit chemisch in extrem dichte, feste C-S-H-Phasen um: <span className="font-mono text-shiraz text-[10px] block mt-0.5">Ca(OH)₂ + SiO₂ + H₂O &rarr; C-S-H</span></li>
                      </ul>
                    </div>
@@ -553,6 +591,18 @@ export default function Grundlagen() {
                  </div>
                </div>
              </div>
+            <FormulaDerivationBox
+              title="Anwendungsbeispiel: Äquivalenter w/z-Wert mit Flugasche"
+              zielGleichung="(w/z)_{eq} = \frac{w}{z + k_f \cdot f}"
+              normQuelle="DIN 1045-2 (Anrechnung von Flugasche, k_f = 0,4; f/z ≤ 0,33)"
+              schritte={[
+                { titel: '1. Gegeben (Lehrwerte)', formel: 'z = 280\\,\\text{kg/m}^3,\\; f = 80\\,\\text{kg/m}^3,\\; w = 160\\,\\text{kg/m}^3', erklaerung: 'Bauteil der Expositionsklasse XC4, Flugasche als Zusatzstoff Typ II.' },
+                { titel: '2. Anrechenbare Flugaschemenge prüfen', formel: 'f/z = 80/280 = 0{,}29 \\le 0{,}33', erklaerung: 'Die gesamte Flugasche darf angerechnet werden.' },
+                { titel: '3. Einsetzen', formel: '(w/z)_{eq} = \\frac{160}{280 + 0{,}4 \\cdot 80} = \\frac{160}{312} = 0{,}51', erklaerung: 'Der k-Wert berücksichtigt die geringere Wirksamkeit der Flugasche gegenüber Zement.' },
+                { titel: '4. Nachweis', formel: '0{,}51 \\le (w/z)_{max} = 0{,}60\\;(\\text{XC4})', erklaerung: 'Anforderung erfüllt. Ohne Anrechnung ergäbe sich w/z = 160/280 = 0,57.' },
+              ]}
+              ergebnisHinweis="(w/z)eq = 0,51 ≤ 0,60 – die Flugasche verbessert den rechnerischen Wasserzementwert."
+            />
           </div>
         )}
 
@@ -563,6 +613,8 @@ export default function Grundlagen() {
         )}
 
       </div>
+
+      <ModulTest moduleId="grundlagen" />
 
       <ModuleFooter
         wikipedia={[
@@ -580,12 +632,12 @@ export default function Grundlagen() {
           { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)' },
           { title: 'DIN EN 197-1 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien)' },
-          { title: 'DAfStb-Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)', url: 'https://www.dafstb.de/' }
+          { title: 'DAfStb-Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)' }
         ]}
         formeln={[
           {
-            formel: 'f_{ck,cube} = 1{,}25 \\cdot f_{ck,cyl} \\quad (\\text{bis C50/60})',
-            erklaerung: 'Verhältnis zwischen Zylinderdruckfestigkeit (150 mm Durchmesser, 300 mm Höhe) und Würfeldruckfestigkeit (150 mm Kantenlänge) aufgrund der Querdehnungsbehinderung an den Prüfmaschinenplatten.',
+            formel: 'f_{ck,cube} \\approx (1{,}20 \\ldots 1{,}25) \\cdot f_{ck,cyl} \\quad (\\text{bis C50/60})',
+            erklaerung: 'Aus den Klassenwerten abgelesen (z. B. C30/37: 37/30 = 1,23; C50/60: 60/50 = 1,20). Verhältnis zwischen Zylinderdruckfestigkeit (150 mm Durchmesser, 300 mm Höhe) und Würfeldruckfestigkeit (150 mm Kantenlänge) aufgrund der Querdehnungsbehinderung an den Prüfmaschinenplatten.',
             quelle: 'DIN EN 206 / DIN 1045-2'
           },
           {
