@@ -3,11 +3,11 @@ import { GMODG_ANLAGE7, FX, uRetrofit, dRequired } from '@/src/utils/bestandKern
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Slider } from '@/src/components/ui/Slider';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { InlineMath, BlockMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,18 +23,10 @@ import {
   Layers, 
   Construction, 
   Calendar, 
-  Flame, 
   ArrowRight, 
-  Sparkles, 
   TrendingUp, 
-  Coins, 
-  ShieldCheck, 
-  FileText, 
-  Activity,
+  ShieldCheck,
   Calculator,
-  Compass,
-  Zap,
-  Leaf,
   BarChart3,
   BookOpen,
   AlertTriangle,
@@ -586,7 +578,7 @@ export default function Bestand() {
                     <label className="text-xs font-semibold text-slate-700 block mb-1">
                       Wärmeleitfähigkeit λ_D [W/(mK)]:
                     </label>
-                    <select
+                    <select aria-label="Wärmeleitfähigkeit λ_D [W/(mK)]"
                       value={lambda}
                       onChange={(e) => setLambda(parseFloat(e.target.value))}
                       className="w-full text-xs p-2.5 rounded-lg border border-home-grau/30 bg-white"
@@ -613,7 +605,7 @@ export default function Bestand() {
                     <label className="text-xs font-semibold text-slate-700 block mb-1">
                       Bestehendes Heizsystem:
                     </label>
-                    <select
+                    <select aria-label="Bestehendes Heizsystem"
                       value={heatingSource}
                       onChange={(e) => setHeatingSource(e.target.value)}
                       className="w-full text-xs p-2.5 rounded-lg border border-home-grau/30 bg-white"

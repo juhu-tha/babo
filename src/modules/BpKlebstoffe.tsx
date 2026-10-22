@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Layers, BookOpen, CheckCircle2, Lightbulb, ClipboardList, AlertTriangle, ShieldCheck, HelpCircle, Compass, Sparkles, ArrowRight, Calculator } from 'lucide-react';
+import { Layers, BookOpen, CheckCircle2, Lightbulb, AlertTriangle, ShieldCheck, Sparkles, ArrowRight, Calculator } from 'lucide-react';
 import { InnovationPraxisSection, PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import { KlebstoffBerater } from '@/src/components/KlebstoffBerater';
 

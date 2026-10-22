@@ -15,6 +15,7 @@ import {
   Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -449,7 +450,7 @@ export default function Baustatik() {
               <div className="grid grid-cols-1 gap-4">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Statisches System</label><InfoTooltip text="Art der Lagerung des Trägers (z.B. Einfeldträger, Kragarm)." /></div>
-                  <select 
+                  <select aria-label="Statisches System" 
                     className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={system}
                     onChange={(e) => setSystem(e.target.value as 'einfeld' | 'kragarm' | 'zweifeld')}

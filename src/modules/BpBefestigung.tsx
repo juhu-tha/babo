@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { Layers, BookOpen, CheckCircle2, Lightbulb, ClipboardList, Info, ShieldAlert, Sparkles, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Layers, BookOpen, CheckCircle2, Lightbulb, ShieldAlert, Sparkles, AlertTriangle, ArrowRight } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 
 interface FastenerProduct {

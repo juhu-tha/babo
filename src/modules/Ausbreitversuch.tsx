@@ -1,7 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Play, RotateCcw, CircleDashed } from 'lucide-react';
 import {
   Chart as ChartJS,
@@ -14,6 +12,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import '@/src/lib/chartSetup';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -54,7 +53,7 @@ export default function Ausbreitversuch() {
     setProgress(0);
     setAusbreitmass(200);
 
-    let targetMass = params.targetMass + (Math.random() * 20 - 10);
+    const targetMass = params.targetMass + (Math.random() * 20 - 10);
 
     let currentStep = 0;
     const steps = 40;
@@ -156,7 +155,7 @@ export default function Ausbreitversuch() {
             
             <div className="space-y-3">
               <label className="text-sm font-bold text-text-main">Konsistenzklasse wählen</label>
-              <select
+              <select aria-label="Konsistenzklasse wählen"
                 value={consistency}
                 onChange={(e) => setConsistency(e.target.value as ConsistencyClass)}
                 disabled={testStatus === 'running'}
@@ -298,34 +297,6 @@ export default function Ausbreitversuch() {
         </div>
       </div>
     
-      <ModuleFooter 
-        wikipedia={[
-          { title: 'Ausbreitmaß', url: 'https://de.wikipedia.org/wiki/Ausbreitma%C3%9F' },
-          { title: 'Bingham-Fluid', url: 'https://de.wikipedia.org/wiki/Bingham-Fluid' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 12350-5 (Prüfung von Frischbeton - Teil 5: Ausbreitmaß)' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Konsistenzklassen F1 bis F6 und SVB)' },
-          { title: 'DAfStb-Richtlinie: Selbstverdichtender Beton (SVB)', url: 'https://www.dafstb.de/' }
-        ]}
-        literatur={[
-          'Walz, K. (1970): Zur Prüfung der Konsistenz des Frischbetons (Beton 20)',
-          'Tattersall, G. H.; Banfill, P. F. G. (1983): The Rheology of Fresh Concrete (Pitman Publishing)',
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)'
-        ]}
-        formeln={[
-          {
-            formel: 'f = \\frac{d_1 + d_2}{2}',
-            erklaerung: 'Ausbreitmaß f [mm]: Arithmetischer Mittelwert aus zwei zueinander rechtwinklig gemessenen Durchmessern des Betonkuchens nach 15 Hubschlägen auf dem Ausbreittisch.',
-            quelle: 'DIN EN 12350-5'
-          },
-          {
-            formel: '\\tau = \\tau_0 + \\mu_p \\cdot \\dot{\\gamma}',
-            erklaerung: 'Bingham-Modell für Frischbeton: τ = Schubspannung, τ0 = Fließgrenze (maßgebend für Ausbreitmaß/Slump), μp = plastische Viskosität (maßgebend für Fließgeschwindigkeit/Pumpbarkeit), γ̇ = Scherrate.',
-            quelle: 'Bingham (1922) / Tattersall (1983)'
-          }
-        ]}
-      />
 </div>
   );
 }
