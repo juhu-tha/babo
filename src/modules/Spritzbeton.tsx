@@ -1,10 +1,7 @@
-import { formatDeWert } from '@/src/utils/numberFormat';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import React, { useState } from 'react';
+import React from 'react';
 import { Waves, Zap } from 'lucide-react';
 
 export default function Spritzbeton() {
-  const [schichtdicke, setSchichtdicke] = useState(5);
 
   return (
     <div className="flex flex-col gap-8">
@@ -63,7 +60,7 @@ export default function Spritzbeton() {
 
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
            <div className="relative z-10 w-full">
-            <h3 className="text-lg font-bold text-text-main mb-6 text-center">Applikations-Visualisierung</h3>
+            <h3 className="text-lg font-bold text-text-main mb-6 text-center">Schema: Auftrag einer Spritzbetonlage</h3>
             
             <div className="flex justify-center mb-10">
               <div className="relative w-48 h-48">
@@ -73,7 +70,7 @@ export default function Spritzbeton() {
                 {/* Sprayed Layer */}
                 <div 
                   className="absolute inset-y-0 right-8 bg-slate-500 rounded-l-md transition-all duration-300 border-y border-l border-home-grau/30"
-                  style={{ width: `${schichtdicke * 4}px` }}
+                  style={{ width: '20px' }}
                 >
                    {/* Texture dots representing aggregates */}
                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
@@ -93,19 +90,9 @@ export default function Spritzbeton() {
             </div>
 
             <div className="px-4">
-              <label className="text-sm font-medium text-text-main flex justify-between mb-2">
-                <span>Dicke pro Lage</span>
-                <span className="text-shiraz font-bold">{formatDeWert(schichtdicke)} cm</span>
-              </label>
-              <input 
-                type="range" min="1" max="15" step="1"
-                value={schichtdicke}
-                onChange={(e) => setSchichtdicke(Number(e.target.value))}
-                className="w-full accent-shiraz cursor-pointer"
-              />
               <p className="text-xs text-home-grau text-center mt-3">
                 Übliche Schichtdicken pro Spritzgang liegen zwischen 3 und 10 cm. 
-                Größere Dicken erfordern Erstarrungsbeschleuniger und Bewehrung.
+                Größere Dicken erfordern Erstarrungsbeschleuniger und Bewehrung (Erfahrungswerte).
               </p>
             </div>
            </div>
@@ -144,39 +131,6 @@ export default function Spritzbeton() {
         </div>
       </div>
     
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Spritzbeton', url: 'https://beton.wiki/index.php?title=Spritzbeton' },
-          { title: "Zement-Merkblatt B19: Spritzbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Spritzbeton', url: 'https://de.wikipedia.org/wiki/Spritzbeton' },
-          { title: 'Neue Österreichische Tunnelbaumethode', url: 'https://de.wikipedia.org/wiki/Neue_%C3%96sterreichische_Tunnelbaumethode' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)' },
-          { title: 'DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)' },
-          { title: 'DIN 18314 (VOB/C: Spritzbetonarbeiten)' },
-          { title: 'ÖBV-Richtlinie Spritzbeton (Klassen J1, J2, J3 zur Frühfestigkeit)', url: 'https://www.bautechnik.pro/' }
-        ]}
-        literatur={[
-          'Maidl, B. (2014): Tunnelbau im Spreng- und Spritzbetonvortrieb (Springer Vieweg)',
-          'Kusterle, W. et al.: Spritzbetontechnologie (Ernst & Sohn, Beton-Kalender)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'R = \\frac{m_{\\text{Rückprall}}}{m_{\\text{Gesamtförderung}}} \\cdot 100\\,\\%',
-            erklaerung: 'Rückprallquote R: Anteil des von der Wand oder Decke abprallenden Materials (Trockenspritzen ca. 15-30 %, Nassspritzen ca. 5-15 %).',
-            quelle: 'DIN EN 14487-2'
-          },
-          {
-            formel: 'E_{\\text{kin}} = \\frac{1}{2} m \\cdot v^2 \\quad (v \\approx 20 - 30\\,\\text{m/s})',
-            erklaerung: 'Kinetische Aufprallenergie an der Spritzdüse, die zur selbsttätigen Gefügeverdichtung des Frischbetons an der Schalungs-/Felswand führt.',
-            quelle: 'ÖBV-Richtlinie Spritzbeton'
-          }
-        ]}
-      />
 </div>
   );
 }

@@ -2,7 +2,6 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { AlertTriangle, CheckCircle2, Leaf, Droplets } from 'lucide-react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -62,9 +61,9 @@ export default function Recyclingbeton() {
 
     if (rcAnteil > maxAnteil) {
       isOk = false;
-      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% überschreitet den nach DAfStb-Richtlinie zulässigen Maximalwert von ${formatDeWert(maxAnteil)}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% überschreitet den nach DAfStb-Richtlinie (2010) zulässigen Maximalwert von ${formatDeWert(maxAnteil)}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
     } else {
-      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% liegt innerhalb der normativen Grenzen (max. ${formatDeWert(maxAnteil)}%).`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% liegt innerhalb der Grenzen der DAfStb-Richtlinie (max. ${formatDeWert(maxAnteil)}%; Übernahme in DIN 1045-2:2023-08 manuell prüfen).`;
     }
 
     // Wasseraufnahme (Kernfeuchte)
@@ -338,38 +337,6 @@ export default function Recyclingbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: RC-Beton' },
-          { title: "Zement-Merkblatt B33: Recyclingbeton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Recyclingbeton', url: 'https://de.wikipedia.org/wiki/Recyclingbeton' },
-          { title: 'Bauschutt', url: 'https://de.wikipedia.org/wiki/Bauschutt' }
-        ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie: Beton nach DIN EN 206 und DIN 1045-2 mit rezyklierten Gesteinskörnungen:2010-09', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)' },
-          { title: 'DIN 1045-2:2023-08 (R-Beton Typ A und Typ B)' }
-        ]}
-        literatur={[
-          'DAfStb Heft 580 & Heft 600: Bemessung und Konstruktion bei Verwendung von rezyklierten Gesteinskörnungen',
-          'Müller, A. (2014): Baustoffrecycling - Entstehung, Aufbereitung und Verwertung mineralischer Recyclingbaustoffe (Springer Vieweg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'w_{\\text{korr}} = w_{\\text{eff}} + \\sum \\left( m_{\\text{RC},i} \\cdot \\frac{\\text{WA}_{24,i} - h_i}{100} \\right)',
-            erklaerung: 'Korrektur des Zugabewassers für RC-Beton: Berücksichtigung der 24-Stunden-Wasseraufnahme WA_24 der porösen Altmörtelanteile im Vergleich zur Eigenfeuchte h.',
-            quelle: 'DAfStb-Richtlinie R-Beton'
-          },
-          {
-            formel: 'E_{\\text{cm,RC}} = E_{\\text{cm}} \\cdot \\left( 1 - \\alpha_{\\text{RC}} \\cdot \\frac{\\text{RC\\%}}{100} \\right)',
-            erklaerung: 'Abminderung des statischen E-Moduls infolge des geringeren E-Moduls der Altmörtel- und Ziegelphasen (α_RC ≈ 0.25 bis 0.40 je nach Typ 1 oder 2).',
-            quelle: 'DAfStb Heft 600'
-          }
-        ]}
-      />
     </div>
   );
 }

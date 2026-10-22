@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Layers, Settings, Activity, Map, Drill } from 'lucide-react';
 
 export default function Bohrpfahlbeton() {
@@ -30,6 +29,7 @@ export default function Bohrpfahlbeton() {
             <li>Hoher Mehlkorngehalt für optimales Zusammenhaltungsvermögen (Kohäsion).</li>
             <li>Sicheres und vollständiges Umschließen der Bewehrungskörbe.</li>
             <li>Kein Entmischen oder Blockieren (Stopfer) während des Einbaus.</li>
+              <li>Mindestzementgehalt, höchster w/z-Wert und Mindestfeinanteil sind in DIN EN 1536 geregelt (Werte manuell prüfen).</li>
           </ul>
         </div>
 
@@ -70,7 +70,7 @@ export default function Bohrpfahlbeton() {
       </div>
             
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³)</h3>
+        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -100,38 +100,6 @@ export default function Bohrpfahlbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Bohrpfähle' },
-          { title: "Zement-Taschenbuch (VDZ)", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
-        wikipedia={[
-          { title: 'Bohrpfahl', url: 'https://de.wikipedia.org/wiki/Bohrpfahl' },
-          { title: 'Spezialtiefbau', url: 'https://de.wikipedia.org/wiki/Spezialtiefbau' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1536:2015-10 (Ausführung von Arbeiten im Spezialtiefbau - Bohrpfähle)' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Anforderungen an Beton für Geotechnische Bauteile / Bohrpfähle)' },
-          { title: 'Empfehlungen des Arbeitskreises Pfähle (EA-Pfähle, DGGT)', url: 'https://www.dggt.de/' }
-        ]}
-        literatur={[
-          'Kempfert, H.-G.; Raithel, M. (2020): Bodenmechanik und Grundbau 2 - Baugruben und Gründungen (Springer Vieweg)',
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'm_{\\text{Zement}} \\ge 325 - 375\\,\\text{kg/m}^3 \\quad (w/z \\le 0{,}60)',
-            erklaerung: 'Mindestzementgehalt nach DIN EN 1536 / DIN 1045-2 in Abhängigkeit vom Größtkorn (16 bzw. 32 mm) und dem Einbauverfahren (trocken oder unter Stützflüssigkeit).',
-            quelle: 'DIN EN 1536 / DIN 1045-2'
-          },
-          {
-            formel: 't_{\\text{Verarbeitbarkeit}} \\ge t_{\\text{Förderung}} + t_{\\text{Einbau}} + 2\\,\\text{h}',
-            erklaerung: 'Mindestdauer der Konsistenzhaltung (oft 4 bis 6 Stunden) zur Vermeidung von Abreißern des Betonstrangs beim Ziehen der Verrohrung.',
-            quelle: 'EA-Pfähle'
-          }
-        ]}
-      />
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React from 'react';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { ThermometerSun, Cuboid, Flame, ArrowDownToLine } from 'lucide-react';
 
 export default function Massenbeton() {
+  const { setActiveTab } = useTabContext();
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
@@ -17,6 +18,12 @@ export default function Massenbeton() {
           </p>
         </div>
       </div>
+
+      <p className="text-sm text-text-main/80 flex flex-wrap items-center gap-1 -mt-4">
+        Temperaturverlauf, Rechenbeispiel zur adiabatischen Erwärmung und Simulation:
+        <button onClick={() => setActiveTab('hydratation_folgen')} className="underline decoration-dotted hover:text-shiraz cursor-pointer font-semibold">Hydratation &amp; Folgen → Massige Bauteile</button>
+        (Mindestabmessung nach DAfStb-Richtlinie Massige Bauteile: 0,80 m)
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
@@ -41,7 +48,7 @@ export default function Massenbeton() {
             Um Schäden in massigen Bauteilen entgegenzuwirken, muss die Wärmeentwicklung begrenzt werden:
           </p>
           <ul className="list-disc list-inside text-sm text-text-main/80 space-y-2">
-            <li>Nutzung von <strong>Zementen mit niedriger Wärmeentwicklung</strong> (Zusatz LH: "Low Heat"). Flugaschereiche Zemente (z.B. CEM III).</li>
+            <li>Nutzung von <strong>Zementen mit niedriger Wärmeentwicklung</strong> (Zusatz LH: "Low Heat"). Hüttensandreiche (CEM III) oder flugaschehaltige Zemente.</li>
             <li>Zementgehalt minimieren, dafür Einsatz von ungebrochener Gesteinskörnung & Fließmitteln.</li>
             <li>Aktive Kühlung durch <strong>Kühlrohrsysteme</strong> im Kern (flüssigkeitsbasiert).</li>
             <li>Vorkühlen der Ausgangsstoffe (Kühlmittel, Scherbeneis).</li>
@@ -60,7 +67,7 @@ export default function Massenbeton() {
       </div>
             
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³)</h3>
+        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -79,7 +86,7 @@ export default function Massenbeton() {
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 80 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Wasser (w/b ~0,50 - 0,60)</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium">Wasser (w/z ≈ 0,58)</td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 150 kg</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
@@ -90,38 +97,6 @@ export default function Massenbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Massige Bauteile', url: 'https://beton.wiki/index.php?title=Massige_Bauteile' },
-          { title: "Zement-Merkblatt B11: Massige Bauteile aus Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
-        ]}
-        wikipedia={[
-          { title: 'Massiger Beton' },
-          { title: 'Walzbeton', url: 'https://de.wikipedia.org/wiki/Walzbeton' }
-        ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 197-1 (Zemente mit niedriger Hydratationswärme LH / sehr niedriger Hydratationswärme VLH)' },
-          { title: 'DIN EN 1992-1-1 / DIN EN 1992-3 (Rissbreitenbegrenzung infolge früher Zwangskräfte)' }
-        ]}
-        literatur={[
-          'DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton (Beuth Verlag)',
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: '\\Delta T_{\\text{ad}} = \\frac{z \\cdot Q_{H,7d}}{c_c \\cdot \\rho_c} \\approx \\frac{z \\cdot 250\\,\\text{kJ/kg}}{1{,}0\\,\\text{kJ/(kg}\\cdot\\text{K)} \\cdot 2400\\,\\text{kg/m}^3}',
-            erklaerung: 'Adiabater Temperaturanstieg ΔT_ad infolge Zementhydratation im Bauteilkern ohne äußere Wärmeabfuhr.',
-            quelle: 'DAfStb-Richtlinie Massige Bauteile'
-          },
-          {
-            formel: '\\Delta T_{\\text{Kern-Rand}} \\le 15 - 20\\,\\text{K}',
-            erklaerung: 'Kritische Begrenzung der Temperaturdifferenz zwischen Bauteilkern und Oberfläche zur Vermeidung von Trennrissen durch Eigenspannungen.',
-            quelle: 'DAfStb Heft 555'
-          }
-        ]}
-      />
     </div>
   );
 }

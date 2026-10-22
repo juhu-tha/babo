@@ -7511,5 +7511,245 @@
       "targetModuleLabel": "Festbeton"
     },
     "verified": false
+  },
+  {
+    "id": "q_sbt_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sichtbeton",
+    "moduleTitle": "Sichtbeton",
+    "topic": "Schalungshaut",
+    "difficulty": "Basis",
+    "normRef": "DBV/VDZ-Merkblatt Sichtbeton (2015)",
+    "question": "Welche Wirkung hat eine saugende Schalung (z. B. sägeraues Holz) im Vergleich zu einer nicht saugenden?",
+    "options": [
+      "Hellere Oberfläche mit mehr Poren",
+      "Dunklere, porenärmere Oberfläche mit Holzstruktur",
+      "Keine erkennbare Wirkung",
+      "Mehr Kiesnester"
+    ],
+    "correctIdx": 1,
+    "explanation": "Saugende Schalung entzieht der Randzone Wasser und Luft: dunklere, porenärmere Oberfläche; nicht saugende Schalung ergibt glatte, hellere Flächen mit höherer Lunkerneigung.",
+    "gapAnalysis": {
+      "topic": "Schalungshaut",
+      "misconception": "Die Schalung beeinflusse nur die Textur, nicht den Farbton.",
+      "coreRule": "Schalhaut und Trennmittel bestimmen Farbton und Porigkeit wesentlich mit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schalungshaut“ im Modul Sichtbeton noch einmal durch.",
+      "targetModuleTab": "sichtbeton",
+      "targetModuleLabel": "Sichtbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sbt_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sichtbeton",
+    "moduleTitle": "Sichtbeton",
+    "topic": "Marmorierung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DBV/VDZ-Merkblatt Sichtbeton (2015)",
+    "question": "Was ist eine typische Ursache für Marmorierungen (Wolkenbildung) auf Sichtbetonflächen?",
+    "options": [
+      "Zu große Betondeckung",
+      "Örtlich unterschiedliche w/z-Werte an der Oberfläche, z. B. durch Trennmittelpfützen oder ungleichmäßiges Saugen",
+      "Zu niedrige Lufttemperatur beim Ausschalen",
+      "Verwendung von CEM I"
+    ],
+    "correctIdx": 1,
+    "explanation": "Unterschiedliche Wasserzementwerte in der Randzone führen zu Helligkeitsunterschieden.",
+    "gapAnalysis": {
+      "topic": "Marmorierung",
+      "misconception": "Marmorierungen seien reine Verschmutzung.",
+      "coreRule": "Trennmittel dünn und gleichmäßig auftragen, Schalhaut einheitlich vorbehandeln.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Marmorierung“ im Modul Sichtbeton noch einmal durch.",
+      "targetModuleTab": "sichtbeton",
+      "targetModuleLabel": "Sichtbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "Leichtbeton",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1, 11.3.2",
+    "question": "Wie groß ist der Abminderungsbeiwert η_E = (ρ/2 200)² für einen Leichtbeton mit ρ = 1 800 kg/m³?",
+    "options": [
+      "0,45",
+      "0,67",
+      "0,82",
+      "1,00"
+    ],
+    "correctIdx": 1,
+    "explanation": "(1 800/2 200)² = 0,818² = 0,67.",
+    "gapAnalysis": {
+      "topic": "Leichtbeton",
+      "misconception": "Leichtbeton habe bei gleicher Festigkeit denselben E-Modul.",
+      "coreRule": "Der E-Modul sinkt quadratisch mit der Rohdichte.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Leichtbeton“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "UHPC",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-Heft 561 (2008)",
+    "question": "Welche Aussage zu ultrahochfestem Beton (UHPC) trifft zu?",
+    "options": [
+      "UHPC ist in DIN EN 206 mit eigenen Festigkeitsklassen genormt",
+      "UHPC erreicht sehr hohe Festigkeiten durch sehr niedrigen w/z-Wert (< 0,25), Silikastaub und dichte Packung; eine DAfStb-Richtlinie ist in Vorbereitung",
+      "UHPC benötigt keine Fließmittel",
+      "UHPC ist besonders duktil und braucht keine Fasern"
+    ],
+    "correctIdx": 1,
+    "explanation": "Für UHPC gibt es (Stand Herbst 2024) keine genormten Klassen; Grundlage sind Sachstandsbericht (Heft 561) und Zulassungen.",
+    "gapAnalysis": {
+      "topic": "UHPC",
+      "misconception": "UHPC sei einfach ein besonders fester Normalbeton nach DIN EN 206.",
+      "coreRule": "Packungsdichte, niedriger w/z-Wert und Fasern prägen UHPC.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „UHPC“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "SVB",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206; DIN EN 12350-8",
+    "question": "Ein SVB erreicht im Setzfließversuch 720 mm. Welche Klasse liegt vor?",
+    "options": [
+      "SF1",
+      "SF2",
+      "SF3",
+      "F6"
+    ],
+    "correctIdx": 1,
+    "explanation": "SF2 umfasst 660–750 mm (SF1 550–650, SF3 760–850 mm).",
+    "gapAnalysis": {
+      "topic": "SVB",
+      "misconception": "SVB werde mit dem Ausbreittisch (F-Klassen) eingestuft.",
+      "coreRule": "SVB wird über das Setzfließmaß (SF-Klassen) klassifiziert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „SVB“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "Unterwasserbeton",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Contractor-Verfahren",
+    "question": "Worauf kommt es beim Contractor-Verfahren für Unterwasserbeton an?",
+    "options": [
+      "Der Beton wird frei durch das Wasser geschüttet",
+      "Das Schüttrohr bleibt ständig in den Frischbeton eingetaucht",
+      "Der Beton wird nachträglich mit Tauchrüttlern verdichtet",
+      "Es wird nur Beton mit w/z > 0,70 verwendet"
+    ],
+    "correctIdx": 1,
+    "explanation": "Durch das eingetauchte Rohr fällt der Beton nicht durch das Wasser; Entmischung und Auswaschen des Zementleims werden vermieden.",
+    "gapAnalysis": {
+      "topic": "Unterwasserbeton",
+      "misconception": "Unterwasserbeton könne wie Normalbeton eingebracht werden.",
+      "coreRule": "Kein freier Fall durch Wasser; kohäsive Mischung mit Stabilisierer.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Unterwasserbeton“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "Schwerbeton",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 206",
+    "question": "Ab welcher Trockenrohdichte spricht man nach DIN EN 206 von Schwerbeton?",
+    "options": [
+      "über 2 000 kg/m³",
+      "über 2 400 kg/m³",
+      "über 2 600 kg/m³",
+      "über 3 000 kg/m³"
+    ],
+    "correctIdx": 2,
+    "explanation": "Normalbeton liegt zwischen 2 000 und 2 600 kg/m³, Schwerbeton darüber; Leichtbeton bei 800–2 000 kg/m³.",
+    "gapAnalysis": {
+      "topic": "Schwerbeton",
+      "misconception": "Jeder Beton mit Stahlfasern sei Schwerbeton.",
+      "coreRule": "Leichtbeton < 2 000, Normalbeton 2 000–2 600, Schwerbeton > 2 600 kg/m³.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schwerbeton“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sob_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "sonderbetone",
+    "moduleTitle": "Sonderbetone",
+    "topic": "Massige Bauteile",
+    "difficulty": "Basis",
+    "normRef": "DAfStb-Richtlinie Massige Bauteile aus Beton",
+    "question": "Ab welcher kleinsten Bauteilabmessung gilt ein Betonbauteil nach DAfStb-Richtlinie als massig?",
+    "options": [
+      "0,30 m",
+      "0,50 m",
+      "0,80 m",
+      "2,00 m"
+    ],
+    "correctIdx": 2,
+    "explanation": "Massige Bauteile haben eine kleinste Abmessung von mindestens 0,80 m; die Hydratationswärme kann dann nur langsam abfließen.",
+    "gapAnalysis": {
+      "topic": "Massige Bauteile",
+      "misconception": "Massig sei nur, was als Talsperre gebaut wird.",
+      "coreRule": "Ab 0,80 m Temperatur- und Zwangsbeanspruchung gezielt begrenzen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Massige Bauteile“ im Modul Sonderbetone noch einmal durch.",
+      "targetModuleTab": "sonderbetone",
+      "targetModuleLabel": "Sonderbetone"
+    },
+    "verified": false
   }
 ]

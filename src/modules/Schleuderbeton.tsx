@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { RefreshCcw, Layers, Settings, Activity, Map, ShieldCheck } from 'lucide-react';
 
 export default function Schleuderbeton() {
@@ -65,7 +64,7 @@ export default function Schleuderbeton() {
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h3 className="font-bold text-text-main text-lg mb-4">Beispielrezeptur (Richtwerte)</h3>
+        <h3 className="font-bold text-text-main text-lg mb-4">Beispielrezeptur (Richtwerte, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -95,38 +94,6 @@ export default function Schleuderbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Schleuderbeton', url: 'https://beton.wiki/index.php?title=Schleuderbeton' },
-          { title: "Zement-Taschenbuch (VDZ)", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
-        wikipedia={[
-          { title: 'Schleuderbeton', url: 'https://de.wikipedia.org/wiki/Schleuderbeton' },
-          { title: 'Zentrifugalkraft', url: 'https://de.wikipedia.org/wiki/Zentrifugalkraft' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 12843 (Betonfertigteile - Maste)' },
-          { title: 'DIN EN 1916 / DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' }
-        ]}
-        literatur={[
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Beton-Kalender: Fertigteile und Spannbetonmaste (Ernst & Sohn)'
-        ]}
-        formeln={[
-          {
-            formel: 'a_z = \\omega^2 \\cdot r = (2 \\pi \\cdot n)^2 \\cdot r \\quad (\\approx 20 - 50\\,g)',
-            erklaerung: 'Zentrifugalbeschleunigung während der Schleuderphase bei Drehzahl n und Radius r zur mechanischen Wasserabpressung und Entlüftung.',
-            quelle: 'Grübl et al. (2001)'
-          },
-          {
-            formel: '(w/z)_{\\text{eff}} = (w/z)_0 - \\frac{\\Delta m_w}{z} \\quad (\\approx 0{,}30 - 0{,}35)',
-            erklaerung: 'Effektiver w/z-Wert des erhärtenden Rohrkörpers nach radialem Auspressen und Abfließen des Schlempewassers Δm_w zum Rohrinnenraum.',
-            quelle: 'DIN EN 12843'
-          }
-        ]}
-      />
     </div>
   );
 }

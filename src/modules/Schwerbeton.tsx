@@ -1,4 +1,3 @@
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import React from 'react';
 import { Anchor, ShieldAlert, Weight, Scale } from 'lucide-react';
 
@@ -13,7 +12,7 @@ export default function Schwerbeton() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
           <p>
             Schwerbeton ist definiert als Beton mit einer Trockenrohdichte von mehr als <strong>2.600 kg/m³</strong> (bzw. &gt; 2,6 kg/dm³).
-            Durch den Einsatz spezieller Gesteinskörnungen mit hoher Eigenmasse lassen sich spezielle physikalische Eigenschaften wie erhöhter Strahlenschutz oder hohes Gewichts- zu Volumengewicht generieren.
+            Durch den Einsatz spezieller Gesteinskörnungen mit hoher Eigenmasse lassen sich spezielle physikalische Eigenschaften wie erhöhter Strahlenschutz oder eine hohe Masse je Volumen erzielen.
           </p>
         </div>
       </div>
@@ -53,14 +52,14 @@ export default function Schwerbeton() {
         <div>
           <h4 className="font-bold text-text-main mb-2">Strahlenschutzbeton</h4>
           <p className="text-sm text-text-main/80 leading-relaxed">
-            Eine primäre Anwendung von Schwerbeton ist der Abschirmungsbau (Krankenhäuser mit Röntgengeräten, Strahlentherapie, Kernkraftwerke oder Castor-Behälter). 
+            Eine primäre Anwendung von Schwerbeton ist der Abschirmungsbau (Krankenhäuser mit Röntgengeräten, Strahlentherapie, Kernkraftwerke). 
             Die hohe Massendichte schwächt Gammastrahlung ab, während oft noch zusätzlich Wasserstoffhaltige Bestandteile (wie Kristallwasser im Zuschlag oder viel Zementleim) eingebracht werden, um Neutronenstrahlung effektiv abzubremsen.
           </p>
         </div>
       </div>
 
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
-        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³)</h3>
+        <h3 className="font-bold text-text-main mb-4">Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
@@ -90,38 +89,6 @@ export default function Schwerbeton() {
           </table>
         </div>
       </div>
-      <ModuleFooter
-        weblinks={[
-          { title: 'Beton.wiki: Schwerbeton', url: 'https://beton.wiki/index.php?title=Schwerbeton' },
-          { title: "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
-        wikipedia={[
-          { title: 'Schwerbeton', url: 'https://de.wikipedia.org/wiki/Schwerbeton' },
-          { title: 'Strahlenschutz', url: 'https://de.wikipedia.org/wiki/Strahlenschutz' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Schwerbeton mit Trockenrohdichte > 2600 kg/m³)' },
-          { title: 'DIN 25413-1:1995-10 (Strahlenschutzbeton - Teil 1: Baustoffe für Strahlenschutzbeton)' },
-          { title: 'DIN 6847-2:2008-03 (Medizinische Elektronenbeschleuniger-Anlagen - Baulicher Strahlenschutz)' }
-        ]}
-        literatur={[
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Schultze, N.: Strahlenschutz im Hochbau (Bauverlag)'
-        ]}
-        formeln={[
-          {
-            formel: 'I(x) = I_0 \\cdot e^{-\\mu \\cdot x} = I_0 \\cdot 2^{-x / d_{1/2}}',
-            erklaerung: 'Lambert-Beersches Schwächungsgesetz für Gammastrahlung: Je höher der lineare Schwächungskoeffizient μ (proportional zur Materialdichte ρ), desto geringer die erforderliche Halbwertsdicke d_1/2.',
-            quelle: 'DIN 25413-1'
-          },
-          {
-            formel: '\\rho_{\\text{dry}} > 2600\\,\\text{kg/m}^3 \\quad (\\text{typisch } 3200 - 4500\\,\\text{kg/m}^3)',
-            erklaerung: 'Normative Definition von Schwerbeton nach DIN EN 206 unter Verwendung hochdichter Gesteinskörnungen (Baryt, Magnetit, Hämatit).',
-            quelle: 'DIN EN 206'
-          }
-        ]}
-      />
     </div>
   );
 }
