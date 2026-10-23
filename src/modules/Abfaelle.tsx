@@ -1348,7 +1348,7 @@ export default function Abfaelle() {
                   <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/30">
                     <h4 className="font-bold text-slate-900 mb-2">Gips, Sulfat &amp; die biologische Gefahrenkette</h4>
                     <p className="text-slate-700 leading-relaxed mb-3">
-                      Der hohe Sulfatgehalt in Gipskarton- und Gipsfaserplatten (z. B. Rigips als Beispiel) stellt den Erd- und Deponiebau vor erhebliche chemisch-biologische Probleme:
+                      Der hohe Sulfatgehalt in Gipsplatten und Gipsfaserplatten stellt den Erd- und Deponiebau vor erhebliche chemisch-biologische Probleme:
                     </p>
                     <ul className="list-decimal pl-4 space-y-2 text-slate-600 font-medium">
                       <li>
