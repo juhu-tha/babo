@@ -709,17 +709,17 @@ export default function InteractiveLCACalc() {
 
     if (valAC <= premium) {
       return {
-        label: "QNG-PREMIUM Erreicht! 🏆",
+        label: "unter QNG-PREMIUM-Anforderungswert (orientierend)",
         color: "text-emerald-700 border-emerald-300 bg-emerald-50/70",
         badge: "bg-emerald-600 text-white",
-        desc: `Sehr guter Standard nach QNG 2026. Der Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) unterschreitet den Schwellenwert von ${formatDeZahl(premium, 1)} kg CO₂-eq/(m²a) deutlich. Höchste KfW-Förderstufe (KFN-Kredit).`
+        desc: `Orientierend sehr gut. Der vereinfachte Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) unterschreitet den Schwellenwert von ${formatDeZahl(premium, 1)} kg CO₂-eq/(m²a) deutlich. Für einen QNG-Nachweis ist eine vollständige Bilanz nach QNG-Bilanzierungsregeln (inkl. B4 und B6) nötig.`
       };
     } else if (valAC <= plus) {
       return {
-        label: "QNG-PLUS Erreicht! 🌟",
+        label: "unter QNG-PLUS-Anforderungswert (orientierend)",
         color: "text-teal-700 border-teal-300 bg-teal-50/70",
         badge: "bg-teal-600 text-white",
-        desc: `Nachhaltiger Standard erfüllt. Der Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) liegt unter dem Grenzwert von ${formatDeZahl(plus, 1)} kg CO₂-eq/(m²a). Berechtigt zum Erhalt zinsvergünstigter KFN-Mittel.`
+        desc: `Orientierend gut. Der vereinfachte Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) liegt unter dem Anforderungswert von ${formatDeZahl(plus, 1)} kg CO₂-eq/(m²a). Eine Förderberechtigung ergibt sich erst aus einem vollständigen QNG-Nachweis.`
       };
     } else {
       return {
@@ -787,8 +787,8 @@ export default function InteractiveLCACalc() {
     ]);
 
     const rate = (v: number) => {
-      if (v <= qngThresholds.premium) return "QNG-PREMIUM 🏆";
-      if (v <= qngThresholds.plus) return "QNG-PLUS 🌟";
+      if (v <= qngThresholds.premium) return "≤ PREMIUM-Wert (orientierend)";
+      if (v <= qngThresholds.plus) return "≤ PLUS-Wert (orientierend)";
       return "Standard ⚙️";
     };
 
@@ -1163,7 +1163,7 @@ export default function InteractiveLCACalc() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                     <span className="flex items-center gap-1">
-                      <Building2 size={13} className="text-indigo-600" /> Bruttogrundfläche (BGF):
+                      <Building2 size={13} className="text-indigo-600" /> Netto-Raumfläche (NRF):
                     </span>
                     <span className="font-mono bg-slate-50 px-2 py-0.5 rounded border">{formatDeZahl(buildingArea, 0)} m²</span>
                   </div>
@@ -1588,10 +1588,10 @@ function CalculationDashboard({
         </span>
       </div>
 
-      {/* Official QNG Compliance Value (Modules A-C) */}
+      {/* Orientierungswert (vereinfachte Bilanz, kein QNG-Nachweis) */}
       <div className="text-center py-4 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner flex flex-col justify-center items-center">
         <span className="text-[10px] uppercase font-extrabold text-slate-500 tracking-wider font-mono">
-          Offizieller QNG-Nachweiswert (Module A1–C4)
+          Orientierungswert in Anlehnung an QNG (vereinfacht: A1–A4, C, ohne B4/B6 – kein Nachweis)
         </span>
         <strong className={`text-4xl font-black mt-1.5 font-mono leading-none tracking-tight ${
           results.gwpPerSqmYearAC <= qngThresholds.premium ? "text-emerald-700" :
