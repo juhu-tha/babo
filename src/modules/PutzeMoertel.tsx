@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { InlineMath, BlockMath } from 'react-katex';
 import { 
   Layers, Droplets, Hammer, BookOpen, Calculator, Sparkles, 
@@ -94,7 +96,7 @@ const MORTAR_PRODUCTS: MortarProduct[] = [
     densityKgM3: 1520,
     lambdaWmk: 0.61,
     muValue: '15/35',
-    composition: 'Schnell erhärtender Portlandzement, feinster Quarzsand (Körnung 0–1 mm), organische Stellmittel (Methylcellulose) zur massiven Wasserrunzelung.',
+    composition: 'Schnell erhärtender Portlandzement, feinster Quarzsand (Körnung 0–1 mm), organische Stellmittel (Methylcellulose) zur Wasserrückhaltung.',
     advantages: [
       'Enorm hohe Haftzugfestigkeit bei Fugenstärken von nur 1 bis 3 mm',
       'Fast vollständiger Ausschluss von Wärmebrücken im Fugenbett',
@@ -108,7 +110,7 @@ const MORTAR_PRODUCTS: MortarProduct[] = [
     id: 'trass_m15',
     name: 'Trass-Natursteinfugenmörtel - Klasse M 15',
     normClass: 'DIN EN 998-2 / Trass-Ausmauerung',
-    strengthNmm2: '≥ 15,0 N/mm² (Klasse M 15 / alt MG III)',
+    strengthNmm2: '≥ 15,0 N/mm² (Klasse M 15; zwischen MG III und MG IIIa ≙ M 20)',
     densityKgM3: 1950,
     lambdaWmk: 1.10,
     muValue: '20/40',
@@ -173,7 +175,7 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     muValue: '6 - 10',
     thicknessMm: '15 - 20 mm (meist zweilagig)',
     advantages: [
-      'Natürlicher, desinfizierender Schutz gegen Schimmelsporen (hoher pH-Wert > 11,5)',
+      'Hoher pH-Wert wirkt Schimmelbildung entgegen, solange der Putz nicht carbonatisiert ist',
       'Hervorragend diffusionsoffen und kapillaraktiv zur Mauerwerkslüftung',
       'Äußerst elastisches Gefüge zur rissfreien Verformungsübernahme',
       'Frei von chemischen Konservierungsstoffen und Bioziden'
@@ -224,7 +226,7 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     name: 'Sanierputz Typ R (WTA-Zertifiziert)',
     normClass: 'DIN EN 998-1 / Typ R nach WTA-Merkblatt 2-9',
     strengthCategory: 'CS II (1,5 – 5,0 N/mm²)',
-    composition: 'Sulfatbeständiges, trassiertes Bindemittelsystem auf Basis von Kalkhydrat und trassiertem Portlandzement (HS-Zement). Zur chemisch-stofflichen Funktion dienen klastischer Feinsand (Körnung 0–1,2 mm), künstliche Luftporenbildner (Alkylsulfate/Tenside) zur Etablierung makroporiger Evaporationsräume sowie organische Silan- bzw. Siloxanwirkstoffe (0.2–0.5 Gew.-%) zur vollständigen Kapillarhydrophobierung der inneren Porenkanäle.',
+    composition: 'Sulfatbeständiges, trassiertes Bindemittelsystem auf Basis von Kalkhydrat und sulfatbeständigem Zement (SR). Zur chemisch-stofflichen Funktion dienen klastischer Feinsand (Körnung 0–1,2 mm), künstliche Luftporenbildner (Alkylsulfate/Tenside) zur Etablierung makroporiger Evaporationsräume sowie organische Silan- bzw. Siloxanwirkstoffe (0.2–0.5 Gew.-%) zur vollständigen Kapillarhydrophobierung der inneren Porenkanäle.',
     densityKgM3: 1200,
     lambdaWmk: 0.30,
     muValue: '12',
@@ -250,7 +252,7 @@ const PLASTER_PRODUCTS: PlasterProduct[] = [
     thicknessMm: '40 - 80 mm (mehrlagig gespritzt)',
     advantages: [
       'Ultra-Wärmeleitfähigkeit (λ = 0,028 W/mK) schmiegt sich an historische Konturen an',
-      'Kombiniert extreme Dämmwirkung mit mineralischer Brandklasse A1 (nicht brennbar)',
+      'Kombiniert hohe Dämmwirkung mit mineralischem Brandverhalten (Klasse lt. Herstellerangabe, manuell prüfen)',
       'Hohlraumfreier Auftrag ohne Hinterlüftungsgefahr an feuchten Bestandsaußenwänden',
       'Vollkommen diffusionsoffenes, mineralisches, schimmelresistentes System'
     ],
@@ -374,6 +376,7 @@ export default function PutzeMoertel() {
 
   // Plaster calculation math
   const calculatePlaster = () => {
+    // Richtwerte in kg je m² und mm Putzdicke (Herstellerangaben, Produktdatenblatt beachten)
     const plasterFactors: Record<string, number> = {
       gips: 1.1,
       luftkalk: 1.3,
@@ -879,7 +882,7 @@ export default function PutzeMoertel() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/85 bg-slate-50 p-4 rounded-xl border border-slate-200">
               <p>
-                Nutzen Sie den herstellerneutralen Material-Orientierungsrechner zur baupraktischen Bedarfsabschätzung auf der Baustelle. Die Kalkulationswerte enthalten branchenübliche Sicherheitsreserven und orientieren sich an den Vorgaben des Verbandes der Gipsindustrie und der Werkmörtelverbände.
+                Nutzen Sie den herstellerneutralen Material-Orientierungsrechner zur baupraktischen Bedarfsabschätzung auf der Baustelle. Die Verbrauchsfaktoren sind Richtwerte aus Herstellerangaben; maßgebend ist das jeweilige Produktdatenblatt.
               </p>
             </div>
 
@@ -1236,23 +1239,36 @@ export default function PutzeMoertel() {
       </div>
 
       {/* Module Footer component with Literature and Wikipedia references */}
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Bedarf an Gipsputz (Standardwerte des Rechners)"
+        zielGleichung="m = A \cdot d \cdot f"
+        normQuelle="Verbrauchsrichtwert f lt. Herstellerangabe (Produktdatenblatt beachten)"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'A = 50\\,\\text{m}^2,\\; d = 15\\,\\text{mm},\\; f = 1{,}1\\,\\text{kg}/(\\text{m}^2 \\cdot \\text{mm})', erklaerung: 'Maschinengipsputz, einlagig.' },
+          { titel: '2. Trockenmörtelmenge', formel: 'm = 50 \\cdot 15 \\cdot 1{,}1 = 825\\,\\text{kg}', erklaerung: 'Masse = Fläche × Dicke × Verbrauchsfaktor.' },
+          { titel: '3. Gebinde', formel: '825/25 = 33\\,\\text{Sack}', erklaerung: 'Sackware zu 25 kg.' },
+        ]}
+        ergebnisHinweis="Rund 825 kg bzw. 33 Sack à 25 kg; Verluste und Untergrundunebenheiten zusätzlich berücksichtigen."
+      />
+
+      <ModulTest moduleId="putzemoertel" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Mörtel', url: 'https://de.wikipedia.org/wiki/M%C3%B6rtel' },
           { title: 'Putz (Baustoff)', url: 'https://de.wikipedia.org/wiki/Putz_(Baustoff)' },
-          { title: 'Kalkstein', url: 'https://de.wikipedia.org/wiki/Kalkstein' },
-          { title: 'Karbonatisierung (Beton)' }
+          { title: 'Kalkstein', url: 'https://de.wikipedia.org/wiki/Kalkstein' }
         ]} 
         literatur={[ 
-          'Bundesverband der Gipsindustrie e.V.: Handbuch Trockenbau, Kapitel Gipsputze.',
+          'Bundesverband der Gipsindustrie e. V.: GIPS-Datenbuch (Ausgabe manuell prüfen)',
           'VDPM (Verband für Dämmsysteme, Putz und Mörtel e. V., 2017 aus IWM und FV WDVS hervorgegangen): Technische Richtlinien und Merkblätter für Werkmörtel.',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
-          'Künzel, H.: Bauphysikalische Forschungsergebnisse zum Wetterschutz von Außenwänden.'
+          'DIN 4108-3: Wärmeschutz und Energie-Einsparung in Gebäuden – Klimabedingter Feuchteschutz (Schlagregenschutz; Ausgabe manuell prüfen)'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 998-1:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)' },
           { title: 'DIN EN 998-2:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)' },
-          { title: 'DIN 18550-1:2024-01 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Festlegungen zu DIN EN 13914-1 für Außenputze)' },
+          { title: 'DIN 18550-1 (Ausgabe manuell prüfen; bekannt 2018-01) (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Festlegungen zu DIN EN 13914-1 für Außenputze)' },
           { title: 'DIN 18550-2:2018-01 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 2: Ergänzende Festlegungen zu DIN EN 13914-2 für Innenputze)' },
           { title: 'DIN EN 13914-1:2016-09 (Planung, Zubereitung und Ausführung von Außenputzen)' },
           { title: 'DIN EN 13914-2:2016-09 (Planung, Zubereitung und Ausführung von Innenputzen)' },
@@ -1260,7 +1276,7 @@ export default function PutzeMoertel() {
         ]} 
         formeln={[
           { formel: 'Ca(OH)_2 + CO_2 \\rightarrow CaCO_3 + H_2O', erklaerung: 'Karbonatisierung (Lufterhärtung der Luftkalke durch CO2-Aufnahme aus der Luft)' },
-          { formel: 'w \\cdot s_d \\le 0{,}2 \\quad \\frac{\\text{kg}}{\\text{m}^2 \\cdot \\text{h}^{0{,}5}} \\cdot \\text{m}', erklaerung: 'Schlagregenschutz-Formel nach Künzel (Kombination aus kapillarem Saugkoeffizient w und Diffusionswiderstand sd)' },
+          { formel: 'w \\le 0{,}5\\,\\tfrac{\\text{kg}}{\\text{m}^2\\sqrt{\\text{h}}};\\; s_d \\le 2{,}0\\,\\text{m};\\; w \\cdot s_d \\le 0{,}2\\,\\tfrac{\\text{kg}}{\\text{m}\\sqrt{\\text{h}}}', erklaerung: 'Anforderungen an wasserabweisende Putze für den Schlagregenschutz (Kriterien nach Künzel): Wasseraufnahmekoeffizient w, wasserdampfdiffusionsäquivalente Luftschichtdicke s_d und ihr Produkt.', quelle: 'DIN 4108-3' },
           { formel: 'E_{\\text{Untergrund}} \\ge E_{\\text{Unterputz}} \\ge E_{\\text{Oberputz}}', erklaerung: 'Elastizitätsmodul-Gefälle "Weich auf Hart" zur Vermeidung thermischer Schubspannungsrisse' }
         ]} 
       />
