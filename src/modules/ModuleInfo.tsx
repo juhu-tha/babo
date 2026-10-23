@@ -296,50 +296,50 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Zulassungssysteme, Konformitätsbewertungen und baurechtliche Pflichten',
     icon: Award,
     basicsTitle: 'Sicherheit im harmonisierten europäischen Bauproduktrecht',
-    basicsDesc1: 'Das Einbauen von Bauprodukten erfordert strenge Nachweise über deren Brauchbarkeit und Standsicherheit. Dieses Modul navigiert Planer und Hersteller durch die komplexen Verordnungen der Bauproduktenverordnung (BauPVO) und die nationalen Restregelungen.',
-    basicsDesc2: 'Vom CE-Kennzeichen über europäische Bewertungsgruppen (EAD, ETA) bis zu den MVV TB und Ü-Zeichen wird die gesamte Kette rechtlicher und technischer Zulassungsdokumente lückenlos visualisiert und praxisnah erarbeitet.',
+    basicsDesc1: 'Bauprodukte dürfen nur verwendet werden, wenn ihre Leistung nachgewiesen ist und das Bauwerk damit die bauordnungsrechtlichen Anforderungen erfüllt. Das Modul erläutert die Bauproduktenverordnung (BauPVO) und die ergänzenden nationalen Regelungen.',
+    basicsDesc2: 'Behandelt werden CE-Kennzeichnung, Europäische Bewertungsdokumente (EAD) und Technische Bewertungen (ETA) sowie MVV TB, nationale Verwendbarkeitsnachweise und Ü-Zeichen.',
     basicsCards: [
-      { title: 'AVCP-Systeme inkl. System 3+', desc: 'Verständnis der Prüfdichte vom anspruchsvollen System 1+ bis System 4 sowie dem neuen System 3+ (Validierung der Umweltleistungsbewertung / LCA nach DIN EN 15804+A2 durch notifizierte Stellen nach VO (EU) 2024/3110).' },
-      { title: 'DoPC & Digitaler Produktpass (DPP)', desc: 'Kombinierte Leistungs- und Konformitätserklärung (Declaration of Performance and Conformity, DoPC) mit verpflichtenden GWP-Umweltindikatoren und digitalem Produktpass via maschinenlesbarem Datenträger (QR-Code).' }
+      { title: 'AVCP-Systeme inkl. System 3+', desc: 'Prüfumfang von System 1+ bis System 4 sowie das neue System 3+ (Validierung der Umweltleistungsbewertung / LCA nach DIN EN 15804+A2 durch notifizierte Stellen nach VO (EU) 2024/3110).' },
+      { title: 'DoPC & Digitaler Produktpass (DPP)', desc: 'Kombinierte Leistungs- und Konformitätserklärung (Declaration of Performance and Conformity, DoPC) mit schrittweise verpflichtenden Umweltangaben (zunächst GWP) und digitalem Produktpass über einen Datenträger (z. B. QR-Code); Fristen manuell prüfen.' }
     ],
     submodules: [
-      { title: 'Baustoffindustrie', icon: Factory, purpose: 'Wertschöpfungsketten, Rohstoffgewinnung, Energieeinsatz und Zukunftsstrategien der deutschen und europäischen Baustoffindustrie.', standards: 'BDI / bbs Leitlinien', useCase: 'Analyse von CO2-Minderungskostenpfaden in der Zement- und Ziegelherstellung.' },
-      { title: 'CE vs. Ü & MVV TB', icon: Scale, purpose: 'Rechtliche Entflechtung europäischer BauPVO und nationaler Richtlinien sowie Muster-Verwaltungsvorschriften.', standards: 'Musterbauordnung (MBO) § 16a', useCase: 'Rechtlich belastbare Klärung der Notwendigkeit einer Übereinstimmungserklärung bei CE-gekennzeichneten Produkten.' },
-      { title: 'AVCP-Systeme', icon: ShieldAlert, purpose: 'Aufschlüsselung der Systeme zur Bewertung und Überprüfung der Leistungsbeständigkeit (System 1+, 1, 2+, 3, 4).', standards: 'BauPVO (EU) 2024/3110 Anhang IX / VO (EU) 305/2011 Anhang V', useCase: 'Auswahl des korrekten Prüfablaufs für tragenden Baustahl versus Estrichmörtel.' },
+      { title: 'Baustoffindustrie', icon: Factory, purpose: 'Wertschöpfungsketten, Rohstoffgewinnung, Energieeinsatz und Zukunftsstrategien der deutschen und europäischen Baustoffindustrie.', standards: 'bbs (Bundesverband Baustoffe – Steine und Erden)', useCase: 'Analyse von CO2-Minderungskostenpfaden in der Zement- und Ziegelherstellung.' },
+      { title: 'CE vs. Ü & MVV TB', icon: Scale, purpose: 'Abgrenzung zwischen europäischer BauPVO und nationalen Regelungen (MBO, MVV TB).', standards: 'Musterbauordnung (MBO) §§ 16b–25', useCase: 'Klären, ob für ein CE-gekennzeichnetes Produkt zusätzliche nationale Nachweise nötig sind.' },
+      { title: 'AVCP-Systeme', icon: ShieldAlert, purpose: 'Aufschlüsselung der Systeme zur Bewertung und Überprüfung der Leistungsbeständigkeit (System 1+, 1, 2+, 3, 3+, 4).', standards: 'BauPVO (EU) 2024/3110 Anhang IX / VO (EU) 305/2011 Anhang V', useCase: 'Prüfablauf für tragenden Baustahl im Vergleich zu Estrichmörtel.' },
       { title: 'Konformität & Auditierung', icon: Award, purpose: 'Ablauf von Audits durch notifizierte Stellen, werkseigene Produktionskontrolle (WPK) und Zertifizierung.', standards: 'DIN EN ISO/IEC 17065', useCase: 'Vorbereitung einer Fertigteilwerksprüfung zur CE-Zertifizierung.' },
       { title: 'Normenarbeit im Bauwesen', icon: BookOpen, purpose: 'Prozess der Normenentwicklung (CEN, DIN, NA), Einspruchsverfahren und Veröffentlichung.', standards: 'DIN 820 (Normungsarbeit)', useCase: 'Klärung des Unterschieds zwischen Weißdruck, Entwurf und harmonisierter Norm.' },
       { title: 'Beton (Frisch/Fest) & Betonwaren', icon: Layers, purpose: 'Spezifikationen von Transportbeton, Pflastersteinen, Bordsteinen und Rohren.', standards: 'DIN EN 206 / DIN EN 1338', useCase: 'Ausschreibung frost-tausalzbeständiger Betonpflastersteine mit Güteüberwachung.' },
-      { title: 'Betonfertigteile', icon: Box, purpose: 'Spannbeton-Hohldielen, Elementdecken, Doppelwandelemente und Fertigteilstützen mit Transportankern.', standards: 'DIN EN 13225 / DIN EN 13747', useCase: 'Bemessung und Montagekontrolle von Elementdecken im Geschosswohnungsbau.' },
+      { title: 'Betonfertigteile', icon: Box, purpose: 'Spannbeton-Hohldielen, Elementdecken, Doppelwandelemente und Fertigteilstützen mit Transportankern.', standards: 'DIN EN 1168 / DIN EN 13747 / DIN EN 13225', useCase: 'Bemessung und Montagekontrolle von Elementdecken im Geschosswohnungsbau.' },
       { title: 'Mauerwerk, Dach & Fassade', icon: LayoutGrid, purpose: 'Mauersteine, Dachziegel, Betondachsteine, vorgehängte hinterlüftete Fassaden (VHF) und Wärmedämm-Verbundsysteme.', standards: 'DIN EN 771 / DIN EN 490 / DIN 18516', useCase: 'Auswahl windlastbeständiger Fassadenbekleidungen und Unterkonstruktionen.' },
-      { title: 'Verkehrswegebau & RStO 12/24', icon: Layers, purpose: 'Asphalttragschichten, Asphaltbinder, Deckschichten, Bitumen und Gesteinskörnungen nach den Richtlinien für die Standardisierung des Oberbaus (ARS 02/2024).', standards: 'RStO 12/24 / ZTV Asphalt-StB', useCase: 'Dimensionierung des Straßenoberbaus nach Belastungsklassen Bk100 bis Bk0,3.' },
-      { title: 'Tiefbau, Bahnbau & Tunnel', icon: Mountain, purpose: 'Kanalrohre, Schachtbauwerke, Gleisschotter (DBS 918061), Tübbinge und Spritzbeton im bergmännischen Vortrieb.', standards: 'DIN EN 1610 / ZTV-ING / DIN EN 14487', useCase: 'Festlegung der Betonzusammensetzung für wasserdichte Tunneltübbinge.' },
+      { title: 'Verkehrswegebau & RStO 12/24', icon: Layers, purpose: 'Asphalttragschichten, Asphaltbinder, Deckschichten, Bitumen und Gesteinskörnungen nach den Richtlinien für die Standardisierung des Oberbaus (RStO).', standards: 'RStO 12/24 / ZTV Asphalt-StB', useCase: 'Dimensionierung des Straßenoberbaus nach Belastungsklassen Bk100 bis Bk0,3.' },
+      { title: 'Tiefbau, Bahnbau & Tunnel', icon: Mountain, purpose: 'Kanalrohre, Schachtbauwerke, Gleisschotter (DBS 918 061), Tübbinge und Spritzbeton im bergmännischen Vortrieb.', standards: 'DIN EN 1610 / ZTV-ING / DIN EN 14487', useCase: 'Festlegung der Betonzusammensetzung für wasserdichte Tunneltübbinge.' },
       { title: 'Trockenbau, Putz & Estrich', icon: Layers, purpose: 'Gipsplatten, Metallständerwände, Zement-, Calciumsulfat- und Gussasphaltestriche sowie Innen- und Außenputze.', standards: 'DIN 18180 / DIN 18560 / DIN EN 13813', useCase: 'Prüfung der Belegreife von Heizestrichen mittels CM-Feuchtemessung.' },
       { title: 'Abdichtungen & Dämmstoffe', icon: ShieldAlert, purpose: 'Bitumen- und Kunststoffbahnen, mineralische Dichtungsschlämmen (MDS), EPS-, XPS-, Mineralwolle- und PU-Dämmstoffe.', standards: 'DIN 18531 - DIN 18535 / DIN 4108-10', useCase: 'Auswahl des Abdichtungsaufbaus für erdberührte Kellerwände nach DIN 18533.' },
       { title: 'Befestigungstechnik & Bauchemie', icon: Wrench, purpose: 'Mechanische und chemische Dübelsysteme (ETA-Bemessung), Kleb- und Dichtstoffe, Farben, Lacke und Betonzusatzmittel.', standards: 'EOTA EAD 330232 / DIN EN 934', useCase: 'Bemessung von Schwerlast-Verbundankern in gerissenem Beton nach Eurocode 2 Teil 4.' },
-      { title: 'Gläser & Fenstertechnik', icon: Maximize, purpose: 'Float-, ESG-, TVG- und VSG-Verbundgläser, Mehrscheiben-Isoliergläser mit Low-E-Bedampfung, Edelgasfüllungen (Argon/Krypton), Rahmenwerkstoffe und Uw-Berechnung.', standards: 'DIN EN 1279 / DIN 18008 / DIN EN 14351-1 / DIN EN ISO 10077', useCase: 'Thermische und absturzsichernde Bemessung von 3-fach Isolierglasfenstern im Passivhausstandard.' },
+      { title: 'Gläser & Fenstertechnik', icon: Maximize, purpose: 'Float-, ESG-, TVG- und VSG-Verbundgläser, Mehrscheiben-Isoliergläser mit Low-E-Bedampfung, Edelgasfüllungen (Argon/Krypton), Rahmenwerkstoffe und Uw-Berechnung.', standards: 'DIN EN 1279 / DIN 18008 / DIN EN 14351-1 / DIN EN ISO 10077', useCase: 'Wärmeschutz und Absturzsicherung bei Dreifach-Isolierglasfenstern.' },
       { title: 'Werkstoffspezifische Produkte', icon: Trees, purpose: 'Spezifikationen für Vollholz/BSH/CLT, Kunststoffe, mineralische Werkstoffe, Lehmbausteine und Walzstahlprofile.', standards: 'DIN EN 14080 / DIN EN 10025 / DIN 18945', useCase: 'Überprüfung der Konformitätsnachweise für tragende Brettschichtholzbinder im Hallenbau.' }
     ],
     didacticCards: [
-      { title: 'Rechtliche Stringenz', desc: 'Keine gefährlichen Vereinfachungen - saubere Gegenüberstellung europäischer und nationaler Rechtsprechungen.' },
-      { title: 'Interaktive Flussdiagramme', desc: 'Entscheidungsbaum zur Zulassungspflicht ungewöhnlicher oder neuartiger Sonderbauprodukte.' },
-      { title: 'Marktaufsicht & Haftung', desc: 'Grundlegendes Wissen zur zivilrechtlichen Haftung im Falle fehlerhaft zertifizierter Komponenten.' }
+      { title: 'Rechtliche Einordnung', desc: 'Europäische und nationale Regelungen werden getrennt dargestellt; Vereinfachungen sind gekennzeichnet.' },
+      { title: 'Entscheidungshilfen', desc: 'Schrittweise Klärung, welcher Verwendbarkeitsnachweis für ein Bauprodukt erforderlich ist.' },
+      { title: 'Marktüberwachung & Haftung', desc: 'Grundzüge der Marktüberwachung und der zivilrechtlichen Haftung bei mangelhaften Bauprodukten (keine Rechtsberatung).' }
     ],
-    appStudents: 'Essentieller Leitfaden zur Erarbeitung baurechtlicher Kompetenzen in Seminaren für Baubetrieb, Projektmanagement und Baustoffkunde.',
-    appProfessionals: 'Unverzichtbarer Begleiter für Hersteller-Auditoren, Werksleiter, Planer und Bauherren zur juristischen Absicherung von Materialbestellungen.',
+    appStudents: 'Einführung in das Bauproduktenrecht für Lehrveranstaltungen in Baubetrieb, Projektmanagement und Baustoffkunde.',
+    appProfessionals: 'Überblick für Planende, Herstellende und Bauherren zur Prüfung von Verwendbarkeitsnachweisen; ersetzt keine Rechtsberatung.',
     wikipedia: [
       { title: 'Bauproduktenverordnung', url: 'https://de.wikipedia.org/wiki/Bauproduktenverordnung' },
       { title: 'Musterbauordnung', url: 'https://de.wikipedia.org/wiki/Musterbauordnung' }
     ],
     literatur: [
-      'Gellert, J. (2018): Handbuch Bauprodukte und Bauarten - Nachweise, europäische Zulassung und nationale Regelungen (DIN Media)',
-      'Weyland, J. (2020): Bauordnungsrecht der Bundesländer (Werner Verlag)'
+      'Gerhold, P.: Bauproduktenrecht in der Praxis – Von der Bauproduktleistung bis zur Baudokumentation. 2. Aufl., Köln: Rudolf Müller 2021',
+      'Gerhold, P.: Neues Bauproduktenrecht in der Praxis – Bauordnung und MVV TB verstehen und anwenden. Köln: Rudolf Müller 2019'
     ],
     regelwerke: [
       { title: 'Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB)', url: 'https://www.dibt.de/' },
       { title: 'Verordnung (EU) 2024/3110 (BauPVO, seit 08.01.2026; übergangsweise VO (EU) 305/2011)', url: 'https://eur-lex.europa.eu/' }
     ],
     formeln: [
-      { formel: 'P_a = r \\cdot \\Delta_{stat}', erklaerung: 'Vereinfachte Risikobewertung zur Bestimmung der geforderten werkseigenen Produktionskontrollhäufigkeit r (Auditrate) basierend auf gefundener Prozessvarianz.', quelle: 'Qualitätsmanagement-Leitlinien' }
+      { formel: 'f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma', erklaerung: 'Konformitätskriterium der Druckfestigkeit bei stetiger Herstellung (Mittelwert aus mindestens 15 Ergebnissen, σ = Standardabweichung); Beispiel für eine statistische Konformitätsbewertung in der WPK.', quelle: 'DIN EN 206, Abschn. 8.2.1' }
     ]
   },
   beton: {
@@ -1000,22 +1000,15 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   bauprodukte: {
     websites: [
-      { name: "DIBt - Zulassungsdatenbank", url: "https://www.dibt.de", desc: "Deutsches Institut für Bautechnik. Offizielles Register für abZ, ETA und baurechtliche Verordnungen." },
-      { name: "Deutsches Bautechnikportal", desc: "Normierungsabgleiche, Verwendbarkeitsnachweise und EU-Konformitätsgesetze." },
-      { name: "TÜV SÜD Bauzertifikate", url: "https://www.tuvsud.com", desc: "Schnittstellen zu Baumusterprüfung und werkseigener Produktionskontrolle (WPK)." }
+      { name: "DIBt - Zulassungsdatenbank", url: "https://www.dibt.de", desc: "Deutsches Institut für Bautechnik: abZ/aBG, ETA, MVV TB." },
+      { name: "EUR-Lex: Verordnung (EU) 2024/3110", url: "https://eur-lex.europa.eu/eli/reg/2024/3110/oj", desc: "Amtlicher Text der neuen Bauproduktenverordnung." }
     ],
     books: [
-      { title: "Die neue Bauproduktenverordnung: Leitfaden für Planer und Hersteller", desc: "Strasburger, DIN Media. Ausführlicher Leitfaden zu CE-Leistungserklärungen und AVCP-Systemen." },
-      { title: "Bauordnungsrecht für Architekten und Ingenieure", desc: "Reinhardt, Beck. Sicheres Navigieren durch die Landesbauordnungen (MBO) und VV TB Technische Baubestimmungen." }
+      { title: "Bauproduktenrecht in der Praxis", desc: "Gerhold, P., 2. Aufl., Rudolf Müller 2021. Von der Leistungserklärung bis zur Baudokumentation." },
+      { title: "Neues Bauproduktenrecht in der Praxis", desc: "Gerhold, P., Rudolf Müller 2019. Bauordnung und MVV TB." }
     ],
-    publications: [
-      { journal: "Journal of European Environmental Law", title: "The transformation of the European Construction Products Regulation (CPR): Market access and digital product passes", desc: "Rechtliche Auswirkungen des digitalisierten Produktpasses." },
-      { journal: "Baurechts-Report (Beck)", title: "Fremd- und Eigenüberwachung im Wandel der Baurechtsordnungen", desc: "Ingenieurhaftung bei fehlenden Übereinstimmungserklärungen." }
-    ],
-    dissertations: [
-      { title: "Rechtliche Aspekte harmonisierter Europäischer Normen im Spannungsfeld der Bauproduktenverordnung", desc: "Dissertation, Leibniz Universität Hannover, 2019. Verfassungsmäßigkeit privater Normenvereine weisungsgebundener Behörden." },
-      { title: "Auswirkung veränderter AVCP-Systeme auf die Zuverlässigkeit tragender Elemente im konstruktiven Ingenieurbau", desc: "Forschungsbericht, DIBt. Analyse statistischer Fehlerwahrscheinlichkeiten bei Eigenüberwachung nach System 4." }
-    ]
+    publications: [],
+    dissertations: []
   },
   stahlbeton: {
     websites: [

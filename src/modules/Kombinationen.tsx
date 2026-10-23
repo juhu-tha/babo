@@ -68,7 +68,7 @@ const fibers = {
   'Carbon (HT)': { ef: 230, sf: 3500, rho: 1.8, desc: 'High-Tenacity Carbonfaser' },
   'Carbon (HM)': { ef: 390, sf: 2500, rho: 1.9, desc: 'High-Modulus Carbonfaser' },
   'E-Glas': { ef: 73, sf: 2400, rho: 2.6, desc: 'Standard Glasfaser' },
-  'Aramid': { ef: 130, sf: 2900, rho: 1.45, desc: 'Kevlar/Twaron' },
+  'Aramid': { ef: 130, sf: 2900, rho: 1.45, desc: 'Para-Aramidfaser' },
 };
 
 const matrices = {
@@ -109,7 +109,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
     
     // Voigt-Modell (Parallel, Längsrichtung)
     const E_parallel = ef * v_f + em * v_m;
-    const S_parallel = sf * v_f + sm * v_m;
+    // Mischungsregel Festigkeit (Lehrmodell): Versagen bei Faserbruchdehnung sf/ef; Matrixspannung dann em·sf/ef (≤ sm)
+    const S_parallel = sf * v_f + Math.min(sm, em * sf / ef) * v_m;
     
     // Reuss-Modell (Reihe, Querrichtung)
     const E_quer = (ef * em) / (v_f * em + v_m * ef);
@@ -296,7 +297,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
           <p className="leading-relaxed">
-            Im modernen Bauwesen erfüllt selten ein Einzelwerkstoff alle statischen, bauphysikalischen und dauerhaftigkeitsrelevanten Anforderungen zugleich. Erst durch intelligente <strong>Werkstoff-Kombinationen</strong> – vom mehrschichtigen Wandaufbau nach dem Prinzip <em>„Tragen, Dämmen, Schützen“</em> über mikro- und makroskopische <strong>Faser- und Verbundwerkstoffe</strong> (CFK, GFK, Stahlbeton, Sandwich) bis hin zu funktionellen <strong>Schutzschichten</strong> – entstehen dauerhafte, wärmebrückenarme und tragfähige Konstruktionen.
+            Im modernen Bauwesen erfüllt selten ein Einzelwerkstoff alle statischen, bauphysikalischen und dauerhaftigkeitsrelevanten Anforderungen zugleich. Erst durch <strong>Werkstoff-Kombinationen</strong> – vom mehrschichtigen Wandaufbau nach dem Prinzip <em>„Tragen, Dämmen, Schützen“</em> über mikro- und makroskopische <strong>Faser- und Verbundwerkstoffe</strong> (CFK, GFK, Stahlbeton, Sandwich) bis hin zu funktionellen <strong>Schutzschichten</strong> – entstehen dauerhafte, wärmebrückenarme und tragfähige Konstruktionen.
           </p>
         </div>
 
@@ -416,7 +417,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   <div className="w-8 h-8 rounded-lg bg-shiraz/10 text-shiraz flex items-center justify-center font-bold text-sm mb-3">3</div>
                   <h3 className="font-bold text-text-main text-base mb-2">Grenzflächen &amp; Schutzschichten</h3>
                   <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                    Oberflächenbehandlungen und Beschichtungssysteme (Hydrophobierung, OS-Systeme nach DIN EN 1504-2, Verzinkung nach DIN EN ISO 12944), die das Grundmaterial vor chemischem und physikalischem Umwelteinfluss absichern.
+                    Oberflächenbehandlungen und Beschichtungssysteme (Hydrophobierung, OS-Systeme nach DIN EN 1504-2, Feuerverzinkung nach DIN EN ISO 1461, Beschichtungen nach DIN EN ISO 12944), die das Grundmaterial vor chemischem und physikalischem Umwelteinfluss absichern.
                   </p>
                 </div>
                 <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-xs text-text-main/80 font-mono">
@@ -481,7 +482,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 Das Dreiklang-Prinzip der Gebäudehülle: Tragen · Dämmen · Schützen
               </h3>
               <p className="text-sm text-text-main/80 leading-relaxed mb-4">
-                Eine monolithische Massivwand aus gewöhnlichem Normalbeton kann zwar enorme Lasten tragen, weist jedoch eine sehr hohe Wärmeleitfähigkeit auf (<InlineMath math="\lambda \approx 2{,}0\,\text{W/(m}\cdot\text{K)}" />) und erfordert dicke Querschnitte, um den heutigen GEG-Anforderungen zu genügen. Moderne Hüllkonstruktionen entkoppeln die Aufgaben in spezialisierte Funktionsschichten:
+                Eine monolithische Massivwand aus gewöhnlichem Normalbeton kann zwar enorme Lasten tragen, weist jedoch eine sehr hohe Wärmeleitfähigkeit auf (<InlineMath math="\lambda \approx 2{,}0\,\text{W/(m}\cdot\text{K)}" />) und erfordert dicke Querschnitte, um die heutigen Anforderungen des GModG (vormals GEG) zu erfüllen. Moderne Hüllkonstruktionen entkoppeln die Aufgaben in spezialisierte Funktionsschichten:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -580,7 +581,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     Wasserdampf diffundiert im Winter infolge des Dampfdruckgefälles von innen (warm, hoher Partialdruck <InlineMath math="p_i" />) nach außen (kalt, niedriger Partialdruck <InlineMath math="p_e" />). Um schädliche Kondensation (Tauwasser) an kalten Grenzflächen zu verhindern, muss die <strong>diffusionsäquivalente Luftschichtdicke</strong> <InlineMath math="s_d = \mu \cdot d" /> von innen nach außen abnehmen:
                   </p>
                   <div className="p-2 bg-white/80 rounded border border-amber-200 font-mono text-center font-bold text-amber-900">
-                    <InlineMath math="s_{d,\text{innen}} \gg s_{d,\text{außen}} \quad (\text{Faustregel: innen min. 10-fach dichter als außen bei geschlossenen Hüllen})" />
+                    <InlineMath math="s_{d,\text{innen}} \gg s_{d,\text{außen}} \quad (\text{Faustregel, Lehrannahme: innen mind. 10-fach dichter als außen})" />
                   </div>
                   <p className="mt-2 text-[11px] text-amber-900/80">
                     Wird außen ein dampfdichter Kunstharzfilm oder eine Metallfolie ohne Hinterlüftung montiert, entsteht eine sogenannte <em>„Dampfsperren-Falle“</em>, die zu Auffeuchtung, Schimmel und Frostabsprengungen führt.
@@ -667,7 +668,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                       <div className="text-2xl font-bold font-mono">{formatDeZahl(fvkResults.rho_composite, 2)} g/cm³</div>
                     </div>
                     <div>
-                      <div className="text-white/70 text-xs">Zugfestigkeit Längs</div>
+                      <div className="text-white/70 text-xs">Zugfestigkeit Längs (Lehrmodell, ideal)</div>
                       <div className="text-2xl font-bold font-mono">{formatDeZahl(fvkResults.S_parallel, 0)} MPa</div>
                     </div>
                     <div>
@@ -776,7 +777,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     Stranggezogene I-, U- und Kastenprofile aus Glasfaser-Polyester für Fußgängerbrücken und Kühltürme.
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-text-main/80">
-                    <li>Gewichtsersparnis bis zu 70 % ggü. Stahl</li>
+                    <li>Deutlich geringeres Eigengewicht (Dichte ≈ 1,9 statt 7,85 g/cm³)</li>
                     <li>Geringer Instandhaltungsaufwand</li>
                     <li>Gefahr spröden Abscherens an Schraubanschlüssen</li>
                   </ul>
@@ -796,13 +797,13 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 1. Stahlbeton: Der Urtyp des konstruktiven Makroverbunds
               </h3>
               <p className="text-sm text-text-main/80 leading-relaxed mb-3">
-                Beton besitzt eine hohe Druckfestigkeit (<InlineMath math="f_{\text{ck}} = 20 - 100\,\text{MPa}" />), aber nur eine verschwindend geringe Zugfestigkeit (<InlineMath math="f_{\text{ctm}} \approx 0{,}1 \cdot f_{\text{ck}}" />). Durch das Einbetten von geripptem Betonstahl (B500B mit Streckgrenze <InlineMath math="f_{\text{yk}} = 500\,\text{MPa}" />) in den Zugzonen entsteht ein Hochleistungs-Verbundwerkstoff.
+                Beton besitzt eine hohe Druckfestigkeit (<InlineMath math="f_{\text{ck}} = 20 - 100\,\text{MPa}" />), aber nur eine verschwindend geringe Zugfestigkeit (<InlineMath math="f_{\text{ctm}} \approx 0{,}1 \cdot f_{\text{ck}}" />). Durch das Einbetten von geripptem Betonstahl (B500B mit Streckgrenze <InlineMath math="f_{\text{yk}} = 500\,\text{MPa}" />) in den Zugzonen entsteht ein Verbundwerkstoff, in dem der Stahl die Zugkräfte übernimmt.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div className="p-3 bg-white rounded-lg border border-home-grau/25">
                   <strong className="text-text-main block mb-1">A. Thermische Dehnung</strong>
-                  Beton (<InlineMath math="\alpha_T \approx 10 \cdot 10^{-6}\,\text{K}^{-1}" />) und Stahl (<InlineMath math="\alpha_T \approx 12 \cdot 10^{-6}\,\text{K}^{-1}" />) dehnen sich bei Hitze und Frost nahezu identisch aus. Keine thermischen Eigenspannungsrisse an der Phasengrenze!
+                  Beton (<InlineMath math="\alpha_T \approx 10 \cdot 10^{-6}\,\text{K}^{-1}" />) und Stahl (<InlineMath math="\alpha_T \approx 12 \cdot 10^{-6}\,\text{K}^{-1}" />) haben eine ähnliche Wärmedehnzahl. Daher entstehen an der Grenzfläche nur geringe thermische Zwangsspannungen.
                 </div>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/25">
                   <strong className="text-text-main block mb-1">B. Mechanischer Verbund</strong>
@@ -835,7 +836,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 </p>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-xs space-y-1.5">
                   <div><strong>Bruchverhalten:</strong> Bei Glasbruch bleiben die Splitter an der Folie haften (Verletzungsschutz).</div>
-                  <div><strong>Resttragfähigkeit:</strong> Die PVB-Folie hält die gebrochene Scheibe wie eine Hängematte im Rahmen, sodass Absturzsicherungen wirksam bleiben.</div>
+                  <div><strong>Resttragfähigkeit:</strong> Die Folie hält die gebrochene Scheibe zusammen; ob sie als Absturzsicherung ausreicht, hängt von Aufbau und Lagerung ab und ist nach DIN 18008 nachzuweisen.</div>
                 </div>
               </div>
             </div>
@@ -852,7 +853,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 1. Schutz mineralischer Baustoffe nach DIN EN 1504-2
               </h3>
               <p className="text-sm text-text-main/80 leading-relaxed mb-4">
-                Beton- und Mauerwerksflächen müssen gegen kapillares Eindringen von Wasser, Frost-Tausalz, sauren Regen und Chloride geschützt werden. Die europäische Instandsetzungsnorm unterscheidet vier grundlegende Schutzmechanismen:
+                Beton- und Mauerwerksflächen müssen gegen kapillares Eindringen von Wasser, Frost-Tausalz, sauren Regen und Chloride geschützt werden. DIN EN 1504-2 unterscheidet drei Produktarten (hydrophobierende Imprägnierung, Imprägnierung, Beschichtung); die nationale Praxis der OS-Systeme führt zusätzlich die Versiegelung:
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
@@ -887,9 +888,9 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 </div>
 
                 <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25">
-                  <span className="font-bold text-shiraz block mb-1">D. Beschichtung (OS 1–11)</span>
+                  <span className="font-bold text-shiraz block mb-1">D. Beschichtung (OS-Systeme)</span>
                   <p className="text-text-main/75 mb-2">
-                    Dickschichtiger Polymeraufbau (<InlineMath math="d \ge 0{,}2 - 5\,\text{mm}" />, Epoxidharz, Polyurethan) mit hoher Rissüberbrückungsfähigkeit.
+                    Dickschichtiger Polymeraufbau (<InlineMath math="d \ge 0{,}2 - 5\,\text{mm}" />, Epoxidharz, Polyurethan) – je nach System starr oder rissüberbrückend.
                   </p>
                   <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20">
                     OS 8 (starr, Tiefgaragen) · OS 11 (rissüberbrückend, Freidecks)
@@ -1119,14 +1120,14 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div>
                 <h4 className="font-bold text-sm mb-1">
                   {calcResults.hasDiffusionTrap 
-                    ? 'Warnung: Risiko von Tauwasserausfall im Bauteilinneren (Glaser-Falle)' 
-                    : 'Bauphysikalisch unbedenkliche Schichtfolge (Feuchte-Ampel GRÜN)'}
+                    ? 'Hinweis: mögliches Tauwasserrisiko im Bauteilinneren' 
+                    : 'Schichtfolge entspricht der Grundregel (Lehrheuristik)'}
                 </h4>
                 <p>
                   {calcResults.hasDiffusionTrap ? (
                     <>Die äußeren Schichten weisen einen höheren Diffusionswiderstand auf als die inneren Schichten (äußere Schichten: sd = {formatDeZahl(calcResults.outerLayersSd, 2)} m vs. innere Schichten: sd = {formatDeZahl(calcResults.innerLayersSd, 2)} m). Im Winter diffundierender Wasserdampf kann nicht ungehindert nach außen entweichen und kondensiert an der Grenzfläche zur kalten Dämm- oder Putzschicht. <strong>Empfehlung:</strong> Außen diffusionsoffenere Schichten wählen oder innen eine Dampfbremse/Sperre anordnen.</>
                   ) : (
-                    <>Der Aufbau folgt der bauphysikalischen Grundregel nach DIN 4108-3. Von innen nach außen kann Wasserdampf abdiffundieren, ohne sich an diffusionsdichten Sperrschichten auf der Kaltseite zu stauen. Das Risiko von Schimmel und Frostschäden ist minimiert.</>
+                    <>Die s_d-Werte nehmen von innen nach außen nicht zu; Wasserdampf kann nach außen abdiffundieren. Vereinfachte Prüfung (Schichten je zur Hälfte innen/außen gewertet) – ersetzt keinen Tauwassernachweis nach DIN 4108-3.</>
                   )}
                 </p>
               </div>
@@ -1146,8 +1147,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
       <FormulaDerivationBox
         title="Bauphysikalische &amp; mechanische Herleitung: Mehrschichtiger Wärmedurchgang &amp; Voigt-Verbund"
         zielGleichung="U = \frac{1}{R_{si} + \sum_{i=1}^n \frac{d_i}{\lambda_i} + R_{se}} \quad \text{sowie} \quad E_{\parallel} = V_f E_f + (1-V_f) E_m"
-        normQuelle="DIN EN ISO 6946:2018-03, DIN 4108-3:2018-10 &amp; VDI 2014"
-        ergebnisHinweis="Präzise Kopplung von thermischem Widerstand, Wasserdampfdiffusionsströmen und elastomechanischer Lastteilung."
+        normQuelle="DIN EN ISO 6946:2018-03, DIN 4108-3:2024-03 &amp; VDI 2014"
+        ergebnisHinweis="U-Wert und s_d-Werte sind vereinfachte Berechnungen (ohne Wärmebrücken und ohne Tauwassernachweis)."
         schritte={[
           {
             titel: "1. Schichtspezifischer Wärmedurchlasswiderstand",
@@ -1163,7 +1164,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           },
           {
             titel: "3. Diffusionsäquivalente Luftschichtdicke (sd-Wert)",
-            erklaerung: "Produkt aus Schichtdicke d_i und werkstoffspezifischer Wasserdampfdiffusionswiderstandszahl μ_i. Zur Vermeidung von Kondensat muss s_d von innen nach außen abfallen.",
+            erklaerung: "Produkt aus Schichtdicke d_i und werkstoffspezifischer Wasserdampfdiffusionswiderstandszahl μ_i. Als Grundregel sollte s_d von innen nach außen abnehmen; ein Tauwassernachweis ersetzt das nicht.",
             formel: "s_{d,\\text{ges}} = \\sum_{i=1}^n s_{d,i} = \\sum_{i=1}^n \\mu_i \\cdot d_i \\quad [\\text{m}]",
             einheit: "m"
           },
@@ -1190,22 +1191,22 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           { title: 'Stahlbeton', url: 'https://de.wikipedia.org/wiki/Stahlbeton' }
         ]}
         literatur={[
-          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)',
-          'Scholz Baustoffkenntnis (19. Auflage, Werner Verlag)',
-          'Schürmann, H.: Konstruieren mit Faser-Kunststoff-Verbunden (2. Auflage, Springer-Verlag)',
-          'Ehrenstein, G. W.: Faserverbund-Kunststoffe (Hanser Verlag)',
-          'Lohmann, B.; Fischer, H.: Bauphysik: Wärme, Feuchte, Schall, Brand (Springer Vieweg)'
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Scholz, W. (begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. 19. Aufl., Köln: Bundesanzeiger Verlag 2016',
+          'Schürmann, H.: Konstruieren mit Faser-Kunststoff-Verbunden. 2. Aufl., Berlin, Heidelberg: Springer 2007',
+          'Ehrenstein, G. W.: Faserverbund-Kunststoffe. 2. Aufl., München: Hanser 2006',
+          'Fischer, H.-M. et al.: Lehrbuch der Bauphysik. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)'
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 6946:2018-03 (Bauteile – Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient – Berechnungsverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
-          { title: 'DIN 4108-3:2018-10 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
-          { title: 'DIN EN 1992-1-1:2011-01 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
+          { title: 'DIN 4108-3:2024-03 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
           { title: 'DIN EN 1504-2:2005-01 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Teil 2: Oberflächenschutzsysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-2' },
           { title: 'DIN EN 1542:1999-07 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Messung der Haftfestigkeit im Abreißversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1542' },
-          { title: 'DIN EN ISO 12944-1:2018-06 (Beschichtungsstoffe – Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944-1' },
+          { title: 'DIN EN ISO 12944-1:2019-01 (Beschichtungsstoffe – Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teil 1: Allgemeine Einleitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944-1' },
           { title: 'DIN 18516-1:2010-06 (Außenwandbekleidungen, hinterlüftet – Teil 1: Anforderungen, Prüfgrundsätze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18516-1' },
           { title: 'DIN EN 14509:2013-12 (Selbsttragende isolierende Sandwichelemente mit beidseitigen Metalldeckschichten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14509' },
-          { title: 'VDI 2014 Blatt 3:2006-11 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)', url: 'https://www.dinmedia.de/de/suche?q=VDI+2014+Blatt+3' },
+          { title: 'VDI 2014 Blatt 3:2006-09 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)', url: 'https://www.dinmedia.de/de/suche?q=VDI+2014+Blatt+3' },
           { title: 'DIN EN ISO 527-4:2023-09 (Kunststoffe – Bestimmung der Zugeigenschaften – Teil 4: Prüfbedingungen für isotrope und anisotrop faserverstärkte Kunststoffverbundwerkstoffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+527-4' }
         ]}
         formeln={[
@@ -1217,7 +1218,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           {
             formel: 's_d = \\mu \\cdot d',
             erklaerung: 'Diffusionsäquivalente Luftschichtdicke als Maß für den Wasserdampfdiffusionswiderstand einer Schicht der Dicke d mit Diffusionswiderstandszahl μ.',
-            quelle: 'DIN 4108-3:2018-10'
+            quelle: 'DIN 4108-3:2024-03'
           },
           {
             formel: 'E_{\\parallel} = V_f \\cdot E_f + (1 - V_f) \\cdot E_m',

@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Layers, Calculator, Info, CheckCircle, AlertTriangle } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
@@ -269,12 +271,12 @@ export default function BpStahlbauprofile() {
               )}
               {profileSeries === 'HEB' && (
                 <p>
-                  <strong>HEB-Träger (Normales Breitflanschprofil):</strong> Der absolute Standard-Stützenquerschnitt im Hochbau. Durch breite Flanges haben HEB-Profile deutlich größere Trägheitsmomente um die schwache z-z Achse im Vergleich zu IPE.
+                  <strong>HEB-Träger (Normales Breitflanschprofil):</strong> Häufiger Stützenquerschnitt im Hochbau. Durch breite Flansche haben HEB-Profile deutlich größere Trägheitsmomente um die schwache z-z Achse im Vergleich zu IPE.
                 </p>
               )}
               {profileSeries === 'HEM' && (
                 <p>
-                  <strong>HEM-Träger (Verstärktes Breitflanschprofil):</strong> Höchstbelastbare Stützen oder schwere Abfangträger. Verfügen über extrem dicke Flansche und Stege, perfekt gewappnet gegen hohe Punktlasten und große Stützlasten.
+                  <strong>HEM-Träger (Verstärktes Breitflanschprofil):</strong> Für hoch belastete Stützen und schwere Abfangträger; sehr dicke Flansche und Stege für große Einzel- und Stützlasten.
                 </p>
               )}
               {profileSeries === 'UPN' && (
@@ -573,7 +575,7 @@ export default function BpStahlbauprofile() {
                       <>
                         <AlertTriangle className="text-red-600 mt-0.5 flex-none" size={16} />
                         <div>
-                          <strong>Tragfähigkeit überschritten!</strong> Die Streckgrenze des Stahls ist überschritten. Wählen Sie eine stärkere Trägergröße, eine höhere Stahlgüte oder reduzieren Sie die Beanspruchungsgrößen!
+                          <strong>Tragfähigkeit überschritten:</strong> Die Randspannung liegt über f<sub>yd</sub>. Größeres Profil, höhere Stahlgüte oder geringere Beanspruchung wählen.
                         </div>
                       </>
                     )}
@@ -611,6 +613,22 @@ export default function BpStahlbauprofile() {
 
       <InnovationPraxisSection moduleKey="bp_stahlbauprofile" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: IPE 300 aus S235 als Deckenträger"
+          zielGleichung="\sigma = \frac{M_{Ed}}{W_{el,y}} \le \frac{f_y}{\gamma_{M0}}, \quad w = \frac{5 q L^4}{384 E I_y}"
+          normQuelle="DIN EN 1993-1-1 mit NA (elastischer Nachweis, Profilwerte nach Tabelle)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'L = 6{,}0\\,\\text{m},\\; q_d = 10\\,\\text{kN/m},\\; q_k = 7\\,\\text{kN/m};\\; W_{el,y} = 557\\,\\text{cm}^3,\\; I_y = 8356\\,\\text{cm}^4', erklaerung: 'Einfeldträger unter Gleichlast.' },
+            { titel: '2. Biegespannung', formel: 'M_{Ed} = 10 \\cdot 6^2/8 = 45\\,\\text{kNm};\\; \\sigma = 45 \\cdot 10^6 / 557 \\cdot 10^3 = 81\\,\\text{N/mm}^2 \\le 235', erklaerung: 'Ausnutzung rund 34 %.' },
+            { titel: '3. Durchbiegung (charakteristisch)', formel: 'w = \\frac{5 \\cdot 7 \\cdot 6000^4}{384 \\cdot 210\\,000 \\cdot 8356 \\cdot 10^4} = 6{,}7\\,\\text{mm} \\le L/300 = 20\\,\\text{mm}', erklaerung: 'Gebrauchstauglichkeit erfüllt.' },
+          ]}
+          ergebnisHinweis="Tragfähigkeit und Durchbiegung sind deutlich erfüllt – ein IPE 270 wäre zu prüfen; Biegedrillknicken ist gesondert nachzuweisen."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_stahlbauprofile" />
+
       <ModuleFooter
         wikipedia={[
           { title: 'Baustahl', url: 'https://de.wikipedia.org/wiki/Baustahl' },
@@ -619,8 +637,8 @@ export default function BpStahlbauprofile() {
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
         literatur={[
-          'Wagenknecht, G. (2020): Stahlbau-Praxis nach Eurocode 3 (Bauwerk-Verlag)',
-          'Kuhlmann, U. et al.: Stahlbau-Kalender (Ernst & Sohn, jährlich aktualisiert)'
+          'Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3. Berlin: Bauwerk Verlag (Auflage manuell prüfen)',
+          'Kuhlmann, U. (Hrsg.): Stahlbau-Kalender. Berlin: Ernst & Sohn (jährlich)'
         ]}
         regelwerke={[
           { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)' },
@@ -629,7 +647,7 @@ export default function BpStahlbauprofile() {
         formeln={[
           {
             formel: '\\sigma = \\frac{M_{y,Ed}}{W_{el,y}} \\le f_{y,d} = \\frac{f_y}{\\gamma_{M0}}',
-            erklaerung: 'Elastischer Biegespannungsnachweis für einfach-symmetrische oder doppeltsymmetrische I-Profile nach EC3 (gamma_M0 = 1.00).',
+            erklaerung: 'Elastischer Biegespannungsnachweis für einfach-symmetrische oder doppeltsymmetrische I-Profile nach EC3 (γ_M0 = 1,0 nach NA).',
             quelle: 'DIN EN 1993-1-1 Abs. 6.2.5'
           },
           {
@@ -639,8 +657,8 @@ export default function BpStahlbauprofile() {
           },
           {
             formel: 'w = \\frac{5 \\cdot q \\cdot L^4}{384 \\cdot E \\cdot I_y} \\le \\frac{L}{300}',
-            erklaerung: 'Maximale Mittendurchbiegung des Einfeldträgers zur Einhaltung der Gebrauchstauglichkeitsgrenzen (SLS).',
-            quelle: 'DIN EN 1993-1-1'
+            erklaerung: 'Mittendurchbiegung des Einfeldträgers; der Grenzwert (z. B. L/300) ist eine übliche Empfehlung und wird projektbezogen vereinbart.',
+            quelle: 'Technische Mechanik / DIN EN 1993-1-1 (Abschn. 7)'
           }
         ]}
       />

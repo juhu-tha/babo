@@ -12,6 +12,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -36,9 +37,9 @@ const LOAM_STANDARDS_DB: LoamStandardInfo[] = [
     density: '0,90 - 2,20 g/cm³ (Leicht- bis Schwersysteme)',
     strength: 'Druckfestigkeitsklassen nach DIN 18945: 2 – 2,5 – 3 – 4 – 5 – 6 (mittlere Steindruckfestigkeit in N/mm²); die charakteristische Mauerwerksdruckfestigkeit fk ergibt sich nach DIN 18940 aus Steinklasse und Mörtel.',
     rules: 'Müssen trocken gelagert und vor Feuchtigkeit geschützt werden. Werden im Verband mit Dünnbett- oder Normalmörtel vermauert.',
-    application: 'Ausfachung von historischen Fachwerkhäusern, Bau von schweren, wärmespeichreanden Innenwänden im Passivhausbau, tragendes Mauerwerk nach DIN 18940.',
+    application: 'Ausfachung von historischen Fachwerkhäusern, Bau von schweren, wärmespeichernden Innenwänden, tragendes Mauerwerk nach DIN 18940.',
     pros: [
-      'Extrem hoher Schallschutz durch hohe Rohdichten bei Schwersystemen',
+      'Guter Schallschutz bei hohen Rohdichten',
       'Hervorragendes Raumklimaregulationsverhalten (Wasseraufnahmevermögen WSIII)',
       'Einfach mit Handwerkzeugen säg- und bearbeitbar'
     ]
@@ -47,13 +48,13 @@ const LOAM_STANDARDS_DB: LoamStandardInfo[] = [
     id: 'moertel',
     norm: 'DIN 18946',
     title: 'Lehmmauermörtel',
-    classes: 'Mörtelgruppen: LMM1 (Normalmörtel für dickere Fugen), LMM2 (Dünnbettmörtel für Plansteine)',
+    classes: 'Lehmmauermörtel nach DIN 18946 (Normal-, Leicht- und Dünnbettmörtel; Festigkeitsklassen M 2 bis M 4 – manuell prüfen)',
     density: '1,40 - 1,80 g/cm³',
     strength: 'Haftfestigkeitsgruppen: M10 (≥ 0,10 N/mm²), M15 (≥ 0,15 N/mm²)',
-    rules: 'Darf keine hydraulisch abbindenden Bindemittel (Zement, Kalk) enthalten, um das reversible Abbindeverhalten nicht zu stören.',
+    rules: 'Bindet nur über die Tonminerale; Zusätze wie Zement oder Kalk sind nicht zulässig, sonst geht die Wiederverarbeitbarkeit verloren.',
     application: 'Vermauern von Lehmsteinen, Verfüllen von historischen Fugen im Fachwerkbestand.',
     pros: [
-      'Unendlich lange Verarbeitungszeit (bindet rein physikalisch durch Trocknung)',
+      'Lange Verarbeitungszeit (erhärtet nur durch Trocknen)',
       'Kann bei Bedarf durch bloßes Hinzufügen von Wasser wieder verflüssigt werden',
       'Absolut materialschonend (salz- und säurefrei, schützt historisches Holz)'
     ]
@@ -69,8 +70,8 @@ const LOAM_STANDARDS_DB: LoamStandardInfo[] = [
     application: 'Innenputz auf mineralischen Untergründen (Ziegel, Beton, KS) oder Holzfaser- und Lehmbauplatten.',
     pros: [
       'Bindet keine Schadstoffe, absorbiert luftgetragene Gerüche und Rauch',
-      'Optimiert die reaktiv-aktive Feuchtereduktion auf ideale 45 bis 55% relative Feuchte',
-      'Wirkt holzkonservierend und reguliert elektrostatische Aufladungen im Innenraum'
+      'Puffert Schwankungen der Raumluftfeuchte (Sorptionsklassen nach DIN 18947)',
+      'Hält angrenzende Holzbauteile trocken'
     ]
   },
   {
@@ -83,8 +84,8 @@ const LOAM_STANDARDS_DB: LoamStandardInfo[] = [
     rules: 'Montage auf Holz- oder Metall-Unterkonstruktionen im Trockenbauverfahren mittels Tellerkopfschrauben.',
     application: 'Ökologischer, atmungsaktiver Trockenbau bei Trennwänden, Deckenabhängungen, Vorsatzschalen und Sanierungen.',
     pros: [
-      'Brillanter Schallschutz durch hohe dynamische Elastizität',
-      'Frei von chemischen Klebstoffen oder umweltschädlichen Ausgasmischungen',
+      'Verbessert den Schallschutz durch zusätzliche Masse',
+      'Je nach Produkt ohne synthetische Bindemittel',
       'Sofort trocken montierbar, wodurch wochenlange Bau-Trocknungszeiten entfallen'
     ]
   }
@@ -106,7 +107,7 @@ export default function BpLehmbauprodukte() {
   const effectiveHeight = height * effectiveHeightBeiwert;
   const slenderness = (effectiveHeight * 100) / thickness; // lambda = h_e / t_ef
 
-  // Check slenderness limit defined in DIN 18940: slenderness max is 21 for Lehmsteinmauerwerk
+  // Lehrannahme: Schlankheitsgrenze 21 (Wert nach DIN 18940 manuell prüfen)
   const isSlendernessOk = slenderness <= 21;
 
   // Approximate design strength for loam masonry according to DIN 18940
@@ -477,7 +478,7 @@ export default function BpLehmbauprodukte() {
                           isCapacityOk 
                             ? `Die bemessene Wandstärke von ${thickness} cm hält mit einer rechnerischen Wandkapazität von ${formatDeZahl(n_Rd, 1)} kN/m der Traglast von ${designLoad} kN/m einwandfrei stand.`
                             : `Die berechnete Wandtragfähigkeit beträgt nur ${formatDeZahl(n_Rd, 1)} kN/m. Dies reicht für die äußere Belastung von ${designLoad} kN/m nicht aus!`
-                        ) : `Der berechnete Schlankheitsgrad beträgt ${formatDeZahl(slenderness, 1)}, welcher das festgelegte Limit von 21 nach DIN 18940 überschreitet. Die Wand droht auszubeulen! Erhöhen Sie die Wanddicke.`}
+                        ) : `Der berechnete Schlankheitsgrad beträgt ${formatDeZahl(slenderness, 1)}, der über dem im Rechner angesetzten Grenzwert 21 liegt (Lehrannahme, Grenzwert nach DIN 18940 manuell prüfen). Erhöhen Sie die Wanddicke.`}
                       </p>
                     </div>
                   </div>
@@ -492,7 +493,7 @@ export default function BpLehmbauprodukte() {
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                Da Lehm rein physikalisch bindet und wasserlöslich ist, kommt dem fachgerechten konstruktiven Bautenschutz eine fundamentale Rolle zu. Bei Einhaltung einfacher bautechnischer Detailvorgaben („Stiefel und Hut“) sind Lehmbauten über Jahrhunderte dauerhaft geschützt.
+                Da Lehm rein physikalisch bindet und wasserlöslich ist, ist der konstruktive Feuchteschutz entscheidend. Mit einfachen Regeln („guter Stiefel und guter Hut“) sind Lehmbauten sehr dauerhaft.
               </p>
             </div>
 
@@ -514,7 +515,7 @@ export default function BpLehmbauprodukte() {
                   <HardHat size={18} /> 2. Niederschlagsschutz („Der Hut“)
                 </h3>
                 <p className="text-xs text-text-main/80 leading-relaxed flex-1">
-                  Gegen direkten Schlagregen sind breite architektonische Schutzflächen unerlässlich, um das erweichende Auswaschen der Lehmputzschadstoffe zu vermeiden.
+                  Gegen direkten Schlagregen sind breite architektonische Schutzflächen unerlässlich, damit Lehmoberflächen nicht ausgewaschen werden.
                 </p>
                 <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
                   <strong>Schutzmaßnahme:</strong> Großzügige Dachüberstände. Alternativ hydrophobe Bekleidungen oder Holzverschalungen.
@@ -526,7 +527,7 @@ export default function BpLehmbauprodukte() {
                   <Droplets size={18} /> 3. Diffusionsoffenheit („Die Lunge“)
                 </h3>
                 <p className="text-xs text-text-main/80 leading-relaxed flex-1">
-                  Lehmwände atmen. Sie dürfen niemals mit unelastischen oder diffusionsdichten Sperrbahnen, lösungsmittelbasierten Polymerfarben oder dicken Kunstharzen belegt werden.
+                  Lehmwände müssen diffusionsoffen und sorptionsfähig bleiben. Diffusionsdichte Folien, Dispersions- oder Kunstharzbeschichtungen sind ungeeignet.
                 </p>
                 <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
                   <strong>Kompatibilität:</strong> Sumpfkalkfarben, Rein-Silikatfarben oder spezielle, diffusionsoffene Lehm-Designputze.
@@ -544,20 +545,24 @@ export default function BpLehmbauprodukte() {
         )}
       </div>
 
+      <ModulTest moduleId="bp_lehmbauprodukte" />
+
       {/* Structured Footer */}
       <ModuleFooter 
         wikipedia={[
           { title: 'Lehmbau', url: 'https://de.wikipedia.org/wiki/Lehmbau' },
-          { title: 'Lehmstein', url: 'https://de.wikipedia.org/wiki/Lehmstein' },
-          { title: 'Dachverband Lehm', url: 'https://www.dachverband-lehm.de/' }
+          { title: 'Lehmstein', url: 'https://de.wikipedia.org/wiki/Lehmstein' }
+        ]}
+        weblinks={[
+          { title: 'Dachverband Lehm e. V.', url: 'https://www.dachverband-lehm.de/' }
         ]}
         literatur={[
           'Minke, Gernot: Handbuch Lehmbau - Baustoffkunde, Techniken und Architektur (Ökobuch Verlag)',
-          'Dachverband Lehm e.V.: Lehmbau-Regeln (Wiesbaden, 2021)',
-          'Ziegert, Chr.: Instandsetzung historischer Lehmbauten (DIN Media)'
+          'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln. Wiesbaden: Vieweg+Teubner (Auflage manuell prüfen)',
+          'Dachverband Lehm e. V.: Technische Merkblätter (Auswahl, Ausgaben manuell prüfen)'
         ]}
         regelwerke={[
-          { title: 'DIN 18940:2023-04: Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion' },
+          { title: 'DIN 18940:2023-06: Tragendes Lehmsteinmauerwerk – Konstruktion, Bemessung und Ausführung' },
           { title: 'DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung und Kennzeichnung' },
           { title: 'DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung' },
           { title: 'DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung' },
@@ -566,7 +571,7 @@ export default function BpLehmbauprodukte() {
         formeln={[
           {
             formel: '\\lambda = \\frac{h_{ef}}{t} \\leq 21',
-            erklaerung: 'Prüfung der zulässigen Wandschlankheit nach DIN 18940, um Knickerscheinungen unter vertikalen Auflasten zu verhindern.',
+            erklaerung: 'Schlankheit der Wand (Grenzwert 21 als Lehrannahme; maßgebender Wert nach DIN 18940 manuell prüfen).',
             quelle: 'DIN 18940 Kap. 6.2'
           },
           {

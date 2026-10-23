@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   Layers, 
   Flame, 
@@ -26,7 +28,7 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
           Material-Lehrpfad: Metalle im Bauwesen
         </h4>
         <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Baustofflehre (Basis, Anwendung und Alterung):
+          Weiter zu den anderen Teilen des Lehrpfads (Basis, Anwendung, Alterung):
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -146,7 +148,7 @@ export const metalsDb: MetalMaterial[] = [
 Herausragende werkstoffliche Eigenschaft ist der aktive kathodische Opferschutz: Da Zink mit U₀ = -0,76 V deutlich unedler ist als Eisen (-0,44 V), opfert es sich an Schnittkanten, Bohrungen und Kratzern bis zu einer Breite von 1,5 mm als galvanische Anode auf, sodass der Grundstahl vollkommen rostfrei bleibt.
 
 Bei behinderter Belüftung oder feuchter Lagerung kann sich poröser, voluminöser Weißrost (Zinkhydroxid Zn(OH)₂) bilden, der die Schutzschicht zersetzt. Zinkbleche (Titanzink nach DIN EN 988 mit 0,08–0,2 % Titan und Kupfer zur Kriechhemmung) besitzen hervorragende Falzeigenschaften, bedürfen jedoch wegen der hohen Wärmedehnung ausreichender Schiebehafte.`,
-    practicalAdvice: 'Titanzinkdächer und verzinkte Fassadenelemente müssen an der Unterseite zwingend hinterlüftet werden (Tauwasser-Abtrocknung), um zerstörerische Weißrostbildung zu unterbinden. Niemals unterhalb von Kupfer einbauen (Fließregel!).'
+    practicalAdvice: 'Titanzinkdächer und verzinkte Fassadenelemente müssen an der Unterseite zwingend hinterlüftet werden (Tauwasser-Abtrocknung), um Weißrostbildung zu vermeiden. Niemals unterhalb von Kupfer einbauen (Fließregel!).'
   },
   {
     id: 'aluminum',
@@ -165,7 +167,7 @@ Bei behinderter Belüftung oder feuchter Lagerung kann sich poröser, voluminös
     recyclingRate: '> 95 % (Sekundäraluminium spart 95 % Schmelzenergie)',
     description: `Leichtmetall mit kubisch-flächenzentriertem Gitter, exzellenter Kaltumformbarkeit und hoher Zähigkeit ohne Tieftemperaturversprödung. Bei Luftkontakt bildet Aluminium binnen Millisekunden eine porenfreie, transparente Passivschicht aus Aluminiumoxid (Al₂O₃, ca. 5–20 nm dünn), die das Metall im neutralen pH-Bereich (pH 4,5–8,5) vor atmosphärischem Abtrag schützt.
 
-Aggressive Zersetzungsmechanismen: Im stark alkalischen Milieu (z.B. flüssiger Zementleim, frischer Beton oder Mauermörtel mit pH 12,5–13,5) löst sich die amphipathische Passivschicht unter heftiger Wasserstoffgasbildung stürmisch auf (2 Al + 2 OH⁻ + 6 H₂O → 2 [Al(OH)₄]⁻ + 3 H₂↑). Aluminium darf daher niemals ungeschützt in Mörtel oder Beton eingebettet werden.
+Aggressive Zersetzungsmechanismen: Im stark alkalischen Milieu (z.B. flüssiger Zementleim, frischer Beton oder Mauermörtel mit pH 12,5–13,5) löst sich die amphotere Oxidschicht unter Wasserstoffbildung auf (2 Al + 2 OH⁻ + 6 H₂O → 2 [Al(OH)₄]⁻ + 3 H₂↑). Aluminium darf daher niemals ungeschützt in Mörtel oder Beton eingebettet werden.
 
 In der Baupraxis wird Aluminium überwiegend eloxiert (anodische Oxidation, Schichtdicke 15–25 µm nach DIN 17611) oder einbrennpulverbeschichtet. Aufgrund des niedrigen E-Moduls (ca. 1/3 des Stahls) sind Profile mit größeren Trägheitsmomenten Iy auszuführen. Die Wärmedehnung ist mit 23 × 10⁻⁶/K fast doppelt so hoch wie bei Baustahl.`,
     practicalAdvice: 'Aluminium-Fassadenunterkonstruktionen stellen erhebliche Wärmebrücken dar (hohe Wärmeleitfähigkeit λ = 220 W/(m·K)) und müssen zwingend mit thermischen Trennelementen (Thermostopps) an der Massivwand verankert werden.'
@@ -184,7 +186,7 @@ In der Baupraxis wird Aluminium überwiegend eloxiert (anodische Oxidation, Schi
     corrosionCategory: 'Erfordert Schutzsysteme nach ISO 12944 (C1–CX)',
     poissonRatio: 0.30,
     elongationAtBreak: 'A ≥ 20 – 26 % (ausgeprägtes Fließplateau)',
-    recyclingRate: '> 98 % (im Stahlkreislauf beliebig oft ohne Downcycling)',
+    recyclingRate: 'Hohe Recyclingquote (Branchenangaben > 90 %); Stahl ist ohne Qualitätsverlust wiederverwertbar',
     description: `Ferritisch-perlitischer Konstruktionswerkstoff und das universelle Rückgrat des modernen Hoch-, Hallen- und Brückenbaus. Zeichnet sich durch ein ausgeprägtes Fließplateau, exzellente Schweißbarkeit und hohe Bruchdehnungen (A ≥ 20 %) aus, was die Ausbildung stabiler Fließgelenke und plastischer Schnittgrößenumlagerungen nach Eurocode 3 ermöglicht.
 
 Korrosionsverhalten: Baustahl ist an feuchter Atmosphäre thermodynamisch unedel und bildet porösen Rost (FeO(OH) und Fe₂O₃ · n H₂O). Da das Rostvolumen bis zum 6-fachen des Ausgangsstahls anwächst, haftet der Rost nicht dicht an, sondern blättert kontinuierlich ab, sodass der Querschnitt ohne Schutzschicht linear abgetragen wird.
@@ -211,10 +213,10 @@ Schutzsysteme: Baustahl erfordert im Außenbereich zwingend hochwertige Mehrschi
 
 Legierungsunterschiede:
 • A2 (Werkstoff 1.4301 / X5CrNi18-10): Standard für normale Außenluft, Fassadenunterkonstruktionen und Geländer (Korrosionswiderstandsklasse CRC II).
-• A4 (Werkstoff 1.4404 / X2CrNiMo17-12-2): Durch 2–2,5 % Molybdänzusatz stark erhöhter Lochfraßwiderstand (PREN ≥ 23); vorgeschrieben in meeresnahen Gebieten (C4/C5), Industrieatmosphäre und im Spritzwasserbereich von Tausalzen.
+• A4 (Werkstoff 1.4404 / X2CrNiMo17-12-2): Durch 2–2,5 % Molybdänzusatz stark erhöhter Lochfraßwiderstand (PREN ≥ 23); für chloridbelastete Umgebungen (Meeresnähe, Tausalz-Spritzwasser) – Auswahl nach Korrosionswiderstandsklasse CRC (DIN EN 1993-1-4 mit NA).
 
-Besondere Gefahren: In chloridhaltigen Hallenschwimmbad-Atmosphären neigen Standard-Austeniten unter mechanischer Zugspannung zu katastrophaler, unsichtbarer Spannungsrisskorrosion (SCC). Tragende Deckenabhänger erfordern dort zwingend hochlegierte Sonderstähle der Korrosionswiderstandsklasse CRC IV / V (z.B. 1.4529).`,
-    practicalAdvice: 'In Hallenbädern, Straßentunneln und Küstenklima niemals einfachen A2-Edelstahl für tragende Befestigungen einsetzen! Edelstahlwerkzeuge für die Montage verwenden, um Fremdrost-Kontaminationen (Kontakt mit Eisenabrieb) zu verhindern.'
+Besondere Gefahren: In chloridhaltigen Hallenschwimmbad-Atmosphären können Standard-Austenite unter Zugspannung durch Spannungsrisskorrosion (SCC) versagen – oft ohne sichtbare Vorwarnung. Für tragende Bauteile gelten dort Stähle hoher Korrosionswiderstandsklasse (z. B. CRC V, 1.4529).`,
+    practicalAdvice: 'In Hallenbädern, Straßentunneln und Küstenklima keinen Standard-A2-Stahl für tragende Befestigungen einsetzen. Edelstahlwerkzeuge für die Montage verwenden, um Fremdrost-Kontaminationen (Kontakt mit Eisenabrieb) zu verhindern.'
   },
   {
     id: 'lead',
@@ -255,7 +257,7 @@ Toxikologie & Korrosionsrisiken: Blei ist anfällig für Angriffe durch organisc
     recyclingRate: '> 90 % als Titanschrott & Ferro-Titan',
     description: `Hochleistungs-Leichtmetall mit herausragendem Festigkeits-zu-Dichte-Verhältnis und dem geringsten thermischen Längenausdehnungskoeffizienten (α = 8,6 × 10⁻⁶/K) aller Fassadenmetalle. Dies verhindert thermisch bedingte Wellenbildung bei großflächigen Kassetten und ermöglicht verzugsfreie Fassadenkonstruktionen.
 
-Überragende Passivierung: Titan bildet unter allen atmosphärischen Bedingungen spontan eine chemisch extrem inerte, festhaftende Rutil-Oxidschicht (TiO₂). Es widersteht selbst kochenden Chloridlösungen, aggressivem Meerwasser, saurem Regen und industriellen Schwefeldioxid-Gasen ohne jeden Oberflächenabtrag.
+Überragende Passivierung: Titan bildet unter allen atmosphärischen Bedingungen spontan eine sehr beständige, festhaftende TiO₂-Oxidschicht. Es ist in Meerwasser, saurem Regen und Industrieatmosphäre praktisch korrosionsbeständig.
 
 Einsatzbereiche: Aufgrund der anspruchsvollen Gewinnung (Kroll-Verfahren) und Schmelzführung ist Titan kostspielig und wird vorrangig bei ikonischen Monumentalbauten (z.B. Guggenheim-Museum Bilbao) eingesetzt. Es behält über Jahrhunderte seine silbergraue, samtmatte Optik ohne jeglichen Wartungsaufwand.`,
     practicalAdvice: 'Fügen von Titanelementen auf der Baustelle nur durch mechanische Falzungen oder Nieten. Schweißarbeiten müssen unter 100 % hochreinem Schutzgas (Argon 5.0) erfolgen, da Titan ab ca. 300 °C Sauerstoff und Stickstoff aus der Luft löst und versprödet.'
@@ -280,7 +282,7 @@ Einsatzbereiche: Aufgrund der anspruchsvollen Gewinnung (Kroll-Verfahren) und Sc
 Patinabildung im Lebenszyklus:
 Frisch gewalztes Kupfer glänzt lachsrot, oxidiert rasch zu dunkelbraunem Kupfer(I)-oxid (Cu₂O) und wandelt sich an der Atmosphäre über Jahre unter Einwirkung von CO₂, SO₂ und Feuchtigkeit in die samtartige grüne Patina aus basischem Kupfersulfat (Brochantit) und basischem Kupfercarbonat (Malachit) um. Diese Schicht ist wasserunlöslich und schützt das Metall für Jahrhunderte.
 
-Die baurechtlich verbindliche "Fließregel": Da Kupfer im sauren Niederschlag geringe Mengen Kupferionen (Cu²⁺) freisetzt, darf ablaufendes Wasser niemals auf tieferliegende, unedlere Metalle (verzinkter Stahl, Zink, Aluminium) geleitet werden. Die Kupferionen zementieren sich dort ab und zerstören das unedle Metall in Rekordzeit durch Lochfraß.`,
+Die „Fließregel“ (Fachregel): Da Kupfer im sauren Niederschlag geringe Mengen Kupferionen (Cu²⁺) freisetzt, darf ablaufendes Wasser niemals auf tieferliegende, unedlere Metalle (verzinkter Stahl, Zink, Aluminium) geleitet werden. Kupfer scheidet sich dort ab und verursacht Lochfraß am unedleren Metall.`,
     practicalAdvice: 'Fließregel zwingend einhalten: Kupferrinnen niemals über verzinkte Fallrohre entwässern! Kupferbefestigungen nur mit Edelstahlschrauben (A4) oder Kupfernägeln ausführen.'
   },
   {
@@ -384,7 +386,7 @@ export default function BpMetallisch() {
     }
     // Copper is extremely noble, aluminium or zinc next to it is disastrous
     if ((an === 'zinc' || an === 'aluminum' || an === 'steel' || an === 'corten') && cat === 'copper') {
-      return { rating: 'Katastrophal (Akute Zerstörungsgefahr!)', color: 'bg-red-150 text-red-900 border-red-300', icon: 'danger', desc: 'Schnittstellen-Katastrophe! Das edle Kupfer entzieht dem unedlen Metall sofort Elektronen. In feuchter Außenluft zersetzen sich Schrauben, Nieten oder Clips in Rekordzeit (Flächenregel beachten!).' };
+      return { rating: 'Sehr hohes Korrosionsrisiko', color: 'bg-red-100 text-red-900 border-red-300', icon: 'danger', desc: 'Große Potentialdifferenz zum edlen Kupfer: In feuchter Außenluft korrodieren kleine unedle Verbindungsmittel schnell (Flächenregel beachten).' };
     }
     if (val <= 0.15) {
       return { rating: 'Sicher (Geringes Risiko)', color: 'bg-emerald-150 text-emerald-800 border-emerald-300', icon: 'check', desc: 'Geringes Potentialgefälle (ΔU ≤ 150 mV). Bei normalen Witterungsbedingungen im Außenbereich unbedenklich.' };
@@ -416,7 +418,7 @@ export default function BpMetallisch() {
           </div>
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed font-normal">
-          Metalle zeichnen sich durch enorme Zug- und Fließfestigkeiten, exzellente Duktilität und erstklassige Verformungsreserven aus. Aufgrund ihrer thermischen Leitfähigkeit und dem inhärenten Bestreben nach Oxidation müssen sie jedoch detailliert auf thermomechanischen Verzug und vor allem auf elektrochemische Kontaktkorrosion hin berechnet werden.
+          Metalle haben hohe Zug- und Fließfestigkeiten und eine gute Duktilität. Wegen Wärmedehnung, Wärmeleitung und Korrosionsneigung sind Temperaturverformungen und Kontaktkorrosion konstruktiv zu beachten.
         </p>
       </div>
 
@@ -458,7 +460,7 @@ export default function BpMetallisch() {
               <span>Die Anoden/Kathoden "Flächenregel"</span>
             </div>
             <p className="font-normal text-[11px] text-amber-950/80 leading-relaxed">
-              Katastrophal wirkt sich Kontaktkorrosion immer dann aus, wenn ein <strong>kleines unedleres Metall (z. B. feuerverzinkte Schraube)</strong> in Verbindung steht mit einem <strong>großen edleren Metall (z. B. Edelstahlblech oder Kupferbahn)</strong>. Hier bündelt sich der Stromfluss auf kleinstem Raum und zerstört das Verbindungsmittel oft binnen weniger Monate komplett!
+              Besonders kritisch ist Kontaktkorrosion, wenn ein <strong>kleines unedleres Metall (z. B. feuerverzinkte Schraube)</strong> in Verbindung steht mit einem <strong>großen edleren Metall (z. B. Edelstahlblech oder Kupferbahn)</strong>. Hier bündelt sich der Stromfluss auf kleinstem Raum und kann das Verbindungsmittel in kurzer Zeit zerstören.
             </p>
           </div>
         </div>
@@ -576,7 +578,7 @@ export default function BpMetallisch() {
             <Layers className="text-shiraz" /> Opferanoden &amp; Kontaktkorrosions-Prüfung
           </h3>
           <p className="text-xs text-text-main/70 mt-1">
-            Interaktive Verbindungsmittel-Kompatibilitätsprüfung nach der galvanischen Spannungsreihe (DIN EN ISO 8044 / VDI 3822)
+            Interaktive Verbindungsmittel-Kompatibilitätsprüfung nach der galvanischen Spannungsreihe (Lehrmodell; Begriffe nach DIN EN ISO 8044)
           </p>
         </div>
 
@@ -749,7 +751,7 @@ export default function BpMetallisch() {
           <ShieldCheck className="text-shiraz" /> Bauprodukt-Gruppen &amp; Nachweissysteme (EN 1090)
         </h3>
         <p className="text-xs text-text-main/70 mb-4 font-normal">
-          Metallische Bauprodukte weisen durchgehend gesetzliche Pflichtnachweissysteme der EN 1090-Serie auf (Ausführung von Tragwerken aus Stahl und Aluminium) und werden nach standardisierten Güten und Fertigungstoleranzen spezifiziert:
+          Tragende Stahl- und Aluminiumbauteile werden nach DIN EN 1090 hergestellt (Herstellerzertifizierung nach EN 1090-1, Ausführungsklassen EXC nach EN 1090-2/-3) und nach genormten Güten spezifiziert:
         </p>
         <div className="overflow-x-auto rounded-xl border border-home-grau/15 bg-white">
           <table className="w-full text-xs text-left border-collapse">
@@ -789,6 +791,22 @@ export default function BpMetallisch() {
 
       <MetalThematicLinks current="bauprodukt" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Eigenlast und Wärmedehnung einer Titanzink-Dachbahn"
+          zielGleichung="G_k = L \cdot W \cdot \frac{t}{1000} \cdot \rho \cdot 9{,}81 \cdot 10^{-3}, \quad \Delta L = L \cdot \alpha_T \cdot \Delta T"
+          normQuelle="Lehrbeispiel (ρ = 7200 kg/m³, α_T ≈ 22 · 10⁻⁶ 1/K für Titanzink in Walzrichtung)"
+          schritte={[
+            { titel: '1. Eigenlast einer Bahn', formel: 'G_k = 10 \\cdot 0{,}5 \\cdot 0{,}0007 \\cdot 7200 \\cdot 9{,}81 \\cdot 10^{-3} = 0{,}25\\,\\text{kN}', erklaerung: 'Länge 10 m, Breite 0,5 m, Dicke 0,7 mm (≈ 25 kg).' },
+            { titel: '2. Flächenlast', formel: 'g_k = 0{,}0007 \\cdot 7200 \\cdot 9{,}81 \\cdot 10^{-3} = 0{,}05\\,\\text{kN/m}^2', erklaerung: 'Sehr leichte Deckung.' },
+            { titel: '3. Wärmedehnung', formel: '\\Delta L = 10\\,000 \\cdot 22 \\cdot 10^{-6} \\cdot 100 = 22\\,\\text{mm}', erklaerung: 'Temperaturspanne der Dachoberfläche ca. 100 K (−20 °C bis +80 °C).' },
+          ]}
+          ergebnisHinweis="22 mm Längenänderung auf 10 m: Titanzinkbahnen brauchen Schiebehafte und begrenzte Bahnlängen – fest fixierte Bahnen reißen oder wellen sich."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_metallisch" />
+
       <ModuleFooter 
         wikipedia={[
           { title: "Baustahl", url: "https://de.wikipedia.org/wiki/Baustahl" },
@@ -798,9 +816,8 @@ export default function BpMetallisch() {
         ]} 
         literatur={[ 
           'Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3 (Bauwerk Verlag)', 
-          'Rubin, H.: Baustatik und Stahlbau (Springer Vieweg)',
-          'Bargel, H.-J.; Schulze, G.: Werkstoffkunde (Springer Vieweg)',
-          'Deutsches Kupferinstitut: Kupfer im Hochbau - Planung und Ausführung'
+                    'Bargel, H.-J.; Schulze, G.: Werkstoffkunde (Springer Vieweg)',
+          'Deutsches Kupferinstitut: Informationsdrucke zu Kupfer im Bauwesen (Titel/Ausgabe manuell prüfen)'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)' }, 
@@ -822,8 +839,8 @@ export default function BpMetallisch() {
           },
           { 
             formel: '\\Delta U_0 = |U_{\\text{Kathode}} - U_{\\text{Anode}}| \\ge 150\\,\\text{mV}', 
-            erklaerung: 'Elektrochemische Potentialdifferenz-Grenzschwelle nach DIN EN ISO 8044 / VDI 3822: Bei Werten über 150-200 mV steigt die Gefahr beschleunigter galvanischer Bimetallkorrosion der unedleren Phase drastisch.',
-            quelle: 'DIN EN ISO 8044'
+            erklaerung: 'Faustregel: Ab Potentialdifferenzen von etwa 150–200 mV (in der praktischen Spannungsreihe im jeweiligen Medium) steigt die Gefahr der Kontaktkorrosion des unedleren Metalls deutlich; entscheidend sind auch Flächenverhältnis und Elektrolyt.',
+            quelle: 'Lehrannahme (Begriffe nach DIN EN ISO 8044)'
           },
           {
             formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T \\quad [\\text{mm}]',

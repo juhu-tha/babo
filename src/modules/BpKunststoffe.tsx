@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { 
   Layers, 
@@ -146,7 +148,7 @@ const plasticsDatabase: PlasticType[] = [
       oils: 'B',
       uv: 'C' // Vergilbt ohne spezielle UV-Schutzlackierung
     },
-    pros: ['Enorme Schlagzähigkeit (durchschusshemmend)', 'Sehr hohe thermische Stabilität', 'Glasartig glänzende Optik'],
+    pros: ['Sehr hohe Schlagzähigkeit (auch für durchwurf-/durchschusshemmende Verglasungen)', 'Hohe Wärmeformbeständigkeit', 'Glasartig glänzende Optik'],
     mainApp: 'Vandalismus-Schutzverglasungen, Gewächshäuser (Stegmehrfachplatten), Schutzhelme'
   }
 ];
@@ -166,7 +168,7 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
           Material-Lehrpfad: Kunststoffe im Bauwesen
         </h4>
         <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Kunststoff-Werkstoffkunde:
+          Weiter zu den anderen Teilen des Lehrpfads:
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -300,7 +302,7 @@ export default function BpKunststoffe() {
       E2: 4, 
       eta1: 250, 
       eta2: 15, 
-      desc: 'Extrem geringe elastische Federsteifigkeit, fast ausschließlich im kautschuk-elastischen Dehnungsbereich angesiedelt.' 
+      desc: 'Sehr geringe Steifigkeit; großer gummielastischer Dehnbereich.' 
     }
   };
 
@@ -475,7 +477,7 @@ export default function BpKunststoffe() {
                 <span>Weichmacher-Migration beachten!</span>
               </div>
               <p className="font-normal text-[11px] text-emerald-950/80 leading-relaxed">
-                Bei direktem Kontakt von <strong>EPS-Dämmstoffen (Styropor)</strong> mit <strong>Weich-PVC-Folien (PVC-P)</strong> wandern die niedermolekularen Weichmacher (Phthalat-Estere) irreversibel in das Styropor ab. Die Folge: Die PVC-Dachdichtungsbahn schrumpft intensiv, versprödet und reißt unter Zugbelastung, während das EPS thermisch kollabiert. <strong>Prüfungsrelevante Konstruktion:</strong> Zwingende Verlegung einer chemischen Trennlage (z.B. Rohglasvlies oder Polyestervlies 300g/m²).
+                Bei direktem Kontakt von <strong>EPS-Dämmstoffen</strong> mit <strong>Weich-PVC-Folien (PVC-P)</strong> wandern Weichmacher in das EPS. Die PVC-Bahn schrumpft und versprödet, das EPS wird angelöst. <strong>Konstruktion:</strong> Trennlage zwischen PVC-P und EPS vorsehen (z. B. Glasvlies; Flächengewicht nach Herstellerangabe).
               </p>
             </div>
           </div>
@@ -588,7 +590,7 @@ export default function BpKunststoffe() {
                 </div>
                 <h4 className="font-extrabold text-slate-800 text-sm mb-2">Kettenpolymerisation (C=C Öffnung)</h4>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Doppelbindungen ungesättigter Monomere werden thermisch oder katalytisch (freies Radikal <InlineMath math="R^\bullet" />) aufgebrochen. Die Monomere lagern sich in einer extrem schnellen Kettenreaktion kontinuierlich an, ohne dass kleine Spaltmoleküle abgespalten werden.
+                  Doppelbindungen ungesättigter Monomere werden thermisch oder katalytisch (freies Radikal <InlineMath math="R^\bullet" />) aufgebrochen. Die Monomere lagern sich in einer schnellen Kettenreaktion kontinuierlich an, ohne dass kleine Spaltmoleküle abgespalten werden.
                 </p>
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-1">
                   <span className="font-bold text-[10px] block">CHEMISCHE MATRIX</span>
@@ -879,7 +881,7 @@ export default function BpKunststoffe() {
                     <span className="text-[9px] text-slate-400 font-medium leading-none block mt-0.5">Dauerhafte Kriechverformung: {formatDeZahl((strainViscous), 3)}%</span>
                   </div>
                   <div className="bg-rose-50 text-rose-950 px-3.5 py-2 rounded-lg border border-rose-100 text-[11px] leading-relaxed max-w-[280px] font-normal">
-                    <strong>Sicherheitswarnung:</strong> Unter 50 Jahren Dauerlast (Zeitstandfestigkeit) sinkt der E-Modul von Kunststoffen effektiv um bis zu <strong>80-85% (Kriechmodul Ec)</strong>. Für Standsicherheitsnachweise darf niemals der Kurzzeit-E-Modul verwendet werden!
+                    <strong>Hinweis:</strong> Unter Dauerlast sinkt der wirksame Modul (Kriechmodul E_c) von Kunststoffen deutlich – je nach Werkstoff, Temperatur und Dauer auf einen Bruchteil des Kurzzeitwerts. Für Langzeitnachweise ist daher der Kriechmodul anzusetzen.
                   </div>
                 </div>
 
@@ -910,7 +912,7 @@ export default function BpKunststoffe() {
                 <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Infrastruktur &amp; Haustechnik</span>
                 <h4 className="font-extrabold text-slate-800 text-sm mb-3">Thermodimensionierte Rohrleitungssysteme</h4>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Kanalisationen im Erdreich verlangen hohe Ringsteifigkeiten, während haustechnische Abflussleitungen heißwasser-resistent bis 95 °C sein müssen. Trinkwasser-Installationen fordern absolute physiologische Unbedenklichkeit und hohe Flexibilität.
+                  Kanalisationen im Erdreich verlangen hohe Ringsteifigkeiten, während haustechnische Abflussleitungen heißwasser-resistent bis 95 °C sein müssen. Trinkwasser-Installationen erfordern hygienisch geeignete Werkstoffe (UBA-Bewertungsgrundlagen) und Flexibilität.
                 </p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
@@ -923,13 +925,13 @@ export default function BpKunststoffe() {
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">PE-Xa-Installationssystem (z. B. REHAU RAUTITAN als Beispiel)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: PE-Xa (Vernetztes Polyethylen). Extrem zähes Rohr mit Schiebehülsen-Verbindung für dauerhaft dichte Trinkwasserwelten.</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: PE-Xa (Vernetztes Polyethylen). Sehr zähes Rohr, z. B. mit Schiebehülsen-Verbindung, für Trinkwasser- und Heizungsinstallationen.</span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">Heißwasserleitungen dehnen sich unter Last enorm aus. Gleit- und Festpunkte sind im Tragwerksraster starr zu verankern.</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium">Warmwasserleitungen aus Kunststoff dehnen sich durch Temperatur deutlich aus. Fest- und Gleitpunkte sowie Dehnungsausgleich einplanen.</p>
               </div>
             </div>
 
@@ -944,15 +946,15 @@ export default function BpKunststoffe() {
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
                     <strong className="block text-slate-800">Spezifische XPS-Platten</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Extrudiertes Polystyrol (XPS). Hohe Druckfestigkeit (≥ 300 kPa), absolut unempfindlich gegen kapillares Wasser im Grundwasserbereich.</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Extrudiertes Polystyrol (XPS). Hohe Druckfestigkeit (≥ 300 kPa), sehr geringe Wasseraufnahme, für Perimeterdämmung geeignet (Anwendung im Grundwasser nach Zulassung).</span>
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">Spezifische EPS-Platten</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Expandiertes Polystyrol (EPS). Offenporig, sehr wirtschaftlich für WDVS-Fassaden. Empfindlich bei Dauernässe.</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Expandiertes Polystyrol (EPS). Geschlossenzellig, sehr wirtschaftlich für WDVS-Fassaden. Empfindlich bei Dauernässe.</span>
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">PIR-Hartschaumplatten (Standard-Werte)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polyisocyanurat-Hartschaum (Duroplast). Ultradünne Platten mit hervorragender Dämmwirkung (λ = 0,022 W/(m·K)).</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polyisocyanurat-Hartschaum (Duroplast). Dünne Platten mit sehr guter Dämmwirkung (λ ab ca. 0,022 W/(m·K), mit Alu-Kaschierung).</span>
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">Phenolharz-Resolhartschaum (Standard-Werte)</strong>
@@ -977,7 +979,7 @@ export default function BpKunststoffe() {
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
                     <strong className="block text-slate-800">Mehrlagige EPDM-Dichtungsbahn (selbstklebend)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: EPDM (Ethylen-Propylen-Dien-Mischpolymerisat) mit unterseitigem selbstklebendem SBS-Bitumen. Extrem robust, wurzelfest, Lebensdauer &gt; 50 Jahre.</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: EPDM (Ethylen-Propylen-Dien-Mischpolymerisat) teils mit selbstklebender Unterseite. Sehr alterungsbeständig und wurzelfest (Nutzungsdauer nach Herstellerangaben mehrere Jahrzehnte).</span>
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">FPO-Dichtungsbahn (FPO / TPO)</strong>
@@ -1006,7 +1008,7 @@ export default function BpKunststoffe() {
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
                     <strong className="block text-slate-800">Schnellreaktives PMMA-Flüssigharz</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polymethylmethacrylat-Schnellharz. Härtet unter Zugabe von Katalysatormehl binnen 30 min voll elastisch und schlagregenfest aus. Ideal für komplizierte Gully- oder Geländebefestigungen.</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Polymethylmethacrylat-Schnellharz. Härtet nach Zugabe eines Peroxid-Katalysators sehr schnell aus (regenfest oft nach ca. 30 min, Herstellerangabe). Geeignet für Anschlüsse an Gullys, Geländer und Durchdringungen.</span>
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">Geruchsarmer 2K-PUR-Flüssigkunststoff</strong>
@@ -1059,22 +1061,22 @@ export default function BpKunststoffe() {
                 <span className="text-shiraz text-[10px] font-extrabold uppercase tracking-wider block mb-1">Architektonischer Membranbau</span>
                 <h4 className="font-extrabold text-slate-800 text-sm mb-3">Flurierte Polymerfolienkissen</h4>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4 font-normal">
-                  Transparente, extrem leichte Dachtragwerke im Hallenbau überwinden riesige Spannweiten. Fluorkohlenwasserstoff-Folien übertreffen Glas bei Eigengewicht und Lichtdurchlässigkeit um Welten.
+                  Transparente, sehr leichte Dächer überspannen große Hallen. Fluorpolymer-Folien wiegen nur einen Bruchteil von Glas und sind lichtdurchlässig, auch für UV-Strahlung.
                 </p>
                 <div className="space-y-3.5 pt-2 border-t border-slate-100">
                   <div className="text-xs">
                     <strong className="block text-slate-800">ETFE-Kissenfassaden (z.B. Allianz-Arena)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Ethylen-Tetrafluorethylen-Copolymer-Folie (unplastifiziert). Zwei- bis fünflagige Kissen, pneumatisch mit minimalem Gebläsedruck (ca. 300 Pa) aufgespannt. UV-durchlässig, selbstreinigend (Lotuseffekt).</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Ethylen-Tetrafluorethylen-Copolymer-Folie (unplastifiziert). Zwei- bis fünflagige Kissen, pneumatisch mit minimalem Gebläsedruck (ca. 300 Pa) aufgespannt. UV-durchlässig, schmutzabweisend (antiadhäsive Oberfläche, kein Lotuseffekt).</span>
                   </div>
                   <div className="text-xs">
                     <strong className="block text-slate-800">PTFE (Polytetrafluorethylen / Teflon)</strong>
-                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Glasfasergewebe beschichtet mit Teflon. Hochfeste permanente Zelt- und Dachmembranen für olympische Sportstätten. Vollkommen ungelöst von chemischem Abbau, brandsicher (Klasse A1).</span>
+                    <span className="text-[11px] text-slate-500 leading-normal block">Werkstoff: Glasfasergewebe mit PTFE-Beschichtung. Hochfeste, dauerhafte Membranen für Stadion- und Hallendächer. Chemisch sehr beständig; Brandverhalten je nach Produkt bis nichtbrennbar (A2).</span>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mt-4">
                 <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">PROFI-REGEL</span>
-                <p className="text-[10px] text-slate-700 leading-normal font-medium">ETFE-Dachflächen erfordern eine permanent aktive Luftdruckkompressoranlage zur elastischen Schneelastpufferung.</p>
+                <p className="text-[10px] text-slate-700 leading-normal font-medium">ETFE-Kissen werden durch Gebläse dauerhaft unter Innendruck gehalten; bei Schnee oder Wind wird der Druck erhöht.</p>
               </div>
             </div>
 
@@ -1202,7 +1204,7 @@ export default function BpKunststoffe() {
                 </div>
                 <p className="leading-snug text-text-main/80 text-[11px] font-normal leading-relaxed">
                   Der Thermodehnungs-Mismatch beträgt ca. <strong>{formatDeZahl((elongationPlastic / Math.max(0.1, elongationConcrete)), 1)}x</strong> gegenüber Normalbeton. Ohne Gleitmuffen oder Dehnungskompensatoren entstehen an Muffen sofort Risse und Undichtigkeiten. 
-                  {compObj.id === 'pe' && ' Legen Sie bei PE-HD Abwasserrohren alle 5 m Festmuffen an oder planen Sie Umlenkschenkel mit ausreichend Freiraum ein.'}
+                  {compObj.id === 'pe' && ' Bei PE-HD-Leitungen Festpunkte und Dehnungsausgleich (z. B. Dehnungsmuffen, Biegeschenkel) nach Herstellerangabe planen.'}
                   {compObj.id === 'pvc-u' && ' Hart-PVC-Rinnen müssen an den Rinnenkopplungen min. 10 - 15 mm Verfahrweg aufweisen, ansonsten beult die Rinne im Sommer aus.'}
                 </p>
               </div>
@@ -1225,6 +1227,23 @@ export default function BpKunststoffe() {
 
       <PlasticsThematicLinks current="bauprodukt" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Kriechdehnung im Burgers-Modell"
+          zielGleichung="\varepsilon(t) = \frac{\sigma_0}{E_1} + \frac{\sigma_0}{\eta_1} t + \frac{\sigma_0}{E_2}\left(1 - e^{-t E_2/\eta_2}\right)"
+          normQuelle="Rheologisches Lehrmodell (Parameter als Lehrwerte)"
+          schritte={[
+            { titel: '1. Gegeben', formel: '\\sigma_0 = 5\\,\\text{N/mm}^2,\\; E_1 = 1000,\\; E_2 = 2000\\,\\text{N/mm}^2,\\; \\eta_1 = 5 \\cdot 10^6,\\; \\eta_2 = 10^5\\,\\text{N·h/mm}^2', erklaerung: 'Thermoplast unter konstanter Spannung; t in Stunden.' },
+            { titel: '2. Sofortdehnung', formel: '\\varepsilon_0 = 5/1000 = 0{,}50\\,\\%', erklaerung: 'Elastischer Anteil (Feder E_1).' },
+            { titel: '3. Nach t = 1000 h', formel: '\\varepsilon = 0{,}50\\,\\% + \\tfrac{5 \\cdot 1000}{5 \\cdot 10^6} + \\tfrac{5}{2000}\\left(1 - e^{-20}\\right) = 0{,}50 + 0{,}10 + 0{,}25 = 0{,}85\\,\\%', erklaerung: 'Viskoses Fließen plus verzögert elastischer Anteil.' },
+            { titel: '4. Wirksamer Kriechmodul', formel: 'E_c = \\sigma_0 / \\varepsilon = 5 / 0{,}0085 = 590\\,\\text{N/mm}^2', erklaerung: 'Rund 60 % des Kurzzeitmoduls.' },
+          ]}
+          ergebnisHinweis="Schon nach gut einem Monat ist die Dehnung um 70 % gewachsen – deshalb wird mit dem Kriechmodul statt dem Kurzzeit-E-Modul bemessen."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_kunststoffe" />
+
       <ModuleFooter 
         wikipedia={[
           { title: "Kunststoffe im Bauwesen", url: "https://de.wikipedia.org/wiki/Kunststoff" },
@@ -1232,9 +1251,9 @@ export default function BpKunststoffe() {
           { title: "Polymethylmethacrylat (Plexiglas)", url: "https://de.wikipedia.org/wiki/Polymethylmethacrylat" }
         ]} 
         literatur={[ 
-          'Domininghaus, H.: Kunststoffe: Eigenschaften und Anwendungen (2020).',
-          'Borsch, O.: Bauprodukte aus Kunststoffen.',
-          'Puntigam, W.: Die Flachdach-Richtlinien (Fachregel für Abdichtungen).' 
+          'Elsner, P.; Eyerer, P.; Hirth, T. (Hrsg.): Domininghaus – Kunststoffe: Eigenschaften und Anwendungen. 8. Aufl., Berlin: Springer 2012',
+          'Ehrenstein, G. W.: Polymer-Werkstoffe. 3. Aufl., München: Hanser 2011',
+          'ZVDH: Fachregel für Abdichtungen – Flachdachrichtlinie (Ausgabe manuell prüfen)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)' },
