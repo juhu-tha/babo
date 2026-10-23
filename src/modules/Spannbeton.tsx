@@ -1357,12 +1357,12 @@ export default function Spannbeton() {
           { title: 'DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023, 2. Generation; ersetzt formal DIN EN 1992-1-1:2011-01, DIN EN 1992-2 und DIN EN 1992-3 – bauaufsichtlich noch nicht eingeführt)' },
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'Spannstahl: allgemeine bauaufsichtliche Zulassungen (abZ) des DIBt; EN 10138 nur als Entwurf (prEN 10138-1 bis -4), nicht harmonisiert', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 445 / 446 / 447 (Einpressmörtel für Spannglieder: Prüfverfahren, Einpressverfahren, Anforderungen) – Ausgaben manuell prüfen' },
-          { title: 'DIN EN 523 (Hüllrohre aus Bandstahl für Spannglieder) – Ausgabe manuell prüfen' },
+          { title: 'DIN EN 445:2008-01 / DIN EN 446:2008-01 / DIN EN 447:2017-09 (Einpressmörtel für Spannglieder: Prüfverfahren, Einpressverfahren, Allgemeine Anforderungen)' },
+          { title: 'DIN EN 523:2003-11 (Hüllrohre aus Bandstahl für Spannglieder – Begriffe, Anforderungen und Konformität)' },
           { title: 'fib Bulletin 75 (2014): Polymer-duct systems for internal bonded post-tensioning', url: 'https://www.fib-international.org/' },
           { title: 'Spannverfahren: Europäische Technische Bewertungen (ETA) bzw. abZ des jeweiligen Systems', url: 'https://www.dibt.de/' },
           { title: 'BMVI: Handlungsanweisung Spannungsrisskorrosion (Ankündigungsverhalten) und Nachrechnungsrichtlinie für Straßenbrücken im Bestand', url: 'https://www.bast.de/' },
-          { title: 'DGZfP-Merkblätter zur zerstörungsfreien Prüfung im Bauwesen (Ultraschall, Radar, Streufeld) – Nummern/Ausgaben manuell prüfen', url: 'https://www.dgzfp.de/' }
+          { title: 'DGZfP-Merkblätter B 04 (Ultraschallverfahren, 2018-08) und B 10 (Radarverfahren, 2024-12); DGZfP-Positionspapier Spannstahlbruchortung – Magnetische Verfahren (2017-08)', url: 'https://www.dgzfp.de/' }
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',

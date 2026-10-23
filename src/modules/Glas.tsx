@@ -414,7 +414,7 @@ export default function Glas() {
         { title: 'Verbundsicherheitsglas', url: 'https://de.wikipedia.org/wiki/Verbundsicherheitsglas' }
       ]}
         literatur={[
-          'Weller, B.; Krampe, P.; Reich, S.: Glasbau-Praxis – Konstruktion und Bemessung, Band 1 und 2. Berlin: Beuth 2013 (Auflage manuell prüfen)'
+          'Weller, B.; Krampe, P.; Reich, S.: Glasbau-Praxis – Konstruktion und Bemessung. Band 1: Grundlagen. 3., überarb. u. erw. Aufl., Berlin: Beuth 2013; Weller, B.; Engelmann, M.; Nicklisch, F.; Weimar, T.: Glasbau-Praxis – Konstruktion und Bemessung. Band 2: Beispiele nach DIN 18008. 3., überarb. u. erw. Aufl., Berlin: Beuth 2013'
         ]}
         regelwerke={[
           { title: 'DIN 18008-1:2020-05 (Glas im Bauwesen - Bemessungs- und Konstruktionsregeln - Teil 1: Begriffe und allgemeine Grundlagen)' },

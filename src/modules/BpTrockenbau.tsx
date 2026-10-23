@@ -979,7 +979,7 @@ export default function BpTrockenbau() {
         ]} 
         literatur={[ 
           'Wricke, G.; Müller, S.: Handbuch Trockenbau – planen, konstruieren, ausführen. Haan-Gruiten: Europa-Lehrmittel 2014',
-          'Bundesverband der Gipsindustrie e. V.: Merkblatt 2 – Verspachtelung von Gipsplatten, Oberflächengüten (Ausgabe manuell prüfen)',
+          'Bundesverband der Gipsindustrie e. V., Industriegruppe Gipsplatten (IGG): Merkblatt 2 – Verspachtelung von Gipsplatten, Oberflächengüten Q1 bis Q4 (Stand 2017)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[ 

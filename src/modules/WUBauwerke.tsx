@@ -910,7 +910,7 @@ export default function WUBauwerke() {
         ]}
         literatur={[
           'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. Düsseldorf: Verlag Bau+Technik 2018',
-          'DAfStb-Heft 555: Erläuterungen zur DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton. Berlin: Beuth (Ausgabe passend zur Richtlinie 2017 manuell prüfen)',
+          'DAfStb-Heft 555: Erläuterungen zur DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton. Berlin: Beuth 2006 (bezogen auf die Richtlinie 2003; keine Neuauflage zur Ausgabe 2017)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
         ]}

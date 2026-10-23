@@ -1343,7 +1343,7 @@ export default function Schadstoffe() {
           { title: 'Polyzyklische aromatische Kohlenwasserstoffe', url: 'https://de.wikipedia.org/wiki/Polyzyklische_aromatische_Kohlenwasserstoffe' }
         ]}
         literatur={[
-          'Fachliteratur zu Gebäudeschadstoffen (z. B. Handbücher zu Asbest, KMF, PCB, PAK; konkrete Ausgabe manuell prüfen)',
+          'Zwiener, G.; Lange, F.-M. (Hrsg.): Handbuch Gebäude-Schadstoffe und gesunde Innenraumluft. Berlin: Erich Schmidt 2012; Bossemeyer, H.-D.: Gebäudeschadstoffe im Bild – Asbest, KMF, PCB, PAK und weitere Schadstoffe in Gebäuden erkennen. Köln: Rudolf Müller 2020',
           
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
@@ -1352,7 +1352,7 @@ export default function Schadstoffe() {
           { title: 'TRGS 519 (Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten), Fassung 2014, zuletzt geändert 28.01.2025', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519' },
           { title: 'TRGS 521 (Tätigkeiten mit alter Mineralwolle; Neufassung 2026, ersetzt Ausgabe 2008 – Fundstelle manuell prüfen)', url: 'https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-521' },
           { title: 'VDI 6202 Blatt 3:2021-09 (Asbest – Erkundung und Bewertung)' },
-          { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe und Bauteile in Gebäuden; Landesfassung manuell prüfen)', url: 'https://www.dibt.de/' }
+          { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe und Bauteile in Gebäuden, Fassung September 1994; MVV TB 2025/1, lfd. Nr. A 3.2.4 mit Anlage A 3.2/1; Landesumsetzung über die jeweilige VV TB)', url: 'https://www.dibt.de/' }
         ]}
         formeln={[
           {

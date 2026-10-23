@@ -323,7 +323,7 @@ export default function Lehm() {
           { title: 'Stampflehm', url: 'https://de.wikipedia.org/wiki/Stampflehm' }
         ]}
         literatur={[
-          'Minke, G.: Handbuch Lehmbau – Baustoffkunde, Techniken, Lehmarchitektur. Staufen: Ökobuch (Auflage manuell prüfen)',
+          'Minke, G.: Handbuch Lehmbau – Baustoffkunde, Techniken, Lehmarchitektur. 10., überarb. u. erw. Aufl., Rastede: ökobuch 2022',
           'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln (3. Aufl., Vieweg+Teubner 2009)',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011'
         ]}

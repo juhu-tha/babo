@@ -1002,7 +1002,7 @@ export default function Nawaro() {
           { title: 'Holzfaserwerkstoff', url: 'https://de.wikipedia.org/wiki/Holzfaserwerkstoff' }
         ]}
         literatur={[
-          'Fachagentur Nachwachsende Rohstoffe (FNR) (Hrsg.): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen. Gülzow-Prüzen (aktuelle Auflage manuell prüfen)',
+          'Fachagentur Nachwachsende Rohstoffe e. V. (FNR) (Hrsg.): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen. 13., überarb. Aufl., Gülzow-Prüzen: FNR 2024',
           'Niemz, P.; Sonderegger, W.: Holzphysik – Eigenschaften, Prüfung und Kennwerte. 2. Aufl., München: Hanser 2021'
         ]}
         weblinks={[
@@ -1011,7 +1011,7 @@ export default function Nawaro() {
         regelwerke={[
           { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)' },
           { title: 'DIN 4108-10:2021-11 (Wärmeschutz und Energie-Einsparung in Gebäuden - Anwendungsbezogene Anforderungen an Dämmstoffe)' },
-          { title: 'DIN 68800 Teile 1 bis 4 (Holzschutz; Teil 1:2019-06, Ausgaben der übrigen Teile manuell prüfen)' },
+          { title: 'DIN 68800 Teile 1 bis 4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02, Teil 3:2020-03, Teil 4:2020-12)' },
           { title: 'DIN EN 13171:2015-04 (Wärmedämmstoffe für Gebäude - Werkmäßig hergestellte Produkte aus Holzfasern (WF))' },
           { title: 'DIN EN 16449:2014-06 (Holz und Holzprodukte – Berechnung des biogenen Kohlenstoffgehalts)' },
           { title: 'DIN EN 15101-1:2019-07 (Wärmedämmstoffe für Gebäude – An der Verwendungsstelle hergestellte Wärmedämmung aus Zellulosefüllstoff (LFCI))' },

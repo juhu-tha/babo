@@ -745,7 +745,7 @@ export default function Bodenmechanik() {
           'Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1997-1:2014-03 mit NA und DIN 1054 (Eurocode 7, bauaufsichtlich eingeführt); neue Generation auf Basis EN 1997-1:2024 – Ausgabe der deutschen Fassung manuell prüfen' },
+          { title: 'DIN EN 1997-1:2014-03 mit DIN EN 1997-1/NA:2010-12 und DIN 1054:2021-04 (Eurocode 7; MVV TB 2025/1 führt DIN EN 1997-1:2009-09 als eingeführte Fassung); neue Generation EN 1997-1:2024 – DIN-Fassung noch nicht erschienen (geplant 2027)' },
           { title: 'DIN 1054:2021-04 (Baugrund - Sicherheitsnachweise im Erd- und Grundbau)' },
           { title: 'DIN EN ISO 17892-12:2022-08 (Laborversuche an Bodenproben – Teil 12: Bestimmung der Fließ- und Ausrollgrenzen; ersetzt DIN 18122-1)' },
           { title: 'DIN 18196:2023-02 (Erd- und Grundbau – Bodenklassifikation für bautechnische Zwecke)' },

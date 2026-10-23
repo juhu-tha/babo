@@ -1667,7 +1667,7 @@ wikipedia={[
           { title: 'Nachhallzeit', url: 'https://de.wikipedia.org/wiki/Nachhallzeit' }
         ]}
         regelwerke={[
-          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02 – Änderungen manuell prüfen)' },
+          { title: 'DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt DIN 4108-2:2013-02 „Mindestanforderungen an den Wärmeschutz“)' },
           { title: 'DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Periodenbilanzverfahren; ersetzt 2018-10)' },
           { title: 'DIN 18041:2016-03 (Hörsamkeit in Räumen – Anforderungen, Empfehlungen und Hinweise für die Planung)' },
           { title: 'DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },

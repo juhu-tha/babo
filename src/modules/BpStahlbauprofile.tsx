@@ -637,7 +637,7 @@ export default function BpStahlbauprofile() {
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
         literatur={[
-          'Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3. Berlin: Bauwerk Verlag (Auflage manuell prüfen)',
+          'Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3. Band 1: Tragwerksplanung, Grundlagen, 6., überarb. u. erw. Aufl.; Band 2: Verbindungen und Konstruktionen, 5., überarb. u. erw. Aufl.; Band 3: Komponentenmethode, 2. Aufl. Berlin: Beuth 2021',
           'Kuhlmann, U. (Hrsg.): Stahlbau-Kalender. Berlin: Ernst & Sohn (jährlich)'
         ]}
         regelwerke={[

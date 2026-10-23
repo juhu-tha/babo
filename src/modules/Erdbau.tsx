@@ -396,7 +396,7 @@ export default function Erdbau() {
         literatur={[
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
           'Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016',
-          'FGSV: RStO 12 – Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (aktuelle Fassung und Einführungserlass manuell prüfen)'
+          'FGSV: RStO 12/24 – Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012/Fassung 2024 (eingeführt mit ARS Nr. 2/2024 des BMDV)'
         ]}
         regelwerke={[
           { title: 'DIN 18196:2023-07 (Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke)' },
@@ -404,7 +404,7 @@ export default function Erdbau() {
           { title: 'DIN 18134:2012-04 (Baugrund - Versuche und Versuchsgeräte - Plattendruckversuch)' },
           { title: 'DIN EN ISO 14688-1:2020-11 / DIN EN ISO 14688-2:2020-11 (Geotechnische Erkundung - Benennung und Klassifizierung von Boden)' },
           { title: 'ZTV E-StB 17:2017 (Zusätzliche Technische Vertragsbedingungen und Richtlinien für Erdarbeiten im Straßenbau)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'RStO 12 (Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen; aktuelle Fassung manuell prüfen)', url: 'https://www.fgsv-verlag.de/' }
+          { title: 'RStO 12/24 (Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012/Fassung 2024)', url: 'https://www.fgsv-verlag.de/' }
         ]}
         formeln={[
           {

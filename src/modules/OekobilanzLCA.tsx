@@ -115,7 +115,7 @@ export default function OekobilanzLCA() {
           { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen – Grundregeln)' },
           { title: 'DIN EN 15978:2026-09 (EN 15978:2026; Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10, Übergangsregeln in QNG/DGNB manuell prüfen)' },
           { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)' },
-          { title: 'DGNB System Kriterium ENV1.1 (Ökobilanz des Gebäudes; Version manuell prüfen)', url: 'https://www.dgnb.de/' },
+          { title: 'DGNB System Kriterium ENV1.1 \'Klimaschutz und Energie\' (Version 2023.2; in Version 2018: \'Ökobilanz des Gebäudes\')', url: 'https://www.dgnb.de/' },
           { title: 'QNG-Handbuch, Anlage 3 (Version 1.4 vom 19.07.2024): Anforderungswerte Lebenszyklus-THG und PENRT', url: 'https://www.qng.info/' }
         ]}
         weblinks={[

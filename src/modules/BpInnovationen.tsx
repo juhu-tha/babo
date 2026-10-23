@@ -930,7 +930,7 @@ export default function BpInnovationen() {
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Springer Vieweg 2011',
           'Davidovits, J.: Geopolymer Chemistry and Applications. 5th ed., Saint-Quentin: Institut Géopolymère 2020',
-          'DAfStb (Hrsg.): Erläuterungen und Beispiele zur DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung. DIN Media 2024 (manuell prüfen)'
+          'Deutscher Ausschuss für Stahlbeton (Hrsg.): Erläuterungen und Beispiele zur DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“. DAfStb-Heft 660. Berlin: DIN Media 2024'
         ]}
         regelwerke={[
           { title: 'ISO 16290:2013 (Raumfahrtsysteme – Definition der Technology Readiness Levels und Bewertungskriterien)' },

@@ -1253,7 +1253,7 @@ export default function BpKunststoffe() {
         literatur={[ 
           'Elsner, P.; Eyerer, P.; Hirth, T. (Hrsg.): Domininghaus – Kunststoffe: Eigenschaften und Anwendungen. 8. Aufl., Berlin: Springer 2012',
           'Ehrenstein, G. W.: Polymer-Werkstoffe. 3. Aufl., München: Hanser 2011',
-          'ZVDH: Fachregel für Abdichtungen – Flachdachrichtlinie (Ausgabe manuell prüfen)' 
+          'ZVDH: Fachregel für Abdichtungen – Flachdachrichtlinie (Ausgabe Januar 2026)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN EN ISO 1043-1 (Kunststoffe - Kennbuchstaben und Kurzzeichen)' },

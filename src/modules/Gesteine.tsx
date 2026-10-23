@@ -281,7 +281,7 @@ export default function Gesteine() {
         { title: 'Gesteinskörnung', url: 'https://de.wikipedia.org/wiki/Gesteinsk%C3%B6rnung' }
       ]}
         literatur={[
-          'Deutscher Naturwerkstein-Verband (DNV): Bautechnische Informationen Naturwerkstein (BTI), Ausgaben manuell prüfen',
+          'Deutscher Naturwerkstein-Verband (DNV): Bautechnische Informationen Naturwerkstein (BTI), Einzelhefte in der jeweils aktuellen Ausgabe (Bezug: dnv.online/shop)',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
           'Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016'
         ]}

@@ -1251,7 +1251,7 @@ export default function Korrosion() {
         ]}
         literatur={[
           'fib Model Code for Concrete Structures 2010 (International Federation for Structural Concrete)',
-          'DAfStb-Heft 526: Erläuterungen zu den Normen DIN EN 206-1, DIN 1045-2, DIN 1045-3, DIN 1045-4 und DIN EN 12620. Berlin: Beuth 2011 (Neuausgabe zur DIN 1045:2023 manuell prüfen)',
+          'DAfStb-Heft 526: Erläuterungen zu den Normen DIN EN 206-1, DIN 1045-2, DIN 1045-3, DIN 1045-4 und DIN EN 12620, 2. überarb. Aufl. Berlin: Beuth 2011 (keine Neuausgabe zur DIN 1045:2023, Stand 10/2026)',
           'fib Bulletin 34: Model Code for Service Life Design. Lausanne: fib 2006',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}

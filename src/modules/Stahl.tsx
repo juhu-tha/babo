@@ -3144,11 +3144,11 @@ export default function Stahl() {
         ]}
         literatur={[
           'Petersen, Chr. (2013): Stahlbau - Grundlagen der Berechnung und baulichen Ausbildung (Springer Vieweg)',
-          'Kindmann, R.; Krahwinkel, M.: Stahl- und Verbundkonstruktionen. Springer Vieweg (Auflage manuell prüfen)',
+          'Kindmann, R.; Krahwinkel, M.: Stahl- und Verbundkonstruktionen – Hallen-, Geschoss- und Brückenbau. 3., vollst. überarb. u. aktual. Aufl., Wiesbaden: Springer Vieweg 2016',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, Teil 1-1; 2. Generation manuell prüfen)' },
+          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, Teil 1-1; bauaufsichtlich eingeführt); 2. Generation DIN EN 1993-1-1:2025-04 mit DIN EN 1993-1-1/NA:2026-04 noch nicht eingeführt' },
           { title: 'DIN EN 1993-1-2:2010-12 mit NA (Eurocode 3, Teil 1-2: Brandfall)' },
           { title: 'DIN EN 1993-1-9:2010-12 mit NA (Eurocode 3, Teil 1-9: Ermüdung)' },
           { title: 'DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus unlegierten Baustählen)' },

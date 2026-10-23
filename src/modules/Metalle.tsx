@@ -454,8 +454,8 @@ export default function Metalle() {
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 8044:2020-08 (Korrosion von Metallen und Legierungen - Grundbegriffe)' },
-          { title: 'DIN EN 1993-1-4 mit NA (Eurocode 3, Teil 1-4: Nichtrostende Stähle; eingeführte Ausgabe manuell prüfen)' },
-          { title: 'DIN EN 1999-1-1 mit NA (Eurocode 9: Aluminiumtragwerke; eingeführte Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 1993-1-4:2015-10 + A2:2021-02 mit DIN EN 1993-1-4/NA:2020-11 (Eurocode 3, Teil 1-4: Nichtrostende Stähle; bauaufsichtlich eingeführt); 2. Generation DIN EN 1993-1-4:2026-04 mit NA:2026-11 noch nicht eingeführt' },
+          { title: 'DIN EN 1999-1-1:2014-03 mit DIN EN 1999-1-1/NA:2021-03 (Eurocode 9: Aluminiumtragwerke; bauaufsichtlich eingeführt); 2. Generation DIN EN 1999-1-1:2024-11 noch nicht eingeführt' },
           { title: 'DIN EN ISO 12944-1..9:2018-06 (Beschichtungsstoffe - Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)' },
           { title: 'DIN EN 10025-5:2019-10 (Warmgewalzte Erzeugnisse aus wetterfesten Baustählen)' },
           { title: 'DIN EN 988:1996-08 (Zink und Zinklegierungen - Festlegungen für gewalzte Flacherzeugnisse für das Bauwesen)' }

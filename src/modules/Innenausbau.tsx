@@ -948,14 +948,14 @@ export default function Innenausbau() {
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Unger, A.: Fußboden-Atlas – richtig planen, Schäden vermeiden. Donauwörth: QUO-VADO (Auflage manuell prüfen)',
+          'Unger, A.: Fußboden-Atlas – Fußböden richtig planen und ausführen. 7., in Teilen neu bearb. Aufl., 2 Bde., Donauwörth: QUO-VADO 2011',
           'Bundesverband der Gipsindustrie e. V. (Industriegruppe Baugipsplatten): Merkblätter zum Trockenbau',
           'Bundesverband Estrich und Belag e. V. (BEB): Hinweisblätter und Arbeitsblätter'
         ]}
         regelwerke={[
           { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)' },
           { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)' },
-          { title: 'DIN 18560-1 bis -7 (Estriche im Bauwesen; Ausgaben der Teile manuell prüfen)' },
+          { title: 'DIN 18560-1:2021-02, -2:2022-08, -3:2006-03, -4:2012-06 und -7:2004-04 (Estriche im Bauwesen)' },
           { title: 'DIN EN 1264-4 (Flächenheizung – Installation; Belegreife beheizter Estriche)' },
           { title: 'DIN 18534-1 bis -6:2017-07 (Abdichtung von Innenräumen)' },
           { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)' }

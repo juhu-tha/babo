@@ -1680,7 +1680,6 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           { title: 'DBV-Merkblätter: Sichtbeton (2015), Industrieböden, Betondeckung (Deutscher Beton- und Bautechnik-Verein E.V.)', url: 'https://www.betonverein.de/' }
         ]}
         literatur={[
-          'Krell, J.: Beton 2022 – Vordenken statt Nachbessern. Hilden: Krell-Consult (Angaben manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (51. Ausgabe 2008, Verlag Bau+Technik)'
         ]}

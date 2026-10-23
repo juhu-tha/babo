@@ -354,13 +354,13 @@ export default function Eigenspannungen() {
         { title: 'Eigenspannung', url: 'https://de.wikipedia.org/wiki/Eigenspannung' }
       ]}
         literatur={[
-          'Rostásy, F. S.; Krauß, M.: Frühe Risse in massigen Betonbauteilen – Ingenieurmodelle für die Planung von Gegenmaßnahmen. DAfStb (Heftnummer und Jahr manuell prüfen)',
+          'Rostásy, F. S.; Krauß, M.: Frühe Risse in massigen Betonbauteilen – Ingenieurmodelle für die Planung von Gegenmaßnahmen. Deutscher Ausschuss für Stahlbeton, Heft 520. Berlin: Beuth 2001',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Breitenbücher, R.: Zwangsspannungen und Rißbildung infolge Hydratationswärme. Dissertation, TU München 1989'
         ]}
         regelwerke={[
           { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 7.3 Rissbreitenbegrenzung' },
-          { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton (Ausgabe manuell prüfen)' },
+          { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton (2010-04)' },
           { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12' }
         ]}
         formeln={[

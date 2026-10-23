@@ -286,7 +286,7 @@ export default function BpBaustoffindustrie() {
           { title: 'Bundesverband Baustoffe – Steine und Erden (bbs)', url: 'https://www.baustoffindustrie.de' }
         ]}
         literatur={[
-          'Bundesverband Baustoffe – Steine und Erden (bbs): Die Nachfrage nach Primär- und Sekundärrohstoffen der Steine-Erden-Industrie (Rohstoffstudie; Ausgabe manuell prüfen)',
+          'Bundesverband Baustoffe – Steine und Erden (bbs) / RWI (Dehio, J. et al.): Rohstoffnachfrage 2045: Ressourcen sichern, Zukunft bauen – Perspektiven für mineralische Primär- und Sekundärrohstoffe. Essen/Berlin 2025',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[

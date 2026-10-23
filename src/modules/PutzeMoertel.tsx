@@ -1260,15 +1260,15 @@ export default function PutzeMoertel() {
           { title: 'Kalkstein', url: 'https://de.wikipedia.org/wiki/Kalkstein' }
         ]} 
         literatur={[ 
-          'Bundesverband der Gipsindustrie e. V.: GIPS-Datenbuch (Ausgabe manuell prüfen)',
+          'Bundesverband der Gipsindustrie e. V.: GIPS-Datenbuch (Stand 01.09.2026)',
           'VDPM (Verband für Dämmsysteme, Putz und Mörtel e. V., 2017 aus IWM und FV WDVS hervorgegangen): Technische Richtlinien und Merkblätter für Werkmörtel.',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
-          'DIN 4108-3: Wärmeschutz und Energie-Einsparung in Gebäuden – Klimabedingter Feuchteschutz (Schlagregenschutz; Ausgabe manuell prüfen)'
+          'DIN 4108-3:2024-03: Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz (Schlagregenschutz)'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 998-1:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 1: Putzmörtel)' },
           { title: 'DIN EN 998-2:2017-02 (Festlegungen für Mörtel im Mauerwerksbau - Teil 2: Mauermörtel)' },
-          { title: 'DIN 18550-1 (Ausgabe manuell prüfen; bekannt 2018-01) (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Festlegungen zu DIN EN 13914-1 für Außenputze)' },
+          { title: 'DIN 18550-1:2018-01 + A1:2022-11 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 1: Ergänzende Festlegungen zu DIN EN 13914-1 für Außenputze)' },
           { title: 'DIN 18550-2:2018-01 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen - Teil 2: Ergänzende Festlegungen zu DIN EN 13914-2 für Innenputze)' },
           { title: 'DIN EN 13914-1:2016-09 (Planung, Zubereitung und Ausführung von Außenputzen)' },
           { title: 'DIN EN 13914-2:2016-09 (Planung, Zubereitung und Ausführung von Innenputzen)' },

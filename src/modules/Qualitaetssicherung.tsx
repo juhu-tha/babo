@@ -129,7 +129,7 @@ export default function Qualitaetssicherung() {
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. Berlin: Ernst & Sohn 2001',
           'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Düsseldorf: Verlag Bau+Technik 2018',
-          'Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (Ausgabe manuell prüfen)',
+          'Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
@@ -137,7 +137,7 @@ export default function Qualitaetssicherung() {
           { title: 'DIN EN 13670 / DIN 1045-3:2023-08 (Bauausführung, Überwachungsklassen)' },
           { title: 'DIN 1045-1000:2023-08 (Grundlagen und Betonbauqualitätsklassen BBQ)' },
           { title: 'DIN EN 12390-3:2019-10 (Druckfestigkeit von Probekörpern)' },
-          { title: 'CSC Technical Manual (Version manuell prüfen)' }
+          { title: 'CSC Technical Manual, Version 3.0 (2025-12)' }
         ]}
         formeln={[
           {

@@ -316,7 +316,7 @@ export default function DauerhaftigkeitChecklisten() {
         ]}
         regelwerke={[
           { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2)' },
-          { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), Ausgabe 2017-12 (manuell prüfen)', url: 'https://www.dafstb.de/' },
+          { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), Ausgabe 2017-12', url: 'https://www.dafstb.de/' },
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung und Konformität)' }
         ]}
         literatur={[

@@ -519,9 +519,9 @@ export default function BpDachFassade() {
           { title: "Wärmedurchgangskoeffizient", url: "https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient" }
         ]} 
         literatur={[ 
-          'Herzog, T.; Krippner, R.; Lang, W.: Fassaden Atlas. München: Edition Detail (Auflage manuell prüfen)', 
+          'Herzog, T.; Krippner, R.; Lang, W.: Fassaden Atlas – Grundlagen, Konzepte, Realisierungen. 2., überarb. u. erw. Aufl., München: Edition Detail 2016', 
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)'
+          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik – Wärme, Feuchte, Klima, Schall, Licht, Brand. 9. Aufl., Wiesbaden: Springer Vieweg 2022'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN ISO 10077-1 (Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen - Berechnung des Wärmedurchgangskoeffizienten)' }, 

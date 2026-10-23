@@ -3922,7 +3922,7 @@
     "moduleTitle": "Denkmalpflege",
     "topic": "Mörtelverträglichkeit",
     "difficulty": "Basis",
-    "normRef": "WTA-Merkblätter (Auswahl manuell prüfen)",
+    "normRef": "WTA-Merkblätter 3-12-16/D (Natursteinrestaurierung: Fugensanierung) und 3-20-26/D (Instandsetzung von historischem Ziegelmauerwerk)",
     "question": "Welche Eigenschaft sollte ein Fugenmörtel für historisches Mauerwerk im Verhältnis zum Stein haben?",
     "options": [
       "Höhere Festigkeit und Dichtheit als der Stein",
@@ -4222,7 +4222,7 @@
     "moduleTitle": "Hist. Bauprodukte",
     "topic": "PCB-Raumluft",
     "difficulty": "Basis",
-    "normRef": "PCB-Richtlinie (Fassung manuell prüfen)",
+    "normRef": "PCB-Richtlinie, Fassung September 1994 (MVV TB 2025/1, lfd. Nr. A 3.2.4 mit Anlage A 3.2/1)",
     "question": "Eine Raumluftmessung ergibt 1 400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?",
     "options": [
       "Unbedenklich (< 300 ng/m³)",

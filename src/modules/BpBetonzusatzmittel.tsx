@@ -1089,7 +1089,7 @@ export default function BpBetonzusatzmittel() {
         literatur={[
           'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013',
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008',
-          'Deutsche Bauchemie e. V.: Informationsschriften zu Betonzusatzmitteln (Titel/Ausgabe manuell prüfen)'
+          'Deutsche Bauchemie e. V.: Betonzusatzmittel und Umwelt (Sachstandsbericht, 6. Ausgabe, Dezember 2016); Lagerung und Dosierung von Beton- und Mörtelzusatzmitteln (Merkblatt, 3. Ausgabe, März 2018); Moderne Fließmittel in der Betontechnologie (Informationsschrift, 1. Ausgabe, Januar 2007)'
         ]}
         regelwerke={[
           { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)' },

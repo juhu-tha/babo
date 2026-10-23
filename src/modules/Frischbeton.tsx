@@ -730,8 +730,7 @@ export default function Frischbeton() {
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Tattersall, G. H.; Banfill, P. F. G.: The Rheology of Fresh Concrete. London: Pitman 1983',
           'Schmitt, R.: Die Schalungstechnik – Systeme, Einsatz und Logistik. Berlin: Ernst & Sohn 2001',
-          'Graubner, C.-A.; Proske, T.: Frischbetondruck auf lotrechte Schalungen. Beton- und Stahlbetonbau 105 (2010) 1 (Angaben manuell prüfen)',
-          'Springenschmid, R.: Betonieren bei extremer Witterung (Angaben manuell prüfen)'
+          'Graubner, C.-A.; Proske, T.: Frischbetondruck bei Verwendung von Selbstverdichtendem Beton. Beton- und Stahlbetonbau 104 (2009) H. 2, S. 88–96'
         ]}
         regelwerke={[
           { title: 'DIN EN 206:2021-06 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },

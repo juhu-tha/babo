@@ -1414,7 +1414,7 @@ export default function Ressourceneffizienz() {
           { titel: 'Massenbezogene Quote', erklaerung: 'Bezogen auf die gesamte Gesteinskörnung:', formel: 'RER = \\frac{1\\,619}{2\\,500 \\cdot 1{,}85} = 0{,}35 = 35\\,\\%' }
         ]}
         ergebnisHinweis="Rezyklierte Gesteinskörnung ersetzt Primärkies, senkt die CO₂-Bilanz des Betons aber nur wenig – der Zementgehalt dominiert. Der größere Hebel liegt bei klinkerarmen Zementen und schlanker Bemessung."
-        normQuelle="DIN EN 12620; DAfStb-Richtlinie Beton mit rezyklierter Gesteinskörnung (Ausgabe manuell prüfen)"
+        normQuelle="DIN EN 12620; DAfStb-Richtlinie Beton mit rezyklierter Gesteinskörnung (2010-09, mit Berichtigung 1:2019-09)"
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}

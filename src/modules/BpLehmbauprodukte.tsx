@@ -558,8 +558,8 @@ export default function BpLehmbauprodukte() {
         ]}
         literatur={[
           'Minke, Gernot: Handbuch Lehmbau - Baustoffkunde, Techniken und Architektur (Ökobuch Verlag)',
-          'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln. Wiesbaden: Vieweg+Teubner (Auflage manuell prüfen)',
-          'Dachverband Lehm e. V.: Technische Merkblätter (Auswahl, Ausgaben manuell prüfen)'
+          'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln – Begriffe, Baustoffe, Bauteile. 3., überarb. Aufl., Wiesbaden: Vieweg+Teubner 2009',
+          'Dachverband Lehm e. V.: Technische Merkblätter TM01 Anforderungen an Lehmputz als Bauteil (2. Aufl., Juni 2014), TM05 Qualitätsüberwachung von Baulehm (Juni 2011), TM06 Lehmdünnlagenbeschichtungen (Juni 2015)'
         ]}
         regelwerke={[
           { title: 'DIN 18940:2023-06: Tragendes Lehmsteinmauerwerk – Konstruktion, Bemessung und Ausführung' },

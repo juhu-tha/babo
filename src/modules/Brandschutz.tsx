@@ -419,7 +419,7 @@ export default function Brandschutz() {
           { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen – Zusammenstellung klassifizierter Baustoffe, Bauteile und Sonderbauteile)' },
           { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Tragwerksbemessung für den Brandfall; bauaufsichtlich eingeführt); neue Generation DIN EN 1995-1-2:2026-10' },
           { title: 'Musterbauordnung (MBO, Fassung 2002 mit späteren Änderungen; Gebäudeklassen 1 bis 5, §§ 26–32) – aktuellen Stand manuell prüfen', url: 'https://www.bauministerkonferenz.de/' },
-          { title: 'DIN EN 13501-2 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I) – Ausgabe manuell prüfen' }
+          { title: 'DIN EN 13501-2:2023-12 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I)' }
         ]}
         formeln={[
           {

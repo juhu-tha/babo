@@ -726,7 +726,7 @@ export default function Feuchteschutz() {
         regelwerke={[
           { title: 'DIN 4108-3:2024-03 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz; ersetzt 2018-10)' },
           { title: 'DIN EN ISO 13788:2013-05 (Wärme- und feuchtetechnisches Verhalten von Bauteilen – Raumseitige Oberflächentemperatur zur Vermeidung kritischer Oberflächenfeuchte und Tauwasserbildung im Bauteilinneren)' },
-          { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02 – Änderungen manuell prüfen)' },
+          { title: 'DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt DIN 4108-2:2013-02 „Mindestanforderungen an den Wärmeschutz“)' },
           { title: 'DIN 4108-4:2020-11 (Bemessungswerte µ und λ)' }
         ]}
         formeln={[

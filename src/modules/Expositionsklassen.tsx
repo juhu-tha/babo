@@ -2100,8 +2100,8 @@ export default function Expositionsklassen() {
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. Berlin: Ernst & Sohn 2001',
-          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Angaben manuell prüfen)',
-          'DBV-Merkblatt Betondeckung und Bewehrung nach Eurocode 2 (Ausgabe manuell prüfen)'
+          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020',
+          'DBV-Merkblatt Betondeckung und Bewehrung nach Eurocode 2 (Fassung Dezember 2015)'
         ]}
         regelwerke={[
           { title: 'DIN EN 206:2021-06 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },

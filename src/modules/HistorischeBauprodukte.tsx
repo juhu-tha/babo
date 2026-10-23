@@ -882,7 +882,7 @@ export default function HistorischeBauprodukte() {
           { titel: 'Folgerung', erklaerung: 'Quellen ermitteln, mittelfristig sanieren, bis dahin regelmäßig lüften und Kontrollmessungen durchführen.', formel: '\\text{Sanierung mittelfristig}' }
         ]}
         ergebnisHinweis="Für dioxinähnliche PCB und die Gesamtbewertung gelten zusätzliche Kriterien der Länder; die Richtlinie ist bauaufsichtlich über die Länder eingeführt."
-        normQuelle="PCB-Richtlinie (Fassung manuell prüfen)"
+        normQuelle="PCB-Richtlinie, Fassung September 1994 (MVV TB 2025/1, lfd. Nr. A 3.2.4 mit Anlage A 3.2/1)"
       />
       <FormulaDerivationBox
         title="Beispiel 2: Bleiwerte im Trinkwasser eines Altbaus"

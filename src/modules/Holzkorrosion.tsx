@@ -1003,7 +1003,7 @@ export default function Holzkorrosion() {
         ]} 
         literatur={[
           'Huckfeldt, T.; Schmidt, O.: Hausfäule- und Bauholzpilze – Diagnose und Sanierung. Köln: Rudolf Müller (aktuelle Auflage)',
-          'DIN e. V. (Hrsg.): Holzschutz – Praxiskommentar zu DIN 68800 Teile 1 bis 4. Berlin: DIN Media (aktuelle Auflage; Angaben manuell prüfen)',
+          'Glauner, R.; Grosser, D.; Melcher, E.; Plarre, R.: Holzschutz – Praxiskommentar zu DIN 68800 Teile 1 bis 4. Hrsg.: DIN e. V. 3., vollst. überarb. Ausg., Berlin: Beuth 2022',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[

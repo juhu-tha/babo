@@ -757,8 +757,8 @@ export default function BpBetonwaren() {
         ]}
         literatur={[
           'FGSV: ZTV Wegebau – Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Wegen und Plätzen außerhalb von Flächen des Straßenverkehrs (Ausgabe 2013)',
-          'FGSV: Merkblatt für Flächenbefestigungen mit Pflasterdecken und Plattenbelägen (M FP, Ausgabe manuell prüfen)',
-          'DWA-A 127 / ATV-DVWK-A 127: Statische Berechnung von Abwasserkanälen und -leitungen (Ausgabe manuell prüfen)'
+          'FGSV: Merkblatt für Flächenbefestigungen mit Pflasterdecken und Plattenbelägen in ungebundener Ausführung (M FP), FGSV 618/1, Ausgabe 2024',
+          'ATV-DVWK-A 127:2000-08 (Statische Berechnung von Abwasserkanälen und -leitungen, 3. Aufl.) bzw. DWA-A 127-1:2022-12 (Statische Berechnung von Entwässerungsanlagen – Teil 1: Grundlagen)'
         ]}
         regelwerke={[
           { title: 'DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)' },

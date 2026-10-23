@@ -137,7 +137,7 @@ const DATA_PLANUNG: TabContent = {
           id: "pl_bst_2",
           title: "Sichtbetonklasse (SB 1 bis SB 4) festlegen",
           description: "Eindeutige Spezifikation der Sichtbetonklasse nach DBV/VDZ-Sichtbetonmerkblatt. Angabe von Textur, Fugenschnitt, Schalhautklasse, Schalhautalterung und Farbtongleichmäßigkeit im Entwurf.",
-          standard: "DBV/VDZ-Merkblatt Sichtbeton (Ausgabe manuell prüfen)",
+          standard: "DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015)",
           tip: "SB3 (hohe Anforderungen) und SB4 (besonders hohe Anforderungen) erfordern eine gesonderte Leistungsbeschreibung für Schalungshaut (z.B. sägerau, glatte saugende/nicht-saugende Platten) und eine vertraglich vereinbarte Erprobungsfläche, die Schalung, Einbau und Abmessungen des späteren Bauteils abbildet."
         },
         {

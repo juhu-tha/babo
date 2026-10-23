@@ -176,7 +176,7 @@ export default function HydratationFolgen() {
         regelwerke={[
           { title: 'DIN EN 1992-1-1 mit NA (Eurocode 2: Festigkeitsentwicklung Abschn. 3.1, Kriechen/Schwinden Anhang B, Rissbegrenzung Abschn. 7.3)' },
           { title: 'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA' },
-          { title: 'DAfStb-Heft 466: Rissbreitenbeschränkung (Angaben manuell prüfen)' },
+          { title: 'DAfStb-Heft 466: König, G.; Tue, N. V.: Grundlagen und Bemessungshilfen für die Rissbreitenbeschränkung im Stahlbeton und Spannbeton (1996)' },
           { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton' },
           { title: 'DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton – Nachbehandlung)' },
           { title: 'DIN 1045-2:2023-08 / DIN EN 206; DIN EN 197-1 (LH-Zement), DIN EN 14216 (VLH-Zement)' },
@@ -191,20 +191,19 @@ export default function HydratationFolgen() {
           'Locher, F. W.: Zement – Grundlagen der Herstellung und Verwendung. Düsseldorf: Verlag Bau+Technik 2000',
           'Neville, A. M.: Properties of Concrete. 5. Aufl., Harlow: Pearson 2011',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Lohmeyer, G.: Weiße Wannen – einfach und sicher. Verlag Bau+Technik (aktuelle Auflage manuell prüfen)',
+          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. 11., überarb. Aufl., Düsseldorf: Verlag Bau+Technik 2018',
           'Rastrup, E.: Heat of hydration in concrete. Magazine of Concrete Research 6 (1954) 17, S. 79–92',
           'Freiesleben Hansen, P.; Pedersen, J.: Maturity computer for controlled curing and hardening of concrete. Nordisk Betong 1 (1977), S. 19–34',
-          'Rostásy, F. S.; Krauß, M.; Budelmann, H.: Planungshilfen zur Beherrschung von Zwang in massigen Bauteilen (DAfStb-Heft 483 – Angaben manuell prüfen)',
-          'Breitenbücher, R.: Zwangsspannungen und Rissbildung im jungen Beton (Angaben manuell prüfen)',
-          'Springenschmid, R.: Vermeidung von Rissen in jungen Massenbetonbauteilen (Angaben manuell prüfen)',
-          'Litzner, H.-U.: Grundlagen der Bemessung nach Eurocode 2 (Angaben manuell prüfen)',
-          'Beton-Laborpraxis: Frisch- und Festbetonprüfung, Bindemittelprüfungen. Verlag Bau+Technik (Angaben manuell prüfen)'
+          'Rostásy, F. S.; Krauß, M.; Budelmann, H.: Planungswerkzeug zur Kontrolle der frühen Rissbildung in massigen Betonbauteilen, Teile 1–7. Bautechnik 79 (2002), H. 7–12',
+          'Breitenbücher, R.: Zwangsspannungen und Rissbildung infolge Hydratationswärme. Dissertation, TU München 1989',
+          'Springenschmid, R. (Hrsg.): Prevention of Thermal Cracking in Concrete at Early Ages. State-of-the-Art Report prepared by RILEM Technical Committee 119. RILEM Report 15. London: E & FN Spon 1998',
+          'Litzner, H.-U.: Grundlagen der Bemessung und Nachweis der Grenzzustände nach Eurocode 2. Beton- und Stahlbetonbau 80 (1985) H. 1, S. 1–7'
         ]}
         formeln={[
           {
             formel: '\\sigma_{ct}(t) = E_{cm}(t) \\cdot \\left[ \\alpha_T \\cdot \\Delta T(t) + \\epsilon_{cs}(t) \\right] \\cdot R \\cdot k_{relax}(t)',
             erklaerung: 'Integraler Spannungsaufbau im jungen Beton unter Berücksichtigung von thermischer Dehnung, Schwinden, Festhaltungsgrad R und viskoelastischer Kriech-Relaxation.',
-            quelle: 'Rostásy/Krauß/Budelmann (manuell prüfen); Eurocode 2'
+            quelle: 'Rostásy/Krauß/Budelmann, Bautechnik 79 (2002), Teile 1–7; Eurocode 2'
           },
           {
             formel: '\\eta_{riss} = \\frac{\\sigma_{ct}(t)}{f_{ct,eff}(t)} \\le 1{,}0',

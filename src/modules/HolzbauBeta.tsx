@@ -2225,9 +2225,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
         regelwerke={[
           { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1)' },
           { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Brandfall)' },
-          { title: 'DIN EN 338 (Festigkeitsklassen Bauholz) und DIN EN 14080 (Brettschichtholz) – Ausgaben manuell prüfen' },
-          { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), DIBt – Landesfassung manuell prüfen' },
-          { title: 'DIN EN 16351 (Brettsperrholz – Anforderungen; Ausgabe manuell prüfen)' }
+          { title: 'DIN EN 338:2016-07 (Festigkeitsklassen Bauholz) und DIN EN 14080:2013-09 (Brettschichtholz)' },
+          { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), Fassung September 2024 (MVV TB 2025/1, lfd. Nr. A 2.2.1.4); Landesfassung gemäß jeweiliger VV TB' },
+          { title: 'DIN EN 16351:2025-07 (Brettsperrholz – Anforderungen)' }
         ]}
         literatur={[
           'Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5 (einzelne Hefte)',

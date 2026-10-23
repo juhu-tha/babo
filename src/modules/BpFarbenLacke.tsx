@@ -1226,7 +1226,7 @@ export default function BpFarbenLacke() {
                   </p>
                   <ul className="list-disc list-inside space-y-1 font-normal text-text-main/80 pl-2">
                     <li>Max. VOC-Gehalt: ≤ 1 g/Liter (fast lösemittelfrei)</li>
-                    <li>Begrenzung von Weichmachern und schwerflüchtigen Stoffen (Kriterien DE-UZ 102, aktuelle Fassung manuell prüfen)</li>
+                    <li>Begrenzung von Weichmachern und schwerflüchtigen Stoffen (SVOC; Kriterien DE-UZ 102, Ausgabe Januar 2019, Version 7 von 07/2025)</li>
                     <li>Strenge Grenzwerte für Isothiazolinone (übliche Biozide als Topfkonservierer, die Allergien auslösen können)</li>
                   </ul>
                 </div>
@@ -1709,8 +1709,8 @@ export default function BpFarbenLacke() {
           { title: 'Silikatfarbe', url: 'https://de.wikipedia.org/wiki/Silikatfarbe' }
         ]}
         literatur={[
-          'Goldschmidt, A.; Streitberger, H.-J.: BASF-Handbuch Lackiertechnik. Hannover: Vincentz Network (Auflage manuell prüfen)',
-          'Brock, T.; Groteklaes, M.; Mischke, P.: Lehrbuch der Lacktechnologie. Hannover: Vincentz Network (Auflage manuell prüfen)',
+          'Goldschmidt, A.; Streitberger, H.-J.: BASF-Handbuch Lackiertechnik. Hannover: Vincentz Network 2014 (Farbe und Lack – Bibliothek)',
+          'Brock, T.; Groteklaes, M.; Mischke, P.; Strehmel, B.: Lehrbuch der Lacktechnologie. 5., vollst. überarb. Aufl., Hannover: Vincentz Network 2017',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[

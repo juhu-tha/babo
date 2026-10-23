@@ -196,8 +196,8 @@ export default function DaemmungVergleich() {
         ]}
         regelwerke={[
           { title: 'DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt 2018-10)' },
-          { title: 'WTA-Merkblatt 6-4 (Innendämmung nach WTA I: Planungsleitfaden; Ausgabestand manuell prüfen)', url: 'https://www.wta-international.org/' },
-          { title: 'WTA-Merkblatt 6-5 (Innendämmung nach WTA II: Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren; Ausgabestand manuell prüfen)', url: 'https://www.wta-international.org/' }
+          { title: 'WTA-Merkblatt 6-4-16/D (Innendämmung nach WTA I: Planungsleitfaden, Ausgabe 10.2016)', url: 'https://www.wta-international.org/' },
+          { title: 'WTA-Merkblatt 6-5-14/D (Innendämmung nach WTA II: Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren, Ausgabe 2014)', url: 'https://www.wta-international.org/' }
         ]}
         formeln={[
           {

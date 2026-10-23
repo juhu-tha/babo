@@ -1441,7 +1441,7 @@ export default function InnovativeWerkstoffe() {
           { title: "Ultrahochfester Beton", url: "https://de.wikipedia.org/wiki/Ultrahochfester_Beton" }
         ]}
         literatur={[
-          'Mechtcherine, V. u. a.: 3D-Betondruck – Vom Labor in die Praxis (Angaben manuell prüfen)',
+          'Mechtcherine, V.; Nerella, V. N.: 3-D-Druck mit Beton: Sachstand, Entwicklungstendenzen, Herausforderungen. Bautechnik 95 (2018) H. 4, S. 275–287',
           'Fehling, E.; Schmidt, M.; Walraven, J. u. a.: Ultra-High Performance Concrete UHPC. Berlin: Ernst & Sohn 2014',
           'Roussel, N.: Rheological requirements for printable concretes. Cement and Concrete Research 112 (2018)',
           'Suiker, A. S. J.: Mechanical performance of wall structures in 3D printing processes. International Journal of Mechanical Sciences 137 (2018)',

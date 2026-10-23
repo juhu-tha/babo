@@ -665,8 +665,8 @@ export default function BpDaemmung() {
           { title: 'Wärmedämmung', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmung' }
         ]} 
         literatur={[ 
-          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)', 
-          'Fachagentur Nachwachsende Rohstoffe (FNR): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen (Auflage manuell prüfen)' 
+          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik – Wärme, Feuchte, Klima, Schall, Licht, Brand. 9. Aufl., Wiesbaden: Springer Vieweg 2022', 
+          'Fachagentur Nachwachsende Rohstoffe e. V. (FNR) (Hrsg.): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen. 13., überarb. Aufl., Gülzow-Prüzen: FNR 2024' 
         ]} 
         regelwerke={[ 
           { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz von Gebäuden)' }, 

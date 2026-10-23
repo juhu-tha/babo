@@ -1538,8 +1538,8 @@ export default function MaterialSchaedenGross() {
           'Deutscher Ausschuss für Stahlbeton (DAfStb): Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'National Bureau of Standards (NBS): Investigation of the Kansas City Hyatt Regency Walkways Collapse. NBS Building Science Series 143, 1982',
-          'Gutachten zum Teileinsturz der Kongresshalle Berlin (1980), u. a. veröffentlicht in Beton- und Stahlbetonbau (Autoren und Fundstelle manuell prüfen)',
-          'Gutachten im Strafverfahren zum Einsturz der Eislaufhalle Bad Reichenhall (LG Traunstein; Fundstellen manuell prüfen)',
+          'Schlaich, J.; Kordina, K.; Engell, H.-J.: Teileinsturz der Kongresshalle Berlin – Schadensursachen. Zusammenfassendes Gutachten. Beton- und Stahlbetonbau 75 (1980) H. 12, S. 281–294',
+          'N. N.: Gutachten zu den Ursachen des Einsturzes der Eissporthalle in Bad Reichenhall vorgelegt. Bautechnik 83 (2006) H. 9, S. 667–668; Voormann, F.; Pfeifer, M.: Die Kämpf-Stegträger der Eissporthalle Bad Reichenhall – Eine typische Holzkonstruktion der 1950er und 1960er Jahre? Bautechnik 84 (2007) H. 1, S. 1–7; BGH, Urteil vom 12.01.2010 – 1 StR 272/09',
           'Petroski, H. (1994): Design Paradigms: Case Histories of Error and Judgment in Engineering (Cambridge University Press)'
         ]}
         regelwerke={[

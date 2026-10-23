@@ -307,7 +307,7 @@ export default function Nachbehandlung() {
           literatur={[
             'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
             'Neville, A. M. (2011): Properties of Concrete (5. Auflage, Pearson Education)',
-            'Springenschmid, R.: Vermeidung von Rissen in jungen Betonbauteilen (Angaben manuell prüfen)'
+            'Springenschmid, R. (Hrsg.): Prevention of Thermal Cracking in Concrete at Early Ages. State-of-the-Art Report prepared by RILEM Technical Committee 119. RILEM Report 15. London: E & FN Spon 1998'
           ]}
           formeln={[
             {

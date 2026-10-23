@@ -1049,19 +1049,19 @@ export default function Asphalt() {
           { title: 'Niedrigtemperaturasphalt', url: 'https://de.wikipedia.org/wiki/Niedrigtemperaturasphalt' }
         ]}
         literatur={[
-          'Velske, S.; Mentlein, H.; Eymann, P.: Straßenbau, Straßenbautechnik. Köln: Werner 2009 (neuere Auflage manuell prüfen)',
+          'Mentlein, H.; Lorenzl, H.: Straßenbau, Straßenbautechnik. 8., aktual. Aufl., Köln: Reguvis 2021',
           'Hutschenreuther, J.; Wörner, T.: Asphalt im Straßenbau. Bonn: Kirschbaum 2017',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
           { title: 'ZTV Asphalt-StB 07/13:2013 (FGSV: Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Verkehrsflächenbefestigungen aus Asphalt)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'DIN EN 13108-1:2016-12 (Asphaltmischgut - Mischgutanforderungen - Teil 1: Asphaltbeton)' },
-          { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel – Anforderungen an Straßenbaubitumen; Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 12591:2009-08 (Bitumen und bitumenhaltige Bindemittel – Anforderungen an Straßenbaubitumen)' },
           { title: 'DIN EN 14023:2010-09 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifikation von polymermodifizierten Bitumen)' },
           { title: 'DIN EN 12697-8:2019-04 (Asphalt - Prüfverfahren - Teil 8: Bestimmung des Hohlraumgehaltes von Asphalt-Probekörpern)' },
           { title: 'DIN EN 12697-34:2020-07 (Asphalt - Prüfverfahren - Teil 34: Marshall-Prüfung)' },
           { title: 'RStO 12/24 (FGSV: Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'M TA (FGSV: Merkblatt für Temperaturabsenkung von Asphalt; Ausgabe manuell prüfen)' },
+          { title: 'FGSV: Merkblatt für Temperaturabsenkung von Asphalt (M TA), FGSV 766, Ausgabe 2021' },
           { title: 'TRGS 900 (Arbeitsplatzgrenzwerte; AGW Dämpfe und Aerosole aus Bitumen 1,5 mg/m³)' }
         ]}
         formeln={[

@@ -238,7 +238,7 @@ export default function Kalk() {
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016',
-          'Benedix, R.: Bauchemie. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)',
+          'Benedix, R.: Bauchemie – Einführung in die Chemie für Bauingenieure und Architekten. 7. Aufl., Wiesbaden: Springer Vieweg 2020',
         ]}
         normIds={['DIN_EN_459_1', 'DIN_EN_998', 'DIN_EN_13914']}
         regelwerke={[

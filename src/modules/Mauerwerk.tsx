@@ -981,13 +981,13 @@ export default function Mauerwerk() {
         { title: 'Ziegel-Lexikon (Bundesverband der Deutschen Ziegelindustrie e. V.)' }
       ]}
         literatur={[
-          'Jäger, W. (Hrsg.): Mauerwerk-Kalender. Berlin: Ernst & Sohn (Jahrgang manuell prüfen)',
+          'Schermer, D. C.; Brehm, E. (Hrsg.): Mauerwerk-Kalender 2026 – Schwerpunkt: Nachhaltigkeit und Bestandserhaltung. Berlin: Ernst & Sohn 2026',
           'Jäger, W. (Hrsg.): Mauerwerk-Kalender (Jährliche Ausgaben, Ernst & Sohn Verlag)',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1996-1-1:2013-02 + A1:2014-03 / DIN EN 1996-1-1/NA:2019-12 (Eurocode 6, Teil 1-1; neue Ausgabe manuell prüfen)' },
-          { title: 'DIN EN 1996-3:2010-12 / DIN EN 1996-3/NA:2019-12 (Eurocode 6, Teil 3: Vereinfachte Berechnungsmethoden; neue Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 1996-1-1:2013-02 / DIN EN 1996-1-1/NA:2019-12 (Eurocode 6, Teil 1-1; 2. Generation bisher nur als Entwurf, DIN-Ausgabe geplant Mitte 2027)' },
+          { title: 'DIN EN 1996-3:2010-12 / DIN EN 1996-3/NA:2019-12 (Eurocode 6, Teil 3: Vereinfachte Berechnungsmethoden; 2. Generation bisher nur als Entwurf, DIN-Ausgabe geplant Mitte 2027)' },
           { title: 'DIN EN 771-1:2015-11 (Festlegungen für Mauersteine - Teil 1: Mauerziegel)' },
           { title: 'DIN EN 771-2:2015-11 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)' },
           { title: 'DIN EN 771-3:2015-11 (Festlegungen für Mauersteine - Teil 3: Betonmauersteine)' },

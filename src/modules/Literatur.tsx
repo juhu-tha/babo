@@ -137,7 +137,7 @@ const LITERATURE_DATABASE: LiteratureEntry[] = [
     title: 'Zement-Taschenbuch',
     subtitle: 'Praxiswissen Zement und Beton',
     authors: 'Verein Deutscher Zementwerke (VDZ e.V.)',
-    yearOrEdition: 'Erscheinungsverlauf 1949–2008 (letzte Ausgabe 2008; manuell prüfen)',
+    yearOrEdition: 'Erscheinungsverlauf 1949–2008 (letzte Ausgabe: 51. Ausgabe 2008)',
     publisher: 'Verlag Bau+Technik, Düsseldorf',
     category: 'beton',
     categoryLabel: 'Beton, Zement & Bindemittel',

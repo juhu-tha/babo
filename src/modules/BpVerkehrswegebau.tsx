@@ -1979,7 +1979,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
           { title: 'Betondecke', url: 'https://de.wikipedia.org/wiki/Betondecke' }
         ]}
         literatur={[
-          'Velske, S.; Mentlein, H.; Eymann, P.: Straßenbau, Straßenbautechnik. Köln: Werner 2009 (neuere Auflage manuell prüfen)',
+          'Mentlein, H.; Lorenzl, H.: Straßenbau, Straßenbautechnik. 8., aktual. Aufl., Köln: Reguvis 2021',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
