@@ -8951,5 +8951,125 @@
       "targetModuleLabel": "Gesteine"
     },
     "verified": false
+  },
+  {
+    "id": "q_mwk_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "mauerwerk",
+    "moduleTitle": "Mauerwerk",
+    "topic": "Mauerwerksdruckfestigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "EN 1996-1-1, Gl. (3.1)",
+    "question": "Wovon hängt die charakteristische Mauerwerksdruckfestigkeit f_k bei Normalmörtel ab?",
+    "options": [
+      "Nur von der Steinfestigkeit",
+      "Von Steinfestigkeit f_b, Mörtelfestigkeit f_m und dem Beiwert K",
+      "Nur von der Mörtelfestigkeit",
+      "Von der Wanddicke"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_k = K · f_b^0,7 · f_m^0,3: Mauerwerk ist eine Systemfestigkeit aus Stein und Mörtel.",
+    "gapAnalysis": {
+      "topic": "Mauerwerksdruckfestigkeit",
+      "misconception": "Die Steinfestigkeit sei gleich der Mauerwerksfestigkeit.",
+      "coreRule": "f_k = K · f_b^α · f_m^β.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauerwerksdruckfestigkeit“ im Modul Mauerwerk noch einmal durch.",
+      "targetModuleTab": "mauerwerk",
+      "targetModuleLabel": "Mauerwerk"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mwk_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "mauerwerk",
+    "moduleTitle": "Mauerwerk",
+    "topic": "Bemessungswert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1996-1-1/NA",
+    "question": "Wie wird f_d nach deutschem NA aus f_k ermittelt?",
+    "options": [
+      "f_d = f_k",
+      "f_d = f_k / 1,5",
+      "f_d = 0,85 · f_k / 1,5",
+      "f_d = 1,15 · f_k"
+    ],
+    "correctIdx": 2,
+    "explanation": "Mit Dauerstandsfaktor ζ = 0,85 und γ_M = 1,5.",
+    "gapAnalysis": {
+      "topic": "Bemessungswert",
+      "misconception": "Der Dauerstandsfaktor gelte nur für Beton.",
+      "coreRule": "f_d = ζ · f_k / γ_M.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungswert“ im Modul Mauerwerk noch einmal durch.",
+      "targetModuleTab": "mauerwerk",
+      "targetModuleLabel": "Mauerwerk"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mwk_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "mauerwerk",
+    "moduleTitle": "Mauerwerk",
+    "topic": "Überbindemaß",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 1996-1-1/NA",
+    "question": "Welches Mindest-Überbindemaß gilt nach NA DE für Steine der Höhe h_u = 249 mm?",
+    "options": [
+      "45 mm",
+      "rund 100 mm (0,4 · h_u)",
+      "125 mm",
+      "h_u/2"
+    ],
+    "correctIdx": 1,
+    "explanation": "l_ol ≥ 0,4 · h_u = 99,6 mm und ≥ 45 mm; maßgebend ist ≈ 100 mm.",
+    "gapAnalysis": {
+      "topic": "Überbindemaß",
+      "misconception": "Es gelte immer der Mindestwert 45 mm.",
+      "coreRule": "l_ol ≥ max(0,4·h_u; 45 mm).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Überbindemaß“ im Modul Mauerwerk noch einmal durch.",
+      "targetModuleTab": "mauerwerk",
+      "targetModuleLabel": "Mauerwerk"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mwk_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "mauerwerk",
+    "moduleTitle": "Mauerwerk",
+    "topic": "Steinformate",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 4172 (Maßordnung)",
+    "question": "Welche Maße hat ein Normalformat (NF)?",
+    "options": [
+      "240 × 115 × 52 mm",
+      "240 × 115 × 71 mm",
+      "240 × 115 × 113 mm",
+      "365 × 248 × 249 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "DF 52 mm, NF 71 mm, 2 DF 113 mm Höhe; Länge 240 mm, Breite 115 mm nach dem Oktametersystem.",
+    "gapAnalysis": {
+      "topic": "Steinformate",
+      "misconception": "NF und DF seien gleich hoch.",
+      "coreRule": "NF = 240 × 115 × 71 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Steinformate“ im Modul Mauerwerk noch einmal durch.",
+      "targetModuleTab": "mauerwerk",
+      "targetModuleLabel": "Mauerwerk"
+    },
+    "verified": false
   }
 ]
