@@ -18,6 +18,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { Layers, Thermometer, List, ShieldAlert, ArrowRight, BookOpen, Maximize } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 ChartJS.register(
@@ -46,7 +48,7 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
           Material-Lehrpfad: Kunststoffe im Bauwesen
         </h4>
         <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Kunststoff-Werkstoffkunde:
+          Weiter zu den anderen Teilen des Lehrpfads:
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -65,7 +67,7 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
             <span>1. Baustoff-Eigenschaften</span>
           </div>
           <span className="text-[11px] text-slate-500 font-normal leading-relaxed">
-            Thermoplasten vs. Duroplasten, E-Modul-Temperatur-Scherkurven & Arten.
+            Thermoplasten vs. Duroplasten, E-Modul-Temperatur-Kurven & Arten.
           </span>
           {current !== 'baustoff' && (
             <span className="text-[10px] font-bold text-shiraz mt-auto flex items-center gap-1">
@@ -288,11 +290,11 @@ export default function Kunststoffe() {
       case 'amorphous':
         return "Amorphe Thermoplaste (z.B. PVC, PMMA, PC) bestehen aus ungeordneten Polymerketten. Unterhalb der Glasübergangstemperatur (Tg) sind sie hart und spröde (Glaszustand). Bei Überschreiten von Tg fallen Festigkeit und E-Modul drastisch ab, sie werden gummielastisch und gehen schließlich in den schmelzflüssigen Zustand über.";
       case 'semicrystalline':
-        return "Teilkristalline Thermoplaste (z.B. PE, PP, PA) besitzen neben amorphen auch kristalline Bereiche. Beim Überschreiten von Tg sinkt der E-Modul, aber die kristallinen Bereiche halten das Material noch formstabil (lehnartiger Zustand). Erst beim Erreichen der Schmelztemperatur (Tm) der Kristalle wird das Material flüssig.";
+        return "Teilkristalline Thermoplaste (z.B. PE, PP, PA) besitzen neben amorphen auch kristalline Bereiche. Beim Überschreiten von Tg sinkt der E-Modul, aber die kristallinen Bereiche halten das Material noch formstabil (lederartiger Zustand). Erst beim Erreichen der Schmelztemperatur (Tm) der Kristalle wird das Material flüssig.";
       case 'elastomer':
         return "Elastomere (z.B. Gummi, Silikon) sind weitmaschig vernetzt. Ihre Glasübergangstemperatur liegt meist weit unter Raumtemperatur (z.B. -40°C). Bei Raumtemperatur befinden sie sich im gummielastischen Zustand. Sie schmelzen nicht, sondern zersetzen sich bei sehr hohen Temperaturen.";
       case 'duroplast':
-        return "Duroplaste (z.B. Epoxidharz, PUR-Gießharz) sind engmaschig vernetzt. Sie weisen einen sehr hohen E-Modul auf, der auch bei höheren Temperaturen nur leicht abfällt. Sie schmelzen nicht und sind nicht plastisch verformbar, sondern zersetzen sich bei thermischer Überlastung.";
+        return "Duroplaste (z.B. Epoxidharz, PUR-Gießharz) sind engmaschig vernetzt. Sie haben einen hohen E-Modul; am Glasübergang fällt er wegen der engen Vernetzung weniger stark ab als bei Thermoplasten. Sie schmelzen nicht und sind nicht plastisch verformbar, sondern zersetzen sich bei thermischer Überlastung.";
     }
   };
 
@@ -342,7 +344,7 @@ export default function Kunststoffe() {
             
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                Das mechanische Verhalten von Kunststoffen ist extrem temperaturabhängig. Der E-Modul ändert sich je nach Struktur (Thermoplast, Duroplast, Elastomer) über die Temperatur um mehrere Zehnerpotenzen.
+                Das mechanische Verhalten von Kunststoffen ist stark temperaturabhängig. Der E-Modul ändert sich je nach Struktur (Thermoplast, Duroplast, Elastomer) über die Temperatur um mehrere Zehnerpotenzen.
               </p>
             </div>
 
@@ -393,7 +395,7 @@ export default function Kunststoffe() {
             <h2 className="text-xl font-bold text-text-main mb-2">Temperaturabhängigkeit des E-Moduls</h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Zustandsbereiche: Glaszustand (hart/spröde), Haupteinfrierbereich (Tg), gummielastischer Zustand, Schmelze (Tm/Tf).
+            Zustandsbereiche: Glaszustand (hart/spröde), Haupterweichungsbereich (Tg), gummielastischer Zustand, Schmelze (Tm/Tf). Die Kurven sind schematisch (Lehrmodell mit typischen Größenordnungen, keine Produktwerte).
           </p>
         </div>
             
@@ -456,6 +458,18 @@ export default function Kunststoffe() {
           </div>
         </div>
 
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Wärmedehnung einer PVC-U-Rohrleitung"
+          zielGleichung="\Delta L = L_0 \cdot \alpha_T \cdot \Delta T"
+          normQuelle="α_T als Richtwert (Produktdatenblatt maßgebend)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'L_0 = 10\\,\\text{m},\\; \\alpha_T \\approx 80 \\cdot 10^{-6}\\,\\text{K}^{-1},\\; \\Delta T = 40\\,\\text{K}', erklaerung: 'Montage bei 10 °C, Betrieb bis 50 °C.' },
+            { titel: '2. Längenänderung PVC-U', formel: '\\Delta L = 10\\,000 \\cdot 80 \\cdot 10^{-6} \\cdot 40 = 32\\,\\text{mm}', erklaerung: 'Länge in mm einsetzen.' },
+            { titel: '3. Vergleich Stahl', formel: '\\Delta L = 10\\,000 \\cdot 12 \\cdot 10^{-6} \\cdot 40 = 4{,}8\\,\\text{mm}', erklaerung: 'Faktor ca. 7 kleiner.' },
+          ]}
+          ergebnisHinweis="32 mm auf 10 m: Kunststoffleitungen brauchen Dehnungsausgleicher oder Gleitpunkte."
+        />
+
       </div>
       )}
 
@@ -485,7 +499,7 @@ export default function Kunststoffe() {
             <h3 className="font-bold text-shiraz text-lg mb-2">PMMA (Polymethylmethacrylat)</h3>
             <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Amorpher Thermoplast</div>
             <p className="text-sm text-text-main/80 mb-3">
-              Auch bekannt als Acrylglas oder Plexiglas. Zeichnet sich durch extrem hohe Lichtdurchlässigkeit und Witterungsbeständigkeit aus.
+              Auch bekannt als Acrylglas (Handelsname z. B. Plexiglas). Hohe Lichtdurchlässigkeit (ca. 92 %) und gute Witterungsbeständigkeit.
             </p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
@@ -553,7 +567,7 @@ export default function Kunststoffe() {
             <h3 className="font-bold text-shiraz text-lg mb-2">EPDM (Ethylen-Propylen-Dien-Kautschuk)</h3>
             <div className="text-xs font-semibold text-home-grau uppercase tracking-wider mb-2">Elastomer</div>
             <p className="text-sm text-text-main/80 mb-3">
-              Ein synthetischer Kautschuk. Extrem witterungs-, UV- und ozonbeständig. Bleibt auch bei tiefen Temperaturen elastisch.
+              Ein synthetischer Kautschuk. Sehr witterungs-, UV- und ozonbeständig. Bleibt auch bei tiefen Temperaturen elastisch.
             </p>
             <div className="text-sm">
               <strong>Einsatzbereiche:</strong>
@@ -620,9 +634,9 @@ export default function Kunststoffe() {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-shiraz text-lg mb-2">Herausragende Eigenschaften</h3>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
-                <li><strong>Extrem geringes Eigengewicht:</strong> Wiegt nur einen Bruchteil von Glas, was immense Einsparungen beim Tragwerk ermöglicht.</li>
+                <li><strong>Geringes Eigengewicht:</strong> Ein Folienkissen wiegt nur einen Bruchteil einer Verglasung – das Tragwerk wird leichter.</li>
                 <li><strong>Hohe Lichtdurchlässigkeit:</strong> Lässt bis zu 95 % des Lichts (einschließlich UV-Strahlung, wichtig für Pflanzen) passieren.</li>
-                <li><strong>Selbstreinigend:</strong> Aufgrund der extrem glatten Antihaft-Oberfläche wäscht Regen Schmutz einfach ab.</li>
+                <li><strong>Schmutzabweisend:</strong> Die glatte, antiadhäsive Oberfläche lässt Regen Schmutz weitgehend abwaschen.</li>
                 <li><strong>Langlebigkeit:</strong> Reißfest, chemikalienbeständig und alterungsbeständig über mehrere Jahrzehnte.</li>
               </ul>
             </div>
@@ -641,6 +655,8 @@ export default function Kunststoffe() {
 
       <PlasticsThematicLinks current="baustoff" />
 
+      <ModulTest moduleId="kunststoffe" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Kunststoff', url: 'https://de.wikipedia.org/wiki/Kunststoff' },
@@ -653,29 +669,29 @@ export default function Kunststoffe() {
           { title: 'DIN EN ISO 527-1:2019-12 (Kunststoffe - Bestimmung der Zugeigenschaften - Teil 1: Allgemeine Grundsätze)' },
           { title: 'DIN EN ISO 6721-1:2019-09 (Kunststoffe - Bestimmung dynamisch-mechanischer Eigenschaften - Teil 1: Allgemeine Grundlagen)' },
           { title: 'DIN EN ISO 11357-1:2023-08 (Kunststoffe - Dynamische Differenz-Thermoanalyse (DSC) - Teil 1: Allgemeine Grundlagen)' },
-          { title: 'DIN EN ISO 11359-2:2022-03 (Kunststoffe - Thermomechanische Analyse (TMA) - Teil 2: Bestimmung des linearen thermischen Längenausdehnungskoeffizienten)' },
+          { title: 'DIN EN ISO 11359-2 (Ausgabe manuell prüfen; Kunststoffe - Thermomechanische Analyse (TMA) - Teil 2: Bestimmung des linearen thermischen Längenausdehnungskoeffizienten)' },
           { title: 'DIN EN ISO 178:2019-08 (Kunststoffe - Bestimmung der Biegeeigenschaften)' }
         ]}
         literatur={[
-          'Domininghaus, H. (2012): Die Kunststoffe und ihre Eigenschaften (Springer Vieweg)',
-          'Ehrenstein, G. W. (2011): Polymer-Werkstoffe: Struktur - Eigenschaften - Anwendung, 3. Aufl. (Hanser Verlag)',
+          'Elsner, P.; Eyerer, P.; Hirth, T. (Hrsg.): Domininghaus – Kunststoffe: Eigenschaften und Anwendungen. 8. Aufl., Berlin: Springer 2012',
+          'Ehrenstein, G. W.: Polymer-Werkstoffe – Struktur, Eigenschaften, Anwendung. 3. Aufl., München: Hanser 2011',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         formeln={[
           {
-            formel: 'E(T) = f(T_g, T_m, \\text{Vernetzungsgrad})',
-            erklaerung: 'Temperaturabhängigkeit des Elastizitätsmoduls: Am Glasübergang Tg (Gleichgewichtszustand zwischen eingefrorenem und beweglichem Zustand der Hauptvalenzketten) fällt der Modul drastisch ab.',
-            quelle: 'Domininghaus: Kunststoffe'
+            formel: 'E(T) \\text{ fällt im Bereich } T_g \\text{ um 1 bis 3 Zehnerpotenzen}',
+            erklaerung: 'Am Glasübergang T_g werden die Kettensegmente beweglich; der E-Modul amorpher Thermoplaste fällt stark ab, bei vernetzten Kunststoffen weniger.',
+            quelle: 'Ehrenstein: Polymer-Werkstoffe'
           },
           {
-            formel: '\\sigma(t) = E_c(t, T) \\cdot \\varepsilon_0',
-            erklaerung: 'Viskoelastisches Spannungsrelaxationsverhalten: Der Kriechmodul Ec sinkt mit zunehmender Lastdauer t und Temperatur T infolge mikrostruktureller Gleitprozesse.',
+            formel: '\\varepsilon(t) = \\frac{\\sigma_0}{E_c(t, T)}',
+            erklaerung: 'Kriechen: Unter konstanter Spannung \\sigma_0 wächst die Dehnung, weil der Kriechmodul E_c mit Lastdauer t und Temperatur T sinkt.',
             quelle: 'Ehrenstein: Polymerwerkstoffe'
           },
           {
             formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T',
             erklaerung: 'Thermische Längendehnung von Kunststoffen (mit linearem Ausdehnungskoeffizienten \\alpha_T ca. 7-20 mal höher als bei Beton/Stahl).',
-            quelle: 'DIN EN ISO 11359-2:2022-03'
+            quelle: 'DIN EN ISO 11359-2'
           }
         ]}
       />

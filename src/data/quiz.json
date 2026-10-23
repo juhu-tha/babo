@@ -10331,5 +10331,95 @@
       "targetModuleLabel": "Asphalt & Bitumen"
     },
     "verified": false
+  },
+  {
+    "id": "q_kun_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kunststoffe",
+    "moduleTitle": "Kunststoffe",
+    "topic": "Glasübergang",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Was geschieht bei einem amorphen Thermoplast beim Überschreiten der Glasübergangstemperatur T_g?",
+    "options": [
+      "Der E-Modul fällt stark ab, das Material wird gummi- bzw. lederartig",
+      "Das Material schmilzt sofort",
+      "Der E-Modul steigt durch Nachvernetzung",
+      "Nichts – T_g betrifft nur Duroplaste"
+    ],
+    "correctIdx": 0,
+    "explanation": "Am Glasübergang werden Kettensegmente beweglich; der E-Modul sinkt um Zehnerpotenzen. Geschmolzen ist das Material erst im Fließbereich.",
+    "gapAnalysis": {
+      "topic": "Glasübergang",
+      "misconception": "Glasübergang und Schmelzen werden gleichgesetzt.",
+      "coreRule": "T_g: Erweichung; T_m/T_f: Schmelzen bzw. Fließen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glasübergang“ im Modul Kunststoffe noch einmal durch.",
+      "targetModuleTab": "kunststoffe",
+      "targetModuleLabel": "Kunststoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kun_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kunststoffe",
+    "moduleTitle": "Kunststoffe",
+    "topic": "Wärmedehnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Eine 10 m lange PVC-U-Leitung (α ≈ 80 · 10⁻⁶ 1/K) erwärmt sich um 40 K. Wie groß ist die Längenänderung?",
+    "options": [
+      "32 mm",
+      "3,2 mm",
+      "4,8 mm",
+      "320 mm"
+    ],
+    "correctIdx": 0,
+    "explanation": "ΔL = 10 000 mm · 80 · 10⁻⁶ · 40 = 32 mm. 4,8 mm wäre der Wert für Stahl.",
+    "gapAnalysis": {
+      "topic": "Wärmedehnung",
+      "misconception": "Kunststoffe dehnen sich ähnlich wie Stahl.",
+      "coreRule": "ΔL = L₀ · α · ΔT; α von Kunststoffen ist ein Vielfaches von Stahl.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Kunststoffe noch einmal durch.",
+      "targetModuleTab": "kunststoffe",
+      "targetModuleLabel": "Kunststoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kun_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kunststoffe",
+    "moduleTitle": "Kunststoffe",
+    "topic": "Polymerstruktur",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welche Kunststoffgruppe ist schmelzbar und schweißbar?",
+    "options": [
+      "Thermoplaste",
+      "Duroplaste",
+      "Elastomere",
+      "Alle drei Gruppen"
+    ],
+    "correctIdx": 0,
+    "explanation": "Nur Thermoplaste sind unvernetzt und lassen sich aufschmelzen. Elastomere und Duroplaste sind vernetzt und zersetzen sich bei hoher Temperatur.",
+    "gapAnalysis": {
+      "topic": "Polymerstruktur",
+      "misconception": "Alle Kunststoffe lassen sich schweißen.",
+      "coreRule": "Vernetzt = nicht schmelzbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Polymerstruktur“ im Modul Kunststoffe noch einmal durch.",
+      "targetModuleTab": "kunststoffe",
+      "targetModuleLabel": "Kunststoffe"
+    },
+    "verified": false
   }
 ]
