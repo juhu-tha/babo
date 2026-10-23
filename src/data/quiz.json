@@ -10571,5 +10571,125 @@
       "targetModuleLabel": "Ausbau"
     },
     "verified": false
+  },
+  {
+    "id": "q_fvb_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
+    "topic": "Mischungsregel",
+    "difficulty": "Fortgeschritten",
+    "normRef": "VDI 2014 Blatt 3",
+    "question": "CFK mit E_f = 230 GPa, E_m = 3,2 GPa, v_f = 0,6. Wie groß ist E in Faserrichtung nach Voigt?",
+    "options": [
+      "ca. 139 GPa",
+      "ca. 7,8 GPa",
+      "ca. 92 GPa",
+      "ca. 230 GPa"
+    ],
+    "correctIdx": 0,
+    "explanation": "E_∥ = 230 · 0,6 + 3,2 · 0,4 = 139,3 GPa. 7,8 GPa ist der Querwert nach Reuss.",
+    "gapAnalysis": {
+      "topic": "Mischungsregel",
+      "misconception": "Voigt- und Reuss-Regel werden verwechselt.",
+      "coreRule": "Längs: Parallelschaltung (Voigt); quer: Reihenschaltung (Reuss).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mischungsregel“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fvb_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
+    "topic": "GFK-Bewehrung",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welcher Nachteil ergibt sich aus dem E-Modul von GFK-Bewehrung (ca. 40–60 GPa) gegenüber Betonstahl?",
+    "options": [
+      "Größere Durchbiegungen und Rissbreiten",
+      "Höhere Korrosionsgefahr",
+      "Größere erforderliche Betondeckung für Korrosionsschutz",
+      "Höheres Eigengewicht"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bei gleicher Spannung dehnt sich GFK etwa viermal so stark wie Stahl (E ≈ 200 GPa). Korrosion spielt dagegen keine Rolle.",
+    "gapAnalysis": {
+      "topic": "GFK-Bewehrung",
+      "misconception": "Nichtmetallische Bewehrung ist in allen Belangen besser.",
+      "coreRule": "Niedriger E-Modul → Gebrauchstauglichkeit wird maßgebend.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „GFK-Bewehrung“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_son_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "sonstiges",
+    "moduleTitle": "Sonstige Baustoffe",
+    "topic": "Vakuumisolationspaneele",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 17140",
+    "question": "Was passiert, wenn ein Vakuumisolationspaneel auf der Baustelle angebohrt wird?",
+    "options": [
+      "λ steigt von ca. 0,007 auf ca. 0,020 W/(mK) – die Dämmwirkung sinkt auf etwa ein Drittel",
+      "Nichts – der Kern dämmt unabhängig vom Vakuum gleich gut",
+      "λ sinkt, weil Luft besser dämmt als Vakuum",
+      "Das Paneel wird nichtbrennbar"
+    ],
+    "correctIdx": 0,
+    "explanation": "Mit dem Vakuum geht die Unterdrückung der Gaswärmeleitung verloren; der Kieselsäurekern dämmt dann nur noch etwa wie ein guter konventioneller Dämmstoff.",
+    "gapAnalysis": {
+      "topic": "Vakuumisolationspaneele",
+      "misconception": "VIP lassen sich wie normale Dämmplatten zuschneiden.",
+      "coreRule": "VIP nie schneiden oder durchdringen – Planung im Raster.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Vakuumisolationspaneele“ im Modul Sonstige Baustoffe noch einmal durch.",
+      "targetModuleTab": "sonstiges",
+      "targetModuleLabel": "Sonstige Baustoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_son_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "sonstiges",
+    "moduleTitle": "Sonstige Baustoffe",
+    "topic": "Phasenwechselmaterialien",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Warum speichern PCM im Bereich 21–26 °C viel mehr Wärme je kg als Beton?",
+    "options": [
+      "Weil zusätzlich die Schmelzenthalpie (latente Wärme) aufgenommen wird",
+      "Weil ihre Wärmeleitfähigkeit höher ist",
+      "Weil ihre Rohdichte höher ist",
+      "Weil sie Wärme durch Verdunstung speichern"
+    ],
+    "correctIdx": 0,
+    "explanation": "Paraffin nimmt beim Schmelzen ca. 150 kJ/kg auf, Beton bei 5 K Erwärmung nur ca. 5 kJ/kg.",
+    "gapAnalysis": {
+      "topic": "Phasenwechselmaterialien",
+      "misconception": "Wärmespeicherung hängt nur von c und ρ ab.",
+      "coreRule": "Q = m·(c·ΔT + Δh_m).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Phasenwechselmaterialien“ im Modul Sonstige Baustoffe noch einmal durch.",
+      "targetModuleTab": "sonstiges",
+      "targetModuleLabel": "Sonstige Baustoffe"
+    },
+    "verified": false
   }
 ]

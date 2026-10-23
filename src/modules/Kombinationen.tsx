@@ -764,7 +764,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     Einsatz in chemisch aggressiven Umgebungen (Klärbecken, Kaimauern) oder MRT-Räumen (elektrisch nichtleitend).
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-text-main/80">
-                    <li>Keine Betondeckung für Korrosionsschutz nötig</li>
+                    <li>Betondeckung nur für Verbund und Brandschutz nötig, nicht für Korrosionsschutz (Werte nach Zulassung)</li>
                     <li>Geringerer E-Modul (<InlineMath math="E \approx 40 - 60\,\text{GPa}" />)</li>
                     <li>Größere Rissbreiten bei Bemessung beachten</li>
                   </ul>
@@ -1184,7 +1184,6 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
         wikipedia={[
           { title: 'Verbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Verbundwerkstoff' },
           { title: 'Faserverbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Faserverbundwerkstoff' },
-          { title: 'Mikromechanik', url: 'https://de.wikipedia.org/wiki/Mikromechanik' },
           { title: 'Wärmedämmverbundsystem', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmverbundsystem' },
           { title: 'Hinterlüftete Fassade', url: 'https://de.wikipedia.org/wiki/Hinterl%C3%BCftete_Fassade' },
           { title: 'Korrosionsschutz', url: 'https://de.wikipedia.org/wiki/Korrosionsschutz' },
