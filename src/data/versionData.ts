@@ -8,6 +8,18 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.25.0',
+    date: '23.10.2026',
+    title: 'Neues Modul Werkstoff-Kombinationen (Cluster II), Schichtaufbau- & Verbund-Kalkulator',
+    badge: 'minor',
+    changes: [
+      'Neues Fachmodul Werkstoff-Kombinationen (kombinationen): Umfassende didaktische Aufbereitung im Cluster II (Materialien & Produkte) mit Schwerpunkt auf Funktionsschichten der Gebäudehülle (Tragen, Dämmen, Schützen), Verbundwerkstoffe (Stahlbeton, CFK/GFK/Textilbeton, Sandwichquerschnitte, VSG) und funktionelle Schutzschichten.',
+      'Interaktiver Wandaufbau- & Schichtkalkulator: Dynamische Berechnung von Wärmedurchlasswiderständen, U-Werten nach DIN EN ISO 6946 und diffusionsäquivalenten Luftschichtdicken (sd) nach DIN 4108-3 inklusive bauphysikalischer Glaser-Feuchte-Ampel.',
+      'Schutzschichtsysteme & Grenzflächenmechanik: Differenzierung nach DIN EN 1504-2 (Hydrophobierung, Imprägnierung, Versiegelung, OS 1–11), Korrosionsschutz nach DIN EN ISO 12944 (C1 bis CX, kathodischer Schutz) sowie Haftzugprüfung im Abreißversuch nach DIN EN 1542.',
+      'Didaktischer 4-Stufen-Lehrpfad: Integration des interaktiven Selbsttests (ModulTest) mit neu verfassten Fachprüfungsfragen in quiz.json und Begründungsfeedback sowie einklappbarer FormulaDerivationBox.'
+    ]
+  },
+  {
     version: 'v3.24.0',
     date: '22.10.2026',
     title: 'Master-Audit 2026: Gesamtrevision AP 1–19, Wissenspool-Ausbau & Rechner-Stabilität',

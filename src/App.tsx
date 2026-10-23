@@ -99,7 +99,7 @@ const tabGroups = [
       { id: 'start', label: 'Startseite', icon: GraduationCap },
       { id: 'admin', label: 'Admin (THA)', icon: ShieldAlert },
       { id: 'anleitung', label: 'Anleitung', icon: BookOpen },
-      { id: 'modulstruktur', label: 'Modulstruktur', icon: Network },
+      { id: 'modulstruktur', label: 'Modulübersicht', icon: Network },
       { id: 'feedback', label: 'Feedback', icon: MessageSquare },
       { id: 'versionen', label: 'Changelog', icon: Clock },
       { id: 'impressum', label: 'Impressum', icon: Building2 },
@@ -158,10 +158,9 @@ const tabGroups = [
       { id: 'kunststoffe', label: 'Kunststoffe', icon: Box },
       
       { id: 'divider_bs_son', label: 'Sonstige & Innovationen', icon: Box as any },
-      { id: 'materialitaet_architektur', label: 'Materialität & Ästhetik', icon: Palette },
       { id: 'daemmstoffe', label: 'Dämmstoffe', icon: Box },
       { id: 'ausbau', label: 'Ausbau & Abdichtung', icon: Layers },
-      { id: 'faserverbund', label: 'Faserverbund (CFK/GFK)', icon: GitCommit },
+      { id: 'kombinationen', label: 'Werkstoff-Kombinationen', icon: Layers },
       { id: 'sonstiges', label: 'Sonstige & Innovationen', icon: Box },
     ]
   },
@@ -505,7 +504,8 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   // Allgemein
   start: ['startseite', 'home', 'willkommen', 'übersicht', 'begrüßung', 'huber', 'augsburg', 'portal'],
   anleitung: ['bedienung', 'hilfe', 'anleitung', 'dokumentation', 'rechner', 'handbuch', 'nutzung'],
-  modulstruktur: ['mindmap', 'struktur', 'übersicht', 'begriffe', 'fachreiter', 'rechner', 'module', 'verzeichnis', 'themen'],
+  modulstruktur: ['modulübersicht', 'baumstruktur', 'wissensbaum', 'mindmap', 'struktur', 'übersicht', 'begriffe', 'fachreiter', 'rechner', 'module', 'verzeichnis', 'themen'],
+  moduluebersicht: ['modulübersicht', 'baumstruktur', 'wissensbaum', 'mindmap', 'struktur', 'übersicht', 'begriffe', 'fachreiter', 'rechner', 'module', 'verzeichnis', 'themen'],
   feedback: ['bewertung', 'evaluierung', 'meinung', 'fehler', 'fehlerbericht', 'kontakt', 'nachricht'],
   versionen: ['changelog', 'historie', 'updates', 'revisionen', 'neuigkeiten', 'versionen', 'v1.6.0', 'upgrades'],
   impressum: ['kontakt', 'rechtliches', 'ansprechpartner', 'hochschule', 'augsburg', 'haftung', 'impressum'],
@@ -553,10 +553,9 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   kunststoffe: ['polymere', 'pvc', 'pe', 'pp', 'epoxidharz', 'duromere', 'elastomere', 'thermoplaste', 'makromoleküle', 'pu', 'silikon'],
 
   // Sonstige
-  materialitaet_architektur: ['materialität', 'architektur', 'haptik', 'oberfläche', 'licht', 'reflexion', 'patina', 'ästhetik', 'sichtbeton', 'entwurf', 'textur', 'schalung', 'fuge'],
   daemmstoffe: ['styropor', 'mineralwolle', 'pur', 'pir', 'zellulose', 'hanf', 'stroh', 'vakuum', 'wärmedämmung', 'wlg'],
   ausbau: ['abdichtung', 'bitumenbahn', 'epoxidharz', 'estrich', 'abdichtungsnormen', 'din 18533', 'feuchtigkeit', 'folie'],
-  faserverbund: ['carbon', 'gfk', 'cfk', 'glasfaser', 'kohlefaser', 'matrix', 'epoxid', 'laminat', 'webart'],
+  kombinationen: ['werkstoff-kombinationen', 'kombinationen', 'faserverbund', 'carbon', 'gfk', 'cfk', 'glasfaser', 'kohlefaser', 'matrix', 'epoxid', 'laminat', 'webart', 'schichtaufbau', 'außenwand', 'tragen', 'dämmen', 'schützen', 'wdvs', 'vhf', 'verbundwerkstoff', 'stahlbeton', 'sandwich', 'schutzschicht', 'hydrophobierung', 'beschichtung'],
 
   // Bauprodukte Recht
   bp_recht_grundlagen: ['ce-kennzeichnung', 'ü-zeichenträger', 'mvv tb', 'landesbauordnung', 'mbo', 'abz', 'allgemeine bauaufsichtliche zulassung', 'leistungserklärung'],
@@ -1738,7 +1737,7 @@ function AppContent() {
           {activeTab === 'statistik' && <Statistik />}
           {activeTab === 'admin' && <Admin />}
           {activeTab === 'anleitung' && <Anleitung />}
-          {activeTab === 'modulstruktur' && <Modulstruktur />}
+          {(activeTab === 'modulstruktur' || (activeTab as string) === 'moduluebersicht') && <Modulstruktur />}
           {activeTab === 'software' && <Software />}
           {activeTab === 'online_tools' && <OnlineTools />}
           {activeTab.startsWith('aufgaben') && <Aufgaben />}
@@ -1818,7 +1817,9 @@ function AppContent() {
           {activeTab === 'putzemoertel' && <PutzeMoertel />}
           {activeTab === 'gesteine' && <Gesteine />}
           {activeTab === 'bauchemie' && <Bauchemie />}
-          {activeTab === 'faserverbund' && <Faserverbund />}
+          {(activeTab === 'kombinationen' || activeTab === 'faserverbund' || activeTab === 'materialitaet_architektur') && (
+            <Kombinationen initialTab={activeTab === 'faserverbund' ? 'faserverbund' : undefined} />
+          )}
           {activeTab === 'kunststoffe' && <Kunststoffe />}
           {activeTab === 'nawaro' && <Nawaro />}
           {activeTab === 'lehm' && <Lehm />}
@@ -1831,7 +1832,6 @@ function AppContent() {
           {activeTab === 'gips' && <Gips />}
           {activeTab === 'kalk' && <Kalk />}
           {activeTab === 'daemmstoffe' && <Daemmstoffe />}
-          {activeTab === 'materialitaet_architektur' && <MaterialitaetArchitektur />}
           {activeTab === 'bp_rechtliches' && <BpRechtliches />}
           {activeTab === 'bp_recht_grundlagen' && <BpRechtliches isEmbedded={false} activeSubTab="grundlagen" />}
           {activeTab === 'bp_recht_avcp' && <BpRechtliches isEmbedded={false} activeSubTab="avcp" />}
@@ -2101,6 +2101,7 @@ const HistorischeBauprodukte = React.lazy(() => import('./modules/HistorischeBau
 const Stahlbetoninstandhaltung = React.lazy(() => import('./modules/Stahlbetoninstandhaltung').then(module => ({ default: module.Stahlbetoninstandhaltung })));
 const Asphalt = React.lazy(() => import('./modules/Asphalt'));
 const Faserverbund = React.lazy(() => import('./modules/Faserverbund'));
+const Kombinationen = React.lazy(() => import('./modules/Kombinationen'));
 const Lehm = React.lazy(() => import('./modules/Lehm'));
 const BpLehmbauprodukte = React.lazy(() => import('./modules/BpLehmbauprodukte'));
 const BpBaustoffindustrie = React.lazy(() => import('./modules/BpBaustoffindustrie'));
@@ -2210,7 +2211,6 @@ const Sonstiges = React.lazy(() => import('./modules/Sonstiges'));
 const Gips = React.lazy(() => import('./modules/Gips'));
 const Kalk = React.lazy(() => import('./modules/Kalk'));
 const Daemmstoffe = React.lazy(() => import('./modules/Daemmstoffe'));
-const MaterialitaetArchitektur = React.lazy(() => import('./modules/MaterialitaetArchitektur'));
 const Software = React.lazy(() => import('./modules/Software'));
 const OnlineTools = React.lazy(() => import('./modules/OnlineTools'));
 const Formaenderungen = React.lazy(() => import('./modules/Formaenderungen'));

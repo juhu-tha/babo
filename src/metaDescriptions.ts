@@ -2,7 +2,8 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
   // Allgemein
   start: "Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen & Co. Entwickelt an der TH Augsburg.",
   anleitung: "Nutzerhandbuch und Anleitung für das BaustoffBoard. Erfahren Sie, wie Sie interaktive Rechner, Simulationen und Fachdatenbanken optimal nutzen.",
-  modulstruktur: "Übersicht über die Modulstruktur des BaustoffBoards. Navigieren Sie per interaktivem Verzeichnis durch alle Fachbereiche des Bauingenieurwesens.",
+  modulstruktur: "Modulübersicht und hierarchischer Wissensbaum des BaustoffBoards: Gleichzeitige Anzeige aller Module, Rechner und Normen nach Fachclustern gegliedert.",
+  moduluebersicht: "Modulübersicht und hierarchischer Wissensbaum des BaustoffBoards: Gleichzeitige Anzeige aller Module, Rechner und Normen nach Fachclustern gegliedert.",
   feedback: "Geben Sie uns Feedback, melden Sie Fehler oder teilen Sie Ihre Ideen zur Weiterentwicklung des BaustoffBoards der TH Augsburg.",
   versionen: "Changelog und Update-Historie des BaustoffBoards. Verfolgen Sie alle neuen Funktionen, Fehlerbehebungen und Funktionserweiterungen.",
   impressum: "Rechtliche Hinweise, Ansprechpartner und Impressum des BaustoffBoards der Technischen Hochschule Augsburg (THA).",
@@ -30,7 +31,6 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
 
   // Baustoffe
   baustoffe_info: "Übersicht über mineralische, metallische, organische und innovative Baustoffe von A bis Z in unserer Enzyklopädie.",
-  materialitaet_architektur: "Materialität & Architektonische Ästhetik: Haptik, Oberflächentextur, Lichtwirkung, Reflexion, Fügungsraster und Alterungsprozesse (Patina) im Entwurf.",
   gesteine: "Petrographie und Eigenschaften von Natursteinen wie Granit, Basalt, Kalkstein und Sandstein im ökologischen Konstruktivbau.",
   mauerwerk: "Mauersteine und Mörtelsysteme: Ziegel, Kalksandstein, Porenbeton und deren charakteristische Tragfähigkeitseigenschaften.",
   putzemoertel: "Zusammensetzung, Anwendung und Eigenschaften von Innenputzen, Außenputzen, Mauermörteln und Estrichen.",
@@ -54,7 +54,8 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
   // Sonstige
   daemmstoffe: "Wärmedämmstoffe im Vergleich: EPS, XPS, Steinwolle, Glaswolle, Vakuumdämmung und ökologische Einblasdämmstoffe.",
   ausbau: "Bauwerksabdichtungen, Abdichtungsbahnen nach DIN 18533, Estrichkonstruktionen und flexible Fugenabdichtungen.",
-  faserverbund: "Faserverbundwerkstoffe für die Bauwerkssanierung: Carbonfaserverstärkter Kunststoff (CFK), GFK und polymere Matrizen.",
+  faserverbund: "Faserverbundwerkstoffe für die Bauwerkssanierung: Carbonfaserverstärkter Kunststoff (CFK), GFK und polymere Matrizen (integriert in Werkstoff-Kombinationen).",
+  kombinationen: "Werkstoff-Kombinationen & Faserverbund: Schichtenprinzip (Tragen, Dämmen, Schützen), Faserverbundwerkstoffe (CFK/GFK, Voigt/Reuss), Verbundwerkstoffe (Stahlbeton, Sandwich) und Schutzschichten mit interaktiven Rechnern.",
   sonstiges: "Innovative Baustoffe der Zukunft: Smarte Baumaterialien, zukunftsweisende Verbundstoffe und nanotechnologische Oberflächen.",
 
   // Bauprodukte

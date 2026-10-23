@@ -46,9 +46,8 @@ const Holzwerkstoffe = React.lazy(() => import('@/src/modules/Holzwerkstoffe'));
 const Asphalt = React.lazy(() => import('@/src/modules/Asphalt'));
 const Kunststoffe = React.lazy(() => import('@/src/modules/Kunststoffe'));
 const Daemmstoffe = React.lazy(() => import('@/src/modules/Daemmstoffe'));
-const Faserverbund = React.lazy(() => import('@/src/modules/Faserverbund'));
+const Kombinationen = React.lazy(() => import('@/src/modules/Kombinationen'));
 const Nawaro = React.lazy(() => import('@/src/modules/Nawaro'));
-const MaterialitaetArchitektur = React.lazy(() => import('@/src/modules/MaterialitaetArchitektur'));
 const Sonstiges = React.lazy(() => import('@/src/modules/Sonstiges'));
 const BpRechtliches = React.lazy(() => import('@/src/modules/BpRechtliches'));
 const BpTrockenbau = React.lazy(() => import('@/src/modules/BpTrockenbau'));
@@ -257,9 +256,10 @@ export default function ClusterContentRouter({ activeTab }: ClusterContentRouter
   if (activeTab === 'asphalt') return <Asphalt />;
   if (activeTab === 'kunststoffe') return <Kunststoffe />;
   if (activeTab === 'daemmstoffe') return <Daemmstoffe />;
-  if (activeTab === 'faserverbund') return <Faserverbund />;
+  if (activeTab === 'kombinationen' || activeTab === 'faserverbund' || activeTab === 'materialitaet_architektur') {
+    return <Kombinationen initialTab={activeTab === 'faserverbund' ? 'faserverbund' : undefined} />;
+  }
   if (activeTab === 'nawaro') return <Nawaro />;
-  if (activeTab === 'materialitaet_architektur') return <MaterialitaetArchitektur />;
   if (activeTab === 'sonstiges') return <Sonstiges />;
   if (activeTab === 'bp_rechtliches') return <BpRechtliches />;
   if (activeTab === 'bp_recht_grundlagen') return <BpRechtliches isEmbedded={false} activeSubTab="grundlagen" />;

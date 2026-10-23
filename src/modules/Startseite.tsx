@@ -55,7 +55,7 @@ export default function Startseite() {
               <div>
                 <h3 className="text-lg font-bold text-shiraz mb-2">Hinweise zur Nutzung</h3>
                 <p className="text-text-main/80 leading-relaxed">
-                  Das BaustoffBoard dient ausschließlich zu Lehr- und Übungszwecken. Deshalb können hier Vereinfachungen getroffen worden sein, die nicht vollumfänglich Normanforderungen und der Realität entsprechen. Das BaustoffBoard ist <strong>kein</strong> Ersatz für Lehrveranstaltungen, Lehrbücher oder Normen! - es wird <span className="underline">keinerlei Haftung</span> für Ergebnisse übernommen!{' '}
+                  Das BaustoffBoard dient <span className="underline">ausschließlich zu Lehr- und Übungszwecken</span>. Deshalb können hier Vereinfachungen getroffen worden sein, die nicht vollumfänglich Normanforderungen und der Realität entsprechen. Das BaustoffBoard ist <strong>kein</strong> Ersatz für Lehrveranstaltungen, Lehrbücher oder Normen! - es wird <span className="underline">keinerlei Haftung</span> für Ergebnisse übernommen!{' '}
                   <button
                     onClick={() => {
                       const el = document.getElementById('engineering-disclaimer');
