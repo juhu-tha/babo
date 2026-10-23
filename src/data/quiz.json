@@ -10751,5 +10751,95 @@
       "targetModuleLabel": "Baustoffindustrie"
     },
     "verified": false
+  },
+  {
+    "id": "q_bin_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_innovationen",
+    "moduleTitle": "Innovationen & F&E",
+    "topic": "TRL",
+    "difficulty": "Grundlagen",
+    "normRef": "ISO 16290",
+    "question": "Welcher TRL-Stufe entspricht der Einbau eines neuen Baustoffs in ein Pilotgebäude über eine vorhabenbezogene Bauartgenehmigung (vBG)?",
+    "options": [
+      "TRL 7",
+      "TRL 3",
+      "TRL 5",
+      "TRL 9"
+    ],
+    "correctIdx": 0,
+    "explanation": "TRL 7 = Demonstration im realen Einsatz. TRL 8 folgt mit der abZ/aBG bzw. ETA, TRL 9 mit der regulären Marktverfügbarkeit.",
+    "gapAnalysis": {
+      "topic": "TRL",
+      "misconception": "Ein Pilotbau entspricht bereits der Marktreife.",
+      "coreRule": "Labor (TRL 3–4) → Werk (5–6) → Pilotbau (7) → Zulassung (8) → Markt (9).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „TRL“ im Modul Innovationen & F&E noch einmal durch.",
+      "targetModuleTab": "bp_innovationen",
+      "targetModuleLabel": "Innovationen & F&E"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bin_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_innovationen",
+    "moduleTitle": "Innovationen & F&E",
+    "topic": "Verwendbarkeitsnachweise",
+    "difficulty": "Fortgeschritten",
+    "normRef": "MBO §§ 16a ff.",
+    "question": "Wofür wird eine allgemeine Bauartgenehmigung (aBG) erteilt?",
+    "options": [
+      "Für das Zusammenfügen von Bauprodukten zu einer Bauart",
+      "Für ein einzelnes Bauprodukt ohne Bezug zur Anwendung",
+      "Für den freien Warenverkehr in der EU",
+      "Für die CE-Kennzeichnung nach hEN"
+    ],
+    "correctIdx": 0,
+    "explanation": "Seit 2017 trennt das Bauordnungsrecht zwischen Bauprodukt (abZ) und Bauart (aBG). Für den EU-Binnenmarkt dient die ETA mit CE-Kennzeichnung.",
+    "gapAnalysis": {
+      "topic": "Verwendbarkeitsnachweise",
+      "misconception": "abZ und aBG sind dasselbe.",
+      "coreRule": "abZ = Produkt, aBG = Bauart, ETA = europäischer Weg.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verwendbarkeitsnachweise“ im Modul Innovationen & F&E noch einmal durch.",
+      "targetModuleTab": "bp_innovationen",
+      "targetModuleLabel": "Innovationen & F&E"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bin_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_innovationen",
+    "moduleTitle": "Innovationen & F&E",
+    "topic": "Haftung",
+    "difficulty": "Grundlagen",
+    "normRef": "§ 634a BGB",
+    "question": "Nach wie vielen Jahren verjähren Mängelansprüche bei Bauwerken nach BGB regulär?",
+    "options": [
+      "5 Jahre",
+      "2 Jahre",
+      "30 Jahre",
+      "10 Jahre"
+    ],
+    "correctIdx": 0,
+    "explanation": "§ 634a BGB: 5 Jahre bei Bauwerken (VOB/B regelmäßig 4 Jahre, wenn vereinbart). Längere Fristen gelten nur in Sonderfällen (z. B. arglistig verschwiegene Mängel).",
+    "gapAnalysis": {
+      "topic": "Haftung",
+      "misconception": "Planer haften generell 30 Jahre.",
+      "coreRule": "Bauwerk: 5 Jahre nach BGB.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haftung“ im Modul Innovationen & F&E noch einmal durch.",
+      "targetModuleTab": "bp_innovationen",
+      "targetModuleLabel": "Innovationen & F&E"
+    },
+    "verified": false
   }
 ]

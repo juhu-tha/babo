@@ -1,6 +1,8 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import {
   Sparkles,
   Rocket,
@@ -40,7 +42,7 @@ const PRESETS: InnovationPreset[] = [
     trlCurrent: 8,
     description: 'Ersatz von korrosionsanfälligem Betonstahl durch nichtrostende Carbon- oder Basaltfasergitter mit Epoxid- oder mineralischer Matrix. Ermöglicht schlanke Bauteile mit nur 10–15 mm Betondeckung.',
     advantages: [
-      'Gewichtsersparnis bis zu 50 %, massive CO₂-Reduktion durch Materialeinsparung',
+      'Deutlich schlankere und leichtere Bauteile; CO₂-Einsparung durch geringeren Betonbedarf',
       'Vollständige Korrosionsfreiheit gegenüber Tausalzen (keine Lochfraßkorrosion)',
       'Zugfestigkeit der Carbonfaser (bis zu 3.000 MPa) ca. 6-mal höher als B500B'
     ],
@@ -87,7 +89,7 @@ const PRESETS: InnovationPreset[] = [
       'Standardisierung von Rohstoffchargen bei biologischen Wachstumsprozessen',
       'Inaktivierung des Myzels (Hitzebehandlung) erfordert genaue Prozesskontrolle'
     ],
-    regulationPath: 'Aktuell als Dämmstoff über Einzelprüfungen nach DIN EN 13162 / EAD in Vorbereitung; Einsatz primär im Trocken- und Innenausbau.',
+    regulationPath: 'Bauaufsichtliche Verwendbarkeitsnachweise (abZ/ETA) bisher kaum vorhanden; Einsatz v. a. in Forschung, Innenausbau und Möbelbau.',
     foerderung: 'BMBF Bioökonomie, DBU (Deutsche Bundesstiftung Umwelt), EU EIC'
   },
   {
@@ -95,11 +97,11 @@ const PRESETS: InnovationPreset[] = [
     name: 'Bakteriell selbstheilender Beton (Bio-Beton)',
     category: 'Smarte Werkstoffe & Bionik',
     trlCurrent: 7,
-    description: 'Verkapselte Sporen von alkaliphilen Bodenbakterien (z. B. Bacillus pseudofirmus) zusammen mit Nährstoffen (Calciumlactat). Bei Rissbildung und Wassereintritt dichten die Bakterien Risse bis 0,8 mm durch mikrobiell induzierte Calcitfällung (MICP) autonom ab.',
+    description: 'Verkapselte Sporen von alkaliphilen Bodenbakterien (z. B. Bacillus pseudofirmus) zusammen mit Nährstoffen (Calciumlactat). Bei Rissbildung und Wassereintritt können die Bakterien Risse durch mikrobiell induzierte Calcitfällung (MICP) verschließen – im Labor bis ca. 0,4–0,5 mm Breite.',
     advantages: [
       'Drastische Verlängerung der Bauwerkslebensdauer im Tief-, Wasser- und Tunnelbau',
       'Verringerung von Instandhaltungs- und Sanierungskosten um bis zu 60 %',
-      'Konstruktive Reduktion der rechnerischen Rissbreitenbeschränkung (wk nach EC2)'
+      'Perspektivisch geringerer Instandhaltungsaufwand (derzeit nicht auf w_k nach EC2 anrechenbar)'
     ],
     bottlenecks: [
       'Überlebensrate der Sporen unter hohem mechanischem Mischdruck und hohem pH-Wert (> 12,5)',
@@ -116,17 +118,17 @@ const PRESETS: InnovationPreset[] = [
     trlCurrent: 8,
     description: 'Injektion von industriell abgeschiedenem CO₂ in Frischbeton oder in aufbereitetes Betonabbruchgranulat. Das CO₂ reagiert mit Calciumhydroxid dauerhaft zu nanokristallinem Calciumcarbonat (CaCO₃).',
     advantages: [
-      'Dauerhafte thermodynamische Bindung von bis zu 15 kg CO₂ pro Tonne Rezyklat',
+      'Dauerhafte Bindung von CO₂ als Calcit (Herstellerangaben: etwa 10–15 kg CO₂ je Tonne Rezyklat)',
       'Erhöhung der Frühfestigkeit und Druckfestigkeit um 10–15 %',
-      'Schließt den CO₂-Kreislauf des Kalkbrennens direkt im Sekundärbaustoff'
+      'Bindet einen Teil des beim Klinkerbrennen freigesetzten CO₂ wieder'
     ],
     bottlenecks: [
       'Logistik und Bereitstellung von verflüssigtem CO₂ auf dem Recyclinghof / Betonwerk',
       'Investitionskosten für Druck- oder Begasungskammern',
       'Normative Anrechnung der negativen Emissionen in der Ökobilanz (EN 15804 Modul D/A1)'
     ],
-    regulationPath: 'Bereits großtechnisch zugelassen in den USA und Europa (z. B. Neustark, CarbonCure); Konformitätsnachweise nach DIN EN 206 / DIN 1045-2.',
-    foerderung: 'Klimaschutzverträge (BMWK), Innovation Fund (EU), Zukunft Bau'
+    regulationPath: 'Bereits industriell eingesetzt (z. B. neustark, CarbonCure); in Deutschland Nachweis über DIN EN 206 / DIN 1045-2 bzw. Einzelregelungen (manuell prüfen).',
+    foerderung: 'Klimaschutzverträge (BMWE), Innovation Fund (EU), Zukunft Bau'
   }
 ];
 
@@ -183,7 +185,7 @@ export default function BpInnovationen() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
           <p>
             Die Transformation der Bauwirtschaft zur <strong>Klimaneutralität (Net-Zero 2045)</strong> und zur echten <strong>Kreislaufwirtschaft</strong> erfordert 
-            einen beispiellosen Innovationsschub. Ob klinkereffiziente Bindemittel, Carbonbeton, biobasierte Myzel-Dämmstoffe oder CO₂-mineralisierte Rezyklate: 
+            einen starken Innovationsschub. Ob klinkereffiziente Bindemittel, Carbonbeton, biobasierte Myzel-Dämmstoffe oder CO₂-mineralisierte Rezyklate: 
             Baustoffinnovationen bewegen sich in einem hochregulierten Spannungsfeld zwischen <strong>akademischer Grundlagenforschung</strong>, 
             <strong>normativer Konformitätsprüfung (TRL 1–9)</strong> und den strengen <strong>Sicherheitsnachweisen der Musterbauordnung (MBO / DIBt)</strong>.
           </p>
@@ -264,7 +266,7 @@ export default function BpInnovationen() {
                 <h3 className="font-bold text-text-main text-base">Der Dekarbonisierungsdruck</h3>
                 <p className="text-xs text-text-main/80 leading-relaxed font-normal">
                   Die Zement- und Betonindustrie ist für rund <strong>8 % der weltweiten Treibhausgasemissionen</strong> verantwortlich. 
-                  Bis 2045 muss die Bauwirtschaft nach dem Bundes-Klimaschutzgesetz (KSG) bilanziell treibhausgasneutral wirtschaften. 
+                  Nach dem Bundes-Klimaschutzgesetz (KSG) soll Deutschland bis 2045 treibhausgasneutral sein – das betrifft auch die Bauwirtschaft. 
                   Inkrementelle Optimierungen genügen nicht mehr – gefordert sind fundamentale <strong>Werkstoff- und Technologieinnovationen</strong>.
                 </p>
               </div>
@@ -276,8 +278,8 @@ export default function BpInnovationen() {
                 <h3 className="font-bold text-text-main text-base">Das "Tal des Todes" im Bauwesen</h3>
                 <p className="text-xs text-text-main/80 leading-relaxed font-normal">
                   Viele vielversprechende Baustoffe scheitern beim Übergang von <strong>TRL 4 (Laborversuch)</strong> zu <strong>TRL 7/8 (bauaufsichtliche Zulassung)</strong>. 
-                  Gründe sind extrem hohe Kosten für Bauteilversuche, langwierige Prüfverfahren (3–5 Jahre), 
-                  strikte persönliche Haftungsrisiken der Planer nach BGB/VOB sowie fehlende Standardisierung in den Eurocodes.
+                  Gründe sind hohe Kosten für Bauteilversuche, oft mehrjährige Prüf- und Zulassungsverfahren, 
+                  Haftungsrisiken der Planer nach BGB/VOB sowie fehlende Regeln in den Eurocodes.
                 </p>
               </div>
 
@@ -312,12 +314,12 @@ export default function BpInnovationen() {
                   <tbody className="divide-y divide-slate-200">
                     <tr>
                       <td className="p-3 font-bold text-slate-800">Baurecht &amp; Normung</td>
-                      <td className="p-3 text-slate-600">Konservative DIN EN-Normen, langwierige Zulassungsverfahren (abZ/aBG bis zu 4 Jahre), hohe Prüfkosten.</td>
+                      <td className="p-3 text-slate-600">Konservative DIN EN-Normen, langwierige Zulassungsverfahren (abZ/aBG oft mehrere Jahre), hohe Prüfkosten.</td>
                       <td className="p-3 text-slate-600">Reallabor-Gesetze, Experimentierklauseln in den Landesbauordnungen (z. B. Gebäudetyps E), DIBt-Fast-Track für Nachhaltigkeit.</td>
                     </tr>
                     <tr>
                       <td className="p-3 font-bold text-slate-800">Haftung &amp; Versicherung</td>
-                      <td className="p-3 text-slate-600">Planer und Statiker haften für 30 Jahre bei Mängeln; Berufshaftpflichtversicherer fordern anerkannte Regeln der Technik.</td>
+                      <td className="p-3 text-slate-600">Mängelansprüche bei Bauwerken verjähren nach 5 Jahren (§ 634a BGB); Haftpflichtversicherer erwarten die Einhaltung der anerkannten Regeln der Technik.</td>
                       <td className="p-3 text-slate-600">Vorhabenbezogene Bauartgenehmigungen (vBG), herstellergestützte Systemgarantien und Zertifikate durch akkreditierte Prüfstellen (BAM, Fraunhofer).</td>
                     </tr>
                     <tr>
@@ -445,7 +447,7 @@ export default function BpInnovationen() {
                     )}
                     {selectedTrlLevel >= 7 && (
                       <>
-                        <p>• <strong>Förderer:</strong> EU Innovation Fund, BMWK Klimaschutzverträge, Reallabore der Energiewende.</p>
+                        <p>• <strong>Förderer:</strong> EU Innovation Fund, BMWE Klimaschutzverträge, Reallabore der Energiewende.</p>
                         <p>• <strong>Akteure:</strong> DIBt, MPA (Materialprüfanstalten), Baukonzerne, Generalübernehmer, Investoren.</p>
                         <p>• <strong>Kostenrahmen:</strong> 1.000.000 – 10.000.000+ € (Zulassungsprüfungen, Brandprüfungen, Industrieanlagen).</p>
                       </>
@@ -498,7 +500,7 @@ export default function BpInnovationen() {
                   <div className="p-3 bg-off-white rounded-lg border border-slate-200">
                     <div className="flex justify-between items-center mb-1">
                       <strong className="text-slate-800">Zukunft Bau (BBSR / BMWSB)</strong>
-                      <span className="text-xxs px-2 py-0.5 bg-shiraz/10 text-shiraz rounded-full font-bold">Standard für Baustoffe</span>
+                      <span className="text-xxs px-2 py-0.5 bg-shiraz/10 text-shiraz rounded-full font-bold">Bundesforschung</span>
                     </div>
                     Förderung von angewandter Forschung im Hoch- und Ingenieurbau. Schwerpunkte: Klimagerechtes Bauen, zirkuläre Baustoffe, Digitalisierung und Holzbau.
                   </div>
@@ -506,9 +508,9 @@ export default function BpInnovationen() {
                   <div className="p-3 bg-off-white rounded-lg border border-slate-200">
                     <div className="flex justify-between items-center mb-1">
                       <strong className="text-slate-800">ZIM – Zentrales Innovationsprogramm Mittelstand</strong>
-                      <span className="text-xxs px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full font-bold">BMWK</span>
+                      <span className="text-xxs px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full font-bold">BMWE</span>
                     </div>
-                    Förderung marktnaher FuE-Kooperationsprojekte zwischen mittelständischen Bauprodukt-Herstellern und Forschungsinstituten (bis zu 550.000 € Zuschuss pro Partner).
+                    Förderung marktnaher FuE-Kooperationsprojekte zwischen mittelständischen Bauprodukt-Herstellern und Forschungsinstituten (Fördersätze und Höchstbeträge nach aktueller ZIM-Richtlinie – manuell prüfen).
                   </div>
 
                   <div className="p-3 bg-off-white rounded-lg border border-slate-200">
@@ -889,8 +891,8 @@ export default function BpInnovationen() {
                   </span>
                   <p className="text-slate-600 leading-relaxed">
                     {currentTrl <= 3 && 'DFG-Sachbeihilfe, EXIST-Forschungstransfer (für akademische Ausgründungen), EU Marie-Curie.'}
-                    {currentTrl >= 4 && currentTrl <= 6 && 'Zukunft Bau (BBSR-Forschungsförderung), BMWK ZIM-Kooperationsprojekte, KMU-innovativ.'}
-                    {currentTrl >= 7 && 'EU Innovation Fund, BMWK Klimaschutzverträge, InvestEU, industrielle Pilotbau-Zuschüsse der Bundesländer.'}
+                    {currentTrl >= 4 && currentTrl <= 6 && 'Zukunft Bau (BBSR-Forschungsförderung), BMWE ZIM-Kooperationsprojekte, KMU-innovativ.'}
+                    {currentTrl >= 7 && 'EU Innovation Fund, BMWE Klimaschutzverträge, InvestEU, industrielle Pilotbau-Zuschüsse der Bundesländer.'}
                   </p>
                 </div>
               </div>
@@ -900,6 +902,22 @@ export default function BpInnovationen() {
 
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Bewehrungsquerschnitt Stahl vs. Carbon für 100 kN Zugkraft"
+          zielGleichung="A_{erf} = \frac{F_{Ed}}{f_d}"
+          normQuelle="Lehrwerte: f_yd nach EC2; Bemessungswert Carbon als Lehrannahme (maßgebend Zulassung)"
+          schritte={[
+            { titel: '1. Betonstahl B500B', formel: 'f_{yd} = 500/1{,}15 = 435\\,\\text{N/mm}^2 \\Rightarrow A_s = 100\\,000/435 = 230\\,\\text{mm}^2', erklaerung: 'Entspricht ca. 3 Ø 10.' },
+            { titel: '2. Carbonbewehrung', formel: 'f_{fd} \\approx 1200\\,\\text{N/mm}^2 \\Rightarrow A_f = 100\\,000/1200 = 83\\,\\text{mm}^2', erklaerung: 'Lehrannahme: Bemessungswert deutlich unter der Faserzugfestigkeit (Dauerstand, Verbund, Teilsicherheit).' },
+            { titel: '3. Verhältnis', formel: '230/83 \\approx 2{,}8', erklaerung: 'Weniger Bewehrungsquerschnitt – und kein Korrosionsschutz durch dicke Betondeckung nötig.' },
+          ]}
+          ergebnisHinweis="Carbon spart Querschnitt und Deckung; der geringere E-Modul (Gitter je nach Produkt) kann aber Verformung und Rissbreite maßgebend machen."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_innovationen" />
+
       {/* 2. STANDARDISIERTER FOOTER GEMÄSS STYLEGUIDE */}
       <ModuleFooter
         wikipedia={[
@@ -907,27 +925,24 @@ export default function BpInnovationen() {
           { title: 'Carbonbeton', url: 'https://de.wikipedia.org/wiki/Carbonbeton' },
           { title: 'Geopolymer', url: 'https://de.wikipedia.org/wiki/Geopolymer' },
           { title: 'Deutsches Institut für Bautechnik (DIBt)', url: 'https://de.wikipedia.org/wiki/Deutsches_Institut_f%C3%BCr_Bautechnik' },
-          { title: 'Bauprodukteverordnung', url: 'https://de.wikipedia.org/wiki/Bauprodukteverordnung' },
-          { title: 'Zukunft Bau' }
+          { title: 'Bauprodukteverordnung', url: 'https://de.wikipedia.org/wiki/Bauprodukteverordnung' }
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Springer Vieweg 2011',
-          'Curbach, M.; Scheerer, S. et al.: Carbonbeton – Werkstoff, Konstruktion, Bemessung. Berlin: Ernst & Sohn 2022',
           'Davidovits, J.: Geopolymer Chemistry and Applications. 5th ed., Saint-Quentin: Institut Géopolymère 2020',
-          'DIBt: Leitfaden für nationale und europäische Verwendbarkeitsnachweise für Bauprodukte. Berlin: DIBt Mitteilungen 2023',
-          'BBSR (Hrsg.): Zukunft Bau – Forschungsförderung für die Baupraxis. Berichte Band 45, Bonn 2024'
+          'DAfStb (Hrsg.): Erläuterungen und Beispiele zur DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung. DIN Media 2024 (manuell prüfen)'
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 16290 (Raumfahrtsysteme – Definition der Technology Readiness Levels (TRL) und Beurteilungskriterien)' },
-          { title: 'Musterbauordnung (MBO) § 17 bis 25 (Verwendbarkeitsnachweise, abZ, aBG und Ü-Zeichen)', url: 'https://www.bauministerkonferenz.de/' },
-          { title: 'EU-Verordnung 2024/1100 (Bauprodukteverordnung CPR Revision zur Kreislaufwirtschaft)', url: 'https://eur-lex.europa.eu/' },
+          { title: 'ISO 16290:2013 (Raumfahrtsysteme – Definition der Technology Readiness Levels und Bewertungskriterien)' },
+          { title: 'Musterbauordnung (MBO) §§ 16a bis 25 (Bauarten, Bauprodukte, Verwendbarkeitsnachweise, Ü-Zeichen)', url: 'https://www.bauministerkonferenz.de/' },
+          { title: 'Verordnung (EU) 2024/3110 (neue Bauprodukteverordnung, ersetzt schrittweise (EU) Nr. 305/2011)', url: 'https://eur-lex.europa.eu/eli/reg/2024/3110/oj' },
           { title: 'DIN EN 15804 (Nachhaltigkeit von Bauwerken – Umweltproduktdeklarationen EPD)' }
         ]}
         formeln={[
           {
-            formel: 'c_{\\text{min}} = \\max\\{c_{\\text{min,dur}}; \\, c_{\\text{min,b}}; \\, 10\\,\\text{mm}\\} - \\Delta c_{\\text{dur},\\gamma}',
-            erklaerung: 'Mindestbetondeckung nach Eurocode 2: Bei nichtrostender Carbon- oder Textilbewehrung entfällt der Korrosionsanteil c_min,dur, sodass c_min auf bis zu 10–15 mm reduziert werden kann.',
-            quelle: 'DIN EN 1992-1-1 / DIBt-Zulassungen Carbonbeton'
+            formel: 'c_{\\text{min}} = \\max\\{c_{\\text{min,b}};\\; c_{\\text{min,dur}} + \\Delta c_{\\text{dur},\\gamma} - \\Delta c_{\\text{dur,st}} - \\Delta c_{\\text{dur,add}};\\; 10\\,\\text{mm}\\}',
+            erklaerung: 'Mindestbetondeckung nach Eurocode 2 (Gl. 4.2). Bei nichtrostender Carbon- oder Textilbewehrung ist der Dauerhaftigkeitsanteil für Korrosionsschutz nicht nötig; maßgebend werden Verbund und Brandschutz – Werte nach Zulassung bzw. DAfStb-Richtlinie (oft 10–15 mm).',
+            quelle: 'DIN EN 1992-1-1, Gl. 4.2 / Zulassungen Carbonbeton'
           },
           {
             formel: 'M_n(-\\text{Si-O-Al-O-})_n \\cdot w\\,\\text{H}_2\\text{O}',
@@ -935,9 +950,9 @@ export default function BpInnovationen() {
             quelle: 'Davidovits Geopolymer Model'
           },
           {
-            formel: '\\text{Ca(OH)}_2 + \\text{CO}_2 \\longrightarrow \\text{CaCO}_3 + \\text{H}_2\\text{O} \\quad [\\Delta H = -74\\,\\text{kJ/mol}]',
-            erklaerung: 'Thermodynamisch irreversible Mineralisierung von Kohlendioxid in recyceltem Betonstein zu stabilem Calcit (CCU-Verfahren).',
-            quelle: 'DIN EN 206 / RILEM TC-281'
+            formel: '\\text{Ca(OH)}_2 + \\text{CO}_2 \\longrightarrow \\text{CaCO}_3 + \\text{H}_2\\text{O}',
+            erklaerung: 'Karbonatisierung: CO₂ wird in recyceltem Beton als stabiles Calcit gebunden (exotherm, ca. −114 kJ/mol bei flüssigem Wasser).',
+            quelle: 'Thermochemie (Standardbildungsenthalpien)'
           }
         ]}
       />
