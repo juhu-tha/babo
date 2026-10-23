@@ -76,6 +76,7 @@ export type TabId =
   | 'porositaet'
   | 'asphalt'
   | 'faserverbund'
+  | 'kombinationen'
   | 'lehm'
   | 'bp_lehmbauprodukte'
   | 'brandschutz'

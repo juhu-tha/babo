@@ -10578,8 +10578,8 @@
     "categoryLabel": "Werkstoffmechanik & Physik",
     "clusterId": "II",
     "clusterName": "Materialien & Produkte",
-    "moduleId": "faserverbund",
-    "moduleTitle": "Faserverbund",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
     "topic": "Mischungsregel",
     "difficulty": "Fortgeschritten",
     "normRef": "VDI 2014 Blatt 3",
@@ -10596,9 +10596,9 @@
       "topic": "Mischungsregel",
       "misconception": "Voigt- und Reuss-Regel werden verwechselt.",
       "coreRule": "Längs: Parallelschaltung (Voigt); quer: Reihenschaltung (Reuss).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mischungsregel“ im Modul Faserverbund noch einmal durch.",
-      "targetModuleTab": "faserverbund",
-      "targetModuleLabel": "Faserverbund"
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mischungsregel“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
     },
     "verified": false
   },
@@ -10608,8 +10608,8 @@
     "categoryLabel": "Werkstoffmechanik & Physik",
     "clusterId": "II",
     "clusterName": "Materialien & Produkte",
-    "moduleId": "faserverbund",
-    "moduleTitle": "Faserverbund",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
     "topic": "GFK-Bewehrung",
     "difficulty": "Grundlagen",
     "normRef": "",
@@ -10626,9 +10626,9 @@
       "topic": "GFK-Bewehrung",
       "misconception": "Nichtmetallische Bewehrung ist in allen Belangen besser.",
       "coreRule": "Niedriger E-Modul → Gebrauchstauglichkeit wird maßgebend.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „GFK-Bewehrung“ im Modul Faserverbund noch einmal durch.",
-      "targetModuleTab": "faserverbund",
-      "targetModuleLabel": "Faserverbund"
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „GFK-Bewehrung“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
     },
     "verified": false
   },

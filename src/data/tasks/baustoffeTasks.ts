@@ -76,9 +76,9 @@ export const baustoffeTasks: Task[] = [
   {
     id: 't_materialitaet_patina',
     difficulty: 'Leicht',
-    title: 'Materialität & Architektur: Patina & Schutzschichtbildung',
+    title: 'Materialität & Schutzschichten: Patina & Schutzschichtbildung',
     question: 'Warum benötigt wetterfester Baustahl (Cortenstahl) im Gegensatz zu herkömmlichem Baustahl keinen korrosionsschützenden Anstrich und welche Umweltbedingungen sind für die Schutzschichtbildung zwingend nötig?',
-    moduleHint: { id: 'materialitaet_architektur', name: 'Materialität & Architektur' },
+    moduleHint: { id: 'kombinationen', name: 'Werkstoff-Kombinationen' },
     solution: 'Cortenstahl enthält geringe Legierungsanteile von Kupfer, Chrom, Nickel und Phosphor. Unter atmosphärischer Bewitterung bildet sich zunächst eine oberflächliche Rostschicht. Durch den Wechsel von Benetzung und vollständiger Abtrocknung wandelt sich diese in eine festhaftende, nahezu sauerstoff- und wasserundurchlässige Sperrschicht aus basischen Eisensulfaten und -phosphaten (Patina) um, die das darunterliegende Metall vor weiterem Abtrag schützt. Wichtig: Bei Dauerfeuchte (z.B. im Erdreich oder stehendem Wasser) kann sich die Schutzschicht nicht bilden und der Stahl rostet ungeschützt durch.'
   },
   {
@@ -94,7 +94,7 @@ export const baustoffeTasks: Task[] = [
     difficulty: 'Mittel',
     title: 'Faserverbundwerkstoffe: CFK- vs. GFK-Lamellen zur Tragwerksverstärkung',
     question: 'Ein Stahlbetonträger soll nachträglich durch aufgeklebte Faserverbundlamellen verstärkt werden. Warum wird hierfür CFK (Kohlenstofffaser) gegenüber GFK (Glasfaser) bevorzugt?',
-    moduleHint: { id: 'faserverbund', name: 'Faserverbund' },
+    moduleHint: { id: 'kombinationen', name: 'Werkstoff-Kombinationen' },
     solution: 'CFK besitzt einen sehr hohen Elastizitätsmodul ($E \\approx 165\\text{ bis } 210\\text{ GPa}$), der im Bereich von Stahl liegt. Daher aktivieren CFK-Lamellen bereits bei minimalen Betondehnungen erhebliche Zugkräfte und entlasten die innenliegende Stahlbewehrung effektiv. GFK besitzt einen viel zu geringen E-Modul ($E \\approx 30\\text{ bis } 40\\text{ GPa}$), sodass der Beton bereits unzulässig breite Risse aufweisen müsste, bevor nennenswerte Zugkräfte in die Glasfaser fließen.'
   },
   {
