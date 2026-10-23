@@ -184,7 +184,7 @@ export default function Sichtbeton() {
       <FormulaDerivationBox
         title="Anwendungsbeispiel: Porenflächenanteil einer Prüffläche"
         zielGleichung="A_{Poren} = \frac{\sum A_{Pore,i}}{A_{Messfeld}} \cdot 100\,\%"
-        normQuelle="Auswertung an Erprobungsflächen (Lehrwerte; Klassengrenzen nach Merkblatt manuell prüfen)"
+        normQuelle="Auswertung an Erprobungsflächen (Lehrwerte; Porigkeitsklassen P1–P4 nach DBV/VDZ-Merkblatt Sichtbeton, Fassung Juni 2015)"
         schritte={[
           { titel: '1. Messfeld', formel: 'A_{Messfeld} = 500 \\cdot 500 = 250\\,000\\,\\text{mm}^2', erklaerung: 'Quadratisches Messfeld auf der Ansichtsfläche.' },
           { titel: '2. Porenfläche', formel: '\\sum A_{Pore,i} = 600\\,\\text{mm}^2', erklaerung: 'Summe aller Poren über der Erfassungsgrenze.' },
