@@ -11351,5 +11351,155 @@
       "targetModuleLabel": "Verkehrswegebau"
     },
     "verified": false
+  },
+  {
+    "id": "q_btb_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_trockenbau",
+    "moduleTitle": "Trockenbau",
+    "topic": "Oberflächengüte",
+    "difficulty": "Grundlagen",
+    "normRef": "IGG-Merkblatt 2",
+    "question": "Welche Oberflächengüte gilt bei Gipsplatten, wenn nichts vereinbart ist?",
+    "options": [
+      "Q2",
+      "Q1",
+      "Q3",
+      "Q4"
+    ],
+    "correctIdx": 0,
+    "explanation": "Q2 ist die Standardverspachtelung für übliche Anstriche und Tapeten. Q1 genügt unter Fliesen, Q3/Q4 für höhere optische Ansprüche.",
+    "gapAnalysis": {
+      "topic": "Oberflächengüte",
+      "misconception": "Ohne Vereinbarung gilt die höchste Qualitätsstufe.",
+      "coreRule": "Standard = Q2.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächengüte“ im Modul Trockenbau noch einmal durch.",
+      "targetModuleTab": "bp_trockenbau",
+      "targetModuleLabel": "Trockenbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_btb_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_trockenbau",
+    "moduleTitle": "Trockenbau",
+    "topic": "Schallschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Wie ändert sich die Resonanzfrequenz f₀ einer Ständerwand, wenn die Masse beider Schalen verdoppelt wird?",
+    "options": [
+      "Sie sinkt um den Faktor √2",
+      "Sie halbiert sich",
+      "Sie bleibt gleich",
+      "Sie steigt um den Faktor √2"
+    ],
+    "correctIdx": 0,
+    "explanation": "f₀ ~ √(1/m′); bei doppelter Masse sinkt f₀ auf 1/√2 ≈ 0,71 – im Beispiel von 82 auf 58 Hz.",
+    "gapAnalysis": {
+      "topic": "Schallschutz",
+      "misconception": "f₀ ist proportional zur Masse.",
+      "coreRule": "f₀ ∝ √(s′·(1/m′₁ + 1/m′₂)).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schallschutz“ im Modul Trockenbau noch einmal durch.",
+      "targetModuleTab": "bp_trockenbau",
+      "targetModuleLabel": "Trockenbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_btb_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_trockenbau",
+    "moduleTitle": "Trockenbau",
+    "topic": "Brandschutz",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 520",
+    "question": "Warum verbessert Gips den Feuerwiderstand von Trockenbauwänden?",
+    "options": [
+      "Das Kristallwasser (ca. 21 M.-%) verdampft und bindet dabei Wärme",
+      "Gips ist feuerfest bis über 1000 °C ohne Veränderung",
+      "Gips schmilzt und dichtet Fugen ab",
+      "Der Karton verkohlt und isoliert"
+    ],
+    "correctIdx": 0,
+    "explanation": "Dihydrat gibt beim Erhitzen sein Kristallwasser ab; solange es verdampft, bleibt die Rückseite nahe 100 °C. GKF-Platten halten zusätzlich durch Glasfasern zusammen.",
+    "gapAnalysis": {
+      "topic": "Brandschutz",
+      "misconception": "Gips ist an sich unbrennbar und unverändert hitzebeständig.",
+      "coreRule": "Endotherme Dehydratation = Kühlwirkung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Brandschutz“ im Modul Trockenbau noch einmal durch.",
+      "targetModuleTab": "bp_trockenbau",
+      "targetModuleLabel": "Trockenbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpe_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_putz_estrich",
+    "moduleTitle": "Putz & Estrich",
+    "topic": "Gips",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Wie viel Wasser bindet 1 kg Halbhydrat chemisch beim Abbinden zu Dihydrat?",
+    "options": [
+      "ca. 0,19 kg",
+      "ca. 0,7 kg",
+      "ca. 0,05 kg",
+      "ca. 1,5 kg"
+    ],
+    "correctIdx": 0,
+    "explanation": "1,5 mol H₂O je mol Halbhydrat: 1,5 · 18 / 145 ≈ 0,19 kg/kg. Das Anmachwasser (w/g ≈ 0,6–0,8) ist deutlich höher.",
+    "gapAnalysis": {
+      "topic": "Gips",
+      "misconception": "Das gesamte Anmachwasser wird chemisch gebunden.",
+      "coreRule": "Überschusswasser verdunstet und erzeugt Poren.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gips“ im Modul Putz & Estrich noch einmal durch.",
+      "targetModuleTab": "bp_putz_estrich",
+      "targetModuleLabel": "Putz & Estrich"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpe_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_putz_estrich",
+    "moduleTitle": "Putz & Estrich",
+    "topic": "Sanierputz",
+    "difficulty": "Grundlagen",
+    "normRef": "WTA 2-9",
+    "question": "Wie wirkt ein Sanierputz nach WTA bei salzbelastetem Mauerwerk?",
+    "options": [
+      "Er nimmt Salze in seinem großen Porenraum auf und hält die Oberfläche trocken",
+      "Er dichtet die Wand vollständig ab",
+      "Er löst die Salze chemisch auf",
+      "Er saugt die Feuchte kapillar an die Oberfläche"
+    ],
+    "correctIdx": 0,
+    "explanation": "Sanierputze sind hydrophob, aber diffusionsoffen und porenreich – Salze kristallisieren im Putz statt an der Oberfläche.",
+    "gapAnalysis": {
+      "topic": "Sanierputz",
+      "misconception": "Sanierputz ist eine Abdichtung.",
+      "coreRule": "Salzspeicher + hydrophob + diffusionsoffen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sanierputz“ im Modul Putz & Estrich noch einmal durch.",
+      "targetModuleTab": "bp_putz_estrich",
+      "targetModuleLabel": "Putz & Estrich"
+    },
+    "verified": false
   }
 ]
