@@ -915,7 +915,6 @@ export default function HistorischeBauprodukte() {
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Praxishandbuch Allgemeine Bauchemie und Baustofftechnologie (TH Augsburg, Lehrbeilage; Angaben manuell prüfen)',
           'Bauwerkserhaltung im Denkmal- und Altbaubestand (WTA-Wissenschaftlich-Technische Arbeitsgemeinschaft)'
         ]}
         regelwerke={[
