@@ -1671,7 +1671,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
         ]}
         regelwerke={[
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)' },
+          { title: 'DIN EN 13670:2011-03 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)' },
           { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)' },
           { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)' },
           { title: 'DIN EN 12504-1 (Prüfung von Beton in Bauwerken – Bohrkernproben)' },

@@ -298,7 +298,7 @@ export default function Nachbehandlung() {
             { title: 'Frühschwinden', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 13670:2010-06 (Ausführung von Tragwerken aus Beton)' },
+            { title: 'DIN EN 13670:2011-03 (Ausführung von Tragwerken aus Beton)' },
             { title: 'DIN 1045-3:2023-08 (Tragwerke aus Beton - Teil 3: Bauausführung - Anwendungsregeln zu DIN EN 13670)' },
             { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
             { title: 'ACI 305R: Guide to Hot Weather Concreting (Verdunstungsnomogramm)' },

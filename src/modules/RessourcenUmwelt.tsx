@@ -70,7 +70,7 @@ export default function RessourcenUmwelt() {
           { titel: 'CO₂-Äquivalent', erklaerung: 'Umrechnung über die Molmassen 44/12:', formel: 'm_{CO_2} = 223 \\cdot \\frac{44}{12} = 818\\,\\text{kg CO}_2' }
         ]}
         ergebnisHinweis="Der Speicher ist temporär: Bei thermischer Verwertung wird das CO₂ in Modul C3 wieder freigesetzt. In EPD nach DIN EN 15804+A2 erscheint er deshalb als −818 in A1–A3 und +818 in C3/C4."
-        normQuelle="DIN EN 16449:2014-07; DIN EN 15804+A2"
+        normQuelle="DIN EN 16449:2014-06; DIN EN 15804+A2"
       />
       <FormulaDerivationBox
         title="Beispiel 2: Primärenergie-Indikatoren einer EPD lesen"
@@ -102,7 +102,7 @@ export default function RessourcenUmwelt() {
           { title: 'DIN EN 15804:2022-03 (Umweltproduktdeklarationen – Grundregeln; EN 15804+A2)' },
           { title: 'ÖKOBAUDAT Plattform (Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen)', url: 'https://www.oekobaudat.de/' },
           { title: 'QNG-Handbuch, Anlage 3 (v1.4, 19.07.2024)', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 16449:2014-07 (Holz und Holzprodukte – Berechnung des biogenen Kohlenstoffgehalts)' }
+          { title: 'DIN EN 16449:2014-06 (Holz und Holzprodukte – Berechnung des biogenen Kohlenstoffgehalts)' }
         ]}
         formeln={[
           {
@@ -113,7 +113,7 @@ export default function RessourcenUmwelt() {
           {
             formel: 'm_{\\text{CO2,Speicher}} = m_{\\text{atro}} \\cdot 0{,}50 \\cdot \\frac{44}{12} = m_{\\text{atro}} \\cdot 1{,}833 \\quad [\\text{kg CO}_2]',
             erklaerung: 'In biogenen Rohstoffen (Holz, Hanf, Flachs) gespeicherte Menge Kohlendioxid aus dem C-Gehalt von ca. 50 Gew.-% der atro-Masse.',
-            quelle: 'DIN EN 16449:2014-07'
+            quelle: 'DIN EN 16449:2014-06'
           }
         ]}
       />

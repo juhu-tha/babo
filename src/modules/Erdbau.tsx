@@ -399,7 +399,7 @@ export default function Erdbau() {
           'FGSV: RStO 12/24 – Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012/Fassung 2024 (eingeführt mit ARS Nr. 2/2024 des BMDV)'
         ]}
         regelwerke={[
-          { title: 'DIN 18196:2023-07 (Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke)' },
+          { title: 'DIN 18196:2023-02 (Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke)' },
           { title: 'DIN 18127:2012-09 (Baugrund - Versuche und Versuchsgeräte - Proctorversuch)' },
           { title: 'DIN 18134:2012-04 (Baugrund - Versuche und Versuchsgeräte - Plattendruckversuch)' },
           { title: 'DIN EN ISO 14688-1:2020-11 / DIN EN ISO 14688-2:2020-11 (Geotechnische Erkundung - Benennung und Klassifizierung von Boden)' },

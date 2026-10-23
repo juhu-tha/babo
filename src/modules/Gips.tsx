@@ -260,7 +260,7 @@ export default function Gips() {
           { title: 'DIN EN 13279-2:2014-03 (Gipsbinder und Gips-Trockenmörtel - Teil 2: Prüfverfahren)' },
           { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)' },
           { title: 'DIN 18180:2014-09 (Gipsplatten - Arten und Anforderungen)' },
-          { title: 'DIN 18181:2019-03 (Gipsplatten im Hochbau - Verarbeitung)' }
+          { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)' }
         ]}
         formeln={[
           {

@@ -1,9 +1,9 @@
 /**
- * Zentrale Normen-Datenbank: DIN EN 197-1:2011-11 & DIN EN 197-5:2021-05
+ * Zentrale Normen-Datenbank: DIN EN 197-1:2011-11 & DIN EN 197-5:2021-07
  * Single Source of Truth für Normalzemente (CEM I bis CEM VI),
  * Hauptbestandteile, Klinkeranteile, Festigkeitsklassen und bauchemische Kennwerte.
  * 
- * Quelle: DIN EN 197-1:2011-11 sowie DIN EN 197-5:2021-05 (klinkerarme Zemente)
+ * Quelle: DIN EN 197-1:2011-11 sowie DIN EN 197-5:2021-07 (klinkerarme Zemente)
  */
 
 export interface ZementTyp {
@@ -70,13 +70,13 @@ export const DIN_EN_197_ZEMENTE: Record<string, ZementTyp> = {
   },
   'CEM_II_C_M': {
     bezeichnung: 'CEM II/C-M',
-    name: 'Portlandkompositzement (DIN EN 197-5:2021-05)',
+    name: 'Portlandkompositzement (DIN EN 197-5:2021-07)',
     klinkerGehaltMin: 50,
     klinkerGehaltMax: 64,
     weitereHauptbestandteile: 'Kombination aus Hüttensand (S), Flugasche (V) und/oder Kalkstein (LL) 36–50 %',
     anwendungsbereiche: 'Klimaschonender Zement der neuen Generation; drastisch verringerter Klinkerfaktor bei normgerechter Festigkeit.',
     co2Intensitaet: 'niedrig',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-5:2021-05'
+    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-5:2021-07'
   },
   'CEM_III_A': {
     bezeichnung: 'CEM III/A',
@@ -130,13 +130,13 @@ export const DIN_EN_197_ZEMENTE: Record<string, ZementTyp> = {
   },
   'CEM_VI': {
     bezeichnung: 'CEM VI',
-    name: 'Kompositzement (DIN EN 197-5:2021-05)',
+    name: 'Kompositzement (DIN EN 197-5:2021-07)',
     klinkerGehaltMin: 35,
     klinkerGehaltMax: 49,
     weitereHauptbestandteile: 'Hüttensand (S) 31–59 % + Kalkstein (LL) oder Flugasche (V) 6–20 %',
     anwendungsbereiche: 'Klimaneutraler Betonbau der Zukunft mit Klinkeranteil unter 50 %.',
     co2Intensitaet: 'sehr_niedrig',
-    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-5:2021-05'
+    dinMediaSuchUrl: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197-5:2021-07'
   }
 };
 

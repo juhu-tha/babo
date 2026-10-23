@@ -1750,7 +1750,7 @@ export default function Betonkennwerte() {
         regelwerke={[
           { title: 'DIN EN 1992-1-1:2011-01 / A1:2015-03 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Allgemeine Bemessungsregeln und Regeln für den Hochbau)' },
           { title: 'DIN EN 1992-1-1/NA:2013-04 (Nationaler Anhang - National festgelegte Parameter - Eurocode 2)' },
-          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Teil 1-1: Allgemeine Regeln; Deutsche Fassung EN 1992-1-1:2023)' },
+          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Teil 1-1: Allgemeine Regeln; Deutsche Fassung EN 1992-1-1:2023; 2. Generation, bauaufsichtlich noch nicht eingeführt)' },
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)' },
           { title: 'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Deutscher Ausschuss für Stahlbeton)' }

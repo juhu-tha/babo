@@ -317,7 +317,7 @@ export default function Feedback() {
         ]}
         regelwerke={[
           { title: 'Bayerisches Hochschulinnovationsgesetz (BayHIG - Art. 18 Evaluation und Qualitätssicherung)', url: 'https://www.gesetze-bayern.de/' },
-          { title: 'DIN EN ISO 9001:2015 (Qualitätsmanagementsysteme - Anforderungen)' },
+          { title: 'DIN EN ISO 9001:2015-11 (Qualitätsmanagementsysteme - Anforderungen)' },
           { title: 'DIN EN ISO 9004:2018 (Qualitätsmanagement - Leitfaden zum Erreichen nachhaltigen Erfolgs)' }
         ]}
         hideFormeln={true}

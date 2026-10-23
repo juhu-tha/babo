@@ -1335,7 +1335,7 @@ export default function LCA() {
         regelwerke={[
           { title: 'DIN EN ISO 14040:2021-02 / 14044:2021-02 (Ökobilanz - Grundsätze und Rahmenbedingungen)' },
           { title: 'DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD)' },
-          { title: 'DIN EN 15978:2012-10 (Bewertung der umweltbezogenen Qualität von Gebäuden)' },
+          { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10)' },
           { title: 'DIN EN 17472:2022-09 (Bewertung der Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)' },
           { title: 'QNG Handbuch: Bilanzierungsregeln für Gebäude-Ökobilanzen', url: 'https://www.qng.info/' }
         ]}

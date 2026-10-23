@@ -187,10 +187,10 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_EN_300': {
     id: 'DIN_EN_300',
-    code: 'DIN EN 300:2006-07 / DIN EN 310',
+    code: 'DIN EN 300:2006-09 / DIN EN 310',
     title: 'Platten aus langen, flachen, ausgerichteten Spänen (OSB)',
     category: 'holz',
-    ausgabeStand: '2006-07',
+    ausgabeStand: '2006-09',
     status: 'gueltig',
     beschreibung: 'Anforderungen an OSB/1 bis OSB/4 bezüglich Tragfähigkeit und Feuchtebeständigkeit.',
     relevanteModule: ['holzwerkstoffe', 'holz']
@@ -265,10 +265,10 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   // -------------------------------------------------------------
   'DIN_4108_2': {
     id: 'DIN_4108_2',
-    code: 'DIN 4108-2:2013-02 / DIN 4108-3:2018-10',
+    code: 'DIN 4108-2:2026-05 / DIN 4108-3:2024-03',
     title: 'Wärmeschutz und Energie-Einsparung in Gebäuden - Mindestwärmeschutz & Klimabedingter Feuchteschutz',
     category: 'bauphysik',
-    ausgabeStand: '2018-10',
+    ausgabeStand: '2026-05',
     status: 'gueltig',
     beschreibung: 'Regelt Mindest-Wärmedurchlasswiderstände, f_Rsi-Faktor (>=0,70 Schimmelschutz) und das Glaser-Verfahren nach DIN 4108-3.',
     relevanteModule: ['bauphysik', 'daemmstoffe', 'feuchteschutz', 'rechnung_u_wert']
@@ -369,10 +369,10 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   },
   'DIN_18196': {
     id: 'DIN_18196',
-    code: 'DIN 18196:2011-05',
+    code: 'DIN 18196:2023-02',
     title: 'Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke',
     category: 'geotechnik',
-    ausgabeStand: '2011-05',
+    ausgabeStand: '2023-02',
     status: 'gueltig',
     beschreibung: 'Einteilung von Böden in Bodengruppen (GE, GW, TL, UA etc.) zur Bewertung der Frostempfindlichkeit, Tragfähigkeit und Verdichtbarkeit.',
     relevanteModule: ['geotechnik', 'bodenmechanik']
@@ -403,10 +403,10 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   // -------------------------------------------------------------
   'DIN_18181': {
     id: 'DIN_18181',
-    code: 'DIN 18181:2019-09',
+    code: 'DIN 18181:2019-04',
     title: 'Gipsplatten im Hochbau - Verarbeitung',
     category: 'ausbau',
-    ausgabeStand: '2019-09',
+    ausgabeStand: '2019-04',
     status: 'gueltig',
     beschreibung: 'Spezifiziert Montage, Schraubenabstände, Achsabstände der Unterkonstruktion, Fugenversatz und Spachtelbedingungen.',
     relevanteModule: ['trockenbau', 'ausbau']
