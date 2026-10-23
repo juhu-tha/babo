@@ -10931,5 +10931,125 @@
       "targetModuleLabel": "Bauproduktenrecht"
     },
     "verified": false
+  },
+  {
+    "id": "q_bbt_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_beton",
+    "moduleTitle": "Beton (Bauprodukt)",
+    "topic": "Charakteristische Festigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206",
+    "question": "Eine Serie hat f_cm = 38,5 N/mm² und s = 5,0 N/mm². Wie groß ist das 5-%-Quantil?",
+    "options": [
+      "ca. 30,3 N/mm²",
+      "ca. 33,5 N/mm²",
+      "ca. 28,5 N/mm²",
+      "ca. 36,9 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "f_ck = 38,5 − 1,645 · 5,0 = 30,3 N/mm² – C30/37 (Zylinder) wird statistisch erreicht.",
+    "gapAnalysis": {
+      "topic": "Charakteristische Festigkeit",
+      "misconception": "Der Mittelwert entspricht der Festigkeitsklasse.",
+      "coreRule": "f_ck = f_cm − 1,645 · s.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeit“ im Modul Beton (Bauprodukt) noch einmal durch.",
+      "targetModuleTab": "bp_beton",
+      "targetModuleLabel": "Beton (Bauprodukt)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bbt_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_beton",
+    "moduleTitle": "Beton (Bauprodukt)",
+    "topic": "Beton nach Eigenschaften",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Wer ist bei „Beton nach Eigenschaften“ für die Rezeptur verantwortlich?",
+    "options": [
+      "Der Hersteller (Betonwerk)",
+      "Der Besteller",
+      "Die Bauaufsicht",
+      "Der Prüfingenieur"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der Besteller legt Druckfestigkeitsklasse, Expositionsklassen, Konsistenz usw. fest; das Werk wählt die Zusammensetzung. Bei „Beton nach Zusammensetzung“ trägt der Besteller die Verantwortung für die Rezeptur.",
+    "gapAnalysis": {
+      "topic": "Beton nach Eigenschaften",
+      "misconception": "Der Besteller bestimmt immer die Rezeptur.",
+      "coreRule": "Eigenschaften: Hersteller verantwortet Rezeptur.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beton nach Eigenschaften“ im Modul Beton (Bauprodukt) noch einmal durch.",
+      "targetModuleTab": "bp_beton",
+      "targetModuleLabel": "Beton (Bauprodukt)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bft_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonfertigteile",
+    "moduleTitle": "Betonfertigteile",
+    "topic": "Elementdecke",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 13747",
+    "question": "Wann dürfen die Montagestützen unter einer Elementdecke entfernt werden?",
+    "options": [
+      "Wenn der Ortbeton ausreichend erhärtet ist – Zeitpunkt nach Tragwerksplanung",
+      "Immer erst nach genau 28 Tagen",
+      "Sofort nach dem Betonieren",
+      "Vor dem Aufbringen des Ortbetons"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Elementplatte allein trägt den Frischbeton nur mit Montagestützen. Ausschal- bzw. Ausrüstfristen richten sich nach der erreichten Festigkeit (DIN EN 13670/DIN 1045-3), nicht pauschal nach 28 Tagen.",
+    "gapAnalysis": {
+      "topic": "Elementdecke",
+      "misconception": "28 Tage sind eine feste Ausschalfrist.",
+      "coreRule": "Ausrüsten nach Festigkeit und Vorgabe der Tragwerksplanung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Elementdecke“ im Modul Betonfertigteile noch einmal durch.",
+      "targetModuleTab": "bp_betonfertigteile",
+      "targetModuleLabel": "Betonfertigteile"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bft_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonfertigteile",
+    "moduleTitle": "Betonfertigteile",
+    "topic": "Hohlplatte",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 1168",
+    "question": "Um wie viel reduzieren die Hohlkanäle einer Spannbeton-Hohlplatte etwa das Eigengewicht gegenüber einer Massivdecke gleicher Höhe?",
+    "options": [
+      "ca. 35–45 %",
+      "ca. 5–10 %",
+      "ca. 70–80 %",
+      "gar nicht"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bei 26,5 cm Bauhöhe sinkt die Eigenlast z. B. von 6,6 auf rund 4,0 kN/m².",
+    "gapAnalysis": {
+      "topic": "Hohlplatte",
+      "misconception": "Hohlplatten sind nur geringfügig leichter.",
+      "coreRule": "Hohlraumanteil ≈ 40 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Hohlplatte“ im Modul Betonfertigteile noch einmal durch.",
+      "targetModuleTab": "bp_betonfertigteile",
+      "targetModuleLabel": "Betonfertigteile"
+    },
+    "verified": false
   }
 ]
