@@ -84,7 +84,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.dlubal.com/de/querschnittswerte/',
-    shortDesc: 'Umfassende normenkonforme Querschnitts- und Profilwertdatenbank für Walzprofile (HEA, HEB, HEM, IPE, UPN, Hohlprofile etc.).',
+    shortDesc: 'Querschnitts- und Profilwertdatenbank für Walzprofile (HEA, HEB, HEM, IPE, UPN, Hohlprofile etc.).',
     detailedFeatures: [
       'Exakte Querschnittswerte: A, Iy, Iz, Wy, Wz, Wpl, IT, Iw',
       'Klassifizierung nach Eurocode 3 (Querschnittsklassen 1 bis 4)',
@@ -162,7 +162,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.ubakus.de/',
-    shortDesc: 'Der unangefochtene De-facto-Standard zur Ermittlung von U-Werten, Glaser-Tauwassernachweisen, Hitzeschutz und Trocknungsreserven.',
+    shortDesc: 'Verbreiteter Online-Rechner für U-Werte, Tauwasser (Glaser), sommerlichen Wärmeschutz und Trocknungsreserven.',
     detailedFeatures: [
       'Berechnung des Wärmedurchgangskoeffizienten (U-Wert) mehrschichtiger Bauteile',
       'Periodisches Feuchteschutzverfahren nach DIN 4108-3 (Glaser-Diagramm)',
@@ -197,7 +197,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     category: 'bauphysik',
     categoryLabel: 'Bauphysik & Feuchteschutz',
     language: 'ENG',
-    accessType: 'Offizielle Behörde / API',
+    accessType: 'Direkt im Web',
     recommendationBadge: 'Forschung & Master',
     url: 'https://climate.onebuilding.org/',
     shortDesc: 'Globale stündliche Wetterdatensätze (EPW, TRY) für instationäre thermisch-hygroskopische Gebäudesimulationen (EnergyPlus, IDA ICE).',
@@ -219,7 +219,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://wufi.de/',
-    shortDesc: 'Weltweit führendes Simulationsprogramm zur realitätsnahen Berechnung des gekoppelten ein- und zweidimensionalen Wärme- und Feuchtetransports in Bauteilen.',
+    shortDesc: 'Verbreitetes Simulationsprogramm für den gekoppelten Wärme- und Feuchtetransport in Bauteilen (1D/2D).',
     detailedFeatures: [
       'Berechnung instationärer Feuchteprofile unter natürlichen Klimabedingungen mit Schlagregen und Solarstrahlung',
       'Exakter Nachweis von Trocknungsverhalten und kritischem Feuchtegehalt nach DIN EN 15026 / WTA-Merkblatt 6-2',
@@ -318,7 +318,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://www.openlca.org/',
-    shortDesc: 'Vollwertiges, professionelles Open-Source-Ökobilanzierungssystem für komplexe Lebenszyklusanalysen von Baustoffen und Prozessen.',
+    shortDesc: 'Open-Source-Software für Ökobilanzen (LCA) von Baustoffen und Prozessen.',
     detailedFeatures: [
       'Vollständige Modellierung von Stoff- und Energieströmen über den Lebenszyklus',
       'Kompatibel mit ecoinvent, GaBi und ÖKOBAUDAT-Datenbanken',
@@ -335,9 +335,9 @@ const ONLINE_TOOLS: ToolItem[] = [
     categoryLabel: 'LCA & Ökobilanz',
     language: 'DT / ENG',
     accessType: 'Kostenlose Cloud',
-    recommendationBadge: 'Offizieller Standard',
+    recommendationBadge: 'Standard im Büro',
     url: 'https://madaster.de/',
-    shortDesc: 'Zentrales globales Kataster für Materialien, Bauteile und Gebäude mit automatischer Berechnung des Zirkularitäts-Index und CO₂-Bilanz.',
+    shortDesc: 'Kommerzielle Plattform für Materialpässe von Gebäuden mit Zirkularitätsindikator und CO₂-Bilanz.',
     detailedFeatures: [
       'Automatisierte Generierung digitaler Materialpässe für Neubau und Bestand',
       'Berechnung des Madaster Circularity Indicator (MCI) zur Messung der Kreislauffähigkeit',
@@ -356,7 +356,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://concular.de/',
-    shortDesc: 'Deutschlands führendes Ökosystem für zirkuläres Bauen, Materialkataster vor dem Rückbau und Vermittlung wiederverwendeter Baustoffe.',
+    shortDesc: 'Anbieter für zirkuläres Bauen: Materialerfassung vor dem Rückbau und Vermittlung wiederverwendeter Baustoffe.',
     detailedFeatures: [
       'Pre-Demolition Audit zur Identifikation wiederverwendbarer Bauteile und Rohstoffe',
       'Marktplatz für Sekundärbaustoffe mit verifizierten Zustands- und Prüfberichten',
@@ -377,7 +377,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://thatopen.com/',
-    shortDesc: 'Hochperformanter WebGL-basierter OpenBIM-Viewer: IFC-Dateien (IFC2x3, IFC4) direkt im Webbrowser ohne Installation prüfen und messen.',
+    shortDesc: 'WebGL-basierter OpenBIM-Viewer: IFC-Dateien (IFC2x3, IFC4) direkt im Webbrowser ohne Installation prüfen und messen.',
     detailedFeatures: [
       'Direktes Laden und Rendern großer IFC-Bauwerksmodelle im Browser',
       'Hierarchische Inspektion von IfcProject, IfcBuildingStorey bis IfcWall / IfcBeam',
@@ -433,10 +433,10 @@ const ONLINE_TOOLS: ToolItem[] = [
     category: 'geotechnik',
     categoryLabel: 'Geotechnik & Baustofflabore',
     language: 'ENG',
-    accessType: 'Offizielle Behörde / API',
+    accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://www.nist.gov/services-resources/software/vcctl-software',
-    shortDesc: 'Numerisches Simulationslabor des US-Nationalinstituts zur Vorhersage der Zementhydratation, Phasenbildung (C-S-H) und Gefügefestigkeit.',
+    shortDesc: 'Simulationssoftware des US-amerikanischen NIST zur Vorhersage der Zementhydratation, Phasenbildung (C-S-H) und Gefügefestigkeit.',
     detailedFeatures: [
       'Simulation der Hydratationskinetik von Klinkerphasen (C₃S, C₂S, C₃A, C₄AF)',
       'Mikrostrukturmodellierung und Porenraumverteilung im Zementstein',
@@ -446,25 +446,6 @@ const ONLINE_TOOLS: ToolItem[] = [
     standards: 'ASTM / ACI Standards',
     institutionOrAuthor: 'National Institute of Standards and Technology (NIST)'
   },
-  {
-    id: 'issmge_soil_tools',
-    name: 'ISSMGE Soil Mechanics Online Tools',
-    category: 'geotechnik',
-    categoryLabel: 'Geotechnik & Baustofflabore',
-    language: 'ENG',
-    accessType: 'Direkt im Web',
-    recommendationBadge: 'Didaktisch wertvoll',
-    url: 'https://www.issmge.org/',
-    shortDesc: 'Kostenlose interaktive Werkzeuge der International Society for Soil Mechanics für Bodenklassifikation, Erddruck und Setzungen.',
-    detailedFeatures: [
-      'Bodenklassifikation nach Sieblinie, Plastizitätszahl und Konsistenzgrenzen',
-      'Erddruckberechnung nach Rankine und Coulomb für Stützwände und Baugruben',
-      '1D-Konsolidierungsberechnungen (Terzaghi-Theorie) und Setzungsverläufe',
-      'Ideal für Studierende zur Klausurvorbereitung und Vorbemessung'
-    ],
-    standards: 'DIN 18196, Eurocode 7 (DIN EN 1997)',
-    institutionOrAuthor: 'International Society for Soil Mechanics (ISSMGE)'
-  }
 ];
 
 interface ApiCodeSnippet {
