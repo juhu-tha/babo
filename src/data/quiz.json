@@ -7961,5 +7961,185 @@
       "targetModuleLabel": "Qualitätssicherung"
     },
     "verified": false
+  },
+  {
+    "id": "q_exk_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Klassenkombination",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-2, Tab. F.2.1/F.2.2",
+    "question": "Eine Außenwand ist Schlagregen und Frost ausgesetzt, aber keinem Taumittel. Welche Kombination setzen Sie an?",
+    "options": [
+      "Nur XC1",
+      "XC4 + XF1",
+      "XD3 + XF4",
+      "XA2 + XM1"
+    ],
+    "correctIdx": 1,
+    "explanation": "Beregnung mit Austrocknung → XC4; Frost bei mäßiger Sättigung ohne Taumittel → XF1. Beide gelten gleichzeitig.",
+    "gapAnalysis": {
+      "topic": "Klassenkombination",
+      "misconception": "Es sei nur die strengste einzelne Klasse anzugeben.",
+      "coreRule": "Alle zutreffenden Klassen angeben; der strengste Grenzwert je Kriterium gilt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Klassenkombination“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Frost-Tausalz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2, Tab. F.2.2",
+    "question": "Was fordert DIN 1045-2 für XF4 hinsichtlich Luftporen?",
+    "options": [
+      "Luftporen sind unzulässig",
+      "Luftporenbeton ist erforderlich (z. B. ≥ 4,5 % bei Dmax 16 mm)",
+      "LP nur bei Betontemperatur unter 5 °C",
+      "LP ist freiwillig, wenn C35/45 verwendet wird"
+    ],
+    "correctIdx": 1,
+    "explanation": "XF4 ist nur als Luftporenbeton zulässig; der Mindestluftgehalt hängt vom Größtkorn ab (8 mm: 5,5 %, 16 mm: 4,5 %, 32 mm: 4,0 %).",
+    "gapAnalysis": {
+      "topic": "Frost-Tausalz",
+      "misconception": "Eine höhere Festigkeitsklasse ersetze bei XF4 die Luftporen.",
+      "coreRule": "XF4 → immer LP-Beton.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Frost-Tausalz“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Chemischer Angriff",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206; DIN 1045-2",
+    "question": "Grundwasser enthält 1 200 mg/l Sulfat. Welche Klasse und welche Zementanforderung gelten?",
+    "options": [
+      "XA1; jeder Normzement",
+      "XA2; Zement mit hohem Sulfatwiderstand (SR)",
+      "XM2; Hartstoffe",
+      "XC3; keine besondere Anforderung"
+    ],
+    "correctIdx": 1,
+    "explanation": "600–3 000 mg/l Sulfat im Wasser → XA2. Über 600 mg/l ist nach DIN 1045-2 SR-Zement zu verwenden.",
+    "gapAnalysis": {
+      "topic": "Chemischer Angriff",
+      "misconception": "Sulfat beeinflusse nur die Bewehrung, nicht den Zement.",
+      "coreRule": "SO₄²⁻ > 600 mg/l im Wasser → SR-Zement.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chemischer Angriff“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "k-Wert-Ansatz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2",
+    "question": "Wie wird Flugasche im äquivalenten w/z-Wert angerechnet?",
+    "options": [
+      "(w/z)eq = (w + f)/z",
+      "(w/z)eq = w/(z + 0,4·f) mit f/z ≤ 0,33",
+      "(w/z)eq = w/(z + f) ohne Grenze",
+      "(w/z)eq = w/(z − f)"
+    ],
+    "correctIdx": 1,
+    "explanation": "k-Wert für Flugasche 0,4; angerechnet wird höchstens f = 0,33·z.",
+    "gapAnalysis": {
+      "topic": "k-Wert-Ansatz",
+      "misconception": "Flugasche wirke wie Zement (k = 1).",
+      "coreRule": "(w/z)eq = w/(z + 0,4·f), f/z ≤ 0,33.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „k-Wert-Ansatz“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Betondeckung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, Tab. 4.4DE",
+    "question": "Welches Nennmaß c_nom ergibt sich für XD3 (Stab ⌀ 16 mm, Δc_dev = 15 mm)?",
+    "options": [
+      "40 mm",
+      "45 mm",
+      "55 mm",
+      "60 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "c_min = max(16; 40; 10) = 40 mm; c_nom = 40 + 15 = 55 mm.",
+    "gapAnalysis": {
+      "topic": "Betondeckung",
+      "misconception": "Das Vorhaltemaß sei bereits in c_min,dur enthalten.",
+      "coreRule": "c_nom = max(c_min,b; c_min,dur; 10 mm) + Δc_dev.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "AKR-Feuchtigkeitsklassen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-Alkali-Richtlinie 2013-10",
+    "question": "Welche Feuchtigkeitsklasse gilt für ein befahrenes Parkdeck mit Taumitteln?",
+    "options": [
+      "WO",
+      "WF",
+      "WA",
+      "WS"
+    ],
+    "correctIdx": 2,
+    "explanation": "Feucht und Alkalizufuhr von außen (Taumittel) → WA. WS betrifft zusätzlich hohe dynamische Beanspruchung (z. B. Fahrbahndecken).",
+    "gapAnalysis": {
+      "topic": "AKR-Feuchtigkeitsklassen",
+      "misconception": "Parkdecks seien Innenbauteile (WO).",
+      "coreRule": "Feuchte + externe Alkalizufuhr → WA.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR-Feuchtigkeitsklassen“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
   }
 ]
