@@ -10241,5 +10241,95 @@
       "targetModuleLabel": "Biogene Baustoffe (NaWaRo)"
     },
     "verified": false
+  },
+  {
+    "id": "q_asp_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "asphalt",
+    "moduleTitle": "Asphalt & Bitumen",
+    "topic": "Hohlraumgehalt",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12697-8",
+    "question": "Rohdichte ρ_m = 2,457 g/cm³, Raumdichte ρ_b = 2,383 g/cm³. Wie groß ist der Hohlraumgehalt?",
+    "options": [
+      "ca. 3,0 Vol.-%",
+      "ca. 0,3 Vol.-%",
+      "ca. 7,4 Vol.-%",
+      "ca. 97 Vol.-%"
+    ],
+    "correctIdx": 0,
+    "explanation": "V_m = (2,457 − 2,383)/2,457 · 100 ≈ 3,0 Vol.-%.",
+    "gapAnalysis": {
+      "topic": "Hohlraumgehalt",
+      "misconception": "Roh- und Raumdichte werden vertauscht oder der Bezug fehlt.",
+      "coreRule": "V_m = (ρ_m − ρ_b)/ρ_m · 100 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Hohlraumgehalt“ im Modul Asphalt & Bitumen noch einmal durch.",
+      "targetModuleTab": "asphalt",
+      "targetModuleLabel": "Asphalt & Bitumen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_asp_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "asphalt",
+    "moduleTitle": "Asphalt & Bitumen",
+    "topic": "Asphaltarten",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welcher Asphalt wird nicht gewalzt, sondern nur glattgestrichen?",
+    "options": [
+      "Gussasphalt (MA)",
+      "Splittmastixasphalt (SMA)",
+      "Asphaltbeton (AC)",
+      "Offenporiger Asphalt (PA)"
+    ],
+    "correctIdx": 0,
+    "explanation": "Gussasphalt ist hohlraumarm, hat einen hohen Bindemittel- und Füllergehalt und ist bei ca. 210–230 °C gießfähig.",
+    "gapAnalysis": {
+      "topic": "Asphaltarten",
+      "misconception": "Alle Asphalte werden walzverdichtet.",
+      "coreRule": "Gussasphalt: gießen und streichen, keine Walzverdichtung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Asphaltarten“ im Modul Asphalt & Bitumen noch einmal durch.",
+      "targetModuleTab": "asphalt",
+      "targetModuleLabel": "Asphalt & Bitumen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_asp_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "asphalt",
+    "moduleTitle": "Asphalt & Bitumen",
+    "topic": "Temperaturabgesenkter Asphalt",
+    "difficulty": "Grundlagen",
+    "normRef": "TRGS 900",
+    "question": "Welcher Arbeitsplatzgrenzwert gilt nach TRGS 900 für Dämpfe und Aerosole aus Bitumen bei der Heißverarbeitung?",
+    "options": [
+      "1,5 mg/m³",
+      "15 mg/m³",
+      "0,15 mg/m³",
+      "10 mg/m³"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der AGW beträgt 1,5 mg/m³. Eine Temperaturabsenkung um 20–30 K verringert die Emissionen deutlich.",
+    "gapAnalysis": {
+      "topic": "Temperaturabgesenkter Asphalt",
+      "misconception": "Bitumendämpfe sind nicht reguliert.",
+      "coreRule": "AGW Bitumen 1,5 mg/m³ – Temperaturabsenkung als Hauptmaßnahme.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperaturabgesenkter Asphalt“ im Modul Asphalt & Bitumen noch einmal durch.",
+      "targetModuleTab": "asphalt",
+      "targetModuleLabel": "Asphalt & Bitumen"
+    },
+    "verified": false
   }
 ]
