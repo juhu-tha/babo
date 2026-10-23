@@ -10631,5 +10631,65 @@
       "targetModuleLabel": "Faserverbund"
     },
     "verified": false
+  },
+  {
+    "id": "q_son_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "sonstiges",
+    "moduleTitle": "Sonstige Baustoffe",
+    "topic": "Vakuumisolationspaneele",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 17140",
+    "question": "Was passiert, wenn ein Vakuumisolationspaneel auf der Baustelle angebohrt wird?",
+    "options": [
+      "λ steigt von ca. 0,007 auf ca. 0,020 W/(mK) – die Dämmwirkung sinkt auf etwa ein Drittel",
+      "Nichts – der Kern dämmt unabhängig vom Vakuum gleich gut",
+      "λ sinkt, weil Luft besser dämmt als Vakuum",
+      "Das Paneel wird nichtbrennbar"
+    ],
+    "correctIdx": 0,
+    "explanation": "Mit dem Vakuum geht die Unterdrückung der Gaswärmeleitung verloren; der Kieselsäurekern dämmt dann nur noch etwa wie ein guter konventioneller Dämmstoff.",
+    "gapAnalysis": {
+      "topic": "Vakuumisolationspaneele",
+      "misconception": "VIP lassen sich wie normale Dämmplatten zuschneiden.",
+      "coreRule": "VIP nie schneiden oder durchdringen – Planung im Raster.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Vakuumisolationspaneele“ im Modul Sonstige Baustoffe noch einmal durch.",
+      "targetModuleTab": "sonstiges",
+      "targetModuleLabel": "Sonstige Baustoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_son_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "sonstiges",
+    "moduleTitle": "Sonstige Baustoffe",
+    "topic": "Phasenwechselmaterialien",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Warum speichern PCM im Bereich 21–26 °C viel mehr Wärme je kg als Beton?",
+    "options": [
+      "Weil zusätzlich die Schmelzenthalpie (latente Wärme) aufgenommen wird",
+      "Weil ihre Wärmeleitfähigkeit höher ist",
+      "Weil ihre Rohdichte höher ist",
+      "Weil sie Wärme durch Verdunstung speichern"
+    ],
+    "correctIdx": 0,
+    "explanation": "Paraffin nimmt beim Schmelzen ca. 150 kJ/kg auf, Beton bei 5 K Erwärmung nur ca. 5 kJ/kg.",
+    "gapAnalysis": {
+      "topic": "Phasenwechselmaterialien",
+      "misconception": "Wärmespeicherung hängt nur von c und ρ ab.",
+      "coreRule": "Q = m·(c·ΔT + Δh_m).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Phasenwechselmaterialien“ im Modul Sonstige Baustoffe noch einmal durch.",
+      "targetModuleTab": "sonstiges",
+      "targetModuleLabel": "Sonstige Baustoffe"
+    },
+    "verified": false
   }
 ]
