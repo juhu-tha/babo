@@ -169,8 +169,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Mathematische Strenge', desc: 'Verwendung normkonformer LaTeX-Formelsätze und eindeutiger Variablenbezeichnungen.' },
       { title: 'Regulativer Abgleich', desc: 'Einordnung nationaler (DIN) und europäischer (EN) Normungsstrategien im Wandel des Baurechts.' }
     ],
-    appStudents: 'Ideal zur Vorbereitung auf Klausuren der Baustoffkunde I, Statik, Technischen Mechanik und zur Erstellung erster Tragwerksentwürfe.',
-    appProfessionals: 'Dient als verlässliches, schnelles Nachschlagewerk im Planungsalltag zur Überprüfung von Sicherheitsbeiwerten und Materialeigenschaften.',
+    appStudents: 'Zur Vorbereitung auf Klausuren in Baustoffkunde, Statik und Technischer Mechanik.',
+    appProfessionals: 'Schnelles Nachschlagen von Sicherheitsbeiwerten und Materialkennwerten; maßgebend bleiben die aktuellen Regelwerke.',
     wikipedia: [
       { title: 'Internationales Einheitensystem', url: 'https://de.wikipedia.org/wiki/Internationales_Einheitensystem' },
       { title: 'Eurocode', url: 'https://de.wikipedia.org/wiki/Eurocode' }
@@ -195,7 +195,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     icon: Microscope,
     basicsTitle: 'Qualitätssicherung durch messtechnische Verifikation',
     basicsDesc1: 'Ingenieurbaustoffe und Bauwerke unterliegen Alterungsprozessen und Fertigungsschwankungen. Dieses Modul bündelt das Wissen über physikalische Versuche im Labor, zerstörungsfreie Prüfverfahren (ZfP) vor Ort sowie die fundierte mathematische Analyse.',
-    basicsDesc2: 'Durch kontrollierte Zerstörung (Biegezug, Druckversuche) und moderne Diagnostik (Mikroskopie, XRD, Ultraschall) ermitteln wir die tatsächlichen Ist-Zustände, um Tragwerksreserven zu aktivieren oder Schäden exakt einzugrenzen.',
+    basicsDesc2: 'Durch kontrollierte Zerstörung (Biegezug, Druckversuche) und moderne Diagnostik (Mikroskopie, XRD, Ultraschall) ermitteln wir die tatsächlichen Ist-Zustände, um Tragreserven zu bewerten und Schäden einzugrenzen.',
     basicsCards: [
       { title: 'Laborversuche', desc: 'Virtuelle Labore zur zerstörenden und zerstörungsfreien Werkstoffprüfung (Haftzugprüfung nach DIN EN 1542, Biege- & Spaltzug, E-Modul, Schmidt-Hammer).' },
       { title: 'Statistische Absicherung', desc: 'Beurteilung von Prozessdaten, Standardabweichung, Signifikanztests und Konformitätsnachweisen.' }
@@ -272,7 +272,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Ressourcenschonung', desc: 'Fokus auf regenerative Rohstoffe (Holz, Lehm) im direkten Vergleich zu energieintensiven Stählen.' },
       { title: 'Grenzbereiche im Spannungs-Dehnungs-Bild', desc: 'Detailliertes Verstehen spröder versus zäher Bruchmechanismen.' }
     ],
-    appStudents: 'Umfassendes Kompendium zur Begleitung aller Baustoffvorlesungen von ersten Semestern bis zu Masterarbeiten im Hochbau.',
+    appStudents: 'Begleitung von Baustoffvorlesungen vom ersten Semester bis zur Abschlussarbeit.',
     appProfessionals: 'Nachschlagewerk für Tragwerksplanung und Architektur bei Materialwahl und -substitution.',
     wikipedia: [
       { title: 'Baustoff', url: 'https://de.wikipedia.org/wiki/Baustoff' },
@@ -369,15 +369,15 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Expositionsklassensystem', desc: 'Sichere Zuordnung von Umweltbeanspruchungen und Ableitung von Betonzusammensetzungen.' },
       { title: 'Dekarbonisierung', desc: 'Klinkereffiziente Mehrstoffzemente und zukunftsfähige CO2-neutrale Bindemittel.' }
     ],
-    appStudents: 'Umfassende Vorbereitung auf Vorlesungen und Klausuren der Betontechnologie, Baustoffkunde II und praktische Laborübungen.',
+    appStudents: 'Vorbereitung auf Vorlesungen, Klausuren und Laborübungen der Betontechnologie.',
     appProfessionals: 'Praxisleitfaden für Mischungsentwürfe, E-Schein-Inhaber, Transportbetonwerke und bauleitende Ingenieure.',
     wikipedia: [
       { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
       { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' }
     ],
     literatur: [
-      'Grübl, P.; Weigler, H.; Karl, S.: Beton - Herstellung und Eigenschaften (Ernst & Sohn Verlag)',
-      'Verein Deutscher Zementwerke e.V. (VDZ): Zement-Taschenbuch'
+      'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
+      'Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (Ausgabe manuell prüfen)'
     ],
     regelwerke: [
       { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
@@ -392,40 +392,42 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Konstruktiver Ingenieurholzbau, Werkstoffkennwerte, Stabilitätsnachweise und Brandschutz',
     icon: Trees,
     basicsTitle: 'Wissenschaftliche Säulen des Ingenieurholzbaus',
-    basicsDesc1: 'Holz ist ein nachwachsender, anisotroper Naturwerkstoff mit herausragendem spezifischem Festigkeits-Gewichts-Verhältnis und natürlicher CO2-Speicherfähigkeit.',
-    basicsDesc2: 'Moderne Holzwerkstoffe wie Brettschichtholz (BSH) und Brettsperrholz (BSP / CLT) ermöglichen weitgespannte Hallentragwerke und mehrgeschossige Holz-Hochhäuser nach Eurocode 5.',
+    basicsDesc1: 'Holz ist ein nachwachsender, anisotroper Werkstoff mit hoher Festigkeit im Verhältnis zur Dichte; er speichert biogenen Kohlenstoff, solange er genutzt wird.',
+    basicsDesc2: 'Moderne Holzwerkstoffe wie Brettschichtholz (BSH) und Brettsperrholz (BSP / CLT) ermöglichen weitgespannte Hallentragwerke und mehrgeschossige Gebäude; bemessen wird nach Eurocode 5.',
     basicsCards: [
       { title: 'Anisotropie & Nutzungsklassen', desc: 'Faserrichtungsabhängige Kennwerte (parallel vs. rechtwinklig zur Faser) und feuchteabhängige Nutzungsklassen (NKL 1 bis 3).' },
       { title: 'Stabilität & Verbindungsmittel', desc: 'Knick- und Biegedrillknicknachweise sowie stiftförmige Verbindungsmittel mit Seilwirkung.' }
     ],
     submodules: [
       { title: 'Werkstoffe & dataholz', icon: Trees, purpose: 'Charakteristische Festigkeiten von Vollholz (C24), BSH (GL24h–GL30h) und dataholz-Aufbauten.', standards: 'DIN EN 338 / EN 14080', useCase: 'Auswahl von Lamellen und Bauteilschichten.' },
-      { title: 'Konstruktionsweisen', icon: LayoutGrid, purpose: 'Holzrahmenbau, Massivholzbau (CLT) und Holz-Hybridbau.', standards: 'MHolzBauR / Informationsdienst Holz', useCase: 'Systementscheidung für Geschossdecken und tragende Wandscheiben.' },
+      { title: 'Konstruktionsweisen', icon: LayoutGrid, purpose: 'Holzrahmenbau, Massivholzbau (CLT) und Holz-Hybridbau.', standards: 'MHolzBauRL / Informationsdienst Holz', useCase: 'Systementscheidung für Geschossdecken und tragende Wandscheiben.' },
       { title: 'Bemessung (EC5)', icon: Calculator, purpose: 'Stabilitätsnachweise für Druckstäbe und Biegeträger mit k_mod und gamma_M.', standards: 'DIN EN 1995-1-1', useCase: 'Ermittlung von Knickbeiwert k_c und Querschnittsausnutzung.' },
-      { title: 'Verbindungen & Anschlüsse', icon: GitCommit, purpose: 'Johansen-Theorie für Stabdübel, Passbolzen und Spax-Vollgewindeschrauben.', standards: 'DIN EN 1995-1-1 Kap. 8', useCase: 'Berechnung von Abscher- und Ausziehtragfähigkeiten.' },
-      { title: 'Bauphysik & Brandschutz', icon: Flame, purpose: 'Heißbemessung nach der Methode des wirksamen Restquerschnitts (d_ef).', standards: 'DIN EN 1995-1-2', useCase: 'Nachweis des Feuerwiderstands REI 30 bis REI 90.' }
+      { title: 'Verbindungen & Anschlüsse', icon: GitCommit, purpose: 'Johansen-Theorie für Stabdübel, Passbolzen und Holzschrauben (Vollgewinde nach ETA).', standards: 'DIN EN 1995-1-1 Kap. 8', useCase: 'Berechnung von Abscher- und Ausziehtragfähigkeiten.' },
+      { title: 'Bauphysik & Brandschutz', icon: Flame, purpose: 'Bemessung im Brandfall mit der Methode des reduzierten Querschnitts (d_ef).', standards: 'DIN EN 1995-1-2', useCase: 'Nachweis der Tragfähigkeit im Brandfall für R 30 bis R 90.' }
     ],
     didacticCards: [
       { title: 'KLED & Feuchteeinfluss', desc: 'Verknüpfung von Lasteinwirkungsdauer (KLED) und Nutzungsklasse über k_mod.' },
-      { title: 'Restquerschnitts-Verfahren', desc: 'Brandbemessung über planmäßige Abbrandrate beta_0 und 7 mm Nulllastschicht.' },
-      { title: 'Vorfertigung & Taktung', desc: 'Industrieller Holzbau mit werkseitig geschlossenem Aufbau für feuchtefreie Montage.' }
+      { title: 'Restquerschnitts-Verfahren', desc: 'Brandbemessung über die ideelle Abbrandrate β_n und die Schicht ohne Festigkeit d₀ = 7 mm.' },
+      { title: 'Vorfertigung & Taktung', desc: 'Werkseitige Vorfertigung verkürzt die Montage und verringert Baufeuchte.' }
     ],
-    appStudents: 'Fundierte Begleitung von Massivbau- und Holzbauvorlesungen im Bachelor und Master Bauingenieurwesen.',
-    appProfessionals: 'Praxistaugliches Nachschlagewerk für Tragwerksplaner im modernen mehrgeschossigen Holz- und Holz-Hybridbau.',
+    appStudents: 'Begleitung von Holzbauvorlesungen im Bachelor- und Masterstudium Bauingenieurwesen.',
+    appProfessionals: 'Überblick und Rechenbeispiele für den Holz- und Holz-Hybridbau; ersetzt keine Tragwerksplanung.',
     wikipedia: [
       { title: 'Holzbau', url: 'https://de.wikipedia.org/wiki/Holzbau' },
       { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' }
     ],
     literatur: [
-      'Informationsdienst Holz: Holzbau Handbuch (Fachgemeinschaft Holzbau)',
-      'dataholz.eu: Bauteilkatalog der Holzforschung Austria'
+      'Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5',
+      'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016',
+      'Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Detail 2017'
     ],
     regelwerke: [
-      { title: 'DIN EN 1995-1-1: Eurocode 5 - Bemessung und Konstruktion von Holzbauten' },
-      { title: 'DIN EN 1995-1-2: Eurocode 5 - Tragwerksbemessung für den Brandfall' }
+      { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5)' },
+      { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Brandfall)' },
+      { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), DIBt' }
     ],
     formeln: [
-      { formel: 'f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}', erklaerung: 'Grundformel für den Bemessungswert einer Festigkeitseigenschaft im Holzbau unter Berücksichtigung von Nutzungsklasse und Lasteinwirkungsdauer.', quelle: 'DIN EN 1995-1-1 Gl. 2.1' }
+      { formel: 'f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}', erklaerung: 'Bemessungswert einer Festigkeit: k_mod erfasst Nutzungsklasse und Lasteinwirkungsdauer, γ_M = 1,3 für Vollholz und BSH (NA).', quelle: 'DIN EN 1995-1-1, Gl. (2.14)' }
     ]
   },
   stahlbeton: {
@@ -433,7 +435,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Grenzzustände der Tragfähigkeit und Gebrauchstauglichkeit nach Eurocode 2',
     icon: GitCommit,
     basicsTitle: 'Das Verbundverhalten im Massivbau',
-    basicsDesc1: 'Der Massivbau (Stahlbeton, Spannbeton, Carbonbeton etc.) verbindet die extreme Druckfestigkeit des Betons mit der hohen Zug- und Biegezugfestigkeit moderner Bewehrungssysteme wie Betonstahl oder Carbongelege. Dieses Zusammenspiel erfordert thermodynamische Abstimmung und ausreichenden Haftverbund.',
+    basicsDesc1: 'Der Massivbau (Stahlbeton, Spannbeton, Carbonbeton) verbindet die hohe Druckfestigkeit des Betons mit der Zugfestigkeit der Bewehrung (Betonstahl, Carbon). Voraussetzung sind ein ausreichender Verbund und bei Stahl eine ähnliche Wärmedehnung.',
     basicsDesc2: 'In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), dimensionieren druckbelastete Stützen nach Theorie II. Ordnung und erfassen Durchstanzrisiken im Stützenbereich.',
     basicsCards: [
       { title: 'Interaktive Bemessung', desc: 'Echtzeitrechner für Biegezug, Rissbreitenverteilung und erforderliche Bewehrungsflächen.' },
@@ -456,15 +458,15 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Normkonformes Bemessungsziel', desc: 'Erzielung eines duktilen, rechtzeitig ankündigenden Biegebruchs im Gegensatz zu spröden Bauteilversagen.' },
       { title: 'Konstruktive Details', desc: 'Verständnis für Betondeckung, Randeinfassungen und Schalungsabgrenzung.' }
     ],
-    appStudents: 'Unterstützt die Vorlesungen Massivbau I und II, Tragwerksentwurf und schult das Gefühl für zielsichere Bewehrungsmengen.',
-    appProfessionals: 'Schnellcheck im Büro und auf der Baustelle zur statischen Vordimensionierung und schnellen Rissbreitenbewertung.',
+    appStudents: 'Begleitet Vorlesungen im Massivbau und schult das Gefühl für Bewehrungsmengen.',
+    appProfessionals: 'Plausibilitätsprüfung und Vordimensionierung; ersetzt keine Tragwerksplanung.',
     wikipedia: [
       { title: 'Stahlbeton', url: 'https://de.wikipedia.org/wiki/Stahlbeton' },
       { title: 'Spannbeton', url: 'https://de.wikipedia.org/wiki/Spannbeton' }
     ],
     literatur: [
       'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-      'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2, Band 1 und 2. Berlin: Beuth 2023'
+      'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2, Band 1 und 2. Berlin: Beuth (Auflage manuell prüfen)'
     ],
     regelwerke: [
       { title: 'DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken' },
@@ -480,7 +482,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Deformationen, Fließkriterien, Finite Ansätze, Stabilität und Bruchmechanik',
     icon: Activity,
     basicsTitle: 'Mechanisches Verhalten unter Belastung',
-    basicsDesc1: 'Dieses Modul bildet das Herzstück der klassischen werkstoffübergreifenden Strukturmechanik. Es untersucht, wie Kräfte in Bauteilen Spannungen hervorrufen und zu makroskopischen Verformungen (Verschiebungen, Krümmungen) führen.',
+    basicsDesc1: 'Das Modul behandelt die werkstoffübergreifende Strukturmechanik. Es untersucht, wie Kräfte in Bauteilen Spannungen hervorrufen und zu makroskopischen Verformungen (Verschiebungen, Krümmungen) führen.',
     basicsDesc2: 'Wir betrachten elastische Verformung nach Hooke, plastische Fließgesetze (von Mises), statisch unbestimmte Kraft- und Weggrößenverfahren sowie Stabilitätsphänomene (Knickgefahr nach Euler) und die Ausbreitungsenergetik mikroskopischer Risse.',
     basicsCards: [
       { title: 'Verformungsintegration', desc: 'Berechnung von Durchbiegungen mittels Doppelintegration der Momentenlinie oder virtuellen Kräften.' },
@@ -502,8 +504,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Analytische Lösungen', desc: 'Fokus auf geschlossene analytische Auswertungsmethoden anstelle intransparenter "Black-Box"-FEM.' },
       { title: 'Stabilität vs. Festigkeit', desc: 'Frühzeitiges Begreifen, dass geometrische Bauteilschlankheit oft vor dem Werkstoffversagen die Tragfähigkeit limitiert.' }
     ],
-    appStudents: 'Zentrale Grundlage und interaktives Repetitorium für Technische Mechanik II und III, Baustatik I und Werkstoffmechanik.',
-    appProfessionals: 'Hilfreicher Begleiter bei Plausibilitätsprüfungen komplexer Computerausgaben und der anspruchsvollen geotechnischen Vordimensionierung.',
+    appStudents: 'Interaktives Repetitorium für Technische Mechanik, Baustatik und Werkstoffmechanik.',
+    appProfessionals: 'Hilfe bei Plausibilitätsprüfungen von Programmergebnissen und bei der Vordimensionierung.',
     wikipedia: [
       { title: 'Festigkeitslehre', url: 'https://de.wikipedia.org/wiki/Festigkeitslehre' },
       { title: 'Baustatik', url: 'https://de.wikipedia.org/wiki/Baustatik' }
@@ -546,8 +548,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Schnittstellenschäden meiden', desc: 'Sicheres Aufzeigen konstruktiver Wärmebrücken (Geometrie vs. Werkstoffwechsel).' },
       { title: 'Ganzheitlicher Ansatz', desc: 'Verbindung bauphysikalischer Qualität mit ökologischer Bewertung und gesundem Raumkomfort.' }
     ],
-    appStudents: 'Zentrales Tool zur Bewältigung bauphysikalischer Belege und zur Absicherung von Entwurfsarbeiten im Bachelor und Master.',
-    appProfessionals: 'Sichere Entscheidungshilfe für Energieberater, Architekten und Bauphysiker im täglichen Entwurfs- und Sanierungsprozess.',
+    appStudents: 'Unterstützung bei bauphysikalischen Übungen und Entwurfsarbeiten im Bachelor und Master.',
+    appProfessionals: 'Orientierung für Energieberatung, Architektur und Bauphysik; Nachweise erfolgen mit geeigneter Software und aktuellen Normen.',
     wikipedia: [
       { title: 'Bauphysik', url: 'https://de.wikipedia.org/wiki/Bauphysik' },
       { title: 'Wärmedurchgangskoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' }
@@ -572,8 +574,8 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Lebenszyklusanalysen (LCA), CO2-Äquivalente, DGNB, BNB und QNG-Kriterien absichern',
     icon: Globe,
     basicsTitle: 'Nachhaltiges Bauen als Kernkompetenz moderner Tragwerksschaffung',
-    basicsDesc1: 'Umsichtige Materialwahl entscheidet über die CO2-Bilanz zukünftiger Generationen. Nachhaltiges Bauen blickt über den Moment des Einbaus hinaus und bewertet den gesamten energetischen Aufwand von der Wiege bis zur Bahre (Cradle-to-Grave).',
-    basicsDesc2: 'Wir analysieren Treibhausgaspotenziale (GWP), erfassen Primärenergiebedarfe (PERT/PENRT), bilanzieren Umweltwirkungen über EPDs und vergleichen Nachhaltigkeitssiegel (DGNB, BNB, QNG) zur Erwirkung zinsgünstiger staatlicher Förderprogramme.',
+    basicsDesc1: 'Die Materialwahl beeinflusst die Treibhausgasbilanz eines Gebäudes wesentlich. Nachhaltiges Bauen blickt über den Moment des Einbaus hinaus und bewertet den gesamten energetischen Aufwand von der Wiege bis zur Bahre (Cradle-to-Grave).',
+    basicsDesc2: 'Wir analysieren Treibhausgaspotenziale (GWP), erfassen Primärenergiebedarfe (PERT/PENRT), bilanzieren Umweltwirkungen über EPDs und vergleichen Nachhaltigkeitssiegel (DGNB, BNB, QNG) als Voraussetzung staatlicher Förderprogramme.',
     basicsCards: [
       { title: 'Ökobilanzierung (LCA)', desc: 'Interaktive Modellierung des CO2-Fußabdrucks für Bauteile durch direkten Komponentenvergleich.' },
       { title: 'Zertifizierungssysteme', desc: 'Bedeutung der Nachhaltigkeitssysteme DGNB, BNB und QNG zur Absicherung zukunftssicherer Investitionen.' }
@@ -593,8 +595,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Transparente Bewertung', desc: 'Nutzung realer ÖKOBAUDAT-Referenzdaten als wissenschaftliche Berechnungsgrundlage.' },
       { title: 'Ökologie und Ökonomie verbinden', desc: 'Gemeinsame Betrachtung von Ökobilanz (LCA) und Lebenszykluskosten (LCC) über denselben Betrachtungszeitraum.' }
     ],
-    appStudents: 'Zentraler Wegweiser zur Durchführung integrierter Entwurfskonzepte sowie zur Anfertigung bauökologischer Abschlussarbeiten.',
-    appProfessionals: 'Zielsicheres Unterstützungstool für DGNB-Consultants, Auditoren und Architekten, um das begehrte QNG-Siegel nachzuweisen.',
+    appStudents: 'Orientierung für integrierte Entwurfskonzepte und bauökologische Abschlussarbeiten.',
+    appProfessionals: 'Überblick für Auditoren und Planende zu Bilanzierungsregeln und Zertifizierungssystemen (DGNB, BNB, QNG).',
     wikipedia: [
       { title: 'Nachhaltiges Bauen', url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
       { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
@@ -618,7 +620,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Building Information Modeling (BIM), automatisierte Baustoffpässe und strukturierte Datenbanken',
     icon: Monitor,
     basicsTitle: 'Der Digitale Zwilling als Datenrückgrat',
-    basicsDesc1: 'Digitalisierung strukturiert das unübersichtliche Bauwesen. Im Zentrum steht der Digitale Zwilling (Digital Twin) - ein geometrisches und semantisches Datenmodell, das den gesamten Lebenszyklus eines Bauwerks digital begleitet.',
+    basicsDesc1: 'Digitale Methoden helfen, Informationen im Bauwesen zu strukturieren. Im Zentrum steht der Digitale Zwilling (Digital Twin) - ein geometrisches und semantisches Datenmodell, das den gesamten Lebenszyklus eines Bauwerks digital begleitet.',
     basicsDesc2: 'Wir erfassen BIM-Klassen (IFC), binden Materialdatenbanken automatisch an CAD-Systeme an und behandeln Material- und Ressourcenpässe sowie den Digitalen Produktpass (DPP), um die Wiederverwertbarkeit von Sekundärbaustoffen abzusichern.',
     basicsCards: [
       { title: 'BIM-Eigenschaften', desc: 'Ausstattung dreidimensionaler CAD-Objekte mit baustofflichen Attributen (Dichte, Brandschutz, GWP-Werte).' },
@@ -636,15 +638,15 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Präzise Datenqualität', desc: 'Sensibilisierung für die Unterscheidung zwischen groben Schätzwerten (LOD 100) und ausführungsreifen Modelldaten (LOD 400).' },
       { title: 'Zukunftssichere Nachverfolgung', desc: 'Nutzung standardisierter Ontologien und semantischer Netze.' }
     ],
-    appStudents: 'Bereitet Studierende perfekt auf die digitale Ingenieurpraxis vor, schult IFC-Kompetenz und vermittelt wertvolles Schnittstellenwissen.',
-    appProfessionals: 'Wertvolles Nachschlagewerk für BIM-Manager, Koordinatoren und Nachhaltigkeitsauditoren zur digitalen Prozessinitiierung.',
+    appStudents: 'Vermittelt Grundlagen der digitalen Ingenieurpraxis, des IFC-Datenmodells und der Schnittstellen.',
+    appProfessionals: 'Nachschlagewerk für BIM-Management, Koordination und Nachhaltigkeitsbewertung.',
     wikipedia: [
       { title: 'Building Information Modeling', url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
       { title: 'Industrie Foundation Classes', url: 'https://de.wikipedia.org/wiki/Industry_Foundation_Classes' }
     ],
     literatur: [
       'Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021',
-      'Hausknecht, K. (2018): BIM Einstieg kompakt (DIN Media)'
+      'Hausknecht, K.; Liebich, T.: BIM-Kompendium. Stuttgart: Fraunhofer IRB (Auflage manuell prüfen)'
     ],
     regelwerke: [
       { title: 'DIN EN ISO 19650-1/-2:2019-08 (Organisation und Digitalisierung von Informationen über Bauwerke – BIM)' },
@@ -681,8 +683,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Geringster Eingriff (Minimaler Eingriff)', desc: 'Förderung reversibler und zerstörungsarmer statischer Reparaturmaßnahmen.' },
       { title: 'Lebensdauerverlängerung', desc: 'Umdeutung alternder Bausubstanz zur wertvollen Zukunftsquelle (Urban Mining).' }
     ],
-    appStudents: 'Exzellentes Werkzeug zur wissenschaftlichen Begleitung von Projektarbeiten in der Denkmalpflege, Altbauforschung und Bauforschung.',
-    appProfessionals: 'Praxisnaher Berater für Tragwerksplaner und Sanierungsarchitekten zur sicheren Erfassung und Ertüchtigung historischer Bauteile.',
+    appStudents: 'Begleitung von Projektarbeiten in Denkmalpflege und Bauforschung.',
+    appProfessionals: 'Orientierung für Tragwerksplanung und Sanierung bei Erfassung und Ertüchtigung historischer Bauteile.',
     wikipedia: [
       { title: 'Bauen im Bestand', url: 'https://de.wikipedia.org/wiki/Bauen_im_Bestand' },
       { title: 'Denkmalschutz', url: 'https://de.wikipedia.org/wiki/Denkmalschutz' }
@@ -704,8 +706,8 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Gefahrstoffdetektion, Entsorgungswege, Urban Mining und Schadstoffsanierung',
     icon: Trash2,
     basicsTitle: 'Schadstofffreie Kreislaufwirtschaft im Tief- und Hochbau',
-    basicsDesc1: 'Der geordnete Rückbau hat den klassischen Abbruch abgelöst. Ziel ist es, Schadstoffe frühzeitig zu detektieren, auszuschleusen und die mineralischen Massen in ein unbedenkliches, hochwertiges Baustoffrecycling zurückzuführen.',
-    basicsDesc2: 'Dieses Modul deckt das gesamte schadstoffliche Spektrum ab (Asbest, KMF, PCB, PAK, Schwermetalle), zeigt die rechtlich belastbaren Entsorgungswege nach Deponieverordnung (DepV) auf und strukturiert schadstofffreie Sortierungskonzepte.',
+    basicsDesc1: 'Der geordnete Rückbau hat den klassischen Abbruch abgelöst. Ziel ist es, Schadstoffe frühzeitig zu detektieren, auszuschleusen und die mineralischen Massen möglichst hochwertig zu verwerten.',
+    basicsDesc2: 'Dieses Modul deckt das gesamte schadstoffliche Spektrum ab (Asbest, KMF, PCB, PAK, Schwermetalle), zeigt Entsorgungswege (u. a. Deponieverordnung, Ersatzbaustoffverordnung) und Sortierkonzepte.',
     basicsCards: [
       { title: 'Gefahrstoffanalyse', desc: 'Sichere Identifikation gesundheitsgefährdender Altlasten in Estrichen, Klebern, Dichtstoffen und Isolierungen.' },
       { title: 'Deponieklassierung', desc: 'Einstufungsrichtwerte von unbelastetem Erdaushub (DK 0) bis zu gefährlichen Sonderabfällen (DK III).' }
@@ -723,8 +725,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Schutz vor Kontamination', desc: 'Verhindern der Verschleppung von Gefahrenstoffen in den Recyclingkreislauf.' },
       { title: 'Gesundheitsschutz', desc: 'Rechtlich belastbare Umsetzung strenger Arbeitsschutzregeln beim Hantieren mit Staub- und Schadstoffquellen.' }
     ],
-    appStudents: 'Bereitet angehende Bauleiter und Umweltkoordinatoren auf das anspruchsvolle Abfall- und Sanierungsgeschäft vor.',
-    appProfessionals: 'Unverzichtbare Arbeitshilfe für Abbruchplaner, Entsorgungskoordinatoren, Bauleiter und SiGeKos vor Ort.',
+    appStudents: 'Einführung in Rückbau, Schadstoffsanierung und Abfallrecht für angehende Bauleitung und Umweltkoordination.',
+    appProfessionals: 'Arbeitshilfe für Rückbauplanung, Entsorgungskoordination, Bauleitung und SiGeKo; ersetzt keine Fachkunde nach TRGS 519/524.',
     wikipedia: [
       { title: 'Kreislaufwirtschaftsgesetz', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaftsgesetz' },
       { title: 'Asbestsanierung', url: 'https://de.wikipedia.org/wiki/Asbestsanierung' }
@@ -749,8 +751,8 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Vermeidung von Frost-Tau-Schäden, physikalisch-chemische Transportprozesse, Baustahl- und Holzzerstörung sowie Polymeralterung und mineralische Gipssprengungen',
     icon: ShieldAlert,
     basicsTitle: 'Lebensdauerbegrenzende Schädigungsprozesse im Ingenieurbau',
-    basicsDesc1: 'Jedes Bauwerk altert unter wechselnden klimatischen, biologischen, elektrochemischen und chemischen Einflüssen. Ein Bauwerk gilt als dauerhaft, wenn es seine standsichere und gebrauchstaugliche Funktion über die kalkulierte Nutzungszeit (üblicherweise 50 Jahre bei Standardhochbauten, bis zu 100 Jahre bei Brücken und Ingenieurbauwerken nach Eurocode 2) ohne unvorhergesehene Instandsetzung erfüllt. Die moderne DIN 1045:2023 forciert hierfür einen Übergang zu performance-basierten Lebensdauerbemessungen.',
-    basicsDesc2: 'Dieses Modul deckt das gesamte Spektrum werkstoffübergreifender Alterungsprozesse ab: von der Gasdiffusion im zementären Porensystem (Carbonatisierung, Chlorid-Lochfraß, Frost-Tausalz-Angriff, treibende Reaktionen wie AKR und Sulfat) über das temperaturabhängige Verhalten viskoelastischer Asphalte, elektrochemische Redoxreaktionen metallischer Korrosionszellen (DIN EN ISO 12944), biologischen Holzabbau (DIN 68800) und physiko-chemische Alterung von Kunststoffen bis hin zur Natursteinverwitterung (WTA) und thermokinetischen Glasspontanbrüchen (HST).',
+    basicsDesc1: 'Jedes Bauwerk altert unter wechselnden klimatischen, biologischen, elektrochemischen und chemischen Einflüssen. Ein Bauwerk gilt als dauerhaft, wenn es seine standsichere und gebrauchstaugliche Funktion über die geplante Nutzungsdauer (nach DIN EN 1990 z. B. 50 Jahre für übliche Hochbauten, 100 Jahre für Brücken) bei planmäßiger Instandhaltung erfüllt. Die DIN-1045-Reihe 2023 öffnet mit leistungsbezogenen Ansätzen den Weg über die rein deskriptiven Expositionsklassen hinaus (Umfang manuell prüfen).',
+    basicsDesc2: 'Das Modul behandelt werkstoffübergreifende Alterungsprozesse: von Transportprozessen im zementgebundenen Porensystem (Karbonatisierung, Chlorideindringen, Frost-Tausalz-Angriff, treibende Reaktionen wie AKR und Sulfatangriff) über das temperaturabhängige Verhalten viskoelastischer Asphalte, elektrochemische Redoxreaktionen metallischer Korrosionszellen (DIN EN ISO 12944), biologischen Holzabbau (DIN 68800) und physiko-chemische Alterung von Kunststoffen bis hin zur Natursteinverwitterung (WTA) und Spontanbrüchen von ESG durch Nickelsulfid-Einschlüsse (Heißlagerungstest, HST).',
     basicsCards: [
       { title: 'Porentransport-Phänomene', desc: 'Wasser, Sulfat und Chloride penetrieren Baustoffe gerichtet über Kapillarporen (Saugwirkung) oder Konzentrationsgradienten (Ficksche Gesetze). Der w/z-Wert steuert hierbei direkt die porensegmentierende Hydratation.' },
       { title: 'Bewehrungspassivierung', desc: 'Das alkalische Porenmilieu (pH-Wert ≈ 12,5–13,5) erzeugt auf dem Stahl eine hauchdünne Passivschicht aus Fe-Oxiden. Diese wird durch Absäuerung (CO₂-Eintrag) oder punktuellen Chloriddurchbruch aufgelöst.' },
@@ -774,8 +776,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Konstruktion vor Chemie', desc: 'Bester und umweltfreundlichster Bautenschatz gelingt stets konstruktiv: Wasser und Staunässe gezielt abführen, um biologischen und elektrochemischen Reaktionen die Reaktionsgrundlage zu entziehen.' },
       { title: 'Lebenszyklus-Betrachtung', desc: 'Investitionen in hochqualitative Baustoffe (z.B. niedriger w/z-Wert, Edelstahl, TMT-Holz) rentieren sich über die Nutzungsphase durch minimalen Wartungsaufwand um ein Vielfaches.' }
     ],
-    appStudents: 'Umfassendes, didaktisch geschlossenes Lehrwerk zur Vorbereitung auf anspruchsvolle Vertiefungsprüfungen im Massivbau, Metall- und Stahlbau, Holzbau sowie der Bauchemie und Denkmalpflege.',
-    appProfessionals: 'Fundierter, normen-aktualisierter Wissenspool für Bauschadensgutachter, Tragwerksplaner, Bauleiter, Denkmalschützer und Sanierungsplaner zur treffsicheren Schadensursachenforschung.',
+    appStudents: 'Vorbereitung auf Vertiefungsprüfungen in Massivbau, Stahl- und Holzbau, Bauchemie und Denkmalpflege.',
+    appProfessionals: 'Wissensbasis für Gutachten, Tragwerks- und Sanierungsplanung bei der Ursachenermittlung.',
     wikipedia: [
       { title: 'Korrosion', url: 'https://de.wikipedia.org/wiki/Korrosion' },
       { title: 'Passivierung', url: 'https://de.wikipedia.org/wiki/Passivierung' },
@@ -826,7 +828,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Systematische Diagnostik', desc: 'Verwendung standardisierter Prüfprotokolle für reproduzierbare, nachvollziehbare Gutachtenergebnisse (die Beweiswürdigung obliegt dem Gericht, § 286 ZPO).' },
       { title: 'Gefahrenabwehr & Standsicherheit', desc: 'Sofortige Identifizierung statisch kritischer Schädigungen zur Verhütung von Personenschäden.' }
     ],
-    appStudents: 'Bereitet Studierende auf anspruchsvolle Tätigkeiten in Sachverständigenbüros, Bauämtern und Prüfinstituten vor.',
+    appStudents: 'Einführung in die Arbeit von Sachverständigenbüros, Bauämtern und Prüfinstituten.',
     appProfessionals: 'Digitaler Leitfaden für Bausachverständige, Prüfingenieure, Bauleiter und Gutachter vor Ort.',
     wikipedia: [
       { title: 'Bauschaden', url: 'https://de.wikipedia.org/wiki/Bauschaden' },
@@ -853,7 +855,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Bauwerkserhaltung, Schutzprinzipien nach DIN EN 1504-9 und werkstoffspezifische Sanierungskonzepte',
     icon: Wrench,
     basicsTitle: 'Dauerhafte Bauwerkserhaltung & Sanierungstechnik',
-    basicsDesc1: 'Bestehende Bausubstanz zu schützen, instandzusetzen und zu ertüchtigen ist ökologisch und ökonomisch die zentrale Bauaufgabe des 21. Jahrhunderts. Dieses Modul bündelt alle werkstoffübergreifenden und baustoffspezifischen Sanierungsverfahren.',
+    basicsDesc1: 'Bestehende Bausubstanz zu schützen, instandzusetzen und zu ertüchtigen ist ökologisch und ökonomisch eine zentrale Bauaufgabe. Dieses Modul bündelt werkstoffübergreifende und baustoffspezifischen Sanierungsverfahren.',
     basicsDesc2: 'Vom normativen Instandsetzungsrahmen nach DIN EN 1504 und TR Instandhaltung über werkstoffspezifische Verfahren (Holzprothesen DIN 68800, Stahlkorrosionsschutz ISO 12944, Kunststoffschweißen DVS, Asphaltsanierung ZTV BEA-StB) bis hin zu WTA-zertifizierten Sanierputzen.',
     basicsCards: [
       { title: 'DIN EN 1504-9 Prinzipien', desc: '11 europäische Prinzipien gegen Betondegradation und Bewehrungskorrosion von Schutzschichten bis zum KKS.' },
@@ -872,7 +874,7 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Systemverträglichkeit & Nachbehandlung', desc: 'Instandsetzungsmörtel müssen bezüglich E-Modul und thermischer Dehnung mit dem Altbeton kompatibel sein.' },
       { title: 'Substanzschonung vor Totalersatz', desc: 'Präzise Teilerneuerung durch Holzprothesen, Reparaturschweißungen und Dünnschichtasphalte spart Ressourcen.' }
     ],
-    appStudents: 'Bereitet Studierende auf die Zertifizierung zum Sachkundigen Planer (SKP) und Bauwerkserhaltungsingenieur vor.',
+    appStudents: 'Vermittelt Grundlagen für die Qualifikation als Sachkundiger Planer (SKP).',
     appProfessionals: 'Praxisleitfaden für Sachkundige Planer, Sanierungsplaner, SIVV-Fachkräfte und Bauleiter.',
     wikipedia: [
       { title: 'Betoninstandsetzung', url: 'https://de.wikipedia.org/wiki/Betoninstandsetzung' },
@@ -899,7 +901,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Ausschreibungen, Bauleitung vor Ort, Kalkulationsschemata und Soft Skills für Ingenieure',
     icon: Wrench,
     basicsTitle: 'Erfolgreiches Umsetzen auf Baustelle und im Büro',
-    basicsDesc1: 'Das tollste gezeichnete Detail nützt wenig, wenn es ökonomisch nicht darstellbar ist oder auf der Baustelle falsch umgesetzt wird. Dieses Modul schließt die Brücke zwischen nackter Theorie und wirtschaftlicher Realität.',
+    basicsDesc1: 'Ein Detail muss wirtschaftlich umsetzbar sein und auf der Baustelle richtig ausgeführt werden. Das Modul verbindet Theorie und Baupraxis.',
     basicsDesc2: 'Wir vermitteln Kenntnisse zur Ausarbeitung sauberer Leistungsverzeichnisse (LV) nach VOB, beleuchten die logistische Steuerung und Qualitätskontrollen des Bauleiters, erörtern Kalkulationsannahmen und geben Starthilfe zur persönlichen Karriereplanung.',
     basicsCards: [
       { title: 'Projektsteuerung', desc: 'Verständnis des magischen Dreiecks aus Kosten, Terminen und Qualitäten im Baubetrieb.' },
@@ -921,8 +923,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Menschlicher Faktor', desc: 'Verständnis für interkulturelle Kommunikation und flache Hierarchien auf der Baustelle.' },
       { title: 'Haftungsminimierung', desc: 'Vermittlung klarer Verhaltensregeln im Schadenfall und zur Dokumentationsdisziplin.' }
     ],
-    appStudents: 'Bereitet Studierende praxisnah auf den rauen Baustellenalltag sowie den erfolgreichen Übergang ins Berufsleben vor.',
-    appProfessionals: 'Praktisches Kompendium für junge Bauleiter, frischgebackene Projektingenieure und technische Sachbearbeiter zur Orientierung.',
+    appStudents: 'Bereitet auf den Baustellenalltag und den Berufseinstieg vor.',
+    appProfessionals: 'Orientierung für Berufseinsteigende in Bauleitung und Projektabwicklung.',
     wikipedia: [
       { title: 'Vergabe- und Vertragsordnung für Bauleistungen', url: 'https://de.wikipedia.org/wiki/Vergabe-_und_Vertragsordnung_f%C3%BCr_Bauleistungen' },
       { title: 'Bauleitung', url: 'https://de.wikipedia.org/wiki/Bauleitung' }
@@ -959,7 +961,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
     ],
     books: [
       { title: "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011", desc: "Klassisches Lehrbuch der Baustoffkunde für Hoch- und Tiefbau." },
-      { title: "Möhring, R. (Hrsg.): Baustoffkenntnis (begr. von W. Scholz). 18. Aufl., Köln: Bundesanzeiger Verlag 2016", desc: "Praxisorientiertes Standardwerk zu Eigenschaften und Anwendung der Baustoffe." },
+      { title: "Möhring, R. (Hrsg.): Baustoffkenntnis (begr. von W. Scholz). 19. Aufl., Köln: Bundesanzeiger Verlag 2016", desc: "Praxisorientiertes Standardwerk zu Eigenschaften und Anwendung der Baustoffe." },
       { title: "Benedix, R.: Bauchemie für das Bachelor-Studium. 3. Aufl., Wiesbaden: Springer Vieweg 2017", desc: "Chemische Grundlagen der Baustoffe für das Bachelorstudium." },
       { title: "Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. 9. Aufl., Wiesbaden: Springer Vieweg 2022", desc: "Wärme, Feuchte, Schall, Brand – Grundlagen der bauphysikalischen Kenngrößen." }
     ],
@@ -1027,60 +1029,40 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   mechanik: {
     websites: [
-      { name: "Mechanik Online-Portal", desc: "Unabhängiges Portal zur Festkörpermechanik und numerischen Kontinuumsmechanik." },
-      { name: "Statik-Lernportal", desc: "Übungs- und Rechenplattform des Instituts für Statik der TU Braunschweig." },
-      { name: "DGM (Materialwissenschaft)", url: "https://www.dgm.de", desc: "Deutsche Gesellschaft für Materialkunde mit Fokus auf elasto-plastisches Materialverhalten." }
+      { name: "DGM (Materialwissenschaft)", url: "https://www.dgm.de", desc: "Deutsche Gesellschaft für Materialkunde e. V." }
     ],
     books: [
-      { title: "Technische Mechanik 1 & 2 (Statik & Elastostatik)", desc: "Gross, Hauger, Schnell, Springer. Das deutsche Standard-Lehrbuch für Vorlesungen des Bauingenieurwesens." },
-      { title: "Einführung in die Baustatik", desc: "Kratzig, Wittek, Ernst & Sohn. Systematische Tragwerkssimulationen vom Stabwerk bis zur Finite-Elemente-Schale." }
+      { title: "Technische Mechanik 1–4", desc: "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A., Springer Vieweg (Auflage manuell prüfen). Statik, Elastostatik, Kinetik." },
+      { title: "Tragwerke 1 und 2", desc: "Krätzig, W. B. et al., Springer (Auflage manuell prüfen). Berechnungsmethoden statisch bestimmter und unbestimmter Stabtragwerke." }
     ],
-    publications: [
-      { journal: "International Journal of Solids and Structures", title: "A generalized formulation of second-order stress-strain relations for buckling of composite steel columns", desc: "Formelsystem zur Traglastbestimmung knickgefährdeter Mehrstoffquerschnitte." },
-      { journal: "Forschung im Ingenieurwesen", title: "Rissfortschritt in spröden Baustoffen unter instationären thermomechanischen Zwangsspannungen", desc: "Thermodynamisch gekoppelte FE-Rissmodelle." }
-    ],
-    dissertations: [
-      { title: "Stabilitätsnachweise von Stahlrahmensystemen nach dem Fließgelenktheorie-Verfahren zweiter Ordnung", desc: "Dissertation, Universität Kassel, 2020. Tragwerksberechnung unter Berücksichtigung von Imperfektionen." },
-      { title: "Numerische Werkstoffmodelle zur Abbildung elasto-plastischer Materialformänderungen im Hochtemperaturbereich", desc: "Dissertation, Technische Universität Graz. Werkstoffgesetze für Betonbauteile unter Brandbeanspruchung." }
-    ]
+    publications: [],
+    dissertations: []
   },
   bauphysik: {
     websites: [
-      { name: "FIW München", url: "https://www.fiw-muenchen.de", desc: "Forschungsinstitut für Wärmeschutz e.V. mit baupraktischen Dämmstoffstudien." },
-      { name: "Fraunhofer-Institut für Bauphysik (IBP)", url: "https://www.ibp.fraunhofer.de", desc: "Entwickler von WUFI (hygrothermische Simulation) mit Datenbanken zu Schall und Wärme." },
-      { name: "Bundesverband Bauphysik e.V.", desc: "Fachpublikationen und Leitfäden zur Bauakustik und energetischen Altbausanierung." }
+      { name: "FIW München", url: "https://www.fiw-muenchen.de", desc: "Forschungsinstitut für Wärmeschutz e. V." },
+      { name: "Fraunhofer-Institut für Bauphysik (IBP)", url: "https://www.ibp.fraunhofer.de", desc: "Forschung zu Wärme, Feuchte, Akustik; Entwickler von WUFI." }
     ],
     books: [
-      { title: "Lehrbuch der Bauphysik: Schall - Wärme - Feuchte - Licht - Brandschutz", desc: "Lohmeyer, Post, Springer. Didaktisch hervorragend aufbereitetes All-in-One Lehrbuch." },
-      { title: "Formeln und Tabellen Bauphysik", desc: "Energetische Gebäudebewertung, DIN Media. Zahlreiche Wärmebrücken- und Klimadatenkataloge." }
+      { title: "Lehrbuch der Bauphysik", desc: "Willems, W. M. (Hrsg.), Springer Vieweg (Auflage manuell prüfen). Wärme, Feuchte, Schall, Brand." },
+      { title: "Praktische Bauphysik", desc: "Lohmeyer, G. et al., Springer Vieweg (Auflage manuell prüfen)." },
+      { title: "Formeln und Tabellen Bauphysik", desc: "Willems, W. M.; Schild, K.; Stricker, D., Springer Vieweg (Auflage manuell prüfen)." }
     ],
-    publications: [
-      { journal: "Bauphysik-Journal", title: "Hygrische Transportphänomene an Bauteiloberflächen: Validierung des kapillaren Saugverhaltens", desc: "Bestimmung des Saugkoeffizienten mineralischer Putze und Wandaufbauten." },
-      { journal: "Energy and Buildings", title: "Thermal bridging assessment through dynamic simulation vs. steady-state calculations", desc: "Energetischer Abgleich instationärer Klimaszenarien mit stationären Wärmestromberechnungen." }
-    ],
-    dissertations: [
-      { title: "Hygrothermische Dauerhaftigkeitsbewertung von hochgedämmten Holzwandstrukturen der Altbausanierung", desc: "Dissertation, Universität Innsbruck, 2021. Simulation kritischer Schimmelpilzkriterien in Gefachen." },
-      { title: "Optimierung der Schalldämmung von mehrschichtigen Trockenbauwandkonstruktionen im tiefen Frequenzbereich", desc: "Dissertation, Technische Universität Berlin (TU Berlin). Schallwellenleitung bei geringen Abständen elastischer Ständerprofile." }
-    ]
+    publications: [],
+    dissertations: []
   },
   nachhaltigkeit: {
     websites: [
       { name: "DGNB e.V.", url: "https://www.dgnb.de", desc: "Deutsche Gesellschaft für Nachhaltiges Bauen mit umfangreichen Zertifizierungskriterien (DGNB-System)." },
-      { name: "ÖKOBAUDAT", url: "https://www.oekobaudat.de", desc: "Offizielle Bundes-Materialdatenbank für verifizierte GWP- und PE-Werte von Baustoffen." },
+      { name: "ÖKOBAUDAT", url: "https://www.oekobaudat.de", desc: "Ökobilanzdatenbank des Bundes (BMWSB) mit Datensätzen nach DIN EN 15804." },
       { name: "Bau-EPD e.V.", url: "https://www.bau-epd.at", desc: "Zertifizierungsplattform für normkonforme Umweltproduktdeklarationen Typ III gemäß ISO 14025." }
     ],
     books: [
-      { title: "Nachhaltiges Bauen: Handbuch für Planer, Bauherren und Betreiber", desc: "Bauer, Mösle, Springer. Ein Standardwerk für Ökobilanzierung und Ressourceneffizienz." },
-      { title: "Praxis-Handbuch Ökobilanzierung im Bauwesen", desc: "DIN Media. Rechenregeln und Bilanzierungsphasen (A1-A3, B, C, D) nach DIN EN 15804 verständlich erklärt." }
+      { title: "Green Building – Leitfaden für nachhaltiges Bauen", desc: "Bauer, M.; Mösle, P.; Schwarz, M., 2. Aufl., Springer Vieweg 2013." },
+      { title: "Lebenszyklusanalyse in der Gebäudeplanung", desc: "König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T., Detail 2009." }
     ],
-    publications: [
-      { journal: "Journal of Cleaner Production", title: "Life cycle assessment (LCA) of mineral wool vs. biogenic straw insulated wall systems", desc: "Vergleich biogener CO2-Speicherungen im Baustoffkreislauf." },
-      { journal: "Environmental Science & Technology", title: "Carbon uptake in cementitious products during active carbonation curing", desc: "Quantifizierung der CO2-Mineralisierung in zementgebundenen Werkstoffen." }
-    ],
-    dissertations: [
-      { title: "Entwicklungs- und Bewertungsmodell für zirkuläres Planen und Konstruieren im Massivbau", desc: "Dissertation, TU Dresden, 2023. Zirkularitäts-Indexformeln für rückbauoptimierte Decken." },
-      { title: "Methodik zur Integration von Nachhaltigkeitskennwerten in BIM-basierte Lebenszyklusanalysen", desc: "Dissertation, Universität Stuttgart, 2020. Datenmapping von IFC-Exporten mit GWP-Werten aus EPDs." }
-    ]
+    publications: [],
+    dissertations: []
   },
   digitales: {
     websites: [
@@ -1202,37 +1184,27 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   beton: {
     websites: [
-      { name: "Beton.org Portal", url: "https://www.beton.org", desc: "InformationsZentrum Beton (IZB) mit praxisnahen Regelwerken und Fachmerkblättern." },
+      { name: "beton.org", url: "https://www.beton.org", desc: "InformationsZentrum Beton mit Fachinformationen und Merkblättern." },
       { name: "VDZ Zementportal", url: "https://www.vdz-online.de", desc: "Forschungsinstitut der Zementindustrie mit aktuellen Studien zur Dekarbonisierung." }
     ],
     books: [
-      { title: "Beton: Herstellung und Eigenschaften", desc: "Grübl, Weigler, Karl, Ernst & Sohn. Umfassendes Standardwerk der Betontechnologie." },
-      { title: "Zement-Taschenbuch", desc: "VDZ. Das unentbehrliche Nachschlagewerk für Bindemittel und Betonzusammensetzungen." }
+      { title: "Beton – Arten, Herstellung und Eigenschaften", desc: "Grübl, P.; Weigler, H.; Karl, S., 2. Aufl., Ernst & Sohn 2001." },
+      { title: "Zement-Taschenbuch", desc: "Verein Deutscher Zementwerke (Hrsg.), Verlag Bau+Technik (Ausgabe manuell prüfen)." }
     ],
-    publications: [
-      { journal: "Beton- und Stahlbetonbau (Ernst & Sohn)", title: "Klinkereffiziente Zemente CEM II/C-M und CEM VI nach DIN EN 197-5 in der Praxis", desc: "Untersuchungen zu Festigkeitsentwicklung und Dauerhaftigkeit CO2-reduzierter Betone." },
-      { journal: "Cement and Concrete Research", title: "Limestone calcined clay cement (LC3): Hydration kinetics and chloride ingress resistance", desc: "Wissenschaftliche Auswertung der Puzzolanreaktion calcinierter Tone." }
-    ],
-    dissertations: [
-      { title: "Zur Hydratationskinetik klinkerreduzierter Zemente mit calzinierten Tonen", desc: "Dissertation, Karlsruher Institut für Technologie (KIT). Gefügeuntersuchungen an LC3-Bindemittelsystemen." }
-    ]
+    publications: [],
+    dissertations: []
   },
   holzbau: {
     websites: [
       { name: "Informationsdienst Holz", url: "https://informationsdienst-holz.de", desc: "Umfangreiche Fachpublikationen, Holzbau Handbücher und Konstruktionsdetails." },
-      { name: "dataholz.eu", url: "https://www.dataholz.eu", desc: "Prüfzeugnisse für U-Werte, Schall- und Brandschutznachweise nach HFA-Standard." },
-      { name: "Institut für Holzbau", url: "https://www.institut-holzbau.de", desc: "Fortbildung und Forschung zu Landesbauordnungen und Holzbaurichtlinien." }
+      { name: "dataholz.eu", url: "https://www.dataholz.eu", desc: "Bauteilkatalog der Holzforschung Austria mit bauphysikalischen und brandschutztechnischen Kennwerten." }
     ],
     books: [
-      { title: "Holzbau: Grundlagen, Bemessungshilfen", desc: "Informationsdienst Holz. Tabellenwerk für Tragwerksplaner nach Eurocode 5." },
-      { title: "Holzbau Taschenbuch", desc: "Ernst & Sohn. Bemessungs- und Konstruktionsregeln für Ingenieure." }
+      { title: "Ingenieurholzbau – Grundlagen der Bemessung", desc: "Blaß, H. J.; Sandhaas, C., KIT Scientific Publishing 2016 (frei verfügbar)." },
+      { title: "Atlas Mehrgeschossiger Holzbau", desc: "Kaufmann, H.; Krötsch, S.; Winter, S., Detail 2017." }
     ],
-    publications: [
-      { journal: "Bautechnik", title: "Mehrgeschossiger Holzbau nach der neuen Muster-Holzbau-Richtlinie (MHolzBauR)", desc: "Brandschutztechnische Nachweisführung und Kapselungskriterien für GK 4 und GK 5." }
-    ],
-    dissertations: [
-      { title: "Trag- und Verformungsverhalten von Brettsperrholzelementen unter mehraxialer Beanspruchung", desc: "Dissertation, TU Graz. Untersuchungen zur Rollschubfestigkeit und Schubmodulbestimmung." }
-    ]
+    publications: [],
+    dissertations: []
   }
 };
 

@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import { useTabContext, TabType } from '../contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 
 interface AusbauToolItem {
@@ -81,7 +83,7 @@ export default function Innenausbau() {
         'Fugenverspachtelung (Qualitätsstufen Q1 bis Q4)'
       ],
       keyStandard: 'DIN 18181 / DIN EN 520',
-      quickFact: 'Zweischalige Trockenbauwände erreichen trotz geringer Masse durch biegeweiche Schalen extrem hohe Schalldämmmaße (Rw > 55 dB).'
+      quickFact: 'Zweischalige Trockenbauwände erreichen trotz geringer Masse durch biegeweiche Schalen hohe Schalldämmmaße (je nach Aufbau R_w über 55 dB).'
     },
     {
       id: 'bp_putz_estrich',
@@ -100,7 +102,7 @@ export default function Innenausbau() {
         'Gips- vs. Kalkputze zur Raumklimaregulierung'
       ],
       keyStandard: 'DIN 18560 / DIN EN 13813',
-      quickFact: 'Calciumsulfat-Fließestriche (CAF) trocknen nahezu schwindfrei und erlauben fugenlose Felder bis zu 200 m² (ohne FBH).'
+      quickFact: 'Calciumsulfat-Fließestriche (CAF) schwinden gering; ohne Fußbodenheizung sind große fugenlose Felder möglich (Feldgröße nach Herstellerangabe).'
     },
     {
       id: 'ausbau',
@@ -119,7 +121,7 @@ export default function Innenausbau() {
         'Dispersions-, Silikat- und Reaktionsharzanstriche'
       ],
       keyStandard: 'DIN 18534 / DIN 18157',
-      quickFact: 'Im häuslichen Bad (W1-I) genügt eine flexible Verbundabdichtung; bei bodengleichen Duschen (W2-I) sind Dichtmanschetten Pflicht.'
+      quickFact: 'Bodengleiche Duschen fallen nach DIN 18534-1 in W2-I; Rohrdurchführungen und Abläufe sind in allen Klassen mit Dichtmanschetten bzw. Flanschen einzubinden.'
     },
     {
       id: 'gips',
@@ -130,15 +132,15 @@ export default function Innenausbau() {
       badge: 'Baustoff-Modul',
       badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
       icon: BookOpen,
-      description: 'Tiefgehendes materialwissenschaftliches Profil von Baugips, Anhydrit und Stuckgips. Chemischer Kreislauf, Kristallwasser-Brandschutz sowie gefährliche Ettringit-Reaktionen bei Feuchtekontakt.',
+      description: 'Tiefgehendes materialwissenschaftliches Profil von Baugips, Anhydrit und Stuckgips. Chemischer Kreislauf, Kristallwasser im Brandschutz sowie Treibreaktionen (Ettringit) bei feuchtem Kontakt von Gips und Zement.',
       features: [
-        'Hydratation: CaSO₄ · 0.5 H₂O + 1.5 H₂O → CaSO₄ · 2 H₂O',
+        'Hydratation: CaSO₄ · ½ H₂O + 1½ H₂O → CaSO₄ · 2 H₂O',
         'Physikalischer W/G-Wert und Porenbildung',
         'Kristallwasser als Brandschutzschild (~20 M.-% H₂O)',
         'Verbot des Zement-Gips-Direktkontakts im Feuchten'
       ],
       keyStandard: 'DIN EN 13279-1',
-      quickFact: 'Beim Brandfall verdampfen ca. 3 Liter chemisch gebundenes Wasser pro Quadratmeter einer 15 mm GKF-Platte und kühlen das Bauteil.'
+      quickFact: 'Im Brandfall verdampfen aus einer 15 mm GKF-Platte rund 2–3 Liter chemisch gebundenes Wasser je Quadratmeter und verzögern die Erwärmung (Größenordnung).'
     },
     {
       id: 'bp_daemmung',
@@ -157,7 +159,7 @@ export default function Innenausbau() {
         'Nichtbrennbarkeit A1 für Installationsschächte'
       ],
       keyStandard: 'DIN EN 13162 / DIN 4108',
-      quickFact: 'Eine Trittschalldämmung EPS-T mit niedriger dynamischer Steifigkeit s\' verbessert das Trittschallmaß um bis zu ΔLw = 30 dB.'
+      quickFact: 'Ein schwimmender Estrich auf Trittschalldämmung mit niedriger dynamischer Steifigkeit s\' kann den Trittschall einer Massivdecke um rund 25–30 dB mindern (ΔL_w).'
     },
     {
       id: 'labor',
@@ -176,7 +178,7 @@ export default function Innenausbau() {
         'Einfluss von Estrichanschleifen & Voranstrich'
       ],
       keyStandard: 'DIN EN 12004 / DIN EN 1542',
-      quickFact: 'Calciumsulfat-Fließestriche müssen vor der Fliesenverlegung zwingend angeschliffen, abgesaugt und mit Epoxid/Acrylat grundiert werden.'
+      quickFact: 'Calciumsulfat-Fließestriche werden vor der Belagsverlegung in der Regel angeschliffen, abgesaugt und grundiert (Herstellerangaben beachten).'
     },
     {
       id: 'schallschutz',
@@ -195,7 +197,7 @@ export default function Innenausbau() {
         'Flankenübertragung über Decken und Vorwandelemente'
       ],
       keyStandard: 'DIN 4109 / VDI 4100',
-      quickFact: 'Schon eine einzige starre Schraubverbindung oder eingeklemmter Bauschutt am Randdämmstreifen ruiniert den Trittschallschutz um bis zu 10 dB.'
+      quickFact: 'Schon eine einzelne Schallbrücke (z. B. Mörtelreste am Randdämmstreifen) kann den Trittschallschutz um 10 dB und mehr verschlechtern.'
     },
     {
       id: 'feuchteschutz',
@@ -214,7 +216,7 @@ export default function Innenausbau() {
         'Vermeidung von Feuchteschäden hinter Wandbekleidungen'
       ],
       keyStandard: 'DIN 4108-3',
-      quickFact: 'Gipskartonplatten regulieren Feuchtespitzen hervorragend, dürfen aber keiner relativen Luftfeuchte über 70 % über längere Zeit ausgesetzt sein.'
+      quickFact: 'Gipsplatten puffern Feuchtespitzen; dauerhaft hohe Luftfeuchte ist zu vermeiden (Grenzen nach DIN 18181 und Herstellerangaben).'
     },
     {
       id: 'brandschutz',
@@ -233,7 +235,7 @@ export default function Innenausbau() {
         'Kompensationsmaßnahmen bei Holzbau-Innenausbau'
       ],
       keyStandard: 'DIN 4102-4 / DIN EN 13501',
-      quickFact: 'In Rettungswegen und Installationsschächten dürfen nur Baustoffe der Klasse A (nicht brennbar) ohne Rauchentwicklung verbaut werden.'
+      quickFact: 'In notwendigen Treppenräumen und Fluren müssen Bekleidungen, Putze und Dämmstoffe in der Regel nichtbrennbar sein (MBO §§ 35, 36; Landesrecht beachten).'
     },
     {
       id: 'aufgaben_bauprodukte',
@@ -252,7 +254,7 @@ export default function Innenausbau() {
         'Bewertung von Schadensfällen (z.B. Estrichschüsseln)'
       ],
       keyStandard: 'Prüfungsordnung THA',
-      quickFact: 'Sehr beliebte Prüfungsfrage: Warum darf Zementestrich niemals direkt ohne Trennschicht auf Gipsputz oder Calciumsulfatestrich aufgebracht werden? (Ettringitbildung!)'
+      quickFact: 'Typische Prüfungsfrage: Warum sind zementgebundene Stoffe und Calciumsulfat bei Feuchteeinwirkung zu trennen? (Ettringitbildung)'
     },
     {
       id: 'wta',
@@ -271,7 +273,7 @@ export default function Innenausbau() {
         'Messtechnische Erfassung von Schimmelpilzbefall'
       ],
       keyStandard: 'WTA Merkblatt 6-4 / 2-9',
-      quickFact: 'Sanierputze speichern Salze schadensfrei im Porensystem ein und verhindern Ausblühungen an der Wandoberfläche.'
+      quickFact: 'Sanierputze lagern Salze für begrenzte Zeit im Porensystem ein und verringern Ausblühungen an der Oberfläche (WTA-Merkblatt 2-9).'
     },
     {
       id: 'rechnung_u_wert',
@@ -551,7 +553,7 @@ export default function Innenausbau() {
                 <div className="mt-2 pt-2 border-t border-home-grau/20 text-[11px] space-y-1">
                   <div><strong>Schwindmaß:</strong> minimal (&lt; 0,1 mm/m)</div>
                   <div><strong>Belegreife unbeheizt:</strong> ≤ 0,5 CM-%</div>
-                  <div><strong>Belegreife beheizt:</strong> ≤ 0,3 CM-%</div>
+                  <div><strong>Belegreife beheizt:</strong> ≤ 0,3 CM-% (BEB-Richtwert; DIN EN 1264-4 nennt 0,5 CM-% – manuell prüfen)</div>
                   <div className="text-rose-800 text-[10px] mt-1 font-semibold">🚫 Streng feuchteempfindlich – kein Einsatz in Nassräumen (W2-I/W3-I) oder im Freien.</div>
                 </div>
               </div>
@@ -579,13 +581,13 @@ export default function Innenausbau() {
                 <Activity size={15} className="text-shiraz" /> Das Calciumcarbid-Verfahren (CM-Methode) nach DIN 18560
               </h4>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Die CM-Messung ist vor Gericht die einzige anerkannte Prüfung der Belegreife. Das entnommene Estrichgut aus dem unteren und mittleren Drittel der Schicht wird mit Calciumcarbid zerstoßen. Das freie Wasser reagiert unter Acetylen-Gasentwicklung:
+                Die CM-Messung ist in Deutschland das übliche Verfahren zur Prüfung der Belegreife (DIN 18560-1). Estrichgut aus dem gesamten Querschnitt wird mit Calciumcarbid in einer Druckflasche zerkleinert. Das freie Wasser reagiert unter Acetylen-Gasentwicklung:
               </p>
               <div className="my-2 p-3 bg-white rounded-lg border border-home-grau/20 text-center font-mono text-xs">
                 <InlineMath math="CaC_2 + 2\,H_2O \rightarrow Ca(OH)_2 + C_2H_2 \uparrow" />
               </div>
               <p className="text-[11px] text-text-main/70 leading-relaxed">
-                Der entstehende Gasdruck im Druckbehälter verhält sich proportional zum Wassergehalt der Probe. Elektronische Widerstandsmessgeräte dienen lediglich der Vorprüfung, ersetzen aber keinesfalls die CM-Messung!
+                Der entstehende Gasdruck im Druckbehälter verhält sich proportional zum Wassergehalt der Probe. Elektronische Feuchtemessgeräte eignen sich nur zur Vorprüfung und ersetzen die CM-Messung nicht.
               </p>
             </div>
           </div>
@@ -635,7 +637,7 @@ export default function Innenausbau() {
                   <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">Imprägniert</span>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed">
-                  Kern und Karton silikonisiert zur Verringerung der kapillaren Wasseraufnahme (≤ 10 %). Vorgeschrieben in häuslichen Bädern und Feuchträumen.
+                  Kern und Karton silikonisiert zur Verringerung der kapillaren Wasseraufnahme (≤ 10 %). Üblich in häuslichen Bädern; eine Abdichtung nach DIN 18534 bleibt bei Spritzwasser erforderlich.
                 </p>
                 <div className="text-[11px] text-emerald-700 font-mono mt-auto">Karton: Grün</div>
               </div>
@@ -643,10 +645,10 @@ export default function Innenausbau() {
               <div className="p-4 rounded-xl border border-home-grau/30 bg-slate-50/40 flex flex-col gap-2">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-xs text-text-main">Gipsfaserplatte</span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800">Gipsfaser (z. B. Fermacell)</span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800">Gipsfaserplatte</span>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed">
-                  Homogene Mischung aus Gips und recycelten Zellulosefasern ohne Kartonmantel. Extrem stoßfest, feuerhemmend und statisch mittragend (Scheibenwirkung).
+                  Homogene Mischung aus Gips und recycelten Zellulosefasern ohne Kartonmantel. Stoßfest, je nach Produkt nichtbrennbar und als aussteifende Beplankung nach Zulassung einsetzbar.
                 </p>
                 <div className="text-[11px] text-indigo-700 font-mono mt-auto">Struktur: Faserverbund</div>
               </div>
@@ -664,7 +666,7 @@ export default function Innenausbau() {
                 </div>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                   <strong className="text-slate-800 block mb-1">Stufe Q2: Standardverspachtelung</strong>
-                  <p className="text-text-main/75">Nachspachteln bis zum stufenlosen Übergang. Geeignet für Raufasertapeten, mittlere und grobe Wandbekleidungen und Dispersionsfarben mit Mattglanz.</p>
+                  <p className="text-text-main/75">Nachspachteln bis zum stufenlosen Übergang. Geeignet für Raufasertapeten, mittel und grob strukturierte Wandbekleidungen sowie matte, füllende Anstriche.</p>
                 </div>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                   <strong className="text-slate-800 block mb-1">Stufe Q3: Sonderverspachtelung</strong>
@@ -764,7 +766,7 @@ export default function Innenausbau() {
                 <Calculator className="text-shiraz" size={20} /> Interaktiver Belegreife- &amp; CM-Restfeuchterechner
               </h3>
               <p className="text-xs text-text-main/75 mt-1 leading-relaxed">
-                Prüfen Sie vor Ort die Belegreife des Estrichs nach den strengen Grenzwerten der DIN 18560 und der BEB-Merkblätter.
+                Prüfen Sie die Belegreife anhand üblicher Richtwerte (BEB/Schnittstellenkoordination, DIN EN 1264-4 bei Fußbodenheizung; Werte manuell prüfen).
               </p>
             </div>
 
@@ -891,8 +893,8 @@ export default function Innenausbau() {
                       </h4>
                       <p className="text-xs mt-1 leading-relaxed">
                         {istBelegreif 
-                          ? `Der gemessene Feuchtigkeitsgehalt von ${formatDeZahl(gemessenerCM, 1)} CM-% unterschreitet den normativen Grenzwert von ${formatDeZahl(cmGrenzwert, 1)} CM-%. Die Verlegung des Oberbelags (${belagArt}) darf erfolgen.`
-                          : `Der gemessene Wert (${formatDeZahl(gemessenerCM, 1)} CM-%) liegt über dem zulässigen Grenzwert von ${formatDeZahl(cmGrenzwert, 1)} CM-%. Eine Verlegung führt zu schweren Folgeschäden (Parkettaufwölbung, Schimmelbildung, Hohllagen)!`}
+                          ? `Der gemessene Feuchtigkeitsgehalt von ${formatDeZahl(gemessenerCM, 1)} CM-% liegt unter dem Richtwert von ${formatDeZahl(cmGrenzwert, 1)} CM-%. Belegreife für ${belagArt} im Sinne dieses Richtwerts erreicht; Herstellerangaben des Belags beachten.`
+                          : `Der gemessene Wert (${formatDeZahl(gemessenerCM, 1)} CM-%) liegt über dem Richtwert von ${formatDeZahl(cmGrenzwert, 1)} CM-%. Eine Verlegung führt zu schweren Folgeschäden (Parkettaufwölbung, Schimmelbildung, Hohllagen)!`}
                       </p>
                     </div>
                   </div>
@@ -912,13 +914,29 @@ export default function Innenausbau() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/70">
-                  <strong>Rechtlicher Hinweis:</strong> Der Bodenbelagsleger ist nach VOB/C DIN 18365 verpflichtet, vor der Verlegung die Feuchtigkeitsprüfung mittels CM-Gerät selbst durchzuführen und schriftlich im Messprotokoll festzuhalten.
+                  <strong>Rechtlicher Hinweis:</strong> Nach VOB/C DIN 18365 gehört die Prüfung des Untergrunds einschließlich Feuchtemessung zu den Nebenleistungen des Bodenlegers; das Ergebnis sollte protokolliert werden (keine Rechtsberatung).
                 </div>
               </div>
             </div>
           </div>
         </div>
       )}
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Resonanzfrequenz einer Metallständerwand"
+          zielGleichung="f_0 = \frac{1}{2\pi}\sqrt{s' \cdot \left(\frac{1}{m'_1} + \frac{1}{m'_2}\right)}"
+          normQuelle="Masse-Feder-Masse-Modell (vgl. DIN EN 12354-1); Plattenmassen als Lehrannahme"
+          schritte={[
+            { titel: '1. Gegeben', formel: '\\text{je Seite } 2 \\times 12{,}5\\,\\text{mm GKB: } m\'_1 = m\'_2 \\approx 17\\,\\text{kg/m}^2;\\; d = 75\\,\\text{mm, Hohlraum gedämmt}', erklaerung: 'Flächenmasse je Platte rund 8,5 kg/m² (Lehrannahme).' },
+            { titel: '2. Steifigkeit des Hohlraums', formel: 's\' \\approx \\frac{0{,}111}{d} = \\frac{0{,}111}{0{,}075} = 1{,}48\\,\\text{MN/m}^3', erklaerung: 'Näherung für einen mit Faserdämmstoff gefüllten Hohlraum (d in m).' },
+            { titel: '3. Resonanzfrequenz', formel: 'f_0 = \\frac{1}{2\\pi}\\sqrt{1{,}48 \\cdot 10^6 \\cdot \\frac{2}{17}} \\approx 66\\,\\text{Hz}', erklaerung: 'Liegt unter 80 Hz – die Resonanz stört den bauakustisch relevanten Bereich ab 100 Hz kaum.' },
+          ]}
+          ergebnisHinweis="Einfache Beplankung (m' ≈ 8,5 kg/m²) ergäbe rund 94 Hz; die Doppelbeplankung senkt f₀ also deutlich."
+        />
+      </div>
+
+      <ModulTest moduleId="innenausbau" />
 
       {/* Footer mit Modul-Spezifikation (RULE[GEMINI_md]) */}
       <ModuleFooter
@@ -930,27 +948,28 @@ export default function Innenausbau() {
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Frössel, F.: Handbuch Ausbau und Innensanierung: Trockenbau, Putz, Estrich, Fliesen (Fraunhofer IRB Verlag)',
-          'Bundesverband der Gipsindustrie e.V.: IGG Merkblätter Trockenbau & Putz',
-          'BEB-Merkblätter: Bundesverband Estrich und Belag e.V. (Schnittstellenkoordination FBH)'
+          'Unger, A.: Fußboden-Atlas – richtig planen, Schäden vermeiden. Donauwörth: QUO-VADO (Auflage manuell prüfen)',
+          'Bundesverband der Gipsindustrie e. V. (Industriegruppe Baugipsplatten): Merkblätter zum Trockenbau',
+          'Bundesverband Estrich und Belag e. V. (BEB): Hinweisblätter und Arbeitsblätter'
         ]}
         regelwerke={[
           { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)' },
           { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)' },
-          { title: 'DIN 18560-1..7:2021-02 (Estriche im Bauwesen - Teile 1 bis 7: Anforderungen, Prüfung und Ausführung)' },
-          { title: 'DIN 18534-1..6:2017-07 (Abdichtung von Innenräumen)' },
+          { title: 'DIN 18560-1 bis -7 (Estriche im Bauwesen; Ausgaben der Teile manuell prüfen)' },
+          { title: 'DIN EN 1264-4 (Flächenheizung – Installation; Belegreife beheizter Estriche)' },
+          { title: 'DIN 18534-1 bis -6:2017-07 (Abdichtung von Innenräumen)' },
           { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)' }
         ]}
         formeln={[
           {
             formel: 'CaC_2 + 2\\,H_2O \\rightarrow Ca(OH)_2 + C_2H_2 \\uparrow',
-            erklaerung: 'Reaktionsgleichung der Calciumcarbid-Methode (CM-Messung) zur zerstörenden Feuchtebestimmung an Estrichproben vor Ort nach DIN 18560.',
-            quelle: 'DIN 18560'
+            erklaerung: 'Reaktionsgleichung der Calciumcarbid-Methode (CM-Messung) zur Feuchtebestimmung an Estrichproben vor Ort.',
+            quelle: 'DIN 18560-1'
           },
           {
             formel: 'R\'_w = R_w - 10 \\cdot \\lg\\left(1 + \\sum 10^{\\frac{R_w - R_{ij,w}}{10}}\\right) \\quad [\\text{dB}]',
-            erklaerung: 'Bau-Schalldämmmaß unter Berücksichtigung der flankierenden Bauteile (Flankenübertragung über Decken und Vorwandelemente) nach DIN 4109.',
-            quelle: 'DIN 4109'
+            erklaerung: 'Bau-Schalldämmmaß unter Berücksichtigung der flankierenden Bauteile (Flankenübertragung über Decken und Vorwandelemente) nach DIN 4109-2.',
+            quelle: 'DIN 4109-2:2018-01'
           },
           {
             formel: 'f_0 = \\frac{1}{2\\pi} \\cdot \\sqrt{s\' \\cdot \\left(\\frac{1}{m\'_1} + \\frac{1}{m\'_2}\\right)} \\quad [\\text{Hz}]',

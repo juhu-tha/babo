@@ -534,11 +534,11 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
   holzbau: {
     title: 'Ingenieurholzbau nach Eurocode 5',
     tagline: 'Anisotropie, Holzfeuchte, Stabilitätsnachweise und Verbindungsmitteltechnik',
-    leitfrage: 'Wie nutzt man die phänomenale Zug- und Druckfestigkeit nachwachsender Holzfasern trotz Anisotropie und Feuchtedehnung sicher im Ingenieurbau?',
+    leitfrage: 'Wie nutzt man die hohe Festigkeit von Holz parallel zur Faser trotz Anisotropie und Feuchtedehnung sicher im Ingenieurbau?',
     corePrinciples: [
       {
         title: 'Orthotrope Anisotropie',
-        description: 'Holz ist ein natürlicher biologischer Faserverbundwerkstoff. Die Festigkeit parallel zur Faser ist um ein Vielfaches höher als rechtwinklig zur Faser. Querzugbeanspruchungen sind die Achillesferse des Holzbaus.',
+        description: 'Holz ist ein natürlicher biologischer Faserverbundwerkstoff. Die Festigkeit parallel zur Faser ist um ein Vielfaches höher als rechtwinklig zur Faser. Querzug ist daher besonders kritisch.',
         takeaway: 'Querzugspannungen müssen konstruktiv vermieden oder durch Querzugverstärkungen (Vollgewindeschrauben) abgefangen werden.'
       },
       {
@@ -548,12 +548,12 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       },
       {
         title: 'Verbindungsmittel bestimmen das Tragwerk',
-        description: 'Im Holzbau versagt fast nie das Stabbündel im Feld, sondern der Knotenpunkt. Verbindungsmittel (Stabdübel, Bolzen, Nagelplatten, Schwalbenschwanz) leiten Kräfte duktil über Lochleibung und Fließgelenke ab.',
-        takeaway: 'Der Knotenentwurf ist die eigentliche Kunst des Holzbauingenieurs.'
+        description: 'Im Holzbau sind häufig die Anschlüsse bemessungsmaßgebend. Stiftförmige Verbindungsmittel (Stabdübel, Bolzen, Nägel, Schrauben) übertragen Kräfte über Lochleibung und Fließgelenke – bei ausreichenden Abständen duktil.',
+        takeaway: 'Anschlüsse früh mitplanen: Sie bestimmen oft Querschnitt und Tragfähigkeit.'
       }
     ],
-    systemicExplanation: 'Holzbau nach DIN EN 1995-1-1 (Eurocode 5) ist der Vorreiter des zirkulären und klimapositiven Bauens. Das Modul vermittelt Vollholz (C24), Brettschichtholz (GL24–GL32) und Brettsperrholz (CLT), Stabilitätsnachweise (Biegeknicken nach Ersatzstabverfahren, Biegedrillknicken) sowie Heißbemessung über die Abbrandrate.',
-    zusammenhaengeText: 'Holz verbindet Mechanik (Stabilität), Bauphysik (Brandschutz durch Schutzholzkohleschicht β0, Dampfdiffusion) und Nachhaltigkeit (CO2-Speicherung von ca. 1 t CO2 pro m³ Holz).',
+    systemicExplanation: 'Holzbau nach DIN EN 1995-1-1 (Eurocode 5) kann wesentlich zu ressourcenschonendem Bauen beitragen. Das Modul vermittelt Vollholz (C24), Brettschichtholz (GL24–GL32) und Brettsperrholz (CLT), Stabilitätsnachweise (Biegeknicken nach Ersatzstabverfahren, Biegedrillknicken) sowie die Bemessung im Brandfall über die Abbrandrate.',
+    zusammenhaengeText: 'Holz verbindet Mechanik (Stabilität), Bauphysik (Brandschutz durch Schutzholzkohleschicht β0, Dampfdiffusion) und Nachhaltigkeit (biogener Kohlenstoff, Größenordnung 0,8–0,9 t CO₂ je m³ Nadelholz).',
     graphicalPipelineTitle: 'Der Systemkreis des Ingenieurholzbaus',
     graphicalPipelineDesc: 'Vom Faseraufbau über Feuchtemodifikation zu Verbindungsmitteln und Brandschutz:',
     steps: [
@@ -603,20 +603,20 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         subtitle: 'Abbrandrate β0',
         desc: 'Berechenbarer Abbrand (0,65–0,8 mm/min), Ausbildung einer dämmenden Kohleschicht, Restquerschnittsmethode.',
         iconName: 'Flame',
-        keyFacts: ['Kein Schmelzen', 'Konstante Restfestigkeit', 'R30 bis R90 Nachweis'],
+        keyFacts: ['Annähernd konstante Abbrandrate', 'Restquerschnitt trägt', 'R30 bis R90 Nachweis'],
         normOrFormula: 'd_{ef} = d_{char} + k_0 \\cdot d_0',
         color: 'from-rose-600 to-rose-700'
       }
     ],
     interconnections: [
-      { from: 'Werkstoff', to: 'Umwelt', relation: 'Klimaanpassung', causeEffect: 'Schwankende Luftfeuchte induziert Quell- und Schwindspannungen, die bei Querdrucklagern Risse treiben.' },
-      { from: 'Umwelt', to: 'Stabilität', relation: 'Steifigkeitsverlust', causeEffect: 'Höhere Feuchte verringert den E-Modul und senkt die Knicklast λcrit spürbar ab.' },
+      { from: 'Werkstoff', to: 'Umwelt', relation: 'Klimaanpassung', causeEffect: 'Schwankende Luftfeuchte erzeugt Quell- und Schwindspannungen, die Schwindrisse und Querzugrisse an Anschlüssen begünstigen.' },
+      { from: 'Umwelt', to: 'Stabilität', relation: 'Steifigkeitsverlust', causeEffect: 'Höhere Feuchte und Kriechen (k_def) verringern die Steifigkeit; das erhöht Verformungen und Effekte nach Theorie II. Ordnung.' },
       { from: 'Stabilität', to: 'Verbindung', relation: 'Haltekräfte', causeEffect: 'Kippgefährdete Träger müssen über Verbindungsmittel torsionssteif an Verbände angeschlossen werden.' },
-      { from: 'Verbindung', to: 'Brandschutz', relation: 'Schwachstellen', causeEffect: 'Stahlverbindungsmittel leiten Hitze ins Holzinnere und müssen durch Holzüberdeckungen oder Brandmanschetten geschützt werden.' }
+      { from: 'Verbindung', to: 'Brandschutz', relation: 'Schwachstellen', causeEffect: 'Stahlverbindungsmittel leiten Wärme ins Holzinnere und werden durch Holzüberdeckung, Bekleidung oder versenkten Einbau geschützt.' }
     ],
     practicalInsight: {
       title: 'Konstruktiver Holzschutz vor Chemie',
-      desc: 'Die wichtigste Holzbaunorm ist der konstruktive Holzschutz (DIN 68800-2): Wer Holz vor stehendem Wasser, Spritzwasser und aufsteigender Feuchte schützt, braucht keinerlei chemischen Holzschutz!'
+      desc: 'Nach DIN 68800 hat der bauliche Holzschutz (DIN 68800-2) Vorrang vor vorbeugendem chemischem Schutz: Bei Gebrauchsklasse 0 (Holz dauerhaft trocken bzw. kontrollierbar) ist kein chemischer Holzschutz erforderlich.'
     }
   },
 

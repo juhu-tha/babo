@@ -313,14 +313,14 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
   holzbau: {
     groupKey: 'holzbau',
     title: 'Holzbau (Ingenieurholzbau)',
-    leadSummary: 'Vom zimmermannsmäßigen Fachwerk über das Hetzer-Brettschichtholz und die Erfindung von Brettsperrholz (CLT) bis hin zu Hochhäusern in Holz-Hybridbauweise und der neuen Muster-Holzbaurichtlinie (MHolzBauR 2024).',
+    leadSummary: 'Vom zimmermannsmäßigen Fachwerk über das Hetzer-Brettschichtholz und die Erfindung von Brettsperrholz (CLT) bis hin zu Hochhäusern in Holz-Hybridbauweise und der fortgeschriebenen Muster-Holzbaurichtlinie (MHolzBauRL).',
     milestones: [
       {
         era: 'Mittelalter bis 19. Jahrhundert',
         title: 'Zimmermannsmäßige Holzverbindungen & Tragwerke',
         category: 'Paradigmenwechsel',
         description: 'Holzbau wird rein handwerklich durch formschlüssige Holz-Holz-Verbindungen (Verblattungen, Verzapfungen, Schwalbenschwanz, Holznägel) geprägt. Dachwerke und Hallen sind durch die Wuchsdimension natürlicher Rundhölzer geometrisch begrenzt.',
-        impact: 'Hunderte Jahre alte Fachwerk- und Dachstuhlbauten beweisen die außerordentliche Dauerhaftigkeit bei konstruktivem Holzschutz.',
+        impact: 'Jahrhundertealte Fachwerk- und Dachtragwerke zeigen die Dauerhaftigkeit bei konsequentem baulichem Holzschutz.',
         keyReference: 'Historische Zimmermannskunst'
       },
       {
@@ -328,7 +328,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Otto Hetzer patentiert das Brettschichtholz (Hetzer-Träger)',
         category: 'Technologie',
         description: 'Der Weimarer Zimmermeister Otto Hetzer erhält das Reichspatent Nr. 197773 auf gebogene, verleimte Brettschichtträger aus einzelnen Brettlamellen unter Verwendung von Kaseinleimen.',
-        impact: 'Geburtsstunde des modernen Ingenieurholzbaus: Überwindung natürlicher Baumgrenzen; stützenfreie Hallenspannweiten von über 50 m werden realisierbar.',
+        impact: 'Geburtsstunde des modernen Ingenieurholzbaus: Überwindung natürlicher Baumgrenzen; Spannweiten über die Grenzen von Vollholz hinaus werden möglich.',
         keyReference: 'Deutsches Reichspatent Nr. 197773'
       },
       {
@@ -349,14 +349,14 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
       },
       {
         era: '2020er–heute (2024–2026)',
-        title: 'Mehrgeschossiger Holzbau, MHolzBauR 2024 & Holz-Hochhäuser',
+        title: 'Mehrgeschossiger Holzbau, MHolzBauRL & Holz-Hochhäuser',
         category: 'Recht & Regularien',
-        description: 'Neufassung der Muster-Holzbaurichtlinie (MHolzBauR 2024) erleichtert die Planung in den Gebäudeklassen 4 und 5 (bis zur Hochhausgrenze). Realisierung von Gebäuden wie „Roots“ in Hamburg (65 m) oder „HoHo Wien“ (84 m).',
-        impact: 'Konstruktiver Brandschutz durch Kapselung und planmäßigen Restquerschnittabbrand (d_char,0) etabliert Holz als gleichwertige Alternative im urbanen Geschoßbau.',
-        keyReference: 'MHolzBauR 2024 / DIN EN 1995-1-2'
+        description: 'Die Muster-Holzbaurichtlinie (MHolzBauRL; aktuelle Fassung vom DIBt 2025 veröffentlicht) regelt Holzbauweisen in den Gebäudeklassen 4 und 5. Realisierung von Gebäuden wie „Roots“ in Hamburg (65 m) oder „HoHo Wien“ (84 m).',
+        impact: 'Konstruktiver Brandschutz durch Kapselung und rechnerischen Abbrand (Restquerschnitt) machen Holz zu einer Option im städtischen Geschossbau.',
+        keyReference: 'MHolzBauRL / DIN EN 1995-1-2'
       }
     ],
-    keyTakeaway: 'Der Holzbau wandelte sich vom zimmermannsmäßigen Handwerk zu einer hochpräzisen, digital vorgefertigten Ingenieurdisziplin, die den Hochhausbau als CO2-Speicher maßgeblich prägt.'
+    keyTakeaway: 'Der Holzbau wandelte sich vom zimmermannsmäßigen Handwerk zu einer digital vorgefertigten Ingenieurdisziplin, die zunehmend auch im Geschoss- und Hochhausbau eingesetzt wird.'
   },
 
   mechanik: {
