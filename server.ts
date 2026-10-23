@@ -10,6 +10,8 @@ import fs from "fs";
 //   GEMINI_API_KEY        Schlüssel für die Gemini-Analysen (optional)
 //   ADMIN_PASSWORD        Kennwort für Admin-Bereich und Zurücksetzen der Live-Abstimmung
 //   POLL_ADMIN_PASSWORD   optional eigenes Kennwort nur für die Live-Abstimmung
+//   GEMINI_DAILY_LIMIT    optional, KI-Anfragen pro Tag insgesamt (Standard 300)
+//   ALLOWED_ORIGINS       optional, weitere erlaubte Herkunft(en) für KI-Anfragen, kommagetrennt
 // Ist kein Kennwort gesetzt, bleiben Admin-Bereich und Zurücksetzen gesperrt.
 // ---------------------------------------------------------------------------
 
@@ -168,6 +170,46 @@ function securityHeaders(_req: Request, res: Response, next: NextFunction) {
   next();
 }
 
+// --- KI-Proxy: Schutz vor Missbrauch (Umsetzungsplan Phase 1, AP 1.1) -----------
+
+/** Feste Systemanweisung – wird nicht vom Browser übernommen (KI-Transparenz, AI Act Art. 50). */
+const KI_SYSTEMANWEISUNG = [
+  "Sie sind ein KI-Assistent im Lernportal BaustoffBoard (Lehrangebot der TH Augsburg).",
+  "Sie sind keine reale Person und geben sich nicht als Lehrende der Hochschule aus.",
+  "Beantworten Sie ausschließlich Fragen zu Baustoffen, Bauchemie, Bauphysik, Tragwerken, Normen,",
+  "Bauen im Bestand, Nachhaltigkeit und Kreislaufwirtschaft im Bauwesen. Andere Anfragen lehnen Sie",
+  "in einem Satz höflich ab. Nennen Sie Normen mit Ausgabe, kennzeichnen Sie Unsicherheiten ausdrücklich",
+  "und weisen Sie darauf hin, dass Ihre Antwort fachlich zu prüfen ist und keinen Nachweis ersetzt.",
+  "Antworten Sie auf Deutsch in der Sie-Form.",
+].join(" ");
+
+/** Tageskontingent für alle Nutzer zusammen (Kostendeckel), Standard 300 Anfragen. */
+const KI_TAGESLIMIT = Math.max(0, Number(process.env.GEMINI_DAILY_LIMIT) || 300);
+const kiTag = { datum: "", anzahl: 0 };
+function kiKontingentFrei(): boolean {
+  const heute = new Date().toISOString().slice(0, 10);
+  if (kiTag.datum !== heute) { kiTag.datum = heute; kiTag.anzahl = 0; }
+  if (kiTag.anzahl >= KI_TAGESLIMIT) return false;
+  kiTag.anzahl += 1;
+  return true;
+}
+
+/** Nur Anfragen aus der eigenen Seite (Origin = eigener Host oder in ALLOWED_ORIGINS). */
+function gleicheHerkunft(req: Request): boolean {
+  const origin = req.headers.origin;
+  if (!origin) return false;
+  let host: string;
+  try { host = new URL(origin).host; } catch { return false; }
+  const eigene = [req.headers.host, req.headers["x-forwarded-host"]]
+    .flatMap(h => (Array.isArray(h) ? h : String(h ?? "").split(",")))
+    .map(h => h.trim())
+    .filter(Boolean);
+  const erlaubt = (process.env.ALLOWED_ORIGINS ?? "")
+    .split(",").map(o => o.trim()).filter(Boolean)
+    .map(o => { try { return new URL(o).host; } catch { return o; } });
+  return eigene.includes(host) || erlaubt.includes(host);
+}
+
 async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
@@ -190,15 +232,21 @@ async function startServer() {
   // Gemini-Analysen (begrenzt, damit der Schlüssel nicht für fremde Zwecke verbraucht wird)
   app.post(
     "/api/gemini/analyze",
-    rateLimit({ name: "gemini", windowMs: 60 * 60 * 1000, max: 30 }),
+    rateLimit({ name: "gemini", windowMs: 60 * 60 * 1000, max: 10 }),
     async (req, res) => {
       try {
-        const { prompt, systemInstruction } = req.body ?? {};
+        if (!gleicheHerkunft(req)) {
+          return res.status(403).json({ error: "Anfragen sind nur aus dem BaustoffBoard möglich." });
+        }
+        const { prompt, hinweisBestaetigt } = req.body ?? {};
+        if (hinweisBestaetigt !== true) {
+          return res.status(400).json({ error: "Bitte bestätigen Sie den Hinweis zur Datenübermittlung." });
+        }
         if (typeof prompt !== "string" || prompt.trim().length === 0) {
           return res.status(400).json({ error: "Kein Prompt übermittelt." });
         }
-        if (prompt.length > 12_000 || (systemInstruction && String(systemInstruction).length > 4_000)) {
-          return res.status(413).json({ error: "Anfrage zu lang." });
+        if (prompt.length > 4_000) {
+          return res.status(413).json({ error: "Anfrage zu lang (höchstens 4 000 Zeichen)." });
         }
 
         if (!process.env.GEMINI_API_KEY) {
@@ -218,16 +266,18 @@ ${prompt}
           });
         }
 
+        if (!kiKontingentFrei()) {
+          return res.status(429).json({ error: "Das Tageskontingent für KI-Anfragen ist ausgeschöpft. Bitte morgen erneut versuchen oder den Prompt in einen eigenen KI-Assistenten kopieren." });
+        }
+
         const ai = getGeminiClient();
         const response = await ai.models.generateContent({
           model: "gemini-3.8-flash",
           contents: prompt,
           config: {
-            systemInstruction:
-              typeof systemInstruction === "string" && systemInstruction
-                ? systemInstruction
-                : "Du bist ein erfahrener Professor und Dr.-Ing. für Baustoffkunde und Bauchemie an der TH Augsburg.",
-            temperature: 0.7,
+            systemInstruction: KI_SYSTEMANWEISUNG,
+            temperature: 0.4,
+            maxOutputTokens: 2048,
           },
         });
 

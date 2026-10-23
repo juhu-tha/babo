@@ -4,6 +4,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { RelatedModules } from '@/src/components/ui/RelatedModules';
 import ReactMarkdown from 'react-markdown';
+import { useTabContext } from '@/src/contexts/TabContext';
 import ToolsFuerThesen from '@/src/modules/ki/ToolsFuerThesen';
 import FehlerRechtEthik from '@/src/modules/ki/FehlerRechtEthik';
 import LokaleKI from '@/src/modules/ki/LokaleKI';
@@ -182,6 +183,7 @@ export default function KiBaustoffe({ forceTab }: KiBaustoffeProps = {}) {
 }
 
 function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
+  const { setActiveTab: oeffneModul } = useTabContext();
 
   const [localActiveTab, setLocalActiveTab] = useState<'system' | 'prompting' | 'llmpraxis' | 'ressourcen' | 'thesen' | 'recht_ethik' | 'lokal' | 'onlinekurse'>('system');
   const activeTab = forceTab || localActiveTab;
@@ -202,6 +204,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
   const [aiOutput, setAiOutput] = useState<string | null>(null);
   const [isLoadingAi, setIsLoadingAi] = useState<boolean>(false);
   const [apiMode, setApiMode] = useState<'live' | 'simulated' | null>(null);
+  const [hinweisBestaetigt, setHinweisBestaetigt] = useState<boolean>(false);
 
   // Sync custom prompt text when presets change
   useEffect(() => {
@@ -218,10 +221,8 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       const res = await fetch('/api/gemini/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          prompt: customPromptText,
-          systemInstruction: 'Du bist ein erfahrener Professor und Dr.-Ing. für Baustoffkunde und Bauchemie an der TH Augsburg.'
-        })
+        // Systemanweisung legt der Server fest (keine Personifizierung, AI Act Art. 50)
+        body: JSON.stringify({ prompt: customPromptText, hinweisBestaetigt })
       });
       const data = await res.json();
       if (data.error) {
@@ -570,18 +571,29 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   <textarea
                     rows={8}
                     value={customPromptText}
+                    maxLength={4000}
+                    aria-label="Prompt (höchstens 4 000 Zeichen)"
                     onChange={(e) => setCustomPromptText(e.target.value)}
                     className="p-5 font-mono text-xs leading-relaxed bg-slate-950 text-emerald-400 overflow-y-auto whitespace-pre-wrap outline-none border-none focus:ring-0 resize-y max-h-80 select-all"
                   />
 
                   {/* Footer with run button */}
-                  <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-4">
-                    <span className="text-[10px] text-slate-500 font-medium hidden sm:inline">
-                      Passen Sie den Prompt an und testen Sie die Analyse direkt.
-                    </span>
+                  <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <label className="flex items-start gap-2 text-xs text-slate-700 font-medium max-w-xl cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={hinweisBestaetigt}
+                        onChange={(e) => setHinweisBestaetigt(e.target.checked)}
+                        className="mt-0.5 accent-shiraz"
+                      />
+                      <span>
+                        Der Prompt wird zur Beantwortung an Google (Gemini) übermittelt. Ich gebe keine personenbezogenen
+                        oder vertraulichen Daten ein. Details in der <button type="button" onClick={() => oeffneModul('datenschutz')} className="underline text-shiraz">Datenschutzerklärung</button>.
+                      </span>
+                    </label>
                     <button
                       onClick={handleRunAiPrompt}
-                      disabled={isLoadingAi}
+                      disabled={isLoadingAi || !hinweisBestaetigt}
                       className="bg-shiraz hover:bg-shiraz-dark text-white px-5 py-2.5 rounded-xl transition-all text-xs font-black flex items-center gap-2 shadow-md cursor-pointer disabled:opacity-50"
                     >
                       {isLoadingAi ? (
@@ -622,7 +634,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                           </span>
                         ) : apiMode === 'live' ? (
                           <span className="bg-emerald-950 text-emerald-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-emerald-800">
-                            ● Live-API (Gemini)
+                            ● KI-generiert (Google Gemini)
                           </span>
                         ) : (
                           <span className="bg-amber-950 text-amber-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-amber-800">
@@ -637,12 +649,19 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                         <div className="flex flex-col items-center justify-center p-8 gap-3 text-slate-400">
                           <Loader2 size={32} className="animate-spin text-shiraz" />
                           <p className="text-xs font-medium animate-pulse text-slate-500">
-                            Professor Huber (AI) formuliert Ihre detaillierte Normen- und Schadensanalyse...
+                            Die KI (Google Gemini) erzeugt eine Antwort …
                           </p>
                         </div>
                       ) : (
-                        <div className="prose prose-slate max-w-none text-xs text-text-main/90 font-normal space-y-4 markdown-body">
-                          <ReactMarkdown>{aiOutput || ''}</ReactMarkdown>
+                        <div className="space-y-4">
+                          {apiMode === 'live' && (
+                            <p role="note" className="text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                              KI-generierte Antwort (Google Gemini), nicht vom Autor geprüft. Inhalte können fehlerhaft sein und ersetzen keinen Nachweis und keine Normprüfung.
+                            </p>
+                          )}
+                          <div className="prose prose-slate max-w-none text-xs text-text-main/90 font-normal space-y-4 markdown-body">
+                            <ReactMarkdown>{aiOutput || ''}</ReactMarkdown>
+                          </div>
                         </div>
                       )}
                     </div>
