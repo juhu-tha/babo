@@ -10421,5 +10421,65 @@
       "targetModuleLabel": "Kunststoffe"
     },
     "verified": false
+  },
+  {
+    "id": "q_mat_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Haptik",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welche Stoffgröße bestimmt, ob sich eine Oberfläche bei Berührung warm oder kalt anfühlt?",
+    "options": [
+      "Wärmeeindringkoeffizient b = √(λρc)",
+      "Wärmeleitfähigkeit λ allein",
+      "Wärmedurchgangskoeffizient U",
+      "Rohdichte ρ allein"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Kontakttemperatur hängt vom Verhältnis der Wärmeeindringkoeffizienten von Haut und Material ab. Holz (b ≈ 300) fühlt sich wärmer an als Stahl (b ≈ 13 000).",
+    "gapAnalysis": {
+      "topic": "Haptik",
+      "misconception": "Der U-Wert oder λ allein erklärt die Haptik.",
+      "coreRule": "Kontakttemperatur: b-gewichtetes Mittel der Temperaturen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haptik“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mat_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Patina",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welche Patina bildet Titanzink an der Atmosphäre?",
+    "options": [
+      "Blaugraue Schicht aus basischem Zinkkarbonat",
+      "Grüne Kupferkarbonat-Patina",
+      "Rotbraune Rostschicht",
+      "Keine – Zink bleibt metallisch blank"
+    ],
+    "correctIdx": 0,
+    "explanation": "Titanzink bildet eine matte, blaugraue Deckschicht. Die grüne Patina ist typisch für Kupfer.",
+    "gapAnalysis": {
+      "topic": "Patina",
+      "misconception": "Alle Metalle bilden grüne Patina.",
+      "coreRule": "Kupfer: grün; Zink: blaugrau; Cortenstahl: rotbraun.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Patina“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
   }
 ]

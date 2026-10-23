@@ -13,7 +13,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     haptikOberflaeche: "Je nach Steinmetzbearbeitung differenzierte taktile Wahrnehmung: samtig-warm bei geschliffenem/gebürstetem Sandstein, samtweich-kühl bei poliertem Marmor/Granit, rau-griffig bei gestockten, geflammten oder gespaltenen Naturwerksteinen.",
     lichtReflexion: "Polierte Hartgesteine erzeugen gerichtete Glanzspiegelungen und Tiefenbrillanz; matte, spaltraue oder scharrierte Sedimentgesteine streuen Tageslicht diffus und verleihen Fassaden plastische Schattentiefe.",
     alterungPatina: "Hohe Würde des Alterns: Bildung dezenter Schutzpatina (Kalksinter, Flechtenbeläge im Außenraum), Kantenrundung und edle Glättung an berührten Lauf- und Griffzonen ohne Festigkeitsverlust.",
-    architekturBezug: "Symbol für Monumentalität, Dauerhaftigkeit und Verankerung im Ort (z. B. Schweizer Therme Vals von Peter Zumthor aus Andeerer Gneis; David Chipperfield James-Simon-Galerie Berlin)."
+    architekturBezug: "Symbol für Monumentalität, Dauerhaftigkeit und Verankerung im Ort (z. B. Therme Vals von Peter Zumthor aus Valser Quarzit, einem Gneis)."
   },
   mauerwerk: {
     optikTextur: "Modulare Rhythmik durch Fugenbild (Kreuz-, Block-, Wilder Verband) und Formatproportionen (Reichsformat, Dünnformat, Modulformat); Farbpalette reicht von reduzierter Kohlebrand-Optik bis zu leuchtenden Terrakotta-Nuancen.",
@@ -48,7 +48,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     haptikOberflaeche: "Rau, bimsartig offenporig, fühlbar leichter und wärmer als herkömmlicher Normalbeton.",
     lichtReflexion: "Diffuse, weiche Lichtreflexion; schluckt Lichtreflexe und erzeugt tiefe stoffliche Ruhe.",
     alterungPatina: "Gute Beständigkeit; monolithische Dämmbetonbauten entwickeln mit den Jahren eine wetterfeste, lebendige Natursteinoptik.",
-    architekturBezug: "Monolithische Infraleichtbeton- und Dämmbeton-Villen (z. B. Entwürfe von Mike Schlaich, Atelier Kempe Thill)."
+    architekturBezug: "Monolithische Infraleichtbeton- und Dämmbeton-Villen (z. B. Forschung zu Infraleichtbeton an der TU Berlin, Mike Schlaich)."
   },
   lehmstein: {
     optikTextur: "Warm-erdige Töne von Ocker über Rotbraun bis Oliv; natürliche Unschärfe und feine Fasereinschlüsse (Stroh, Hanf).",
@@ -69,7 +69,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     haptikOberflaeche: "Pudrig-glatt bis seidenweich geschliffen, kreidefrei bei sachgerechter Grundierung, angenehm trocken und zimmerwarm.",
     lichtReflexion: "Hoher Lichtreflexionsgrad (bis zu 85%); verteilt Tageslicht optimal in tiefen Räumen und erzeugt reflexionsarme, homogene Lichtdecken.",
     alterungPatina: "Reiner Innenbaustoff; UV-stabil, altert verzugsfrei bei stabiler relativer Luftfeuchte (40-60%).",
-    architekturBezug: "Voraussetzung für die moderne puristische Innenraumarchitektur und den trockenen, flexiblen Skelettausbau (Mies van der Rohe)."
+    architekturBezug: "Grundlage des Trockenbaus und flexibler, später veränderbarer Innenausbauten."
   },
   kalk: {
     optikTextur: "Charakteristischer wolkenartiger, transluzenter Tiefenschmelz durch kristallines Calciumcarbonat; sanft nuancierte Weiß- und Pastellschattierungen.",
@@ -82,7 +82,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     optikTextur: "Erdige, ursprüngliche Materialität mit sichtbaren organischen Zuschlagfasern, Schilfmatten oder Stampflehm-Schichtungen.",
     haptikOberflaeche: "Warm, stofflich, leicht porös und handschmeichelnd; besitzt die höchste thermische Behaglichkeit aller mineralischen Baustoffe.",
     lichtReflexion: "Vollkommen blendfrei, warme Erdtöne absorbieren kühles Tageslicht und wandeln es in beruhigende Raumstimmungen.",
-    alterungPatina: "Kann beliebig oft durch Wasserzugabe reaktiviert werden (Cradle-to-Cradle); im Innenraum unbegrenzt haltbar.",
+    alterungPatina: "Ungebrannter Lehm lässt sich durch Wasserzugabe wieder aufbereiten; im Innenraum sehr dauerhaft.",
     architekturBezug: "Stampflehmbauten von Martin Rauch (Kapelle der Versöhnung Berlin), Lehm-Holz-Hybridentwürfe zeitgenössischer Vorzeige-Nachhaltigkeit."
   },
   erdbau: {
@@ -117,7 +117,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     optikTextur: "Präzise Leichtigkeit; seidenmatte Eloxaloberflächen (C0 bis C35) oder unbegrenzte Farbflexibilität durch Pulverbeschichtung.",
     haptikOberflaeche: "Kühl, samtglatt, gratfrei und formstabil.",
     lichtReflexion: "Gezielte Steuerung von diffusem Lichtschimmer bis zu scharfen Reflexen; ideal für Lamellenfassaden und Sonnenschutz.",
-    alterungPatina: "Selbstpassivierende Oxidschicht garantiert dauerhafte Korrosionsfreiheit ohne Abblättern.",
+    alterungPatina: "Selbstpassivierende Oxidschicht schützt weitgehend; in chloridhaltiger Umgebung ist Lochkorrosion möglich.",
     architekturBezug: "Schlanke Pfosten-Riegel-Fassaden, Fensterkonstruktionen und aerodynamische Gebäudehüllen der High-Tech-Architektur (Foster + Partners)."
   },
   kupfer: {
@@ -145,7 +145,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     optikTextur: "Matte, vorbewitterte blaugraue bis schiefergraue Oberfläche mit feinen handwerklichen Falznähten.",
     haptikOberflaeche: "Samtig, weich, angenehm griffig und metallisch dicht.",
     lichtReflexion: "Blendfreie, sanfte Reflexion; fügt sich harmonisch in wechselnde Himmelsstimmungen ein.",
-    alterungPatina: "Hydrozinkit-Schicht heilt Kratzer selbsttätig durch Luftfeuchtigkeit und CO₂.",
+    alterungPatina: "Die Patina (basisches Zinkkarbonat) bildet sich an Kratzern durch Luftfeuchte und CO₂ neu.",
     architekturBezug: "Typische Pariser Mansarddächer, skulpturale Zinkbänder im modernen Museumsbau (Libeskind)."
   },
   blei: {
@@ -159,7 +159,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     optikTextur: "Schillernde, champagner- bis silberfarbene Reflexe; leichte Welligkeit dünner Bleche erzeugt lebendige Lichtspiele.",
     haptikOberflaeche: "Extrem hart, kratzfest, leicht und seidenmatt.",
     lichtReflexion: "Hohe Lichtbrechung bei wechselndem Sonnenstand; changiert zwischen Gold, Silber und Himmelblau.",
-    alterungPatina: "Vollkommen inert und korrosionsresistent selbst in aggressiver Meeresluft.",
+    alterungPatina: "Sehr korrosionsbeständig, auch in Meeresluft.",
     architekturBezug: "Dekonstruktivistische Monumentalarchitektur (Frank Gehry Guggenheim-Museum Bilbao)."
   },
   holz: {
@@ -180,14 +180,14 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     optikTextur: "Dunkelanthrazitfarbene bis tiefschwarze Körnungstextur; fugenlose Fläche; im Hochbau als geschliffener Gussasphalt-Terrazzo hochästhetisch.",
     haptikOberflaeche: "Im Straßenbau rau und griffig; als geschliffener Terrazzo-Estrich spiegelglatt, fugenlos, fußwarm und elastisch im Tritt.",
     lichtReflexion: "Frischer Asphalt schluckt Licht (Sicherheitsfaktor im Straßenbau); polierter Gussasphalt reflektiert elegant mit sichtbaren Kornoberflächen.",
-    alterungPatina: "Hellt unter Sonneneinstrahlung zu homogenem Grau auf; extrem dauerhaft und abriebfest.",
-    architekturBezug: "Fugenlose Loftböden, Ausstellungsräume und Galerien (z. B. Kolumba-Museum Köln von Peter Zumthor)."
+    alterungPatina: "Hellt unter Sonneneinstrahlung zu Grau auf; dauerhaft und abriebfest.",
+    architekturBezug: "Fugenlose Gussasphaltestriche in Lofts, Ausstellungs- und Industriebauten."
   },
   kunststoffe: {
     optikTextur: "Unbegrenzte Form- und Farbgebung; von glasklaren ETFE-Kissen über transluzente Polycarbonat-Stegplatten bis zu farbigen Fassadenplatten.",
     haptikOberflaeche: "Leicht, glatt, warm, flexibel bis elastisch; fugenarme Großformate.",
     lichtReflexion: "Transluzente Membranen filtern Tageslicht blendfrei und lassen Baukörper nachts als Leuchtkörper erstrahlen.",
-    alterungPatina: "UV-Strahlung führt langfristig zu Verfärbung oder Versprödung; hochwertige Fluorpolymere (PTFE, ETFE) sind selbstreinigend durch Lotuseffekt.",
+    alterungPatina: "UV-Strahlung führt langfristig zu Verfärbung oder Versprödung; Fluorpolymere (PTFE, ETFE) sind antiadhäsiv und dadurch schmutzabweisend (kein Lotuseffekt).",
     architekturBezug: "Pneumatische Membranfassaden und Stadionüberdachungen (Allianz Arena München von Herzog & de Meuron, Eden Project)."
   },
   faserverbund: {
@@ -195,7 +195,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     haptikOberflaeche: "Glatte Harzoberfläche (Epoxid, Vinylester), extrem steif und federleicht.",
     lichtReflexion: "Tiefschwarze Lichtabsorption bei Sichtcarbon; seidenmatte Streuung bei transluzenten GFK-Paneelen.",
     alterungPatina: "Vollkommen korrosionsfrei; erfordert UV-Schutzlackierung im Außenraum.",
-    architekturBezug: "Bionische Pavillons, Freiformschalen und extrem schlanke Brückentragwerke (Achim Menges ICD/ITKE Stuttgart)."
+    architekturBezug: "Bionische Forschungspavillons (ICD/ITKE Stuttgart, Achim Menges), Freiformschalen und GFK-Fußgängerbrücken."
   },
   daemmstoffe: {
     optikTextur: "Faserige Wollgefüge (Steinwolle, Hanf, Holzfaser) oder geschlossenzellige Hartschaumstrukturen (EPS, XPS, PIR); meist in der Hülle verborgen.",
@@ -209,7 +209,7 @@ export const ARCHITEKTUR_MATERIALITAET: Record<string, MaterialitaetInfo> = {
     haptikOberflaeche: "Trocken, pudrig-alkalisch; transformiert mit Wasser zu einem fugenlosen Steinmonolithen.",
     lichtReflexion: "Bestimmt den Grundfarbton des Betons maßgeblich von kühlem Zementgrau bis zu leuchtendem Weiß.",
     alterungPatina: "Basis für die generationenlange Dauerhaftigkeit und Karbonatisierung von Massivbauten.",
-    architekturBezug: "Das Rückgrat moderner Infrastruktur- und Hochbauikonen vom Römischen Reich bis zu Le Corbusier."
+    architekturBezug: "Rückgrat moderner Infrastruktur- und Hochbauten (Le Corbusier u. a.); Vorläufer war das römische Opus caementicium mit Puzzolanen."
   },
   beton: {
     optikTextur: "Flüssiger Stein: Übernimmt jedes Detail der Schalungshaut (gehobelte sägerohe Bretter, glatte Schaltafeln, strukturierte Elastomer-Matrizen); sichtbar geordnete Fugen- und Schalungsanker-Raster.",

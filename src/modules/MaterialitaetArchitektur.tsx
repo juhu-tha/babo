@@ -13,6 +13,8 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ARCHITEKTUR_MATERIALITAET } from '@/src/data/architekturMaterialitaet';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 interface MaterialVisualSpec {
   id: string;
@@ -64,9 +66,9 @@ const MATERIAL_CATALOG: MaterialVisualSpec[] = [
     tactileScale: 'grob-reliefiert',
     thermalPerception: 'kalt',
     reflectionType: 'Halbmatt',
-    iconicWork: 'Therme Vals (Graubünden) & Therme Vals (Graubünden) & Neue Nationalgalerie (Berlin, Granitterrasse)',
+    iconicWork: 'Therme Vals (Graubünden) & Neue Nationalgalerie (Berlin, Granitterrasse; Sanierung Chipperfield)',
     famousArchitect: 'Peter Zumthor / David Chipperfield',
-    keyDetail: 'Gespaltener Andeerer Gneis in feiner Schichtfuge, der Lichtreflexion des Thermalwassers aufnimmt.'
+    keyDetail: 'Geschichtete Platten aus Valser Quarzit (Gneis) mit feinen Fugen, die das Licht des Thermalwassers aufnehmen.'
   },
   {
     id: 'kalk',
@@ -116,8 +118,8 @@ const MATERIAL_CATALOG: MaterialVisualSpec[] = [
     tactileScale: 'körnig-rau',
     thermalPerception: 'kühl',
     reflectionType: 'Diffus matt',
-    iconicWork: 'Neue Nationalgalerie (Berlin) & Torre Cajasol (Sevilla)',
-    famousArchitect: 'Mies van der Rohe / César Pelli',
+    iconicWork: 'Neue Nationalgalerie (Berlin) & John Deere World Headquarters (Moline, Cortenstahl)',
+    famousArchitect: 'Mies van der Rohe / Eero Saarinen',
     keyDetail: 'Konstruktive Ehrlichkeit: Sichtbare Schweißnähte, I-Träger-Schlankheit oder samtige Rostpatina.'
   },
   {
@@ -144,7 +146,7 @@ const MATERIAL_CATALOG: MaterialVisualSpec[] = [
     reflectionType: 'Halbmatt',
     iconicWork: 'Jüdisches Museum (Berlin) & Stellwerk Basel',
     famousArchitect: 'Daniel Libeskind / Herzog & de Meuron',
-    keyDetail: 'Metamorphe Alterung von metallischem Glanz über Dunkelbraun bis zur charakteristischen Grün-Patina.'
+    keyDetail: 'Alterung: Kupfer von metallischem Glanz über Braun zur grünen Patina, Titanzink zur blaugrauen Patina.'
   },
   {
     id: 'holz',
@@ -527,18 +529,34 @@ export default function MaterialitaetArchitektur() {
         </div>
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Warum fühlt sich Holz wärmer an als Stahl?"
+          zielGleichung="\vartheta_K = \frac{b_H \cdot \vartheta_H + b_M \cdot \vartheta_M}{b_H + b_M}, \quad b = \sqrt{\lambda \rho c}"
+          normQuelle="Kontakttemperatur zweier halbunendlicher Körper (Bauphysik); b_Haut ≈ 1000 als Lehrwert"
+          schritte={[
+            { titel: '1. Wärmeeindringkoeffizienten', formel: 'b_{Holz} \\approx 306,\\; b_{Beton} \\approx 2\\,191,\\; b_{Stahl} \\approx 13\\,290\\;\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})', erklaerung: 'Holz: λ = 0,13, ρ = 450, c = 1600; Beton: 2,0 / 2400 / 1000; Stahl: 50 / 7850 / 450.' },
+            { titel: '2. Holz', formel: '\\vartheta_K = \\frac{1000 \\cdot 33 + 306 \\cdot 20}{1306} = 30{,}0\\,^\\circ\\text{C}', erklaerung: 'Hand 33 °C, Material 20 °C.' },
+            { titel: '3. Beton', formel: '\\vartheta_K = \\frac{1000 \\cdot 33 + 2191 \\cdot 20}{3191} = 24{,}1\\,^\\circ\\text{C}', erklaerung: 'Deutlich kühlerer Eindruck.' },
+            { titel: '4. Stahl', formel: '\\vartheta_K = \\frac{1000 \\cdot 33 + 13\\,290 \\cdot 20}{14\\,290} = 20{,}9\\,^\\circ\\text{C}', erklaerung: 'Die Haut nimmt fast die Materialtemperatur an.' },
+          ]}
+          ergebnisHinweis="Bei gleicher Raumtemperatur fühlt sich Holz rund 9 K wärmer an als Stahl – die Haptik folgt aus b, nicht aus der Temperatur."
+        />
+      </div>
+
+      <ModulTest moduleId="materialitaet_architektur" />
+
       <ModuleFooter
         wikipedia={[
-          { title: 'Materialität (Architektur)' },
           { title: 'Sichtbeton', url: 'https://de.wikipedia.org/wiki/Sichtbeton' },
           { title: 'Patina', url: 'https://de.wikipedia.org/wiki/Patina' },
           { title: 'Klinker', url: 'https://de.wikipedia.org/wiki/Klinker' }
         ]}
         literatur={[
-          'Zumthor, Peter (2006): Atmosphären. Birkhäuser Verlag, Basel.',
-          'Pallasmaa, Juhani (2012): Die Augen der Haut. Architektur und die Sinne. Edition Detail, München.',
-          'Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T. (2005): Baustoff Atlas. Edition Detail / Birkhäuser.',
-          'Deplazes, Andrea (Hrsg.) (2018): Architektur konstruieren: Vom Rohmaterial zum Bauwerk. Birkhäuser Verlag.'
+          'Zumthor, Peter: Atmosphären. Basel: Birkhäuser 2006',
+          'Pallasmaa, Juhani: Die Augen der Haut – Architektur und die Sinne. Los Angeles: Atara Press 2012',
+          'Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T.: Baustoff Atlas. München: Edition Detail 2005',
+          'Deplazes, A. (Hrsg.): Architektur konstruieren – Vom Rohmaterial zum Bauwerk. Basel: Birkhäuser 2018 (Neuauflage 2022)'
         ]}
         regelwerke={[
           { title: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015)', url: 'https://www.beton.org/' },
@@ -548,12 +566,12 @@ export default function MaterialitaetArchitektur() {
         formeln={[
           {
             formel: 'b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad [\\text{J} / (\\text{m}^2 \\text{K} \\sqrt{\\text{s}})]',
-            erklaerung: 'Wärmeeindringkoeffizient b des Baustoffs: Bestimmt die taktile Temperaturwahrnehmung bei Berührung. Niedriges b (z. B. Holz b ≈ 400) fühlt sich sofort handwarm an; hohes b (z. B. Stahl b ≈ 14.000 oder Beton b ≈ 2.000) entzieht der Haut rasch Wärme und fühlt sich kühl/kalt an.',
+            erklaerung: 'Wärmeeindringkoeffizient b des Baustoffs: Bestimmt die taktile Temperaturwahrnehmung bei Berührung. Niedriges b (z. B. Nadelholz b ≈ 300–400) fühlt sich sofort handwarm an; hohes b (z. B. Stahl b ≈ 14.000 oder Beton b ≈ 2.000) entzieht der Haut rasch Wärme und fühlt sich kühl/kalt an.',
             quelle: 'Bauphysik & Thermodynamik'
           },
           {
-            formel: '\\rho_d + \\rho_s = 1 - \\alpha',
-            erklaerung: 'Optische Strahlungsbilanz der Baustoffoberfläche: Summe aus diffuser Reflexion ρ_d und gerichteter Spiegelung ρ_s entspricht der nicht absorbierten Strahlung (1 - α).',
+            formel: '\\rho_d + \\rho_s = 1 - \\alpha \\quad (\\tau = 0)',
+            erklaerung: 'Optische Strahlungsbilanz der Baustoffoberfläche: Bei lichtundurchlässigen Oberflächen (Transmission τ = 0) entspricht die Summe aus diffuser Reflexion ρ_d und gerichteter Spiegelung ρ_s der nicht absorbierten Strahlung (1 − α).',
             quelle: 'Lichttechnik & Optik'
           }
         ]}
