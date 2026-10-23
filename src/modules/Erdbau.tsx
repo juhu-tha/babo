@@ -2,6 +2,7 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Mountain, Layers, AlignVerticalSpaceAround, Activity, LayoutGrid, Calculator, ThermometerSnowflake, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Slider } from '@/src/components/ui/Slider';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -50,22 +51,17 @@ export default function Erdbau() {
 
   // Frostschutz Logic (vereinfacht nach RStO)
   const frostschutzDicke = useMemo(() => {
-    let d = 0;
-    
-    // Ausgangsdicke abhängig von Frostzone
-    if (frostzone === 1) d = 50;
-    if (frostzone === 2) d = 60;
-    if (frostzone === 3) d = 70;
+    // Vereinfacht nach RStO 12, Tab. 6/7 (weitere Zeilen der Tab. 7 manuell prüfen):
+    // Ausgangswert je Frostempfindlichkeitsklasse und Belastungsklasse
+    const hoch = bauklasse === 'Bk100' || bauklasse === 'Bk32' || bauklasse === 'Bk10';
+    const mittel = bauklasse === 'BK3' || bauklasse === 'BK1';
+    let d = bodengruppe === 'F3' ? (hoch ? 65 : mittel ? 60 : 50) : (hoch ? 55 : mittel ? 50 : 40);
+    // Mehrdicke Frosteinwirkungszone: I ±0, II +5, III +15 cm
+    d += frostzone === 2 ? 5 : frostzone === 3 ? 15 : 0;
+    // Mehrdicke Wasserverhältnisse (Grund-/Schichtwasser höher als 1,5 m unter Planum): +5 cm
+    if (wasserverhaeltnisse === 'unguenstig') d += 5;
 
-    // Zuschläge nach Bauklasse / Mehrbelastung
-    if (bauklasse === 'Bk100' || bauklasse === 'Bk32') d += 10;
-    if (bauklasse === 'BK03') d -= 10;
-
-    // Zuschläge nach Wasserverhältnissen & Boden
-    if (wasserverhaeltnisse === 'unguenstig' && bodengruppe === 'F3') d += 10;
-    else if (wasserverhaeltnisse === 'guenstig' && bodengruppe === 'F2') d -= 5;
-    
-    // Dicken der gebundenen Schichten abziehen (vereinfacht: Asphalt ~ 15-30cm)
+    // Lehrannahme: gebundene Schichten pauschal 15 bzw. 30 cm (tatsächlich nach RStO-Tafel der gewählten Bauweise)
     const dickeAsphalt = (bauklasse === 'Bk100' || bauklasse === 'Bk32') ? 30 : 15;
     const dickeFSS = d - dickeAsphalt; // Notwendige Dicke der ungebundenen Frostschutzschicht (Mindestens 15cm)
 
@@ -73,7 +69,7 @@ export default function Erdbau() {
       gesamtDicke: d, 
       dickeAsphalt, 
       dickeFSS: Math.max(15, dickeFSS),
-      regelausfuehrung: `Die RStO fordert hier eine frostsichere Gesamtkonstruktion von mindestens ${formatDeWert(d)} cm.`
+      regelausfuehrung: `Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema: ${formatDeWert(d)} cm (Ausgangswert + Mehrdicken Frostzone und Wasser).`
     };
   }, [frostzone, bauklasse, bodengruppe, wasserverhaeltnisse]);
 
@@ -253,7 +249,7 @@ export default function Erdbau() {
               </div>
 
               <div className="bg-shiraz p-6 rounded-xl flex flex-col gap-6 text-white shadow-xl">
-                <h3 className="font-bold uppercase tracking-widest text-sm text-white/80">Bodengruppe nach DIN 18196</h3>
+                <h3 className="font-bold uppercase tracking-widest text-sm text-white/80">Bodengruppe nach DIN 18196 (vereinfachte Zuordnung)</h3>
                 <div>
                   <div className="text-5xl font-black mb-2">{bodenKlasse.gruppe}</div>
                   <div className="text-xl font-medium">{bodenKlasse.name}</div>
@@ -373,6 +369,8 @@ export default function Erdbau() {
         )}
       </div>
 
+      <ModulTest moduleId="erdbau" />
+
       <ModuleFooter
         wikipedia={[
           { title: 'Erdbau', url: 'https://de.wikipedia.org/wiki/Erdbau' },
@@ -381,8 +379,8 @@ export default function Erdbau() {
         ]}
         literatur={[
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
-          'Scholz - Baustoffkenntnis: Grundlagen geotechnischer Prüfungen',
-          'RStO 12 (FGSV Ausgabe 2012 / Fassung 2024): Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (eingeführt mit ARS Nr. 02/2024)'
+          'Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016',
+          'FGSV: RStO 12 – Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (aktuelle Fassung und Einführungserlass manuell prüfen)'
         ]}
         regelwerke={[
           { title: 'DIN 18196:2023-07 (Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke)' },
@@ -390,7 +388,7 @@ export default function Erdbau() {
           { title: 'DIN 18134:2012-04 (Baugrund - Versuche und Versuchsgeräte - Plattendruckversuch)' },
           { title: 'DIN EN ISO 14688-1:2020-11 / DIN EN ISO 14688-2:2020-11 (Geotechnische Erkundung - Benennung und Klassifizierung von Boden)' },
           { title: 'ZTV E-StB 17:2017 (Zusätzliche Technische Vertragsbedingungen und Richtlinien für Erdarbeiten im Straßenbau)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'RStO 12 (Fassung 2024, Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen, eingeführt mit Allgemeinem Rundschreiben Straßenbau Nr. 02/2024)', url: 'https://www.fgsv-verlag.de/' }
+          { title: 'RStO 12 (Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen; aktuelle Fassung manuell prüfen)', url: 'https://www.fgsv-verlag.de/' }
         ]}
         formeln={[
           {

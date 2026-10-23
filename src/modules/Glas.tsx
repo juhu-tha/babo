@@ -7,6 +7,7 @@ import '@/src/lib/chartSetup';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
@@ -69,6 +70,7 @@ export default function Glas() {
   const vsgData = useMemo(() => {
     // Schubmodul G von PVB (vereinfachte Interpolation)
     // Kurz (Wind), Mittel (Schnee), Lang (Eigengewicht)
+    // Lehrannahme: Schubmodul-Werte stark vereinfacht (produktabhängig, maßgebend Zulassung/Datenblatt)
     const G_values = {
       short: { 0: 400, 20: 10, 40: 0.5, 60: 0.1 },
       medium: { 0: 100, 20: 1.0, 40: 0.1, 60: 0.01 },
@@ -101,9 +103,11 @@ export default function Glas() {
     const hm = (h1 + h2) / 2 + d;
     const Is = h1 * Math.pow(hm/2, 2) + h2 * Math.pow(hm/2, 2); // vereinfacht
 
-    const Gamma = 1 / (1 + 9.6 * E * Is / (G * Math.pow(hm, 2) * Math.pow(a, 2)));
+    // DIN EN 16612: Γ = 1 / (1 + 9,6·E·I_s·h_v / (G·h_m²·a²))
+    const Gamma = 1 / (1 + 9.6 * E * Is * d / (G * Math.pow(hm, 2) * Math.pow(a, 2)));
     
-    const hef_w = Math.sqrt(Math.pow(h1, 2) + Math.pow(h2, 2) + 12 * Gamma * Math.pow(hm, 2));
+    // h_ef,w = ∛(h1³ + h2³ + 12·Γ·I_s)
+    const hef_w = Math.cbrt(Math.pow(h1, 3) + Math.pow(h2, 3) + 12 * Gamma * Is);
 
     return { G, Gamma, hef_w };
   }, [temp, duration]);
@@ -177,7 +181,7 @@ export default function Glas() {
                   onChange={(e) => {
                     const type = e.target.value as keyof typeof glassTypes;
                     setGlassType(type);
-                    setSigma0(glassTypes[type].fgk * 1.5); // Heuristische Anpassung der char. Festigkeit für Weibull
+                    setSigma0(glassTypes[type].fgk * 1.5); // Lehrmodell: σ0 = 1,5 · f_g,k (keine Normgröße)
                   }}
                 >
                   {Object.entries(glassTypes).map(([k, v]) => <option key={k} value={k}>{v.name}</option>)}
@@ -250,7 +254,7 @@ export default function Glas() {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Verbundsicherheitsglas (VSG)</h3>
               <p className="text-sm text-text-main/80 mb-4">
-                Der Schubverbund der PVB-Folie hängt stark von Temperatur und Lasteinwirkungsdauer ab. Bei langzeitigen Lasten oder hohen Temperaturen wird Schubmodul G sehr gering und es tritt kaum Schubverbund auf (Gleitverbund). Bei Kurzzeitlasten ist er hingegen ausgeprägt.
+                Der Schubverbund der PVB-Folie hängt stark von Temperatur und Lasteinwirkungsdauer ab. Bei langzeitigen Lasten oder hohen Temperaturen wird Schubmodul G sehr gering und es tritt kaum Schubverbund auf (Gleitverbund). Bei Kurzzeitlasten ist er hingegen ausgeprägt. Hinweis: Nach DIN 18008 darf der Schubverbund in Deutschland grundsätzlich nicht angesetzt werden (Ausnahme: Zulassung bzw. Bauartgenehmigung); der Rechner zeigt das Prinzip mit vereinfachten G-Werten (Lehrannahme).
               </p>
               
               <div className="flex flex-col gap-2 mb-4">
@@ -386,14 +390,15 @@ export default function Glas() {
       )}
       </div>
     
+      <ModulTest moduleId="glas" />
+
       <ModuleFooter 
         wikipedia={[
         { title: 'Glas', url: 'https://de.wikipedia.org/wiki/Glas' },
         { title: 'Verbundsicherheitsglas', url: 'https://de.wikipedia.org/wiki/Verbundsicherheitsglas' }
       ]}
         literatur={[
-          'Weller, B.; Nicklisch, F.; Thieme, S.; Weimar, T.: Glasbau-Praxis. Konstruktion und Bemessung (Bauwerk/Beuth)',
-          'Feldmann, M. (2018): Konstruktiver Glasbau - Bemessung und Ausführung (Ernst & Sohn)'
+          'Weller, B.; Krampe, P.; Reich, S.: Glasbau-Praxis – Konstruktion und Bemessung, Band 1 und 2. Berlin: Beuth 2013 (Auflage manuell prüfen)'
         ]}
         regelwerke={[
           { title: 'DIN 18008-1:2020-05 (Glas im Bauwesen - Bemessungs- und Konstruktionsregeln - Teil 1: Begriffe und allgemeine Grundlagen)' },
@@ -407,13 +412,13 @@ export default function Glas() {
         ]}
         formeln={[
           {
-            formel: 'h_{ef,w} = \\sqrt[3]{h_1^3 + h_2^3 + 12 \\cdot \\Gamma \\cdot h_m^2 \\cdot \\frac{h_1 \\cdot h_2}{h_1 + h_2}}',
+            formel: 'h_{ef,w} = \\sqrt[3]{h_1^3 + h_2^3 + 12 \\cdot \\Gamma \\cdot I_s}, \\quad I_s = h_1 h_{m,2}^2 + h_2 h_{m,1}^2',
             erklaerung: 'Effektive Dicke für Durchbiegungen bei Verbundsicherheitsglas (VSG) nach DIN 18008-1:2020-05 / DIN EN 16612:2019-12. \\Gamma beschreibt den Schubverbundbeiwert (0 = gleitend, 1 = starr) der polymeren Zwischenschicht (PVB/SentryGlas).',
             quelle: 'DIN EN 16612:2019-12'
           },
           {
             formel: 'f_{g,d} = \\frac{k_{mod} \\cdot k_{sp} \\cdot f_{g,k}}{\\gamma_M}',
-            erklaerung: 'Bemessungswert der Biegezugfestigkeit für thermisch nicht vorgespanntes Floatglas (Spiegelglas). k_{mod} berücksichtigt die Lasteinwirkungsdauer (Subkritisches Risswachstum), k_{sp} den Oberflächenzustand.',
+            erklaerung: 'Bemessungswert der Biegezugfestigkeit für thermisch nicht vorgespanntes Floatglas (Spiegelglas). k_{mod} berücksichtigt die Lasteinwirkungsdauer (Subkritisches Risswachstum), k_{sp} den Oberflächenzustand (EN 16612). In Deutschland nach DIN 18008-1: f_{g,d} = k_{mod}·k_c·f_{g,k}/γ_M, Floatglas γ_M = 1,8 (manuell prüfen).',
             quelle: 'DIN EN 16612:2019-12'
           }
         ]}

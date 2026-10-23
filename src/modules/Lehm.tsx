@@ -2,6 +2,7 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BookOpen } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -161,7 +162,7 @@ export default function Lehm() {
           </div>
           <div className="flex flex-col gap-6">
             <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Eigenschaften (geschätzt)</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Eigenschaften (grobe Schätzung – Lehrmodell, keine Normwerte)</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Trockenrohdichte</div><div className="text-2xl font-bold">{formatDeZahl(results.rohdichte, 0)} kg/m³</div></div>
                 <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Druckfestigkeit</div><div className="text-2xl font-bold">{formatDeZahl(results.druckfestigkeit, 1)} MPa</div></div>
@@ -230,7 +231,7 @@ export default function Lehm() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                <strong>Bemessung nach neuer Norm (DIN 18940):</strong> Seit Erscheinen der DIN 18940 (2023) ist die lastabtragende Bemessung von Lehmsteinmauerwerk (bis zu Gebäudeklasse 4) normiert. Sie orientiert sich stark an den Konzepten des klassischen Mauerwerksbaus (DIN EN 1996), berücksichtigt jedoch das spezifische feuchteabhängige Verhalten (Kriechen & Schwinden) sowie die geringeren Festigkeiten von Lehmbaustoffen.
+                <strong>Bemessung nach neuer Norm (DIN 18940):</strong> Seit Erscheinen der DIN 18940 (2023-06) ist die lastabtragende Bemessung von Lehmsteinmauerwerk normiert (Anwendungsgrenzen, z. B. Gebäudeklasse: manuell prüfen). Sie orientiert sich stark an den Konzepten des klassischen Mauerwerksbaus (DIN EN 1996), berücksichtigt jedoch das spezifische feuchteabhängige Verhalten (Kriechen & Schwinden) sowie die geringeren Festigkeiten von Lehmbaustoffen.
               </p>
             </div>
 
@@ -298,18 +299,20 @@ export default function Lehm() {
 
       </div>
 
+      <ModulTest moduleId="lehm" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Lehmbau', url: 'https://de.wikipedia.org/wiki/Lehmbau' },
           { title: 'Stampflehm', url: 'https://de.wikipedia.org/wiki/Stampflehm' }
         ]}
         literatur={[
-          'Minke, G. (2018): Handbuch Lehmbau - Baustoffkunde, Techniken, Architektur (8. Auflage, Ökobuch Verlag)',
+          'Minke, G.: Handbuch Lehmbau – Baustoffkunde, Techniken, Lehmarchitektur. Staufen: Ökobuch (Auflage manuell prüfen)',
           'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln (3. Aufl., Vieweg+Teubner 2009)',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18940:2023-04 (Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion)' },
+          { title: 'DIN 18940:2023-06 (Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion)' },
           { title: 'DIN 18945:2024-03 (Lehmsteine - Anforderungen, Prüfung und Kennzeichnung)' },
           { title: 'DIN 18946:2024-03 (Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung)' },
           { title: 'DIN 18947:2024-03 (Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung)' },
@@ -324,7 +327,7 @@ export default function Lehm() {
           {
             formel: '\\rho_d = \\frac{m_{\\text{trocken}}}{V_d}',
             erklaerung: 'Trockenrohdichte von Lehmbaustoffen. Ein Hauptindikator für Wärmeleitfähigkeit und Schallleitung.',
-            quelle: 'DIN 18940:2023-04'
+            quelle: 'DIN 18940:2023-06'
           }
         ]}
       />

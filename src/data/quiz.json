@@ -9191,5 +9191,455 @@
       "targetModuleLabel": "Putze & Mörtel"
     },
     "verified": false
+  },
+  {
+    "id": "q_gip_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "gips",
+    "moduleTitle": "Gips",
+    "topic": "Herstellung",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 13279-1",
+    "question": "Was entsteht beim Brennen von Gipsstein bei etwa 120–180 °C?",
+    "options": [
+      "Anhydrit",
+      "Calciumsulfat-Halbhydrat (Stuckgips)",
+      "Calciumoxid",
+      "Ettringit"
+    ],
+    "correctIdx": 1,
+    "explanation": "CaSO₄·2H₂O gibt 1,5 H₂O ab und wird zu CaSO₄·½H₂O; bei höheren Temperaturen entsteht Anhydrit.",
+    "gapAnalysis": {
+      "topic": "Herstellung",
+      "misconception": "Beim Brennen entstehe wie beim Kalk ein Oxid.",
+      "coreRule": "Dihydrat → Halbhydrat → beim Abbinden wieder Dihydrat.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Herstellung“ im Modul Gips noch einmal durch.",
+      "targetModuleTab": "gips",
+      "targetModuleLabel": "Gips"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_gip_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "gips",
+    "moduleTitle": "Gips",
+    "topic": "Brandschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 520",
+    "question": "Warum verbessert Gips den Brandschutz?",
+    "options": [
+      "Er verkohlt schützend",
+      "Das gebundene Kristallwasser (≈ 20 M.-%) verdampft und bindet Wärme",
+      "Gips schmilzt bei 200 °C und dichtet ab",
+      "Gips reflektiert Wärmestrahlung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Solange das Kristallwasser verdampft, bleibt die Temperatur hinter der Platte bei etwa 100 °C; GKF (Typ DF) hält das Gefüge mit Glasfasern zusammen.",
+    "gapAnalysis": {
+      "topic": "Brandschutz",
+      "misconception": "Gips wirke nur wegen seiner Nichtbrennbarkeit.",
+      "coreRule": "Kristallwasser → endotherme Entwässerung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Brandschutz“ im Modul Gips noch einmal durch.",
+      "targetModuleTab": "gips",
+      "targetModuleLabel": "Gips"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_gip_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "gips",
+    "moduleTitle": "Gips",
+    "topic": "Unverträglichkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Bauchemie",
+    "question": "Warum darf Gips nicht in dauerfeuchtem Kontakt mit Zementstein stehen?",
+    "options": [
+      "Wegen Ettringitbildung (Sulfattreiben)",
+      "Weil Gips den Zement verflüssigt",
+      "Wegen Carbonatisierung",
+      "Weil Zement Gips auflöst"
+    ],
+    "correctIdx": 0,
+    "explanation": "Sulfat aus dem Gips reagiert mit den Aluminaten des Zements zu Ettringit mit großer Volumenzunahme.",
+    "gapAnalysis": {
+      "topic": "Unverträglichkeit",
+      "misconception": "Gips und Zement seien beliebig kombinierbar.",
+      "coreRule": "Sulfat + Aluminat + Wasser → Ettringit (Treiben).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Unverträglichkeit“ im Modul Gips noch einmal durch.",
+      "targetModuleTab": "gips",
+      "targetModuleLabel": "Gips"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kal_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kalk",
+    "moduleTitle": "Kalk",
+    "topic": "Erhärtung",
+    "difficulty": "Grundlagen",
+    "normRef": "Bauchemie",
+    "question": "Wie erhärtet Luftkalk?",
+    "options": [
+      "Durch Hydratation wie Zement",
+      "Durch Carbonatisierung: Ca(OH)₂ + CO₂ → CaCO₃ + H₂O",
+      "Durch bloßes Austrocknen",
+      "Durch Sintern"
+    ],
+    "correctIdx": 1,
+    "explanation": "Luftkalk nimmt CO₂ aus der Luft auf; das Porenwasser ist dabei Reaktionsmedium.",
+    "gapAnalysis": {
+      "topic": "Erhärtung",
+      "misconception": "Kalk erhärte durch bloßes Austrocknen.",
+      "coreRule": "Luftkalk erhärtet durch Carbonatisierung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Erhärtung“ im Modul Kalk noch einmal durch.",
+      "targetModuleTab": "kalk",
+      "targetModuleLabel": "Kalk"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kal_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kalk",
+    "moduleTitle": "Kalk",
+    "topic": "Kalkarten",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 459-1",
+    "question": "Welches Kurzzeichen steht für natürlichen hydraulischen Kalk?",
+    "options": [
+      "CL",
+      "DL",
+      "NHL",
+      "FL"
+    ],
+    "correctIdx": 2,
+    "explanation": "CL Weißkalk, DL Dolomitkalk, NHL natürlicher hydraulischer Kalk, HL hydraulischer Kalk, FL formulierter Kalk.",
+    "gapAnalysis": {
+      "topic": "Kalkarten",
+      "misconception": "Hydraulische Kalke erhärteten nur an der Luft.",
+      "coreRule": "NHL = natürlicher hydraulischer Kalk.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kalkarten“ im Modul Kalk noch einmal durch.",
+      "targetModuleTab": "kalk",
+      "targetModuleLabel": "Kalk"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kal_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kalk",
+    "moduleTitle": "Kalk",
+    "topic": "Löschen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Bauchemie",
+    "question": "Was passiert beim Löschen von Branntkalk?",
+    "options": [
+      "Endotherme Reaktion, Abkühlung",
+      "Stark exotherme Reaktion zu Ca(OH)₂ (ΔH ≈ −65 kJ/mol)",
+      "Abgabe von CO₂",
+      "Bildung von Calcit"
+    ],
+    "correctIdx": 1,
+    "explanation": "CaO + H₂O → Ca(OH)₂ setzt viel Wärme frei; Schutzausrüstung ist nötig.",
+    "gapAnalysis": {
+      "topic": "Löschen",
+      "misconception": "Beim Löschen werde CO₂ frei.",
+      "coreRule": "Löschen ist exotherm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Löschen“ im Modul Kalk noch einmal durch.",
+      "targetModuleTab": "kalk",
+      "targetModuleLabel": "Kalk"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_leh_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "lehm",
+    "moduleTitle": "Lehm",
+    "topic": "Bindemittel",
+    "difficulty": "Grundlagen",
+    "normRef": "Lehmbau",
+    "question": "Was bindet Lehm?",
+    "options": [
+      "Zementstein",
+      "Tonminerale durch Kohäsion beim Trocknen (reversibel)",
+      "Kalk durch Carbonatisierung",
+      "Kunstharz"
+    ],
+    "correctIdx": 1,
+    "explanation": "Ton ist das Bindemittel; Sand und Schluff bilden das Gerüst. Die Bindung ist durch Wasser umkehrbar.",
+    "gapAnalysis": {
+      "topic": "Bindemittel",
+      "misconception": "Lehm erhärte chemisch und dauerhaft wasserfest.",
+      "coreRule": "Ton = reversibles Bindemittel.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bindemittel“ im Modul Lehm noch einmal durch.",
+      "targetModuleTab": "lehm",
+      "targetModuleLabel": "Lehm"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_leh_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "lehm",
+    "moduleTitle": "Lehm",
+    "topic": "Normen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18940 / DIN 18945",
+    "question": "Welche Norm regelt die Bemessung von tragendem Lehmsteinmauerwerk?",
+    "options": [
+      "DIN 18945",
+      "DIN 18940",
+      "DIN 18947",
+      "DIN EN 1996-1-1"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN 18940 (2023) ist die Bemessungsnorm; DIN 18945–18948 sind Produktnormen (Steine, Mauermörtel, Putzmörtel, Platten).",
+    "gapAnalysis": {
+      "topic": "Normen",
+      "misconception": "Lehmsteine würden nach EC6 bemessen.",
+      "coreRule": "Bemessung DIN 18940; Produkte DIN 18945–18948.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Normen“ im Modul Lehm noch einmal durch.",
+      "targetModuleTab": "lehm",
+      "targetModuleLabel": "Lehm"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_leh_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "lehm",
+    "moduleTitle": "Lehm",
+    "topic": "Feuchtepuffer",
+    "difficulty": "Grundlagen",
+    "normRef": "Bauphysik",
+    "question": "Welche Eigenschaft macht Lehmputz für das Raumklima besonders interessant?",
+    "options": [
+      "Hohe Feuchtepufferung (Sorption)",
+      "Hohe Druckfestigkeit",
+      "Wasserdichtheit",
+      "Hoher Dämmwert"
+    ],
+    "correctIdx": 0,
+    "explanation": "Tonminerale nehmen Luftfeuchte schnell auf und geben sie wieder ab.",
+    "gapAnalysis": {
+      "topic": "Feuchtepuffer",
+      "misconception": "Lehm sei vor allem ein Dämmstoff.",
+      "coreRule": "Lehm puffert Feuchte.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchtepuffer“ im Modul Lehm noch einmal durch.",
+      "targetModuleTab": "lehm",
+      "targetModuleLabel": "Lehm"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_erd_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "erdbau",
+    "moduleTitle": "Erdbau & Böden",
+    "topic": "Bodengruppen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 18196",
+    "question": "Wofür steht die Bodengruppe GW nach DIN 18196?",
+    "options": [
+      "Weitgestufter Kies",
+      "Wassergesättigter Grobboden",
+      "Gemischtkörniger Schluff",
+      "Organischer Boden"
+    ],
+    "correctIdx": 0,
+    "explanation": "G = Kies, W = weitgestuft; E steht für enggestuft, I für intermittierend gestuft.",
+    "gapAnalysis": {
+      "topic": "Bodengruppen",
+      "misconception": "W bedeute Wasser.",
+      "coreRule": "GW = Kies, weitgestuft.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bodengruppen“ im Modul Erdbau & Böden noch einmal durch.",
+      "targetModuleTab": "erdbau",
+      "targetModuleLabel": "Erdbau & Böden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_erd_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "erdbau",
+    "moduleTitle": "Erdbau & Böden",
+    "topic": "Proctorversuch",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18127",
+    "question": "Was beschreibt der Verdichtungsgrad D_Pr?",
+    "options": [
+      "Wassergehalt bezogen auf den Optimalwert",
+      "Trockendichte vor Ort bezogen auf die Proctordichte",
+      "Porenanteil des Bodens",
+      "Tragfähigkeit E_v2"
+    ],
+    "correctIdx": 1,
+    "explanation": "D_Pr = ρ_d / ρ_Pr; übliche Anforderungen liegen bei 97–100 %.",
+    "gapAnalysis": {
+      "topic": "Proctorversuch",
+      "misconception": "Der Verdichtungsgrad beziehe sich auf die Korndichte.",
+      "coreRule": "D_Pr = ρ_d / ρ_Pr.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Proctorversuch“ im Modul Erdbau & Böden noch einmal durch.",
+      "targetModuleTab": "erdbau",
+      "targetModuleLabel": "Erdbau & Böden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_erd_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "erdbau",
+    "moduleTitle": "Erdbau & Böden",
+    "topic": "Frostschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "RStO 12 (vereinfacht)",
+    "question": "Wie wirkt sich eine höhere Frosteinwirkungszone auf den frostsicheren Oberbau aus?",
+    "options": [
+      "Keine Auswirkung",
+      "Mehrdicke (z. B. Zone III +15 cm)",
+      "Minderdicke",
+      "Nur die Asphaltdicke ändert sich"
+    ],
+    "correctIdx": 1,
+    "explanation": "Zum Ausgangswert nach Frostempfindlichkeit und Belastungsklasse kommen Mehrdicken für Frostzone (II +5, III +15 cm) und Wasserverhältnisse.",
+    "gapAnalysis": {
+      "topic": "Frostschutz",
+      "misconception": "Der Oberbau hänge nur von der Verkehrsbelastung ab.",
+      "coreRule": "Ausgangswert + Mehrdicken (RStO).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Frostschutz“ im Modul Erdbau & Böden noch einmal durch.",
+      "targetModuleTab": "erdbau",
+      "targetModuleLabel": "Erdbau & Böden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_gla_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "glas",
+    "moduleTitle": "Glas",
+    "topic": "Glasarten",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 18008-1",
+    "question": "Welche charakteristische Biegezugfestigkeit hat ESG?",
+    "options": [
+      "45 N/mm²",
+      "70 N/mm²",
+      "120 N/mm²",
+      "250 N/mm²"
+    ],
+    "correctIdx": 2,
+    "explanation": "Floatglas 45, TVG 70, ESG 120 N/mm².",
+    "gapAnalysis": {
+      "topic": "Glasarten",
+      "misconception": "Vorspannen ändere nur das Bruchbild, nicht die Festigkeit.",
+      "coreRule": "Float 45 – TVG 70 – ESG 120 N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glasarten“ im Modul Glas noch einmal durch.",
+      "targetModuleTab": "glas",
+      "targetModuleLabel": "Glas"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_gla_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "glas",
+    "moduleTitle": "Glas",
+    "topic": "Verbundsicherheitsglas",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18008",
+    "question": "Darf der Schubverbund von VSG in Deutschland im Regelfall angesetzt werden?",
+    "options": [
+      "Ja, immer",
+      "Nein, grundsätzlich nicht (Ausnahme: Zulassung bzw. Bauartgenehmigung)",
+      "Nur bei Eigengewicht",
+      "Nur bei hohen Temperaturen"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN 18008 lässt den günstig wirkenden Schubverbund grundsätzlich nicht zu; die Folie wirkt vor allem nach dem Bruch (Resttragfähigkeit).",
+    "gapAnalysis": {
+      "topic": "Verbundsicherheitsglas",
+      "misconception": "Die Folie mache VSG automatisch zu einer monolithischen Scheibe.",
+      "coreRule": "VSG nach DIN 18008: ohne Schubverbund rechnen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verbundsicherheitsglas“ im Modul Glas noch einmal durch.",
+      "targetModuleTab": "glas",
+      "targetModuleLabel": "Glas"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_gla_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "glas",
+    "moduleTitle": "Glas",
+    "topic": "Isolierglas",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18008-2",
+    "question": "Was verursacht Klimalasten bei Mehrscheiben-Isolierglas?",
+    "options": [
+      "Windsog allein",
+      "Druck- und Temperaturänderungen im geschlossenen Scheibenzwischenraum",
+      "Schnee auf dem Rahmen",
+      "Feuchte im Randverbund"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der hermetisch geschlossene SZR wirkt wie eine Gasfeder: Luftdruck-, Höhen- und Temperaturunterschiede zum Herstellort erzeugen Isochorendruck.",
+    "gapAnalysis": {
+      "topic": "Isolierglas",
+      "misconception": "Klimalasten wirkten nur von außen.",
+      "coreRule": "Isochorendruck aus Δp, ΔT und ΔH.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Isolierglas“ im Modul Glas noch einmal durch.",
+      "targetModuleTab": "glas",
+      "targetModuleLabel": "Glas"
+    },
+    "verified": false
   }
 ]
