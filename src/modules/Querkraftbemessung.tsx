@@ -108,7 +108,10 @@ export default function Querkraftbemessung() {
     const Asl_req_m2 = asl / 10000; // in m²
     const rho_l = Math.min(0.02, Asl_req_m2 / (b_m * d_m)); // Längsbewehrungsgrad
     const CRdc = EC2_NA_DE.CRdc_Querkraft; // 0.15 / gamma_c nach NA DE
-    const v_min = EC2_NA_DE.vmin_faktor * Math.pow(k, 1.5) * Math.pow(fck, 0.5); // MIN-Wert nach NA DE
+    // v_min nach DIN EN 1992-1-1/NA, NDP 6.2.1(1): 0,0525/γc für d ≤ 600 mm, 0,0375/γc für d > 800 mm, dazwischen linear
+    const d_mm_v = d_m * 1000;
+    const vmin_k1 = d_mm_v <= 600 ? 0.0525 : d_mm_v >= 800 ? 0.0375 : 0.0525 - (0.0525 - 0.0375) * (d_mm_v - 600) / 200;
+    const v_min = (vmin_k1 / 1.5) * Math.pow(k, 1.5) * Math.pow(fck, 0.5); // MIN-Wert nach NA DE
 
     let vRdc_MN = (CRdc * k * Math.pow(100 * rho_l * fck, 1 / 3)) * b_m * d_m;
     const vRdc_min_MN = v_min * b_m * d_m;

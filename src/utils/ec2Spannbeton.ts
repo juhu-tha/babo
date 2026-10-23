@@ -414,7 +414,9 @@ export function relaxation(
   // Nach EC2 Gl. (3.29) für Klasse 2:
   // Delta_sigma_pr / sigma_pi = 0.66 * 2.5 * e^(9.1 * mu) * (t / 1000)^(0.75 * (1 - mu)) * 10^-5
   const exponentT = k_exp * (1 - mu);
-  const ratio = 0.66 * (rho1000 * 100) * Math.exp(9.1 * mu) * Math.pow(tHours / 1000, exponentT) * 1e-5;
+  // EC2 Gl. (3.28) Klasse 1: 5,39 · e^(6,7μ); Gl. (3.29) Klasse 2: 0,66 · e^(9,1μ); Gl. (3.30) Klasse 3: 1,98 · e^(8μ)
+  const [c1, c2] = relClass === 1 ? [5.39, 6.7] : relClass === 3 ? [1.98, 8.0] : [0.66, 9.1];
+  const ratio = c1 * (rho1000 * 100) * Math.exp(c2 * mu) * Math.pow(tHours / 1000, exponentT) * 1e-5;
   const delta_sigma_pr = Math.min(sigma_pi * 0.25, sigma_pi * ratio);
   const pctLoss = (delta_sigma_pr / sigma_pi) * 100;
 

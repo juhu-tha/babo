@@ -175,8 +175,10 @@ export default function Mauerwerk() {
       } else {
         fk = K * Math.pow(fb, 0.85); // Für Dünnbettmörtel (Vollsteine etc.)
       }
+    } else if (mortar === 'LM') {
+      fk = K * Math.pow(fb, 0.7); // Leichtmörtel: EN 1996-1-1 Gl. (3.4), ohne f_m
     } else {
-      fk = K * Math.pow(fb, 0.7) * Math.pow(fm, 0.3); // Für Normal- und Leichtmörtel
+      fk = K * Math.pow(fb, 0.7) * Math.pow(fm, 0.3); // Normalmörtel: EN 1996-1-1 Gl. (3.2)
     }
     const fd = (0.85 * fk) / 1.5; // NA DE: f_d = ζ · f_k / γ_M mit ζ = 0,85, γ_M = 1,5
 
@@ -673,7 +675,7 @@ export default function Mauerwerk() {
                 </div>
               </div>
               <div className="text-sm text-white/80 border-t border-white/20 pt-4">
-                Formel: <FormulaText text={mortar === 'DM' ? (stone === 'HLZ' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}85}') : 'f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}'} /> (K = {formatDeWert(results.K)}, Empfehlung EN); <FormulaText text="f_d = 0{,}85 \cdot f_k / 1{,}5" />
+                Formel: <FormulaText text={mortar === 'DM' ? (stone === 'HLZ' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}85}') : mortar === 'LM' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}'} /> (K = {formatDeWert(results.K)}, Empfehlung EN); <FormulaText text="f_d = 0{,}85 \cdot f_k / 1{,}5" />
               </div>
             </div>
 
