@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { Droplets, ShieldCheck, Layers, Cpu, Compass, BookOpen, AlertCircle, CheckCircle2, ChevronRight, Gauge } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
@@ -45,44 +47,27 @@ export default function WUBauwerke() {
     const hMeter = h / 1000;
     const druckgefaelle = hMeter > 0 ? hw / hMeter : 0;
 
-    // Mindestbauteildicke nach DAfStb WU-Richtlinie:2017-12
+    // Mindestbauteildicken nach DAfStb-WU-Richtlinie 2017-12, Tab. 1 (Ortbeton / Elementwand / Fertigteil)
+    // Kernbetondicke der Elementwand: manuell prüfen
     let mindestDicke = 200;
     if (bk === '1') {
-      if (bauteil === 'Wand') {
-        mindestDicke = bauart === 'ortbeton' ? 240 : 300; // Elementwände mind. 300 mm (Ortbetonkern mind. 140 mm)
-      } else {
-        mindestDicke = 250; // Bodenplatte BK 1
-      }
+      mindestDicke = bauteil === 'Wand' ? 240 : 250;
     } else {
-      // BK 2 (Bodenfeuchte / nichtdrückendes Wasser)
-      if (bauteil === 'Wand') {
-        mindestDicke = bauart === 'ortbeton' ? 200 : 240;
-      } else {
-        mindestDicke = 200;
-      }
+      mindestDicke = bauteil === 'Wand' ? (bauart === 'ortbeton' ? 200 : 240) : 150;
     }
     const dickeOk = h >= mindestDicke;
 
-    // Zulässige rechnerische Rissbreite w_k nach WU-Richtlinie Tab. 2 (Trennrisse)
-    let zulRissbreite = 0.20;
+    // Rechnerische Trennrissbreite für Selbstheilung (Entwurfsgrundsatz b), abhängig von h_w/h
+    // Stufen ≤ 10 / ≤ 15 / ≤ 25 → 0,20 / 0,15 / 0,10 mm (WU-Richtlinie – manuell prüfen)
+    // BK 2: keine Selbstheilungsanforderung; Orientierungswert w_max = 0,3 mm nach EC2/NA
+    let zulRissbreite = 0.30;
+    let selbstheilungMoeglich = true;
     if (bk === '1') {
-      if (nk === 'A') {
-        if (druckgefaelle <= 5) {
-          zulRissbreite = 0.20;
-        } else if (druckgefaelle <= 10) {
-          zulRissbreite = 0.15;
-        } else {
-          zulRissbreite = 0.10;
-        }
-      } else {
-        // NK B
-        zulRissbreite = druckgefaelle <= 10 ? 0.25 : 0.20;
-      }
-    } else {
-      // BK 2: Feuchte / nichtdrückend
-      zulRissbreite = nk === 'A' ? 0.20 : 0.30;
+      if (druckgefaelle <= 10) zulRissbreite = 0.20;
+      else if (druckgefaelle <= 15) zulRissbreite = 0.15;
+      else if (druckgefaelle <= 25) zulRissbreite = 0.10;
+      else { zulRissbreite = 0.10; selbstheilungMoeglich = false; }
     }
-
     const rissbreiteOk = rissbreite <= zulRissbreite + 0.001;
 
     return {
@@ -91,6 +76,7 @@ export default function WUBauwerke() {
       mindestDicke,
       rissbreiteOk,
       zulRissbreite,
+      selbstheilungMoeglich,
     };
   }, [hw, h, rissbreite, bk, nk, bauteil, bauart]);
 
@@ -303,7 +289,7 @@ export default function WUBauwerke() {
                   <div className="space-y-4">
                     <Slider
                       label="Wasserdruckhöhe h_w"
-                      info="Höhe des Bemessungswasserstands (HGW zzgl. Sicherheitszuschlag 0,30 m) ab Unterkante Bauteil."
+                      info="Höhe des Bemessungswasserstands ab Unterkante Bauteil (aus dem Bodengutachten; Sicherheitszuschlag als Lehrannahme)."
                       min={0}
                       max={12}
                       step={0.5}
@@ -314,7 +300,7 @@ export default function WUBauwerke() {
 
                     <Slider
                       label="Vorhandene Bauteildicke h"
-                      info="Gesamtbauteildicke. Bei Elementwänden muss der Ortbetonkern mindestens 140 mm dick sein."
+                      info="Gesamtbauteildicke. Kernbetondicke bei Elementwänden: manuell prüfen."
                       min={180}
                       max={600}
                       step={10}
@@ -385,6 +371,9 @@ export default function WUBauwerke() {
                             {formatDeZahl(rissbreite, 2)} mm
                           </span>
                           <span className="text-xs block text-white/70">Zul ≤ {formatDeZahl(results.zulRissbreite, 2)} mm</span>
+                          <span className="text-[10px] block text-white/60">
+                            {bk === '2' ? 'BK 2: Orientierungswert nach EC2/NA' : results.selbstheilungMoeglich ? 'Selbstheilung (Grundsatz b)' : 'I > 25: Grundsatz a oder c wählen'}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -469,7 +458,7 @@ export default function WUBauwerke() {
                 Druckgefälle <InlineMath math="I = h_w / h" /> in Abhängigkeit von der Wanddicke
               </h3>
               <p className="text-xs text-text-main/70 mb-4">
-                Nach DAfStb WU-Richtlinie bestimmt das Druckgefälle <InlineMath math="I" /> maßgeblich die Anforderung an die Rissbreitenbegrenzung. Liegt <InlineMath math="I \le 10" />, reicht in der Regel <InlineMath math="w_k \le 0{,}20\,\text{mm}" /> für eine autogene Selbstheilung. Bei <InlineMath math="I > 10" /> muss die rechnerische Rissbreite auf <InlineMath math="0{,}15\,\text{mm}" /> oder <InlineMath math="0{,}10\,\text{mm}" /> verschärft werden.
+                Nach DAfStb WU-Richtlinie bestimmt das Druckgefälle <InlineMath math="I" /> maßgeblich die Anforderung an die Rissbreitenbegrenzung. Für die Selbstheilung (Entwurfsgrundsatz b) gilt: <InlineMath math="I \le 10" /> → <InlineMath math="w_k \le 0{,}20\,\text{mm}" />, <InlineMath math="I \le 15" /> → 0,15 mm, <InlineMath math="I \le 25" /> → 0,10 mm (Werte manuell prüfen). Darüber ist Selbstheilung nicht planbar – Entwurfsgrundsatz a oder c wählen.
               </p>
               <div className="h-[260px] w-full">
                 <Line data={chartData} options={chartOptions} />
@@ -507,7 +496,7 @@ export default function WUBauwerke() {
                   <ul className="text-xs space-y-2 text-text-main/70">
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
-                      <span><strong>Kurze Blocklängen:</strong> Wandabschnitte ≤ 6 bis 8 m zwischen Scheinfugen / Dehnfugen.</span>
+                      <span><strong>Kurze Blocklängen:</strong> Wandabschnitte etwa 6 bis 8 m zwischen Scheinfugen / Dehnfugen (Faustwert).</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <ChevronRight size={14} className="text-shiraz shrink-0 mt-0.5" />
@@ -538,7 +527,7 @@ export default function WUBauwerke() {
                   </div>
                   <h4 className="text-base font-bold text-text-main mb-2">Begrenzung der Rissbreite</h4>
                   <p className="text-xs text-text-main/80 leading-relaxed mb-4">
-                    Trennrisse werden planmäßig zugelassen, jedoch durch gezielte Mindestbewehrung auf Breiten beschränkt (<InlineMath math="w_k \le 0{,}15 \dots 0{,}20\,\text{mm}" />), die eine <strong>autogene Selbstheilung</strong> ermöglichen.
+                    Trennrisse werden planmäßig zugelassen, jedoch durch gezielte Mindestbewehrung auf Breiten beschränkt (je nach Druckgefälle <InlineMath math="w_k \le 0{,}10 \dots 0{,}20\,\text{mm}" />), die eine <strong>autogene Selbstheilung</strong> ermöglichen.
                   </p>
                   <ul className="text-xs space-y-2 text-text-main/70">
                     <li className="flex items-start gap-1.5">
@@ -556,7 +545,7 @@ export default function WUBauwerke() {
                   </ul>
                 </div>
                 <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-text-main/60">
-                  <strong>Bewertung:</strong> Robuster, wirtschaftlicher Standard in über 80 % aller WU-Projekte. Erfordert genaue Bemessung.
+                  <strong>Bewertung:</strong> Robuster und häufig gewählter Ansatz. Erfordert genaue Bemessung.
                 </div>
               </div>
 
@@ -647,7 +636,7 @@ export default function WUBauwerke() {
                 <Layers className="text-shiraz" /> Fugen- und Abdichtungssysteme im WU-Bauwerk
               </h3>
               <p>
-                Mehr als 80 % aller Undichtigkeiten bei Weißen Wannen entstehen an <strong>Fugen und Durchdringungen</strong>, nicht im ungestörten Betonquerschnitt. Ein lückenloses, in sich geschlossenes Fugenkonzept nach <strong>DIN 18197</strong> und der DAfStb-Richtlinie ist für den Dichtigkeitserfolg unerlässlich.
+                Undichtigkeiten bei Weißen Wannen entstehen überwiegend an <strong>Fugen und Durchdringungen</strong>, nicht im ungestörten Betonquerschnitt. Ein lückenloses, in sich geschlossenes Fugenkonzept nach <strong>DIN 18197</strong> und der DAfStb-Richtlinie ist für den Dichtigkeitserfolg unerlässlich.
               </p>
             </div>
 
@@ -676,7 +665,7 @@ export default function WUBauwerke() {
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
                     <span className="font-bold text-text-main block mb-1">Quellbänder (Bentonit / Polymer)</span>
                     <span className="text-text-main/70">
-                      Quellen bei Wasserkontakt um 200–400 % auf. Nur bei allseitiger Betonüberdeckung von mind. 80–100 mm zulässig, um Abplatzungen durch Quelldruck zu verhindern.
+                      Quellen bei Wasserkontakt stark auf (Herstellerangaben beachten). Nur bei allseitiger Betonüberdeckung von mind. 80–100 mm zulässig, um Abplatzungen durch Quelldruck zu verhindern.
                     </span>
                   </div>
                 </div>
@@ -752,7 +741,7 @@ export default function WUBauwerke() {
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
                     <span className="font-bold text-text-main">Zementart &amp; Hydratationswärme:</span>
-                    <span className="font-bold text-emerald-800">CEM III/A oder CEM III/B (LH/VLH)</span>
+                    <span className="font-bold text-emerald-800">z. B. CEM III/A LH (niedrige Hydratationswärme)</span>
                   </div>
                   <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex justify-between items-center">
                     <span className="font-bold text-text-main">Konsistenzklasse / Einbau:</span>
@@ -768,7 +757,7 @@ export default function WUBauwerke() {
                     <span className="w-2 h-2 rounded-full bg-emerald-600"></span> Autogene Selbstheilung (Chemischer Mechanismus)
                   </h4>
                   <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                    Unter dauerhaftem Wasserkontakt und bei begrenzter Rissbreite (<InlineMath math="w_k \le 0{,}15 \dots 0{,}20\,\text{mm}" />) verschließen sich wasserführende Trennrisse durch chemische Reaktionen und physikalische Prozesse selbsttätig.
+                    Unter dauerhaftem Wasserkontakt und bei begrenzter Rissbreite (je nach Druckgefälle <InlineMath math="w_k \le 0{,}10 \dots 0{,}20\,\text{mm}" />) verschließen sich wasserführende Trennrisse durch chemische Reaktionen und physikalische Prozesse selbsttätig.
                   </p>
 
                   <div className="bg-off-white p-3 rounded-xl border border-home-grau/30 mb-3">
@@ -786,7 +775,7 @@ export default function WUBauwerke() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-home-grau/20 text-xs text-text-main/70 bg-amber-50/50 p-2.5 rounded-lg border border-amber-200/60">
-                  <strong>Grenzen der Selbstheilung:</strong> Risse &gt; 0,20 mm, zu hohes Fließgefälle (Auswaschung statt Kristallisation) oder aggressives, kalklösendes Wasser verhindern die Selbstheilung.
+                  <strong>Grenzen der Selbstheilung:</strong> Risse breiter als der zulässige Wert (0,10–0,20 mm je nach Druckgefälle), zu hohes Fließgefälle (Auswaschung statt Kristallisation) oder aggressives, kalklösendes Wasser verhindern die Selbstheilung.
                 </div>
               </div>
             </div>
@@ -886,6 +875,21 @@ export default function WUBauwerke() {
         )}
       </div>
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Kellerwand in Beanspruchungsklasse 1 (Standardwerte)"
+        zielGleichung="I = \frac{h_w}{h}"
+        normQuelle="DAfStb-WU-Richtlinie 2017-12 (Werte manuell prüfen)"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'h_w = 3{,}0\\,\\text{m},\\; h = 300\\,\\text{mm},\\; \\text{BK 1, Ortbetonwand}', erklaerung: 'Drückendes Wasser.' },
+          { titel: '2. Mindestdicke', formel: 'h = 300\\,\\text{mm} \\ge 240\\,\\text{mm}', erklaerung: 'Tab. 1 der WU-Richtlinie eingehalten.' },
+          { titel: '3. Druckgefälle', formel: 'I = 3{,}0 / 0{,}30 = 10', erklaerung: 'Grenze der ersten Stufe.' },
+          { titel: '4. Zulässige Rissbreite', formel: 'w_k \\le 0{,}20\\,\\text{mm}', erklaerung: 'Selbstheilung planbar (Entwurfsgrundsatz b).' },
+        ]}
+        ergebnisHinweis="Mit h = 300 mm und w_k ≤ 0,20 mm ist die Selbstheilung nach Entwurfsgrundsatz b planbar."
+      />
+
+      <ModulTest moduleId="wu-bauwerke" />
+
       {/* Standardisierter Footer */}
       <ModuleFooter
         weblinks={[
@@ -894,20 +898,19 @@ export default function WUBauwerke() {
         ]}
         wikipedia={[
           { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' },
-          { title: 'Schwarze Wanne', url: 'https://de.wikipedia.org/wiki/Schwarze_Wanne' },
-          { title: 'Frischbetonverbundsystem' }
+          { title: 'Schwarze Wanne', url: 'https://de.wikipedia.org/wiki/Schwarze_Wanne' }
         ]}
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie:2017-12)', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken - Allgemeine Bemessungsregeln)' },
+          { title: 'DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Abschnitt 7.3 Rissbreitenbegrenzung)' },
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 18197:2018-01 (Abdichten von Fugen in Beton mit Fugenbändern)' },
           { title: 'DIN 18533-1:2017-07 (Abdichtung von erdberührten Bauteilen)' },
           { title: 'DIN EN 1504-5:2013-05 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Teil 5: Injektion von Beton)' }
         ]}
         literatur={[
-          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen - Einfach und sicher. Konstruktion und Ausführung wasserundurchlässiger Bauwerke aus Beton. 11. Aufl., Köln: Werner Verlag 2018',
-          'Deutscher Ausschuss für Stahlbeton: Erläuterungen zur DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (Heft 555), Berlin: Beuth 2011',
+          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. Düsseldorf: Verlag Bau+Technik 2018',
+          'DAfStb-Heft 555: Erläuterungen zur DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton. Berlin: Beuth (Ausgabe passend zur Richtlinie 2017 manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
         ]}
@@ -916,13 +919,13 @@ export default function WUBauwerke() {
             ? [
                 {
                   formel: 'I = \\frac{h_w}{h}',
-                  erklaerung: 'Hydraulisches Druckgefälle I [-]: Verhältnis von anstehender Wassersäule hw [m] zur Bauteildicke h [m]. Nach WU-Richtlinie bestimmt I die zulässige Rissbreite (wk ≤ 0,20 mm für I ≤ 5; wk ≤ 0,15 mm für 5 < I ≤ 10; wk ≤ 0,10 mm für I > 10 bei Nutzungsklasse A).',
-                  quelle: 'DAfStb WU-Richtlinie:2017-12, Tabelle 2'
+                  erklaerung: 'Druckgefälle I [-]: Wassersäule h_w [m] bezogen auf die Bauteildicke h [m]. Für die Selbstheilung: I ≤ 10 → w_k ≤ 0,20 mm; I ≤ 15 → 0,15 mm; I ≤ 25 → 0,10 mm (manuell prüfen).',
+                  quelle: 'DAfStb-WU-Richtlinie 2017-12'
                 },
                 {
-                  formel: 'h_{\\min} \\ge 240\\,\\text{mm} \\; (\\text{Wand, Ortbeton}) \\quad \\text{bzw.} \\quad h_{\\min} \\ge 250\\,\\text{mm} \\; (\\text{Bodenplatte, BK 1})',
-                  erklaerung: 'Mindestbauteildicken nach DAfStb WU-Richtlinie für Beanspruchungsklasse 1 bei Ortbetonbauweise. Bei Dreifachwänden (Elementwänden) gilt h_min ≥ 300 mm bei einer Ortbetonkerndicke von mindestens 140 mm.',
-                  quelle: 'DAfStb WU-Richtlinie:2017-12, Tabelle 1'
+                  formel: 'h_{\\min} \\ge 240\\,\\text{mm} \\; (\\text{Wand, BK 1}) \\quad \\text{bzw.} \\quad h_{\\min} \\ge 250\\,\\text{mm} \\; (\\text{Bodenplatte, BK 1})',
+                  erklaerung: 'Mindestbauteildicken in Beanspruchungsklasse 1 (Ortbeton und Elementwand 240 mm, Fertigteilwand 200 mm). In BK 2: Wand 200 mm (Ortbeton), Bodenplatte 150 mm.',
+                  quelle: 'DAfStb-WU-Richtlinie 2017-12, Tabelle 1'
                 }
               ]
             : activeTab === 'beton'
@@ -935,7 +938,7 @@ export default function WUBauwerke() {
                 {
                   formel: '\\Delta T = T_{\\max} - T_{\\text{Rand}} \\le 15\\,\\text{K} \\dots 20\\,\\text{K}',
                   erklaerung: 'Zulässige Temperaturdifferenz im abfließenden Hydratationswärme-Zustand zur Vermeidung von oberflächennahen und durchgehenden Zwangs-Frührissen bei massigen WU-Querschnitten.',
-                  quelle: 'DAfStb-Richtlinie Massige Bauteile'
+                  quelle: 'Lehrwert (Praxis)'
                 }
               ]
             : []

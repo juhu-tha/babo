@@ -8561,5 +8561,155 @@
       "targetModuleLabel": "Stahlbeton"
     },
     "verified": false
+  },
+  {
+    "id": "q_wub_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "wu-bauwerke",
+    "moduleTitle": "WU-Bauwerke",
+    "topic": "Beanspruchungsklassen",
+    "difficulty": "Grundlagen",
+    "normRef": "DAfStb-WU-Richtlinie 2017-12",
+    "question": "Welche Beanspruchungsklasse gilt für drückendes Wasser?",
+    "options": [
+      "BK 1",
+      "BK 2",
+      "Nutzungsklasse A",
+      "Nutzungsklasse B"
+    ],
+    "correctIdx": 0,
+    "explanation": "BK 1: drückendes und zeitweise aufstauendes Sickerwasser; BK 2: Bodenfeuchte und nicht stauendes Sickerwasser. Die Nutzungsklassen beschreiben die Anforderungen an den Innenraum.",
+    "gapAnalysis": {
+      "topic": "Beanspruchungsklassen",
+      "misconception": "Beanspruchungs- und Nutzungsklasse seien dasselbe.",
+      "coreRule": "BK = Wassereinwirkung, NK = Nutzungsanforderung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beanspruchungsklassen“ im Modul WU-Bauwerke noch einmal durch.",
+      "targetModuleTab": "wu-bauwerke",
+      "targetModuleLabel": "WU-Bauwerke"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_wub_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "wu-bauwerke",
+    "moduleTitle": "WU-Bauwerke",
+    "topic": "Entwurfsgrundsätze",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-WU-Richtlinie 2017-12",
+    "question": "Was kennzeichnet Entwurfsgrundsatz b?",
+    "options": [
+      "Trennrisse werden vermieden",
+      "Trennrissbreiten werden so begrenzt, dass sie selbst heilen",
+      "Risse werden planmäßig nachträglich abgedichtet",
+      "Eine außenliegende Bitumenabdichtung übernimmt die Dichtheit"
+    ],
+    "correctIdx": 1,
+    "explanation": "a: Vermeiden von Trennrissen; b: Begrenzung der Trennrissbreite auf selbstheilende Werte; c: Zulassen von Trennrissen mit planmäßiger Abdichtung (z. B. Injektion).",
+    "gapAnalysis": {
+      "topic": "Entwurfsgrundsätze",
+      "misconception": "Weiße Wannen müssten immer rissfrei sein.",
+      "coreRule": "a vermeiden – b begrenzen (Selbstheilung) – c abdichten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Entwurfsgrundsätze“ im Modul WU-Bauwerke noch einmal durch.",
+      "targetModuleTab": "wu-bauwerke",
+      "targetModuleLabel": "WU-Bauwerke"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_wub_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "wu-bauwerke",
+    "moduleTitle": "WU-Bauwerke",
+    "topic": "Mindestdicke",
+    "difficulty": "Grundlagen",
+    "normRef": "DAfStb-WU-Richtlinie 2017-12, Tab. 1",
+    "question": "Welche Mindestdicke gilt für eine Ortbeton-Bodenplatte in BK 1?",
+    "options": [
+      "150 mm",
+      "200 mm",
+      "250 mm",
+      "300 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bodenplatten aus Ortbeton in BK 1: 250 mm; in BK 2: 150 mm.",
+    "gapAnalysis": {
+      "topic": "Mindestdicke",
+      "misconception": "Bodenplatten und Wände hätten dieselbe Mindestdicke.",
+      "coreRule": "BK 1: Wand 240 mm, Bodenplatte 250 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mindestdicke“ im Modul WU-Bauwerke noch einmal durch.",
+      "targetModuleTab": "wu-bauwerke",
+      "targetModuleLabel": "WU-Bauwerke"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_wub_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "wu-bauwerke",
+    "moduleTitle": "WU-Bauwerke",
+    "topic": "Druckgefälle",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-WU-Richtlinie 2017-12",
+    "question": "Wasserstand h_w = 4,5 m, Wanddicke 300 mm. Welche Rissbreite ist für die Selbstheilung höchstens anzusetzen?",
+    "options": [
+      "0,30 mm",
+      "0,20 mm",
+      "0,15 mm",
+      "0,10 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "I = 4,5/0,30 = 15 → Stufe ≤ 15 → w_k ≤ 0,15 mm.",
+    "gapAnalysis": {
+      "topic": "Druckgefälle",
+      "misconception": "Die zulässige Rissbreite sei unabhängig vom Wasserdruck.",
+      "coreRule": "Höheres Druckgefälle → kleinere zulässige Rissbreite.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Druckgefälle“ im Modul WU-Bauwerke noch einmal durch.",
+      "targetModuleTab": "wu-bauwerke",
+      "targetModuleLabel": "WU-Bauwerke"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_wub_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "wu-bauwerke",
+    "moduleTitle": "WU-Bauwerke",
+    "topic": "Fugen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 18197",
+    "question": "Wo entstehen bei Weißen Wannen die meisten Undichtigkeiten?",
+    "options": [
+      "Im ungestörten Wandquerschnitt",
+      "An Fugen und Durchdringungen",
+      "In der Bodenplattenmitte",
+      "An der Innenoberfläche durch Kondensat"
+    ],
+    "correctIdx": 1,
+    "explanation": "Fugen und Durchdringungen sind die kritischen Stellen; ein geschlossenes Fugenkonzept ist Pflicht.",
+    "gapAnalysis": {
+      "topic": "Fugen",
+      "misconception": "Der Beton selbst sei die Hauptschwachstelle.",
+      "coreRule": "Geschlossenes Fugenkonzept planen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fugen“ im Modul WU-Bauwerke noch einmal durch.",
+      "targetModuleTab": "wu-bauwerke",
+      "targetModuleLabel": "WU-Bauwerke"
+    },
+    "verified": false
   }
 ]
