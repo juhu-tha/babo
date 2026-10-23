@@ -11231,5 +11231,125 @@
       "targetModuleLabel": "Dach & Fassade"
     },
     "verified": false
+  },
+  {
+    "id": "q_vwb_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_verkehrswegebau",
+    "moduleTitle": "Verkehrswegebau",
+    "topic": "RStO",
+    "difficulty": "Grundlagen",
+    "normRef": "RStO 12/24",
+    "question": "Welche Belastungsklasse gilt nach RStO 12/24 für eine dimensionierungsrelevante Beanspruchung B von 5 Mio. äquivalenten 10-t-Achsübergängen?",
+    "options": [
+      "Bk10",
+      "Bk3,2",
+      "Bk32",
+      "Bk1,8"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bk10 umfasst 3,2 < B ≤ 10 Mio. Bk32 beginnt über 10 Mio., Bk3,2 endet bei 3,2 Mio.",
+    "gapAnalysis": {
+      "topic": "RStO",
+      "misconception": "Die Zahl der Belastungsklasse ist ein Mindestwert.",
+      "coreRule": "Die Bk-Zahl ist die Obergrenze von B in Mio.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „RStO“ im Modul Verkehrswegebau noch einmal durch.",
+      "targetModuleTab": "bp_verkehrswegebau",
+      "targetModuleLabel": "Verkehrswegebau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_vwb_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_verkehrswegebau",
+    "moduleTitle": "Verkehrswegebau",
+    "topic": "Bitumen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 12591",
+    "question": "Was bedeutet die Bezeichnung 50/70 bei Straßenbaubitumen?",
+    "options": [
+      "Nadelpenetration zwischen 50 und 70 (in 0,1 mm)",
+      "Erweichungspunkt zwischen 50 und 70 °C",
+      "Bitumengehalt 50–70 M.-%",
+      "Viskosität 50–70 Pa·s"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Sorte wird über die Nadelpenetration bei 25 °C angegeben. Je höher die Zahl, desto weicher das Bitumen.",
+    "gapAnalysis": {
+      "topic": "Bitumen",
+      "misconception": "Die Zahlen bezeichnen den Erweichungspunkt.",
+      "coreRule": "Sorte = Penetrationsbereich in 1/10 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bitumen“ im Modul Verkehrswegebau noch einmal durch.",
+      "targetModuleTab": "bp_verkehrswegebau",
+      "targetModuleLabel": "Verkehrswegebau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_vwb_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_verkehrswegebau",
+    "moduleTitle": "Verkehrswegebau",
+    "topic": "Lückenloses Gleis",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Welche Zwangsspannung entsteht in einer Schiene (E = 210 000 N/mm², α = 1,2·10⁻⁵ 1/K) bei ΔT = 35 K?",
+    "options": [
+      "ca. 88 N/mm²",
+      "ca. 8,8 N/mm²",
+      "ca. 880 N/mm²",
+      "ca. 25 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "σ = 210 000 · 1,2·10⁻⁵ · 35 = 88 N/mm²; mit A = 7686 mm² ergibt sich eine Längskraft von rund 680 kN.",
+    "gapAnalysis": {
+      "topic": "Lückenloses Gleis",
+      "misconception": "Zwangsspannungen sind bei Stahl vernachlässigbar.",
+      "coreRule": "σ = E · α · ΔT bei vollständig behinderter Dehnung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lückenloses Gleis“ im Modul Verkehrswegebau noch einmal durch.",
+      "targetModuleTab": "bp_verkehrswegebau",
+      "targetModuleLabel": "Verkehrswegebau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_vwb_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_verkehrswegebau",
+    "moduleTitle": "Verkehrswegebau",
+    "topic": "AKR",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Alkali-Richtlinie",
+    "question": "Welcher Feuchtigkeitsklasse nach Alkali-Richtlinie werden Betonfahrbahndecken zugeordnet?",
+    "options": [
+      "WS",
+      "WO",
+      "WF",
+      "WA"
+    ],
+    "correctIdx": 0,
+    "explanation": "Fahrbahndecken sind feucht und erhalten zusätzlich Alkalien von außen (Tausalz) sowie dynamische Beanspruchung – Klasse WS.",
+    "gapAnalysis": {
+      "topic": "AKR",
+      "misconception": "Außenbauteile sind immer WF.",
+      "coreRule": "Betonfahrbahn = WS.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR“ im Modul Verkehrswegebau noch einmal durch.",
+      "targetModuleTab": "bp_verkehrswegebau",
+      "targetModuleLabel": "Verkehrswegebau"
+    },
+    "verified": false
   }
 ]
