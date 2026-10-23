@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Mountain, Layers, Pickaxe, Activity, Grip, BookOpen } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -111,7 +113,8 @@ export default function Gesteine() {
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-1">
                   <li><strong>Aus Kalkstein:</strong> Marmor.</li>
                   <li><strong>Aus Sandstein:</strong> Quarzit.</li>
-                  <li><strong>Aus Tonstein:</strong> Schiefer, Gneis.</li>
+                  <li><strong>Aus Tonstein:</strong> Tonschiefer, bei stärkerer Metamorphose Glimmerschiefer bzw. Paragneis.</li>
+                  <li><strong>Aus Granit:</strong> Orthogneis.</li>
                 </ul>
               </div>
             </div>
@@ -164,8 +167,8 @@ export default function Gesteine() {
                 <h3 className="font-bold text-shiraz text-lg mb-2">Korngröße & Kornform</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
                   <li><strong>Korngrößenverteilung (Sieblinie):</strong> Bestimmt durch Siebversuch (DIN EN 933-1). Wichtig für die Packungsdichte und den Hohlraumgehalt des Baustoffs.</li>
-                  <li><strong>Kornformkennzahl (SI):</strong> Beschreibt das Verhältnis von Länge zu Dicke der Körner. Kubische Körner sind bevorzugt, da plattige Körner (hoher SI-Wert) die Verarbeitbarkeit verschlechtern und leichter brechen.</li>
-                  <li><strong>Plattigkeitskennzahl (FI):</strong> Alternativer Wert zur Beschreibung der Kornform (Anteil an flachen Körnern).</li>
+                  <li><strong>Kornformkennzahl (SI):</strong> Massenanteil der Körner mit einem Verhältnis Länge/Dicke &gt; 3 (DIN EN 933-4). Kubische Körner sind bevorzugt, da plattige Körner (hoher SI-Wert) die Verarbeitbarkeit verschlechtern und leichter brechen.</li>
+                  <li><strong>Plattigkeitskennzahl (FI):</strong> Alternativer Kennwert für den Anteil flacher Körner, bestimmt mit Stabsieben (DIN EN 933-3).</li>
                 </ul>
               </div>
 
@@ -173,15 +176,15 @@ export default function Gesteine() {
                 <h3 className="font-bold text-shiraz text-lg mb-2">Festigkeit & Verschleiß</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
                   <li><strong>Los-Angeles-Koeffizient (LA):</strong> Maß für den Widerstand gegen Zertrümmerung (DIN EN 1097-2). Gestein wird mit Stahlkugeln in einer Trommel rotiert; der Abrieb wird gemessen.</li>
-                  <li><strong>Micro-Deval-Wert (MDE):</strong> Maß für den Verschleißwiderstand unter Zugabe von Wasser. Simuliert die Beanspruchung im feuchten Zustand (z.B. Reifenabrieb).</li>
-                  <li><strong>Polierwiderstand (PSV):</strong> Polished Stone Value. Wichtig für Deckschichten im Straßenbau, um dauerhafte Griffigkeit zu gewährleisten.</li>
+                  <li><strong>Micro-Deval-Wert (MDE):</strong> Maß für den Verschleißwiderstand unter Zugabe von Wasser (DIN EN 1097-1). Simuliert die Beanspruchung im feuchten Zustand.</li>
+                  <li><strong>Polierwiderstand (PSV):</strong> Polished Stone Value (DIN EN 1097-8). Wichtig für Deckschichten im Straßenbau, um dauerhafte Griffigkeit zu gewährleisten.</li>
                 </ul>
               </div>
 
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Dauerhaftigkeit</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-                  <li><strong>Frostwiderstand:</strong> Prüfung durch Frost-Tau-Wechsel (Wasseraufnahme und anschließendes Einfrieren). Gemessen wird der Masseverlust durch Abplatzungen.</li>
+                  <li><strong>Frostwiderstand:</strong> Prüfung durch Frost-Tau-Wechsel an wassergesättigten Körnern (DIN EN 1367-1). Gemessen wird der Masseverlust durch Absplitterungen.</li>
                   <li><strong>Frost-Tausalz-Widerstand:</strong> Verschärfte Prüfung unter Zugabe von Tausalzlösung (z.B. NaCl), da Salze den osmotischen Druck in den Poren erhöhen.</li>
                   <li><strong>Alkali-Kieselsäure-Reaktivität (AKR):</strong> Prüfung, ob amorphe Kieselsäure im Gestein mit den Alkalien des Zements reagiert und ein quellfähiges Gel bildet (Betontreiben).</li>
                 </ul>
@@ -190,8 +193,8 @@ export default function Gesteine() {
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Dichte & Wasseraufnahme</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-                  <li><strong>Rohdichte (Scheinbare Dichte):</strong> Dichte des Gesteinskorns inklusive der geschlossenen und offenen Poren.</li>
-                  <li><strong>Wasseraufnahme (WA):</strong> Masse des aufgenommenen Wassers im Verhältnis zur Trockenmasse. Ein Indikator für die offene Porosität und oft korrelierend mit dem Frostwiderstand.</li>
+                  <li><strong>Rohdichte (Scheinbare Dichte):</strong> Dichte des Gesteinskorns inklusive der geschlossenen und offenen Poren (DIN EN 1097-6).</li>
+                  <li><strong>Wasseraufnahme (WA):</strong> Masse des aufgenommenen Wassers im Verhältnis zur Trockenmasse (DIN EN 1097-6). Ein Indikator für die offene Porosität und oft korrelierend mit dem Frostwiderstand.</li>
                 </ul>
               </div>
             </div>
@@ -211,8 +214,8 @@ export default function Gesteine() {
                 <h3 className="font-bold text-shiraz text-lg mb-2">Kornklassen & Bezeichnungen</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
                   <li><strong>Gesteinsmehl (Füller):</strong> Korngröße d ≤ 0,063 mm. Dient zum Verschließen von Hohlräumen, besonders wichtig bei Asphalt.</li>
-                  <li><strong>Sand (feine Gesteinskörnung):</strong> Korngröße d ≤ 2 mm (tlw. bis 4 mm). Unterteilt in Fein-, Mittel- und Grobsand.</li>
-                  <li><strong>Kies / Splitt (grobe Gesteinskörnung):</strong> Korngröße d &gt; 2 mm (oder 4 mm). Kies (rund) entsteht natürlich, Splitt (kantig) durch Brechen.</li>
+                  <li><strong>Feine Gesteinskörnung (Sand):</strong> Obere Siebgröße D ≤ 4 mm (DIN EN 12620). Unterteilt in Fein-, Mittel- und Grobsand.</li>
+                  <li><strong>Kies / Splitt (grobe Gesteinskörnung):</strong> Obere Siebgröße D ≥ 4 mm, untere d ≥ 2 mm (DIN EN 12620). Kies (rund) entsteht natürlich, Splitt (kantig) durch Brechen.</li>
                   <li><strong>Korngemisch:</strong> Eine Mischung verschiedener Kornklassen, angegeben als untere (d) und obere (D) Siebgröße, z.B. 0/32 für Beton.</li>
                 </ul>
               </div>
@@ -221,8 +224,8 @@ export default function Gesteine() {
                 <h3 className="font-bold text-shiraz text-lg mb-2">Sieblinien (Kornzusammensetzung)</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
                   <li><strong>Idealsieblinien (Fuller, EMPA):</strong> Mathematische Kurven für das theoretische Dichteste Gefüge (minimaler Hohlraumgehalt).</li>
-                  <li><strong>Regelsieblinien (DIN 1045):</strong> Beschreiben standardisierte Sieblinienbereiche (A, B, C) für Beton.
-                    <br />- <strong>A-Linie:</strong> gröberes Gemisch, weniger Feinkorn (oft in der Praxis anzustreben, erfordert aber gute Verarbeitung).
+                  <li><strong>Regelsieblinien (DIN 1045-2):</strong> Grenzsieblinien A, B, C (und U für Ausfallkörnung) für Beton; Anhang manuell prüfen.
+                    <br />- <strong>A-Linie:</strong> gröberes Gemisch, wenig Feinkorn. Der günstige Bereich liegt zwischen A und B.
                     <br />- <strong>B-Linie:</strong> mittleres Gemisch (Standard).
                     <br />- <strong>C-Linie:</strong> feineres Gemisch, gut pumpbar, aber höherer Zementleim- und Wasserbedarf.
                   </li>
@@ -259,14 +262,28 @@ export default function Gesteine() {
         )}
       </div>
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Körnungsziffer der Regelsieblinie B16"
+        zielGleichung="k = \frac{1}{100} \sum R_i"
+        normQuelle="Sieblinie B16 nach DIN 1045-2 (Werte manuell prüfen); Siebsatz 0,25 bis 63 mm"
+        schritte={[
+          { titel: '1. Durchgänge B16', formel: '0{,}25: 8\\,\\%;\\; 0{,}5: 20\\,\\%;\\; 1: 32\\,\\%;\\; 2: 42\\,\\%;\\; 4: 56\\,\\%;\\; 8: 76\\,\\%;\\; 16: 100\\,\\%', erklaerung: 'Siebdurchgänge in M.-%.' },
+          { titel: '2. Rückstände', formel: 'R_i = 100 - D_i:\\; 92 + 80 + 68 + 58 + 44 + 24 + 0 + 0 + 0 = 366', erklaerung: 'Neun Prüfsiebe von 0,25 bis 63 mm.' },
+          { titel: '3. Körnungsziffer', formel: 'k = 366/100 = 3{,}66', erklaerung: 'Je kleiner k, desto feiner das Gemisch und desto höher der Wasseranspruch.' },
+        ]}
+        ergebnisHinweis="k(B16) ≈ 3,66 – zum Vergleich: A16 gröber (k größer), C16 feiner (k kleiner)."
+      />
+
+      <ModulTest moduleId="gesteine" />
+
       <ModuleFooter wikipedia={[
         { title: 'Gestein', url: 'https://de.wikipedia.org/wiki/Gestein' },
         { title: 'Gesteinskörnung', url: 'https://de.wikipedia.org/wiki/Gesteinsk%C3%B6rnung' }
       ]}
         literatur={[
-          'Deutscher Naturwerkstein-Verband (DNV): Bautechnische Information Naturwerkstein (BTI) / DIN EN 12440',
+          'Deutscher Naturwerkstein-Verband (DNV): Bautechnische Informationen Naturwerkstein (BTI), Ausgaben manuell prüfen',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
-          'Scholz - Baustoffkenntnis: Physikalische Eigenschaften kristalliner Gesteine'
+          'Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016'
         ]}
         regelwerke={[
           { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)' },
@@ -275,7 +292,8 @@ export default function Gesteine() {
           { title: 'DIN EN 1097-2:2020-09 (Prüfverfahren für mechanische und physikalische Eigenschaften von Gesteinskörnungen - Teil 2: Widerstand gegen Zertrümmerung / Los-Angeles-Prüfung)' },
           { title: 'DIN EN 933-1:2012-03 (Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen - Teil 1: Korngrößenverteilung - Siebverfahren)' },
           { title: 'DIN 4226-101:2017-08 (Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620)' },
-          { title: 'DIN EN 771-6:2015-11 (Festlegungen für Mauersteine - Teil 6: Natursteinmauersteine)' }
+          { title: 'DIN EN 771-6:2015-11 (Festlegungen für Mauersteine - Teil 6: Natursteinmauersteine)' },
+          { title: 'DIN EN 12440 (Naturstein – Kriterien für die Bezeichnung)' }
         ]}
         formeln={[
           {
