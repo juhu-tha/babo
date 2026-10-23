@@ -7811,5 +7811,485 @@
       "targetModuleLabel": "Entwicklungen"
     },
     "verified": false
+  },
+  {
+    "id": "q_qsi_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Konformität stetige Herstellung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206, 8.2.1; DIN 1045-2",
+    "question": "Stetige Herstellung C30/37 (Würfel), 15 Ergebnisse, s = 2,2 N/mm². Welcher Mittelwert ist mindestens erforderlich?",
+    "options": [
+      "37,0 N/mm²",
+      "40,3 N/mm²",
+      "41,4 N/mm²",
+      "41,0 N/mm²"
+    ],
+    "correctIdx": 2,
+    "explanation": "σ = max(2,2; 3,0) = 3,0 N/mm²; f_cm ≥ 37 + 1,48 · 3,0 = 41,4 N/mm².",
+    "gapAnalysis": {
+      "topic": "Konformität stetige Herstellung",
+      "misconception": "Die gemessene Standardabweichung dürfe auch unter 3 N/mm² angesetzt werden.",
+      "coreRule": "Rechenwert σ ≥ 3 N/mm²; f_cm ≥ f_ck + 1,48·σ.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität stetige Herstellung“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Konformität Erstherstellung",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 206, 8.2.1",
+    "question": "Erstherstellung C25/30 (Zylinder): Welches Kriterienpaar gilt für 3 Ergebnisse?",
+    "options": [
+      "f_cm ≥ 25 und f_ci ≥ 25",
+      "f_cm ≥ 29 und f_ci ≥ 21",
+      "f_cm ≥ 30 und f_ci ≥ 26",
+      "f_cm ≥ 27 und f_ci ≥ 23"
+    ],
+    "correctIdx": 1,
+    "explanation": "Erstherstellung: f_cm ≥ f_ck + 4 = 29 N/mm² und jedes Einzelergebnis f_ci ≥ f_ck − 4 = 21 N/mm².",
+    "gapAnalysis": {
+      "topic": "Konformität Erstherstellung",
+      "misconception": "Jedes Einzelergebnis müsse f_ck erreichen.",
+      "coreRule": "Erstherstellung: f_cm ≥ f_ck + 4; f_ci ≥ f_ck − 4.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität Erstherstellung“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Identitätsprüfung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206, Anhang B",
+    "question": "Identitätsprüfung mit 3 Probekörpern, C30/37 (Würfel). Welche Mittelwertanforderung gilt?",
+    "options": [
+      "f_cm ≥ 37",
+      "f_cm ≥ 38",
+      "f_cm ≥ 39",
+      "f_cm ≥ 41"
+    ],
+    "correctIdx": 1,
+    "explanation": "Für n = 2 bis 4 gilt f_cm ≥ f_ck + 1 = 38 N/mm², zusätzlich f_ci ≥ 33 N/mm².",
+    "gapAnalysis": {
+      "topic": "Identitätsprüfung",
+      "misconception": "Für die Identitätsprüfung gälten dieselben Kriterien wie für die Erstherstellung.",
+      "coreRule": "Identitätsprüfung: n = 2–4 → f_ck + 1; n = 5–6 → f_ck + 2.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Identitätsprüfung“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Betonbauqualitätsklassen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-1000:2023-08",
+    "question": "Welche Betonbauqualitätsklassen kennt DIN 1045-1000?",
+    "options": [
+      "BBQ-1 bis BBQ-4",
+      "BBQ-N, BBQ-E und BBQ-S",
+      "BBQ-N, BBQ-E, BBQ-S und BBQ-U",
+      "ÜK 1 bis ÜK 3"
+    ],
+    "correctIdx": 1,
+    "explanation": "DIN 1045-1000 definiert drei Klassen: N (normal), E (erhöht), S (speziell). ÜK 1–3 sind die Überwachungsklassen nach DIN 1045-3.",
+    "gapAnalysis": {
+      "topic": "Betonbauqualitätsklassen",
+      "misconception": "BBQ- und Überwachungsklassen seien dasselbe.",
+      "coreRule": "BBQ-N/E/S nach DIN 1045-1000; ÜK 1–3 nach DIN 1045-3.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonbauqualitätsklassen“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_qsi_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "qualitaetssicherung",
+    "moduleTitle": "Qualitätssicherung",
+    "topic": "Lieferscheinkontrolle",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-2",
+    "question": "Bis wann muss ein Fahrmischer ohne besondere Vereinbarung entladen sein?",
+    "options": [
+      "60 min nach Abfahrt im Werk",
+      "90 min nach der ersten Wasserzugabe",
+      "90 min nach Ankunft auf der Baustelle",
+      "120 min nach Mischbeginn"
+    ],
+    "correctIdx": 1,
+    "explanation": "Maßgebend ist die erste Wasserzugabe; das Entladen soll spätestens nach 90 min abgeschlossen sein (Verlängerung nur mit Verzögerer und Vereinbarung).",
+    "gapAnalysis": {
+      "topic": "Lieferscheinkontrolle",
+      "misconception": "Die Frist beginne erst mit der Ankunft auf der Baustelle.",
+      "coreRule": "Entladen spätestens 90 min nach der ersten Wasserzugabe.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lieferscheinkontrolle“ im Modul Qualitätssicherung noch einmal durch.",
+      "targetModuleTab": "qualitaetssicherung",
+      "targetModuleLabel": "Qualitätssicherung"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Klassenkombination",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-2, Tab. F.2.1/F.2.2",
+    "question": "Eine Außenwand ist Schlagregen und Frost ausgesetzt, aber keinem Taumittel. Welche Kombination setzen Sie an?",
+    "options": [
+      "Nur XC1",
+      "XC4 + XF1",
+      "XD3 + XF4",
+      "XA2 + XM1"
+    ],
+    "correctIdx": 1,
+    "explanation": "Beregnung mit Austrocknung → XC4; Frost bei mäßiger Sättigung ohne Taumittel → XF1. Beide gelten gleichzeitig.",
+    "gapAnalysis": {
+      "topic": "Klassenkombination",
+      "misconception": "Es sei nur die strengste einzelne Klasse anzugeben.",
+      "coreRule": "Alle zutreffenden Klassen angeben; der strengste Grenzwert je Kriterium gilt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Klassenkombination“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Frost-Tausalz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2, Tab. F.2.2",
+    "question": "Was fordert DIN 1045-2 für XF4 hinsichtlich Luftporen?",
+    "options": [
+      "Luftporen sind unzulässig",
+      "Luftporenbeton ist erforderlich (z. B. ≥ 4,5 % bei Dmax 16 mm)",
+      "LP nur bei Betontemperatur unter 5 °C",
+      "LP ist freiwillig, wenn C35/45 verwendet wird"
+    ],
+    "correctIdx": 1,
+    "explanation": "XF4 ist nur als Luftporenbeton zulässig; der Mindestluftgehalt hängt vom Größtkorn ab (8 mm: 5,5 %, 16 mm: 4,5 %, 32 mm: 4,0 %).",
+    "gapAnalysis": {
+      "topic": "Frost-Tausalz",
+      "misconception": "Eine höhere Festigkeitsklasse ersetze bei XF4 die Luftporen.",
+      "coreRule": "XF4 → immer LP-Beton.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Frost-Tausalz“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Chemischer Angriff",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206; DIN 1045-2",
+    "question": "Grundwasser enthält 1 200 mg/l Sulfat. Welche Klasse und welche Zementanforderung gelten?",
+    "options": [
+      "XA1; jeder Normzement",
+      "XA2; Zement mit hohem Sulfatwiderstand (SR)",
+      "XM2; Hartstoffe",
+      "XC3; keine besondere Anforderung"
+    ],
+    "correctIdx": 1,
+    "explanation": "600–3 000 mg/l Sulfat im Wasser → XA2. Über 600 mg/l ist nach DIN 1045-2 SR-Zement zu verwenden.",
+    "gapAnalysis": {
+      "topic": "Chemischer Angriff",
+      "misconception": "Sulfat beeinflusse nur die Bewehrung, nicht den Zement.",
+      "coreRule": "SO₄²⁻ > 600 mg/l im Wasser → SR-Zement.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chemischer Angriff“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "k-Wert-Ansatz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2",
+    "question": "Wie wird Flugasche im äquivalenten w/z-Wert angerechnet?",
+    "options": [
+      "(w/z)eq = (w + f)/z",
+      "(w/z)eq = w/(z + 0,4·f) mit f/z ≤ 0,33",
+      "(w/z)eq = w/(z + f) ohne Grenze",
+      "(w/z)eq = w/(z − f)"
+    ],
+    "correctIdx": 1,
+    "explanation": "k-Wert für Flugasche 0,4; angerechnet wird höchstens f = 0,33·z.",
+    "gapAnalysis": {
+      "topic": "k-Wert-Ansatz",
+      "misconception": "Flugasche wirke wie Zement (k = 1).",
+      "coreRule": "(w/z)eq = w/(z + 0,4·f), f/z ≤ 0,33.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „k-Wert-Ansatz“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "Betondeckung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, Tab. 4.4DE",
+    "question": "Welches Nennmaß c_nom ergibt sich für XD3 (Stab ⌀ 16 mm, Δc_dev = 15 mm)?",
+    "options": [
+      "40 mm",
+      "45 mm",
+      "55 mm",
+      "60 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "c_min = max(16; 40; 10) = 40 mm; c_nom = 40 + 15 = 55 mm.",
+    "gapAnalysis": {
+      "topic": "Betondeckung",
+      "misconception": "Das Vorhaltemaß sei bereits in c_min,dur enthalten.",
+      "coreRule": "c_nom = max(c_min,b; c_min,dur; 10 mm) + Δc_dev.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_exk_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "expositionsklassen",
+    "moduleTitle": "Expositionsklassen",
+    "topic": "AKR-Feuchtigkeitsklassen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-Alkali-Richtlinie 2013-10",
+    "question": "Welche Feuchtigkeitsklasse gilt für ein befahrenes Parkdeck mit Taumitteln?",
+    "options": [
+      "WO",
+      "WF",
+      "WA",
+      "WS"
+    ],
+    "correctIdx": 2,
+    "explanation": "Feucht und Alkalizufuhr von außen (Taumittel) → WA. WS betrifft zusätzlich hohe dynamische Beanspruchung (z. B. Fahrbahndecken).",
+    "gapAnalysis": {
+      "topic": "AKR-Feuchtigkeitsklassen",
+      "misconception": "Parkdecks seien Innenbauteile (WO).",
+      "coreRule": "Feuchte + externe Alkalizufuhr → WA.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR-Feuchtigkeitsklassen“ im Modul Expositionsklassen noch einmal durch.",
+      "targetModuleTab": "expositionsklassen",
+      "targetModuleLabel": "Expositionsklassen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Betondeckung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, Tab. 4.4DE",
+    "question": "Außenbauteil XC4, Stab Ø 20 mm. Welches Nennmaß c_nom ergibt sich?",
+    "options": [
+      "35 mm",
+      "40 mm",
+      "45 mm",
+      "50 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "c_min = max(20; 25; 10) = 25 mm; c_nom = 25 + 15 = 40 mm.",
+    "gapAnalysis": {
+      "topic": "Betondeckung",
+      "misconception": "Der Stabdurchmesser sei für die Betondeckung ohne Bedeutung.",
+      "coreRule": "c_nom = max(Ø; c_min,dur; 10 mm) + Δc_dev.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Nachbehandlung",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-3",
+    "question": "Beton mit mittlerer Festigkeitsentwicklung, Oberflächentemperatur 12 °C, Klasse XM1. Wie lange ist mindestens nachzubehandeln?",
+    "options": [
+      "2 Tage",
+      "4 Tage",
+      "6 Tage",
+      "8 Tage"
+    ],
+    "correctIdx": 3,
+    "explanation": "10 bis < 15 °C, mittel: 4 Tage; bei XM verdoppelt sich die Dauer → 8 Tage.",
+    "gapAnalysis": {
+      "topic": "Nachbehandlung",
+      "misconception": "Verschleißklassen hätten keinen Einfluss auf die Nachbehandlung.",
+      "coreRule": "XM: doppelte Mindestdauer der Nachbehandlung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachbehandlung“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "WU-Mindestdicken",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-WU-Richtlinie 2017-12",
+    "question": "Welche Mindestdicke gilt für eine Ortbetonwand der Beanspruchungsklasse 1?",
+    "options": [
+      "150 mm",
+      "200 mm",
+      "240 mm",
+      "300 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "Ortbetonwände in Beanspruchungsklasse 1 (drückendes Wasser) sind mindestens 240 mm dick; Fertigteilwände 200 mm.",
+    "gapAnalysis": {
+      "topic": "WU-Mindestdicken",
+      "misconception": "Für Wände und Bodenplatten gälten dieselben Mindestdicken.",
+      "coreRule": "WU-Richtlinie: BK 1, Ortbetonwand ≥ 240 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „WU-Mindestdicken“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Wasserzugabe",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-3",
+    "question": "Der Beton ist auf der Baustelle zu steif. Was ist zulässig?",
+    "options": [
+      "10 l/m³ Wasser zugeben",
+      "Fließmittel nach Vorgabe des Herstellers zugeben",
+      "Wasser zugeben und länger rütteln",
+      "Den Beton mit Zement nachdosieren"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nachträgliche Wasserzugabe erhöht den w/z-Wert und ist unzulässig. Die Konsistenz darf nur mit Fließmittel nach Vorgabe des Betonherstellers angepasst werden.",
+    "gapAnalysis": {
+      "topic": "Wasserzugabe",
+      "misconception": "Wenig Wasser schade der Festigkeit nicht.",
+      "coreRule": "Keine Wasserzugabe auf der Baustelle; Fließmittel nur nach Herstellervorgabe.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Zusammenhalt nach Krell",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Krell (Praxis-Kennwert)",
+    "question": "w = 175 kg/m³, Mehlkorn MK = 380 kg/m³. Wie groß ist K = (w − 70)/MK?",
+    "options": [
+      "0,18",
+      "0,28",
+      "0,38",
+      "0,46"
+    ],
+    "correctIdx": 1,
+    "explanation": "(175 − 70)/380 = 0,276 ≈ 0,28 – geringes Bluten nach Krells Einteilung.",
+    "gapAnalysis": {
+      "topic": "Zusammenhalt nach Krell",
+      "misconception": "Ein höherer Mehlkorngehalt erhöhe das Bluten.",
+      "coreRule": "Kleineres K → besserer Zusammenhalt, weniger Bluten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zusammenhalt nach Krell“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
   }
 ]

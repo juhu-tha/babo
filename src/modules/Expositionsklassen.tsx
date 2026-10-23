@@ -1,12 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   Grid, 
   BookOpen, 
   Beaker, 
   Calculator, 
-  HelpCircle, 
   ShieldAlert, 
   ShieldCheck,
   Droplets, 
@@ -27,7 +27,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 // ============================================================================
 // NORMATIVE DATENBANK: DIN EN 206:2021-06 & DIN 1045-2:2023-08 (Tab. F.2.1/F.2.2)
-// KEINE Krell-Näherungswerte – 100% reine Normenwerte nach DIN 1045-2
+// Werte abgeglichen mit src/data/standards/din1045_2.ts
 // ============================================================================
 
 export interface NormExposureClass {
@@ -38,19 +38,14 @@ export interface NormExposureClass {
   examples: string;
   maxWzEq: number | null; // null bedeutet keine normative Begrenzung
   minStrengthClass: string;
-  minCement: {
-    dmax32: number;
-    dmax22: number;
-    dmax16: number;
-    dmax8: number;
-  } | null;
+  minCement: number | null; // kg/m³ (DIN 1045-2, Tab. F.2.1/F.2.2)
   minAirContent?: {
     dmax32: number;
     dmax16: number;
     dmax8: number;
   };
   requiresAirEntrainment?: boolean;
-  minCoverDurMm: number; // nach DIN EN 1992-1-1/NA:2013-04 (50 Jahre Nutzungsdauer)
+  minCoverDurMm: number | null; // Betonstahl, DIN EN 1992-1-1/NA:2013-04 Tab. 4.4DE; null = keine eigene Anforderung
   specialNotes?: string;
 }
 
@@ -66,7 +61,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     maxWzEq: null,
     minStrengthClass: 'C8/10',
     minCement: null,
-    minCoverDurMm: 10,
+    minCoverDurMm: null,
     specialNotes: 'Bei bewehrtem Beton in Innenräumen gilt i. d. R. mindestens XC1.'
   },
 
@@ -79,9 +74,9 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Innenräume von Wohnungen und Büros; ständig unter Wasser stehende Bauteile (Schwimmbeckenunterbauten).',
     maxWzEq: 0.75,
     minStrengthClass: 'C16/20',
-    minCement: { dmax32: 240, dmax22: 250, dmax16: 260, dmax8: 280 },
-    minCoverDurMm: 15,
-    specialNotes: 'Bei ständig unter Wasser getauchten Bauteilen gilt c_min,dur = 20 mm.'
+    minCement: 240,
+    minCoverDurMm: 10,
+    specialNotes: 'Δc_dev darf bei XC1 auf 10 mm verringert werden (DIN EN 1992-1-1/NA).'
   },
   {
     code: 'XC2',
@@ -89,11 +84,11 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     title: 'Nass, selten trocken',
     description: 'Teile von Wasserbehältern; Gründungsbauteile; Bauteile, die langzeitig Wasser oder feuchtem Boden ausgesetzt sind.',
     examples: 'Fundamente im feuchten Erdreich (ohne Frost); Schachtbauwerke; Wasserbehälter.',
-    maxWzEq: 0.65,
-    minStrengthClass: 'C20/25',
-    minCement: { dmax32: 240, dmax22: 250, dmax16: 260, dmax8: 280 },
-    minCoverDurMm: 25,
-    specialNotes: 'Bewehrte Fundamente in Deutschland meist standardmäßig C25/30.'
+    maxWzEq: 0.75,
+    minStrengthClass: 'C16/20',
+    minCement: 240,
+    minCoverDurMm: 20,
+    specialNotes: 'Anforderungen an den Beton wie XC1 (DIN 1045-2).'
   },
   {
     code: 'XC3',
@@ -103,8 +98,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Offene Hallen, Vordächer, Viehställe, gewerbliche Großküchen, Hallenbäder.',
     maxWzEq: 0.65,
     minStrengthClass: 'C20/25',
-    minCement: { dmax32: 260, dmax22: 270, dmax16: 280, dmax8: 300 },
-    minCoverDurMm: 25
+    minCement: 260,
+    minCoverDurMm: 20
   },
   {
     code: 'XC4',
@@ -114,8 +109,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Außenwände, Balkone, frei bewitterte Stützen und Fassadenelemente.',
     maxWzEq: 0.60,
     minStrengthClass: 'C25/30',
-    minCement: { dmax32: 280, dmax22: 290, dmax16: 300, dmax8: 320 },
-    minCoverDurMm: 30
+    minCement: 280,
+    minCoverDurMm: 25
   },
 
   // XD: Chloride aus Taumitteln (außer Meerwasser)
@@ -127,8 +122,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Wände und Decken von Garagen und Parkdecks im Sprühnebelbereich; Straßenstützwände im Sprühbereich.',
     maxWzEq: 0.55,
     minStrengthClass: 'C30/37',
-    minCement: { dmax32: 300, dmax22: 310, dmax16: 320, dmax8: 340 },
-    minCoverDurMm: 35
+    minCement: 300,
+    minCoverDurMm: 40
   },
   {
     code: 'XD2',
@@ -138,9 +133,9 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Schwimmbecken mit Sole/Meerwasserzusatz; Industrieanlagen mit salzhaltigem Brauchwasser.',
     maxWzEq: 0.50,
     minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
+    minCement: 320,
     minCoverDurMm: 40,
-    specialNotes: 'Nach DIN 1045-2 Anhang F ist alternativ C30/37 bei w/z_eq <= 0,50 zulässig.'
+    specialNotes: 'Bei Luftporenbeton (z. B. wegen gleichzeitiger XF-Anforderung) ist eine Festigkeitsklasse niedriger zulässig (DIN 1045-2, Fußnote – manuell prüfen).'
   },
   {
     code: 'XD3',
@@ -150,9 +145,9 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Fahrbahndecken von Parkhäusern ohne Oberflächenschutz; Brückenkappen; Spritzwasserbereiche von Autobahnstützwänden.',
     maxWzEq: 0.45,
     minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
-    minCoverDurMm: 45,
-    specialNotes: 'Bei ZTV-ING ist LP-Beton vorgeschrieben; bei direkt befahrenen Parkbauten zwingend OS-Beschichtung oder WU-Konstruktion.'
+    minCement: 320,
+    minCoverDurMm: 40,
+    specialNotes: 'Für befahrene Parkdecks zusätzliche Schutzmaßnahmen planen (z. B. Beschichtung) – manuell prüfen.'
   },
 
   // XS: Chloride aus Meerwasser
@@ -164,8 +159,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Fassaden und Tragwerke an der Küste (Entfernung < 1 km zum Meer).',
     maxWzEq: 0.55,
     minStrengthClass: 'C30/37',
-    minCement: { dmax32: 300, dmax22: 310, dmax16: 320, dmax8: 340 },
-    minCoverDurMm: 35
+    minCement: 300,
+    minCoverDurMm: 40
   },
   {
     code: 'XS2',
@@ -175,7 +170,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Pfeiler und Gründungen im Hafenbecken unter dem Niedrigwasserstand.',
     maxWzEq: 0.50,
     minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
+    minCement: 320,
     minCoverDurMm: 40
   },
   {
@@ -186,8 +181,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Kaimauern, Molenköpfe, Leuchtturmfundamente.',
     maxWzEq: 0.45,
     minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
-    minCoverDurMm: 45
+    minCement: 320,
+    minCoverDurMm: 40
   },
 
   // XF: Frost- und Frost-Tausalz-Angriff
@@ -199,8 +194,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Fassadenwände, Außenstützen ohne Taumitteleinwirkung.',
     maxWzEq: 0.60,
     minStrengthClass: 'C25/30',
-    minCement: { dmax32: 280, dmax22: 290, dmax16: 300, dmax8: 320 },
-    minCoverDurMm: 30,
+    minCement: 280,
+    minCoverDurMm: null,
     specialNotes: 'Keine künstlichen Luftporen erforderlich.'
   },
   {
@@ -211,11 +206,11 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Spritzwasserbereich von Stützwänden an Straßen; Brückenpfeiler im Sprühbereich.',
     maxWzEq: 0.55,
     minStrengthClass: 'C25/30',
-    minCement: { dmax32: 300, dmax22: 310, dmax16: 320, dmax8: 340 },
+    minCement: 300,
     requiresAirEntrainment: true,
     minAirContent: { dmax32: 4.0, dmax16: 4.5, dmax8: 5.5 },
-    minCoverDurMm: 35,
-    specialNotes: 'DIN 1045-2 erlaubt alternativ Beton ohne LP mit w/z_eq <= 0,50 und C35/45 (z_min = 320 kg/m³).'
+    minCoverDurMm: null,
+    specialNotes: 'Alternativ ohne LP: w/z ≤ 0,50, C35/45, z ≥ 320 kg/m³ (DIN 1045-2).'
   },
   {
     code: 'XF3',
@@ -225,11 +220,11 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Frei bewitterte Decken, Brüstungsabdeckungen, Wehre und Klärbecken im Frostbereich.',
     maxWzEq: 0.55,
     minStrengthClass: 'C25/30',
-    minCement: { dmax32: 300, dmax22: 310, dmax16: 320, dmax8: 340 },
+    minCement: 300,
     requiresAirEntrainment: true,
     minAirContent: { dmax32: 4.0, dmax16: 4.5, dmax8: 5.5 },
-    minCoverDurMm: 30,
-    specialNotes: 'DIN 1045-2 erlaubt alternativ Beton ohne LP mit w/z_eq <= 0,50 und C35/45 (z_min = 320 kg/m³).'
+    minCoverDurMm: null,
+    specialNotes: 'Alternativ ohne LP: w/z ≤ 0,50, C35/45, z ≥ 320 kg/m³ (DIN 1045-2).'
   },
   {
     code: 'XF4',
@@ -239,11 +234,11 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Direkt befahrene Fahrbahnen von Straßen und Brücken; Flugbetriebsflächen; Parkdecks.',
     maxWzEq: 0.50,
     minStrengthClass: 'C30/37',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
+    minCement: 320,
     requiresAirEntrainment: true,
     minAirContent: { dmax32: 4.0, dmax16: 4.5, dmax8: 5.5 },
-    minCoverDurMm: 40,
-    specialNotes: 'Beton ohne LP bei XF4 nur nach speziellem Eignungsnachweis (z. B. CDF-Prüfung) mit w/z_eq <= 0,45 und C35/45 zulässig.'
+    minCoverDurMm: null,
+    specialNotes: 'Nur als Luftporenbeton zulässig (DIN 1045-2).'
   },
 
   // XA: Chemischer Angriff nach DIN EN 206 Tabelle 2
@@ -255,8 +250,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Fundamente in schwach sauren Böden (pH 5,5–6,5) oder mäßigem Sulfatgehalt (200–600 mg/l SO4).',
     maxWzEq: 0.60,
     minStrengthClass: 'C25/30',
-    minCement: { dmax32: 280, dmax22: 290, dmax16: 300, dmax8: 320 },
-    minCoverDurMm: 30
+    minCement: 280,
+    minCoverDurMm: null
   },
   {
     code: 'XA2',
@@ -266,9 +261,9 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Klärbecken, Güllebehälter, Erdbauwerke in sulfatreichen Böden (SO4: 600–3000 mg/l im Wasser).',
     maxWzEq: 0.50,
     minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
-    minCoverDurMm: 35,
-    specialNotes: 'Bei Sulfatgehalt > 600 mg/l im Wasser ist zwingend SR-Zement (hoher Sulfatwiderstand nach DIN EN 197-1) vorgeschrieben!'
+    minCement: 320,
+    minCoverDurMm: null,
+    specialNotes: 'Bei SO₄²⁻ > 600 mg/l im Wasser bzw. > 3 000 mg/kg im Boden: SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch (DIN 1045-2 – manuell prüfen).'
   },
   {
     code: 'XA3',
@@ -278,9 +273,9 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Industrieabwasserkanäle, Kühltürme, Biogasanlagen, Silos.',
     maxWzEq: 0.45,
     minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
-    minCoverDurMm: 40,
-    specialNotes: 'Zwingend SR-Zement + zusätzliche Schutzmaßnahmen (z. B. Beschichtungen nach DIN EN 1504).'
+    minCement: 320,
+    minCoverDurMm: null,
+    specialNotes: 'SR-Zement bei Sulfatangriff; zusätzlich Schutz des Betons oder Gutachten erforderlich (DIN 1045-2).'
   },
 
   // XM: Mechanischer Verschleiß nach DIN 1045-2
@@ -292,9 +287,8 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Garagen, Parkdecks, Zufahrten von Wohnanlagen.',
     maxWzEq: 0.55,
     minStrengthClass: 'C30/37',
-    minCement: { dmax32: 300, dmax22: 310, dmax16: 320, dmax8: 340 },
-    minCoverDurMm: 30,
-    specialNotes: 'Oberflächenbehandlung (z. B. Vakuumieren oder maschinelles Flügelglätten) erforderlich.'
+    minCement: 300,
+    minCoverDurMm: null
   },
   {
     code: 'XM2',
@@ -302,11 +296,11 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     title: 'Schwere Verschleißbeanspruchung',
     description: 'Flächen befahren von luft- oder vollgummibereiften Gabelstaplern bis 90 kN.',
     examples: 'Industriehallenböden mit regelmäßigem Gabelstaplerverkehr.',
-    maxWzEq: 0.45,
-    minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
-    minCoverDurMm: 35,
-    specialNotes: 'Oberflächenvergütung oder Hartstoffeinstreuung nach DIN 1100 erforderlich.'
+    maxWzEq: 0.55,
+    minStrengthClass: 'C30/37',
+    minCement: 300,
+    minCoverDurMm: null,
+    specialNotes: 'Mit Oberflächenbehandlung (z. B. Vakuumieren und Flügelglätten); ohne: w/z ≤ 0,45, C35/45, z ≥ 320 kg/m³.'
   },
   {
     code: 'XM3',
@@ -316,9 +310,9 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     examples: 'Panzerhallen, Umschlaghallen für Schrott, Holzbringungsanlagen.',
     maxWzEq: 0.45,
     minStrengthClass: 'C35/45',
-    minCement: { dmax32: 320, dmax22: 330, dmax16: 340, dmax8: 360 },
-    minCoverDurMm: 35,
-    specialNotes: 'Zwingend Hartstoffestrich nach DIN 18560-7 unter Verwendung von Hartstoffen nach DIN 1100.'
+    minCement: 320,
+    minCoverDurMm: null,
+    specialNotes: 'Hartstoffe nach DIN 1100 erforderlich.'
   }
 ];
 
@@ -408,7 +402,7 @@ export const MOISTURE_CLASSES_AKR = [
 
 // ============================================================================
 // INTERAKTIVE GRAFISCHE DARSTELLUNG: GEBÄUDESCHNITT & BETONDECKUNG (EC2)
-// DIN EN 206-1 / DIN 1045-2 / DIN EN 1992-1-1 (Eurocode 2)
+// DIN EN 206 / DIN 1045-2 / DIN EN 1992-1-1 (Eurocode 2)
 // ============================================================================
 
 interface BuildingZoneInfo {
@@ -438,9 +432,9 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     maxWz: 0.45,
     minCement: 320,
     cMinDur: 40,
-    cNom: 50,
+    cNom: 55,
     mechanism: 'Lochfraßkorrosion durch Tausalz-Chloride ohne pH-Absenkung + Frost-Tau-Skalierung + Schleifabrieb von PKW-Reifen. AKR-Gefahr durch ständige Alkalizufuhr (Feuchteklasse WA).',
-    practicalTips: 'Rissbreitenbeschränkung w_k <= 0,2 mm oder geprüfte Schutzbeschichtung (OS 8 / OS 11a nach TR Instandhaltung). NA-Zement oder alkalifreie Gesteinskörnung (Klasse E I) erforderlich.',
+    practicalTips: 'Zusätzliche Schutzmaßnahmen für befahrene Flächen planen (z. B. Oberflächenschutzsystem; manuell prüfen). AKR: Maßnahmen nach Alkali-Richtlinie für Feuchtigkeitsklasse WA.',
     normRef: 'DIN 1045-2 Tab. F.2.2 / DAfStb-Heft 600'
   },
   {
@@ -453,7 +447,7 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     maxWz: 0.60,
     minCement: 280,
     cMinDur: 25,
-    cNom: 35,
+    cNom: 40,
     mechanism: 'Wechselnde Durchfeuchtung beschleunigt die Karbonatisierung der oberen Zugbewehrung. Mäßige Frostbeanspruchung bei normaler Wassersättigung.',
     practicalTips: 'Gefälle >= 1,5 % zur raschen Entwässerung einplanen. Rissbreite w_k <= 0,3 mm. Auf thermische Trennung (Isokorb) zur Vermeidung von Wärmebrücken achten.',
     normRef: 'DIN 1045-2 Tab. F.2.1 / DIN EN 1992-1-1'
@@ -466,11 +460,11 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     feuchteklasse: 'WF',
     minStrength: 'C25/30',
     maxWz: 0.55,
-    minCement: 280,
+    minCement: 300,
     cMinDur: 25,
-    cNom: 35,
+    cNom: 40,
     mechanism: 'Starke Durchfeuchtung durch stehendes Wasser führt bei Frosteinbruch zu hohem hydrostatischem Porenwasserdruck ohne Taumittel (XF3).',
-    practicalTips: 'Dichtende Bauwerksabdichtung nach DIN 18531 erforderlich. Bei ungeschützter Bewitterung ist ein reduzierter w/z-Wert (<= 0,55) Pflicht.',
+    practicalTips: 'Gefälle zur Entwässerung einplanen; Abdichtung nach DIN 18531. XF3 verlangt LP-Beton oder ohne LP w/z ≤ 0,50 und C35/45.',
     normRef: 'DIN 1045-2 Tab. F.2.1 / DIN 18531'
   },
   {
@@ -483,9 +477,9 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     maxWz: 0.45,
     minCement: 320,
     cMinDur: 40,
-    cNom: 50,
+    cNom: 55,
     mechanism: 'Extremer Kombinationsangriff: Taumitteleinsatz im Winterdienst ruft osmotischen Kälteschock hervor; Anfahren am Berg verursacht mechanischen Scherabrieb.',
-    practicalTips: 'Künstliche Mikroluftporen (LP-Beton) oder CDF-Eignungsnachweis obligatorisch. Bei XM2 ist eine Hartstoffeinstreuung (DIN 1100) oder Riffelung vorzusehen.',
+    practicalTips: 'XF4: Luftporenbeton erforderlich. XM2: Oberflächenbehandlung des Betons (sonst w/z ≤ 0,45 / C35/45).',
     normRef: 'DIN 1045-2 Tab. F.2.2 / ZTV-ING'
   },
   {
@@ -496,11 +490,11 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     feuchteklasse: 'WO',
     minStrength: 'C16/20',
     maxWz: 0.75,
-    minCement: 260,
-    cMinDur: 15,
-    cNom: 25,
+    minCement: 240,
+    cMinDur: 10,
+    cNom: 20,
     mechanism: 'Wegen geringer Porenfeuchte ist die elektrolytische Korrosionsgeschwindigkeit vernachlässigbar gering. Niedrigste Schutzanforderung im Hochbau.',
-    practicalTips: 'Standard im Hochbau ist C20/25 oder C25/30 aus statischen Gründen. Mindestbetondeckung c_nom = 25 mm (c_min,dur = 15 mm + 10 mm Vorhaltemaß).',
+    practicalTips: 'Statisch oft C20/25 oder C25/30. c_nom = 10 mm (c_min,dur) + 10 mm (Δc_dev bei XC1) = 20 mm; maßgebend kann c_min,b (Stabdurchmesser) sein.',
     normRef: 'DIN 1045-2 Tab. F.2.1 / DIN EN 1992-1-1'
   },
   {
@@ -512,10 +506,10 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     minStrength: 'C25/30',
     maxWz: 0.60,
     minCement: 280,
-    cMinDur: 25,
+    cMinDur: 20,
     cNom: 35,
     mechanism: 'Ständige Feuchte verhindert Karbonatisierung mangels Sauerstoffzutritt, jedoch chemischer Angriff durch Porenwassersulfate und Huminsäuren.',
-    practicalTips: 'Gegen ungeschalten Baugrund muss das Vorhaltemaß auf delta_c_dev = 50 mm erhöht werden (c_nom >= 75 mm nach DIN EN 1992-1-1 / NA). Bei WU-Beton Mindestbauteildicke beachten.',
+    practicalTips: 'Direkt gegen Baugrund betoniert: c_nom ≥ 75 mm; auf vorbereitetem Untergrund (z. B. Sauberkeitsschicht) ≥ 40 mm (DIN EN 1992-1-1, 4.4.1.3 – NA manuell prüfen).',
     normRef: 'DIN 1045-2 Tab. F.2.1 / WU-Richtlinie DAfStb'
   },
   {
@@ -527,10 +521,10 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     minStrength: 'C35/45',
     maxWz: 0.50,
     minCement: 320,
-    cMinDur: 25,
+    cMinDur: 20,
     cNom: 35,
     mechanism: 'Sulfationen reagieren mit Calciumaluminathydraten zu Ettringit unter starkem Quelldruck (Sulfattreiben). Gabelstapler führen zu hohem Rollabrieb.',
-    practicalTips: 'Ab 600 mg/l SO₄²⁻ im Wasser ist Zement mit hohem Sulfatwiderstand (SR-Zement nach DIN EN 197-1) gesetzlich zwingend vorgeschrieben. Hartstoffschicht nach DIN 1100 vorsehen.',
+    practicalTips: 'Bei SO₄²⁻ > 600 mg/l im Wasser SR-Zement nach DIN 1045-2. XM2: Oberflächenbehandlung; Hartstoffe nach DIN 1100 bei hoher Beanspruchung.',
     normRef: 'DIN 1045-2 Tab. F.2.2 & DIN EN 197-1'
   },
   {
@@ -542,10 +536,10 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     minStrength: 'C35/45',
     maxWz: 0.45,
     minCement: 320,
-    cMinDur: 45,
+    cMinDur: 40,
     cNom: 55,
     mechanism: 'Massive Zufuhr von Meerwasserchloriden in der Gezeitenzone kombiniert mit Frost-Tau-Angriff. Zerstörung des Passivfilms bei C_crit >= 0,40 % bezogen auf Zementmasse.',
-    practicalTips: 'Höchste Mindestbetondeckung nach EC2 (c_min,dur = 45 mm, c_nom >= 55 mm). Dichter Zementstein mit hüttensandreichen Zementen (CEM III/A oder III/B) empfohlen.',
+    practicalTips: 'c_min,dur = 40 mm, c_nom = 55 mm (DIN EN 1992-1-1/NA). Dichter Zementstein, z. B. mit hüttensandreichen Zementen (CEM III/A, III/B).',
     normRef: 'DIN 1045-2 Tab. F.2.1 & DIN EN 1992-1-1/NA'
   }
 ];
@@ -571,10 +565,10 @@ export function ExpositionsklassenSkizze({
 
   // Betondeckungswerte für Detailzoom
   const coverDetails = {
-    XC1: { cMinDur: 15, deltaC: 10, cNom: 25, desc: 'Trockene Innenbauteile: Minimaler Bewehrungsschutz', color: '#0284c7' },
-    XC4: { cMinDur: 25, deltaC: 10, cNom: 35, desc: 'Außenbauteile mit Beregnung: Standard-Bewehrungsschutz', color: '#b91c1c' },
-    XD3: { cMinDur: 40, deltaC: 10, cNom: 50, desc: 'Tausalzbeaufschlagte Parkdecks & Rampen: Hoher Schutz', color: '#c2410c' },
-    XS3: { cMinDur: 45, deltaC: 10, cNom: 55, desc: 'Meerwasser-Gezeitenzone: Maximaler Schutz gegen Chloride', color: '#0f766e' }
+    XC1: { cMinDur: 10, deltaC: 10, cNom: 20, desc: 'Trockene Innenbauteile: Minimaler Bewehrungsschutz', color: '#0284c7' },
+    XC4: { cMinDur: 25, deltaC: 15, cNom: 40, desc: 'Außenbauteile mit Beregnung: Standard-Bewehrungsschutz', color: '#b91c1c' },
+    XD3: { cMinDur: 40, deltaC: 15, cNom: 55, desc: 'Tausalzbeaufschlagte Parkdecks & Rampen: Hoher Schutz', color: '#c2410c' },
+    XS3: { cMinDur: 40, deltaC: 15, cNom: 55, desc: 'Meerwasser-Gezeitenzone: Maximaler Schutz gegen Chloride', color: '#0f766e' }
   }[selectedCoverClass];
 
   return (
@@ -760,7 +754,7 @@ export function ExpositionsklassenSkizze({
                   Tiefgarage Fahrgasse [XD3 | XF4 | XM1 | WA]
                 </text>
                 <text x="420" y="272" textAnchor="middle" fill="#64748b" fontSize="9.5">
-                  Tausalz-Schneematsch &bull; Lochfraß &bull; c_nom &gt;= 50 mm
+                  Tausalz-Schneematsch &bull; Lochfraß &bull; c_nom &ge; 55 mm
                 </text>
               </g>
 
@@ -809,7 +803,7 @@ export function ExpositionsklassenSkizze({
                   Trockene Raumluft (RH 30–65%) &bull; kein Frost
                 </text>
                 <text x="445" y="148" textAnchor="middle" fill="#0284c7" fontSize="9.5" fontWeight="bold">
-                  c_nom = 25 mm &bull; min. C16/20
+                  c_nom = 20 mm &bull; min. C16/20
                 </text>
               </g>
 
@@ -1275,15 +1269,15 @@ const STRENGTH_RANKS: Record<string, number> = {
 };
 
 export default function Expositionsklassen() {
-  const [activeTab, setActiveTab] = useState<'grundlagen' | 'pruefungen' | 'rechner' | 'test'>('grundlagen');
+  const [activeTab, setActiveTab] = useState<'grundlagen' | 'pruefungen' | 'rechner'>('grundlagen');
 
   // Filter-State für Grundlagen-Tabelle
   const [filterFamily, setFilterFamily] = useState<string>('ALLE');
 
   // Selektor-State für Interaktiven Hüllwert-Rechner
   const [selectedClasses, setSelectedClasses] = useState<string[]>(['XC4', 'XF1']);
-  const [selectedDmax, setSelectedDmax] = useState<32 | 22 | 16 | 8>(16);
-  const [deltaCdev, setDeltaCdev] = useState<number>(10); // Vorhaltemaß Vorbereitung: 10 mm (Ortbeton Standard), 5 mm (Fertigteil)
+  const [selectedDmax, setSelectedDmax] = useState<32 | 16 | 8>(16);
+  const [deltaCdev, setDeltaCdev] = useState<number>(15); // DIN EN 1992-1-1/NA: 15 mm, bei XC1 10 mm
 
   // k-Wert-Rechner States
   const [zementGehalt, setZementGehalt] = useState<number>(310);
@@ -1292,9 +1286,6 @@ export default function Expositionsklassen() {
   const [silikaGehalt, setSilikaGehalt] = useState<number>(0);
   const [zementTyp, setZementTyp] = useState<'CEM_I' | 'CEM_II_A'>('CEM_I');
 
-  // Quiz-State
-  const [quizAnswers, setQuizAnswers] = useState<Record<number, number>>({});
-  const [quizSubmitted, setQuizSubmitted] = useState<boolean>(false);
 
   // Toggle class selection for calculator
   const toggleClassSelection = (code: string) => {
@@ -1332,16 +1323,11 @@ export default function Expositionsklassen() {
       }
     });
 
-    // Höchster Mindestzementgehalt z_min für gewähltes dmax
+    // Höchster Mindestzementgehalt z_min
     let maxCement = 0;
     matched.forEach(c => {
-      if (c.minCement) {
-        const val = selectedDmax === 32 ? c.minCement.dmax32 :
-                    selectedDmax === 22 ? c.minCement.dmax22 :
-                    selectedDmax === 16 ? c.minCement.dmax16 : c.minCement.dmax8;
-        if (val > maxCement) {
-          maxCement = val;
-        }
+      if (c.minCement !== null && c.minCement > maxCement) {
+        maxCement = c.minCement;
       }
     });
 
@@ -1363,7 +1349,7 @@ export default function Expositionsklassen() {
     // Größte Mindestbetondeckung c_min,dur
     let maxCoverDur = 10;
     matched.forEach(c => {
-      if (c.minCoverDurMm > maxCoverDur) {
+      if (c.minCoverDurMm !== null && c.minCoverDurMm > maxCoverDur) {
         maxCoverDur = c.minCoverDurMm;
       }
     });
@@ -1373,19 +1359,22 @@ export default function Expositionsklassen() {
     // Sonderanforderungen (SR-Zement, Hartstoffe, Beschichtung)
     const specialReqs: string[] = [];
     if (selectedClasses.includes('XA2') || selectedClasses.includes('XA3')) {
-      specialReqs.push('SR-Zement mit hohem Sulfatwiderstand nach DIN EN 197-1 obligatorisch (ab 600 mg/l SO₄²⁻).');
+      specialReqs.push('Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch.');
     }
     if (selectedClasses.includes('XA3')) {
-      specialReqs.push('Zusätzlicher chemischer Oberflächenschutz (z. B. OS-System nach DIN EN 1504 / TR Instandhaltung) zwingend erforderlich.');
+      specialReqs.push('XA3: zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).');
     }
     if (selectedClasses.includes('XM2')) {
-      specialReqs.push('Oberflächenvergütung oder Hartstoffeinstreuung nach DIN 1100 erforderlich.');
+      specialReqs.push('XM2: Oberflächenbehandlung des Betons – sonst w/z ≤ 0,45 und C35/45.');
     }
     if (selectedClasses.includes('XM3')) {
-      specialReqs.push('Zwingend Hartstoffestrich nach DIN 18560-7 / DIN 1100 erforderlich.');
+      specialReqs.push('XM3: Hartstoffe nach DIN 1100.');
     }
-    if (selectedClasses.includes('XD3') || selectedClasses.includes('XF4')) {
-      specialReqs.push('Hohe Chlorideinwirkung: Erhöhte Rissbreitenbeschränkung (w_k <= 0,2 mm) und/oder Schutzbeschichtung einplanen.');
+    if (selectedClasses.includes('XF4')) {
+      specialReqs.push('XF4: nur Luftporenbeton.');
+    }
+    if (selectedClasses.includes('XC1') && maxCoverDur <= 10) {
+      specialReqs.push('Nur XC1: Δc_dev darf auf 10 mm verringert werden.');
     }
 
     return {
@@ -1407,9 +1396,9 @@ export default function Expositionsklassen() {
     const effectiveF = Math.min(flugascheGehalt, maxF);
     const kF = 0.40;
 
-    // Silika: k = 1,0 (bei w/z <= 0,45) bzw. k = 2,0 (bei w/z > 0,45); max s/z = 0,11
+    // Silikastaub: k = 1,0 nach DIN 1045-2 (DIN EN 206 nennt bis 2,0; in Deutschland nicht anwendbar); max s/z = 0,11
     const rawWz = zementGehalt > 0 ? wasserGehalt / zementGehalt : 0;
-    const kS = rawWz > 0.45 ? 2.0 : 1.0;
+    const kS = 1.0;
     const maxS = zementGehalt * 0.11;
     const effectiveS = Math.min(silikaGehalt, maxS);
 
@@ -1430,78 +1419,6 @@ export default function Expositionsklassen() {
       wzEq
     };
   }, [zementGehalt, wasserGehalt, flugascheGehalt, silikaGehalt]);
-
-  // Quizfragen (5 forensische Praxisfragen)
-  const quizQuestions = [
-    {
-      question: "Eine ungeschützte Außenwand eines Wohngebäudes in Deutschland ist direktem Schlagregen und Frostwechseln ausgesetzt. Welche Expositionsklassen-Kombination muss normativ nach DIN 1045-2 angesetzt werden?",
-      options: [
-        "Ausschließlich XC1 (Karbonatisierung trocken)",
-        "XC4 (Karbonatisierung wechselnd nass/trocken) + XF1 (Frost mäßige Sättigung ohne Taumittel)",
-        "XD3 (Chloride) + XF4 (Frost mit Taumitteln)",
-        "XA2 (Mäßiger chemischer Angriff) + XM1 (Abrieb)"
-      ],
-      correctIndex: 1,
-      explanation: "Außenbauteile mit direkter Beregnung und Trocknungsphasen fallen für den Bewehrungsschutz zwingend unter XC4 (w/z_eq <= 0,60; Min.-Festigkeit C25/30). Die Frostbeanspruchung durch Beregnung ohne Taumitteleinfluss entspricht XF1. Beide Anforderungen müssen gleichzeitig erfüllt sein."
-    },
-    {
-      question: "Welche Festlegung trifft DIN 1045-2 bei der Expositionsklasse XF4 (z. B. direkt befahrene Fahrbahndecken im Winter) hinsichtlich Luftporen?",
-      options: [
-        "Luftporen sind grundsätzlich verboten, da sie die Druckfestigkeit mindern.",
-        "Ein künstlicher Mindestluftporengehalt (LP) ist obligatorisch (z. B. >= 4,0 Vol.-% bei d_max = 32 mm bzw. >= 4,5 % bei 16 mm), außer bei speziellem Frost-Tausalz-Eignungsnachweis (CDF-Test mit w/z_eq <= 0,45).",
-        "Luftporen sind erst ab einer Betontemperatur unter -20 °C erforderlich.",
-        "Der Luftgehalt muss durch Rütteln auf unter 1,0 Vol.-% gesenkt werden."
-      ],
-      correctIndex: 1,
-      explanation: "Bei XF4 erfordert DIN 1045-2 standardmäßig künstliche Mikroluftporen mit Mindestgesamtluftgehalten von 4,0 bis 5,5 Vol.-% (je nach Größtkorn), um dem gefrierenden Wasser Dehnungsräume zu bieten (Abstandsfaktor L <= 0,20 mm). Beton ohne LP ist bei XF4 nur im Ausnahmefall mit spezieller Eignungsprüfung (CDF-Verfahren) und w/z_eq <= 0,45 zulässig."
-    },
-    {
-      question: "Ein Baugrundgutachten weist im anstehenden Grundwasser einen Sulfatgehalt von 1.200 mg/l SO₄²⁻ aus. Welche Expositionsklasse liegt vor und welche zwingende Zementanforderung gilt nach DIN 1045-2?",
-      options: [
-        "XA1; Standard-Portlandzement CEM I 42,5 R ist uneingeschränkt zulässig.",
-        "XA2 (Bereich 600–3.000 mg/l); es muss zwingend Zement mit hohem Sulfatwiderstand (SR-Zement nach DIN EN 197-1) verwendet werden.",
-        "XM2; es muss ein Hartstoffestrich aufgebracht werden.",
-        "XC3; kein Einfluss auf die Zementauswahl."
-      ],
-      correctIndex: 1,
-      explanation: "Nach DIN EN 206 Tabelle 2 liegt bei 600 bis 3.000 mg/l Sulfat im Wasser die Klasse XA2 (chemisch mäßig angreifend) vor. Bei SO₄²⁻ > 600 mg/l im Wasser (bzw. > 3.000 mg/kg im Boden) ist nach DIN 1045-2 zwingend sulfatwiderstandsfähiger Zement (SR-Zement) vorgeschrieben, um Treibreaktionen (Ettringitbildung / Thaumasit) zu unterbinden."
-    },
-    {
-      question: "Wie berechnet sich der anrechenbare äquivalente Wasserzementwert (w/z)_eq bei Einsatz von Steinkohlenflugasche (Typ II) nach dem k-Wert-Konzept (DIN EN 206 / DIN 1045-2)?",
-      options: [
-        "(w/z)_eq = (w + f) / z",
-        "(w/z)_eq = w / (z + 0,40 · f) unter Beachtung von max. f/z <= 0,33 (bei CEM I)",
-        "(w/z)_eq = w / (z + 1,0 · f) ohne Mengenbegrenzung",
-        "(w/z)_eq = w / (z - f)"
-      ],
-      correctIndex: 1,
-      explanation: "Das k-Wert-Konzept nach DIN EN 206 setzt die Flugasche mit dem Wirkungsfaktor k = 0,40 (bei CEM I) an: (w/z)_eq = w / (z + 0,40 · f). Zudem darf die Flugasche nur bis zu einem Masseverhältnis von f/z <= 0,33 auf den äquivalenten Wasserzementwert und Mindestzementgehalt angerechnet werden."
-    },
-    {
-      question: "Welche Feuchtigkeitsklasse nach der Alkali-Richtlinie des DAfStb / DIN 1045-2 Anhang D muss für ein befahrenes Parkdeck angesetzt werden?",
-      options: [
-        "WO (trockene Innenbauteile)",
-        "WF (feucht ohne Alkalizufuhr)",
-        "WA (feucht mit externer Zufuhr von Alkalien durch Taumitteleintrag von Fahrzeugen)",
-        "WS (nur für unbeschichtete Bundesautobahnen)"
-      ],
-      correctIndex: 2,
-      explanation: "Parkdecks werden durch Fahrzeuge mit tauenden Schneematsch- und Tausalzmengen befrachtet. Daher liegt neben Feuchte eine ständige Alkalizufuhr von außen vor -> Einstufung WA. Hierfür dürfen nur unbedenkliche Gesteinskörnungen (Klasse E I) oder NA-Zemente verwendet werden."
-    }
-  ];
-
-  const handleQuizSelect = (qIdx: number, oIdx: number) => {
-    if (quizSubmitted) return;
-    setQuizAnswers(prev => ({ ...prev, [qIdx]: oIdx }));
-  };
-
-  const calculateScore = () => {
-    let score = 0;
-    quizQuestions.forEach((q, idx) => {
-      if (quizAnswers[idx] === q.correctIndex) score++;
-    });
-    return score;
-  };
 
   return (
     <div className="flex flex-col gap-8">
@@ -1528,8 +1445,8 @@ export default function Expositionsklassen() {
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
           <p>
-            Die Bemessung dauerhafter Betonbauteile basiert nach <strong>DIN EN 206-1</strong> und den nationalen Anwendungsregeln der <strong>DIN 1045-2</strong> auf 
-            der Zuordnung aller planmäßig auftretenden Umwelteinflüsse zu standardisierten <strong>Expositionsklassen</strong> (X0, XC, XD, XS, XF, XA, XM) sowie 
+            Die Bemessung dauerhafter Betonbauteile basiert nach <strong>DIN EN 206</strong> und den nationalen Anwendungsregeln der <strong>DIN 1045-2</strong> auf 
+            der Zuordnung aller planmäßig auftretenden Umwelteinflüsse zu standardisierten <strong>Expositionsklassen</strong> (X0, XC, XD, XS, XF, XA, XM) sowie{' '}
             <strong>Feuchtigkeitsklassen</strong> (WO, WF, WA, WS nach Alkali-Richtlinie). Jede Klasse definiert verbindliche Mindestanforderungen an den maximalen 
             äquivalenten Wasserzementwert <InlineMath math="(w/z)_{\text{eq}}" />, die Mindestdruckfestigkeitsklasse, den Mindestzementgehalt <InlineMath math="z_{\min}" /> und 
             die erforderliche Betondeckung nach Eurocode 2.
@@ -1567,16 +1484,6 @@ export default function Expositionsklassen() {
             }`}
           >
             <Calculator size={16} /> 3. Interaktiver Hüllwert- &amp; k-Wert-Rechner
-          </button>
-          <button
-            onClick={() => setActiveTab('test')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'test'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <HelpCircle size={16} /> 4. Wissenstest &amp; Feedback
           </button>
         </div>
       </div>
@@ -1672,7 +1579,7 @@ export default function Expositionsklassen() {
                     <th className="p-3">Bezeichnung &amp; Umgebungsbedingungen</th>
                     <th className="p-3 text-center">max. (w/z)eq</th>
                     <th className="p-3 text-center">Min.-Festigkeit</th>
-                    <th className="p-3 text-center">z_min (kg/m³) [16 / 32 mm]</th>
+                    <th className="p-3 text-center">z_min (kg/m³)</th>
                     <th className="p-3 text-center">c_min,dur (mm)</th>
                     <th className="p-3">Besondere Anforderungen</th>
                   </tr>
@@ -1697,10 +1604,10 @@ export default function Expositionsklassen() {
                           {c.minStrengthClass}
                         </td>
                         <td className="p-3 text-center font-mono text-text-main/80 whitespace-nowrap">
-                          {c.minCement ? `${formatDeWert(c.minCement.dmax16)} / ${formatDeWert(c.minCement.dmax32)}` : '—'}
+                          {c.minCement !== null ? formatDeWert(c.minCement) : '—'}
                         </td>
                         <td className="p-3 text-center font-mono font-bold text-shiraz whitespace-nowrap">
-                          {formatDeWert(c.minCoverDurMm)} mm
+                          {c.minCoverDurMm !== null ? `${formatDeWert(c.minCoverDurMm)} mm` : '—'}
                         </td>
                         <td className="p-3 text-[11px] text-text-main/80">
                           {c.requiresAirEntrainment && (
@@ -1922,14 +1829,14 @@ export default function Expositionsklassen() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-off-white rounded-xl border border-home-grau/20">
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-text-main block">
-                  Größtkorn der Gesteinskörnung <InlineMath math="d_{\max}" />:
+                  Größtkorn <InlineMath math="d_{\max}" /> (nur für den LP-Gehalt):
                 </label>
                 <div className="flex gap-2">
-                  {[32, 22, 16, 8].map(d => (
+                  {[32, 16, 8].map(d => (
                     <button
                       key={d}
                       type="button"
-                      onClick={() => setSelectedDmax(d as any)}
+                      onClick={() => setSelectedDmax(d as 32 | 16 | 8)}
                       className={`flex-1 py-1.5 rounded-lg font-mono text-xs font-bold border transition-all cursor-pointer ${
                         selectedDmax === d
                           ? 'bg-shiraz text-white border-shiraz'
@@ -1948,9 +1855,8 @@ export default function Expositionsklassen() {
                 </label>
                 <div className="flex gap-2">
                   {[
-                    { val: 10, label: '10 mm (Ortbeton Standard)' },
-                    { val: 5, label: '5 mm (Fertigteil mit QS)' },
-                    { val: 15, label: '15 mm (unebener Untergrund)' }
+                    { val: 15, label: '15 mm (Regelfall)' },
+                    { val: 10, label: '10 mm (XC1 bzw. mit Qualitätskontrolle)' }
                   ].map(item => (
                     <button
                       key={item.val}
@@ -1998,7 +1904,6 @@ export default function Expositionsklassen() {
                     <span className="text-lg font-mono font-black text-shiraz">
                       {calculatedEnvelopes.maxCement > 0 ? `${calculatedEnvelopes.maxCement} kg/m³` : '—'}
                     </span>
-                    <span className="text-[10px] text-text-main/60 block mt-0.5">für d_max = {selectedDmax} mm</span>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-home-grau/30 shadow-xs text-center">
@@ -2170,114 +2075,22 @@ export default function Expositionsklassen() {
         </div>
       )}
 
-      {/* ===================================================================== */}
-      {/* TAB 4: WISSENSTEST & PRAXIS-FEEDBACK                                  */}
-      {/* ===================================================================== */}
-      {activeTab === 'test' && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6 animate-in fade-in duration-300">
-          <div className="border-b border-home-grau/20 pb-3 flex justify-between items-center">
-            <div>
-              <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                <HelpCircle className="text-shiraz" size={20} />
-                Fachkompetenz-Prüfung: Expositionsklassen &amp; Dauerhaftigkeit
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1">
-                Beantworten Sie 5 anspruchsvolle Prüfungsfragen zur normativen Zuordnung nach DIN EN 206 und DIN 1045-2:
-              </p>
-            </div>
-            {quizSubmitted && (
-              <div className="px-3 py-1.5 rounded-xl bg-shiraz text-white font-bold text-sm">
-                Ergebnis: {formatDeWert(calculateScore())} / {quizQuestions.length} Punkte
-              </div>
-            )}
-          </div>
 
-          <div className="space-y-6">
-            {quizQuestions.map((q, qIdx) => {
-              const selectedOpt = quizAnswers[qIdx];
-              const isCorrect = selectedOpt === q.correctIndex;
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Betondeckung einer Außenwand (XC4 + XF1)"
+        zielGleichung="c_{nom} = \max\{c_{min,b};\, c_{min,dur};\, 10\,\text{mm}\} + \Delta c_{dev}"
+        normQuelle="DIN EN 1992-1-1 mit NA:2013-04, Tab. 4.4DE"
+        schritte={[
+          { titel: '1. Gegeben', formel: '\\text{XC4 + XF1},\; \\varnothing = 12\\,\\text{mm}', erklaerung: 'XF1 stellt keine eigene Anforderung an die Betondeckung.' },
+          { titel: '2. Mindestbetondeckung', formel: 'c_{min} = \\max\\{12;\\, 25;\\, 10\\} = 25\\,\\text{mm}', erklaerung: 'c_min,b = Stabdurchmesser; c_min,dur für XC4 = 25 mm.' },
+          { titel: '3. Nennmaß', formel: 'c_{nom} = 25 + 15 = 40\\,\\text{mm}', erklaerung: 'Vorhaltemaß Δc_dev = 15 mm (Regelfall).' },
+          { titel: '4. Beton', formel: '(w/z)_{eq} \\le 0{,}60;\; \\ge \\text{C25/30};\; z \\ge 280\\,\\text{kg/m}^3', erklaerung: 'XC4 und XF1 fordern dieselben Grenzwerte.' },
+        ]}
+        ergebnisHinweis="c_nom = 40 mm; Beton mindestens C25/30 mit (w/z)eq ≤ 0,60 und z ≥ 280 kg/m³."
+      />
 
-              return (
-                <div key={qIdx} className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-3">
-                  <div className="font-bold text-sm text-text-main">
-                    Frage {formatDeWert(qIdx + 1)}: {q.question}
-                  </div>
+      <ModulTest moduleId="expositionsklassen" />
 
-                  <div className="grid grid-cols-1 gap-2">
-                    {q.options.map((opt, oIdx) => {
-                      const isOptionSelected = selectedOpt === oIdx;
-                      let btnStyle = 'bg-white text-text-main/80 border-home-grau/30 hover:border-shiraz/50';
-
-                      if (quizSubmitted) {
-                        if (oIdx === q.correctIndex) {
-                          btnStyle = 'bg-emerald-50 text-emerald-900 border-emerald-500 font-bold';
-                        } else if (isOptionSelected) {
-                          btnStyle = 'bg-rose-50 text-rose-900 border-rose-500';
-                        }
-                      } else if (isOptionSelected) {
-                        btnStyle = 'bg-shiraz/10 text-shiraz border-shiraz font-bold';
-                      }
-
-                      return (
-                        <button
-                          key={oIdx}
-                          type="button"
-                          onClick={() => handleQuizSelect(qIdx, oIdx)}
-                          className={`p-2.5 rounded-lg border text-left text-xs transition-all cursor-pointer flex items-center justify-between ${btnStyle}`}
-                        >
-                          <span>{opt}</span>
-                          {quizSubmitted && oIdx === q.correctIndex && (
-                            <CheckCircle2 size={16} className="text-emerald-700 shrink-0 ml-2" />
-                          )}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {quizSubmitted && (
-                    <div className={`p-3 rounded-lg text-xs leading-relaxed border ${
-                      isCorrect 
-                        ? 'bg-emerald-50/70 border-emerald-200 text-emerald-950' 
-                        : 'bg-rose-50/70 border-rose-200 text-rose-950'
-                    }`}>
-                      <div className="font-bold mb-1 flex items-center gap-1.5">
-                        {isCorrect ? '✓ Korrekt gelöst!' : '✕ Leider falsch.'}
-                      </div>
-                      <p>{q.explanation}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="pt-2 flex justify-end">
-            {!quizSubmitted ? (
-              <button
-                type="button"
-                onClick={() => setQuizSubmitted(true)}
-                disabled={Object.keys(quizAnswers).length < quizQuestions.length}
-                className="px-6 py-2.5 bg-shiraz text-white font-bold text-sm rounded-xl hover:opacity-90 transition-all disabled:opacity-40 cursor-pointer"
-              >
-                Antworten auswerten
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  setQuizSubmitted(false);
-                  setQuizAnswers({});
-                }}
-                className="px-6 py-2.5 bg-off-white text-text-main border border-home-grau/30 font-bold text-sm rounded-xl hover:bg-white transition-all cursor-pointer"
-              >
-                Test wiederholen
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* 4. MODUL-FOOTER (OHNE Links bei DIN-Normen nach Systemanweisung!) */}
       <ModuleFooter
         wikipedia={[
           { title: 'Beton (Abschnitt Dauerhaftigkeit)', url: 'https://de.wikipedia.org/wiki/Beton' },
@@ -2285,16 +2098,15 @@ export default function Expositionsklassen() {
           { title: 'Betondeckung', url: 'https://de.wikipedia.org/wiki/Betondeckung' }
         ]}
         literatur={[
-          'Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)',
-          'Grübl, P.; Weigler, H.; Siebel, E.: Beton – Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 (Eurocode 2)',
-          'DBV-Merkblatt: Betondeckung und Bewehrung nach Eurocode 2 (Deutscher Beton- und Bautechnik-Verein e.V.)',
-          'DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)'
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
+          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. Berlin: Ernst & Sohn 2001',
+          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Angaben manuell prüfen)',
+          'DBV-Merkblatt Betondeckung und Bewehrung nach Eurocode 2 (Ausgabe manuell prüfen)'
         ]}
         regelwerke={[
           { title: 'DIN EN 206:2021-06 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Teil 2: Beton; Anwendungsregeln zu DIN EN 206)' },
-          { title: 'DIN EN 1992-1-1:2011-01 + DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
+          { title: 'DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2); Neuausgabe DIN EN 1992-1-1:2025-09 – Übergangsregeln beachten' },
           { title: 'DAfStb Alkali-Richtlinie (Ausgabe 2013-10)' }
         ]}
         formeln={
@@ -2302,7 +2114,7 @@ export default function Expositionsklassen() {
             ? [
                 {
                   formel: '(w/z)_{\\text{eq}} = \\frac{w}{z + k_f \\cdot f + k_s \\cdot s}',
-                  erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 und DIN 1045-2 unter Anrechnung reaktiver Typ-II-Zusatzstoffe mit den Wirkungsfaktoren k_f = 0,40 und k_s = 1,0 bis 2,0.',
+                  erklaerung: 'Äquivalenter w/z-Wert mit Anrechnung von Flugasche (k_f = 0,4; f/z ≤ 0,33) und Silikastaub (k_s = 1,0; s/z ≤ 0,11) nach DIN 1045-2.',
                   quelle: 'DIN EN 206'
                 },
                 {

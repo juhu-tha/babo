@@ -87,7 +87,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     maxWz: 0.50,
     minDruckfestigkeit: 'C35/45',
     minZementgehalt: 320,
-    anmerkung: 'Mit Luftporen (>= 4,0 %) max w/z = 0,55 und C30/37 zulässig.'
+    anmerkung: 'Bei Luftporenbeton ist eine Festigkeitsklasse niedriger zulässig (C30/37); w/z bleibt 0,50 (manuell prüfen).'
   },
   'XD3': {
     code: 'XD3',
@@ -220,7 +220,8 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     beispiele: 'Industriehallen mit intensivem Gabelstaplerverkehr, Umschlaghallen.',
     maxWz: 0.45,
     minDruckfestigkeit: 'C35/45',
-    minZementgehalt: 320
+    minZementgehalt: 320,
+    anmerkung: 'Alternativ mit Oberflächenbehandlung des Betons: w/z ≤ 0,55, C30/37, z ≥ 300 kg/m³.'
   },
   'XM3': {
     code: 'XM3',
