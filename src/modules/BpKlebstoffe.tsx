@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, BookOpen, CheckCircle2, Lightbulb, AlertTriangle, ShieldCheck, Sparkles, ArrowRight, Calculator } from 'lucide-react';
 import { InnovationPraxisSection, PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import { KlebstoffBerater } from '@/src/components/KlebstoffBerater';
@@ -27,7 +29,7 @@ const adhesiveProducts: AdhesiveProduct[] = [
     durabilityClass: 'C2 (Haftfestigkeit ≥ 1,0 N/mm²)',
     maxElongation: 'Verformung S1 (≥ 2,5 mm und < 5,0 mm)',
     description: 'Kunststoffmodifizierter hydraulischer Dünnbettmörtel. Die Polymerzusätze verbessern die Scherfestigkeit und Flexibilität, sodass thermische Längenänderungen (z.B. bei Fußbodenheizungen) schadensfrei aufgenommen werden.',
-    advantages: ['Frostsicher und wasserbeständig (für außen geeignet)', 'Sehr gute Verformbarkeit (S1)', 'Verlängerte Offenzeit und verringertes Abrutschen'],
+    advantages: ['Frostsicher und wasserbeständig (für außen geeignet)', 'Verformbar (Klasse S1)', 'Verlängerte Offenzeit und verringertes Abrutschen'],
     disadvantages: ['Zementallergie-Risiko bei Verarbeitung', 'Feuchtigkeitsempfindliche Lagerung des Werktrockenpulvers']
   },
   {
@@ -39,7 +41,7 @@ const adhesiveProducts: AdhesiveProduct[] = [
     durabilityClass: 'D3 (Innen Nassbereich / Außen geschützt)',
     maxElongation: 'Gering (starr härtende Fuge)',
     description: 'Klassischer Holzleim für den konstruktiven Innenausbau. D3-Leime sind widerstandsfähig gegen kurzfristige Feuchtigkeitsbelastungen. Durch Beigabe eines Isocyanat-Härters wird die wasserfeste Klasse D4 erreicht.',
-    advantages: ['Absolut ungiftig und lösemittelfrei', 'Glasklare, unauffällige Fuge nach Trocknung', 'Extrem hohe Festigkeit auf Faserbasis'],
+    advantages: ['Lösemittelfrei', 'Transparente, unauffällige Fuge nach Trocknung', 'Klebfuge oft fester als das Holz selbst'],
     disadvantages: ['D3-Klebung ist nicht dauerhaft witterungsbeständig im Außenbereich', 'Erfordert zwingend Pressdruck beim Abbinden']
   },
   {
@@ -74,8 +76,8 @@ const adhesiveProducts: AdhesiveProduct[] = [
     curingType: 'Chemisch vernetzend durch Feuchtigkeit',
     durabilityClass: 'Sehr hohe dynamische Zugbelastbarkeit',
     maxElongation: 'Zulässige Gesamtverformung ca. 20 %',
-    description: 'Hochelastischer Hybrid-Kleb- und Dichtstoff, der die besten Eigenschaften von Silikonen (Elastizität) und Polyurethanen (Zähigkeit, lackierbar) kombiniert. Besitzt eine extreme Soforthaftung.',
-    advantages: ['Enorme Anfangshaftung (Kleben ohne Fixierung)', 'Haftet auch auf feuchten und unebenen Untergründen', 'Völlig frei von Isocyanaten, Silikonen und Lösemitteln'],
+    description: 'Hochelastischer Hybrid-Kleb- und Dichtstoff, der die besten Eigenschaften von Silikonen (Elastizität) und Polyurethanen (Zähigkeit, lackierbar) kombiniert. Hohe Anfangshaftung.',
+    advantages: ['Hohe Anfangshaftung (oft ohne Fixierung)', 'Haftet auch auf feuchten und unebenen Untergründen', 'Völlig frei von Isocyanaten, Silikonen und Lösemitteln'],
     disadvantages: ['Höherer Preis im Vergleich zu PUR oder Acryl', 'Härterückstand lässt sich mechanisch nur mühsam entfernen']
   }
 ];
@@ -178,7 +180,7 @@ export default function BpKlebstoffe() {
                     <span>Silikon-Dreipunfthaftung verhindern!</span>
                   </div>
                   <p className="font-normal text-[11px] text-amber-950/80">
-                    Bei Bau-Dehnungsfugen darf das Silikon zwingend <strong>nur an zwei Fugenflanken</strong> anhaften. Kommt es zu einer Haftung am Fugenboden (Dreipunkthaftung), zerreißt der Dichtstoff unmittelbar bei mechanischen Bewegungen infolge extrem überhöhter mechanischer Scherspannungen. Abhilfe schaffen **Fugenfüllprofile/Rundschnüre** aus PE.
+                    Bei Bau-Dehnungsfugen darf das Silikon zwingend <strong>nur an zwei Fugenflanken</strong> anhaften. Kommt es zu einer Haftung am Fugenboden (Dreipunkthaftung), reißt der Dichtstoff bei Fugenbewegungen, weil er sich nicht frei dehnen kann. Abhilfe schaffen **Fugenfüllprofile/Rundschnüre** aus PE.
                   </p>
                 </div>
               </div>
@@ -293,21 +295,21 @@ export default function BpKlebstoffe() {
                 <div className="p-3 bg-white border border-home-grau/10 rounded-lg shadow-sm space-y-1">
                   <span className="font-bold text-slate-800 block">Sanitär- &amp; Feuchtraumdichtstoffe (DIN EN 15651-3 - Typ S)</span>
                   <p className="text-text-main/70 text-[11px] leading-relaxed">
-                    Spezialsysteme für Dehnungsfugen im Nassbereich (Sanitäreinrichtungen, Fliesenanschlüsse). Zum Schutz vor mikrobiellem Befall sind diese Siliconklebstoffe zwingend pilzhemmend (fungizid, Klasse XS1) ausgerüstet und hydrophobiert.
+                    Spezialsysteme für Dehnungsfugen im Nassbereich (Sanitäreinrichtungen, Fliesenanschlüsse). Zum Schutz vor mikrobiellem Befall sind diese Silicondichtstoffe fungizid ausgerüstet (Sanitärdichtstoffe nach DIN EN 15651-3, Klassen XS1/XS2).
                   </p>
                 </div>
 
                 <div className="p-3 bg-white border border-home-grau/10 rounded-lg shadow-sm space-y-1">
                   <span className="font-bold text-slate-800 block">Bodenfugensysteme (DIN EN 15651-4 - Typ PW)</span>
                   <p className="text-text-main/70 text-[11px] leading-relaxed">
-                    Hochelastische Systeme für befahrbare oder mechanisch beanspruchte Bodenflächen (Logistikhallen, Parkdecks). Sie fordern Dichtstoffe mit hoher Shore-A-Härte (&gt; 35) und extremer Weiterreißfestigkeit bei chemischer Medienbeständigkeit nach IVD-Merkblatt 1.
+                    Hochelastische Systeme für befahrbare oder mechanisch beanspruchte Bodenflächen (Logistikhallen, Parkdecks). Sie erfordern Dichtstoffe mit höherer Shore-A-Härte, hoher Weiterreißfestigkeit und Beständigkeit gegen Treib- und Schmierstoffe (Hinweise in IVD-Merkblättern).
                   </p>
                 </div>
 
                 <div className="p-3 bg-white border border-home-grau/10 rounded-lg shadow-sm space-y-1">
                   <span className="font-bold text-slate-800 block">Konstruktive Bausystemverklebungen (DIN EN 1504-4)</span>
                   <p className="text-text-main/70 text-[11px] leading-relaxed">
-                    Strukturelle Epoxidharz-Klebemittel zur hochfesten Verklebung von Betonbauteilen, Stahllaschen oder Carbonfaserlamellen (CFK) zur statischen Tragwerkssanierung. Zeichnen sich durch extrem hohe Haft- und Scherzugeigenschaften aus (starre Klebefuge).
+                    Strukturelle Epoxidharz-Klebemittel zur hochfesten Verklebung von Betonbauteilen, Stahllaschen oder Carbonfaserlamellen (CFK) zur statischen Tragwerkssanierung. Sie haben hohe Haft- und Scherfestigkeiten (starre Klebefuge).
                   </p>
                 </div>
               </div>
@@ -324,14 +326,30 @@ export default function BpKlebstoffe() {
 
       <InnovationPraxisSection moduleKey="bp_klebstoffe" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Mindestfugenbreite einer Außenwandfuge"
+          zielGleichung="b_{min} = \frac{\Delta l}{ZGV}"
+          normQuelle="DIN 18540 (Fugen im Außenwandbereich); α_T und ZGV als Lehrwerte"
+          schritte={[
+            { titel: '1. Längenänderung der Elemente', formel: '\\Delta l = l \\cdot \\alpha_T \\cdot \\Delta T = 6000 \\cdot 10 \\cdot 10^{-6} \\cdot 80 = 4{,}8\\,\\text{mm}', erklaerung: 'Betonfertigteil 6 m, Temperaturspanne der Oberfläche 80 K.' },
+            { titel: '2. Zulässige Gesamtverformung', formel: 'ZGV = 25\\,\\%', erklaerung: 'Für elastische Dichtstoffe (PU, STP).' },
+            { titel: '3. Erforderliche Fugenbreite', formel: 'b_{min} = 4{,}8 / 0{,}25 = 19\\,\\text{mm}', erklaerung: 'Zuzüglich Maßtoleranzen; in der Regel auf 20 mm gerundet.' },
+          ]}
+          ergebnisHinweis="Ist die Fuge zu schmal, wird der Dichtstoff überdehnt und reißt – Fugenbreiten werden aus der Bewegung, nicht nach Gefühl festgelegt."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_klebstoffe" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Klebstoff', url: 'https://de.wikipedia.org/wiki/Klebstoff' },
           { title: 'Dichtstoff', url: 'https://de.wikipedia.org/wiki/Dichtstoff' }
         ]} 
         literatur={[ 
-          'Habibi, F. et al.: Adhesives in Building Construction.',
-          'Zinn, K.: Bauaufsichtliche Zulassungen von Verklebungsschichten.' 
+          'Habenicht, G.: Kleben – Grundlagen, Technologien, Anwendungen. 6. Aufl., Berlin: Springer 2009',
+          'Industrieverband Dichtstoffe e. V. (IVD): IVD-Merkblätter zu Fugenabdichtungen (Ausgaben manuell prüfen)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 12004 (Mörtel und Klebstoffe für Fliesen und Platten)' },
@@ -339,8 +357,8 @@ export default function BpKlebstoffe() {
           { title: 'DIN EN 204 (Beurteilung von Klebstoffen für nicht tragende Bauteile zur Holzverbindung)' }
         ]} 
         formeln={[
-          { formel: '\\sigma_{ad} = \\frac{F}{A_G} \\quad \\text{[N/mm²]}', erklaerung: 'Scherfestigkeit der Verklebungsfuge' },
-          { formel: 'R_v = \\frac{L_{max} - L_{min}}{L_0} \\times 100 \\quad \\text{[\\%]}', erklaerung: 'Inhärente Rückstellfähigkeit von Elastomer-Fugendichtstoffen' }
+          { formel: '\\tau = \\frac{F}{A_G} \\quad \\text{[N/mm²]}', erklaerung: 'Mittlere Scherfestigkeit der Klebfuge (Bruchkraft F je Klebfläche A_G).', quelle: 'z. B. DIN EN 205 (Holzklebstoffe)' },
+          { formel: 'ZGV = \\frac{b_{max} - b_{min}}{b_m} \\cdot 100\\,\\%', erklaerung: 'Zulässige Gesamtverformung des Fugendichtstoffs: Bewegung der Fugenbreite bezogen auf die mittlere Fugenbreite b_m (Bemessung von Fugenbreiten).', quelle: 'DIN 18540 / IVD-Merkblätter' }
         ]} 
       />
     </div>

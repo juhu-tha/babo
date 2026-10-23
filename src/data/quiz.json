@@ -11681,5 +11681,125 @@
       "targetModuleLabel": "Dämmstoffe (Bauprodukte)"
     },
     "verified": false
+  },
+  {
+    "id": "q_bbf_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_befestigung",
+    "moduleTitle": "Befestigungstechnik",
+    "topic": "Betonausbruch",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-4",
+    "question": "Um welchen Faktor steigt der Betonausbruchwiderstand N⁰Rk,c, wenn die Verankerungstiefe h_ef um 50 % erhöht wird?",
+    "options": [
+      "ca. 1,84",
+      "1,50",
+      "2,25",
+      "1,22"
+    ],
+    "correctIdx": 0,
+    "explanation": "N⁰Rk,c ~ h_ef^1,5: 1,5^1,5 ≈ 1,84.",
+    "gapAnalysis": {
+      "topic": "Betonausbruch",
+      "misconception": "Der Widerstand steigt linear mit h_ef.",
+      "coreRule": "Betonausbruch ∝ √f_ck · h_ef^1,5.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonausbruch“ im Modul Befestigungstechnik noch einmal durch.",
+      "targetModuleTab": "bp_befestigung",
+      "targetModuleLabel": "Befestigungstechnik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bbf_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_befestigung",
+    "moduleTitle": "Befestigungstechnik",
+    "topic": "Dübelarten",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Wie trägt ein Verbunddübel (Injektionssystem) die Last in den Beton ab?",
+    "options": [
+      "Über Stoffschluss (Verbund) zwischen Mörtel, Ankerstange und Bohrlochwand",
+      "Über Spreizdruck eines Konus",
+      "Über Formschluss in einem Hinterschnitt",
+      "Über Reibung eines Kunststoffdübels"
+    ],
+    "correctIdx": 0,
+    "explanation": "Verbunddübel übertragen die Last über Verbundspannungen; deshalb ist die Bohrlochreinigung entscheidend.",
+    "gapAnalysis": {
+      "topic": "Dübelarten",
+      "misconception": "Alle Dübel wirken über Spreizung.",
+      "coreRule": "Spreizung – Formschluss – Stoffschluss.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dübelarten“ im Modul Befestigungstechnik noch einmal durch.",
+      "targetModuleTab": "bp_befestigung",
+      "targetModuleLabel": "Befestigungstechnik"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bks_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_klebstoffe",
+    "moduleTitle": "Kleb- & Dichtstoffe",
+    "topic": "Fugenbemessung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18540",
+    "question": "Die Elementfuge bewegt sich um 4,8 mm, der Dichtstoff hat eine ZGV von 25 %. Wie breit muss die Fuge mindestens sein?",
+    "options": [
+      "ca. 19 mm",
+      "ca. 4,8 mm",
+      "ca. 12 mm",
+      "ca. 1,2 mm"
+    ],
+    "correctIdx": 0,
+    "explanation": "b = Δl / ZGV = 4,8 / 0,25 = 19,2 mm, praktisch 20 mm.",
+    "gapAnalysis": {
+      "topic": "Fugenbemessung",
+      "misconception": "Die Fugenbreite entspricht der Bewegung.",
+      "coreRule": "b_min = Δl / ZGV.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fugenbemessung“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
+      "targetModuleTab": "bp_klebstoffe",
+      "targetModuleLabel": "Kleb- & Dichtstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bks_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_klebstoffe",
+    "moduleTitle": "Kleb- & Dichtstoffe",
+    "topic": "Dreiflankenhaftung",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Warum wird bei Bewegungsfugen eine PE-Rundschnur hinterlegt?",
+    "options": [
+      "Um Dreiflankenhaftung zu verhindern – der Dichtstoff haftet nur an den zwei Flanken",
+      "Um Dichtstoff zu sparen, ohne Einfluss auf die Funktion",
+      "Um die Fuge wasserdicht zu machen",
+      "Um die Haftung am Fugengrund zu verbessern"
+    ],
+    "correctIdx": 0,
+    "explanation": "Haftet der Dichtstoff auch am Fugengrund, kann er sich nicht frei dehnen und reißt.",
+    "gapAnalysis": {
+      "topic": "Dreiflankenhaftung",
+      "misconception": "Mehr Haftfläche ist immer besser.",
+      "coreRule": "Zweiflankenhaftung bei Bewegungsfugen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dreiflankenhaftung“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
+      "targetModuleTab": "bp_klebstoffe",
+      "targetModuleLabel": "Kleb- & Dichtstoffe"
+    },
+    "verified": false
   }
 ]
