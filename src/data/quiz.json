@@ -9761,5 +9761,275 @@
       "targetModuleLabel": "Stahl"
     },
     "verified": false
+  },
+  {
+    "id": "q_met_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "metalle",
+    "moduleTitle": "Metalle",
+    "topic": "Kontaktkorrosion",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN ISO 8044",
+    "question": "Welches Metall korrodiert bei Kontakt von Aluminium und Edelstahl im Elektrolyten bevorzugt?",
+    "options": [
+      "Edelstahl",
+      "Aluminium (unedler)",
+      "Beide gleich",
+      "Keines"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das unedlere Metall wird zur Anode und löst sich bevorzugt auf; eine Trennung der Werkstoffe verhindert das.",
+    "gapAnalysis": {
+      "topic": "Kontaktkorrosion",
+      "misconception": "Das edlere Metall korrodiere stärker.",
+      "coreRule": "Unedler = Anode = korrodiert.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kontaktkorrosion“ im Modul Metalle noch einmal durch.",
+      "targetModuleTab": "metalle",
+      "targetModuleLabel": "Metalle"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_met_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "metalle",
+    "moduleTitle": "Metalle",
+    "topic": "Fließregel",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Klempnertechnik",
+    "question": "Warum darf Kupfer nicht oberhalb von Zink verbaut werden (in Fließrichtung des Wassers)?",
+    "options": [
+      "Kupfer ist zu schwer",
+      "Abgetragene Kupferionen fördern die Korrosion des unedleren Zinks",
+      "Zink färbt das Kupfer",
+      "Wegen der Wärmedehnung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit dem Regenwasser verfrachtete Kupferionen lagern sich auf Zink ab und bilden Lokalelemente.",
+    "gapAnalysis": {
+      "topic": "Fließregel",
+      "misconception": "Die Reihenfolge der Metalle auf dem Dach sei beliebig.",
+      "coreRule": "Edleres Metall nie oberhalb von unedlerem.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fließregel“ im Modul Metalle noch einmal durch.",
+      "targetModuleTab": "metalle",
+      "targetModuleLabel": "Metalle"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_met_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "metalle",
+    "moduleTitle": "Metalle",
+    "topic": "Wärmedehnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Physik",
+    "question": "Welches Metall hat die größte Wärmedehnung?",
+    "options": [
+      "Stahl (≈ 12·10⁻⁶/K)",
+      "Titan (≈ 8,6·10⁻⁶/K)",
+      "Aluminium (≈ 24·10⁻⁶/K)",
+      "Zink (≈ 30·10⁻⁶/K)"
+    ],
+    "correctIdx": 3,
+    "explanation": "Zink dehnt sich am stärksten; Titanzink-Bleche brauchen daher Dehnungsausgleich.",
+    "gapAnalysis": {
+      "topic": "Wärmedehnung",
+      "misconception": "Aluminium dehne sich am stärksten.",
+      "coreRule": "Zink > Aluminium > Stahl > Titan.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Metalle noch einmal durch.",
+      "targetModuleTab": "metalle",
+      "targetModuleLabel": "Metalle"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hwk_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "holzwerkstoffe",
+    "moduleTitle": "Holzwerkstoffe",
+    "topic": "Plattenarten",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 300",
+    "question": "Welche OSB-Klasse ist für tragende Zwecke im Feuchtbereich vorgesehen?",
+    "options": [
+      "OSB/1",
+      "OSB/2",
+      "OSB/3",
+      "Keine"
+    ],
+    "correctIdx": 2,
+    "explanation": "OSB/3 ist für tragende Zwecke im Feuchtbereich vorgesehen, OSB/4 für hoch belastete tragende Zwecke im Feuchtbereich.",
+    "gapAnalysis": {
+      "topic": "Plattenarten",
+      "misconception": "OSB sei grundsätzlich nur für den Trockenbereich geeignet.",
+      "coreRule": "OSB/3, OSB/4: tragend, Feuchtbereich.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Plattenarten“ im Modul Holzwerkstoffe noch einmal durch.",
+      "targetModuleTab": "holzwerkstoffe",
+      "targetModuleLabel": "Holzwerkstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hwk_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "holzwerkstoffe",
+    "moduleTitle": "Holzwerkstoffe",
+    "topic": "Brettsperrholz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 16351",
+    "question": "Was kennzeichnet Brettsperrholz (BSP/CLT)?",
+    "options": [
+      "Faserparallel verleimte Lamellen",
+      "Kreuzweise verleimte Brettlagen, Lastabtrag in zwei Richtungen",
+      "Gepresste Holzfasern",
+      "Furniere in Faserrichtung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die kreuzweise Anordnung ergibt Formstabilität und Plattenwirkung.",
+    "gapAnalysis": {
+      "topic": "Brettsperrholz",
+      "misconception": "BSP sei dasselbe wie BSH.",
+      "coreRule": "BSP = kreuzweise; BSH = faserparallel.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Brettsperrholz“ im Modul Holzwerkstoffe noch einmal durch.",
+      "targetModuleTab": "holzwerkstoffe",
+      "targetModuleLabel": "Holzwerkstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hwk_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "holzwerkstoffe",
+    "moduleTitle": "Holzwerkstoffe",
+    "topic": "Emissionen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "ChemVerbotsV / DIN EN 16516",
+    "question": "Nach welchem Prüfverfahren wird die Formaldehydabgabe von Holzwerkstoffen in Deutschland seit 2020 bewertet?",
+    "options": [
+      "DIN EN 717-1 allein",
+      "DIN EN 16516",
+      "DIN 4108-3",
+      "DIN EN 13501-1"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die ChemVerbotsV verweist auf die Prüfkammermethode nach DIN EN 16516 (umgangssprachlich „E05“).",
+    "gapAnalysis": {
+      "topic": "Emissionen",
+      "misconception": "E1 nach altem Verfahren reiche weiterhin aus.",
+      "coreRule": "Prüfung nach DIN EN 16516.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Emissionen“ im Modul Holzwerkstoffe noch einmal durch.",
+      "targetModuleTab": "holzwerkstoffe",
+      "targetModuleLabel": "Holzwerkstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dms_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "daemmstoffe",
+    "moduleTitle": "Dämmstoffe",
+    "topic": "Wärmeleitfähigkeit",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 4108-10",
+    "question": "Welcher Dämmstoff hat die geringste Wärmeleitfähigkeit?",
+    "options": [
+      "Mineralwolle",
+      "EPS",
+      "PUR/PIR",
+      "Vakuumisolationspaneel (VIP)"
+    ],
+    "correctIdx": 3,
+    "explanation": "VIP erreichen etwa 0,004–0,007 W/(m·K), PUR/PIR 0,022–0,028, EPS und Mineralwolle etwa 0,031–0,040 W/(m·K).",
+    "gapAnalysis": {
+      "topic": "Wärmeleitfähigkeit",
+      "misconception": "PUR sei der beste Dämmstoff überhaupt.",
+      "coreRule": "VIP < PUR < EPS ≈ MW.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmeleitfähigkeit“ im Modul Dämmstoffe noch einmal durch.",
+      "targetModuleTab": "daemmstoffe",
+      "targetModuleLabel": "Dämmstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dms_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "daemmstoffe",
+    "moduleTitle": "Dämmstoffe",
+    "topic": "Perimeterdämmung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 4108-10",
+    "question": "Welcher Dämmstoff eignet sich für Perimeterdämmung und Umkehrdächer?",
+    "options": [
+      "Mineralwolle",
+      "XPS",
+      "Zellulose",
+      "Hanf"
+    ],
+    "correctIdx": 1,
+    "explanation": "XPS ist geschlossenzellig, druckfest und nimmt kaum Wasser auf.",
+    "gapAnalysis": {
+      "topic": "Perimeterdämmung",
+      "misconception": "Jeder Dämmstoff sei im Erdreich einsetzbar.",
+      "coreRule": "Perimeter: XPS, Schaumglas.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Perimeterdämmung“ im Modul Dämmstoffe noch einmal durch.",
+      "targetModuleTab": "daemmstoffe",
+      "targetModuleLabel": "Dämmstoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_dms_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "daemmstoffe",
+    "moduleTitle": "Dämmstoffe",
+    "topic": "Sommerlicher Wärmeschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Bauphysik",
+    "question": "Warum verbessern Holzfaserdämmstoffe den sommerlichen Wärmeschutz?",
+    "options": [
+      "Wegen der geringsten Wärmeleitfähigkeit",
+      "Wegen hoher Wärmespeicherfähigkeit (c ≈ 2 100 J/(kg·K)) und Rohdichte → große Phasenverschiebung",
+      "Weil sie dampfdicht sind",
+      "Weil sie nicht brennbar sind"
+    ],
+    "correctIdx": 1,
+    "explanation": "Hohe spezifische Wärmekapazität und Rohdichte verzögern den Wärmedurchgang.",
+    "gapAnalysis": {
+      "topic": "Sommerlicher Wärmeschutz",
+      "misconception": "Nur der λ-Wert bestimme den sommerlichen Wärmeschutz.",
+      "coreRule": "Speichermasse → Phasenverschiebung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sommerlicher Wärmeschutz“ im Modul Dämmstoffe noch einmal durch.",
+      "targetModuleTab": "daemmstoffe",
+      "targetModuleLabel": "Dämmstoffe"
+    },
+    "verified": false
   }
 ]

@@ -1,6 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, ShieldAlert, Sparkles, ArrowRight, BookOpen } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -140,7 +141,7 @@ const METALS_DATA = [
     thermalConductivity: 15,
     meltingPoint: 1450,
     corrosionBehavior: 'Durch Legierung mit mindestens 10,5 % Chrom (in der Praxis 17–19 % Cr und 8–12 % Ni) bildet sich bei Sauerstoffkontakt spontan eine nanometerdünne, selbsterneuernde Passivschicht aus Chromoxid (Cr₂O₃). In Gegenwart von Chloriden (Tausalz, Meeresluft, Schwimmbäder) besteht jedoch bei unzureichender Legierungswahl akute Gefahr von mikroskopischem Lochfraß und unter Zugspannung von katastrophaler Spannungsrisskorrosion (SCC).',
-    corrosionProtection: 'Genaue Abstimmung der Werkstoffgüte auf die Umgebungsbedingungen: A2 (1.4301, CRC II) für Normalatmosphäre; A2 (1.4301, CRC II) für normale Innen- und Landatmosphäre; A4 (1.4404 mit Molybdän, CRC III) für mäßig chloridbelastete Außenatmosphäre, z. B. küstennah; CRC V (z. B. 1.4529, 1.4565) für Straßentunnel mit Tausalzeintrag und für nicht regelmäßig gereinigte, sicherheitsrelevante Bauteile in Hallenschwimmbädern.; hochlegierte Sonderstähle wie 1.4529 (CRC IV/V) zwingend für Hallenschwimmbäder. Vermeidung von Kontakt mit gewöhnlichem ferritischen Eisenstaub (Fremdrost).',
+    corrosionProtection: 'Genaue Abstimmung der Werkstoffgüte auf die Umgebungsbedingungen: A2 (1.4301, CRC II) für normale Innen- und Landatmosphäre; A4 (1.4404 mit Molybdän, CRC III) für mäßig chloridbelastete Außenatmosphäre, z. B. küstennah; CRC V (z. B. 1.4529, 1.4565) für Straßentunnel mit Tausalzeintrag und für nicht regelmäßig gereinigte, sicherheitsrelevante Bauteile in Hallenschwimmbädern.; hochlegierte Sonderstähle wie 1.4529 (CRC IV/V) zwingend für Hallenschwimmbäder. Vermeidung von Kontakt mit gewöhnlichem ferritischen Eisenstaub (Fremdrost).',
     applications: 'Fassadenbefestigungen, tragende Unterkonstruktionen, Glasfassadenanker, Geländer, Schwimmbaddächer, Bewehrung in hochbelasteten Bauteilen',
     description: 'Austenitischer Hochleistungsstahl mit dichter kubisch-flächenzentrierter Atompackung. Hohe Zähigkeit ohne Tieftemperaturversprödung, sehr wartungsarm und repräsentativ. Geringe Wärmeleitung (15 W/(m·K)) minimiert Wärmebrücken.'
   },
@@ -421,6 +422,8 @@ export default function Metalle() {
 
       <MetalThematicLinks current="baustoff" />
 
+      <ModulTest moduleId="metalle" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Metall', url: 'https://de.wikipedia.org/wiki/Metall' },
@@ -435,8 +438,8 @@ export default function Metalle() {
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 8044:2020-08 (Korrosion von Metallen und Legierungen - Grundbegriffe)' },
-          { title: 'DIN EN 1993-1-4:2021-02 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-4: Nichtrostende Stähle)' },
-          { title: 'DIN EN 1999-1-1:2023-11 (Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken - Allgemeine Bemessungsregeln)' },
+          { title: 'DIN EN 1993-1-4 mit NA (Eurocode 3, Teil 1-4: Nichtrostende Stähle; eingeführte Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 1999-1-1 mit NA (Eurocode 9: Aluminiumtragwerke; eingeführte Ausgabe manuell prüfen)' },
           { title: 'DIN EN ISO 12944-1..9:2018-06 (Beschichtungsstoffe - Korrosionsschutz von Stahlbauten durch Beschichtungssysteme)' },
           { title: 'DIN EN 10025-5:2019-10 (Warmgewalzte Erzeugnisse aus wetterfesten Baustählen)' },
           { title: 'DIN EN 988:1996-08 (Zink und Zinklegierungen - Festlegungen für gewalzte Flacherzeugnisse für das Bauwesen)' }
