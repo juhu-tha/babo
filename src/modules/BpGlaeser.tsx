@@ -1513,13 +1513,13 @@ export default function BpGlaeser() {
         <FormulaDerivationBox
           title="Anwendungsbeispiel: Bemessungsfestigkeit von Float, TVG und ESG"
           zielGleichung="f_{g,d} = \frac{k_{mod} \cdot k_c \cdot f_{g,k}}{\gamma_M}"
-          normQuelle="DIN 18008-1 (Lehrbeispiel Windlast: Float k_mod = 0,7, γ_M = 1,8; vorgespanntes Glas k_mod = 1,0, γ_M = 1,5; k_c = 1,0 als Lehrannahme – manuell prüfen)"
+          normQuelle="DIN 18008-1 und -2 (Windlast: Float k_mod = 0,7, γ_M = 1,8, k_c = 1,8 bei linienförmiger Lagerung; vorgespanntes Glas k_mod = 1,0, k_c = 1,0, γ_M = 1,5)"
           schritte={[
-            { titel: '1. Floatglas', formel: 'f_{g,d} = 0{,}7 \\cdot 45 / 1{,}8 = 17{,}5\\,\\text{N/mm}^2', erklaerung: 'f_g,k = 45 N/mm².' },
+            { titel: '1. Floatglas (linienförmig gelagert)', formel: 'f_{g,d} = 0{,}7 \\cdot 1{,}8 \\cdot 45 / 1{,}8 = 31{,}5\\,\\text{N/mm}^2', erklaerung: 'f_g,k = 45 N/mm², k_c = 1,8 nach DIN 18008-2 für allseitig linienförmig gelagerte Vertikalverglasungen; bei punktgestützter Lagerung k_c = 1,0 → 17,5 N/mm².' },
             { titel: '2. TVG', formel: 'f_{g,d} = 1{,}0 \\cdot 70 / 1{,}5 = 46{,}7\\,\\text{N/mm}^2', erklaerung: 'Vorgespanntes Glas: k_mod = 1,0, γ_M = 1,5.' },
             { titel: '3. ESG', formel: 'f_{g,d} = 1{,}0 \\cdot 120 / 1{,}5 = 80\\,\\text{N/mm}^2', erklaerung: 'Vorgespanntes Glas: Festigkeit kaum lastdauerabhängig.' },
           ]}
-          ergebnisHinweis="ESG hat rund die 4,5-fache Bemessungsfestigkeit von Floatglas – bricht aber krümelig ohne Resttragfähigkeit; deshalb VSG aus TVG für Überkopf und Absturzsicherung."
+          ergebnisHinweis="ESG hat rund die 2,5-fache Bemessungsfestigkeit von linienförmig gelagertem Floatglas – bricht aber krümelig ohne Resttragfähigkeit; deshalb VSG aus TVG für Überkopf und Absturzsicherung."
         />
       </div>
 

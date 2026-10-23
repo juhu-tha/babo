@@ -448,7 +448,7 @@ export default function Mischungsberechnung() {
   
   // k-Werte aus zentraler Registry (DIN 1045-2)
   const [kFa, setKFa] = useState(DIN1045_2.kFlugasche);
-  const [kSf, setKSf] = useState(0); // DIN 1045-2:2023-08: Anrechnung nur für Flugasche
+  const [kSf, setKSf] = useState(1.0); // DIN 1045-2:2023-08, 5.2.5.2.3: k = 1,0 (s ≤ 0,11·z); bei XF2/XF4 keine Anrechnung
   const [kKsm, setKKsm] = useState(0.4); // Lehrannahme: in DE nur mit allgemeiner bauaufsichtlicher Zulassung
   const [kBiochar, setKBiochar] = useState(0.0); // Aktuell kein normativer k-Wert für Biochar
 
@@ -729,7 +729,7 @@ export default function Mischungsberechnung() {
     // Grenzwerte DIN 1045-2: d_g = 8 mm -> 500 kg/m³, d_g = 16 mm -> 450 kg/m³, d_g = 32 mm -> 400 kg/m³ (bei Zementgehalt ≤ 400 kg/m³)
     // DIN 1045-2 Tab. F.4.1 (bis C50/60, XF/XM): z ≤ 300 → 400, z ≥ 350 → 450 kg/m³, dazwischen linear
     const maxMehlkornWert = zement <= 300 ? 400 : zement >= 350 ? 450 : 400 + (zement - 300);
-    const maxMehlkornText = `${formatDeWert(maxMehlkornWert)} kg/m³ (DIN 1045-2, Tab. F.4.1; Ausgabe 2023 manuell prüfen)`;
+    const maxMehlkornText = `${formatDeWert(maxMehlkornWert)} kg/m³ (DIN 1045-2:2008-08, Tab. F.4.1; in der Ausgabe 2023-08 entfallen, dort Mindest-Leimvolumen)`;
     const isMehlkornOk = mehlkornGesamt <= maxMehlkornWert;
 
     // CO2 Berechnung (Detailliert)
@@ -1335,11 +1335,11 @@ export default function Mischungsberechnung() {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <label className="text-sm font-medium text-text-main">k-Wert SF</label>
-                      <InfoTooltip text="DIN EN 206 nennt k = 1,0 bzw. 2,0. Nach DIN 1045-2:2023-08 ist die Anrechnung auf w/z und Mindestzementgehalt nur für Flugasche vorgesehen; Silikastaub wird daher ohne Anrechnung (k = 0) gerechnet." />
+                      <InfoTooltip text="Nach DIN 1045-2:2023-08, Abschn. 5.2.5.2.3 darf Silikastaub mit k = 1,0 angerechnet werden (s ≤ 0,11 · z). Bei XF2/XF4 ist nur Flugasche anrechenbar – dann k = 0 einstellen." />
                     </div>
                     <span className="text-sm font-bold text-shiraz">{formatDeZahl(kSf, 1)} -</span>
                   </div>
-                  <div className="text-xs text-home-grau">DIN 1045-2:2023-08: keine Anrechnung von Silikastaub (manuell prüfen)</div>
+                  <div className="text-xs text-home-grau">DIN 1045-2:2023-08: Anrechnung von Silikastaub mit k = 1,0 (Abschn. 5.2.5.2.3; nicht bei XF2/XF4)</div>
                 </div>
               </div>
 

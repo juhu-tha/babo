@@ -36,7 +36,7 @@ ChartJS.register(
 );
 
 // K-Werte: Empfehlungswerte nach EN 1996-1-1, Tab. 3.3 (Mauerziegel Gruppe 1 bzw. Hochlochziegel Gruppe 2);
-// in Deutschland gelten die Werte des NA – manuell prüfen. Lehmsteine (DIN 18946) und LM-Wert für KS: Lehrannahme.
+// in Deutschland gelten nach DIN EN 1996-1-1/NA eigene Parameter (f_k = K · f_st^α · f_m^β bzw. Tabellenwerte f_k). Lehmsteine (DIN 18946) und LM-Wert für KS: Lehrannahme.
 const stoneTypes = {
   'MZ': { name: 'Mauerziegel (Ton-Vollstein)', K: { 'NM': 0.55, 'LM': 0.30, 'DM': 0.75 }, fvk0: { 'NM': 0.20, 'LM': 0.15, 'DM': 0.30 }, lambda: 0.81, rho: 1800, desc: 'Keramisch gebrannter Ton. Sehr hohe Lebensdauer, sehr gute Dauerhaftigkeit (Klinker), hervorragender Witterungswiderstand, hoher Energiewert bei Herstellung.' },
   'KSV': { name: 'Kalksandstein (KS)', K: { 'NM': 0.55, 'LM': 0.45, 'DM': 0.80 }, fvk0: { 'NM': 0.20, 'LM': 0.15, 'DM': 0.40 }, lambda: 0.99, rho: 2000, desc: 'Hydrothermal dampfgehärtetes Kalk-Sand-Gemisch. Sehr hoher Schallschutz, höchste Tragfähigkeit, ökologisch vorteilhafter als massiv gebrannt' },
@@ -194,7 +194,7 @@ export default function Mauerwerk() {
     // fvk = fvk0 + 0.4 * sigma_d (vereinfacht nach EC6)
     // Begrenzung auf max Werte je nach Stein/Mörtel (hier vereinfacht)
     const fvk_calc = fvk0 + 0.4 * sigmaD;
-    const fvk_max = 0.065 * fb; // Obergrenze nach EN 1996-1-1 (NA-Werte manuell prüfen)
+    const fvk_max = 0.065 * fb; // Lehrmodell: Obergrenze 0,065·f_b = Empfehlungswert EN 1996-1-1; nach DIN EN 1996-1-1/NA stattdessen Steinzugversagen f_vlt2 = 0,45·f_bt,cal·√(1 + σ_D/f_bt,cal)
     const fvk = Math.min(fvk_calc, fvk_max);
     const fvd = fvk / 1.5; // γ_M = 1,5
 
@@ -687,7 +687,7 @@ export default function Mauerwerk() {
                 <div>
                   <div className="text-home-grau text-sm mb-1 flex items-center gap-1">
                     <FormulaText text="Knickbeiwert Φ" />
-                    <InfoTooltip text="Vereinfacht: Φ = 1 − 2e/t erfasst nur die Lastausmitte (Wandkopf/-fuß); die Schlankheit h_ef/t geht nicht ein (vereinfachtes Verfahren nach DIN EN 1996-3 – manuell prüfen). Die tatsächliche Knicklänge h_ef hängt von den Halterungen am Wandkopf und -fuß ab." />
+                    <InfoTooltip text="Vereinfacht: Φ = 1 − 2e/t (DIN EN 1996-1-1, 6.1.2.2) erfasst nur die Lastausmitte am Wandkopf/-fuß; das vereinfachte Verfahren nach DIN EN 1996-3/NA berücksichtigt die Schlankheit über Φ2 = 0,85·a/t − 0,0011·(h_ef/t)². Die tatsächliche Knicklänge h_ef hängt von den Halterungen am Wandkopf und -fuß ab." />
                   </div>
                   <div className={`text-xl font-bold ${results.phi < 0.2 ? 'text-shiraz' : 'text-text-main'}`}>
                     {formatDeZahl(results.phi, 2)}

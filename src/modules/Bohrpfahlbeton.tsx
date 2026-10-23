@@ -29,7 +29,7 @@ export default function Bohrpfahlbeton() {
             <li>Hoher Mehlkorngehalt für optimales Zusammenhaltungsvermögen (Kohäsion).</li>
             <li>Sicheres und vollständiges Umschließen der Bewehrungskörbe.</li>
             <li>Kein Entmischen oder Blockieren (Stopfer) während des Einbaus.</li>
-              <li>Mindestzementgehalt, höchster w/z-Wert und Mindestfeinanteil sind in DIN EN 1536 geregelt (Werte manuell prüfen).</li>
+              <li>Mindestzementgehalt ≥ 325 kg/m³ (trocken) bzw. ≥ 375 kg/m³ (unter Wasser/Stützflüssigkeit), Mehlkorn ≥ 400 kg/m³ (D &gt; 8 mm) bzw. ≥ 450 kg/m³ (D ≤ 8 mm), w/z(eq) ≤ 0,60 (DIN EN 1536 i. V. m. DIN 1045-2:2023-08).</li>
           </ul>
         </div>
 

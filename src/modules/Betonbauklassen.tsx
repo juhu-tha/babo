@@ -194,7 +194,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
       kooperation: {
         action: 'Kein gesondertes Kooperationsgespräch vorgesehen (Lehrannahme). Einfacher bilateraler Telefonkontakt zur Disposition der Liefermenge und -zeit reicht aus.',
         responsible: 'Bauleiter, Werkdisponent',
-        normDetail: 'Bei BBQ-N sind die Abstimmungspflichten geringer als bei BBQ-E/BBQ-S (Umfang nach DIN 1045-1000 – manuell prüfen).',
+        normDetail: 'Bei BBQ-N ist kein Betonbaukonzept erforderlich; BBQ-E und BBQ-S erfordern ein (vorläufiges) Betonbaukonzept nach DIN 1045-1000:2023-08 (vgl. DBV-Merkblatt „Umsetzung des BBQ-Konzepts“, März 2024).',
         tip: 'Klären Sie dennoch die Befahrbarkeit des Geländes durch die schweren LKW-Mischer im Voraus ab.'
       },
       execution: {
@@ -607,11 +607,10 @@ export default function Betonbauklassen() {
             Die Betonbauqualitätsklassen (BBQ) stehen in enger Verbindung mit den Überwachungsklassen (ÜK) zur Baustellenselbst- und Fremdüberwachung nach DIN 1045-3:
           </p>
           <ul className="list-disc list-inside text-xs text-text-main/80 space-y-2 leading-relaxed">
-            <li><strong>ÜK 1:</strong> Festigkeitsklassen bis C25/30 ohne besondere Betoneigenschaften. Eigenüberwachung durch das Bauunternehmen.</li>
-            <li><strong>ÜK 2:</strong> C30/37 bis C50/60 sowie Betone mit besonderen Eigenschaften (z. B. WU-Beton, Unterwasserbeton). Zusätzlich Fremdüberwachung durch eine anerkannte Überwachungsstelle.</li>
-            <li><strong>ÜK 3:</strong> Ab C55/67 (hochfester Beton). Erweiterte Eigen- und Fremdüberwachung.</li>
+            <li><strong>ÜK 1:</strong> Festigkeitsklassen bis C25/30 sowie z. B. WU-Beton und Unterwasserbeton. Eigenüberwachung durch das Bauunternehmen.</li>
+            <li><strong>ÜK 2:</strong> C30/37 bis C100/115 sowie Betone mit besonderen Expositionen bzw. Eigenschaften. Zusätzlich Überwachung durch eine anerkannte Überwachungsstelle.</li>
           </ul>
-          <p className="text-[11px] text-text-main/60 mt-3">Vollständige Zuordnung: DIN 1045-3:2023-08, Überwachungsklassen – manuell prüfen.</p>
+          <p className="text-[11px] text-text-main/60 mt-3">Zuordnung nach DIN 1045-3:2023-08, Tabelle 3; die frühere ÜK 3 ist entfallen.</p>
         </div>
       </div>
 

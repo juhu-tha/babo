@@ -2079,7 +2079,7 @@ export default function KiUeberblick() {
           'Karniadakis, G. E. et al.: Physics-informed machine learning (Nature Reviews Physics 3, 2021)'
         ]}
         regelwerke={[
-          { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – in Kraft 01.08.2024, gestaffelte Anwendung; Änderung durch Digital Omnibus (Fundstelle manuell prüfen)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+          { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – in Kraft 01.08.2024, gestaffelte Anwendung; geändert durch Verordnung (EU) 2026/1744 (Digital Omnibus, ABl. L vom 24.07.2026)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
           { title: 'ISO/IEC 22989:2022 (Information technology — Artificial intelligence concepts and terminology)', url: 'https://www.iso.org/' },
           { title: 'DIN SPEC 92001 (Künstliche Intelligenz – Qualitätsanforderungen an KI-Module)' },
           { title: 'DIN EN ISO 19650 (Organisation von Daten zu Bauwerken / BIM)' }

@@ -135,7 +135,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     minStrengthClass: 'C35/45',
     minCement: 320,
     minCoverDurMm: 40,
-    specialNotes: 'Bei Luftporenbeton (z. B. wegen gleichzeitiger XF-Anforderung) ist eine Festigkeitsklasse niedriger zulässig (DIN 1045-2, Fußnote – manuell prüfen).'
+    specialNotes: 'Bei Luftporenbeton (z. B. wegen gleichzeitiger XF-Anforderung) ist eine Festigkeitsklasse niedriger zulässig (DIN 1045-2:2023-08, Fußnote zu Tab. F.1; LP-Beton = Betonklasse BK-E).'
   },
   {
     code: 'XD3',
@@ -147,7 +147,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     minStrengthClass: 'C35/45',
     minCement: 320,
     minCoverDurMm: 40,
-    specialNotes: 'Für befahrene Parkdecks zusätzliche Schutzmaßnahmen planen (z. B. Beschichtung) – manuell prüfen.'
+    specialNotes: 'Für befahrene Parkdecks: rissvermeidende Bauweise oder dauerhafter lokaler Rissschutz (rissüberbrückende Beschichtung nach TR Instandhaltung) und Instandhaltungsplan nach TR Instandhaltung (DIN 1045-2:2023-08).'
   },
 
   // XS: Chloride aus Meerwasser
@@ -263,7 +263,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     minStrengthClass: 'C35/45',
     minCement: 320,
     minCoverDurMm: null,
-    specialNotes: 'Bei SO₄²⁻ > 600 mg/l im Wasser bzw. > 3 000 mg/kg im Boden: SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch (DIN 1045-2 – manuell prüfen).'
+    specialNotes: 'Bei SO₄²⁻ > 600 mg/l im Wasser bzw. > 3 000 mg/kg im Boden: SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch (DIN 1045-2:2023-08; Flugascheanteil an z + f ≥ 30 % bzw. ≥ 10 % je nach Zementart).'
   },
   {
     code: 'XA3',
@@ -434,7 +434,7 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     cMinDur: 40,
     cNom: 55,
     mechanism: 'Lochfraßkorrosion durch Tausalz-Chloride ohne pH-Absenkung + Frost-Tau-Skalierung + Schleifabrieb von PKW-Reifen. AKR-Gefahr durch ständige Alkalizufuhr (Feuchteklasse WA).',
-    practicalTips: 'Zusätzliche Schutzmaßnahmen für befahrene Flächen planen (z. B. Oberflächenschutzsystem; manuell prüfen). AKR: Maßnahmen nach Alkali-Richtlinie für Feuchtigkeitsklasse WA.',
+    practicalTips: 'Zusätzliche Schutzmaßnahmen für befahrene Flächen planen (XD3: rissvermeidende Bauweise oder dauerhafter lokaler Rissschutz nach TR Instandhaltung; mit vollflächigem Oberflächenschutz XD1; Instandhaltungsplan erforderlich). AKR: Maßnahmen nach Alkali-Richtlinie für Feuchtigkeitsklasse WA.',
     normRef: 'DIN 1045-2 Tab. F.2.2 / DAfStb-Heft 600'
   },
   {
@@ -509,7 +509,7 @@ const BUILDING_ZONES: BuildingZoneInfo[] = [
     cMinDur: 20,
     cNom: 35,
     mechanism: 'Ständige Feuchte verhindert Karbonatisierung mangels Sauerstoffzutritt, jedoch chemischer Angriff durch Porenwassersulfate und Huminsäuren.',
-    practicalTips: 'Direkt gegen Baugrund betoniert: c_nom ≥ 75 mm; auf vorbereitetem Untergrund (z. B. Sauberkeitsschicht) ≥ 40 mm (DIN EN 1992-1-1, 4.4.1.3 – NA manuell prüfen).',
+    practicalTips: 'Betonieren gegen unebene Flächen: Vorhaltemaß Δc_dev nach DIN EN 1992-1-1/NA, 4.4.1.3(4) um das Differenzmaß der Unebenheit, mindestens um 20 mm erhöhen (z. B. unebene Sauberkeitsschicht); bei Betonieren direkt gegen Baugrund um 50 mm.',
     normRef: 'DIN 1045-2 Tab. F.2.1 / WU-Richtlinie DAfStb'
   },
   {

@@ -1420,7 +1420,7 @@ export default function NachhaltigkeitDatenRegeln() {
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">Suffizienz</span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; seit November 2025 liegen Eckpunkte für einen neuen Entwurf vor (Stand manuell prüfen). 
+                    Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; nach Eckpunkten vom 20.11.2025 befindet sich ein neuer Gesetzentwurf in der Ressortabstimmung, ist aber noch nicht veröffentlicht (Stand 10/2026). 
                     Grundlegende öffentlich-rechtliche Schutzziele (Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz) bleiben gewahrt.
                   </p>
                 </div>

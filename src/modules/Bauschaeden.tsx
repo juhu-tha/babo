@@ -400,7 +400,7 @@ ${senderName}`;
                       🏗️ Gebäudetyp E: "Einfaches Bauen" (Gesetzgebungsstand 2026)
                     </span>
                     <p className="text-xs text-slate-850 leading-relaxed">
-                      Die bayerische Initiative (Pilotprojekte, Abweichungen nach Art. 63 BayBO) und der Bundesgesetzentwurf zum <strong>Gebäudetyp E</strong> (E wie "Einfach" oder "Experimentell") zielen darauf ab, das Bauen bezahlbarer zu machen. Der Kabinettsentwurf vom 06.11.2024 entfiel mit dem Ende der 20. Wahlperiode; am 20.11.2025 legten BMJV und BMWSB Eckpunkte für einen neuen Anlauf vor; ein Gesetz ist bislang nicht in Kraft (Stand 10/2026; Verfahrensstand manuell prüfen). 
+                      Die bayerische Initiative (Pilotprojekte, Abweichungen nach Art. 63 BayBO) und der Bundesgesetzentwurf zum <strong>Gebäudetyp E</strong> (E wie "Einfach" oder "Experimentell") zielen darauf ab, das Bauen bezahlbarer zu machen. Der Kabinettsentwurf vom 06.11.2024 entfiel mit dem Ende der 20. Wahlperiode; am 20.11.2025 legten BMJV und BMWSB Eckpunkte vor; ein im Juli 2026 angekündigter neuer Gesetzentwurf befindet sich noch in der Ressortabstimmung und ist nicht veröffentlicht; ein Gesetz ist nicht in Kraft (Stand 10/2026). 
                     </p>
                     <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded border border-slate-150 leading-relaxed">
                       <strong>Rechtlicher Hintergrund:</strong> Bislang wird standardmäßig verlangt, dass Wohngebäude allen Komfort-DIN-Normen vollumfänglich entsprechen (z.B. Schallschutz, Steckdosenanzahl, etc.), da diese als "Anerkannte Regeln der Technik" gelten. Eine nicht vereinbarte Abweichung ist daher ein Mangel, auch ohne Schaden.

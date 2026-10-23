@@ -664,7 +664,7 @@ export default function BpMauerwerk() {
         <FormulaDerivationBox
           title="Anwendungsbeispiel: Tragfähigkeit einer KS-Innenwand"
           zielGleichung="f_k = K \cdot f_b^{0{,}7} \cdot f_m^{0{,}3}, \quad N_{Rd} = \Phi \cdot t \cdot \zeta \cdot f_k / \gamma_M"
-          normQuelle="DIN EN 1996-1-1, Gl. (3.1) und 6.1.2 (Lehrbeispiel; in Deutschland f_k meist aus NA-Tabellen – manuell prüfen)"
+          normQuelle="DIN EN 1996-1-1, Gl. (3.1) und 6.1.2 (Lehrbeispiel mit Empfehlungswerten; in Deutschland f_k nach DIN EN 1996-1-1/NA)"
           schritte={[
             { titel: '1. Gegeben', formel: 'K = 0{,}55,\\; f_b = 20,\\; f_m = 10\\,\\text{N/mm}^2,\\; t = 175\\,\\text{mm},\\; \\Phi = 0{,}8', erklaerung: 'KS-Vollstein (Gruppe 1), Normalmauermörtel M10.' },
             { titel: '2. Charakteristische Druckfestigkeit', formel: 'f_k = 0{,}55 \\cdot 20^{0{,}7} \\cdot 10^{0{,}3} = 0{,}55 \\cdot 8{,}14 \\cdot 2{,}00 = 8{,}9\\,\\text{N/mm}^2', erklaerung: 'Gl. (3.1) mit α = 0,7 und β = 0,3.' },

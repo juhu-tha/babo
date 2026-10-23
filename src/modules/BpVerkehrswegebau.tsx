@@ -56,7 +56,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
       { name: 'Asphaltdeckschicht (AC 11 D S / SMA 8)', thickness: 4, material: 'Asphaltbeton / SMA mit 50/70', normRequirement: 'Gute Verschleißfestigkeit, PSV-Wert ≥ 48', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 5, material: 'Binder mit Straßenbaubitumen 50/70', normRequirement: 'Hohlraumfüllungsgrad mind. 70%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-800' },
       { name: 'Asphalttragschicht (AC 22 TS)', thickness: 13, material: 'Bitumen 50/70 oder 70/100', normRequirement: 'Dicke 13 cm, Bindergehalt ≥ 4,3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 43, material: 'Sand-Kies-Schottergemisch FSS', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS (Bk100–Bk1,8; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 43, material: 'Sand-Kies-Schottergemisch FSS', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS (Bk100–Bk1,8; RStO 12, Tafel 1, Zeile 1)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk3.2': {
@@ -66,7 +66,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     layers: [
       { name: 'Asphaltdeckschicht (AC 11 D / SMA 8)', thickness: 4, material: 'Asphaltbeton mit 70/100', normRequirement: 'Hohlraumgehalt am fertigen Bauteil 1,5-4,5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphalttragschicht (AC 22 TS)', thickness: 14, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97,0%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 42, material: 'Sand/Schotter-Recycling-Gemisch', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS (Bk100–Bk1,8; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 42, material: 'Sand/Schotter-Recycling-Gemisch', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS (Bk100–Bk1,8; RStO 12, Tafel 1, Zeile 1)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk1.0': {
@@ -76,7 +76,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     layers: [
       { name: 'Asphaltdeckschicht (AC 8 N oder AC 11 N)', thickness: 4, material: 'Asphaltbeton mit weicherem Bitumen 70/100', normRequirement: 'Dichtheit gegen Sauerstoff/Wasser, PSV ≥ 45 ausreichend', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphalttragschicht (AC 22 TN)', thickness: 10, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97,0%, Bindergehalt ≥ 4,3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 41, material: 'Sand-Kies FSS', normRequirement: 'Ev2 ≥ 100 MPa auf der FSS (Bk1,0–Bk0,3; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 41, material: 'Sand-Kies FSS', normRequirement: 'Ev2 ≥ 100 MPa auf der FSS (Bk1,0–Bk0,3; RStO 12, Tafel 1, Zeile 1)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk0.3': {
@@ -86,7 +86,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     layers: [
       { name: 'Asphaltdeckschicht (AC 8 N / AC 5 N)', thickness: 4, material: 'Asphaltbeton mit Bitumen 70/100 oder 160/220', normRequirement: 'Dichte Deckschicht, gute Verdichtung', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphalttragschicht (AC 22 TN)', thickness: 8, material: 'Bitumen 70/100', bgClass: 'bg-zinc-600 text-zinc-200', normRequirement: 'Anforderungen nach TL/ZTV Asphalt-StB', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 38, material: 'Kies/Schotter-Gemisch 0/45', normRequirement: 'Ev2 ≥ 100 MPa auf der FSS (Bk1,0–Bk0,3; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 38, material: 'Kies/Schotter-Gemisch 0/45', normRequirement: 'Ev2 ≥ 100 MPa auf der FSS (Bk1,0–Bk0,3; RStO 12, Tafel 1, Zeile 1)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   }
 };
@@ -1902,7 +1902,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         if (betonCementAlkali === 'high') {
                           riskTitle = "AKUTES SCHADENSRISIKO (Betonkrebs-Gefahr EXTREM HOCH!)";
                           riskColor = "bg-red-50 text-red-800 border-red-200";
-                          riskAdvice = "Alkaliempfindliche Gesteinskörnung mit üblichem Zement und Tausalzzufuhr (Feuchtigkeitsklasse WS): hohes AKR-Risiko, Schäden können nach einigen Jahren auftreten. Unzulässig ohne Gutachten bzw. Maßnahmen nach Alkali-Richtlinie und ARS 04/2013 (Nachfolgeregelungen manuell prüfen).";
+                          riskAdvice = "Alkaliempfindliche Gesteinskörnung mit üblichem Zement und Tausalzzufuhr (Feuchtigkeitsklasse WS): hohes AKR-Risiko, Schäden können nach einigen Jahren auftreten. Unzulässig ohne Gutachten bzw. Maßnahmen nach Alkali-Richtlinie, TL Beton-StB und den jeweils aktuellen ARS (WS ist nicht Teil der DIN 1045-2).";
                         } else {
                           riskTitle = "Mäßiges Risiko (Beherrscht durch NA-Zement)";
                           riskColor = "bg-amber-50 text-amber-800 border-amber-200";
@@ -2000,7 +2000,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
           {
             formel: 'E_{v2} \\ge 120\\,\\text{MN/m}^2, \\quad \\frac{E_{v2}}{E_{v1}} \\le 2{,}2',
             erklaerung: 'Verformungsmodul Ev2 und Verdichtungsverhältnis Ev2/Ev1 beim statischen Plattendruckversuch auf ungebundenen Frostschutz- und Schottertragschichten.',
-            quelle: 'ZTV SoB-StB / DIN 18134 (Werte manuell prüfen)'
+            quelle: 'ZTV SoB-StB / DIN 18134 (Ev2 ≥ 120 MPa bzw. 100 MPa je Belastungsklasse; Ev2/Ev1 ≤ 2,2, höher zulässig bei Ev1 ≥ 0,6·Ev2,erf)'
           }
         ]}
       />

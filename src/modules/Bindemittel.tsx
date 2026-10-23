@@ -906,7 +906,7 @@ export default function Bindemittel() {
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/15 space-y-2">
                 <strong className="text-sm text-text-main font-bold block text-shiraz">4. k-Wert Konzept</strong>
                 <p className="text-xs text-text-main/70 leading-relaxed">
-                  Flugasche darf mit dem Anrechnungsfaktor <InlineMath math="k = 0{,}4" /> auf Mindestzementgehalt und w/z-Wert angerechnet werden. DIN EN 206 nennt für Silikastaub <InlineMath math="k = 2{,}0" /> (nur unter Bedingungen); in Deutschland gelten die Anrechnungsregeln der DIN 1045-2 (manuell prüfen). Die Anrechnung spart Zement und verbessert die CO₂-Bilanz.
+                  Flugasche darf mit dem Anrechnungsfaktor <InlineMath math="k = 0{,}4" /> auf Mindestzementgehalt und w/z-Wert angerechnet werden. In Deutschland gilt nach DIN 1045-2:2023-08 k = 1,0 für Silikastaub (s ≤ 0,11·z); in XF2/XF4 ist nur Flugasche anrechenbar. Die Anrechnung spart Zement und verbessert die CO₂-Bilanz.
                 </p>
               </div>
             </div>
@@ -943,7 +943,7 @@ export default function Bindemittel() {
         formeln={[
           {
             formel: '\\left(\\frac{w}{c}\\right)_{\\text{eq}} = \\frac{w}{c + k_F \\cdot f + k_S \\cdot s}',
-            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Anrechnung von Steinkohlenflugasche (k_F = 0,40 bei CEM I) und Silikastaub (k_S nach DIN 1045-2 bzw. DIN EN 206; manuell prüfen) auf den Zementgehalt c.',
+            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Anrechnung von Steinkohlenflugasche (k_F = 0,40 bei CEM I) und Silikastaub (k_S = 1,0 nach DIN 1045-2:2023-08, s ≤ 0,11·z) auf den Zementgehalt c.',
             quelle: 'DIN EN 206 Tab. 15 / DIN 1045-2'
           },
           {

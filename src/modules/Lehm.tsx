@@ -232,7 +232,7 @@ export default function Lehm() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                <strong>Bemessung nach neuer Norm (DIN 18940):</strong> Seit Erscheinen der DIN 18940 (2023-06) ist die lastabtragende Bemessung von Lehmsteinmauerwerk normiert (Anwendungsgrenzen, z. B. Gebäudeklasse: manuell prüfen). Sie orientiert sich stark an den Konzepten des klassischen Mauerwerksbaus (DIN EN 1996), berücksichtigt jedoch das spezifische feuchteabhängige Verhalten (Kriechen & Schwinden) sowie die geringeren Festigkeiten von Lehmbaustoffen.
+                <strong>Bemessung nach neuer Norm (DIN 18940):</strong> Seit Erscheinen der DIN 18940 (2023-06) ist die lastabtragende Bemessung von Lehmsteinmauerwerk normiert (Anwendungsgrenzen: Gebäude bis 13,0 m Höhe, d. h. Gebäudeklasse 1 bis 4; nicht für Keller- und Brandwände). Sie orientiert sich stark an den Konzepten des klassischen Mauerwerksbaus (DIN EN 1996), berücksichtigt jedoch das spezifische feuchteabhängige Verhalten (Kriechen & Schwinden) sowie die geringeren Festigkeiten von Lehmbaustoffen.
               </p>
             </div>
 
@@ -250,7 +250,7 @@ export default function Lehm() {
                <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
                 <h3 className="font-bold text-home-prim">Anwendungsbereiche</h3>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                  <li>Tragendes Mauerwerk bei ein- bis mehrgeschossigen Gebäuden (Anwendungsgrenzen nach DIN 18940 und Landesbauordnung – manuell prüfen).</li>
+                  <li>Tragendes Mauerwerk in Gebäuden bis 13,0 m Höhe, d. h. Gebäudeklassen 1–4 (DIN 18940:2023-06; nicht für Keller-, Brand- und freistehende Wände).</li>
                   <li>Innentrennwände und Ausfachungen (z.B. bei Holzfachwerk).</li>
                   <li>Ausführung als Einsteinmauerwerk oder Verbandsmauerwerk.</li>
                   <li>Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE.</li>

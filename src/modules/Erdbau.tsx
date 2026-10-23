@@ -52,7 +52,7 @@ export default function Erdbau() {
 
   // Frostschutz Logic (vereinfacht nach RStO)
   const frostschutzDicke = useMemo(() => {
-    // Vereinfacht nach RStO 12, Tab. 6/7 (weitere Zeilen der Tab. 7 manuell prüfen):
+    // Vereinfacht nach RStO 12, Tab. 6/7; nicht berücksichtigt sind die Zeilen B (kleinräumige Klimaunterschiede), D (Lage der Gradiente, z. B. Einschnitt/Anschnitt +5 cm) und E (Entwässerung/Randbereiche) der Tab. 7.:
     // Ausgangswert je Frostempfindlichkeitsklasse und Belastungsklasse
     const hoch = bauklasse === 'Bk100' || bauklasse === 'Bk32' || bauklasse === 'Bk10';
     const mittel = bauklasse === 'BK3' || bauklasse === 'BK1';

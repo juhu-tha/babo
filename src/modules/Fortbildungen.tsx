@@ -176,7 +176,7 @@ export default function Fortbildungen() {
       legalBase: 'DIN EN ISO 15257 (Anforderungsprofil an KKS-Personal), DIN EN ISO 12696 (KKS im Beton).',
       targetGroup: 'Elektrochemiker, Werkstoffwissenschaftler, Bauingenieure im Bereich Dauerhaftigkeit, Fachplaner für Parkhaus-Instandsetzung.',
       duration: 'Gestuft nach Kompetenzstufen der DIN EN ISO 15257; je Stufe Lehrgang mit Prüfung (Umfang beim Zertifizierer prüfen).',
-      validity: 'Befristet; Rezertifizierung nach den Regeln des Zertifizierers (manuell prüfen).',
+      validity: 'Befristet; Rezertifizierung nach den Regeln des Zertifizierers.',
       difficulty: 'Sehr Hoch',
       prerequisites: [
         'Ingenieurtechnische Ausbildung oder elektrotechnische Meisterausbildung',
@@ -357,7 +357,7 @@ export default function Fortbildungen() {
       legalBase: 'WTA-Merkblätter (Referat Mauerwerk), DIN EN 1996 mit NA (Mauerwerksbemessung).',
       targetGroup: 'Tragwerksplaner, Gutachter für Bauwerksschäden, Restauratoren im Handwerk, Denkmalschutz-Ingenieure.',
       duration: 'Modulares Aufbaustudium (ca. 45-60 Stunden) mit Projektarbeit und Fachkolloquium beim Wissenschaftsausschuss.',
-      validity: 'Gültigkeit und Fortbildungspflichten nach den Zertifizierungsregeln der WTA (manuell prüfen).',
+      validity: 'Gültigkeit und Fortbildungspflichten nach den Zertifizierungsregeln der WTA.',
       difficulty: 'Hoch',
       prerequisites: [
         'Studienabschluss im Bauingenieurwesen, Bauphysik oder der Architektur',

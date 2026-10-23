@@ -418,7 +418,7 @@ export default function Brandschutz() {
           { title: 'DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten – Euroklassen A1 bis F)' },
           { title: 'DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen – Zusammenstellung klassifizierter Baustoffe, Bauteile und Sonderbauteile)' },
           { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Tragwerksbemessung für den Brandfall; bauaufsichtlich eingeführt); neue Generation DIN EN 1995-1-2:2026-10' },
-          { title: 'Musterbauordnung (MBO, Fassung 2002 mit späteren Änderungen; Gebäudeklassen 1 bis 5, §§ 26–32) – aktuellen Stand manuell prüfen', url: 'https://www.bauministerkonferenz.de/' },
+          { title: 'Musterbauordnung (MBO, Fassung November 2002, zuletzt geändert durch Beschluss der Bauministerkonferenz vom 26./27.09.2024; Gebäudeklassen § 2 Abs. 3, Brandschutzanforderungen §§ 26–32)', url: 'https://www.bauministerkonferenz.de/' },
           { title: 'DIN EN 13501-2:2023-12 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I)' }
         ]}
         formeln={[

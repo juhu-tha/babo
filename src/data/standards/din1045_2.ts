@@ -87,7 +87,7 @@ export const DIN1045_2_EXPOSITIONSKLASSEN: Record<string, ExpositionsklassenAnfo
     maxWz: 0.50,
     minDruckfestigkeit: 'C35/45',
     minZementgehalt: 320,
-    anmerkung: 'Bei Luftporenbeton ist eine Festigkeitsklasse niedriger zulässig (C30/37); w/z bleibt 0,50 (manuell prüfen).'
+    anmerkung: 'Bei Luftporenbeton ist eine Festigkeitsklasse niedriger zulässig (C30/37 (LP), Betonklasse BK-E); w/z bleibt 0,50.'
   },
   'XD3': {
     code: 'XD3',
@@ -246,7 +246,7 @@ export const DIN1045_2_K_WERTE = {
     normQuelle: 'DIN EN 450-1'
   },
   silikastaub: {
-    k: 1.00, // DIN EN 206; nach DIN 1045-2:2023-08 ist die Anrechnung nur für Flugasche vorgesehen (manuell prüfen)
+    k: 1.00, // DIN 1045-2:2023-08, 5.2.5.2.3 (s ≤ 0,11·z); bei XF2/XF4 Anrechnung nur für Flugasche
     maxAnrechnungVerhaeltnis: 0.11, // s / z <= 0,11
     normQuelle: 'DIN EN 13263-1'
   },

@@ -530,7 +530,7 @@ export default function Festbeton() {
                       <option value="luft">Trockene Baustellenluft 65 % r.F. (Faktor 0,90)</option>
                       <option value="heiss">Heißhärtung / Wärmebehandlung (Faktor 0,85)</option>
                     </select>
-                    <p className="text-[11px] text-text-main/60 mt-1">Faktoren für Würfel 100/200 mm und Lagerung sind Lehrwerte. Für die Prüfkörperlagerung gilt nach DIN 1045-2 f<sub>c,cube</sub> = 0,92 · f<sub>c,dry</sub> (bis C50/60; manuell prüfen).</p>
+                    <p className="text-[11px] text-text-main/60 mt-1">Faktoren für Würfel 100/200 mm und Lagerung sind Lehrwerte. Für die Prüfkörperlagerung nach DIN EN 12390-2, Anhang NA.2 gilt fc,cube = 0,92 · fc,dry (Normalbeton bis C50/60) bzw. 0,95 · fc,dry (ab C55/67).</p>
                   </div>
 
                   {/* Ergebnisbox */}

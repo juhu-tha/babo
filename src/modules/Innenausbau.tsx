@@ -553,7 +553,7 @@ export default function Innenausbau() {
                 <div className="mt-2 pt-2 border-t border-home-grau/20 text-[11px] space-y-1">
                   <div><strong>Schwindmaß:</strong> minimal (&lt; 0,1 mm/m)</div>
                   <div><strong>Belegreife unbeheizt:</strong> ≤ 0,5 CM-%</div>
-                  <div><strong>Belegreife beheizt:</strong> ≤ 0,3 CM-% (BEB-Richtwert; DIN EN 1264-4 nennt 0,5 CM-% – manuell prüfen)</div>
+                  <div><strong>Belegreife beheizt:</strong> ≤ 0,3 CM-% (Richtwert nach Merkblatt „Schnittstellenkoordination bei beheizten Fußbodenkonstruktionen“)</div>
                   <div className="text-rose-800 text-[10px] mt-1 font-semibold">🚫 Streng feuchteempfindlich – kein Einsatz in Nassräumen (W2-I/W3-I) oder im Freien.</div>
                 </div>
               </div>
@@ -766,7 +766,7 @@ export default function Innenausbau() {
                 <Calculator className="text-shiraz" size={20} /> Interaktiver Belegreife- &amp; CM-Restfeuchterechner
               </h3>
               <p className="text-xs text-text-main/75 mt-1 leading-relaxed">
-                Prüfen Sie die Belegreife anhand üblicher Richtwerte (BEB/Schnittstellenkoordination, DIN EN 1264-4 bei Fußbodenheizung; Werte manuell prüfen).
+                Prüfen Sie die Belegreife anhand üblicher Richtwerte nach Merkblatt „Schnittstellenkoordination bei beheizten Fußbodenkonstruktionen“ (Zementestrich ≤ 2,0 bzw. beheizt ≤ 1,8 CM-%, Calciumsulfatestrich ≤ 0,5 bzw. beheizt ≤ 0,3 CM-%).
               </p>
             </div>
 

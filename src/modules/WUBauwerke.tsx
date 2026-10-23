@@ -48,7 +48,7 @@ export default function WUBauwerke() {
     const druckgefaelle = hMeter > 0 ? hw / hMeter : 0;
 
     // Mindestbauteildicken nach DAfStb-WU-Richtlinie 2017-12, Tab. 1 (Ortbeton / Elementwand / Fertigteil)
-    // Kernbetondicke der Elementwand: manuell prüfen
+    // Elementwand: Gesamtdicke 240 mm, Kernbeton (Ortbetonergänzung) ≥ 120 mm (WU-Richtlinie 2017-12, Empfehlung)
     let mindestDicke = 200;
     if (bk === '1') {
       mindestDicke = bauteil === 'Wand' ? 240 : 250;
@@ -58,7 +58,7 @@ export default function WUBauwerke() {
     const dickeOk = h >= mindestDicke;
 
     // Rechnerische Trennrissbreite für Selbstheilung (Entwurfsgrundsatz b), abhängig von h_w/h
-    // Stufen ≤ 10 / ≤ 15 / ≤ 25 → 0,20 / 0,15 / 0,10 mm (WU-Richtlinie – manuell prüfen)
+    // Stufen ≤ 10 / ≤ 15 / ≤ 25 → 0,20 / 0,15 / 0,10 mm (WU-Richtlinie 2017-12, Entwurfsgrundsatz b)
     // BK 2: keine Selbstheilungsanforderung; Orientierungswert w_max = 0,3 mm nach EC2/NA
     let zulRissbreite = 0.30;
     let selbstheilungMoeglich = true;
@@ -300,7 +300,7 @@ export default function WUBauwerke() {
 
                     <Slider
                       label="Vorhandene Bauteildicke h"
-                      info="Gesamtbauteildicke. Kernbetondicke bei Elementwänden: manuell prüfen."
+                      info="Gesamtbauteildicke. Elementwände: Kernbeton mindestens 120 mm (Empfehlung WU-Richtlinie 2017-12)."
                       min={180}
                       max={600}
                       step={10}
@@ -458,7 +458,7 @@ export default function WUBauwerke() {
                 Druckgefälle <InlineMath math="I = h_w / h" /> in Abhängigkeit von der Wanddicke
               </h3>
               <p className="text-xs text-text-main/70 mb-4">
-                Nach DAfStb WU-Richtlinie bestimmt das Druckgefälle <InlineMath math="I" /> maßgeblich die Anforderung an die Rissbreitenbegrenzung. Für die Selbstheilung (Entwurfsgrundsatz b) gilt: <InlineMath math="I \le 10" /> → <InlineMath math="w_k \le 0{,}20\,\text{mm}" />, <InlineMath math="I \le 15" /> → 0,15 mm, <InlineMath math="I \le 25" /> → 0,10 mm (Werte manuell prüfen). Darüber ist Selbstheilung nicht planbar – Entwurfsgrundsatz a oder c wählen.
+                Nach DAfStb WU-Richtlinie bestimmt das Druckgefälle <InlineMath math="I" /> maßgeblich die Anforderung an die Rissbreitenbegrenzung. Für die Selbstheilung (Entwurfsgrundsatz b) gilt: <InlineMath math="I \le 10" /> → <InlineMath math="w_k \le 0{,}20\,\text{mm}" />, <InlineMath math="I \le 15" /> → 0,15 mm, <InlineMath math="I \le 25" /> → 0,10 mm (WU-Richtlinie 2017-12). Darüber ist Selbstheilung nicht planbar – Entwurfsgrundsatz a oder c wählen.
               </p>
               <div className="h-[260px] w-full">
                 <Line data={chartData} options={chartOptions} />
@@ -878,7 +878,7 @@ export default function WUBauwerke() {
       <FormulaDerivationBox
         title="Anwendungsbeispiel: Kellerwand in Beanspruchungsklasse 1 (Standardwerte)"
         zielGleichung="I = \frac{h_w}{h}"
-        normQuelle="DAfStb-WU-Richtlinie 2017-12 (Werte manuell prüfen)"
+        normQuelle="DAfStb-WU-Richtlinie 2017-12 (Selbstheilung: Rechenwerte w_k je Druckgefälle)"
         schritte={[
           { titel: '1. Gegeben', formel: 'h_w = 3{,}0\\,\\text{m},\\; h = 300\\,\\text{mm},\\; \\text{BK 1, Ortbetonwand}', erklaerung: 'Drückendes Wasser.' },
           { titel: '2. Mindestdicke', formel: 'h = 300\\,\\text{mm} \\ge 240\\,\\text{mm}', erklaerung: 'Tab. 1 der WU-Richtlinie eingehalten.' },
@@ -919,7 +919,7 @@ export default function WUBauwerke() {
             ? [
                 {
                   formel: 'I = \\frac{h_w}{h}',
-                  erklaerung: 'Druckgefälle I [-]: Wassersäule h_w [m] bezogen auf die Bauteildicke h [m]. Für die Selbstheilung: I ≤ 10 → w_k ≤ 0,20 mm; I ≤ 15 → 0,15 mm; I ≤ 25 → 0,10 mm (manuell prüfen).',
+                  erklaerung: 'Druckgefälle I [-]: Wassersäule h_w [m] bezogen auf die Bauteildicke h [m]. Für die Selbstheilung: I ≤ 10 → w_k ≤ 0,20 mm; I ≤ 15 → 0,15 mm; I ≤ 25 → 0,10 mm (WU-Richtlinie 2017-12).',
                   quelle: 'DAfStb-WU-Richtlinie 2017-12'
                 },
                 {

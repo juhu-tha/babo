@@ -1100,7 +1100,7 @@ export default function BpBetonzusatzmittel() {
           { 
             formel: '(w/z)_{\\text{eff}} = \\frac{w_{\\text{Wasser}} + w_{\\text{ZM}}}{z} \\le (w/z)_{\\max}', 
             erklaerung: 'Wasseraufrechnungsregel nach DIN EN 206 / DIN 1045-2: Übersteigt die Gesamtmenge flüssiger Zusatzmittel 3 l/m³, ist ihr Wasseranteil dem wirksamen Wassergehalt zuzurechnen.',
-            quelle: 'DIN EN 206 / DIN 1045-2 (Abschnitt manuell prüfen)'
+            quelle: 'DIN 1045-2:2023-08 / DIN EN 206'
           },
           { 
             formel: 'L_{300} \\ge 1{,}5\\,\\% \\quad \\text{und} \\quad a \\le 0{,}20\\,\\text{mm}', 

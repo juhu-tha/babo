@@ -393,11 +393,11 @@ export default function BpDachFassade() {
                     bgStatus = 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-300 border-emerald-250 dark:border-emerald-800/40 border';
                     alertIcon = <ShieldCheck className="text-emerald-700 dark:text-emerald-450 flex-shrink-0" size={16} />;
                   } else if (u_w <= 1.3) {
-                    textStatus = 'Erfüllt die Anforderung für den Fensteraustausch im Bestand (U_w ≤ 1,30 W/(m²K) nach GEG Anlage 7; Übernahme ins GModG manuell prüfen).';
+                    textStatus = 'Erfüllt die Anforderung für den Fensteraustausch im Bestand (U_w ≤ 1,30 W/(m²K) nach § 36 i. V. m. Anlage 7 Nr. 2a GModG, vormals GEG).';
                     bgStatus = 'bg-teal-50 dark:bg-slate-950/30 text-teal-950 dark:text-slate-350 border-teal-200 dark:border-slate-800 border';
                     alertIcon = <BadgeCheck className="text-teal-700 dark:text-teal-450 flex-shrink-0" size={16} />;
                   } else {
-                    textStatus = 'Anforderung nicht erfüllt: Für den Fensteraustausch im Bestand gilt U_w ≤ 1,30 W/(m²K) (GEG Anlage 7; im GModG manuell prüfen).';
+                    textStatus = 'Anforderung nicht erfüllt: Für den Fensteraustausch im Bestand gilt U_w ≤ 1,30 W/(m²K) (§ 36 i. V. m. Anlage 7 Nr. 2a GModG).';
                     bgStatus = 'bg-rose-50 dark:bg-red-950/20 text-rose-950 dark:text-red-300 border-rose-200 dark:border-red-900/40 border';
                     alertIcon = <AlertTriangle className="text-rose-750 dark:text-rose-450 flex-shrink-0" size={16} />;
                   }

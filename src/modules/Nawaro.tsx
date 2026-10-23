@@ -122,7 +122,7 @@ export default function Nawaro() {
       lambda: '0,043 - 0,048',
       c: '2.000',
       mu: '1 - 2',
-      fireClass: 'E (normalentflammbar); verputzte Bauteile mit nachgewiesener Feuerwiderstandsdauer (Nachweis manuell prüfen)',
+      fireClass: 'E (normalentflammbar); verputzte Strohballenwand nach FASBA F30-B (8 mm Lehmputz) bzw. F90-B (10 mm Kalkputz)',
       advantages: [
         'Sehr geringer Herstellungsaufwand (Nebenprodukt der Getreideernte)',
         'Kostengünstiger, regional verfügbarer Rohstoff',
@@ -132,7 +132,7 @@ export default function Nawaro() {
         'Hohe Wandstärken (~35-50 cm) für guten Dämmwert erforderlich',
         'Erfordert konsequenten Feuchteschutz während Lagerung und Bauphase'
       ],
-      description: 'Weizen-, Roggen- oder Dinkelstroh, das zu formstabilen Ballen gepresst wird. Der Verwendbarkeitsnachweis erfolgt über ETA bzw. allgemeine bauaufsichtliche Zulassung (Nummern manuell prüfen).',
+      description: 'Weizen-, Roggen- oder Dinkelstroh, das zu formstabilen Ballen gepresst wird. Der Verwendbarkeitsnachweis erfolgt über die ETA-17/0247 („Baustroh“); andere Ballen oder lasttragender Strohbau erfordern eine Zustimmung im Einzelfall.',
       fnrUsage: 'Ausfachung von Holzständerkonstruktionen, beidseitig mit Lehm- oder Kalkputz.'
     },
     {

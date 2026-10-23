@@ -35,7 +35,7 @@ export default function Nachbehandlung() {
 
   const isCritical = evaporationRate > 1.0;
 
-  // Mindestdauer nach DIN 1045-3 (Tabelle Mindestdauer der Nachbehandlung; Ausgabe 2023 manuell prüfen)
+  // Mindestdauer nach DIN 1045-3:2023-08, Abschn. 9.6 (Nachbehandlungsklasse 3)
   const curingTime = useMemo(() => {
     if (oberflaechentemp === '<5') return -1; // Sondermaßnahmen erforderlich
     if (expositionsklasse === 'x0_xc1') return DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage;
@@ -213,7 +213,7 @@ export default function Nachbehandlung() {
                   ))}
                 </tbody>
               </table>
-              <p className="text-[11px] text-text-main/60 mt-2">Werte nach DIN 1045-3; Übereinstimmung mit der Ausgabe 2023-08 manuell prüfen.</p>
+              <p className="text-[11px] text-text-main/60 mt-2">Werte nach DIN 1045-3:2023-08, Abschn. 9.6 (Nachbehandlungsklasse 3).</p>
             </div>
           </details>
         </div>
@@ -278,7 +278,7 @@ export default function Nachbehandlung() {
         <FormulaDerivationBox
           title="Anwendungsbeispiel: Mindestdauer der Nachbehandlung"
           zielGleichung="t_{NB} = f(r,\; T_{Oberfläche},\; \text{Expositionsklasse})"
-          normQuelle="DIN 1045-3 (Mindestdauer der Nachbehandlung; Ausgabe 2023 manuell prüfen)"
+          normQuelle="DIN 1045-3:2023-08, Abschn. 9.6 (Mindestdauer der Nachbehandlung, Nachbehandlungsklasse 3)"
           schritte={[
             { titel: '1. Festigkeitsentwicklung', formel: 'r = f_{cm,2} / f_{cm,28} = 0{,}25 \\Rightarrow \\text{langsam}', erklaerung: 'Angabe des Betonwerks, z. B. Beton mit CEM III/A.' },
             { titel: '2. Randbedingungen', formel: '\\text{XC4},\\; T_{Oberfläche} = 12\\,^{\\circ}\\text{C}', erklaerung: 'Spalte „andere Expositionsklassen“, Zeile 10 ≤ T < 15 °C.' },
@@ -323,7 +323,7 @@ export default function Nachbehandlung() {
             {
               formel: 'f_{ck,t} \\ge 0{,}50 \\cdot f_{ck}',
               erklaerung: 'Ziel-Kriterium der Nachbehandlung: Die Betonrandzone muss mindestens 50 % der charakteristischen Zylinderdruckfestigkeit erreicht haben, um ausreichende Dauerhaftigkeit und Dichtigkeit zu gewährleisten.',
-              quelle: 'DIN 1045-3 (manuell prüfen)'
+              quelle: 'DIN 1045-3:2023-08 (Nachbehandlungsklasse 3: 50 % f_ck)'
             }
           ]}
         />

@@ -602,7 +602,7 @@ export default function KriechenSchwinden() {
           ]}
           literatur={[
             'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Ausgabe manuell prüfen)'
+            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020'
           ]}
           formeln={[
             {
@@ -984,7 +984,7 @@ export default function KriechenSchwinden() {
           ]}
           literatur={[
             'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Ausgabe manuell prüfen)'
+            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020'
           ]}
           formeln={[
             {

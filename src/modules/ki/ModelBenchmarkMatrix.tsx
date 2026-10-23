@@ -244,7 +244,7 @@ export default function ModelBenchmarkMatrix() {
             Wann ist lokale KI besonders zu empfehlen?
           </h5>
           <p className="text-xxs text-emerald-950 leading-relaxed">
-            Bei patentierten Rezepturen, internen Kalkulationen, KRITIS-Infrastrukturprojekten, gerichtlichen Schadensgutachten und auf Baustellen ohne stabile Internetverbindung. Ein lokales 14B-Modell (z. B. Qwen3 14B) vermeidet Datenübermittlung bei geringen Folgekosten. Modellangaben: Stand 10/2026, Versionen ändern sich schnell – manuell prüfen.
+            Bei patentierten Rezepturen, internen Kalkulationen, KRITIS-Infrastrukturprojekten, gerichtlichen Schadensgutachten und auf Baustellen ohne stabile Internetverbindung. Ein lokales 14B-Modell (z. B. Qwen3 14B) vermeidet Datenübermittlung bei geringen Folgekosten. Modellangaben: Stand 10/2026; Versionen ändern sich schnell – vor dem Einsatz aktuelle Modellkarten prüfen.
           </p>
         </div>
       </div>

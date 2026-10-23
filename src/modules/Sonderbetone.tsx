@@ -153,7 +153,7 @@ export default function Sonderbetone() {
       <FormulaDerivationBox
         title="Anwendungsbeispiel: Mehrwasser bei RC-Gesteinskörnung"
         zielGleichung="\Delta w = a_{RC} \cdot m_g \cdot WA_{24}"
-        normQuelle="Lehrwerte; zulässige Anteile nach DAfStb-Richtlinie (2010) – Übernahme in DIN 1045-2:2023-08 manuell prüfen"
+        normQuelle="Lehrwerte; zulässige Anteile nach DIN 1045-2:2023-08, Abschn. 5.2.3.4 und Anhang E (Tab. E.5; vormals DAfStb-Richtlinie 2010)"
         schritte={[
           { titel: '1. Gegeben', formel: 'a_{RC} = 25\\,\\%,\\; m_g = 1\\,800\\,\\text{kg/m}^3,\\; WA_{24} = 5\\,\\%', erklaerung: 'Typ 1 (Betonsplitt) mit 24-h-Wasseraufnahme 5 M.-%.' },
           { titel: '2. Mehrwasser', formel: '\\Delta w = 0{,}25 \\cdot 1\\,800 \\cdot 0{,}05 = 22{,}5\\,\\text{kg/m}^3', erklaerung: 'Wird von der porösen Körnung aufgesogen und steht nicht für die Verarbeitbarkeit zur Verfügung.' },
@@ -255,7 +255,7 @@ export default function Sonderbetone() {
           { title: 'ÖBV-Richtlinie Spritzbeton (Klassen J1, J2, J3 zur Frühfestigkeit)' },
           { title: 'DAfStb-Richtlinie Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen nach DIN EN 12620 (2010-09)' },
           { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)' },
-          { title: 'DIN 1045-2:2023-08 (Beton mit rezyklierter Gesteinskörnung; Bezeichnungen manuell prüfen)' },
+          { title: 'DIN 1045-2:2023-08 (Beton mit rezyklierter Gesteinskörnung Typ 1/Typ 2: Abschn. 5.2.3.4 und Anhang E)' },
           { title: 'DAfStb-Richtlinie Ultrahochfester Beton – in Vorbereitung; Sachstand: DAfStb-Heft 561 (2008)' },
           { title: 'NF P 18-470 (Bétons fibrés à ultra-hautes performances - Spécification, performance, production et conformité)' },
           { title: 'FGSV-Merkblatt für Versickerungsfähige Verkehrsflächen (M Vv)' },

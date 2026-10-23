@@ -1556,7 +1556,7 @@ export default function Materialoptimierung() {
           },
           {
             formel: "(w/c)_{\\text{eq}} = \\frac{w}{c + k \\cdot z} \\quad [\\text{k-Wert nach DIN 1045-2}]",
-            erklaerung: "Äquivalenter Wasserzementwert zur Anrechnung von Flugasche (k = 0,4) und Silikastaub (k = 1,0); Hüttensandmehl (k = 0,6 nach DIN EN 206) ist in Deutschland nur eingeschränkt anrechenbar (manuell prüfen).",
+            erklaerung: "Äquivalenter Wasserzementwert zur Anrechnung von Flugasche (k = 0,4) und Silikastaub (k = 1,0); für Hüttensandmehl nach DIN EN 15167-1 enthält DIN 1045-2:2023-08 einen eigenen k-Wert-Ansatz (Abschn. 5.2.5.2.5).",
             quelle: "DIN 1045-2 / DIN EN 206"
           },
           {

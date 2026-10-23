@@ -434,7 +434,7 @@ export default function Glas() {
           },
           {
             formel: 'f_{g,d} = \\frac{k_{mod} \\cdot k_{sp} \\cdot f_{g,k}}{\\gamma_M}',
-            erklaerung: 'Bemessungswert der Biegezugfestigkeit für thermisch nicht vorgespanntes Floatglas (Spiegelglas). k_{mod} berücksichtigt die Lasteinwirkungsdauer (Subkritisches Risswachstum), k_{sp} den Oberflächenzustand (EN 16612). In Deutschland nach DIN 18008-1: f_{g,d} = k_{mod}·k_c·f_{g,k}/γ_M, Floatglas γ_M = 1,8 (manuell prüfen).',
+            erklaerung: 'Bemessungswert der Biegezugfestigkeit für thermisch nicht vorgespanntes Floatglas (Spiegelglas). k_{mod} berücksichtigt die Lasteinwirkungsdauer (Subkritisches Risswachstum), k_{sp} den Oberflächenzustand (EN 16612). In Deutschland nach DIN 18008-1:2020-05: f_{g,d} = k_{mod}·k_c·f_{g,k}/γ_M mit γ_M = 1,8 für Floatglas (ESG/TVG: 1,5), k_mod = 0,25/0,40/0,70 (ständig/mittel/kurz) und k_c = 1,8 bei linienförmiger Lagerung.',
             quelle: 'DIN EN 16612:2019-12'
           }
         ]}

@@ -163,7 +163,7 @@ export default function BpBaustoffindustrie() {
               </table>
             </div>
             <div className="bg-blue-50/50 border border-blue-100 p-3 rounded-lg text-[11.5px] leading-relaxed text-blue-900 mt-2">
-              <strong>Zusammenfassende Branchenkennzahlen:</strong> Die Branche beschäftigt in Deutschland rund 150.000 Menschen, setzt jährlich einen mittleren zweistelligen Milliardenbetrag um und liefert über 500 Millionen Tonnen mineralische Rohstoffe pro Jahr (Größenordnungen; aktuelle Zahlen im bbs-Jahresbericht bzw. bei Destatis manuell prüfen).
+              <strong>Zusammenfassende Branchenkennzahlen:</strong> Die Branche beschäftigt in Deutschland rund 140.000–150.000 Menschen und setzt jährlich rund 38 Mrd. € um (Größenordnungen nach bbs, Stand 10/2026); hinzu kommt ein Rohstoffbedarf in der Größenordnung mehrerer hundert Millionen Tonnen pro Jahr (siehe bbs-Rohstoffstudie).
             </div>
           </div>
         </div>

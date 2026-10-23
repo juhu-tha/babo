@@ -2443,7 +2443,7 @@ export default function MechanischeKenngroessen() {
           { title: 'Mechanische Spannung', url: 'https://de.wikipedia.org/wiki/Mechanische_Spannung' },
           { title: 'Dehnung', url: 'https://de.wikipedia.org/wiki/Dehnung' },
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
-          { title: 'Kriechen (Werkstoffe) – Link manuell prüfen', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
+          { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
           { title: 'Schwinden', url: 'https://de.wikipedia.org/wiki/Schwinden' },
           { title: 'Spannungsrelaxation', url: 'https://de.wikipedia.org/wiki/Spannungsrelaxation' },
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }

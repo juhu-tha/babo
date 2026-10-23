@@ -660,7 +660,7 @@ export default function Kuriositaeten() {
                   Thermisches Beanspruchungsverhalten und Hydratationssteuerung im Massenbeton der Drei-Schluchten-Talsperre
                 </h3>
                 <p className="text-xs text-slate-550 font-mono">
-                  Fertigstellung: Staumauer 2006, Gesamtanlage 2012 | Betonvolumen: rund 28 Mio. m³ (manuell prüfen) | Phänomen: Exotherme Hydratation &amp; aktive Rohrkühlung
+                  Fertigstellung: Staumauer 2006, Gesamtanlage 2012 | Betonvolumen: rund 27–28 Mio. m³ | Phänomen: Exotherme Hydratation &amp; aktive Rohrkühlung
                 </p>
               </div>
             </div>

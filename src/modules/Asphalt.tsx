@@ -903,7 +903,7 @@ export default function Asphalt() {
                       </p>
                       <ul className="list-disc list-inside space-y-2 text-text-main/70 pl-1">
                         <li>
-                          <strong>Transportlogistik:</strong> Thermomulden und Abdeckplanen sind bei temperaturabgesenktem Asphalt besonders wichtig, damit das Mischgut beim Einbau nicht zu stark ausgekühlt ist (Vorgaben nach ZTV Asphalt-StB/M TA manuell prüfen).
+                          <strong>Transportlogistik:</strong> Thermomulden und Abdeckplanen sind bei temperaturabgesenktem Asphalt besonders wichtig, damit das Mischgut beim Einbau nicht zu stark ausgekühlt ist (Vorgaben: thermoisolierte Transportmulden mit Abdeckung nach ARS 13/2025; seit ARS 08/2026 in ZTV Asphalt-StB 26 Teil 1 geregelt).
                         </li>
                         <li>
                           <strong>Kritisches Verdichtungszeitfenster:</strong> Wachsmodifizierte Bindemittel besitzen einen scharf abgegrenzten Erstarrungspunkt. Oberhalb dieses Punktes (ca. 100 °C) ist der Verdichtungswiderstand gering. Fällt die Temperatur darunter, steigt der Verdichtungswiderstand deutlich an; weiteres Walzen bringt kaum Verdichtung und kann das Gefüge schädigen.
@@ -1007,8 +1007,8 @@ export default function Asphalt() {
                         </tr>
                         <tr>
                           <td className="py-2.5 pr-4 font-semibold text-text-main">Mindest-Lufttemperatur beim Einbau</td>
-                          <td className="py-2.5 pr-4">nach ZTV Asphalt-StB je Schichtart und -dicke (manuell prüfen)</td>
-                          <td className="py-2.5 pr-4 text-amber-700 font-medium">eher höher wählen – schnellere Auskühlung (manuell prüfen)</td>
+                          <td className="py-2.5 pr-4">Deckschicht ≥ 3 cm: +5 °C, &lt; 3 cm: +10 °C; Binder- und Tragdeckschicht: 0 °C; Tragschicht: −3 °C (ZTV Asphalt-StB 07/13, Tab. 6)</td>
+                          <td className="py-2.5 pr-4 text-amber-700 font-medium">eher höher wählen – schnellere Auskühlung (DAV: volles Absenkpotenzial erst ab ca. 20 °C Lufttemperatur und trockener Unterlage)</td>
                           <td className="py-2.5">LTA ist wind- und kälteempfindlicher während des Einbaus</td>
                         </tr>
                         <tr>

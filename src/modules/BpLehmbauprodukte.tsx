@@ -48,9 +48,9 @@ const LOAM_STANDARDS_DB: LoamStandardInfo[] = [
     id: 'moertel',
     norm: 'DIN 18946',
     title: 'Lehmmauermörtel',
-    classes: 'Lehmmauermörtel nach DIN 18946 (Normal-, Leicht- und Dünnbettmörtel; Festigkeitsklassen M 2 bis M 4 – manuell prüfen)',
+    classes: 'Lehmmauermörtel nach DIN 18946:2024-03 (Normal-, Leicht- und Dünnbettmörtel; Festigkeitsklassen z. B. M 2,5 mit Druckfestigkeit ≥ 2,5 N/mm²)',
     density: '1,40 - 1,80 g/cm³',
-    strength: 'Haftfestigkeitsgruppen: M10 (≥ 0,10 N/mm²), M15 (≥ 0,15 N/mm²)',
+    strength: 'Druckfestigkeitsklassen nach DIN 18946 (z. B. M 2,5: ≥ 2,5 N/mm²)',
     rules: 'Bindet nur über die Tonminerale; Zusätze wie Zement oder Kalk sind nicht zulässig, sonst geht die Wiederverarbeitbarkeit verloren.',
     application: 'Vermauern von Lehmsteinen, Verfüllen von historischen Fugen im Fachwerkbestand.',
     pros: [

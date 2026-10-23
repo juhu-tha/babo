@@ -994,13 +994,13 @@ export default function Materialmodelle() {
 
       {/* FOOTER MIT FORMELN, WIKIPEDIA, NORMEN & LITERATUR */}
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: Stoffgesetze, Duktilitätskriterium, Rheologie-Ersatzmodelle und Normausgaben geprüft; Wikipedia-Links manuell prüfen; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Stoffgesetze, Duktilitätskriterium, Rheologie-Ersatzmodelle und Normausgaben geprüft; Wikipedia-Links geprüft (Oktober 2026); fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Hookesches Gesetz', url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
           { title: 'Rheologie', url: 'https://de.wikipedia.org/wiki/Rheologie' },
           { title: 'Viskoelastizität', url: 'https://de.wikipedia.org/wiki/Viskoelastizit%C3%A4t' },
           { title: 'Fließkurve', url: 'https://de.wikipedia.org/wiki/Flie%C3%9Fkurve' },
-          { title: 'Bauschinger-Effekt', url: 'https://de.wikipedia.org/wiki/Bauschinger-Effekt' }
+          { title: 'Bauschinger-Effekt', url: 'https://de.wikipedia.org/wiki/Bauschingereffekt' }
         ]}
         regelwerke={[
           { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)' },

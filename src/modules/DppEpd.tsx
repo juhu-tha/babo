@@ -432,7 +432,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-gray-600 border-2 border-white" />
                           <div className="text-xs font-bold text-gray-600">Bis etwa 2040 (Übergang)</div>
-                          <div className="text-xs text-slate-700 leading-relaxed">Schrittweiser Übergang aller Produktfamilien in das neue System; bis dahin gelten für bestehende harmonisierte Normen Übergangsregeln (Einzelheiten und Fristen manuell prüfen).</div>
+                          <div className="text-xs text-slate-700 leading-relaxed">Schrittweiser Übergang aller Produktfamilien in das neue System; bis zur Zitierung neuer harmonisierter technischer Spezifikationen bleiben die bisherigen harmonisierten Normen anwendbar (VO 305/2011 spätestens bis 08.01.2040; alte EAD bis 08.01.2031, darauf gestützte ETA bis 08.01.2036).</div>
                         </div>
                       </div>
                     </div>

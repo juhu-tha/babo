@@ -328,7 +328,7 @@ export default function Grundlagen() {
                   <div>
                     <h5 className="font-bold mb-1">Rezyklierte Körnungen</h5>
                     <p className="text-xs">
-                      Dürfen gemäß DAfStb (Typ 1 oder Typ 2) begrenzt beigemischt werden (zulässige Anteile je Expositionsklasse nach DIN 1045-2:2023-08; manuell prüfen). Problematisch ist oft der höhere Wasseranspruch.
+                      Dürfen nach DIN 1045-2:2023-08 (Typ 1/Typ 2) begrenzt beigemischt werden: z. B. X0–XC4, XF1, XF3 ≤ 45/35 Vol.-%, XA1 ≤ 25/25 Vol.-%, XD1/XD2/XS1/XS2/XF2/XF4 ≤ 30/20 Vol.-% der groben Gesteinskörnung; nicht in XA2, XA3, XM (MVV TB 2025/1). Problematisch ist oft der höhere Wasseranspruch.
                     </p>
                   </div>
                 </div>
@@ -477,13 +477,13 @@ export default function Grundlagen() {
                  </table>
                </div>
                <p className="text-xs text-text-main/60 mt-3 text-justify">
-                 Zwischenwerte werden linear interpoliert. Die Werte entsprechen DIN 1045-2:2008-08; die Übernahme in DIN 1045-2:2023-08 ist manuell zu prüfen. Hinweise: Wird Zement mit hohem Zusatzstoffanteil (z.B. CEM III oder CEM II/B) verwendet oder Zusatzstoffe (FA, SF) zugegeben, verschiebt sich die Leimgemischzusammensetzung. Um Klebrigkeit oder Rissneigung zu vermeiden, darf das Mehlkorn in Abhängigkeit der Gesteinsgrößen nicht beliebig überschritten werden. Bei Sichtbeton, hochgepumptem Beton oder selbstverdichtendem Beton (SCC) können Werte bis 600 kg/m³ gezielt eingesetzt werden.
+                 Zwischenwerte werden linear interpoliert. Die Werte entsprechen DIN 1045-2:2008-08 (Tab. F.4.1/F.4.2). In DIN 1045-2:2023-08 sind Höchstwerte des Mehlkorngehalts entfallen; stattdessen gilt ab F3 und C25/30 ein Mindest-Leimvolumen (z. B. 280–310 l/m³ bei D_max 16) oder eine erweiterte Erstprüfung. Hinweise: Wird Zement mit hohem Zusatzstoffanteil (z.B. CEM III oder CEM II/B) verwendet oder Zusatzstoffe (FA, SF) zugegeben, verschiebt sich die Leimgemischzusammensetzung. Um Klebrigkeit oder Rissneigung zu vermeiden, darf das Mehlkorn in Abhängigkeit der Gesteinsgrößen nicht beliebig überschritten werden. Bei Sichtbeton, hochgepumptem Beton oder selbstverdichtendem Beton (SCC) können Werte bis 600 kg/m³ gezielt eingesetzt werden.
                </p>
              </div>
             <FormulaDerivationBox
               title="Anwendungsbeispiel: Mehlkorngehalt prüfen"
               zielGleichung="m_{Mk} = m_z + m_{ST} + m_{Gk \le 0{,}125\,\text{mm}} \le m_{Mk,max}"
-              normQuelle="DIN 1045-2, Tab. F.4.1 (Ausgabe 2008; Übertrag auf 2023-08 manuell prüfen)"
+              normQuelle="DIN 1045-2:2008-08, Tab. F.4.1 (in DIN 1045-2:2023-08 entfallen; dort Mindest-Leimvolumen)"
               schritte={[
                 { titel: '1. Gegeben (Lehrwerte)', formel: '\\text{C30/37, XF1},\\; D_{max} = 16\\,\\text{mm},\\; z = 320\\,\\text{kg/m}^3', erklaerung: 'Zusätzlich 40 kg/m³ Kalksteinmehl; Sand 0/2 mit 700 kg/m³ und 3 % Anteil ≤ 0,125 mm.' },
                 { titel: '2. Grenzwert interpolieren', formel: 'm_{Mk,max} = 400 + \\frac{320 - 300}{350 - 300} \\cdot 50 = 420\\,\\text{kg/m}^3', erklaerung: 'Zwischen 300 kg/m³ (400) und 350 kg/m³ (450) Zementgehalt linear interpoliert.' },

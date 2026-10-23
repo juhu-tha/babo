@@ -363,11 +363,11 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
     if (wuBauteil === 'waende') {
       if (wuBk === 'bk1') {
         if (wuBauweise === 'ortbeton') return { dicke: 240, comment: 'Ortbetonwand, Beanspruchungsklasse 1 (drückendes Wasser).' };
-        if (wuBauweise === 'element') return { dicke: 240, comment: 'Elementwand: 240 mm Gesamtdicke; Kernbetondicke manuell prüfen.' };
+        if (wuBauweise === 'element') return { dicke: 240, comment: 'Elementwand: 240 mm Gesamtdicke, Kernbeton ≥ 120 mm.' };
         return { dicke: 200, comment: 'Fertigteilwand, Beanspruchungsklasse 1.' };
       } else { // BK2
         if (wuBauweise === 'ortbeton') return { dicke: 200, comment: 'Ortbetonwand, Beanspruchungsklasse 2 (Bodenfeuchte, nicht stauendes Sickerwasser).' };
-        if (wuBauweise === 'element') return { dicke: 240, comment: 'Elementwand (BK 2): 240 mm Gesamtdicke; Kernbetondicke manuell prüfen.' };
+        if (wuBauweise === 'element') return { dicke: 240, comment: 'Elementwand (BK 2): 240 mm Gesamtdicke, Kernbeton ≥ 120 mm.' };
         return { dicke: 100, comment: 'Fertigteilwand, Beanspruchungsklasse 2.' };
       }
     } else if (wuBauteil === 'bodenplatte') {
