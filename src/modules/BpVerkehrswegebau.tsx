@@ -30,7 +30,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     totalThickness: 85,
     layers: [
       { name: 'Asphaltdeckschicht (SMA 8 S oder PA)', thickness: 4, material: 'Splittmastixasphalt / Offenporig mit PmB 25/55-55 A', normRequirement: 'PSV-Wert ≥ 51 (hohe Griffigkeit), Hohlraumgehalt 3,0-4,5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
-      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit PmB 25/55-55 A', normRequirement: 'Dicke 6 cm, hohe Standfestigkeit gegen Schubverformungen im Sommer', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-805' },
+      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit PmB 25/55-55 A', normRequirement: 'Dicke 6 cm, hohe Standfestigkeit gegen Schubverformungen im Sommer', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-800' },
       { name: 'Asphalttragschicht (AC 32 TS)', thickness: 24, material: 'Straßenbaubitumen 50/70 oder PmB', normRequirement: 'Dicke 24 cm in mehreren Lagen, Bindergehalt ≥ 4,2 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 51, material: 'Kies/Splitt-Gemisch (GW/GI, FSS 0/45)', normRequirement: 'EV2 ≥ 120 MPa auf der Tragschicht, Frostunempfindlichkeit nach TL Gestein-StB', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
@@ -41,7 +41,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     totalThickness: 75,
     layers: [
       { name: 'Asphaltdeckschicht (SMA 11 S oder AC 11 D S)', thickness: 4, material: 'Splittmastix- / Beton-Asphalt mit PmB oder 50/70', normRequirement: 'PSV-Wert ≥ 51, Einbaudicke ca. 4 cm nach ZTV Asphalt-StB', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
-      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit 50/70 oder PmB', normRequirement: 'Hohlraumgehalt des Marshall-Probekörpers 4,0-6,0 Vol.-%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-805' },
+      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit 50/70 oder PmB', normRequirement: 'Hohlraumgehalt des Marshall-Probekörpers 4,0-6,0 Vol.-%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-800' },
       { name: 'Asphalttragschicht (AC 22 TS)', thickness: 16, material: 'Straßenbaubitumen 50/70', normRequirement: 'Bindergehalt ≥ 4,3 M.-%, Verdichtungsgrad ≥ 98,0%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 49, material: 'Frostschutzsand / Kiessand-Gemisch (0/32 od. 0/45)', normRequirement: 'Statischer Verformungsmodul EV2 ≥ 120 MPa', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
@@ -52,7 +52,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
     totalThickness: 65,
     layers: [
       { name: 'Asphaltdeckschicht (AC 11 D S / SMA 8)', thickness: 4, material: 'Asphaltbeton / SMA mit 50/70', normRequirement: 'Gute Verschleißfestigkeit, PSV-Wert ≥ 48', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
-      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 5, material: 'Binder mit Straßenbaubitumen 50/70', normRequirement: 'Hohlraumfüllungsgrad mind. 70%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-805' },
+      { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 5, material: 'Binder mit Straßenbaubitumen 50/70', normRequirement: 'Hohlraumfüllungsgrad mind. 70%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-800' },
       { name: 'Asphalttragschicht (AC 22 TS)', thickness: 13, material: 'Bitumen 50/70 oder 70/100', normRequirement: 'Dicke 13 cm, Bindergehalt ≥ 4,3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
       { name: 'Frostschutzschicht (ungebunden)', thickness: 43, material: 'Sand-Kies-Schottergemisch FSS', normRequirement: 'EV2 ≥ 100 MPa, hohe Filterstabilität', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]

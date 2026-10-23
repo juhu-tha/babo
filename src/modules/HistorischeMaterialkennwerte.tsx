@@ -421,7 +421,7 @@ export default function HistorischeMaterialkennwerte() {
 
             <div className="bg-slate-50 p-6 rounded-xl border border-home-grau/30 mb-8 animate-fadeIn">
               <h3 className="text-lg font-bold text-slate-900 mb-2">{currentData.title}</h3>
-              <p className="text-slate-705 mb-4">{currentData.description}</p>
+              <p className="text-slate-700 mb-4">{currentData.description}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div className="bg-white p-4 rounded-lg border border-home-grau/30">
@@ -486,7 +486,7 @@ export default function HistorischeMaterialkennwerte() {
                         >
                           <td className="py-3 px-4 font-medium text-slate-800">{row.old}</td>
                           <td className="py-3 px-4 font-bold text-shiraz">{row.new}</td>
-                          <td className="py-3 px-4 text-slate-705 font-mono">{row.f_old}</td>
+                          <td className="py-3 px-4 text-slate-700 font-mono">{row.f_old}</td>
                           <td className="py-3 px-4 text-shiraz font-semibold font-mono">{row.f_new}</td>
                           <td className="py-3 px-4 text-slate-400 text-right">
                             {isExpanded ? <ChevronUp size={16} className="ml-auto text-shiraz" /> : <ChevronDown size={16} className="ml-auto" />}
@@ -548,7 +548,7 @@ export default function HistorischeMaterialkennwerte() {
 
                 <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20">
                   <h4 className="text-md font-bold text-shiraz mb-3">Modern: Teilsicherheitsbeiwerte</h4>
-                  <p className="text-xs md:text-sm text-slate-755 mb-4 leading-relaxed">
+                  <p className="text-xs md:text-sm text-slate-750 mb-4 leading-relaxed">
                     Die heutigen Eurocodes verwenden das <strong>Teilsicherheitskonzept</strong>. Einwirkungen werden mit Lastfaktoren (<InlineMath math="\gamma_F" />) erhöht, Werkstoffeigenschaften durch Materialfaktoren (<InlineMath math="\gamma_M" />) gemindert:
                   </p>
                   <div className="bg-white p-3 rounded border border-shiraz/20 text-center font-serif text-sm">

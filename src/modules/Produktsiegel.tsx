@@ -86,7 +86,7 @@ export default function Produktsiegel() {
                 className={`p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between h-full gap-2 ${
                   isActive 
                     ? 'border-shiraz bg-shiraz/5 text-shiraz shadow-sm ring-1 ring-shiraz/35' 
-                    : 'border-home-grau/30 bg-white hover:bg-slate-50 text-slate-705'
+                    : 'border-home-grau/30 bg-white hover:bg-slate-50 text-slate-700'
                 }`}
               >
                 <div>
@@ -187,7 +187,7 @@ export default function Produktsiegel() {
                 <Award size={24} />
               </div>
               <div>
-                <a href="https://www.blauer-engel.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-705">
+                <a href="https://www.blauer-engel.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-700">
                   <h4 className="font-bold text-base mb-1">Blauer Engel <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h4>
                 </a>
                 <p className="text-xs text-slate-500">
@@ -197,7 +197,7 @@ export default function Produktsiegel() {
             </div>
             
             <div className="flex gap-4">
-              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-705 shrink-0 h-fit">
+              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 shrink-0 h-fit">
                 <Leaf size={24} />
               </div>
               <div>
@@ -211,11 +211,11 @@ export default function Produktsiegel() {
             </div>
 
             <div className="flex gap-4">
-              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-705 shrink-0 h-fit">
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-700 shrink-0 h-fit">
                 <Trees size={24} />
               </div>
               <div>
-                <h4 className="font-bold text-slate-905 text-base mb-1">
+                <h4 className="font-bold text-slate-900 text-base mb-1">
                   <a href="https://fsc.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-amber-600">FSC</a> &amp; <a href="https://pefc.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-amber-600">PEFC</a>
                 </h4>
                 <p className="text-xs text-slate-500">
@@ -225,7 +225,7 @@ export default function Produktsiegel() {
             </div>
 
             <div className="flex gap-4">
-              <div className="p-3 bg-purple-50 border border-purple-200 rounded-xl text-purple-705 shrink-0 h-fit">
+              <div className="p-3 bg-purple-50 border border-purple-200 rounded-xl text-purple-700 shrink-0 h-fit">
                 <ShieldCheck size={24} />
               </div>
               <div>
@@ -239,11 +239,11 @@ export default function Produktsiegel() {
             </div>
 
             <div className="flex gap-4">
-              <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-xl text-slate-705 shrink-0 h-fit">
+              <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-xl text-slate-700 shrink-0 h-fit">
                 <Building size={24} />
               </div>
               <div>
-                <a href="https://www.csc-zertifizierung.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-705">
+                <a href="https://www.csc-zertifizierung.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-700">
                   <h4 className="font-bold text-base mb-1">CSC (Concrete Sustainability Council)</h4>
                 </a>
                 <p className="text-xs text-slate-500">
@@ -253,7 +253,7 @@ export default function Produktsiegel() {
             </div>
 
             <div className="flex gap-4">
-              <div className="p-3 bg-teal-50 border border-teal-200 rounded-xl text-teal-705 shrink-0 h-fit">
+              <div className="p-3 bg-teal-50 border border-teal-200 rounded-xl text-teal-700 shrink-0 h-fit">
                 <ShieldCheck size={24} />
               </div>
               <div>
@@ -267,7 +267,7 @@ export default function Produktsiegel() {
             </div>
 
             <div className="flex gap-4">
-              <div className="p-3 bg-green-50 border border-green-200 rounded-xl text-green-705 shrink-0 h-fit">
+              <div className="p-3 bg-green-50 border border-green-200 rounded-xl text-green-700 shrink-0 h-fit">
                 <Leaf size={24} />
               </div>
               <div>
@@ -281,7 +281,7 @@ export default function Produktsiegel() {
             </div>
 
             <div className="flex gap-4">
-              <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-705 shrink-0 h-fit">
+              <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-700 shrink-0 h-fit">
                 <FileText size={24} />
               </div>
               <div>

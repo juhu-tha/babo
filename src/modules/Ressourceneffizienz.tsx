@@ -516,7 +516,7 @@ export default function Ressourceneffizienz() {
                   </p>
                   
                   <div className="space-y-2.5">
-                    <span className="text-xs font-bold text-slate-800 dark:text-slate-205 block uppercase tracking-wider">Das Multibarrieren- und Kaskadenprinzip:</span>
+                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200 block uppercase tracking-wider">Das Multibarrieren- und Kaskadenprinzip:</span>
                     <ul className="text-xs text-slate-600 dark:text-slate-350 space-y-2">
                       <li className="flex items-start gap-2.5">
                         <CheckCircle2 className="text-shiraz shrink-0 mt-0.5" size={14} />
@@ -558,7 +558,7 @@ export default function Ressourceneffizienz() {
                       <div className="space-y-1">
                         <div className="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
                           <span>Straßenbau &amp; Erdbau (Verfüllung)</span>
-                          <span className="font-mono text-slate-700 dark:text-slate-305">72 %</span>
+                          <span className="font-mono text-slate-700 dark:text-slate-300">72 %</span>
                         </div>
                         <div className="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
                           <div className="bg-slate-600 dark:bg-slate-400 h-full rounded-full" style={{ width: '72%' }}></div>
@@ -568,7 +568,7 @@ export default function Ressourceneffizienz() {
                       <div className="space-y-1">
                         <div className="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
                           <span>Deponierung (Abfallbeseitigung)</span>
-                          <span className="font-mono text-slate-600 dark:text-slate-405">18 %</span>
+                          <span className="font-mono text-slate-600 dark:text-slate-400">18 %</span>
                         </div>
                         <div className="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
                           <div className="bg-slate-450 dark:bg-slate-500 h-full rounded-full" style={{ width: '18%' }}></div>
@@ -643,7 +643,7 @@ export default function Ressourceneffizienz() {
                             
                             {/* Column 0: Produkte einsparen (R0-R2) */}
                             <div className="flex flex-col gap-3">
-                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-805 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center">
+                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center">
                                 Produkte einsparen, klüger nutzen &amp; Herstellen
                               </div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/10 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
@@ -655,12 +655,12 @@ export default function Ressourceneffizienz() {
                                     className={`flex flex-col w-full text-left rounded-xl overflow-hidden border transition-all transform ${
                                       selectedR === strategy.id
                                         ? 'ring-2 ring-shiraz dark:ring-rose-500 scale-[1.03] shadow-md border-shiraz dark:border-rose-500 bg-white dark:bg-slate-900/90'
-                                        : 'border-slate-200/80 dark:border-slate-805 bg-white dark:bg-slate-900/60 shadow-sm hover:shadow hover:scale-[1.01]'
+                                        : 'border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm hover:shadow hover:scale-[1.01]'
                                     }`}
                                   >
                                     <div className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 px-3 py-2 font-black text-xs uppercase flex justify-between items-center w-full border-b border-slate-200/50 dark:border-slate-700/50">
                                       <span>{strategy.id} / {strategy.name}</span>
-                                      <span className="text-[8px] bg-slate-205 dark:bg-slate-700 dark:text-slate-350 text-slate-705 px-1 py-0.2 rounded font-bold">
+                                      <span className="text-[8px] bg-slate-200 dark:bg-slate-700 dark:text-slate-350 text-slate-700 px-1 py-0.2 rounded font-bold">
                                         RADIKAL
                                       </span>
                                     </div>
@@ -676,7 +676,7 @@ export default function Ressourceneffizienz() {
 
                             {/* Column 1: Lebensdauer erhöhen (R3-R6) */}
                             <div className="flex flex-col gap-3">
-                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-805 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center">
+                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center">
                                 Lebensdauer von Produkten oder Teilen erhöhen
                               </div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
@@ -693,7 +693,7 @@ export default function Ressourceneffizienz() {
                                   >
                                     <div className="bg-slate-100 dark:bg-slate-800 text-slate-950 dark:text-slate-200 px-3 py-2 font-black text-xs uppercase flex justify-between items-center w-full border-b border-slate-200/50 dark:border-slate-700/50">
                                       <span>{strategy.id} / {strategy.name}</span>
-                                      <span className="text-[8px] bg-slate-205 dark:bg-slate-700 dark:text-slate-350 text-slate-705 px-1 py-0.2 rounded font-bold">
+                                      <span className="text-[8px] bg-slate-200 dark:bg-slate-700 dark:text-slate-350 text-slate-700 px-1 py-0.2 rounded font-bold">
                                         WERTERHALT
                                       </span>
                                     </div>
@@ -709,7 +709,7 @@ export default function Ressourceneffizienz() {
 
                             {/* Column 2: Material sinnvoll wiederverwenden (R7-R9) */}
                             <div className="flex flex-col gap-3">
-                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-805 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center">
+                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center">
                                 Material sinnvoll wiederverwenden
                               </div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
@@ -724,9 +724,9 @@ export default function Ressourceneffizienz() {
                                         : 'border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm hover:shadow hover:scale-[1.01]'
                                     }`}
                                   >
-                                    <div className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-205 px-3 py-2 font-black text-xs uppercase flex justify-between items-center w-full border-b border-slate-200/50 dark:border-slate-700/50">
+                                    <div className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 px-3 py-2 font-black text-xs uppercase flex justify-between items-center w-full border-b border-slate-200/50 dark:border-slate-700/50">
                                       <span>{strategy.id} / {strategy.name}</span>
-                                      <span className="text-[8px] bg-slate-205 dark:bg-slate-700 dark:text-slate-350 text-slate-705 px-1 py-0.2 rounded font-bold">
+                                      <span className="text-[8px] bg-slate-200 dark:bg-slate-700 dark:text-slate-350 text-slate-700 px-1 py-0.2 rounded font-bold">
                                         RECYCLING
                                       </span>
                                     </div>
@@ -751,7 +751,7 @@ export default function Ressourceneffizienz() {
                                 <span className="flex items-center gap-1">
                                   <span>Zirkulare Wertschöpfung</span>
                                 </span>
-                                <span className="text-shiraz dark:text-rose-450 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-705 px-2 py-0.5 rounded font-mono">
+                                <span className="text-shiraz dark:text-rose-450 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-2 py-0.5 rounded font-mono">
                                   Einordnung: {activeStrategy.circularLevel}
                                 </span>
                               </div>
@@ -782,7 +782,7 @@ export default function Ressourceneffizienz() {
                             <div className="space-y-1.5">
                               <div className="flex justify-between items-center text-xs uppercase font-extrabold tracking-wider text-slate-500 dark:text-slate-400">
                                 <span>Innovationsbedarf</span>
-                                <span className="text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-slate-205 dark:border-slate-705 px-2 py-0.5 rounded font-mono">
+                                <span className="text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-2 py-0.5 rounded font-mono">
                                   Entwicklungs-Aufwand: {activeStrategy.innovationLevel}
                                 </span>
                               </div>
@@ -810,7 +810,7 @@ export default function Ressourceneffizienz() {
                             </div>
 
                             {/* Source and validation notice */}
-                            <div className="flex justify-between items-center text-xs text-slate-450 dark:text-slate-405 border-t border-slate-200 dark:border-slate-800 pt-2 font-medium">
+                            <div className="flex justify-between items-center text-xs text-slate-450 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-2 font-medium">
                               <span>Quelle: Prognos 2023, basierend auf (Kirchherr, Reike, &amp; Hekkert, 2017)</span>
                               <span>LfU / REZ Bayern Handlungsrahmen</span>
                             </div>
@@ -820,10 +820,10 @@ export default function Ressourceneffizienz() {
                         </div>
 
                         {/* Interactive bento-details card side panel - takes 4 columns out of 12 */}
-                        <div className="xl:col-span-4 bg-slate-50 dark:bg-slate-900/60 border border-slate-205 dark:border-slate-800 rounded-2xl p-5 space-y-4">
+                        <div className="xl:col-span-4 bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-4">
                           
                           <div className="border-b border-slate-200 dark:border-slate-800 pb-3">
-                            <span className="text-xs font-bold text-shiraz dark:text-rose-400 uppercase bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-705 font-mono inline-block">
+                            <span className="text-xs font-bold text-shiraz dark:text-rose-400 uppercase bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700 font-mono inline-block">
                               Ausgewählt: {activeStrategy.category}
                             </span>
                             
@@ -982,7 +982,7 @@ export default function Ressourceneffizienz() {
                         className={`px-2 py-2 rounded-lg text-xs font-semibold border ${
                           concreteType === 'standard' 
                             ? 'bg-shiraz dark:bg-rose-600 text-white border-shiraz dark:border-rose-700 shadow-sm' 
-                            : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-305 border-slate-205 dark:border-slate-705 hover:bg-slate-50 dark:hover:bg-slate-700/80'
+                            : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/80'
                         }`}
                       >
                         Standard CEM I
@@ -993,7 +993,7 @@ export default function Ressourceneffizienz() {
                         className={`px-2 py-2 rounded-lg text-xs font-semibold border ${
                           concreteType === 'cem3' 
                             ? 'bg-shiraz dark:bg-rose-600 text-white border-shiraz dark:border-rose-700 shadow-sm' 
-                            : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-305 border-slate-205 dark:border-slate-705 hover:bg-slate-50 dark:hover:bg-slate-700/80'
+                            : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/80'
                         }`}
                       >
                         Hüttensand CEM III
@@ -1004,7 +1004,7 @@ export default function Ressourceneffizienz() {
                         className={`px-2 py-2 rounded-lg text-xs font-semibold border ${
                           concreteType === 'rc_beton' 
                             ? 'bg-shiraz dark:bg-rose-600 text-white border-shiraz dark:border-rose-700 shadow-sm' 
-                            : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-305 border-slate-205 dark:border-slate-705 hover:bg-slate-50 dark:hover:bg-slate-700/80'
+                            : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/80'
                         }`}
                       >
                         RC-Beton (rezykl. Gesteinskörnung)
@@ -1114,7 +1114,7 @@ export default function Ressourceneffizienz() {
 
                   <div className="space-y-2">
                     <span className="text-xs font-bold text-slate-500 dark:text-slate-400 block uppercase tracking-wider">Handlungsempfehlung des REZ Bayern:</span>
-                    <div className="p-3.5 bg-shiraz/5 border border-shiraz/10 dark:border-rose-950/20 rounded-xl text-xs text-slate-700 dark:text-slate-305 space-y-2">
+                    <div className="p-3.5 bg-shiraz/5 border border-shiraz/10 dark:border-rose-950/20 rounded-xl text-xs text-slate-700 dark:text-slate-300 space-y-2">
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="text-shiraz dark:text-rose-450 shrink-0 mt-0.5" size={14} />
                         <span><strong>Vergabeerleichterung:</strong> Nach bayerischem Bauvergabeerlass dürfen mineralische RC-Baustoffe der Güteklasse RC-1 im Straßen- und Hochbau gleichwertig wie Primärbaustoffe ausgeschrieben werden.</span>
@@ -1253,7 +1253,7 @@ export default function Ressourceneffizienz() {
                     </div>
 
                     <div className="bg-white dark:bg-slate-850 p-4 rounded-xl border border-slate-150 dark:border-slate-800 space-y-1">
-                      <div className="flex items-center gap-1.5 text-slate-650 dark:text-slate-305 text-xs font-bold uppercase">
+                      <div className="flex items-center gap-1.5 text-slate-650 dark:text-slate-300 text-xs font-bold uppercase">
                         <Sparkles size={14} className="text-shiraz dark:text-rose-450" />
                         Förderbonus (fiktiver Lehrwert)
                       </div>
@@ -1353,7 +1353,7 @@ export default function Ressourceneffizienz() {
                       <div><strong className="text-slate-800 dark:text-slate-200">Träger/Akteur:</strong> {hub.partner}</div>
                     </div>
 
-                    <p className="text-xs text-slate-550 dark:text-slate-405 leading-relaxed font-normal">
+                    <p className="text-xs text-slate-550 dark:text-slate-400 leading-relaxed font-normal">
                       {hub.description}
                     </p>
                   </div>
@@ -1380,7 +1380,7 @@ export default function Ressourceneffizienz() {
                     href="https://www.umweltpakt.bayern.de/rez/index.htm" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-850 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-705 dark:text-slate-250 font-bold px-3 py-1.5 rounded-lg text-xs cursor-pointer shadow-sm transition-colors"
+                    className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-850 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-250 font-bold px-3 py-1.5 rounded-lg text-xs cursor-pointer shadow-sm transition-colors"
                   >
                     Offizielle REZ Website aufrufen <FileText size={12} />
                   </a>

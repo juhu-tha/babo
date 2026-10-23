@@ -185,7 +185,7 @@ const BETON_PRINZIPIEN: ConcretePrincipleGroup[] = [
     icon: <Settings size={18} />,
     colorBorder: 'border-amber-100 focus-within:border-amber-300',
     colorBg: 'bg-amber-50/10',
-    colorText: 'text-amber-955',
+    colorText: 'text-amber-950',
     colorIcon: 'bg-amber-100/70 text-amber-700 border-amber-200/50',
     intro: 'Effizienzsprünge auf Material- und Prozessebene optimieren die Wirkstoffteilchen des Betongefüges und dämpfen Drehofen-Emissionen direkt am Entstehungsort.',
     categories: [

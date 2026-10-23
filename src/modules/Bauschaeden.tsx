@@ -377,7 +377,7 @@ ${senderName}`;
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-                  <div className="bg-white p-4 rounded-xl border border-slate-205/80 space-y-2">
+                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 space-y-2">
                     <span className="font-bold text-shiraz flex items-center gap-1.5 uppercase text-xs tracking-wide">
                       🛑 BGH, Urt. v. 22.02.2018 – VII ZR 46/17: keine fiktiven Mängelbeseitigungskosten
                     </span>
@@ -395,7 +395,7 @@ ${senderName}`;
                     </div>
                   </div>
 
-                  <div className="bg-white p-4 rounded-xl border border-slate-205/80 space-y-2">
+                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 space-y-2">
                     <span className="font-bold text-[#A3113E] flex items-center gap-1.5 uppercase text-xs tracking-wide">
                       🏗️ Gebäudetyp E: "Einfaches Bauen" (Gesetzgebungsstand 2026)
                     </span>
@@ -681,19 +681,19 @@ ${senderName}`;
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-2.5 text-xs text-amber-900">
                         <div className="bg-white/85 p-2.5 rounded border border-amber-100">
                           <strong className="block text-amber-950">1. Nur per SMS / WhatsApp?</strong>
-                          <p className="text-xs text-slate-705 leading-normal mt-1">
+                          <p className="text-xs text-slate-700 leading-normal mt-1">
                             § 6 Abs. 1 VOB/B verlangt eine <strong>schriftliche Behinderungsanzeige</strong>; ohne Anzeige wird die Behinderung nur bei Offenkundigkeit berücksichtigt. Senden Sie wichtige Anzeigen daher vorab digital und zusätzlich nachweisbar (z. B. Einschreiben).
                           </p>
                         </div>
                         <div className="bg-white/85 p-2.5 rounded border border-amber-100">
                           <strong className="block text-amber-950">2. Adressat: Nur der Architekt?</strong>
-                          <p className="text-xs text-slate-705 leading-normal mt-1">
+                          <p className="text-xs text-slate-700 leading-normal mt-1">
                             Der Architekt ist Sachwalter des Bauherrn, aber <strong>ohne Vollmacht nicht rechtsgeschäftlich vertretungsbefugt</strong> (z. B. für Fristen oder Nachträge). Schicken Sie Anzeigen <strong>immer</strong> auch direkt an den Bauherrn (AG).
                           </p>
                         </div>
                         <div className="bg-white/85 p-2.5 rounded border border-amber-100">
                           <strong className="block text-amber-950">3. Zu ungenaue Mängelbeschreibung?</strong>
-                          <p className="text-xs text-slate-705 leading-normal mt-1">
+                          <p className="text-xs text-slate-700 leading-normal mt-1">
                             Eine Anzeige muss <strong>unverzüglich</strong> abgegeben werden und die <strong>Auswirkungen konkret lokalisieren</strong> sowie quantifizieren (z.B. genaue Angabe über Bauteile und Verzugsdauer).
                           </p>
                         </div>

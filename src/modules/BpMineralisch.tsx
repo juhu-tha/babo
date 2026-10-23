@@ -252,7 +252,7 @@ export default function BpMineralisch() {
             ))}
           </div>
 
-          <div className="bg-yellow-50/50 p-4 border border-yellow-200/50 rounded-xl space-y-2 text-xs text-yellow-905">
+          <div className="bg-yellow-50/50 p-4 border border-yellow-200/50 rounded-xl space-y-2 text-xs text-yellow-900">
             <div className="flex items-center gap-1.5 font-bold">
               <HardHat className="text-yellow-800" size={14} />
               <span>Sonderfall: Naturstein Ausblühungen</span>

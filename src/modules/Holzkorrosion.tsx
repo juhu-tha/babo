@@ -170,7 +170,7 @@ const moistureRanges = [
     level: 'Sicher durch O₂-Ausschluss (Konservierung)',
     colorText: 'text-slate-800',
     colorBg: 'bg-slate-150/40 border-home-grau/30 text-slate-900',
-    badgeColor: 'bg-slate-705 bg-slate-800 text-white',
+    badgeColor: 'bg-slate-700 bg-slate-800 text-white',
     badge: 'u > 80%',
     description: 'Das Holz is vollständig geflutet (z.B. Gründungspfähle unter Grundwasser, Nasslager). Da Wasser kaum Sauerstoff transportiert, ersticken holzzerstörende Pilze und Insekten vollständig aufgrund von akutem Sauerstoffmangel. Das Holz bleibt konserviert. Nur hochspezialisierte, sehr langsame Moderfäulepilze verbleiben minimal aktiv.',
     pests: [
@@ -598,7 +598,7 @@ export default function Holzkorrosion() {
 
                 <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xxs space-y-1.5">
                   <h4 className="font-extrabold text-slate-800 text-xs">Splintholzkäfer (<em>Lyctus</em>)</h4>
-                  <span className="text-xs font-mono text-amber-655 bg-off-white px-1 py-0.5 rounded font-bold block w-max">Geringfeldig trockenresistent</span>
+                  <span className="text-xs font-mono text-amber-650 bg-off-white px-1 py-0.5 rounded font-bold block w-max">Geringfeldig trockenresistent</span>
                   <p className="text-xs text-slate-600 leading-normal">
                     Befällt stärkereiches, offenporiges Laubholz (Eiche, Esche, Nussbaum, Tropenholz). Die Larven fressen das tragende Splintholz vollständig zusammen und verwandeln es im Laufe der Generationen im Bauteilinneren zu pudrigem, strukturlosen Mehl (<strong>Puderholz</strong>).
                   </p>
@@ -884,13 +884,13 @@ export default function Holzkorrosion() {
                       Vakuum zieht Luft und freies Zellwasser vollständig aus den äußeren Holzkapillaren heraus. Danach wird das schützende Salzgemisch unter hohem, langanhaltendem Überdruck (8 bis 10 bar) tief in das Splintholz hineingepresst. Erreicht Penetrationsklasse <span className="font-mono font-bold">NP5 - NP6</span>. Unabdingbar für die GK 4.
                     </p>
                   </div>
-                  <div className="p-2 border-l-2 border-slate-405 border-l-slate-400 bg-slate-50 rounded">
+                  <div className="p-2 border-l-2 border-slate-400 border-l-slate-400 bg-slate-50 rounded">
                     <strong>2. Wechseldruckverfahren (WD) &amp; Doppelvakuum (DV):</strong>
                     <p className="text-slate-500 text-xs mt-0.5 leading-normal">
                       <strong>Doppelvakuumverlegung (DV)</strong> nutzt organisch gelöste Wirkstoffe ohne Wasserzufuhr zur Imprägnierung maßhaltiger Fensterteile, um Quellverformungen auszuschließen. <strong>Wechseldruckimprägnierung (WD)</strong> wechselt rasch zwischen Vakuum und Druck zur Tränkung waldfrischer, saftreicher Fichtenmasten.
                     </p>
                   </div>
-                  <div className="p-2 border-l-2 border-slate-405 border-l-slate-400 bg-slate-50 rounded">
+                  <div className="p-2 border-l-2 border-slate-400 border-l-slate-400 bg-slate-50 rounded">
                     <strong>3. Nichtdruckverfahren:</strong>
                     <p className="text-slate-500 text-xs mt-0.5 leading-normal">
                       Trogtränkung (Einlagern des Holzes über Stunden), Tauchen (Sekunden/Minuten), Sprühen und manuelles Streichen. Erreichen meist nur Oberflächenschutz (<span className="font-mono">NP1</span>). <strong>Lokale Spezialverfahren</strong> (F 32) beinhalten die mechanische Bohrlochdrucktränkung oder Heißluftaufwärmung zur biologischen Bekämpfung bei akutem Hausbockbefall.

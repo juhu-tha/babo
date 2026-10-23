@@ -493,7 +493,7 @@ export default function BodenMaterialAufbereitung() {
                         className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                           treatmentMaterial === mat.id 
                             ? 'bg-shiraz/5 border-shiraz text-shiraz shadow-sm' 
-                            : 'bg-white hover:bg-slate-50 border-home-grau/30 text-slate-705'
+                            : 'bg-white hover:bg-slate-50 border-home-grau/30 text-slate-700'
                         }`}
                       >
                         <div className="text-xs font-bold leading-normal">{mat.label}</div>
@@ -519,7 +519,7 @@ export default function BodenMaterialAufbereitung() {
                         className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                           treatmentContaminant === cont.id 
                             ? 'bg-shiraz/5 border-shiraz text-shiraz shadow-sm' 
-                            : 'bg-white hover:bg-slate-50 border-home-grau/30 text-slate-705'
+                            : 'bg-white hover:bg-slate-50 border-home-grau/30 text-slate-700'
                         }`}
                       >
                         <div className="text-xs font-bold">{cont.label}</div>
@@ -566,7 +566,7 @@ export default function BodenMaterialAufbereitung() {
                     <ol className="space-y-1.5 text-xs text-slate-700">
                       {TREATMENT_OPTIONS[treatmentMaterial][treatmentContaminant].steps.map((step, idx) => (
                         <li key={idx} className="flex gap-3 items-start leading-relaxed animate-in fade-in slide-in-from-left-2 duration-200">
-                          <span className="flex-shrink-0 w-4 h-4 rounded-full bg-slate-905 text-white text-xs font-bold flex items-center justify-center mt-0.5">{idx + 1}</span>
+                          <span className="flex-shrink-0 w-4 h-4 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center mt-0.5">{idx + 1}</span>
                           <span>{step}</span>
                         </li>
                       ))}
@@ -1127,7 +1127,7 @@ export default function BodenMaterialAufbereitung() {
 
                 <div className="pb-4 mb-4">
                   <span className="font-bold font-sans text-xs text-slate-500 block">SENSORIK &amp; BESONDERE BEMERKUNGEN:</span>
-                  <p className="italic text-slate-805 bg-slate-50 p-2 border border-slate-200 rounded leading-relaxed mt-1">
+                  <p className="italic text-slate-800 bg-slate-50 p-2 border border-slate-200 rounded leading-relaxed mt-1">
                     "{pNotes || 'Keine sensorischen Auffälligkeiten.'}"
                   </p>
                 </div>

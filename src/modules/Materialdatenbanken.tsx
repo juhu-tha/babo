@@ -239,7 +239,7 @@ export default function Materialdatenbanken() {
           </p>
         </div>
         
-        <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed font-normal">
+        <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed font-normal">
           <p>
             Für die Berechnung der Umweltwirkungen von Gebäuden (Ökobilanzierung / LCA) werden verlässliche Daten zu den eingesetzten Baumaterialien benötigt. 
             Verschiedene Datenbanken stellen diese Informationen in Form von generischen Datensätzen oder spezifischen Umweltproduktdeklarationen (EPDs) zur Verfügung.
@@ -256,11 +256,11 @@ export default function Materialdatenbanken() {
                       {db.icon}
                     </div>
                     <h3 className="text-xl font-bold text-text-main flex items-center gap-2">{db.name}</h3>
-                    <span className="text-[10px] bg-white border border-home-grau/30 px-1.5 py-0.5 rounded text-slate-505 font-bold">{db.origin}</span>
+                    <span className="text-[10px] bg-white border border-home-grau/30 px-1.5 py-0.5 rounded text-slate-500 font-bold">{db.origin}</span>
                   </div>
                 </div>
                 
-                <p className="text-xs text-slate-705 mb-4 leading-relaxed font-normal">
+                <p className="text-xs text-slate-700 mb-4 leading-relaxed font-normal">
                   {db.description}
                 </p>
               </div>
@@ -362,7 +362,7 @@ export default function Materialdatenbanken() {
                     >
                       <div className="truncate pr-2">
                         <span className="block text-xs font-semibold text-slate-850 truncate">{record.name}</span>
-                        <span className="block text-[10px] text-slate-405 truncate mt-0.5">{record.manufacturer}</span>
+                        <span className="block text-[10px] text-slate-400 truncate mt-0.5">{record.manufacturer}</span>
                       </div>
                       <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
                         record.type === 'Generisch' 
@@ -710,7 +710,7 @@ export default function Materialdatenbanken() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 leading-relaxed">
           <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/30">
             <h4 className="font-bold text-slate-900 text-sm mb-2">Generische Daten</h4>
-            <p className="text-xs text-slate-705 mb-3 leading-relaxed">
+            <p className="text-xs text-slate-700 mb-3 leading-relaxed">
               Durchschnittswerte für eine bestimmte Produktgruppe (z.B. "Normalbeton C25/30"). 
               Sie werden oft in frühen Planungsphasen verwendet, wenn das genaue Fabrikat noch nicht feststeht.
             </p>
@@ -722,7 +722,7 @@ export default function Materialdatenbanken() {
           </div>
           <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/30">
             <h4 className="font-bold text-slate-900 text-sm mb-2">Spezifische Daten (EPDs)</h4>
-            <p className="text-xs text-slate-705 mb-3 leading-relaxed">
+            <p className="text-xs text-slate-700 mb-3 leading-relaxed">
               Herstellerspezifische Daten für ein konkretes Produkt (z.B. "Zement CEM II/A-LL 42.5 R vom Werk X"). 
               Sie basieren auf realen Produktionsdaten des Herstellers.
             </p>

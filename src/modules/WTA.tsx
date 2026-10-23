@@ -633,7 +633,7 @@ export default function WTA() {
 
                 <div className="bg-white p-3.5 rounded border border-home-grau/35 space-y-2 leading-relaxed">
                   <span className="font-bold text-slate-800 block border-b border-home-grau/20 pb-1">Anforderungen an Spritzbewurf &amp; Untergrund</span>
-                  <p className="text-xs text-slate-705">{spritzbewurfCover}</p>
+                  <p className="text-xs text-slate-700">{spritzbewurfCover}</p>
                   <p className="text-[11.5px] text-slate-600 border-t border-dotted border-home-grau/20 pt-1.5 font-semibold text-shiraz">
                     📍 Kein kalkhaltiger Glattputz, keine Gipsplatten im direkten Spritzwasserbereich der sanierten Sockelbauteile verwenden!
                   </p>

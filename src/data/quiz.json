@@ -11051,5 +11051,185 @@
       "targetModuleLabel": "Betonfertigteile"
     },
     "verified": false
+  },
+  {
+    "id": "q_bbw_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonwaren",
+    "moduleTitle": "Betonwaren",
+    "topic": "Pflastersteine",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 1338",
+    "question": "Welche Anforderungen gelten für die Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338?",
+    "options": [
+      "Mittelwert ≥ 3,6 N/mm², Einzelwert ≥ 2,9 N/mm², Bruchlast je Länge ≥ 250 N/mm",
+      "Mittelwert ≥ 30 N/mm² (Druckfestigkeit)",
+      "Einzelwert ≥ 3,6 N/mm², Mittelwert beliebig",
+      "Nur die Bruchlast je Länge ≥ 100 N/mm"
+    ],
+    "correctIdx": 0,
+    "explanation": "Pflastersteine werden über die Spaltzugprüfung bewertet, nicht über die Würfeldruckfestigkeit.",
+    "gapAnalysis": {
+      "topic": "Pflastersteine",
+      "misconception": "Pflaster wird wie Beton über die Druckfestigkeit klassifiziert.",
+      "coreRule": "Spaltzug: 3,6 / 2,9 N/mm², 250 N/mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Pflastersteine“ im Modul Betonwaren noch einmal durch.",
+      "targetModuleTab": "bp_betonwaren",
+      "targetModuleLabel": "Betonwaren"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bbw_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonwaren",
+    "moduleTitle": "Betonwaren",
+    "topic": "Biogene Schwefelsäurekorrosion",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Was schützt Betonrohre wirksam gegen biogene Schwefelsäurekorrosion?",
+    "options": [
+      "Faulprozesse vermeiden sowie säurewiderstandsfähiger Beton oder eine Auskleidung",
+      "Ein SR-Zement allein",
+      "Ein höherer Luftporengehalt",
+      "Eine dickere Betondeckung der Bewehrung"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der Angriff ist ein Säureangriff durch Schwefelsäure im Kondensat. Sulfatwiderstand (SR-Zement) hilft gegen Sulfattreiben, nicht gegen die Auflösung durch Säure.",
+    "gapAnalysis": {
+      "topic": "Biogene Schwefelsäurekorrosion",
+      "misconception": "SR-Zement schützt vor jeder Art von Schwefelangriff.",
+      "coreRule": "Säureangriff ≠ Sulfatangriff.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biogene Schwefelsäurekorrosion“ im Modul Betonwaren noch einmal durch.",
+      "targetModuleTab": "bp_betonwaren",
+      "targetModuleLabel": "Betonwaren"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bmw_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_mauerwerk",
+    "moduleTitle": "Mauerwerk (Bauprodukte)",
+    "topic": "Mauerwerksdruckfestigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1996-1-1 Gl. (3.1)",
+    "question": "Welche Exponenten gelten in f_k = K · f_b^α · f_m^β für Normalmauermörtel?",
+    "options": [
+      "α = 0,70, β = 0,30",
+      "α = 0,85, β = 0",
+      "α = 0,70, β = 0,25",
+      "α = 0,50, β = 0,50"
+    ],
+    "correctIdx": 0,
+    "explanation": "Für Normalmauermörtel gilt α = 0,7 und β = 0,3; für Dünnbettmörtel α = 0,85 und β = 0.",
+    "gapAnalysis": {
+      "topic": "Mauerwerksdruckfestigkeit",
+      "misconception": "Die Mörtelfestigkeit hat bei Normalmörtel keinen Einfluss.",
+      "coreRule": "NM: 0,7/0,3; DM: 0,85/0.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauerwerksdruckfestigkeit“ im Modul Mauerwerk (Bauprodukte) noch einmal durch.",
+      "targetModuleTab": "bp_mauerwerk",
+      "targetModuleLabel": "Mauerwerk (Bauprodukte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bmw_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_mauerwerk",
+    "moduleTitle": "Mauerwerk (Bauprodukte)",
+    "topic": "Mauersteine",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welcher Mauerstein eignet sich wegen hoher Rohdichte besonders für Wohnungstrennwände mit Schallschutzanforderung?",
+    "options": [
+      "Kalksandstein",
+      "Porenbeton",
+      "Hochlochziegel mit Perlitfüllung",
+      "Lehmstein"
+    ],
+    "correctIdx": 0,
+    "explanation": "Luftschalldämmung einschaliger Wände hängt vor allem von der flächenbezogenen Masse ab – KS hat eine hohe Rohdichte.",
+    "gapAnalysis": {
+      "topic": "Mauersteine",
+      "misconception": "Dämmende Steine verbessern auch den Schallschutz.",
+      "coreRule": "Schallschutz einschalig: Masse.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauersteine“ im Modul Mauerwerk (Bauprodukte) noch einmal durch.",
+      "targetModuleTab": "bp_mauerwerk",
+      "targetModuleLabel": "Mauerwerk (Bauprodukte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdf_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_dach_fassade",
+    "moduleTitle": "Dach & Fassade",
+    "topic": "Fenster",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN ISO 10077-1",
+    "question": "A_g = 1,30 m², U_g = 0,6; A_f = 0,52 m², U_f = 1,2; l_g = 4,6 m, Ψ_g = 0,04. Wie groß ist U_w?",
+    "options": [
+      "ca. 0,87 W/(m²K)",
+      "ca. 0,60 W/(m²K)",
+      "ca. 0,77 W/(m²K)",
+      "ca. 1,30 W/(m²K)"
+    ],
+    "correctIdx": 0,
+    "explanation": "(0,78 + 0,62 + 0,18) / 1,82 = 0,87 W/(m²K). Ohne Glasrandanteil ergäben sich 0,77.",
+    "gapAnalysis": {
+      "topic": "Fenster",
+      "misconception": "Der Glasrandverbund wird vergessen.",
+      "coreRule": "U_w enthält Glas, Rahmen und Ψ_g · l_g.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fenster“ im Modul Dach & Fassade noch einmal durch.",
+      "targetModuleTab": "bp_dach_fassade",
+      "targetModuleLabel": "Dach & Fassade"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdf_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_dach_fassade",
+    "moduleTitle": "Dach & Fassade",
+    "topic": "VHF",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 18516-1",
+    "question": "Welche Mindestbreite muss der Hinterlüftungsspalt einer vorgehängten hinterlüfteten Fassade haben?",
+    "options": [
+      "20 mm",
+      "5 mm",
+      "100 mm",
+      "Kein Spalt erforderlich"
+    ],
+    "correctIdx": 0,
+    "explanation": "DIN 18516-1 fordert einen Lüftungsspalt von mindestens 20 mm (örtlich bis 5 mm eingeschränkt).",
+    "gapAnalysis": {
+      "topic": "VHF",
+      "misconception": "Ein schmaler Spalt von wenigen Millimetern genügt.",
+      "coreRule": "VHF: Lüftungsspalt ≥ 20 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „VHF“ im Modul Dach & Fassade noch einmal durch.",
+      "targetModuleTab": "bp_dach_fassade",
+      "targetModuleLabel": "Dach & Fassade"
+    },
+    "verified": false
   }
 ]

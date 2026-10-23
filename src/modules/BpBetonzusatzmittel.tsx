@@ -388,7 +388,7 @@ export default function BpBetonzusatzmittel() {
                   <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/10 flex flex-col justify-between">
                     <div>
                       <span className="text-shiraz font-extrabold text-xs uppercase tracking-wider block mb-1">Betonzusatzmittel BZM</span>
-                      <p className="text-xs text-slate-705 leading-normal">
+                      <p className="text-xs text-slate-700 leading-normal">
                         Fluessige Emulsionen oder selten pulverfoermige organische und anorganische Wirksubstanzen mit Massenanteilen meist im Promille- bis niedrigen Prozentbereich, hoechstens 5,0 M.-% vom Zementgewicht. Sie greifen chemisch und physikalisch in die Hydratation und das Oberflächenladungsprofil der Zementteilchen ein.
                       </p>
                     </div>
@@ -778,7 +778,7 @@ export default function BpBetonzusatzmittel() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-705 block">Zusatzmittel Menge:</label>
+                    <label className="text-xs font-bold text-slate-700 block">Zusatzmittel Menge:</label>
                     <div className="relative">
                       <input aria-label="Zusatzmittel Menge"
                         type="number"
@@ -794,7 +794,7 @@ export default function BpBetonzusatzmittel() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-705 block">Zusatzmittel Dichte (<InlineMath math="\rho" />):</label>
+                    <label className="text-xs font-bold text-slate-700 block">Zusatzmittel Dichte (<InlineMath math="\rho" />):</label>
                     <div className="relative">
                       <input aria-label="Zusatzmittel Dichte ()"
                         type="number"

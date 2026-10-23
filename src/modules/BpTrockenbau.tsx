@@ -452,7 +452,7 @@ export default function BpTrockenbau() {
                       className={`p-3 text-left rounded-xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${
                         selectedProductId === prod.id
                           ? 'bg-shiraz/5 border-shiraz text-shiraz ring-1 ring-shiraz'
-                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-355'
+                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-350'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -462,7 +462,7 @@ export default function BpTrockenbau() {
                           <p className="text-[10px] text-slate-450 font-mono mt-0.5">{prod.dinNorm}</p>
                         </div>
                       </div>
-                      <ChevronRight size={14} className="text-slate-405" />
+                      <ChevronRight size={14} className="text-slate-400" />
                     </button>
                   ))}
                 </div>

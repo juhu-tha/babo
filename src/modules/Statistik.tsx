@@ -938,7 +938,7 @@ export default function Statistik() {
               <div className="text-[9.5px] text-stone-500 font-mono mb-1 bg-stone-100 px-1.5 py-0.5 rounded inline-block">
                 Sortierte Messreihe: {intStats.sorted.map(x => x.toFixed(0)).join(', ')}
               </div>
-              <p className="text-[11px] text-slate-605 leading-relaxed mt-1">
+              <p className="text-[11px] text-slate-600 leading-relaxed mt-1">
                 Teilt die sortierte Stichprobe exakt in <strong>zwei Hälften</strong> (50% kleiner, 50% größer). Der Median ist <strong>robust gegen Ausreißer</strong>: Egal wie hoch der Maximalwert ist – der Median bleibt in der Mitte der sortierten Reihe.
               </p>
             </div>
@@ -959,7 +959,7 @@ export default function Statistik() {
                 <span className="font-mono text-xs font-bold text-amber-600 ml-auto">s = {formatDeZahl(intStats.stdDev, 2)} MPa</span>
               </div>
               <FormulaText text="s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \mu)^2}" />
-              <p className="text-[11px] text-slate-605 leading-relaxed mt-1.5">
+              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5">
                 Ein Maß für die typische Abweichung der Einzelwerte vom Mittelwert (Wurzel aus der Varianz). Sie spannt das <strong>gestreifte orange Band</strong> im Diagramm auf. Je homogener die Werte (enger beieinander), desto geringer ist die Standardabweichung und desto schmaler das Band.
               </p>
             </div>
@@ -980,7 +980,7 @@ export default function Statistik() {
                 <span className="font-mono text-xs font-bold text-indigo-600 ml-auto">V = {formatDeZahl(intStats.cv, 1)} %</span>
               </div>
               <FormulaText text="V = \frac{s}{\mu} \cdot 100\,\%" />
-              <p className="text-[11px] text-slate-605 leading-relaxed mt-1.5">
+              <p className="text-[11px] text-slate-600 leading-relaxed mt-1.5">
                 Das relative Maß für die Streuung, normiert auf den Mittelwert. Macht die Streuung verschiedener Baustoffgüten direkt vergleichbar. Richtwerte: Transportbeton bei guter Produktionskontrolle etwa 8–12 %, Betonstahl meist unter 5 %, Bauholz 15–25 % (Orientierungswerte).
               </p>
             </div>

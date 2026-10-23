@@ -588,7 +588,7 @@ export default function MechanischePruefungen() {
                   </div>
 
                   <div className="space-y-1 pt-1.5">
-                    <label className="text-xs font-bold text-slate-755 flex justify-between">
+                    <label className="text-xs font-bold text-slate-750 flex justify-between">
                       <span>Zerstörende Bruchkraft (Lastspitze) F:</span>
                       <span className="text-emerald-700 font-mono font-bold">{formatDeWert(concreteForce)} kN</span>
                     </label>
@@ -723,7 +723,7 @@ export default function MechanischePruefungen() {
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-xs font-bold text-slate-755 flex justify-between">
+                        <label className="text-xs font-bold text-slate-750 flex justify-between">
                           <span>Maximale Belastungskraft P:</span>
                           <span className="text-emerald-700 font-mono font-bold">{formatDeWert(asphaltForce)} kN</span>
                         </label>
@@ -782,7 +782,7 @@ export default function MechanischePruefungen() {
                       </div>
 
                       <div className="space-y-1 pt-1">
-                        <label className="text-xs font-bold text-slate-755 flex justify-between">
+                        <label className="text-xs font-bold text-slate-750 flex justify-between">
                           <span>Prüf-Fließwert F (Stauchung):</span>
                           <span className="text-emerald-700 font-mono font-bold">{formatDeWert(marshallFlow)} mm</span>
                         </label>
@@ -852,7 +852,7 @@ export default function MechanischePruefungen() {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-755 flex justify-between">
+                      <label className="text-xs font-bold text-slate-750 flex justify-between">
                         <span>Anfangs-L0:</span>
                         <span className="text-slate-600 font-mono font-bold">{formatDeWert(steelLength0)} mm</span>
                       </label>
@@ -866,7 +866,7 @@ export default function MechanischePruefungen() {
                   </div>
 
                   <div className="space-y-1.5 pt-1">
-                    <label className="text-xs font-bold text-slate-755 flex justify-between">
+                    <label className="text-xs font-bold text-slate-750 flex justify-between">
                       <span>Kraft an der Streckgrenze F_e:</span>
                       <span className="text-shiraz font-mono font-bold">{formatDeZahl(steelForceYield, 1)} kN</span>
                     </label>
@@ -884,7 +884,7 @@ export default function MechanischePruefungen() {
                   </div>
 
                   <div className="space-y-1.5 pt-1">
-                    <label className="text-xs font-bold text-slate-755 flex justify-between">
+                    <label className="text-xs font-bold text-slate-750 flex justify-between">
                       <span>Höchstkraft F_m:</span>
                       <span className="text-emerald-700 font-mono font-bold">{formatDeZahl(steelForceUltimate, 1)} kN</span>
                     </label>
@@ -896,7 +896,7 @@ export default function MechanischePruefungen() {
                   </div>
 
                   <div className="space-y-1.5 pt-1">
-                    <label className="text-xs font-bold text-slate-755 flex justify-between">
+                    <label className="text-xs font-bold text-slate-750 flex justify-between">
                       <span>Messlänge bei Höchstkraft L_m (Extensometer, unter Last):</span>
                       <span className="text-slate-700 font-mono font-bold">{formatDeWert(steelLengthU)} mm</span>
                     </label>
@@ -951,7 +951,7 @@ export default function MechanischePruefungen() {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-755 flex justify-between">
+                      <label className="text-xs font-bold text-slate-750 flex justify-between">
                         <span>Rohdichte ρ0:</span>
                         <span className="text-shiraz font-mono font-bold">{formatDeZahl(woodDensity, 2)} g/cm³</span>
                       </label>
@@ -964,7 +964,7 @@ export default function MechanischePruefungen() {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-755 flex justify-between">
+                      <label className="text-xs font-bold text-slate-750 flex justify-between">
                         <span>Holzfeuchte u:</span>
                         <span className="text-emerald-700 font-mono font-bold">{formatDeWert(woodMoisture)} %</span>
                       </label>
@@ -1005,7 +1005,7 @@ export default function MechanischePruefungen() {
                   </div>
 
                   <div className="space-y-1 pt-1.5">
-                    <label className="text-xs font-bold text-slate-755 flex justify-between">
+                    <label className="text-xs font-bold text-slate-750 flex justify-between">
                       <span>Gemessene Gesamt-Bruchlast F (beide Lastpunkte):</span>
                       <span className="text-emerald-700 font-mono font-bold">{formatDeZahl(woodBendingForce, 1)} kN</span>
                     </label>

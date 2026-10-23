@@ -138,10 +138,10 @@ export default function BimBaustoffe() {
               <Layers size={16} className="text-shiraz" />
               1. Semantische Tiefe (Vom Strich zum Bauteil)
             </h3>
-            <p className="text-xs text-slate-705 leading-relaxed mb-3">
+            <p className="text-xs text-slate-700 leading-relaxed mb-3">
               Im klassischen 2D-CAD besteht eine Wand aus zwei nackten, parallelen Vektorlinien. Im BIM-Modell dagegen deklarieren wir ein intelligentes Bauteil-Objekt (z.B. <code className="bg-home-grau/20 px-1 py-0.5 rounded text-[11px] font-mono font-bold">IfcWall</code>), welches physikalisch determinierte Eigenschaften aufweist:
             </p>
-            <ul className="text-xs text-slate-705 space-y-1.5 pl-4 list-disc">
+            <ul className="text-xs text-slate-700 space-y-1.5 pl-4 list-disc">
               <li><strong>Materialzuweisung:</strong> Präzise Referenzierung konkreter Baustoffe.</li>
               <li><strong>Mehrschichtigkeit:</strong> Verknüpfung komplexer Materialschichten.</li>
               <li><strong>Mengen-Take-Off:</strong> Vollautomatische Massenberechnung aus der 3D-Geometrie für Kostenermittlungen.</li>
@@ -153,10 +153,10 @@ export default function BimBaustoffe() {
               <Settings size={16} className="text-shiraz" />
               2. Parameter-Sets je Fachdisziplin
             </h3>
-            <p className="text-xs text-slate-705 leading-relaxed mb-3">
+            <p className="text-xs text-slate-700 leading-relaxed mb-3">
               Ein Baustoff im BIM-Prozess agiert als vernetztes Datenpaket, das von unterschiedlichen Projektbeteiligten gefüllt und ausgelesen wird:
             </p>
-            <ul className="text-xs text-slate-705 space-y-1.5 pl-4 list-disc">
+            <ul className="text-xs text-slate-700 space-y-1.5 pl-4 list-disc">
               <li><strong>Tragwerker:</strong> Festigkeitsklasse, Elastizitätsmodul, Querkontraktionszahl.</li>
               <li><strong>Bauphysiker:</strong> Wärmeleitfähigkeit (λ), Wasserdampfdiffusionswiderstand (μ).</li>
               <li><strong>Nachhaltigkeitsplaner (LCA):</strong> Globales Erwärmungspotenzial (GWP aus EPDs).</li>
@@ -187,7 +187,7 @@ export default function BimBaustoffe() {
                   className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors whitespace-nowrap ${
                     selectedId === arch.id 
                       ? 'bg-shiraz text-white' 
-                      : 'bg-white border border-home-grau/30 text-slate-705 hover:bg-slate-50'
+                      : 'bg-white border border-home-grau/30 text-slate-700 hover:bg-slate-50'
                   }`}
                 >
                   {arch.name}
@@ -203,7 +203,7 @@ export default function BimBaustoffe() {
               <div className="space-y-4">
                 <div className="bg-white p-3 rounded-xl border border-home-grau/30">
                   <h4 className="font-bold text-xs text-shiraz mb-1.5">Materialbeschreibung</h4>
-                  <p className="text-xs text-slate-705 leading-relaxed font-normal">{archetype.description}</p>
+                  <p className="text-xs text-slate-700 leading-relaxed font-normal">{archetype.description}</p>
                 </div>
 
                 <div className="space-y-4 pt-2">
@@ -354,7 +354,7 @@ export default function BimBaustoffe() {
         {/* EPDs und BIM explanation diagram */}
         <div className="space-y-4 mt-8">
           <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2">EPDs und BIM (Building Lifecycle Assessment)</h3>
-          <p className="text-sm text-slate-705 font-normal">
+          <p className="text-sm text-slate-700 font-normal">
             Um ein automatisiertes Lifecycle Assessment (Gebäude-LCA) durchzuführen, verknüpfen moderne Ökobilanzierungstools (wie One Click LCA oder CAALA) direkt die geometrischen Massen aus dem BIM-Modell mit den parametrischen Daten aus Umweltproduktdeklarationen (EPDs):
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-stretch justify-between font-normal">

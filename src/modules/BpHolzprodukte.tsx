@@ -388,7 +388,7 @@ export default function BpHolzprodukte() {
             </div>
             <div className="bg-slate-50/70 p-3 rounded-xl border border-home-grau/30 text-center">
               <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Liefermaße</span>
-              <span className="text-xs font-semibold text-slate-705 leading-snug line-clamp-2 block mt-1">
+              <span className="text-xs font-semibold text-slate-700 leading-snug line-clamp-2 block mt-1">
                 {selectedWood.dimensions}
               </span>
             </div>

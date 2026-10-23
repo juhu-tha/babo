@@ -2173,7 +2173,7 @@ export default function Nachhaltigkeit() {
                       <div key={r_idx} className="p-3 grid grid-cols-3 gap-2 text-xs border-b border-stone-100 last:border-0 hover:bg-slate-50/50 transition-colors">
                         <div className="font-bold text-slate-900 text-[11px]">{row.krit}</div>
                         <div className="text-slate-600 leading-relaxed text-[11px]">{row.gen}</div>
-                        <div className="text-emerald-955 leading-relaxed text-[11px]">{row.spec}</div>
+                        <div className="text-emerald-950 leading-relaxed text-[11px]">{row.spec}</div>
                       </div>
                     ))}
                   </div>
@@ -2241,7 +2241,7 @@ export default function Nachhaltigkeit() {
                       </div>
                     </div>
 
-                    <div className="text-xs text-amber-955 leading-relaxed">
+                    <div className="text-xs text-amber-950 leading-relaxed">
                       <strong className="font-bold block mb-1">Akademischer Praxistipp für die Thesis:</strong>
                       Beginnen Sie im Vorentwurf mit generischen EPDs der nationalen <strong>ÖKOBAUDAT</strong>-Datenbank (gemäß DIN EN 15804+A2). Demonstrieren Sie Optimierungskompetenz, indem Sie im Hauptentwurf gezielt emissionsarme Hersteller-EPDs (z.B. für CO₂-reduzierten Beton oder zertifizierten Holzbau) substituieren und die GWP-Senkung quantifizieren!
                     </div>
@@ -2526,11 +2526,11 @@ export default function Nachhaltigkeit() {
 
                   {/* Intersect with Schadstoffvermeidung */}
                   <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-amber-500 rounded-xl p-4 flex flex-col gap-2">
-                    <h4 className="text-xs font-bold text-amber-955 flex items-center gap-1.5 uppercase">
+                    <h4 className="text-xs font-bold text-amber-950 flex items-center gap-1.5 uppercase">
                       <AlertTriangle size={14} className="text-amber-700" />
                       Schadstoffvermeidung als QNG-Ausschlusskriterium:
                     </h4>
-                    <p className="text-[11px] text-amber-955 leading-relaxed">
+                    <p className="text-[11px] text-amber-950 leading-relaxed">
                       Das beste Gebäude-GWP nützt nichts, wenn schadstoffhaltige Materialien verbaut werden. Die QNG-Zertifizierung definiert strikte Grenzwerte für Organische Halogenverbindungen, Biozide, Blei und flüchtige organische Verbindungen (VOCs) in Farben, Klebern und Dämmstoffen. Machen Sie sich mit diesen Anforderungen im Modul <strong>Schadstoffe</strong> sowie im Modul <strong>Farben &amp; Lacke</strong> vertraut, um Planungsfehler im Zertifizierungsprozess zu verhindern!
                     </p>
                   </div>
@@ -3050,7 +3050,7 @@ export default function Nachhaltigkeit() {
                             <div className="text-[10px] text-red-950 font-medium leading-relaxed bg-red-50/30 p-1.5 rounded border border-red-100">
                               <span className="font-bold">Typischer Fehler:</span> {item.err}
                             </div>
-                            <div className="text-[10px] text-emerald-955 font-medium leading-relaxed bg-emerald-50/30 p-1.5 rounded border border-emerald-100">
+                            <div className="text-[10px] text-emerald-950 font-medium leading-relaxed bg-emerald-50/30 p-1.5 rounded border border-emerald-100">
                               <span className="font-bold">Richtige Lösung:</span> {item.sol}
                             </div>
                           </div>
@@ -3213,7 +3213,7 @@ export default function Nachhaltigkeit() {
                     {/* Aufgabe 4 */}
                     <div className="bg-slate-50/50 p-5 rounded-xl border border-stone-200/80">
                       <div className="flex gap-2.5 items-start">
-                        <span className="px-2 py-0.5 bg-slate-905 text-white font-bold font-mono text-[10px] rounded uppercase mt-0.5" style={{ backgroundColor: '#1e293b' }}>A 4</span>
+                        <span className="px-2 py-0.5 bg-slate-900 text-white font-bold font-mono text-[10px] rounded uppercase mt-0.5" style={{ backgroundColor: '#1e293b' }}>A 4</span>
                         <div className="space-y-0.5">
                           <strong className="text-slate-900 text-xs font-bold block">LCA-Transfer &amp; Reduzierung von GWP-Grenzwerten</strong>
                           <p className="text-[11px] text-slate-700 leading-relaxed pt-1">
@@ -3247,7 +3247,7 @@ export default function Nachhaltigkeit() {
                     {/* Aufgabe 5 */}
                     <div className="bg-slate-50/50 p-5 rounded-xl border border-stone-200/80">
                       <div className="flex gap-2.5 items-start">
-                        <span className="px-2 py-0.5 bg-slate-905 text-white font-bold font-mono text-[10px] rounded uppercase mt-0.5" style={{ backgroundColor: '#1e293b' }}>A 5</span>
+                        <span className="px-2 py-0.5 bg-slate-900 text-white font-bold font-mono text-[10px] rounded uppercase mt-0.5" style={{ backgroundColor: '#1e293b' }}>A 5</span>
                         <div className="space-y-0.5">
                           <strong className="text-slate-900 text-xs font-bold block">Kritisches Denken: Bewertung von Produktwerbung</strong>
                           <p className="text-[11px] text-slate-700 leading-relaxed pt-1">
@@ -3454,13 +3454,13 @@ export default function Nachhaltigkeit() {
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px]">
                           <div className="bg-white p-3 rounded-lg border border-stone-150 space-y-1.5">
-                            <span className="font-bold text-amber-955 block font-mono">1. Aufbau von herstellereigenen EPDs</span>
+                            <span className="font-bold text-amber-950 block font-mono">1. Aufbau von herstellereigenen EPDs</span>
                             <p className="text-slate-500 leading-relaxed font-sans">
                               Die Hersteller ermitteln die Lebenszyklusdaten im eigenen Werk nach den standardisierten <strong>IBU-Produktkategorieregeln (PCR)</strong>. Ein unabhängiger dritter Prüfer verifiziert diese Zahlen, bevor die EPD veröffentlicht wird.
                             </p>
                           </div>
                           <div className="bg-white p-3 rounded-lg border border-stone-150 space-y-1.5">
-                            <span className="font-bold text-amber-955 block font-mono">2. Auslesen von Lebenszyklusmodulen</span>
+                            <span className="font-bold text-amber-950 block font-mono">2. Auslesen von Lebenszyklusmodulen</span>
                             <p className="text-slate-500 leading-relaxed font-sans">
                               In der herstellereigenen IBU-EPD (als PDF) befinden sich strukturierte Tabellen. Der Planer liest dort herstellerspezifische Kennwerte wie GWP-fossil in Modul A1–A3 ab und vergleicht diese direkt mit den Bundes-Durchschnittswerten.
                             </p>
@@ -3548,7 +3548,7 @@ export default function Nachhaltigkeit() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div className="p-3 bg-slate-50 border border-stone-200 rounded-lg flex flex-col justify-between">
                         <div>
-                          <strong className="text-xs text-slate-955 block font-bold leading-tight">ÖKOBAUDAT (BBSR)</strong>
+                          <strong className="text-xs text-slate-950 block font-bold leading-tight">ÖKOBAUDAT (BBSR)</strong>
                           <p className="text-[10px] text-slate-500 mt-1.5 leading-snug">
                             Zentrales deutsches Referenzregister für generische Ökobilanz-Datensätze und verifizierte Produkt-EPDs im ILCD-Format.
                           </p>
@@ -3560,7 +3560,7 @@ export default function Nachhaltigkeit() {
 
                       <div className="p-3 bg-slate-50 border border-stone-200 rounded-lg flex flex-col justify-between">
                         <div>
-                          <strong className="text-xs text-slate-955 block font-bold leading-tight">eLCA (BBSR)</strong>
+                          <strong className="text-xs text-slate-950 block font-bold leading-tight">eLCA (BBSR)</strong>
                           <p className="text-[10px] text-slate-500 mt-1.5 leading-snug">
                             Webbasierte kostenfreie Software des Bundes zur Berechnung von Gebäude-Ökobilanzen konform mit QNG- und BNB-Richtlinien.
                           </p>
@@ -3572,7 +3572,7 @@ export default function Nachhaltigkeit() {
 
                       <div className="p-3 bg-slate-50 border border-stone-200 rounded-lg flex flex-col justify-between">
                         <div>
-                          <strong className="text-xs text-slate-955 block font-bold leading-tight">openLCA (GreenDelta)</strong>
+                          <strong className="text-xs text-slate-950 block font-bold leading-tight">openLCA (GreenDelta)</strong>
                           <p className="text-[10px] text-slate-500 mt-1.5 leading-snug">
                             Hervorragendes, kostenloses Open-Source-Werkzeug zur Modellierung hochkomplexer Stoffstromsysteme und EPDs auf Werksebene.
                           </p>

@@ -414,7 +414,7 @@ export default function Regularien() {
                           }`}
                         >
                           <div className={`p-2.5 rounded-lg shrink-0 flex items-center justify-center ${
-                            isSelected ? 'bg-shiraz/10 text-shiraz' : 'bg-slate-200/60 text-slate-555'
+                            isSelected ? 'bg-shiraz/10 text-shiraz' : 'bg-slate-200/60 text-slate-550'
                           }`}>
                             <IconComponent size={20} />
                           </div>
@@ -487,7 +487,7 @@ export default function Regularien() {
                         </p>
 
                         {/* Legal force disclaimer box */}
-                        <div className="p-4 bg-slate-50 border border-slate-205 rounded-xl space-y-1.5">
+                        <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
                           <span className="font-mono text-[9px] uppercase tracking-wider text-slate-500 font-bold block">
                             Rechtliche Verbindlichkeit &amp; Wirkungskraft:
                           </span>

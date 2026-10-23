@@ -742,7 +742,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
               </div>
 
               {/* Wiener Vereinbarung Detail Callout */}
-              <div className="bg-slate-100 border border-home-grau/30 p-3 rounded-xl mt-3 text-xs text-slate-705 leading-relaxed">
+              <div className="bg-slate-100 border border-home-grau/30 p-3 rounded-xl mt-3 text-xs text-slate-700 leading-relaxed">
                 <span className="font-bold text-slate-900">Die Wiener Vereinbarung (Vienna Agreement):</span> Stellt sicher, dass Normen parallel als EN ISO bzw. ISO EN entwickelt werden können. Nationale Mitglieder stimmen zeitgleich ab, wodurch internationale Harmonisierung drastisch beschleunigt wird.
               </div>
             </div>

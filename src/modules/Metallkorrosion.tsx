@@ -704,7 +704,7 @@ export default function Metallkorrosion() {
                     Extrem heimtückische Korrosionsform, die tiefen Lochfraß im Material erzeugt, während die Oberfläche unversehrt scheint. Sie Sie betrifft vor allem passive Metalle (nichtrostender Stahl, Aluminium) in Gegenwart von Chlorid-Ionen. Die Ionen durchbrechen die Passivschicht (bei Edelstahl Chromoxid, bei Aluminium Aluminiumoxid) an mikroskopischen Schwachstellen. in Gegenwart von Chlorid-Ionen. Die Ionen infiltrieren an mikroskopischen Schwachstellen die Chromoxidschicht.
                   </p>
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 mt-1.5 text-xs text-slate-700">
-                    <strong className="block mb-1 text-xs text-slate-805 uppercase tracking-wide">Pitting Resistance Equivalent Number (PREN-Index)</strong>
+                    <strong className="block mb-1 text-xs text-slate-800 uppercase tracking-wide">Pitting Resistance Equivalent Number (PREN-Index)</strong>
                     <span>Bestimmt die Widerstandskraft hochlegierter Edelstähle gegen Lochfraß:</span>
                     <div className="bg-slate-50 p-2 text-center text-xs font-mono rounded border border-home-grau/30 my-1 font-bold overflow-x-auto">
                       <BlockMath math="\mathrm{PREN} = \%\,\mathrm{Cr} + 3{,}3 \cdot (\%\,\mathrm{Mo} + 0{,}5 \cdot \%\,\mathrm{W}) + 16 \cdot \%\,\mathrm{N}" />
@@ -789,19 +789,19 @@ export default function Metallkorrosion() {
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mt-1 text-xs">
-                  <div className="bg-white p-3 rounded-lg border border-slate-205 flex flex-col gap-1">
+                  <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
                     <span className="font-extrabold text-slate-900 block border-b border-slate-100 pb-0.5">C1 (Unbedeutend)</span>
                     <span className="text-xs text-slate-500 leading-normal font-medium">Beheizte Innenräume (z. B. Schulen, Büros) ohne Kondensationsgefahr.</span>
                   </div>
-                  <div className="bg-white p-3 rounded-lg border border-slate-205 flex flex-col gap-1">
+                  <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
                     <span className="font-extrabold text-slate-900 block border-b border-slate-100 pb-0.5">C2 (Gering)</span>
                     <span className="text-xs text-slate-500 leading-normal font-medium">Ländliche Bereiche mit geringer atmosphärischer Schadstoffbelastung. Ungeheizte Hallen.</span>
                   </div>
-                  <div className="bg-white p-3 rounded-lg border border-slate-205 flex flex-col gap-1">
+                  <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
                     <span className="font-extrabold text-slate-950 block border-b border-slate-100 pb-0.5">C3 (Mäßig)</span>
                     <span className="text-xs text-slate-500 leading-normal font-medium">Stadt- & Industrieatmosphäre mit mäßiger Schwefeldioxid-Belastung. Brauereien, Molkereien.</span>
                   </div>
-                  <div className="bg-white p-3 rounded-lg border border-slate-205 flex flex-col gap-1">
+                  <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
                     <span className="font-extrabold text-red-650 block border-b border-slate-100 pb-0.5">C4 (Stark)</span>
                     <span className="text-xs text-slate-500 leading-normal font-medium">Industriegebiete und maritime Küstengebiete mit signifikanter Salzbelastung. Schwimmbäder.</span>
                   </div>

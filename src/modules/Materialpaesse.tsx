@@ -153,7 +153,7 @@ export default function Materialpaesse() {
               <Layers className="w-4 h-4 text-stone-500" />
               Zweck eines Materialpasses
             </h4>
-            <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-705">
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-700">
               <li><strong>Ressourcentransparenz:</strong> Lückenlose Dokumentation der Bauteile (Bill of Material, BOM).</li>
               <li><strong>Zirkuläres Potenzial:</strong> Genaue Angabe, ob Werkstoffe geklebt oder zerstörungsfrei demontierbar sind.</li>
               <li><strong>Gebäude-Restwert:</strong> Ermittlung des ökonomischen Werts der Rohstoffe für den Tag des Rückbaus.</li>
@@ -166,7 +166,7 @@ export default function Materialpaesse() {
               <RefreshCw className="w-4 h-4 text-emerald-600 animate-spin" style={{ animationDuration: '6s' }} />
               Die Madaster-Plattform
             </h4>
-            <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-705">
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-700">
               <li>Ein Gebäude wird als 3D-BIM-Datensatz (meist offene IFC-Dateien) hochgeladen.</li>
               <li>Das Portal berechnet den herstellerübergreifenden <strong>Circularity Indicator (CI)</strong> der Rohstoffe.</li>
               <li>Der finale Materialpass weiß genau, wie viel % der Masse wiederverwendet, recycelt, verbrannt oder deponiert wird.</li>
@@ -179,7 +179,7 @@ export default function Materialpaesse() {
               <Award className="w-4 h-4 text-purple-600" />
               DGNB Gebäuderessourcenpass
             </h4>
-            <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-705">
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-700">
               <li><strong>Steckbrief-Vorgaben:</strong> Orientiert am standardisierten Berichtsformat des DGNB-Ressourcenpasses.</li>
               <li><strong>Massen-Bilanzierung:</strong> Genaue Aufteilung nach Stoffgruppen, nachwachsenden (biogenen) &amp; mineralischen Massen.</li>
               <li><strong>Rückbauklassen:</strong> Detailliertes Tracking der Kreislauffähigkeit und Recycling-Quoten (Modul D).</li>
@@ -283,7 +283,7 @@ export default function Materialpaesse() {
                     className={`p-2.5 rounded-lg border text-center flex flex-col items-center justify-between h-20 transition-all ${
                       joiningMethod === type.id 
                         ? 'border-emerald-600 bg-emerald-50 text-emerald-950 font-bold shadow-sm' 
-                        : 'border-home-grau/30 text-slate-705 bg-white hover:bg-slate-50'
+                        : 'border-home-grau/30 text-slate-700 bg-white hover:bg-slate-50'
                     }`}
                   >
                     <span className="text-[10.5px] font-bold leading-tight block">{type.label}</span>
@@ -420,7 +420,7 @@ export default function Materialpaesse() {
               <div className="space-y-2 text-xs font-normal">
                 {/* Concrete */}
                 <div>
-                  <div className="flex justify-between text-[11px] mb-0.5 text-slate-705">
+                  <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                     <span>Normalbeton-Anteil:</span>
                     <span className="font-mono font-semibold">{concreteTons.toLocaleString('de-DE', {maximumFractionDigits: 0})} t</span>
                   </div>
@@ -431,7 +431,7 @@ export default function Materialpaesse() {
 
                 {/* Steel */}
                 <div>
-                  <div className="flex justify-between text-[11px] mb-0.5 text-slate-705">
+                  <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                     <span>Baustahl-Anteil:</span>
                     <span className="font-mono font-semibold">{steelTons.toLocaleString('de-DE', {maximumFractionDigits: 1})} t</span>
                   </div>
@@ -443,7 +443,7 @@ export default function Materialpaesse() {
                 {/* Wood */}
                 {woodTons > 0 && (
                   <div>
-                    <div className="flex justify-between text-[11px] mb-0.5 text-slate-705">
+                    <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                       <span>Nutzholz / BSH (Biogen):</span>
                       <span className="font-mono font-semibold text-emerald-600 font-bold">{woodTons.toLocaleString('de-DE', {maximumFractionDigits: 0})} t</span>
                     </div>
@@ -455,7 +455,7 @@ export default function Materialpaesse() {
 
                 {/* Copper */}
                 <div>
-                  <div className="flex justify-between text-[11px] mb-0.5 text-slate-705">
+                  <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                     <span>Kupferleitungen &amp; Metalle:</span>
                     <span className="font-mono font-semibold">{copperTons.toLocaleString('de-DE', {maximumFractionDigits: 2})} t</span>
                   </div>
@@ -473,7 +473,7 @@ export default function Materialpaesse() {
                 Umsetzungshinweis &amp; Hebel zur Optimierung:
               </h4>
 
-              <div className="text-xs text-slate-705 leading-relaxed font-normal space-y-2">
+              <div className="text-xs text-slate-700 leading-relaxed font-normal space-y-2">
                 {joiningMethod === 'glued' && (
                   <p className="border-l-2 border-red-500 pl-3">
                     ⚠️ <strong>Problem starrer Verbundwerkstoffe (Verklebung):</strong> Zement und Dämmungen sind untrennbar verschmolzen. Beim Abbruch führt dies zu hohem Deponiemüll (Bauschuttklasse 17 01 07), was erhebliche <strong>Deponiekosten</strong> nach sich zieht, statt wertvolle Zirculate zu liefern.
@@ -534,7 +534,7 @@ export default function Materialpaesse() {
                   </div>
                   <div className="text-right">
                     <span className="text-[11px] font-bold text-purple-800 block">DGNB TEC 1.6</span>
-                    <span className="text-[9px] text-slate-425 block">Ressourcenpass für Gebäude</span>
+                    <span className="text-[9px] text-slate-420 block">Ressourcenpass für Gebäude</span>
                   </div>
                 </div>
 

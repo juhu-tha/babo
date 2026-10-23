@@ -274,7 +274,7 @@ export default function Probenahme() {
                       }
 
                       return (
-                        <div className="bg-white border border-home-grau/30 rounded-lg p-3 space-y-2.5 text-xs text-slate-705">
+                        <div className="bg-white border border-home-grau/30 rounded-lg p-3 space-y-2.5 text-xs text-slate-700">
                           <div>
                             <span className="text-[9px] uppercase font-bold text-slate-400 block">Empfohlene Probenanzahl (Lehr-Richtwert – maßgebend ist der objektspezifische Prüfplan):</span>
                             <strong className="text-slate-950 mt-0.5 block">{recommendPoints}</strong>
@@ -339,7 +339,7 @@ export default function Probenahme() {
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Maximales Gesteinskorn (D_max):</label>
                       <select aria-label="Maximales Gesteinskorn (D_max)" 
-                        className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-805 text-xs"
+                        className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-800 text-xs"
                         value={dMax} 
                         onChange={(e) => setDMax(Number(e.target.value))}
                       >
@@ -353,7 +353,7 @@ export default function Probenahme() {
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Geplanter Bohrkern-Durchmesser (d):</label>
                       <select aria-label="Geplanter Bohrkern-Durchmesser (d)" 
-                        className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-805 text-xs"
+                        className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-800 text-xs"
                         value={coreD} 
                         onChange={(e) => setCoreD(Number(e.target.value))}
                       >
@@ -367,7 +367,7 @@ export default function Probenahme() {
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Gewonnene Prüf-Höhe (h):</label>
                       <select aria-label="Gewonnene Prüf-Höhe (h)" 
-                        className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-805 text-xs"
+                        className="w-full bg-white border border-home-grau/30 rounded p-1.5 font-mono text-slate-800 text-xs"
                         value={coreH} 
                         onChange={(e) => setCoreH(Number(e.target.value))}
                       >
@@ -399,7 +399,7 @@ export default function Probenahme() {
                       }
 
                       return (
-                        <div className="bg-white p-3 rounded-lg border border-home-grau/30 space-y-2.5 mt-2 leading-relaxed text-[11px] text-slate-705">
+                        <div className="bg-white p-3 rounded-lg border border-home-grau/30 space-y-2.5 mt-2 leading-relaxed text-[11px] text-slate-700">
                           <div className="flex justify-between items-center pb-1 border-b border-home-grau/30">
                             <span className="font-bold">Größtkorn-Prüfung:</span>
                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${passesAgg ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>

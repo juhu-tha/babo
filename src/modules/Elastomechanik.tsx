@@ -162,7 +162,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           {/* Slider & inputs column */}
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-              <h2 className="text-sm font-bold text-slate-805 flex items-center gap-2">
+              <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span>
                 Was ist eine mechanische Spannung?
               </h2>
@@ -371,7 +371,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           {/* Slider & inputs column */}
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-              <h2 className="text-sm font-bold text-slate-805 flex items-center gap-2">
+              <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span>
                 Was ist eine mechanische Dehnung?
               </h2>
@@ -507,7 +507,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           {/* Preset selection & custom Emodul section */}
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-              <h2 className="text-sm font-bold text-slate-805 flex items-center gap-2">
+              <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span>
                 Das Hooke&apos;sche Gesetz &amp; der E-Modul
               </h2>

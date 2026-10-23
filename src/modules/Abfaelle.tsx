@@ -721,7 +721,7 @@ export default function Abfaelle() {
 
                   <div className="p-4 rounded-xl bg-slate-100/55 border border-home-grau/30 flex flex-col justify-between">
                     <div>
-                      <div className="font-extrabold text-slate-705 mb-1.5 uppercase tracking-wider text-xs">Zugehörige Novelle</div>
+                      <div className="font-extrabold text-slate-700 mb-1.5 uppercase tracking-wider text-xs">Zugehörige Novelle</div>
                       <h5 className="font-bold text-slate-950 mb-2 leading-snug">Deponieverordnung (DepV)</h5>
                       <p className="text-slate-600 leading-relaxed">
                         Passt die deponierechtlichen Zuordnungswerte und Annahmeparameter an die neuen analytischen Bestimmungen (z. B. Säulenperkolation) der EBV an, um Entsorgungskreisläufe lückenlos abzustimmen.
@@ -775,7 +775,7 @@ export default function Abfaelle() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-xs">
-                    <span className="inline-block px-2.5 py-1 text-xs font-bold rounded bg-slate-105 text-slate-800 mb-2 border border-home-grau/30">Bodenmaterial & Baggergut</span>
+                    <span className="inline-block px-2.5 py-1 text-xs font-bold rounded bg-slate-100 text-slate-800 mb-2 border border-home-grau/30">Bodenmaterial & Baggergut</span>
                     <ul className="space-y-1 text-xs text-slate-600 font-medium font-semibold">
                       <li>• <strong className="text-slate-800">BM-0 / BG-0:</strong> Unbelastetes, naturbelassenes Material.</li>
                       <li>• <strong className="text-slate-800">BM-0* / BG-0*:</strong> Geringfügig verändert, bodenähnlich.</li>
@@ -785,7 +785,7 @@ export default function Abfaelle() {
                     </ul>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-xs">
-                    <span className="inline-block px-2.5 py-1 text-xs font-bold rounded bg-slate-105 text-slate-800 mb-2 border border-home-grau/30">Recycling & Gleisschotter</span>
+                    <span className="inline-block px-2.5 py-1 text-xs font-bold rounded bg-slate-100 text-slate-800 mb-2 border border-home-grau/30">Recycling & Gleisschotter</span>
                     <ul className="space-y-1 text-xs text-slate-600 font-medium font-semibold">
                       <li>• <strong className="text-slate-800">RC-1:</strong> Hochwertige Recyclingbaustoffe (z.B. Beton- o. Asphalt-Brechsand). Vielfach einsetzbar.</li>
                       <li>• <strong className="text-slate-800">RC-2:</strong> Mittlerer Belastungsgrad. Regelhaft nur unter versiegelten Deckschichten (Asphalt/Beton).</li>
@@ -794,7 +794,7 @@ export default function Abfaelle() {
                     </ul>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-xs">
-                    <span className="inline-block px-2.5 py-1 text-xs font-bold rounded bg-slate-105 text-slate-800 mb-2 border border-home-grau/30">Slags, Aschen & Co.</span>
+                    <span className="inline-block px-2.5 py-1 text-xs font-bold rounded bg-slate-100 text-slate-800 mb-2 border border-home-grau/30">Slags, Aschen & Co.</span>
                     <ul className="space-y-1 text-xs text-slate-600 font-medium font-semibold">
                       <li>• <strong className="text-slate-800">HMVA-1 / HMVA-2:</strong> Hausmüllverbrennungsaschelite. Streng kontrollierte Einbindung in dichte Tragschichten.</li>
                       <li>• <strong className="text-slate-800">SWS-1 bis SWS-3:</strong> Aufbereitete Schlacken aus der Stahlgewinnung (Stahlwerksschlacke).</li>
@@ -864,7 +864,7 @@ export default function Abfaelle() {
 
                     {/* Hydrogeologie */}
                     <div>
-                      <label className="block text-xs font-bold text-slate-705 uppercase tracking-wider mb-1.5 font-semibold">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-semibold">
                         3. Hydrogeologie (Natürlicher Bodenschutz & Deckschicht)
                       </label>
                       <div className="grid grid-cols-2 gap-2">
@@ -986,7 +986,7 @@ export default function Abfaelle() {
                             </div>
 
                             <div className="border-t border-dashed border-home-grau/30 pt-3">
-                              <span className="block text-xs font-bold text-slate-705 uppercase mb-1.5">Einbaubedingungen & Restriktionen:</span>
+                              <span className="block text-xs font-bold text-slate-700 uppercase mb-1.5">Einbaubedingungen & Restriktionen:</span>
                               <ul className="space-y-1.5 text-xs font-semibold leading-relaxed">
                                 {verdict.conditions.map((cond, idx) => (
                                   <li key={idx} className="flex items-start gap-1">
@@ -999,7 +999,7 @@ export default function Abfaelle() {
                           </div>
 
                           <div className="border-t border-home-grau/30 pt-3 mt-4 text-xs font-bold leading-normal">
-                            <span className="block text-xs uppercase font-black text-slate-705 mb-1">Meldungspflicht (§ 22 EBV):</span>
+                            <span className="block text-xs uppercase font-black text-slate-700 mb-1">Meldungspflicht (§ 22 EBV):</span>
                             {verdict.anzeige}
                           </div>
                         </div>
@@ -1211,10 +1211,10 @@ export default function Abfaelle() {
                   <div className="bg-slate-50/70 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
                     <div>
                       <span className="font-extrabold text-slate-550 uppercase text-xs tracking-wider font-semibold">DK II</span>
-                      <h4 className="font-bold text-slate-805 mb-2 mt-0.5">Hausmüllähnlich (Mäßig)</h4>
+                      <h4 className="font-bold text-slate-800 mb-2 mt-0.5">Hausmüllähnlich (Mäßig)</h4>
                       <p className="text-slate-600 leading-relaxed">Klassische Siedlungs- und Bauabfälle. Höhere Anforderungen an Sickerwassererfassung und Basisabdichtungen.</p>
                     </div>
-                    <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-705">Beispiel: Belastete Schlacken, Gipsbauteile.</div>
+                    <div className="mt-2 pt-2 border-t border-home-grau/30 font-medium text-xs text-slate-700">Beispiel: Belastete Schlacken, Gipsbauteile.</div>
                   </div>
 
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
@@ -1293,8 +1293,8 @@ export default function Abfaelle() {
                       {paramInfo.limits.map((lim, idx) => {
                         const classes = [
                           { label: 'DK 0 (Inert)', desc: 'Unbelastete Boden- und Bauschuttfraktionen', color: 'bg-slate-100', text: 'text-slate-800' },
-                          { label: 'DK I (Gering)', desc: 'Gering belastete mineralische Abfälle', color: 'bg-slate-100', text: 'text-slate-705' },
-                          { label: 'DK II (Mäßig)', desc: 'Höher belastete mineralische und vorbehandelte Siedlungsabfälle', color: 'bg-slate-100', text: 'text-slate-705 font-medium' },
+                          { label: 'DK I (Gering)', desc: 'Gering belastete mineralische Abfälle', color: 'bg-slate-100', text: 'text-slate-700' },
+                          { label: 'DK II (Mäßig)', desc: 'Höher belastete mineralische und vorbehandelte Siedlungsabfälle', color: 'bg-slate-100', text: 'text-slate-700 font-medium' },
                           { label: 'DK III (Gefährlich)', desc: 'Gefährliche Abfälle, oberirdische Deponie', color: 'bg-slate-150', text: 'text-slate-800 font-bold' }
                         ];
                         const cls = classes[idx];
@@ -1572,7 +1572,7 @@ export default function Abfaelle() {
                             index: 3,
                             name: "Mineralische Tonsperre (Mehrlagig)",
                             thickness: "≥ 75 cm",
-                            color: "bg-amber-100 hover:bg-amber-205 border-amber-300 text-amber-800",
+                            color: "bg-amber-100 hover:bg-amber-200 border-amber-300 text-amber-800",
                             previewText: "Ton-Kombinationsabdichtung (3 x 25cm)"
                           },
                           {
@@ -1608,7 +1608,7 @@ export default function Abfaelle() {
                             index: 3,
                             name: "Gasdränschicht (Gasschliff)",
                             thickness: "≥ 30 cm",
-                            color: "bg-stone-305 hover:bg-stone-350 border-stone-400 text-stone-800",
+                            color: "bg-stone-300 hover:bg-stone-350 border-stone-400 text-stone-800",
                             previewText: "Gasleitung (Entgasungs-Sandschicht)"
                           },
                           {

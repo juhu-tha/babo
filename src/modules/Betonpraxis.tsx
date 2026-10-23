@@ -838,7 +838,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   <AlertTriangle size={18} className="flex-shrink-0 mt-0.5" />
                   <div className="space-y-1">
                     <strong className="block text-red-200">Nachträgliche Wasserzugabe auf der Baustelle ist unzulässig (DIN 1045-3) – hier nur zur Veranschaulichung.</strong>
-                    <ul className="list-disc list-inside space-y-1 text-red-105">
+                    <ul className="list-disc list-inside space-y-1 text-red-100">
                       <li><strong>Druckfestigkeit:</strong> Fällt um &gt; -8 N/mm² ab. Ein Konformitätstest scheitert fast immer (alle Würfel fallen durch).</li>
                       <li><strong>Wasserläufer &amp; Entmischung:</strong> Sand- und Feinanteile sammeln sich oben, Grobkorn sinkt stark ab.</li>
                       <li><strong>Schwinden &amp; Risse:</strong> Schwindanstieg +0,2 mm/m (deutlich mehr, tiefere und breitere Netzrisse).</li>

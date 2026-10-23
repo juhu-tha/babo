@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, BookOpen, ShieldAlert, ArrowRight, CheckCircle2, Lightbulb, Settings, Settings as ToolIcon, Sparkles, AlertTriangle } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
@@ -40,9 +42,9 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '1800 - 2200 kg/m³',
     strengthClass: 'Druckfestigkeitsklasse 28 bis 60',
     mortarType: 'Zementmörtel / Trassmörtel',
-    description: 'Bis zur beginnenden Sinterung gebrannte Ziegel mit extrem geringer Wasseraufnahme (<= 6%). Sie sind absolut frostbeständig, säureresistent und mechanisch extrem belastbar.',
-    advantages: ['Vollkommen witterungs- und frostbeständig', 'Keine Schmutzanhaftung, extrem wartungsfreie Fassaden', 'Sehr hohe mechanische Widerstandsfähigkeit'],
-    disadvantages: ['Überhaupt keine wärmedämmende Wirkung', 'Aufwendiges, teures zweischaliges Mauern erforderlich'],
+    description: 'Bis zur beginnenden Sinterung gebrannte Ziegel mit geringer Wasseraufnahme (≤ 6 M.-%). Sie sind frostbeständig, widerstandsfähig gegen Säuren und mechanisch hoch belastbar.',
+    advantages: ['Witterungs- und frostbeständig', 'Schmutzunempfindliche, wartungsarme Fassaden', 'Hohe mechanische Widerstandsfähigkeit'],
+    disadvantages: ['Geringe Wärmedämmung', 'Meist als Vormauerschale im zweischaligen Mauerwerk – aufwendig'],
     applications: ['Sichtmauerwerk und Verblendschalen im Außenbereich', 'Gewölbekonstruktionen, Pflasterungen und Sockelbereiche', 'Historische Industriebauten']
   },
   {
@@ -53,10 +55,10 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '1400 - 2200 kg/m³',
     strengthClass: 'Druckfestigkeitsklasse 12 bis 36',
     mortarType: 'Dünnbettmörtel / Normalmauermörtel',
-    description: 'Unter Wasserdampfdruck gepresster und gehärteter Stein aus Branntkalk und Kieselsäure (Sand). Unschlagbarer Champion bezüglich hoher Belastung und Schalldämmung.',
-    advantages: ['Hervorragender Schallschutz durch hohes Raumgewicht', 'Enorm hohe Druckfestigkeit (ideal für Lastkonzentrationen)', 'Sehr hohe Maßhaltigkeit'],
+    description: 'Aus Kalk und Quarzsand gepresster, unter Dampfdruck gehärteter Stein. Hohe Rohdichte und Festigkeit – sehr gut für Lastabtrag und Schallschutz.',
+    advantages: ['Hervorragender Schallschutz durch hohes Raumgewicht', 'Hohe Druckfestigkeit (günstig bei Lastkonzentrationen)', 'Sehr hohe Maßhaltigkeit'],
     disadvantages: ['Sehr schlechte Wärmedämmeigenschaften', 'Hohes physikalisches Eigengewicht (erfordert Kranhilfen bei XL-Formaten)'],
-    applications: ['Wohnungstrennwände (Schallschutz)', 'Tragende Innenwände mit filigranen Querschnitten', 'Stützenfreie Kellerwände']
+    applications: ['Wohnungstrennwände (Schallschutz)', 'Tragende Innenwände mit geringer Wanddicke', 'Kellerwände']
   },
   {
     name: 'Porenbetonstein',
@@ -66,8 +68,8 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '300 - 650 kg/m³',
     strengthClass: 'Druckfestigkeitsklasse 2 bis 8',
     mortarType: 'Dünnbettmörtel (1 mm Fuge)',
-    description: 'Strukturgeschäumter Quarzsandmörtel, der unter Wasserdampfdruck gehärtet wird. Durch den mikrofeinen Porenanteil (aufgeschäumt mittels Aluminiumtriebpulver) extrem dämmend.',
-    advantages: ['Geringste Wärmeleitfähigkeit aller Massivsteine', 'Äußerst leicht und ergonomisch auf der Baustelle zuzuschneiden', 'Fugenfreier Trockenbrand'],
+    description: 'Aus Quarzsand, Kalk, Zement und Wasser; Aluminiumpulver treibt die Masse auf, danach Härtung unter Dampfdruck. Der hohe Porenanteil sorgt für gute Wärmedämmung.',
+    advantages: ['Sehr geringe Wärmeleitfähigkeit (λ ab ca. 0,07 W/(mK))', 'Leicht und einfach zuzuschneiden', 'Maßgenau für Dünnbettmörtel'],
     disadvantages: ['Geringere Druckfestigkeiten (Vorsicht bei Einzellasten)', 'Stark saugend und hydrophil (erfordert schützende Putzlagen)'],
     applications: ['KfW-Effizienzhäuser monolithisch', 'Nachträgliche Umbauten (geringe Deckenauflast)', 'Brandwände']
   },
@@ -79,7 +81,7 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '500 - 1200 kg/m³',
     strengthClass: 'Druckfestigkeitsklasse 2 bis 12',
     mortarType: 'Leichtmauermörtel / Normalmauermörtel',
-    description: 'Zementgebundene Leichtzuschlagstoffe wie Naturbims oder Blähton. Verbindet eine gute Feuchtefestigkeit mit mäßigen Dämm- und überragenden Luftschalleigenschaften.',
+    description: 'Zementgebundene Leichtzuschlagstoffe wie Naturbims oder Blähton. Verbindet gute Feuchtebeständigkeit mit mäßiger Wärmedämmung und gutem Schallschutz.',
     advantages: ['Ausgezeichnete Putzhaftung mineralischer Mörtelsysteme', 'Sehr gute Brandwiderstandseigenschaften', 'Gute ökologische Einordnung (Naturbims)'],
     disadvantages: ['Rohstoffvorkommen (Naturbims) regional begrenzt', 'Staubentwicklung bei mechanischer Bearbeitung'],
     applications: ['Skelettausfachungen im Hochbau', 'Schallschutz- und Trennwände', 'Ökologische monolithische Außenwandaufbauten']
@@ -92,9 +94,9 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '2600 - 3000 kg/m³',
     strengthClass: 'Druckfestigkeitsklasse 150 bis 350',
     mortarType: 'Trass-Zementmörtel',
-    description: 'Magmatisches Tiefengestein (Granit) bzw. Ergussgestein (Basalt). Extrem dicht, porenarm und unschlagbar druckfest.',
-    advantages: ['Höchste Druck- und Abriebfestigkeit aller Baustoffe überhaupt', 'Absolut frost- und Tausalzbeständig', 'Unerreicht edle historische Steinoptik'],
-    disadvantages: ['Sehr schwer zu bearbeiten (Diamantsägewerkzeuge nötig)', 'Enorme Kältebrücke (keine Dämmwirkung)'],
+    description: 'Magmatisches Tiefengestein (Granit) bzw. Ergussgestein (Basalt). Sehr dicht, porenarm und hoch druckfest.',
+    advantages: ['Sehr hohe Druck- und Abriebfestigkeit', 'In der Regel frost- und tausalzbeständig', 'Hochwertige, dauerhafte Optik'],
+    disadvantages: ['Sehr schwer zu bearbeiten (Diamantsägewerkzeuge nötig)', 'Hohe Wärmeleitfähigkeit (Wärmebrücke)'],
     applications: ['Historischer Brücken- und Hafenbau, Geländestützwände', 'Wasserexponierte Sockel- und Pflasterflächen im Außenbereich', 'Verblendfassaden']
   },
   {
@@ -108,7 +110,7 @@ const masonryProducts: MauerwerkProduct[] = [
     description: 'Klastisches Sedimentgestein aus verfestigten Sandkörnern. Gut formbar und weich zu behauen, jedoch empfindlich gegen saure Umweltbelastungen und Salzkristallisation.',
     advantages: ['Hervorragend handwerklich bildhauerisch zu bearbeiten', 'Ausgezeichnete Ökobilanz durch lokale Gewinnung', 'Historisch authentisches Denkmalmaterial'],
     disadvantages: ['Nicht tausalzbeständig, Gefahr von Schalenbildungen', 'Sehr hohe kapillare Saugfähigkeit'],
-    applications: ['Denkmalpflege und Sanierung gotischer/barocker Kirchen', 'Ufermauern und historische Innenstadtsorten', 'Ziermauerwerke']
+    applications: ['Denkmalpflege und Sanierung gotischer/barocker Kirchen', 'Ufermauern und historische Innenstädte', 'Ziermauerwerke']
   },
   {
     name: 'Lehmbaustein',
@@ -118,9 +120,9 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '1200 - 1800 kg/m³',
     strengthClass: 'Druckfestigkeitsklasse 2 bis 4',
     mortarType: 'Lehmmörtel / Dünnbettlehmkleber',
-    description: 'Aus natürlichem Lehm, Schluff und Sand geformte und ausschließlich solar oder trockenluftgetrocknete ungedrehte Steine. Seit Jahrtausenden bewährter ökologischer Raumklimafavorit.',
-    advantages: ['Blitzschneller hygroskopischer Ausgleich extremer Raumluftfeuchtigkeitsschwankungen', 'Vollständig schadstofffrei und ohne jeden thermischen Energieaufwand biologisch kreislauffähig', 'Hervorragendes Bindeglied im Zusammenspiel mit raumtemperierenden Flächenheizungen'],
-    disadvantages: ['Streng wasserlöslich (nicht anwendbar bei Spritzwasser- oder Witterungseinfluss)', 'Sehr geringe Festigkeiten, im Regelfall nur für nichttragende Gefache oder Innenaufbauten'],
+    description: 'Aus Lehm (Ton, Schluff, Sand) geformte, luftgetrocknete, ungebrannte Steine. Seit Jahrtausenden bewährt; günstig für das Raumklima.',
+    advantages: ['Gute Pufferung von Schwankungen der Raumluftfeuchte', 'Ohne Brennen hergestellt, wiederverwendbar', 'Gut kombinierbar mit Flächenheizungen'],
+    disadvantages: ['Nicht wasserbeständig (Schutz vor Spritzwasser und Witterung nötig)', 'Geringere Festigkeiten; tragend nur nach DIN 18940 (Lehmsteinmauerwerk)'],
     applications: ['Wärmespeichernde Innenwände im Massivholzrahmen- und Strohballenbau', 'Sanierung und Ausfachung schützenswerter historischer Fachwerksbauten', 'Ausgleichs- und Putzträgerplatten im anspruchsvollen, wohngesunden Innenausbau']
   },
   {
@@ -131,7 +133,7 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '100 - 180 kg/m³',
     strengthClass: 'Zugsicher durch Harzverklebung',
     mortarType: 'Mineralischer Klebemörtel (diffusionsoffen)',
-    description: 'Aus harzhaltigem Nadelholzabfall hergestellte, kapillaraktive ökologische Dämmung. Unschlagbar im sommerlichen Wärmeschutz durch enorme speichernde Trägheit.',
+    description: 'Aus Nadelholz-Resthölzern hergestellte, sorptionsfähige Dämmung. Gut für den sommerlichen Wärmeschutz durch hohe Wärmespeicherfähigkeit.',
     advantages: ['Hervorragender sommerlicher Hitzeschutz (sehr hohe Wärmekapazität)', 'Feuchtepuffernd und kapillar leitfähig (kein Tauwasserstau)', 'Ausgezeichneter Schallschutz'],
     disadvantages: ['Deutlich teurer als klassische EPS/Styroporplatten', 'Erhöhte Brandanfälligkeit bei unfertigem Wandaufbau (Klasse E)'],
     applications: ['Ökologische Holzrahmenbau-Außenwände d. KfW-Bauten', 'Diffusionsstabile WDVS-Systeme auf Massivziegeln', 'Dachdämmungen']
@@ -144,9 +146,9 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '180 - 220 kg/m³',
     strengthClass: 'Nicht mechanisch beanspruchbar',
     mortarType: 'Spezialkleber / Rahmenaufhängung',
-    description: 'Hocheffizienter Dämmstoff bestehend aus einer gepressten Kieselsäurepulver-Matrize, die unter extremem Vakuum in eine hochdichte Metall-Verbundfolie eingeschweißt wird. Zehnmal dünner als Standarddämmungen.',
-    advantages: ['Unerreichte Dämmwirkung (extrem schlanke Wandgeometrien möglich)', 'Perfekt für Sanierungen bei beengten Platzverhältnissen', 'Nicht brennbarer Kern'],
-    disadvantages: ['Darf NIEMALS zugeschnitten, gebohrt oder beschädigt werden (Vakuumverlust!)', 'Extrem hoher Anschaffungspreis'],
+    description: 'Hocheffizienter Dämmstoff aus gepresstem Kieselsäurepulver, evakuiert und in eine gasdichte, metallisierte Verbundfolie eingeschweißt. Bei gleichem Dämmwert etwa fünfmal dünner als EPS.',
+    advantages: ['Sehr hohe Dämmwirkung (schlanke Aufbauten möglich)', 'Perfekt für Sanierungen bei beengten Platzverhältnissen', 'Nicht brennbarer Kern'],
+    disadvantages: ['Darf NIEMALS zugeschnitten, gebohrt oder beschädigt werden (Vakuumverlust!)', 'Hoher Preis'],
     applications: ['Wohnungsbauten mit Innenstadtbebauungsgrenzen', 'Laubengänge und Balkonplatten-Grenzbereiche', 'Nachträgliche hocheffiziente Innendämmungen']
   }
 ];
@@ -166,7 +168,7 @@ function MauerwerkThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt
           Material-Lehrpfad: Mauerwerk &amp; Stein im Bauwesen
         </h4>
         <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Mauerwerkskunde:
+          Weiter zu den anderen Teilen des Lehrpfads Mauerwerk:
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -333,7 +335,7 @@ export default function BpMauerwerk() {
                     <span>Lagerungs- und Feuchtigkeitsrisiko</span>
                   </div>
                   <p className="font-normal text-[11px] text-amber-950/80">
-                    Porenbetonsteine (PP) und Leichtbetonwaren müssen auf der Baustelle zwingend vor durchnässender Witterung geschützt werden. Nass eingemauertes Porenbetonmauerwerk trocknet extrem langsam aus, wodurch hergestellte Innenputze später abplatzen oder Schimmelpilzbefall entsteht.
+                    Porenbetonsteine (PP) und Leichtbetonwaren müssen auf der Baustelle zwingend vor durchnässender Witterung geschützt werden. Nass eingemauertes Porenbetonmauerwerk trocknet sehr langsam aus, wodurch hergestellte Innenputze später abplatzen oder Schimmelpilzbefall entsteht.
                   </p>
                 </div>
               </div>
@@ -428,7 +430,7 @@ export default function BpMauerwerk() {
                 <Settings className="text-shiraz" size={18} /> Mauermörtelarten nach DIN EN 998-2 &amp; DIN 20000-412
               </h3>
               <p className="text-xs text-text-main/75 leading-relaxed mb-4">
-                Mauerwerksmörtel dient dem unverschobenen Spannungsabtrag zwischen den Steinreihen. Je nach Steinart und wärmetechnischen Anforderungen weisen Mörtel spezifische Fügenschichten auf:
+                Mauermörtel verteilt die Lasten gleichmäßig zwischen den Steinlagen. Je nach Steinart und Wärmeschutz unterscheidet man:
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -452,7 +454,7 @@ export default function BpMauerwerk() {
                   <span className="text-[9px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded block w-max uppercase">DM / Fuge: 1-3 mm</span>
                   <h4 className="font-bold text-slate-800 text-xs">Dünnbettmörtel (DM)</h4>
                   <p className="text-xxs text-slate-600 leading-normal">
-                    Hochfestes Klebstoffgemisch, das mittels Mörtelschlitten oder Rolle auf Planziegel, Plansteine (KS) und Porenbeton geschossen wird. Minimiert Mörtelschichten und steigert die Druckfestigkeit.
+                    Werkmörtel mit Größtkorn ≤ 2 mm, mit Mörtelschlitten oder Walze auf Planziegel, KS-Plansteine und Porenbeton aufgetragen (Lagerfuge ca. 1–3 mm). Erhöht die Mauerwerksfestigkeit und reduziert Wärmebrücken.
                   </p>
                 </div>
               </div>
@@ -464,7 +466,7 @@ export default function BpMauerwerk() {
                 <Layers className="text-shiraz" size={18} /> Systemische Mauerwerks-Dämmungen &amp; Wandaufbauten
               </h3>
               <p className="text-xs text-text-main/75 leading-relaxed mb-4">
-                Je nach Steinart und EnEV/GEG-Vorgaben kommen unterschiedliche bauphysikalische Dämmmethoden zum Einsatz. Jedes System regelt den Feuchtigkeitstransport, den Schallschutz und die Kältebrückenminimierung individuell:
+                Je nach Steinart und Anforderungen des GModG (vormals GEG) kommen unterschiedliche bauphysikalische Dämmmethoden zum Einsatz. Jedes System regelt den Feuchtigkeitstransport, den Schallschutz und die Kältebrückenminimierung individuell:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -515,7 +517,7 @@ export default function BpMauerwerk() {
                   <div className="space-y-1.5 pt-2 border-t border-slate-200/60 text-xxs">
                     <div className="text-emerald-800 font-semibold flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                      <span><strong>Vorteil:</strong> Maximaler Schutz vor Orkan, Hagel und Schlagregen durch massive Außenschale.</span>
+                      <span><strong>Vorteil:</strong> Sehr guter Witterungsschutz durch die massive Außenschale.</span>
                     </div>
                     <div className="text-amber-800 font-semibold flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
@@ -543,7 +545,7 @@ export default function BpMauerwerk() {
                   <div className="space-y-1.5 pt-2 border-t border-slate-200/60 text-xxs">
                     <div className="text-emerald-800 font-semibold flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                      <span><strong>Vorteil:</strong> Einziges Verfahren bei Sichtmauerwerk unter strengem historischen Denkmalschutz.</span>
+                      <span><strong>Vorteil:</strong> Oft die einzige Option bei denkmalgeschützten Sichtfassaden.</span>
                     </div>
                     <div className="text-amber-800 font-semibold flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
@@ -561,7 +563,7 @@ export default function BpMauerwerk() {
                     </div>
                     <h4 className="font-extrabold text-slate-800 text-xs">Werkseitig gefüllte Stein-Hohlräume</h4>
                     <p className="text-xxs text-slate-600 leading-relaxed">
-                      Der Dämmstoff befindet sich sicher eingeschlossen direkt in den Bohrungen und Waben kammerstrukturierter Planziegel oder Porenbetonkammern.
+                      Der Dämmstoff befindet sich sicher eingeschlossen direkt in den Kammern von Planziegeln (Mineralwolle- oder Perlitfüllung).
                     </p>
                     <div className="grid grid-cols-2 gap-2 text-[10px] bg-white p-2 rounded-lg border border-slate-100 font-medium">
                       <div>🌡️ λ-Wert: <span className="font-mono font-bold text-rose-700">0,060 - 0,080</span></div>
@@ -634,7 +636,7 @@ export default function BpMauerwerk() {
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-3 font-bold">Porenbeton</td>
-                      <td className="p-3 font-semibold text-shiraz">Porenbeton-Werke (Dampfgehärtete Plansteinsysteme, gasbetonnah)</td>
+                      <td className="p-3 font-semibold text-shiraz">Porenbeton-Werke (dampfgehärtete Plansteinsysteme)</td>
                       <td className="p-3 font-mono">DIN EN 771-4, DIN 20000-404</td>
                       <td className="p-3">Monolithische Plansteine PP2 / PP4 mit Dünnbettkleber</td>
                     </tr>
@@ -642,7 +644,7 @@ export default function BpMauerwerk() {
                       <td className="p-3 font-bold">Leichtbeton &amp; Bims</td>
                       <td className="p-3 font-semibold text-shiraz">Leichtbeton- und Bimsstein-Herstellerwerke (Hohlblocksteine)</td>
                       <td className="p-3 font-mono">DIN EN 771-3, DIN 20000-403</td>
-                      <td className="p-3">Klimaleichtblöcke mit Naturbimsfüllung für Außenwände</td>
+                      <td className="p-3">Leichtbeton-Vollblöcke aus Naturbims für Außenwände</td>
                     </tr>
                   </tbody>
                 </table>
@@ -658,6 +660,23 @@ export default function BpMauerwerk() {
 
       <MauerwerkThematicLinks current="bauprodukt" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Tragfähigkeit einer KS-Innenwand"
+          zielGleichung="f_k = K \cdot f_b^{0{,}7} \cdot f_m^{0{,}3}, \quad N_{Rd} = \Phi \cdot t \cdot \zeta \cdot f_k / \gamma_M"
+          normQuelle="DIN EN 1996-1-1, Gl. (3.1) und 6.1.2 (Lehrbeispiel; in Deutschland f_k meist aus NA-Tabellen – manuell prüfen)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'K = 0{,}55,\\; f_b = 20,\\; f_m = 10\\,\\text{N/mm}^2,\\; t = 175\\,\\text{mm},\\; \\Phi = 0{,}8', erklaerung: 'KS-Vollstein (Gruppe 1), Normalmauermörtel M10.' },
+            { titel: '2. Charakteristische Druckfestigkeit', formel: 'f_k = 0{,}55 \\cdot 20^{0{,}7} \\cdot 10^{0{,}3} = 0{,}55 \\cdot 8{,}14 \\cdot 2{,}00 = 8{,}9\\,\\text{N/mm}^2', erklaerung: 'Gl. (3.1) mit α = 0,7 und β = 0,3.' },
+            { titel: '3. Bemessungswert', formel: 'f_d = 0{,}85 \\cdot 8{,}9 / 1{,}5 = 5{,}1\\,\\text{N/mm}^2', erklaerung: 'ζ = 0,85, γ_M = 1,5.' },
+            { titel: '4. Wandtragfähigkeit', formel: 'n_{Rd} = 0{,}8 \\cdot 175 \\cdot 5{,}1 = 714\\,\\text{N/mm} \\approx 710\\,\\text{kN/m}', erklaerung: 'Je Meter Wandlänge.' },
+          ]}
+          ergebnisHinweis="Rund 710 kN/m – genug für die Lasten mehrerer Geschosse im Wohnungsbau."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_mauerwerk" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Mauerwerk', url: 'https://de.wikipedia.org/wiki/Mauerwerk' },
@@ -665,9 +684,8 @@ export default function BpMauerwerk() {
           { title: 'Porenbeton', url: 'https://de.wikipedia.org/wiki/Porenbeton' }
         ]} 
         literatur={[ 
-          'Mauerwerk-Kalender: Jährlich aktualisierte Normenbeschreibungen EC 6.', 
-          'Schubert, P.: Mauerwerksmörtel - Zusammensetzung und Einfluss.',
-          'Wendehorst Bautechnische Zahlentafeln, 38. Auflage, Springer Vieweg 2026' 
+          'Jäger, W. (Hrsg.): Mauerwerk-Kalender. Berlin: Ernst & Sohn (jährlich)', 
+          'Wendehorst Bautechnische Zahlentafeln. Wiesbaden: Springer Vieweg (aktuelle Auflage)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 1996-1-1 / NA (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)' }, 
@@ -678,12 +696,12 @@ export default function BpMauerwerk() {
         formeln={[
           { 
             formel: 'f_k = K \\cdot f_b^{\\alpha} \\cdot f_m^{\\beta}', 
-            erklaerung: 'Charakteristische Mauerwerksdruckfestigkeit fk nach Eurocode 6: K = Beiwert nach Stein-/Mörtelgruppe, fb = normierte Steindruckfestigkeit, fm = Mörteldruckfestigkeit (meist alpha = 0.70, beta = 0.25).',
+            erklaerung: 'Charakteristische Mauerwerksdruckfestigkeit fk nach Eurocode 6: K = Beiwert nach Stein-/Mörtelgruppe, fb = normierte Steindruckfestigkeit, fm = Mörteldruckfestigkeit (Normalmauermörtel: α = 0,70, β = 0,30; Dünnbettmörtel: α = 0,85, β = 0).',
             quelle: 'DIN EN 1996-1-1 Gl. (3.1)'
           },
           { 
-            formel: 'N_{Ed} \\le N_{Rd} = \\Phi_i \\cdot t \\cdot f_d \\quad \\text{mit} \\quad f_d = \\frac{f_k}{\\gamma_M}', 
-            erklaerung: 'Tragfähigkeitsnachweis (ULS) einer Mauerwerkswand unter Längskraftbeanspruchung: Phi_i = Abminderungsbeiwert (Schlankheit und Exzentrizität), t = Wanddicke, fd = Bemessungswert der Druckfestigkeit, gamma_M = Teilsicherheitsbeiwert (ca. 1.5).',
+            formel: 'N_{Ed} \\le N_{Rd} = \\Phi_i \\cdot t \\cdot f_d \\quad \\text{mit} \\quad f_d = \\zeta \\cdot \\frac{f_k}{\\gamma_M}', 
+            erklaerung: 'Tragfähigkeitsnachweis (ULS) einer Mauerwerkswand unter Längskraftbeanspruchung: Phi_i = Abminderungsbeiwert (Schlankheit und Exzentrizität), t = Wanddicke, fd = Bemessungswert der Druckfestigkeit, f_d = 0,85 · f_k / γ_M mit γ_M = 1,5 nach NA (0,85 = Dauerstandsfaktor ζ).',
             quelle: 'DIN EN 1996-1-1'
           }
         ]} 
