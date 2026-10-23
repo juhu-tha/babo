@@ -18,6 +18,8 @@ import {
   FileText 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 
 // Types and Interfaces
@@ -118,8 +120,8 @@ const GLASS_PRODUCTS: GlassProduct[] = [
       'Krümelbruch: Zerfällt bei Überlastung in harmlose, stumpfkantige Kleinteile (Verletzungsschutz)'
     ],
     cons: [
-      'Nach dem Vorspannen weder schneid-, bohr- noch schleifbar (führt sofort zum Totalkollaps)',
-      'Null Resttragfähigkeit nach dem Bruch',
+      'Nach dem Vorspannen nicht schneid-, bohr- oder schleifbar (die Scheibe zerspringt)',
+      'Als Einfachscheibe keine Resttragfähigkeit nach dem Bruch',
       'Gefahr von Spontanbrüchen durch mikroskopische Nickelsulfid-Einschlüsse (NiS); für Fassaden ist der Heat-Soak-Test (ESG-H nach DIN EN 14179) zwingend erforderlich'
     ],
     normen: ['DIN EN 12150-1', 'DIN EN 14179-1 (ESG-H)', 'DIN 18008-1/2']
@@ -146,7 +148,7 @@ const GLASS_PRODUCTS: GlassProduct[] = [
     pros: [
       'Charakteristische Biegezugfestigkeit f_k = 70 N/mm² (deutlich über Floatglas)',
       'Temperaturbeständig bis ΔT = 100 K',
-      'Grobscholliges Bruchbild mit Verkeilung: Bietet im VSG-Verbund eine herausragende statische Resttragfähigkeit!'
+      'Grobscholliges Bruchbild mit Verkeilung: im VSG-Verbund gute Resttragfähigkeit'
     ],
     cons: [
       'Gilt als Einzelscheibe NICHT als Sicherheitsglas (große, spitzkantige Bruchstücke)',
@@ -211,7 +213,7 @@ const GLASS_PRODUCTS: GlassProduct[] = [
       'Sehr günstiger Anschaffungspreis'
     ],
     cons: [
-      'Erfüllt bei Neubauten die GEG-Mindestanforderungen für Gesamtelemente oft nur knapp',
+      'Erfüllt die energetischen Anforderungen (GModG, vormals GEG) an Fenster oft nur knapp',
       'Spürbar kühlere innere Scheibenoberfläche im Winter (~15 °C bei -10 °C außen)',
       'Kondensatbildung an den Scheibenrändern bei Aluminium-Abstandhaltern'
     ],
@@ -302,7 +304,7 @@ const GLASS_PRODUCTS: GlassProduct[] = [
     pros: [
       'Sensationell geringe Bautiefe (nur ~8 mm statt 44 mm)',
       'Geringes Gewicht (nur ~20 kg/m² bei Ug-Werten von 3-fach Glas)',
-      'Hervorragende akustische Entkopplung durch das Vakuum'
+      'Gute Schalldämmung bezogen auf die geringe Dicke'
     ],
     cons: [
       'Noch hohe Herstellkosten und begrenzte Lieferkapazitäten',
@@ -328,7 +330,7 @@ const WINDOW_TYPES: WindowType[] = [
     typicalPricePerSqm: 280,
     pros: [
       'Sehr wirtschaftliches Preis-Leistungs-Verhältnis',
-      'Extrem pflegeleicht und witterungsbeständig (nie streichen)',
+      'Pflegeleicht und witterungsbeständig (kein Anstrich nötig)',
       'Hervorragende thermische Rahmendämmung durch 5–7 Kammern mit Mitteldichtung (Uf ≈ 0,9–1,1 W/m²K)',
       '100 % recycelbarer PVC-Kern im Closed-Loop-System'
     ],
@@ -352,7 +354,7 @@ const WINDOW_TYPES: WindowType[] = [
     resistanceClassRC: 'RC 2 / RC 3',
     typicalPricePerSqm: 420,
     pros: [
-      'Nachhaltiger, biogener Rohstoff mit negativer CO₂-Bilanz (Kohlenstoffspeicher)',
+      'Nachwachsender Rohstoff, speichert biogenen Kohlenstoff',
       'Natürliche Wohnatmosphäre, hervorragende Haptik und antistatisch',
       'Hohe Eigensteifigkeit und sehr gute werkstoffliche Wärmedämmung (Uf ≈ 1,1–1,3 W/m²K)',
       'Problemlos reparierbar und farblich umgestaltbar'
@@ -377,7 +379,7 @@ const WINDOW_TYPES: WindowType[] = [
     typicalPricePerSqm: 580,
     pros: [
       'Kombiniert die Vorteile beider Welten: Warme Holzatmosphäre innen + unverwüstliche Aluschale außen',
-      'Absolut wartungsfrei an der bewitterten Außenseite',
+      'Wartungsarm an der bewitterten Außenseite',
       'Hinterlüftete Alu-Vorsatzschale verhindert Feuchtestau am Holz',
       'Höchste Lebensdauer (> 40–50 Jahre) und Passivhaus-Zertifizierung möglich'
     ],
@@ -401,8 +403,8 @@ const WINDOW_TYPES: WindowType[] = [
     typicalPricePerSqm: 520,
     pros: [
       'Sehr schlanke Rahmenprofile und maximale Glasanteile (Tageslichtausbeute)',
-      'Enorme statische Belastbarkeit für raumhohe Schiebeelemente und Vorhangfassaden',
-      'Absolut korrosionsfrei und dimensionsstabil (kein Verziehen bei Feuchte)',
+      'Hohe Steifigkeit für raumhohe Schiebeelemente und Vorhangfassaden',
+      'Korrosionsbeständig und formstabil (kein Verziehen bei Feuchte)',
       'Thermisch getrennte Profile mit Polyamid-Isolierstegen (Uf ≈ 1,0–1,4 W/m²K)'
     ],
     cons: [
@@ -424,7 +426,7 @@ const WINDOW_TYPES: WindowType[] = [
     resistanceClassRC: 'RC 1 N bis RC 2',
     typicalPricePerSqm: 850,
     pros: [
-      'Uneingeschränkte Denkmalverträglichkeit mit historischen Profilansichten',
+      'Gut denkmalverträglich (historische Profilansichten bleiben erhalten)',
       'Herausragender Schallschutz durch großen Luftzwischenraum (100–180 mm) zwischen den Flügeln',
       'Optimierte natürliche Pufferzone gegen sommerliche Hitze und winterliche Kälte'
     ],
@@ -529,7 +531,7 @@ export default function BpGlaeser() {
             Moderne Fenster und Glasfassaden sind hochkomplexe multifunktionale Bauteilsysteme. Sie verbinden Tageslichtnutzung 
             mit extremem Wärmeschutz (<InlineMath math="U_w \le 0{,}80\,\text{W}/(\text{m}^2\text{K})" />), 
             sommerlicher Hitzeabschirmung (<InlineMath math="g\text{-Wert}" />), Schallschutz (<InlineMath math="R_w \ge 45\,\text{dB}" />) 
-            und statischer Personensicherheit nach <strong>DIN 18008</strong>. Erfahre hier alle physikalischen Wirkungsweisen 
+            und statischer Personensicherheit nach <strong>DIN 18008</strong>. Hier erfahren Sie die physikalischen Wirkungsweisen 
             von Low-E-Beschichtungen, Scheibenzwischenraum-Füllungen, Sicherheitsgläsern und Rahmenmaterialien.
           </p>
         </div>
@@ -864,8 +866,8 @@ export default function BpGlaeser() {
                 <h4 className="font-bold text-slate-900 mb-1 text-sm">Floatglas (Kühlglas)</h4>
                 <div className="text-shiraz font-bold text-xs mb-2">f_k = 45 N/mm²</div>
                 <p className="text-text-main/80 text-[11px] leading-relaxed">
-                  Bricht radial in große, messerscharfe spitze Schollen (Dolchwirkung). 
-                  <strong> Verboten</strong> für Brüstungen, Glastüren oder bodentiefe Verglasungen ohne Anprallschutz!
+                  Bricht in große, scharfkantige Bruchstücke. 
+                  <strong>Nicht zulässig</strong> als alleinige Glasart für absturzsichernde Verglasungen (DIN 18008-4).
                 </p>
               </div>
 
@@ -892,7 +894,7 @@ export default function BpGlaeser() {
                 <div className="text-shiraz font-bold text-xs mb-2">Splitterbindend + Zäh</div>
                 <p className="text-text-main/80 text-[11px] leading-relaxed">
                   Mindestens zwei Scheiben mit zäher PVB-Folie (0,38 bis 1,52 mm). 
-                  Splitter haften fest an der Folie; schützt zuverlässig gegen Absturz, Durchsturz und Einbruch (RC 2/RC 3).
+                  Splitter haften fest an der Folie; schützt vor Absturz und Durchsturz; mit geeignetem Aufbau auch durchwurf- und durchbruchhemmend (DIN EN 356, z. B. P4A).
                 </p>
               </div>
             </div>
@@ -931,7 +933,7 @@ export default function BpGlaeser() {
                   <span className="font-bold text-shiraz block mb-1">Schichtaufbau (Silber-Multilayer):</span>
                   <p className="text-[11px] text-text-main/80">
                     Glas → Dielektrikum (Entspiegelung) → Silber-Funktionsschicht (ca. 10 nm) → Opferschicht (Blocker) → Schutzschicht.
-                    Erreicht eine extrem niedrige Emissivität von <InlineMath math="\varepsilon_n \le 0{,}01" />!
+                    Erreicht eine sehr niedrige Emissivität (<InlineMath math="\varepsilon_n \approx 0{,}01\text{ bis }0{,}04" />).
                   </p>
                 </div>
                 <div className="mt-3 text-[11px] text-home-grau">
@@ -950,7 +952,7 @@ export default function BpGlaeser() {
                 <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-xs">
                   <span className="font-bold text-slate-800 block mb-1">Eigenschaften:</span>
                   <p className="text-[11px] text-text-main/80">
-                    Mechanisch und chemisch unzerstörbar; kann sogar auf der wetterexponierten Außenseite liegen. 
+                    Mechanisch und chemisch sehr robust; kann auch auf einer Außenseite liegen. 
                     Die Emissivität ist mit <InlineMath math="\varepsilon_n \approx 0{,}15" /> jedoch deutlich schlechter als bei Sputter-Silberschichten.
                   </p>
                 </div>
@@ -1003,7 +1005,7 @@ export default function BpGlaeser() {
                     <td className="p-3 font-mono">3,56</td>
                     <td className="p-3 font-semibold">10 – 12 mm</td>
                     <td className="p-3 font-bold text-blue-900">0,5 W/(m²K)</td>
-                    <td className="p-3 text-amber-800">Sehr teuer (Edelgas mit extrem geringem Luftanteil). Eingesetzt für schlanke Profile</td>
+                    <td className="p-3 text-amber-800">Teuer; für schmale Scheibenzwischenräume</td>
                   </tr>
                   <tr className="hover:bg-off-white/50">
                     <td className="p-3 font-bold text-purple-900">Xenon (Xe)</td>
@@ -1011,7 +1013,7 @@ export default function BpGlaeser() {
                     <td className="p-3 font-mono">5,59</td>
                     <td className="p-3 font-semibold">6 – 8 mm</td>
                     <td className="p-3 font-bold text-purple-900">&lt; 0,4 W/(m²K)</td>
-                    <td className="p-3 text-red-700">Extrem teuer; im Bauwesen wirtschaftlich nicht relevant (nur Luft- und Raumfahrt)</td>
+                    <td className="p-3 text-red-700">Sehr teuer; im Bauwesen kaum noch eingesetzt</td>
                   </tr>
                   <tr className="hover:bg-off-white/50 bg-amber-50/50">
                     <td className="p-3 font-bold text-amber-900">Vakuum (p &lt; 0,1 Pa)</td>
@@ -1030,7 +1032,7 @@ export default function BpGlaeser() {
               <div>
                 <strong>Diffusionsverlust über die Lebensdauer:</strong> 
                 Nach DIN EN 1279-3 darf der jährliche Gasaustritt aus dem Randverbund höchstens <strong>1,0 % pro Jahr</strong> betragen (<InlineMath math="L_i \le 1{,}0\,\%/a" />). 
-                Hochwertige Isoliergläser behalten auch nach 25–30 Jahren noch über 80 % ihrer ursprünglichen Argon-Füllung!
+                Bei 1 %/a Verlust verbleiben nach 25–30 Jahren noch rund 75 % der Füllung; gute Randverbünde liegen deutlich darunter.
               </div>
             </div>
           </div>
@@ -1492,7 +1494,7 @@ export default function BpGlaeser() {
                 <div className="bg-white p-3.5 rounded-lg border border-home-grau/20">
                   <span className="font-bold text-slate-800 block mb-1">2. Schlagregendichtheit (DIN EN 1027)</span>
                   <p className="text-[11px] text-text-main/75">
-                    Berieselung mit Wasser bei pulsierendem Überdruck. Klasse 9A / E900 garantiert Dichtheit bei Orkanregen.
+                    Berieselung mit Wasser bei pulsierendem Überdruck. Klasse E900: dicht bis 900 Pa Prüfdruck (DIN EN 12208).
                   </p>
                 </div>
                 <div className="bg-white p-3.5 rounded-lg border border-home-grau/20">
@@ -1506,6 +1508,22 @@ export default function BpGlaeser() {
           </div>
         </div>
       )}
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Bemessungsfestigkeit von Float, TVG und ESG"
+          zielGleichung="f_{g,d} = \frac{k_{mod} \cdot k_c \cdot f_{g,k}}{\gamma_M}"
+          normQuelle="DIN 18008-1 (Lehrbeispiel Windlast: Float k_mod = 0,7, γ_M = 1,8; vorgespanntes Glas k_mod = 1,0, γ_M = 1,5; k_c = 1,0 als Lehrannahme – manuell prüfen)"
+          schritte={[
+            { titel: '1. Floatglas', formel: 'f_{g,d} = 0{,}7 \\cdot 45 / 1{,}8 = 17{,}5\\,\\text{N/mm}^2', erklaerung: 'f_g,k = 45 N/mm².' },
+            { titel: '2. TVG', formel: 'f_{g,d} = 1{,}0 \\cdot 70 / 1{,}5 = 46{,}7\\,\\text{N/mm}^2', erklaerung: 'Vorgespanntes Glas: k_mod = 1,0, γ_M = 1,5.' },
+            { titel: '3. ESG', formel: 'f_{g,d} = 1{,}0 \\cdot 120 / 1{,}5 = 80\\,\\text{N/mm}^2', erklaerung: 'Vorgespanntes Glas: Festigkeit kaum lastdauerabhängig.' },
+          ]}
+          ergebnisHinweis="ESG hat rund die 4,5-fache Bemessungsfestigkeit von Floatglas – bricht aber krümelig ohne Resttragfähigkeit; deshalb VSG aus TVG für Überkopf und Absturzsicherung."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_glaeser" />
 
       {/* Standardisierter Footer */}
       <ModuleFooter
@@ -1524,8 +1542,8 @@ export default function BpGlaeser() {
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Feldmann, M.; Kasper, R.: Glasbau im Praxistest und nach DIN 18008 (Ernst & Sohn, Berlin)',
-          'Wurm, J.: Glass Structures – Design and Construction of Self-Supporting Skins (Birkhäuser)',
+          'Weller, B.; Härth, K.; Tasche, S.; Unnewehr, S.: Konstruktiver Glasbau. München: Edition Detail 2008',
+          'Wurm, J.: Glass Structures – Design and Construction of Self-Supporting Skins. Basel: Birkhäuser 2007',
           'ift Rosenheim: Richtlinien und Fachinformationen zur Fenster- und Fassadentechnik'
         ]}
         weblinks={[

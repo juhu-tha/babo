@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, Calculator, Info, Trees, ArrowRight, CheckCircle2, AlertTriangle, Star, BookOpen, ShieldAlert } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
@@ -31,7 +33,7 @@ const woodProducts: WoodProductType[] = [
     advantages: [
       'Geringe Holzfeuchte (15% ± 3%), dadurch formstabil & rissminimiert',
       'In großen Längen durch Keilzinkung lieferbar (bis zu 16m)',
-      'Insekten- und pilzresistent durch technische Trocknung (kein chemischer Schutz nötig)',
+      'Technisch getrocknet (u ≤ 15 %); in Gebrauchsklasse 0 nach DIN 68800 ohne chemischen Holzschutz',
       'Definierte Oberflächenqualitäten (NSi für nicht-sichtbar, Si für sichtbar)'
     ],
     disadvantages: [
@@ -56,7 +58,7 @@ const woodProducts: WoodProductType[] = [
     f_mk: 24,
     f_vk: 3.5,
     advantages: [
-      'Enorm hohe Tragfähigkeit bei kompakteren Abmessungen',
+      'Höhere Tragfähigkeit und größere Querschnitte als Vollholz',
       'Sehr formstabil und rissminimiert durch Schicht-Verklebung',
       'Große Spannweiten für Hallenbau (Träger bis >30m)',
       'Sehr hohe Feuerwiderstandsdauer (berechenbarer Abbrand)',
@@ -64,7 +66,7 @@ const woodProducts: WoodProductType[] = [
     ],
     disadvantages: [
       'Spürbar teurer als KVH',
-      'Ausschließlich mit zugelassenen Klebstoffen leimbar (Harnstoff-/MUF-/PU-Leime)'
+      'Nur mit geeigneten Klebstoffen (z. B. MUF, PRF, PUR nach DIN EN 301/DIN EN 15425)'
     ],
     usecases: [
       'Weitgespannte Hallentragwerke und Deckenunterzüge',
@@ -84,7 +86,7 @@ const woodProducts: WoodProductType[] = [
     f_vk: 2.5,
     advantages: [
       'Flächige Lastabtragung (Schnittgrößen in zwei Richtungen)',
-      'Extrem hohe Dimensionsstabilität durch kreuzweise Verlegung',
+      'Hohe Formstabilität in Plattenebene durch kreuzweise Lagen',
       'Hoher Vorfertigungsgrad (CNC-Abbund von Fensterausschnitten im Werk)',
       'Sofort tragfähig, trockene Bauweise (keine Einbaufeuchte)'
     ],
@@ -107,10 +109,10 @@ const woodProducts: WoodProductType[] = [
     short: 'LVL (eg. Kerto)',
     density: 500,
     eModulus: 13800,
-    f_mk: 48, // sehr hoch durch Furniere
+    f_mk: 44, // Lehrwert; maßgebend ist die ETA des Produkts
     f_vk: 4.6,
     advantages: [
-      'Äußerst homogenes Gefüge (Äste und Fehlstellen sind verteilt)',
+      'Homogenes Gefüge (Äste und Fehlstellen sind verteilt)',
       'Höchste mechanische Tragfähigkeiten aller Holzwerkstoffe',
       'Sehr dünne, schlanke Querschnitte möglich',
       'Hohe Plattenstabilität bei Scheibenbeanspruchung'
@@ -122,7 +124,7 @@ const woodProducts: WoodProductType[] = [
     ],
     usecases: [
       'Hochbelastete Unterzüge und Verstärkungen',
-      'Sparren und Pfetten bei extremen Spannweiten',
+      'Sparren und Pfetten bei großen Spannweiten',
       'Schalungsplatten und Gerüstbohlen',
       'Gurtmaterial für I-Beams (Stegträger)'
     ],
@@ -140,7 +142,7 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
           Material-Lehrpfad: Holz im Bauwesen
         </h4>
         <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Holz-Baustofflehre:
+          Weiter zu den anderen Teilen des Lehrpfads Holz:
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -237,11 +239,11 @@ export default function BpHolzprodukte() {
       case 'c24':
         return { name: 'KVH C24', f_mk: 24, f_vk: 4.0, E: 11000, density: 420, gammaM: 1.3 };
       case 'gl24h':
-        return { name: 'BSH GL24h', f_mk: 24, f_vk: 3.5, E: 11500, density: 450, gammaM: 1.25 };
+        return { name: 'BSH GL24h', f_mk: 24, f_vk: 3.5, E: 11500, density: 450, gammaM: 1.3 };
       case 'gl28h':
-        return { name: 'BSH GL28h', f_mk: 28, f_vk: 3.5, E: 12600, density: 450, gammaM: 1.25 };
+        return { name: 'BSH GL28h', f_mk: 28, f_vk: 3.5, E: 12600, density: 450, gammaM: 1.3 };
       case 'gl30h':
-        return { name: 'BSH GL30h', f_mk: 30, f_vk: 3.5, E: 13600, density: 480, gammaM: 1.25 };
+        return { name: 'BSH GL30h', f_mk: 30, f_vk: 3.5, E: 13600, density: 480, gammaM: 1.3 };
       default:
         return { name: 'KVH C24', f_mk: 24, f_vk: 4.0, E: 11000, density: 420, gammaM: 1.3 };
     }
@@ -260,7 +262,7 @@ export default function BpHolzprodukte() {
   
   // Design line load: q_d = 1.35 * g_k + 1.5 * q_k
   const q_d = 1.35 * g_k + 1.5 * q_k;
-  const q_inst = g_k + q_k; // SLS quasi-permanent characteristic combination
+  const q_inst = g_k + q_k; // SLS: charakteristische Kombination
   
   // Bending moment: M_Ed = q_d * L^2 / 8
   const m_ed = (q_d * Math.pow(span, 2)) / 8; // kNm
@@ -354,7 +356,7 @@ export default function BpHolzprodukte() {
             <p className="font-normal text-[11px] text-slate-900/80">
               • <strong>NKL 1:</strong> Holzfeuchte entspricht max 12% (z.B. allseitig geschlossene beheizte Räume).<br />
               • <strong>NKL 2:</strong> Holzfeuchte entspricht max 20% (z.B. überdachte offene Bauwerke, Carports).<br />
-              • <strong>NKL 3:</strong> Größere Feuchten (z.B. freie Bewitterung unter freiem Himmel). Hier sind Abminderungsfaktoren (k_mod) stark verschärft.
+              • <strong>NKL 3:</strong> Größere Feuchten (z.B. freie Bewitterung unter freiem Himmel). Hier sind die k_mod-Werte kleiner (stärkere Abminderung).
             </p>
           </div>
         </div>
@@ -672,7 +674,7 @@ export default function BpHolzprodukte() {
                 <td className="p-3 font-bold text-slate-800">Ökologische Holzfaser-Dämmsysteme</td>
                 <td className="p-3">Flexible und druckfeste Dämmplatten aus verfilzten Holzfasern (Nass- oder Trockenverfahren), Putzträgerplatten.</td>
                 <td className="p-3 font-mono">FSC, DIN EN 13171, ETA-Zulassungen für WDVS</td>
-                <td className="p-3">Hervorragender sommerlicher Hitzeschutz, Diffusionsoffenheit und gesunder Feuchtigkeitshaushalt im Holzrahmenbau.</td>
+                <td className="p-3">Guter sommerlicher Wärmeschutz und diffusionsoffene Aufbauten im Holzrahmenbau.</td>
               </tr>
               <tr className="hover:bg-slate-50/50">
                 <td className="p-3 font-bold text-slate-800">Brettschichtholz (BSH) &amp; Stegträger</td>
@@ -689,6 +691,23 @@ export default function BpHolzprodukte() {
 
       <WoodThematicLinks current="bauprodukt" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Deckenbalken C24 vordimensionieren"
+          zielGleichung="M_{Ed} = \frac{q_d L^2}{8}, \quad \sigma_{m,d} = \frac{M_{Ed}}{W} \le k_{mod} \frac{f_{m,k}}{\gamma_M}"
+          normQuelle="DIN EN 1995-1-1 mit NA (NKL 1, KLED mittel, k_mod = 0,8); Eigenlast vereinfacht"
+          schritte={[
+            { titel: '1. Last je Balken', formel: 'q_k = 2{,}5 \\cdot 0{,}625 = 1{,}56\\,\\text{kN/m},\\; g_k \\approx 0{,}08\\,\\text{kN/m}', erklaerung: 'Rasterabstand 62,5 cm, Balken 10/20 cm.' },
+            { titel: '2. Bemessungslast und Moment', formel: 'q_d = 1{,}35 \\cdot 0{,}08 + 1{,}5 \\cdot 1{,}56 = 2{,}45\\,\\text{kN/m};\\; M_{Ed} = 2{,}45 \\cdot 4{,}5^2/8 = 6{,}2\\,\\text{kNm}', erklaerung: 'Spannweite 4,5 m.' },
+            { titel: '3. Spannung', formel: '\\sigma_{m,d} = 6{,}2 \\cdot 10^6 / 666\\,667 = 9{,}3\\,\\text{N/mm}^2', erklaerung: 'W = 100 · 200² / 6.' },
+            { titel: '4. Nachweis', formel: 'f_{m,d} = 0{,}8 \\cdot 24/1{,}3 = 14{,}8\\,\\text{N/mm}^2 \\Rightarrow \\eta = 0{,}63', erklaerung: 'Tragfähigkeit erfüllt; Durchbiegung gesondert prüfen.' },
+          ]}
+          ergebnisHinweis="Bei Holzbalkendecken wird oft die Durchbiegung oder das Schwingungsverhalten maßgebend, nicht die Biegespannung."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_holzprodukte" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Konstruktionsvollholz', url: 'https://de.wikipedia.org/wiki/Konstruktionsvollholz' },
@@ -696,11 +715,11 @@ export default function BpHolzprodukte() {
           { title: 'Brettsperrholz', url: 'https://de.wikipedia.org/wiki/Brettsperrholz' }
         ]} 
         literatur={[ 
-          'Götz, K.-H. et al.: Holzbau Atlas.', 
-          'Kaufmann, H. et al.: Building with Timber.' 
+          'Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Edition Detail 2017',
+          'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten)' }, 
+          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5; Änderungsstand manuell prüfen)' }, 
           { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)' },
           { title: 'DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)' },
           { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz - Anforderungen)' }
@@ -713,12 +732,12 @@ export default function BpHolzprodukte() {
           },
           { 
             formel: '\\sigma_{m,y,d} = \\frac{M_{y,Ed}}{W_y} \\le f_{m,y,d} = k_{\\text{mod}} \\cdot \\frac{f_{m,y,k}}{\\gamma_M}', 
-            erklaerung: 'Biegespannungsnachweis (ULS) nach EC 5 unter Berücksichtigung von Modifikationsbeiwert kmod und Teilsicherheitsbeiwert gamma_M (1.30 für Vollholz, 1.25 für BSH).',
+            erklaerung: 'Biegespannungsnachweis (ULS) nach EC 5 unter Berücksichtigung von Modifikationsbeiwert kmod und Teilsicherheitsbeiwert gamma_M (γ_M = 1,3 für Vollholz und BSH nach DIN EN 1995-1-1/NA).',
             quelle: 'DIN EN 1995-1-1 Abs. 6.1.6'
           },
           { 
             formel: 'w_{\\text{inst}} = \\frac{5 \\cdot q_{\\text{inst}} \\cdot L^4}{384 \\cdot E_{0,\\text{mean}} \\cdot I_y} \\le \\frac{L}{300} \\dots \\frac{L}{500}', 
-            erklaerung: 'Gebrauchstauglichkeitsnachweis (SLS): Elastische Anfangsdurchbiegung unter quasi-ständiger Lastkombination.',
+            erklaerung: 'Gebrauchstauglichkeit: elastische Anfangsdurchbiegung unter der charakteristischen Kombination; Grenzwerte L/300 bis L/500 als Empfehlungen (NA).',
             quelle: 'DIN EN 1995-1-1 Abs. 7.2'
           }
         ]} 

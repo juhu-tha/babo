@@ -11981,5 +11981,425 @@
       "targetModuleLabel": "Betonzusatzmittel"
     },
     "verified": false
+  },
+  {
+    "id": "q_bph_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_holzprodukte",
+    "moduleTitle": "Holzprodukte",
+    "topic": "Teilsicherheitsbeiwert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1/NA",
+    "question": "Welcher Teilsicherheitsbeiwert γ_M gilt nach EC5/NA für Brettschichtholz (Grundkombination)?",
+    "options": [
+      "1,0",
+      "1,25",
+      "1,3",
+      "1,5"
+    ],
+    "correctIdx": 2,
+    "explanation": "Für Vollholz und Brettschichtholz gilt in Deutschland γ_M = 1,3; 1,25 ist der Wert für BSH in der Empfehlung von EN 1995-1-1 ohne NA.",
+    "gapAnalysis": {
+      "topic": "Teilsicherheitsbeiwert",
+      "misconception": "Der Basiswert der EN wird mit dem nationalen Wert verwechselt.",
+      "coreRule": "Vollholz und BSH: γ_M = 1,3 (NA).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Teilsicherheitsbeiwert“ im Modul Holzprodukte noch einmal durch.",
+      "targetModuleTab": "bp_holzprodukte",
+      "targetModuleLabel": "Holzprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bph_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_holzprodukte",
+    "moduleTitle": "Holzprodukte",
+    "topic": "Bemessungsfestigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1",
+    "question": "Wie berechnet sich die Bemessungsfestigkeit f_d aus der charakteristischen Festigkeit f_k?",
+    "options": [
+      "f_d = f_k · γ_M / k_mod",
+      "f_d = k_mod · f_k / γ_M",
+      "f_d = f_k / (k_mod · γ_M)",
+      "f_d = f_k − k_mod"
+    ],
+    "correctIdx": 1,
+    "explanation": "k_mod berücksichtigt Lasteinwirkungsdauer und Nutzungsklasse, γ_M die Streuung des Materials.",
+    "gapAnalysis": {
+      "topic": "Bemessungsfestigkeit",
+      "misconception": "k_mod wird als zusätzlicher Sicherheitsfaktor im Nenner verstanden.",
+      "coreRule": "f_d = k_mod · f_k / γ_M.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungsfestigkeit“ im Modul Holzprodukte noch einmal durch.",
+      "targetModuleTab": "bp_holzprodukte",
+      "targetModuleLabel": "Holzprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpk_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_kunststoffe",
+    "moduleTitle": "Kunststoffe (Bauprodukte)",
+    "topic": "Kriechen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Was beschreibt der Kriechmodul E_c(t) eines Kunststoffs?",
+    "options": [
+      "Den Elastizitätsmodul bei −20 °C",
+      "Das Verhältnis aus konstanter Spannung und zeitabhängiger Dehnung",
+      "Die Bruchspannung nach 1000 h",
+      "Die Wärmeausdehnung je Kelvin"
+    ],
+    "correctIdx": 1,
+    "explanation": "Unter Dauerlast wächst die Dehnung; E_c(t) = σ / ε(t) sinkt daher mit der Belastungsdauer.",
+    "gapAnalysis": {
+      "topic": "Kriechen",
+      "misconception": "Der Kurzzeit-E-Modul wird für Dauerlasten verwendet.",
+      "coreRule": "Bei Kunststoffen den zeitabhängigen Kriechmodul ansetzen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechen“ im Modul Kunststoffe (Bauprodukte) noch einmal durch.",
+      "targetModuleTab": "bp_kunststoffe",
+      "targetModuleLabel": "Kunststoffe (Bauprodukte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpk_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_kunststoffe",
+    "moduleTitle": "Kunststoffe (Bauprodukte)",
+    "topic": "Dämmstoffe",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Welche Aussage zu EPS-Hartschaum trifft zu?",
+    "options": [
+      "EPS ist offenzellig und kapillaraktiv",
+      "EPS ist geschlossenzellig; die Zellen enthalten überwiegend Luft",
+      "EPS ist nicht brennbar (A1)",
+      "EPS wird aus PVC hergestellt"
+    ],
+    "correctIdx": 1,
+    "explanation": "EPS besteht aus geschäumten Polystyrolperlen mit geschlossenen Zellen.",
+    "gapAnalysis": {
+      "topic": "Dämmstoffe",
+      "misconception": "EPS wird mit Mineralwolle verwechselt.",
+      "coreRule": "EPS: geschlossenzelliges Polystyrol, brennbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dämmstoffe“ im Modul Kunststoffe (Bauprodukte) noch einmal durch.",
+      "targetModuleTab": "bp_kunststoffe",
+      "targetModuleLabel": "Kunststoffe (Bauprodukte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpm_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_mineralisch",
+    "moduleTitle": "Mineralische Bauprodukte",
+    "topic": "Verbundsicherheitsglas",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18008",
+    "question": "Was kennzeichnet Verbundsicherheitsglas (VSG)?",
+    "options": [
+      "Thermisch vorgespanntes Einzelglas",
+      "Zwei oder mehr Scheiben mit Zwischenschicht, die Bruchstücke zusammenhält",
+      "Glas mit Drahteinlage",
+      "Beschichtetes Floatglas"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Folie (z. B. PVB) hält die Bruchstücke; daher Resttragfähigkeit, etwa für Überkopfverglasungen.",
+    "gapAnalysis": {
+      "topic": "Verbundsicherheitsglas",
+      "misconception": "VSG wird mit ESG verwechselt.",
+      "coreRule": "VSG = Scheiben + Zwischenschicht, Splitterbindung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verbundsicherheitsglas“ im Modul Mineralische Bauprodukte noch einmal durch.",
+      "targetModuleTab": "bp_mineralisch",
+      "targetModuleLabel": "Mineralische Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpm_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_mineralisch",
+    "moduleTitle": "Mineralische Bauprodukte",
+    "topic": "Fliesen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 14411",
+    "question": "Warum ist Feinsteinzeug frostbeständig, Steingut dagegen nicht?",
+    "options": [
+      "Feinsteinzeug ist glasiert",
+      "Feinsteinzeug hat eine sehr geringe Wasseraufnahme (≤ 0,5 %)",
+      "Steingut wird bei höherer Temperatur gebrannt",
+      "Steingut enthält Zement"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei geringer Wasseraufnahme kann kaum Wasser im Scherben gefrieren; Steingut nimmt deutlich über 10 % Wasser auf.",
+    "gapAnalysis": {
+      "topic": "Fliesen",
+      "misconception": "Die Glasur wird als Frostschutz angesehen.",
+      "coreRule": "Frostbeständigkeit hängt an der Wasseraufnahme.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fliesen“ im Modul Mineralische Bauprodukte noch einmal durch.",
+      "targetModuleTab": "bp_mineralisch",
+      "targetModuleLabel": "Mineralische Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpg_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_glaeser",
+    "moduleTitle": "Gläser",
+    "topic": "Glasfestigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18008-1",
+    "question": "Welche Glasart hat bei gleicher Dicke die höchste Bemessungsfestigkeit?",
+    "options": [
+      "Floatglas",
+      "Teilvorgespanntes Glas (TVG)",
+      "Einscheibensicherheitsglas (ESG)",
+      "Alle gleich"
+    ],
+    "correctIdx": 2,
+    "explanation": "Die Vorspannung überdrückt Oberflächenrisse; ESG (f_k = 120 N/mm²) liegt über TVG (70) und Float (45).",
+    "gapAnalysis": {
+      "topic": "Glasfestigkeit",
+      "misconception": "Glasfestigkeit wird als reine Materialkonstante gesehen.",
+      "coreRule": "Vorspannung erhöht die nutzbare Biegezugfestigkeit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glasfestigkeit“ im Modul Gläser noch einmal durch.",
+      "targetModuleTab": "bp_glaeser",
+      "targetModuleLabel": "Gläser"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpg_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_glaeser",
+    "moduleTitle": "Gläser",
+    "topic": "Bruchbild",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Wie bricht ESG?",
+    "options": [
+      "In große, radial verlaufende Scherben",
+      "In kleine, stumpfkantige Krümel",
+      "Gar nicht – es verformt sich plastisch",
+      "Nur entlang der Kanten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die gespeicherte Vorspannenergie zerlegt die Scheibe in ein feines Krümelbruchbild.",
+    "gapAnalysis": {
+      "topic": "Bruchbild",
+      "misconception": "ESG wird mit TVG verwechselt (TVG: grobe Bruchstücke).",
+      "coreRule": "ESG: Krümelbruch; TVG: radiale Bruchstücke.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bruchbild“ im Modul Gläser noch einmal durch.",
+      "targetModuleTab": "bp_glaeser",
+      "targetModuleLabel": "Gläser"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpl_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_lehmbauprodukte",
+    "moduleTitle": "Lehmbauprodukte",
+    "topic": "Normung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18940",
+    "question": "Welche Norm regelt tragendes Lehmsteinmauerwerk in Deutschland?",
+    "options": [
+      "DIN 18940",
+      "DIN 1053",
+      "DIN EN 771-1",
+      "DIN 4108"
+    ],
+    "correctIdx": 0,
+    "explanation": "DIN 18940:2023-06 regelt Bemessung und Ausführung von tragendem Lehmsteinmauerwerk; Produktnormen sind DIN 18945 ff.",
+    "gapAnalysis": {
+      "topic": "Normung",
+      "misconception": "Lehmsteine werden der Ziegelnorm zugeordnet.",
+      "coreRule": "Tragendes Lehmmauerwerk: DIN 18940.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Normung“ im Modul Lehmbauprodukte noch einmal durch.",
+      "targetModuleTab": "bp_lehmbauprodukte",
+      "targetModuleLabel": "Lehmbauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpl_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_lehmbauprodukte",
+    "moduleTitle": "Lehmbauprodukte",
+    "topic": "Feuchteschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Was ist bei Lehmbaustoffen besonders zu beachten?",
+    "options": [
+      "Sie dürfen nicht dauerhaft durchfeuchtet werden",
+      "Sie benötigen eine Dampfsperre auf der Innenseite",
+      "Sie sind wasserfest nach dem Trocknen",
+      "Sie müssen gebrannt werden"
+    ],
+    "correctIdx": 0,
+    "explanation": "Lehm bindet nur physikalisch; bei Durchfeuchtung verliert er Festigkeit. Daher Spritzwasser- und Schlagregenschutz.",
+    "gapAnalysis": {
+      "topic": "Feuchteschutz",
+      "misconception": "Getrockneter Lehm wird als wasserbeständig angesehen.",
+      "coreRule": "Lehm vor dauerhafter Feuchte schützen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchteschutz“ im Modul Lehmbauprodukte noch einmal durch.",
+      "targetModuleTab": "bp_lehmbauprodukte",
+      "targetModuleLabel": "Lehmbauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpt_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_metallisch",
+    "moduleTitle": "Metallische Bauprodukte",
+    "topic": "Wärmedehnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Ein 10 m langes Titanzinkblech (α ≈ 0,022 mm/(m·K)) erfährt ΔT = 100 K. Wie groß ist die Längenänderung?",
+    "options": [
+      "2,2 mm",
+      "22 mm",
+      "220 mm",
+      "0,22 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "ΔL = α · L · ΔT = 0,022 · 10 · 100 = 22 mm; daher Schiebenähte und begrenzte Scharlängen.",
+    "gapAnalysis": {
+      "topic": "Wärmedehnung",
+      "misconception": "Die Dehnung von Zink wird unterschätzt.",
+      "coreRule": "ΔL = α · L · ΔT.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Metallische Bauprodukte noch einmal durch.",
+      "targetModuleTab": "bp_metallisch",
+      "targetModuleLabel": "Metallische Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpt_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_metallisch",
+    "moduleTitle": "Metallische Bauprodukte",
+    "topic": "Kontaktkorrosion",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Warum darf Regenwasser nicht von Kupferflächen auf verzinkte Bauteile fließen (Fließregel)?",
+    "options": [
+      "Kupferionen fördern die Korrosion des unedleren Zinks",
+      "Zink färbt das Kupfer grün",
+      "Kupfer wird dadurch spröde",
+      "Es gibt keinen Grund"
+    ],
+    "correctIdx": 0,
+    "explanation": "Gelöste Kupferionen scheiden sich auf Zink ab und bilden Lokalelemente; daher fließt Wasser nur von unedel nach edel.",
+    "gapAnalysis": {
+      "topic": "Kontaktkorrosion",
+      "misconception": "Kontaktkorrosion wird nur bei direktem Kontakt erwartet.",
+      "coreRule": "Wasser von unedel zu edel führen, nicht umgekehrt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kontaktkorrosion“ im Modul Metallische Bauprodukte noch einmal durch.",
+      "targetModuleTab": "bp_metallisch",
+      "targetModuleLabel": "Metallische Bauprodukte"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bps_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_stahlbauprofile",
+    "moduleTitle": "Stahlbauprofile",
+    "topic": "Profilwahl",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Welches Profil eignet sich bei gleicher Höhe besser als Stütze: IPE oder HEB?",
+    "options": [
+      "IPE, wegen schmaler Flansche",
+      "HEB, wegen breiter Flansche und größerem I_z",
+      "Beide gleich",
+      "Keines – Stützen nur aus Hohlprofilen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Breite Flansche erhöhen das Trägheitsmoment um die schwache Achse und damit die Knicktragfähigkeit.",
+    "gapAnalysis": {
+      "topic": "Profilwahl",
+      "misconception": "Nur I_y wird betrachtet.",
+      "coreRule": "Stützen: breite Flansche (HEA/HEB), Träger: IPE.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Profilwahl“ im Modul Stahlbauprofile noch einmal durch.",
+      "targetModuleTab": "bp_stahlbauprofile",
+      "targetModuleLabel": "Stahlbauprofile"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bps_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_stahlbauprofile",
+    "moduleTitle": "Stahlbauprofile",
+    "topic": "Biegespannung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1993-1-1",
+    "question": "IPE 300 (W_el,y = 557 cm³), M_Ed = 45 kNm. Wie groß ist die Randspannung?",
+    "options": [
+      "8,1 N/mm²",
+      "81 N/mm²",
+      "235 N/mm²",
+      "810 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ = 45·10⁶ / 557·10³ ≈ 81 N/mm² ≤ 235 N/mm² (S235, γ_M0 = 1,0).",
+    "gapAnalysis": {
+      "topic": "Biegespannung",
+      "misconception": "Einheiten cm³ und mm³ werden verwechselt.",
+      "coreRule": "σ = M / W_el, Einheiten konsistent in N und mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biegespannung“ im Modul Stahlbauprofile noch einmal durch.",
+      "targetModuleTab": "bp_stahlbauprofile",
+      "targetModuleLabel": "Stahlbauprofile"
+    },
+    "verified": false
   }
 ]

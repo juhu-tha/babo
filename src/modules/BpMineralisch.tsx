@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ShieldCheck, Calculator, Check, AlertTriangle, Layers as LayersIcon, HardHat, Star } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 
@@ -40,7 +42,7 @@ const mineralDb: MineralMaterial[] = [
     mohsHardness: 6.0,
     thermalCond: 1.0,
     pros: ['Hohe Biegezugfestigkeit (ca. 120 N/mm²)', 'Sehr temperaturwechselbeständig', 'Zerfällt bei Stoßbruch in harmlose, stumpfe Kleinkrümel'],
-    rules: 'Nachträgliches Schneiden oder Bohren ist unmöglich (führt zum sofortigen Zerspringen). Heißlagerungstest (Heat-Soak-Test) empfohlen zur Vermeidung von Spontanbrüchen durch Nickelsulfid-Einschlüsse.',
+    rules: 'Nachträgliches Schneiden oder Bohren ist nicht möglich (das Glas zerspringt). Gegen Spontanbrüche durch Nickelsulfid-Einschlüsse wird heißgelagertes ESG-H eingesetzt (in Deutschland für Fassaden i. d. R. gefordert).',
     frostResistant: 'Ja'
   },
   {
@@ -52,7 +54,7 @@ const mineralDb: MineralMaterial[] = [
     mohsHardness: 5.5,
     thermalCond: 0.9,
     pros: ['Splitterbindend durch zähelastische Reißfest-PVB-Folie (0,76-1,52 mmstärke)', 'Schallschützende Eigenschaften', 'Hohe Einbruchhemmung'],
-    rules: 'Zwingend vorgeschrieben für Überkopfverglasungen (Vordächer) und absturzsichernde Verglasungen (z.B. Brüstungen). Bei Glasbruch bleibt eine signifikante Resttragfähigkeit bestehen.',
+    rules: 'Erforderlich für Überkopfverglasungen (untere Scheibe) und in der Regel für absturzsichernde Verglasungen (DIN 18008-2/-4). Nach Glasbruch bleibt eine Resttragfähigkeit.',
     frostResistant: 'Ja'
   },
   
@@ -65,8 +67,8 @@ const mineralDb: MineralMaterial[] = [
     waterAbs: 0.2, // very low < 0.5%
     mohsHardness: 8.0, // extremely hard
     thermalCond: 1.3,
-    pros: ['Extrem dichte Sinterung (Scherben fast glasartig geschmolzen)', 'Absolut frostsicher', 'Enorme Abrieb- und mechanische Belastbarkeit'],
-    rules: 'Zur Verlegung im Außenbereich sind hochflexible Dünnbettmörtel der Klasse S1 oder S2 nach DIN EN 12004 zwingend erforderlich (Dehnungsspannungen auffangen).',
+    pros: ['Sehr dichte Sinterung (Wasseraufnahme ≤ 0,5 %)', 'Frostbeständig', 'Hohe Abrieb- und Bruchfestigkeit'],
+    rules: 'Im Außenbereich werden verformbare Dünnbettmörtel (z. B. C2 S1 nach DIN EN 12004) eingesetzt, um Verformungen aufzunehmen.',
     frostResistant: 'Ja'
   },
   {
@@ -90,7 +92,7 @@ const mineralDb: MineralMaterial[] = [
     mohsHardness: 4.0, // easily scratched
     thermalCond: 0.8,
     pros: ['Leicht zuzuschneiden und zu bohren (Muffenlöcher)', 'Gute Haftung verglaster Glasuren', 'Helle Scherbenfarben für brillante Designs'],
-    rules: 'Ausschließlich im Innenbereich als Wandbekleidung zugelassen. Absorbiertes Wasser würde im Winter durch Frostausdehnungen die Glasur sofort abplatzen lassen.',
+    rules: 'Nur für Innenwände geeignet. Im Freien würde gefrierendes Porenwasser die Glasur und den Scherben schädigen.',
     frostResistant: 'Nein'
   },
 
@@ -150,7 +152,7 @@ export default function BpMineralisch() {
           <AlertTriangle className="text-red-700 flex-shrink-0 mt-0.5" size={16} />
           <div>
             <strong className="font-bold uppercase tracking-wider block mb-1">Achtung: Erhöhtes Verletzungsrisiko (Zersplitterung)</strong>
-            Floatglas zerfällt bei Belastungsgrenzen in nadelspitze, meterlange Dolche. Es eignet sich keinesfalls für bodentiefe Wohnungsfenster (ohne Brüstungsgitter) oder Vordächer!
+            Floatglas bricht in große, scharfkantige Bruchstücke. Für absturzsichernde Verglasungen und Überkopfverglasungen ist es allein nicht zulässig (DIN 18008).
           </div>
         </div>
       );
@@ -161,7 +163,7 @@ export default function BpMineralisch() {
           <ShieldCheck className="text-emerald-700 flex-shrink-0 mt-0.5" size={16} />
           <div>
             <strong className="font-bold uppercase tracking-wider block mb-1">Sicherheitsbauteil: Vorzug für Brüstungen und Überkopf</strong>
-            Das PVB-Verbundsystem sichert eine hervorragende Resttragfähigkeit. Selbst nach doppelter Zersplitterung der Deckscheiben trägt die Folienbahnelektronik das Eigengewicht sowie moderate Wind-/Schneelasten.
+            Die PVB-Zwischenfolie hält die Bruchstücke zusammen und sorgt für Resttragfähigkeit. Wie lange ein gebrochenes VSG Lasten trägt, hängt von Glasart, Lagerung und Last ab und ist ggf. nachzuweisen (DIN 18008).
           </div>
         </div>
       );
@@ -199,7 +201,7 @@ export default function BpMineralisch() {
         </div>
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed font-normal">
-          Mineralische Werkstoffe wie Baukunstgläser, feingesinterte Fliesen und Natursteine zeichnen sich durch enorme Druckfestigkeiten, Temperaturbeständigkeiten und absolute Langlebigkeit aus. Durch ihre Sprödigkeit weisen sie jedoch keine plastischen Dehnungsreserven auf und reagieren extrem empfindlich auf thermisch induzierten Zwangsspannungsaufbau oder Biegezugspannungen.
+          Mineralische Werkstoffe wie Baukunstgläser, feingesinterte Fliesen und Natursteine haben hohe Druckfestigkeiten, sind temperaturbeständig und sehr dauerhaft. Wegen ihrer Sprödigkeit fehlen plastische Reserven; Zwangs- und Biegezugspannungen (z. B. aus Temperatur) sind kritisch.
         </p>
       </div>
 
@@ -258,7 +260,7 @@ export default function BpMineralisch() {
               <span>Sonderfall: Naturstein Ausblühungen</span>
             </div>
             <p className="font-normal text-[11px] text-yellow-950/80 leading-relaxed">
-              Herkömmlicher Portlandzement setzt bei der Hydratation große Mengen an <strong>Calciumhydroxid (Portlandit)</strong> frei. Dieses gelangt durch das Mischwasser an die Natursteinoberfläche, reagiert mit Luftsauerstoff und CO₂ und hinterlässt unlösliche, weiße Fließflecken. <strong>Vorschrift:</strong> Natursteine ausschließlich mit hydraulischem <strong>Trasszement</strong> verlegen!
+              Herkömmlicher Portlandzement setzt bei der Hydratation große Mengen an <strong>Calciumhydroxid (Portlandit)</strong> frei. Dieses gelangt durch das Mischwasser an die Natursteinoberfläche, reagiert mit dem CO₂ der Luft zu Calciumcarbonat und kann Verfärbungen bzw. Ausblühungen verursachen. <strong>Praxisregel:</strong> Empfindliche Natursteine mit verfärbungsarmen Verlegemörteln (z. B. trasshaltig) verlegen.
             </p>
           </div>
         </div>
@@ -398,7 +400,7 @@ export default function BpMineralisch() {
 
             <div className="bg-slate-50 p-3 rounded-xl border border-home-grau/30 text-xs text-text-main/70 leading-relaxed font-sans space-y-1 font-normal">
               <span className="font-bold text-slate-700 block">Sättigungsmechanismus:</span>
-              Mineralische Werkstoffe lagern flüssiges Wasser im kapillaren Porensystem ab. Dadurch erhöht sich das statische Eigewicht, was bei Holzbalkendecken statisch bemessen werden muss.
+              Mineralische Werkstoffe lagern flüssiges Wasser im kapillaren Porensystem ab. Dadurch erhöht sich das Eigengewicht – bei leichten Tragwerken (z. B. Holzbalkendecken) ist das zu berücksichtigen.
             </div>
           </div>
 
@@ -441,7 +443,7 @@ export default function BpMineralisch() {
           <Star className="text-shiraz" size={17} /> Mineralische Produktgruppen &amp; Systemtechniken (Herstellerneutral)
         </h3>
         <p className="text-xs text-text-main/70 mb-4 font-normal">
-          Keramiken und Gläser werden anspruchsvollen Konformitätsprüfungen nach europäischen Normen unterzogen, um Frostbeständigkeit, Riegelkonstruktionen (Abriebklassen für Keramik) und absturzsichernde Verglasungen normativ zu deklarieren:
+          Keramiken und Gläser werden anspruchsvollen Konformitätsprüfungen nach europäischen Normen unterzogen, um z. B. Frostbeständigkeit, Abriebklassen glasierter Fliesen und die Eignung von Verglasungen zu deklarieren:
         </p>
         <div className="overflow-x-auto rounded-xl border border-home-grau/15 bg-white">
           <table className="w-full text-xs text-left border-collapse">
@@ -479,6 +481,22 @@ export default function BpMineralisch() {
 
       <InnovationPraxisSection moduleKey="bp_mineralisch" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Nasslast eines Steingut- und eines Feinsteinzeugbelags"
+          zielGleichung="W_{wet} = A \cdot \frac{t}{1000} \cdot \rho \cdot \left(1 + \frac{w_{abs}}{100}\right)"
+          normQuelle="Lehrbeispiel (Rohdichten und Wasseraufnahme als Lehrwerte)"
+          schritte={[
+            { titel: '1. Steingut', formel: '20 \\cdot 0{,}008 \\cdot 1900 \\cdot 1{,}15 = 350\\,\\text{kg}', erklaerung: '20 m², 8 mm, ρ = 1900 kg/m³, w_abs = 15 %.' },
+            { titel: '2. Feinsteinzeug', formel: '20 \\cdot 0{,}008 \\cdot 2400 \\cdot 1{,}005 = 386\\,\\text{kg}', erklaerung: 'ρ = 2400 kg/m³, w_abs = 0,5 %.' },
+            { titel: '3. Wasseranteil', formel: '\\Delta W_{Steingut} = 304 \\cdot 0{,}15 = 46\\,\\text{kg};\\; \\Delta W_{FSZ} = 384 \\cdot 0{,}005 = 2\\,\\text{kg}', erklaerung: 'Trockenmassen 304 bzw. 384 kg.' },
+          ]}
+          ergebnisHinweis="Steingut nimmt rund 46 kg Wasser auf, Feinsteinzeug nur etwa 2 kg – das Wasser im Porenraum ist auch die Ursache für Frostschäden bei Steingut im Freien."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_mineralisch" />
+
       <ModuleFooter
         weblinks={[
           { title: "Zement-Taschenbuch.", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
@@ -489,18 +507,19 @@ export default function BpMineralisch() {
           { title: 'Naturstein', url: 'https://de.wikipedia.org/wiki/Naturstein' }
         ]} 
         literatur={[
-          'Reiher, H.: Handbuch der Baukeramik.',
-          'Weller, B.: Glasbau: Grundlagen, Berechnung, Konstruktion.'
+          'Weller, B.; Härth, K.; Tasche, S.; Unnewehr, S.: Konstruktiver Glasbau – Grundlagen, Anwendung, Beispiele. München: Edition Detail 2008',
+          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 12150 (Glas im Bauwesen - Thermisch vorgespanntes Einscheibensicherheitsglas)' }, 
+          { title: 'DIN 18008-1 bis -5 (Glas im Bauwesen – Bemessungs- und Konstruktionsregeln)' }, 
+          { title: 'DIN EN 12150 (Glas im Bauwesen – Thermisch vorgespanntes Kalknatron-Einscheibensicherheitsglas)' }, 
           { title: 'DIN EN 14411 (Keramische Fliesen und Platten - Definitionen, Klassifizierung, Eigenschaften)' },
           { title: 'DIN 18516-3 (Außenwandbekleidungen, hinterlüftet - Naturwerkstein)' }
         ]} 
         formeln={[
-          { formel: 'V_{mat} = A \\cdot \\frac{t_{mm}}{1000}', erklaerung: 'Volumenberechnung mineralischer Plattenwerkstoffe' },
-          { formel: 'W_{dry} = V_{mat} \\cdot \\rho_{dry}', erklaerung: 'Eigengewicht mineralischer Werkstoffe auf Grundlage der Rohdichte' },
-          { formel: 'W_{wet} = W_{dry} \\cdot \\left(1 + \\frac{w_{abs}}{100}\\right)', erklaerung: 'Nassgewicht unter vollständiger kapillarer Wasserabsättigung' }
+          { formel: 'V_{mat} = A \\cdot \\frac{t_{mm}}{1000}', erklaerung: 'Volumen eines Plattenbelags (Fläche A in m², Dicke t in mm).', quelle: 'Lehrformel' },
+          { formel: 'W_{dry} = V_{mat} \\cdot \\rho_{dry}', erklaerung: 'Trockenmasse aus Volumen und Rohdichte.', quelle: 'Lehrformel' },
+          { formel: 'W_{wet} = W_{dry} \\cdot \\left(1 + \\frac{w_{abs}}{100}\\right)', erklaerung: 'Masse bei Wassersättigung (Wasseraufnahme w_abs in M.-%).', quelle: 'Lehrformel' }
         ]} 
       />
     </div>
