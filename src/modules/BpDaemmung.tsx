@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { Layers, BookOpen, CheckCircle2, Lightbulb, BadgeCheck, AlertTriangle, ShieldCheck, Settings, Compass, Calculator } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
@@ -29,7 +31,7 @@ const mineralInsulation: InsulationProduct[] = [
     vaporResistance: 'μ = 1',
     fireClass: 'A1 / A2 (nicht brennbar)',
     description: 'Weiches, elastisches Vlies aus recyceltem Glas, Sand und Bindemitteln. Bietet hervorragende akustische Dämpfung, thermischen Schutz und optimalen Einbau durch Kompression.',
-    advantages: ['Sehr leicht und hochkomprimierbar', 'Exzellenter Schall- und Brandschutz', 'Kosteneffizienter Standardbaustoff'],
+    advantages: ['Sehr leicht und hochkomprimierbar', 'Gute Schallabsorption, nichtbrennbar (A1/A2)', 'Kosteneffizienter Standardbaustoff'],
     disadvantages: ['Geringe Eigensteifigkeit und Druckfestigkeit', 'Empfindlich gegen Feuchtigkeitseintrag', 'Staubentwicklung bei Zuschnitt (Haut- und Atemschutz erforderlich)'],
     applications: ['Zwischensparrendämmung im Steildach', 'Holzrahmenbau-Gefachdämmung', 'Trennwände im Trockenbau']
   },
@@ -41,7 +43,7 @@ const mineralInsulation: InsulationProduct[] = [
     density: '30 - 180 kg/m³',
     vaporResistance: 'μ = 1',
     fireClass: 'A1 (nicht brennbar, Schmelzpunkt > 1000°C)',
-    description: 'Robuste Mineralfaser aus vulkanischem Gestein. Aufgrund des extrem hohen Schmelzpunktes unverzichtbar für den vorbeugenden baulichen Brandschutz im Geschossbau.',
+    description: 'Robuste Mineralfaser aus vulkanischem Gestein. Wegen des hohen Schmelzpunkts (> 1000 °C) wichtig für den baulichen Brandschutz.',
     advantages: ['Höchstzulässiger Brandschutz (Schmelzpunkt > 1000 °C)', 'Formbeständig, alterungs- und verrottungsresistent', 'Hohe Druckfestigkeit als Plattenware verfügbar'],
     disadvantages: ['Höheres Eigengewicht als Glaswolle', 'Etwas höhere Materialkosten als Glaswolle', 'Erhöhter Energieaufwand bei der Herstellung (Kuppelofenschmelze)'],
     applications: ['Flachdachdämmung', 'Wärmedämmverbundsysteme (WDVS)', 'Brandsperren in Fassaden', 'Haustechnik / Rohrschalen']
@@ -54,8 +56,8 @@ const mineralInsulation: InsulationProduct[] = [
     density: '100 - 165 kg/m³',
     vaporResistance: 'μ = ∞ (absolut dampf- und diffusionsdicht)',
     fireClass: 'A1 (nicht brennbar)',
-    description: 'Zellulärer Dämmstoff aus hermetisch geschlossenzellig aufgeschäumtem Recyclingglas. Gewährleistet absolute Wasser- und Dampfdichtigkeit über Jahrzehnte hinweg.',
-    advantages: ['Extrem druckfest ohne Verformung (stauchungsfrei)', '100% wasserdicht, dampf- und diffusionsdicht', 'Resistent gegen Nagetiere, Säuren, Radon und Lösungsmittel'],
+    description: 'Geschlossenzelliger Dämmstoff aus aufgeschäumtem (Recycling-)Glas. Wasser- und dampfdicht, dauerhaft formstabil.',
+    advantages: ['Sehr druckfest, praktisch ohne Kriechverformung', 'Wasser- und dampfdicht', 'Resistent gegen Nagetiere, Säuren, Radon und Lösungsmittel'],
     disadvantages: ['Spröde (Bruchgefahr bei mangelhaftem Transport)', 'Kaltverklebung mit Bitumensystemen erforderlich', 'Sehr hohes Preisniveau'],
     applications: ['Perimeterdämmung im Grundwasserbereich', 'Flachdächer (Kompaktdach-Systeme)', 'Lastabtragende Gründungsplatten', 'Industrie- und Kälteanlagen']
   },
@@ -67,8 +69,8 @@ const mineralInsulation: InsulationProduct[] = [
     density: '200 - 300 kg/m³',
     vaporResistance: 'μ = 3 - 6 (extrem atmungsaktiv)',
     fireClass: 'A1 (nicht brennbar)',
-    description: 'Mineralisches Silikathartgestein mit hohem Porenvolumen. Weist eine enorme kapillare Aktivität auf und reguliert Raumluftfeuchten im Innenraum selbstständig.',
-    advantages: ['Enorme Kapillaraktivität (absorbiert und verteilt Feuchtigkeit)', 'Schimmelpilzinhibierend durch hohe Alkalität (pH-Wert ~10)', 'Innendämmung ohne zusätzliche Dampfbremse möglich'],
+    description: 'Mineralische Platte aus Calciumsilikat (Kalk, Quarz, Zellulosefasern) mit sehr hohem Porenvolumen. Kapillaraktiv – Grundlage für Innendämmung ohne Dampfbremse.',
+    advantages: ['Hohe Kapillaraktivität (verteilt Feuchte)', 'Schimmelpilzinhibierend durch hohe Alkalität (pH-Wert ~10)', 'Innendämmung ohne zusätzliche Dampfbremse möglich'],
     disadvantages: ['Mäßige Wärmeleitfähigkeit (erfordert größere Schichtdicken)', 'Stoßempfindlich und mechanisch gering belastbar', 'Flankendämmung und Spezialkleber zwingend erforderlich'],
     applications: ['Innendämmung historischer Fassaden', 'Schimmelsanierung und Feuchtigkeitspflege', 'Laibungsdämmung']
   },
@@ -80,7 +82,7 @@ const mineralInsulation: InsulationProduct[] = [
     density: '70 - 150 kg/m³',
     vaporResistance: 'μ = 2 - 5',
     fireClass: 'A1 (nicht brennbar)',
-    description: 'Durch Hitzeeinwirkung auf das zwanzigfache Volumen expandiertes vulkanisches Glasgestein (Obsidian). Absolut mineralischer, poröser Schütt- und Dämmstoff.',
+    description: 'Perlitgestein (vulkanisches Glas mit gebundenem Wasser), durch kurzes Erhitzen auf das 15- bis 20-fache Volumen gebläht. Mineralischer, poröser Schütt- und Dämmstoff.',
     advantages: ['Reiner Naturbaustoff ohne Bindemittel', 'Fäulnis-, ungeziefer- und temperaturbeständig', 'Ausgezeichnete Hohlraumfüllung (schüttfähig)'],
     disadvantages: ['Setzungsneigung bei ungenügender Verdichtung', 'Wasseraufnahmekapazität erhöht (Trockenhaltung nötig)', 'Geringe Eigenfestigkeit'],
     applications: ['Kerndämmung im zweischaligen Mauerwerk', 'Estrichtrockenschüttung', 'Schornstein-Hinterfüllungen']
@@ -94,7 +96,7 @@ const mineralInsulation: InsulationProduct[] = [
     vaporResistance: 'μ = 2',
     fireClass: 'A1 (nicht brennbar)',
     description: 'Blähende Tone, die im Drehrohrofen bei ca. 1200 °C gebrannt werden. Die Kugelkörner besitzen ein hochporisiertes Inneres und eine feste Außenhaut.',
-    advantages: ['Hervorragender statischer Lastabtrag (sehr druckstabil)', 'Absolut verrottungsfest und frostsicher', 'Leicht hydraulisch stabilisierbar'],
+    advantages: ['Druckstabil', 'Verrottungsfest und frostbeständig', 'Leicht hydraulisch stabilisierbar'],
     disadvantages: ['Mäßige Wärmedämmwirkung (hohe Lambda-Werte)', 'Hohe Schüttdicken für Norm-U-Werte erforderlich'],
     applications: ['Lastabtragende Dämmschüttungen unter Bodenplatten', 'Ausgleichsschüttungen auf Massivdecken', 'Leichtbetonzuschlag']
   }
@@ -109,8 +111,8 @@ const syntheticInsulation: InsulationProduct[] = [
     density: '15 - 35 kg/m³',
     vaporResistance: 'μ = 20 - 100',
     fireClass: 'Schwerentflammbar (B1 / Euroklasse E)',
-    description: 'Leichter, offenzelliger Partikel-Hartschaumstoff aus polymerisierten Styrolkügelchen. Der wirtschaftliche Klassiker in der Außenwand-WDVS-Dämmung.',
-    advantages: ['Äußerst kostengünstig und einfach zuzuschneiden', 'Sehr geringes Eigengewicht', 'Form- und maßstabil bei sachgerechter Anwendung'],
+    description: 'Leichter, geschlossenzelliger Partikelschaum aus vorgeschäumten Polystyrolperlen. Der wirtschaftliche Klassiker in der Außenwand-WDVS-Dämmung.',
+    advantages: ['Kostengünstig und einfach zuzuschneiden', 'Sehr geringes Eigengewicht', 'Form- und maßstabil bei sachgerechter Anwendung'],
     disadvantages: ['Thermoplastisches Brandverhalten (schmilzt brennend ab)', 'UV-empfindlich (Zersetzung der Oberfläche bei Sonneneinstrahlung)', 'Nicht für den dauerhaften Erdreich- oder Wasserkontakt geeignet'],
     applications: ['Wärmedämmverbundsysteme (WDVS)', 'Estrich- und Trittschalldämmung', 'Zweischaliges Mauerwerk (Kerndämmung)']
   },
@@ -122,9 +124,9 @@ const syntheticInsulation: InsulationProduct[] = [
     density: '30 - 45 kg/m³',
     vaporResistance: 'μ = 80 - 250',
     fireClass: 'Schwerentflammbar (B1 / Euroklasse E)',
-    description: 'Geschlossenzelliger, stranggepresster Schaumstoff. Bietet extrem glatte, verdichtete Schäumhäute und ist absolut unempfindlich gegenüber Feuchtigkeitsbeanspruchungen.',
-    advantages: ['Extrem druckfest (Belastungen bis zu 700 kPa schadensfrei)', 'Vollständig wasserunempfindlich und verrottungsfest', 'Frost-Tau-Wechsel-beständig im direkten Erdreichkontakt'],
-    disadvantages: ['Umweltrelevanz durch problematische Treibmittel/Flammschutzmittel beim Recycling', 'Geringer Beitrag zum Schallschutz', 'Hochempfindlich gegenüber organischen Lösungsmitteln'],
+    description: 'Geschlossenzelliger, stranggepresster Schaumstoff. Glatte Schäumhaut, sehr geringe Wasseraufnahme.',
+    advantages: ['Hohe Druckfestigkeit (je nach Typ bis ca. 700 kPa bei 10 % Stauchung)', 'Wasserunempfindlich und verrottungsfest', 'Frost-Tau-Wechsel-beständig im direkten Erdreichkontakt'],
+    disadvantages: ['Recycling erschwert (Altbestände mit HBCD-Flammschutz)', 'Geringer Beitrag zum Schallschutz', 'Hochempfindlich gegenüber organischen Lösungsmitteln'],
     applications: ['Perimeterdämmung (erdberührte Kellerwände)', 'Umkehrdach (über der Dachabdichtungsbahn)', 'Lastabtragende Bodendämmung unter Fundamentplatten']
   },
   {
@@ -135,9 +137,9 @@ const syntheticInsulation: InsulationProduct[] = [
     density: '30 - 40 kg/m³',
     vaporResistance: 'μ = 40 - 200 (Alukaschiert = ∞)',
     fireClass: 'Normal- bis schwerentflammbar (B2 / Euroklasse E-C)',
-    description: 'Duroplastischer Hartschaumstoff mit herausragender Dämmleistung. Ermöglicht minimalste Bauteildicken bei maximalem Wärmeschutz.',
-    advantages: ['Exzellent niedrige Wärmeleitfähigkeit', 'Temperaturbeständig (verträgt heißen Bitumenaufrag)', 'Sehr druckfest und dimensionsstabil'],
-    disadvantages: ['Hoher Primärenergieaufwand bei der Synthese', 'Keine elastische Schallabsorption', 'Zuschnittabfälle müssen sonderentsorgt werden'],
+    description: 'Duroplastischer Hartschaum mit sehr niedriger Wärmeleitfähigkeit – geringe Dämmdicken möglich.',
+    advantages: ['Sehr niedrige Wärmeleitfähigkeit', 'Temperaturbeständig (verträgt heißen Bitumenaufrag)', 'Sehr druckfest und dimensionsstabil'],
+    disadvantages: ['Hoher Primärenergieaufwand bei der Synthese', 'Keine elastische Schallabsorption', 'Recycling schwierig (Verbund mit Deckschichten)'],
     applications: ['Aufsparrendämmung am Steildach (Vollflächendämmung)', 'Flachdächer', 'Sandwichplatten für Industriefassaden', 'Fußbodenheizungsträger']
   },
   {
@@ -148,8 +150,8 @@ const syntheticInsulation: InsulationProduct[] = [
     density: '35 - 50 kg/m³',
     vaporResistance: 'μ = 25 - 50',
     fireClass: 'Schwerentflammbar (Euroklasse C-s1, d0 / B1)',
-    description: 'Geschlossenzelliger Hightech-Duroplast aus Resol-Phenolharzen. Bietet die stärkste Dämmung unter den massengekoppelten Polymerplatten bei exzellentem Brandverhalten.',
-    advantages: ['Beste Dämmwirkung aller gängigen Hartschaumplatten', 'Hervorragendes Brandverhalten (geringe Glimmgefahr, kein brennendes Abtropfen)', 'Ermöglicht filigranste WDVS-Aufbauten'],
+    description: 'Geschlossenzelliger Duroplast aus Resol-Phenolharz mit sehr niedriger Wärmeleitfähigkeit und günstigem Brandverhalten.',
+    advantages: ['Sehr niedrige Wärmeleitfähigkeit (λ ab ca. 0,021 W/(mK))', 'Hervorragendes Brandverhalten (geringe Glimmgefahr, kein brennendes Abtropfen)', 'Schlanke WDVS-Aufbauten möglich'],
     disadvantages: ['Sehr spröde und empfindlich gegen Stöße', 'Darf keiner dauerhaften Nässeeinwirkung ausgesetzt werden', 'Hoher Marktpreis'],
     applications: ['Superschlanke Hochleistungs-WDVS-Fassaden', 'Laibungs- und Fassadennischendämmungen', 'Balkondecken- und Loggienelemente']
   },
@@ -177,7 +179,7 @@ const ecologicalInsulation: InsulationProduct[] = [
     density: '40 - 270 kg/m³',
     vaporResistance: 'μ = 3 - 10 (äußerst diffusionsoffen)',
     fireClass: 'Normalentflammbar (B2 / Euroklasse E)',
-    description: 'Nachwachsender Dämmstoff aus zerkleinerten Nadelhölzern, im Nass- oder Trockenverfahren verpresst. Gilt als unschlagbarer Marktstandard für natürlichen Hitzeschutz.',
+    description: 'Nachwachsender Dämmstoff aus zerkleinerten Nadelhölzern, im Nass- oder Trockenverfahren verpresst. Verbreiteter nachwachsender Dämmstoff mit gutem sommerlichem Wärmeschutz.',
     advantages: ['Überragende spezifische Wärmekapazität (c ≈ 2100 J/kgK)', 'Hervorragender sommerlicher Hitzeschutz durch Phasenverschiebung', 'Hygroskopisch wirksam (speichert Feuchte schadensfrei)', 'Hohe CO2-Speicherleistung im Bauteil'],
     disadvantages: ['Erhöhte Wärmeleitfähigkeit erfordert größere Bauteildicken', 'Hohes spezifisches Eigengewicht beansprucht Tragwerk stärker', 'Spürbarer Preisaufschlag gegenüber Mineralwolle oder EPS'],
     applications: ['Unterdeckung und Aufsparrendämmung am Steildach', 'Putzträgerplatten ökologischer Massivholz-WDVS', 'Gefachdämmung (als flexible Matten)']
@@ -190,9 +192,9 @@ const ecologicalInsulation: InsulationProduct[] = [
     density: '30 - 65 kg/m³',
     vaporResistance: 'μ = 1 - 2',
     fireClass: 'Schwerentflammbar (B1 / Euroklasse B-d0 / D)',
-    description: 'Gewonnen durch mechanische Zerfaserung von Altpapier (Zeitungspapier), versetzt mit mineralischen Additiven (Borsalzen oder Ammoniumphosphaten) als Brandschutz und Erregerabwehr.',
-    advantages: ['Fugenlose und hohlraumfreie Ausflockung komplexer Geometrien', 'Sehr hohes Raumgewicht schützt ideal vor sommerlicher Hitze', 'Hervorragende Schallschutzeigenschaften', 'Herausragend niedrige Primärenergiebilanz'],
-    disadvantages: ['Setzungsgefahr bei unzureichendem Einblasdruck (Fachbetriebspflicht)', 'Vollkommen ungeeignet bei direkter Nässeeinwirkung', 'Staubentwicklung beim Einblasprozess'],
+    description: 'Gewonnen durch mechanische Zerfaserung von Altpapier (Zeitungspapier), versetzt mit Zusätzen (z. B. Borsalze, Ammoniumphosphat/-sulfat) für Brandschutz und Schutz gegen Schimmel und Schädlinge.',
+    advantages: ['Fugenlose und hohlraumfreie Ausflockung komplexer Geometrien', 'Gute Wärmespeicherfähigkeit für den sommerlichen Wärmeschutz', 'Hervorragende Schallschutzeigenschaften', 'Herausragend niedrige Primärenergiebilanz'],
+    disadvantages: ['Setzungsgefahr bei unzureichendem Einblasdruck (Fachbetriebspflicht)', 'Nicht für direkte Nässe geeignet', 'Staubentwicklung beim Einblasprozess'],
     applications: ['Dachschrägen-Gefachdämmung', 'Einblasdämmung in Holztafelkonstruktionen und Holzbalkendecken', 'Frei liegende Deckenschüttung']
   },
   {
@@ -204,8 +206,8 @@ const ecologicalInsulation: InsulationProduct[] = [
     vaporResistance: 'μ = 1 - 2',
     fireClass: 'Normalentflammbar (B2 / Euroklasse E)',
     description: 'Biegsame Platten aus zähen Bastfasern der Hanfpflanze. Im Trockenverfahren unter Einmischung hitzeaktivierter Stützfasern (Copolyester) zu elastischen Dämmmatten verarbeitet.',
-    advantages: ['Sehr hohe Reißfestigkeit und elastischer Klemmeffekt', 'Von Natur aus resistent gegen Schimmelpilze und Schädlinge (bitterstofffrei)', 'Ausgezeichnete Feuchteregulation ohne Strukturverlust'],
-    disadvantages: ['Schwerer zuzuschneiden als Mineralwollen (Spezialsägen nötig)', 'Einsatz auf absolut trocken gehaltene Kernbereiche begrenzt'],
+    advantages: ['Sehr hohe Reißfestigkeit und elastischer Klemmeffekt', 'Geringe Anfälligkeit für Schimmel und Schädlinge (Herstellerangabe)', 'Ausgezeichnete Feuchteregulation ohne Strukturverlust'],
+    disadvantages: ['Schwerer zuzuschneiden als Mineralwollen (Spezialsägen nötig)', 'Nur in trocken bleibenden Bauteilbereichen einsetzen'],
     applications: ['Zwischensparrendämmung im Steildach', 'Gefachdämmung im Holzrahmenbau', 'Schallentkopplung unter Dielen']
   },
   {
@@ -216,9 +218,9 @@ const ecologicalInsulation: InsulationProduct[] = [
     density: '85 - 110 kg/m³',
     vaporResistance: 'μ = 1 - 2',
     fireClass: 'Normalentflammbar (Euroklasse E / B2; verputzt F30-F90)',
-    description: 'Unbehandeltes Weizen-, Roggen- oder Dinkelstroh, das unter extrem hohem Druck zu quaderförmigen Ballen gepresst wird. Ein unschlagbarer CO2-Senker direkt vom Acker.',
+    description: 'Unbehandeltes Weizen-, Roggen- oder Dinkelstroh, das zu quaderförmigen Ballen gepresst wird. Speichert biogenen Kohlenstoff, sehr geringer Herstellungsaufwand.',
     advantages: ['Sensationelle Ökobilanz und CO2-Speicherung', 'Schnittfester, dichter Gefacheinbau', 'Hervorragender sommerlicher Überhitzungsschutz'],
-    disadvantages: ['Sehr hohe Einbaustärke erforderlich', 'Feuchtigkeitsüberwachung während der Bauphase zwingend', 'Ausschließlich im zertifizierten Holzständergefecht einsetzbar'],
+    disadvantages: ['Sehr hohe Einbaustärke erforderlich', 'Feuchtigkeitsüberwachung während der Bauphase zwingend', 'Einsatz nach Verwendbarkeitsnachweis, meist im Holzbau'],
     applications: ['Ausfachung und Dämmung im Strohballen-Holzbau', 'Wand- und Deckenfüllungen']
   },
   {
@@ -229,8 +231,8 @@ const ecologicalInsulation: InsulationProduct[] = [
     density: '100 - 150 kg/m³',
     vaporResistance: 'μ = 5 - 15',
     fireClass: 'Normalentflammbar (B2 / Euroklasse E)',
-    description: 'Granulierte Rinde der Korkeiche. Wird unter Heißdampf ohne künstliche Klebstoffe expandiert. Das pflanzeneigene Harz Suberin fungiert als Bindemittel.',
-    advantages: ['Absolut wasserunempfindlich und fäulnisresistent', 'Sehr gut alterungsbeständig und druckbelastbar', '100% chemiefrei (reines Naturprodukt)'],
+    description: 'Granulierte Rinde der Korkeiche. Wird unter Heißdampf expandiert; korkeigene Harze binden die Körner ohne Zusatzbindemittel.',
+    advantages: ['Wenig feuchteempfindlich und fäulnisresistent', 'Sehr gut alterungsbeständig und druckbelastbar', 'Ohne Zusatzbindemittel'],
     disadvantages: ['Begrenzte Marktkapazitäten und weite Lieferwege', 'Sehr hochpreisiger ökologischer Baustoff'],
     applications: ['Perimeterdämmung im Erdbodenbereich (ökologisch)', 'Aufsparren- und Flachdachdämmung', 'Trittschallschutz unter Estrich']
   },
@@ -242,9 +244,9 @@ const ecologicalInsulation: InsulationProduct[] = [
     density: '20 - 45 kg/m³',
     vaporResistance: 'μ = 1 - 2',
     fireClass: 'Normalentflammbar (B2 / Euroklasse E, entzündet sich schwer)',
-    description: 'Gewaschene Schafschurwolle, die mithilfe von textilen Stützfasern vernadelt wird. Weist die einzigartige Eigenschaft auf, gesundheitsschädliche Gase aufzunehmen.',
-    advantages: ['Baut Formaldehyd und Raumgifte chemisch irreversibel ab', 'Kann bis zu 33% des Eigengewichts an Feuchte binden ohne Dämmungsverlust', 'Nachwachsend ohne Pestizidbelastung'],
-    disadvantages: ['Erfordert vorbeugenden Mottenschutz (Ausstattung mit mineralhaltigen Salzen)', 'Teure Beschaffung'],
+    description: 'Gewaschene Schafschurwolle, die mithilfe von textilen Stützfasern vernadelt wird. Kann Formaldehyd aus der Raumluft binden (Untersuchungen/Herstellerangaben).',
+    advantages: ['Bindet Formaldehyd an das Keratin der Faser', 'Kann bis zu 33% des Eigengewichts an Feuchte binden ohne Dämmungsverlust', 'Nachwachsender Rohstoff'],
+    disadvantages: ['Mottenschutz erforderlich (Mittel produktabhängig)', 'Teure Beschaffung'],
     applications: ['Gefachdämmung in Decken und Wänden', 'Sanierung kontaminierter Innenräume (Raumluftfilter)', 'Fugenbeidämmung']
   },
   {
@@ -256,7 +258,7 @@ const ecologicalInsulation: InsulationProduct[] = [
     vaporResistance: 'μ = 1 - 2',
     fireClass: 'Normalentflammbar (Euroklasse E / B2)',
     description: 'Naturbelassene Meeresfasern des Seegrases (Zostera marina), am Strand getrocknet und mechanisch von Sandresten gereinigt. Keine Zusätze nötig.',
-    advantages: ['Von Natur aus salzhaltig, dadurch absolut schimmel- und ungezieferresistent', 'Schwer entflammbar ohne Brandschutzchemikalien', 'Unbegrenzt feuchteunempfindlich und fäulnissicher'],
+    advantages: ['Salzhaltig, dadurch wenig anfällig für Schimmel und Schädlinge (Herstellerangabe)', 'Schwer entflammbar ohne Brandschutzchemikalien', 'Wenig feuchteempfindlich'],
     disadvantages: ['Kann nur als Schüttgut oder Einblasfaser eingebracht werden', 'Verarbeitung erfordert Erfahrung und Spezialgeräte'],
     applications: ['Dachschrägengefeche', 'Hohlraumschüttung in Balkenlagen und Decken', 'Einblasdämmung']
   }
@@ -272,8 +274,8 @@ const highPerformanceInsulation: InsulationProduct[] = [
     vaporResistance: 'μ = ∞ (versiegelter Aluminiumfolienmantel)',
     fireClass: 'Schwerentflammbar (Euroklasse B oder E)',
     description: 'Evakuierter Kern aus pyrogener Kieselsäure, umhüllt und gasdicht verschweißt in einer Hochbarrierefolie. Verhindert Gaskonvektion fast gänzlich.',
-    advantages: ['Weltbestes physikalisches Dämmvermögen (Lambda bis zu 0,004 W/mK)', 'Minimalste Aufbaustärken (perfekt bei Sanierungen und Platznot)', 'Extreme Platzersparnis (5-mal schlanker als EPS)'],
-    disadvantages: ['Absolutes Beschädigungsverbot (darf niemals durchbohrt, zerschnitten oder geraspelt werden)', 'Vakuumverlust bei Perforation führt zu sofortigem Lambda-Anstieg auf ca. 0,020 W/mK', 'Aufwendige Maß- und Vorplanung zwingend erforderlich'],
+    advantages: ['Sehr hohe Dämmwirkung (λ im Kern ca. 0,004–0,005, Bemessungswert nach Zulassung ca. 0,007–0,008 W/(mK))', 'Sehr geringe Aufbaudicken (Sanierung, Platznot)', 'Etwa fünfmal schlanker als EPS'],
+    disadvantages: ['Darf nicht durchbohrt, geschnitten oder beschädigt werden', 'Vakuumverlust bei Perforation führt zu sofortigem Lambda-Anstieg auf ca. 0,020 W/mK', 'Aufwendige Maß- und Vorplanung zwingend erforderlich'],
     applications: ['Balkone und barrierefreie Dachterrassenübergänge', 'Laibungsdämmung bei Minimalabständen', 'Kältebrücken-Sondersanierung']
   },
   {
@@ -284,10 +286,10 @@ const highPerformanceInsulation: InsulationProduct[] = [
     density: '120 - 150 kg/m³',
     vaporResistance: 'μ = 5 (hoch diffusionsoffen)',
     fireClass: 'A2 (nicht brennbar, raucharm)',
-    description: 'Amorphes Silika-Nanogel, das in stabile Textilfaser- oder Glasfaservliesmatten eingeschmolzen wird. Nutzt extrem kleine Nanoporen zur Ausschaltung von Gaskonvektion.',
+    description: 'Amorphes Silika-Nanogel, das in stabile Textilfaser- oder Glasfaservliesmatten eingeschmolzen wird. Die Nanoporen unterdrücken die Wärmeleitung des Gases (Knudsen-Effekt).',
     advantages: ['Höchster Dämmwert aller diffusionsoffenen und flexiblen Matten', 'Hydrophober Charakter bei gleichzeitiger Atmungsaktivität', 'Biegbar und formbar für Rundungen'],
-    disadvantages: ['Sehr starke Feinstaubentwicklung beim manuellen Zuschnitt', 'Extrem hoher Kostenfaktor', 'Aufwändige Befestigungssysteme'],
-    applications: ['Innendämmung denkmalgeschützter Prachtfassaden', 'Heizkörpernischenbehebung', 'Laibungen und dekorative Rundbögen']
+    disadvantages: ['Sehr starke Feinstaubentwicklung beim manuellen Zuschnitt', 'Hoher Preis', 'Aufwändige Befestigungssysteme'],
+    applications: ['Innendämmung bei denkmalgeschützten Fassaden', 'Heizkörpernischenbehebung', 'Laibungen und dekorative Rundbögen']
   }
 ];
 
@@ -546,7 +548,7 @@ export default function BpDaemmung() {
                 <ShieldCheck className="text-shiraz" size={18} /> Gesetzliche Anforderungen &amp; Maximale U-Werte (GModG, vormals GEG)
               </h3>
               <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                Das Gebäudeenergiegesetz (GEG) regelt die energetischen Mindestanforderungen für Neubauten sowie für anstehende Sanierungen im Bestand (Anlage 7 GEG). Wird ein Bauteil um mehr als 10% flächenmäßig verändert (z. B. Neuer Putz bei Fassadendämmung), gelten folgende Grenzwerte für den maximal zulässigen Wärmedurchgangskoeffizienten (<InlineMath math="U" />):
+                Das GModG (bis Juli 2026: Gebäudeenergiegesetz, GEG) regelt die energetischen Anforderungen an Neubauten und an Änderungen im Bestand. Die folgenden Höchstwerte stammen aus Anlage 7 GEG (Übernahme ins GModG manuell prüfen). Wird ein Bauteil um mehr als 10% flächenmäßig verändert (z. B. Neuer Putz bei Fassadendämmung), gelten folgende Grenzwerte für den maximal zulässigen Wärmedurchgangskoeffizienten (<InlineMath math="U" />):
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-medium">
@@ -597,7 +599,7 @@ export default function BpDaemmung() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-normal">
                 <div className="p-3 bg-white border border-home-grau/10 rounded-lg shadow-sm space-y-1.5">
-                  <span className="font-bold text-slate-800 block">Dachdämmungen (Typen DAA, DAD, DZ, DI)</span>
+                  <span className="font-bold text-slate-800 block">Dachdämmungen (Typen DAD, DAA, DZ, DI)</span>
                   <p className="text-text-main/70 text-[11px] leading-relaxed">
                     <strong>DAD:</strong> Außendämmung unter Deckung (z.B. Aufsparrendämmung). <br />
                     <strong>DAA:</strong> Außendämmung unter Abdichtung (z.B. klassisches Flachdach). <br />
@@ -606,26 +608,26 @@ export default function BpDaemmung() {
                   </p>
                 </div>
                 <div className="p-3 bg-white border border-home-grau/10 rounded-lg shadow-sm space-y-1.5">
-                  <span className="font-bold text-slate-800 block">Wand- &amp; Fassadendämmungen (Typen WAP, WAB, WAS, WBL)</span>
+                  <span className="font-bold text-slate-800 block">Wand- &amp; Fassadendämmungen (Typen WAP, WAB, WZ, WI)</span>
                   <p className="text-text-main/70 text-[11px] leading-relaxed">
                     <strong>WAP:</strong> Außendämmung der Wand unter Putz (klassische WDVS-Fassade). <br />
                     <strong>WAB:</strong> Außendämmung hinter Bekleidung (z.B. vorgehängte hinterlüftete Fassade - VHF). <br />
-                    <strong>WAS:</strong> Kerndämmung bei zweischaligem Mauerwerk (Vollfugenfüllung). <br />
-                    <strong>WBL:</strong> Innendämmung der Wand unter Bekleidung (z.B. historische Fassadensanierung).
+                    <strong>WZ:</strong> Dämmung von zweischaligen Wänden (Kerndämmung). <br />
+                    <strong>WI:</strong> Innendämmung der Wand.
                   </p>
                 </div>
                 <div className="p-3 bg-white border border-home-grau/10 rounded-lg shadow-sm space-y-1.5">
                   <span className="font-bold text-slate-800 block">Decken- &amp; Estrichdämmungen (Typen DEO, DES)</span>
                   <p className="text-text-main/70 text-[11px] leading-relaxed">
                     <strong>DEO:</strong> Innendämmung der Decke oder Bodenplatte (oberseitig) unter Estrich ohne zusätzliche Schallschutzanforderung. <br />
-                    <strong>DES:</strong> Trittschalldämmung unter schwimmendem Estrich mit elastischen Eigenschaften (sd-Wert-beschränkt).
+                    <strong>DES:</strong> Dämmung unter Estrich mit Schallschutzanforderung (Trittschalldämmung, Kennwert dynamische Steifigkeit s′).
                   </p>
                 </div>
                 <div className="p-3 bg-white border border-home-grau/10 rounded-lg shadow-sm space-y-1.5">
                   <span className="font-bold text-slate-800 block">Erdberührte Bauwerksdämmungen (Typen PW, PB)</span>
                   <p className="text-text-main/70 text-[11px] leading-relaxed">
                     <strong>PW:</strong> Perimeterdämmung an der Außenseite erdberührter Kellerwände (Druckwasser- oder Erddruckbelastung). <br />
-                    <strong>PB:</strong> Außendämmung unter Fundamentplatten und Gründungssohlen mit extrem hohem statischem Lastabtrag (stauchungsfrei).
+                    <strong>PB:</strong> Außendämmung unter lastabtragenden Bodenplatten (Perimeterdämmung unter der Gründung, hohe Druckfestigkeit erforderlich).
                   </p>
                 </div>
               </div>
@@ -640,20 +642,37 @@ export default function BpDaemmung() {
         )}
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: U-Wert einer gedämmten Außenwand (WDVS)"
+          zielGleichung="U = \frac{1}{R_{si} + \sum d_i/\lambda_i + R_{se}}"
+          normQuelle="DIN EN ISO 6946 (R_si = 0,13, R_se = 0,04 m²K/W)"
+          schritte={[
+            { titel: '1. Schichten', formel: '\\text{Putz } 0{,}015/0{,}51 + \\text{KS } 0{,}175/0{,}99 + \\text{EPS } 0{,}16/0{,}035 + \\text{Putz } 0{,}01/0{,}70', erklaerung: 'Innenputz, Kalksandstein, EPS-Dämmung (WLS 035), Außenputz; λ als Lehrwerte.' },
+            { titel: '2. Widerstände', formel: '0{,}029 + 0{,}177 + 4{,}571 + 0{,}014 = 4{,}79\\,\\text{m}^2\\text{K/W}', erklaerung: 'Summe der Schichtwiderstände d/λ.' },
+            { titel: '3. Gesamtwiderstand', formel: 'R_T = 0{,}13 + 4{,}79 + 0{,}04 = 4{,}96\\,\\text{m}^2\\text{K/W}', erklaerung: 'Mit Wärmeübergangswiderständen innen und außen.' },
+            { titel: '4. U-Wert', formel: 'U = 1/4{,}96 = 0{,}20\\,\\text{W/(m}^2\\text{K)}', erklaerung: 'Anforderung Bestand (GEG Anlage 7): U ≤ 0,24 – erfüllt.' },
+          ]}
+          ergebnisHinweis="Die Dämmschicht liefert über 90 % des Widerstands; Dübel und Anschlüsse (Wärmebrücken) sind gesondert zu berücksichtigen."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_daemmung" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Dämmstoff', url: 'https://de.wikipedia.org/wiki/D%C3%A4mmstoff' },
           { title: 'Wärmedämmung', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmung' }
         ]} 
         literatur={[ 
-          'Willems, W. et al.: Handbuch Bauphysik - Schall, Wärme, Feuchte.', 
-          'Pistohl, W.: Handbuch der Gebäudetechnik.', 
-          'Minke, G.: Handbuch Naturbaustoffe - Ökologische Dämmung.' 
+          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)', 
+          'Fachagentur Nachwachsende Rohstoffe (FNR): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen (Auflage manuell prüfen)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz von Gebäuden)' }, 
           { title: 'DIN 4108-3 (Klimabedingter Feuchteschutz - Tauwasservermeidung nach Glaser)' },
-          { title: 'GEG (Gebäudeenergiegesetz - Anforderungen an baulichen Wärmeschutz)', url: 'https://www.gesetze-im-internet.de/geg/' },
+          { title: 'GModG (vormals GEG) – Anforderungen an den baulichen Wärmeschutz', url: 'https://www.gesetze-im-internet.de/geg/' },
+          { title: 'DIN 4108-10 (Anwendungsbezogene Anforderungen an Wärmedämmstoffe)' },
           { title: 'DIN EN 13162 (Dämmstoffe für Gebäude - Werkmäßig hergestellte Mineralwolle MW)' },
           { title: 'DIN EN 13164 (Dämmstoffe für Gebäude - Extrudierte Polystyrolschaumstoffe XPS)' },
           { title: 'DIN EN 13171 (Dämmstoffe für Gebäude - Werkmäßig hergestellte Holzfaserstoffe WF)' }

@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import { 
   Layers, 
@@ -65,7 +67,7 @@ export default function BpAbdichtung() {
         break;
       case 'drueckend_flach':
         waterClass = 'W2.1-E';
-        waterDesc = 'Mäßige Einwirkung von außen drückendem Wasser (Grundwasserstand dauerhaft ≤ 3,0 m über der Fundamentsohle).';
+        waterDesc = 'Mäßige Einwirkung von außen drückendem Wasser (Eintauchtiefe ≤ 3,0 m).';
         break;
       case 'drueckend_tief':
         waterClass = 'W2.2-E';
@@ -119,7 +121,7 @@ export default function BpAbdichtung() {
         systemDesc = 'Das Tragwerk übernimmt die statischen Lasten und dient gleichzeitig als Abdichtung (Primärsystem). Einteilig betoniert mit integrierten Arbeits- und Dehnungsfugen-Abdichtungen.';
         products = [
           'WU-Beton mit dichtem Zementsteingefüge und geringem Wasserbindemittelwert (w/z ≤ 0,55)',
-          'Beschichtete Fugenbleche zur unverschlossenen Kriechwegverlängerung',
+          'Fugenbleche bzw. Fugenbänder zur Verlängerung des Wasserwegs in Arbeitsfugen',
           'Hochelastische PVC-P Fugenbänder für Dehnungsfugen',
           'Injektionsschläuche im Betonierstoß zur nachträglichen Verpressung im Schadensfall'
         ];
@@ -134,13 +136,13 @@ export default function BpAbdichtung() {
         ];
       } else {
         systemTitle = 'Weiße Wanne (Einfaches Tragsystem / Nutzungsklasse C)';
-        systemDesc = 'Betonkonstruktion ohne strenge Rissbreitenüberwachung für Lagerplätze mit vernachlässigbaren Dichtigkeitsansprüchen (z. B. offene Tiefgaragen).';
+        systemDesc = 'Betonkonstruktion ohne besondere Dichtheitsanforderung für Bereiche, in denen Feuchtstellen hingenommen werden (z. B. offene Tiefgaragen).';
         products = [
           'WU-Beton (Standardgüte)',
           'Integrierte Fugenbleche oder Bentonit-Quellbänder in den Arbeitsfugen'
         ];
         techSpecs = [
-          { label: 'Rissbreite wk', value: 'Rissbreiten bis zu 0,30 mm zulässig' },
+          { label: 'Rissbreite wk', value: 'Rissbreite nach EC2/Expositionsklasse (z. B. w_max = 0,3 mm), keine WU-Anforderung' },
           { label: 'Mindestdicke Wand', value: '≥ 24 cm' }
         ];
         guidelines = [
@@ -322,7 +324,7 @@ export default function BpAbdichtung() {
                   </ul>
                 </div>
                 <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit PMBC" (3. Ausgabe, Deutsche Bauchemie e.V.).
+                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit PMBC" (Deutsche Bauchemie e. V.; Ausgabe manuell prüfen).
                 </div>
               </div>
 
@@ -350,7 +352,7 @@ export default function BpAbdichtung() {
                   </ul>
                 </div>
                 <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit MDS" (4. Ausgabe, Deutsche Bauchemie e.V.).
+                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit MDS" (Deutsche Bauchemie e. V.; Ausgabe manuell prüfen).
                 </div>
               </div>
 
@@ -360,16 +362,16 @@ export default function BpAbdichtung() {
                   <span className="text-[10px] font-bold text-indigo-800 tracking-wider uppercase bg-indigo-50 px-2 py-0.5 rounded block w-max">Hybrid-System (Zukunft)</span>
                   <h3 className="font-extrabold text-slate-800 text-sm lg:text-base">FPD (Flexible polymermodifizierte Dickbeschichtungen)</h3>
                   <p className="text-xs text-slate-500 leading-normal">
-                    Bitumenfreie, hochelastische, extrem schnellabbindende Hybrid-Flüssigabdichtungen. Sie vereinen die hohe Rissüberbrückungsfähigkeit von PMBC mit dem hochfesten Haftverbund mineralischer MDS-Schlämmen.
+                    Bitumenfreie, flexible, schnell erhärtende Flüssigabdichtungen (Reaktivsysteme). Sie verbinden die Rissüberbrückung von PMBC mit dem guten Haftverbund mineralischer Dichtungsschlämmen.
                   </p>
                   <ul className="text-[11px] text-slate-600 pl-1 list-none space-y-2">
                     <li className="flex items-start gap-1.5 border-t border-slate-100 pt-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Haftung &amp; Multifunktionalität:</strong> Außerordentliche, verkrallende Adhäsionswerte auf Beton, Stein, Metall, PVC und staubigen, bituminösen Altabdichtungsschichten im Bestand. Optimal für Sanierungen und Übergänge geeignet!</span>
+                      <span><strong>Haftung &amp; Multifunktionalität:</strong> Gute Haftung auf Beton, Mauerwerk, Metall, Kunststoffen und tragfähigen bituminösen Altabdichtungen (Untergrund sauber und staubfrei). Geeignet für Sanierungen und Übergänge.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
-                      <span><strong>Bauökologie &amp; Systemvorteile:</strong> Lösemittelfrei, geruchsneutral, UV-beständig und verputzfähig. Durch reaktive Selbsthärtung extrem schnelltrocknend und bereits nach wenigen Stunden regen- und druckfest beladefähig.</span>
+                      <span><strong>Bauökologie &amp; Systemvorteile:</strong> Lösemittelfrei, geruchsneutral, UV-beständig und verputzfähig. Durch Reaktionshärtung schnell regenfest und früh hinterfüllbar (Zeiten nach Herstellerangabe).</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check className="text-emerald-600 w-3.5 h-3.5 shrink-0 mt-0.5" />
@@ -378,7 +380,7 @@ export default function BpAbdichtung() {
                   </ul>
                 </div>
                 <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit FPD" (1. Ausgabe, Deutsche Bauchemie e.V.).
+                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit FPD" (Deutsche Bauchemie e. V.; Ausgabe manuell prüfen).
                 </div>
               </div>
             </div>
@@ -404,7 +406,7 @@ export default function BpAbdichtung() {
                   Kompletter ökologischer Feuchteschutz im Grundwasser- und Gründungsbereich durch quellfähige Mineralien ohne den Einsatz chemischer Lösungsmittel:
                 </p>
                 <ul className="list-disc list-inside text-xs text-slate-650 space-y-1.5 pl-1 leading-normal">
-                  <li><strong>Bentonitbahnen ("Braune Wanne"):</strong> Robuste Geotextilbahnen, zwischen deren Gewebeschichten pulverförmiges Natriumbentonit fest gekapselt ist. Unter Erdanpressdruck quillt das Bentonit bei Wasserkontakt und bildet eine extrem dichte, gelartige Tonschicht.</li>
+                  <li><strong>Bentonitbahnen ("Braune Wanne"):</strong> Robuste Geotextilbahnen, zwischen deren Gewebeschichten pulverförmiges Natriumbentonit fest gekapselt ist. Unter Erdanpressdruck quillt das Bentonit bei Wasserkontakt und bildet eine sehr dichte, gelartige Tonschicht.</li>
                   <li><strong>Bentonitquellbänder:</strong> Biegsame Dichtbänder zur zuverlässigen Primär-Abdichtung in rauen Betonierarbeitsfugen.</li>
                 </ul>
               </div>
@@ -424,7 +426,7 @@ export default function BpAbdichtung() {
                     <FileText size={14} className="text-shiraz" /> allgemeines bauaufsichtliches Prüfzeugnis (abP)
                   </span>
                   <p className="text-text-main/70 leading-normal">
-                    Nachweis für regelungsbedürftige Bauprodukte und Abdichtungssysteme mit geringem Risikopotenzial (z. B. flüssige Verbundabdichtungen im Bad oder Rissinjektionsmittel). Bestätigt die Brauchbarkeit anhand festgeschriebener Prüfverfahren.
+                    Nachweis für regelungsbedürftige Bauprodukte und Abdichtungssysteme mit geringem Risikopotenzial (z. B. flüssige Verbundabdichtungen im Bad). Bestätigt die Brauchbarkeit anhand festgeschriebener Prüfverfahren.
                   </p>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-home-grau/15">
@@ -448,7 +450,7 @@ export default function BpAbdichtung() {
                     <FileText size={14} className="text-shiraz" /> WTA-Zertifikate &amp; Merkblätter
                   </span>
                   <p className="text-text-main/70 leading-normal">
-                    Spezifische Zulassungen der Wissenschaftlich-Technischen Arbeitsgemeinschaft für Bauwerkserhaltung e.V., insbesondere relevant für Injektionsgele bei Kellerschleier- oder Mauerwerksinjektionen in der Denkmalsanierung.
+                    Merkblätter und Zertifizierungen der Wissenschaftlich-Technischen Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege (WTA), z. B. für Sanierputze und Injektionsverfahren gegen kapillar aufsteigende Feuchte. Keine bauaufsichtlichen Zulassungen.
                   </p>
                 </div>
               </div>
@@ -567,11 +569,11 @@ export default function BpAbdichtung() {
                   </div>
                   <div className="md:w-3/4 p-4 space-y-2">
                     <p className="text-text-main/70 leading-relaxed">
-                      <strong>Quellbänder:</strong> Biegetunnelelemente aus Bentonit oder Quellpolyurethan quellen bei Kontakt mit Feuchtigkeit auf und verpressen mechanisch den Hohlraum. 
+                      <strong>Quellbänder:</strong> Profile aus Bentonit oder quellfähigen Polymeren quellen bei Kontakt mit Feuchtigkeit auf und verpressen mechanisch den Hohlraum. 
                       <strong>Fugendichtstoffe:</strong> Hochelastische, einkomponentige Dichtstoffe (Polyurethan, MS-Polymer) für sichtbare Anschlussfugen an Fassaden und Böden.
                     </p>
                     <div className="flex flex-wrap gap-4 text-[10px] text-text-main/50">
-                      <span><strong>Wichtig:</strong> Quellbänder benötigen mind. 8-10 cm dichte Betonüberdeckung zur Absicherung des Quelldrucks!</span>
+                      <span><strong>Wichtig:</strong> Quellbänder benötigen eine ausreichende Betonüberdeckung gegen Abplatzen durch den Quelldruck (Mindestmaße nach abP/Herstellerangabe, häufig ca. 8–10 cm).</span>
                     </div>
                   </div>
                 </div>
@@ -760,7 +762,7 @@ export default function BpAbdichtung() {
                         {isThicknessOk ? (
                           <span>✓ <strong>Bauteildicke konform:</strong> Die Bauteildicke von d = {formatDeWert(fbSlabThickness)} cm ist ausreichend groß, damit das Fugenband ({formatDeWert(reqWidth)} mm) vollständig betoniert und porenfrei ummantelt wird.</span>
                         ) : (
-                          <span>✗ <strong>MANGELHAFT (Geometriefehler):</strong> Die Bauteildicke ({formatDeWert(fbSlabThickness)} cm) ist zu gering für ein {formatDeWert(reqWidth)} mm breites Fugenband! Wasser kann den Fugenrand leicht umfließen, Kiesnestergefahr! Mindestens {formatDeWert(reqWidth / 10)} cm Dicke einplanen.</span>
+                          <span>✗ <strong>Bauteil zu dünn:</strong> Die Bauteildicke ({formatDeWert(fbSlabThickness)} cm) reicht für ein {formatDeWert(reqWidth)} mm breites Fugenband nicht aus – Gefahr von Fehlstellen beim Einbetonieren (Lehrannahme). Mindestens {formatDeWert(reqWidth / 10)} cm Dicke einplanen.</span>
                         )}
                       </div>
 
@@ -770,7 +772,7 @@ export default function BpAbdichtung() {
                         {isGkCoverOk ? (
                           <span>✓ <strong>Kornverkrallung gesichert:</strong> Randabstand von ca. {formatDeZahl(actualCoverEdge, 1)} cm bietet genügend Fließraum für Beton mit GK {fbMaxAggregate} mm (min. erforderlich: {formatDeZahl(minCoverFromGK, 1)} cm).</span>
                         ) : (
-                          <span>⚠ <strong>VORSICHT BEIM BETONIEREN:</strong> Engpass an den Fugenbandflanken! Der Freiraum ist eng für GK {fbMaxAggregate} mm. Gefahr von Zementmangelstellen. Wechseln Sie auf GK 16 oder rütteln Sie besonders vorsichtig!</span>
+                          <span>⚠ <strong>Enger Einbauraum:</strong> Der Freiraum an den Fugenbandflanken ist knapp für Größtkorn {fbMaxAggregate} mm. Kleineres Größtkorn wählen oder besonders sorgfältig verdichten.</span>
                         )}
                       </div>
                     </div>
@@ -878,7 +880,7 @@ export default function BpAbdichtung() {
 
                 let mediumDesc = '';
                 if (isMedium === 'acrylgel') {
-                  mediumDesc = 'Quellfähiges Acrylatgel bietet eine extrem niedrige Viskosität. Bei Verwendung von quellfähigen Gelen können Schläuche theroretisch mehrfach verpresst werden (sofern nachgespült / vakuumiert). optimal für dauerhafte Abdichtung.';
+                  mediumDesc = 'Acrylatgel hat eine sehr niedrige Viskosität. Mehrfach verpressbare Schläuche können nach dem Spülen bzw. Vakuumieren erneut injiziert werden; Acrylatgele dichten dauerhaft, solange sie feucht bleiben.';
                 } else if (isMedium === 'pur_harz') {
                   mediumDesc = 'Polyurethan (PUR) reagiert zäh-elastisch und bildet eine geschlossenzellige, wasserunlösliche Struktur. Es fängt dynamische Spannungsbewegungen in der Arbeitsfuge elastisch ab.';
                 } else {
@@ -900,7 +902,7 @@ export default function BpAbdichtung() {
                           {isLengthOk ? (
                             <span className="text-slate-600">Sicherer verpressbarer Kreislauf. Der Fließdruck bleibt innerhalb des zulässigen Fensters der Verpresspumpe.</span>
                           ) : (
-                            <span className="text-red-800"><strong>Kritisch!</strong> Schläuche über 10 m haben einen zu hohen Reibungswiderstand. Das Harz härtet vorn bereits aus, während hinten noch nichts ankommt! Fuge stückeln.</span>
+                            <span className="text-red-800"><strong>Kritisch!</strong> Lange Schlauchabschnitte (Lehrannahme &gt; 10 m; Herstellerangaben beachten) erschweren die vollständige Füllung, weil das Material vor dem Ende reagieren kann. Abschnitte begrenzen.</span>
                           )}
                         </div>
                       </div>
@@ -915,7 +917,7 @@ export default function BpAbdichtung() {
                           {isCoverOk ? (
                             <span className="text-slate-600">Sicherer Tiefenhalt. Keine Beschädigung des Betonrandes beim Hochdruck-Füllvorgang.</span>
                           ) : (
-                            <span className="text-red-800"><strong>Achtung Ausbrüche!</strong> Der Hochdruck von bis zu 100-150 bar kann dünne Plattenwände ({formatDeWert(isConCover)} cm) aufsprengen und unkontrolliert nach außen abplatzen lassen.</span>
+                            <span className="text-red-800"><strong>Achtung Ausbrüche!</strong> Bei geringer Überdeckung ({formatDeWert(isConCover)} cm) kann der Injektionsdruck Abplatzungen verursachen. Verpressschläuche werden mit vergleichsweise geringem Druck nach Herstellerangabe injiziert.</span>
                           )}
                         </div>
                       </div>
@@ -1011,7 +1013,7 @@ export default function BpAbdichtung() {
                     <span className="text-[9px] font-black uppercase text-red-700 bg-red-50 px-1.5 py-0.5 rounded tracking-wider">KRAFTSCHLÜSSIG</span>
                     <h5 className="font-extrabold text-text-main text-xs mt-1">Epoxidharze (EP)</h5>
                     <p className="text-[11px] text-text-main/60 leading-normal">
-                      Hohe Haftfestigkeit auf trockenen Betonflanken. Stellt die statische Tragfähigkeit des Bauteils vollständig wieder her.
+                      Hohe Haftfestigkeit auf trockenen Rissflanken; kraftschlüssiges Schließen von Rissen (nicht bei wasserführenden oder sich bewegenden Rissen).
                     </p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10">
@@ -1024,7 +1026,7 @@ export default function BpAbdichtung() {
                     <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded tracking-wider">ELASTISCH / DICHTEND</span>
                     <h5 className="font-extrabold text-text-main text-xs mt-1">Polyurethanharze (PUR)</h5>
                     <p className="text-[11px] text-text-main/60 leading-normal">
-                      Zäh-elastischer Kunststoff. Reagiert stark quellend bei Wassereinfluss (Schaumbildung bei Akut-Leckagen), bleibt dauerhaft dehnfähig.
+                      Elastisches Harz für dehnfähiges Abdichten; schäumende PUR-Varianten (SPUR) stoppen akute Wasserzutritte vorübergehend.
                     </p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10">
@@ -1317,34 +1319,51 @@ export default function BpAbdichtung() {
 
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Nassschichtdicke einer PMBC-Abdichtung (W2.1-E)"
+          zielGleichung="d_{wet} = \frac{d_{dry}}{1 - V_{fl}/100}"
+          normQuelle="DIN 18533-3 (Mindesttrockenschichtdicke); Feststoffanteil als Lehrannahme"
+          schritte={[
+            { titel: '1. Anforderung', formel: 'd_{dry} \\ge 4{,}0\\,\\text{mm}', erklaerung: 'W2.1-E: Mindesttrockenschichtdicke mit Verstärkungseinlage.' },
+            { titel: '2. Flüchtige Anteile', formel: 'V_{fl} = 30\\,\\%', erklaerung: 'Wasser der Bitumenemulsion, das verdunstet (Lehrannahme; Herstellerangabe maßgebend).' },
+            { titel: '3. Nassschichtdicke', formel: 'd_{wet} = 4{,}0 / 0{,}70 = 5{,}7\\,\\text{mm}', erklaerung: 'Mit dem Schichtdickenkamm im frischen Zustand prüfen.' },
+            { titel: '4. Mit Zuschlag für Unebenheit', formel: 'd_{wet,Soll} \\approx 6\\,\\text{mm}', erklaerung: 'Kein Punkt darf unter dem Mindestmaß liegen.' },
+          ]}
+          ergebnisHinweis="Rund 6 mm nass, in zwei Arbeitsgängen mit eingebetteter Einlage – die Trockenschichtdicke wird zusätzlich an Referenzproben kontrolliert."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_abdichtung" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Bauwerksabdichtung', url: 'https://de.wikipedia.org/wiki/Bauwerksabdichtung' },
-          { title: 'Rissinjektion' },
-          { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' },
-          { title: 'Bitumen-Dickbeschichtung' }
+          { title: 'Weiße Wanne', url: 'https://de.wikipedia.org/wiki/Wei%C3%9Fe_Wanne' }
         ]} 
         literatur={[ 
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Oswald, R.; Wilmes, K. (2018): Hohlraumfreie Verfüllungen und Rissinjektionen im Betonbau (Fraunhofer IRB Verlag)', 
-          'Weber, H. (2020): Mauerwerksabdichtung und Kellersanierung (Expert Verlag)' 
+          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Düsseldorf: Verlag Bau+Technik (Auflage manuell prüfen)',
+          'Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC, MDS und FPD (Ausgaben manuell prüfen)' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN 18533 (Abdichtung von erdberührten Bauteilen - Teile 1 bis 3)' }, 
+          { title: 'DIN 18533-1 bis -3:2023 (Abdichtung von erdberührten Bauteilen)' }, 
           { title: 'DIN 18534 (Abdichtung von Innenräumen)' },
-          { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Rissinjektion)' },
+          { title: 'DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Injektion von Betonbauteilen)' },
+          { title: 'DIN 18197 (Abdichten von Fugen in Beton mit Fugenbändern)' },
+          { title: 'ZTV-ING Teil 3 Abschnitt 5 (Füllen von Rissen und Hohlräumen in Betonbauteilen)' },
           { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' }
         ]} 
         formeln={[
           {
             formel: 'd_{\\text{dry}} = d_{\\text{wet}} \\cdot \\left(1 - \\frac{\\text{Flüchtige Anteile}}{100}\\right) \\ge d_{\\text{min,Norm}}',
-            erklaerung: 'Trockenschichtdicke von polymermodifizierten Bitumendickbeschichtungen (PMBC): Muss nach DIN 18533 an jeder Stelle das normativ geforderte Mindestmaß (z.B. 3.0 bzw. 4,0 mm) einhalten.',
+            erklaerung: 'Trockenschichtdicke von polymermodifizierten Bitumendickbeschichtungen (PMBC): Muss nach DIN 18533-3 an jeder Stelle das Mindestmaß einhalten (z. B. 3 mm bei W1-E, 4 mm mit Verstärkungseinlage bei W2.1-E).',
             quelle: 'DIN 18533-3'
           },
           {
-            formel: 'p_{\\text{inj}} \\le 0{,}33 \\cdot f_{ctm} \\cdot 10 \\quad [\\text{bar}]',
-            erklaerung: 'Richtwert für den maximalen Injektionsdruck bei Rissverpressungen zur Vermeidung von Gefügeschädigungen oder Sekundärrissen im Beton.',
-            quelle: 'DIN EN 1504-5 / ZTV-ING'
+            formel: 'V_{\\text{Riss}} \\approx w \\cdot t \\cdot l',
+            erklaerung: 'Theoretisches Füllvolumen eines Risses (Rissbreite w, Bauteildicke t, Risslänge l) zur Abschätzung der Injektionsmenge; der tatsächliche Verbrauch ist wegen Verlusten höher. Der zulässige Injektionsdruck richtet sich nach Material, Rissbreite und Bauteil (Herstellerangaben, ZTV-ING).',
+            quelle: 'Lehrmodell'
           }
         ]} 
       />
