@@ -45,17 +45,13 @@
       2. DYNAMISCHE INJEKTION (React-seitig):
          - Wenn ein Nutzer oder fähiger Crawler zwischen den Modulen (Tabs / Unterseiten) navigiert, 
            injiziert 'React.useEffect' in '/src/App.tsx' dynamisch die passenden Meta-Description-Tags sowie Document-Titles.
-         - Die Quelltexte für diese Beschreibungen sind zentral in '/src/metaDescriptions.ts' hinterlegt.
+         - Die Quelltexte für diese Beschreibungen stehen in der zentralen Modul-Registry '/src/registry/modules.ts' (Feld 'meta').
 
       ANLEITUNG FÜR NEUE MODULE:
-      Wenn ein neues Modul oder ein neuer Tab hinzugefügt wird, müssen folgende Schritte durchgeführt werden:
-      
-      Step A: In '/src/metaDescriptions.ts' einen neuen Key mit der exakten TabId anlegen und eine prägnante, 
-              suchbegriffoptimierte Beschreibung (ca. 120-160 Zeichen) hinterlegen.
-      Step B: In '/index.html' im JSON-LD (Schema.org) Objekt unter "hasPart" das neue Modul als 'WebPage' eintragen.
-      Step C: Im visuell ausgeblendeten SEO-Fallback-Bereich im Body einen neuen '<article id="ihreTabId_seo">' mit 
-              Stichpunkten und Inhalten des Moduls hinzufügen.
-      Step D: Die URL/Anker-Kombination in '/sitemap.xml' eintragen, um die Crawling-Priorität zu steuern.
+      Step A: Das Modul in '/src/registry/modules.ts' eintragen (id, label, icon, gruppe, baum, meta, suche).
+              Menü, Suche, Meta-Description, Modulübersicht und Sitemap werden daraus erzeugt.
+      Step B: Die Darstellung in '/src/App.tsx' verdrahten (activeTab === '<id>').
+      Step C: 'npm run gen:sitemap' ausführen; 'npm test' prüft die Konsistenz (tests/registry.test.ts).
     -->
     <meta name="description" content="BaustoffBoard (TH Augsburg, Prof. Dr.-Ing. Jürgen Huber): Interaktive Lern- und Wissensplattform für Baustoffkunde, Betontechnologie (DIN 1045-1000 / BBQ), Eurocode 2, Bauproduktrecht (CPR 2024/3110), Ökobilanzierung (LCA / QNG), WTA-Merkblätter (WTA 2-9 / DIN 18533) und zirkulären Rückbau (EBV / GefStoffV)." />
     <meta name="keywords" content="BaustoffBoard, Baustoffkunde, Betontechnologie, DIN 1045-1000, BBQ-Klassen, Eurocode 2, Bauprodukte, CPR 2024/3110, Digitaler Produktpass, DPP, Ersatzbaustoffverordnung, EBV, GefStoffV, Asbest, TRGS 519, Ökobilanzierung, DIN EN 15804, QNG, ÖKOBAUDAT, WTA 2-9, WTA 4-6, DIN 18533, TH Augsburg, Prof. Huber" />
