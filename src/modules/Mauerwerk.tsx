@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Box, Edges } from '@react-three/drei';
@@ -33,13 +35,15 @@ ChartJS.register(
   Legend
 );
 
+// K-Werte: Empfehlungswerte nach EN 1996-1-1, Tab. 3.3 (Mauerziegel Gruppe 1 bzw. Hochlochziegel Gruppe 2);
+// in Deutschland gelten die Werte des NA – manuell prüfen. Lehmsteine (DIN 18946) und LM-Wert für KS: Lehrannahme.
 const stoneTypes = {
-  'MZ': { name: 'Mauerziegel (Ton-Vollstein)', K: { 'NM': 0.45, 'LM': 0.35, 'DM': 0.75 }, fvk0: { 'NM': 0.20, 'LM': 0.15, 'DM': 0.30 }, lambda: 0.81, rho: 1800, desc: 'Keramisch gebrannter Ton. Extreme Langlebigkeit, exzellente Dauerhaftigkeit (Klinker), hervorragender Witterungswiderstand, hoher Energiewert bei Herstellung.' },
-  'KSV': { name: 'Kalksandstein (KS)', K: { 'NM': 0.45, 'LM': 0.35, 'DM': 0.80 }, fvk0: { 'NM': 0.20, 'LM': 0.15, 'DM': 0.40 }, lambda: 0.99, rho: 2000, desc: 'Hydrothermal dampfgehärtetes Kalk-Sand-Gemisch. Sehr hoher Schallschutz, höchste Tragfähigkeit, ökologisch vorteilhafter als massiv gebrannt' },
-  'PB': { name: 'Porenbeton (PB)', K: { 'NM': 0.45, 'LM': 0.35, 'DM': 0.80 }, fvk0: { 'NM': 0.15, 'LM': 0.15, 'DM': 0.30 }, lambda: 0.09, rho: 400, desc: 'Aufgeblähter und dampfgehärteter Quarz-Kalk-Zementstein. Herausragende monolithische Wärmedämmung, sehr geringe Masse, mäßiger Schallschutz' },
-  'HLZ': { name: 'Hochlochziegel (HLz)', K: { 'NM': 0.35, 'LM': 0.30, 'DM': 0.55 }, fvk0: { 'NM': 0.15, 'LM': 0.10, 'DM': 0.20 }, lambda: 0.12, rho: 800, desc: 'Tonziegel mit wärmetechnisch optimiertem Lochbild, teils mit Naturdämmstoff-Verfüllung (Perlit/Mineralwolle) für monolithische Wände' },
+  'MZ': { name: 'Mauerziegel (Ton-Vollstein)', K: { 'NM': 0.55, 'LM': 0.30, 'DM': 0.75 }, fvk0: { 'NM': 0.20, 'LM': 0.15, 'DM': 0.30 }, lambda: 0.81, rho: 1800, desc: 'Keramisch gebrannter Ton. Extreme Langlebigkeit, exzellente Dauerhaftigkeit (Klinker), hervorragender Witterungswiderstand, hoher Energiewert bei Herstellung.' },
+  'KSV': { name: 'Kalksandstein (KS)', K: { 'NM': 0.55, 'LM': 0.45, 'DM': 0.80 }, fvk0: { 'NM': 0.20, 'LM': 0.15, 'DM': 0.40 }, lambda: 0.99, rho: 2000, desc: 'Hydrothermal dampfgehärtetes Kalk-Sand-Gemisch. Sehr hoher Schallschutz, höchste Tragfähigkeit, ökologisch vorteilhafter als massiv gebrannt' },
+  'PB': { name: 'Porenbeton (PB)', K: { 'NM': 0.55, 'LM': 0.45, 'DM': 0.80 }, fvk0: { 'NM': 0.15, 'LM': 0.15, 'DM': 0.30 }, lambda: 0.09, rho: 400, desc: 'Aufgeblähter und dampfgehärteter Quarz-Kalk-Zementstein. Herausragende monolithische Wärmedämmung, sehr geringe Masse, mäßiger Schallschutz' },
+  'HLZ': { name: 'Hochlochziegel (HLz)', K: { 'NM': 0.45, 'LM': 0.25, 'DM': 0.70 }, fvk0: { 'NM': 0.15, 'LM': 0.10, 'DM': 0.20 }, lambda: 0.12, rho: 800, desc: 'Tonziegel mit wärmetechnisch optimiertem Lochbild, teils mit Naturdämmstoff-Verfüllung (Perlit/Mineralwolle) für monolithische Wände' },
   'LH': { name: 'Lehmbaustein (LH)', K: { 'NM': 0.35, 'LM': 0.30, 'DM': 0.50 }, fvk0: { 'NM': 0.10, 'LM': 0.08, 'DM': 0.15 }, lambda: 0.73, rho: 1600, desc: 'Ungebrannter, solar luftgetrockneter Tonstein nach DIN 18945. Phänomenale Feuchtigkeitsregulierung, extrem CO₂-arm, unstabilisierter Lehm nahezu verlustfrei wiederverwendbar' },
-  'LB': { name: 'Leichtbetonstein', K: { 'NM': 0.40, 'LM': 0.35, 'DM': 0.65 }, fvk0: { 'NM': 0.15, 'LM': 0.15, 'DM': 0.30 }, lambda: 0.16, rho: 800, desc: 'Zementgebundener Bims- oder Blähtonstein. Unempfindlich gegen Baufeuchte, gute Wärmedämmung bei mäßiger Tragfähigkeit' },
+  'LB': { name: 'Leichtbetonstein', K: { 'NM': 0.55, 'LM': 0.45, 'DM': 0.80 }, fvk0: { 'NM': 0.15, 'LM': 0.15, 'DM': 0.30 }, lambda: 0.16, rho: 800, desc: 'Zementgebundener Bims- oder Blähtonstein. Unempfindlich gegen Baufeuchte, gute Wärmedämmung bei mäßiger Tragfähigkeit' },
 };
 
 const bonds = [
@@ -174,7 +178,7 @@ export default function Mauerwerk() {
     } else {
       fk = K * Math.pow(fb, 0.7) * Math.pow(fm, 0.3); // Für Normal- und Leichtmörtel
     }
-    const fd = fk / 1.5; // gamma_M = 1.5
+    const fd = (0.85 * fk) / 1.5; // NA DE: f_d = ζ · f_k / γ_M mit ζ = 0,85, γ_M = 1,5
 
     // 2. Knicken (vereinfacht)
     const slenderness = height / thickness;
@@ -190,9 +194,9 @@ export default function Mauerwerk() {
     // fvk = fvk0 + 0.4 * sigma_d (vereinfacht nach EC6)
     // Begrenzung auf max Werte je nach Stein/Mörtel (hier vereinfacht)
     const fvk_calc = fvk0 + 0.4 * sigmaD;
-    const fvk_max = mortar === 'DM' ? 1.2 : 1.5; // Stark vereinfachte Obergrenze
+    const fvk_max = 0.065 * fb; // Obergrenze nach EN 1996-1-1 (NA-Werte manuell prüfen)
     const fvk = Math.min(fvk_calc, fvk_max);
-    const fvd = fvk / 1.5; // gamma_M = 1.5
+    const fvd = fvk / 1.5; // γ_M = 1,5
 
     // 4. Überbindemaß
     const minOverlap = Math.max(0.4 * stoneHeight, 45); // mm
@@ -564,7 +568,7 @@ export default function Mauerwerk() {
                   <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-text-main/60 border-t border-home-grau/10 pt-2 font-mono">
                     <div>🔊 Schallschutz: <span className="text-text-main font-semibold">Exzellent (Masse)</span></div>
                     <div>🔥 Brandschutz: <span className="text-text-main font-semibold">Klasse A1</span></div>
-                    <div>🌡️ Leitf. λ: <span className="text-text-main font-semibold">0,99-1,30 W/mK</span></div>
+                    <div>🌡️ Leitf. λ: <span className="text-text-main font-semibold">ca. 0,5–1,3 W/mK (je nach Rohdichte, Richtwert)</span></div>
                     <div>Tragfähigkeit: <span className="text-text-main font-semibold">Extrem hoch</span></div>
                   </div>
                   <div className="mt-2 text-[10.5px] text-text-main/60 bg-off-white p-2 rounded border border-home-grau/10">
@@ -669,7 +673,7 @@ export default function Mauerwerk() {
                 </div>
               </div>
               <div className="text-sm text-white/80 border-t border-white/20 pt-4">
-                Formel: <FormulaText text="f_k = K · f_b^{0.7} · f_m^{0.3}" /> (K = {formatDeWert(results.K)})
+                Formel: <FormulaText text={mortar === 'DM' ? (stone === 'HLZ' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}85}') : 'f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}'} /> (K = {formatDeWert(results.K)}, Empfehlung EN); <FormulaText text="f_d = 0{,}85 \cdot f_k / 1{,}5" />
               </div>
             </div>
 
@@ -683,7 +687,7 @@ export default function Mauerwerk() {
                 <div>
                   <div className="text-home-grau text-sm mb-1 flex items-center gap-1">
                     <FormulaText text="Knickbeiwert Φ" />
-                    <InfoTooltip text="Vereinfachte Berechnung des Abminderungsfaktors für Knicken in der Wandmitte (Φ_m). Die tatsächliche Knicklänge h_ef hängt von den Halterungen am Wandkopf und -fuß ab." />
+                    <InfoTooltip text="Vereinfacht: Φ = 1 − 2e/t erfasst nur die Lastausmitte (Wandkopf/-fuß); die Schlankheit h_ef/t geht nicht ein (vereinfachtes Verfahren nach DIN EN 1996-3 – manuell prüfen). Die tatsächliche Knicklänge h_ef hängt von den Halterungen am Wandkopf und -fuß ab." />
                   </div>
                   <div className={`text-xl font-bold ${results.phi < 0.2 ? 'text-shiraz' : 'text-text-main'}`}>
                     {formatDeZahl(results.phi, 2)}
@@ -954,6 +958,21 @@ export default function Mauerwerk() {
     
       <MauerwerkThematicLinks current="baustoff" />
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Druckfestigkeit und Traglast einer Ziegelwand (Standardwerte)"
+        zielGleichung="f_k = K \cdot f_b^{0{,}7} \cdot f_m^{0{,}3}, \quad N_{Rd} = \Phi \cdot t \cdot f_d"
+        normQuelle="EN 1996-1-1, Gl. (3.1), K als Empfehlungswert; f_d mit ζ = 0,85 nach NA DE"
+        schritte={[
+          { titel: '1. Gegeben', formel: '\\text{Mauerziegel, NM};\\; f_b = 12,\\; f_m = 5\\,\\text{N/mm}^2;\\; t = 0{,}24\\,\\text{m};\\; e = 0{,}05\\,\\text{m}', erklaerung: 'K = 0,55 (Gruppe 1).' },
+          { titel: '2. Charakteristische Festigkeit', formel: 'f_k = 0{,}55 \\cdot 12^{0{,}7} \\cdot 5^{0{,}3} = 5{,}08\\,\\text{N/mm}^2', erklaerung: 'Empfehlungswert K; NA DE abweichend.' },
+          { titel: '3. Bemessungswert', formel: 'f_d = 0{,}85 \\cdot 5{,}08 / 1{,}5 = 2{,}88\\,\\text{N/mm}^2', erklaerung: 'Dauerstandsfaktor ζ = 0,85.' },
+          { titel: '4. Traglast je Meter', formel: '\\Phi = 1 - 2 \\cdot 0{,}05/0{,}24 = 0{,}58;\\; N_{Rd} = 0{,}58 \\cdot 0{,}24 \\cdot 2{,}88 \\cdot 10^3 = 403\\,\\text{kN/m}', erklaerung: 'Nur Lastausmitte, ohne Schlankheitseinfluss.' },
+        ]}
+        ergebnisHinweis="N_Rd ≈ 400 kN/m (vereinfacht, ohne Knickeinfluss)."
+      />
+
+      <ModulTest moduleId="mauerwerk" />
+
       <ModuleFooter 
         wikipedia={[
         { title: 'Mauerwerk', url: 'https://de.wikipedia.org/wiki/Mauerwerk' },
@@ -962,13 +981,13 @@ export default function Mauerwerk() {
         { title: 'Ziegel-Lexikon (Bundesverband der Deutschen Ziegelindustrie e. V.)' }
       ]}
         literatur={[
-          'Schubert, P. (2019): Mauerwerk - Baustoffe, Bemessung und Ausführung (Ernst & Sohn)',
+          'Jäger, W. (Hrsg.): Mauerwerk-Kalender. Berlin: Ernst & Sohn (Jahrgang manuell prüfen)',
           'Jäger, W. (Hrsg.): Mauerwerk-Kalender (Jährliche Ausgaben, Ernst & Sohn Verlag)',
           'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1996-1-1:2024-03 / DIN EN 1996-1-1/NA:2019-12 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten - Teil 1-1: Allgemeine Regeln)' },
-          { title: 'DIN EN 1996-3:2024-03 / DIN EN 1996-3/NA:2019-12 (Eurocode 6 - Teil 3: Vereinfachte Berechnungsmethoden für unbewehrte Mauerwerksbauten)' },
+          { title: 'DIN EN 1996-1-1:2013-02 + A1:2014-03 / DIN EN 1996-1-1/NA:2019-12 (Eurocode 6, Teil 1-1; neue Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 1996-3:2010-12 / DIN EN 1996-3/NA:2019-12 (Eurocode 6, Teil 3: Vereinfachte Berechnungsmethoden; neue Ausgabe manuell prüfen)' },
           { title: 'DIN EN 771-1:2015-11 (Festlegungen für Mauersteine - Teil 1: Mauerziegel)' },
           { title: 'DIN EN 771-2:2015-11 (Festlegungen für Mauersteine - Teil 2: Kalksandsteine)' },
           { title: 'DIN EN 771-3:2015-11 (Festlegungen für Mauersteine - Teil 3: Betonmauersteine)' },
@@ -979,19 +998,19 @@ export default function Mauerwerk() {
         ]}
         formeln={[
           {
-            formel: 'f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}2}',
+            formel: 'f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}',
             erklaerung: 'Charakteristische Druckfestigkeit f_k von Mauerwerk aus Normalmörtel nach Eurocode 6. K ist eine steinartspezifische Konstante, f_b die normierte Steindruckfestigkeit und f_m die Mörteldruckfestigkeit.',
-            quelle: 'DIN EN 1996-1-1:2024-03 Gl. 3.1'
+            quelle: 'DIN EN 1996-1-1, Gl. (3.1)'
           },
           {
             formel: 'f_{vk} = f_{vk0} + 0{,}4 \\cdot \\sigma_d \\quad \\left(\\le f_{vlt}\\right)',
             erklaerung: 'Charakteristische Haftscherfestigkeit f_{vk}: f_{vk0} = Anfangsscherfestigkeit ohne Auflast, \\sigma_d = planmäßige vertikale Druckspannung, f_{vlt} = oberer Grenzwert.',
-            quelle: 'DIN EN 1996-1-1:2024-03'
+            quelle: 'DIN EN 1996-1-1'
           },
           {
             formel: 'l_{ol} \\ge 0{,}4 \\cdot h_u  \\quad \\land \\quad l_{ol} \\ge 45\\text{ mm}',
             erklaerung: 'Überbindemaß-Regel zur Gewährleistung eines statischen Kraftverteilungswinkels im Mauerwerksverband: l_{ol} = Überbindemaß, h_u = Steinhöhe.',
-            quelle: 'DIN EN 1996-1-1:2024-03'
+            quelle: 'DIN EN 1996-1-1'
           }
         ]}
       />
