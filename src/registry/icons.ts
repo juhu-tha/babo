@@ -1,6 +1,7 @@
 /** Icon-Zuordnung für die Modul-Registry (lucide-Namen → Komponenten). Generiert/gepflegt mit modules.ts. */
 import type { LucideIcon } from 'lucide-react';
 import {
+  Accessibility,
   Activity,
   AlertTriangle,
   AppWindow,
@@ -76,6 +77,7 @@ import {
 } from 'lucide-react';
 
 export const ICONS: Record<string, LucideIcon> = {
+  Accessibility,
   Activity,
   AlertTriangle,
   AppWindow,

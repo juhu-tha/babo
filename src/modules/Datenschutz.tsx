@@ -1,6 +1,19 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { ShieldCheck, Server, Database, Cookie, Mail, Lock, UserCheck } from 'lucide-react';
+import { ShieldCheck, Server, Database, Cookie, Mail, Lock, UserCheck, Sparkles, BarChart3 } from 'lucide-react';
+import { SPEICHER_REGISTER } from '@/src/data/speicherRegister';
+
+// Stand und Inhalt mit dem Datenschutzbeauftragten der THA abstimmen (Umsetzungsplan Phase 1, AP 1.3).
+// Die Tabelle der Speicherorte kommt aus src/data/speicherRegister.ts und wird per Test vollständig gehalten.
+
+const Abschnitt = ({ icon: Icon, titel, children }: { icon: React.ComponentType<{ size?: number; className?: string }>; titel: string; children: React.ReactNode }) => (
+  <section className="space-y-2">
+    <h3 className="text-base font-bold text-text-main flex items-center gap-2">
+      <Icon size={18} className="text-shiraz" /> {titel}
+    </h3>
+    {children}
+  </section>
+);
 
 export default function Datenschutz() {
   return (
@@ -15,180 +28,168 @@ export default function Datenschutz() {
           </span>
         </div>
 
-        <div className="space-y-6 text-sm text-text-main/80 leading-relaxed">
-          {/* 1. Verantwortlicher */}
-          <section className="space-y-2">
-            <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <UserCheck size={18} className="text-shiraz" /> 1. Verantwortlicher &amp; Datenschutzbeauftragter
-            </h3>
+        <div className="space-y-6 text-sm text-text-main/80 leading-relaxed max-w-prose">
+          <Abschnitt icon={UserCheck} titel="1. Verantwortliche Stelle und Datenschutzbeauftragter">
             <p>
-              Verantwortlich für die Datenverarbeitung auf dieser Webseite im Sinne der Datenschutz-Grundverordnung (DSGVO) und des Bayerischen Datenschutzgesetzes (BayDSG) ist:
+              Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Webanwendung im Sinne der
+              Datenschutz-Grundverordnung (DSGVO) und des Bayerischen Datenschutzgesetzes (BayDSG) ist die
+              Technische Hochschule Augsburg (THA), eine Körperschaft des öffentlichen Rechts, vertreten durch
+              den Präsidenten.
             </p>
             <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-xs sm:text-sm">
-              <p className="font-bold text-text-main">Prof. Dr.-Ing. Jürgen Huber</p>
-              <p>Technische Hochschule Augsburg · Fakultät für Architektur und Bauwesen</p>
+              <p className="font-bold text-text-main">Technische Hochschule Augsburg</p>
               <p>An der Hochschule 1 · 86161 Augsburg</p>
+              <p className="pt-2">Fachlich verantwortlich für das BaustoffBoard: Prof. Dr.-Ing. Jürgen Huber, Fakultät für Architektur und Bauwesen</p>
               <p>E-Mail: <a href="mailto:juergen.huber@tha.de" className="text-shiraz hover:underline">juergen.huber@tha.de</a></p>
             </div>
             <p className="text-xs text-text-main/70 pt-1">
-              Behördlicher Datenschutzbeauftragter der Technischen Hochschule Augsburg:<br />
-              Technische Hochschule Augsburg · Der Datenschutzbeauftragte · An der Hochschule 1 · 86161 Augsburg<br />
+              Behördlicher Datenschutzbeauftragter der THA: An der Hochschule 1 · 86161 Augsburg ·
               E-Mail: <a href="mailto:datenschutz@tha.de" className="text-shiraz hover:underline">datenschutz@tha.de</a>
             </p>
-          </section>
+          </Abschnitt>
 
-          {/* 2. Hosting & Bereitstellung */}
-          <section className="space-y-2">
-            <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Server size={18} className="text-shiraz" /> 2. Hosting und Server-Logfiles
-            </h3>
+          <Abschnitt icon={Server} titel="2. Bereitstellung (Hosting) und Server-Protokolle">
             <p>
-              Diese Webanwendung wird über eine skalierbare Cloud-Container-Infrastruktur (Google Cloud Platform / Cloud Run) in Rechenzentren innerhalb der Europäischen Union betrieben.
+              Die Anwendung wird über Google AI Studio auf der Container-Plattform Google Cloud Run bereitgestellt
+              (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, bzw. Google LLC, USA).
+              Eine Verarbeitung in Drittländern, insbesondere in den USA, ist nicht auszuschließen. Google LLC ist
+              nach dem EU-US Data Privacy Framework zertifiziert; dafür besteht ein Angemessenheitsbeschluss der
+              Europäischen Kommission (Art. 45 DSGVO).
             </p>
-            <p>
-              Beim Aufruf dieser Website erfasst der Webserver des Hosting-Anbieters automatisiert technische Protokolldaten (Server-Logfiles). Hierzu gehören u. a.:
-            </p>
+            <p>Beim Aufruf erfasst die Plattform automatisch technische Protokolldaten:</p>
             <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm pl-2">
-              <li>IP-Adresse des zugreifenden Endgeräts (anonymisiert oder gekürzt gemäß Anbieter-Sicherheitsrichtlinie)</li>
-              <li>Datum und Uhrzeit des Abrufs samt Zeitzone</li>
-              <li>Aufgerufene URL und HTTP-Statuscode</li>
-              <li>Übertragene Datenmenge in Bytes</li>
-              <li>User-Agent (Browsertyp, Version und Betriebssystem)</li>
+              <li>IP-Adresse des aufrufenden Geräts</li>
+              <li>Datum und Uhrzeit des Abrufs</li>
+              <li>aufgerufene Adresse und Statuscode</li>
+              <li>übertragene Datenmenge</li>
+              <li>Browser und Betriebssystem (User-Agent)</li>
             </ul>
             <p className="text-xs text-text-main/70">
-              Rechtsgrundlage für die temporäre Erfassung der Server-Logfiles ist Art. 6 Abs. 1 lit. f DSGVO zur Gewährleistung der Betriebssicherheit, Stabilität und Abwehr böswilliger Angriffe (DDoS).
+              Zweck ist der sichere und stabile Betrieb, etwa die Abwehr von Angriffen. Rechtsgrundlage ist
+              Art. 6 Abs. 1 lit. e DSGVO i. V. m. Art. 4 BayDSG. Die Protokolle werden nach den Vorgaben der
+              Plattform gelöscht und nicht mit anderen Daten zusammengeführt.
             </p>
-          </section>
+            <p className="text-xs text-text-main/70">
+              Zum Schutz vor Missbrauch zählt der Server Anfragen je IP-Adresse für höchstens eine Stunde im
+              Arbeitsspeicher (Anfragebegrenzung). Diese Zählung wird nicht gespeichert und bei jedem Neustart
+              verworfen. Der Besuchszähler erfasst nur die Anzahl der Seitenaufrufe, ohne Bezug zu einer Person.
+            </p>
+          </Abschnitt>
 
-          {/* 3. Cookies */}
-          <section className="space-y-2">
-            <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Cookie size={18} className="text-shiraz" /> 3. Cookies &amp; Externe Funktionen
-            </h3>
+          <Abschnitt icon={Sparkles} titel="3. KI-Prompt-Generator (Google Gemini)">
             <p>
-              Diese Anwendung verwendet grundsätzlich <strong>keine Tracking-, Marketing- oder Analyse-Cookies</strong>.
+              Im Modul „KI im Bauwesen“ können Sie einen Prompt an das Sprachmodell Google Gemini senden. Dies
+              geschieht nur, wenn Sie den Hinweis zur Datenübermittlung bestätigen und die Analyse ausdrücklich
+              starten. Übermittelt wird ausschließlich der Text des Prompts. Er geht über unseren Server an
+              Google (Google Ireland Limited bzw. Google LLC, USA); Ihre IP-Adresse wird dabei nicht weitergegeben.
             </p>
             <p>
-              Aus technischen Gründen können folgende Cookies relevant sein:
+              Sofern ein kostenloser Tarif der Gemini-API genutzt wird, kann Google Eingaben und Ausgaben nach seinen
+              Nutzungsbedingungen zur Verbesserung seiner Dienste verwenden und durch Menschen prüfen lassen.
+              Geben Sie deshalb keine personenbezogenen, vertraulichen oder projektbezogenen Daten ein.
             </p>
-            <div className="space-y-2">
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-xs">
-                <p><strong>Cookie &quot;GAESA&quot;:</strong> Technisches Session-/Routing-Cookie des Hosters zur sicheren Lastverteilung und Anbindung der Bereitstellungsumgebung. Es speichert keine persönlichen Nutzerprofile.</p>
-              </div>
-              <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-xs">
-                <p><strong>Optionale Tiefenübersetzung (Google Translate):</strong> Für internationale Studierende bietet die Anwendung eine optionale Übersetzungsfunktion. Diese wird erst bei aktiver Betätigung des Nutzers („Translate Deep Content“) aktiviert. Dabei wird ein temporäres Präferenz-Cookie (<code className="font-mono">googtrans</code>) gesetzt und das Skript des Google-Übersetzungsdienstes (Google LLC, USA) nachgeladen. Hierbei wird die IP-Adresse an Google übertragen. Rechtsgrundlage ist die aktive Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TDDDG.</p>
-              </div>
-            </div>
-          </section>
+            <p className="text-xs text-text-main/70">
+              Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie mit dem Häkchen erteilen
+              und jederzeit durch Nichtnutzung beenden können. Für Drittlandübermittlungen gilt der
+              Angemessenheitsbeschluss zum EU-US Data Privacy Framework. Wir speichern die Prompts nicht.
+              Die Antworten sind als KI-generiert gekennzeichnet (Art. 50 KI-Verordnung).
+            </p>
+          </Abschnitt>
 
-          {/* 3b. Client-Side Berechnungsarchitektur & Keine Speicherung von Projektdaten */}
-          <section className="space-y-2 bg-emerald-50/50 p-4 rounded-xl border border-emerald-200">
-            <h3 className="text-base font-bold text-emerald-950 flex items-center gap-2">
-              <Lock size={18} className="text-emerald-700" /> Reine Client-Side Berechnungen (Keine Server-Datenspeicherung)
-            </h3>
-            <p className="text-xs text-emerald-900 leading-relaxed font-medium">
-              Alle auf dem BaustoffBoard durchgeführten Berechnungen (z. B. Mischungsberechnungen, U-Wert-Nachweise, Glaser-Verfahren, 
-              Eurocode-2-Stahlbetonbemessungen, Fick-II-Chloriddiffusionen oder Schadensanalysen) erfolgen 
-              <strong>vollständig und ausschließlich lokal im Browser auf Ihrem Endgerät (Client-Side Execution)</strong>. 
-              Es werden zu keinem Zeitpunkt Projekt- oder Berechnungsdaten an externe Server übertragen, in Datenbanken persistiert 
-              oder serverseitig ausgewertet. Das Hosting über Google Cloud Run dient rein der statischen Bereitstellung 
-              der Webapplikation.
-            </p>
-          </section>
-
-          {/* 4. Lokale Speicherung im Browser (localStorage) */}
-          <section className="space-y-2">
-            <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Database size={18} className="text-shiraz" /> 4. Lokale Datenspeicherung (localStorage)
-            </h3>
+          <Abschnitt icon={BarChart3} titel="4. Live-Abstimmungen in Lehrveranstaltungen">
             <p>
-              Eingaben und Einstellungen bleiben ausschließlich in Ihrem Browser (<code className="text-xs bg-slate-100 px-1 py-0.5 rounded">localStorage</code>) gespeichert und werden nicht an unsere Server übertragen. Folgende Schlüssel werden zu didaktischen und ergonomischen Zwecken verwendet:
+              Bei Live-Abstimmungen speichert der Server nur die abgegebene Antwort und eine zufällige Kennung im
+              Cookie <code className="font-mono text-xs">bb_voter</code>, damit jedes Gerät nur einmal abstimmt.
+              Ein Bezug zu Ihrer Person wird nicht hergestellt. Die Ergebnisse liegen nur im Arbeitsspeicher des
+              Servers und gehen bei einem Neustart verloren. Rechtsgrundlage ist Art. 6 Abs. 1 lit. e DSGVO
+              i. V. m. Art. 2 BayHIG (Lehre); das Cookie ist technisch notwendig (§ 25 Abs. 2 Nr. 2 TDDDG).
             </p>
-            <div className="overflow-x-auto">
+          </Abschnitt>
+
+          <Abschnitt icon={Cookie} titel="5. Cookies und Übersetzung">
+            <p>
+              Die Anwendung verwendet <strong>keine Tracking-, Marketing- oder Analyse-Cookies</strong> und bindet
+              keine Analysedienste ein. Die Plattform setzt ein technisches Cookie für die Lastverteilung
+              (<code className="font-mono text-xs">GAESA</code>), das keine Nutzerprofile speichert.
+            </p>
+            <p>
+              <strong>Optionale Übersetzung (Google Translate):</strong> Erst wenn Sie die Übersetzung aktivieren,
+              wird das Cookie <code className="font-mono text-xs">googtrans</code> gesetzt und das Skript des
+              Übersetzungsdienstes von Google LLC (USA) geladen. Dabei werden Ihre IP-Adresse und die Seiteninhalte
+              an Google übertragen. Rechtsgrundlage ist Ihre Einwilligung durch das Aktivieren
+              (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG).
+            </p>
+          </Abschnitt>
+
+          <Abschnitt icon={Lock} titel="6. Berechnungen im Browser">
+            <p>
+              Alle Berechnungen, zum Beispiel Mischungsberechnungen, U-Wert- und Glaser-Nachweise oder
+              Bemessungen, laufen ausschließlich in Ihrem Browser. Eingaben in Rechnern werden nicht an den
+              Server übertragen. Ausnahmen sind nur die unter 3. und 4. beschriebenen Funktionen.
+            </p>
+          </Abschnitt>
+
+          <Abschnitt icon={Database} titel="7. Speicherung im Browser und Cookies">
+            <p>
+              Einstellungen und Lernstände speichert die Anwendung nur in Ihrem Browser. Sie werden nicht an den
+              Server übertragen. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG, weil die Speicherung für die von Ihnen
+              gewünschten Funktionen erforderlich ist. Sie können die Daten jederzeit über die Browsereinstellungen
+              („Websitedaten löschen“) entfernen. Vollständige Übersicht:
+            </p>
+            <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Übersicht der Speicherorte">
               <table className="w-full text-left text-xs border border-home-grau/20 rounded-lg">
                 <thead className="bg-off-white border-b border-home-grau/20">
                   <tr>
-                    <th className="p-2.5 font-bold">Schlüssel</th>
-                    <th className="p-2.5 font-bold">Zweck</th>
-                    <th className="p-2.5 font-bold">Speicherdauer</th>
+                    <th scope="col" className="p-2.5 font-bold">Name</th>
+                    <th scope="col" className="p-2.5 font-bold">Ort</th>
+                    <th scope="col" className="p-2.5 font-bold">Zweck</th>
+                    <th scope="col" className="p-2.5 font-bold">Speicherdauer</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/15">
-                  <tr>
-                    <td className="p-2.5 font-mono">baustoffboard_favorites</td>
-                    <td className="p-2.5">Speicherung persönlicher Favoriten-Module für schnellen Zugriff</td>
-                    <td className="p-2.5">Bis zur manuellen Löschung im Browser</td>
-                  </tr>
-                  <tr>
-                    <td className="p-2.5 font-mono">baustoffboard_recent</td>
-                    <td className="p-2.5">Zuletzt besuchte Module zur nahtlosen Fortführung des Lernens</td>
-                    <td className="p-2.5">Bis zur manuellen Löschung im Browser</td>
-                  </tr>
-                  <tr>
-                    <td className="p-2.5 font-mono">baustoffboard_theme</td>
-                    <td className="p-2.5">Dunkel- / Hellmodus-Präferenz (Theme)</td>
-                    <td className="p-2.5">Bis zur manuellen Löschung im Browser</td>
-                  </tr>
-                  <tr>
-                    <td className="p-2.5 font-mono">baustoffboard_lang</td>
-                    <td className="p-2.5">Gewählte Sprache (Deutsch / Englisch)</td>
-                    <td className="p-2.5">Bis zur manuellen Löschung im Browser</td>
-                  </tr>
-                  <tr>
-                    <td className="p-2.5 font-mono">baustoffboard_a11y</td>
-                    <td className="p-2.5">Barrierefreiheits-Einstellungen (Schriftgröße, Kontrastmodus)</td>
-                    <td className="p-2.5">Bis zur manuellen Löschung im Browser</td>
-                  </tr>
+                  {SPEICHER_REGISTER.map(e => (
+                    <tr key={e.schluessel}>
+                      <td className="p-2.5 font-mono">{e.schluessel}</td>
+                      <td className="p-2.5">{e.ort}</td>
+                      <td className="p-2.5">{e.zweck}</td>
+                      <td className="p-2.5">{e.dauer}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-text-main/70">
-              Sie können diese Daten jederzeit in den Einstellungen Ihres Webbrowsers (Browser-Cache / Website-Daten) vollständig löschen.
-            </p>
-          </section>
+          </Abschnitt>
 
-          {/* 5. Kontaktaufnahme & Feedback */}
-          <section className="space-y-2">
-            <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Mail size={18} className="text-shiraz" /> 5. E-Mail-Feedback
-            </h3>
+          <Abschnitt icon={Mail} titel="8. Kontakt per E-Mail">
             <p>
-              Wenn Sie per E-Mail Kontakt aufnehmen (z. B. für Fehlermeldungen oder inhaltliche Fragen), werden Ihre Angaben inklusive der angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. e DSGVO i. V. m. dem Bayerischen Hochschulinnovationsgesetz (BayHIG) bzw. Art. 6 Abs. 1 lit. b DSGVO.
+              Feedback und Fehlermeldungen senden Sie über Ihr eigenes E-Mail-Programm. Wir verarbeiten Ihre
+              Angaben nur zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. e DSGVO i. V. m. Art. 4 BayDSG) und
+              löschen sie, wenn sie dafür nicht mehr benötigt werden.
             </p>
-          </section>
+          </Abschnitt>
 
-          {/* 6. Rechte der betroffenen Personen */}
-          <section className="space-y-2">
-            <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <Lock size={18} className="text-shiraz" /> 6. Ihre Rechte
-            </h3>
-            <p>
-              Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen (Art. 15 bis 21 DSGVO) jederzeit das Recht auf:
-            </p>
+          <Abschnitt icon={Lock} titel="9. Ihre Rechte">
+            <p>Sie haben nach Art. 15 bis 21 DSGVO das Recht auf</p>
             <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm pl-2">
-              <li>Auskunft über Ihre bei uns verarbeiteten personenbezogenen Daten</li>
-              <li>Berichtigung unrichtiger oder Vervollständigung unvollständiger Daten</li>
-              <li>Löschung Ihrer bei uns gespeicherten Daten</li>
-              <li>Einschränkung der Datenverarbeitung</li>
-              <li>Widerspruch gegen die Verarbeitung Ihrer Daten</li>
-              <li>Datenübertragbarkeit</li>
+              <li>Auskunft über die zu Ihnen verarbeiteten Daten,</li>
+              <li>Berichtigung und Löschung,</li>
+              <li>Einschränkung der Verarbeitung,</li>
+              <li>Widerspruch gegen die Verarbeitung und</li>
+              <li>Datenübertragbarkeit.</li>
             </ul>
-          </section>
+            <p>Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3 DSGVO).</p>
+          </Abschnitt>
 
-          {/* 7. Beschwerderecht */}
-          <section className="space-y-2">
-            <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-              <ShieldCheck size={18} className="text-shiraz" /> 7. Beschwerderecht bei der Aufsichtsbehörde
-            </h3>
+          <Abschnitt icon={ShieldCheck} titel="10. Beschwerderecht">
             <p>
-              Im Falle datenschutzrechtlicher Verstöße steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu. Zuständige Aufsichtsbehörde für bayerische Hochschulen ist:
+              Sie können sich bei der zuständigen Aufsichtsbehörde für bayerische öffentliche Stellen beschweren:
             </p>
             <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-xs">
               <p className="font-bold">Der Bayerische Landesbeauftragte für den Datenschutz (BayLfD)</p>
               <p>Wagmüllerstraße 18 · 80538 München</p>
               <p>Web: <a href="https://www.datenschutz-bayern.de" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline">www.datenschutz-bayern.de</a></p>
             </div>
-          </section>
+          </Abschnitt>
         </div>
       </div>
 

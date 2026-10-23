@@ -19,8 +19,13 @@ export const LanguageBanner: React.FC = () => {
         <div>
           <span className="font-bold text-shiraz dark:text-rose-400">English Mode Active:</span>{' '}
           <span className="text-text-main/80 dark:text-slate-300">
-            Navigation, 246 module titles, clusters, and tools are in English.
+            Navigation, module titles, clusters, and tools are in English.
           </span>
+          {!isDeepTranslating && (
+            <span className="block text-[11px] text-text-main/65 dark:text-slate-400 mt-0.5">
+              "Translate Deep Texts" loads Google Translate: your IP address and the page text are sent to Google (USA). See privacy policy (Datenschutz).
+            </span>
+          )}
         </div>
       </div>
 
@@ -32,7 +37,7 @@ export const LanguageBanner: React.FC = () => {
               ? 'bg-shiraz text-white hover:bg-shiraz/90'
               : 'bg-white dark:bg-slate-800 text-text-main dark:text-slate-200 border border-home-grau/30 dark:border-slate-700 hover:bg-off-white dark:hover:bg-slate-700'
           }`}
-          title="Translate all German technical body texts into English"
+          title="Translate all German body texts into English via Google Translate (data is sent to Google)"
         >
           {isDeepTranslating ? (
             <>
