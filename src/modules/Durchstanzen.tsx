@@ -3,7 +3,6 @@ import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
@@ -330,32 +329,11 @@ export default function Durchstanzen() {
         </div>
       </div>
 
+      <p className="text-[11px] text-text-main/60 leading-relaxed">
+        Vereinfachung: Die Durchstanzbewehrung wird je Bewehrungsreihe mit 1,5·d/s_r = 2,0 (s_r = 0,75·d) ermittelt.
+        Erhöhungsfaktoren für die ersten Reihen nach NA (κ_sw) sind nicht berücksichtigt – manuell prüfen.
+      </p>
       <CalculatorDisclaimerBanner className="my-2" />
-      <ModuleFooter
-        wikipedia={[
-          { title: 'Durchstanzen', url: 'https://de.wikipedia.org/wiki/Durchstanzen' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitt 6.4: Durchstanzen)' }
-        ]}
-        literatur={[
-          'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)'
-        ]}
-        formeln={[
-          {
-            erklaerung: "Einwirkende Durchstanz-Schubspannung\nv_{Ed}: Bemessungswert der einwirkenden Durchstanzspannung [MPa]\n\\beta: Beiwert zur Berücksichtigung der Lastexzentrizität (1,10 Innen-, 1,40 Rand-, 1,50 Eckstütze nach NA DE)\nV_{Ed}: Einwirkende Querkraft [kN]\nu_1: Länge des kritischen Rundschnitts im Abstand 2d [mm]\nd: Mittlere statische Nutzhöhe [mm]",
-            formel: "v_{Ed} = \\frac{\\beta \\cdot V_{Ed}}{u_1 \\cdot d}"
-          },
-          {
-            erklaerung: "Durchstanzwiderstand ohne Durchstanzbewehrung nach DIN EN 1992-1-1/NA\nv_{Rd,c}: Durchstanzwiderstand ohne Bewehrung [MPa]\nC_{Rd,c}: Beiwert (0{,}18 / \\gamma_c für u_0/d \\geq 4, sonst (0{,}18/\\gamma_c) \\cdot (0{,}1 \\cdot u_0/d + 0{,}6))\nk: Maßstabsfaktor (1 + \\sqrt{200/d} \\leq 2.0)\n\\rho_l: Mittlerer Längsbewehrungsgrad (\\leq 0.02)\nf_{ck}: Charakteristische Betondruckfestigkeit [MPa]",
-            formel: "v_{Rd,c} = C_{Rd,c} \\cdot k \\cdot (100 \\cdot \\rho_l \\cdot f_{ck})^{1/3}"
-          },
-          {
-            erklaerung: "Maximaler Durchstanzwiderstand nach NA DE\nv_{Rd,max}: Maximaler Durchstanzwiderstand im Rundschnitt u_1 [MPa]\nv_{Rd,c}: Durchstanzwiderstand ohne Bewehrung [MPa]. Der europäische Nachweis mit 0,4 * nu * fcd am Stützenrand entfällt in Deutschland.",
-            formel: "v_{Rd,max} = 1{,}4 \\cdot v_{Rd,c}"
-          }
-        ]}
-      />
     </div>
   );
 }

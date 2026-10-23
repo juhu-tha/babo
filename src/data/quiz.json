@@ -8291,5 +8291,275 @@
       "targetModuleLabel": "Betonpraxis"
     },
     "verified": false
+  },
+  {
+    "id": "q_stb_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Bemessungswerte",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 1992-1-1/NA, 3.1.6",
+    "question": "Wie groß ist f_cd für C30/37 nach deutschem NA?",
+    "options": [
+      "20,0 N/mm²",
+      "17,0 N/mm²",
+      "25,5 N/mm²",
+      "15,0 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_cd = α_cc · f_ck / γ_c = 0,85 · 30 / 1,5 = 17,0 N/mm².",
+    "gapAnalysis": {
+      "topic": "Bemessungswerte",
+      "misconception": "α_cc werde in Deutschland zu 1,0 angesetzt.",
+      "coreRule": "f_cd = 0,85 · f_ck / 1,5.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungswerte“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Spannungs-Dehnungs-Linie",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 3.1.7",
+    "question": "Welche Grenzdehnungen gelten im Parabel-Rechteck-Diagramm für Beton bis C50/60?",
+    "options": [
+      "ε_c2 = 2,0 ‰; ε_cu2 = 3,5 ‰",
+      "ε_c2 = 3,5 ‰; ε_cu2 = 2,0 ‰",
+      "ε_c2 = 2,0 ‰; ε_cu2 = 2,8 ‰",
+      "ε_c2 = 1,0 ‰; ε_cu2 = 5,0 ‰"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bis C50/60 gilt ε_c2 = 2,0 ‰ (Ende der Parabel) und ε_cu2 = 3,5 ‰ (Bruchstauchung), Exponent n = 2.",
+    "gapAnalysis": {
+      "topic": "Spannungs-Dehnungs-Linie",
+      "misconception": "Die Bruchstauchung sei für alle Festigkeitsklassen gleich.",
+      "coreRule": "Bis C50/60: 2,0 ‰ / 3,5 ‰; darüber kleinere Bruchstauchung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spannungs-Dehnungs-Linie“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "μ-Verfahren",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 6.1",
+    "question": "Bei welchem bezogenen Moment μ_Eds wird für B500 und Beton bis C50/60 üblicherweise Druckbewehrung erforderlich?",
+    "options": [
+      "μ_Eds > 0,100",
+      "μ_Eds > 0,296",
+      "μ_Eds > 0,500",
+      "μ_Eds > 0,850"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit der Grenze ξ_lim = 0,45 (ausreichende Duktilität) ergibt sich μ_Eds,lim ≈ 0,296; darüber wird Druckbewehrung angeordnet.",
+    "gapAnalysis": {
+      "topic": "μ-Verfahren",
+      "misconception": "Druckbewehrung sei erst bei Versagen der Druckzone nötig.",
+      "coreRule": "μ_Eds ≤ 0,296 → einfach bewehrt.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „μ-Verfahren“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Mindestbewehrung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, 9.2.1.1",
+    "question": "Wozu dient die Mindestbiegebewehrung A_s,min?",
+    "options": [
+      "Zur Begrenzung der Durchbiegung",
+      "Damit das Bauteil beim Erstriss nicht spröde versagt (Rissmoment aufnehmen)",
+      "Zum Brandschutz",
+      "Zur Reduktion der Betondeckung"
+    ],
+    "correctIdx": 1,
+    "explanation": "A_s,min muss das Rissmoment M_cr (mit f_ctm) aufnehmen, damit nach dem Erstriss kein schlagartiges Versagen eintritt (Duktilität).",
+    "gapAnalysis": {
+      "topic": "Mindestbewehrung",
+      "misconception": "Mindestbewehrung sei nur eine konstruktive Empfehlung.",
+      "coreRule": "A_s,min = M_cr / (z · f_yk) nach NA.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mindestbewehrung“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Querkraft ohne Bewehrung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, 6.2.2",
+    "question": "Wie wirkt sich eine größere Nutzhöhe d auf den Maßstabsfaktor k in V_Rd,c aus?",
+    "options": [
+      "k steigt",
+      "k sinkt (k = 1 + √(200/d) ≤ 2,0)",
+      "k bleibt konstant",
+      "k hängt nur von f_ck ab"
+    ],
+    "correctIdx": 1,
+    "explanation": "k = 1 + √(200/d) mit d in mm; dickere Bauteile tragen bezogen weniger Querkraft (Maßstabseffekt).",
+    "gapAnalysis": {
+      "topic": "Querkraft ohne Bewehrung",
+      "misconception": "Dickere Platten hätten eine höhere bezogene Schubtragfähigkeit.",
+      "coreRule": "k = 1 + √(200/d) ≤ 2,0.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Querkraft ohne Bewehrung“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Fachwerkmodell",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, 6.2.3",
+    "question": "Welche Obergrenze gilt nach NA DE für cot θ bei senkrechten Bügeln?",
+    "options": [
+      "1,0",
+      "2,5",
+      "3,0, zusätzlich begrenzt nach Gl. (6.7aDE)",
+      "unbegrenzt"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der NA erlaubt cot θ bis 3,0; zusätzlich gilt cot θ ≤ 1,2/(1 − V_Rd,cc/V_Ed).",
+    "gapAnalysis": {
+      "topic": "Fachwerkmodell",
+      "misconception": "Der Empfehlungswert 2,5 der EN gelte auch in Deutschland.",
+      "coreRule": "NA DE: 1,0 ≤ cot θ ≤ 3,0 mit Gl. (6.7aDE).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fachwerkmodell“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_7",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Grenzschlankheit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, 5.8.3.1",
+    "question": "Eine Stütze hat die bezogene Normalkraft |n| = 0,5. Welche Grenzschlankheit gilt nach NA DE?",
+    "options": [
+      "16",
+      "22,6",
+      "25",
+      "35"
+    ],
+    "correctIdx": 2,
+    "explanation": "Für |n| ≥ 0,41 ist λ_lim = 25; nur darunter gilt 16/√|n|.",
+    "gapAnalysis": {
+      "topic": "Grenzschlankheit",
+      "misconception": "Es gelte stets die Formel 20·A·B·C/√n.",
+      "coreRule": "λ_lim = 25 (|n| ≥ 0,41) bzw. 16/√|n|.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzschlankheit“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_8",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Durchstanzen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 1992-1-1, 6.4.2",
+    "question": "In welchem Abstand vom Stützenrand liegt der kritische Rundschnitt u₁ (EC2 1. Generation)?",
+    "options": [
+      "0,5·d",
+      "1,0·d",
+      "2,0·d",
+      "3,0·d"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der Grundkontrollschnitt u₁ liegt im Abstand 2,0·d vom Stützenrand; die 2. Generation verwendet 0,5·d.",
+    "gapAnalysis": {
+      "topic": "Durchstanzen",
+      "misconception": "Der Rundschnitt liege direkt am Stützenrand.",
+      "coreRule": "u₁ im Abstand 2d.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Durchstanzen“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_stb_9",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "stahlbeton",
+    "moduleTitle": "Stahlbeton",
+    "topic": "Verankerung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, 8.4.3",
+    "question": "Wie groß ist l_b,rqd für Ø 16, f_bd = 3,0 N/mm² und σ_sd = 435 N/mm²?",
+    "options": [
+      "rund 290 mm",
+      "rund 435 mm",
+      "rund 580 mm",
+      "rund 870 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "l_b,rqd = 16/4 · 435/3,0 = 580 mm.",
+    "gapAnalysis": {
+      "topic": "Verankerung",
+      "misconception": "Die Verankerungslänge hänge nicht vom Stabdurchmesser ab.",
+      "coreRule": "l_b,rqd = (Ø/4)·(σ_sd/f_bd).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verankerung“ im Modul Stahlbeton noch einmal durch.",
+      "targetModuleTab": "stahlbeton",
+      "targetModuleLabel": "Stahlbeton"
+    },
+    "verified": false
   }
 ]

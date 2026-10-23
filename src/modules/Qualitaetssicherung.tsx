@@ -102,7 +102,7 @@ export default function Qualitaetssicherung() {
         zielGleichung="f_{cm} \ge f_{ck} + 1{,}48 \cdot \sigma \quad \text{und} \quad f_{ci} \ge f_{ck} - 4"
         normQuelle="DIN EN 206, Abschnitt 8.2.1 i. V. m. DIN 1045-2 (σ ≥ 3 N/mm²)"
         schritte={[
-          { titel: '1. Gegeben', formel: 'f_{ck,cube} = 37\\,\\text{N/mm}^2,\; n = 15,\; s = 2{,}5\\,\\text{N/mm}^2', erklaerung: 'Würfelprüfung, 15 Ergebnisse aus dem Beurteilungszeitraum.' },
+          { titel: '1. Gegeben', formel: 'f_{ck,cube} = 37\\,\\text{N/mm}^2,\\; n = 15,\\; s = 2{,}5\\,\\text{N/mm}^2', erklaerung: 'Würfelprüfung, 15 Ergebnisse aus dem Beurteilungszeitraum.' },
           { titel: '2. Standardabweichung ansetzen', formel: '\\sigma = \\max(s;\\,3{,}0) = 3{,}0\\,\\text{N/mm}^2', erklaerung: 'Der Rechenwert darf 3 N/mm² nicht unterschreiten.' },
           { titel: '3. Mittelwert-Kriterium', formel: 'f_{cm} \\ge 37 + 1{,}48 \\cdot 3{,}0 = 41{,}4\\,\\text{N/mm}^2', erklaerung: 'Mindestmittelwert der 15 Ergebnisse.' },
           { titel: '4. Einzelwert-Kriterium', formel: 'f_{ci} \\ge 37 - 4 = 33\\,\\text{N/mm}^2', erklaerung: 'Gilt für jedes Einzelergebnis.' },
@@ -151,7 +151,7 @@ export default function Qualitaetssicherung() {
             quelle: 'DIN EN 206, Abschnitt 8.2.1; DIN 1045-2'
           },
           {
-            formel: 'n = 1:\; f_{ci} \\ge f_{ck} - 4; \\quad n = 2\\ldots4:\; f_{cm} \\ge f_{ck} + 1; \\quad n = 5\\ldots6:\; f_{cm} \\ge f_{ck} + 2',
+            formel: 'n = 1:\\; f_{ci} \\ge f_{ck} - 4; \\quad n = 2\\ldots4:\\; f_{cm} \\ge f_{ck} + 1; \\quad n = 5\\ldots6:\\; f_{cm} \\ge f_{ck} + 2',
             erklaerung: 'Identitätsprüfung auf der Baustelle; zusätzlich gilt für jedes Einzelergebnis f_ci ≥ f_ck − 4.',
             quelle: 'DIN EN 206, Anhang B'
           },

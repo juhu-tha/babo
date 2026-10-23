@@ -464,7 +464,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Mittlere Zugfestigkeit</span>
                   <span className="text-lg font-mono font-black text-slate-900">{formatDeWert(currentConcrete.fctm)} N/mm²</span>
-                  <span className="text-[10px] text-slate-500 block font-mono">f_ctm (ca. 10 % von f_ck)</span>
+                  <span className="text-[10px] text-slate-500 block font-mono">f_ctm = 0,30 · f_ck^(2/3)</span>
                 </div>
                 <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                   <span className="text-[10px] text-text-main/60 uppercase font-bold block">Elastizitätsmodul</span>
@@ -559,7 +559,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   <div>
                     <strong>2. Bezogener innerer Hebelarm (<InlineMath math="\zeta" />):</strong>
                     <div className="p-2 bg-off-white rounded font-mono text-center my-1">
-                      <InlineMath math="\zeta = 1 - \sqrt{1 - 2 \cdot \mu_{Eds}}" />
+                      <InlineMath math="\zeta = 0{,}5 \cdot \left(1 + \sqrt{1 - 2 \cdot \mu_{Eds}}\right)" />
                     </div>
                   </div>
                   <div>
@@ -681,7 +681,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
             {/* Navigation & Link in Reiter 2 */}
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-xs text-text-main/80">
-                Im Unterrechner <strong>"2. Biegebemessung"</strong> finden Sie die Plattenbalken-Bemessung und Bewehrungswahl.
+                Im Unterrechner <strong>"2. Biegebemessung"</strong> bemessen Sie Rechteckquerschnitte – auch mit Druckbewehrung und nichtmetallischer Bewehrung.
               </div>
               <div className="flex gap-2">
                 {onNavigateTab && (
@@ -782,9 +782,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     <InlineMath math="V_{Rd,s} = \frac{A_{sw}}{s} \cdot z \cdot f_{ywd} \cdot \cot \theta" />
                   </div>
                   <div className="p-2 bg-white rounded border border-home-grau/20 space-y-1 text-[11px]">
-                    <div>• <strong>Druckstrebenwinkel:</strong> <InlineMath math="1{,}0 \le \cot \theta \le 2{,}5" /> (<InlineMath math="21{,}8^\circ \le \theta \le 45^\circ" />)</div>
+                    <div>• <strong>Druckstrebenwinkel:</strong> <InlineMath math="1{,}0 \le \cot \theta \le 3{,}0" /> nach NA, zusätzlich begrenzt nach Gl. (6.7aDE)</div>
                     <div>• <strong>Betondruckstrebennachweis:</strong> <InlineMath math="V_{Ed} \le V_{Rd,max}" /> zur Vermeidung von Betonzerquetschen im Steg.</div>
-                    <div>• <strong>Versatzmaß:</strong> Zugkraftdeckungslinie um <InlineMath math="a_l = d \cdot \cot \theta / 2" /> versetzen!</div>
+                    <div>• <strong>Versatzmaß:</strong> Zugkraftdeckungslinie um <InlineMath math="a_l = z \cdot \cot \theta / 2" /> versetzen!</div>
                   </div>
                 </div>
               </div>
@@ -1023,7 +1023,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <p className="text-amber-900 text-[11px] leading-relaxed">
                     Infolge der Fachwerkwirkung bei Querkraftbelastung sind die Längszugkräfte gegenüber der 
-                    Biegemomentenlinie um das Versatzmaß <InlineMath math="a_l = d \cdot \cot \theta / 2" /> zur Auflagerseite hin verschoben. 
+                    Biegemomentenlinie um das Versatzmaß <InlineMath math="a_l = z \cdot \cot \theta / 2" /> zur Auflagerseite hin verschoben. 
                     Längsstäbe dürfen erst dort abgemindert werden, wo die verschobene Zugkraftlinie dies erlaubt!
                   </p>
                 </div>
@@ -1085,7 +1085,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
               {/* Frage 2 */}
               <div className="space-y-2 pt-2 border-t border-home-grau/15">
                 <p className="text-xs font-bold text-text-main">
-                  Frage 2: Was beschreibt das Versatzmaß <InlineMath math="a_l = d \cdot \cot \theta / 2" /> bei der Querkraftbemessung?
+                  Frage 2: Was beschreibt das Versatzmaß <InlineMath math="a_l = z \cdot \cot \theta / 2" /> bei der Querkraftbemessung?
                 </p>
                 <div className="grid sm:grid-cols-2 gap-2 text-xs">
                   <button
@@ -1162,7 +1162,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                         <Box className="text-shiraz mb-2" size={18} />
                         <span className="font-bold text-xs block text-text-main">2. Biegebemessung</span>
                         <span className="text-[11px] text-text-main/70 mt-1 block">
-                          Rechteck- & Plattenbalken nach dem μ-Verfahren.
+                          Rechteckquerschnitte nach dem μ-Verfahren.
                         </span>
                       </div>
                       <span className="text-[10px] text-shiraz font-bold mt-2 flex items-center gap-1">

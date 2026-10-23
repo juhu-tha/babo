@@ -1,7 +1,6 @@
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { EC2_NA_DE } from '@/src/data/normParams';
 import { AlertTriangle, Layers } from 'lucide-react';
@@ -65,9 +64,9 @@ export default function Stuetzenbemessung() {
     const nu_Ed = (-nEd / 1000) / (b_m * h_m * fcd); // Druck ist negativ
     const mu_Ed = Math.abs((mEd_1 / 1000) / (b_m * h_m * h_m * fcd));
 
-    // Grenzschlankheit lambda_lim nach DIN EN 1992-1-1, 5.8.3.1
+    // Grenzschlankheit nach DIN EN 1992-1-1/NA, 5.8.3.1: λ_lim = 25 für |n| ≥ 0,41, sonst 16/√|n|
     const n = Math.abs(nu_Ed);
-    const lambda_lim = n > 0 ? (20 * 0.7 * 1.1 * 0.7) / Math.sqrt(n) : 100;
+    const lambda_lim = n >= 0.41 ? 25 : n > 0 ? 16 / Math.sqrt(n) : 100;
     const isTheorie2Ordnung = lambda > lambda_lim;
 
     // EC2 Dehnungsiteration für Interaktionsdiagramm
@@ -389,31 +388,6 @@ export default function Stuetzenbemessung() {
         </div>
       </div>
 
-      <ModuleFooter
-        wikipedia={[
-          { title: 'Stütze (Bauteil)', url: 'https://de.wikipedia.org/wiki/St%C3%BCtze_(Bauteil)' },
-          { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
-          { title: 'Interaktionsdiagramm', url: 'https://de.wikipedia.org/wiki/Interaktionsdiagramm' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitte 5.8 und 9.5)' }
-        ]}
-        literatur={['Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)']}
-        formeln={[
-          {
-            erklaerung: "Mindestbewehrung für Stützen nach NA DE\nA_{s,min}: Mindestbewehrung [cm²]\nN_{Ed}: Bemessungswert der Normalkraft [kN]\nf_{yd}: Bemessungsstreckgrenze des Betonstahls [MPa]",
-            formel: "A_{s,min} = \\frac{0{,}15 \\cdot |N_{Ed}|}{f_{yd}}"
-          },
-          {
-            erklaerung: "Bemessungsmoment mit Mindestausmitte und Imperfektion\nM_{Ed,1}: Bemessungsmoment Theorie I. Ordnung [kNm]\ne_0: Mindestausmitte = \\max(h/30; 20\\text{ mm})\ne_i: Ungewollte Schiefstellung = l_0 / 400",
-            formel: "M_{Ed,1} = \\max(M_{Ed}, N_{Ed} \\cdot e_0) + N_{Ed} \\cdot e_i"
-          },
-          {
-            erklaerung: "Schlankheit und Grenzschlankheitskriterium\n\\lambda: Bauteilschlankheit = l_0 / i\ni: Trägheitsradius = h / \\sqrt{12}\n\\lambda_{lim}: Kriterium nach DIN EN 1992-1-1, 5.8.3.1 für Theorie II. Ordnung",
-            formel: "\\lambda = \\frac{l_0}{i} \\le \\lambda_{lim} = \\frac{20 \\cdot A \\cdot B \\cdot C}{\\sqrt{n}}"
-          }
-        ]}
-      />
     </div>
   );
 }

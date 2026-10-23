@@ -1,7 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Layers, Scissors } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
@@ -505,41 +504,11 @@ export default function Querkraftbemessung() {
         </div>
       </div>
       
+      <p className="text-[11px] text-text-main/60 leading-relaxed">
+        Vereinfachungen: Hebelarm z = 0,9·d (NA: z = max(d − 2c_v,l; d − c_v,l − 30 mm) ≤ 0,9·d). Nichtmetallische Bügel sind eine Lehrannahme;
+        maßgebend ist die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01).
+      </p>
       <CalculatorDisclaimerBanner className="my-2" />
-      <ModuleFooter 
-        wikipedia={[
-          { title: 'Querkraft', url: 'https://de.wikipedia.org/wiki/Querkraft' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitt 6.2)' }
-        ]}
-        literatur={[
-          'Zilch, K., Zehetmaier, G.: Bemessung im konstruktiven Betonbau (2010)',
-          'Goris, A., Hegger, J.: Querkraftbemessung nach Eurocode 2 (2014)'
-        ]}
-        formeln={[
-          {
-            formel: 'V_{Rd,c} = [C_{Rd,c} \\cdot k \\cdot (100 \\cdot \\rho_l \\cdot f_{ck})^{1/3}] \\cdot b_w \\cdot d',
-            erklaerung: 'Bauteilwiderstand ohne Querkraftbewehrung nach NA DE\nV_{Rd,c}: Bemessungswert des Querkraftwiderstands ohne Querkraftbewehrung [kN]\nC_{Rd,c}: Beiwert (0.15 / \\gamma_c nach NA DE)\nk: Maßstabsfaktor (1 + \\sqrt{200/d} \\leq 2.0)\n\\rho_l: Längsbewehrungsgrad (A_{sl} / (b_w \\cdot d) \\leq 0.02)\nf_{ck}: Charakteristische Betondruckfestigkeit [N/mm²]\nb_w: Kleinste Querschnittsbreite in der Zugzone [mm]\nd: Statische Nutzhöhe [mm]',
-            quelle: 'DIN EN 1992-1-1/NA Gl. (6.2aDE)'
-          },
-          {
-            formel: 'V_{Rd,max} = \\frac{\\alpha_{cw} \\cdot b_w \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\cot(\\theta) + \\tan(\\theta)}',
-            erklaerung: 'Maximale Querkrafttragfähigkeit (Druckstrebenversagen)\nV_{Rd,max}: Maximal aufnehmbare Querkraft [kN]\n\\alpha_{cw}: Beiwert für den Spannungszustand im Druckgurt (1,0 für unbewehrte Gurte)\nb_w: Stegbreite [mm]\nz: Hebelarm der inneren Kräfte [mm]\n\\nu_1: Abminderungsbeiwert für gerissenen Beton (0,75 nach NA DE)\nf_{cd}: Bemessungswert der Betondruckfestigkeit [N/mm²]\n\\theta: Druckstrebenneigungswinkel [°]',
-            quelle: 'DIN EN 1992-1-1/NA Gl. (6.9)'
-          },
-          {
-            formel: 'a_{sw} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot(\\theta)}',
-            erklaerung: 'Erforderliche Querkraftbewehrung (Zugstrebenversagen)\na_{sw}: Erforderliche Querkraftbewehrung je Längeneinheit [cm²/m]\nV_{Ed}: Bemessungswert der einwirkenden Querkraft [kN]\nz: Hebelarm der inneren Kräfte [mm]\nf_{yd}: Bemessungswert der Streckgrenze der Querkraftbewehrung [N/mm²]\n\\theta: Druckstrebenneigungswinkel [°]',
-            quelle: 'DIN EN 1992-1-1 Gl. (6.8)'
-          },
-          {
-            formel: '\\rho_{w,min} = 0{,}16 \\cdot \\frac{f_{ctm}}{f_{yk}}',
-            erklaerung: 'Mindestquerkraftbewehrungsgrad nach deutschem Nationalen Anhang (NA DE)\n\\rho_{w,min}: Mindestquerkraftbewehrungsgrad [-]\nf_{ctm}: Mittelwert der Betonzugfestigkeit [N/mm²]\nf_{yk}: Charakteristische Streckgrenze der Querkraftbewehrung [N/mm²]. Die europäische Empfehlung mit 0,08 * sqrt(fck) gilt in Deutschland nicht.',
-            quelle: 'DIN EN 1992-1-1/NA Gl. (9.5N)'
-          }
-        ]}
-      />
     </div>
   );
 }

@@ -14,9 +14,9 @@ import {
 import { Chart } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import { EC2_NA_DE } from '@/src/data/normParams';
 
 ChartJS.register(
   CategoryScale,
@@ -31,12 +31,12 @@ ChartJS.register(
 
 export default function SpannungDehnung() {
   const [fck, setFck] = useState(30);
-  const [carbon, setCarbon] = useState(0.2);
+  const [stahlSorte, setStahlSorte] = useState<'B500A' | 'B500B'>('B500B');
 
   // --- BETON BERECHNUNGEN ---
   const betonProps = useMemo(() => {
     // Parabel-Rechteck-Diagramm (Bemessung)
-    const fcd = fck / 1.5;
+    const fcd = (EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC; // α_cc = 0,85 (NA DE)
     const fcm = fck + 8;
     const Ecm = 22000 * Math.pow(fcm / 10, 0.3); // MPa
     
@@ -121,61 +121,64 @@ export default function SpannungDehnung() {
   }, [fck, betonProps]);
 
   // --- STAHL BERECHNUNGEN ---
+  // Betonstahl B500 nach DIN 488-1 / EC2 3.2.7 (idealisiert, bilinear)
   const stahlProps = useMemo(() => {
-    const E = 210000; // MPa
-    const fy = 200 + 500 * carbon; // MPa
-    const fu = fy * (1.5 - 0.5 * carbon); // MPa
-    const eu = 250 - 200 * carbon; // ‰
-    const ey = (fy / E) * 1000; // ‰
-    const plateauEnd = ey + Math.max(0, (0.4 - carbon) * 50); // Yield plateau length
-
-    return { E, fy, fu, eu, ey, plateauEnd };
-  }, [carbon]);
+    const E = 200000; // E_s in MPa
+    const fy = 500; // f_yk in MPa
+    const k = stahlSorte === 'B500A' ? 1.05 : 1.08; // (f_t/f_y)_k
+    const fu = k * fy; // f_tk
+    const eu = stahlSorte === 'B500A' ? 25 : 50; // ε_uk in ‰
+    const ey = (fy / E) * 1000; // ε_yk in ‰
+    const fyd = fy / EC2_NA_DE.gammaS; // 435 MPa
+    const eyd = (fyd / E) * 1000; // 2,17 ‰
+    const eud = 25; // ε_ud nach NA DE in ‰
+    return { E, fy, fu, eu, ey, k, fyd, eyd, eud };
+  }, [stahlSorte]);
 
   const stahlData = useMemo(() => {
-    const { E, fy, fu, eu, ey, plateauEnd } = stahlProps;
-    const step = 2.0; // Größere Schritte wegen großem Dehnungsbereich
-    const labels = [];
-    const data = [];
-    
-    for (let e = 0; e <= 250; e += step) {
-      labels.push(e.toFixed(0));
-      if (e <= ey) {
-        // Hookesches Gesetz (linear-elastisch)
-        data.push(E * (e / 1000));
-      } else if (e <= eu) {
-        if (e <= plateauEnd) {
-          // Fließbereich (Yield plateau)
-          data.push(fy);
-        } else {
-          // Verfestigungsbereich (Strain hardening)
-          const hardeningStrain = e - plateauEnd;
-          const hardeningRange = eu - plateauEnd;
-          const ratio = hardeningStrain / hardeningRange;
-          // Parabel für Verfestigung
-          data.push(fy + (fu - fy) * (1 - Math.pow(1 - ratio, 2)));
-        }
-      } else {
-        data.push(null); // Bruch
-      }
+    const { E, fy, fu, eu, ey, fyd, eyd, eud } = stahlProps;
+    const step = 0.5;
+    const labels: string[] = [];
+    const dataChar: (number | null)[] = [];
+    const dataDesign: (number | null)[] = [];
+    for (let e = 0; e <= 55 + 1e-9; e += step) {
+      labels.push(formatDeZahl(e, 1));
+      // charakteristische Linie: elastisch bis ε_yk, dann linear bis (ε_uk; k·f_yk)
+      if (e <= ey) dataChar.push(E * (e / 1000));
+      else if (e <= eu) dataChar.push(fy + (fu - fy) * (e - ey) / (eu - ey));
+      else dataChar.push(null);
+      // Bemessungslinie: elastisch bis ε_yd, dann horizontal f_yd bis ε_ud
+      if (e <= eyd) dataDesign.push(E * (e / 1000));
+      else if (e <= eud) dataDesign.push(fyd);
+      else dataDesign.push(null);
     }
-
     return {
       labels,
       datasets: [
         {
           type: 'line' as const,
-          label: `Stahl (C = ${formatDeZahl(carbon, 2)} %)`,
-          data,
+          label: `${stahlSorte} charakteristisch (k = ${formatDeZahl(stahlProps.k, 2)})`,
+          data: dataChar,
           borderColor: '#0e558c',
           backgroundColor: '#0e558c',
           borderWidth: 3,
           pointRadius: 0,
-          tension: 0.1,
+          tension: 0,
+        },
+        {
+          type: 'line' as const,
+          label: `Bemessung (f_yd = ${formatDeZahl(fyd, 0)} MPa)`,
+          data: dataDesign,
+          borderColor: '#a3123a',
+          backgroundColor: '#a3123a',
+          borderWidth: 2,
+          borderDash: [6, 4],
+          pointRadius: 0,
+          tension: 0,
         }
       ]
     };
-  }, [carbon, stahlProps]);
+  }, [stahlSorte, stahlProps]);
 
   const commonOptions = {
     responsive: true,
@@ -253,33 +256,38 @@ export default function SpannungDehnung() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <h3 className="text-lg font-bold text-middle-blue flex items-center gap-2">
             <FormulaText text="Stahl (Zug)" />
-            <InfoTooltip text="Idealisiertes Verhalten in Abhängigkeit vom Kohlenstoffgehalt." />
+            <InfoTooltip text="Betonstahl B500 nach DIN 488-1, idealisiert nach EC2 Bild 3.8." />
           </h3>
           
           <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-            <Slider 
-              label="Kohlenstoffgehalt (C)" 
-              info="Mehr Kohlenstoff erhöht die Festigkeit (Streckgrenze, Zugfestigkeit), verringert aber die Duktilität (Bruchdehnung)."
-              min={0.05} max={0.80} step={0.01} 
-              value={carbon} unit="%" 
-              onChange={(e) => setCarbon(Number(e.target.value))} 
-            />
+            <div className="flex gap-2" role="group" aria-label="Betonstahlsorte">
+              {(['B500A', 'B500B'] as const).map(st => (
+                <button
+                  key={st}
+                  type="button"
+                  onClick={() => setStahlSorte(st)}
+                  className={`flex-1 py-2 rounded-lg text-sm font-bold border cursor-pointer ${stahlSorte === st ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'}`}
+                >
+                  {st} {st === 'B500A' ? '(normale Duktilität)' : '(hohe Duktilität)'}
+                </button>
+              ))}
+            </div>
             
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Streckgrenze f_y" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Streckgrenze f_{yk}" /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.fy, 0)} MPa</div>
               </div>
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Zugfestigkeit f_u" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Zugfestigkeit f_{tk}" /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.fu, 0)} MPa</div>
               </div>
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Fließdehnung \varepsilon_y" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Fließdehnung \varepsilon_{yk}" /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.ey, 2)} ‰</div>
               </div>
               <div>
-                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Bruchdehnung \varepsilon_u" /></div>
+                <div className="text-xs text-home-grau font-bold uppercase"><FormulaText text="Dehnung \varepsilon_{uk}" /></div>
                 <div className="text-lg font-bold text-text-main">{formatDeZahl(stahlProps.eu, 0)} ‰</div>
               </div>
             </div>
@@ -291,8 +299,8 @@ export default function SpannungDehnung() {
               options={{
                 ...commonOptions, 
                 scales: { 
-                  x: { title: { display: true, text: 'Dehnung ε (‰)' }, min: 0, max: 250 },
-                  y: { title: { display: true, text: 'Spannung σ_s (MPa)' }, min: 0, max: 1000 } 
+                  x: { title: { display: true, text: 'Dehnung ε (‰)' } },
+                  y: { title: { display: true, text: 'Spannung σ_s (MPa)' }, min: 0, max: 600 } 
                 } 
               }} 
             />
@@ -300,39 +308,6 @@ export default function SpannungDehnung() {
         </div>
       </div>
 
-      <ModuleFooter 
-        wikipedia={[
-          { title: 'Spannungs-Dehnungs-Diagramm', url: 'https://de.wikipedia.org/wiki/Spannungs-Dehnungs-Diagramm' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Allgemeine Regeln)' },
-          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.5 (Parabel-Rechteck-Diagramm für Querschnittsbemessung)' },
-          { title: 'DIN EN 1992-1-1:2023-08 Abschnitt 5.1.4 (Nichtlineare Spannungs-Dehnungs-Beziehung des Betons)' },
-          { title: 'DIN 488-1:2009-08 / DIN EN 1992-1-1:2023-08 Abschnitt 5.2 (Betonstahl - Eigenschaften und Kennwerte)' }
-        ]}
-        literatur={[
-          'Zilch, K.; Zehetmaier, G. (2010): Bemessung im Konstruktiven Betonbau (Springer-Verlag)',
-          'Bargel, H. J.; Schulze, G. (2012): Werkstoffkunde (Springer Vieweg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: '\\sigma_c = f_{cd} \\cdot \\left[ 1 - \\left(1 - \\frac{\\varepsilon_c}{\\varepsilon_{c2}}\\right)^n \\right]',
-            erklaerung: 'Bemessungsmodell Beton (Parabel-Rechteck-Diagramm nach Eurocode 2): σc ist die Betonspannung, fcd der Bemessungswert der Betondruckfestigkeit, εc2 die Dehnung bei Höchstspannung (2,0 ‰ für fck ≤ 50 MPa) und n der Exponent (2.0 für fck ≤ 50 MPa).',
-            quelle: 'DIN EN 1992-1-1 Abs. 3.1.5'
-          },
-          {
-            formel: '\\frac{\\sigma_c}{f_{cm}} = \\frac{k \\cdot \\eta - \\eta^2}{1 + (k - 2)\\eta}',
-            erklaerung: 'Nichtlineares Spannungs-Dehnungs-Modell für Verformungsberechnungen nach EC2: η = εc / εc1, k = 1.05 · Ecm · |εc1| / fcm mit Sekantenmodul Ecm.',
-            quelle: 'DIN EN 1992-1-1 Gl. (3.14)'
-          },
-          {
-            formel: '\\sigma_s = E_s \\cdot \\varepsilon_s \\quad (\\varepsilon_s \\le \\varepsilon_{yd})',
-            erklaerung: 'Hookesches Gesetz für Betonstahl im linear-elastischen Bereich mit Es = 200.000 MPa bzw. 210.000 MPa (Praxiswert für Baustahl) bis zur Streckgrenze fyd.',
-            quelle: 'DIN EN 1992-1-1 Abs. 3.2'
-          }
-        ]}
-      />
     </div>
   );
 }
