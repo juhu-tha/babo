@@ -1365,8 +1365,8 @@ export default function Spannbeton() {
           { title: 'DGZfP-Merkblätter zur zerstörungsfreien Prüfung im Bauwesen (Ultraschall, Radar, Streufeld) – Nummern/Ausgaben manuell prüfen', url: 'https://www.dgzfp.de/' }
         ]}
         literatur={[
-          'Zilch, K.; Zehetmaier, G. (2010): Bemessung im konstruktiven Betonbau (Springer Vieweg)',
-          'Mehlhorn, G.; Curbach, M. (2014): Handbuch Brückenbau (Ernst & Sohn)',
+          'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
+          'Mehlhorn, G.; Curbach, M. (Hrsg.): Handbuch Brücken. Wiesbaden: Springer Vieweg 2014',
           'Leonhardt, F. (1980): Vorlesungen über Massivbau - Teil 5: Spannbeton (Springer Verlag)'
         ]}
         formeln={[

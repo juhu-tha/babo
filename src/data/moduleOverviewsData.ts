@@ -449,7 +449,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
     corePrinciples: [
       {
         title: 'Das ideale Verbundprinzip',
-        description: 'Beton besitzt eine Druckfestigkeit von 20–100 N/mm², aber nur 10 % Zugfestigkeit. Stahl bietet 500 N/mm² Zugfestigkeit. Durch identische Wärmeausdehnung (α_T ≈ 10·10⁻⁶ 1/K) und mechanischen Rippenverbund entsteht ein monolithischer Hochleistungsverbundwerkstoff.',
+        description: 'Beton besitzt eine Druckfestigkeit von 20–100 N/mm², aber nur etwa 5–10 % davon als Zugfestigkeit (Lehrwert). Stahl bietet 500 N/mm² Zugfestigkeit. Durch identische Wärmeausdehnung (α_T ≈ 10·10⁻⁶ 1/K) und mechanischen Rippenverbund entsteht ein monolithischer Hochleistungsverbundwerkstoff.',
         takeaway: 'Beton nimmt Druckspannungen auf, Stahl übernimmt die Zugspannungen im gerissenen Zustand II.'
       },
       {

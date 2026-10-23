@@ -442,14 +442,14 @@ const MODULES_DATA: Record<string, GroupData> = {
     submodules: [
       { title: 'Rissbreite', icon: GitCommit, purpose: 'Kontrolle der rechnerischen Rissbreiten w_k im Grenzzustand der Gebrauchstauglichkeit.', standards: 'DIN EN 1992-1-1 (EC2) Kap. 7.3', useCase: 'Auslegung einer Deckenplatte bzgl. Mindestbewehrung zur Begrenzung von Rissen infolge abfließender Hydratationswärme.' },
       { title: 'Spannung-Dehnung', icon: Activity, purpose: 'Gegenüberstellung der Parabel-Rechteck-Diagramme für Beton und der elastisch-plastischen Bewehrungsstahllinien.', standards: 'DIN EN 1992-1-1 Kap. 3', useCase: 'Bestimmung der Betondehnung an der Querschnittsoberseite im Bruchzustand.' },
-      { title: 'Biegebemessung', icon: Box, purpose: 'Querschnittsbemessung mit dimensionslosen Beiwerten (kd-Verfahren oder mu-Verfahren).', standards: 'DIN EN 1992-1-1 Kap. 6.1', useCase: 'Schnittgrößenbasierte Berechnung der Tragbewehrung eines Einfeldbalkens.' },
+      { title: 'Biegebemessung', icon: Box, purpose: 'Querschnittsbemessung von Rechteckquerschnitten mit dem μ-Verfahren (auch mit Druckbewehrung).', standards: 'DIN EN 1992-1-1 Kap. 6.1', useCase: 'Schnittgrößenbasierte Berechnung der Tragbewehrung eines Einfeldbalkens.' },
       { title: 'Querkraftbemessung', icon: Box, purpose: 'Tragfähigkeitsnachweis für Querkräfte, Berechnung der Bügelbewehrung (Druckstrebenwinkel theta).', standards: 'DIN EN 1992-1-1 Kap. 6.2', useCase: 'Nachweis der Druckstrebenfestigkeit VRd,max zur Vermeidung von Stegbruch.' },
-      { title: 'Stützenbemessung', icon: Box, purpose: 'Knicknachweise, Bemessung nach Nennkrümmungs- oder Nennsteifigkeitsverfahren.', standards: 'DIN EN 1992-1-1 Kap. 5.8', useCase: 'Tragfähigkeitsnachweis einer schlanken Pendelstütze mit Imperfektionen.' },
+      { title: 'Stützenbemessung', icon: Box, purpose: 'Interaktionsdiagramm für Biegung mit Längskraft, Mindestausmitte und Prüfung der Grenzschlankheit (Theorie II. Ordnung nur als Hinweis).', standards: 'DIN EN 1992-1-1 Kap. 5.8', useCase: 'Tragfähigkeitsnachweis einer schlanken Pendelstütze mit Imperfektionen.' },
       { title: 'Durchstanzen', icon: CircleDashedIcon, purpose: 'Abschätzung des Durchstanzkriteriums an Flachdecken im kritischen Rundschnitt.', standards: 'DIN EN 1992-1-1 Kap. 6.4', useCase: 'Dimensionierung einer Durchstanzbewehrung (z.B. Dübelleisten) zur Stützenauflagerung.' },
       { title: 'Verankerungslänge', icon: GitCommit, purpose: 'Berechnung des Grundwertes der Verankerungslänge von Betonstahl im Verbund.', standards: 'DIN EN 1992-1-1 Kap. 8.4', useCase: 'Ermittlung des notwendigen Übergreifungsstoßes zweier Bewehrungslagen.' },
       { title: 'Spannbeton', icon: GitCommit, purpose: 'Prinzipien des vorgespannten Betons, sofortiger und nachträglicher Verbund, Spannkraftverluste.', standards: 'DIN EN 1992-1-1 Kap. 5.10', useCase: 'Tragfähigkeitssteigerung schlanker Brückenträger.' },
       { title: 'WU-Bauwerke', icon: Droplets, purpose: 'Wasserundurchlässige Betonbauteile ("Weiße Wannen"), Mindestbauteildicken, Fugenplanung.', standards: 'DAfStb WU-Richtlinie', useCase: 'Rissbreitennachweis zur Erzielung von Wasserdichtigkeit bei drückendem Wasser.' },
-      { title: 'Carbonbeton', icon: Layers, purpose: 'Hochfeste textile Hochleistungsbewehrungen zur Konstruktion ultradünner Schalen.', standards: 'Allg. bauaufsichtliche Zulassungen (abZ)', useCase: 'Instandstellung einer schadhaften Fußgängerbrücke mit Carbon-Spritzmörtel.' }
+      { title: 'Carbonbeton', icon: Layers, purpose: 'Hochfeste textile Hochleistungsbewehrungen zur Konstruktion ultradünner Schalen.', standards: 'DAfStb-Richtlinie nichtmetallische Bewehrung (2024); Zulassungen', useCase: 'Instandstellung einer schadhaften Fußgängerbrücke mit Carbon-Spritzmörtel.' }
     ],
     didacticCards: [
       { title: 'Spannungsintegration', desc: 'Verständnis des Kräftepaars (Betondruckkraft und Stahldruck-/Zugkraft) am verbogenen Querschnitt.' },
@@ -463,8 +463,8 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Spannbeton', url: 'https://de.wikipedia.org/wiki/Spannbeton' }
     ],
     literatur: [
-      'Zilch, K.; Zehetmaier, G. (2010): Bemessung im Betonbau (Springer Vieweg)',
-      'Goris, A. (2021): Stahlbetonbau kompakt nach Eurocode 2 (Werner Verlag)'
+      'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
+      'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2, Band 1 und 2. Berlin: Beuth 2023'
     ],
     regelwerke: [
       { title: 'DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken' },
@@ -1029,17 +1029,13 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
       { name: "fib international", url: "https://www.fib-international.org", desc: "Internationaler Verband für Beton- und Spannbetontragwerke zur Vorbereitung internationaler Normgenerationen." }
     ],
     books: [
-      { title: "Stahlbetonbau in Beispielen (Eurocode 2)", desc: "Zilch, Zehetmaier, Springer. Schritt-für-Schritt-Rechnungen zur Biege- und Querkrafttragfähigkeit." },
-      { title: "Bemessung von Betonbauten nach Eurocode 2", desc: "Konrad, DIN Media. Leicht verständliches Tabellenwerk mit Anwendungsfällen." }
+      { title: "Bemessung im konstruktiven Betonbau", desc: "Zilch, K.; Zehetmaier, G. 2. Aufl., Springer 2010. Bemessung nach DIN 1045-1 und EC2 mit Herleitungen." },
+      { title: "Stahlbetonbau-Praxis nach Eurocode 2", desc: "Goris, A. (Hrsg.), Band 1 und 2, Beuth 2023. Grundlagen, Bemessung und Beispiele." },
+      { title: "Handbuch Brücken", desc: "Mehlhorn, G.; Curbach, M. (Hrsg.), Springer Vieweg 2014. Entwurf, Bemessung und Erhaltung von Brücken." },
+      { title: "Erläuterungen und Beispiele zur DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung", desc: "DAfStb (Hrsg.), DIN Media 2024. Grundlage für Carbonbeton." }
     ],
-    publications: [
-      { journal: "Engineering Structures", title: "Bending and shear resistance of concrete beams with recycled aggregate and carbon reinforcements", desc: "Umfassende Querkraftversuche an Carbonbetonbalken." },
-      { journal: "ACI Structural Journal", title: "Prestressed concrete structures under long-term cyclic loading scenarios", desc: "Zeitabhängige Schwind- und Kriechverluste in Vorspannkanälen." }
-    ],
-    dissertations: [
-      { title: "Zur Tragwirkung dünnwandiger Carbonbetonstrukturen unter kombinierter Normalkraft-Biege-Beanspruchung", desc: "Dissertation, TU Dresden, 2022. Bemessungsformeln für Carbon-Gittergelege in der Altbautüchtigkeit." },
-      { title: "Querkrafttragverhalten von Spannbetonbalken mit geringen Schubbewehrungsgraden", desc: "Dissertation, Technische Universität Kaiserslautern. Tragfähigkeit im ungerissenen und gerissenen Zustand." }
-    ]
+    publications: [],
+    dissertations: []
   },
   mechanik: {
     websites: [
