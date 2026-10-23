@@ -1016,6 +1016,7 @@ function AppContent() {
           {activeTab === 'rechnung_brandschutz' && <Beispielrechnungen forceTab="brandschutz" />}
           {activeTab === 'impressum' && <Impressum />}
           {activeTab === 'datenschutz' && <Datenschutz />}
+          {activeTab === 'barrierefreiheit' && <Barrierefreiheit />}
           {activeTab === 'versionen' && <Versionen />}
           {activeTab === 'einheiten' && <Einheiten />}
           {activeTab === 'baustoffkunde' && <Baustoffkunde />}
@@ -1517,6 +1518,7 @@ const HolzbauBeta = React.lazy(() => import('./modules/HolzbauBeta'));
 const ThesenProjekte = React.lazy(() => import('./modules/ThesenProjekte'));
 const Kuriositaeten = React.lazy(() => import('./modules/Kuriositaeten'));
 const Datenschutz = React.lazy(() => import('./modules/Datenschutz'));
+const Barrierefreiheit = React.lazy(() => import('./modules/Barrierefreiheit'));
 const LaborSicherheit = React.lazy(() => import('./modules/LaborSicherheit'));
 
 export default function App() {

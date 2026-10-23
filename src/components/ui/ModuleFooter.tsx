@@ -404,6 +404,14 @@ export function ModuleFooter({
               Datenschutz (DSGVO)
             </button>
             <span className="text-text-main/30">•</span>
+            <button
+              type="button"
+              onClick={() => setActiveTab('barrierefreiheit')}
+              className="text-text-main/70 hover:text-shiraz hover:underline cursor-pointer"
+            >
+              Barrierefreiheit
+            </button>
+            <span className="text-text-main/30">•</span>
             <a
               href="mailto:juergen.huber@tha.de?subject=Aktualisierungsmeldung%20Norm%2FLink%20BaustoffBoard"
               className="text-shiraz hover:underline font-bold whitespace-nowrap"

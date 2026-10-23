@@ -100,6 +100,10 @@ export const MODULE = [
     baum: { titel: 'Datenschutzerklärung', typ: 'info', kurz: 'DSGVO-Datensparsamkeit, Server-Logs und Betroffenenrechte.', icon: 'FileCheck' },
     meta: 'Datenschutzerklärung des BaustoffBoards der TH Augsburg: Informationen zur Datensparsamkeit, Hosting-Infrastruktur, Server-Logfiles und Rechten betroffener Personen.',
     suche: ['datenschutz', 'dsgvo', 'privacy', 'cookies', 'server', 'hosting', 'gaesa', 'daten'] },
+  { id: 'barrierefreiheit', label: 'Barrierefreiheit', icon: 'Accessibility', gruppe: 'Allgemein',
+    baum: { titel: 'Erklärung zur Barrierefreiheit', typ: 'info', kurz: 'Stand der Vereinbarkeit, bekannte Mängel, Feedback und Durchsetzungsverfahren.', icon: 'Accessibility' },
+    meta: 'Erklärung zur Barrierefreiheit des BaustoffBoards der TH Augsburg nach BayBGG und BayDiV: Stand der Vereinbarkeit, bekannte Mängel, Feedback und Durchsetzungsverfahren.',
+    suche: ['barrierefreiheit', 'accessibility', 'bitv', 'wcag', 'screenreader', 'bayern', 'erklärung'] },
   { id: 'grundlagen_info', label: 'Modulinfos', icon: 'Info', gruppe: 'Grundlagen',
     baum: { titel: 'Modulinfos Grundlagen', typ: 'info', kurz: 'Einführung in atomaren Aufbau, Bindungsarten und Phasendiagramme.', icon: 'BookOpen' },
     meta: 'Modulübersicht und Einführung in die Grundlagen der Baustoffkunde. Erfahren Sie mehr über die physikalischen Basiseigenschaften von Baustoffen.',
@@ -1130,7 +1134,7 @@ export interface BaumGruppe {
 /** Gruppen und Reihenfolge der Modulübersicht (Baum) */
 export const BAUM_GRUPPEN = [
   { id: 'allgemein_main', name: 'Allgemein', icon: 'GraduationCap', cluster: 'allgemein',
-    knoten: ['start', 'admin', 'anleitung', 'modulstruktur', 'feedback', 'versionen', 'impressum', 'datenschutz'] },
+    knoten: ['start', 'admin', 'anleitung', 'modulstruktur', 'feedback', 'versionen', 'impressum', 'datenschutz', 'barrierefreiheit'] },
   { id: 'grp_grundlagen', name: 'Grundlagen', icon: 'Layers', cluster: 'cluster_1',
     knoten: ['grundlagen_info', 'baustoffkunde', 'einheiten', 'materialkennwerte', 'baustoffkenngroessen', 'bauchemie', 'sicherheitskonzept', 'regularien'] },
   { id: 'grp_labor', name: 'Labor & Auswertung', icon: 'Microscope', cluster: 'cluster_1',

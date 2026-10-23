@@ -118,7 +118,11 @@ export default function Impressum() {
               </h4>
               
               <p>
-                <strong>Diensteanbieter gemäß § 5 DDG:</strong> Technische Hochschule Augsburg (THA), Fakultät für Architektur und Bauwesen, An der Hochschule 1, 86161 Augsburg, vertreten durch den Präsidenten.
+                <strong>Diensteanbieter gemäß § 5 DDG:</strong> Technische Hochschule Augsburg (THA), Fakultät für Architektur und Bauwesen, An der Hochschule 1, 86161 Augsburg. Die THA ist eine Körperschaft des öffentlichen Rechts und zugleich staatliche Einrichtung des Freistaats Bayern. Sie wird gesetzlich vertreten durch den Präsidenten, Prof. Dr. Dr. h. c. Gordon Thomas Rohrmair.
+              </p>
+
+              <p>
+                <strong>Zuständige Aufsichtsbehörde:</strong> Bayerisches Staatsministerium für Wissenschaft und Kunst, Salvatorstraße 2, 80333 München.
               </p>
 
               <p>

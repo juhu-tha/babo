@@ -112,7 +112,7 @@ const RemEdxInteraction = () => {
       <h4 className="font-bold text-sm mb-3 flex items-center gap-2"><MousePointerClick size={16}/> Interaktiv: REM/EDX Punktsonde</h4>
       <div className="flex flex-col md:flex-row gap-4">
         <div className="relative w-full md:w-1/2 aspect-video bg-stone-300 rounded-md border border-stone-400 overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/concrete-wall.png')] mix-blend-multiply"></div>
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.35)_1px,transparent_0)] bg-[length:6px_6px] mix-blend-multiply" aria-hidden="true"></div>
           <span className="text-stone-500 font-mono text-xs z-0 relative font-bold uppercase tracking-widest">REM Visualisierung</span>
           
           {points.map((pt) => (
