@@ -10841,5 +10841,95 @@
       "targetModuleLabel": "Innovationen & F&E"
     },
     "verified": false
+  },
+  {
+    "id": "q_bre_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_recht",
+    "moduleTitle": "Bauproduktenrecht",
+    "topic": "CE und Ü",
+    "difficulty": "Grundlagen",
+    "normRef": "BauPVO",
+    "question": "Was bestätigt das CE-Kennzeichen auf einem Bauprodukt?",
+    "options": [
+      "Dass eine Leistungserklärung vorliegt und die deklarierten Leistungen gelten",
+      "Dass das Produkt besonders hochwertig ist",
+      "Dass das Produkt den deutschen Bauwerksanforderungen genügt",
+      "Dass das DIBt das Produkt zugelassen hat"
+    ],
+    "correctIdx": 0,
+    "explanation": "Das CE-Kennzeichen ist kein Gütesiegel. Ob die deklarierten Leistungen für das Bauwerk ausreichen, prüft der Planer anhand der MVV TB.",
+    "gapAnalysis": {
+      "topic": "CE und Ü",
+      "misconception": "CE = gute Qualität.",
+      "coreRule": "CE = Leistungserklärung; Eignung im Bauwerk prüft der Planer.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „CE und Ü“ im Modul Bauproduktenrecht noch einmal durch.",
+      "targetModuleTab": "bp_recht",
+      "targetModuleLabel": "Bauproduktenrecht"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bre_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_recht",
+    "moduleTitle": "Bauproduktenrecht",
+    "topic": "AVCP",
+    "difficulty": "Fortgeschritten",
+    "normRef": "BauPVO Anhang",
+    "question": "In welchem AVCP-System ist die notifizierte Stelle am stärksten beteiligt (inkl. Stichprobenprüfung vor dem Inverkehrbringen)?",
+    "options": [
+      "System 1+",
+      "System 1",
+      "System 3",
+      "System 4"
+    ],
+    "correctIdx": 0,
+    "explanation": "Je niedriger die Systemnummer, desto mehr Fremdüberwachung. System 1+ umfasst zusätzlich Audit-Testing, z. B. bei Zement.",
+    "gapAnalysis": {
+      "topic": "AVCP",
+      "misconception": "System 4 ist das strengste.",
+      "coreRule": "1+ > 1 > 2+ > 3 > 4 (Beteiligung Dritter).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „AVCP“ im Modul Bauproduktenrecht noch einmal durch.",
+      "targetModuleTab": "bp_recht",
+      "targetModuleLabel": "Bauproduktenrecht"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bre_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_recht",
+    "moduleTitle": "Bauproduktenrecht",
+    "topic": "EuGH-Urteil",
+    "difficulty": "Grundlagen",
+    "normRef": "EuGH C-100/13",
+    "question": "Was folgte aus dem EuGH-Urteil C-100/13 (2014) für Deutschland?",
+    "options": [
+      "Keine zusätzlichen nationalen Anforderungen an Produkte mit hEN; Anforderungen werden an das Bauwerk gestellt (MVV TB)",
+      "Abschaffung des CE-Kennzeichens",
+      "Pflicht zum Ü-Zeichen auf allen CE-Produkten",
+      "Abschaffung des DIBt"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Bauregellisten wurden durch die MVV TB ersetzt; der Planer weist mit den Werten der Leistungserklärung die Bauwerksanforderungen nach.",
+    "gapAnalysis": {
+      "topic": "EuGH-Urteil",
+      "misconception": "Nationale Zusatzzeichen auf CE-Produkten sind weiterhin zulässig.",
+      "coreRule": "hEN-Produkt: nur CE; Bauwerksanforderungen über MVV TB.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EuGH-Urteil“ im Modul Bauproduktenrecht noch einmal durch.",
+      "targetModuleTab": "bp_recht",
+      "targetModuleLabel": "Bauproduktenrecht"
+    },
+    "verified": false
   }
 ]
