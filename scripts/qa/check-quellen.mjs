@@ -22,4 +22,6 @@ for (const f of files) {
   });
 }
 console.log(errors ? `\n${errors} Verstöße` : `${files.length} Dateien geprüft, 0 Verstöße.`);
-process.exit(errors ? 1 : 0);
+if (errors) process.exit(1);
+// Normenstand (Phase 0, AP 0.5): einheitliche Ausgaben in allen Modul-Fußzeilen
+await import('./check-normen.mjs');

@@ -4,6 +4,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { Slider } from '@/src/components/ui/Slider';
 import { Award, AlertTriangle, CheckCircle2, Shield, Info, FileText, Settings } from 'lucide-react';
 
+import { betonNachKlasse } from '@/src/data/kennwerte';
 export default function HydratationRissberechnung() {
   // Input parameters
   const [concreteGrade, setConcreteGrade] = useState('C30/37');
@@ -22,16 +23,8 @@ export default function HydratationRissberechnung() {
 
   // Concrete characteristic values lookup
   const concreteData = useMemo(() => {
-    const grades: Record<string, { fck: number; fctm: number; Ecm: number }> = {
-      'C20/25': { fck: 20, fctm: 2.2, Ecm: 30000 },
-      'C25/30': { fck: 25, fctm: 2.6, Ecm: 31000 },
-      'C30/37': { fck: 30, fctm: 2.9, Ecm: 33000 },
-      'C35/45': { fck: 35, fctm: 3.2, Ecm: 34000 },
-      'C40/50': { fck: 40, fctm: 3.5, Ecm: 35000 },
-      'C45/55': { fck: 45, fctm: 3.8, Ecm: 36000 },
-      'C50/60': { fck: 50, fctm: 4.1, Ecm: 37000 },
-    };
-    return grades[concreteGrade] || grades['C30/37'];
+    // Kennwerte nach EC2 Tab. 3.1 aus der zentralen Tabelle (src/data/kennwerte.ts)
+    return betonNachKlasse(concreteGrade) ?? (betonNachKlasse('C30/37') as NonNullable<ReturnType<typeof betonNachKlasse>>);
   }, [concreteGrade]);
 
   // Calculations

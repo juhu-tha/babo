@@ -1092,7 +1092,7 @@ export default function BpBetonzusatzmittel() {
           'Deutsche Bauchemie e. V.: Betonzusatzmittel und Umwelt (Sachstandsbericht, 6. Ausgabe, Dezember 2016); Lagerung und Dosierung von Beton- und Mörtelzusatzmitteln (Merkblatt, 3. Ausgabe, März 2018); Moderne Fließmittel in der Betontechnologie (Informationsschrift, 1. Ausgabe, Januar 2007)'
         ]}
         regelwerke={[
-          { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)' },
+          { title: 'DIN EN 934-2:2012-08 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)' },
           { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN EN 480-Reihe (Prüfverfahren für Betonzusatzmittel)' }
         ]}

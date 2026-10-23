@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import type { BemessungSubTab } from '../Stahlbetonbemessung';
 
+import { betonAuswahl } from '@/src/data/kennwerte';
 interface Props {
   onNavigateTab?: (tab: BemessungSubTab) => void;
 }
@@ -88,14 +89,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
   ];
 
   // Concrete classes database for demonstrator 1
-  const CONCRETE_DATA: { [key: string]: { fck: number; fctm: number; Ecm: number } } = {
-    'C20/25': { fck: 20, fctm: 2.2, Ecm: 30000 },
-    'C25/30': { fck: 25, fctm: 2.6, Ecm: 31000 },
-    'C30/37': { fck: 30, fctm: 2.9, Ecm: 33000 },
-    'C35/45': { fck: 35, fctm: 3.2, Ecm: 34000 },
-    'C40/50': { fck: 40, fctm: 3.5, Ecm: 35000 },
-    'C50/60': { fck: 50, fctm: 4.1, Ecm: 37000 },
-  };
+  // Kennwerte nach EC2 Tab. 3.1 aus der zentralen Tabelle (src/data/kennwerte.ts)
+  const CONCRETE_DATA: Record<string, { fck: number; fctm: number; Ecm: number }> = betonAuswahl(['C20/25', 'C25/30', 'C30/37', 'C35/45', 'C40/50', 'C50/60']);
 
   const currentConcrete = CONCRETE_DATA[selectedConcrete] || CONCRETE_DATA['C30/37'];
   const fcd = (0.85 * currentConcrete.fck) / 1.5; // N/mm2

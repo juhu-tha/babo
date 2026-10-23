@@ -20,6 +20,7 @@ import {
 } from 'chart.js';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
+import { fctmVonFck } from '@/src/data/kennwerte';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -31,15 +32,6 @@ ChartJS.register(
   Legend
 );
 
-const CONCRETE_FCTM: Record<number, number> = {
-  20: 2.2,
-  25: 2.6,
-  30: 2.9,
-  35: 3.2,
-  40: 3.5,
-  45: 3.8,
-  50: 4.1,
-};
 
 export default function Querkraftbemessung() {
   // Geometrie
@@ -99,7 +91,7 @@ export default function Querkraftbemessung() {
     const asw_req_cm2_m = asw_req_m2_m * 10000; // in cm²/m
 
     // Mindestquerkraftbewehrung nach NA DE: rho_w,min = 0.16 * fctm / fyk
-    const fctm = CONCRETE_FCTM[fck] ?? (0.3 * Math.pow(fck, 2 / 3));
+    const fctm = fctmVonFck(fck);
     const rho_w_min = EC2_NA_DE.rhoWmin(fctm, isStahl ? fyk : ftk);
     const asw_min_cm2_m = rho_w_min * b_m * 10000; // senkrechte Bügel (alpha = 90°)
 
@@ -175,7 +167,7 @@ export default function Querkraftbemessung() {
       fyd = ftk / gammaFRP;
     }
 
-    const fctm = CONCRETE_FCTM[fck] ?? (0.3 * Math.pow(fck, 2 / 3));
+    const fctm = fctmVonFck(fck);
     const rho_w_min = EC2_NA_DE.rhoWmin(fctm, bewehrungsArt === 'Stahl' ? fyk : ftk);
     const asw_min_cm2_m = rho_w_min * b_m * 10000;
 

@@ -261,7 +261,7 @@ export default function Holzwerkstoffe() {
           { title: 'DIN EN 300:2006-09 (Platten aus langen, flachen, ausgerichteten Spänen (OSB) - Definitionen, Klassifizierung und Anforderungen)' },
           { title: 'DIN EN 312:2010-12 (Spanplatten - Anforderungen)' },
           { title: 'DIN EN 636:2015-05 (Sperrholz - Anforderungen)' },
-          { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz (CLT) - Anforderungen)' }
+          { title: 'DIN EN 16351:2025-07 (Holzbauwerke - Brettsperrholz (CLT) - Anforderungen)' }
         ]}
         formeln={[
           {

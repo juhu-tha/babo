@@ -600,7 +600,7 @@ export default function BetonInfo() {
         regelwerke={[
           { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Nationale Anwendungsregeln zu DIN EN 206)' },
-          { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)' },
+          { title: 'DIN EN 13670:2011-03 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton)' },
           { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei der Planung, Herstellung und Bauausführung)' }
         ]}
         formeln={[

@@ -21,6 +21,7 @@ import { EC2_NA_DE } from '@/src/data/normParams';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
+import { fctmVonFck } from '@/src/data/kennwerte';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -32,14 +33,6 @@ ChartJS.register(
   Legend
 );
 
-const CONCRETE_FCTM: Record<number, number> = {
-  20: 2.2,
-  25: 2.6,
-  30: 2.9,
-  35: 3.2,
-  40: 3.5,
-  50: 4.1,
-};
 
 export default function Biegebemessung() {
   const [b, setB] = useState(30); // Breite in cm
@@ -122,7 +115,7 @@ export default function Biegebemessung() {
     // Mcr = fctm * b * h² / 6
     // z = 0.9 * d
     // As,min = Mcr / (fyk * z)
-    const fctm = CONCRETE_FCTM[fck] ?? (0.3 * Math.pow(fck, 2 / 3));
+    const fctm = fctmVonFck(fck);
     const bw_mm = b_m * 1000;
     const h_mm = h_m * 1000;
     const mcr_Nmm = (fctm * bw_mm * Math.pow(h_mm, 2)) / 6;

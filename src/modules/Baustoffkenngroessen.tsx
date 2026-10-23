@@ -10,15 +10,11 @@ import '@/src/lib/chartSetup';
 import Elastomechanik from './Elastomechanik';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 
+import { betonAuswahl } from '@/src/data/kennwerte';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const CONCRETE_PROPS_MAP = {
-  'C20/25': { fck: 20, Ecm: 30000, fctm: 2.2, fcm: 28 },
-  'C25/30': { fck: 25, Ecm: 31000, fctm: 2.6, fcm: 33 },
-  'C30/37': { fck: 30, Ecm: 33000, fctm: 2.9, fcm: 38 },
-  'C35/45': { fck: 35, Ecm: 34000, fctm: 3.2, fcm: 43 },
-  'C50/60': { fck: 50, Ecm: 37000, fctm: 4.1, fcm: 58 }
-};
+// Kennwerte nach EC2 Tab. 3.1 aus der zentralen Tabelle (src/data/kennwerte.ts)
+const CONCRETE_PROPS_MAP = betonAuswahl(['C20/25', 'C25/30', 'C30/37', 'C35/45', 'C50/60'] as const);
 
 export default function Baustoffkenngroessen() {
   const [activeTab, setActiveTab] = useState<'eigenschaften' | 'mechanisch' | 'physikalisch' | 'hygrisch' | 'thermisch' | 'zeitlich' | 'rechenbeispiele'>('eigenschaften');
