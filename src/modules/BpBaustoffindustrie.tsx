@@ -11,6 +11,8 @@ import {
   Database
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 // Define the Tabs
 type SubTab = 'overview' | 'sources';
@@ -46,16 +48,16 @@ export default function BpBaustoffindustrie() {
             <Factory className="text-shiraz" size={24} />
             <div>
               <h2 className="text-xl font-bold text-text-main">Die deutsche Baustoff- &amp; Steine-Erden-Industrie</h2>
-              <p className="text-xs text-text-main/60">Makroökonomische Einordnung, globale Dynamiken und morphologische Gliederung</p>
+              <p className="text-xs text-text-main/60">Wirtschaftliche Einordnung und Gliederung der Branche</p>
             </div>
           </div>
 
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed space-y-3">
             <p>
-              Die deutsche Baustoff- und Steine-Erden-Industrie bildet das unersetzbare Fundament der Bauwirtschaft und der gesamten materiellen Wertschöpfungskette. Als primärer Lieferant von mineralischen Baurohstoffen, veredelten Bindemitteln (Zement, Kalk, Gips) und werksseitig gefertigten Konstruktionskomponenten speist sie Hoch-, Tief- und Ausbaubauwerke kontinuierlich mit Substanz.
+              Die deutsche Baustoff- und Steine-Erden-Industrie ist die Basis der Bauwirtschaft. Sie liefert mineralische Rohstoffe, Bindemittel (Zement, Kalk, Gips) und vorgefertigte Bauteile für Hoch-, Tief- und Ausbau.
             </p>
             <p className="text-xs italic text-text-main/60 border-t border-home-grau/20 pt-2">
-              <strong>Entscheidendes Strukturmerkmal:</strong> Der Sektor ist geprägt von einer markanten strukturellen Morphologie, die durch die physikalischen Gesetzmäßigkeiten der Logistikkosten gegliedert ist (Geringer spezifischer Wert bei extrem hohem Eigengewicht). Dies führt zu einer Zweiteilung des Marktes:
+              <strong>Entscheidendes Strukturmerkmal:</strong> Massenbaustoffe haben einen geringen Wert je Tonne bei hohem Gewicht. Die Transportkosten begrenzen daher den Lieferradius. Daraus ergibt sich eine Zweiteilung des Marktes:
             </p>
           </div>
 
@@ -68,11 +70,11 @@ export default function BpBaustoffindustrie() {
                   <span>Kategorie A: Kapitalintensive globale Konzerne</span>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed">
-                  Geprägt durch multinationale Verflechtungen, immense Investitionen in hochdynamische Klinkerdrehöfen oder Gips-Kalzinierungswerkzeuge. Die Transportwege sind überregional bis global, die Produktionsstrukturen zentralisiert.
+                  Geprägt durch internationale Konzerne und hohe Investitionen, z. B. in Drehrohröfen für Zementklinker oder Anlagen zur Gipskalzinierung. Die Transportwege sind überregional bis global, die Produktionsstrukturen zentralisiert.
                 </p>
                 <div className="bg-white p-2.5 rounded-lg border border-slate-100 text-xs">
                   <span className="font-semibold text-slate-900 block mb-1">Typische Sektoren &amp; Akteure:</span>
-                  <p className="text-text-main/70">Zementwerke, Gipsabbau, Bauchemie, Flachglasherstellung. <br /><em>Z.B. Multinationale Bindemittel- &amp; Gips-Konzerne, Bauchemiegiganten, Flachglashersteller.</em></p>
+                  <p className="text-text-main/70">Zementwerke, Gipsabbau, Bauchemie, Flachglasherstellung. <br /><em>Z.B. Multinationale Bindemittel- &amp; Gips-Konzerne, große Bauchemieunternehmen, Flachglashersteller.</em></p>
                 </div>
               </div>
               <div className="text-[11px] font-mono text-slate-500 mt-4 bg-slate-100 p-1.5 rounded text-center">
@@ -117,7 +119,7 @@ export default function BpBaustoffindustrie() {
                     <th className="p-3">Branchensegment / Industriezweig</th>
                     <th className="p-3">Hauptprodukte / Output</th>
                     <th className="p-3 text-right">Wirtschaftlicher Lieferradius (LKW-Transport)</th>
-                    <th className="p-3 text-right">Produktionswert (Jahr)</th>
+                    <th className="p-3 text-right">Produktionswert (Größenordnung, Lehrwert)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -129,19 +131,19 @@ export default function BpBaustoffindustrie() {
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-semibold text-slate-800">Zement, Kalk &amp; Gips</td>
-                    <td className="p-3 text-text-main/80">Hydraulische Bindemittel, REA-Gipsplatten, Bau- und Düngekalke</td>
+                    <td className="p-3 text-text-main/80">Hydraulische Bindemittel, Gipsplatten, Bau- und Düngekalke</td>
                     <td className="p-3 text-right text-slate-600 font-medium">Überregional (~150 km)</td>
                     <td className="p-3 text-right font-mono font-bold">~ 4,2 Mrd. €</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-semibold text-slate-800">Mörtel, Betonwaren &amp; Fertigteile</td>
-                    <td className="p-3 text-text-main/80">Vorgefertigte Deckenelemente, Pflasterklinker, Transportbeton, Klebe-Mörtel</td>
+                    <td className="p-3 text-text-main/80">Vorgefertigte Deckenelemente, Betonpflaster, Transportbeton, Werkmörtel</td>
                     <td className="p-3 text-right text-amber-700 font-medium">Regional (~80 km)</td>
                     <td className="p-3 text-right font-mono font-bold">~ 12,8 Mrd. €</td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-semibold text-slate-800">Ziegel &amp; Grobkeramik</td>
-                    <td className="p-3 text-text-main/80">Wandziegel (Poroton), Dachziegel, Sinterziegel, feuerfeste Produkte</td>
+                    <td className="p-3 text-text-main/80">Hochlochziegel, Dachziegel, Klinker, feuerfeste Produkte</td>
                     <td className="p-3 text-right text-slate-600 font-medium">Überregional (~150 km)</td>
                     <td className="p-3 text-right font-mono font-bold">~ 2,1 Mrd. €</td>
                   </tr>
@@ -153,7 +155,7 @@ export default function BpBaustoffindustrie() {
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-semibold text-slate-800">Dämmstoffe &amp; Fasererzeugnisse</td>
-                    <td className="p-3 text-text-main/80">Mineralwolle, EPS (Styropor), Holzdämmstoffe, Kalksandsteine</td>
+                    <td className="p-3 text-text-main/80">Mineralwolle, EPS, Holzfaserdämmstoffe</td>
                     <td className="p-3 text-right text-blue-600 font-medium">National / Global</td>
                     <td className="p-3 text-right font-mono font-bold">~ 4,5 Mrd. €</td>
                   </tr>
@@ -161,7 +163,7 @@ export default function BpBaustoffindustrie() {
               </table>
             </div>
             <div className="bg-blue-50/50 border border-blue-100 p-3 rounded-lg text-[11.5px] leading-relaxed text-blue-900 mt-2">
-              <strong>Zusammenfassende Branchenkennzahlen:</strong> Insgesamt erwirtschaften circa 2.000 Unternehmen mit über 150.000 Mitarbeitern einen konsolidierten Umsatz von über <strong>35 - 38 Milliarden Euro pro Jahr</strong> in Deutschland. Sie beliefern die Bauindustrie mit über 500 Millionen Tonnen mineralischen Rohstoffen pro Jahr.
+              <strong>Zusammenfassende Branchenkennzahlen:</strong> Die Branche beschäftigt in Deutschland rund 150.000 Menschen, setzt jährlich einen mittleren zweistelligen Milliardenbetrag um und liefert über 500 Millionen Tonnen mineralische Rohstoffe pro Jahr (Größenordnungen; aktuelle Zahlen im bbs-Jahresbericht bzw. bei Destatis manuell prüfen).
             </div>
           </div>
         </div>
@@ -243,19 +245,35 @@ export default function BpBaustoffindustrie() {
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
               <div className="space-y-2">
                 <h3 className="font-bold text-sm text-slate-900 flex items-center gap-1.5">
-                  <Layers size={16} className="text-slate-700" /> ECONIS - Fachdatenbank Wirtschaftswissenschaften
+                  <Layers size={16} className="text-slate-700" /> EconBiz – Fachportal Wirtschaftswissenschaften
                 </h3>
                 <p className="text-xs text-text-main/80 leading-relaxed">
-                  Betrieben durch die ZBW (Leibniz-Informationszentrum Wirtschaft). Hervorragende Recherchequelle für wissenschaftliche Literatur, Dissertationen und Fachmonografien im Bereich der Energiewende in Baustoffbranchen.
+                  Betrieben von der ZBW (Leibniz-Informationszentrum Wirtschaft). Recherche nach wirtschaftswissenschaftlicher Literatur, z. B. zur Dekarbonisierung der Baustoffindustrie.
                 </p>
               </div>
-              <span className="mt-4 inline-flex items-center text-xs font-medium text-slate-500">
-                ZBW ECONIS-Suche (Fachdatenbank / Universitätsbibliothek)
-              </span>
+              <a href="https://www.econbiz.de" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center text-xs font-medium text-shiraz hover:underline">
+                econbiz.de öffnen
+              </a>
             </div>
           </div>
         </div>
       )}
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Wirtschaftlicher Lieferradius für Kies"
+          zielGleichung="R_{max} = \frac{P_{Markt} - K_{prod} - K_{fix}}{k_{var}}"
+          normQuelle="Lehrmodell mit angenommenen Kostenwerten"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'P_{Markt} = 30\\,\\text{€/t},\\; K_{prod} = 12\\,\\text{€/t},\\; K_{fix} = 3\\,\\text{€/t},\\; k_{var} = 0{,}30\\,\\text{€/(t·km)}', erklaerung: 'Lehrannahmen: Preis frei Baustelle, Gewinnungskosten, Laden/Entladen, Fahrtkosten je km.' },
+            { titel: '2. Verfügbare Marge für Transport', formel: '30 - 12 - 3 = 15\\,\\text{€/t}', erklaerung: 'Was für die Fahrt bleibt.' },
+            { titel: '3. Lieferradius', formel: 'R_{max} = 15 / 0{,}30 = 50\\,\\text{km}', erklaerung: 'Weiter entfernte Kunden sind unwirtschaftlich.' },
+          ]}
+          ergebnisHinweis="Rund 50 km – deshalb sind Kieswerke und Transportbetonwerke regional verteilt, Zementwerke dagegen beliefern größere Gebiete."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_baustoffindustrie" />
 
       {/* Module Footer standard integration */}
       <ModuleFooter 
@@ -265,11 +283,10 @@ export default function BpBaustoffindustrie() {
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' }
         ]}
         weblinks={[
-          { title: 'Bundesverband Baustoffe - Steine und Erden (bbs)', url: 'https://www.baustoffindustrie.de' },
-          { title: 'Bayerischer Industrieverband Baustoffe, Steine und Erden e.V. (BIV)', url: 'https://www.biv.de' }
+          { title: 'Bundesverband Baustoffe – Steine und Erden (bbs)', url: 'https://www.baustoffindustrie.de' }
         ]}
         literatur={[
-          'Bundesverband Baustoffe - Steine und Erden (bbs): Rohstoffbericht der deutschen Baustoffindustrie (Berlin)',
+          'Bundesverband Baustoffe – Steine und Erden (bbs): Die Nachfrage nach Primär- und Sekundärrohstoffen der Steine-Erden-Industrie (Rohstoffstudie; Ausgabe manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
@@ -281,7 +298,7 @@ export default function BpBaustoffindustrie() {
           {
             formel: 'K_{\\text{trans}} = K_{\\text{fix}} + d_{\\text{dist}} \\cdot k_{\\text{var}} \\quad [\\text{€/t}], \\quad R_{\\text{max}} = \\frac{P_{\\text{Markt}} - K_{\\text{prod}} - K_{\\text{fix}}}{k_{\\text{var}}}',
             erklaerung: 'Transportkostenmodellierung und maximaler wirtschaftlicher Lieferradius Rmax von mineralischen Massenbaustoffen in Abhängigkeit von Marktpreis, Produktionskosten und entfernungsabhängigen Speditionskosten.',
-            quelle: 'Baustoff-Ökonomie & Logistik'
+            quelle: 'Lehrmodell (Transportkosten)'
           }
         ]}
       />

@@ -10691,5 +10691,65 @@
       "targetModuleLabel": "Sonstige Baustoffe"
     },
     "verified": false
+  },
+  {
+    "id": "q_bpi_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_baustoffindustrie",
+    "moduleTitle": "Baustoffindustrie",
+    "topic": "Lieferradius",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Warum werden Kies und Transportbeton überwiegend regional geliefert?",
+    "options": [
+      "Geringer Wert je Tonne bei hohem Gewicht – Transportkosten begrenzen den Lieferradius",
+      "Gesetzliche Vorgaben verbieten Ferntransporte",
+      "Die Produkte sind nur wenige Stunden lagerfähig – das gilt auch für Kies",
+      "Regionale Normen weichen voneinander ab"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bei Massenbaustoffen fressen die entfernungsabhängigen Transportkosten die Marge schnell auf (Lehrbeispiel: R_max ≈ 50 km). Transportbeton ist zusätzlich durch die Verarbeitbarkeitszeit begrenzt.",
+    "gapAnalysis": {
+      "topic": "Lieferradius",
+      "misconception": "Lieferradien sind rechtlich festgelegt.",
+      "coreRule": "R_max = (Preis − Produktionskosten − Fixkosten) / Kosten je km.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lieferradius“ im Modul Baustoffindustrie noch einmal durch.",
+      "targetModuleTab": "bp_baustoffindustrie",
+      "targetModuleLabel": "Baustoffindustrie"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpi_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_baustoffindustrie",
+    "moduleTitle": "Baustoffindustrie",
+    "topic": "Lieferradius",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Preis 30 €/t, Produktion 12 €/t, Laden 3 €/t, Fahrt 0,30 €/(t·km). Wie groß ist der wirtschaftliche Lieferradius?",
+    "options": [
+      "50 km",
+      "100 km",
+      "40 km",
+      "60 km"
+    ],
+    "correctIdx": 0,
+    "explanation": "(30 − 12 − 3) / 0,30 = 50 km.",
+    "gapAnalysis": {
+      "topic": "Lieferradius",
+      "misconception": "Fixkosten werden vergessen (→ 60 km).",
+      "coreRule": "Erst alle festen Kosten abziehen, dann durch die variablen Kosten teilen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lieferradius“ im Modul Baustoffindustrie noch einmal durch.",
+      "targetModuleTab": "bp_baustoffindustrie",
+      "targetModuleLabel": "Baustoffindustrie"
+    },
+    "verified": false
   }
 ]
