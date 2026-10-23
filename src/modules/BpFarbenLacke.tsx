@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Paintbrush, Calculator, ShieldCheck, Info, Check, AlertTriangle, FlaskConical, Atom, Layers } from 'lucide-react';
@@ -141,7 +143,7 @@ interface OSSystem {
 const OS_SYSTEMS: OSSystem[] = [
   {
     id: 'os1',
-    name: 'OS 1 (OS-A)',
+    name: 'OS 1',
     title: 'Hydrophobierung',
     description: 'Wasserabweisende Imprägnierung der Betonoberfläche ohne Filmbildung. Die Kapillarporen werden chemisch ausgekleidet, bleiben aber offen für Wasserdampf-Diffusion.',
     flexible: false,
@@ -157,9 +159,9 @@ const OS_SYSTEMS: OSSystem[] = [
   },
   {
     id: 'os2',
-    name: 'OS 2 (OS-B)',
-    title: 'Imprägnierung',
-    description: 'Poren- und kapillarverstopfende Imprägnierung, die einen hauchdünnen, nicht zusammenhängenden Film (10 - 50 µm) auf der Oberfläche bildet. Reduziert die kapillare Wasseraufnahme maßgeblich.',
+    name: 'OS 2',
+    title: 'Dünne Beschichtung / Imprägnierung (nicht begeh- und befahrbar)',
+    description: 'Dünner, porenfüllender Schutz für nicht begeh- und befahrbare Flächen; verringert die kapillare Wasseraufnahme. Systemaufbau und Kennwerte nach TR Instandhaltung bzw. DIN V 18026 (Angaben hier als Lehrwerte, manuell prüfen).',
     flexible: false,
     thickness: '10 - 50 µm Schichtstärke',
     bridging: 'Keine Rissüberbrückung',
@@ -174,9 +176,9 @@ const OS_SYSTEMS: OSSystem[] = [
   },
   {
     id: 'os4',
-    name: 'OS 4 (OS-C)',
+    name: 'OS 4',
     title: 'Beschichtung für vertikale Betonflächen',
-    description: 'Standardbeschichtung für vertikale Betonbauteile wie Brückenpfeiler, Tunnelwände, Stützmauern und Fassaden. Wirkt als hocheffektive Kohlendioxid-Bremse (CO₂-Diffusionssperre) zur Verhinderung der Karbonatisierung, bleibt aber diffusionsoffen für Wasserdampf.',
+    description: 'Standardbeschichtung für vertikale Betonbauteile wie Brückenpfeiler, Tunnelwände, Stützmauern und Fassaden. Wirkt als CO₂-Bremse und verlangsamt die Karbonatisierung, bleibt aber diffusionsoffen für Wasserdampf.',
     flexible: false,
     thickness: 'Mindesttrockenschichtdicke ≥ 80 µm',
     bridging: 'Keine Rissüberbrückung (starr)',
@@ -192,12 +194,12 @@ const OS_SYSTEMS: OSSystem[] = [
   },
   {
     id: 'os5a',
-    name: 'OS 5a (OS-D.1)',
-    title: 'Beschichtung mit geringer Rissüberbrückung (statisch)',
-    description: 'Dickschichtigere, starre bis minimal flexible Beschichtung für nicht befahrbare Betonbauteile zur Abdeckung bereits vorhandener, ruhender (statischer) Risse.',
+    name: 'OS 5a',
+    title: 'Beschichtung mit geringer Rissüberbrückung',
+    description: 'Beschichtung mit geringer Rissüberbrückungsfähigkeit für nicht begeh- und befahrbare Flächen. OS 5a und OS 5b unterscheiden sich im Bindemittelsystem (Zuordnung und Rissüberbrückungsklassen nach TR Instandhaltung manuell prüfen).',
     flexible: true,
     thickness: 'Trockenschichtdicke ≥ 150 µm',
-    bridging: 'Statische Rissüberbrückung (Klasse A1/A2)',
+    bridging: 'Geringe Rissüberbrückung (Klasse manuell prüfen)',
     trafficable: false,
     mainBinders: 'Modifizierte Acrylat-Kopolymer-Dispersionen',
     consumption: '0,50 - 0,80 kg/m²',
@@ -209,12 +211,12 @@ const OS_SYSTEMS: OSSystem[] = [
   },
   {
     id: 'os5b',
-    name: 'OS 5b (OS-D.2)',
-    title: 'Beschichtung mit mäßiger Rissüberbrückung (dynamisch)',
-    description: 'Hochelastische Beschichtung für nicht befahrbare Flächen im Außenbereich (z.B. Fassaden mit thermisch-dynamischen Rissrisiken). Muss auch bei tiefen Temperaturen (-20 °C) dehnfähig bleiben.',
+    name: 'OS 5b',
+    title: 'Beschichtung mit geringer Rissüberbrückung (anderes Bindemittelsystem)',
+    description: 'Wie OS 5a für nicht begeh- und befahrbare Flächen, jedoch mit anderem Bindemittelsystem; muss auch bei tiefen Temperaturen dehnfähig bleiben (Klassen und Prüftemperaturen manuell prüfen).',
     flexible: true,
     thickness: 'Trockenschichtdicke ≥ 300 µm',
-    bridging: 'Dynamische Rissüberbrückung (Klasse B1 bis B2 bei -20 °C)',
+    bridging: 'Geringe Rissüberbrückung (Klasse manuell prüfen)',
     trafficable: false,
     mainBinders: 'Spezial-Polyurethane/Acrylate (lösemittelhaltig oder wässrig)',
     consumption: '0,80 - 1,25 kg/m²',
@@ -226,9 +228,9 @@ const OS_SYSTEMS: OSSystem[] = [
   },
   {
     id: 'os8',
-    name: 'OS 8 (OS-H)',
+    name: 'OS 8',
     title: 'Starr befahrbares Parkhaussystem',
-    description: 'Der Klassiker für extrem beanspruchte mechanische Verkehrsflächen. Optimal für Tiefgaragen-Bodenplatten, geschützte Zwischendecks, Rampen und Spindeln sowie Industrie- und Werkstattböden. Extrem verschleißfest, raue Oberfläche für hohen Rutschwiderstand (R11/R12).',
+    description: 'Starres System für mechanisch stark beanspruchte Verkehrsflächen ohne Rissüberbrückung. Optimal für Tiefgaragen-Bodenplatten, geschützte Zwischendecks, Rampen und Spindeln sowie Industrie- und Werkstattböden. Sehr verschleißfest, raue Oberfläche für hohen Rutschwiderstand (R11/R12).',
     flexible: false,
     thickness: 'Ca. 1,5 - 3,0 mm Systemdicke',
     bridging: 'Keine Rissüberbrückung (starr)',
@@ -246,12 +248,12 @@ const OS_SYSTEMS: OSSystem[] = [
   },
   {
     id: 'os11a',
-    name: 'OS 11a (OS-F1)',
+    name: 'OS 11a',
     title: 'Hochelastisches, befahrbares System (2-schichtig)',
-    description: 'Hochelastisches, hoch-rissüberbrückendes Beschichtungssystem für freibewitterte Parkdeck-Flächen (Oberdecks, Brückenkappen, Parkdächer im Freien) mit thermischen Dehnungen und aktiven Rissbewegungen. Verwendet getrennte Dichtungsmembranen und Verschleißschichten.',
+    description: 'Elastisches Beschichtungssystem mit erhöhter dynamischer Rissüberbrückung für freibewitterte Parkdeck-Flächen (Oberdecks, Brückenkappen, Parkdächer im Freien) mit thermischen Dehnungen und aktiven Rissbewegungen. Verwendet getrennte Dichtungsmembranen und Verschleißschichten.',
     flexible: true,
     thickness: 'Systemstärke ≥ 4,5 mm',
-    bridging: 'Exzellente dynamische Rissüberbrückung (Klasse B3.2 bei -20 °C)',
+    bridging: 'Erhöhte dynamische Rissüberbrückung (Klasse B3.2 bei −20 °C)',
     trafficable: true,
     mainBinders: '2K-Polyurethan (PU) oder PU-Polyurea-Hybride',
     consumption: 'Grundierung: 0,4 kg/m² | Dichtungsschicht (Membran): 2,0 kg/m² | Verschleißschicht: 1,6 kg/m² | Quarzsandabstreuung: 4,5 kg/m² | Kopfversiegelung: 0,8 kg/m²',
@@ -266,7 +268,7 @@ const OS_SYSTEMS: OSSystem[] = [
   },
   {
     id: 'os11b',
-    name: 'OS 11b (OS-F2)',
+    name: 'OS 11b',
     title: 'Elastisches, befahrbares System (1-schichtig/kombiniert)',
     description: 'Günstigere Alternative zu OS 11a für Parkgaragen-Zwischendecks. Die elastische Dichtungsmembran und die mechanische Verschleißschicht sind in einer einzigen, elastischen Kombischicht vereint.',
     flexible: true,
@@ -332,12 +334,12 @@ Zerfall: R-CH=CH-CH(O·)-CH=CH-R'   --->   Direkte unlösliche Vernetzung über 
          / \\
 R - CH - CH2   +   H2N - R' (Amin)   ---->   R - CH(OH) - CH2 - NH - R' (Alkohol + sekundäres Amin)
 (Freie Aminogruppen greifen nucleophil an den polarisierten Sauerstoffring unter Ringöffnung an. Keine Spaltprodukte!)`,
-    description: 'Die reaktiven Oxiranringe (Epoxidgruppen) der Stammkomponente reagieren ohne Abspaltung von Nebenprodukten mit den aktiven Wasserstoffatomen der Aminogruppen. Durch progressive Polyaddition entsteht ein hochfestes, chemikalienbeständiges und enorm steifes, duroplastisches Epoxidnetzwerk.',
+    description: 'Die reaktiven Oxiranringe (Epoxidgruppen) der Stammkomponente reagieren ohne Abspaltung von Nebenprodukten mit den aktiven Wasserstoffatomen der Aminogruppen. Durch progressive Polyaddition entsteht ein hochfestes, chemikalienbeständiges und steifes, duroplastisches Epoxidnetzwerk.',
     processingRules: [
       'Stöchiometrisches Mischungsverhältnis (A+B) exakt auswiegen. Abweichungen führen zu unvollständiger Härtung, Klebrigkeit und dramatischem Festigkeitsverlust.',
       'Sorgfältig mechanisch anmischen (mindestens 3 Minuten rühren), danach zwingend in ein neues Mischgefäß umtopfen und erneut kurz rühren, um ungemischte Randzonen auszuschließen.',
       'Die Härtungsreaktion ist stark temperaturabhängig. Unter +8°C bis +10°C friert die chemische Reaktion fast vollständig ein.',
-      'Die Topfzeit (Potlife) begrenzt das Zeitfenster der Verarbeitung. Achtung: Exotherme Reaktion (Mischung im Eimer wird extrem heiß und geliert schlagartig).'
+      'Die Topfzeit (Potlife) begrenzt das Zeitfenster der Verarbeitung. Achtung: Exotherme Reaktion (Mischung im Eimer wird sehr heiß und geliert schnell).'
     ],
     neutralProducts: [
       {
@@ -374,7 +376,7 @@ R - N=C=O (Isocyanat)  +  H2O (Wasser/Feuchte)   ---->   R - NH2 (Amin)  +  CO2�
       {
         title: 'Flüssig aufzubringende PUR-Dachabdichtung',
         desc: 'Hochelastische, nahtlose, rissüberbrückende elastomere Beschichtung für Flachdächer und Logistikbauten.',
-        norms: 'ETAG 005 (Europäische Leitlinie für flüssig aufzubringende Abdichtungen)'
+        norms: 'ETAG 005 bzw. Nachfolge-EAD (flüssig aufzubringende Dachabdichtungen)'
       }
     ]
   },
@@ -385,21 +387,21 @@ R - N=C=O (Isocyanat)  +  H2O (Wasser/Feuchte)   ---->   R - NH2 (Amin)  +  CO2�
     catalysts: 'Keine (Selbsttätige hydrothermale Reaktion im Carbonatpuffer)',
     molecularReaction: `K2O·n SiO2   +   CO2   +   Ca(OH)2   ---->   CaSiO3·x H2O (Calcium-Silikat-Hydrat-Kristalle)  +  K2CO3
 (Chemische Verschmelzung und Verankerung im kristallinen Molekülgitter des Putzuntergrundes)`,
-    description: 'Im Gegensatz zu Kunstharzlacken bilden reine Silikatfarben keinen geschlossenen Kunststofffilm. Das flüssige Wasserglas dringt tief in die Poren des Putzes ein und reagiert sauer mit den Kalkbestandteilen und Kohlendioxid. Dabei entstehen wasserunlösliche, gesteinsähnliche Calciumsilikate. Dieser mineralische Prozess wird als "Verkieselung" bezeichnet.',
+    description: 'Im Gegensatz zu Kunstharzlacken bilden reine Silikatfarben keinen geschlossenen Kunststofffilm. Das Wasserglas dringt in die Poren des Untergrunds ein und reagiert mit dessen Calciumverbindungen und dem CO₂ der Luft. Dabei entstehen wasserunlösliche, gesteinsähnliche Calciumsilikate. Dieser mineralische Prozess wird als "Verkieselung" bezeichnet.',
     processingRules: [
       'Ausschließlich auf karbonatisch oder mineralisch gebundenen, tragfähigen Untergründen (Kalkputz, Zementputz, Beton) anwendbar. Absolut ungeeignet auf Gips, Holz, Metall oder Altkunststoffen.',
-      'Kaliwasserglas ist hochalkalisch (pH-Wert ~11-12) und reagiert stark ätzend! Alle Glasflächen, Aluminium-Fassadenelemente, Fliesen und Natursteine müssen hermetisch abgeklebt werden, da ein Farbspritzer das Silikatgitter von Glas sofort ätzt und nachhaltig trübt.',
+      'Kaliwasserglas ist hochalkalisch (pH-Wert ~11-12) und reagiert stark ätzend! Alle Glasflächen, Aluminium-Fassadenelemente, Fliesen und Natursteine müssen hermetisch abgeklebt werden, da Spritzer Glas und empfindliche Oberflächen anätzen und dauerhaft trüben können.',
       'Die relative Feuchtigkeit während der Erstverkieselung darf nicht zu hoch sein, da sonst Löseeffekte auftreten.'
     ],
     neutralProducts: [
       {
         title: 'Zwei-Komponenten-Reinsilikatfarbe (Wasserglas + Pigmentpulver)',
-        desc: 'Absolut biozidfreie, mineralisch-matte Fassadenbeschichtung mit extrem hoher Lebensdauer (> 50 Jahre) für historische Denkmäler.',
-        norms: 'DIN 18363, Abs. 2.4.1 (Frei von organischen Kunstharzdispersionen)'
+        desc: 'Mineralisch-matte, in der Regel biozidfreie Fassadenbeschichtung mit langer Standzeit; bewährt an historischen Fassaden.',
+        norms: 'DIN 18363 (VOB/C): reine Silikatfarbe ohne, Dispersionssilikatfarbe mit begrenztem organischem Anteil (≤ 5 %)'
       },
       {
         title: 'Kieselsäureester-Steinfestiger',
-        desc: 'Herstellerneutraler, extrem kapillaraktiver Tiefenfestiger zur Festigung von porösem, labilem Sandstein oder Denkmalskulpturen.',
+        desc: 'Steinfestiger auf Kieselsäureesterbasis zur Festigung von mürbem, porösem Sandstein (Denkmalpflege).',
         norms: 'DIN EN 1504-2 Oberflächenschutz'
       }
     ]
@@ -412,7 +414,7 @@ R - N=C=O (Isocyanat)  +  H2O (Wasser/Feuchte)   ---->   R - NH2 (Amin)  +  CO2�
     molecularReaction: `Photoinitiator   --[h·ν (UV-Licht, λ = 365-405 nm)]-->   2 R· (Starter-Radikale)
 R·  +  CH2 = CH - COOR' (Acrylatester)   ---->   R - CH2 - C·H - COOR' (Kettenstart)
 (Ultra-schneller Schichtaufbau durch radikalische Additions-Kettenpolymerisation der Doppelbindungen)`,
-    description: 'Die flüssig applizierte Formulierung wird einer intensiven UV-Dosis (z.B. Quecksilbermitteldruckstrahler oder moderne Gallium-dotierte UV-LEDs) ausgesetzt. Die Photoinitiatoren zerfallen in Millisekunden in hochreaktive Radikale, welche die Polymerbildung der Acrylat-Oligomere starten. Der Lack schließt sich sofort zu einer hochfesten, glasharten Kunststoffschicht.',
+    description: 'Die flüssig applizierte Formulierung wird einer intensiven UV-Dosis (z. B. Quecksilbermitteldruckstrahler, ggf. gallium- oder eisendotiert, oder UV-LEDs) ausgesetzt. Die Photoinitiatoren zerfallen in Millisekunden in hochreaktive Radikale, welche die Polymerbildung der Acrylat-Oligomere starten. Der Lack härtet in Sekunden zu einer harten, kratzfesten Schicht.',
     processingRules: [
       'Härtung setzt direkten Sichtkontakt des Bauteils zur UV-Quelle voraus. In "Schattenzonen" komplexer 3D-Baukörper härtet der Lack nicht aus (Hierfür sind Hybrid- oder Dual-Cure-Lacke mit zusätzlicher thermischer Vernetzung erforderlich).',
       'Die Sauerstoffinhibierung blockiert die oberste Molekülschicht vor vollständiger Kettenverknüpfung (Abhilfe: Inertgas-Flutung mit Stickstoff oder dickere Sperrschichten).'
@@ -716,7 +718,7 @@ export default function BpFarbenLacke() {
                   <div>
                     <h5 className="font-bold text-shiraz text-xs uppercase tracking-wider mb-1">Chemische Filmbildung</h5>
                     <p className="text-xs text-text-main/70">
-                      Irreversible chemische Reaktion während der Verarbeitungsphase. Durch Autoxidation, Polyaddition oder lichtinitiierte Polymerisation vernetzen sich Moleküle dreidimensional über kovalente Hauptvalenzbindungen. Absolut resistent gegen Rücklösung (z.B. Polyurethane, Epoxide, Silikate).
+                      Irreversible chemische Reaktion während der Verarbeitungsphase. Durch Autoxidation, Polyaddition oder lichtinitiierte Polymerisation vernetzen sich Moleküle dreidimensional über kovalente Hauptvalenzbindungen. Nicht wieder anlösbar (z.B. Polyurethane, Epoxide, Silikate).
                     </p>
                   </div>
                 </div>
@@ -870,7 +872,7 @@ export default function BpFarbenLacke() {
                             <div className="bg-stone-50 p-3.5 rounded-lg border border-home-grau/15 flex flex-col justify-between">
                               <div>
                                 <span className="text-xs font-bold text-shiraz">Phase 3: Ausgehärtet</span>
-                                <p className="text-[11px] text-text-main/70 mt-1 leading-normal">Ein räumlich vermaschter, absolut unlöslicher Farbfilm haftet untrennbar auf dem Untergrund.</p>
+                                <p className="text-[11px] text-text-main/70 mt-1 leading-normal">Ein räumlich vermaschter, unlöslicher Farbfilm haftet fest auf dem Untergrund.</p>
                               </div>
                               <div className="h-10 bg-shiraz/10 rounded border border-shiraz/30 mt-3 relative overflow-hidden flex items-center justify-center">
                                 <div className="w-11/12 h-0.5 bg-shiraz absolute"></div>
@@ -1180,7 +1182,7 @@ export default function BpFarbenLacke() {
                   <strong>VOC (Volatile Organic Compounds)</strong> sind flüchtige organische Kohlenwasserstoffe, die beim Trocknen von weichmacher- und lösemittelhaltigen Anstrichen in die Atemluft übergehen. Hohe Konzentrationen führen zu gesundheitlichen Belastungen im Innenraum (Sick-Building-Syndrom) und belasten im Außenbereich die Umwelt.
                 </p>
                 <p className="leading-relaxed">
-                  Die europäische <strong>Decopaint-Richtlinie</strong> begrenzt strengstens den maximal zulässigen VOC-Gewichtskatalysator (Gramm VOC pro Liter gebrauchsfertiges Produkt) für baurelevante Farben und Lacke.
+                  Die europäische <strong>Decopaint-Richtlinie</strong> begrenzt den VOC-Höchstgehalt (Gramm VOC je Liter gebrauchsfertiges Produkt) für baurelevante Farben und Lacke.
                 </p>
               </div>
 
@@ -1224,7 +1226,7 @@ export default function BpFarbenLacke() {
                   </p>
                   <ul className="list-disc list-inside space-y-1 font-normal text-text-main/80 pl-2">
                     <li>Max. VOC-Gehalt: ≤ 1 g/Liter (fast lösemittelfrei)</li>
-                    <li>Weichmachergehalt: ≤ 2 g/Liter (Weichmacher können über Jahre ausgasen)</li>
+                    <li>Begrenzung von Weichmachern und schwerflüchtigen Stoffen (Kriterien DE-UZ 102, aktuelle Fassung manuell prüfen)</li>
                     <li>Strenge Grenzwerte für Isothiazolinone (übliche Biozide als Topfkonservierer, die Allergien auslösen können)</li>
                   </ul>
                 </div>
@@ -1253,7 +1255,7 @@ export default function BpFarbenLacke() {
               <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed">
                 <h3 className="font-bold text-shiraz text-base mb-2">Oberflächenschutzsysteme (OS) für Beton nach DIN EN 1504-2</h3>
                 <p className="mb-3">
-                  Betonbauwerke, insbesondere Parkhäuser, Tiefgaragen, Brücken und Tunnel, sind im Laufe ihrer Lebensdauer extremen physikalischen und chemischen Beanspruchungen ausgesetzt (Frost-Tausalz-Angriffe, Karbonatisierung, Chlorideindrang, mechanische Torsionskräfte). 
+                  Betonbauwerke, insbesondere Parkhäuser, Tiefgaragen, Brücken und Tunnel, sind im Laufe ihrer Lebensdauer hohen physikalischen und chemischen Beanspruchungen ausgesetzt (Frost-Tausalz-Angriffe, Karbonatisierung, Chlorideindrang, mechanischer Verschleiß). 
                 </p>
                 <p>
                   Oberflächenschutzsysteme (OS) nach <strong>DIN EN 1504-2</strong> und der ergänzenden deutschen <strong>TR Instandhaltung (DAfStb)</strong> verhindern das Eindringen schädlicher Stoffe in das Porensystem des Betons. Damit stoppen sie das Fortschreiten der Karbonatisierung und verhindern die chloridinduzierte Korrosion der Stabbewehrung nachhaltig.
@@ -1382,10 +1384,10 @@ export default function BpFarbenLacke() {
                         <td className="p-3 font-semibold text-shiraz">2K-Epoxidharze (EP)</td>
                         <td className="p-3 font-semibold">OS 2, OS 8</td>
                         <td className="p-3 text-text-main/80">
-                          Polyaddition von flüssigen Epoxid-Prepolymeren (Bisphenol-A) mit Amin-Härtern. Es entsteht ein extrem dicht vernetztes, duroplastisches Polymergitter.
+                          Polyaddition von flüssigen Epoxid-Prepolymeren (Bisphenol-A) mit Amin-Härtern. Es entsteht ein dicht vernetztes, duroplastisches Polymergitter.
                         </td>
                         <td className="p-3 text-emerald-800 font-medium bg-emerald-50/10">
-                          Extreme Druck- und Abriebbeanspruchung, hervorragende Alkalibeständigkeit, unempfindlich gegenüber schweren mechanischen Lasten.
+                          Hohe Druck- und Abriebfestigkeit, gute Alkalibeständigkeit, unempfindlich gegenüber schweren mechanischen Lasten.
                         </td>
                         <td className="p-3 text-amber-800 bg-amber-50/10 font-medium">
                           Starr (keine Rissüberbrückung), frost- und vergilbungsempfindlich bei starker UV-Strahlung im Außenbereich.
@@ -1411,7 +1413,7 @@ export default function BpFarbenLacke() {
                           Physikalische Filmbildung durch Verdunstung des Wassers und anschließende Koaleszenz der Polymer-Nanopartikel. Die polare Molekülstruktur hemmt Gase.
                         </td>
                         <td className="p-3 text-emerald-800 font-medium bg-emerald-50/10">
-                          Herausragende CO₂-Bremswirkung (s_d &gt; 50 m), wasserbasiert (sehr umweltfreundlich / geruchlos), optimal für vertikale Sichtbetonflächen.
+                          Hohe CO₂-Bremswirkung (s_d,CO₂ ≥ 50 m gefordert), wasserbasiert (sehr umweltfreundlich / geruchlos), optimal für vertikale Sichtbetonflächen.
                         </td>
                         <td className="p-3 text-amber-800 bg-amber-50/10 font-medium">
                           Nicht befahrbar, mäßige statische Rissüberbrückung.
@@ -1510,42 +1512,42 @@ export default function BpFarbenLacke() {
                     if (osEinsatzbereich === 'tiefgarage_boden') {
                       if (osCrackBridging === 'ja_dynamisch') {
                         recommendedSysId = 'os11b';
-                        categoryText = 'OS 11b (OS-F2) - Elastisches befahrbares System';
+                        categoryText = 'OS 11b – Elastisches befahrbares System (einschichtig)';
                         noteText = 'Empfohlen für feuchtekritische Tiefgaragenböden mit Gefahr von dynamischen Setzungsrissen. Bei drückendem Grundwasser muss rückseitige Feuchtigkeit ausgeschlossen werden (sonst Osmoseblasengefahr!).';
                       } else {
                         recommendedSysId = 'os8';
-                        categoryText = 'OS 8 (OS-H) - Starre befahrbare Beschichtung';
-                        noteText = 'Die unschlagbar haltbare Standardspezifikation für Garagenböden. Bietet höchste Abriebfestigkeit gegen drehende PKW-Reifen.';
+                        categoryText = 'OS 8 – Starre befahrbare Beschichtung';
+                        noteText = 'Bewährtes starres System für Garagenböden ohne Rissbewegungen; sehr abriebfest.';
                       }
                     } else if (osEinsatzbereich === 'freideck_parkdeck') {
                       recommendedSysId = 'os11a';
-                      categoryText = 'OS 11a (OS-F1) - Höchste dynamische Rissüberbrückung (4,5 mm)';
-                      noteText = 'Zwingend nach Richtlinie für alle freigelegenen Parkdecks oberhalb bewohnter oder genutzter Ebenen. Schützt den Spannbeton vor dem Eindringen korrosiver Tausalzlösungen (Salzwasser).';
+                      categoryText = 'OS 11a – Erhöhte dynamische Rissüberbrückung (zweischichtig)';
+                      noteText = 'Für frei bewitterte Parkdecks mit Rissbewegungen; schützt den Beton vor eindringenden Tausalzlösungen (Anforderungen nach DAfStb-Richtlinie Schutz und Instandsetzung bzw. TR Instandhaltung).';
                     } else if (osEinsatzbereich === 'brueckenkappe') {
                       recommendedSysId = 'os1';
-                      categoryText = 'OS 1 (OS-A) - Reine Hydrophobierung';
+                      categoryText = 'OS 1 – Hydrophobierung';
                       noteText = 'Einfaches und hocheffektives Verfahren für mineralische Überbau-Teile zur Erhöhung des Frost-Widerstands und Abperlen des Wassers.';
                     } else if (osEinsatzbereich === 'fassade_tunnel') {
                       if (osCrackBridging === 'ja_dynamisch') {
                         recommendedSysId = 'os5b';
-                        categoryText = 'OS 5b (OS-D.2) - Elastische Wandbeschichtung';
+                        categoryText = 'OS 5b – Beschichtung mit geringer Rissüberbrückung';
                         noteText = 'Bietet dauerhaften Witterungsschutz auch bei rissanfälligen Betonfertigteil-Fassaden im Außenbereich.';
                       } else if (osCrackBridging === 'ja_statisch') {
                         recommendedSysId = 'os5a';
-                        categoryText = 'OS 5a (OS-D.1) - Statisch rissüberbrückende Beschichtung';
+                        categoryText = 'OS 5a – Beschichtung mit geringer Rissüberbrückung';
                         noteText = 'Kostengünstiger Haarriss-Abdecker für Wände im schattigen Außen- oder Innenbereich.';
                       } else {
                         recommendedSysId = 'os4';
-                        categoryText = 'OS 4 (OS-C) - Klassische Carbonatisierungsbremse';
+                        categoryText = 'OS 4 – Beschichtung mit erhöhter Dichtheit (CO₂-Bremse)';
                         noteText = 'Optimal für dichte Betonschutzanstriche auf Brückenpfeilern, Lärmschutzwänden und Architekturbetonschichten zur Bewahrung des alkalischen Milieus.';
                       }
                     } else if (osEinsatzbereich === 'industriehalle') {
                       recommendedSysId = 'os8';
-                      categoryText = 'OS 8 (OS-H) - Druckfestes Industrie-EP-System';
-                      noteText = 'In Industriehallen ist Verschleiß- und Torsionsfestigkeit vorzuziehen. Ein Schrammschutz mit feuergetrocknetem Sand verhindert Absplitterung durch Staplerverkehr.';
+                      categoryText = 'OS 8 – Starre EP-Beschichtung für mechanisch stark beanspruchte Flächen';
+                      noteText = 'In Industriehallen ist hoher Verschleißwiderstand gefordert. Eine Abstreuung mit feuergetrocknetem Quarzsand verhindert Absplitterung durch Staplerverkehr.';
                     } else if (osEinsatzbereich === 'kellerwand_aussen') {
                       recommendedSysId = 'os2';
-                      categoryText = 'OS 2 (OS-B) - Hauchdünne Poren-Imprägnierung';
+                      categoryText = 'OS 2 – Dünne Beschichtung für nicht begeh- und befahrbare Flächen';
                       noteText = 'Hilft als kapillarsperrender Zementanstrich gegen geringe aufsteigende Feuchte im Spritzwasserbereich.';
                     }
 
@@ -1664,7 +1666,7 @@ export default function BpFarbenLacke() {
                           <ul className="list-disc list-inside space-y-1.5 text-text-main/80 leading-relaxed pl-1">
                             <li><strong>Untergrundfestigkeit:</strong> Die Haftzugfestigkeit (Abreißtest) der vorbereiteten Betonrandzone muss im Mittel mindestens <strong>1,5 N/mm²</strong> betragen (kleinster Einzelwert &gt; 1,0 N/mm²).</li>
                             <li><strong>Rautiefe (Egalisierung):</strong> Bei grobem Betonprofil muss zwingend eine OS-Ausgleichsspachtelung aus feinkörnigem Reaktionsharzmörtel appliziert werden, da ansonsten Deckungsfehlstellen durch Porenblasen ("Pinholes") entstehen.</li>
-                            <li><strong>Taupunkt-Regel:</strong> Eine Kondensatbildung auf dem Beton führt bei EP/PU-Harzen zur sofortigen Enthaftung (Ablösen). Die Bauteiloberfläche muss nachweislich ≥ 3 K wärmer sein als die Lufttemperatur des Taupunktes.</li>
+                            <li><strong>Taupunkt-Regel:</strong> Eine Kondensatbildung auf dem Beton führt bei EP/PU-Harzen zur sofortigen Enthaftung (Ablösen). Die Bauteiloberfläche muss mindestens 3 K wärmer sein als die Taupunkttemperatur.</li>
                             <li><strong>Witterung:</strong> Relative Luftfeuchte &lt; 80 % zur Vermeidung von Carbamatbildung (Klebriger Schleier an der Oberfläche von Epoxidharzen) einhalten.</li>
                           </ul>
                         </div>
@@ -1682,6 +1684,23 @@ export default function BpFarbenLacke() {
 
       <InnovationPraxisSection moduleKey="bp_farben_lacke" />
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Nassschichtdicke und Verbrauch einer Fassadenfarbe"
+          zielGleichung="d_{wet} = \frac{d_{dry}}{VS/100}, \quad V = \frac{d_{wet}}{1000}\,\text{l/m}^2"
+          normQuelle="DIN EN ISO 2808 (Schichtdicke); Volumenfestkörper VS als Herstellerangabe"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'd_{dry} = 80\\,\\mu\\text{m},\\; VS = 40\\,\\%', erklaerung: 'Ziel-Trockenschichtdicke einer OS-4-Deckbeschichtung (gesamt, zwei Anstriche).' },
+            { titel: '2. Nassschichtdicke', formel: 'd_{wet} = 80 / 0{,}40 = 200\\,\\mu\\text{m}', erklaerung: 'Mit dem Nassschichtdickenkamm kontrollieren.' },
+            { titel: '3. Theoretischer Verbrauch', formel: 'V = 200/1000 = 0{,}20\\,\\text{l/m}^2', erklaerung: '1 µm Nassfilm entspricht 1 ml/m².' },
+            { titel: '4. Mit Verlusten (Rauheit, Rollen ca. 20 %)', formel: 'V_{prakt} \\approx 0{,}20 \\cdot 1{,}2 = 0{,}24\\,\\text{l/m}^2', erklaerung: 'Verlustfaktor als Lehrwert; Herstellerangaben beachten.' },
+          ]}
+          ergebnisHinweis="Je geringer der Festkörperanteil, desto dicker muss nass aufgetragen werden – zwei Anstriche sind meist sicherer als einer."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_farben_lacke" />
+
       <ModuleFooter
         wikipedia={[
           { title: 'Farbe', url: 'https://de.wikipedia.org/wiki/Farbe' },
@@ -1690,15 +1709,16 @@ export default function BpFarbenLacke() {
           { title: 'Silikatfarbe', url: 'https://de.wikipedia.org/wiki/Silikatfarbe' }
         ]}
         literatur={[
-          'Goldschmidt, A.; Streitberger, H.-J. (2018): BASF-Handbuch Lackiertechnik (Vincentz Network)',
-          'Brock, T.; Groteklaes, M.; Mischke, P. (2020): Lehrbuch der Lacktechnologie (Vincentz Network)',
+          'Goldschmidt, A.; Streitberger, H.-J.: BASF-Handbuch Lackiertechnik. Hannover: Vincentz Network (Auflage manuell prüfen)',
+          'Brock, T.; Groteklaes, M.; Mischke, P.: Lehrbuch der Lacktechnologie. Hannover: Vincentz Network (Auflage manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme - Teile 1 bis 9)' },
           { title: 'Decopaint-Richtlinie 2004/42/EG (Begrenzung der Emissionen flüchtiger organischer Verbindungen)', url: 'https://eur-lex.europa.eu/' },
           { title: 'DIN EN ISO 2409 (Beschichtungsstoffe - Gitterschnittprüfung)' },
-          { title: 'DIN EN 1062-1 (Beschichtungsstoffe - Beschichtungssysteme für mineralische Untergründe und Beton im Außenbereich)' }
+          { title: 'DIN EN 1062-1 (Beschichtungsstoffe – Beschichtungssysteme für mineralische Untergründe und Beton im Außenbereich)' },
+          { title: 'DIN EN 1504-2 und DAfStb TR Instandhaltung (Oberflächenschutzsysteme OS)' }
         ]}
         formeln={[
           {

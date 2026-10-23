@@ -11801,5 +11801,185 @@
       "targetModuleLabel": "Kleb- & Dichtstoffe"
     },
     "verified": false
+  },
+  {
+    "id": "q_bfl_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_farben_lacke",
+    "moduleTitle": "Farben & Lacke",
+    "topic": "Schichtdicke",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN ISO 2808",
+    "question": "Eine Farbe hat 40 % Volumenfestkörper. Welche Nassschichtdicke ergibt 80 µm Trockenschicht?",
+    "options": [
+      "200 µm",
+      "120 µm",
+      "32 µm",
+      "80 µm"
+    ],
+    "correctIdx": 0,
+    "explanation": "d_wet = d_dry / VS = 80 / 0,40 = 200 µm, entsprechend 0,20 l/m² ohne Verluste.",
+    "gapAnalysis": {
+      "topic": "Schichtdicke",
+      "misconception": "Nass- und Trockenschicht sind gleich dick.",
+      "coreRule": "d_wet = d_dry / Volumenfestkörperanteil.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schichtdicke“ im Modul Farben & Lacke noch einmal durch.",
+      "targetModuleTab": "bp_farben_lacke",
+      "targetModuleLabel": "Farben & Lacke"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bfl_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_farben_lacke",
+    "moduleTitle": "Farben & Lacke",
+    "topic": "Silikatfarbe",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 18363",
+    "question": "Wie bindet eine reine Silikatfarbe auf einem Kalkputz ab?",
+    "options": [
+      "Wasserglas reagiert mit dem mineralischen Untergrund und CO₂ (Verkieselung)",
+      "Durch Verdunsten des Wassers und Verfilmen von Kunstharz",
+      "Durch Polyaddition mit einem Härter",
+      "Durch UV-Härtung"
+    ],
+    "correctIdx": 0,
+    "explanation": "Es bildet sich kein Kunststofffilm; deshalb ist die Farbe diffusionsoffen und nur auf mineralischen Untergründen geeignet.",
+    "gapAnalysis": {
+      "topic": "Silikatfarbe",
+      "misconception": "Alle Fassadenfarben bilden einen Kunststofffilm.",
+      "coreRule": "Silikatfarbe = chemische Verkieselung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Silikatfarbe“ im Modul Farben & Lacke noch einmal durch.",
+      "targetModuleTab": "bp_farben_lacke",
+      "targetModuleLabel": "Farben & Lacke"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bfl_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_farben_lacke",
+    "moduleTitle": "Farben & Lacke",
+    "topic": "Oberflächenschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "TR Instandhaltung",
+    "question": "Welches Oberflächenschutzsystem eignet sich für ein frei bewittertes Parkdeck mit Rissbewegungen?",
+    "options": [
+      "OS 11 (rissüberbrückend, befahrbar)",
+      "OS 1 (Hydrophobierung)",
+      "OS 8 (starr, befahrbar)",
+      "OS 4 (CO₂-Bremse, nicht befahrbar)"
+    ],
+    "correctIdx": 0,
+    "explanation": "OS 11 verbindet Befahrbarkeit mit erhöhter dynamischer Rissüberbrückung; OS 8 ist starr und reißt mit.",
+    "gapAnalysis": {
+      "topic": "Oberflächenschutz",
+      "misconception": "Starre EP-Systeme überbrücken Risse.",
+      "coreRule": "Rissbewegung + Verkehr → OS 11.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächenschutz“ im Modul Farben & Lacke noch einmal durch.",
+      "targetModuleTab": "bp_farben_lacke",
+      "targetModuleLabel": "Farben & Lacke"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bzm_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonzusatzmittel",
+    "moduleTitle": "Betonzusatzmittel",
+    "topic": "Wasseranrechnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Ab welcher Gesamtmenge flüssiger Zusatzmittel ist deren Wasseranteil auf den w/z-Wert anzurechnen?",
+    "options": [
+      "über 3 l/m³",
+      "über 1 l/m³",
+      "über 10 l/m³",
+      "immer, unabhängig von der Menge"
+    ],
+    "correctIdx": 0,
+    "explanation": "Unterhalb von 3 l/m³ ist der Einfluss vernachlässigbar; darüber zählt das Wasser des Zusatzmittels zum wirksamen Wassergehalt.",
+    "gapAnalysis": {
+      "topic": "Wasseranrechnung",
+      "misconception": "Zusatzmittelwasser wird nie angerechnet.",
+      "coreRule": "> 3 l/m³ → Wasser anrechnen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasseranrechnung“ im Modul Betonzusatzmittel noch einmal durch.",
+      "targetModuleTab": "bp_betonzusatzmittel",
+      "targetModuleLabel": "Betonzusatzmittel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bzm_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonzusatzmittel",
+    "moduleTitle": "Betonzusatzmittel",
+    "topic": "PCE",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Wie wirken Polycarboxylatether-Fließmittel (PCE)?",
+    "options": [
+      "Elektrostatisch und vor allem sterisch durch lange Seitenketten",
+      "Nur durch elektrostatische Abstoßung",
+      "Durch Beschleunigung der Hydratation",
+      "Durch Einführen von Luftporen"
+    ],
+    "correctIdx": 0,
+    "explanation": "Das Rückgrat adsorbiert am Zement, die Polyether-Seitenketten halten die Partikel räumlich auseinander.",
+    "gapAnalysis": {
+      "topic": "PCE",
+      "misconception": "PCE wirken wie klassische Sulfonat-Verflüssiger.",
+      "coreRule": "PCE = sterische + elektrostatische Dispergierung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „PCE“ im Modul Betonzusatzmittel noch einmal durch.",
+      "targetModuleTab": "bp_betonzusatzmittel",
+      "targetModuleLabel": "Betonzusatzmittel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bzm_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonzusatzmittel",
+    "moduleTitle": "Betonzusatzmittel",
+    "topic": "Luftporenbildner",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Um wie viel sinkt die Druckfestigkeit etwa je zusätzlichem Volumenprozent Luftporen?",
+    "options": [
+      "ca. 4–5 %",
+      "ca. 0,5 %",
+      "ca. 15–20 %",
+      "gar nicht"
+    ],
+    "correctIdx": 0,
+    "explanation": "Faustregel: rund 4–5 % Festigkeitsverlust je 1 % Luft. LP-Beton wird deshalb mit höherem Zementgehalt bzw. niedrigerem w/z hergestellt.",
+    "gapAnalysis": {
+      "topic": "Luftporenbildner",
+      "misconception": "Mikroluftporen haben keinen Einfluss auf die Festigkeit.",
+      "coreRule": "1 % Luft ≈ −4 bis −5 % Festigkeit.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Luftporenbildner“ im Modul Betonzusatzmittel noch einmal durch.",
+      "targetModuleTab": "bp_betonzusatzmittel",
+      "targetModuleLabel": "Betonzusatzmittel"
+    },
+    "verified": false
   }
 ]
