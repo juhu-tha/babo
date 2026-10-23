@@ -385,7 +385,7 @@ export function ModuleFooter({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-text-main/65 text-[11px]">
           <div className="flex items-center gap-2">
             <ShieldCheck size={14} className="text-shiraz shrink-0" />
-            <span>Inhaltlich zuletzt geprüft: {lastReviewed} (Normenstand 2026)</span>
+            <span>Inhaltlich zuletzt geprüft: {lastReviewed}. Maßgebend sind die unter „Regelwerke“ genannten Normausgaben.</span>
           </div>
           <div className="flex items-center gap-3 font-medium flex-wrap">
             <button

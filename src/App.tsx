@@ -50,7 +50,8 @@ import { TAB_DESCRIPTIONS } from './metaDescriptions';
 import { AccessibilityToolbar } from './components/a11y/AccessibilityToolbar';
 import { MetadataAuditModal } from './components/seo/MetadataAuditModal';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
-import { NAV_TAB_GRUPPEN, TAB_KEYWORDS } from './registry/modules';
+import { NAV_TAB_GRUPPEN, TAB_KEYWORDS, MODUL_BY_ID } from './registry/modules';
+import { CalculatorDisclaimerBanner } from './components/ui/CalculatorDisclaimerBanner';
 import { iconFor } from './registry/icons';
 import StudentPollVoteView from './components/polls/StudentPollVoteView';
 import { CURRENT_VERSION } from './data/versionData';
@@ -974,6 +975,13 @@ function AppContent() {
               </div>
             </div>
 <React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
+          {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
+          {MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' && (
+            <CalculatorDisclaimerBanner
+              className="mb-4"
+              customText="Lehr- und Vorbemessungswerkzeug: Die Ergebnisse sind vereinfachte Berechnungen zu Lernzwecken und ersetzen keinen bauaufsichtlichen Nachweis (MVV TB / LBO) und keine Prüfung durch fachkundige Personen. Maßgebende Normausgaben stehen in den Quellen am Modulende."
+            />
+          )}
           {activeTab === 'start' && <Startseite />}
           {activeTab === 'nachhaltigkeit_daten_regeln' && <NachhaltigkeitDatenRegeln />}
           {activeTab === 'materialoptimierung' && <Materialoptimierung />}

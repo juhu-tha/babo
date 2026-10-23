@@ -147,19 +147,27 @@ function securityHeaders(_req: Request, res: Response, next: NextFunction) {
   res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()");
   if (process.env.NODE_ENV === "production") {
     res.setHeader("Strict-Transport-Security", "max-age=31536000");
-    // Zunächst nur berichtend, damit die Einbettung in AI Studio und Google Translate
-    // nicht blockiert werden. Nach Prüfung der Konsole auf "Content-Security-Policy" umstellen.
+    // baustoffboard.de kann die App per Rahmenweiterleitung einbetten → muss erlaubt bleiben
+    const frameAncestors = "frame-ancestors 'self' https://baustoffboard.de https://www.baustoffboard.de https://aistudio.google.com https://*.aistudio.google.com https://ai.studio https://*.ai.studio";
+    // Erzwungen: risikoarme Direktiven (Phase 1, AP 1.9); Einbettung (frame-ancestors) bleibt vorerst nur berichtend
+    res.setHeader(
+      "Content-Security-Policy",
+      ["object-src 'none'", "base-uri 'self'", "form-action 'self'"].join("; ")
+    );
+    // Vollständige Richtlinie zunächst berichtend: Skripte ohne 'unsafe-inline' (Inline-Skripte sind
+    // nach public/boot/ ausgelagert). Nach Prüfung der Browser-Konsole im Betrieb (Google Translate!)
+    // auf "Content-Security-Policy" umstellen.
     res.setHeader(
       "Content-Security-Policy-Report-Only",
       [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com",
-        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://translate.googleapis.com https://www.gstatic.com",
+        "script-src 'self' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com",
+        "style-src 'self' 'unsafe-inline' https://translate.googleapis.com https://www.gstatic.com",
         "img-src 'self' data: blob: https:",
-        "font-src 'self' data: https://fonts.gstatic.com",
+        "font-src 'self' data:",
         "connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com",
         "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com",
-        "frame-ancestors 'self' https://aistudio.google.com https://*.aistudio.google.com https://ai.studio https://*.ai.studio",
+        frameAncestors,
         "object-src 'none'",
         "base-uri 'self'",
       ].join("; ")
