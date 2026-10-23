@@ -66,7 +66,7 @@ export default function BetonAZ() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7 flex flex-col gap-3">
               <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                Grundlage jeder Betonrezeptur ist die <strong>absolute Volumenrechnung (Stoffraumgleichung)</strong> nach DIN 1045-2. 
+                Grundlage jeder Betonrezeptur ist die <strong>absolute Volumenrechnung (Stoffraumgleichung)</strong> als Grundgleichung der Mischungsberechnung. 
                 Sie fordert, dass die Summe der absoluten Einzelvolumina aller Komponenten (Zement, Zusatzstoffe, wirksames Wasser, Luftporen und Gesteinskörnung) 
                 exakt einen verdichteten Frischbeton von 1 m³ (1000 dm³) ergibt. 
                 Zur Reduktion von CO₂-Emissionen wird nach dem k-Wert-Konzept ein Teil des Zements durch Flugasche oder Silikastaub funktional ersetzt.
@@ -173,7 +173,7 @@ export default function BetonAZ() {
                     <span className="font-semibold block text-slate-900">w/z ≤ 0,40 (hochfester Beton; UHPC ca. 0,20–0,25)</span>
                     <span className="text-[10px] text-slate-500">Extrem dichtes Gefüge</span>
                   </div>
-                  <span className="font-mono bg-emerald-50 text-emerald-800 border border-emerald-200 px-1.5 py-0.5 rounded font-bold text-[10px]">&lt; 3% Kapillarporen</span>
+                  <span className="font-mono bg-emerald-50 text-emerald-800 border border-emerald-200 px-1.5 py-0.5 rounded font-bold text-[10px]">&lt; 3% Kapillarporen (Lehrwert)</span>
                 </div>
 
                 <div className="bg-white p-2.5 rounded border border-home-grau/30 flex justify-between items-center text-xs">
@@ -181,7 +181,7 @@ export default function BetonAZ() {
                     <span className="font-semibold block text-slate-900">w/z = 0,45 – 0,50 (Konstruktiver Hochbau)</span>
                     <span className="text-[10px] text-slate-500">Klassischer XC3/XC4 Außenbauteil-Standard</span>
                   </div>
-                  <span className="font-mono bg-slate-50 text-slate-700 border border-home-grau/30 px-1.5 py-0.5 rounded font-bold text-[10px]">4 – 12% Kapillarporen</span>
+                  <span className="font-mono bg-slate-50 text-slate-700 border border-home-grau/30 px-1.5 py-0.5 rounded font-bold text-[10px]">4 – 12% Kapillarporen (Lehrwert)</span>
                 </div>
 
                 <div className="bg-white p-2.5 rounded border border-home-grau/30 flex justify-between items-center text-xs">
@@ -189,7 +189,7 @@ export default function BetonAZ() {
                     <span className="font-semibold block text-slate-950">w/z ≥ 0,60 (Geringwertige Bauteile)</span>
                     <span className="text-[10px] text-slate-500">Unbewehrter Fundamentbeton / Sauberkeitsschicht</span>
                   </div>
-                  <span className="font-mono bg-red-50 text-red-800 border border-red-200 px-1.5 py-0.5 rounded font-bold text-[10px]">&gt; 25% Kapillarporen</span>
+                  <span className="font-mono bg-red-50 text-red-800 border border-red-200 px-1.5 py-0.5 rounded font-bold text-[10px]">&gt; 25% Kapillarporen (Lehrwert)</span>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function BetonAZ() {
                 <div className="bg-slate-50 border border-home-grau/30 p-2.5 rounded">
                   <span className="text-[10px] font-semibold text-slate-500 font-mono block">B: TRANSPORTHÖHE & EINBAU</span>
                   <p className="text-slate-800 font-semibold mt-0.5">Vermeidung von Entmischung</p>
-                  <p className="text-slate-500 text-[10px] leading-relaxed">Freie Fallhöhen über 1,50 m zwingend vermeiden. Spezielle Fallschläuche oder Trichtersysteme nutzen.</p>
+                  <p className="text-slate-500 text-[10px] leading-relaxed">Faustregel: freie Fallhöhe auf etwa 1,0–1,5 m begrenzen. Spezielle Fallschläuche oder Trichtersysteme nutzen.</p>
                 </div>
               </div>
             </div>
@@ -273,9 +273,14 @@ export default function BetonAZ() {
                     <td className="py-1 text-slate-500">Sehr weich (Schlanke Stützen, dichte Bewehrung)</td>
                   </tr>
                   <tr>
-                    <td className="py-1 font-mono font-bold">F5 / F6</td>
-                    <td className="py-1">≥ 560 mm</td>
-                    <td className="py-1 text-slate-500">Fließfähig / Selbstverdichtender Beton SVB</td>
+                    <td className="py-1 font-mono font-bold">F5</td>
+                    <td className="py-1">560 - 620 mm</td>
+                    <td className="py-1 text-slate-500">Fließfähig</td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 font-mono font-bold">F6</td>
+                    <td className="py-1">≥ 630 mm</td>
+                    <td className="py-1 text-slate-500">Sehr fließfähig (SVB wird über das Setzfließmaß SF beschrieben)</td>
                   </tr>
                 </tbody>
               </table>
@@ -402,7 +407,7 @@ export default function BetonAZ() {
                 </div>
                 <div className="text-[10px] text-slate-500 font-mono block">
                   Mit <FormulaText text="c_{min} = \max(c_{min,b}; c_{min,dur}; 10 \, \text{mm})" />. 
-                  Das Vorhaltemaß <FormulaText text="\Delta c_{dev}" /> beträgt standardmäßig 10 mm (reduzierbar auf 5 mm bei systemischer Qualitätsüberwachung).
+                  Das Vorhaltemaß <FormulaText text="\Delta c_{dev}" /> beträgt nach DIN EN 1992-1-1/NA 15 mm, bei XC1 10 mm.
                 </div>
               </div>
             </div>
@@ -429,25 +434,25 @@ export default function BetonAZ() {
                     <td className="py-1 font-bold">XC2 / XC3</td>
                     <td className="py-1 text-slate-500">Nass / mäßig feucht</td>
                     <td className="py-1 font-mono">20 mm</td>
-                    <td className="py-1 font-mono">30 mm</td>
+                    <td className="py-1 font-mono">35 mm</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">XC4</td>
                     <td className="py-1 text-slate-600">Direkt beregnet (Außenwände)</td>
                     <td className="py-1 font-mono">25 mm</td>
-                    <td className="py-1 font-mono">35 mm</td>
+                    <td className="py-1 font-mono">40 mm</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">XD1</td>
                     <td className="py-1 text-slate-500">Mäßig feucht (Sprühkanal)</td>
-                    <td className="py-1 font-mono">35 mm</td>
-                    <td className="py-1 font-mono">45 mm</td>
+                    <td className="py-1 font-mono">40 mm</td>
+                    <td className="py-1 font-mono">55 mm</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">XD3</td>
                     <td className="py-1 text-slate-500">Wechselnd nass (Parkdecks)</td>
                     <td className="py-1 font-mono">40 mm</td>
-                    <td className="py-1 font-mono">50 mm</td>
+                    <td className="py-1 font-mono">55 mm</td>
                   </tr>
                 </tbody>
               </table>
@@ -476,29 +481,29 @@ export default function BetonAZ() {
                 Schäden durch Betonalterung werden nach den Instandsetzungsprinzipien der Normenreihe DIN EN 1504 behoben, in Deutschland bauaufsichtlich geregelt durch die Technische Regel Instandhaltung von Betonbauwerken (TR Instandhaltung, DIBt).. 
                 Dabei gilt es, unkontrollierten pH-Abfall des porenbildenden Calciumhydroxids (welcher die Passivierungsschicht des Stahls zerstört) 
                 aufzufangen. Die mechanische <strong>Reprofilierung</strong> erfordert das Freistemmen des korrodierten Stahls bis auf rostfreien 
-                Untergrund (Sa 2½) und das anschließende Verfüllen mit thermodynamisch angepassten Instandsetzungsmörteln (z.B. polymervergüteter Zementmörtel PCC).
+                Untergrund (Reinheitsgrad nach TR Instandhaltung – manuell prüfen) und das anschließende Verfüllen mit geeigneten Instandsetzungsmörteln (z.B. polymervergüteter Zementmörtel PCC).
               </p>
 
               <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-amber-500 p-3 rounded-lg text-xs text-slate-700 flex gap-2">
                 <ShieldAlert size={16} className="text-amber-700 shrink-0 mt-0.5" />
                 <div className="font-sans leading-relaxed text-[11px]">
                   <strong>Mindestabreißfestigkeit f_ct,sub:</strong> Die Haftzugfestigkeit des tragenden Altbetons muss vor einer Reprofilierung oder dem 
-                  Auftrag von Schutzbeschichtungen zwingend geprüft werden und einen Mindestwert von <strong>≥ 1,5 N/mm²</strong> aufweisen.
+                  Auftrag von Schutzbeschichtungen geprüft werden; üblich ist ein Mittelwert von <strong>≥ 1,5 N/mm²</strong> (TR Instandhaltung, systemabhängig – manuell prüfen).
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-5 bg-slate-50 p-4 rounded-xl border border-home-grau/30 space-y-2 text-xs">
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Instandsetzungsprinzipien nach DIN EN 1504</span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Instandsetzungsprinzipien nach DIN EN 1504-9 (Auswahl)</span>
               
               <div className="bg-white p-2.5 rounded border border-home-grau/30">
-                <span className="font-bold text-slate-800 text-[10.5px]">Prinzip I: KATHODISCHER KORROSIONSSCHUTZ (KKS)</span>
-                <p className="text-slate-500 text-[10px] mt-0.5">Anlegen eines schwachen, geregelten Gleichstroms stoppt den Elektronenabfluss am Stahl, was Korrosionsreaktionen ohne Betonabtrag blockiert.</p>
+                <span className="font-bold text-slate-800 text-[10.5px]">Prinzip 10: Kathodischer Schutz (KKS)</span>
+                <p className="text-slate-500 text-[10px] mt-0.5">Ein geregelter Schutzstrom polarisiert die Bewehrung kathodisch und unterdrückt die Korrosion, ohne den chloridbelasteten Beton vollständig abzutragen.</p>
               </div>
 
               <div className="bg-white p-2.5 rounded border border-home-grau/30">
-                <span className="font-bold text-slate-800 text-[10.5px]">Prinzip II: MECHANISCHER MÖRTELERSATZ (REPROFILIERUNG)</span>
-                <p className="text-slate-500 text-[10px] mt-0.5">Entfernung des geschädigten Carbonatbetons, Korrosionsschutzlackierung am blanken Stahl und Schichtaufbau mit Schichtaufbau mit kunststoffmodifizierten Zementmörteln (PCC / SPCC).</p>
+                <span className="font-bold text-slate-800 text-[10.5px]">Prinzip 3: Betonersatz (Reprofilierung)</span>
+                <p className="text-slate-500 text-[10px] mt-0.5">Entfernen des geschädigten Betons, Reinigen der Bewehrung und Reprofilieren mit Instandsetzungsmörtel (z. B. PCC/SPCC).</p>
               </div>
             </div>
           </div>
@@ -527,7 +532,7 @@ export default function BetonAZ() {
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-slate-800">XC/XD-Grenzwerte festlegen</h4>
-                  <p className="text-slate-500 text-[10.5px] mt-0.5">Zulässigen w/z-Wert, Mindestzementgehalt sowie die erlaubten Zementsorten nach DIN EN 206 für das Bauteil vorgeben.</p>
+                  <p className="text-slate-500 text-[10.5px] mt-0.5">Zulässigen w/z-Wert, Mindestzementgehalt und Zementarten nach DIN EN 206 / DIN 1045-2 festlegen.</p>
                 </div>
               </div>
 
@@ -566,7 +571,7 @@ export default function BetonAZ() {
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-slate-800">Eignungsprüfung des Herstellers anfordern</h4>
-                  <p className="text-slate-500 text-[10.5px] mt-0.5">Sicherstellen, dass vor Betonierbeginn das amtliche Erstprüfungszeugnis der entsprechenden Betonwerksrezeptur vorliegt.</p>
+                  <p className="text-slate-500 text-[10.5px] mt-0.5">Vor Betonierbeginn klären, dass für die Betonsorte eine Erstprüfung nach DIN EN 206 vorliegt (Sortenverzeichnis, Lieferschein).</p>
                 </div>
               </div>
 
@@ -582,7 +587,7 @@ export default function BetonAZ() {
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-slate-800">Sicherstellung der Abstandshalter</h4>
-                  <p className="text-slate-500 text-[10.5px] mt-0.5">Prüfung vor Einbringung: Lückenlose Installation temperaturstabiler Faserzement-Abstandshalter zur Erzielung von c_nom.</p>
+                  <p className="text-slate-500 text-[10.5px] mt-0.5">Prüfung vor Einbringung: Abstandhalter nach DBV-Merkblatt in ausreichender Anzahl, damit c_nom eingehalten wird.</p>
                 </div>
               </div>
 
@@ -590,7 +595,7 @@ export default function BetonAZ() {
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-slate-800">Prüfung von Untergrundhaftwerten</h4>
-                  <p className="text-slate-500 text-[10.5px] mt-0.5">Bei Sanierungen die saubere, rissfreie Verbundfläche mittels Haftzugprüfungen protokollieren (Soll ≥ 1,5 N/mm²).</p>
+                  <p className="text-slate-500 text-[10.5px] mt-0.5">Bei Sanierungen die saubere, rissfreie Verbundfläche mittels Haftzugprüfungen protokollieren (üblich Mittelwert ≥ 1,5 N/mm² – manuell prüfen).</p>
                 </div>
               </div>
             </div>
@@ -601,7 +606,7 @@ export default function BetonAZ() {
       <ModuleFooter 
         weblinks={[
           { title: "Zement-Merkblätter Betoningenieure", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" },
-          { title: "Beton technisch berechnen Wiki", url: "https://beton.wiki/" }
+          { title: "Beton.wiki", url: "https://beton.wiki/" }
         ]} 
         wikipedia={[
           { title: 'Betontechnologie', url: 'https://de.wikipedia.org/wiki/Beton' },
@@ -609,14 +614,14 @@ export default function BetonAZ() {
         ]}
         normIds={['DIN_EN_206', 'DIN_1045_3', 'DIN_EN_1992_1_1', 'DIN_EN_13670', 'DBV_NACHBEHANDLUNG']}
         literatur={[
-          'Grübl, P., Weigler, H., Karl, S.: Beton – Arten, Herstellung und Eigenschaften (2001)',
-          'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)'
+          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. Berlin: Ernst & Sohn 2001',
+          'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010'
         ]}
         formeln={[
           {
             formel: 'V_z + V_f + V_w + V_L + V_g = 1000 \\, \\ell',
-            erklaerung: 'Stoffraumrechnungsformel für dichten Frischbeton je Kubikmeter nach DIN 1045-2:2023-08. Summe aller absoluten Volumina ergibt 1000 dm³.',
-            quelle: 'DIN 1045-2:2023-08'
+            erklaerung: 'Stoffraumgleichung für 1 m³ verdichteten Frischbeton: Die Summe aller Stoffraumvolumina ergibt 1000 dm³.',
+            quelle: 'Mischungsberechnung (Grundgleichung)'
           },
           {
             formel: '(w/z)_{eq} = \\frac{M_w}{M_z + k \\cdot M_f}',

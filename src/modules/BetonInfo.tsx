@@ -14,7 +14,6 @@ import {
   UserCheck,
   Compass,
   Globe,
-  GraduationCap,
   ShieldAlert,
   Activity,
   BarChart3,
@@ -64,7 +63,7 @@ export default function BetonInfo() {
       title: 'Mischungsberechnung',
       icon: Calculator,
       purpose: 'Interaktiver Entwurfs- und Optimierungsrechner für Betonmischungen auf Basis der Stoffraumrechnung (3-Satz).',
-      standards: 'Deutsche Bauchemie e.V. Merkblätter, DIN 1045-2',
+      standards: 'DIN 1045-2, DIN EN 206',
       useCase: 'Berechnung von Zementbedarf, Wasserverbrauch, Gesteinskörnungssieblinien und Zusatzmittelanteilen.'
     },
     {
@@ -141,7 +140,7 @@ export default function BetonInfo() {
       title: 'Betonpraxis',
       icon: ClipboardCheck,
       purpose: 'Interaktive Rechentools, Beständigkeiten von Betonen gegenüber chemischen Angreifern und Checklisten für Bauingenieure vor Ort.',
-      standards: 'Praxisleitfäden von DBV und DAfStb',
+      standards: 'DIN 1045-3, DAfStb-WU-Richtlinie, Praxiswerte nach Krell',
       useCase: 'Schnellcheck der chemischen Beständigkeit (Säureangriff/Sulphatangriff) und anwendungsfertige Checklisten zur Betonage.'
     },
     {
@@ -334,7 +333,7 @@ export default function BetonInfo() {
                       Keine besonderen Anforderungen über die bewährten Ausführungsregeln nach DIN 1045-3 hinaus (z. B. einfache Decken, Standard-Innenstützen).
                     </p>
                     <div className="text-[10px] text-text-main/70 pt-1 border-t border-home-grau/15 font-mono">
-                      Überwachung: ÜK 1 (Eigenüberwachung)
+                      Lehrbeispiel – Einstufung im Einzelfall
                     </div>
                   </div>
 
@@ -350,7 +349,7 @@ export default function BetonInfo() {
                       Erhöhte Ausführungsüberwachung, Betone mit besonderen Eigenschaften (z. B. Weiße Wannen, Sichtbeton SB2/SB3, Industrieböden).
                     </p>
                     <div className="text-[10px] text-amber-800 pt-1 border-t border-amber-200/60 font-mono">
-                      Überwachung: ÜK 2 + Konzeptionsgespräch
+                      Lehrbeispiel – Einstufung im Einzelfall
                     </div>
                   </div>
 
@@ -363,10 +362,10 @@ export default function BetonInfo() {
                     </div>
                     <p className="text-xs text-red-950 font-medium">Höchste Anforderungen / Großinfrastruktur</p>
                     <p className="text-[11px] text-red-900/80 leading-relaxed">
-                      Brückenüberbauten, Hochleistungsbetone, massige Bauteile mit Temperaturrissrisiko, Sichtbeton SB4. Erfordert obligatorisch einen qualifizierten <strong>BBQ-Ingenieur</strong>.
+                      Brückenüberbauten, Hochleistungsbetone, massige Bauteile mit Temperaturrissrisiko, Sichtbeton SB4.
                     </p>
                     <div className="text-[10px] text-red-800 pt-1 border-t border-red-200/60 font-mono">
-                      Überwachung: ÜK 3 + Fremdüberwachung + BBQ-Ing.
+                      Lehrbeispiel – Einstufung im Einzelfall
                     </div>
                   </div>
                 </div>
@@ -377,11 +376,10 @@ export default function BetonInfo() {
                     k-Wert-Ansätze &amp; Zusatzstoffregelungen (Typ II) nach DIN 1045-2:2023-08
                   </div>
                   <p className="text-[11px] leading-relaxed text-text-main/70">
-                    Zur Dekarbonisierung erlaubt DIN 1045-2:2023-08 in Verbindung mit der DAfStb-Richtlinie für treibhausgasreduzierte Betone 
-                    erweiterte Anrechnungen von Typ-II-Zusatzstoffen (Flugasche k = 0,40; Silikastaub k = 1,00 bis 2,00; Gesteinsmehle k = 0,20). 
-                    Der äquivalente Wasserzementwert errechnet sich streng nach: 
-                    <span className="font-mono font-bold text-shiraz ml-1">(w/z)_eq = w / (z + k · f)</span>. 
-                    Mindestzementgehalte dürfen bei nachgewiesener Reaktivität unter Einhaltung des Korrosions- und Karbonatisierungsschutzes klinkereffizient abgesenkt werden.
+                    DIN 1045-2 erlaubt die Anrechnung von Typ-II-Zusatzstoffen auf w/z-Wert und Mindestzementgehalt:
+                    Flugasche k = 0,4 (f/z ≤ 0,33), Silikastaub k = 1,0 (s/z ≤ 0,11). Es gilt
+                    <span className="font-mono font-bold text-shiraz ml-1">(w/z)_eq = w / (z + k · f)</span>.
+                    Details und Grenzen: Module Bindemittel und Expositionsklassen.
                   </p>
                 </div>
               </div>
@@ -514,16 +512,16 @@ export default function BetonInfo() {
                     </p>
                     <ul className="space-y-3 text-xs leading-relaxed text-text-main/80">
                       <li>
-                        <strong>Beton - Herstellung und Eigenschaften</strong>
-                        <span className="block text-[11px] text-text-main/60 mt-0.5">P. Grübl, H. Weigler, S. Karl. Ernst &amp; Sohn Verlag, ISBN 975-3-433-01340-3. Phänomenologisches Grundlagenwerk zum Dreiphasensystem.</span>
+                        <strong>Beton – Arten, Herstellung und Eigenschaften</strong>
+                        <span className="block text-[11px] text-text-main/60 mt-0.5">P. Grübl, H. Weigler, S. Karl. Berlin: Ernst &amp; Sohn 2001. Grundlagenwerk der Betontechnologie.</span>
                       </li>
                       <li>
-                        <strong>Zement - Chemie und Technologie</strong>
-                        <span className="block text-[11px] text-text-main/60 mt-0.5">H. F. W. Taylor. Thomas Telford Publishing. Die absolute weltweite Referenz für hydratationschemische Modellierungen im Zementmörtel.</span>
+                        <strong>Cement Chemistry</strong>
+                        <span className="block text-[11px] text-text-main/60 mt-0.5">H. F. W. Taylor. 2. Aufl., London: Thomas Telford 1997. Standardwerk zur Zementchemie und Hydratation.</span>
                       </li>
                       <li>
                         <strong>Dauerhaftigkeit von Beton</strong>
-                        <span className="block text-[11px] text-text-main/60 mt-0.5">J. Stark, B. Wicht. Springer Vieweg Verlag. Detaillierte Darstellung physikalisch-chemischer Angriffsmechanismen (Alkali-Kieselsäure-Reaktion, Frost, Chloride).</span>
+                        <span className="block text-[11px] text-text-main/60 mt-0.5">J. Stark, B. Wicht. Berlin, Heidelberg: Springer Vieweg 2013. Angriffsmechanismen wie AKR, Frost und Chloride.</span>
                       </li>
                     </ul>
                   </div>
@@ -542,38 +540,12 @@ export default function BetonInfo() {
                     <ul className="space-y-2.5">
                       <li className="text-xs">
                         <span className="font-bold text-emerald-800 block">Cement and Concrete Research (Elsevier)</span>
-                        <span className="text-[11px] leading-relaxed text-text-main/70 mt-0.5">&quot;Hydration kinetics and microstructural development of low-clinker blended cements&quot; (Scrivener, K. L. et al., Vol. 110, 2018). Mechanismus der Klinkerreduktion.</span>
-                      </li>
-                      <li className="text-xs">
-                        <span className="font-bold text-emerald-800 block">Materials and Structures (RILEM)</span>
-                        <span className="text-[11px] leading-relaxed text-text-main/70 mt-0.5">&quot;A comprehensive review on the water-to-binder ratio in ultra-high performance concrete&quot; (De Larrard, F., Vol. 52, 2020). Untersuchungen zur Kornpackungs-Optimierung.</span>
+                        <span className="text-[11px] leading-relaxed text-text-main/70 mt-0.5">Scrivener, K. L.; Juilland, P.; Monteiro, P. J. M.: Advances in understanding hydration of Portland cement. Cement and Concrete Research 78 (2015), S. 38–56.</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                {/* DISSERTATIONS */}
-                <div className="bg-slate-50/50 rounded-xl p-5 border border-home-grau/25 space-y-3 flex flex-col justify-between">
-                  <div>
-                    <h4 className="font-bold text-sm text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-                      <GraduationCap className="text-amber-600 w-4 h-4 shrink-0" />
-                      Dissertationen &amp; Forschungsberichte
-                    </h4>
-                    <p className="text-xs text-text-main/70 leading-relaxed pt-1 mb-3">
-                      Über deutsche Universitätsbibliotheken offen zugängliche Dissertationen und Berichte mit Fokus auf zukunftsweisende Zementkomplexe.
-                    </p>
-                    <ul className="space-y-3 text-xs leading-relaxed text-text-main/80">
-                      <li>
-                        <strong>Untersuchungen zur Gefügeoptimierung ultrahochfester Betone (UHPC)</strong>
-                        <span className="block text-[11px] text-text-main/60 mt-0.5">Dissertation, Technische Universität München (TUM), Dr.-Ing. Michael Schmidt. Grundlagen für dichte Silika-Nanopulver-Stoffraumstrukturen.</span>
-                      </li>
-                      <li>
-                        <strong>Zur Hydratationskinetik klinkerreduzierter Zemente mit calzinierten Tonen</strong>
-                        <span className="block text-[11px] text-text-main/60 mt-0.5">Dissertation, Karlsruher Institut für Technologie (KIT), Dr.-Ing. Tobias Schuler. Erforschung der LC3-Bindemittelsysteme zur Reduktion von GWP-Werten.</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
           )}
