@@ -8141,5 +8141,155 @@
       "targetModuleLabel": "Expositionsklassen"
     },
     "verified": false
+  },
+  {
+    "id": "q_bpx_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Betondeckung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1/NA, Tab. 4.4DE",
+    "question": "Außenbauteil XC4, Stab Ø 20 mm. Welches Nennmaß c_nom ergibt sich?",
+    "options": [
+      "35 mm",
+      "40 mm",
+      "45 mm",
+      "50 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "c_min = max(20; 25; 10) = 25 mm; c_nom = 25 + 15 = 40 mm.",
+    "gapAnalysis": {
+      "topic": "Betondeckung",
+      "misconception": "Der Stabdurchmesser sei für die Betondeckung ohne Bedeutung.",
+      "coreRule": "c_nom = max(Ø; c_min,dur; 10 mm) + Δc_dev.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Nachbehandlung",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-3",
+    "question": "Beton mit mittlerer Festigkeitsentwicklung, Oberflächentemperatur 12 °C, Klasse XM1. Wie lange ist mindestens nachzubehandeln?",
+    "options": [
+      "2 Tage",
+      "4 Tage",
+      "6 Tage",
+      "8 Tage"
+    ],
+    "correctIdx": 3,
+    "explanation": "10 bis < 15 °C, mittel: 4 Tage; bei XM verdoppelt sich die Dauer → 8 Tage.",
+    "gapAnalysis": {
+      "topic": "Nachbehandlung",
+      "misconception": "Verschleißklassen hätten keinen Einfluss auf die Nachbehandlung.",
+      "coreRule": "XM: doppelte Mindestdauer der Nachbehandlung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachbehandlung“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "WU-Mindestdicken",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb-WU-Richtlinie 2017-12",
+    "question": "Welche Mindestdicke gilt für eine Ortbetonwand der Beanspruchungsklasse 1?",
+    "options": [
+      "150 mm",
+      "200 mm",
+      "240 mm",
+      "300 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "Ortbetonwände in Beanspruchungsklasse 1 (drückendes Wasser) sind mindestens 240 mm dick; Fertigteilwände 200 mm.",
+    "gapAnalysis": {
+      "topic": "WU-Mindestdicken",
+      "misconception": "Für Wände und Bodenplatten gälten dieselben Mindestdicken.",
+      "coreRule": "WU-Richtlinie: BK 1, Ortbetonwand ≥ 240 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „WU-Mindestdicken“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Wasserzugabe",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 1045-3",
+    "question": "Der Beton ist auf der Baustelle zu steif. Was ist zulässig?",
+    "options": [
+      "10 l/m³ Wasser zugeben",
+      "Fließmittel nach Vorgabe des Herstellers zugeben",
+      "Wasser zugeben und länger rütteln",
+      "Den Beton mit Zement nachdosieren"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nachträgliche Wasserzugabe erhöht den w/z-Wert und ist unzulässig. Die Konsistenz darf nur mit Fließmittel nach Vorgabe des Betonherstellers angepasst werden.",
+    "gapAnalysis": {
+      "topic": "Wasserzugabe",
+      "misconception": "Wenig Wasser schade der Festigkeit nicht.",
+      "coreRule": "Keine Wasserzugabe auf der Baustelle; Fließmittel nur nach Herstellervorgabe.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bpx_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "betonpraxis",
+    "moduleTitle": "Betonpraxis",
+    "topic": "Zusammenhalt nach Krell",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Krell (Praxis-Kennwert)",
+    "question": "w = 175 kg/m³, Mehlkorn MK = 380 kg/m³. Wie groß ist K = (w − 70)/MK?",
+    "options": [
+      "0,18",
+      "0,28",
+      "0,38",
+      "0,46"
+    ],
+    "correctIdx": 1,
+    "explanation": "(175 − 70)/380 = 0,276 ≈ 0,28 – geringes Bluten nach Krells Einteilung.",
+    "gapAnalysis": {
+      "topic": "Zusammenhalt nach Krell",
+      "misconception": "Ein höherer Mehlkorngehalt erhöhe das Bluten.",
+      "coreRule": "Kleineres K → besserer Zusammenhalt, weniger Bluten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zusammenhalt nach Krell“ im Modul Betonpraxis noch einmal durch.",
+      "targetModuleTab": "betonpraxis",
+      "targetModuleLabel": "Betonpraxis"
+    },
+    "verified": false
   }
 ]

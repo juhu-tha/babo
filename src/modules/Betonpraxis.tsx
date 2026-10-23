@@ -23,32 +23,41 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { DIN1045_3_NACHBEHANDLUNG } from '@/src/data/normParams';
+import { DIN1045_2_EXPOSITIONSKLASSEN } from '@/src/data/standards/din1045_2';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 
 interface ExposureDetails {
   title: string;
   description: string;
-  subclasses: Array<{ key: string; name: string; maxWz: number; minClass: string; cementNote?: string; example: string }>;
+  subclasses: Array<{ key: string; name: string; maxWz: number | null; minClass: string; cementNote?: string; example: string }>;
   moistureAssoc: string;
   rebarRecCover: string;
 }
 
+// Mindestdauer der Nachbehandlung: zentrale Werte nach DIN 1045-3 (normParams)
 const curingTable: Record<string, Record<string, number>> = {
-  '5_9': { schnell: 3, mittel: 6, langsam: 10, sehr_langsam: 15 },
-  '10_14': { schnell: 2, mittel: 4, langsam: 7, sehr_langsam: 10 },
-  '15_24': { schnell: 1, mittel: 2, langsam: 4, sehr_langsam: 5 },
-  'ge_25': { schnell: 1, mittel: 2, langsam: 2, sehr_langsam: 3 },
+  '5_9': DIN1045_3_NACHBEHANDLUNG.mindestdauerTage['5_10'],
+  '10_14': DIN1045_3_NACHBEHANDLUNG.mindestdauerTage['10_15'],
+  '15_24': DIN1045_3_NACHBEHANDLUNG.mindestdauerTage['15_25'],
+  'ge_25': DIN1045_3_NACHBEHANDLUNG.mindestdauerTage.ge25,
 };
 
-const steelCovers: Record<string, Record<string, number>> = {
-  '6_10':  { XC1: 20, XC2_3: 35, XC4: 35, XD_XS: 40 },
-  '10_14': { XC1: 25, XC2_3: 35, XC4: 40, XD_XS: 55 },
-  '16_20': { XC1: 30, XC2_3: 35, XC4: 40, XD_XS: 55 },
-  '25':    { XC1: 35, XC2_3: 35, XC4: 40, XD_XS: 55 },
-  '28':    { XC1: 40, XC2_3: 40, XC4: 40, XD_XS: 55 },
-  '32':    { XC1: 45, XC2_3: 45, XC4: 45, XD_XS: 55 },
-  '40':    { XC1: 50, XC2_3: 50, XC4: 50, XD_XS: 55 },
+// Nennmaß der Betondeckung c_nom = max(Ø; c_min,dur; 10 mm) + Δc_dev, aufgerundet auf 5 mm
+// (DIN EN 1992-1-1 mit NA:2013-04, Tab. 4.4DE; Δc_dev = 15 mm, bei XC1 10 mm)
+const STAB_DM: Record<string, number> = { '6_10': 10, '10_14': 14, '16_20': 20, '25': 25, '28': 28, '32': 32, '40': 40 };
+const COVER_RULES: Record<'XC1' | 'XC2_3' | 'XC4' | 'XD_XS', { cMinDur: number; dev: number }> = {
+  XC1: { cMinDur: 10, dev: 10 },
+  XC2_3: { cMinDur: 20, dev: 15 },
+  XC4: { cMinDur: 25, dev: 15 },
+  XD_XS: { cMinDur: 40, dev: 15 },
 };
+function cNomFor(dm: string, cls: keyof typeof COVER_RULES): number {
+  const r = COVER_RULES[cls];
+  const cMin = Math.max(STAB_DM[dm] ?? 20, r.cMinDur, 10);
+  return Math.ceil((cMin + r.dev) / 5) * 5;
+}
 
 const exposureCategoryData: Record<string, ExposureDetails> = {
   XC: {
@@ -61,7 +70,7 @@ const exposureCategoryData: Record<string, ExposureDetails> = {
       { key: 'XC4', name: 'Wechselnd nass und trocken', maxWz: 0.60, minClass: 'C25/30', example: 'Außenbauteile mit direkter Beregnung.' },
     ],
     moistureAssoc: 'Feuchtigkeitsklasse unabhängig von der XC-Klasse festlegen: WO z. B. trockene Innenbauteile und überdachte Außenbauteile; WF z. B. ständig nasse, bewitterte oder erdberührte Bauteile und Innenbauteile mit hoher Luftfeuchte. | XC2, XC3, XC4 -> WF',
-    rebarRecCover: 'XC1: 20-30 mm | XC2_3: 25-35 mm | XC4: 35-40 mm'
+    rebarRecCover: 'c_nom bis Ø 20 mm: XC1 20–30 mm | XC2/XC3 35 mm | XC4 40 mm'
   },
   XF: {
     title: 'Frost / Frost-Tausalz-Angriff',
@@ -73,7 +82,7 @@ const exposureCategoryData: Record<string, ExposureDetails> = {
       { key: 'XF4', name: 'Hohe Sättigung mit Taumittel', maxWz: 0.50, minClass: 'C35/45 LP (od. C30/37 LP)', cementNote: 'Luftporenbildner (LP) zwingend erforderlich, außer bei sehr langsamer Hydratation.', example: 'Fahrbahnbeton auf Brücken, Parkdecks ohne OS-Beschichtung.' },
     ],
     moistureAssoc: 'XF1 -> WF | XF2, XF3, XF4 -> WA (bzw. WS bei Fahrbahnen)',
-    rebarRecCover: 'XF1: 35-40 mm | XF2_3_4: 40-55 mm'
+    rebarRecCover: 'Keine eigene Anforderung – maßgebend ist die XC- bzw. XD-Klasse'
   },
   XD_XS: {
     title: 'Chloride aus Taumittel (XD) / Meerwasser (XS)',
@@ -87,7 +96,7 @@ const exposureCategoryData: Record<string, ExposureDetails> = {
       { key: 'XS3', name: 'Wechselnd (Tidenhub/Spritzwasser)', maxWz: 0.50, minClass: 'C35/45', example: 'Spritzwasser-Bereich an Hafenanlagen, Tidenzone.' },
     ],
     moistureAssoc: 'XD1, XS1 -> WF | XD2, XD3, XS2, XS3 -> WA',
-    rebarRecCover: 'XD/XS: Generell 40-55 mm empfohlen'
+    rebarRecCover: 'c_nom = 55 mm (c_min,dur 40 mm + Δc_dev 15 mm, Ø ≤ 40 mm)'
   },
   XA: {
     title: 'Chemischer Angriff (Säuren, Sulfate, Kohlensäure)',
@@ -95,10 +104,10 @@ const exposureCategoryData: Record<string, ExposureDetails> = {
     subclasses: [
       { key: 'XA1', name: 'Schwach angreifend', maxWz: 0.60, minClass: 'C25/30', example: 'Güllebehälter im Agrarbereich, Kläranlagen (Teilbereiche), mäßig saure Böden.' },
       { key: 'XA2', name: 'Mäßig angreifend / Sulfate', maxWz: 0.50, minClass: 'C35/45 (od. C30/37 Anhang F)', cementNote: 'Ab 600 mg/l Sulfat im Wasser: Flugasche (30%) oder SR-Zement gefordert. ZTV-ING fordert w/z ≤ 0.50.', example: 'Fundamente in sulfathaltigen Böden (Gipskeuper), Klärbecken.' },
-      { key: 'XA3', name: 'Stark angreifend (PH < 4.5)', maxWz: 0.45, minClass: 'C35/45', cementNote: 'Immer SR-Zement zwingend erforderlich + zusätzliche Schutzmaßnahmen wie Beschichtungen!', example: 'Industrieabwasser-Anlagen, Kühltürme mit Rauchgaseinleitung, Futtersilos.' },
+      { key: 'XA3', name: 'Stark angreifend (PH < 4.5)', maxWz: 0.45, minClass: 'C35/45', cementNote: 'Bei Sulfatangriff SR-Zement; zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).', example: 'Industrieabwasser-Anlagen, Kühltürme mit Rauchgaseinleitung, Futtersilos.' },
     ],
     moistureAssoc: 'XA1 -> WF | XA2, XA3 -> WA',
-    rebarRecCover: 'XA1: 35-40 mm | XA2_3: 40-55 mm'
+    rebarRecCover: 'Keine eigene Anforderung – maßgebend ist die XC-Klasse'
   },
   XM: {
     title: 'Mechanischer Verschleiß',
@@ -115,10 +124,10 @@ const exposureCategoryData: Record<string, ExposureDetails> = {
     title: 'Alkali-Kieselsäure-Reaktion FEUCHTEKLASSEN (AKR)',
     description: 'Gefahr des "Betonkrebses" durch quellfähiges Alkali-Kieselgel bei Wasserzutritt und reaktivem Gesteinskorn.',
     subclasses: [
-      { key: 'WO', name: 'Trocken / Ohne Feuchtezufuhr', maxWz: 1.0, minClass: 'Jeder tragfähige Beton', example: 'Trockene Innenbauteile von Gebäuden (Wohnräume, Büros).' },
-      { key: 'WF', name: 'Feucht / Ständige Feuchtezufuhr', maxWz: 0.65, minClass: 'XC2 - XC4, XF1, XA1 Bereich', example: 'Außenbauteile ohne Salzbelastung, Feuchträume, WU-Baukörper.' },
-      { key: 'WA', name: 'Feucht + Tausalz / Meerwasser', maxWz: 0.50, minClass: 'XD, XS, XA2, XA3, XF2, XF4 Bereich', example: 'Brückenpfeiler, Bauteile mit Meerwasserkontakt, Parkdeckauffahrten.' },
-      { key: 'WS', name: 'Feucht + Taumittel + Dyn. Last', maxWz: 0.45, minClass: 'C30/37 oder C35/45', cementNote: 'ZTV-Decke Bestimmungen beachten. Aggregat E1 Klasse nutzen.', example: 'Betonfahrbahnen auf Bundesautobahnen, Rollbahnen auf Flughäfen.' },
+      { key: 'WO', name: 'Trocken / Ohne Feuchtezufuhr', maxWz: null, minClass: '', example: 'Trockene Innenbauteile von Gebäuden (Wohnräume, Büros).' },
+      { key: 'WF', name: 'Feucht / Ständige Feuchtezufuhr', maxWz: null, minClass: '', example: 'Außenbauteile ohne Salzbelastung, Feuchträume, WU-Baukörper.' },
+      { key: 'WA', name: 'Feucht + Tausalz / Meerwasser', maxWz: null, minClass: '', example: 'Brückenpfeiler, Bauteile mit Meerwasserkontakt, Parkdeckauffahrten.' },
+      { key: 'WS', name: 'Feucht + Taumittel + Dyn. Last', maxWz: null, minClass: '', cementNote: 'ZTV-Decke Bestimmungen beachten. Aggregat E1 Klasse nutzen.', example: 'Betonfahrbahnen auf Bundesautobahnen, Rollbahnen auf Flughäfen.' },
     ],
     moistureAssoc: 'WO, WF, WA, WS repräsentieren die Feuchtbedingungen der AKR-Gefährdung.',
     rebarRecCover: 'Bewehrungsüberdeckung durch übergeordnete Expositionsklassen geregelt'
@@ -133,6 +142,18 @@ const exposureCategoryData: Record<string, ExposureDetails> = {
     rebarRecCover: 'Keine Bewehrung vorhanden'
   }
 };
+
+// Grenzwerte (w/z, Festigkeitsklasse) aus der zentralen DIN-1045-2-Tabelle übernehmen;
+// Krells Praxishinweise (cementNote) bleiben als Erfahrungswerte erhalten.
+for (const cat of Object.values(exposureCategoryData)) {
+  for (const sub of cat.subclasses) {
+    const norm = DIN1045_2_EXPOSITIONSKLASSEN[sub.key === 'XO' ? 'X0' : sub.key];
+    if (norm) {
+      sub.maxWz = norm.maxWz;
+      sub.minClass = norm.minDruckfestigkeit + (norm.minLuftporengehalt ? ' mit LP' : '');
+    }
+  }
+}
 
 function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -333,43 +354,41 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
   // --- Calculations for Bohrkernprüfung DIN EN 13791 ---
   // BK_min >= 0.85 * (fck - 4)
   const reqBkMin = 0.85 * (fck - 4);
-  const coreNeedsCount = concreteVol <= 30 ? (coresTested <= 4 ? 2 : 4) : (coresTested <= 4 ? 3 : 5);
-  // Median requirements:
-  // 2 - 4 cores: Median BK >= 0.85 * (fck + 1)
-  // 5 - 6 cores: Median BK >= 0.85 * (fck + 2)
+  // Mittelwert-Anforderung (DIN EN 13791:2020-02 – manuell prüfen):
+  // 2 - 4 Kerne: f_m(n),is >= 0,85 * (fck + 1); 5 - 6 Kerne: >= 0,85 * (fck + 2)
   const reqBkMedian = coresTested <= 4 ? 0.85 * (fck + 1) : 0.85 * (fck + 2);
 
   // --- Calculations for WU-Richtlinie ---
   const getWuMindestdicke = (): { dicke: number; core?: number; comment: string } => {
     if (wuBauteil === 'waende') {
       if (wuBk === 'bk1') {
-        if (wuBauweise === 'ortbeton') return { dicke: 240, comment: 'Mindestdicke bei Ortbetonwänden nach WU-Richtlinie. Wichtig: Größtkorn ≤ 16 mm einhalten!' };
-        if (wuBauweise === 'element') return { dicke: 240, core: 120, comment: 'Elementwand (3-schichtig): 240 mm Gesamtdicke mit mind. 120 mm Ortbetonkern.' };
-        return { dicke: 200, comment: 'Fertigteilwand: Sehr dichte Werksherstellung ermöglicht die Reduktion auf 200 mm.' };
+        if (wuBauweise === 'ortbeton') return { dicke: 240, comment: 'Ortbetonwand, Beanspruchungsklasse 1 (drückendes Wasser).' };
+        if (wuBauweise === 'element') return { dicke: 240, comment: 'Elementwand: 240 mm Gesamtdicke; Kernbetondicke manuell prüfen.' };
+        return { dicke: 200, comment: 'Fertigteilwand, Beanspruchungsklasse 1.' };
       } else { // BK2
-        if (wuBauweise === 'ortbeton') return { dicke: 240, comment: 'Ortbetonwand bei Bodenfeuchte. Unter besonderen baustellenspezifischen Maßnahmen auf 200 mm reduzierbar (nach Fußnote 1).' };
-        if (wuBauweise === 'element') return { dicke: 240, core: 120, comment: 'Elementwand (BK 2): 240 mm Gesamtdicke mit 120 mm Ortbetonkern. Reduzierung bedingt möglich.' };
-        return { dicke: 100, comment: 'Fertigteil BK 2: Sehr schlanke Bauweise ab 100 mm baupraktisch zulässig.' };
+        if (wuBauweise === 'ortbeton') return { dicke: 200, comment: 'Ortbetonwand, Beanspruchungsklasse 2 (Bodenfeuchte, nicht stauendes Sickerwasser).' };
+        if (wuBauweise === 'element') return { dicke: 240, comment: 'Elementwand (BK 2): 240 mm Gesamtdicke; Kernbetondicke manuell prüfen.' };
+        return { dicke: 100, comment: 'Fertigteilwand, Beanspruchungsklasse 2.' };
       }
     } else if (wuBauteil === 'bodenplatte') {
       if (wuBk === 'bk1') {
-        if (wuBauweise === 'ortbeton') return { dicke: 250, comment: 'Standard-Bodenplatte bei drückendem Wasser. Erhöhte Rissbreitenbeschränkung vorsehen.' };
-        if (wuBauweise === 'element') return { dicke: 250, comment: 'Nicht üblich für tragende Bodenplatten (Elementbauweise bezieht sich primär auf Wände).' };
-        return { dicke: 200, comment: 'WU-Fertigteil-Bodenplatte: Minderung auf 200 mm unter kontrollierten Bedingungen.' };
+        if (wuBauweise === 'ortbeton') return { dicke: 250, comment: 'Ortbeton-Bodenplatte, Beanspruchungsklasse 1.' };
+        if (wuBauweise === 'element') return { dicke: 0, comment: 'Für Bodenplatten ist keine Elementbauweise vorgesehen.' };
+        return { dicke: 200, comment: 'Fertigteil-Bodenplatte, Beanspruchungsklasse 1.' };
       } else { // BK2
-        if (wuBauweise === 'ortbeton') return { dicke: 150, comment: 'Optimierte Dicke von 150 mm ausreichend bei reiner Bodenfeuchtigkeit.' };
-        if (wuBauweise === 'element') return { dicke: 150, comment: 'Bodenplatten werden nicht in Elementwandbauweise realisiert.' };
-        return { dicke: 100, comment: 'Schlanke Fertigteilplatte von 100 mm bei BK 2 (z.B. Garagenböden) möglich.' };
+        if (wuBauweise === 'ortbeton') return { dicke: 150, comment: 'Ortbeton-Bodenplatte, Beanspruchungsklasse 2.' };
+        if (wuBauweise === 'element') return { dicke: 0, comment: 'Für Bodenplatten ist keine Elementbauweise vorgesehen.' };
+        return { dicke: 100, comment: 'Fertigteil-Bodenplatte, Beanspruchungsklasse 2.' };
       }
     } else { // daech (Dächer)
       if (wuBk === 'bk1') {
-        if (wuBauweise === 'ortbeton') return { dicke: 200, comment: 'Flachdächer ohne zusätzliche Dichtungsbahn (Ortbeton): Erhöhte Dichtungskritikalität.' };
-        if (wuBauweise === 'element') return { dicke: 240, core: 180, comment: 'Elementdecke/Dach: 240 mm Gesamtdicke mit 180 mm Ortbeton-Aufbeton.' };
-        return { dicke: 180, comment: 'Werks-Fertigteil für WU-Dächer: 180 mm Dicke.' };
+        if (wuBauweise === 'ortbeton') return { dicke: 200, comment: 'Lehrannahme (keine Tabellenwerte der WU-Richtlinie für Dächer): '+'Flachdächer ohne zusätzliche Dichtungsbahn (Ortbeton): Erhöhte Dichtungskritikalität.' };
+        if (wuBauweise === 'element') return { dicke: 240, core: 180, comment: 'Lehrannahme (keine Tabellenwerte der WU-Richtlinie für Dächer): '+'Elementdecke/Dach: 240 mm Gesamtdicke mit 180 mm Ortbeton-Aufbeton.' };
+        return { dicke: 180, comment: 'Lehrannahme (keine Tabellenwerte der WU-Richtlinie für Dächer): '+'Werks-Fertigteil für WU-Dächer: 180 mm Dicke.' };
       } else { // BK2
-        if (wuBauweise === 'ortbeton') return { dicke: 180, comment: 'WU-Flachdach bei Schutz gegen stehendes Wasser.' };
-        if (wuBauweise === 'element') return { dicke: 220, core: 160, comment: 'Elementdecke BK 2: 220 mm Gesamtdicke mit 160 mm Kern.' };
-        return { dicke: 160, comment: 'Fertigteil BK 2: 160 mm Dicke.' };
+        if (wuBauweise === 'ortbeton') return { dicke: 180, comment: 'Lehrannahme (keine Tabellenwerte der WU-Richtlinie für Dächer): '+'WU-Flachdach bei Schutz gegen stehendes Wasser.' };
+        if (wuBauweise === 'element') return { dicke: 220, core: 160, comment: 'Lehrannahme (keine Tabellenwerte der WU-Richtlinie für Dächer): '+'Elementdecke BK 2: 220 mm Gesamtdicke mit 160 mm Kern.' };
+        return { dicke: 160, comment: 'Lehrannahme (keine Tabellenwerte der WU-Richtlinie für Dächer): '+'Fertigteil BK 2: 160 mm Dicke.' };
       }
     }
   };
@@ -818,7 +837,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 <div className="bg-red-900 border border-red-950 text-white rounded-lg p-3 text-xs flex gap-2 items-start mt-4">
                   <AlertTriangle size={18} className="flex-shrink-0 mt-0.5" />
                   <div className="space-y-1">
-                    <strong className="block text-red-200">Kritischer Fehler: Verbotene Wasserzugabe (≥ 20 l/m³)!</strong>
+                    <strong className="block text-red-200">Nachträgliche Wasserzugabe auf der Baustelle ist unzulässig (DIN 1045-3) – hier nur zur Veranschaulichung.</strong>
                     <ul className="list-disc list-inside space-y-1 text-red-105">
                       <li><strong>Druckfestigkeit:</strong> Fällt um &gt; -8 N/mm² ab. Ein Konformitätstest scheitert fast immer (alle Würfel fallen durch).</li>
                       <li><strong>Wasserläufer &amp; Entmischung:</strong> Sand- und Feinanteile sammeln sich oben, Grobkorn sinkt stark ab.</li>
@@ -842,7 +861,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
             <h3 className="font-bold text-lg text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/10">
               <Flame size={18} className="text-shiraz" />
-              Erstarren &amp; Trittfestigkeit (Walkability)
+              Erstarren &amp; Trittfestigkeit (Faustwerte, Lehrannahme)
             </h3>
             <p className="text-xs text-text-main/80">
               Abschätzung der Erstarrungs- und Walkability-Dauer von üblichen Bauwerksbetonen (w/z um 0.55, CEM I / CEM II 32.5 R / 42.5 N) in Abhängigkeit der Umgebungstemperatur. Base-Richtwert bei 20°C: ca. 4 bis 5 Stunden.
@@ -1014,7 +1033,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-home-grau/5'
                       }`}
                     >
-                      XC2, XC3, XC4, XF1, XA1 (Standard)
+                      Alle übrigen Klassen
                     </button>
                     <button
                       type="button"
@@ -1025,7 +1044,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-home-grau/5'
                       }`}
                     >
-                      XD, XS, XF2-4, XA2-3, XM (Erhöht)
+                      XM (Verschleiß)
                     </button>
                   </div>
                 </div>
@@ -1072,11 +1091,11 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Mindestdauer der Nachbehandlung:</span>
                 <div className="text-xl font-bold text-shiraz font-mono leading-tight">
                   {curingExposure === 'x0_xc1' ? (
-                    <span className="text-xs block py-1 font-semibold">Keine harten Festigkeitsvorgaben (Bis Trittfestigkeit, ca. 12-24 Std.)</span>
+                    <span className="text-xs block py-1 font-semibold">Mindestens 0,5 Tage (12 Stunden), DIN 1045-3</span>
                   ) : (
                     <span>
                       {curingExposure === 'erhoeht' 
-                        ? `${Math.ceil((curingTable[curingTemp]?.[curingStrength] || 1) * 1.5)} Tage`
+                        ? `${(curingTable[curingTemp]?.[curingStrength] || 1) * 2} Tage`
                         : `${curingTable[curingTemp]?.[curingStrength] || 0} Tage`
                       }
                     </span>
@@ -1084,20 +1103,14 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 </div>
                 {curingExposure === 'erhoeht' && (
                   <span className="text-xs text-red-700 font-semibold block">
-                    (Inklusive +50% Sicherheitsaufschlag für hoch-aggressive Angriffsstufen)
+                    (XM: doppelte Dauer nach DIN 1045-3)
                   </span>
                 )}
               </div>
 
-              {/* Einbautemperaturen Frischbeton */}
-              <div className="bg-amber-50/70 border border-amber-200 p-3 rounded-lg text-xs space-y-1">
-                <span className="font-bold text-amber-800 uppercase text-xs block">Einbautemperaturen des Frischbetons:</span>
-                <ul className="list-disc list-inside space-y-1 text-text-main/85 text-xs">
-                  <li><strong>Bei 5 - 9 °C:</strong> Mindestens <strong className="text-shiraz font-mono">4 Tage</strong> Curing erforderlich (ZTV-ING verdoppelt auf 8 Tage!)</li>
-                  <li><strong>Bei 10 - 14 °C:</strong> Mindestens <strong className="text-shiraz font-mono">2 Tage</strong> Curing erforderlich (ZTV-ING verdoppelt auf 4 Tage!)</li>
-                  <li><strong>Bei ≥ 15 °C:</strong> Mindestens <strong className="text-shiraz font-mono">1 Tag</strong> Curing ausreichend (ZTV-ING verdoppelt auf 2 Tage!)</li>
-                </ul>
-              </div>
+              <p className="text-xs text-text-main/70">
+                Werte nach DIN 1045-3 (Tabelle Mindestdauer der Nachbehandlung). Ausführlich im Modul Nachbehandlung.
+              </p>
             </div>
           </div>
 
@@ -1248,15 +1261,19 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                           <div key={cls.key} className="p-3 bg-white border border-home-grau/10 rounded-lg text-xs space-y-1 hover:border-shiraz/35 transition-colors">
                             <div className="flex items-center justify-between flex-wrap gap-2">
                               <span className="font-bold text-shiraz text-sm px-1.5 py-0.5 bg-shiraz/5 border border-shiraz/15 rounded font-mono">{cls.key}</span>
-                              <span className="font-bold text-text-main font-mono text-xs bg-slate-50 px-2 py-0.5 rounded border border-home-grau/10">Min. Güteklasse: {cls.minClass}</span>
-                              <span className="font-bold text-red-700 font-mono text-xs bg-red-50/50 px-2 py-0.5 rounded border border-red-100">max w/z: {formatDeZahl(cls.maxWz, 2)}</span>
+                              {cls.minClass && (
+                                <span className="font-bold text-text-main font-mono text-xs bg-slate-50 px-2 py-0.5 rounded border border-home-grau/10">Mind.: {cls.minClass}</span>
+                              )}
+                              {cls.maxWz !== null && (
+                                <span className="font-bold text-red-700 font-mono text-xs bg-red-50/50 px-2 py-0.5 rounded border border-red-100">max w/z: {formatDeZahl(cls.maxWz, 2)}</span>
+                              )}
                             </div>
                             <p className="font-semibold text-text-main mt-1">{cls.name}</p>
                             <p className="text-xs text-text-main/60 italic mt-0.5">Praxis-Beispiel: {cls.example}</p>
                             {cls.cementNote && (
                               <p className="text-xs text-amber-800 font-medium bg-amber-50/40 p-1.5 border border-amber-200 rounded mt-1.5 flex gap-1 items-start">
                                 <Info size={11} className="flex-shrink-0 mt-0.5" />
-                                <span>{cls.cementNote}</span>
+                                <span><strong>Praxishinweis (Krell):</strong> {cls.cementNote}</span>
                               </p>
                             )}
                           </div>
@@ -1270,7 +1287,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     <div className="space-y-4">
                       <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Bewehrungs-Überdeckung</span>
                       <p className="text-xs text-text-main/70 leading-relaxed">
-                        Findet das nach DIN 1045-2 geforderte Nennmaß der Betonüberdeckung <span className="font-mono bg-slate-50 border border-home-grau/30 rounded px-1 text-shiraz">c_nom [mm]</span> basierend auf dem gewählten Stabdurchmesser und der Expositions-Belastung:
+                        Berechnet das nach DIN EN 1992-1-1/NA geforderte Nennmaß der Betonüberdeckung <span className="font-mono bg-slate-50 border border-home-grau/30 rounded px-1 text-shiraz">c_nom [mm]</span> basierend auf dem gewählten Stabdurchmesser und der Expositions-Belastung:
                       </p>
 
                       <div className="space-y-3 bg-off-white p-3 rounded-lg border border-home-grau/15">
@@ -1308,19 +1325,19 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                         <div className="grid grid-cols-2 gap-2 mt-2 font-mono text-center">
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XC1</div>
-                            <div className="text-sm font-bold text-slate-800">{formatDeWert(steelCovers[rebarDiameter]?.XC1 || 20)} mm</div>
+                            <div className="text-sm font-bold text-slate-800">{formatDeWert(cNomFor(rebarDiameter, 'XC1'))} mm</div>
                           </div>
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XC2/3</div>
-                            <div className="text-sm font-bold text-slate-800">{formatDeWert(steelCovers[rebarDiameter]?.XC2_3 || 35)} mm</div>
+                            <div className="text-sm font-bold text-slate-800">{formatDeWert(cNomFor(rebarDiameter, 'XC2_3'))} mm</div>
                           </div>
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XC4</div>
-                            <div className="text-sm font-bold text-slate-800">{formatDeWert(steelCovers[rebarDiameter]?.XC4 || 35)} mm</div>
+                            <div className="text-sm font-bold text-slate-800">{formatDeWert(cNomFor(rebarDiameter, 'XC4'))} mm</div>
                           </div>
                           <div className="bg-white p-2 rounded border border-home-grau/10">
                             <div className="text-xs font-sans text-text-main/60">XD / XS</div>
-                            <div className="text-sm font-bold text-shiraz font-mono">{formatDeWert(steelCovers[rebarDiameter]?.XD_XS || 40)} mm</div>
+                            <div className="text-sm font-bold text-shiraz font-mono">{formatDeWert(cNomFor(rebarDiameter, 'XD_XS'))} mm</div>
                           </div>
                         </div>
                         <span className="text-xs text-text-main/50 mt-1.5 block text-center italic leading-normal">
@@ -1470,7 +1487,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       <div className="space-y-2">
                         <span className="text-xs uppercase font-bold text-sky-800 tracking-wider block">Empfehlung der WU-Richtlinie</span>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-3xl font-bold text-sky-900 font-mono">{formatDeWert(result.dicke)} mm</span>
+                          <span className="text-3xl font-bold text-sky-900 font-mono">{result.dicke > 0 ? `${formatDeWert(result.dicke)} mm` : '—'}</span>
                           {result.core && (
                             <span className="text-sm text-sky-700 font-semibold font-mono">({formatDeWert(result.core)} mm Kernbeton)</span>
                           )}
@@ -1584,8 +1601,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
               </div>
 
               <div className="bg-yellow-50 p-3 rounded-lg border border-yellow-250 text-xs text-yellow-900 leading-relaxed">
-                <strong>Anzahl- und Baustellenvorschriften:</strong> Bis {concreteVol <= 30 ? '30 m³' : '30 m³'}: Es werden mindestens <strong>{concreteVol <= 30 ? 2 : 3} Kerne</strong> benötigt. 
-                {concreteVol > 30 ? ' Da das eingebaute Volumen > 30 m³ beträgt, müssen zusätzlich Kerne prioritär aus dem Medianbereich / Mittelfeld entnommen werden (Identitätsprüfung).' : ' Reine Einzelwertkontrolle ausreichend.'}
+                <strong>Hinweis:</strong> Anzahl und Lage der Bohrkerne legen Sie nach DIN EN 13791:2020-02 fest (Kriterien manuell prüfen).
               </div>
             </div>
           </div>
@@ -1642,6 +1658,8 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
       <ConcreteThematicLinks current="baustoff" />
 
       {/* Module Footer standard integration */}
+      <ModulTest moduleId="betonpraxis" />
+
       <ModuleFooter 
         weblinks={[
           { title: 'Beton.org: Planungshilfen und Zement-Merkblätter', url: 'https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/' },
@@ -1649,31 +1667,28 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
         ]}
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: 'Expositionsklasse', url: 'https://de.wikipedia.org/wiki/Expositionsklasse' },
-          { title: 'Nachbehandlung' }
+          { title: 'Expositionsklasse', url: 'https://de.wikipedia.org/wiki/Expositionsklasse' }
         ]}
         regelwerke={[
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN EN 13670:2010-06 / DIN 1045-3:2023-08 (Ausführung von Tragwerken aus Beton - Nachbehandlung und Einbau)' },
           { title: 'DIN 1045-1000:2023-08 (Zusammenarbeit bei Planung, Herstellung und Bauausführung - BBQ)' },
           { title: 'DIN EN 13791:2020-02 (Bewertung der Druckfestigkeit von Beton in Bauwerken oder in Bauwerksteilen)' },
+          { title: 'DIN EN 12504-1 (Prüfung von Beton in Bauwerken – Bohrkernproben)' },
+          { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), Ausgabe 2017-12' },
+          { title: 'DIN EN 1992-1-1/NA:2013-04 (Betondeckung, Tab. 4.4DE)' },
           { title: 'DBV-Merkblätter: Sichtbeton (2015), Industrieböden, Betondeckung (Deutscher Beton- und Bautechnik-Verein E.V.)', url: 'https://www.betonverein.de/' }
         ]}
         literatur={[
-          'Krell, J.: Beton 2022 - Vordenken statt Nachbessern, Krell-Consult, Hilden.',
+          'Krell, J.: Beton 2022 – Vordenken statt Nachbessern. Hilden: Krell-Consult (Angaben manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (51. Ausgabe 2008, Verlag Bau+Technik)'
         ]}
         formeln={[
           {
             formel: 'K = \\frac{w - 70}{MK}',
-            erklaerung: 'Mehlkorn-Zusammenhalte-Kennwert (nach Dr. Jürgen Krell). Zeigt das zu erwartende Frischbeton-Blutverhalten bei 20°C ambienter Lagerung.',
+            erklaerung: 'Praxis-Kennwert für den Zusammenhalt nach Krell (keine Normgröße): w Wassergehalt, MK Mehlkorngehalt in kg/m³; Richtwert für das Bluten bei etwa 20 °C.',
             quelle: 'Krell (2022)'
-          },
-          {
-            formel: 'f_{ct,eff,td} = 0{,}75 \\dots 0{,}85 \\cdot f_{ctm,28d}',
-            erklaerung: 'Vorgabe für langsame Hydratationsfestigkeitsentwicklung zur Bestimmung des frühen Zwangsriss-Risikos am Bauteil.',
-            quelle: 'DIN EN 1992-1-1'
           }
         ]}
       />

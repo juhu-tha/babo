@@ -263,7 +263,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     minStrengthClass: 'C35/45',
     minCement: 320,
     minCoverDurMm: null,
-    specialNotes: 'Bei SO₄²⁻ > 600 mg/l im Wasser bzw. > 3 000 mg/kg im Boden: Zement mit hohem Sulfatwiderstand (SR).'
+    specialNotes: 'Bei SO₄²⁻ > 600 mg/l im Wasser bzw. > 3 000 mg/kg im Boden: SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch (DIN 1045-2 – manuell prüfen).'
   },
   {
     code: 'XA3',
@@ -1359,7 +1359,7 @@ export default function Expositionsklassen() {
     // Sonderanforderungen (SR-Zement, Hartstoffe, Beschichtung)
     const specialReqs: string[] = [];
     if (selectedClasses.includes('XA2') || selectedClasses.includes('XA3')) {
-      specialReqs.push('Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) Zement mit hohem Sulfatwiderstand (SR).');
+      specialReqs.push('Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch.');
     }
     if (selectedClasses.includes('XA3')) {
       specialReqs.push('XA3: zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).');
