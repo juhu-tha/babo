@@ -3,6 +3,9 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { useTabContext } from '@/src/contexts/TabContext';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -37,7 +40,7 @@ export default function Carbonbeton() {
 
   const results = useMemo(() => {
     // Bemessungswerte
-    const gammaTex = 1.3; // Teilsicherheitsbeiwert Carbon
+    const gammaTex = 1.3; // Lehrannahme – maßgebend: DAfStb-Richtlinie (2024) bzw. Zulassung
     const gammaC = 1.5;   // Teilsicherheitsbeiwert Beton
     const alphaCc = 0.85;
 
@@ -79,9 +82,9 @@ export default function Carbonbeton() {
 
     // Vergleich mit Stahlbeton (B500B)
     // Um das gleiche mRd aufzunehmen, wie dick müsste die Decke sein?
-    // Annahme: c_nom = 35 mm (Expositionsklasse XC4 o.ä.)
-    // Mindestdicke für Stahlbeton liegt oft bei 100-120mm allein wegen der Betondeckung beidseitig
-    const hStahl = Math.max(100, h + 25 * 2); 
+    // Lehrannahme: Stahlbetonplatte XC4 mit c_nom = 40 mm oben und unten, Stab Ø 10 mm und
+    // mindestens 10 mm Druckzone → h ≈ 2·40 + 10 + 10 = 100 mm
+    const hStahl = Math.max(100, h + 2 * 40 - 2 * c); 
 
     // Chart Data: Spannung-Dehnung
     const strainData = [];
@@ -244,6 +247,7 @@ export default function Carbonbeton() {
                   <div className="text-sm font-medium text-emerald-900">
                     Carbonbeton: <strong>{formatDeZahl(h, 0)} mm</strong><br/>
                     Stahlbeton: min. <strong>{formatDeZahl(results.hStahl, 0)} mm</strong>
+                    <span className="block text-[11px] text-emerald-800/70 mt-1">Lehrannahme: XC4, c_nom = 40 mm beidseitig statt der Carbon-Deckung c.</span>
                   </div>
                 </div>
               </div>
@@ -378,6 +382,23 @@ export default function Carbonbeton() {
         </div>
       </div>
 
+      <CarbonVerweis />
+
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Carbonbetonplatte (Standardwerte)"
+        zielGleichung="m_{Rd} = a_{tex} \cdot f_{td} \cdot z"
+        normQuelle="Gleichgewicht am Rechteckquerschnitt; γ_tex = 1,3 als Lehrannahme"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'h = 40\\,\\text{mm},\\; c = 10\\,\\text{mm},\\; d = 30\\,\\text{mm},\\; a_{tex} = 100\\,\\text{mm}^2/\\text{m},\\; \\text{C50/60}', erklaerung: 'Textile Carbonbewehrung, f_tk = 2 500 N/mm².' },
+          { titel: '2. Bemessungswerte', formel: 'f_{td} = 2\\,500/1{,}3 = 1\\,923\\,\\text{N/mm}^2;\\; f_{cd} = 0{,}85 \\cdot 50/1{,}5 = 28{,}3\\,\\text{N/mm}^2', erklaerung: 'α_cc = 0,85 nach NA.' },
+          { titel: '3. Druckzone', formel: 'y = \\frac{100 \\cdot 1\\,923}{1\\,000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; z = 30 - 6{,}8/2 = 26{,}6\\,\\text{mm}', erklaerung: 'Gleichgewicht F_c = F_t.' },
+          { titel: '4. Biegewiderstand', formel: 'm_{Rd} = 100 \\cdot 1\\,923 \\cdot 26{,}6 \\cdot 10^{-6} = 5{,}1\\,\\text{kNm/m}', erklaerung: 'Je Meter Plattenbreite.' },
+        ]}
+        ergebnisHinweis="m_Rd ≈ 5,1 kNm/m bei nur 40 mm Plattendicke."
+      />
+
+      <ModulTest moduleId="carbonbeton" />
+
       <ModuleFooter
         weblinks={[
           { title: 'C³ - Carbon Concrete Composite e.V.', url: 'https://www.bauen-neu-denken.de/' },
@@ -388,33 +409,44 @@ export default function Carbonbeton() {
           { title: 'Kohlenstofffaserverstärkter Kunststoff', url: 'https://de.wikipedia.org/wiki/Kohlenstofffaserverst%C3%A4rkter_Kunststoff' }
         ]}
         regelwerke={[
-          { title: 'DAfStb-Richtlinie: Betonbauteile mit nichtmetallischer Bewehrung (Ausgabe 2023-11)', url: 'https://www.dafstb.de/' },
-          { title: 'DIBt: Grundsätze für allgemeine Bauartgenehmigungen (aBG) für Carbonbeton (2022-09)', url: 'https://www.dibt.de/' },
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN 1045-1000:2023-08 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)' }
+          { title: 'DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (Ausgabe 2024-01)', url: 'https://www.dinmedia.de/en/technical-rule/dafstb-betonbauteile-nichtmetallische-bewehrung/377433845' },
+          { title: 'DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Grundlage der Bemessungslogik)' }
         ]}
         literatur={[
-          'Curbach, M.; Jesse, D. et al. (2023): Carbonbeton - Das Handbuch (Ernst & Sohn Verlag)',
-          'DAfStb Heft 635: Sachstandsbericht Nichtmetallische Bewehrung (DIN Media)',
+          'DAfStb (Hrsg.): Erläuterungen und Beispiele zur DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung. Berlin: DIN Media 2024',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         formeln={[
           {
-            erklaerung: "Bemessungswert der Zugfestigkeit der Carbonbewehrung [MPa]: Charakteristische Zugfestigkeit f_tk geteilt durch den Teilsicherheitsbeiwert γ_tex (oft 1.3).",
+            erklaerung: "Bemessungswert der Zugfestigkeit der Carbonbewehrung [MPa]: f_tk geteilt durch γ_tex (hier 1,3 als Lehrannahme; maßgebend Richtlinie bzw. Zulassung).",
             formel: "f_{td} = \\frac{f_{tk}}{\\gamma_{tex}}",
             quelle: "DAfStb-Richtlinie Nichtmetallische Bewehrung"
           },
           {
             erklaerung: "Aufnehmbares Biegemoment m_Rd [kNm/m]: Bewehrungsquerschnitt a_tex multipliziert mit Bemessungszugfestigkeit f_td und innerem Hebelarm z.",
             formel: "m_{Rd} = a_{tex} \\cdot f_{td} \\cdot z",
-            quelle: "Eurocode 2 modifiziert"
+            quelle: "Gleichgewicht am Rechteckquerschnitt (analog EC2)"
           },
           {
             erklaerung: "Linear-elastisches Spannungs-Dehnungs-Verhalten bis zum Sprödbruch ohne plastisches Fließplateau.",
             formel: "\\sigma_{tex} = E_{tex} \\cdot \\varepsilon_{tex} \\quad (\\varepsilon_{tex} \\le \\varepsilon_{u})",
-            quelle: "Curbach et al. (2023)"
+            quelle: "Werkstoffverhalten Carbonbewehrung"
           }
         ]}
       />
     </div>
   );
 }
+
+function CarbonVerweis() {
+  const { setActiveTab } = useTabContext();
+  return (
+    <p className="text-xs text-text-main/70">
+      Material, Herstellung und Anwendungen von Carbonbeton finden Sie im Modul{' '}
+      <button type="button" onClick={() => setActiveTab('innovative_werkstoffe')} className="text-shiraz font-bold underline cursor-pointer">
+        Entwicklungen
+      </button>.
+    </p>
+  );
+}
+
