@@ -16,6 +16,8 @@ import {
   BookOpen 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 // Define FNR Product Type
 interface FnrProduct {
@@ -51,22 +53,22 @@ export default function Nawaro() {
       id: 'holzfaser',
       name: 'Holzfaserdämmstoffe (HFD)',
       category: 'daemmung',
-      rho: '110 - 200',
+      rho: '50 - 270',
       lambda: '0,038 - 0,050',
       c: '2.100',
       mu: '3 - 5',
-      fireClass: 'E (normalentflammbar) / B2',
+      fireClass: 'E (normalentflammbar, vgl. B2)',
       advantages: [
-        'Hervorragender sommerlicher Hitzeschutz durch extreme Wärmespeicherfähigkeit',
-        'Exzellenter Schallschutz aufgrund hoher Rohdichte',
-        'Vollständig diffusionsoffen und kapillaraktiv (feuchteregulierend)',
-        'Hohes CO₂-Speicherpotenzial (biogener Kohlenstoff)'
+        'Guter sommerlicher Wärmeschutz bei Platten durch hohe Wärmespeicherfähigkeit ρ·c',
+        'Gute Schallschutzwirkung im Bauteil durch Masse und hohen Strömungswiderstand',
+        'Diffusionsoffen (μ ≈ 3–5) und sorptionsfähig',
+        'Speichert biogenen Kohlenstoff'
       ],
       disadvantages: [
         'Höheres Eigengewicht beansprucht die Tragstruktur stärker',
         'Teurer im Vergleich zu konventionellem EPS'
       ],
-      description: 'Hergestellt aus Sägeresten und Nadelholz-Hackschnitzeln im Nass- oder Trockenverfahren. Die Fasern verfilzen unter Druck und Hitze, teils unter Ausnutzung holzeigener Bindekräfte (Lignin).',
+      description: 'Hergestellt aus Sägeresten und Nadelholz-Hackschnitzeln im Nass- oder Trockenverfahren (flexible Matten ca. 50 kg/m³, Platten bis ca. 270 kg/m³). Die Fasern verfilzen unter Druck und Hitze, teils unter Ausnutzung holzeigener Bindekräfte (Lignin).',
       fnrUsage: 'Aufsparrendämmung, Zwischensparrendämmung, Putzträgerplatten im Holzrahmenbau (WDVS).'
     },
     {
@@ -77,18 +79,18 @@ export default function Nawaro() {
       lambda: '0,037 - 0,043',
       c: '2.150',
       mu: '1 - 2',
-      fireClass: 'E / B2 (teils durch Additive geschützt)',
+      fireClass: 'B-s2, d0 oder E – produktabhängig (ETA/Leistungserklärung)',
       advantages: [
-        'Hervorragendes Preis-Leistungs-Verhältnis',
+        'Günstiges Preis-Leistungs-Verhältnis',
         'Fugenfreier Einbau als Einblasdämmung (vermeidet Wärmebrücken)',
         'Hohe spezifische Wärmekapazität',
-        'Sehr ressourcenschonend da aus Recycling-Altpapier hergestellt'
+        'Ressourcenschonend, da aus Altpapier hergestellt'
       ],
       disadvantages: [
         'Setzungsverhalten bei unsachgemäßem Einblasen möglich',
         'Nicht geeignet für direkte Beanspruchung durch flüssiges Wasser'
       ],
-      description: 'Hergestellt im trockenen Zerfaserungsprozess aus reinem Zeitungspapier. Zum Schutz vor Brand und Schimmelpilzen wird das Flockenmaterial mit mineralischen Additiven (meist Borsalze oder Ammoniumphosphat) versetzt.',
+      description: 'Hergestellt durch trockene Zerfaserung von sortiertem Altpapier (überwiegend Tageszeitungen). Zum Schutz vor Brand und Schimmelpilzen werden Zusätze beigegeben (z. B. Borsalze, zunehmend ersetzt durch Ammoniumphosphat oder -sulfat).',
       fnrUsage: 'Einblasdämmung in belüfteten Flachdächern, Holzrahmenwänden und Deckenhohlräumen.'
     },
     {
@@ -101,15 +103,15 @@ export default function Nawaro() {
       mu: '1 - 2',
       fireClass: 'E (normalentflammbar) / B2',
       advantages: [
-        'Naturbedingt extrem resistent gegen Schimmel, Feuchtigkeit und Schädlinge',
-        'Gute Elastizität vereinfacht den Klemm-Einbau zwischen Sparre',
-        'Keine Pestizide beim Anbau notwendig (sehr schnelles Pflanzenwachstum)'
+        'Geringe Anfälligkeit für Schimmel und Schädlinge (Herstellerangabe; Feuchteschutz bleibt erforderlich)',
+        'Gute Elastizität vereinfacht den Klemm-Einbau zwischen den Sparren',
+        'Anbau mit geringem Pflanzenschutzmitteleinsatz (schnellwüchsig, unterdrückt Beikraut)'
       ],
       disadvantages: [
         'Zusatz von Bindefasern (z.B. Biopolymere oder Stützkunststoffe) für Formstabilität nötig',
-        'Schwierig zuzuschneiden ohne scharfes Spezialwerkzeug'
+        'Zuschnitt erfordert geeignetes Werkzeug (Dämmstoffmesser oder -säge)'
       ],
-      description: 'Nutzung der robusten Bastfasern des Hanfstängels. Die Fasern werden mittels thermoplastischen Stützfasern (meist Polyester-Bikomponentenfasern, seltener biobasiertes PLA) zu stabilen Matten thermisch verfestigt.',
+      description: 'Nutzung der robusten Bastfasern des Hanfstängels. Die Fasern werden mit thermoplastischen Stützfasern (meist Polyester-Bikomponentenfasern, seltener biobasiertes PLA) thermisch zu Matten verfestigt.',
       fnrUsage: 'Zwischensparrendämmung, Gefachdämmung im Innenausbau und Holzbau.'
     },
     {
@@ -120,22 +122,22 @@ export default function Nawaro() {
       lambda: '0,043 - 0,048',
       c: '2.000',
       mu: '1 - 2',
-      fireClass: 'E / B2 (bei Putzdeckung oft Brandschutzklasse B1 erreicht)',
+      fireClass: 'E (normalentflammbar); verputzte Bauteile mit nachgewiesener Feuerwiderstandsdauer (Nachweis manuell prüfen)',
       advantages: [
-        'Umschlagbar bester CO₂-Fußabdruck (Erntenebenprodukt, minimalste graue Energie)',
-        'Extrem kostengünstig als reiner landwirtschaftlicher Rohstoff',
+        'Sehr geringer Herstellungsaufwand (Nebenprodukt der Getreideernte)',
+        'Kostengünstiger, regional verfügbarer Rohstoff',
         'Unterstützt regionale landwirtschaftliche Kreisläufe'
       ],
       disadvantages: [
         'Hohe Wandstärken (~35-50 cm) für guten Dämmwert erforderlich',
-        'Erfordert zertifizierten, fachgerechten Einbau zum Feuchteschutz während der Bauphase'
+        'Erfordert konsequenten Feuchteschutz während Lagerung und Bauphase'
       ],
-      description: 'Zertifiziertes Weizen-, Roggen- oder Dinkelstroh, das unter hohem Pressdruck zu formstabilen Ballen gepresst wird. Baustroh ist bauaufsichtlich über EAD/ETA zertifiziert.',
-      fnrUsage: 'Ausfachung von Holzständerkonstruktionen, gedämmt mit Lehm- oder Kalkputzen.'
+      description: 'Weizen-, Roggen- oder Dinkelstroh, das zu formstabilen Ballen gepresst wird. Der Verwendbarkeitsnachweis erfolgt über ETA bzw. allgemeine bauaufsichtliche Zulassung (Nummern manuell prüfen).',
+      fnrUsage: 'Ausfachung von Holzständerkonstruktionen, beidseitig mit Lehm- oder Kalkputz.'
     },
     {
       id: 'paludikultur',
-      name: 'Schilf- & Rohrkolbenschindeln (Typha)',
+      name: 'Rohrkolben- und Schilfdämmplatten (Typha)',
       category: 'daemmung',
       rho: '120 - 240',
       lambda: '0,050 - 0,065',
@@ -143,15 +145,15 @@ export default function Nawaro() {
       mu: '5 - 10',
       fireClass: 'E / B2',
       advantages: [
-        'Hochgradig feuchteunempfindlich und fäulnisresistent durch Kieselsäureeinlagerungen',
-        'Hervorragender ökologischer Begleiteffekt (Wetland-Restaurierung binde gigantische CO₂-Mengen)',
-        'Ideal geeignet als natürlicher Innen-Putzträger'
+        'Geringe Feuchteempfindlichkeit (Herstellerangabe)',
+        'Paludikultur ermöglicht die Wiedervernässung von Mooren und senkt deren CO₂-Emissionen',
+        'Geeignet als Putzträger bei Innendämmung'
       ],
       disadvantages: [
-        'Wärmeleitfähigkeit ist höher als bei Nadelholzfasern (schlechtere Dämmleistung pro cm)',
-        'Derzeit noch geringe industrielle Marktverfügbarkeit im großen Stil'
+        'Höhere Wärmeleitfähigkeit als Holzfaser (mehr Dicke für gleichen U-Wert)',
+        'Bisher geringe Marktverfügbarkeit'
       ],
-      description: 'Biomasse aus Paludikulturen (Anbau auf wiedervernässten Moorböden). Schützt aktive Moorflächen und liefert robuste Pflanzenteile, die gepresst und drahtgebunden werden.',
+      description: 'Biomasse aus Paludikulturen (Anbau auf wiedervernässten Moorböden). Die Pflanzenteile werden zu Platten gepresst und gebunden (je nach Produkt mineralisch oder mit Draht). Kennwerte sind Richtwerte – maßgebend ist der Verwendbarkeitsnachweis.',
       fnrUsage: 'Innendämmung von Fachwerkbauten, feuchtebelastete Deckenbereiche, Putzträger.'
     },
     {
@@ -162,11 +164,11 @@ export default function Nawaro() {
       lambda: '0,039 - 0,045',
       c: '2.000',
       mu: '1 - 2',
-      fireClass: 'B-s1, d0 / B1 (ohne chemische Flammschutzmittel!)',
+      fireClass: 'laut Hersteller schwerentflammbar ohne Flammschutzmittel (Euroklasse manuell prüfen)',
       advantages: [
-        'Naturbedingt unbrennbar durch hohen Silikat- und Salzgehalt',
-        'Schimmelresistent und ungezieferabweisend',
-        '100 % chemiefreier, reiner Naturstoff ohne künstliche Bindemittel'
+        'Hoher Mineral- und Salzgehalt erschwert Entflammung und Schimmelbefall (Herstellerangabe)',
+        'Geringe Anfälligkeit für Schädlinge (Herstellerangabe)',
+        'Je nach Produkt ohne Zusatz- und Bindemittel'
       ],
       disadvantages: [
         'Wird meist als loses Schüttmaterial eingebaut (Verarbeitungsaufwand)',
@@ -186,29 +188,29 @@ export default function Nawaro() {
       fireClass: 'D-s2, d0 / normalentflammbar',
       advantages: [
         'Ermöglicht schnellen, trockenen und großflächigen Rohbau',
-        'Enorme Tragfähigkeit sowohl in Längs- als auch Querrichtung',
-        'Signifikante CO₂-Senke im globalen Tragwerk'
+        'Lastabtrag in zwei Richtungen (Plattenwirkung durch kreuzweise Lagen)',
+        'Speichert biogenen Kohlenstoff für die Nutzungsdauer'
       ],
       disadvantages: [
-        'Schallschutz im Holz-Mehrgeschosser erfordert clevere Entkopplungskonstruktionen',
-        'Verklebung schränkt die sortenreine thermische Verwertung am Lebensende minimal ein'
+        'Schallschutz im mehrgeschossigen Holzbau erfordert Entkopplung und Zusatzmasse',
+        'Verklebung erschwert die sortenreine stoffliche Verwertung'
       ],
       description: 'Massivholztafeln, die aus mindestens drei kreuzweise verklebten Einschichtplatten aus Nadelholz bestehen. Das Kreuzlagenprinzip minimiert Quellen und Schwinden.',
       fnrUsage: 'Tragende Wand-, Decken- und Dachplatten für mehrgeschossigen Wohnungsbau.'
     },
     {
       id: 'hempcrete',
-      name: 'Hanfkalk (Hempcrete / Cannabric)',
+      name: 'Hanfkalk (Hempcrete)',
       category: 'lehm_putz',
       rho: '250 - 450',
       lambda: '0,060 - 0,090',
       c: '1.600',
       mu: '4 - 8',
-      fireClass: 'B-s1, d0 (schwerentflammbar durch Kalkhülle)',
+      fireClass: 'produktabhängig, häufig B-s1, d0 (Leistungserklärung prüfen)',
       advantages: [
-        'Ideale Kombination aus moderner Wärmedämmung und thermischer Speichermasse',
-        'Überragende CO₂-negative Ökobilanz (während des Abbindens bindet Kalk sogar CO₂)',
-        'Vollständig schimmelresistent und feuchtigkeitsregulierend'
+        'Kombination aus Dämmwirkung und Wärmespeicherfähigkeit',
+        'Günstige Treibhausgasbilanz: biogener Kohlenstoff im Hanf, Kalk nimmt beim Erhärten CO₂ wieder auf (Karbonatisierung)',
+        'Alkalisches Milieu hemmt Schimmelbildung; feuchtepuffernd'
       ],
       disadvantages: [
         'Nicht als lasttragendes Strukturbauteil für mehrgeschossige Gebäude geeignet (Traggerippe nötig)',
@@ -224,16 +226,16 @@ export default function Nawaro() {
       rho: '1.150 - 1.250',
       lambda: '0,17',
       c: '1.400',
-      mu: '1000 - 5000',
-      fireClass: 'Cfl-s1 (schwerentflammbar / B1)',
+      mu: '1.000 - 5.000 (Richtwert)',
+      fireClass: 'Cfl-s1 (schwerentflammbar, vgl. B1)',
       advantages: [
-        'Besteht bis zu 98 % aus nachwachsenden und mineralischen Rohstoffen',
-        'Extrem abriebfest, langlebig (oft >40 Jahre Nutzungsdauer)',
-        'Bakteriostatische und hygienische Wirkung (ideal für Krankenhäuser/Schulen)'
+        'Überwiegend aus nachwachsenden und mineralischen Rohstoffen (Herstellerangabe bis ca. 98 %)',
+        'Abriebfest und langlebig (Nutzungsdauer mehrere Jahrzehnte, Richtwert)',
+        'Bakteriostatische Wirkung laut Hersteller (Einsatz in Schulen und Kliniken)'
       ],
       disadvantages: [
         'Geruchsentwicklung (Leinölgeruch) in den ersten Wochen nach Verlegung',
-        'Erfordert absolut ebenen Untergrund und fachmännische Bahnenverschweißung'
+        'Erfordert ebenen Untergrund und fachgerechtes Verschweißen der Bahnen'
       ],
       description: 'Zusammensetzung aus oxidiertem Leinöl (Linoleumzement), Naturharzen (Kolophonium), Holzmehl, Kalksteinmehl und organischen Pigmenten auf einem Juteträgergewebe.',
       fnrUsage: 'Hochbelastbarer, elastischer Bodenbelag in öffentlichen und privaten Räumen.'
@@ -248,15 +250,15 @@ export default function Nawaro() {
       mu: '5 - 10',
       fireClass: 'E / B2',
       advantages: [
-        'Extreme Dimensionsstabilität und verrottungsfrei',
+        'Hohe Dimensionsstabilität und verrottungsbeständig',
         'Gute Trittschallminderung und Druckfestigkeit',
         'Kann ohne chemische Flammschutzmittel verbaut werden'
       ],
       disadvantages: [
         'Lange Transportwege (primär aus Portugal/Mittelmeerraum)',
-        'Begrenzte jährliche Schälschneiden-Verfügbarkeit der Korkeichen'
+        'Begrenzte Verfügbarkeit (dieselbe Korkeiche wird nur etwa alle 9 Jahre geschält)'
       ],
-      description: 'Gewonnen aus der Rinde der Korkeiche. Zur Plattenherstellung wird Korkgranulat unter Wasserdampfeinwirkung erhitzt. Der korkeigene Harzkörper (Suberin) expandiert und bindet die Partikel bindemittelfrei.',
+      description: 'Gewonnen aus der Rinde der Korkeiche. Zur Plattenherstellung wird Korkgranulat unter Wasserdampfeinwirkung erhitzt. Das Granulat expandiert, korkeigene Harze treten aus und binden die Partikel ohne Zusatzbindemittel.',
       fnrUsage: 'Perimeterdämmung, Flachdachdämmung, Trittschallminderung.'
     }
   ];
@@ -281,49 +283,49 @@ export default function Nawaro() {
 
         // Technical criteria modifiers
         if (navGoal === 'summer') {
-          // Score based on heat capacity * density (thermal inertia)
+          // Lehrmodell: Wärmespeicherfähigkeit ρ·c in kJ/(m³K), obere Rohdichte
           const rhoVal = parseFloat(p.rho.split('-')[1] || p.rho);
           const cVal = parseFloat(p.c.replace('.', ''));
           const inertia = (rhoVal * cVal) / 1000;
-          if (inertia > 300) { score += 45; reason = 'Sensationelle thermische Masse bremst sommerliche Hitzespitzen exzellent aus.'; }
-          else if (inertia > 120) { score += 30; reason = 'Gute Wärmespeicherung schützt Wohnräume wirksam vor Überhitzung.'; }
-          else { score += 10; reason = 'Geringe thermische Trägheit bietet nur begrenzten Schutz im Hochsommer.'; }
+          if (inertia > 300) { score += 45; reason = 'Hohe Wärmespeicherfähigkeit (ρ·c > 300 kJ/(m³K)) – günstig für die Phasenverschiebung.'; }
+          else if (inertia > 120) { score += 30; reason = 'Mittlere Wärmespeicherfähigkeit (120–300 kJ/(m³K)).'; }
+          else { score += 10; reason = 'Geringe Wärmespeicherfähigkeit (< 120 kJ/(m³K)) – wenig Beitrag zum sommerlichen Wärmeschutz.'; }
         }
 
         if (navGoal === 'heat') {
           // Score based on low lambda
           const lambdaMin = parseFloat(p.lambda.split(' ')[0].replace(',', '.'));
-          if (lambdaMin < 0.040) { score += 45; reason = 'Extrem niedrige Wärmeleitfähigkeit garantiert hochgradig schlanke Bauteildicken.'; }
-          else if (lambdaMin <= 0.045) { score += 30; reason = 'Solider, marktüblicher Kälteschutz für winterliche Bedingungen.'; }
-          else { score += 15; reason = 'Geringere Dämmleistung erfordert dickere Dämmschichten zur GModG-Einhaltung (vormals GEG/EnEV).'; }
+          if (lambdaMin < 0.040) { score += 45; reason = 'Niedrige Wärmeleitfähigkeit (λ < 0,040) erlaubt geringere Dämmdicken.'; }
+          else if (lambdaMin <= 0.045) { score += 30; reason = 'Marktübliche Wärmeleitfähigkeit (λ ≤ 0,045).'; }
+          else { score += 15; reason = 'Höhere Wärmeleitfähigkeit erfordert dickere Dämmschichten für den gleichen U-Wert.'; }
         }
 
         if (navGoal === 'sound') {
           // Score based on density
           const maxRho = parseFloat(p.rho.split('-')[1] || p.rho);
-          if (maxRho > 150) { score += 45; reason = 'Schwere Massestruktur dämpft tieffrequenten Außenlärm hervorragend.'; }
-          else if (maxRho > 60) { score += 30; reason = 'Gute Luftschallabsorption für ruhige raumakustische Innenverhältnisse.'; }
-          else { score += 10; reason = 'Leichtes Gefüge bietet nur geringe Schallbarrieren.'; }
+          if (maxRho > 150) { score += 45; reason = 'Hohe Rohdichte – günstig für die Luftschalldämmung des Bauteils.'; }
+          else if (maxRho > 60) { score += 30; reason = 'Mittlere Rohdichte – gute Hohlraumbedämpfung in leichten Bauteilen.'; }
+          else { score += 10; reason = 'Geringe Rohdichte – wirkt v. a. als Hohlraumdämpfung.'; }
         }
 
         if (navGoal === 'moisture') {
           // Score based on moisture protection / vapor permeability
           const muVal = parseFloat(p.mu.split('-')[1] || p.mu);
           if (p.id === 'hempcrete' || p.id === 'paludikultur') {
-            score += 48; reason = 'Kapillaraktives Gefüge transportiert Tauwasser risikofrei ab, ideal in Altbauten.';
+            score += 48; reason = 'Kapillaraktiv und sorptionsfähig – geeignet für Innendämmung im Bestand (hygrothermischer Nachweis erforderlich).';
           } else if (muVal < 5) {
-            score += 35; reason = 'Hochgradig atmungsaktiv, vermindert das Risiko von Feuchteakkumulationen.';
+            score += 35; reason = 'Diffusionsoffen (niedriger μ-Wert) – erleichtert die Rücktrocknung.';
           } else {
-            score += 20; reason = 'Gute feuchteregulierende Eigenschaften bei ausgeglichenen Raumklimabedingungen.';
+            score += 20; reason = 'Sorptionsfähig, aber höherer Diffusionswiderstand.';
           }
         }
 
         if (navGoal === 'eco') {
           // Eco score (stroh, zellulose and paludikultur excel)
-          if (p.id === 'stroh') { score += 49; reason = 'Minimale Graue Energie und fast Null Verarbeitungsaufwand machen es unschlagbar ökologisch.'; }
-          else if (p.id === 'zellulose') { score += 42; reason = 'Besteht fast vollständig aus Recyclingmaterial (Altpapier), schont forstwirtschaftliche Ressourcen.'; }
-          else if (p.id === 'paludikultur') { score += 45; reason = 'Anbau revitalisiert Moore und verhindert proaktiv das Entweichen von Bodengasen.'; }
-          else { score += 25; reason = 'Gute Ökobilanz, bindet signifikant pflanzliches CO₂.'; }
+          if (p.id === 'stroh') { score += 49; reason = 'Sehr geringer Herstellungsaufwand (landwirtschaftliches Nebenprodukt).'; }
+          else if (p.id === 'zellulose') { score += 42; reason = 'Überwiegend aus Altpapier – Sekundärrohstoff.'; }
+          else if (p.id === 'paludikultur') { score += 45; reason = 'Paludikultur auf wiedervernässten Mooren mindert Emissionen aus entwässerten Moorböden.'; }
+          else { score += 25; reason = 'Speichert biogenen Kohlenstoff; Herstellungsaufwand produktabhängig.'; }
         }
 
         // Adjust score based on wall type matching
@@ -358,12 +360,12 @@ export default function Nawaro() {
               <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight">
                 NaWaRo <span className="text-shiraz font-medium text-lg">| Biobasierte Baustoffe</span>
               </h2>
-              <p className="text-xs text-text-main/60 font-medium">Recherche &amp; Spezifikationen nach Fachagentur Nachwachsende Rohstoffe e. V. (FNR)</p>
+              <p className="text-xs text-text-main/60 font-medium">Überblick mit Bezug auf Informationsangebote der FNR – Kennwerte sind Richtwerte</p>
             </div>
           </div>
           
           <div className="flex items-center gap-1.5 self-start md:self-auto bg-slate-100 text-slate-800 border border-slate-200 py-1.5 px-3 rounded-full text-xs font-semibold">
-            <Leaf size={14} className="text-shiraz animate-pulse" /> FNR-Datenbank Standard
+            <Leaf size={14} className="text-shiraz" /> Richtwerte, keine Produktdaten
           </div>
         </div>
 
@@ -426,7 +428,7 @@ export default function Nawaro() {
               <div className="lg:col-span-2 flex flex-col gap-4">
                 <div className="text-base text-text-main/80 bg-off-white p-5 rounded-2xl border border-home-grau/30 leading-relaxed">
                   <span className="font-bold text-emerald-800 uppercase text-xs tracking-wider block mb-1">Über die FNR e.V.</span>
-                  Die <strong>Fachagentur Nachwachsende Rohstoffe e. V. (FNR)</strong> agiert im Auftrag des Bundesministeriums für Ernährung und Landwirtschaft (BMLEH). Sie ist das deutsche Kompetenzzentrum für nachwachsende Rohstoffe in der Forst-, Land-, und Abfallwirtschaft. Ein zentraler Schwerpunkt liegt auf dem nachhaltigen Bauen. Das offizielle Portal <strong>baustoffe.fnr.de</strong> stellt herstellerneutrale Marktübersichten und bauphysikalische Fakten zur Verfügung, um den Einsatz kreislauffähiger Bio-Baustoffe im Hochbau zu forcieren.
+                  Die <strong>Fachagentur Nachwachsende Rohstoffe e. V. (FNR)</strong> ist Projektträger des Bundesministeriums für Landwirtschaft, Ernährung und Heimat (BMLEH) für nachwachsende Rohstoffe. Ein Schwerpunkt ist das Bauen mit nachwachsenden Rohstoffen: Das Themenportal <strong>baustoffe.fnr.de</strong> informiert herstellerneutral über Materialien und Bauphysik, die FNR-Marktübersicht stellt Dämmstoffe aus nachwachsenden Rohstoffen zusammen.
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -434,7 +436,7 @@ export default function Nawaro() {
                     <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={20} />
                     <div>
                       <h4 className="font-bold text-sm text-text-main mb-1">CO₂-Speicher-Effekt (Carbon Sequestration)</h4>
-                      <p className="text-xs text-text-main/70">Wachsendes Holz oder Hanf entzieht der Luft aktiv CO₂. Der Kohlenstoff bleibt über Jahrzehnte im Haus sicher gebunden (Wohngebäude als anthropogene Kohlenstoffsenke).</p>
+                      <p className="text-xs text-text-main/70">Pflanzen entziehen der Luft beim Wachstum CO₂. Der Kohlenstoff bleibt für die Nutzungsdauer im Bauteil gespeichert und wird bei Verbrennung oder Verrottung wieder frei (temporärer Speicher).</p>
                     </div>
                   </div>
 
@@ -442,7 +444,7 @@ export default function Nawaro() {
                     <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={20} />
                     <div>
                       <h4 className="font-bold text-sm text-text-main mb-1">Ressourceneffizienz &amp; Zirkularität</h4>
-                      <p className="text-xs text-text-main/70">Wiederverwendbarkeit (Re-Use) und Wiederverwendbarkeit (Re-Use) und – bei zusatzstofffreien Produkten – biologische Abbaubarkeit können Bauschutt und Deponiekosten reduzieren und reduzieren Deponiekosten massiv.</p>
+                      <p className="text-xs text-text-main/70">Wiederverwendung (Re-Use) und – bei zusatzstofffreien Produkten – biologische Abbaubarkeit können Bauabfälle und Deponiekosten reduzieren.</p>
                     </div>
                   </div>
                 </div>
@@ -482,7 +484,7 @@ export default function Nawaro() {
                   </svg>
                 </div>
                 <p className="text-[11px] text-text-main/60 leading-normal">
-                  Pflanzliche Baustoffe speichern den im Kohlenstoffdioxid enthaltenen Kohlenstoff über die gesamte Bauteilnutzung hinweg. Sie wirken als hocheffizienter CO₂-Puffer im Kampf gegen die Erderwärmung.
+                  Pflanzliche Baustoffe speichern den aus CO₂ aufgenommenen Kohlenstoff über die Nutzungsdauer. In der Ökobilanz wird dieser biogene Kohlenstoff nach DIN EN 16449 bzw. DIN EN 15804 getrennt ausgewiesen.
                 </p>
               </div>
             </div>
@@ -502,7 +504,7 @@ export default function Nawaro() {
               <div className="border border-home-grau/30 p-4 rounded-xl bg-white hover:border-emerald-300 transition-all flex flex-col gap-2">
                 <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase">PRODUKTGRUPPE 3</span>
                 <h4 className="font-bold text-sm text-text-main">Verbundmaterialien</h4>
-                <p className="text-xs text-text-main/70">Smarte Baustoffe wie Hanfkalk (Hempcrete) und Wood-Plastic-Composites (WPC) für ganzheitliche Gebäudehüllen.</p>
+                <p className="text-xs text-text-main/70">Verbundbaustoffe wie Hanfkalk (Hempcrete) oder Wood-Plastic-Composites (WPC; Kunststoffanteil erschwert die Verwertung).</p>
               </div>
               <div className="border border-home-grau/30 p-4 rounded-xl bg-white hover:border-emerald-300 transition-all flex flex-col gap-2">
                 <span className="text-[10px] font-bold text-emerald-600 tracking-wider uppercase">PRODUKTGRUPPE 4</span>
@@ -515,7 +517,7 @@ export default function Nawaro() {
             <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl flex gap-3 text-xs text-amber-950/80 leading-relaxed">
               <AlertCircle size={18} className="text-amber-600 flex-shrink-0" />
               <div>
-                <strong>Konstruktive Beachtung (FNR Planungsleitfaden):</strong> Biobasierte Baustoffe erfordern konsequenten Schutz vor dauerhafter Feuchtebelastung (Feuchtedesignklasse nach DIN 68800). Der Einbau muss stets schlagregen- und erdberührungsdicht geplant werden, um Schimmelbildung und fäulnisbedingten Verlust tragender Eigenschaften zu verhindern.
+                <strong>Konstruktive Beachtung:</strong> Biobasierte Baustoffe erfordern konsequenten Schutz vor dauerhafter Feuchtebelastung (baulicher Holzschutz und Gebrauchsklassen nach DIN 68800). Der Einbau muss stets schlagregen- und erdberührungsdicht geplant werden, um Schimmelbildung und fäulnisbedingten Verlust tragender Eigenschaften zu verhindern.
               </div>
             </div>
           </div>
@@ -638,7 +640,7 @@ export default function Nawaro() {
               <div className="lg:col-span-7 bg-off-white p-5 rounded-xl border border-home-grau/30 flex flex-col gap-5">
                 <div>
                   <div className="flex items-center gap-2 text-emerald-800 font-bold text-xs uppercase tracking-wider mb-1">
-                    <Sparkles size={14} /> FNR-Materialsteckbrief
+                    <Sparkles size={14} /> Materialsteckbrief
                   </div>
                   <h3 className="text-lg font-black text-text-main">{selectedProductData.name}</h3>
                   <p className="text-xs text-text-main/70 mt-1">{selectedProductData.description}</p>
@@ -711,10 +713,10 @@ export default function Nawaro() {
             
             <div className="bg-emerald-50 text-emerald-950 p-4 rounded-xl border border-emerald-200">
               <h3 className="font-bold text-sm text-emerald-900 mb-1 flex items-center gap-2">
-                <Calculator size={18} /> Der interaktive FNR-Dämmstoffrechner
+                <Calculator size={18} /> Dämmstoff-Navigator (Lehrmodell)
               </h3>
               <p className="text-xs text-emerald-900/80">
-                Wählen Sie Ihre primären konstruktiven Zielstellungen und das Bauteil aus. Das System ermittelt automatisch die am besten geeigneten biogenen Dämmstoffgruppen nach physikalischen Kenngrößen der Fachagentur FNR.
+                Wählen Sie Ihre primären konstruktiven Zielstellungen und das Bauteil aus. Der Navigator ordnet die Dämmstoffgruppen nach einer vereinfachten Punktebewertung aus den Richtwerten (λ, ρ, c, μ). Er ersetzt keine Planung und keinen Nachweis.
               </p>
             </div>
 
@@ -768,7 +770,7 @@ export default function Nawaro() {
                       <Activity size={16} className="text-purple-500" />
                       <div>
                         <span className="text-xs block">Akustische Dämpfung (Schallschutz)</span>
-                        <span className="text-[10px] text-text-main/50 font-normal">Hohe Rohdichten ρ dämpfen den Luftschall exzellent</span>
+                        <span className="text-[10px] text-text-main/50 font-normal">Höhere Rohdichte ρ verbessert die Luftschalldämmung</span>
                       </div>
                     </button>
 
@@ -877,7 +879,7 @@ export default function Nawaro() {
           <div className="animate-in fade-in duration-300 flex flex-col gap-8" id="nawaro_comparison_content">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                Technischer Detailvergleich zwischen konventionellen Baustoffen und NaWaRo-Alternativen (Daten u. a. nach FNR, Projektträger des BMLEH) bezüglich baustoffphysikalischer sowie mechanischer Parameter.
+                Technischer Detailvergleich zwischen konventionellen Baustoffen und NaWaRo-Alternativen (Richtwerte; Kennwerte BSH nach DIN EN 14080, Beton nach DIN EN 1992-1-1) bezüglich baustoffphysikalischer sowie mechanischer Parameter.
               </p>
             </div>
 
@@ -913,8 +915,8 @@ export default function Nawaro() {
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
                       <td className="py-3 px-4 font-medium">Diffusionswiderstand (μ)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">30 - 70</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">3 - 5 <span className="text-xs block text-emerald-600">(Voll atmungsaktiv)</span></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">20 - 100</td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">3 - 5 <span className="text-xs block text-emerald-600">(diffusionsoffen)</span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10">
                       <td className="py-3 px-4 font-medium">Brandschutz-Klassifizierung</td>
@@ -922,8 +924,8 @@ export default function Nawaro() {
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">B2 (normalentflammbar) / E</td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
-                      <td className="py-3 px-4 font-medium">Herstellungsenergie (PEI ne)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-torch-red">~100 MJ/kg (fossilisiert)</td>
+                      <td className="py-3 px-4 font-medium">Primärenergie nicht erneuerbar (PENRT, Richtwert)</td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-torch-red">~100 MJ/kg (nicht erneuerbar)</td>
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">~15 MJ/kg (biogen)</td>
                     </tr>
                   </tbody>
@@ -934,7 +936,7 @@ export default function Nawaro() {
             {/* Tragende Konstruktionen */}
             <div>
               <h3 className="font-bold text-text-main text-base mb-3 flex items-center gap-2">
-                <Scale size={18} className="text-shiraz" /> Tragwerk: Betonwerkstoff vs. Brettschichtholz (GL24)
+                <Scale size={18} className="text-shiraz" /> Tragwerk: Normalbeton vs. Brettschichtholz (GL24h)
               </h3>
               <div className="overflow-x-auto bg-white rounded-xl border border-home-grau/30">
                 <table className="w-full text-left text-sm">
@@ -949,12 +951,12 @@ export default function Nawaro() {
                     <tr className="border-t border-home-grau/10">
                       <td className="py-3 px-4 font-medium">Rohdichte (ρ)</td>
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono">~2.400 kg/m³</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">~420 kg/m³ <span className="text-xs block text-emerald-600">(Befreit die Fundamentbemessung)</span></td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">~420 kg/m³ <span className="text-xs block text-emerald-600">(geringere Eigenlast)</span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
-                      <td className="py-3 px-4 font-medium">Biegefestigkeit (fm,k)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">~2,5 N/mm² (ohne Stahl)</td>
-                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">24 N/mm² <span className="text-xs block text-emerald-600">(Hohe elastische Zugspannungen)</span></td>
+                      <td className="py-3 px-4 font-medium">Zug- bzw. Biegefestigkeit</td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono">f_ctm ≈ 2,6 N/mm² (Zug, unbewehrt)</td>
+                      <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">24 N/mm² <span className="text-xs block text-emerald-600">(char. Biegefestigkeit f_m,k)</span></td>
                     </tr>
                     <tr className="border-t border-home-grau/10">
                       <td className="py-3 px-4 font-medium">Elastizitätsmodul (E)</td>
@@ -962,7 +964,7 @@ export default function Nawaro() {
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">11.500 N/mm²</td>
                     </tr>
                     <tr className="border-t border-home-grau/10 bg-off-white/50">
-                      <td className="py-3 px-4 font-medium">Carbon-Bilanzen</td>
+                      <td className="py-3 px-4 font-medium">CO₂-Bilanz</td>
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-torch-red">Klinkerentsäuerung emittiert CO₂</td>
                       <td className="py-3 px-4 border-l border-home-grau/10 font-mono text-emerald-700">Biogener Kohlenstoffspeicher (ca. −0,7 t CO₂-Äq./m³ nach DIN EN 16449)</td>
                     </tr>
@@ -971,12 +973,27 @@ export default function Nawaro() {
               </div>
             </div>
 
+            <FormulaDerivationBox
+              title="Anwendungsbeispiel: Biogener Kohlenstoff in 1 m³ BSH"
+              zielGleichung="P_{CO_2} = \frac{44}{12} \cdot cf \cdot \frac{\rho_\omega \cdot V_\omega}{1 + \omega/100}"
+              normQuelle="DIN EN 16449:2014-06"
+              schritte={[
+                { titel: '1. Gegeben', formel: '\\rho_{12} = 420\\,\\text{kg/m}^3,\\; \\omega = 12\\,\\%,\\; cf = 0{,}5,\\; V = 1\\,\\text{m}^3', erklaerung: 'Rohdichte bei 12 % Holzfeuchte, Kohlenstoffanteil der Trockenmasse 50 %.' },
+                { titel: '2. Darrmasse', formel: 'm_0 = 420 / 1{,}12 = 375\\,\\text{kg}', erklaerung: 'Wasseranteil herausrechnen.' },
+                { titel: '3. Kohlenstoff', formel: 'm_C = 0{,}5 \\cdot 375 = 187{,}5\\,\\text{kg}', erklaerung: 'Gespeicherter biogener Kohlenstoff.' },
+                { titel: '4. CO₂-Äquivalent', formel: 'P_{CO_2} = 44/12 \\cdot 187{,}5 = 688\\,\\text{kg}', erklaerung: 'Molmassenverhältnis CO₂ zu C.' },
+              ]}
+              ergebnisHinweis="Rund 0,69 t CO₂ je m³ – ein temporärer Speicher, der am Lebensende wieder frei wird, sofern das Holz nicht weiter genutzt wird."
+            />
+
           </div>
         )}
 
       </div>
       
-      {/* MODULE FOOTER WITH LEGIT LINKS */}
+      
+      <ModulTest moduleId="nawaro" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Nachwachsender Rohstoff', url: 'https://de.wikipedia.org/wiki/Nachwachsender_Rohstoff' },
@@ -985,22 +1002,36 @@ export default function Nawaro() {
           { title: 'Holzfaserwerkstoff', url: 'https://de.wikipedia.org/wiki/Holzfaserwerkstoff' }
         ]}
         literatur={[
-          'Pistohl, W. (2020): Handbuch der Gebäudetechnik – Planungsgrundlagen und Beispiele, Band 1: Allgemeines, Sanitär, Elektro, Gas (Werner Verlag)',
-          'FNR e.V. (2023): Planungsleitfaden - Dämmstoffe aus nachwachsenden Rohstoffen (Gülzow-Prüzen)'
+          'Fachagentur Nachwachsende Rohstoffe (FNR) (Hrsg.): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen. Gülzow-Prüzen (aktuelle Auflage manuell prüfen)',
+          'Niemz, P.; Sonderegger, W.: Holzphysik – Eigenschaften, Prüfung und Kennwerte. 2. Aufl., München: Hanser 2021'
+        ]}
+        weblinks={[
+          { title: 'FNR-Themenportal Bauen', url: 'https://baustoffe.fnr.de/' }
         ]}
         regelwerke={[
           { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)' },
           { title: 'DIN 4108-10:2021-11 (Wärmeschutz und Energie-Einsparung in Gebäuden - Anwendungsbezogene Anforderungen an Dämmstoffe)' },
           { title: 'DIN 68800 Teile 1 bis 4 (Holzschutz; Teil 1:2019-06, Ausgaben der übrigen Teile manuell prüfen)' },
           { title: 'DIN EN 13171:2015-04 (Wärmedämmstoffe für Gebäude - Werkmäßig hergestellte Produkte aus Holzfasern (WF))' },
+          { title: 'DIN EN 16449:2014-06 (Holz und Holzprodukte – Berechnung des biogenen Kohlenstoffgehalts)' },
           { title: 'DIN EN 15101-1:2019-07 (Wärmedämmstoffe für Gebäude – An der Verwendungsstelle hergestellte Wärmedämmung aus Zellulosefüllstoff (LFCI))' },
           { title: 'GModG (Gebäudemodernisierungsgesetz, seit 29.07.2026; vormals GEG) / EPBD (EU) 2024/1275', url: 'https://www.gesetze-im-internet.de/geg/' }
         ]}
         formeln={[
           {
-            formel: "{\\text{Inertia}} = \\frac{\\rho \\cdot c}{1.000}",
-            erklaerung: "Maßzahl für die thermische Trägheit des Baustoffs zur Eindämmung des sommerlichen Wärmeeintrags (Phasenverschiebung).",
-            quelle: "DIN 4108-2:2013-02 (Sommerlicher Wärmeschutz)"
+            formel: 's = \\rho \\cdot c',
+            erklaerung: 'Volumenbezogene Wärmespeicherfähigkeit in kJ/(m³·K) (ρ in kg/m³, c in kJ/(kg·K)). Hohe Werte verzögern sommerliche Wärmeeinträge.',
+            quelle: 'Bauphysik-Grundlagen'
+          },
+          {
+            formel: 'a = \\frac{\\lambda}{\\rho \\cdot c}',
+            erklaerung: 'Temperaturleitfähigkeit in m²/s: Je kleiner a, desto langsamer dringt eine Temperaturwelle ein (größere Phasenverschiebung).',
+            quelle: 'Bauphysik-Grundlagen'
+          },
+          {
+            formel: 'P_{CO_2} = \\frac{44}{12} \\cdot cf \\cdot \\frac{\\rho_\\omega \\cdot V_\\omega}{1 + \\omega/100}',
+            erklaerung: 'Im Holz gespeichertes CO₂ mit cf = 0,5 (Kohlenstoffanteil der Darrmasse).',
+            quelle: 'DIN EN 16449'
           }
         ]}
       />
