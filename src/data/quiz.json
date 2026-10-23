@@ -9071,5 +9071,125 @@
       "targetModuleLabel": "Mauerwerk"
     },
     "verified": false
+  },
+  {
+    "id": "q_pum_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "putzemoertel",
+    "moduleTitle": "Putze & Mörtel",
+    "topic": "Mauermörtelklassen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 998-2 / DIN 20000-412",
+    "question": "Welcher Mörtelklasse nach DIN EN 998-2 entspricht die frühere Mörtelgruppe MG IIa?",
+    "options": [
+      "M 2,5",
+      "M 5",
+      "M 10",
+      "M 20"
+    ],
+    "correctIdx": 1,
+    "explanation": "MG II ≙ M 2,5; MG IIa ≙ M 5; MG III ≙ M 10; MG IIIa ≙ M 20.",
+    "gapAnalysis": {
+      "topic": "Mauermörtelklassen",
+      "misconception": "Die alten Mörtelgruppen seien direkt die Festigkeit in N/mm².",
+      "coreRule": "MG IIa ≙ M 5.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauermörtelklassen“ im Modul Putze & Mörtel noch einmal durch.",
+      "targetModuleTab": "putzemoertel",
+      "targetModuleLabel": "Putze & Mörtel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_pum_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "putzemoertel",
+    "moduleTitle": "Putze & Mörtel",
+    "topic": "Putzmörtelklassen",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 998-1",
+    "question": "Welcher Druckfestigkeitsbereich gilt für Putzmörtel der Klasse CS II?",
+    "options": [
+      "0,4–2,5 N/mm²",
+      "1,5–5,0 N/mm²",
+      "3,5–7,5 N/mm²",
+      "≥ 6 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "CS I 0,4–2,5; CS II 1,5–5,0; CS III 3,5–7,5; CS IV ≥ 6 N/mm².",
+    "gapAnalysis": {
+      "topic": "Putzmörtelklassen",
+      "misconception": "CS-Klassen beschrieben die Haftzugfestigkeit.",
+      "coreRule": "CS II: 1,5–5,0 N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Putzmörtelklassen“ im Modul Putze & Mörtel noch einmal durch.",
+      "targetModuleTab": "putzemoertel",
+      "targetModuleLabel": "Putze & Mörtel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_pum_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "putzemoertel",
+    "moduleTitle": "Putze & Mörtel",
+    "topic": "Putzaufbau",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 13914-1 / DIN 18550-1",
+    "question": "Welche Regel gilt für die Festigkeit mehrlagiger Putze?",
+    "options": [
+      "Oberputz fester als Unterputz",
+      "Weich auf hart: Festigkeit nimmt von innen nach außen ab",
+      "Alle Lagen gleich fest",
+      "Nur der Unterputz ist relevant"
+    ],
+    "correctIdx": 1,
+    "explanation": "Jede Lage soll weniger steif sein als ihr Untergrund, damit Spannungen aus Schwinden und Temperatur nicht zu Ablösungen führen.",
+    "gapAnalysis": {
+      "topic": "Putzaufbau",
+      "misconception": "Ein harter Oberputz schütze besser.",
+      "coreRule": "Weich auf hart.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Putzaufbau“ im Modul Putze & Mörtel noch einmal durch.",
+      "targetModuleTab": "putzemoertel",
+      "targetModuleLabel": "Putze & Mörtel"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_pum_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "putzemoertel",
+    "moduleTitle": "Putze & Mörtel",
+    "topic": "Schlagregenschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 4108-3",
+    "question": "Welche Bedingung muss ein wasserabweisender Putz u. a. erfüllen?",
+    "options": [
+      "w ≥ 2,0 kg/(m²√h)",
+      "w · s_d ≤ 0,2 kg/(m√h)",
+      "s_d ≥ 10 m",
+      "w = 0"
+    ],
+    "correctIdx": 1,
+    "explanation": "Wasserabweisend: w ≤ 0,5 kg/(m²√h), s_d ≤ 2,0 m und w · s_d ≤ 0,2 kg/(m√h).",
+    "gapAnalysis": {
+      "topic": "Schlagregenschutz",
+      "misconception": "Je dampfdichter, desto besser der Schlagregenschutz.",
+      "coreRule": "Künzel-Kriterien: w ≤ 0,5; s_d ≤ 2,0; w·s_d ≤ 0,2.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schlagregenschutz“ im Modul Putze & Mörtel noch einmal durch.",
+      "targetModuleTab": "putzemoertel",
+      "targetModuleLabel": "Putze & Mörtel"
+    },
+    "verified": false
   }
 ]
