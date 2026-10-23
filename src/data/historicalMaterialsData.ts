@@ -72,7 +72,7 @@ export const historicalData: Record<MaterialCategory, HistoricalCategoryData> = 
     normOld: 'DIN 1050 (1934) / DIN 17100 / DIN 1611',
     normNew: 'DIN EN 10025-2',
     data: [
-      { old: 'Gusseisen (Grauguss, vor 1900)', new: '-', f_old: 'Zug: 100 - 200, Druck: 500 - 800', f_new: '-', explanation: 'Hoher C-Gehalt. Exzellente Druckfestigkeit, versagt unter Zug jedoch schlagartig spröde. Brinellhärte HB 150–250. WICHTIG: E-Modul nur 80–140 GPa (reduziert Euler-Knicklast massiv!).' },
+      { old: 'Gusseisen (Grauguss, vor 1900)', new: '-', f_old: 'Zug: 100 - 200, Druck: 500 - 800', f_new: '-', explanation: 'Hoher C-Gehalt. Sehr gute Druckfestigkeit, versagt unter Zug jedoch schlagartig spröde. Brinellhärte HB 150–250. WICHTIG: E-Modul nur 80–140 GPa (reduziert Euler-Knicklast massiv!).' },
       { old: 'Schmiedeeisen / Puddelstahl', new: '-', f_old: 'ca. 180 - 220', f_new: '-', explanation: 'Duktiles Schweißeisen aus dem Puddelverfahren. Feine Schlackezeilen führen zu ausgeprägter Anisotropie (Querfestigkeit stark vermindert). Kaum schweißbar.' },
       { old: 'Flusseisen (ab ca. 1890)', new: 'S185', f_old: 'ca. 220', f_new: 185, explanation: 'Der erste Stahl des modernen Industriezeitalters. Homogenes elastisches Gefüge, E-Modul ca. 210 GPa.' },
       { old: 'St 33 (DIN 17100)', new: 'S185', f_old: 185, f_new: 185, explanation: 'Unlegierter Baustahl für untergeordnete Schlosserarbeiten ohne Schweißanforderungen.' },

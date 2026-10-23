@@ -70,7 +70,7 @@ export const GLOSSARY_TERMS: GlossaryEntry[] = [
   // 4. Mauerwerk & Bausteine
   { term: 'Druckfestigkeitsklasse (DFK)', category: 'Mauerwerk & Gesteine', definition: 'Genormte Klassifizierung von Mauersteinen nach ihrer mittleren Druckfestigkeit (z.B. DFK 12 = mittlere Festigkeit ≥ 15 N/mm² nach DIN 20000-401).', unit: 'N/mm²', standards: 'DIN EN 771, DIN 20000-401' },
   { term: 'Hochlochziegel (HLZ)', category: 'Mauerwerk & Gesteine', definition: 'Keramisch gebrannter Mauerstein mit vertikaler Lochung senkrecht zur Lagerfläche, oft porosiert oder mit mineralischen Dämmstoffen (Perlit, Mineralwolle) gefüllt.' },
-  { term: 'Kalksandstein (KS)', category: 'Mauerwerk & Gesteine', definition: 'Unter Dampfdruck autoklavierter Baustein aus Kalk, Sand und Wasser; zeichnet sich durch hohe Rohdichte, exzellenten Schallschutz und hohe Druckfestigkeit aus.' },
+  { term: 'Kalksandstein (KS)', category: 'Mauerwerk & Gesteine', definition: 'Unter Dampfdruck autoklavierter Baustein aus Kalk, Sand und Wasser; zeichnet sich durch hohe Rohdichte, sehr guten Schallschutz und hohe Druckfestigkeit aus.' },
   { term: 'Porenbeton (AAC)', category: 'Mauerwerk & Gesteine', definition: 'Dampfgehärteter Baustoff aus Quarzsand, Kalk, Zement und Aluminiumpulver als Treibmittel; besitzt geringe Rohdichte und hervorragende Wärmedämmeigenschaften.' },
   { term: 'Dünnbettmörtel', category: 'Mauerwerk & Gesteine', definition: 'Werktrockenmörtel mit Größtkorn ≤ 1 mm für plangeschliffene Plansteine; Fugendicke nur 1 bis 3 mm, minimiert Wärmebrücken in den Lagerfugen.' },
   { term: 'Überbindemaß (lol)', category: 'Mauerwerk & Gesteine', definition: 'Mindestversatz der Stoßfugen zweier übereinanderliegender Steinschichten zur Sicherstellung des Mauerwerksverbandes (lol ≥ 0,4 · hu bzw. ≥ 45 mm).', unit: 'mm', standards: 'DIN EN 1996-1-1' },
@@ -361,7 +361,6 @@ export default function Glossar() {
           { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)' }
         ]}
         weblinks={[
-          { title: 'DIN Media (ehem. Beuth Verlag) – Offizielle Normendatenbank' },
           { title: 'InformationsZentrum Beton – Betontechnologische Fachbegriffe & Merkblätter', url: 'https://www.beton.org/' },
           { title: 'Informationsdienst Holz – Holzbaufachbegriffe & Bauteilkatalog', url: 'https://informationsdienst-holz.de/' },
           { title: 'ift Rosenheim – Fachbegriffe & Prüfungen für Fenster, Türen & Fassaden', url: 'https://www.ift-rosenheim.de/' },

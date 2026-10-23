@@ -127,7 +127,7 @@ export function OerEncyclopedia() {
   // All curated resources mentioned in the encyclopedia for direct filtering search
   const ALL_RESOURCES = [
     { name: 'TIB AV-Portal', type: 'Audiovisuelle Plattform', description: 'Hochschul-Videoresearch der Nationalen Bibliothek mit automatischer Sprachtranskription und DOI-Referenzierung.', url: 'https://tib.eu/', tags: ['Video', 'TIB', 'Transkription', 'OER'] },
-    { name: 'ETH Zurich Lab Video Tour', type: 'Videokanal', description: 'Einblicke in das $12M Automated Construction Lab und bahnbrechende digitale Montageprozesse.', url: 'https://www.youtube.com/watch?v=R_iM4bL6xK0', tags: ['ETH', 'Robotik', 'Druck', 'NEST'] },
+    { name: 'ETH Zurich Lab Video Tour', type: 'Videokanal', description: 'Einblicke in das $12M Automated Construction Lab und digitale Montageprozesse.', url: 'https://www.youtube.com/watch?v=R_iM4bL6xK0', tags: ['ETH', 'Robotik', 'Druck', 'NEST'] },
     { name: 'ibac-ce RWTH Aachen', type: 'Uni-Portal', description: 'Begleitende Vorlesungsmaterialien und bauchemische Video-Erweiterungen für Baustoffkunde 1 & 2.', url: 'http://ibac-ce.rwth-aachen.de/', tags: ['Aachen', 'ibac', 'Lehre', 'Beton'] },
     { name: 'TUM Department of Mechanical Engineering', type: 'Videokanal', description: 'Vorlesungen zur angewandten Mechanik, Finite-Elemente-Kopplung und moderner Werkstoffanalyse.', tags: ['TUM', 'München', 'Mechanik'] },
     { name: 'TU Berlin (Myzel-Forschung)', type: 'Uni-Projekt', description: 'Biotechnologische Innovationen: Integrierte Dämmplatten und Pilzkulturen im Baustoffsektor.', tags: ['Berlin', 'Myzel', 'Biotech', 'Pilze'] },
@@ -361,7 +361,7 @@ export function OerEncyclopedia() {
                 </div>
 
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  In einer Zeit, in der die Vielfalt der verfügbaren Bauprodukte exponentiell wächst, ist das bloße Auswendiglernen historischer Kennwerte obsolet. An die Stelle des enzyklopädischen Wissens tritt die Kompetenz zur gezielten Recherche in spezialisierten Datenbanken. Diese Core-Tools sind für Studierende und Planende unverzichtbar, um Baustoffentscheidungen präzise zu untermauern.
+                  In einer Zeit, in der die Vielfalt der verfügbaren Bauprodukte exponentiell wächst, ist das bloße Auswendiglernen historischer Kennwerte obsolet. An die Stelle des enzyklopädischen Wissens tritt die Kompetenz zur gezielten Recherche in spezialisierten Datenbanken. Diese Werkzeuge helfen Studierenden und Planenden, Baustoffentscheidungen präzise zu untermauern.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">

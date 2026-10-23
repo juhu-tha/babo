@@ -239,7 +239,7 @@ const GLASS_PRODUCTS: GlassProduct[] = [
       'Wohnungsbau, moderne Verwaltungs- und Bildungsbauten'
     ],
     pros: [
-      'Exzellenter Wärmeschutz: Halbiert Wärmeverluste gegenüber 2-fach Glas!',
+      'Sehr guter Wärmeschutz: Halbiert Wärmeverluste gegenüber 2-fach Glas!',
       'Hohe innere Oberflächentemperatur (> 17,5 °C bei -10 °C außen) verhindert Kaltluftabfall und Zugerscheinungen',
       'Keine Kondensatbildung im Innenraum'
     ],
@@ -885,7 +885,7 @@ export default function BpGlaeser() {
                 <div className="text-shiraz font-bold text-xs mb-2">f_k = 70 N/mm²</div>
                 <p className="text-text-main/80 text-[11px] leading-relaxed">
                   Bricht in großformatige, ineinander verkrallte Schollen. Nur im VSG-Verbund zulässig! 
-                  Garantiert exzellente <strong>statische Resttragfähigkeit</strong> bei Überkopf- und Brüstungsgläsern.
+                  Garantiert sehr gute <strong>statische Resttragfähigkeit</strong> bei Überkopf- und Brüstungsgläsern.
                 </p>
               </div>
 

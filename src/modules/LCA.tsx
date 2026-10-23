@@ -73,7 +73,7 @@ const REFERENZEN_EPD = [
     ep: 0.24,
     pcr: 'EN 15804 - Mauerziegel',
     quelle: 'ÖKOBAUDAT / Hersteller-EPD',
-    beschreibung: 'Monolithischer Außenwandziegel, dessen Kammern mit vulkanischem Dämmgestein (Perlite) befüllt sind. Exzellenter U-Wertersatz.'
+    beschreibung: 'Monolithischer Außenwandziegel, dessen Kammern mit vulkanischem Dämmgestein (Perlite) befüllt sind. Sehr guter U-Wertersatz.'
   },
   {
     id: 'bsh-softwood',
@@ -1252,7 +1252,7 @@ export default function LCA() {
                     <strong className="font-bold text-indigo-950 block">💡 Tutor-Optimierungsberatung:</strong>
                     {calcResults.isWood ? (
                       <p className="leading-relaxed">
-                        Exzellente Holzwahl! Durch die Kohlenstoffspeicherung weist Brettschichtholz eine unschlagbare A1-A3-Bilanz auf. Beachten Sie jedoch, dass bei weiten Transportwegen (z.B. {formatDeWert(calcDistance)} km) mit Kleintransportern der Transportfaktor (A4) den Umweltvorteil stark schmälert. Versuchen Sie stets, dezentrales Nadelholz aus maximal 50-100 km Umkreis zu spezifizieren.
+                        Sehr gute Holzwahl! Durch die Kohlenstoffspeicherung weist Brettschichtholz eine unschlagbare A1-A3-Bilanz auf. Beachten Sie jedoch, dass bei weiten Transportwegen (z.B. {formatDeWert(calcDistance)} km) mit Kleintransportern der Transportfaktor (A4) den Umweltvorteil stark schmälert. Versuchen Sie stets, dezentrales Nadelholz aus maximal 50-100 km Umkreis zu spezifizieren.
                       </p>
                     ) : (
                       <div>

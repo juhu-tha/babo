@@ -470,7 +470,7 @@ export default function TypischeBauschaeden() {
 
                       {/* Technische Merkmale von Carbonfaser CFK */}
                       <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-xs text-slate-700 space-y-2">
-                        <strong className="text-xs text-slate-950 block">Exzellente Materialeigenschaften (Vorteile):</strong>
+                        <strong className="text-xs text-slate-950 block">Sehr gute Materialeigenschaften (Vorteile):</strong>
                         <div className="grid grid-cols-2 gap-2 text-[11px] font-sans">
                           <div>
                             <span className="text-slate-400 block">Zug-E-Modul:</span>

@@ -119,7 +119,7 @@ const METALS_DATA = [
     corrosionBehavior: 'Thermodynamisch edles Metall (U₀ = +0,34 V) mit überragender atmosphärischer Witterungsbeständigkeit. Oxidiert zunächst zu dunkelbraunem Kupfer(I)-oxid und bildet über Jahrzehnte die charakteristische samtgrüne, unlösliche Schutzpatina aus basischem Kupfersulfat (Brochantit) und basischem Kupfercarbonat (Malachit). Aufgrund freigesetzter Kupferionen im Niederschlagswasser löst ablaufendes Wasser an nachgeschalteten unedlen Metallen (Zink, verzinkter Stahl, Alu) verheerenden Lochfraß aus (Fließregel!).',
     corrosionProtection: 'Im Freien durch die Eigenschutzpatina wartungsfrei. Zwingend vorgeschrieben ist die Einhaltung der Fließregel: Kupfer niemals oberhalb von Zink oder verzinktem Stahl verbauen. Befestigungen nur mit Kupfer- oder Edelstahlschrauben (A4) ausführen.',
     applications: 'Stehfalzdächer, architektonische Fassadenbekleidungen, Dachentwässerung (Rinnen, Fallrohre), Haustechnik (Trinkwasserleitungen)',
-    description: 'Halbedelmetall mit kubisch-flächenzentriertem Gitter, exzellenter plastischer Verformbarkeit auch bei Frost und höchster thermischer Leitfähigkeit. Bildet über Jahre eine schützende, unverwechselbare grüne Patina mit extrem hoher Lebensdauer von über 100 Jahren.'
+    description: 'Halbedelmetall mit kubisch-flächenzentriertem Gitter, sehr guter plastischer Verformbarkeit auch bei Frost und höchster thermischer Leitfähigkeit. Bildet über Jahre eine schützende, unverwechselbare grüne Patina mit extrem hoher Lebensdauer von über 100 Jahren.'
   },
   {
     name: 'Stahl (Baustahl)',
@@ -164,7 +164,7 @@ const METALS_DATA = [
     eModul: 16000,
     thermalConductivity: 35,
     meltingPoint: 327,
-    corrosionBehavior: 'Exzellente Witterungsbeständigkeit durch dichte, unlösliche Deckschichten aus basischem Bleicarbonat. Korrodiert jedoch rasch bei Einwirkung schwacher flüchtiger organischer Säuren (z.B. Essigsäure- und Gerbsäuredämpfe aus feuchtem Eichenholz) oder stark alkalisch bei direktem Kontakt mit frischem Kalk- und Zementmörtel.',
+    corrosionBehavior: 'Sehr gute Witterungsbeständigkeit durch dichte, unlösliche Deckschichten aus basischem Bleicarbonat. Korrodiert jedoch rasch bei Einwirkung schwacher flüchtiger organischer Säuren (z.B. Essigsäure- und Gerbsäuredämpfe aus feuchtem Eichenholz) oder stark alkalisch bei direktem Kontakt mit frischem Kalk- und Zementmörtel.',
     corrosionProtection: 'Kein atmosphärischer Anstrich nötig. Direkten Kontakt zu gerbstoffreichem Holz (Eiche, Lärche) oder frischem Zementmörtel durch Bitumentrennlagen oder PE-Folien verhindern. Bei Sanierungen Umwelt- und Arbeitsschutzmaßnahmen (TRGS 505) streng einhalten.',
     applications: 'Passgenaue Verwahrungen und Anschlüsse an Schornsteinen, Kehlen, Wandanschlüssen, Strahlenschutzräume, Schallschutz',
     description: 'Sehr schweres, extrem duktiles Schwermetall (Dichte 11.340 kg/m³). Da seine Rekristallisationstemperatur unter Raumtemperatur liegt, verfestigt es sich nicht beim Kaltverformen und lässt sich händisch an komplexe Ziegeldurchdringungen anpassen. Wird aus Umweltschutzgründen heute oft durch elastomere Bleiersatzbänder substituiert.'

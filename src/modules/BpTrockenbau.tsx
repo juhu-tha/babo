@@ -190,7 +190,7 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
     fireClass: 'A2-s1, d0 (Schallabsorbierend)',
     weightPerM2: 9.2,
     advantages: [
-      'Exzellente Absorptionsklasse (Schallabsorptionsgrad α_w bis 0.90)',
+      'Sehr gute Absorptionsklasse (Schallabsorptionsgrad α_w bis 0.90)',
       'Präzises Lochraster (z.B. 8/18R oder Streulochung)',
       'Hinterlegtes Akustik-Vlies mindert Flatterechos',
       'Teils mit Zusätzen zur Schadstoffbindung (Herstellerangabe)'

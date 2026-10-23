@@ -733,7 +733,7 @@ export default function BpBetonfertigteile() {
                     <Building2 className="w-4 h-4 text-stone-600 shrink-0" /> Doppelwand (Hohlwand)
                   </h3>
                   <p className="text-[11px] text-slate-650 leading-relaxed font-normal">
-                    Die Hohlwand ersetzt die traditionelle Wandschalung auf der Baustelle. Die Werksplatten weisen eine exzellente Porenstruktur auf. Eine Kernbetonierung mit der vorgeschriebenen Steiggeschwindigkeit ist zwingend und wird statisch berechnet.
+                    Die Hohlwand ersetzt die traditionelle Wandschalung auf der Baustelle. Die Werksplatten weisen eine sehr gute Porenstruktur auf. Eine Kernbetonierung mit der vorgeschriebenen Steiggeschwindigkeit ist zwingend und wird statisch berechnet.
                   </p>
                   <div className="text-[10px] text-slate-600 bg-white p-3 rounded-lg border border-slate-100/80 space-y-1.5 font-medium">
                     <span className="font-bold text-slate-800">⚠️ Einbau-Axiom:</span>

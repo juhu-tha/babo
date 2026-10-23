@@ -307,7 +307,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     ],
     advantages: [
       'Absoluter und dauerhafter Korrosionsschutz ohne jegliche metallische Schutzbeschichtung',
-      'Exzellente Tieftemperatureigenschaften (auch bei -200 °C zäh, kein Sprödbruch)',
+      'Sehr gute Tieftemperatureigenschaften (auch bei -200 °C zäh, kein Sprödbruch)',
       'Magnetisch extrem schwach (völlig unmagnetischer Austenit)',
       'Keine Zersetzung oder Verfärbung angrenzender Mauerwerksteile durch Rostwasser'
     ],

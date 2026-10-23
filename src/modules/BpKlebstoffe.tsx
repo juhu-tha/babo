@@ -53,7 +53,7 @@ const adhesiveProducts: AdhesiveProduct[] = [
     durabilityClass: 'XS1 (Höchste Schimmelresistenz)',
     maxElongation: 'Zulässige Gesamtverformung 25 %',
     description: 'Dauerelastischer Dichtstoff für Dehnfugen in Bädern und Fliesenbelägen. Neutralvernetzende Silikone setzen beim Abbinden unbedenkliche Alkohole frei und greifen im Gegensatz zu essigsäurehaltigen Systemen Metalle und Beton nicht an.',
-    advantages: ['Exzellente Pilzbeständigkeit (fungizid ausgerüstet)', 'Sehr hohe Rückstellfähigkeit und UV-Resistenz', 'Haftet ohne Primer auf Glas, Keramik und Emaille'],
+    advantages: ['Sehr gute Pilzbeständigkeit (fungizid ausgerüstet)', 'Sehr hohe Rückstellfähigkeit und UV-Resistenz', 'Haftet ohne Primer auf Glas, Keramik und Emaille'],
     disadvantages: ['Kann Natursteine (Marmor, Granit) durch Weichmacherwanderung verfärben', 'Befallene Fugen müssen mechanisch saniert werden']
   },
   {

@@ -1041,7 +1041,7 @@ export function Stahlbetoninstandhaltung() {
                       if (statikRequired) {
                         recommendedType = 'PCC II / SPCC';
                         mortarClass = 'R4 (statisch relevant)';
-                        detailDesc = 'Verwendung von spritzbarem oder zweikomponentigem kunststoffmodifiziertem Zementmörtel (PCC/SPCC). Gewährleistet exzellenten Verankerungsverbund und Karbonatisierungsschutz.';
+                        detailDesc = 'Verwendung von spritzbarem oder zweikomponentigem kunststoffmodifiziertem Zementmörtel (PCC/SPCC). Gewährleistet sehr guten Verankerungsverbund und Karbonatisierungsschutz.';
                         minBond = '≥ 2,0 MPa (nach Frost-Tausalz-Wechsel)';
                         protectiveMeasure = 'OS-System (z.B. OS 4 oder OS 2/3)';
                       } else {

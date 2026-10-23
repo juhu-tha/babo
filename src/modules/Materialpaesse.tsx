@@ -330,7 +330,7 @@ export default function Materialpaesse() {
 
                 <span className="text-[10px] text-slate-500 block mt-2 font-normal">
                   {circularityIndex > 70 
-                    ? 'Exzellenter zirkulärer Entwurf! Voll konform mit Cradle-to-Cradle Grundsätzen.' 
+                    ? 'Sehr guter zirkulärer Entwurf! Voll konform mit Cradle-to-Cradle Grundsätzen.' 
                     : circularityIndex > 40 
                     ? 'Guter Branchenstandard, aber materialbedingt noch Optimierungsreserven.' 
                     : 'Klassisches Linearwirtschaft-Gebäude. Schwer trennbarer Baubestaub ("Grauer Müll").'}

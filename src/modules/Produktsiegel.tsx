@@ -25,7 +25,7 @@ export default function Produktsiegel() {
       id: 'type2' as const,
       title: 'Typ II (ISO 14021)',
       subtitle: 'Hersteller-Selbstdeklarationen',
-      desc: 'Umweltbezogene Anbietererklärungen, die vom Hersteller selbst formuliert und veröffentlicht werden (z. B. auf Verpackungen oder Datenblättern). du bist oft unzertifiziert, müssen aber sachlich richtig, prüfbar und wissenschaftlich fundiert sein.',
+      desc: 'Umweltbezogene Anbietererklärungen, die vom Hersteller selbst formuliert und veröffentlicht werden (z. B. auf Verpackungen oder Datenblättern). Sie sind oft nicht zertifiziert, müssen aber sachlich richtig, prüfbar und wissenschaftlich fundiert sein.',
       criteria: [
         'Keine obligatorische Drittprüfung erforderlich',
         'Fokus meist auf Einzeleigenschaften (Single-Issue)',

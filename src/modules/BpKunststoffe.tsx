@@ -128,7 +128,7 @@ const plasticsDatabase: PlasticType[] = [
       alkalis: 'B',
       solvents: 'C',
       oils: 'B',
-      uv: 'A' // Höchste UV-Stabilität und exzellente Transparenz
+      uv: 'A' // Höchste UV-Stabilität und sehr gute Transparenz
     },
     pros: ['Lichtdurchlässigkeit (92%) höher als Glas', 'Hervorragende Brillanz und Farbechtheit', 'Wetterfest'],
     mainApp: 'Lärmschutzwände, Lichtkuppeln, Plexiglasscheiben, Sanitärelemente'

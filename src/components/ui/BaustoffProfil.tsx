@@ -162,7 +162,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
         technisch: "Mittlere Druckfestigkeiten (fb ≈ 2 bis 12 MPa). Mittlere Rohdichten (500-1200 kg/m³). Ausgezeichnete wärmetechnische Leistungsfähigkeit (λ ≈ 0,10 bis 0,22 W/(m·K)). Besitzt durch das Gesteinsskelett eine hocheffiziente Schalldämpfung.",
         oekologisch: "Sehr günstige Umweltbilanz im Vergleich zu klassischen Ziegeln, da keine energieintensiven Brennkammern oder Autoklaven durchlaufen werden müssen. Das spart signifikant Primärenergie (Graue Energie)."
       },
-      anwendungen: "Tragende Außen- und Innenwände, einschaliges monolithisches Mauerwerk im Wohnungsbau, exzellente hochschalldämmende Brandschutzwände.",
+      anwendungen: "Tragende Außen- und Innenwände, einschaliges monolithisches Mauerwerk im Wohnungsbau, sehr gute hochschalldämmende Brandschutzwände.",
       produkte: "Leichtbeton-Vollsteine, Hohlblocksteine (Hbl), modernste Plansteine mit maschinell integrierten Mineralwolle- oder EPS-Dämmstoff-Pads.",
       dauerhaftigkeit: "Hervorragend. Die Steinstruktur ist im nassen Zustand feuchtigkeitsstabil, unempfindlich gegenüber Frost-Tau-Zyklen und weist ein extrem geringes materialspezifisches Schwindverhalten auf.",
       kosten: "Im mittleren Preissegment angesiedelt. Zeichnet sich durch eine sehr wirtschaftliche, dauerhafte Erstellung schall- und wärmetechnisch anspruchsvoller Fassaden aus.",
@@ -374,19 +374,19 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
   },
   kupfer: {
     name: "Kupfer",
-    subtitle: "Edles Nichteisenmetall mit exzellenter Leitfähigkeit und hoher Lebensdauer durch Schutzpatina",
+    subtitle: "Edles Nichteisenmetall mit sehr guter Leitfähigkeit und hoher Lebensdauer durch Schutzpatina",
     sections: {
       rohstoffe: "Kupferhaltige Sulfiderze (Kupferkies, Buntkupfererz) aus dem Untertage- oder Tagebau (z. B. in Chile, Peru). Hoher Anteil an Kupfer-Recyclingschrotten schont die natürlichen Ressourcen.",
       herstellung: "Mechanische Aufbereitung und Flotation des Erzes, gefolgt vom Schmelzen im Schwebeschmelzofen zu Kupferstein. Die elektrolytische Raffination reinigt das Rohmetall auf über 99,9% Reinheit. Auswalzen zu flexiblen Blechen.",
       eigenschaften: {
-        technisch: "Dichte ~8960 kg/m³. Mittlerer E-Modul (~130.000 MPa). Exzellente thermische und elektrische Leitfähigkeit. Hervorragende Duktilität und Verformbarkeit, auch bei eisigen Temperaturen rissfrei kantbar.",
+        technisch: "Dichte ~8960 kg/m³. Mittlerer E-Modul (~130.000 MPa). Sehr gute thermische und elektrische Leitfähigkeit. Hervorragende Duktilität und Verformbarkeit, auch bei eisigen Temperaturen rissfrei kantbar.",
         oekologisch: "Rohstoffgewinnung und Schmelzprozess belasten d. Umwelt. Kupfer besitzt jedoch eine extrem lange Lebensdauer im Bauwerk (oft >200 Jahre), wodurch sich die graue Energie über die Nutzungszeit vollständig relativiert."
       },
       anwendungen: "Witterungsbeständige Dacheindeckungen, traditionelle und moderne Entwässerungssysteme (Dachrinnen, Fallrohre), witterungsexponierte Fassadenbekleidungen und Rohrleitungssysteme für Haustechnik.",
       produkte: "Bänder und Bleche für d. Bauwesen (DIN EN 1172), nahtlose Rundrohre für Wasser und Gas (DIN EN 1057) sowie vorgefertigte Rinnenkupplungen und Formstücke.",
       dauerhaftigkeit: "Extrem alterungsbeständig. Kupfer bildet an der Luft zunächst eine braune Kupferoxid- und später eine dichte, blau-grüne Patina (basische Kupferkristalle), die das darunterliegende Metall dauerhaft vor Abtrag schützt.",
       kosten: "Kupfer gehört aufgrund seiner edlen Eigenschaften und der hohen globalen Nachfrage zu den teuersten Baumetallen im Hochbau. Seine extreme Langlebigkeit macht es langfristig dennoch wirtschaftlich.",
-      recycling: "100% unbegrenzt kreislauffähig. Kupferschrott besitzt einen exzellenten materiellen Marktwert, weshalb Rückbaustoffe sortenrein erfasst und vollständig metallurgisch recycelt werden (Upcycling auf Primärniveau).",
+      recycling: "100% unbegrenzt kreislauffähig. Kupferschrott besitzt einen sehr guten materiellen Marktwert, weshalb Rückbaustoffe sortenrein erfasst und vollständig metallurgisch recycelt werden (Upcycling auf Primärniveau).",
       besonderheiten: "Unbedingt die Fließregel beachten: Kupfer darf niemals oberhalb von unedleren Metallen wie Zink, Titanzink oder verzinktem Stahl verbaut werden, da korrosive Kupferionen im ablaufenden Regenwasser Lochfraß (Kontaktkorrosion) verursachen.",
       innovationen: "Werkseitig vorpatinierte Kupferbleche mit definierten Farbtönen von anfangsanisierter Optik; antimikrobielle Oberflächenlegierungen aus Kupfer für hygienisch sensible Handläufe und Griffe im öffentlichen Raum.",
       historie: "Kupfer bildete die Grundlage der frühesten Metallzeit (Chalkolithikum ab 5.000 v. Chr.). Die Römer deckten repräsentative Monumentalgewölbe mit Bronze- und Kupferplatten. Seit dem europäischen Mittelalter schmücken edle Kupferdächer mit ihrer schützenden grünen Alterungspatina Kirchtürme und repräsentative Bürgerbauten."
@@ -419,12 +419,12 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Eisenbasis kombiniert mit hohem Schrottanteil sowie teuren, strategischen Legierungselementen wie Chrom (mindestens 10,5 %), Nickel, Molybdän und Mangan.",
       herstellung: "Zusammenschmelzen der Rohstoffe im Elektrolichtbogenofen. Präzises Einstellen der Legierungszusammensetzung durch Vakuumentgasung. Warm- oder Kaltwalzen zu extrem glatten Blechen, Profilen oder Gewindestangen.",
       eigenschaften: {
-        technisch: "Zugfestigkeiten von 500 bis 800 MPa, hoher E-Modul (~200.000 MPa). Schlechte Wärmeleitfähigkeit im Vergleich zu Baustahl. Ausgeprägte Zähigkeit und exzellente Festigkeitswerte auch bei extremen Tieftemperaturen.",
+        technisch: "Zugfestigkeiten von 500 bis 800 MPa, hoher E-Modul (~200.000 MPa). Schlechte Wärmeleitfähigkeit im Vergleich zu Baustahl. Ausgeprägte Zähigkeit und sehr gute Festigkeitswerte auch bei extremen Tieftemperaturen.",
         oekologisch: "Hoher Erstellungsaufwand und Legierungsanteil erhöhen die graue Herstellungsenergie. Edelstahl gleicht dies jedoch durch seine extreme Lebensdauer, völlige Wartungsfreiheit und den Verzicht auf umweltschädliche Korrosionsschutzanstriche aus."
       },
       anwendungen: "Mechanische Befestigungsmittel (Schrauben, Dübel, Anker), Sicht- und Schutzfassaden im architektonischen Premiumsegment, Treppengeländer, Schwimmbadtechnik und Konstruktionen in chemisch aggressiven Medien.",
       produkte: "Flacherzeugnisse und Profile aus nichtrostendem Stahl (DIN EN 10088), hochfeste Verankerungssysteme und legierte Betonstähle (z.B. Werkstoff-Nr. 1.4404 oder 1.4571) für dauerhafte Sanierungen.",
-      dauerhaftigkeit: "Exzellente inhärente Beständigkeit. Chrom bildet an Sauerstoff eine atomar dünne, unsichtbare und selbstheilende Passivschicht (Chromoxid). Gefahr droht jedoch in chloridreichen Zonen (Schwimmbadatmosphäre, Tausalz) durch zerstörerischen Lochfraß.",
+      dauerhaftigkeit: "Sehr gute inhärente Beständigkeit. Chrom bildet an Sauerstoff eine atomar dünne, unsichtbare und selbstheilende Passivschicht (Chromoxid). Gefahr droht jedoch in chloridreichen Zonen (Schwimmbadatmosphäre, Tausalz) durch zerstörerischen Lochfraß.",
       kosten: "Edelstahl besitzt spürbar höhere Materialkosten als unlegierter Baustahl (ca. faktor 3 bis 5). Seine Verwendung rentiert sich primär an unzugänglichen Stellen oder in korrosiven Umgebungen, wo Instandhaltungsarbeiten entfallen.",
       recycling: "Zu 100% recyclingfähig. Der hohe Marktpreis für Chrom-Nickel-Schrotte garantiert eine geordeness Erfassung beim selektiven Rückbau und eine fast vollständige metallurgische Rückführung in die Schmelzwerke.",
       besonderheiten: "Achten Sie sorgfältig auf die korrekte Legierungswahl! Für chloridbelastete Bauteile (Schwimmbaddächer, Tunnelbau) reicht Standard-V2A-Edelstahl oft nicht aus; hier ist zwingend molybdänhaltiger V4A-Stahl (z.B. 1.4401) einzusetzen.",
@@ -484,12 +484,12 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       },
       anwendungen: "Architektonisch anspruchsvolle Premiumfassaden und Dacheindeckungen im Prestigebau (z. B. Guggenheim-Museum Bilbao), Tragelemene in extrem salzhaltiger Meeresluft sowie im hoch-korrosiven chemischen Anlagenbau.",
       produkte: "Bleche und Platten aus Titan und Titanlegierungen (DIN EN ISO 21809), stranggepresste Stäbe und Profile sowie Spezialbefestigungsmittel für dauerhafte Verankerungen in Meeresnähe.",
-      dauerhaftigkeit: "Die Korrosionsbeständigkeit is phänomenal und übertrifft selbst Edelstahl bei Weitem. Titan bildet an Luft eine extrem stabile, inerte und dauerhafte Titanoxid-Schutzschicht, die gegen Chloride, Seewasser und Säuren absolut immun ist.",
+      dauerhaftigkeit: "Die Korrosionsbeständigkeit ist sehr hoch und übertrifft in vielen Medien die von nichtrostendem Stahl bei Weitem. Titan bildet an Luft eine extrem stabile, inerte und dauerhafte Titanoxid-Schutzschicht, die gegen Chloride, Seewasser und Säuren absolut immun ist.",
       kosten: "Titan gehört zu den exklusivsten und teuersten Werkstoffen im Bauwesen. Hohe Material- und Verarbeitungskosten (Werkzeugverschleiß beim Schneiden) machen seinen Einsatz nur für Repräsentationsbauten wirtschaftlich darstellbar.",
       recycling: "Sehr gut recycelbar. Titan- und Legierungsschrotte werden in spezialisierten Vakuum-Umschmelzanlagen erfasst und stofflich hochwertig wiederverwendet. Aufgrund des hohen Materialwertes gibt es keinerlei Deponierungstendenzen.",
       besonderheiten: "Beim mechanischen Bearbeiten (Schneiden, Bohren) ist auf eine intensive Kühlung zu achten, da Titan eine geringe Wärmeleitfähigkeit besitzt und zum Festfressen von Werkzeugen neigt. Funkenflug beim Schleifen beachten!",
       innovationen: "Entwicklung von nanostrukturierten Titanoberflächen mit dauerhaft fotokatalytischer Aktivität zur selbstständigen Zersetzung von Umweltgiften (Stickoxiden) und Rußpartikeln direkt an d. Gebäudefassade im urbanen Ballungsraum.",
-      historie: "Das im Jahr 1791 entdeckte Edelmetall wurde erst im 20. Jahrhundert durch das Kroll-Verfahren in größeren Mengen extrahierbar. Nach jahrzehntelangem Einsatz in Luft- und Raumfahrt revolutionierte Titan die moderne, freie Bautechnik im Jahr 1997 mit dem schimmernden und absolut korrosionsfreien Guggenheimmuseum in Bilbao von Frank Gehry."
+      historie: "Das im Jahr 1791 entdeckte Edelmetall wurde erst im 20. Jahrhundert durch das Kroll-Verfahren in größeren Mengen extrahierbar. Nach jahrzehntelangem Einsatz in Luft- und Raumfahrt wird Titan auch in der Architektur eingesetzt, im Jahr 1997 mit dem schimmernden und absolut korrosionsfreien Guggenheimmuseum in Bilbao von Frank Gehry."
     }
   },
   holz: {
@@ -569,7 +569,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Werkstoffliches Recycling scheitert oft an Baustellen-Verunreinigungen und Verbundklebungen (WDVS). Sortenreines PVC (z.B. alte Fensterrahmen) wird erfolgreich im Closed-Loop-Verfahren zu Recyclingprofilen geschreddert. Sonstige gemischte Abfälle werden energetisch verwertet.",
       besonderheiten: "Konstruktionsrelevanter Schadefaktor: Enorm hoher thermischer Längenausdehnungskoeffizient (bis zu 10-mal größer als Beton/Stahl). Bei freiverlegten Rohren und Hüllen sind Gleitbänder, Dehnungsschleifen und Expansionsfugen zwingend vorzusehen.",
       innovationen: "Biologisch abbaubare Hochleistungs-Spannbahnen. Selbstheilende Elastomerdichtungen im Tunnelbau. 3D-gedruckte Fassadensondertafeln aus recyceltem Meeresplastik zur architektonischen Profilierung von Gewerbeobjekten.",
-      historie: "Die erste bahnbrechende Polymersynthese (Bakelit) gelang im Jahr 1907. Ab den 1930er Jahren wurden mit PVC und Polystyrol kostengünstige, extrem langlebige Kunststoffe massenhaft erzeugt. Die Nachkriegsära (ab 1950) revolutionierte durch korrosionsfreie Rohrleitungssysteme, dichte Folien und hocheffiziente Dämmstoffe die gesamte Bautechnologie."
+      historie: "Die erste vollsynthetische Kunststoffherstellung (Bakelit) gelang im Jahr 1907. Ab den 1930er Jahren wurden mit PVC und Polystyrol kostengünstige, extrem langlebige Kunststoffe massenhaft erzeugt. Die Nachkriegsära (ab 1950) veränderte durch korrosionsfreie Rohrleitungssysteme, dichte Folien und hocheffiziente Dämmstoffe die gesamte Bautechnologie."
     }
   },
   faserverbund: {
@@ -584,7 +584,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       },
       anwendungen: "Nachträgliche Verstärkung von Betonbauteilen (Aufkleben von CFK-Lamellen auf Brückenträger), korrosionsfreie GFK-Bewehrungsstäbe im Tunnelbau und in Kläranlagen, ultra-filigrane Textilbetonfassaden, weitgespannte Fußgängerbrücken.",
       produkte: "CFK-Lamellen (Carbonfaser-Kunststoff-Streifen zur Rissüberbrückung), GFK-Bewehrungsstäbe (Schöck Combar), Glasgittermatten zur Betonputzarmierung, Faserverbundrohre für extreme Innendrücke.",
-      dauerhaftigkeit: "Korrosionsbeständigkeit ist phänomenal (rostet nicht bei Feuchtigkeit, Salzen oder aggressiven Chemikalien). Hoher Widerstand gegen Ermüdung bei zyklischer Dauerbelastung. Epoxidharze müssen im Außenbereich vor direkter UV-Einstrahlung geschützt werden.",
+      dauerhaftigkeit: "Korrosionsbeständigkeit ist sehr hoch (rostet nicht bei Feuchtigkeit, Salzen oder aggressiven Chemikalien). Hoher Widerstand gegen Ermüdung bei zyklischer Dauerbelastung. Epoxidharze müssen im Außenbereich vor direkter UV-Einstrahlung geschützt werden.",
       kosten: "Sehr hoher Anschaffungspreis im Vergleich zu handelsüblichem Baustahl. Carbonwerkstoffe sind High-End-Materialien. Die Kosten amortisieren sich primär bei Sanierungen durch minimalste Montagezeiten (keine schweren Hebekräne) und extreme Wartungsfreiheit.",
       recycling: "Technologisches Recycling-Sorgenkind. Duroplast-Matrices lassen sich nicht aufschmelzen. Carbonfasern können in Spezialreaktoren durch Pyrolyse zurückgewonnen werden und dienen als Rezyklatfasern für Vliesstoffe. GFK-Elemente enden meist in der thermischen Verwertung.",
       besonderheiten: "Konstruktiv kritisch: Sprödes Versagensverhalten ohne nennenswerte Fließankündigung. Bei Biegezugbemessungen mit CFK-Zulagen muss die Verankerungslänge und die innere Dehnungsbeschränkung des Epoxidklebers akribisch nachgewiesen werden.",

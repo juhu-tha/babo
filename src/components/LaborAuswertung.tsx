@@ -410,7 +410,7 @@ export default function LaborAuswertung() {
       content: (
         <div className="space-y-4">
           <p className="leading-relaxed">
-            Die Kombination aus Mobilität und digitaler Verknüpfung revolutioniert die Bauwerksdiagnostik vor Ort.
+            Die Kombination aus Mobilität und digitaler Verknüpfung verändert die Bauwerksdiagnostik vor Ort.
           </p>
           <div className="bg-slate-550 text-slate-800 bg-slate-100 p-4 rounded-2xl border border-slate-200 space-y-3">
             <h4 className="font-bold text-sm flex items-center gap-2">

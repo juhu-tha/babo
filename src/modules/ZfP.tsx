@@ -165,7 +165,7 @@ function DGZfPSection() {
               Die <strong>DGZfP</strong> wurde bereits 1933 gegründet und ist heute der führende wissenschaftlich-technische Verein zur Förderung zerstörungsfreier Prüfverfahren (NDT - Non-Destructive Testing) in Deutschland. Ihr <strong>Fachausschuss ZfP im Bauwesen (FA ZfP-Bau)</strong> und der zugehörige <strong>Unterausschuss</strong> fassen Experten aller führenden Prüfämter, Universitäten und Hersteller von Sonden zusammen.
             </p>
             <p>
-              Im Gegensatz zu metallischen Werkstoffen weisen Baustoffe wie Beton, Holz und Mauerwerk komplexe, stark heterogene Gefüge auf. Die DGZfP erarbeitet deshalb eigens darauf zugeschnittene <strong>Richtlinien (Merkblätter)</strong>, die als unbestrittener Stand der Wissenschaft und Technik und in rechtlichen Streitfällen als <strong>anerkannte Regeln der Technik</strong> herangezogen werden.
+              Im Gegensatz zu metallischen Werkstoffen weisen Baustoffe wie Beton, Holz und Mauerwerk komplexe, stark heterogene Gefüge auf. Die DGZfP erarbeitet deshalb eigens darauf zugeschnittene <strong>Richtlinien (Merkblätter)</strong>, die als anerkannte Regeln der Technik und in rechtlichen Streitfällen als <strong>anerkannte Regeln der Technik</strong> herangezogen werden.
             </p>
           </div>
           <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 flex flex-col justify-between">
@@ -182,7 +182,7 @@ function DGZfPSection() {
               </ul>
             </div>
             <div className="mt-4 pt-3 border-t border-home-grau/30 text-[11px] text-slate-500 italic">
-              Empfehlung DGZfP Tagungsbände bieten exzellente praxisnahe Referenzen für Bachelor- und Masterarbeiten in der Zustandserfassung!
+              Empfehlung DGZfP Tagungsbände bieten sehr gute praxisnahe Referenzen für Bachelor- und Masterarbeiten in der Zustandserfassung!
             </div>
           </div>
         </div>
@@ -895,7 +895,7 @@ export default function ZfP() {
     let klassifizierung = "Klasse I (Sehr niedrig)";
     let bewertung = "Hervorragend dicht";
     let textClass = "text-green-800 bg-green-50 border-green-200";
-    let description = "Maximale Dauerhaftigkeit. Das Bauteil besitzt einen exzellenten Widerstand gegen Karbonatisierung und Chlorideindringung.";
+    let description = "Maximale Dauerhaftigkeit. Das Bauteil besitzt einen sehr guten Widerstand gegen Karbonatisierung und Chlorideindringung.";
 
     if (torrentKt >= 10.0) {
       klassifizierung = "Klasse V (Sehr hoch)";
@@ -941,7 +941,7 @@ export default function ZfP() {
     let eingruppierung = "Wasserabweisend (Hydrophob)";
     let textClass = "text-green-800 bg-green-50 border-green-200";
     let color = "bg-green-600";
-    let detailtext = "Exzellente Sperrwirkung gegen eindringende Flüssigkeiten. Extrem hohe Lebensdauer bei Schlagregenbelastung.";
+    let detailtext = "Sehr gute Sperrwirkung gegen eindringende Flüssigkeiten. Extrem hohe Lebensdauer bei Schlagregenbelastung.";
 
     if (w > 0.5) {
       eingruppierung = "Stark saugend (Absorbierend)";

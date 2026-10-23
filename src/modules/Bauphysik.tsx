@@ -1230,7 +1230,7 @@ export default function Bauphysik() {
                   </h4>
                   <p className="text-xs mt-1 leading-relaxed opacity-90 font-medium">
                     {summerHeatAnalysis.phaseShift >= 10.0 ? (
-                      `Eine phänomenale Phasenverzögerung von ${formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden stellt sicher, dass die Mittagshitze erst mitten in der kühlen Nacht an den Innenraum abgegeben wird. Das Schlafzimmer bleibt angenehm kühl, Lüftungskonzepte greifen exzellent!`
+                      `Eine große Phasenverschiebung von ${formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden stellt sicher, dass die Mittagshitze erst mitten in der kühlen Nacht an den Innenraum abgegeben wird. Das Schlafzimmer bleibt angenehm kühl, Lüftungskonzepte greifen sehr gut!`
                     ) : summerHeatAnalysis.phaseShift >= 6.0 ? (
                       `Eine Phasenverzögerung von ${formatDeZahl(summerHeatAnalysis.phaseShift, 1)} Stunden ist befriedigend. Erhöhen Sie eventuell die Schichtdicke dickerer Wandbaustoffe oder nutzen Sie Einblas-Holzfaserdämmstoffe für zusätzliche kapillare Trägheit.`
                     ) : (

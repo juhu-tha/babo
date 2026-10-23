@@ -57,24 +57,6 @@ const ONLINE_TOOLS: ToolItem[] = [
     institutionOrAuthor: 'Bucknell University / Prof. R. Ziemian'
   },
   {
-    id: 'strian',
-    name: 'STRIAN (Structural Analysis Web)',
-    category: 'statik',
-    categoryLabel: 'Statik & Tragwerk',
-    language: 'ENG',
-    accessType: 'Direkt im Web',
-    recommendationBadge: 'Didaktisch wertvoll',
-    shortDesc: 'Interaktiver 2D-Stabwerk-Web-Rechner für Fachwerke, Durchlaufträger und Rahmen mit Gelenken, Einflusslinien und Echtzeit-Schnittgrößen.',
-    detailedFeatures: [
-      'Schnelle grafische Eingabe von Knoten, Stäben, Auflagern und Momentengelenken im Raster',
-      'Sofortige Berechnung von Biegemomenten (M), Querkräften (V) und Normalkräften (N)',
-      'Interaktive Einflusslinien zur Untersuchung wandernder Radlasten und Achsgruppen',
-      'Läuft 100 % im Browser ohne Registrierung, Plug-Ins oder Server-Wartezeiten'
-    ],
-    standards: 'Allgemeine Statik / Baustatik II',
-    institutionOrAuthor: 'Strian Structural Tools'
-  },
-  {
     id: 'skyciv_beam',
     name: 'SkyCiv Free Beam & Truss Calculator',
     category: 'statik',
@@ -102,7 +84,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.dlubal.com/de/querschnittswerte/',
-    shortDesc: 'Umfassende normenkonforme Querschnitts- und Profilwertdatenbank für Walzprofile (HEA, HEB, HEM, IPE, UPN, Hohlprofile etc.).',
+    shortDesc: 'Querschnitts- und Profilwertdatenbank für Walzprofile (HEA, HEB, HEM, IPE, UPN, Hohlprofile etc.).',
     detailedFeatures: [
       'Exakte Querschnittswerte: A, Iy, Iz, Wy, Wz, Wpl, IT, Iw',
       'Klassifizierung nach Eurocode 3 (Querschnittsklassen 1 bis 4)',
@@ -119,6 +101,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     categoryLabel: 'Statik & Tragwerk',
     language: 'DT / ENG',
     accessType: 'Direkt im Web',
+    url: 'https://www.dlubal.com/en/support-and-learning/service/geo-zone-tool-snow-wind-and-seismic-zone-maps',
     recommendationBadge: 'Standard im Büro',
     shortDesc: 'Standortbezogene digitale Abfrage von Schneelast-, Windlast- und Erdbebenzonen nach Eurocode 1 (DIN EN 1991) via Adress- und Kartensuche.',
     detailedFeatures: [
@@ -179,7 +162,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://www.ubakus.de/',
-    shortDesc: 'Der unangefochtene De-facto-Standard zur Ermittlung von U-Werten, Glaser-Tauwassernachweisen, Hitzeschutz und Trocknungsreserven.',
+    shortDesc: 'Verbreiteter Online-Rechner für U-Werte, Tauwasser (Glaser), sommerlichen Wärmeschutz und Trocknungsreserven.',
     detailedFeatures: [
       'Berechnung des Wärmedurchgangskoeffizienten (U-Wert) mehrschichtiger Bauteile',
       'Periodisches Feuchteschutzverfahren nach DIN 4108-3 (Glaser-Diagramm)',
@@ -214,7 +197,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     category: 'bauphysik',
     categoryLabel: 'Bauphysik & Feuchteschutz',
     language: 'ENG',
-    accessType: 'Offizielle Behörde / API',
+    accessType: 'Direkt im Web',
     recommendationBadge: 'Forschung & Master',
     url: 'https://climate.onebuilding.org/',
     shortDesc: 'Globale stündliche Wetterdatensätze (EPW, TRY) für instationäre thermisch-hygroskopische Gebäudesimulationen (EnergyPlus, IDA ICE).',
@@ -236,7 +219,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://wufi.de/',
-    shortDesc: 'Weltweit führendes Simulationsprogramm zur realitätsnahen Berechnung des gekoppelten ein- und zweidimensionalen Wärme- und Feuchtetransports in Bauteilen.',
+    shortDesc: 'Verbreitetes Simulationsprogramm für den gekoppelten Wärme- und Feuchtetransport in Bauteilen (1D/2D).',
     detailedFeatures: [
       'Berechnung instationärer Feuchteprofile unter natürlichen Klimabedingungen mit Schlagregen und Solarstrahlung',
       'Exakter Nachweis von Trocknungsverhalten und kritischem Feuchtegehalt nach DIN EN 15026 / WTA-Merkblatt 6-2',
@@ -249,37 +232,19 @@ const ONLINE_TOOLS: ToolItem[] = [
 
   // 3. Holzbau & Holzwerkstoffe
   {
-    id: 'best_wood_statics',
-    name: 'best wood STATICS (Holzbausoftware)',
-    category: 'holzbau',
-    categoryLabel: 'Holzbau',
-    language: 'DT',
-    accessType: 'Freeware / Open Source',
-    recommendationBadge: 'Standard im Büro',
-    shortDesc: 'Kostenlose vollwertige Holzbau-Statiksoftware für Einfeld-/Mehrfeldträger, Sparren, Pfetten, Stützen und Holzverbindungen nach Eurocode 5.',
-    detailedFeatures: [
-      'Vollständige Nachweise im Grenzzustand der Tragfähigkeit (GZT) und Gebrauchstauglichkeit (GZG)',
-      'Berücksichtigung von Kriechverformungen (k_def) und Lasteinwirkungsdauer (k_mod)',
-      'Integrierte Baustoffkennwerte für Brettschichtholz (BSH), KVH, CLT und Stegträger',
-      'Prüffähige Ausgabe aller Nachweise mit transparentem Rechengang als PDF'
-    ],
-    standards: 'DIN EN 1995-1-1 (EC5), DIN EN 1995-1-2 (Brand)',
-    institutionOrAuthor: 'best wood SCHNEIDER GmbH'
-  },
-  {
     id: 'dataholz',
-    name: 'dataholz.eu (Geprüfte Holzbauteile)',
+    name: 'dataholz.eu (Bauteilkatalog Holzbau)',
     category: 'holzbau',
     categoryLabel: 'Holzbau',
     language: 'DT',
-    accessType: 'Offizielle Behörde / API',
-    recommendationBadge: 'Offizieller Standard',
+    accessType: 'Direkt im Web',
+    recommendationBadge: 'Standard im Büro',
     url: 'https://www.dataholz.eu/',
-    shortDesc: 'Akkreditierte Online-Bauteildatenbank der Holzforschung Austria für bauphysikalisch und ökologisch geprüfte Holzbaukonstruktionen.',
+    shortDesc: 'Online-Bauteilkatalog der Holzforschung Austria mit bauphysikalischen, brandschutztechnischen und ökologischen Kennwerten von Holzbaukonstruktionen.',
     detailedFeatures: [
-      'Geprüfte Wand-, Decken- und Dachaufbauten mit U-Wert, Brandschutz (REI30–REI90) und Schallschutz',
-      'Verifizierte EPD-Ökokennzahlen (GWP-Fossil, GWP-Biogen, PENRT) für jedes Bauteil',
-      'Herstellerneutral und unmittelbar für Baugenehmigungen und QNG-Nachweise anerkennbar',
+      'Wand-, Decken- und Dachaufbauten mit U-Wert, Feuerwiderstand und Schallschutz',
+      'Ökologische Kennwerte je Aufbau (Umfang je Eintrag)',
+      'Herstellerneutral; Anerkennung in deutschen Nachweisverfahren im Einzelfall prüfen',
       'Schichtaufbauten direkt als PDF und Datenblatt exportierbar'
     ],
     standards: 'DIN EN 1995-1-2, DIN 4108, DIN 4109, EN 15804',
@@ -353,7 +318,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://www.openlca.org/',
-    shortDesc: 'Vollwertiges, professionelles Open-Source-Ökobilanzierungssystem für komplexe Lebenszyklusanalysen von Baustoffen und Prozessen.',
+    shortDesc: 'Open-Source-Software für Ökobilanzen (LCA) von Baustoffen und Prozessen.',
     detailedFeatures: [
       'Vollständige Modellierung von Stoff- und Energieströmen über den Lebenszyklus',
       'Kompatibel mit ecoinvent, GaBi und ÖKOBAUDAT-Datenbanken',
@@ -370,9 +335,9 @@ const ONLINE_TOOLS: ToolItem[] = [
     categoryLabel: 'LCA & Ökobilanz',
     language: 'DT / ENG',
     accessType: 'Kostenlose Cloud',
-    recommendationBadge: 'Offizieller Standard',
+    recommendationBadge: 'Standard im Büro',
     url: 'https://madaster.de/',
-    shortDesc: 'Zentrales globales Kataster für Materialien, Bauteile und Gebäude mit automatischer Berechnung des Zirkularitäts-Index und CO₂-Bilanz.',
+    shortDesc: 'Kommerzielle Plattform für Materialpässe von Gebäuden mit Zirkularitätsindikator und CO₂-Bilanz.',
     detailedFeatures: [
       'Automatisierte Generierung digitaler Materialpässe für Neubau und Bestand',
       'Berechnung des Madaster Circularity Indicator (MCI) zur Messung der Kreislauffähigkeit',
@@ -391,7 +356,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://concular.de/',
-    shortDesc: 'Deutschlands führendes Ökosystem für zirkuläres Bauen, Materialkataster vor dem Rückbau und Vermittlung wiederverwendeter Baustoffe.',
+    shortDesc: 'Anbieter für zirkuläres Bauen: Materialerfassung vor dem Rückbau und Vermittlung wiederverwendeter Baustoffe.',
     detailedFeatures: [
       'Pre-Demolition Audit zur Identifikation wiederverwendbarer Bauteile und Rohstoffe',
       'Marktplatz für Sekundärbaustoffe mit verifizierten Zustands- und Prüfberichten',
@@ -412,7 +377,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     accessType: 'Direkt im Web',
     recommendationBadge: 'Standard im Büro',
     url: 'https://thatopen.com/',
-    shortDesc: 'Hochperformanter WebGL-basierter OpenBIM-Viewer: IFC-Dateien (IFC2x3, IFC4) direkt im Webbrowser ohne Installation prüfen und messen.',
+    shortDesc: 'WebGL-basierter OpenBIM-Viewer: IFC-Dateien (IFC2x3, IFC4) direkt im Webbrowser ohne Installation prüfen und messen.',
     detailedFeatures: [
       'Direktes Laden und Rendern großer IFC-Bauwerksmodelle im Browser',
       'Hierarchische Inspektion von IfcProject, IfcBuildingStorey bis IfcWall / IfcBeam',
@@ -429,6 +394,7 @@ const ONLINE_TOOLS: ToolItem[] = [
     categoryLabel: 'BIM & Geodaten',
     language: 'DT',
     accessType: 'Offizielle Behörde / API',
+    url: 'https://www.bimdeutschland.de/',
     recommendationBadge: 'Offizieller Standard',
     shortDesc: 'Zentrale Plattform der Bundesrepublik Deutschland für standardisierte Bauteil-Merkmalskataloge und AIA/BAP-Leitfäden.',
     detailedFeatures: [
@@ -467,10 +433,10 @@ const ONLINE_TOOLS: ToolItem[] = [
     category: 'geotechnik',
     categoryLabel: 'Geotechnik & Baustofflabore',
     language: 'ENG',
-    accessType: 'Offizielle Behörde / API',
+    accessType: 'Freeware / Open Source',
     recommendationBadge: 'Forschung & Master',
     url: 'https://www.nist.gov/services-resources/software/vcctl-software',
-    shortDesc: 'Numerisches Simulationslabor des US-Nationalinstituts zur Vorhersage der Zementhydratation, Phasenbildung (C-S-H) und Gefügefestigkeit.',
+    shortDesc: 'Simulationssoftware des US-amerikanischen NIST zur Vorhersage der Zementhydratation, Phasenbildung (C-S-H) und Gefügefestigkeit.',
     detailedFeatures: [
       'Simulation der Hydratationskinetik von Klinkerphasen (C₃S, C₂S, C₃A, C₄AF)',
       'Mikrostrukturmodellierung und Porenraumverteilung im Zementstein',
@@ -480,25 +446,6 @@ const ONLINE_TOOLS: ToolItem[] = [
     standards: 'ASTM / ACI Standards',
     institutionOrAuthor: 'National Institute of Standards and Technology (NIST)'
   },
-  {
-    id: 'issmge_soil_tools',
-    name: 'ISSMGE Soil Mechanics Online Tools',
-    category: 'geotechnik',
-    categoryLabel: 'Geotechnik & Baustofflabore',
-    language: 'ENG',
-    accessType: 'Direkt im Web',
-    recommendationBadge: 'Didaktisch wertvoll',
-    url: 'https://www.issmge.org/',
-    shortDesc: 'Kostenlose interaktive Werkzeuge der International Society for Soil Mechanics für Bodenklassifikation, Erddruck und Setzungen.',
-    detailedFeatures: [
-      'Bodenklassifikation nach Sieblinie, Plastizitätszahl und Konsistenzgrenzen',
-      'Erddruckberechnung nach Rankine und Coulomb für Stützwände und Baugruben',
-      '1D-Konsolidierungsberechnungen (Terzaghi-Theorie) und Setzungsverläufe',
-      'Ideal für Studierende zur Klausurvorbereitung und Vorbemessung'
-    ],
-    standards: 'DIN 18196, Eurocode 7 (DIN EN 1997)',
-    institutionOrAuthor: 'International Society for Soil Mechanics (ISSMGE)'
-  }
 ];
 
 interface ApiCodeSnippet {
@@ -758,7 +705,7 @@ export default function OnlineTools() {
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          Diese Fachübersicht bündelt unverzichtbare Online-Rechner, numerische Simulationen, behördliche Geoportale und parametrische Skripte.
+          Diese Fachübersicht bündelt nützliche Online-Rechner, numerische Simulationen, behördliche Geoportale und parametrische Skripte.
           Alle aufgeführten Tools sind entweder <strong>vollständig kostenlos im Web nutzbar</strong>, stehen als <strong>geprüfte Open-Source-Software</strong> bereit oder bieten unkomplizierte <strong>Freemium- und Studentenmodelle</strong> für Studium, Masterthesen und den täglichen Ingenieurbüro-Einsatz.
         </div>
 
@@ -1073,7 +1020,7 @@ export default function OnlineTools() {
               <Activity size={14} className="text-shiraz" /> 1. Vorbemessung &amp; Plausibilität
             </h4>
             <p className="leading-relaxed">
-              Nutzen Sie Online-Rechner (wie SkyCiv, STRIAN oder Calcpad) für die schnelle Ersteinschätzung von Momenten und Querkräften. Vergleichen Sie die Werte stets mit den Bemessungsmodulen in BaustoffBoard (z. B. Biegebemessung, Querkraft).
+              Nutzen Sie Online-Rechner (z. B. SkyCiv oder Calcpad) für die schnelle Ersteinschätzung von Momenten und Querkräften. Vergleichen Sie die Werte stets mit den Bemessungsmodulen in BaustoffBoard (z. B. Biegebemessung, Querkraft).
             </p>
           </div>
 
@@ -1146,14 +1093,12 @@ export default function OnlineTools() {
         ]}
         weblinks={[
           { title: 'Ubakus.de – Interaktiver U-Wert- & Glaser-Rechner', url: 'https://www.ubakus.de/' },
-          { title: 'Dlubal Geo-Zone Tool – Schnee-, Wind- & Erdbebenzonen' },
+          { title: 'Dlubal Geo-Zone Tool – Schnee-, Wind- & Erdbebenzonen', url: 'https://www.dlubal.com/en/support-and-learning/service/geo-zone-tool-snow-wind-and-seismic-zone-maps' },
           { title: 'Fraunhofer IBP WUFI – Instationäre Feuchte- und Wärmesimulation', url: 'https://wufi.de/' },
           { title: 'ÖKOBAUDAT – Ökobilanz-Datenbank des BMWSB (BBSR)', url: 'https://www.oekobaudat.de/' },
           { title: 'WECOBIS – Ökologisches Baustoffportal des Bundes', url: 'https://www.wecobis.de/' },
           { title: 'Madaster Germany – Material- und Zirkularitätskataster', url: 'https://madaster.de/' },
           { title: 'Concular – Zirkulärer Marktplatz für Sekundärbaustoffe', url: 'https://concular.de/' },
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
-          { title: 'STRIAN – Online 2D-Stabwerkberechnung' },
           { title: 'Calcpad – Parametrische Ingenieurberechnungen', url: 'https://calcpad.eu/' },
           { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' }
         ]}

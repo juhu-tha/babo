@@ -139,7 +139,7 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
   verankerungslaenge: "Berechnung der Basisverankerungslänge und Übergreifungslänge für Betonstahl zur sicheren Einleitung von Verankerungskräften.",
   spannbeton: "Bemessungsgrundlagen im Spannbetonbau: Vorspannen mit und ohne Verbund, Ermittlung von zeitabhängigen Spannungsverlusten.",
   'wu-bauwerke': "Konstruktionsregeln für Wasserundurchlässige Betonbauwerke (Weiße Wannen), Fugenbänder und Rissbreitenbeschränkungen.",
-  carbonbeton: "Bauen mit Textilbeton und Kohlefaserbewehrungen (Carbonbeton): Dünnwandige Tragschichten und exzellente Korrosionsbeständigkeit.",
+  carbonbeton: "Bauen mit Textilbeton und Kohlefaserbewehrungen (Carbonbeton): Dünnwandige Tragschichten und sehr gute Korrosionsbeständigkeit.",
 
   // Holzbau
   holzbau_info: "Ingenieurholzbau nach Eurocode 5 (DIN EN 1995): Werkstoffe, Verbindungsmittel und bauphysikalische Brandschutznachweise.",

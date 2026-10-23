@@ -612,7 +612,7 @@ export default function BpFarbenLacke() {
                   <div className="w-8 h-8 rounded-lg bg-orange-600/10 text-orange-600 flex items-center justify-center font-bold mb-3">2</div>
                   <h4 className="font-bold text-text-main text-sm">Hygiene &amp; Raumklima</h4>
                   <p className="text-sm text-text-main/80 leading-relaxed">
-                    Einstellung der Raumfeuchte durch diffusionsoffene Innenanstriche (Zweiwege-Feuchteregulierung). Mineralische Farben (Kalk- und Silikatfarben) verhindern die Ansiedlung von Schimmelpilzen auf vollkommen natürliche, biozidfreie Weise dank ihres exzellenten pH-Wertes.
+                    Einstellung der Raumfeuchte durch diffusionsoffene Innenanstriche (Zweiwege-Feuchteregulierung). Mineralische Farben (Kalk- und Silikatfarben) verhindern die Ansiedlung von Schimmelpilzen auf vollkommen natürliche, biozidfreie Weise dank ihres sehr guten pH-Wertes.
                   </p>
                 </div>
 
@@ -1400,7 +1400,7 @@ export default function BpFarbenLacke() {
                           Polyaddition von Polyisocyanaten mit Polyolen. Durch gezielte Auswahl linearer Isocyanate wird ein hochelastischer Schutzfilm (Elastomer) erzielt.
                         </td>
                         <td className="p-3 text-emerald-800 font-medium bg-emerald-50/10">
-                          Hochelastisch, exzellente dynamische Rissüberbrückung bei Minustemperaturen (-20 °C), UV-beständig bei aliphatischer Härter-Basis.
+                          Hochelastisch, sehr gute dynamische Rissüberbrückung bei Minustemperaturen (-20 °C), UV-beständig bei aliphatischer Härter-Basis.
                         </td>
                         <td className="p-3 text-amber-800 bg-amber-50/10 font-medium">
                           Feuchtigkeitsempfindlich während der Härtung (Blasenbildung durch CO₂-Ausgasung bei Feuchtkontakt), geringere Ritzhärte als EP.

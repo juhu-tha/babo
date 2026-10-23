@@ -406,7 +406,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
                   <ul className="list-disc list-inside space-y-1 text-slate-700">
                     <li><strong>Grundbeschichtung (60–80 µm):</strong> Zinkstaubhaltiges Epoxidharz (EP-Zinkstaub). Zink opfert sich galvanisch bei Beschädigung (aktiver kathodischer Schutz).</li>
                     <li><strong>Zwischenbeschichtung (80–160 µm):</strong> Epoxidharz mit Eisenglimmer (MIOX). Die plättchenförmigen Schuppen lagern sich parallel zur Oberfläche an ("Schuppenpanzer") und verlängern den Diffusionsweg für Wasser und Ionen drastisch.</li>
-                    <li><strong>Deckbeschichtung (60–80 µm):</strong> Polyurethan (2K-PUR) für exzellente UV-Stabilität, Kreidungsresistenz und Farbtonbeständigkeit.</li>
+                    <li><strong>Deckbeschichtung (60–80 µm):</strong> Polyurethan (2K-PUR) für sehr gute UV-Stabilität, Kreidungsresistenz und Farbtonbeständigkeit.</li>
                   </ul>
                 </div>
 

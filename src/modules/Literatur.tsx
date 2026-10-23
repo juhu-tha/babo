@@ -129,7 +129,7 @@ const LITERATURE_DATABASE: LiteratureEntry[] = [
     categoryLabel: 'Beton, Zement & Bindemittel',
     badge: 'Bemessungspraxis',
     url: 'https://www.ernst-und-sohn.de/beton-kalender',
-    description: 'Das unverzichtbare zweibändige Handbuch für jeden im Massivbau tätigen Tragwerksplaner und Materialprüfer. Führt neueste Normentwicklungen, Zulassungen und Bemessungshilfsmittel für Stahlbeton, Spannbeton und Faserbeton praxisnah zusammen.',
+    description: 'Zweibändiges Handbuch für Tragwerksplanung und Materialprüfung im Massivbau. Führt neueste Normentwicklungen, Zulassungen und Bemessungshilfsmittel für Stahlbeton, Spannbeton und Faserbeton praxisnah zusammen.',
     coreTopics: ['Eurocode 2', 'Expositionsklassen', 'Rissbreitenbeschränkung', 'UHPC', 'Fertigteile']
   },
   {
@@ -622,11 +622,10 @@ export default function Literatur() {
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 690: Richtlinien für Titelangaben und Zitate von Informationsressourcen' },
-          { title: 'DIN 1505-2: Zitierregeln für wissenschaftliche Veröffentlichungen' },
+          { title: 'DIN ISO 690:2013-10 (Titelangaben und Zitierung; ersetzt DIN 1505-2)' },
           { title: 'DIN EN 1990: Eurocode: Grundlagen der Tragwerksplanung (Statistische Auswertung von Werkstoffkennwerten)' }
         ]}
         weblinks={[
-          { title: 'DIN Media (ehemals Beuth Verlag) – Zentrales Normenportal' },
           { title: 'SpringerLink – Bautechnische Fachbücher & Journale', url: 'https://link.springer.com/' },
           { title: 'Wiley Online Library – Beton- und Stahlbetonbau', url: 'https://onlinelibrary.wiley.com/' },
           { title: 'ScienceDirect – Cement and Concrete Research', url: 'https://www.sciencedirect.com/journal/cement-and-concrete-research' },

@@ -151,7 +151,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     biogenicContent: 0,
     umiScore: 95,
     penrt: 18500,
-    description: "Konstruktionsstahl. Enormer spezifischer Energiebedarf bei Herstellung, dafür exzellent kreislauffähig (Modul D Gutschrift).",
+    description: "Konstruktionsstahl. Enormer spezifischer Energiebedarf bei Herstellung, dafür sehr gut kreislauffähig (Modul D Gutschrift).",
     defaultCircularQuota: 95,
     substitutesPrimary: "Primär-Rohstahl (Hochofen-Route / Koks)",
     defaultRecoveryType: "high_grade"
@@ -270,7 +270,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     biogenicContent: 130,
     umiScore: 85,
     penrt: 220,
-    description: "Dämmstoff aus zerkleinertem Altpapier. Geringe Aufbereitungsenergie und exzellente Einbindung biogener Kohlenstoffspeicher.",
+    description: "Dämmstoff aus zerkleinertem Altpapier. Geringe Aufbereitungsenergie und sehr gute Einbindung biogener Kohlenstoffspeicher.",
     defaultCircularQuota: 85,
     substitutesPrimary: "Biomasse-Verwertung / Nachnutzung",
     defaultRecoveryType: "thermal"
@@ -287,7 +287,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     biogenicContent: 230,
     umiScore: 85,
     penrt: 1100,
-    description: "Druckfeste Dämmung aus Restholzfasern für Dach, Wand und Putzträger. Exzellenter sommerlicher Hitzeschutz durch hohe Wärmespeicherkapazität.",
+    description: "Druckfeste Dämmung aus Restholzfasern für Dach, Wand und Putzträger. Sehr guter sommerlicher Hitzeschutz durch hohe Wärmespeicherkapazität.",
     defaultCircularQuota: 85,
     substitutesPrimary: "Kaskadennutzung / Biomasse-Heizwerk",
     defaultRecoveryType: "thermal"
@@ -712,7 +712,7 @@ export default function InteractiveLCACalc() {
         label: "QNG-PREMIUM Erreicht! 🏆",
         color: "text-emerald-700 border-emerald-300 bg-emerald-50/70",
         badge: "bg-emerald-600 text-white",
-        desc: `Exzellenter Standard nach QNG 2026. Der Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) unterschreitet den Schwellenwert von ${formatDeZahl(premium, 1)} kg CO₂-eq/(m²a) deutlich. Höchste KfW-Förderstufe (KFN-Kredit).`
+        desc: `Sehr guter Standard nach QNG 2026. Der Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) unterschreitet den Schwellenwert von ${formatDeZahl(premium, 1)} kg CO₂-eq/(m²a) deutlich. Höchste KfW-Förderstufe (KFN-Kredit).`
       };
     } else if (valAC <= plus) {
       return {

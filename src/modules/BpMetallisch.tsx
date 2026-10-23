@@ -165,7 +165,7 @@ Bei behinderter Belüftung oder feuchter Lagerung kann sich poröser, voluminös
     poissonRatio: 0.33,
     elongationAtBreak: 'A50 ≥ 8 – 12 % (aushärtbare Knetlegierung)',
     recyclingRate: '> 95 % (Sekundäraluminium spart 95 % Schmelzenergie)',
-    description: `Leichtmetall mit kubisch-flächenzentriertem Gitter, exzellenter Kaltumformbarkeit und hoher Zähigkeit ohne Tieftemperaturversprödung. Bei Luftkontakt bildet Aluminium binnen Millisekunden eine porenfreie, transparente Passivschicht aus Aluminiumoxid (Al₂O₃, ca. 5–20 nm dünn), die das Metall im neutralen pH-Bereich (pH 4,5–8,5) vor atmosphärischem Abtrag schützt.
+    description: `Leichtmetall mit kubisch-flächenzentriertem Gitter, sehr guter Kaltumformbarkeit und hoher Zähigkeit ohne Tieftemperaturversprödung. Bei Luftkontakt bildet Aluminium binnen Millisekunden eine porenfreie, transparente Passivschicht aus Aluminiumoxid (Al₂O₃, ca. 5–20 nm dünn), die das Metall im neutralen pH-Bereich (pH 4,5–8,5) vor atmosphärischem Abtrag schützt.
 
 Aggressive Zersetzungsmechanismen: Im stark alkalischen Milieu (z.B. flüssiger Zementleim, frischer Beton oder Mauermörtel mit pH 12,5–13,5) löst sich die amphotere Oxidschicht unter Wasserstoffbildung auf (2 Al + 2 OH⁻ + 6 H₂O → 2 [Al(OH)₄]⁻ + 3 H₂↑). Aluminium darf daher niemals ungeschützt in Mörtel oder Beton eingebettet werden.
 
@@ -187,7 +187,7 @@ In der Baupraxis wird Aluminium überwiegend eloxiert (anodische Oxidation, Schi
     poissonRatio: 0.30,
     elongationAtBreak: 'A ≥ 20 – 26 % (ausgeprägtes Fließplateau)',
     recyclingRate: 'Hohe Recyclingquote (Branchenangaben > 90 %); Stahl ist ohne Qualitätsverlust wiederverwertbar',
-    description: `Ferritisch-perlitischer Konstruktionswerkstoff und das universelle Rückgrat des modernen Hoch-, Hallen- und Brückenbaus. Zeichnet sich durch ein ausgeprägtes Fließplateau, exzellente Schweißbarkeit und hohe Bruchdehnungen (A ≥ 20 %) aus, was die Ausbildung stabiler Fließgelenke und plastischer Schnittgrößenumlagerungen nach Eurocode 3 ermöglicht.
+    description: `Ferritisch-perlitischer Konstruktionswerkstoff und das universelle Rückgrat des modernen Hoch-, Hallen- und Brückenbaus. Zeichnet sich durch ein ausgeprägtes Fließplateau, sehr gute Schweißbarkeit und hohe Bruchdehnungen (A ≥ 20 %) aus, was die Ausbildung stabiler Fließgelenke und plastischer Schnittgrößenumlagerungen nach Eurocode 3 ermöglicht.
 
 Korrosionsverhalten: Baustahl ist an feuchter Atmosphäre thermodynamisch unedel und bildet porösen Rost (FeO(OH) und Fe₂O₃ · n H₂O). Da das Rostvolumen bis zum 6-fachen des Ausgangsstahls anwächst, haftet der Rost nicht dicht an, sondern blättert kontinuierlich ab, sodass der Querschnitt ohne Schutzschicht linear abgetragen wird.
 
@@ -277,7 +277,7 @@ Einsatzbereiche: Aufgrund der anspruchsvollen Gewinnung (Kroll-Verfahren) und Sc
     poissonRatio: 0.34,
     elongationAtBreak: 'A50 ≥ 33 % (R220 weich)',
     recyclingRate: '> 95 % ohne Qualitätsverlust recyclierbar',
-    description: `Halbedelmetall mit kubisch-flächenzentriertem Gitter, überragender thermischer Leitfähigkeit (λ = 380 W/(m·K)) und exzellenter Falzbarkeit selbst bei Minusgraden. Seit Jahrhunderten der bevorzugte Werkstoff für repräsentative Dacheindeckungen, Stehfalzfassaden und Dachentwässerungen.
+    description: `Halbedelmetall mit kubisch-flächenzentriertem Gitter, überragender thermischer Leitfähigkeit (λ = 380 W/(m·K)) und sehr guter Falzbarkeit selbst bei Minusgraden. Seit Jahrhunderten der bevorzugte Werkstoff für repräsentative Dacheindeckungen, Stehfalzfassaden und Dachentwässerungen.
 
 Patinabildung im Lebenszyklus:
 Frisch gewalztes Kupfer glänzt lachsrot, oxidiert rasch zu dunkelbraunem Kupfer(I)-oxid (Cu₂O) und wandelt sich an der Atmosphäre über Jahre unter Einwirkung von CO₂, SO₂ und Feuchtigkeit in die samtartige grüne Patina aus basischem Kupfersulfat (Brochantit) und basischem Kupfercarbonat (Malachit) um. Diese Schicht ist wasserunlöslich und schützt das Metall für Jahrhunderte.
@@ -322,7 +322,7 @@ Kritische Einsatzgrenzen: Cortenstahl benötigt zwingend vollständige Trocknung
     poissonRatio: 0.35,
     elongationAtBreak: 'A ≥ 12 – 18 %',
     recyclingRate: '> 95 % als Späne & Gussrücklauf',
-    description: `Kupfer-Zink-Knetlegierung mit ca. 58 % Kupfer, 39 % Zink und geringem Bleianteil zur Spanbrechung. Unverzichtbar für hochwertige Architektur- und Türbeschläge, Fassadenverankerungen, Sanitärinstallationen und hochpräzise mechanische Befestigungsmittel.
+    description: `Kupfer-Zink-Knetlegierung mit ca. 58 % Kupfer, 39 % Zink und geringem Bleianteil zur Spanbrechung. Häufig verwendet für hochwertige Architektur- und Türbeschläge, Fassadenverankerungen, Sanitärinstallationen und hochpräzise mechanische Befestigungsmittel.
 
 Gefüge & Festigkeit: Das zweiphasige (α + β)-Gefüge vereint gute Festigkeit mit hoher Härte und ausgezeichneter Warmumformbarkeit beim Strangpressen. An trockener Luft bildet sich eine schützende Zinkoxid-Kupferoxid-Deckschicht.
 
@@ -780,7 +780,7 @@ export default function BpMetallisch() {
                 <td className="p-3 font-bold text-slate-800">Bewehrungsstähle (Betonstähle)</td>
                 <td className="p-3">Gerippter Betonstahl in Stäben, standardisierte Betonstahlmatten (Q- und R-Matten), Bewehrungskörbe.</td>
                 <td className="p-3 font-mono">DIN 488 (B500A, B500B), Gütezeichen Betonstahl</td>
-                <td className="p-3">Unverzichtbarer Verbundwerkstoffpartner des Massiv- und Stahlbetonbaus zur Aufnahme von Zugspannungen.</td>
+                <td className="p-3">Verbundpartner im Stahlbetonbau zur Aufnahme von Zugspannungen.</td>
               </tr>
             </tbody>
           </table>
