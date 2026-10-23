@@ -268,7 +268,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
               {/* Left Column: Academic Guide (Detailed Sections) */}
               <div className="lg:col-span-7 flex flex-col gap-6">
                 
-                <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed">
+                <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed">
                   Der <strong>Digitale Produktpass (DPP)</strong> ist ein zentrales Instrument der EU-Ökodesign-Verordnung (ESPR). Er speichert produktspezifische Daten über den gesamten Lebenszyklus hinweg, um Transparenz, Rückverfolgbarkeit und die Kreislaufwirtschaft (Circular Economy) im Bauwesen nachhaltig zu fördern.
                 </div>
 
@@ -309,7 +309,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         <h4 className="font-bold text-base text-slate-900">1. Wissenschaftliche Grundlagen &amp; Ziele</h4>
                         <p className="text-xs text-slate-500 mt-0.5">EU Ecodesign for Sustainable Products Regulation (ESPR)</p>
                       </div>
-                      <p className="text-sm text-slate-705 leading-relaxed font-normal">
+                      <p className="text-sm text-slate-700 leading-relaxed font-normal">
                         Die Grundlagen des DPP basieren auf der Erkenntnis, dass zirkuläre Materialströme am Fehlen standardisierter, herstellerübergreifender und maschinenlesbarer Produktinformationen scheitern. Durch die Beseitigung dieser Informationsasymmetrien wird der gesamte Lebenszyklus eines Bauprodukts transparent nachvollziehbar gemacht.
                       </p>
                       
@@ -350,10 +350,10 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         <h4 className="font-bold text-base text-slate-900">2. Technische Umsetzung &amp; Standardisierung</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Identifikatoren, Schnittstellen und Datenstrukturen</p>
                       </div>
-                      <p className="text-sm text-slate-705 leading-relaxed font-normal">
+                      <p className="text-sm text-slate-700 leading-relaxed font-normal">
                         Die Umsetzung des DPP erfordert eine dezentrale und hochgradig standardisierte IT-Architektur. Es wird <strong>keine</strong> zentrale EU-Datenbank geben, die alle Produktdetails speichert. Stattdessen verbleiben die Daten dezentral beim Hersteller und sind über APIs abrufbar:
                       </p>
-                      <ul className="text-xs sm:text-sm text-slate-705 space-y-2 list-none pl-0 font-normal">
+                      <ul className="text-xs sm:text-sm text-slate-700 space-y-2 list-none pl-0 font-normal">
                         <li className="flex gap-2 items-start leading-relaxed">
                           <span className="text-shiraz font-bold shrink-0">■</span>
                           <span><strong>M2M-Interoperabilität:</strong> Datenablage strukturiert nach dem concept der <strong>Asset Administration Shell (AAS / Verwaltungsschale)</strong> gemäß DIN EN IEC 63278.</span>
@@ -376,7 +376,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         <h4 className="font-bold text-base text-slate-900">3. Zu dokumentierende Inhalte (Datenfelder)</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Bill of Materials (BOM) &amp; Schadstoff-Screening</p>
                       </div>
-                      <p className="text-sm text-slate-705 leading-relaxed font-normal">
+                      <p className="text-sm text-slate-700 leading-relaxed font-normal">
                         Ein normkonformer Digitaler Produktpass stellt Datenfelder für unterschiedliche Lebenszyklusphasen und Akteure rollenbasiert bereit:
                       </p>
                       <div className="bg-white rounded-xl border border-home-grau/30 overflow-hidden text-xs font-normal">
@@ -386,19 +386,19 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         </div>
                         <div className="p-2 grid grid-cols-12 gap-1.5 border-b border-home-grau/30">
                           <span className="col-span-4 font-bold text-shiraz">Allgemeines</span>
-                          <span className="col-span-8 text-slate-705">Herstellerdaten, Herstellungsort, Charge, UID/UPI, Herstellungsdatum, CE-Zeichen, Leistungserklärung.</span>
+                          <span className="col-span-8 text-slate-700">Herstellerdaten, Herstellungsort, Charge, UID/UPI, Herstellungsdatum, CE-Zeichen, Leistungserklärung.</span>
                         </div>
                         <div className="p-2 grid grid-cols-12 gap-1.5 border-b border-home-grau/30">
                           <span className="col-span-4 font-bold text-shiraz">Stückliste (BOM)</span>
-                          <span className="col-span-8 text-slate-705">Chemische Hauptbestandteile, Recycling-Anteile (Pre- &amp; Post-Consumer), REACH-Schadstoffdeklarationen.</span>
+                          <span className="col-span-8 text-slate-700">Chemische Hauptbestandteile, Recycling-Anteile (Pre- &amp; Post-Consumer), REACH-Schadstoffdeklarationen.</span>
                         </div>
                         <div className="p-2 grid grid-cols-12 gap-1.5 border-b border-home-grau/30">
                           <span className="col-span-4 font-bold text-shiraz">Umweltdaten</span>
-                          <span className="col-span-8 text-slate-705">Verweistabelle auf EPD-Kennwerte (Treibhauspotenzial GWP, nicht-erneuerbare Primärenergie PENRT).</span>
+                          <span className="col-span-8 text-slate-700">Verweistabelle auf EPD-Kennwerte (Treibhauspotenzial GWP, nicht-erneuerbare Primärenergie PENRT).</span>
                         </div>
                         <div className="p-2 grid grid-cols-12 gap-1.5">
                           <span className="col-span-4 font-bold text-shiraz">Rückbau</span>
-                          <span className="col-span-8 text-slate-705">Leitfäden zur zerstörungsfreien Demontage, sortenreinen Materialtrennbarkeit und Entsorgungshinweise.</span>
+                          <span className="col-span-8 text-slate-700">Leitfäden zur zerstörungsfreien Demontage, sortenreinen Materialtrennbarkeit und Entsorgungshinweise.</span>
                         </div>
                       </div>
                     </div>
@@ -410,29 +410,29 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         <h4 className="font-bold text-base text-slate-900">4. Zeitschiene zur stufenweisen Einführung</h4>
                         <p className="text-xs text-slate-500 mt-0.5">EU-weite Implementierungsstufen der ESPR und CPR</p>
                       </div>
-                      <p className="text-sm text-slate-705 leading-relaxed font-normal">
+                      <p className="text-sm text-slate-700 leading-relaxed font-normal">
                         Die schrittweise Einführung des Digitalen Produktpasses im Bauwesen erfolgt eng verzahnt mit der europäischen Bauprodukteverordnung (CPR):
                       </p>
                       <div className="relative pl-6 border-l-2 border-shiraz/35 space-y-4 pt-1 font-normal">
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-shiraz border-2 border-white" />
                           <div className="text-xs font-bold text-shiraz">18.07.2024 (Inkrafttreten)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed">Inkrafttreten der Ökodesign-Verordnung (EU) 2024/1781 (ESPR, erlassen am 13.06.2024). Konkrete DPP-Pflichten folgen erst über produktgruppenspezifische delegierte Rechtsakte.</div>
+                          <div className="text-xs text-slate-700 leading-relaxed">Inkrafttreten der Ökodesign-Verordnung (EU) 2024/1781 (ESPR, erlassen am 13.06.2024). Konkrete DPP-Pflichten folgen erst über produktgruppenspezifische delegierte Rechtsakte.</div>
                         </div>
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-shiraz border-2 border-white" />
                           <div className="text-xs font-bold text-shiraz">2025 bis 2027 (Arbeitsplan und Grundlagen)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed font-normal">ESPR-Arbeitsplan 2025–2030 (16.04.2025) mit Prioritäten u. a. Eisen/Stahl, Aluminium, Textilien, Möbel, Reifen, Matratzen; DPP-Register (Durchführungsverordnung 2026); Batteriepass nach Verordnung (EU) 2023/1542 ab 18.02.2027.</div>
+                          <div className="text-xs text-slate-700 leading-relaxed font-normal">ESPR-Arbeitsplan 2025–2030 (16.04.2025) mit Prioritäten u. a. Eisen/Stahl, Aluminium, Textilien, Möbel, Reifen, Matratzen; DPP-Register (Durchführungsverordnung 2026); Batteriepass nach Verordnung (EU) 2023/1542 ab 18.02.2027.</div>
                         </div>
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-shiraz border-2 border-white" />
                           <div className="text-xs font-bold text-shiraz">Ab 08.01.2026 (neue BauPVO)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed font-normal">Die Bauprodukteverordnung (EU) 2024/3110 gilt seit 08.01.2026. Ein DPP für Bauprodukte wird je Produktfamilie über delegierte Rechtsakte und neue harmonisierte technische Spezifikationen verpflichtend; feste Termine stehen noch nicht fest.</div>
+                          <div className="text-xs text-slate-700 leading-relaxed font-normal">Die Bauprodukteverordnung (EU) 2024/3110 gilt seit 08.01.2026. Ein DPP für Bauprodukte wird je Produktfamilie über delegierte Rechtsakte und neue harmonisierte technische Spezifikationen verpflichtend; feste Termine stehen noch nicht fest.</div>
                         </div>
                         <div className="relative">
                           <div className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-gray-600 border-2 border-white" />
                           <div className="text-xs font-bold text-gray-600">Bis etwa 2040 (Übergang)</div>
-                          <div className="text-xs text-slate-705 leading-relaxed">Schrittweiser Übergang aller Produktfamilien in das neue System; bis dahin gelten für bestehende harmonisierte Normen Übergangsregeln (Einzelheiten und Fristen manuell prüfen).</div>
+                          <div className="text-xs text-slate-700 leading-relaxed">Schrittweiser Übergang aller Produktfamilien in das neue System; bis dahin gelten für bestehende harmonisierte Normen Übergangsregeln (Einzelheiten und Fristen manuell prüfen).</div>
                         </div>
                       </div>
                     </div>
@@ -444,7 +444,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         <h4 className="font-bold text-base text-slate-900">5. Gesetzliche Verpflichtungen &amp; Akteureskreis</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Wer ist wann zu welchen Maßnahmen rechtlich verpflichtet?</p>
                       </div>
-                      <p className="text-sm text-slate-705 leading-relaxed font-normal">
+                      <p className="text-sm text-slate-700 leading-relaxed font-normal">
                         Die Einführung des DPP bringt weitreichende rechtliche Pflichten für alle baubeteiligten Personengruppen mit sich:
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-normal">
@@ -787,7 +787,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
 
         {displayTab === 'epd' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
-            <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+            <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <p>
                 Eine <strong>Environmental Product Declaration (EPD)</strong> nach DIN EN 15804 liefert transparente, 
                 vergleichbare und überprüfte Informationen über die Umweltleistung von Bauprodukten über ihren Lebenszyklus. 

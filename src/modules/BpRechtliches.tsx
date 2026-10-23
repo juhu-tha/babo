@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   Scale, FileCheck, ShieldCheck, Factory, FileSignature, Leaf, 
   Award, HelpCircle, CheckCircle2, ClipboardCheck, Check, Globe,
@@ -189,7 +190,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
 
                     <div className="p-3 bg-white rounded-lg border border-home-grau/10">
                       <p className="font-bold text-indigo-950 text-xs">ZiE / vBG (Zustimmung im Einzelfall / vorhabenbezogene Bauartgenehmigung)</p>
-                      <p className="text-[11px] text-text-main/70 mt-1">Erteilt durch die Oberste Bauaufsichtsbehörde des Bundeslandes für ein konkretes, einzelnes Bauprojekt. Enorm aufwendig.</p>
+                      <p className="text-[11px] text-text-main/70 mt-1">Erteilt durch die Oberste Bauaufsichtsbehörde des Bundeslandes für ein konkretes, einzelnes Bauprojekt. Aufwendig und nur für dieses Vorhaben gültig.</p>
                     </div>
 
                     <div className="p-3 bg-white rounded-lg border border-home-grau/10">
@@ -490,7 +491,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                   Rolle der Notifizierten Stelle (Fremdüberwachung)
                 </h4>
                 <p className="mb-2 leading-relaxed">
-                  Ab System 3 wird eine neutrale europäische Überwachungs- und Prüfinstitution (ein unparteiischer und qualifizierter Dritter) eingspannt. Je niedriger die Systemnummer, desto stärker ist die notifizierte Stelle beteiligt: Sie prüft nicht nur das fertige Produkt im Brandschacht oder auf der Zugprüfmaschine (Erstprüfung), sondern auditiert das Werk, öffnet Lagerhallen, prüft die Kalibrierung der Werkswaagen und zieht zufällige Kontrollproben aus Verkaufsregalen (Audit-Testing).
+                  Ab System 3 wird eine neutrale europäische Überwachungs- und Prüfinstitution (ein unparteiischer und qualifizierter Dritter) eingebunden. Je niedriger die Systemnummer, desto stärker ist die notifizierte Stelle beteiligt: Sie prüft nicht nur das fertige Produkt im Brandschacht oder auf der Zugprüfmaschine (Erstprüfung), sondern auditiert das Werk, öffnet Lagerhallen, prüft die Kalibrierung der Werkswaagen und zieht zufällige Kontrollproben aus Verkaufsregalen (Audit-Testing).
                 </p>
               </div>
             </div>
@@ -524,7 +525,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                     Die <strong>Akkreditierung</strong> ist die staatliche Anerkennung der fachlichen, personellen und organisatorischen Kompetenz einer Institution (z. B. ein Prüflabor oder eine Produktzertifizierungsstelle), um bestimmte Konformitäts-Bewertungen durchzuführen. Es ist vereinfacht ausgedrückt die <strong>"Zertifizierung der Zertifizierer"</strong>.
                   </p>
                   <p className="text-xs text-text-main/80 bg-slate-50 p-2 rounded border border-home-grau/10">
-                    <strong>Rechtliche Basis:</strong> EU-Verordnung (EG) Nr. 765/2008. In Deutschland darf dies monopolisiert nur eine einzige Behörde durchführen: die <strong>DAkkS (Deutsche Akkreditierungsstelle GmbH)</strong>.
+                    <strong>Rechtliche Basis:</strong> EU-Verordnung (EG) Nr. 765/2008. In Deutschland ist dafür ausschließlich die nationale Akkreditierungsstelle <strong>DAkkS (Deutsche Akkreditierungsstelle GmbH)</strong> zuständig.
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium whitespace-nowrap">
@@ -658,7 +659,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                   Technische Normenarbeit im Bauwesen
                 </h3>
                 <p className="text-xs text-indigo-100/80 leading-relaxed max-w-3xl">
-                  Normen sind keine Gesetze, sondern systematische, im Konsens erarbeitete Empfehlungen privatrechtlicher Institutionen. Erst durch die gesetzliche Inbezugnahme oder baurechtliche Einführung erliegen sie bindenden Charakter im Hochbau.
+                  Normen sind keine Gesetze, sondern systematische, im Konsens erarbeitete Empfehlungen privatrechtlicher Institutionen. Erst durch die gesetzliche Inbezugnahme oder baurechtliche Einführung erlangen sie bindenden Charakter im Hochbau.
                 </p>
               </div>
             </div>
@@ -741,7 +742,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
               </div>
 
               {/* Wiener Vereinbarung Detail Callout */}
-              <div className="bg-slate-100 border border-home-grau/30 p-3 rounded-xl mt-3 text-xs text-slate-705 leading-relaxed">
+              <div className="bg-slate-100 border border-home-grau/30 p-3 rounded-xl mt-3 text-xs text-slate-700 leading-relaxed">
                 <span className="font-bold text-slate-900">Die Wiener Vereinbarung (Vienna Agreement):</span> Stellt sicher, dass Normen parallel als EN ISO bzw. ISO EN entwickelt werden können. Nationale Mitglieder stimmen zeitgleich ab, wodurch internationale Harmonisierung drastisch beschleunigt wird.
               </div>
             </div>
@@ -907,6 +908,8 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
 
       </div>
       
+      {!isEmbedded && <ModulTest moduleId="bp_recht" />}
+
       {!isEmbedded && activeSubTab === 'normenarbeit' && (
         <ModuleFooter 
           wikipedia={[
@@ -916,8 +919,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
             { title: "Stand der Technik", url: "https://de.wikipedia.org/wiki/Stand_der_Technik" }
           ]} 
           literatur={[
-            "DIN (Hrsg.): Normen im Bauwesen - Leitfaden zur Anwendung und Verbindlichkeit.",
-            "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011"
+            "Gerhold, P.: Bauproduktenrecht in der Praxis – Von der Bauproduktleistung bis zur Baudokumentation. 2. Aufl., Köln: Rudolf Müller 2021"
           ]} 
           regelwerke={[
             { title: "DIN 820-1 (Normungsarbeit - Grundsätze)" },
@@ -938,13 +940,14 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
             { title: "Europäische Technische Bewertung (ETA)", url: "https://de.wikipedia.org/wiki/Europ%C3%A4ische_Technische_Bewertung" }
           ]} 
           literatur={[
-            "Karsten, W.: Bauproduktenrecht in Europa und Deutschland.",
-            "Deutsches Institut für Bautechnik (DIBt): AVCP-Systeme nach BauPVO - Leitfaden für Hersteller und Anwender."
+            "Gerhold, P.: Bauproduktenrecht in der Praxis – Von der Bauproduktleistung bis zur Baudokumentation. 2. Aufl., Köln: Rudolf Müller 2021",
+            "Gerhold, P.: Neues Bauproduktenrecht in der Praxis – Bauordnung und MVV TB verstehen und anwenden. Köln: Rudolf Müller 2019"
           ]} 
           regelwerke={[
             { title: "Verordnung (EU) 2024/3110 (Bauprodukteverordnung, anwendbar seit 08.01.2026); übergangsweise Verordnung (EU) Nr. 305/2011 für Produkte unter alten harmonisierten Normen/EAD", url: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R3110" },
             { title: "Verordnung (EG) Nr. 765/2008 (Akkreditierung und Marktüberwachung)", url: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32008R0765" },
-            { title: "DIBt - Deutsches Institut für Bautechnik", url: "https://www.dibt.de/" }
+            { title: "Muster-Verwaltungsvorschrift Technische Baubestimmungen (MVV TB), aktuelle Ausgabe", url: "https://www.dibt.de/" },
+            { title: "Musterbauordnung (MBO) §§ 16a–25", url: "https://www.bauministerkonferenz.de/" }
           ]} 
           formeln={[
             {

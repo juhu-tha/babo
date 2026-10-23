@@ -1158,7 +1158,7 @@ export default function LaborAuswertung() {
                   filteredVerfahren.map((item, index) => (
                     <tr key={index} className="hover:bg-slate-50/50 transition-colors">
                       <td className="py-3 px-4 font-bold text-slate-850 font-sans">{item.verfahren}</td>
-                      <td className="py-3 px-4 text-slate-605 text-slate-600 leading-normal">{item.zielgroese}</td>
+                      <td className="py-3 px-4 text-slate-600 text-slate-600 leading-normal">{item.zielgroese}</td>
                       <td className="py-3 px-4 text-slate-500 font-mono text-[10px]">{item.normen}</td>
                       <td className="py-3 px-4 text-center">
                         <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold inline-block border ${

@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, BookOpen, CheckCircle2, Lightbulb, Calculator, Sparkles, ShieldCheck, AlertTriangle, BadgeCheck } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -92,9 +94,9 @@ export default function BpDachFassade() {
               <div className="bg-off-white dark:bg-slate-950/30 p-5 rounded-xl border border-home-grau/30 dark:border-slate-800">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Vorgehängte hinterlüftete Fassade (VHF)</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 dark:text-slate-300 space-y-2">
-                  <li><strong>Faserzementplatten:</strong> Faserarmierte Zementsteinplatten nach DIN EN 12467, extrem witterungsbeständig und nicht brennbar (Baustoffklasse A2).</li>
+                  <li><strong>Faserzementplatten:</strong> Faserarmierte Zementsteinplatten nach DIN EN 12467, sehr witterungsbeständig und nichtbrennbar (Euroklasse A2-s1, d0).</li>
                   <li><strong>HPL-Platten (High Pressure Laminate):</strong> Hochdruck-Schichtstoffplatten nach DIN EN 438 aus harzimprägnierten Zellulosefasern für langlebige Vorhangfassaden.</li>
-                  <li><strong>Aluminium-Verbundplatten:</strong> Zwei dünne Deckbleche mit mineralisch gefülltem oder flammgeschütztem Kunststoffkern (z. B. Alucobond).</li>
+                  <li><strong>Aluminium-Verbundplatten:</strong> Zwei dünne Deckbleche mit mineralisch gefülltem oder flammgeschütztem Kunststoffkern.</li>
                   <li><strong>Hinterlüfteter Raum:</strong> Min. 2 cm Lüftungsspalt transportiert anfallende Feuchtigkeit und sommerliche Hitze verlässlich nach oben ab.</li>
                 </ul>
               </div>
@@ -165,7 +167,7 @@ export default function BpDachFassade() {
               <h4 className="font-bold text-teal-900 dark:text-emerald-300 flex items-center gap-1.5 mb-1 text-sm">
                 <Calculator size={16} /> Fenster-Wärmedurchgangskoeffizient (Uw) nach DIN EN ISO 10077-1
               </h4>
-              <p className="text-xs leading-relaxed text-teal-955 dark:text-slate-300 font-normal">
+              <p className="text-xs leading-relaxed text-teal-950 dark:text-slate-300 font-normal">
                 Das Gebäudeenergie- bzw. Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG) bewertet Fenster immer als Gesamtsystem. Der Gesamtwert Uw vereint den Wärmestrom durch die Verglasung (Ug), den Fensterrahmen (Uf) und den Wärmeverlust durch den Abstandhalter am Glasrand (Ψg).
               </p>
             </div>
@@ -179,7 +181,7 @@ export default function BpDachFassade() {
                 
                 {/* Geometrie */}
                 <div className="bg-slate-50 dark:bg-slate-950/30 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
-                  <h4 className="font-semibold text-text-main dark:text-slate-200 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-805 pb-1.5">Fenster-Geometrie</h4>
+                  <h4 className="font-semibold text-text-main dark:text-slate-200 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1.5">Fenster-Geometrie</h4>
                   
                   {/* Breite */}
                   <div className="space-y-1">
@@ -235,7 +237,7 @@ export default function BpDachFassade() {
 
                 {/* Thermische Kennwerte */}
                 <div className="bg-slate-50 dark:bg-slate-950/30 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
-                  <h4 className="font-semibold text-text-main dark:text-slate-200 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-805 pb-1.5">Wärmeschutzkennwerte der Komponenten</h4>
+                  <h4 className="font-semibold text-text-main dark:text-slate-200 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1.5">Wärmeschutzkennwerte der Komponenten</h4>
                   
                   {/* U_g Glas */}
                   <div className="space-y-1">
@@ -254,7 +256,7 @@ export default function BpDachFassade() {
                         className="w-full h-1.5 rounded bg-zinc-200 dark:bg-slate-800 accent-shiraz cursor-pointer my-auto"
                       />
                       <select 
-                        className="text-[10px] p-1 border rounded bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-705 font-bold"
+                        className="text-[10px] p-1 border rounded bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 font-bold"
                         onChange={(e) => setUgWert(parseFloat(e.target.value))}
                         value={u_g_wert}
                       >
@@ -283,7 +285,7 @@ export default function BpDachFassade() {
                         className="w-full h-1.5 rounded bg-zinc-200 dark:bg-slate-800 accent-shiraz cursor-pointer my-auto"
                       />
                       <select 
-                        className="text-[10px] p-1 border rounded bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-705 font-bold"
+                        className="text-[10px] p-1 border rounded bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 font-bold"
                         onChange={(e) => setUfWert(parseFloat(e.target.value))}
                         value={u_f_wert}
                       >
@@ -316,7 +318,7 @@ export default function BpDachFassade() {
 
                 {/* Solare Gewinne */}
                 <div className="bg-slate-50 dark:bg-slate-950/30 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
-                  <h4 className="font-semibold text-text-main dark:text-slate-200 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-805 pb-1.5">Solare Bilanzierung</h4>
+                  <h4 className="font-semibold text-text-main dark:text-slate-200 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1.5">Solare Bilanzierung</h4>
                   
                   {/* g-Wert */}
                   <div className="space-y-1">
@@ -387,17 +389,17 @@ export default function BpDachFassade() {
                   let alertIcon = null;
 
                   if (u_w <= 0.8) {
-                    textStatus = 'Passivhaus-Tauglichkeit (Exzellent): Entspricht dem absoluten Spitzenwert für CO2-neutrale Gebäude.';
+                    textStatus = 'Passivhaus-Niveau (U_w ≤ 0,80 W/(m²K)): sehr guter Wärmeschutz.';
                     bgStatus = 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-300 border-emerald-250 dark:border-emerald-800/40 border';
-                    alertIcon = <ShieldCheck className="text-emerald-705 dark:text-emerald-450 flex-shrink-0" size={16} />;
+                    alertIcon = <ShieldCheck className="text-emerald-700 dark:text-emerald-450 flex-shrink-0" size={16} />;
                   } else if (u_w <= 1.3) {
-                    textStatus = 'GModG-konform (Bestandssanierung, vormals GEG): Weist einen soliden Standard nach und ist baurechtlich vollzulässig.';
-                    bgStatus = 'bg-teal-50 dark:bg-slate-950/30 text-teal-950 dark:text-slate-350 border-teal-200 dark:border-slate-805 border';
+                    textStatus = 'Erfüllt die Anforderung für den Fensteraustausch im Bestand (U_w ≤ 1,30 W/(m²K) nach GEG Anlage 7; Übernahme ins GModG manuell prüfen).';
+                    bgStatus = 'bg-teal-50 dark:bg-slate-950/30 text-teal-950 dark:text-slate-350 border-teal-200 dark:border-slate-800 border';
                     alertIcon = <BadgeCheck className="text-teal-700 dark:text-teal-450 flex-shrink-0" size={16} />;
                   } else {
-                    textStatus = 'NICHT GMODG-KONFORM: Für den Fensteraustausch im Bestand schreibt das GModG (vormals GEG) einen maximalen Uw-Wert von 1,30 W/m²K vor!';
-                    bgStatus = 'bg-rose-50 dark:bg-red-950/20 text-rose-955 dark:text-red-300 border-rose-200 dark:border-red-900/40 border';
-                    alertIcon = <AlertTriangle className="text-rose-750 dark:text-rose-455 flex-shrink-0" size={16} />;
+                    textStatus = 'Anforderung nicht erfüllt: Für den Fensteraustausch im Bestand gilt U_w ≤ 1,30 W/(m²K) (GEG Anlage 7; im GModG manuell prüfen).';
+                    bgStatus = 'bg-rose-50 dark:bg-red-950/20 text-rose-950 dark:text-red-300 border-rose-200 dark:border-red-900/40 border';
+                    alertIcon = <AlertTriangle className="text-rose-750 dark:text-rose-450 flex-shrink-0" size={16} />;
                   }
 
                   return (
@@ -421,12 +423,12 @@ export default function BpDachFassade() {
                           <span className="font-extrabold text-zinc-800 dark:text-slate-200">{formatDeZahl(f_area, 2)} m²</span>
                         </div>
                         <div className="bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-800">
-                          <span className="text-[9px] text-zinc-405 block">GlasAg ({formatDeZahl((g_area / f_area * 100), 0)}%)</span>
-                          <span className="font-extrabold text-sky-700 dark:text-sky-455">{formatDeZahl(g_area, 2)} m²</span>
+                          <span className="text-[9px] text-zinc-400 block">GlasAg ({formatDeZahl((g_area / f_area * 100), 0)}%)</span>
+                          <span className="font-extrabold text-sky-700 dark:text-sky-450">{formatDeZahl(g_area, 2)} m²</span>
                         </div>
                         <div className="bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-800">
-                          <span className="text-[9px] text-zinc-405 block">RahmenAf</span>
-                          <span className="font-extrabold text-amber-700 dark:text-amber-455">{formatDeZahl(r_area, 2)} m²</span>
+                          <span className="text-[9px] text-zinc-400 block">RahmenAf</span>
+                          <span className="font-extrabold text-amber-700 dark:text-amber-450">{formatDeZahl(r_area, 2)} m²</span>
                         </div>
                       </div>
 
@@ -442,7 +444,7 @@ export default function BpDachFassade() {
                             <span className="text-amber-750">Rahmenfläche (<InlineMath math="A_f \cdot U_f" />):</span>
                             <span className="font-bold">{formatDeZahl(q_frame, 2)} W/K</span>
                           </div>
-                          <div className="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-805 pb-0.5">
+                          <div className="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-0.5">
                             <span className="text-violet-750">Randverbund-Verlust (<InlineMath math="l_g \cdot \Psi_g" />):</span>
                             <span className="font-bold">{formatDeZahl(q_psi, 2)} W/K</span>
                           </div>
@@ -456,7 +458,7 @@ export default function BpDachFassade() {
                       {/* SOLAR GAINS */}
                       <div className="bg-emerald-500/5 p-4 rounded-lg border border-emerald-500/10 text-xs">
                         <div className="flex justify-between items-center text-xs">
-                          <div className="flex items-center gap-1.5 text-emerald-850 dark:text-emerald-355 font-bold">
+                          <div className="flex items-center gap-1.5 text-emerald-850 dark:text-emerald-350 font-bold">
                             <Sparkles className="w-4 h-4 text-emerald-600" />
                             <span>Sonneneintrag (Vorteil):</span>
                           </div>
@@ -494,6 +496,22 @@ export default function BpDachFassade() {
         )}
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: U_w eines Fensters"
+          zielGleichung="U_w = \frac{A_g U_g + A_f U_f + l_g \Psi_g}{A_g + A_f}"
+          normQuelle="DIN EN ISO 10077-1 (Lehrbeispiel)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'A_g = 1{,}30\\,\\text{m}^2,\\; U_g = 0{,}6;\\; A_f = 0{,}52\\,\\text{m}^2,\\; U_f = 1{,}2;\\; l_g = 4{,}6\\,\\text{m},\\; \\Psi_g = 0{,}04', erklaerung: 'Dreifachverglasung, Kunststoffrahmen, warme Kante; U in W/(m²K), Ψ in W/(mK).' },
+            { titel: '2. Wärmeströme je K', formel: '1{,}30 \\cdot 0{,}6 + 0{,}52 \\cdot 1{,}2 + 4{,}6 \\cdot 0{,}04 = 0{,}78 + 0{,}62 + 0{,}18 = 1{,}59\\,\\text{W/K}', erklaerung: 'Glas, Rahmen, Glasrand.' },
+            { titel: '3. Fensterwert', formel: 'U_w = 1{,}59 / 1{,}82 = 0{,}87\\,\\text{W/(m}^2\\text{K)}', erklaerung: 'Gesamtfläche 1,82 m².' },
+          ]}
+          ergebnisHinweis="U_w = 0,87 W/(m²K): deutlich besser als 1,30, aber knapp über Passivhaus-Niveau (0,80) – Rahmen und Glasrand machen rund die Hälfte der Verluste aus."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_dach_fassade" />
+
       <ModuleFooter 
         wikipedia={[ 
           { title: "Mehrscheiben-Isolierglas", url: "https://de.wikipedia.org/wiki/Mehrscheiben-Isolierglas" }, 
@@ -501,13 +519,14 @@ export default function BpDachFassade() {
           { title: "Wärmedurchgangskoeffizient", url: "https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient" }
         ]} 
         literatur={[ 
-          'Schirmbeck, E. et al. (2019): Architektur der Fassade (Detail Verlag)', 
+          'Herzog, T.; Krippner, R.; Lang, W.: Fassaden Atlas. München: Edition Detail (Auflage manuell prüfen)', 
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Willems, W. M. (2018): Lehrbuch der Bauphysik (8. Auflage, Springer Vieweg)'
+          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN ISO 10077-1 (Wärmetechnisches Verhalten von Fenstern, Türen und Abschlüssen - Berechnung des Wärmedurchgangskoeffizienten)' }, 
-          { title: 'GEG (Gebäudeenergiegesetz - Anforderungen an opake und transparente Außenbauteile)', url: 'https://www.gesetze-im-internet.de/geg/' }, 
+          { title: 'GModG (vormals GEG) – Anforderungen an opake und transparente Außenbauteile', url: 'https://www.gesetze-im-internet.de/geg/' }, 
+          { title: 'DIN 18516-1 (Außenwandbekleidungen, hinterlüftet – Anforderungen, Prüfgrundsätze)' }, 
           { title: 'ZVDH (Zentralverband des Deutschen Dachdeckerhandwerks) - Fachregeln für Abdichtungen und Dachdeckungen' } 
         ]} 
         formeln={[

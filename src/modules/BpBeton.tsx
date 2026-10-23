@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Layers, HardHat, Info, Truck, BookOpen, ShieldAlert, ArrowRight, CheckCircle2, Lightbulb } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 
@@ -19,7 +21,7 @@ function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
           Material-Lehrpfad: Beton im Bauwesen
         </h4>
         <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den verschiedenen Beton-Lehrbereichen:
+          Weiter zu den anderen Beton-Lehrbereichen:
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -183,9 +185,9 @@ export default function BpBeton() {
 
               <h3 className="text-lg font-bold text-home-prim mt-8 mb-4">Normative Anforderungen als Bauprodukt</h3>
               <ul className="list-disc pl-5 space-y-2 mt-2">
-                <li><strong>Eigenschaften:</strong> Die Lieferung erfolgt in der Regel als "Beton nach Eigenschaften". Der Planer besteller bestimmte Eigenschaften (Festigkeit, Konsistenz, Expositionsklassen), und das Betonwerk ist für die Rezeptur verantwortlich.</li>
+                <li><strong>Eigenschaften:</strong> Die Lieferung erfolgt in der Regel als "Beton nach Eigenschaften". Der Besteller legt bestimmte Eigenschaften (Festigkeit, Konsistenz, Expositionsklassen), fest, und das Betonwerk ist für die Rezeptur verantwortlich.</li>
                 <li><strong>Zusammensetzung:</strong> Seltener ist "Beton nach Zusammensetzung", bei dem der Besteller dem Werk die exakte Rezeptur (z. B. Zementgehalt, w/z-Wert) vorgibt.</li>
-                <li><strong>Ü-Zeichen:</strong> Beton nach DIN 1045-2 is ein geregeltes Bauprodukt und wird in Deutschland mit dem Übereinstimmungszeichen (Ü-Zeichen) gekennzeichnet (Lieferschein).</li>
+                <li><strong>Ü-Zeichen:</strong> Beton nach DIN 1045-2 ist ein geregeltes Bauprodukt und wird in Deutschland mit dem Übereinstimmungszeichen (Ü-Zeichen) gekennzeichnet (Lieferschein).</li>
                 <li><strong>Nachhaltigkeit (CSC):</strong> Immer öfter wird von Herstellern ein CSC-Zertifikat (Concrete Sustainability Council) gefordert, welches die ökologisch, sozial und ökonomisch verantwortungsvolle Herstellung belegt (relevant für QNG/DGNB).</li>
               </ul>
 
@@ -206,6 +208,22 @@ export default function BpBeton() {
       
       <ConcreteThematicLinks current="bauprodukt" />
       
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Erreicht eine Prüfserie C30/37?"
+          zielGleichung="f_{ck} = f_{cm} - 1{,}645 \cdot s"
+          normQuelle="Statistische Definition der charakteristischen Festigkeit (Lehrbeispiel, Zylinderwerte)"
+          schritte={[
+            { titel: '1. Prüfergebnisse', formel: 'f_{cm} = 38{,}5\\,\\text{N/mm}^2,\\; s = 5{,}0\\,\\text{N/mm}^2', erklaerung: 'Mittelwert und Standardabweichung einer Produktionsserie.' },
+            { titel: '2. 5-%-Quantil', formel: 'f_{ck} = 38{,}5 - 1{,}645 \\cdot 5{,}0 = 30{,}3\\,\\text{N/mm}^2', erklaerung: 'Nur 5 % der Ergebnisse liegen darunter.' },
+            { titel: '3. Bewertung', formel: '30{,}3 \\ge 30\\,\\text{N/mm}^2 \\;\\Rightarrow\\; \\text{C30/37 erreicht}', erklaerung: 'Für die formale Konformität gelten die Kriterien der DIN EN 206 / DIN 1045-2.' },
+          ]}
+          ergebnisHinweis="Je größer die Streuung s, desto höher muss der Mittelwert liegen – gute Produktionskontrolle spart Zement."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_beton" />
+
       <ModuleFooter
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
@@ -213,9 +231,9 @@ export default function BpBeton() {
           { title: 'Festbeton', url: 'https://de.wikipedia.org/wiki/Festbeton' }
         ]}
         literatur={[
-          'Grübl, P. / Weigler, H. / Karl, S.: Beton – Arten, Herstellung und Eigenschaften.',
-          'Weber, R.: Beton - Herstellung, Verarbeitung, Eigenschaften.',
-          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch.'
+          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
+          'Weber, R.: Guter Beton – Ratschläge für die richtige Betonherstellung. Düsseldorf: Verlag Bau+Technik (Auflage manuell prüfen)',
+          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008'
         ]}
         regelwerke={[
           { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
@@ -229,8 +247,8 @@ export default function BpBeton() {
             quelle: 'DIN EN 206 / DIN 1045-2'
           },
           {
-            formel: 'f_{ck} = f_{cm} - 1.645 \\cdot s',
-            erklaerung: 'Statistisches 5%-Fraktil der Zylinder- bzw. Würfeldruckfestigkeit.',
+            formel: 'f_{ck} = f_{cm} - 1{,}645 \\cdot s',
+            erklaerung: 'Charakteristische Festigkeit als 5-%-Quantil (Normalverteilung, bekannte Standardabweichung s). Die Konformitätskriterien der DIN EN 206 (z. B. f_cm ≥ f_ck + 4 bei n = 3) sind daraus abgeleitet.',
             quelle: 'DIN EN 206'
           }
         ]}

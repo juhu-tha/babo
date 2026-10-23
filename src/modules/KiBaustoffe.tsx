@@ -661,7 +661,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-amber-50/[0.22] border border-amber-200/55 rounded-2xl space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-bold text-amber-955 bg-amber-50/70 p-1.5 rounded-lg border border-amber-100">
+                    <div className="flex items-center gap-2 text-xs font-bold text-amber-950 bg-amber-50/70 p-1.5 rounded-lg border border-amber-100">
                       <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-800 text-[10px] flex items-center justify-center font-black">1</span>
                       <span>Stelle Rückfragen vor der Bearbeitung</span>
                     </div>
@@ -674,7 +674,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   </div>
 
                   <div className="p-4 bg-emerald-50/[0.18] border border-emerald-200/40 rounded-2xl space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-bold text-emerald-955 bg-emerald-50/70 p-1.5 rounded-lg border border-emerald-100">
+                    <div className="flex items-center gap-2 text-xs font-bold text-emerald-950 bg-emerald-50/70 p-1.5 rounded-lg border border-emerald-100">
                       <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] flex items-center justify-center font-black">2</span>
                       <span>Regelwerke &amp; Absätze kritisch verifizieren</span>
                     </div>
@@ -687,7 +687,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   </div>
 
                   <div className="p-4 bg-indigo-50/[0.2] border border-indigo-200/40 rounded-2xl space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-bold text-indigo-955 bg-indigo-50/70 p-1.5 rounded-lg border border-indigo-100">
+                    <div className="flex items-center gap-2 text-xs font-bold text-indigo-950 bg-indigo-50/70 p-1.5 rounded-lg border border-indigo-100">
                       <span className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-800 text-[10px] flex items-center justify-center font-black">3</span>
                       <span>Chain of Thought (Herleitungsschritte fordern)</span>
                     </div>
@@ -700,7 +700,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                   </div>
 
                   <div className="p-4 bg-rose-50/[0.18] border border-rose-200/40 rounded-2xl space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-bold text-rose-955 bg-rose-50/70 p-1.5 rounded-lg border border-rose-100">
+                    <div className="flex items-center gap-2 text-xs font-bold text-rose-950 bg-rose-50/70 p-1.5 rounded-lg border border-rose-100">
                       <span className="w-5 h-5 rounded-full bg-rose-100 text-rose-800 text-[10px] flex items-center justify-center font-black">4</span>
                       <span>Referenzvorgaben bestimmen (Few-Shot Prompts)</span>
                     </div>

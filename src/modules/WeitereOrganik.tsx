@@ -190,7 +190,7 @@ function DynamicInteractiveDegradationCalculator() {
             {/* Chemical attacks */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-medium text-slate-700">
-                <span className="flex items-center gap-1"><Beaker className="w-3.5 h-3.5 text-indigo-505" /> Chemische Beanspruchung (Säuren/Salze/Ozon)</span>
+                <span className="flex items-center gap-1"><Beaker className="w-3.5 h-3.5 text-indigo-500" /> Chemische Beanspruchung (Säuren/Salze/Ozon)</span>
                 <span className="font-bold">{formatDeWert(chemicalLoad)}/5</span>
               </div>
               <input 
@@ -205,7 +205,7 @@ function DynamicInteractiveDegradationCalculator() {
           <div className="space-y-2">
             <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Rezeptur-Modifikation &amp; Schutzmaßnahmen:</span>
             <div className="flex flex-col sm:flex-row gap-2">
-              <label className="flex-1 flex items-center gap-2 p-2.5 rounded-xl border border-slate-205 cursor-pointer bg-white text-xs select-none hover:bg-slate-50 transition-colors">
+              <label className="flex-1 flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 cursor-pointer bg-white text-xs select-none hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" checked={hasUvStabilizer} 
                   onChange={(e) => setHasUvStabilizer(e.target.checked)}
@@ -218,7 +218,7 @@ function DynamicInteractiveDegradationCalculator() {
                 </div>
               </label>
 
-              <label className="flex-1 flex items-center gap-2 p-2.5 rounded-xl border border-slate-205 cursor-pointer bg-white text-xs select-none hover:bg-slate-50 transition-colors">
+              <label className="flex-1 flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 cursor-pointer bg-white text-xs select-none hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" checked={hasHydrophobicSeal} 
                   onChange={(e) => setHasHydrophobicSeal(e.target.checked)}
@@ -490,7 +490,7 @@ export default function WeitereOrganik() {
 
           {/* Triad of Organic Corrosion */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-5 rounded-xl border border-slate-205 shadow-sm space-y-3">
+            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
               <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
                 <Sun className="w-5 h-5" />
               </div>
@@ -500,7 +500,7 @@ export default function WeitereOrganik() {
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-205 shadow-sm space-y-3">
+            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
               <div className="w-10 h-10 rounded-lg bg-rose-100 flex items-center justify-center text-shiraz">
                 <Thermometer className="w-5 h-5" />
               </div>
@@ -510,7 +510,7 @@ export default function WeitereOrganik() {
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-205 shadow-sm space-y-3">
+            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
               <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
                 <Leaf className="w-5 h-5" />
               </div>
@@ -609,7 +609,7 @@ export default function WeitereOrganik() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-5 rounded-xl border border-slate-205 shadow-sm space-y-3">
+            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
               <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest block">Mechanismus</span>
               <h4 className="font-bold text-slate-850 text-sm">Weichmacher-Auswanderung (Migration)</h4>
               <p className="text-xs text-slate-650 leading-relaxed mb-2">
@@ -620,7 +620,7 @@ export default function WeitereOrganik() {
               </div>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-205 shadow-sm space-y-3">
+            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
               <span className="text-xs font-bold text-red-600 uppercase tracking-widest block">Schadensbild</span>
               <h4 className="font-bold text-slate-850 text-sm">Kreidung / Abkreiden</h4>
               <p className="text-xs text-slate-650 leading-relaxed mb-2">
@@ -642,7 +642,7 @@ export default function WeitereOrganik() {
               <h3 className="text-lg font-bold text-slate-850 flex items-center gap-2">
                 🌱 Biologische Korrosion von Naturbaustoffen
               </h3>
-              <p className="text-sm text-slate-705 leading-relaxed">
+              <p className="text-sm text-slate-700 leading-relaxed">
                 Nachwachsende Rohstoffe (NaWaRo) wie <strong>Hanffasern, Stroh, Schilf, Zelluloseeinblasdämmung und Naturkork</strong> werden im Sinne des nachhaltigen Bauens immer wichtiger. Doch im Gegensatz zu mineralischen Dämmstoffen (Mineralwolle, Blähton) sind diese organischen, zellulosebasierten Fasern biological abbaubar und dienen Schädlingen als Nährboden.
               </p>
 
@@ -670,7 +670,7 @@ export default function WeitereOrganik() {
                 </div>
               </div>
 
-              <div className="bg-amber-50 rounded-xl p-4 border border-amber-250 text-xs text-slate-755 leading-relaxed">
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-250 text-xs text-slate-750 leading-relaxed">
                 <strong>Zentraler Leitsatz der Ökologischen Bauchemie:</strong> 
                 <p className="mt-1">
                   <em>„Der chemische Holz- und Faserschutz (Biozide, Fungizide) kann konstruktive Planungsfehler nie langfristig korrigieren. Nur der konsequente, bauliche Feuchteschutz (Hinterlüftung, Trockenhalten, Verhinderung stehender Nässe) schützt Naturbaustoffe dauerhaft vor biologischer Korrosion.“</em>
@@ -678,7 +678,7 @@ export default function WeitereOrganik() {
               </div>
             </div>
 
-            <div className="md:col-span-4 bg-white border border-slate-205 p-4 rounded-xl space-y-4">
+            <div className="md:col-span-4 bg-white border border-slate-200 p-4 rounded-xl space-y-4">
               <span className="text-xs font-bold text-slate-500 uppercase tracking-widest block">Brandschutz vs. Bioschutz</span>
               <h4 className="font-bold text-slate-850 text-sm">Mineralisierung &amp; Imprägnierung</h4>
               <p className="text-xs text-slate-600 leading-relaxed">

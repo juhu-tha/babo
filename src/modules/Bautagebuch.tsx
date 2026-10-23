@@ -657,7 +657,7 @@ export default function Bautagebuch() {
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
                   selectedProjectId === proj.id
                     ? 'bg-shiraz text-white border-shiraz shadow-xs'
-                    : 'bg-white text-slate-705 border-slate-200 hover:bg-slate-50'
+                    : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
                 }`}
                 id={`btn-proj-${proj.id}`}
               >
@@ -691,7 +691,7 @@ export default function Bautagebuch() {
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4 text-sm text-slate-705 leading-relaxed">
+              <div className="space-y-4 text-sm text-slate-700 leading-relaxed">
                 <div className="p-4 bg-off-white border-l-4 border-shiraz rounded-r-xl space-y-2">
                   <h4 className="font-bold text-slate-900 flex items-center gap-1.5">
                     <Info size={16} className="text-shiraz" /> Was ist ein Bautagebuch?
@@ -1188,7 +1188,7 @@ export default function Bautagebuch() {
                           value={behinderungDetails}
                           onChange={(e) => setBehinderungDetails(e.target.value)}
                           placeholder="Begründung nach § 6 Abs. 1 VOB/B..."
-                          className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-805 font-medium/80"
+                          className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-medium/80"
                         />
                       )}
                     </div>
@@ -1211,7 +1211,7 @@ export default function Bautagebuch() {
                           value={bedenkenDetails}
                           onChange={(e) => setBedenkenDetails(e.target.value)}
                           placeholder="Technische Bedenken nach § 4 Abs. 3 VOB/B..."
-                          className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-805 font-medium/80"
+                          className="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-medium/80"
                         />
                       )}
                     </div>

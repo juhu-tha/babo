@@ -693,7 +693,7 @@ export default function BpKunststoffe() {
               </div>
               <div className="bg-emerald-50/50 p-3 rounded-lg border border-emerald-100 text-center">
                 <span className="text-[10px] text-emerald-900 font-bold block uppercase leading-none mb-1">Dämpfer η₂ (Kelvin)</span>
-                <span className="text-xs font-semibold text-slate-705">Verzögerungselement der viskoelastischen Relevanz</span>
+                <span className="text-xs font-semibold text-slate-700">Verzögerungselement der viskoelastischen Relevanz</span>
               </div>
             </div>
           </div>

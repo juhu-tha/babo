@@ -750,7 +750,7 @@ export default function Bauwerksunters_Monitoring() {
                       max="100"
                       value={concreteAge}
                       onChange={(e) => setConcreteAge(parseInt(e.target.value))}
-                      className="w-full accent-slate-805"
+                      className="w-full accent-slate-800"
                     />
                   </div>
                 </div>
@@ -772,7 +772,7 @@ export default function Bauwerksunters_Monitoring() {
                       <span className="text-[9px] text-slate-300 block mt-1 leading-normal italic">{reboundEvaluation.karbonatisiert ? 'Karbonatisierte Randzonen erhöhen R – Prüffläche abschleifen bzw. Karbonatisierungstiefe dokumentieren.' : 'In Festigkeit umrechnen nur über eine Kalibrierung an Bohrkernen desselben Bauteils (DIN EN 13791).'}</span>
                     </div>
                   </div>
-                  <div className="text-[10px] text-slate-500 leading-normal pt-1.5 border-t border-slate-205">
+                  <div className="text-[10px] text-slate-500 leading-normal pt-1.5 border-t border-slate-200">
                     <strong>Progress-Koeffizient f. Karbonatfront:</strong> k_c = {reboundEvaluation.k_c} mm/Jahr<sup>0,5</sup>
                   </div>
                 </div>

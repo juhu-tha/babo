@@ -286,14 +286,14 @@ export default function Kuriositaeten() {
                     <div className="text-slate-600">Förderhöhe H = 606 m; Dichte ρ = 2.400 kg/m³</div>
                     <div className="text-slate-600">Beschleunigungskonstante g = 9,81 m/s²</div>
                     <div className="text-slate-700 font-bold">1. Hydrostatischer Druckanteil P_hydro:</div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3">
                       P_hydro = (ρ × g × H) / 100.000 = 142,7 bar
                     </div>
                     <div className="text-slate-700 font-bold mt-2">2. Hydrodynamischer Reibungsdruckverlust P_reibung:</div>
                     <div className="text-slate-600">
                       Angenommener spezifischer Reibungsverlust im Förderrohr (Δp ≈ 0,11 bar/m):
                     </div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3">
                       P_reibung ≈ 606 m × 0,11 bar/m = 66,7 bar
                     </div>
                     <div className="text-slate-700 font-bold mt-2">3. Erforderlicher Arbeitsbetriebsdruck an der Pumpenkupplung:</div>
@@ -427,14 +427,14 @@ export default function Kuriositaeten() {
                     <div className="text-slate-600">Strömungsgeschwindigkeit v = 120 km/h ≈ 33,3 m/s</div>
                     <div className="text-slate-600">Luftdichte ρ_luft = 1,25 kg/m³</div>
                     <div className="text-slate-700 font-bold mt-2">1. Geschwindigkeitsdruck q gemäß Strömungsmechanik:</div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       q = 0,5 × ρ_luft × v² = 0,5 × 1,25 × (33,3)² = 693 N/m² (≈ 0,69 kN/m²)
                     </div>
                     <div className="text-slate-750 font-bold mt-2">2. Einwirkende Linienlast F_sog an kritischen Randsektionen:</div>
                     <div className="text-slate-600">
                       Lehrrechnung mit angenommener Einflussbreite von 38,5 m (ohne Druckbeiwerte):
                     </div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       F_sog ≈ q × L_einfluß = 0,69 kN/m² × 38,5 m = 26,6 kN/m
                     </div>
                   </div>
@@ -494,7 +494,7 @@ export default function Kuriositaeten() {
                     <div className="text-shiraz font-bold">1. REF-MODELL: CO-DESIGN NORMALBETON (C30/37):</div>
                     <div className="text-slate-650">Bemessungswert f_cd = 0,85 × 30 / 1,5 = 17,0 MPa (DIN EN 1992-1-1/NA)</div>
                     <div className="text-slate-650">Erforderliche geometrische Querschnittsfläche A_req:</div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       A = N_Ed / f_cd = 5.000.000 N / 17 N/mm² ≈ 294.000 mm²
                     </div>
                     <div className="text-slate-800 font-bold">Erforderlicher Kreisdurchmesser: d_0 ≈ 61 cm</div>
@@ -502,7 +502,7 @@ export default function Kuriositaeten() {
                     <div className="text-emerald-800 font-bold border-t pt-2">2. VERGLEICH: UHPC (f_ck = 150 MPa):</div>
                     <div className="text-slate-650">Bemessungswert f_cd = 0,85 × 150 / 1,5 = 85,0 MPa (gleiche Beiwerte angenommen; maßgebend ist die DAfStb-Richtlinie für UHFB)</div>
                     <div className="text-slate-650">Erforderliche geometrische Querschnittsfläche A_uhpc:</div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       A_uhpc = 5.000.000 N / 85 N/mm² ≈ 58.800 mm²
                     </div>
                     <div className="text-emerald-700 font-bold">Erforderlicher Kreisdurchmesser: d_uhpc ≈ 27 cm</div>
@@ -699,14 +699,14 @@ export default function Kuriositaeten() {
                     <div className="text-slate-600">Massenanteil Bindemittel (C): 260 kg/m³</div>
                     <div className="text-slate-600">Spezifische Hydratationswärme (CEM I): Q_h = 350 kJ/kg</div>
                     <div className="text-slate-700 font-bold mt-2">1. Freigesetzte thermische Energie (Q_total):</div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       Q_total = 260 kg × 350 kJ/kg = 91.000 kJ/m³
                     </div>
                     <div className="text-slate-720 font-bold mt-2">2. Theoretischer adiabatischer Temperaturanstieg ΔT:</div>
                     <div className="text-slate-600">
                       Spezifische Wärmekapazität von Frischbeton: cp ≈ 1,0 kJ/kg·K; Rohwichte: ρ_b ≈ 2.400 kg/m³
                     </div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       ΔT = Q_total / (cp × ρ_b) = 91.000 / (1,0 × 2.400) ≈ 37,9 K
                     </div>
                     <div className="text-slate-900 border-t pt-2 font-bold leading-snug">
@@ -771,14 +771,14 @@ export default function Kuriositaeten() {
                     <div className="text-slate-600">Überlagerungshöhe H = 2.000 m</div>
                     <div className="text-slate-600">Mittlere spezifische Wichte des Gesteins: &gamma; ≈ 27 kN/m³</div>
                     <div className="text-slate-700 font-bold mt-2">1. Vertikale Primärspannung des ungestörten Gebirges (&sigma;_v):</div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       &sigma;_v = H × &gamma; = 2.000 m × 27 kN/m³ = 54.000 kN/m² = 54 MPa
                     </div>
                     <div className="text-slate-700 font-bold mt-2">2. Rechnerisch erforderlicher radialer Stützdruck p_rad:</div>
                     <div className="text-slate-600">
                       Lehrannahme: Durch die Gewölbewirkung des Gebirges muss der Ausbau nur einen kleinen Bruchteil, hier angenommen 5 %, der Primärspannung aufnehmen:
                     </div>
-                    <div className="text-slate-805 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
+                    <div className="text-slate-800 bg-slate-50 p-1 font-mono pl-3 text-[11px]">
                       p_rad = 0,05 × 54 MPa = 2,7 MPa
                     </div>
                   </div>

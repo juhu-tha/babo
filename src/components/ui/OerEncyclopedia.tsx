@@ -311,7 +311,7 @@ export function OerEncyclopedia() {
                       Vergabe von Digital Object Identifiers garantiert permanente Zitierbarkeit.
                     </div>
                     <div className="p-2 bg-purple-50/50 border border-purple-100 rounded">
-                      <strong className="block text-purple-955 font-bold">Open Access (CC)</strong>
+                      <strong className="block text-purple-950 font-bold">Open Access (CC)</strong>
                       Rechtlich belastbare Lizenzen erlauben Remixen, Einbinden und Verbreiten.
                     </div>
                   </div>
@@ -465,7 +465,7 @@ export function OerEncyclopedia() {
                     </div>
                     <button 
                       onClick={resetTensile}
-                      className="p-1 px-2.5 bg-indigo-805 hover:bg-indigo-800 text-[10px] rounded border border-indigo-700 font-semibold flex items-center gap-1 transition-all"
+                      className="p-1 px-2.5 bg-indigo-800 hover:bg-indigo-800 text-[10px] rounded border border-indigo-700 font-semibold flex items-center gap-1 transition-all"
                     >
                       <RotateCcw size={11} /> Reset Test
                     </button>
@@ -536,7 +536,7 @@ export function OerEncyclopedia() {
                         disabled={probeBroken}
                         value={tensileForce}
                         onChange={(e) => handleTensileChange(parseInt(e.target.value))}
-                        className="w-full h-2 bg-slate-205 rounded-lg appearance-none cursor-pointer accent-indigo-650"
+                        className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-650"
                       />
                       
                       {/* Stress-Strain Realtime Data */}
@@ -566,7 +566,7 @@ export function OerEncyclopedia() {
                     </div>
                     <button 
                       onClick={resetCompression}
-                      className="p-1 px-2.5 bg-emerald-805 hover:bg-emerald-800 text-[10px] rounded border border-emerald-700 font-semibold flex items-center gap-1 transition-all"
+                      className="p-1 px-2.5 bg-emerald-800 hover:bg-emerald-800 text-[10px] rounded border border-emerald-700 font-semibold flex items-center gap-1 transition-all"
                     >
                       <RotateCcw size={11} /> Reset Test
                     </button>
@@ -663,7 +663,7 @@ export function OerEncyclopedia() {
                         disabled={concreteCrushed}
                         value={compressionForce}
                         onChange={(e) => handleCompressionChange(parseInt(e.target.value))}
-                        className="w-full h-2 bg-slate-205 rounded-lg appearance-none cursor-pointer accent-emerald-605"
+                        className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                       />
                       
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-slate-600">

@@ -929,7 +929,7 @@ export default function LCA() {
 
                     {/* Step 6 */}
                     <div className="flex gap-4 items-start">
-                      <div className="w-7 h-7 bg-emerald-100 border border-emerald-200 text-emerald-705 rounded-full flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5 shadow-sm">6</div>
+                      <div className="w-7 h-7 bg-emerald-100 border border-emerald-200 text-emerald-700 rounded-full flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5 shadow-sm">6</div>
                       <div className="space-y-1">
                         <strong className="text-xs text-slate-950 block font-bold">Synthese &amp; Abgleich mit den QNG-Schwellenwerten</strong>
                         <p className="text-[11.5px] text-slate-600 leading-relaxed font-sans">

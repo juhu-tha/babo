@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Layers, GripHorizontal, Info, BookOpen, CheckCircle2, Lightbulb, Target, Sparkles, Droplet, Zap, Eye, RefreshCw, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 
 export default function BpBetonwaren() {
@@ -15,7 +17,7 @@ export default function BpBetonwaren() {
     // Paving & Sofortentschalung hotspots
     'paving-vorsatz': {
       title: 'Vorsatzbeton (Edelvorsatzschicht)',
-      description: 'Eine 4 bis 10 mm starke Oberflächenschicht aus hochreißfestem Zementsystem (meist CEM I 52.5) und edlen Hartgesteinskörnungen (Granit, Quarz, Basalt) mit Korngröße ≤ 4 mm. Sichert Abriebfestigkeit gegen rollenden Verkehr, maximale Tausalz-Widerstandfähigkeit (XF4-Exposition) und langlebige Farbbrillanz durch Eisenoxid-Pigmentierung.',
+      description: 'Eine einige Millimeter dicke Oberflächenschicht aus zementreichem Feinbeton (häufig CEM I) mit Hartgesteinskörnungen (Granit, Quarz, Basalt) bis ca. 4 mm. Sichert Abriebwiderstand, Frost-Tausalz-Widerstand und eine dauerhafte Farbe (Eisenoxidpigmente).',
       tag: 'Oberflächenschutz & Ästhetik'
     },
     'paving-kern': {
@@ -30,7 +32,7 @@ export default function BpBetonwaren() {
     },
     'paving-compact': {
       title: 'Erdfeuchte Konsistenz & Grünfestigkeit',
-      description: 'Zentralschlüssel der Fertigung: Der Beton hat einen w/z-Wert von nur ca. 0.30 bis 0.38 (extrem trocken / erdfeucht). Bei Vibration verflüssigt sich die dichte Packung kurzzeitig (thixotroper Effekt) und verkeilt sich unter hohem Rütteldruck. Dies schafft extreme Kapillarkohäsion und die so genannte „Grünfestigkeit“.',
+      description: 'Zentralschlüssel der Fertigung: Der Beton hat einen w/z-Wert von nur ca. 0.30 bis 0.38 (sehr trocken / erdfeucht). Bei Vibration verflüssigt sich die dichte Packung kurzzeitig (thixotroper Effekt) und verkeilt sich unter hohem Rütteldruck. Dies schafft hohe Kapillarkohäsion und die so genannte „Grünfestigkeit“.',
       tag: 'Verarbeitungstechnik'
     },
     'paving-demold': {
@@ -41,7 +43,7 @@ export default function BpBetonwaren() {
     // Pipes & Manholes
     'pipe-wall': {
       title: 'Hochfester Rohrkörper (Beton/Stahlbeton)',
-      description: 'Betonrohre werden aus hochfestem, dichten Beton (meist C40/50 bis C60/75) im Radialpress- oder Rüttelverfahren hergestellt. Sie verfügen über extreme chemische Inertheit und maximale Belastungseignungen gegen die statischen Drücke schwerer Erdauflasten und LKW-Verkehrsknoten (SLW 60).',
+      description: 'Betonrohre werden aus hochfestem, dichten Beton (meist C40/50 bis C60/75) im Radialpress- oder Rüttelverfahren hergestellt. Sie sind dicht und tragen Erd- und Verkehrslasten (z. B. SLW 60) nach statischer Berechnung (z. B. ATV-DVWK-A 127).',
       tag: 'Schwerlast-Festigkeit'
     },
     'pipe-spigot': {
@@ -61,7 +63,7 @@ export default function BpBetonwaren() {
     },
     'pipe-bsk': {
       title: 'Gefahr: Biogene Schwefelsäurekorrosion (BSK)',
-      description: 'Im Abwasserraum wandeln Bakterien Sulfat in Schwefelwasserstoff (H₂S) um. Kondenswasser an der Rohrdecke oxidiert zu hochaggressiver Schwefelsäure, die das Kalziumsilikathydrat-Gefüge im Beton langsam auflöst. Abhilfe: Cementsysteme mit hohem Sulfatwiderstand (SR-Zemente, z.B. CEM III/B oder Ausmauerung).',
+      description: 'Im Abwasser bilden Bakterien unter Sauerstoffmangel Schwefelwasserstoff (H₂S). Im Kondenswasser an der Rohrdecke oxidieren andere Bakterien das H₂S zu Schwefelsäure, die den Zementstein auflöst (biogene Schwefelsäurekorrosion). Abhilfe: Faulprozesse vermeiden (Belüftung, Gefälle), säurewiderstandsfähiger Beton oder Auskleidung (z. B. PE-HD). SR-Zemente allein schützen nicht vor Säureangriff.',
       tag: 'Dauerhaftigkeits-Schnittstelle'
     }
   };
@@ -74,7 +76,7 @@ export default function BpBetonwaren() {
             <Info className="w-5 h-5 mx-auto text-slate-350" />
             <p className="text-xs font-bold text-slate-600">Interaktive Materialanalyse</p>
             <p className="text-[10px] leading-snug text-slate-500">
-              Bewege die Maus über die markierten Hotspots der technischen Skizze, um die physikalischen, mechanischen und chemischen Eigenschaften einzublenden.
+              Bewegen Sie die Maus über die markierten Hotspots der technischen Skizze, um die physikalischen, mechanischen und chemischen Eigenschaften einzublenden.
             </p>
           </div>
         </div>
@@ -538,7 +540,7 @@ export default function BpBetonwaren() {
                         {selectedStudio === 'paving' ? (
                           <div className="space-y-2 text-[11px] leading-relaxed">
                             <p className="font-light text-slate-600">
-                              Der mechanisch verpresste, sofortentschalte Betonwarenkörper definiert extreme Langlebigkeit im Straßenverbund.
+                              Der mechanisch verpresste, sofortentschalte Betonwarenkörper ist bei richtiger Verlegung sehr dauerhaft.
                             </p>
                             <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-[10px]">
                               <div>
@@ -562,7 +564,7 @@ export default function BpBetonwaren() {
                         ) : (
                           <div className="space-y-2 text-[11px] leading-relaxed">
                             <p className="font-light text-slate-600">
-                              Beton- und Stahlbetonrohre nach DIN EN 1916 tragen statisch schwere Erdlasten und bleiben durch dichte Gelenksmuffen elastisch dezentrierbar.
+                              Beton- und Stahlbetonrohre nach DIN EN 1916 tragen statisch schwere Erdlasten und bleiben durch gedichtete Muffen bei kleinen Setzungen beweglich.
                             </p>
                             <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-[10px]">
                               <div>
@@ -636,7 +638,7 @@ export default function BpBetonwaren() {
                   </p>
                   <ul className="text-[11.5px] leading-relaxed text-slate-650 space-y-1.5 pl-4 list-decimal">
                     <li>
-                      <strong>Konsistenzbereich erdfeucht:</strong> Der Wasser-Zement-Wert wird extrem niedrig eingestellt (<span className="font-mono font-bold text-slate-800">w/z ≤ 0,38</span>). Der Frischbeton verhält sich wie leicht feuchter Sand.
+                      <strong>Konsistenzbereich erdfeucht:</strong> Der Wasser-Zement-Wert wird sehr niedrig eingestellt (<span className="font-mono font-bold text-slate-800">w/z ≤ 0,38</span>). Der Frischbeton verhält sich wie leicht feuchter Sand.
                     </li>
                     <li>
                       <strong>Rüttelpress-Verdichtung:</strong> Der Beton wird in die Gussform gefüllt. Ein Rütteltisch versetzt das System in Schwingung, wodurch die Körner dicht gleiten. Gleichzeitig presst ein Hydraulikschuh (Auflast) mechanisch von oben.
@@ -646,7 +648,7 @@ export default function BpBetonwaren() {
                     </li>
                   </ul>
                   <div className="bg-slate-100 p-2 text-[10px] text-slate-600 italic rounded border-l-2 border-l-amber-500 font-medium">
-                     Taktzyklus: Ein einziges Formwerkzeug presst tausende Quadratmeter am Tag!
+                     Taktzyklus: Eine Form fertigt je Takt ein ganzes Brett voller Steine in wenigen Sekunden.
                   </div>
                 </div>
 
@@ -658,7 +660,7 @@ export default function BpBetonwaren() {
                     Rohre &amp; Schachtsysteme
                   </h3>
                   <p className="text-[11px] text-slate-650 leading-relaxed font-normal">
-                    Betonrohre bilden die unterirdische Infrastruktur der Entwässerung (DIN EN 1916). Sie müssen extremen Scherkräften durch Verkehr und Ertdmassen widerstehen.
+                    Betonrohre bilden die unterirdische Infrastruktur der Entwässerung (DIN EN 1916). Sie müssen Erd- und Verkehrslasten aufnehmen.
                   </p>
                   <ul className="text-[11.5px] leading-relaxed text-slate-650 space-y-1.5 pl-4 list-decimal">
                     <li>
@@ -668,12 +670,12 @@ export default function BpBetonwaren() {
                       <strong>Dichtungstechnik:</strong> Die standardisierte *Keilgleitdichtung* (aus Synthesekautschuk) dichtet das Gelenk dauerhaft gegen einsickerndes Grundwasser und austretendes Schmutzwasser (Exfiltration) ab.
                     </li>
                     <li>
-                      <strong>Säureangriff (BSK):</strong> Bakterieller Abbau von organischem Abwasser setzt Schwefelwasserstoff (H₂S) frei. Dieser reagiert an Rohrdecken zu Schwefelsäure, die herkömmliche Zemente auflösen kann (Gips-Treiben).
+                      <strong>Säureangriff (BSK):</strong> Bakterieller Abbau von organischem Abwasser setzt Schwefelwasserstoff (H₂S) frei. Bakterien oxidieren ihn an der Rohrdecke zu Schwefelsäure, die den Zementstein auflöst.
                     </li>
                   </ul>
                   <div className="bg-amber-100/60 p-2 text-[10px] text-amber-900 rounded border-l-2 border-l-amber-600 font-medium flex items-start gap-1">
                     <AlertTriangle size={11} className="shrink-0 mt-0.5 text-amber-800" />
-                    <span>Lösung: Einsatz von Spezial-Zementen mit hohem Sulfatwiderstand (SR-Zemente).</span>
+                    <span>Lösung: Faulprozesse vermeiden, säurewiderstandsfähiger Beton oder Auskleidung – SR-Zement allein genügt nicht.</span>
                   </div>
                 </div>
 
@@ -704,12 +706,12 @@ export default function BpBetonwaren() {
                       <tr>
                         <td className="px-4 py-2.5 font-bold text-slate-900">Kantenabplatzungen nach Pflasterung</td>
                         <td className="px-4 py-2.5">Fehlende oder zu enge Fuge bei der Verlegung im Sand/Splittbett. Knirsch-Verlegung führt zu Scherdruckspitzen.</td>
-                        <td className="px-4 py-2.5">Betonflächen leiten Spannungen bei Ausdehnung ab. Fugenbreite von 3 bis 5 mm ist laut Vorschrift zwingend einzuhalten. Pflasterabstandhalter weisen darauf hin, ersetzen die Fuge jedoch nicht.</td>
+                        <td className="px-4 py-2.5">Betonflächen leiten Spannungen bei Ausdehnung ab. Fugenbreite 3 bis 5 mm (DIN 18318 / ZTV Wegebau). Pflasterabstandhalter weisen darauf hin, ersetzen die Fuge jedoch nicht.</td>
                       </tr>
                       <tr>
                         <td className="px-4 py-2.5 font-bold text-slate-900">Spaltzugprüfung (DIN EN 1338)</td>
-                        <td className="px-4 py-2.5">Ermittlung der Festigkeit im Keilschnitt. Sichert die mechanische Scher- und Rollwiderstandfestigkeit.</td>
-                        <td className="px-4 py-2.5">Mindestens 3,6 MPa Spaltzugfestigkeitsmittelwert ist bei Betonwarenpflaster nachzuweisen. Sichert Zähfestigkeit.</td>
+                        <td className="px-4 py-2.5">Spaltzugprüfung nach DIN EN 1338 entlang der Längsachse des Steins.</td>
+                        <td className="px-4 py-2.5">Mittelwert ≥ 3,6 N/mm², Einzelwert ≥ 2,9 N/mm², Bruchlast je Länge ≥ 250 N/mm.</td>
                       </tr>
                       <tr>
                         <td className="px-4 py-2.5 font-bold text-slate-900">Biogene Schwefelsäurekorrosion</td>
@@ -730,17 +732,33 @@ export default function BpBetonwaren() {
         </div>
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Spaltzugfestigkeit eines Pflastersteins"
+          zielGleichung="T = 0{,}637 \cdot k \cdot \frac{P}{S}, \quad S = l \cdot t"
+          normQuelle="DIN EN 1338, Anhang F (k = Dickenfaktor, für t = 80 mm: k = 1,0)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'P = 72\\,000\\,\\text{N},\\; l = 200\\,\\text{mm},\\; t = 80\\,\\text{mm},\\; k = 1{,}0', erklaerung: 'Bruchlast und Spaltlänge eines Rechtecksteins.' },
+            { titel: '2. Bruchfläche', formel: 'S = 200 \\cdot 80 = 16\\,000\\,\\text{mm}^2', erklaerung: 'Spaltfläche = Spaltlänge × Dicke.' },
+            { titel: '3. Spaltzugfestigkeit', formel: 'T = 0{,}637 \\cdot 1{,}0 \\cdot 72\\,000 / 16\\,000 = 2{,}87\\,\\text{N/mm}^2', erklaerung: 'Unter dem Einzelwert 2,9 N/mm².' },
+            { titel: '4. Bruchlast je Länge', formel: 'F = P/l = 72\\,000/200 = 360\\,\\text{N/mm} \\ge 250', erklaerung: 'Dieses Kriterium ist erfüllt.' },
+          ]}
+          ergebnisHinweis="Der Stein verfehlt den Einzelwert knapp – die Serie ist mit Mittelwert (≥ 3,6) und allen Einzelwerten zu bewerten."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_betonwaren" />
+
       {/* FOOTER METADATA */}
       <ModuleFooter
         wikipedia={[
           { title: 'Pflaster (Bodenbelag)', url: 'https://de.wikipedia.org/wiki/Pflaster_(Bodenbelag)' },
-          { title: 'Dachstein (Baustoff)' },
           { title: 'Kanalisation', url: 'https://de.wikipedia.org/wiki/Kanalisation' }
         ]}
         literatur={[
-          'Ebeling, K.: Betonwaren und Betonwerkstein im Außenbereich.',
-          'Henschel, R.: Pflaster- und Plattenbeläge aus Beton.',
-          'ZTV Wegebau: Zusätzliche Technische Vertragsbedingungen für den Wegebau.'
+          'FGSV: ZTV Wegebau – Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Wegen und Plätzen außerhalb von Flächen des Straßenverkehrs (Ausgabe 2013)',
+          'FGSV: Merkblatt für Flächenbefestigungen mit Pflasterdecken und Plattenbelägen (M FP, Ausgabe manuell prüfen)',
+          'DWA-A 127 / ATV-DVWK-A 127: Statische Berechnung von Abwasserkanälen und -leitungen (Ausgabe manuell prüfen)'
         ]}
         regelwerke={[
           { title: 'DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)' },
@@ -752,12 +770,12 @@ export default function BpBetonwaren() {
         formeln={[
           {
             formel: 'T = \\frac{2 \\cdot F}{\\pi \\cdot l \\cdot t} \\ge 3{,}6\\,\\text{N/mm}^2',
-            erklaerung: 'Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338: F = Bruchlast [N], l = Länge der Bruchlinie [mm], t = Steindicke [mm]. Einzelwert >= 2,9 N/mm².',
+            erklaerung: 'Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338: F = Bruchlast [N], l = Länge der Bruchlinie [mm], t = Steindicke [mm]. Einzelwert ≥ 2,9 N/mm²; Bruchlast je Länge ≥ 250 N/mm.',
             quelle: 'DIN EN 1338 Anhang F'
           },
           {
             formel: 'w/z \\approx 0{,}30 - 0{,}38 \\quad (\\text{Konsistenz: erdfeucht})',
-            erklaerung: 'Extrem niedriger Wasserzementwert zur Gewährleistung der sofortigen Entschalung und Formstabilität (Grünstandsfestigkeit).',
+            erklaerung: 'Niedriger Wasserzementwert zur Gewährleistung der sofortigen Entschalung und Formstabilität (Grünstandsfestigkeit).',
             quelle: 'Betonwaren-Technologie'
           }
         ]}

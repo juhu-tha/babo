@@ -513,7 +513,7 @@ export function KlebstoffBerater() {
       {activeSubTab === 'regeln' && (
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           
-          <div className="bg-white p-4.5 rounded-xl border border-slate-205 shadow-xs flex flex-col justify-between font-normal">
+          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
               <span className="text-xl font-black text-shiraz/35 font-mono block leading-none mb-1">01</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Drahttrocken &amp; Schichtfrei</h4>
@@ -526,7 +526,7 @@ export function KlebstoffBerater() {
             </div>
           </div>
 
-          <div className="bg-white p-4.5 rounded-xl border border-slate-205 shadow-xs flex flex-col justify-between font-normal">
+          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
               <span className="text-xl font-black text-blue-800/35 font-mono block leading-none mb-1">02</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Glutheiß entfettet (Zwei-Tuch Methodik)</h4>
@@ -539,7 +539,7 @@ export function KlebstoffBerater() {
             </div>
           </div>
 
-          <div className="bg-white p-4.5 rounded-xl border border-slate-205 shadow-xs flex flex-col justify-between font-normal">
+          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
               <span className="text-xl font-black text-amber-800/35 font-mono block leading-none mb-1">03</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Ablüftzeiten zwingend stoppen</h4>
@@ -552,7 +552,7 @@ export function KlebstoffBerater() {
             </div>
           </div>
 
-          <div className="bg-white p-4.5 rounded-xl border border-slate-205 shadow-xs flex flex-col justify-between font-normal">
+          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
               <span className="text-xl font-black text-emerald-800/35 font-mono block leading-none mb-1">04</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Flankenhaftung rein eloxieren</h4>
@@ -565,7 +565,7 @@ export function KlebstoffBerater() {
             </div>
           </div>
 
-          <div className="bg-white p-4.5 rounded-xl border border-slate-205 shadow-xs flex flex-col justify-between font-normal">
+          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
               <span className="text-xl font-black text-slate-800/35 font-mono block leading-none mb-1">05</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Perfekt abgezogenes Profil</h4>

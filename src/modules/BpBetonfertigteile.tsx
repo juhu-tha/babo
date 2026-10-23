@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Layers, Cuboid, Building2, BookOpen, CheckCircle2, Lightbulb, Info, Target, ShieldAlert, Sparkles } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 
 export default function BpBetonfertigteile() {
@@ -36,7 +38,7 @@ export default function BpBetonfertigteile() {
     // Doppelwand parts
     'doppelwand-schale': {
       title: 'Werksseitige Außenschalen',
-      description: 'Zwei spiegelglatte, hochfeste Wandplatten (je 5 bis 6 cm dick) aus C30/37 Werksbeton. Sie bilden die Sichtflächen der Wand und fungieren im Montagezustand als extrem hoch belastbare, „verlorene“ Schalung. Keine Schalungsarbeiten vor Ort notwendig!',
+      description: 'Zwei glatte Wandplatten (je 5 bis 6 cm dick) aus C30/37 Werksbeton. Sie bilden die Sichtflächen der Wand und fungieren im Montagezustand als „verlorene“ Schalung; vor Ort entfällt die Wandschalung.',
       type: 'Werksseitige Vorfertigung'
     },
     'doppelwand-ortbeton': {
@@ -46,7 +48,7 @@ export default function BpBetonfertigteile() {
     },
     'doppelwand-truss': {
       title: 'Verbindungsbolzen / Gitterträger',
-      description: 'Lattice-Stahlträger, die beide Außenschalen im exakten lichten Abstand fixieren. Übernehmen im Einbauzustand die extremen Zugkräfte, welche durch den hydrostatischen Innendruck des flüssigen Frischbetons die Wandschalen nach außen drücken wollen.',
+      description: 'Gitterträger, die beide Außenschalen im exakten lichten Abstand fixieren. Übernehmen im Einbauzustand die Zugkräfte, welche durch den hydrostatischen Innendruck des flüssigen Frischbetons die Wandschalen nach außen drücken wollen.',
       type: 'Zulassungsrelevante Statik'
     },
     'doppelwand-fugen': {
@@ -62,12 +64,12 @@ export default function BpBetonfertigteile() {
     },
     'hohldiele-cables': {
       title: 'Vorspannstähle / Spannstahllitzen',
-      description: 'Hochfeste Spannstähle (St 1660/1860) im Bereich des Untergurtes. Werden im Werk hydraulisch vorgespannt, bevor der Beton gegossen wird (Vorspannung mit sofortigem Verbund im Spannbett). Ermöglichen enorme Stützweiten (bis 20m) und extreme Tragfähigkeiten bei minimaler Deckenhöhe – ganz ohne baustellenseitige Rüststützen.',
+      description: 'Hochfeste Spannstähle (St 1660/1860) im Bereich des Untergurtes. Werden im Werk hydraulisch vorgespannt, bevor der Beton gegossen wird (Vorspannung mit sofortigem Verbund im Spannbett). Ermöglichen große Stützweiten (bis 20m) und extreme Tragfähigkeiten bei minimaler Deckenhöhe – ganz ohne baustellenseitige Rüststützen.',
       type: 'Vorspannung & Tragkraft-Multiplikator'
     },
     'hohldiele-body': {
       title: 'Deckenkörper aus hochfestem Werksbeton',
-      description: 'Gefertigt aus erdstabilem C45/55 oder C50/60 Beton mittels kontinuierlich ziehendem Gleitfertiger (Gleitfertigungsverfahren). Extrem witterungsbeständig und dicht. Die rauen Flanken besitzen profilierte Längsnuten, in welche die Fugen der Nachbardielen kraftschlüssig mit Vergussmörtel eingebunden werden.',
+      description: 'Gefertigt aus hochfestem C45/55 oder C50/60 Beton mittels kontinuierlich ziehendem Gleitfertiger (Gleitfertigungsverfahren). Sehr witterungsbeständig und dicht. Die rauen Flanken besitzen profilierte Längsnuten, in welche die Fugen der Nachbardielen kraftschlüssig mit Vergussmörtel eingebunden werden.',
       type: 'Betontechnologie Werk'
     }
   };
@@ -116,7 +118,7 @@ export default function BpBetonfertigteile() {
           </h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
             <p>
-              Industriell vorgefertigte Betonbauteile bieten höchste Präzision, hervorragende Sichtbetonqualität und extrem verkürzte Bauzeiten durch optimalen Logistikdurchlauf und standardisierte Montageknoten im Hoch- und Ingenieurbau.
+              Industriell vorgefertigte Betonbauteile bieten hohe Präzision, gute Sichtbetonqualität und kurze Bauzeiten durch optimierten Logistikdurchlauf und standardisierte Montageknoten im Hoch- und Ingenieurbau.
             </p>
           </div>
         </div>
@@ -162,7 +164,7 @@ export default function BpBetonfertigteile() {
                   Betonfertigteile sind tragende oder nichttragende Elemente aus Beton, Stahlbeton oder Spannbeton, die werkstattmäßig unter kontrollierten, witterungsunabhängigen Klimabedingungen vorgefertigt, gehärtet und anschließend montagefertig auf die Baustelle geliefert werden.
                 </p>
                 <p className="mt-2 text-sm text-slate-600">
-                  Die herausragenden Vorteile liegen in der extrem hohen Produktionsgeschwindigkeit, der exakten geometrischen Maßhaltigkeit (Maßtoleranzen im Millimeterbereich) und dem Wegfall aufwändiger Vor-Ort-Schalungsarbeiten.
+                  Die wesentlichen Vorteile liegen in der sehr hohen Produktionsgeschwindigkeit, der exakten geometrischen Maßhaltigkeit (Maßtoleranzen im Millimeterbereich) und dem Wegfall aufwändiger Vor-Ort-Schalungsarbeiten.
                 </p>
               </div>
 
@@ -629,7 +631,7 @@ export default function BpBetonfertigteile() {
                         {selectedElement === 'filigran' && (
                           <div className="space-y-2 text-[11px]">
                             <p className="leading-relaxed font-light text-slate-600">
-                              Die <strong>Filigrandecke (Elementdecke nach DIN EN 13747)</strong> ist das wirtschaftlichste Deckensystem des modernen Hochbaus.
+                              Die <strong>Filigrandecke (Elementdecke nach DIN EN 13747)</strong> ist eines der verbreitetsten und wirtschaftlichsten Deckensysteme im Hochbau.
                             </p>
                             <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-[10px]">
                               <div>
@@ -655,7 +657,7 @@ export default function BpBetonfertigteile() {
                         {selectedElement === 'doppelwand' && (
                           <div className="space-y-2 text-[11px]">
                             <p className="leading-relaxed font-light text-slate-600">
-                              Die <strong>Doppelwand (Hohlwand nach DIN EN 14992)</strong> vereint den massiven Schall- und Brandschutz von monolithischem Beton mit der makellosen Ästhetik von Fertigteilen.
+                              Die <strong>Doppelwand (Hohlwand nach DIN EN 14992)</strong> vereint den massiven Schall- und Brandschutz von monolithischem Beton mit der hochwertigen Ästhetik von Fertigteilen.
                             </p>
                             <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-[10px]">
                               <div>
@@ -681,7 +683,7 @@ export default function BpBetonfertigteile() {
                         {selectedElement === 'hohldiele' && (
                           <div className="space-y-2 text-[11px]">
                             <p className="leading-relaxed font-light text-slate-600">
-                              Die <strong>Spannbeton-Hohlplatte (nach DIN EN 1168)</strong> ermöglicht extrem schlanke, weitgespannte und komplett unterstellungsfreie Tragwerkslösungen.
+                              Die <strong>Spannbeton-Hohlplatte (nach DIN EN 1168)</strong> ermöglicht sehr schlanke, weitgespannte und komplett unterstellungsfreie Tragwerkslösungen.
                             </p>
                             <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-[10px]">
                               <div>
@@ -721,7 +723,7 @@ export default function BpBetonfertigteile() {
                   </p>
                   <div className="text-[10px] text-slate-600 bg-white p-3 rounded-lg border border-slate-100/80 space-y-1.5 font-medium">
                     <span className="font-bold text-slate-800">⚠️ Montage-Axiom:</span>
-                    <span>Bauseitige Montagestützen müssen vor dem Auflegen exakt eingemessen und dürfen erst nach vollständigem Aushärten des Ortbetons (nach ca. 28 Tagen) entfernt werden!</span>
+                    <span>Bauseitige Montagestützen müssen vor dem Auflegen exakt eingemessen und dürfen erst entfernt werden, wenn der Ortbeton ausreichend erhärtet ist (Zeitpunkt nach Tragwerksplanung bzw. DIN EN 13670/DIN 1045-3, nicht pauschal 28 Tage).</span>
                   </div>
                 </div>
 
@@ -763,7 +765,7 @@ export default function BpBetonfertigteile() {
                       <Building2 className="w-5 h-5 text-stone-600" /> Konstruktiver Skelettbau &amp; Massivbauten
                     </h4>
                     <ul className="list-disc pl-5 space-y-1 text-xs mt-3">
-                      <li><strong>Skelett-Stützen:</strong> Werden meist stehend in Stahlmatrizen gegossen. Mit Fundamentköchern oder Schraubverbindungen (z.B. Peikko) starr oder gelenkig angeschlossen.</li>
+                      <li><strong>Skelett-Stützen:</strong> Werden meist liegend in Stahlschalungen hergestellt. Mit Köcherfundamenten oder Schraubverbindungen (z. B. Stützenschuhe) starr oder gelenkig angeschlossen.</li>
                       <li><strong>Spannbeton-Träger:</strong> Große I- oder T-Querschnitte mit Spanngliedern. Sie decken weitgespannte Binderkonstruktionen im Industriehallenbau ab.</li>
                       <li><strong>Treppenläufe &amp; Podeste:</strong> Industriell mit vollflächigem Schalglanz gegossen, minimiert Schalungs- und Verlegezeit auf der Baustelle extrem.</li>
                     </ul>
@@ -774,8 +776,8 @@ export default function BpBetonfertigteile() {
                       <Cuboid className="w-5 h-5 text-stone-600" /> Tiefbau &amp; Spezial-Schwerlastfertigteile
                     </h4>
                     <ul className="list-disc pl-5 space-y-1 text-xs mt-3">
-                      <li><strong>Tunnel-Tübbinge:</strong> Kreissegment-Steine aus Stahlfaserbeton. Sie weisen extreme Tragfähigkeit und präziseste Gummidichtungsprofile gegen Bergwasser auf.</li>
-                      <li><strong>Eisenbahnschwellen:</strong> Extreme Ermüdungsfestigkeit bei dynamischer Schwellenbelastung, meist aus hochwertigem Spannbeton gefertigt.</li>
+                      <li><strong>Tunnel-Tübbinge:</strong> Kreissegmente aus Stahlbeton oder Stahlfaserbeton mit hoher Maßgenauigkeit und eingelegten Dichtungsprofilen gegen Bergwasser.</li>
+                      <li><strong>Eisenbahnschwellen:</strong> Hohe Ermüdungsfestigkeit bei dynamischer Schwellenbelastung, meist aus hochwertigem Spannbeton gefertigt.</li>
                       <li><strong>Verkehrs-Leitelemente &amp; Lärmschutz:</strong> Module zur Absperrung oder Lärmminderung mit werkseitig unebenen, schallschluckenden Oberflächenstrukturen.</li>
                     </ul>
                   </div>
@@ -791,10 +793,10 @@ export default function BpBetonfertigteile() {
                     <CheckCircle2 className="w-4 h-4 text-emerald-700" /> Vorteile der industriellen Fertigung
                   </h4>
                   <ul className="list-disc pl-5 space-y-1 text-xs text-emerald-800">
-                    <li><strong>Garantierte Gütekontrolle (WPK):</strong> Witterungsunabhängiges Gießen und thermisches Härten führen zu extrem reproduzierbaren Betongüten.</li>
+                    <li><strong>Gütekontrolle (WPK):</strong> Witterungsunabhängiges Gießen und thermisches Härten führen zu gut reproduzierbaren Betongüten.</li>
                     <li><strong>Monolithischer Sichtbeton-Standard:</strong> Glatte Schaltafeln und Vibrationsstraßen sichern Lunkerfreiheit und Sichtbetonklassen SB3/SB4 ohne bauseitige Nachbesserung.</li>
-                    <li><strong>Massive Einsparung bauseitiger Schalfrist:</strong> Elementdecken und Hohlwände dienen als verlorene Schalung. Einrüstholz-Bedarf sinkt um bis zu 85 %.</li>
-                    <li><strong>Spannbett-Vorspannung:</strong> Sichert schlanke Querschnitte bei enormen Gewichts- und Materialeinsparungen.</li>
+                    <li><strong>Einsparung von Schalarbeiten:</strong> Elementdecken und Hohlwände dienen als verlorene Schalung; Schal- und Rüstaufwand auf der Baustelle sinken deutlich.</li>
+                    <li><strong>Spannbett-Vorspannung:</strong> Sichert schlanke Querschnitte bei großen Gewichts- und Materialeinsparungen.</li>
                   </ul>
                 </div>
 
@@ -803,7 +805,7 @@ export default function BpBetonfertigteile() {
                     <ShieldAlert className="w-4 h-4 text-amber-700" /> Ingenieurmäßige Herausforderungen
                   </h4>
                   <ul className="list-disc pl-5 space-y-1 text-xs text-amber-800">
-                    <li><strong>Extremer planerischer Vorlauf (Planungs-Axiom):</strong> Sämtliche Einbauteile, Aussparungen, Kabelführungen und Sanitärauslässe müssen vor dem Betonier-Werksprozess endgültig festgelegt sein. Nachträgliches Fräsen oder Bohren gefährdet die Statik!</li>
+                    <li><strong>Hoher planerischer Vorlauf:</strong> Sämtliche Einbauteile, Aussparungen, Kabelführungen und Sanitärauslässe müssen vor dem Betonier-Werksprozess endgültig festgelegt sein. Nachträgliches Bohren nur nach Freigabe durch die Tragwerksplanung (Spannglieder, Bewehrung).</li>
                     <li><strong>Schwertransport-Logistik:</strong> Transport von tonnenschweren Hohlwänden, Bindern oder sperrigen Raumzellen bedarf polizeilicher Routenfreigaben und logistischer Just-In-Time-Genauigkeit.</li>
                     <li><strong>Statische Fugenproblematik:</strong> Knotenpunkte an Bauteilgrenzen (Vergussfugen, Koppelstellen, Scherkraftdübel) sind konstruktive Schwachstellen bezüglich Kraftfluss, Feuchtigkeit, Dichtigkeit und mechanischer Dauerhaftigkeit.</li>
                   </ul>
@@ -823,17 +825,32 @@ export default function BpBetonfertigteile() {
           )}
         </div>
       </div>
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Eigengewicht Spannbeton-Hohlplatte vs. Massivdecke"
+          zielGleichung="g_{Hohl} \approx (1 - \eta) \cdot h \cdot \gamma_c"
+          normQuelle="DIN EN 1168 (Hohlraumanteil als Lehrwert)"
+          schritte={[
+            { titel: '1. Massivdecke', formel: 'g = 0{,}265\\,\\text{m} \\cdot 25\\,\\text{kN/m}^3 = 6{,}6\\,\\text{kN/m}^2', erklaerung: 'Bauhöhe 26,5 cm, Stahlbeton γ = 25 kN/m³.' },
+            { titel: '2. Hohlplatte (η ≈ 0,40)', formel: 'g = 0{,}60 \\cdot 6{,}6 = 4{,}0\\,\\text{kN/m}^2', erklaerung: 'Hohlräume sparen rund 40 % Masse.' },
+            { titel: '3. Einsparung', formel: '\\Delta g = 6{,}6 - 4{,}0 = 2{,}6\\,\\text{kN/m}^2', erklaerung: 'Weniger Last für Unterzüge, Stützen und Fundamente.' },
+          ]}
+          ergebnisHinweis="Maßgebend sind die Herstellerangaben für den konkreten Plattentyp (Typenstatik)."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_betonfertigteile" />
+
       <ModuleFooter
         wikipedia={[
           { title: 'Betonfertigteil', url: 'https://de.wikipedia.org/wiki/Betonfertigteil' },
           { title: 'Spannbeton', url: 'https://de.wikipedia.org/wiki/Spannbeton' },
-          { title: 'Hohlplatte' },
           { title: 'Filigrandecke', url: 'https://de.wikipedia.org/wiki/Filigrandecke' }
         ]}
         literatur={[
-          'Steinle, A. / Bachmann, H. / Tillmann, M.: Bauen mit Betonfertigteilen. Konstruktion und Bemessung.',
-          'Forschungsgemeinschaft für Fertigteilbau: Handbuch Betonfertigteile & Bemessungsmodelle.',
-          'Wendehorst Bautechnische Zahlentafeln, 38. Auflage, Springer Vieweg 2026'
+          'Steinle, A.; Bachmann, H.; Tillmann, M.: Bauen mit Betonfertigteilen im Hochbau. Berlin: Ernst & Sohn (aktuelle Auflage manuell prüfen)',
+          'Fachvereinigung Deutscher Betonfertigteilbau (FDB): Merkblätter zum Betonfertigteilbau',
+          'Wendehorst Bautechnische Zahlentafeln. Wiesbaden: Springer Vieweg (aktuelle Auflage)'
         ]}
         regelwerke={[
           { title: 'DIN EN 13369 (Allgemeine Regeln für Betonfertigteile)' },

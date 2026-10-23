@@ -985,7 +985,7 @@ export default function LCC() {
               Finanzmathematisch wird der Umstand modelliert, dass zukünftiges Geld auf Grund von Opportunitätszinsen und Liquiditätspräferenz heute einen geringeren Sachwert besitzt. LCC nutzt zur Zusammenführung zeitlich unterschiedlich verteilter Kosten die **Barwertmethode**:
             </p>
             
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-205 font-mono text-xs my-3">
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 font-mono text-xs my-3">
               <span className="font-bold text-slate-900 block mb-1">Volle mathematische LCC-Zusammenführung:</span>
               <BlockMath math="LCC = C_{CapEx} + \sum_{t=1}^{N} \frac{C_{OpEx, t} \cdot (1+e)^t}{(1+r)^t} + \sum \frac{C_{Maint, t} \cdot (1+i)^t}{(1+r)^t} \pm \frac{C_{End-of-Life}}{(1+r)^N}" />
               <div className="mt-4 text-[10px] text-slate-500 font-sans space-y-1">

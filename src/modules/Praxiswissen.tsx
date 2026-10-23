@@ -721,7 +721,7 @@ export default function Praxiswissen() {
                               )}
                             </div>
                             
-                            <p className="text-sm text-slate-705 leading-relaxed mt-1">
+                            <p className="text-sm text-slate-700 leading-relaxed mt-1">
                               {item.description}
                             </p>
 
@@ -763,10 +763,10 @@ export default function Praxiswissen() {
                     <h5 className="font-bold text-sm text-slate-900 flex items-center gap-1">
                       <span className="shrink-0 text-shiraz font-bold">&#9888;</span> {trap.title}
                     </h5>
-                    <p className="text-sm text-slate-705 leading-relaxed pl-3 border-l-2 border-shiraz/30">
+                    <p className="text-sm text-slate-700 leading-relaxed pl-3 border-l-2 border-shiraz/30">
                       <strong>Die Folge:</strong> {trap.consequence}
                     </p>
-                    <p className="text-sm text-slate-705 leading-relaxed pl-3 border-l-2 border-home-grau/30">
+                    <p className="text-sm text-slate-700 leading-relaxed pl-3 border-l-2 border-home-grau/30">
                       <strong>So vermeiden Sie es:</strong> {trap.avoid}
                     </p>
                   </div>

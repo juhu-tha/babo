@@ -681,8 +681,8 @@ function BetonDauerhaftigkeitsSimulator() {
           <span>{showPath ? '▲ Formeln & Berechnungsschritte ausblenden' : '▼ Formeln & interaktiver Berechnungsweg (Schritt für Schritt)'}</span>
         </button>
         {showPath && (
-          <div className="mt-3 bg-stone-50 border border-slate-205 rounded-xl p-4 space-y-4 text-xs text-slate-700 animate-in fade-in slide-in-from-top-2">
-            <h5 className="font-bold text-slate-900 border-b border-slate-205 pb-1.5">
+          <div className="mt-3 bg-stone-50 border border-slate-200 rounded-xl p-4 space-y-4 text-xs text-slate-700 animate-in fade-in slide-in-from-top-2">
+            <h5 className="font-bold text-slate-900 border-b border-slate-200 pb-1.5">
               Schritt-für-Schritt Herleitung der Stahlbeton-Lebensdauer
             </h5>
             <div className="space-y-3.5">
@@ -1029,14 +1029,14 @@ function MetalDurabilitySimulator() {
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="font-semibold text-slate-855">Schritt 3: Bimetall-Verbindung & Anoden-/Kathodenverhältnis</p>
-                <p className="text-slate-655 leading-relaxed text-xs">
+                <p className="font-semibold text-slate-850">Schritt 3: Bimetall-Verbindung & Anoden-/Kathodenverhältnis</p>
+                <p className="text-slate-650 leading-relaxed text-xs">
                   Das Risiko aus Kontaktkorrosion beruht auf dem elektrochemischen Potenzialunterschied und dem Flächenverhältnis.
                   Ein verhängnisvoller Fehler im Stahlbau ist das Platzieren eines unedlen Fasteners (z.B. Schraube aus Baustahl/Zink) in einem riesigen edlen Bauteil (z.B. Edelstahl-Träger). Die Schraube wirkt als punktuelle, winzige Opferanode und korrodiert extrem schnell, was zum standsicherheits-gefährdenden Abscheren führt.
                 </p>
               </div>
               <div className="space-y-1">
-                <p className="font-semibold text-slate-855">Schritt 4: Korrosionsmindernde Vorkehrungen</p>
+                <p className="font-semibold text-slate-850">Schritt 4: Korrosionsmindernde Vorkehrungen</p>
                 <ul className="list-disc pl-5 space-y-1 text-slate-600 text-xs">
                   <li><strong>Galvanische Entkopplung:</strong> Verwendung nicht-leitender EPDM- bzw. Polyamid-Unterlegscheiben zur Unterbrechung des elektrischen Feststoffkontakts.</li>
                   <li><strong>Katodische Opferbarrieren:</strong> Einsatz opferbereiter galvanischer Schutzschichten (z.B. Zink-Staub-Grundierung oder Sherardisieren).</li>
@@ -1255,8 +1255,8 @@ function TimberDurabilitySimulator() {
           <span>{showTimberPath ? '▲ Holzschutz-Kriterien ausblenden' : '▼ Formeln & interaktive Einstufungsschritte (Schritt für Schritt)'}</span>
         </button>
         {showTimberPath && (
-          <div className="mt-3 bg-stone-50 border border-slate-205 rounded-xl p-4 space-y-4 text-xs text-slate-700 animate-in fade-in slide-in-from-top-2">
-            <h5 className="font-bold text-slate-900 border-b border-slate-205 pb-1.5">
+          <div className="mt-3 bg-stone-50 border border-slate-200 rounded-xl p-4 space-y-4 text-xs text-slate-700 animate-in fade-in slide-in-from-top-2">
+            <h5 className="font-bold text-slate-900 border-b border-slate-200 pb-1.5">
               Normative Bestimmungskette nach DIN 68800-1 / DIN EN 350-2
             </h5>
             <div className="space-y-3.5">
@@ -1769,7 +1769,7 @@ export default function Dauerhaftigkeit() {
                       <li><span className="font-bold text-blue-600">GK 5:</span> Ständiger Meerwasserkontakt (z.B. Hafenbauten, Buhnen). Erfordert extrem widerstandsfähige Hölzer oder massiven Schutz vor Schiffsbohrwurmbefall.</li>
                     </ul>
                   </div>
-                  <div className="mt-3 pt-3 border-t border-slate-205 flex flex-col gap-1">
+                  <div className="mt-3 pt-3 border-t border-slate-200 flex flex-col gap-1">
                     <span className="font-bold text-xs text-text-main">Wichtige Holzveredelungen (Eco-Holzschutz):</span>
                     <span className="text-xs text-gray-600 leading-relaxed">
                       <strong>Thermowood (TMT):</strong> Durch Kochen des Holzes unter Ausschluss von Sauerstoff bei 160–220 °C reagiert die Hemicellulose ab, wodurch Pilzen der Nährboden entzogen wird. Die Feuchteaufnahme sinkt um ca. 50%.

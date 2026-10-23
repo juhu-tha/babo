@@ -1257,7 +1257,7 @@ export default function ZfP() {
                   <h2 className="text-xl font-bold text-slate-900">Rückprallhammer (Druckfestigkeit)</h2>
                 </div>
               
-                <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+                <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                   <p>
                     <FormulaText text="Der Rückprallhammer misst die Oberflächenhärte des Betons. Die Rückprallzahl R korreliert mit der Druckfestigkeit f_c." />
                   </p>
@@ -1329,7 +1329,7 @@ export default function ZfP() {
                 <h2 className="text-xl font-bold text-slate-900 font-sans">Gaspermeabilität (Torrent)</h2>
               </div>
 
-              <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+              <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                 <p>
                   Das Torrent-Verfahren misst zerstörungsfrei den Luftpermeabilitätsbeiwert <InlineMath math="k_T" /> der Betonrandzone. Ein wichtiges Maß zur Vorhersage der Carbonatisierungsgeschwindigkeit.
                 </p>
@@ -1379,7 +1379,7 @@ export default function ZfP() {
                 <h2 className="text-xl font-bold text-slate-900 font-sans">Kapillare Wasseraufnahme (Karsten-Röhrchen)</h2>
               </div>
 
-              <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+              <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                 <p>
                   Misst vor Ort die kapillare Wasseraufnahme von mineralischen Baustoffen unter definiertem hydrostatischem Wasserdruck (simulierter Schlagregen).
                 </p>
@@ -1455,7 +1455,7 @@ export default function ZfP() {
               <h2 className="text-xl font-bold text-slate-900">Ultraschalllaufzeit</h2>
             </div>
 
-            <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+            <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <p>
                 Die Ultraschallgeschwindigkeit hängt von der Dichte und dem E-Modul ab. Risse und Hohlräume verringern die Geschwindigkeit.
               </p>
@@ -1493,7 +1493,7 @@ export default function ZfP() {
               <h2 className="text-xl font-bold text-slate-900">Impuls-Echo-Verfahren</h2>
             </div>
             
-            <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+            <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <p>
                 Ein mechanischer Impuls erzeugt Spannungswellen. Die Reflexion an Rückwänden oder Fehlstellen wird als Resonanzfrequenz gemessen.
               </p>
@@ -1547,7 +1547,7 @@ export default function ZfP() {
               <h2 className="text-xl font-bold text-slate-900">Elektromagnetischer Bewehrungssucher</h2>
             </div>
             
-            <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+            <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <p>
                 Nutzt das Wirbelstromverfahren zur Ortung von Bewehrungsstäben und Messung der Betondeckung.
               </p>
@@ -1650,7 +1650,7 @@ export default function ZfP() {
               <h2 className="text-xl font-bold text-slate-900">Georadar (GPR)</h2>
             </div>
             
-            <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+            <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <p>
                 Sendet elektromagnetische Impulse aus. Reflexionen an Materialgrenzen (z.B. Stahl, Hohlräume) werden gemessen.
               </p>
@@ -1760,7 +1760,7 @@ export default function ZfP() {
                 <h2 className="text-xl font-bold text-slate-900">Potentialmessung (Half-cell)</h2>
               </div>
               
-              <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+              <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                 <p>
                   <FormulaText text="Misst das elektrochemische Potential der Bewehrung gegen eine Referenzelektrode (z.B. \text{Cu/CuSO}_4), um aktive Korrosion zu lokalisieren." />
                 </p>
@@ -1791,7 +1791,7 @@ export default function ZfP() {
                 <h2 className="text-xl font-bold text-slate-900">Betonwiderstand (Wenner-Sonde)</h2>
               </div>
 
-              <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+              <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                 <p>
                   Das 4-Punkt Wenner-Sonden-Verfahren misst den spezifischen elektrischen Widerstand <InlineMath math="\rho" />. Dies korreliert mit der Durchfeuchtung und der Korrosionsgeschwindigkeit im Beton.
                 </p>
@@ -1846,7 +1846,7 @@ export default function ZfP() {
               <h2 className="text-xl font-bold text-slate-900">Infrarot-Thermografie</h2>
             </div>
             
-            <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+            <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <p>
                 Erfasst die Oberflächentemperatur. Hohlräume oder Ablösungen unter der Oberfläche erwärmen sich bei Sonneneinstrahlung schneller als massiver Beton.
               </p>
@@ -1880,7 +1880,7 @@ export default function ZfP() {
               <h2 className="text-xl font-bold text-slate-900">Durchstrahlungsprüfung (Radiographie)</h2>
             </div>
             
-            <div className="text-sm text-slate-705 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
+            <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <p>
                 Nutzt Röntgen- oder Gammastrahlung zur Abbildung des Bauteilinneren (z.B. Spannglieder). Die Schwächung hängt von Dicke und Dichte ab.
               </p>
@@ -1929,10 +1929,10 @@ export default function ZfP() {
             <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2 flex items-center gap-2">
               <Activity size={20} className="text-shiraz" /> Bohrwiderstandsmessung (Nadelbohrverfahren)
             </h3>
-            <p className="text-sm text-slate-705">
+            <p className="text-sm text-slate-700">
               Ein dünner Bohrer (meist Ø 1,5 - 3,0 mm) wird mit konstanter Geschwindigkeit in das Holz getrieben. Der elektrische Energieaufwand (Bohrwiderstand) wird in Abhängigkeit von der Bohrtiefe aufgezeichnet.
             </p>
-            <ul className="list-disc list-inside text-sm text-slate-705 space-y-2">
+            <ul className="list-disc list-inside text-sm text-slate-700 space-y-2">
               <li><strong>Anwendung:</strong> Erkennung von Fäulnis, Hohlräumen, Rissen und Insektengängen im Inneren von Holzbauteilen.</li>
               <li><strong>Ergebnis:</strong> Ein Bohrprofil (Resistogramm). Intaktes Holz zeigt hohe Widerstände (mit sichtbaren Jahrringschwankungen), geschädigtes Holz zeigt starke Abfälle im Widerstand.</li>
               <li><strong>Vorteil:</strong> Quasi-zerstörungsfrei (sehr kleines Bohrloch), liefert direkte in-situ Informationen über den Restquerschnitt.</li>
@@ -1943,13 +1943,13 @@ export default function ZfP() {
             <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2 flex items-center gap-2">
               <Waves size={20} className="text-shiraz" /> Dynamischer E-Modul (Ultraschall / Resonanz)
             </h3>
-            <p className="text-sm text-slate-705">
+            <p className="text-sm text-slate-700">
               Bestimmung der Festigkeit und Steifigkeit von Holzbauteilen über die Ausbreitungsgeschwindigkeit von Schallwellen.
             </p>
             <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/30 text-center">
               <FormulaText text="E_{dyn} = \rho \cdot v^2" />
             </div>
-            <ul className="list-disc list-inside text-sm text-slate-705 space-y-2">
+            <ul className="list-disc list-inside text-sm text-slate-700 space-y-2">
               <li><strong>Prinzip:</strong> Schall breitet sich in dichtem, gesundem Holz schneller aus als in geschädigtem oder porösem Holz.</li>
               <li><strong>Anwendung:</strong> Abschätzung der Festigkeitsklasse (Sortierung), Erkennung von inneren Schäden (Pilzbefall verringert die Schallgeschwindigkeit drastisch).</li>
               <li><strong>Hinweis:</strong> Der dynamische E-Modul ist in der Regel ca. 10-20% höher als der statische E-Modul.</li>
@@ -1960,10 +1960,10 @@ export default function ZfP() {
             <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2 flex items-center gap-2">
               <Droplets size={20} className="text-shiraz" /> Feuchtemessung
             </h3>
-            <p className="text-sm text-slate-705">
+            <p className="text-sm text-slate-700">
               Die Holzfeuchte ist der kritischste Parameter für die Dauerhaftigkeit (Gefahr von Pilzbefall ab ca. 20% Holzfeuchte).
             </p>
-            <ul className="list-disc list-inside text-sm text-slate-705 space-y-2">
+            <ul className="list-disc list-inside text-sm text-slate-700 space-y-2">
               <li><strong>Widerstandsmessung:</strong> Zwei Elektroden werden ins Holz geschlagen. Der elektrische Widerstand sinkt mit steigender Feuchtigkeit. Genau im Bereich von 6% bis 30% (Fasersättigungspunkt).</li>
               <li><strong>Kapazitive Messung:</strong> Zerstörungsfrei durch Auflegen eines Sensors. Misst die Änderung der Dielektrizitätskonstante. Gut für schnelle Rastermessungen, aber anfällig für Dichteschwankungen.</li>
               <li><strong>Darr-Methode:</strong> Zerstörend (Probenentnahme), aber das genaueste Referenzverfahren.</li>
@@ -1974,10 +1974,10 @@ export default function ZfP() {
             <h3 className="text-lg font-bold text-slate-900 border-b border-home-grau/30 pb-2 flex items-center gap-2">
               <Trees size={20} className="text-shiraz" /> Dendrochronologie
             </h3>
-            <p className="text-sm text-slate-705">
+            <p className="text-sm text-slate-700">
               Altersbestimmung von Holz anhand der charakteristischen Abfolge von breiten und schmalen Jahrringen.
             </p>
-            <ul className="list-disc list-inside text-sm text-slate-705 space-y-2">
+            <ul className="list-disc list-inside text-sm text-slate-700 space-y-2">
               <li><strong>Prinzip:</strong> Das Baumwachstum (Jahrringbreite) wird stark vom Klima (Temperatur, Niederschlag) des jeweiligen Jahres beeinflusst. Diese Muster sind regional einheitlich.</li>
               <li><strong>Anwendung:</strong> Exakte Datierung von historischen Dachstühlen, Fachwerkhäusern oder archäologischen Funden (oft auf das genaue Fälljahr bestimmbar).</li>
               <li><strong>Vorgehen:</strong> Entnahme eines Bohrkerns (Zuwachsbohrer), Ausmessen der Jahrringbreiten und Abgleich mit regionalen Referenzkurven (Masterchronologien).</li>

@@ -268,7 +268,7 @@ export default function BpPutzEstrich() {
                     </div>
                     <div className="bg-white p-2 rounded-xl border border-slate-200/80">
                       <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Trockenrohdichte</span>
-                      <span className="text-xxs font-bold text-slate-705 font-mono">{selectedItem.density}</span>
+                      <span className="text-xxs font-bold text-slate-700 font-mono">{selectedItem.density}</span>
                     </div>
                     <div className="bg-white p-2 rounded-xl border border-slate-200/80">
                       <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Schwindverhalten</span>

@@ -10751,5 +10751,485 @@
       "targetModuleLabel": "Baustoffindustrie"
     },
     "verified": false
+  },
+  {
+    "id": "q_bin_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_innovationen",
+    "moduleTitle": "Innovationen & F&E",
+    "topic": "TRL",
+    "difficulty": "Grundlagen",
+    "normRef": "ISO 16290",
+    "question": "Welcher TRL-Stufe entspricht der Einbau eines neuen Baustoffs in ein Pilotgebäude über eine vorhabenbezogene Bauartgenehmigung (vBG)?",
+    "options": [
+      "TRL 7",
+      "TRL 3",
+      "TRL 5",
+      "TRL 9"
+    ],
+    "correctIdx": 0,
+    "explanation": "TRL 7 = Demonstration im realen Einsatz. TRL 8 folgt mit der abZ/aBG bzw. ETA, TRL 9 mit der regulären Marktverfügbarkeit.",
+    "gapAnalysis": {
+      "topic": "TRL",
+      "misconception": "Ein Pilotbau entspricht bereits der Marktreife.",
+      "coreRule": "Labor (TRL 3–4) → Werk (5–6) → Pilotbau (7) → Zulassung (8) → Markt (9).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „TRL“ im Modul Innovationen & F&E noch einmal durch.",
+      "targetModuleTab": "bp_innovationen",
+      "targetModuleLabel": "Innovationen & F&E"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bin_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_innovationen",
+    "moduleTitle": "Innovationen & F&E",
+    "topic": "Verwendbarkeitsnachweise",
+    "difficulty": "Fortgeschritten",
+    "normRef": "MBO §§ 16a ff.",
+    "question": "Wofür wird eine allgemeine Bauartgenehmigung (aBG) erteilt?",
+    "options": [
+      "Für das Zusammenfügen von Bauprodukten zu einer Bauart",
+      "Für ein einzelnes Bauprodukt ohne Bezug zur Anwendung",
+      "Für den freien Warenverkehr in der EU",
+      "Für die CE-Kennzeichnung nach hEN"
+    ],
+    "correctIdx": 0,
+    "explanation": "Seit 2017 trennt das Bauordnungsrecht zwischen Bauprodukt (abZ) und Bauart (aBG). Für den EU-Binnenmarkt dient die ETA mit CE-Kennzeichnung.",
+    "gapAnalysis": {
+      "topic": "Verwendbarkeitsnachweise",
+      "misconception": "abZ und aBG sind dasselbe.",
+      "coreRule": "abZ = Produkt, aBG = Bauart, ETA = europäischer Weg.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verwendbarkeitsnachweise“ im Modul Innovationen & F&E noch einmal durch.",
+      "targetModuleTab": "bp_innovationen",
+      "targetModuleLabel": "Innovationen & F&E"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bin_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_innovationen",
+    "moduleTitle": "Innovationen & F&E",
+    "topic": "Haftung",
+    "difficulty": "Grundlagen",
+    "normRef": "§ 634a BGB",
+    "question": "Nach wie vielen Jahren verjähren Mängelansprüche bei Bauwerken nach BGB regulär?",
+    "options": [
+      "5 Jahre",
+      "2 Jahre",
+      "30 Jahre",
+      "10 Jahre"
+    ],
+    "correctIdx": 0,
+    "explanation": "§ 634a BGB: 5 Jahre bei Bauwerken (VOB/B regelmäßig 4 Jahre, wenn vereinbart). Längere Fristen gelten nur in Sonderfällen (z. B. arglistig verschwiegene Mängel).",
+    "gapAnalysis": {
+      "topic": "Haftung",
+      "misconception": "Planer haften generell 30 Jahre.",
+      "coreRule": "Bauwerk: 5 Jahre nach BGB.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haftung“ im Modul Innovationen & F&E noch einmal durch.",
+      "targetModuleTab": "bp_innovationen",
+      "targetModuleLabel": "Innovationen & F&E"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bre_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_recht",
+    "moduleTitle": "Bauproduktenrecht",
+    "topic": "CE und Ü",
+    "difficulty": "Grundlagen",
+    "normRef": "BauPVO",
+    "question": "Was bestätigt das CE-Kennzeichen auf einem Bauprodukt?",
+    "options": [
+      "Dass eine Leistungserklärung vorliegt und die deklarierten Leistungen gelten",
+      "Dass das Produkt besonders hochwertig ist",
+      "Dass das Produkt den deutschen Bauwerksanforderungen genügt",
+      "Dass das DIBt das Produkt zugelassen hat"
+    ],
+    "correctIdx": 0,
+    "explanation": "Das CE-Kennzeichen ist kein Gütesiegel. Ob die deklarierten Leistungen für das Bauwerk ausreichen, prüft der Planer anhand der MVV TB.",
+    "gapAnalysis": {
+      "topic": "CE und Ü",
+      "misconception": "CE = gute Qualität.",
+      "coreRule": "CE = Leistungserklärung; Eignung im Bauwerk prüft der Planer.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „CE und Ü“ im Modul Bauproduktenrecht noch einmal durch.",
+      "targetModuleTab": "bp_recht",
+      "targetModuleLabel": "Bauproduktenrecht"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bre_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_recht",
+    "moduleTitle": "Bauproduktenrecht",
+    "topic": "AVCP",
+    "difficulty": "Fortgeschritten",
+    "normRef": "BauPVO Anhang",
+    "question": "In welchem AVCP-System ist die notifizierte Stelle am stärksten beteiligt (inkl. Stichprobenprüfung vor dem Inverkehrbringen)?",
+    "options": [
+      "System 1+",
+      "System 1",
+      "System 3",
+      "System 4"
+    ],
+    "correctIdx": 0,
+    "explanation": "Je niedriger die Systemnummer, desto mehr Fremdüberwachung. System 1+ umfasst zusätzlich Audit-Testing, z. B. bei Zement.",
+    "gapAnalysis": {
+      "topic": "AVCP",
+      "misconception": "System 4 ist das strengste.",
+      "coreRule": "1+ > 1 > 2+ > 3 > 4 (Beteiligung Dritter).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „AVCP“ im Modul Bauproduktenrecht noch einmal durch.",
+      "targetModuleTab": "bp_recht",
+      "targetModuleLabel": "Bauproduktenrecht"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bre_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_recht",
+    "moduleTitle": "Bauproduktenrecht",
+    "topic": "EuGH-Urteil",
+    "difficulty": "Grundlagen",
+    "normRef": "EuGH C-100/13",
+    "question": "Was folgte aus dem EuGH-Urteil C-100/13 (2014) für Deutschland?",
+    "options": [
+      "Keine zusätzlichen nationalen Anforderungen an Produkte mit hEN; Anforderungen werden an das Bauwerk gestellt (MVV TB)",
+      "Abschaffung des CE-Kennzeichens",
+      "Pflicht zum Ü-Zeichen auf allen CE-Produkten",
+      "Abschaffung des DIBt"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Bauregellisten wurden durch die MVV TB ersetzt; der Planer weist mit den Werten der Leistungserklärung die Bauwerksanforderungen nach.",
+    "gapAnalysis": {
+      "topic": "EuGH-Urteil",
+      "misconception": "Nationale Zusatzzeichen auf CE-Produkten sind weiterhin zulässig.",
+      "coreRule": "hEN-Produkt: nur CE; Bauwerksanforderungen über MVV TB.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „EuGH-Urteil“ im Modul Bauproduktenrecht noch einmal durch.",
+      "targetModuleTab": "bp_recht",
+      "targetModuleLabel": "Bauproduktenrecht"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bbt_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_beton",
+    "moduleTitle": "Beton (Bauprodukt)",
+    "topic": "Charakteristische Festigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 206",
+    "question": "Eine Serie hat f_cm = 38,5 N/mm² und s = 5,0 N/mm². Wie groß ist das 5-%-Quantil?",
+    "options": [
+      "ca. 30,3 N/mm²",
+      "ca. 33,5 N/mm²",
+      "ca. 28,5 N/mm²",
+      "ca. 36,9 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "f_ck = 38,5 − 1,645 · 5,0 = 30,3 N/mm² – C30/37 (Zylinder) wird statistisch erreicht.",
+    "gapAnalysis": {
+      "topic": "Charakteristische Festigkeit",
+      "misconception": "Der Mittelwert entspricht der Festigkeitsklasse.",
+      "coreRule": "f_ck = f_cm − 1,645 · s.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeit“ im Modul Beton (Bauprodukt) noch einmal durch.",
+      "targetModuleTab": "bp_beton",
+      "targetModuleLabel": "Beton (Bauprodukt)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bbt_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_beton",
+    "moduleTitle": "Beton (Bauprodukt)",
+    "topic": "Beton nach Eigenschaften",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 206 / DIN 1045-2",
+    "question": "Wer ist bei „Beton nach Eigenschaften“ für die Rezeptur verantwortlich?",
+    "options": [
+      "Der Hersteller (Betonwerk)",
+      "Der Besteller",
+      "Die Bauaufsicht",
+      "Der Prüfingenieur"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der Besteller legt Druckfestigkeitsklasse, Expositionsklassen, Konsistenz usw. fest; das Werk wählt die Zusammensetzung. Bei „Beton nach Zusammensetzung“ trägt der Besteller die Verantwortung für die Rezeptur.",
+    "gapAnalysis": {
+      "topic": "Beton nach Eigenschaften",
+      "misconception": "Der Besteller bestimmt immer die Rezeptur.",
+      "coreRule": "Eigenschaften: Hersteller verantwortet Rezeptur.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beton nach Eigenschaften“ im Modul Beton (Bauprodukt) noch einmal durch.",
+      "targetModuleTab": "bp_beton",
+      "targetModuleLabel": "Beton (Bauprodukt)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bft_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonfertigteile",
+    "moduleTitle": "Betonfertigteile",
+    "topic": "Elementdecke",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 13747",
+    "question": "Wann dürfen die Montagestützen unter einer Elementdecke entfernt werden?",
+    "options": [
+      "Wenn der Ortbeton ausreichend erhärtet ist – Zeitpunkt nach Tragwerksplanung",
+      "Immer erst nach genau 28 Tagen",
+      "Sofort nach dem Betonieren",
+      "Vor dem Aufbringen des Ortbetons"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Elementplatte allein trägt den Frischbeton nur mit Montagestützen. Ausschal- bzw. Ausrüstfristen richten sich nach der erreichten Festigkeit (DIN EN 13670/DIN 1045-3), nicht pauschal nach 28 Tagen.",
+    "gapAnalysis": {
+      "topic": "Elementdecke",
+      "misconception": "28 Tage sind eine feste Ausschalfrist.",
+      "coreRule": "Ausrüsten nach Festigkeit und Vorgabe der Tragwerksplanung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Elementdecke“ im Modul Betonfertigteile noch einmal durch.",
+      "targetModuleTab": "bp_betonfertigteile",
+      "targetModuleLabel": "Betonfertigteile"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bft_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonfertigteile",
+    "moduleTitle": "Betonfertigteile",
+    "topic": "Hohlplatte",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 1168",
+    "question": "Um wie viel reduzieren die Hohlkanäle einer Spannbeton-Hohlplatte etwa das Eigengewicht gegenüber einer Massivdecke gleicher Höhe?",
+    "options": [
+      "ca. 35–45 %",
+      "ca. 5–10 %",
+      "ca. 70–80 %",
+      "gar nicht"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bei 26,5 cm Bauhöhe sinkt die Eigenlast z. B. von 6,6 auf rund 4,0 kN/m².",
+    "gapAnalysis": {
+      "topic": "Hohlplatte",
+      "misconception": "Hohlplatten sind nur geringfügig leichter.",
+      "coreRule": "Hohlraumanteil ≈ 40 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Hohlplatte“ im Modul Betonfertigteile noch einmal durch.",
+      "targetModuleTab": "bp_betonfertigteile",
+      "targetModuleLabel": "Betonfertigteile"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bbw_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonwaren",
+    "moduleTitle": "Betonwaren",
+    "topic": "Pflastersteine",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 1338",
+    "question": "Welche Anforderungen gelten für die Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338?",
+    "options": [
+      "Mittelwert ≥ 3,6 N/mm², Einzelwert ≥ 2,9 N/mm², Bruchlast je Länge ≥ 250 N/mm",
+      "Mittelwert ≥ 30 N/mm² (Druckfestigkeit)",
+      "Einzelwert ≥ 3,6 N/mm², Mittelwert beliebig",
+      "Nur die Bruchlast je Länge ≥ 100 N/mm"
+    ],
+    "correctIdx": 0,
+    "explanation": "Pflastersteine werden über die Spaltzugprüfung bewertet, nicht über die Würfeldruckfestigkeit.",
+    "gapAnalysis": {
+      "topic": "Pflastersteine",
+      "misconception": "Pflaster wird wie Beton über die Druckfestigkeit klassifiziert.",
+      "coreRule": "Spaltzug: 3,6 / 2,9 N/mm², 250 N/mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Pflastersteine“ im Modul Betonwaren noch einmal durch.",
+      "targetModuleTab": "bp_betonwaren",
+      "targetModuleLabel": "Betonwaren"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bbw_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_betonwaren",
+    "moduleTitle": "Betonwaren",
+    "topic": "Biogene Schwefelsäurekorrosion",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Was schützt Betonrohre wirksam gegen biogene Schwefelsäurekorrosion?",
+    "options": [
+      "Faulprozesse vermeiden sowie säurewiderstandsfähiger Beton oder eine Auskleidung",
+      "Ein SR-Zement allein",
+      "Ein höherer Luftporengehalt",
+      "Eine dickere Betondeckung der Bewehrung"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der Angriff ist ein Säureangriff durch Schwefelsäure im Kondensat. Sulfatwiderstand (SR-Zement) hilft gegen Sulfattreiben, nicht gegen die Auflösung durch Säure.",
+    "gapAnalysis": {
+      "topic": "Biogene Schwefelsäurekorrosion",
+      "misconception": "SR-Zement schützt vor jeder Art von Schwefelangriff.",
+      "coreRule": "Säureangriff ≠ Sulfatangriff.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biogene Schwefelsäurekorrosion“ im Modul Betonwaren noch einmal durch.",
+      "targetModuleTab": "bp_betonwaren",
+      "targetModuleLabel": "Betonwaren"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bmw_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_mauerwerk",
+    "moduleTitle": "Mauerwerk (Bauprodukte)",
+    "topic": "Mauerwerksdruckfestigkeit",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1996-1-1 Gl. (3.1)",
+    "question": "Welche Exponenten gelten in f_k = K · f_b^α · f_m^β für Normalmauermörtel?",
+    "options": [
+      "α = 0,70, β = 0,30",
+      "α = 0,85, β = 0",
+      "α = 0,70, β = 0,25",
+      "α = 0,50, β = 0,50"
+    ],
+    "correctIdx": 0,
+    "explanation": "Für Normalmauermörtel gilt α = 0,7 und β = 0,3; für Dünnbettmörtel α = 0,85 und β = 0.",
+    "gapAnalysis": {
+      "topic": "Mauerwerksdruckfestigkeit",
+      "misconception": "Die Mörtelfestigkeit hat bei Normalmörtel keinen Einfluss.",
+      "coreRule": "NM: 0,7/0,3; DM: 0,85/0.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauerwerksdruckfestigkeit“ im Modul Mauerwerk (Bauprodukte) noch einmal durch.",
+      "targetModuleTab": "bp_mauerwerk",
+      "targetModuleLabel": "Mauerwerk (Bauprodukte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bmw_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_mauerwerk",
+    "moduleTitle": "Mauerwerk (Bauprodukte)",
+    "topic": "Mauersteine",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welcher Mauerstein eignet sich wegen hoher Rohdichte besonders für Wohnungstrennwände mit Schallschutzanforderung?",
+    "options": [
+      "Kalksandstein",
+      "Porenbeton",
+      "Hochlochziegel mit Perlitfüllung",
+      "Lehmstein"
+    ],
+    "correctIdx": 0,
+    "explanation": "Luftschalldämmung einschaliger Wände hängt vor allem von der flächenbezogenen Masse ab – KS hat eine hohe Rohdichte.",
+    "gapAnalysis": {
+      "topic": "Mauersteine",
+      "misconception": "Dämmende Steine verbessern auch den Schallschutz.",
+      "coreRule": "Schallschutz einschalig: Masse.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauersteine“ im Modul Mauerwerk (Bauprodukte) noch einmal durch.",
+      "targetModuleTab": "bp_mauerwerk",
+      "targetModuleLabel": "Mauerwerk (Bauprodukte)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdf_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_dach_fassade",
+    "moduleTitle": "Dach & Fassade",
+    "topic": "Fenster",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN ISO 10077-1",
+    "question": "A_g = 1,30 m², U_g = 0,6; A_f = 0,52 m², U_f = 1,2; l_g = 4,6 m, Ψ_g = 0,04. Wie groß ist U_w?",
+    "options": [
+      "ca. 0,87 W/(m²K)",
+      "ca. 0,60 W/(m²K)",
+      "ca. 0,77 W/(m²K)",
+      "ca. 1,30 W/(m²K)"
+    ],
+    "correctIdx": 0,
+    "explanation": "(0,78 + 0,62 + 0,18) / 1,82 = 0,87 W/(m²K). Ohne Glasrandanteil ergäben sich 0,77.",
+    "gapAnalysis": {
+      "topic": "Fenster",
+      "misconception": "Der Glasrandverbund wird vergessen.",
+      "coreRule": "U_w enthält Glas, Rahmen und Ψ_g · l_g.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fenster“ im Modul Dach & Fassade noch einmal durch.",
+      "targetModuleTab": "bp_dach_fassade",
+      "targetModuleLabel": "Dach & Fassade"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_bdf_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "bp_dach_fassade",
+    "moduleTitle": "Dach & Fassade",
+    "topic": "VHF",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN 18516-1",
+    "question": "Welche Mindestbreite muss der Hinterlüftungsspalt einer vorgehängten hinterlüfteten Fassade haben?",
+    "options": [
+      "20 mm",
+      "5 mm",
+      "100 mm",
+      "Kein Spalt erforderlich"
+    ],
+    "correctIdx": 0,
+    "explanation": "DIN 18516-1 fordert einen Lüftungsspalt von mindestens 20 mm (örtlich bis 5 mm eingeschränkt).",
+    "gapAnalysis": {
+      "topic": "VHF",
+      "misconception": "Ein schmaler Spalt von wenigen Millimetern genügt.",
+      "coreRule": "VHF: Lüftungsspalt ≥ 20 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „VHF“ im Modul Dach & Fassade noch einmal durch.",
+      "targetModuleTab": "bp_dach_fassade",
+      "targetModuleLabel": "Dach & Fassade"
+    },
+    "verified": false
   }
 ]

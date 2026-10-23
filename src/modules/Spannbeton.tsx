@@ -558,7 +558,7 @@ export default function Spannbeton() {
 
             {/* Concrete Maturity & Prestressing Age */}
             <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/15 space-y-3">
-              <div className="text-[11px] font-bold text-text-main uppercase tracking-wider border-b border-zinc-205 pb-1 flex justify-between">
+              <div className="text-[11px] font-bold text-text-main uppercase tracking-wider border-b border-zinc-200 pb-1 flex justify-between">
                 <span>Betonreife beim Spannen (t₀)</span>
                 <span className="text-shiraz text-[10px] font-bold">EC2 Kap. 3.1.2</span>
               </div>

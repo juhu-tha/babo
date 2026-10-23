@@ -194,7 +194,7 @@ export default function BpBefestigung() {
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
                       <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Untergrund-Freigabe</span>
-                      <span className="text-[9px] font-bold text-slate-705 leading-snug block truncate" title={selectedFastener.substrate}>{selectedFastener.substrate}</span>
+                      <span className="text-[9px] font-bold text-slate-700 leading-snug block truncate" title={selectedFastener.substrate}>{selectedFastener.substrate}</span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
                       <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Versagensmodus</span>

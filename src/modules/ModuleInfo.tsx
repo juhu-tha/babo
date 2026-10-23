@@ -1280,7 +1280,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
             </div>
             <div>
               <h2 className="text-xl font-bold text-text-main dark:text-slate-100">Bereich: {data.title}</h2>
-              <p className="text-sm text-text-main/70 dark:text-slate-355">{data.tagline}</p>
+              <p className="text-sm text-text-main/70 dark:text-slate-350">{data.tagline}</p>
             </div>
           </div>
         </div>
@@ -1315,7 +1315,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'inhalte'
                   ? 'bg-shiraz text-white shadow-sm'
-                  : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-755'
+                  : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750'
               }`}
             >
               <BookOpen size={14} />
@@ -1326,7 +1326,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'weiterfuehrend'
                   ? 'bg-shiraz text-white shadow-sm'
-                  : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-755'
+                  : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750'
               }`}
             >
               <FileSearch size={14} />
@@ -1337,7 +1337,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'historie'
                   ? 'bg-shiraz text-white shadow-sm'
-                  : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-755'
+                  : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750'
               }`}
             >
               <History size={14} />
@@ -1349,7 +1349,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                 className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeSection === 'klassifizierung'
                     ? 'bg-shiraz text-white shadow-sm'
-                    : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-755'
+                    : 'bg-white dark:bg-slate-800 border border-home-grau/30 dark:border-slate-700 hover:border-shiraz text-text-main dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750'
                 }`}
               >
                 <Layers size={14} />

@@ -442,7 +442,7 @@ export default function Kreislaufwirtschaft() {
                 <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
                   <Box size={20} className="text-shiraz" /> Urban Mining &amp; Gebäuderessourcenpässe
                 </h3>
-                <p className="text-sm text-slate-705 mb-3">
+                <p className="text-sm text-slate-700 mb-3">
                   Betrachtet die gebaute Umwelt (Städte) als Rohstofflager der Zukunft. Das Gebäude wird als Materialdatenbank verstanden.
                 </p>
                 <ul className="text-sm text-slate-500 space-y-2 list-disc list-inside">
@@ -461,29 +461,29 @@ export default function Kreislaufwirtschaft() {
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
                 <Building2 className="text-shiraz" /> Anfallende Baustoffmassen & Verwertungswege
               </h2>
-              <p className="text-sm text-slate-705">
+              <p className="text-sm text-slate-700">
                 Bau- und Abbruchabfälle stellen mit über 50 % des Bruttoabfallaufkommens (über 200 Mio. Tonnen jährlich) in Deutschland den größten Abfallstrom dar.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                   <h4 className="font-bold text-slate-900 mb-2">Bodenaushub (Boden / Steine)</h4>
                   <div className="text-lg font-bold text-slate-900 mb-1">ca. 130 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-705"><strong>Verwertungswege:</strong> Vorrangig Verfüllung von Abgrabungen, Deponiebau, Landschaftsbau.</p>
+                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Vorrangig Verfüllung von Abgrabungen, Deponiebau, Landschaftsbau.</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                   <h4 className="font-bold text-slate-900 mb-2">Bauschutt (Mineralisch)</h4>
                   <div className="text-lg font-bold text-slate-900 mb-1">ca. 60 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-705"><strong>Verwertungswege:</strong> Recyclingbaustoffe (Straßenbauunterbau), Anteilig für R-Beton. Viel Downcycling.</p>
+                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Recyclingbaustoffe (Straßenbauunterbau), Anteilig für R-Beton. Viel Downcycling.</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
                   <h4 className="font-bold text-slate-900 mb-2">Straßenaufbruch (Asphalt)</h4>
                   <div className="text-lg font-bold text-slate-900 mb-1">ca. 20 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-705"><strong>Verwertungswege:</strong> Asphaltrecycling (sehr hohe Quote an direkter Wiederverwertung im Mischgut).</p>
+                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Asphaltrecycling (sehr hohe Quote an direkter Wiederverwertung im Mischgut).</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 lg:col-span-3">
                   <h4 className="font-bold text-slate-900 mb-2">Sonstige Bauabfälle (Gips, Holz, Kunststoffe, Metalle)</h4>
                   <div className="text-lg font-bold text-slate-900 mb-1">ca. 15 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-705"><strong>Verwertungswege:</strong> Metalle (vollständiges Recycling), Holz/Kunststoffe (oft energetische Verwertung bzgl. Verunreinigungen), Gips (teilweise Gipsrecycling-Anlagen).</p>
+                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Metalle (vollständiges Recycling), Holz/Kunststoffe (oft energetische Verwertung bzgl. Verunreinigungen), Gips (teilweise Gipsrecycling-Anlagen).</p>
                 </div>
               </div>
             </div>
@@ -495,28 +495,28 @@ export default function Kreislaufwirtschaft() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-stone-500 p-4 rounded-xl">
                   <h4 className="font-bold text-stone-800 mb-2 border-b border-stone-200 pb-2">Mineralische Baustoffe (Beton, Mauerwerk)</h4>
-                  <ul className="text-sm text-slate-705 space-y-2">
+                  <ul className="text-sm text-slate-700 space-y-2">
                     <li><strong>Verfahren:</strong> Brechen (Backenbrecher, Prallmühle), Sieben, Sichten (Trennen durch Luftstrom), sensorgestützte Sortierung, ggf. Waschen.</li>
                     <li><strong>Verwertungsquote:</strong> Sehr hoch (&gt; 90 %), jedoch findet überwiegend <em>Downcycling</em> statt (Schottertragschichten im Straßenbau). Zirkulär wäre hochwertiges Recycling als Gesteinskörnung für R-Beton (Hochbau).</li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-indigo-500 p-4 rounded-xl">
                   <h4 className="font-bold text-slate-800 mb-2 border-b border-home-grau/30 pb-2">Metalle (Stahlbeton, Alu, Profilbahnen)</h4>
-                  <ul className="text-sm text-slate-705 space-y-2">
+                  <ul className="text-sm text-slate-700 space-y-2">
                     <li><strong>Verfahren:</strong> Magnetabscheidung (Eisenmetalle), Wirbelstromabscheidung (NE-Metalle wie Aluminium/Kupfer), Shreddern, anschließendes Umschmelzen im Elektrolichtbogenofen (Elektrostahl).</li>
                     <li><strong>Verwertungsquote:</strong> Nahe 100 %. Metalle lassen sich praktisch ohne Qualitätsverlust unendlich oft recyceln.</li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-amber-500 p-4 rounded-xl">
                   <h4 className="font-bold text-amber-900 mb-2 border-b border-amber-200 pb-2">Bauholz & Holzwerkstoffe</h4>
-                  <ul className="text-sm text-slate-705 space-y-2">
+                  <ul className="text-sm text-slate-700 space-y-2">
                     <li><strong>Verfahren:</strong> Schreddern, Altholzverordnung (Klassifizierung A I bis A IV je nach Schadstoffbelastung).</li>
                     <li><strong>Verwertungsquote:</strong> Hohe Erfassung, aber stark limitiertes stoffliches Recycling (z.B. Nutzung für Spanplatten nur bei A I / A II). Behandeltes Holz (A III / A IV) wird fast ausschließlich <em>energetisch verwertet</em> (Biomasseheizkraftwerke).</li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-blue-500 p-4 rounded-xl">
                   <h4 className="font-bold text-blue-900 mb-2 border-b border-blue-200 pb-2">Kunststoffe & Dämmstoffe</h4>
-                  <ul className="text-sm text-slate-705 space-y-2">
+                  <ul className="text-sm text-slate-700 space-y-2">
                     <li><strong>Verfahren:</strong> Zerkleinerung, Extrusion (werkstofflich), Auflösung (z.B. CreaSolv für EPS), oder Müllverbrennung (thermisch).</li>
                     <li><strong>Verwertungsquote:</strong> Im Baubereich oft gering bzgl. werkstofflichem Recycling, da Kunststoffe oft als Verbundmaterialien (z.B. WDVS, geklebte Bodenbeläge) vorliegen oder mit Brandschutzmitteln kontaminiert sind. Meist noch energetische Verwertung.</li>
                   </ul>
@@ -533,7 +533,7 @@ export default function Kreislaufwirtschaft() {
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
                 <Layers className="text-shiraz" /> Problematische Stoffverbünde & Bauweisen
               </h2>
-              <p className="text-sm text-slate-705">
+              <p className="text-sm text-slate-700">
                 Die moderne Bauweise hat die bauphysikalischen und statischen Eigenschaften von Bauteilen optimiert, oft auf Kosten der Kreislauffähigkeit. Materialien werden stark miteinander verbunden, was das Trennen beim Rückbau erschwert.
               </p>
 
@@ -545,7 +545,7 @@ export default function Kreislaufwirtschaft() {
                   <p className="text-sm text-slate-500 mb-3">
                     Stoffe werden nass in nass, geklebt oder untrennbar mechanisch verbunden. Ein materialreines Trennen ist am "End of Life" unwirtschaftlich oder unmöglich.
                   </p>
-                  <ul className="list-disc list-inside text-xs text-slate-705 space-y-1">
+                  <ul className="list-disc list-inside text-xs text-slate-700 space-y-1">
                     <li><strong>Wärmedämmverbundsysteme (WDVS):</strong> Verklebter EPS-Dämmstoff mit Putz und Armierungsgewebe. Wird oft komplett verbrannt oder auf Deponien entsorgt.</li>
                     <li><strong>Ortbeton & Nassestriche:</strong> Monolithische Verbindungen verschiedener Lagen (z.B. Verbundestrich auf Beton). Trennung nur durch aufwendiges Fräsen/Abspitzen.</li>
                     <li><strong>Verklebte Bodenbeläge:</strong> Teppiche, PVC oder Parkett vollflächig mit starken Dispersionsklebern fixiert.</li>
@@ -574,7 +574,7 @@ export default function Kreislaufwirtschaft() {
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
                 <AlertTriangle className="text-shiraz" /> Stör- und Schadstoffe
               </h2>
-              <p className="text-sm text-slate-705">
+              <p className="text-sm text-slate-700">
                 Die Präsenz von Schadstoffen in Bestandsgebäuden verhindert oft eine direkte Wiederverwendung oder ein hochwertiges Recycling (Kontamination von Sekundärrohstoffen).
               </p>
 
@@ -602,7 +602,7 @@ export default function Kreislaufwirtschaft() {
                   <p className="text-sm text-slate-500 mb-2">
                     Auch neuere Materialien können problematische Zuschläge enthalten, die das spätere Recycling erschweren:
                   </p>
-                  <ul className="list-disc list-inside text-xs text-slate-705 space-y-1">
+                  <ul className="list-disc list-inside text-xs text-slate-700 space-y-1">
                     <li><strong>HBCD (Hexabromcyclododecan):</strong> Flammschutzmittel in alten EPS/XPS-Dämmstoffen. Dämmstoffe mit HBCD gelten als Problemabfall und müssen zerstört (verbrannt) werden (POP-Verordnung).</li>
                     <li><strong>Gips im Betonrecycling:</strong> Schon geringste Anteile an Gips (Sulfat) aus Putzanhaftungen können recycelten Sand oder Kies kontaminieren und spätere Ettringit-Treibreaktionen im Frischbeton hervorrufen.</li>
                   </ul>
@@ -847,7 +847,7 @@ export default function Kreislaufwirtschaft() {
                         <select aria-label="Kategorie"
                           value={newCompCat}
                           onChange={(e) => setNewCompCat(e.target.value as any)}
-                          className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-905 focus:outline-none focus:ring-1 focus:ring-shiraz"
+                          className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
                         >
                           <option value="Metall">Metall (Aluminium/Stahl)</option>
                           <option value="Holz">Nachwachsend (Holz)</option>
@@ -862,7 +862,7 @@ export default function Kreislaufwirtschaft() {
                         <select aria-label="Fügungsart"
                           value={newCompConn}
                           onChange={(e) => setNewCompConn(e.target.value as any)}
-                          className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-905 focus:outline-none focus:ring-1 focus:ring-shiraz"
+                          className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
                         >
                           <option value="geschraubt">Geschraubt (demontabel)</option>
                           <option value="gesteckt">Gesteckt (leicht trennbar)</option>
@@ -878,7 +878,7 @@ export default function Kreislaufwirtschaft() {
                           min="1"
                           value={newCompQty}
                           onChange={(e) => setNewCompQty(Math.max(1, parseInt(e.target.value) || 0))}
-                          className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg text-center bg-white font-mono text-slate-905 focus:outline-none focus:ring-1 focus:ring-shiraz"
+                          className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg text-center bg-white font-mono text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
                         />
                       </div>
 
@@ -887,7 +887,7 @@ export default function Kreislaufwirtschaft() {
                         <select aria-label="Einheit"
                           value={newCompUnit}
                           onChange={(e) => setNewCompUnit(e.target.value as any)}
-                          className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg bg-white text-slate-905 focus:outline-none"
+                          className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg bg-white text-slate-900 focus:outline-none"
                         >
                           <option value="Stk">Stk</option>
                           <option value="m²">m²</option>

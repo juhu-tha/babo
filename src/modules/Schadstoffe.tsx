@@ -1160,7 +1160,7 @@ export default function Schadstoffe() {
         </div>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 leading-relaxed text-sm text-slate-705">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 leading-relaxed text-sm text-slate-700">
                     <div className="space-y-3">
                       <h4 className="font-bold text-slate-900 text-base">GefStoffV-Novelle 2024 (Pflichten des Veranlassers, § 5a)</h4>
                       <p>

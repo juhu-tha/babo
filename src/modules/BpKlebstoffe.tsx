@@ -212,7 +212,7 @@ export default function BpKlebstoffe() {
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
                       <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Beanspruchungsklasse</span>
-                      <span className="text-xxs font-bold text-slate-705 leading-snug block truncate" title={selectedItem.durabilityClass}>{selectedItem.durabilityClass}</span>
+                      <span className="text-xxs font-bold text-slate-700 leading-snug block truncate" title={selectedItem.durabilityClass}>{selectedItem.durabilityClass}</span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
                       <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Dehnfähigkeit</span>
