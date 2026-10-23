@@ -392,40 +392,42 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Konstruktiver Ingenieurholzbau, Werkstoffkennwerte, Stabilitätsnachweise und Brandschutz',
     icon: Trees,
     basicsTitle: 'Wissenschaftliche Säulen des Ingenieurholzbaus',
-    basicsDesc1: 'Holz ist ein nachwachsender, anisotroper Naturwerkstoff mit herausragendem spezifischem Festigkeits-Gewichts-Verhältnis und natürlicher CO2-Speicherfähigkeit.',
-    basicsDesc2: 'Moderne Holzwerkstoffe wie Brettschichtholz (BSH) und Brettsperrholz (BSP / CLT) ermöglichen weitgespannte Hallentragwerke und mehrgeschossige Holz-Hochhäuser nach Eurocode 5.',
+    basicsDesc1: 'Holz ist ein nachwachsender, anisotroper Werkstoff mit hoher Festigkeit im Verhältnis zur Dichte; er speichert biogenen Kohlenstoff, solange er genutzt wird.',
+    basicsDesc2: 'Moderne Holzwerkstoffe wie Brettschichtholz (BSH) und Brettsperrholz (BSP / CLT) ermöglichen weitgespannte Hallentragwerke und mehrgeschossige Gebäude; bemessen wird nach Eurocode 5.',
     basicsCards: [
       { title: 'Anisotropie & Nutzungsklassen', desc: 'Faserrichtungsabhängige Kennwerte (parallel vs. rechtwinklig zur Faser) und feuchteabhängige Nutzungsklassen (NKL 1 bis 3).' },
       { title: 'Stabilität & Verbindungsmittel', desc: 'Knick- und Biegedrillknicknachweise sowie stiftförmige Verbindungsmittel mit Seilwirkung.' }
     ],
     submodules: [
       { title: 'Werkstoffe & dataholz', icon: Trees, purpose: 'Charakteristische Festigkeiten von Vollholz (C24), BSH (GL24h–GL30h) und dataholz-Aufbauten.', standards: 'DIN EN 338 / EN 14080', useCase: 'Auswahl von Lamellen und Bauteilschichten.' },
-      { title: 'Konstruktionsweisen', icon: LayoutGrid, purpose: 'Holzrahmenbau, Massivholzbau (CLT) und Holz-Hybridbau.', standards: 'MHolzBauR / Informationsdienst Holz', useCase: 'Systementscheidung für Geschossdecken und tragende Wandscheiben.' },
+      { title: 'Konstruktionsweisen', icon: LayoutGrid, purpose: 'Holzrahmenbau, Massivholzbau (CLT) und Holz-Hybridbau.', standards: 'MHolzBauRL / Informationsdienst Holz', useCase: 'Systementscheidung für Geschossdecken und tragende Wandscheiben.' },
       { title: 'Bemessung (EC5)', icon: Calculator, purpose: 'Stabilitätsnachweise für Druckstäbe und Biegeträger mit k_mod und gamma_M.', standards: 'DIN EN 1995-1-1', useCase: 'Ermittlung von Knickbeiwert k_c und Querschnittsausnutzung.' },
-      { title: 'Verbindungen & Anschlüsse', icon: GitCommit, purpose: 'Johansen-Theorie für Stabdübel, Passbolzen und Spax-Vollgewindeschrauben.', standards: 'DIN EN 1995-1-1 Kap. 8', useCase: 'Berechnung von Abscher- und Ausziehtragfähigkeiten.' },
-      { title: 'Bauphysik & Brandschutz', icon: Flame, purpose: 'Heißbemessung nach der Methode des wirksamen Restquerschnitts (d_ef).', standards: 'DIN EN 1995-1-2', useCase: 'Nachweis des Feuerwiderstands REI 30 bis REI 90.' }
+      { title: 'Verbindungen & Anschlüsse', icon: GitCommit, purpose: 'Johansen-Theorie für Stabdübel, Passbolzen und Holzschrauben (Vollgewinde nach ETA).', standards: 'DIN EN 1995-1-1 Kap. 8', useCase: 'Berechnung von Abscher- und Ausziehtragfähigkeiten.' },
+      { title: 'Bauphysik & Brandschutz', icon: Flame, purpose: 'Bemessung im Brandfall mit der Methode des reduzierten Querschnitts (d_ef).', standards: 'DIN EN 1995-1-2', useCase: 'Nachweis der Tragfähigkeit im Brandfall für R 30 bis R 90.' }
     ],
     didacticCards: [
       { title: 'KLED & Feuchteeinfluss', desc: 'Verknüpfung von Lasteinwirkungsdauer (KLED) und Nutzungsklasse über k_mod.' },
-      { title: 'Restquerschnitts-Verfahren', desc: 'Brandbemessung über planmäßige Abbrandrate beta_0 und 7 mm Nulllastschicht.' },
-      { title: 'Vorfertigung & Taktung', desc: 'Industrieller Holzbau mit werkseitig geschlossenem Aufbau für feuchtefreie Montage.' }
+      { title: 'Restquerschnitts-Verfahren', desc: 'Brandbemessung über die ideelle Abbrandrate β_n und die Schicht ohne Festigkeit d₀ = 7 mm.' },
+      { title: 'Vorfertigung & Taktung', desc: 'Werkseitige Vorfertigung verkürzt die Montage und verringert Baufeuchte.' }
     ],
-    appStudents: 'Fundierte Begleitung von Massivbau- und Holzbauvorlesungen im Bachelor und Master Bauingenieurwesen.',
-    appProfessionals: 'Praxistaugliches Nachschlagewerk für Tragwerksplaner im modernen mehrgeschossigen Holz- und Holz-Hybridbau.',
+    appStudents: 'Begleitung von Holzbauvorlesungen im Bachelor- und Masterstudium Bauingenieurwesen.',
+    appProfessionals: 'Überblick und Rechenbeispiele für den Holz- und Holz-Hybridbau; ersetzt keine Tragwerksplanung.',
     wikipedia: [
       { title: 'Holzbau', url: 'https://de.wikipedia.org/wiki/Holzbau' },
       { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' }
     ],
     literatur: [
-      'Informationsdienst Holz: Holzbau Handbuch (Fachgemeinschaft Holzbau)',
-      'dataholz.eu: Bauteilkatalog der Holzforschung Austria'
+      'Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5',
+      'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016',
+      'Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Detail 2017'
     ],
     regelwerke: [
-      { title: 'DIN EN 1995-1-1: Eurocode 5 - Bemessung und Konstruktion von Holzbauten' },
-      { title: 'DIN EN 1995-1-2: Eurocode 5 - Tragwerksbemessung für den Brandfall' }
+      { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5)' },
+      { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Brandfall)' },
+      { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), DIBt' }
     ],
     formeln: [
-      { formel: 'f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}', erklaerung: 'Grundformel für den Bemessungswert einer Festigkeitseigenschaft im Holzbau unter Berücksichtigung von Nutzungsklasse und Lasteinwirkungsdauer.', quelle: 'DIN EN 1995-1-1 Gl. 2.1' }
+      { formel: 'f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}', erklaerung: 'Bemessungswert einer Festigkeit: k_mod erfasst Nutzungsklasse und Lasteinwirkungsdauer, γ_M = 1,3 für Vollholz und BSH (NA).', quelle: 'DIN EN 1995-1-1, Gl. (2.14)' }
     ]
   },
   stahlbeton: {
@@ -433,7 +435,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Grenzzustände der Tragfähigkeit und Gebrauchstauglichkeit nach Eurocode 2',
     icon: GitCommit,
     basicsTitle: 'Das Verbundverhalten im Massivbau',
-    basicsDesc1: 'Der Massivbau (Stahlbeton, Spannbeton, Carbonbeton etc.) verbindet die extreme Druckfestigkeit des Betons mit der hohen Zug- und Biegezugfestigkeit moderner Bewehrungssysteme wie Betonstahl oder Carbongelege. Dieses Zusammenspiel erfordert thermodynamische Abstimmung und ausreichenden Haftverbund.',
+    basicsDesc1: 'Der Massivbau (Stahlbeton, Spannbeton, Carbonbeton) verbindet die hohe Druckfestigkeit des Betons mit der Zugfestigkeit der Bewehrung (Betonstahl, Carbon). Voraussetzung sind ein ausreichender Verbund und bei Stahl eine ähnliche Wärmedehnung.',
     basicsDesc2: 'In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), dimensionieren druckbelastete Stützen nach Theorie II. Ordnung und erfassen Durchstanzrisiken im Stützenbereich.',
     basicsCards: [
       { title: 'Interaktive Bemessung', desc: 'Echtzeitrechner für Biegezug, Rissbreitenverteilung und erforderliche Bewehrungsflächen.' },
@@ -1220,19 +1222,14 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   holzbau: {
     websites: [
       { name: "Informationsdienst Holz", url: "https://informationsdienst-holz.de", desc: "Umfangreiche Fachpublikationen, Holzbau Handbücher und Konstruktionsdetails." },
-      { name: "dataholz.eu", url: "https://www.dataholz.eu", desc: "Prüfzeugnisse für U-Werte, Schall- und Brandschutznachweise nach HFA-Standard." },
-      { name: "Institut für Holzbau", url: "https://www.institut-holzbau.de", desc: "Fortbildung und Forschung zu Landesbauordnungen und Holzbaurichtlinien." }
+      { name: "dataholz.eu", url: "https://www.dataholz.eu", desc: "Bauteilkatalog der Holzforschung Austria mit bauphysikalischen und brandschutztechnischen Kennwerten." }
     ],
     books: [
-      { title: "Holzbau: Grundlagen, Bemessungshilfen", desc: "Informationsdienst Holz. Tabellenwerk für Tragwerksplaner nach Eurocode 5." },
-      { title: "Holzbau Taschenbuch", desc: "Ernst & Sohn. Bemessungs- und Konstruktionsregeln für Ingenieure." }
+      { title: "Ingenieurholzbau – Grundlagen der Bemessung", desc: "Blaß, H. J.; Sandhaas, C., KIT Scientific Publishing 2016 (frei verfügbar)." },
+      { title: "Atlas Mehrgeschossiger Holzbau", desc: "Kaufmann, H.; Krötsch, S.; Winter, S., Detail 2017." }
     ],
-    publications: [
-      { journal: "Bautechnik", title: "Mehrgeschossiger Holzbau nach der neuen Muster-Holzbau-Richtlinie (MHolzBauR)", desc: "Brandschutztechnische Nachweisführung und Kapselungskriterien für GK 4 und GK 5." }
-    ],
-    dissertations: [
-      { title: "Trag- und Verformungsverhalten von Brettsperrholzelementen unter mehraxialer Beanspruchung", desc: "Dissertation, TU Graz. Untersuchungen zur Rollschubfestigkeit und Schubmodulbestimmung." }
-    ]
+    publications: [],
+    dissertations: []
   }
 };
 

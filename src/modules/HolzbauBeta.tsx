@@ -19,6 +19,8 @@ import {
   History
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import ModuleHistoryView from '@/src/components/ui/ModuleHistoryView';
@@ -37,18 +39,19 @@ interface WoodMaterial {
   f_c0k: number; // Druckfestigkeit parallel N/mm²
   f_vk: number; // charakteristische Scherfestigkeit N/mm²
   E_0mean: number; // mittlerer Elastizitätsmodul N/mm²
+  E_005: number; // 5%-Quantil E-Modul N/mm²
   rho_k: number; // charakteristische Rohdichte kg/m³
   rho_mean: number; // mittlere Rohdichte kg/m³
 }
 
 const woodMaterials: WoodMaterial[] = [
-  { class: 'C24', type: 'Nadelholz (S10)', f_mk: 24, f_t0k: 14.5, f_c0k: 21, f_vk: 4.0, E_0mean: 11000, rho_k: 350, rho_mean: 420 },
-  { class: 'C30', type: 'Nadelholz (S13)', f_mk: 30, f_t0k: 18, f_c0k: 23, f_vk: 4.0, E_0mean: 12000, rho_k: 380, rho_mean: 460 },
-  { class: 'D30', type: 'Laubholz', f_mk: 30, f_t0k: 18, f_c0k: 24, f_vk: 4.0, E_0mean: 11000, rho_k: 530, rho_mean: 640 },
-  { class: 'D40', type: 'Laubholz', f_mk: 40, f_t0k: 24, f_c0k: 26, f_vk: 4.0, E_0mean: 13000, rho_k: 590, rho_mean: 700 },
-  { class: 'GL24h', type: 'Brettschichtholz (homogen)', f_mk: 24, f_t0k: 19.2, f_c0k: 24, f_vk: 3.5, E_0mean: 11500, rho_k: 385, rho_mean: 420 },
-  { class: 'GL28c', type: 'Brettschichtholz (kombiniert)', f_mk: 28, f_t0k: 19.5, f_c0k: 24, f_vk: 3.5, E_0mean: 12500, rho_k: 390, rho_mean: 430 },
-  { class: 'GL30h', type: 'Brettschichtholz (homogen)', f_mk: 30, f_t0k: 24, f_c0k: 30, f_vk: 3.5, E_0mean: 13600, rho_k: 430, rho_mean: 480 },
+  { class: 'C24', type: 'Nadelholz (S10)', f_mk: 24, f_t0k: 14.5, f_c0k: 21, f_vk: 4.0, E_0mean: 11000, E_005: 7400, rho_k: 350, rho_mean: 420 },
+  { class: 'C30', type: 'Nadelholz (S13)', f_mk: 30, f_t0k: 19, f_c0k: 24, f_vk: 4.0, E_0mean: 12000, E_005: 8000, rho_k: 380, rho_mean: 460 },
+  { class: 'D30', type: 'Laubholz (Werte manuell prüfen)', f_mk: 30, f_t0k: 18, f_c0k: 24, f_vk: 3.9, E_0mean: 11000, E_005: 9200, rho_k: 530, rho_mean: 640 },
+  { class: 'D40', type: 'Laubholz (Werte manuell prüfen)', f_mk: 40, f_t0k: 24, f_c0k: 26, f_vk: 4.2, E_0mean: 13000, E_005: 10900, rho_k: 590, rho_mean: 700 },
+  { class: 'GL24h', type: 'Brettschichtholz (homogen)', f_mk: 24, f_t0k: 19.2, f_c0k: 24, f_vk: 3.5, E_0mean: 11500, E_005: 9600, rho_k: 385, rho_mean: 420 },
+  { class: 'GL28c', type: 'Brettschichtholz (kombiniert)', f_mk: 28, f_t0k: 19.5, f_c0k: 24, f_vk: 3.5, E_0mean: 12500, E_005: 10400, rho_k: 390, rho_mean: 430 },
+  { class: 'GL30h', type: 'Brettschichtholz (homogen)', f_mk: 30, f_t0k: 24, f_c0k: 30, f_vk: 3.5, E_0mean: 13600, E_005: 11300, rho_k: 430, rho_mean: 480 },
 ];
 
 // dataholz.eu construction database
@@ -127,7 +130,7 @@ const dataholzConstructions: DataholzConstruction[] = [
       'Traglattung und Konterlattung (Hinterlüftungsebene, 40/60 mm)',
       'Unterdeckplatte aus Holzfasern, wasserableitend Typ HFD-UD (35 mm)',
       'Konstruktionsvollholz-Konstruktionssparren 80/200 mm, e = 75 cm, Gefach ausgedämmt mit flexibler Holzfaser (200 mm)',
-      'Feuchtevariable Klimamembran (sd-Wert = 0,5 bis 5,0 m, proaktiv gegen sommerliche Feuchteakkumulation)',
+      'Feuchtevariable Dampfbremse (s_d-Wert feuchteabhängig, z. B. 0,5 bis 5 m; ermöglicht sommerliche Rücktrocknung)',
       'Unterkonstruktion gedämmt mit Hanfmatten (40 mm)',
       'Gipskarton-Feuerschutzplatte Typ GKF raumseitig (15 mm)'
     ]
@@ -241,13 +244,13 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const qpResults = useMemo(() => {
     // 1. Get fc90k based on wood class
     const fc90kMap: Record<string, number> = {
-      C24: 2.5, C30: 2.7, D30: 8.0, D40: 9.0, GL24h: 2.5, GL28c: 2.5, GL30h: 2.7
+      C24: 2.5, C30: 2.7, D30: 8.0, D40: 8.8, GL24h: 2.5, GL28c: 2.5, GL30h: 2.5
     };
     const f_c90k = fc90kMap[woodClass] || 2.5;
 
     // k_mod and gamma_M from current buckling calc values
     const isGlulam = woodClass.startsWith('GL');
-    const gamma_M = isGlulam ? 1.25 : 1.3;
+    const gamma_M = 1.3; // Vollholz und BSH nach DIN EN 1995-1-1/NA
     
     let k_mod = 0.8;
     const kmodMatrix: Record<number, Record<string, number>> = {
@@ -262,11 +265,13 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const f_c90d = k_mod * (f_c90k / gamma_M); // N/mm²
 
     // 2. Determine k_c90 based on config
+    // DIN EN 1995-1-1 6.1.5 (A1): Nadel-Vollholz 1,25/1,5, BSH 1,5/1,75; sonst 1,0 (NA-Regelungen manuell prüfen)
+    const isSoftSolid = woodClass.startsWith('C');
     let k_c90 = 1.0;
-    if (qpConfig === 'schwelle') k_c90 = 1.50;
-    else if (qpConfig === 'pfosten_riegel') k_c90 = 1.25;
+    if (qpConfig === 'schwelle') k_c90 = isGlulam ? 1.50 : isSoftSolid ? 1.25 : 1.0;
+    else if (qpConfig === 'pfosten_riegel') k_c90 = isGlulam ? 1.75 : isSoftSolid ? 1.50 : 1.0;
     else if (qpConfig === 'traeger_ende') k_c90 = 1.00;
-    else if (qpConfig === 'clt_plate') k_c90 = 1.75;
+    else if (qpConfig === 'clt_plate') k_c90 = 1.00;
 
     // 3. Effective length of bearing l_ef
     let l_ef = qpL;
@@ -306,7 +311,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const rho_k = material.rho_k;
 
     // 1. Axial Withdrawal Capacity F_ax,Rk
-    const f_ax_k = 12.0; // N/mm² standard for high quality wood screws
+    const f_ax_k = 12.0; // N/mm² Lehrwert – reale Werte nach ETA der Schraube
     const rad = (connAngle * Math.PI) / 180;
     const factor_alpha = 1.0 / (1.2 * Math.pow(Math.cos(rad), 2) + Math.pow(Math.sin(rad), 2));
     const factor_density = Math.pow(rho_k / 350, 0.8);
@@ -325,8 +330,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const M_y_Rk = 0.3 * f_uk * Math.pow(connD, 2.6); // Nmm
 
     const F_v_Rk_1 = f_h_k * connLef * connD; 
-    const rope_effect = Math.min(0.25 * F_ax_Rk_single_N, F_ax_Rk_single_N); 
-    const F_v_Rk_2 = 1.15 * Math.sqrt(2 * M_y_Rk * f_h_k * connD) + rope_effect;
+    const johansen_2 = 1.15 * Math.sqrt(2 * M_y_Rk * f_h_k * connD);
+    // Seileffekt F_ax,Rk/4, für Schrauben auf 100 % des Johansen-Anteils begrenzt (EC5 8.2.2)
+    const rope_effect = Math.min(0.25 * F_ax_Rk_single_N, johansen_2);
+    const F_v_Rk_2 = johansen_2 + rope_effect;
 
     const F_v_Rk_single_N = Math.min(F_v_Rk_1, F_v_Rk_2);
     const F_v_Rk_total_N = connCount * F_v_Rk_single_N;
@@ -354,13 +361,16 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   }, [connWoodClass, connD, connLef, connAngle, connCount, connForce]);
 
   const fireResults = useMemo(() => {
-    let beta_0 = 0.70; // mm/min standard softwood
-    if (fireType === 'laub') beta_0 = 0.50; // hardwood
-    if (fireType === 'clt') beta_0 = 0.65; // CLT
+    // ideelle Abbrandrate beta_n inkl. Eckausrundung (DIN EN 1995-1-2, Tab. 3.1)
+    let beta_0 = 0.80; // Nadel-Vollholz
+    if (fireType === 'bsh') beta_0 = 0.70; // Nadelholz-BSH
+    if (fireType === 'laub') beta_0 = 0.55; // Laubholz rho_k >= 450
+    if (fireType === 'clt') beta_0 = 0.65; // eindimensional, Lehrannahme (ohne Lagenabfall)
 
     const d_char0 = beta_0 * fireTime; // mm
-    const d_0 = 7.0; // mm constant pyrolyse layer loss
-    const d_ef = d_char0 + d_0; // mm
+    const k_0 = Math.min(1, fireTime / 20); // ungeschützte Oberfläche
+    const d_0 = 7.0; // mm Schicht ohne Festigkeit
+    const d_ef = d_char0 + k_0 * d_0; // mm
 
     let b_fi = fireB;
     let h_fi = fireH;
@@ -409,7 +419,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const totalMass = cltSelfMass + vibExtraMass; // kg/m²
 
     const freq_1 = (Math.PI / (2 * Math.pow(vibSpan, 2))) * Math.sqrt(ei_L / totalMass);
-    const isCompliant = freq_1 >= 8.0;
+    const isCompliant = freq_1 > 8.0;
 
     return {
       cltSelfMass,
@@ -439,17 +449,15 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
       k_mod = kmodMatrix[serviceClass][loadDuration];
     }
 
-    // Teilsicherheitsbeiwert gamma_M
-    const gamma_M = isGlulam ? 1.25 : 1.3;
+    // Teilsicherheitsbeiwert gamma_M (NA: Vollholz und BSH 1,3)
+    const gamma_M = 1.3;
 
     // Bemessungswert der Druckfestigkeit: f_c_0_d = k_mod * f_c_0_k / gamma_M
     const f_c0k = currentMaterial.f_c0k;
     const f_c0d = k_mod * (f_c0k / gamma_M);
 
-    // Bemessungswert E-Modul für Knicken (5%-Quantilwert) und Knicknachweis:
-    // E_05 = 2/3 * E_mean für Vollholz; für BSH ist E_05 meist im Tabellenkennwert explizit.
-    // Ein guter stabiler Näherungswert nach EN 338 ist E_05 = 0.67 * E_mean
-    const E_05 = 0.67 * currentMaterial.E_0mean;
+    // 5%-Quantil des E-Moduls für den Knicknachweis (Tabellenwert EN 338 / EN 14080)
+    const E_05 = currentMaterial.E_005;
 
     // Querschnittsflächen-Eigenschaften
     const A = colB * colH; // mm²
@@ -470,7 +478,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
     // Schlankheitsgrad lambda_z (wirksames Knicken um die schwache Achse z bei b < h)
     // Wir nehmen an das ungestützte Knicken findet um die schwächere Achse statt (Trägheitsradius iz)
-    const lambda_z = l_ef / iz;
+    const lambda_z = l_ef / Math.min(iy, iz); // maßgebend: schwache Achse
 
     // Eulerdruckspannung (Kritische Ausweichspannung)
     // sigma_c_crit = pi^2 * E_05 / lambda_z^2
@@ -542,7 +550,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
             </div>
             <div>
               <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight">
-                Holzbau (Ingenieurholzbau) <span className="text-shiraz font-bold text-xs px-2 py-0.5 bg-shiraz/10 border border-shiraz/20 rounded-full">BETA</span>
+                Holzbau (Ingenieurholzbau)
               </h2>
               <p className="text-xs text-text-main/60 font-semibold uppercase tracking-wider">
                 Referenzhandbuch &amp; Tragwerksnachweise nach Eurocode 5 (DIN EN 1995-1-1)
@@ -556,7 +564,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
         </div>
 
         <p className="text-sm text-text-main/75 max-w-4xl leading-relaxed">
-          Willkommen im interaktiven Wissensportal für den konstruktiven Holzbau. Entwickelt auf Basis der maßgebenden Fachquellen des deutschen und österreichischen Holzbauinstituts. Dieses Modul bündelt werkstoffliche Kenngrößen, bauphysikalische Details zur Entkopplung und Brandschutzbemessung sowie voll funktionsfähige EC5-Rechner für Stabilitätsnachweise.
+          Das Modul fasst Kennwerte der Holzwerkstoffe, Konstruktionsweisen, Bauphysik und Brandschutz zusammen und enthält vereinfachte Rechner nach Eurocode 5. Die Rechner dienen der Lehre und ersetzen keine Tragwerksplanung.
         </p>
       </div>
 
@@ -600,7 +608,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <span className="text-[10px] uppercase font-black text-shiraz tracking-widest block mb-1">Netzwerk Deutschland</span>
                     <h3 className="font-extrabold text-text-main text-base mb-2">Informationsdienst Holz</h3>
                     <p className="text-xs text-text-main/70 leading-relaxed">
-                      Herausgegeben von der Fachgemeinschaft Holzbau. Liefert die unbestrittenen Standardpublikationen (Holzbau Handbücher) zu Brandschutzversuchen, Deckenkopplungen, statischen Tabellenwerten und Detailkatalogen für die raumsichernde Holzbauweise.
+                      Fachinformationen des Informationsvereins Holz (Reihe „holzbau handbuch“) zu Konstruktion, Bemessung, Brand-, Schall- und Feuchteschutz.
                     </p>
                   </div>
                   <a 
@@ -618,7 +626,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <span className="text-[10px] uppercase font-black text-amber-800 tracking-widest block mb-1">Prüfzeugnisse &amp; Details</span>
                     <h3 className="font-extrabold text-text-main text-base mb-2">dataholz.eu</h3>
                     <p className="text-xs text-text-main/70 leading-relaxed">
-                      Die bautechnisch anerkannte Datenbank der Holzforschung Austria (HFA). Bietet lizenzierten Planern herstellerneutrale, physikalisch geprüfte Wand-, Decken- und Dachaufbauten bezüglich U-Wert, Schalldämmmaß und Feuerwiderstand (REI30 bis REI90).
+                      Frei zugänglicher Bauteilkatalog der Holzforschung Austria mit herstellerneutralen Wand-, Decken- und Dachaufbauten und deren bauphysikalischen und brandschutztechnischen Kennwerten (Anerkennung in Deutschland manuell prüfen).
                     </p>
                   </div>
                   <a 
@@ -664,7 +672,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <div>
                       <h4 className="font-bold text-sm text-text-main">Vorkonditionierung &amp; Vorfertigung (Just-in-Time)</h4>
                       <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                        Wand- und Deckensysteme werden witterungsgeschützt im Werk CNC-gesteuert abgebunden und inklusive Installationsebene vorbereitet. Dies verkürzt die Rohbauphase auf wenige Tage vor Ort und schließt Baufeuchterisiken proaktiv aus.
+                        Wand- und Deckensysteme werden witterungsgeschützt im Werk CNC-gesteuert abgebunden und inklusive Installationsebene vorbereitet. Das verkürzt die Montagezeit vor Ort und verringert das Risiko von Baufeuchte.
                       </p>
                     </div>
                   </div>
@@ -674,7 +682,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <div>
                       <h4 className="font-bold text-sm text-text-main">Leichtgewicht mit hoher spezifischer Festigkeit</h4>
                       <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                        Holz besitzt trotz geringer Eigenlast exzellente Zug- und Druckbeanspruchungswerte. Ideal für Aufstockungen im urbanen Raum, bei denen die Bestandstragschale (z. B. altes Mauerwerk) keine tonnenschweren Betondecken aufnehmen kann.
+                        Holz hat im Verhältnis zu seiner Dichte eine hohe Festigkeit parallel zur Faser. Das ist z. B. bei Aufstockungen günstig, wenn der Bestand nur geringe Zusatzlasten aufnehmen kann.
                       </p>
                     </div>
                   </div>
@@ -684,7 +692,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <div>
                       <h4 className="font-bold text-sm text-text-main">Zirkularität und Schadstofffreiheit</h4>
                       <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                        Bei sorgsam entkoppelten dry-lock Systemen lassen sich Vollholzbohlen und Platten unbeschadet rückbauen, typgleichen Kreislaufsystemen zuführen oder am Lebensdauerende energetisch verwerten (Kaskadennutzung).
+                        Lösbar verbundene (geschraubte, gesteckte) Bauteile lassen sich zerstörungsarm rückbauen und wiederverwenden; danach folgen stoffliche und zuletzt energetische Verwertung (Kaskadennutzung).
                       </p>
                     </div>
                   </div>
@@ -694,7 +702,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <div>
                       <h4 className="font-bold text-sm text-text-main">Integrierter sommerlicher Hitzeschutz</h4>
                       <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                        Holzwände kombiniert mit zellulosischer oder faserbasierter Einblasdämmung erreichen hohe Phasenverschiebungen (<InlineMath math="\phi \ge 10 \text{ Stunden}" />) und drosseln den Amplitudenverhältnis-Eintrag der Sonneneinstrahlung ins Dachgeschoss massiv.
+                        Holzwände kombiniert mit zellulosischer oder faserbasierter Einblasdämmung können wegen der hohen Wärmespeicherfähigkeit der Dämmstoffe große Phasenverschiebungen erreichen (Größenordnung 10 h, aufbauabhängig) und dämpfen die Temperaturamplitude – günstig für den sommerlichen Wärmeschutz.
                       </p>
                     </div>
                   </div>
@@ -705,7 +713,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <div className="bg-amber-50/50 border border-amber-200 p-4 rounded-xl text-xs text-amber-950 flex gap-3 leading-relaxed">
                 <AlertTriangle size={18} className="text-amber-700 flex-shrink-0" />
                 <div>
-                  <strong>Hinweis der Fachverbände:</strong> Das Bauordnungsrecht wurde in den letzten Jahren schrittweise für den mehrgeschossigen Holzbau novelliert. Gemäß der aktuellen Muster-Holzbau-Richtlinie (M-HFH-R) können Gebäude der Gebäudeklasse (GK) 4 und teilweise GK 5 in Holzbauweise errichtet werden, wenn strenge Deckenkapselungen und Brandschutzanforderungen erfüllt sind.
+                  <strong>Hinweis:</strong> Die Landesbauordnungen wurden für den mehrgeschossigen Holzbau schrittweise geöffnet. Die Muster-Holzbaurichtlinie (MHolzBauRL; aktuelle Fassung vom DIBt 2025 veröffentlicht) regelt Bauteile in Holzbauweise für die Gebäudeklassen 4 und 5. Maßgebend ist die jeweilige Landesfassung (manuell prüfen).
                 </div>
               </div>
             </>
@@ -769,7 +777,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               </div>
               <h3 className="font-extrabold text-text-main text-base mt-1">Interaktiver dataholz.eu Bauteilexplorer</h3>
               <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                Katalog für amtlich nachgewiesene und klassifizierte Decken-, Wand- und Dachkonstruktionen aus dem lizenzierten österreichisch-deutschen Detailpool.
+                Beispielaufbauten zur Lehre, angelehnt an Bauteilkataloge wie dataholz.eu. Kennwerte sind Richtwerte – für die Planung gelten die klassifizierten Originaleinträge.
               </p>
             </div>
 
@@ -916,7 +924,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <Droplets size={20} className="text-blue-600" /> Holzfeuchte &amp; Schwind-/Quellverhalten Rechner
               </h3>
               <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                Holz ist ein hygroskopischer Baustoff. Unterhalb des Fasersättigungspunkts (<InlineMath math="u_{fs} \approx 30\%" />) führt Feuchtigkeitsaufnahme zum Quellen und Abgabe zum Schwinden. Durch die Anisotropie des Holzes unterscheidet sich das Dehnungsmaß in radialer, tangentialer und longitudinaler Richtung erheblich.
+                Holz ist ein hygroskopischer Baustoff. Unterhalb des Fasersättigungspunkts (<InlineMath math="u_{fs} \approx 30\%" />) führt Feuchtigkeitsaufnahme zum Quellen und Abgabe zum Schwinden. Durch die Anisotropie des Holzes unterscheidet sich das Dehnungsmaß in radialer, tangentialer und longitudinaler Richtung erheblich. Die hinterlegten differentiellen Schwind- und Quellmaße (% je % Holzfeuchteänderung) sind Richtwerte; die Literatur streut je nach Herkunft und Rohdichte. Als Rechenwert für Nadelholz quer zur Faser wird häufig 0,24 %/% angesetzt (DIN 1052; Fundstelle im NA zu EC5 manuell prüfen).
               </p>
             </div>
 
@@ -1130,7 +1138,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <span className="text-[10px] font-black text-amber-800 uppercase tracking-widest">Bauweise B</span>
               <h3 className="font-extrabold text-text-main text-base">Massivholzbau (BSP / CLT)</h3>
               <p className="text-xs text-text-main/70 leading-relaxed">
-                Flächige, mehrschichtige Tragwerke aus kreuzweise verklebten Brettlagen (Brettsperrholz). Verhält sich statisch homogen wie ein zweidimensionales Platten- oder Scheibenelement. Bietet hohe thermische Masse und extreme Stabilität.
+                Flächige, mehrschichtige Tragwerke aus kreuzweise verklebten Brettlagen (Brettsperrholz). Trägt zweiachsig als Platte oder Scheibe (Rollschub in den Querlagen beachten) und hat eine höhere Masse als Rahmenbauteile.
               </p>
               <div className="text-[11px] font-semibold text-amber-900 bg-amber-50 p-2.5 rounded-lg border border-amber-100/60 mt-2">
                 <strong>Einsatz:</strong> Mehrgeschossiger Wohnungsbau (Gebäudeklasse 4 &amp; 5), Schachtwände, monolithische Deckenplatten.
@@ -1158,7 +1166,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <Layers size={16} className="text-amber-800" /> Detailaufbau: Massivholz-Geschossdecke (dataholz.eu)
               </h3>
               <p className="text-xs text-text-main/70 leading-relaxed">
-                Der Einbau von nasser gebundener Splittschüttung (60 mm) erhöht das Flächengewicht der Decke massiv. Dies verhindert proaktiv die im Holzbau typische tieffrequente Trittschall-Übertragung (&lt; 100 Hz).
+                Eine gebundene Splittschüttung (60 mm) erhöht die flächenbezogene Masse der Decke deutlich. Das verringert die im Holzbau typische tieffrequente Trittschallübertragung (&lt; 100 Hz).
               </p>
 
               <div className="flex flex-col gap-1.5 text-xs text-text-main/80">
@@ -1195,7 +1203,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <Calculator size={18} /> Statischer Nachweis nach Eurocode 5 (DIN EN 1995-1-1)
             </h3>
             <p className="text-xs text-amber-900/80">
-              Ein extrem wichtiges Kriterium im Holzbau ist der Knicknachweis von druckbeanspruchten Stützen (Knickgefährdete Bauteile) nach dem Ersatzstabverfahren gemäß Kapitel 6.3.2. Nutzen Sie den interaktiven Rechner, um Profile zu dimensionieren.
+              Schlanke Druckstäbe werden nach dem Ersatzstabverfahren (DIN EN 1995-1-1, 6.3.2) nachgewiesen. Der Rechner ermittelt k_c für die schwache Achse bei zentrischem Druck.
             </p>
           </div>
 
@@ -1382,7 +1390,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   <div className="flex gap-2 text-rose-900 border border-rose-200 bg-rose-50 p-2 text-[11px] rounded-lg mt-3 leading-normal">
                     <ShieldAlert size={14} className="text-rose-600 flex-shrink-0" />
                     <span>
-                      <strong>Achtung:</strong> Die geplante Druckkraft überschreitet den Knick-Widerstand. Erhöhen Sie Querschnittsmaße <InlineMath math="b \text{ oder } h" /> oder verringern Sie die ungestützte Stützenlänge, um das Biegeknicken zu unterdrücken!
+                      <strong>Achtung:</strong> Die Druckkraft überschreitet die Knicktragfähigkeit. Querschnitt vergrößern oder Knicklänge verringern (z. B. Zwischenhalterung).
                     </span>
                   </div>
                 )}
@@ -1417,10 +1425,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     onChange={(e) => setQpConfig(e.target.value)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
                   >
-                    <option value="schwelle">Schwelle auf Beton (Continuous) (kc,90 = 1,50)</option>
-                    <option value="pfosten_riegel">Pfosten-Riegel Trägerauflager (kc,90 = 1,25)</option>
-                    <option value="traeger_ende">Endauflager (Balkenkopf) (kc,90 = 1,00)</option>
-                    <option value="clt_plate">Flächiges CLT-Plattenauflager (kc,90 = 1,75)</option>
+                    <option value="schwelle">Kontinuierliche Lagerung, Schwelle (k_c,90 = 1,25 Vollholz / 1,5 BSH)</option>
+                    <option value="pfosten_riegel">Einzelauflager, l₁ ≥ 2h (k_c,90 = 1,5 Vollholz / 1,75 BSH, l ≤ 400 mm)</option>
+                    <option value="traeger_ende">Allgemeiner Fall (k_c,90 = 1,0)</option>
+                    <option value="clt_plate">Brettsperrholz (Wert nach ETA; hier 1,0 als Lehrannahme)</option>
                   </select>
                 </div>
 
@@ -1542,7 +1550,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <div className="flex gap-2 text-rose-900 border border-rose-200 bg-rose-50 p-2 text-[10px] rounded-lg mt-2 leading-relaxed">
                       <ShieldAlert size={14} className="text-rose-600 flex-shrink-0 mt-0.5" />
                       <span>
-                        <strong>Achtung Querpressung:</strong> Die geplante Belastung spaltet oder presst die Holzfaser übermäßig zusammen. Erhöhen Sie die Auflagerlänge <InlineMath math="l" /> oder verbreitern Sie den Querschnitt, um irreversible Verformungen zu vermeiden!
+                        <strong>Querdruck überschritten:</strong> Es drohen große Eindrückungen. Auflagerlänge <InlineMath math="l" /> oder Breite vergrößern bzw. Auflager verstärken (z. B. Vollgewindeschrauben).
                       </span>
                     </div>
                   )}
@@ -1566,7 +1574,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 Klassische ingenieurmäßige Verbindungstechnik mit metallischen stabförmigen Elementen. Nach der maßgebenden <strong>Johansen-Theorie</strong> im Eurocode 5 hängen die Abscher-Grenzlasten vom Fließmoment des Stahls sowie der Lochleibungsfestigkeit des Holzes ab. Bei Überlastung bildet sich im Stahl ein plastisches Fließgelenk, während sich das Holz lokal quer- und längskomprimiert (Duktiles Versagen).
               </p>
               <div className="text-[11px] font-medium leading-normal bg-amber-50 p-3 rounded-lg border border-amber-100/50 mt-2">
-                <strong>Anordnungregel (DIN EN 1995-1-1 8.5):</strong> Es müssen strenge Mindestabstände parallel zur Holzfaser (<InlineMath math="a_1 \ge 4 \cdot d" />) sowie rechtwinklig zur Faser (<InlineMath math="a_2 \ge 3 \cdot d" />) eingehalten werden, um proaktives Spalten des Holzbauteils zu verhindern.
+                <strong>Anordnungsregel (DIN EN 1995-1-1 8.5):</strong> Mindestabstände parallel und rechtwinklig zur Faser verhindern das Aufspalten des Holzes, z. B. für Stabdübel <InlineMath math="a_1 \ge (3 + 2|\cos\alpha|) \cdot d" /> und <InlineMath math="a_2 \ge 3 \cdot d" /> (Tab. 8.5).
               </div>
             </div>
 
@@ -1574,10 +1582,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <span className="text-[10px] font-black uppercase tracking-wider text-amber-800">Holzbauschrauben</span>
               <h3 className="font-extrabold text-text-main text-base">Vollgewindeschrauben &amp; Zugverbindungen</h3>
               <p className="text-xs text-text-main/70 leading-relaxed">
-                Der Einbau moderner Vollgewinde-Holzschrauben revolutionierte das Bauen mit Brettsperrholz CLT. Im Gegensatz zu Holzschrauben mit Teilgewinde übernehmen Vollgewindeschrauben extrem hohe Ausziehwiderstände über den gesamten Gewindefaserverbund. Sie werden meist unter einem Einbauwinkel von 45° schräg zur Faserrichtung eingedreht, was die Abscherfuge in eine reine Axial-Herausziehkraft überführt.
+                Vollgewindeschrauben sind im Brettsperrholz- und Ingenieurholzbau weit verbreitet. Sie übertragen über die gesamte Gewindelänge hohe Axialkräfte. Unter 45° eingedreht, wird die Scherkraft überwiegend als Axialkraft (Zug/Druck) in der Schraube abgetragen; die Bemessung erfolgt nach ETA.
               </p>
               <div className="text-[11px] font-medium leading-normal bg-amber-50 p-3 rounded-lg border border-amber-100/50 mt-2">
-                <strong>Ingenieurvorteil:</strong> Schnelle Montage ohne Zerspanen, kein proaktives Vorbohren bei Nadelhölzern nötig und extrem hohe Steifigkeiten in Scherfugen (geringe Verschiebungsschlupfe).
+                <strong>Ingenieurvorteil:</strong> Schnelle Montage, in Nadelholz meist ohne Vorbohren (nach ETA), und bei geneigter Anordnung hohe Steifigkeit (geringer Schlupf).
               </div>
             </div>
 
@@ -1792,11 +1800,11 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 {/* General Status message */}
                 {(connResults.isAxialUnsafe || connResults.isShearUnsafe) ? (
                   <div className="bg-rose-50 border border-rose-200 text-rose-900 p-2 text-[10px] rounded-lg leading-snug">
-                    <strong>Achtung Verbindungsversagen:</strong> Die Tragfähigkeit der Schraubenbaugruppe reicht nicht aus. Erhöhen Sie den Schraubendurchmesser <InlineMath math="d" />, die Anzahl <InlineMath math="n" />, oder verlängern Sie das Gewinde <InlineMath math="l_{ef}" />, um sprödes Herausreißen zu verhindern!
+                    <strong>Tragfähigkeit nicht ausreichend:</strong> Durchmesser <InlineMath math="d" />, Anzahl <InlineMath math="n" /> oder Einschraubtiefe <InlineMath math="l_{ef}" /> erhöhen; bei Gruppen n_ef und Abstände beachten.
                   </div>
                 ) : (
                   <div className="bg-emerald-50 border border-emerald-100 text-emerald-900 p-2 text-[10px] rounded-lg leading-snug">
-                    <strong>Verbindung Tragfähig:</strong> Der geplante Anschluss erfüllt die Normanforderungen von Eurocode 5 für dichteabhängiges Gleiten und Abscheren vollkommen.
+                    <strong>Nachweis im Lehrmodell erfüllt:</strong> Herausziehen und Abscheren sind vereinfacht nachgewiesen (ohne n_ef, Abstände, Blockscherversagen; Schraubenwerte nach ETA).
                   </div>
                 )}
               </div>
@@ -1819,25 +1827,25 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               
               <div className="text-xs text-text-main/80 space-y-3.5 leading-relaxed">
                 <p>
-                  Entgegen laienhaften Vermutungen besitzt massives Konstruktionsholz exzellente Brandeigenschaften. Im Brandfall bildet sich auf der Holzoberfläche rasch eine poröse Holzkohleschicht (Pyrolyse). Diese Kohleschicht besitzt einen extrem geringen Wärmeleitkoeffizienten und schützt das dahinterliegende, tragfähige Rest-Holz aktiv vor Temperaturanstiegen über ca. 100 °C.
+                  Holz ist brennbar, brennt bei größeren Querschnitten aber mit annähernd konstanter Geschwindigkeit ab. Die entstehende Holzkohleschicht leitet Wärme schlecht und verzögert die Erwärmung des Restquerschnitts; unmittelbar hinter der Kohleschicht ist das Holz jedoch bereits erwärmt und geschwächt (berücksichtigt über d₀).
                 </p>
 
                 <div className="bg-amber-50 p-3.5 rounded-lg border border-amber-200">
                   <h4 className="font-bold text-amber-900 mb-1">Standard-Abbrandraten nach DIN EN 1995-1-2:</h4>
                   <ul className="list-disc list-inside space-y-1 text-[11px] font-mono text-amber-950">
-                    <li>Nadelhölzer (C24, KVH, BSH): <InlineMath math="\beta_0 = 0{,}65-0{,}80 \text{ mm/min}" /></li>
-                    <li>Sperrholz &amp; CLT: <InlineMath math="\beta_{0} = 0{,}65 \text{ mm/min}" /></li>
-                    <li>Laubhölzer (Buche, Eiche): <InlineMath math="\beta_{0} = 0{,}50 \text{ mm/min}" /></li>
+                    <li>Nadelholz (Vollholz / BSH): <InlineMath math="\beta_0 = 0{,}65;\; \beta_n = 0{,}80 \,/\, 0{,}70 \text{ mm/min}" /></li>
+                    <li>Laubholz (<InlineMath math="\rho_k \ge 450" />): <InlineMath math="\beta_0 = 0{,}50;\; \beta_n = 0{,}55 \text{ mm/min}" /></li>
+                    <li>Im Rechner wird β_n (inkl. Eckausrundung) verwendet; Brettsperrholz eindimensional mit β₀.</li>
                   </ul>
                 </div>
 
                 <div className="bg-off-white p-3 rounded-lg border border-home-grau/20">
                   <span className="font-bold text-text-main block">Berechnung der ideellen Restquerschnitts-Tiefe d_ef:</span>
                   <div className="my-1 text-center font-mono font-bold text-text-main">
-                    <InlineMath math="d_{ef} = \beta_{0} \cdot t_{fi} + d_0" />
+                    <InlineMath math="d_{ef} = \beta_n \cdot t + k_0 \cdot d_0" />
                   </div>
                   <span className="text-[10px] text-text-main/50 font-normal leading-normal block">
-                    (mit <InlineMath math="d_0 = 7{,}0 \text{ mm}" /> als zusätzliche ungeschützte Sicherheits-Dicke. t_fi repräsentiert die Branddauer REI-30 = 30min, etc.).
+                    (mit <InlineMath math="d_0 = 7 \text{ mm}" /> als Schicht ohne Festigkeit, <InlineMath math="k_0 = \min(1;\, t/20)" /> bei ungeschützten Flächen; t = Branddauer in min).
                   </span>
                 </div>
               </div>
@@ -1857,27 +1865,17 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div className="bg-blue-50/50 p-3.5 rounded-lg border border-blue-200">
                   <h4 className="font-bold text-blue-900 mb-1">Konstruktive Maßnahmen zur Trittschallminderung:</h4>
                   <p className="text-[11px] text-text-main/75 mt-1">
-                    1. <strong>Masse-Zufuhr:</strong> Einbringung von gebundenem Quarzsplit-Schüttungen in die Decke. Mehr Masse bremst langwelligen Trittschall wirksam aus.
+                    1. <strong>Masse-Zufuhr:</strong> Gebundene Splittschüttungen erhöhen die Masse der Decke; das mindert vor allem tieffrequenten Trittschall.
                   </p>
                   <p className="text-[11px] text-text-main/75 mt-1.5">
-                    2. <strong>Akustische Entkopplung:</strong> Elastomerlager (Typ Sylomer/Getzner) unter den Wandanschlüssen und Justierschwingen entkoppeln den Körperschall an Last-Umlagerungspunkten.
-                  </p>
-                </div>
-
-                <div className="bg-blue-50/50 p-3.5 rounded-lg border border-blue-200">
-                  <h4 className="font-bold text-blue-900 mb-1">Konstruktive Maßnahmen zur Trittschallminderung:</h4>
-                  <p className="text-[11px] text-text-main/75 mt-1">
-                    1. <strong>Masse-Zufuhr:</strong> Einbringung von gebundenem Quarzsplit-Schüttungen in die Decke. Mehr Masse bremst langwelligen Trittschall wirksam aus.
-                  </p>
-                  <p className="text-[11px] text-text-main/75 mt-1.5">
-                    2. <strong>Akustische Entkopplung:</strong> Elastomerlager (Typ Sylomer/Getzner) unter den Wandanschlüssen und Justierschwingen entkoppeln den Körperschall an Last-Umlagerungspunkten.
+                    2. <strong>Akustische Entkopplung:</strong> Elastomerlager unter den Wandanschlüssen und Justierschwingen entkoppeln den Körperschall an Last-Umlagerungspunkten.
                   </p>
                 </div>
 
                 <div className="bg-off-white p-3 rounded-lg border border-home-grau/20">
                   <h4 className="font-black text-text-main text-xs mb-1">Gebrauchstauglichkeitsgrenzkriterium: Decken-Schwingung</h4>
                   <p className="text-text-main/75 leading-normal text-xs">
-                    Zur Riss- und Vibrationsvermeidung verlangt Eurocode 5 den exakten Schwingungsnachweis (Eigenfrequenz der Decke <InlineMath math="f_{1} \ge 8 \text{ Hz}" /> sowie Begrenzung der Durchbiegung unter einer Einzellast <InlineMath math="w \le 2\text{ mm}" />).
+                    Eurocode 5 (7.3.3) verlangt für Wohnungsdecken einen Schwingungsnachweis: Das Verfahren gilt für Decken mit <InlineMath math="f_{1} > 8 \text{ Hz}" /> und begrenzt u. a. die Durchbiegung unter einer Einzellast von 1 kN (Grenzwert nach NA). Decken mit <InlineMath math="f_1 \le 8 \text{ Hz}" /> erfordern eine gesonderte Untersuchung.
                   </p>
                 </div>
               </div>
@@ -1904,15 +1902,16 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                 {/* Fire wood type */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs font-bold text-text-main">Materialtyp &amp; Standard-Abbrandrate (β₀)</label>
-                  <select aria-label="Materialtyp &amp; Standard-Abbrandrate (β₀)"
+                  <label className="text-xs font-bold text-text-main">Materialtyp &amp; Abbrandrate</label>
+                  <select aria-label="Materialtyp und Abbrandrate"
                     value={fireType}
                     onChange={(e) => setFireType(e.target.value)}
                     className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
                   >
-                    <option value="nadel">KVH / BSH Nadelholz (β₀ = 0,70 mm/min)</option>
-                    <option value="laub">Buche / Eiche Laubholz (β₀ = 0,50 mm/min)</option>
-                    <option value="clt">Brettsperrholz / CLT (β₀ = 0,65 mm/min)</option>
+                    <option value="nadel">Nadel-Vollholz / KVH (β_n = 0,80 mm/min)</option>
+                    <option value="bsh">Nadelholz-BSH (β_n = 0,70 mm/min)</option>
+                    <option value="laub">Laubholz, ρ_k ≥ 450 kg/m³ (β_n = 0,55 mm/min)</option>
+                    <option value="clt">Brettsperrholz (β₀ = 0,65 mm/min, Lehrannahme ohne Lagenabfall)</option>
                   </select>
                 </div>
 
@@ -1989,7 +1988,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <div>
                   <span className="text-[10px] font-black uppercase text-rose-800 tracking-wider block mb-1">Brandnachweis</span>
                   <p className="text-xs text-text-main/80 font-medium">
-                    Nach <span className="font-bold">{formatDeWert(fireTime)} min</span> Brandeinwirkung mit <InlineMath math={`\\beta_0 = ${fireResults.beta_0}\\text{ mm/min}`} />:
+                    Nach <span className="font-bold">{formatDeWert(fireTime)} min</span> Brandeinwirkung mit <InlineMath math={`\\beta = ${formatDeTeXWert(fireResults.beta_0)}\\text{ mm/min}`} />:
                   </p>
 
                   <div className="grid grid-cols-2 gap-4 mt-2.5">
@@ -2056,11 +2055,11 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
                   <p className="text-[10px] text-text-main/70 text-center leading-normal italic mt-1 max-w-sm">
                     {fireResults.stiffnessLossPercent < 50 ? (
-                      <span className="text-emerald-800 font-bold">&bull; Hoher Tragwiderstand nach Brandschutzstufe! Genügend Kernholz trägt die Normallast weiter.</span>
+                      <span className="text-emerald-800 font-bold">&bull; Restquerschnitt deutlich vorhanden – Nachweis mit k_mod,fi = 1,0 und γ_M,fi = 1,0 führen.</span>
                     ) : fireResults.isCollapsed ? (
-                      <span className="text-rose-700 font-bold">&bull; Einsturzgefahr! Der Balken brennt komplett feuerdurchlässig nieder.</span>
+                      <span className="text-rose-700 font-bold">&bull; Kein Restquerschnitt – Querschnitt für diese Branddauer unzureichend.</span>
                     ) : (
-                      <span className="text-amber-700 font-bold">&bull; Hohe Auslastungsschwächung. Überprüfen Sie Brandschutzverstärkung oder Träger-Aufmaß.</span>
+                      <span className="text-amber-700 font-bold">&bull; Starke Querschnittsminderung – Querschnitt vergrößern oder Bekleidung (Kapselung) vorsehen.</span>
                     )}
                   </p>
                 </div>
@@ -2076,7 +2075,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 <Volume2 size={20} className="text-blue-600" /> CLT Decken-Schwingungs-Eigenfrequenzrechner
               </h3>
               <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                Leichte Brettsperrholzdecken sind hochgradig schwingungsanfällig durch dynamische Anregung (z.B. Gehen). Eurocode 5 verlangt zur Gewährleistung der Wohnqualität im mehrgeschossigen Wohnungsbau eine Mindest-Eigenfrequenz von <InlineMath math="f_{1} \ge 8{,}0 \text{ Hz}" />.
+                Leichte Holzdecken können durch Gehen spürbar angeregt werden. Der Rechner ermittelt die erste Eigenfrequenz eines Einfeldstreifens und vergleicht sie mit der Anwendungsgrenze von <InlineMath math="f_{1} > 8 \text{ Hz}" /> nach EC5 7.3.3. Vereinfachung: Biegesteifigkeit aus voller Plattendicke mit E = 11 000 N/mm² (Querlagen nicht abgemindert – Lehrannahme, liegt auf der unsicheren Seite).
               </p>
             </div>
 
@@ -2185,7 +2184,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   {/* Indicator Warning */}
                   {!vibResults.isCompliant && (
                     <p className="text-[10px] text-rose-700 bg-rose-50 border border-rose-200 p-2 rounded-lg leading-relaxed mt-1">
-                      <strong>Schwingungsgefahr:</strong> Die Frequenz unterschreitet die Mindestgrenze von 8 Hz. Bei Gehbelastung kommt es zu spürbaren Durchbiegungen und Erschütterungen im Raum. Erhöhen Sie die Plattenstärke <InlineMath math="t" /> oder verringern Sie die ungestützte Stützlänge <InlineMath math="L" />!
+                      <strong>Schwingungsgefahr:</strong> Die Frequenz liegt bei 8 Hz oder darunter; spürbare Schwingungen sind wahrscheinlich und eine gesonderte Untersuchung ist nötig. Plattendicke <InlineMath math="t" /> erhöhen oder Spannweite <InlineMath math="L" /> verringern.
                     </p>
                   )}
                 </div>
@@ -2196,6 +2195,26 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
         </div>
       )}
 
+      {activeSubTab === 'bemessung' && (
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Knicknachweis einer Stütze C24 120/160 mm"
+          zielGleichung="N_{Ed} \le k_c \cdot A \cdot f_{c,0,d}, \quad f_{c,0,d} = k_{mod} \cdot \frac{f_{c,0,k}}{\gamma_M}"
+          normQuelle="DIN EN 1995-1-1 mit NA, 6.3.2 (Ersatzstabverfahren)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'b/h = 120/160\\,\\text{mm},\\; l_{ef} = 3{,}0\\,\\text{m},\\; N_{Ed} = 50\\,\\text{kN},\\; \\text{NKL 1, mittel: } k_{mod} = 0{,}8', erklaerung: 'Beidseitig gelenkig; Ausweichen um die schwache Achse.' },
+            { titel: '2. Schlankheit', formel: 'i_z = \\frac{120}{\\sqrt{12}} = 34{,}6\\,\\text{mm};\\; \\lambda_z = \\frac{3000}{34{,}6} = 86{,}6', erklaerung: 'Maßgebend ist der kleinere Trägheitsradius.' },
+            { titel: '3. Bezogene Schlankheit', formel: '\\lambda_{rel} = \\frac{\\lambda}{\\pi}\\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{86{,}6}{\\pi}\\sqrt{\\frac{21}{7400}} = 1{,}47', erklaerung: 'E_0,05 = 7400 N/mm² für C24.' },
+            { titel: '4. Knickbeiwert', formel: 'k = 0{,}5\\,[1 + 0{,}2\\,(1{,}47 - 0{,}3) + 1{,}47^2] = 1{,}70;\\; k_c = \\frac{1}{1{,}70 + \\sqrt{1{,}70^2 - 1{,}47^2}} = 0{,}39', erklaerung: 'β_c = 0,2 für Vollholz.' },
+            { titel: '5. Nachweis', formel: 'N_{Rd} = 0{,}39 \\cdot 19\\,200 \\cdot \\frac{0{,}8 \\cdot 21}{1{,}3} \\approx 97{,}6\\,\\text{kN} \\ge 50\\,\\text{kN}', erklaerung: 'Ausnutzung rund 51 %.' },
+          ]}
+          ergebnisHinweis="Die Stütze ist ausreichend; ohne Knicken (k_c = 1) läge die Tragfähigkeit bei rund 248 kN – durch die Schlankheit sinkt sie auf rund 40 %."
+        />
+      </div>
+      )}
+
+      <ModulTest moduleId="holzbau" />
+
       {/* COMPONENT FOOTER */}
       <ModuleFooter 
         wikipedia={[
@@ -2204,30 +2223,31 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           { title: 'Brettschichtholz', url: 'https://de.wikipedia.org/wiki/Brettschichtholz' }
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines)' },
-          { title: 'DIN EN 1995-1-2 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-2: Tragwerksbemessung für den Brandfall)' },
-          { title: 'DIN EN 16351 (Holzbauwerke - Brettsperrholz - Anforderungen)' }
+          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1)' },
+          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Brandfall)' },
+          { title: 'DIN EN 338 (Festigkeitsklassen Bauholz) und DIN EN 14080 (Brettschichtholz) – Ausgaben manuell prüfen' },
+          { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), DIBt – Landesfassung manuell prüfen' },
+          { title: 'DIN EN 16351 (Brettsperrholz – Anforderungen; Ausgabe manuell prüfen)' }
         ]}
         literatur={[
-          'Informationsdienst Holz - Holzbau Handbuch Reihe 1 bis 5',
-          'Schoof, J. (2022): Mehrgeschossiger Holzbau im Detail (Detail Verlag)',
+          'Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5 (einzelne Hefte)',
+          'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016',
+          'Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Detail 2017',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         weblinks={[
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
-          { title: 'dataholz.eu - Geprüfte Holzbauteile', url: 'https://www.dataholz.eu' },
-          { title: 'Informationsdienst Holz', url: 'https://informationsdienst-holz.de/' },
-          { title: 'Institut für Holzbau - Wissen Kompakt', url: 'https://www.institut-holzbau.de/' }
+          { title: 'dataholz.eu – Bauteilkatalog (Holzforschung Austria)', url: 'https://www.dataholz.eu' },
+          { title: 'Informationsdienst Holz', url: 'https://informationsdienst-holz.de/' }
         ]}
         formeln={[
           {
-            formel: 'f_1 = \\frac{\\pi}{2 \\cdot L^2} \\cdot \\sqrt{\\frac{(EI)_L}{m}} \\ge 8{,}0\\,\\text{Hz}',
-            erklaerung: 'Eigenfrequenz f1 zur Vermeidung störender Resonanzschwingungen bei Wohnungsdecken im Holzbau nach Eurocode 5.',
+            formel: 'f_1 = \\frac{\\pi}{2 \\cdot L^2} \\cdot \\sqrt{\\frac{(EI)_L}{m}} > 8\\,\\text{Hz}',
+            erklaerung: 'Erste Eigenfrequenz eines gelenkig gelagerten Deckenstreifens; f₁ > 8 Hz ist Anwendungsgrenze des Nachweises nach EC5 7.3.3.',
             quelle: 'DIN EN 1995-1-1 Abs. 7.3'
           },
           {
-            formel: 'd_{\\text{ef}} = d_{\\text{char,0}} + k_0 \\cdot d_0 = \\beta_0 \\cdot t + d_0',
-            erklaerung: 'Effektive Verkohlungstiefe d_ef im Brandfall (beta_0 = 0,65 mm/min für Nadelholz, d0 = 7 mm Nulldeckschicht nach EN 1995-1-2).',
+            formel: 'd_{\\text{ef}} = d_{\\text{char,n}} + k_0 \\cdot d_0 = \\beta_n \\cdot t + k_0 \\cdot d_0',
+            erklaerung: 'Ideelle Abbrandtiefe d_ef der Methode mit reduziertem Querschnitt (β_n = 0,8 Vollholz / 0,7 BSH, d₀ = 7 mm, k₀ = 1 ab 20 min).',
             quelle: 'DIN EN 1995-1-2'
           }
         ]}

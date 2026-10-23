@@ -12461,5 +12461,215 @@
       "targetModuleLabel": "Werkstoff-Kombinationen"
     },
     "verified": false
+  },
+  {
+    "id": "q_hbx_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "holzbau",
+    "moduleTitle": "Holzbau & Eurocode 5",
+    "topic": "Knicknachweis",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1, 6.3.2",
+    "question": "Welcher E-Modul geht in die bezogene Schlankheit λ_rel beim Knicknachweis ein?",
+    "options": [
+      "E_0,mean",
+      "E_0,05 (5%-Quantil)",
+      "E_90,mean",
+      "G_mean"
+    ],
+    "correctIdx": 1,
+    "explanation": "λ_rel = (λ/π)·√(f_c,0,k / E_0,05). Für C24 ist E_0,05 = 7400 N/mm², für GL24h 9600 N/mm².",
+    "gapAnalysis": {
+      "topic": "Knicknachweis",
+      "misconception": "Für Stabilität wird der Mittelwert des E-Moduls angesetzt.",
+      "coreRule": "Stabilität: 5%-Quantil E_0,05.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Knicknachweis“ im Modul Holzbau & Eurocode 5 noch einmal durch.",
+      "targetModuleTab": "holzbau",
+      "targetModuleLabel": "Holzbau & Eurocode 5"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hbx_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "holzbau",
+    "moduleTitle": "Holzbau & Eurocode 5",
+    "topic": "Brandschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-2",
+    "question": "Wie groß ist die ideelle Abbrandtiefe d_ef eines Nadel-Vollholzbalkens nach 30 min (β_n = 0,8 mm/min, d₀ = 7 mm)?",
+    "options": [
+      "24 mm",
+      "31 mm",
+      "21 mm",
+      "37 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "d_ef = β_n·t + k₀·d₀ = 0,8·30 + 1,0·7 = 31 mm (k₀ = 1 ab 20 min).",
+    "gapAnalysis": {
+      "topic": "Brandschutz",
+      "misconception": "Die Schicht ohne Festigkeit d₀ wird vergessen.",
+      "coreRule": "d_ef = β_n·t + k₀·d₀.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Brandschutz“ im Modul Holzbau & Eurocode 5 noch einmal durch.",
+      "targetModuleTab": "holzbau",
+      "targetModuleLabel": "Holzbau & Eurocode 5"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_hbx_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "holzbau",
+    "moduleTitle": "Holzbau & Eurocode 5",
+    "topic": "Querdruck",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1995-1-1, 6.1.5",
+    "question": "Um wie viel darf die Aufstandslänge beim Querdrucknachweis je Seite rechnerisch verlängert werden?",
+    "options": [
+      "Gar nicht",
+      "Um bis zu 30 mm (sofern Überstand vorhanden)",
+      "Um die Balkenhöhe",
+      "Um 100 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die wirksame Kontaktlänge l_ef darf je Seite um höchstens 30 mm (bzw. Überstand, a oder l/2) vergrößert werden.",
+    "gapAnalysis": {
+      "topic": "Querdruck",
+      "misconception": "Lastausbreitung im Holz wird wie im Beton angesetzt.",
+      "coreRule": "l_ef = l + bis zu 2·30 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Querdruck“ im Modul Holzbau & Eurocode 5 noch einmal durch.",
+      "targetModuleTab": "holzbau",
+      "targetModuleLabel": "Holzbau & Eurocode 5"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_iax_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "innenausbau",
+    "moduleTitle": "Innenausbau",
+    "topic": "Belegreife",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18560-1",
+    "question": "Mit welchem Verfahren wird die Belegreife von Estrichen in Deutschland üblicherweise geprüft?",
+    "options": [
+      "Darr-Methode im Labor",
+      "CM-Methode (Calciumcarbid)",
+      "Elektrische Widerstandsmessung",
+      "Klopfprobe"
+    ],
+    "correctIdx": 1,
+    "explanation": "Calciumcarbid reagiert mit dem Wasser der Probe zu Acetylen; der Gasdruck ist ein Maß für den Wassergehalt.",
+    "gapAnalysis": {
+      "topic": "Belegreife",
+      "misconception": "Elektronische Geräte werden als gleichwertig angesehen.",
+      "coreRule": "Belegreife: CM-Messung; elektronische Geräte nur zur Vorprüfung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Belegreife“ im Modul Innenausbau noch einmal durch.",
+      "targetModuleTab": "innenausbau",
+      "targetModuleLabel": "Innenausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_iax_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "innenausbau",
+    "moduleTitle": "Innenausbau",
+    "topic": "Trockenbau-Akustik",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Wie wirkt sich eine Doppelbeplankung auf die Resonanzfrequenz f₀ einer Ständerwand aus?",
+    "options": [
+      "f₀ steigt",
+      "f₀ sinkt, weil die Schalenmassen größer werden",
+      "f₀ bleibt gleich",
+      "f₀ hängt nur vom Ständerabstand ab"
+    ],
+    "correctIdx": 1,
+    "explanation": "f₀ ∝ √(s'·(1/m'₁ + 1/m'₂)); größere Massen senken f₀ – günstig, wenn f₀ unter 100 Hz rückt.",
+    "gapAnalysis": {
+      "topic": "Trockenbau-Akustik",
+      "misconception": "Mehr Masse wird als Verschlechterung der Entkopplung angesehen.",
+      "coreRule": "Größere Schalenmasse und weichere Feder senken f₀.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Trockenbau-Akustik“ im Modul Innenausbau noch einmal durch.",
+      "targetModuleTab": "innenausbau",
+      "targetModuleLabel": "Innenausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_iax_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "innenausbau",
+    "moduleTitle": "Innenausbau",
+    "topic": "Abdichtung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 18534-1",
+    "question": "Welcher Wassereinwirkungsklasse ist eine bodengleiche Dusche im Wohnungsbau zugeordnet?",
+    "options": [
+      "W0-I",
+      "W1-I",
+      "W2-I",
+      "W3-I"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bodengleiche Duschen gelten nach DIN 18534-1 als hohe Einwirkung (W2-I).",
+    "gapAnalysis": {
+      "topic": "Abdichtung",
+      "misconception": "Häusliche Bäder werden pauschal W1-I zugeordnet.",
+      "coreRule": "Bodengleiche Dusche: W2-I.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Abdichtung“ im Modul Innenausbau noch einmal durch.",
+      "targetModuleTab": "innenausbau",
+      "targetModuleLabel": "Innenausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_iax_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "innenausbau",
+    "moduleTitle": "Innenausbau",
+    "topic": "Oberflächenqualität",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Welche Qualitätsstufe ist für glänzende Lacke und Streiflicht erforderlich?",
+    "options": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4"
+    ],
+    "correctIdx": 3,
+    "explanation": "Q4 verlangt einen vollflächigen Spachtelauftrag über die gesamte Fläche.",
+    "gapAnalysis": {
+      "topic": "Oberflächenqualität",
+      "misconception": "Q3 wird als höchste Stufe angesehen.",
+      "coreRule": "Höchste Anforderungen: Q4 mit Flächenspachtelung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächenqualität“ im Modul Innenausbau noch einmal durch.",
+      "targetModuleTab": "innenausbau",
+      "targetModuleLabel": "Innenausbau"
+    },
+    "verified": false
   }
 ]
