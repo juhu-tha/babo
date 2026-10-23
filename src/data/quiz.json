@@ -8831,5 +8831,125 @@
       "targetModuleLabel": "Carbonbeton"
     },
     "verified": false
+  },
+  {
+    "id": "q_ges_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "gesteine",
+    "moduleTitle": "Gesteine",
+    "topic": "Gesteinsgruppen",
+    "difficulty": "Grundlagen",
+    "normRef": "Geologie",
+    "question": "Zu welcher Gruppe gehört Marmor?",
+    "options": [
+      "Magmatit",
+      "Sedimentit",
+      "Metamorphit",
+      "Vulkanit"
+    ],
+    "correctIdx": 2,
+    "explanation": "Marmor entsteht durch Metamorphose aus Kalkstein.",
+    "gapAnalysis": {
+      "topic": "Gesteinsgruppen",
+      "misconception": "Marmor sei ein Ablagerungsgestein, weil er aus Kalk besteht.",
+      "coreRule": "Kalkstein → Marmor (Metamorphose).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gesteinsgruppen“ im Modul Gesteine noch einmal durch.",
+      "targetModuleTab": "gesteine",
+      "targetModuleLabel": "Gesteine"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ges_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "gesteine",
+    "moduleTitle": "Gesteine",
+    "topic": "Los-Angeles-Prüfung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1097-2",
+    "question": "Was bedeutet ein niedriger Los-Angeles-Koeffizient?",
+    "options": [
+      "Hoher Widerstand gegen Zertrümmerung",
+      "Hohe Wasseraufnahme",
+      "Geringer Polierwiderstand",
+      "Hoher Anteil plattiger Körner"
+    ],
+    "correctIdx": 0,
+    "explanation": "LA ist der Massenanteil, der nach der Trommelprüfung durch das 1,6-mm-Sieb fällt. Wenig Abrieb → kleiner LA → zähes Gestein.",
+    "gapAnalysis": {
+      "topic": "Los-Angeles-Prüfung",
+      "misconception": "Ein hoher LA-Wert kennzeichne gutes Gestein.",
+      "coreRule": "Kleiner LA-Wert = hoher Zertrümmerungswiderstand.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Los-Angeles-Prüfung“ im Modul Gesteine noch einmal durch.",
+      "targetModuleTab": "gesteine",
+      "targetModuleLabel": "Gesteine"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ges_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "gesteine",
+    "moduleTitle": "Gesteine",
+    "topic": "Sieblinien",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 1045-2",
+    "question": "Welcher Sieblinienbereich gilt für Beton als günstig?",
+    "options": [
+      "Oberhalb von C",
+      "Zwischen A und B",
+      "Unterhalb von A",
+      "Nur exakt auf C"
+    ],
+    "correctIdx": 1,
+    "explanation": "Zwischen A und B ergibt sich ein günstiges Verhältnis von Hohlraumgehalt und Wasseranspruch.",
+    "gapAnalysis": {
+      "topic": "Sieblinien",
+      "misconception": "Möglichst feine Gemische seien immer besser verarbeitbar und fester.",
+      "coreRule": "Günstiger Bereich zwischen A und B.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sieblinien“ im Modul Gesteine noch einmal durch.",
+      "targetModuleTab": "gesteine",
+      "targetModuleLabel": "Gesteine"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ges_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "gesteine",
+    "moduleTitle": "Gesteine",
+    "topic": "Körnungen",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 12620",
+    "question": "Bis zu welcher oberen Siebgröße D spricht man nach DIN EN 12620 von feiner Gesteinskörnung?",
+    "options": [
+      "0,063 mm",
+      "2 mm",
+      "4 mm",
+      "8 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "Feine Gesteinskörnung (Sand) hat D ≤ 4 mm; der Feinanteil ist ≤ 0,063 mm.",
+    "gapAnalysis": {
+      "topic": "Körnungen",
+      "misconception": "Sand ende immer bei 2 mm.",
+      "coreRule": "Feine Gesteinskörnung: D ≤ 4 mm.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Körnungen“ im Modul Gesteine noch einmal durch.",
+      "targetModuleTab": "gesteine",
+      "targetModuleLabel": "Gesteine"
+    },
+    "verified": false
   }
 ]
