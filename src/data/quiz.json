@@ -10571,5 +10571,65 @@
       "targetModuleLabel": "Ausbau"
     },
     "verified": false
+  },
+  {
+    "id": "q_fvb_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "faserverbund",
+    "moduleTitle": "Faserverbund",
+    "topic": "Mischungsregel",
+    "difficulty": "Fortgeschritten",
+    "normRef": "VDI 2014 Blatt 3",
+    "question": "CFK mit E_f = 230 GPa, E_m = 3,2 GPa, v_f = 0,6. Wie groß ist E in Faserrichtung nach Voigt?",
+    "options": [
+      "ca. 139 GPa",
+      "ca. 7,8 GPa",
+      "ca. 92 GPa",
+      "ca. 230 GPa"
+    ],
+    "correctIdx": 0,
+    "explanation": "E_∥ = 230 · 0,6 + 3,2 · 0,4 = 139,3 GPa. 7,8 GPa ist der Querwert nach Reuss.",
+    "gapAnalysis": {
+      "topic": "Mischungsregel",
+      "misconception": "Voigt- und Reuss-Regel werden verwechselt.",
+      "coreRule": "Längs: Parallelschaltung (Voigt); quer: Reihenschaltung (Reuss).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mischungsregel“ im Modul Faserverbund noch einmal durch.",
+      "targetModuleTab": "faserverbund",
+      "targetModuleLabel": "Faserverbund"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_fvb_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "faserverbund",
+    "moduleTitle": "Faserverbund",
+    "topic": "GFK-Bewehrung",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welcher Nachteil ergibt sich aus dem E-Modul von GFK-Bewehrung (ca. 40–60 GPa) gegenüber Betonstahl?",
+    "options": [
+      "Größere Durchbiegungen und Rissbreiten",
+      "Höhere Korrosionsgefahr",
+      "Größere erforderliche Betondeckung für Korrosionsschutz",
+      "Höheres Eigengewicht"
+    ],
+    "correctIdx": 0,
+    "explanation": "Bei gleicher Spannung dehnt sich GFK etwa viermal so stark wie Stahl (E ≈ 200 GPa). Korrosion spielt dagegen keine Rolle.",
+    "gapAnalysis": {
+      "topic": "GFK-Bewehrung",
+      "misconception": "Nichtmetallische Bewehrung ist in allen Belangen besser.",
+      "coreRule": "Niedriger E-Modul → Gebrauchstauglichkeit wird maßgebend.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „GFK-Bewehrung“ im Modul Faserverbund noch einmal durch.",
+      "targetModuleTab": "faserverbund",
+      "targetModuleLabel": "Faserverbund"
+    },
+    "verified": false
   }
 ]

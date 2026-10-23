@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Network, GitMerge, Layers, BookOpen } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import {
@@ -162,7 +164,7 @@ export default function Faserverbund() {
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Faserverbundwerkstoffe (wie CFK oder GFK) bestehen aus verstärkenden Fasern, die in eine Matrix eingebettet sind. Sie zeichnen sich durch hohe Zugfestigkeiten bei extrem geringem Eigengewicht aus. Da die Fasern hauptsächlich Zuglasten in Längsrichtung abtragen, sind solche Werkstoffe stark anisotrop (richtungsabhängig).
+            Faserverbundwerkstoffe (wie CFK oder GFK) bestehen aus verstärkenden Fasern, die in eine Matrix eingebettet sind. Sie zeichnen sich durch hohe Zugfestigkeiten bei geringem Eigengewicht aus. Da die Fasern hauptsächlich Zuglasten in Längsrichtung abtragen, sind solche Werkstoffe stark anisotrop (richtungsabhängig).
           </p>
         </div>
       </div>
@@ -310,6 +312,17 @@ export default function Faserverbund() {
               </div>
             </div>
           </div>
+          <FormulaDerivationBox
+            title="Anwendungsbeispiel: CFK-Laminat (HT-Faser/Epoxid, v_f = 60 %)"
+            zielGleichung="E_{\parallel} = E_f v_f + E_m (1 - v_f), \quad E_{\perp} = \frac{E_f E_m}{v_f E_m + (1 - v_f) E_f}"
+            normQuelle="Mischungsregeln nach Voigt/Reuss (Schürmann; VDI 2014 Blatt 3)"
+            schritte={[
+              { titel: '1. Gegeben', formel: 'E_f = 230\\,\\text{GPa},\\; E_m = 3{,}2\\,\\text{GPa},\\; v_f = 0{,}6', erklaerung: 'Kennwerte wie im Rechner (Carbon HT, Epoxidharz).' },
+              { titel: '2. Längsrichtung', formel: 'E_{\\parallel} = 230 \\cdot 0{,}6 + 3{,}2 \\cdot 0{,}4 = 139{,}3\\,\\text{GPa}', erklaerung: 'Die Fasern tragen fast allein.' },
+              { titel: '3. Querrichtung', formel: 'E_{\\perp} = \\frac{230 \\cdot 3{,}2}{0{,}6 \\cdot 3{,}2 + 0{,}4 \\cdot 230} = \\frac{736}{93{,}9} = 7{,}8\\,\\text{GPa}', erklaerung: 'Die Matrix bestimmt die Steifigkeit (unterer Grenzwert).' },
+            ]}
+            ergebnisHinweis="E_∥/E_⊥ ≈ 18: Faserverbunde müssen in Lastrichtung orientiert werden."
+          />
         </div>
       )}
 
@@ -336,7 +349,7 @@ export default function Faserverbund() {
                 Ersatz für herkömmlichen Betonstahl in Bereichen mit hohen Korrosionsgefahren oder magnetisch sensiblen Bereichen (z. B. MRT-Räume).
               </p>
               <ul className="list-disc list-inside text-sm text-text-main/70">
-                <li>Keine Betondeckung aus Korrosionsschutzgründen erforderlich (<FormulaText text="c_{nom}" /> kann reduziert werden).</li>
+                <li>Betondeckung nur noch für Verbund und Brandschutz nötig, nicht für Korrosionsschutz (<FormulaText text="c_{nom}" /> kann reduziert werden; Werte nach Zulassung).</li>
                 <li>Geringerer E-Modul als Stahl (ca. 40-60 GPa statt 200 GPa) führt oft zu größeren Durchbiegungen und Rissbreiten.</li>
               </ul>
             </div>
@@ -361,20 +374,23 @@ export default function Faserverbund() {
         </div>
       )}
     
+      <ModulTest moduleId="faserverbund" />
+
       <ModuleFooter 
         wikipedia={[
-          { title: 'Faserverbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Faserverbundwerkstoff' },
-          { title: 'Mikromechanik', url: 'https://de.wikipedia.org/wiki/Mikromechanik' }
+          { title: 'Faserverbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Faserverbundwerkstoff' }
         ]}
         literatur={[
-          'Schürmann, H. (2007): Konstruieren mit Faser-Kunststoff-Verbunden - Grundlagen, Berechnung, Konstruktion (2. Auflage, Springer-Verlag)',
-          'Ehrenstein, G. W. (2006): Faserverbund-Kunststoffe - Werkstoffe, Verarbeitung, Eigenschaften (Hanser Verlag)',
+          'Schürmann, H.: Konstruieren mit Faser-Kunststoff-Verbunden. 2. Aufl., Berlin: Springer 2007',
+          'Ehrenstein, G. W.: Faserverbund-Kunststoffe – Werkstoffe, Verarbeitung, Eigenschaften. 2. Aufl., München: Hanser 2006',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 14125 (Faserverstärkte Kunststoffe - Bestimmung der Biegeeigenschaften)' },
           { title: 'DIN EN ISO 527-4 (Kunststoffe - Bestimmung der Zugeigenschaften von isotropen und anisotropen faserverstärkten Kunststoffverbundwerkstoffen)' },
-          { title: 'VDI 2014 Blatt 3 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)' }
+          { title: 'VDI 2014 Blatt 3 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund – Berechnung)' },
+          { title: 'DAfStb-Richtlinie Verstärken von Betonbauteilen mit geklebter Bewehrung (Ausgabe manuell prüfen)' },
+          { title: 'Nichtmetallische Bewehrung: allgemeine bauaufsichtliche Zulassungen bzw. DAfStb-Richtlinie (2024-01)' }
         ]}
         formeln={[
           {
