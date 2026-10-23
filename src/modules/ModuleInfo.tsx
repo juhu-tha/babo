@@ -255,17 +255,17 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Kalk', icon: Box, purpose: 'Kalkkreislauf vom Kalkstein über Branntkalk zum Löschkalk, Luftkalke vs. hydraulische Kalke.', standards: 'DIN EN 459', useCase: 'Einsatz hochdiffusionsoffener Kalkmörtel im Denkmalschutz und ökologischen Wohnungsbau.' },
       { title: 'Lehmbau', icon: Box, purpose: 'Heutige Renaissance ökologischer Lehmsteine, Stampflehmwände und Lehmputze.', standards: 'DIN 18945 - DIN 18948 (Lehmbaunormen)', useCase: 'Sicherer Entwurf von Stampflehmbauteilen mit konstruktivem Feuchteschutz.' },
       { title: 'Erdbau & Böden', icon: Mountain, purpose: 'Bodenmechanische Klassifikation, Verdichtungskriterien, Proctordichte und bodenphysikalische Kennwerte.', standards: 'DIN 18196 / DIN 18127', useCase: 'Festlegung des optimalen Wassergehalts für Tragschichten im Erdbau.' },
-      { title: 'Glas im Bauwesen', icon: Maximize, purpose: 'Einscheiben-Sicherheitsglas (ESG), Verbund-Sicherheitsglas (VSG) und thermischer Verformungswiderstand.', standards: 'DIN 18008 (Glas im Bauwesen)', useCase: 'Tragfähigkeitsnachweis absturzsichernder Scheiben.' },
+      { title: 'Glas im Bauwesen', icon: Maximize, purpose: 'Floatglas, thermisch vorgespanntes Glas (ESG, TVG), Verbund-Sicherheitsglas (VSG) und Isolierglas.', standards: 'DIN 18008 (Glas im Bauwesen)', useCase: 'Tragfähigkeitsnachweis absturzsichernder Scheiben.' },
       { title: 'Stahl- & Metallbau', icon: Flame, purpose: 'Eisen-Kohlenstoff-Diagramm, Gefügebeeinflussung und Eigenschaftsprofil von Baustählen.', standards: 'DIN EN 10025, Eurocode 3', useCase: 'Plastische Momenttragfähigkeit von S355 Profilen.' },
       { title: 'Metalle & NE-Metalle', icon: Flame, purpose: 'Aluminium, Kupfer, Zink, Blei und korrosionsbeständige Edelstähle für Fassaden und Dachdeckungen.', standards: 'DIN EN 485 / DIN EN 1172', useCase: 'Vermeidung von Kontaktkorrosion zwischen Aluminium-Unterkonstruktionen und Edelstahl-Befestigern.' },
-      { title: 'Holz & Holzwerkstoffe', icon: Trees, purpose: 'Anisotropie, axiale Abhängigkeiten, Holzfeuchteeinfluss und innovative Brettsperrhölzer.', standards: 'DIN EN 1995 (Eurocode 5)', useCase: 'Bemessung von Brettschichtholzträgern.' },
+      { title: 'Holz & Holzwerkstoffe', icon: Trees, purpose: 'Anisotropie, Holzfeuchte, Quellen und Schwinden, Festigkeitsklassen und Holzwerkstoffe wie BSH und Brettsperrholz.', standards: 'DIN EN 1995 (Eurocode 5)', useCase: 'Bemessung von Brettschichtholzträgern.' },
       { title: 'Biogene Baustoffe (NaWaRo)', icon: LeafIcon, purpose: 'Nachwachsende Rohstoffe: Strohballenbau, Hanffasern, Flachs, Schafwolle und zellulosebasierte Dämmstoffe.', standards: 'ÖKOBAUDAT / DIBt-Zulassungen', useCase: 'Ökobilanziell optimierte Holzrahmenbauwand mit Stroheinblasdämmung.' },
       { title: 'Asphalt & Bitumen', icon: Layers, purpose: 'Viskoelastisches Verhalten, Bitumenprüfungen (Erweichungspunkt RuK, Nadelpenetration) und Mischungsentwürfe.', standards: 'ZTV Asphalt-StB / DIN EN 13108', useCase: 'Optimierung von Deckschichten mit polymermodifiziertem Bitumen.' },
       { title: 'Kunststoffe im Bauwesen', icon: Box, purpose: 'Thermoplaste, Duroplaste, Elastomere für Rohre, Fensterprofile, Folien und Geotextilien.', standards: 'DIN EN ISO 1043 / DVS Richtlinien', useCase: 'Wahl des geeigneten Rohrwerkstoffs (PE-HD vs. PVC-U) für grabenlose Rohrverlegung.' },
-      { title: 'Dämm- & Schadstoffe', icon: Box, purpose: 'Vergleich organischer, anorganischer und synthetischer Dämmmaterialien bzgl. Wärmeleitfähigkeit.', standards: 'DIN 4108-10 / GEG', useCase: 'Nachweis der GEG-Konformität im U-Wert-Berechner.' },
+      { title: 'Dämmstoffe', icon: Box, purpose: 'Vergleich organischer, anorganischer und synthetischer Dämmstoffe bzgl. Wärmeleitfähigkeit, Brandverhalten und Feuchte.', standards: 'DIN 4108-10 / GModG (vormals GEG)', useCase: 'Dämmdicke für einen Ziel-U-Wert abschätzen.' },
       { title: 'Ausbau & Abdichtung', icon: Layers, purpose: 'Bauwerksabdichtungen gegen Bodenfeuchte und drückendes Wasser, Trockenbausysteme und Fugenabdichtungen.', standards: 'DIN 18533 / DIN 18181', useCase: 'Auslegung einer zweilagigen Bitumenbahnenabdichtung nach Wassereinwirkungsklasse W2.1-E.' },
       { title: 'Faserverbund (CFK/GFK)', icon: Zap, purpose: 'Zugfestigkeiten, Mischungsregeln und anisotrope Laminate im Hochleistungsbau.', standards: 'VDI 2014, DAfStb-Richtlinie', useCase: 'Berechnung der Verstärkung einer Stahlbetonstütze mit Kohlefasergelege.' },
-      { title: 'Sonstige & Innovationen', icon: Sparkles, purpose: 'Carbonbeton, Aerogele, Formgedächtnislegierungen, selbstheilende Betone und Myzeliumwerkstoffe.', standards: 'DIBt-Zulassungen / ETA', useCase: 'Einsatz ultradünner Carbonbeton-Fassadenelemente im ressourcenschonenden Leichtbau.' }
+      { title: 'Sonstige & Innovationen', icon: Sparkles, purpose: 'Phasenwechselmaterialien, Leichtzuschläge, Aerogele, selbstheilender Beton, Photokatalyse, Vakuumisolationspaneele und Myzelwerkstoffe.', standards: 'DIN EN 13055, DIN EN 17140, abZ/ETA', useCase: 'Vakuumisolationspaneele bei begrenzter Aufbauhöhe (z. B. Terrassenanschluss).' }
     ],
     didacticCards: [
       { title: 'Werkstoffübergreifende Logik', desc: 'Gegenüberstellung von Verformungsverhalten (elastisch, plastisch, viskose Fließprozesse).' },
@@ -273,13 +273,13 @@ const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Grenzbereiche im Spannungs-Dehnungs-Bild', desc: 'Detailliertes Verstehen spröder versus zäher Bruchmechanismen.' }
     ],
     appStudents: 'Umfassendes Kompendium zur Begleitung aller Baustoffvorlesungen von ersten Semestern bis zu Masterarbeiten im Hochbau.',
-    appProfessionals: 'Hervorragender digitaler Berater für Tragwerksplaner und Architekten zur bewussten Werkstoffsubstitution und Materialoptimierung.',
+    appProfessionals: 'Nachschlagewerk für Tragwerksplanung und Architektur bei Materialwahl und -substitution.',
     wikipedia: [
       { title: 'Baustoff', url: 'https://de.wikipedia.org/wiki/Baustoff' },
       { title: 'Werkstoffkunde', url: 'https://de.wikipedia.org/wiki/Werkstoffwissenschaft' }
     ],
     literatur: [
-      'Scholz Baustoffkunde (19. Auflage, Werner Verlag)',
+      'Scholz, W. (begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. 19. Aufl., Köln: Bundesanzeiger Verlag 2016',
       'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
     ],
     regelwerke: [
@@ -288,7 +288,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     formeln: [
       { formel: '\\sigma = E \\cdot \\epsilon', erklaerung: 'Hookesches Gesetz für linear-elastisches Werkstoffverhalten. Bestimmt die proportionale Verknüpfung von Normalspannung und elastischer Dehnung.', quelle: 'Physikalische Grundlagen' },
-      { formel: 'f_{m,k} = \\eta \\cdot f_{m,d}', erklaerung: 'Zusammenhang zwischen charakteristischer Festigkeit und Bemessungswert unter Berücksichtigung von Modifikationsbeiwerten im Ingenieurholzbau.', quelle: 'DIN EN 1995-1-1' }
+      { formel: 'f_d = k_{mod} \\cdot \\frac{f_k}{\\gamma_M}', erklaerung: 'Bemessungswert der Festigkeit im Holzbau: charakteristischer Wert f_k, Modifikationsbeiwert k_mod (Lasteinwirkungsdauer, Nutzungsklasse), Teilsicherheitsbeiwert γ_M = 1,3 (NA).', quelle: 'DIN EN 1995-1-1 mit NA' }
     ]
   },
   bauprodukte: {
@@ -986,22 +986,17 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
   },
   baustoffe: {
     websites: [
-      { name: "Dachverband Lehm e.V.", url: "https://www.dachverband-lehm.de", desc: "Richtlinien für Lehmputz- und Mauerwerksprodukte sowie ökologische Zertifizierungsbestimmungen." },
-      { name: "Informationszentrum Gips e.V.", url: "https://www.gips.de", desc: "Fachliche Abhandlungen über Calciumsulfatphasen, Estriche und Gipsplatten." },
-      { name: "Bundesverband Kalk e.V.", url: "https://www.kalk.de", desc: "Forschungsberichte des Verbandes über Luftkalke, hydraulische Kalke und Putzanwendungen." }
+      { name: "Dachverband Lehm e.V.", url: "https://www.dachverband-lehm.de", desc: "Technische Merkblätter und Lehmbau Regeln." },
+      { name: "Bundesverband der Gipsindustrie e.V.", url: "https://www.gips.de", desc: "Fachinformationen zu Calciumsulfat-Bindemitteln, Estrichen und Gipsplatten." },
+      { name: "Bundesverband der Deutschen Kalkindustrie e.V.", url: "https://www.kalk.de", desc: "Informationen zu Luftkalken, hydraulischen Kalken und Anwendungen." }
     ],
     books: [
-      { title: "Lehmbau-Handbuch: Der Baustoff Lehm und seine Anwendung", desc: "Gernot Minke. Umfassendes ökologisches Konstruktionshandbuch zu Stampflehm und Lehmsteinen." },
-      { title: "Minerale und Gesteine des Hochbaues", desc: "Vogel et al., Springer. Handbuch zur Petrographie und Geologie der Bausteine." }
+      { title: "Lehmbau-Handbuch: Der Baustoff Lehm und seine Anwendung", desc: "Minke, G., Ökobuch (Auflage manuell prüfen). Stampflehm, Lehmsteine und Lehmputze." },
+      { title: "Wendehorst Baustoffkunde", desc: "Neroth, G.; Vollenschaar, D. (Hrsg.), 27. Aufl., Vieweg+Teubner 2011. Grundlagenwerk über alle Baustoffgruppen." },
+      { title: "Baustoffkenntnis", desc: "Scholz, W. (begr.); Möhring, R. (Hrsg.), 19. Aufl., Bundesanzeiger Verlag 2016." }
     ],
-    publications: [
-      { journal: "Bauphysik (Ernst & Sohn)", title: "Hygrische und thermische Verhaltenseigenschaften von Stampflehmbauteilen", desc: "Messung kapillarer Leitfähigkeiten zur Raumluftfeuchteregulierung." },
-      { journal: "Cement and Concrete Research", title: "Sulfate activation of slag and hydration of calcium aluminate cements", desc: "Phasengleichgewichts-Rechnungen bei säurebeständigen Sonderbindemitteln." }
-    ],
-    dissertations: [
-      { title: "Erhärtungskinetik und Hydratationsmechanismen calciumsulfatbasierter Binärbindemittel", desc: "Dissertation, Bauhaus-Universität Weimar, 2018. Gips-Festigkeitsentwicklung im interaktiven Kinetik-Modell." },
-      { title: "Tragfähigkeit von lastabtragendem Lehmsteinmauerwerk unter zyklischer Feuchtebelastung", desc: "Dissertation, Technische Universität Braunschweig. Mechanische Versuche zur Tragfähigkeit poröser Lehmsteinpfeiler." }
-    ]
+    publications: [],
+    dissertations: []
   },
   bauprodukte: {
     websites: [
