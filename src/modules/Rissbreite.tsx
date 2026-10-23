@@ -2,7 +2,6 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
@@ -525,42 +524,6 @@ export default function Rissbreite() {
         </div>
 
         <CalculatorDisclaimerBanner className="my-2" />
-      <ModuleFooter 
-          wikipedia={[
-            { title: 'Rissbreitenbeschränkung' },
-            { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
-            { title: 'Betonstahl', url: 'https://de.wikipedia.org/wiki/Betonstahl' }
-          ]}
-          regelwerke={[
-            { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken – Abschnitt 7.3: Rissbreitenbegrenzung)' }
-          ]}
-          literatur={[
-            'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)',
-            'Goris, A. et al.: Rissbreitenbegrenzung nach Eurocode 2 (2014)'
-          ]}
-          formeln={[
-            {
-              formel: 'w_{k} = s_{r,max} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm})',
-              erklaerung: 'Charakteristische Rissbreite\nw_k: Berechnete charakteristische Rissbreite [mm]\ns_r,max: Maximaler Rissabstand [mm]\nε_sm: Mittlere Stahldehnung unter der relevanten Einwirkungskombination [-]\nε_cm: Mittlere Betondehnung zwischen den Rissen [-]',
-              quelle: 'DIN EN 1992-1-1 Gl. (7.8)'
-            },
-            {
-              formel: 's_{r,max} = \\min \\left( \\frac{\\varnothing}{3{,}6 \\cdot \\rho_{p,eff}} \\,;\\, \\frac{\\sigma_s \\cdot \\varnothing}{3{,}6 \\cdot f_{ct,eff}} \\right)',
-              erklaerung: 'Maximaler Rissabstand nach deutschem Nationalem Anhang (NA DE).\nØ: Stabdurchmesser [mm]\nρ_p,eff: Effektiver Bewehrungsgrad (A_s / A_{c,eff}) [-]\nσ_s: Stahlspannung im Zustand II [MPa]\nf_ct,eff: Effektive Betonzugfestigkeit [MPa]. Die europäische EC-Empfehlung mit k3 und k4 gilt in Deutschland nicht.',
-              quelle: 'DIN EN 1992-1-1/NA Gl. (7.11DE)'
-            },
-            {
-              formel: 'A_{s,min} = k_c \\cdot k \\cdot f_{ct,eff} \\cdot \\frac{A_{ct}}{\\sigma_s}',
-              erklaerung: 'Mindestbewehrung zur Begrenzung der Rissbreite nach DIN EN 1992-1-1/NA Abs. 7.3.2.\nk: Beiwert für nichtlineare Eigenspannungen aus kAsMin(h)\nk_c: Beiwert für die Spannungsverteilung vor der Erstrissbildung (0,4 bei Biegung)\nA_ct: Betonzugzone vor Erstrissbildung [mm²]\nσ_s: Maximal zulässige Stahlspannung unmittelbar nach Erstrissbildung [MPa]',
-              quelle: 'DIN EN 1992-1-1/NA Abs. 7.3.2'
-            },
-            {
-              formel: '\\varepsilon_{sm} - \\varepsilon_{cm} = \\frac{\\sigma_s - k_t \\cdot \\frac{f_{ct,eff}}{\\rho_{p,eff}} \\cdot (1 + \\alpha_e \\cdot \\rho_{p,eff})}{E_s} \\ge 0{,}6 \\cdot \\frac{\\sigma_s}{E_s}',
-              erklaerung: 'Dehnungsdifferenz nach DIN EN 1992-1-1 Gl. (7.9).\nσ_s: Stahlspannung im gerissenen Zustand [MPa]\nk_t: Beiwert für Lasteinwirkungsdauer (0,6 für kurzzeitig, 0,4 für langzeitig)\nf_ct,eff: Effektive Betonzugfestigkeit [MPa]\nρ_p,eff: Effektiver Bewehrungsgrad (A_s / A_{c,eff}) [-]\nα_e: Modulverhältnis (E_s / E_{cm}) [-]\nE_s: Elastizitätsmodul des Betonstahls (200.000 MPa)',
-              quelle: 'DIN EN 1992-1-1 Gl. (7.9)'
-            }
-          ]}
-        />
       </div>
     </div>
   );

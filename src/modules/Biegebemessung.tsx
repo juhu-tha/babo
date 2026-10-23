@@ -1,7 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Layers } from 'lucide-react';
 import {
@@ -20,6 +19,7 @@ import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 ChartJS.register(
   CategoryScale,
@@ -313,6 +313,10 @@ export default function Biegebemessung() {
                   <>
                     <Slider label="Zugfestigkeit ftk" info="Charakteristische Zugfestigkeit des Materials." min={500} max={4000} step={100} value={ftk} unit="MPa" onChange={(e) => setFtk(Number(e.target.value))} />
                     <Slider label="Teilsicherheitsbeiwert γFRP" min={1.0} max={2.0} step={0.05} value={gammaFRP} unit="-" onChange={(e) => setGammaFRP(Number(e.target.value))} />
+                    <p className="text-[11px] text-text-main/60 leading-relaxed">
+                      Lehrannahme: Nichtmetallische Bewehrung ist nicht in EC2 geregelt. Maßgebend sind die DAfStb-Richtlinie
+                      „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01) bzw. die jeweilige Zulassung; γ und μ_lim = 0,25 sind hier vereinfacht.
+                    </p>
                   </>
                 )}
               </div>
@@ -497,41 +501,21 @@ export default function Biegebemessung() {
         </div>
       </div>
       
-      <CalculatorDisclaimerBanner className="my-2" />
-      <ModuleFooter 
-        wikipedia={[
-          { title: 'Biegung (Mechanik)', url: 'https://de.wikipedia.org/wiki/Biegung_(Mechanik)' }
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Biegebemessung Rechteckquerschnitt (Standardwerte)"
+        zielGleichung="A_{s1} = \omega \cdot b \cdot d \cdot \frac{f_{cd}}{f_{yd}}, \quad \omega = 1 - \sqrt{1 - 2\mu_{Eds}}"
+        normQuelle="DIN EN 1992-1-1 mit NA, 3.1.7 (Spannungsblock) und 6.1"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'b/h = 30/50\\,\\text{cm},\; d = 45\\,\\text{cm},\; M_{Ed} = 200\\,\\text{kNm},\; \\text{C30/37, B500}', erklaerung: 'Rechteckquerschnitt ohne Normalkraft.' },
+          { titel: '2. Bemessungswerte', formel: 'f_{cd} = 0{,}85 \\cdot 30/1{,}5 = 17{,}0\\,\\text{N/mm}^2;\; f_{yd} = 500/1{,}15 = 435\\,\\text{N/mm}^2', erklaerung: 'α_cc = 0,85 nach NA.' },
+          { titel: '3. Bezogenes Moment', formel: '\\mu_{Eds} = \\frac{0{,}200}{0{,}30 \\cdot 0{,}45^2 \\cdot 17{,}0} = 0{,}194 < 0{,}296', erklaerung: 'Keine Druckbewehrung erforderlich.' },
+          { titel: '4. Mechanischer Bewehrungsgrad', formel: '\\omega = 1 - \\sqrt{1 - 2 \\cdot 0{,}194} = 0{,}217;\; \\zeta = 1 - \\omega/2 = 0{,}891', erklaerung: 'Rechteckiger Spannungsblock (λ = 0,8).' },
+          { titel: '5. Bewehrung', formel: 'A_{s1} = 0{,}217 \\cdot 30 \\cdot 45 \\cdot \\frac{17{,}0}{435} = 11{,}5\\,\\text{cm}^2 \;>\; A_{s,min} = 1{,}8\\,\\text{cm}^2', erklaerung: 'A_s,min aus dem Rissmoment (f_ctm = 2,9 N/mm², z = 0,9d).' },
         ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitte 6.1 und 9.2.1)' }
-        ]}
-        literatur={[
-          'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau',
-          'Goris, A.: Stahlbetonbau-Praxis'
-        ]}
-        formeln={[
-          {
-            formel: 'A_{s,min} = \\frac{M_{cr}}{f_{yk} \\cdot z}',
-            erklaerung: 'Mindestbewehrung als Robustheitsbewehrung nach DIN EN 1992-1-1/NA\nM_{cr}: Rissmoment des Querschnitts = f_{ctm} \\cdot b \\cdot h^2 / 6 [kNm]\nz: Innerer Hebelarm = 0{,}9 \\cdot d [m]\nf_{yk}: Charakteristische Streckgrenze des Stahls [MPa]. Die Standard-Formel 0,26 * (fctm/fyk) * b * d ist eine EC-Empfehlung (nicht DE).',
-            quelle: 'DIN EN 1992-1-1/NA Abs. 9.2.1.1'
-          },
-          {
-            formel: '\\mu_{Ed} = \\frac{M_{Ed}}{b \\cdot d^2 \\cdot f_{cd}}',
-            erklaerung: 'Bezogenes Biegemoment\n\\mu_{Ed}: Bezogenes Biegemoment [-]\nf_{cd}: Bemessungswert der Betondruckfestigkeit [MPa]\nM_{Ed}: Einwirkendes Biegemoment [kNm]\nd: Statische Nutzhöhe (h - d₁) [m]\nb: Bauteilbreite [m]',
-            quelle: 'DIN EN 1992-1-1 Abs. 6.1'
-          },
-          {
-            formel: '\\omega = 1 - \\sqrt{1 - 2 \\cdot \\mu_{Ed}}',
-            erklaerung: 'Mechanischer Bewehrungsgrad\n\\mu_{Ed}: Bezogenes Biegemoment [-]\n\\omega: Mechanischer Bewehrungsgrad [-]',
-            quelle: 'DIN EN 1992-1-1 Abs. 6.1'
-          },
-          {
-            formel: 'A_{s1} = \\omega \\cdot b \\cdot d \\cdot \\frac{f_{cd}}{f_{yd}}',
-            erklaerung: 'Erforderliche Zugbewehrung\n\\omega: Mechanischer Bewehrungsgrad [-]\nb: Bauteilbreite [m]\nd: Statische Nutzhöhe [m]\nf_{cd}, f_{yd}: Bemessungswerte Festigkeit [MPa]\nA_{s1}: Zugbewehrungsquerschnitt [cm²]',
-            quelle: 'DIN EN 1992-1-1 Abs. 6.1'
-          }
-        ]}
+        ergebnisHinweis="A_s1 ≈ 11,5 cm², z. B. 6 Ø 16 (12,1 cm²)."
       />
+
+      <CalculatorDisclaimerBanner className="my-2" />
     </div>
   );
 }

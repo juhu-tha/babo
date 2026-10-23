@@ -2,7 +2,6 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
 import { Layers } from 'lucide-react';
@@ -382,36 +381,6 @@ export default function Verankerungslaenge() {
         </div>
       </div>
 
-      <ModuleFooter
-        wikipedia={[
-          { title: 'Verankerung von Betonstahl', url: 'https://de.wikipedia.org/wiki/Bewehrung#Verankerung_von_Betonstahl' }
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1:2023-08 / DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Abschnitte 8.4 Verankerung und 8.7 Übergreifung)' }
-        ]}
-        literatur={[
-          'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau',
-          'Deutscher Ausschuss für Stahlbeton (DAfStb): Heft 600'
-        ]}
-        formeln={[
-          {
-            erklaerung: "Bemessungswert der Verbundspannung\nf_bd: Bemessungswert der Verbundspannung [MPa]\nη₁: Beiwert für die Verbundbedingung (1.0 für gut, 0.7 für mäßig)\nη₂: Beiwert für den Stabdurchmesser (1.0 für ≤ 32 mm)\nf_ctd: Bemessungswert der Betonzugfestigkeit [MPa]",
-            formel: "f_{bd} = 2{,}25 \\cdot \\eta_1 \\cdot \\eta_2 \\cdot f_{ctd}"
-          },
-          {
-            erklaerung: "Grundwert der Verankerungslänge\nl_b,rqd: Grundwert der Verankerungslänge [mm]\nØ: Stabdurchmesser [mm]\nσ_sd: Bemessungswert der Stabspannung [MPa]\nf_bd: Bemessungswert der Verbundspannung [MPa]",
-            formel: "l_{b,rqd} = \\frac{\\varnothing}{4} \\cdot \\frac{\\sigma_{sd}}{f_{bd}}"
-          },
-          {
-            erklaerung: berechnungsArt === 'verankerung' 
-              ? "Bemessungswert der Verankerungslänge\nl_bd: Bemessungswert der Verankerungslänge [mm]\nα₁ bis α₅: Formbeiwerte für Formgebung, Betondeckung, Querbewehrung, angeschweißte Querstäbe, Querdruck\nl_b,rqd: Grundwert der Verankerungslänge [mm]\nA_s,erf / A_s,vorh: Verhältnis von erforderlicher zu vorhandener Bewehrung\nl_b,min: Mindestverankerungslänge [mm]" 
-              : "Bemessungswert der Übergreifungslänge\nl_0: Bemessungswert der Übergreifungslänge [mm]\nα₁ bis α₆: Formbeiwerte (α₆ für Anteil der gestoßenen Stäbe)\nl_b,rqd: Grundwert der Verankerungslänge [mm]\nA_s,erf / A_s,vorh: Verhältnis von erforderlicher zu vorhandener Bewehrung\nl_0,min: Mindestübergreifungslänge [mm]",
-            formel: berechnungsArt === 'verankerung' 
-              ? "l_{bd} = \\left(\\prod_{i=1}^5 \\alpha_i\\right) \\cdot l_{b,rqd} \\cdot \\frac{A_{s,erf}}{A_{s,vorh}} \\ge l_{b,min}"
-              : "l_0 = \\left(\\prod_{i=1}^6 \\alpha_i\\right) \\cdot l_{b,rqd} \\cdot \\frac{A_{s,erf}}{A_{s,vorh}} \\ge l_{0,min}"
-          }
-        ]}
-      />
     </div>
   );
 }

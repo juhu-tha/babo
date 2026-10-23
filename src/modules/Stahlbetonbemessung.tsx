@@ -12,6 +12,8 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import SpannungDehnung from './SpannungDehnung';
 import Biegebemessung from './Biegebemessung';
 import Querkraftbemessung from './Querkraftbemessung';
@@ -31,6 +33,140 @@ export type BemessungSubTab =
   | 'verankerungslaenge'
   | 'rissbreite'
   | 'ec2_generation2';
+
+
+// Formeln je Reiter (aus den Unterrechnern zusammengeführt)
+const FORMELN_JE_REITER: Partial<Record<BemessungSubTab, { formel: string; erklaerung: string; quelle?: string }[]>> = {
+  spannung: [
+          {
+            formel: '\\sigma_c = f_{cd} \\cdot \\left[ 1 - \\left(1 - \\frac{\\varepsilon_c}{\\varepsilon_{c2}}\\right)^n \\right]',
+            erklaerung: 'Bemessungsmodell Beton (Parabel-Rechteck-Diagramm nach Eurocode 2): σc ist die Betonspannung, fcd der Bemessungswert der Betondruckfestigkeit, εc2 die Dehnung bei Höchstspannung (2,0 ‰ für fck ≤ 50 MPa) und n der Exponent (2.0 für fck ≤ 50 MPa).',
+            quelle: 'DIN EN 1992-1-1, 3.1.7'
+          },
+          {
+            formel: '\\frac{\\sigma_c}{f_{cm}} = \\frac{k \\cdot \\eta - \\eta^2}{1 + (k - 2)\\eta}',
+            erklaerung: 'Nichtlineares Spannungs-Dehnungs-Modell für Verformungsberechnungen nach EC2: η = εc / εc1, k = 1.05 · Ecm · |εc1| / fcm mit Sekantenmodul Ecm.',
+            quelle: 'DIN EN 1992-1-1 Gl. (3.14)'
+          },
+          {
+            formel: '\\sigma_s = E_s \\cdot \\varepsilon_s \\quad (\\varepsilon_s \\le \\varepsilon_{yd})',
+            erklaerung: 'Hookesches Gesetz für Betonstahl mit E_s = 200 000 N/mm² bis zur Fließdehnung ε_yd = f_yd/E_s ≈ 2,17 ‰.',
+            quelle: 'DIN EN 1992-1-1, 3.2.7'
+          }
+        ],
+  biegebemessung: [
+          {
+            formel: 'A_{s,min} = \\frac{M_{cr}}{f_{yk} \\cdot z}',
+            erklaerung: 'Mindestbewehrung als Robustheitsbewehrung nach DIN EN 1992-1-1/NA\nM_{cr}: Rissmoment des Querschnitts = f_{ctm} \\cdot b \\cdot h^2 / 6 [kNm]\nz: Innerer Hebelarm = 0{,}9 \\cdot d [m]\nf_{yk}: Charakteristische Streckgrenze des Stahls [MPa]. Die Standard-Formel 0,26 * (fctm/fyk) * b * d ist eine EC-Empfehlung (nicht DE).',
+            quelle: 'DIN EN 1992-1-1/NA Abs. 9.2.1.1'
+          },
+          {
+            formel: '\\mu_{Ed} = \\frac{M_{Ed}}{b \\cdot d^2 \\cdot f_{cd}}',
+            erklaerung: 'Bezogenes Biegemoment\n\\mu_{Ed}: Bezogenes Biegemoment [-]\nf_{cd}: Bemessungswert der Betondruckfestigkeit [MPa]\nM_{Ed}: Einwirkendes Biegemoment [kNm]\nd: Statische Nutzhöhe (h - d₁) [m]\nb: Bauteilbreite [m]',
+            quelle: 'DIN EN 1992-1-1 Abs. 6.1'
+          },
+          {
+            formel: '\\omega = 1 - \\sqrt{1 - 2 \\cdot \\mu_{Ed}}',
+            erklaerung: 'Mechanischer Bewehrungsgrad\n\\mu_{Ed}: Bezogenes Biegemoment [-]\n\\omega: Mechanischer Bewehrungsgrad [-]',
+            quelle: 'DIN EN 1992-1-1 Abs. 6.1'
+          },
+          {
+            formel: 'A_{s1} = \\omega \\cdot b \\cdot d \\cdot \\frac{f_{cd}}{f_{yd}}',
+            erklaerung: 'Erforderliche Zugbewehrung\n\\omega: Mechanischer Bewehrungsgrad [-]\nb: Bauteilbreite [m]\nd: Statische Nutzhöhe [m]\nf_{cd}, f_{yd}: Bemessungswerte Festigkeit [MPa]\nA_{s1}: Zugbewehrungsquerschnitt [cm²]',
+            quelle: 'DIN EN 1992-1-1 Abs. 6.1'
+          }
+        ],
+  querkraftbemessung: [
+          {
+            formel: 'V_{Rd,c} = [C_{Rd,c} \\cdot k \\cdot (100 \\cdot \\rho_l \\cdot f_{ck})^{1/3}] \\cdot b_w \\cdot d',
+            erklaerung: 'Bauteilwiderstand ohne Querkraftbewehrung nach NA DE\nV_{Rd,c}: Bemessungswert des Querkraftwiderstands ohne Querkraftbewehrung [kN]\nC_{Rd,c}: Beiwert (0.15 / \\gamma_c nach NA DE)\nk: Maßstabsfaktor (1 + \\sqrt{200/d} \\leq 2.0)\n\\rho_l: Längsbewehrungsgrad (A_{sl} / (b_w \\cdot d) \\leq 0.02)\nf_{ck}: Charakteristische Betondruckfestigkeit [N/mm²]\nb_w: Kleinste Querschnittsbreite in der Zugzone [mm]\nd: Statische Nutzhöhe [mm]',
+            quelle: 'DIN EN 1992-1-1/NA Gl. (6.2aDE)'
+          },
+          {
+            formel: 'V_{Rd,max} = \\frac{\\alpha_{cw} \\cdot b_w \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\cot(\\theta) + \\tan(\\theta)}',
+            erklaerung: 'Maximale Querkrafttragfähigkeit (Druckstrebenversagen)\nV_{Rd,max}: Maximal aufnehmbare Querkraft [kN]\n\\alpha_{cw}: Beiwert für den Spannungszustand im Druckgurt (1,0 für unbewehrte Gurte)\nb_w: Stegbreite [mm]\nz: Hebelarm der inneren Kräfte [mm]\n\\nu_1: Abminderungsbeiwert für gerissenen Beton (0,75 nach NA DE)\nf_{cd}: Bemessungswert der Betondruckfestigkeit [N/mm²]\n\\theta: Druckstrebenneigungswinkel [°]',
+            quelle: 'DIN EN 1992-1-1/NA Gl. (6.9)'
+          },
+          {
+            formel: 'a_{sw} = \\frac{V_{Ed}}{z \\cdot f_{yd} \\cdot \\cot(\\theta)}',
+            erklaerung: 'Erforderliche Querkraftbewehrung (Zugstrebenversagen)\na_{sw}: Erforderliche Querkraftbewehrung je Längeneinheit [cm²/m]\nV_{Ed}: Bemessungswert der einwirkenden Querkraft [kN]\nz: Hebelarm der inneren Kräfte [mm]\nf_{yd}: Bemessungswert der Streckgrenze der Querkraftbewehrung [N/mm²]\n\\theta: Druckstrebenneigungswinkel [°]',
+            quelle: 'DIN EN 1992-1-1 Gl. (6.8)'
+          },
+          {
+            formel: '\\rho_{w,min} = 0{,}16 \\cdot \\frac{f_{ctm}}{f_{yk}}',
+            erklaerung: 'Mindestquerkraftbewehrungsgrad nach deutschem Nationalen Anhang (NA DE)\n\\rho_{w,min}: Mindestquerkraftbewehrungsgrad [-]\nf_{ctm}: Mittelwert der Betonzugfestigkeit [N/mm²]\nf_{yk}: Charakteristische Streckgrenze der Querkraftbewehrung [N/mm²]. Die europäische Empfehlung mit 0,08 * sqrt(fck) gilt in Deutschland nicht.',
+            quelle: 'DIN EN 1992-1-1/NA Gl. (9.5N)'
+          }
+        ],
+  stuetzenbemessung: [
+          {
+            erklaerung: "Mindestbewehrung für Stützen nach NA DE\nA_{s,min}: Mindestbewehrung [cm²]\nN_{Ed}: Bemessungswert der Normalkraft [kN]\nf_{yd}: Bemessungsstreckgrenze des Betonstahls [MPa]",
+            formel: "A_{s,min} = \\frac{0{,}15 \\cdot |N_{Ed}|}{f_{yd}}"
+          },
+          {
+            erklaerung: "Bemessungsmoment mit Mindestausmitte und Imperfektion\nM_{Ed,1}: Bemessungsmoment Theorie I. Ordnung [kNm]\ne_0: Mindestausmitte = \\max(h/30; 20\\text{ mm})\ne_i: Ungewollte Schiefstellung = l_0 / 400",
+            formel: "M_{Ed,1} = \\max(M_{Ed}, N_{Ed} \\cdot e_0) + N_{Ed} \\cdot e_i"
+          },
+          {
+            erklaerung: "Schlankheit und Grenzschlankheitskriterium\n\\lambda: Bauteilschlankheit = l_0 / i\ni: Trägheitsradius = h / \\sqrt{12}\n\\lambda_{lim}: Kriterium nach DIN EN 1992-1-1, 5.8.3.1 für Theorie II. Ordnung",
+            formel: "\\lambda = \\frac{l_0}{i} \\le \\lambda_{lim} = \\frac{20 \\cdot A \\cdot B \\cdot C}{\\sqrt{n}}"
+          }
+        ],
+  durchstanzen: [
+          {
+            erklaerung: "Einwirkende Durchstanz-Schubspannung\nv_{Ed}: Bemessungswert der einwirkenden Durchstanzspannung [MPa]\n\\beta: Beiwert zur Berücksichtigung der Lastexzentrizität (1,10 Innen-, 1,40 Rand-, 1,50 Eckstütze nach NA DE)\nV_{Ed}: Einwirkende Querkraft [kN]\nu_1: Länge des kritischen Rundschnitts im Abstand 2d [mm]\nd: Mittlere statische Nutzhöhe [mm]",
+            formel: "v_{Ed} = \\frac{\\beta \\cdot V_{Ed}}{u_1 \\cdot d}"
+          },
+          {
+            erklaerung: "Durchstanzwiderstand ohne Durchstanzbewehrung nach DIN EN 1992-1-1/NA\nv_{Rd,c}: Durchstanzwiderstand ohne Bewehrung [MPa]\nC_{Rd,c}: Beiwert (0{,}18 / \\gamma_c für u_0/d \\geq 4, sonst (0{,}18/\\gamma_c) \\cdot (0{,}1 \\cdot u_0/d + 0{,}6))\nk: Maßstabsfaktor (1 + \\sqrt{200/d} \\leq 2.0)\n\\rho_l: Mittlerer Längsbewehrungsgrad (\\leq 0.02)\nf_{ck}: Charakteristische Betondruckfestigkeit [MPa]",
+            formel: "v_{Rd,c} = C_{Rd,c} \\cdot k \\cdot (100 \\cdot \\rho_l \\cdot f_{ck})^{1/3}"
+          },
+          {
+            erklaerung: "Maximaler Durchstanzwiderstand nach NA DE\nv_{Rd,max}: Maximaler Durchstanzwiderstand im Rundschnitt u_1 [MPa]\nv_{Rd,c}: Durchstanzwiderstand ohne Bewehrung [MPa]. Der europäische Nachweis mit 0,4 * nu * fcd am Stützenrand entfällt in Deutschland.",
+            formel: "v_{Rd,max} = 1{,}4 \\cdot v_{Rd,c}"
+          }
+        ],
+  verankerungslaenge: [
+          {
+            erklaerung: "Bemessungswert der Verbundspannung\nf_bd: Bemessungswert der Verbundspannung [MPa]\nη₁: Beiwert für die Verbundbedingung (1.0 für gut, 0.7 für mäßig)\nη₂: Beiwert für den Stabdurchmesser (1.0 für ≤ 32 mm)\nf_ctd: Bemessungswert der Betonzugfestigkeit [MPa]",
+            formel: "f_{bd} = 2{,}25 \\cdot \\eta_1 \\cdot \\eta_2 \\cdot f_{ctd}"
+          },
+          {
+            erklaerung: "Grundwert der Verankerungslänge\nl_b,rqd: Grundwert der Verankerungslänge [mm]\nØ: Stabdurchmesser [mm]\nσ_sd: Bemessungswert der Stabspannung [MPa]\nf_bd: Bemessungswert der Verbundspannung [MPa]",
+            formel: "l_{b,rqd} = \\frac{\\varnothing}{4} \\cdot \\frac{\\sigma_{sd}}{f_{bd}}"
+          },
+          {
+            erklaerung: "Bemessungswert der Verankerungslänge\nα₁ bis α₅: Beiwerte für Form, Betondeckung, Querbewehrung, angeschweißte Querstäbe, Querdruck\nA_s,erf / A_s,vorh: Ausnutzungsverhältnis",
+            formel: "l_{bd} = \\left(\\prod_{i=1}^5 \\alpha_i\\right) \\cdot l_{b,rqd} \\cdot \\frac{A_{s,erf}}{A_{s,vorh}} \\ge l_{b,min}"
+          },
+          {
+            erklaerung: "Bemessungswert der Übergreifungslänge\nα₆: Beiwert für den Anteil gestoßener Stäbe",
+            formel: "l_0 = \\left(\\prod_{i=1}^6 \\alpha_i\\right) \\cdot l_{b,rqd} \\cdot \\frac{A_{s,erf}}{A_{s,vorh}} \\ge l_{0,min}"
+          }
+        ],
+  rissbreite: [
+            {
+              formel: 'w_{k} = s_{r,max} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm})',
+              erklaerung: 'Charakteristische Rissbreite\nw_k: Berechnete charakteristische Rissbreite [mm]\ns_r,max: Maximaler Rissabstand [mm]\nε_sm: Mittlere Stahldehnung unter der relevanten Einwirkungskombination [-]\nε_cm: Mittlere Betondehnung zwischen den Rissen [-]',
+              quelle: 'DIN EN 1992-1-1 Gl. (7.8)'
+            },
+            {
+              formel: 's_{r,max} = \\min \\left( \\frac{\\varnothing}{3{,}6 \\cdot \\rho_{p,eff}} \\,;\\, \\frac{\\sigma_s \\cdot \\varnothing}{3{,}6 \\cdot f_{ct,eff}} \\right)',
+              erklaerung: 'Maximaler Rissabstand nach deutschem Nationalem Anhang (NA DE).\nØ: Stabdurchmesser [mm]\nρ_p,eff: Effektiver Bewehrungsgrad (A_s / A_{c,eff}) [-]\nσ_s: Stahlspannung im Zustand II [MPa]\nf_ct,eff: Effektive Betonzugfestigkeit [MPa]. Die europäische EC-Empfehlung mit k3 und k4 gilt in Deutschland nicht.',
+              quelle: 'DIN EN 1992-1-1/NA Gl. (7.11DE)'
+            },
+            {
+              formel: 'A_{s,min} = k_c \\cdot k \\cdot f_{ct,eff} \\cdot \\frac{A_{ct}}{\\sigma_s}',
+              erklaerung: 'Mindestbewehrung zur Begrenzung der Rissbreite nach DIN EN 1992-1-1/NA Abs. 7.3.2.\nk: Beiwert für nichtlineare Eigenspannungen aus kAsMin(h)\nk_c: Beiwert für die Spannungsverteilung vor der Erstrissbildung (0,4 bei Biegung)\nA_ct: Betonzugzone vor Erstrissbildung [mm²]\nσ_s: Maximal zulässige Stahlspannung unmittelbar nach Erstrissbildung [MPa]',
+              quelle: 'DIN EN 1992-1-1/NA Abs. 7.3.2'
+            },
+            {
+              formel: '\\varepsilon_{sm} - \\varepsilon_{cm} = \\frac{\\sigma_s - k_t \\cdot \\frac{f_{ct,eff}}{\\rho_{p,eff}} \\cdot (1 + \\alpha_e \\cdot \\rho_{p,eff})}{E_s} \\ge 0{,}6 \\cdot \\frac{\\sigma_s}{E_s}',
+              erklaerung: 'Dehnungsdifferenz nach DIN EN 1992-1-1 Gl. (7.9).\nσ_s: Stahlspannung im gerissenen Zustand [MPa]\nk_t: Beiwert für Lasteinwirkungsdauer (0,6 für kurzzeitig, 0,4 für langzeitig)\nf_ct,eff: Effektive Betonzugfestigkeit [MPa]\nρ_p,eff: Effektiver Bewehrungsgrad (A_s / A_{c,eff}) [-]\nα_e: Modulverhältnis (E_s / E_{cm}) [-]\nE_s: Elastizitätsmodul des Betonstahls (200.000 MPa)',
+              quelle: 'DIN EN 1992-1-1 Gl. (7.9)'
+            }
+          ],
+};
 
 export default function Stahlbetonbemessung({ initialTab }: { initialTab?: BemessungSubTab }) {
   const { activeTab, setActiveTab } = useTabContext();
@@ -280,7 +416,7 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Normenentwicklung &amp; Stand 2026</span>
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2 mt-0.5">
                   <Sparkles className="text-amber-500 h-5 w-5" />
-                  2. Generation des Eurocode 2 (EN 1992-1-1:2023; bauaufsichtliche Einführung in Deutschland steht noch aus)
+                  2. Generation des Eurocode 2 (EN 1992-1-1:2023, deutsche Fassung DIN EN 1992-1-1:2025-09; bauaufsichtliche Einführung manuell prüfen)
                 </h3>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200">
@@ -355,6 +491,30 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
           </div>
         )}
       </div>
+
+      <ModulTest moduleId="stahlbeton" />
+
+      <ModuleFooter
+        wikipedia={[
+          { title: 'Stahlbeton', url: 'https://de.wikipedia.org/wiki/Stahlbeton' },
+          { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
+          { title: 'Betonstahl', url: 'https://de.wikipedia.org/wiki/Betonstahl' },
+          { title: 'Durchstanzen', url: 'https://de.wikipedia.org/wiki/Durchstanzen' }
+        ]}
+        regelwerke={[
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 + DIN EN 1992-1-1/NA:2013-04 (Eurocode 2, bauaufsichtlich eingeführt)' },
+          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2, 2. Generation – bauaufsichtliche Einführung manuell prüfen)' },
+          { title: 'DIN 488-1:2009-08 (Betonstahl – Sorten, Eigenschaften, Kennzeichen)' },
+          { title: 'DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (2024-01)' }
+        ]}
+        literatur={[
+          'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
+          'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2, Band 1 und 2. Berlin: Beuth 2023 (Auflage manuell prüfen)',
+          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Ausgabe manuell prüfen)',
+          'Bargel, H.-J.; Schulze, G. (Hrsg.): Werkstoffkunde. Berlin: Springer Vieweg (Auflage manuell prüfen)'
+        ]}
+        formeln={FORMELN_JE_REITER[currentTab] ?? []}
+      />
     </div>
   );
 }
