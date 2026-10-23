@@ -320,7 +320,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['baustoffe', 'planer'],
     primaryTarget: 'Baustoffhersteller, Händler, Importeure, Bauprüfämter, Tragwerksplaner',
     leadQuote: 'Verbindliche Umweltdeklaration (GWP) in der CE-Kennzeichnung und Digitaler Bauproduktpass.',
-    coreSummary: 'Die Novelle der BauPVO revolutioniert den europäischen Baustoffbinnenmarkt. Sie aktiviert die "Grundanforderung 7: Nachhaltige Nutzung der natürlichen Ressourcen" als verbindliche CE-Pflicht. Hersteller dürfen Bauprodukte künftig nur noch mit CE-Kennzeichnung in Verkehr bringen, wenn sie neben mechanischen Eigenschaften auch standardisierte Umweltleistungsdaten (Lebenszyklus-GWP, Rezyklatanteil) in der Leistungserklärung (DoP) ausweisen.',
+    coreSummary: 'Die Novelle der BauPVO verändert den europäischen Binnenmarkt für Bauprodukte grundlegend. Sie aktiviert die "Grundanforderung 7: Nachhaltige Nutzung der natürlichen Ressourcen" als verbindliche CE-Pflicht. Hersteller dürfen Bauprodukte künftig nur noch mit CE-Kennzeichnung in Verkehr bringen, wenn sie neben mechanischen Eigenschaften auch standardisierte Umweltleistungsdaten (Lebenszyklus-GWP, Rezyklatanteil) in der Leistungserklärung (DoP) ausweisen.',
     keyDuties: [
       'Verpflichtende Ausweisung von Umwelt- und Klimadaten nach EN 15804 in der CE-Kennzeichnung.',
       'Einführung des Digitalen Bauproduktpasses (Digital Construction Product Passport) mit QR-Code am Bauteil.',

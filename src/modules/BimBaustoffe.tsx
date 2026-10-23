@@ -55,7 +55,7 @@ const ARCHETYPES: MaterialArchetype[] = [
     defaultConductivity: 50.0,
     defaultEModulus: 210000,
     defaultGwp: 1450.0,
-    description: 'Duktiler Tragwerkswerkstoff mit exzellenten Festigkeitseigenschaften, unbegrenzt kreislauffähig (Modul D Gutschriften), aber hoher Primärenergieherstellung.',
+    description: 'Duktiler Tragwerkswerkstoff mit sehr guten Festigkeitseigenschaften, unbegrenzt kreislauffähig (Modul D Gutschriften), aber hoher Primärenergieherstellung.',
     ifcClass: 'IfcMaterial'
   }
 ];
@@ -431,7 +431,7 @@ export default function BimBaustoffe() {
         ]}
         weblinks={[
           { title: 'thatOpen Company – Open-Source WebGL IFC Viewer', url: 'https://thatopen.com/' },
-          { title: 'BIM-Portal des Bundes – Standardisierte Merkmalskataloge' },
+          { title: 'BIM Deutschland – BIM-Portal des Bundes', url: 'https://www.bimdeutschland.de' },
           { title: 'Geoportal.de – Amtliche Geodaten & Geländemodelle', url: 'https://www.geoportal.de/' },
           { title: 'Calcpad – Parametrische Eurocode-Berechnungen', url: 'https://calcpad.eu/' }
         ]}

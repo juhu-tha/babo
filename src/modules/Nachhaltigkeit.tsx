@@ -257,7 +257,7 @@ const PRESET_WALLS: Record<string, { name: string; desc: string; layers: Configu
   },
   holz_staender: {
     name: 'Holzrahmenbau (Passivhaus)',
-    desc: 'Hocheffiziente, kreislauffähige Leichtbaukonstruktion mit exzellenter Dämmwirkung und biogenem Kohlenstoffspeicher.',
+    desc: 'Hocheffiziente, kreislauffähige Leichtbaukonstruktion mit sehr guter Dämmwirkung und biogenem Kohlenstoffspeicher.',
     layers: [
       { materialKey: 'gypsum_board', thicknessCm: 1.25 },
       { materialKey: 'osb_board', thicknessCm: 1.5 },
@@ -1053,7 +1053,7 @@ export default function Nachhaltigkeit() {
 
                   <p className="text-[10px] text-slate-600 leading-normal">
                     {computedWall.effectiveCircularity >= 70 ? (
-                      <span className="text-slate-800 font-medium">✓ Exzellentes Design! Erleichtert das Cradle-to-Cradle Kreislaufverfahren vollends.</span>
+                      <span className="text-slate-800 font-medium">✓ Sehr gutes Design! Erleichtert das Cradle-to-Cradle Kreislaufverfahren vollends.</span>
                     ) : computedWall.effectiveCircularity >= 40 ? (
                       <span className="text-slate-600 font-medium font-normal">⚠ Teilweise kreislauffähig. Verbessern Sie die Fügung auf "Geschraubt" oder nutzen Sie naturnah rückbaubare Rohstoffe.</span>
                     ) : (

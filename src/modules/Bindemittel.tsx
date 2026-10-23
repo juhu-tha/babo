@@ -850,7 +850,7 @@ export default function Bindemittel() {
 
                   <div className="mt-4 text-xs text-indigo-950 font-medium bg-indigo-100/30 p-3 rounded-lg border border-indigo-200/35">
                     <strong className="text-indigo-900 border-l-2 border-indigo-600 pl-2 block mb-1">Gefügevorteil:</strong>
-                    Der Reaktionsfortgang ist zwar verlangsamt, hält dafür aber extrem langfristig an. In späten Phasen (monatelang) entsteht ein hochverdichtetes Zementsteingefüge mit exzellentem Sulfatwiderstand und minimaler Porenweite. Dies ist die Grundlage von modernen klinkerreduzierten Zementen (z.B. CEM III).
+                    Der Reaktionsfortgang ist zwar verlangsamt, hält dafür aber extrem langfristig an. In späten Phasen (monatelang) entsteht ein hochverdichtetes Zementsteingefüge mit sehr gutem Sulfatwiderstand und minimaler Porenweite. Dies ist die Grundlage von modernen klinkerreduzierten Zementen (z.B. CEM III).
                   </div>
                 </div>
               </div>

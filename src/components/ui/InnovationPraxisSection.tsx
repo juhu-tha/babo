@@ -224,7 +224,7 @@ const DATABASE: Record<string, ModuleData> = {
     innovations: [
       {
         title: 'Aerogel-Hochleistungsdämmputz',
-        description: 'Ein Dämmputz, dessen mineralische Matrix mit Silizium-Aerogel-Granulat angereichert ist. Erreicht eine überragende Wärmeleitfähigkeit von $\\lambda \\approx 0{,}028$ W/(mK). Dies ermöglicht die exzellente energetische Sanierung von krummen, denkmalgeschützten Fassaden bei vollständiger Erhaltung der Konturen.',
+        description: 'Ein Dämmputz, dessen mineralische Matrix mit Silizium-Aerogel-Granulat angereichert ist. Erreicht eine überragende Wärmeleitfähigkeit von $\\lambda \\approx 0{,}028$ W/(mK). Dies ermöglicht die sehr gute energetische Sanierung von krummen, denkmalgeschützten Fassaden bei vollständiger Erhaltung der Konturen.',
         standard: 'Fixit 222 Aerogel Dämmputz / EMPA Schweiz'
       },
       {
@@ -426,7 +426,7 @@ const DATABASE: Record<string, ModuleData> = {
       {
         title: 'Brettsperrholz (BSP / CLT) im mehrgeschossigen Wohnungsbau',
         subtitle: 'Praxis-Szenario',
-        description: 'Tragendes Wohnungsgerüst in Holz-Massivbauweise. Kreuzweise flach verleimte Nadelholzlamellen bilden großformatige Wand- und Deckenelemente mit exzellenter Dimensionsstabilität.',
+        description: 'Tragendes Wohnungsgerüst in Holz-Massivbauweise. Kreuzweise flach verleimte Nadelholzlamellen bilden großformatige Wand- und Deckenelemente mit sehr guter Dimensionsstabilität.',
         pitfallOrFact: 'Feuchteschutz während der Rohbauphase: Unbedingt vor stehendem Wasser (Pfützenbildung) auf montierten Deckenflächen schützen.',
         standard: 'DIN EN 16351 / Zulassungen nach ETA'
       },
@@ -464,7 +464,7 @@ const DATABASE: Record<string, ModuleData> = {
       {
         title: 'Stegmehrfachplatten aus bruchzähem Polycarbonat',
         subtitle: 'Praxis-Szenario',
-        description: 'Erstellung einer Dachlichtband-Anlage im Hallenbau. Polycarbonat (PC) bietet exzellente Lichtausbeute, geringes Eigengewicht und hohe Schlagregensicherheit.',
+        description: 'Erstellung einer Dachlichtband-Anlage im Hallenbau. Polycarbonat (PC) bietet sehr gute Lichtausbeute, geringes Eigengewicht und hohe Schlagregensicherheit.',
         pitfallOrFact: 'UV-Beanspruchung beachten. Nur Platten mit werkseitig co-extrudierter UV-Schutzschicht im Außenbereich verlegen, da PC sonst versprödet.',
         standard: 'DIN EN 16153 / DIN 4102-1'
       }

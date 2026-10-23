@@ -146,7 +146,7 @@ export default function IngenieurbauLCA() {
             Während die klassische <strong>DIN EN 15978</strong> ausschließlich die Ökobilanzierung von Hochbauten (Wohn- und Nichtwohngebäude) über typischerweise 50 Jahre Betrachtungszeitraum regelt, schließt die europäische Norm <strong>DIN EN 17472:2022-09</strong> die Lücke für die gesamte Verkehrsinfrastruktur und den Tiefbau: <strong>Brücken, Tunnel, Straßen, Eisenbahntrassen, Wasserbauwerke, Staudämme und Leitungsnetze</strong>.
           </p>
           <p>
-            Sie definiert eigene funktionelle Einheiten, verankert <strong>Nutzungsdauern von 80 bis 100+ Jahren</strong> (nach DIN EN 1990 Auslegungskategorie 5) und quantifiziert als bahnbrechendes Novum die <strong>baustellenbedingten Nutzer- und Stauemissionen im Modul B8</strong>.
+            Sie definiert eigene funktionelle Einheiten, verankert <strong>Nutzungsdauern von 80 bis 100+ Jahren</strong> (nach DIN EN 1990 Auslegungskategorie 5) und quantifiziert zusätzlich die <strong>baustellenbedingten Nutzer- und Stauemissionen im Modul B8</strong>.
           </p>
         </div>
 

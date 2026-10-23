@@ -511,7 +511,7 @@ export default function Holzkorrosion() {
                   Mikropilze bauen vorwiegend die helle <strong>Cellulose</strong> ab, das dunkelbraune Ligningerüst bleibt nahezu unberührt. Das Holz verliert massiv an Tragfähigkeit, schrumpft spröde und zeigt das typische Schadbild des <strong>Würfelbruchs</strong> (Risse längs und quer zur Faser). 
                 </p>
                 <div className="text-xs text-slate-500 italic border-t border-slate-100 pt-1">
-                  <strong>Hauptvertreter:</strong> Echter Hausschwamm (<em>Serpula lacrymans</em> - besitzt exzellente Wasserleitungsmyzelien zur Fernbefeuchtung und Mauerwerkspenetration), Kellerschwamm (<em>Coniophora puteana</em>).
+                  <strong>Hauptvertreter:</strong> Echter Hausschwamm (<em>Serpula lacrymans</em> - besitzt sehr gute Wasserleitungsmyzelien zur Fernbefeuchtung und Mauerwerkspenetration), Kellerschwamm (<em>Coniophora puteana</em>).
                 </div>
               </div>
 

@@ -184,7 +184,7 @@ const FREE_DATABASES: DBRecord[] = [
     accessibility: 'Freie Projektdatenbank',
     url: 'https://www.architekturpreis-beton.de/',
     standards: ['Tragwerksentwurf', 'Statische Detailplanung'],
-    evaluation: 'Dokumentiert bautechnisch herausragende, mit dem renommierten Architekturpreis ausgezeichnete Massivbauten. Zeigt exzellente Tragwerkslösungen, anspruchsvolle Sichtbetonschalungen, historisch gewachsene Verbund-Fügungen und nachhaltige Tragwerkseinsparungen.',
+    evaluation: 'Dokumentiert bautechnisch herausragende, mit dem renommierten Architekturpreis ausgezeichnete Massivbauten. Zeigt sehr gute Tragwerkslösungen, anspruchsvolle Sichtbetonschalungen, historisch gewachsene Verbund-Fügungen und nachhaltige Tragwerkseinsparungen.',
     benefits: [
       'Umfangreiches Bild- und Schnittarchiv gebauter Bauten',
       'Detaillierte Tragwerkanalysen durch Tragwerksplaner',
@@ -238,7 +238,7 @@ const FREE_DATABASES: DBRecord[] = [
     accessibility: 'Frei zugänglich, werbefinanziert-redaktionell',
     url: 'https://www.baunetzwissen.de/bauen-im-bestand',
     standards: ['Baualtersstufen', 'Denkmalrecht'],
-    evaluation: 'Eine der renommiertesten Planungsdatenbanken für Sanierungen und bestandserhaltende Umbauten im deutschsprachigen Raum. Es verwebt theoretisches Baualtersstufen-Kompaktwissen mit exzellent bebilderten Case Studies von Industriekonversionen und Dachsanierungen.',
+    evaluation: 'Eine der renommiertesten Planungsdatenbanken für Sanierungen und bestandserhaltende Umbauten im deutschsprachigen Raum. Es verwebt theoretisches Baualtersstufen-Kompaktwissen mit sehr gut bebilderten Case Studies von Industriekonversionen und Dachsanierungen.',
     benefits: [
       'Detaillierte baugeschichtsanalytische Erklärungen',
       'Dokumentierte konstruktive Knackpunkte moderner Kernsanierungen',
@@ -668,7 +668,7 @@ export default function Informationsquellen() {
           { title: 'Madaster Germany – Material- und Gebäudekataster', url: 'https://madaster.de/' },
           { title: 'Concular – Zirkulärer Marktplatz für Baustoffe', url: 'https://concular.de/' },
           { title: 'DGNB Navigator – Bauprodukte-Plattform', url: 'https://www.dgnb-navigator.de/' },
-          { title: 'WINGISonline – Gefahrstoffsystem der BG BAU' },
+          { title: 'WINGISonline – Gefahrstoffsystem der BG BAU', url: 'https://www.wingisonline.de' },
           { title: 'Fraunhofer IRB – Baufachinformation', url: 'https://www.baufachinformation.de/' },
           { title: 'ift Rosenheim – Institut für Fenstertechnik & Bauteile', url: 'https://www.ift-rosenheim.de/' },
           { title: 'Bundesverband Flachglas (BF) – Technische Richtlinien', url: 'https://www.bundesverband-flachglas.de/' },

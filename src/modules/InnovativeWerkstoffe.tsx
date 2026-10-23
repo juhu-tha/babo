@@ -102,7 +102,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
       'Stahlfaser-Bewehrung': '1 bis 3 Vol.-% hochfeste Mikrostahlfasern',
       'Frost-Tausalz-Resistenz': 'Absolut unempfindlich, kein nennenswerter Abtrag'
     },
-    details: 'Die bahnbrechenden Festigkeiten von UHPC beruhen auf einer strengen Optimierung der Packungsdichte. Durch ultrafeinen Silikastaub, der puzzolanisch mit Calciumhydroxid reagiert (selbst nicht hydraulisch), werden alle mikro- und makroskopischen Zwischenräume zwischen den Sandkörnern gefüllt. Das Resultat ist ein sehr geringer Kapillarporenanteil. UHPC wird im Verbund mit Stahlfasern duktil und kann extreme Kräfte aufnehmen.'
+    details: 'Die sehr hohen Festigkeiten von UHPC beruhen auf einer strengen Optimierung der Packungsdichte. Durch ultrafeinen Silikastaub, der puzzolanisch mit Calciumhydroxid reagiert (selbst nicht hydraulisch), werden alle mikro- und makroskopischen Zwischenräume zwischen den Sandkörnern gefüllt. Das Resultat ist ein sehr geringer Kapillarporenanteil. UHPC wird im Verbund mit Stahlfasern duktil und kann extreme Kräfte aufnehmen.'
   },
   {
     id: 'ilb',
@@ -115,7 +115,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
     advantages: [
       'Vollständig monolithisches Bauen: Wand übernimmt statischen Lastabtrag UND bauphysikalische Wärmedämmung',
       'Keine synthetischen Wärmedämmverbundsysteme (WDVS, Polystyrol) nötig, dadurch 100% recyclingfähig',
-      'Exzellenter physikalischer Brandschutz (reiner mineralischer Brandschutz-Baustoff)',
+      'Sehr guter physikalischer Brandschutz (reiner mineralischer Brandschutz-Baustoff)',
       'Glatte visuelle Sichtbetonoberfläche außen und innen in einem Arbeitsschritt gegossen'
     ],
     disadvantages: [
@@ -154,7 +154,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
       'CO₂-Einsparung (LC³)': '30 bis 45% im Vergleich zu reinem CEM I',
       'Zusammensetzung LC³': 'Klinkeranteil halbiert, Rest: Calcinierter Ton (Tonmergel) & Kalksteinmehl',
       'Zementfreier Geopolymer': 'Alkalisch aktivierte Flugasche (Fly ash) oder Hüttensand (Slag)',
-      'Hydratationswärme': 'Sehr gering, exzellent geeignet für massige Bauteile',
+      'Hydratationswärme': 'Sehr gering, sehr gut geeignet für massige Bauteile',
       'Normung': 'LC³-artige Zemente als CEM II/C-M (Q-LL) nach DIN EN 197-5:2021-07; Geopolymere nicht in DIN EN 197 genormt (Zulassung/Bauartgenehmigung erforderlich)'
     },
     details: 'Der LC³-Zement (Limestone Calcined Clay Cement) nutzt einen synergistischen Effekt: Durch das gemeinsame Vermahlen von calciniertem (bei ca. 800°C erhitztem) Ton mit feinem Kalksteinmehl entsteht ein hochreaktives Bindemittel, das den Zementklinkerbedarf drastisch senkt. Geopolymere verzichten kpl. auf Portlandklinker; hier formen kovalente Alumosilicat-Netzwerke den künstlichen Stein.'
@@ -952,7 +952,7 @@ export default function InnovativeWerkstoffe() {
                             <li>Um den knappen Sicherheitsspielraum zu erhöhen, empfiehlt sich eine Erhöhung der <strong>Thixotropierate</strong> oder eine geringere geplante <strong>Druckhöhe</strong>.</li>
                           )}
                           {isStable && (
-                            <li>Exzellentes Design! Sie können versuchen, die <strong>Steiggeschwindigkeit am Drucker zu erhöhen</strong> (Zeitvorteil), solange Sie den Standsicherheitsfaktor <InlineMath math="SF \ge 1{,}3" /> halten.</li>
+                            <li>Sehr gutes Design! Sie können versuchen, die <strong>Steiggeschwindigkeit am Drucker zu erhöhen</strong> (Zeitvorteil), solange Sie den Standsicherheitsfaktor <InlineMath math="SF \ge 1{,}3" /> halten.</li>
                           )}
                         </ul>
                       </div>

@@ -225,7 +225,7 @@ const PROGRAMS: Program[] = [
     duration: 'Forschung & Transfer',
     format: 'Kooperationsprojekte mit Bauwirtschaft und Handwerk',
     summary: 'Das Technologietransferzentrum (TTZ) Aichach der Technischen Hochschule Augsburg (THA) ist auf Digitales Planen und Fertigen im Bauwesen spezialisiert (Fachbereiche Massivbau und Digitaler Holzbau). Es verbindet angewandte Forschung mit der Praxis von Bauwirtschaft und Handwerk in der Region.',
-    description: 'In Kooperation mit Unternehmen werden praxisorientierte Lösungen für moderne Fertigungstechniken im Holzbau, Automatisierung, CO2-neutrale Baumaterialien und kreislaufgerechtes Konstruieren erprobt. Ein forschen-fokussiertes Umfeld bietet exzellente Bedingungen für Doktoranden.',
+    description: 'In Kooperation mit Unternehmen werden praxisorientierte Lösungen für moderne Fertigungstechniken im Holzbau, Automatisierung, CO2-neutrale Baumaterialien und kreislaufgerechtes Konstruieren erprobt. Ein forschen-fokussiertes Umfeld bietet sehr gute Bedingungen für Doktoranden.',
     modulesTitle: 'Forschungs- & Fokusthemen',
     modules: [
       'Fachbereiche Massivbau und Digitaler Holzbau',
@@ -273,7 +273,7 @@ const PROGRAMS: Program[] = [
     benefitsTitle: 'Herausragende Perspektiven',
     benefitsIntro: 'Bereitet Sie zielgerichtet auf forschungsintensive Aufgaben oder eine anschließende Promotion vor:',
     benefits: [
-      'Direkte Anbindung an modernste Forschungsaktivitäten und exzellente Labore der THA',
+      'Direkte Anbindung an modernste Forschungsaktivitäten und sehr gute Labore der THA',
       'Hervorragende Vorbereitung auf F&E-Leitungsfunktionen in der High-Tech-Industrie',
       'Idealer Wegbereiter für eine anschließende kooperative Promotion (Dr.-Ing. / Dr. rer. nat.)'
     ]

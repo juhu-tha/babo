@@ -495,7 +495,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     Übertragung von Eigenlasten, Nutzlasten, Wind- und Erdbebenkräften in die Gründung.
                   </p>
                   <ul className="text-xs text-text-main/80 space-y-1 list-disc list-inside">
-                    <li>Kalksandstein (KS, hohe Rohdichte, exzellenter Schallschutz)</li>
+                    <li>Kalksandstein (KS, hohe Rohdichte, sehr guter Schallschutz)</li>
                     <li>Mauerziegel (HLz) oder Porenbeton</li>
                     <li>Stahlbetonwand (Ortbeton oder Fertigteil)</li>
                   </ul>
@@ -561,7 +561,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     Konstruktive Trennung von Witterungsschutz (Bekleidung) und Dämmschicht durch einen durchgehenden Hinterlüftungsspalt (<InlineMath math="\ge 20\,\text{mm}" /> nach DIN 18516-1).
                   </p>
                   <div className="space-y-1.5 text-xs text-text-main/75 border-t border-home-grau/20 pt-2">
-                    <div><strong>Vorteile:</strong> Höchste Schadenssicherheit, diffusionsfeuchte Ablüftung durch Kamineffekt, einfache Demontierbarkeit (zirkuläres Bauen), exzellenter sommerlicher Hitzeschutz.</div>
+                    <div><strong>Vorteile:</strong> Höchste Schadenssicherheit, diffusionsfeuchte Ablüftung durch Kamineffekt, einfache Demontierbarkeit (zirkuläres Bauen), sehr guter sommerlicher Hitzeschutz.</div>
                     <div><strong>Herausforderungen:</strong> Höhere Anfangsinvestition, Wärmebrücken durch Unterkonstruktionsanker (müssen mit punktuellen <InlineMath math="\chi" />-Werten berechnet werden).</div>
                     <div><strong>Normbezug:</strong> DIN 18516-1 / DIN 4108-3.</div>
                   </div>

@@ -36,7 +36,7 @@ const LOCAL_MODELS: RecommendedModel[] = [
     sizeParam: '14,8 Milliarden Parameter',
     minVram: '10–12 GB VRAM (oder 16 GB Unified Memory)',
     quantization: 'Q5_K_M oder Q4_K_M',
-    engineeringStrength: 'Herausragendes deutsches Sprachverständnis, exzellente Mathematik- und Normeninterpretation (DIN/EC), robust in technischen Tabellen.',
+    engineeringStrength: 'Herausragendes deutsches Sprachverständnis, sehr gute Mathematik- und Normeninterpretation (DIN/EC), robust in technischen Tabellen.',
     huggingFaceSearch: 'Qwen/Qwen3-14B-GGUF',
     recommendedRole: 'Der ideale Allrounder für mittelgroße Ingenieurbüros (Baugutachten, Textanalysen, Normenvergleiche).'
   },
@@ -658,7 +658,7 @@ print(response.choices[0].message.content)`}</pre>
               <div className="space-y-2 text-xs text-text-main/80">
                 <p><strong>Maximale Modellklasse:</strong> 14B Parameter (z. B. <em>Qwen3 14B Q5_K_M</em> oder <em>DeepSeek-R1-Distill 14B Q4_K_M</em>).</p>
                 <p><strong>Geschwindigkeit:</strong> Flüssig (25–40 Tokens/s).</p>
-                <p><strong>Eignung für Bauaufgaben:</strong> <strong>Der "Sweet Spot" für Ingenieurbüros!</strong> Exzellentes Verständnis von DIN-Normen, meistert Baugutachten, komplexe bauphysikalische Zusammenhänge und mehrstufige Auswertungen.</p>
+                <p><strong>Eignung für Bauaufgaben:</strong> <strong>Der "Sweet Spot" für Ingenieurbüros!</strong> Sehr gutes Verständnis von DIN-Normen, meistert Baugutachten, komplexe bauphysikalische Zusammenhänge und mehrstufige Auswertungen.</p>
               </div>
             )}
 

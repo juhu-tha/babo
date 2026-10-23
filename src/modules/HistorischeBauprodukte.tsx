@@ -204,7 +204,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: '1950 - 1980',
     composition: 'Warmgewalzter Betonstahl mit schrägen Längs- und Querrippen, der im kalten Zustand axial verdreht (verwunden) wurde.',
     application: 'Standard-Bewehrung für schlaff bewehrte Tragwerke aller Art im Hoch-, Tief- und Industriebau.',
-    characteristics: 'Erreicht hohe Streckgrenzen von 400 N/mm² (Torstahl 40) bis 500 N/mm² (Torstahl 50). Exzellenter mechanischer Verbund mit dem Beton. Weist jedoch eine geringere Bruchdehnung auf als moderner Betonstahl.',
+    characteristics: 'Erreicht hohe Streckgrenzen von 400 N/mm² (Torstahl 40) bis 500 N/mm² (Torstahl 50). Sehr guter mechanischer Verbund mit dem Beton. Weist jedoch eine geringere Bruchdehnung auf als moderner Betonstahl.',
     riskClass: 'low',
     riskDetail: 'Die Kaltverfestigung geht bei starker Erwärmung (z.B. über 400 °C beim Schweißen oder Brand) verloren. Es tritt eine sofortige Gefügeerweichung und ein eklatanter Festigkeitsverlust auf.',
     actionDetail: 'Schweißarbeiten an historischem Torstahl sind im Sanierungsfall grundsätzlich verboten oder erfordern Sondergutachten. Verstärkungen bevorzugt mechanisch (Klemmen/Dübeln) oder über CFK-Lamellen ausführen.'
@@ -254,7 +254,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: '1945 - 1969',
     composition: 'Natürlicher poröser Vulkankies (Bims) gebunden mit geringen Anteilen an Portlandzement oder Luftkalk, kaltgepresst.',
     application: 'Ausfachung von Fachwerkbauten, wärmedämmende zweischalige Außenwände, leichte Innenwände.',
-    characteristics: 'Sehr geringe Rohdichte (0,6 - 0,9 kg/dm³), exzellente natürliche Wärmedämmung, sehr hohe kapillare Saugfähigkeit bei geringer Druckfestigkeit.',
+    characteristics: 'Sehr geringe Rohdichte (0,6 - 0,9 kg/dm³), sehr gute natürliche Wärmedämmung, sehr hohe kapillare Saugfähigkeit bei geringer Druckfestigkeit.',
     riskClass: 'none'
   },
   {
@@ -382,7 +382,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: 'vor 1996 hergestellt (Einbau bis 06/2000 möglich)',
     composition: 'Synthetisch hergestellte glasige Silikatfasern (Glas- oder Steinwolle) mit hohem Gehalt an Natrium-, Kalium- und Erdalkalioxiden, Phenol-Formaldehydharz als Bindemittel.',
     application: 'Zwischensparrendämmung im Dach, Trittschallplatten unter Estrich, Isolierung von Rohrleitungen und Heizungsrohren, Akustikdecken.',
-    characteristics: 'Gelbe, grüne oder bräunliche weiche Dämmmatten, hochelastisch, unbrennbar, exzellenter Wärmeschutz.',
+    characteristics: 'Gelbe, grüne oder bräunliche weiche Dämmmatten, hochelastisch, unbrennbar, sehr guter Wärmeschutz.',
     riskClass: 'high',
     riskDetail: 'Die Fasern weisen eine kritische Geometrie auf (Länge > 5 µm, Durchmesser < 3 µm) und sind im Lungengewebe extrem biobeständig. In Deutschland nach TRGS 905/521 als krebserzeugend eingestuft (Kanzerogenitätsindex KI < 40); die IARC stuft Glas- und Steinwolle seit 2001 in Gruppe 3 ein.',
     actionDetail: 'Sanierung und Rückbau unterliegen der TRGS 521. Fasern müssen vor Bewegung mit Staubbindemitteln benetzt werden. Entsorgung staubdicht verpackt in speziellen Mineralfaser-Bigbags. FFP3-Atemschutz und Einwegschutzanzug tragen.'
@@ -436,7 +436,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: '1970 - 1989',
     composition: 'Fein gemahlener Quarzsand, Kalk und/oder Zement, Wasser und Alupulver als Treibmittel. Im Autoklav hydrothermal gehärtet.',
     application: 'Massives wärmedämmendes Außenmauerwerk, leichte Trennwände, Decken- und Dachplatten.',
-    characteristics: 'Extrem leichte Verarbeitung (sägbar), homogene Rohdichte (0,35 - 0,65 kg/dm³), exzellente Wärmedämmung durch mikroskopische Luftporen bei isotropen Festigkeitseigenschaften.',
+    characteristics: 'Extrem leichte Verarbeitung (sägbar), homogene Rohdichte (0,35 - 0,65 kg/dm³), sehr gute Wärmedämmung durch mikroskopische Luftporen bei isotropen Festigkeitseigenschaften.',
     riskClass: 'none'
   },
   {
@@ -447,7 +447,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: '1970 - 1989',
     composition: 'Mischung aus Kalkhydrat (ca. 7 %) und kieselsäurereichem Quarzsand (ca. 93 %), gepresst und im Autoklav hydrothermal gehärtet.',
     application: 'Tragende Innenwände, zweischaliges Verblendmauerwerk, Kellerwände.',
-    characteristics: 'Sehr hohe Rohdichte und Druckfestigkeit, exzellente Schalldämmung und hohe Maßhaltigkeit. Keine nennenswerten Wärmedämmeigenschaften.',
+    characteristics: 'Sehr hohe Rohdichte und Druckfestigkeit, sehr gute Schalldämmung und hohe Maßhaltigkeit. Keine nennenswerten Wärmedämmeigenschaften.',
     riskClass: 'none'
   },
   {
@@ -495,7 +495,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: '1970 - 1989',
     composition: 'Polyurethan-Hartschaum (PUR), aufgeschäumt mit Fluorchlorkohlenwasserstoffen (FCKW, vorwiegend R11 / R12) als Zellgas.',
     application: 'Aufdachdämmungen, Steildachdämmungen, Flachdachisolierungen, Sandwichpaneele im Hallenbau, Rohrleitungsschalen.',
-    characteristics: 'Exzellente thermische Isolationswirkung (λ ≈ 0,022 – 0,026 W/(m·K)), sehr geringes Raumgewicht, formstabil, beständig gegen Fäulnis.',
+    characteristics: 'Sehr gute thermische Isolationswirkung (λ ≈ 0,022 – 0,026 W/(m·K)), sehr geringes Raumgewicht, formstabil, beständig gegen Fäulnis.',
     riskClass: 'medium',
     riskDetail: 'Enthält ozonschädigende FCKW-Zellgase, die bei Zerstörung oder mechanischer Zerkleinerung freigesetzt werden. Im Brandfall entstehen hochgiftige Pyrolysegase (u.a. Blausäure HCN und Isocyanate).',
     actionDetail: 'Sanierung und Abbruch müssen zerstörungsfrei und ohne mechanisches Schreddern erfolgen. Einstufung als gefährlicher Abfall. Getrennte Entsorgung in speziellen Verbrennungsanlagen zur thermischen Zerstörung der FCKW-Verbindungen.'
@@ -521,7 +521,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: 'seit den 1960er Jahren',
     composition: 'Feiner Ton vermischt mit organischen Porenbildnern (wie expandiertem Polystyrol-Granulat oder Sägemehl). Die Porenbildner verbrennen beim Ziegelbrand rückstandslos und hinterlassen mikroskopische wärmedämmende Poren im Scherben.',
     application: 'Monolithisches einschaliges Außenmauerwerk für hocheffiziente Wohn- und Bürogebäude.',
-    characteristics: 'Niedrige Rohdichte (ca. 0,6 - 0,8 kg/dm³), exzellente thermische Dämmwirkung bei gleichzeitig hoher kapillarer Feuchtetransportfähigkeit. Mechanisch spröde, mäßige Schalldämmung.',
+    characteristics: 'Niedrige Rohdichte (ca. 0,6 - 0,8 kg/dm³), sehr gute thermische Dämmwirkung bei gleichzeitig hoher kapillarer Feuchtetransportfähigkeit. Mechanisch spröde, mäßige Schalldämmung.',
     riskClass: 'none',
     riskDetail: 'Keine Schadstoffe. Erhöhte Rissempfindlichkeit im Putzgefüge bei ungeeigneten, zu harten Außenputzen. Geringe Ausziehwiderstände für Dübel.',
     actionDetail: 'Putzsysteme müssen elastisch und spannungsarm eingestellt sein (Leichtputze). Dübelmontagen ausschließlich mit zugelassenen Porenbeton- bzw. Lochstein-Spezialdübeln ausführen.'
@@ -625,7 +625,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: 'ab 1990',
     composition: 'Aus Nadelholz gewonnenes Holzfasergewebe, verfilzt und unter Druck mit holzeigenem Lignin oder unbedenklichen PUR-Harzen gebunden.',
     application: 'Aufsparrendämmung, Innendämmung von Außenwänden, Putzträgerplatten für ökologische WDVS.',
-    characteristics: 'Exzellenter sommerlicher Wärmeschutz durch sehr hohe spezifische Wärmekapazität, diffusionsoffen und sorptionsfähig, hervorragende Ökobilanz.',
+    characteristics: 'Sehr guter sommerlicher Wärmeschutz durch sehr hohe spezifische Wärmekapazität, diffusionsoffen und sorptionsfähig, hervorragende Ökobilanz.',
     riskClass: 'none'
   },
   {
@@ -647,7 +647,7 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
     years: 'ab 1990',
     composition: 'Expandiertes Polystyrol (EPS), bis ca. 2015 unter Verwendung des mittlerweile verbotenen bromierten Flammschutzmittels HBCD gefertigt.',
     application: 'Wärmedämmverbundsysteme (WDVS), Trittschalldämmung, Flachdächer.',
-    characteristics: 'Sehr leicht, kostengünstig, exzellente Dämmleistung, verrottungsfest.',
+    characteristics: 'Sehr leicht, kostengünstig, sehr gute Dämmleistung, verrottungsfest.',
     riskClass: 'medium',
     riskDetail: 'Bei Alt-EPS-Platten (vor 2015) hohe HBCD-Belastung (PBT-Stoff). Bei Brand entstehen toxische bromierte Dioxine/Furane.',
     actionDetail: 'HBCD-haltige Dämmstoffe sind POP-haltige Abfälle (POP-Abfall-Überwachungs-Verordnung 2017): getrennt sammeln, Nachweispflicht, thermische Behandlung in Anlagen mit Rauchgasreinigung. Sie gelten nicht pauschal als gefährlicher Abfall.'

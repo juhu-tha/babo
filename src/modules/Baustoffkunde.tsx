@@ -294,7 +294,7 @@ export default function Baustoffkunde() {
       era: 'Antike (~ 300 v. Chr. – 400 n. Chr.)',
       century: 'Römisches Reich',
       title: 'Die Erfindung des "Opus Caementicium"',
-      description: 'Die Römer revolutionierten die Weltarchitektur durch Erfindung des ersten echten hydraulischen Betons. Dies erlaubte weite Bögen, Gewölbekuppeln und Unterwasserbauten.',
+      description: 'Die Römer prägten die Baukunst durch die Entwicklung des ersten echten hydraulischen Betons. Dies erlaubte weite Bögen, Gewölbekuppeln und Unterwasserbauten.',
       icon: <Landmark className="text-indigo-700" size={20} />,
       materials: ['Römischer Beton (Opus Caementicium)', 'Puzzolanasche (Vulkanerde)', 'Luftkalk-Mörtel', 'Puzzolanische Ziegelmehle'],
       milestone: 'Kuppel des Pantheons in Rom (um 125 n. Chr. vollendet, 43,3 m Durchmesser aus unbewehrtem Gussbeton mit nach oben leichter werdenden Zuschlägen).',
@@ -700,7 +700,7 @@ export default function Baustoffkunde() {
                 <Users size={18} /> Wegbereiter &amp; Väter der Werkstoffwissenschaft
               </h3>
               <p className="text-xs text-text-main/80 leading-relaxed max-w-4xl">
-                Hinter jedem modernen Hochleistungsbaustoff stehen genialer Forschergeist, beharrliche Experimente und bahnbrechende Entdeckungen. Diese Pioniere haben die Brücke zwischen geologischem Vorkommen, chemischer Synthese und mathematischer Tragwerkslehre geschlagen. Wählen Sie eine Person aus, um ihren Beitrag kennenzulernen.
+                Hinter jedem modernen Hochleistungsbaustoff stehen Forschergeist, beharrliche Experimente und wichtige Entdeckungen. Diese Pioniere haben die Brücke zwischen geologischem Vorkommen, chemischer Synthese und mathematischer Tragwerkslehre geschlagen. Wählen Sie eine Person aus, um ihren Beitrag kennenzulernen.
               </p>
             </div>
 

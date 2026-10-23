@@ -210,7 +210,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       {
         title: 'Dichte-Festigkeits-Korrelation',
         description: 'Im Allgemeinen skaliert die mechanische Druckfestigkeit überproportional mit der Reindichte und sinkt drastisch mit zunehmender Porosität (Ryshkewitch-Gleichung).',
-        takeaway: 'Höhere Porosität bedeutet exzellente Wärmedämmung, aber dramatischen Festigkeitsverlust.'
+        takeaway: 'Höhere Porosität bedeutet sehr gute Wärmedämmung, aber dramatischen Festigkeitsverlust.'
       },
       {
         title: 'Umwelt-Interaktionsdynamik',

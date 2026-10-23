@@ -1104,7 +1104,7 @@ function TimberDurabilitySimulator() {
   const gkInfo = getGK();
 
   const woodSuitability = [
-    { name: 'Robinie (Scheinakazie)', classification: 'Dauerhaftigkeitsklasse 1-2 (Dauerhaft)', gk4: 'Sehr gut geeignet', gk3: 'Exzellente Wahl' },
+    { name: 'Robinie (Scheinakazie)', classification: 'Dauerhaftigkeitsklasse 1-2 (Dauerhaft)', gk4: 'Sehr gut geeignet', gk3: 'Sehr gute Wahl' },
     { name: 'Eiche (Kernholz)', classification: 'Dauerhaftigkeitsklasse 2 (Dauerhaft)', gk4: 'Eingeschränkt geeignet', gk3: 'Sehr gut geeignet' },
     { name: 'Lärche / Douglasie', classification: 'Dauerhaftigkeitsklasse 3-4 (Mäßig dauerhaft)', gk4: 'Nicht geeignet', gk3: 'Geeignet bei freiem Wasserablass' },
     { name: 'Fichte', classification: 'Dauerhaftigkeitsklasse 4 (Wenig dauerhaft)', gk4: 'Ungenügend', gk3: 'Nur mit tiefem Chemie-Holzschutz' },

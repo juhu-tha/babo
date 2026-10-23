@@ -656,7 +656,7 @@ export default function Fortbildungen() {
       if (userGoal === 'holzschutz') {
         recs.push({ cert: certs.wood_protection, reason: 'Bietet Architektur- und Baustudierenden ein wertvolles Spezialwissen im anspruchsvollen Holzbau und der historischen Bausubstanz.' });
       } else if (userGoal === 'schadstoffe') {
-        recs.push({ cert: certs.trgs524, reason: 'Altlasten und Geotechnik sind exzellente Vertiefungsfelder des Umwelt- und Bauingenieurwesens am Berufseinstieg.' });
+        recs.push({ cert: certs.trgs524, reason: 'Altlasten und Geotechnik sind sehr gute Vertiefungsfelder des Umwelt- und Bauingenieurwesens am Berufseinstieg.' });
         recs.push({ cert: certs.trgs521, reason: 'Wichtiges Kompakt-Fachwissen für hiwi-Tätigkeiten (Studentische Hilfskraft) auf Sanierungsbaustellen.' });
       } else if (userGoal === 'denkmal_energie') {
         recs.push({ cert: certs.heritage_energy, reason: 'Idealer Einstieg bereits während des Masterstudiums zur zukunftsträchtigen, hocheffizienten bauphysikalischen Denkmalsanierung.' });

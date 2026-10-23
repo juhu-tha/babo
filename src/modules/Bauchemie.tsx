@@ -86,7 +86,7 @@ export const Bauchemie: React.FC = () => {
         stateColor = "text-blue-700 bg-blue-50 border-blue-200 shadow-blue-100";
         statusClass = "Keine Zahnung!";
       } else if (stellmittelConc >= 0.4 && stellmittelConc <= 1.5) {
-        stateMessage = `Exzellente Scherentzähung! Das Verstreichen geht leicht von der Hand (${forceRequired}). Kellensteg steht perfekt.`;
+        stateMessage = `Sehr gute Scherentzähung! Das Verstreichen geht leicht von der Hand (${forceRequired}). Kellensteg steht perfekt.`;
         stateColor = "text-emerald-700 bg-emerald-50 border-emerald-200 shadow-emerald-100";
         statusClass = "Perfekte Verarbeitung!";
       } else {
@@ -1053,7 +1053,7 @@ export const Bauchemie: React.FC = () => {
                   <tr className="hover:bg-off-white/50">
                     <td className="p-3 font-bold text-shiraz whitespace-nowrap">Polyurethan (PUR)</td>
                     <td className="p-3">Reaktion von Polyolen mit Isocyanaten (<InlineMath math="-\text{N=C=O}" />)</td>
-                    <td className="p-3">Hohe Zug- &amp; Weiterreißfestigkeit, exzellente mechanische Belastbarkeit, feuchtigkeitshärtend oder 2K</td>
+                    <td className="p-3">Hohe Zug- &amp; Weiterreißfestigkeit, sehr gute mechanische Belastbarkeit, feuchtigkeitshärtend oder 2K</td>
                     <td className="p-3">Bodenfugen in Industriehallen (DIN EN 15651-4), Montagekleber, Injektionsharze gegen drückendes Wasser</td>
                   </tr>
                   <tr className="hover:bg-off-white/50">
