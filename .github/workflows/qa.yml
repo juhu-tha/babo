@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - name: Typprüfung und ESLint
+      # Vorerst ohne Lockfile (AI-Studio-Kompatibilität, siehe docs/ci/README.md).
+      - run: npm install --no-audit --no-fund
+      - name: Typprüfung
         run: npm run -s lint
       - name: Tests
         run: npm test
