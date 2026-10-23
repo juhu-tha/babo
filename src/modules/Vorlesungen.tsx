@@ -2,9 +2,9 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import { 
   GraduationCap, 
-  Lock, 
-  Unlock, 
-  KeyRound, 
+  
+  
+  
   Building2, 
   Leaf, 
   AlertTriangle, 
@@ -31,27 +31,10 @@ interface VorlesungenProps {
   forceTab?: VorlesungTab;
 }
 
-const PASSWORD_REQUIRED = 'tha_ws26';
-const STORAGE_KEY = 'tha_vorlesungen_auth_v1';
 
 export default function Vorlesungen({ forceTab }: VorlesungenProps) {
   const { setActiveTab } = useTabContext();
   const [activeSubTab, setActiveSubTab] = useState<VorlesungTab>(forceTab || 'bauen_im_bestand');
-  const [passwordInput, setPasswordInput] = useState<string>('');
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [authError, setAuthError] = useState<string | null>(null);
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('poll')) return true; // Direct QR scan unlocks poll mode
-      }
-      return localStorage.getItem(STORAGE_KEY) === 'unlocked';
-    } catch {
-      return false;
-    }
-  });
-
   // Direct QR Code scan listener
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -59,7 +42,6 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
       const pollParam = params.get('poll') as VorlesungTab;
       if (pollParam && ['bauen_im_bestand', 'nachhaltiges_bauen', 'bauschaeden', 'baustoffkunde', 'instandhaltung'].includes(pollParam)) {
         setActiveSubTab(pollParam);
-        setIsUnlocked(true);
       }
     }
   }, []);
@@ -71,107 +53,8 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
     }
   }, [forceTab]);
 
-  const handleUnlock = (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-    if (passwordInput.trim() === PASSWORD_REQUIRED) {
-      setIsUnlocked(true);
-      setAuthError(null);
-      setPasswordInput('');
-      try {
-        localStorage.setItem(STORAGE_KEY, 'unlocked');
-      } catch {
-        // Ignore storage errors
-      }
-    } else {
-      setAuthError('Falsches Passwort. Bitte prüfen Sie Ihre Eingabe.');
-    }
-  };
-
-  const handleLock = () => {
-    setIsUnlocked(false);
-    setPasswordInput('');
-    setAuthError(null);
-    try {
-      localStorage.removeItem(STORAGE_KEY);
-    } catch {
-      // Ignore storage errors
-    }
-  };
-
   // -------------------------------------------------------------------------
-  // PASSWORD GATE (LOCKED STATE)
-  // -------------------------------------------------------------------------
-  if (!isUnlocked) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[550px] p-4 animate-in fade-in duration-300">
-        <div className="bg-white p-8 sm:p-10 rounded-2xl shadow-sm border border-home-grau/30 max-w-lg w-full text-center">
-          {/* Top Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 mb-6">
-            <GraduationCap size={16} />
-            Technische Hochschule Augsburg (THA)
-          </div>
-
-          <div className="w-16 h-16 bg-shiraz/10 rounded-2xl flex items-center justify-center mx-auto mb-5 text-shiraz border border-shiraz/20">
-            <Lock size={32} />
-          </div>
-
-          <h2 className="text-2xl font-bold text-text-main mb-2">
-            Vorlesungen — Geschützter Bereich
-          </h2>
-          <p className="text-sm text-text-main/70 mb-6 leading-relaxed">
-            Dieser Bereich enthält Vorlesungsunterlagen, Skripte, Vorlesungsfolien und Übungsmaterialien der Lehrveranstaltungen. 
-            Bitte geben Sie das Vorlesungspasswort für das laufende Semester ein.
-          </p>
-
-          <form onSubmit={handleUnlock} className="flex flex-col gap-4">
-            <div className="relative">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                value={passwordInput}
-                onChange={(e) => {
-                  setPasswordInput(e.target.value);
-                  if (authError) setAuthError(null);
-                }}
-                placeholder="Passwort eingeben..."
-                autoFocus
-                className="w-full px-4 py-3 rounded-xl border border-home-grau/40 bg-slate-50 text-text-main text-sm focus:outline-none focus:ring-2 focus:ring-shiraz/30 focus:border-shiraz transition-all text-center tracking-wide"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-medium px-2 py-1 rounded"
-              >
-                {showPassword ? 'Verbergen' : 'Anzeigen'}
-              </button>
-            </div>
-
-            {authError && (
-              <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center justify-center gap-2">
-                <AlertTriangle size={16} className="shrink-0" />
-                <span>{authError}</span>
-              </div>
-            )}
-
-            <button
-              type="submit"
-              className="w-full py-3 px-6 rounded-xl font-bold text-sm bg-shiraz text-white hover:bg-shiraz/90 shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <KeyRound size={16} /> Vorlesungen freischalten
-            </button>
-          </form>
-
-          <div className="mt-6 pt-5 border-t border-home-grau/20 text-xs text-text-main/60 flex flex-col gap-1.5">
-            <p className="text-[11px] text-slate-400">
-              Bei Fragen wenden Sie sich an die Modulverantwortlichen der Fakultät für Architektur und Bauwesen. Das Passwort wird in den Lehrveranstaltungen bekannt gegeben.
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // -------------------------------------------------------------------------
-  // UNLOCKED STATE: MAIN LECTURES WORKSPACE
+  // VORLESUNGSBEREICH (öffentlich; Entscheidung E5 vom 23.10.2026: keine Scheinsperre)
   // -------------------------------------------------------------------------
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -187,26 +70,13 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
               Fakultät für Architektur und Bauwesen • Technische Hochschule Augsburg • Wintersemester 2026/2027
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-              <Unlock size={14} /> Freigeschaltet
-            </span>
-            <button
-              type="button"
-              onClick={handleLock}
-              className="px-3 py-1 rounded-xl text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors cursor-pointer"
-              title="Bereich wieder mit Passwort sperren"
-            >
-              Sperren
-            </button>
-          </div>
         </div>
 
         {/* Introduction Teaser Box */}
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
           <p>
-            Willkommen im digitalen Vorlesungsbereich des Baustoffboards. Hier finden Studierende alle begleitenden Unterlagen, 
-            Vorlesungsgliederungen, Folien, Skripte und Semesterübungen zu den fünf Kernfächern: 
+            Willkommen im digitalen Vorlesungsbereich des BaustoffBoards. Hier finden Sie die Vorlesungsgliederungen,
+            die passenden Fachmodule und die Live-Abstimmungen zu den fünf Kernfächern: 
             <strong> Bauen im Bestand</strong>, <strong>Nachhaltiges Bauen</strong>, <strong>Bauschäden</strong>, 
             <strong> Baustoffkunde</strong> und <strong>Instandhaltung</strong>.
           </p>
