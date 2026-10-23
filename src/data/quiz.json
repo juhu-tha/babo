@@ -9641,5 +9641,125 @@
       "targetModuleLabel": "Glas"
     },
     "verified": false
+  },
+  {
+    "id": "q_sta_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Stahlsorten",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 10025-2",
+    "question": "Wofür steht die Zahl in S355?",
+    "options": [
+      "Zugfestigkeit 355 N/mm²",
+      "Mindeststreckgrenze 355 N/mm² (für kleine Dicken)",
+      "Kohlenstoffgehalt 0,355 %",
+      "Kerbschlagarbeit 355 J"
+    ],
+    "correctIdx": 1,
+    "explanation": "S = Stahlbau, 355 = Mindeststreckgrenze in N/mm² für Erzeugnisdicken bis 16 mm.",
+    "gapAnalysis": {
+      "topic": "Stahlsorten",
+      "misconception": "Die Zahl gebe die Zugfestigkeit an.",
+      "coreRule": "S355: f_y = 355 N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Stahlsorten“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sta_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Brandfall",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1993-1-2, Tab. 3.1",
+    "question": "Wie groß ist der Abminderungsfaktor k_y,θ für die Streckgrenze bei 600 °C?",
+    "options": [
+      "1,00",
+      "0,78",
+      "0,47",
+      "0,11"
+    ],
+    "correctIdx": 2,
+    "explanation": "k_y,θ: bis 400 °C 1,0; 500 °C 0,78; 600 °C 0,47; 700 °C 0,23.",
+    "gapAnalysis": {
+      "topic": "Brandfall",
+      "misconception": "Stahl verliere erst über 1000 °C an Festigkeit.",
+      "coreRule": "Bei 600 °C bleibt etwa die Hälfte der Streckgrenze.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Brandfall“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sta_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Betonstahl",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN 488-1 / EN 1992-1-1",
+    "question": "Was unterscheidet B500B von B500A?",
+    "options": [
+      "Höhere Streckgrenze",
+      "Höhere Duktilität (k ≥ 1,08, ε_uk ≥ 5 %)",
+      "Nicht schweißbar",
+      "Andere Rippung ohne Bedeutung"
+    ],
+    "correctIdx": 1,
+    "explanation": "B500A: k ≥ 1,05, ε_uk ≥ 2,5 %; B500B: k ≥ 1,08, ε_uk ≥ 5 %. Die Streckgrenze ist gleich.",
+    "gapAnalysis": {
+      "topic": "Betonstahl",
+      "misconception": "B500B sei fester als B500A.",
+      "coreRule": "A/B/C = Duktilitätsklassen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonstahl“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_sta_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Nichtrostender Stahl",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Werkstoffkunde",
+    "question": "Was beschreibt der PREN-Wert?",
+    "options": [
+      "Die Schweißeignung",
+      "Den Widerstand gegen Lochfraß (Cr + 3,3·Mo + 16·N)",
+      "Die Streckgrenze",
+      "Den E-Modul"
+    ],
+    "correctIdx": 1,
+    "explanation": "Höhere Cr-, Mo- und N-Gehalte erhöhen den Lochfraßwiderstand in chloridhaltiger Umgebung.",
+    "gapAnalysis": {
+      "topic": "Nichtrostender Stahl",
+      "misconception": "Nickel bestimme den Lochfraßwiderstand allein.",
+      "coreRule": "PREN = Cr + 3,3·Mo + 16·N.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nichtrostender Stahl“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
   }
 ]

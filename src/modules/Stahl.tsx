@@ -21,6 +21,8 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Flame, Minimize2, Maximize2, Activity, Sparkles, Info, Layers, BookOpen, Shield, TrendingDown, Scale, Check } from 'lucide-react';
 import { InlineMath } from 'react-katex';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 ChartJS.register(
   CategoryScale,
@@ -39,7 +41,7 @@ const steelGrades = {
   'S355': { fy: 355, fu: 470 },
   'S460': { fy: 460, fu: 540 },
   'S690': { fy: 690, fu: 770 },
-  'B500B': { fy: 500, fu: 560 },
+  'B500B': { fy: 500, fu: 540 },
   'B500A': { fy: 500, fu: 525 },
   'Y1860': { fy: 1660, fu: 1860 },
   'SAS670': { fy: 670, fu: 800 },
@@ -51,11 +53,12 @@ const corrosionClasses = {
   'C3': 'Mäßig (Produktionsräume mit hoher Feuchte, Stadt- und Industrieatmosphäre)',
   'C4': 'Stark (Chemieanlagen, Küstenbereiche mit mäßiger Salzbelastung)',
   'C5': 'Sehr stark (Industriebereiche mit hoher Feuchte, Küstenbereiche mit hoher Salzbelastung)',
+  'CX': 'Extrem (Offshore, extreme Industrieatmosphäre) – nach DIN EN ISO 12944-2',
 };
 
 const steelProperties = {
   rho: 7850, // kg/m³
-  lambda: 50, // W/(mK)
+  lambda: 50, // W/(mK) – vereinfachter Konstantwert; EC3-1-2: 54 W/(mK) bei 20 °C, temperaturabhängig
   alpha: 1.2e-5, // 1/K
   cp: 440, // J/(kgK)
   E: 210000, // MPa
@@ -144,9 +147,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Hervorragende Kaltumformbarkeit und Zerspanbarkeit'
     ],
     exampleObject: {
-      name: 'Typische ländliche Eigengewichtshalle',
-      description: 'Zweigelenkrahmen-Stahlkonstruktion für Lagerzwecke. Aufgrund der geringen Belastungen und großen Bauteildicken (Korrosionsvorhalt) ist d. statische Optimierung zweitrangig.',
-      location: 'Niedersachsen, Deutschland'
+      name: 'Typische Anwendung: Hallen- und Hochbau',
+      description: 'Zweigelenkrahmen und Pfetten gering belasteter Hallen; die Bemessung wird oft von Steifigkeit und Stabilität bestimmt, nicht von der Festigkeit.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,17 %',
     density: '7.850 kg/m³',
@@ -177,9 +180,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Ausgewogenes Verhältnis aus hoher Festigkeit und Duktilität'
     ],
     exampleObject: {
-      name: 'Kranbahnbrücken im Elbe-Seitenkanal',
-      description: 'Weitgespannte, geschweißte Hohlkastenträger für d. logistischen Güterverkehr. S355 deckt hier die zyklischen Beanspruchungen im Dauerschwingbereich perfekt ab.',
-      location: 'Schnega, Deutschland'
+      name: 'Typische Anwendung: Brücken- und Industriebau',
+      description: 'Geschweißte Hohlkasten- und I-Träger mit Ermüdungsbeanspruchung; Standardgüte im Brücken- und Kranbahnbau.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,20 %',
     density: '7.850 kg/m³',
@@ -210,9 +213,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Spezielle metallische Reinheit minimiert d. Gefahr von Terrassenbrüchen'
     ],
     exampleObject: {
-      name: 'Commerzbank Tower - Gründungsstützen',
-      description: 'Hochbelastete Verbundstützen im Kern des Wahrzeichens. Durch S460 wird der Stützenquerschnitt halbiert, was die vermietbare Bürofläche im Erdgeschoss massiv erhöht.',
-      location: 'Frankfurt am Main, Deutschland'
+      name: 'Typische Anwendung: hoch belastete Stützen',
+      description: 'Stützen in Hochhäusern und Fachwerkstäbe: Die höhere Streckgrenze verringert Querschnitt und Eigengewicht.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,16 %',
     density: '7.850 kg/m³',
@@ -243,9 +246,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Enormes Energieeinsparpotenzial durch Materialmassen-Reduktion beim Transport'
     ],
     exampleObject: {
-      name: 'Eisenbahnbrücke über den Fluss IJssel',
-      description: 'Modernste Bogenbrücke. Die am stärksten belasteten Obergurte wurden komplett aus S690QL anstelle von S355 gebaut, wodurch 120 Tonnen Eigengewicht eingespart wurden.',
-      location: 'Zwolle, Niederlande'
+      name: 'Typische Anwendung: Gewichtsoptimierte Tragglieder',
+      description: 'Hochbelastete Gurte, Mobilkrane und Sonderbauteile; Schweißen erfordert kontrollierte Wärmeführung.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,20 % (Zusatz von Cr, Mo, B)',
     density: '7.850 kg/m³',
@@ -276,9 +279,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Statisch äquivalent zu standardmäßigem S355J2 Baustahl einzurechnen'
     ],
     exampleObject: {
-      name: 'ThyssenKrupp Quartier (Hauptquartier)',
-      description: 'Zentrale Verwaltungsbauten. Die prägnanten, im Tageslicht changierenden rotbraunen Sonnenschutzlamellen bestehen durchgehend aus Cortenstahl-Lamellenblech, das völlig ohne Lackierung auskommt.',
-      location: 'Essen, Deutschland'
+      name: 'Typische Anwendung: Fassaden und Brücken ohne Beschichtung',
+      description: 'Wetterfester Stahl bildet eine schützende Patina; Abtragsrate und Zuschläge für die Wanddicke beachten, nicht für Chlorid- oder Dauerfeuchtebelastung.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,16 %',
     density: '7.850 kg/m³',
@@ -309,9 +312,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Keine Zersetzung oder Verfärbung angrenzender Mauerwerksteile durch Rostwasser'
     ],
     exampleObject: {
-      name: 'Hallenbad Dachkonstruktion Südstadt',
-      description: 'Sanierung d. Deckentragwerks mit Zugankerbolzen. Nach dem katastrophalen Einsturz des Hallenbads Uster (Soll-Bruchstelle durch Spannungsrisskorrosion bei Standard-Edelstählen) ist hier der hochlegierte Werkstoff 1.4404 Standardanforderung.',
-      location: 'München, Deutschland'
+      name: 'Schadensfall: Hallenbad Uster (1985)',
+      description: 'Versagen von Deckenabhängungen aus nichtrostendem Stahl durch chloridinduzierte Spannungsrisskorrosion in Hallenbadatmosphäre. Seitdem gelten für Schwimmhallen besondere Werkstoffanforderungen.',
+      location: 'Uster, Schweiz'
     },
     carbonContent: '≤ 0,03 % (Extrem aschearm)',
     density: '7.980 kg/m³',
@@ -327,7 +330,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     categoryLabel: 'Bewehrungsstahl (Hochduktil B)',
     norm: 'DIN 488 / EC2',
     fy: 500,
-    fu: 560,
+    fu: 540, // f_tk = k · f_yk mit k ≥ 1,08
     description: 'Warmgewalzter und aus der Walzhitze angelassener Betonstabstahl mit gerippter Oberfläche (Thermex-Verfahren). Ausgelegt für formschlüssige Riss- und Zugkraftaufnahme im Stahlbetonverbund. Erfüllt die strenge europäische Duktilitätsklasse B mit einem Zug-Streckgrenzenverhältnis ft/fy ≥ 1.08.',
     applications: [
       'Biege- und Schubbewehrung in Fundamenten, Bodenplatten und Kellerwänden',
@@ -342,9 +345,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Problemlose Eignung für Schweißstöße (Abbrennstumpf-, Gaspress- und Schutzgasschweißen nach DIN EN ISO 17660)'
     ],
     exampleObject: {
-      name: 'Elbphilharmonie Hamburg - Gründung & Pfeiler',
-      description: 'Massive Großbohrpfähle und hochbewehrte Pfeilerkerne. B500B nimmt hier extreme zentrische Druckkräfte und seismische/dynamische Windlasten über elastoplastische Verbundwirkung auf.',
-      location: 'Hamburg, Deutschland'
+      name: 'Typische Anwendung: Stabstahl im Stahlbetonbau',
+      description: 'Längs- und Bügelbewehrung von Balken, Stützen und Gründungen; hohe Duktilität für Umlagerung.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,22 % (CEV ≤ 0,50 %)',
     density: '7.850 kg/m³',
@@ -375,9 +378,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Wirtschaftliche Mindestbewehrung zur Rissbreitenbegrenzung'
     ],
     exampleObject: {
-      name: 'Automatisierte Hochregallager-Sohle',
-      description: 'Fugenlose 40.000 m² Industriebodenplatte mit 2 Lagen Q335A-Mattenbewehrung zur Rissbreitenbeschränkung unter Gabelstapler- und Regalpunktlasten.',
-      location: 'Duisburg, Deutschland'
+      name: 'Typische Anwendung: Betonstahlmatten',
+      description: 'Flächenbewehrung von Decken und Bodenplatten; kaltverformt mit normaler Duktilität.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,22 % (Kaltverfestigt)',
     density: '7.850 kg/m³',
@@ -393,7 +396,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
     categoryLabel: 'Bewehrungsstahl (Hochduktil C)',
     norm: 'DIN EN 1992-1-1 Anh. C',
     fy: 500,
-    fu: 600,
+    fu: 575, // k ≥ 1,15 (EN 1992-1-1, Anhang C)
     description: 'Spezieller mikrolegierter oder thermomechanisch behandelter Bewehrungsstahl mit höchster plastischer Dehnfähigkeit für Erdbebengebiete und dynamische Beanspruchungen. Erfüllt die strengste europäische Duktilitätsklasse C mit einem Zug-Streckgrenzenverhältnis 1.15 ≤ ft/fy ≤ 1.35 und einer Dehnung bei Höchstlast ε_uk ≥ 7,5 %.',
     applications: [
       'Erdbebensichere Rahmenknoten, Stützen- und Riegelanschlüsse in seismischen Zonen',
@@ -408,9 +411,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Hervorragende Kaltbiegeeigenschaften bei engen Biegeradien'
     ],
     exampleObject: {
-      name: 'Rion-Antirion-Brücke',
-      description: 'Schrägseilbrücke im seismisch hochaktiven Golf von Korinth. Sämtliche Pfeilerfüße und Pylon-Kerne wurden mit B500C armiert, um Erdbeben bis Magnitude 7.4 schadlos zu überstehen.',
-      location: 'Patras, Griechenland'
+      name: 'Typische Anwendung: Erdbebengebiete',
+      description: 'Bauteile mit planmäßiger plastischer Verformung (Duktilitätsklasse C nach EN 1992-1-1, Anhang C); in Deutschland unüblich.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,22 % (CEV ≤ 0,50 %)',
     density: '7.850 kg/m³',
@@ -441,9 +444,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Kompakter Hüllrohr-Querschnitt bei Bündelspanngliedern (z.B. 19- oder 31-Litzen-Anker)'
     ],
     exampleObject: {
-      name: 'Rügenbrücke (2. Strelasundquerung)',
-      description: 'Großbrückenbauwerk mit 128 m Hauptspannweite. Die Hohlkastenüberbauten wurden mit internen Y1860-Litzenspanngliedern vorgespannt, um zyklische Rissbildung und Durchbiegung dauerhaft zu verhindern.',
-      location: 'Stralsund, Deutschland'
+      name: 'Typische Anwendung: Litzenspannglieder',
+      description: 'Interne und externe Spannglieder im Brücken- und Hochbau.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '0,80 - 0,85 % (Feinstlamellarer Perlit)',
     density: '7.850 kg/m³',
@@ -474,9 +477,9 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       'Hervorragende dynamische Dauerschwingfestigkeit mit passenden Kugelbundmuttern'
     ],
     exampleObject: {
-      name: 'Baugrubensicherung Kö-Bogen II',
-      description: 'Tiefe Baugrubenwand im innerstädtischen Bereich. SAS 670 Stäbe verankern die Bohrpfahlwand rückwärtig im Grundwasserhorizont gegen Einsturz.',
-      location: 'Düsseldorf, Deutschland'
+      name: 'Typische Anwendung: Verpressanker und Zugglieder',
+      description: 'Rückverankerung von Baugrubenwänden, Felsanker und Zugstäbe.',
+      location: 'Lehrbeispiel'
     },
     carbonContent: '0,40 - 0,55 %',
     density: '7.850 kg/m³',
@@ -1030,7 +1033,7 @@ export default function Stahl() {
     const points = 200;
     const distance = 150; // mm von der Schweißnahtmitte
     
-    // Vereinfachtes Modell nach Okerblom / Masubuchi
+    // Lehrmodell (Näherung nach Okerblom/Masubuchi), keine Bemessungsgrundlage
     // Max Zugspannung in der Schweißnaht entspricht meist der Fließgrenze
     const sigma_max = fy; 
     
@@ -1963,7 +1966,7 @@ export default function Stahl() {
 
                       <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 space-y-2 flex flex-col justify-between">
                         <div>
-                          <span className="text-[10px] text-text-main/50 font-bold uppercase tracking-wider block font-semibold">PREN-Index (Lochfraßbeständigkeit)</span>
+                          <span className="text-[10px] text-text-main/50 font-bold uppercase tracking-wider block font-semibold">PREN = Cr + 3,3·Mo (+16·N) – Lochfraßbeständigkeit</span>
                           <div className="text-2xl font-mono font-black text-shiraz mt-1">{formatDeZahl(pren, 2)}</div>
                         </div>
                         <div className={`p-2 rounded text-xs text-center font-bold ${corrosionColor}`}>
@@ -3118,6 +3121,20 @@ export default function Stahl() {
       )}
       </div>
     
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Plastischer Biegewiderstand eines IPE 300 aus S355"
+        zielGleichung="M_{pl,Rd} = \frac{W_{pl,y} \cdot f_y}{\gamma_{M0}}"
+        normQuelle="DIN EN 1993-1-1 mit NA, 6.2.5 (Querschnittsklasse 1, γ_M0 = 1,0)"
+        schritte={[
+          { titel: '1. Gegeben', formel: 'W_{pl,y} = 628{,}4\\,\\text{cm}^3,\\; f_y = 355\\,\\text{N/mm}^2,\\; M_{Ed} = 120\\,\\text{kNm}', erklaerung: 'Querschnittswerte nach Profiltabelle.' },
+          { titel: '2. Widerstand', formel: 'M_{pl,Rd} = 628{,}4 \\cdot 35{,}5 / 1{,}0 = 22\\,308\\,\\text{kNcm} = 223\\,\\text{kNm}', erklaerung: 'f_y = 35,5 kN/cm².' },
+          { titel: '3. Ausnutzung', formel: '\\eta = 120 / 223 = 0{,}54 \\le 1', erklaerung: 'Ohne Stabilitätsnachweis (Biegedrillknicken separat).' },
+        ]}
+        ergebnisHinweis="Ausnutzung 54 % – Biegedrillknicken und Gebrauchstauglichkeit sind gesondert nachzuweisen."
+      />
+
+      <ModulTest moduleId="stahl" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Stahlbau', url: 'https://de.wikipedia.org/wiki/Stahlbau' },
@@ -3127,20 +3144,20 @@ export default function Stahl() {
         ]}
         literatur={[
           'Petersen, Chr. (2013): Stahlbau - Grundlagen der Berechnung und baulichen Ausbildung (Springer Vieweg)',
-          'Kindmann, R.; Krahwinkel, M. (2019): Stahl- und Verbundkonstruktionen (Teubner/Springer)',
+          'Kindmann, R.; Krahwinkel, M.: Stahl- und Verbundkonstruktionen. Springer Vieweg (Auflage manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1993-1-1:2024-03 / NA:2021-03 (Eurocode 3: Bemessung und Konstruktion von Stahlbauten - Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau)' },
-          { title: 'DIN EN 1993-1-2:2021-09 (Eurocode 3 - Teil 1-2: Tragwerksbemessung für den Brandfall)' },
-          { title: 'DIN EN 1993-1-9:2024-03 (Eurocode 3 - Teil 1-9: Ermüdung)' },
+          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, Teil 1-1; 2. Generation manuell prüfen)' },
+          { title: 'DIN EN 1993-1-2:2010-12 mit NA (Eurocode 3, Teil 1-2: Brandfall)' },
+          { title: 'DIN EN 1993-1-9:2010-12 mit NA (Eurocode 3, Teil 1-9: Ermüdung)' },
           { title: 'DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus unlegierten Baustählen)' },
           { title: 'DIN EN 1090-2:2018-09 (Ausführung von Stahltragwerken und Aluminiumtragwerken - Technische Regeln für Stahltragwerke)' },
-          { title: 'DIN EN 10080:2005-08 (Betonstähle - Schweißgeeigneter Betonstahl)' }
+          { title: 'DIN 488-1:2009-08 (Betonstahl – Sorten, Eigenschaften, Kennzeichen)' },
+          { title: 'DIN EN ISO 12944-2 (Korrosionsschutz – Einteilung der Umgebungsbedingungen)' }
         ]}
         weblinks={[
           { title: 'Dlubal Querschnittswerte – Online-Profilrechner für Walzprofile', url: 'https://www.dlubal.com/de/querschnittswerte/' },
-          { title: 'STRIAN – Online-Stabwerksberechnung für Rahmen & Fachwerke' },
           { title: 'SkyCiv Free Beam Calculator – Momenten- & Querkraftverläufe', url: 'https://skyciv.com/free-beam-calculator/' }
         ]}
         formeln={[
