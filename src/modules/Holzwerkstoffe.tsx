@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Trees, Layers, Wrench, Leaf, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
 export default function Holzwerkstoffe() {
@@ -72,7 +73,7 @@ export default function Holzwerkstoffe() {
           <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
             <h4 className="font-bold text-sm mb-2 text-shiraz">Brettschichtholz (BSH / Leimholz)</h4>
             <p className="text-sm text-text-main/80 mb-2">
-              Besteht aus mindestens drei faserparallel miteinander verleimten getrockneten Brettern oder Brettlamellen.
+              Besteht aus faserparallel miteinander verleimten (in der Regel mindestens drei) getrockneten Brettern oder Brettlamellen.
             </p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-1">
               <li><strong>Eigenschaften:</strong> Sehr hohe Tragfähigkeit, formstabil, große Querschnitte und Längen möglich.</li>
@@ -225,6 +226,8 @@ export default function Holzwerkstoffe() {
         </div>
       )}
 
+      <ModulTest moduleId="holzwerkstoffe" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Holzwerkstoff', url: 'https://de.wikipedia.org/wiki/Holzwerkstoff' },
@@ -239,7 +242,7 @@ export default function Holzwerkstoffe() {
         ]}
         regelwerke={[
           { title: 'DIN EN 13986:2015-06 (Holzwerkstoffe zur Verwendung im Bauwesen - Eigenschaften, Bewertung der Konformität und Kennzeichnung)' },
-          { title: 'DIN EN 300:2024-03 (Platten aus langen, flachen, ausgerichteten Spänen (OSB) - Definitionen, Klassifizierung und Anforderungen)' },
+          { title: 'DIN EN 300 (Ausgabe manuell prüfen) (Platten aus langen, flachen, ausgerichteten Spänen (OSB) - Definitionen, Klassifizierung und Anforderungen)' },
           { title: 'DIN EN 312:2010-12 (Spanplatten - Anforderungen)' },
           { title: 'DIN EN 636:2015-05 (Sperrholz - Anforderungen)' },
           { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz (CLT) - Anforderungen)' }

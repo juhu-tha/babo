@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Layers, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
 export default function Daemmstoffe() {
@@ -81,7 +82,7 @@ export default function Daemmstoffe() {
                   <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
                     <li><strong>Struktur:</strong> Aufgeschäumtes Granulat, besteht zu 98% aus Luft.</li>
                     <li><strong>Wärmeleitfähigkeit (λ):</strong> 0,031 - 0,040 W/(m·K)</li>
-                    <li><strong>Brandschutz:</strong> Schwer entflammbar (B1) mit Flammschutzmitteln. Im Brandfall schmelzend/tropfend.</li>
+                    <li><strong>Brandschutz:</strong> Mit Flammschutzmitteln Euroklasse E nach DIN EN 13501-1 (früher B1 nach DIN 4102-1). Im Brandfall schmelzend/tropfend.</li>
                     <li><strong>Einsatz:</strong> Standard im WDVS, günstige Trittschalldämmung.</li>
                   </ul>
                 </div>
@@ -111,7 +112,7 @@ export default function Daemmstoffe() {
                   <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
                     <li><strong>Prinzip:</strong> Evakuierter Kern aus Kieselsäure in luftdichter Hochbarrierefolie.</li>
                     <li><strong>Wärmeleitfähigkeit (λ):</strong> 0,004 - 0,007 W/(m·K) (Die höchste Dämmwirkung).</li>
-                    <li><strong>Nachteil:</strong> Darf keinesfalls beschädigt (angebohrt) werden, Nachteil: Darf nicht beschädigt werden, sonst steigt λ durch Belüftung auf ca. 0,020 W/(mK), also etwa um den Faktor 3–5. Teuer.. Teuer.</li>
+                    <li><strong>Nachteil:</strong> Darf nicht beschädigt (angebohrt) werden, sonst steigt λ durch Belüftung auf ca. 0,020 W/(m·K), also etwa um den Faktor 3–5. Teuer.</li>
                     <li><strong>Einsatz:</strong> Wenn extrem wenig Platz vorhanden ist (z.B. Terrassentüren, Gauben).</li>
                   </ul>
                 </div>
@@ -133,7 +134,7 @@ export default function Daemmstoffe() {
                 <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30">
                   <h4 className="font-bold text-shiraz mb-2">Hanf, Jute & Schafwolle</h4>
                   <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                    <li><strong>Besonderheit Schafwolle:</strong> Kann viel Feuchtigkeit sorbieren (bis ca. 1/3 des Eigengewichts), ohne sich nass anzufühlen; die Wärmeleitfähigkeit steigt dabei moderat an. und baut Raumluftschadstoffe (Formaldehyd) ab.</li>
+                    <li><strong>Besonderheit Schafwolle:</strong> Kann viel Feuchtigkeit sorbieren (bis ca. 1/3 des Eigengewichts), ohne sich nass anzufühlen; die Wärmeleitfähigkeit steigt dabei moderat an. Sie kann Formaldehyd aus der Raumluft binden (Herstellerangabe).</li>
                     <li><strong>Umwelt:</strong> Sehr gute CO₂-Bilanz. Brandschutz oft durch Zusätze (z.B. Soda oder Borsalz) erreicht.</li>
                   </ul>
                 </div>
@@ -149,6 +150,8 @@ export default function Daemmstoffe() {
           </div>
         )}
       </div>
+
+      <ModulTest moduleId="daemmstoffe" />
 
       <ModuleFooter
         wikipedia={[
