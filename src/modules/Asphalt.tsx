@@ -3,6 +3,8 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { 
   Layers, 
   ThermometerSun, 
@@ -67,7 +69,7 @@ export default function Asphalt() {
     const volGesamt = volFest / (1 - hohlraum / 100);
     const raumdichte = 100 / volGesamt; // g/cm³
     
-    // Marshall-Stabilität (Mock-Wert basierend auf Bitumengehalt)
+    // Lehrmodell: schematische Marshall-Kurve mit Optimum bei 5,5 M.-% (keine Prüfwerte)
     // Optimaler Bitumengehalt oft bei ~5-6%
     const optimalBitumen = 5.5;
     const diff = Math.abs(bitumen - optimalBitumen);
@@ -93,7 +95,7 @@ export default function Asphalt() {
       labels,
       datasets: [
         {
-          label: 'Marshall-Stabilität [kN]',
+          label: 'Marshall-Stabilität [kN] (Lehrmodell)',
           data: marshallData,
           borderColor: '#A3113E',
           borderWidth: 2,
@@ -221,7 +223,7 @@ export default function Asphalt() {
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Ergebnisse</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div><div className="text-white/70 text-sm">Raumdichte</div><div className="text-3xl font-bold">{formatDeZahl(results.raumdichte, 3)} g/cm³</div></div>
-                    <div><div className="text-white/70 text-sm">Marshall-Stabilität (geschätzt)</div><div className="text-3xl font-bold">{formatDeZahl(results.marshall, 1)} kN</div></div>
+                    <div><div className="text-white/70 text-sm">Marshall-Stabilität (Lehrmodell)</div><div className="text-3xl font-bold">{formatDeZahl(results.marshall, 1)} kN</div></div>
                   </div>
                 </div>
 
@@ -274,6 +276,18 @@ export default function Asphalt() {
                 </div>
               </div>
             </div>
+            <FormulaDerivationBox
+              title="Anwendungsbeispiel: Raumdichte aus Zusammensetzung und Hohlraumgehalt"
+              zielGleichung="\rho_b = \rho_m \cdot \left(1 - \frac{V_m}{100}\right), \quad \rho_m = \frac{100}{\frac{100 - B}{\rho_G} + \frac{B}{\rho_B}}"
+              normQuelle="vgl. DIN EN 12697-5/-8 (Lehrbeispiel mit den Voreinstellungen)"
+              schritte={[
+                { titel: '1. Gegeben', formel: 'B = 5{,}0\\,\\text{M.-\\%},\\; V_m = 3{,}0\\,\\text{Vol.-\\%},\\; \\rho_G = 2{,}65,\\; \\rho_B = 1{,}03\\,\\text{g/cm}^3', erklaerung: 'Bezug: 100 g Mischgut.' },
+                { titel: '2. Feststoffvolumen', formel: 'V = 95/2{,}65 + 5/1{,}03 = 35{,}85 + 4{,}85 = 40{,}70\\,\\text{cm}^3', erklaerung: 'Gestein und Bitumen ohne Hohlräume.' },
+                { titel: '3. Rohdichte', formel: '\\rho_m = 100 / 40{,}70 = 2{,}457\\,\\text{g/cm}^3', erklaerung: 'Dichte des hohlraumfreien Mischguts.' },
+                { titel: '4. Raumdichte', formel: '\\rho_b = 2{,}457 \\cdot (1 - 0{,}03) = 2{,}383\\,\\text{g/cm}^3', erklaerung: 'Mit 3 Vol.-% Hohlraum.' },
+              ]}
+              ergebnisHinweis="ρ_b ≈ 2,38 g/cm³ – entspricht dem Wert des Rechners bei den Voreinstellungen."
+            />
           </>
         )}
 
@@ -293,7 +307,7 @@ export default function Asphalt() {
                   <p className="text-xs text-text-main/70">Asphalt Concrete</p>
                 </div>
                 <p className="text-sm text-gray-700 mb-4 flex-1">
-                  Der Standard-Asphalt. Er zeichnet sich durch eine stetige Sieblinie aus ("haufwerksporig"), das heißt, es sind alle Korngrößen gleichmäßig vertreten. Das führt zu einem dichten Gefüge.
+                  Der Standard-Asphalt. Er hat eine stetige Sieblinie, d. h. alle Korngrößen sind vertreten. Das führt zu einem dichten Gefüge.
                 </p>
                 <div className="text-xs text-gray-600 bg-stone-50 p-3 rounded-lg border border-home-grau/30">
                   <strong>Einsatz:</strong> Für Trag-, Binder- und Deckschichten bei normaler bis mittlerer Verkehrsbelastung. Einbau erfolgt durch Walzverdichtung.
@@ -321,7 +335,7 @@ export default function Asphalt() {
                   <p className="text-xs text-text-main/70">Mastic Asphalt</p>
                 </div>
                 <p className="text-sm text-gray-700 mb-4 flex-1">
-                  Ein hohlraumfreier und wasserdichter Asphalt, der so viel Bitumen und Füller enthält, dass das Gemisch bei Verarbeitungstemperatur (ca. 230°C) gieß- und streichbar ist. Er wird nicht verdichtet (gewalzt), sondern nur glattgestrichen.
+                  Ein hohlraumfreier und wasserdichter Asphalt, der so viel Bitumen und Füller enthält, dass das Gemisch bei Verarbeitungstemperatur (ca. 210–230 °C, mit viskositätsveränderten Bindemitteln niedriger) gieß- und streichbar ist. Er wird nicht verdichtet (gewalzt), sondern nur glattgestrichen.
                 </p>
                 <div className="text-xs text-gray-600 bg-stone-50 p-3 rounded-lg border border-home-grau/30">
                   <strong>Einsatz:</strong> Brückenbeläge, Parkdecks, hochbelastete innerstädtische Bereiche und als Estrich im Hochbau. Sehr langlebig.
@@ -364,7 +378,7 @@ export default function Asphalt() {
                    <div className="absolute left-0 top-1.5 w-8 h-8 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-xs font-bold border-4 border-off-white z-10">3</div>
                    <div className="bg-white p-3 rounded-lg border border-home-grau/30 shadow-sm">
                      <div className="font-bold text-sm">Tragschicht (z.B. AC T)</div>
-                     <div className="text-xs text-gray-600">ca. 8-20+ cm. Größte Dicke, Lastabtragung in den Untergrund, frostsicher eingebaut.</div>
+                     <div className="text-xs text-gray-600">ca. 8-20+ cm. Größte Dicke, verteilt die Lasten auf die ungebundenen Schichten (Frostschutzschicht).</div>
                    </div>
                  </div>
                </div>
@@ -505,11 +519,11 @@ export default function Asphalt() {
                   <span className="text-shiraz font-mono text-xs tracking-wider uppercase font-semibold">Technologie-Fokus</span>
                   <h3 className="text-xl font-bold tracking-tight">Nachhaltiger Verkehrswegebau: Niedrigtemperaturasphalt (NTA)</h3>
                   <p className="text-xs text-stone-300 leading-relaxed">
-                    Niedrigtemperaturasphalt (auch temperaturabgesenkter Asphalt, vgl. FGSV-Merkblatt M TA) stellt durch anwendungsspezifische Absenkung der Herstelltemperatur um bis zu 40 °C einen Schlüsselpfeiler für Klimaresistenz, CO₂-Minderung und wirksamen Arbeitsschutz (Einhaltung des neuen TRGS 900 Grenzwerts von 1,5 mg/m³ für Bitumen-Dämpfe) dar.
+                    Niedrigtemperaturasphalt (auch temperaturabgesenkter Asphalt, vgl. FGSV-Merkblatt M TA) wird mit einer um etwa 20–40 K abgesenkten Temperatur hergestellt und eingebaut. Das senkt Energiebedarf und CO₂-Emissionen und hilft, den Arbeitsplatzgrenzwert nach TRGS 900 (1,5 mg/m³ für Dämpfe und Aerosole aus Bitumen) einzuhalten.
                   </p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg border border-white/20 flex flex-col items-center">
-                  <span className="text-[10px] uppercase font-mono tracking-wide text-stone-300">Neue Richtlinie</span>
+                  <span className="text-[10px] uppercase font-mono tracking-wide text-stone-300">TRGS 900</span>
                   <span className="text-lg font-bold text-white font-mono">1,5 mg/m³</span>
                   <span className="text-[9px] text-stone-400">Arbeitsplatzgrenzwert (AGW)</span>
                 </div>
@@ -524,7 +538,7 @@ export default function Asphalt() {
                     <h4 className="text-sm font-extrabold uppercase tracking-widest text-text-main flex items-center gap-1.5 font-mono">
                       <Flame size={16} className="text-shiraz" /> 1. Parameter-Steuerung
                     </h4>
-                    <p className="text-[11px] text-text-main/60 mt-0.5">Definiere Rezeptur und Verarbeitungstemperatur</p>
+                    <p className="text-[11px] text-text-main/60 mt-0.5">Wählen Sie Verfahren und Temperatur</p>
                   </div>
 
                   {/* Method Selection Cards */}
@@ -619,7 +633,7 @@ export default function Asphalt() {
                     />
                     <div className="mt-1 flex items-center gap-1.5 text-[10px] text-text-main/60">
                       <Trash2 size={11} className="text-shiraz" />
-                      <span>{ltaRecyclingShare > 40 ? "Hoher Recyclinganteil: NTA verhindert schädliche Re-Oxidation des Altbitumens." : "Mittelgroßer Recyclinganteil im Regelkreis."}</span>
+                      <span>{ltaRecyclingShare > 40 ? "Hoher Recyclinganteil: Die niedrigere Temperatur verringert die weitere Alterung des Altbitumens." : "Mittelgroßer Recyclinganteil im Regelkreis."}</span>
                     </div>
                   </div>
 
@@ -640,7 +654,7 @@ export default function Asphalt() {
                       <div className="bg-white/80 p-2.5 rounded-lg text-center border border-emerald-200">
                         <div className="text-[9px] uppercase font-mono text-emerald-900/60">CO₂ vermieden</div>
                         <div className="text-sm font-extrabold text-emerald-950">{((baseCo2 - totalCo2) * 1000).toLocaleString('de-DE')} kg</div>
-                        <div className="text-[9px] text-emerald-700 font-medium">Treibhausgas-Equivalent</div>
+                        <div className="text-[9px] text-emerald-700 font-medium">CO₂-Äquivalente</div>
                       </div>
                     </div>
                   </div>
@@ -650,9 +664,9 @@ export default function Asphalt() {
                 <div className="lg:col-span-7 bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col gap-5">
                   <div className="border-b border-home-grau/20 pb-3">
                     <h4 className="text-sm font-extrabold uppercase tracking-widest text-text-main flex items-center gap-1.5 font-mono">
-                      <Gauge size={16} className="text-shiraz" /> 2. Virtuelle Prüfstands-Auswertung
+                      <Gauge size={16} className="text-shiraz" /> 2. Modellauswertung (Lehrmodell)
                     </h4>
-                    <p className="text-[11px] text-text-main/60 mt-0.5">Analytische Messwerte basierend auf rheologischen Modellen</p>
+                    <p className="text-[11px] text-text-main/60 mt-0.5">Vereinfachte Modelle mit Lehrannahmen – zeigen Tendenzen, keine Mess- oder Planungswerte</p>
                   </div>
 
                   {/* Indicator A: Viscosity / Compactability */}
@@ -751,9 +765,9 @@ export default function Asphalt() {
                     <div className="flex justify-between items-center text-[11px] leading-relaxed">
                       <span className="text-text-main/70">
                         {fumesValue > 1.5 ? (
-                          <span className="text-red-700 font-semibold">Grenzwertexzedierung! Zusätzliche Absaugung o. Atemschutz zwingend erforderlich.</span>
+                          <span className="text-red-700 font-semibold">Modellwert über AGW: Schutzmaßnahmen (z. B. Absaugung am Fertiger) erforderlich.</span>
                         ) : (
-                          <span className="text-green-700 font-semibold">AGW-Konform. Keine Atemschutzpflicht, exzellentes Schützergebnis am Fertiger.</span>
+                          <span className="text-green-700 font-semibold">Modellwert unter AGW – reale Exposition nur durch Messung feststellbar.</span>
                         )}
                       </span>
                       {fumesReduction > 0 && (
@@ -782,7 +796,7 @@ export default function Asphalt() {
                         <div className="bg-shiraz h-full" style={{ width: `${(energyConsumed / baseEnergy) * 100}%` }}></div>
                       </div>
                       <div className="text-[11px] text-emerald-800 font-extrabold flex items-center gap-1">
-                        <CheckCircle2 size={11} /> {formatDeWert(energySavedPercent)}% Energie eingespart!
+                        <CheckCircle2 size={11} /> {formatDeWert(energySavedPercent)}% weniger Energie (Modell)
                       </div>
                     </div>
 
@@ -802,7 +816,7 @@ export default function Asphalt() {
                         <div className="bg-emerald-600 h-full" style={{ width: `${(totalCo2 / baseCo2) * 100}%` }}></div>
                       </div>
                       <div className="text-[11px] text-emerald-800 font-extrabold flex items-center gap-1">
-                        <CheckCircle2 size={11} /> {formatDeWert(co2SavedPercent)}% Carbon Footprint gespart!
+                        <CheckCircle2 size={11} /> {formatDeWert(co2SavedPercent)}% weniger CO₂ (Modell)
                       </div>
                     </div>
                   </div>
@@ -820,7 +834,7 @@ export default function Asphalt() {
                     </div>
                     <div className="text-right">
                       <span className="text-2xl font-black text-amber-900 font-mono">{formatDeWert(coolingWindow)} Min.</span>
-                      <div className="text-[9px] text-amber-700/80 uppercase font-mono tracking-wider">Compaction Window</div>
+                      <div className="text-[9px] text-amber-700/80 uppercase font-mono tracking-wider">Verdichtungsfenster (Modell)</div>
                     </div>
                   </div>
 
@@ -855,7 +869,7 @@ export default function Asphalt() {
                       </p>
                       <ul className="list-disc list-inside space-y-2 text-text-main/70 pl-1">
                         <li>
-                          <strong>Brennersteuerung &amp; Trockentrommel:</strong> Da die Trommeltemperatur reduziert wird, besteht die Gefahr, dass die unvollständige Verbrennung von Schwer- oder Leichtölen zu Rußbildung und Rückständen führt. Das Flammenprofil des Mischwerkbrenners muss daher penibel auf das niedrigere Saugzugvolumen eingeregelt werden.
+                          <strong>Brennersteuerung &amp; Trockentrommel:</strong> Da die Trommeltemperatur reduziert wird, besteht die Gefahr, dass die unvollständige Verbrennung von Schwer- oder Leichtölen zu Rußbildung und Rückständen führt. Der Brenner muss auf den geringeren Wärmebedarf eingestellt werden.
                         </li>
                         <li>
                           <strong>Dosierung von Additiven:</strong> 
@@ -865,7 +879,7 @@ export default function Asphalt() {
                           </ul>
                         </li>
                         <li>
-                          <strong>Kreislaufmaterial (Asphaltgranulat-Zugabe):</strong> Bei hohen RC-Zugabequoten (z.B. 40–60 %) verhindert die Temperaturabsenkung im Werk eine schädliche Überhitzung (Verkrustung) und thermische Alterung (Zerstörung des Asphalten/Malten-Verhältnisses) des Altbitumens, wodurch die Dehnungsfähigkeit im eingebauten Zustand geschont wird.
+                          <strong>Kreislaufmaterial (Asphaltgranulat-Zugabe):</strong> Bei hohen RC-Zugabequoten (z.B. 40–60 %) verhindert die Temperaturabsenkung im Werk eine schädliche Überhitzung (Verkrustung) und thermische Alterung (Verschiebung des Asphalten-Malten-Verhältnisses) des Altbitumens, wodurch die Dehnungsfähigkeit im eingebauten Zustand geschont wird.
                         </li>
                       </ul>
                     </div>
@@ -889,10 +903,10 @@ export default function Asphalt() {
                       </p>
                       <ul className="list-disc list-inside space-y-2 text-text-main/70 pl-1">
                         <li>
-                          <strong>Transportlogistik:</strong> Die Verwendung vollisolierter LKW-Transportmulden (Thermomulden mit Abdeckplane nach ZTV-Asphalt) ist bei NTA zwingend vorgeschrieben, um eine Randschichtabkühlung unter 110 °C vor dem Abkippen zu verhindern.
+                          <strong>Transportlogistik:</strong> Thermomulden und Abdeckplanen sind bei temperaturabgesenktem Asphalt besonders wichtig, damit das Mischgut beim Einbau nicht zu stark ausgekühlt ist (Vorgaben nach ZTV Asphalt-StB/M TA manuell prüfen).
                         </li>
                         <li>
-                          <strong>Kritisches Verdichtungszeitfenster:</strong> Wachsmodifizierte Bindemittel besitzen einen scharf abgegrenzten Erstarrungspunkt. Oberhalb dieses Punktes (z.B. &gt; 105 °C) ist der Verdichtungswiderstand extrem klein, der Asphalt fast selbstverdichtend. Fällt die Temperatur unter den Wachskristallisationspunkt, blockiert das Gesteinsgerüst schlagartig (Scherfestigkeit steigt rapide an). Ein weiteres Walzen ist dann nutzlos und erzeugt Gefügerisse.
+                          <strong>Kritisches Verdichtungszeitfenster:</strong> Wachsmodifizierte Bindemittel besitzen einen scharf abgegrenzten Erstarrungspunkt. Oberhalb dieses Punktes (ca. 100 °C) ist der Verdichtungswiderstand gering. Fällt die Temperatur darunter, steigt der Verdichtungswiderstand deutlich an; weiteres Walzen bringt kaum Verdichtung und kann das Gefüge schädigen.
                         </li>
                         <li>
                           <strong>Walzenstrategie:</strong> Der Schwerpunkt der Verdichtung (Vorwalzen) muss unmittelbar hinter dem Fertigerbohlen-Austritt erfolgen (statisch schwere Glattradwalzen). Vibrationswalzen sollten ausschließlich im Heißbereich eingesetzt werden, um Kornzertrümmerungen auszuschließen.
@@ -918,14 +932,14 @@ export default function Asphalt() {
                         Bitumen setzt bei Erhitzung über 150 °C an der Baustelle Aerosole und Dämpfe frei, die kondensierbare polyzyklische aromatische Kohlenwasserstoffe (PAK) und flüchtige organische Verbindungen (VOC) enthalten.
                       </p>
                       <div className="bg-emerald-50 text-emerald-950 p-3 rounded-lg border border-emerald-200 text-[11px] font-medium leading-relaxed">
-                        <strong>Der neue AGW-Wert (Arbeitsplatzgrenzwert):</strong> Gemäß TRGS 900 (Technische Regeln für Gefahrstoffe) gilt in Deutschland seit 2025 ein strikter Höchstwert von <strong>1,5 mg/m³</strong> für Dämpfe und Aerosole aus Bitumen bei der Heißverarbeitung. Klassischer Asphaltbeton überschreitet diesen im Bohlenbereich des Fertigers ohne Absauganlage fast immer.
+                        <strong>Der neue AGW-Wert (Arbeitsplatzgrenzwert):</strong> Gemäß TRGS 900 (Technische Regeln für Gefahrstoffe) gilt ein Arbeitsplatzgrenzwert von <strong>1,5 mg/m³</strong> für Dämpfe und Aerosole aus Bitumen bei der Heißverarbeitung; die Übergangsfrist für den Straßenbau endete Ende 2024. Bei konventionellen Einbautemperaturen ist der Wert ohne Maßnahmen schwer einzuhalten (vgl. Branchenlösung Walzasphalt der BG BAU).
                       </div>
                       <ul className="list-disc list-inside space-y-2 text-text-main/70 pl-1">
                         <li>
-                          <strong>Exponentielle Absenkung:</strong> Die Dampf- und Aerosolfreisetzung von Bitumen unterliegt einer thermodynamischen Arrhenius-Abhängigkeit. Eine Absenkung der Mischguttemperatur um nur 20–30 °C bewirkt eine Reduktion der toxischen Immissionen um ca. 60–80 Prozent.
+                          <strong>Exponentielle Absenkung:</strong> Die Dampf- und Aerosolfreisetzung von Bitumen unterliegt einer thermodynamischen Arrhenius-Abhängigkeit. Eine Absenkung der Mischguttemperatur um 20–30 K verringert die Emissionen deutlich (Richtwert aus der Literatur: mehr als die Hälfte).
                         </li>
                         <li>
-                          <strong>Arbeitsplatzvorteile:</strong> Das Einbautageteam leidet an heißen Sommertagen deutlich seltener unter hitzebedingter Kreislaufbelastung, Augenreizungen und Hustenreiz. Zudem verbessert die Entlastung von Rauchgasschleiern die Sicht und mindert Unfallrisiken am Straßenfertiger signifikant.
+                          <strong>Arbeitsplatzvorteile:</strong> Geringere Hitze- und Dampfbelastung für die Einbaukolonne; weniger Dampfschwaden verbessern die Sicht am Fertiger.
                         </li>
                       </ul>
                     </div>
@@ -949,13 +963,13 @@ export default function Asphalt() {
                       </p>
                       <ul className="list-disc list-inside space-y-2 text-text-main/70 pl-1">
                         <li>
-                          <strong>Restfeuchte und Stripping (Haftungsverlust):</strong> Da die Gesteinskörnung im Trockner nur auf ca. 120–130 °C erhitzt wird, verdampft das in den Gesteinsporen tief sitzende Haftwasser möglicherweise nicht vollständig. Aufsteigender Restwasserdampf kondensiert im heißen Bitumenfilm und stört die Adhäsion zwischen Bitumen und Gestein (Stripping-Anfälligkeit). Die Folge sind erhebliche Kornausbrüche (Frostaufbrüche) nach dem ersten Winter.
+                          <strong>Restfeuchte und Stripping (Haftungsverlust):</strong> Da die Gesteinskörnung im Trockner nur auf ca. 120–130 °C erhitzt wird, verdampft das in den Gesteinsporen tief sitzende Haftwasser möglicherweise nicht vollständig. Aufsteigender Restwasserdampf kondensiert im heißen Bitumenfilm und stört die Adhäsion zwischen Bitumen und Gestein (Stripping-Anfälligkeit). Mögliche Folge sind Kornausbrüche nach Frost-Tau-Wechseln; Abhilfe schaffen gute Trocknung und Haftvermittler.
                         </li>
                         <li>
-                          <strong>Verzögerte Anfangsstärke (Rutting-Gefahr):</strong> Verkehrsfreigabe: Auch LTA darf erst nach ausreichender Abkühlung des Belags freigegeben werden. Wachsmodifizierte Bindemittel erstarren bereits bei ca. 90–105 °C und erhöhen danach den Verformungswiderstand; bei chemischen Additiven und Schaumbitumen ist das Verformungsverhalten dagegen mit dem von Standardasphalt vergleichbar.. Wird eine Straße zu früh für den Schwerlastverkehr freigegeben, können die noch nicht vollständig formstabilen Kristallgitter verdrückt werden, was zu gravierenden Oberflächenverformungen (Spurrillen) führt.
+                          <strong>Verzögerte Anfangsstärke (Rutting-Gefahr):</strong> Verkehrsfreigabe: Auch LTA darf erst nach ausreichender Abkühlung des Belags freigegeben werden. Wachsmodifizierte Bindemittel erstarren bereits bei ca. 90–105 °C und erhöhen danach den Verformungswiderstand; bei chemischen Additiven und Schaumbitumen ist das Verformungsverhalten dagegen mit dem von Standardasphalt vergleichbar. Bei zu früher Verkehrsfreigabe drohen Spurrinnen.
                         </li>
                         <li>
-                          <strong>Zusatzkosten &amp; Amortisation:</strong> Organische Additive verteuern die Materialrezeptur um ca. 5,50 bis 9.00 EUR pro Tonne Asphalt. Diese Differenz muss durch die Brennstoffeinsparung im Mischwerk (Heizöl/Erdgas) und die geringeren Verschleißkosten der Gießaggregate aufgewogen werden. Treiber sind der Arbeitsplatzgrenzwert für Dämpfe und Aerosole aus Bitumen (1,5 mg/m³, TRGS 900) sowie Vorgaben öffentlicher Auftraggeber nach M TA.
+                          <strong>Zusatzkosten &amp; Amortisation:</strong> Additive verteuern das Mischgut (marktabhängig, wenige Euro je Tonne). Dem steht die Brennstoffeinsparung im Mischwerk gegenüber. Treiber sind der Arbeitsplatzgrenzwert für Dämpfe und Aerosole aus Bitumen (1,5 mg/m³, TRGS 900) sowie Vorgaben öffentlicher Auftraggeber nach M TA.
                         </li>
                       </ul>
                     </div>
@@ -966,7 +980,7 @@ export default function Asphalt() {
                 {/* Comparative Overview Card */}
                 <div className="bg-off-white p-5 rounded-2xl border border-home-grau/30 mt-2">
                   <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#A3113E] mb-3 flex items-center gap-1">
-                    <FileText size={14} /> Richtlinienkonformer Einbau (ZTV Asphalt-StB / M TA)
+                    <FileText size={14} /> Vergleich Standard- und temperaturabgesenkter Asphalt (Richtwerte; maßgebend ZTV Asphalt-StB / M TA)
                   </h4>
                   <div className="overflow-x-auto text-[11px]">
                     <table className="w-full text-left border-collapse">
@@ -987,27 +1001,27 @@ export default function Asphalt() {
                         </tr>
                         <tr>
                           <td className="py-2.5 pr-4 font-semibold text-text-main">Viskosität bei Einbau</td>
-                          <td className="py-2.5 pr-4">0,4 – 0,8 Pa·s</td>
-                          <td className="py-2.5 pr-4 text-emerald-800 font-medium">0,6 – 1,4 Pa·s (Wachsverdünnt)</td>
+                          <td className="py-2.5 pr-4">0,4 – 0,8 Pa·s (Lehrwert)</td>
+                          <td className="py-2.5 pr-4 text-emerald-800 font-medium">vergleichbar durch Additive (Lehrwert)</td>
                           <td className="py-2.5">Gleichwertige Verarbeitbarkeit trotz verringerter Hitze</td>
                         </tr>
                         <tr>
-                          <td className="py-2.5 pr-4 font-semibold text-text-main">Zulässiger Lufttemperaturbereich</td>
-                          <td className="py-2.5 pr-4">&gt; 5 °C (ZTV Asphalt-StB)</td>
-                          <td className="py-2.5 pr-4 text-amber-700 font-medium">&gt; 10 °C (Kritische Auskühlung!)</td>
+                          <td className="py-2.5 pr-4 font-semibold text-text-main">Mindest-Lufttemperatur beim Einbau</td>
+                          <td className="py-2.5 pr-4">nach ZTV Asphalt-StB je Schichtart und -dicke (manuell prüfen)</td>
+                          <td className="py-2.5 pr-4 text-amber-700 font-medium">eher höher wählen – schnellere Auskühlung (manuell prüfen)</td>
                           <td className="py-2.5">LTA ist wind- und kälteempfindlicher während des Einbaus</td>
                         </tr>
                         <tr>
                           <td className="py-2.5 pr-4 font-semibold text-text-main">Haftverhalten zum Gestein</td>
-                          <td className="py-2.5 pr-4">Hervorragend (Keine Porenfeuchte)</td>
+                          <td className="py-2.5 pr-4">Gut (Gestein vollständig getrocknet)</td>
                           <td className="py-2.5 pr-4 text-amber-700 font-medium">Adhäsionsrisiken durch Restfeuchte</td>
                           <td className="py-2.5">Haftmittel (Spezial-Silane/Amine) mindern Ablösungen ab</td>
                         </tr>
                         <tr>
                           <td className="py-2.5 pr-4 font-semibold text-text-main">Bitumenalterung (Oxidation)</td>
                           <td className="py-2.5 pr-4">Hoch (starke Kurzzeit-Alterung)</td>
-                          <td className="py-2.5 pr-4 text-emerald-800 font-medium">Sehr gering (Schutz des Binders)</td>
-                          <td className="py-2.5">Längere Ermüdungslebensdauer und Rissfreiheit der Tragschichten</td>
+                          <td className="py-2.5 pr-4 text-emerald-800 font-medium">Geringer (weniger Kurzzeitalterung)</td>
+                          <td className="py-2.5">Günstig für Ermüdungs- und Kälteverhalten</td>
                         </tr>
                       </tbody>
                     </table>
@@ -1027,29 +1041,33 @@ export default function Asphalt() {
         </div>
       )}
     
+      <ModulTest moduleId="asphalt" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Asphalt', url: 'https://de.wikipedia.org/wiki/Asphalt' },
           { title: 'Niedrigtemperaturasphalt', url: 'https://de.wikipedia.org/wiki/Niedrigtemperaturasphalt' }
         ]}
         literatur={[
-          'Velske, S.; Mentlein, H. (2013): Straßenbautechnik (7. Auflage, Werner Verlag)',
-          'Schulze, K. (2011): Asphalt im Straßenbau - Baustoffliche Grundlagen, Bemessung und Qualitätssicherung (2. Auflage, Ernst & Sohn)',
+          'Velske, S.; Mentlein, H.; Eymann, P.: Straßenbau, Straßenbautechnik. Köln: Werner 2009 (neuere Auflage manuell prüfen)',
+          'Hutschenreuther, J.; Wörner, T.: Asphalt im Straßenbau. Bonn: Kirschbaum 2017',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
           { title: 'ZTV Asphalt-StB 07/13:2013 (FGSV: Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Verkehrsflächenbefestigungen aus Asphalt)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'DIN EN 13108-1:2016-12 (Asphaltmischgut - Mischgutanforderungen - Teil 1: Asphaltbeton)' },
-          { title: 'DIN EN 12591:2015-11 (Bitumen und bitumenhaltige Bindemittel - Anforderungen an Straßenbaubitumen)' },
+          { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel – Anforderungen an Straßenbaubitumen; Ausgabe manuell prüfen)' },
           { title: 'DIN EN 14023:2010-09 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifikation von polymermodifizierten Bitumen)' },
           { title: 'DIN EN 12697-8:2019-04 (Asphalt - Prüfverfahren - Teil 8: Bestimmung des Hohlraumgehaltes von Asphalt-Probekörpern)' },
           { title: 'DIN EN 12697-34:2020-07 (Asphalt - Prüfverfahren - Teil 34: Marshall-Prüfung)' },
-          { title: 'RStO 12 (FGSV Ausgabe 2012 / Fassung 2024: Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen, eingeführt mit ARS Nr. 02/2024)', url: 'https://www.fgsv-verlag.de/' }
+          { title: 'RStO 12/24 (FGSV: Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024)', url: 'https://www.fgsv-verlag.de/' },
+          { title: 'M TA (FGSV: Merkblatt für Temperaturabsenkung von Asphalt; Ausgabe manuell prüfen)' },
+          { title: 'TRGS 900 (Arbeitsplatzgrenzwerte; AGW Dämpfe und Aerosole aus Bitumen 1,5 mg/m³)' }
         ]}
         formeln={[
           {
-            formel: 'V_{\\text{Hohlraum}} = \\frac{\\rho_d - \\rho_b}{\\rho_d} \\cdot 100\\%',
-            erklaerung: 'Hohlraumgehalt des Asphaltprobekörpers (Marshall-Probekörper) in Volumenprozent. Berechnet sich aus der theoretischen Raumdichte \\rho_d (vollkommen hohlraumfrei) und der tatsächlichen Rohdichte \\rho_b des verdichteten Mischguts.',
+            formel: 'V_m = \\frac{\\rho_m - \\rho_b}{\\rho_m} \\cdot 100\\,\\%',
+            erklaerung: 'Hohlraumgehalt des Asphaltprobekörpers in Vol.-%: \\rho_m = Rohdichte des Mischguts (hohlraumfrei, DIN EN 12697-5), \\rho_b = Raumdichte des verdichteten Probekörpers (DIN EN 12697-6).',
             quelle: 'DIN EN 12697-8:2019-04'
           },
           {
@@ -1060,7 +1078,7 @@ export default function Asphalt() {
           {
             formel: 'VFB = \\frac{V_B}{V_B + V_{\\text{void}}} \\cdot 100\\%',
             erklaerung: 'Hohlraumfüllungsgrad (VFB - Voids Filled with Binder) in Prozent. Gibt das prozentuale Verhältnis des Bindemittelvolumens V_B zum Gesamtporenvolumen des Mineralstoffgerüsts an und beschreibt die Dauerhaftigkeit und Flexibilität.',
-            quelle: 'DIN EN 13108-1:2016-12'
+            quelle: 'DIN EN 12697-8'
           }
         ]}
       />

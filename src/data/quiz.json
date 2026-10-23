@@ -10151,5 +10151,275 @@
       "targetModuleLabel": "Holz"
     },
     "verified": false
+  },
+  {
+    "id": "q_naw_1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "nawaro",
+    "moduleTitle": "Biogene Baustoffe (NaWaRo)",
+    "topic": "Sommerlicher Wärmeschutz",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welche Kenngröße beschreibt die volumenbezogene Wärmespeicherfähigkeit eines Dämmstoffs?",
+    "options": [
+      "ρ · c",
+      "λ / d",
+      "μ · d",
+      "λ · ρ"
+    ],
+    "correctIdx": 0,
+    "explanation": "s = ρ · c in kJ/(m³K). Holzfaserplatten (ρ ≈ 200 kg/m³, c ≈ 2,1 kJ/(kgK)) erreichen ein Vielfaches von EPS.",
+    "gapAnalysis": {
+      "topic": "Sommerlicher Wärmeschutz",
+      "misconception": "Eine niedrige Wärmeleitfähigkeit allein sorgt für guten sommerlichen Wärmeschutz.",
+      "coreRule": "Wärmespeicherfähigkeit = Rohdichte × spezifische Wärmekapazität.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sommerlicher Wärmeschutz“ im Modul Biogene Baustoffe (NaWaRo) noch einmal durch.",
+      "targetModuleTab": "nawaro",
+      "targetModuleLabel": "Biogene Baustoffe (NaWaRo)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_naw_2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "nawaro",
+    "moduleTitle": "Biogene Baustoffe (NaWaRo)",
+    "topic": "Biogener Kohlenstoff",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 16449",
+    "question": "Wie viel CO₂ ist nach DIN EN 16449 etwa in 1 m³ Brettschichtholz (ρ₁₂ = 420 kg/m³) gespeichert?",
+    "options": [
+      "ca. 0,69 t",
+      "ca. 0,21 t",
+      "ca. 1,54 t",
+      "ca. 0,38 t"
+    ],
+    "correctIdx": 0,
+    "explanation": "Darrmasse 420/1,12 = 375 kg, Kohlenstoff 0,5 · 375 = 187,5 kg, CO₂ = 44/12 · 187,5 ≈ 688 kg.",
+    "gapAnalysis": {
+      "topic": "Biogener Kohlenstoff",
+      "misconception": "Man rechnet direkt mit der Rohdichte bei 12 % Holzfeuchte oder vergisst den Faktor 44/12.",
+      "coreRule": "P_CO2 = 44/12 · 0,5 · Darrmasse.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biogener Kohlenstoff“ im Modul Biogene Baustoffe (NaWaRo) noch einmal durch.",
+      "targetModuleTab": "nawaro",
+      "targetModuleLabel": "Biogene Baustoffe (NaWaRo)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_naw_3",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "nawaro",
+    "moduleTitle": "Biogene Baustoffe (NaWaRo)",
+    "topic": "Brandverhalten",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 13501-1",
+    "question": "Welche Euroklasse haben Holzfaserdämmplatten ohne Flammschutzmittel typischerweise?",
+    "options": [
+      "E (normalentflammbar)",
+      "A1 (nichtbrennbar)",
+      "B-s1, d0 (schwerentflammbar)",
+      "F (keine Leistung festgestellt)"
+    ],
+    "correctIdx": 0,
+    "explanation": "Holzfaserdämmstoffe sind in der Regel Euroklasse E. Erst im geprüften System (z. B. WDVS mit Putz) sind andere Klassifizierungen möglich.",
+    "gapAnalysis": {
+      "topic": "Brandverhalten",
+      "misconception": "Natürliche Dämmstoffe sind grundsätzlich schwerentflammbar.",
+      "coreRule": "Brandverhalten nach Leistungserklärung, nicht nach Rohstoffherkunft beurteilen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Brandverhalten“ im Modul Biogene Baustoffe (NaWaRo) noch einmal durch.",
+      "targetModuleTab": "nawaro",
+      "targetModuleLabel": "Biogene Baustoffe (NaWaRo)"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_asp_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "asphalt",
+    "moduleTitle": "Asphalt & Bitumen",
+    "topic": "Hohlraumgehalt",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12697-8",
+    "question": "Rohdichte ρ_m = 2,457 g/cm³, Raumdichte ρ_b = 2,383 g/cm³. Wie groß ist der Hohlraumgehalt?",
+    "options": [
+      "ca. 3,0 Vol.-%",
+      "ca. 0,3 Vol.-%",
+      "ca. 7,4 Vol.-%",
+      "ca. 97 Vol.-%"
+    ],
+    "correctIdx": 0,
+    "explanation": "V_m = (2,457 − 2,383)/2,457 · 100 ≈ 3,0 Vol.-%.",
+    "gapAnalysis": {
+      "topic": "Hohlraumgehalt",
+      "misconception": "Roh- und Raumdichte werden vertauscht oder der Bezug fehlt.",
+      "coreRule": "V_m = (ρ_m − ρ_b)/ρ_m · 100 %.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Hohlraumgehalt“ im Modul Asphalt & Bitumen noch einmal durch.",
+      "targetModuleTab": "asphalt",
+      "targetModuleLabel": "Asphalt & Bitumen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_asp_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "asphalt",
+    "moduleTitle": "Asphalt & Bitumen",
+    "topic": "Asphaltarten",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welcher Asphalt wird nicht gewalzt, sondern nur glattgestrichen?",
+    "options": [
+      "Gussasphalt (MA)",
+      "Splittmastixasphalt (SMA)",
+      "Asphaltbeton (AC)",
+      "Offenporiger Asphalt (PA)"
+    ],
+    "correctIdx": 0,
+    "explanation": "Gussasphalt ist hohlraumarm, hat einen hohen Bindemittel- und Füllergehalt und ist bei ca. 210–230 °C gießfähig.",
+    "gapAnalysis": {
+      "topic": "Asphaltarten",
+      "misconception": "Alle Asphalte werden walzverdichtet.",
+      "coreRule": "Gussasphalt: gießen und streichen, keine Walzverdichtung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Asphaltarten“ im Modul Asphalt & Bitumen noch einmal durch.",
+      "targetModuleTab": "asphalt",
+      "targetModuleLabel": "Asphalt & Bitumen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_asp_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "asphalt",
+    "moduleTitle": "Asphalt & Bitumen",
+    "topic": "Temperaturabgesenkter Asphalt",
+    "difficulty": "Grundlagen",
+    "normRef": "TRGS 900",
+    "question": "Welcher Arbeitsplatzgrenzwert gilt nach TRGS 900 für Dämpfe und Aerosole aus Bitumen bei der Heißverarbeitung?",
+    "options": [
+      "1,5 mg/m³",
+      "15 mg/m³",
+      "0,15 mg/m³",
+      "10 mg/m³"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der AGW beträgt 1,5 mg/m³. Eine Temperaturabsenkung um 20–30 K verringert die Emissionen deutlich.",
+    "gapAnalysis": {
+      "topic": "Temperaturabgesenkter Asphalt",
+      "misconception": "Bitumendämpfe sind nicht reguliert.",
+      "coreRule": "AGW Bitumen 1,5 mg/m³ – Temperaturabsenkung als Hauptmaßnahme.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperaturabgesenkter Asphalt“ im Modul Asphalt & Bitumen noch einmal durch.",
+      "targetModuleTab": "asphalt",
+      "targetModuleLabel": "Asphalt & Bitumen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kun_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kunststoffe",
+    "moduleTitle": "Kunststoffe",
+    "topic": "Glasübergang",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Was geschieht bei einem amorphen Thermoplast beim Überschreiten der Glasübergangstemperatur T_g?",
+    "options": [
+      "Der E-Modul fällt stark ab, das Material wird gummi- bzw. lederartig",
+      "Das Material schmilzt sofort",
+      "Der E-Modul steigt durch Nachvernetzung",
+      "Nichts – T_g betrifft nur Duroplaste"
+    ],
+    "correctIdx": 0,
+    "explanation": "Am Glasübergang werden Kettensegmente beweglich; der E-Modul sinkt um Zehnerpotenzen. Geschmolzen ist das Material erst im Fließbereich.",
+    "gapAnalysis": {
+      "topic": "Glasübergang",
+      "misconception": "Glasübergang und Schmelzen werden gleichgesetzt.",
+      "coreRule": "T_g: Erweichung; T_m/T_f: Schmelzen bzw. Fließen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glasübergang“ im Modul Kunststoffe noch einmal durch.",
+      "targetModuleTab": "kunststoffe",
+      "targetModuleLabel": "Kunststoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kun_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kunststoffe",
+    "moduleTitle": "Kunststoffe",
+    "topic": "Wärmedehnung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Eine 10 m lange PVC-U-Leitung (α ≈ 80 · 10⁻⁶ 1/K) erwärmt sich um 40 K. Wie groß ist die Längenänderung?",
+    "options": [
+      "32 mm",
+      "3,2 mm",
+      "4,8 mm",
+      "320 mm"
+    ],
+    "correctIdx": 0,
+    "explanation": "ΔL = 10 000 mm · 80 · 10⁻⁶ · 40 = 32 mm. 4,8 mm wäre der Wert für Stahl.",
+    "gapAnalysis": {
+      "topic": "Wärmedehnung",
+      "misconception": "Kunststoffe dehnen sich ähnlich wie Stahl.",
+      "coreRule": "ΔL = L₀ · α · ΔT; α von Kunststoffen ist ein Vielfaches von Stahl.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Kunststoffe noch einmal durch.",
+      "targetModuleTab": "kunststoffe",
+      "targetModuleLabel": "Kunststoffe"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kun_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kunststoffe",
+    "moduleTitle": "Kunststoffe",
+    "topic": "Polymerstruktur",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welche Kunststoffgruppe ist schmelzbar und schweißbar?",
+    "options": [
+      "Thermoplaste",
+      "Duroplaste",
+      "Elastomere",
+      "Alle drei Gruppen"
+    ],
+    "correctIdx": 0,
+    "explanation": "Nur Thermoplaste sind unvernetzt und lassen sich aufschmelzen. Elastomere und Duroplaste sind vernetzt und zersetzen sich bei hoher Temperatur.",
+    "gapAnalysis": {
+      "topic": "Polymerstruktur",
+      "misconception": "Alle Kunststoffe lassen sich schweißen.",
+      "coreRule": "Vernetzt = nicht schmelzbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Polymerstruktur“ im Modul Kunststoffe noch einmal durch.",
+      "targetModuleTab": "kunststoffe",
+      "targetModuleLabel": "Kunststoffe"
+    },
+    "verified": false
   }
 ]
