@@ -65,13 +65,13 @@ export default function ZertifizierungSiegel() {
         title="Beispiel 1: Gesamterfüllungsgrad und Auszeichnungsstufe nach DGNB"
         zielGleichung="\text{GE} = \sum_j w_j \cdot E_j"
         schritte={[
-          { titel: 'Gewichte (Lehrbeispiel)', erklaerung: 'Themenfeldgewichte DGNB Neubau (Version 2018): Ökologie 22,5 %, Ökonomie 22,5 %, Soziokultur 22,5 %, Technik 15 %, Prozess 12,5 %, Standort 5 %. Aktuelle Version manuell prüfen.', formel: '\\sum_j w_j = 100\\,\\%' },
+          { titel: 'Gewichte (Lehrbeispiel)', erklaerung: 'Themenfeldgewichte DGNB Neubau (Version 2018, Lehrbeispiel): Ökologie 22,5 %, Ökonomie 22,5 %, Soziokultur 22,5 %, Technik 15 %, Prozess 12,5 %, Standort 5 %. Aktuelle Version 2023.2: Ökologie, Ökonomie, Soziokultur je 25 %, Technik und Prozess je 10 %, Standort 5 %.', formel: '\\sum_j w_j = 100\\,\\%' },
           { titel: 'Erfüllungsgrade', erklaerung: 'ENV 78 %, ECO 82 %, SOC 75 %, TEC 70 %, PRO 85 %, SITE 60 %:', formel: '0{,}225 \\cdot (78 + 82 + 75) + 0{,}15 \\cdot 70 + 0{,}125 \\cdot 85 + 0{,}05 \\cdot 60' },
           { titel: 'Gesamterfüllungsgrad', erklaerung: 'Summe der gewichteten Themenfelder:', formel: '52{,}9 + 10{,}5 + 10{,}6 + 3{,}0 = 77{,}0\\,\\%' },
           { titel: 'Auszeichnung', erklaerung: 'Platin ab 80 %, Gold ab 65 % (jeweils mit Mindesterfüllungsgraden je Themenfeld):', formel: '65\\,\\% \\le 77{,}0\\,\\% < 80\\,\\% \\Rightarrow \\text{Gold}' }
         ]}
         ergebnisHinweis="Für Platin fehlen 3 Prozentpunkte; am wirksamsten sind die hoch gewichteten Themenfelder Ökologie, Ökonomie und Soziokultur."
-        normQuelle="DGNB System Neubau (Version 2018, Lehrbeispiel – aktuelle Systemversion manuell prüfen)"
+        normQuelle="DGNB System Neubau (Version 2018, Lehrbeispiel; aktuelle Marktversion 2023.2, gültig seit 01.10.2026)"
       />
       <FormulaDerivationBox
         title="Beispiel 2: QNG-Prüfung beider Ökobilanz-Indikatoren"
@@ -100,7 +100,7 @@ export default function ZertifizierungSiegel() {
           'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (Hrsg.): Leitfaden Nachhaltiges Bauen. Berlin (aktuelle Fassung)'
         ]}
         regelwerke={[
-          { title: 'DGNB System – Kriterienkatalog Gebäude Neubau (Systemversion manuell prüfen)', url: 'https://www.dgnb.de/' },
+          { title: 'DGNB System – Kriterienkatalog Gebäude Neubau, Version 2023.2 (2026)', url: 'https://www.dgnb.de/' },
           { title: 'BNB Leitfaden Nachhaltiges Bauen', url: 'https://www.nachhaltigesbauen.de/' },
           { title: 'QNG-Handbuch mit Anlage 3 (Version 1.4 vom 19.07.2024)', url: 'https://www.qng.info/' },
           { title: 'ISO 14024:2018 (Umweltkennzeichnungen und -deklarationen – Typ I); ISO 14025:2006 (Typ III)', url: 'https://www.iso.org/' }

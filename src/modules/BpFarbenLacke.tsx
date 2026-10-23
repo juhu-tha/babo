@@ -161,7 +161,7 @@ const OS_SYSTEMS: OSSystem[] = [
     id: 'os2',
     name: 'OS 2',
     title: 'Dünne Beschichtung / Imprägnierung (nicht begeh- und befahrbar)',
-    description: 'Dünner, porenfüllender Schutz für nicht begeh- und befahrbare Flächen; verringert die kapillare Wasseraufnahme. Systemaufbau und Kennwerte nach TR Instandhaltung bzw. DIN V 18026 (Angaben hier als Lehrwerte, manuell prüfen).',
+    description: 'Dünner, porenfüllender Schutz für nicht begeh- und befahrbare Flächen; verringert die kapillare Wasseraufnahme. Systemaufbau nach TR Instandhaltung (OS 2 = OS B): ggf. Hydrophobierung, ggf. Grundierung, mindestens zwei Oberflächenschutzschichten ohne Kratz- und Ausgleichsspachtelung; Schichtdicke und Bindemittel hier als Herstellerangaben.',
     flexible: false,
     thickness: '10 - 50 µm Schichtstärke',
     bridging: 'Keine Rissüberbrückung',
@@ -196,10 +196,10 @@ const OS_SYSTEMS: OSSystem[] = [
     id: 'os5a',
     name: 'OS 5a',
     title: 'Beschichtung mit geringer Rissüberbrückung',
-    description: 'Beschichtung mit geringer Rissüberbrückungsfähigkeit für nicht begeh- und befahrbare Flächen. OS 5a und OS 5b unterscheiden sich im Bindemittelsystem (Zuordnung und Rissüberbrückungsklassen nach TR Instandhaltung manuell prüfen).',
+    description: 'Beschichtung mit geringer Rissüberbrückungsfähigkeit für nicht begeh- und befahrbare Flächen. OS 5a (OS DII) basiert auf Polymerdispersion, OS 5b (OS DI) auf einem Polymer/Zement-Gemisch mit hoher Schichtdicke; Rissüberbrückung nach DIN EN 1062-7, Verfahren B, Klasse B2 bei –20 °C.',
     flexible: true,
     thickness: 'Trockenschichtdicke ≥ 150 µm',
-    bridging: 'Geringe Rissüberbrückung (Klasse manuell prüfen)',
+    bridging: 'Geringe Rissüberbrückung (DIN EN 1062-7, Klasse B2 bei –20 °C)',
     trafficable: false,
     mainBinders: 'Modifizierte Acrylat-Kopolymer-Dispersionen',
     consumption: '0,50 - 0,80 kg/m²',
@@ -212,13 +212,13 @@ const OS_SYSTEMS: OSSystem[] = [
   {
     id: 'os5b',
     name: 'OS 5b',
-    title: 'Beschichtung mit geringer Rissüberbrückung (anderes Bindemittelsystem)',
-    description: 'Wie OS 5a für nicht begeh- und befahrbare Flächen, jedoch mit anderem Bindemittelsystem; muss auch bei tiefen Temperaturen dehnfähig bleiben (Klassen und Prüftemperaturen manuell prüfen).',
+    title: 'Beschichtung mit geringer Rissüberbrückung (Polymer/Zement)',
+    description: 'Wie OS 5a für nicht begeh- und befahrbare Flächen, jedoch als Polymer/Zement-Gemisch mit hoher Schichtdicke; Rissüberbrückung nach DIN EN 1062-7 Klasse B2 bei –20 °C.',
     flexible: true,
-    thickness: 'Trockenschichtdicke ≥ 300 µm',
-    bridging: 'Geringe Rissüberbrückung (Klasse manuell prüfen)',
+    thickness: 'ca. 2 mm (herstellerabhängig)',
+    bridging: 'Geringe Rissüberbrückung (DIN EN 1062-7, Klasse B2 bei –20 °C)',
     trafficable: false,
-    mainBinders: 'Spezial-Polyurethane/Acrylate (lösemittelhaltig oder wässrig)',
+    mainBinders: 'Polymer/Zement-Gemisch (kunststoffmodifizierte mineralische Schlämme)',
     consumption: '0,80 - 1,25 kg/m²',
     layers: [
       'Untergrundprüfung & herstellerneutrale Grundierung',
@@ -1226,7 +1226,7 @@ export default function BpFarbenLacke() {
                   </p>
                   <ul className="list-disc list-inside space-y-1 font-normal text-text-main/80 pl-2">
                     <li>Max. VOC-Gehalt: ≤ 1 g/Liter (fast lösemittelfrei)</li>
-                    <li>Begrenzung von Weichmachern und schwerflüchtigen Stoffen (Kriterien DE-UZ 102, aktuelle Fassung manuell prüfen)</li>
+                    <li>Begrenzung von Weichmachern und schwerflüchtigen Stoffen (SVOC; Kriterien DE-UZ 102, Ausgabe Januar 2019, Version 7 von 07/2025)</li>
                     <li>Strenge Grenzwerte für Isothiazolinone (übliche Biozide als Topfkonservierer, die Allergien auslösen können)</li>
                   </ul>
                 </div>
@@ -1709,8 +1709,8 @@ export default function BpFarbenLacke() {
           { title: 'Silikatfarbe', url: 'https://de.wikipedia.org/wiki/Silikatfarbe' }
         ]}
         literatur={[
-          'Goldschmidt, A.; Streitberger, H.-J.: BASF-Handbuch Lackiertechnik. Hannover: Vincentz Network (Auflage manuell prüfen)',
-          'Brock, T.; Groteklaes, M.; Mischke, P.: Lehrbuch der Lacktechnologie. Hannover: Vincentz Network (Auflage manuell prüfen)',
+          'Goldschmidt, A.; Streitberger, H.-J.: BASF-Handbuch Lackiertechnik. Hannover: Vincentz Network 2014 (Farbe und Lack – Bibliothek)',
+          'Brock, T.; Groteklaes, M.; Mischke, P.; Strehmel, B.: Lehrbuch der Lacktechnologie. 5., vollst. überarb. Aufl., Hannover: Vincentz Network 2017',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[

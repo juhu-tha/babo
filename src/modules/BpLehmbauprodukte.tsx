@@ -48,9 +48,9 @@ const LOAM_STANDARDS_DB: LoamStandardInfo[] = [
     id: 'moertel',
     norm: 'DIN 18946',
     title: 'Lehmmauermörtel',
-    classes: 'Lehmmauermörtel nach DIN 18946 (Normal-, Leicht- und Dünnbettmörtel; Festigkeitsklassen M 2 bis M 4 – manuell prüfen)',
+    classes: 'Lehmmauermörtel nach DIN 18946:2024-03 (Normal-, Leicht- und Dünnbettmörtel; Festigkeitsklassen z. B. M 2,5 mit Druckfestigkeit ≥ 2,5 N/mm²)',
     density: '1,40 - 1,80 g/cm³',
-    strength: 'Haftfestigkeitsgruppen: M10 (≥ 0,10 N/mm²), M15 (≥ 0,15 N/mm²)',
+    strength: 'Druckfestigkeitsklassen nach DIN 18946 (z. B. M 2,5: ≥ 2,5 N/mm²)',
     rules: 'Bindet nur über die Tonminerale; Zusätze wie Zement oder Kalk sind nicht zulässig, sonst geht die Wiederverarbeitbarkeit verloren.',
     application: 'Vermauern von Lehmsteinen, Verfüllen von historischen Fugen im Fachwerkbestand.',
     pros: [
@@ -558,8 +558,8 @@ export default function BpLehmbauprodukte() {
         ]}
         literatur={[
           'Minke, Gernot: Handbuch Lehmbau - Baustoffkunde, Techniken und Architektur (Ökobuch Verlag)',
-          'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln. Wiesbaden: Vieweg+Teubner (Auflage manuell prüfen)',
-          'Dachverband Lehm e. V.: Technische Merkblätter (Auswahl, Ausgaben manuell prüfen)'
+          'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln – Begriffe, Baustoffe, Bauteile. 3., überarb. Aufl., Wiesbaden: Vieweg+Teubner 2009',
+          'Dachverband Lehm e. V.: Technische Merkblätter TM01 Anforderungen an Lehmputz als Bauteil (2. Aufl., Juni 2014), TM05 Qualitätsüberwachung von Baulehm (Juni 2011), TM06 Lehmdünnlagenbeschichtungen (Juni 2015)'
         ]}
         regelwerke={[
           { title: 'DIN 18940:2023-06: Tragendes Lehmsteinmauerwerk – Konstruktion, Bemessung und Ausführung' },

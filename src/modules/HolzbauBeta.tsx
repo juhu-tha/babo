@@ -47,8 +47,8 @@ interface WoodMaterial {
 const woodMaterials: WoodMaterial[] = [
   { class: 'C24', type: 'Nadelholz (S10)', f_mk: 24, f_t0k: 14.5, f_c0k: 21, f_vk: 4.0, E_0mean: 11000, E_005: 7400, rho_k: 350, rho_mean: 420 },
   { class: 'C30', type: 'Nadelholz (S13)', f_mk: 30, f_t0k: 19, f_c0k: 24, f_vk: 4.0, E_0mean: 12000, E_005: 8000, rho_k: 380, rho_mean: 460 },
-  { class: 'D30', type: 'Laubholz (Werte manuell prüfen)', f_mk: 30, f_t0k: 18, f_c0k: 24, f_vk: 3.9, E_0mean: 11000, E_005: 9200, rho_k: 530, rho_mean: 640 },
-  { class: 'D40', type: 'Laubholz (Werte manuell prüfen)', f_mk: 40, f_t0k: 24, f_c0k: 26, f_vk: 4.2, E_0mean: 13000, E_005: 10900, rho_k: 590, rho_mean: 700 },
+  { class: 'D30', type: 'Laubholz (EN 338:2016)', f_mk: 30, f_t0k: 18, f_c0k: 24, f_vk: 3.9, E_0mean: 11000, E_005: 9200, rho_k: 530, rho_mean: 640 },
+  { class: 'D40', type: 'Laubholz (EN 338:2016)', f_mk: 40, f_t0k: 24, f_c0k: 27, f_vk: 4.2, E_0mean: 13000, E_005: 10900, rho_k: 550, rho_mean: 660 },
   { class: 'GL24h', type: 'Brettschichtholz (homogen)', f_mk: 24, f_t0k: 19.2, f_c0k: 24, f_vk: 3.5, E_0mean: 11500, E_005: 9600, rho_k: 385, rho_mean: 420 },
   { class: 'GL28c', type: 'Brettschichtholz (kombiniert)', f_mk: 28, f_t0k: 19.5, f_c0k: 24, f_vk: 3.5, E_0mean: 12500, E_005: 10400, rho_k: 390, rho_mean: 430 },
   { class: 'GL30h', type: 'Brettschichtholz (homogen)', f_mk: 30, f_t0k: 24, f_c0k: 30, f_vk: 3.5, E_0mean: 13600, E_005: 11300, rho_k: 430, rho_mean: 480 },
@@ -265,7 +265,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     const f_c90d = k_mod * (f_c90k / gamma_M); // N/mm²
 
     // 2. Determine k_c90 based on config
-    // DIN EN 1995-1-1 6.1.5 (A1): Nadel-Vollholz 1,25/1,5, BSH 1,5/1,75; sonst 1,0 (NA-Regelungen manuell prüfen)
+    // DIN EN 1995-1-1 6.1.5 (A1): Nadel-Vollholz 1,25/1,5, BSH 1,5/1,75 (Schwellen-/Auflagerdruck, l1 ≥ 2h); sonst 1,0
     const isSoftSolid = woodClass.startsWith('C');
     let k_c90 = 1.0;
     if (qpConfig === 'schwelle') k_c90 = isGlulam ? 1.50 : isSoftSolid ? 1.25 : 1.0;
@@ -626,7 +626,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <span className="text-[10px] uppercase font-black text-amber-800 tracking-widest block mb-1">Prüfzeugnisse &amp; Details</span>
                     <h3 className="font-extrabold text-text-main text-base mb-2">dataholz.eu</h3>
                     <p className="text-xs text-text-main/70 leading-relaxed">
-                      Frei zugänglicher Bauteilkatalog der Holzforschung Austria mit herstellerneutralen Wand-, Decken- und Dachaufbauten und deren bauphysikalischen und brandschutztechnischen Kennwerten (Anerkennung in Deutschland manuell prüfen).
+                      Frei zugänglicher Bauteilkatalog der Holzforschung Austria mit herstellerneutralen Wand-, Decken- und Dachaufbauten und deren bauphysikalischen und brandschutztechnischen Kennwerten (in Österreich von den Baubehörden als Nachweis anerkannt; in Deutschland kein bauaufsichtlicher Verwendbarkeitsnachweis, nur Planungshilfe).
                     </p>
                   </div>
                   <a 
@@ -713,7 +713,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <div className="bg-amber-50/50 border border-amber-200 p-4 rounded-xl text-xs text-amber-950 flex gap-3 leading-relaxed">
                 <AlertTriangle size={18} className="text-amber-700 flex-shrink-0" />
                 <div>
-                  <strong>Hinweis:</strong> Die Landesbauordnungen wurden für den mehrgeschossigen Holzbau schrittweise geöffnet. Die Muster-Holzbaurichtlinie (MHolzBauRL; aktuelle Fassung vom DIBt 2025 veröffentlicht) regelt Bauteile in Holzbauweise für die Gebäudeklassen 4 und 5. Maßgebend ist die jeweilige Landesfassung (manuell prüfen).
+                  <strong>Hinweis:</strong> Die Landesbauordnungen wurden für den mehrgeschossigen Holzbau schrittweise geöffnet. Die Muster-Holzbaurichtlinie (MHolzBauRL 2024, veröffentlicht in den Amtlichen Mitteilungen des DIBt 2025/2) regelt Bauteile in Holzbauweise für die Gebäudeklassen 4 und 5. Maßgebend ist die jeweilige Landesfassung (Einführung über die Landes-VV TB).
                 </div>
               </div>
             </>
@@ -1657,7 +1657,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     <option value="C24">KVH / Vollholz C24 (ρ_k = 350 kg/m³)</option>
                     <option value="C30">Nadelholz C30 (ρ_k = 380 kg/m³)</option>
                     <option value="D30">Laubholz D30 (Buche/Eiche) (ρ_k = 530 kg/m³)</option>
-                    <option value="D40">Laubholz D40 (ρ_k = 590 kg/m³)</option>
+                    <option value="D40">Laubholz D40 (ρ_k = 550 kg/m³)</option>
                     <option value="GL24h">BSH GL24h (ρ_k = 385 kg/m³)</option>
                     <option value="GL30h">BSH GL30h (ρ_k = 430 kg/m³)</option>
                   </select>
@@ -2225,9 +2225,9 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
         regelwerke={[
           { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1)' },
           { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Brandfall)' },
-          { title: 'DIN EN 338 (Festigkeitsklassen Bauholz) und DIN EN 14080 (Brettschichtholz) – Ausgaben manuell prüfen' },
-          { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), DIBt – Landesfassung manuell prüfen' },
-          { title: 'DIN EN 16351 (Brettsperrholz – Anforderungen; Ausgabe manuell prüfen)' }
+          { title: 'DIN EN 338:2016-07 (Festigkeitsklassen Bauholz) und DIN EN 14080:2013-09 (Brettschichtholz)' },
+          { title: 'Muster-Holzbaurichtlinie (MHolzBauRL), Fassung September 2024 (MVV TB 2025/1, lfd. Nr. A 2.2.1.4); Landesfassung gemäß jeweiliger VV TB' },
+          { title: 'DIN EN 16351:2025-07 (Brettsperrholz – Anforderungen)' }
         ]}
         literatur={[
           'Informationsverein Holz (Hrsg.): holzbau handbuch, Reihen 1–5 (einzelne Hefte)',

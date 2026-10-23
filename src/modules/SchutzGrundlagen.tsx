@@ -820,8 +820,8 @@ export default function SchutzGrundlagen() {
           { title: 'TR Instandhaltung (DIBt, Teil 1 Stand Mai 2020, Teil 2; über die MVV TB eingeführt)', url: 'https://www.dibt.de/' },
           { title: 'DIN 31051:2019-06 (Grundlagen der Instandhaltung)' },
           { title: 'DIN EN ISO 12696:2022-09 (Kathodischer Korrosionsschutz von Stahl in Beton)' },
-          { title: 'DIN EN 14038-1 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 1: Realkalisierung; Ausgabe manuell prüfen)' },
-          { title: 'DIN EN 14038-2 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für bewehrten Beton – Teil 2: Chloridextraktion; Ausgabe manuell prüfen)' }
+          { title: 'DIN EN 14038-1:2016-10 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für Stahlbeton – Teil 1: Realkalisierung)' },
+          { title: 'DIN EN 14038-2:2020-12 (Elektrochemische Realkalisierung und Chloridextraktionsbehandlungen für Stahlbeton – Teil 2: Chloridextraktion)' }
         ]}
         formeln={[
           {

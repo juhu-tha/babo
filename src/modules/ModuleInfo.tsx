@@ -300,7 +300,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     basicsDesc2: 'Behandelt werden CE-Kennzeichnung, Europäische Bewertungsdokumente (EAD) und Technische Bewertungen (ETA) sowie MVV TB, nationale Verwendbarkeitsnachweise und Ü-Zeichen.',
     basicsCards: [
       { title: 'AVCP-Systeme inkl. System 3+', desc: 'Prüfumfang von System 1+ bis System 4 sowie das neue System 3+ (Validierung der Umweltleistungsbewertung / LCA nach DIN EN 15804+A2 durch notifizierte Stellen nach VO (EU) 2024/3110).' },
-      { title: 'DoPC & Digitaler Produktpass (DPP)', desc: 'Kombinierte Leistungs- und Konformitätserklärung (Declaration of Performance and Conformity, DoPC) mit schrittweise verpflichtenden Umweltangaben (zunächst GWP) und digitalem Produktpass über einen Datenträger (z. B. QR-Code); Fristen manuell prüfen.' }
+      { title: 'DoPC & Digitaler Produktpass (DPP)', desc: 'Kombinierte Leistungs- und Konformitätserklärung (Declaration of Performance and Conformity, DoPC) mit je Produktfamilie verpflichtend werdenden Umweltangaben (zunächst GWP, ab Geltung der neuen harmonisierten technischen Spezifikation) und digitalem Produktpass über einen Datenträger (z. B. QR-Code; verpflichtend 18 Monate nach dem delegierten Rechtsakt nach Art. 75 VO (EU) 2024/3110).' }
     ],
     submodules: [
       { title: 'Baustoffindustrie', icon: Factory, purpose: 'Wertschöpfungsketten, Rohstoffgewinnung, Energieeinsatz und Zukunftsstrategien der deutschen und europäischen Baustoffindustrie.', standards: 'bbs (Bundesverband Baustoffe – Steine und Erden)', useCase: 'Analyse von CO2-Minderungskostenpfaden in der Zement- und Ziegelherstellung.' },
@@ -377,7 +377,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     literatur: [
       'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
-      'Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (Ausgabe manuell prüfen)'
+      'Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008'
     ],
     regelwerke: [
       { title: 'DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
@@ -466,7 +466,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     literatur: [
       'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-      'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2, Band 1 und 2. Berlin: Beuth (Auflage manuell prüfen)'
+      'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2. Band 1: Grundlagen, Bemessung, Beispiele; Band 2: Schnittgrößen, Gesamtstabilität, Bewehrung und Konstruktion, Beispiele. 7., überarb. u. erw. Aufl., Berlin: Beuth 2023'
     ],
     regelwerke: [
       { title: 'DIN EN 1992-1-1: Eurocode 2 - Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken' },
@@ -646,7 +646,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     ],
     literatur: [
       'Borrmann, A.; König, M.; Koch, C.; Beetz, J. (Hrsg.): Building Information Modeling – Technologische Grundlagen und industrielle Praxis. 2. Aufl., Wiesbaden: Springer Vieweg 2021',
-      'Hausknecht, K.; Liebich, T.: BIM-Kompendium. Stuttgart: Fraunhofer IRB (Auflage manuell prüfen)'
+      'Hausknecht, K.; Liebich, T.: BIM-Kompendium – Building Information Modeling als neue Planungsmethode. Stuttgart: Fraunhofer IRB 2016'
     ],
     regelwerke: [
       { title: 'DIN EN ISO 19650-1/-2:2019-08 (Organisation und Digitalisierung von Informationen über Bauwerke – BIM)' },
@@ -751,7 +751,7 @@ const MODULES_DATA: Record<string, GroupData> = {
     tagline: 'Vermeidung von Frost-Tau-Schäden, physikalisch-chemische Transportprozesse, Baustahl- und Holzzerstörung sowie Polymeralterung und mineralische Gipssprengungen',
     icon: ShieldAlert,
     basicsTitle: 'Lebensdauerbegrenzende Schädigungsprozesse im Ingenieurbau',
-    basicsDesc1: 'Jedes Bauwerk altert unter wechselnden klimatischen, biologischen, elektrochemischen und chemischen Einflüssen. Ein Bauwerk gilt als dauerhaft, wenn es seine standsichere und gebrauchstaugliche Funktion über die geplante Nutzungsdauer (nach DIN EN 1990 z. B. 50 Jahre für übliche Hochbauten, 100 Jahre für Brücken) bei planmäßiger Instandhaltung erfüllt. Die DIN-1045-Reihe 2023 öffnet mit leistungsbezogenen Ansätzen den Weg über die rein deskriptiven Expositionsklassen hinaus (Umfang manuell prüfen).',
+    basicsDesc1: 'Jedes Bauwerk altert unter wechselnden klimatischen, biologischen, elektrochemischen und chemischen Einflüssen. Ein Bauwerk gilt als dauerhaft, wenn es seine standsichere und gebrauchstaugliche Funktion über die geplante Nutzungsdauer (nach DIN EN 1990 z. B. 50 Jahre für übliche Hochbauten, 100 Jahre für Brücken) bei planmäßiger Instandhaltung erfüllt. Leistungsbezogene Nachweise über Expositionswiderstandsklassen (ERK) sollen künftig mit der DAfStb-ERK-Richtlinie (Entwurf 2026) als Alternative zu den deskriptiven Regeln der DIN-1045-Reihe 2023 möglich werden.',
     basicsDesc2: 'Das Modul behandelt werkstoffübergreifende Alterungsprozesse: von Transportprozessen im zementgebundenen Porensystem (Karbonatisierung, Chlorideindringen, Frost-Tausalz-Angriff, treibende Reaktionen wie AKR und Sulfatangriff) über das temperaturabhängige Verhalten viskoelastischer Asphalte, elektrochemische Redoxreaktionen metallischer Korrosionszellen (DIN EN ISO 12944), biologischen Holzabbau (DIN 68800) und physiko-chemische Alterung von Kunststoffen bis hin zur Natursteinverwitterung (WTA) und Spontanbrüchen von ESG durch Nickelsulfid-Einschlüsse (Heißlagerungstest, HST).',
     basicsCards: [
       { title: 'Porentransport-Phänomene', desc: 'Wasser, Sulfat und Chloride penetrieren Baustoffe gerichtet über Kapillarporen (Saugwirkung) oder Konzentrationsgradienten (Ficksche Gesetze). Der w/z-Wert steuert hierbei direkt die porensegmentierende Hydratation.' },
@@ -993,7 +993,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
       { name: "Bundesverband der Deutschen Kalkindustrie e.V.", url: "https://www.kalk.de", desc: "Informationen zu Luftkalken, hydraulischen Kalken und Anwendungen." }
     ],
     books: [
-      { title: "Lehmbau-Handbuch: Der Baustoff Lehm und seine Anwendung", desc: "Minke, G., Ökobuch (Auflage manuell prüfen). Stampflehm, Lehmsteine und Lehmputze." },
+      { title: "Handbuch Lehmbau", desc: "Minke, G., 10. Aufl., Rastede: ökobuch 2022. Stampflehm, Lehmsteine und Lehmputze." },
       { title: "Wendehorst Baustoffkunde", desc: "Neroth, G.; Vollenschaar, D. (Hrsg.), 27. Aufl., Vieweg+Teubner 2011. Grundlagenwerk über alle Baustoffgruppen." },
       { title: "Baustoffkenntnis", desc: "Scholz, W. (begr.); Möhring, R. (Hrsg.), 19. Aufl., Bundesanzeiger Verlag 2016." }
     ],
@@ -1032,8 +1032,8 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
       { name: "DGM (Materialwissenschaft)", url: "https://www.dgm.de", desc: "Deutsche Gesellschaft für Materialkunde e. V." }
     ],
     books: [
-      { title: "Technische Mechanik 1–4", desc: "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A., Springer Vieweg (Auflage manuell prüfen). Statik, Elastostatik, Kinetik." },
-      { title: "Tragwerke 1 und 2", desc: "Krätzig, W. B. et al., Springer (Auflage manuell prüfen). Berechnungsmethoden statisch bestimmter und unbestimmter Stabtragwerke." }
+      { title: "Technische Mechanik 1–4", desc: "Gross, D. et al., Springer Vieweg: Bd. 1 Statik (16. Aufl. 2026), Bd. 2 Elastostatik (15. Aufl. 2024), Bd. 3 Kinetik (16. Aufl. 2024), Bd. 4 (11. Aufl. 2023)." },
+      { title: "Tragwerke 1 und 2", desc: "Krätzig, W. B. et al., Bd. 1: 5. Aufl., Springer 2010; Bd. 2: 5. Aufl., Springer Vieweg 2019. Statisch bestimmte und unbestimmte Stabtragwerke." }
     ],
     publications: [],
     dissertations: []
@@ -1044,9 +1044,9 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
       { name: "Fraunhofer-Institut für Bauphysik (IBP)", url: "https://www.ibp.fraunhofer.de", desc: "Forschung zu Wärme, Feuchte, Akustik; Entwickler von WUFI." }
     ],
     books: [
-      { title: "Lehrbuch der Bauphysik", desc: "Willems, W. M. (Hrsg.), Springer Vieweg (Auflage manuell prüfen). Wärme, Feuchte, Schall, Brand." },
-      { title: "Praktische Bauphysik", desc: "Lohmeyer, G. et al., Springer Vieweg (Auflage manuell prüfen)." },
-      { title: "Formeln und Tabellen Bauphysik", desc: "Willems, W. M.; Schild, K.; Stricker, D., Springer Vieweg (Auflage manuell prüfen)." }
+      { title: "Lehrbuch der Bauphysik", desc: "Willems, W. M. (Hrsg.), 9. Aufl., Springer Vieweg 2022. Wärme, Feuchte, Klima, Schall, Licht, Brand." },
+      { title: "Lohmeyer Praktische Bauphysik", desc: "Schmidt, P.; Windhausen, S., 10. Aufl., Springer Vieweg 2024. Einführung mit Berechnungsbeispielen." },
+      { title: "Formeln und Tabellen Bauphysik", desc: "Willems, W. M.; Schild, K.; Stricker, D., 8. Aufl., Springer Vieweg 2024." }
     ],
     publications: [],
     dissertations: []
@@ -1189,7 +1189,7 @@ const COMPREHENSIVE_RESOURCES: Record<string, FurtherResource> = {
     ],
     books: [
       { title: "Beton – Arten, Herstellung und Eigenschaften", desc: "Grübl, P.; Weigler, H.; Karl, S., 2. Aufl., Ernst & Sohn 2001." },
-      { title: "Zement-Taschenbuch", desc: "Verein Deutscher Zementwerke (Hrsg.), Verlag Bau+Technik (Ausgabe manuell prüfen)." }
+      { title: "Zement-Taschenbuch", desc: "Verein Deutscher Zementwerke (Hrsg.), 51. Ausgabe, Verlag Bau+Technik 2008 (letzte Ausgabe; Normenstand 2008)." }
     ],
     publications: [],
     dissertations: []

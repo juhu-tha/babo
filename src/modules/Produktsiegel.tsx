@@ -309,9 +309,9 @@ export default function Produktsiegel() {
           'Umweltbundesamt (UBA): Praxis-Leitfaden zur umweltfreundlichen öffentlichen Beschaffung von Bauprodukten.'
         ]}
         regelwerke={[
-          { title: 'ISO 14020:2022 (Umweltkennzeichnungen und -programme – Allgemeine Grundsätze; DIN-Ausgabe manuell prüfen)' },
+          { title: 'DIN EN ISO 14020:2023-07 (ISO 14020:2022; Umweltaussagen für Produkte und deren Programme – Grundsätze und allgemeine Anforderungen)' },
           { title: 'ISO 14024:2018 (Umweltkennzeichnungen Typ I – Grundsätze und Verfahren)' },
-          { title: 'DIN EN ISO 14025:2011-10 (Umweltkennzeichnungen Typ III – Grundsätze und Verfahren; Ausgabe manuell prüfen)' }
+          { title: 'DIN EN ISO 14025:2011-10 (Umweltkennzeichnungen und -deklarationen – Typ III Umweltdeklarationen – Grundsätze und Verfahren)' }
         ]}
         formeln={[
           {

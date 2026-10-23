@@ -184,7 +184,7 @@ export default function Sichtbeton() {
       <FormulaDerivationBox
         title="Anwendungsbeispiel: Porenflächenanteil einer Prüffläche"
         zielGleichung="A_{Poren} = \frac{\sum A_{Pore,i}}{A_{Messfeld}} \cdot 100\,\%"
-        normQuelle="Auswertung an Erprobungsflächen (Lehrwerte; Klassengrenzen nach Merkblatt manuell prüfen)"
+        normQuelle="Auswertung an Erprobungsflächen (Lehrwerte; Porigkeitsklassen P1–P4 nach DBV/VDZ-Merkblatt Sichtbeton, Fassung Juni 2015)"
         schritte={[
           { titel: '1. Messfeld', formel: 'A_{Messfeld} = 500 \\cdot 500 = 250\\,000\\,\\text{mm}^2', erklaerung: 'Quadratisches Messfeld auf der Ansichtsfläche.' },
           { titel: '2. Porenfläche', formel: '\\sum A_{Pore,i} = 600\\,\\text{mm}^2', erklaerung: 'Summe aller Poren über der Erfassungsgrenze.' },
@@ -212,7 +212,7 @@ export default function Sichtbeton() {
           { title: 'DIN EN 13670 (Ausführung von Tragwerken aus Beton)' }
         ]}
         literatur={[
-          'Peck, M. (Hrsg.): Sichtbeton – Planung und Ausführung (Angaben manuell prüfen)',
+          'Peck, M.; Bose, T.; Bosold, D.: Technik des Sichtbetons – Planung und Ausführung von Sichtbetonflächen. 2., überarb. Aufl., Erkrath: Verlag Bau+Technik 2014',
           'Deutscher Beton- und Bautechnik-Verein (Hrsg.): Sichtbeton planen, ausschreiben und ausführen – Hintergründe und Erläuterungen zum DBV/VDZ-Merkblatt Sichtbeton. Berlin 2022',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
@@ -220,7 +220,7 @@ export default function Sichtbeton() {
           {
             formel: 'A_{\\text{Poren}} = \\frac{\\sum A_{\\text{Pore,i}}}{A_{\\text{Messfeld}}} \\cdot 100\\,\\%',
             erklaerung: 'Porenflächenanteil auf der Schalungsfläche zur Einstufung nach DBV-Porenschablone (z. B. P1 bis P4).',
-            quelle: 'DBV/VDZ-Merkblatt Sichtbeton (Klassengrenzen manuell prüfen)'
+            quelle: 'DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015; Porigkeitsklassen P1 ≤ 3000 mm², P2 ≤ 2250 mm², P3 ≤ 1500 mm², P4 ≤ 750 mm² je Prüffläche 500 × 500 mm)'
           },
           {
             formel: 'c_{\\text{nom}} = c_{\\text{min}} + \\Delta c_{\\text{dev}} \\quad (\\text{Farb- und Rostschutz})',

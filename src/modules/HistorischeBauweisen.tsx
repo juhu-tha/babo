@@ -915,7 +915,7 @@ export default function HistorischeBauweisen() {
         ]}
         literatur={[
           "Breymann, G. A.: Allgemeine Bau-Constructions-Lehre, mehrere Bände (ab 1849; Nachdrucke verfügbar).",
-          "WTA-Merkblatt 8-1: Fachwerkinstandsetzung nach WTA I – Bauphysikalische Anforderungen an Fachwerkgebäude (Ausgabe manuell prüfen)."
+          "WTA-Merkblatt 8-1-14/D: Fachwerkinstandsetzung nach WTA I – Bauphysikalische Anforderungen an Fachwerkgebäude (Ausgabe 09.2014)"
         ]}
         regelwerke={[
           { title: "DIN 1053-1:1996-11 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)" },

@@ -401,10 +401,10 @@ export default function BpPutzEstrich() {
           { title: 'Mörtel', url: 'https://de.wikipedia.org/wiki/M%C3%B6rtel' }
         ]} 
         literatur={[ 
-          'Unger, A.: Fußboden-Atlas – richtig planen, Schäden vermeiden. Donauwörth: QUO-VADO (Auflage manuell prüfen)',
+          'Unger, A.: Fußboden-Atlas – Fußböden richtig planen und ausführen. 7., in Teilen neu bearb. Aufl., 2 Bde., Donauwörth: QUO-VADO 2011',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'IWM Industrieverband WerkMörtel e.V.: Technische Merkblätter für Werktrockenmörtel.',
-          'Leitlinien für das Verputzen von Mauerwerk und Beton (Bundesverband Ausbau und Fassade, IWM u. a.; Ausgabe manuell prüfen)'
+          'Leitlinien für das Verputzen von Mauerwerk und Beton (VDPM mit 17 Fachverbänden, 4. Fassung, November 2022)'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 13914-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)' }, 

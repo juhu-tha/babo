@@ -817,7 +817,7 @@ export default function BpMetallisch() {
         literatur={[ 
           'Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3 (Bauwerk Verlag)', 
                     'Bargel, H.-J.; Schulze, G.: Werkstoffkunde (Springer Vieweg)',
-          'Deutsches Kupferinstitut: Informationsdrucke zu Kupfer im Bauwesen (Titel/Ausgabe manuell prüfen)'
+          'Kupferverband e. V. (ehem. Deutsches Kupferinstitut): Informationsdrucke \'Kupfer in der Architektur\' (03/2020), \'Dachdeckung und Außenwandbekleidung mit Kupfer\' (05/2002), \'Nachhaltiges Bauen mit Kupfer\' (08/2022)'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)' }, 

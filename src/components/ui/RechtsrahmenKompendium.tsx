@@ -332,7 +332,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2024', text: 'Finale Verabschiedung der revidierten Verordnung im EU-Parlament/Rat.' },
       { year: '2025', text: 'Start der Überarbeitung harmonisierter europäischer Produktnormen (hEN).' },
-      { year: 'ab 2027', text: 'Schrittweise Einführung des Digitalen Produktpasses je Produktfamilie über delegierte Rechtsakte (Zeitplan manuell prüfen).' },
+      { year: 'ab 2027', text: 'Schrittweise Einführung des Digitalen Produktpasses je Produktfamilie; verpflichtend 18 Monate nach Inkrafttreten des delegierten Rechtsakts nach Art. 75 Abs. 1 VO (EU) 2024/3110 (Stand 10/2026 noch nicht erlassen).' },
       { year: '2040', text: 'Spätestes Ende der schrittweisen Aufhebung der VO (EU) 305/2011 (2026 bis 2040); bis dahin gelten für Produkte unter alten harmonisierten Normen Übergangsregeln.' }
     ]
   },
@@ -485,7 +485,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['bestand', 'finanzen', 'planer'],
     primaryTarget: 'Brennstoffhändler (Gas, Öl, Kohle), Immobilieneigentümer, Vermieter',
     leadQuote: 'Das europaweite Preissignal ab 2028: Fossile Heizenergie im Gebäudebestand wird marktgetrieben verteuert.',
-    coreSummary: 'Ursprünglich für 2027 geplant, nach Beschluss von Ende 2025 auf 2028 verschoben (Stand manuell prüfen): Dann startet das EU-ETS II als eigenständiges Handelssystem für Brennstoffe, die in Gebäuden verbrannt werden. Inverkehrbringer fossiler Brennstoffe müssen Zertifikate erwerben. Die Kosten werden auf die Heizkosten umgelegt. Ein Marktstabilitätsmechanismus soll Preisspitzen dämpfen (Richtwert 45 € je Tonne in Preisen von 2020); die schrittweise Mengenverknappung verteuert den Betrieb unsanierter Bestandsgebäude dennoch deutlich.',
+    coreSummary: 'Ursprünglich für 2027 geplant, durch Verordnung (EU) 2026/667 (politische Einigung November 2025) auf 2028 verschoben. Dann startet das EU-ETS II als eigenständiges Handelssystem für Brennstoffe, die in Gebäuden verbrannt werden. Inverkehrbringer fossiler Brennstoffe müssen Zertifikate erwerben. Die Kosten werden auf die Heizkosten umgelegt. Ein Marktstabilitätsmechanismus soll Preisspitzen dämpfen (Richtwert 45 € je Tonne in Preisen von 2020); die schrittweise Mengenverknappung verteuert den Betrieb unsanierter Bestandsgebäude dennoch deutlich.',
     keyDuties: [
       'Inverkehrbringer von Brennstoffen müssen ab Start des ETS II für die mit Gas und Öl verbundenen Emissionen Zertifikate abgeben; bis dahin gilt in Deutschland das BEHG.',
       'Strikte jährliche Reduktion der Zertifikatemenge um über 5 % pro Jahr.',

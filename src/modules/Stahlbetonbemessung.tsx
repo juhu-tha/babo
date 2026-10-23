@@ -416,7 +416,7 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Normenentwicklung &amp; Stand 2026</span>
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2 mt-0.5">
                   <Sparkles className="text-amber-500 h-5 w-5" />
-                  2. Generation des Eurocode 2 (EN 1992-1-1:2023, deutsche Fassung DIN EN 1992-1-1:2025-09; bauaufsichtliche Einführung manuell prüfen)
+                  2. Generation des Eurocode 2 (EN 1992-1-1:2023, deutsche Fassung DIN EN 1992-1-1:2025-09; bauaufsichtlich noch nicht eingeführt, Stand MVV TB 2025/1)
                 </h3>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200">
@@ -503,15 +503,15 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
         ]}
         regelwerke={[
           { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 + DIN EN 1992-1-1/NA:2013-04 (Eurocode 2, bauaufsichtlich eingeführt)' },
-          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2, 2. Generation – bauaufsichtliche Einführung manuell prüfen)' },
+          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2, 2. Generation – bauaufsichtlich noch nicht eingeführt, Stand MVV TB 2025/1)' },
           { title: 'DIN 488-1:2009-08 (Betonstahl – Sorten, Eigenschaften, Kennzeichen)' },
           { title: 'DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (2024-01)' }
         ]}
         literatur={[
           'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
-          'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2, Band 1 und 2. Berlin: Beuth 2023 (Auflage manuell prüfen)',
-          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Ausgabe manuell prüfen)',
-          'Bargel, H.-J.; Schulze, G. (Hrsg.): Werkstoffkunde. Berlin: Springer Vieweg (Auflage manuell prüfen)'
+          'Goris, A. (Hrsg.): Stahlbetonbau-Praxis nach Eurocode 2. Band 1: Grundlagen, Bemessung, Beispiele; Band 2: Schnittgrößen, Gesamtstabilität, Bewehrung und Konstruktion, Beispiele. 7., überarb. u. erw. Aufl., Berlin: Beuth 2023',
+          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020',
+          'Bargel, H.-J.; Siemer, U. (Hrsg.): Werkstoffkunde – Strukturen, grundlegende Eigenschaften. 14. Aufl., Berlin: Springer Vieweg 2026'
         ]}
         formeln={FORMELN_JE_REITER[currentTab] ?? []}
       />

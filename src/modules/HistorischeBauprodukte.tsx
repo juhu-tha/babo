@@ -882,7 +882,7 @@ export default function HistorischeBauprodukte() {
           { titel: 'Folgerung', erklaerung: 'Quellen ermitteln, mittelfristig sanieren, bis dahin regelmäßig lüften und Kontrollmessungen durchführen.', formel: '\\text{Sanierung mittelfristig}' }
         ]}
         ergebnisHinweis="Für dioxinähnliche PCB und die Gesamtbewertung gelten zusätzliche Kriterien der Länder; die Richtlinie ist bauaufsichtlich über die Länder eingeführt."
-        normQuelle="PCB-Richtlinie (Fassung manuell prüfen)"
+        normQuelle="PCB-Richtlinie, Fassung September 1994 (MVV TB 2025/1, lfd. Nr. A 3.2.4 mit Anlage A 3.2/1)"
       />
       <FormulaDerivationBox
         title="Beispiel 2: Bleiwerte im Trinkwasser eines Altbaus"
@@ -892,8 +892,8 @@ export default function HistorischeBauprodukte() {
           { titel: 'Grenzwert', erklaerung: 'Trinkwasserverordnung 2023:', formel: '25 > 10\\,\\mu\\text{g/l} \\Rightarrow \\text{Überschreitung}' },
           { titel: 'Maßnahme', erklaerung: 'Bleileitungen waren bis 12.01.2026 zu entfernen oder stillzulegen; der Betreiber muss Nutzer informieren.', formel: '\\text{Austausch der Leitungen}' }
         ]}
-        ergebnisHinweis="Ab 2028 sinkt der Grenzwert nach EU-Trinkwasserrichtlinie auf 5 µg/l. Bleileitungen finden sich vor allem in Altbauten; ihre Verbreitung ist regional sehr unterschiedlich."
-        normQuelle="TrinkwV 2023 (Paragrafen manuell prüfen)"
+        ergebnisHinweis="Ab 12.01.2028 sinkt der Grenzwert nach TrinkwV (Anlage 2 Teil II) von 10 auf 5 µg/l; die EU-Trinkwasserrichtlinie verlangt dies erst bis 2036. Bleileitungen finden sich vor allem in Altbauten; ihre Verbreitung ist regional sehr unterschiedlich."
+        normQuelle="TrinkwV 2023, § 17 Abs. 1 (Entfernung/Stilllegung) und Abs. 5 (Information der Verbraucher)"
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -925,7 +925,7 @@ export default function HistorischeBauprodukte() {
           { title: 'GefStoffV (Novelle 12/2024): Erkundungspflicht des Veranlassers bei Gebäuden mit Baubeginn vor 31.10.1993', url: 'https://www.gesetze-im-internet.de/gefstoffv_2010/' },
           { title: 'TRGS 519 (Technische Regeln für Gefahrstoffe - Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten)', url: 'https://www.baua.de/' },
           { title: 'VDI 6202 Blatt 1 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)', url: 'https://www.vdi.de/' },
-          { title: 'Trinkwasserverordnung 2023 (Bleileitungen: Austausch bzw. Stilllegung bis 12.01.2026; Paragraf manuell prüfen)', url: 'https://www.gesetze-im-internet.de/trinkwv_2023/' },
+          { title: 'Trinkwasserverordnung 2023, § 17 (Bleileitungen: Entfernung bzw. Stilllegung bis 12.01.2026; Fristverlängerung nach Abs. 2/3 möglich)', url: 'https://www.gesetze-im-internet.de/trinkwv_2023/' },
           { title: 'TRGS 521 (Abbruch, Sanierung und Instandhaltung mit alten Mineralfasern)', url: 'https://www.baua.de/' },
           { title: 'PCP-Richtlinie (Richtlinie für die Bewertung und Sanierung Pentachlorphenol-belasteter Baustoffe)' },
           { title: 'PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe)' }

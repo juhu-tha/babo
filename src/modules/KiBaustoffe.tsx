@@ -876,8 +876,8 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           { titel: 'Preise', erklaerung: 'Lehrwerte: 3 € je Million Eingabe-Token, 15 € je Million Ausgabe-Token; Ausgabe 2 000 Token:', formel: 'K = 0{,}03 \\cdot 3 + 0{,}002 \\cdot 15 = 0{,}09 + 0{,}03' },
           { titel: 'Ergebnis', erklaerung: 'Kosten je Anfrage:', formel: 'K = 0{,}12\\ \\text{€}' }
         ]}
-        ergebnisHinweis="Tarife ändern sich häufig (Stand 10/2026 manuell prüfen). Bei wiederholten Rückfragen wird der gesamte Verlauf erneut als Eingabe berechnet – die Kosten wachsen mit jeder Runde."
-        normQuelle="Anbieter-Preislisten (manuell prüfen)"
+        ergebnisHinweis="Tarife ändern sich häufig (Stand 10/2026; vor Nutzung beim Anbieter prüfen). Bei wiederholten Rückfragen wird der gesamte Verlauf erneut als Eingabe berechnet – die Kosten wachsen mit jeder Runde."
+        normQuelle="Anbieter-Preislisten (Stand 10/2026)"
       />
       <FormulaDerivationBox
         title="Beispiel 2: Kontextfenster-Budget"
@@ -960,7 +960,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           { titel: 'Hochrisiko nach Digital Omnibus', erklaerung: 'Anhang III ab 2. Dezember 2027, Anhang I ab 2. August 2028:', formel: 't_{III} = \\text{2. Dezember 2027}' },
           { titel: 'Restzeit', erklaerung: 'Vom 20. Oktober 2026 bis zum 2. Dezember 2027:', formel: '\\Delta t = 365 + 31 + 12 = 408\\ \\text{Tage} \\approx 13{,}4\\ \\text{Monate}' }
         ]}
-        ergebnisHinweis="Die Verschiebung betrifft nur die Hochrisiko-Pflichten. Die Fundstelle des Digital Omnibus im Amtsblatt ist manuell zu prüfen; bis zur Veröffentlichung gelten die ursprünglichen Fristen."
+        ergebnisHinweis="Die Verschiebung betrifft die Hochrisiko-Pflichten; sie gilt seit Inkrafttreten der Verordnung (EU) 2026/1744 (ABl. L vom 24.07.2026) am 27.07.2026. Der Omnibus führt zudem ab 02.12.2026 zusätzliche Verbote ein."
         normQuelle="Verordnung (EU) 2024/1689 Art. 113; Digital Omnibus zur KI-VO"
       />
       <FormulaDerivationBox
@@ -989,7 +989,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           { titel: 'Hardware', erklaerung: 'Passt auf eine Grafikkarte mit 12 GB:', formel: '10\\ \\text{GB} < 12\\ \\text{GB}' }
         ]}
         ergebnisHinweis="Der Kontext-Cache wächst mit der Kontextlänge; sehr lange Dokumente benötigen deutlich mehr Speicher oder werden auf CPU/RAM ausgelagert und dann langsam."
-        normQuelle="GGUF/llama.cpp-Dokumentation (manuell prüfen)"
+        normQuelle="GGUF/llama.cpp-Dokumentation (github.com/ggml-org/llama.cpp)"
       />
       <FormulaDerivationBox
         title="Beispiel 2: Wirkung der Quantisierung bei einem 70B-Modell"
@@ -1102,7 +1102,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
           'Goodfellow, I.; Bengio, Y.; Courville, A.: Deep Learning. Cambridge (MA): MIT Press 2016' 
         ]} 
         regelwerke={[ 
-          { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – gestaffelte Anwendung, geändert durch Digital Omnibus (Fundstelle manuell prüfen)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+          { title: 'Verordnung (EU) 2024/1689 (KI-Verordnung) – gestaffelte Anwendung, geändert durch Verordnung (EU) 2026/1744 (Digital Omnibus, ABl. L vom 24.07.2026)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
           { title: 'Verordnung (EU) 2016/679 (DSGVO)', url: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
           { title: 'UrhG § 44b (Text und Data Mining) und § 60d (wissenschaftliche Forschung)', url: 'https://www.gesetze-im-internet.de/urhg/__44b.html' },
           { title: 'ISO/IEC 42001:2023 (KI-Managementsysteme)' }

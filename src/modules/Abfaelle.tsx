@@ -2306,7 +2306,7 @@ export default function Abfaelle() {
                     </p>
                     <ul className="list-disc pl-5 mt-2 space-y-2 text-slate-600 font-semibold">
                       <li>
-                        <strong>Geltungsbereich Boden &amp; Ersatzbaustoffe (BBodSchV Anlage 3, EBV; Zuordnung manuell prüfen):</strong> Beprobungen von anstehendem Boden, Bodenaushub und Boden-Ersatzbaustoffen (unter BBodSchV bzw. EBV) verweisen für Haufwerke auf <strong>DIN 19698-1</strong> (Grundregeln) und <strong>DIN 19698-2</strong> (Spezifische Parameter). Die LAGA PN 98 bleibt im Abfallvollzug maßgeblich; DIN 19698 übernimmt im Bodenschutzrecht deren Grundsätze.
+                        <strong>Geltungsbereich Boden &amp; Ersatzbaustoffe (BBodSchV §§ 18–24, EBV §§ 8 und 14):</strong> Haufwerke sind nach § 21 BBodSchV bzw. § 8 EBV nach <strong>LAGA PN 98</strong> zu beproben. Für die Probenahme von Böden in situ kann nach § 14 Abs. 2 EBV insbesondere <strong>DIN 19698-6</strong> (2019-01) herangezogen werden.
                       </li>
                       <li>
                         <strong>Geltungsbereich Bauschutt &amp; Deponien (DepV § 8, Anhang 4):</strong> Bauschuttfraktionen und Zuordnungsanalysen mineralischer Abfälle zur Deponierung stützen sich nach wie vor auf den Vollzug der <strong>LAGA PN 98</strong> in Kombination mit landsspezifischen Richtlinien des Landesamtes für Umwelt (z.B. Bayern, Thüringen, Hessen).

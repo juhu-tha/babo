@@ -1195,7 +1195,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           'Scholz, W. (begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. 19. Aufl., Köln: Bundesanzeiger Verlag 2016',
           'Schürmann, H.: Konstruieren mit Faser-Kunststoff-Verbunden. 2. Aufl., Berlin, Heidelberg: Springer 2007',
           'Ehrenstein, G. W.: Faserverbund-Kunststoffe. 2. Aufl., München: Hanser 2006',
-          'Fischer, H.-M. et al.: Lehrbuch der Bauphysik. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)'
+          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik – Wärme, Feuchte, Klima, Schall, Licht, Brand. 9. Aufl., Wiesbaden: Springer Vieweg 2022'
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 6946:2018-03 (Bauteile – Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient – Berechnungsverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },

@@ -153,7 +153,7 @@ export default function Sonderbetone() {
       <FormulaDerivationBox
         title="Anwendungsbeispiel: Mehrwasser bei RC-Gesteinskörnung"
         zielGleichung="\Delta w = a_{RC} \cdot m_g \cdot WA_{24}"
-        normQuelle="Lehrwerte; zulässige Anteile nach DAfStb-Richtlinie (2010) – Übernahme in DIN 1045-2:2023-08 manuell prüfen"
+        normQuelle="Lehrwerte; zulässige Anteile nach DIN 1045-2:2023-08, Abschn. 5.2.3.4 und Anhang E (Tab. E.5; vormals DAfStb-Richtlinie 2010)"
         schritte={[
           { titel: '1. Gegeben', formel: 'a_{RC} = 25\\,\\%,\\; m_g = 1\\,800\\,\\text{kg/m}^3,\\; WA_{24} = 5\\,\\%', erklaerung: 'Typ 1 (Betonsplitt) mit 24-h-Wasseraufnahme 5 M.-%.' },
           { titel: '2. Mehrwasser', formel: '\\Delta w = 0{,}25 \\cdot 1\\,800 \\cdot 0{,}05 = 22{,}5\\,\\text{kg/m}^3', erklaerung: 'Wird von der porösen Körnung aufgesogen und steht nicht für die Verarbeitbarkeit zur Verfügung.' },
@@ -247,7 +247,6 @@ export default function Sonderbetone() {
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Leichtbetonklassen LC8/9 bis LC80/88, Rohdichteklassen D1.0 bis D2.0)' },
           { title: 'DIN EN 1992-1-1:2011-01 mit NA:2013-04, Abschnitt 11 (Leichtbeton); Neuausgabe DIN EN 1992-1-1:2025-09' },
           { title: 'DIN EN 13055:2016-11 (Leichte Gesteinskörnungen)' },
-          { title: 'DBV-Merkblatt Konstruktionsleichtbeton (Ausgabe manuell prüfen)' },
           { title: 'DIBt: Vorhabenbezogene Bauartgenehmigung (vBG) / Zustimmung im Einzelfall (ZiE)' },
           { title: 'DIN EN 206 / DIN 1045-2 (Rohdichteklassen D0.8 und D1.0)' },
           { title: 'DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)' },
@@ -256,7 +255,7 @@ export default function Sonderbetone() {
           { title: 'ÖBV-Richtlinie Spritzbeton (Klassen J1, J2, J3 zur Frühfestigkeit)' },
           { title: 'DAfStb-Richtlinie Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen nach DIN EN 12620 (2010-09)' },
           { title: 'DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)' },
-          { title: 'DIN 1045-2:2023-08 (Beton mit rezyklierter Gesteinskörnung; Bezeichnungen manuell prüfen)' },
+          { title: 'DIN 1045-2:2023-08 (Beton mit rezyklierter Gesteinskörnung Typ 1/Typ 2: Abschn. 5.2.3.4 und Anhang E)' },
           { title: 'DAfStb-Richtlinie Ultrahochfester Beton – in Vorbereitung; Sachstand: DAfStb-Heft 561 (2008)' },
           { title: 'NF P 18-470 (Bétons fibrés à ultra-hautes performances - Spécification, performance, production et conformité)' },
           { title: 'FGSV-Merkblatt für Versickerungsfähige Verkehrsflächen (M Vv)' },
@@ -271,7 +270,7 @@ export default function Sonderbetone() {
           { title: 'DIN EN 1916 / DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)' },
           { title: 'DIN EN 206 / DIN 1045-2 (Unterwasserbeton; Mindestzementgehalt manuell prüfen)' },
           { title: 'ZTV-W LB 215 (Zusätzliche Technische Vertragsbedingungen im Wasserbau - Wasserbauwerke aus Beton)' },
-          { title: 'DBV-Merkblatt Unterwasserbeton (manuell prüfen)' },
+          { title: 'DBV-Merkblatt Unterwasserbeton (Fassung Oktober 2014)' },
           { title: 'DAfStb-Richtlinie Selbstverdichtender Beton (SVB-Richtlinie, 2012-09)' },
           { title: 'DIN EN 12350-8 (Prüfung von Frischbeton - Teil 8: Selbstverdichtender Beton - Setzfließversuch)' },
           { title: 'DIN EN 12350-9 / -10 / -12 (V-Trichter-Versuch, L-Kasten-Versuch, Blockierring-Versuch)' },
@@ -282,7 +281,6 @@ export default function Sonderbetone() {
           { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton' },
           { title: 'DIN EN 197-1 (Zemente mit niedriger Hydratationswärme LH / sehr niedriger Hydratationswärme VLH)' },
           { title: 'DIN EN 1992-1-1 / DIN EN 1992-3 (Rissbreitenbegrenzung infolge früher Zwangskräfte)' },
-          { title: 'DBV-Merkblatt Pumpbeton (manuell prüfen)' },
           { title: 'DIN EN 206 / DIN 1045-2 (Mindestmehlkorngehalt für pumpbare Betone)' },
           { title: 'DIN 24200 (Betonpumpen und Verteilermaste - Sicherheitstechnische Anforderungen)' },
           { title: 'DIN EN 1536:2015-10 (Ausführung von Arbeiten im Spezialtiefbau - Bohrpfähle)' },
@@ -293,25 +291,23 @@ export default function Sonderbetone() {
         ]}
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
-          'Faust, T.: Leichtbeton im konstruktiven Ingenieurbau (Angaben manuell prüfen)',
+          'Faust, T.: Leichtbeton im konstruktiven Ingenieurbau. Berlin: Ernst & Sohn 2003 (Bauingenieur-Praxis)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'Lösch, C.; Rieseberg, P.; Hückler, A.: Infraleichtbeton – Entwurf, Konstruktion, Bau (2025)',
           'Maidl, B.: Handbuch für Spritzbeton. Berlin: Ernst & Sohn 1992',
-          'Kusterle, W. et al.: Spritzbetontechnologie (Ernst & Sohn, Beton-Kalender) (Angaben manuell prüfen)',
-          'DAfStb-Hefte zu rezyklierten Gesteinskörnungen (Heftnummern manuell prüfen)',
+          'Kusterle, W. (Hrsg.): Spritzbeton-Technologie 2006 – Berichtsband der 8. internationalen Fachtagung, Alpbach, 26./27. Januar 2006. Innsbruck: Institut für Betonbau, Baustoffe und Bauphysik, Universität Innsbruck 2006',
+          'DAfStb-Hefte 504, 505, 507, 508 (2000) und 514 (2001) zu Beton mit rezyklierten Zuschlägen; Hefte 639–641 (BMBF-Verbundvorhaben R-Beton)',
           'Müller, A.: Baustoffrecycling – Entstehung, Aufbereitung, Verwertung. Wiesbaden: Springer Vieweg 2018',
           'DAfStb-Heft 561: Sachstandsbericht Ultrahochfester Beton (2008)',
           'Fehling, E.; Schmidt, M.; Walraven, J. et al. (2014): Ultra-High Performance Concrete UHPC (Ernst & Sohn)',
-          'Forschungsgesellschaft für Straßen- und Verkehrswesen (FGSV): Leitfaden für Dränbeton im Straßenbau (Angaben manuell prüfen)',
-          'König, G.; Kützing, L.: Grundlagen des Faserbetons (Angaben manuell prüfen)',
+          'FGSV: Merkblatt für Dränbetontragschichten (M DBT), FGSV 827, Ausgabe 2013',
+          'König, G. (Hrsg.): Faserbeton. Innovationen im Bauwesen – Beiträge aus Praxis und Wissenschaft. Berlin: Bauwerk 2002',
           'DAfStb-Heft 614: Erläuterungen zur DAfStb-Richtlinie Stahlfaserbeton (2015)',
-          'Beton-Kalender: Fertigteile und Spannbetonmaste (Ernst & Sohn) (Angaben manuell prüfen)',
-          'Bundesanstalt für Wasserbau (BAW): Richtlinie Unterwasserbeton für Trog- und Sohlenbauwerke (Angaben manuell prüfen)',
-          'DAfStb-Heft 560: Sachstandsbericht Selbstverdichtender Beton (Angaben manuell prüfen)',
-          'Dehn, F.; Holschemacher, K.: Selbstverdichtender Beton (Angaben manuell prüfen)',
-          'Schultze, N.: Strahlenschutz im Hochbau (Bauverlag) (Angaben manuell prüfen)',
-          'Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton (Heftnummer manuell prüfen; Heft 555 betrifft WU-Bauwerke)',
-          'Kaplan, D.; de Larrard, F.; Sedran, T. (2005): Design of Concrete Pumping Pipes and Rheology (ACI Materials Journal) (Angaben manuell prüfen)',
+          'Bergmeister, K.; Fingerloos, F.; Wörner, J.-D. (Hrsg.): Beton-Kalender 2021 – Schwerpunkte: Fertigteile; Integrale Bauwerke. Berlin: Ernst & Sohn 2020',
+          'DAfStb-Heft 516: Sachstandbericht Selbstverdichtender Beton (SVB) (2001)',
+          'König, G.; Holschemacher, K.; Dehn, F. (Hrsg.): Selbstverdichtender Beton – Innovationen im Bauwesen. Beiträge aus Praxis und Wissenschaft. Berlin: Bauwerk 2001',
+          'DAfStb-Heft 520: Rostásy, F. S.; Krauß, M.: Frühe Risse in massigen Betonbauteilen – Ingenieurmodelle für die Planung von Gegenmaßnahmen (2001); DAfStb-Heft 556: Krauß, M.: Probabilistischer Nachweis der Wirksamkeit von Maßnahmen gegen frühe Trennrisse in massigen Betonbauteilen (2006)',
+          'Kaplan, D.; de Larrard, F.; Sedran, T.: Design of Concrete Pumping Circuit. ACI Materials Journal 102 (2005) No. 2',
           'Kempfert, H.-G.; Lüking, J.: Geotechnik nach Eurocode, Band 2: Grundbau (2020)'
         ]}
         formeln={[

@@ -1616,7 +1616,7 @@ export default function HistorischeMaterialkennwerte() {
           { titel: 'Bemessungswert', erklaerung: 'Direkter Bemessungswert ohne Teilsicherheitsbeiwert:', formel: 'f_d = 25{,}0 \\cdot 0{,}627 = 15{,}7\\,\\text{N/mm}^2' }
         ]}
         ergebnisHinweis="Zum Vergleich: Klassisch mit f_ck = 20 N/mm² und γ_c = 1,5 ergäbe sich 13,3 N/mm² (ohne α_cc). Gemessene, geringe Streuung kann im Bestand Reserven aufdecken – Modelleunsicherheit und Umrechnungsfaktoren sind zusätzlich zu berücksichtigen."
-        normQuelle="DIN EN 1990, Anhang C/D; EN 1990-2:2026 (DIN-Ausgabe manuell prüfen)"
+        normQuelle="DIN EN 1990, Anhang C/D; EN 1990-2:2026 (DIN-Fassung noch nicht erschienen, geplant 2027)"
       />
       <FormulaDerivationBox
         title="Beispiel 2: Zugversuch an einem historischen Flussstahl"
@@ -1643,7 +1643,7 @@ export default function HistorischeMaterialkennwerte() {
         ]}
         regelwerke={[
           { title: 'DIN EN 1990 Anhang D (Versuchsgestützte Bemessung)' },
-          { title: 'EN 1990-2:2026 (Eurocode – Grundlagen der Bewertung und Ertüchtigung bestehender Tragwerke; ersetzt CEN/TS 17440:2020; DIN-Ausgabe manuell prüfen)' },
+          { title: 'EN 1990-2:2026 (Eurocode – Grundlagen der Bewertung und Ertüchtigung bestehender Tragwerke; ersetzt CEN/TS 17440:2020; DIN-Fassung noch nicht erschienen, geplant 2027)' },
           { title: 'DBV-Merkblatt: Bauen im Bestand – Modifizierte Teilsicherheitsbeiwerte', url: 'https://www.betonverein.de/' },
           { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation 2025-09' },
           { title: 'DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)' },

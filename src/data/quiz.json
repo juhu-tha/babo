@@ -3922,7 +3922,7 @@
     "moduleTitle": "Denkmalpflege",
     "topic": "Mörtelverträglichkeit",
     "difficulty": "Basis",
-    "normRef": "WTA-Merkblätter (Auswahl manuell prüfen)",
+    "normRef": "WTA-Merkblätter 3-12-16/D (Natursteinrestaurierung: Fugensanierung) und 3-20-26/D (Instandsetzung von historischem Ziegelmauerwerk)",
     "question": "Welche Eigenschaft sollte ein Fugenmörtel für historisches Mauerwerk im Verhältnis zum Stein haben?",
     "options": [
       "Höhere Festigkeit und Dichtheit als der Stein",
@@ -4222,7 +4222,7 @@
     "moduleTitle": "Hist. Bauprodukte",
     "topic": "PCB-Raumluft",
     "difficulty": "Basis",
-    "normRef": "PCB-Richtlinie (Fassung manuell prüfen)",
+    "normRef": "PCB-Richtlinie, Fassung September 1994 (MVV TB 2025/1, lfd. Nr. A 3.2.4 mit Anlage A 3.2/1)",
     "question": "Eine Raumluftmessung ergibt 1 400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?",
     "options": [
       "Unbedenklich (< 300 ng/m³)",
@@ -12669,6 +12669,186 @@
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächenqualität“ im Modul Innenausbau noch einmal durch.",
       "targetModuleTab": "innenausbau",
       "targetModuleLabel": "Innenausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ksx_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "kriechen_schwinden",
+    "moduleTitle": "Kriechen & Schwinden",
+    "topic": "Kriechzahl",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, Anhang B",
+    "question": "Wie wirkt sich ein späteres Belastungsalter t₀ auf die Endkriechzahl aus?",
+    "options": [
+      "Sie steigt",
+      "Sie sinkt, weil β(t₀) = 1/(0,1 + t₀^0,2) kleiner wird",
+      "Sie bleibt gleich",
+      "Sie hängt nur von der Luftfeuchte ab"
+    ],
+    "correctIdx": 1,
+    "explanation": "Älterer, stärker hydratisierter Beton kriecht weniger: β(28 d) ≈ 0,49, β(7 d) ≈ 0,63.",
+    "gapAnalysis": {
+      "topic": "Kriechzahl",
+      "misconception": "Das Belastungsalter wird als unerheblich angesehen.",
+      "coreRule": "Späte Belastung → geringeres Kriechen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechzahl“ im Modul Kriechen & Schwinden noch einmal durch.",
+      "targetModuleTab": "kriechen_schwinden",
+      "targetModuleLabel": "Kriechen & Schwinden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ksx_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "kriechen_schwinden",
+    "moduleTitle": "Kriechen & Schwinden",
+    "topic": "Schwinden",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, 3.1.4",
+    "question": "Welche beiden Anteile des Schwindens erfasst DIN EN 1992-1-1 rechnerisch?",
+    "options": [
+      "Plastisches und Karbonatisierungsschwinden",
+      "Trocknungs- und autogenes Schwinden",
+      "Chemisches und thermisches Schwinden",
+      "Nur das Trocknungsschwinden"
+    ],
+    "correctIdx": 1,
+    "explanation": "ε_cs = ε_cd + ε_ca; das autogene Schwinden ist ε_ca,∞ = 2,5·(f_ck − 10)·10⁻⁶.",
+    "gapAnalysis": {
+      "topic": "Schwinden",
+      "misconception": "Autogenes Schwinden wird für Normalbeton vernachlässigt.",
+      "coreRule": "ε_cs = ε_cd + ε_ca.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schwinden“ im Modul Kriechen & Schwinden noch einmal durch.",
+      "targetModuleTab": "kriechen_schwinden",
+      "targetModuleLabel": "Kriechen & Schwinden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_ksx_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "kriechen_schwinden",
+    "moduleTitle": "Kriechen & Schwinden",
+    "topic": "Wirksamer E-Modul",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1992-1-1, Gl. (7.20)",
+    "question": "Wie groß ist der wirksame E-Modul bei E_cm = 33 000 N/mm² und φ = 2,0?",
+    "options": [
+      "66 000 N/mm²",
+      "33 000 N/mm²",
+      "11 000 N/mm²",
+      "16 500 N/mm²"
+    ],
+    "correctIdx": 2,
+    "explanation": "E_c,eff = E_cm/(1 + φ) = 33 000/3 = 11 000 N/mm² – Langzeitverformungen sind etwa dreimal so groß wie die elastischen.",
+    "gapAnalysis": {
+      "topic": "Wirksamer E-Modul",
+      "misconception": "φ wird nur zum E-Modul addiert statt durch (1 + φ) zu teilen.",
+      "coreRule": "E_c,eff = E_cm/(1 + φ).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wirksamer E-Modul“ im Modul Kriechen & Schwinden noch einmal durch.",
+      "targetModuleTab": "kriechen_schwinden",
+      "targetModuleLabel": "Kriechen & Schwinden"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_esx_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "eigenspannungen",
+    "moduleTitle": "Eigenspannungen",
+    "topic": "Begriff",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Was kennzeichnet Eigenspannungen?",
+    "options": [
+      "Sie entstehen nur bei äußerer Behinderung",
+      "Sie stehen ohne äußere Kräfte im Gleichgewicht (N = 0, M = 0)",
+      "Sie treten nur in Stahl auf",
+      "Sie sind immer Druckspannungen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Eigenspannungen entstehen auch im frei beweglichen Bauteil aus dem nichtlinearen Temperatur- oder Schwindanteil.",
+    "gapAnalysis": {
+      "topic": "Begriff",
+      "misconception": "Eigenspannungen werden mit Zwangsspannungen gleichgesetzt.",
+      "coreRule": "Eigenspannungen: selbst im Gleichgewicht, unabhängig von Lagerung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Begriff“ im Modul Eigenspannungen noch einmal durch.",
+      "targetModuleTab": "eigenspannungen",
+      "targetModuleLabel": "Eigenspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_esx_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "eigenspannungen",
+    "moduleTitle": "Eigenspannungen",
+    "topic": "Aufheizphase",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Wo treten in der Aufheizphase eines massigen Bauteils Zugeigenspannungen auf?",
+    "options": [
+      "Im warmen Kern",
+      "An den kühleren Rändern",
+      "Gleichmäßig über den Querschnitt",
+      "Nur an den Bauteilenden"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der warme Kern will sich stärker ausdehnen und dehnt die kühleren Ränder mit – dort entsteht Zug, im Kern Druck.",
+    "gapAnalysis": {
+      "topic": "Aufheizphase",
+      "misconception": "Zug wird dort erwartet, wo es am wärmsten ist.",
+      "coreRule": "Aufheizphase: Randzug, Kerndruck.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Aufheizphase“ im Modul Eigenspannungen noch einmal durch.",
+      "targetModuleTab": "eigenspannungen",
+      "targetModuleLabel": "Eigenspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_esx_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "eigenspannungen",
+    "moduleTitle": "Eigenspannungen",
+    "topic": "Temperaturzerlegung",
+    "difficulty": "Fortgeschritten",
+    "normRef": "",
+    "question": "Welcher Anteil einer Temperaturverteilung erzeugt auch im frei gelagerten Bauteil Spannungen?",
+    "options": [
+      "Der konstante Anteil T_N",
+      "Der lineare Anteil T_M",
+      "Der nichtlineare Anteil T_V",
+      "Keiner"
+    ],
+    "correctIdx": 2,
+    "explanation": "T_N bewirkt eine Längenänderung, T_M eine Krümmung – beide behinderungsfrei möglich. Nur T_V lässt sich nicht verformungsverträglich aufnehmen.",
+    "gapAnalysis": {
+      "topic": "Temperaturzerlegung",
+      "misconception": "Jede Temperaturänderung wird als spannungserzeugend angesehen.",
+      "coreRule": "Nur T_V erzeugt Eigenspannungen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperaturzerlegung“ im Modul Eigenspannungen noch einmal durch.",
+      "targetModuleTab": "eigenspannungen",
+      "targetModuleLabel": "Eigenspannungen"
     },
     "verified": false
   }

@@ -533,7 +533,7 @@ export default function HydratationPruefverfahren() {
                     <div>
                       <span className="font-bold text-blue-950 block">Prüfgrundlagen:</span>
                       <p className="leading-relaxed">
-                        Prüfgrundlagen sind z. B. DIN EN 12617-4 (Schwinden) und ASTM C1581 (Ringversuch); Versuchsdetails manuell prüfen. Die Schwindmessrinne liefert den präzisen Dehnungsverlauf <InlineMath math="\varepsilon_{cs}(t)" /> für thermo-mechanische Finite-Elemente-Analysen (FE-Simulationen).
+                        Prüfgrundlagen sind z. B. DIN EN 12617-4:2002-08 (Schwinden und Quellen) und ASTM C1581/C1581M-24 (Ringversuch unter behindertem Schwinden); die Schwindrinne selbst ist in keiner der beiden Normen geregelt. Die Schwindmessrinne liefert den präzisen Dehnungsverlauf <InlineMath math="\varepsilon_{cs}(t)" /> für thermo-mechanische Finite-Elemente-Analysen (FE-Simulationen).
                       </p>
                     </div>
                     <div className="border-t border-blue-100 pt-2 text-blue-950/90">

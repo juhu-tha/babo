@@ -1010,7 +1010,7 @@ export default function Modernisierung() {
           "Hens, H.: Applied Building Physics – Ambient Conditions, Building Performance and Material Properties. 2. Aufl., Berlin: Ernst & Sohn 2016"
         ]} 
         regelwerke={[
-          { title: "Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026, vormals GEG; BGBl.-Fundstelle manuell prüfen) – Nachrüstung § 35, Änderung § 36, U-Wert-Berechnung § 37, Anlage 7", url: "https://www.gesetze-im-internet.de/geg/" },
+          { title: "Gebäudemodernisierungsgesetz (GModG, vormals GEG; geändert und umbenannt durch Gesetz vom 23.07.2026, BGBl. 2026 I Nr. 226, verkündet 28.07.2026) – Nachrüstung § 35, Änderung § 36, U-Wert-Berechnung § 37, Anlage 7", url: "https://www.gesetze-im-internet.de/geg/" },
           { title: "DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)" },
           { title: "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)" },
           { title: "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG referenziert, Nachfolge DIN/TS 18599 seit 2025-10)" }

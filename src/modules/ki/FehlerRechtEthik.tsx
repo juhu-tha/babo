@@ -398,7 +398,7 @@ export default function FehlerRechtEthik() {
 
               <div className="space-y-3 text-xs text-text-main/80 leading-relaxed">
                 <p>
-                  Die am 1. August 2024 in Kraft getretene europäische KI-Verordnung (KI-VO) verfolgt einen risikobasierten Ansatz (verbotene Praktiken, Hochrisiko-Systeme, Transparenzpflichten, minimales Risiko). Sie gilt gestaffelt: Verbote und KI-Kompetenz (Art. 4) seit 02.02.2025, Pflichten für KI-Modelle mit allgemeinem Verwendungszweck seit 02.08.2025, Art. 50 ab 02.08.2026. Mit dem Digital Omnibus zur KI-VO (im Juni 2026 von Parlament und Rat angenommen; Fundstelle im Amtsblatt manuell prüfen) gelten die Hochrisiko-Pflichten für Anhang III ab 02.12.2027 und für Anhang I ab 02.08.2028. In der nationalen Aufsicht ist die Bundesnetzagentur vorgesehen. Für das Bauwesen heißt das:
+                  Die am 1. August 2024 in Kraft getretene europäische KI-Verordnung (KI-VO) verfolgt einen risikobasierten Ansatz (verbotene Praktiken, Hochrisiko-Systeme, Transparenzpflichten, minimales Risiko). Sie gilt gestaffelt: Verbote und KI-Kompetenz (Art. 4) seit 02.02.2025, Pflichten für KI-Modelle mit allgemeinem Verwendungszweck seit 02.08.2025, Art. 50 ab 02.08.2026. Mit dem Digital Omnibus zur KI-VO (Verordnung (EU) 2026/1744 vom 08.07.2026, ABl. L vom 24.07.2026, in Kraft seit 27.07.2026) gelten die Hochrisiko-Pflichten für Anhang III ab 02.12.2027 und für Anhang I ab 02.08.2028. In der nationalen Aufsicht ist die Bundesnetzagentur vorgesehen. Für das Bauwesen heißt das:
                 </p>
 
                 <div className="p-3.5 bg-red-50/70 border border-red-200 rounded-xl space-y-1">
@@ -417,7 +417,7 @@ export default function FehlerRechtEthik() {
                     <span className="text-xxs px-2 py-0.5 bg-amber-200 text-amber-800 rounded-md font-bold">Verbindlich</span>
                   </div>
                   <p className="text-xxs text-amber-950/80 leading-relaxed">
-                    Ab 02.08.2026: Anbieter müssen KI-generierte Inhalte maschinenlesbar kennzeichnen (Abs. 2; Übergangsfristen manuell prüfen), Betreiber müssen Deepfakes sowie KI-Texte offenlegen, die zur Information der Öffentlichkeit veröffentlicht werden – außer bei menschlicher Prüfung und redaktioneller Verantwortung (Abs. 4). Eine allgemeine KI-Kennzeichnungspflicht für Pläne oder Gutachten folgt daraus nicht; sie kann sich aber aus Vertrag, Berufsrecht oder – bei Bachelor- und Masterarbeiten – aus der Prüfungsordnung ergeben.
+                    Ab 02.08.2026: Anbieter müssen KI-generierte Inhalte maschinenlesbar kennzeichnen (Abs. 2; für vor dem 02.08.2026 in Verkehr gebrachte Systeme Übergangsfrist bis 02.12.2026 nach VO (EU) 2026/1744), Betreiber müssen Deepfakes sowie KI-Texte offenlegen, die zur Information der Öffentlichkeit veröffentlicht werden – außer bei menschlicher Prüfung und redaktioneller Verantwortung (Abs. 4). Eine allgemeine KI-Kennzeichnungspflicht für Pläne oder Gutachten folgt daraus nicht; sie kann sich aber aus Vertrag, Berufsrecht oder – bei Bachelor- und Masterarbeiten – aus der Prüfungsordnung ergeben.
                   </p>
                 </div>
 

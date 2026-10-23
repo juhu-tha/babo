@@ -44,7 +44,7 @@ export const DIN1045_2 = {
   quelle: "DIN 1045-2:2023-08 / DIN EN 206-1",
   kFlugasche: 0.4,
   kSilikastaub: 1.0,
-  kHuettensand: null as number | null /* in DE nicht zulässig */,
+  kHuettensand: null as number | null /* DIN 1045-2:2023-08, 5.2.5.2.5 enthält einen k-Wert-Ansatz für Hüttensandmehl; Zahlenwert hier nicht hinterlegt */,
 };
 
 export const DIN1045_3_NACHBEHANDLUNG = {

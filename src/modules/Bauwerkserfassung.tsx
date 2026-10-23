@@ -721,7 +721,7 @@ export default function Bauwerkserfassung() {
           "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
         ]}
         regelwerke={[
-          { title: "DIN 18710-1 (Ingenieurvermessung – Teil 1: Allgemeine Anforderungen; Ausgabe manuell prüfen)" },
+          { title: "DIN 18710-1:2025-08 (Ingenieurgeodäsie – Teil 1: Allgemeine Anforderungen)" },
           { title: "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)" },
           { title: "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg; Toleranzangaben im Modul als Richtwerte, manuell abgleichen)", url: "https://www.denkmalpflege-bw.de/" }
         ]}

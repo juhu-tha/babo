@@ -232,7 +232,7 @@ export default function BpBeton() {
         ]}
         literatur={[
           'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001',
-          'Weber, R.: Guter Beton – Ratschläge für die richtige Betonherstellung. Düsseldorf: Verlag Bau+Technik (Auflage manuell prüfen)',
+          'Weber, R.: Guter Beton – Ratschläge für die richtige Betonherstellung. 25., überarb. Aufl., Erkrath: Verlag Bau+Technik 2019',
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008'
         ]}
         regelwerke={[

@@ -163,7 +163,7 @@ export default function BpBaustoffindustrie() {
               </table>
             </div>
             <div className="bg-blue-50/50 border border-blue-100 p-3 rounded-lg text-[11.5px] leading-relaxed text-blue-900 mt-2">
-              <strong>Zusammenfassende Branchenkennzahlen:</strong> Die Branche beschäftigt in Deutschland rund 150.000 Menschen, setzt jährlich einen mittleren zweistelligen Milliardenbetrag um und liefert über 500 Millionen Tonnen mineralische Rohstoffe pro Jahr (Größenordnungen; aktuelle Zahlen im bbs-Jahresbericht bzw. bei Destatis manuell prüfen).
+              <strong>Zusammenfassende Branchenkennzahlen:</strong> Die Branche beschäftigt in Deutschland rund 140.000–150.000 Menschen und setzt jährlich rund 38 Mrd. € um (Größenordnungen nach bbs, Stand 10/2026); hinzu kommt ein Rohstoffbedarf in der Größenordnung mehrerer hundert Millionen Tonnen pro Jahr (siehe bbs-Rohstoffstudie).
             </div>
           </div>
         </div>
@@ -286,7 +286,7 @@ export default function BpBaustoffindustrie() {
           { title: 'Bundesverband Baustoffe – Steine und Erden (bbs)', url: 'https://www.baustoffindustrie.de' }
         ]}
         literatur={[
-          'Bundesverband Baustoffe – Steine und Erden (bbs): Die Nachfrage nach Primär- und Sekundärrohstoffen der Steine-Erden-Industrie (Rohstoffstudie; Ausgabe manuell prüfen)',
+          'Bundesverband Baustoffe – Steine und Erden (bbs) / RWI (Dehio, J. et al.): Rohstoffnachfrage 2045: Ressourcen sichern, Zukunft bauen – Perspektiven für mineralische Primär- und Sekundärrohstoffe. Essen/Berlin 2025',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[

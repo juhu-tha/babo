@@ -528,7 +528,7 @@ export default function Energieausweis() {
                   <p className="text-xxs text-text-main/80">
                     Körperwärme anwesender Personen, Lampen und Elektrogeräte heizen das Gebäude mit. 
                     Pauschaler Ansatz im vereinfachten Verfahren nach DIN V 4108-6: <strong><InlineMath math="q_i = 5\,\text{W/m}^2" /></strong> Gebäudenutzfläche
-                    (über die Heizperiode rund 25 bis 30 kWh/(m²·a)). DIN V 18599-10 setzt nutzungsabhängige Tageswerte in Wh/(m²·d) an (Werte manuell prüfen).
+                    (über die Heizperiode rund 25 bis 30 kWh/(m²·a)). DIN V 18599-10 setzt nutzungsabhängige Tageswerte an (Wohnen: EFH 45 Wh/(m²·d), MFH 90 Wh/(m²·d)).
                   </p>
                 </div>
 
@@ -1098,7 +1098,7 @@ export default function Energieausweis() {
                 <div className="p-3 bg-off-white rounded-xl border border-home-grau/30">
                   <strong className="text-text-main block mb-0.5">Aushangpflicht in öffentlichen Gebäuden (§ 80 Abs. 6 und 7):</strong>
                   In behördlichen Gebäuden mit starkem Publikumsverkehr über 250 m² Nutzfläche sowie gewerblichen Bauten über 500 m² Nutzfläche 
-                  muss der Energieausweis an gut sichtbarer Stelle ausgehängt werden. Für Nichtwohngebäude sieht das GModG gestaffelt neue Effizienzklassen A bis G vor (Stand manuell prüfen).
+                  muss der Energieausweis an gut sichtbarer Stelle ausgehängt werden. Ab 01.01.2027 werden Nichtwohngebäude im Energieausweis erstmals in Effizienzklassen A bis G eingestuft (Anlage 10a GModG; Bezug: Primärenergiebedarf im Verhältnis zum Referenzgebäude); es ist dann nur noch der Bedarfsausweis zulässig.
                 </div>
               </div>
             </div>
@@ -1129,7 +1129,7 @@ export default function Energieausweis() {
           { titel: 'Gültigkeit', erklaerung: 'Ausgestellt am 1. Oktober 2026 (§ 79 Abs. 3):', formel: '\\text{gültig bis 30. September 2036}' }
         ]}
         ergebnisHinweis="Der Bezug auf A_N statt Wohnfläche ist eine häufige Ursache für Missverständnisse beim Vergleich von Energieausweis und Heizkostenabrechnung."
-        normQuelle="GModG/GEG: Ermittlung der Gebäudenutzfläche A_N (Fundstelle manuell prüfen); § 79 Abs. 3 (Gültigkeit)"
+        normQuelle="GModG: Gebäudenutzfläche A_N § 3 Abs. 1 Nr. 10 und § 25 Abs. 10 (DIN V 18599-1, Gl. 30); § 79 Abs. 3 (Gültigkeit 10 Jahre)"
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}

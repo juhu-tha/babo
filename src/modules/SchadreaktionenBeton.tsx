@@ -996,7 +996,7 @@ export default function SchadreaktionenBeton() {
         regelwerke={[
           { title: 'DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie), Ausgabe 2013-10' },
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN 19573 (Mörtel für Neubau und Sanierung von Entwässerungssystemen außerhalb von Gebäuden; Ausgabe manuell prüfen)' }
+          { title: 'DIN 19573:2026-06 (Mörtel für Neubau und Sanierung von Entwässerungssystemen außerhalb von Gebäuden)' }
         ]}
         formeln={[
           {

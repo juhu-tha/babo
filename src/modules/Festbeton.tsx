@@ -530,7 +530,7 @@ export default function Festbeton() {
                       <option value="luft">Trockene Baustellenluft 65 % r.F. (Faktor 0,90)</option>
                       <option value="heiss">Heißhärtung / Wärmebehandlung (Faktor 0,85)</option>
                     </select>
-                    <p className="text-[11px] text-text-main/60 mt-1">Faktoren für Würfel 100/200 mm und Lagerung sind Lehrwerte. Für die Prüfkörperlagerung gilt nach DIN 1045-2 f<sub>c,cube</sub> = 0,92 · f<sub>c,dry</sub> (bis C50/60; manuell prüfen).</p>
+                    <p className="text-[11px] text-text-main/60 mt-1">Faktoren für Würfel 100/200 mm und Lagerung sind Lehrwerte. Für die Prüfkörperlagerung nach DIN EN 12390-2, Anhang NA.2 gilt fc,cube = 0,92 · fc,dry (Normalbeton bis C50/60) bzw. 0,95 · fc,dry (ab C55/67).</p>
                   </div>
 
                   {/* Ergebnisbox */}
@@ -940,7 +940,7 @@ export default function Festbeton() {
           { title: 'DIN EN 206:2021-06 (Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
           { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton - Teil 2: Anwendungsregeln zu DIN EN 206)' },
           { title: 'DIN EN 1992-1-1:2011-01 mit DIN EN 1992-1-1/NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
-          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2, 2. Generation; Deutsche Fassung EN 1992-1-1:2023 – bauaufsichtliche Einführung manuell prüfen)' },
+          { title: 'DIN EN 1992-1-1:2025-09 (Eurocode 2, 2. Generation; Deutsche Fassung EN 1992-1-1:2023 – bauaufsichtlich noch nicht eingeführt (MVV TB 2025/1 und notifizierter Entwurf MVV TB 2026/1 führen weiterhin DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 + NA/A1:2015-12))' },
           { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)' }
         ]}
         formeln={[

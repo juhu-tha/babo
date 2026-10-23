@@ -349,7 +349,7 @@ export default function Ausbau() {
         ]}
         literatur={[
           'Wricke, G.; Müller, S.: Handbuch Trockenbau – planen, konstruieren, ausführen. Haan-Gruiten: Europa-Lehrmittel 2014',
-          'Unger, A.: Fußboden-Atlas – richtig planen, Schäden vermeiden. Donauwörth: QUO-VADO (Auflage manuell prüfen)',
+          'Unger, A.: Fußboden-Atlas – Fußböden richtig planen und ausführen. 7., in Teilen neu bearb. Aufl., 2 Bde., Donauwörth: QUO-VADO 2011',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
@@ -363,7 +363,7 @@ export default function Ausbau() {
         formeln={[
           {
             formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T + L_0 \\cdot \\varepsilon_{cs}',
-            erklaerung: 'Längenänderung eines Estrichfeldes aus Temperatur- und Schwindverformung; Grundlage für Rand- und Bewegungsfugen. Richtwerte für Heizestrichfelder (z. B. ca. 40 m², Seitenlänge ≤ 8 m, Seitenverhältnis ≤ 1:2) aus BEB-Hinweisen bzw. Schnittstellenkoordination – maßgebend ist der Fugenplan (manuell prüfen).',
+            erklaerung: 'Längenänderung eines Estrichfeldes aus Temperatur- und Schwindverformung; Grundlage für Rand- und Bewegungsfugen. Richtwerte für Zement-Heizestrichfelder (ca. ≤ 40 m², Seitenlänge ≤ 8 m, Seitenverhältnis ≤ 1:2; Calciumsulfatestrich bis ca. 100 m² bzw. 10 m) nach Herstellerangaben/BEB-Hinweisblatt („vereinfachtes Verfahren“) – maßgebend sind Fugenplan und Herstellervorgaben.',
             quelle: 'DIN 18560 / BEB-Hinweise'
           },
           {

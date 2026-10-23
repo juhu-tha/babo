@@ -1089,7 +1089,7 @@ export default function BpBetonzusatzmittel() {
         literatur={[
           'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013',
           'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008',
-          'Deutsche Bauchemie e. V.: Informationsschriften zu Betonzusatzmitteln (Titel/Ausgabe manuell prüfen)'
+          'Deutsche Bauchemie e. V.: Betonzusatzmittel und Umwelt (Sachstandsbericht, 6. Ausgabe, Dezember 2016); Lagerung und Dosierung von Beton- und Mörtelzusatzmitteln (Merkblatt, 3. Ausgabe, März 2018); Moderne Fließmittel in der Betontechnologie (Informationsschrift, 1. Ausgabe, Januar 2007)'
         ]}
         regelwerke={[
           { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)' },
@@ -1100,7 +1100,7 @@ export default function BpBetonzusatzmittel() {
           { 
             formel: '(w/z)_{\\text{eff}} = \\frac{w_{\\text{Wasser}} + w_{\\text{ZM}}}{z} \\le (w/z)_{\\max}', 
             erklaerung: 'Wasseraufrechnungsregel nach DIN EN 206 / DIN 1045-2: Übersteigt die Gesamtmenge flüssiger Zusatzmittel 3 l/m³, ist ihr Wasseranteil dem wirksamen Wassergehalt zuzurechnen.',
-            quelle: 'DIN EN 206 / DIN 1045-2 (Abschnitt manuell prüfen)'
+            quelle: 'DIN 1045-2:2023-08 / DIN EN 206'
           },
           { 
             formel: 'L_{300} \\ge 1{,}5\\,\\% \\quad \\text{und} \\quad a \\le 0{,}20\\,\\text{mm}', 

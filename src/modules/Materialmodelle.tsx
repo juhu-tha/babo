@@ -994,19 +994,19 @@ export default function Materialmodelle() {
 
       {/* FOOTER MIT FORMELN, WIKIPEDIA, NORMEN & LITERATUR */}
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: Stoffgesetze, Duktilitätskriterium, Rheologie-Ersatzmodelle und Normausgaben geprüft; Wikipedia-Links manuell prüfen; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed="Oktober 2026 (AP 5 Mechanik: Stoffgesetze, Duktilitätskriterium, Rheologie-Ersatzmodelle und Normausgaben geprüft; Wikipedia-Links geprüft (Oktober 2026); fachliche Freigabe durch den Autor ausstehend)"
         wikipedia={[
           { title: 'Hookesches Gesetz', url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
           { title: 'Rheologie', url: 'https://de.wikipedia.org/wiki/Rheologie' },
           { title: 'Viskoelastizität', url: 'https://de.wikipedia.org/wiki/Viskoelastizit%C3%A4t' },
           { title: 'Fließkurve', url: 'https://de.wikipedia.org/wiki/Flie%C3%9Fkurve' },
-          { title: 'Bauschinger-Effekt', url: 'https://de.wikipedia.org/wiki/Bauschinger-Effekt' }
+          { title: 'Bauschinger-Effekt', url: 'https://de.wikipedia.org/wiki/Bauschingereffekt' }
         ]}
         regelwerke={[
           { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung)' },
           { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.5 / 3.1.7 / 3.2.7 Arbeitslinien); neue Generation DIN EN 1992-1-1:2025-09' },
           { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 5.4.3 plastische Tragwerksberechnung); neue Generation DIN EN 1993-1-1:2025-04' },
-          { title: 'DIN 1342-1 bis -3:2003-11 (Viskosität – Rheologische Begriffe, Newtonsche und nicht-newtonsche Flüssigkeiten; Ausgabestand manuell prüfen)' }
+          { title: 'DIN 1342-1 bis -3:2003-11 (Viskosität – Rheologische Begriffe, Newtonsche und nicht-newtonsche Flüssigkeiten)' }
         ]}
         literatur={[
           'Mang, H.; Hofstetter, G.: Festigkeitslehre. 4. Aufl., Berlin: Springer Vieweg 2013',

@@ -1970,7 +1970,7 @@ export default function Dauerhaftigkeit() {
         ]}
         regelwerke={[
           { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation EN 1992-1-1:2023 (DIN-Ausgabe und Einführung manuell prüfen)' },
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023; bauaufsichtlich noch nicht eingeführt, Stand MVV TB 2025/1)' },
           { title: 'DAfStb Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA' }
         ]}
         formeln={[

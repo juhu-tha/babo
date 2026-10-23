@@ -462,7 +462,7 @@ export default function Denkmalpflege() {
           { title: "Charta von Venedig", url: "https://de.wikipedia.org/wiki/Charta_von_Venedig" }
         ]} 
         literatur={[
-          "Eberl, W.; Martin, D.; Spennemann, J.: Bayerisches Denkmalschutzgesetz – Kommentar. Stuttgart: Kohlhammer (aktuelle Auflage; Angaben manuell prüfen)",
+          "Spennemann, J.; Schindler-Friedrich, J.; Gerstner, F. (begr. von W. Eberl): Bayerisches Denkmalschutzgesetz – Kommentar mit einer fachlichen Einführung von Mathias Pfeil. 9., überarb. Aufl., Stuttgart: Deutscher Gemeindeverlag 2026 (Landesrecht Bayern)",
           "WTA-Merkblatt 6-4: Innendämmung nach WTA: Planungsleitfaden",
           "WTA-Merkblatt 2-9: Sanierputzsysteme"
         ]} 

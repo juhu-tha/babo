@@ -349,7 +349,7 @@ export default function BpKlebstoffe() {
         ]} 
         literatur={[ 
           'Habenicht, G.: Kleben – Grundlagen, Technologien, Anwendungen. 6. Aufl., Berlin: Springer 2009',
-          'Industrieverband Dichtstoffe e. V. (IVD): IVD-Merkblätter zu Fugenabdichtungen (Ausgaben manuell prüfen)' 
+          'Industrieverband Dichtstoffe e. V. (IVD): IVD-Merkblätter zu Fugenabdichtungen, jeweils aktuelle Ausgabe (z. B. Nr. 27 Fassadenfugen, Nr. 30 Montageklebstoffe, Nr. 35 Dichten und Kleben am Bau; www.abdichten.de)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 12004 (Mörtel und Klebstoffe für Fliesen und Platten)' },

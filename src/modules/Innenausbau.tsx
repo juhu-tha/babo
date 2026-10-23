@@ -553,7 +553,7 @@ export default function Innenausbau() {
                 <div className="mt-2 pt-2 border-t border-home-grau/20 text-[11px] space-y-1">
                   <div><strong>Schwindmaß:</strong> minimal (&lt; 0,1 mm/m)</div>
                   <div><strong>Belegreife unbeheizt:</strong> ≤ 0,5 CM-%</div>
-                  <div><strong>Belegreife beheizt:</strong> ≤ 0,3 CM-% (BEB-Richtwert; DIN EN 1264-4 nennt 0,5 CM-% – manuell prüfen)</div>
+                  <div><strong>Belegreife beheizt:</strong> ≤ 0,3 CM-% (Richtwert nach Merkblatt „Schnittstellenkoordination bei beheizten Fußbodenkonstruktionen“)</div>
                   <div className="text-rose-800 text-[10px] mt-1 font-semibold">🚫 Streng feuchteempfindlich – kein Einsatz in Nassräumen (W2-I/W3-I) oder im Freien.</div>
                 </div>
               </div>
@@ -766,7 +766,7 @@ export default function Innenausbau() {
                 <Calculator className="text-shiraz" size={20} /> Interaktiver Belegreife- &amp; CM-Restfeuchterechner
               </h3>
               <p className="text-xs text-text-main/75 mt-1 leading-relaxed">
-                Prüfen Sie die Belegreife anhand üblicher Richtwerte (BEB/Schnittstellenkoordination, DIN EN 1264-4 bei Fußbodenheizung; Werte manuell prüfen).
+                Prüfen Sie die Belegreife anhand üblicher Richtwerte nach Merkblatt „Schnittstellenkoordination bei beheizten Fußbodenkonstruktionen“ (Zementestrich ≤ 2,0 bzw. beheizt ≤ 1,8 CM-%, Calciumsulfatestrich ≤ 0,5 bzw. beheizt ≤ 0,3 CM-%).
               </p>
             </div>
 
@@ -948,14 +948,14 @@ export default function Innenausbau() {
         ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Unger, A.: Fußboden-Atlas – richtig planen, Schäden vermeiden. Donauwörth: QUO-VADO (Auflage manuell prüfen)',
+          'Unger, A.: Fußboden-Atlas – Fußböden richtig planen und ausführen. 7., in Teilen neu bearb. Aufl., 2 Bde., Donauwörth: QUO-VADO 2011',
           'Bundesverband der Gipsindustrie e. V. (Industriegruppe Baugipsplatten): Merkblätter zum Trockenbau',
           'Bundesverband Estrich und Belag e. V. (BEB): Hinweisblätter und Arbeitsblätter'
         ]}
         regelwerke={[
           { title: 'DIN 18181:2019-04 (Gipsplatten im Hochbau - Verarbeitung)' },
           { title: 'DIN EN 520:2009-12 (Gipsplatten - Begriffe, Anforderungen und Prüfverfahren)' },
-          { title: 'DIN 18560-1 bis -7 (Estriche im Bauwesen; Ausgaben der Teile manuell prüfen)' },
+          { title: 'DIN 18560-1:2021-02, -2:2022-08, -3:2006-03, -4:2012-06 und -7:2004-04 (Estriche im Bauwesen)' },
           { title: 'DIN EN 1264-4 (Flächenheizung – Installation; Belegreife beheizter Estriche)' },
           { title: 'DIN 18534-1 bis -6:2017-07 (Abdichtung von Innenräumen)' },
           { title: 'DIN 4103-1:2015-06 (Nichttragende innere Trennwände - Anforderungen und Nachweise)' }

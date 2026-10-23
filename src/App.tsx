@@ -612,7 +612,7 @@ const TAB_KEYWORDS: Record<string, string[]> = {
   mischungsberechnung: ['stoffraumrechnung', 'rezeptur', 'wasseranspruch', 'kornverteilung', 'sieblinie', 'stoffraum', 'kalkulation'],
   herstellung_einbau: ['mischer', 'transport', 'förderung', 'rütteln', 'verdichten', 'fallhöhe', 'kübel', 'fahrmischer'],
   frischbeton: ['ausbreitmaß', 'setzmaß', 'scheinbare viskosität', 'bluten', 'konsistenz', 'verdichtungsmaß', 'luftporen', 'trichterversuch'],
-  hydratation_folgen: ['hydratationswärme', 'erwärmung', 'tga', 'phasenneubildung', 'aluminat', 'schwinden', 'erstarren', 'rissrisiko'],
+  hydratation_folgen: ['hydratationswärme', 'erwärmung', 'tga', 'phasenneubildung', 'aluminat', 'schwinden', 'erstarren', 'rissrisiko', 'eigenspannungen', 'eigenspannung', 'kriechen', 'kriechzahl', 'autogenes schwinden', 'trocknungsschwinden', 'relaxation spannstahl', 'wirksamer e-modul'],
   nachbehandlung: ['verdunstungsschutz', 'folie', 'wassernebel', 'sprühen', 'reifezeit', 'curing', 'nachbehandlungsmittel'],
   festbeton: ['druckspannung', 'e-modul', 'spaltzugfestigkeit', 'rohdichte', 'porenstruktur', 'biegezugfestigkeit', 'zerstörungsfreie prüfung'],
   betonkennwerte: ['betonkennwerte', 'ec2', 'eurocode 2', 'schwinden', 'kriechen', 'e-modul', 'fck', 'fcm', 'fctm', 'fcd', 'druckfestigkeit', 'zugfestigkeit', 'kriechzahl', 'wirksame bauteildicke', 'trocknungsschwinden', 'autogenes schwinden', 'zeitentwicklung'],

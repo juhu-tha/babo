@@ -1520,7 +1520,7 @@ export default function Materialoptimierung() {
           { titel: 'Äquivalenter w/z-Wert', erklaerung: 'Vergleich mit Grenzwerten der Expositionsklassen (z. B. XC4: max. 0,60):', formel: '(w/z)_{eq} = \\frac{165}{304} = 0{,}54 \\le 0{,}60' }
         ]}
         ergebnisHinweis="Der k-Wert-Ansatz erlaubt Klinkereinsparung ohne Dauerhaftigkeitsverlust. Für Hüttensandmehl ist er in Deutschland nur eingeschränkt anwendbar; Höchstmengen an Flugasche je Zementart sind zu beachten."
-        normQuelle="DIN EN 206 / DIN 1045-2 (k-Wert-Ansatz; Ausgaben manuell prüfen)"
+        normQuelle="DIN EN 206:2021-06 / DIN 1045-2:2023-08 (k-Wert-Ansatz)"
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -1536,15 +1536,15 @@ export default function Materialoptimierung() {
           { title: "Materialeffizienz", url: "https://de.wikipedia.org/wiki/Materialeffizienz" }
         ]}
         literatur={[
-          "Deutscher Ausschuss für Stahlbeton (DAfStb): Veröffentlichungen zu treibhausgasreduzierten Betonbauteilen (konkrete Fundstelle manuell prüfen)",
+          "Deutscher Ausschuss für Stahlbeton (DAfStb): DAfStb-Richtlinie Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton – Teil 1: Grundlagen und Nachweis am gesamten Tragwerk; Teil 2: Deckenbauteile. Ausgabe August 2024. Berlin: DIN Media 2024",
           "Sobek, W.: non nobis – über das Bauen in der Zukunft. Band 1: Ausgehen muss man von dem, was ist. Stuttgart: av edition 2022",
           "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
           "Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013"
         ]}
         regelwerke={[
-          { title: "DAfStb-Veröffentlichungen zur Treibhausgasreduktion im Betonbau (Titel und Status manuell prüfen)", url: "https://www.dafstb.de/" },
+          { title: "DAfStb-Richtlinie Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton (Teile 1 und 2), Ausgabe August 2024", url: "https://www.dafstb.de/" },
           { title: "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09" },
-          { title: "DIN EN 206 / DIN 1045-2 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Ausgaben manuell prüfen)" },
+          { title: "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Neuausgaben DIN EN 206-1 und -2:2026-07 erschienen)" },
           { title: "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)" },
           { title: "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien" }
         ]}
@@ -1556,7 +1556,7 @@ export default function Materialoptimierung() {
           },
           {
             formel: "(w/c)_{\\text{eq}} = \\frac{w}{c + k \\cdot z} \\quad [\\text{k-Wert nach DIN 1045-2}]",
-            erklaerung: "Äquivalenter Wasserzementwert zur Anrechnung von Flugasche (k = 0,4) und Silikastaub (k = 1,0); Hüttensandmehl (k = 0,6 nach DIN EN 206) ist in Deutschland nur eingeschränkt anrechenbar (manuell prüfen).",
+            erklaerung: "Äquivalenter Wasserzementwert zur Anrechnung von Flugasche (k = 0,4) und Silikastaub (k = 1,0); für Hüttensandmehl nach DIN EN 15167-1 enthält DIN 1045-2:2023-08 einen eigenen k-Wert-Ansatz (Abschn. 5.2.5.2.5).",
             quelle: "DIN 1045-2 / DIN EN 206"
           },
           {

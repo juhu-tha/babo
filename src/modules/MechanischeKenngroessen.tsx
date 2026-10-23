@@ -2443,13 +2443,13 @@ export default function MechanischeKenngroessen() {
           { title: 'Mechanische Spannung', url: 'https://de.wikipedia.org/wiki/Mechanische_Spannung' },
           { title: 'Dehnung', url: 'https://de.wikipedia.org/wiki/Dehnung' },
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
-          { title: 'Kriechen (Werkstoffe) – Link manuell prüfen', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
+          { title: 'Kriechen (Werkstoffe)', url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
           { title: 'Schwinden', url: 'https://de.wikipedia.org/wiki/Schwinden' },
           { title: 'Spannungsrelaxation', url: 'https://de.wikipedia.org/wiki/Spannungsrelaxation' },
           { title: 'Biegesteifigkeit', url: 'https://de.wikipedia.org/wiki/Biegesteifigkeit' }
         ]}
         regelwerke={[
-          { title: 'DIN EN ISO 6892-1 (Metallische Werkstoffe – Zugversuch – Teil 1: Prüfverfahren bei Raumtemperatur; aktuelle Ausgabe manuell prüfen)' },
+          { title: 'DIN EN ISO 6892-1:2020-06 (Metallische Werkstoffe – Zugversuch – Teil 1: Prüfverfahren bei Raumtemperatur)' },
           { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, 3.2.6 Werkstoffkennwerte); neue Generation DIN EN 1993-1-1:2025-04' },
           { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2, 3.1.4 Kriechen und Schwinden, 3.3.2 Relaxation); neue Generation DIN EN 1992-1-1:2025-09' },
           { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5, 2.2.3 Verformungen, 3.2 k_def)' }

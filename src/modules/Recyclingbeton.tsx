@@ -30,7 +30,7 @@ ChartJS.register(
 export default function Recyclingbeton() {
   const [rcAnteil, setRcAnteil] = useState(25); // Vol.-%
   const [rcTyp, setRcTyp] = useState('Typ 1'); // Typ 1 (Betonsplitt), Typ 2 (Mauerwerksbruch)
-  const [expositionsklasse, setExpositionsklasse] = useState('X0, XC1, XC2');
+  const [expositionsklasse, setExpositionsklasse] = useState('X0, XC1–XC4, XF1, XF3');
   const [wa24, setWa24] = useState(5.0); // Wasseraufnahme in M.-%
 
   const results = useMemo(() => {
@@ -42,17 +42,19 @@ export default function Recyclingbeton() {
     let isOk = true;
     let hinweis = '';
 
-    // DAfStb-Richtlinie "Recycling-Beton" (vereinfachte Annahmen für Lehre)
+    // Grenzwerte grobe RC-Gesteinskörnung nach DIN 1045-2:2023-08 (Zement-Merkblatt B30, Tafel 6); Eigenschaftsänderungen als Lehrannahmen
+    const grenze = (t1: number, t2: number) => (rcTyp === 'Typ 1' ? t1 : t2);
+    const maxNachKlasse = expositionsklasse === 'XA1' ? grenze(25, 25) : expositionsklasse === 'XD1/XD2, XS1/XS2, XF2/XF4' ? grenze(30, 20) : grenze(45, 35);
     if (rcTyp === 'Typ 1') {
       // Typ 1: Betonsplitt (bessere Qualität)
-      maxAnteil = expositionsklasse === 'X0, XC1, XC2' ? 45 : 35;
+      maxAnteil = maxNachKlasse;
       eModulReduktion = rcAnteil * 0.25; // ca. 25% Reduktion bei 100% RC
       wasseranspruchErhoehung = rcAnteil * 0.15; // ca. 15% mehr Wasserbedarf
       schwindenErhoehung = rcAnteil * 0.30; // ca. 30% mehr Schwinden bei 100%
       rohdichteReduktion = rcAnteil * 0.06; // ca. 6% geringere Dichte bei 100%
     } else {
       // Typ 2: Bau- und Abbruchbruch (Mauerwerk etc., schlechtere Qualität)
-      maxAnteil = expositionsklasse === 'X0, XC1, XC2' ? 35 : 25;
+      maxAnteil = maxNachKlasse;
       eModulReduktion = rcAnteil * 0.40; // ca. 40% Reduktion bei 100% RC
       wasseranspruchErhoehung = rcAnteil * 0.30;
       schwindenErhoehung = rcAnteil * 0.50; // ca. 50% mehr Schwinden bei 100%
@@ -61,9 +63,9 @@ export default function Recyclingbeton() {
 
     if (rcAnteil > maxAnteil) {
       isOk = false;
-      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% überschreitet den nach DAfStb-Richtlinie (2010) zulässigen Maximalwert von ${formatDeWert(maxAnteil)}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% überschreitet den nach DIN 1045-2:2023-08 zulässigen Maximalwert von ${formatDeWert(maxAnteil)}% für ${rcTyp} in den Expositionsklassen ${expositionsklasse}.`;
     } else {
-      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% liegt innerhalb der Grenzen der DAfStb-Richtlinie (max. ${formatDeWert(maxAnteil)}%; Übernahme in DIN 1045-2:2023-08 manuell prüfen).`;
+      hinweis = `Der Anteil von ${formatDeWert(rcAnteil)}% liegt innerhalb der Grenzen nach DIN 1045-2:2023-08 (max. ${formatDeWert(maxAnteil)}% für ${rcTyp} in ${expositionsklasse}; Abschn. 5.2.3.4 und Anhang E).`;
     }
 
     // Wasseraufnahme (Kernfeuchte)
@@ -193,8 +195,9 @@ export default function Recyclingbeton() {
                   value={expositionsklasse}
                   onChange={(e) => setExpositionsklasse(e.target.value)}
                 >
-                  <option value="X0, XC1, XC2">X0, XC1, XC2 (z.B. Innenbauteile, Gründungen)</option>
-                  <option value="XC3, XC4, XF1, XA1">XC3, XC4, XF1, XA1 (z.B. Außenbauteile)</option>
+                  <option value="X0, XC1–XC4, XF1, XF3">X0, XC1–XC4, XF1, XF3 (Innen- und Außenbauteile)</option>
+                  <option value="XA1">XA1 (schwach chemisch angreifend)</option>
+                  <option value="XD1/XD2, XS1/XS2, XF2/XF4">XD1/XD2, XS1/XS2, XF2/XF4 (Chlorid, Taumittel)</option>
                 </select>
               </div>
 

@@ -548,7 +548,7 @@ export default function BpDaemmung() {
                 <ShieldCheck className="text-shiraz" size={18} /> Gesetzliche Anforderungen &amp; Maximale U-Werte (GModG, vormals GEG)
               </h3>
               <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                Das GModG (bis Juli 2026: Gebäudeenergiegesetz, GEG) regelt die energetischen Anforderungen an Neubauten und an Änderungen im Bestand. Die folgenden Höchstwerte stammen aus Anlage 7 GEG (Übernahme ins GModG manuell prüfen). Wird ein Bauteil um mehr als 10% flächenmäßig verändert (z. B. Neuer Putz bei Fassadendämmung), gelten folgende Grenzwerte für den maximal zulässigen Wärmedurchgangskoeffizienten (<InlineMath math="U" />):
+                Das GModG (bis Juli 2026: Gebäudeenergiegesetz, GEG) regelt die energetischen Anforderungen an Neubauten und an Änderungen im Bestand. Die folgenden Höchstwerte stammen aus Anlage 7 GModG (inhaltlich unverändert aus dem GEG übernommen; Anforderung nach § 36). Wird ein Bauteil um mehr als 10% flächenmäßig verändert (z. B. Neuer Putz bei Fassadendämmung), gelten folgende Grenzwerte für den maximal zulässigen Wärmedurchgangskoeffizienten (<InlineMath math="U" />):
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-medium">
@@ -559,11 +559,11 @@ export default function BpDaemmung() {
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center">
                   <span className="text-[10px] text-slate-400 font-bold block mb-1">Steildach / Sparren</span>
-                  <span className="text-sm font-mono font-black text-slate-800">U_max = 0,20 W/(m²K)</span>
-                  <p className="text-[10px] text-slate-500 font-normal leading-normal mt-1">Dicke bei WLG 035: ca. 16-18 cm</p>
+                  <span className="text-sm font-mono font-black text-slate-800">U_max = 0,24 W/(m²K)</span>
+                  <p className="text-[10px] text-slate-500 font-normal leading-normal mt-1">Anlage 7 Nr. 5a/5b; Dicke bei WLG 035: ca. 14–16 cm</p>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center">
-                  <span className="text-[10px] text-slate-400 font-bold block mb-1">Flachdächer (Gesamt)</span>
+                  <span className="text-[10px] text-slate-400 font-bold block mb-1">Flachdach (Erneuerung der Abdichtung)</span>
                   <span className="text-sm font-mono font-black text-slate-800">U_max = 0,20 W/(m²K)</span>
                   <p className="text-[10px] text-slate-500 font-normal leading-normal mt-1">Wegen Gefälle oft asymmetrisch aufgebaut</p>
                 </div>
@@ -665,8 +665,8 @@ export default function BpDaemmung() {
           { title: 'Wärmedämmung', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmung' }
         ]} 
         literatur={[ 
-          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)', 
-          'Fachagentur Nachwachsende Rohstoffe (FNR): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen (Auflage manuell prüfen)' 
+          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik – Wärme, Feuchte, Klima, Schall, Licht, Brand. 9. Aufl., Wiesbaden: Springer Vieweg 2022', 
+          'Fachagentur Nachwachsende Rohstoffe e. V. (FNR) (Hrsg.): Marktübersicht Dämmstoffe aus nachwachsenden Rohstoffen. 13., überarb. Aufl., Gülzow-Prüzen: FNR 2024' 
         ]} 
         regelwerke={[ 
           { title: 'DIN 4108-2 (Mindestanforderungen an den Wärmeschutz von Gebäuden)' }, 

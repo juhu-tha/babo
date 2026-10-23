@@ -324,7 +324,7 @@ export default function BpAbdichtung() {
                   </ul>
                 </div>
                 <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit PMBC" (Deutsche Bauchemie e. V.; Ausgabe manuell prüfen).
+                  <strong>Regelwerk:</strong> „Richtlinie für die Planung und Ausführung von Abdichtungen mit polymermodifizierten Bitumendickbeschichtungen (PMBC), Deutsche Bauchemie e. V., 4. Ausgabe, Dezember 2018“.
                 </div>
               </div>
 
@@ -352,7 +352,7 @@ export default function BpAbdichtung() {
                   </ul>
                 </div>
                 <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit MDS" (Deutsche Bauchemie e. V.; Ausgabe manuell prüfen).
+                  <strong>Regelwerk:</strong> „Richtlinie für die Planung und Ausführung von Abdichtungen mit mineralischen Dichtungsschlämmen (MDS), Deutsche Bauchemie e. V., 1. Ausgabe, Juli 2020“.
                 </div>
               </div>
 
@@ -380,7 +380,7 @@ export default function BpAbdichtung() {
                   </ul>
                 </div>
                 <div className="bg-slate-50 p-2.5 rounded text-[10px] text-slate-500 italic font-medium leading-tight">
-                  <strong>Regelwerk:</strong> "Richtlinie für die Planung u. Ausführung von Abdichtungen mit FPD" (Deutsche Bauchemie e. V.; Ausgabe manuell prüfen).
+                  <strong>Regelwerk:</strong> „Richtlinie für die Planung und Ausführung von Abdichtungen mit flexiblen polymermodifizierten Dickbeschichtungen (FPD), Deutsche Bauchemie e. V., 1. Ausgabe, Februar 2020“.
                 </div>
               </div>
             </div>
@@ -1343,8 +1343,8 @@ export default function BpAbdichtung() {
         ]} 
         literatur={[ 
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Düsseldorf: Verlag Bau+Technik (Auflage manuell prüfen)',
-          'Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC, MDS und FPD (Ausgaben manuell prüfen)' 
+          'Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. 11., überarb. Aufl., Düsseldorf: Verlag Bau+Technik 2018',
+          'Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC (4. Ausgabe, Dezember 2018), MDS (1. Ausgabe, Juli 2020) und FPD (1. Ausgabe, Februar 2020)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN 18533-1 bis -3:2023 (Abdichtung von erdberührten Bauteilen)' }, 

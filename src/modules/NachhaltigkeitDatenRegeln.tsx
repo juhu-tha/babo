@@ -1420,7 +1420,7 @@ export default function NachhaltigkeitDatenRegeln() {
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">Suffizienz</span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; seit November 2025 liegen Eckpunkte für einen neuen Entwurf vor (Stand manuell prüfen). 
+                    Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; nach Eckpunkten vom 20.11.2025 befindet sich ein neuer Gesetzentwurf in der Ressortabstimmung, ist aber noch nicht veröffentlicht (Stand 10/2026). 
                     Grundlegende öffentlich-rechtliche Schutzziele (Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz) bleiben gewahrt.
                   </p>
                 </div>
@@ -1475,12 +1475,12 @@ export default function NachhaltigkeitDatenRegeln() {
           'Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T.: Baustoff Atlas. München: Edition Detail 2005',
           'Klöpffer, W.; Grahl, B.: Ökobilanz (LCA) – Ein Leitfaden für Ausbildung und Beruf. Weinheim: Wiley-VCH 2009',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Bundesbauministerium (Hrsg.): Leitfaden Nachhaltiges Bauen – Zukunftsfähiges Planen, Bauen und Betreiben von Gebäuden. Berlin (aktuelle Auflage manuell prüfen)',
-          'Nagler, F. et al.: Forschungsprojekt „Einfach Bauen“, Forschungshäuser Bad Aibling, TU München (Veröffentlichung manuell prüfen)'
+          'Bundesministerium des Innern, für Bau und Heimat (BMI) (Hrsg.): Leitfaden Nachhaltiges Bauen – Zukunftsfähiges Planen, Bauen und Betreiben von Gebäuden. Stand Januar 2019. Berlin 2019',
+          'Nagler, F.; Jarmer, T.; Niemann, A. et al.: Einfach Bauen – Ganzheitliche Strategien für energieeffizientes, einfaches Bauen. Untersuchung der Wechselwirkung von Raum, Technik, Material und Konstruktion. Stuttgart: Fraunhofer IRB 2019 (Forschungsinitiative Zukunft Bau F 3151)'
         ]}
         regelwerke={[
           { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen zur Bewertung von Gebäuden und Ingenieurbauwerken)' },
-          { title: 'DIN EN ISO 15392 (Nachhaltigkeit von Bauwerken – Allgemeine Grundsätze; Ausgabe manuell prüfen)' },
+          { title: 'ISO 15392:2019 (Nachhaltiges Bauen – Allgemeine Grundsätze)' },
           { title: 'EPBD – Richtlinie (EU) 2024/1275 (Neufassung; Nullemissionsgebäude ab 2028/2030, Lebenszyklus-GWP Art. 7)', url: 'https://eur-lex.europa.eu/' },
           { title: 'EU-Taxonomie-Verordnung (EU) 2020/852 mit Delegierter VO (EU) 2021/2139 (Klimaschutz-Kriterien)', url: 'https://eur-lex.europa.eu/' },
           { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)' },

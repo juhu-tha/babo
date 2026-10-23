@@ -903,7 +903,7 @@ export default function Asphalt() {
                       </p>
                       <ul className="list-disc list-inside space-y-2 text-text-main/70 pl-1">
                         <li>
-                          <strong>Transportlogistik:</strong> Thermomulden und Abdeckplanen sind bei temperaturabgesenktem Asphalt besonders wichtig, damit das Mischgut beim Einbau nicht zu stark ausgekühlt ist (Vorgaben nach ZTV Asphalt-StB/M TA manuell prüfen).
+                          <strong>Transportlogistik:</strong> Thermomulden und Abdeckplanen sind bei temperaturabgesenktem Asphalt besonders wichtig, damit das Mischgut beim Einbau nicht zu stark ausgekühlt ist (Vorgaben: thermoisolierte Transportmulden mit Abdeckung nach ARS 13/2025; seit ARS 08/2026 in ZTV Asphalt-StB 26 Teil 1 geregelt).
                         </li>
                         <li>
                           <strong>Kritisches Verdichtungszeitfenster:</strong> Wachsmodifizierte Bindemittel besitzen einen scharf abgegrenzten Erstarrungspunkt. Oberhalb dieses Punktes (ca. 100 °C) ist der Verdichtungswiderstand gering. Fällt die Temperatur darunter, steigt der Verdichtungswiderstand deutlich an; weiteres Walzen bringt kaum Verdichtung und kann das Gefüge schädigen.
@@ -1007,8 +1007,8 @@ export default function Asphalt() {
                         </tr>
                         <tr>
                           <td className="py-2.5 pr-4 font-semibold text-text-main">Mindest-Lufttemperatur beim Einbau</td>
-                          <td className="py-2.5 pr-4">nach ZTV Asphalt-StB je Schichtart und -dicke (manuell prüfen)</td>
-                          <td className="py-2.5 pr-4 text-amber-700 font-medium">eher höher wählen – schnellere Auskühlung (manuell prüfen)</td>
+                          <td className="py-2.5 pr-4">Deckschicht ≥ 3 cm: +5 °C, &lt; 3 cm: +10 °C; Binder- und Tragdeckschicht: 0 °C; Tragschicht: −3 °C (ZTV Asphalt-StB 07/13, Tab. 6)</td>
+                          <td className="py-2.5 pr-4 text-amber-700 font-medium">eher höher wählen – schnellere Auskühlung (DAV: volles Absenkpotenzial erst ab ca. 20 °C Lufttemperatur und trockener Unterlage)</td>
                           <td className="py-2.5">LTA ist wind- und kälteempfindlicher während des Einbaus</td>
                         </tr>
                         <tr>
@@ -1049,19 +1049,19 @@ export default function Asphalt() {
           { title: 'Niedrigtemperaturasphalt', url: 'https://de.wikipedia.org/wiki/Niedrigtemperaturasphalt' }
         ]}
         literatur={[
-          'Velske, S.; Mentlein, H.; Eymann, P.: Straßenbau, Straßenbautechnik. Köln: Werner 2009 (neuere Auflage manuell prüfen)',
+          'Mentlein, H.; Lorenzl, H.: Straßenbau, Straßenbautechnik. 8., aktual. Aufl., Köln: Reguvis 2021',
           'Hutschenreuther, J.; Wörner, T.: Asphalt im Straßenbau. Bonn: Kirschbaum 2017',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
           { title: 'ZTV Asphalt-StB 07/13:2013 (FGSV: Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Verkehrsflächenbefestigungen aus Asphalt)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'DIN EN 13108-1:2016-12 (Asphaltmischgut - Mischgutanforderungen - Teil 1: Asphaltbeton)' },
-          { title: 'DIN EN 12591 (Bitumen und bitumenhaltige Bindemittel – Anforderungen an Straßenbaubitumen; Ausgabe manuell prüfen)' },
+          { title: 'DIN EN 12591:2009-08 (Bitumen und bitumenhaltige Bindemittel – Anforderungen an Straßenbaubitumen)' },
           { title: 'DIN EN 14023:2010-09 (Bitumen und bitumenhaltige Bindemittel - Rahmenwerk für die Spezifikation von polymermodifizierten Bitumen)' },
           { title: 'DIN EN 12697-8:2019-04 (Asphalt - Prüfverfahren - Teil 8: Bestimmung des Hohlraumgehaltes von Asphalt-Probekörpern)' },
           { title: 'DIN EN 12697-34:2020-07 (Asphalt - Prüfverfahren - Teil 34: Marshall-Prüfung)' },
           { title: 'RStO 12/24 (FGSV: Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024)', url: 'https://www.fgsv-verlag.de/' },
-          { title: 'M TA (FGSV: Merkblatt für Temperaturabsenkung von Asphalt; Ausgabe manuell prüfen)' },
+          { title: 'FGSV: Merkblatt für Temperaturabsenkung von Asphalt (M TA), FGSV 766, Ausgabe 2021' },
           { title: 'TRGS 900 (Arbeitsplatzgrenzwerte; AGW Dämpfe und Aerosole aus Bitumen 1,5 mg/m³)' }
         ]}
         formeln={[

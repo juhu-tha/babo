@@ -719,7 +719,7 @@ export default function BpHolzprodukte() {
           'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016' 
         ]} 
         regelwerke={[ 
-          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5; Änderungsstand manuell prüfen)' }, 
+          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5; bauaufsichtlich eingeführt); 2. Generation DIN EN 1995-1-1:2026-09 (Deutsche Fassung EN 1995-1-1:2025, NA noch ausstehend, nicht eingeführt)' }, 
           { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)' },
           { title: 'DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)' },
           { title: 'DIN EN 16351:2021-06 (Holzbauwerke - Brettsperrholz - Anforderungen)' }

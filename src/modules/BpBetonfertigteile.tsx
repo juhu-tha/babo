@@ -848,7 +848,7 @@ export default function BpBetonfertigteile() {
           { title: 'Filigrandecke', url: 'https://de.wikipedia.org/wiki/Filigrandecke' }
         ]}
         literatur={[
-          'Steinle, A.; Bachmann, H.; Tillmann, M.: Bauen mit Betonfertigteilen im Hochbau. Berlin: Ernst & Sohn (aktuelle Auflage manuell prüfen)',
+          'Bachmann, H.; Tillmann, M.; Urban, S.: Bauen mit Betonfertigteilen im Hochbau. 4., aktual. Aufl., Berlin: Ernst & Sohn 2024 (Bauingenieur-Praxis)',
           'Fachvereinigung Deutscher Betonfertigteilbau (FDB): Merkblätter zum Betonfertigteilbau',
           'Wendehorst Bautechnische Zahlentafeln. Wiesbaden: Springer Vieweg (aktuelle Auflage)'
         ]}

@@ -98,7 +98,7 @@ export default function LebenszyklusKosten() {
           { title: 'Baupreisindex', url: 'https://de.wikipedia.org/wiki/Baupreisindex' }
         ]}
         literatur={[
-          'Pelzeter, A.: Lebenszykluskosten von Immobilien. Köln: Rudolf Müller 2006 (Verlag manuell prüfen)',
+          'Pelzeter, A.: Lebenszykluskosten von Immobilien – Einfluss von Lage, Gestaltung und Umwelt. Köln: Rudolf Müller 2006 (Schriften zur Immobilienökonomie, Bd. 36)',
           'König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009'
         ]}
         regelwerke={[
