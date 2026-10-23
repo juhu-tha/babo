@@ -29,12 +29,12 @@ const LIVE_LINK_AUDIT: LinkCheckItem[] = [
   { id: '2', name: 'DAfStb (Deutscher Ausschuss für Stahlbeton)', url: 'https://www.dafstb.de/', sourceModule: 'Beton & Forschung', category: 'Fachverbände', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
   { id: '3', name: 'DIBt (Deutsches Institut für Bautechnik)', url: 'https://www.dibt.de/', sourceModule: 'Zertifizierung & Zulassungen', category: 'Bauaufsicht', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
   { id: '4', name: 'VDZ (Verein Deutscher Zementwerke)', url: 'https://www.vdz-online.de/', sourceModule: 'Zementchemie & LCA', category: 'Industrie', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
-  { id: '5', name: 'DBV (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/', sourceModule: 'Betonpraxis & Merkblätter', category: 'Praxis', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
+  { id: '5', name: 'DBV (Deutscher Beton- und Bautechnik-Verein)', url: 'https://www.betonverein.de/', sourceModule: 'Betonpraxis & Merkblätter', category: 'Praxis', lastChecked: '2026-10-23', status: 'valid', statusText: 'Erreichbar (Abruf 23.10.2026)' },
   { id: '6', name: 'LfU Bayern (Schadstoffratgeber Gebäuderückbau)', url: 'https://www.lfu.bayern.de/', sourceModule: 'Informationsquellen', category: 'Umwelt', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
-  { id: '7', name: 'WINGISonline (BG BAU)', sourceModule: 'Informationsquellen & Arbeitsschutz', category: 'Arbeitsschutz', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
-  { id: '8', name: 'DGNB Navigator (Deutsche Gesellschaft für Nachhaltiges Bauen)', url: 'https://www.dgnb-navigator.de/', sourceModule: 'Nachhaltigkeit & EPD', category: 'Zertifizierung', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' },
+  { id: '7', name: 'WINGISonline (BG BAU)', url: 'https://www.wingisonline.de/', sourceModule: 'Informationsquellen & Arbeitsschutz', category: 'Arbeitsschutz', lastChecked: '2026-10-23', status: 'valid', statusText: 'Erreichbar (Abruf 23.10.2026)' },
+  { id: '8', name: 'DGNB Navigator (Deutsche Gesellschaft für Nachhaltiges Bauen)', url: 'https://www.dgnb-navigator.de/', sourceModule: 'Nachhaltigkeit & EPD', category: 'Zertifizierung', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – nur im Browser prüfbar' },
   { id: '9', name: 'ÖKOBAUDAT (Bundesministerium BMWSB)', url: 'https://www.oekobaudat.de/', sourceModule: 'LCA & Nachhaltigkeit', category: 'Ökobilanz', lastChecked: '2026-10-19', status: 'valid', statusText: 'Erreichbar (Abruf 19.10.2026)' },
-  { id: '10', name: 'Technische Hochschule Augsburg (THA) Portal app.tha.de', url: 'https://app.tha.de/', sourceModule: 'Studium THA', category: 'Hochschule', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – manuell prüfen' }
+  { id: '10', name: 'Technische Hochschule Augsburg (THA) Portal app.tha.de', url: 'https://app.tha.de/', sourceModule: 'Studium THA', category: 'Hochschule', lastChecked: '2026-10-19', status: 'attention', statusText: 'Automatischer Abruf gesperrt (robots.txt) – nur im Browser prüfbar' }
 ];
 
 export function NormenLinkMonitor() {
@@ -135,7 +135,7 @@ export function NormenLinkMonitor() {
           <span className="text-[11px] font-bold text-text-main/60 uppercase block">Geprüfte Weblinks</span>
           <span className="text-2xl font-black text-text-main mt-1 block">{LIVE_LINK_AUDIT.length}</span>
           <span className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1 mt-1">
-            <CheckCircle2 size={12} /> {LIVE_LINK_AUDIT.filter(l => l.status === 'valid').length} erreichbar · {LIVE_LINK_AUDIT.filter(l => l.status !== 'valid').length} manuell prüfen
+            <CheckCircle2 size={12} /> {LIVE_LINK_AUDIT.filter(l => l.status === 'valid').length} erreichbar · {LIVE_LINK_AUDIT.filter(l => l.status !== 'valid').length} nur im Browser prüfbar
           </span>
         </div>
         <div className="bg-off-white p-4 rounded-2xl border border-home-grau/30">

@@ -840,8 +840,8 @@ export default function Modulstruktur() {
             <span className="text-[11px] text-text-main/70 font-medium">Normbezüge (DIN/EN)</span>
           </div>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center">
-            <span className="text-xl font-bold text-text-main block">{metrics.totalClusters} Cluster</span>
-            <span className="text-[11px] text-text-main/70 font-medium">{metrics.totalGroups} Fachgruppen</span>
+            <span className="text-xl font-bold text-text-main block">{formatDeWert(metrics.totalClusters)} Cluster</span>
+            <span className="text-[11px] text-text-main/70 font-medium">{formatDeWert(metrics.totalGroups)} Fachgruppen</span>
           </div>
         </div>
 
@@ -972,7 +972,7 @@ export default function Modulstruktur() {
               <div className="flex items-center gap-2">
                 <span className="text-xs font-black uppercase tracking-wider text-shiraz">Root Directory</span>
                 <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-off-white border border-home-grau/30 text-text-main/70 font-semibold">
-                  THA BaustoffBoard · {metrics.totalModules} Module
+                  THA BaustoffBoard · {formatDeWert(metrics.totalModules)} Module
                 </span>
               </div>
               <h2 className="text-lg font-bold text-text-main leading-tight">
@@ -1177,7 +1177,7 @@ export default function Modulstruktur() {
             {filteredTree.map((cluster, cIdx) => (
               <div key={cluster.id} className="border-b border-home-grau/20 pb-5 last:border-b-0">
                 <div className="flex items-center gap-2 text-sm font-bold text-shiraz mb-2">
-                  <span>{cIdx + 1}.0</span>
+                  <span>{formatDeWert(cIdx + 1)}</span>
                   <span>Cluster {cluster.number}: {cluster.name}</span>
                 </div>
 
@@ -1185,7 +1185,7 @@ export default function Modulstruktur() {
                   {cluster.groups.map((group, gIdx) => (
                     <div key={group.id} className="space-y-1.5">
                       <div className="text-xs font-bold text-text-main flex items-center gap-2">
-                        <span className="text-text-main/50 font-mono">{cIdx + 1}.{gIdx + 1}</span>
+                        <span className="text-text-main/50 font-mono">{formatDeWert(cIdx + 1)}.{formatDeWert(gIdx + 1)}</span>
                         <span>{group.name}</span>
                         <span className="text-[10px] text-text-main/50">({group.nodes.length} Module)</span>
                       </div>
@@ -1198,7 +1198,7 @@ export default function Modulstruktur() {
                             className="p-1.5 rounded hover:bg-off-white text-left text-[11px] text-text-main/80 hover:text-shiraz transition-colors flex items-center justify-between cursor-pointer"
                           >
                             <span className="truncate">
-                              <span className="font-mono text-text-main/40 mr-1.5">{cIdx + 1}.{gIdx + 1}.{nIdx + 1}</span>
+                              <span className="font-mono text-text-main/40 mr-1.5">{formatDeWert(cIdx + 1)}.{formatDeWert(gIdx + 1)}.{formatDeWert(nIdx + 1)}</span>
                               {node.label}
                             </span>
                             {renderBadge(node.type, node.norm)}
