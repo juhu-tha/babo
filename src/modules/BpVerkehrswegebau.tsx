@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo, useEffect } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
 import { Layers, BookOpen, Calculator, Route, FileText, CheckCircle2, TrendingUp, AlertTriangle, Milestone, Train, HardHat, Droplets } from 'lucide-react';
@@ -32,7 +34,7 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
       { name: 'Asphaltdeckschicht (SMA 8 S oder PA)', thickness: 4, material: 'Splittmastixasphalt / Offenporig mit PmB 25/55-55 A', normRequirement: 'PSV-Wert ≥ 51 (hohe Griffigkeit), Hohlraumgehalt 3,0-4,5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 6, material: 'Asphaltbinder mit PmB 25/55-55 A', normRequirement: 'Dicke 6 cm, hohe Standfestigkeit gegen Schubverformungen im Sommer', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-800' },
       { name: 'Asphalttragschicht (AC 32 TS)', thickness: 24, material: 'Straßenbaubitumen 50/70 oder PmB', normRequirement: 'Dicke 24 cm in mehreren Lagen, Bindergehalt ≥ 4,2 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 51, material: 'Kies/Splitt-Gemisch (GW/GI, FSS 0/45)', normRequirement: 'EV2 ≥ 120 MPa auf der Tragschicht, Frostunempfindlichkeit nach TL Gestein-StB', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 51, material: 'Kies/Splitt-Gemisch (GW/GI, FSS 0/45)', normRequirement: 'Ev2 ≥ 120 MPa auf der Frostschutzschicht, frostunempfindliches Material nach TL SoB-StB', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk32': {
@@ -48,43 +50,43 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
   },
   'Bk10': {
     title: 'Hauptsammelstraße / Industrie (Bk10)',
-    description: 'Verbindungsstraßen, Hauptdurchgangsstraßen und Industriegebiets-Erschließungen (3.2 bis 10 Mio. äquivalente Achsübergänge). Ausgelegt auf hohe Radlasten.',
+    description: 'Verbindungsstraßen, Hauptdurchgangsstraßen und Industriegebiets-Erschließungen (3,2 bis 10 Mio. äquivalente 10-t-Achsübergänge). Ausgelegt auf hohe Radlasten.',
     totalThickness: 65,
     layers: [
       { name: 'Asphaltdeckschicht (AC 11 D S / SMA 8)', thickness: 4, material: 'Asphaltbeton / SMA mit 50/70', normRequirement: 'Gute Verschleißfestigkeit, PSV-Wert ≥ 48', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphaltbinderschicht (AC 16 BS)', thickness: 5, material: 'Binder mit Straßenbaubitumen 50/70', normRequirement: 'Hohlraumfüllungsgrad mind. 70%', bgClass: 'bg-zinc-700 text-zinc-100', borderColor: 'border-zinc-800' },
       { name: 'Asphalttragschicht (AC 22 TS)', thickness: 13, material: 'Bitumen 50/70 oder 70/100', normRequirement: 'Dicke 13 cm, Bindergehalt ≥ 4,3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 43, material: 'Sand-Kies-Schottergemisch FSS', normRequirement: 'EV2 ≥ 100 MPa, hohe Filterstabilität', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 43, material: 'Sand-Kies-Schottergemisch FSS', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS (Bk100–Bk1,8; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk3.2': {
     title: 'Sammelstraße / Landstraße (Bk3.2)',
-    description: 'Ortsverbindungsstraßen und Sammelstraßen (1.0 bis 3.2 Mio. äquivalente Achsübergänge). Geringerer Lkw-Spuranteil.',
+    description: 'Ortsverbindungsstraßen und Sammelstraßen (1,8 bis 3,2 Mio. äquivalente 10-t-Achsübergänge). Geringerer Lkw-Anteil.',
     totalThickness: 60,
     layers: [
       { name: 'Asphaltdeckschicht (AC 11 D / SMA 8)', thickness: 4, material: 'Asphaltbeton mit 70/100', normRequirement: 'Hohlraumgehalt am fertigen Bauteil 1,5-4,5 Vol.-%', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphalttragschicht (AC 22 TS)', thickness: 14, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97,0%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 42, material: 'Sand/Schotter-Recycling-Gemisch', normRequirement: 'Statischer Verformungsmodul EV2 ≥ 80 MPa auf der FSS', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 42, material: 'Sand/Schotter-Recycling-Gemisch', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS (Bk100–Bk1,8; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk1.0': {
     title: 'Wohnstraße / Ortskanal (Bk1.0)',
-    description: 'Anlieger- und Wohnstraßen (0.1 bis 0.3 Mio. Achsübergänge). Fokus auf Rissentlastung durch Temperatureinfluss, kaum Schwerverkehr.',
+    description: 'Anlieger- und Wohnstraßen (0,3 bis 1,0 Mio. äquivalente 10-t-Achsübergänge), wenig Schwerverkehr.',
     totalThickness: 55,
     layers: [
       { name: 'Asphaltdeckschicht (AC 8 N oder AC 11 N)', thickness: 4, material: 'Asphaltbeton mit weicherem Bitumen 70/100', normRequirement: 'Dichtheit gegen Sauerstoff/Wasser, PSV ≥ 45 ausreichend', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
       { name: 'Asphalttragschicht (AC 22 TN)', thickness: 10, material: 'Straßenbaubitumen 70/100', normRequirement: 'Verdichtungsgrad ≥ 97,0%, Bindergehalt ≥ 4,3 M.-%', bgClass: 'bg-zinc-600 text-zinc-200', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 41, material: 'Sand-Kies FSS', normRequirement: 'EV2 ≥ 80 MPa auf der Frostschutzschicht', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 41, material: 'Sand-Kies FSS', normRequirement: 'Ev2 ≥ 100 MPa auf der FSS (Bk1,0–Bk0,3; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk0.3': {
     title: 'Anliegerweg / Parkplatz (Bk0.3)',
-    description: 'Marginal belastete Erschließungsverkehre (≤ 0.1 Mio. äquivalente Achsübergänge). Baustruktur optimiert für minimale Herstellkosten im Kommunalbau.',
+    description: 'Gering belastete Erschließungsflächen (≤ 0,3 Mio. äquivalente 10-t-Achsübergänge).',
     totalThickness: 50,
     layers: [
-      { name: 'Asphaltdeckschicht (AC 8 N / AC 5 N)', thickness: 4, material: 'Asphaltbeton mit Bitumen 70/100 oder 160/220', normRequirement: 'Maximaler Bindemittelgehalt zur Alterungsprävention', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
-      { name: 'Asphalttragschicht (AC 22 TN)', thickness: 8, material: 'Bitumen 70/100', bgClass: 'bg-zinc-600 text-zinc-200', normRequirement: 'Minimale Stabilitätsanforderung, flexibel handhabbar', borderColor: 'border-zinc-700' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 38, material: 'Kies/Schotter-Gemisch 0/45', normRequirement: 'EV2 ≥ 80 MPa oder min. EV1-Nachweis', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Asphaltdeckschicht (AC 8 N / AC 5 N)', thickness: 4, material: 'Asphaltbeton mit Bitumen 70/100 oder 160/220', normRequirement: 'Dichte Deckschicht, gute Verdichtung', bgClass: 'bg-zinc-800 text-white', borderColor: 'border-zinc-900' },
+      { name: 'Asphalttragschicht (AC 22 TN)', thickness: 8, material: 'Bitumen 70/100', bgClass: 'bg-zinc-600 text-zinc-200', normRequirement: 'Anforderungen nach TL/ZTV Asphalt-StB', borderColor: 'border-zinc-700' },
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 38, material: 'Kies/Schotter-Gemisch 0/45', normRequirement: 'Ev2 ≥ 100 MPa auf der FSS (Bk1,0–Bk0,3; manuell prüfen)', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   }
 };
@@ -92,23 +94,23 @@ const RSTO_ASPHALT_DATA: Record<string, RstoProfile> = {
 const RSTO_CONCRETE_DATA: Record<string, RstoProfile> = {
   'Bk100': {
     title: 'Autobahn - Betonbauweise (Bk100)',
-    description: 'Starre Befestigung für hohe Dauerhaftigkeit (>40 Jahre schadensfreie Liegezeit nach RStO 12/24). Ausgezeichnete Spurrinnenimmunität und Hitzebeständigkeit.',
+    description: 'Starre Befestigung mit hoher Dauerhaftigkeit (Bemessungszeitraum nach RStO in der Regel 30 Jahre; tatsächliche Nutzungsdauer oft länger). Keine Spurrinnen durch plastische Verformung.',
     totalThickness: 85,
     layers: [
-      { name: 'Betondecke (ZTV Beton-StB) mit Dübeln', thickness: 30, material: 'Beton C30/37 mit hohem Frost-Tausalz-Widerstand (XM2/XF4)', normRequirement: 'Verschleißwiderstand, Gestein mit extrem hohem PSV-Wert, Dübel/Anker in den Scheinfugen zur Fugensicherung', bgClass: 'bg-slate-300 text-slate-800', borderColor: 'border-home-grau/30' },
+      { name: 'Betondecke (ZTV Beton-StB) mit Dübeln', thickness: 30, material: 'Beton C30/37 mit hohem Frost-Tausalz-Widerstand (XM2/XF4)', normRequirement: 'Verschleißwiderstand, Gestein mit hohem PSV-Wert, Dübel in Quer- und Anker in Längsscheinfugen', bgClass: 'bg-slate-300 text-slate-800', borderColor: 'border-home-grau/30' },
       { name: 'Vliesstoff / Trennlage', thickness: 0.5, material: 'Geotextil (Georaster / Vlies)', normRequirement: 'Entkopplung zwischen Betondecke und Tragschicht gegen Rissfortleitung', bgClass: 'bg-slate-200 text-slate-600', borderColor: 'border-home-grau/30' },
-      { name: 'Hydraulisch gebundene Tragschicht (HGT)', thickness: 15, material: 'Zementgebundenes Gesteinsgemisch', normRequirement: 'Druckfestigkeit nach 28 Tagen: 7 bis 12 MPa', bgClass: 'bg-slate-400 text-slate-800', borderColor: 'border-home-grau/30' },
-      { name: 'Frostschutzschicht (ungebunden)', thickness: 39.5, material: 'Schottertragschicht / Frostschutzsand', normRequirement: 'EV2 ≥ 150 MPa auf HGT, EV2 ≥ 120 MPa auf FSS', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
+      { name: 'Hydraulisch gebundene Tragschicht (HGT)', thickness: 15, material: 'Zementgebundenes Gesteinsgemisch', normRequirement: 'Druckfestigkeit nach TL Beton-StB (Lehrwert ca. 7–12 MPa, manuell prüfen)', bgClass: 'bg-slate-400 text-slate-800', borderColor: 'border-home-grau/30' },
+      { name: 'Frostschutzschicht (ungebunden)', thickness: 39.5, material: 'Schottertragschicht / Frostschutzsand', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   },
   'Bk32': {
     title: 'Verkehrskreisel / Bushaltestelle - Betonbauweise (Bk32)',
-    description: 'Starre Struktur ideal für Bereiche mit hoch-dynamischen punktuellen Scherkräften und Kriechverkehr.',
+    description: 'Starre Bauweise für Bereiche mit Brems-, Anfahr- und Schubkräften sowie langsamem Schwerverkehr.',
     totalThickness: 75,
     layers: [
-      { name: 'Betondecke (bewehrt / verdübelt)', thickness: 26, material: 'Fahrbahndeckenbeton C30/37 (Kornklasse 0/22)', normRequirement: 'Biegezugfestigkeit m_fct,sp ≥ 4,5 MPa, Waschbetonoberfläche gegen Aquaplaning', bgClass: 'bg-slate-300 text-slate-800', borderColor: 'border-home-grau/30' },
+      { name: 'Betondecke (bewehrt / verdübelt)', thickness: 26, material: 'Fahrbahndeckenbeton C30/37 (Kornklasse 0/22)', normRequirement: 'Festigkeitsklasse und Oberfläche nach ZTV Beton-StB (z. B. Waschbeton für Griffigkeit und Lärmminderung)', bgClass: 'bg-slate-300 text-slate-800', borderColor: 'border-home-grau/30' },
       { name: 'Vliesstoff / Trennlage', thickness: 0.5, material: 'Geotextil', normRequirement: 'Trenn- und Entwässerungselement', bgClass: 'bg-slate-200 text-slate-600', borderColor: 'border-home-grau/30' },
-      { name: 'Hydraulisch gebundene Tragschicht (HGT)', thickness: 15, material: 'HGT nach ZTV Beton-StB', normRequirement: 'EV2 ≥ 120 MPa auf der HGT-Schicht', bgClass: 'bg-slate-400 text-slate-800', borderColor: 'border-home-grau/30' },
+      { name: 'Hydraulisch gebundene Tragschicht (HGT)', thickness: 15, material: 'HGT nach ZTV Beton-StB', normRequirement: 'Ev2 ≥ 120 MPa auf der FSS unter der HGT', bgClass: 'bg-slate-400 text-slate-800', borderColor: 'border-home-grau/30' },
       { name: 'Frostschutzschicht', thickness: 33.5, material: 'Frostunempfindliches Gestein 0/45', normRequirement: 'Verdichtungsgrad DPr ≥ 103%', bgClass: 'bg-zinc-400 text-zinc-800', borderColor: 'border-zinc-500' }
     ]
   }
@@ -308,7 +310,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                 <Milestone size={16} className="text-shiraz" /> Grundlagen der Bemessung nach RStO 12/24
               </h3>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Die <strong>Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (RStO 12/24, eingeführt mit Allgemeinem Rundschreiben Straßenbau Nr. 02/2024)</strong> regeln den Aufbau von Straßenquerschnitten in Deutschland. Ziel ist die Festlegung der wirtschaftlichsten Dicke der einzelnen Schichten unter Berücksichtigung von <strong>Schwerverkehr</strong> (charakterisiert durch die Belastungsklasse <InlineMath math="B_k" />), Frostempfindlichkeit des Untergrundes und klimatischen Randbedingungen.
+                Die <strong>Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (RStO 12/24, Ausgabe 2012, Fassung 2024)</strong> regeln den Aufbau von Straßenquerschnitten in Deutschland. Die Schichtdicken im Rechner sind vereinfachte Lehrwerte – maßgebend sind die Tafeln der RStO 12/24 und die ZTV SoB-StB. Ziel ist die Festlegung der wirtschaftlichsten Dicke der einzelnen Schichten unter Berücksichtigung von <strong>Schwerverkehr</strong> (charakterisiert durch die Belastungsklasse <InlineMath math="B_k" />), Frostempfindlichkeit des Untergrundes und klimatischen Randbedingungen.
               </p>
             </div>
 
@@ -373,8 +375,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                       <p className="font-bold text-[11px] text-amber-900">ZTV Asphalt-StB Hinweis:</p>
                       <p className="text-[10px] text-text-main/70 leading-relaxed mt-0.5">
                         {bauweise === 'asphalt' 
-                          ? 'Erhöhte Anforderungen an die Kornform (Kategorie SI15 für Splitt) und verformungsstabilere PmB-Bitumensorten bei schwerer Lastklasse (≥ Bk32).'
-                          : 'Überbau mit Dübeln (Ø 25 mm, im feuchten Beton eingefüttet) und Kriechbetonsperren zwingend auszuführen zur Verhinderung von Plattenkippen.'}
+                          ? 'Erhöhte Anforderungen an die Kornform (z. B. Kategorie SI15 bzw. FI15) und verformungsstabilere PmB-Bitumensorten bei schwerer Lastklasse (≥ Bk32).'
+                          : 'Querscheinfugen mit Dübeln (Ø 25 mm, kunststoffbeschichtet), Längsfugen mit Ankern – gegen Stufenbildung und Auseinanderwandern der Platten.'}
                       </p>
                     </div>
                   </div>
@@ -464,7 +466,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                 Asphaltmischgut & Betonoberbau im Vergleich
               </h3>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Asphalt im Straßenbau ist ein heiß gemischtes Verbundmaterial aus <strong>Füller</strong> (Rauchgaseerzeuger/Feinstaub-Füllstoff), <strong>Feiner/Grober Gesteinskörnung</strong> und <strong>Bitumen</strong>. Die Struktur unterscheidet sich fundamental nach Traggerüst und Beanspruchung:
+                Asphalt im Straßenbau ist ein heiß gemischtes Verbundmaterial aus <strong>Füller</strong> (Gesteinsmehl &lt; 0,063 mm), <strong>Feiner/Grober Gesteinskörnung</strong> und <strong>Bitumen</strong>. Die Struktur unterscheidet sich fundamental nach Traggerüst und Beanspruchung:
               </p>
             </div>
 
@@ -496,7 +498,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   </div>
                   <h4 className="font-bold text-base text-zinc-800 mb-1">Splittmastix (SMA)</h4>
                   <p className="text-xs text-text-main/70 leading-relaxed explanation-box">
-                    Ausgeprägtes einkörniges Steinskelett (Splitt-an-Splitt-Abstützung). Der Hohlraum ist mit reichlich Mastix (Füller + Bitumen + <strong>Zellulosefasern als Stabilisator</strong> gegen Ablaufen von Bitumen) gefüllt. Extrem widerstandsfähig gegen schwere Lasten.
+                    Ausfallkörnung mit Splittgerüst (Splitt-an-Splitt-Abstützung). Der Hohlraum ist mit reichlich Mastix (Füller + Bitumen + <strong>Zellulosefasern als Stabilisator</strong> gegen Ablaufen von Bitumen) gefüllt. Sehr widerstandsfähig gegen Verformung unter Schwerverkehr.
                   </p>
                 </div>
                 <div className="border-t border-zinc-100 pt-3 mt-3 text-[11px] text-zinc-600 font-mono">
@@ -562,7 +564,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <span>🧱 Zementstabilisierung / HGT & Verfestigung</span>
                   </h5>
                   <p className="mt-1">
-                    <strong>Hydraulisch gebundene Tragschichten (HGT)</strong>: Ein Gemisch aus ungehärteten Mineraldünger-Splitten, Zement und Wasser. Besitzt mäßige Zugfestigkeiten und neigt zu Hydratationsrissen. Diese Scheinfugen rissüberbrückend zu trennen ist Essenz für darüber liegende Asphaltschichten.
+                    <strong>Hydraulisch gebundene Tragschichten (HGT)</strong>: Gemisch aus Gesteinskörnungen, Zement und Wasser. Geringe Zugfestigkeit, Neigung zu Schwind- und Temperaturrissen. Unter Asphalt wird die HGT gekerbt, damit sich Risse nicht unkontrolliert in den Asphalt durchpausen.
                   </p>
                 </div>
               </div>
@@ -597,7 +599,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <p className="font-bold text-zinc-800">2. Erweichungspunkt Ring und Kugel (RuK, DIN EN 1427)</p>
                     <p className="text-text-main/75 mt-1">
                       Temperatur, bei der eine Stahlkugel eine erhitzte Bitumenscheibe um eine definierte Distanz nach unten durchbiegt. 
-                      Standard-Straßenbitumen RuK liegt bei circa <strong>45 °C bis 52 °C</strong>. Modifizierte Bitumen (PmB) erreichen durch Polymerzugabe (SBS) deutlich höhere Erweichungspunkte (&gt; 60 °C) bei gleichzeitig tiefer elastischer Dehnung im Winter.
+                      Straßenbaubitumen 50/70 bzw. 70/100 hat einen Erweichungspunkt RuK von ca. <strong>43 °C bis 54 °C</strong> (DIN EN 12591). Polymermodifizierte Bitumen (PmB, z. B. mit SBS) erreichen höhere Erweichungspunkte und bleiben bei Kälte elastischer.
                     </p>
                   </div>
                 </div>
@@ -653,14 +655,14 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1">Marshall-Stabilität und -Fließwert (DIN EN 12697-34)</h5>
                     <p>
                       Mischproben werden mit dem Standard-Marshall-Hammer typischerweise mit 2x50 Schlägen im Zylinder verdichtet. 
-                      Anschließend wird der Probekörper bei 60 °C (kritische Sommertemperatur) bis zum Bruch beansprucht. Die Maximalkraft ist die <strong>Marshall-Stabilität (Spezifikation &gt; 5 kN beziehungsweise &gt; 7,5 kN für Schwerverkehr)</strong>, die Verformung ist der <strong>Fließwert (in mm)</strong>.
+                      Anschließend wird der Probekörper bei 60 °C (kritische Sommertemperatur) bis zum Bruch beansprucht. Die Maximalkraft ist die <strong>Marshall-Stabilität</strong>, die Verformung der <strong>Fließwert (in mm)</strong>. In Deutschland dienen Marshall-Probekörper vor allem zur Bestimmung von Raumdichte und Hohlraumgehalt.
                     </p>
                   </div>
 
                   <div className="border-t border-zinc-100 pt-3">
                     <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1">Spurbildungsversuch / Wheel-Tracking (DIN EN 12697-22)</h5>
                     <p>
-                      Simuliert die Spurinnenbildung unter schweren Radlasten. Ein gummiertes Prüfrad überrollt eine Asphaltplatte 20.000 Mal bei 50 °C oder 60 °C. Die gemessene Profiltiefe (Spurrinne in %) ist das Maß für die hochtemperierte Standfestigkeit.
+                      Simuliert die Spurinnenbildung unter schweren Radlasten. Ein Prüfrad überrollt eine Asphaltplatte (DIN EN 12697-22, z. B. 20.000 Überrollungen bei 50 °C oder 60 °C). Die gemessene Profiltiefe (Spurrinne in %) ist das Maß für die hochtemperierte Standfestigkeit.
                     </p>
                   </div>
                 </div>
@@ -672,7 +674,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <Calculator size={16} className="text-shiraz" /> Interaktiver Hohlraumrechner & Rice-Maximaldichte
                 </h3>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Studentische Übungsrechnung: Bestimmen Sie den Luftporengehalt $V_u$ eines Labor-Asphaltprobekörpers. Ein zu hoher Hohlraumgehalt führt zu Oxidation und Wassereintritt (Frostschäden), ein zu niedriger zu fataler Spurrinne/Bindemittelaustritt.
+                  Studentische Übungsrechnung: Bestimmen Sie den Hohlraumgehalt eines Asphaltprobekörpers. Zu viel Hohlraum fördert Alterung und Wassereintritt, zu wenig führt zu Spurrinnen und Bindemittelanreicherung an der Oberfläche (Grenzwerte im Rechner: Lehrwerte).
                 </p>
 
                 <div className="space-y-4">
@@ -742,7 +744,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         </span>
                       ) : (
                         <span className="text-rose-700 font-bold flex items-center gap-1">
-                          ✗ Nicht konform für Deckschichten ({parseFloat(luftPorenErrechnet.luftporen) < 1.5 ? 'Gepreßtes Bindemittel / Gefahr von Schwitzen!' : 'Zu offenporig / Gefahr von Taumittelschäden!'})
+                          ✗ Nicht konform für Deckschichten ({parseFloat(luftPorenErrechnet.luftporen) < 1.5 ? 'zu dicht – Gefahr von Bindemittelanreicherung und Spurrinnen' : 'zu offen – Gefahr von Wassereintritt und Frostschäden'})
                         </span>
                       )}
                     </div>
@@ -896,7 +898,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     </p>
                     <ul className="space-y-1.5 text-[11px] text-text-main/80">
                       <li>• <strong>Verbund-Kabelschutzrohre (PE-HD):</strong> Gewellter Außenmantel für Biegsamkeit und hohe Ringsteifigkeit, innen glatte Gleitschicht für reibungsfreien Kabeleinzug.</li>
-                      <li>• <strong>Kabelabdeckplatten &amp; Hauben:</strong> Warnende Polystyrol-Platten zum Schutz erdverlegter Starkstromkabel vor Baggerzähnen bei späteren Tiefbauarbeiten.</li>
+                      <li>• <strong>Kabelabdeckplatten &amp; Hauben:</strong> Warnende Kunststoffplatten zum Schutz erdverlegter Starkstromkabel vor Baggerzähnen bei späteren Tiefbauarbeiten.</li>
                       <li>• <strong>Mehrsparten-Hauseinführungen:</strong> Gas- und druckwasserdichte Bündeldurchführungen durch Bodenplatten und Außenwände.</li>
                     </ul>
                   </div>
@@ -950,7 +952,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     </p>
                     <ul className="space-y-1.5 text-[11px] text-text-main/80">
                       <li>• <strong>Bitumen-Schmelzbänder (Rissbänder):</strong> Heiß oder kalt verlegbare Anschlussbänder zur dichten Verbindung von neuem Asphalt an Ränder und Schächte (Nahtausbildung).</li>
-                      <li>• <strong>Reparaturmörtel &amp; Verguss:</strong> Schachtrahmen-Reguliermörtel mit Extrem-Frühfestigkeit (Spannungsfreiheit und Verkehrsfreigabe bereits nach 30 Minuten).</li>
+                      <li>• <strong>Reparaturmörtel &amp; Verguss:</strong> Schachtrahmen-Reguliermörtel mit sehr hoher Frühfestigkeit (frühe Verkehrsfreigabe nach Herstellerangabe).</li>
                       <li>• <strong>Kaltasphalt (Reaktiv-Mischgut):</strong> Gesteinsmischung mit polymerem Bindemittel, härtet unter Feuchtigkeitseinwirkung für eilige Schadstellenbeseitigungen aus.</li>
                     </ul>
                   </div>
@@ -968,7 +970,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <Calculator size={16} className="text-shiraz" /> II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138
                 </h4>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Die Bemessung eines unterirdischen Sickerelements (Rigole) basiert auf der Niederschlagsfläche A_E, dem spezifischen Spitzenregen r_D und der Infiltration in das umgebende Erdreich. Nutzen Sie diesen vereinfachten Rechner zur statischen Bemessung Ihres Rigolenspeichers.
+                  Die Bemessung eines unterirdischen Sickerelements (Rigole) basiert auf der Niederschlagsfläche A_E, dem spezifischen Spitzenregen r_D und der Infiltration in das umgebende Erdreich. Der vereinfachte Rechner schätzt das erforderliche Speichervolumen ab (Lehrmodell; Bemessung nach DWA-A 138).
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -1188,7 +1190,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div>
                     <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1">Gleisschotter (DIN EN 13450)</h5>
                     <p>
-                      Der klassische Schotteroberbau verteilt die hohen Lasten der Achsen elastisch auf das Planum. Eisenbahnschotter muss aus zähelastischem Hartgestein (z. B. Basalt oder Granit) bestehen, um den enormen Zertrümmerungsbeanspruchungen standzuhalten. Wichtigste Kriterien: 
+                      Der klassische Schotteroberbau verteilt die hohen Lasten der Achsen elastisch auf das Planum. Eisenbahnschotter muss aus zähelastischem Hartgestein (z. B. Basalt oder Granit) bestehen, um den hohen Schlag- und Abriebbeanspruchungen standzuhalten. Wichtigste Kriterien: 
                       Flachheitskennzahl (≤ 20 %) und Widerstand gegen Schlagzertrümmerung (SZ ≤ 20 %).
                     </p>
                   </div>
@@ -1196,10 +1198,10 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div>
                     <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1">Feste Fahrbahn (Slab Track)</h5>
                     <p>
-                      Für Geschwindigkeiten über 230 km/h (z. B. ICE/TGV-Strecken) wird zunehmend die Feste Fahrbahn eingesetzt (z. B. System Rheda 2000 oder ÖBB-PORR). Dabei entfällt der elastische Schotter; die Schwellen werden direkt in eine Ortbetonplatte eingegossen. 
+                      Auf Hochgeschwindigkeitsstrecken wird häufig die Feste Fahrbahn eingesetzt (z. B. System Rheda 2000 oder ÖBB-PORR). Dabei entfällt der elastische Schotter; die Schwellen bzw. Stützpunkte werden in eine Betontragplatte eingebunden. 
                     </p>
                     <ul className="list-disc pl-4 mt-1.5 space-y-1 text-[11px]">
-                      <li><strong>Vorteil:</strong> Extreme Lagestabilität, nahezu wartungsfrei auf Jahrzehnte, sichere Führung bei hohen Querbeschleunigungen.</li>
+                      <li><strong>Vorteil:</strong> Hohe Lagestabilität und geringer Instandhaltungsaufwand.</li>
                       <li><strong>Nachteil:</strong> Hohe Investitionskosten, schwierige Körperschallisolation, extrem aufwendiger Rückbau bei Setzungen.</li>
                     </ul>
                   </div>
@@ -1207,7 +1209,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
                     <h5 className="font-bold text-zinc-800 text-xs mb-1">UIC 60 Schienenprofil</h5>
                     <p className="text-[11px]">
-                      Das Standardprofil für den Fernbahnoberbau besitzt ein Metergewicht von 60,34 kg/m und eine Querschnittsfläche von A = 76,86 cm² (7686 mm²). Schienenstähle (z. B. R260) besitzen eine Festigkeit von mind. 880 N/mm² und sind lückenlos verschweißt.
+                      Das Schienenprofil UIC 60 hat ein Metergewicht von 60,34 kg/m und eine Querschnittsfläche von A = 76,86 cm² (heutiges Profil 60E1: ca. 60,2 kg/m). Schienenstahl R260 hat eine Zugfestigkeit von mind. 880 N/mm²; die Schienen sind lückenlos verschweißt.
                     </p>
                   </div>
                 </div>
@@ -1375,16 +1377,16 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                       Nach der Richtlinie Spritzbeton werden zur Gewährleistung des Arbeitsschutzes direkt nach dem Aufspritzen Einstufungen vorgenommen:
                     </p>
                     <ul className="list-disc pl-4 mt-1.5 space-y-1 text-[11px]">
-                      <li><strong>Klasse J1:</strong> Für geringen Gebirgsdruck und dünnen Erstauftrag, Entwicklung von Staubpartikel-Adhäsion.</li>
-                      <li><strong>Klasse J2:</strong> Standardvortriebsklasse. Schnelle Festigkeitsbildung zur Aufnahme dynamischer Abschlagserschütterungen.</li>
-                      <li><strong>Klasse J3:</strong> Bei stark wasserführendem Gebirge oder akut drohender First-Nachbrüchigkeit. Extrem schnelle Erstabbindung.</li>
+                      <li><strong>Klasse J1:</strong> Geringe Frühfestigkeit – für dünne Lagen auf trockenem Untergrund ohne besondere Anforderungen.</li>
+                      <li><strong>Klasse J2:</strong> Höhere Frühfestigkeit – für dickere Lagen, auch über Kopf, und bei Wasserandrang.</li>
+                      <li><strong>Klasse J3:</strong> Sehr hohe Frühfestigkeit – bei stark wasserführendem oder nachbrüchigem Gebirge (mehr Staub und Rückprall).</li>
                     </ul>
                   </div>
 
                   <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
                     <h5 className="font-bold text-zinc-800 text-xs mb-1">Vortriebsverfahren im Vergleich</h5>
                     <p className="text-[11px]">
-                      Während die NÖT extrem flexibel auf wechselnde Geologien (Felswechsel, Störungszonen) reagieren kann, eignet sich der <strong>Schildvortrieb mit Tunnelbohrmaschinen (TBM)</strong> vor allem bei extrem langen Tunnelstrecken im homogenen Baugrund aufgrund der vollautomatisierten Einbringung von Betonfertigteil-Tübbingen.
+                      Während die NÖT flexibel auf wechselnde Geologien (Felswechsel, Störungszonen) reagieren kann, eignet sich der <strong>Schildvortrieb mit Tunnelbohrmaschinen (TBM)</strong> vor allem bei langen Tunnelstrecken in gleichartigem Baugrund aufgrund der vollautomatisierten Einbringung von Betonfertigteil-Tübbingen.
                     </p>
                   </div>
                 </div>
@@ -1396,7 +1398,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                   <Calculator size={16} className="text-shiraz" /> Statische Vordimensionierung der Spritzbetonsicherung
                 </h3>
                 <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-                  Nutzen Sie die vereinfachte hydrostatische Ringdruckermittlung (Zylinder-Kesselformel), um die notwendige Spritzbetonschichtdicke d einer Tunnelinnenschale bei angenommenem radialen Gebirgsdruck p_g zu bemessen.
+                  Lehrmodell: Mit der Kesselformel (σ = p · r / d) lässt sich die Ringdruckspannung einer Spritzbetonschale unter angenommenem radialem Gebirgsdruck abschätzen. Eine echte Bemessung erfordert gebirgsmechanische Nachweise.
                 </p>
 
                 <div className="space-y-4">
@@ -1503,7 +1505,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         {/* Formel-Dokumentation */}
                         <div className="text-[10px] text-zinc-400 bg-white p-2 rounded border border-zinc-150 font-mono leading-relaxed">
                           Ringnormalspannungsformel: σ_Ring = (p_g · R) / d
-                          Sicherheitsbeiwert für den Bauzustand: γ_c = 1,3
+                          Teilsicherheitsbeiwert Bauzustand: γ_c = 1,3 (Lehrannahme)
                         </div>
 
                         {/* Status Alert */}
@@ -1511,9 +1513,9 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                           isSafe ? 'text-emerald-700 bg-emerald-50 border-emerald-100' : 'text-rose-700 bg-rose-50 border-rose-200'
                         }`}>
                           {isSafe ? (
-                            <span>✓ Tragfähigkeit im Bauzustand gewährleistet! Die Spritzbetonsicherung fängt den Gebirgsdruck stabil ab (Sicherheitsreserve vorhanden).</span>
+                            <span>✓ Im Lehrmodell ausreichend: Die Ringdruckspannung liegt unter dem Bemessungswert der Spritzbetonfestigkeit.</span>
                           ) : (
-                            <span>✗ WARNUNG: ÜBUNG NICHT BESTANDEN! Die Betongefügespannung übersteigt die Festigkeit des Spritzbetons. Gefahr des Ausbrechens des Ausbruchsquerschnitts! Erhöhen Sie die Dicke oder wählen Sie C30/37.</span>
+                            <span>✗ Im Lehrmodell nicht ausreichend: Die Ringdruckspannung übersteigt den Bemessungswert. Erhöhen Sie die Dicke oder die Festigkeitsklasse.</span>
                           )}
                         </div>
                       </div>
@@ -1537,8 +1539,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                 Fahrbahndecken aus Beton nach ZTV Beton-StB &amp; RLaO
               </h3>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Fahrbahndecken aus Beton (starre Straßenbefestigungen) bieten höchste Tragfähigkeit und Ermüdungsresistenz. Sie verformen sich unter Schwerlast praktisch überhaupt nicht (<strong>vollständige Immunität gegen Spurrinnen</strong>) und erreichen Nutzungsdauern von <span className="font-bold">≥ 40 Jahren</span>. 
-                Die konstruktiven Kriterien für Autobahnen und Bundesstraßen sind in den <strong>Zusätzlichen Technischen Vertragsbedingungen für Fahrbahndecken aus Beton (ZTV Beton-StB)</strong> sowie in den Bemessungs-Richtlinien der <strong>RLaO</strong> verankert.
+                Fahrbahndecken aus Beton (starre Befestigungen) haben eine hohe Tragfähigkeit und bilden <strong>keine Spurrinnen durch plastische Verformung</strong>. Sie erreichen oft Nutzungsdauern von <span className="font-bold">mehr als 30 Jahren</span>. 
+                Die konstruktiven Kriterien für Autobahnen und Bundesstraßen sind in den <strong>Zusätzlichen Technischen Vertragsbedingungen für Fahrbahndecken aus Beton (ZTV Beton-StB)</strong> sowie in den <strong>RDO Beton</strong> (Richtlinien für die rechnerische Dimensionierung von Betondecken) verankert.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-1 text-[11px]">
                 <div className="bg-white p-2.5 rounded border border-zinc-200">
@@ -1573,7 +1575,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     1. Plattenstärken-Prüfer (elastischer Halbraum nach Westergaard)
                   </h4>
                   <p className="text-[11px] text-gray-500 leading-normal">
-                    Berechnet die kritische Biegezugspannung am unbelasteten Plattenrand (kritischster Lastfall im Fugenkantenbereich) nach der klassischen Westergaard-Halbraum-Gleichung.
+                    Berechnet die kritische Biegezugspannung am unbelasteten Plattenrand (kritischster Lastfall im Fugenkantenbereich) nach der klassischen Westergaard-Gleichung für den Plattenrand (Lehrmodell).
                   </p>
 
                   <div className="space-y-4">
@@ -1690,7 +1692,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                             {isThicknessOK ? (
                               <span>✓ <strong>Dimensionierung ausreichend!</strong> Die Betondecke mit d = {formatDeWert(betonSlabThickness)} cm hält den Dauer-Biegezugspannungen der Lkw-Verkehrslast stand.</span>
                             ) : (
-                              <span>✗ <strong>MANGELHAFT (Bruchgefahr):</strong> Die Deckenspannung übersteigt die zyklische Biegefestigkeit. Wilde Spontanrisse und Eckenabbrüche vorprogrammiert! Erhöhen Sie d oder verbessern Sie die Bettung (k-Wert).</span>
+                              <span>✗ <strong>MANGELHAFT (Bruchgefahr):</strong> Die Randspannung übersteigt die angesetzte Biegezugfestigkeit – Rissgefahr. Erhöhen Sie d oder verbessern Sie die Bettung (k-Wert).</span>
                             )}
                           </div>
                         </div>
@@ -1706,7 +1708,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     2. Frost-Tausalz-LP-Prüfer (ZTV Beton-StB)
                   </h4>
                   <p className="text-[11px] text-gray-500 leading-normal">
-                    Fahrbahndecken müssen zwingend mikroskopische Luftporen zur Aufnahme des Eis-Expansionsdrucks enthalten. Je nach Größtkorn gelten unterschiedliche normative Grenzwerte.
+                    Fahrbahndecken erhalten künstliche Mikroluftporen (LP-Mittel), die den Druck gefrierenden Wassers abbauen. Die Mindest-LP-Gehälter hängen vom Größtkorn ab (Grenzwerte im Rechner: Lehrwerte, maßgebend ZTV Beton-StB).
                   </p>
 
                   <div className="space-y-3">
@@ -1752,13 +1754,13 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
 
                       if (betonFreshAir > reqMax) {
                         strengthLoss = (betonFreshAir - reqMin) * 4.5; // assume 4.5% loss per 1% extra air
-                        lpMsg = `⚠ LUFTPOREN ZU HOCH! Der Grenzwert (${formatDeWert(reqMax)}%) wird überschritten. Dies führt zu einem geschätzten Festigkeitsverlust von ca. ${formatDeZahl(strengthLoss, 0)}% gegenüber dem Kernbetongefüge!`;
+                        lpMsg = `⚠ Luftporengehalt über ${formatDeWert(reqMax)} %: Die Festigkeit sinkt (Faustregel ca. 4–5 % je 1 % zusätzlicher Luft; hier rund ${formatDeZahl(strengthLoss, 0)} %).`;
                         lpColor = "bg-amber-50 text-amber-800 border-amber-200";
                       } else if (betonFreshAir < reqMin) {
-                        lpMsg = `✗ ALARM: FROST-SCHADEN GEFÄHRDET! Die künstlichen Poren genügen nicht (${betonFreshAir}% < gefordert ${reqMin}%). Der Beton wird im Winter unter Tausalz-Sprühmist unweigerlich großflächig absanden/abquetschen!`;
+                        lpMsg = `✗ Luftporengehalt zu niedrig (${formatDeWert(betonFreshAir)} % < ${formatDeWert(reqMin)} %): unzureichender Frost-Tausalz-Widerstand, Abwitterung möglich.`;
                         lpColor = "bg-red-50 text-red-800 border-red-200";
                       } else {
-                        lpMsg = `✓ KONFORM nach ZTV Beton-StB. Mikroklimatische Reserveporen sind optimal gefüllt (Sollbereich: ${formatDeWert(reqMin)}-${formatDeWert(reqMax)}%).`;
+                        lpMsg = `✓ Im Sollbereich (${formatDeWert(reqMin)}–${formatDeWert(reqMax)} %, Lehrwerte).`;
                         lpColor = "bg-emerald-50 text-emerald-800 border-emerald-100";
                       }
 
@@ -1790,7 +1792,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     3. Fugengeometrie &amp; Bewehrungsbedarf
                   </h4>
                   <p className="text-[11px] text-gray-500 leading-normal">
-                    Fahrstreifendecken im Straßenbau werden thermisch bedingt segmentiert. Unbewehrte Platten neigen bei Überlänge zu wilden Eigenrissen.
+                    Fahrstreifendecken im Straßenbau werden thermisch bedingt segmentiert. Zu lange unbewehrte Platten reißen unkontrolliert.
                   </p>
 
                   <div className="space-y-4">
@@ -1832,16 +1834,16 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                             isFugenOK ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-rose-50 text-rose-800 border-red-200'
                           }`}>
                             {isFugenOK ? (
-                              <span>✓ <strong>Fugenabstand konform:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m ist kleiner als das Maximum von {formatDeZahl(maxAllowedL, 2)} m (25·h-Grenze). Quer-Verzugrisse werden vermieden.</span>
+                              <span>✓ <strong>Fugenabstand konform:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m ist kleiner als das Maximum von {formatDeZahl(maxAllowedL, 2)} m (Lehrannahme: ≤ 25·h und ≤ 5,0 m).</span>
                             ) : (
-                              <span>✗ <strong>ACUTE RISSGEFAHR:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m übersteigt den rechnerischen Grenzwert ({formatDeZahl(maxAllowedL, 2)} m) für unbewehrte Platten. Wilde Spontan-Querrisse sind unvermeidbar!</span>
+                              <span>✗ <strong>Rissgefahr:</strong> L = {formatDeZahl(betonFugenAbstand, 1)} m übersteigt den rechnerischen Grenzwert ({formatDeZahl(maxAllowedL, 2)} m) für unbewehrte Platten – unkontrollierte Querrisse sind zu erwarten.</span>
                             )}
                           </div>
 
                           <div className="border-t border-zinc-200 pt-2.5 space-y-1.5 font-sans">
                             <span className="font-bold text-zinc-700 block text-xs">Konstruktive Fugenausführung pro Platte (ZTV):</span>
                             <ul className="list-disc pl-4 space-y-1 text-[11px] text-zinc-650 font-sans">
-                              <li>Querscheinfugen: <strong>{dowelCount}x Runddübel (ø 25 mm, l = 500 mm)</strong> im Schiebe-Korbmantel. Gewährleistet die langfristige Querkraftübertragung ohne Plattenstufen (Faulting).</li>
+                              <li>Querscheinfugen: <strong>{dowelCount}x Runddübel (ø 25 mm, l = 500 mm)</strong> auf Dübelkörben. Sie übertragen Querkräfte und verhindern Stufenbildung an den Fugen.</li>
                               <li>Längsscheinfugen: <strong>{tieBarCount}x profilierte Anker (ø 20 mm, l = 800 mm)</strong> zur Verhinderung von Längskampf-Auseinanderdriften der Spurplatten.</li>
                             </ul>
                           </div>
@@ -1900,16 +1902,16 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                         if (betonCementAlkali === 'high') {
                           riskTitle = "AKUTES SCHADENSRISIKO (Betonkrebs-Gefahr EXTREM HOCH!)";
                           riskColor = "bg-red-50 text-red-800 border-red-200";
-                          riskAdvice = "Bei Verwendung von quarzhaltigem Kies in Kombination mit Normalzement und äußerem Tausalzeintrag reißt das Gefüge innerhalb von 5-8 Jahren komplett auf. Dringend verboten nach ARS Nr. 04/2013 (Richtlinie zur AKR-Vermeidung)!";
+                          riskAdvice = "Alkaliempfindliche Gesteinskörnung mit üblichem Zement und Tausalzzufuhr (Feuchtigkeitsklasse WS): hohes AKR-Risiko, Schäden können nach einigen Jahren auftreten. Unzulässig ohne Gutachten bzw. Maßnahmen nach Alkali-Richtlinie und ARS 04/2013 (Nachfolgeregelungen manuell prüfen).";
                         } else {
                           riskTitle = "Mäßiges Risiko (Beherrscht durch NA-Zement)";
                           riskColor = "bg-amber-50 text-amber-800 border-amber-200";
-                          riskAdvice = "Durch die Verwendung eines NA-Zements (Na2O-Äquivalent < 0,60%) ist das autogene Alkalidepot stark gedeckelt. Dennoch ist Feuchtigkeitsklasse WS (Feucht + Tausalzzufuhr) gegeben; zusätzliche Fremdüberwachung der Gesteinspolierbarkeit empfohlen.";
+                          riskAdvice = "Ein Zement mit niedrigem wirksamen Alkaligehalt (NA-Zement, Na2O-Äquivalent ≤ 0,60 %) senkt den Alkalieintrag aus dem Zement. Bei Feuchtigkeitsklasse WS bleibt äußere Alkalizufuhr durch Tausalz – Gesteinskörnung muss geprüft sein.";
                         }
                       } else {
-                        riskTitle = "Unkritisches Risiko (AKR-Gefahr extrem minimal)";
+                        riskTitle = "Geringes AKR-Risiko";
                         riskColor = "bg-emerald-50 text-emerald-800 border-emerald-100";
-                        riskAdvice = "Kalkstein und reines Basaltgestein enthalten nahezu keine freien, reaktiven amorphen Silikate. Der Einbau ist laut nationaler Richtlinie baustofflich vollkommen unbedenklich (AKR-Klasse E1/Feuchtigkeitsklasse WO).";
+                        riskAdvice = "Gesteinskörnungen der Alkaliempfindlichkeitsklasse E I (z. B. viele Kalksteine) gelten als unbedenklich. Fahrbahndecken gehören stets zur Feuchtigkeitsklasse WS.";
                       }
 
                       return (
@@ -1951,6 +1953,24 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
 
       </div>
 
+      {activeTab === 'bahnbau' && (
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Temperaturkraft im lückenlos verschweißten Gleis"
+          zielGleichung="\sigma_T = E \cdot \alpha_T \cdot \Delta T, \quad N_T = \sigma_T \cdot A"
+          normQuelle="Grundgleichung der Zwangsspannung (Lehrbeispiel UIC 60)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'E = 210\\,000\\,\\text{N/mm}^2,\\; \\alpha_T = 1{,}2 \\cdot 10^{-5}\\,\\text{K}^{-1},\\; \\Delta T = 35\\,\\text{K},\\; A = 7686\\,\\text{mm}^2', erklaerung: 'Schiene im Sommer 35 K über der Verlegetemperatur.' },
+            { titel: '2. Spannung', formel: '\\sigma_T = 210\\,000 \\cdot 1{,}2 \\cdot 10^{-5} \\cdot 35 = 88\\,\\text{N/mm}^2', erklaerung: 'Druckspannung, weil die Dehnung behindert ist.' },
+            { titel: '3. Längskraft je Schiene', formel: 'N_T = 88 \\cdot 7686 = 676\\,000\\,\\text{N} \\approx 680\\,\\text{kN}', erklaerung: 'Diese Kraft muss der Querverschiebewiderstand des Schotters sicher aufnehmen.' },
+          ]}
+          ergebnisHinweis="Rund 680 kN Druck je Schiene – deshalb wird bei einer neutralen Temperatur verschweißt und das Schotterbett sorgfältig verdichtet."
+        />
+      </div>
+      )}
+
+      <ModulTest moduleId="bp_verkehrswegebau" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Straßenbau', url: 'https://de.wikipedia.org/wiki/Stra%C3%9Fenbau' },
@@ -1959,11 +1979,14 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
           { title: 'Betondecke', url: 'https://de.wikipedia.org/wiki/Betondecke' }
         ]}
         literatur={[
-          'Velske, S.; Mentlein, H.; Eymann, P.: Straßenbau heute (Vogel Buchverlag)',
+          'Velske, S.; Mentlein, H.; Eymann, P.: Straßenbau, Straßenbautechnik. Köln: Werner 2009 (neuere Auflage manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'RStO 12/24 (Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen, eingeführt mit Allgemeinem Rundschreiben Straßenbau Nr. 02/2024)', url: 'https://www.fgsv-verlag.de/' },
+          { title: 'RStO 12/24 (Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024)', url: 'https://www.fgsv-verlag.de/' },
+          { title: 'ZTV SoB-StB (Schichten ohne Bindemittel)', url: 'https://www.fgsv-verlag.de/' },
+          { title: 'DIN EN 14487-1 / DIN 18551 (Spritzbeton)' },
+          { title: 'DAfStb-Alkali-Richtlinie' },
           { title: 'ZTV Asphalt-StB (Zusätzliche Technische Vertragsbedingungen für Asphalt)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'TL Asphalt-StB (Technische Lieferbedingungen für Asphaltmischgut)', url: 'https://www.fgsv-verlag.de/' },
           { title: 'ZTV Beton-StB (Zusätzliche Technische Vertragsbedingungen für Betonfahrbahnen)', url: 'https://www.fgsv-verlag.de/' }
@@ -1977,7 +2000,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
           {
             formel: 'E_{v2} \\ge 120\\,\\text{MN/m}^2, \\quad \\frac{E_{v2}}{E_{v1}} \\le 2{,}2',
             erklaerung: 'Verformungsmodul Ev2 und Verdichtungsverhältnis Ev2/Ev1 beim statischen Plattendruckversuch auf ungebundenen Frostschutz- und Schottertragschichten.',
-            quelle: 'ZTVE-StB / DIN 18134'
+            quelle: 'ZTV SoB-StB / DIN 18134 (Werte manuell prüfen)'
           }
         ]}
       />

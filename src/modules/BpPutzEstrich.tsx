@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, BookOpen, CheckCircle2, Lightbulb, ClipboardList, Flame, Settings, ShieldAlert, Sparkles, FileText } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -28,7 +30,7 @@ const plasterProducts: PutzEstrichProduct[] = [
     binder: 'Baugips (Calciumsulfat-Hemihydrat)',
     density: 'ca. 900 - 1100 kg/m³',
     shrinkage: 'Sehr gering (quillt minimal)',
-    description: 'Einschichtiger, rationeller Innenputz für Wände und Decken. Ergibt sehr glatte, streichfertige Oberflächen und trägt hervorragend zur Raumluftfeuchteregulation bei.',
+    description: 'Einschichtiger, rationeller Innenputz für Wände und Decken. Ergibt sehr glatte, streichfertige Oberflächen und puffert Raumluftfeuchte.',
     advantages: ['Sehr glatte Oberflächen erzielbar', 'Hervorragendes Raumklima durch Feuchtespeicherung', 'Schnelle Erhärtung'],
     disadvantages: ['Nicht feuchtigkeitsbeständig (reiner Trockenbereich)', 'Keine Frostbeständigkeit', 'Geringere Stoßfestigkeit'],
     applications: ['Wohnräume und Flure (Innen)', 'Untergrund für Tapezierarbeiten', 'Deckenbeschichtungen']
@@ -41,8 +43,8 @@ const plasterProducts: PutzEstrichProduct[] = [
     binder: 'Luftkalk (Calciumhydroxid) / Hydratkalk',
     density: 'ca. 1200 - 1400 kg/m³',
     shrinkage: 'Mäßig (Carbonatisierung erforderlich)',
-    description: 'Hochgradig atmungsaktiver, historisch bewährter Putzmörtel. Durch die extrem hohe Alkalität (pH-Wert ~12) wirkt der Putz auf natürliche Weise schimmelhemmend.',
-    advantages: ['Schimmelpilzwidrig ohne biozide Chemie', 'Hochgradig diffusionsoffen (s_d ≤ 0,02 m)', 'Elastischer als zementgebundene Systeme'],
+    description: 'Diffusionsoffener, historisch bewährter Putzmörtel. Die hohe Alkalität (pH-Wert ca. 12,5) wirkt schimmelhemmend, solange der Putz nicht vollständig karbonatisiert ist.',
+    advantages: ['Schimmelpilzwidrig ohne biozide Chemie', 'Diffusionsoffen (μ ≈ 10, s_d ≈ 0,15 m bei 15 mm)', 'Elastischer als zementgebundene Systeme'],
     disadvantages: ['Langsame Erhärtung (benötigt CO2-Zufuhr)', 'Geringere mechanische Belastbarkeit'],
     applications: ['Historischer Altbau & Denkmalpflege', 'Kindergärten & Schlafzimmer (ökologischer Ausbau)', 'Innentrennwände ohne dauerhafte Feuchtebelastung']
   },
@@ -67,8 +69,8 @@ const plasterProducts: PutzEstrichProduct[] = [
     binder: 'Zement unter Beigabe von Porenbildnern',
     density: 'ca. 1000 - 1300 kg/m³',
     shrinkage: 'Gering',
-    description: 'Spezialputz mit extrem hohem, kontrolliertem Luftporenvolumen (>25%). Dient dem schadensfreien Einlagern auskristallisierender Salze bei feuchtem Kellermauerwerk.',
-    advantages: ['Verhindert Salzausblühungen an der Oberfläche', 'Hält die Oberfläche trocken trotz feuchter Wand', 'Extrem diffusionsoffen'],
+    description: 'Spezialputz mit hohem Luftporengehalt (Frischmörtel > 25 %, WTA-Merkblatt 2-9). Er nimmt auskristallisierende Salze im Porenraum auf, z. B. bei salzbelastetem Kellermauerwerk.',
+    advantages: ['Verhindert Salzausblühungen an der Oberfläche', 'Hält die Oberfläche trocken trotz feuchter Wand', 'Diffusionsoffen'],
     disadvantages: ['Keine konstruktive Abdichtung (nur Opferputz)', 'Beschränkte Salzaufnahmekapazität (Sättigung nach J.)', 'Nicht im ständigen Spritzwasserbereich einsetzbar'],
     applications: ['Sanierung feuchter Altbaukeller (erdberührt)', 'Historische Denkmäler', 'Mauerwerke nach Havariefällen / Rohrbrüchen']
   }
@@ -83,9 +85,9 @@ const screedProducts: PutzEstrichProduct[] = [
     binder: 'Portlandzement (CEM I bzw. CEM II)',
     density: 'ca. 2000 - 2200 kg/m³',
     shrinkage: 'Spürbar hoch (ca. 0,5 mm/m)',
-    description: 'Der bewährte Klassiker für alle Innen- und Außenanwendungen. Absolut wasserfest, hochbelastbar, erfordert jedoch aufgrund des Abbindeschwindens eine strikte Begrenzung feldweiser Fugen.',
-    advantages: ['Absolut feuchtigkeitsunempfindlich', 'Sowohl für innen als auch außen geeignet (frostbeständig)', 'Hohe mechanische Festigkeiten'],
-    disadvantages: ['Lange Trocknungszeit (Reifezeit ca. 28 Tage minimum)', 'Schwindet stark bei Erhärtung (Riss- und Schüsselgefahr)', 'Benötigt Dehnfugen bei Flächen > 40 m²'],
+    description: 'Der bewährte Klassiker für alle Innen- und Außenanwendungen. Feuchteunempfindlich und hoch belastbar; wegen des Schwindens sind Felder und Fugen nach Fugenplan anzuordnen.',
+    advantages: ['Feuchteunempfindlich', 'Sowohl für innen als auch außen geeignet (frostbeständig)', 'Hohe mechanische Festigkeiten'],
+    disadvantages: ['Lange Trocknungszeit bis zur Belegreife (oft mehrere Wochen, CM-Messung)', 'Schwindet beim Erhärten (Riss- und Schüsselgefahr)', 'Bewegungsfugen nach Fugenplan (Richtwert Heizestrich ca. 40 m² je Feld)'],
     applications: ['Nassbereiche, Balkone und Terrassen', 'Industriehallen und Garagen', 'Unterbau für alle Bodenbeläge']
   },
   {
@@ -96,9 +98,9 @@ const screedProducts: PutzEstrichProduct[] = [
     binder: 'Calciumsulfat-Anhydrit (Gipsbasis)',
     density: 'ca. 2000 - 2100 kg/m³',
     shrinkage: 'Extrem gering (quillt/schwindet kaum)',
-    description: 'Fließfähiger Estrich, der sich selbstnivellierend einbaut. Aufgrund des minimalen Schwindverhaltens können riesige Flächen (bis über 300 m²) vollkommen fugenlos hergestellt werden.',
+    description: 'Fließfähiger Estrich, der sich selbstnivellierend einbaut. Wegen des geringen Schwindens sind große Felder fugenlos möglich (Feldgrößen nach Herstellerangabe).',
     advantages: ['Selbstnivellierende, arbeitszeitsparende Einbringung', 'Ideal für Fußbodenheizungen (umschließt Rohrleitungen hohlraumfrei)', 'Belegreif bereits bei geringeren Restfeuchten'],
-    disadvantages: ['Strikte Feuchteempfindlichkeit (Zerstörung durch Gipsquellen)', 'Nicht für den Außen- oder Dauernassbereich zugelassen', 'Sinterhaut muss oft angeschliffen werden'],
+    disadvantages: ['Feuchteempfindlich (Festigkeitsverlust bei Durchfeuchtung)', 'Nicht für den Außen- oder Dauernassbereich zugelassen', 'Sinterhaut muss oft angeschliffen werden'],
     applications: ['Wohnungsbau mit flächiger Fußbodenheizung', 'Fugenlose Ausbauten im Trockenbereich', 'Bürogebäude']
   },
   {
@@ -111,7 +113,7 @@ const screedProducts: PutzEstrichProduct[] = [
     shrinkage: 'Null (rein thermische Kontraktion)',
     description: 'Wird heiß als viskose Masse eingebracht und erhärtet ausschließlich durch Abkühlung. Enthält kein Wasser, wodurch jegliche Baufeuchte entfällt. Sofort begehbar.',
     advantages: ['Völlig wasserfrei (keine Trocknungszeit, sofort belegbar)', 'Ausgezeichneter Trittschall- und Wärmeschutz', 'Absolut wasser- und dampfdicht'],
-    disadvantages: ['Sehr hoher Einbaupreis', 'Erfordert spezielle Heißeinbautragschichten (Schutzfolien)', 'Nicht für hohe Dauertemperaturen geeignet'],
+    disadvantages: ['Sehr hoher Einbaupreis', 'Trennlage (z. B. Rohglasvlies) erforderlich', 'Nicht für hohe Dauertemperaturen geeignet'],
     applications: ['Schnellsanierungen (z.B. Hotelbäder)', 'Industrieböden mit Chemikalien- und mechanischer Belastung', 'Estrich auf Trennschicht über schwingungsempfindlichen Holzbalkendecken']
   }
 ];
@@ -338,7 +340,7 @@ export default function BpPutzEstrich() {
                   <Flame size={14} /> Karbonatisierung von Kalkputzen
                 </span>
                 <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                  Luftkalkputz erhärtet nicht hydraulisch, sondern durch die chemische Aufnahme von Kohlendioxid (<InlineMath math="\text{CO}_2" />) aus der Umgebungsluft (Karbonatisierung). Calciumhydroxid (<InlineMath math="\text{Ca(OH)}_2" />) reagiert langsam zu extrem hartem Kalkstein (<InlineMath math="\text{CaCO}_3" />) unter Freisetzung von Wasser. Dieser Prozess benötigt Wochen. Zugluft unterbindet den Carbonatisierungsstrom und erzeugt sandige, bröckelige Oberflächen.
+                  Luftkalkputz erhärtet nicht hydraulisch, sondern durch die chemische Aufnahme von Kohlendioxid (<InlineMath math="\text{CO}_2" />) aus der Umgebungsluft (Karbonatisierung). Calciumhydroxid (<InlineMath math="\text{Ca(OH)}_2" />) reagiert langsam zu Kalkstein (<InlineMath math="\text{CaCO}_3" />) unter Freisetzung von Wasser. Dieser Prozess benötigt Wochen. Zu schnelles Austrocknen (Zugluft, Sonne) unterbricht die Karbonatisierung; die Oberfläche kann absanden.
                 </p>
               </div>
             </div>
@@ -376,6 +378,22 @@ export default function BpPutzEstrich() {
         )}
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Wasserbedarf beim Abbinden von Stuckgips"
+          zielGleichung="\text{CaSO}_4 \cdot \tfrac{1}{2}\text{H}_2\text{O} + 1{,}5\,\text{H}_2\text{O} \rightarrow \text{CaSO}_4 \cdot 2\,\text{H}_2\text{O}"
+          normQuelle="Stöchiometrie (Molmassen: Halbhydrat 145,1 g/mol, Wasser 18,0 g/mol)"
+          schritte={[
+            { titel: '1. Chemisch gebundenes Wasser je kg Halbhydrat', formel: '\\frac{1{,}5 \\cdot 18{,}0}{145{,}1} = 0{,}186\\,\\text{kg/kg}', erklaerung: 'Das ist der Wasserbedarf für die Hydratation.' },
+            { titel: '2. Anmachwasser in der Praxis', formel: 'w/g \\approx 0{,}6 \\text{ bis } 0{,}8', erklaerung: 'Lehrwert für Gipsputz; der Überschuss sorgt für Verarbeitbarkeit.' },
+            { titel: '3. Überschusswasser', formel: '0{,}7 - 0{,}19 \\approx 0{,}5\\,\\text{kg/kg}', erklaerung: 'Verdunstet – es hinterlässt Poren und muss vor dem Beschichten austrocknen.' },
+          ]}
+          ergebnisHinweis="Nur gut ein Viertel des Anmachwassers wird chemisch gebunden; der Rest bestimmt Porosität, Festigkeit und Trocknungszeit."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_putz_estrich" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Putz (Baustoff)', url: 'https://de.wikipedia.org/wiki/Putz_(Baustoff)' },
@@ -383,10 +401,10 @@ export default function BpPutzEstrich() {
           { title: 'Mörtel', url: 'https://de.wikipedia.org/wiki/M%C3%B6rtel' }
         ]} 
         literatur={[ 
-          'Probst, M.: Handbuch Putz und Estrich (Fraunhofer IRB Verlag).',
+          'Unger, A.: Fußboden-Atlas – richtig planen, Schäden vermeiden. Donauwörth: QUO-VADO (Auflage manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
           'IWM Industrieverband WerkMörtel e.V.: Technische Merkblätter für Werktrockenmörtel.',
-          'Wohnungsbau-Ausschuss: Richtlinie für das Verputzen von Mauerwerk.'
+          'Leitlinien für das Verputzen von Mauerwerk und Beton (Bundesverband Ausbau und Fassade, IWM u. a.; Ausgabe manuell prüfen)'
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 13914-1 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)' }, 
@@ -407,8 +425,8 @@ export default function BpPutzEstrich() {
             quelle: 'DIN EN 459'
           },
           {
-            formel: 's_d = \\mu \\cdot d \\le 0{,}2\\,\\text{m}',
-            erklaerung: 'Diffusionsäquivalente Luftschichtdicke sd für hoch diffusionsoffene mineralische Innenputze zur Vermeidung von Feuchteakkumulation.',
+            formel: 's_d = \\mu \\cdot d \\le 0{,}5\\,\\text{m}',
+            erklaerung: 'Diffusionsäquivalente Luftschichtdicke; Schichten mit s_d ≤ 0,5 m gelten nach DIN 4108-3 als diffusionsoffen. Mineralische Putze liegen meist deutlich darunter.',
             quelle: 'DIN 4108-3'
           }
         ]} 

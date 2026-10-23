@@ -1,6 +1,8 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { 
   Layers, BookOpen, CheckCircle2, Lightbulb, Calculator, Percent, Sparkles, 
@@ -61,7 +63,7 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
       'Einfaches Verschrauben auf Holz und Metall',
       'Reguliert das Raumklima geringfügig durch Gips-Porosität'
     ],
-    description: 'Das bewährte Standard-Ausbauelement für raumbegrenzende Baustrukturen. Die Platte besteht aus einem erstklassigen Gipskern, der schubfest mit einer extrem zähen Papierdeckenkartonage verklebt ist (kraftschlüssiges Stützplattenprinzip). Ideal für Wände und Decken ohne Brandschutz- oder Feuchtigkeitsauflagen.',
+    description: 'Das bewährte Standard-Ausbauelement für raumbegrenzende Baustrukturen. Die Platte besteht aus einem Gipskern, der fest mit dem Karton verbunden ist (Karton nimmt Zug, Gips Druck auf). Ideal für Wände und Decken ohne Brandschutz- oder Feuchtigkeitsauflagen.',
     systemIntegration: 'Standard-Wandsysteme (einfach oder doppelt beplankt), abgehängte Innendecken und gerade Trockenputzflächen.'
   },
   {
@@ -105,7 +107,7 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
       'Besonders verformungsstabil unter Temperatureinfluss',
       'Erhöhte Festigkeit allgemein'
     ],
-    description: 'Spezialplatte für den baulichen Brandschutz. Bei extremer Hitzeeinwirkung setzt der Gips sein zweifach chemisch gebundenes Kristallwasser (ca. 2 Liter pro m²) frei, welches verdampft und so das Bauteil aktiv vor Überhitzung schützt. Glasfasern im Kern stützen das Bauteil, wenn die Kartonage verbrannt ist.',
+    description: 'Spezialplatte für den baulichen Brandschutz. Bei Brandeinwirkung setzt der Gips sein zweifach chemisch gebundenes Kristallwasser (ca. 2 Liter pro m²) frei, welches verdampft und so das Bauteil aktiv vor Überhitzung schützt. Glasfasern im Kern stützen das Bauteil, wenn die Kartonage verbrannt ist.',
     systemIntegration: 'Tragende Brandschutzwände, Fluchtwegschächte (F90), Deckenkonstruktionen unter Massivdecken.'
   },
   {
@@ -122,12 +124,12 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
     fireClass: 'A2-s1, d0 (Schnittbester Schall- & Brandschutz)',
     weightPerM2: 12.8,
     advantages: [
-      'Herausragender Schallschutz durch gesteigerte flächenbezogene Masse',
-      'Extreme Oberflächenhärte schützt vor Stößen und Kratzern',
+      'Besserer Schallschutz durch höhere flächenbezogene Masse',
+      'Hohe Oberflächenhärte gegen Stöße und Kratzer',
       'Sehr hohe Dübelbelastbarkeit (bis zu 45 kg je Hohlraumdübel)',
       'Werksseitig imprägniert für universelle Einsetzbarkeit'
     ],
-    description: 'Die absolute Spitzenklasse unter den Gipsplatten. Vereint eine enorm verdichtete Gipskristallstruktur mit Glasfaser-Gefüge und Hydrophobierung. Entwickelt für Bereiche mit höchsten Anforderungen an Robustheit, Schallschutz und sicheren Halt von Lasten wie Hängeschränken.',
+    description: 'Platte mit hoher Rohdichte, Glasfaserzusatz und Hydrophobierung. Für Bereiche mit hohen Anforderungen an Robustheit, Schallschutz und Befestigung von Lasten wie Hängeschränken.',
     systemIntegration: 'Hochleistungsschallschutzwände, Krankenhäuser, Schulgänge, Sporthallen, Einbruchschutz-Systeme.'
   },
   {
@@ -145,11 +147,11 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
     weightPerM2: 15.0,
     advantages: [
       'Vollkommen homogene Struktur (Gips + Zellulose)',
-      'Extrem schlagfest und aussteifend (tragendes Element)',
-      'Bis zu 50 kg direkt verschraubbar ohne Dübel (grobes Gewinde)',
+      'Sehr schlagfest; im Holzbau aussteifend einsetzbar',
+      'Lasten direkt in die Platte schraubbar (zulässige Lasten nach Herstellerangabe)',
       'Diffusionsfähig und Feuchte regulierend'
     ],
-    description: 'Ein hochfester Faserverbundwerkstoff aus Gips und Papierfasern (Zellulose aus Altpapier), die ohne Klebstoffe unter starkem Pressdruck innig verzahnt werden. Die Platte ist durch und durch bewehrt, extrem stabil und eignet sich ideal für statisch tragende oder anspruchsvolle Zwecke.',
+    description: 'Ein hochfester Faserverbundwerkstoff aus Gips und Papierfasern (Zellulose aus Altpapier), die ohne Klebstoffe unter starkem Pressdruck innig verzahnt werden. Die Fasern bewehren die Platte durchgehend; sie ist sehr stabil und kann im Holzbau aussteifend eingesetzt werden (nach Zulassung).',
     systemIntegration: 'Holzrahmenbau / Fertighäuser (aussteifende Beplankung), Trockenestrich-Elemente, öffentliche Fluchtbereiche.'
   },
   {
@@ -167,11 +169,11 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
     weightPerM2: 18.0,
     advantages: [
       'Unschlagbare Feuchtigkeitsabsorption (> 15g/m² in 24h)',
-      'Filtert Schadstoffe und Tabakrauch aktiv aus der Raumluft',
+      'Kann Gerüche teilweise binden (Herstellerangabe)',
       'Große thermische Masse speichert Heizungswärme exzellent',
       'Schnittstelle für baubiologisch reine Wohnräume'
     ],
-    description: 'Hochökologisches Lehmausbauelement. Hergestellt aus Natursanden, reinem Lehm und organischen Fasern wie Schilfrohr oder Strohhäckseln. Lehm wirkt hochgradig feuchteregulierend und adsorbiert aktiv Gerüche sowie flüchtige Schadstoffe. Beste Wahl für wohngesunden Holzinnenausbau.',
+    description: 'Ausbauplatte aus Lehm, Sand und Fasern (z. B. Schilfrohr, Stroh). Lehm puffert Raumluftfeuchte gut. Geeignet besonders für den Innenausbau im Holzbau (DIN 18948).',
     systemIntegration: 'Verkleidung von Innenwänden auf Holzständern, Deckenbekleidungen unter Wandheizungssystemen.'
   },
   {
@@ -191,9 +193,9 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
       'Exzellente Absorptionsklasse (Schallabsorptionsgrad α_w bis 0.90)',
       'Präzises Lochraster (z.B. 8/18R oder Streulochung)',
       'Hinterlegtes Akustik-Vlies mindert Flatterechos',
-      'Optional mit schadstoffabbauendem Zeolith-Gips (Zeh-Effekt)'
+      'Teils mit Zusätzen zur Schadstoffbindung (Herstellerangabe)'
     ],
-    description: 'Eine technologische Meisterleistung für die Raumakustik. Durch präzise kreisrunde, quadratische oder gestreute Perforationen wirken die Löcher im Zusammenspiel mit dem rückseitigen Spezialvlies als Helmholtz-Resonatoren. Sie "schlucken" Schallwellen und verkürzen die störende Nachhallzeit.',
+    description: 'Platte für die Raumakustik. Durch kreisrunde, quadratische oder gestreute Perforationen wirken die Löcher im Zusammenspiel mit dem rückseitigen Spezialvlies als Helmholtz-Resonatoren. Sie "schlucken" Schallwellen und verkürzen die störende Nachhallzeit.',
     systemIntegration: 'Akustikdecken in Foyers, Konferenzräumen, Klassenzimmern, Kinos und schallschluckenden Wandpaneelen.'
   },
   {
@@ -210,10 +212,10 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
     fireClass: 'A1 (nicht brennbar, brandsichernd)',
     weightPerM2: 15.0,
     advantages: [
-      '100% resistent gegen flüssiges Wasser & Feuchtigkeit (quilltfrei)',
+      'Wasserbeständig, quillt nicht',
       'Absolut schimmel- und fäulnisresistent',
       'Hohe mechanische Bruch- und Knickfestigkeit',
-      'Zulassung für dauerhaften Außenbereich (wetterfest)'
+      'Für Außenanwendungen geeignet (nach Zulassung/ETA)'
     ],
     description: 'Hochfeste Bauplatte auf Portlandzementbasis, die beidseitig mit einem alkaliresistenten Glasgittergewebe armiert ist. Im Gegensatz zu Gipswerkstoffen zersetzt sich Zement auch unter andauernder Nässeeinwirkung nicht und bietet Sporen keinen organischen Nährboden.',
     systemIntegration: 'Dauernassbereiche (Schwimmbäder, Wellnesslandschaften, Wellnessduschen), Großküchen und Außenfassaden.'
@@ -232,12 +234,12 @@ const DRY_PRODUCTS_DB: ProductSpec[] = [
     fireClass: 'A1 (vollkommen brandsicher)',
     weightPerM2: 5.8,
     advantages: [
-      'Extrem diffusionsoffen und kapillaraktiv (Entfeuchtungs-Ass)',
+      'Diffusionsoffen und kapillaraktiv',
       'Sehr hoher pH-Wert (&gt; 10) entzieht Schimmel pilzbiologische Grundlagen',
       'Wärmedämmende Wirkungsweise zur behaglichen Innensanierung',
       'Einfache Sanierungsverarbeitung ohne Dampfsperrfolie'
     ],
-    description: 'Eine mineralische Spezialplatte aus Siliziumdioxid, Kalk und Zellulosefasern. Sie zeichnet sich durch ein extremes Porenvolumen aus. Feuchtigkeit wird kapillar aufgesaugt, großflächig gepuffert und bei sinkender Raumfeuchte wieder abgegeben, was die Wände dauerhaft trocken hält.',
+    description: 'Eine mineralische Spezialplatte aus Siliziumdioxid, Kalk und Zellulosefasern. Sie hat ein sehr hohes Porenvolumen. Feuchte wird kapillar verteilt, gepuffert und wieder abgegeben – Grundlage für kapillaraktive Innendämmung.',
     systemIntegration: 'Innendämmung von Altbaufassaden ohne Dampfbremse, aktive Sanierung schimmelbehafteter Wärmebrücken.'
   }
 ];
@@ -264,7 +266,7 @@ const DRY_SYSTEMS_DB: SystemSpec[] = [
     thickness: '100 mm',
     fireRating: 'F 90-A (bei Feuerschutzplatten-Beplankung)',
     soundRating: 'ca. 52 - 56 dB',
-    description: 'Das klassische Standard-Trennwandsystem des modernen Innenausbaus. Durch die zweilagige Beplankung wird die Stabilität der Wand enorm gesteigert und Kreuzfugenrisse werden drastisch minimiert. Mit GKF-Platten wird ein ausgezeichneter Brandschutz nach DIN 4102-4 erreicht.',
+    description: 'Das klassische Standard-Trennwandsystem des modernen Innenausbaus. Die zweilagige Beplankung erhöht Steifigkeit und Schallschutz und verringert Fugenrisse. Mit GKF-Platten lassen sich Feuerwiderstandsklassen nach DIN 4102-4 erreichen.',
     application: 'Zimmertrennwände im Wohnungsbau, Bürobereiche, Brandschutzwände.',
     profileType: 'CW 75 / UW 75',
     spacing: '62,5 cm'
@@ -277,7 +279,7 @@ const DRY_SYSTEMS_DB: SystemSpec[] = [
     thickness: '155 mm',
     fireRating: 'F 90-A',
     soundRating: 'ca. 62 - 68 dB',
-    description: 'Hochleistungsschallschutzwand. Zwei von sich getrennt stehende Metallständerwerke werden nebeneinander aufgestellt. Zwischen den Profilen wird ein Entkopplungs-Dichtstreifen verlegt. Schallschwingungen können somit nicht mechanisch von einer Seite zur anderen fließen (Biegesteifer Feder-Masse-Effekt).',
+    description: 'Hochleistungsschallschutzwand. Zwei von sich getrennt stehende Metallständerwerke werden nebeneinander aufgestellt. Zwischen den Profilen wird ein Entkopplungs-Dichtstreifen verlegt. Die Schalen sind mechanisch entkoppelt; der Schall wird nur über die Luftschicht (Masse-Feder-Masse) übertragen.',
     application: 'Wohnungstrennwände, Hotelzimmer-Trennwände, Aufnahmeräume, Arztpraxen.',
     profileType: '2x CW 50, getrennt mit Schaumstofftape',
     spacing: '62,5 cm'
@@ -303,10 +305,10 @@ const DRY_SYSTEMS_DB: SystemSpec[] = [
     thickness: 'Profilhöhe je nach Spannweite (75 bis 150 mm)',
     fireRating: 'F 30-A bis F 90-A',
     soundRating: 'Dämpft Flur-Körperschallbrücken effektiv',
-    description: 'Ein geniales Deckensystem, welches gänzlich ohne Abhänger an der Rohdecke auskommt. Es spannt sich statisch tragend ausschließlich von Wand zu Wand. Hervorragend geeignet für enge Flure, bei denen eine Unmenge an Kabelpritschen und Lüftungsrohren unter der Decke das Bohren behindert.',
+    description: 'Deckensystem ohne Abhänger: Es spannt von Wand zu Wand. Gut geeignet für Flure, in denen viele Leitungen unter der Rohdecke liegen.',
     application: 'Sanierungsflure, Hotel-Kabelleitkanäle, Fluchtwege ohne Deckenanker-Zulassung.',
     profileType: 'UA-Profile oder Doppel-CW-Profile wandgebunden',
-    spacing: 'Breitenabhängige Profilbemessung bis zu ca. 5,5 m Spannweite'
+    spacing: 'Spannweite systemabhängig (Herstellerangaben)'
   },
   {
     id: 'f141',
@@ -316,7 +318,7 @@ const DRY_SYSTEMS_DB: SystemSpec[] = [
     thickness: '20 - 50 mm (zzgl. Schüttung)',
     fireRating: 'F 30 bis F 60 (Fußböden)',
     soundRating: 'Trittschallminderung um ca. 18 - 24 dB',
-    description: 'Ein extrem rationeller Fußbodenaufbau aus hochdichten Gipsfaserstücken. Die Platten verfügen über einen umlaufenden Stufenfalz, der verklebt und verschraubt/geklammert wird. Bietet sofortige Begehbarkeit, Null Baufeuchte im Gebäude und ist ideal für Fußbodenheizungen geeignet.',
+    description: 'Rationeller Fußbodenaufbau aus Gipsfaser-Estrichelementen. Die Platten verfügen über einen umlaufenden Stufenfalz, der verklebt und verschraubt/geklammert wird. Bietet sofortige Begehbarkeit, keine Baufeuchte und ist mit geeigneten Systemen für Fußbodenheizungen nutzbar.',
     application: 'Dachgeschoss-Ausbau, Altbausanierung auf Holzbalkendecken, schnelle Estrichreparaturen.',
     profileType: 'Verlegung auf Trittschalldämmung oder Ausgleichsschüttung',
     spacing: 'Umlaufender Klebefalz'
@@ -935,7 +937,7 @@ export default function BpTrockenbau() {
                     <strong>1. Zweitlagige Verschraubung:</strong> Bei einer doppelten Beplankung muss die erste Lage nur mit ca. einem Drittel der Schrauben (Ständerachsabstand 75 cm) fixiert werden. Die zweite Lage wird voll verschraubt (Achsabstand 25 cm).
                   </p>
                   <p>
-                    <strong>2. Fugenversatz:</strong> Vermeiden Sie unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Statiksicherheit und Rissvermeidung um mindestens <strong>400 mm</strong> zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.
+                    <strong>2. Fugenversatz:</strong> Vermeiden Sie unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Rissvermeidung um mindestens <strong>400 mm</strong> zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.
                   </p>
                   <p>
                     <strong>3. Schallentkopplung:</strong> Ohne das untergelegte Schaumstoff-Dichtungsband leitet die Trockenbauwand Körperschall ungehindert in Decke, Flur und Wände. Das ist einer der häufigsten Baumängel (Schallbrücke!).
@@ -953,6 +955,22 @@ export default function BpTrockenbau() {
         {activeTab === 'innovation' && <InnovationTabContent moduleKey="bp_trockenbau" />}
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Resonanzfrequenz einer Metallständerwand"
+          zielGleichung="f_0 \approx 50 \cdot \sqrt{\frac{1}{d}\left(\frac{1}{m'_1} + \frac{1}{m'_2}\right)}"
+          normQuelle="Masse-Feder-Masse-Modell mit Faserdämmung im Hohlraum (Lehrnäherung, d in m, m′ in kg/m²)"
+          schritte={[
+            { titel: '1. Einfach beplankt', formel: 'm\' = 10\\,\\text{kg/m}^2,\\; d = 0{,}075\\,\\text{m}: \\; f_0 = 50 \\cdot \\sqrt{\\tfrac{0{,}2}{0{,}075}} = 82\\,\\text{Hz}', erklaerung: 'Je Seite eine Lage 12,5 mm (ca. 10 kg/m²).' },
+            { titel: '2. Doppelt beplankt', formel: 'm\' = 20\\,\\text{kg/m}^2: \\; f_0 = 50 \\cdot \\sqrt{\\tfrac{0{,}1}{0{,}075}} = 58\\,\\text{Hz}', erklaerung: 'Doppelte Masse je Schale.' },
+            { titel: '3. Bewertung', formel: '58\\,\\text{Hz} < 80\\,\\text{Hz} \\le 82\\,\\text{Hz}', erklaerung: 'Die Resonanz rutscht unter den bauakustischen Bereich ab 100 Hz.' },
+          ]}
+          ergebnisHinweis="Doppelbeplankung senkt f_0 um den Faktor √2 und verbessert die Schalldämmung deutlich – zusätzlich zur höheren Masse."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_trockenbau" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Trockenbau', url: 'https://de.wikipedia.org/wiki/Trockenbau' },
@@ -960,8 +978,8 @@ export default function BpTrockenbau() {
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' }
         ]} 
         literatur={[ 
-          'Karsten, W. (2021): Handbuch Trockenbau: Planung, Konstruktion, Ausführung (Rudolf Müller Verlag)',
-          'Bundesverband der Gipsindustrie e.V.: Handbuch Trockenbau - Grundlagen und Details',
+          'Wricke, G.; Müller, S.: Handbuch Trockenbau – planen, konstruieren, ausführen. Haan-Gruiten: Europa-Lehrmittel 2014',
+          'Bundesverband der Gipsindustrie e. V.: Merkblatt 2 – Verspachtelung von Gipsplatten, Oberflächengüten (Ausgabe manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]} 
         regelwerke={[ 
@@ -974,8 +992,8 @@ export default function BpTrockenbau() {
         ]} 
         formeln={[
           {
-            formel: 'f_0 = \\frac{1}{2\\pi} \\cdot \\sqrt{s\' \\cdot \\left(\\frac{1}{m\'_1} + \\frac{1}{m\'_2}\\right)} \\approx 160 \\cdot \\sqrt{\\frac{1}{d} \\cdot \\left(\\frac{1}{m\'_1} + \\frac{1}{m\'_2}\\right)}',
-            erklaerung: 'Resonanzfrequenz f_0 des Masse-Feder-Masse-Systems einer zweischaligen Trockenbauwand: Je niedriger f_0 (f₀ < 100 Hz, möglichst ≤ 80 Hz), desto besser die Schalldämmung Rw im bauakustisch relevanten Bereich (100-3150 Hz).',
+            formel: 'f_0 = \\frac{1}{2\\pi} \\cdot \\sqrt{s\' \\cdot \\left(\\frac{1}{m\'_1} + \\frac{1}{m\'_2}\\right)} \\approx 60 \\cdot \\sqrt{\\frac{1}{d} \\cdot \\left(\\frac{1}{m\'_1} + \\frac{1}{m\'_2}\\right)}',
+            erklaerung: 'Resonanzfrequenz f_0 des Masse-Feder-Masse-Systems einer zweischaligen Trockenbauwand: Je niedriger f_0 (f₀ < 100 Hz, möglichst ≤ 80 Hz), desto besser die Schalldämmung im bauakustisch relevanten Bereich (100–3150 Hz). Näherung mit d in m und m′ in kg/m² für eine Luftschicht; mit Faserdämmung liegt der Vorfaktor bei ca. 50.',
             quelle: 'DIN 4109-2 / Gösele'
           },
           {

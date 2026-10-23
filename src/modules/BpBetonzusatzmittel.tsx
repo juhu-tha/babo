@@ -17,6 +17,8 @@ import {
   Check 
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 
@@ -63,8 +65,8 @@ const admixtureProducts: AdmixtureProduct[] = [
     standard: 'DIN EN 934-2 (Tabelle 3.1 & 3.2)',
     chemicalBase: 'Polycarboxylatether (PCE), modifizierte Polycarboxylate',
     dosageCode: '0,2 - 2,5 M.-% vom Zementgewicht',
-    primaryEffect: 'Wasserreduktion um bis zu 30 % bei extrem gesteigerter Fließfähigkeit.',
-    secondaryEffect: 'Realisierung extrem dichter Zementsteinmatrizen mit Höchstfestigkeit.',
+    primaryEffect: 'Wasserreduktion um bis zu ca. 30 % bei deutlich höherer Fließfähigkeit.',
+    secondaryEffect: 'Dichte Zementsteinmatrix bis hin zu hoch- und ultrahochfestem Beton.',
     mechanism: 'Kombinierter Wirkmechanismus: Elektrostatische Abstoßung gepaart mit raumgreifender, sterischer Hinderung durch weitreichende flexible Polyether-Seitenketten (PEG).',
     description: 'Hochleistungspolymere der neuesten Generation (3. Generation). Während das negativ geladene Acrylsäure-Rückgrat am positiv geladenen Klinker adsorbiert, schieben die neutralen Polyether-Seitenketten die Zementkörner physisch auf Distanz. Ermöglicht SVB (selbstverdichtenden Beton), UHPC und HPC.',
     advantages: [
@@ -73,7 +75,7 @@ const admixtureProducts: AdmixtureProduct[] = [
       'Feinstporiger, makelloser Sichtbeton (Klassen SB 3 / SB 4) ohne Schwindrisse'
     ],
     disadvantages: [
-      'Hohe Labilität gegenüber tonigen und schluffigen Feinstanteilen in der Gesteinskörnung',
+      'Empfindlich gegenüber Tonmineralen in der Gesteinskörnung (Wirkstoffverlust)',
       'Hoher Erstellungsaufwand der Erstprüfung aufgrund ausgeprägter Zementspezifität'
     ],
     classificationCode: 'Wirkungsgruppe FM - DIN EN 934-2 Tab. 3.1'
@@ -94,7 +96,7 @@ const admixtureProducts: AdmixtureProduct[] = [
     ],
     disadvantages: [
       'Gefahr der Hydratationssperre bei Überdosierung (Beton bleibt tagelang flüssig)',
-      'Erhöhte Plastscher-Schwindrissgefahr durch verlängerte Expositionsdauer im weichen Zustand'
+      'Erhöhte Gefahr von Frührissen durch plastisches Schwinden (Nachbehandlung!)'
     ],
     classificationCode: 'Wirkungsgruppe VZ - DIN EN 934-2 Tab. 8'
   },
@@ -107,9 +109,9 @@ const admixtureProducts: AdmixtureProduct[] = [
     primaryEffect: 'Beschleunigung der Festigkeitsentwicklung im frühen Stadium (0 bis 24 Stunden).',
     secondaryEffect: 'Drastische Absenkung der erforderlichen Ausschalfristen vor allem im Fertigteilwerk.',
     mechanism: 'Physikalische und chemische Erhöhung der Keimbildungsgeschwindigkeit von Calcium-Silicat-Hydraten; nanostrukturierte Suspensionen dienen als Direktsaat-Kristallisationskeime.',
-    description: 'Wirkt primär als Katalysator der CSH-Phasen-Trocknung. Ideal für Betonagen bei unvorhergesehenem Kälteeinbruch, Winterbaustellen, zur Einsparung von Dampfhärtungsenergie im Fertigteilwerk oder bei Schnellreparaturbetonen.',
+    description: 'Beschleunigt die Bildung von C-S-H-Phasen (Hydratation). Ideal für Betonagen bei unvorhergesehenem Kälteeinbruch, Winterbaustellen, zur Einsparung von Dampfhärtungsenergie im Fertigteilwerk oder bei Schnellreparaturbetonen.',
     advantages: [
-      'Sicherer Frostschutz und Tragfähigkeit bereits nach wenigen Stunden',
+      'Höhere Frühfestigkeit; ersetzt keine Schutzmaßnahmen bei Frost',
       'Effizienzsteigerung im Schalungsumlauf der Fertigteilproduktion'
     ],
     disadvantages: [
@@ -124,17 +126,17 @@ const admixtureProducts: AdmixtureProduct[] = [
     standard: 'DIN EN 934-2 (Tabelle 5)',
     chemicalBase: 'Aluminiumhydroxid, Alkalicarbonate, Alkalisilicate (Wasserglas)',
     dosageCode: '3,0 - 6,0 M.-% vom Zementgewicht',
-    primaryEffect: 'Ungenügende Erhärtung, aber blitzschneller Übergang vom flüssigen in den steifen Zustand (Sekundenschnelle)',
+    primaryEffect: 'Sehr schnelles Ansteifen (Sekunden bis Minuten) nach dem Aufspritzen',
     secondaryEffect: 'Frühe Standfestigkeit am anstehenden Fels im Tunnelbau.',
-    mechanism: 'Flutartige Ausfällung von nadelförmigem Ettringit und Aluminiumkomplexen im Porenwasser unter totalem Entzug freien Wassers.',
+    mechanism: 'Rasche Bildung von Ettringit bzw. Aluminathydraten, die Wasser binden und das Gefüge versteifen.',
     description: 'Spezialzusatzmittel für Spritzbetonarbeiten (Tunnelvortrieb nach Neuer Österreichischer Tunnelbaumethode - NÖT, Baugrubensicherungen). Ermöglicht das Anhaften und Überkopfspritzen des flüssigen Nassgemischs an Felswänden.',
     advantages: [
-      'Ausspritzen extrem dicker Lagen in einem Arbeitsgang möglich',
+      'Dicke Lagen in einem Arbeitsgang möglich',
       'Sofortiger statischer Verbund zur Firstensicherung'
     ],
     disadvantages: [
       'Erhöhte Staubentwicklung und signifikanter Spritzrückprall (Rebound)',
-      'Teils massive Einbußen der strukturellen Endfestigkeiten und Dauerhaftigkeitsparameter'
+      'Mögliche Einbußen bei der Endfestigkeit (heute meist alkalifreie Beschleuniger)'
     ],
     classificationCode: 'Wirkungsgruppe SB - DIN EN 934-2 Tab. 11.1'
   },
@@ -145,13 +147,13 @@ const admixtureProducts: AdmixtureProduct[] = [
     chemicalBase: 'Synthetische Tenside, sulfonierte Kohlenwasserstoffe, Wurzelharzseifen',
     dosageCode: '0,05 - 0,15 M.-% vom Zementgewicht',
     primaryEffect: 'Einführung von gleichmäßig verteilten, kugelrunden, stabilen Luftbläschen.',
-    secondaryEffect: 'Verminderung des Schwindens und signifikant erhöhter Gleiteffekt (Kugelgel-Effekt).',
+    secondaryEffect: 'Bessere Verarbeitbarkeit (Kugellagereffekt), geringeres Bluten.',
     mechanism: 'Tensid-Grenzflächenspannungssenkung stabilisiert beim Mischvorgang eingezogene Luftblasen im Schlämmemantel.',
     description: 'Essentielles Werkzeug zur Erreichung des Frost-Tausalz-Widerstandes im Verkehrsflächenbau, Brückenkappen und Flugbetriebsflächen (Expositionsklassen XF3/XF4). Die Poren weisen exakt definierte Kugeldurchmesser von 10 µm bis 300 µm auf. Der Abstand der Bläschen (Abstandsfaktor L) muss im erhärteten Zementstein unter 0,20 mm liegen.',
     advantages: [
       'Abbruch des kapillaren Saugvermögens gefrierbaren Wassers',
       'Effektive Dehnungsräume für volumenerweiternde Eiskristalle',
-      'Drastisch herabgesetzter Rheologiedruck und verbessertes Gleiten beim Pumpvorgang'
+      'Bessere Verarbeitbarkeit und Pumpbarkeit'
     ],
     disadvantages: [
       'Druckfestigkeitsreduktion: Jedes zusätzliche Vol.-% Luftporen mindert die Festigkeit um ca. 5 %',
@@ -170,11 +172,11 @@ const admixtureProducts: AdmixtureProduct[] = [
     mechanism: 'Physikalische Porenauskleidung und chemische Hydrophobierung der kapillaren Innenwandflächen.',
     description: 'Typisches Einsatzgebiet sind wasser- und feuchtigkeitsbeanspruchte Bauteile wie im Tunnelbau, Keller-Außenwände (WU-Beton-Schnittstellen) oder hoch beanspruchte Betonpflastersteine und Betonwaren.',
     advantages: [
-      'Sicherer Feuchteschutz auch unter hydrostatischem Überdruck',
+      'Geringere kapillare Wasseraufnahme (ersetzt keine WU-Konstruktion)',
       'Deutliche Farbbeständigkeit bei Sichtbetonwaren im Außenbereich'
     ],
     disadvantages: [
-      'Absolut ungeeignet bei makroskopischen Rissen oder porigen Umlagerungsstellen',
+      'Keine Wirkung bei Rissen oder Kiesnestern',
       'Mögliche Minderung des Fließverhaltens im Frischbeton'
     ],
     classificationCode: 'Wirkungsgruppe DM - DIN EN 934-2 Tab. 9'
@@ -190,7 +192,7 @@ const admixtureProducts: AdmixtureProduct[] = [
     mechanism: 'Physikalische Molekülknäuelbindungen erzeugen ein stabiles viskoses Gelgerüst im freien Anmachwasser.',
     description: 'Verwendet bei selbstverdichtenden Betonen (SVB), um Trennungserscheinungen der groben Gesteine im Fließstrom zu verhindern, sowie im Unterwasserbeton (Auswaschschutz im strömenden Gewässer).',
     advantages: [
-      'Gewährleistet absolut homogenes Korngefüge über extreme Fließlängen',
+      'Verhindert Entmischung auch bei langen Fließwegen',
       'Ermöglicht rüttelfreien Einbau auch in dicht bewehrten Schalungszonen'
     ],
     disadvantages: [
@@ -214,7 +216,7 @@ const admixtureProducts: AdmixtureProduct[] = [
       'Ausgleich des plastischen Volumenschwindens im Bauteilkern'
     ],
     disadvantages: [
-      'Striktest einzuhaltende Mischzeiten, ansonsten droht instabiles Überquellen des Hüllrohrs'
+      'Mischzeiten und Verarbeitungsregeln (DIN EN 447) genau einhalten'
     ],
     classificationCode: 'Wirkungsgruppe EH - DIN EN 934-2 Tab. 12'
   }
@@ -253,7 +255,7 @@ const systemCategories: SystemCategory[] = [
     lpName: 'Kombinierte mikrobläschenbildende Additive',
     vzName: 'Hochpräzise Langzeitverzögerer (Zuckersäuren)',
     beName: 'Keine (i.d.R. Kontraproduktiv)',
-    specialties: 'Steuerung extrem niedriger Hydratationswärme-Entwicklung bei langen Transportzeiten.'
+    specialties: 'Verzögertes Erstarren bei langen Transportzeiten; flacherer Wärmeverlauf.'
   },
   {
     category: 'Systemklasse D: Spezialtief- & Spritzbeton',
@@ -373,14 +375,14 @@ export default function BpBetonzusatzmittel() {
               <div className="lg:col-span-7 space-y-4">
                 <h3 className="font-extrabold text-slate-800 text-lg">Zusatzmittel vs. Zusatzstoffe (Klarer E-Schein-Fokus)</h3>
                 <p className="text-text-main/80">
-                  Die betontechnologische Steuerung stützt sich auf zwei unterschiedliche Säulen. Nach den DBC-Lehrmaterialien der Deutschen Bauchemie e.V. ist die folgende Einteilung für jeden Betonprüfer elementar:
+                  Die betontechnologische Steuerung stützt sich auf zwei unterschiedliche Säulen. Für Betontechnologen und Betonprüfer (E-Schein) ist die folgende Einteilung grundlegend:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-sky-50/50 p-4 rounded-xl border border-sky-100 flex flex-col justify-between">
                     <div>
                       <span className="text-sky-800 font-extrabold text-xs uppercase tracking-wider block mb-1">Betonzusatzstoffe BZS</span>
                       <p className="text-xs text-slate-700 leading-normal">
-                        Pulverfoermige Gesteinsmehle oder Reaktorstaeuber wie Flugasche nach DIN EN 450, Silicastaub nach DIN EN 13263 oder inertes Kalksteinmehl. Sie werden dem Mischrezept in groesseren Mengen, oft 10 bis 100 kg/m³, zugegeben und beeinflussen das Mehlkorngefuege der Packungsdichte physikalisch oder puzzolanisch.
+                        Pulverförmige Stoffe wie Flugasche (DIN EN 450), Silikastaub (DIN EN 13263) oder inertes Gesteinsmehl. Sie werden in größeren Mengen (oft 10 bis 100 kg/m³) zugegeben, im Stoffraum berücksichtigt und wirken über die Packungsdichte oder puzzolanisch.
                       </p>
                     </div>
                   </div>
@@ -389,7 +391,7 @@ export default function BpBetonzusatzmittel() {
                     <div>
                       <span className="text-shiraz font-extrabold text-xs uppercase tracking-wider block mb-1">Betonzusatzmittel BZM</span>
                       <p className="text-xs text-slate-700 leading-normal">
-                        Fluessige Emulsionen oder selten pulverfoermige organische und anorganische Wirksubstanzen mit Massenanteilen meist im Promille- bis niedrigen Prozentbereich, hoechstens 5,0 M.-% vom Zementgewicht. Sie greifen chemisch und physikalisch in die Hydratation und das Oberflächenladungsprofil der Zementteilchen ein.
+                        Meist flüssige, selten pulverförmige Wirkstoffe in kleinen Mengen (Promille bis wenige Prozent), höchstens 50 g je kg Zement (5,0 M.-%). Sie greifen chemisch und physikalisch in die Hydratation und das Oberflächenladungsprofil der Zementteilchen ein.
                       </p>
                     </div>
                   </div>
@@ -398,9 +400,9 @@ export default function BpBetonzusatzmittel() {
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/20 space-y-2 text-xs">
                   <h4 className="font-bold text-slate-800">Grundlegende Ziele der BZM-Nutzung:</h4>
                   <ul className="list-disc list-inside text-text-main/80 space-y-1 pl-1">
-                    <li><strong>Frischbeton:</strong> Einstellen der Verarbeitbarkeit, langanhaltende Fliessfaehigkeit, Minimierung der inneren Reibung.</li>
-                    <li><strong>Hydratation:</strong> Steuerung des Erstarrungsverlaufs wie Verzoegerung fuer Transport, Beschleunigung fuer rasches Ausschalen.</li>
-                    <li><strong>Festbeton:</strong> Erhoehung der Dichte durch extreme w/z-Wert-Absenkung, Erzielung hoher Dauerhaftigkeitsklassen wie Frost-Tausalz-Resistenz via Mikrohohlraeumen.</li>
+                    <li><strong>Frischbeton:</strong> Einstellen der Verarbeitbarkeit, lang anhaltende Fließfähigkeit, geringere innere Reibung.</li>
+                    <li><strong>Hydratation:</strong> Steuerung des Erstarrens: Verzögerung für lange Transporte, Beschleunigung für frühes Ausschalen.</li>
+                    <li><strong>Festbeton:</strong> Höhere Dichte durch niedrigen w/z-Wert; Frost-Tausalz-Widerstand durch Mikroluftporen.</li>
                   </ul>
                 </div>
               </div>
@@ -415,19 +417,19 @@ export default function BpBetonzusatzmittel() {
                     <li className="flex gap-2 items-start">
                       <ChevronRight size={14} className="text-shiraz mt-0.5 flex-none" />
                       <div>
-                        <strong>Harmonisierung DIN EN 934-2:</strong> Alle Zusatzmittel benoetigen die europaeische CE-Kennzeichnung und Leistungserklaerung DoP.
+                        <strong>Harmonisierung DIN EN 934-2:</strong> Betonzusatzmittel nach DIN EN 934-2 tragen die CE-Kennzeichnung mit Leistungserklärung (DoP).
                       </div>
                     </li>
                     <li className="flex gap-2 items-start">
                       <ChevronRight size={14} className="text-shiraz mt-0.5 flex-none" />
                       <div>
-                        <strong>Zusatzmittelrichtlinie des DIBt:</strong> Fuer Sonderprodukte ohne EN-Normierung gelten allgemeine bauaufsichtliche Zulassungen abZ oder Genehmigungen im Einzelfall aBG.
+                        <strong>Nicht harmonisierte Zusatzmittel:</strong> Für Produkte ohne harmonisierte Norm ist ein nationaler Verwendbarkeitsnachweis nötig (z. B. abZ des DIBt).
                       </div>
                     </li>
                     <li className="flex gap-2 items-start">
                       <ChevronRight size={14} className="text-shiraz mt-0.5 flex-none" />
                       <div>
-                        <strong>Vertraeglichkeitsnachweis Erstpruefung:</strong> Werden in einem Beton mehrere Zusatzmittel kombiniert wie FM und LP, muss deren chemische Unbedenklichkeit und gegenseitige Wirkungsneutralitaet separat in Laborversuchen nachgewiesen werden. Spenderleitungen am Mischer duerfen niemals zusammengefuehrt werden!
+                        <strong>Verträglichkeit in der Erstprüfung:</strong> Werden mehrere Zusatzmittel kombiniert (z. B. FM und LP), ist ihr Zusammenwirken in der Erstprüfung nachzuweisen. Zusatzmittel getrennt dosieren und nicht vorab miteinander mischen.
                       </div>
                     </li>
                   </ul>
@@ -439,7 +441,7 @@ export default function BpBetonzusatzmittel() {
                     <span>Lagerungsvorschriften &amp; Qualitätspflege</span>
                   </div>
                   <p className="text-[11px] text-amber-900 leading-normal">
-                    Zusatzmittel muessen am Betonwerk zwingend frostfrei lagern. Hitzewarnung im Sommer, Flockungsgefahr im Winter bei Temperaturen unter 0 Grad. Chemisch instabile Separation fuehrt zur dauerhaften Fehlfunktion der Dosiereinrichtungen.
+                    Zusatzmittel frostfrei und nicht zu warm lagern (Herstellerangaben). Frost oder Entmischung können die Wirkung und die Dosierung beeinträchtigen.
                   </p>
                 </div>
               </div>
@@ -527,7 +529,7 @@ export default function BpBetonzusatzmittel() {
                         <strong>Wie es funktioniert:</strong> Die Sulfonat-Monomere (Ligninsulfonat, MFS) lagern sich flächig auf der Zementrohmasse an. Dadurch wird die Oberfläche einheitlich negativ aufgeladen. Gleichnamige Ladungen stoßen einander kräftig ab (gemessen als Zeta-Potenzial). Das Zementgerüst bricht auf und das ungenutzte Füllwasser quillt hervor. 
                       </p>
                       <div className="text-[10px] bg-indigo-50 border border-indigo-250 p-2.5 rounded-lg text-indigo-900 leading-tight">
-                        <strong>E-Schein Prüfregel:</strong> Elektrostatische Abstoßungskräfte wirken zwar unmittelbar, klingen jedoch durch fortschreitende Kristallisation (Hydratationsprodukte überwuchern das Additiv) meist rascher ab. Slump-Loss tritt nach circa 30 bis 60 Minuten ein.
+                        <strong>Praxisregel:</strong> Elektrostatische Abstoßungskräfte wirken zwar unmittelbar, klingen jedoch durch fortschreitende Kristallisation (Hydratationsprodukte überwuchern das Additiv) meist rascher ab. Slump-Loss tritt nach circa 30 bis 60 Minuten ein.
                       </div>
                     </div>
                   ) : (
@@ -563,7 +565,7 @@ export default function BpBetonzusatzmittel() {
                         <strong>Wie es funktioniert:</strong> Polycarboxylatether (PCE) ähneln einem winzigen Kamm. Der anionische Polyelektrolytrücken verankert sich fest auf dem Klinkermehl. Die langen neutralen Seitenglieder (Polyethylenglycol-Ketten) ragen in die wässrige Porenlösung hinein. Stoßen zwei Zementpartikel aneinander, kollidieren die Ketten und bewirken bei minimalem Kraftaufwand mechanischen Pufferraum.
                       </p>
                       <div className="text-[10px] bg-emerald-50 border border-emerald-250 p-2.5 rounded-lg text-emerald-900 leading-tight">
-                        <strong>Baukasten-Steuerung:</strong> Durch gezielte Abstimmung der Seitenketten-Anzahl und -Länge im Herstellungsverfahren (DBC-Lehrkapitel 3) können Fließmittel entweder auf blitzschnelle Anfangsverflüssigung (Fertigbeton) oder langanhaltende Konsistenzhaltung (transportierte Fernmischungen) modelliert werden.
+                        <strong>Baukasten-Steuerung:</strong> Durch gezielte Abstimmung der Seitenketten-Anzahl und -Länge im Herstellungsverfahren können Fließmittel entweder auf blitzschnelle Anfangsverflüssigung (Fertigbeton) oder langanhaltende Konsistenzhaltung (transportierte Fernmischungen) modelliert werden.
                       </div>
                     </div>
                   )}
@@ -942,7 +944,7 @@ export default function BpBetonzusatzmittel() {
                         <ShieldAlert className="text-red-700 mt-0.5 flex-none" size={16} />
                         <div>
                           <span className="font-bold block">Fehler: Höchstdosierung nach DIN EN 206 verletzt!</span>
-                          Die Dosierung von **{formatDeWert(dosagePercent)} M.-%** ist extrem kritisch. Zusatzmittel dürfen nach Norm grundsätzlich **nicht über 5,0 M.-%** bezogen auf den Zementgehalt dosiert werden. Ein genehmigter Sonder-Eignungsnachweis (abZ vom DIBt) ist zwingend bereitzuhalten.
+                          Die Dosierung von **{formatDeWert(dosagePercent)} M.-%** ist zu hoch. Zusatzmittel dürfen nach Norm grundsätzlich **nicht über 5,0 M.-%** bezogen auf den Zementgehalt dosiert werden. Ein genehmigter Sonder-Eignungsnachweis (abZ vom DIBt) ist zwingend bereitzuhalten.
                         </div>
                       </div>
                     ) : (
@@ -1057,6 +1059,23 @@ export default function BpBetonzusatzmittel() {
         )}
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Wasseranrechnung eines Fließmittels"
+          zielGleichung="(w/z)_{eq} = \frac{w_{Zugabe} + w_{FM}}{z}"
+          normQuelle="DIN EN 206 / DIN 1045-2 (Anrechnung bei > 3 l/m³ flüssiger Zusatzmittel); Werte als Lehrbeispiel"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'z = 340\\,\\text{kg/m}^3,\\; w_{Zugabe} = 160\\,\\text{l/m}^3,\\; FM = 1{,}5\\,\\%\\; \\text{v. z.},\\; \\rho_{FM} = 1{,}05,\\; \\text{Wasseranteil } 70\\,\\%', erklaerung: 'Ziel: w/z ≤ 0,50.' },
+            { titel: '2. Fließmittelmenge', formel: 'm_{FM} = 0{,}015 \\cdot 340 = 5{,}1\\,\\text{kg} \\;\\Rightarrow\\; V_{FM} = 5{,}1/1{,}05 = 4{,}9\\,\\text{l} > 3\\,\\text{l}', erklaerung: 'Wasseranteil muss angerechnet werden.' },
+            { titel: '3. Wasser aus dem Fließmittel', formel: 'w_{FM} = 0{,}70 \\cdot 5{,}1 = 3{,}6\\,\\text{kg}', erklaerung: 'Wasseranteil × Fließmittelmasse.' },
+            { titel: '4. Wirksamer w/z-Wert', formel: '(w/z) = (160 + 3{,}6)/340 = 0{,}481 \\le 0{,}50', erklaerung: 'Grenzwert eingehalten; ohne Anrechnung ergäbe sich 0,471.' },
+          ]}
+          ergebnisHinweis="Die Anrechnung verschiebt den w/z-Wert hier nur um 0,01 – bei knapp bemessenen Rezepturen kann genau das über die Konformität entscheiden."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_betonzusatzmittel" />
+
       <ModuleFooter
         weblinks={[
           { title: "Deutsche Bauchemie e.V. (Portal für Betonzusatzmittel & Vortragsreihen)", url: "https://www.deutsche-bauchemie.de" },
@@ -1068,9 +1087,9 @@ export default function BpBetonzusatzmittel() {
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' }
         ]}
         literatur={[
-          'Stark, J., Wicht, B.: Dauerhaftigkeit von Beton. Springer-Verlag.',
-          'Zahnentafeln Betontechnologie: Mischungsberechnung und Zusatzmitteleinflüsse, DIN Media.',
-          'Basisvortrag Betonzusatzmittel für E-Schein-Lehrgänge, Deutsche Bauchemie e.V., Düsseldorf.'
+          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013',
+          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008',
+          'Deutsche Bauchemie e. V.: Informationsschriften zu Betonzusatzmitteln (Titel/Ausgabe manuell prüfen)'
         ]}
         regelwerke={[
           { title: 'DIN EN 934-2:2012-11 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)' },
@@ -1080,12 +1099,12 @@ export default function BpBetonzusatzmittel() {
         formeln={[
           { 
             formel: '(w/z)_{\\text{eff}} = \\frac{w_{\\text{Wasser}} + w_{\\text{ZM}}}{z} \\le (w/z)_{\\max}', 
-            erklaerung: 'Wasseraufrechnungsregel nach DIN EN 206 / DIN 1045-2: Bei flüssigen Betonzusatzmitteln mit einer Dosierung über 3 l/m³ ist der Wasseranteil des Zusatzmittels zwingend dem wirksamen Wassergehalt zuzuschlagen.',
-            quelle: 'DIN 1045-2 Abs. 5.2.5.3'
+            erklaerung: 'Wasseraufrechnungsregel nach DIN EN 206 / DIN 1045-2: Übersteigt die Gesamtmenge flüssiger Zusatzmittel 3 l/m³, ist ihr Wasseranteil dem wirksamen Wassergehalt zuzurechnen.',
+            quelle: 'DIN EN 206 / DIN 1045-2 (Abschnitt manuell prüfen)'
           },
           { 
             formel: 'L_{300} \\ge 1{,}5\\,\\% \\quad \\text{und} \\quad a \\le 0{,}20\\,\\text{mm}', 
-            erklaerung: 'Mikroluftporengehalt L300 (Porendurchmesser <= 0,30 mm) und Abstandsfaktor a im Festbetongefüge zur Erzielung hoher Frost-Tausalz-Widerstandsfähigkeit (XF4).',
+            erklaerung: 'Mikroluftporengehalt (Poren ≤ 0,30 mm) und Abstandsfaktor im Festbeton als Kenngrößen des Frost-Tausalz-Widerstands (Prüfung nach DIN EN 480-11; Grenzwerte als Lehrwerte, maßgebend DIN 1045-2/ZTV – manuell prüfen).',
             quelle: 'DIN EN 480-11'
           }
         ]}

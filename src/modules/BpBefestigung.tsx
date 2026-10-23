@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, BookOpen, CheckCircle2, Lightbulb, ShieldAlert, Sparkles, AlertTriangle, ArrowRight } from 'lucide-react';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 
@@ -29,7 +31,7 @@ const anchorProducts: FastenerProduct[] = [
     failureMode: 'Herausziehen (Schlupf), Kunststoffschandlung',
     description: 'Universeller Spreizdübel aus Polyamid (Nylon). Dehnt sich beim Eindrehen der Schraube kraftschlüssig an die Flanken der Bohrlochwandung aus. In Hochlochziegeln nur bedingt mit Siebhülsen einsetzbar.',
     advantages: ['Sehr kostengünstiges Bauteil', 'Einfache visuelle Kontrolle', 'Unempfindlich gegen leichte Bohrlochtoleranzen'],
-    disadvantages: ['Nicht für sicherheitsrelevante Anschlüsse zugelassen (kein Personenschutz)', 'Hohe Alterungssensibilität', 'Kriecht unter dauerhafter Zuglast']
+    disadvantages: ['Tragende Anwendungen nur mit ETA (z. B. Mehrfachbefestigung nichttragender Systeme)', 'Hohe Alterungssensibilität', 'Kriecht unter dauerhafter Zuglast']
   },
   {
     name: 'M8 - M24 Bolzenanker (Spreizanker)',
@@ -41,7 +43,7 @@ const anchorProducts: FastenerProduct[] = [
     substrate: 'Gerissener & ungerissener Beton (min. C20/25)',
     failureMode: 'Betonausbruch (Konus), Stahlversagen des Bolzens',
     description: 'Mechanisches Befestigungssystem mit Kraftkontrolle. Beim Anziehen der Mutter wird der Konusbolzen in den Spreizclip gezogen, der sich gegen das Bohrloch verpresst.',
-    advantages: ['Sofort voll belastbar nach fachgerechtem Drehmomentanzug', 'Zulassung für gerissenen Beton und Erdbebenzonen (C1/C2)', 'Hohe Querlastübertragung'],
+    advantages: ['Sofort voll belastbar nach fachgerechtem Drehmomentanzug', 'Je nach ETA für gerissenen Beton und seismische Kategorien C1/C2', 'Hohe Querlastübertragung'],
     disadvantages: ['Große Spreizdrücke erfordern hohe Rand-/Achsabstände', 'Kein Spielraum für Bohrtiefenunterschreitungen', 'Nicht im Mauerwerk einsetzbar']
   },
   {
@@ -64,10 +66,10 @@ const anchorProducts: FastenerProduct[] = [
     loadCapacity: '15,0 kN - 80,0 kN (Extrem sicher)',
     edgeDistance: 'Gering',
     installTemp: 'Temperaturunabhängig',
-    substrate: 'Gerissener Beton (selbst unter nuklearen Lasten)',
+    substrate: 'Gerissener Beton (auch in kerntechnischen Anlagen qualifizierte Systeme)',
     failureMode: 'Reiner Stahlbruch (höchste Formschlusswirkung)',
-    description: 'Formgeschlossener Anker. Erfordert einen Spezialbohrer, der am Bohrlochgrund eine asymmetrische Hinterschnittkaverne ausfräst. Die Ankerhülse wird formschlüssig aufgeweitet.',
-    advantages: ['Sicherste Formschlussverankerung (kein Schlupf)', 'Optimal für dynamisch beanspruchte/vibrierende Großmaschinen', 'Minimale Randabstände'],
+    description: 'Formgeschlossener Anker. Erfordert einen Spezialbohrer, der am Bohrlochgrund einen konischen Hinterschnitt fräst. Die Ankerhülse wird formschlüssig aufgeweitet.',
+    advantages: ['Formschluss mit sehr geringem Schlupf', 'Geeignet für dynamisch beanspruchte Befestigungen (nach ETA)', 'Geringe Spreizkräfte'],
     disadvantages: ['Sehr teure Spezialwerkzeuge erforderlich', 'Hoher Arbeits- und Kontrollaufwand beim Bohren']
   }
 ];
@@ -159,7 +161,7 @@ export default function BpBefestigung() {
                     <span>KRITISCH: Drehmoment-Überprüfung</span>
                   </div>
                   <p className="font-normal text-[11px] text-red-900">
-                    Mechanische Bolzenanker müssen zwingend mit einem kalibrierten <strong>Drehmomentschlüssel</strong> geschraubt werden (T_inst). Ein zu geringes Moment führt zu gefährlichem Schlupf und reduzierter Tragfähigkeit; ein zu hohes Moment verdreht den Stahlbolzen oder sprengt das minerale Betongefüge lokal auf!
+                    Mechanische Bolzenanker müssen zwingend mit einem kalibrierten <strong>Drehmomentschlüssel</strong> geschraubt werden (T_inst). Ein zu geringes Moment verringert die Vorspannung und Tragfähigkeit; ein zu hohes kann den Bolzen überlasten oder den Beton spalten.
                   </p>
                 </div>
               </div>
@@ -268,7 +270,7 @@ export default function BpBefestigung() {
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs">
                   <span className="text-[9px] text-slate-400 font-bold block mb-1">4. Gespaltenes Beton</span>
-                  <p className="text-[10px] text-slate-500 font-normal leading-normal">Der Spreizdruck oder die äußere Last schneidet den Betonquerschnitt vollständig entzwei (Splitting-Versagen).</p>
+                  <p className="text-[10px] text-slate-500 font-normal leading-normal">Spreizkräfte oder die Last spalten das Bauteil, besonders bei geringer Bauteildicke oder Randnähe (Spalten).</p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs">
                   <span className="text-[9px] text-slate-400 font-bold block mb-1">5. Pry-out Versagen</span>
@@ -284,7 +286,7 @@ export default function BpBefestigung() {
                 Hinweis zur Herstellerneutralität: Die nachfolgende Auflistung dient als unverbindliche Übersicht marktrelevanter Befestigungs- und Verbindungssysteme zur Erleichterung der baupraktischen Orientierung und Normenrecherche im Rahmen der akademischen Lehre.
               </p>
               <ul className="list-disc list-inside text-xs text-text-main/70 space-y-2 pl-2">
-                <li><span className="font-bold text-slate-800">Injektionssysteme:</span> Zementäre Hinterschnittsysteme und Zweikomponenten-Injektionsmörtelsysteme mit allgemein bauaufsichtlichen ETA-Zulassungen für gerissenen Beton.</li>
+                <li><span className="font-bold text-slate-800">Injektionssysteme:</span> Zweikomponenten-Injektionsmörtel (Verbunddübel) mit Europäischer Technischer Bewertung (ETA) für gerissenen Beton.</li>
                 <li><span className="font-bold text-slate-800">Bolzenanker &amp; Verbundanker:</span> Schwere mechanische Bolzenankersysteme und Epoxidharz-Injektionsklebstoffe zur Brückensanierung und Verankerung schwerer Stahlkonstruktionen.</li>
                 <li><span className="font-bold text-slate-800">Holzbauschraubensysteme:</span> Vollgewinde-Holzbauschrauben zur statisch wirksamen Bemessung und Lastabtragung von Holzständerwerken nach Eurocode 5.</li>
                 <li><span className="font-bold text-slate-800">Ankerschienensysteme:</span> System-Ankerschienen zum rüttelfreien Einbetonieren in die Bewehrungslage vor dem Einbringen von Frischbeton.</li>
@@ -298,20 +300,34 @@ export default function BpBefestigung() {
         )}
       </div>
 
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Betonausbruch eines Einzeldübels"
+          zielGleichung="N^0_{Rk,c} = k_1 \cdot \sqrt{f_{ck}} \cdot h_{ef}^{1{,}5}"
+          normQuelle="DIN EN 1992-4, 7.2.1.4 (gerissener Beton k_1 = 7,7; Lehrbeispiel ohne Rand- und Gruppeneinfluss)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'f_{ck} = 25\\,\\text{N/mm}^2,\\; h_{ef} = 80\\,\\text{mm},\\; k_1 = 7{,}7', erklaerung: 'Einzeldübel im gerissenen Beton C25/30.' },
+            { titel: '2. Grundwert', formel: 'N^0_{Rk,c} = 7{,}7 \\cdot \\sqrt{25} \\cdot 80^{1{,}5} = 7{,}7 \\cdot 5 \\cdot 715{,}5 = 27{,}5\\,\\text{kN}', erklaerung: 'h_ef^1,5 = 715,5 mm^1,5.' },
+            { titel: '3. Bemessungswert', formel: 'N_{Rd,c} = 27{,}5 / 1{,}5 = 18{,}4\\,\\text{kN}', erklaerung: 'γ_Mc = 1,5 (Teilsicherheitsbeiwert Beton bei Befestigungen).' },
+          ]}
+          ergebnisHinweis="Die Tragfähigkeit wächst mit h_ef^1,5 – eine um 50 % tiefere Verankerung bringt rund 84 % mehr Betonausbruchlast."
+        />
+      </div>
+
+      <ModulTest moduleId="bp_befestigung" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Dübel', url: 'https://de.wikipedia.org/wiki/D%C3%BCbel' },
           { title: 'Befestigungstechnik', url: 'https://de.wikipedia.org/wiki/Befestigungstechnik' }
         ]} 
         literatur={[ 
-          'Eligehausen, R. et al.: Anchors in Concrete and Masonry Structures.',
-          'Mahrenholtz, C.: Tragverhalten von Befestigungen unter Erdbebeneinwirkungen.', 
-          'Wendehorst Bautechnische Zahlentafeln, 38. Auflage, Springer Vieweg 2026' 
+          'Eligehausen, R.; Mallée, R.; Silva, J. F.: Anchorage in Concrete Construction. Berlin: Ernst & Sohn 2006',
+          'Wendehorst Bautechnische Zahlentafeln. Wiesbaden: Springer Vieweg (aktuelle Auflage)' 
         ]} 
         regelwerke={[ 
           { title: 'DIN EN 1992-4 (Eurocode 2 - Bemessung der Verankerung von Befestigungen in Beton)' }, 
-          { title: 'EAD 330499 (Post-installed Fasteners in Concrete - Europäische Bewertungsdokumente EOTA)', url: 'https://www.eota.eu/' },
-          { title: 'EOTA TR 069 (Design Method for Anchorages with Post-installed Fasteners)', url: 'https://www.eota.eu/' }
+          { title: 'EAD 330232 (mechanische Dübel) und EAD 330499 (Verbunddübel) – Europäische Bewertungsdokumente der EOTA', url: 'https://www.eota.eu/' }
         ]} 
         formeln={[
           { 
