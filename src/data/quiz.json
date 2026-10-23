@@ -12401,5 +12401,65 @@
       "targetModuleLabel": "Stahlbauprofile"
     },
     "verified": false
+  },
+  {
+    "id": "q_kmb_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
+    "topic": "Mischungsregeln",
+    "difficulty": "Fortgeschritten",
+    "normRef": "VDI 2014 Blatt 3",
+    "question": "Warum ist der E-Modul eines unidirektionalen FKV quer zur Faser viel kleiner als längs?",
+    "options": [
+      "Quer wirken Faser und Matrix in Reihe; die weiche Matrix bestimmt die Steifigkeit (Reuss)",
+      "Die Fasern sind quer elastischer",
+      "Quer ist der Faservolumengehalt kleiner",
+      "Die Matrix wird quer nicht belastet"
+    ],
+    "correctIdx": 0,
+    "explanation": "Längs gilt Dehnungsgleichheit (Voigt, Parallelschaltung), quer Spannungsgleichheit (Reuss, Reihenschaltung) – dort dominiert der kleine Matrixmodul.",
+    "gapAnalysis": {
+      "topic": "Mischungsregeln",
+      "misconception": "Die Faserausrichtung wird für die Steifigkeit als unerheblich angesehen.",
+      "coreRule": "Längs: Voigt; quer: Reuss – FKV sind stark anisotrop.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mischungsregeln“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_kmb_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "kombinationen",
+    "moduleTitle": "Werkstoff-Kombinationen",
+    "topic": "Oberflächenschutz",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 1504-2",
+    "question": "Welche Maßnahme macht Porenwände wasserabweisend, ohne die Poren zu verschließen?",
+    "options": [
+      "Beschichtung",
+      "Hydrophobierende Imprägnierung (Silane/Siloxane)",
+      "Versiegelung",
+      "Feuerverzinkung"
+    ],
+    "correctIdx": 1,
+    "explanation": "Silane/Siloxane erhöhen den Randwinkel über 90°; die Oberfläche bleibt diffusionsoffen.",
+    "gapAnalysis": {
+      "topic": "Oberflächenschutz",
+      "misconception": "Hydrophobierung wird mit filmbildender Beschichtung gleichgesetzt.",
+      "coreRule": "Hydrophobierung: wasserabweisend, aber dampfdurchlässig.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächenschutz“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "targetModuleTab": "kombinationen",
+      "targetModuleLabel": "Werkstoff-Kombinationen"
+    },
+    "verified": false
   }
 ]
