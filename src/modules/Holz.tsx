@@ -24,6 +24,9 @@ import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { Activity, Droplets, Timer, Info, ShieldAlert, ArrowRight, BookOpen, Layers } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { BlockMath } from 'react-katex';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 
 ChartJS.register(
   CategoryScale,
@@ -40,8 +43,8 @@ ChartJS.register(
 const holzArten = {
   'Fichte (Vollholz)': { qr: 0.16, qt: 0.33, ql: 0.01, lambda: 0.13, rho: 450, beta0: 0.8 },
   'Kiefer (Vollholz)': { qr: 0.17, qt: 0.31, ql: 0.01, lambda: 0.13, rho: 520, beta0: 0.8 },
-  'Buche (Vollholz)': { qr: 0.22, qt: 0.45, ql: 0.01, lambda: 0.17, rho: 720, beta0: 0.65 },
-  'Eiche (Vollholz)': { qr: 0.18, qt: 0.34, ql: 0.01, lambda: 0.17, rho: 690, beta0: 0.65 },
+  'Buche (Vollholz)': { qr: 0.22, qt: 0.45, ql: 0.01, lambda: 0.17, rho: 720, beta0: 0.55 },
+  'Eiche (Vollholz)': { qr: 0.18, qt: 0.34, ql: 0.01, lambda: 0.17, rho: 690, beta0: 0.55 },
   'Brettschichtholz (BSH)': { qr: 0.16, qt: 0.33, ql: 0.01, lambda: 0.13, rho: 450, beta0: 0.7 },
   'Furnierschichtholz (FSH)': { qr: 0.05, qt: 0.05, ql: 0.01, lambda: 0.15, rho: 500, beta0: 0.7 },
   'OSB': { qr: 0.02, qt: 0.02, ql: 0.02, lambda: 0.13, rho: 600, beta0: 0.9 },
@@ -55,11 +58,11 @@ const crossSections = [
 ];
 
 const festigkeitsklassen = {
-  'C16 (Vollholz)': { fm: 16, ft0: 10, ft90: 0.4, fc0: 17, fc90: 2.2, fv: 3.2, E0mean: 8000, gammaM: 1.3 },
+  'C16 (Vollholz)': { fm: 16, ft0: 8.5, ft90: 0.4, fc0: 17, fc90: 2.2, fv: 3.2, E0mean: 8000, gammaM: 1.3 },
   'C24 (Vollholz)': { fm: 24, ft0: 14.5, ft90: 0.4, fc0: 21, fc90: 2.5, fv: 4.0, E0mean: 11000, gammaM: 1.3 },
   'C30 (Vollholz)': { fm: 30, ft0: 19, ft90: 0.4, fc0: 24, fc90: 2.7, fv: 4.0, E0mean: 12000, gammaM: 1.3 },
-  'GL24h (BSH)': { fm: 24, ft0: 19.2, ft90: 0.5, fc0: 24, fc90: 2.5, fv: 3.5, E0mean: 11500, gammaM: 1.25 },
-  'GL30h (BSH)': { fm: 30, ft0: 24, ft90: 0.5, fc0: 30, fc90: 2.5, fv: 3.5, E0mean: 13600, gammaM: 1.25 },
+  'GL24h (BSH)': { fm: 24, ft0: 19.2, ft90: 0.5, fc0: 24, fc90: 2.5, fv: 3.5, E0mean: 11500, gammaM: 1.3 },
+  'GL30h (BSH)': { fm: 30, ft0: 24, ft90: 0.5, fc0: 30, fc90: 2.5, fv: 3.5, E0mean: 13600, gammaM: 1.3 },
 };
 
 const kmodTable = {
@@ -199,12 +202,13 @@ export default function Holz() {
 
   const uGleichgewicht = useMemo(() => {
     const h = rh / 100;
-    const emc = (-0.00004 * Math.pow(rh, 3) + 0.005 * Math.pow(rh, 2) + 0.05 * rh) * (1 - (temp - 20) * 0.01);
-    const simpleEmc = 18 * h * h * h - 10 * h * h + 20 * h;
+    // Lehrmodell: Polynom-Näherung der Sorptionsisotherme bei 20 °C, Temperatureinfluss vereinfacht (ca. −1 % relativ je K über 20 °C)
+    const simpleEmc = (18 * h * h * h - 10 * h * h + 20 * h) * (1 - (temp - 20) * 0.01);
     return Math.max(0, Math.min(30, simpleEmc));
   }, [temp, rh]);
 
   const uEnde = useMemo(() => {
+    // Lehrmodell: exponentielle Annäherung, Zeitkonstante ~ Dicke² (Diffusion), Kalibrierung als Lehrannahme
     const tau = Math.pow(dicke / 20, 2) * 15;
     const factor = Math.exp(-lagerDauer / tau);
     return uGleichgewicht + (uStart - uGleichgewicht) * factor;
@@ -568,9 +572,9 @@ export default function Holz() {
             </div>
             
             <div className="p-4 bg-white rounded-lg border border-home-grau/25 text-xs text-slate-700 space-y-2">
-              <div className="font-bold text-slate-800">Umschrumpfungs-Szenario für {holz}:</div>
+              <div className="font-bold text-slate-800">Schwind-Szenario für {holz}:</div>
               <p className="leading-relaxed">
-                Wird das Material von Fasersättigung (~30% Holzfeuchte) auf eine typische Wohnraum-Ausgleichsfeuchte von 12% getrocknet (<FormulaText text="\Delta u = 18\%" />), verringern sich die Abmessungen rechnerisch um:
+                Wird das Material von Fasersättigung (~30% Holzfeuchte) auf eine Ausgleichsfeuchte von 12 % (Obergrenze NKL 1) getrocknet (<FormulaText text="\Delta u = 18\%" />), verringern sich die Abmessungen rechnerisch um:
               </p>
               <ul className="list-disc pl-5 space-y-1 text-slate-650">
                 <li>Tangential: <strong className="font-mono text-shiraz">{formatDeZahl((18 * holzArten[holz].qt), 2)}%</strong> (Spürbare Breitenreduktion)</li>
@@ -578,8 +582,10 @@ export default function Holz() {
                 <li>Longitudinal: <strong className="font-mono text-slate-800">{formatDeZahl((18 * holzArten[holz].ql), 2)}%</strong> (Längenänderung vernachlässigbar)</li>
               </ul>
               <div className="text-[10px] text-slate-550 border-t border-home-grau/10 pt-1.5 mt-1.5 italic">
-                {holz.includes('OSB') || holz.includes('Furnier') || holz.includes('Brettschichtholz') 
-                  ? 'Verbundwerkstoff-Effekt: Durch die Absperrwirkung der verleimten Lagen/Furniere ist dieses Produkt maßlich extrem stabil.' 
+                {holz.includes('Brettschichtholz')
+                  ? 'BSH: Die Lamellen sind parallel verklebt, es gibt keine Absperrung. Im Querschnitt schwindet BSH daher wie Vollholz. Vorteil: Die Lamellen werden vor dem Verkleben technisch getrocknet (ca. 12 %), Schwindrisse nach dem Einbau fallen deshalb geringer aus.'
+                  : holz.includes('OSB') || holz.includes('Furnier')
+                  ? 'Holzwerkstoff-Effekt: Absperrung (OSB) bzw. Homogenisierung durch Furniere (FSH) reduziert die Maßänderung in Plattenebene deutlich. Die Kennwerte sind Richtwerte – maßgebend sind Leistungserklärung und Zulassung.'
                   : 'Naturwerkstoff-Verhalten: Das hohe Anisotropieverhältnis (qt / qr ≈ 2) führt bei ungleichmäßiger Trocknung zu typischen Schüssellungen, Verdrehungen oder Rissbildungen.'}
               </div>
             </div>
@@ -629,7 +635,7 @@ export default function Holz() {
                   <div className="text-sm grid grid-cols-1 gap-2">
                     <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Deutlich reduziertes und homogeneres Quellen/Schwinden (Sperreffekt durch kreuzweise Verleimung oder Klebstoffanteil)</div>
                     <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Höhere und verlässlichere Festigkeiten durch Homogenisierung (Fehlstellen werden verteilt, herausgeschnitten oder kaschiert)</div>
-                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Quasi unbegrenzte Querschnitte, Längen und Formen machbar (z. B. gebogene Brettschichtholz-Träger)</div>
+                    <div className="bg-green-50 text-green-800 p-3 rounded-xl border border-green-200">+ Große Querschnitte, Längen und gekrümmte Formen möglich (begrenzt durch Presse und Transport) (z. B. gebogene Brettschichtholz-Träger)</div>
                     <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200">- Höherer Primärenergieeinsatz bei der Produktion (Trocknen, Pressen, Leimen)</div>
                     <div className="bg-red-50 text-red-800 p-3 rounded-xl border border-red-200">- Verwendung von synthetischen Klebstoffen (Ausgasungspotenzial (VOCs), Verwertung am Lebensende oft problematisch)</div>
                   </div>
@@ -672,7 +678,7 @@ export default function Holz() {
                   <span className="font-bold">{formatDeWert(holzArten[holz].lambda)} W/(mK)</span>
                 </div>
                 <div className="flex justify-between col-span-2">
-                  <span className="text-text-main/60">Abbrandrate <FormulaText text="\beta_0" /> (Brandschutz):</span>
+                  <span className="text-text-main/60">{holz === 'OSB' ? <>Abbrandrate <FormulaText text="\beta_0" /> (Platte, DIN EN 1995-1-2 Tab. 3.1):</> : <>Ideelle Abbrandrate <FormulaText text="\beta_n" /> (DIN EN 1995-1-2 Tab. 3.1):</>}</span>
                   <span className="font-bold">{formatDeWert(holzArten[holz].beta0)} mm/min</span>
                 </div>
               </div>
@@ -915,9 +921,9 @@ export default function Holz() {
               onChange={(e) => setKc90(Number(e.target.value))}
             >
               <option value={1.0}>1,00 (Standard, keine Erhöhung)</option>
-              <option value={1.25}>1,25 (Vollholz, l_1 ≥ 150mm)</option>
-              <option value={1.50}>1,50 (Vollholz, l_1 ≥ 150mm, l ≥ 400mm)</option>
-              <option value={1.75}>1,75 (BSH, l_1 ≥ 150mm, l ≥ 400mm)</option>
+              <option value={1.25}>1,25 (Nadelvollholz, kontinuierliche Auflagerung, l₁ ≥ 2h)</option>
+              <option value={1.50}>1,50 (Nadelvollholz Einzelauflager bzw. BSH kontinuierlich, l₁ ≥ 2h)</option>
+              <option value={1.75}>1,75 (BSH Einzelauflager, l₁ ≥ 2h, Aufstandslänge l ≤ 400 mm)</option>
             </select>
           </div>
 
@@ -994,17 +1000,34 @@ export default function Holz() {
                 </tr>
               </tbody>
             </table>
+            <p className="text-xs text-text-main/70 mt-2">
+              Kennwerte nach DIN EN 338 (Vollholz) und DIN EN 14080 (BSH); <FormulaText text="\gamma_M = 1{,}3" /> nach DIN EN 1995-1-1/NA. Beim Schubnachweis ist zusätzlich der Rissbeiwert <FormulaText text="k_{cr}" /> anzusetzen (NA: <FormulaText text="2{,}0/f_{v,k}" /> für Vollholz, <FormulaText text="2{,}5/f_{v,k}" /> für BSH). Der Höhenbeiwert <FormulaText text="k_h" /> ist hier nicht berücksichtigt.
+            </p>
+          </div>
+
+          <div className="mt-6">
+            <FormulaDerivationBox
+              title="Anwendungsbeispiel: Biegetragfähigkeit eines Balkens C24"
+              zielGleichung="M_{Rd} = k_{mod} \cdot \frac{f_{m,k}}{\gamma_M} \cdot W"
+              normQuelle="DIN EN 1995-1-1 mit NA, 6.1.6 (NKL 1, KLED mittel)"
+              schritte={[
+                { titel: '1. Gegeben', formel: 'b/h = 100/200\\,\\text{mm},\\; f_{m,k} = 24\\,\\text{N/mm}^2,\\; M_{Ed} = 7{,}0\\,\\text{kNm}', erklaerung: 'Nutzlast als maßgebende Einwirkung (KLED mittel), Innenraum (NKL 1).' },
+                { titel: '2. Bemessungsfestigkeit', formel: 'f_{m,d} = 0{,}8 \\cdot 24 / 1{,}3 = 14{,}77\\,\\text{N/mm}^2', erklaerung: 'k_mod = 0,8; k_h = 1,0 für h ≥ 150 mm.' },
+                { titel: '3. Widerstandsmoment', formel: 'W = \\frac{b \\cdot h^2}{6} = \\frac{100 \\cdot 200^2}{6} = 666\\,667\\,\\text{mm}^3', erklaerung: 'Rechteckquerschnitt.' },
+                { titel: '4. Widerstand und Ausnutzung', formel: 'M_{Rd} = 14{,}77 \\cdot 666\\,667 = 9{,}85\\,\\text{kNm},\\; \\eta = 7{,}0/9{,}85 = 0{,}71', erklaerung: 'η ≤ 1 – Nachweis erfüllt.' },
+              ]}
+              ergebnisHinweis="Ausnutzung 71 % – Kippen, Schub und Durchbiegung (mit k_def) sind gesondert nachzuweisen."
+            />
           </div>
 
           <div className="mt-6 bg-off-white p-4 rounded-xl border border-home-grau/30">
             <h3 className="text-sm font-bold text-text-main mb-2">Hankinson-Gleichung (Druck unter Winkel)</h3>
             <p className="text-sm text-home-grau mb-4">
-              Die Druckfestigkeit von Holz ist stark richtungsabhängig. Bei Krafteinleitung unter einem Winkel α zur Faserrichtung wird die Festigkeit nach Hankinson abgemindert. 
-              <br/><br/>
-              <code className="bg-white px-2 py-1 rounded border border-home-grau/30">
-                <FormulaText text="f_{c,\alpha,d} = f_{c,0,d} / \left( \left(\frac{f_{c,0,d}}{k_{c,90} \cdot f_{c,90,d}}\right) \cdot \sin^2(\alpha) + \cos^2(\alpha) \right)" />
-              </code>
+              Die Druckfestigkeit von Holz ist stark richtungsabhängig. Bei Krafteinleitung unter einem Winkel α zur Faserrichtung wird die Festigkeit nach Hankinson abgemindert (DIN EN 1995-1-1, Gl. 6.16).
             </p>
+            <div className="bg-white p-3 rounded border border-home-grau/30 mb-4 overflow-x-auto">
+              <BlockMath math={String.raw`f_{c,\alpha,d} = \frac{f_{c,0,d}}{\dfrac{f_{c,0,d}}{k_{c,90}\cdot f_{c,90,d}}\,\sin^2\alpha + \cos^2\alpha}`} />
+            </div>
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
               <h4 className="text-sm font-bold text-center mb-2">Druckfestigkeit vs. Faserwinkel</h4>
               <div className="flex-1 relative">
@@ -1235,6 +1258,8 @@ export default function Holz() {
     
       <WoodThematicLinks current="baustoff" />
 
+      <ModulTest moduleId="holz" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Holz', url: 'https://de.wikipedia.org/wiki/Holz' },
@@ -1243,21 +1268,20 @@ export default function Holz() {
           { title: 'dataholz.eu (Baustoff- und Bauteildaten)', url: 'https://www.dataholz.eu/' }
         ]}
         literatur={[
-          'Blaß, H. J.; Sandhaas, C. (2017): Ingenieurholzbau - Grundlagen der Bemessung (KIT Scientific Publishing)',
-          'Niemz, P.; Sonderegger, W. (2021): Holzphysik - Physik des Holzes und der Holzwerkstoffe (Carl Hanser Verlag)',
+          'Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016 (Open Access)',
+          'Niemz, P.; Sonderegger, W.: Holzphysik – Eigenschaften, Prüfung und Kennwerte. 2. Aufl., München: Hanser 2021',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1995-1-1:2024-03 / NA:2021-03 (Eurocode 5: Bemessung und Konstruktion von Holzbauten - Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für den Hochbau)' },
+          { title: 'DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1; Änderungsstand manuell prüfen)' },
+          { title: 'DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Tragwerksbemessung für den Brandfall)' },
           { title: 'DIN EN 338:2016-07 (Bauholz für tragende Zwecke - Festigkeitsklassen)' },
-          { title: 'DIN 68800-1..4:2019-06 (Holzschutz - Teile 1 bis 4: Vorbeugender baulicher und chemischer Holzschutz)' },
+          { title: 'DIN 68800-1 bis -4 (Holzschutz; Teil 1:2019-06, übrige Ausgaben manuell prüfen)' },
           { title: 'DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz - Anforderungen)' },
           { title: 'DIN EN 14081-1:2019-10 (Holzbauwerke - Nach Festigkeit sortiertes Bauholz für tragende Zwecke)' }
         ]}
         weblinks={[
-          { title: 'best wood STATICS – Kostenlose Holzbaubemessung nach EC5' },
           { title: 'dataholz.eu – Akkreditierte Holzbauteil- & EPD-Datenbank', url: 'https://www.dataholz.eu/' },
-          { title: 'STRIAN – Online 2D-Stabwerk- & Rahmenberechnung' },
           { title: 'Informationsdienst Holz – Fachwissen & Handbücher', url: 'https://informationsdienst-holz.de/' }
         ]}
         formeln={[
@@ -1272,13 +1296,13 @@ export default function Holz() {
             quelle: 'DIN EN 1995-1-1 Abs. 6.2.2'
           },
           {
-            formel: '\\Delta l = l_0 \\cdot \\alpha \\cdot \\Delta u \\quad (u \\le u_{\\text{FSP}} \\approx 30\\,\\%)',
-            erklaerung: 'Differentielles Schwind- und Quellmaß: \\alpha = Schwindmaß pro 1% Feuchteänderung (radial ca. 0,16%, tangential ca. 0,33%, longitudinal ca. 0,01%). Nur unterhalb des Fasersättigungspunkts (FSP).',
-            quelle: 'Niemz: Holzphysik'
+            formel: '\\Delta l = l_0 \\cdot \\frac{q}{100} \\cdot \\Delta u \\quad (u \\le u_{\\text{FSP}} \\approx 30\\,\\%)',
+            erklaerung: 'Differentielles Schwind- und Quellmaß q in % je 1 % Feuchteänderung (Fichte: radial ca. 0,16 %, tangential ca. 0,33 %, längs ca. 0,01 %). Nur unterhalb des Fasersättigungspunkts (FSP).',
+            quelle: 'Niemz/Sonderegger: Holzphysik'
           },
           {
             formel: 'u_{\\text{fin}} = u_{\\text{inst}} \\cdot (1 + k_{\\text{def}})',
-            erklaerung: 'Endverformung unter Kriecheinfluss: u_{inst} = elastische Anfangsverformung, k_{def} = Verformungsbeiwert in Abhängigkeit von Material und Nutzungsklasse (z.B. Vollholz NKL 1: k_{def} = 0.60).',
+            erklaerung: 'Endverformung unter Kriecheinfluss: u_{inst} = elastische Anfangsverformung, k_{def} = Verformungsbeiwert in Abhängigkeit von Material und Nutzungsklasse (z. B. Vollholz NKL 1: k_{def} = 0,60).',
             quelle: 'DIN EN 1995-1-1 Tab. 3.2'
           }
         ]}
