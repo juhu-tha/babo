@@ -622,11 +622,10 @@ export default function Literatur() {
         ]}
         regelwerke={[
           { title: 'DIN EN ISO 690: Richtlinien für Titelangaben und Zitate von Informationsressourcen' },
-          { title: 'DIN 1505-2: Zitierregeln für wissenschaftliche Veröffentlichungen' },
+          { title: 'DIN ISO 690:2013-10 (Titelangaben und Zitierung; ersetzt DIN 1505-2)' },
           { title: 'DIN EN 1990: Eurocode: Grundlagen der Tragwerksplanung (Statistische Auswertung von Werkstoffkennwerten)' }
         ]}
         weblinks={[
-          { title: 'DIN Media (ehemals Beuth Verlag) – Normenportal', url: 'https://www.dinmedia.de' },
           { title: 'SpringerLink – Bautechnische Fachbücher & Journale', url: 'https://link.springer.com/' },
           { title: 'Wiley Online Library – Beton- und Stahlbetonbau', url: 'https://onlinelibrary.wiley.com/' },
           { title: 'ScienceDirect – Cement and Concrete Research', url: 'https://www.sciencedirect.com/journal/cement-and-concrete-research' },

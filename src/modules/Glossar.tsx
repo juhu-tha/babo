@@ -361,7 +361,6 @@ export default function Glossar() {
           { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)' }
         ]}
         weblinks={[
-          { title: 'DIN Media (ehem. Beuth Verlag) – Normenportal', url: 'https://www.dinmedia.de' },
           { title: 'InformationsZentrum Beton – Betontechnologische Fachbegriffe & Merkblätter', url: 'https://www.beton.org/' },
           { title: 'Informationsdienst Holz – Holzbaufachbegriffe & Bauteilkatalog', url: 'https://informationsdienst-holz.de/' },
           { title: 'ift Rosenheim – Fachbegriffe & Prüfungen für Fenster, Türen & Fassaden', url: 'https://www.ift-rosenheim.de/' },
