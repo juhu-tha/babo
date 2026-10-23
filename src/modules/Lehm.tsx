@@ -2,6 +2,7 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BookOpen } from 'lucide-react';
@@ -96,7 +97,7 @@ export default function Lehm() {
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            Lehm ist einer der ältesten und ökologischsten Baustoffe der Menschheit. Er zeichnet sich durch hervorragende Feuchtigkeitsregulierung, hohe thermische Trägheit und vollständige, emissionsfreie Kreislauffähigkeit aus.
+            Lehm ist einer der ältesten Baustoffe. Er puffert Raumfeuchte gut, hat eine hohe Wärmespeicherfähigkeit und lässt sich ungebrannt und ohne Zusätze nach Rückbau wieder aufbereiten.
           </p>
         </div>
 
@@ -147,7 +148,7 @@ export default function Lehm() {
           <div className="animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
               <p>
-                Lehm ist ein ökologischer Baustoff, der reversibel aushärtet. Er reguliert die Raumfeuchte hervorragend, ist aber wasserempfindlich und weist geringere Festigkeiten auf.
+                Lehm ist ein ökologischer Baustoff, der reversibel aushärtet. Er puffert Raumfeuchte gut, ist aber wasserempfindlich und weist geringere Festigkeiten auf.
               </p>
             </div>
 
@@ -242,14 +243,14 @@ export default function Lehm() {
                   <li><strong>Anwendungs- & Druckfestigkeitsklassen:</strong> Lehmsteine werden nach DIN 18945 in Anwendungsklassen nach Feuchtebeanspruchung (AK Ia, Ib, II, III) und Druckfestigkeitsklassen (2 – 2,5 – 3 – 4 – 5 – 6 N/mm² mittlerer Steindruckfestigkeit) eingeteilt. Die charakteristische Mauerwerksdruckfestigkeit fk ergibt sich nach DIN 18940 aus Steinklasse und Mörtel.</li>
                   <li><strong>Format & Mörtel:</strong> Die Tragfähigkeit hängt stark vom verwendeten Lehmmauermörtel und dem Überbindemaß ab.</li>
                   <li><strong>Schwinden & Setzung:</strong> Da Lehm bei Feuchteaufnahme quillt und beim Trocknen wieder schwindet, müssen Setzungsmaße für den Bauablauf rechnerisch berücksichtigt werden.</li>
-                  <li><strong>Feuchteschutz:</strong> Konstruktiver Witterungsschutz (Dachüberstände, wasserresistente Sockelzonen z.B. aus Naturstein oder Beton) ist zwingend vorgeschrieben.</li>
+                  <li><strong>Feuchteschutz:</strong> Konstruktiver Witterungsschutz (Dachüberstände, wasserresistente Sockelzonen z.B. aus Naturstein oder Beton) ist Voraussetzung (Dachüberstand, Sockel, Spritzwasserschutz).</li>
                 </ul>
               </div>
 
                <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
                 <h3 className="font-bold text-home-prim">Anwendungsbereiche</h3>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                  <li>Tragendes Mauerwerk bei ein- bis mehrgeschossigen Gebäuden (begrenzt bis GK 4 nach LBO).</li>
+                  <li>Tragendes Mauerwerk bei ein- bis mehrgeschossigen Gebäuden (Anwendungsgrenzen nach DIN 18940 und Landesbauordnung – manuell prüfen).</li>
                   <li>Innentrennwände und Ausfachungen (z.B. bei Holzfachwerk).</li>
                   <li>Ausführung als Einsteinmauerwerk oder Verbandsmauerwerk.</li>
                   <li>Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE.</li>
@@ -297,6 +298,21 @@ export default function Lehm() {
           </div>
         )}
 
+      </div>
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Trocknungswasser eines Lehmputzes"
+          zielGleichung="m_W = A \cdot d \cdot \rho_d \cdot (u_0 - u_{eq})"
+          normQuelle="Massenbilanz; Feuchtegehalte als Lehrannahmen (Herstellerangaben maßgebend)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'A = 100\\,\\text{m}^2,\\; d = 20\\,\\text{mm},\\; \\rho_d = 1700\\,\\text{kg/m}^3', erklaerung: 'Zweilagiger Lehmputz auf Innenwänden.' },
+            { titel: '2. Feuchtegehalte', formel: 'u_0 = 18\\,\\text{M.-\\%}\\;(\\text{frisch}),\\; u_{eq} = 1{,}5\\,\\text{M.-\\%}\\;(\\text{lufttrocken})', erklaerung: 'Bezogen auf die Trockenmasse; Lehrannahmen.' },
+            { titel: '3. Trockenmasse', formel: 'm_d = 100 \\cdot 0{,}020 \\cdot 1700 = 3400\\,\\text{kg}', erklaerung: 'Masse der trockenen Putzschicht.' },
+            { titel: '4. Abzuführendes Wasser', formel: 'm_W = 3400 \\cdot (0{,}18 - 0{,}015) \\approx 560\\,\\text{kg}', erklaerung: 'Rund 0,56 m³ Wasser müssen über Lüftung abgeführt werden.' },
+          ]}
+          ergebnisHinweis="Lehmputze trocknen nur physikalisch: Ohne ausreichende Lüftung verzögert sich die Trocknung, und es droht Schimmelbildung auf der feuchten Oberfläche."
+        />
       </div>
 
       <ModulTest moduleId="lehm" />

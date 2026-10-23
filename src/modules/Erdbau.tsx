@@ -2,6 +2,7 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Mountain, Layers, AlignVerticalSpaceAround, Activity, LayoutGrid, Calculator, ThermometerSnowflake, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Slider } from '@/src/components/ui/Slider';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -367,6 +368,21 @@ export default function Erdbau() {
             <BaustoffProfil materialKey="erdbau" />
           </div>
         )}
+      </div>
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Verdichtungsgrad aus einer Ersatzmessung"
+          zielGleichung="\rho_d = \frac{\rho}{1 + w}, \quad D_{Pr} = \frac{\rho_d}{\rho_{Pr}}"
+          normQuelle="DIN 18125-2 (Dichte), DIN 18127 (Proctorversuch); Anforderungswert projektbezogen nach ZTV E-StB"
+          schritte={[
+            { titel: '1. Messwerte vor Ort', formel: '\\rho = 2{,}05\\,\\text{t/m}^3,\\; w = 8{,}0\\,\\%', erklaerung: 'Feuchtdichte (z. B. Ballon- oder Sandersatzverfahren) und Wassergehalt (Ofentrocknung).' },
+            { titel: '2. Trockendichte', formel: '\\rho_d = \\frac{2{,}05}{1{,}08} = 1{,}90\\,\\text{t/m}^3', erklaerung: 'Der Wassergehalt ist auf die Trockenmasse bezogen.' },
+            { titel: '3. Verdichtungsgrad', formel: 'D_{Pr} = \\frac{1{,}898}{1{,}95} = 97{,}3\\,\\%', erklaerung: 'Laborwert ρ_Pr = 1,95 t/m³ (Proctorversuch am selben Boden).' },
+            { titel: '4. Bewertung', formel: 'D_{Pr} = 97{,}3\\,\\% \\ge 97\\,\\%', erklaerung: 'Erfüllt eine Anforderung von 97 %; für 100 % (z. B. Planum bei grobkörnigen Böden) müsste nachverdichtet werden.' },
+          ]}
+          ergebnisHinweis="Häufiger Fehler: Feuchtdichte direkt mit ρ_Pr verglichen – das täuscht einen zu hohen Verdichtungsgrad vor (hier 105 %)."
+        />
       </div>
 
       <ModulTest moduleId="erdbau" />

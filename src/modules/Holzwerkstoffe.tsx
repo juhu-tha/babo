@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Trees, Layers, Wrench, Leaf, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -225,6 +226,21 @@ export default function Holzwerkstoffe() {
           <BaustoffProfil materialKey="holzwerkstoffe" />
         </div>
       )}
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Kriechverformung einer OSB-Platte im Vergleich zu Vollholz"
+          zielGleichung="w_{fin} = w_{inst} \cdot (1 + k_{def}) \quad (\text{ständige Last, } \psi_2 = 1)"
+          normQuelle="DIN EN 1995-1-1, 2.2.3 und Tab. 3.2"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'w_{inst,G} = 4{,}0\\,\\text{mm}\\;(\\text{ständige Last}),\\; \\text{NKL 1}', erklaerung: 'Elastische Anfangsdurchbiegung aus Eigengewicht und Aufbau.' },
+            { titel: '2. OSB/3', formel: 'k_{def} = 1{,}5 \\Rightarrow w_{fin} = 4{,}0 \\cdot 2{,}5 = 10{,}0\\,\\text{mm}', erklaerung: 'Holzwerkstoffe mit kleinteiliger Struktur kriechen deutlich stärker.' },
+            { titel: '3. Vollholz zum Vergleich', formel: 'k_{def} = 0{,}6 \\Rightarrow w_{fin} = 4{,}0 \\cdot 1{,}6 = 6{,}4\\,\\text{mm}', erklaerung: 'Bei gleicher Anfangsdurchbiegung.' },
+            { titel: '4. NKL 2', formel: '\\text{OSB/3: } k_{def} = 2{,}25 \\Rightarrow w_{fin} = 13{,}0\\,\\text{mm}', erklaerung: 'Höhere Holzfeuchte verstärkt das Kriechen.' },
+          ]}
+          ergebnisHinweis="Für Holzwerkstoffplatten unter Dauerlast ist die Endverformung oft maßgebend – Plattendicke und Stützweite daher nicht nur nach der Tragfähigkeit wählen."
+        />
+      </div>
 
       <ModulTest moduleId="holzwerkstoffe" />
 

@@ -1,6 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Layers, ShieldAlert, Sparkles, ArrowRight, BookOpen } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
@@ -179,7 +180,7 @@ const METALS_DATA = [
     corrosionBehavior: 'Unter allen Baumetallen die höchste Korrosionsbeständigkeit. Bildet spontan eine chemisch extrem inerte, festhaftende Rutil-Oxidschicht (TiO₂), die das Metall selbst gegen konzentrierte Meersalzlösungen, Industrieabgase und aggressive Säuren vollkommen resistent macht.',
     corrosionProtection: 'Vollkommen wartungsfrei; keinerlei Beschichtungen oder Schutzmaßnahmen erforderlich. Selbst bei mechanischen Kratzern passiviert sich die Stelle im Kontakt mit Luftsauerstoff binnen Millisekunden neu.',
     applications: 'Monumentale Architekturfassaden, extrem beanspruchte Dächer repräsentativer Kulturbauten, korrosionskritische Spezialverankerungen',
-    description: 'Leichtes Hochleistungsmetall (hdp) mit hervorragendem Festigkeits-zu-Dichte-Verhältnis und dem geringsten thermischen Längenausdehnungskoeffizienten (α = 8,6 × 10⁻⁶/K) aller Fassadenmetalle. Dies verhindert thermische Wellenbildung und garantiert verzugsfreie Großkassetten über Jahrhunderte.'
+    description: 'Leichtmetall (hdp) mit hoher Festigkeit im Verhältnis zur Dichte und der geringsten Wärmedehnzahl der üblichen Fassadenmetalle (α ≈ 8,6 · 10⁻⁶/K). Das verringert thermische Wellenbildung bei großformatigen Bekleidungen.'
   },
   {
     name: 'Wetterfester Baustahl (Cortenstahl)',
@@ -421,6 +422,21 @@ export default function Metalle() {
       </div>
 
       <MetalThematicLinks current="baustoff" />
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Wärmedehnung von Fassadenprofilen im Vergleich"
+          zielGleichung="\Delta l = l_0 \cdot \alpha_T \cdot \Delta T"
+          normQuelle="Wärmedehnzahlen als Richtwerte (Herstellerangaben maßgebend)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'l_0 = 6{,}0\\,\\text{m},\\; \\Delta T = 80\\,\\text{K}\\;(-20\\,^\\circ\\text{C} \\text{ bis } +60\\,^\\circ\\text{C Oberfläche})', erklaerung: 'Dunkle, besonnte Fassadenbekleidung.' },
+            { titel: '2. Aluminium', formel: '\\Delta l = 6000 \\cdot 24 \\cdot 10^{-6} \\cdot 80 \\approx 11{,}5\\,\\text{mm}', erklaerung: 'α_Al ≈ 24 · 10⁻⁶/K.' },
+            { titel: '3. Stahl', formel: '\\Delta l = 6000 \\cdot 12 \\cdot 10^{-6} \\cdot 80 \\approx 5{,}8\\,\\text{mm}', erklaerung: 'α_St ≈ 12 · 10⁻⁶/K.' },
+            { titel: '4. Titan', formel: '\\Delta l = 6000 \\cdot 8{,}6 \\cdot 10^{-6} \\cdot 80 \\approx 4{,}1\\,\\text{mm}', erklaerung: 'α_Ti ≈ 8,6 · 10⁻⁶/K.' },
+          ]}
+          ergebnisHinweis="Aluminiumprofile dehnen sich doppelt so stark wie Stahl: Fest- und Gleitpunkte sowie Dehnfugen sind entsprechend zu planen. Bei Mischkonstruktionen Alu/Stahl entstehen sonst Zwängungen."
+        />
+      </div>
 
       <ModulTest moduleId="metalle" />
 

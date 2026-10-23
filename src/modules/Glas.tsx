@@ -7,6 +7,7 @@ import '@/src/lib/chartSetup';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -390,6 +391,21 @@ export default function Glas() {
       )}
       </div>
     
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Thermischer Glasbruch bei teilbeschattetem Floatglas"
+          zielGleichung="\sigma_T \approx E \cdot \alpha_T \cdot \Delta T"
+          normQuelle="Lehrmodell (voll behinderte Dehnung); zulässige Temperaturdifferenzen als Richtwerte"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'E = 70\\,000\\,\\text{N/mm}^2,\\; \\alpha_T = 9 \\cdot 10^{-6}\\,\\text{K}^{-1}', erklaerung: 'Kalk-Natron-Silikatglas.' },
+            { titel: '2. Temperaturdifferenz', formel: '\\Delta T = 40\\,\\text{K}\\;(\\text{besonnte Scheibenmitte gegen beschatteten, kalten Rand})', erklaerung: 'Typisch bei Teilverschattung oder dunklen Gegenständen hinter der Scheibe.' },
+            { titel: '3. Zugspannung am Rand', formel: '\\sigma_T \\approx 70\\,000 \\cdot 9 \\cdot 10^{-6} \\cdot 40 \\approx 25\\,\\text{N/mm}^2', erklaerung: 'Die kalte Randzone wird von der warmen Mitte gedehnt.' },
+            { titel: '4. Bewertung', formel: '\\Delta T = 60\\,\\text{K} \\Rightarrow \\sigma_T \\approx 38\\,\\text{N/mm}^2', erklaerung: 'Damit ist die Kantenfestigkeit von Floatglas (Kantenbearbeitung, Mikrorisse) schnell erreicht – TVG (≈ 100 K) und ESG (≈ 200 K) vertragen deutlich mehr.' },
+          ]}
+          ergebnisHinweis="Bei Risiko thermischer Spannungen (Teilverschattung, Heizkörper, Sonnenschutzfolien) wird TVG oder ESG gewählt; die Kanten sind sauber zu bearbeiten."
+        />
+      </div>
+
       <ModulTest moduleId="glas" />
 
       <ModuleFooter 

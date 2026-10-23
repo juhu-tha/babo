@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Layers, BookOpen } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 
@@ -149,6 +150,21 @@ export default function Daemmstoffe() {
             <BaustoffProfil materialKey="daemmstoffe" />
           </div>
         )}
+      </div>
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Erforderliche Dämmstoffdicke für einen Ziel-U-Wert"
+          zielGleichung="d_D = \lambda_D \cdot \left(\frac{1}{U_{Ziel}} - R_{si} - R_{se} - \sum \frac{d_i}{\lambda_i}\right)"
+          normQuelle="DIN EN ISO 6946; Bemessungswerte λ nach DIN 4108-4 bzw. Produktangabe"
+          schritte={[
+            { titel: '1. Bestandswand', formel: '15\\,\\text{mm Innenputz } (\\lambda = 0{,}70) + 240\\,\\text{mm KS } (\\lambda = 0{,}99)', erklaerung: 'Kalksandstein-Mauerwerk, Lehrwerte.' },
+            { titel: '2. Widerstände ohne Dämmung', formel: 'R = 0{,}13 + 0{,}04 + \\frac{0{,}015}{0{,}70} + \\frac{0{,}24}{0{,}99} = 0{,}43\\,\\text{m}^2\\text{K/W}', erklaerung: 'R_si = 0,13 und R_se = 0,04 m²K/W.' },
+            { titel: '3. Erforderlicher Dämmwiderstand', formel: 'R_D = \\frac{1}{0{,}20} - 0{,}43 = 4{,}57\\,\\text{m}^2\\text{K/W}', erklaerung: 'Ziel U = 0,20 W/(m²K).' },
+            { titel: '4. Dicken je Dämmstoff', formel: '\\text{EPS 035: } 160\\,\\text{mm};\\; \\text{MW 032: } 146\\,\\text{mm};\\; \\text{Holzfaser 040: } 183\\,\\text{mm}', erklaerung: 'd = λ · R_D; gewählt wird die nächste lieferbare Dicke.' },
+          ]}
+          ergebnisHinweis="Die Wärmeleitfähigkeit bestimmt die Dicke direkt: 20 % höheres λ bedeutet 20 % mehr Dämmstoffdicke. Dübel und Befestigungen (ΔU) sind hier nicht berücksichtigt."
+        />
       </div>
 
       <ModulTest moduleId="daemmstoffe" />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Box, Layers, Activity, ArrowRight, ArrowDown, ArrowLeft, BookOpen } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -225,6 +226,21 @@ export default function Gips() {
             <BaustoffProfil materialKey="gips" />
           </div>
         )}
+      </div>
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Wasserbedarf und Porosität von Stuckgips"
+          zielGleichung="\text{CaSO}_4 \cdot \tfrac{1}{2}\,\text{H}_2\text{O} + 1\tfrac{1}{2}\,\text{H}_2\text{O} \rightarrow \text{CaSO}_4 \cdot 2\,\text{H}_2\text{O}"
+          normQuelle="Stöchiometrie; Dichten als Lehrwerte (Halbhydrat 2,63 g/cm³, Dihydrat 2,32 g/cm³)"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'm_{HH} = 10\\,\\text{kg},\\; W/G = 0{,}70 \\Rightarrow m_W = 7{,}0\\,\\text{kg}', erklaerung: 'β-Halbhydrat (Stuckgips), Lehrbeispiel.' },
+            { titel: '2. Chemisch gebundenes Wasser', formel: '\\frac{1{,}5 \\cdot 18{,}0}{145{,}1} = 18{,}6\\,\\% \\Rightarrow 1{,}86\\,\\text{kg}', erklaerung: 'Nur dieser Anteil wird als Kristallwasser eingebaut.' },
+            { titel: '3. Überschusswasser', formel: '7{,}0 - 1{,}86 = 5{,}14\\,\\text{kg}', erklaerung: 'Verdunstet beim Trocknen und hinterlässt Poren.' },
+            { titel: '4. Porosität (Breivolumen konstant angenommen)', formel: 'V_{Brei} = \\frac{10}{2{,}63} + 7{,}0 = 10{,}8\\,\\text{l};\\; V_{DH} = \\frac{11{,}86}{2{,}32} = 5{,}11\\,\\text{l};\\; n = \\frac{10{,}8 - 5{,}11}{10{,}8} \\approx 53\\,\\%', erklaerung: 'Abbindedehnung vernachlässigt (Lehrannahme).' },
+          ]}
+          ergebnisHinweis="Rund die Hälfte des erhärteten Gipses ist Porenraum – das erklärt die geringe Festigkeit bei hohem W/G-Wert und die gute Feuchtepufferung."
+        />
       </div>
 
       <ModulTest moduleId="gips" />
