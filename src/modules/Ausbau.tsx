@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { PaintRoller, Layers, Droplets, Grid, Hammer, Box } from 'lucide-react';
 
 export default function Ausbau() {
@@ -101,7 +103,7 @@ export default function Ausbau() {
                 <ul className="list-disc list-inside text-sm text-text-main/70">
                   <li>Höhere mechanische Festigkeit als Gipskarton.</li>
                   <li>Besserer Schallschutz durch höhere Rohdichte.</li>
-                  <li>Von Natur aus feuchteresistenter und brandhemmender.</li>
+                  <li>Weniger feuchteempfindlich als GKB; als nichtbrennbare Platte (A2) erhältlich.</li>
                 </ul>
               </div>
             </div>
@@ -112,7 +114,7 @@ export default function Ausbau() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <h2 className="text-2xl font-bold text-text-main">Estriche & Böden</h2>
             <p className="text-text-main/80">
-              Estriche dienen als Untergrund für Fußbodenbeläge, zur Lastverteilung, zur Wärmedämmung oder zum Erreichen einer vorgegebenen Höhenlage.
+              Estriche dienen als Untergrund für Fußbodenbeläge, zur Lastverteilung, zur Aufnahme einer Fußbodenheizung oder zum Erreichen einer vorgegebenen Höhenlage.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
@@ -130,15 +132,29 @@ export default function Ausbau() {
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Calciumsulfatestrich (CA)</h3>
                 <p className="text-sm text-text-main/80 mb-3">
-                  Bindemittel ist Calciumsulfat (Anhydrit). Wird oft als Fließestrich (CAF) eingebracht.
+                  Bindemittel ist Calciumsulfat (Anhydrit oder α-Halbhydrat). Wird oft als Fließestrich (CAF) eingebracht.
                 </p>
                 <ul className="list-disc list-inside text-sm text-text-main/70">
                   <li>Sehr schwindarm (große fugenlose Flächen möglich).</li>
-                  <li>Gute Wärmeleitfähigkeit (ideal für Fußbodenheizungen).</li>
+                  <li>Umschließt Heizrohre als Fließestrich hohlraumfrei – gut geeignet für Fußbodenheizungen.</li>
                   <li><strong>Empfindlich gegen Feuchtigkeit</strong> (nicht für Nassräume).</li>
                 </ul>
               </div>
             </div>
+            <div className="my-6">
+              <FormulaDerivationBox
+                title="Anwendungsbeispiel: Längenänderung eines Heizestrichfeldes"
+                zielGleichung="\Delta L = L_0 \cdot \alpha_T \cdot \Delta T + L_0 \cdot \varepsilon_{cs}"
+                normQuelle="α_T und ε_cs als Lehrwerte für Zementestrich"
+                schritte={[
+                  { titel: '1. Gegeben', formel: 'L_0 = 8\\,\\text{m},\\; \\alpha_T = 12 \\cdot 10^{-6}\\,\\text{K}^{-1},\\; \\Delta T = 30\\,\\text{K},\\; \\varepsilon_{cs} = 0{,}3\\,\\text{mm/m}', erklaerung: 'Aufheizen von 15 °C auf 45 °C Vorlauftemperatur im Estrich (vereinfacht).' },
+                  { titel: '2. Temperaturdehnung', formel: '\\Delta L_T = 8000 \\cdot 12 \\cdot 10^{-6} \\cdot 30 = 2{,}9\\,\\text{mm}', erklaerung: 'Ausdehnung beim Heizen.' },
+                  { titel: '3. Schwinden', formel: '\\Delta L_{cs} = 8 \\cdot 0{,}3 = 2{,}4\\,\\text{mm}', erklaerung: 'Verkürzung beim Austrocknen.' },
+                ]}
+                ergebnisHinweis="Rund 3 mm Dehnung und 2–3 mm Verkürzung je Feldseite: Randdämmstreifen und Bewegungsfugen müssen diese Bewegungen aufnehmen."
+              />
+            </div>
+
 
             <h3 className="text-xl font-bold text-text-main mt-4 border-t border-home-grau/30 pt-6">Bodenbeläge</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -157,7 +173,7 @@ export default function Ausbau() {
                   Dazu gehören PVC (Polyvinylchlorid), Linoleum (Naturprodukt aus oxidiertem Leinöl, Harzen, Holz- und/oder Korkmehl und Kalksteinmehl auf Jutegewebe) und Kautschuk.
                 </p>
                 <div className="text-sm text-text-main/70">
-                  <strong>Eigenschaften:</strong> Trittschalldämmend, fußwarm, pflegeleicht. Linoleum ist ökologisch vorteilhaft.
+                  <strong>Eigenschaften:</strong> Fußwarm und pflegeleicht; Trittschallminderung je nach Rückenbeschichtung gering bis mittel. Linoleum besteht überwiegend aus nachwachsenden Rohstoffen.
                 </div>
               </div>
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
@@ -198,7 +214,7 @@ export default function Ausbau() {
                 <h3 className="font-bold text-shiraz text-lg mb-2">Feinsteinzeug</h3>
                 <div className="text-xs font-bold text-home-grau uppercase mb-2">Wasseraufnahme &lt; 0,5%</div>
                 <p className="text-sm text-text-main/80">
-                  Sehr dicht gesintert. Extrem niedrige Wasseraufnahme, sehr hohe Festigkeit und Abriebfestigkeit. Frostsicher. Für stark beanspruchte Böden (auch gewerblich).
+                  Sehr dicht gesintert. Sehr niedrige Wasseraufnahme, hohe Festigkeit und Abriebfestigkeit. Frostsicher. Für stark beanspruchte Böden (auch gewerblich).
                 </p>
               </div>
             </div>
@@ -249,7 +265,7 @@ export default function Ausbau() {
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Bituminöse Abdichtungen</h3>
                 <p className="text-sm text-text-main/80 mb-3">
-                  Bitumen wird als Rückstand der Vakuumdestillation von Erdöl gewonnen. Es ist wasserabweisend und thermoplastisch. Es ist wasserabweisend und thermoplastisch.
+                  Bitumen wird als Rückstand der Vakuumdestillation von Erdöl gewonnen. Es ist wasserabweisend und thermoplastisch.
                 </p>
                 <ul className="list-disc list-inside text-sm text-text-main/70">
                   <li><strong>Bitumenbahnen:</strong> Werden geflämmt oder geklebt (z.B. Flachdach, Keller).</li>
@@ -322,6 +338,8 @@ export default function Ausbau() {
         )}
       </div>
 
+      <ModulTest moduleId="ausbau" />
+
       <ModuleFooter 
         wikipedia={[
           { title: 'Trockenbau', url: 'https://de.wikipedia.org/wiki/Trockenbau' },
@@ -330,25 +348,28 @@ export default function Ausbau() {
           { title: 'Bauschäumen', url: 'https://de.wikipedia.org/wiki/Montageschaum' }
         ]}
         literatur={[
-          'Frössel, F. (2019): Handbuch Ausbau und Innensanierung (Fraunhofer IRB Verlag)',
-          'Sopran, H. (2021): Handbuch Estrichbau: Konstruktion, Beläge und Schäden (Rudolf Müller Verlag)',
+          'Wricke, G.; Müller, S.: Handbuch Trockenbau – planen, konstruieren, ausführen. Haan-Gruiten: Europa-Lehrmittel 2014',
+          'Unger, A.: Fußboden-Atlas – richtig planen, Schäden vermeiden. Donauwörth: QUO-VADO (Auflage manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
         ]}
         regelwerke={[
-          { title: 'DIN 18560 (Estriche im Bauwesen - Teile 1 bis 7)' },
+          { title: 'DIN 18560 (Estriche im Bauwesen, Teile 1 bis 7)' },
+          { title: 'DIN EN 13813 (Estrichmörtel und Estrichmassen – Eigenschaften und Anforderungen)' },
+          { title: 'DIN EN 12004-1 (Mörtel und Klebstoffe für keramische Fliesen und Platten)' },
+          { title: 'DIN EN 14411 (Keramische Fliesen und Platten – Begriffe, Klassifizierung)' },
           { title: 'DIN 18157-1 bis -3 (Ausführung von Bekleidungen und Belägen im Dünnbettverfahren; Teil 1: hydraulisch erhärtende Dünnbettmörtel, Teil 2: Dispersionsklebstoffe, Teil 3: Reaktionsharzklebstoffe)' },
           { title: 'DIN 18202 (Toleranzen im Hochbau - Bauwerke)' }
         ]}
         formeln={[
           {
             formel: '\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T + L_0 \\cdot \\varepsilon_{cs}',
-            erklaerung: 'Längenänderung eines Estrichfeldes durch Temperatur- und Schwindverformung zur Bestimmung der notwendigen Fugenabstände (z.B. … zur Bestimmung der notwendigen Fugenabstände (Richtwerte für Heizestriche: Felder max. ca. 40 m², Seitenlänge max. 8 m, Seitenverhältnis ≤ 1:2 nach DIN EN 1264-4 bzw. Schnittstellenkoordination; Fugenplan durch den Planer). Quelle: DIN EN 1264-4 / BEB).',
-            quelle: 'DIN 18560 / BEB'
+            erklaerung: 'Längenänderung eines Estrichfeldes aus Temperatur- und Schwindverformung; Grundlage für Rand- und Bewegungsfugen. Richtwerte für Heizestrichfelder (z. B. ca. 40 m², Seitenlänge ≤ 8 m, Seitenverhältnis ≤ 1:2) aus BEB-Hinweisen bzw. Schnittstellenkoordination – maßgebend ist der Fugenplan (manuell prüfen).',
+            quelle: 'DIN 18560 / BEB-Hinweise'
           },
           {
             formel: 'f_{\\text{ct,Haft}} = \\frac{F_{\\text{Bruch}}}{A_{\\text{Prüf}}} \\ge 1{,}0\\,\\text{N/mm}^2 \\quad (\\text{Klasse C2})',
-            erklaerung: 'Haftzugfestigkeit von zementärem Fliesenkleber nach DIN EN 12004 bei Abreißversuchen auf Betonuntergrund.',
-            quelle: 'DIN EN 12004'
+            erklaerung: 'Haftzugfestigkeit von zementärem Fliesenkleber (Klasse C2: ≥ 1,0 N/mm², C1: ≥ 0,5 N/mm²) im Abreißversuch auf Betonuntergrund.',
+            quelle: 'DIN EN 12004-1'
           }
         ]}
       />

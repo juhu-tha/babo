@@ -10481,5 +10481,95 @@
       "targetModuleLabel": "Materialität & Architektur"
     },
     "verified": false
+  },
+  {
+    "id": "q_aus_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "ausbau",
+    "moduleTitle": "Ausbau",
+    "topic": "Estriche",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 13813",
+    "question": "Welcher Estrich ist für dauerhaft feuchte Bereiche (z. B. Nassräume ohne Abdichtung, außen) ungeeignet?",
+    "options": [
+      "Calciumsulfatestrich (CA)",
+      "Zementestrich (CT)",
+      "Gussasphaltestrich (AS)",
+      "Kunstharzestrich (SR)"
+    ],
+    "correctIdx": 0,
+    "explanation": "Calciumsulfat ist feuchteempfindlich und verliert bei Durchfeuchtung an Festigkeit. Zementestrich ist feuchteunempfindlich.",
+    "gapAnalysis": {
+      "topic": "Estriche",
+      "misconception": "Alle Estriche verhalten sich bei Feuchte gleich.",
+      "coreRule": "CA: schwindarm, aber feuchteempfindlich.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Estriche“ im Modul Ausbau noch einmal durch.",
+      "targetModuleTab": "ausbau",
+      "targetModuleLabel": "Ausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_aus_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "ausbau",
+    "moduleTitle": "Ausbau",
+    "topic": "Keramik",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 14411",
+    "question": "Welche Wasseraufnahme kennzeichnet Feinsteinzeug?",
+    "options": [
+      "E ≤ 0,5 %",
+      "E > 10 %",
+      "3 % < E ≤ 6 %",
+      "E ≈ 15–20 %"
+    ],
+    "correctIdx": 0,
+    "explanation": "Feinsteinzeug ist sehr dicht gesintert (E ≤ 0,5 %) und frostbeständig. Steingut (E > 10 %) ist nicht frostsicher.",
+    "gapAnalysis": {
+      "topic": "Keramik",
+      "misconception": "Alle Fliesen sind frostsicher.",
+      "coreRule": "Je niedriger die Wasseraufnahme, desto dichter und frostbeständiger.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Keramik“ im Modul Ausbau noch einmal durch.",
+      "targetModuleTab": "ausbau",
+      "targetModuleLabel": "Ausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_aus_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "ausbau",
+    "moduleTitle": "Ausbau",
+    "topic": "Fliesenkleber",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12004-1",
+    "question": "Welche Haftzugfestigkeit muss ein zementärer Fliesenkleber der Klasse C2 mindestens erreichen?",
+    "options": [
+      "1,0 N/mm²",
+      "0,5 N/mm²",
+      "2,5 N/mm²",
+      "0,1 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "C1: ≥ 0,5 N/mm², C2 (verbesserte Eigenschaften): ≥ 1,0 N/mm².",
+    "gapAnalysis": {
+      "topic": "Fliesenkleber",
+      "misconception": "C1 und C2 unterscheiden sich nur in der Verarbeitungszeit.",
+      "coreRule": "C2 = erhöhte Haftzugfestigkeit ≥ 1,0 N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fliesenkleber“ im Modul Ausbau noch einmal durch.",
+      "targetModuleTab": "ausbau",
+      "targetModuleLabel": "Ausbau"
+    },
+    "verified": false
   }
 ]
