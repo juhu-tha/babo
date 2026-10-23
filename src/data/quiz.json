@@ -8711,5 +8711,125 @@
       "targetModuleLabel": "WU-Bauwerke"
     },
     "verified": false
+  },
+  {
+    "id": "q_cbm_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "carbonbeton",
+    "moduleTitle": "Carbonbeton",
+    "topic": "Werkstoffverhalten",
+    "difficulty": "Grundlagen",
+    "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
+    "question": "Wie verhält sich Carbonbewehrung unter Zug bis zum Versagen?",
+    "options": [
+      "Linear-elastisch bis zum spröden Bruch",
+      "Mit ausgeprägtem Fließplateau wie B500B",
+      "Plastisch ohne elastischen Bereich",
+      "Wie Beton (Parabel-Rechteck)"
+    ],
+    "correctIdx": 0,
+    "explanation": "Carbon hat kein Fließplateau; es verhält sich bis zum Bruch linear-elastisch. Die Duktilität muss daher anders sichergestellt werden.",
+    "gapAnalysis": {
+      "topic": "Werkstoffverhalten",
+      "misconception": "Carbon kündige das Versagen durch Fließen an.",
+      "coreRule": "Carbon: linear-elastisch, spröder Bruch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Werkstoffverhalten“ im Modul Carbonbeton noch einmal durch.",
+      "targetModuleTab": "carbonbeton",
+      "targetModuleLabel": "Carbonbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_cbm_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "carbonbeton",
+    "moduleTitle": "Carbonbeton",
+    "topic": "Betondeckung",
+    "difficulty": "Grundlagen",
+    "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
+    "question": "Warum kann die Betondeckung bei Carbonbeton deutlich kleiner sein als bei Stahlbeton?",
+    "options": [
+      "Carbon korrodiert nicht; die Deckung dient im Wesentlichen dem Verbund",
+      "Carbon ist leichter",
+      "Carbonbeton wird immer innen verbaut",
+      "Die Normen verlangen keine Deckung"
+    ],
+    "correctIdx": 0,
+    "explanation": "Ohne Korrosionsgefahr entfällt der Dauerhaftigkeitsanteil; die Deckung wird nach Verbund und Brandschutz bemessen.",
+    "gapAnalysis": {
+      "topic": "Betondeckung",
+      "misconception": "Die Deckung diene bei Carbon dem Korrosionsschutz.",
+      "coreRule": "Keine Karbonatisierungs- oder Chloridkorrosion → schlanke Bauteile.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung“ im Modul Carbonbeton noch einmal durch.",
+      "targetModuleTab": "carbonbeton",
+      "targetModuleLabel": "Carbonbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_cbm_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "carbonbeton",
+    "moduleTitle": "Carbonbeton",
+    "topic": "Bemessungswert",
+    "difficulty": "Fortgeschritten",
+    "normRef": "Lehrannahme γ_tex = 1,3",
+    "question": "f_tk = 3 000 N/mm², γ_tex = 1,3. Wie groß ist f_td?",
+    "options": [
+      "2 308 N/mm²",
+      "3 900 N/mm²",
+      "2 609 N/mm²",
+      "1 500 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "f_td = 3 000 / 1,3 = 2 308 N/mm².",
+    "gapAnalysis": {
+      "topic": "Bemessungswert",
+      "misconception": "Der Teilsicherheitsbeiwert werde multipliziert.",
+      "coreRule": "f_td = f_tk / γ_tex.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungswert“ im Modul Carbonbeton noch einmal durch.",
+      "targetModuleTab": "carbonbeton",
+      "targetModuleLabel": "Carbonbeton"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_cbm_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "clusterId": "III",
+    "clusterName": "Entwurf & Bemessung",
+    "moduleId": "carbonbeton",
+    "moduleTitle": "Carbonbeton",
+    "topic": "Regelwerk",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DAfStb 2024",
+    "question": "Welches Regelwerk ist in Deutschland für Betonbauteile mit Carbonbewehrung maßgebend?",
+    "options": [
+      "DIN 488",
+      "DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (2024)",
+      "DIN EN 206 allein",
+      "DIN 1045-1:2008"
+    ],
+    "correctIdx": 1,
+    "explanation": "Die DAfStb-Richtlinie (2024) regelt Bemessung und Ausführung; im Einzelfall gelten Zulassungen bzw. Bauartgenehmigungen.",
+    "gapAnalysis": {
+      "topic": "Regelwerk",
+      "misconception": "Carbonbewehrung sei in DIN 488 geregelt.",
+      "coreRule": "DAfStb-Richtlinie nichtmetallische Bewehrung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Regelwerk“ im Modul Carbonbeton noch einmal durch.",
+      "targetModuleTab": "carbonbeton",
+      "targetModuleLabel": "Carbonbeton"
+    },
+    "verified": false
   }
 ]
