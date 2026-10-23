@@ -64,9 +64,9 @@ export default function Stuetzenbemessung() {
     const nu_Ed = (-nEd / 1000) / (b_m * h_m * fcd); // Druck ist negativ
     const mu_Ed = Math.abs((mEd_1 / 1000) / (b_m * h_m * h_m * fcd));
 
-    // Grenzschlankheit lambda_lim nach DIN EN 1992-1-1, 5.8.3.1
+    // Grenzschlankheit nach DIN EN 1992-1-1/NA, 5.8.3.1: λ_lim = 25 für |n| ≥ 0,41, sonst 16/√|n|
     const n = Math.abs(nu_Ed);
-    const lambda_lim = n > 0 ? (20 * 0.7 * 1.1 * 0.7) / Math.sqrt(n) : 100;
+    const lambda_lim = n >= 0.41 ? 25 : n > 0 ? 16 / Math.sqrt(n) : 100;
     const isTheorie2Ordnung = lambda > lambda_lim;
 
     // EC2 Dehnungsiteration für Interaktionsdiagramm

@@ -782,9 +782,9 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     <InlineMath math="V_{Rd,s} = \frac{A_{sw}}{s} \cdot z \cdot f_{ywd} \cdot \cot \theta" />
                   </div>
                   <div className="p-2 bg-white rounded border border-home-grau/20 space-y-1 text-[11px]">
-                    <div>• <strong>Druckstrebenwinkel:</strong> <InlineMath math="1{,}0 \le \cot \theta \le 2{,}5" /> (<InlineMath math="21{,}8^\circ \le \theta \le 45^\circ" />)</div>
+                    <div>• <strong>Druckstrebenwinkel:</strong> <InlineMath math="1{,}0 \le \cot \theta \le 3{,}0" /> nach NA, zusätzlich begrenzt nach Gl. (6.7aDE)</div>
                     <div>• <strong>Betondruckstrebennachweis:</strong> <InlineMath math="V_{Ed} \le V_{Rd,max}" /> zur Vermeidung von Betonzerquetschen im Steg.</div>
-                    <div>• <strong>Versatzmaß:</strong> Zugkraftdeckungslinie um <InlineMath math="a_l = d \cdot \cot \theta / 2" /> versetzen!</div>
+                    <div>• <strong>Versatzmaß:</strong> Zugkraftdeckungslinie um <InlineMath math="a_l = z \cdot \cot \theta / 2" /> versetzen!</div>
                   </div>
                 </div>
               </div>
@@ -1023,7 +1023,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                   </div>
                   <p className="text-amber-900 text-[11px] leading-relaxed">
                     Infolge der Fachwerkwirkung bei Querkraftbelastung sind die Längszugkräfte gegenüber der 
-                    Biegemomentenlinie um das Versatzmaß <InlineMath math="a_l = d \cdot \cot \theta / 2" /> zur Auflagerseite hin verschoben. 
+                    Biegemomentenlinie um das Versatzmaß <InlineMath math="a_l = z \cdot \cot \theta / 2" /> zur Auflagerseite hin verschoben. 
                     Längsstäbe dürfen erst dort abgemindert werden, wo die verschobene Zugkraftlinie dies erlaubt!
                   </p>
                 </div>
@@ -1085,7 +1085,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
               {/* Frage 2 */}
               <div className="space-y-2 pt-2 border-t border-home-grau/15">
                 <p className="text-xs font-bold text-text-main">
-                  Frage 2: Was beschreibt das Versatzmaß <InlineMath math="a_l = d \cdot \cot \theta / 2" /> bei der Querkraftbemessung?
+                  Frage 2: Was beschreibt das Versatzmaß <InlineMath math="a_l = z \cdot \cot \theta / 2" /> bei der Querkraftbemessung?
                 </p>
                 <div className="grid sm:grid-cols-2 gap-2 text-xs">
                   <button

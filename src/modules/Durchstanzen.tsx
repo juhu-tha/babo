@@ -329,6 +329,10 @@ export default function Durchstanzen() {
         </div>
       </div>
 
+      <p className="text-[11px] text-text-main/60 leading-relaxed">
+        Vereinfachung: Die Durchstanzbewehrung wird je Bewehrungsreihe mit 1,5·d/s_r = 2,0 (s_r = 0,75·d) ermittelt.
+        Erhöhungsfaktoren für die ersten Reihen nach NA (κ_sw) sind nicht berücksichtigt – manuell prüfen.
+      </p>
       <CalculatorDisclaimerBanner className="my-2" />
     </div>
   );

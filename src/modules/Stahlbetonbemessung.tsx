@@ -108,8 +108,8 @@ const FORMELN_JE_REITER: Partial<Record<BemessungSubTab, { formel: string; erkla
             formel: "M_{Ed,1} = \\max(M_{Ed}, N_{Ed} \\cdot e_0) + N_{Ed} \\cdot e_i"
           },
           {
-            erklaerung: "Schlankheit und Grenzschlankheitskriterium\n\\lambda: Bauteilschlankheit = l_0 / i\ni: Trägheitsradius = h / \\sqrt{12}\n\\lambda_{lim}: Kriterium nach DIN EN 1992-1-1, 5.8.3.1 für Theorie II. Ordnung",
-            formel: "\\lambda = \\frac{l_0}{i} \\le \\lambda_{lim} = \\frac{20 \\cdot A \\cdot B \\cdot C}{\\sqrt{n}}"
+            erklaerung: "Schlankheit und Grenzschlankheitskriterium\n\\lambda: Bauteilschlankheit = l_0 / i\ni: Trägheitsradius = h / \\sqrt{12}\n\\lambda_{lim}: Grenzschlankheit nach DIN EN 1992-1-1/NA, 5.8.3.1 für Theorie II. Ordnung",
+            formel: "\\lambda = \\frac{l_0}{i} \\le \\lambda_{lim} = \\begin{cases} 25 & |n| \\ge 0{,}41 \\\\ 16/\\sqrt{|n|} & |n| < 0{,}41 \\end{cases}"
           }
         ],
   durchstanzen: [

@@ -2081,10 +2081,10 @@ export default function Expositionsklassen() {
         zielGleichung="c_{nom} = \max\{c_{min,b};\, c_{min,dur};\, 10\,\text{mm}\} + \Delta c_{dev}"
         normQuelle="DIN EN 1992-1-1 mit NA:2013-04, Tab. 4.4DE"
         schritte={[
-          { titel: '1. Gegeben', formel: '\\text{XC4 + XF1},\; \\varnothing = 12\\,\\text{mm}', erklaerung: 'XF1 stellt keine eigene Anforderung an die Betondeckung.' },
+          { titel: '1. Gegeben', formel: '\\text{XC4 + XF1},\\; \\varnothing = 12\\,\\text{mm}', erklaerung: 'XF1 stellt keine eigene Anforderung an die Betondeckung.' },
           { titel: '2. Mindestbetondeckung', formel: 'c_{min} = \\max\\{12;\\, 25;\\, 10\\} = 25\\,\\text{mm}', erklaerung: 'c_min,b = Stabdurchmesser; c_min,dur für XC4 = 25 mm.' },
           { titel: '3. Nennmaß', formel: 'c_{nom} = 25 + 15 = 40\\,\\text{mm}', erklaerung: 'Vorhaltemaß Δc_dev = 15 mm (Regelfall).' },
-          { titel: '4. Beton', formel: '(w/z)_{eq} \\le 0{,}60;\; \\ge \\text{C25/30};\; z \\ge 280\\,\\text{kg/m}^3', erklaerung: 'XC4 und XF1 fordern dieselben Grenzwerte.' },
+          { titel: '4. Beton', formel: '(w/z)_{eq} \\le 0{,}60;\\; \\ge \\text{C25/30};\\; z \\ge 280\\,\\text{kg/m}^3', erklaerung: 'XC4 und XF1 fordern dieselben Grenzwerte.' },
         ]}
         ergebnisHinweis="c_nom = 40 mm; Beton mindestens C25/30 mit (w/z)eq ≤ 0,60 und z ≥ 280 kg/m³."
       />

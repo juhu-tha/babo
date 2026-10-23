@@ -504,6 +504,10 @@ export default function Querkraftbemessung() {
         </div>
       </div>
       
+      <p className="text-[11px] text-text-main/60 leading-relaxed">
+        Vereinfachungen: Hebelarm z = 0,9·d (NA: z = max(d − 2c_v,l; d − c_v,l − 30 mm) ≤ 0,9·d). Nichtmetallische Bügel sind eine Lehrannahme;
+        maßgebend ist die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01).
+      </p>
       <CalculatorDisclaimerBanner className="my-2" />
     </div>
   );

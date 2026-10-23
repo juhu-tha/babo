@@ -506,11 +506,11 @@ export default function Biegebemessung() {
         zielGleichung="A_{s1} = \omega \cdot b \cdot d \cdot \frac{f_{cd}}{f_{yd}}, \quad \omega = 1 - \sqrt{1 - 2\mu_{Eds}}"
         normQuelle="DIN EN 1992-1-1 mit NA, 3.1.7 (Spannungsblock) und 6.1"
         schritte={[
-          { titel: '1. Gegeben', formel: 'b/h = 30/50\\,\\text{cm},\; d = 45\\,\\text{cm},\; M_{Ed} = 200\\,\\text{kNm},\; \\text{C30/37, B500}', erklaerung: 'Rechteckquerschnitt ohne Normalkraft.' },
-          { titel: '2. Bemessungswerte', formel: 'f_{cd} = 0{,}85 \\cdot 30/1{,}5 = 17{,}0\\,\\text{N/mm}^2;\; f_{yd} = 500/1{,}15 = 435\\,\\text{N/mm}^2', erklaerung: 'α_cc = 0,85 nach NA.' },
+          { titel: '1. Gegeben', formel: 'b/h = 30/50\\,\\text{cm},\\; d = 45\\,\\text{cm},\\; M_{Ed} = 200\\,\\text{kNm},\\; \\text{C30/37, B500}', erklaerung: 'Rechteckquerschnitt ohne Normalkraft.' },
+          { titel: '2. Bemessungswerte', formel: 'f_{cd} = 0{,}85 \\cdot 30/1{,}5 = 17{,}0\\,\\text{N/mm}^2;\\; f_{yd} = 500/1{,}15 = 435\\,\\text{N/mm}^2', erklaerung: 'α_cc = 0,85 nach NA.' },
           { titel: '3. Bezogenes Moment', formel: '\\mu_{Eds} = \\frac{0{,}200}{0{,}30 \\cdot 0{,}45^2 \\cdot 17{,}0} = 0{,}194 < 0{,}296', erklaerung: 'Keine Druckbewehrung erforderlich.' },
-          { titel: '4. Mechanischer Bewehrungsgrad', formel: '\\omega = 1 - \\sqrt{1 - 2 \\cdot 0{,}194} = 0{,}217;\; \\zeta = 1 - \\omega/2 = 0{,}891', erklaerung: 'Rechteckiger Spannungsblock (λ = 0,8).' },
-          { titel: '5. Bewehrung', formel: 'A_{s1} = 0{,}217 \\cdot 30 \\cdot 45 \\cdot \\frac{17{,}0}{435} = 11{,}5\\,\\text{cm}^2 \;>\; A_{s,min} = 1{,}8\\,\\text{cm}^2', erklaerung: 'A_s,min aus dem Rissmoment (f_ctm = 2,9 N/mm², z = 0,9d).' },
+          { titel: '4. Mechanischer Bewehrungsgrad', formel: '\\omega = 1 - \\sqrt{1 - 2 \\cdot 0{,}194} = 0{,}217;\\; \\zeta = 1 - \\omega/2 = 0{,}891', erklaerung: 'Rechteckiger Spannungsblock (λ = 0,8).' },
+          { titel: '5. Bewehrung', formel: 'A_{s1} = 0{,}217 \\cdot 30 \\cdot 45 \\cdot \\frac{17{,}0}{435} = 11{,}5\\,\\text{cm}^2 \\;>\\; A_{s,min} = 1{,}8\\,\\text{cm}^2', erklaerung: 'A_s,min aus dem Rissmoment (f_ctm = 2,9 N/mm², z = 0,9d).' },
         ]}
         ergebnisHinweis="A_s1 ≈ 11,5 cm², z. B. 6 Ø 16 (12,1 cm²)."
       />

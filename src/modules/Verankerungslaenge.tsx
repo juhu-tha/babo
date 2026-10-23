@@ -1,4 +1,5 @@
 import { formatDeZahl } from '@/src/utils/numberFormat';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -68,9 +69,9 @@ export default function Verankerungslaenge() {
     const a5 = beanspruchung === 'zug' ? alpha5 : 1.0;
     const a6 = berechnungsArt === 'uebergreifung' ? alpha6 : 1.0;
 
-    // Mindestens 0.7 für das Produkt (bei Verankerung) bzw. für (a2*a3*a5)
-    let alphaProduct = a1 * a2 * a3 * a5;
-    if (alphaProduct < 0.7) alphaProduct = 0.7;
+    // EC2 Gl. (8.5): α2 · α3 · α5 ≥ 0,7 (α1 geht unabhängig davon ein); NA-Regeln zu α2/α3: manuell prüfen
+    const a235 = Math.max(0.7, a2 * a3 * a5);
+    const alphaProduct = a1 * a235;
     
     // Für Übergreifung gilt: l0 = alpha1*alpha2*alpha3*alpha5*alpha6 * lbRqd
     const totalAlpha = alphaProduct * a6;
@@ -381,6 +382,17 @@ export default function Verankerungslaenge() {
         </div>
       </div>
 
+      <FormulaDerivationBox
+        title="Anwendungsbeispiel: Grundwert der Verankerungslänge (Ø 16, C30/37, guter Verbund)"
+        zielGleichung="l_{b,rqd} = \frac{\varnothing}{4} \cdot \frac{\sigma_{sd}}{f_{bd}}"
+        normQuelle="DIN EN 1992-1-1 mit NA, 8.4.2 und 8.4.3"
+        schritte={[
+          { titel: '1. Betonzugfestigkeit', formel: 'f_{ctk;0{,}05} = 0{,}7 \\cdot 0{,}30 \\cdot 30^{2/3} = 2{,}03\\,\\text{N/mm}^2;\\; f_{ctd} = 2{,}03/1{,}5 = 1{,}35\\,\\text{N/mm}^2', erklaerung: 'α_ct = 1,0 für die Verbundspannung.' },
+          { titel: '2. Verbundspannung', formel: 'f_{bd} = 2{,}25 \\cdot 1{,}0 \\cdot 1{,}0 \\cdot 1{,}35 = 3{,}0\\,\\text{N/mm}^2', erklaerung: 'Guter Verbund (η₁ = 1,0), Ø ≤ 32 mm (η₂ = 1,0).' },
+          { titel: '3. Grundwert', formel: 'l_{b,rqd} = \\frac{16}{4} \\cdot \\frac{435}{3{,}04} = 572\\,\\text{mm}', erklaerung: 'Volle Ausnutzung σ_sd = f_yd.' },
+        ]}
+        ergebnisHinweis="l_b,rqd ≈ 570 mm (≈ 36 Ø); l_bd folgt mit den Beiwerten α₁…α₅ und A_s,erf/A_s,vorh."
+      />
     </div>
   );
 }
