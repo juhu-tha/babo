@@ -300,8 +300,8 @@ export const TAB_DESCRIPTIONS: Record<string, string> = {
   // Fachbegriffe & Spezifische Vertiefungs-Tabs
   baustoffkunde: "Umfassendes Fachportal für Werkstoffkunde, Materialprüfungen und chemisch-physikalische Grundlagen im Bauingenieurwesen.",
   zwang: "Zwangspannungen und Verformungsbehinderungen im jungen und erhärteten Bauteil infolge Temperatur und Hydratation.",
-  eigenspannungen: "Eigenspannungszustände in Verbundwerkstoffen und metallischen Querschnitten durch ungleichmäßige Abkühlung oder Schweißen.",
-  kriechen: "Zeitabhängige Verformung unter Dauerlast (Kriechen & Schwinden) bei mineralischen und polymeren Baustoffen.",
+  eigenspannungen: "Eigenspannungen in massigen Betonbauteilen aus nichtlinearer Temperatur- und Schwindverteilung – Zerlegung in T_N, T_M und T_V, Rissrisiko in der Aufheizphase.",
+  kriechen: "Kriechen und Schwinden von Beton nach DIN EN 1992-1-1 (Anhang B), wirksamer E-Modul und Relaxation von Spannstahl.",
   bp_rechtliches: "Regelwerke, DIBt-Zulassungen, Europäische Technische Bewertungen (ETA) und AVCP-Systeme im Bauproduktenrecht.",
   bp_verkehrswegebau: "Baustoffe, Dimensionierungsverfahren nach RStO 12/24 und Qualitätsprüfungen im Verkehrswegebau und Tiefbau.",
   zfp: "Zerstörungsfreie Prüfverfahren (ZfP): Ultraschall, Bewehrungsortung, Rückprallhammer und thermografische Bauwerksdiagnose.",

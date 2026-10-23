@@ -15,6 +15,8 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
@@ -32,6 +34,34 @@ ChartJS.register(
   Legend
 );
 
+// Kriechen und Schwinden nach DIN EN 1992-1-1, 3.1.4 und Anhang B (gemeinsame Rechenbasis)
+export function ec2KriechenSchwinden(fck: number, rh: number, h0: number, t0T: number, ts: number, zement: string) {
+  const fcm = fck + 8;
+  const Ecm = 22000 * Math.pow(fcm / 10, 0.3);
+  const a1 = Math.pow(35 / fcm, 0.7), a2 = Math.pow(35 / fcm, 0.2), a3 = Math.pow(35 / fcm, 0.5);
+  const rhTerm = (1 - rh / 100) / (0.1 * Math.pow(h0, 1 / 3));
+  const phiRH = fcm <= 35 ? 1 + rhTerm : (1 + rhTerm * a1) * a2; // Gl. (B.3a/b)
+  const betaFcm = 16.8 / Math.sqrt(fcm);
+  // Einfluss der Zementart über das wirksame Belastungsalter, Gl. (B.9)
+  const alphaZ = zement === 'S' ? -1 : zement === 'R' ? 1 : 0;
+  const t0 = Math.max(0.5, t0T * Math.pow(9 / (2 + Math.pow(t0T, 1.2)) + 1, alphaZ));
+  const betaT0 = 1 / (0.1 + Math.pow(t0, 0.2));
+  const phi0 = phiRH * betaFcm * betaT0;
+  const betaH = fcm <= 35
+    ? Math.min(1.5 * (1 + Math.pow(0.012 * rh, 18)) * h0 + 250, 1500)
+    : Math.min(1.5 * (1 + Math.pow(0.012 * rh, 18)) * h0 + 250 * a3, 1500 * a3);
+  // Trocknungsschwinden, Gl. (B.11)/(B.12) und Tab. 3.3 (k_h)
+  const [ads1, ads2] = zement === 'S' ? [3, 0.13] : zement === 'R' ? [6, 0.11] : [4, 0.12];
+  const betaRH = 1.55 * (1 - Math.pow(rh / 100, 3));
+  const epsCd0 = 0.85 * (220 + 110 * ads1) * Math.exp(-ads2 * fcm / 10) * 1e-6 * betaRH;
+  const kh = h0 <= 100 ? 1.0 : h0 <= 200 ? 1.0 - 0.15 * (h0 - 100) / 100 : h0 <= 300 ? 0.85 - 0.10 * (h0 - 200) / 100 : h0 <= 500 ? 0.75 - 0.05 * (h0 - 300) / 200 : 0.70;
+  const epsCaInf = 2.5 * (fck - 10) * 1e-6; // Gl. (3.12)
+  const phi = (t: number) => (t <= t0T ? 0 : phi0 * Math.pow((t - t0T) / (betaH + t - t0T), 0.3));
+  const epsCd = (t: number) => (t <= ts ? 0 : ((t - ts) / ((t - ts) + 0.04 * Math.sqrt(Math.pow(h0, 3)))) * kh * epsCd0);
+  const epsCa = (t: number) => (1 - Math.exp(-0.2 * Math.sqrt(t))) * epsCaInf;
+  return { fcm, Ecm, phi0, betaH, kh, epsCd0, epsCaInf, t0eff: t0, phi, epsCd, epsCa };
+}
+
 export default function KriechenSchwinden() {
   // Eingebettet in Hydratation & Folgen: Quellenblock dort zentral
   const { activeTab: aktiverReiter } = useTabContext();
@@ -44,51 +74,23 @@ export default function KriechenSchwinden() {
   const [h0, setH0] = useState(200);
   const [t0, setT0] = useState(28);
   const [zementArt, setZementArt] = useState('N');
+  const [ts, setTs] = useState(7);
 
   // Stahl States
   const [sigmaRatio, setSigmaRatio] = useState(0.7);
   const [stahlKlasse, setStahlKlasse] = useState('2'); // 1: Draht, 2: Litze, 3: Stab
 
   const calculateBeton = () => {
-    const labels = [];
-    const creepData = [];
-    const shrinkageData = [];
-    const relaxationData = [];
+    const labels: number[] = [];
+    const creepData: number[] = [];
+    const shrinkageData: number[] = [];
+    const autogenData: number[] = [];
+    const totalShrinkData: number[] = [];
+    const relaxationData: number[] = [];
+    const m = ec2KriechenSchwinden(fck, rh, h0, t0, ts, zementArt);
 
-    const fcm = fck + 8;
-    const Ecm = 22000 * Math.pow(fcm / 10, 0.3); // in MPa
-    const alpha1 = Math.pow(35 / fcm, 0.7);
-    const alpha2 = Math.pow(35 / fcm, 0.2);
-    const alpha3 = Math.pow(35 / fcm, 0.5);
-
-    // DIN EN 1992-1-1 Anhang B, Gl. (B.3a) & (B.3b)
-    let phiRH = 1 + (1 - rh / 100) / (0.1 * Math.pow(h0, 1/3));
-    if (fcm > 35) {
-      phiRH = (1 + ((1 - rh / 100) / (0.1 * Math.pow(h0, 1/3))) * alpha1) * alpha2;
-    }
-
-    const betaFcm = 16.8 / Math.sqrt(fcm);
-    const betaT0 = 1 / (0.1 + Math.pow(t0, 0.2));
-    const phi0 = phiRH * betaFcm * betaT0;
-
-    // DIN EN 1992-1-1 Anhang B, Gl. (B.8a) & (B.8b)
-    const betaH = fcm > 35
-      ? Math.min(1.5 * (1 + Math.pow(0.012 * rh, 18)) * h0 + 250 * alpha3, 1500 * alpha3)
-      : Math.min(1.5 * (1 + Math.pow(0.012 * rh, 18)) * h0 + 250, 1500);
-
-    // Trocknungsschwund-Koeffizienten nach DIN EN 1992-1-1 Anhang B, Tabelle B.2
-    let alphaDs1 = 4.0;
-    let alphaDs2 = 0.12;
-    if (zementArt === 'S') {
-      alphaDs1 = 3.0;
-      alphaDs2 = 0.13;
-    } else if (zementArt === 'R') {
-      alphaDs1 = 6.0;
-      alphaDs2 = 0.11;
-    }
-
-    const timePoints = [];
-    let currentT = t0;
+    const timePoints: number[] = [];
+    let currentT = 1;
     while (currentT <= 10000) {
       timePoints.push(currentT);
       if (currentT < 10) currentT += 1;
@@ -100,26 +102,17 @@ export default function KriechenSchwinden() {
 
     for (const t of timePoints) {
       labels.push(t);
-      
-      // Creep
-      const betaCT = Math.pow((t - t0) / (betaH + t - t0), 0.3);
-      const phiT = phi0 * betaCT;
+      const phiT = m.phi(t);
       creepData.push(phiT);
-
-      // Shrinkage (drying shrinkage nach DIN EN 1992-1-1 Anhang B, Gl. B.11 & B.12)
-      const betaDS = (t - t0) / ((t - t0) + 0.04 * Math.sqrt(Math.pow(h0, 3)));
-      const betaRH = 1.55 * (1 - Math.pow(rh / 100, 3));
-      const epsCd0 = 0.85 * (220 + 110 * alphaDs1) * Math.exp(-alphaDs2 * (fcm / 10)) * 1e-6 * betaRH;
-      const epsCd = epsCd0 * betaDS;
-      shrinkageData.push(epsCd * 1e6); // in microstrain
-
-      // Relaxation (simplified effective modulus approach)
-      // R(t, t0) = Ecm / (1 + phi(t, t0))
-      const relaxationModulus = Ecm / (1 + phiT);
-      relaxationData.push(relaxationModulus);
+      const cd = m.epsCd(t), ca = m.epsCa(t);
+      shrinkageData.push(cd * 1e6);
+      autogenData.push(ca * 1e6);
+      totalShrinkData.push((cd + ca) * 1e6);
+      // wirksamer E-Modul E_c,eff = E_cm / (1 + phi), DIN EN 1992-1-1 Gl. (7.20)
+      relaxationData.push(t < t0 ? m.Ecm : m.Ecm / (1 + phiT));
     }
 
-    return { labels, creepData, shrinkageData, relaxationData, Ecm };
+    return { labels, creepData, shrinkageData, autogenData, totalShrinkData, relaxationData, Ecm: m.Ecm, m };
   };
 
   const calculateStahl = () => {
@@ -161,7 +154,7 @@ export default function KriechenSchwinden() {
   };
 
   const renderBeton = () => {
-    const { labels, creepData, shrinkageData, relaxationData, Ecm } = calculateBeton();
+    const { labels, creepData, shrinkageData, autogenData, totalShrinkData, relaxationData, Ecm, m } = calculateBeton();
 
     return (
       <>
@@ -203,10 +196,16 @@ export default function KriechenSchwinden() {
               onChange={(e) => setT0(Number(e.target.value))}
             />
 
+            <Slider info="Ende der Nachbehandlung = Beginn des Trocknungsschwindens t_s (DIN EN 1992-1-1, 3.1.4)."
+              label={<FormulaText text="Trocknungsbeginn (t_s)" />}
+              min={1} max={28} step={1}
+              value={ts} unit="Tage"
+              onChange={(e) => setTs(Number(e.target.value))}
+            />
+
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementklasse</label><InfoTooltip text="Klassifizierung der Festigkeitsentwicklung des Zements." /></div>
-                <InfoTooltip text="S: langsam erhärtend, N: normal erhärtend, R: schnell erhärtend." />
+                <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Zementklasse</label><InfoTooltip text="S: langsam, N: normal, R: schnell erhärtend. Wirkt beim Kriechen über das wirksame Belastungsalter (Gl. B.9) und beim Trocknungsschwinden über α_ds1/α_ds2." /></div>
               </div>
               <select aria-label="Zementklasse" 
                 className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz"
@@ -221,6 +220,12 @@ export default function KriechenSchwinden() {
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">φ(10 000 d, t₀)</span><strong className="font-mono text-shiraz text-base">{formatDeZahl(creepData[creepData.length - 1], 2)}</strong></div>
+              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">ε_cd (10 000 d)</span><strong className="font-mono text-base">{formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m</strong></div>
+              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">ε_ca,∞</span><strong className="font-mono text-base">{formatDeZahl(m.epsCaInf * 1e6, 0)} µm/m</strong></div>
+              <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block">k_h · ε_cd,0</span><strong className="font-mono text-base">{formatDeZahl(m.kh, 2)} · {formatDeZahl(m.epsCd0 * 1e6, 0)}</strong></div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
                 <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Kriechzahl \varphi(t, t_0)" /></h2>
@@ -240,7 +245,7 @@ export default function KriechenSchwinden() {
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: { type: 'logarithmic', title: { display: true, text: 'Zeit t (Tage)' }, min: Math.max(1, t0) },
+                        x: { type: 'logarithmic', title: { display: true, text: 'Betonalter t (Tage)' }, min: 1 },
                         y: { min: 0, title: { display: true, text: 'Kriechzahl φ' } }
                       },
                       plugins: { legend: { display: false } }
@@ -250,29 +255,25 @@ export default function KriechenSchwinden() {
               </div>
 
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
-                <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Trocknungsschwinden ε_{cd}(t)" /></h2>
+                <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Schwinden ε_{cs} = ε_{cd} + ε_{ca}" /></h2>
                 <div className="flex-1 relative w-full h-full">
                   <Line 
                     data={{
                       labels,
                       datasets: [
-                        {
-                          label: 'Trocknungsschwinden εcd',
-                          data: shrinkageData,
-                          borderColor: '#0e558c',
-                          borderWidth: 2,
-                          pointRadius: 0,
-                        }
+                        { label: 'Trocknungsschwinden εcd', data: shrinkageData, borderColor: '#0e558c', borderWidth: 2, pointRadius: 0 },
+                        { label: 'Autogenes Schwinden εca', data: autogenData, borderColor: '#a855f7', borderWidth: 2, pointRadius: 0, borderDash: [4, 3] },
+                        { label: 'Gesamtschwinden εcs', data: totalShrinkData, borderColor: '#0f172a', borderWidth: 2.5, pointRadius: 0 }
                       ]
                     }} 
                     options={{
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: { type: 'logarithmic', title: { display: true, text: 'Zeit t (Tage)' }, min: Math.max(1, t0) },
+                        x: { type: 'logarithmic', title: { display: true, text: 'Betonalter t (Tage)' }, min: 1 },
                         y: { min: 0, title: { display: true, text: 'Schwinddehnung (μm/m)' } }
                       },
-                      plugins: { legend: { display: false } }
+                      plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }
                     }} 
                   />
                 </div>
@@ -280,13 +281,13 @@ export default function KriechenSchwinden() {
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
-              <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Relaxationsmodul R(t, t_0)" /></h2>
+              <h2 className="text-lg font-bold text-text-main mb-2"><FormulaText text="Wirksamer E-Modul E_{c,eff}(t, t_0)" /></h2>
               <div className="flex-1 relative w-full h-full">
                 <Line 
                   data={{
                     labels,
                     datasets: [{
-                      label: 'Relaxationsmodul R(t, t0)',
+                      label: 'Wirksamer E-Modul Ec,eff',
                       data: relaxationData,
                       borderColor: '#10b981',
                       borderWidth: 2,
@@ -297,7 +298,7 @@ export default function KriechenSchwinden() {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                      x: { type: 'logarithmic', title: { display: true, text: 'Zeit t (Tage)' }, min: Math.max(1, t0) },
+                      x: { type: 'logarithmic', title: { display: true, text: 'Betonalter t (Tage)' }, min: 1 },
                       y: { min: 0, max: Ecm * 1.1, title: { display: true, text: 'Modul R (MPa)' } }
                     },
                     plugins: { legend: { display: false } }
@@ -305,7 +306,7 @@ export default function KriechenSchwinden() {
                 />
               </div>
               <p className="text-xs text-text-main/70 mt-2">
-                Das Relaxationsmodul beschreibt den Spannungsabfall unter konstanter Dehnung, angenähert durch <FormulaText text="R(t, t_0) \approx E_{cm} / (1 + \varphi(t, t_0))" />.
+                Für Verformungen unter Dauerlast wird nach DIN EN 1992-1-1, Gl. (7.20) der wirksame E-Modul <FormulaText text="E_{c,eff} = E_{cm} / (1 + \varphi(t, t_0))" /> angesetzt. Für Zwangsspannungen (Relaxation) ist das eine grobe Näherung; genauer ist <FormulaText text="E_{cm} / (1 + \rho \varphi)" /> mit dem Relaxationsbeiwert ρ ≈ 0,8 (Trost).
               </p>
             </div>
 
@@ -379,7 +380,7 @@ export default function KriechenSchwinden() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
             Unter Schwinden versteht man die volumenmindernde zeitabhängige Verformung von unbelastetem Beton. 
-                In der betontechnologischen Praxis unterscheidet die Fachliteratur fünf grundlegende Schwindprozesse:
+                Die Fachliteratur unterscheidet meist fünf Schwindarten; DIN EN 1992-1-1 erfasst rechnerisch das Trocknungs- und das autogene Schwinden:
           </p>
         </div>
 
@@ -391,10 +392,10 @@ export default function KriechenSchwinden() {
                     <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-mono text-[9px] font-bold">Stadium: Frischbeton</span>
                   </div>
                   <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Tritt unmittelbar in den ersten Stunden auf, wenn Wasser an der freien Bauteiloberfläche schneller verdunstet, als kapillares Wasser aus tieferen Schichten nachfließen kann (Bluten). Der entstehende kapillare Unterzug zieht die weiche Zementmatrix zusammen.
+                    <strong>Ursache:</strong> Tritt in den ersten Stunden auf, wenn an der freien Oberfläche mehr Wasser verdunstet, als durch Bluten nachgeliefert wird. Der kapillare Unterdruck in den Menisken zieht den noch plastischen Beton zusammen (Gefahr von Frühschwindrissen).
                   </p>
                   <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Sofortiges Auflegen von feuchten Vliesen oder Folien, Aufsprühen von Nachbehandlungsmitteln (Curing) direkt nach dem Abziehen, Windschutz errichten.
+                    <strong>Gegenmaßnahme:</strong> Frühzeitige Nachbehandlung: Abdecken mit Folie oder feuchten Vliesen, Nachbehandlungsmittel unmittelbar nach dem Abziehen, Schutz vor Wind und Sonne.
                   </p>
                 </div>
 
@@ -405,10 +406,10 @@ export default function KriechenSchwinden() {
                     <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-mono text-[9px] font-bold">Stadium: Erste Tage/Wochen</span>
                   </div>
                   <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Chemische Selbstaustrocknung im Inneren dichter Gefüge. Da die Hydratation Wasser verbraucht und bei niedrigen w/z-Werten (&lt; 0,40) kein freies Außenwasser nachdiffundieren kann, saugen sich die feinen Kapillarporen leer. Der immense Meniskus-Sog schrumpft das Zementsteinskelett.
+                    <strong>Ursache:</strong> Selbstaustrocknung: Die Hydratation verbraucht Wasser; bei niedrigen w/z-Werten (etwa &lt; 0,40) entleeren sich die feinen Poren, ohne dass Wasser von außen nachkommt. Der Kapillarunterdruck verkürzt den Zementstein. Nach DIN EN 1992-1-1 gilt ε_ca,∞ = 2,5 · (f_ck − 10) · 10⁻⁶.
                   </p>
                   <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Internes Curing durch Einmischen von wassergesättigtem Blähtonfeinsand oder Superabsorbern (SAP), Verwendung von flüssigen Festigkeitsbildnern / Schwindreduzierern (SRA).
+                    <strong>Gegenmaßnahme:</strong> Innere Nachbehandlung mit wassergesättigter leichter Gesteinskörnung oder Superabsorbern (SAP); schwindreduzierende Zusatzmittel (SRA).
                   </p>
                 </div>
 
@@ -419,24 +420,24 @@ export default function KriechenSchwinden() {
                     <span className="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 font-mono text-[9px] font-bold">Stadium: Langzeit (Jahre)</span>
                   </div>
                   <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Der langsame Ausgleich des physikalisch gebundenen Adsorptionswassers mit der trockenen Außenluft. Es ist die ausgeprägteste Schwindart im Hochbau, gesteuert durch die relative Luftfeuchtigkeit (RH) und die Austauschfläche des Betonquerschnitts h<sub>0</sub>.
+                    <strong>Ursache:</strong> Langsame Abgabe von Kapillar- und Gelwasser an die Umgebung. Bei Normalbeton meist der größte Schwindanteil; maßgebend sind die relative Luftfeuchte (RH), die wirksame Bauteildicke h<sub>0</sub> und der Zementsteingehalt.
                   </p>
                   <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Reduktion des Zementsteingehalts (Gesteinskörnungsanteil maximieren), Einsatz schwindarmer Zemente, längere Feuchthaltung zur Gefüge-Verdichtung.
+                    <strong>Gegenmaßnahme:</strong> Geringer Zementleim- und Wassergehalt (hoher Gesteinskörnungsanteil), ausreichende Nachbehandlung, Bewehrung bzw. Fugen zur Rissverteilung.
                   </p>
                 </div>
 
                 {/* 4. Chemische Schrumpfung */}
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl text-xs space-y-1">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-slate-900 text-sm">4. Chemische Schrumpfung (Hydratationsunterdruck)</span>
+                    <span className="font-bold text-slate-900 text-sm">4. Chemisches Schwinden (Schrumpfen)</span>
                     <span className="px-2 py-0.5 rounded bg-teal-100 text-teal-800 font-mono text-[9px] font-bold">Stadium: Permanent aktiv</span>
                   </div>
                   <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Rein atomares thermodynamisches Phänomen. Die Reaktionsprodukte (C-S-H-Phasen) weisen ein geringeres Eigennutzvolumen auf als die Summe der Ausgangsstoffe (Klinker + Anmachwasser). Es entsteht ein inneres Volumendefizit von ca. 25% des umgesetzten Wassers, das als Mikroporen vakuumartig verbleibt.
+                    <strong>Ursache:</strong> Die Hydratationsprodukte nehmen weniger Volumen ein als Zement und Wasser vor der Reaktion (Le-Chatelier-Kontraktion, rund 25 % des chemisch gebundenen Wassers – Größenordnung). Nach dem Erstarren äußert sich die Kontraktion vor allem als zusätzlicher Porenraum; die äußere Verkürzung zeigt sich als autogenes Schwinden.
                   </p>
                   <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Thermodynamisch unvermeidbar. Wird betontechnologisch durch ein dichtes Primärgefüge und abgestimmtes Flugasche-Verhältnis kompensiert.
+                    <strong>Gegenmaßnahme:</strong> Nicht vermeidbar; die äußere Auswirkung wird über die Maßnahmen gegen autogenes Schwinden begrenzt.
                   </p>
                 </div>
 
@@ -447,10 +448,10 @@ export default function KriechenSchwinden() {
                     <span className="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-mono text-[9px] font-bold">Stadium: Langzeit (Jahrzehnte)</span>
                   </div>
                   <p className="text-slate-600 leading-relaxed text-[11px] pt-1">
-                    <strong>Ursache:</strong> Chemische Umwandlung des alkalischen Calciumhydroxids Ca(OH)<sub>2</sub> durch eindiffundierendes Kohlenstoffdioxid CO<sub>2</sub> aus der Raumluft zu festem Calciumcarbonat CaCO<sub>3</sub>. Durch diesen mineralischen Kristallumbau schrumpft die Matrix um ein geringes Maß, zudem wird Wasser freigesetzt.
+                    <strong>Ursache:</strong> Chemische Umwandlung des alkalischen Calciumhydroxids Ca(OH)<sub>2</sub> durch eindiffundierendes Kohlenstoffdioxid CO<sub>2</sub> aus der Luft zu Calciumcarbonat CaCO<sub>3</sub>; dabei wird Wasser frei. Der Umbau der Hydratphasen verursacht eine geringe zusätzliche Verkürzung in der karbonatisierten Randzone.
                   </p>
                   <p className="text-[10px] text-emerald-800 leading-relaxed pt-1 font-sans">
-                    <strong>Gegenmaßnahme:</strong> Sehr dichter Beton zur Verlangsamung der Diffusionsgeschwindigkeit, Reduktion von Oberflächenrissen.
+                    <strong>Gegenmaßnahme:</strong> Dichter Beton (niedriger w/z-Wert, gute Nachbehandlung) verlangsamt die Karbonatisierung.
                   </p>
                 </div>
               </div>
@@ -458,6 +459,24 @@ export default function KriechenSchwinden() {
           </div>
         </div>
         
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 mt-6">
+          <FormulaDerivationBox
+            title="Anwendungsbeispiel: Endkriechzahl und Endschwindmaß einer Innenwand C30/37"
+            zielGleichung="\varphi_0 = \varphi_{RH} \cdot \beta(f_{cm}) \cdot \beta(t_0), \quad \varepsilon_{cs,\infty} = k_h \cdot \varepsilon_{cd,0} + \varepsilon_{ca,\infty}"
+            normQuelle="DIN EN 1992-1-1, 3.1.4 und Anhang B"
+            schritte={[
+              { titel: '1. Gegeben', formel: 'f_{ck} = 30,\\; f_{cm} = 38\\,\\text{N/mm}^2,\\; RH = 50\\,\\%,\\; h_0 = 200\\,\\text{mm},\\; t_0 = 28\\,\\text{d, Zement N}', erklaerung: 'Innenbauteil, Belastung nach 28 Tagen.' },
+              { titel: '2. Feuchte und Dicke', formel: '\\varphi_{RH} = \\left[1 + \\frac{1 - 0{,}50}{0{,}1 \\cdot \\sqrt[3]{200}} \\cdot 0{,}944\\right] \\cdot 0{,}984 = 1{,}78', erklaerung: 'Wegen f_cm > 35 N/mm² mit α₁ = (35/38)^0,7 und α₂ = (35/38)^0,2.' },
+              { titel: '3. Festigkeit und Belastungsalter', formel: '\\beta(f_{cm}) = \\frac{16{,}8}{\\sqrt{38}} = 2{,}73;\\; \\beta(t_0) = \\frac{1}{0{,}1 + 28^{0{,}2}} = 0{,}49', erklaerung: 'Spätere Belastung verringert das Kriechen deutlich.' },
+              { titel: '4. Endkriechzahl', formel: '\\varphi_0 = 1{,}78 \\cdot 2{,}73 \\cdot 0{,}49 \\approx 2{,}37', erklaerung: 'Stimmt mit dem Nomogramm in DIN EN 1992-1-1, Bild 3.1 überein (≈ 2,3).' },
+              { titel: '5. Endschwindmaß', formel: '\\varepsilon_{cd,0} = 482\\,\\mu\\text{m/m};\\; k_h = 0{,}85 \\Rightarrow 410 + \\underbrace{2{,}5 \\cdot 20}_{\\varepsilon_{ca,\\infty}} = 460\\,\\mu\\text{m/m}', erklaerung: 'Trocknungsschwinden überwiegt; autogenes Schwinden rund 50 µm/m.' },
+            ]}
+            ergebnisHinweis="Eine Stütze unter σ_c = 8,5 N/mm² verkürzt sich damit langfristig um etwa ε_el · (1 + φ) + ε_cs ≈ 0,26 · 3,37 + 0,46 ≈ 1,3 ‰ – rund das Fünffache der elastischen Stauchung."
+          />
+        </div>
+
+        <ModulTest moduleId="kriechen_schwinden" />
+
         {!eingebettet && (
 <ModuleFooter weblinks={[{ title: "Beton.wiki: Kriechen", url: "https://beton.wiki/index.php?title=Kriechen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, { title: "Beton.wiki: Schwinden", url: "https://beton.wiki/index.php?title=Schwinden" }]} 
           wikipedia={[
@@ -465,28 +484,28 @@ export default function KriechenSchwinden() {
                 { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
               ]}
               regelwerke={[
-            'DIN EN 1992-1-1 (Eurocode 2): Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken',
-            'fib Model Code 2010'
+            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B' },
+            { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
           ]}
           literatur={[
-            'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)',
-            'Grasser, E. et al.: Bemessung von Betonbauten (2001)'
+            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
+            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Ausgabe manuell prüfen)'
           ]}
           formeln={[
             {
               formel: '\\varphi (t, t_0) = \\varphi _0 \\cdot  \\beta _c(t, t_0)',
               erklaerung: 'Kriechzahl\n\\varphi (t, t_0): Kriechzahl zum Zeitpunkt t bei Belastungsalter t_0 [-]\n\\beta _c(t, t_0): Beiwert für den zeitlichen Verlauf des Kriechens [-]\n\\varphi _0: Nennkriechzahl [-]',
-              quelle: 'Zilch, K., Zehetmaier, G.: Bemessung im Konstrukti...'
+              quelle: 'DIN EN 1992-1-1, 3.1.4 / Anhang B'
             },
             {
               formel: '\\varepsilon _{cs} = \\varepsilon _{cd} + \\varepsilon _{ca}',
               erklaerung: 'Gesamtschwinddehnung\n\\varepsilon _{cs}: Gesamtschwinddehnung [-]\n\\varepsilon _{cd}: Trocknungsschwinddehnung [-]\n\\varepsilon _{ca}: Autogene Schwinddehnung [-]',
-              quelle: 'Zilch, K., Zehetmaier, G.: Bemessung im Konstrukti...'
+              quelle: 'DIN EN 1992-1-1, 3.1.4 / Anhang B'
             },
             {
-              formel: 'R(t, t_0) \\approx  \\frac{E_{cm}}{1 + \\varphi (t, t_0)}',
-              erklaerung: 'Relaxationsmodul (vereinfacht)\nR(t, t_0): Relaxationsmodul (effektiver E-Modul) [MPa]\nE_{cm}: Sekantenmodul der Elastizität des Betons [MPa]\n\\varphi (t, t_0): Kriechzahl [-]',
-              quelle: 'Zilch, K., Zehetmaier, G.: Bemessung im Konstrukti...'
+              formel: 'E_{c,eff} = \\frac{E_{cm}}{1 + \\varphi (t, t_0)}',
+              erklaerung: 'Wirksamer E-Modul unter Dauerlast (Gl. 7.20)\nE_{c,eff}: wirksamer E-Modul [MPa]\nE_{cm}: Sekantenmodul der Elastizität des Betons [MPa]\n\\varphi (t, t_0): Kriechzahl [-]',
+              quelle: 'DIN EN 1992-1-1, 3.1.4 / Anhang B'
             }
           ]}
         />
@@ -506,7 +525,7 @@ export default function KriechenSchwinden() {
             
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                Kriechen und Schwinden spielen bei normalem Baustahl keine Rolle (bei Raumtemperatur). 
+                Kriechen und Schwinden spielen bei Betonstahl und Baustahl bei Raumtemperatur praktisch keine Rolle. 
                 Bei <strong>Spannstahl</strong> ist jedoch die <strong>Relaxation</strong> (Spannungsverlust bei konstanter Dehnung) von großer Bedeutung.
               </p>
             </div>
@@ -578,16 +597,18 @@ export default function KriechenSchwinden() {
                 { title: 'Schwinden (Beton)', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
               ]}
               regelwerke={[
-            'DIN EN 1992-1-1 (Eurocode 2): Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken'
+            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B' },
+            { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
           ]}
           literatur={[
-            'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (2010)'
+            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
+            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Ausgabe manuell prüfen)'
           ]}
           formeln={[
             {
               formel: '\\frac{\\Delta \\sigma _{pr}}{\\sigma _{pi}} = k_1 \\cdot  \\rho _{1000} \\cdot  e^{k_2 \\cdot  \\mu } \\cdot  \\left(\\frac{t}{1000}\\right)^{0{,}75 \\cdot  (1-\\mu )} \\cdot  10^{-5}',
-              erklaerung: 'Spannungsverlust durch Relaxation\n\\Delta\\sigma_{pr}: Spannungsverlust durch Relaxation [MPa]\n\\sigma_{pi}: Anfängliche Vorspannung [MPa]\n\\rho_{1000}: Relaxationsverlust nach 1000h in % (Klasse 1: 8.0, Klasse 2: 2.5, Klasse 3: 4.0)\n\\mu: Spannungsniveau (\\sigma_{pi} / f_{pk}) [-]\nt: Zeit [Stunden]\nk_1, k_2: Beiwerte nach Klasse (Kl. 1: 5.39, 6.7 | Kl. 2: 0.66, 9.1 | Kl. 3: 1.98, 8.0)\nQuelle: DIN EN 1992-1-1 (EC2)',
-              quelle: 'Zilch, K., Zehetmaier, G.: Bemessung im Konstrukti...'
+              erklaerung: 'Spannungsverlust durch Relaxation\n\\Delta\\sigma_{pr}: Spannungsverlust durch Relaxation [MPa]\n\\sigma_{pi}: Anfängliche Vorspannung [MPa]\n\\rho_{1000}: Relaxationsverlust nach 1000h in % (Klasse 1: 8,0; Klasse 2: 2,5; Klasse 3: 4,0)\n\\mu: Spannungsniveau (\\sigma_{pi} / f_{pk}) [-]\nt: Zeit [Stunden]\nk_1, k_2: Beiwerte nach Klasse (Kl. 1: 5,39 / 6,7; Kl. 2: 0,66 / 9,1; Kl. 3: 1,98 / 8,0)\nQuelle: DIN EN 1992-1-1 (EC2)',
+              quelle: 'DIN EN 1992-1-1, 3.3.2, Gl. (3.28)–(3.30)'
             }
           ]}
         />
@@ -607,37 +628,19 @@ export default function KriechenSchwinden() {
       { label: '50 Jahre (18250 d)', days: 18250 },
     ];
 
-    const fcm = fck + 8;
-    const Ecm = 22000 * Math.pow(fcm / 10, 0.3); // in MPa
-    const alpha1 = Math.pow(35 / fcm, 0.7);
-    const alpha2 = Math.pow(35 / fcm, 0.2);
-    const alpha3 = Math.pow(35 / fcm, 0.5);
+    const m = ec2KriechenSchwinden(fck, rh, h0, t0, ts, zementArt);
+    const Ecm = m.Ecm;
 
-    let phiRH = 1 + ((1 - rh / 100) / (0.1 * Math.pow(h0, 1/3))) * alpha1;
-    if (fcm > 35) {
-      phiRH = (1 + ((1 - rh / 100) / (0.1 * Math.pow(h0, 1/3))) * alpha1) * alpha2;
-    }
-    const betaFcm = 16.8 / Math.sqrt(fcm);
-    const betaT0 = 1 / (0.1 + Math.pow(t0, 0.2));
-    const phi0 = phiRH * betaFcm * betaT0;
-    const betaH = Math.min(1.5 * (1 + Math.pow(0.012 * rh, 18)) * h0 + 250 * alpha3, 1500 * alpha3);
-
-    const sigmaC = 8.5; // MPa Dauerlastspannung
+    const sigmaC = 8.5; // MPa Dauerlastspannung (Lehrannahme)
     const L0_mm = 3000; // 3 m Stützenhöhe
 
     const calcStateAt = (days: number) => {
-      const dt = Math.max(0.01, days - t0);
-      const betaCT = Math.pow(dt / (betaH + dt), 0.3);
-      const phiT = phi0 * betaCT;
-
-      // Shrinkage
-      const betaDS = dt / (dt + 0.04 * Math.sqrt(Math.pow(h0, 3)));
-      const epsCd0 = 0.85 * (220 + 110 * alpha1) * Math.exp(-alpha2 * fcm / 10) * 1e-6 * 1.55 * (1 - Math.pow(rh/100, 3));
-      const epsCd = epsCd0 * betaDS;
+      const phiT = m.phi(Math.max(days, t0 + 0.01));
+      const epsCd = m.epsCd(days) + m.epsCa(days);
 
       const epsEl = (sigmaC / Ecm);
       const epsCr = phiT * epsEl;
-      const epsCs = epsCd;
+      const epsCs = epsCd; // Trocknungs- + autogenes Schwinden
       const epsTot = epsEl + epsCr + epsCs;
 
       const dL_el = epsEl * L0_mm;
@@ -658,7 +661,7 @@ export default function KriechenSchwinden() {
             lässt sich physikalisch als Kombination aus einer rein elastischen Hooke’schen Feder (<InlineMath math="E_1" />) und einem 
             viskoelastischen Kelvin-Voigt-Körper (Feder <InlineMath math="E_2" /> parallel zu einem viskosen Newton-Dämpfer <InlineMath math="\eta" />) 
             beschreiben. Unter konstanter Last verlagert sich die Spannung allmählich vom Dämpfer auf die Feder. 
-            Gleichzeitig bewirkt das lastunabhängige Trocknungsschwinden eine zusätzliche Stauchung.
+            Gleichzeitig bewirkt das lastunabhängige Schwinden eine zusätzliche Stauchung. Das Federmodell veranschaulicht das Verhalten qualitativ; gerechnet wird mit den Ansätzen nach DIN EN 1992-1-1, Anhang B. Linearität des Kriechens setzt σ_c ≤ 0,45 · f_ck voraus – bei f_ck &lt; 19 MPa ist das mit 8,5 MPa nicht mehr erfüllt.
           </p>
         </div>
 
@@ -724,7 +727,7 @@ export default function KriechenSchwinden() {
                   </div>
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
                     <span className="text-text-main/60 block">Dauerlast σc:</span>
-                    <strong className="font-mono text-text-main">8,5 MPa (C30/37)</strong>
+                    <strong className="font-mono text-text-main">8,5 MPa (Lehrannahme)</strong>
                   </div>
                   <div className="bg-off-white p-2 rounded-lg border border-home-grau/20">
                     <span className="text-text-main/60 block">E-Modul Ecm:</span>
@@ -948,7 +951,7 @@ export default function KriechenSchwinden() {
                           Schwindprisma
                         </text>
                         <text x="30" y="318" fill="#c084fc" fontSize="9" textAnchor="middle">
-                          (Reines Trocknen)
+                          (Trocknungs- + autogenes Schwinden)
                         </text>
                       </g>
                     );
@@ -958,7 +961,7 @@ export default function KriechenSchwinden() {
 
               {/* Formula & Mechanistic Footer */}
               <div className="mt-3 p-3 bg-off-white rounded-xl border border-home-grau/25 text-xs text-text-main/80 space-y-1">
-                <span className="font-bold text-text-main block">Superpositionsprinzip der Gesamtverformung nach EC2:</span>
+                <span className="font-bold text-text-main block">Überlagerung der Verformungsanteile (DIN EN 1992-1-1, 3.1.4):</span>
                 <div className="overflow-x-auto py-0.5">
                   <InlineMath math="\varepsilon_{\text{tot}}(t) = \varepsilon_{\text{el}} + \varepsilon_{\text{cr}}(t, t_0) + \varepsilon_{\text{cs}}(t) = \frac{\sigma_c}{E_{\text{cm}}} \cdot \left[1 + \varphi(t, t_0)\right] + \varepsilon_{\text{cs}}(t)" />
                 </div>
@@ -976,17 +979,17 @@ export default function KriechenSchwinden() {
             { title: 'Kelvin-Voigt-Modell', url: 'https://de.wikipedia.org/wiki/Kelvin-Voigt-Modell' }
           ]}
           regelwerke={[
-            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)' },
+            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 3.1.4, 3.3.2 und Anhang B' },
             { title: 'fib Model Code for Concrete Structures 2010', url: 'https://www.fib-international.org/' }
           ]}
           literatur={[
-            'Zilch, K., Zehetmaier, G.: Bemessung im Konstruktiven Betonbau (Springer Vieweg 2010)',
-            'Grasser, E. et al.: Bemessung von Betonbauten nach EC2 (2001)'
+            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin, Heidelberg: Springer 2010',
+            'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Ausgabe manuell prüfen)'
           ]}
           formeln={[
             {
               formel: '\\varepsilon_{\\text{tot}}(t) = \\frac{\\sigma_c}{E_{\\text{cm}}} \\cdot [1 + \\varphi(t, t_0)] + \\varepsilon_{\\text{cs}}(t)',
-              erklaerung: 'Gesamtverformung eines druckbeanspruchten Bauteils infolge sofortiger elastischer Dehnung, zeitverzögertem Kriechen und Trocknungsschwinden.',
+              erklaerung: 'Gesamtdehnung eines druckbeanspruchten Bauteils aus elastischer Dehnung, Kriechen und Schwinden (vereinfachend mit E_cm statt E_c = 1,05 E_cm).',
               quelle: 'DIN EN 1992-1-1 Abs. 3.1.4'
             }
           ]}

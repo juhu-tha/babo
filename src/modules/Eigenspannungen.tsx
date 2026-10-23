@@ -4,6 +4,8 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Box, Info } from 'lucide-react';
@@ -196,7 +198,7 @@ export default function Eigenspannungen() {
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
             <p>
-              Bei massigen Betonbauteilen entsteht durch die Hydratation des Zements Wärme. Der Kern dehnt sich aus, während die Ränder kühler bleiben. In der <strong>Aufheizphase</strong> entstehen dadurch <strong>Zugeigenspannungen an den Rändern</strong> (Gefahr von Oberflächenrissen) und Druckspannungen im Kern. (Hinweis: In der späteren Abkühlphase entstehen bei äußerem Zwang Trennrisse, siehe Modul Zwang).
+              Bei massigen Betonbauteilen entsteht durch die Hydratation des Zements Wärme. Der Kern dehnt sich aus, während die Ränder kühler bleiben. In der <strong>Aufheizphase</strong> entstehen dadurch <strong>Zugeigenspannungen an den Rändern</strong> (Gefahr von Oberflächenrissen) und Druckspannungen im Kern. In der Abkühlphase kehrt sich das Bild um; bei äußerer Behinderung drohen dann Trennrisse (siehe Reiter „Zwang &amp; Risse“).
             </p>
         </div>
 
@@ -291,7 +293,7 @@ export default function Eigenspannungen() {
       {/* New section for Gleichgewicht der Eigenspannungen */}
       <div className="bg-blue-50 p-6 rounded-2xl border border-blue-200">
         <h3 className="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
-          <Info size={20} /> Gleichgewicht der Eigenspannungen (M, N, V)
+          <Info size={20} /> Gleichgewicht der Eigenspannungen (N = 0, M = 0)
         </h3>
         <p className="text-sm text-blue-800 mb-6">
           Eigenspannungen sind innere Spannungen, die <strong>ohne das Einwirken äußerer Kräfte</strong> im Bauteil bestehen. Daher müssen sie sich selbst im Gleichgewicht befinden. Das bedeutet für die resultierenden Schnittgrößen:
@@ -309,9 +311,9 @@ export default function Eigenspannungen() {
             <div className="text-xs text-blue-600">Die Spannungen erzeugen kein resultierendes Moment um die Schwerachse.</div>
           </div>
           <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm text-center">
-            <div className="font-bold text-blue-900 mb-2">Querkraft (V) = 0</div>
-            <div className="text-sm text-blue-700 mb-2"><FormulaText text="V = \int \tau_{res} dA = 0" /></div>
-            <div className="text-xs text-blue-600">In der ungestörten Längsrichtung treten keine resultierenden Schubspannungen auf.</div>
+            <div className="font-bold text-blue-900 mb-2">Bezeichnung „V“</div>
+            <div className="text-sm text-blue-700 mb-2"><FormulaText text="T_V = T - T_N - T_M" /></div>
+            <div className="text-xs text-blue-600">„V“ steht hier für den verbleibenden, nichtlinearen Temperaturanteil – nicht für die Querkraft. Er erzeugt die Eigenspannungen.</div>
           </div>
         </div>
 
@@ -328,31 +330,49 @@ export default function Eigenspannungen() {
           </div>
       </div>
       
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
+        <FormulaDerivationBox
+          title="Anwendungsbeispiel: Randzugspannung in der Aufheizphase einer 1 m dicken Wand"
+          zielGleichung="\sigma_{V,Rand} = \tfrac{2}{3} \cdot E_{c,eff} \cdot \alpha_T \cdot \Delta T_{par}, \quad \Delta T_{par} = T_{mitte} - \tfrac{T_{innen} + T_{aussen}}{2}"
+          normQuelle="Lehrmodell: parabolische Temperaturverteilung, Zerlegung in T_N, T_M, T_V"
+          schritte={[
+            { titel: '1. Gegeben', formel: 'T_{innen} = 20,\\; T_{mitte} = 45,\\; T_{aussen} = 15\\,^\\circ\\text{C};\\; E_{c,eff} = 15\\,000\\,\\text{N/mm}^2,\\; \\alpha_T = 10^{-5}\\,\\text{K}^{-1}', erklaerung: 'Werte der Voreinstellung des Rechners.' },
+            { titel: '2. Parabelanteil', formel: '\\Delta T_{par} = 45 - \\frac{20 + 15}{2} = 27{,}5\\,\\text{K}', erklaerung: 'Nur die Krümmung der Temperaturkurve erzeugt Eigenspannungen.' },
+            { titel: '3. Nichtlinearer Anteil', formel: 'T_{V,Rand} = -\\tfrac{2}{3} \\cdot 27{,}5 = -18{,}3\\,\\text{K};\\; T_{V,Kern} = +\\tfrac{1}{3} \\cdot 27{,}5 = +9{,}2\\,\\text{K}', erklaerung: 'Mittelwert und linearer Anteil sind abgezogen.' },
+            { titel: '4. Spannungen', formel: '\\sigma_{V,Rand} = 15\\,000 \\cdot 10^{-5} \\cdot 18{,}3 = +2{,}75\\,\\text{N/mm}^2;\\; \\sigma_{V,Kern} = -1{,}38\\,\\text{N/mm}^2', erklaerung: 'Zug am Rand, Druck im Kern; N = 0 und M = 0 sind erfüllt.' },
+            { titel: '5. Vergleich mit der Zugfestigkeit', formel: '2{,}75 > f_{ctm}(t) = 1{,}5\\,\\text{N/mm}^2', erklaerung: 'Oberflächenrisse wahrscheinlich.' },
+          ]}
+          ergebnisHinweis="Abhilfe: Temperaturdifferenz zwischen Kern und Rand begrenzen (wärmedämmende Schalung, späteres Ausschalen, wärmearme Rezeptur); Faustwert ΔT ≤ 20 K (Lehrannahme)."
+        />
+      </div>
+
+      <ModulTest moduleId="eigenspannungen" />
+
       {!eingebettet && (
 <ModuleFooter weblinks={[{ title: "Beton.wiki: Eigenspannungen", url: "https://beton.wiki/index.php?title=Eigenspannungen" }, { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }]} 
         wikipedia={[
         { title: 'Eigenspannung', url: 'https://de.wikipedia.org/wiki/Eigenspannung' }
       ]}
         literatur={[
-          'Rostásy, F. S.; Krauß, M. (2001): Frühe Rissbildung von massigen Betonbauteilen (DAfStb Heft 520)',
+          'Rostásy, F. S.; Krauß, M.: Frühe Risse in massigen Betonbauteilen – Ingenieurmodelle für die Planung von Gegenmaßnahmen. DAfStb (Heftnummer und Jahr manuell prüfen)',
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Breitenbücher, R.: Zwangsspannungen infolge Hydratationswärme in massigen Betonbauteilen (Bauverlag)'
+          'Breitenbücher, R.: Zwangsspannungen und Rißbildung infolge Hydratationswärme. Dissertation, TU München 1989'
         ]}
         regelwerke={[
-          { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Rissbreitenbegrenzung)' },
-          { title: 'DAfStb-Heft 520 (Frühe Rissbildung von massigen Betonbauteilen)', url: 'https://www.dafstb.de/' },
-          { title: 'DAfStb-Richtlinie Wasserundurchlässige Baukörper aus Beton (WU-Richtlinie)', url: 'https://www.dafstb.de/' }
+          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 7.3 Rissbreitenbegrenzung' },
+          { title: 'DAfStb-Richtlinie Massige Bauteile aus Beton (Ausgabe manuell prüfen)' },
+          { title: 'DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12' }
         ]}
         formeln={[
           {
             formel: '\\sigma_{\\text{res,cs}}(x) = E_{c,\\text{eff}} \\cdot \\varepsilon_{cs} \\cdot \\left(\\left(\\frac{2x}{d}\\right)^2 - \\frac{1}{3}\\right)',
             erklaerung: 'Eigenspannungsverteilung infolge ungleichmäßigen Schwindens (Bauteilränder trocknen schneller aus als der feuchte Kern): Randbereiche stehen unter Zugspannung, der Kern unter Druckspannung.',
-            quelle: 'DAfStb Heft 520'
+            quelle: 'Lehrmodell (Zerlegung T_N, T_M, T_V)'
           },
           {
             formel: '\\sigma_t(t) = R_{\\text{ax}} \\cdot E_{c,\\text{eff}}(t) \\cdot \\alpha_T \\cdot \\Delta T(t) \\le f_{\\text{ct,eff}}(t)',
             erklaerung: 'Thermisch induzierte Zwangsspannung bei Abkühlung massiger Betonbauteile mit Festhaltungsgrad R_ax (Restraint). Übersteigt sigma_t die wirksame Betonzugfestigkeit f_ct,eff, entstehen Trennrisse.',
-            quelle: 'DAfStb Heft 520'
+            quelle: 'Lehrmodell (Zerlegung T_N, T_M, T_V)'
           }
         ]}
       />
