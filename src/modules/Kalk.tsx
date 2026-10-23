@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Box, Layers, Activity, BookOpen } from 'lucide-react';
 import { BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -103,7 +104,7 @@ export default function Kalk() {
                   <div>
                     <h4 className="font-bold text-text-main mb-2">3. Abbinden (Karbonatisierung)</h4>
                     <p className="text-sm text-text-main/70 mb-3">
-                      Erhärtung erfolgt nur, wenn dem angemachten Löschkalk ermöglicht wird, CO₂ aus der Luft aufzunehmen. Das Porenwasser wirkt als zwingender Katalysator.
+                      Erhärtung erfolgt nur, wenn dem angemachten Löschkalk ermöglicht wird, CO₂ aus der Luft aufzunehmen. Das Porenwasser ist das notwendige Reaktionsmedium: CO₂ löst sich darin und reagiert mit dem gelösten Calciumhydroxid.
                     </p>
                   </div>
                   <div className="p-2.5 bg-off-white rounded-lg border border-home-grau/20 text-center overflow-x-auto">
@@ -117,7 +118,7 @@ export default function Kalk() {
                 <FormulaDerivationBox
                   title="Thermodynamische Herleitung: Energie- &amp; Enthalpiebilanz des Kalkkreislaufs"
                   zielGleichung="\Delta H_R^0 = +178{,}2\text{ kJ/mol} \quad (\text{Brennen}) \;\longleftrightarrow\; \Delta H_R^0 = -65{,}2\text{ kJ/mol} \quad (\text{Löschen})"
-                  normQuelle="DIN EN 459-1 (Baukalk) &amp; DIN 1333"
+                  normQuelle="Thermochemische Standardwerte (Lehrbuchwerte); Baukalk nach DIN EN 459-1"
                   ergebnisHinweis="Vollständiger chemisch-energetischer Zyklus: Kalzinieren ist stark endotherm; Löschen ist stark exotherm mit Volumenzunahme."
                   schritte={[
                     {
@@ -146,6 +147,7 @@ export default function Kalk() {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                <h3 className="font-bold text-shiraz text-lg mb-2">Arten von Baukalk</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
+                  <li><strong>Kurzzeichen nach DIN EN 459-1:</strong> CL (Weißkalk), DL (Dolomitkalk), NHL (natürlicher hydraulischer Kalk), HL (hydraulischer Kalk), FL (formulierter Kalk).</li>
                   <li><strong>Luftkalke (Weißkalk, Dolomitkalk):</strong> Erhärten nur durch Aufnahme von Kohlendioxid aus der Luft (Karbonatisierung). Sie sind im erhärteten Zustand nicht wasserbeständig und eignen sich primär für Innenputze oder Denkmalschutz.</li>
                   <li><strong>Wasserkalk / Hydraulischer Kalk (HL / NHL):</strong> Enthalten "Verunreinigungen" des Ursprungsgesteins (z.B. reaktionsfähige Kieselsäure/Tonerde). Er erhärtet sowohl durch CO₂ (Karbonatisierung) als auch durch Wasser (Hydratation). Wird im Außenputz und für feuchte Bereiche genutzt.</li>
                 </ul>
@@ -188,7 +190,7 @@ export default function Kalk() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                Kalk zeichnet sich durch hohe kapillare Leitfähigkeit, Alkalität und spannungsarme Verformung aus. Er unterliegt jedoch Er ist jedoch empfindlich gegen Säuren (chemisch) sowie gegen Frost bei Durchfeuchtung (physikalisch).. Relevante Normen zur Kalkklassifizierung sind insbesondere die <strong>DIN EN 459-1</strong> (Baukalk).
+                Kalk zeichnet sich durch hohe kapillare Leitfähigkeit, Alkalität und spannungsarme Verformung aus. Er ist jedoch empfindlich gegen Säuren (chemisch) sowie gegen Frost bei Durchfeuchtung (physikalisch). Relevante Normen zur Kalkklassifizierung sind insbesondere die <strong>DIN EN 459-1</strong> (Baukalk).
               </p>
             </div>
 
@@ -196,7 +198,7 @@ export default function Kalk() {
                <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Hygienische und Bauphysikalische Funktion</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-                  <li><strong>Alkalität & Desinfektion:</strong> Baukalk ist stark alkalisch (pH-Wert um 12-13 im ungehärteten Zustand). Dies macht traditionellen Kalkputz oder Kalkfarbe hochwirksam desinfizierend und zur natürlichsten Methode zur Schimmelprävention im Innenraum.</li>
+                  <li><strong>Alkalität & Desinfektion:</strong> Baukalk ist stark alkalisch (pH-Wert um 12-13 im ungehärteten Zustand). Der hohe pH-Wert wirkt Schimmelbildung entgegen, solange der Kalk nicht vollständig carbonatisiert ist.</li>
                   <li><strong>Feuchtemanagement:</strong> Kalkputze (ohne Kunstharzzusätze) sind extrem kapillaroffen und diffusionsoffen. Überschüssige Luftfeuchtigkeit wird sehr schnell aufgenommen und bei Trockenheit wieder abgegeben, was das Raumklima reguliert.</li>
                 </ul>
               </div>
@@ -204,7 +206,7 @@ export default function Kalk() {
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Chemische Beständigkeit</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-                  <li><strong>Frostgefahr beim Abbinden:</strong> Wenn während der Karbonatisierungsphase, in der Feuchtigkeit zwingend notwendig ist, Frost auftritt, friert das Porenwasser und sprengt den Mörtel. ("Kalkmörtel ist nicht frostbeständig").</li>
+                  <li><strong>Frostgefahr beim Abbinden:</strong> Wenn während der Karbonatisierungsphase, in der Feuchtigkeit zwingend notwendig ist, Frost auftritt, friert das Porenwasser und sprengt den Mörtel. (Kalkmörtel ist vor allem während der Erhärtung frostempfindlich).</li>
                   <li><strong>Saurer Regen (SO₂):</strong> Die Umweltverschmutzung schädigt alte Kalksteinfassaden: Schwefeldioxid (SO₂) wandelt zusammen mit Wasser das unlösliche Calciumcarbonat (Kalk) an der Fassadenoberfläche in wasserlösliches Calciumsulfat (Gips) um. Der Gips kristallisiert voluminös, die oberste Schicht sprengt ab (Gipskruste) und wäscht sich im Regen aus (Verwitterung).</li>
                 </ul>
               </div>
@@ -226,6 +228,8 @@ export default function Kalk() {
         )}
       </div>
 
+      <ModulTest moduleId="kalk" />
+
       <ModuleFooter wikipedia={[
         { title: 'Kalk', url: 'https://de.wikipedia.org/wiki/Kalk' },
         { title: 'Kalkmörtel', url: 'https://de.wikipedia.org/wiki/Kalkm%C3%B6rtel' },
@@ -233,7 +237,8 @@ export default function Kalk() {
       ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Scholz - Baustoffkenntnis (19. Auflage, Werner Verlag)',
+          'Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016',
+          'Benedix, R.: Bauchemie. Wiesbaden: Springer Vieweg (Auflage manuell prüfen)',
         ]}
         normIds={['DIN_EN_459_1', 'DIN_EN_998', 'DIN_EN_13914']}
         regelwerke={[
@@ -251,12 +256,12 @@ export default function Kalk() {
           {
             formel: 'CaO + H_2O \\rightarrow Ca(OH)_2 + \\Delta H \\quad (\\Delta H = -65{,}2\\text{ kJ/mol})',
             erklaerung: 'Exothermes Trocken- oder Nasslöschen von Calciumoxid mit Wasser zu Calciumhydroxid (Löschkalk). Die freigesetzte Wärmeenergie führt zu starkem Erhitzen des Gemischs.',
-            quelle: 'Molkentin: Bauchemie'
+            quelle: 'Thermochemische Standardwerte'
           },
           {
             formel: 'Ca(OH)_2 + CO_2 \\xrightarrow{\\text{Porenwasser}} CaCO_3 + H_2O',
-            erklaerung: 'Karbonatisierung (Abbindeprozess) des Löschkalks durch Aufnahme von CO2 aus der Luft. Das Porenwasser wirkt als zwingender Elektrolyt/Katalysator, weshalb staubtrockener Kalkmörtel nicht erhärten kann (Gefahr des Aufbrennens).',
-            quelle: 'Scholz - Baustoffkenntnis'
+            erklaerung: 'Karbonatisierung (Abbindeprozess) des Löschkalks durch Aufnahme von CO2 aus der Luft. Das Porenwasser ist Reaktionsmedium; zu schnell austrocknender Kalkmörtel erhärtet nicht (Gefahr des Aufbrennens).',
+            quelle: 'Baustoffkenntnis (2016)'
           }
         ]}
       />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Box, Layers, Activity, ArrowRight, ArrowDown, ArrowLeft, BookOpen } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
@@ -86,7 +87,7 @@ export default function Gips() {
                   <li><strong>Lösen:</strong> Das aus gebranntem Gips und Wasser bestehende Gemisch geht in Lösung. Das Halbhydrat ist in Wasser besser löslich als das Dihydrat.</li>
                   <li><strong>Kristallisation:</strong> Aus der übersättigten Lösung kristallisiert das schwerer lösliche Calciumsulfat-Dihydrat in Form feiner Nadeln aus.</li>
                   <li><strong>Reaktionsgleichung:</strong> <br/><BlockMath math="CaSO_4 \cdot 0{,}5H_2O + 1{,}5H_2O \rightarrow CaSO_4 \cdot 2H_2O" /></li>
-                  <li><strong>Volumenänderung:</strong> Das Material dehnt sich beim Abbinden leicht aus (ca. 1%), was ein scharfkantiges und exaktes Ausfüllen von Formen ermöglicht.</li>
+                  <li><strong>Volumenänderung:</strong> Das Material dehnt sich beim Abbinden leicht aus (etwa 0,1–1 %, Lehrwert), was ein scharfkantiges und exaktes Ausfüllen von Formen ermöglicht.</li>
                 </ul>
               </div>
             </div>
@@ -194,8 +195,8 @@ export default function Gips() {
                 <h3 className="font-bold text-shiraz text-lg mb-2">Wasser- und Feuchtebeständigkeit</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
                   <li><strong>Löslichkeit:</strong> Calciumsulfat ist in Wasser teilweise (schwer) löslich (ca. 2 g/l). Bei andauernder Feuchte- oder Wassereinwirkung löst sich der Gips auf (Materialverlust).</li>
-                  <li><strong>Trockenbereich:</strong> Gipsbaustoffe sind Gipsbaustoffe eignen sich für Innenräume mit geringer Wassereinwirkung (W0-I) und mit Verbundabdichtung für mäßige Einwirkung (W1-I, z. B. häusliche Bäder) nach DIN 18534, nicht für W2-I/W3-I. oder temperierte Bereiche geeignet.</li>
-                  <li><strong>Feuchträume:</strong> In stark feuchtebelasteten Bereichen darf gewöhnlicher Gips nicht verwendet werden. Hierfür gibt es imprägnierte Platten (Gipskarton-Feuchtraumplatten, GKBI, grün).</li>
+                  <li><strong>Trockenbereich:</strong> Gipsbaustoffe eignen sich für Innenräume mit geringer Wassereinwirkung (W0-I) und mit Verbundabdichtung für mäßige Einwirkung (W1-I, z. B. häusliche Bäder) nach DIN 18534; für W2-I und W3-I sind sie nicht geeignet.</li>
+                  <li><strong>Feuchträume:</strong> In stark feuchtebelasteten Bereichen darf gewöhnlicher Gips nicht verwendet werden. Hierfür gibt es imprägnierte Platten (Gipskarton-Feuchtraumplatten GKBI, nach DIN EN 520 z. B. Typ H2; Feuerschutzplatten GKF ≙ Typ DF).</li>
                 </ul>
               </div>
 
@@ -211,7 +212,7 @@ export default function Gips() {
                <div className="bg-off-white p-5 rounded-xl border border-home-grau/30 md:col-span-2">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Chemische Unverträglichkeiten</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-                  <li><strong>"Ettringittreiben":</strong> Gips darf niemals in dauerhaft direkten oder feuchten Kontakt mit Zement (Portlandzement) kommen, da die im Gips enthaltenen Sulfate (SO₄²⁻) mit den Aluminaten des Zements unter Wasserzugabe das Ettringit-Mineral bilden, was zu starkem Volumenwachstum und Sprengung (Treiben) führt.</li>
+                  <li><strong>"Ettringittreiben":</strong> Gips darf nicht in dauerfeuchtem Kontakt mit zementgebundenen Baustoffen stehen, da die im Gips enthaltenen Sulfate (SO₄²⁻) mit den Aluminaten des Zements unter Wasserzugabe das Ettringit-Mineral bilden, was zu starkem Volumenwachstum und Sprengung (Treiben) führt.</li>
                   <li><strong>Korrosion an Metallen:</strong> Gips ist an sich nicht stark korrosiv, jedoch in Verbindung mit Feuchtigkeit beschleunigen Sulfate die Korrosion an ungeschützten Stahlteilen. Befestigungsmittel im Gipsbau müssen korrosionsgeschützt sein.</li>
                 </ul>
               </div>
@@ -226,6 +227,8 @@ export default function Gips() {
         )}
       </div>
 
+      <ModulTest moduleId="gips" />
+
       <ModuleFooter wikipedia={[
         { title: 'Gips', url: 'https://de.wikipedia.org/wiki/Gips' },
         { title: 'Gipskarton', url: 'https://de.wikipedia.org/wiki/Gipskarton' },
@@ -233,7 +236,7 @@ export default function Gips() {
       ]}
         literatur={[
           'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Scholz - Baustoffkenntnis (19. Auflage, Werner Verlag)',
+          'Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016',
           'Bundesverband der Gipsindustrie e. V.: GIPS-Datenbuch'
         ]}
         regelwerke={[
@@ -251,13 +254,13 @@ export default function Gips() {
           },
           {
             formel: 'CaSO_4 \\cdot \\frac{1}{2}H_2O + 1{,}5 H_2O \\rightarrow CaSO_4 \\cdot 2H_2O',
-            erklaerung: 'Rehydratation (Abbinden) des Gipses. Stuckgips nimmt beim Anmachen wieder Wasser auf, kristallisiert zu ineinander verfilzten Dihydrat-Nadeln aus und dehnt sich dabei um ca. 1 % aus.',
+            erklaerung: 'Rehydratation (Abbinden) des Gipses. Stuckgips nimmt beim Anmachen wieder Wasser auf, kristallisiert zu ineinander verfilzten Dihydrat-Nadeln aus und dehnt sich dabei leicht aus (etwa 0,1–1 %).',
             quelle: 'Wendehorst Baustoffkunde'
           },
           {
             formel: '3CaO \\cdot Al_2O_3 + 3(CaSO_4 \\cdot 2H_2O) + 26H_2O \\rightarrow 3CaO \\cdot Al_2O_3 \\cdot 3CaSO_4 \\cdot 32H_2O',
             erklaerung: 'Das zerstörende Ettringittreiben ("Zement-Gips-Katastrophe"): Tricalciumaluminat des Zements reagiert mit dem Gips-Sulfat und Wasser unter drastischer Volumenzunahme (Bildung von nadelförmigem Ettringit mit extrem viel Kristallwasser), was zur Sprengung des Gefüges führt.',
-            quelle: 'Scholz - Baustoffkenntnis'
+            quelle: 'Baustoffkenntnis (2016)'
           }
         ]}
       />
