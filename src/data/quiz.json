@@ -10421,5 +10421,155 @@
       "targetModuleLabel": "Kunststoffe"
     },
     "verified": false
+  },
+  {
+    "id": "q_mat_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Haptik",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welche Stoffgröße bestimmt, ob sich eine Oberfläche bei Berührung warm oder kalt anfühlt?",
+    "options": [
+      "Wärmeeindringkoeffizient b = √(λρc)",
+      "Wärmeleitfähigkeit λ allein",
+      "Wärmedurchgangskoeffizient U",
+      "Rohdichte ρ allein"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Kontakttemperatur hängt vom Verhältnis der Wärmeeindringkoeffizienten von Haut und Material ab. Holz (b ≈ 300) fühlt sich wärmer an als Stahl (b ≈ 13 000).",
+    "gapAnalysis": {
+      "topic": "Haptik",
+      "misconception": "Der U-Wert oder λ allein erklärt die Haptik.",
+      "coreRule": "Kontakttemperatur: b-gewichtetes Mittel der Temperaturen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haptik“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_mat_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "materialitaet_architektur",
+    "moduleTitle": "Materialität & Architektur",
+    "topic": "Patina",
+    "difficulty": "Grundlagen",
+    "normRef": "",
+    "question": "Welche Patina bildet Titanzink an der Atmosphäre?",
+    "options": [
+      "Blaugraue Schicht aus basischem Zinkkarbonat",
+      "Grüne Kupferkarbonat-Patina",
+      "Rotbraune Rostschicht",
+      "Keine – Zink bleibt metallisch blank"
+    ],
+    "correctIdx": 0,
+    "explanation": "Titanzink bildet eine matte, blaugraue Deckschicht. Die grüne Patina ist typisch für Kupfer.",
+    "gapAnalysis": {
+      "topic": "Patina",
+      "misconception": "Alle Metalle bilden grüne Patina.",
+      "coreRule": "Kupfer: grün; Zink: blaugrau; Cortenstahl: rotbraun.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Patina“ im Modul Materialität & Architektur noch einmal durch.",
+      "targetModuleTab": "materialitaet_architektur",
+      "targetModuleLabel": "Materialität & Architektur"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_aus_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "ausbau",
+    "moduleTitle": "Ausbau",
+    "topic": "Estriche",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 13813",
+    "question": "Welcher Estrich ist für dauerhaft feuchte Bereiche (z. B. Nassräume ohne Abdichtung, außen) ungeeignet?",
+    "options": [
+      "Calciumsulfatestrich (CA)",
+      "Zementestrich (CT)",
+      "Gussasphaltestrich (AS)",
+      "Kunstharzestrich (SR)"
+    ],
+    "correctIdx": 0,
+    "explanation": "Calciumsulfat ist feuchteempfindlich und verliert bei Durchfeuchtung an Festigkeit. Zementestrich ist feuchteunempfindlich.",
+    "gapAnalysis": {
+      "topic": "Estriche",
+      "misconception": "Alle Estriche verhalten sich bei Feuchte gleich.",
+      "coreRule": "CA: schwindarm, aber feuchteempfindlich.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Estriche“ im Modul Ausbau noch einmal durch.",
+      "targetModuleTab": "ausbau",
+      "targetModuleLabel": "Ausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_aus_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "ausbau",
+    "moduleTitle": "Ausbau",
+    "topic": "Keramik",
+    "difficulty": "Grundlagen",
+    "normRef": "DIN EN 14411",
+    "question": "Welche Wasseraufnahme kennzeichnet Feinsteinzeug?",
+    "options": [
+      "E ≤ 0,5 %",
+      "E > 10 %",
+      "3 % < E ≤ 6 %",
+      "E ≈ 15–20 %"
+    ],
+    "correctIdx": 0,
+    "explanation": "Feinsteinzeug ist sehr dicht gesintert (E ≤ 0,5 %) und frostbeständig. Steingut (E > 10 %) ist nicht frostsicher.",
+    "gapAnalysis": {
+      "topic": "Keramik",
+      "misconception": "Alle Fliesen sind frostsicher.",
+      "coreRule": "Je niedriger die Wasseraufnahme, desto dichter und frostbeständiger.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Keramik“ im Modul Ausbau noch einmal durch.",
+      "targetModuleTab": "ausbau",
+      "targetModuleLabel": "Ausbau"
+    },
+    "verified": false
+  },
+  {
+    "id": "q_aus_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "clusterId": "II",
+    "clusterName": "Materialien & Produkte",
+    "moduleId": "ausbau",
+    "moduleTitle": "Ausbau",
+    "topic": "Fliesenkleber",
+    "difficulty": "Fortgeschritten",
+    "normRef": "DIN EN 12004-1",
+    "question": "Welche Haftzugfestigkeit muss ein zementärer Fliesenkleber der Klasse C2 mindestens erreichen?",
+    "options": [
+      "1,0 N/mm²",
+      "0,5 N/mm²",
+      "2,5 N/mm²",
+      "0,1 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "C1: ≥ 0,5 N/mm², C2 (verbesserte Eigenschaften): ≥ 1,0 N/mm².",
+    "gapAnalysis": {
+      "topic": "Fliesenkleber",
+      "misconception": "C1 und C2 unterscheiden sich nur in der Verarbeitungszeit.",
+      "coreRule": "C2 = erhöhte Haftzugfestigkeit ≥ 1,0 N/mm².",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fliesenkleber“ im Modul Ausbau noch einmal durch.",
+      "targetModuleTab": "ausbau",
+      "targetModuleLabel": "Ausbau"
+    },
+    "verified": false
   }
 ]
