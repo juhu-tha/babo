@@ -1,4 +1,6 @@
 import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
+import { maxFaFaktor, stoffraum, ZEMENT_DATA } from '@/src/calc/mischung';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
 import { Pie, Line, Radar } from 'react-chartjs-2';
@@ -19,18 +21,7 @@ import Packungsdichte from './Packungsdichte';
 import GepruefteBeispieleSection, { BenchmarkData } from '@/src/components/mischung/GepruefteBeispieleSection';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
-const zementData: Record<string, { co2: number, rho: number }> = {
-  'CEM I': { co2: 0.85, rho: 3.1 },
-  'CEM II/A': { co2: 0.75, rho: 3.05 },
-  'CEM II/B': { co2: 0.65, rho: 3.0 },
-  'CEM II/S': { co2: 0.65, rho: 3.0 },
-  'CEM II/C-M': { co2: 0.55, rho: 3.0 }, // DIN EN 197-5 (klinkereffizienter Portlandkompositzement)
-  'CEM III/A': { co2: 0.45, rho: 2.95 },
-  'CEM III/B': { co2: 0.35, rho: 2.9 },
-  'CEM IV': { co2: 0.50, rho: 2.9 },
-  'CEM V': { co2: 0.40, rho: 2.9 },
-  'CEM VI': { co2: 0.40, rho: 2.95 }, // DIN EN 197-5 (Kompositzement)
-};
+const zementData = ZEMENT_DATA;
 
 const festigkeitsklassen = ['32.5 N', '32.5 R', '42.5 N', '42.5 R', '52.5 N', '52.5 R'];
 
@@ -646,79 +637,33 @@ export default function Mischungsberechnung() {
     setWa1632(b.wa1632);
     setExpClasses(b.expClasses);
     setLpOption(b.lpSetting || 'auto');
+    setRhoGestein(b.rhoGestein ?? 2.65);
     setRezeptur('manuell');
     setActiveTab('berechnung');
   };
 
   const results = useMemo(() => {
-    // Massen (trocken)
+    // Stoffraumrechnung und w/z-Wert aus dem Rechenkern src/calc/mischung.ts
     const wasserTrocken = wasser;
-    
-    // Normative Kappungsgrenzen (DIN 1045-2)
-    let maxFaFactor = 0;
-    if (zementArt === 'CEM I' || zementArt === 'CEM II/A') maxFaFactor = 0.33;
-    else if (zementArt === 'CEM II/B') maxFaFactor = 0.25;
-    
-    // Für Flugasche (FA)
-    const maxFa = maxFaFactor * zement;
-    const anrechenbarFa = Math.min(fa, maxFa);
-    
-    // Für Silikastaub (SF)
-    const maxSf = 0.11 * zement;
-    const anrechenbarSf = Math.min(sf, maxSf);
-    
-    const anrechenbarKsm = hues; // Vereinfacht ohne harte Kappung
-    const anrechenbarBiochar = biochar;
-    
-    // Volumina (dm³/m³)
-    const volZement = zement / zementData[zementArt].rho;
-    const volFa = fa > 0 ? fa / 2.2 : 0;
-    const volSf = sf > 0 ? sf / 2.2 : 0;
-    const volKsm = hues > 0 ? hues / 2.9 : 0;
-    const volBiochar = biochar > 0 ? biochar / 1.5 : 0; // Annahme Rohdichte Biochar ca. 1.5 kg/dm³
-    const volZM = zusatzmittel > 0 ? zusatzmittel / 1.05 : 0;
-    const volLuft = luft * 10;
-
-    // Faservolumina (dm³/m³) - DIN EN 14889-1 & 2
-    const volStahlfaser = stahlfaser > 0 ? stahlfaser / 7.85 : 0; // rho = 7.85 kg/dm³
-    const volPpFaser = ppFaser > 0 ? ppFaser / 0.91 : 0; // rho = 0.91 kg/dm³
+    const sr = stoffraum({
+      zement, rhoZement: zementData[zementArt].rho, wasser, fa, sf, hues, biochar, zusatzmittel, luft, stahlfaser, ppFaser, rhoGestein,
+      fraktionen: [
+        { anteil: f04, feuchte: feuchte04, wa: wa04 }, { anteil: f48, feuchte: feuchte48, wa: wa48 },
+        { anteil: f816, feuchte: feuchte816, wa: wa816 }, { anteil: f1632, feuchte: feuchte1632, wa: wa1632 },
+      ],
+      biocharFeuchte: feuchteBiochar, biocharWa: waBiochar,
+      k: { fa: kFa, sf: kSf, hues: kKsm, biochar: kBiochar }, maxFaFaktor: maxFaFaktor(zementArt),
+    });
+    const { maxFa, anrechenbarFa, maxSf, anrechenbarSf, volGestein, wasserAusGestein, wasserAusBiochar, zugabewasser } = sr;
+    const { zement: volZement, fa: volFa, sf: volSf, hues: volKsm, biochar: volBiochar, zusatzmittel: volZM, luft: volLuft, stahlfaser: volStahlfaser, ppFaser: volPpFaser } = sr.vol;
     const volFasernGesamt = volStahlfaser + volPpFaser;
-    
-    // Gestein (trocken)
-    const volGestein = 1000 - volZement - (wasserTrocken / 1.0) - volFa - volSf - volKsm - volBiochar - volZM - volLuft - volFasernGesamt;
-    const masseGesteinTrocken = volGestein * rhoGestein; // rhoGestein variabel
-    
-    // Fraktionen (trocken)
-    const m04_tr = masseGesteinTrocken * (f04 / 100);
-    const m48_tr = masseGesteinTrocken * (f48 / 100);
-    const m816_tr = masseGesteinTrocken * (f816 / 100);
-    const m1632_tr = masseGesteinTrocken * (f1632 / 100);
-
-    // Oberflächenfeuchte (wirksam für Zugabewasser) - kann negativ sein (Wasserbedarf)
-    const ws04 = feuchte04 - wa04;
-    const ws48 = feuchte48 - wa48;
-    const ws816 = feuchte816 - wa816;
-    const ws1632 = feuchte1632 - wa1632;
-    const wsBiochar = feuchteBiochar - waBiochar;
-
-    // Feuchte Gestein (nur Oberflächenfeuchte reduziert das Zugabewasser, negativer Wert erhöht es)
-    const wasserAusGestein = m04_tr * (ws04/100) + m48_tr * (ws48/100) + m816_tr * (ws816/100) + m1632_tr * (ws1632/100);
-    const wasserAusBiochar = biochar * (wsBiochar/100);
-    
-    // Zugabewasser
-    const zugabewasser = wasserTrocken - wasserAusGestein - wasserAusBiochar;
-
-    // Feuchte Massen Gestein (Gesamtfeuchte für die Waage)
-    const m04_feucht = m04_tr * (1 + feuchte04/100);
-    const m48_feucht = m48_tr * (1 + feuchte48/100);
-    const m816_feucht = m816_tr * (1 + feuchte816/100);
-    const m1632_feucht = m1632_tr * (1 + feuchte1632/100);
-    const biochar_feucht = biochar * (1 + feuchteBiochar/100);
-
-    // Äquivalenter w/z-Wert & w/b-Wert
-    const wz = wasserTrocken / zement;
-    const wzEq = wasserTrocken / (zement + kFa * anrechenbarFa + kSf * anrechenbarSf + kKsm * anrechenbarKsm + kBiochar * anrechenbarBiochar);
-    const wbWert = wasserTrocken / (zement + fa + sf + hues + biochar); // reiner Wasser-Bindemittel-Wert ohne k-Faktoren
+    const masseGesteinTrocken = sr.masseGestein;
+    const [m04_tr, m48_tr, m816_tr, m1632_tr] = sr.fraktionen.map(f => f.trocken);
+    const [m04_feucht, m48_feucht, m816_feucht, m1632_feucht] = sr.fraktionen.map(f => f.feucht);
+    const biochar_feucht = sr.biocharFeucht;
+    const wz = sr.wz;
+    const wzEq = sr.wzEq;
+    const wbWert = sr.wb;
 
     // Mehlkorngehalt berechnen (Zement + Zusatzstoffe + Gesteinsfeinanteile <= 0.125 mm)
     const mehlkornAusSand = m04_tr * (feinanteilSand / 100);
@@ -746,10 +691,9 @@ export default function Mischungsberechnung() {
     const co2FasernGesamt = co2Stahlfaser + co2PpFaser;
     const co2Gesamt = co2Zement + co2Fa + co2Sf + co2Ksm + co2Biochar + co2Gestein + co2Wasser + co2ZM + co2FasernGesamt;
 
-    const masseGesamtTrocken = zement + wasserTrocken + fa + sf + hues + biochar + zusatzmittel + stahlfaser + ppFaser + masseGesteinTrocken;
-    const frischbetonRohdichte = masseGesamtTrocken / 1000; // kg/dm³
+    const frischbetonRohdichte = sr.rohdichte; // kg/dm³
 
-    const volLeim = volZement + (wasserTrocken / 1.0) + volFa + volSf + volKsm + volBiochar + volZM;
+    const volLeim = sr.volLeim;
 
     // Limits prüfen
     let reqMaxWz = 1.0;
@@ -857,7 +801,7 @@ export default function Mischungsberechnung() {
       reqMaxWz, reqMinZ, reqMinC, reqMinCover, reqMaxZement, isWzOk, xf4OhneLp, isZOk, isMaxZOk, radarChartData, estimatedWater,
       maxFa, anrechenbarFa, maxSf, anrechenbarSf,
       mehlkornAusSand, mehlkornGesamt, maxMehlkornText, isMehlkornOk, hasXFoderXM,
-      lpWaterReduction, isLpActive
+      lpWaterReduction, isLpActive, hinweise: sr.hinweise
     };
   }, [zementArt, zement, wasser, fa, sf, hues, biochar, kFa, kSf, kKsm, kBiochar, zusatzmittel, luft, stahlfaser, ppFaser, f04, f48, f816, f1632, feuchte04, feuchte48, feuchte816, feuchte1632, wa04, wa48, wa816, wa1632, expClasses, rhoGestein, waBiochar, feuchteBiochar, groesstkorn, konsistenz, feinanteilSand, isLpActive]);
 
@@ -1829,6 +1773,7 @@ export default function Mischungsberechnung() {
                 </div>
               )}
 
+              <EingabeHinweise hinweise={results.hinweise.filter(x => x.feld !== 'fraktionen')} />
               <div className="grid grid-cols-2 gap-y-6 gap-x-4">
                 <div>
                   <div className="text-white/70 text-sm">Zugabewasser</div>
