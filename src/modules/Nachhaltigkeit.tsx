@@ -256,7 +256,7 @@ const PRESET_WALLS: Record<string, { name: string; desc: string; layers: Configu
     ]
   },
   holz_staender: {
-    name: 'Holzrahmenbau (Passivhaus)',
+    name: 'Holzrahmenbau (gedämmt)',
     desc: 'Hocheffiziente, kreislauffähige Leichtbaukonstruktion mit sehr guter Dämmwirkung und biogenem Kohlenstoffspeicher.',
     layers: [
       { materialKey: 'gypsum_board', thicknessCm: 1.25 },
@@ -491,20 +491,20 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
   const getGegRating = (uVal: number) => {
     if (uVal <= 0.15) {
       return {
-        label: 'Passivhaus-Standard (KfW 40)',
+        label: 'Passivhaus-Niveau (U ≤ 0,15)',
         color: 'bg-slate-100 text-slate-800 border-slate-300',
         rating: 'Exzellent'
       };
     }
     if (uVal <= 0.24) {
       return {
-        label: 'GEG-Sanierungsanforderung',
+        label: 'Erfüllt GEG-Höchstwert Sanierung (0,24)',
         color: 'bg-slate-50 text-slate-700 border-slate-200',
         rating: 'Konform'
       };
     }
     return {
-      label: 'Mangelnde Dämmwirkung (Nicht GEG-konform für Neubauten)',
+      label: 'Über GEG-Höchstwert Sanierung (0,24 W/(m²K))',
       color: 'bg-shiraz/5 text-shiraz border-shiraz/20',
       rating: 'Kritisch'
     };
@@ -1100,7 +1100,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
                 <span className="font-bold text-slate-900">{formatDeZahl(computedWall.gwpBiogenicA1A3, 1)} kg CO₂-eq/m²</span> biogenen Kohlenstoff in der Herstellungsphase. 
                 Die herstellungsbedingten fossilen Emissionen belaufen sich auf{' '}
                 <span className="font-bold text-shiraz">+{formatDeZahl(computedWall.gwpFossilA1A3, 1)} kg CO₂-eq</span>. 
-                Die Netto-LCA über 50 Jahre schließt die Entsorgungsemissionen und Recyclinggutschriften außerhalb der Systemgrenze voll ein.
+                Der Netto-Wert enthält zur Veranschaulichung die Gutschriften aus Modul D; in EPD und QNG-Nachweis wird Modul D getrennt ausgewiesen und nicht angerechnet.
               </div>
             </div>
 
@@ -3016,7 +3016,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
                           no: '6', 
                           title: 'Instandhaltung (B4) vergessen', 
                           err: 'Dichtungsschichten, Verputze oder mechanische Klimateile werden mit 50 Jahren Lebensdauer fehlerfrei durchgeschleust.', 
-                          sol: 'Nutzeffekt-Intervalle nach BBSR-Tabelle abbilden (z.B. Heizkessel RSL 20 a, d.h. 1,5-facher Austausch nötig).' 
+                          sol: 'Nutzeffekt-Intervalle nach BBSR-Tabelle abbilden (z. B. Heizkessel RSL 20 a: zwei Austausche nach 20 und 40 Jahren im Betrachtungszeitraum von 50 Jahren).' 
                         },
                         { 
                           no: '7', 
