@@ -27,7 +27,7 @@ for (const [id, l] of Object.entries(LERNZIELE)) {
 const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
 const fach = (MODULE as readonly ModulEintrag[]).filter(m => (m.baum?.typ === 'standard' || m.baum?.typ === 'calculator') && !OHNE.has(m.gruppe ?? ''));
 const ohne = fach.filter(m => !LERNZIELE[m.id]).length;
-const MAX_OHNE = 136;
+const MAX_OHNE = 0;
 pruefe(ohne <= MAX_OHNE, `${ohne} Fachmodule ohne Lernziele (Grenze ${MAX_OHNE})`);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
