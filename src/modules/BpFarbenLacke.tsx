@@ -166,12 +166,12 @@ const OS_SYSTEMS: OSSystem[] = [
     thickness: '10 - 50 µm Schichtstärke',
     bridging: 'Keine Rissüberbrückung',
     trafficable: false,
-    mainBinders: 'Niedrigviskoses Epoxidharz (EP) oder Polyurethan (PU)',
+    mainBinders: 'Polymerdispersionen bzw. Acrylat-Mischpolymere (herstellerabhängig)',
     consumption: '0,10 - 0,25 kg/m²',
     layers: [
       'Untergrundvorbereitung (Feinstrahlen)',
-      'Saugende Grundierung mit niedrigviskosem Reaktionsharz',
-      'Optionale dünne Kopfversiegelung'
+      'Ggf. Hydrophobierung bzw. Grundierung',
+      'Mindestens zwei Oberflächenschutzschichten (ohne Kratz- und Ausgleichsspachtelung)'
     ]
   },
   {
@@ -219,11 +219,11 @@ const OS_SYSTEMS: OSSystem[] = [
     bridging: 'Geringe Rissüberbrückung (DIN EN 1062-7, Klasse B2 bei –20 °C)',
     trafficable: false,
     mainBinders: 'Polymer/Zement-Gemisch (kunststoffmodifizierte mineralische Schlämme)',
-    consumption: '0,80 - 1,25 kg/m²',
+    consumption: 'ca. 3 - 4 kg/m² (bei ca. 2 mm Schichtdicke, herstellerabhängig)',
     layers: [
-      'Untergrundprüfung & herstellerneutrale Grundierung',
-      'Satte Applikation der hochelastischen Zwischenschicht',
-      'Farbtonstabile, UV-resistente Kopfversiegelung'
+      'Untergrundprüfung & Vornässen bzw. Grundierung nach Herstellerangabe',
+      '1. Lage Polymer/Zement-Beschichtung (Schlämme)',
+      '2. Lage Polymer/Zement-Beschichtung bis zur Gesamtschichtdicke'
     ]
   },
   {
@@ -1382,7 +1382,7 @@ export default function BpFarbenLacke() {
                       </tr>
                       <tr>
                         <td className="p-3 font-semibold text-shiraz">2K-Epoxidharze (EP)</td>
-                        <td className="p-3 font-semibold">OS 2, OS 8</td>
+                        <td className="p-3 font-semibold">OS 8</td>
                         <td className="p-3 text-text-main/80">
                           Polyaddition von flüssigen Epoxid-Prepolymeren (Bisphenol-A) mit Amin-Härtern. Es entsteht ein dicht vernetztes, duroplastisches Polymergitter.
                         </td>
@@ -1395,7 +1395,7 @@ export default function BpFarbenLacke() {
                       </tr>
                       <tr>
                         <td className="p-3 font-semibold text-shiraz">2K-Polyurethane (PU)</td>
-                        <td className="p-3 font-semibold">OS 5b, OS 11a, OS 11b</td>
+                        <td className="p-3 font-semibold">OS 11a, OS 11b</td>
                         <td className="p-3 text-text-main/80">
                           Polyaddition von Polyisocyanaten mit Polyolen. Durch gezielte Auswahl linearer Isocyanate wird ein hochelastischer Schutzfilm (Elastomer) erzielt.
                         </td>
@@ -1408,7 +1408,7 @@ export default function BpFarbenLacke() {
                       </tr>
                       <tr>
                         <td className="p-3 font-semibold text-shiraz">Reinacrylat-Dispersionen</td>
-                        <td className="p-3 font-semibold">OS 4, OS 5a</td>
+                        <td className="p-3 font-semibold">OS 2, OS 4, OS 5a</td>
                         <td className="p-3 text-text-main/80">
                           Physikalische Filmbildung durch Verdunstung des Wassers und anschließende Koaleszenz der Polymer-Nanopartikel. Die polare Molekülstruktur hemmt Gase.
                         </td>
@@ -1548,7 +1548,7 @@ export default function BpFarbenLacke() {
                     } else if (osEinsatzbereich === 'kellerwand_aussen') {
                       recommendedSysId = 'os2';
                       categoryText = 'OS 2 – Dünne Beschichtung für nicht begeh- und befahrbare Flächen';
-                      noteText = 'Hilft als kapillarsperrender Zementanstrich gegen geringe aufsteigende Feuchte im Spritzwasserbereich.';
+                      noteText = 'Dünne Beschichtung zur Verringerung der kapillaren Wasseraufnahme frei bewitterter, nicht erdberührter Sockel- und Wandflächen im Spritzwasserbereich; keine Abdichtung gegen Bodenfeuchte (dafür DIN 18533).';
                     }
 
                     // Dynamically get recommended material list
@@ -1557,8 +1557,9 @@ export default function BpFarbenLacke() {
                         { material: 'Chemischer Silan-Hydrophobierstoff (lösemittelfrei)', rate: 0.35, remark: 'Flutend per Airless oder Flutlanze applizieren (nass in nass)' }
                       ],
                       os2: [
-                        { material: '2K-Epoxidharz-Imprägnierung (niedrigviskos)', rate: 0.20, remark: 'Saugfähige Porenfüllungs-Schicht' },
-                        { material: 'Kopfversiegelung (pigmentiert)', rate: 0.15, remark: 'Roll-Anstrich' }
+                        { material: 'Grundierung (Acrylat, niedrigviskos)', rate: 0.10, remark: 'Porenfüllend, ggf. nach Hydrophobierung' },
+                        { material: 'Oberflächenschutzschicht Acrylat (1. Anstrich)', rate: 0.15, remark: 'Roll-Anstrich' },
+                        { material: 'Oberflächenschutzschicht Acrylat (2. Anstrich)', rate: 0.15, remark: 'Roll-Anstrich' }
                       ],
                       os4: [
                         { material: 'Zementgebundene Porenfeinspachtelung (Mörtel)', rate: 1.50, remark: 'Schließen von Betonlunkern' },
@@ -1573,9 +1574,9 @@ export default function BpFarbenLacke() {
                         { material: 'Elastomer-Dunkelbeschichtung (Acrylat)', rate: 0.35, remark: 'Satte, schützende Deckschicht' }
                       ],
                       os5b: [
-                        { material: '2K-Spezialgrundierung (PU/EP)', rate: 0.25, remark: 'Flüssiggassperre vor Membran' },
-                        { material: 'Dynamische PU-Zwischenmembrane', rate: 0.65, remark: 'Hochelastisch dehnbar (Rissbrücke)' },
-                        { material: 'UV-beständige Kopfversiegelung (aliphatisches PU)', rate: 0.32, remark: 'Witterungsstabiler Endglanz' }
+                        { material: 'Grundierung bzw. Vornässen (nach Herstellerangabe)', rate: 0.20, remark: 'Mattfeuchter, tragfähiger Untergrund' },
+                        { material: 'Polymer/Zement-Beschichtung (1. Lage)', rate: 1.70, remark: 'Kunststoffmodifizierte Schlämme, rissüberbrückend' },
+                        { material: 'Polymer/Zement-Beschichtung (2. Lage)', rate: 1.70, remark: 'Gesamtschichtdicke ca. 2 mm' }
                       ],
                       os8: [
                         { material: '2K-Epoxidharz-Grundierharz (lösungsmittelfrei)', rate: 0.45, remark: 'Haftbrücke porentief einreiben' },

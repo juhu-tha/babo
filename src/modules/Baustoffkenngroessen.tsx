@@ -1629,6 +1629,7 @@ export default function Baustoffkenngroessen() {
               <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/40 text-xs text-slate-700 leading-relaxed text-left mb-4">
                 <span className="font-bold text-indigo-950 block mb-0.5">🔢 Einfache Beispielrechnung:</span>
                 Ein Bauteil aus Beton (<InlineMath math="\mu = 130" />) hat eine Dicke von <InlineMath math="d = 20 \text{ cm} = 0{,}20 \text{ m}" />.
+                <span className="block mt-1 text-[11px] text-slate-500">Hinweis: Für Normalbeton gibt DIN EN ISO 10456 bzw. DIN 4108-4 das Wertepaar <InlineMath math="\mu = 80/130" /> (feucht/trocken) an; im Nachweis ist jeweils der ungünstigere Wert anzusetzen (z. B. im Feuchteschutz-Modul 80).</span>
                 <div className="font-mono mt-1 text-slate-900 bg-white/80 p-1 rounded border border-indigo-100/30 text-[11px]">
                   s_d = 130 · 0,20 m = 26,0 m (äquivalenter Luftwiderstand)
                 </div>

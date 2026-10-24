@@ -894,10 +894,10 @@ export default function HistorischeBauweisen() {
         title="Beispiel 2: Schwindmaß eines Deckenbalkens nach dem Austrocknen"
         zielGleichung="\Delta b = b \cdot \alpha_t \cdot \Delta u"
         schritte={[
-          { titel: 'Gegeben', erklaerung: 'Fichte, tangentiale Querschnittsabmessung 220 mm; Einbau mit u = 30 %, Ausgleichsfeuchte im beheizten Gebäude u = 12 %; differentielles Schwindmaß tangential ≈ 0,24 % je % Holzfeuchte (Richtwert).', formel: '\\Delta u = 30 - 12 = 18\\,\\%' },
-          { titel: 'Schwindmaß', erklaerung: 'Lineare Näherung unterhalb des Fasersättigungsbereichs:', formel: '\\Delta b = 220 \\cdot 0{,}0024 \\cdot 18 = 9{,}5\\,\\text{mm}' }
+          { titel: 'Gegeben', erklaerung: 'Fichte, tangentiale Querschnittsabmessung 220 mm; Einbau mit u = 30 %, Ausgleichsfeuchte im beheizten Gebäude u = 12 %; differentielles Schwindmaß tangential ≈ 0,27 % je % Holzfeuchte (Richtwert, wie im Rechner).', formel: '\\Delta u = 30 - 12 = 18\\,\\%' },
+          { titel: 'Schwindmaß', erklaerung: 'Lineare Näherung unterhalb des Fasersättigungsbereichs:', formel: '\\Delta b = 220 \\cdot 0{,}0027 \\cdot 18 = 10{,}7\\,\\text{mm}' }
         ]}
-        ergebnisHinweis="Fast 1 cm Schwinden erklärt typische Risse, lockere Verbindungen und Fugen in Fachwerk und Dielenböden. Schwindrisse sind meist unkritisch, Verbindungsmittel sind aber nachzuziehen."
+        ergebnisHinweis="Rund 1 cm Schwinden erklärt typische Risse, lockere Verbindungen und Fugen in Fachwerk und Dielenböden. Schwindrisse sind meist unkritisch, Verbindungsmittel sind aber nachzuziehen."
         normQuelle="DIN 68100:2010-07 (Schwind- und Quellmaße)"
       />
 

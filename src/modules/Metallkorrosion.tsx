@@ -626,7 +626,7 @@ export default function Metallkorrosion() {
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1">
                     <span className="text-xs font-bold text-slate-900 block border-b border-slate-100 pb-1 mb-1">pH-Wert (Säuregrad)</span>
                     <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      Unterhalb von <strong>pH 5</strong> (Säuren) wird jede schützende Metall-Passivschicht zersetzt. Es tritt die extrem schnelle <strong>Wasserstoffkorrosion</strong> ein. Über **pH 12** (z. B. in Porenbeton durch Calciumhydroxid) passiviert Stahl spontan, wodurch der Abtrag nahezu erlischt (pH-Passivierung).
+                      Unterhalb von <strong>pH 5</strong> (Säuren) wird jede schützende Metall-Passivschicht zersetzt. Es tritt die extrem schnelle <strong>Wasserstoffkorrosion</strong> ein. Über <strong>pH 12</strong> (z. B. in unkarbonatisiertem Normalbeton durch Calciumhydroxid) passiviert Stahl spontan, wodurch der Abtrag nahezu erlischt (pH-Passivierung).
                     </p>
                   </div>
 
@@ -687,7 +687,7 @@ export default function Metallkorrosion() {
                     2. Kontaktkorrosion (Bimetallkorrosion)
                   </span>
                   <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Zwei Metalle mit signifikant unterschiedlichen Standardpotenzialen sind im Elektrolyten direkt verbunden. Das **unedlere** Metall oxidiert als Opferanode, während das **edlere** kathodisch geschützt wird. 
+                    Zwei Metalle mit signifikant unterschiedlichen Standardpotenzialen sind im Elektrolyten direkt verbunden. Das <strong>unedlere</strong> Metall oxidiert als Opferanode, während das <strong>edlere</strong> kathodisch geschützt wird. 
                   </p>
                   <p className="text-xs text-red-650 font-bold bg-white p-2 rounded-lg border border-home-grau/20 mt-1">
                     <strong>Katastrophaler Flächeneffekt:</strong> Ist die Anodenfläche (z. B. unedle Stahlschraube) sehr klein im Verhältnis zur Kathodenfläche (z. B. große Edelstahlplatte), konzentriert sich der Elektronenabfluss extrem lokal, was zu raschem mechanischen Versagen der Schraube führt!
@@ -731,10 +731,10 @@ export default function Metallkorrosion() {
                     5. Interkristalline Korrosion (IK)
                   </span>
                   <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                    Tritt bei nichtrostendem Chrom-Nickel-Stahl auf, wenn dieser thermisch beansprucht wird (z. B. im Bereich von <strong>450 °C bis 850 °C</strong> durch unkontrolliertes Schweißen). Kohlenstoff diffundiert an die Korngrenzen und verbindet sich dort mit Chrom zu unlöslichen **Chromcarbiden** (<InlineMath math="\mathrm{Cr}_{23}\mathrm{C}_6" />).
+                    Tritt bei nichtrostendem Chrom-Nickel-Stahl auf, wenn dieser thermisch beansprucht wird (z. B. im Bereich von <strong>450 °C bis 850 °C</strong> durch unkontrolliertes Schweißen). Kohlenstoff diffundiert an die Korngrenzen und verbindet sich dort mit Chrom zu unlöslichen <strong>Chromcarbiden</strong> (<InlineMath math="\mathrm{Cr}_{23}\mathrm{C}_6" />).
                   </p>
                   <p className="text-xs text-red-700 font-bold bg-white p-2.5 rounded-lg border border-home-grau/25 mt-1">
-                    <strong>Die Folge:</strong> Direkt neben den Korngrenzen fällt der freie Chromgehalt unter die kritische Passivierungsschwelle von **12 %**. Hier wird der Werkstoff ungeschützt und löst sich entlang der Kornpfade pulverförmig auf.
+                    <strong>Die Folge:</strong> Direkt neben den Korngrenzen fällt der freie Chromgehalt unter die kritische Passivierungsschwelle von <strong>12 %</strong>. Hier wird der Werkstoff ungeschützt und löst sich entlang der Kornpfade pulverförmig auf.
                   </p>
                   <p className="text-xs text-emerald-800 bg-emerald-50/50 p-2 rounded-lg border border-emerald-100 font-bold">
                     <strong>Gegenmaßnahmen:</strong> Verwendung von LC-Stählen (Low Carbon, C &lt; 0,03 %, z. B. Werkstoff 1.4404) oder stabilisierten Qualitäten mit Niob (Nb) oder Titan (Ti, z. B. 1.4571), da Ti/Nb den Kohlenstoff effektiver binden als Chrom.
@@ -748,7 +748,7 @@ export default function Metallkorrosion() {
                     6. Spannungsrisskorrosion (SpRK / SCC)
                   </span>
                   <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Kombination aus <strong>Zugspannung</strong> (intern durch Eigenspannung beim Abkühlen/Biegen oder extern durch Nutzlasten) und einem **spezifischen Korrosionsmedium**. Sie führt zu einem extrem plötzlichen, spröden Phänomen (transkristalline oder interkristalline Risse) **ohne plastische Verformung oder Flugrost-Vorankündigung**.
+                    Kombination aus <strong>Zugspannung</strong> (intern durch Eigenspannung beim Abkühlen/Biegen oder extern durch Nutzlasten) und einem <strong>spezifischen Korrosionsmedium</strong>. Sie führt zu einem extrem plötzlichen, spröden Phänomen (transkristalline oder interkristalline Risse) <strong>ohne plastische Verformung oder Flugrost-Vorankündigung</strong>.
                   </p>
                   <ul className="text-xs text-slate-650 font-bold space-y-0.5 list-disc pl-4 mt-1">
                     <li><span className="font-semibold">Austenitische Edelstähle:</span> Sensibilisiert durch chloridhaltige Medien (klassischer Einsturz von Schwimmbaddächern).</li>
@@ -763,7 +763,7 @@ export default function Metallkorrosion() {
                     7. Corrosion Under Insulation (CUI / Korrosion unter Isolierungen)
                   </span>
                   <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Ein enormes, verdecktes Schadensbild in Chemie- und Heizungsanlagen. Unter Dämmstoffen (z. B. Mineralwolle), die unbemerkt Feuchtigkeit aufsaugen (Leckage, Regen, Kondensat), bilden sich dauerhafte Feuchtigkeitsnester. Salze (Chloride, Sulfate) reichern sich zyklisch an und konzentrieren sich im Temperaturbereich von **50 °C bis 150 °C**, was die lokale Korrosionsgeschwindigkeit exponentiell eskaliert. Da die Rohre optisch verdeckt sind, wird CUI meist erst bei Leckagen entdeckt.
+                    Ein enormes, verdecktes Schadensbild in Chemie- und Heizungsanlagen. Unter Dämmstoffen (z. B. Mineralwolle), die unbemerkt Feuchtigkeit aufsaugen (Leckage, Regen, Kondensat), bilden sich dauerhafte Feuchtigkeitsnester. Salze (Chloride, Sulfate) reichern sich zyklisch an und konzentrieren sich im Temperaturbereich von <strong>50 °C bis 150 °C</strong>, was die lokale Korrosionsgeschwindigkeit exponentiell eskaliert. Da die Rohre optisch verdeckt sind, wird CUI meist erst bei Leckagen entdeckt.
                   </p>
                 </div>
               </div>
@@ -829,7 +829,7 @@ export default function Metallkorrosion() {
                     <div className="flex flex-col gap-1">
                       <strong className="text-xs text-slate-900 font-bold">Kantenabrundung (Kantenflucht vermeiden)</strong>
                       <span className="text-xs text-slate-600 leading-normal font-medium">
-                        Flüssige Lacke ziehen sich beim Trocknen durch Oberflächenspannung von scharfen Ecken zusammen. Kanten müssen zwingend mit einem Radius von **r ≥ 2 mm** abgerundet oder gefast werden, um eine homogene Schutzschichtdicke zu sichern (Norm ISO 12944-3).
+                        Flüssige Lacke ziehen sich beim Trocknen durch Oberflächenspannung von scharfen Ecken zusammen. Kanten müssen zwingend mit einem Radius von <strong>r ≥ 2 mm</strong> abgerundet oder gefast werden, um eine homogene Schutzschichtdicke zu sichern (Norm ISO 12944-3).
                       </span>
                     </div>
                   </div>

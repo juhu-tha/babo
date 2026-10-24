@@ -361,7 +361,7 @@ export default function Zustandsbewertung() {
               </p>
               <ul className="list-disc pl-5 space-y-1 mt-1">
                 <li><strong>Basiszahl:</strong> Je Bauteilgruppe ergibt sich eine Basiszahl aus der ungünstigsten Einzelbewertung (S, V, D).</li>
-                <li><strong>Zu- und Abschläge:</strong> Schadensumfang und Anzahl der Schäden führen zu Zu- bzw. Abschlägen; feste Inkremente je Nebenmangel gibt es nicht.</li>
+                <li><strong>Zu- und Abschläge:</strong> Schadensumfang und Anzahl der Schäden führen zu Zu- bzw. Abschlägen. Der Rechner setzt didaktisch vereinfacht +0,1 je weiterem Schaden an; feste Inkremente schreibt das Regelwerk nicht vor.</li>
                 <li><strong>Bauwerksnote:</strong> Maßgebend ist die ungünstigste Bauteilgruppe (Notenbereich 1,0 bis 4,0).</li>
               </ul>
             </div>

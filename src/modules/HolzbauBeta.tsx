@@ -291,6 +291,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
     return {
       rho_k,
+      factor_alpha,
       f_ax_alpha_k,
       F_ax_Rk_total_kN,
       F_ax_Rd_total_kN,
@@ -1006,7 +1007,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 hover:border-amber-400 transition-all flex flex-col gap-3">
               <span className="text-[10px] font-black text-amber-800 uppercase tracking-widest">Bauweise C</span>
-              <h3 className="font-extrabold text-text-main text-base">Draht- &amp; Skelettbau (Zimmerer)</h3>
+              <h3 className="font-extrabold text-text-main text-base">Holzskelettbau (Pfosten-Riegel-Bauweise)</h3>
               <p className="text-xs text-text-main/70 leading-relaxed">
                 Pfosten-Riegel-System unter Verwendung von Brettschichtholz (BSH/Leimholz) für weitspannende Riegelträger und schwere Druckstützen. Die Fassadenausfachung erfolgt getrennt (großflächige Glasflächen oder eingehängte Tafelsysteme).
               </p>
@@ -1607,7 +1608,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                       <span className="font-mono text-emerald-800">{formatDeZahl(connResults.F_ax_Rd_total_kN, 1)} kN</span>
                     </span>
                     <p className="text-[10px] text-text-main/60 pl-2 leading-relaxed">
-                      Erhöhte Auszugsfestigkeit dank Dichteverhältnis <InlineMath math="(\rho_k/350)^{0{,}8}" />. Wirksamer Eindrehwinkel-Koeffizient bei {formatDeWert(connAngle)}° beträgt <span className="font-bold">{connAngle === 45 ? '1,09' : '1,00'}</span>.
+                      Erhöhte Auszugsfestigkeit dank Dichteverhältnis <InlineMath math="(\rho_k/350)^{0{,}8}" />. Wirksamer Eindrehwinkel-Koeffizient <InlineMath math="1/(1{,}2\cos^2\alpha + \sin^2\alpha)" /> bei {formatDeWert(connAngle)}° beträgt <span className="font-bold">{formatDeZahl(connResults.factor_alpha, 3)}</span>{connResults.factor_alpha < 1 ? ' (Abminderung gegenüber 90°)' : ''}.
                     </p>
                   </div>
 

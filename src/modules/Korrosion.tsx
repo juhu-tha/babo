@@ -480,7 +480,7 @@ export default function Korrosion() {
   const [co2Konz, setCo2Konz] = useState(0.04); // Vol.-% (natürlich)
   const [co2KonzSchnell, setCo2KonzSchnell] = useState(2.0); // Vol.-% (Kammer)
   const [tSchnell, setTSchnell] = useState(28); // Tage
-  const [kKarbSchnell, setKKarbSchnell] = useState(15.0); // mm/sqrt(d)
+  const [kKarbSchnell, setKKarbSchnell] = useState(2.0); // mm/sqrt(d)
 
   const chloridChartData = useMemo(() => {
     const depths = Array.from({ length: 101 }, (_, i) => i); // 0 to 100 mm
@@ -583,8 +583,8 @@ export default function Korrosion() {
     const depthsSchnell = days.map((day) => kKarbSchnell * Math.sqrt(day));
 
     // Umrechnung auf natürliche Karbonatisierung (vereinfachtes Modell)
-    // K_nat = K_schnell * sqrt(CO2_nat / CO2_schnell)
-    const kNatEquivalent = kKarbSchnell * Math.sqrt(co2Konz / co2KonzSchnell);
+    // K_nat = K_schnell * sqrt(CO2_nat / CO2_schnell); K_schnell in mm/√d -> Umrechnung in mm/√a mit √365
+    const kNatEquivalent = kKarbSchnell * Math.sqrt(co2Konz / co2KonzSchnell) * Math.sqrt(365);
 
     // d_c_nat = K_nat * sqrt(t_jahre) -> Umrechnung Tage in Jahre für den Vergleich
     const depthsNatEquivalent = days.map(

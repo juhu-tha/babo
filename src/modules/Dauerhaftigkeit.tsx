@@ -564,7 +564,7 @@ function BetonDauerhaftigkeitsSimulator() {
                 onChange={(e) => setCnom(parseInt(e.target.value))}
                 className="w-full accent-slate-700"
               />
-              <span className="text-xs text-slate-400 block mt-0.5">Vorgeschrieben sind i.d.R. c_min (z.B. 25-35mm) + 10mm Vorhaltemaß.</span>
+              <span className="text-xs text-slate-400 block mt-0.5">Vorgeschrieben ist c_nom = c_min + Δc_dev mit c_min,dur z. B. 20–40 mm und Δc_dev = 15 mm (nur XC1: 10 mm) nach NA.</span>
             </div>
 
             <div>
@@ -906,7 +906,7 @@ function MetalDurabilitySimulator() {
                 <span className="text-base font-black text-slate-700 font-mono">
                   {formatDeZahl(totalZincLoss, 1)} μm
                 </span>
-                <span className="text-xs text-slate-400 block mt-0.5 font-mono">({formatDeZahl(totalZincLoss / 1.4, 1)} a Schutzzeit bei Z80)</span>
+                <span className="text-xs text-slate-400 block mt-0.5 font-mono">({formatDeZahl(80 / chosen.zincLoss, 0)} a Schutzzeit bei 80 μm Zink)</span>
               </div>
             </div>
             <p className="text-xs text-slate-500 leading-normal italic">
@@ -1612,7 +1612,7 @@ export default function Dauerhaftigkeit() {
                   <p className="text-sm text-gray-700 mb-3">Die planmäßige Dauerhaftigkeit des Stahlbetons gliedert sich in folgende bautechnische Maßnahmen:</p>
                   <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
                     <li><strong>Zementstein-Kapillarität (w/z-Wert):</strong> Der Wasserzementwert beschreibt das Massenverhältnis von freiem Wasser zu Zement. Ein optimaler w/z-Wert (≤ 0,45–0,50) garantiert, dass die kapillaren Transportkanäle während der Zementhydratation weitgehend abgebunden und segmentiert werden. Dies minimiert die Diffusionsgeschwindigkeit von CO₂ und Chloriden.</li>
-                    <li><strong>Betondeckung (<FormulaText text="$c_{\text{nom}}$" />):</strong> Berechnet sich aus dem Mindestwert (<FormulaText text="$c_{\text{min}}$" />) zur Gewährleistung der dauerhaften Verbundfestigkeit und des Korrosionsschutzes plus einem Sicherheits-Vorhaltemaß (<FormulaText text="$\Delta c_{\text{dev}}$" />, i.d.R. 10 mm, im Fertigteilwerk reduzierbar auf 5 mm). Sie fungiert als zeitliche physikalische Barriere gegen die Karbonatisierungsfront.</li>
+                    <li><strong>Betondeckung (<FormulaText text="$c_{\text{nom}}$" />):</strong> Berechnet sich aus dem Mindestwert (<FormulaText text="$c_{\text{min}}$" />) zur Gewährleistung der dauerhaften Verbundfestigkeit und des Korrosionsschutzes plus einem Sicherheits-Vorhaltemaß (<FormulaText text="$\Delta c_{\text{dev}}$" />, nach NA 15 mm, für XC1 10 mm; bei überwachter Herstellung, z. B. im Fertigteilwerk, um 5 mm reduzierbar). Sie fungiert als zeitliche physikalische Barriere gegen die Karbonatisierungsfront.</li>
                     <li><strong>Rissbreitenbeschränkung (<FormulaText text="$w_k$" />):</strong> Durch gezielte Bewehrungsaufteilung gegen Eigen- und Formzwang wird die kalkulatorische Rissbreite unter Gebrauchslast auf <FormulaText text="$w_k \le 0{,}3 \text{ mm}$" /> (oder <FormulaText text="$0{,}2 \text{ mm}$" /> bei XC/XD-Beaufschlagung) begrenzt, um das ungehinderte Einströmen korrosionsauslösender Medien direkt auf den blanken Stahl zu unterbinden.</li>
                     <li><strong>Sorgfältige Nachbehandlung:</strong> Schutz des Frischbetons vor Austrocknung (z.B. durch Abdecken, Folien oder chemische Curing-Filme) sichert das Wasser für die Hydratation der oberflächennahen Randschicht. Nur so entsteht dort ein porenarmes, widerstandsfähiges Gefüge.</li>
                   </ul>
@@ -1936,16 +1936,16 @@ export default function Dauerhaftigkeit() {
         schritte={[
           { titel: 'Verbund', erklaerung: 'Stabdurchmesser der Längsbewehrung 16 mm:', formel: 'c_{min,b} = \\varnothing = 16\\,\\text{mm}' },
           { titel: 'Dauerhaftigkeit', erklaerung: 'Maßgebend ist die Klasse mit der größten Anforderung: XD3 verlangt c_min,dur = 40 mm (XC3 nur 20 mm).', formel: 'c_{min} = \\max\\{16;\\; 40;\\; 10\\} = 40\\,\\text{mm}' },
-          { titel: 'Vorhaltemaß', erklaerung: 'Nach NA für XC2 bis XS3: Δc_dev = 15 mm.', formel: 'c_{nom} = 40 + 15 = 55\\,\\text{mm}' }
+          { titel: 'Vorhaltemaß', erklaerung: 'Nach NA: Δc_dev = 15 mm (nur XC1: 10 mm).', formel: 'c_{nom} = 40 + 15 = 55\\,\\text{mm}' }
         ]}
         ergebnisHinweis="Zusätzlich gilt für XD3 nach DIN 1045-2: max. w/z = 0,45, Mindestfestigkeitsklasse C35/45, Mindestzementgehalt 320 kg/m³. Bei befahrenen Parkdecks ist ein rissüberbrückendes Oberflächenschutzsystem vorzusehen."
         normQuelle="DIN EN 1992-1-1:2011-01 + NA, 4.4.1; DIN 1045-2:2023-08"
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Wie wichtig ist das Vorhaltemaß? Karbonatisierung einer Außenwand (XC4)"
+        title="Beispiel 2: Wie wichtig ist das Vorhaltemaß? Karbonatisierung einer Außenwand (XC4, poröser Beton)"
         zielGleichung="t_{krit} = \left(\frac{c}{k}\right)^2"
         schritte={[
-          { titel: 'Annahmen', erklaerung: 'Karbonatisierungsbeiwert k = 4,0 mm/√a (Lehrwert für eine Außenwand), Nennmaß c_nom = 40 mm, Mindestmaß c_min = 25 mm.', formel: 'x_c(t) = 4{,}0 \\cdot \\sqrt{t}' },
+          { titel: 'Annahmen', erklaerung: 'Karbonatisierungsbeiwert k = 4,0 mm/√a (ungünstiger Lehrwert für einen porösen Beton; das Rechner-Preset XC4 setzt für dichten Beton k = 1,5 mm/√a an), Nennmaß c_nom = 40 mm, Mindestmaß c_min = 25 mm.', formel: 'x_c(t) = 4{,}0 \\cdot \\sqrt{t}' },
           { titel: 'Planmäßige Deckung', erklaerung: 'Mit dem Nennmaß:', formel: 't_{krit} = (40 / 4{,}0)^2 = 100\\,\\text{a}' },
           { titel: 'Ungünstig verlegte Bewehrung', erklaerung: 'Nur das Mindestmaß erreicht:', formel: 't_{krit} = (25 / 4{,}0)^2 = 39\\,\\text{a}' }
         ]}

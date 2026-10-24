@@ -975,14 +975,14 @@ export default function LCC() {
             </p>
             <ul className="list-disc pl-5 space-y-2 text-xs">
               <li><strong>KG 100 (Kapitalkosten):</strong> Verzinsung des eingesetzten Kapitals, Abschreibungen, Kredite.</li>
-              <li><strong>KG 200 (Betriebskosten):</strong> Kosten für Energieträger (Strom, Fernwärme, Gas), Frisch- und Abwasser, Reinigungspflege sowie technischer Betriebdienst.</li>
-              <li><strong>KG 300 (Instandhaltungskosten):</strong> Bauliche Wartungsarbeiten, Schönheitsreparaturen und der zyklische baustoff-spezifische Austausch einzelner Verschleißteile (z. B. Fensterflügel nach 30 Jahren).</li>
-              <li><strong>KG 400 (Sonstige Nutzungskosten):</strong> Versicherungen, Steuern, Liegenschaftsabgaben und Verwaltungsaufwendungen.</li>
+              <li><strong>KG 200 (Objektmanagementkosten):</strong> Personal- und Sachkosten für Verwaltung, Steuerung und Kontrolle des Objekts.</li>
+              <li><strong>KG 300 (Betriebskosten):</strong> Versorgung (Strom, Fernwärme, Gas, Wasser), Entsorgung (Abwasser, Abfall), Reinigung und Pflege, Bedienung, Inspektion und Wartung, Sicherheitsdienste sowie Abgaben und Beiträge (Steuern, Versicherungen).</li>
+              <li><strong>KG 400 (Instandsetzungskosten):</strong> Wiederherstellung des Soll-Zustands von Baukonstruktion, technischen Anlagen und Außenanlagen, einschließlich des zyklischen baustoffspezifischen Austauschs von Bauteilen (z. B. Fensterflügel nach 30 Jahren).</li>
             </ul>
 
             <h4 className="font-bold text-slate-900 text-base pt-2">2. Die mathematische Barwertmethode (Net Present Value - NPV)</h4>
             <p>
-              Finanzmathematisch wird der Umstand modelliert, dass zukünftiges Geld auf Grund von Opportunitätszinsen und Liquiditätspräferenz heute einen geringeren Sachwert besitzt. LCC nutzt zur Zusammenführung zeitlich unterschiedlich verteilter Kosten die **Barwertmethode**:
+              Finanzmathematisch wird der Umstand modelliert, dass zukünftiges Geld auf Grund von Opportunitätszinsen und Liquiditätspräferenz heute einen geringeren Sachwert besitzt. LCC nutzt zur Zusammenführung zeitlich unterschiedlich verteilter Kosten die <strong>Barwertmethode</strong>:
             </p>
             
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 font-mono text-xs my-3">

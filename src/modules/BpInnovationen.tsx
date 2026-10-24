@@ -349,7 +349,7 @@ export default function BpInnovationen() {
               </h3>
               <p className="text-xs text-text-main/80 leading-relaxed font-normal">
                 Die TRL-Skala (ursprünglich von der NASA in den 1970er Jahren entwickelt und heute von der Europäischen Kommission 
-                nach <strong>DIN EN ISO 16290</strong> standardisiert) misst den technischen Reifegrad einer Innovation auf einer Skala von 1 bis 9. 
+                nach <strong>ISO 16290:2013</strong> standardisiert) misst den technischen Reifegrad einer Innovation auf einer Skala von 1 bis 9. 
                 Im Bauwesen unterscheidet man drei übergeordnete Abschnitte: <strong>Forschung (TRL 1–3)</strong>, 
                 <strong>Entwicklung &amp; Prototyp (TRL 4–6)</strong> sowie <strong>Zulassung &amp; Marktreife (TRL 7–9)</strong>.
               </p>

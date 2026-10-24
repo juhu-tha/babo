@@ -108,8 +108,9 @@ export default function Materialpaesse() {
   const circularityIndex = Math.round((recycledInput + outputCircularity) / 2);
 
   // 3. Biogenic CO2 carbon storage calculation
-  // Timber stores roughly 0.9 tons of biogenic CO2 per ton of softwood
-  const carbonStoredTons = Math.round(woodTons * 0.95);
+  // Biogener Kohlenstoff: ca. 50 % C in darrtrockenem Holz -> 0,5 * 44/12 ≈ 1,83 t CO2 je t Holz
+  // (Rohdichte 0,5 t/m³ hier vereinfacht als darrtrockene Masse angesetzt; EN 16449)
+  const carbonStoredTons = Math.round(woodTons * 0.5 * 44 / 12);
 
   // 4. Urban Mining Potential / Restwert calculation
   // If glued, concrete has negative value (tipping fee) because you can't reuse or separate it.

@@ -41,10 +41,11 @@ export default function Erdbau() {
       if (relativKies > 50) return { gruppe: 'GU / GT', name: 'Kies-Schluff- / Kies-Ton-Gemisch', frost: 'F2', tauglich: 'Tragfähig, aber bedingt frostempfindlich.' };
       return { gruppe: 'SU / ST', name: 'Sand-Schluff- / Sand-Ton-Gemisch', frost: 'F2', tauglich: 'Tragfähig, aber bedingt frostempfindlich.' };
     } else if (feinanteil > 15 && feinanteil <= 40) {
-      // Bindig oder gemischtkörnig
-      if (plastizitaet === 'ausgeprägt') return { gruppe: 'TA / TM', name: 'Ton, ausgeprägt bis mittelplastisch', frost: 'F3', tauglich: 'Setzungsempfindlich, sehr frostempfindlich.' };
-      return { gruppe: 'TL / UM / UL', name: 'Leichtplastischer Ton / Schluff', frost: 'F3', tauglich: 'Witterungsempfindlich, sehr frostempfindlich.' };
+      // Gemischtkörnig mit hohem Feinanteil (DIN 18196: 15–40 %); feinkörnig erst > 40 %
+      if (relativKies > 50) return { gruppe: 'GU* / GT*', name: 'Kies-Schluff- / Kies-Ton-Gemisch (hoher Feinanteil)', frost: 'F3', tauglich: 'Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich.' };
+      return { gruppe: 'SU* / ST*', name: 'Sand-Schluff- / Sand-Ton-Gemisch (hoher Feinanteil)', frost: 'F3', tauglich: 'Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich.' };
     } else {
+      // Feinkörnig (Feinanteil > 40 %)
       if (plastizitaet === 'ausgeprägt') return { gruppe: 'TA', name: 'Ausgeprägt plastischer Ton', frost: 'F3', tauglich: 'Stark setzungsempfindlich, sehr frostempfindlich.' };
       return { gruppe: 'UL / UM', name: 'Feinkörniger Schluff', frost: 'F3', tauglich: 'Extrem witterungsempfindlich (fließt bei Wasserzutritt), frostempfindlich.' };
     }
@@ -214,7 +215,7 @@ export default function Erdbau() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-off-white p-6 rounded-xl border border-home-grau/30 flex flex-col gap-5">
                 <h3 className="text-xl font-bold text-text-main flex items-center gap-2">Kornzusammensetzung</h3>
-                <Slider label="Feinanteil < 0,063 mm" min={0} max={100} step={1} value={feinanteil} unit="%" info="Entscheidet, ob der Boden rollig (< 5%), gemischtkörnig (5-15%) oder bindig (> 15-40%) is." onChange={(e) => setFeinanteil(Number(e.target.value))} />
+                <Slider label="Feinanteil < 0,063 mm" min={0} max={100} step={1} value={feinanteil} unit="%" info="Nach DIN 18196: grobkörnig (≤ 5 %), gemischtkörnig (5–15 %: GU/GT/SU/ST; 15–40 %: GU*/GT*/SU*/ST*) oder feinkörnig/bindig (> 40 %)." onChange={(e) => setFeinanteil(Number(e.target.value))} />
                 {feinanteil < 80 && (
                   <div className="bg-white p-4 rounded border border-home-grau/30 space-y-3">
                     <div className="text-xs font-bold text-home-grau uppercase mb-2">Aufteilung Grobkorn (über 0,063 mm)</div>

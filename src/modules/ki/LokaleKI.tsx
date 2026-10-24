@@ -223,7 +223,7 @@ export default function LokaleKI() {
                   <span>Modell suchen &amp; herunterladen (Lupen-Symbol)</span>
                 </div>
                 <p className="text-xxs text-text-main/70 leading-relaxed pl-8">
-                  Klicken Sie in der linken Seitenleiste auf das <strong>Lupen-Symbol (Search)</strong>. Geben Sie ins Suchfeld z. B. <code className="bg-white px-1.5 py-0.5 rounded border font-mono">Qwen2.5-14B-Instruct-GGUF</code> oder <code className="bg-white px-1.5 py-0.5 rounded border font-mono">Llama-3.1-8B-Instruct-GGUF</code> ein. LM Studio durchsucht live die Hugging Face Modell-Datenbank.
+                  Klicken Sie in der linken Seitenleiste auf das <strong>Lupen-Symbol (Search)</strong>. Geben Sie ins Suchfeld z. B. <code className="bg-white px-1.5 py-0.5 rounded border font-mono">Qwen3-14B-GGUF</code> oder <code className="bg-white px-1.5 py-0.5 rounded border font-mono">Llama-3.1-8B-Instruct-GGUF</code> ein. LM Studio durchsucht live die Hugging Face Modell-Datenbank.
                 </p>
               </div>
 
@@ -238,7 +238,7 @@ export default function LokaleKI() {
                     Rechts erscheint eine Liste verschiedener Quantisierungsstufen. Wählen Sie im Zweifel stets <strong>Q4_K_M</strong> (4-Bit Medium) oder <strong>Q5_K_M</strong> (5-Bit Medium).
                   </p>
                   <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-xxs">
-                    <strong>Faustregel für Bauingenieure:</strong> Q4_K_M halbiert den RAM/VRAM-Bedarf des Modells gegenüber dem Original bei nur ca. 1-2 % Qualitätsverlust. Farbindikatoren in LM Studio (Grün = passt komplett in Ihren VRAM, Gelb = benötigt teilweise CPU-RAM, Rot = zu groß) warnen Sie vor Systemüberlastung.
+                    <strong>Faustregel für Bauingenieure:</strong> Q4_K_M (ca. 4,8 bit je Gewicht) senkt den RAM/VRAM-Bedarf gegenüber dem 16-Bit-Original (FP16) um rund 70 % bei nur geringem Qualitätsverlust. Farbindikatoren in LM Studio (Grün = passt komplett in Ihren VRAM, Gelb = benötigt teilweise CPU-RAM, Rot = zu groß) warnen Sie vor Systemüberlastung.
                   </div>
                 </div>
               </div>
@@ -324,7 +324,7 @@ Kennzeichne Schätzungen klar als solche. Erfinde niemals Normenabsätze oder Si
               </div>
               <h4 className="font-bold text-xs text-text-main">Reproduzierbarkeit &amp; Beständigkeit</h4>
               <p className="text-xxs text-text-main/70 leading-relaxed">
-                Cloud-Anbieter ändern Modelle im Hintergrund ("Drift"). Ein lokal gespeichertes Modell (z. B. Qwen 3.8 14B Q5) liefert auch in 5 Jahren bei der Überprüfung eines Schadensgutachtens dieselben konsistenten Ergebnisse.
+                Cloud-Anbieter ändern Modelle im Hintergrund ("Drift"). Ein lokal gespeichertes Modell (z. B. Qwen3 14B Q5_K_M) liefert auch in 5 Jahren bei der Überprüfung eines Schadensgutachtens dieselben konsistenten Ergebnisse.
               </p>
             </div>
 
@@ -470,7 +470,7 @@ Kennzeichne Schätzungen klar als solche. Erfinde niemals Normenabsätze oder Si
               <h5 className="font-bold text-xs text-text-main">Server in LM Studio aktivieren:</h5>
               <ol className="list-decimal list-inside space-y-1 text-xxs pl-1 text-text-main/70">
                 <li>Klicken Sie links auf das <strong>Doppelpfeil- / Server-Symbol (&lt;-&gt;)</strong>.</li>
-                <li>Wählen Sie oben das geladene Modell aus (z. B. Qwen 3.8 Coder 32B).</li>
+                <li>Wählen Sie oben das geladene Modell aus (z. B. Qwen2.5-Coder 32B Instruct).</li>
                 <li>Klicken Sie auf den grünen Button <strong>"Start Server"</strong>.</li>
                 <li>Der Server lauscht nun auf Port 1234: <code className="font-mono text-text-main bg-white px-1 rounded">http://localhost:1234/v1</code>.</li>
               </ol>

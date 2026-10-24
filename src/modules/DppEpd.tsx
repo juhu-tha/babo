@@ -867,7 +867,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                       <tr className="border-b border-home-grau/30 hover:bg-slate-50">
                         <td className="py-3 px-2">
                           <div className="font-bold text-slate-900">AP <InfoTooltip text="Acidification Potential (Versauerungspotenzial von Boden und Wasser)" /></div>
-                          <div className="text-xs text-slate-500">[kg SO₂-Äqv.]</div>
+                          <div className="text-xs text-slate-500">[mol H⁺-Äqv.]</div>
                         </td>
                         <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a1a3.ap, 3)}</td>
                         <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a4.ap, 3)}</td>
@@ -876,8 +876,8 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                       </tr>
                       <tr className="border-b border-home-grau/30 hover:bg-slate-50">
                         <td className="py-3 px-2">
-                          <div className="font-bold text-slate-900">EP <InfoTooltip text="Eutrophication Potential (Eutrophierungspotenzial / Überdüngung)" /></div>
-                          <div className="text-xs text-slate-500">[kg PO₄³⁻-Äqv.]</div>
+                          <div className="font-bold text-slate-900">EP <InfoTooltip text="Eutrophication Potential, Süßwasser (Eutrophierungspotenzial / Überdüngung; nach EN 15804+A2 zusätzlich Meer [kg N-Äqv.] und terrestrisch [mol N-Äqv.])" /></div>
+                          <div className="text-xs text-slate-500">[kg P-Äqv.]</div>
                         </td>
                         <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a1a3.ep, 3)}</td>
                         <td className="py-3 px-2 text-right font-mono">{formatDeZahl(selectedEpd.phasen.a4.ep, 3)}</td>
