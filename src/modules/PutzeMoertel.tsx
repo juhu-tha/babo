@@ -1166,11 +1166,11 @@ export default function PutzeMoertel() {
                   Die Formel nach Künzel (Schlagregenschutz)
                 </span>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Um zu ermitteln, ob ein Außenputz die Tragwand im Winter trocken hält, gilt die anerkannte Schlagregen-Formel nach Helmut Künzel (Fraunhofer-Institut für Bauphysik). Sie setzt den kapillaren Saugkoeffizienten <InlineMath math="w" /> und die Wasserdampf-Diffusionswiderstandszahl <InlineMath math="s_d" /> in ein ausgewogenes Verhältnis.
+                  Um zu ermitteln, ob ein Außenputz die Tragwand im Winter trocken hält, gilt die anerkannte Schlagregen-Formel nach Helmut Künzel (Fraunhofer-Institut für Bauphysik). Sie setzt den kapillaren Saugkoeffizienten <InlineMath math="w" /> und die diffusionsäquivalente Luftschichtdicke <InlineMath math="s_d" /> in ein ausgewogenes Verhältnis.
                 </p>
                 <div className="bg-[#FCFAF7] border border-home-grau/25 p-3 rounded-lg text-xs leading-relaxed text-slate-800 text-center">
                   <strong className="block mb-1 text-[11px] text-text-main font-bold">Künzel-Kriterienpaar (Optimalbereich):</strong>
-                  <BlockMath math="w \cdot s_d \le 0{,}2\,\frac{\text{kg}}{\text{m}^2 \cdot \text{h}^{0{,}5} \cdot \text{m}}" />
+                  <BlockMath math="w \cdot s_d \le 0{,}2\,\text{kg}/(\text{m}\cdot\text{h}^{0{,}5})" />
                   <div className="mt-1 text-[11px] text-slate-600">
                     <InlineMath math="w \le 0{,}5\,\text{kg}/(\text{m}^2\cdot\text{h}^{0{,}5})" /> (wasserabweisend) | <InlineMath math="s_d \le 2{,}0\,\text{m}" /> (diffusionsoffen)
                   </div>

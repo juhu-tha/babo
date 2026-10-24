@@ -201,8 +201,8 @@ export default function DaemmungVergleich() {
         ]}
         formeln={[
           {
-            formel: '\\theta_i = T_{\\text{innen}} - \\frac{R_{si}}{R_T} \\cdot (T_{\\text{innen}} - T_{\\text{aussen}})',
-            erklaerung: 'Innentemperatur der Wandoberfläche theta_i: Liegt diese unter der Taupunkttemperatur der Raumluft (bzw. f_Rsi < 0,70), droht Schimmelpilzbildung bzw. Tauwasserausfall.',
+            formel: '\\theta_{si} = T_{\\text{innen}} - \\frac{R_{si}}{R_T} \\cdot (T_{\\text{innen}} - T_{\\text{aussen}})',
+            erklaerung: 'Innere Oberflächentemperatur der Wand $\\theta_{si}$: Schimmelpilzbildung droht bereits, wenn an der Oberfläche 80 % r. F. erreicht werden (bei 20 °C / 50 % r. F. innen ab ca. 12,6 °C, d. h. $f_{Rsi} < 0{,}70$) – also oberhalb der Taupunkttemperatur (ca. 9,3 °C). Erst unterhalb des Taupunkts fällt Tauwasser aus.',
             quelle: 'DIN EN ISO 6946; DIN 4108-2'
           },
           {

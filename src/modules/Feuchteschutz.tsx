@@ -41,7 +41,7 @@ const MAT_LIBRARY: Material[] = [
   { id: 'innenputz_gips', name: 'Gips-Innenputz', mu: 10, defaultD: 0.015, lambda: 0.35 },
   { id: 'kalksandstein', name: 'Kalksandstein-Mauerwerk', mu: 15, defaultD: 0.175, lambda: 0.99 },
   { id: 'ziegel_hochloch', name: 'Hochlochziegel-Mauerwerk', mu: 5, defaultD: 0.24, lambda: 0.42 },
-  { id: 'beton_arm', name: 'Stahlbeton (tragend)', mu: 80, defaultD: 0.20, lambda: 2.30 },
+  { id: 'beton_arm', name: 'Stahlbeton (tragend, μ 80/130 – hier 80)', mu: 80, defaultD: 0.20, lambda: 2.30 },
   { id: 'porenbeton', name: 'Porenbeton-Planstein', mu: 10, defaultD: 0.305, lambda: 0.11 },
   { id: 'mineralwolle', name: 'Mineralwolle (MW) Dämmung', mu: 1, defaultD: 0.16, lambda: 0.035 },
   { id: 'eps', name: 'EPS (Polystyrol, WLS 035)', mu: 50, defaultD: 0.16, lambda: 0.035 },
