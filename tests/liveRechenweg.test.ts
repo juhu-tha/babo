@@ -16,7 +16,7 @@ for (const rel of dateien) {
     if (!m[1].includes('${')) fehler.push(`${rel}: live-Box ohne eingesetzte Werte`);
   }
 }
-const MIN_LIVE = 0; // Ratsche, Ziel ≥ 20
+const MIN_LIVE = 24; // Ratsche (Ziel ≥ 20 erreicht)
 if (live < MIN_LIVE) fehler.push(`nur ${live} Live-Rechenwege (mindestens ${MIN_LIVE})`);
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log(`OK: ${live} Live-Rechenwege`);

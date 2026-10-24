@@ -940,7 +940,7 @@ export default function Spannbeton() {
           <FormulaDerivationBox
             live
             title={timeState === 'short_term' ? 'Ihr Rechenweg: Randspannungen beim Spannen (t = 0)' : 'Ihr Rechenweg: Randspannungen im Endzustand (t = ∞)'}
-            zielGleichung={`\\sigma_{o/u} = -\\frac{P}{A_c} \\pm \\frac{P \\cdot e_p}{W} \\mp \\frac{M}{W} = ${formatDeTeX(materialResults.sigmaTotalTop, 2)} \;/\; ${formatDeTeX(materialResults.sigmaTotalBot, 2)}\\,\\text{N/mm}^2`}
+            zielGleichung={`\\sigma_{o/u} = -\\frac{P}{A_c} \\pm \\frac{P \\cdot e_p}{W} \\mp \\frac{M}{W} = ${formatDeTeX(materialResults.sigmaTotalTop, 2)} \\;/\\; ${formatDeTeX(materialResults.sigmaTotalBot, 2)}\\,\\text{N/mm}^2`}
             normQuelle="DIN EN 1992-1-1 mit NA (DE), 5.10 und 7.2"
             schritte={[
               {
@@ -958,14 +958,14 @@ export default function Spannbeton() {
               {
                 titel: 'Spannungen aus der Vorspannung',
                 erklaerung: 'Zentrischer Anteil −P/A_c und Anteil aus dem Vorspannmoment P · e_p (Zug oben, Druck unten bei Ausmitte nach unten).',
-                formel: `\\sigma_N = -\\frac{${formatDeTeX(materialResults.pEff * 1000, 0)}}{${formatDeTeX(materialResults.ac, 0)}} = ${formatDeTeX(materialResults.sigmaN, 2)};\\quad \\sigma_{P,o/u} = \\pm\\frac{${formatDeTeX(materialResults.pEff * 1000, 0)} \\cdot ${formatDeTeX(ep, 0)}}{${formatDeTeX(materialResults.wTop, 0)}} = ${formatDeTeX(materialResults.sigmaMPTop, 2)} \;/\; ${formatDeTeX(materialResults.sigmaMPBot, 2)}\\,\\text{N/mm}^2`,
+                formel: `\\sigma_N = -\\frac{${formatDeTeX(materialResults.pEff * 1000, 0)}}{${formatDeTeX(materialResults.ac, 0)}} = ${formatDeTeX(materialResults.sigmaN, 2)};\\quad \\sigma_{P,o/u} = \\pm\\frac{${formatDeTeX(materialResults.pEff * 1000, 0)} \\cdot ${formatDeTeX(ep, 0)}}{${formatDeTeX(materialResults.wTop, 0)}} = ${formatDeTeX(materialResults.sigmaMPTop, 2)} \\;/\\; ${formatDeTeX(materialResults.sigmaMPBot, 2)}\\,\\text{N/mm}^2`,
               },
               {
                 titel: timeState === 'short_term' ? 'Spannungen aus dem Eigengewicht' : 'Spannungen aus der charakteristischen Last',
                 erklaerung: timeState === 'short_term'
                   ? 'Beim Spannen wirkt nur das Eigengewicht M_g1.'
                   : 'Im Endzustand wird das Moment der charakteristischen (seltenen) Kombination angesetzt.',
-                formel: `\\sigma_{M,o/u} = \\mp\\frac{${formatDeTeX((timeState === 'short_term' ? mG1 : mChar) * 1e6, 0)}}{${formatDeTeX(materialResults.wTop, 0)}} = ${formatDeTeX(materialResults.sigmaMEdTop, 2)} \;/\; ${formatDeTeX(materialResults.sigmaMEdBot, 2)}\\,\\text{N/mm}^2`,
+                formel: `\\sigma_{M,o/u} = \\mp\\frac{${formatDeTeX((timeState === 'short_term' ? mG1 : mChar) * 1e6, 0)}}{${formatDeTeX(materialResults.wTop, 0)}} = ${formatDeTeX(materialResults.sigmaMEdTop, 2)} \\;/\\; ${formatDeTeX(materialResults.sigmaMEdBot, 2)}\\,\\text{N/mm}^2`,
               },
               {
                 titel: 'Randspannungen (Druck negativ)',

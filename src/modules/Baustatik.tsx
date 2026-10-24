@@ -497,12 +497,12 @@ export default function Baustatik() {
                 {
                   titel: 'Größtes Biegemoment',
                   erklaerung: `Der Momentenverlauf M(x) wird an 101 Stellen ausgewertet; der Betragsgrößtwert liegt bei x = ${formatDeZahl(results.xAbsM, 2)} m.`,
-                  formel: `M(${formatDeTeX(results.xAbsM, 2)}) = ${formatDeTeX(results.mAtMax, 1)}\\,\\text{kNm} \;\\Rightarrow\; |M|_{max} = ${formatDeTeX(results.maxAbsM, 1)}\\,\\text{kNm}`,
+                  formel: `M(${formatDeTeX(results.xAbsM, 2)}) = ${formatDeTeX(results.mAtMax, 1)}\\,\\text{kNm} \\;\\Rightarrow\\; |M|_{max} = ${formatDeTeX(results.maxAbsM, 1)}\\,\\text{kNm}`,
                 },
                 {
                   titel: 'Größte Querkraft',
                   erklaerung: `Der Betragsgrößtwert der Querkraft liegt bei x = ${formatDeZahl(results.xMaxV, 2)} m.`,
-                  formel: `V(${formatDeTeX(results.xMaxV, 2)}) = ${formatDeTeX(results.vAtMax, 1)}\\,\\text{kN} \;\\Rightarrow\; |V|_{max} = ${formatDeTeX(results.maxV, 1)}\\,\\text{kN}`,
+                  formel: `V(${formatDeTeX(results.xMaxV, 2)}) = ${formatDeTeX(results.vAtMax, 1)}\\,\\text{kN} \\;\\Rightarrow\\; |V|_{max} = ${formatDeTeX(results.maxV, 1)}\\,\\text{kN}`,
                 },
               ]}
               ergebnisHinweis={`|M|max = ${formatDeZahl(results.maxAbsM, 1)} kNm, |V|max = ${formatDeZahl(results.maxV, 1)} kN`}

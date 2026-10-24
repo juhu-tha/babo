@@ -917,8 +917,8 @@ export default function Hydratation() {
                   titel: 'Ausschalfrist',
                   erklaerung: `Ausgeschalt werden darf, sobald β_cc(t_e) den gewählten Anteil von ${formatDeZahl(ausschalFestigkeit, 0)} % erreicht.`,
                   formel: ausschalTage > 0
-                    ? `\\beta_{cc}(t_e) \\ge ${formatDeTeX(ausschalFestigkeit / 100, 2)} \;\\Rightarrow\; t = ${formatDeTeX(ausschalTage, 1)}\\,\\text{d}`
-                    : `\\beta_{cc}(t_e) < ${formatDeTeX(ausschalFestigkeit / 100, 2)} \;\\text{bis}\; t = 28\\,\\text{d}`,
+                    ? `\\beta_{cc}(t_e) \\ge ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\;\\Rightarrow\\; t = ${formatDeTeX(ausschalTage, 1)}\\,\\text{d}`
+                    : `\\beta_{cc}(t_e) < ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\;\\text{bis}\\; t = 28\\,\\text{d}`,
                 },
               ]}
               ergebnisHinweis={`Nach 2 Tagen: f_cm = ${formatDeZahl(fc_2d_val, 1)} MPa, f_ctm = ${formatDeZahl(fct_2d_val, 2)} MPa, E_cm = ${formatDeZahl(E_2d_val, 1)} GPa`}

@@ -237,14 +237,14 @@ export default function Stuetzenbemessung() {
                 {
                   titel: 'Ausmitten und maßgebendes Moment',
                   erklaerung: 'Imperfektion e_i = l₀/400 und Mindestausmitte e₀ = max(h/30; 20 mm) werden nicht addiert; maßgebend ist der größere Wert.',
-                  formel: `M_{Ed} = \\max(${formatDeTeX(mEd, 0)} + ${formatDeTeX(nEd, 0)} \\cdot ${formatDeTeX(results.ei_mm / 1000, 4)};\; ${formatDeTeX(nEd, 0)} \\cdot ${formatDeTeX(results.e0_mm / 1000, 3)}) = ${formatDeTeX(results.mEd_1, 2)}\\,\\text{kNm}`,
+                  formel: `M_{Ed} = \\max(${formatDeTeX(mEd, 0)} + ${formatDeTeX(nEd, 0)} \\cdot ${formatDeTeX(results.ei_mm / 1000, 4)};\\; ${formatDeTeX(nEd, 0)} \\cdot ${formatDeTeX(results.e0_mm / 1000, 3)}) = ${formatDeTeX(results.mEd_1, 2)}\\,\\text{kNm}`,
                 },
                 {
                   titel: 'Schlankheit',
                   erklaerung: results.isTheorie2Ordnung
                     ? 'λ > λ_lim: Theorie II. Ordnung wäre erforderlich; das Ergebnis nach Theorie I. Ordnung liegt auf der unsicheren Seite.'
                     : 'λ ≤ λ_lim: Die Bemessung nach Theorie I. Ordnung ist zulässig.',
-                  formel: `\\lambda = \\frac{l_0}{h/\\sqrt{12}} = \\frac{${formatDeTeX(l0, 2)}}{${formatDeTeX(h / 100, 2)}/\\sqrt{12}} = ${formatDeTeX(results.lambda, 1)} \;${results.isTheorie2Ordnung ? '>' : '\\le'}\; \\lambda_{lim} = ${formatDeTeX(results.lambda_lim, 1)}`,
+                  formel: `\\lambda = \\frac{l_0}{h/\\sqrt{12}} = \\frac{${formatDeTeX(l0, 2)}}{${formatDeTeX(h / 100, 2)}/\\sqrt{12}} = ${formatDeTeX(results.lambda, 1)} \\;${results.isTheorie2Ordnung ? '>' : '\\le'}\\; \\lambda_{lim} = ${formatDeTeX(results.lambda_lim, 1)}`,
                 },
                 {
                   titel: 'Bezogene Schnittgrößen',
@@ -257,13 +257,13 @@ export default function Stuetzenbemessung() {
                     ? 'Der Rechner sucht in Schritten von 0,01 das kleinste ω, dessen Interaktionskurve den Punkt (μ_Ed; ν_Ed) umschließt.'
                     : 'Auch mit ω = 2,5 wird der Punkt (μ_Ed; ν_Ed) nicht umschlossen: Der Querschnitt reicht nicht aus.',
                   formel: results.isPossible
-                    ? `\\omega = ${formatDeTeX(results.req_omega, 2)} \;\\Rightarrow\; A_{s,tot} = ${formatDeTeX(results.req_omega, 2)} \\cdot ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(h, 0)} \\cdot \\frac{${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} = ${formatDeTeX(results.as_tot_req, 2)}\\,\\text{cm}^2`
+                    ? `\\omega = ${formatDeTeX(results.req_omega, 2)} \\;\\Rightarrow\\; A_{s,tot} = ${formatDeTeX(results.req_omega, 2)} \\cdot ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(h, 0)} \\cdot \\frac{${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} = ${formatDeTeX(results.as_tot_req, 2)}\\,\\text{cm}^2`
                     : '\\omega > 2{,}5',
                 },
                 {
                   titel: 'Mindestbewehrung und maßgebender Wert',
                   erklaerung: 'Mindestlängsbewehrung nach NA (DE) 9.5.2(2): A_s,min = 0,15 · |N_Ed| / f_yd.',
-                  formel: `A_{s,min} = \\frac{0{,}15 \\cdot ${formatDeTeX(nEd * 1000, 0)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} \\cdot 10^{-2} = ${formatDeTeX(results.as_min, 2)}\\,\\text{cm}^2 \;\\Rightarrow\; A_{s,tot} = ${results.isPossible ? formatDeTeX(results.as_final, 2) : '\\text{–}'}\\,\\text{cm}^2`,
+                  formel: `A_{s,min} = \\frac{0{,}15 \\cdot ${formatDeTeX(nEd * 1000, 0)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} \\cdot 10^{-2} = ${formatDeTeX(results.as_min, 2)}\\,\\text{cm}^2 \\;\\Rightarrow\\; A_{s,tot} = ${results.isPossible ? formatDeTeX(results.as_final, 2) : '\\text{–}'}\\,\\text{cm}^2`,
                 },
               ]}
               ergebnisHinweis={results.isPossible ? `Erforderliche Gesamtbewehrung A_s,tot = ${formatDeZahl(results.as_final, 2)} cm²` : 'Querschnitt nicht ausreichend'}

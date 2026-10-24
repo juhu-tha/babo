@@ -232,7 +232,7 @@ export default function Durchstanzen() {
             <FormulaDerivationBox
               live
               title="Ihr Rechenweg: Durchstanznachweis mit den aktuellen Eingaben"
-              zielGleichung={`v_{Ed} = \\frac{\\beta \\cdot V_{Ed}}{u_1 \\cdot d} = ${formatDeTeX(results.vEd_stress, 3)} \;${results.needsReinforcement ? '>' : '\\le'}\; v_{Rd,c} = ${formatDeTeX(results.vRdc, 3)}\\,\\text{N/mm}^2`}
+              zielGleichung={`v_{Ed} = \\frac{\\beta \\cdot V_{Ed}}{u_1 \\cdot d} = ${formatDeTeX(results.vEd_stress, 3)} \\;${results.needsReinforcement ? '>' : '\\le'}\\; v_{Rd,c} = ${formatDeTeX(results.vRdc, 3)}\\,\\text{N/mm}^2`}
               normQuelle="DIN EN 1992-1-1 mit NA (DE), 6.4"
               schritte={[
                 {
@@ -259,14 +259,14 @@ export default function Durchstanzen() {
                 {
                   titel: 'Durchstanzwiderstand ohne Bewehrung',
                   erklaerung: 'Der größere Wert aus der Bemessungsgleichung und der Mindesttragfähigkeit v_min ist maßgebend.',
-                  formel: `v_{Rd,c} = \\max\\left(${formatDeTeX(results.CRdc, 4)} \\cdot ${formatDeTeX(Math.min(1 + Math.sqrt(200 / d), 2.0), 3)} \\cdot (100 \\cdot ${formatDeTeX(results.rhoL_eff, 4)} \\cdot ${formatDeTeX(fck, 0)})^{1/3};\; v_{min} = ${formatDeTeX((0.0525 / EC2_NA_DE.gammaC) * Math.pow(Math.min(1 + Math.sqrt(200 / d), 2.0), 1.5) * Math.sqrt(fck), 3)}\\right) = ${formatDeTeX(results.vRdc, 3)}\\,\\text{N/mm}^2`,
+                  formel: `v_{Rd,c} = \\max\\left(${formatDeTeX(results.CRdc, 4)} \\cdot ${formatDeTeX(Math.min(1 + Math.sqrt(200 / d), 2.0), 3)} \\cdot (100 \\cdot ${formatDeTeX(results.rhoL_eff, 4)} \\cdot ${formatDeTeX(fck, 0)})^{1/3};\\; v_{min} = ${formatDeTeX((0.0525 / EC2_NA_DE.gammaC) * Math.pow(Math.min(1 + Math.sqrt(200 / d), 2.0), 1.5) * Math.sqrt(fck), 3)}\\right) = ${formatDeTeX(results.vRdc, 3)}\\,\\text{N/mm}^2`,
                 },
                 {
                   titel: 'Maximaltragfähigkeit',
                   erklaerung: results.isOverloaded
                     ? 'v_Ed > v_Rd,max: Der Nachweis ist auch mit Durchstanzbewehrung nicht erfüllbar.'
                     : 'v_Ed ≤ v_Rd,max: Die Maximaltragfähigkeit ist eingehalten.',
-                  formel: `v_{Rd,max} = ${formatDeTeX(EC2_NA_DE.vRdMaxFaktor_u1, 1)} \\cdot ${formatDeTeX(results.vRdc, 3)} = ${formatDeTeX(results.vRdMax, 3)}\\,\\text{N/mm}^2 \;${results.isOverloaded ? '<' : '\\ge'}\; v_{Ed} = ${formatDeTeX(results.vEd_stress, 3)}\\,\\text{N/mm}^2`,
+                  formel: `v_{Rd,max} = ${formatDeTeX(EC2_NA_DE.vRdMaxFaktor_u1, 1)} \\cdot ${formatDeTeX(results.vRdc, 3)} = ${formatDeTeX(results.vRdMax, 3)}\\,\\text{N/mm}^2 \\;${results.isOverloaded ? '<' : '\\ge'}\\; v_{Ed} = ${formatDeTeX(results.vEd_stress, 3)}\\,\\text{N/mm}^2`,
                 },
                 {
                   titel: 'Durchstanzbewehrung je Reihe',

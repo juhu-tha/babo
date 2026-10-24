@@ -285,7 +285,7 @@ export default function Verankerungslaenge() {
                     ? `Zug: α₁ = ${formatDeZahl(results.currentAlpha1, 1)}, das Produkt α₂ · α₃ · α₅ ist nach unten auf 0,7 begrenzt${berechnungsArt === 'uebergreifung' ? `; Stoßanteil α₆ = ${formatDeZahl(results.a6, 2)}` : ''}.`
                     : `Druck: Alle Formbeiwerte sind 1,0${berechnungsArt === 'uebergreifung' ? `; Stoßanteil α₆ = ${formatDeZahl(results.a6, 2)}` : ''}.`,
                   formel: beanspruchung === 'zug'
-                    ? `\\prod \\alpha_i = ${formatDeTeX(results.currentAlpha1, 1)} \\cdot \\max(0{,}7;\; ${formatDeTeX(alpha2, 2)} \\cdot ${formatDeTeX(alpha3, 2)} \\cdot ${formatDeTeX(alpha5, 2)}) \\cdot ${formatDeTeX(results.a6, 2)} = ${formatDeTeX(results.totalAlpha, 3)}`
+                    ? `\\prod \\alpha_i = ${formatDeTeX(results.currentAlpha1, 1)} \\cdot \\max(0{,}7;\\; ${formatDeTeX(alpha2, 2)} \\cdot ${formatDeTeX(alpha3, 2)} \\cdot ${formatDeTeX(alpha5, 2)}) \\cdot ${formatDeTeX(results.a6, 2)} = ${formatDeTeX(results.totalAlpha, 3)}`
                     : `\\prod \\alpha_i = 1{,}0 \\cdot ${formatDeTeX(results.a6, 2)} = ${formatDeTeX(results.totalAlpha, 3)}`,
                 },
                 {
@@ -293,7 +293,7 @@ export default function Verankerungslaenge() {
                   erklaerung: berechnungsArt === 'verankerung'
                     ? `Mindestwert l_b,min = max(${beanspruchung === 'zug' ? '0,3' : '0,6'} · l_b,rqd; 10 Ø; 100 mm) = ${formatDeZahl(results.lbMin, 0)} mm.`
                     : `Mindestwert l_0,min = max(0,3 · α₆ · l_b,rqd; 15 Ø; 200 mm) = ${formatDeZahl(results.lbMin, 0)} mm.`,
-                  formel: `${berechnungsArt === 'verankerung' ? 'l_{bd}' : 'l_0'} = \\max(${formatDeTeX(results.totalAlpha, 3)} \\cdot ${formatDeTeX(results.lbRqd, 0)} \\cdot \\tfrac{${formatDeTeX(asErf, 1)}}{${formatDeTeX(asVorh, 1)}};\; ${formatDeTeX(results.lbMin, 0)}) = ${formatDeTeX(results.lbd, 0)}\\,\\text{mm}`,
+                  formel: `${berechnungsArt === 'verankerung' ? 'l_{bd}' : 'l_0'} = \\max(${formatDeTeX(results.totalAlpha, 3)} \\cdot ${formatDeTeX(results.lbRqd, 0)} \\cdot \\tfrac{${formatDeTeX(asErf, 1)}}{${formatDeTeX(asVorh, 1)}};\\; ${formatDeTeX(results.lbMin, 0)}) = ${formatDeTeX(results.lbd, 0)}\\,\\text{mm}`,
                 },
               ]}
               ergebnisHinweis={`${berechnungsArt === 'verankerung' ? 'l_bd' : 'l_0'} = ${formatDeZahl(results.lbd, 0)} mm (≈ ${formatDeZahl(results.lbd / phi, 1)} Ø)`}
