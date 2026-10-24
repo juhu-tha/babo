@@ -1,4 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { PSI_ABSTANDHALTER, uwFenster } from '@/src/calc/fenster';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
 import { 
   Layers, 
@@ -454,55 +456,14 @@ export default function BpGlaeser() {
   const [selectedGlassId, setSelectedGlassId] = useState<string>('isolierglas_3fach');
   const [selectedWindowId, setSelectedWindowId] = useState<string>('kunststoff_fenster');
 
-  // Spacer Psi values (DIN EN ISO 10077-1)
-  const psiValues = {
-    alu: 0.080,
-    edelstahl: 0.060,
-    warm_edge_kunststoff: 0.038
-  };
-
-  // Calculation of Window Geometry and U_w
+  // U_w nach DIN EN ISO 10077-1 aus dem Rechenkern src/calc/fenster.ts
+  const psiValues = PSI_ABSTANDHALTER;
   const calcResults = useMemo(() => {
-    const Af_total = fensterBreite * fensterHoehe;
-    const b_frame = rahmenBreiteMm / 1000; // in m
-
-    const sichtGlasB = Math.max(0.1, fensterBreite - 2 * b_frame);
-    const sichtGlasH = Math.max(0.1, fensterHoehe - 2 * b_frame);
-
-    const Ag = sichtGlasB * sichtGlasH;
-    const Af = Af_total - Ag;
-    const Lg = 2 * (sichtGlasB + sichtGlasH); // Umfang der Glasscheibe
-
-    const psi = psiValues[abstandhalterTyp];
-
-    // Formula DIN EN ISO 10077-1:
-    // U_w = (A_g * U_g + A_f * U_f + l_g * Psi_g) / (A_g + A_f)
-    const waermestromGlas = Ag * ugWert;
-    const waermestromRahmen = Af * ufWert;
-    const waermestromKante = Lg * psi;
-    const waermestromGesamt = waermestromGlas + waermestromRahmen + waermestromKante;
-    const uw = waermestromGesamt / Af_total;
-
-    // Solar gain: Q_sol = A_g * g * I_sol
-    const solareGewinneWatt = Ag * gWert * sonneneinstrahlung;
-
-    // Energiebilanz nach GEG: Erfüllt GEG 2024 (Uw <= 1.30 W/m²K für Sanierung, 0.95 für KfW 40 / 0.80 Passivhaus)
-    const gegKonform = uw <= 1.30;
-    const passivhausStandard = uw <= 0.80;
-
+    const r = uwFenster({ breite: fensterBreite, hoehe: fensterHoehe, rahmenMm: rahmenBreiteMm, ug: ugWert, uf: ufWert, psi: psiValues[abstandhalterTyp], g: gWert, strahlung: sonneneinstrahlung });
     return {
-      Af_total,
-      Ag,
-      Af,
-      Lg,
-      psi,
-      waermestromGlas,
-      waermestromRahmen,
-      waermestromKante,
-      uw,
-      solareGewinneWatt,
-      gegKonform,
-      passivhausStandard
+      Af_total: r.A, Ag: r.Ag, Af: r.Af, Lg: r.lg, psi: psiValues[abstandhalterTyp],
+      waermestromGlas: r.phiGlas, waermestromRahmen: r.phiRahmen, waermestromKante: r.phiRand,
+      uw: r.uw, solareGewinneWatt: r.solar, gegKonform: r.gegKonform, passivhausStandard: r.passivhaus, hinweise: r.hinweise,
     };
   }, [fensterBreite, fensterHoehe, rahmenBreiteMm, ugWert, ufWert, abstandhalterTyp, gWert, sonneneinstrahlung]);
 
@@ -1375,6 +1336,7 @@ export default function BpGlaeser() {
                     </span>
                   </div>
 
+                  <EingabeHinweise hinweise={calcResults.hinweise} />
                   <div className="text-center my-3">
                     <span className="text-xs text-home-grau font-semibold block">Gesamter Wärmedurchgangskoeffizient</span>
                     <div className="text-4xl font-extrabold text-shiraz font-mono mt-1">

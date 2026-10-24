@@ -1,5 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Volume2 } from 'lucide-react';
+import { rwMassiv, schalldaemmung } from '@/src/calc/schall';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -69,32 +71,23 @@ export default function Schallschutz() {
   }, [layers]);
 
   const schallData = useMemo(() => {
-    // 1. Mass per unit area (m')
-    let m_prime = 0;
-    resolvedLayers.forEach(l => {
-      m_prime += l.d * l.density;
-    });
-
-    // 2. Sound insulation according to DIN 4109-32:
-    // Rw = 30.9 * log10(m'/1) - 22.2 dB für einschalige massive Bauteile (65 <= m' <= 720 kg/m²)
-    let Rw = 0;
-    if (m_prime > 0) {
-      Rw = 30.9 * Math.log10(m_prime / 1) - 22.2;
-    }
-    if (Rw < 0) Rw = 0;
-
+    // Flächenbezogene Masse und R_w nach DIN 4109-32 aus dem Rechenkern src/calc/schall.ts
+    const sd = schalldaemmung(resolvedLayers.map(l => ({ name: l.name, d: l.d, density: l.density })));
+    const m_prime = sd.gueltig ? sd.mStrich : 0;
+    const Rw = sd.gueltig ? Math.max(0, sd.Rw) : 0;
     const isValidRange = m_prime >= 65 && m_prime <= 720;
 
     // Chart Data
     const chartData = [];
     for (let m = 50; m <= 1000; m += 50) {
-      chartData.push({ x: m, y: Math.max(10, 30.9 * Math.log10(m / 1) - 22.2) });
+      chartData.push({ x: m, y: Math.max(10, rwMassiv(m)) });
     }
 
     return {
       m_prime,
       Rw,
       isValidRange,
+      hinweise: sd.hinweise.filter(x => x.feld !== 'm'),
       chartData: {
         datasets: [
           {
@@ -232,6 +225,7 @@ export default function Schallschutz() {
                 </div>
               </div>
 
+              <EingabeHinweise hinweise={schallData.hinweise} />
               {!schallData.isValidRange && (
                 <div className="mt-3 p-3 bg-amber-500/20 border border-amber-300/40 rounded-lg text-amber-200 text-xs">
                   ⚠️ <strong>Gültigkeitsbereich beachten:</strong> Die Formel nach DIN 4109-32 gilt für 65 ≤ m' ≤ 720 kg/m². Der aktuelle Wert liegt außerhalb dieses Bereichs ({formatDeZahl(schallData.m_prime, 1)} kg/m²).
