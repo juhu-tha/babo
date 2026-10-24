@@ -38,7 +38,7 @@ export default function Denkmalpflege() {
               const Icon = tab.icon;
               const isActive = activeSubTab === tab.id;
               return (
-                <button
+                <button aria-pressed={isActive}
                   key={tab.id}
                   onClick={() => setActiveSubTab(tab.id)}
                   className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-start gap-1.5 text-left h-full cursor-pointer group ${

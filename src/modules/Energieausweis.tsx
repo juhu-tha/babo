@@ -421,11 +421,14 @@ export default function Energieausweis() {
 
                 {/* Zeiger */}
                 <div 
-                  className="absolute top-0 -translate-x-1/2 -mt-10 flex flex-col items-center transition-all duration-500 ease-out z-10"
+                  className="absolute top-0 w-0 -mt-10 flex flex-col items-center transition-all duration-500 ease-out z-10"
                   style={getPositionStyle(currentScale.val)}
                 >
-                  <div className="bg-text-main text-white px-2.5 py-1 rounded-lg font-bold text-xs shadow-md whitespace-nowrap">
-                    {formatDeWert(currentScale.val)} kWh/(m²a) [Klasse {currentScale.class}]
+                  <div
+                    className="bg-text-main text-white px-2.5 py-1 rounded-lg font-bold text-xs shadow-md whitespace-nowrap"
+                    style={(() => { const p = Math.min(100, Math.max(0, (currentScale.val / 250) * 100)); return { transform: `translateX(${p > 75 ? -(p - 75) * 1.6 : p < 25 ? (25 - p) * 1.6 : 0}%)` }; })()}
+                  >
+                    {formatDeWert(currentScale.val)}<span className="hidden sm:inline"> kWh/(m²a)</span> [Kl. {currentScale.class}]
                   </div>
                   <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-text-main mt-0.5"></div>
                 </div>

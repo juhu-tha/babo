@@ -222,7 +222,7 @@ export default function FehlerRechtEthik() {
             {/* Fall-Auswahl */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
               {LIMITATION_CASES.map((c) => (
-                <button
+                <button aria-pressed={selectedCase === c.id}
                   key={c.id}
                   onClick={() => setSelectedCase(c.id)}
                   className={`p-3 rounded-xl text-left text-xs transition-all border cursor-pointer ${

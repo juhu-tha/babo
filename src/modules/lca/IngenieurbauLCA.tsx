@@ -161,7 +161,7 @@ export default function IngenieurbauLCA() {
             const Icon = tab.icon;
             const isActive = activeSubTab === tab.id;
             return (
-              <button
+              <button aria-pressed={isActive}
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveSubTab(tab.id)}

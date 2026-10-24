@@ -172,7 +172,7 @@ export default function HistorischeBauweisen() {
           ].map((tab) => {
             const Icon = tab.icon;
             return (
-              <button
+              <button aria-pressed={activeTab === tab.id}
                 key={tab.id}
                 className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                   activeTab === tab.id 

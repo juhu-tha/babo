@@ -423,7 +423,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                             <span className="font-extrabold text-xs sm:text-sm tracking-wide">
                               {layer.name}
                             </span>
-                            <span className="font-mono text-xs font-bold bg-white/20 px-2 py-0.5 rounded">
+                            <span className="font-mono text-xs font-bold bg-black/40 text-white px-2 py-0.5 rounded">
                               h = {formatDeWert(layer.thickness)} cm
                             </span>
                           </div>

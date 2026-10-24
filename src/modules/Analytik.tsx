@@ -116,7 +116,7 @@ const RemEdxInteraction = () => {
           <span className="text-stone-500 font-mono text-xs z-0 relative font-bold uppercase tracking-widest">REM Visualisierung</span>
           
           {points.map((pt) => (
-            <button
+            <button aria-pressed={selectedPoint === pt.id}
               key={pt.id}
               onClick={() => setSelectedPoint(pt.id)}
               className={`absolute w-5 h-5 rounded-full border-[3px] transform -translate-x-1/2 -translate-y-1/2 transition-all shadow-sm z-10 ${selectedPoint === pt.id ? 'bg-purple-500 border-white scale-125 cursor-default' : 'bg-white/50 border-purple-500 hover:scale-110 cursor-pointer animate-pulse'}`}

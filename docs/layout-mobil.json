@@ -294,14 +294,10 @@
   "beispiele": []
  },
  "bp_recht_konformitaet": {
-  "seitlich": 335,
-  "abgeschnitten": 5,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "SPAN.",
-   "SPAN.",
-   "SPAN."
-  ]
+  "beispiele": []
  },
  "bp_recht_normen": {
   "seitlich": 0,
@@ -592,14 +588,10 @@
   "beispiele": []
  },
  "spannbeton": {
-  "seitlich": 4,
-  "abgeschnitten": 5,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "SPAN.",
-   "SPAN.katex",
-   "SPAN.katex-html"
-  ]
+  "beispiele": []
  },
  "wu-bauwerke": {
   "seitlich": 0,
@@ -674,14 +666,10 @@
   "beispiele": []
  },
  "materialmodelle": {
-  "seitlich": 8,
-  "abgeschnitten": 3,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "DIV.bg-white border-y border-home-grau/30 -mx-4 sm:mx-0 sm:round",
-   "DIV.absolute top-0 right-0 w-[500px] h-[500px] bg-[#A3113E]/5 ro",
-   "DIV.px-4 md:px-8 flex flex-col gap-8 pb-8"
-  ]
+  "beispiele": []
  },
  "emodul": {
   "seitlich": 0,
@@ -762,13 +750,10 @@
   "beispiele": []
  },
  "energieausweis": {
-  "seitlich": 54,
-  "abgeschnitten": 2,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "DIV.absolute top-0 -translate-x-1/2 -mt-10 flex flex-col items-c",
-   "DIV.bg-text-main text-white px-2.5 py-1 rounded-lg font-bold tex"
-  ]
+  "beispiele": []
  },
  "nachhaltigkeit_info": {
   "seitlich": 0,
@@ -867,12 +852,10 @@
   "beispiele": []
  },
  "historische_bauprodukte": {
-  "seitlich": 49,
-  "abgeschnitten": 1,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "SPAN.text-[10px] font-mono font-bold text-shiraz bg-shiraz/5 bord"
-  ]
+  "beispiele": []
  },
  "bestand_checklisten": {
   "seitlich": 0,
@@ -1001,13 +984,10 @@
   "beispiele": []
  },
  "material_schaeden_gross": {
-  "seitlich": 61,
-  "abgeschnitten": 2,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "BUTTON.px-4 py-2 bg-shiraz text-white rounded-xl text-xs font-bold ",
-   "SPAN."
-  ]
+  "beispiele": []
  },
  "schaeden_checklisten": {
   "seitlich": 0,
@@ -1148,22 +1128,16 @@
   "beispiele": []
  },
  "px_planung": {
-  "seitlich": 43,
-  "abgeschnitten": 1,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
-  ]
+  "beispiele": []
  },
  "px_bauleitung": {
-  "seitlich": 209,
-  "abgeschnitten": 5,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
-  ]
+  "beispiele": []
  },
  "px_bautagebuch": {
   "seitlich": 0,
@@ -1172,23 +1146,16 @@
   "beispiele": []
  },
  "px_produktion": {
-  "seitlich": 498,
-  "abgeschnitten": 4,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
-  ]
+  "beispiele": []
  },
  "px_karriere": {
-  "seitlich": 151,
-  "abgeschnitten": 2,
+  "seitlich": 0,
+  "abgeschnitten": 0,
   "kleineZiele": 0,
-  "beispiele": [
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate",
-   "SPAN.text-xs font-mono font-bold uppercase bg-slate-50 text-slate"
-  ]
+  "beispiele": []
  },
  "software": {
   "seitlich": 0,

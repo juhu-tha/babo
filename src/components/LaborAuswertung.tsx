@@ -500,7 +500,7 @@ export default function LaborAuswertung() {
           <div className="md:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2 shadow-inner">
             <span className="text-[10px] font-mono uppercase text-slate-400 font-bold px-1.5 mb-1">Berichtsgliederung</span>
             {reportSections.map((sec) => (
-              <button
+              <button aria-pressed={selectedSection === sec.id}
                 key={sec.id}
                 onClick={() => setSelectedSection(sec.id)}
                 className={`py-2 px-3 text-left text-xs font-semibold rounded-lg flex items-center justify-between border transition-all cursor-pointer ${

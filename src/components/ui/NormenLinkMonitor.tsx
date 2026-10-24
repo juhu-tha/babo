@@ -207,7 +207,7 @@ export function NormenLinkMonitor() {
                 { id: 'bauphysik', label: 'Bauphysik' },
                 { id: 'nachhaltigkeit', label: 'LCA / EPD' }
               ].map(cat => (
-                <button
+                <button aria-pressed={categoryFilter === cat.id}
                   key={cat.id}
                   onClick={() => setCategoryFilter(cat.id)}
                   className={`px-2.5 py-1.5 text-[11px] font-bold rounded-lg whitespace-nowrap transition-all border ${

@@ -528,7 +528,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                     <strong>Rechtliche Basis:</strong> EU-Verordnung (EG) Nr. 765/2008. In Deutschland ist dafür ausschließlich die nationale Akkreditierungsstelle <strong>DAkkS (Deutsche Akkreditierungsstelle GmbH)</strong> zuständig.
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium whitespace-nowrap">
+                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium">
                   <span>Beispiel: DAkkS akkreditiert MPA (Materialprüfanstalt)</span>
                   <Award size={14} />
                 </div>
@@ -548,7 +548,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                     <strong>Behördliche Zuständigkeit:</strong> Der Mitgliedstaat meldet die Stelle über seine notifizierende Behörde an die EU-Kommission (in Deutschland für Bauprodukte das Deutsche Institut für Bautechnik, DIBt).
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium whitespace-nowrap">
+                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium">
                   <span>Beispiel: DIBt notifiziert Prüf- und Zertifizierungsstelle (NANDO-Kennnummer)</span>
                   <Globe className="text-emerald-700" size={14} />
                 </div>
@@ -569,7 +569,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                     <p>• <strong>Systemzertifizierung:</strong> Bestätigt das Vorliegen des Überwachungssystems (z. B. WPK bei 2+).</p>
                   </div>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium whitespace-nowrap">
+                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium">
                   <span>Beispiel: Ausstellung eines Zertifikats der Leistungsbeständigkeit für einen Zement CEM I (System 1+)</span>
                   <ClipboardCheck className="text-blue-700" size={14} />
                 </div>
@@ -589,7 +589,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                     <strong>Schnittstelle Bauwesen:</strong> Ein zentraler Anwendungsfall der Verifizierung ist die Prüfung von EPDs: Ein unabhängiger Verifizierer des Programmbetreibers prüft die Ökobilanz nach ISO 14025 und DIN EN 15804 (keine Zulassung). Davon zu unterscheiden: Nach BauPVO (EU) 2024/3110 werden die in der Leistungserklärung anzugebenden Umweltmerkmale im System 3+ durch eine notifizierte Stelle bewertet.
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium whitespace-nowrap">
+                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-indigo-700 font-medium">
                   <span>Beispiel: Ein unabhängiger Verifizierer prüft die EPD einer Mauerziegel-Serie</span>
                   <CheckCircle2 className="text-amber-700" size={14} />
                 </div>
@@ -609,7 +609,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                     <strong>Fremdüberwachung:</strong> Ein qualifizierter Fremdüberwacher (Auditor) besucht hierzu das Werk physisch, kontrolliert Kalibrierungen der Waagen (z. B. im Fertigteilwerk) und interviewt das Personal.
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-rose-700 font-medium whitespace-nowrap">
+                <div className="mt-4 pt-3 border-t border-home-grau/10 flex items-center justify-between text-[11px] text-rose-700 font-medium">
                   <span>Beispiel: Ein Auditor auditiert das Transportbetonwerk vor Ort für das Ü-Zeichen</span>
                   <FileText className="text-rose-700" size={14} />
                 </div>

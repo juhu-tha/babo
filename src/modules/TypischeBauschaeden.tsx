@@ -875,7 +875,7 @@ export default function TypischeBauschaeden() {
                   <div className="lg:col-span-5 flex flex-col gap-2">
                     <span className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1 block">Wählen Sie einen Fall aus:</span>
                     {scenarios.map((scen) => (
-                      <button
+                      <button aria-pressed={selectedScenario === scen.id}
                         key={scen.id}
                         onClick={() => setSelectedScenario(scen.id)}
                         className={`w-full text-left p-3.5 rounded-xl border transition-all text-sm flex justify-between items-center gap-2 ${

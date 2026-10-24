@@ -842,7 +842,7 @@ Richte die Dezimalzahlen mit dem siunitx-Paket S-Spalten am Komma aus. Keine ver
           {/* Scenario Selector */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {THESIS_PROMPTS.map(p => (
-              <button
+              <button aria-pressed={activePromptId === p.id}
                 key={p.id}
                 onClick={() => setActivePromptId(p.id)}
                 className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 ${

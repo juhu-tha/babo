@@ -351,7 +351,7 @@ export default function Materialdatenbanken() {
                   <div className="text-center py-6 text-xs text-slate-400">Keine Datensätze gefunden.</div>
                 ) : (
                   filteredRecords.map((record) => (
-                    <button
+                    <button aria-pressed={selectedRecordId === record.id}
                       key={record.id}
                       onClick={() => setSelectedRecordId(record.id)}
                       className={`text-left p-2.5 rounded-xl border transition-all flex justify-between items-center cursor-pointer ${

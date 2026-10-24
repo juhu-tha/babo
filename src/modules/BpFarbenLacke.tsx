@@ -1273,7 +1273,7 @@ export default function BpFarbenLacke() {
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {OS_SYSTEMS.map((sys) => (
-                    <button
+                    <button aria-pressed={selectedOsId === sys.id}
                       key={sys.id}
                       onClick={() => setSelectedOsId(sys.id)}
                       className={`p-3.5 rounded-xl border text-left transition-all duration-150 flex flex-col justify-between gap-1.5 cursor-pointer ${

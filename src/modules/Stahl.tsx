@@ -2806,7 +2806,7 @@ export default function Stahl() {
               <div className="lg:w-1/3 flex flex-col gap-2">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 max-h-[580px] overflow-y-auto pr-1">
                   {filteredSteelGrades.map((gradeItem) => (
-                    <button
+                    <button aria-pressed={selectedStahlsorteId === gradeItem.id}
                       key={gradeItem.id}
                       onClick={() => setSelectedStahlsorteId(gradeItem.id)}
                       className={`p-3.5 rounded-xl text-left border transition-all flex flex-col justify-start cursor-pointer hover:shadow-sm ${
@@ -2963,7 +2963,7 @@ export default function Stahl() {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   {structuralProfiles.map((prof) => (
-                    <button
+                    <button aria-pressed={selectedProfileId === prof.id}
                       key={prof.id}
                       onClick={() => setSelectedProfileId(prof.id)}
                       className={`p-2.5 rounded-lg text-left text-xs border transition-colors cursor-pointer ${

@@ -74,7 +74,7 @@ export default function Labor() {
         {/* Navigation Tabs Bar */}
         <div className="flex flex-wrap gap-2 pt-4 mt-2 border-t border-home-grau/20">
           {tabs.map(tab => (
-            <button
+            <button aria-pressed={labMode === tab.id}
               key={tab.id}
               onClick={() => setLabMode(tab.id)}
               className={`px-3.5 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${

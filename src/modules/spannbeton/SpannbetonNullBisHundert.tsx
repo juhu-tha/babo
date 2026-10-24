@@ -168,7 +168,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
             const isActive = activeStep === st.id;
             const isCompleted = activeStep > st.id;
             return (
-              <button
+              <button aria-pressed={isActive}
                 key={st.id}
                 type="button"
                 onClick={() => setActiveStep(st.id)}

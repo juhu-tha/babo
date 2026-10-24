@@ -889,7 +889,7 @@ export default function InteractiveLCACalc() {
           const Icon = v.icon;
           const isActive = calcView === v.id;
           return (
-            <button
+            <button aria-pressed={isActive}
               key={v.id}
               onClick={() => setCalcView(v.id)}
               className={`flex-1 min-w-[200px] p-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-between gap-2 cursor-pointer ${
@@ -1137,7 +1137,7 @@ export default function InteractiveLCACalc() {
                       { id: "lkw" as const, label: "🚛 LKW Diesel", desc: "0,15 kg CO₂/t·km" },
                       { id: "bahn" as const, label: "🚊 Güterzug", desc: "0,03 kg CO₂/t·km" }
                     ].map((trans) => (
-                      <button
+                      <button aria-pressed={transportType === trans.id}
                         key={trans.id}
                         onClick={() => setTransportType(trans.id)}
                         className={`p-2 rounded-lg border transition-all cursor-pointer ${

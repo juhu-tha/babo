@@ -35,7 +35,7 @@ export default function ZertifizierungSiegel() {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
-                <button
+                <button aria-pressed={isActive}
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`p-4 rounded-xl border transition-all duration-200 flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left h-full cursor-pointer ${

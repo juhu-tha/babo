@@ -621,7 +621,7 @@ export default function Probenahme() {
                           { value: 0, label: 'Wand (0°)' },
                           { value: 90, label: 'Decke (+90°)' }
                         ].map((a) => (
-                          <button
+                          <button aria-pressed={impactAngle === a.value}
                             key={a.value}
                             type="button"
                             onClick={() => setImpactAngle(a.value)}

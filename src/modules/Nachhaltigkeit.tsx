@@ -1166,7 +1166,7 @@ export default function Nachhaltigkeit() {
                       { id: 'biomasse', name: 'Pelletkessel / Holzbiomasse', details: 'CO2-neutraler Holzbrennstoff' },
                       { id: 'gasherdfossil', name: 'Fossil-Brennwertkessel (Erdgas)', details: 'Zukunftskritische fossile Verbrennung' }
                     ].map((item) => (
-                      <button
+                      <button aria-pressed={heatingSystem === item.id}
                         key={item.id}
                         onClick={() => setHeatingSystem(item.id)}
                         className={`p-3 rounded-xl border text-left flex flex-col gap-1 transition-all ${

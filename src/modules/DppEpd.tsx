@@ -284,7 +284,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                     const IconComp = sec.icon;
                     const isSelected = activeDetailSection === sec.id;
                     return (
-                      <button
+                      <button aria-pressed={isSelected}
                         key={sec.id}
                         type="button"
                         onClick={() => setActiveDetailSection(sec.id)}
@@ -621,7 +621,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                     {/* Lower half of physical phone screen: List of Scannable barcoded assets */}
                     <div className="flex-1 p-3 bg-white flex flex-col gap-2 overflow-y-auto scrollbar-none">
                       <h4 className="font-bold text-center text-[11px] text-slate-500 uppercase tracking-widest mt-0.5 select-none">Scannbare Bauteile</h4>
-                      <p className="text-[10px] text-slate-400 text-center -mt-1 leading-snug font-normal select-none">Wählen Sie eines der vorpräparierten Bauteile, um den Scan-Vorgang auszuführen:</p>
+                      <p className="text-[10px] text-slate-600 dark:text-slate-300 text-center -mt-1 leading-snug font-normal select-none">Wählen Sie eines der vorpräparierten Bauteile, um den Scan-Vorgang auszuführen:</p>
                       
                       {/* Interactive Button Elements */}
                       <button 
@@ -636,7 +636,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         </div>
                         <div className="flex-1 min-w-0">
                           <span className="font-bold text-xs text-slate-800 block truncate">Stahlbetonstütze C35/45</span>
-                          <span className="text-[9px] text-slate-400 block font-normal truncate">Precast Solutions GmbH • ID: 1234-BETON</span>
+                          <span className="text-[9px] text-slate-600 dark:text-slate-300 block font-normal truncate">Precast Solutions GmbH • ID: 1234-BETON</span>
                         </div>
                       </button>
 
@@ -652,12 +652,12 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                         </div>
                         <div className="flex-1 min-w-0">
                           <span className="font-bold text-xs text-slate-800 block truncate">Brettschichtholz-Träger</span>
-                          <span className="text-[9px] text-slate-400 block font-normal truncate">WoodBuild AG • ID: 5678-HOLZ</span>
+                          <span className="text-[9px] text-slate-600 dark:text-slate-300 block font-normal truncate">WoodBuild AG • ID: 5678-HOLZ</span>
                         </div>
                       </button>
 
                       {/* Instruction text helper */}
-                      <div className="text-[8px] text-slate-400 leading-normal text-center bg-slate-50 p-1.5 rounded-lg border border-home-grau/30 font-normal mt-1 select-none">
+                      <div className="text-[8px] text-slate-600 dark:text-slate-300 leading-normal text-center bg-slate-50 p-1.5 rounded-lg border border-home-grau/30 font-normal mt-1 select-none">
                         🔒 Integrierte Daten-Audits nach <strong>DIN SPEC 91484</strong> &amp; <strong>91525</strong> standardgerechter Validierung.
                       </div>
                     </div>
@@ -797,7 +797,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
 
             <div className="flex border-b border-home-grau/30 overflow-x-auto scrollbar-none">
               {EPD_DATA.map((epd) => (
-                <button
+                <button aria-pressed={activeMaterial === epd.id}
                   key={epd.id}
                   onClick={() => setActiveMaterial(epd.id)}
                   className={`px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${

@@ -537,7 +537,7 @@ export default function PutzeMoertel() {
                   Verfügbare Mauermörtel-Produkte (DIN EN 998-2)
                 </h4>
                 {MORTAR_PRODUCTS.map((prod) => (
-                  <button
+                  <button aria-pressed={selectedMortarId === prod.id}
                     key={prod.id}
                     id={`btn-mortar-${prod.id}`}
                     onClick={() => setSelectedMortarId(prod.id)}
@@ -707,7 +707,7 @@ export default function PutzeMoertel() {
                   Spezial- und Standardputze (DIN EN 998-1)
                 </h4>
                 {PLASTER_PRODUCTS.map((prod) => (
-                  <button
+                  <button aria-pressed={selectedPlasterId === prod.id}
                     key={prod.id}
                     id={`btn-plaster-${prod.id}`}
                     onClick={() => setSelectedPlasterId(prod.id)}
@@ -820,7 +820,7 @@ export default function PutzeMoertel() {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-4">
                 {BUILDING_SYSTEMS.map((sys) => (
-                  <button
+                  <button aria-pressed={selectedSystemId === sys.id}
                     key={sys.id}
                     id={`btn-sys-${sys.id}`}
                     onClick={() => setSelectedSystemId(sys.id)}

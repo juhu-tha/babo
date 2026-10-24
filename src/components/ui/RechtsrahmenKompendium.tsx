@@ -870,7 +870,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
               { id: 'planer' as TargetAudience, label: '📐 Planer & Architekten' },
               { id: 'finanzen' as TargetAudience, label: '💼 Finanzen & ESG' }
             ].map((aud) => (
-              <button
+              <button aria-pressed={selectedAudience === aud.id}
                 key={aud.id}
                 onClick={() => setSelectedAudience(aud.id)}
                 className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
@@ -905,7 +905,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
           </button>
 
           {levelMetadata.map((lvl) => (
-            <button
+            <button aria-pressed={selectedLevel === lvl.id}
               key={lvl.id}
               onClick={() => setSelectedLevel(lvl.id)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer flex items-center gap-1.5 ${

@@ -274,7 +274,7 @@ export default function LCA() {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
-                <button
+                <button aria-pressed={isActive}
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`p-3.5 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
@@ -613,7 +613,7 @@ export default function LCA() {
             <div className="bg-white rounded-xl border border-home-grau/30 shadow-sm max-h-[450px] overflow-y-auto divide-y divide-home-grau/15">
               {filteredEpds.length > 0 ? (
                 filteredEpds.map((epd) => (
-                  <button
+                  <button aria-pressed={selectedEpdId === epd.id}
                     key={epd.id}
                     onClick={() => setSelectedEpdId(epd.id)}
                     className={`w-full p-3 text-left transition-colors flex flex-col gap-1 ${
@@ -764,7 +764,7 @@ export default function LCA() {
                 { id: 'gebaeude' as const, title: 'LCA für Gebäude', desc: 'DIN EN 15978 & QNG-Anforderungen', color: 'border-l-emerald-500' },
                 { id: 'ingenieurbau' as const, title: 'LCA für Ingenieurbauwerke', desc: '100 Jahre Nutzungsdauer & Brücken/Tunnel', color: 'border-l-amber-500' }
               ].map((topic) => (
-                <button
+                <button aria-pressed={guideTopic === topic.id}
                   key={topic.id}
                   onClick={() => setGuideTopic(topic.id)}
                   className={`text-left p-3.5 rounded-xl border border-l-4 transition-all hover:bg-slate-50 relative ${topic.color} ${
@@ -1137,7 +1137,7 @@ export default function LCA() {
                       { id: 'h2-lkw' as const, label: 'Wasserstoff-LKW', detail: 'H2-Brennstoffzelle (0,003 kg/tkm)' },
                       { id: 'zug' as const, label: 'Güterzug (Bahn)', detail: 'E-Schienengüter (0,005 kg/tkm)' }
                     ].map((trans) => (
-                      <button
+                      <button aria-pressed={calcTransportType === trans.id}
                         key={trans.id}
                         type="button"
                         onClick={() => setCalcTransportType(trans.id)}

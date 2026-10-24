@@ -155,7 +155,7 @@ export default function DauerhaftigkeitChecklisten() {
           const isActive = activeSubTab === sec.id;
 
           return (
-            <button
+            <button aria-pressed={isActive}
               key={sec.id}
               onClick={() => setActiveSubTab(sec.id)}
               className={`p-3 rounded-lg border text-left flex flex-col justify-between transition-all duration-150 cursor-pointer shadow-xs ${

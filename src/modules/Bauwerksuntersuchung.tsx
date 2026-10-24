@@ -222,7 +222,7 @@ export default function Bauwerksuntersuchung() {
                   const StepIcon = step.icon;
                   const isActive = activeStep === step.id;
                   return (
-                    <button
+                    <button aria-pressed={isActive}
                       key={step.id}
                       onClick={() => setActiveStep(step.id)}
                       className={`w-full p-4 rounded-xl border text-left transition-all flex items-center gap-3.5 relative ${

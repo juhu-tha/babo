@@ -556,7 +556,7 @@ export default function BpInnovationen() {
             {/* Preset Selector */}
             <div className="flex flex-wrap gap-2">
               {PRESETS.map((preset) => (
-                <button
+                <button aria-pressed={selectedPresetId === preset.id}
                   key={preset.id}
                   onClick={() => setSelectedPresetId(preset.id)}
                   className={`px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${

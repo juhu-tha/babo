@@ -28,6 +28,12 @@ function textOhneFelder(node: Element): string {
 }
 
 function findeBeschriftung(el: HTMLElement): string | null {
+  // Kontrollkästchen/Optionsfelder: Beschriftung steht meist danach
+  const typ = (el as HTMLInputElement).type;
+  if (typ === 'checkbox' || typ === 'radio') {
+    let nach = el.nextElementSibling;
+    while (nach) { const t = textOhneFelder(nach); if (t.length >= 2) return t.slice(0, 100); nach = nach.nextElementSibling; }
+  }
   // Felder in Tabellen: Spaltenkopf + erste Zelle der Zeile
   const zelle = el.closest('td, th') as HTMLTableCellElement | null;
   const tabelle = zelle?.closest('table');
@@ -72,7 +78,7 @@ export function useAutoFormLabels(wurzelId: string, abhaengigkeit: unknown) {
       // Tabellen behalten ihre Tabellensemantik, auch wenn sie mobil als Block scrollen (AP 2.6)
       wurzel.querySelectorAll<HTMLTableElement>('table:not([role])').forEach(t => t.setAttribute('role', 'table'));
       // Scrollbare Bereiche ohne fokussierbaren Inhalt per Tastatur erreichbar machen (WCAG 2.1.1)
-      wurzel.querySelectorAll<HTMLElement>('[class*="overflow-x-auto"], [class*="overflow-auto"], [class*="overflow-y-auto"], [class*="overflow-x-scroll"]').forEach(el => {
+      wurzel.querySelectorAll<HTMLElement>('[class*="overflow-x-auto"], [class*="overflow-auto"], [class*="overflow-y-auto"], [class*="overflow-x-scroll"], .katex-display, table').forEach(el => {
         if (el.hasAttribute('tabindex')) return;
         const scrollt = el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1;
         if (!scrollt || el.querySelector('a[href], button, input, select, textarea, [tabindex]')) return;
