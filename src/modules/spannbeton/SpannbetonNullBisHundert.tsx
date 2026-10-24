@@ -1068,7 +1068,7 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
                     Dekompressionsnachweis (GZG)
                   </div>
                   <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Zum Schutz der Spannglieder vor Korrosion verlangt EC2 je nach Expositionsklasse den Dekompressionsnachweis (Tab. 7.1N bzw. NA Tab. 7.1DE): Der Beton um das Spannglied muss unter der maßgebenden Kombination überdrückt bleiben (XC2–XC4: quasi-ständig, XD/XS: häufig). EN: Spannglied mind. <InlineMath math="25\,\text{mm}" /> innerhalb der Druckzone; NA(DE): keine Zugspannungen an dem Rand, der dem Spannglied am nächsten liegt (Nachweis am ungerissenen Querschnitt, wie bereits DIN 1045-1).
+                    Zum Schutz der Spannglieder vor Korrosion verlangt EC2 je nach Expositionsklasse den Dekompressionsnachweis (Tab. 7.1N bzw. NA Tab. 7.1DE): Der Beton um das Spannglied muss unter der maßgebenden Kombination überdrückt bleiben (XC2–XC4: quasi-ständig, XD/XS: häufig). EN: Spannglied mind. <InlineMath math="25\,\text{mm}" /> innerhalb der Druckzone; NA(DE): Beton um das Spannglied im Bereich von 100 mm bzw. h/10 überdrückt (der größere Bereich ist maßgebend).
                   </p>
                 </div>
 

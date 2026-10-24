@@ -480,7 +480,7 @@ export const DAMAGE_CASES: DamageCaseStudy[] = [
       {
         bereich: 'Werkstoffkunde & Bruchmechanik',
         auswirkung: 'Rasanter Aufstieg der linearen elastischen Bruchmechanik (LEBM) nach Griffith und Irwin als verbindliches Ingenieurfach. Einführung von Kerbschlagbiegeversuchen bei tiefen Temperaturen für Brückenstähle (Charpy-V-Notch).',
-        normativeKonsequenz: 'ASTM-Normen zur Bruchzähigkeit KIc und Kerbschlagarbeit $A_V$'
+        normativeKonsequenz: 'ASTM-Normen zur Bruchzähigkeit $K_{Ic}$ und Kerbschlagarbeit $A_V$'
       }
     ],
     lessonsLearned: [

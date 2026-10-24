@@ -151,12 +151,12 @@ const SCHADSTOFFE_DATA = [
     textColor: 'text-indigo-800',
     vorkommen: [
       'Holzschutz & Biozide: Ältere, quecksilberhaltige Holzschutzmittel (insb. in historischen Holzbauten wie Kirchen, historischen Speichern bis ca. 1980).',
-      'Messer & Schalter: Neigungsschalter, Quecksilberrelais, ältere Heizungs-Thermostate.',
+      'Messgeräte & Schalter: Neigungsschalter, Quecksilberrelais, ältere Heizungs-Thermostate.',
       'Farben & Lacke: Historische Fungizide in Dispersions- und Latexfarben (Verwendung vor allem im 20. Jahrhundert).',
       'Industriestandorte: Extreme Rückstandskontaminationen im Mauerwerk und Boden alter Chemie-, Thermometer- oder Glühlampenwerke.'
     ],
     gefahren: [
-      'Gesundheitsgefahr: Quecksilberdampf ist hochentgiftend für das zentrale Nervensystem und führt zu chronischen Gehirnschäden, Nierenversagen und Lungenschäden. Es gast bereits bei Raumtemperatur kontinuierlich aus kontaminierten Flächen aus!',
+      'Gesundheitsgefahr: Quecksilberdampf ist hochgiftig für das zentrale Nervensystem und führt zu chronischen Gehirnschäden, Nierenversagen und Lungenschäden. Es gast bereits bei Raumtemperatur kontinuierlich aus kontaminierten Flächen aus!',
       'Sanierung: Aufspüren mittels spezieller Detektoren (Quecksilberdampfsonden). Sanierung erfordert oft den kompletten Ausbau kontaminierter Mauerwerksschichten oder thermische Desorption unter Unterdruckbedingungen. Keine ungeschützten Arbeiten wegen hoher Resorptionsquote über die Atemwege.'
     ],
     entsorgung: [
@@ -199,7 +199,7 @@ const TREATMENT_OPTIONS = {
         'Schwertwäsche & Attrition: Intensives Reiben der Partikel löst die schadstoffbelastete Feinstaubschicht.',
         'Zyklonierung & Dichtetrennung: Hydrozyklone separieren den sauberen Sand von belastetem Schluff.',
         'Kammerfilterpresse: Eindickung des Schlamms zu hochkonzentriertem Filterkuchen (Klasse DK I/II oder Deponierung).',
-        'Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0/BM-1).'
+        'Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0 bzw. BM-0*).'
       ],
       rules: 'EBV § 15 & BBodSchV Anh. 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 oder RC-1 zu erhalten.'
     },
@@ -246,7 +246,7 @@ const TREATMENT_OPTIONS = {
         'Sedimentations- und Waschwasserbehandlung mit Fällungsmitteln zur Sulfat-Abreicherung.',
         'Analytischer Nachweis des Restsulfatgehalts im Feststoff.'
       ],
-      rules: 'Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Bauwerksbruch und Recyclingbaustoffe gelten strenge Sulfatgrenzwerte (RC-1: ≤ 150 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen.'
+      rules: 'Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Recycling-Baustoffe gelten Materialwerte für Sulfat im Eluat (EBV Anlage 1 Tab. 1: RC-1 ≤ 600 mg/l, RC-2 ≤ 1 000 mg/l, RC-3 ≤ 3 500 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen.'
     }
   },
   boden_ton: {
@@ -309,7 +309,7 @@ const TREATMENT_OPTIONS = {
         'Kontinuierliche Setzungsmessungen.',
         'Güteüberwachung mittels Eluattests über min. 28 Tage.'
       ],
-      rules: 'EBV Anhang 1: Sulfatreicher bindiger Erdaushub wird üblicherweise den Klassen BM-F3 (erheblich eingeschränkter Einbau) oder BM-2 zugewiesen und erfordert strenge bautechnische Absicherungen gegen Grundwasserleiter.'
+      rules: 'EBV Anhang 1: Sulfatreicher bindiger Erdaushub wird üblicherweise den Klassen BM-F2 oder BM-F3 (erheblich eingeschränkter Einbau) zugewiesen und erfordert strenge bautechnische Absicherungen gegen Grundwasserleiter.'
     }
   },
   bauschutt_gemisch: {
@@ -327,7 +327,7 @@ const TREATMENT_OPTIONS = {
         'Feinstaubabscheidung über Zyklon-Waschanlagen.',
         'Entwässerung der RC-Gesteinskörnung zur direkten Wiederverwendung.'
       ],
-      rules: 'EBV Anhang 1 / DIN EN 206: Das gereinigte Material muss die Eluatgrenzwerte für RC-1 einhalten, um als Gesteinskörnung im R-Beton eingesetzt werden zu dürfen (z. B. Cu ≤ 100 µg/l, Pb ≤ 40 µg/l).'
+      rules: 'EBV Anlage 1 / DIN 4226-101: Für die Verwertung als RC-1 muss das gereinigte Material die Materialwerte der EBV einhalten (z. B. Cu ≤ 110 µg/l, Cr ges. ≤ 150 µg/l im Eluat); als Gesteinskörnung im R-Beton gelten zusätzlich DIN 4226-101 und die DAfStb-Richtlinie.'
     },
     mkw_pak: {
       method: 'Selektiver Rückbau & Thermische Reinigung',
@@ -340,7 +340,7 @@ const TREATMENT_OPTIONS = {
         'Mechanische Oberflächenreinigung (z.B. Kugelstrahlen/Fräsen) falls kontaminierte Flächen lokalisiert sind.',
         'Thermische Behandlung des Feinkorns im Drehrohr zur PAK-Vergasung.',
         'Rauchgasreinigung und Abgaswäsche zur sicheren Dioxin- und Furanvermeidung.',
-        'Gütemäßige Abschlussprüfung auf PAK16 (Grenzwert RC-1: ≤ 4 mg/kg im Feststoff).'
+        'Gütemäßige Abschlussprüfung auf PAK16 (Materialwert RC-1: ≤ 10 mg/kg im Feststoff, EBV Anlage 1).'
       ],
       rules: 'Gewerbeabfallverordnung (GewAbfV) / Ersatzbaustoffverordnung: Teer- und PAK-belastete Bauschutt-Gemische dürfen unter keinen Umständen unaufbereitet verwertet werden. Grenzwertüberschreitungen führen zur Einstufung als gefährlicher Abfall.'
     },
@@ -372,7 +372,7 @@ const TREATMENT_OPTIONS = {
         'Echtzeit-Scannen mittels Nahinfrarotspektroskopie zur Gipserkennung.',
         'Pneumatischer Auswurf der Gipsfraktion.'
       ],
-      rules: 'Ersatzbaustoffverordnung: R-Beton-Zuschläge Typ 1 dürfen maximal 0,8 M.-% Sulfat aufweisen. Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
+      rules: 'DIN 4226-101 (rezyklierte Gesteinskörnungen, keine EBV-Regel): Typ 1 darf höchstens 0,8 M.-% säurelösliches Sulfat aufweisen (Kategorie AS0,8). Die NIR-Sortierung stellt die einzig wirtschaftliche Möglichkeit dar, gemischten Bauschutt hierfür fit zu machen.'
     }
   },
   altablagerung: {
@@ -382,9 +382,9 @@ const TREATMENT_OPTIONS = {
       efficiency: 'Mittel (60% - 80%)',
       co2: 'Hoch (~30-45 kg CO₂/t)',
       cost: 'Sehr teuer (75 - 120 €/t)',
-      principles: 'Altablagerungen are extrem heterogen und enthalten organische Abfälle gepaart mit Bauschutt und Erden. Ein nassmechanisches Trennverfahren separiert den mineralisch-schweren Anteil, während Schwermetalle in den Feinfraktionen verbleiben und dort immobilisiert werden müssen.',
+      principles: 'Altablagerungen sind extrem heterogen und enthalten organische Abfälle gepaart mit Bauschutt und Erden. Ein nassmechanisches Trennverfahren separiert den mineralisch-schweren Anteil, während Schwermetalle in den Feinfraktionen verbleiben und dort immobilisiert werden müssen.',
       steps: [
-        'Ausgrabung unter Geruchs- und Emissionsschutzschutz (ggf. Absaugung).',
+        'Ausgrabung unter Geruchs- und Emissionsschutz (ggf. Absaugung).',
         'Mechanische Grobsortierung von Hausmüll- und Metallfraktionen.',
         'Nassklassierung zur Separation von Sanden und RC-Gesteinen.',
         'Spezifische Schwefelwasserstoff-Neutralisierung des Kreislaufwassers.',
@@ -511,7 +511,7 @@ export default function Schadstoffe() {
         risks.push({ stoff: 'HBCD (Flammschutzmittel)', level: 'hoch', detail: 'HBCD-haltiges expandiertes Polystyrol (EPS) in WDV-Systemen.' });
         risks.push({ stoff: 'KMF', level: 'mittel', detail: 'Minderwertig lösliche Steinwolledämmung in Außenfassaden.' });
       } else {
-        risks.push({ stoff: 'HBCD', level: 'mittel', detail: 'EPS-Dämmplatten verbaut vor 2016 unterliegen beim selektiven Rückbau dem strengen POP-Abfallrecht (Müllverbrennungspflicht).' });
+        risks.push({ stoff: 'HBCD', level: 'mittel', detail: 'EPS-Dämmplatten verbaut bis ca. 2015 (REACH-Zulassungspflicht für HBCD seit 21.08.2015) unterliegen beim selektiven Rückbau dem strengen POP-Abfallrecht (Müllverbrennungspflicht).' });
         risks.push({ stoff: 'PFAS ("Ewigkeitschemikalien")', level: 'gering', detail: 'Schmutz- und wasserabweisende Steingrundierungen auf hydrophobierten Natursteinfassaden.' });
       }
     }
@@ -525,7 +525,7 @@ export default function Schadstoffe() {
         risks.push({ stoff: 'KMF', level: 'hoch', detail: 'Biopersistente mineralische Wolle zur Zwischensparrendämmung.' });
         risks.push({ stoff: 'HBCD', level: 'hoch', detail: 'Styroporartige EPS/XPS-Platten zur Dichtungsdämmung auf Dächern.' });
       } else {
-        risks.push({ stoff: 'HBCD', level: 'mittel', detail: 'Rückbau von unberührten Flachdachdämmungen mit Verlegung vor 2016 (HBCD-Verdacht im EPS-Kern).' });
+        risks.push({ stoff: 'HBCD', level: 'mittel', detail: 'Rückbau von unberührten Flachdachdämmungen mit Verlegung bis ca. 2015 (HBCD-Verdacht im EPS-Kern).' });
         risks.push({ stoff: 'Biologische Gefahrstoffe', level: 'mittel', detail: 'Massive Taubenkot-Ablagerungen auf Dachböden, Schimmelpilzbefall durch feuchte Raumluftkonvektion.' });
       }
     }
@@ -1023,7 +1023,7 @@ export default function Schadstoffe() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <strong className="text-amber-900 block font-bold mb-0.5">1. Ersatzbaustoffverordnung (EBV):</strong>
-                        Gilt ausschließlich für den Einbau mineralischer Baustoffe in <strong>technische Bauwerke</strong> (z. B. Straßenbau, Rohrgruben, Fundamentunterfüllungen). Regelt Einbauklassen (wie RC-1, RC-2, BM-0, BM-1, etc.) und bautechnische Verwertung.
+                        Gilt ausschließlich für den Einbau mineralischer Baustoffe in <strong>technische Bauwerke</strong> (z. B. Straßenbau, Rohrgruben, Fundamentunterfüllungen). Regelt Materialklassen (wie RC-1, RC-2, BM-0, BM-F1 usw.) und bautechnische Verwertung.
                       </div>
                       <div>
                         <strong className="text-amber-900 block font-bold mb-0.5">2. Bundes-Bodenschutz- und Altlastenverordnung (BBodSchV):</strong>
@@ -1087,7 +1087,7 @@ export default function Schadstoffe() {
                               <span>Recycling-Klasse: RC-1 &amp; RC-2</span>
                               <span className="text-shiraz">Bauschutt aufbereitet</span>
                             </div>
-                            <div><strong>Leitparameter im Eluat:</strong> Sulfat (RC-1: ≤ 150 mg/l, RC-2: ≤ 250 mg/l), Kupfer (≤ 100 µg/l), Leitfähigkeit (RC-1: ≤ 1500 µS/cm).</div>
+                            <div><strong>Leitparameter im Eluat (EBV Anlage 1 Tab. 1):</strong> Sulfat (RC-1: ≤ 600 mg/l, RC-2: ≤ 1 000 mg/l), Kupfer (RC-1: ≤ 110 µg/l, RC-2: ≤ 250 µg/l), Leitfähigkeit (RC-1: ≤ 2 500 µS/cm).</div>
                             <div className="text-xs text-slate-600 bg-teal-50 border border-teal-200 p-2 rounded mt-1">
                               <strong>Erlaubte Einbaulagen:</strong> Unter wasserundurchlässigen Deckschichten (Asphalt, Beton) im Straßenbau uneingeschränkt einsetzbar. Im unversiegelten Offen-Einbau verboten.
                             </div>
@@ -1096,12 +1096,12 @@ export default function Schadstoffe() {
                         {selectedMEB === 'bodenaushub' && (
                           <>
                             <div className="font-bold text-slate-900 border-b border-home-grau/30 pb-1 flex justify-between">
-                              <span>Bodenklasse: BM-0, BM-1 &amp; BM-2</span>
+                              <span>Bodenklassen: BM-0, BM-0*, BM-F0* bis BM-F3</span>
                               <span className="text-teal-600">Reiner Erdaushub</span>
                             </div>
                             <div><strong>Leitparameter im Eluat:</strong> Arsen (≤ 10 µg/l), Blei (≤ 7 µg/l), Cadmium (≤ 0,2 µg/l), Chlorid (≤ 50 mg/l).</div>
                             <div className="text-xs text-slate-600 bg-teal-50 border border-teal-200 p-2 rounded mt-1">
-                              <strong>Erlaubte Einbaulagen:</strong> BM-0 unbeschränkt für Böden und Rekultivierungen. BM-1/2 erfordern technische Sicherungsmaßnahmen und Verfülltiefen-Begrenzungen.
+                              <strong>Erlaubte Einbaulagen:</strong> BM-0 unbeschränkt für Böden und Rekultivierungen. BM-F1 bis BM-F3 sind nur in den nach Anlage 2 EBV zulässigen Einbauweisen (zunehmend mit Sicherungsmaßnahmen) einsetzbar.
                             </div>
                           </>
                         )}

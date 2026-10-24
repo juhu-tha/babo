@@ -240,7 +240,7 @@ export default function Abfaelle() {
       if (ebvMaterial === 'bm0' || ebvMaterial === 'bg0') {
         status = 'restricted';
         message = 'Zone I: verboten – Zone II: zulässig.';
-        conditions.push('In Zone I ist jeder Einbau mineralischer Ersatzbaustoffe verboten; in Zone II sind nur BM-0, BG-0, GS-0 und Sand aus der Kiesgewinnung (SKG) sowie deren Gemische zulässig (§ 19 Abs. 6 EBV). Wasserrechtliche Schutzgebietsverordnungen haben Vorrang.');
+        conditions.push('In Zone I ist jeder Einbau mineralischer Ersatzbaustoffe verboten; in Zone II sind nur BM-0, BG-0, GS-0 und Schmelzkammergranulat (SKG) sowie deren Gemische zulässig (§ 19 Abs. 6 EBV). Wasserrechtliche Schutzgebietsverordnungen haben Vorrang.');
       } else {
         status = 'forbidden';
         message = 'STRENGSTENS VERBOTEN!';
@@ -656,7 +656,7 @@ export default function Abfaelle() {
                         Transport und Übergabe dokumentieren
                       </h5>
                       <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                        Übergeben Sie den Abfall nur an zertifizierte Entsorgungsfachbetriebe. Archivieren Sie sämtliche Wiegescheine, Begleitscheine, Übernahmescheine und Entsorgungsverträge mindestens 5 Jahre lang im Abfallregister zur Vorlage bei Aufsichtsbehörden.
+                        Übergeben Sie den Abfall nur an zertifizierte Entsorgungsfachbetriebe. Archivieren Sie sämtliche Wiegescheine, Begleitscheine, Übernahmescheine und Entsorgungsverträge im Abfallregister; die Registerbelege sind mindestens 3 Jahre ab Einstellung in das Register aufzubewahren (§ 25 NachwV; der Zulassungsbescheid einer Entsorgungsanlage kann längere Fristen festlegen) und den Aufsichtsbehörden auf Verlangen vorzulegen.
                       </p>
                     </div>
                   </div>
@@ -737,7 +737,7 @@ export default function Abfaelle() {
                       <div className="font-extrabold text-blue-800 mb-1.5 uppercase tracking-wider text-xs">Zugehörige Novelle</div>
                       <h5 className="font-bold text-blue-950 mb-2 leading-snug">Gewerbeabfallverordnung (GewAbfV)</h5>
                       <p className="text-slate-600 leading-relaxed">
-                        Verschärft die Pflicht zur getrennten Sammlung von gewerblichen Bau- und Abbruchabfällen direkt an der Anfallstelle auf der Baustelle (Ziel: Getrenntsammlungsquote mind. 80%).
+                        Verschärft die Pflicht zur getrennten Sammlung von gewerblichen Bau- und Abbruchabfällen direkt an der Anfallstelle auf der Baustelle (§ 8 GewAbfV: zehn Fraktionen; eine feste Mindestquote gibt es für Bauabfälle nicht – die 90-%-Getrenntsammlungsquote des § 4 Abs. 3 betrifft gewerbliche Siedlungsabfälle).
                       </p>
                     </div>
                   </div>
@@ -1395,7 +1395,7 @@ export default function Abfaelle() {
                           num: 1,
                           label: "Barriere 1: Geologie",
                           sub: "Standort & Untergrund",
-                          desc: "Der geologische Untergrund fungiert als natürlicher Schadstofffänger. Er muss homogen, gering durchlässig (kf ≤ 1e-7 m/s) und mind. 1m mächtig sein, um einen hydrogeologischen Sicherheitsabstand zum nutzbaren Grundwasserleiter zu wahren.",
+                          desc: "Der geologische Untergrund fungiert als natürlicher Schadstofffänger. Er muss homogen und gering durchlässig sein (DepV Anhang 1 Tab. 1: kf ≤ 1 · 10⁻⁹ m/s bei DK I–III, kf ≤ 1 · 10⁻⁷ m/s bei DK 0) und mind. 1 m (DK III: 5 m) mächtig sein, um einen hydrogeologischen Sicherheitsabstand zum nutzbaren Grundwasserleiter zu wahren.",
                           icon: ShieldCheck,
                         },
                         {
@@ -1409,7 +1409,7 @@ export default function Abfaelle() {
                           num: 3,
                           label: "Barriere 3: Basisabdichtung",
                           sub: "Doppelte Sperre & Dränung",
-                          desc: "Kombinationsabdichtung am Deponieboden: Eine mindestens 75 cm dichte mineralische Tonschicht wirkt direkt unter einer 2,5 mm starken HDPE-Kunststoffdichtungsbahn (KDB). Kiesdräns (16/32) leiten Eluate aktiv ab.",
+                          desc: "Kombinationsabdichtung am Deponieboden: Eine mindestens 50 cm dicke, mehrlagig eingebaute mineralische Dichtung (kf ≤ 5 · 10⁻¹⁰ m/s) wirkt direkt unter einer 2,5 mm starken HDPE-Kunststoffdichtungsbahn (KDB). Kiesdräns (16/32) leiten Eluate aktiv ab.",
                           icon: Layers,
                         },
                         {
@@ -1474,14 +1474,14 @@ export default function Abfaelle() {
                         {
                           num: 3,
                           label: "Barriere 3: Das deponietechnische Basisabdichtungssystem",
-                          desc: "Diese Barriere trennt den kontaminierten Abfall physisch vom darunterliegenden Boden. Sie besteht aus einer Kombinationsdichtung: Auf einer extrem dichten, dreilagig feucht gewalzten mineralischen Dichtung (Ton, Dicke d ≥ 75 cm, kf ≤ 5 · 10⁻¹⁰ m/s) liegt direkt eine hochdichte Kunststoffdichtungsbahn (KDB, d ≥ 2,5 mm, HDPE). Ein 30 cm hoher Kiesfilter fängt Sickerwässer ab, bevor diese hydrostatischen Druck auf die KDB ausüben können.",
+                          desc: "Diese Barriere trennt den kontaminierten Abfall physisch vom darunterliegenden Boden. Sie besteht aus einer Kombinationsdichtung: Auf einer extrem dichten, mehrlagig feucht gewalzten mineralischen Dichtung (Ton, Dicke d ≥ 50 cm, kf ≤ 5 · 10⁻¹⁰ m/s) liegt direkt eine hochdichte Kunststoffdichtungsbahn (KDB, d ≥ 2,5 mm, HDPE). Eine mindestens 50 cm dicke mineralische Entwässerungsschicht (DK 0: 30 cm) fängt Sickerwässer ab, bevor diese hydrostatischen Druck auf die KDB ausüben können.",
                           norm: "Anhang 1 Nr. 2 DepV (Anforderungen an die Kombinationsabdichtung).",
                         },
                         {
                           num: 4,
                           label: "Barriere 4: Das mehrschichtige Oberflächenabdichtungssystem",
                           desc: "Nach vollständiger Verfüllung einer Deponiezelle wird diese 'gedeckelt', um das Eindringen von Regenwasser dauerhaft zu verhindern. Ohne Regenwasser entsteht kein nennenswertes Schadstoffeluat mehr im Abfallkörper. Die Oberfläche besteht von oben nach unten aus: mind. 1 Meter Rekultivierungsboden (Mutterboden + Bepflanzung), einer Entwässerungsschicht (Geodrän/Kies) zur schnellen Zuleitung fließenden Hangwassers nach außen, einem Dichtungselement (KDB oder Bentonitmatte) und einer Gasdränschicht zur sicheren Fassung von Diffusionsgasen.",
-                          norm: "Anhang 1 Nr. 3 DepV (Anforderungen an das Oberflächenabdichtungssystem).",
+                          norm: "Anhang 1 Nr. 2, Tab. 2 DepV (Anforderungen an das Oberflächenabdichtungssystem).",
                         },
                         {
                           num: 5,
@@ -1560,7 +1560,7 @@ export default function Abfaelle() {
                           {
                             index: 1,
                             name: "Sickerwasserdränschicht (Kies-Leitschicht)",
-                            thickness: "≥ 30 cm",
+                            thickness: "≥ 50 cm",
                             color: "bg-sky-200 hover:bg-sky-300 border-sky-400 text-sky-950",
                             previewText: "Kies-Filterträgdrän (16/32, kf ≥ 1e-3)"
                           },
@@ -1574,16 +1574,16 @@ export default function Abfaelle() {
                           {
                             index: 3,
                             name: "Mineralische Tonsperre (Mehrlagig)",
-                            thickness: "≥ 75 cm",
+                            thickness: "≥ 50 cm",
                             color: "bg-amber-100 hover:bg-amber-200 border-amber-300 text-amber-800",
-                            previewText: "Ton-Kombinationsabdichtung (3 x 25cm)"
+                            previewText: "Mineralische Dichtung (mehrlagig)"
                           },
                           {
                             index: 4,
                             name: "Geologischer Barriereuntergrund (Tonmergel)",
-                            thickness: "≥ 1,0 m",
+                            thickness: "≥ 1,0 m (DK III: ≥ 5 m)",
                             color: "bg-amber-200/50 hover:bg-amber-200/70 border-amber-300/50 text-amber-900",
-                            previewText: "Natürlicher Baugrund (kf ≤ 1e-7 m/s)"
+                            previewText: "Natürlicher Baugrund (kf ≤ 1 · 10⁻⁹ m/s)"
                           }
                         ] : [
                           {
@@ -1662,7 +1662,7 @@ export default function Abfaelle() {
                             },
                             1: {
                               name: "Sickerwasserdränschicht (Kiesfilter)",
-                              thickness: "≥ 30 cm",
+                              thickness: "≥ 50 cm (DK I–III; DK 0: ≥ 30 cm)",
                               material: "Grobkies (Körnung 16/32), karbonatarm (< 10% CaCO3)",
                               requirement: "Durchlässigkeit kf ≥ 1 · 10⁻³ m/s nach DepV",
                               function: "Rasche Erfassung und schadlose Ableitung von Sickerwasser zur Vermeidung von hydrostatischem Druck auf das empfindliche Abdichtungssystem."
@@ -1676,16 +1676,16 @@ export default function Abfaelle() {
                             },
                             3: {
                               name: "Mineralische Tonsperre (Kombinationsdichtung)",
-                              thickness: "≥ 75 cm (3 Lagen à 25 cm)",
+                              thickness: "≥ 50 cm (mehrlagig eingebaut)",
                               material: "Spezialtone (Silt / Ton im Verbund)",
                               requirement: "kf ≤ 5 · 10⁻¹⁰ m/s nach Einbau und Walzenverdichtung (Proctor-Dichte ≥ 95%)",
                               function: "Kombinationsdichtung im hohlraumfreien Direktverbund mit der darüberliegenden KDB zur geotechnischen Selbstdichtung durch Quellung bei eventuellen Mikrorissen der Bahn."
                             },
                             4: {
                               name: "Geologischer Barriereuntergrund (Natürliche Barriere)",
-                              thickness: "≥ 1,0 m",
+                              thickness: "≥ 1,0 m (DK III: ≥ 5 m)",
                               material: "Homogener Fest- oder Lockergesteinskörper (z.B. Tonmergel, feiner Ton)",
-                              requirement: "kf ≤ 1 · 10⁻⁷ m/s (oder ersetzende gleichwertige technische Barriere)",
+                              requirement: "kf ≤ 1 · 10⁻⁹ m/s bei DK I–III (DK 0: ≤ 1 · 10⁻⁷ m/s); fehlende Mächtigkeit darf durch technische Maßnahmen ergänzt werden (DepV Anhang 1 Tab. 1)",
                               function: "Letzter massiver Schutz des lokalen Wasserspiegels durch hohes chemisch-physikalisches Schadstoff-Rückhalte- und Absorptionsvermögen geologischer Massivschichten."
                             }
                           };
@@ -2101,7 +2101,7 @@ export default function Abfaelle() {
               <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-gray-400 p-4 rounded-lg mt-4">
                 <h4 className="font-bold text-gray-800 mb-1">Registerpflicht (§ 49 KrWG)</h4>
                 <p className="text-sm text-gray-700">
-                  Sowohl Erzeuger, Beförderer als auch Entsorger müssen Register über die abgewickelten gefährlichen Abfälle führen und diese Unterlagen mindestens 3 Jahre (bei Entsorgern länger) aufbewahren und den Umweltbehörden auf Verlangen vorlegen.
+                  Sowohl Erzeuger, Beförderer als auch Entsorger müssen Register über die abgewickelten gefährlichen Abfälle führen und diese Unterlagen mindestens 3 Jahre (§ 25 NachwV; bei Entsorgungsanlagen ggf. länger nach Zulassungsbescheid) aufbewahren und den Umweltbehörden auf Verlangen vorlegen.
                 </p>
               </div>
             </div>
@@ -2442,7 +2442,7 @@ export default function Abfaelle() {
                         {
                           step: 6,
                           title: 'Dokumentation & Nachweisführung über das eANV',
-                          desc: 'Handelt es sich um einen gefährlichen Abfall (mit * markiert), muss das elektronische Abfallnachweisverfahren genutzt werden. Generieren Sie behördliche Erzeugernummern, Entsorgungsnachweise sowie Begleit- oder Übernahmescheine und archivieren Sie diese 5 Jahre im Abfallregister.',
+                          desc: 'Handelt es sich um einen gefährlichen Abfall (mit * markiert), muss das elektronische Abfallnachweisverfahren genutzt werden. Generieren Sie behördliche Erzeugernummern, Entsorgungsnachweise sowie Begleit- oder Übernahmescheine und bewahren Sie diese mindestens 3 Jahre ab Einstellung in das Register auf (§ 25 NachwV).',
                           ref: 'Nachweisverordnung (NachwV) § 4'
                         }
                       ].map((item) => (
@@ -2498,13 +2498,13 @@ export default function Abfaelle() {
                         {
                           step: 3,
                           title: 'Standortbezogene Schutzgebiete abgleichen',
-                          desc: 'Überprüfen Sie, ob sich der geplante Einbauort außerhalb von empfindlichen Wasserschutzgebieten (WSG Zone I, II, III/IIIA), Heilquellenschutzgebieten oder Überschwemmungsgebieten befindet. In Zone I und II gilt ein generelles Anwendungsverbote für alle MEB.',
+                          desc: 'Überprüfen Sie, ob sich der geplante Einbauort außerhalb von empfindlichen Wasserschutzgebieten (WSG Zone I, II, III/IIIA), Heilquellenschutzgebieten oder Überschwemmungsgebieten befindet. In Zone I ist der Einbau aller MEB verboten; in Zone II sind nur BM-0, BG-0, SKG und GS-0 sowie deren Gemische zulässig (§ 19 Abs. 6 EBV), in Zone III A/III B nur die nach Anlage 2 und 3 zulässigen Einbauweisen.',
                           ref: 'EBV § 19 & Anhang 2'
                         },
                         {
                           step: 4,
                           title: 'Mindestabstand zum Grundwasser (HGW) sicherstellen',
-                          desc: 'Ermitteln Sie den höchsten Grundwasserstand (HGW). Bei Verbau von RC-1/BM-1 ist ein Sicherheitsabstand von mindestens 1,0 m einzuhalten. Bei offener (unversiegelter) Bauweise ohne dichte Deckschicht gelten andere Grenzwerte.',
+                          desc: 'Ermitteln Sie den höchsten Grundwasserstand (HGW). Beim Einbau von z. B. RC-1 oder BM-0* ist die Grundwasserdeckschicht nach § 19 Abs. 8 EBV nachzuweisen (günstig: grundwasserfreie Sickerstrecke > 1 m zuzüglich 0,5 m Sicherheitsabstand). Bei offener (unversiegelter) Bauweise ohne dichte Deckschicht gelten andere Grenzwerte.',
                           ref: 'EBV § 20'
                         },
                         {
@@ -2788,7 +2788,7 @@ export default function Abfaelle() {
                         {
                           step: 2,
                           title: 'Gefährdungsbeurteilung &amp; behördliche Arbeitsanzeige',
-                          desc: 'Erstellen Sie vor Ausführungsbeginn eine Gefährdungsbeurteilung. Bei Asbestsanierungen (TRGS 519) oder Arbeiten in kontaminierten Bereichen (TRGS 524) ist die Baustelle mindestens 14 Tage vor Arbeitsbeginn der Gewerbeaufsicht und der Berufsgenossenschaft (BG BAU) anzuzeigen.',
+                          desc: 'Erstellen Sie vor Ausführungsbeginn eine Gefährdungsbeurteilung. Tätigkeiten mit Asbest (TRGS 519) sind der zuständigen Behörde (Gewerbeaufsicht) spätestens eine Woche vor Beginn anzuzeigen (§ 11a GefStoffV); Arbeiten in kontaminierten Bereichen (TRGS 524) sind ebenfalls rechtzeitig vor Beginn der Behörde und der BG BAU anzuzeigen.',
                           ref: 'GefStoffV / TRGS 519 Abs. 3'
                         },
                         {

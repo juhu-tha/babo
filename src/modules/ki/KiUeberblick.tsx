@@ -444,7 +444,7 @@ export default function KiUeberblick() {
       analogy: 'Wissenseinbettung & Vektordatenbank-Retrieval',
       summary: 'Hybride Systemarchitektur, die parametrisches Sprachmodellwissen mit extern indizierten, normativ verifizierten Wissensdatenbanken koppelt, um Halluzinationen auszuschließen.',
       simpleExpl: 'RAG trennt Wissensspeicherung und Textsynthese: Die Anfrage des Ingenieurs wird in einen semantischen Vektor transformiert. Eine Vektordatenbank identifiziert über Abstandsmetriken die mathematisch ähnlichsten Dokumentenauszüge. Das LLM generiert die Antwort ausschließlich konditioniert auf diesen belegten Primärquellen.',
-      constructionExample: 'Frage: "Welche Betondeckung verlangt DIN EN 1992-1-1 bei XC4?" -> RAG findet Tabelle 4.4N -> LLM antwortet exakt mit 25 mm + 10 mm Vorhaltemaß und nennt die exakte Seitenzahl.',
+      constructionExample: 'Frage: "Welche Betondeckung verlangt DIN EN 1992-1-1 bei XC4?" -> RAG findet Tabelle 4.4DE des NA -> LLM antwortet exakt mit c_min,dur = 25 mm + Δc_dev = 15 mm = c_nom 40 mm und nennt die exakte Seitenzahl.',
       technicalMechanism: [
         { step: '01', title: 'Dokumenten-Chunking & Metadatenstruktur', desc: 'Deterministische Zerlegung von Normen und Fachgutachten in semantisch geschlossene Chunks mit Metadaten (Norm, Kapitel, Revisionsstand).' },
         { step: '02', title: 'Dense Vector Embedding', desc: 'Abbildung von Textpassagen in hochdimensionale Vektoren d in R^1536 über vortrainierte Einbettungsmodelle.' },
@@ -462,11 +462,11 @@ export default function KiUeberblick() {
           title: 'Deterministische Normenabfrage nach DIN EN 1992-1-1 (Eurocode 2 inkl. NA Deutschland)',
           category: 'Tragwerksplanung & Dauerhaftigkeitsnachweise',
           scenario: 'Festlegung des Mindestbetondeckungsmaßes für eine Parkhausstütze unter chloridinduzierter Korrosion.',
-          input: 'Ingenieuranfrage: "Mindestbetondeckung c_min,dur und Vorhaltemaß Δc_dev für Expositionsklasse XD3 bei 100 Jahren Entwurfslebensdauer nach deutschem Nationalen Anhang?"',
-          process: 'Vektorsuche ruft Tabelle 4.4N und Absatz 4.4.1.2 des Nationalen Anhangs zu DIN EN 1992-1-1:2011-01 ab.',
-          output: 'Präzise Bemessungswerte: c_min,dur = 40 mm, Δc_dev = 10 mm -> c_nom = 50 mm unter Nennung von Tabelle NA.4.4.',
+          input: 'Ingenieuranfrage: "Mindestbetondeckung c_min,dur und Vorhaltemaß Δc_dev für Expositionsklasse XD3 bei 50 Jahren Nutzungsdauer nach deutschem Nationalen Anhang?"',
+          process: 'Vektorsuche ruft Tabelle 4.4DE (Absatz 4.4.1.2) und Absatz 4.4.1.3 des Nationalen Anhangs zu DIN EN 1992-1-1:2011-01 ab.',
+          output: 'Präzise Bemessungswerte: c_min,dur = 40 mm, Δc_dev = 15 mm -> c_nom = 55 mm unter Nennung von Tabelle 4.4DE und NA 4.4.1.3.',
           benefit: 'Höhere Rechtssicherheit; Ausschluss schwerwiegender Planungsfehler bei Korrosionsschutzmaßnahmen.',
-          normRef: 'DIN EN 1992-1-1:2011-01 Tab. 4.4N (NA Deutschland)'
+          normRef: 'DIN EN 1992-1-1/NA:2013-04, Tab. 4.4DE und 4.4.1.3'
         },
         {
           title: 'Semantische Volltextindizierung historischer Bauwerks- & Instandsetzungsakten',
@@ -708,8 +708,8 @@ export default function KiUeberblick() {
         critique: 'Das Modell schätzt vage aus dem Gedächtnis. Das Vorhaltemaß Δc_dev wird nicht klar von c_min getrennt. Für eine prüffähige Statik unbrauchbar.'
       },
       rag: {
-        text: 'Nach DIN EN 1992-1-1:2011 (Eurocode 2), Tabelle 4.4N i. V. m. deutschem Nationalen Anhang (NA) gilt für XC4 bei gewöhnlichem Betonstahl (50 Jahre Nutzungsdauer):\n• Mindestbetondeckung c_min,dur = 25 mm\n• Vorhaltemaß Δc_dev = 10 mm (bzw. 5 mm bei Qualitätsüberwachung)\n• Nennmaß c_nom = c_min + Δc_dev = 35 mm (bzw. 30 mm).',
-        source: 'DIN EN 1992-1-1, Abs. 4.4.1.2 & Tab. 4.4N (NA Deutschland)',
+        text: 'Nach DIN EN 1992-1-1:2011 (Eurocode 2), i. V. m. deutschem Nationalen Anhang (NA), Tabelle 4.4DE, gilt für XC4 bei Betonstahl (50 Jahre Nutzungsdauer):\n• Mindestbetondeckung c_min,dur = 25 mm\n• Vorhaltemaß Δc_dev = 15 mm (NA 4.4.1.3; nur bei XC1 10 mm)\n• Nennmaß c_nom = c_min + Δc_dev = 40 mm.',
+        source: 'DIN EN 1992-1-1/NA, Abs. 4.4.1.2 (Tab. 4.4DE) & 4.4.1.3',
         verdict: '100% präzise & normgerecht',
         benefit: 'RAG liefert die exakte Normtabelle als Quellennachweis mit. Null Halluzination!'
       }
@@ -717,13 +717,13 @@ export default function KiUeberblick() {
     xf4: {
       question: 'Welcher maximale äquivalente Wasserzementwert (w/z)_eq ist für die Expositionsklasse XF4 nach DIN 1045-2 gefordert?',
       llmPur: {
-        text: 'Für Taumittelangriff XF4 liegt der w/z-Wert meistens bei rund 0,50. Eventuell muss Zement CEM I verwendet werden.',
+        text: 'Für Taumittelangriff XF4 liegt der w/z-Wert meistens bei rund 0,55; Luftporen sind nur bei Bedarf nötig. Eventuell muss Zement CEM I verwendet werden.',
         verdict: 'Gefährlich falsch!',
-        critique: '0,50 ist viel zu hoch! Ein Bauteil mit w/z = 0,50 würde unter XF4-Taumittelangriff innerhalb weniger Winter abplatzen (Frost-Tausalz-Schaden).'
+        critique: '0,55 ist zu hoch, und ohne Luftporenbildner fehlt der eigentliche Frost-Tausalz-Schutz! Ein solches Bauteil würde unter XF4-Taumittelangriff innerhalb weniger Winter abplatzen.'
       },
       rag: {
-        text: 'Gemäß DIN 1045-2:2023 / DIN EN 206, Tabelle F.1.2 gilt für die Expositionsklasse XF4 (hohe Wassersättigung mit Taumittel):\n• Maximaler (w/z)_eq = 0,45\n• Mindestdruckfestigkeitsklasse: C30/37\n• Mindestzementgehalt: 320 kg/m³ bei Luftporenbeton (LP) bzw. 340 kg/m³ ohne LP\n• Mindestluftgehalt: ≥ 4,0 % (bei Größtkorn 32 mm) bzw. ≥ 4,5 % (bei 16 mm).',
-        source: 'DIN 1045-2:2023, Anhang F, Tabelle F.1.2',
+        text: 'Gemäß DIN 1045-2 i. V. m. DIN EN 206, Anhang F, Tabelle F.2.1 gilt für die Expositionsklasse XF4 (hohe Wassersättigung mit Taumittel):\n• Maximaler (w/z)_eq = 0,50 – nur als Luftporenbeton (LP) zulässig\n• Mindestdruckfestigkeitsklasse: C30/37\n• Mindestzementgehalt: 320 kg/m³\n• mittlerer Luftgehalt: ≥ 4,0 % (Größtkorn 32 mm), ≥ 4,5 % (16 mm), ≥ 5,5 % (8 mm).',
+        source: 'DIN 1045-2, Anhang F, Tabelle F.2.1',
         verdict: 'Technisch einwandfrei',
         benefit: 'Verhindert verheerende Bauschäden durch fehlerhafte Mischungsbemessung.'
       }

@@ -17,6 +17,8 @@ export interface DurchstanzEingabe {
   rhoL: number; // mittlerer Längsbewehrungsgrad [–]
   beta: number;
   fyk?: number; // Biegebewehrung, für die Begrenzung ρ_l ≤ 0,5·f_cd/f_yd
+  /** Stützenlage; die Abminderung von C_Rd,c bei u0/d < 4 gilt nach NA DE nur für Innenstützen (Standard: innen) */
+  lage?: 'innen' | 'rand' | 'ecke';
 }
 
 export interface DurchstanzErgebnis {
@@ -39,6 +41,7 @@ export function pruefeDurchstanzen(e: DurchstanzEingabe): Hinweis[] {
   if (hatFehler(h)) return h;
   bereich(h, 'fck', e.fck, 12, 50, 'Die Durchstanzformeln sind hier nur bis C50/60 hinterlegt.');
   if (e.form === 'rechteckig') bereich(h, 'c', Math.max(e.cx, e.cy) / Math.min(e.cx, e.cy), 1, 2, 'Seitenverhältnis > 2: Der Rundschnitt ist nach NA DE 6.4.2 zu reduzieren (hier nicht berücksichtigt).');
+  if (e.lage && e.lage !== 'innen') h.push({ stufe: 'warnung', feld: 'lage', text: 'Rand- und Eckstützen: Der kritische Rundschnitt u₁ ist hier vereinfacht als voller Rundschnitt angesetzt (genauer: reduzierter Umfang nach 6.4.2); C_Rd,c = 0,18/γc ohne Abminderung für u₀/d < 4.' });
   bereich(h, 'd', e.d, 0, 600, 'Für d > 600 mm ist v_min nach NA DE abzumindern (hier mit 0,0525/γc gerechnet).');
   return h;
 }
@@ -60,8 +63,9 @@ export function bemesseDurchstanzen(e: DurchstanzEingabe): DurchstanzErgebnis {
   const k = Math.min(1 + Math.sqrt(200 / e.d), 2.0);
   const rhoL_eff = Math.min(e.rhoL, 0.02, (0.5 * fcd) / fyd); // NA DE 6.4.4(1)
   const u0_d = u0 / e.d;
-  // NA DE 6.4.4(1): Innenstützen mit u0/d < 4 → C_Rd,c = 0,18/γc·(0,1·u0/d + 0,6)
-  const CRdc = u0_d < 4 ? EC2_NA_DE.CRdc_Durchstanz * (0.1 * u0_d + 0.6) : EC2_NA_DE.CRdc_Durchstanz;
+  // NA DE 6.4.4(1): nur Innenstützen (Flachdecken) mit u0/d < 4 → C_Rd,c = 0,18/γc·(0,1·u0/d + 0,6)
+  const istInnen = (e.lage ?? 'innen') === 'innen';
+  const CRdc = istInnen && u0_d < 4 ? EC2_NA_DE.CRdc_Durchstanz * (0.1 * u0_d + 0.6) : EC2_NA_DE.CRdc_Durchstanz;
   const vMin = (0.0525 / EC2_NA_DE.gammaC) * Math.pow(k, 1.5) * Math.sqrt(e.fck);
   const vRdc = Math.max(CRdc * k * Math.cbrt(100 * rhoL_eff * e.fck), vMin);
   const vRdMax = EC2_NA_DE.vRdMaxFaktor_u1 * vRdc; // NA DE 6.4.5(3): v_Rd,max = 1,4·v_Rd,c

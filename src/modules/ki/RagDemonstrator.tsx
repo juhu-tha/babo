@@ -23,10 +23,10 @@ interface NormChunk {
 const SAMPLE_CHUNKS: NormChunk[] = [
   {
     id: 'chunk_1',
-    norm: 'DIN 1045-2:2023 / DIN EN 206',
-    section: 'Tabelle F.1.2',
+    norm: 'DIN 1045-2 / DIN EN 206',
+    section: 'Tabelle F.2.1',
     title: 'Grenzwerte für Beton nach Expositionsklassen (XC4, XD3, XF4)',
-    content: 'Für die Expositionsklasse XF4 (hohe Wassersättigung mit Taumittel, z. B. Parkdecks und Spritzwasserzonen) gilt: max (w/z)_eq = 0,45, Mindestdruckfestigkeitsklasse C30/37, Mindestzementgehalt 320 kg/m³ bei LP-Beton oder 340 kg/m³ ohne LP-Zusatz.',
+    content: 'Für die Expositionsklasse XF4 (hohe Wassersättigung mit Taumittel, z. B. Parkdecks und Spritzwasserzonen) gilt: max (w/z)_eq = 0,50 nur als Luftporenbeton (LP), Mindestdruckfestigkeitsklasse C30/37, Mindestzementgehalt 320 kg/m³.',
     vectorSim: 0.94,
     keyTopics: ['XF4', 'Taumittel', 'w/z-Wert', 'Luftporenbeton', 'C30/37']
   },
@@ -288,7 +288,7 @@ export default function RagDemonstrator() {
               <div className="pt-2 border-t border-red-150 text-[10px] text-red-800">
                 <strong>Analyse der Fehler:</strong>
                 <ul className="list-disc list-inside mt-1 space-y-0.5">
-                  <li>w/z = 0,55 führt bei XF4 zu schnellem Frost-Tausalz-Abplatzen (Zulässig max. 0,45).</li>
+                  <li>w/z = 0,55 führt bei XF4 zu schnellem Frost-Tausalz-Abplatzen (zulässig max. 0,50 und nur mit Luftporen).</li>
                   <li>20 mm Betondeckung führt bei XC4/XD3 zu Chloridkorrosion der Bewehrung (min 25–40 mm erforderlich).</li>
                   <li>γ_c = 1,35 ist erfunden (DIN EN 1992-1-1/NA verlangt zwingend γ_c = 1,50).</li>
                 </ul>
@@ -309,10 +309,10 @@ export default function RagDemonstrator() {
             </div>
             <div className="text-xxs text-emerald-950 leading-relaxed space-y-2 bg-white/80 p-3 rounded-lg border border-emerald-200">
               <p>
-                &quot;Gemäß <strong>DIN 1045-2 / DIN EN 206 (Tabelle F.1.2)</strong> ist für die Taumittel-Exposition <strong>XF4</strong> zwingend ein <strong>max (w/z)_eq = 0,45</strong> und eine Mindestfestigkeitsklasse <strong>C30/37</strong> einzuhalten (320 kg/m³ Zement bei LP-Beton).
+                &quot;Gemäß <strong>DIN 1045-2 / DIN EN 206 (Tabelle F.2.1)</strong> ist für die Taumittel-Exposition <strong>XF4</strong> zwingend Luftporenbeton mit <strong>max (w/z)_eq = 0,50</strong> und eine Mindestfestigkeitsklasse <strong>C30/37</strong> einzuhalten (320 kg/m³ Zement bei LP-Beton).
               </p>
               <p>
-                Für die Bewehrungsüberdeckung gilt nach <strong>DIN EN 1992-1-1 (Abschnitt 4.4.1.2)</strong> bei Expositionsklasse XC4 eine Mindestbetondeckung von <strong>c_min,dur = 25 mm</strong> (zzgl. Vorhaltemaß <InlineMath math="\Delta c_{dev} = 10\text{ mm}" /> ergibt sich das Nennmaß <InlineMath math="c_{nom} = 35\text{ mm}" />).
+                Für die Bewehrungsüberdeckung gilt nach <strong>DIN EN 1992-1-1 (Abschnitt 4.4.1.2)</strong> bei Expositionsklasse XC4 eine Mindestbetondeckung von <strong>c_min,dur = 25 mm</strong> (zzgl. Vorhaltemaß <InlineMath math="\Delta c_{dev} = 15\text{ mm}" /> nach NA ergibt sich das Nennmaß <InlineMath math="c_{nom} = 40\text{ mm}" />).
               </p>
               <p>
                 Alle Tragfähigkeitsnachweise müssen verbindlich mit dem nationalen Teilsicherheitsbeiwert <strong>γ_c = 1,50</strong> geführt werden (DIN EN 1992-1-1/NA).&quot;

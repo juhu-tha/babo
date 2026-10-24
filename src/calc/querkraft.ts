@@ -1,6 +1,7 @@
 /**
  * Querkraftbemessung Rechteckquerschnitt (Stahlbeton, nicht vorgespannt) nach DIN EN 1992-1-1 + NA (DE), 6.2.
  * Vereinfachungen: z = 0,9·d, senkrechte Bügel (α = 90°), σ_cp = 0, α_cw = 1,0.
+ * Ein flacheres θ als nach Gl. (6.7aDE) zulässig wird auf cot θ,max begrenzt (cot_theta_eff).
  * Reiner Rechenkern ohne React – geprüft in tests/querkraft.test.ts.
  */
 import { formatDeZahl } from '../utils/numberFormat';
@@ -24,7 +25,8 @@ export interface QuerkraftEingabe {
 export interface QuerkraftErgebnis {
   d: number; z: number; fcd: number; fyd: number; fctm: number;
   vRd_max: number; vRd_c: number; vRd_cc_kN: number;
-  cot_theta: number; cot_theta_max: number; theta_min_deg: number; isCotThetaExceeded: boolean;
+  /** cot_theta: gewählter Wert; cot_theta_eff: in der Rechnung verwendet = min(cot θ; cot θ,max) */
+  cot_theta: number; cot_theta_eff: number; theta_eff_deg: number; cot_theta_max: number; theta_min_deg: number; isCotThetaExceeded: boolean;
   asw_req: number; asw_min: number; asw_final: number;
   isVRdcExceeded: boolean; isVRdMaxExceeded: boolean;
   hinweise: Hinweis[];
@@ -59,7 +61,7 @@ export function pruefeQuerkraft(e: QuerkraftEingabe): Hinweis[] {
 export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   const hinweise = pruefeQuerkraft(e);
   const leer: QuerkraftErgebnis = {
-    d: 0, z: 0, fcd: 0, fyd: 0, fctm: 0, vRd_max: 0, vRd_c: 0, vRd_cc_kN: 0, cot_theta: 0, cot_theta_max: 0, theta_min_deg: 0,
+    d: 0, z: 0, fcd: 0, fyd: 0, fctm: 0, vRd_max: 0, vRd_c: 0, vRd_cc_kN: 0, cot_theta: 0, cot_theta_eff: 0, theta_eff_deg: 0, cot_theta_max: 0, theta_min_deg: 0,
     isCotThetaExceeded: false, asw_req: 0, asw_min: 0, asw_final: 0, isVRdcExceeded: false, isVRdMaxExceeded: false, hinweise,
   };
   if (hatFehler(hinweise)) return leer;
@@ -68,18 +70,31 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   const b_m = e.b / 100;
   const d_m = (e.h - e.d1) / 100;
   const vEd_MN = e.vEd / 1000;
-  const th = (e.theta * Math.PI) / 180;
-  const cot_theta = 1 / Math.tan(th);
+  const cot_theta = 1 / Math.tan((e.theta * Math.PI) / 180);
   const fcd = (EC2_NA_DE.alphaCC * e.fck) / EC2_NA_DE.gammaC;
   const fyd = isStahl ? e.fyk / EC2_NA_DE.gammaS : e.ftk / e.gammaFRP;
   const z = 0.9 * d_m;
 
+  // cot θ-Grenze (6.7aDE) mit V_Rd,cc = 0,5·0,48·f_ck^(1/3)·b_w·z (σ_cp = 0)
+  const vRd_cc_N = 0.5 * 0.48 * Math.cbrt(e.fck) * b_m * 1000 * z * 1000;
+  const vEd_N = e.vEd * 1000;
+  const cot_theta_max = vEd_N > vRd_cc_N ? Math.min(EC2_NA_DE.cotThetaMax, 1.2 / (1 - vRd_cc_N / vEd_N)) : EC2_NA_DE.cotThetaMax;
+  const theta_min_deg = (Math.atan(1 / cot_theta_max) * 180) / Math.PI;
+  const isCotThetaExceeded = cot_theta > cot_theta_max + 0.005;
+  // Gerechnet wird mit dem zulässigen Wert: cot θ_eff = min(cot θ; cot θ,max)
+  const cot_theta_eff = Math.min(cot_theta, cot_theta_max);
+  const th = Math.atan(1 / cot_theta_eff);
+  const theta_eff_deg = (th * 180) / Math.PI;
+  if (isCotThetaExceeded) {
+    hinweise.push({ stufe: 'warnung', feld: 'cotTheta', text: `θ ist flacher als zulässig: Nach Gl. (6.7aDE) gilt hier cot θ ≤ ${formatDeZahl(cot_theta_max, 2)}, also θ ≥ ${formatDeZahl(theta_min_deg, 1)}°. Gerechnet wird mit cot θ = ${formatDeZahl(cot_theta_max, 2)}.` });
+  }
+
   // V_Rd,max (6.9): ν1 = 0,75·ν2, ν2 = 1,1 − f_ck/500 ≤ 1,0 (NA DE)
   const nu1 = EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - e.fck / 500);
-  const vRd_max = (b_m * z * nu1 * fcd) / (Math.tan(th) + cot_theta);
+  const vRd_max = (b_m * z * nu1 * fcd) / (Math.tan(th) + cot_theta_eff);
 
   // a_sw,erf (6.8)
-  const asw_req = (vEd_MN / (z * fyd * cot_theta)) * 10000;
+  const asw_req = (vEd_MN / (z * fyd * cot_theta_eff)) * 10000;
   // ρ_w,min = 0,16·f_ctm/f_yk (NA DE 9.2.2(5))
   const fctm = fctmVonFck(e.fck);
   const asw_min = EC2_NA_DE.rhoWmin(fctm, isStahl ? e.fyk : e.ftk) * b_m * 10000;
@@ -91,16 +106,6 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   const v_min = (kappa1Vmin(d_mm) / EC2_NA_DE.gammaC) * Math.pow(k, 1.5) * Math.sqrt(e.fck);
   const vRdc = Math.max(EC2_NA_DE.CRdc_Querkraft * k * Math.cbrt(100 * rho_l * e.fck), v_min) * b_m * d_m;
 
-  // cot θ-Grenze (6.7aDE) mit V_Rd,cc = 0,5·0,48·f_ck^(1/3)·b_w·z (σ_cp = 0)
-  const vRd_cc_N = 0.5 * 0.48 * Math.cbrt(e.fck) * b_m * 1000 * z * 1000;
-  const vEd_N = e.vEd * 1000;
-  const cot_theta_max = vEd_N > vRd_cc_N ? Math.min(EC2_NA_DE.cotThetaMax, 1.2 / (1 - vRd_cc_N / vEd_N)) : EC2_NA_DE.cotThetaMax;
-  const theta_min_deg = (Math.atan(1 / cot_theta_max) * 180) / Math.PI;
-  const isCotThetaExceeded = cot_theta > cot_theta_max + 0.005;
-  if (isCotThetaExceeded) {
-    hinweise.push({ stufe: 'warnung', feld: 'cotTheta', text: `θ ist flacher als zulässig: Nach Gl. (6.7aDE) gilt hier cot θ ≤ ${formatDeZahl(cot_theta_max, 2)}, also θ ≥ ${formatDeZahl(theta_min_deg, 1)}°.` });
-  }
-
   const isVRdcExceeded = vEd_MN > vRdc;
   const isVRdMaxExceeded = vEd_MN > vRd_max;
   if (isVRdMaxExceeded) {
@@ -109,7 +114,7 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   return {
     d: d_m * 100, z: z * 100, fcd, fyd, fctm,
     vRd_max: vRd_max * 1000, vRd_c: vRdc * 1000, vRd_cc_kN: vRd_cc_N / 1000,
-    cot_theta, cot_theta_max, theta_min_deg, isCotThetaExceeded,
+    cot_theta, cot_theta_eff, theta_eff_deg, cot_theta_max, theta_min_deg, isCotThetaExceeded,
     asw_req, asw_min, asw_final: isVRdcExceeded ? Math.max(asw_req, asw_min) : asw_min,
     isVRdcExceeded, isVRdMaxExceeded, hinweise,
   };

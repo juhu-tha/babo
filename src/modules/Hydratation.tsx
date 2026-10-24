@@ -895,7 +895,7 @@ export default function Hydratation() {
               schritte={[
                 {
                   titel: '28-Tage-Kennwerte',
-                  erklaerung: `Rechenwert f_ck = ${formatDeZahl(fckRechen, 1)} N/mm² aus der gewählten Festigkeitsklasse (Lehrvereinfachung).`,
+                  erklaerung: `Rechenwert f_ck = ${formatDeZahl(fckRechen, 1)} N/mm² aus der gewählten Zementfestigkeitsklasse (Lehrvereinfachung: die Normfestigkeit des Zements nach DIN EN 196-1 wird als Beton-f_ck angesetzt; die tatsächliche Betonfestigkeit hängt vor allem vom w/z-Wert ab).`,
                   formel: `f_{cm} = ${formatDeTeX(fckRechen, 1)} + 8 = ${formatDeTeX(fcm28, 1)};\\quad f_{ctm} = 0{,}30 \\cdot ${formatDeTeX(fckRechen, 1)}^{2/3} = ${formatDeTeX(fctm28, 2)}\\,\\text{N/mm}^2;\\quad E_{cm} = 22 \\cdot \\left(\\tfrac{${formatDeTeX(fcm28, 1)}}{10}\\right)^{0{,}3} = ${formatDeTeX(Ecm28, 1)}\\,\\text{GPa}`,
                 },
                 {

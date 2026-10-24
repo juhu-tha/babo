@@ -732,7 +732,7 @@ export default function NachhaltigkeitDatenRegeln() {
                 <ul className="text-[11px] text-text-main/70 space-y-1 list-disc list-inside">
                   <li><strong>Brundtland-Bericht:</strong> World Commission on Environment and Development (WCED): <em>Our Common Future</em>, Oxford University Press, 1987.</li>
                   <li><strong>DIN EN 15643:2021-12:</strong> <em>Nachhaltigkeit von Bauwerken – Rahmenbedingungen für die Bewertung von Gebäuden und Ingenieurbauwerken</em>. Beuth Verlag, Berlin.</li>
-                  <li><strong>DIN EN 15978:2012-10:</strong> <em>Nachhaltigkeit von Bauwerken – Bewertung der umweltbezogenen Qualität von Gebäuden – Berechnungsverfahren</em>. Beuth Verlag.</li>
+                  <li><strong>DIN EN 15978:2026-09:</strong> <em>Nachhaltigkeit von Bauwerken – Bewertung der Umweltqualität von Gebäuden – Methodik</em> (ersetzt DIN EN 15978:2012-10). DIN Media.</li>
                   <li><strong>DIN EN ISO 15392:2020-05:</strong> <em>Nachhaltigkeit im Hoch- und Tiefbau – Allgemeine Grundsätze</em> (ISO 15392:2019).</li>
                   <li><strong>BMWSB (Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen):</strong> <em>Leitfaden Nachhaltiges Bauen – Zukunftsfähiges Planen, Bauen und Betreiben von Gebäuden</em>, Berlin, 2021.</li>
                   <li><strong>Rockström, J. et al. / Richardson, K. et al.:</strong> <em>Earth beyond six of nine planetary boundaries</em>, Science Advances 9 (37), 2023.</li>
@@ -940,7 +940,7 @@ export default function NachhaltigkeitDatenRegeln() {
                 {
                   year: '1992',
                   title: 'UN-Erdgipfel in Rio de Janeiro (Agenda 21)',
-                  desc: 'Verabschiedung der Klimarahmenkonvention (UNFCCC) und der Agenda 21. Etablierung des Leitfadens Nachhaltiges Bauen und Startschuss für nationale Nachhaltigkeitsstrategien.'
+                  desc: 'Verabschiedung der Klimarahmenkonvention (UNFCCC) und der Agenda 21. Startschuss für nationale Nachhaltigkeitsstrategien; in Deutschland folgte 2001 der erste Leitfaden Nachhaltiges Bauen des Bundes.'
                 },
                 {
                   year: '1997',

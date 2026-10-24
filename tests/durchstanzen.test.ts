@@ -22,6 +22,11 @@ pruefe(!r.needsReinforcement && r.CRdc === 0.12, 'ohne Bewehrung, C_Rd,c = 0,12'
 // 2. Kleine Stütze: u0/d < 4 → C_Rd,c abgemindert. c = 200 mm, d = 250 mm: u0/d = 2,513 → 0,12·(0,2513 + 0,6) = 0,1022
 const rk = bemesseDurchstanzen({ ...basis, c: 200, d: 250 });
 pruefe(nahe(rk.CRdc, 0.12 * (0.1 * Math.PI * 200 / 250 + 0.6), 1e-12), `C_Rd,c ${rk.CRdc}`);
+// … die Abminderung gilt nach NA DE 6.4.4(1) nur für Innenstützen: Rand-/Eckstütze → C_Rd,c = 0,18/1,5 = 0,12
+const rkRand = bemesseDurchstanzen({ ...basis, c: 200, d: 250, beta: 1.4, lage: 'rand' });
+pruefe(rkRand.CRdc === 0.12 && rkRand.hinweise.some(x => x.feld === 'lage'), `C_Rd,c Randstütze ${rkRand.CRdc}`);
+pruefe(bemesseDurchstanzen({ ...basis, c: 200, d: 250, beta: 1.5, lage: 'ecke' }).CRdc === 0.12, 'C_Rd,c Eckstütze');
+pruefe(nahe(bemesseDurchstanzen({ ...basis, c: 200, d: 250, lage: 'innen' }).CRdc, rk.CRdc, 1e-12), 'C_Rd,c Innenstütze explizit');
 // Rechteckstütze: u1 = 2(cx + cy) + 4πd
 pruefe(nahe(bemesseDurchstanzen({ ...basis, form: 'rechteckig', cx: 300, cy: 500 }).u1, 1600 + 800 * Math.PI, 1e-12), 'u1 rechteckig');
 

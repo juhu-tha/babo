@@ -127,7 +127,7 @@ export default function BpAbdichtung() {
           'Injektionsschläuche im Betonierstoß zur nachträglichen Verpressung im Schadensfall'
         ];
         techSpecs = [
-          { label: 'Rissbreitenbegrenzung wk', value: 'Nutzungsklasse A verlangt rechnerische Rissbeschränkung auf ≤ 0,20 mm' },
+          { label: 'Trennrisse (Nutzungsklasse A)', value: 'Trennrisse vermeiden (Entwurfsgrundsatz a) oder zulassen und planmäßig abdichten/verpressen (c); Selbstheilung über begrenzte Rissbreiten (b) nur in Nutzungsklasse B' },
           { label: 'Mindestdicke Wand', value: '≥ 24 cm (besser 30 cm)' },
           { label: 'Kiesnestervermeidung', value: 'Sorgfältiger Rüttlereinsatz an den Bewehrungsflanken unabdingbar' }
         ];
@@ -136,7 +136,7 @@ export default function BpAbdichtung() {
           'DIN EN 206 / DIN 1045-2: Tragwerke aus Beton'
         ];
       } else {
-        systemTitle = 'Weiße Wanne (Einfaches Tragsystem / Nutzungsklasse C)';
+        systemTitle = 'Betonkonstruktion ohne WU-Anforderung (keine Nutzungsklasse nach WU-Richtlinie)';
         systemDesc = 'Betonkonstruktion ohne besondere Dichtheitsanforderung für Bereiche, in denen Feuchtstellen hingenommen werden (z. B. offene Tiefgaragen).';
         products = [
           'WU-Beton (Standardgüte)',
