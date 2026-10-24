@@ -1,6 +1,7 @@
 /**
  * Utility for CSV Export and Import of Quiz Questions according to P26.
  */
+import type { ClusterNummer } from '@/src/data/quizZuordnung';
 import { QuizQuestion, KnowledgeGapInfo, QuizCategory } from '@/src/data/quizData';
 
 export function questionsToCsv(questions: QuizQuestion[]): string {
@@ -153,7 +154,7 @@ export function parseCsvToQuestions(csvText: string): QuizQuestion[] {
 
     const correctIdx = parseInt(getVal('correctidx') || '0', 10) || 0;
     const category = (getVal('category') || 'baustoffkunde') as QuizCategory;
-    const clusterId = (getVal('clusterid') || 'I') as 'I' | 'II' | 'III' | 'IV' | 'V';
+    const clusterId = (getVal('clusterid') || 'I') as ClusterNummer;
 
     const gapAnalysis: KnowledgeGapInfo = {
       topic: getVal('gap_topic') || getVal('topic') || 'Fachgrundlagen',

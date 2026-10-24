@@ -278,7 +278,7 @@ export const KlausurSimulator: React.FC = () => {
                 • Keine Lösungsanzeige während der Klausur<br/>
                 • Markieren von Fragen zur Wiedervorlage möglich<br/>
                 • Automatischer Abbruch bei Zeitablauf<br/>
-                • Offizielle Notenberechnung nach Abgabe
+                • Orientierungsnote nach Abgabe (keine Prüfungsleistung)
               </div>
             </div>
           </div>

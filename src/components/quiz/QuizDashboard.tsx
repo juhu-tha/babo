@@ -1,3 +1,4 @@
+import type { ClusterNummer } from '@/src/data/quizZuordnung';
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
@@ -38,7 +39,7 @@ interface QuizDashboardProps {
 export interface ModuleCompetenceStat {
   moduleId: string;
   moduleTitle: string;
-  clusterId: 'I' | 'II' | 'III' | 'IV' | 'V';
+  clusterId: ClusterNummer;
   clusterName: string;
   targetTab: string;
   totalQuestions: number;
@@ -49,7 +50,7 @@ export interface ModuleCompetenceStat {
   status: 'critical' | 'moderate' | 'solid' | 'untested';
 }
 
-const CLUSTERS: { id: 'I' | 'II' | 'III' | 'IV' | 'V'; name: string; color: string }[] = [
+const CLUSTERS: { id: ClusterNummer; name: string; color: string }[] = [
   { id: 'I', name: 'Cluster I: Grundlagen & Labor', color: '#64748b' },
   { id: 'II', name: 'Cluster II: Materialien & Produkte', color: '#475569' },
   { id: 'III', name: 'Cluster III: Entwurf & Bemessung', color: '#A3113E' },
@@ -64,7 +65,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
   onNavigateToTab
 }) => {
   const { setActiveTab } = useTabContext();
-  const [selectedClusterFilter, setSelectedClusterFilter] = useState<'all' | 'I' | 'II' | 'III' | 'IV' | 'V'>('all');
+  const [selectedClusterFilter, setSelectedClusterFilter] = useState<'all' | ClusterNummer>('all');
   const [metricView, setMetricView] = useState<'both' | 'line' | 'heatmap'>('both');
 
   const handleTabClick = (tab: string) => {
@@ -115,7 +116,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
           moduleTitle: q.moduleTitle,
           clusterId: q.clusterId,
           clusterName: q.clusterName,
-          targetTab: q.gapAnalysis?.targetModuleTab || q.moduleId,
+          targetTab: q.gapAnalysis?.targetModuleTab || q.route || q.moduleId,
           totalQuestions: 0,
           answeredCount: 0,
           correctCount: 0,
