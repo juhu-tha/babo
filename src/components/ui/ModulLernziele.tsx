@@ -19,7 +19,7 @@ export function ModulLernziele({ moduleId, daten, oeffneModul }: { moduleId: str
         <span className="flex items-center gap-2 font-bold text-shiraz"><Target size={16} aria-hidden="true" /> Lernziele</span>
         <span className="text-xs text-text-main/70">{NIVEAU[daten.niveau]}</span>
         <span className="text-xs text-text-main/70 flex items-center gap-1"><Clock size={13} aria-hidden="true" /> ca. {formatDeWert(daten.minuten)} min</span>
-        {fragen > 0 && <span className="text-xs text-text-main/70">Selbsttest: {formatDeWert(fragen)} Fragen</span>}
+        {fragen > 0 && <span className="text-xs text-text-main/70">Selbsttest: {formatDeWert(fragen)} {fragen === 1 ? "Frage" : "Fragen"}</span>}
         <ChevronDown size={16} aria-hidden="true" className={`ml-auto transition-transform ${offen ? 'rotate-180' : ''}`} />
       </button>
       {offen && (
