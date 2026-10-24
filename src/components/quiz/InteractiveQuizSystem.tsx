@@ -1,3 +1,4 @@
+import type { ClusterNummer } from '@/src/data/quizZuordnung';
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
@@ -6,7 +7,8 @@ import {
   Sparkles, Filter, ChevronRight, BarChart3, RefreshCw, Bookmark, 
   BookmarkCheck, ExternalLink, Compass, Brain,
   ChevronDown, ChevronUp, Info, FileText,
-  Download, Upload
+  Download, Upload,
+  Target
 } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
 import { 
@@ -26,13 +28,16 @@ import {
 } from '@/src/utils/studyStorage';
 import { QuizDashboard } from './QuizDashboard';
 
-export type QuizMode = 'diagnose_15' | 'full' | 'express_10' | 'cluster' | 'module' | 'gaps_retest';
+export type QuizMode = 'diagnose_15' | 'full' | 'express_10' | 'cluster' | 'module' | 'gaps_retest' | 'gruppe';
 export type FeedbackMode = 'instant' | 'exam';
 
 export interface InteractiveQuizSystemProps {
   initialScope?: QuizMode;
-  initialCluster?: 'I' | 'II' | 'III' | 'IV' | 'V';
+  initialCluster?: ClusterNummer;
   initialModuleId?: string;
+  /** Menügruppen (aus der Modul-Registry), auf die der Fragenpool begrenzt wird. */
+  initialGruppen?: string[];
+  gruppenLabel?: string;
   autoStart?: boolean;
 }
 
@@ -48,6 +53,8 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
   initialScope,
   initialCluster,
   initialModuleId,
+  initialGruppen,
+  gruppenLabel,
   autoStart
 }) => {
   const { setActiveTab } = useTabContext();
@@ -61,7 +68,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
   // Configuration (pre-initialized from props if provided - P26)
   const [quizScope, setQuizScope] = useState<QuizMode>(initialScope || 'diagnose_15');
   const [feedbackMode, setFeedbackMode] = useState<FeedbackMode>('instant');
-  const [selectedCluster, setSelectedCluster] = useState<'I' | 'II' | 'III' | 'IV' | 'V'>(initialCluster || 'III');
+  const [selectedCluster, setSelectedCluster] = useState<ClusterNummer>(initialCluster || 'III');
   const [selectedModuleId, setSelectedModuleId] = useState<string>(initialModuleId || 'beton');
 
   // Custom imported questions pool & status message
@@ -86,7 +93,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
   const [storedGaps, setStoredGaps] = useState<QuizGapItem[]>([]);
   const [sessionHistory, setSessionHistory] = useState<QuizSessionResult[]>([]);
   const [showFullReview, setShowFullReview] = useState<boolean>(false);
-  const [activeGapFilter, setActiveGapFilter] = useState<'all' | 'I' | 'II' | 'III' | 'IV' | 'V'>('all');
+  const [activeGapFilter, setActiveGapFilter] = useState<'all' | ClusterNummer>('all');
 
   // Load stored gaps and history on mount or phase change
   useEffect(() => {
@@ -149,6 +156,11 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
   };
 
   // Start Quiz
+  const gruppenFragenZahl = useMemo(
+    () => allQuestions.filter(q => q.gruppe && (initialGruppen ?? []).includes(q.gruppe)).length,
+    [allQuestions, initialGruppen]
+  );
+
   const startQuiz = (overrideMode?: QuizMode, overrideQuestions?: QuizQuestion[]) => {
     const mode = overrideMode || quizScope;
     let pool: QuizQuestion[] = [];
@@ -157,7 +169,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
       pool = overrideQuestions;
     } else if (mode === 'diagnose_15') {
       // Balanced sample across clusters
-      const clusters: ('I' | 'II' | 'III' | 'IV' | 'V')[] = ['I', 'II', 'III', 'IV', 'V'];
+      const clusters: (ClusterNummer)[] = ['I', 'II', 'III', 'IV', 'V'];
       const sampled: QuizQuestion[] = [];
       clusters.forEach(c => {
         const inCluster = allQuestions.filter(q => q.clusterId === c);
@@ -171,6 +183,9 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
       pool = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 10);
     } else if (mode === 'cluster') {
       pool = allQuestions.filter(q => q.clusterId === selectedCluster);
+    } else if (mode === 'gruppe') {
+      const gruppen = new Set(initialGruppen ?? []);
+      pool = [...allQuestions.filter(q => q.gruppe && gruppen.has(q.gruppe))].sort(() => Math.random() - 0.5);
     } else if (mode === 'module') {
       pool = allQuestions.filter(q => q.moduleId === selectedModuleId);
     } else if (mode === 'gaps_retest') {
@@ -223,7 +238,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
           topic: q.topic,
           moduleId: q.moduleId,
           moduleTitle: q.moduleTitle,
-          targetModuleTab: q.gapAnalysis?.targetModuleTab || q.moduleId,
+          targetModuleTab: q.gapAnalysis?.targetModuleTab || q.route || q.moduleId,
           clusterId: q.clusterId,
           clusterName: q.clusterName,
           misconception: q.gapAnalysis?.misconception || 'Fehlendes Detailwissen bei baustofflichen Kenngrößen.',
@@ -439,6 +454,33 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {initialGruppen && initialGruppen.length > 0 && (
+                <button aria-pressed={quizScope === 'gruppe'}
+                  type="button"
+                  onClick={() => setQuizScope('gruppe')}
+                  className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
+                    quizScope === 'gruppe'
+                      ? 'border-shiraz bg-shiraz/5 ring-2 ring-shiraz/20 shadow-xs'
+                      : 'border-home-grau/30 bg-off-white hover:border-home-grau/60'
+                  }`}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="p-2.5 bg-shiraz/10 text-shiraz rounded-xl">
+                      <Target size={20} />
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white border border-home-grau/30 text-shiraz font-mono">
+                      {formatDeWert(gruppenFragenZahl)} Fragen
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-text-main">Themen-Quiz: {gruppenLabel ?? initialGruppen.join(', ')}</h4>
+                    <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
+                      Alle Fragen aus den Menügruppen {initialGruppen.join(', ')}.
+                    </p>
+                  </div>
+                </button>
+              )}
+
               {/* Option 1: 360 Diagnostic */}
               <button aria-pressed={quizScope === 'diagnose_15'}
                 type="button"
@@ -1277,7 +1319,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
 
                         <button
                           type="button"
-                          onClick={() => handleGoToModule(q.gapAnalysis?.targetModuleTab || q.moduleId)}
+                          onClick={() => handleGoToModule(q.gapAnalysis?.targetModuleTab || q.route || q.moduleId)}
                           className="w-full sm:w-auto px-4 py-2.5 bg-shiraz hover:bg-shiraz/90 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0"
                         >
                           <BookOpen size={14} />

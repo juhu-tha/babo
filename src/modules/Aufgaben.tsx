@@ -1,3 +1,5 @@
+import { QUIZ_QUESTIONS } from '@/src/data/quizData';
+import { AUFGABEN_QUIZ_GRUPPEN } from '@/src/data/aufgabenQuizGruppen';
 import React, { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Lightbulb, BookOpen, Search, Tags, GraduationCap, Trophy, ClipboardCheck, ArrowRight, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -10,27 +12,17 @@ import { DynamischerAufgabenGenerator } from '@/src/components/trainer/Dynamisch
 import { SchadensforensikSimulator } from '@/src/components/forensik/SchadensforensikSimulator';
 import { taskCategories } from '../data/aufgabenData';
 
-const TAB_TO_QUIZ_CONFIG: Record<string, { cluster: 'I' | 'II' | 'III' | 'IV' | 'V'; moduleId?: string; label: string }> = {
-  aufgaben_beton: { cluster: 'III', moduleId: 'beton', label: 'Betontechnologie' },
-  aufgaben_stahlbeton: { cluster: 'III', moduleId: 'stahlbeton', label: 'Massivbau' },
-  aufgaben_holzbau: { cluster: 'I', moduleId: 'holz', label: 'Holzbau' },
-  aufgaben_weitere: { cluster: 'I', moduleId: 'baustoffe', label: 'Baustoffe' },
-  aufgaben_bauprodukte: { cluster: 'II', moduleId: 'bauprodukte', label: 'Bauprodukte & Baurecht' },
-  aufgaben_mechanik: { cluster: 'IV', moduleId: 'mechanik', label: 'Mechanik' },
-  aufgaben_bauphysik: { cluster: 'V', moduleId: 'bauphysik', label: 'Bauphysik' },
-  aufgaben_nachhaltigkeit: { cluster: 'V', moduleId: 'nachhaltigkeit', label: 'Nachhaltigkeit' },
-  aufgaben_bestand: { cluster: 'II', moduleId: 'bestand', label: 'Bauen im Bestand' },
-  aufgaben_dauerhaftigkeit: { cluster: 'II', moduleId: 'dauerhaftigkeit', label: 'Dauerhaftigkeit & Schäden' },
-  aufgaben_rueckbau: { cluster: 'V', moduleId: 'rueckbau', label: 'Rückbau & Schadstoffe' },
-  aufgaben_kennwerte: { cluster: 'I', moduleId: 'labor', label: 'Labor & Grundlagen' },
-  aufgaben_digitales: { cluster: 'IV', moduleId: 'digitales', label: 'Digitales, BIM & KI' },
-  aufgaben_komplex: { cluster: 'III', moduleId: 'komplex', label: 'Komplexe Fallstudien' },
-  aufgaben_quiz: { cluster: 'III', label: 'Wissenscheck & Wissenslücken' }
-};
+const TAB_TO_QUIZ_CONFIG = AUFGABEN_QUIZ_GRUPPEN;
+
+function clusterDerGruppen(gruppen?: string[]): string {
+  if (!gruppen) return 'I–V';
+  const ids = [...new Set(QUIZ_QUESTIONS.filter(q => q.gruppe && gruppen.includes(q.gruppe)).map(q => q.clusterId))];
+  return ids.join(', ') || '–';
+}
 
 export default function Aufgaben() {
   const { activeTab, setActiveTab } = useTabContext();
-  const quizConfig = TAB_TO_QUIZ_CONFIG[activeTab] || { cluster: 'III', label: 'Betontechnologie' };
+  const quizConfig = TAB_TO_QUIZ_CONFIG[activeTab] || { gruppen: ['Betontechnologie'], label: 'Betontechnologie' };
 
   const [mode, setMode] = useState<'exercises' | 'trainer' | 'forensik' | 'quizzes' | 'klausur'>(() => {
     if (activeTab === 'aufgaben_klausur') return 'klausur';
@@ -164,9 +156,9 @@ export default function Aufgaben() {
         <KlausurSimulator />
       ) : mode === 'quizzes' ? (
         <InteractiveQuizSystem 
-          initialScope={activeTab === 'aufgaben_quiz' ? 'diagnose_15' : 'cluster'}
-          initialCluster={quizConfig.cluster}
-          initialModuleId={quizConfig.moduleId}
+          initialScope={quizConfig.gruppen ? 'gruppe' : 'diagnose_15'}
+          initialGruppen={quizConfig.gruppen}
+          gruppenLabel={quizConfig.label}
         />
       ) : mode === 'trainer' ? (
         <DynamischerAufgabenGenerator />
@@ -182,7 +174,7 @@ export default function Aufgaben() {
               </div>
               <div>
                 <h4 className="font-bold text-sm text-text-main">
-                  Fach-Quiz &amp; Wissenscheck: {quizConfig.label} (Cluster {quizConfig.cluster})
+                  Fach-Quiz &amp; Wissenscheck: {quizConfig.label} (Cluster {clusterDerGruppen(quizConfig.gruppen)})
                 </h4>
                 <p className="text-xs text-text-main/70 mt-0.5">
                   Prüfen Sie Ihr Verständnis mit didaktisch geprüften Multiple-Choice-Fragen und automatischer Wissenslücken-Analyse.
