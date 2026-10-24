@@ -18,6 +18,8 @@ import {
   Wrench,
   History
 } from 'lucide-react';
+import { bemesseDruckstab, bemesseQuerdruck, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -153,7 +155,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [colB, setColB] = useState<number>(120); // mm
   const [colH, setColH] = useState<number>(160); // mm
   const [colLen, setColLen] = useState<number>(3.0); // m
-  const [eulerCase, setEulerCase] = useState<number>(1); // 1 = bds. gelenkig, 2 = einseitig eingespannt, 3 = bds. fest, 4 = Kragarm
+  const [eulerCase, setEulerCase] = useState<number>(2); // Euler-Fall 1 Kragarm, 2 gelenkig, 3 eingespannt–gelenkig, 4 beidseitig eingespannt
   const [designLoad, setDesignLoad] = useState<number>(50); // kN
 
   // --- NEW MODULE STATES AND CALCULATIONS ---
@@ -242,68 +244,12 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
   // Derived calculations for added modules
   const qpResults = useMemo(() => {
-    // 1. Get fc90k based on wood class
-    const fc90kMap: Record<string, number> = {
-      C24: 2.5, C30: 2.7, D30: 8.0, D40: 8.8, GL24h: 2.5, GL28c: 2.5, GL30h: 2.5
-    };
-    const f_c90k = fc90kMap[woodClass] || 2.5;
-
-    // k_mod and gamma_M from current buckling calc values
-    const isGlulam = woodClass.startsWith('GL');
-    const gamma_M = 1.3; // Vollholz und BSH nach DIN EN 1995-1-1/NA
-    
-    let k_mod = 0.8;
-    const kmodMatrix: Record<number, Record<string, number>> = {
-      1: { stnd: 0.6, lg: 0.7, mtl: 0.8, krt: 0.9, sfs: 1.1 },
-      2: { stnd: 0.6, lg: 0.7, mtl: 0.8, krt: 0.9, sfs: 1.1 },
-      3: { stnd: 0.5, lg: 0.55, mtl: 0.65, krt: 0.7, sfs: 0.9 }
-    };
-    if (kmodMatrix[serviceClass] && kmodMatrix[serviceClass][loadDuration]) {
-      k_mod = kmodMatrix[serviceClass][loadDuration];
-    }
-
-    const f_c90d = k_mod * (f_c90k / gamma_M); // N/mm²
-
-    // 2. Determine k_c90 based on config
-    // DIN EN 1995-1-1 6.1.5 (A1): Nadel-Vollholz 1,25/1,5, BSH 1,5/1,75 (Schwellen-/Auflagerdruck, l1 ≥ 2h); sonst 1,0
-    const isSoftSolid = woodClass.startsWith('C');
-    let k_c90 = 1.0;
-    if (qpConfig === 'schwelle') k_c90 = isGlulam ? 1.50 : isSoftSolid ? 1.25 : 1.0;
-    else if (qpConfig === 'pfosten_riegel') k_c90 = isGlulam ? 1.75 : isSoftSolid ? 1.50 : 1.0;
-    else if (qpConfig === 'traeger_ende') k_c90 = 1.00;
-    else if (qpConfig === 'clt_plate') k_c90 = 1.00;
-
-    // 3. Effective length of bearing l_ef
-    let l_ef = qpL;
-    if (qpOverhang) {
-      if (qpConfig === 'traeger_ende') {
-        l_ef += 30; // only one side overhangs
-      } else {
-        l_ef += 60; // both sides overhang (+30mm left, +30mm right)
-      }
-    }
-
-    const A_ef = qpB * l_ef; // mm²
-    const F_c90d_N = qpForce * 1000; // N
-    const sigma_c90d = F_c90d_N / A_ef; // N/mm²
-
-    const stressLimit = k_c90 * f_c90d; // N/mm²
-    const utilization = (sigma_c90d / stressLimit) * 100;
-    const F_c90Rd_kN = (stressLimit * A_ef) / 1000;
-
-    return {
-      f_c90k,
-      f_c90d,
-      k_c90,
-      l_ef,
-      A_ef,
-      sigma_c90d,
-      stressLimit,
-      F_c90Rd_kN,
-      utilization,
-      gamma_M,
-      isUnsafe: utilization > 100
-    };
+    const fc90kMap: Record<string, number> = { C24: 2.5, C30: 2.7, D30: 8.0, D40: 8.8, GL24h: 2.5, GL28c: 2.5, GL30h: 2.5 };
+    return bemesseQuerdruck({
+      F: qpForce, b: qpB, l: qpL, fall: qpConfig as Querdruckfall, ueberstand: qpOverhang, fc90k: fc90kMap[woodClass] ?? 2.5,
+      art: woodClass.startsWith('GL') ? 'bsh' : woodClass.startsWith('C') ? 'nadelvollholz' : 'laubholz',
+      nkl: serviceClass as Nutzungsklasse, kled: loadDuration as KLED,
+    });
   }, [woodClass, serviceClass, loadDuration, qpForce, qpB, qpL, qpConfig, qpOverhang]);
 
   const connResults = useMemo(() => {
@@ -431,99 +377,12 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     };
   }, [vibSpan, vibCltThick, vibExtraMass]);
 
-  // Eurocode 5 Buckling Calculation
-  const calculationResults = useMemo(() => {
-    // 1. Modifikationsbeiwert k_mod bestimmen nach DIN EN 1995-1-1 Tab. 3.1
-    // Für Vollholz/KVH und BSH gelten Standard-Modifikatoren
-    let k_mod = 0.8;
-    const isGlulam = currentMaterial.class.startsWith('GL');
-    
-    // Matrix [ServiceClass 1/2/3][Duration stnd/lg/mtl/krt/sfs]
-    const kmodMatrix: Record<number, Record<string, number>> = {
-      1: { stnd: 0.6, lg: 0.7, mtl: 0.8, krt: 0.9, sfs: 1.1 },
-      2: { stnd: 0.6, lg: 0.7, mtl: 0.8, krt: 0.9, sfs: 1.1 },
-      3: { stnd: 0.5, lg: 0.55, mtl: 0.65, krt: 0.7, sfs: 0.9 }
-    };
-
-    if (kmodMatrix[serviceClass] && kmodMatrix[serviceClass][loadDuration]) {
-      k_mod = kmodMatrix[serviceClass][loadDuration];
-    }
-
-    // Teilsicherheitsbeiwert gamma_M (NA: Vollholz und BSH 1,3)
-    const gamma_M = 1.3;
-
-    // Bemessungswert der Druckfestigkeit: f_c_0_d = k_mod * f_c_0_k / gamma_M
-    const f_c0k = currentMaterial.f_c0k;
-    const f_c0d = k_mod * (f_c0k / gamma_M);
-
-    // 5%-Quantil des E-Moduls für den Knicknachweis (Tabellenwert EN 338 / EN 14080)
-    const E_05 = currentMaterial.E_005;
-
-    // Querschnittsflächen-Eigenschaften
-    const A = colB * colH; // mm²
-    const Iy = (colB * Math.pow(colH, 3)) / 12; // mm⁴ (Biegebuckling um y-Achse)
-    const Iz = (colH * Math.pow(colB, 3)) / 12; // mm⁴ (Biegebuckling um z-Achse)
-    const iy = colH / Math.sqrt(12); // Trägheitsradius mm
-    const iz = colB / Math.sqrt(12); // Trägheitsradius mm
-
-    // Euler Knickbeiwert beta
-    let beta_euler = 1.0;
-    if (eulerCase === 1) beta_euler = 1.0; // beidseitig gelenkig
-    if (eulerCase === 2) beta_euler = 0.7; // führungsgelenkig / einseitig fest
-    if (eulerCase === 3) beta_euler = 0.5; // beidseitig fest
-    if (eulerCase === 4) beta_euler = 2.0; // Freistehendes Ende (Kragarm)
-
-    // Wirksame Länge l_ef in mm
-    const l_ef = colLen * 1000 * beta_euler;
-
-    // Schlankheitsgrad lambda_z (wirksames Knicken um die schwache Achse z bei b < h)
-    // Wir nehmen an das ungestützte Knicken findet um die schwächere Achse statt (Trägheitsradius iz)
-    const lambda_z = l_ef / Math.min(iy, iz); // maßgebend: schwache Achse
-
-    // Eulerdruckspannung (Kritische Ausweichspannung)
-    // sigma_c_crit = pi^2 * E_05 / lambda_z^2
-    const sigma_c_crit = (Math.pow(Math.PI, 2) * E_05) / Math.pow(lambda_z, 2);
-
-    // Bezogener Schlankheitsgrad lambda_rel = sqrt(f_c_0_k / sigma_c_crit)
-    const lambda_rel_z = Math.sqrt(f_c0k / sigma_c_crit);
-
-    // Knickbeiwert k_c_z nach DIN EN 1995-1-1 Gl. (6.5) und (6.6)
-    // beta_c für Vollholz = 0.2, für BSH = 0.1
-    const beta_c = isGlulam ? 0.1 : 0.2;
-    const k_z = 0.5 * (1 + beta_c * (lambda_rel_z - 0.3) + Math.pow(lambda_rel_z, 2));
-
-    let k_cz = 1 / (k_z + Math.sqrt(Math.pow(k_z, 2) - Math.pow(lambda_rel_z, 2)));
-    if (lambda_rel_z <= 0.3) {
-      k_cz = 1.0; // Kein Knickrisiko bei extrem gedrungenen Bauteilen
-    } else {
-      k_cz = Math.min(1.0, k_cz);
-    }
-
-    // Bemessungswert der Knick-Tragfähigkeit in Newton: F_c_R_d = k_cz * A * f_c_0_d
-    const F_c_R_d_N = k_cz * A * f_c0d;
-    const F_c_R_d_kN = F_c_R_d_N / 1000;
-
-    // Auslastungsgrad (Utilization)
-    const utilization = (designLoad / F_c_R_d_kN) * 100;
-
-    return {
-      k_mod,
-      gamma_M,
-      f_c0d,
-      E_05,
-      A,
-      iy,
-      iz,
-      l_ef,
-      lambda_z,
-      sigma_c_crit,
-      lambda_rel_z,
-      k_cz,
-      F_c_R_d_kN,
-      utilization,
-      isUnsafe: utilization > 100
-    };
-  }, [currentMaterial, serviceClass, loadDuration, colB, colH, colLen, eulerCase, designLoad]);
+  // Eurocode 5 Knicknachweis (Rechenkern src/calc/holzbau.ts)
+  const calculationResults = useMemo(() => bemesseDruckstab({
+    b: colB, h: colH, laenge: colLen, eulerFall: eulerCase as 1 | 2 | 3 | 4, nEd: designLoad,
+    fc0k: currentMaterial.f_c0k, E005: currentMaterial.E_005, brettschichtholz: currentMaterial.class.startsWith('GL'),
+    nkl: serviceClass as Nutzungsklasse, kled: loadDuration as KLED,
+  }), [currentMaterial, serviceClass, loadDuration, colB, colH, colLen, eulerCase, designLoad]);
 
   // Dataholz filtered items
   const filteredConstructions = useMemo(() => {
@@ -1304,10 +1163,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                     onChange={(e) => setEulerCase(parseInt(e.target.value))}
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-medium"
                   >
-                    <option value={1}>Euler 1: Gelenkig / Gelenkig (β=1,0)</option>
-                    <option value={2}>Euler 2: Fest / Gelenkig (β=0,7)</option>
-                    <option value={3}>Euler 3: Fest / Fest (β=0,5)</option>
-                    <option value={4}>Euler 4: Kragarm / Freistehend (β=2,0)</option>
+                    <option value={1}>Euler-Fall 1: Kragarm, unten eingespannt (β = 2,0)</option>
+                    <option value={2}>Euler-Fall 2: beidseitig gelenkig (β = 1,0)</option>
+                    <option value={3}>Euler-Fall 3: eingespannt / gelenkig (β = 0,7)</option>
+                    <option value={4}>Euler-Fall 4: beidseitig eingespannt (β = 0,5)</option>
                   </select>
                 </div>
               </div>
@@ -1363,6 +1222,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 </div>
               </div>
 
+              <EingabeHinweise hinweise={calculationResults.hinweise} />
               {/* Performance Indicator Gauge */}
               <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs">
                 <div className="flex justify-between items-center mb-1">
@@ -1526,6 +1386,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                   </div>
                 </div>
 
+                <EingabeHinweise hinweise={qpResults.hinweise} />
                 {/* Performance Indicator */}
                 <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs">
                   <div className="flex justify-between items-center mb-1">
