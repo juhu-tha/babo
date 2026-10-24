@@ -10,16 +10,55 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
-export default function OekobilanzLCA() {
-  const [activeTab, setActiveTab ] = useState<'LCA' | 'InteractiveCalc' | 'Ingenieurbau' | 'TransportbetonExcel' | 'Nachhaltigkeit'>('LCA');
+export type LcaTeil = 'grundlagen' | 'rechner' | 'ingenieurbau' | 'regulatorik';
+type LcaTab = 'LCA' | 'InteractiveCalc' | 'Ingenieurbau' | 'TransportbetonExcel' | 'Praxiswerkstatt' | 'Regulatorik';
 
-  const tabs = [
-    { id: 'LCA' as const, label: 'Ökobilanzierung (LCA) Grundlagen', icon: BookOpen },
-    { id: 'InteractiveCalc' as const, label: 'Interaktiver CO₂-Rechner & Modul D', icon: Calculator },
-    { id: 'Ingenieurbau' as const, label: 'DIN EN 17472 (Ingenieurbau & Infrastruktur)', icon: Milestone },
-    { id: 'TransportbetonExcel' as const, label: 'Excel-Übung: Transportbeton (Download)', icon: FileSpreadsheet },
-    { id: 'Nachhaltigkeit' as const, label: 'LCA Praxis, CRREM & Rechtsrahmen', icon: Leaf }
-  ];
+/** Ökobilanzierung, aufgeteilt in vier Module (AP 3.8): Grundlagen, Rechner & QNG, Ingenieurbau, Rechtsrahmen & Praxis */
+const TEILE: Record<LcaTeil, { titel: string; text: React.ReactNode; tabs: { id: LcaTab; label: string; icon: typeof Leaf }[]; moduleId: string }> = {
+  grundlagen: {
+    titel: 'Ökobilanzierung (LCA): Grundlagen',
+    text: <>Normen, Lebenszyklusphasen A bis D und Umweltindikatoren nach <strong>DIN EN 15978</strong> und <strong>DIN EN 15804+A2</strong>, EPD-Musterdatenbank und Studierenden-Leitfaden.</>,
+    tabs: [{ id: 'LCA', label: 'Ökobilanzierung (LCA) Grundlagen', icon: BookOpen }],
+    moduleId: 'oekobilanz_lca',
+  },
+  rechner: {
+    titel: 'LCA-Rechner & QNG-Nachweis',
+    text: <>CO₂-Bilanz von Gebäudevarianten einschließlich Transport (A4) und Modul D, Wandaufbau-Konfigurator, QNG-Nachweis der Lebenszyklus-Treibhausgasemissionen und Excel-Übung Transportbeton.</>,
+    tabs: [
+      { id: 'InteractiveCalc', label: 'Interaktiver CO₂-Rechner & Modul D', icon: Calculator },
+      { id: 'Praxiswerkstatt', label: 'Wandaufbau, QNG-Nachweis & Leitfaden', icon: Leaf },
+      { id: 'TransportbetonExcel', label: 'Excel-Übung: Transportbeton (Download)', icon: FileSpreadsheet },
+    ],
+    moduleId: 'lca_rechner',
+  },
+  ingenieurbau: {
+    titel: 'LCA im Ingenieurbau (DIN EN 17472)',
+    text: <>Ökobilanz von Ingenieurbauwerken und Infrastruktur nach <strong>DIN EN 17472</strong>: lange Betrachtungszeiträume, Austauschzyklen (B2 bis B5) und verkehrsbedingte Emissionen (B8).</>,
+    tabs: [{ id: 'Ingenieurbau', label: 'DIN EN 17472 (Ingenieurbau & Infrastruktur)', icon: Milestone }],
+    moduleId: 'lca_ingenieurbau',
+  },
+  regulatorik: {
+    titel: 'Rechtsrahmen, CRREM & Praxis',
+    text: <>Hierarchisches Rechtsrahmen-Kompendium (BauPVO, Green Deal, EPBD, ESPR, CBAM, EU-ETS), CRREM-Dekarbonisierungspfade sowie Praxisbeispiele zu Gebäudetyp E, Urban Mining, Lehmbau und Holz-Hybrid.</>,
+    tabs: [{ id: 'Regulatorik', label: 'CRREM, Rechtsrahmen & Praxis', icon: Leaf }],
+    moduleId: 'lca_regulatorik',
+  },
+};
+
+export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil }) {
+  const t = TEILE[teil];
+  const [activeTab, setActiveTab] = useState<LcaTab>(t.tabs[0].id);
+  const tabs = t.tabs;
+  const inhalt = (
+    <div className="p-6">
+      {activeTab === 'LCA' && <LCA />}
+      {activeTab === 'InteractiveCalc' && <InteractiveLCACalc />}
+      {activeTab === 'Ingenieurbau' && <IngenieurbauLCA />}
+      {activeTab === 'TransportbetonExcel' && <TransportbetonLcaUebung />}
+      {activeTab === 'Praxiswerkstatt' && <Nachhaltigkeit bereiche={['wandkonfigurator', 'qng_nachweis', 'leitfaden']} />}
+      {activeTab === 'Regulatorik' && <Nachhaltigkeit bereiche={['crrem_regulatorik', 'praxis_innovationen']} />}
+    </div>
+  );
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
@@ -27,29 +66,24 @@ export default function OekobilanzLCA() {
         <div className="border-b border-home-grau/30 p-6 bg-slate-50/50">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
           <Leaf className="w-5 h-5 text-shiraz animate-pulse" />
-            Ökobilanzierung (LCA) &amp; Gebäude-Nachhaltigkeit
+            {t.titel}
           </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Ganzheitliche Lebenszyklusanalyse nach <strong>DIN EN 15978</strong> (Gebäude) und <strong>DIN EN 17472</strong> (Ingenieurbauwerke &amp; Infrastruktur), CO₂-Bilanzierung, EPD-Referenzen nach DIN EN 15804+A2, hierarchisches Rechtsrahmen-Kompendium (BauPVO, Green Deal, EPBD, ESPR, CBAM, EU-ETS) und CRREM-Dekarbonisierung.
-          </p>
+          <p>{t.text}</p>
         </div>
         </div>
 
-        <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={tabs} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30">
-          <div className="p-6">
-            {activeTab === 'LCA' && <LCA />}
-            {activeTab === 'InteractiveCalc' && <InteractiveLCACalc />}
-            {activeTab === 'Ingenieurbau' && <IngenieurbauLCA />}
-            {activeTab === 'TransportbetonExcel' && <TransportbetonLcaUebung />}
-            {activeTab === 'Nachhaltigkeit' && <Nachhaltigkeit />}
-          </div>
-        </ModuleTabs>
+        {tabs.length > 1 ? (
+          <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={tabs} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30">
+            {inhalt}
+          </ModuleTabs>
+        ) : inhalt}
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      {teil === 'grundlagen' && (
       <FormulaDerivationBox
-        title="Beispiel 1: Zementanteil am GWP von 1 m³ Transportbeton"
+        title="Beispiel: Zementanteil am GWP von 1 m³ Transportbeton"
         zielGleichung="\text{GWP}_{A1\text{–}A3} \approx m_Z \cdot \text{GWP}_Z + \text{GWP}_{\text{Rest}}"
         schritte={[
           { titel: 'Annahmen (Lehrwerte)', erklaerung: 'C30/37 mit 320 kg Zement je m³; GWP CEM I ≈ 0,80, CEM III/A ≈ 0,45 kg CO₂-Äq./kg; Gesteinskörnung, Wasser, Zusatzmittel und Werkstransport pauschal 30 kg CO₂-Äq./m³. Projektwerte stets aus EPD bzw. ÖKOBAUDAT.', formel: 'm_Z = 320\\,\\text{kg/m}^3' },
@@ -60,8 +94,10 @@ export default function OekobilanzLCA() {
         ergebnisHinweis="Der Zement verursacht 80 bis 90 % des Beton-GWP. Hüttensand ist jedoch begrenzt verfügbar; die Wahl muss Expositionsklasse, Frühfestigkeit und Nachbehandlung (DIN 1045-2) berücksichtigen."
         normQuelle="DIN EN 15804+A2 (EPD-Module A1–A3); Lehrwerte, keine Produktdaten"
       />
+      )}
+      {teil === 'rechner' && (
       <FormulaDerivationBox
-        title="Beispiel 2: QNG-Nachweis der Lebenszyklus-Treibhausgasemissionen eines Wohngebäudes"
+        title="Beispiel: QNG-Nachweis der Lebenszyklus-Treibhausgasemissionen eines Wohngebäudes"
         zielGleichung="\text{GWP}_{\text{spez}} = \frac{\text{GWP}_{\text{Konstruktion}} + \text{GWP}_{\text{Betrieb}}}{\text{NRF} \cdot 50\,\text{a}}"
         schritte={[
           { titel: 'Konstruktion', erklaerung: 'Module A1–A3, B4 (Austausch), C3–C4 für ein Mehrfamilienhaus mit 1 200 m² NRF:', formel: '\\text{GWP}_{\\text{Konstruktion}} = 1\\,050\\,000\\,\\text{kg CO}_2\\text{-Äq.}' },
@@ -73,8 +109,10 @@ export default function OekobilanzLCA() {
         normQuelle="QNG-Handbuch Anlage 3, v1.4 (WG23); DIN EN 15978"
       />
 
+      )}
+
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-      <ModulTest moduleId="oekobilanz_lca" />
+      <ModulTest moduleId={t.moduleId} />
 
       <ModuleFooter
         lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: QNG-Anforderungswerte vereinheitlicht (WG23: 24/20 kg CO₂-Äq./(m² NRF·a)), DIN EN 15978:2026-09 ergänzt, Literatur korrigiert; fachliche Freigabe durch den Autor ausstehend)" 

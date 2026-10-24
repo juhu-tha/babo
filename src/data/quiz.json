@@ -4004,8 +4004,8 @@
     "id": "q_oe_1",
     "category": "nachhaltigkeit",
     "categoryLabel": "Zirkularität & Ökobilanzierung",
-    "moduleId": "oekobilanz_lca",
-    "moduleTitle": "Ökobilanzierung (LCA)",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
     "topic": "QNG-Anforderungswerte",
     "difficulty": "Basis",
     "normRef": "QNG-Handbuch Anlage 3 (v1.4)",
@@ -4030,9 +4030,9 @@
       "topic": "QNG-Anforderungswerte",
       "misconception": "Veraltete (bis 2022: PLUS 28) oder erfundene Werte und falsche Bezugsfläche.",
       "coreRule": "QNG WG23: 24/20 kg CO₂-Äq. und 96/64 kWh je m² NRF und Jahr.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG-Anforderungswerte“ im Modul Ökobilanzierung (LCA) noch einmal durch.",
-      "targetModuleTab": "oekobilanz_lca",
-      "targetModuleLabel": "Ökobilanzierung (LCA)"
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „QNG-Anforderungswerte“ im Modul LCA-Rechner & QNG-Nachweis noch einmal durch.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
     "verified": false
   },
