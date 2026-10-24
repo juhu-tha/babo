@@ -25,6 +25,8 @@ import {
   Sparkles,
   Award
 } from 'lucide-react';
+import { GEG_U_MAX, psat, uebergang, uWert } from '@/src/calc/waermeschutz';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
 // Detailed material library with density, lambda, moisture resistance factor (mu) and specific heat capacity (c in J/kgK)
@@ -90,24 +92,9 @@ export default function Bauphysik() {
     { id: 'layer4', matId: 'aussenputz_zement', d: 0.02, customName: '', customLambda: 1.00, customMu: 25, customDensity: 1800, customC: 1000 }
   ]);
 
-  // Dynamic transition thermal transition resistance values as per DIN EN ISO 6946
-  const Rsi = useMemo(() => {
-    if (buildingPart === 'wall') return 0.13; // Horizontal heat transfer of vertical walls
-    if (buildingPart === 'pitched_roof' || buildingPart === 'flat_roof') return 0.10; // Upward heat transfer of roofs/ceilings
-    return 0.17; // Downward heat transfer of basement floors
-  }, [buildingPart]);
-
-  const Rse = useMemo(() => {
-    return 0.04; // Exterior standard heat transfer resistance
-  }, []);
-
-  // Limit value of Heat transfer coefficient according to GEG (Anlage 7)
-  const gegLimit = useMemo(() => {
-    if (buildingPart === 'wall') return 0.24; // External wall
-    if (buildingPart === 'pitched_roof') return 0.24; // Steildach / Dachfläche
-    if (buildingPart === 'flat_roof') return 0.20; // Flachdach
-    return 0.30; // Basement floors / ceiling against unheated space
-  }, [buildingPart]);
+  // Wärmeübergangswiderstände (DIN EN ISO 6946) und GEG-Höchstwerte aus dem Rechenkern src/calc/waermeschutz.ts
+  const { Rsi, Rse } = useMemo(() => uebergang(buildingPart), [buildingPart]);
+  const gegLimit = GEG_U_MAX[buildingPart];
 
   // Resolve layers with library values and custom overrides
   const resolvedLayers = useMemo(() => {
@@ -129,10 +116,9 @@ export default function Bauphysik() {
 
   // Master Thermodynamic and Glaser calculation
   const glaserData = useMemo(() => {
-    // 1. U-Wert calculation
-    let R_total = Rsi + Rse;
-    resolvedLayers.forEach(l => R_total += l.d / l.lambda);
-    const U = 1 / R_total;
+    // 1. U-Wert (DIN EN ISO 6946) mit Plausibilitätsprüfung der Schichten
+    const uErgebnis = uWert(resolvedLayers, Rsi, Rse);
+    const U = uErgebnis.U;
 
     // 2. Temperature profile through boundaries
     const q = U * (Ti - Te);
@@ -145,9 +131,7 @@ export default function Bauphysik() {
     });
 
     // 3. Saturation vapor pressure psat (Magnus Formula)
-    const calcPsat = (T: number) => T < 0
-      ? 610.5 * Math.exp((21.875 * T) / (265.5 + T)) // über Eis (DIN 4108-3)
-      : 610.5 * Math.exp((17.269 * T) / (237.3 + T)); // über Wasser
+    const calcPsat = psat; // DIN 4108-3 (Magnus, über Eis unter 0 °C)
     const psat_profile = T_profile.map(calcPsat);
 
     // 4. Pure linear vapor pressure p (assuming no condensation limit initially)
@@ -241,6 +225,7 @@ export default function Bauphysik() {
 
     return {
       U,
+      hinweise: uErgebnis.hinweise,
       labels: sd_profile.map(sd => formatDeZahl(sd, 2) + 'm'),
       T_labels: T_profile.map((_, i) => i === 0 ? 'Innen' : i === T_profile.length - 1 ? 'Außen' : `Grenzfl. ${i}`),
       T_profile,
@@ -278,7 +263,7 @@ export default function Bauphysik() {
         }
       ]
     };
-  }, [Ti, Te, RHi, RHe, resolvedLayers, tauperiodeDauer]);
+  }, [Ti, Te, RHi, RHe, resolvedLayers, tauperiodeDauer, Rsi, Rse]);
 
   // Sommerlicher Wärmeschutz - Phase shift & Damping calculations
   const summerHeatAnalysis = useMemo(() => {
@@ -685,7 +670,7 @@ export default function Bauphysik() {
                   <option value="wall">Außenwand (Soll: U ≤ 0,24 W/(m²K), Rsi = 0,13 m²K/W)</option>
                   <option value="pitched_roof">Steildach / Dachfläche (Soll: U ≤ 0,24 W/(m²K), Rsi = 0,10 m²K/W)</option>
                   <option value="flat_roof">Flachdach (Soll: U ≤ 0,20 W/(m²K), Rsi = 0,10 m²K/W)</option>
-                  <option value="basement">Kellerdecke / Bodenplatte (Soll: U ≤ 0,30 W/(m²K), Rsi = 0,17 m²K/W)</option>
+                  <option value="basement">Kellerdecke gegen unbeheizten Keller (Soll: U ≤ 0,30 W/(m²K), Rsi = Rse = 0,17 m²K/W)</option>
                 </select>
               </div>
               
@@ -992,6 +977,7 @@ export default function Bauphysik() {
                 </div>
               )}
 
+              <EingabeHinweise hinweise={glaserData.hinweise} />
               {/* GEG 2024 & DIN 4108-2 f_RSi Mold Risk overall Audit Panel */}
               <div className="mt-4 pt-4 border-t border-slate-150 grid grid-cols-1 md:grid-cols-2 gap-4">
                 

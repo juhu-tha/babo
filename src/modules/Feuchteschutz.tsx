@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { psat, taupunkt, temperaturBeiPsat } from '@/src/calc/waermeschutz';
 import React, { useState, useMemo } from 'react';
 import { 
   Droplets, Thermometer, Wind, Beaker, Plus, Trash2, 
@@ -69,12 +70,8 @@ export default function Feuchteschutz() {
   ]);
 
   // Helper functions for thermodynamic physics (Magnus-Formula)
-  const calcPsat = (temp: number): number => {
-    // Sättigungsdampfdruck in Pascal nach Magnus-Formel (DIN 4108-3 / DIN EN ISO 13788):
-    // über Wasser für T >= 0 °C, über Eis für T < 0 °C
-    if (temp < 0) return 610.5 * Math.exp((21.875 * temp) / (265.5 + temp));
-    return 610.5 * Math.exp((17.269 * temp) / (237.3 + temp));
-  };
+  const calcPsat = psat; // DIN 4108-3 (Magnus), Rechenkern src/calc/waermeschutz.ts
+
 
   const calcAbsoluteHumidity = (temp: number, relHum: number): number => {
     // Absolute moisture g/m³ using ideal gas law of vapor
@@ -86,15 +83,8 @@ export default function Feuchteschutz() {
     return (p / (461.5 * T_kelvin)) * 1000;
   };
 
-  const calcDewPoint = (temp: number, relHum: number): number => {
-    const p_sat = calcPsat(temp);
-    const p = p_sat * (relHum / 100);
-    // Inverse Magnus formulation to retrieve target Dewpoint (Eis-Koeffizienten unterhalb 610,5 Pa)
-    const a = p < 610.5 ? 21.875 : 17.269;
-    const b = p < 610.5 ? 265.5 : 237.3;
-    const ln_p = Math.log(p / 610.5);
-    return (b * ln_p) / (a - ln_p);
-  };
+  const calcDewPoint = taupunkt;
+
 
   // Calculations for static climates
   const indoorClimate = useMemo(() => {
@@ -106,13 +96,7 @@ export default function Feuchteschutz() {
     // Mold critical temperature (where humidity reaches 80% on surfaces)
     // T_schimmel -> p_act / p_sat(T_schimmel) = 0.8 => p_sat(T_schimmel) = p_act / 0.8
     const p_schimmel_limit = p_act / 0.8;
-    const a = p_schimmel_limit < 610.5 ? 21.875 : 17.269;
-    const b = p_schimmel_limit < 610.5 ? 265.5 : 237.3;
-    let schimmelPoint = 0;
-    if (p_schimmel_limit > 0) {
-      const ln_pschimmel = Math.log(p_schimmel_limit / 610.5);
-      schimmelPoint = (b * ln_pschimmel) / (a - ln_pschimmel);
-    }
+    const schimmelPoint = p_schimmel_limit > 0 ? temperaturBeiPsat(p_schimmel_limit) : 0;
 
     return { psat, p_act, absHum, dewPoint, schimmelPoint };
   }, [Ti, phiI]);
