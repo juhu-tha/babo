@@ -89,7 +89,7 @@ export default function Energieausweis() {
     const h_t_prime = h_t / a_huelle_ges; // Spezifischer H'T [W/(m²K)]
 
     // Lüftungswärmetransferkoeffizient H_V [W/K]
-    // V_e ca. A_N / 0.32, Netto-Raumluftvolumen V_v ca. 0.76 * V_e
+    // Netto-Raumluftvolumen vereinfacht V ≈ 2,5 m · A_N (Lehrannahme)
     const v_netto = simArea * 2.5; 
     let n_eff = 0.5; // Luftwechselrate
     if (simVentilation === 'abluft') n_eff = 0.45;

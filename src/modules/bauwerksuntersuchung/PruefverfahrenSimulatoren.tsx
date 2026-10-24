@@ -71,7 +71,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     }
     const r_final = r_corr * k_carb;
 
-    // Potenzansatz f_c,is ≈ 0.013 * R^2.25
+    // Potenzansatz (Lehr-Näherung) f_c,is ≈ 0,0125 · R^2,22
     const fc_est = 0.0125 * Math.pow(r_final, 2.22);
     let grade = 'C16/20';
     if (fc_est >= 50) grade = 'C50/60';

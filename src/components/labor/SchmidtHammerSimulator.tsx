@@ -55,7 +55,7 @@ export default function SchmidtHammerSimulator() {
     setTimeout(() => {
       // Add natural variability (+/- 2.5) and potential aggregate/void anomaly
       const randomNoise = (Math.random() - 0.5) * 4.8;
-      // 5% chance of hitting an air pore (outlier down) or hard aggregate grain (outlier up)
+      // 8 % Wahrscheinlichkeit für einen Treffer auf Pore (Ausreißer nach unten) oder großes Korn (nach oben) – hitting an air pore (outlier down) or hard aggregate grain (outlier up)
       const anomaly = Math.random() < 0.08 ? (Math.random() > 0.5 ? 9 : -10) : 0;
 
       const rawR = Math.round(baseR - angleDeltaR + carbDeltaR + randomNoise + anomaly);

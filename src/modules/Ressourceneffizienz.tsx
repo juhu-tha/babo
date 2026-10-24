@@ -267,7 +267,7 @@ export default function Ressourceneffizienz() {
     // CEM I (Standard): ~310 kg; CEM III (low carbon): ~170 kg; RC-Beton (with CEM III): ~155 kg CO2/m³
     const kgCo2PerM3 = concreteType === 'standard' ? 310 : concreteType === 'cem3' ? 170 : 155;
     
-    // Steel rebar contribution (Standard is 110 kg/m³ slab, 150 kg columns, 60 kg foundations)
+    // Bewehrungsgehalt (Lehrwerte): Platte 110, Stütze 170, Fundament 70 kg/m³
     const steelIntensity = selectedBauteil === 'slab' ? 110 : selectedBauteil === 'column' ? 170 : 70; // kg/m³
     const finalSteelWeightKilograms = (finalVolume * steelIntensity) * (reinforcementRatio / 100);
     const steelCo2PerKg = 1.3; // Standard rebar CO2 factor
@@ -312,20 +312,20 @@ export default function Ressourceneffizienz() {
 
   // Logic for Cost Benefit Calculations (Tab 3)
   const getCostBenefits = () => {
-    // Total material volume generated per m² of usable area is roughly 1.5 tons of construction mass
+    // Baumasse je m² Nutzfläche (Lehrwert): 1,45 t
     const totalMassTons = projectSize * 1.45;
-    // Bauschutt rate during typical erection (waste factor approx 3%)
+    // Bauabfallquote bei der Errichtung (Lehrwert): 3,5 %
     const standardConstructionWasteTons = totalMassTons * 0.035;
     // Optimized waste quantity
     const optimizedWasteTons = standardConstructionWasteTons * (1 - wasteOptimization / 100);
     
-    // Deponie / disposal fees in Bavaria (mean of ~35 €/ton for class 0/1 mixed minerals)
+    // Entsorgungskosten (Lehrwert): 38 €/t
     const standardDisposalCost = standardConstructionWasteTons * 38;
     const optimizedDisposalCost = optimizedWasteTons * 38;
     const disposalSavings = standardDisposalCost - optimizedDisposalCost;
 
     // Material cost savings by purchasing RC materials or optimizing thickness
-    // Standard aggregate gravel cost: ~22 €/ton. RC-aggregate: ~16 €/ton (Savings of 6 €/ton)
+    // Ersparnis RC-Gesteinskörnung gegenüber Primärkies inkl. Logistik (Lehrwert): 7,5 €/t
     const massiveMineralDemandTons = totalMassTons * 0.65; // 65% of building is mineralic
     const rcSubstitutionTons = massiveMineralDemandTons * (recyclingUsage / 100);
     const materialCostSavings = rcSubstitutionTons * 7.5; // average savings rate with logistics optimization in Bavaria

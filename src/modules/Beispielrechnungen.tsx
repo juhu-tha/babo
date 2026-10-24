@@ -61,9 +61,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [chosenCementStrength, setChosenCementStrength] = useState<number>(42.5);
 
   // Specifications based on DIN 1045-2 & DIN EN 206
-  // For XC4: max w/z = 0.50, min cement = 280 kg/m³
+  // DIN 1045-2, Tab. F.2.1: XC4 max. w/z = 0,60, z_min = 280 kg/m³; XD3 max. w/z = 0,45, z_min = 320 kg/m³
   // For XD3: max w/z = 0.45, min cement = 320 kg/m³
-  const maxWz = targetExposure === 'XC4' ? 0.50 : 0.45;
+  const maxWz = targetExposure === 'XC4' ? 0.60 : 0.45;
   const minCement = targetExposure === 'XC4' ? 280 : 320;
 
   // Approximate water demand in kg/m³ (or l/m³) based on target consistency and max grain size (Walz / DBV guidance)
@@ -107,7 +107,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [kAddition, setKAddition] = useState<number>(60); // kg/m³
   const [kWater, setKWater] = useState<number>(150); // l/m³
 
-  const k_factor = kAddType === 'flugasche' ? 0.4 : 2.0;
+  const k_factor = kAddType === 'flugasche' ? 0.4 : 1.0; // DIN 1045-2: Flugasche k = 0,4; Silikastaub k = 1,0
   const k_max_ratio = kAddType === 'flugasche' ? 0.33 : 0.11;
   const k_max_allowed_addition = kCement * k_max_ratio;
   const k_credited_addition = Math.min(kAddition, k_max_allowed_addition);
@@ -204,9 +204,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [serviceClass, setServiceClass] = useState<1 | 2>(1);
 
   // Material parameters
-  const f_c0k = timberGrade === 'C24' ? 21 : 27; // Compressive strength in N/mm²
+  const f_c0k = timberGrade === 'C24' ? 21 : 24; // f_c,0,k nach DIN EN 338: C24 = 21, C30 = 24 N/mm²
   const E_005 = timberGrade === 'C24' ? 7400 : 8000; // 5th-percentile modulus of elasticity in N/mm²
-  const k_mod = serviceClass === 1 ? 0.90 : 0.80; // short-term load duration
+  const k_mod = 0.90; // kurze Lasteinwirkung, NKL 1 und 2 (DIN EN 1995-1-1, Tab. 3.1)
   const gamma_M = 1.3; // Solid timber partial factor
 
   const f_c0d = k_mod * f_c0k / gamma_M; // design compressive strength
@@ -214,7 +214,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   // Cross section properties
   const A_wood = colWidth * colHeight; // cm²
   const I_wood = (colWidth * Math.pow(colHeight, 3)) / 12; // cm⁴
-  const i_radius = colHeight / Math.sqrt(12); // radius of gyration in cm
+  const i_radius = Math.min(colWidth, colHeight) / Math.sqrt(12); // Trägheitsradius der schwachen Achse in cm
   const slenderness = (colLength * 100) / i_radius; // lambda = s_k / i
 
   // Relative slenderness
@@ -258,7 +258,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   // Design vertical resistance per meter length of wall: N_Rd = Phi * t * f_d
   // Units: t in m, f_d in MPa (MN/m²), so N_Rd in MN/m = * 1000 to get kN/m
   const n_Rd = phi_final * t_m * f_d * 1000; // kN/m
-  const utilizationMauer = verticalLoad / n_Rd;
+  const utilizationMauer = n_Rd > 0 ? verticalLoad / n_Rd : Infinity; // Φ = 0 bei h_ef/t > 27,8: keine Tragfähigkeit
 
   // --- 6. STATE FOR NACHHALTIGKEIT & ÖKOBILANZ ---
   const [co2SubTab, setCo2SubTab] = useState<'karbonatisierung' | 'gwp_vergleich'>('karbonatisierung');
@@ -388,19 +388,20 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [brandDauerMin, setBrandDauerMin] = useState<30 | 60 | 90 | 120>(60);
   const [momentKaltEd, setMomentKaltEd] = useState<number>(45); // kNm
 
-  // Abbrandraten nach DIN EN 1995-1-2 Tab. 3.1
-  const beta_char = holzArtBrand === 'bsh' ? 0.70 : holzArtBrand === 'laubholz' ? 0.50 : 0.65; // mm/min
+  // Ideelle Abbrandraten β_n nach DIN EN 1995-1-2, Tab. 3.1 (Verfahren mit reduziertem Querschnitt):
+  // Nadelvollholz 0,8; Brettschichtholz 0,7; Laubholz mit ρ_k ≥ 450 kg/m³ 0,55 mm/min
+  const beta_char = holzArtBrand === 'bsh' ? 0.70 : holzArtBrand === 'laubholz' ? 0.55 : 0.80; // mm/min
   const d_char_n = beta_char * brandDauerMin; // mm
   const d_ef = d_char_n + 7.0; // mm (Zuschlag k0 * d0 = 7 mm für Holzentfestigung)
-  const b_ef_mm = Math.max(10, (holzBreite * 10) - (2 * d_ef)); // beidseitig im Feuer
-  const h_ef_mm = Math.max(10, brandBeanspruchung === '4_seitig' ? (holzHoehe * 10) - (2 * d_ef) : (holzHoehe * 10) - d_ef);
+  const b_ef_mm = Math.max(0, (holzBreite * 10) - (2 * d_ef)); // beidseitig im Feuer; 0 = vollständig abgebrannt
+  const h_ef_mm = Math.max(0, brandBeanspruchung === '4_seitig' ? (holzHoehe * 10) - (2 * d_ef) : (holzHoehe * 10) - d_ef);
   const W_ef_mm3 = (b_ef_mm * Math.pow(h_ef_mm, 2)) / 6;
   const f_mk_brand = holzArtBrand === 'bsh' ? 28 : holzArtBrand === 'laubholz' ? 30 : 24; // N/mm²
-  const k_fi = 1.15; // Beiwert für 20%-Fraktil im Brandfall
+  const k_fi = holzArtBrand === 'bsh' ? 1.15 : 1.25; // DIN EN 1995-1-2, Tab. 2.1: Vollholz 1,25; Brettschichtholz 1,15
   const f_m_fi_d = (1.0 * k_fi * f_mk_brand) / 1.0; // gamma_M,fi = 1.0
   const M_fi_Rd = (W_ef_mm3 * f_m_fi_d) / 1000000; // kNm
   const M_fi_Ed = 0.60 * momentKaltEd; // Reduktionsbeiwert eta_fi approx 0.60 nach EC5
-  const eta_brand_holz = M_fi_Rd > 0 ? M_fi_Ed / M_fi_Rd : 999;
+  const eta_brand_holz = M_fi_Rd > 0 ? M_fi_Ed / M_fi_Rd : Infinity; // Restquerschnitt vollständig abgebrannt
   const brand_holz_passed = eta_brand_holz <= 1.0;
 
   // Beton Brand:
@@ -882,7 +883,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <div className="text-xxs font-normal text-slate-500 mt-4 leading-relaxed bg-white/50 p-2.5 rounded-lg border border-slate-200/50">
                     <strong>Bewertung:</strong> Der tatsächliche w/z-Wert von <strong>{formatDeZahl(actualWz, 3)}</strong> hält den Grenzwert von <strong>{formatDeZahl(maxWz, 2)}</strong> sicher ein. 
                     Die berechnete Frischbetondichte liegt mit {formatDeZahl(freshConcreteDensity, 0)} kg/m³ im typischen Bereich für Normalbeton (2000 bis 2600 kg/m³ nach DIN EN 206). 
-                    Diese Rezeptur stellt sicher, dass der Beton nach dem Erhärten das erforderliche Porengefüge aufweist, um dem Frostangriff (XC4/XD3) dauerhaft zu widerstehen.
+                    Diese Rezeptur stellt sicher, dass der Beton nach dem Erhärten das erforderliche Porengefüge aufweist, um Karbonatisierung (XC4) bzw. Chlorideindringen (XD3) dauerhaft zu widerstehen.
                   </div>
                 </div>
               </div>
@@ -921,7 +922,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
                       >
                         <option value="flugasche">Flugasche (k = 0,4)</option>
-                        <option value="silikastaub">Silikastaub (k = 2,0)</option>
+                        <option value="silikastaub">Silikastaub (k = 1,0)</option>
                       </select>
                     </div>
 
@@ -2640,9 +2641,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       onChange={(e) => setHolzArtBrand(e.target.value as any)}
                       className="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-sans text-slate-800"
                     >
-                      <option value="bsh">Brettschichtholz GL28h (β = 0,70 mm/min, fmk = 28 N/mm²)</option>
-                      <option value="c24">Vollholz Nadelholz C24 (β = 0,65 mm/min, fmk = 24 N/mm²)</option>
-                      <option value="laubholz">Laubholz D30 / Buche (β = 0,50 mm/min, fmk = 30 N/mm²)</option>
+                      <option value="bsh">Brettschichtholz GL28h (β_n = 0,70 mm/min, fmk = 28 N/mm²)</option>
+                      <option value="c24">Vollholz Nadelholz C24 (β_n = 0,80 mm/min, fmk = 24 N/mm²)</option>
+                      <option value="laubholz">Laubholz D30 / Buche (β_n = 0,55 mm/min, fmk = 30 N/mm²)</option>
                     </select>
                   </div>
 
