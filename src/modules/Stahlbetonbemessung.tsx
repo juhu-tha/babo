@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import SpannungDehnung from './SpannungDehnung';
 import Biegebemessung from './Biegebemessung';
@@ -212,6 +213,22 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
     else if (activeTab === 'biegebemessung') setCurrentTab('biegebemessung');
   }, [initialTab, activeTab]);
 
+  // Reiter (AP 3.8): 5 Hauptbereiche; die GZT-Bauteilnachweise bilden die zweite Ebene.
+  // Zustand bleibt die bisherige Unterreiter-ID, damit Routen wie #querkraftbemessung weiter passen.
+  const gruppen: readonly ModulTabGruppe<BemessungSubTab>[] = [
+    { id: 'einstieg_g', label: '0-100', icon: GraduationCap, mitglieder: [{ id: 'null_bis_hundert', label: '0-100' }] },
+    { id: 'werkstoff_g', label: '1. Spannung-Dehnung (σ-ε)', icon: Activity, mitglieder: [{ id: 'spannung', label: '1. Spannung-Dehnung (σ-ε)' }] },
+    { id: 'gzt_g', label: '2.–6. Nachweise im GZT', icon: Box, mitglieder: [
+      { id: 'biegebemessung', label: '2. Biegebemessung', icon: Box },
+      { id: 'querkraftbemessung', label: '3. Querkraftbemessung', icon: Scissors },
+      { id: 'stuetzenbemessung', label: '4. Stützenbemessung', icon: Columns },
+      { id: 'durchstanzen', label: '5. Durchstanzen', icon: CircleDashed },
+      { id: 'verankerungslaenge', label: '6. Verankerungslänge', icon: GitCommit },
+    ] },
+    { id: 'gzg_g', label: '7. Rissbreite (GZG)', icon: Layers, mitglieder: [{ id: 'rissbreite', label: '7. Rissbreite (GZG)' }] },
+    { id: 'ec2neu_g', label: '8. Eurocode 2 (2. Generation)', icon: Sparkles, mitglieder: [{ id: 'ec2_generation2', label: '8. Eurocode 2 (2. Generation)' }] },
+  ];
+
   const handleTabChange = (tab: BemessungSubTab) => {
     setCurrentTab(tab);
     if (typeof window !== 'undefined' && window.history?.replaceState) {
@@ -238,9 +255,9 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
           </span>
         </div>
 
-        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
+        <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
           <p>
-            Zentrales Berechnungsmodul für den Stahlbetonbau: Wählen Sie über die sieben Reiter das gewünschte 
+            Zentrales Berechnungsmodul für den Stahlbetonbau: Wählen Sie über die Reiter das gewünschte 
             Thema nach DIN EN 1992-1-1 (Eurocode 2 mit deutschem Nationalen Anhang). 
             Das Modul umfasst die grundlegenden Werkstoffgesetze (Spannungs-Dehnungs-Diagramme für Beton und Betonstahl), 
             alle wesentlichen Nachweise im Grenzzustand der Tragfähigkeit (GZT: Biegung, Querkraft, 
@@ -248,120 +265,18 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
             und Mindestbewehrung).
           </p>
         </div>
-
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20">
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'null_bis_hundert'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('null_bis_hundert')}
-          >
-            <GraduationCap size={16} /> 0-100
-          </button>
-
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'spannung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('spannung')}
-          >
-            <Activity size={16} /> 1. Spannung-Dehnung (σ-ε)
-          </button>
-
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'biegebemessung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('biegebemessung')}
-          >
-            <Box size={16} /> 2. Biegebemessung
-          </button>
-
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'querkraftbemessung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('querkraftbemessung')}
-          >
-            <Scissors size={16} /> 3. Querkraftbemessung
-          </button>
-
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'stuetzenbemessung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('stuetzenbemessung')}
-          >
-            <Columns size={16} /> 4. Stützenbemessung
-          </button>
-
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'durchstanzen'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('durchstanzen')}
-          >
-            <CircleDashed size={16} /> 5. Durchstanzen
-          </button>
-
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'verankerungslaenge'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('verankerungslaenge')}
-          >
-            <GitCommit size={16} /> 6. Verankerungslänge
-          </button>
-
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'rissbreite'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('rissbreite')}
-          >
-            <Layers size={16} /> 7. Rissbreite (GZG)
-          </button>
-          <button
-            type="button"
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              currentTab === 'ec2_generation2'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => handleTabChange('ec2_generation2')}
-          >
-            <Sparkles size={16} className="text-amber-500" /> 8. Eurocode 2 (2. Generation)
-          </button>
-        </div>
       </div>
 
+      {/* Reiter: 5 Hauptbereiche, GZT-Nachweise mit zweiter Ebene (AP 3.8) */}
+      <GruppierteModuleTabs
+        label="Stahlbeton: Themen"
+        gruppen={gruppen}
+        aktiv={currentTab}
+        onWechsel={handleTabChange}
+        className="[&>[role=tablist]]:bg-white [&>[role=tablist]]:p-4 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30"
+      >
       {/* Render Active Sub-Module */}
-      <div className="transition-all duration-200">
+      <div className="transition-all duration-200 mt-6">
         {currentTab === 'null_bis_hundert' && (
           <div className="animate-in fade-in duration-200">
             <StahlbetonNullBisHundert onNavigateTab={(tab) => handleTabChange(tab)} />
@@ -491,6 +406,7 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
           </div>
         )}
       </div>
+      </GruppierteModuleTabs>
 
       <ModulTest moduleId="stahlbeton" />
 

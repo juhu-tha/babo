@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Flame, Layers, Activity, BookOpen, ShieldAlert, Cpu } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import IntegrationVerformungen from './IntegrationVerformungen';
@@ -12,8 +13,25 @@ import MassigeBauteile from './MassigeBauteile';
 import HydratationRissberechnung from './HydratationRissberechnung';
 import HydratationPruefverfahren from './HydratationPruefverfahren';
 
+type HydratationReiter = 'IntegrationVerformungen' | 'Hydratation' | 'Praxisbeispiele' | 'Eigenspannungen' | 'KriechenSchwinden' | 'MassigeBauteile' | 'HydratationRissberechnung' | 'HydratationPruefverfahren';
+
+// Reiter (AP 3.8): 7 Hauptreiter in Reihenfolge des Lernpfads; „Zwang & Risse“ und der präzise
+// Rissnachweis teilen sich einen Reiter (zweite Ebene). Labor-Prüfverfahren hat eigene Reiter und bleibt Hauptreiter.
+const GRUPPEN: readonly ModulTabGruppe<HydratationReiter>[] = [
+  { id: 'uebersicht_g', label: 'Übersicht & Zusammenhänge', icon: BookOpen, mitglieder: [{ id: 'IntegrationVerformungen', label: 'Übersicht & Zusammenhänge' }] },
+  { id: 'hydratation_g', label: 'Hydratation & Reife', icon: Activity, mitglieder: [{ id: 'Hydratation', label: 'Hydratation & Reife' }] },
+  { id: 'pruef_g', label: 'Labor-Prüfverfahren', icon: Activity, mitglieder: [{ id: 'HydratationPruefverfahren', label: 'Labor-Prüfverfahren' }] },
+  { id: 'eigen_g', label: 'Eigenspannungen', icon: Flame, mitglieder: [{ id: 'Eigenspannungen', label: 'Eigenspannungen' }] },
+  { id: 'massig_g', label: 'Massige Bauteile', icon: Layers, mitglieder: [{ id: 'MassigeBauteile', label: 'Massige Bauteile' }] },
+  { id: 'risse_g', label: 'Zwang & Risse', icon: ShieldAlert, mitglieder: [
+    { id: 'Praxisbeispiele', label: 'Zwang & Risse', icon: ShieldAlert },
+    { id: 'HydratationRissberechnung', label: 'Präziser Rissnachweis (EC2)', icon: Cpu },
+  ] },
+  { id: 'kriechen_g', label: 'Kriechen & Schwinden', icon: Layers, mitglieder: [{ id: 'KriechenSchwinden', label: 'Kriechen & Schwinden' }] },
+];
+
 export default function HydratationFolgen() {
-  const [activeTab, setActiveTab] = useState<'IntegrationVerformungen' | 'Hydratation' | 'Praxisbeispiele' | 'Eigenspannungen' | 'KriechenSchwinden' | 'MassigeBauteile' | 'HydratationRissberechnung' | 'HydratationPruefverfahren'>('IntegrationVerformungen');
+  const [activeTab, setActiveTab] = useState<HydratationReiter>('IntegrationVerformungen');
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -27,103 +45,26 @@ export default function HydratationFolgen() {
           </p>
           <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
             <strong className="mr-1">Lernpfad:</strong>
-            {([
-              ['IntegrationVerformungen', 'Übersicht'], ['Hydratation', 'Hydratation & Reife'], ['HydratationPruefverfahren', 'Labor-Prüfverfahren'],
-              ['Eigenspannungen', 'Eigenspannungen'], ['MassigeBauteile', 'Massige Bauteile'], ['Praxisbeispiele', 'Zwang & Risse'],
-              ['HydratationRissberechnung', 'Rissnachweis'], ['KriechenSchwinden', 'Kriechen & Schwinden'],
-            ] as const).map(([id, label], i) => (
-              <React.Fragment key={id}>
+            {GRUPPEN.map((g, i) => (
+              <React.Fragment key={g.id}>
                 {i > 0 && <span className="text-text-main/40">→</span>}
-                <button onClick={() => setActiveTab(id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">{i + 1}. {label}</button>
+                <button onClick={() => setActiveTab(g.mitglieder[0].id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">
+                  {i + 1}. {g.mitglieder.map(m => m.label.replace('Präziser Rissnachweis (EC2)', 'Rissnachweis')).join(' + ')}
+                </button>
               </React.Fragment>
             ))}
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'IntegrationVerformungen'} 
-            onClick={() => setActiveTab('IntegrationVerformungen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'IntegrationVerformungen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <BookOpen size={16} /> Übersicht &amp; Zusammenhänge
-          </button>
-          <button aria-pressed={activeTab === 'Hydratation'} 
-            onClick={() => setActiveTab('Hydratation')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'Hydratation' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Activity size={16} /> 1. Hydratation &amp; Reife
-          </button>
-          <button aria-pressed={activeTab === 'Praxisbeispiele'} 
-            onClick={() => setActiveTab('Praxisbeispiele')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'Praxisbeispiele' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <ShieldAlert size={16} /> 2. Zwang &amp; Risse
-          </button>
-          <button aria-pressed={activeTab === 'HydratationRissberechnung'} 
-            onClick={() => setActiveTab('HydratationRissberechnung')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'HydratationRissberechnung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Cpu size={16} /> Präziser Rissnachweis (EC2)
-          </button>
-          <button aria-pressed={activeTab === 'Eigenspannungen'} 
-            onClick={() => setActiveTab('Eigenspannungen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'Eigenspannungen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Flame size={16} /> 3. Eigenspannungen
-          </button>
-          <button aria-pressed={activeTab === 'KriechenSchwinden'} 
-            onClick={() => setActiveTab('KriechenSchwinden')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'KriechenSchwinden' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Layers size={16} /> 4. Kriechen &amp; Schwinden
-          </button>
-          <button aria-pressed={activeTab === 'MassigeBauteile'} 
-            onClick={() => setActiveTab('MassigeBauteile')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'MassigeBauteile' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Layers size={16} /> Massige Bauteile
-          </button>
-          <button aria-pressed={activeTab === 'HydratationPruefverfahren'} 
-            onClick={() => setActiveTab('HydratationPruefverfahren')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'HydratationPruefverfahren' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Activity size={16} /> Labor-Prüfverfahren
-          </button>
-        </div>
-
-        <div>
+        {/* Reiter: 7 Hauptreiter, Rissnachweis als zweite Ebene unter „Zwang & Risse“ (AP 3.8) */}
+        <GruppierteModuleTabs
+          label="Hydratation & Folgen: Bereiche"
+          gruppen={GRUPPEN}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="mt-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+        >
+        <div className="mt-6">
           {activeTab === 'IntegrationVerformungen' && <IntegrationVerformungen />}
           {activeTab === 'Hydratation' && <Hydratation />}
           {activeTab === 'Praxisbeispiele' && <Praxisbeispiele />}
@@ -133,6 +74,7 @@ export default function HydratationFolgen() {
           {activeTab === 'MassigeBauteile' && <MassigeBauteile />}
           {activeTab === 'HydratationPruefverfahren' && <HydratationPruefverfahren />}
         </div>
+        </GruppierteModuleTabs>
       </div>
 
       <FormulaDerivationBox
