@@ -11,7 +11,7 @@ interface GeneratorTask {
   id: string;
   category: string;
   title: string;
-  difficulty: 'Basis' | 'Mittel' | 'Fortgeschritten';
+  difficulty: 'Basis' | 'Mittel' | 'Fortgeschritten'; // Trainer-eigene Stufen (nicht Quizpool)
   generate: () => {
     params: Record<string, number | string>;
     questionText: string;

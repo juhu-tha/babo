@@ -865,7 +865,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               {currentQ.difficulty && (
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${
                   currentQ.difficulty === 'Basis' ? 'bg-slate-100 text-slate-700 border-slate-200' :
-                  currentQ.difficulty === 'Fortgeschritten' ? 'bg-slate-100 text-slate-800 border-slate-200' :
+                  currentQ.difficulty === 'Vertiefung' ? 'bg-slate-100 text-slate-800 border-slate-200' :
                   'bg-shiraz/10 text-shiraz border-shiraz/20'
                 }`}>
                   {currentQ.difficulty}
@@ -965,6 +965,11 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 )}
               </div>
 
+              {answers[currentQ.id] !== currentQ.correctIdx && answers[currentQ.id] !== undefined && currentQ.distraktorFeedback?.[answers[currentQ.id]] && (
+                <div className="text-xs leading-relaxed text-shiraz">
+                  <strong>Zu Ihrer Antwort:</strong> {currentQ.distraktorFeedback[answers[currentQ.id]]}
+                </div>
+              )}
               <div className="text-xs text-text-main/80 leading-relaxed font-normal">
                 {currentQ.explanation}
               </div>

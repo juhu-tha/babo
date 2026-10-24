@@ -127,7 +127,7 @@ export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestPro
                 {q.difficulty && (
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${
                     q.difficulty === 'Basis' ? 'bg-slate-100 text-slate-700 border-slate-200' :
-                    q.difficulty === 'Fortgeschritten' ? 'bg-slate-100 text-slate-800 border-slate-200' :
+                    q.difficulty === 'Vertiefung' ? 'bg-slate-100 text-slate-800 border-slate-200' :
                     'bg-shiraz/10 text-shiraz border-shiraz/20'
                   }`}>
                     {q.difficulty}
@@ -203,6 +203,9 @@ export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestPro
                     </>
                   )}
                 </div>
+                {!isCorrect && selected !== undefined && q.distraktorFeedback?.[selected] && (
+                  <div className="text-xs leading-relaxed text-shiraz"><strong>Zu Ihrer Antwort:</strong> {q.distraktorFeedback[selected]}</div>
+                )}
                 <div className="text-xs text-text-main/80 leading-relaxed font-normal">{q.explanation}</div>
                 {!isCorrect && q.gapAnalysis && (
                   <div className="p-3.5 bg-white rounded-xl border border-shiraz/20 flex flex-col gap-2 mt-1">

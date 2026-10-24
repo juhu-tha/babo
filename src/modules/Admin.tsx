@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { adminLogin, adminLogout, verifyAdminSession } from '@/src/utils/adminAuth';
+import { FragenFreigabe } from '@/src/components/admin/FragenFreigabe';
 import { 
   ShieldCheck, 
   Lock, 
@@ -89,7 +90,7 @@ export default function Admin() {
       active = false;
     };
   }, []);
-  const [activeTab, setActiveTab] = useState<'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang'>('pruefraster');
+  const [activeTab, setActiveTab] = useState<'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe'>('pruefraster');
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -251,6 +252,16 @@ export default function Admin() {
             onClick={() => setActiveTab('code_umfang')}
           >
             <Boxes size={16} /> Tool-Umfang &amp; Code
+          </button>
+          <button aria-pressed={activeTab === 'fragenfreigabe'}
+            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
+              activeTab === 'fragenfreigabe'
+                ? 'bg-shiraz text-white border-shiraz shadow-md'
+                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
+            }`}
+            onClick={() => setActiveTab('fragenfreigabe')}
+          >
+            <ShieldCheck size={16} /> Fragenfreigabe
           </button>
         </div>
 
@@ -672,6 +683,8 @@ export default function Beispielfach() {
         )}
 
         {/* TAB 6: TOOL-UMFANG, MODULE & CODE-STATISTIK */}
+        {activeTab === 'fragenfreigabe' && <FragenFreigabe />}
+
         {activeTab === 'code_umfang' && (
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm space-y-4">

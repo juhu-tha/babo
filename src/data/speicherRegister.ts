@@ -16,6 +16,7 @@ const SITZUNG = 'bis zum Schließen des Browser-Tabs';
 export const SPEICHER_REGISTER: SpeicherEintrag[] = [
   // Bedienung und Darstellung
   { schluessel: 'theme', ort: 'localStorage', zweck: 'Hell- oder Dunkelmodus', dauer: BIS_LOESCHUNG },
+  { schluessel: 'bb_quiz_freigabe', ort: 'localStorage', zweck: 'Zwischenstand der fachlichen Fragenfreigabe (nur Administrationsbereich)', dauer: BIS_LOESCHUNG },
   { schluessel: 'baustoffboard_lang', ort: 'localStorage', zweck: 'gewählte Sprache', dauer: BIS_LOESCHUNG },
   { schluessel: 'th_bauboard_a11y_prefs', ort: 'localStorage', zweck: 'Einstellungen zur Barrierefreiheit (Schriftgröße, Kontrast, Bewegung)', dauer: BIS_LOESCHUNG },
   { schluessel: 'baustoffboard_screen_width', ort: 'localStorage', zweck: 'gewählte Seitenbreite', dauer: BIS_LOESCHUNG },
