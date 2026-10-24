@@ -54,6 +54,8 @@ import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import { NAV_TAB_GRUPPEN, TAB_KEYWORDS, MODUL_BY_ID } from './registry/modules';
 import { CalculatorDisclaimerBanner } from './components/ui/CalculatorDisclaimerBanner';
 import { grenzenFuer } from './data/rechnerGrenzen';
+import { LERNZIELE } from './data/lernziele';
+import { ModulLernziele } from './components/ui/ModulLernziele';
 import { iconFor } from './registry/icons';
 import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
 import { VolltextTreffer } from './components/navigation/VolltextTreffer';
@@ -1065,6 +1067,8 @@ function AppContent() {
               </div>
             </div>
 <React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
+          {/* Lernziele je Fachmodul (Phase 3, AP 3.6) */}
+          {LERNZIELE[activeTab] && <ModulLernziele moduleId={activeTab} daten={LERNZIELE[activeTab]} oeffneModul={(id) => setActiveTab(id as Parameters<typeof setActiveTab>[0])} />}
           {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
           {(MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' || grenzenFuer(activeTab)) && (
             <CalculatorDisclaimerBanner
