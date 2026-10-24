@@ -1,4 +1,5 @@
 import { Minus, Square, Scale } from 'lucide-react';
+import { dreigelenkrahmen, traeger } from '@/src/calc/statik';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -58,54 +59,9 @@ export default function Baustatik() {
     const am_pos = Math.min(a_m, totalLength);
     const l1_pos = Math.min(Math.max(l1, 0.1), totalLength - 0.1); // Verhindert div by 0
 
-    let A = 0;
-    let B = 0;
-    let C = 0; // Für Zweifeldträger (drittes Auflager)
-    let MA = 0; // Einspannmoment für Kragarm
-    let MB = 0; // Stützmoment Zweifeldträger
-
-    if (system === 'einfeld') {
-      A = (q * l) / 2 + (f * (l - a_pos)) / l - m0 / l;
-      B = (q * l) / 2 + (f * a_pos) / l + m0 / l;
-    } else if (system === 'kragarm') {
-      A = q * l + f;
-      B = 0;
-      MA = -(q * l * l) / 2 - f * a_pos - m0;
-    } else if (system === 'zweifeld') {
-      const L1 = l1_pos;
-      const L2 = l - l1_pos;
-      
-      // MB due to q
-      MB = -q * (L1 * L1 * L1 + L2 * L2 * L2) / (8 * l);
-      
-      // MB due to F
-      if (a_pos <= L1) {
-          MB -= (f * a_pos * (L1 * L1 - a_pos * a_pos)) / (2 * L1 * l);
-      } else {
-          const b = l - a_pos;
-          MB -= (f * b * (L2 * L2 - b * b)) / (2 * L2 * l);
-      }
-      
-      // MB due to m0
-      if (am_pos <= L1) {
-          MB += (m0 / (2 * l)) * (3 * am_pos * am_pos / L1 - L1);
-      } else {
-          const a2 = am_pos - L1;
-          const b = L2 - a2;
-          MB += (m0 / (2 * l)) * (L2 - 3 * b * b / L2);
-      }
-      
-      const A0 = q * L1 / 2 + (a_pos <= L1 ? f * (L1 - a_pos) / L1 : 0) - (am_pos <= L1 ? m0 / L1 : 0);
-      const B0L = q * L1 / 2 + (a_pos <= L1 ? f * a_pos / L1 : 0) + (am_pos <= L1 ? m0 / L1 : 0);
-      
-      const a2 = a_pos - L1;
-      const B0R = q * L2 / 2 + (a_pos > L1 ? f * (L2 - a2) / L2 : 0) - (am_pos > L1 ? m0 / L2 : 0);
-      const C0 = q * L2 / 2 + (a_pos > L1 ? f * a2 / L2 : 0) + (am_pos > L1 ? m0 / L2 : 0);
-      
-      A = A0 + MB / L1; 
-      C = C0 + MB / L2;
-      B = B0L - MB / L1 + B0R - MB / L2;
-    }
+    // Statik aus dem Rechenkern src/calc/statik.ts; Laststellungen werden sichtbar über die Regler begrenzt
+    const st = traeger({ system, l: totalLength, l1: l1_pos, q, f, a: a_pos, m0, am: am_pos });
+    const { A, B, C, MA } = st;
 
     const steps = 100;
     const dx = totalLength / steps;
@@ -121,15 +77,8 @@ export default function Baustatik() {
       const x = i * dx;
       labels.push(formatDeZahl(x, 2));
 
-      let vx = A - q * x;
-      if (system === 'zweifeld' && x > l1_pos) vx += B;
-      if (x > a_pos) vx -= f;
-
-      let mx = A * x - (q * x * x) / 2;
-      if (system === 'kragarm') mx += MA;
-      if (system === 'zweifeld' && x > l1_pos) mx += B * (x - l1_pos);
-      if (x > a_pos) mx -= f * (x - a_pos);
-      if (x > am_pos) mx += m0;
+      const vx = st.V(x);
+      const mx = st.M(x);
 
       shearData.push(vx);
       momentData.push(mx);
@@ -171,31 +120,10 @@ export default function Baustatik() {
       ]
     };
 
-    return { A, B, C, MA, maxAbsM, maxV, momentChart, shearChart, a_pos, am_pos, totalLength };
+    return { A, B, C, MA, maxAbsM, maxV, momentChart, shearChart, a_pos, am_pos, totalLength, hinweise: st.hinweise };
   }, [system, l, l1, q, f, a, m0, a_m]);
 
-  const rahmenResults = useMemo(() => {
-    // Dreigelenkrahmen
-    // Auflager A (links), B (rechts), Gelenk C (Mitte Riegel)
-    const Bv = (rahmenQ * rahmenL) / 2 + (rahmenW * rahmenH) / rahmenL;
-    const Av = rahmenQ * rahmenL - Bv;
-    const Bh = (rahmenQ * rahmenL * rahmenL / 8 + rahmenW * rahmenH / 2) / rahmenH;
-    const Ah = rahmenW - Bh;
-
-    // Eckmomente
-    const M_Ecke_Links = Ah * rahmenH; // Moment in der linken Ecke
-    const M_Ecke_Rechts = Bh * rahmenH; // Moment in der rechten Ecke
-    
-    // Feldmoment Riegel (Parabel)
-    // M(x) = M_Ecke_Links + Av * x - q * x^2 / 2
-    // Max M in x = Av / q
-    let x_max = rahmenQ > 0 ? Av / rahmenQ : 0;
-    if (x_max < 0) x_max = 0;
-    if (x_max > rahmenL) x_max = rahmenL;
-    const M_Feld_Max = M_Ecke_Links + Av * x_max - (rahmenQ * x_max * x_max) / 2;
-
-    return { Av, Ah, Bv, Bh, M_Ecke_Links, M_Ecke_Rechts, M_Feld_Max, x_max };
-  }, [rahmenH, rahmenL, rahmenQ, rahmenW]);
+  const rahmenResults = useMemo(() => dreigelenkrahmen(rahmenH, rahmenL, rahmenQ, rahmenW), [rahmenH, rahmenL, rahmenQ, rahmenW]);
 
   const chartOptions = {
     responsive: true,
