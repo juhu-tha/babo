@@ -426,7 +426,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
         {/* TAB NAVIGATION */}
         {!forceTab && (
           <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-            <button
+            <button aria-pressed={activeTab === 'u_wert'}
               onClick={() => setActiveTab('u_wert')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'u_wert' 
@@ -436,7 +436,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <Layers size={16} /> a) Bauphysik: U-Wert
             </button>
-            <button
+            <button aria-pressed={activeTab === 'beton'}
               onClick={() => setActiveTab('beton')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'beton' 
@@ -446,7 +446,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <BookOpen size={16} /> b) Beton: Mischungsentwurf
             </button>
-            <button
+            <button aria-pressed={activeTab === 'stahlbeton'}
               onClick={() => setActiveTab('stahlbeton')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'stahlbeton' 
@@ -456,7 +456,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <Sliders size={16} /> c) Massivbau: Biegung im GZT
             </button>
-            <button
+            <button aria-pressed={activeTab === 'holzbau'}
               onClick={() => setActiveTab('holzbau')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'holzbau' 
@@ -466,7 +466,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <Scale size={16} /> d) Holzbau: Stützenknicken
             </button>
-            <button
+            <button aria-pressed={activeTab === 'mauerwerk'}
               onClick={() => setActiveTab('mauerwerk')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'mauerwerk' 
@@ -476,7 +476,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <Settings size={16} /> e) Mauerwerk: Tragfähigkeit
             </button>
-            <button
+            <button aria-pressed={activeTab === 'nachhaltigkeit'}
               onClick={() => setActiveTab('nachhaltigkeit')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'nachhaltigkeit' 
@@ -486,7 +486,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <Leaf size={16} /> f) Nachhaltigkeit & Ökobilanz
             </button>
-            <button
+            <button aria-pressed={activeTab === 'bestand'}
               onClick={() => setActiveTab('bestand')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'bestand' 
@@ -496,7 +496,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <History size={16} /> g) Bauen im Bestand
             </button>
-            <button
+            <button aria-pressed={activeTab === 'schallschutz'}
               onClick={() => setActiveTab('schallschutz')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'schallschutz' 
@@ -506,7 +506,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
             >
               <Volume2 size={16} /> h) Bauakustik: Schallschutz
             </button>
-            <button
+            <button aria-pressed={activeTab === 'brandschutz'}
               onClick={() => setActiveTab('brandschutz')}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 activeTab === 'brandschutz' 
@@ -675,7 +675,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           <div className="space-y-6 animate-in fade-in duration-300">
             {/* SUB-NAVIGATION FOR BETON CALCULATIONS */}
             <div className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
-              <button
+              <button aria-pressed={betonSubTab === 'mischung'}
                 type="button"
                 className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'mischung'
@@ -686,7 +686,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
               >
                 Mischungsentwurf (Stoffraum)
               </button>
-              <button
+              <button aria-pressed={betonSubTab === 'k_wert'}
                 type="button"
                 className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'k_wert'
@@ -697,7 +697,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
               >
                 k-Wert-Ansatz (Zusatzstoffe)
               </button>
-              <button
+              <button aria-pressed={betonSubTab === 'temperatur'}
                 type="button"
                 className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'temperatur'
@@ -708,7 +708,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
               >
                 Frischbetontemperatur
               </button>
-              <button
+              <button aria-pressed={betonSubTab === 'festigkeit'}
                 type="button"
                 className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'festigkeit'
@@ -1797,7 +1797,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* SUB-TABS */}
             <div className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
-              <button
+              <button aria-pressed={co2SubTab === 'karbonatisierung'}
                 onClick={() => setCo2SubTab('karbonatisierung')}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   co2SubTab === 'karbonatisierung'
@@ -1807,7 +1807,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
               >
                 1. Re-Karbonatisierung (CO2-Speicherung)
               </button>
-              <button
+              <button aria-pressed={co2SubTab === 'gwp_vergleich'}
                 onClick={() => setCo2SubTab('gwp_vergleich')}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   co2SubTab === 'gwp_vergleich'
@@ -2115,7 +2115,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* SUB-TABS */}
             <div className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
-              <button
+              <button aria-pressed={bestandSubTab === 'beton'}
                 onClick={() => setBestandSubTab('beton')}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   bestandSubTab === 'beton'
@@ -2125,7 +2125,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
               >
                 1. Historischer Beton (DIN 1045 zu DIN EN 1992)
               </button>
-              <button
+              <button aria-pressed={bestandSubTab === 'stahl'}
                 onClick={() => setBestandSubTab('stahl')}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   bestandSubTab === 'stahl'
@@ -2599,7 +2599,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
 
             {/* Sub-Tab Selector for Brandschutz */}
             <div className="flex gap-2 border-b border-home-grau/20 pb-3">
-              <button
+              <button aria-pressed={brandSubTab === 'holz_abbrand'}
                 type="button"
                 onClick={() => setBrandSubTab('holz_abbrand')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -2610,7 +2610,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
               >
                 🌲 Holzbau: Effektiver Restquerschnitt (EC5-1-2)
               </button>
-              <button
+              <button aria-pressed={brandSubTab === 'beton_tabelle'}
                 type="button"
                 onClick={() => setBrandSubTab('beton_tabelle')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -2672,7 +2672,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700 block">Beflammung:</label>
                     <div className="grid grid-cols-2 gap-2 text-xs">
-                      <button
+                      <button aria-pressed={brandBeanspruchung === '3_seitig'}
                         type="button"
                         onClick={() => setBrandBeanspruchung('3_seitig')}
                         className={`p-2 rounded-lg border text-center font-sans cursor-pointer transition-all ${
@@ -2683,7 +2683,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       >
                         3-seitig (Deckenbalken)
                       </button>
-                      <button
+                      <button aria-pressed={brandBeanspruchung === '4_seitig'}
                         type="button"
                         onClick={() => setBrandBeanspruchung('4_seitig')}
                         className={`p-2 rounded-lg border text-center font-sans cursor-pointer transition-all ${

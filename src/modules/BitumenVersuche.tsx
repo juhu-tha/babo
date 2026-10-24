@@ -89,7 +89,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -99,7 +99,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
           >
             <BookOpen size={16} /> Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'versuche'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'versuche' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -144,7 +144,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             <div className="space-y-3 pt-4 border-t border-home-grau/30">
                <label className="text-sm font-bold text-text-main">Versuchsart</label>
                <div className="grid grid-cols-2 gap-2">
-                 <button
+                 <button aria-pressed={activeTest === 'penetration'}
                    onClick={() => setActiveTest('penetration')}
                    disabled={testStatus === 'running'}
                    className={`py-3 px-2 text-xs font-medium rounded-lg border transition-colors flex flex-col items-center gap-2 ${
@@ -156,7 +156,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                    <ArrowDownToLine size={18} />
                    Nadelpenetration
                  </button>
-                 <button
+                 <button aria-pressed={activeTest === 'ruk'}
                    onClick={() => setActiveTest('ruk')}
                    disabled={testStatus === 'running'}
                    className={`py-3 px-2 text-xs font-medium rounded-lg border transition-colors flex flex-col items-center gap-2 ${

@@ -269,7 +269,7 @@ export default function Packungsdichte() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6 w-full">
-          <button
+          <button aria-pressed={activeTab === 'sieblinien'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'sieblinien' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -279,7 +279,7 @@ export default function Packungsdichte() {
           >
             Kontinuierliche Modelle (Sieblinien)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zweikorn'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zweikorn' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

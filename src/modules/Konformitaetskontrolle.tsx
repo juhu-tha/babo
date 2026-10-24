@@ -460,7 +460,7 @@ export default function Konformitaetskontrolle() {
                 <div>
                   <span className="font-semibold text-text-main/80 block mb-1">Prüfkörper-Form:</span>
                   <div className="flex rounded-lg border border-home-grau/35 overflow-hidden bg-white">
-                    <button
+                    <button aria-pressed={specimenType === 'cube'}
                       type="button"
                       onClick={() => setSpecimenType('cube')}
                       className={`flex-1 py-1.5 text-center font-bold font-mono transition-all text-xs ${
@@ -469,7 +469,7 @@ export default function Konformitaetskontrolle() {
                     >
                       Würfel f_ck,cube
                     </button>
-                    <button
+                    <button aria-pressed={specimenType === 'cylinder'}
                       type="button"
                       onClick={() => setSpecimenType('cylinder')}
                       className={`flex-1 py-1.5 text-center font-bold font-mono transition-all text-xs ${

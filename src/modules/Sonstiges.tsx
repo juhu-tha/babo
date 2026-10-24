@@ -34,7 +34,7 @@ export default function Sonstiges() {
 
         {/* Dynamic Navigation Sub-tabs */}
         <div className="flex flex-wrap gap-2 py-4 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'pcm'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'pcm' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -45,7 +45,7 @@ export default function Sonstiges() {
             <ThermometerSun size={16} /> PCM (Phasenwechsel)
           </button>
           
-          <button
+          <button aria-pressed={activeTab === 'leichtzuschlaege'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'leichtzuschlaege' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -56,7 +56,7 @@ export default function Sonstiges() {
             <CircleDashed size={16} /> Leichtzuschläge
           </button>
           
-          <button
+          <button aria-pressed={activeTab === 'aerogele'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'aerogele' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -67,7 +67,7 @@ export default function Sonstiges() {
             <Box size={16} /> Aerogele
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'selfhealing'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'selfhealing' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -78,7 +78,7 @@ export default function Sonstiges() {
             <Droplets size={16} /> Selbstheilender Beton
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'photokatalyse'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'photokatalyse' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -89,7 +89,7 @@ export default function Sonstiges() {
             <Cpu size={16} /> Smarte Baustoffe &amp; TiO₂
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'vip'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'vip' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

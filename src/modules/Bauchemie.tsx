@@ -172,7 +172,7 @@ export const Bauchemie: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'grundlagen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'grundlagen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -182,7 +182,7 @@ export const Bauchemie: React.FC = () => {
           >
             <Activity size={16} /> Chemische Grundlagen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zusatzmittel'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zusatzmittel' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -192,7 +192,7 @@ export const Bauchemie: React.FC = () => {
           >
             <Droplets size={16} /> Betonzusatzmittel
           </button>
-          <button
+          <button aria-pressed={activeTab === 'angriffe'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'angriffe' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -202,7 +202,7 @@ export const Bauchemie: React.FC = () => {
           >
             <ShieldAlert size={16} /> Chemische Angriffe
           </button>
-          <button
+          <button aria-pressed={activeTab === 'salze'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'salze' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -212,7 +212,7 @@ export const Bauchemie: React.FC = () => {
           >
             <Snowflake size={16} /> Bauschädliche Salze
           </button>
-          <button
+          <button aria-pressed={activeTab === 'oberflaechenschutz'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'oberflaechenschutz' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -222,7 +222,7 @@ export const Bauchemie: React.FC = () => {
           >
             <Paintbrush size={16} /> Oberflächenschutz
           </button>
-          <button
+          <button aria-pressed={activeTab === 'korrosionsschutz'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'korrosionsschutz' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -232,7 +232,7 @@ export const Bauchemie: React.FC = () => {
           >
             <Shield size={16} /> Korrosionsschutz
           </button>
-          <button
+          <button aria-pressed={activeTab === 'kleben_dichten'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kleben_dichten' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

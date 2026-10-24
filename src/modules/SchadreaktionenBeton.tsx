@@ -685,7 +685,7 @@ export default function SchadreaktionenBeton() {
       </div>
 
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 animate-in fade-in duration-300">
-        <button
+        <button aria-pressed={activeTab === 'akr'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'akr' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -694,7 +694,7 @@ export default function SchadreaktionenBeton() {
           onClick={() => setActiveTab('akr')}>
           <Sparkles size={16} /> Alkalitreiben (AKR)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'frost'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'frost' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -703,7 +703,7 @@ export default function SchadreaktionenBeton() {
           onClick={() => setActiveTab('frost')}>
           <Snowflake size={16} /> Frost-Tau-Widerstand
         </button>
-        <button
+        <button aria-pressed={activeTab === 'sulfat'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'sulfat' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 

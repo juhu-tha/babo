@@ -109,7 +109,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
 
       {/* Sub-Section Tabs within the Selected Material */}
       <div className="flex gap-2 border-b border-home-grau/30 pb-2">
-        <button
+        <button aria-pressed={activeSubSection === 'uebersicht'}
           onClick={() => setActiveSubSection('uebersicht')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'uebersicht'
@@ -119,7 +119,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         >
           Übersicht &amp; Schadensmechanismen
         </button>
-        <button
+        <button aria-pressed={activeSubSection === 'schutz'}
           onClick={() => setActiveSubSection('schutz')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'schutz'
@@ -129,7 +129,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         >
           Präventiver Schutz
         </button>
-        <button
+        <button aria-pressed={activeSubSection === 'instandsetzung'}
           onClick={() => setActiveSubSection('instandsetzung')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'instandsetzung'
@@ -139,7 +139,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         >
           Instandsetzung &amp; Sanierung
         </button>
-        <button
+        <button aria-pressed={activeSubSection === 'praxis'}
           onClick={() => setActiveSubSection('praxis')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'praxis'

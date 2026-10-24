@@ -592,7 +592,7 @@ export function ExpositionsklassenSkizze({
 
         {/* Tab Switcher: Gebäudeschnitt vs Betondeckung */}
         <div className="flex p-1 bg-off-white rounded-xl border border-home-grau/20 self-start sm:self-auto text-xs font-bold">
-          <button
+          <button aria-pressed={activeMode === 'building'}
             type="button"
             onClick={() => setActiveMode('building')}
             className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
@@ -603,7 +603,7 @@ export function ExpositionsklassenSkizze({
           >
             <Compass size={14} /> 1. Bauwerks-Zonierung
           </button>
-          <button
+          <button aria-pressed={activeMode === 'cover'}
             type="button"
             onClick={() => setActiveMode('cover')}
             className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
@@ -1455,7 +1455,7 @@ export default function Expositionsklassen() {
 
         {/* TAB-NAVIGATION (4-Stufen-Lehrpfad) */}
         <div className="flex flex-wrap gap-2 pt-5 border-t border-home-grau/20 mt-4">
-          <button
+          <button aria-pressed={activeTab === 'grundlagen'}
             onClick={() => setActiveTab('grundlagen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'grundlagen'
@@ -1465,7 +1465,7 @@ export default function Expositionsklassen() {
           >
             <BookOpen size={16} /> 1. Grundlagen &amp; Klassenkatalog
           </button>
-          <button
+          <button aria-pressed={activeTab === 'pruefungen'}
             onClick={() => setActiveTab('pruefungen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'pruefungen'
@@ -1475,7 +1475,7 @@ export default function Expositionsklassen() {
           >
             <Beaker size={16} /> 2. Labor- &amp; Baustellenprüfungen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'rechner'

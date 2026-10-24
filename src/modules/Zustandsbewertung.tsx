@@ -102,7 +102,7 @@ export default function Zustandsbewertung() {
     <div className="flex flex-col gap-6">
       {/* Tab Navigation header */}
       <div className="flex border-b border-home-grau/30 overflow-x-auto">
-        <button
+        <button aria-pressed={activeTab === 'din1076'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'din1076' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -110,7 +110,7 @@ export default function Zustandsbewertung() {
         >
           <BookOpen size={16} /> DIN 1076 (Brücken & Ingenieurbauten)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'vdi6200'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'vdi6200' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -127,7 +127,7 @@ export default function Zustandsbewertung() {
         >
           <Search size={16} /> Typische Bauschäden ↗
         </button>
-        <button
+        <button aria-pressed={activeTab === 'rechner'}
           className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
             activeTab === 'rechner' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
           }`}
@@ -588,7 +588,7 @@ export default function Zustandsbewertung() {
               </div>
 
               <div className="flex border border-home-grau/30 rounded-lg p-1 bg-off-white">
-                <button
+                <button aria-pressed={calculatorTab === 'quick'}
                   onClick={() => setCalculatorTab('quick')}
                   className={`px-4 py-1.5 rounded-md text-xs font-semibold transition-all ${
                     calculatorTab === 'quick'
@@ -601,7 +601,7 @@ export default function Zustandsbewertung() {
                     Schnellkonverter
                   </div>
                 </button>
-                <button
+                <button aria-pressed={calculatorTab === 'matrix'}
                   onClick={() => setCalculatorTab('matrix')}
                   className={`px-4 py-1.5 rounded-md text-xs font-semibold transition-all ${
                     calculatorTab === 'matrix'

@@ -22,7 +22,7 @@ export default function Daemmstoffe() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-2">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -32,7 +32,7 @@ export default function Daemmstoffe() {
           >
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'info'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
               activeTab === 'info' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

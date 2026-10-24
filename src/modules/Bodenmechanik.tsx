@@ -325,7 +325,7 @@ export default function Bodenmechanik() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'konsistenz'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'konsistenz' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -334,7 +334,7 @@ export default function Bodenmechanik() {
           onClick={() => setActiveTab('konsistenz')}>
           <Droplets size={16} /> Konsistenzgrenzen
         </button>
-        <button
+        <button aria-pressed={activeTab === 'scherfestigkeit'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'scherfestigkeit' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -343,7 +343,7 @@ export default function Bodenmechanik() {
           onClick={() => setActiveTab('scherfestigkeit')}>
           <Scissors size={16} /> Scherfestigkeit
         </button>
-        <button
+        <button aria-pressed={activeTab === 'erddruck'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'erddruck' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -352,7 +352,7 @@ export default function Bodenmechanik() {
           onClick={() => setActiveTab('erddruck')}>
           <ArrowDownToLine size={16} /> Erddruck
         </button>
-        <button
+        <button aria-pressed={activeTab === 'konsolidierung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
             activeTab === 'konsolidierung' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 

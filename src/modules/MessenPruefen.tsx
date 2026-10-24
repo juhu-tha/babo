@@ -218,7 +218,7 @@ export default function MessenPruefen() {
 
       {/* --- Internal Sub-Navigation Tabs --- */}
       <div className="flex border-b border-home-grau/30 overflow-x-auto bg-white p-1 rounded-xl shadow-sm border">
-        <button
+        <button aria-pressed={activeSubTab === 'begriffe'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'begriffe' 
               ? 'bg-shiraz text-white shadow-sm' 
@@ -228,7 +228,7 @@ export default function MessenPruefen() {
         >
           <Settings size={14} /> Begriffe &amp; Definitionen
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'treffbild'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'treffbild' 
               ? 'bg-shiraz text-white shadow-sm' 
@@ -238,7 +238,7 @@ export default function MessenPruefen() {
         >
           <Target size={14} /> Richtigkeit vs. Präzision
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'messunsicherheit'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'messunsicherheit' 
               ? 'bg-shiraz text-white shadow-sm' 
@@ -248,7 +248,7 @@ export default function MessenPruefen() {
         >
           <Calculator size={14} /> GUM Messunsicherheit
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'pruefstreuung'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'pruefstreuung' 
               ? 'bg-shiraz text-white shadow-sm' 
@@ -258,7 +258,7 @@ export default function MessenPruefen() {
         >
           <Layers size={14} /> Prüfstreuungen (r/R)
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'ringversuche'}
           className={`flex-1 min-w-[150px] px-4 py-3 font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2 ${
             activeSubTab === 'ringversuche' 
               ? 'bg-shiraz text-white shadow-sm' 
@@ -619,7 +619,7 @@ export default function MessenPruefen() {
                       </span>
                     </label>
                     <div className="grid grid-cols-2 gap-2">
-                      <button
+                      <button aria-pressed={accuracy === 'high'}
                         onClick={() => setAccuracy('high')}
                         className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           accuracy === 'high' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
@@ -627,7 +627,7 @@ export default function MessenPruefen() {
                       >
                         Hoch (Zentriert)
                       </button>
-                      <button
+                      <button aria-pressed={accuracy === 'low'}
                         onClick={() => setAccuracy('low')}
                         className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           accuracy === 'low' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
@@ -652,7 +652,7 @@ export default function MessenPruefen() {
                       </span>
                     </label>
                     <div className="grid grid-cols-2 gap-2">
-                      <button
+                      <button aria-pressed={precision === 'high'}
                         onClick={() => setPrecision('high')}
                         className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           precision === 'high' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
@@ -660,7 +660,7 @@ export default function MessenPruefen() {
                       >
                         Hoch (Geringe Streuung)
                       </button>
-                      <button
+                      <button aria-pressed={precision === 'low'}
                         onClick={() => setPrecision('low')}
                         className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           precision === 'low' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'

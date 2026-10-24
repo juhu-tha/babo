@@ -144,7 +144,7 @@ export default function Knicken() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'simulation'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'simulation'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -154,7 +154,7 @@ export default function Knicken() {
           >
             <Sliders size={16} /> Interaktiver Knickprüfstand (Live Last)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'diagramm'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'diagramm'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -164,7 +164,7 @@ export default function Knicken() {
           >
             <Activity size={16} /> Biegelinie II. Ordnung (Diagramm)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'eulerfaelle'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'eulerfaelle'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'

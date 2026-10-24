@@ -158,7 +158,7 @@ export default function WUBauwerke() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'rechner'
                 ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -168,7 +168,7 @@ export default function WUBauwerke() {
           >
             <Gauge size={16} /> 1. Rechner &amp; Nachweise
           </button>
-          <button
+          <button aria-pressed={activeTab === 'entwurf'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'entwurf'
                 ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -178,7 +178,7 @@ export default function WUBauwerke() {
           >
             <Compass size={16} /> 2. Entwurfsgrundsätze (a, b, c)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'fugen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'fugen'
                 ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -188,7 +188,7 @@ export default function WUBauwerke() {
           >
             <Layers size={16} /> 3. Fugenplanung &amp; Dichtsysteme
           </button>
-          <button
+          <button aria-pressed={activeTab === 'beton'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'beton'
                 ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -198,7 +198,7 @@ export default function WUBauwerke() {
           >
             <Cpu size={16} /> 4. Betontechnologie &amp; Selbstheilung
           </button>
-          <button
+          <button aria-pressed={activeTab === 'typen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
               activeTab === 'typen'
                 ? 'bg-shiraz text-white border-shiraz shadow-xs'

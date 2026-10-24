@@ -711,7 +711,7 @@ export default function OnlineTools() {
 
         {/* View Switcher: Matrix vs. API Lab */}
         <div className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/20">
-          <button
+          <button aria-pressed={currentView === 'matrix'}
             onClick={() => setCurrentView('matrix')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
               currentView === 'matrix'
@@ -722,7 +722,7 @@ export default function OnlineTools() {
             <Layers size={14} />
             <span>Kuratierte Webrechner-Matrix ({ONLINE_TOOLS.length} Tools)</span>
           </button>
-          <button
+          <button aria-pressed={currentView === 'api_lab'}
             onClick={() => setCurrentView('api_lab')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
               currentView === 'api_lab'
@@ -755,7 +755,7 @@ export default function OnlineTools() {
 
             {/* Category selector */}
             <div className="flex flex-wrap gap-2 items-center">
-              <button
+              <button aria-pressed={selectedCategory === 'all'}
                 onClick={() => setSelectedCategory('all')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'all'
@@ -765,7 +765,7 @@ export default function OnlineTools() {
               >
                 Alle ({ONLINE_TOOLS.length})
               </button>
-              <button
+              <button aria-pressed={selectedCategory === 'statik'}
                 onClick={() => setSelectedCategory('statik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'statik'
@@ -775,7 +775,7 @@ export default function OnlineTools() {
               >
                 Statik &amp; Tragwerk
               </button>
-              <button
+              <button aria-pressed={selectedCategory === 'bauphysik'}
                 onClick={() => setSelectedCategory('bauphysik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'bauphysik'
@@ -785,7 +785,7 @@ export default function OnlineTools() {
               >
                 Bauphysik
               </button>
-              <button
+              <button aria-pressed={selectedCategory === 'holzbau'}
                 onClick={() => setSelectedCategory('holzbau')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'holzbau'
@@ -795,7 +795,7 @@ export default function OnlineTools() {
               >
                 Holzbau
               </button>
-              <button
+              <button aria-pressed={selectedCategory === 'lca'}
                 onClick={() => setSelectedCategory('lca')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'lca'
@@ -805,7 +805,7 @@ export default function OnlineTools() {
               >
                 LCA &amp; Ökobilanz
               </button>
-              <button
+              <button aria-pressed={selectedCategory === 'bim'}
                 onClick={() => setSelectedCategory('bim')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'bim'
@@ -815,7 +815,7 @@ export default function OnlineTools() {
               >
                 BIM &amp; Geodaten
               </button>
-              <button
+              <button aria-pressed={selectedCategory === 'geotechnik'}
                 onClick={() => setSelectedCategory('geotechnik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'geotechnik'

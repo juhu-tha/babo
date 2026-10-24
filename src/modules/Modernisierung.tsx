@@ -206,7 +206,7 @@ export default function Modernisierung() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6" id="modernisierung-tabs">
-          <button
+          <button aria-pressed={activeTab === 'begriffe'}
             id="tab-begriffe-btn"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'begriffe' 
@@ -218,7 +218,7 @@ export default function Modernisierung() {
             <Target size={16} /> SANREMO-Systematik (Merkhilfe)
           </button>
           
-          <button
+          <button aria-pressed={activeTab === 'nachruestpflichten'}
             id="tab-nachruest-btn"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'nachruestpflichten' 
@@ -230,7 +230,7 @@ export default function Modernisierung() {
             <Scale size={16} /> GModG Pflichten &amp; Grenzwerte
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'bauphysik'}
             id="tab-bauphysik-btn"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'bauphysik' 
@@ -242,7 +242,7 @@ export default function Modernisierung() {
             <Calculator size={16} /> U-Wert- &amp; Amortisations-Rechner
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'gebaeudetechnik'}
             id="tab-technik-btn"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'gebaeudetechnik' 
@@ -254,7 +254,7 @@ export default function Modernisierung() {
             <Leaf size={16} /> Heizungstechnik &amp; Bio-Treppe
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'isfp'}
             id="tab-isfp-btn"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'isfp' 

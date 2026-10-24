@@ -245,7 +245,7 @@ export default function ProbenahmePlaner() {
               <div>
                 <label className="text-xs font-bold text-slate-700 block mb-1">Verfahren nach DIN EN 13791</label>
                 <div className="flex gap-2">
-                  <button
+                  <button aria-pressed={verfahrenType === 'verfahrenA'}
                     type="button"
                     onClick={() => setVerfahrenType('verfahrenA')}
                     className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
@@ -256,7 +256,7 @@ export default function ProbenahmePlaner() {
                   >
                     Statistisch (n ≥ 8 Kerne)
                   </button>
-                  <button
+                  <button aria-pressed={verfahrenType === 'verfahrenB'}
                     type="button"
                     onClick={() => setVerfahrenType('verfahrenB')}
                     className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${

@@ -574,7 +574,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
           
           {/* Sub-Navigation between Übersicht and Historie */}
           <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100/80 border border-home-grau/25 rounded-xl w-fit">
-            <button
+            <button aria-pressed={infoView === 'uebersicht'}
               onClick={() => setInfoView('uebersicht')}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 infoView === 'uebersicht'
@@ -585,7 +585,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
               <Info size={14} />
               Fachportale &amp; Systemvorteile
             </button>
-            <button
+            <button aria-pressed={infoView === 'historie'}
               onClick={() => setInfoView('historie')}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 infoView === 'historie'
@@ -784,7 +784,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
             {/* Filter Toolbar */}
             <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-off-white p-3.5 rounded-xl border border-home-grau/20">
               <div className="flex flex-wrap gap-2">
-                <button
+                <button aria-pressed={dbTypeFilter === 'all'}
                   onClick={() => setDbTypeFilter('all')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'all' 
@@ -794,7 +794,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 >
                   Alle Bauteile
                 </button>
-                <button
+                <button aria-pressed={dbTypeFilter === 'Aussenwand'}
                   onClick={() => setDbTypeFilter('Aussenwand')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Aussenwand' 
@@ -804,7 +804,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 >
                   Außenwände
                 </button>
-                <button
+                <button aria-pressed={dbTypeFilter === 'Decke'}
                   onClick={() => setDbTypeFilter('Decke')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Decke' 
@@ -814,7 +814,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
                 >
                   Geschossdecken
                 </button>
-                <button
+                <button aria-pressed={dbTypeFilter === 'Dach'}
                   onClick={() => setDbTypeFilter('Dach')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Dach' 

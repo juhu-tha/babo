@@ -418,7 +418,7 @@ plt.show()`;
         {/* FILTER & SUCHE */}
         <div className="mt-8 pt-6 border-t border-home-grau/20 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
           <div className="flex flex-wrap gap-1.5">
-            <button
+            <button aria-pressed={selectedCategory === 'all'}
               onClick={() => setSelectedCategory('all')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'all'
@@ -428,7 +428,7 @@ plt.show()`;
             >
               Alle Kurse ({COURSES.length})
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'python'}
               onClick={() => setSelectedCategory('python')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'python'
@@ -438,7 +438,7 @@ plt.show()`;
             >
               Python &amp; Data Science
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'ml_visual'}
               onClick={() => setSelectedCategory('ml_visual')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'ml_visual'
@@ -448,7 +448,7 @@ plt.show()`;
             >
               ML &amp; Mathe Visuell
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'rag_nlp'}
               onClick={() => setSelectedCategory('rag_nlp')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'rag_nlp'
@@ -458,7 +458,7 @@ plt.show()`;
             >
               RAG &amp; Vektordatenbanken
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'lokal_mcp'}
               onClick={() => setSelectedCategory('lokal_mcp')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'lokal_mcp'
@@ -468,7 +468,7 @@ plt.show()`;
             >
               Lokale KI &amp; MCP
             </button>
-            <button
+            <button aria-pressed={selectedCategory === 'hochschule'}
               onClick={() => setSelectedCategory('hochschule')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'hochschule'

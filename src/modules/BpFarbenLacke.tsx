@@ -505,7 +505,7 @@ export default function BpFarbenLacke() {
 
         {/* Local Tab Navigation */}
         <div className="flex border-b border-home-grau/30 mb-6 overflow-x-auto pb-px">
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             onClick={() => setActiveTab('allgemein')}
             className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
               activeTab === 'allgemein'
@@ -515,7 +515,7 @@ export default function BpFarbenLacke() {
           >
             Allgemeine Übersicht
           </button>
-          <button
+          <button aria-pressed={activeTab === 'komponenten'}
             onClick={() => setActiveTab('komponenten')}
             className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
               activeTab === 'komponenten'
@@ -525,7 +525,7 @@ export default function BpFarbenLacke() {
           >
             Die 4 Hauptbestandteile
           </button>
-          <button
+          <button aria-pressed={activeTab === 'filmchemie'}
             onClick={() => setActiveTab('filmchemie')}
             className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
               activeTab === 'filmchemie'
@@ -537,7 +537,7 @@ export default function BpFarbenLacke() {
               <FlaskConical size={14} /> Chemie &amp; Filmbildung
             </span>
           </button>
-          <button
+          <button aria-pressed={activeTab === 'bindemittel'}
             onClick={() => setActiveTab('bindemittel')}
             className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
               activeTab === 'bindemittel'
@@ -547,7 +547,7 @@ export default function BpFarbenLacke() {
           >
             Bindemittel-Matrix
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 ${
               activeTab === 'rechner'
@@ -559,7 +559,7 @@ export default function BpFarbenLacke() {
               <Calculator size={14} /> Schichtdicken- &amp; Mengenschätzer
             </span>
           </button>
-          <button
+          <button aria-pressed={activeTab === 'voc'}
             onClick={() => setActiveTab('voc')}
             className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 whitespace-nowrap ${
               activeTab === 'voc'
@@ -569,7 +569,7 @@ export default function BpFarbenLacke() {
           >
             Schadstoffe &amp; VOC-Grenzwerte
           </button>
-          <button
+          <button aria-pressed={activeTab === 'oberflaechenschutz'}
             onClick={() => setActiveTab('oberflaechenschutz')}
             className={`px-4 py-2.5 text-sm font-bold border-b-2 transition-all duration-150 whitespace-nowrap ${
               activeTab === 'oberflaechenschutz'

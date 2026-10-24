@@ -363,7 +363,7 @@ export default function MechanischeKenngroessen() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'grundlagen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'grundlagen'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -373,7 +373,7 @@ export default function MechanischeKenngroessen() {
           >
             <Activity size={16} /> 1. Spannung &amp; Dehnung
           </button>
-          <button
+          <button aria-pressed={activeTab === 'hooke_emodul'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'hooke_emodul'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -383,7 +383,7 @@ export default function MechanischeKenngroessen() {
           >
             <Sparkles size={16} /> 2. E-Modul &amp; Hooke
           </button>
-          <button
+          <button aria-pressed={activeTab === 'steifigkeiten'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steifigkeiten'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -393,7 +393,7 @@ export default function MechanischeKenngroessen() {
           >
             <MoveHorizontal size={16} /> 3. Dehn- &amp; Biegesteifigkeit (EA &amp; EI)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'kriechen_schwinden'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kriechen_schwinden'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -403,7 +403,7 @@ export default function MechanischeKenngroessen() {
           >
             <Clock size={16} /> 4. Kriechen, Schwinden &amp; Relaxation
           </button>
-          <button
+          <button aria-pressed={activeTab === 'simulator'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'simulator'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -413,7 +413,7 @@ export default function MechanischeKenngroessen() {
           >
             <Sliders size={16} /> 5. Interaktiver Simulator
           </button>
-          <button
+          <button aria-pressed={activeTab === 'matrix'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'matrix'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -423,7 +423,7 @@ export default function MechanischeKenngroessen() {
           >
             <Layers size={16} /> 6. Werkstoff-Matrix
           </button>
-          <button
+          <button aria-pressed={activeTab === 'beispiele'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'beispiele'
                 ? 'bg-shiraz text-white border-shiraz shadow-md'
@@ -943,7 +943,7 @@ export default function MechanischeKenngroessen() {
                 
                 {/* Umschalter: Relaxieren vs. Kriechen */}
                 <div className="flex bg-off-white p-1 rounded-xl border border-home-grau/30 gap-1 text-xs">
-                  <button
+                  <button aria-pressed={rheoModus === 'relaxieren'}
                     onClick={() => setRheoModus('relaxieren')}
                     className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                       rheoModus === 'relaxieren'
@@ -953,7 +953,7 @@ export default function MechanischeKenngroessen() {
                   >
                     <Timer size={14} /> 1. Relaxieren (ε = konst.)
                   </button>
-                  <button
+                  <button aria-pressed={rheoModus === 'kriechen'}
                     onClick={() => setRheoModus('kriechen')}
                     className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                       rheoModus === 'kriechen'
@@ -1834,7 +1834,7 @@ export default function MechanischeKenngroessen() {
               <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
                 <label className="text-xs font-bold text-text-main block">Belastungsrichtung:</label>
                 <div className="grid grid-cols-2 gap-2">
-                  <button
+                  <button aria-pressed={lastArt === 'zug'}
                     onClick={() => setLastArt('zug')}
                     className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                       lastArt === 'zug' ? 'bg-shiraz text-white border-shiraz shadow' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
@@ -1842,7 +1842,7 @@ export default function MechanischeKenngroessen() {
                   >
                     Zugspannung (+σ)
                   </button>
-                  <button
+                  <button aria-pressed={lastArt === 'druck'}
                     onClick={() => setLastArt('druck')}
                     className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                       lastArt === 'druck' ? 'bg-shiraz text-white border-shiraz shadow' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
@@ -1905,7 +1905,7 @@ export default function MechanischeKenngroessen() {
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-bold text-text-main">Querschnittsgeometrie:</span>
                   <div className="flex gap-2">
-                    <button
+                    <button aria-pressed={querschnittTyp === 'rund'}
                       onClick={() => setQuerschnittTyp('rund')}
                       className={`px-2 py-0.5 rounded text-[11px] font-bold border cursor-pointer ${
                         querschnittTyp === 'rund' ? 'bg-slate-700 text-white' : 'bg-off-white text-slate-700'
@@ -1913,7 +1913,7 @@ export default function MechanischeKenngroessen() {
                     >
                       Kreisstab (Ø)
                     </button>
-                    <button
+                    <button aria-pressed={querschnittTyp === 'rechteck'}
                       onClick={() => setQuerschnittTyp('rechteck')}
                       className={`px-2 py-0.5 rounded text-[11px] font-bold border cursor-pointer ${
                         querschnittTyp === 'rechteck' ? 'bg-slate-700 text-white' : 'bg-off-white text-slate-700'

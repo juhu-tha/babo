@@ -25,14 +25,14 @@ export default function BpBaustoffindustrie() {
       {/* Tab Navigation header */}
       <div className="flex flex-col gap-3">
         <div className="bg-white p-4 rounded-2xl shadow-sm border border-home-grau/30 flex flex-wrap justify-center sm:justify-start gap-2">
-          <button 
+          <button aria-pressed={activeSubTab === 'overview'} 
             onClick={() => setActiveSubTab('overview')}
             className={`py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${activeSubTab === 'overview' ? 'bg-shiraz text-white shadow-sm' : 'bg-slate-50 border border-home-grau/25 hover:border-shiraz text-text-main'}`}
           >
             <Factory size={16} /> Marktdynamik &amp; Segmente
           </button>
           
-          <button 
+          <button aria-pressed={activeSubTab === 'sources'} 
             onClick={() => setActiveSubTab('sources')}
             className={`py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${activeSubTab === 'sources' ? 'bg-shiraz text-white shadow-sm' : 'bg-slate-50 border border-home-grau/25 hover:border-shiraz text-text-main'}`}
           >

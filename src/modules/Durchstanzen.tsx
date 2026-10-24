@@ -120,13 +120,13 @@ export default function Durchstanzen() {
               <div className="flex flex-col gap-2 mb-4">
                 <label className="text-sm font-medium text-text-main">Stützenform</label>
                 <div className="flex rounded-md shadow-sm">
-                  <button
+                  <button aria-pressed={colType === 'rund'}
                     onClick={() => setColType('rund')}
                     className={`flex-1 py-2 text-sm font-medium rounded-l-md border ${colType === 'rund' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'}`}
                   >
                     Rund
                   </button>
-                  <button
+                  <button aria-pressed={colType === 'rechteckig'}
                     onClick={() => setColType('rechteckig')}
                     className={`flex-1 py-2 text-sm font-medium rounded-r-md border border-l-0 ${colType === 'rechteckig' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'}`}
                   >

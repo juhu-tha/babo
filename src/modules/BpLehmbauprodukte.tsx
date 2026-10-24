@@ -156,7 +156,7 @@ export default function BpLehmbauprodukte() {
 
         {/* Primary Tabs Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -166,7 +166,7 @@ export default function BpLehmbauprodukte() {
           >
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'standards'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'standards' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -176,7 +176,7 @@ export default function BpLehmbauprodukte() {
           >
             <Layers size={16} /> DIN-Produktnormen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'bemessung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'bemessung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -186,7 +186,7 @@ export default function BpLehmbauprodukte() {
           >
             <Calculator size={16} /> Tragfähigkeit (DIN 18940)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'dauerhaftigkeit'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'dauerhaftigkeit' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

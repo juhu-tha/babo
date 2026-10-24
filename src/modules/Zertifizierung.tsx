@@ -196,7 +196,7 @@ export default function Zertifizierung() {
       </div>
       
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'systeme'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'systeme' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -206,7 +206,7 @@ export default function Zertifizierung() {
         >
           <Award size={16} /> Zertifizierungssysteme
         </button>
-        <button
+        <button aria-pressed={activeTab === 'beispiele'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'beispiele' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 

@@ -13,10 +13,17 @@ import {
 import { useTabContext } from '../contexts/TabContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CURRENT_VERSION } from '../data/versionData';
+import { META_CLUSTERS } from '../data/metaClusters';
+import { NAV_TAB_GRUPPEN, MODUL_BY_ID, type ModulId } from '../registry/modules';
 
 export default function Startseite() {
   const { setActiveTab } = useTabContext();
   const { language } = useLanguage();
+  const zuletzt: string[] = (() => {
+    try { return (JSON.parse(localStorage.getItem('baustoffboard_recent') || '[]') as string[]).filter(id => id !== 'start' && MODUL_BY_ID.has(id)).slice(0, 4); } catch { return []; }
+  })();
+  // Einstieg je Cluster: erstes Modul der ersten Gruppe (meist „Modulinfos“), Phase 2 AP 2.10
+  const einstieg = (gruppen: string[]): ModulId | undefined => NAV_TAB_GRUPPEN.find(g => gruppen.includes(g.name))?.tabs[0]?.id;
 
   return (
     <div className="flex flex-col gap-8 w-full mt-4">
@@ -48,6 +55,45 @@ export default function Startseite() {
           </button>
         </div>
         
+        {/* Einstieg in die Themen (Phase 2, AP 2.10) */}
+        <section aria-labelledby="einstieg-titel" className="w-full text-left mb-8">
+          <h3 id="einstieg-titel" className="text-lg font-bold text-text-main mb-3">{language === 'en' ? 'Start with a topic' : 'Einstieg nach Themen'}</h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" role="list">
+            {META_CLUSTERS.map(c => {
+              const ziel = einstieg(c.groupNames);
+              const Icon = c.icon;
+              return (
+                <li key={c.id}>
+                  <button
+                    type="button"
+                    disabled={!ziel}
+                    onClick={() => ziel && setActiveTab(ziel)}
+                    className="w-full h-full text-left p-4 rounded-xl border border-home-grau/30 bg-off-white hover:border-shiraz hover:bg-shiraz/5 transition-colors flex gap-3 items-start"
+                  >
+                    <span className="p-2 rounded-lg bg-white border border-home-grau/20 shrink-0"><Icon size={18} className="text-shiraz" aria-hidden="true" /></span>
+                    <span>
+                      <span className="block font-bold text-text-main">{c.number}: {c.name}</span>
+                      <span className="block text-sm text-text-main/75 mt-0.5">{c.shortDesc}</span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+          {zuletzt.length > 0 && (
+            <div className="mt-4">
+              <h4 className="text-sm font-bold text-text-main mb-2">{language === 'en' ? 'Recently visited' : 'Zuletzt besucht'}</h4>
+              <div className="flex flex-wrap gap-2">
+                {zuletzt.map(id => (
+                  <button key={id} type="button" onClick={() => setActiveTab(id as ModulId)} className="px-3 py-1.5 rounded-lg border border-home-grau/30 bg-white text-sm text-text-main hover:border-shiraz hover:text-shiraz">
+                    {MODUL_BY_ID.get(id)?.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+
         <div className="flex flex-col gap-6 w-full">
           <div className="bg-shiraz/5 border border-shiraz/20 p-6 rounded-xl text-left">
             <div className="flex items-start gap-4">

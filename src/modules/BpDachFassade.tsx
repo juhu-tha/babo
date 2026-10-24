@@ -34,7 +34,7 @@ export default function BpDachFassade() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 dark:border-slate-800 my-6">
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'allgemein' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -44,7 +44,7 @@ export default function BpDachFassade() {
           >
             <BookOpen size={16} /> Basiswissen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'fenster_rechner'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'fenster_rechner' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -54,7 +54,7 @@ export default function BpDachFassade() {
           >
             <Calculator size={16} /> Fenster-U-Wert (Uw)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'praxis' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -64,7 +64,7 @@ export default function BpDachFassade() {
           >
             <CheckCircle2 size={16} /> Praxisbeispiele
           </button>
-          <button
+          <button aria-pressed={activeTab === 'innovation'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'innovation' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

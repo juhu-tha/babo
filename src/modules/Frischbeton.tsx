@@ -107,7 +107,7 @@ export default function Frischbeton() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button 
+          <button aria-pressed={activeTab === 'konsistenz'} 
             onClick={() => setActiveTab('konsistenz')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'konsistenz' 
@@ -117,7 +117,7 @@ export default function Frischbeton() {
           >
             <Layers size={16} /> Konsistenzklassen &amp; Grenzabmaße
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'ausbreitversuch'} 
             onClick={() => setActiveTab('ausbreitversuch')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'ausbreitversuch' 
@@ -127,7 +127,7 @@ export default function Frischbeton() {
           >
             <Waves size={16} /> Ausbreitversuch &amp; Rheologie
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'luftporen'} 
             onClick={() => setActiveTab('luftporen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'luftporen' 
@@ -137,7 +137,7 @@ export default function Frischbeton() {
           >
             <Wind size={16} /> Luftporen &amp; Rohdichte
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'frischbetondruck'} 
             onClick={() => setActiveTab('frischbetondruck')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'frischbetondruck' 
@@ -147,7 +147,7 @@ export default function Frischbeton() {
           >
             <Gauge size={16} /> Frischbetondruck (DIN 18218)
           </button>
-          <button 
+          <button aria-pressed={activeTab === 'frischbetontemperatur'} 
             onClick={() => setActiveTab('frischbetontemperatur')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'frischbetontemperatur' 

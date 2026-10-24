@@ -149,7 +149,7 @@ export function NormenLinkMonitor() {
 
       {/* Tabs */}
       <div className="flex border-b border-home-grau/20 gap-2">
-        <button
+        <button aria-pressed={activeSubTab === 'normen'}
           onClick={() => setActiveSubTab('normen')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all cursor-pointer ${
             activeSubTab === 'normen'
@@ -159,7 +159,7 @@ export function NormenLinkMonitor() {
         >
           Zentrales Normenverzeichnis ({normenList.length})
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'links'}
           onClick={() => setActiveSubTab('links')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all cursor-pointer ${
             activeSubTab === 'links'
@@ -169,7 +169,7 @@ export function NormenLinkMonitor() {
         >
           Link-Checker &amp; Quellen ({LIVE_LINK_AUDIT.length})
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'report'}
           onClick={() => setActiveSubTab('report')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all cursor-pointer ${
             activeSubTab === 'report'

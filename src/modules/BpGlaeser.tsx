@@ -538,7 +538,7 @@ export default function BpGlaeser() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pt-6 border-t border-home-grau/20 mt-4">
-          <button
+          <button aria-pressed={activeTab === 'uebersicht'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'uebersicht' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -549,7 +549,7 @@ export default function BpGlaeser() {
             <Layers size={16} /> Übersicht &amp; Aufbau
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'glasarten'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'glasarten' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -560,7 +560,7 @@ export default function BpGlaeser() {
             <ShieldCheck size={16} /> Glasprodukte &amp; Dicken
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'beschichtungen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'beschichtungen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -571,7 +571,7 @@ export default function BpGlaeser() {
             <Sparkles size={16} /> Bedampfung, Schichten &amp; Gase
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'fenster'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'fenster' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -582,7 +582,7 @@ export default function BpGlaeser() {
             <Building2 size={16} /> Fensterarten &amp; Rahmen
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'kalkulator'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kalkulator' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -593,7 +593,7 @@ export default function BpGlaeser() {
             <Calculator size={16} /> Interaktiver Uw-Rechner
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'normen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'normen' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

@@ -185,7 +185,7 @@ export function KlebstoffBerater() {
 
       {/* Sub Tabs Selection */}
       <div className="flex border-b border-slate-200">
-        <button
+        <button aria-pressed={activeSubTab === 'rechner'}
           onClick={() => setActiveSubTab('rechner')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'rechner' 
@@ -195,7 +195,7 @@ export function KlebstoffBerater() {
         >
           <Sliders size={14} /> Fugen-Dimensions-Rechner (DIN 18540)
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'untergrund'}
           onClick={() => setActiveSubTab('untergrund')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'untergrund' 
@@ -205,7 +205,7 @@ export function KlebstoffBerater() {
         >
           <Layers size={14} /> Untergrund &amp; Primer-Matrix
         </button>
-        <button
+        <button aria-pressed={activeSubTab === 'regeln'}
           onClick={() => setActiveSubTab('regeln')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'regeln' 

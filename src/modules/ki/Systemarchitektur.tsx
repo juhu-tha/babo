@@ -493,7 +493,7 @@ export default function Systemarchitektur() {
               Klicken Sie auf eine Schicht, um zu erfahren, wie Daten von der Baustelle zum validierten Ingenieurergebnis fließen.
             </p>
           </div>
-          <button
+          <button aria-pressed={activeTier === 'all'}
             onClick={() => setActiveTier('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               activeTier === 'all'
@@ -739,7 +739,7 @@ export default function Systemarchitektur() {
 
           {/* Sub-Aspect Navigation Tabs */}
           <div className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/20">
-            <button
+            <button aria-pressed={techViewMode === 'funktionsweise'}
               onClick={() => setTechViewMode('funktionsweise')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'funktionsweise'
@@ -749,7 +749,7 @@ export default function Systemarchitektur() {
             >
               <Code2 size={13} /> Technische Funktionsweise &amp; Formel
             </button>
-            <button
+            <button aria-pressed={techViewMode === 'einsatzzwecke'}
               onClick={() => setTechViewMode('einsatzzwecke')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'einsatzzwecke'
@@ -759,7 +759,7 @@ export default function Systemarchitektur() {
             >
               <CheckCircle2 size={13} /> 3 Bautechnische Einsatzzwecke
             </button>
-            <button
+            <button aria-pressed={techViewMode === 'daten'}
               onClick={() => setTechViewMode('daten')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'daten'
@@ -769,7 +769,7 @@ export default function Systemarchitektur() {
             >
               <HardDrive size={13} /> Datenanforderungen &amp; Latenz
             </button>
-            <button
+            <button aria-pressed={techViewMode === 'grenzen'}
               onClick={() => setTechViewMode('grenzen')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'grenzen'

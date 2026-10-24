@@ -68,8 +68,10 @@
           }
         };
         
-        // Führe die Validierung direkt nach dem Laden aus
-        window.addEventListener('DOMContentLoaded', function() {
-          setTimeout(window.validateJSONLD, 500);
-        });
+        // Nur auf Anforderung ausführen (?seo-check), damit die Konsole im Normalbetrieb ruhig bleibt
+        if (location.search.indexOf('seo-check') !== -1) {
+          window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(window.validateJSONLD, 500);
+          });
+        }
       })();

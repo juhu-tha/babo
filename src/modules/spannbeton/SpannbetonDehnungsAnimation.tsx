@@ -323,7 +323,7 @@ export default function SpannbetonDehnungsAnimation() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {/* a) Zentrisch */}
-          <button
+          <button aria-pressed={tendonTrajectory === 'centric'}
             type="button"
             onClick={() => setTendonTrajectory('centric')}
             className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -342,7 +342,7 @@ export default function SpannbetonDehnungsAnimation() {
           </button>
 
           {/* b) Gerade unten */}
-          <button
+          <button aria-pressed={tendonTrajectory === 'straight_bottom'}
             type="button"
             onClick={() => setTendonTrajectory('straight_bottom')}
             className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -361,7 +361,7 @@ export default function SpannbetonDehnungsAnimation() {
           </button>
 
           {/* c) Parabolisch */}
-          <button
+          <button aria-pressed={tendonTrajectory === 'parabolic'}
             type="button"
             onClick={() => setTendonTrajectory('parabolic')}
             className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -435,7 +435,7 @@ export default function SpannbetonDehnungsAnimation() {
 
           {/* Anzeige-Modus-Umschaltung */}
           <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-300">
-            <button
+            <button aria-pressed={activeDisplayMode === 'dehnung'}
               type="button"
               onClick={() => setActiveDisplayMode('dehnung')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -446,7 +446,7 @@ export default function SpannbetonDehnungsAnimation() {
             >
               <Activity size={13} /> Dehnung <InlineMath math="\varepsilon(z)" />
             </button>
-            <button
+            <button aria-pressed={activeDisplayMode === 'spannung'}
               type="button"
               onClick={() => setActiveDisplayMode('spannung')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -457,7 +457,7 @@ export default function SpannbetonDehnungsAnimation() {
             >
               <Gauge size={13} /> Spannung <InlineMath math="\sigma(z)" />
             </button>
-            <button
+            <button aria-pressed={activeDisplayMode === 'superposition'}
               type="button"
               onClick={() => setActiveDisplayMode('superposition')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -925,7 +925,7 @@ export default function SpannbetonDehnungsAnimation() {
 
             {/* Toggle Feldmitte vs. Auflager */}
             <div className="flex items-center bg-white p-0.5 rounded-lg border border-slate-300">
-              <button
+              <button aria-pressed={viewSection === 'midspan'}
                 type="button"
                 onClick={() => setViewSection('midspan')}
                 className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
@@ -936,7 +936,7 @@ export default function SpannbetonDehnungsAnimation() {
               >
                 Feldmitte (x = L/2)
               </button>
-              <button
+              <button aria-pressed={viewSection === 'support'}
                 type="button"
                 onClick={() => setViewSection('support')}
                 className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${

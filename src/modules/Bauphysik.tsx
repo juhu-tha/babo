@@ -622,7 +622,7 @@ export default function Bauphysik() {
 
         {/* COMPREHENSIVE TAB CONTROLLER */}
         <div className="flex space-x-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-          <button
+          <button aria-pressed={activeTab === 'thermal_hygric'}
             onClick={() => setActiveTab('thermal_hygric')}
             className={`flex-1 py-2 rounded-lg font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'thermal_hygric' 
@@ -633,7 +633,7 @@ export default function Bauphysik() {
             <CloudRain size={14} /> Feuchte- &amp; Wärmeschutz (Glaser)
           </button>
           
-          <button
+          <button aria-pressed={activeTab === 'summer_heat'}
             onClick={() => setActiveTab('summer_heat')}
             className={`flex-1 py-2 rounded-lg font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'summer_heat' 
@@ -644,7 +644,7 @@ export default function Bauphysik() {
             <Sun size={14} /> Sommerlicher Wärmeschutz (Trägheit)
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'acoustics'}
             onClick={() => setActiveTab('acoustics')}
             className={`flex-1 py-2 rounded-lg font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'acoustics' 
@@ -774,7 +774,7 @@ export default function Bauphysik() {
                 </h3>
                 <button 
                   onClick={addLayer}
-                  aria-label="Neue Bauteilschicht hinzufügen"
+                  aria-label="Schicht hinzufügen (neue Bauteilschicht)"
                   className="px-2.5 py-1 bg-shiraz hover:bg-slate-900 border border-transparent hover:border-slate-800 text-white rounded-lg text-[10px] font-extrabold flex items-center gap-1 cursor-pointer transition-all uppercase tracking-wider shadow pointer-events-auto"
                 >
                   <Plus size={12} /> Schicht

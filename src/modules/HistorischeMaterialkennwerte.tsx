@@ -357,7 +357,7 @@ export default function HistorischeMaterialkennwerte() {
 
         {/* Top-Level Module Sub-Navigation */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 bg-slate-50/50 p-4">
-          <button
+          <button aria-pressed={mainTab === 'datenbank'}
             onClick={() => setMainTab('datenbank')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               mainTab === 'datenbank'
@@ -367,7 +367,7 @@ export default function HistorischeMaterialkennwerte() {
           >
             <Database size={16} /> Historische Materialdatenbank
           </button>
-          <button
+          <button aria-pressed={mainTab === 'rechner_labor'}
             onClick={() => setMainTab('rechner_labor')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               mainTab === 'rechner_labor'
@@ -377,7 +377,7 @@ export default function HistorischeMaterialkennwerte() {
           >
             <Calculator size={16} /> Rechner &amp; Laborprüfungen
           </button>
-          <button
+          <button aria-pressed={mainTab === 'nachweis_bestand'}
             onClick={() => setMainTab('nachweis_bestand')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               mainTab === 'nachweis_bestand'
@@ -580,7 +580,7 @@ export default function HistorischeMaterialkennwerte() {
 
             {/* Test type selector */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
-              <button
+              <button aria-pressed={probeType === 'beton_bohrkern'}
                 onClick={() => setProbeType('beton_bohrkern')}
                 className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
                   probeType === 'beton_bohrkern'
@@ -590,7 +590,7 @@ export default function HistorischeMaterialkennwerte() {
               >
                 <Activity size={16} /> Beton-Bohrkerne (EC2)
               </button>
-              <button
+              <button aria-pressed={probeType === 'mauerwerk_ziegel'}
                 onClick={() => setProbeType('mauerwerk_ziegel')}
                 className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
                   probeType === 'mauerwerk_ziegel'
@@ -600,7 +600,7 @@ export default function HistorischeMaterialkennwerte() {
               >
                 <Layers size={16} /> Mauersteine &amp; f_k (EC6)
               </button>
-              <button
+              <button aria-pressed={probeType === 'stahl_zugprobe'}
                 onClick={() => setProbeType('stahl_zugprobe')}
                 className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
                   probeType === 'stahl_zugprobe'
@@ -842,7 +842,7 @@ export default function HistorischeMaterialkennwerte() {
                     <div>
                       <label className="block text-xs font-bold text-home-grau uppercase mb-2">Geometrische Form der Probe</label>
                       <div className="grid grid-cols-2 gap-2">
-                        <button
+                        <button aria-pressed={steelForm === 'round'}
                           onClick={() => setSteelForm('round')}
                           className={`py-2 px-1 rounded-lg text-xs font-bold border transition-colors ${
                             steelForm === 'round'
@@ -852,7 +852,7 @@ export default function HistorischeMaterialkennwerte() {
                         >
                           Rundzylinder-Stab
                         </button>
-                        <button
+                        <button aria-pressed={steelForm === 'flat'}
                           onClick={() => setSteelForm('flat')}
                           className={`py-2 px-1 rounded-lg text-xs font-bold border transition-colors ${
                             steelForm === 'flat'
@@ -1353,7 +1353,7 @@ export default function HistorischeMaterialkennwerte() {
                   <div>
                     <label className="text-xs font-medium text-slate-700 block mb-1.5">Versagensmechanismus:</label>
                     <div className="grid grid-cols-2 gap-1.5">
-                      <button
+                      <button aria-pressed={failureDuctility === 'duktil'}
                         type="button"
                         onClick={() => setFailureDuctility('duktil')}
                         className={`py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -1364,7 +1364,7 @@ export default function HistorischeMaterialkennwerte() {
                       >
                         Duktil (Biegezug)
                       </button>
-                      <button
+                      <button aria-pressed={failureDuctility === 'sproed'}
                         type="button"
                         onClick={() => setFailureDuctility('sproed')}
                         className={`py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${

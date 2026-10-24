@@ -364,7 +364,7 @@ export default function BpTrockenbau() {
 
         {/* Dynamic sub navigation tabs */}
         <div className="flex border-b border-home-grau/30 overflow-x-auto mb-6">
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'allgemein' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}
@@ -372,7 +372,7 @@ export default function BpTrockenbau() {
           >
             <BookOpen size={16} /> Basiswissen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'klassen'}
             className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'klassen' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}
@@ -380,7 +380,7 @@ export default function BpTrockenbau() {
           >
             <Percent size={16} /> Spachtelklassen &amp; Akustik
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'rechner' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}
@@ -388,7 +388,7 @@ export default function BpTrockenbau() {
           >
             <Calculator size={16} /> Bedarfsrechner
           </button>
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'praxis' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}
@@ -396,7 +396,7 @@ export default function BpTrockenbau() {
           >
             <CheckCircle2 size={16} /> Praxisbeispiele
           </button>
-          <button
+          <button aria-pressed={activeTab === 'innovation'}
             className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
               activeTab === 'innovation' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
             }`}
@@ -417,7 +417,7 @@ export default function BpTrockenbau() {
 
             {/* Toggle Subcategory switcher */}
             <div className="bg-slate-50 border border-slate-200 p-1.5 rounded-xl flex gap-2">
-              <button
+              <button aria-pressed={selectedSubCategory === 'produkte'}
                 onClick={() => setSelectedSubCategory('produkte')}
                 className={`flex-1 py-2 text-center text-xs font-extrabold flex items-center justify-center gap-2 rounded-lg transition-all border cursor-pointer ${
                   selectedSubCategory === 'produkte'
@@ -427,7 +427,7 @@ export default function BpTrockenbau() {
               >
                 <FileText size={14} /> 1. Bauprodukte &amp; Spezialplatten (DIN EN 520 / 18948)
               </button>
-              <button
+              <button aria-pressed={selectedSubCategory === 'systeme'}
                 onClick={() => setSelectedSubCategory('systeme')}
                 className={`flex-1 py-2 text-center text-xs font-extrabold flex items-center justify-center gap-2 rounded-lg transition-all border cursor-pointer ${
                   selectedSubCategory === 'systeme'

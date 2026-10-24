@@ -245,7 +245,7 @@ export default function Metalle() {
         </div>
         
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             onClick={() => setActiveTab('steckbrief')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief'
@@ -256,7 +256,7 @@ export default function Metalle() {
             <BookOpen size={16} />
             Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'kennwerte'}
             onClick={() => setActiveTab('kennwerte')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kennwerte'

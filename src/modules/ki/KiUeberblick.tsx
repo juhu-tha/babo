@@ -770,7 +770,7 @@ export default function KiUeberblick() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pt-5 border-t border-home-grau/20 mt-5">
-          <button
+          <button aria-pressed={activeTab === 'kernbegriffe'}
             onClick={() => setActiveTab('kernbegriffe')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kernbegriffe'
@@ -780,7 +780,7 @@ export default function KiUeberblick() {
           >
             <Boxes size={16} /> 1. Kernbegriffe verständlich (ML, RAG & Co.)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'historie'}
             onClick={() => setActiveTab('historie')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'historie'
@@ -790,7 +790,7 @@ export default function KiUeberblick() {
           >
             <Clock size={16} /> 2. Historie (1960 bis heute)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'stand'}
             onClick={() => setActiveTab('stand')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'stand'
@@ -800,7 +800,7 @@ export default function KiUeberblick() {
           >
             <TrendingUp size={16} /> 3. Stand heute (Praxis & Grenzen)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'ausblick'}
             onClick={() => setActiveTab('ausblick')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'ausblick'
@@ -810,7 +810,7 @@ export default function KiUeberblick() {
           >
             <Compass size={16} /> 4. Ausblick (Nächste 5–10 Jahre)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'pipeline'}
             onClick={() => setActiveTab('pipeline')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'pipeline'
@@ -820,7 +820,7 @@ export default function KiUeberblick() {
           >
             <Database size={16} /> 5. Enterprise-RAG: Vom Dokument zum Tool
           </button>
-          <button
+          <button aria-pressed={activeTab === 'vergleich'}
             onClick={() => setActiveTab('vergleich')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'vergleich'
@@ -1921,7 +1921,7 @@ export default function KiUeberblick() {
           <div className="space-y-2">
             <label className="text-xs font-bold text-text-main">Wählen Sie eine typische bautechnische Fachfrage:</label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-              <button
+              <button aria-pressed={simQuestion === 'xc4'}
                 onClick={() => setSimQuestion('xc4')}
                 className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
                   simQuestion === 'xc4'
@@ -1933,7 +1933,7 @@ export default function KiUeberblick() {
                 <div className="text-[10px] text-text-main/60 mt-0.5">DIN EN 1992-1-1 (EC2)</div>
               </button>
 
-              <button
+              <button aria-pressed={simQuestion === 'xf4'}
                 onClick={() => setSimQuestion('xf4')}
                 className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
                   simQuestion === 'xf4'
@@ -1945,7 +1945,7 @@ export default function KiUeberblick() {
                 <div className="text-[10px] text-text-main/60 mt-0.5">DIN 1045-2 / DIN EN 206</div>
               </button>
 
-              <button
+              <button aria-pressed={simQuestion === 'rc_beton'}
                 onClick={() => setSimQuestion('rc_beton')}
                 className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
                   simQuestion === 'rc_beton'
@@ -1961,7 +1961,7 @@ export default function KiUeberblick() {
 
           {/* Mode Switcher */}
           <div className="flex border border-home-grau/30 bg-slate-50 p-1 rounded-xl max-w-md">
-            <button
+            <button aria-pressed={simMode === 'llm_pur'}
               onClick={() => setSimMode('llm_pur')}
               className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 simMode === 'llm_pur'
@@ -1971,7 +1971,7 @@ export default function KiUeberblick() {
             >
               Modus A: Reines LLM (ohne RAG)
             </button>
-            <button
+            <button aria-pressed={simMode === 'rag'}
               onClick={() => setSimMode('rag')}
               className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 simMode === 'rag'

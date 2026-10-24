@@ -134,7 +134,7 @@ export default function SpannbetonDauerhaftigkeit() {
 
         {/* Sub-Tabs Navigation */}
         <div className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'uebersicht'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeTab === 'uebersicht'
@@ -146,7 +146,7 @@ export default function SpannbetonDauerhaftigkeit() {
             <ShieldAlert size={15} /> 1. Spannungsrisskorrosion &amp; Gefahren
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'betondeckung'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeTab === 'betondeckung'
@@ -158,7 +158,7 @@ export default function SpannbetonDauerhaftigkeit() {
             <Scale size={15} /> 2. Betondeckung &amp; Rechner (c_nom)
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'injektion'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeTab === 'injektion'
@@ -170,7 +170,7 @@ export default function SpannbetonDauerhaftigkeit() {
             <Droplets size={15} /> 3. Einpressmörtel (DIN EN 447)
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'risse_dekompression'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeTab === 'risse_dekompression'
@@ -182,7 +182,7 @@ export default function SpannbetonDauerhaftigkeit() {
             <Layers size={15} /> 4. Dekompression &amp; Rissbreiten
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'zfp'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeTab === 'zfp'
@@ -194,7 +194,7 @@ export default function SpannbetonDauerhaftigkeit() {
             <Search size={15} /> 5. ZfP-Prüfverfahren (Ultraschall, MFL, Radar, EIT)
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'schadensfaelle'}
             type="button"
             className={`px-3.5 py-2 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
               activeTab === 'schadensfaelle'

@@ -304,21 +304,21 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <label className="text-xs font-semibold text-slate-700 block mb-1">Schlagbolzen-Ausrichtung:</label>
               <div className="grid grid-cols-3 gap-2 text-xs">
-                <button
+                <button aria-pressed={impactAngle === 'horiz'}
                   type="button"
                   onClick={() => setImpactAngle('horiz')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'horiz' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 >
                   Horizontal (0°)
                 </button>
-                <button
+                <button aria-pressed={impactAngle === 'down'}
                   type="button"
                   onClick={() => setImpactAngle('down')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'down' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 >
                   Boden (-90°)
                 </button>
-                <button
+                <button aria-pressed={impactAngle === 'up'}
                   type="button"
                   onClick={() => setImpactAngle('up')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'up' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
@@ -643,21 +643,21 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <label className="text-xs font-semibold text-slate-700 block mb-1">Klassifizierung des Bruchbilds:</label>
               <div className="grid grid-cols-3 gap-2 text-xs">
-                <button
+                <button aria-pressed={failureType === 'beton'}
                   type="button"
                   onClick={() => setFailureType('beton')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'beton' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 >
                   Betonbruch (A)
                 </button>
-                <button
+                <button aria-pressed={failureType === 'verbund'}
                   type="button"
                   onClick={() => setFailureType('verbund')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'verbund' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 >
                   Verbundfuge (A/B)
                 </button>
-                <button
+                <button aria-pressed={failureType === 'kleber'}
                   type="button"
                   onClick={() => setFailureType('kleber')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'kleber' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
@@ -965,21 +965,21 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <label className="text-xs font-semibold text-slate-700 block mb-1">Gefügezustand des Querschnitts:</label>
               <div className="grid grid-cols-3 gap-2 text-xs">
-                <button
+                <button aria-pressed={timberCondition === 'gesund'}
                   type="button"
                   onClick={() => setTimberCondition('gesund')}
                   className={`py-1.5 rounded-lg border font-bold ${timberCondition === 'gesund' ? 'bg-emerald-700 text-white' : 'bg-white text-slate-700'}`}
                 >
                   Gesund
                 </button>
-                <button
+                <button aria-pressed={timberCondition === 'faeule'}
                   type="button"
                   onClick={() => setTimberCondition('faeule')}
                   className={`py-1.5 rounded-lg border font-bold ${timberCondition === 'faeule' ? 'bg-amber-700 text-white' : 'bg-white text-slate-700'}`}
                 >
                   Braunfäule
                 </button>
-                <button
+                <button aria-pressed={timberCondition === 'hohl'}
                   type="button"
                   onClick={() => setTimberCondition('hohl')}
                   className={`py-1.5 rounded-lg border font-bold ${timberCondition === 'hohl' ? 'bg-rose-700 text-white' : 'bg-white text-slate-700'}`}

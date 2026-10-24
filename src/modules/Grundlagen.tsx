@@ -35,55 +35,55 @@ export default function Grundlagen() {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-8">
-          <button
+          <button aria-pressed={activeTab === 'druckfestigkeit'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'druckfestigkeit' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('druckfestigkeit')}
           >
             Druckfestigkeitsklassen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'expositionsklassen'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'expositionsklassen' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('expositionsklassen')}
           >
             Expositions- & Feuchtigkeitsklassen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'konsistenz'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'konsistenz' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('konsistenz')}
           >
             Konsistenzbereiche
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zement'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'zement' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('zement')}
           >
             Zementarten
           </button>
-          <button
+          <button aria-pressed={activeTab === 'herstellung'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'herstellung' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('herstellung')}
           >
             Zementherstellung
           </button>
-          <button
+          <button aria-pressed={activeTab === 'gesteinskoernung'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'gesteinskoernung' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('gesteinskoernung')}
           >
             Gesteinskörnungen
           </button>
-          <button
+          <button aria-pressed={activeTab === 'mehlkorn'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'mehlkorn' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('mehlkorn')}
           >
             Mehlkorngehalt
           </button>
-          <button
+          <button aria-pressed={activeTab === 'zusatzstoffe'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'zusatzstoffe' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('zusatzstoffe')}
           >
             Zusätze
           </button>
-          <button
+          <button aria-pressed={activeTab === 'regulatives'}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'regulatives' ? 'bg-shiraz text-white shadow-md' : 'bg-off-white text-text-main border border-home-grau/30 hover:border-text-main'}`}
             onClick={() => setActiveTab('regulatives')}
           >

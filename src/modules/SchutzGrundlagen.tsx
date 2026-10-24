@@ -47,7 +47,7 @@ export default function SchutzGrundlagen() {
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap gap-2 pt-4 border-t border-home-grau/20 mt-4">
-          <button
+          <button aria-pressed={activeTab === 'prinzipien'}
             onClick={() => setActiveTab('prinzipien')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'prinzipien'
@@ -57,7 +57,7 @@ export default function SchutzGrundlagen() {
           >
             <Layers size={16} /> 1. Instandsetzungsprinzipien (DIN EN 1504 / TR)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'mechanismen'}
             onClick={() => setActiveTab('mechanismen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'mechanismen'
@@ -67,7 +67,7 @@ export default function SchutzGrundlagen() {
           >
             <Shield size={16} /> 2. Schutzmechanismen (Passiv vs. Aktiv)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'lebensdauer'}
             onClick={() => setActiveTab('lebensdauer')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'lebensdauer'
@@ -77,7 +77,7 @@ export default function SchutzGrundlagen() {
           >
             <TrendingUp size={16} /> 3. Lebenszyklus &amp; Degradation (Tuutti / De Sitter)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'verfahrenswahl'}
             onClick={() => setActiveTab('verfahrenswahl')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'verfahrenswahl'

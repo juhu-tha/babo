@@ -35,7 +35,7 @@ export default function Sicherheitskonzept() {
 
         {/* Dynamic Nav-Tabs */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'eurocodes'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'eurocodes' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -45,7 +45,7 @@ export default function Sicherheitskonzept() {
           >
             <Shield size={16} /> Die Eurocodes (Übersicht)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'prinzip'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'prinzip' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -55,7 +55,7 @@ export default function Sicherheitskonzept() {
           >
             <Activity size={16} /> Prinzip &amp; Teilsicherheitsbeiwerte
           </button>
-          <button
+          <button aria-pressed={activeTab === 'lastermittlung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'lastermittlung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

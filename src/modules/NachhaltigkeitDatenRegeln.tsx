@@ -345,7 +345,7 @@ export default function NachhaltigkeitDatenRegeln() {
 
         {/* Tab-Navigation */}
         <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'definitionen'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'definitionen'
@@ -357,7 +357,7 @@ export default function NachhaltigkeitDatenRegeln() {
             <BookOpen size={16} /> 1. Definitionen &amp; Leitprinzipien
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'kennzahlen'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'kennzahlen'
@@ -369,7 +369,7 @@ export default function NachhaltigkeitDatenRegeln() {
             <BarChart3 size={16} /> 2. Anteile &amp; Stoffströme
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'klimapolitik'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'klimapolitik'
@@ -381,7 +381,7 @@ export default function NachhaltigkeitDatenRegeln() {
             <Globe size={16} /> 3. Klimakonferenzen &amp; SDGs
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'regulatorik'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'regulatorik'
@@ -393,7 +393,7 @@ export default function NachhaltigkeitDatenRegeln() {
             <Building2 size={16} /> 4. EU-Taxonomie &amp; EPBD
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'deklarationen'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'deklarationen'
@@ -405,7 +405,7 @@ export default function NachhaltigkeitDatenRegeln() {
             <QrCode size={16} /> 5. EPD, DPP &amp; Materialpass
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'national'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'national'

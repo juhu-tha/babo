@@ -365,7 +365,7 @@ export default function BpKunststoffe() {
 
         {/* Tab Navigation Menu */}
         <div className="flex flex-wrap gap-1.5 pb-2 border-b border-home-grau/20 mt-6 -mx-6 px-6">
-          <button
+          <button aria-pressed={activeTab === 'allgemein'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
               activeTab === 'allgemein' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -376,7 +376,7 @@ export default function BpKunststoffe() {
             <BookOpen size={14} /> Materialdatenbank
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'synthese'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
               activeTab === 'synthese' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -387,7 +387,7 @@ export default function BpKunststoffe() {
             <Settings size={14} /> 1. Synthesen & Chemie
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'viskoelastizitaet'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
               activeTab === 'viskoelastizitaet' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -398,7 +398,7 @@ export default function BpKunststoffe() {
             <Activity size={14} /> 2. Burgers-Kriechmodell
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'systeme'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
               activeTab === 'systeme' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -409,7 +409,7 @@ export default function BpKunststoffe() {
             <Wrench size={14} /> 3. Bausysteme & Produkte
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
               activeTab === 'rechner' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -420,7 +420,7 @@ export default function BpKunststoffe() {
             <Thermometer size={14} /> 4. Längenrechner
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
               activeTab === 'praxis' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -431,7 +431,7 @@ export default function BpKunststoffe() {
             <CheckCircle2 size={14} /> Praxisbeispiele
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'innovation'}
             className={`px-3 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 border cursor-pointer ${
               activeTab === 'innovation' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

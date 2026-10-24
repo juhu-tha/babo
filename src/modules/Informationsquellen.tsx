@@ -407,7 +407,7 @@ export default function Informationsquellen() {
 
         {/* Level 1 Tabs switcher */}
         <div className="flex flex-wrap gap-2 mt-6 border-t border-home-grau/30 pt-4">
-          <button
+          <button aria-pressed={activeSubTab === 'evaluation'}
             onClick={() => setActiveSubTab('evaluation')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
               activeSubTab === 'evaluation' 
@@ -417,7 +417,7 @@ export default function Informationsquellen() {
           >
             <Database size={14} /> 1. Datenbank-Evaluation
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'verbaende'}
             onClick={() => setActiveSubTab('verbaende')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
               activeSubTab === 'verbaende' 
@@ -427,7 +427,7 @@ export default function Informationsquellen() {
           >
             <Building2 size={14} /> 2. Zusätzliche Fachverbände & Verbände
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'oer_enzyklopaedie'}
             onClick={() => setActiveSubTab('oer_enzyklopaedie')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
               activeSubTab === 'oer_enzyklopaedie' 
@@ -437,7 +437,7 @@ export default function Informationsquellen() {
           >
             <BookOpen size={14} /> 3. OER-Enzyklopädie
           </button>
-          <button
+          <button aria-pressed={activeSubTab === 'monitor'}
             onClick={() => setActiveSubTab('monitor')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
               activeSubTab === 'monitor' 

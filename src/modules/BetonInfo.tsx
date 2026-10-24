@@ -193,7 +193,7 @@ export default function BetonInfo() {
         {/* SECTION TABS */}
         <div className="border-b border-home-grau/30 bg-slate-50/30 p-4">
           <div className="flex flex-wrap gap-2">
-            <button
+            <button aria-pressed={activeSection === 'grundlagen'}
               onClick={() => setActiveSection('grundlagen')}
               className={`py-2 px-3.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'grundlagen'
@@ -204,7 +204,7 @@ export default function BetonInfo() {
               <Info size={15} />
               Grundlagen
             </button>
-            <button
+            <button aria-pressed={activeSection === 'ueberblick'}
               onClick={() => setActiveSection('ueberblick')}
               className={`py-2 px-3.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'ueberblick'
@@ -215,7 +215,7 @@ export default function BetonInfo() {
               <Compass size={15} />
               Überblick
             </button>
-            <button
+            <button aria-pressed={activeSection === 'inhalte'}
               onClick={() => setActiveSection('inhalte')}
               className={`py-2 px-3.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'inhalte'
@@ -226,7 +226,7 @@ export default function BetonInfo() {
               <BookOpen size={15} />
               Inhalte
             </button>
-            <button
+            <button aria-pressed={activeSection === 'anwendung'}
               onClick={() => setActiveSection('anwendung')}
               className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 activeSection === 'anwendung'
@@ -237,7 +237,7 @@ export default function BetonInfo() {
               <UserCheck size={16} />
               Anwendung
             </button>
-            <button
+            <button aria-pressed={activeSection === 'weiterfuehrend'}
               onClick={() => setActiveSection('weiterfuehrend')}
               className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 activeSection === 'weiterfuehrend'
@@ -248,7 +248,7 @@ export default function BetonInfo() {
               <Compass size={16} />
               Weiterführend
             </button>
-            <button
+            <button aria-pressed={activeSection === 'historie'}
               onClick={() => setActiveSection('historie')}
               className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 activeSection === 'historie'

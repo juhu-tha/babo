@@ -926,7 +926,7 @@ export default function Mischungsberechnung() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'grenzwerte'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'grenzwerte' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -936,7 +936,7 @@ export default function Mischungsberechnung() {
         >
           <ShieldAlert size={16} /> Grenzwerte &amp; Klassen
         </button>
-        <button
+        <button aria-pressed={activeTab === 'berechnung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'berechnung' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -946,7 +946,7 @@ export default function Mischungsberechnung() {
         >
           <Calculator size={16} /> Berechnung
         </button>
-        <button
+        <button aria-pressed={activeTab === 'beispiele'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'beispiele' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -956,7 +956,7 @@ export default function Mischungsberechnung() {
         >
           <BookOpen size={16} /> Geprüfte Beispielrechnungen
         </button>
-        <button
+        <button aria-pressed={activeTab === 'walzkurven'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'walzkurven' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -966,7 +966,7 @@ export default function Mischungsberechnung() {
         >
           <Activity size={16} /> Walz-Kurven
         </button>
-        <button
+        <button aria-pressed={activeTab === 'packungsdichte'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'packungsdichte' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -976,7 +976,7 @@ export default function Mischungsberechnung() {
         >
           <Layers size={16} /> Packungsdichte
         </button>
-        <button
+        <button aria-pressed={activeTab === 'anleitung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'anleitung' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1445,7 +1445,7 @@ export default function Mischungsberechnung() {
                   
                   {/* Modus-Wähler */}
                   <div className="flex bg-white p-1 rounded-lg border border-home-grau/30 text-xs">
-                    <button
+                    <button aria-pressed={lpOption === 'auto'}
                       type="button"
                       onClick={() => setLpOption('auto')}
                       className={`px-2.5 py-1 rounded-md transition-all font-medium cursor-pointer ${
@@ -1470,7 +1470,7 @@ export default function Mischungsberechnung() {
                     >
                       Mit LP
                     </button>
-                    <button
+                    <button aria-pressed={lpOption === 'ohne_lp'}
                       type="button"
                       onClick={() => setLpOption('ohne_lp')}
                       className={`px-2.5 py-1 rounded-md transition-all font-medium cursor-pointer ${

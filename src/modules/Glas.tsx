@@ -127,7 +127,7 @@ export default function Glas() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'steckbrief'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -137,7 +137,7 @@ export default function Glas() {
           >
             <BookOpen size={16} /> Baustoff-Steckbrief
           </button>
-          <button
+          <button aria-pressed={activeTab === 'festigkeit'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'festigkeit' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -147,7 +147,7 @@ export default function Glas() {
           >
             <Activity size={16} /> Festigkeit &amp; Bruchwahrscheinlichkeit
           </button>
-          <button
+          <button aria-pressed={activeTab === 'verbundglas'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'verbundglas' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -157,7 +157,7 @@ export default function Glas() {
           >
             <Layers size={16} /> Verbundsicherheitsglas (VSG)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'isoglas'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'isoglas' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

@@ -239,9 +239,9 @@
     <script src="/boot/jsonld-check.js"></script>
   </head>
   <body>
-    <!-- Barrierefreie & Suchmaschinen-relevante strukturelle Orientierungspunkte (SEO Fallback Navigation) -->
-    <!-- Visuell verborgen für menschliche Webseitenbesucher, voll indexierbar für Crawler -->
-    <div style="display: none;" aria-hidden="true">
+    <!-- Fallback-Inhalt ohne JavaScript (Crawler, Textbrowser). Als <noscript>, damit die App genau ein
+         h1/main hat und kein versteckter Text im DOM liegt (Phase 2, AP 2.2). -->
+    <noscript>
       <header>
         <h1>BaustoffBoard - Technische Hochschule Augsburg</h1>
         <p>Interaktives Portal für Baustoffkunde, Werkstoffprüfung, Tragwerkslehre, Bauphysik und kreislaufgerechten Rückbau.</p>
@@ -396,7 +396,7 @@
           <p>Strukturiertes Baustellenprotokoll für Ingenieure und Sachkundige Planer (SKP): Checklisten von der Voruntersuchung über Untergrundvorbereitung mit Höchstdruckwasserstrahlen (HDW 1000–2000 bar), Bewehrungsfreilegung (15 mm Hinterstemmung), Abreißfestigkeit (mind. 1,5 MPa), Mörtelapplikation (PCC/SPCC), Taupunktkontrolle, Rissinjektion bis zur SIVV-Bauüberwachung und Abnahme.</p>
         </article>
       </main>
-    </div>
+    </noscript>
 
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

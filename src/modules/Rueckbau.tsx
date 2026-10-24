@@ -404,7 +404,7 @@ export default function Rueckbau() {
         
         {/* Module Sub-navigation */}
         <div className="flex flex-wrap gap-2 mt-6 border-t border-home-grau/30 pt-4">
-          <button
+          <button aria-pressed={activeTab === 'lfu_leitfaden'}
             onClick={() => setActiveTab('lfu_leitfaden')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
               activeTab === 'lfu_leitfaden' 
@@ -414,7 +414,7 @@ export default function Rueckbau() {
           >
             <BookOpen size={14} /> LfU Rückbau-Leitfaden
           </button>
-          <button
+          <button aria-pressed={activeTab === 'schadstoffe'}
             onClick={() => setActiveTab('schadstoffe')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
               activeTab === 'schadstoffe' 
@@ -424,7 +424,7 @@ export default function Rueckbau() {
           >
             <AlertTriangle size={14} /> Schadstoff-Erkundung (VDI)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'baustoffrecycling'}
             onClick={() => setActiveTab('baustoffrecycling')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
               activeTab === 'baustoffrecycling' 
@@ -434,7 +434,7 @@ export default function Rueckbau() {
           >
             <Recycle size={14} /> Baustoffrecycling
           </button>
-          <button
+          <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
               activeTab === 'rechner' 
@@ -444,7 +444,7 @@ export default function Rueckbau() {
           >
             <Hammer size={14} /> Masse- & Abfallrechner
           </button>
-          <button
+          <button aria-pressed={activeTab === 'aktualitaet'}
             onClick={() => setActiveTab('aktualitaet')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
               activeTab === 'aktualitaet' 
@@ -454,7 +454,7 @@ export default function Rueckbau() {
           >
             <Recycle size={14} /> Aktualitäts-Check (EBV)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'praxis'}
             onClick={() => setActiveTab('praxis')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors ${
               activeTab === 'praxis' 
@@ -584,7 +584,7 @@ export default function Rueckbau() {
               
               {/* Era selector tabs */}
               <div className="flex rounded-lg bg-off-white p-1 border border-home-grau/30">
-                <button
+                <button aria-pressed={selectedEra === 'pre1970'}
                   onClick={() => setSelectedEra('pre1970')}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
                     selectedEra === 'pre1970' ? 'bg-white shadow-sm text-shiraz' : 'text-text-main/70 hover:text-text-main'
@@ -592,7 +592,7 @@ export default function Rueckbau() {
                 >
                   Bis 1970
                 </button>
-                <button
+                <button aria-pressed={selectedEra === 'era1970_1990'}
                   onClick={() => setSelectedEra('era1970_1990')}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
                     selectedEra === 'era1970_1990' ? 'bg-white shadow-sm text-shiraz' : 'text-text-main/70 hover:text-text-main'
@@ -600,7 +600,7 @@ export default function Rueckbau() {
                 >
                   1970 - 1990
                 </button>
-                <button
+                <button aria-pressed={selectedEra === 'post1990'}
                   onClick={() => setSelectedEra('post1990')}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
                     selectedEra === 'post1990' ? 'bg-white shadow-sm text-shiraz' : 'text-text-main/70 hover:text-text-main'
@@ -1020,7 +1020,7 @@ export default function Rueckbau() {
               <div>
                 <label className="text-xs font-bold text-text-main block mb-1.5">Konstruktionsart</label>
                 <div className="grid grid-cols-2 gap-2">
-                  <button
+                  <button aria-pressed={structureType === 'concrete'}
                     onClick={() => setStructureType('concrete')}
                     className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'concrete' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'
@@ -1029,7 +1029,7 @@ export default function Rueckbau() {
                     <span>Stahlbetonbau</span>
                     <span className="text-xs font-normal text-text-main/50 mt-0.5">Skelett / Fertigteile</span>
                   </button>
-                  <button
+                  <button aria-pressed={structureType === 'masonry'}
                     onClick={() => setStructureType('masonry')}
                     className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'masonry' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'
@@ -1038,7 +1038,7 @@ export default function Rueckbau() {
                     <span>Mauerwerk</span>
                     <span className="text-xs font-normal text-text-main/50 mt-0.5">Ziegel / Kalksandstein</span>
                   </button>
-                  <button
+                  <button aria-pressed={structureType === 'timber'}
                     onClick={() => setStructureType('timber')}
                     className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'timber' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'
@@ -1047,7 +1047,7 @@ export default function Rueckbau() {
                     <span>Holzständerbau</span>
                     <span className="text-xs font-normal text-text-main/50 mt-0.5">Leichtbau / Gefache</span>
                   </button>
-                  <button
+                  <button aria-pressed={structureType === 'composite'}
                     onClick={() => setStructureType('composite')}
                     className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'composite' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'

@@ -24,7 +24,7 @@ export default function Formaenderungen() {
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button
+          <button aria-pressed={activeTab === 'tabelle'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'tabelle' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -34,7 +34,7 @@ export default function Formaenderungen() {
           >
             <Activity size={16} /> Systematik (Tabelle)
           </button>
-          <button
+          <button aria-pressed={activeTab === 'visualisierung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'visualisierung' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -113,25 +113,25 @@ export default function Formaenderungen() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="md:col-span-1 flex flex-col gap-2">
               <div className="font-bold text-sm text-text-main mb-2">Spannungsabhängig</div>
-              <button 
+              <button aria-pressed={activeVis === 'elastisch'} 
                 onClick={() => setActiveVis('elastisch')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'elastisch' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
                 Elastisch (sofort, reversibel)
               </button>
-              <button 
+              <button aria-pressed={activeVis === 'plastisch'} 
                 onClick={() => setActiveVis('plastisch')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'plastisch' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
                 Plastisch (sofort, irreversibel)
               </button>
-              <button 
+              <button aria-pressed={activeVis === 'verzoegert'} 
                 onClick={() => setActiveVis('verzoegert')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'verzoegert' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
                 Verzögert elastisch (zeitabh., reversibel)
               </button>
-              <button 
+              <button aria-pressed={activeVis === 'viskos'} 
                 onClick={() => setActiveVis('viskos')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'viskos' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
@@ -139,19 +139,19 @@ export default function Formaenderungen() {
               </button>
 
               <div className="font-bold text-sm text-text-main mt-4 mb-2">Spannungsunabhängig</div>
-              <button 
+              <button aria-pressed={activeVis === 'waerme'} 
                 onClick={() => setActiveVis('waerme')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'waerme' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
                 Wärmedehnung
               </button>
-              <button 
+              <button aria-pressed={activeVis === 'feuchte'} 
                 onClick={() => setActiveVis('feuchte')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'feuchte' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
                 Feuchtedehnung
               </button>
-              <button 
+              <button aria-pressed={activeVis === 'chemisch'} 
                 onClick={() => setActiveVis('chemisch')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'chemisch' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >

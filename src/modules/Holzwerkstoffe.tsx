@@ -24,7 +24,7 @@ export default function Holzwerkstoffe() {
       </div>
 
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'steckbrief'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'steckbrief' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -34,7 +34,7 @@ export default function Holzwerkstoffe() {
         >
           <BookOpen size={16} /> Baustoff-Steckbrief
         </button>
-        <button
+        <button aria-pressed={activeTab === 'arten'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'arten' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -44,7 +44,7 @@ export default function Holzwerkstoffe() {
         >
           <Layers size={16} /> Arten &amp; Eigenschaften
         </button>
-        <button
+        <button aria-pressed={activeTab === 'herstellung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'herstellung' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -54,7 +54,7 @@ export default function Holzwerkstoffe() {
         >
           <Wrench size={16} /> Herstellung
         </button>
-        <button
+        <button aria-pressed={activeTab === 'nachhaltigkeit'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'nachhaltigkeit' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 

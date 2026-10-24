@@ -14,14 +14,14 @@ export const LanguageSwitcher: React.FC<{ compact?: boolean }> = ({ compact = fa
           : 'bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-700 text-text-main dark:text-white border-home-grau/20 dark:border-slate-700'
       }`}
       title={language === 'de' ? "Switch to English (Englisch aktivieren)" : "Auf Deutsch zurückwechseln"}
-      aria-label="Language Switcher"
+      aria-label={language === 'de' ? 'DE – Switch to English (Sprache wechseln)' : 'EN – Auf Deutsch wechseln'}
     >
-      <Languages size={15} className={language === 'en' ? "text-white" : "text-shiraz"} />
+      <Languages aria-hidden="true" size={15} className={language === 'en' ? "text-white" : "text-shiraz"} />
       <span className="text-xs font-bold font-mono tracking-wide">
         {language === 'de' ? 'DE' : 'EN'}
       </span>
       {!compact && (
-        <span className="text-[10px] opacity-80 hidden lg:inline font-sans">
+        <span aria-hidden="true" className="text-[10px] opacity-80 hidden lg:inline font-sans">
           {language === 'de' ? '🇩🇪' : '🇬🇧'}
         </span>
       )}

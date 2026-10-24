@@ -206,13 +206,13 @@ function DGZfPSection() {
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">1. Vorbildung des Prüfkandidaten</label>
               <div className="grid grid-cols-2 gap-2">
-                <button 
+                <button aria-pressed={background === 'ingenieur'} 
                   onClick={() => setBackground('ingenieur')}
                   className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${background === 'ingenieur' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-white border-home-grau/30 hover:bg-slate-100 text-slate-700'}`}
                 >
                   Bauingenieur / M.Sc. / techn. Ausbildung
                 </button>
-                <button 
+                <button aria-pressed={background === 'andere'} 
                   onClick={() => setBackground('andere')}
                   className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${background === 'andere' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-white border-home-grau/30 hover:bg-slate-100 text-slate-700'}`}
                 >
@@ -239,13 +239,13 @@ function DGZfPSection() {
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">3. Angestrebte Prüfstufe (DIN EN ISO 9712)</label>
               <div className="grid grid-cols-2 gap-2">
-                <button 
+                <button aria-pressed={level === '1'} 
                   onClick={() => setLevel('1')}
                   className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${level === '1' ? 'bg-shiraz text-white border-shiraz' : 'bg-white border-home-grau/30 hover:bg-slate-100 text-slate-700'}`}
                 >
                   Stufe 1 (Bediener)
                 </button>
-                <button 
+                <button aria-pressed={level === '2'} 
                   onClick={() => setLevel('2')}
                   className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${level === '2' ? 'bg-shiraz text-white border-shiraz' : 'bg-white border-home-grau/30 hover:bg-slate-100 text-slate-700'}`}
                 >
@@ -1169,7 +1169,7 @@ export default function ZfP() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
+        <button aria-pressed={activeTab === 'mechanisch'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'mechanisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1179,7 +1179,7 @@ export default function ZfP() {
         >
           <Hammer size={16} /> Mechanisch (Rückprall)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'akustisch'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'akustisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1189,7 +1189,7 @@ export default function ZfP() {
         >
           <Waves size={16} /> Akustisch (US, IE)
         </button>
-        <button
+        <button aria-pressed={activeTab === 'elektromagnetisch'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'elektromagnetisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1199,7 +1199,7 @@ export default function ZfP() {
         >
           <Radio size={16} /> Elektromagnetisch
         </button>
-        <button
+        <button aria-pressed={activeTab === 'elektrochemisch'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'elektrochemisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1209,7 +1209,7 @@ export default function ZfP() {
         >
           <Battery size={16} /> Elektrochemisch
         </button>
-        <button
+        <button aria-pressed={activeTab === 'thermisch'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'thermisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1219,7 +1219,7 @@ export default function ZfP() {
         >
           <Thermometer size={16} /> Thermisch &amp; Strahlung
         </button>
-        <button
+        <button aria-pressed={activeTab === 'holz'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'holz' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -1229,7 +1229,7 @@ export default function ZfP() {
         >
           <Trees size={16} /> Holz &amp; Feuchte
         </button>
-        <button
+        <button aria-pressed={activeTab === 'dgzfp'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'dgzfp' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 

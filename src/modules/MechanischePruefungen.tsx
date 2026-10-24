@@ -671,7 +671,7 @@ export default function MechanischePruefungen() {
                 <div className="space-y-4">
                   {/* Asphalt SubTest Selector Toggle */}
                   <div className="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-lg border border-home-grau/30">
-                    <button
+                    <button aria-pressed={asphaltSubTest === 'spaltzug'}
                       onClick={() => setAsphaltSubTest('spaltzug')}
                       className={`py-1.5 text-[11px] font-bold rounded-md transition-all cursor-pointer ${
                         asphaltSubTest === 'spaltzug' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
@@ -679,7 +679,7 @@ export default function MechanischePruefungen() {
                     >
                       Spaltzugfestigkeit
                     </button>
-                    <button
+                    <button aria-pressed={asphaltSubTest === 'marshall'}
                       onClick={() => setAsphaltSubTest('marshall')}
                       className={`py-1.5 text-[11px] font-bold rounded-md transition-all cursor-pointer ${
                         asphaltSubTest === 'marshall' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'

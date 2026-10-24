@@ -359,7 +359,7 @@ export default function Baustoffkunde() {
 
         {/* Pure styling tab navigation to match Kalk.tsx */}
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button
+          <button aria-pressed={activeTab === 'systematik'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'systematik' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -370,7 +370,7 @@ export default function Baustoffkunde() {
             <Layers size={16} /> Systematik &amp; Fachordnung
           </button>
           
-          <button
+          <button aria-pressed={activeTab === 'historie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'historie' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -381,7 +381,7 @@ export default function Baustoffkunde() {
             <Clock size={16} /> Historische Entwicklung
           </button>
 
-          <button
+          <button aria-pressed={activeTab === 'pioniere'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'pioniere' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 

@@ -237,7 +237,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
         {/* Local Tab Fallback Selector - only visible if view is not passed from outer component */}
         {!view && (
           <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-            <button
+            <button aria-pressed={localTab === 'dpp'}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 localTab === 'dpp' 
                   ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -247,7 +247,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
             >
               <QrCode size={16} /> Digitaler Produktpass (DPP)
             </button>
-            <button
+            <button aria-pressed={localTab === 'epd'}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
                 localTab === 'epd' 
                   ? 'bg-shiraz text-white border-shiraz shadow-md' 

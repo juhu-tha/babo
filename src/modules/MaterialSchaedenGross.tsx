@@ -1139,7 +1139,7 @@ export default function MaterialSchaedenGross() {
 
           {/* Filter Bar */}
           <div className="flex flex-wrap items-center gap-2">
-            <button
+            <button aria-pressed={activeCategoryFilter === 'alle'}
               onClick={() => setActiveCategoryFilter('alle')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'alle'
@@ -1149,7 +1149,7 @@ export default function MaterialSchaedenGross() {
             >
               Alle ({DAMAGE_CASES.length})
             </button>
-            <button
+            <button aria-pressed={activeCategoryFilter === 'bruecken'}
               onClick={() => setActiveCategoryFilter('bruecken')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'bruecken'
@@ -1159,7 +1159,7 @@ export default function MaterialSchaedenGross() {
             >
               Brücken ({DAMAGE_CASES.filter(c => c.category === 'bruecken').length})
             </button>
-            <button
+            <button aria-pressed={activeCategoryFilter === 'infrastruktur'}
               onClick={() => setActiveCategoryFilter('infrastruktur')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'infrastruktur'
@@ -1169,7 +1169,7 @@ export default function MaterialSchaedenGross() {
             >
               Infrastruktur &amp; Schiene ({DAMAGE_CASES.filter(c => c.category === 'infrastruktur').length})
             </button>
-            <button
+            <button aria-pressed={activeCategoryFilter === 'hallen'}
               onClick={() => setActiveCategoryFilter('hallen')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'hallen'
@@ -1179,7 +1179,7 @@ export default function MaterialSchaedenGross() {
             >
               Hallen ({DAMAGE_CASES.filter(c => c.category === 'hallen').length})
             </button>
-            <button
+            <button aria-pressed={activeCategoryFilter === 'hochbau'}
               onClick={() => setActiveCategoryFilter('hochbau')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'hochbau'
