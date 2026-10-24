@@ -36,6 +36,8 @@ for (const q of QUIZ_QUESTIONS) {
     pruefe(q.distraktorFeedback.length === q.options.length, `${q.id}: distraktorFeedback braucht einen Eintrag je Option`);
     q.distraktorFeedback.forEach((f, i) => pruefe(i === q.correctIdx ? f === '' : f.trim().length > 10, `${q.id}: Feedback zu Option ${i + 1} ${i === q.correctIdx ? 'muss leer sein' : 'fehlt'}`));
   }
+  // Überarbeitete Fragen (AP 3.3) tragen Bloom-Stufe, Niveau und Rückmeldungen; freigegebene Altfragen folgen mit der Freigabe
+  if (!q.verified) pruefe(!!q.bloom && !!q.niveau && !!q.distraktorFeedback, `${q.id}: Bloom-Stufe, Niveau oder Rückmeldungen fehlen`);
   if (q.verified) pruefe(!!q.reviewer && /^\d{4}-\d{2}-\d{2}$/.test(q.reviewedAt ?? ''), `${q.id}: freigegeben ohne Prüfer oder Datum`);
 }
 
@@ -49,7 +51,7 @@ const laengenVerhaeltnis = (q: typeof QUIZ_QUESTIONS[number]) => {
 const zuLang = QUIZ_QUESTIONS.filter(q => laengenVerhaeltnis(q) > 1.2).length;
 const ABSOLUT = /\b(immer|nie|niemals|ausschließlich|grundsätzlich|stets|keinerlei|sämtliche)\b/gi;
 const absolut = QUIZ_QUESTIONS.reduce((a, q) => a + q.options.filter((_, i) => i !== q.correctIdx).reduce((b, o) => b + (o.match(ABSOLUT)?.length ?? 0), 0), 0);
-const GRENZE = { laengste: 0.534, zuLang: 234, absolut: 37 };
+const GRENZE = { laengste: 0.197, zuLang: 26, absolut: 10 }; // Rest: 26 bereits freigegebene Fragen (Z23d)
 pruefe(anteilLaengste <= GRENZE.laengste + 1e-9, `Richtige Antwort ist in ${(anteilLaengste * 100).toFixed(1)} % die längste (Grenze ${GRENZE.laengste * 100} %)`);
 pruefe(zuLang <= GRENZE.zuLang, `${zuLang} Fragen mit Längenverhältnis > 1,2 (Grenze ${GRENZE.zuLang})`);
 pruefe(absolut <= GRENZE.absolut, `${absolut} Absolutwörter in Distraktoren (Grenze ${GRENZE.absolut})`);
