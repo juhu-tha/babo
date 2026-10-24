@@ -267,11 +267,35 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   oekobilanz_lca: {
-    kurz: "Vereinfachte Gebäude-Ökobilanz A1–A3, A4 und C (optional D) je m² NRF und Jahr mit Kreislaufkennzahlen sowie Lebenszyklusvergleich einer Brücke.",
+    kurz: "GWP (A1–A3) und Transport (A4) einer Materialmenge aus der EPD-Musterdatenbank.",
     grenzen: [
-      "Ohne Ersatz (B4) und Betrieb (B6) – kein QNG-Nachweis; QNG-Schwellen nur als Lehrwert.",
+      "EPD-Werte sind Lehr- und Mittelwerte, keine Produktdaten; Projektwerte aus EPD bzw. ÖKOBAUDAT.",
+      "Transport A4 mit festem Emissionsfaktor je t·km und Verkehrsmittel, ohne Leerfahrten.",
+      "Keine Nutzungs- und Entsorgungsphase.",
+    ],
+  },
+  lca_rechner: {
+    kurz: "Vereinfachte Gebäude-Ökobilanz A1–A3, A4 und C (optional D) je m² NRF und Jahr mit Kreislaufkennzahlen, Wandaufbau-GWP und QNG-Abschätzung.",
+    grenzen: [
+      "Ohne Ersatz (B4) und Betrieb (B6) im CO₂-Rechner – kein QNG-Nachweis; QNG-Schwellen nur als Lehrwert.",
       "Transport A4 pauschal je t·km auf die gesamte Masse.",
       "Modul D und Urban-Mining-Index mit modellinternen Gewichtungen.",
+    ],
+  },
+  lca_ingenieurbau: {
+    kurz: "Lebenszyklus-GWP einer Spannbeton-Hohlkasten- und einer Stahlverbundbrücke je m² Deckfläche einschließlich Austauschzyklen (B2–B5) und Stauemissionen (B8).",
+    grenzen: [
+      "GWP-Kennwerte je m² Deckfläche fest hinterlegt, keine Mengenermittlung oder Bemessung.",
+      "Austauschzyklen fest (Belag 15, Lager 30, Korrosionsschutz 25 Jahre), Anzahl abgerundet.",
+      "Stauemissionen pauschal 0,95 kg CO₂-Äq. je verzögertem Lkw und 40 % des Schwerverkehrs betroffen.",
+    ],
+  },
+  lca_regulatorik: {
+    kurz: "CRREM-Stranding-Jahr eines Büro- oder Wohngebäudes für vier Sanierungsstufen.",
+    grenzen: [
+      "Zielpfade als lineare Interpolation vereinfachter CRREM-Stützwerte, nicht die aktuellen länderspezifischen Pfade.",
+      "Minderung je Sanierungsstufe pauschal (15, 35 oder 75 %), sofort wirksam und über die Zeit konstant.",
+      "Kein Netzdekarbonisierungs-Effekt auf den Bestand.",
     ],
   },
   lebenszyklus_kosten: {

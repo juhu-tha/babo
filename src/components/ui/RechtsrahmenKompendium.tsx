@@ -182,7 +182,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2024', text: 'Inkrafttreten (Mai 2024); Start der 24-monatigen Umsetzungsfrist für Mitgliedstaaten.' },
       { year: '2025', text: 'Subventionsstopp für eigenständige fossile Heizkessel (Öl/Gas).' },
-      { year: '2028', text: 'ZEB-Standard & GWP-Nachweis für alle neuen öffentlichen Gebäude (> 1.000 m²).' },
+      { year: '2028', text: 'ZEB-Standard für neue öffentliche Gebäude; Lebenszyklus-GWP-Ausweis für alle Neubauten > 1.000 m².' },
       { year: '2030', text: 'ZEB & GWP für ausnahmslos alle Neubauten; 16 % MEPS-Sanierung Nichtwohn.' },
       { year: '2035', text: '20–22 % Primärenergiereduktion im Wohngebäudebestand.' },
       { year: '2040', text: 'Vollständiger Ausstieg aus fossilen Brennstoffen in der Gebäudeheizung.' }
@@ -407,7 +407,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     keyDuties: [
       'Güteüberwachung durch werkseigene Produktionskontrolle (WPK) und Fremdüberwachung.',
       'Klassifizierung nach Schadstoff-Eluatwerten (Schwermetalle, Sulfat, PAK, MKW).',
-      'Kataster- und Anzeigepflicht nach § 25 EBV: Einbaumengen ab 250 m³ müssen bei den unteren Bodenschutzbehörden dokumentiert werden.',
+      'Kataster- und Anzeigepflicht nach § 22 EBV: Einbaumengen ab 250 m³ müssen bei den unteren Bodenschutzbehörden dokumentiert werden.',
       'Sicherstellung des vorsorgenden Grundwasserschutzes in Wasserschutzgebieten.'
     ],
     impactOnMaterials: 'Schafft erstmals Rechtssicherheit beim Einbau von Recycling-Schotter, RC-Betonsplitt und aufbereitetem Bodenaushub. Beseitigt das Stigma des "Abfalls", sofern das Gütezeichen vorliegt.',
@@ -428,7 +428,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['baustoffe', 'planer'],
     primaryTarget: 'Bauunternehmer, Abbruchbetriebe, Bauherren, Abfallwirtschaft',
     leadQuote: 'Getrennthaltungspflicht auf Baustellen und gesetzliche 70-%-Recyclingquote für Bauabfälle.',
-    coreSummary: 'Das KrWG verankert die fünfstufige Abfallhierarchie im deutschen Baurecht. Die Gewerbeabfallverordnung verpflichtet Bau- und Abbruchunternehmen zur getrennten Sammlung von Baustellenabfällen in mindestens sechs Fraktionen (Beton, Ziegel, Fliesen/Keramik, Glas, Kunststoffe, Metalle, Holz), um die stoffliche Verwertung sicherzustellen.',
+    coreSummary: 'Das KrWG verankert die fünfstufige Abfallhierarchie im deutschen Baurecht. Die Gewerbeabfallverordnung verpflichtet Bau- und Abbruchunternehmen zur getrennten Sammlung von Baustellenabfällen in zehn Fraktionen (u. a. Glas, Kunststoff, Metalle, Holz, Dämmmaterial, Bitumengemische, Baustoffe auf Gipsbasis, Beton, Ziegel, Fliesen und Keramik; § 8 GewAbfV), um die stoffliche Verwertung sicherzustellen.',
     keyDuties: [
       'Strikte Getrennthaltungspflicht auf der Baustelle vor Ort.',
       'Dokumentationspflicht für Ausnahmen (technische Unmöglichkeit oder unverhältnismäßige Kosten).',
@@ -495,8 +495,8 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     impactOnMaterials: 'Erhöht die Wirtschaftlichkeit energetischer Dämmmaßnahmen dramatisch. Die statische und dynamische Amortisationszeit von Fassaden- und Dachdämmungen sinkt durch hohe fossile Heizkosten um 30–50 %.',
     milestones: [
       { year: '2025', text: 'Start der Zertifikatsüberwachung und Monitoring-Pflicht der Brennstoffhändler.' },
-      { year: '2027', text: 'Scharfer Start des Handels (Auktionierung der Brennstoffzertifikate).' },
-      { year: '2028', text: 'Mögliche Verschiebung auf 2028 nur bei extrem außergewöhnlichen Energiemarktkrisen.' },
+      { year: '2027', text: 'Ursprünglich geplanter Handelsstart (durch VO (EU) 2026/667 verschoben).' },
+      { year: '2028', text: 'Start des Handels (Auktionierung der Brennstoffzertifikate).' },
       { year: '2030', text: 'Freie Preisbildung; Marktanalysen prognostizieren 100–200 €/t CO₂.' }
     ]
   },
@@ -516,14 +516,14 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       'Ermittlung der CO₂-Kosten auf der Heizkostenabrechnung anhand des Brennstoffverbrauchs.',
       'Berechnung der spezifischen Gebäude-Emissionsintensität in kg CO₂ pro m² Wohnfläche und Jahr.',
       'Übernahme von bis zu 95 % der CO₂-Abgabe durch den Vermieter bei energetisch schlechtem Zustand.',
-      'Überleitung des nationalen Systems in den EU-ETS II ab dem Jahr 2027.'
+      'Überleitung des nationalen Systems in den EU-ETS II ab dem Jahr 2028.'
     ],
     impactOnMaterials: 'Schafft einen sofortigen finanziellen Cashflow-Anreiz für Vermieter, Dämmstoff- und Fensterinvestitionen vorzuziehen, um nicht dauerhaft hohe CO₂-Strafzahlungen aus der Kaltmiete tragen zu müssen.',
     milestones: [
       { year: '2023', text: 'Inkrafttreten des 10-Stufen-Modells (CO2KostAufG).' },
       { year: '2024', text: 'Erhöhung des BEHG-Festpreises auf 45 €/t CO₂.' },
       { year: '2025', text: 'Erhöhung auf 55 €/t CO₂; 2026: Auktionskorridor 55–65 €/t.' },
-      { year: '2027', text: 'Vollständige Überführung in den europäischen ETS II.' }
+      { year: '2028', text: 'Vollständige Überführung in den europäischen ETS II.' }
     ]
   },
   {
@@ -540,7 +540,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     coreSummary: 'Der CBAM schützt die europäische Grundstoffindustrie vor Billigimporten aus Drittländern ohne CO₂-Preis. Importeure von Zement, Stahl und Aluminium müssen ab 2026 CBAM-Zertifikate erwerben, deren Preis an die wöchentlichen EU-ETS-Auktionen gekoppelt ist. Dadurch wird der CO₂-Preisunterschied zwischen der EU und dem Herkunftsland an der EU-Außengrenze exakt ausgeglichen.',
     keyDuties: [
       'Quartalsweise Berichtspflicht der Importeure über eingebettete Emissionen (Scope 1 und Vorprodukte).',
-      'Zulassung als "autorisierter CBAM-Anmelder" bei den nationalen Zollbehörden (in DE: DEHSt).',
+      'Zulassung als "autorisierter CBAM-Anmelder" bei der zuständigen nationalen Behörde (in DE: DEHSt); die Einfuhr selbst wickelt der Zoll ab.',
       'Ab 2026: Verpflichtender Kauf und Abgabe von CBAM-Zertifikaten für jede importierte Tonne Baustoff.',
       'Verifizierung der Emissionsdaten durch akkreditierte EU-Prüfstellen.'
     ],
@@ -573,7 +573,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     coreSummary: 'Die EU-Taxonomie legt Kriterien fest, wann eine Bau- oder Immobilientätigkeit als ökologisch nachhaltig gilt. Zentral ist das Doppelkriterium: Substantial Contribution zu einem Umweltziel (z. B. Primärenergiebedarf 10 % unter dem Niedrigstenergiegebäude-Standard NZEB) UND die Einhaltung aller Do-No-Significant-Harm-Kriterien (DNSH) bezüglich Kreislaufwirtschaft, Schadstoffen, Wasser und Biodiversität.',
     keyDuties: [
       'Neubau: Primärenergiebedarf mindestens 10 % besser als der nationale GEG-Standard.',
-      'Neubau > 1.000 m²: Verpflichtende Lebenszyklus-Ökobilanz (LCA nach EN 15978) und Offenlegung des GWP.',
+      'Neubau > 5.000 m²: Verpflichtende Lebenszyklus-Ökobilanz (LCA nach EN 15978) und Offenlegung des GWP.',
       'Sanierung: Mindestens 30 % Primärenergieeinsparung nachgewiesen im Energieausweis.',
       'DNSH Kreislaufwirtschaft: Mindestens 70 % der Bau- und Abbruchabfälle müssen stofflich recycelt werden.',
       'DNSH Schadstoffe: Ausschluss von SVHC-Gefahrstoffen (REACH Art. 57) in verbauten Materialien.'
@@ -658,13 +658,13 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2023', text: 'Inkrafttreten der VO (EU) 2023/1115 am 29. Juni 2023.' },
       { year: '2024', text: 'Vorbereitung der IT-Schnittstellen und des EU-Tracingsystems.' },
-      { year: '2025', text: 'Scharfstellung der Verpflichtungen für Großunternehmen und KMU.' }
+      { year: '2026', text: 'Nach zweimaliger Verschiebung Anwendung ab 30.12.2026 für große und mittlere, ab 30.06.2027 für Kleinst- und Kleinunternehmen.' }
     ]
   },
   {
     id: 'gebaeudetyp_e',
     shortName: 'Gebäudetyp E (§ 650o BGB)',
-    fullName: 'Gebäudetyp-E-Gesetz – Gesetz zur Erleichterung des einfachen Bauens',
+    fullName: 'Gebäudetyp-E-Gesetz – Gesetz zur Erleichterung des einfachen Bauens (Entwurf)',
     norm: 'Entwurf § 650o BGB (BMJ Initiative 2024)',
     level: 'ebene_5_finanzen',
     levelLabel: 'Ebene 5: Finanzen, Vergabe & Lieferketten',
@@ -672,7 +672,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['planer', 'bestand', 'baustoffe'],
     primaryTarget: 'Architekten, Ingenieure, Bauherren, Bauunternehmer, Wohnungsbau',
     leadQuote: 'Rechtlich belastbares Abweichen von übertriebenen Komfortnormen für ressourcenschonendes, einfaches Bauen.',
-    coreSummary: 'Das Gebäudetyp-E-Gesetz schafft eine zivilrechtliche Grundlage im Werkvertragsrecht (§ 650o BGB), damit Vertragsparteien wirksam von nicht-sicherheitsrelevanten Komfort- und Ausstattungsnormen (z. B. überdimensionierter Trittschallschutz, überbordende Elektroinstallationen) abweichen können. Die Haftungsfalle der "anerkannten Regeln der Technik" (aRdT) wird entschärft, ohne Standards bei Brandschutz und Statik zu senken.',
+    coreSummary: 'Das geplante Gebäudetyp-E-Gesetz (Stand Oktober 2026 noch nicht in Kraft) schafft nach dem Entwurf eine zivilrechtliche Grundlage im Werkvertragsrecht (§ 650o BGB), damit Vertragsparteien wirksam von nicht-sicherheitsrelevanten Komfort- und Ausstattungsnormen (z. B. überdimensionierter Trittschallschutz, überbordende Elektroinstallationen) abweichen können. Die Haftungsfalle der "anerkannten Regeln der Technik" (aRdT) wird entschärft, ohne Standards bei Brandschutz und Statik zu senken.',
     keyDuties: [
       'Möglichkeit der vertraglichen Vereinbarung einfacher, suffizienter Bauweisen zwischen Fachkundigen.',
       'Abweichung von Komfortstandards führt nicht mehr automatisch zum Sachmangel nach BGB.',
@@ -682,7 +682,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     impactOnMaterials: 'Ermöglicht den Einsatz monolithischer Wandaufbauten (z. B. ungedämmter porosierter Hochlochziegel oder tragender Lehmbau DIN 18940), spart graue Energie in der TGA und senkt die Baukosten um bis zu 25 %.',
     milestones: [
       { year: '2024', text: 'Vorlage des Regierungsentwurfs für § 650o BGB durch das BMJ.' },
-      { year: '2025', text: 'Geplantes Inkrafttreten im Deutschen Bundestag und Übernahme in Landesbauordnungen.' }
+      { year: '2026', text: 'Gesetzgebungsverfahren noch nicht abgeschlossen (Stand Oktober 2026); Übernahme in Landesbauordnungen offen.' }
     ]
   }
 ];

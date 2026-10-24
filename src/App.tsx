@@ -56,6 +56,8 @@ import { CalculatorDisclaimerBanner } from './components/ui/CalculatorDisclaimer
 import { grenzenFuer } from './data/rechnerGrenzen';
 import { LERNZIELE } from './data/lernziele';
 import { ModulLernziele } from './components/ui/ModulLernziele';
+import { ModulTest } from './components/quiz/ModulTest';
+import { MODULTEST_IN_APP } from './data/quizZuordnung';
 import { iconFor } from './registry/icons';
 import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
 import { VolltextTreffer } from './components/navigation/VolltextTreffer';
@@ -1081,7 +1083,10 @@ function AppContent() {
           {activeTab === 'nachhaltigkeit_daten_regeln' && <NachhaltigkeitDatenRegeln />}
           {activeTab === 'materialoptimierung' && <Materialoptimierung />}
           {activeTab === 'nachhaltigkeit_checklisten' && <NachhaltigkeitChecklisten />}
-          {activeTab === 'oekobilanz_lca' && <OekobilanzLCA />}
+          {activeTab === 'oekobilanz_lca' && <OekobilanzLCA teil="grundlagen" />}
+          {activeTab === 'lca_rechner' && <OekobilanzLCA teil="rechner" />}
+          {activeTab === 'lca_ingenieurbau' && <OekobilanzLCA teil="ingenieurbau" />}
+          {activeTab === 'lca_regulatorik' && <OekobilanzLCA teil="regulatorik" />}
           {activeTab === 'zertifizierung_siegel' && <ZertifizierungSiegel />}
           {activeTab === 'lebenszyklus_kosten' && <LebenszyklusKosten />}
           {activeTab === 'ressourcen_umwelt' && <RessourcenUmwelt />}
@@ -1375,6 +1380,8 @@ function AppContent() {
           {activeTab === 'thesen_projekte' && <ThesenProjekte />}
           {activeTab === 'kuriositaeten' && <Kuriositaeten />}
           {activeTab === 'labor_sicherheit' && <LaborSicherheit />}
+          {/* Selbsttest für Module ohne eigenen Test in der Komponente (Phase 3, AP 3.4) */}
+          {MODULTEST_IN_APP.has(activeTab) && <div className="mt-8"><ModulTest moduleId={activeTab} /></div>}
           </React.Suspense>
           </div>
 
