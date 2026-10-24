@@ -23,6 +23,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 
 // Analytical approximation of Gauss error function erf(x)
 function erf(x: number): number {
@@ -50,8 +51,23 @@ const InfoTooltip = ({ text }: { text: string }) => (
   </div>
 );
 
+type InstandhaltungTab = 'tr' | 'os' | 'en1504' | 'fortbildung' | 'regelwerke' | 'produkte' | 'rissinjektion' | 'chloridrechner';
+
+const instandhaltungGruppen: readonly ModulTabGruppe<InstandhaltungTab>[] = [
+  { id: 'regelwerke_gruppe', label: 'Regelwerke & Prinzipien', icon: BookOpen, mitglieder: [
+    { id: 'regelwerke', label: 'Regelwerke im Vergleich', icon: BookOpen },
+    { id: 'tr', label: 'TR Instandhaltung (Prinzipien)', icon: FileText },
+    { id: 'en1504', label: 'DIN EN 1504 (Prinzipien)', icon: BookOpen },
+  ] },
+  { id: 'os_gruppe', label: 'Oberflächenschutzsysteme (OS)', icon: Layers, mitglieder: [{ id: 'os', label: 'Oberflächenschutzsysteme (OS)' }] },
+  { id: 'produkte_gruppe', label: 'Instandsetzungsprodukte (RM/PCC)', icon: Wrench, mitglieder: [{ id: 'produkte', label: 'Instandsetzungsprodukte (RM/PCC)' }] },
+  { id: 'riss_gruppe', label: 'Rissinjektion (DIN EN 1504-5)', icon: GitCommit, mitglieder: [{ id: 'rissinjektion', label: 'Rissinjektion (DIN EN 1504-5)' }] },
+  { id: 'chlorid_gruppe', label: 'Chloriddiffusion & KKS', icon: Calculator, mitglieder: [{ id: 'chloridrechner', label: 'Chloriddiffusion & KKS' }] },
+  { id: 'fortbildung_gruppe', label: 'Qualifikation & Zertifikate', icon: CheckCircle2, mitglieder: [{ id: 'fortbildung', label: 'Qualifikation & Zertifikate' }] },
+];
+
 export function Stahlbetoninstandhaltung() {
-  const [activeTab, setActiveTab] = useState<'tr' | 'os' | 'en1504' | 'fortbildung' | 'regelwerke' | 'produkte' | 'rissinjektion' | 'chloridrechner'>('regelwerke');
+  const [activeTab, setActiveTab] = useState<InstandhaltungTab>('regelwerke');
   const [selectedScenario, setSelectedScenario] = useState<string>('standsicherheit');
 
   // Instandsetzungsprodukte Finder states
@@ -422,81 +438,14 @@ export function Stahlbetoninstandhaltung() {
         </div>
       </div>
 
-      {/* Tab Navigation as Buttons */}
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'regelwerke'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'regelwerke' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('regelwerke')}>
-          <BookOpen size={16} /> Regelwerke im Vergleich (TR vs. SIB vs. EN 1504)
-        </button>
-        <button aria-pressed={activeTab === 'tr'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'tr' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('tr')}>
-          <FileText size={16} /> TR Instandhaltung (Prinzipien)
-        </button>
-        <button aria-pressed={activeTab === 'os'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'os' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('os')}>
-          <Layers size={16} /> Oberflächenschutzsysteme (OS)
-        </button>
-        <button aria-pressed={activeTab === 'en1504'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'en1504' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('en1504')}>
-          <BookOpen size={16} /> DIN EN 1504 (Prinzipien)
-        </button>
-        <button aria-pressed={activeTab === 'produkte'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'produkte' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('produkte')}>
-          <Wrench size={16} /> Instandsetzungsprodukte (RM/PCC)
-        </button>
-        <button aria-pressed={activeTab === 'fortbildung'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'fortbildung' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('fortbildung')}>
-          <CheckCircle2 size={16} /> Qualifikation &amp; Zertifikate
-        </button>
-        <button aria-pressed={activeTab === 'rissinjektion'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'rissinjektion' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('rissinjektion')}>
-          <GitCommit size={16} /> Rissinjektion (DIN EN 1504-5)
-        </button>
-        <button aria-pressed={activeTab === 'chloridrechner'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
-            activeTab === 'chloridrechner' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('chloridrechner')}>
-          <Calculator size={16} /> Chloriddiffusion &amp; KKS
-        </button>
-      </div>
+      {/* Reiter: 6 thematische Hauptbereiche, Regelwerke mit zweiter Ebene (AP 3.8) */}
+      <GruppierteModuleTabs
+        label="Bereiche der Instandhaltung"
+        gruppen={instandhaltungGruppen}
+        aktiv={activeTab}
+        onWechsel={setActiveTab}
+        className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+      >
 
       {/* Content Area */}
       <div className="mt-6">
@@ -1962,6 +1911,7 @@ export function Stahlbetoninstandhaltung() {
         )}
 
       </div>
+      </GruppierteModuleTabs>
     
       <CalculatorDisclaimerBanner className="my-2" />
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

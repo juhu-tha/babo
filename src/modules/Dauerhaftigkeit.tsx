@@ -5,6 +5,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
 type MaterialTab = 'prinzipien' | 'beton' | 'asphalte' | 'metalle' | 'holz' | 'kunststoffe' | 'naturstein' | 'glas' | 'unvertraeglichkeiten';
@@ -1314,16 +1315,21 @@ export default function Dauerhaftigkeit() {
     }
   }, []);
 
-  const tabs: { id: MaterialTab; label: string; icon: LucideIcon }[] = [
-    { id: 'prinzipien', label: 'Prinzipien & Konzepte', icon: Layers },
-    { id: 'beton', label: 'Beton & Stahlbeton', icon: Box },
-    { id: 'asphalte', label: 'Asphalte', icon: Box },
-    { id: 'metalle', label: 'Metalle', icon: Activity },
-    { id: 'holz', label: 'Holz', icon: Bug },
-    { id: 'kunststoffe', label: 'Kunststoffe', icon: Sun },
-    { id: 'naturstein', label: 'Naturstein & Mauerwerk', icon: Mountain },
-    { id: 'glas', label: 'Glas', icon: Maximize },
-    { id: 'unvertraeglichkeiten', label: 'Materialunverträglichkeiten', icon: Zap },
+  const tab = (id: MaterialTab, label: string, icon: LucideIcon) => ({ id, label, icon });
+  const gruppen: readonly ModulTabGruppe<MaterialTab>[] = [
+    { id: 'prinzipien_g', label: 'Prinzipien & Konzepte', icon: Layers, mitglieder: [tab('prinzipien', 'Prinzipien & Konzepte', Layers)] },
+    { id: 'beton_g', label: 'Beton & Stahlbeton', icon: Box, mitglieder: [tab('beton', 'Beton & Stahlbeton', Box)] },
+    { id: 'metalle_g', label: 'Metalle', icon: Activity, mitglieder: [tab('metalle', 'Metalle', Activity)] },
+    { id: 'mineralisch_g', label: 'Naturstein, Mauerwerk & Glas', icon: Mountain, mitglieder: [
+      tab('naturstein', 'Naturstein & Mauerwerk', Mountain),
+      tab('glas', 'Glas', Maximize),
+    ] },
+    { id: 'organisch_g', label: 'Holz, Kunststoffe & Asphalte', icon: Bug, mitglieder: [
+      tab('holz', 'Holz', Bug),
+      tab('kunststoffe', 'Kunststoffe', Sun),
+      tab('asphalte', 'Asphalte', Box),
+    ] },
+    { id: 'unvertraeglich_g', label: 'Materialunverträglichkeiten', icon: Zap, mitglieder: [tab('unvertraeglichkeiten', 'Materialunverträglichkeiten', Zap)] },
   ];
 
   return (
@@ -1338,27 +1344,14 @@ export default function Dauerhaftigkeit() {
           </p>
         </div>
 
-        {/* Tabs Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button aria-pressed={isActive}
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                  isActive 
-                    ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                    : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-                }`}
-              >
-                <Icon size={16} />
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
+        {/* Reiter: 6 Hauptbereiche, mineralische und organische Baustoffe mit zweiter Ebene (AP 3.8) */}
+        <GruppierteModuleTabs
+          label="Baustoffe und Prinzipien der Dauerhaftigkeit"
+          gruppen={gruppen}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20"
+        >
 
         <div className="p-6">
           
@@ -1927,6 +1920,7 @@ export default function Dauerhaftigkeit() {
           )}
 
         </div>
+        </GruppierteModuleTabs>
       </div>
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
