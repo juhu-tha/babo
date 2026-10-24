@@ -17,11 +17,11 @@ import {
 import { Chart } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { EC2_NA_DE } from '@/src/data/normParams';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
-import { fctmVonFck } from '@/src/data/kennwerte';
+import { bemesseBiegung, MU_LIM_STAHL, MU_LIM_FRP } from '@/src/calc/biegung';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -47,137 +47,18 @@ export default function Biegebemessung() {
   const [ftk, setFtk] = useState(3000); // Zugfestigkeit nichtmetallisch MPa
   const [gammaFRP, setGammaFRP] = useState(1.3); // Teilsicherheitsbeiwert FRP
 
-  const results = useMemo(() => {
-    // Bemessungswerte aus zentraler Registry
-    const gamma_c = EC2_NA_DE.gammaC;
-    const alpha_cc = EC2_NA_DE.alphaCC;
-    const fcd = (alpha_cc * fck) / gamma_c; // MPa = N/mm²
-
-    let fyd = 0;
-    const isStahl = bewehrungsArt === 'Stahl';
-
-    if (isStahl) {
-      const gamma_s = EC2_NA_DE.gammaS;
-      fyd = fyk / gamma_s; // MPa = N/mm²
-    } else {
-      fyd = ftk / gammaFRP; // MPa = N/mm²
-    }
-
-    const d = h - d1; // statische Nutzhöhe in cm
-    const d2_val = d2; // Randabstand Druckbewehrung
-    
-    // Umrechnung in kN und m
-    const d_m = d / 100;
-    const d2_m = d2_val / 100;
-    const b_m = b / 100;
-    const h_m = h / 100;
-    const fcd_kNm2 = fcd * 1000; // kN/m²
-
-    // Bezogenes Biegemoment mü_Ed
-    const mu_Ed = med / (b_m * d_m * d_m * fcd_kNm2);
-
-    let omega = 0;
-    let as1_req = 0; // Zugbewehrung
-    let as2_req = 0; // Druckbewehrung
-    let isPossible = true;
-    let message = "Bemessung erfolgreich";
-    let x = 0; // Druckzonenhöhe in cm
-
-    const maxMu = isStahl ? 0.296 : 0.25;
-
-    if (mu_Ed > maxMu) { 
-      if (isStahl) {
-        message = "Druckbewehrung erforderlich!";
-        omega = 1 - Math.sqrt(1 - 2 * maxMu);
-        const as1_base = omega * b_m * d_m * (fcd / fyd) * 10000;
-        
-        const m_max = maxMu * b_m * d_m * d_m * fcd_kNm2;
-        const delta_m = med - m_max;
-        const sigma_s2 = fyd; 
-        
-        as2_req = (delta_m / ((d_m - d2_m) * sigma_s2)) * 10;
-        as1_req = as1_base + as2_req * (sigma_s2 / fyd);
-        
-        const lambda = 0.8;
-        x = (omega * d) / lambda;
-      } else {
-        isPossible = false;
-        message = "Druckzone versagt (Querschnittsvergrößerung erforderlich)";
-      }
-    } else {
-      omega = 1 - Math.sqrt(1 - 2 * mu_Ed);
-      as1_req = omega * b_m * d_m * (fcd / fyd) * 10000;
-      const lambda = 0.8;
-      x = (omega * d) / lambda;
-    }
-
-    // Mindestbewehrung nach NA DE als Robustheitsbewehrung aus dem Rissmoment:
-    // Mcr = fctm * b * h² / 6
-    // z = 0.9 * d
-    // As,min = Mcr / (fyk * z)
-    const fctm = fctmVonFck(fck);
-    const bw_mm = b_m * 1000;
-    const h_mm = h_m * 1000;
-    const mcr_Nmm = (fctm * bw_mm * Math.pow(h_mm, 2)) / 6;
-    const mcr_kNm = mcr_Nmm / 1e6;
-    const z_mm = 0.9 * (d_m * 1000);
-    const steelYield = isStahl ? fyk : ftk;
-    const as_min_mm2 = mcr_Nmm / (steelYield * z_mm);
-    const as_min = as_min_mm2 / 100; // in cm²
-    
-    // EC-Empfehlung (nicht DE) nur für InfoTooltip:
-    const as_min_ec = 0.26 * (fctm / steelYield) * b * d;
-    
-    const as_final = isPossible ? Math.max(as1_req, as_min) : 0;
-
-    return {
-      d,
-      fcd,
-      fyd,
-      mu_Ed,
-      omega,
-      as1_req,
-      as2_req,
-      as_min,
-      as_min_ec,
-      mcr_kNm,
-      as_final,
-      isPossible,
-      message,
-      x
-    };
-  }, [b, h, d1, d2, med, fck, bewehrungsArt, fyk, ftk, gammaFRP]);
+  const results = useMemo(
+    () => bemesseBiegung({ b, h, d1, d2, med, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP }),
+    [b, h, d1, d2, med, fck, bewehrungsArt, fyk, ftk, gammaFRP]
+  );
 
   const chartData = useMemo(() => {
-    const med_values = [];
-    const as_values = [];
-    const b_m = b / 100;
-    const d_m = (h - d1) / 100;
-    const d2_m = d2 / 100;
-    const fcd = (EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC;
-    const isStahl = bewehrungsArt === 'Stahl';
-    const fyd = isStahl ? fyk / EC2_NA_DE.gammaS : ftk / gammaFRP;
-    const fcd_kNm2 = fcd * 1000;
-    const maxMu = isStahl ? 0.296 : 0.25;
-
+    const med_values: number[] = [];
+    const as_values: (number | null)[] = [];
     for (let m = 20; m <= 600; m += 20) {
       med_values.push(m);
-      const mu = m / (b_m * d_m * d_m * fcd_kNm2);
-      if (mu <= maxMu) {
-        const om = 1 - Math.sqrt(1 - 2 * mu);
-        const as1 = om * b_m * d_m * (fcd / fyd) * 10000;
-        as_values.push(Math.max(as1, results.as_min));
-      } else if (isStahl) {
-        const om = 1 - Math.sqrt(1 - 2 * maxMu);
-        const as1_base = om * b_m * d_m * (fcd / fyd) * 10000;
-        const m_max = maxMu * b_m * d_m * d_m * fcd_kNm2;
-        const delta_m = m - m_max;
-        const as2 = (delta_m / ((d_m - d2_m) * fyd)) * 10;
-        const as1 = as1_base + as2;
-        as_values.push(as1);
-      } else {
-        as_values.push(null);
-      }
+      const r = bemesseBiegung({ b, h, d1, d2, med: m, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP });
+      as_values.push(r.isPossible ? r.as_final : null);
     }
 
     return {
@@ -324,6 +205,7 @@ export default function Biegebemessung() {
           </div>
 
           <div className="lg:col-span-6 flex flex-col gap-6">
+            <EingabeHinweise hinweise={results.hinweise} />
             <div className={`${results.isPossible ? 'bg-shiraz/5 border-shiraz/20' : 'bg-red-100 border-red-300'} p-6 rounded-xl border flex flex-col justify-center`}>
               <h3 className={`text-sm font-bold uppercase tracking-wider mb-6 ${results.isPossible ? 'text-shiraz' : 'text-red-700'}`}>
                 Bemessungsergebnis (NA DE)
@@ -335,7 +217,7 @@ export default function Biegebemessung() {
                   <div className={`text-3xl font-bold ${results.isPossible ? 'text-text-main' : 'text-red-600'}`}>
                     {formatDeZahl(results.mu_Ed, 3)}
                   </div>
-                  <div className="text-xs text-home-grau mt-1">Grenzwert: ~0,296</div>
+                  <div className="text-xs text-home-grau mt-1">Grenzwert: {formatDeZahl(bewehrungsArt === 'Stahl' ? MU_LIM_STAHL : MU_LIM_FRP, 3)}{bewehrungsArt === 'Stahl' && <> (ξ<sub>lim</sub> = 0,45)</>}</div>
                 </div>
                 
                 <div>
