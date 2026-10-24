@@ -18,6 +18,11 @@ export interface KnowledgeGapInfo {
   targetModuleLabel: string;
 }
 
+export type Schwierigkeit = 'Basis' | 'Vertiefung' | 'Transfer';
+export type BloomStufe = 'Erinnern' | 'Verstehen' | 'Anwenden' | 'Analysieren' | 'Bewerten' | 'Erschaffen';
+export const SCHWIERIGKEITEN: readonly Schwierigkeit[] = ['Basis', 'Vertiefung', 'Transfer'];
+export const BLOOM_STUFEN: readonly BloomStufe[] = ['Erinnern', 'Verstehen', 'Anwenden', 'Analysieren', 'Bewerten', 'Erschaffen'];
+
 export interface QuizQuestion {
   id: string;
   category: QuizCategory;
@@ -38,9 +43,19 @@ export interface QuizQuestion {
   explanation: string;
   gapAnalysis: KnowledgeGapInfo;
   normRef?: string;
-  difficulty?: 'Basis' | 'Fortgeschritten' | 'Klausur-Schwerpunkt';
+  /** Schwierigkeit (AP 3.2): Basis – Vertiefung – Transfer */
+  difficulty?: Schwierigkeit;
+  /** besonders prüfungsrelevant (früher Schwierigkeit „Klausur-Schwerpunkt“) */
+  klausurrelevant?: boolean;
   /** Bloom-Stufe (AP 3.2) */
-  bloom?: 'Erinnern' | 'Verstehen' | 'Anwenden' | 'Analysieren' | 'Bewerten' | 'Erschaffen';
+  bloom?: BloomStufe;
+  /** Studienniveau: B = Bachelor, M = Master */
+  niveau?: 'B' | 'M';
+  /** Rückmeldung je Antwortoption (gleiche Reihenfolge wie options; bei der richtigen Antwort leer) */
+  distraktorFeedback?: string[];
+  /** Fachquelle der Frage (Norm, Lehrbuch mit Seite) */
+  quelle?: string;
+  /** fachliche Freigabe: geprüft von / geprüft am (AP 3.5) */
   reviewer?: string;
   reviewedAt?: string;
   verified?: boolean;

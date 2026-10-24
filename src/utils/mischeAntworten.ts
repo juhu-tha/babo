@@ -1,8 +1,8 @@
 /**
- * Mischt die Antwortoptionen einer Frage (Fisher-Yates) und passt correctIdx an.
+ * Mischt die Antwortoptionen einer Frage (Fisher-Yates) und passt correctIdx sowie distraktorFeedback an.
  * Gibt eine Kopie zurück; die Fragedaten in quiz.json bleiben unverändert.
  */
-export function mischeAntworten<T extends { options: string[]; correctIdx: number }>(
+export function mischeAntworten<T extends { options: string[]; correctIdx: number; distraktorFeedback?: string[] }>(
   q: T,
   zufall: () => number = Math.random,
 ): T {
@@ -15,5 +15,7 @@ export function mischeAntworten<T extends { options: string[]; correctIdx: numbe
     ...q,
     options: reihenfolge.map(i => q.options[i]),
     correctIdx: reihenfolge.indexOf(q.correctIdx),
+    // Rückmeldungen je Option werden mitgemischt (AP 3.2)
+    ...(q.distraktorFeedback ? { distraktorFeedback: reihenfolge.map(i => q.distraktorFeedback![i]) } : {}),
   };
 }

@@ -36,7 +36,8 @@
     "moduleId": "waermeeigenschaften",
     "moduleTitle": "Wärmeeigenschaften & Feuchte",
     "topic": "Wärmeleitfähigkeit feuchter Baustoffe",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN 4108-4",
     "question": "Wie verändert sich die Wärmeleitfähigkeit (λ) eines Mauerwerksteines bei zunehmendem Feuchtegehalt?",
     "options": [
@@ -66,7 +67,8 @@
     "moduleId": "kalk",
     "moduleTitle": "Baukalk (DIN EN 459)",
     "topic": "Technischer Kalkkreislauf & Reaktionen",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 459-1",
     "question": "Welche endotherme Reaktion findet beim Kalkbrennen bei ca. 900–1000 °C im Schachtofen statt?",
     "options": [
@@ -96,7 +98,8 @@
     "moduleId": "bindemittel",
     "moduleTitle": "Bindemittel",
     "topic": "Klinkerphasen & Hydratationsprodukte",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 197-1",
     "question": "Welche Klinkerphase ist für die hohe Anfangsfestigkeit (nach 1 bis 7 Tagen) im Portlandzement verantwortlich?",
     "options": [
@@ -126,7 +129,7 @@
     "moduleId": "zfp",
     "moduleTitle": "Zerstörungsfreie Prüfung (ZfP)",
     "topic": "Rückprallhammer & Kalibrierung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 12504-2",
     "question": "Welche physikalische Kenngröße misst der Schmidt-Rückprallhammer an einer Betonoberfläche primär?",
     "options": [
@@ -156,7 +159,8 @@
     "moduleId": "bp_glaeser",
     "moduleTitle": "Gläser & Fenster (DIN 18008)",
     "topic": "Sicherheitsgläser: ESG vs. TVG vs. VSG",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN 18008 / DIN EN 12150",
     "question": "Welches Glas zerfällt bei Bruch in stumpfkantige, kleine Krümel und weist eine hohe Temperaturwechselbeständigkeit (~200 K) auf?",
     "options": [
@@ -186,7 +190,7 @@
     "moduleId": "bp_glaeser",
     "moduleTitle": "Gläser & Fenster (DIN 18008)",
     "topic": "Isolierglas: Ug-Wert & Scheibenzwischenraum",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 673 / DIN EN 1279",
     "question": "Warum führt eine Vergrößerung des Scheibenzwischenraums (SZR) von 16 mm auf über 24 mm bei Isolierglas NICHT zu einer besseren Wärmedämmung?",
     "options": [
@@ -216,7 +220,8 @@
     "moduleId": "bp_metallisch",
     "moduleTitle": "Metallische Werkstoffe & Baustahl",
     "topic": "Stahlbezeichnung nach DIN EN 10027",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 10027-1",
     "question": "Was bedeutet die Bezeichnung 'S355J2+N' für einen unlegierten Baustahl?",
     "options": [
@@ -246,7 +251,8 @@
     "moduleId": "bp_daemmung",
     "moduleTitle": "Dämmstoffe & Bauphysik",
     "topic": "Dämmstoffarten: EPS vs. XPS vs. Mineralwolle",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN 4108-10",
     "question": "Welcher Dämmstoff eignet sich aufgrund seiner geschlossenzelligen Struktur und minimalen Wasseraufnahme besonders für die erdberührte Perimeterdämmung und das Umkehrdach?",
     "options": [
@@ -306,7 +312,7 @@
     "moduleId": "bp_verkehr_rsto",
     "moduleTitle": "Verkehrswegebau & RStO 12/24",
     "topic": "RStO-Dimensionierung & Belastungsklassen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "RStO 12/24 (ARS 02/2024)",
     "question": "Welche Eingangsgröße bestimmt in den Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen (RStO 12/24) maßgeblich die Belastungsklasse (Bk100 bis Bk0,3)?",
     "options": [
@@ -366,7 +372,8 @@
     "moduleId": "beton",
     "moduleTitle": "Betontechnologie (DIN EN 206)",
     "topic": "Expositionsklassen nach DIN EN 206",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 206",
     "question": "Für welches Umweltangriffsszenario steht die Expositionsklasse 'XD3' gemäß DIN EN 206?",
     "options": [
@@ -396,7 +403,8 @@
     "moduleId": "massivbau",
     "moduleTitle": "Massivbau & Eurocode 2",
     "topic": "Betondeckung c_nom & Dauerhaftigkeit",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 1992-1-1 (EC2)",
     "question": "Wie setzt sich das Nennmaß der Betondeckung c_nom nach Eurocode 2 rechnerisch zusammen?",
     "options": [
@@ -426,7 +434,8 @@
     "moduleId": "holzbau",
     "moduleTitle": "Holzbau & Eurocode 5",
     "topic": "Fasersättigungsbereich & Holzfeuchte",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 1995-1-1 (EC5)",
     "question": "Was versteht man in der Holzphysik unter dem 'Fasersättigungsbereich' (FSB)?",
     "options": [
@@ -456,7 +465,7 @@
     "moduleId": "holzbau",
     "moduleTitle": "Holzbau & Eurocode 5",
     "topic": "Anisotropie & Querzugfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1",
     "question": "Warum unterscheidet man bei mechanischen Holzfestigkeiten stets strikt zwischen Beanspruchung parallel und rechtwinklig zur Faser?",
     "options": [
@@ -486,7 +495,8 @@
     "moduleId": "dauerhaftigkeit",
     "moduleTitle": "Dauerhaftigkeit & Korrosionsschutz",
     "topic": "Karbonatisierung & Passivschichtabbau",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 1504 / DAfStb",
     "question": "Welcher chemische Prozess führt zur sogenannten Karbonatisierung von Stahlbeton und zur Depassivierung der Bewehrung?",
     "options": [
@@ -516,7 +526,7 @@
     "moduleId": "typische_bauschaeden",
     "moduleTitle": "Typische Bauschäden & Schadensanalyse",
     "topic": "Chloridinduzierte Lochfraßkorrosion (Pitting)",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "question": "Was kennzeichnet die gefürchtete 'Lochfraßkorrosion' (Pitting) an Bewehrungsstahl durch Chlorideintrag?",
     "options": [
       "Gleichmäßiger, sichtbarer Flächenabtrag mit großflächiger Braunfärbung der Betonoberfläche.",
@@ -545,7 +555,8 @@
     "moduleId": "zustandsbewertung",
     "moduleTitle": "Bauwerksprüfung & VDI 6200",
     "topic": "Schadensfolgeklassen & Prüfungsintervalle",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "VDI 6200",
     "question": "Welches Ziel verfolgt die Richtlinie VDI 6200 'Standsicherheit von Bauwerken' bei der Einstufung in Schadensfolgeklassen (CC1 bis CC3)?",
     "options": [
@@ -575,7 +586,8 @@
     "moduleId": "schadstoffe",
     "moduleTitle": "Schadstoffe & Sanierung (TRGS 519)",
     "topic": "Asbest: Fest vs. schwach gebunden & TRGS 519",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "TRGS 519 / GefStoffV",
     "question": "Warum birgt schwach gebundener Asbest (z. B. Spritzasbest, Leichtbauplatten) ein ungleich höheres Gefährdungspotenzial als fest gebundener Asbestzement (z. B. Eternit-Dachwellplatten)?",
     "options": [
@@ -635,7 +647,8 @@
     "moduleId": "lca",
     "moduleTitle": "Ökobilanzierung (LCA & EPD)",
     "topic": "Modul D nach DIN EN 15978",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 15978 / DIN EN 15804",
     "question": "Was beschreibt das 'Modul D' in einer Gebäudeökobilanzierung gemäß DIN EN 15978?",
     "options": [
@@ -665,7 +678,7 @@
     "moduleId": "kreislaufwirtschaft",
     "moduleTitle": "Kreislaufwirtschaft & Ressourceneffizienz",
     "topic": "Design for Disassembly & Fügetechniken",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "question": "Wie wirkt sich eine vollflächige, kunstharzvergütete Verklebung von Dämmstoffen an einer Fassade auf die Zirkularität aus?",
     "options": [
       "Sehr vorteilhaft, da die Verklebung die Haltbarkeit der Dämmung maximiert.",
@@ -694,7 +707,8 @@
     "moduleId": "regularien",
     "moduleTitle": "Baurecht & Normenwesen",
     "topic": "Bedenkenanmeldung nach VOB/B § 4 Abs. 3",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "VOB/B § 4 Abs. 3",
     "question": "Wann ist ein Bauunternehmen nach VOB/B § 4 Abs. 3 verpflichtet, eine schriftliche Bedenkenanmeldung abzugeben?",
     "options": [
@@ -724,7 +738,8 @@
     "moduleId": "ce_kennzeichnung",
     "moduleTitle": "BauPVO & CE-Kennzeichnung",
     "topic": "Leistungserklärung (DoP) & CE-Kennzeichnung",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "EU-BauPVO (CPR) Nr. 305/2011",
     "question": "Was bescheinigt die CE-Kennzeichnung auf einem Bauprodukt rechtlich verbindlich nach der EU-Bauproduktenverordnung (CPR)?",
     "options": [
@@ -754,7 +769,7 @@
     "moduleId": "dpp",
     "moduleTitle": "Digitaler Produktpass (DPP)",
     "topic": "EU-Ökodesign-Verordnung (ESPR) & DPP",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "EU ESPR / DPP-Standard",
     "question": "Welche zentrale Aufgabe erfüllt der Digitale Produktpass (DPP) im Lebenszyklus von Bauprodukten?",
     "options": [
@@ -840,7 +855,7 @@
     "moduleId": "einheiten",
     "moduleTitle": "Einheiten im Bauwesen",
     "topic": "Flächenlasten",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1991-1-1",
     "question": "Eine Nutzlast von 5 kN/m² entspricht welchem Druck?",
     "options": [
@@ -896,7 +911,7 @@
     "moduleId": "materialkennwerte",
     "moduleTitle": "Kennwerte & Materialdatenbank",
     "topic": "Charakteristischer Wert vs. Mittelwert",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, Tab. 3.1",
     "question": "Welche Werte gehören bei einem Beton C30/37 zusammen?",
     "options": [
@@ -952,7 +967,7 @@
     "moduleId": "materialkennwerte",
     "moduleTitle": "Kennwerte & Materialdatenbank",
     "topic": "Spezifische Steifigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "question": "Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?",
     "options": [
       "Stahl ist auch gewichtsbezogen rund 20-mal steifer als Holz.",
@@ -979,7 +994,8 @@
     "moduleId": "sicherheitskonzept",
     "moduleTitle": "Eurocode – Sicherheitskonzept",
     "topic": "Grundkombination Gl. (6.10)",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 1990/NA, Tab. NA.A.1.2(B)",
     "question": "Eine Stütze erhält G_k = 800 kN und Q_k = 300 kN (Nutzlast, Leiteinwirkung). Wie groß ist N_Ed nach Gl. (6.10)?",
     "options": [
@@ -1007,7 +1023,8 @@
     "moduleId": "sicherheitskonzept",
     "moduleTitle": "Eurocode – Sicherheitskonzept",
     "topic": "Günstig wirkende ständige Einwirkung",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 1990/NA, Tab. NA.A.1.2(B)",
     "question": "Für ein Leichtdach unter Windsog (Abheben) wird die Verankerung bemessen. Welcher Teilsicherheitsbeiwert gilt für das Eigengewicht?",
     "options": [
@@ -1035,7 +1052,7 @@
     "moduleId": "sicherheitskonzept",
     "moduleTitle": "Eurocode – Sicherheitskonzept",
     "topic": "Kombinationsbeiwerte ψ₀",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1990/NA, Tab. NA.A.1.1",
     "question": "Welcher Kombinationsbeiwert ψ₀ gilt in Deutschland für Schnee an Orten bis NN + 1000 m?",
     "options": [
@@ -1063,7 +1080,7 @@
     "moduleId": "sicherheitskonzept",
     "moduleTitle": "Eurocode – Sicherheitskonzept",
     "topic": "Bemessungswert der Betonfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA",
     "question": "Wie groß ist der Bemessungswert der Betondruckfestigkeit f_cd für C30/37 (α_cc = 0,85, γ_C = 1,5)?",
     "options": [
@@ -1145,7 +1162,7 @@
     "moduleId": "baustoffkunde",
     "moduleTitle": "Baustoffkunde",
     "topic": "Gefüge des Zementsteins",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "question": "Was beschreibt das Modell von Powers und Brownyard für erhärteten Zementstein?",
     "options": [
       "Zementstein besteht ausschließlich aus kristallinem Portlandit.",
@@ -1172,7 +1189,8 @@
     "moduleId": "bauchemie",
     "moduleTitle": "Bauchemie",
     "topic": "Karbonatisierung und Betondeckung",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 1992-1-1/NA",
     "question": "Ein Beton hat den Karbonatisierungskoeffizienten K = 4 mm/√a, die Betondeckung beträgt 40 mm. Nach wie vielen Jahren erreicht die Front die Bewehrung (d_k = K·√t)?",
     "options": [
@@ -1228,7 +1246,7 @@
     "moduleId": "bauchemie",
     "moduleTitle": "Bauchemie",
     "topic": "Alkali-Kieselsäure-Reaktion",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DAfStb-Alkali-Richtlinie",
     "question": "Welche drei Voraussetzungen müssen gleichzeitig vorliegen, damit eine schädigende AKR auftreten kann?",
     "options": [
@@ -1339,7 +1357,7 @@
     "moduleId": "regularien",
     "moduleTitle": "Baurecht & Normenwesen",
     "topic": "Rechtscharakter von DIN-Normen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "question": "Welche Aussage zum Rechtscharakter von DIN-Normen ist zutreffend?",
     "options": [
       "DIN-Normen sind Bundesgesetze.",
@@ -1394,7 +1412,8 @@
     "moduleId": "baustoffkenngroessen",
     "moduleTitle": "Baustoffkenngrößen & Dichten",
     "topic": "Wasserabweisende Putze",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN 4108-3",
     "question": "Welche Anforderungen stellt DIN 4108-3 an einen wasserabweisenden Außenputz?",
     "options": [
@@ -1477,7 +1496,7 @@
     "moduleId": "probenahme",
     "moduleTitle": "Probenahme & Erkundung",
     "topic": "Bohrkerne: Schlankheit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 13791",
     "question": "Welcher Festigkeit entspricht nach DIN EN 13791 das Prüfergebnis eines Bohrkerns mit d = 100 mm und h/d = 1?",
     "options": [
@@ -1505,7 +1524,8 @@
     "moduleId": "probenahme",
     "moduleTitle": "Probenahme & Erkundung",
     "topic": "Rückprallhammer: Schlagrichtung",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 12504-2",
     "question": "Sie prüfen mit dem Rückprallhammer senkrecht nach unten auf eine Bodenplatte. Wie ist der Rohwert gegenüber horizontaler Schlagrichtung zu korrigieren?",
     "options": [
@@ -1533,7 +1553,7 @@
     "moduleId": "probenahme",
     "moduleTitle": "Probenahme & Erkundung",
     "topic": "Rückprallhammer: Auswertung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 12504-2",
     "question": "Welcher Kennwert wird nach DIN EN 12504-2 aus den mindestens 9 Einzelschlägen einer Prüffläche gebildet?",
     "options": [
@@ -1561,7 +1581,7 @@
     "moduleId": "probenahme",
     "moduleTitle": "Probenahme & Erkundung",
     "topic": "Leichtflüchtige Schadstoffe",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "LAGA PN 98",
     "question": "Bei Verdacht auf LHKW oder BTEX in einem Haufwerk – wie sind die Einzelproben zu behandeln?",
     "options": [
@@ -1645,7 +1665,7 @@
     "moduleId": "messen_pruefen",
     "moduleTitle": "Messen & Prüfen",
     "topic": "GUM: Typ-B-Beitrag der Auflösung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "JCGM 100 (GUM)",
     "question": "Eine Digitalanzeige hat die Auflösung d = 0,1 MPa. Welche Standardunsicherheit ergibt sich nach GUM unter Annahme einer Rechteckverteilung?",
     "options": [
@@ -1673,7 +1693,8 @@
     "moduleId": "messen_pruefen",
     "moduleTitle": "Messen & Prüfen",
     "topic": "Eignungsprüfung: z-Score",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN ISO 13528:2025-07",
     "question": "Ihr Labor erzielt im Ringversuch z = −2,4. Wie ist das Ergebnis nach DIN ISO 13528 einzustufen?",
     "options": [
@@ -1701,7 +1722,7 @@
     "moduleId": "messen_pruefen",
     "moduleTitle": "Messen & Prüfen",
     "topic": "Wiederhol- und Vergleichsgrenze",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "ISO 5725",
     "question": "Die Vergleichsstandardabweichung eines Prüfverfahrens beträgt σ_R = 1,5 MPa. Ab welcher Differenz zwischen den Ergebnissen zweier Labore ist der Unterschied signifikant?",
     "options": [
@@ -1757,7 +1778,7 @@
     "moduleId": "analytik",
     "moduleTitle": "Analytik & Diagnostik",
     "topic": "Thermogravimetrie",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Stöchiometrie",
     "question": "Eine TGA zeigt zwischen 400 und 500 °C einen Masseverlust von 3,0 %. Wie hoch ist der Portlanditgehalt der Probe?",
     "options": [
@@ -1785,7 +1806,7 @@
     "moduleId": "analytik",
     "moduleTitle": "Analytik & Diagnostik",
     "topic": "Chloridgehalt",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206 / DIN EN 14629",
     "question": "Welche Aussage zu den Chloridklassen Cl 0,40 und Cl 0,20 nach DIN EN 206 trifft zu?",
     "options": [
@@ -1813,7 +1834,8 @@
     "moduleId": "analytik",
     "moduleTitle": "Analytik & Diagnostik",
     "topic": "Quecksilberporosimetrie",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN ISO 15901-1",
     "question": "Nach der Washburn-Gleichung wird der Druck in der MIP verzehnfacht. Was gilt für den kleinsten dabei gefüllten Porenradius?",
     "options": [
@@ -1897,7 +1919,7 @@
     "moduleId": "mechanische_pruefungen",
     "moduleTitle": "Mechanische Prüfungen",
     "topic": "Spaltzugfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 12390-6",
     "question": "Ein Zylinder (d = 150 mm, L = 300 mm) bricht im Spaltzugversuch bei 200 kN. Wie groß ist die Spaltzugfestigkeit?",
     "options": [
@@ -1925,7 +1947,8 @@
     "moduleId": "mechanische_pruefungen",
     "moduleTitle": "Mechanische Prüfungen",
     "topic": "Betonstahl-Duktilität",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN 488-1",
     "question": "Welche Kenngrößen unterscheiden B500A von B500B nach DIN 488-1?",
     "options": [
@@ -1981,7 +2004,7 @@
     "moduleId": "mechanische_pruefungen",
     "moduleTitle": "Mechanische Prüfungen",
     "topic": "Biegeprüfung Holz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 408",
     "question": "Ein Kantholz b = 50 mm, h = 100 mm wird nach DIN EN 408 über L = 18·h = 1800 mm im 4-Punkt-Versuch geprüft und bricht bei F = 6,5 kN (Gesamtlast). Wie groß ist f_m?",
     "options": [
@@ -2009,7 +2032,7 @@
     "moduleId": "labor",
     "moduleTitle": "Virtuelle Versuche",
     "topic": "Haftzugprüfung: Bruchbild",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1542",
     "question": "Bei einer Haftzugprüfung reißt der Prüfstempel in der Klebefuge ab, bevor der Anforderungswert erreicht ist. Wie ist das Ergebnis zu werten?",
     "options": [
@@ -2065,7 +2088,8 @@
     "moduleId": "labor",
     "moduleTitle": "Virtuelle Versuche",
     "topic": "Sekanten-E-Modul",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "DIN EN 12390-13",
     "question": "Warum wird der E-Modul von Beton nach DIN EN 12390-13 erst nach mehreren Be- und Entlastungszyklen ausgewertet (stabilisierter Modul E_C,S)?",
     "options": [
@@ -2093,7 +2117,7 @@
     "moduleId": "labor",
     "moduleTitle": "Virtuelle Versuche",
     "topic": "Spannbeton im Biegeversuch",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1",
     "question": "Warum reißt ein vorgespannter Balken im Biegeversuch erst bei deutlich höherer Last als ein gleich großer Stahlbetonbalken?",
     "options": [
@@ -2149,7 +2173,7 @@
     "moduleId": "statistik",
     "moduleTitle": "Statistik",
     "topic": "Fraktilfaktor k_n",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1990, Anhang D",
     "question": "Warum ist der Fraktilfaktor k_n bei 3 Prüfwerten (3,37) deutlich größer als bei unendlich vielen (1,64)?",
     "options": [
@@ -2205,7 +2229,8 @@
     "moduleId": "statistik",
     "moduleTitle": "Statistik",
     "topic": "Ausreißer streichen",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "ISO 5725-2",
     "question": "Ein Grubbs-Test markiert einen Festigkeitswert als statistisch auffällig. Wann darf er aus der Auswertung entfernt werden?",
     "options": [
@@ -2233,7 +2258,7 @@
     "moduleId": "festbeton_statistik",
     "moduleTitle": "Festbeton (Statistik)",
     "topic": "Konformität Erstherstellung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206, Tab. 14",
     "question": "Für C25/30 (Würfel: f_ck,cube = 30 N/mm²) liegen bei Erstherstellung drei Ergebnisse vor: 33,5 / 34,8 / 32,9 N/mm². Ist die Gruppe konform?",
     "options": [
@@ -2317,7 +2342,7 @@
     "moduleId": "formaenderungen",
     "moduleTitle": "Formänderungen",
     "topic": "Wärmedehnung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.3",
     "question": "Eine 20 m lange Stahlbetonwand erwärmt sich um 30 K (α_T = 10·10⁻⁶ 1/K). Wie groß ist die freie Längenänderung?",
     "options": [
@@ -2345,7 +2370,7 @@
     "moduleId": "formaenderungen",
     "moduleTitle": "Formänderungen",
     "topic": "Kriechzahl",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.4",
     "question": "Eine Stütze wird mit σ_c = 12 N/mm² belastet (E_c = 34 650 N/mm²). Wie groß ist die Kriechdehnung bei einer Endkriechzahl φ = 2,5?",
     "options": [
@@ -2401,7 +2426,7 @@
     "moduleId": "emodul",
     "moduleTitle": "E-Modul & Mikromechanik",
     "topic": "Voigt und Reuss",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Welche Annahme liegt dem Reuss-Modell (untere Schranke) eines Zweiphasenwerkstoffs zugrunde?",
     "options": [
@@ -2429,7 +2454,7 @@
     "moduleId": "festigkeit",
     "moduleTitle": "Festigkeitsberechnungen",
     "topic": "Grenzhöhe unter Eigengewicht",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Warum hängt die theoretische Grenzhöhe einer prismatischen Säule unter Eigengewicht nicht von ihrem Querschnitt ab?",
     "options": [
@@ -2457,7 +2482,7 @@
     "moduleId": "bruchmechanik",
     "moduleTitle": "Bruchmechanik",
     "topic": "Spannungsintensitätsfaktor",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "LEBM",
     "question": "Wie verändert sich die kritische Bruchspannung eines spröden Bauteils, wenn sich die Risslänge vervierfacht?",
     "options": [
@@ -2485,7 +2510,8 @@
     "moduleId": "bruchmechanik",
     "moduleTitle": "Bruchmechanik",
     "topic": "Grenzen der LEBM",
-    "difficulty": "Klausur-Schwerpunkt",
+    "difficulty": "Vertiefung",
+    "klausurrelevant": true,
     "normRef": "fib Model Code 2010",
     "question": "Warum ist die linear-elastische Bruchmechanik für normale Betonbauteile nur eingeschränkt anwendbar?",
     "options": [
@@ -2541,7 +2567,7 @@
     "moduleId": "knicken",
     "moduleTitle": "Knicken",
     "topic": "Theorie II. Ordnung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1993-1-1, 6.3.1",
     "question": "Warum darf eine reale Stahlstütze nicht bis zur idealen Euler-Knicklast F_K belastet werden?",
     "options": [
@@ -2597,7 +2623,7 @@
     "moduleId": "baustatik",
     "moduleTitle": "Baustatik",
     "topic": "Zweifeldträger: Mittelauflager",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Dreimomentengleichung (Clapeyron)",
     "question": "Ein symmetrischer Zweifeldträger (zwei Felder je l, EI konstant) trägt die Gleichlast q. Welche Kraft erhält das Mittelauflager?",
     "options": [
@@ -2653,7 +2679,7 @@
     "moduleId": "bodenmechanik",
     "moduleTitle": "Bodenmechanik",
     "topic": "Konsolidation",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 4019",
     "question": "Eine Tonschicht wird statt zweiseitig nur einseitig entwässert. Wie ändert sich die Zeit bis 90 % Konsolidation?",
     "options": [
@@ -2709,7 +2735,7 @@
     "moduleId": "materialmodelle",
     "moduleTitle": "Materialmodelle",
     "topic": "Bingham-Fluid",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Rheologie (Bingham)",
     "question": "Frischbeton (τ₀ = 500 Pa, μ_p = 50 Pa·s) wird mit 800 Pa geschert. Welche Scherrate stellt sich ein?",
     "options": [
@@ -2765,7 +2791,7 @@
     "moduleId": "mechanische_kenngroessen",
     "moduleTitle": "Mechanische Kenngrößen",
     "topic": "Kriechzahl",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.4",
     "question": "Eine Betonstütze staucht sich unter Dauerlast sofort um 0,80 mm. Wie groß ist die Endstauchung bei der Kriechzahl φ = 2,0?",
     "options": [
@@ -2821,7 +2847,7 @@
     "moduleId": "bauphysik",
     "moduleTitle": "Bauphysik (Wärme & Feuchte)",
     "topic": "Nachhallzeit nach Sabine",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18041",
     "question": "Ein Klassenraum (V = 189 m³) hat eine äquivalente Absorptionsfläche von A = 64,7 m². Wie groß ist die Nachhallzeit nach Sabine?",
     "options": [
@@ -2849,7 +2875,7 @@
     "moduleId": "waermeeigenschaften",
     "moduleTitle": "Thermische Eigenschaften & Dämmstoffe",
     "topic": "Wärmeeindringfähigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN ISO 10456",
     "question": "Warum fühlt sich ein 20 °C warmer Betonboden kälter an als ein 20 °C warmer Holzboden?",
     "options": [
@@ -2933,7 +2959,7 @@
     "moduleId": "daemmung_vergleich",
     "moduleTitle": "Innendämmung vs. Außendämmung",
     "topic": "Temperatur der Grenzschicht",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN ISO 6946",
     "question": "Bei gleicher Dämmdicke: Wo liegt die Grenzschicht Dämmung/Mauerwerk bei Innendämmung im Vergleich zur Außendämmung (20 °C innen, −5 °C außen)?",
     "options": [
@@ -2989,7 +3015,7 @@
     "moduleId": "schallschutz",
     "moduleTitle": "Schallschutz",
     "topic": "Massekurve DIN 4109-32",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 4109-32",
     "question": "Eine Wand hat m′ = 380 kg/m². Welches Schalldämm-Maß ergibt die Massekurve R_w = 30,9 · lg(m′) − 22,2 dB?",
     "options": [
@@ -3073,7 +3099,7 @@
     "moduleId": "brandschutz",
     "moduleTitle": "Brandschutz",
     "topic": "Holzabbrand",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-2",
     "question": "Ein BSH-Balken (β_n = 0,7 mm/min) wird 60 min dreiseitig beflammt. Wie groß ist die effektive Abbrandtiefe nach der Methode mit reduziertem Querschnitt?",
     "options": [
@@ -3101,7 +3127,7 @@
     "moduleId": "energieausweis",
     "moduleTitle": "Energieausweis",
     "topic": "Effizienzklasse",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "GModG/GEG Anlage 10",
     "question": "Welche Größe bestimmt bei Wohngebäuden die Energieeffizienzklasse (A+ bis H) im Energieausweis?",
     "options": [
@@ -3185,7 +3211,7 @@
     "moduleId": "nachhaltigkeit_daten_regeln",
     "moduleTitle": "Daten & Regeln",
     "topic": "Rechtsstand Gebäudetyp E",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "BT-Drs. 20/13959",
     "question": "Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?",
     "options": [
@@ -3241,7 +3267,7 @@
     "moduleId": "materialoptimierung",
     "moduleTitle": "Materialoptimierung",
     "topic": "k-Wert-Ansatz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206 / DIN 1045-2",
     "question": "Wie groß ist (w/z)_eq bei w = 165, z = 280 und f = 60 kg/m³ Flugasche (k = 0,4)?",
     "options": [
@@ -3297,7 +3323,7 @@
     "moduleId": "oekobilanz_lca",
     "moduleTitle": "Ökobilanzierung (LCA)",
     "topic": "Modul D",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2 / DIN EN 15978",
     "question": "Wie werden Recycling-Gutschriften (Modul D) in einer Gebäude-Ökobilanz behandelt?",
     "options": [
@@ -3381,7 +3407,7 @@
     "moduleId": "kreislauf_dpp",
     "moduleTitle": "Kreislaufwirtschaft",
     "topic": "Material Circularity Indicator",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Ellen MacArthur Foundation",
     "question": "LFI = 0,40, Nutzungsfaktor X = 2,0. Wie groß ist der MCI = 1 − LFI · 0,9/X?",
     "options": [
@@ -3437,7 +3463,7 @@
     "moduleId": "ressourcen_umwelt",
     "moduleTitle": "Ressourcen & Umwelt",
     "topic": "Biogener Kohlenstoff",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 16449",
     "question": "Wie viel CO₂ ist in 1 m³ Nadelholz (ρ = 500 kg/m³ bei u = 12 %) gespeichert?",
     "options": [
@@ -3493,7 +3519,7 @@
     "moduleId": "lebenszyklus_kosten",
     "moduleTitle": "Lebenszyklus & Kosten",
     "topic": "Rentenbarwert",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "ISO 15686-5",
     "question": "Barwert von 2 000 €/a über 30 Jahre bei r = 2 %?",
     "options": [
@@ -3577,7 +3603,7 @@
     "moduleId": "bestand",
     "moduleTitle": "Altbauatlas",
     "topic": "Anforderungen bei Änderung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "GModG § 36, Anlage 7",
     "question": "Ab welchem Umfang greifen die Höchstwerte nach Anlage 7 GModG bei der Änderung eines Außenbauteils?",
     "options": [
@@ -3633,7 +3659,7 @@
     "moduleId": "bauwerkserfassung",
     "moduleTitle": "Bauwerkserfassung",
     "topic": "Druck und Biegung im Holz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1:2010-12, Gl. (6.19)",
     "question": "Wie geht die Druckspannung in den Querschnittsnachweis für Druck und Biegung nach Eurocode 5 ein?",
     "options": [
@@ -3689,7 +3715,7 @@
     "moduleId": "denkmalpflege",
     "moduleTitle": "Denkmalpflege",
     "topic": "Energieanforderungen am Baudenkmal",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "GModG § 105",
     "question": "Was regelt § 105 GModG für Baudenkmäler?",
     "options": [
@@ -3745,7 +3771,7 @@
     "moduleId": "modernisierung",
     "moduleTitle": "Modernisierung & GModG",
     "topic": "Nachrüstpflicht oberste Geschossdecke",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "GModG § 35",
     "question": "Welche Regelung trifft das GModG für ungedämmte oberste Geschossdecken beheizter Räume?",
     "options": [
@@ -3801,7 +3827,7 @@
     "moduleId": "bauwerksuntersuchung",
     "moduleTitle": "Bauwerksdiagnose & ZfP",
     "topic": "Rückprallhammer",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 12504-2:2021-10; DIN EN 13791",
     "question": "Warum darf der Rückprallwert allein nicht zur Festigkeitseinstufung eines Bestandsbetons verwendet werden?",
     "options": [
@@ -3857,7 +3883,7 @@
     "moduleId": "historisch",
     "moduleTitle": "Historische Kennwerte",
     "topic": "Streuung im Bestand",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1990, Anhang D; EN 1990-2:2026",
     "question": "Wie wirkt sich ein kleiner gemessener Variationskoeffizient der Betonfestigkeit auf den Bemessungswert aus?",
     "options": [
@@ -3913,7 +3939,7 @@
     "moduleId": "historische_bauweisen",
     "moduleTitle": "Hist. Bauweisen",
     "topic": "Holzschwinden",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1:2010-12",
     "question": "Warum ist das Schwindmaß von Holz bei der Sanierung von Holzbalkendecken relevant?",
     "options": [
@@ -3969,7 +3995,7 @@
     "moduleId": "historische_bauprodukte",
     "moduleTitle": "Hist. Bauprodukte",
     "topic": "Bleileitungen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "TrinkwV 2023",
     "question": "Was gilt nach der Trinkwasserverordnung 2023 für Trinkwasserleitungen aus Blei?",
     "options": [
@@ -4025,7 +4051,7 @@
     "moduleId": "bestand_checklisten",
     "moduleTitle": "Checklisten",
     "topic": "Chloridgehalt",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "TR Instandhaltung (DIBt); DAfStb",
     "question": "Wie wird der korrosionsauslösende Chloridgehalt im Rahmen einer Instandsetzungsplanung festgelegt?",
     "options": [
@@ -4081,7 +4107,7 @@
     "moduleId": "rueckbau",
     "moduleTitle": "Rückbau & Material",
     "topic": "Pre-Demolition Audit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN SPEC 91484:2023-09",
     "question": "Was regelt die DIN SPEC 91484?",
     "options": [
@@ -4137,7 +4163,7 @@
     "moduleId": "boden_materialaufbereitung",
     "moduleTitle": "Boden- & Materialaufbereitung",
     "topic": "Probenvolumen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "LAGA PN 98, Tabelle 3",
     "question": "Welches Mindestvolumen muss eine Einzelprobe bei einem Größtkorn von 32 mm nach LAGA PN 98 haben?",
     "options": [
@@ -4193,7 +4219,7 @@
     "moduleId": "abfaelle",
     "moduleTitle": "Abfälle & Altlasten",
     "topic": "EBV-Anzeigepflicht",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "ErsatzbaustoffV § 22",
     "question": "Wann ist der Einbau von RC-3 nach § 22 EBV anzuzeigen?",
     "options": [
@@ -4249,7 +4275,7 @@
     "moduleId": "schadstoffe",
     "moduleTitle": "Schad- und Gefahrstoffe",
     "topic": "Risikokonzept Asbest",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "TRGS 910; TRGS 519",
     "question": "Welche Faserkonzentrationen begrenzen den Bereich mittleren Risikos bei Asbest?",
     "options": [
@@ -4277,7 +4303,7 @@
     "moduleId": "ressourceneffizienz",
     "moduleTitle": "Ressourceneffizienz",
     "topic": "Material Circularity Indicator",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Ellen MacArthur Foundation, MCI",
     "question": "Wie verändert sich der MCI eines Produkts mit LFI = 0,5, wenn sich seine Nutzungsdauer gegenüber dem Durchschnitt verdoppelt (F(X) = 0,9/X)?",
     "options": [
@@ -4361,7 +4387,7 @@
     "moduleId": "rueckbau_checklisten",
     "moduleTitle": "Checklisten",
     "topic": "Mobile Brechanlage",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "4. BImSchV",
     "question": "Ab wann ist eine mobile Brechanlage am selben Standort nach BImSchG genehmigungsbedürftig?",
     "options": [
@@ -4417,7 +4443,7 @@
     "moduleId": "dauerhaftigkeit",
     "moduleTitle": "Prinzipien & Übersicht",
     "topic": "Chemischer Angriff",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206; DIN 1045-2",
     "question": "Ein Grundwasser enthält 1 500 mg/l Sulfat. Welche Expositionsklasse liegt vor und was folgt daraus?",
     "options": [
@@ -4473,7 +4499,7 @@
     "moduleId": "korrosion",
     "moduleTitle": "Bewehrungskorrosion",
     "topic": "Faraday-Abtrag",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Faradaysches Gesetz",
     "question": "Welcher gleichmäßige Stahlabtrag entspricht etwa einer Korrosionsstromdichte von 1 µA/cm²?",
     "options": [
@@ -4529,7 +4555,7 @@
     "moduleId": "schadreaktionen_beton",
     "moduleTitle": "Betonkorrosion",
     "topic": "Na2O-Äquivalent",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1164-10",
     "question": "Ein Zement hat 0,25 M.-% Na₂O und 0,95 M.-% K₂O. Wie groß ist das Na₂O-Äquivalent und gilt er als NA-Zement?",
     "options": [
@@ -4585,7 +4611,7 @@
     "moduleId": "holzkorrosion",
     "moduleTitle": "Holzkorrosion",
     "topic": "Holzfeuchte",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 13183-1",
     "question": "Eine Holzprobe wiegt feucht 512 g und gedarrt 418 g. Wie hoch ist die Holzfeuchte?",
     "options": [
@@ -4641,7 +4667,7 @@
     "moduleId": "metallkorrosion",
     "moduleTitle": "Metallkorrosion",
     "topic": "Feuerverzinkung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN ISO 9223:2012-05",
     "question": "Wie lange schützt eine Zinkschicht von 85 µm etwa in Korrosivitätskategorie C3 (Zinkabtrag bis 2,1 µm/a)?",
     "options": [
@@ -4697,7 +4723,7 @@
     "moduleId": "weitere_organik",
     "moduleTitle": "Weitere Organik",
     "topic": "Faktorenmethode",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "ISO 15686-1",
     "question": "Wofür steht die Faktorenmethode nach ISO 15686-1?",
     "options": [
@@ -4753,7 +4779,7 @@
     "moduleId": "dauerhaftigkeit_checklisten",
     "moduleTitle": "Checklisten",
     "topic": "Rissbreiten",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA Tab. 7.1DE",
     "question": "Welcher Rechenwert der Rissbreite gilt nach deutschem NA für Stahlbeton in XD- und XS-Klassen?",
     "options": [
@@ -4809,7 +4835,7 @@
     "moduleId": "bauschaeden",
     "moduleTitle": "Recht & Grundlagen",
     "topic": "Beweislast",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "BGB § 640",
     "question": "Was ändert sich mit der Abnahme hinsichtlich der Beweislast für Mängel?",
     "options": [
@@ -4865,7 +4891,7 @@
     "moduleId": "schadensbilder",
     "moduleTitle": "Typische Bauschäden",
     "topic": "Sprödbruch",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "LEBM",
     "question": "Wie verändert sich die kritische Risslänge a_c, wenn sich die Bruchzähigkeit K_Ic bei Kälte halbiert?",
     "options": [
@@ -4921,7 +4947,7 @@
     "moduleId": "bauwerksunters_monitoring",
     "moduleTitle": "Tragwerksmonitoring (SHM)",
     "topic": "Monitoring und Prüfintervalle",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1076:2026-01",
     "question": "Darf ein installiertes Dauermonitoring die Hauptprüfung nach DIN 1076 ersetzen?",
     "options": [
@@ -4977,7 +5003,7 @@
     "moduleId": "vdi6200",
     "moduleTitle": "Zustandsbewertung",
     "topic": "VDI 6200",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "VDI 6200:2010-02",
     "question": "Welche rechtliche Stellung hat die VDI 6200?",
     "options": [
@@ -5033,7 +5059,7 @@
     "moduleId": "material_schaeden_gross",
     "moduleTitle": "Große Materialschäden & Einstürze",
     "topic": "Bad Reichenhall",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Holzbau",
     "question": "Welche Kombination führte zum Einsturz der Eislaufhalle Bad Reichenhall 2006?",
     "options": [
@@ -5089,7 +5115,7 @@
     "moduleId": "schaeden_checklisten",
     "moduleTitle": "Schadensaufnahme-Checklisten",
     "topic": "Durchfeuchtungsgrad",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "WTA-Merkblatt 4-11",
     "question": "Warum gibt man bei Mauerwerk neben dem Feuchtegehalt den Durchfeuchtungsgrad an?",
     "options": [
@@ -5145,7 +5171,7 @@
     "moduleId": "schutz_grundlagen",
     "moduleTitle": "Schutz- & Instands.-Grundlagen",
     "topic": "Klopfer-Kriterium",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1504-2",
     "question": "Welche CO₂-diffusionsäquivalente Luftschichtdicke gilt als Anforderung an eine karbonatisierungsbremsende Beschichtung?",
     "options": [
@@ -5201,7 +5227,7 @@
     "moduleId": "instandhaltung",
     "moduleTitle": "Stahlbetoninstandhaltung",
     "topic": "Oberflächenschutzsysteme",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "TR Instandhaltung / DIN V 18026",
     "question": "Welches Oberflächenschutzsystem eignet sich für eine befahrene Parkdeckfläche mit Trennrissen?",
     "options": [
@@ -5257,7 +5283,7 @@
     "moduleId": "instandsetzung_materialien",
     "moduleTitle": "Instandsetzung nach Material",
     "topic": "Holzquerschnitt",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 68800-4",
     "question": "Ein Balken 160/220 mm verliert seitlich je 30 mm und unten 30 mm durch Fäule. Welcher Anteil des Widerstandsmoments bleibt?",
     "options": [
@@ -5313,7 +5339,7 @@
     "moduleId": "wta",
     "moduleTitle": "WTA-Merkblätter",
     "topic": "Innendämmung Nachweis",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "WTA-Merkblatt 6-5-14/D",
     "question": "Welches Nachweisverfahren beschreibt WTA-Merkblatt 6-5 für Innendämmungen?",
     "options": [
@@ -5369,7 +5395,7 @@
     "moduleId": "instandsetzung_checklisten",
     "moduleTitle": "Instandsetzungs-Checklisten",
     "topic": "Haftbrücke",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "TR Instandhaltung",
     "question": "Warum muss der Instandsetzungsmörtel frisch in frisch auf die Haftbrücke aufgetragen werden?",
     "options": [
@@ -5425,7 +5451,7 @@
     "moduleId": "bim_baustoffe",
     "moduleTitle": "BIM für Baustoffe",
     "topic": "Property-Sets",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "IFC 4",
     "question": "Wie sollten projektspezifische Eigenschaften, die es in IFC nicht als Standard-Pset gibt, benannt werden?",
     "options": [
@@ -5481,7 +5507,7 @@
     "moduleId": "materialdatenbanken",
     "moduleTitle": "Materialdatenbanken",
     "topic": "Dämmstoffvergleich",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
     "question": "Warum dürfen Dämmstoffe nicht pro m³ allein nach ihrem GWP verglichen werden?",
     "options": [
@@ -5537,7 +5563,7 @@
     "moduleId": "materialpaesse",
     "moduleTitle": "Materialpässe",
     "topic": "Recyclingquote",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DGNB TEC 1.6",
     "question": "Warum sagt eine hohe massenbezogene Recyclingquote allein wenig über die Kreislauffähigkeit eines Gebäudes aus?",
     "options": [
@@ -5593,7 +5619,7 @@
     "moduleId": "dpp",
     "moduleTitle": "Digitaler Produktpass (DPP)",
     "topic": "Modul D",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
     "question": "Wie wird Modul D in einer EPD nach EN 15804+A2 behandelt?",
     "options": [
@@ -5649,7 +5675,7 @@
     "moduleId": "online_tools",
     "moduleTitle": "Online-Tools & Rechner",
     "topic": "Lastkombination",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1990 mit NA",
     "question": "Was passiert, wenn man in ein Tool, das die Kombination selbst bildet, bereits Bemessungslasten eingibt?",
     "options": [
@@ -5705,7 +5731,7 @@
     "moduleId": "ki_ueberblick",
     "moduleTitle": "KI: Überblick & Grundlagen",
     "topic": "Bildauflösung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Bildverarbeitung",
     "question": "Ein Foto bildet 1,20 m auf 4 000 Pixel ab. Kann eine KI darauf zuverlässig 0,2-mm-Risse erkennen?",
     "options": [
@@ -5761,7 +5787,7 @@
     "moduleId": "ki_system",
     "moduleTitle": "KI: Systemarchitektur",
     "topic": "Neuron",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Deep Learning",
     "question": "Ein Neuron hat z = 0,86. Welcher Ausgabewert ergibt sich mit der Sigmoid-Funktion?",
     "options": [
@@ -5817,7 +5843,7 @@
     "moduleId": "ki_prompting",
     "moduleTitle": "KI: Prompting-Praxis",
     "topic": "Tokenbudget",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Lehrbeispiel",
     "question": "Ein Kontext von 128 000 Token, 2 000 Token Systemprompt und 8 000 Token Antwortreserve: Wie viele Seiten à 750 Token passen etwa hinein?",
     "options": [
@@ -5873,7 +5899,7 @@
     "moduleId": "ki_llmpraxis",
     "moduleTitle": "KI: LLM-Praxis",
     "topic": "Mehrfachabfrage",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Binomialverteilung",
     "question": "Warum erhöht ein Mehrheitsentscheid aus drei Abfragen desselben Modells die Zuverlässigkeit oft weniger als berechnet?",
     "options": [
@@ -5929,7 +5955,7 @@
     "moduleId": "ki_thesen",
     "moduleTitle": "KI: Tools für Thesen",
     "topic": "Deklaration",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Prüfungsordnung",
     "question": "Woraus ergibt sich die Pflicht, KI-Einsatz in einer Bachelorarbeit offenzulegen?",
     "options": [
@@ -5985,7 +6011,7 @@
     "moduleId": "ki_recht_ethik",
     "moduleTitle": "KI: Fehler, Recht & Ethik",
     "topic": "DSGVO",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DSGVO Art. 6, 28, 44 ff.",
     "question": "Ein Büro lädt Pläne mit Bauherrennamen in einen US-Cloud-Chat ohne Vertrag hoch. Welche DSGVO-Vorschriften sind vor allem berührt?",
     "options": [
@@ -6041,7 +6067,7 @@
     "moduleId": "ki_lokal",
     "moduleTitle": "KI: Lokale KI (LM Studio)",
     "topic": "Datenschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DSGVO",
     "question": "Ist ein lokal betriebenes Sprachmodell automatisch DSGVO-konform?",
     "options": [
@@ -6097,7 +6123,7 @@
     "moduleId": "ki_ressourcen",
     "moduleTitle": "KI: Unabhängige KI-Seiten",
     "topic": "Energie",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "UBA Strommix",
     "question": "Eine Grafikkarte mit 350 W rechnet 30 min. Wie viel Energie wird verbraucht?",
     "options": [
@@ -6153,7 +6179,7 @@
     "moduleId": "ki_onlinekurse",
     "moduleTitle": "KI: Onlinekurse",
     "topic": "Lernrate",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Deep Learning",
     "question": "Was passiert typischerweise bei einer zu großen Lernrate?",
     "options": [
@@ -6209,7 +6235,7 @@
     "moduleId": "ki_baustoffe",
     "moduleTitle": "KI in der Baustoffkunde",
     "topic": "Modellgüte",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Statistik",
     "question": "Abweichungen von 3, −2, 4 und −1 N/mm². Wie groß ist der RMSE?",
     "options": [
@@ -6265,7 +6291,7 @@
     "moduleId": "px_planung",
     "moduleTitle": "Planung & Ausschreibung",
     "topic": "Leitprodukt",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "§ 7 Abs. 2 VOB/A",
     "question": "Was ist bei der Nennung eines Leitprodukts in einer öffentlichen Ausschreibung zu beachten?",
     "options": [
@@ -6321,7 +6347,7 @@
     "moduleId": "px_bauleitung",
     "moduleTitle": "Bauleitung & Baustelle",
     "topic": "Bedenkenanmeldung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "VOB/B § 4 Abs. 3, § 13 Abs. 3",
     "question": "Welche Wirkung hat eine ordnungsgemäße schriftliche Bedenkenanmeldung des Auftragnehmers?",
     "options": [
@@ -6377,7 +6403,7 @@
     "moduleId": "px_produktion",
     "moduleTitle": "Produktherstellung & QS",
     "topic": "Konformität",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206",
     "question": "Erstherstellung C30/37, drei Würfel: 41, 39, 43 N/mm². Sind die Konformitätskriterien erfüllt?",
     "options": [
@@ -6433,7 +6459,7 @@
     "moduleId": "px_karriere",
     "moduleTitle": "Karrierestart & Soft Skills",
     "topic": "Kalkulation",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "KLR Bau",
     "question": "Herstellkosten 100 000 €, AGK 9 %, Wagnis und Gewinn 5 %. Wie hoch ist der Angebotspreis nach K = (S + AGK)(1 + W_G)?",
     "options": [
@@ -6489,7 +6515,7 @@
     "moduleId": "px_bautagebuch",
     "moduleTitle": "Bautagebuch",
     "topic": "Ausschalfrist",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Reifegrad nach Saul",
     "question": "Eine Ausschalfrist von 3 Tagen bei 20 °C soll auf 5 °C mittlere Betontemperatur angepasst werden (f_T = 30/(T + 10)). Welche Frist ergibt sich?",
     "options": [
@@ -6545,7 +6571,7 @@
     "moduleId": "kuriositaeten",
     "moduleTitle": "Kuriositäten & Rekorde",
     "topic": "Römischer Beton",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Jackson et al. 2017; Seymour et al. 2023",
     "question": "Was erklärt nach neueren Studien die Dauerhaftigkeit römischen Hafenbetons?",
     "options": [
@@ -6601,7 +6627,7 @@
     "moduleId": "grundlagen",
     "moduleTitle": "Beton – Grundlagen",
     "topic": "Äquivalenter w/z-Wert",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2",
     "question": "z = 280 kg/m³, Flugasche f = 80 kg/m³ (k = 0,4), w = 160 kg/m³. Wie groß ist (w/z)eq?",
     "options": [
@@ -6629,7 +6655,7 @@
     "moduleId": "bindemittel",
     "moduleTitle": "Bindemittel",
     "topic": "NA-Zement",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1164-10:2023-02",
     "question": "Ein CEM III/A mit 55 % Hüttensand hat ein Na₂O-Äquivalent von 0,95 M.-%. Darf er als NA-Zement bezeichnet werden?",
     "options": [
@@ -6713,7 +6739,7 @@
     "moduleId": "mischungsberechnung",
     "moduleTitle": "Mischungsberechnung",
     "topic": "Maßgebende Expositionsklasse",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2:2023-08",
     "question": "Ein Bauteil ist XC4, XD1 und XA2 zugeordnet. Welcher höchstzulässige w/z-Wert ist maßgebend?",
     "options": [
@@ -6769,7 +6795,7 @@
     "moduleId": "herstellung_einbau",
     "moduleTitle": "Herstellung & Einbau",
     "topic": "Wasserzugabe bei Lieferung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2, 7.5",
     "question": "Der Beton ist bei Ankunft zu steif. Was ist zulässig?",
     "options": [
@@ -6825,7 +6851,7 @@
     "moduleId": "frischbeton",
     "moduleTitle": "Frischbeton",
     "topic": "Frischbetondruck",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18218:2010-01",
     "question": "Wandschalung, Beton F3, Steiggeschwindigkeit 1 m/h, K₁ = 1,0. Wie groß ist σ_hk,max nach DIN 18218?",
     "options": [
@@ -6881,7 +6907,7 @@
     "moduleId": "hydratation_folgen",
     "moduleTitle": "Hydratation & Folgen",
     "topic": "Adiabatische Temperaturerhöhung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Wärmebilanz",
     "question": "z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2 500 kJ/(m³·K). Wie groß ist ΔT_ad?",
     "options": [
@@ -6937,7 +6963,7 @@
     "moduleId": "nachbehandlung",
     "moduleTitle": "Nachbehandlung",
     "topic": "Verdunstungsrate",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "ACI 305R",
     "question": "Welche Änderung erhöht die Verdunstungsrate einer frischen Betonfläche am stärksten?",
     "options": [
@@ -6993,7 +7019,7 @@
     "moduleId": "festbeton",
     "moduleTitle": "Festbeton",
     "topic": "Festigkeitsentwicklung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, Gl. (3.2)",
     "question": "Welcher Zement liefert nach EC2 bei gleicher 28-Tage-Festigkeit die höchste 7-Tage-Festigkeit?",
     "options": [
@@ -7049,7 +7075,7 @@
     "moduleId": "sichtbeton",
     "moduleTitle": "Sichtbeton",
     "topic": "Marmorierung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DBV/VDZ-Merkblatt Sichtbeton (2015)",
     "question": "Was ist eine typische Ursache für Marmorierungen (Wolkenbildung) auf Sichtbetonflächen?",
     "options": [
@@ -7105,7 +7131,7 @@
     "moduleId": "sonderbetone",
     "moduleTitle": "Sonderbetone",
     "topic": "UHPC",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DAfStb-Heft 561 (2008)",
     "question": "Welche Aussage zu ultrahochfestem Beton (UHPC) trifft zu?",
     "options": [
@@ -7161,7 +7187,7 @@
     "moduleId": "sonderbetone",
     "moduleTitle": "Sonderbetone",
     "topic": "Unterwasserbeton",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Contractor-Verfahren",
     "question": "Worauf kommt es beim Contractor-Verfahren für Unterwasserbeton an?",
     "options": [
@@ -7245,7 +7271,7 @@
     "moduleId": "innovative_werkstoffe",
     "moduleTitle": "Entwicklungen",
     "topic": "3D-Betondruck",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Roussel (2018)",
     "question": "Eine gedruckte Wand (ρ = 2 200 kg/m³) soll 1,5 m hoch werden. Welche Fließgrenze muss die unterste Schicht mindestens erreichen (τ = ρ·g·H/√3)?",
     "options": [
@@ -7301,7 +7327,7 @@
     "moduleId": "qualitaetssicherung",
     "moduleTitle": "Qualitätssicherung",
     "topic": "Konformität stetige Herstellung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206, 8.2.1; DIN 1045-2",
     "question": "Stetige Herstellung C30/37 (Würfel), 15 Ergebnisse, s = 2,2 N/mm². Welcher Mittelwert ist mindestens erforderlich?",
     "options": [
@@ -7357,7 +7383,7 @@
     "moduleId": "qualitaetssicherung",
     "moduleTitle": "Qualitätssicherung",
     "topic": "Identitätsprüfung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206, Anhang B",
     "question": "Identitätsprüfung mit 3 Probekörpern, C30/37 (Würfel). Welche Mittelwertanforderung gilt?",
     "options": [
@@ -7469,7 +7495,7 @@
     "moduleId": "expositionsklassen",
     "moduleTitle": "Expositionsklassen",
     "topic": "Frost-Tausalz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2, Tab. F.2.2",
     "question": "Was fordert DIN 1045-2 für XF4 hinsichtlich Luftporen?",
     "options": [
@@ -7497,7 +7523,7 @@
     "moduleId": "expositionsklassen",
     "moduleTitle": "Expositionsklassen",
     "topic": "Chemischer Angriff",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206; DIN 1045-2",
     "question": "Grundwasser enthält 1 200 mg/l Sulfat. Welche Klasse und welche Zementanforderung gelten?",
     "options": [
@@ -7525,7 +7551,7 @@
     "moduleId": "expositionsklassen",
     "moduleTitle": "Expositionsklassen",
     "topic": "k-Wert-Ansatz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2",
     "question": "Wie wird Flugasche im äquivalenten w/z-Wert angerechnet?",
     "options": [
@@ -7553,7 +7579,7 @@
     "moduleId": "expositionsklassen",
     "moduleTitle": "Expositionsklassen",
     "topic": "Betondeckung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, Tab. 4.4DE",
     "question": "Welches Nennmaß c_nom ergibt sich für XD3 (Stab ⌀ 16 mm, Δc_dev = 15 mm)?",
     "options": [
@@ -7581,7 +7607,7 @@
     "moduleId": "expositionsklassen",
     "moduleTitle": "Expositionsklassen",
     "topic": "AKR-Feuchtigkeitsklassen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DAfStb-Alkali-Richtlinie 2013-10",
     "question": "Welche Feuchtigkeitsklasse gilt für ein befahrenes Parkdeck mit Taumitteln?",
     "options": [
@@ -7609,7 +7635,7 @@
     "moduleId": "betonpraxis",
     "moduleTitle": "Betonpraxis",
     "topic": "Betondeckung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, Tab. 4.4DE",
     "question": "Außenbauteil XC4, Stab Ø 20 mm. Welches Nennmaß c_nom ergibt sich?",
     "options": [
@@ -7665,7 +7691,7 @@
     "moduleId": "betonpraxis",
     "moduleTitle": "Betonpraxis",
     "topic": "WU-Mindestdicken",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DAfStb-WU-Richtlinie 2017-12",
     "question": "Welche Mindestdicke gilt für eine Ortbetonwand der Beanspruchungsklasse 1?",
     "options": [
@@ -7721,7 +7747,7 @@
     "moduleId": "betonpraxis",
     "moduleTitle": "Betonpraxis",
     "topic": "Zusammenhalt nach Krell",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Krell (Praxis-Kennwert)",
     "question": "w = 175 kg/m³, Mehlkorn MK = 380 kg/m³. Wie groß ist K = (w − 70)/MK?",
     "options": [
@@ -7777,7 +7803,7 @@
     "moduleId": "stahlbeton",
     "moduleTitle": "Stahlbeton",
     "topic": "Spannungs-Dehnungs-Linie",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.7",
     "question": "Welche Grenzdehnungen gelten im Parabel-Rechteck-Diagramm für Beton bis C50/60?",
     "options": [
@@ -7805,7 +7831,7 @@
     "moduleId": "stahlbeton",
     "moduleTitle": "Stahlbeton",
     "topic": "μ-Verfahren",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 6.1",
     "question": "Bei welchem bezogenen Moment μ_Eds wird für B500 und Beton bis C50/60 üblicherweise Druckbewehrung erforderlich?",
     "options": [
@@ -7833,7 +7859,7 @@
     "moduleId": "stahlbeton",
     "moduleTitle": "Stahlbeton",
     "topic": "Mindestbewehrung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, 9.2.1.1",
     "question": "Wozu dient die Mindestbiegebewehrung A_s,min?",
     "options": [
@@ -7861,7 +7887,7 @@
     "moduleId": "stahlbeton",
     "moduleTitle": "Stahlbeton",
     "topic": "Querkraft ohne Bewehrung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, 6.2.2",
     "question": "Wie wirkt sich eine größere Nutzhöhe d auf den Maßstabsfaktor k in V_Rd,c aus?",
     "options": [
@@ -7889,7 +7915,7 @@
     "moduleId": "stahlbeton",
     "moduleTitle": "Stahlbeton",
     "topic": "Fachwerkmodell",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, 6.2.3",
     "question": "Welche Obergrenze gilt nach NA DE für cot θ bei senkrechten Bügeln?",
     "options": [
@@ -7917,7 +7943,7 @@
     "moduleId": "stahlbeton",
     "moduleTitle": "Stahlbeton",
     "topic": "Grenzschlankheit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, 5.8.3.1",
     "question": "Eine Stütze hat die bezogene Normalkraft |n| = 0,5. Welche Grenzschlankheit gilt nach NA DE?",
     "options": [
@@ -7973,7 +7999,7 @@
     "moduleId": "stahlbeton",
     "moduleTitle": "Stahlbeton",
     "topic": "Verankerung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, 8.4.3",
     "question": "Wie groß ist l_b,rqd für Ø 16, f_bd = 3,0 N/mm² und σ_sd = 435 N/mm²?",
     "options": [
@@ -8029,7 +8055,7 @@
     "moduleId": "wu-bauwerke",
     "moduleTitle": "WU-Bauwerke",
     "topic": "Entwurfsgrundsätze",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DAfStb-WU-Richtlinie 2017-12",
     "question": "Was kennzeichnet Entwurfsgrundsatz b?",
     "options": [
@@ -8085,7 +8111,7 @@
     "moduleId": "wu-bauwerke",
     "moduleTitle": "WU-Bauwerke",
     "topic": "Druckgefälle",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DAfStb-WU-Richtlinie 2017-12",
     "question": "Wasserstand h_w = 4,5 m, Wanddicke 300 mm. Welche Rissbreite ist für die Selbstheilung höchstens anzusetzen?",
     "options": [
@@ -8197,7 +8223,7 @@
     "moduleId": "carbonbeton",
     "moduleTitle": "Carbonbeton",
     "topic": "Bemessungswert",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Lehrannahme γ_tex = 1,3",
     "question": "f_tk = 3 000 N/mm², γ_tex = 1,3. Wie groß ist f_td?",
     "options": [
@@ -8225,7 +8251,7 @@
     "moduleId": "carbonbeton",
     "moduleTitle": "Carbonbeton",
     "topic": "Regelwerk",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DAfStb 2024",
     "question": "Welches Regelwerk ist in Deutschland für Betonbauteile mit Carbonbewehrung maßgebend?",
     "options": [
@@ -8281,7 +8307,7 @@
     "moduleId": "gesteine",
     "moduleTitle": "Gesteine",
     "topic": "Los-Angeles-Prüfung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1097-2",
     "question": "Was bedeutet ein niedriger Los-Angeles-Koeffizient?",
     "options": [
@@ -8309,7 +8335,7 @@
     "moduleId": "gesteine",
     "moduleTitle": "Gesteine",
     "topic": "Sieblinien",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2",
     "question": "Welcher Sieblinienbereich gilt für Beton als günstig?",
     "options": [
@@ -8365,7 +8391,7 @@
     "moduleId": "mauerwerk",
     "moduleTitle": "Mauerwerk",
     "topic": "Mauerwerksdruckfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "EN 1996-1-1, Gl. (3.1)",
     "question": "Wovon hängt die charakteristische Mauerwerksdruckfestigkeit f_k bei Normalmörtel ab?",
     "options": [
@@ -8393,7 +8419,7 @@
     "moduleId": "mauerwerk",
     "moduleTitle": "Mauerwerk",
     "topic": "Bemessungswert",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-1-1/NA",
     "question": "Wie wird f_d nach deutschem NA aus f_k ermittelt?",
     "options": [
@@ -8505,7 +8531,7 @@
     "moduleId": "putzemoertel",
     "moduleTitle": "Putze & Mörtel",
     "topic": "Putzmörtelklassen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 998-1",
     "question": "Welcher Druckfestigkeitsbereich gilt für Putzmörtel der Klasse CS II?",
     "options": [
@@ -8561,7 +8587,7 @@
     "moduleId": "putzemoertel",
     "moduleTitle": "Putze & Mörtel",
     "topic": "Schlagregenschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 4108-3",
     "question": "Welche Bedingung muss ein wasserabweisender Putz u. a. erfüllen?",
     "options": [
@@ -8617,7 +8643,7 @@
     "moduleId": "gips",
     "moduleTitle": "Gips",
     "topic": "Brandschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 520",
     "question": "Warum verbessert Gips den Brandschutz?",
     "options": [
@@ -8645,7 +8671,7 @@
     "moduleId": "gips",
     "moduleTitle": "Gips",
     "topic": "Unverträglichkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Bauchemie",
     "question": "Warum darf Gips nicht in dauerfeuchtem Kontakt mit Zementstein stehen?",
     "options": [
@@ -8701,7 +8727,7 @@
     "moduleId": "kalk",
     "moduleTitle": "Kalk",
     "topic": "Kalkarten",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 459-1",
     "question": "Welches Kurzzeichen steht für natürlichen hydraulischen Kalk?",
     "options": [
@@ -8729,7 +8755,7 @@
     "moduleId": "kalk",
     "moduleTitle": "Kalk",
     "topic": "Löschen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Bauchemie",
     "question": "Was passiert beim Löschen von Branntkalk?",
     "options": [
@@ -8785,7 +8811,7 @@
     "moduleId": "lehm",
     "moduleTitle": "Lehm",
     "topic": "Normen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18940 / DIN 18945",
     "question": "Welche Norm regelt die Bemessung von tragendem Lehmsteinmauerwerk?",
     "options": [
@@ -8869,7 +8895,7 @@
     "moduleId": "erdbau",
     "moduleTitle": "Erdbau & Böden",
     "topic": "Proctorversuch",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18127",
     "question": "Was beschreibt der Verdichtungsgrad D_Pr?",
     "options": [
@@ -8897,7 +8923,7 @@
     "moduleId": "erdbau",
     "moduleTitle": "Erdbau & Böden",
     "topic": "Frostschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "RStO 12 (vereinfacht)",
     "question": "Wie wirkt sich eine höhere Frosteinwirkungszone auf den frostsicheren Oberbau aus?",
     "options": [
@@ -8953,7 +8979,7 @@
     "moduleId": "glas",
     "moduleTitle": "Glas",
     "topic": "Verbundsicherheitsglas",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18008",
     "question": "Darf der Schubverbund von VSG in Deutschland im Regelfall angesetzt werden?",
     "options": [
@@ -8981,7 +9007,7 @@
     "moduleId": "glas",
     "moduleTitle": "Glas",
     "topic": "Isolierglas",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18008-2",
     "question": "Was verursacht Klimalasten bei Mehrscheiben-Isolierglas?",
     "options": [
@@ -9037,7 +9063,7 @@
     "moduleId": "stahl",
     "moduleTitle": "Stahl",
     "topic": "Brandfall",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1993-1-2, Tab. 3.1",
     "question": "Wie groß ist der Abminderungsfaktor k_y,θ für die Streckgrenze bei 600 °C?",
     "options": [
@@ -9065,7 +9091,7 @@
     "moduleId": "stahl",
     "moduleTitle": "Stahl",
     "topic": "Betonstahl",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 488-1 / EN 1992-1-1",
     "question": "Was unterscheidet B500B von B500A?",
     "options": [
@@ -9093,7 +9119,7 @@
     "moduleId": "stahl",
     "moduleTitle": "Stahl",
     "topic": "Nichtrostender Stahl",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Werkstoffkunde",
     "question": "Was beschreibt der PREN-Wert?",
     "options": [
@@ -9149,7 +9175,7 @@
     "moduleId": "metalle",
     "moduleTitle": "Metalle",
     "topic": "Fließregel",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Klempnertechnik",
     "question": "Warum darf Kupfer nicht oberhalb von Zink verbaut werden (in Fließrichtung des Wassers)?",
     "options": [
@@ -9177,7 +9203,7 @@
     "moduleId": "metalle",
     "moduleTitle": "Metalle",
     "topic": "Wärmedehnung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Physik",
     "question": "Welches Metall hat die größte Wärmedehnung?",
     "options": [
@@ -9233,7 +9259,7 @@
     "moduleId": "holzwerkstoffe",
     "moduleTitle": "Holzwerkstoffe",
     "topic": "Brettsperrholz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 16351",
     "question": "Was kennzeichnet Brettsperrholz (BSP/CLT)?",
     "options": [
@@ -9261,7 +9287,7 @@
     "moduleId": "holzwerkstoffe",
     "moduleTitle": "Holzwerkstoffe",
     "topic": "Emissionen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "ChemVerbotsV / DIN EN 16516",
     "question": "Nach welchem Prüfverfahren wird die Formaldehydabgabe von Holzwerkstoffen in Deutschland seit 2020 bewertet?",
     "options": [
@@ -9317,7 +9343,7 @@
     "moduleId": "daemmstoffe",
     "moduleTitle": "Dämmstoffe",
     "topic": "Perimeterdämmung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 4108-10",
     "question": "Welcher Dämmstoff eignet sich für Perimeterdämmung und Umkehrdächer?",
     "options": [
@@ -9345,7 +9371,7 @@
     "moduleId": "daemmstoffe",
     "moduleTitle": "Dämmstoffe",
     "topic": "Sommerlicher Wärmeschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Bauphysik",
     "question": "Warum verbessern Holzfaserdämmstoffe den sommerlichen Wärmeschutz?",
     "options": [
@@ -9429,7 +9455,7 @@
     "moduleId": "holz",
     "moduleTitle": "Holz",
     "topic": "Bemessungsfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1/NA",
     "question": "Wie groß ist f_m,d für C24 in NKL 1 bei mittlerer Lasteinwirkungsdauer (k_mod = 0,8; γ_M nach NA)?",
     "options": [
@@ -9457,7 +9483,7 @@
     "moduleId": "holz",
     "moduleTitle": "Holz",
     "topic": "Kriechen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1 Tab. 3.2",
     "question": "Welcher Verformungsbeiwert k_def gilt für Vollholz in Nutzungsklasse 3?",
     "options": [
@@ -9513,7 +9539,7 @@
     "moduleId": "nawaro",
     "moduleTitle": "Biogene Baustoffe (NaWaRo)",
     "topic": "Biogener Kohlenstoff",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 16449",
     "question": "Wie viel CO₂ ist nach DIN EN 16449 etwa in 1 m³ Brettschichtholz (ρ₁₂ = 420 kg/m³) gespeichert?",
     "options": [
@@ -9569,7 +9595,7 @@
     "moduleId": "asphalt",
     "moduleTitle": "Asphalt & Bitumen",
     "topic": "Hohlraumgehalt",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 12697-8",
     "question": "Rohdichte ρ_m = 2,457 g/cm³, Raumdichte ρ_b = 2,383 g/cm³. Wie groß ist der Hohlraumgehalt?",
     "options": [
@@ -9681,7 +9707,7 @@
     "moduleId": "kunststoffe",
     "moduleTitle": "Kunststoffe",
     "topic": "Wärmedehnung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Eine 10 m lange PVC-U-Leitung (α ≈ 80 · 10⁻⁶ 1/K) erwärmt sich um 40 K. Wie groß ist die Längenänderung?",
     "options": [
@@ -9849,7 +9875,7 @@
     "moduleId": "ausbau",
     "moduleTitle": "Ausbau",
     "topic": "Fliesenkleber",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 12004-1",
     "question": "Welche Haftzugfestigkeit muss ein zementärer Fliesenkleber der Klasse C2 mindestens erreichen?",
     "options": [
@@ -9877,7 +9903,7 @@
     "moduleId": "kombinationen",
     "moduleTitle": "Werkstoff-Kombinationen",
     "topic": "Mischungsregel",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "VDI 2014 Blatt 3",
     "question": "CFK mit E_f = 230 GPa, E_m = 3,2 GPa, v_f = 0,6. Wie groß ist E in Faserrichtung nach Voigt?",
     "options": [
@@ -9961,7 +9987,7 @@
     "moduleId": "sonstiges",
     "moduleTitle": "Sonstige Baustoffe",
     "topic": "Phasenwechselmaterialien",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Warum speichern PCM im Bereich 21–26 °C viel mehr Wärme je kg als Beton?",
     "options": [
@@ -10017,7 +10043,7 @@
     "moduleId": "bp_baustoffindustrie",
     "moduleTitle": "Baustoffindustrie",
     "topic": "Lieferradius",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Preis 30 €/t, Produktion 12 €/t, Laden 3 €/t, Fahrt 0,30 €/(t·km). Wie groß ist der wirtschaftliche Lieferradius?",
     "options": [
@@ -10073,7 +10099,7 @@
     "moduleId": "bp_innovationen",
     "moduleTitle": "Innovationen & F&E",
     "topic": "Verwendbarkeitsnachweise",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "MBO §§ 16a ff.",
     "question": "Wofür wird eine allgemeine Bauartgenehmigung (aBG) erteilt?",
     "options": [
@@ -10157,7 +10183,7 @@
     "moduleId": "bp_recht",
     "moduleTitle": "Bauproduktenrecht",
     "topic": "AVCP",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "BauPVO Anhang",
     "question": "In welchem AVCP-System ist die notifizierte Stelle am stärksten beteiligt (inkl. Stichprobenprüfung vor dem Inverkehrbringen)?",
     "options": [
@@ -10213,7 +10239,7 @@
     "moduleId": "bp_beton",
     "moduleTitle": "Beton (Bauprodukt)",
     "topic": "Charakteristische Festigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206",
     "question": "Eine Serie hat f_cm = 38,5 N/mm² und s = 5,0 N/mm². Wie groß ist das 5-%-Quantil?",
     "options": [
@@ -10353,7 +10379,7 @@
     "moduleId": "bp_betonwaren",
     "moduleTitle": "Betonwaren",
     "topic": "Biogene Schwefelsäurekorrosion",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Was schützt Betonrohre wirksam gegen biogene Schwefelsäurekorrosion?",
     "options": [
@@ -10381,7 +10407,7 @@
     "moduleId": "bp_mauerwerk",
     "moduleTitle": "Mauerwerk (Bauprodukte)",
     "topic": "Mauerwerksdruckfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-1-1 Gl. (3.1)",
     "question": "Welche Exponenten gelten in f_k = K · f_b^α · f_m^β für Normalmauermörtel?",
     "options": [
@@ -10437,7 +10463,7 @@
     "moduleId": "bp_dach_fassade",
     "moduleTitle": "Dach & Fassade",
     "topic": "Fenster",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN ISO 10077-1",
     "question": "A_g = 1,30 m², U_g = 0,6; A_f = 0,52 m², U_f = 1,2; l_g = 4,6 m, Ψ_g = 0,04. Wie groß ist U_w?",
     "options": [
@@ -10549,7 +10575,7 @@
     "moduleId": "bp_verkehrswegebau",
     "moduleTitle": "Verkehrswegebau",
     "topic": "Lückenloses Gleis",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Welche Zwangsspannung entsteht in einer Schiene (E = 210 000 N/mm², α = 1,2·10⁻⁵ 1/K) bei ΔT = 35 K?",
     "options": [
@@ -10577,7 +10603,7 @@
     "moduleId": "bp_verkehrswegebau",
     "moduleTitle": "Verkehrswegebau",
     "topic": "AKR",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "Alkali-Richtlinie",
     "question": "Welcher Feuchtigkeitsklasse nach Alkali-Richtlinie werden Betonfahrbahndecken zugeordnet?",
     "options": [
@@ -10633,7 +10659,7 @@
     "moduleId": "bp_trockenbau",
     "moduleTitle": "Trockenbau",
     "topic": "Schallschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Wie ändert sich die Resonanzfrequenz f₀ einer Ständerwand, wenn die Masse beider Schalen verdoppelt wird?",
     "options": [
@@ -10689,7 +10715,7 @@
     "moduleId": "bp_putz_estrich",
     "moduleTitle": "Putz & Estrich",
     "topic": "Gips",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Wie viel Wasser bindet 1 kg Halbhydrat chemisch beim Abbinden zu Dihydrat?",
     "options": [
@@ -10773,7 +10799,7 @@
     "moduleId": "bp_abdichtung",
     "moduleTitle": "Abdichtungen",
     "topic": "PMBC",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18533-3",
     "question": "Eine PMBC soll trocken 4,0 mm dick sein; der Anteil flüchtiger Stoffe beträgt 30 %. Welche Nassschichtdicke ist mindestens aufzutragen?",
     "options": [
@@ -10829,7 +10855,7 @@
     "moduleId": "bp_daemmung",
     "moduleTitle": "Dämmstoffe (Bauprodukte)",
     "topic": "U-Wert",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN ISO 6946",
     "question": "Wie groß ist der U-Wert einer Wand mit R_T = 4,96 m²K/W?",
     "options": [
@@ -10913,7 +10939,7 @@
     "moduleId": "bp_befestigung",
     "moduleTitle": "Befestigungstechnik",
     "topic": "Betonausbruch",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-4",
     "question": "Um welchen Faktor steigt der Betonausbruchwiderstand N⁰Rk,c, wenn die Verankerungstiefe h_ef um 50 % erhöht wird?",
     "options": [
@@ -10969,7 +10995,7 @@
     "moduleId": "bp_klebstoffe",
     "moduleTitle": "Kleb- & Dichtstoffe",
     "topic": "Fugenbemessung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18540",
     "question": "Die Elementfuge bewegt sich um 4,8 mm, der Dichtstoff hat eine ZGV von 25 %. Wie breit muss die Fuge mindestens sein?",
     "options": [
@@ -11081,7 +11107,7 @@
     "moduleId": "bp_farben_lacke",
     "moduleTitle": "Farben & Lacke",
     "topic": "Oberflächenschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "TR Instandhaltung",
     "question": "Welches Oberflächenschutzsystem eignet sich für ein frei bewittertes Parkdeck mit Rissbewegungen?",
     "options": [
@@ -11109,7 +11135,7 @@
     "moduleId": "bp_betonzusatzmittel",
     "moduleTitle": "Betonzusatzmittel",
     "topic": "Wasseranrechnung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 206 / DIN 1045-2",
     "question": "Ab welcher Gesamtmenge flüssiger Zusatzmittel ist deren Wasseranteil auf den w/z-Wert anzurechnen?",
     "options": [
@@ -11193,7 +11219,7 @@
     "moduleId": "bp_holzprodukte",
     "moduleTitle": "Holzprodukte",
     "topic": "Teilsicherheitsbeiwert",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1/NA",
     "question": "Welcher Teilsicherheitsbeiwert γ_M gilt nach EC5/NA für Brettschichtholz (Grundkombination)?",
     "options": [
@@ -11221,7 +11247,7 @@
     "moduleId": "bp_holzprodukte",
     "moduleTitle": "Holzprodukte",
     "topic": "Bemessungsfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1",
     "question": "Wie berechnet sich die Bemessungsfestigkeit f_d aus der charakteristischen Festigkeit f_k?",
     "options": [
@@ -11249,7 +11275,7 @@
     "moduleId": "bp_kunststoffe",
     "moduleTitle": "Kunststoffe (Bauprodukte)",
     "topic": "Kriechen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Was beschreibt der Kriechmodul E_c(t) eines Kunststoffs?",
     "options": [
@@ -11277,7 +11303,7 @@
     "moduleId": "bp_kunststoffe",
     "moduleTitle": "Kunststoffe (Bauprodukte)",
     "topic": "Dämmstoffe",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Welche Aussage zu EPS-Hartschaum trifft zu?",
     "options": [
@@ -11305,7 +11331,7 @@
     "moduleId": "bp_mineralisch",
     "moduleTitle": "Mineralische Bauprodukte",
     "topic": "Verbundsicherheitsglas",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18008",
     "question": "Was kennzeichnet Verbundsicherheitsglas (VSG)?",
     "options": [
@@ -11333,7 +11359,7 @@
     "moduleId": "bp_mineralisch",
     "moduleTitle": "Mineralische Bauprodukte",
     "topic": "Fliesen",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 14411",
     "question": "Warum ist Feinsteinzeug frostbeständig, Steingut dagegen nicht?",
     "options": [
@@ -11361,7 +11387,7 @@
     "moduleId": "bp_glaeser",
     "moduleTitle": "Gläser",
     "topic": "Glasfestigkeit",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18008-1",
     "question": "Welche Glasart hat bei gleicher Dicke die höchste Bemessungsfestigkeit?",
     "options": [
@@ -11389,7 +11415,7 @@
     "moduleId": "bp_glaeser",
     "moduleTitle": "Gläser",
     "topic": "Bruchbild",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Wie bricht ESG?",
     "options": [
@@ -11417,7 +11443,7 @@
     "moduleId": "bp_lehmbauprodukte",
     "moduleTitle": "Lehmbauprodukte",
     "topic": "Normung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18940",
     "question": "Welche Norm regelt tragendes Lehmsteinmauerwerk in Deutschland?",
     "options": [
@@ -11445,7 +11471,7 @@
     "moduleId": "bp_lehmbauprodukte",
     "moduleTitle": "Lehmbauprodukte",
     "topic": "Feuchteschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Was ist bei Lehmbaustoffen besonders zu beachten?",
     "options": [
@@ -11473,7 +11499,7 @@
     "moduleId": "bp_metallisch",
     "moduleTitle": "Metallische Bauprodukte",
     "topic": "Wärmedehnung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Ein 10 m langes Titanzinkblech (α ≈ 0,022 mm/(m·K)) erfährt ΔT = 100 K. Wie groß ist die Längenänderung?",
     "options": [
@@ -11501,7 +11527,7 @@
     "moduleId": "bp_metallisch",
     "moduleTitle": "Metallische Bauprodukte",
     "topic": "Kontaktkorrosion",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Warum darf Regenwasser nicht von Kupferflächen auf verzinkte Bauteile fließen (Fließregel)?",
     "options": [
@@ -11529,7 +11555,7 @@
     "moduleId": "bp_stahlbauprofile",
     "moduleTitle": "Stahlbauprofile",
     "topic": "Profilwahl",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Welches Profil eignet sich bei gleicher Höhe besser als Stütze: IPE oder HEB?",
     "options": [
@@ -11557,7 +11583,7 @@
     "moduleId": "bp_stahlbauprofile",
     "moduleTitle": "Stahlbauprofile",
     "topic": "Biegespannung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1993-1-1",
     "question": "IPE 300 (W_el,y = 557 cm³), M_Ed = 45 kNm. Wie groß ist die Randspannung?",
     "options": [
@@ -11585,7 +11611,7 @@
     "moduleId": "kombinationen",
     "moduleTitle": "Werkstoff-Kombinationen",
     "topic": "Mischungsregeln",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "VDI 2014 Blatt 3",
     "question": "Warum ist der E-Modul eines unidirektionalen FKV quer zur Faser viel kleiner als längs?",
     "options": [
@@ -11613,7 +11639,7 @@
     "moduleId": "kombinationen",
     "moduleTitle": "Werkstoff-Kombinationen",
     "topic": "Oberflächenschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1504-2",
     "question": "Welche Maßnahme macht Porenwände wasserabweisend, ohne die Poren zu verschließen?",
     "options": [
@@ -11641,7 +11667,7 @@
     "moduleId": "holzbau",
     "moduleTitle": "Holzbau & Eurocode 5",
     "topic": "Knicknachweis",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1, 6.3.2",
     "question": "Welcher E-Modul geht in die bezogene Schlankheit λ_rel beim Knicknachweis ein?",
     "options": [
@@ -11669,7 +11695,7 @@
     "moduleId": "holzbau",
     "moduleTitle": "Holzbau & Eurocode 5",
     "topic": "Brandschutz",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-2",
     "question": "Wie groß ist die ideelle Abbrandtiefe d_ef eines Nadel-Vollholzbalkens nach 30 min (β_n = 0,8 mm/min, d₀ = 7 mm)?",
     "options": [
@@ -11697,7 +11723,7 @@
     "moduleId": "holzbau",
     "moduleTitle": "Holzbau & Eurocode 5",
     "topic": "Querdruck",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1, 6.1.5",
     "question": "Um wie viel darf die Aufstandslänge beim Querdrucknachweis je Seite rechnerisch verlängert werden?",
     "options": [
@@ -11725,7 +11751,7 @@
     "moduleId": "innenausbau",
     "moduleTitle": "Innenausbau",
     "topic": "Belegreife",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18560-1",
     "question": "Mit welchem Verfahren wird die Belegreife von Estrichen in Deutschland üblicherweise geprüft?",
     "options": [
@@ -11753,7 +11779,7 @@
     "moduleId": "innenausbau",
     "moduleTitle": "Innenausbau",
     "topic": "Trockenbau-Akustik",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Wie wirkt sich eine Doppelbeplankung auf die Resonanzfrequenz f₀ einer Ständerwand aus?",
     "options": [
@@ -11781,7 +11807,7 @@
     "moduleId": "innenausbau",
     "moduleTitle": "Innenausbau",
     "topic": "Abdichtung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN 18534-1",
     "question": "Welcher Wassereinwirkungsklasse ist eine bodengleiche Dusche im Wohnungsbau zugeordnet?",
     "options": [
@@ -11809,7 +11835,7 @@
     "moduleId": "innenausbau",
     "moduleTitle": "Innenausbau",
     "topic": "Oberflächenqualität",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Welche Qualitätsstufe ist für glänzende Lacke und Streiflicht erforderlich?",
     "options": [
@@ -11837,7 +11863,7 @@
     "moduleId": "kriechen_schwinden",
     "moduleTitle": "Kriechen & Schwinden",
     "topic": "Kriechzahl",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, Anhang B",
     "question": "Wie wirkt sich ein späteres Belastungsalter t₀ auf die Endkriechzahl aus?",
     "options": [
@@ -11865,7 +11891,7 @@
     "moduleId": "kriechen_schwinden",
     "moduleTitle": "Kriechen & Schwinden",
     "topic": "Schwinden",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.4",
     "question": "Welche beiden Anteile des Schwindens erfasst DIN EN 1992-1-1 rechnerisch?",
     "options": [
@@ -11893,7 +11919,7 @@
     "moduleId": "kriechen_schwinden",
     "moduleTitle": "Kriechen & Schwinden",
     "topic": "Wirksamer E-Modul",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, Gl. (7.20)",
     "question": "Wie groß ist der wirksame E-Modul bei E_cm = 33 000 N/mm² und φ = 2,0?",
     "options": [
@@ -11921,7 +11947,7 @@
     "moduleId": "eigenspannungen",
     "moduleTitle": "Eigenspannungen",
     "topic": "Begriff",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Was kennzeichnet Eigenspannungen?",
     "options": [
@@ -11949,7 +11975,7 @@
     "moduleId": "eigenspannungen",
     "moduleTitle": "Eigenspannungen",
     "topic": "Aufheizphase",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Wo treten in der Aufheizphase eines massigen Bauteils Zugeigenspannungen auf?",
     "options": [
@@ -11977,7 +12003,7 @@
     "moduleId": "eigenspannungen",
     "moduleTitle": "Eigenspannungen",
     "topic": "Temperaturzerlegung",
-    "difficulty": "Fortgeschritten",
+    "difficulty": "Vertiefung",
     "normRef": "",
     "question": "Welcher Anteil einer Temperaturverteilung erzeugt auch im frei gelagerten Bauteil Spannungen?",
     "options": [
