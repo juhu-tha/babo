@@ -57,6 +57,8 @@ import { grenzenFuer } from './data/rechnerGrenzen';
 import { LERNZIELE } from './data/lernziele';
 import { ModulLernziele } from './components/ui/ModulLernziele';
 import { ErkundungsAuftrag } from './components/ui/ErkundungsAuftrag';
+import { ModulKurzfassung } from './components/ui/ModulKurzfassung';
+import { KURZFASSUNG } from './data/kurzfassung';
 import { ERKUNDUNG } from './data/erkundung';
 import { ModulTest } from './components/quiz/ModulTest';
 import { MODULTEST_IN_APP } from './data/quizZuordnung';
@@ -1073,6 +1075,8 @@ function AppContent() {
 <React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Lernziele je Fachmodul (Phase 3, AP 3.6) */}
           {LERNZIELE[activeTab] && <ModulLernziele moduleId={activeTab} daten={LERNZIELE[activeTab]} oeffneModul={(id) => setActiveTab(id as Parameters<typeof setActiveTab>[0])} />}
+          {/* „Das Wichtigste in 5 Punkten“ vor langen Modulen (Phase 3, AP 3.8) */}
+          {KURZFASSUNG[activeTab] && <ModulKurzfassung key={activeTab} punkte={KURZFASSUNG[activeTab]} />}
           {/* Erkundungsauftrag „Ausprobieren“ für Rechner (Phase 3, AP 3.7) */}
           {ERKUNDUNG[activeTab] && <ErkundungsAuftrag key={activeTab} daten={ERKUNDUNG[activeTab]} />}
           {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
