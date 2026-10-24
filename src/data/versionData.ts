@@ -8,6 +8,18 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.26.1',
+    date: '24.10.2026',
+    title: 'Geprüfte Rechenkerne Wärmeschutz und Mischungsberechnung',
+    badge: 'patch',
+    changes: [
+      'Wärmeschutz: U-Wert nach DIN EN ISO 6946, Sättigungsdampfdruck und Taupunkt nach DIN 4108-3 als gemeinsamer, getesteter Rechenkern für Bauphysik und Feuchteschutz; ungültige Schichten (z. B. λ = 0) werden gemeldet.',
+      'Korrektur Kellerdecke gegen unbeheizten Keller: Wärmeübergangswiderstand außen R_se = 0,17 m²K/W statt 0,04 m²K/W.',
+      'Mischungsberechnung: Stoffraumrechnung, Zugabewasser und (w/z)_eq als getesteter Rechenkern; die fünf geprüften Beispielmischungen laufen als Regressionstest mit.',
+      'Korrektur Beispiel 5 (VDZ B20): Rohdichte der Gesteinskörnung 2,60 kg/dm³ wird beim Laden übernommen; Oberflächen- und Zugabewasser (13,3 / 161,7 L/m³) sowie Feuchtmasse 4/8 rechnerisch berichtigt.'
+    ]
+  },
+  {
     version: 'v3.26.0',
     date: '24.10.2026',
     title: 'Umsetzungsplan „sehr gut“ Phasen 0–4: Qualitätssicherung, Recht, Barrierefreiheit, Selbsttests & geprüfte Rechenkerne',
