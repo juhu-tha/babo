@@ -53,6 +53,7 @@ import { MetadataAuditModal } from './components/seo/MetadataAuditModal';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import { NAV_TAB_GRUPPEN, TAB_KEYWORDS, MODUL_BY_ID } from './registry/modules';
 import { CalculatorDisclaimerBanner } from './components/ui/CalculatorDisclaimerBanner';
+import { grenzenFuer } from './data/rechnerGrenzen';
 import { iconFor } from './registry/icons';
 import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
 import { VolltextTreffer } from './components/navigation/VolltextTreffer';
@@ -1065,9 +1066,10 @@ function AppContent() {
             </div>
 <React.Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
-          {MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' && (
+          {(MODUL_BY_ID.get(activeTab)?.baum?.typ === 'calculator' || grenzenFuer(activeTab)) && grenzenFuer(activeTab)?.rechnet !== false && (
             <CalculatorDisclaimerBanner
               className="mb-4"
+              grenzen={grenzenFuer(activeTab)}
               customText="Lehr- und Vorbemessungswerkzeug: Die Ergebnisse sind vereinfachte Berechnungen zu Lernzwecken und ersetzen keinen bauaufsichtlichen Nachweis (MVV TB / LBO) und keine Prüfung durch fachkundige Personen. Maßgebende Normausgaben stehen in den Quellen am Modulende."
             />
           )}
