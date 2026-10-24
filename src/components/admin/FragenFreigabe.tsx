@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { CheckCircle2, Download, MessageSquare, RotateCcw } from 'lucide-react';
 import { QUIZ_QUESTIONS, type QuizQuestion } from '@/src/data/quizData';
 import { META_CLUSTERS } from '@/src/data/metaClusters';
+import { formatDeWert } from '@/src/utils/numberFormat';
 
 /**
  * Fachliche Freigabe der Quizfragen je Cluster (Umsetzungsplan Phase 3, AP 3.5).
@@ -68,7 +69,7 @@ export function FragenFreigabe() {
           return (
             <button key={c.number} type="button" aria-pressed={cluster === c.number} onClick={() => setCluster(c.number)}
               className={`px-3 py-2 rounded-xl text-xs font-bold border ${cluster === c.number ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'}`}>
-              {c.number} {c.name} · {z.erledigt}/{z.gesamt}
+              {c.number} {c.name} · {formatDeWert(z.erledigt)}/{formatDeWert(z.gesamt)}
             </button>
           );
         })}
@@ -76,7 +77,7 @@ export function FragenFreigabe() {
           <input type="checkbox" checked={nurOffene} onChange={e => setNurOffene(e.target.checked)} /> nur offene Fragen
         </label>
         <button type="button" onClick={exportieren} className="px-3 py-2 rounded-xl text-xs font-bold bg-shiraz text-white flex items-center gap-1.5">
-          <Download size={14} aria-hidden="true" /> Entscheidungen exportieren ({Object.keys(entscheidungen).length})
+          <Download size={14} aria-hidden="true" /> Entscheidungen exportieren ({formatDeWert(Object.keys(entscheidungen).length)})
         </button>
       </div>
 
