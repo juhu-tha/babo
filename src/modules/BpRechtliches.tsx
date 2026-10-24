@@ -407,7 +407,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                           <li className="list-none text-xs text-emerald-800 font-semibold">Stelle zertifiziert ausschließlich die WPK!</li>
                         </ul>
                       </td>
-                      <td className="p-3 italic">Betonstahl, Transportbeton, Mauersteine (Kat. I), Brettschichtholz</td>
+                      <td className="p-3 italic">Mauersteine (Kat. I), Gesteinskörnungen für Beton (DIN EN 12620), festigkeitssortiertes Bauholz (DIN EN 14081-1)</td>
                     </tr>
 
                     {/* System 3 */}
@@ -469,7 +469,7 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
                 </table>
               </div>
               <div className="p-3 bg-amber-50 border-t border-amber-200 text-xs text-amber-950">
-                <strong>Wichtiger Hinweis zu Beton und Spannstahl:</strong> Beton nach DIN EN 206/DIN 1045-2 und Spannstahl sind in DE nicht CE-gekennzeichnet (national: Übereinstimmungsnachweis bzw. abZ).
+                <strong>Wichtiger Hinweis zu Beton, Betonstahl und Spannstahl:</strong> Beton nach DIN EN 206/DIN 1045-2, Betonstahl (DIN 488) und Spannstahl sind in DE nicht CE-gekennzeichnet (national: Übereinstimmungsnachweis bzw. abZ).
               </div>
             </div>
 

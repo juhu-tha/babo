@@ -553,7 +553,7 @@ export default function BpBetonwaren() {
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Biegewiderstand:</span>
-                                <strong className="text-slate-900 block font-semibold">≥ 5,0 MPa (Klasse T)</strong>
+                                <strong className="text-slate-900 block font-semibold">≥ 5,0 MPa (Klasse 3, Kennz. U)</strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Frost-Tausalz-Axiom:</span>
@@ -716,7 +716,7 @@ export default function BpBetonwaren() {
                       <tr>
                         <td className="px-4 py-2.5 font-bold text-slate-900">Biogene Schwefelsäurekorrosion</td>
                         <td className="px-4 py-2.5">Stagnierendes Abwasser in teilgefüllten Abwasserrohren, H₂S Oxidation im Gasraum oberhalb der Wasserlinie.</td>
-                        <td className="px-4 py-2.5">Einsatz hochsulfatbeständiger Bindemittel (z.B. Hochofenzemente CEM III), Epoxidharz-Auskleidungen (Lining-Verfahren) oder HDPE-Inliner.</td>
+                        <td className="px-4 py-2.5">Es handelt sich um einen Säureangriff (pH bis &lt; 2), nicht um einen Sulfattreiben-Angriff – SR-Zemente allein helfen daher nicht. Maßnahmen: Vermeidung von H₂S (Belüftung, kurze Aufenthaltszeiten), dichter säurewiderstandsfähiger Beton (niedriger w/z-Wert, ggf. Calciumaluminatzement) sowie Schutzauskleidungen (Epoxidharz-Lining, HDPE-Inliner).</td>
                       </tr>
                     </tbody>
                   </table>

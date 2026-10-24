@@ -358,7 +358,7 @@ export default function Festbeton() {
                   <p>
                     Für Leichtbeton gelten die Bezeichnungen <strong>LC8/9</strong> bis <strong>LC80/88</strong> (z. B. LC25/28, LC30/33). 
                     Zusätzlich wird die Trockenrohdichte in Klassen <strong>D1,0</strong> (&le; 1000 kg/m³) bis <strong>D2,0</strong> (1800 bis 2000 kg/m³) 
-                    eingeteilt, und für die Bemessung wird ein Abminderungsbeiwert <InlineMath math="\eta_1 = 0{,}40 + 0{,}60 \cdot \rho / 2200" /> für E-Modul und Zugfestigkeit angesetzt.
+                    eingeteilt. Für die Bemessung (DIN EN 1992-1-1, Abschn. 11.3) wird die Zugfestigkeit mit <InlineMath math="\eta_1 = 0{,}40 + 0{,}60 \cdot \rho / 2200" /> und der E-Modul mit <InlineMath math="\eta_E = (\rho / 2200)^2" /> abgemindert.
                   </p>
                 </div>
               </div>
