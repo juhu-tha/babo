@@ -1042,7 +1042,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
       }
     ],
     systemicExplanation: 'Dieses Modul deckt das Lebensende (End of Life) von Bauwerken ab. Es vermittelt Schadstoffkataster nach VDI 6202, Abbruchstatik, Arbeits- und Immissionsschutz sowie die Aufbereitung zu normgerechten RC-Gesteinskörnungen nach DIN EN 12620.',
-    zusammenhaengeText: 'Rückbau ist der Beginn des neuen Materialkreislaufs: Er schließt die Lücke zur Nachhaltigkeit (Modul D) und liefert Zuschlagstoffe für die Betontechnologie (R-Beton).',
+    zusammenhaengeText: 'Rückbau ist der Beginn des neuen Materialkreislaufs: Er schließt die Lücke zur Nachhaltigkeit (Modul D) und liefert Gesteinskörnungen für die Betontechnologie (R-Beton).',
     graphicalPipelineTitle: 'Der geordnete, zirkuläre Rückbauprozess',
     graphicalPipelineDesc: 'Von der historischen Schadstofferkundung bis zur CE-zertifizierten Rezyklataufbereitung:',
     steps: [

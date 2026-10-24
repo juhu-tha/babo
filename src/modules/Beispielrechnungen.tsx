@@ -827,7 +827,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         Da <InlineMath math={`c_{\\text{erf}} = ${formatDeTeX(cementFromWz, 1)} \\, \\text{kg/m}^3`} /> mit dem normativen Mindestzementgehalt <InlineMath math={`z_{min} = ${minCement} \\, \\text{kg/m}^3`} /> abgeglichen werden muss, wählen wir:
                       </p>
                       <BlockMath math={`c = \\max(c_{\\text{erf}}, z_{min}) = \\color{#A3113E}{${cementContent}} \\, \\text{kg/m}^3`} />
-                      <p className="mt-1">Daraus resultiert das tatsächliche (wirksame) w/z-Verhältnis:</p>
+                      <p className="mt-1">Daraus resultiert der tatsächliche (wirksame) w/z-Wert:</p>
                       <BlockMath math={`(w/z)_{\\text{tats}} = \\frac{w}{c} = \\frac{\\color{#A3113E}{${waterDemand}}}{\\color{#A3113E}{${cementContent}}} = \\color{#A3113E}{${formatDeTeX(actualWz, 3)}}`} />
                     </div>
 
@@ -843,7 +843,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                         <p>• Wasservolumen: V_w = w / ρ_w = <span className="text-shiraz font-bold">{waterDemand}</span> kg / 1,00 kg/dm³ = <span className="text-shiraz font-bold">{formatDeZahl(V_w, 2)}</span> dm³</p>
                         <p>• Verdichtungsporen (1,5% Luft): V_air = {V_air} dm³</p>
                       </div>
-                      <p className="mt-2">Das verbleibende Restvolumen entfällt vollständig auf die Gesteinskörnung (Zuschlag) <InlineMath math="V_a" />:</p>
+                      <p className="mt-2">Das verbleibende Restvolumen entfällt vollständig auf die Gesteinskörnung (früher: Zuschlag) <InlineMath math="V_a" />:</p>
                       <BlockMath math={`V_a = 1000 - (\\color{#A3113E}{${formatDeTeX(V_c, 2)}} + \\color{#A3113E}{${formatDeTeX(V_w, 2)}} + ${V_air}) = \\color{#A3113E}{${formatDeTeX(V_a, 2)}} \\, \\text{dm}^3`} />
                     </div>
 
@@ -880,7 +880,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   </div>
 
                   <div className="text-xxs font-normal text-slate-500 mt-4 leading-relaxed bg-white/50 p-2.5 rounded-lg border border-slate-200/50">
-                    <strong>Bewertung:</strong> Das tatsächliche w/z-Verhältnis von <strong>{formatDeZahl(actualWz, 3)}</strong> hält den Grenzwert von <strong>{formatDeZahl(maxWz, 2)}</strong> sicher ein. 
+                    <strong>Bewertung:</strong> Der tatsächliche w/z-Wert von <strong>{formatDeZahl(actualWz, 3)}</strong> hält den Grenzwert von <strong>{formatDeZahl(maxWz, 2)}</strong> sicher ein. 
                     Die berechnete Frischbetondichte liegt mit {formatDeZahl(freshConcreteDensity, 0)} kg/m³ im typischen Bereich für Normalbeton (2000 bis 2600 kg/m³ nach DIN EN 206). 
                     Diese Rezeptur stellt sicher, dass der Beton nach dem Erhärten das erforderliche Porengefüge aufweist, um dem Frostangriff (XC4/XD3) dauerhaft zu widerstehen.
                   </div>
@@ -899,7 +899,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                   <p className="text-xs text-text-main/80 leading-relaxed font-normal">
                     <strong>Was?</strong> Berechnet die Anrechenbarkeit von reaktiven mineralischen Zusatzstoffen (Zusatzstoffe vom Typ II) wie Flugasche oder Silikastaub auf das wirksame Wasser-Zement-Verhältnis. <br />
                     <strong>Warum?</strong> Die Verwertung von Flugasche schont Ressourcen und verringert das Porenvolumen sowie die Hydratationswärme des Betons. Die Norm gestattet daher die bilanzielle Erhöhung des Zementvolumens um einen Faktor <InlineMath math="k \cdot f" />. <br />
-                    <strong>Wie?</strong> Über die Ermittlung der maximal zulässigen Anrechenbarkeit <InlineMath math="f_{max} = \text{Anteil} \cdot c" /> und Bildung des äquivalenten Wasser-Zement-Wertes <InlineMath math="(w/z)_{eq} = \frac{w}{c + k \cdot f_{anr}}" />.
+                    <strong>Wie?</strong> Über die Ermittlung der maximal zulässigen Anrechenbarkeit <InlineMath math="f_{max} = \text{Anteil} \cdot c" /> und Bildung des äquivalenten Wasserzementwerts <InlineMath math="(w/z)_{eq} = \frac{w}{c + k \cdot f_{anr}}" />.
                   </p>
                 </div>
 
@@ -981,7 +981,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
-                        <strong>Schritt 2: Äquivalenten Wasser-Zement-Wert berechnen</strong>
+                        <strong>Schritt 2: Äquivalenten Wasserzementwert berechnen</strong>
                         <p className="mt-1">
                           Die klassische w/z-Zahl beträgt:
                         </p>
@@ -996,7 +996,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2">
                       <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1">Ergebnis und Einsparung</span>
                       <p className="text-xs font-normal">
-                        Ihr äquivalenter Wasser-Zement-Wert sinkt um <strong className="text-shiraz">{formatDeZahl(Math.max(0, k_w_z_pure - k_w_z_eq), 3)}</strong> von <span className="text-shiraz font-bold">{formatDeZahl(k_w_z_pure, 3)}</span> auf <strong className="text-shiraz">{formatDeZahl(k_w_z_eq, 3)}</strong>. 
+                        Ihr äquivalenter Wasserzementwert sinkt um <strong className="text-shiraz">{formatDeZahl(Math.max(0, k_w_z_pure - k_w_z_eq), 3)}</strong> von <span className="text-shiraz font-bold">{formatDeZahl(k_w_z_pure, 3)}</span> auf <strong className="text-shiraz">{formatDeZahl(k_w_z_eq, 3)}</strong>. 
                         Dies entspricht rechnerisch einer fiktiven Zementeinsparung von ca. <strong className="text-shiraz">{formatDeZahl((k_factor * k_credited_addition), 1)} kg</strong> Portlandzement-Klinker pro Kubikmeter Beton bei identischer hydratationschemischer Wirksamkeit!
                       </p>
                     </div>

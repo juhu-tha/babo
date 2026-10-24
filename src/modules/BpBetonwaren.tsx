@@ -638,7 +638,7 @@ export default function BpBetonwaren() {
                   </p>
                   <ul className="text-[11.5px] leading-relaxed text-slate-650 space-y-1.5 pl-4 list-decimal">
                     <li>
-                      <strong>Konsistenzbereich erdfeucht:</strong> Der Wasser-Zement-Wert wird sehr niedrig eingestellt (<span className="font-mono font-bold text-slate-800">w/z ≤ 0,38</span>). Der Frischbeton verhält sich wie leicht feuchter Sand.
+                      <strong>Konsistenzbereich erdfeucht:</strong> Der Wasserzementwert wird sehr niedrig eingestellt (<span className="font-mono font-bold text-slate-800">w/z ≤ 0,38</span>). Der Frischbeton verhält sich wie leicht feuchter Sand.
                     </li>
                     <li>
                       <strong>Rüttelpress-Verdichtung:</strong> Der Beton wird in die Gussform gefüllt. Ein Rütteltisch versetzt das System in Schwingung, wodurch die Körner dicht gleiten. Gleichzeitig presst ein Hydraulikschuh (Auflast) mechanisch von oben.

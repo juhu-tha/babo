@@ -79,7 +79,7 @@ export const massivbauTasks: Task[] = [
     title: 'Stützenbemessung: Knicklänge & Theorie II. Ordnung',
     question: 'Eine Stahlbetonstütze (L=3,0 m) befindet sich im Erdgeschoss eines ausgesteiften Gebäudes (oben und unten unverschieblich eingespannt). Wie groß ist die Knicklänge l0 für die Berechnung nach Theorie II. Ordnung näherungsweise?',
     moduleHint: { id: 'stuetzenbemessung', name: 'Stützenbemessung' },
-    solution: 'In einem ausgesteiften (knotenunverschieblichen) Tragwerk mit monolithischen Deckenanschlüssen oben und unten liegt näherungsweise der Euler-Fall IV mit elastischer Teileinspannung vor. Die wirksame Knicklänge $l_0$ beträgt typischerweise $l_0 = 0{,}7 \\cdot L = 0{,}7 \\times 3{,}0\\text{ m} = 2{,}1\\text{ m}$. Bei dieser Knicklänge werden anschließend geometrische Imperfektionen ($e_0$) und Verformungen nach Theorie II. Ordnung berechnet.'
+    solution: 'In einem ausgesteiften (knotenunverschieblichen) Tragwerk mit monolithischen Deckenanschlüssen oben und unten liegt näherungsweise der Euler-Fall 4 mit elastischer Teileinspannung vor. Die wirksame Knicklänge $l_0$ beträgt typischerweise $l_0 = 0{,}7 \\cdot L = 0{,}7 \\times 3{,}0\\text{ m} = 2{,}1\\text{ m}$. Bei dieser Knicklänge werden anschließend geometrische Imperfektionen ($e_0$) und Verformungen nach Theorie II. Ordnung berechnet.'
   },
   {
     id: 't_spannbeton',

@@ -1083,7 +1083,7 @@ export default function BpBetonzusatzmittel() {
         ]}
         wikipedia={[
           { title: 'Betonzusatzmittel', url: 'https://de.wikipedia.org/wiki/Betonzusatzmittel' },
-          { title: 'Wasser-Zement-Wert', url: 'https://de.wikipedia.org/wiki/Wasser-Zement-Wert' },
+          { title: 'Wasserzementwert', url: 'https://de.wikipedia.org/wiki/Wasserzementwert' },
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' }
         ]}
         literatur={[

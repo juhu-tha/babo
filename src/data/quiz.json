@@ -21,7 +21,7 @@
       "topic": "Dichtebegriffe & Porenvolumen",
       "misconception": "Verwechslung von Reindichte, Rohdichte und Raumgewicht.",
       "coreRule": "Reindichte = Masse / Feststoffvolumen (ohne Poren). Rohdichte = Masse / geometrisches Gesamtvolumen (inkl. Poren).",
-      "actionableAdvice": "Wiederhole im Modul Baustoffkenngrößen die Pyknometer-Messung und die Definition der Porosität P = 1 - (ρ / ρ_s).",
+      "actionableAdvice": "Wiederholen Sie im Modul Baustoffkenngrößen die Pyknometer-Messung und die Definition der Porosität P = 1 - (ρ / ρ_s).",
       "targetModuleTab": "baustoffkenngroessen",
       "targetModuleLabel": "Baustoffkenngrößen"
     },
@@ -51,7 +51,7 @@
       "topic": "Wärme- und Feuchtetransport in porösen Medien",
       "misconception": "Annahme, Feuchtigkeit hätte nur geringen oder gar dämmenden Einfluss auf poröse Baustoffe.",
       "coreRule": "Wasser besitzt λ ≈ 0,60 W/(m·K), Eis λ ≈ 2,2 W/(m·K), ruhende Luft nur 0,026 W/(m·K). Feuchte steigert den Wärmeverlust massiv.",
-      "actionableAdvice": "Prüfe im Modul Wärmeeigenschaften die Feuchteumrechnungsfaktoren und die Auswirkung auf den U-Wert.",
+      "actionableAdvice": "Prüfen Sie im Modul Wärmeeigenschaften die Feuchteumrechnungsfaktoren und die Auswirkung auf den U-Wert.",
       "targetModuleTab": "waermeeigenschaften",
       "targetModuleLabel": "Wärmeeigenschaften"
     },
@@ -141,7 +141,7 @@
       "topic": "Grenzen zerstörungsfreier Prüfverfahren",
       "misconception": "Annahme, der Rückprallwert R entspräche ohne Eichung direkt der Kernbetonfestigkeit.",
       "coreRule": "Der Rückprallhammer erfasst nur oberflächennahe Härte. Karbonatisierte Randschichten täuschen zu hohe Festigkeiten vor!",
-      "actionableAdvice": "Lies im Modul ZfP den Abschnitt über Einflussfaktoren (Karbonatisierung, Feuchte, Ausrichtung) auf den R-Wert.",
+      "actionableAdvice": "Lesen Sie im Modul ZfP den Abschnitt über Einflussfaktoren (Karbonatisierung, Feuchte, Ausrichtung) auf den R-Wert.",
       "targetModuleTab": "zfp",
       "targetModuleLabel": "Zerstörungsfreie Prüfung"
     },
@@ -171,7 +171,7 @@
       "topic": "Sicherheitsgläser & Vorspannmechanik",
       "misconception": "Verwechslung von ESG (stumpfe Krümel) mit TVG (grobscholliges Rissbild für Resttragfähigkeit im VSG-Verbund).",
       "coreRule": "ESG: Druckspannung >= 90 MPa, Krümelbruch, verletzungshemmend. TVG: Druckspannung 40-55 MPa, grobschollig, für Verbundglas-Resttragfähigkeit.",
-      "actionableAdvice": "Prüfe im Modul Gläser & Fenster die Tabelle der Vorspannarten und die Brucheigenschaften.",
+      "actionableAdvice": "Prüfen Sie im Modul Gläser & Fenster die Tabelle der Vorspannarten und die Brucheigenschaften.",
       "targetModuleTab": "bp_glaeser",
       "targetModuleLabel": "Gläser & Fenster"
     },
@@ -231,7 +231,7 @@
       "topic": "Normbezeichnung von Baustählen",
       "misconception": "Verwechslung von Streckgrenze mit Zugfestigkeit oder falsche Interpretation der Zähigkeitsgütegruppe (J2 vs. JR vs. K2).",
       "coreRule": "S = Baustahl, Zahl = Streckgrenze fy in N/mm², Buchstabe/Ziffer = Kerbschlagarbeit (JR: +20°C, J0: 0°C, J2: -20°C, K2: -20°C mit 40J).",
-      "actionableAdvice": "Gehe im Modul Metallische Werkstoffe die EN-10027-Kurznamen-Tabelle durch.",
+      "actionableAdvice": "Gehen Sie im Modul Metallische Werkstoffe die EN-10027-Kurznamen-Tabelle durch.",
       "targetModuleTab": "bp_metallisch",
       "targetModuleLabel": "Metallische Werkstoffe"
     },
@@ -261,7 +261,7 @@
       "topic": "Einsatzgebiete von Dämmstoffen & Feuchteschutz",
       "misconception": "Gleichsetzung von EPS (Styropor, punktverschweißt, wasseraufnehmend) mit XPS (extrudiert, geschlossenzellig, wasserresistent).",
       "coreRule": "Im Erdreich (Perimeter) und bei Umkehrdächern darf wegen Feuchtebeanspruchung nur geschlossenzelliges XPS oder Schaumglas eingesetzt werden.",
-      "actionableAdvice": "Prüfe im Modul Dämmstoffe die Vergleichsmatrix EPS vs. XPS vs. Schaumglas bezüglich Wasseraufnahme und Druckfestigkeit.",
+      "actionableAdvice": "Prüfen Sie im Modul Dämmstoffe die Vergleichsmatrix EPS vs. XPS vs. Schaumglas bezüglich Wasseraufnahme und Druckfestigkeit.",
       "targetModuleTab": "bp_daemmung",
       "targetModuleLabel": "Dämmstoffe"
     },
@@ -286,7 +286,7 @@
       "Sie bestehen ausschließlich aus biobasierten Zellulosefasern."
     ],
     "correctIdx": 0,
-    "explanation": "Duroplaste bilden bei der Aushärtung ein unauflösliches, räumlich weitmaschig oder engmaschig kovalentes 3D-Netzwerk aus. du bist thermisch nicht umformbar und unlöslich (z. B. Harzinjektionen, GFK-Profile, 2K-Klebstoffe). Thermoplaste hingegen bestehen aus unvernetzten Polymerketten und schmelzen reversibel.",
+    "explanation": "Duroplaste bilden bei der Aushärtung ein unauflösliches, räumlich weitmaschig oder engmaschig kovalentes 3D-Netzwerk aus. Sie sind thermisch nicht umformbar und unlöslich (z. B. Harzinjektionen, GFK-Profile, 2K-Klebstoffe). Thermoplaste hingegen bestehen aus unvernetzten Polymerketten und schmelzen reversibel.",
     "gapAnalysis": {
       "topic": "Polymerstrukturen & Verarbeitbarkeit",
       "misconception": "Fehlende Unterscheidung zwischen schmelzbaren Thermoplasten (PE, PP, PVC) und nicht schmelzbaren Duroplasten (Epoxidharz, Polyester).",
@@ -351,7 +351,7 @@
       "topic": "Wasserzementwert & Dauerhaftigkeit",
       "misconception": "Die Annahme, mehr Wasser verbessere die Hydratation oder Festigkeit.",
       "coreRule": "Jeder Liter Wasser über dem chemischen Bedarf (w/z ≈ 0,38) hinterlässt nach dem Verdunsten Hohlräume (Kapillarporen).",
-      "actionableAdvice": "Studiere im Modul Betontechnologie die Walz-Formel und das Kapillarporendiagramm nach Powers.",
+      "actionableAdvice": "Studieren Sie im Modul Betontechnologie die Walz-Formel und das Kapillarporendiagramm nach Powers.",
       "targetModuleTab": "beton_info",
       "targetModuleLabel": "Betontechnologie"
     },
@@ -381,7 +381,7 @@
       "topic": "Klassifizierung von Umweltangriffen (Expositionsklassen)",
       "misconception": "Verwechslung von Karbonatisierung (XC), Frost (XF), chemischem Angriff (XA) und Tausalzen (XD).",
       "coreRule": "XC = Carbonation; XD = De-icing salt; XS = Sea water; XF = Freeze-thaw; XA = Chemical attack; XM = Mechanical abrasion.",
-      "actionableAdvice": "Gehe im Modul Betontechnologie die Expositionsklassentabelle und die geforderten Mindestbetongüten (z.B. C35/45, w/z <= 0,45 bei XD3) durch.",
+      "actionableAdvice": "Gehen Sie im Modul Betontechnologie die Expositionsklassentabelle und die geforderten Mindestbetongüten (z.B. C35/45, w/z <= 0,45 bei XD3) durch.",
       "targetModuleTab": "beton_info",
       "targetModuleLabel": "Betontechnologie"
     },
@@ -441,7 +441,7 @@
       "topic": "Holzfeuchtegleichgewicht & Fasersättigung",
       "misconception": "Annahme, Holz schwinde auch oberhalb von 30% Holzfeuchte weiter.",
       "coreRule": "Schwinden und Quellen findet AUSSCHLIESSLICH unterhalb des Fasersättigungsbereichs (u ≈ 28-32%) durch Abgabe/Aufnahme von Zellwandwasser statt.",
-      "actionableAdvice": "Lies im Modul Holzbau die Sorptionsisotherme und die Richtwerte für Holzfeuchte nach Einbau.",
+      "actionableAdvice": "Lesen Sie im Modul Holzbau die Sorptionsisotherme und die Richtwerte für Holzfeuchte nach Einbau.",
       "targetModuleTab": "holzbau_info",
       "targetModuleLabel": "Holzbau"
     },
@@ -501,7 +501,7 @@
       "topic": "Karbonatisierungsmechanismus & Bewehrungskorrosion",
       "misconception": "Fehlende Kenntnis des pH-Wertes und der chemischen Schutzwirkung des Zementsteins auf Stahl.",
       "coreRule": "Frischer Zementstein: pH > 12,5 -> Stahl ist passiviert (rostet nicht). Karbonatisierter Beton: pH < 9 -> Depassivierung + Rost bei Zutritt von H2O und O2.",
-      "actionableAdvice": "Prüfe im Modul Dauerhaftigkeit den Phenolphthalein-Test und die Wurzelfunktion des Karbonatisierungsfortschritts xc = k · √t.",
+      "actionableAdvice": "Prüfen Sie im Modul Dauerhaftigkeit den Phenolphthalein-Test und die Wurzelfunktion des Karbonatisierungsfortschritts xc = k · √t.",
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Dauerhaftigkeit"
     },
@@ -560,7 +560,7 @@
       "topic": "Bauwerksüberwachung nach VDI 6200",
       "misconception": "Unkenntnis der gesetzlichen Betreiberverantwortung und Inspektionsstufen bei bestehenden Tragwerken.",
       "coreRule": "CC1 = geringe Folgen; CC2 = mittlere Folgen; CC3 = hohe Folgen (Versammlungsstätten, Hallen > 12m Spannweite). Prüfungstiefen: Stufe 1 bis 3.",
-      "actionableAdvice": "Lies im Modul Zustandsbewertung die Matrix der Prüfungsintervalle (1, 3 und 6 Jahre) nach VDI 6200.",
+      "actionableAdvice": "Lesen Sie im Modul Zustandsbewertung die Matrix der Prüfungsintervalle (1, 3 und 6 Jahre) nach VDI 6200.",
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
@@ -620,7 +620,7 @@
       "topic": "Biogener Kohlenstoffspeicher in Ökobilanzen",
       "misconception": "Verwechslung von fossilen Emissionen mit dem bilanziellen Kohlenstoffspeichereffekt nachwachsender Rohstoffe.",
       "coreRule": "Photosynthese entzieht der Luft CO2. 1 m³ Fichtenholz bindet ca. 800-900 kg CO2-Äquivalente temporär als Kohlenstoffsenke.",
-      "actionableAdvice": "Gehe im Modul Ökobilanzierung (LCA) die Modulstruktur nach DIN EN 15804 (A1 bis D) durch.",
+      "actionableAdvice": "Gehen Sie im Modul Ökobilanzierung (LCA) die Modulstruktur nach DIN EN 15804 (A1 bis D) durch.",
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
@@ -679,7 +679,7 @@
       "topic": "Demontierbarkeit & Verbundbaustoffe",
       "misconception": "Vernachlässigung des Rückbau- und Trennungsaufwands bei der Werkstoffwahl.",
       "coreRule": "Nicht trennbare Stoffverbunde (z.B. Kleber auf Dämmung) verhindern echtes Recycling im geschlossenen Kreislauf (Closed Loop).",
-      "actionableAdvice": "Lies im Modul Kreislaufwirtschaft die Kriterien für zirkuläre Fügedetails und Schichtentrennung.",
+      "actionableAdvice": "Lesen Sie im Modul Kreislaufwirtschaft die Kriterien für zirkuläre Fügedetails und Schichtentrennung.",
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
@@ -739,7 +739,7 @@
       "topic": "Rechtliche Bedeutung der CE-Kennzeichnung",
       "misconception": "Fehlglaube, CE sei ein Qualitätszertifikat oder garantiere universelle baurechtliche Verwendbarkeit.",
       "coreRule": "CE = Herstellergarantie für erklärte Werte (DoP) nach hEN. Die nationale bauaufsichtliche Verwendbarkeit muss gesondert geprüft werden.",
-      "actionableAdvice": "Prüfe im Modul CE-Kennzeichnung den Unterschied zwischen DoP, CE-Zeichen und allgemeiner Bauartgenehmigung (aBG).",
+      "actionableAdvice": "Prüfen Sie im Modul CE-Kennzeichnung den Unterschied zwischen DoP, CE-Zeichen und allgemeiner Bauartgenehmigung (aBG).",
       "targetModuleTab": "bauprodukte_info",
       "targetModuleLabel": "CE-Kennzeichnung"
     },
@@ -769,7 +769,7 @@
       "topic": "Digitaler Produktpass & Informationsketten",
       "misconception": "Reduktion des DPP auf reine Produktwerbung statt als standardisierten Zirkularitäts-Datensatz.",
       "coreRule": "DPP = Standardisierter digitaler Zwilling des Baustoffs mit granularen Inhaltsstoffen, EPDs und Trennbarkeitsnachweisen.",
-      "actionableAdvice": "Lies im Modul Digitaler Produktpass (DPP) die Anforderungen der EU-Ökodesign-Verordnung nach.",
+      "actionableAdvice": "Lesen Sie im Modul Digitaler Produktpass (DPP) die Anforderungen der EU-Ökodesign-Verordnung nach.",
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass"
     },

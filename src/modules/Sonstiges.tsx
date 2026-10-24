@@ -364,7 +364,7 @@ export default function Sonstiges() {
 
       <ModuleFooter wikipedia={[
         { title: 'Phasenwechselmaterial', url: 'https://de.wikipedia.org/wiki/Latentw%C3%A4rmespeicher' },
-        { title: 'Leichtzuschlag (Beton)', url: 'https://de.wikipedia.org/wiki/Leichtbeton' },
+        { title: 'Leichte Gesteinskörnung (Beton)', url: 'https://de.wikipedia.org/wiki/Leichtbeton' },
         { title: 'Aerogel', url: 'https://de.wikipedia.org/wiki/Aerogel' },
         { title: 'Opus caementicium (römischer Beton)', url: 'https://de.wikipedia.org/wiki/Opus_caementicium' },
         { title: 'Photokatalyse', url: 'https://de.wikipedia.org/wiki/Photokatalyse' },

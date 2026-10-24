@@ -122,7 +122,7 @@ export default function Sichtbeton() {
             </div>
             <div>
               <strong className="text-sm text-text-main">Marmorierungen / Wolkenbildung:</strong>
-              <p className="text-xs text-text-main/70 mt-1">Helligkeitsunterschiede. Entstehen durch unterschiedliche Wasser-Zement-Werte an der Oberfläche (z.B. durch ungleichmäßiges Saugen der Schalung oder Trennmittelpfützen).</p>
+              <p className="text-xs text-text-main/70 mt-1">Helligkeitsunterschiede. Entstehen durch unterschiedliche Wasserzementwerte an der Oberfläche (z.B. durch ungleichmäßiges Saugen der Schalung oder Trennmittelpfützen).</p>
             </div>
             <div>
               <strong className="text-sm text-text-main">Kiesnester:</strong>

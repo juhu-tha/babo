@@ -243,7 +243,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
           clusterName: q.clusterName,
           misconception: q.gapAnalysis?.misconception || 'Fehlendes Detailwissen bei baustofflichen Kenngrößen.',
           coreRule: q.gapAnalysis?.coreRule || q.explanation,
-          actionableAdvice: q.gapAnalysis?.actionableAdvice || `Wiederhole die Lehrinhalte im Modul ${q.moduleTitle}.`,
+          actionableAdvice: q.gapAnalysis?.actionableAdvice || `Wiederholen Sie die Lehrinhalte im Modul ${q.moduleTitle}.`,
           date: new Date().toLocaleDateString('de-DE')
         });
       } else {
@@ -1314,7 +1314,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                       {/* Actionable Direct Link Button */}
                       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
                         <span className="text-xs text-text-main/60">
-                          {q.gapAnalysis?.actionableAdvice || 'Wiederhole das entsprechende Modul zur Schließung dieser Lücke.'}
+                          {q.gapAnalysis?.actionableAdvice || 'Wiederholen Sie das entsprechende Modul zur Schließung dieser Lücke.'}
                         </span>
 
                         <button

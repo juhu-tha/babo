@@ -189,7 +189,7 @@ export interface QngMaterial {
 }
 
 export const QNG_DATA: QngMaterial[] = [
-  { name: 'Normalbeton C25/30 (CEM I, Standard)', category: 'Mineralisch', unit: 'm³', gwp: 235, penrt: 1250, rec: 'Sehr gut (Rezyklat-Zuschlag Typ I/II für r-Beton)' },
+  { name: 'Normalbeton C25/30 (CEM I, Standard)', category: 'Mineralisch', unit: 'm³', gwp: 235, penrt: 1250, rec: 'Sehr gut (rezyklierte Gesteinskörnung Typ 1/2 für r-Beton)' },
   { name: 'Sonderbeton C30/37 (CEM III, CO₂-reduziert)', category: 'Mineralisch', unit: 'm³', gwp: 145, penrt: 950, rec: 'Sehr gut (Hüttensandmischung, ressourcensparend)' },
   { name: 'Kalksandstein (KS-Planstein, Rohdichte 1.8)', category: 'Mineralisch', unit: 't', gwp: 110, penrt: 980, rec: 'Mittel (Rein aufbereitet zu Kalksandsteinmehl)' },
   { name: 'Porenbetonplanstein', category: 'Mineralisch', unit: 'm³', gwp: 185, penrt: 1850, rec: 'Mittel (Richten für sortenreines Werksrecycling)' },

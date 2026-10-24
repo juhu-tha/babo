@@ -125,7 +125,7 @@ export default function Gesteine() {
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p>
-                Die physikalischen und mechanischen Eigenschaften von Gesteinen bestimmen deren Eignung als Baustoff, sei es als Naturwerkstein (Fassaden, Böden) oder als Gesteinskörnung (Zuschlag für Beton und Asphalt).
+                Die physikalischen und mechanischen Eigenschaften von Gesteinen bestimmen deren Eignung als Baustoff, sei es als Naturwerkstein (Fassaden, Böden) oder als Gesteinskörnung für Beton und Asphalt.
               </p>
             </div>
 

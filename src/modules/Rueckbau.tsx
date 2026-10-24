@@ -45,9 +45,9 @@ const baustoffRecyclingData = [
     subtitle: "Wichtigste stoffliche Fraktion der mineralischen Ersatzbaustoffe im Hoch- und Tiefbau",
     process: "Brechen (Prallbrecher), Absieben in definierte Fraktionen (0/4, 4/8, 8/16, 16/32), Nassklassierung zur Leichtstoffabtrennung, Magnetscheidung für Bewehrungsstahl.",
     useCases: [
-      "Zuschlag für R-Beton im Hochbau (Ersatz von Primärkies bis zu 35/45 Gew.-% nach DIN EN 206 / DIN 1045-2).",
+      "Gesteinskörnung für R-Beton im Hochbau (Ersatz von Primärkies bis zu 35/45 Gew.-% nach DIN EN 206 / DIN 1045-2).",
       "Ungebundene Tragschichten im Straßenbau (Frostschutzschichten) nach Ersatzbaustoffverordnung (EBV) Güteklasse RC-1 / RC-2.",
-      "Asphaltproduktions-Zuschlagstoffe (feine Gesteinsmehle)."
+      "Gesteinskörnungen für die Asphaltproduktion (feine Gesteinsmehle)."
     ],
     risks: "Anhaftender Gipsputz (Gefahr von Ettringittreiben), organische Anhaftungen (Holz, Kunststoffe), Farbanstriche (historisch asbesthaltig oder bleihaltig), Karbonatisierungstiefe.",
     regulations: "Ersatzbaustoffverordnung (EBV) 2023: Zuweisung zu den Einbauklassen (BM-0, BM-F1 bis BM-F3) bestimmt die zulässigen hydrogeologischen Einbaubedingungen."
@@ -62,7 +62,7 @@ const baustoffRecyclingData = [
     useCases: [
       "Produktion von Vegetationssubstraten für extensive und intensive Dachbegrünungen (hohe Wasserspeicherkapazität).",
       "Zusatzstoff für Tennissand und Sportplatzböden.",
-      "Leichtzuschlag für wärmedämmende R-Ziegel (geschlossener Kreislauf im Ziegelwerk).",
+      "Leichte Gesteinskörnung für wärmedämmende R-Ziegel (geschlossener Kreislauf im Ziegelwerk).",
       "Unterbau im Erd- und Wegebau (EBV-Klasse Ziegelmaterial)."
     ],
     risks: "Sulphathaltige Mörtelreste (Gipsmörtel). Gips im Ziegel führt bei Recycling-Einsatz im Beton zu enormen Quellschäden. Dämmmörtel-Anhaftungen.",
@@ -120,9 +120,9 @@ const baustoffRecyclingData = [
     process: "Manueller Scheibenausbau aus dem Holz-/Kunststoffrahmen. Aufmahlen, optoelektronische Trennung nach Farbreinheit, Entfernung von Metall- und Folienresten.",
     useCases: [
       "Wiederaufladung der Floatglas-Produktion (Sparen von Schmelzenergie um ca. 25% bei Scherbeneinsatz).",
-      "Blähglas-Herstellung (hochwertiger wärmedämmender Leichtzuschlagstoff).",
+      "Blähglas-Herstellung (hochwertige wärmedämmende leichte Gesteinskörnung).",
       "Rohstoff für Dämmmaterialien (Glaswolle).",
-      "Zuschlagstoff in der Fliesen- und Sanitärkeramikindustrie."
+      "Rohstoffzusatz in der Fliesen- und Sanitärkeramikindustrie."
     ],
     risks: "Verbundsicherheitsglas (VSG): Die zähelastische Polyvinylbutyral-Folie (PVB) haftet extrem fest am Glas und erfordert Spezial-Schälmühlen. Blei- oder Cadmiumschichten bei historischen Bedruckungen.",
     regulations: "Bayerischer LfU-Rückbauleitfaden fordert den Ausbau der kompletten Fensterbaugruppe vor dem maschinellen Abbruch."

@@ -404,7 +404,7 @@ export const MODULE = [
     meta: 'Beton-Lexikon von A bis Z: Präzise Worterklärungen, Fachbegriffe und Definitionen der Transportbeton- und Baustellenpraxis.',
     suche: ['lexikon', 'alphabet', 'suchbegriffe', 'glossar', 'betonbegriffe', 'wörterbuch', 'begriffserklärung'] },
   { id: 'grundlagen', label: 'Grundlagen', icon: 'Layers', gruppe: 'Betontechnologie',
-    baum: { titel: 'Ausgangsstoffe des Betons', typ: 'standard', kurz: 'Zement, Wasser, Zuschlag, Sieblinienoptimierung nach Fuller.', icon: 'Layers' },
+    baum: { titel: 'Ausgangsstoffe des Betons', typ: 'standard', kurz: 'Zement, Wasser, Gesteinskörnung, Sieblinienoptimierung nach Fuller.', icon: 'Layers' },
     meta: 'Bestandteile von Beton: Zementarten, Anmachwasser, Gesteinskörnung, Sieblinienoptimierung und Zusatzmittelanwendungen.',
     suche: ['zement', 'wasser', 'gestein', 'zusatzstoffe', 'zusatzmittel', 'kornzusammensetzung', 'sieblinie'] },
   { id: 'bindemittel', label: 'Bindemittel', icon: 'Factory', gruppe: 'Betontechnologie',

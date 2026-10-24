@@ -196,7 +196,7 @@ const DATA_BAULEITUNG: TabContent = {
         {
           id: "bl_bet_2",
           title: "Nachträgliches Baustellenwasser unterbinden",
-          description: "Das illegale Hinzufügen von Wasser zur Verbesserung der Fließfähigkeit erhöht den Wasser-Zement-Wert (w/z) dramatisch und beschädigt Festigkeit, Frostbeständigkeit und Karbonatisierungswiderstand.",
+          description: "Das illegale Hinzufügen von Wasser zur Verbesserung der Fließfähigkeit erhöht den Wasserzementwert (w/z) dramatisch und beschädigt Festigkeit, Frostbeständigkeit und Karbonatisierungswiderstand.",
           important: true,
           tip: "Bei 300 kg/m³ Zement erhöhen 10 l Wasser je m³ den w/z-Wert um rund 0,03 – das kann die Druckfestigkeit um grob 3 bis 5 N/mm² mindern. Konsistenzanpassungen nur mit Fließmittel nach Vorgabe des Lieferwerks und Dokumentation auf dem Lieferschein."
         },

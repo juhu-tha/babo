@@ -84,7 +84,7 @@ function GefuegebildungSimulator() {
       strengthMPa: 52.0,
       porosityPercent: 14,
       heatJg: 395,
-      desc: 'Hochdichtes Zementsteingefüge mit minimalem Anteil an durchgehenden Kapillarporen. Monosulfat-Bildung. Bei niedrigem w/z-Wert verbleiben unhydratisierte Klinkerreste als fester Mikrozuschlag. Erreichen der normativen Charakteristischen Druckfestigkeit fck.'
+      desc: 'Hochdichtes Zementsteingefüge mit minimalem Anteil an durchgehenden Kapillarporen. Monosulfat-Bildung. Bei niedrigem w/z-Wert verbleiben unhydratisierte Klinkerreste als inerter Mikrofüller. Erreichen der normativen Charakteristischen Druckfestigkeit fck.'
     }
   ];
 
@@ -725,7 +725,7 @@ export default function Zementchemie() {
                     <div className="my-1.5 overflow-x-auto">
                       <BlockMath math="2\,C_3S + 6\,H_2O \rightarrow C_3S_2H_3\,\text{(C-S-H-Gel)} + 3\,Ca(OH)_2\,\text{(Portlandit)}" />
                     </div>
-                    <span className="text-[11px] text-text-main/70 block mt-1">Sorgt für die charakterbildende Festigkeitsentwicklung in den ersten 7 Tagen. Wasser-Zement-Wert (<InlineMath math="w/z" />) steuert die Gefügedichte.</span>
+                    <span className="text-[11px] text-text-main/70 block mt-1">Sorgt für die charakterbildende Festigkeitsentwicklung in den ersten 7 Tagen. Wasserzementwert (<InlineMath math="w/z" />) steuert die Gefügedichte.</span>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-home-grau/30">
                     <span className="font-semibold block mb-1">2. Belit-Hydratation (<InlineMath math="C_2S" /> - Spätfestigkeit):</span>

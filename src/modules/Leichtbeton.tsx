@@ -105,7 +105,7 @@ export default function Leichtbeton() {
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 170 kg/m³</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">
-                  <td className="py-2 px-3 text-sm text-text-main font-medium">Leichtzuschlag</td>
+                  <td className="py-2 px-3 text-sm text-text-main font-medium">Leichte Gesteinskörnung</td>
                   <td className="py-2 px-3 text-sm text-text-main/70 text-right">~ 600 kg/m³</td>
                 </tr>
                 <tr className="border-b border-home-grau/10 last:border-0 hover:bg-off-white transition-colors">

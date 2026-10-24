@@ -132,7 +132,7 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     rechenwertNorm: '\\varepsilon_{ca}(\\infty) = 2.5 \\cdot (f_{ck} - 10) \\cdot 10^{-6} \\quad [\\text{für } f_{ck} \\ge 10\\text{ MPa}]',
     normBezug: 'EC2 Gl. (3.12)',
     bedeutungUndEinfluss: 'Entsteht durch Selbstaustrocknung (chemische Schrumpfung der Hydratphasen). Tritt unabhängig von der Luftfeuchtigkeit und auch unter Wasser auf.',
-    einflussparameter: ['Charakteristische Zylinderdruckfestigkeit f_ck', 'Wasser-Zement-Wert w/z']
+    einflussparameter: ['Charakteristische Zylinderdruckfestigkeit f_ck', 'Wasserzementwert w/z']
   },
   {
     id: 'eps_cd0',

@@ -49,7 +49,7 @@ export default function SpannbetonKennwerte() {
   const [matBeamHeight, setMatBeamHeight] = useState<number>(400); // mm Querschnittshöhe für fctm,fl
 
   // Einpressmörtel & Systembaustoffe States (DIN EN 447, Hüllrohre, Fette, Keile)
-  const [groutWz, setGroutWz] = useState<number>(0.36); // Wasser-Zement-Wert
+  const [groutWz, setGroutWz] = useState<number>(0.36); // Wasserzementwert
   const [groutAdmixturePct, setGroutAdmixturePct] = useState<number>(1.0); // % Quell-/Fließmittel
   const [groutCementType, setGroutCementType] = useState<string>('CEM I 52.5 R (C3A-arm)');
   const [groutDuctType, setGroutDuctType] = useState<'plastic_fib' | 'steel_en523' | 'unbonded_grease'>('plastic_fib');
@@ -165,7 +165,7 @@ export default function SpannbetonKennwerte() {
     const fcm_t = Number(fcmT(activeMatData.fck, t_eff, matCement as CementClass).toFixed(1));
     const fck_t = Number(fckT(activeMatData.fck, t_eff, matCement as CementClass).toFixed(1));
 
-    // Zuschlagstofffaktor nach EC2 Abs. 3.1.3(2)
+    // Faktor für die Art der Gesteinskörnung nach EC2 Abs. 3.1.3(2)
     const aggMap = { quarzit: 1.0, basalt: 1.20, kalkstein: 0.90, sandstein: 0.70 };
     const aggFactor = aggMap[matAggregate];
     const Ecm_28 = Math.round(activeMatData.Ecm * aggFactor);
@@ -1301,7 +1301,7 @@ export default function SpannbetonKennwerte() {
                 {/* w/z-Wert */}
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                    <span>Wasser-Zement-Wert (w/z):</span>
+                    <span>Wasserzementwert (w/z):</span>
                     <span className={`font-mono font-bold ${
                       groutWz <= 0.40 ? 'text-emerald-700' : 'text-rose-600'
                     }`}>
