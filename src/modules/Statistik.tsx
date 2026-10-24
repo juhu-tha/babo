@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -987,6 +987,44 @@ export default function Statistik() {
 
           </div>
         </div>
+
+        {/* Live-Rechenweg (AP 3.7) mit der aktuellen interaktiven Messreihe */}
+        <FormulaDerivationBox
+          live
+          title={`Ihr Rechenweg: Kennwerte Ihrer ${formatDeZahl(intStats.n, 0)} Messwerte`}
+          zielGleichung="\bar{x} = \frac{1}{n}\sum x_i, \quad s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n-1}}, \quad V = \frac{s}{\bar{x}}"
+          schritte={[
+            {
+              titel: 'Mittelwert',
+              erklaerung: 'Summe aller Einzelwerte geteilt durch die Anzahl n:',
+              formel: `\\bar{x} = \\frac{${interactiveSamples.map(v => formatDeTeXWert(v)).join(' + ')}}{${formatDeTeX(intStats.n, 0)}} = \\frac{${formatDeTeXWert(interactiveSamples.reduce((a, v) => a + v, 0))}}{${formatDeTeX(intStats.n, 0)}} = ${formatDeTeX(intStats.mean, 2)}\\,\\text{MPa}`
+            },
+            {
+              titel: 'Median',
+              erklaerung: intStats.n % 2 === 0
+                ? 'Bei gerader Anzahl ist der Median der Mittelwert der beiden mittleren Werte der sortierten Reihe:'
+                : 'Bei ungerader Anzahl ist der Median der mittlere Wert der sortierten Reihe:',
+              formel: `${intStats.sorted.map(v => formatDeTeXWert(v)).join(';\\; ')} \\;\\Rightarrow\\; \\tilde{x} = ${formatDeTeX(intStats.median, 1)}\\,\\text{MPa}`
+            },
+            {
+              titel: 'Quadratsumme der Abweichungen',
+              erklaerung: 'Jede Abweichung vom Mittelwert wird quadriert und aufsummiert:',
+              formel: `\\sum (x_i - \\bar{x})^2 = ${formatDeTeX(intStats.stdDev * intStats.stdDev * (intStats.n - 1), 2)}\\,\\text{MPa}^2`
+            },
+            {
+              titel: 'Standardabweichung der Stichprobe',
+              erklaerung: 'Geteilt durch n − 1 (Freiheitsgrade), dann die Wurzel gezogen:',
+              formel: `s = \\sqrt{\\frac{${formatDeTeX(intStats.stdDev * intStats.stdDev * (intStats.n - 1), 2)}}{${formatDeTeX(intStats.n - 1, 0)}}} = ${formatDeTeX(intStats.stdDev, 2)}\\,\\text{MPa}`
+            },
+            {
+              titel: 'Variationskoeffizient',
+              erklaerung: 'Streuung relativ zum Mittelwert:',
+              formel: `V = \\frac{${formatDeTeX(intStats.stdDev, 2)}}{${formatDeTeX(intStats.mean, 2)}} \\cdot 100\\,\\% = ${formatDeTeX(intStats.cv, 1)}\\,\\%`
+            }
+          ]}
+          ergebnisHinweis="Verschieben Sie einen Messwert im Diagramm oder per Regler – der Rechenweg rechnet sofort mit."
+          normQuelle="DIN EN 1990:2021-10, Anhang D"
+        />
 
         {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
         <FormulaDerivationBox

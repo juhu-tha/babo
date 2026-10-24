@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { Volume2 } from 'lucide-react';
 import { rwMassiv, schalldaemmung } from '@/src/calc/schall';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
@@ -241,6 +241,39 @@ export default function Schallschutz() {
                 </p>
               </div>
             </div>
+
+            {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Schichtaufbau */}
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: Schalldämm-Maß Ihres Aufbaus"
+              zielGleichung="R_w = 30{,}9 \cdot \lg\left(\frac{m'}{1\,\text{kg/m}^2}\right) - 22{,}2\,\text{dB}"
+              schritte={[
+                {
+                  titel: 'Flächenbezogene Masse je Schicht',
+                  erklaerung: 'Dicke d (in m) mal Rohdichte ρ (in kg/m³) ergibt die Masse je Quadratmeter Wandfläche:',
+                  formel: `m' = \\sum d_i \\cdot \\rho_i = ${resolvedLayers.map(l => `${formatDeTeXWert(l.d)} \\cdot ${formatDeTeX(l.density, 0)}`).join(' + ') || '0'}`
+                },
+                {
+                  titel: 'Summe',
+                  erklaerung: schallData.isValidRange
+                    ? 'Der Wert liegt im Gültigkeitsbereich 65 ≤ m′ ≤ 720 kg/m² der Gleichung.'
+                    : 'Achtung: Der Wert liegt außerhalb des Gültigkeitsbereichs 65 ≤ m′ ≤ 720 kg/m² – das Ergebnis ist nur eine Orientierung.',
+                  formel: `m' = ${formatDeTeX(schallData.m_prime, 1)}\\,\\text{kg/m}^2`
+                },
+                {
+                  titel: 'Logarithmus der Masse',
+                  erklaerung: 'Bezogen auf m′₀ = 1 kg/m²:',
+                  formel: `\\lg(${formatDeTeX(schallData.m_prime, 1)}) = ${formatDeTeX(schallData.m_prime > 0 ? Math.log10(schallData.m_prime) : NaN, 3)}`
+                },
+                {
+                  titel: 'Bewertetes Schalldämm-Maß',
+                  erklaerung: 'Einsetzen in die Massekurve nach DIN 4109-32 (negative Werte werden auf 0 dB begrenzt):',
+                  formel: `R_w = 30{,}9 \\cdot ${formatDeTeX(schallData.m_prime > 0 ? Math.log10(schallData.m_prime) : NaN, 3)} - 22{,}2 = ${formatDeTeX(schallData.Rw, 1)}\\,\\text{dB}`
+                }
+              ]}
+              ergebnisHinweis="Leichte Dämm- und Holzschichten verändern R_w über Resonanzeffekte; die Massekurve gilt nur für einschalige, biegesteife Bauteile."
+              normQuelle="DIN 4109-32:2016-07, Gl. (2)"
+            />
           </div>
 
           <div className="lg:col-span-6 flex flex-col gap-6">

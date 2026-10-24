@@ -1,4 +1,4 @@
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Activity } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -257,6 +257,42 @@ export default function EModul() {
                 Bei Normalbeton (Gestein steifer als Zementstein, Matrix umschließt die Körner) liegt der gemessene E-Modul meist nahe der unteren Hashin-Shtrikman-Schranke; die weichere Übergangszone (ITZ) kann ihn noch darunter drücken.
               </div>
             </div>
+
+            {/* Live-Rechenweg (AP 3.7) mit den aktuellen Eingaben */}
+            <FormulaDerivationBox
+              live
+              title="Ihr Rechenweg: E-Modul nach EC2 und Mischungsregeln"
+              zielGleichung="E_{cm} = \alpha_E \cdot 22 \cdot (f_{cm}/10)^{0{,}3};\quad E_{\text{Voigt}} = v_G E_G + v_M E_M"
+              schritte={[
+                {
+                  titel: 'Mittlere Druckfestigkeit',
+                  erklaerung: 'Nach DIN EN 1992-1-1, Tab. 3.1 liegt der Mittelwert 8 MPa über der charakteristischen Festigkeit:',
+                  formel: `f_{cm} = f_{ck} + 8 = ${formatDeTeX(fck, 0)} + 8 = ${formatDeTeX(fck + 8, 0)}\\,\\text{MPa}`
+                },
+                {
+                  titel: 'Normativer E-Modul',
+                  erklaerung: `Mit dem Gesteinsbeiwert α_E = ${formatDeZahl(alphaE, 2)} ergibt sich der Sekantenmodul:`,
+                  formel: `E_{cm} = ${formatDeTeX(alphaE, 2)} \\cdot 22 \\cdot \\left(\\frac{${formatDeTeX(fck + 8, 0)}}{10}\\right)^{0{,}3} = ${formatDeTeX(results.ecm, 1)}\\,\\text{GPa}`
+                },
+                {
+                  titel: 'Volumenanteile',
+                  erklaerung: 'Gestein und Zementstein füllen zusammen das gesamte Volumen:',
+                  formel: `v_G = ${formatDeTeX(volGestein / 100, 2)},\\quad v_M = 1 - v_G = ${formatDeTeX(1 - volGestein / 100, 2)}`
+                },
+                {
+                  titel: 'Obere Schranke (Voigt, Parallelschaltung)',
+                  erklaerung: 'Beide Phasen erfahren dieselbe Dehnung:',
+                  formel: `E_{\\text{Voigt}} = ${formatDeTeX(volGestein / 100, 2)} \\cdot ${formatDeTeX(eModulGestein, 0)} + ${formatDeTeX(1 - volGestein / 100, 2)} \\cdot ${formatDeTeX(eModulMatrix, 0)} = ${formatDeTeX(results.eVoigt, 1)}\\,\\text{GPa}`
+                },
+                {
+                  titel: 'Untere Schranke (Reuss, Reihenschaltung)',
+                  erklaerung: 'Beide Phasen erfahren dieselbe Spannung:',
+                  formel: `E_{\\text{Reuss}} = \\frac{1}{\\frac{${formatDeTeX(volGestein / 100, 2)}}{${formatDeTeX(eModulGestein, 0)}} + \\frac{${formatDeTeX(1 - volGestein / 100, 2)}}{${formatDeTeX(eModulMatrix, 0)}}} = ${formatDeTeX(results.eReuss, 1)}\\,\\text{GPa}`
+                }
+              ]}
+              ergebnisHinweis={`Der tatsächliche E-Modul des Zweiphasenmaterials liegt zwischen ${formatDeZahl(results.eReuss, 1)} und ${formatDeZahl(results.eVoigt, 1)} GPa; die Hashin-Shtrikman-Schranken (${formatDeZahl(results.eHSMinus, 1)} bis ${formatDeZahl(results.eHSPlus, 1)} GPa) engen diesen Bereich ein.`}
+              normQuelle="DIN EN 1992-1-1:2011-01, 3.1.3"
+            />
 
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main">E-Modul in Abhängigkeit vom Gesteinsanteil</h3>

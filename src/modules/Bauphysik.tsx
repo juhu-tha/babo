@@ -8,7 +8,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { 
   Plus, 
   Trash2, 
@@ -225,6 +225,7 @@ export default function Bauphysik() {
 
     return {
       U,
+      R_T: uErgebnis.R_T,
       hinweise: uErgebnis.hinweise,
       labels: sd_profile.map(sd => formatDeZahl(sd, 2) + 'm'),
       T_labels: T_profile.map((_, i) => i === 0 ? 'Innen' : i === T_profile.length - 1 ? 'Außen' : `Grenzfl. ${i}`),
@@ -1052,6 +1053,44 @@ export default function Bauphysik() {
                 })()}
 
               </div>
+
+              {/* Live-Rechenweg (AP 3.7): U-Wert mit dem aktuellen Schichtaufbau */}
+              <FormulaDerivationBox
+                live
+                title="Ihr Rechenweg: U-Wert Ihres Bauteils"
+                zielGleichung="U = \frac{1}{R_{si} + \sum d_i/\lambda_i + R_{se}}"
+                schritte={[
+                  {
+                    titel: 'Wärmeübergangswiderstände',
+                    erklaerung: 'Nach DIN EN ISO 6946, Tab. 7 für die gewählte Bauteilart (Wärmestromrichtung):',
+                    formel: `R_{si} = ${formatDeTeX(Rsi, 2)}\\,\\text{m}^2\\text{K/W},\\quad R_{se} = ${formatDeTeX(Rse, 2)}\\,\\text{m}^2\\text{K/W}`
+                  },
+                  {
+                    titel: 'Wärmedurchlasswiderstände der Schichten',
+                    erklaerung: 'Jede Schicht trägt mit Dicke d (in m) geteilt durch die Wärmeleitfähigkeit λ bei:',
+                    formel: `\\sum \\frac{d_i}{\\lambda_i} = ${resolvedLayers.map(l => `\\frac{${formatDeTeXWert(l.d)}}{${formatDeTeXWert(l.lambda)}}`).join(' + ') || '0'} = ${formatDeTeX(glaserData.R_T - Rsi - Rse, 3)}\\,\\text{m}^2\\text{K/W}`
+                  },
+                  {
+                    titel: 'Wärmedurchgangswiderstand',
+                    erklaerung: 'Summe aus Übergangs- und Schichtwiderständen:',
+                    formel: `R_T = ${formatDeTeX(Rsi, 2)} + ${formatDeTeX(glaserData.R_T - Rsi - Rse, 3)} + ${formatDeTeX(Rse, 2)} = ${formatDeTeX(glaserData.R_T, 3)}\\,\\text{m}^2\\text{K/W}`
+                  },
+                  {
+                    titel: 'U-Wert und Anforderung',
+                    erklaerung: glaserData.U <= gegLimit
+                      ? `Der Höchstwert ${formatDeZahl(gegLimit, 2)} W/(m²K) nach GModG/GEG Anlage 7 ist eingehalten.`
+                      : `Der Höchstwert ${formatDeZahl(gegLimit, 2)} W/(m²K) nach GModG/GEG Anlage 7 ist überschritten.`,
+                    formel: `U = \\frac{1}{${formatDeTeX(glaserData.R_T, 3)}} = ${formatDeTeX(glaserData.U, 3)}\\,\\text{W/(m}^2\\text{K)} ${glaserData.U <= gegLimit ? '\\le' : '>'} ${formatDeTeX(gegLimit, 2)}`
+                  },
+                  {
+                    titel: 'Temperaturfaktor (Schimmelnachweis)',
+                    erklaerung: 'Mit dem erhöhten Übergangswiderstand R*_si = 0,25 m²K/W nach DIN 4108-2; gefordert ist f_Rsi ≥ 0,70:',
+                    formel: `f_{Rsi} = 1 - 0{,}25 \\cdot ${formatDeTeX(glaserData.U, 3)} = ${formatDeTeX(1 - 0.25 * glaserData.U, 3)}`
+                  }
+                ]}
+                ergebnisHinweis="Wärmebrücken, Befestigungsmittel und Luftschichten sind hier nicht berücksichtigt (Korrekturen ΔU nach DIN EN ISO 6946, Anhang F)."
+                normQuelle="DIN EN ISO 6946:2018-03; DIN 4108-2:2026-05; GModG/GEG Anlage 7"
+              />
 
             </div>
 

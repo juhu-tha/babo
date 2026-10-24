@@ -7,7 +7,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { Calculator, Layers } from 'lucide-react';
 import {
   Chart as ChartJS,
@@ -99,6 +99,8 @@ export default function Festigkeitsberechnungen() {
     const delta_total = (cubeMat.rho * g * a * a / (cubeMat.E * 1e6)) * (N_max * (N_max + 1) / 2); // in m
     
     return {
+      a,
+      N_max_exact,
       N_max,
       H_total,
       delta_bottom: delta_bottom * 1000, // in mm
@@ -361,6 +363,42 @@ export default function Festigkeitsberechnungen() {
             </div>
           </div>
         </div>
+
+        {/* Live-Rechenweg (AP 3.7) mit den aktuellen Eingaben */}
+        <FormulaDerivationBox
+          live
+          title={`Ihr Rechenweg: Würfelstapel aus ${cubeMat.name}`}
+          zielGleichung="N_{\max} = \left\lfloor \frac{f_c}{\rho \cdot g \cdot a} \right\rfloor"
+          schritte={[
+            {
+              titel: 'Eingaben in SI-Einheiten',
+              erklaerung: 'Kantenlänge in Meter, Festigkeit in N/m²:',
+              formel: `a = ${formatDeTeX(cubeCalc.a, 2)}\\,\\text{m},\\; f_c = ${formatDeTeX(cubeMat.fc, 1)} \\cdot 10^{6}\\,\\text{N/m}^2,\\; \\rho = ${formatDeTeX(cubeMat.rho, 0)}\\,\\text{kg/m}^3`
+            },
+            {
+              titel: 'Anzahl der Würfel',
+              erklaerung: 'Jeder Würfel erhöht die Spannung am Fuß um ρ·g·a; es zählen nur ganze Würfel (abrunden):',
+              formel: `N = \\frac{${formatDeTeX(cubeMat.fc, 1)} \\cdot 10^{6}}{${formatDeTeX(cubeMat.rho, 0)} \\cdot 9{,}81 \\cdot ${formatDeTeX(cubeCalc.a, 2)}} = ${formatDeTeX(cubeCalc.N_max_exact, 2)} \\;\\Rightarrow\\; N_{\\max} = ${formatDeTeX(cubeCalc.N_max, 0)}`
+            },
+            {
+              titel: 'Stapelhöhe',
+              erklaerung: 'Anzahl mal Kantenlänge:',
+              formel: `H = ${formatDeTeX(cubeCalc.N_max, 0)} \\cdot ${formatDeTeX(cubeCalc.a, 2)} = ${formatDeTeX(cubeCalc.H_total, 2)}\\,\\text{m}`
+            },
+            {
+              titel: 'Spannung und Stauchung am Fuß',
+              erklaerung: `Hookesches Gesetz mit E = ${formatDeZahl(cubeMat.E, 0)} MPa für den untersten Würfel:`,
+              formel: `\\sigma = N \\rho g a = ${formatDeTeX(cubeCalc.sigma_bottom, 2)}\\,\\text{MPa},\\quad \\Delta a = \\frac{\\sigma}{E} \\cdot a = ${formatDeTeX(cubeCalc.delta_bottom, 3)}\\,\\text{mm}`
+            },
+            {
+              titel: 'Gesamtstauchung',
+              erklaerung: 'Der i-te Würfel von oben trägt i Würfel; die Summe 1 + 2 + … + N ergibt N(N+1)/2:',
+              formel: `\\Delta H = \\frac{\\rho g a^2}{E} \\cdot \\frac{N(N+1)}{2} = ${formatDeTeX(cubeCalc.delta_total, 1)}\\,\\text{mm}`
+            }
+          ]}
+          ergebnisHinweis="Gedankenexperiment ohne Teilsicherheitsbeiwerte und ohne Stabilitätsversagen."
+          normQuelle="Technische Mechanik (Gleichgewicht, Hookesches Gesetz)"
+        />
       </div>
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

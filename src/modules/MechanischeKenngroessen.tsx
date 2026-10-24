@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { 
   Activity, Scale, Sliders, BookOpen, Layers, 
@@ -8,6 +8,7 @@ import {
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 
@@ -2200,6 +2201,46 @@ export default function MechanischeKenngroessen() {
               </div>
 
             </div>
+          </div>
+
+          {/* Live-Rechenweg (AP 3.7) mit den aktuellen Simulator-Eingaben */}
+          <div className="lg:col-span-12">
+            <FormulaDerivationBox
+              live
+              title={`Ihr Rechenweg: ${lastArt === 'zug' ? 'Zugstab' : 'Druckstab'} aus ${mat.name}`}
+              zielGleichung="\Delta L_{ges} = \frac{F \cdot L_0}{E \cdot A_0} \cdot (1 + \varphi) - \varepsilon_{cs} \cdot L_0"
+              schritte={[
+                {
+                  titel: 'Querschnittsfläche',
+                  erklaerung: querschnittTyp === 'rund' ? `Kreisquerschnitt mit d = ${formatDeZahl(durchmesserMm, 0)} mm:` : `Rechteckquerschnitt ${formatDeZahl(breiteMm, 0)} × ${formatDeZahl(hoeheMm, 0)} mm:`,
+                  formel: querschnittTyp === 'rund'
+                    ? `A_0 = \\frac{\\pi \\cdot ${formatDeTeX(durchmesserMm, 0)}^2}{4} = ${formatDeTeX(sim.A0_mm2, 1)}\\,\\text{mm}^2`
+                    : `A_0 = ${formatDeTeX(breiteMm, 0)} \\cdot ${formatDeTeX(hoeheMm, 0)} = ${formatDeTeX(sim.A0_mm2, 1)}\\,\\text{mm}^2`
+                },
+                {
+                  titel: 'Normalspannung',
+                  erklaerung: `Kraft in N geteilt durch die Fläche (${lastArt === 'zug' ? 'Zug positiv' : 'Druck negativ'}):`,
+                  formel: `\\sigma = \\frac{F}{A_0} = \\frac{${formatDeTeX((lastArt === 'zug' ? 1 : -1) * kraftKn * 1000, 0)}}{${formatDeTeX(sim.A0_mm2, 1)}} = ${formatDeTeX(sim.sigma, 1)}\\,\\text{MPa}`
+                },
+                {
+                  titel: 'Elastische Dehnung (Hooke)',
+                  erklaerung: `Mit dem E-Modul E = ${formatDeZahl(mat.E, 0)} MPa:`,
+                  formel: `\\varepsilon = \\frac{${formatDeTeX(sim.sigma, 1)}}{${formatDeTeX(mat.E, 0)}} = ${formatDeTeX(sim.epsilonPromille, 2)}\\,\\text{‰}`
+                },
+                {
+                  titel: 'Elastische Längenänderung',
+                  erklaerung: `Dehnung mal Ausgangslänge L₀ = ${formatDeZahl(stabLaengeM * 1000, 0)} mm:`,
+                  formel: `\\Delta L_{el} = ${formatDeTeX(sim.epsilonPromille, 2)} \\cdot 10^{-3} \\cdot ${formatDeTeX(stabLaengeM * 1000, 0)} = ${formatDeTeX(sim.deltaL_mm, 2)}\\,\\text{mm}`
+                },
+                {
+                  titel: 'Kriechen und Schwinden',
+                  erklaerung: `Kriechzahl φ = ${formatDeZahl(kriechZahl, 1)} vergrößert die elastische Verformung, das Schwindmaß ${formatDeZahl(schwindMassPromille, 2)} ‰ verkürzt den Stab lastunabhängig:`,
+                  formel: `\\Delta L_{ges} = ${formatDeTeX(sim.deltaL_mm, 2)} \\cdot (1 + ${formatDeTeX(kriechZahl, 1)}) - ${formatDeTeX(schwindMassPromille, 2)} \\cdot 10^{-3} \\cdot ${formatDeTeX(stabLaengeM * 1000, 0)} = ${formatDeTeX(sim.deltaL_gesamt_mm, 2)}\\,\\text{mm}`
+                }
+              ]}
+              ergebnisHinweis="Linear-elastisches Modell; außerhalb des elastischen Bereichs (Fließen, Bruch, Knicken) gilt das Hookesche Gesetz nicht mehr."
+              normQuelle="Technische Mechanik; Kriechen/Schwinden vereinfacht nach DIN EN 1992-1-1, 3.1.4"
+            />
           </div>
 
         </div>

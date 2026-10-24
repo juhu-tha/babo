@@ -11,8 +11,13 @@ import {
   Download
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+
+/** KaTeX-Summe mit korrekten Vorzeichen (für den Live-Rechenweg) */
+const texSumme = (werte: number[], n = 0) =>
+  werte.map((w, k) => (k === 0 ? formatDeTeX(w, n) : w < 0 ? ` - ${formatDeTeX(-w, n)}` : ` + ${formatDeTeX(w, n)}`)).join('');
 import { exportToPDF } from '../lib/pdfExport';
 
 // Define the scenario profiles for LCC calculation
@@ -698,6 +703,51 @@ export default function LCC() {
                   </p>
                 </div>
               </div>
+
+              {/* Live-Rechenweg (AP 3.7) mit den aktuellen Parametern */}
+              <FormulaDerivationBox
+                live
+                title={`Ihr Rechenweg: Barwertvergleich über ${formatDeZahl(analysisPeriod, 0)} Jahre`}
+                zielGleichung="LCC = C_0 + \sum_{t=1}^{N} \frac{C_t}{(1+r)^t} + \frac{C_{\text{EOL}}}{(1+r)^N}"
+                schritte={[
+                  {
+                    titel: 'Ihre Finanzparameter',
+                    erklaerung: 'Kalkulationszins r, Energiepreissteigerung e (Betriebskosten), allgemeine Teuerung i (Wartung, Ersatz, Rückbau) und Betrachtungszeitraum N:',
+                    formel: `r = ${formatDeTeXWert(discountRate / 100)},\\; e = ${formatDeTeXWert(energyInflation / 100)},\\; i = ${formatDeTeXWert(generalInflation / 100)},\\; N = ${formatDeTeX(analysisPeriod, 0)}\\,\\text{a}`
+                  },
+                  {
+                    titel: 'Betriebskosten Option A abzinsen',
+                    erklaerung: `Die jährlichen Betriebskosten von ${formatDeZahl(activeScenario.optionA.opex0, 0)} € steigen mit e und werden mit r auf heute abgezinst:`,
+                    formel: `\\sum_{t=1}^{${formatDeTeX(analysisPeriod, 0)}} \\frac{${formatDeTeX(activeScenario.optionA.opex0, 0)} \\cdot ${formatDeTeXWert(1 + energyInflation / 100)}^t}{${formatDeTeXWert(1 + discountRate / 100)}^t} = ${formatDeTeX(calcData.resultA.cumulativeOpExDiscounted, 0)}\\,\\text{€}`
+                  },
+                  {
+                    titel: 'Barwert Option A',
+                    erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau, jeweils als Barwert${co2PricingEnabled ? '' : ' (CO₂-Preis inaktiv)'}:`,
+                    formel: `LCC_A = ${texSumme([calcData.resultA.capex, calcData.resultA.initialCO2Cost, calcData.resultA.cumulativeOpExDiscounted, calcData.resultA.cumulativeMaintenanceDiscounted, calcData.resultA.cumulativeReplacementDiscounted, calcData.resultA.cumulativeCO2Discounted, calcData.resultA.eolDiscounted])} = ${formatDeTeX(calcData.resultA.totalLCCDiscounted, 0)}\\,\\text{€}`
+                  },
+                  {
+                    titel: 'Investition Option B',
+                    erklaerung: subsidyEnabled
+                      ? `Die KfW-Förderung von ${formatDeZahl(subsidyPercent, 0)} % mindert die Investitionskosten der Option B:`
+                      : 'Ohne Förderung gehen die vollen Investitionskosten der Option B ein:',
+                    formel: subsidyEnabled
+                      ? `C_{0,B} = ${formatDeTeX(activeScenario.optionB.capex, 0)} \\cdot (1 - ${formatDeTeX(subsidyPercent / 100, 2)}) = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{€}`
+                      : `C_{0,B} = ${formatDeTeX(calcData.resultB.capex, 0)}\\,\\text{€}`
+                  },
+                  {
+                    titel: 'Barwert Option B',
+                    erklaerung: 'Gleiche Gliederung wie bei Option A (ein negativer Rückbauwert ist eine Restwertgutschrift):',
+                    formel: `LCC_B = ${texSumme([calcData.resultB.capex, calcData.resultB.initialCO2Cost, calcData.resultB.cumulativeOpExDiscounted, calcData.resultB.cumulativeMaintenanceDiscounted, calcData.resultB.cumulativeReplacementDiscounted, calcData.resultB.cumulativeCO2Discounted, calcData.resultB.eolDiscounted])} = ${formatDeTeX(calcData.resultB.totalLCCDiscounted, 0)}\\,\\text{€}`
+                  },
+                  {
+                    titel: 'Differenz der Barwerte',
+                    erklaerung: calcData.saving >= 0 ? 'Ein positiver Wert bedeutet: Option B ist über den Lebenszyklus günstiger.' : 'Ein negativer Wert bedeutet: Option A bleibt wirtschaftlicher.',
+                    formel: `\\Delta LCC = LCC_A - LCC_B = ${formatDeTeX(calcData.saving, 0)}\\,\\text{€}`
+                  }
+                ]}
+                ergebnisHinweis="Rundungsdifferenzen in der letzten Stelle entstehen durch die Darstellung auf volle Euro."
+                normQuelle="ISO 15686-5:2017; DIN EN 16627:2015-09"
+              />
 
               {/* Graphical representation: Visual Stacked Cost meters */}
               <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
