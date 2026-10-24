@@ -8,6 +8,20 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v4.1.0',
+    date: '24.10.2026',
+    title: 'Überarbeitete Selbsttests mit Rückmeldung je Antwort, Lernziele, Rechnergrenzen und Korrekturen',
+    badge: 'minor',
+    changes: [
+      'Selbsttests: 401 Quizfragen überarbeitet – ausgeglichene Antwortoptionen (die richtige Antwort ist nicht mehr an der Länge erkennbar), typische Fehlvorstellungen als Distraktoren, eine Rückmeldung zu jeder falschen Antwort sowie Bloom-Stufe und Niveau je Frage.',
+      'Fachliche Korrekturen im Fragenpool: Rechenwert der Rissbreite für Stahlbeton in XD/XS nach NA DE 0,3 mm; Calcit-Faktor in der TGA-Aufgabe 6,8 M.-%.',
+      'Neues Fragenformat mit Schwierigkeit Basis/Vertiefung/Transfer und Freigabeansicht je Cluster im Administrationsbereich (Export der Entscheidungen).',
+      'Lernziele: aufklappbare Kopfzeile mit Niveau, Bearbeitungszeit, Vorwissen und operationalisierten Zielen (erste Module, Ausbau folgt).',
+      'Annahmen und Grenzen für alle 53 Rechner aufklappbar am Haftungshinweis; geprüfte Rechenkerne für Schallschutz (DIN 4109-32) und Fenster-U_w (DIN EN ISO 10077-1).',
+      'Korrekturen in Beispielrechnungen und Rechnern: Silikastaub k = 1,0; XC4 w/z ≤ 0,60; C30 f_c,0,k = 24 N/mm²; k_mod NKL 2; Abbrandraten β_n und k_fi nach DIN EN 1995-1-2; E-Modul-Entwicklung nach EC2 3.1.3; Knicken ohne Sprung beim Erreichen der Knicklast.'
+    ]
+  },
+  {
     version: 'v4.0.0',
     date: '24.10.2026',
     title: 'BaustoffBoard 4.0: geprüfte Rechenkerne, Barrierefreiheit, Rechtssicherheit und neue Qualitätssicherung',
