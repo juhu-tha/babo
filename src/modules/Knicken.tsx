@@ -1,3 +1,4 @@
+import { EULER_BETA } from '@/src/calc/stabilitaet';
 import React, { useState, useMemo } from 'react';
 import { Activity, Sliders, BookOpen } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -43,13 +44,7 @@ export default function Knicken() {
   const [loadPercent, setLoadPercent] = useState(65); // 0% bis 120% der Euler-Last
 
   const results = useMemo(() => {
-    let beta = 1.0;
-    switch (eulerFall) {
-      case 1: beta = 2.0; break; // Eingespannt - Frei
-      case 2: beta = 1.0; break; // Gelenk - Gelenk
-      case 3: beta = 0.7; break; // Eingespannt - Gelenk
-      case 4: beta = 0.5; break; // Eingespannt - Eingespannt
-    }
+    const beta = EULER_BETA[eulerFall as 1 | 2 | 3 | 4]; // gemeinsame Tabelle src/calc/stabilitaet.ts
 
     const l_k = beta * l; // in m
     const E_Nmm2 = eModul;
@@ -422,7 +417,7 @@ export default function Knicken() {
                         <line x1="-18" y1="12" x2="18" y2="12" stroke="#1e293b" strokeWidth="2.5" />
                       </g>
                     ) : (
-                      // Clamped bottom (Euler 1, 3, 4)
+                      // unten eingespannt (Euler-Fall 1, 3, 4)
                       <g transform="translate(230, 310)">
                         <rect x="-28" y="0" width="56" height="16" fill="#e2e8f0" stroke="#475569" strokeWidth="1.5" />
                         <line x1="-32" y1="0" x2="32" y2="0" stroke="#1e293b" strokeWidth="3" />
