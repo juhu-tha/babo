@@ -8,6 +8,21 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v3.26.0',
+    date: '24.10.2026',
+    title: 'Umsetzungsplan „sehr gut“ Phasen 0–4: Qualitätssicherung, Recht, Barrierefreiheit, Selbsttests & geprüfte Rechenkerne',
+    badge: 'minor',
+    changes: [
+      'Qualitätssicherung & Architektur (Phase 0): Automatische Prüfung jeder Änderung (Typprüfung, Tests, Formel-, Quellen-, Normen- und Zahlenformat-Checks, Build); zentrale Modul-Registry (src/registry/modules.ts) für Menü, Suche, Sitemap und Icons; zentrale Materialkennwerte (EC2 Tab. 3.1) und einheitlicher Normenstand.',
+      'Recht & Datenschutz (Phase 1): Neu gefasste Datenschutzerklärung mit vollständigem Speicherregister, Erklärung zur Barrierefreiheit, aktualisiertes Impressum; KI-Assistent nur nach Einwilligung, mit Kennzeichnung, Herkunftsprüfung und Tageslimit; Sicherheits-Header (CSP); Haftungshinweis an allen Rechnern; Vorlesungsbereich ohne Passwort öffentlich zugänglich.',
+      'Barrierefreiheit & Bedienung (Phase 2): 0 Verstöße in der automatischen WCAG-Prüfung über alle Module (vorher 2 889 betroffene Elemente), Sprunglink, korrekte Überschriften, Kontraste in Hell- und Dunkelmodus, Tastaturbedienung der Reiter; mobile Darstellung ohne abgeschnittene Inhalte; Volltextsuche über alle Modulinhalte; Startseite mit Themen-Einstieg und „Zuletzt besucht“.',
+      'Selbsttests (Phase 3): Cluster-, Gruppen- und Modulzuordnung aller 427 Quizfragen aus der Registry abgeleitet (128 Fehlzuordnungen korrigiert); Sprungziele der Wissenslücken-Analyse führen immer auf ein existierendes Modul; Aufgaben-Reiter starten ein Themen-Quiz der passenden Menügruppen; Klausursimulator weist eine Orientierungsnote (keine Prüfungsleistung) aus.',
+      'Begriffs-Styleguide (Phase 3): Einheitlich Wasserzementwert / w/z-Wert, Gesteinskörnung statt Zuschlag (DIN EN 12620), Euler-Fall 1–4 und Sie-Form in allen Lerntipps; automatische Prüfung der Regeln (docs/begriffe.md).',
+      'Geprüfte Rechenkerne (Phase 4): Biegung, Querkraft, Stütze, Durchstanzen, Verankerung, Rissbreite und Holzbau (Knicken, Querdruck) als getestete Funktionen in src/calc/ mit Handrechnungen, unabhängigen Vergleichsmodellen und je 1 000 Zufallseingaben; unzulässige Eingaben werden sichtbar gemeldet statt still ersetzt.',
+      'Fachliche Korrekturen in den Rechnern: Druckbewehrung mit σ_s2 = min(E_s·ε_s2; f_yd) und A_s,max = 0,04·A_c; nichtmetallische Bewehrung linear-elastisch; Stütze M_Ed = max(M_0Ed + N·e_i; N·e_0) und A_s,max = 0,09·A_c; Rissbreite mit h_c,ef = min{2,5(h − d); (h − x)/3; h/2}; Durchstanzen ρ_l ≤ 0,5·f_cd/f_yd; einheitliche Nummerierung der Euler-Fälle im Holzbau-Rechner; zuvor bereits Mauerwerk, v_min, Relaxation und LCA-Kennzeichnung.'
+    ]
+  },
+  {
     version: 'v3.25.0',
     date: '23.10.2026',
     title: 'Neues Modul Werkstoff-Kombinationen (Cluster II), Schichtaufbau- & Verbund-Kalkulator',
