@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import { 
   Layers, 
@@ -223,64 +224,33 @@ export default function BpAbdichtung() {
           </p>
         </div>
 
-        {/* Primary Tabs */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'allgemein'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'allgemein' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('allgemein')}
-          >
-            <BookOpen size={16} /> Basiswissen
-          </button>
-          <button aria-pressed={activeTab === 'praxis'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'praxis' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('praxis')}
-          >
-            <CheckCircle2 size={16} /> Praxisbeispiele
-          </button>
-          <button aria-pressed={activeTab === 'innovation'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'innovation' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('innovation')}
-          >
-            <Lightbulb size={16} /> Zukunftstrends
-          </button>
-        </div>
-
+        {/* Primary Tabs (AP 3.8: ARIA-Reiter) */}
+        <ModuleTabs
+          label="Bereiche Abdichtung"
+          tabs={[
+            { id: 'allgemein' as const, label: 'Basiswissen', icon: BookOpen },
+            { id: 'praxis' as const, label: 'Praxisbeispiele', icon: CheckCircle2 },
+            { id: 'innovation' as const, label: 'Zukunftstrends', icon: Lightbulb }
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
         {activeTab === 'allgemein' ? (
           <>
-            {/* Sub-Tab Navigation */}
-            <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          {[
-            { id: 'material', label: 'Materialien & Baustoffe', icon: <Layers size={14} /> },
-            { id: 'fugen', label: 'Fugen (Konstruktion & Material)', icon: <Split size={14} /> },
-            { id: 'risse', label: 'Risse & Verpressungen', icon: <Activity size={14} /> },
-            { id: 'berater', label: 'DIN-Klassen-Berater & Systeme', icon: <Calculator size={14} /> }
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveSubTab(tab.id as any)}
-              className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                activeSubTab === tab.id
-                  ? 'bg-shiraz text-white border-shiraz shadow-md'
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
+            {/* Sub-Tab Navigation (zweite Ebene, ARIA-Reiter) */}
+            <ModuleTabs
+              label="Themen Basiswissen Abdichtung"
+              tabs={[
+                { id: 'material' as const, label: 'Materialien & Baustoffe', icon: Layers },
+                { id: 'fugen' as const, label: 'Fugen (Konstruktion & Material)', icon: Split },
+                { id: 'risse' as const, label: 'Risse & Verpressungen', icon: Activity },
+                { id: 'berater' as const, label: 'DIN-Klassen-Berater & Systeme', icon: Calculator }
+              ]}
+              aktiv={activeSubTab}
+              onWechsel={setActiveSubTab}
+              className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
             >
-              {tab.icon}
-              {tab.label}
-            </button>
-          ))}
-        </div>
 
         {/* TAB 1: MATERIALIEN */}
         {activeSubTab === 'material' && (
@@ -1310,12 +1280,14 @@ export default function BpAbdichtung() {
             </div>
           </div>
         )}
+            </ModuleTabs>
         </>
       ) : activeTab === 'praxis' ? (
         <PraxisTabContent moduleKey="bp_abdichtung" />
       ) : (
         <InnovationTabContent moduleKey="bp_abdichtung" />
       )}
+        </ModuleTabs>
 
       </div>
 

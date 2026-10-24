@@ -26,6 +26,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import { DIN1045_3_NACHBEHANDLUNG } from '@/src/data/normParams';
 import { DIN1045_2_EXPOSITIONSKLASSEN } from '@/src/data/standards/din1045_2';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 
 interface ExposureDetails {
@@ -409,63 +410,21 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
         </div>
       </div>
 
-      {/* Sub tabs navigation */}
-      <div className="flex border-b border-home-grau/30 overflow-x-auto whitespace-nowrap scrollbar-none gap-2">
-        <button aria-pressed={activeSubTab === 'diagnostik'}
-          onClick={() => setActiveSubTab('diagnostik')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'diagnostik' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Beaker size={15} />
-          Frischbeton-Diagnostik
-        </button>
-        <button aria-pressed={activeSubTab === 'zusammenhalt'}
-          onClick={() => setActiveSubTab('zusammenhalt')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'zusammenhalt' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Droplets size={15} />
-          Zusammenhalt &amp; Wasser-Sim
-        </button>
-        <button aria-pressed={activeSubTab === 'einbau'}
-          onClick={() => setActiveSubTab('einbau')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'einbau' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Wrench size={15} />
-          Einbau &amp; Industrieboden
-        </button>
-        <button aria-pressed={activeSubTab === 'nachbehandlung'}
-          onClick={() => setActiveSubTab('nachbehandlung')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'nachbehandlung' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Calendar size={15} />
-          Nachbehandlung &amp; Betonierbarkeit
-        </button>
-        <button aria-pressed={activeSubTab === 'krell_tabelle'}
-          onClick={() => setActiveSubTab('krell_tabelle')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'krell_tabelle' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Grid size={15} />
-          Krell-Tabelle &amp; WU
-        </button>
-        <button aria-pressed={activeSubTab === 'festigkeit'}
-          onClick={() => setActiveSubTab('festigkeit')}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold border-b-2 transition-all ${
-            activeSubTab === 'festigkeit' ? 'border-shiraz text-shiraz' : 'border-transparent text-text-main/60 hover:text-text-main'
-          }`}
-        >
-          <Activity size={15} />
-          ID-Prüfung &amp; Bohrkerne
-        </button>
-      </div>
+      {/* Sub tabs navigation (AP 3.8: ARIA-Reiter, 6 Bereiche) */}
+      <ModuleTabs
+        label="Bereiche Betonpraxis"
+        tabs={[
+          { id: 'diagnostik' as const, label: 'Frischbeton-Diagnostik', icon: Beaker },
+          { id: 'zusammenhalt' as const, label: 'Zusammenhalt & Wasser-Sim', icon: Droplets },
+          { id: 'einbau' as const, label: 'Einbau & Industrieboden', icon: Wrench },
+          { id: 'nachbehandlung' as const, label: 'Nachbehandlung & Betonierbarkeit', icon: Calendar },
+          { id: 'krell_tabelle' as const, label: 'Krell-Tabelle & WU', icon: Grid },
+          { id: 'festigkeit' as const, label: 'ID-Prüfung & Bohrkerne', icon: Activity }
+        ]}
+        aktiv={activeSubTab}
+        onWechsel={setActiveSubTab}
+        className="[&>[role=tabpanel]]:mt-6"
+      >
 
       {/* SUB-TAB 1: Frischbeton-Diagnostik */}
       {activeSubTab === 'diagnostik' && (
@@ -1654,6 +1613,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
 
         </div>
       )}
+      </ModuleTabs>
 
       <ConcreteThematicLinks current="baustoff" />
 

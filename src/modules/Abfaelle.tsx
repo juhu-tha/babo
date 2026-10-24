@@ -3,8 +3,10 @@ import { Trash2, Recycle, AlertTriangle, ShieldCheck, Layers, List, Database, Lu
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 
+type AbfallGruppe = 'wegweiser' | 'recht' | 'verwertung' | 'deponie' | 'altlasten' | 'rueckbau' | 'checklisten';
 type AbfallTab = 'schema' | 'hierarchie' | 'avv' | 'ebv' | 'deponie' | 'altlasten' | 'rueckbau' | 'eanv' | 'pn98' | 'altholz' | 'checklisten';
 
 interface SchemaCard {
@@ -50,7 +52,7 @@ export default function Abfaelle() {
   const [pnGrainSize, setPnGrainSize] = useState<string>('32');
 
   const tabs: { id: AbfallTab; label: string; icon: LucideIcon }[] = [
-    { id: 'schema', label: 'Wegweiser (Wann, Was, Wie, Wozu?)', icon: BookOpen },
+    { id: 'schema', label: 'Wegweiser (Wann, Was, Wie, Wozu)', icon: BookOpen },
     { id: 'hierarchie', label: 'KrWG & Hierarchie', icon: Layers },
     { id: 'avv', label: 'AVV & Abfallarten', icon: List },
     { id: 'ebv', label: 'ErsatzbaustoffV (EBV)', icon: Recycle },
@@ -62,6 +64,21 @@ export default function Abfaelle() {
     { id: 'pn98', label: 'Probenahme (PN 98)', icon: Search },
     { id: 'checklisten', label: 'Praxis-Checklisten', icon: ClipboardList }
   ];
+  // AP 3.8: höchstens 7 Reiter je Leiste – die 11 Bereiche sind zu 7 Themengruppen gebündelt;
+  // innerhalb einer Gruppe wählt eine zweite Reiterleiste den Bereich (activeTab bleibt der Bereich).
+  const gruppen: { id: AbfallGruppe; label: string; icon: LucideIcon; bereiche: AbfallTab[] }[] = [
+    { id: 'wegweiser', label: 'Wegweiser', icon: BookOpen, bereiche: ['schema'] },
+    { id: 'recht', label: 'KrWG & AVV', icon: Layers, bereiche: ['hierarchie', 'avv'] },
+    { id: 'verwertung', label: 'Verwertung (EBV, Altholz)', icon: Recycle, bereiche: ['ebv', 'altholz'] },
+    { id: 'deponie', label: 'Deponie (DepV)', icon: Database, bereiche: ['deponie'] },
+    { id: 'altlasten', label: 'Altlasten (BBodSchG)', icon: AlertTriangle, bereiche: ['altlasten'] },
+    { id: 'rueckbau', label: 'Rückbau, eANV & PN 98', icon: ShieldCheck, bereiche: ['rueckbau', 'eanv', 'pn98'] },
+    { id: 'checklisten', label: 'Praxis-Checklisten', icon: ClipboardList, bereiche: ['checklisten'] }
+  ];
+  const aktiveGruppe = gruppen.find(g => g.bereiche.includes(activeTab)) ?? gruppen[0];
+  const unterReiter = aktiveGruppe.bereiche.length > 1
+    ? tabs.filter(t => aktiveGruppe.bereiche.includes(t.id))
+    : null;
   const schemaCards: SchemaCard[] = [
     {
       id: 'hierarchie',
@@ -335,31 +352,17 @@ export default function Abfaelle() {
           </p>
         </div>
 
-        {/* Tabs Navigation */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 bg-slate-50/50 p-4 rounded-2xl border border-home-grau/30">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button aria-pressed={isActive}
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
-                  isActive 
-                    ? 'bg-shiraz/5 border-shiraz text-shiraz font-bold shadow-sm' 
-                    : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-700'
-                }`}
-              >
-                <Icon size={20} className={isActive ? 'text-shiraz' : 'text-slate-500'} />
-                <span className="text-xs font-bold leading-tight">
-                  {tab.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
+        {/* Tabs Navigation (AP 3.8: 7 Themengruppen, ggf. zweite Ebene) */}
+        <ModuleTabs
+          label="Themen Abfälle und Altlasten"
+          tabs={gruppen}
+          aktiv={aktiveGruppe.id}
+          onWechsel={(id) => setActiveTab(gruppen.find(g => g.id === id)!.bereiche[0])}
+          variante="kachel"
+          className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 lg:[&>[role=tablist]]:grid-cols-4"
+        >
         <div className="p-6">
+          <UnterReiter tabs={unterReiter} aktiv={activeTab} onWechsel={setActiveTab} label={`Bereiche: ${aktiveGruppe.label}`}>
           
           {/* Schema (Wegweiser) */}
           {activeTab === 'schema' && (
@@ -2368,7 +2371,7 @@ export default function Abfaelle() {
                   const Icon = subTab.icon;
                   const isActive = activeChecklistSubTab === subTab.id;
                   return (
-                    <button
+                    <button aria-pressed={isActive}
                       key={subTab.id}
                       onClick={() => setActiveChecklistSubTab(subTab.id as any)}
                       className={`flex-1 min-w-[150px] p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
@@ -2839,7 +2842,9 @@ export default function Abfaelle() {
               </div>
             </div>
           )}
+          </UnterReiter>
         </div>
+        </ModuleTabs>
       </div>
     
       {/* Central ModuleFooter rendered dynamically based on activeTab */}
@@ -2927,5 +2932,21 @@ export default function Abfaelle() {
         ]}
       />
     </div>
+  );
+}
+
+/** Zweite Reiterebene (AP 3.8): nur wenn die aktive Gruppe mehrere Bereiche bündelt. */
+function UnterReiter({ tabs, aktiv, onWechsel, label, children }: {
+  tabs: { id: AbfallTab; label: string; icon: LucideIcon }[] | null;
+  aktiv: AbfallTab;
+  onWechsel: (id: AbfallTab) => void;
+  label: string;
+  children: React.ReactNode;
+}) {
+  if (!tabs) return <>{children}</>;
+  return (
+    <ModuleTabs label={label} tabs={tabs} aktiv={aktiv} onWechsel={onWechsel} className="[&>[role=tablist]]:mb-6 [&>[role=tablist]]:pb-4 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
+      {children}
+    </ModuleTabs>
   );
 }

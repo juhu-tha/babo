@@ -3,6 +3,7 @@ import { AlertTriangle, Wind, Droplets, Flame, Bug, Shield, Search, Globe, Activ
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 
 const SCHADSTOFFE_DATA = [
@@ -439,10 +440,22 @@ const TREATMENT_OPTIONS = {
   }
 };
 
+type SchadstoffReiter = 'fasern' | 'pak' | 'pcb' | 'pfas' | 'chlorparaffine' | 'quecksilber' | 'biogefahren';
+const SCHADSTOFF_REITER: { id: SchadstoffReiter; label: string; icon: typeof Wind; stoffe: string[] }[] = [
+  { id: 'fasern', label: 'Asbest & KMF (Fasern)', icon: Wind, stoffe: ['asbest', 'kmf'] },
+  { id: 'pak', label: 'PAK', icon: Droplets, stoffe: ['pak'] },
+  { id: 'pcb', label: 'PCB', icon: Flame, stoffe: ['pcb'] },
+  { id: 'pfas', label: 'PFAS', icon: Droplets, stoffe: ['pfas'] },
+  { id: 'chlorparaffine', label: 'Chlorparaffine', icon: Droplets, stoffe: ['chlorparaffine'] },
+  { id: 'quecksilber', label: 'Quecksilber', icon: Droplets, stoffe: ['quecksilber'] },
+  { id: 'biogefahren', label: 'Biologische Gefahrstoffe', icon: Bug, stoffe: ['biogefahren'] }
+];
+
 export default function Schadstoffe() {
   const [activeTab, setActiveTab ] = useState<'stoffe' | 'finder' | 'beprobung' | 'elution' | 'gefahrstoffe'>('stoffe');
   
-  const [activeSchadstoff, setActiveSchadstoff] = useState(SCHADSTOFFE_DATA[0].id);
+  // AP 3.8: höchstens 7 Reiter je Leiste – Asbest und KMF (beide Faserstoffe) teilen sich einen Reiter.
+  const [activeSchadstoff, setActiveSchadstoff] = useState<SchadstoffReiter>('fasern');
   const [selectedMEB, setSelectedMEB] = useState<'rc_baustoff' | 'bodenaushub' | 'hm_asche'>('rc_baustoff');
   const [asbestBaujahr, setAsbestBaujahr] = useState<number>(1990);
   const [selectedRiskLevel, setSelectedRiskLevel] = useState<10000 | 50000 | 100000>(50000);
@@ -455,7 +468,10 @@ export default function Schadstoffe() {
   const [oxidBaB, setOxidBaB] = useState<number>(0.2);
   const [oxidAl, setOxidAl] = useState<number>(12.5);
   
-  const selectedSchadstoff = SCHADSTOFFE_DATA.find(s => s.id === activeSchadstoff) || SCHADSTOFFE_DATA[0];
+  const schadstoffReiter = SCHADSTOFF_REITER.find(r => r.id === activeSchadstoff) ?? SCHADSTOFF_REITER[0];
+  const ausgewaehlteSchadstoffe = schadstoffReiter.stoffe
+    .map(id => SCHADSTOFFE_DATA.find(s => s.id === id))
+    .filter((s): s is (typeof SCHADSTOFFE_DATA)[number] => Boolean(s));
 
   function checkRisks(zeitraum: string, bauteil: string) {
     const risks: { stoff: string, level: 'hoch' | 'mittel' | 'gering', detail: string }[] = [];
@@ -567,37 +583,20 @@ export default function Schadstoffe() {
         </div>
         </div>
 
-        <div className="p-4 bg-slate-50/50 border-b border-home-grau/30">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {[
-              { id: 'stoffe' as const, label: 'Stoffgruppen & Gefahren', icon: AlertTriangle },
-              { id: 'finder' as const, label: 'Fibel-Schadstofffinder', icon: Search },
-              { id: 'beprobung' as const, label: 'Erkundung & Beprobung', icon: Search },
-              { id: 'elution' as const, label: 'Elution aus Baustoffen', icon: Droplets },
-              { id: 'gefahrstoffe' as const, icon: Shield, label: 'Gefahrstoffe auf der Baustelle' }
-            ].map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button aria-pressed={isActive}
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full cursor-pointer ${
-                    isActive 
-                      ? 'bg-shiraz/5 border-shiraz text-shiraz font-bold shadow-sm' 
-                      : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-700'
-                  }`}
-                >
-                  <Icon size={20} className={isActive ? 'text-shiraz' : 'text-slate-500'} />
-                  <span className="text-xs font-bold leading-tight">
-                    {tab.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
+        <ModuleTabs
+          label="Bereiche Schadstoffe"
+          tabs={[
+            { id: 'stoffe' as const, label: 'Stoffgruppen & Gefahren', icon: AlertTriangle },
+            { id: 'finder' as const, label: 'Fibel-Schadstofffinder', icon: Search },
+            { id: 'beprobung' as const, label: 'Erkundung & Beprobung', icon: Search },
+            { id: 'elution' as const, label: 'Elution aus Baustoffen', icon: Droplets },
+            { id: 'gefahrstoffe' as const, icon: Shield, label: 'Gefahrstoffe auf der Baustelle' }
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          variante="kachel"
+          className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30"
+        >
         <div className="p-6">
           {activeTab === 'stoffe' && (
             <div className="space-y-8 animate-in fade-in duration-300">
@@ -608,33 +607,19 @@ export default function Schadstoffe() {
                 </p>
               </div>
 
-              {/* Schadstoff Selector */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                {SCHADSTOFFE_DATA.map((stoff) => {
-                  const isActive = activeSchadstoff === stoff.id;
-                  return (
-                    <button aria-pressed={isActive}
-                      key={stoff.id}
-                      onClick={() => setActiveSchadstoff(stoff.id)}
-                      className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-center justify-center gap-2 text-center h-full ${
-                        isActive 
-                          ? 'bg-shiraz/5 border-shiraz text-shiraz font-bold shadow-sm' 
-                          : 'bg-white border-home-grau/30 hover:bg-slate-50 text-slate-800'
-                      }`}
-                    >
-                      {React.cloneElement(stoff.icon as React.ReactElement<any>, {
-                        className: isActive ? 'text-shiraz' : 'text-slate-500'
-                      })}
-                      <span className="text-xs font-bold leading-tight">
-                        {stoff.name}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
+              {/* Schadstoff Selector (zweite Reiterebene, AP 3.8: 7 Reiter) */}
+              <ModuleTabs
+                label="Schadstoffgruppe wählen"
+                tabs={SCHADSTOFF_REITER}
+                aktiv={activeSchadstoff}
+                onWechsel={setActiveSchadstoff}
+                variante="kachel"
+                className="lg:[&>[role=tablist]]:grid-cols-4"
+              >
 
-              {/* Selected Schadstoff Details */}
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 mt-4 animate-in fade-in duration-300">
+              {/* Selected Schadstoff Details (bei gebündelten Reitern nacheinander) */}
+              {ausgewaehlteSchadstoffe.map((selectedSchadstoff) => (
+              <div key={selectedSchadstoff.id} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 mt-4 animate-in fade-in duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-home-grau/30">
                   <div className="flex items-center gap-3">
                     <div className="p-3 rounded-lg bg-slate-50 border border-home-grau/30 text-shiraz">
@@ -799,6 +784,8 @@ export default function Schadstoffe() {
                   )}
                 </div>
               </div>
+              ))}
+              </ModuleTabs>
             </div>
           )}
 
@@ -1305,6 +1292,7 @@ export default function Schadstoffe() {
             </div>
           )}
         </div>
+        </ModuleTabs>
       </div>
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
