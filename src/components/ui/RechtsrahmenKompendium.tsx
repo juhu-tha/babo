@@ -628,7 +628,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       'Ergreifung von Präventions- und Abhilfemaßnahmen bei festgestellten Verstößen von Vorlieferanten.',
       'Einrichtung eines zugänglichen Beschwerdeverfahrens entlang der Lieferkette.'
     ],
-    impactOnMaterials: 'Erzwingt Auditierungen von Steinbrüchen in Übersee und zertifizierte Herkunftsnachweise für Zuschlagsstoffe, Metalle und Hölzer.',
+    impactOnMaterials: 'Erzwingt Auditierungen von Steinbrüchen in Übersee und zertifizierte Herkunftsnachweise für Gesteinskörnungen, Metalle und Hölzer.',
     milestones: [
       { year: '2023', text: 'LkSG gilt in DE für Unternehmen > 3.000 Mitarbeiter.' },
       { year: '2024', text: 'LkSG-Schwelle sinkt in DE auf Unternehmen > 1.000 Mitarbeiter.' },

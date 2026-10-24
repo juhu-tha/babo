@@ -113,7 +113,7 @@ export const PRUEFVERFAHREN_LIST: PruefverfahrenDetail[] = [
     cons: [
       'Erfasst nur eine Randzone von ca. 20–30 mm Tiefe; innere Hohlräume werden nicht erkannt.',
       'Karbonatisierter Randbeton täuscht eine um bis zu 25–40 % zu hohe Festigkeit vor (Karbonatisierungskorrektur zwingend!).',
-      'Treffer auf grobe Zuschlagskörner direkt unter der Oberfläche erzeugen extreme Falsch-Hochwerte.'
+      'Treffer auf grobe Gesteinskörner direkt unter der Oberfläche erzeugen extreme Falsch-Hochwerte.'
     ],
     referenceValues: 'Rückprallwert R (Typ N, horizontal): R < 20 (f_c < 15 N/mm², sehr weicher/minderfester Beton); R = 25–35 (Normalbeton C20/25 bis C25/30); R = 40–50 (Hochfester Beton C35/45 bis C50/60); R > 50 (sehr harter Beton bzw. Zuschlagstreffer).',
     interactiveType: 'schmidthammer'

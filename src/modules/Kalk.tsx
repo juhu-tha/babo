@@ -170,7 +170,7 @@ export default function Kalk() {
                   <li><strong>Karbonatisierung:</strong> Die gelösten Calciumhydroxid-Ionen (Ca²⁺) reagieren mit dem gelösten Kohlendioxid (Carbonat-Ionen, CO₃²⁻) aus der Luft zu festen, wasserunlöslichen Calcit-Kristallen (CaCO₃).</li>
                   <li><strong>Wasser als Katalysator:</strong> Dieser Vorgang erfordert das Vorhandensein von Feuchtigkeit. CO₂ muss sich im Porenwasser lösen (Bildung von Kohlensäure), um reagieren zu können.
                     Deshalb trocknet Kalkmörtel nicht nur, sondern benötigt eine regulierte, feuchte Nachbehandlung oder ein luftiges Umfeld, um zu karbonatisieren, bevor das gesamte Anmachwasser verschwunden ist.</li>
-                  <li>Diese Kristalle verfilzen beim Ausfallen und verbinden die Sandkörner (Zuschlag).</li>
+                  <li>Diese Kristalle verfilzen beim Ausfallen und verbinden die Sandkörner (Gesteinskörnung).</li>
                 </ul>
               </div>
 

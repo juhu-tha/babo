@@ -248,7 +248,7 @@ const BETON_PRINZIPIEN: ConcretePrincipleGroup[] = [
           {
             title: 'RC-Beton (Gesteinskörnung Typ 1 & Typ 2)',
             desc: 'Ersatz natürlich gewonnener Quarzkiese und Sande durch rezyklierte Gesteinskörnungen aus sortenrein aufbereitetem Beton- und Mauerwerksbruch (Recycling-Splitt). Schont wertvolle biologische Bodenhorizonte vor Auskiesung.',
-            tags: ['RC-Zuschlag Typ 1 (Beton)', 'RC-Zuschlag Typ 2 (Misch)']
+            tags: ['RC-Gesteinskörnung Typ 1 (Beton)', 'RC-Gesteinskörnung Typ 2 (Misch)']
           },
           {
             title: 'Rezyklierter Gesteinssand & CO₂-Karbonatisierung',
@@ -279,7 +279,7 @@ const BETON_PRINZIPIEN: ConcretePrincipleGroup[] = [
             tags: ['CO2-Mischereindüsung', 'Kalksteinausfällung']
           },
           {
-            title: 'Pyrogene Pflanzenkohle als stabiler Kohlenstoff-Zuschlag',
+            title: 'Pyrogene Pflanzenkohle als stabile Kohlenstoffkomponente',
             desc: 'Integration zertifizierter, stabiler Pflanzenkohle als inertes Substitutionsgut für Feinstsande. Wirkt über Jahrhunderte als statisch neutrale, unzerfallbare bioklimatische CO₂-Speicher-Senke im tragenden Gefüge.',
             tags: ['Pflanzenkohle', 'Carbon Carbon Sink']
           }
@@ -1379,7 +1379,7 @@ export default function Materialoptimierung() {
             <div className="bg-gradient-to-r from-shiraz via-fuchsia-900 to-slate-950 p-6 text-white flex justify-between items-start">
               <div className="space-y-1.5">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-rose-500/20 text-shiraz-300 border border-rose-500/30 text-xxs font-bold uppercase tracking-wider">
-                  <Trees size={12} /> Klimapositiver Betonzuschlag
+                  <Trees size={12} /> Klimapositiver Betonbestandteil
                 </div>
                 <h3 className="text-lg md:text-xl font-extrabold tracking-tight">
                   Pyrogene Pflanzenkohle im Betongefüge
@@ -1566,7 +1566,7 @@ export default function Materialoptimierung() {
           },
           {
             formel: "\\Delta G = \\left(1 - \\frac{\\rho_{\\text{leicht}}}{\\rho_{\\text{standard}}}\\right) \\cdot 100 \\quad [\\%]",
-            erklaerung: "Gewichtseinsparungsquote bei Substitution von Normalbeton durch gradierte Strukturen oder Leichtzuschlagstoffe.",
+            erklaerung: "Gewichtseinsparungsquote bei Substitution von Normalbeton durch gradierte Strukturen oder leichte Gesteinskörnungen.",
             quelle: "Massivbau-Leichtbaupraxis"
           }
         ]}

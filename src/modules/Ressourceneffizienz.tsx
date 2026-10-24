@@ -974,7 +974,7 @@ export default function Ressourceneffizienz() {
 
                   {/* Concrete Class */}
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300 block">2. Zement- &amp; Zuschlagklasse</label>
+                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300 block">2. Zement- &amp; Gesteinskörnungsklasse</label>
                     <div className="grid grid-cols-3 gap-2">
                       <button aria-pressed={concreteType === 'standard'} 
                         type="button"

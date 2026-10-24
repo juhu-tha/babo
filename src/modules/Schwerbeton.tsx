@@ -23,7 +23,7 @@ export default function Schwerbeton() {
             <Scale className="text-shiraz" size={20} /> Mischungsentwurf
           </h3>
           <p className="text-sm text-text-main/80">
-            Zur Erreichung der hohen Dichte werden als Zuschlagstoffe Gesteins- und Metallkörnungen mit hoher Rohdichte verwendet. Übliche Beispiele:
+            Zur Erreichung der hohen Dichte werden als Gesteinskörnungen Natur- und Metallkörnungen mit hoher Rohdichte verwendet. Übliche Beispiele:
           </p>
           <ul className="list-disc list-inside text-sm text-text-main/80 space-y-2">
             <li><strong>Baryt (Schwerspat):</strong> Rohdichte ~ 4.200 kg/m³</li>
@@ -53,7 +53,7 @@ export default function Schwerbeton() {
           <h4 className="font-bold text-text-main mb-2">Strahlenschutzbeton</h4>
           <p className="text-sm text-text-main/80 leading-relaxed">
             Eine primäre Anwendung von Schwerbeton ist der Abschirmungsbau (Krankenhäuser mit Röntgengeräten, Strahlentherapie, Kernkraftwerke). 
-            Die hohe Massendichte schwächt Gammastrahlung ab, während oft noch zusätzlich Wasserstoffhaltige Bestandteile (wie Kristallwasser im Zuschlag oder viel Zementleim) eingebracht werden, um Neutronenstrahlung effektiv abzubremsen.
+            Die hohe Massendichte schwächt Gammastrahlung ab, während oft noch zusätzlich Wasserstoffhaltige Bestandteile (wie Kristallwasser in der Gesteinskörnung oder viel Zementleim) eingebracht werden, um Neutronenstrahlung effektiv abzubremsen.
           </p>
         </div>
       </div>

@@ -188,7 +188,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         'Prüfstellen nicht näher als 50 mm von Kanten oder Fugen entfernt.',
         'Freie Zonen ohne Hohlstellen oder Bewehrung direkt unter der Oberfläche (Covermeter vorab nutzen!).'
       ],
-      statistischeBegruendung: 'Der Median oder Mittelwert aus 9–10 Schlägen eliminiert lokale Ausreißer (z.B. Treffer auf großes Zuschlagskorn oder Pore). Kalibrierung an Bohrkernen nach DIN EN 13791 ist zwingend zur Umrechnung in Druckfestigkeit.'
+      statistischeBegruendung: 'Der Median oder Mittelwert aus 9–10 Schlägen eliminiert lokale Ausreißer (z.B. Treffer auf großes Gesteinskorn oder Pore). Kalibrierung an Bohrkernen nach DIN EN 13791 ist zwingend zur Umrechnung in Druckfestigkeit.'
     },
     conditioning: {
       titel: 'Prüfflächenkonditionierung & Stoßwinkel-Korrektur',
@@ -428,7 +428,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       vorbereitungLabor: 'Herstellung der Indikatorlösung: 1 g Phenolphthalein-Pulver in 70 ml Ethanol (96 %) lösen und mit 30 ml destilliertem Wasser auf 100 ml auffüllen.',
       kritischeFehlerVermeidung: [
         'Ablesung MUSS innerhalb von 30 bis 60 Sekunden nach Aufsprühen erfolgen! Längeres Warten führt zur Rückkarbonatisierung der Bruchfläche durch das CO2 der Raumluft (Verfärbung schlägt zurück).',
-        'Zuschlagskörner nicht mitmessen: Nur den Zementstein bewerten (violett = pH > 9,0 = passiv; farblos = pH < 9,0 = karbonatisiert).',
+        'Gesteinskörner nicht mitmessen: Nur den Zementstein bewerten (violett = pH > 9,0 = passiv; farblos = pH < 9,0 = karbonatisiert).',
         'Feinskalierte Risslupe oder Messschieber mit Tiefentaster zur Messung nutzen (Genauigkeit ± 0,5 mm).'
       ]
     },

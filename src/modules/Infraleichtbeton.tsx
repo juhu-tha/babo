@@ -22,7 +22,7 @@ export default function Infraleichtbeton() {
             Ausgangsstoffe
           </h3>
           <p className="text-sm text-text-main/80 mb-4 leading-relaxed">
-            Sehr leichte Zuschlagsstoffe (Blähglas, Blähton, Aerogele), Zement und eventuell Mikrohohlkugeln. Ziel-Rohdichte oft unter 800 kg/m³.
+            Sehr leichte Gesteinskörnungen (Blähglas, Blähton, Aerogele), Zement und eventuell Mikrohohlkugeln. Ziel-Rohdichte oft unter 800 kg/m³.
           </p>
         </div>
         <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm">

@@ -82,7 +82,7 @@ export default function CscZertifizierung() {
               <li><strong>Umwelt (Gewichtung 35 % – Lehrannahme):</strong> CO₂-Minderungsziele, gezieltes Energie- und Wasserkreislauf-Management, Renaturierung von Abbauflächen.</li>
               <li><strong>Soziales (Gewichtung 15 % – Lehrannahme):</strong> Arbeitssicherheit (z. B. ISO 45001), fairer Lohn, aktive Einbindung der Nachbarschaft am Produktionsstandort.</li>
               <li><strong>Ökonomie (Gewichtung 10 % – Lehrannahme):</strong> Korruptionsprävention, regionales Wirtschaften, finanzielle Zukunftssicherung.</li>
-              <li><strong>Lieferkette (Gewichtung 30 % – Lehrannahme):</strong> Zertifizierung der Klinker-, Gips- und Zuschlagslieferwerke.</li>
+              <li><strong>Lieferkette (Gewichtung 30 % – Lehrannahme):</strong> Zertifizierung der Klinker-, Gips- und Gesteinskörnungswerke.</li>
             </ul>
           </section>
         </div>

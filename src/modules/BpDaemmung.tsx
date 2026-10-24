@@ -98,7 +98,7 @@ const mineralInsulation: InsulationProduct[] = [
     description: 'Blähende Tone, die im Drehrohrofen bei ca. 1200 °C gebrannt werden. Die Kugelkörner besitzen ein hochporisiertes Inneres und eine feste Außenhaut.',
     advantages: ['Druckstabil', 'Verrottungsfest und frostbeständig', 'Leicht hydraulisch stabilisierbar'],
     disadvantages: ['Mäßige Wärmedämmwirkung (hohe Lambda-Werte)', 'Hohe Schüttdicken für Norm-U-Werte erforderlich'],
-    applications: ['Lastabtragende Dämmschüttungen unter Bodenplatten', 'Ausgleichsschüttungen auf Massivdecken', 'Leichtbetonzuschlag']
+    applications: ['Lastabtragende Dämmschüttungen unter Bodenplatten', 'Ausgleichsschüttungen auf Massivdecken', 'Leichte Gesteinskörnung für Leichtbeton']
   }
 ];
 

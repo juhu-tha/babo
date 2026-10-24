@@ -561,7 +561,7 @@ export default function Baustoffkunde() {
                 </div>
                 <div className="bg-white p-3.5 rounded-xl border border-home-grau/30 hover:shadow-sm transition-shadow">
                   <span className="text-[9px] font-extrabold text-[#A3113E] font-mono tracking-widest uppercase block mb-1">2. Mesokosmos (Gefüge)</span>
-                  <span className="text-xs font-bold text-text-main block mt-1">Zuschlag &amp; Zementstein</span>
+                  <span className="text-xs font-bold text-text-main block mt-1">Gesteinskörnung &amp; Zementstein</span>
                   <span className="text-[10px] text-text-main/70 block mt-1 font-sans">Millimeter bis Mikrometer. Haftverbundzone (ITZ), Kapillarporennetz, Mikrorisse, Sandkörner.</span>
                 </div>
                 <div className="bg-white p-3.5 rounded-xl border border-home-grau/30 hover:shadow-sm transition-shadow">

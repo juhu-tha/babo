@@ -120,7 +120,7 @@ const FUTURE_MATERIALS: MaterialProfile[] = [
     ],
     disadvantages: [
       'Statisch begrenzt: Aufgrund der vielen Luftporen nicht für hochbelastete Pfeiler oder extreme Spannweiten geeignet',
-      'Erhöhte Wasseraufnahme durch poröse Zuschlagstoffe (Blähton/Blähglas), erfordert hydrophobierende Hydrophobierung',
+      'Erhöhte Wasseraufnahme durch poröse Gesteinskörnungen (Blähton/Blähglas), erfordert hydrophobierende Hydrophobierung',
       'Besondere Sorgfalt bei Verdichtung auf der Baustelle nötig (Gefahr des Aufschwimmens der leichten Gesteinskörnung)'
     ],
     specs: {

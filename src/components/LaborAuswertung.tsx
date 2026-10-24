@@ -278,7 +278,7 @@ export default function LaborAuswertung() {
             <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
               <div className="text-xs font-bold text-shiraz uppercase tracking-wider mb-2">AKR "Betonkrebs"</div>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Die zerstörende Alkali-Kieselsäure-Reaktion entsteht durch alkalische Porenlösung mit reaktiver Kieselsäure (Gesteinszuschlag). Quellfähiges Alkalisilikatgel treibt das Gefüge von innen auf. Nachweis per Dünnschliffmikroskopie oder Uranylacetat-UV-Fluoreszenz.
+                Die zerstörende Alkali-Kieselsäure-Reaktion entsteht durch alkalische Porenlösung mit reaktiver Kieselsäure (in der Gesteinskörnung). Quellfähiges Alkalisilikatgel treibt das Gefüge von innen auf. Nachweis per Dünnschliffmikroskopie oder Uranylacetat-UV-Fluoreszenz.
               </p>
             </div>
             <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">

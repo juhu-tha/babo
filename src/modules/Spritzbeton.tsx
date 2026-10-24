@@ -53,7 +53,7 @@ export default function Spritzbeton() {
             <div className="text-sm text-shiraz mb-2 font-bold">Trocken- vs. Nassspritzen</div>
             <p className="text-xs text-text-main/70 leading-relaxed">
               <strong>Trocken:</strong> + Geringerer Aufwand bei kleinen Mengen, + Beliebig lange Unterbrechungen, - Hohe Staubentwicklung, - Geringere Leistung.<br/>
-              <strong>Nass:</strong> + Hohe Spritzleistung, + Konstantes W/Z-Verhältnis, + Weniger Rückprall und Staub.
+              <strong>Nass:</strong> + Hohe Spritzleistung, + Konstanter w/z-Wert, + Weniger Rückprall und Staub.
             </p>
           </div>
         </div>

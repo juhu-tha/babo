@@ -879,7 +879,7 @@ export default function BpInnovationen() {
                   </span>
                   <p className="text-slate-600 leading-relaxed">
                     {currentTrl < 4 && 'Führen Sie genormte Reihenprüfungen an Mörtel- und Betonprismen durch. Priorisieren Sie Langzeitparameter wie Schwinden, Karbonatisierung und Chloridmigration, um Investoren von der Dauerhaftigkeit zu überzeugen.'}
-                    {currentTrl >= 4 && currentTrl < 6 && 'Verlassen Sie die Labormischung. Testen Sie das Material in einem realen Betonwerk unter Schwankungen der Zuschlagsfeuchte und logistischer Verarbeitbarkeit von mindestens 90 Minuten.'}
+                    {currentTrl >= 4 && currentTrl < 6 && 'Verlassen Sie die Labormischung. Testen Sie das Material in einem realen Betonwerk unter Schwankungen der Feuchte der Gesteinskörnung und logistischer Verarbeitbarkeit von mindestens 90 Minuten.'}
                     {currentTrl >= 6 && currentTrl < 8 && 'Bauen Sie ein Pilotprojekt über eine Zustimmung im Einzelfall (ZiE) oder vorhabenbezogene Bauartgenehmigung (vBG). Reichen Sie gleichzeitig den Zulassungsantrag beim DIBt ein.'}
                     {currentTrl >= 8 && 'Skalieren Sie das Vertriebsnetzwerk und etablieren Sie die werkseigene Produktionskontrolle (WPK). Initiieren Sie die Aufnahme in die relevanten DIN-Normenausschüsse.'}
                   </p>

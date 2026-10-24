@@ -37,7 +37,7 @@ export default function Knicken() {
   const [l, setL] = useState(3.5); // Stablänge in m
   const [eModul, setEModul] = useState(210000); // E-Modul in MPa (Stahl)
   const [i, setI] = useState(850); // Flächenträgheitsmoment in cm^4
-  const [eulerFall, setEulerFall] = useState(2); // Eulerfall 1-4
+  const [eulerFall, setEulerFall] = useState(2); // Euler-Fall 1–4
 
   // Live Load Parameter (N_Ed)
   const [loadPercent, setLoadPercent] = useState(65); // 0% bis 120% der Euler-Last
@@ -126,7 +126,7 @@ export default function Knicken() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Activity className="text-shiraz" /> Knicken &amp; Stabilitätsversagen (Euler-Fälle I–IV)
+            <Activity className="text-shiraz" /> Knicken &amp; Stabilitätsversagen (Euler-Fälle 1–4)
           </h2>
           <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-3 py-1 rounded-full border border-shiraz/20">
             DIN EN 1993-1-1 / Eurocode 3

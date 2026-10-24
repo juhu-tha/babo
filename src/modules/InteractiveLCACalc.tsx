@@ -238,7 +238,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     penrt: 410,
     description: "Mischung aus Hanfschäben und hydraulischem Baukalk. Verhält sich als dauerhafter Kohlenstoffspeicher mit hoher Dämmleistung.",
     defaultCircularQuota: 92,
-    substitutesPrimary: "Bodenverbesserer / Kalkmörtel-Zuschlag",
+    substitutesPrimary: "Bodenverbesserer / Gesteinskörnung für Kalkmörtel",
     defaultRecoveryType: "downcycling"
   },
   {

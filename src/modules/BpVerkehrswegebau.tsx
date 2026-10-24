@@ -1861,14 +1861,14 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                     4. Alkali-Kieselsäure-Reaktion (AKR) Screening
                   </h4>
                   <p className="text-[11px] text-gray-500 leading-normal">
-                    Die zerstörerische AKR ("Betonkrebs") tritt auf, wenn amorphe Kieselsäuren im Zuschlagstoff mit Alkalien aus dem Zement unter Wassereinfluss (Sprühnebel + Tausalz) ein quellfähiges Alkalisilikatgel bilden. Dies zersprengt den Beton von innen.
+                    Die zerstörerische AKR ("Betonkrebs") tritt auf, wenn amorphe Kieselsäuren in der Gesteinskörnung mit Alkalien aus dem Zement unter Wassereinfluss (Sprühnebel + Tausalz) ein quellfähiges Alkalisilikatgel bilden. Dies zersprengt den Beton von innen.
                   </p>
 
                   <div className="space-y-3 text-xs">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-[11px] font-bold text-text-main mb-1">Gesteinszuschlag (Edelsplitt):</label>
-                        <select aria-label="Gesteinszuschlag (Edelsplitt)" 
+                        <label className="block text-[11px] font-bold text-text-main mb-1">Gesteinskörnung (Edelsplitt):</label>
+                        <select aria-label="Gesteinskörnung (Edelsplitt)" 
                           value={betonAggregate}
                           onChange={(e) => setBetonAggregate(e.target.value as any)}
                           className="w-full text-xs p-2 rounded border border-zinc-200 bg-white"
@@ -1932,7 +1932,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
                             {betonShowAKRDetails && (
                               <div className="mt-2 text-[10px] bg-white/60 p-2 rounded border border-current leading-relaxed space-y-1 leading-normal">
                                 <div><strong>Chemismus der AKR:</strong></div>
-                                <div>1. Gelbildungsverfahren: SiO_2 (Zuschlag) + 2 NaOH (Zement) + H_2O → Na_2SiO_3·H_2O (Alkaligel)</div>
+                                <div>1. Gelbildungsverfahren: SiO_2 (Gesteinskörnung) + 2 NaOH (Zement) + H_2O → Na_2SiO_3·H_2O (Alkaligel)</div>
                                 <div>2. Volumendehnung: Das Gel zieht im Frost-Tausalz-Zyklus kapillares Wasser an und quillt massiv auf.</div>
                                 <div>3. Zerrüttung: Überschreitet der Spaltdruck die Zugfestigkeit des Betons (ca. 3,0 MPa), zerreißt das monolithische Aggregatgefüge netzartig.</div>
                               </div>

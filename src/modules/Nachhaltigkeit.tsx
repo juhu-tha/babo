@@ -2269,7 +2269,7 @@ export default function Nachhaltigkeit() {
                         <FormulaText text="m = V \cdot \rho \quad \text{mit} \quad \mathrm{[kg] = [m^3] \cdot [kg/m^3]}" className="text-xs font-semibold text-shiraz" />
                       </div>
                       <p className="text-[11px] text-slate-500 leading-relaxed mt-1">
-                        Rohdichten variieren stark je nach Zuschlag, Feuchte und Porenanteil. Nutzen Sie die baustoffkundigen Standardwerte der Board-Module.
+                        Rohdichten variieren stark je nach Gesteinskörnung, Feuchte und Porenanteil. Nutzen Sie die baustoffkundigen Standardwerte der Board-Module.
                       </p>
                     </div>
 
@@ -2410,7 +2410,7 @@ export default function Nachhaltigkeit() {
                         </div>
                       </div>
                       <p className="text-[10px] text-slate-500">
-                        Wiederhole diese Summenrechnung für jede Schicht, um das Bauteil-GWP zu kollationieren, wie es im obenstehenden <strong>Wandaufbau-Konfigurator (Tab 1)</strong> automatisiert geschieht!
+                        Wiederholen Sie diese Summenrechnung für jede Schicht, um das Bauteil-GWP zu kollationieren, wie es im obenstehenden <strong>Wandaufbau-Konfigurator (Tab 1)</strong> automatisiert geschieht!
                       </p>
                     </div>
                   </div>

@@ -131,7 +131,7 @@ export default function ThesenProjekte() {
                       {
                         title: '2. Recycling, Abfälle & Altlasten',
                         focus: 'Schließung von Materialkreisläufen, Ressourceneffizienz und der gesetzeskonforme Rückbau von Tragstrukturen.',
-                        examples: 'Qualitätskontrolle von Recycling-Zuschlagstoffen (RC-Beton), Verwertung mineralischer Abbruchabfälle, Schadstoffentfrachtung im Bestand.',
+                        examples: 'Qualitätskontrolle von rezyklierten Gesteinskörnungen (RC-Beton), Verwertung mineralischer Abbruchabfälle, Schadstoffentfrachtung im Bestand.',
                         modules: ['Kreislaufwirtschaft', 'Rückbau', 'Schadstoffe']
                       },
                       {

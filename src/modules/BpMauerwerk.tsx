@@ -81,7 +81,7 @@ const masonryProducts: MauerwerkProduct[] = [
     densityRange: '500 - 1200 kg/m³',
     strengthClass: 'Druckfestigkeitsklasse 2 bis 12',
     mortarType: 'Leichtmauermörtel / Normalmauermörtel',
-    description: 'Zementgebundene Leichtzuschlagstoffe wie Naturbims oder Blähton. Verbindet gute Feuchtebeständigkeit mit mäßiger Wärmedämmung und gutem Schallschutz.',
+    description: 'Zementgebundene leichte Gesteinskörnungen wie Naturbims oder Blähton. Verbindet gute Feuchtebeständigkeit mit mäßiger Wärmedämmung und gutem Schallschutz.',
     advantages: ['Ausgezeichnete Putzhaftung mineralischer Mörtelsysteme', 'Sehr gute Brandwiderstandseigenschaften', 'Gute ökologische Einordnung (Naturbims)'],
     disadvantages: ['Rohstoffvorkommen (Naturbims) regional begrenzt', 'Staubentwicklung bei mechanischer Bearbeitung'],
     applications: ['Skelettausfachungen im Hochbau', 'Schallschutz- und Trennwände', 'Ökologische monolithische Außenwandaufbauten']
@@ -446,7 +446,7 @@ export default function BpMauerwerk() {
                   <span className="text-[9px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded block w-max uppercase">LM / λ ≤ 0,21 W/mK</span>
                   <h4 className="font-bold text-slate-800 text-xs">Leichtmauermörtel (LM)</h4>
                   <p className="text-xxs text-slate-600 leading-normal">
-                    Versetzt mit wärmedämmenden Zuschlagstoffen (Bims, Blähton, Perlit). Verhindert die Entstehung von linienförmigen Wärmebrücken an den Lagerfugen hochdämmender Hintermauerziegel.
+                    Versetzt mit wärmedämmenden leichten Gesteinskörnungen (Bims, Blähton, Perlit). Verhindert die Entstehung von linienförmigen Wärmebrücken an den Lagerfugen hochdämmender Hintermauerziegel.
                   </p>
                 </div>
 

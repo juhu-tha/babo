@@ -185,11 +185,11 @@ export default function Kuriositaeten() {
                 <div>
                   <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Werkstofftechnische Maßnahme: Densitätsgradierung</h4>
                   <p className="text-xs text-slate-650">
-                    Die Zusammensetzung des römischen Betons (<strong>Opus Caementicium</strong>) wurde höhenabhängig graduiert. Während im Fundament- und Wandbereich hochdichte Zuschlagstoffe wie Travertin und Basaltbruch verwendet wurden, kamen im Bereich der Kuppelschale schrittweise leichtere Materialien (Tuffschutt, Ziegelbruch, Bimssand) zum Einsatz. Dies drosselt die wirkenden Trägheits- und Eigengewichtslastvektoren signifikant.
+                    Die Zusammensetzung des römischen Betons (<strong>Opus Caementicium</strong>) wurde höhenabhängig graduiert. Während im Fundament- und Wandbereich hochdichte Gesteinskörnungen wie Travertin und Basaltbruch verwendet wurden, kamen im Bereich der Kuppelschale schrittweise leichtere Materialien (Tuffschutt, Ziegelbruch, Bimssand) zum Einsatz. Dies drosselt die wirkenden Trägheits- und Eigengewichtslastvektoren signifikant.
                   </p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
-                  <p><strong>Dichte-Stufen der historischen Zuschlagsstoffe:</strong></p>
+                  <p><strong>Dichte-Stufen der historischen Gesteinskörnungen:</strong></p>
                   <ul className="list-disc pl-4 space-y-1 text-slate-650 font-mono text-[11px]">
                     <li><strong>Kuppelbasis:</strong> Travertin &amp; Basalt (Rohwichte ≈ 2.200 - 2.400 kg/m³)</li>
                     <li><strong>Mittlere Ringsegmente:</strong> Ziegelbruch &amp; Tuffstein (Rohwichte ≈ 1.600 - 1.800 kg/m³)</li>
@@ -204,7 +204,7 @@ export default function Kuriositaeten() {
                     <BookOpen size={14} className="text-shiraz" /> Rechnerische Abschätzung der Eigenlastentlastung
                   </span>
                   <p className="text-xs text-slate-650">
-                    Lehrmodell mit vereinfachten Annahmen (Volumen und Dichten gerundet, keine Bauwerksmessung): Wie stark senkt die nach oben leichter werdende Zuschlagstufung die Eigenlast?
+                    Lehrmodell mit vereinfachten Annahmen (Volumen und Dichten gerundet, keine Bauwerksmessung): Wie stark senkt die nach oben leichter werdende Stufung der Gesteinskörnung die Eigenlast?
                   </p>
                   
                   <div className="bg-white p-4 rounded-lg border border-slate-100 space-y-2 font-mono text-xs">

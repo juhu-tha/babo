@@ -569,7 +569,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 </h5>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                    <strong className="text-shiraz block">Wasser-Zement-Wert:</strong>
+                    <strong className="text-shiraz block">Wasserzementwert:</strong>
                     <span className="font-mono font-bold text-sm block">w/z ≈ 0,35–0,40 (Grenzwert nach DIN EN 447 bzw. Zulassung prüfen)</span>
                     <span className="text-[11px] text-slate-500">Geringer Wassergehalt mindert Porosität.</span>
                   </div>

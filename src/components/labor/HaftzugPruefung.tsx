@@ -89,7 +89,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
           glueShare: 0,
           validTest: true,
           compliantTR: true,
-          desc: 'Optimal vorbereiteter Untergrund: Kugelstrahlen hat Zementschlämme restlos entfernt und Zuschlagskörner freigelegt. Die Verbundfestigkeit übersteigt die Betonzugfestigkeit, der Bruch erfolgt im Altbeton.',
+          desc: 'Optimal vorbereiteter Untergrund: Kugelstrahlen hat Zementschlämme restlos entfernt und Gesteinskörner freigelegt. Die Verbundfestigkeit übersteigt die Betonzugfestigkeit, der Bruch erfolgt im Altbeton.',
           layerSubstrateName: 'Altbeton C30/37 (gestrahlt)',
           layerTopName: 'PCC-Reprofilierungsmörtel (15 mm)'
         };
