@@ -9,7 +9,8 @@ let live = 0;
 for (const rel of dateien) {
   const text = fs.readFileSync(path.join('src', rel), 'utf8');
   for (const m of text.matchAll(/<FormulaDerivationBox\b([\s\S]*?)\/>/g)) {
-    if (!/\blive\b/.test(m[1].split('schritte')[0] + (m[1].match(/\blive(=\{true\})?\s*$/m)?.[0] ?? ''))) continue;
+    // Konvention: `live` steht als erstes Attribut direkt nach <FormulaDerivationBox
+    if (!/^\s+live(=\{true\})?\s/.test(m[1])) continue;
     live++;
     // Ein Live-Rechenweg muss Eingabewerte einsetzen (Template mit ${…})
     if (!m[1].includes('${')) fehler.push(`${rel}: live-Box ohne eingesetzte Werte`);
