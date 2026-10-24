@@ -3,8 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import { QUIZ_QUESTIONS, SCHWIERIGKEITEN, BLOOM_STUFEN } from '../src/data/quizData';
 import { quizRoute } from '../src/data/quizZuordnung';
-import { MODUL_BY_ID } from '../src/registry/modules';
+import { MODULE, MODUL_BY_ID, type ModulEintrag } from '../src/registry/modules';
+import { grenzenFuer } from '../src/data/rechnerGrenzen';
 import { AUFGABEN_QUIZ_GRUPPEN } from '../src/data/aufgabenQuizGruppen';
+import { MODULTEST_IN_APP } from '../src/data/quizZuordnung';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -51,7 +53,7 @@ const laengenVerhaeltnis = (q: typeof QUIZ_QUESTIONS[number]) => {
 const zuLang = QUIZ_QUESTIONS.filter(q => laengenVerhaeltnis(q) > 1.2).length;
 const ABSOLUT = /\b(immer|nie|niemals|ausschließlich|grundsätzlich|stets|keinerlei|sämtliche)\b/gi;
 const absolut = QUIZ_QUESTIONS.reduce((a, q) => a + q.options.filter((_, i) => i !== q.correctIdx).reduce((b, o) => b + (o.match(ABSOLUT)?.length ?? 0), 0), 0);
-const GRENZE = { laengste: 0.197, zuLang: 26, absolut: 10 }; // Rest: 26 bereits freigegebene Fragen (Z23d)
+const GRENZE = { laengste: 0.089, zuLang: 26, absolut: 10 }; // Rest: 26 bereits freigegebene Fragen (Z23d)
 pruefe(anteilLaengste <= GRENZE.laengste + 1e-9, `Richtige Antwort ist in ${(anteilLaengste * 100).toFixed(1)} % die längste (Grenze ${GRENZE.laengste * 100} %)`);
 pruefe(zuLang <= GRENZE.zuLang, `${zuLang} Fragen mit Längenverhältnis > 1,2 (Grenze ${GRENZE.zuLang})`);
 pruefe(absolut <= GRENZE.absolut, `${absolut} Absolutwörter in Distraktoren (Grenze ${GRENZE.absolut})`);
@@ -67,6 +69,22 @@ for (const rel of dateien.filter(f => f.endsWith('.tsx') && !f.endsWith('Admin.t
   }
 }
 
+// 4b. Jede Frage erscheint in einem Selbsttest: <ModulTest moduleId="…"> in einer Komponente,
+//     dynamisch in OekobilanzLCA (TEILE.moduleId) oder über MODULTEST_IN_APP unter dem Modul
+const testIds = new Set<string>();
+for (const rel of dateien.filter(f => f.endsWith('.tsx') && !f.endsWith('Admin.tsx'))) {
+  const text = fs.readFileSync(path.join('src', rel), 'utf8');
+  for (const m of text.matchAll(/<ModulTest[^>]*moduleId="([^"]+)"/g)) testIds.add(m[1]);
+}
+for (const m of fs.readFileSync('src/modules/OekobilanzLCA.tsx', 'utf8').matchAll(/moduleId: '([a-z0-9_]+)'/g)) testIds.add(m[1]);
+for (const id of MODULTEST_IN_APP) {
+  pruefe(MODUL_BY_ID.has(id), `MODULTEST_IN_APP: ${id} ist keine Route`);
+  pruefe(!testIds.has(id), `MODULTEST_IN_APP: ${id} hat schon einen Selbsttest in der Komponente (doppelte Anzeige)`);
+}
+for (const id of new Set(QUIZ_QUESTIONS.map(q => q.moduleId))) {
+  pruefe(testIds.has(id) || MODULTEST_IN_APP.has(id), `Fragen zu „${id}“ erscheinen in keinem Selbsttest`);
+}
+
 // 5. Jeder Aufgaben-Reiter mit Gruppenfilter hat Fragen
 const gruppenMitFragen = new Set(QUIZ_QUESTIONS.map(q => q.gruppe));
 for (const [tab, cfg] of Object.entries(AUFGABEN_QUIZ_GRUPPEN)) {
@@ -74,9 +92,21 @@ for (const [tab, cfg] of Object.entries(AUFGABEN_QUIZ_GRUPPEN)) {
 }
 
 // 6. Ratsche: Module mit weniger als 5 Fragen dürfen nicht mehr werden
-const MAX_DUENN = 153;
+const MAX_DUENN = 44;
 const duenn = [...proModul.values()].filter(n => n < 5).length;
 pruefe(duenn <= MAX_DUENN, `${duenn} Module mit < 5 Fragen (Grenze ${MAX_DUENN})`);
+
+// 7. Abdeckung der Fachmodule (AP 3.4): je Route ≥ 6 Fragen, Rechner-Module mit Rechenfrage, Spannbeton ≥ 10, Pool ≥ 850
+const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
+const fach = (MODULE as readonly ModulEintrag[]).filter(m => (m.baum?.typ === 'standard' || m.baum?.typ === 'calculator') && !OHNE.has(m.gruppe ?? ''));
+const proRoute = new Map<string, typeof QUIZ_QUESTIONS>();
+for (const q of QUIZ_QUESTIONS) { const r = quizRoute(q.moduleId); if (r) proRoute.set(r, [...(proRoute.get(r) ?? []), q]); }
+for (const m of fach) {
+  const qs = proRoute.get(m.id) ?? [];
+  pruefe(qs.length >= (m.id === 'spannbeton' ? 10 : 6), `${m.id}: nur ${qs.length} Fragen`);
+  if (m.baum?.typ === 'calculator' || grenzenFuer(m.id)) pruefe(qs.some(q => q.bloom === 'Anwenden' && /\d/.test(q.question)), `${m.id}: Rechner-Modul ohne Rechenfrage`);
+}
+pruefe(QUIZ_QUESTIONS.length >= 850, `nur ${QUIZ_QUESTIONS.length} Fragen (≥ 850 verlangt)`);
 
 if (fehler.length) {
   for (const f of fehler) console.error(`FAIL: ${f}`);

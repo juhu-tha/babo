@@ -41,3 +41,18 @@ export function quizCluster(moduleId: string): { id: ClusterNummer; name: string
   const c = g ? META_CLUSTERS.find(m => m.groupNames.includes(g)) : undefined;
   return c ? { id: c.number as ClusterNummer, name: c.name } : undefined;
 }
+
+/**
+ * Routen, deren Komponente keinen eigenen <ModulTest moduleId="<route>"> enthält (geteilte Komponenten wie
+ * Beispielrechnungen, BpVerkehrswegebau, HolzbauBeta). Für sie blendet App.tsx den Selbsttest unter dem Modul ein.
+ * tests/quiz.test.ts prüft, dass jede Frage in genau einem Selbsttest erscheint.
+ */
+export const MODULTEST_IN_APP: ReadonlySet<string> = new Set([
+  'beton_info', 'betonkennwerte', 'bp_recht_grundlagen', 'bp_recht_konformitaet',
+  'bp_verkehr_asphalt', 'bp_verkehr_bahn', 'bp_verkehr_betondecken', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung',
+  'bp_verkehr_rsto', 'bp_verkehr_tiefbau', 'bp_verkehr_tunnel',
+  'holzbau_bauphysik', 'holzbau_bemessung', 'holzbau_konstruktion', 'holzbau_verbindung',
+  'rechnung_bestand', 'rechnung_beton', 'rechnung_brandschutz', 'rechnung_holzbau', 'rechnung_mauerwerk',
+  'rechnung_nachhaltigkeit', 'rechnung_schallschutz', 'rechnung_stahlbeton', 'rechnung_u_wert',
+  'spannbeton', 'stahlbeton_info',
+]);
